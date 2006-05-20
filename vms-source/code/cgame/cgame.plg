@@ -1,0 +1,117 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: cgame - Win32 Release TA--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP179.tmp" with contents
+[
+/nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "MISSIONPACK" /Fp"Release_TA/cgame.pch" /YX /Fo"Release_TA/" /Fd"Release_TA/" /FD /c 
+"G:\games\trepidation\source\vms-source\code\game\bg_misc.c"
+"G:\games\trepidation\source\vms-source\code\game\bg_pmove.c"
+"G:\games\trepidation\source\vms-source\code\game\bg_slidemove.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_consolecmds.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_drawtools.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_effects.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_ents.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_event.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_info.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_localents.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_main.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_marks.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_newDraw.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_players.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_playerstate.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_predict.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_scoreboard.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_servercmds.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_snapshot.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_syscalls.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_unlagged.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_view.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c"
+"G:\games\trepidation\source\vms-source\code\game\q_math.c"
+"G:\games\trepidation\source\vms-source\code\game\q_shared.c"
+"G:\games\trepidation\source\vms-source\code\ui\ui_shared.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP179.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP17A.tmp" with contents
+[
+/nologo /base:"0x30000000" /subsystem:windows /dll /incremental:no /pdb:"Release_TA/cgamex86.pdb" /map:"Release_TA/cgamex86.map" /machine:I386 /def:".\cgame.def" /out:"../Release_TA/cgamex86.dll" /implib:"Release_TA/cgamex86.lib" 
+".\Release_TA\bg_misc.obj"
+".\Release_TA\bg_pmove.obj"
+".\Release_TA\bg_slidemove.obj"
+".\Release_TA\cg_consolecmds.obj"
+".\Release_TA\cg_draw.obj"
+".\Release_TA\cg_drawtools.obj"
+".\Release_TA\cg_effects.obj"
+".\Release_TA\cg_ents.obj"
+".\Release_TA\cg_event.obj"
+".\Release_TA\cg_info.obj"
+".\Release_TA\cg_localents.obj"
+".\Release_TA\cg_main.obj"
+".\Release_TA\cg_marks.obj"
+".\Release_TA\cg_newDraw.obj"
+".\Release_TA\cg_players.obj"
+".\Release_TA\cg_playerstate.obj"
+".\Release_TA\cg_predict.obj"
+".\Release_TA\cg_scoreboard.obj"
+".\Release_TA\cg_servercmds.obj"
+".\Release_TA\cg_snapshot.obj"
+".\Release_TA\cg_syscalls.obj"
+".\Release_TA\cg_unlagged.obj"
+".\Release_TA\cg_view.obj"
+".\Release_TA\cg_weapons.obj"
+".\Release_TA\q_math.obj"
+".\Release_TA\q_shared.obj"
+".\Release_TA\ui_shared.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP17A.tmp"
+<h3>Output Window</h3>
+Compiling...
+bg_misc.c
+bg_pmove.c
+bg_slidemove.c
+G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1734) : warning C4701: local variable 'addTime' may be used without having been initialized
+cg_consolecmds.c
+cg_draw.c
+cg_drawtools.c
+cg_effects.c
+cg_ents.c
+cg_event.c
+cg_info.c
+cg_localents.c
+cg_main.c
+cg_marks.c
+cg_newDraw.c
+cg_players.c
+cg_playerstate.c
+cg_predict.c
+cg_scoreboard.c
+G:\games\trepidation\source\vms-source\code\cgame\cg_predict.c(787) : warning C4701: local variable 'predictCmd' may be used without having been initialized
+G:\games\trepidation\source\vms-source\code\cgame\cg_predict.c(797) : warning C4701: local variable 'stateIndex' may be used without having been initialized
+cg_servercmds.c
+cg_snapshot.c
+cg_syscalls.c
+G:\games\trepidation\source\vms-source\code\cgame\cg_snapshot.c(268) : warning C4706: assignment within conditional expression
+cg_unlagged.c
+cg_view.c
+G:\games\trepidation\source\vms-source\code\cgame\cg_unlagged.c(198) : warning C4701: local variable 'fleshEntityNum' may be used without having been initialized
+cg_weapons.c
+q_math.c
+G:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
+q_shared.c
+ui_shared.c
+Linking...
+   Creating library Release_TA/cgamex86.lib and object Release_TA/cgamex86.exp
+
+
+
+<h3>Results</h3>
+cgamex86.dll - 0 error(s), 6 warning(s)
+</pre>
+</body>
+</html>
