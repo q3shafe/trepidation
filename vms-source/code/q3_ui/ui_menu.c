@@ -258,8 +258,8 @@ void UI_MainMenu( void ) {
 
 		trap_GetCDKey( key, sizeof(key) );
 		if( trap_VerifyCDKey( key, NULL ) == qfalse ) {
-			UI_CDKeyMenu();
-			return;
+			//UI_CDKeyMenu();
+			//return;
 		}
 	}
 	
