@@ -193,6 +193,7 @@ spawn_t	spawns[] = {
 	{"func_train", SP_func_train},
 	{"func_group", SP_info_null},
 	{"func_timer", SP_func_timer},			// rename trigger_timer?
+//	{"func_breakable", SP_func_breakable},		// Shafe - Trep - Breakables
 
 	// Triggers are brush objects that cause an effect when contacted
 	// by a living player, usually involving firing targets.

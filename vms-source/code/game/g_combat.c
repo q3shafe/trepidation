@@ -423,6 +423,51 @@ void CheckAlmostScored( gentity_t *self, gentity_t *attacker ) {
 }
 
 /*
+====================
+Shafe - Trep - Freeze Tag
+player_freeze
+===================
+*/
+void player_freeze( gentity_t *targ, gentity_t *attacker, int mod ) 
+{
+	// Don't freeze anyone if we're not in team play or during warmup time
+	if ( g_gametype.integer < GT_TEAM || level.warmupTime ) {
+		return;
+	}
+
+	// If they just (3 sec) respawned then don't freeze them
+	// Note we check their respawnTime so earlier I made sure this didn't get reset until after player_freeze was called
+	if ( level.time - targ->client->respawnTime < 3000 ) {
+		return;
+	}
+
+		// Don't freeze someone for certain cases
+	switch ( mod ) {
+		case MOD_WATER:
+		case MOD_CRUSH:
+		case MOD_TELEFRAG:
+		case MOD_FALLING:
+		case MOD_SUICIDE:
+		case MOD_TARGET_LASER:
+		case MOD_TRIGGER_HURT:
+		case MOD_GRAPPLE:
+			return;
+	}
+
+	// Did a teammate kill us or did we kill ourselves?
+	if ( OnSameTeam( targ, attacker ) && targ != attacker ) {
+		return;
+	}
+
+	targ->client->ps.powerups[ PW_BALL ] = INT_MAX;
+	targ->client->noclip = qtrue;
+	targ->health = 0;
+	G_AddEvent( targ, EV_DEATH1, 0 );
+	targ->client->ps.pm_time = 4000;
+}
+
+
+/*
 ==================
 player_die
 ==================
@@ -620,7 +665,18 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 	// don't allow respawn until the death anim is done
 	// g_forcerespawn may force spawning at some later time
-	self->client->respawnTime = level.time + 1700;
+	
+	// freeze - Shafe - Trep Freeze Tag
+	if (g_gametype.integer != GT_FREEZE) 
+	{
+		self->client->respawnTime = level.time + 1700;  // This is the real line
+	} else {
+		player_freeze( self, attacker, meansOfDeath );
+		self->client->respawnTime = level.time + 1700;
+	} // End Shafe
+
+	
+	
 
 	// remove powerups
 	memset( self->client->ps.powerups, 0, sizeof(self->client->ps.powerups) );
