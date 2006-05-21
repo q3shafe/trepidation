@@ -142,6 +142,8 @@ typedef struct {
 	float			barrelAngle;
 	int				barrelTime;
 	qboolean		barrelSpinning;
+	qboolean		noHead;			// Shafe - Trep - Headshot!
+
 } playerEntity_t;
 
 //=================================================
@@ -1442,6 +1444,7 @@ void CG_LightningBoltBeam( vec3_t start, vec3_t end );
 void CG_ScorePlum( int client, vec3_t org, int score );
 
 void CG_GibPlayer( vec3_t playerOrigin );
+void CG_GibPlayerHeadshot( vec3_t playerOrigin );		// Shafe - Trep - Headshot
 void CG_BigExplode( vec3_t playerOrigin );
 
 void CG_Bleed( vec3_t origin, int entityNum );
