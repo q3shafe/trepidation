@@ -443,6 +443,11 @@ void CopyToBodyQue( gentity_t *ent ) {
 		body->takedamage = qtrue;
 	}
 
+	// Shafe - Trep - Headshots
+	if(ent->client->noHead) { 
+		G_AddEvent( body,EV_BODY_NOHEAD,0 );
+	}
+	// Shafe - Trep - End Headshots
 
 	VectorCopy ( body->s.pos.trBase, body->r.currentOrigin );
 	trap_LinkEntity (body);
@@ -1299,6 +1304,9 @@ void ClientSpawn(gentity_t *ent) {
 
 	// run the presend to set anything else
 	ClientEndFrame( ent );
+
+	// Shafe - Trep - Headshots -- Best give em their head back when they respawn
+	ent->client->noHead=qfalse;
 
 	// clear entity state values
 	BG_PlayerStateToEntityState( &client->ps, &ent->s, qtrue );

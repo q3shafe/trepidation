@@ -407,6 +407,8 @@ typedef enum {
 	EV_POWERUP_REGEN,
 
 	EV_GIB_PLAYER,			// gib a previously living player
+	EV_GIB_PLAYER_HEADSHOT,		// Shafe - Trep - Headshot
+	EV_BODY_NOHEAD,				// Shafe - Trep - Headshot
 	EV_SCOREPLUM,			// score plum
 
 #ifdef MISSIONPACK
@@ -574,6 +576,7 @@ typedef enum {
 	MOD_SUICIDE,
 	MOD_TARGET_LASER,
 	MOD_TRIGGER_HURT,
+	MOD_HEADSHOT,			// Shafe - Trep - Headshot
 #ifdef MISSIONPACK
 	MOD_NAIL,
 	MOD_CHAINGUN,

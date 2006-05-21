@@ -337,6 +337,7 @@ struct gclient_s {
 	// timeResidual is used to handle events that happen every second
 	// like health / armor countdowns and regeneration
 	int			timeResidual;
+	qboolean	noHead;				// Shafe - Trep - Headshot  Player has no head! Oh My!
 
 #ifdef MISSIONPACK
 	gentity_t	*persistantPowerup;

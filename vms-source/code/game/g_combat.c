@@ -248,6 +248,14 @@ void GibEntity( gentity_t *self, int killer ) {
 	self->r.contents = 0;
 }
 
+
+// Shafe - Trep - Headshot Function
+void GibEntity_Headshot( gentity_t *self, int killer ) {
+	G_AddEvent( self, EV_GIB_PLAYER_HEADSHOT, 0 );
+	self->client->noHead = qtrue;
+}
+// Shafe - Trep - End Headshot Function
+
 /*
 ==================
 body_die
@@ -291,6 +299,7 @@ char	*modNames[] = {
 	"MOD_SUICIDE",
 	"MOD_TARGET_LASER",
 	"MOD_TRIGGER_HURT",
+	"MOD_HEADSHOT",		// Shafe - Trep - Headshot
 #ifdef MISSIONPACK
 	"MOD_NAIL",
 	"MOD_CHAINGUN",
@@ -617,7 +626,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	memset( self->client->ps.powerups, 0, sizeof(self->client->ps.powerups) );
 
 	// never gib in a nodrop
-	if ( (self->health <= GIB_HEALTH && !(contents & CONTENTS_NODROP) && g_blood.integer) || meansOfDeath == MOD_SUICIDE) {
+	if ( (self->health <= GIB_HEALTH && !(contents & CONTENTS_NODROP) && g_blood.integer && meansOfDeath != MOD_HEADSHOT) || meansOfDeath == MOD_SUICIDE) {
 		// gib death
 		GibEntity( self, killer );
 	} else {
@@ -649,6 +658,13 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 			( ( self->client->ps.torsoAnim & ANIM_TOGGLEBIT ) ^ ANIM_TOGGLEBIT ) | anim;
 
 		G_AddEvent( self, EV_DEATH1 + i, killer );
+
+		// Shafe - Trep Headshot //////////////////////////////////////////
+		if(meansOfDeath == MOD_HEADSHOT)
+			GibEntity_Headshot( self, killer );
+		else
+			self->client->noHead = qfalse;
+		// Shafe - Trep - End Headshot /////////////////////////////
 
 		// the body can still be gibbed
 		self->die = body_die;
@@ -812,6 +828,13 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	int			asave;
 	int			knockback;
 	int			max;
+	// Shafe - Trep - Headshot
+	float		z_ratio;
+	float		z_rel;
+	int			height;
+	float		targ_maxs2;
+	// Shafe - Trep - End Headshot
+
 #ifdef MISSIONPACK
 	vec3_t		bouncedir, impactpoint;
 #endif
@@ -1027,6 +1050,35 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		targ->client->lasthurt_client = attacker->s.number;
 		targ->client->lasthurt_mod = mod;
 	}
+
+	// Shafe - Trep - Headshots
+	if (targ->client && attacker->client && targ->health > 0)
+	{   
+		// let's say only railgun can do head shots
+		if(inflictor->s.weapon==WP_RAILGUN){
+			targ_maxs2 = targ->r.maxs[2];
+	
+			// handling crouching
+			if(targ->client->ps.pm_flags & PMF_DUCKED){
+				height = (abs(targ->r.mins[2]) + targ_maxs2)*(0.75);
+			}
+			else
+				height = abs(targ->r.mins[2]) + targ_maxs2; 
+				
+			// project the z component of point 
+			// onto the z component of the model's origin
+			// this results in the z component from the origin at 0
+			z_rel = point[2] - targ->r.currentOrigin[2] + abs(targ->r.mins[2]);
+			z_ratio = z_rel / height;
+		
+			if (z_ratio > 0.90){
+				take=9999; // head shot is a sure kill
+				mod=MOD_HEADSHOT;
+			}
+		}
+	}
+	// Shafe - Trep - End Headshot Code
+
 
 	// do the damage
 	if (take) {
