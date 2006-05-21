@@ -603,6 +603,10 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) 
 	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
 	bolt->s.weapon = WP_LIGHTNING;
 	bolt->r.ownerNum = self->s.number;
+//unlagged - projectile nudge
+	// we'll need this for nudging projectiles later
+	bolt->s.otherEntityNum = self->s.number;
+//unlagged - projectile nudge
 	bolt->parent = self;
 	bolt->damage = 30;
 	bolt->splashDamage = 25;
@@ -795,7 +799,7 @@ void G_HomingMissile( gentity_t *ent )
 			VectorNormalize(temp_dir);
 			VectorAdd(temp_dir,ent->r.currentAngles,temp_dir);	
 			//now the longer temp_dir length is the more straight path for the rocket.
-			if(VectorLength(temp_dir)>1.6)
+			if(VectorLength(temp_dir)>1.2)
 			{	
 				//if this 1.6 were smaller,the rocket also get to target the enemy on his back.
 				target = blip;
