@@ -2527,6 +2527,27 @@ void CG_Player( centity_t *cent ) {
 	//
 	// add the head
 	//
+	// Shafe - Trep - This is all new code for headshots
+	if(!cent->pe.noHead)
+	{
+		head.hModel = ci->headModel;
+		if (!head.hModel) 
+		{
+			return;
+		}
+		head.customSkin = ci->headSkin;
+
+		VectorCopy( cent->lerpOrigin, head.lightingOrigin );
+
+		CG_PositionRotatedEntityOnTag( &head, &torso, ci->torsoModel, "tag_head");
+
+		head.shadowPlane = shadowPlane;
+		head.renderfx = renderfx;
+
+		CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team );
+	}
+
+	/*  Shafe - Trep - This is the original code -- Fuck.. Lets hope we dont end up compiling with MISSIONPACK!
 	head.hModel = ci->headModel;
 	if (!head.hModel) {
 		return;
@@ -2541,6 +2562,8 @@ void CG_Player( centity_t *cent ) {
 	head.renderfx = renderfx;
 
 	CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team );
+	*/
+
 
 #ifdef MISSIONPACK
 	CG_BreathPuffs(cent, &head);
@@ -2597,8 +2620,12 @@ void CG_ResetPlayerEntity( centity_t *cent ) {
 	cent->pe.torso.pitchAngle = cent->rawAngles[PITCH];
 	cent->pe.torso.pitching = qfalse;
 
+	cent->pe.noHead = qfalse; // Shafe - Trep - Part of the headshot code
+
 	if ( cg_debugPosition.integer ) {
 		CG_Printf("%i ResetPlayerEntity yaw=%i\n", cent->currentState.number, cent->pe.torso.yawAngle );
 	}
 }
+
+
 
