@@ -163,6 +163,20 @@ static void CG_Obituary( entityState_t *ent ) {
 		case MOD_BFG_SPLASH:
 			message = "should have used a smaller gun";
 			break;
+		case MOD_HEADSHOT:									// Shafe - Headshots
+			gender = ci->gender;
+			if(gender==GENDER_FEMALE)
+			{
+				message = "got her head blown off by";
+			}
+			else
+			{
+				if(gender==GENDER_NEUTER)
+					message = "got its head blown off by";
+				else
+					message = "got his head blown off by";
+			}
+			break;											
 #ifdef MISSIONPACK
 		case MOD_PROXIMITY_MINE:
 			if( gender == GENDER_FEMALE ) {
@@ -194,12 +208,27 @@ static void CG_Obituary( entityState_t *ent ) {
 	if ( attacker == cg.snap->ps.clientNum ) {
 		char	*s;
 
-		if ( cgs.gametype < GT_TEAM ) {
-			s = va("You fragged %s\n%s place with %i", targetName, 
+		if(mod != MOD_HEADSHOT) // Shafe - Trep - only for headshots
+		{						
+			if ( cgs.gametype < GT_TEAM ) {
+					s = va("You fragged %s\n%s place with %i", targetName, 
+					CG_PlaceString( cg.snap->ps.persistant[PERS_RANK] + 1 ),
+					cg.snap->ps.persistant[PERS_SCORE] );
+			} else {
+				s = va("You fragged %s", targetName );
+			}
+		}
+		else										// Shafe - Trep Else for headshot
+		{
+
+			if ( cgs.gametype < GT_TEAM ) 
+			{
+				s = va("Headshot!\n\nYou fragged %s\n%s place with %i", targetName, 
 				CG_PlaceString( cg.snap->ps.persistant[PERS_RANK] + 1 ),
 				cg.snap->ps.persistant[PERS_SCORE] );
-		} else {
-			s = va("You fragged %s", targetName );
+			} else {
+				s = va("Headshot!\n\nYou fragged %s", targetName );
+			}	
 		}
 #ifdef MISSIONPACK
 		if (!(cg_singlePlayerActive.integer && cg_cameraOrbit.integer)) {
@@ -1182,6 +1211,20 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 		}
 		CG_GibPlayer( cent->lerpOrigin );
 		break;
+
+	// Shafe - Trep - Headshot stuff
+	case EV_GIB_PLAYER_HEADSHOT:
+		DEBUGNAME("EV_GIB_PLAYER_HEADSHOT");
+		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.gibSound );
+		cent->pe.noHead = qtrue;
+		CG_GibPlayerHeadshot( cent->lerpOrigin );
+		break;
+
+	case EV_BODY_NOHEAD:
+		DEBUGNAME("EV_BODY_NOHEAD");
+		cent->pe.noHead = qtrue;
+		break;
+	// Shafe - Trep - End Headshot Stuff
 
 	case EV_STOPLOOPINGSOUND:
 		DEBUGNAME("EV_STOPLOOPINGSOUND");
