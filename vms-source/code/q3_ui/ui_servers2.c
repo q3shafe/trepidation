@@ -76,6 +76,8 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define GAMES_TEAMPLAY		2
 #define GAMES_TOURNEY		3
 #define GAMES_CTF			4
+#define GAMES_FREEZE		5	// Shafe - Trep - New Gametype
+#define GAMES_LASTMAN		6	// Shafe - Trep - New Gametype
 
 static const char *master_items[] = {
 	"Local",
@@ -90,6 +92,8 @@ static const char *servertype_items[] = {
 	"Team Deathmatch",
 	"Tournament",
 	"Capture the Flag",
+	"Freeze Tag",			// Shafe - Trep - New Gametype
+	"Last Man Standing",	// Shafe - Trep - New Gametype
 	0
 };
 
@@ -488,6 +492,16 @@ static void ArenaServers_UpdateMenu( void ) {
 
 		case GAMES_CTF:
 			if( servernodeptr->gametype != GT_CTF ) {
+				continue;
+			}
+			break;
+		case GAMES_FREEZE:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
+			if( servernodeptr->gametype != GT_TEAM ) {
+					continue;
+			}
+			break;
+		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
+			if( servernodeptr->gametype != GT_FFA ) {
 				continue;
 			}
 			break;
