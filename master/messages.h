@@ -28,7 +28,7 @@
 // ---------- Public functions ---------- //
 
 // Parse a packet to figure out what to do with it
-void HandleMessage (const char* msg, size_t length,
+void HandleMessage (const qbyte* msg, size_t length,
 					const struct sockaddr_in* address);
 
 

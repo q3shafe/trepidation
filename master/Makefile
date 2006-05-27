@@ -1,51 +1,43 @@
-BD_DEBUG=debug-$(PLATFORM)-$(ARCH)
-BD_RELEASE=release-$(PLATFORM)-$(ARCH)
+##### Win32 variables #####
 
-ifeq ($(PLATFORM),mingw32)
-  BINEXT=.exe
-  RELEASE_LDFLAGS=-lwsock32
-  DEBUG_LDFLAGS=-lwsock32
-  RM=del
-  MKDIR=mkdir
-else
-  BINEXT=
-  RELEASE_LDFLAGS=-static -ltdb
-  DEBUG_LDFLAGS=-static -ltdb
-  RM=rm -f
-  MKDIR=mkdir
-endif
+WIN32_EXE=dpmaster.exe
+WIN32_LDFLAGS=-lwsock32
+WIN32_RM=del
+
+##### Unix variables #####
+
+UNIX_EXE=dpmaster
+UNIX_LDFLAGS=
+UNIX_RM=rm -f
+
+##### Common variables #####
 
 CC=gcc
-RELEASE_CFLAGS=-Wall -O2
-DEBUG_CFLAGS=-g
-OBJECTS= \
-	$(BD)/master.o \
-	$(BD)/messages.o \
-	$(BD)/servers.o
+CFLAGS=-Wall -O2
+OBJECTS=dpmaster.o messages.o servers.o
 
-release: makedirs
-	$(MAKE) $(BD_RELEASE)/tremmaster BD=$(BD_RELEASE) \
-	CFLAGS="$(CFLAGS) $(RELEASE_CFLAGS)" LDFLAGS="$(LDFLAGS) $(RELEASE_LDFLAGS)"
+##### Commands #####
 
-debug: makedirs
-	$(MAKE) $(BD_DEBUG)/tremmaster BD=$(BD_DEBUG) \
-	CFLAGS="$(CFLAGS) $(DEBUG_CFLAGS)" LDFLAGS="$(LDFLAGS) $(DEBUG_LDFLAGS)"
+.PHONY: all mingw clean win32clean
 
-all: release debug
+all:
+	$(MAKE) EXE=$(UNIX_EXE) LDFLAGS="$(UNIX_LDFLAGS)" $(UNIX_EXE) 
 
-$(BD)/%.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+mingw:
+	@$(MAKE) EXE=$(WIN32_EXE) LDFLAGS="$(WIN32_LDFLAGS)" $(WIN32_EXE)
 
-$(BD)/tremmaster: $(OBJECTS)
+.c.o:
+	$(CC) $(CFLAGS) -c $*.c
+
+$(EXE): $(OBJECTS)
 	$(CC) -o $@ $(OBJECTS) $(LDFLAGS)
+	strip $@
 
 clean:
-	-$(RM) $(BD_DEBUG)/*
-	-$(RM) $(BD_RELEASE)/*
+	-$(UNIX_RM) $(WIN32_EXE)
+	-$(UNIX_RM) $(UNIX_EXE)
+	-$(UNIX_RM) *.o *~
 
-makedirs:
-	@if [ ! -d $(BD_RELEASE) ];then $(MKDIR) $(BD_RELEASE);fi
-	@if [ ! -d $(BD_DEBUG) ];then $(MKDIR) $(BD_DEBUG);fi
-
-.PHONY: all clean release debug makedirs
-
+win32clean:
+	-$(WIN32_RM) $(WIN32_EXE)
+	-$(WIN32_RM) *.o

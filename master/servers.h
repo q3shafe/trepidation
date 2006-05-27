@@ -38,6 +38,10 @@
 #define CHALLENGE_MIN_LENGTH 9
 #define CHALLENGE_MAX_LENGTH 12
 
+// Max number of characters for a gamename, including the '\0'
+#define GAMENAME_LENGTH 64
+
+
 // ---------- Types ---------- //
 
 // Address mapping
@@ -56,11 +60,12 @@ typedef struct server_s
 	struct server_s* next;
 	struct sockaddr_in address;
 	unsigned int protocol;
-	char challenge [CHALLENGE_MAX_LENGTH];
+	qbyte challenge [CHALLENGE_MAX_LENGTH];
 	unsigned short nbclients;
 	unsigned short maxclients;
 	time_t timeout;
 	time_t challenge_timeout;
+	qbyte gamename [GAMENAME_LENGTH];
 	const struct addrmap_s* addrmap;
 	qboolean active;
 } server_t;
