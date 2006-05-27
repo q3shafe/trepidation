@@ -45,7 +45,7 @@
 // ---------- Types ---------- //
 
 // A few basic types
-typedef enum {qfalse, qtrue} qboolean;
+typedef enum {false, true} qboolean;
 typedef unsigned char qbyte;
 
 // The various messages levels
@@ -84,9 +84,5 @@ extern char peer_address [128];
 // Print a message to screen, depending on its verbose level
 int MsgPrint (msg_level_t msg_level, const char* format, ...);
 
-//void RecordClientStat( const char *address, const char *version, const char *renderer );
-//void RecordGameStat( const char *address, const char *dataText );
 
 #endif  // #ifndef _COMMON_H_
-
-

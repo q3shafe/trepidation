@@ -1,7 +1,7 @@
 /*
 	messages.c
 
-	Message management for tremmaster
+	Message management for dpmaster
 
 	Copyright (C) 2004  Mathieu Olivier
 
@@ -35,32 +35,36 @@
 // Period of validity for a challenge string (in secondes)
 #define TIMEOUT_CHALLENGE 2
 
+// Gamename used for Q3A
+#define GAMENAME_Q3A "Quake3Arena"
+
 // Maximum size of a reponse packet
 #define MAX_PACKET_SIZE 1400
 
 
 // Types of messages (with samples):
 
-// "heartbeat Trepidation\n"
+// Q3: "heartbeat QuakeArena-1\x0A"
+// DP: "heartbeat DarkPlaces\x0A"
+// QFusion: "heartbeat QFusion\x0A"
 #define S2M_HEARTBEAT "heartbeat"
 
-// "gamestat <data>"
-#define S2M_GAMESTAT "gamestat"
-
-// "getinfo A_Challenge"
+// Q3 & DP & QFusion: "getinfo A_Challenge"
 #define M2S_GETINFO "getinfo"
 
-// "infoResponse\n\\pure\\1\\..."
+// Q3 & DP & QFusion: "infoResponse\x0A\\pure\\1\\..."
 #define S2M_INFORESPONSE "infoResponse\x0A"
 
-// "getservers 67 empty full"
+// Q3: "getservers 67 empty full"
+// DP: "getservers DarkPlaces-Quake 3 empty full"
+// DP: "getservers Transfusion 3 empty full"
+// QFusion: "getservers qfusion 39 empty full"
 #define C2M_GETSERVERS "getservers "
 
+// Q3 & DP & QFusion:
 // "getserversResponse\\...(6 bytes)...\\...(6 bytes)...\\EOT\0\0\0"
 #define M2C_GETSERVERSREPONSE "getserversResponse"
 
-#define C2M_GETMOTD "getmotd"
-#define M2C_MOTD    "motd "
 
 
 // ---------- Private functions ---------- //
@@ -175,7 +179,7 @@ Send a "getinfo" message to a server
 */
 static void SendGetInfo (server_t* server)
 {
-	char msg [64] = "\xFF\xFF\xFF\xFF" M2S_GETINFO " ";
+	qbyte msg [64] = "\xFF\xFF\xFF\xFF" M2S_GETINFO " ";
 
 	if (!server->challenge_timeout || server->challenge_timeout < crt_time)
 	{
@@ -189,7 +193,7 @@ static void SendGetInfo (server_t* server)
 			(const struct sockaddr*)&server->address,
 			sizeof (server->address));
 
-	MsgPrint (MSG_DEBUG, "%s <--- getinfo with challenge \"%s\"\n",
+	MsgPrint (MSG_DEBUG, "> %s <--- getinfo with challenge \"%s\"\n",
 			  peer_address, server->challenge);
 }
 
@@ -201,11 +205,12 @@ HandleGetServers
 Parse getservers requests and send the appropriate response
 ====================
 */
-static void HandleGetServers (const char* msg, const struct sockaddr_in* addr)
+static void HandleGetServers (const qbyte* msg, const struct sockaddr_in* addr)
 {
 	const char* packetheader = "\xFF\xFF\xFF\xFF" M2C_GETSERVERSREPONSE "\\";
 	const size_t headersize = strlen (packetheader);
-	char packet [MAX_PACKET_SIZE];
+	qbyte gamename [GAMENAME_LENGTH] = "";
+	qbyte packet [MAX_PACKET_SIZE];
 	size_t packetind;
 	server_t* sv;
 	unsigned int protocol;
@@ -213,14 +218,32 @@ static void HandleGetServers (const char* msg, const struct sockaddr_in* addr)
 	unsigned short sv_port;
 	qboolean no_empty;
 	qboolean no_full;
-	unsigned int numServers = 0;
 
 	// Check if there's a name before the protocol number
 	// In this case, the message comes from a DarkPlaces-compatible client
 	protocol = atoi (msg);
+	if (!protocol)
+	{
+		char *space;
 
-	MsgPrint (MSG_NORMAL, "%s ---> getservers( protocol version %d )\n",
-			peer_address, protocol );
+		strncpy (gamename, msg, sizeof (gamename) - 1);
+		gamename[sizeof (gamename) - 1] = '\0';
+		space = strchr (gamename, ' ');
+		if (space)
+			*space = '\0';
+		msg += strlen (gamename) + 1;
+
+		protocol = atoi (msg);
+	}
+	// Else, it comes from a Quake III Arena client
+	else
+	{
+		strncpy (gamename, GAMENAME_Q3A, sizeof (gamename) - 1);
+		gamename[sizeof (gamename) - 1] = '\0';
+	}
+
+	MsgPrint (MSG_NORMAL, "> %s ---> getservers (%s)\n", peer_address,
+			  gamename);
 
 	no_empty = (strstr (msg, "empty") == NULL);
 	no_full = (strstr (msg, "full") == NULL);
@@ -248,8 +271,8 @@ static void HandleGetServers (const char* msg, const struct sockaddr_in* addr)
 			sendto (sock, packet, packetind, 0, (const struct sockaddr*)addr,
 					sizeof (*addr));
 
-			MsgPrint (MSG_DEBUG, "%s <--- getserversResponse (%u servers)\n",
-						peer_address, numServers);
+			MsgPrint (MSG_DEBUG, "> %s <--- getserversResponse (%u servers)\n",
+						peer_address, (packetind - headersize - 1) / 7 - 1);
 
 			// If we're done
 			if (sv == NULL)
@@ -266,10 +289,10 @@ static void HandleGetServers (const char* msg, const struct sockaddr_in* addr)
 		if (max_msg_level >= MSG_DEBUG)
 		{
 			MsgPrint (MSG_DEBUG,
-					  "Comparing server: IP:\"%u.%u.%u.%u:%hu\", p:%u, c:%hu\n",
+					  "Comparing server: IP:\"%u.%u.%u.%u:%hu\", p:%u, c:%hu, g:\"%s\"\n",
 					  sv_addr >> 24, (sv_addr >> 16) & 0xFF,
 					  (sv_addr >>  8) & 0xFF, sv_addr & 0xFF,
-					  sv_port, sv->protocol, sv->nbclients );
+					  sv_port, sv->protocol, sv->nbclients, sv->gamename);
 
 			if (sv->protocol != protocol)
 				MsgPrint (MSG_DEBUG,
@@ -283,12 +306,17 @@ static void HandleGetServers (const char* msg, const struct sockaddr_in* addr)
 				MsgPrint (MSG_DEBUG,
 						  "Reject: nbclients is %hu/%hu && no_full\n",
 						  sv->nbclients, sv->maxclients);
+			if (gamename[0] && strcmp (gamename, sv->gamename))
+				MsgPrint (MSG_DEBUG,
+						  "Reject: gamename \"%s\" != requested \"%s\"\n",
+						  sv->gamename, gamename);
 		}
 
-		// Check protocol, options
+		// Check protocol, options, and gamename
 		if (sv->protocol != protocol ||
 			(sv->nbclients == 0 && no_empty) ||
-			(sv->nbclients == sv->maxclients && no_full))
+			(sv->nbclients == sv->maxclients && no_full) ||
+			(gamename[0] && strcmp (gamename, sv->gamename)))
 		{
 
 			// Skip it
@@ -325,12 +353,11 @@ static void HandleGetServers (const char* msg, const struct sockaddr_in* addr)
 		packet[packetind + 6] = '\\';
 
 		MsgPrint (MSG_DEBUG, "  - Sending server %u.%u.%u.%u:%hu\n",
-				  (qbyte)packet[packetind    ], (qbyte)packet[packetind + 1],
-				  (qbyte)packet[packetind + 2], (qbyte)packet[packetind + 3],
+				  packet[packetind    ], packet[packetind + 1],
+				  packet[packetind + 2], packet[packetind + 3],
 				  sv_port);
 
 		packetind += 7;
-		numServers++;
 	}
 }
 
@@ -342,25 +369,25 @@ HandleInfoResponse
 Parse infoResponse messages
 ====================
 */
-static void HandleInfoResponse (server_t* server, const char* msg)
+static void HandleInfoResponse (server_t* server, const qbyte* msg)
 {
 	char* value;
 	unsigned int new_protocol = 0, new_maxclients = 0;
 
-	MsgPrint (MSG_DEBUG, "%s ---> infoResponse\n", peer_address);
+	MsgPrint (MSG_DEBUG, "> %s ---> infoResponse\n", peer_address);
 
 	// Check the challenge
 	if (!server->challenge_timeout || server->challenge_timeout < crt_time)
 	{
 		MsgPrint (MSG_WARNING,
-				  "WARNING: infoResponse with obsolete challenge from %s\n",
+				  "> WARNING: infoResponse with obsolete challenge from %s\n",
 				  peer_address);
 		return;
 	}
 	value = SearchInfostring (msg, "challenge");
 	if (!value || strcmp (value, server->challenge))
 	{
-		MsgPrint (MSG_ERROR, "ERROR: invalid challenge from %s (%s)\n",
+		MsgPrint (MSG_ERROR, "> ERROR: invalid challenge from %s (%s)\n",
 				  peer_address, value);
 		return;
 	}
@@ -375,7 +402,7 @@ static void HandleInfoResponse (server_t* server, const char* msg)
 	if (!new_protocol || !new_maxclients)
 	{
 		MsgPrint (MSG_ERROR,
-				  "ERROR: invalid infoResponse from %s (protocol: %d, maxclients: %d)\n",
+				  "> ERROR: invalid infoResponse from %s (protocol: %d, maxclients: %d)\n",
 				  peer_address, new_protocol, new_maxclients);
 		return;
 	}
@@ -386,100 +413,26 @@ static void HandleInfoResponse (server_t* server, const char* msg)
 	value = SearchInfostring (msg, "clients");
 	if (value)
 		server->nbclients = atoi (value);
+	value = SearchInfostring (msg, "gamename");
+
+	// Q3A doesn't send a gamename, so we add it manually
+	if (value == NULL)
+		value = GAMENAME_Q3A;
+
+	// If the gamename has changed
+	if (strcmp (server->gamename, value))
+	{
+		MsgPrint (MSG_NORMAL,
+				  "> Server %s updated its gamename: \"%s\" -> \"%s\"\n",
+				  peer_address, server->gamename, value);
+
+		strncpy (server->gamename, value, sizeof (server->gamename) - 1);
+	}
 
 	// Set a new timeout
 	server->timeout = crt_time + TIMEOUT_INFORESPONSE;
 }
 
-
-#define CHALLENGE_KEY "challenge\\"
-#define MOTD_KEY      "motd\\"
-
-/*
-====================
-HandleGetMotd
-
-Parse getservers requests and send the appropriate response
-====================
-*/
-static void HandleGetMotd( const char* msg, const struct sockaddr_in* addr )
-{
-	const char		*packetheader = "\xFF\xFF\xFF\xFF" M2C_MOTD "\"";
-	const size_t	headersize = strlen (packetheader);
-	char					packet[ MAX_PACKET_SIZE ];
-	char					challenge[ MAX_PACKET_SIZE ];
-	const char		*motd = ""; //FIXME
-	size_t				packetind;
-	char					*value;
-  char          version[ 1024 ], renderer[ 1024 ];
-
-	MsgPrint( MSG_DEBUG, "%s ---> getmotd\n", peer_address );
-
-	value = SearchInfostring( msg, "challenge" );
-	if( !value )
-	{
-		MsgPrint( MSG_ERROR, "ERROR: invalid challenge from %s (%s)\n",
-					peer_address, value );
-		return;
-	}
-
-	strncpy( challenge, value, MAX_PACKET_SIZE );
-
-	value = SearchInfostring( msg, "renderer" );
-	if( value )
-	{
-    strncpy( renderer, value, 1024 );
-		MsgPrint( MSG_DEBUG, "%s is using renderer %s\n", peer_address, value );
-	}
-
-	value = SearchInfostring( msg, "version" );
-	if( value )
-	{
-    strncpy( version, value, 1024 );
-		MsgPrint( MSG_DEBUG, "%s is using version %s\n", peer_address, value );
-	}
-
-#ifndef _WIN32
-  //RecordClientStat( peer_address, version, renderer );
-#endif
-
-	// Initialize the packet contents with the header
-	packetind = headersize;
-	memcpy( packet, packetheader, headersize );
-
-	strncpy( &packet[ packetind ], CHALLENGE_KEY, MAX_PACKET_SIZE - packetind );
-	packetind += strlen( CHALLENGE_KEY );
-
-	strncpy( &packet[ packetind ], challenge, MAX_PACKET_SIZE - packetind );
-	packetind += strlen( challenge );
-	packet[ packetind++ ] = '\\';
-
-	strncpy( &packet[ packetind ], MOTD_KEY, MAX_PACKET_SIZE - packetind );
-	packetind += strlen( MOTD_KEY );
-
-	strncpy( &packet[ packetind ], motd, MAX_PACKET_SIZE - packetind );
-	packetind += strlen( motd );
-	packet[ packetind++ ] = '\"';
-	packet[ packetind++ ] = '\0';
-
-	MsgPrint( MSG_DEBUG, "%s <--- motd\n", peer_address );
-
-	// Send the packet to the client
-	sendto( sock, packet, packetind, 0, (const struct sockaddr*)addr,
-			sizeof( *addr ) );
-}
-
-/*
-====================
-HandleGameStat
-====================
-*/
-static void HandleGameStat( const char* msg, const struct sockaddr_in* addr )
-{
-#ifndef _WIN32
-//  RecordGameStat( peer_address, msg );
-#endif
-}
 
 // ---------- Public functions ---------- //
 
@@ -490,7 +443,7 @@ HandleMessage
 Parse a packet to figure out what to do with it
 ====================
 */
-void HandleMessage (const char* msg, size_t length,
+void HandleMessage (const qbyte* msg, size_t length,
 					const struct sockaddr_in* address)
 {
 	server_t* server;
@@ -502,15 +455,15 @@ void HandleMessage (const char* msg, size_t length,
 
 		// Extract the game id
 		sscanf (msg + strlen (S2M_HEARTBEAT) + 1, "%63s", gameId);
-		MsgPrint (MSG_DEBUG, "%s ---> heartbeat (%s)\n",
+		MsgPrint (MSG_DEBUG, "> %s ---> heartbeat (%s)\n",
 				  peer_address, gameId);
 
 		// Get the server in the list (add it to the list if necessary)
-		server = Sv_GetByAddr (address, qtrue);
+		server = Sv_GetByAddr (address, true);
 		if (server == NULL)
 			return;
 
-		server->active = qtrue;
+		server->active = true;
 
 		// If we haven't yet received any infoResponse from this server,
 		// we let it some more time to contact us. After that, only
@@ -525,7 +478,7 @@ void HandleMessage (const char* msg, size_t length,
 	// If it's an infoResponse message
 	else if (!strncmp (S2M_INFORESPONSE, msg, strlen (S2M_INFORESPONSE)))
 	{
-		server = Sv_GetByAddr (address, qfalse);
+		server = Sv_GetByAddr (address, false);
 		if (server == NULL)
 			return;
 
@@ -537,19 +490,4 @@ void HandleMessage (const char* msg, size_t length,
 	{
 		HandleGetServers (msg + strlen (C2M_GETSERVERS), address);
 	}
-
-	// If it's a getmotd request
-	else if (!strncmp (C2M_GETMOTD, msg, strlen (C2M_GETMOTD)))
-	{
-		HandleGetMotd (msg + strlen (C2M_GETMOTD), address);
-	}
-
-	// If it's a game statistic
-  else if( !strncmp( S2M_GAMESTAT, msg, strlen ( S2M_GAMESTAT ) ) )
-	{
-    HandleGameStat( msg + strlen( S2M_GAMESTAT ), address );
-  }
 }
-
-
-

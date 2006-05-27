@@ -86,12 +86,12 @@ static server_t* Sv_RemoveAndGetNextPtr (server_t* sv, server_t** prev)
 {
 	nb_servers--;
 	MsgPrint (MSG_NORMAL,
-	          "%s:%hu timed out; %u servers currently registered\n",
+	          "> %s:%hu timed out; %u servers currently registered\n",
 	          inet_ntoa (sv->address.sin_addr), ntohs (sv->address.sin_port),
 			  nb_servers);
 
 	// Mark this structure as "free"
-	sv->active = qfalse;
+	sv->active = false;
 
 	*prev = sv->next;
 	return sv->next;
@@ -116,9 +116,9 @@ static qboolean Sv_ResolveAddr (const char* name, struct sockaddr_in* addr)
 	if (namecpy == NULL)
 	{
 		MsgPrint (MSG_ERROR,
-				  "ERROR: can't allocate enough memory to resolve %s\n",
+				  "> ERROR: can't allocate enough memory to resolve %s\n",
 				  name);
-		return qfalse;
+		return false;
 	}
 
 	// Find the port in the address
@@ -130,16 +130,16 @@ static qboolean Sv_ResolveAddr (const char* name, struct sockaddr_in* addr)
 	host = gethostbyname (namecpy);
 	if (host == NULL)
 	{
-		MsgPrint (MSG_ERROR, "ERROR: can't resolve %s\n", namecpy);
+		MsgPrint (MSG_ERROR, "> ERROR: can't resolve %s\n", namecpy);
 		free (namecpy);
-		return qfalse;
+		return false;
 	}
 	if (host->h_addrtype != AF_INET)
 	{
-		MsgPrint (MSG_ERROR, "ERROR: %s is not an IPv4 address\n",
+		MsgPrint (MSG_ERROR, "> ERROR: %s is not an IPv4 address\n",
 				  namecpy);
 		free (namecpy);
-		return qfalse;
+		return false;
 	}
 
 	// Build the structure
@@ -150,11 +150,11 @@ static qboolean Sv_ResolveAddr (const char* name, struct sockaddr_in* addr)
 	if (port != NULL)
 		addr->sin_port = htons ((unsigned short)atoi (port));
 
-	MsgPrint (MSG_DEBUG, "\"%s\" resolved to %s:%hu\n",
+	MsgPrint (MSG_DEBUG, "> \"%s\" resolved to %s:%hu\n",
 			  name, inet_ntoa (addr->sin_addr), ntohs (addr->sin_port));
 
 	free (namecpy);
-	return qtrue;
+	return true;
 }
 
 
@@ -182,7 +182,7 @@ static void Sv_InsertAddrmapIntoList (addrmap_t* new_map)
 			if (addrmap->from.sin_port == new_map->from.sin_port)
 			{
 				MsgPrint (MSG_WARNING,
-						  "WARNING: Address %s:%hu has several mappings\n",
+						  "> WARNING: Address %s:%hu has several mappings\n",
 						  inet_ntoa (new_map->from.sin_addr),
 						  ntohs (new_map->from.sin_port));
 
@@ -200,7 +200,7 @@ static void Sv_InsertAddrmapIntoList (addrmap_t* new_map)
 	new_map->next = *prev;
 	*prev = new_map;
 
-	MsgPrint (MSG_NORMAL, "Address \"%s\" mapped to \"%s\" (%s:%hu)\n",
+	MsgPrint (MSG_NORMAL, "> Address \"%s\" mapped to \"%s\" (%s:%hu)\n",
 			  new_map->from_string, new_map->to_string,
 			  inet_ntoa (new_map->to.sin_addr), ntohs (new_map->to.sin_port));
 }
@@ -258,26 +258,26 @@ static qboolean Sv_ResolveAddrmap (addrmap_t* addrmap)
 	// Resolve the addresses
 	if (!Sv_ResolveAddr (addrmap->from_string, &addrmap->from) ||
 		!Sv_ResolveAddr (addrmap->to_string, &addrmap->to))
-		return qfalse;
+		return false;
 
 	// 0.0.0.0 addresses are forbidden
 	if (addrmap->from.sin_addr.s_addr == 0 ||
 		addrmap->to.sin_addr.s_addr == 0)
 	{
 		MsgPrint (MSG_ERROR,
-				  "ERROR: Mapping from or to 0.0.0.0 is forbidden\n");
-		return qfalse;
+				  "> ERROR: Mapping from or to 0.0.0.0 is forbidden\n");
+		return false;
 	}
 
 	// Do NOT allow mapping to loopback addresses
 	if ((ntohl (addrmap->to.sin_addr.s_addr) >> 24) == 127)
 	{
 		MsgPrint (MSG_ERROR,
-				  "ERROR: Mapping to a loopback address is forbidden\n");
-		return qfalse;
+				  "> ERROR: Mapping to a loopback address is forbidden\n");
+		return false;
 	}
 
-	return qtrue;
+	return true;
 }
 
 
@@ -285,7 +285,7 @@ static qboolean Sv_ResolveAddrmap (addrmap_t* addrmap)
 ====================
 Sv_IsActive
 
-Return qtrue if a server is active.
+Return true if a server is active.
 Test if the server has timed out and remove it if it's the case.
 ====================
 */
@@ -294,7 +294,7 @@ static qboolean Sv_IsActive (server_t* server)
 
 	// If the entry isn't even used
 	if (! server->active)
-		return qfalse;
+		return false;
 
 	// If the server has timed out
 	if (server->timeout < crt_time)
@@ -313,10 +313,10 @@ static qboolean Sv_IsActive (server_t* server)
 		}
 
 		Sv_RemoveAndGetNextPtr (sv, prev);
-		return qfalse;
+		return false;
 	}
 
-	return qtrue;
+	return true;
 }
 
 
@@ -333,14 +333,14 @@ qboolean Sv_SetHashSize (unsigned int size)
 {
 	// Too late?
 	if (hash_table != NULL)
-		return qfalse;
+		return false;
 
 	// Too big?
 	if (size > MAX_HASH_SIZE)
-		return qfalse;
+		return false;
 
 	hash_table_size = 1 << size;
-	return qtrue;
+	return true;
 }
 
 
@@ -355,10 +355,10 @@ qboolean Sv_SetMaxNbServers (unsigned int nb)
 {
 	// Too late?
 	if (servers != NULL)
-		return qfalse;
+		return false;
 
 	max_nb_servers = nb;
-	return qtrue;
+	return true;
 }
 
 
@@ -379,29 +379,29 @@ qboolean Sv_Init (void)
 	if (!servers)
 	{
 		MsgPrint (MSG_ERROR,
-				  "ERROR: can't allocate the servers array (%s)\n",
+				  "> ERROR: can't allocate the servers array (%s)\n",
 				  strerror (errno));
-		return qfalse;
+		return false;
 	}
 	last_alloc = max_nb_servers - 1;
 	memset (servers, 0, array_size);
-	MsgPrint (MSG_NORMAL, "%u server records allocated\n", max_nb_servers);
+	MsgPrint (MSG_NORMAL, "> %u server records allocated\n", max_nb_servers);
 
 	// Allocate "hash_table" and clean it
 	array_size = hash_table_size * sizeof (hash_table[0]);
 	hash_table = malloc (array_size);
 	if (!hash_table)
 	{
-		MsgPrint (MSG_ERROR, "ERROR: can't allocate the hash table (%s)\n",
+		MsgPrint (MSG_ERROR, "> ERROR: can't allocate the hash table (%s)\n",
 				  strerror (errno));
 		free (servers);
-		return qfalse;
+		return false;
 	}
 	memset (hash_table, 0, array_size);
 	MsgPrint (MSG_NORMAL,
-			  "Hash table allocated (%u entries)\n", hash_table_size);
+			  "> Hash table allocated (%u entries)\n", hash_table_size);
 
-	return qtrue;
+	return true;
 }
 
 
@@ -423,7 +423,7 @@ server_t* Sv_GetByAddr (const struct sockaddr_in* address, qboolean add_it)
 	if ((ntohl (address->sin_addr.s_addr) >> 24) == 127 && addrmap == NULL)
 	{
 		MsgPrint (MSG_WARNING,
-				  "WARNING: server %s isn't allowed (loopback address)\n",
+				  "> WARNING: server %s isn't allowed (loopback address)\n",
 				  peer_address);
 		return NULL;
 	}
@@ -488,7 +488,7 @@ server_t* Sv_GetByAddr (const struct sockaddr_in* address, qboolean add_it)
 	nb_servers++;
 
 	MsgPrint (MSG_NORMAL,
-			  "New server added: %s; %u servers are currently registered\n",
+			  "> New server added: %s; %u servers are currently registered\n",
 			  peer_address, nb_servers);
 	MsgPrint (MSG_DEBUG,
 			  "  - index: %u\n"
@@ -584,8 +584,8 @@ qboolean Sv_AddAddressMapping (const char* mapping)
 	if (map_string == NULL)
 	{
 		MsgPrint (MSG_ERROR,
-				  "ERROR: can't allocate address mapping string\n");
-		return qfalse;
+				  "> ERROR: can't allocate address mapping string\n");
+		return false;
 	}
 
 	// Find the '='
@@ -593,9 +593,9 @@ qboolean Sv_AddAddressMapping (const char* mapping)
 	if (to_ip == NULL)
 	{
 		MsgPrint (MSG_ERROR,
-				  "ERROR: invalid syntax in address mapping string\n");
+				  "> ERROR: invalid syntax in address mapping string\n");
 		free (map_string);
-		return qfalse;
+		return false;
 	}
 	*to_ip++ = '\0';
 
@@ -604,9 +604,9 @@ qboolean Sv_AddAddressMapping (const char* mapping)
 	if (addrmap == NULL)
 	{
 		MsgPrint (MSG_ERROR,
-				  "ERROR: can't allocate address mapping structure\n");
+				  "> ERROR: can't allocate address mapping structure\n");
 		free (map_string);
-		return qfalse;
+		return false;
 	}
 	memset (addrmap, 0, sizeof (*addrmap));
 	addrmap->from_string = strdup (map_string);
@@ -614,18 +614,18 @@ qboolean Sv_AddAddressMapping (const char* mapping)
 	if (addrmap->from_string == NULL || addrmap->to_string == NULL)
 	{
 		MsgPrint (MSG_ERROR,
-				  "ERROR: can't allocate address mapping strings\n");
+				  "> ERROR: can't allocate address mapping strings\n");
 		free (addrmap->to_string);
 		free (addrmap->from_string);
 		free (map_string);
-		return qfalse;
+		return false;
 	}
 
 	// Add it on top of "addrmaps"
 	addrmap->next = addrmaps;
 	addrmaps = addrmap;
 
-	return qtrue;
+	return true;
 }
 
 
@@ -640,7 +640,7 @@ qboolean Sv_ResolveAddressMappings (void)
 {
 	addrmap_t* unresolved = addrmaps;
 	addrmap_t* addrmap;
-	qboolean succeeded = qtrue;
+	qboolean succeeded = true;
 
 	addrmaps = NULL;
 
@@ -656,7 +656,7 @@ qboolean Sv_ResolveAddressMappings (void)
 			free (addrmap->from_string);
 			free (addrmap->to_string);
 			free (addrmap);
-			succeeded = qfalse;
+			succeeded = false;
 		}
 		else
 			Sv_InsertAddrmapIntoList (addrmap);
