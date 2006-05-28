@@ -1456,6 +1456,25 @@ static void PM_WaterEvents( void ) {		// FIXME?
 }
 
 
+// Shafe - Trep - Alt Ammo Usage 
+// alt ammo usage
+int		altAmmoUsage[WP_NUM_WEAPONS] =
+{
+	0,				//WP_NONE,
+	1,				//GAUNTLET,				
+	1,				//machine gun
+	1,				//shotgun
+	3,				//grenade launcher
+	3,				//rocket launchet
+	1,				//flame thrower
+	3,				//rail gun
+	2,				//plasma 
+	1,				//bfg
+	20,				//hmmmm... dunno what this one is
+
+
+};
+
 /*
 ===============
 PM_BeginWeaponChange
@@ -1532,6 +1551,9 @@ Generates weapon events and modifes the weapon counter
 */
 static void PM_Weapon( void ) {
 	int		addTime;
+	qboolean	altfired = qfalse;
+
+
 
 	// don't allow attack until all buttons are up
 	if ( pm->ps->pm_flags & PMF_RESPAWNED ) {
@@ -1606,6 +1628,7 @@ static void PM_Weapon( void ) {
 	if ( ! ((pm->cmd.buttons & BUTTON_ATTACK) ||( pm->cmd.buttons & 32)) ) {
 		pm->ps->weaponTime = 0;
 		pm->ps->weaponstate = WEAPON_READY;
+		altfired = qtrue;
 		return;
 	}
 
@@ -1632,8 +1655,19 @@ static void PM_Weapon( void ) {
 	}
 
 	// take an ammo away if not infinite
-	if ( pm->ps->ammo[ pm->ps->weapon ] != -1 ) {
-		pm->ps->ammo[ pm->ps->weapon ]--;
+	// Shafe - Trep - Alt Fire Ammo Mgt
+	if (altfired == qtrue) 
+	{
+			if ( pm->ps->ammo[ pm->ps->weapon ] != -1 ) 
+			{
+				pm->ps->ammo[pm->ps->weapon] -= altAmmoUsage[pm->ps->weapon];
+			}
+	} 
+	else 
+	{
+		if ( pm->ps->ammo[ pm->ps->weapon ] != -1 ) {
+			pm->ps->ammo[ pm->ps->weapon ]--;
+		}
 	}
 
 	// Shafe - Trep Instagib  Cant get this to work - But This would be the correct way to go about it
@@ -1656,7 +1690,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 400; 
 		break; 
 	case WP_LIGHTNING: 
-		addTime = 425;  // Shafe - Trep - Flame Thrower was 50 -- Primary Fire Shoots Flame Balls
+		addTime = 400;  // Shafe - Trep - Flame Thrower was 50 -- Primary Fire Shoots Flame Balls
 		break; 
 	case WP_SHOTGUN: 
 		addTime = 1000; 

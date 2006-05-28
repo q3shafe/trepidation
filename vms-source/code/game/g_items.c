@@ -784,13 +784,14 @@ void ClearRegisteredItems( void ) {
 	RegisterItem( BG_FindItemForWeapon( WP_MACHINEGUN ) );
 	RegisterItem( BG_FindItemForWeapon( WP_GAUNTLET ) );
 
-	// Shafe - Trep - Pre-register the Rocket Launcher And Railgun For Instagib
+	// Shafe - Trep - Pre-register Railgun For Instagib
 	if (g_instagib.integer == 1)
 	{
-		RegisterItem( BG_FindItemForWeapon( WP_ROCKET_LAUNCHER ) );
 		RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
 	} // End Shafe
 
+	// Let's Always Register The Rocket Launcher 
+	RegisterItem( BG_FindItemForWeapon( WP_ROCKET_LAUNCHER ) );
 
 #ifdef MISSIONPACK
 	if( g_gametype.integer == GT_HARVESTER ) {
