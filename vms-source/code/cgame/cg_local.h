@@ -1033,6 +1033,7 @@ typedef struct {
 
 	qboolean  newHud;
 
+	
 	//
 	// locally derived information from gamestate
 	//

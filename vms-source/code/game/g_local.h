@@ -462,6 +462,8 @@ typedef struct {
 	// actual time this server frame started
 	int			frameStartTime;
 //unlagged - backward reconciliation #4
+
+
 } level_locals_t;
 
 
@@ -849,6 +851,7 @@ extern	vmCvar_t	sv_fps;
 
 // Shafe - Trep
 extern	vmCvar_t	g_instagib;
+extern	vmCvar_t	g_MultiJump;
 
 void	trap_Printf( const char *fmt );
 void	trap_Error( const char *fmt );
@@ -1055,4 +1058,6 @@ void	trap_SnapVector( float *v );
 
 gentity_t *findradius (gentity_t *from, vec3_t org, float rad); // Shafe - Trep - FindRadius Function
 qboolean visible( gentity_t *ent1, gentity_t *ent2 ); // Shafe - Trep Visible Function
+
+
 

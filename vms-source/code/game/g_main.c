@@ -84,6 +84,7 @@ vmCvar_t	sv_fps;
 
 //Shafe - Trep
 vmCvar_t	g_instagib;
+vmCvar_t	g_MultiJump;
 
 // bk001129 - made static to avoid aliasing
 static cvarTable_t		gameCvarTable[] = {
@@ -178,8 +179,9 @@ static cvarTable_t		gameCvarTable[] = {
 //unlagged - server options
 
 	{ &g_rankings, "g_rankings", "0", 0, 0, qfalse},
-// Shafe - Trep - Instagib
-	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  }
+// Shafe - Trep - Cvars
+	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },
+	{ &g_MultiJump, "g_MultiJump", "0", CVAR_ARCHIVE, 0, qfalse }
 	
 };
 

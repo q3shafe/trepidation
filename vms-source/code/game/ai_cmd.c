@@ -1500,9 +1500,9 @@ void BotMatch_WhereAreYou(bot_state_t *bs, bot_match_t *match) {
 	char *nearbyitems[] = {
 		"Shotgun",
 		"Grenade Launcher",
-		"Rocket Launcher",
+		"Singularity Cannon",
 		"Plasmagun",
-		"Railgun",
+		"M42 Gauss Rifle",
 		"Flame Thrower",
 		"BFG10K",
 		"Quad Damage",

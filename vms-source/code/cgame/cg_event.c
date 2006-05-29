@@ -277,12 +277,12 @@ static void CG_Obituary( entityState_t *ent ) {
 			message2 = "'s shrapnel";
 			break;
 		case MOD_ROCKET:
-			message = "ate";
-			message2 = "'s rocket";
+			message = "was crushed by";
+			message2 = "'s singularity";
 			break;
 		case MOD_ROCKET_SPLASH:
 			message = "almost dodged";
-			message2 = "'s rocket";
+			message2 = "'s singularity";
 			break;
 		case MOD_PLASMA:
 			message = "was melted by";
@@ -293,7 +293,7 @@ static void CG_Obituary( entityState_t *ent ) {
 			message2 = "'s plasmagun";
 			break;
 		case MOD_RAILGUN:
-			message = "was railed by";
+			message = "was degaussed by"; // Shafe - Trep - Reworded
 			break;
 		case MOD_LIGHTNING:
 			message = "was burnt by";
