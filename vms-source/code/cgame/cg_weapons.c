@@ -1399,7 +1399,7 @@ void CG_AddViewWeapon( playerState_t *ps ) {
 
 	// allow the gun to be completely removed
 	if ( !cg_drawGun.integer ) {
-		vec3_t		origin;
+	//	vec3_t		origin;
 
 		if ( cg.predictedPlayerState.eFlags & EF_FIRING ) {
 			// special hack for lightning gun...

@@ -7,6 +7,7 @@
 #include "bg_public.h"
 #include "bg_local.h"
 
+
 pmove_t		*pm;
 pml_t		pml;
 
@@ -30,6 +31,8 @@ float	pm_flightfriction = 3.0f;
 float	pm_spectatorfriction = 5.0f;
 
 int		c_pmove = 0;
+
+
 
 
 /*
@@ -374,6 +377,8 @@ static qboolean PM_CheckJump( void ) {
 	pm->ps->groundEntityNum = ENTITYNUM_NONE;
 	pm->ps->velocity[2] = JUMP_VELOCITY;
 	PM_AddEvent( EV_JUMP );
+
+//	pm->ps->MultiJumps++; // Shafe - Trep - Multijumping
 
 	if ( pm->cmd.forwardmove >= 0 ) {
 		PM_ForceLegsAnim( LEGS_JUMP );
@@ -1120,6 +1125,28 @@ static void PM_GroundTrace( void ) {
 		PM_GroundTraceMissed();
 		pml.groundPlane = qfalse;
 		pml.walking = qfalse;
+		
+		// Shafe - Holy Hell  How do I make this read g_multijump? ???
+		/*
+		if (g_MultiJump.integer != 0)
+		{
+			
+			// Ignore and reset multijumps if they have the jetpack
+			if (pm->ps->powerups[PW_FLIGHT]) 
+			{
+				pm->ps->MultiJumps = 0;
+			} 
+			else
+			{
+
+				// Go ahead and do the multijump
+				if (pm->ps->MultiJumps < g_MultiJump.integer)
+				{
+					PM_CheckJump ();
+				}
+			}
+		} */
+		
 		return;
 	}
 
@@ -1186,9 +1213,10 @@ static void PM_GroundTrace( void ) {
 	pm->ps->groundEntityNum = trace.entityNum;
 
 	// don't reset the z velocity for slopes
-//	pm->ps->velocity[2] = 0;
+	// pm->ps->velocity[2] = 0;
 
 	PM_AddTouchEnt( trace.entityNum );
+//	pm->ps->MultiJumps = 0; // Shafe - Trep - Multijumping
 }
 
 
@@ -1458,6 +1486,7 @@ static void PM_WaterEvents( void ) {		// FIXME?
 
 // Shafe - Trep - Alt Ammo Usage 
 // alt ammo usage
+
 int		altAmmoUsage[WP_NUM_WEAPONS] =
 {
 	0,				//WP_NONE,
@@ -1654,21 +1683,7 @@ static void PM_Weapon( void ) {
 		return;
 	}
 
-	// take an ammo away if not infinite
-	// Shafe - Trep - Alt Fire Ammo Mgt
-	if (altfired == qtrue) 
-	{
-			if ( pm->ps->ammo[ pm->ps->weapon ] != -1 ) 
-			{
-				pm->ps->ammo[pm->ps->weapon] -= altAmmoUsage[pm->ps->weapon];
-			}
-	} 
-	else 
-	{
-		if ( pm->ps->ammo[ pm->ps->weapon ] != -1 ) {
-			pm->ps->ammo[ pm->ps->weapon ]--;
-		}
-	}
+
 
 	// Shafe - Trep Instagib  Cant get this to work - But This would be the correct way to go about it
 	//if (g_instagib.integer == 1) {  
@@ -1724,6 +1739,7 @@ if (pm->cmd.buttons & 1) {
 
   // New Event 
   PM_AddEvent( EV_FIRE_WEAPON2 ); 
+  altfired = qtrue;
 
   switch( pm->ps->weapon ) { 
   default: 
@@ -1761,6 +1777,23 @@ if (pm->cmd.buttons & 1) {
 	}
  }
 
+		// take an ammo away if not infinite
+	// Shafe - Trep - Alt Fire Ammo Mgt
+	
+	if (altfired == qtrue) 
+	{
+			if ( pm->ps->ammo[ pm->ps->weapon ] != -1 ) 
+			{
+				pm->ps->ammo[pm->ps->weapon] -= altAmmoUsage[pm->ps->weapon];
+			}
+	} 
+	else 
+	{
+		if ( pm->ps->ammo[ pm->ps->weapon ] != -1 ) {
+			pm->ps->ammo[ pm->ps->weapon ]--;
+		}
+	}
+ 
 	if ( pm->ps->powerups[PW_HASTE] ) {
 		addTime /= 1.3;
 	}

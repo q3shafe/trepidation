@@ -5,6 +5,23 @@
 #include "q_shared.h"
 #include "bg_public.h"
 
+// Shafe - Trep - Max Ammo Mgt
+int Max_Ammo[WP_NUM_WEAPONS] =
+{
+	0,					// WP_NONE,
+	50,					// Gauntlet
+	200,				// Machine Gun,
+	60,					// Shotgun,			
+	40,					// Grenades,	
+	30,					// Rocket,			
+	400,				// Flame Thrower / Lignting,
+	50,					// Rail Gun/Guass Rifle,
+	120,				// Plasma,	
+	10,					// BFG,		
+	200					// Dunno,
+
+};
+
 /*QUAKED item_***** ( 0 0 0 ) (-16 -16 -16) (16 16 16) suspended
 DO NOT USE THIS CLASS, IT JUST HOLDS GENERAL INFORMATION.
 The suspended flag will allow items to hang in the air, otherwise they are dropped to the next surface.
@@ -239,7 +256,7 @@ gitem_t	bg_itemlist[] =
         { "models/weapons2/rocketl/rocketl.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_rocket",
-/* pickup */	"Rocket Launcher",
+/* pickup */	"Singularity Cannon",
 		10,
 		IT_WEAPON,
 		WP_ROCKET_LAUNCHER,
@@ -256,7 +273,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},  // models/weapons2/lightning/lightning.md3  - Shafe - Trep - Flame Thrower
 /* icon */		"icons/iconw_flame",  // icons/iconw_lightning
 /* pickup */	"Flame Thrower", // Lightning Gun
-		120,
+		300,
 		IT_WEAPON,
 		WP_LIGHTNING,
 /* precache */ "",
@@ -271,7 +288,7 @@ gitem_t	bg_itemlist[] =
         { "models/weapons2/railgun/railgun.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_railgun",
-/* pickup */	"Railgun",
+/* pickup */	"M42 Gauss Rifle",
 		10,
 		IT_WEAPON,
 		WP_RAILGUN,
@@ -406,7 +423,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/icona_lightning",
 /* pickup */	"Flame Ammo",  // Lightning  - Shafe - Trep - Flame Thrower
-		75,
+		25,
 		IT_AMMO,
 		WP_LIGHTNING,
 /* precache */ "",
@@ -421,7 +438,7 @@ gitem_t	bg_itemlist[] =
         { "models/powerups/ammo/rocketam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_rocket",
-/* pickup */	"Rockets",
+/* pickup */	"Singularity Reactor Rod",
 		5,
 		IT_AMMO,
 		WP_ROCKET_LAUNCHER,
@@ -437,7 +454,7 @@ gitem_t	bg_itemlist[] =
         { "models/powerups/ammo/railgunam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_railgun",
-/* pickup */	"Slugs",
+/* pickup */	"Gauss Cells",
 		10,
 		IT_AMMO,
 		WP_RAILGUN,
@@ -1035,7 +1052,9 @@ qboolean BG_CanItemBeGrabbed( int gametype, const entityState_t *ent, const play
 		return qtrue;	// weapons are always picked up
 
 	case IT_AMMO:
-		if ( ps->ammo[ item->giTag ] >= 200 ) {
+
+		//if ( ps->ammo[ item->giTag ] >= 200 ) {
+		if ( ps->ammo[ item->giTag ] >= Max_Ammo[ item->giTag ]) { // Shafe - Trep
 			return qfalse;		// can't hold any more
 		}
 		return qtrue;
@@ -1584,3 +1603,5 @@ void BG_PlayerStateToEntityStateExtraPolate( playerState_t *ps, entityState_t *s
 	s->loopSound = ps->loopSound;
 	s->generic1 = ps->generic1;
 }
+
+
