@@ -781,7 +781,8 @@ static float CG_DrawFPS( float y ) {
 		s = va( "%ifps", fps );
 		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 
-		CG_DrawBigString( 635 - w, y + 2, s, 1.0F);
+		//CG_DrawBigString( 50 - w, y + 2, s, 1.0F); // Shafe -  Drawfps 635
+		CG_DrawSmallString( 635 - w, y + 2, s, 1.0F);
 	}
 
 	return y + BIGCHAR_HEIGHT + 4;
@@ -1685,7 +1686,7 @@ static void CG_DrawLagometer( void ) {
 	y = 480 - 144;
 #else
 	x = 640 - 48;
-	y = 480 - 48;
+	y = 48;//480 - 48; // Shafe - Changed
 #endif
 
 	trap_R_SetColor( NULL );
@@ -2530,6 +2531,7 @@ static void CG_Draw2D( void ) {
 			//CG_DrawPersistantPowerup();
 #endif
 			CG_DrawReward();
+			CG_DrawScanner();  // Shafe - Trep - Radar
 		}
     
 		if ( cgs.gametype >= GT_TEAM ) {

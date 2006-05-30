@@ -1087,6 +1087,13 @@ static void CG_RegisterGraphics( void ) {
 	cgs.media.wakeMarkShader = trap_R_RegisterShader( "wake" );
 	cgs.media.bloodMarkShader = trap_R_RegisterShader( "bloodMark" );
 
+	// Shafe - Trep - Radar
+	cgs.media.scannerShader = trap_R_RegisterShader("Scanner");
+    cgs.media.scannerBlipShader = trap_R_RegisterShader("ScannerBlip");
+    cgs.media.scannerBlipUpShader = trap_R_RegisterShader("ScannerBlipUp");
+    cgs.media.scannerBlipDownShader = trap_R_RegisterShader("ScannerBlipDown");
+	// Shafe - Trep - End Radar
+
 	// register the inline models
 	cgs.numInlineModels = trap_CM_NumInlineModels();
 	for ( i = 1 ; i < cgs.numInlineModels ; i++ ) {

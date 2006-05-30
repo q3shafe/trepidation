@@ -646,6 +646,8 @@ typedef struct {
 	playerState_t savedPmoveStates[NUM_SAVED_STATES];
 	int			stateHead, stateTail;
 //unlagged - optimized prediction
+
+	int			scanner; // Shafe - Trep - Radar
 } cg_t;
 
 
@@ -982,6 +984,13 @@ typedef struct {
 	sfxHandle_t	wstbimpdSound;
 	sfxHandle_t	wstbactvSound;
 
+	// Shafe - Trep - 4 Lines Radar
+	qhandle_t scannerShader;
+	qhandle_t scannerBlipShader;
+    qhandle_t scannerBlipUpShader;
+    qhandle_t scannerBlipDownShader;
+	// End Shafe
+
 } cgMedia_t;
 
 
@@ -1211,6 +1220,10 @@ extern	vmCvar_t		cg_latentSnaps;
 extern	vmCvar_t		cg_latentCmds;
 extern	vmCvar_t		cg_plOut;
 //unlagged - client options
+
+// Shafe - Trep - Radar
+extern playerpos_t		cg_playerOrigins[MAX_CLIENTS];
+
 
 //unlagged - cg_unlagged.c
 void CG_PredictWeaponEffects( centity_t *cent );
@@ -1703,6 +1716,10 @@ void	CG_ParticleMisc (qhandle_t pshader, vec3_t origin, int size, int duration, 
 void	CG_ParticleExplosion (char *animStr, vec3_t origin, vec3_t vel, int duration, int sizeStart, int sizeEnd);
 extern qboolean		initparticles;
 int CG_NewParticleArea ( int num );
+// Shafe - Trep - Radar
+void	CG_ScannerOn_f( void ); // Shafe - Trep - Radar
+void	CG_ScannerOff_f( void ); // Shafe - Trep - Radar
+void	CG_DrawScanner( void ); // Shafe - Trep - Radar
 
 
 

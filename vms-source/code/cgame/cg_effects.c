@@ -735,6 +735,9 @@ void CG_GibPlayerHeadshot( vec3_t playerOrigin ) {
 	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 	CG_LaunchGib( origin, velocity, cgs.media.gibForearm );
 
+	
+	
+
 }
 
 
