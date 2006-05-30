@@ -10,6 +10,9 @@
 #endif
 //==========================================================================
 
+
+
+
 /*
 ===================
 CG_PlaceString
@@ -229,6 +232,8 @@ static void CG_Obituary( entityState_t *ent ) {
 			} else {
 				s = va("Headshot!\n\nYou fragged %s", targetName );
 			}	
+			
+	
 		}
 #ifdef MISSIONPACK
 		if (!(cg_singlePlayerActive.integer && cg_cameraOrbit.integer)) {
@@ -1283,4 +1288,6 @@ void CG_CheckEvents( centity_t *cent ) {
 
 	CG_EntityEvent( cent, cent->lerpOrigin );
 }
+
+
 
