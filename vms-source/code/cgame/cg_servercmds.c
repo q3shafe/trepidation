@@ -7,6 +7,10 @@
 #include "cg_local.h"
 #include "../../ui/menudef.h" // bk001205 - for Q3_ui as well
 
+
+playerpos_t		cg_playerOrigins[MAX_CLIENTS];  // Shafe - Trep - Radar
+
+
 typedef struct {
 	const char *order;
 	int taskNum;
@@ -963,6 +967,12 @@ Cmd_Argc() / Cmd_Argv()
 static void CG_ServerCommand( void ) {
 	const char	*cmd;
 	char		text[MAX_SAY_TEXT];
+	
+	// Shafe - Trep Radar
+	int				count;
+    int				i;
+    const char		*ptr;
+	// End Shafe
 
 	cmd = CG_Argv(0);
 
@@ -1061,6 +1071,49 @@ static void CG_ServerCommand( void ) {
 		cg.levelShot = qtrue;
 		return;
 	}
+
+	// Shafe - Trep - Radar
+    if ( !strcmp( cmd, "playerpos" ) ) 
+    {
+        // -- expand the comma delimited string into the player positions --
+
+        //clear out old list of positions
+        memset(cg_playerOrigins, kENTRY_EOL, sizeof(cg_playerOrigins));
+
+        //get the number of entries in the list
+        count = atof(CG_Argv(1));
+        for(i=0;i<count;i++)
+        {
+            //set the string pointer to the correct set of parameters
+            ptr = CG_Argv(i+2);
+
+            //read in the first number
+            cg_playerOrigins[i].pos[0] = atof(ptr);
+
+            //move the ptr on until we come to a comma
+            ptr = strchr(ptr, ',');
+
+            //skip over the comma
+            ptr++;
+
+            //read in the next number
+            cg_playerOrigins[i].pos[1] = atof(ptr);
+
+            //move the ptr on until we come to a comma
+            ptr = strchr(ptr, ',');
+
+            //skip over the comma
+            ptr++;
+
+            //read in the final number
+            cg_playerOrigins[i].pos[2] = atof(ptr);
+
+            //mark the entry as valid
+            cg_playerOrigins[i].valid = kENTRY_VALID;
+        }
+        return;
+    }
+	// End Shafe
 
 	CG_Printf( "Unknown client game command: %s\n", cmd );
 }

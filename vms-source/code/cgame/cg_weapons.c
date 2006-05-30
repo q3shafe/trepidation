@@ -2365,3 +2365,26 @@ void CG_Bullet( vec3_t end, int sourceEntityNum, vec3_t normal, qboolean flesh, 
 	}
 
 }
+
+// Shafe - Trep Radar Functions Below
+    /*
+    =====================
+    CG_ScannerOn_f - turns on the scanner
+    =====================
+    */
+    void CG_ScannerOn_f( void )
+    {
+        cg.scanner = 1;
+    }
+
+    /*
+    =====================
+    CG_ScannerOff_f - turns off the scanner
+    =====================
+    */
+    void CG_ScannerOff_f( void )
+    {
+        cg.scanner = 0;
+    } 
+    // Haggis
+

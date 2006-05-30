@@ -56,6 +56,8 @@ set cc=lcc -DQ3_VM -DCGAME -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\ga
 @if errorlevel 1 goto quit
 %cc% ../cg_unlagged.c
 @if errorlevel 1 goto quit
+%cc% ../cg_scanner.c
+@if errorlevel 1 goto quit
 
 
 

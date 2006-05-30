@@ -1687,3 +1687,24 @@ void ClientCommand( int clientNum ) {
 	else
 		trap_SendServerCommand( clientNum, va("print \"unknown cmd %s\n\"", cmd ) );
 }
+
+/*
+============================
+G_SendCommandToClient
+Send the given command to the specified (or all) clients
+Shafe - Trep - This is for the Radar
+============================
+*/
+void G_SendCommandToClient (gentity_t *to, char *cmd)
+{
+	if (to == NULL) 
+	{
+		// send to all clients 
+	trap_SendServerCommand ( -1, cmd );
+	} else {
+    // send to specified client
+    trap_SendServerCommand ( to-g_entities, cmd);
+	}
+}
+
+

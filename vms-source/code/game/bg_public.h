@@ -537,6 +537,8 @@ typedef enum {
 
 // Time between location updates
 #define TEAM_LOCATION_UPDATE_TIME		1000
+    
+#define PLAYER_LOCATION_UPDATE_TIME		10000  // Shafe - Trep - Radar
 
 // How many players on the overlay
 #define TEAM_MAXOVERLAY		32
