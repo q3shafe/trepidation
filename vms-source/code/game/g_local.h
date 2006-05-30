@@ -398,6 +398,7 @@ typedef struct {
 
 	int			teamScores[TEAM_NUM_TEAMS];
 	int			lastTeamLocationTime;		// last time of client team location update
+	int			lastPlayerLocationTime; // last time client positions were updated - Shafe - Trep Radar
 
 	qboolean	newSession;				// don't use any old session data, because
 										// we changed gametype
@@ -1056,8 +1057,12 @@ int		trap_GeneticParentsAndChildSelection(int numranks, float *ranks, int *paren
 
 void	trap_SnapVector( float *v );
 
-gentity_t *findradius (gentity_t *from, vec3_t org, float rad); // Shafe - Trep - FindRadius Function
-qboolean visible( gentity_t *ent1, gentity_t *ent2 ); // Shafe - Trep Visible Function
+gentity_t *findradius (gentity_t *from, vec3_t org, float rad);		// Shafe - Trep - FindRadius Function
+qboolean visible( gentity_t *ent1, gentity_t *ent2 );	// Shafe - Trep Visible Function
+//void G_SendCommandToClient(gentity *to, char *cmd);		// Shafe - Trep - Radar
+void G_SendCommandToClient(gentity_t *to, char *cmd);		// Shafe - Trep - Radar
+void CheckPlayerPostions(void);							// Shafe - Trep - Radar
+
 
 
 

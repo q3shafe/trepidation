@@ -5,6 +5,19 @@
 #include "g_local.h"
 
 
+// Shafe - Trep - Utility Function - Move this!  
+void BroadCastSound(char *path) {
+	gentity_t*te;
+	vec3_t origin;
+	if(!strlen(path))
+	return;
+	origin[0] = origin[1] = origin[2] = 0;
+	te = G_TempEntity(origin, EV_GLOBAL_SOUND);
+	te->s.eventParm = G_SoundIndex(path);
+	te->r.svFlags |= SVF_BROADCAST;
+}
+
+
 /*
 ============
 ScorePlum
@@ -630,6 +643,13 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 	// remove powerups
 	memset( self->client->ps.powerups, 0, sizeof(self->client->ps.powerups) );
+
+	if (meansOfDeath == MOD_HEADSHOT)
+	{
+			BroadCastSound("sound/misc/headshot.wav");
+	}
+
+
 
 	// never gib in a nodrop
 	if ( (self->health <= GIB_HEALTH && !(contents & CONTENTS_NODROP) && g_blood.integer && meansOfDeath != MOD_HEADSHOT) || meansOfDeath == MOD_SUICIDE) {

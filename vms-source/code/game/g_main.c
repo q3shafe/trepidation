@@ -1840,6 +1840,9 @@ end = trap_Milliseconds();
 	// see if it is time to do a tournement restart
 	CheckTournament();
 
+	// Shafe - Trep - Radar Functions
+	CheckPlayerPostions();
+	
 	// see if it is time to end the level
 	CheckExitRules();
 
@@ -1870,3 +1873,79 @@ end = trap_Milliseconds();
 	level.frameStartTime = trap_Milliseconds();
 //unlagged - backward reconciliation #4
 }
+
+// Shafe - Trep - Radar
+playerpos_t		g_playerOrigins[MAX_CLIENTS]; //global storage for player positions
+
+void CheckPlayerPostions(void)
+{
+        int i, valid_count;
+        gentity_t *loc, *ent;
+        char cmd[16*MAX_CLIENTS + MAX_CLIENTS]; // make sure our command string is
+                                              // large enough for all the data
+
+        // do we need to update the positions yet?
+		if (!level.lastPlayerLocationTime) { level.lastPlayerLocationTime = 25000; }
+
+        if (level.time - level.lastPlayerLocationTime > PLAYER_LOCATION_UPDATE_TIME) 
+        {
+            //store the current time so we know when to update next
+            level.lastPlayerLocationTime = level.time;
+
+            //for each possible client
+            valid_count = 0;
+
+            for (i = 0; i < g_maxclients.integer; i++) 
+            {
+                //get a pointer to the entity
+                ent = g_entities + i;
+
+                //see if we have a valid entry
+                if (!ent->inuse)
+                {
+                    //mark as an invalid entry
+                    g_playerOrigins[i].valid = kENTRY_INVALID;
+                }
+
+                if(!ent->client)
+                {
+                    g_playerOrigins[i].valid = kENTRY_INVALID;
+                }
+                else if(ent->health <= 0)
+                {
+                     g_playerOrigins[i].valid = kENTRY_INVALID;
+                }
+                else
+                {
+                    //get and store the client position
+                    VectorCopy( ent->client->ps.origin, g_playerOrigins[i].pos);
+
+                    //mark as valid entry
+                    g_playerOrigins[i].valid = kENTRY_VALID;
+
+                    //increase the valid counter
+                    valid_count++;
+                }
+             } 
+          }
+
+        //build the command string to send
+        Com_sprintf(cmd, sizeof(cmd), "playerpos %i ", valid_count);
+        for(i=0; i<g_maxclients.integer; i++)
+        {
+            //if weve got a valid entry then add the position to the command string
+            if(g_playerOrigins[i].valid == kENTRY_VALID)
+            {
+                strcat(cmd, va(" %f,", g_playerOrigins[i].pos[0]));
+                strcat(cmd, va("%f,", g_playerOrigins[i].pos[1]));
+                strcat(cmd, va("%f", g_playerOrigins[i].pos[2]));
+            }
+        }
+    
+        //finally broadcast the command
+        //G_SendCommandToClient(NULL, cmd);
+		 
+}
+// Shafe - Trep - End Radar
+
+

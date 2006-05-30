@@ -1410,4 +1410,23 @@ typedef enum _flag_status {
 #define CDCHKSUM_LEN 2
 
 
+// Shafe - Trep - Radar
+typedef enum {
+	AIGT_SINGLE_PLAYER, // Q3A single player mode
+    AIGT_TEAM, // any team game
+	AIGT_OTHER // anything else!
+} aiGametype_t;
+
+#define kENTRY_EOL 0       //marks the end of the list
+#define kENTRY_INVALID 1   //marks a valid entry in the list
+#define kENTRY_VALID 2     //marks an invalid entry in the list
+
+typedef struct 
+{
+	int	valid;
+	vec3_t	pos;
+} playerpos_t;
+// Shafe - Trep - End Radar
+
+
 #endif	// __Q_SHARED_H
