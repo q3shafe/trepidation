@@ -93,16 +93,18 @@ typedef struct
 #define ID_CHAT3		33
 #define ID_CHAT4		34
 
+#define ID_SCANNER		35	// Shafe - Trep - Scanner
 
 // all others
-#define ID_FREELOOK		35
-#define ID_INVERTMOUSE	36
-#define ID_ALWAYSRUN	37
-#define ID_AUTOSWITCH	38
-#define ID_MOUSESPEED	39
-#define ID_JOYENABLE	40
-#define ID_JOYTHRESHOLD	41
-#define ID_SMOOTHMOUSE	42
+#define ID_FREELOOK		36
+#define ID_INVERTMOUSE	37
+#define ID_ALWAYSRUN	38
+#define ID_AUTOSWITCH	39
+#define ID_MOUSESPEED	40
+#define ID_JOYENABLE	41
+#define ID_JOYTHRESHOLD	42
+#define ID_SMOOTHMOUSE	43
+
 
 
 
@@ -189,6 +191,7 @@ typedef struct
 	menuaction_s		chat2;
 	menuaction_s		chat3;
 	menuaction_s		chat4;
+	menuaction_s		scanner;  // Shafe - Scanner
 	menuradiobutton_s	joyenable;
 	menuslider_s		joythreshold;
 	menuaction_s		altattack;  // Shafe - Alt Fire
@@ -233,14 +236,14 @@ static bind_t g_bindings[] =
 	{"weapon 2",		"machinegun",		ID_WEAPON2,		ANIM_WEAPON2,	'2',			-1,		-1, -1},
 	{"weapon 3",		"shotgun",			ID_WEAPON3,		ANIM_WEAPON3,	'3',			-1,		-1, -1},
 	{"weapon 4",		"grenade launcher",	ID_WEAPON4,		ANIM_WEAPON4,	'4',			-1,		-1, -1},
-	{"weapon 5",		"rocket launcher",	ID_WEAPON5,		ANIM_WEAPON5,	'5',			-1,		-1, -1},
+	{"weapon 5",		"singularity cannon",	ID_WEAPON5,		ANIM_WEAPON5,	'5',			-1,		-1, -1},
 	{"weapon 6",		"flame thrower",	ID_WEAPON6,		ANIM_WEAPON6,	'6',			-1,		-1, -1},
-	{"weapon 7",		"railgun",			ID_WEAPON7,		ANIM_WEAPON7,	'7',			-1,		-1, -1},
+	{"weapon 7",		"m42 gauss rifle",			ID_WEAPON7,		ANIM_WEAPON7,	'7',			-1,		-1, -1},
 	{"weapon 8",		"plasma gun",		ID_WEAPON8,		ANIM_WEAPON8,	'8',			-1,		-1, -1},
 	{"weapon 9",		"BFG",				ID_WEAPON9,		ANIM_WEAPON9,	'9',			-1,		-1, -1},
 	{"+attack", 		"attack",			ID_ATTACK,		ANIM_ATTACK,	K_CTRL,			-1,		-1, -1},
 	// Shafe - Alt Fire Attack
-	{"+button5", 		"alt attack",		ID_ALTATTACK,	ANIM_ATTACK,	K_ALT,			-1,		-1, -1},
+	{"+button5", 		"secondary attack",		ID_ALTATTACK,	ANIM_ATTACK,	K_ALT,			-1,		-1, -1},
 	{"weapprev",		"prev weapon",		ID_WEAPPREV,	ANIM_IDLE,		'[',			-1,		-1, -1},
 	{"weapnext", 		"next weapon",		ID_WEAPNEXT,	ANIM_IDLE,		']',			-1,		-1, -1},
 	{"+button3", 		"gesture",			ID_GESTURE,		ANIM_GESTURE,	K_MOUSE3,		-1,		-1, -1},
@@ -248,6 +251,8 @@ static bind_t g_bindings[] =
 	{"messagemode2", 	"chat - team",		ID_CHAT2,		ANIM_CHAT,		-1,				-1,		-1, -1},
 	{"messagemode3", 	"chat - target",	ID_CHAT3,		ANIM_CHAT,		-1,				-1,		-1, -1},
 	{"messagemode4", 	"chat - attacker",	ID_CHAT4,		ANIM_CHAT,		-1,				-1,		-1, -1},
+	// Shafe - Scanner
+	{"+scanner", 		"tracking device",	ID_SCANNER,		ANIM_CHAT,		'l',				-1,		-1, -1},
 
 	{(char*)NULL,		(char*)NULL,		0,				0,				-1,				-1,		-1,	-1},
 };
@@ -283,6 +288,8 @@ static menucommon_s *g_movement_controls[] =
 
 static menucommon_s *g_weapons_controls[] = {
 	(menucommon_s *)&s_controls.attack,           
+	// Shafe Alt Fire UI 
+	(menucommon_s *)&s_controls.altattack, 
 	(menucommon_s *)&s_controls.nextweapon,
 	(menucommon_s *)&s_controls.prevweapon,
 	(menucommon_s *)&s_controls.autoswitch,    
@@ -295,8 +302,7 @@ static menucommon_s *g_weapons_controls[] = {
 	(menucommon_s *)&s_controls.railgun,          
 	(menucommon_s *)&s_controls.plasma,           
 	(menucommon_s *)&s_controls.bfg,              
-	// Shafe Alt Fire UI - Doesnt work?  WTF
-	(menucommon_s *)&s_controls.altattack,           
+          
 	NULL,
 };
 
@@ -323,6 +329,7 @@ static menucommon_s *g_misc_controls[] = {
 	(menucommon_s *)&s_controls.chat2,
 	(menucommon_s *)&s_controls.chat3,
 	(menucommon_s *)&s_controls.chat4,
+	(menucommon_s *)&s_controls.scanner,  // Shafe
 	NULL,
 };
 
@@ -1392,7 +1399,7 @@ static void Controls_MenuInit( void )
 	s_controls.attack.generic.ownerdraw = Controls_DrawKeyBinding;
 	s_controls.attack.generic.id        = ID_ATTACK;
 
-		// Shafe - Alt Fire Menu
+		// Shafe - Alt Fire Menu 
 	s_controls.altattack.generic.type	    = MTYPE_ACTION;
 	s_controls.altattack.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
 	s_controls.altattack.generic.callback  = Controls_ActionEvent;
@@ -1505,6 +1512,7 @@ static void Controls_MenuInit( void )
 	s_controls.sensitivity.maxvalue		     = 30;
 	s_controls.sensitivity.generic.statusbar = Controls_StatusBar;
 
+
 	s_controls.gesture.generic.type	     = MTYPE_ACTION;
 	s_controls.gesture.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
 	s_controls.gesture.generic.callback  = Controls_ActionEvent;
@@ -1534,6 +1542,13 @@ static void Controls_MenuInit( void )
 	s_controls.chat4.generic.callback  = Controls_ActionEvent;
 	s_controls.chat4.generic.ownerdraw = Controls_DrawKeyBinding;
 	s_controls.chat4.generic.id        = ID_CHAT4;
+
+	// Shafe - Scanner
+	s_controls.scanner.generic.type	    = MTYPE_ACTION;
+	s_controls.scanner.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
+	s_controls.scanner.generic.callback  = Controls_ActionEvent;
+	s_controls.scanner.generic.ownerdraw = Controls_DrawKeyBinding;
+	s_controls.scanner.generic.id        = ID_SCANNER;
 
 	s_controls.joyenable.generic.type      = MTYPE_RADIOBUTTON;
 	s_controls.joyenable.generic.flags	   = QMF_SMALLFONT;
@@ -1618,12 +1633,16 @@ static void Controls_MenuInit( void )
 	//Menu_AddItem( &s_controls.menu, &s_controls.ui_dynamicmenu );
 	////////////////////////////////////////////////////////////
 	Menu_AddItem( &s_controls.menu, &s_controls.useitem );
+	Menu_AddItem( &s_controls.menu, &s_controls.scanner );
+	
 	Menu_AddItem( &s_controls.menu, &s_controls.gesture );
+	
 	Menu_AddItem( &s_controls.menu, &s_controls.chat );
 	Menu_AddItem( &s_controls.menu, &s_controls.chat2 );
 	Menu_AddItem( &s_controls.menu, &s_controls.chat3 );
 	Menu_AddItem( &s_controls.menu, &s_controls.chat4 );
-	
+
+
 
 	Menu_AddItem( &s_controls.menu, &s_controls.back );
 

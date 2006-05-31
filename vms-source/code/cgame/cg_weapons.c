@@ -2374,7 +2374,11 @@ void CG_Bullet( vec3_t end, int sourceEntityNum, vec3_t normal, qboolean flesh, 
     */
     void CG_ScannerOn_f( void )
     {
-        cg.scanner = 1;
+        // This is now a toggle	
+			cg.scanner = 1;
+		
+
+		
     }
 
     /*
@@ -2384,7 +2388,9 @@ void CG_Bullet( vec3_t end, int sourceEntityNum, vec3_t normal, qboolean flesh, 
     */
     void CG_ScannerOff_f( void )
     {
-        cg.scanner = 0;
+
+			cg.scanner = 0;
+		
     } 
     // Haggis
 
