@@ -114,34 +114,34 @@ ASGNI4
 ADDRLP4 2052
 INDIRI4
 CNSTI4 1
-LTI4 $56
+LTI4 $58
 ADDRLP4 2052
 INDIRI4
 CNSTI4 5
-GTI4 $56
+GTI4 $58
 ADDRLP4 2052
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $69-4
+ADDRGP4 $71-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $69
-address $58
+LABELV $71
 address $60
 address $62
 address $64
 address $66
+address $68
 code
-LABELV $58
+LABELV $60
 line 84
 ;84:		case PRT_MESSAGE: {
 line 85
 ;85:			G_Printf("%s", str);
-ADDRGP4 $59
+ADDRGP4 $61
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -150,15 +150,15 @@ CALLV
 pop
 line 86
 ;86:			break;
-ADDRGP4 $57
+ADDRGP4 $59
 JUMPV
-LABELV $60
+LABELV $62
 line 88
 ;87:		}
 ;88:		case PRT_WARNING: {
 line 89
 ;89:			G_Printf( S_COLOR_YELLOW "Warning: %s", str );
-ADDRGP4 $61
+ADDRGP4 $63
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -167,15 +167,15 @@ CALLV
 pop
 line 90
 ;90:			break;
-ADDRGP4 $57
+ADDRGP4 $59
 JUMPV
-LABELV $62
+LABELV $64
 line 92
 ;91:		}
 ;92:		case PRT_ERROR: {
 line 93
 ;93:			G_Printf( S_COLOR_RED "Error: %s", str );
-ADDRGP4 $63
+ADDRGP4 $65
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -184,15 +184,15 @@ CALLV
 pop
 line 94
 ;94:			break;
-ADDRGP4 $57
+ADDRGP4 $59
 JUMPV
-LABELV $64
+LABELV $66
 line 96
 ;95:		}
 ;96:		case PRT_FATAL: {
 line 97
 ;97:			G_Printf( S_COLOR_RED "Fatal: %s", str );
-ADDRGP4 $65
+ADDRGP4 $67
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -201,15 +201,15 @@ CALLV
 pop
 line 98
 ;98:			break;
-ADDRGP4 $57
+ADDRGP4 $59
 JUMPV
-LABELV $66
+LABELV $68
 line 100
 ;99:		}
 ;100:		case PRT_EXIT: {
 line 101
 ;101:			G_Error( S_COLOR_RED "Exit: %s", str );
-ADDRGP4 $67
+ADDRGP4 $69
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -218,27 +218,27 @@ CALLV
 pop
 line 102
 ;102:			break;
-ADDRGP4 $57
+ADDRGP4 $59
 JUMPV
-LABELV $56
+LABELV $58
 line 104
 ;103:		}
 ;104:		default: {
 line 105
 ;105:			G_Printf( "unknown print type\n" );
-ADDRGP4 $68
+ADDRGP4 $70
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 106
 ;106:			break;
-LABELV $57
+LABELV $59
 line 109
 ;107:		}
 ;108:	}
 ;109:}
-LABELV $54
+LABELV $56
 endproc BotAI_Print 2056 12
 export BotAI_Trace
 proc BotAI_Trace 56 28
@@ -393,7 +393,7 @@ CNSTI4 0
 ASGNI4
 line 135
 ;135:}
-LABELV $71
+LABELV $73
 endproc BotAI_Trace 56 28
 export BotAI_GetClientState
 proc BotAI_GetClientState 4 12
@@ -425,14 +425,14 @@ CNSTI4 520
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $85
+NEI4 $87
 line 147
 ;147:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $84
+ADDRGP4 $86
 JUMPV
-LABELV $85
+LABELV $87
 line 149
 ;148:	}
 ;149:	if ( !ent->client ) {
@@ -443,14 +443,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $87
+NEU4 $89
 line 150
 ;150:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $84
+ADDRGP4 $86
 JUMPV
-LABELV $87
+LABELV $89
 line 153
 ;151:	}
 ;152:
@@ -473,7 +473,7 @@ line 154
 ;154:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $84
+LABELV $86
 endproc BotAI_GetClientState 4 12
 export BotAI_GetEntityState
 proc BotAI_GetEntityState 4 12
@@ -518,12 +518,12 @@ CNSTI4 520
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $90
+NEI4 $92
 CNSTI4 0
 RETI4
-ADDRGP4 $89
+ADDRGP4 $91
 JUMPV
-LABELV $90
+LABELV $92
 line 168
 ;168:	if (!ent->r.linked) return qfalse;
 ADDRLP4 0
@@ -532,12 +532,12 @@ CNSTI4 416
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $92
+NEI4 $94
 CNSTI4 0
 RETI4
-ADDRGP4 $89
+ADDRGP4 $91
 JUMPV
-LABELV $92
+LABELV $94
 line 169
 ;169:	if (ent->r.svFlags & SVF_NOCLIENT) return qfalse;
 ADDRLP4 0
@@ -548,12 +548,12 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $94
+EQI4 $96
 CNSTI4 0
 RETI4
-ADDRGP4 $89
+ADDRGP4 $91
 JUMPV
-LABELV $94
+LABELV $96
 line 170
 ;170:	memcpy( state, &ent->s, sizeof(entityState_t) );
 ADDRFP4 4
@@ -571,7 +571,7 @@ line 171
 ;171:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $89
+LABELV $91
 endproc BotAI_GetEntityState 4 12
 export BotAI_GetSnapshotEntity
 proc BotAI_GetSnapshotEntity 8 12
@@ -607,7 +607,7 @@ line 183
 ADDRLP4 0
 INDIRI4
 CNSTI4 -1
-NEI4 $97
+NEI4 $99
 line 184
 ;184:		memset(state, 0, sizeof(entityState_t));
 ADDRFP4 8
@@ -624,9 +624,9 @@ line 185
 ;185:		return -1;
 CNSTI4 -1
 RETI4
-ADDRGP4 $96
+ADDRGP4 $98
 JUMPV
-LABELV $97
+LABELV $99
 line 188
 ;186:	}
 ;187:
@@ -648,7 +648,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 RETI4
-LABELV $96
+LABELV $98
 endproc BotAI_GetSnapshotEntity 8 12
 export BotAI_BotInitialChat
 proc BotAI_BotInitialChat 56 44
@@ -706,19 +706,19 @@ line 207
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $101
+LABELV $103
 line 208
 ;208:		if( !p ) {
 ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $105
+NEU4 $107
 line 209
 ;209:			break;
-ADDRGP4 $103
+ADDRGP4 $105
 JUMPV
-LABELV $105
+LABELV $107
 line 211
 ;210:		}
 ;211:		vars[i] = p;
@@ -752,7 +752,7 @@ INDIRP4
 ASGNP4
 line 213
 ;213:	}
-LABELV $102
+LABELV $104
 line 207
 ADDRLP4 0
 ADDRLP4 0
@@ -763,8 +763,8 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 8
-LTI4 $101
-LABELV $103
+LTI4 $103
+LABELV $105
 line 214
 ;214:	va_end(ap);
 ADDRLP4 40
@@ -828,7 +828,7 @@ CALLV
 pop
 line 219
 ;219:}
-LABELV $99
+LABELV $101
 endproc BotAI_BotInitialChat 56 44
 export BotTestAAS
 proc BotTestAAS 64 16
@@ -863,7 +863,7 @@ line 233
 ADDRGP4 bot_testsolid+12
 INDIRI4
 CNSTI4 0
-EQI4 $115
+EQI4 $117
 line 234
 ;234:		if (!trap_AAS_Initialized()) return;
 ADDRLP4 56
@@ -873,10 +873,10 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-NEI4 $118
-ADDRGP4 $114
+NEI4 $120
+ADDRGP4 $116
 JUMPV
-LABELV $118
+LABELV $120
 line 235
 ;235:		areanum = BotPointAreaNum(origin);
 ADDRFP4 0
@@ -895,37 +895,37 @@ line 236
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $120
+EQI4 $122
 CNSTI4 1
 ARGI4
-ADDRGP4 $122
+ADDRGP4 $124
 ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-ADDRGP4 $116
+ADDRGP4 $118
 JUMPV
-LABELV $120
+LABELV $122
 line 237
 ;237:		else BotAI_Print(PRT_MESSAGE, "\r^1SOLID area");
 CNSTI4 1
 ARGI4
-ADDRGP4 $123
+ADDRGP4 $125
 ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
 line 238
 ;238:	}
-ADDRGP4 $116
+ADDRGP4 $118
 JUMPV
-LABELV $115
+LABELV $117
 line 239
 ;239:	else if (bot_testclusters.integer) {
 ADDRGP4 bot_testclusters+12
 INDIRI4
 CNSTI4 0
-EQI4 $124
+EQI4 $126
 line 240
 ;240:		if (!trap_AAS_Initialized()) return;
 ADDRLP4 56
@@ -935,10 +935,10 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-NEI4 $127
-ADDRGP4 $114
+NEI4 $129
+ADDRGP4 $116
 JUMPV
-LABELV $127
+LABELV $129
 line 241
 ;241:		areanum = BotPointAreaNum(origin);
 ADDRFP4 0
@@ -957,19 +957,19 @@ line 242
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $129
+NEI4 $131
 line 243
 ;243:			BotAI_Print(PRT_MESSAGE, "\r^1Solid!                              ");
 CNSTI4 1
 ARGI4
-ADDRGP4 $131
+ADDRGP4 $133
 ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-ADDRGP4 $130
+ADDRGP4 $132
 JUMPV
-LABELV $129
+LABELV $131
 line 244
 ;244:		else {
 line 245
@@ -986,7 +986,7 @@ line 246
 ;246:			BotAI_Print(PRT_MESSAGE, "\rarea %d, cluster %d       ", areanum, info.cluster);
 CNSTI4 1
 ARGI4
-ADDRGP4 $132
+ADDRGP4 $134
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -999,14 +999,14 @@ CALLV
 pop
 line 247
 ;247:		}
-LABELV $130
+LABELV $132
 line 248
 ;248:	}
-LABELV $124
-LABELV $116
+LABELV $126
+LABELV $118
 line 249
 ;249:}
-LABELV $114
+LABELV $116
 endproc BotTestAAS 64 16
 export BotReportStatus
 proc BotReportStatus 560 24
@@ -1053,25 +1053,25 @@ ASGNI4
 ADDRLP4 548
 INDIRI4
 CNSTI4 0
-NEI4 $135
+NEI4 $137
 ADDRLP4 288
-ADDRGP4 $137
+ADDRGP4 $139
 ASGNP4
-ADDRGP4 $136
+ADDRGP4 $138
 JUMPV
-LABELV $135
+LABELV $137
 line 263
 ;263:	else leader = " ";
 ADDRLP4 288
-ADDRGP4 $138
+ADDRGP4 $140
 ASGNP4
-LABELV $136
+LABELV $138
 line 265
 ;264:
 ;265:	strcpy(flagstatus, "  ");
 ADDRLP4 256
 ARGP4
-ADDRGP4 $139
+ADDRGP4 $141
 ARGP4
 ADDRGP4 strcpy
 CALLP4
@@ -1081,7 +1081,7 @@ line 266
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
-NEI4 $140
+NEI4 $142
 line 267
 ;267:		if (BotCTFCarryingFlag(bs)) {
 ADDRFP4 0
@@ -1094,7 +1094,7 @@ ASGNI4
 ADDRLP4 552
 INDIRI4
 CNSTI4 0
-EQI4 $142
+EQI4 $144
 line 268
 ;268:			if (BotTeam(bs) == TEAM_RED) strcpy(flagstatus, S_COLOR_RED"F ");
 ADDRFP4 0
@@ -1107,33 +1107,33 @@ ASGNI4
 ADDRLP4 556
 INDIRI4
 CNSTI4 1
-NEI4 $144
+NEI4 $146
 ADDRLP4 256
 ARGP4
-ADDRGP4 $146
+ADDRGP4 $148
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-ADDRGP4 $145
+ADDRGP4 $147
 JUMPV
-LABELV $144
+LABELV $146
 line 269
 ;269:			else strcpy(flagstatus, S_COLOR_BLUE"F ");
 ADDRLP4 256
 ARGP4
-ADDRGP4 $147
+ADDRGP4 $149
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-LABELV $145
+LABELV $147
 line 270
 ;270:		}
-LABELV $142
+LABELV $144
 line 271
 ;271:	}
-LABELV $140
+LABELV $142
 line 287
 ;272:#ifdef MISSIONPACK
 ;273:	else if (gametype == GT_1FCTF) {
@@ -1161,37 +1161,37 @@ ASGNI4
 ADDRLP4 552
 INDIRI4
 CNSTI4 1
-LTI4 $148
+LTI4 $150
 ADDRLP4 552
 INDIRI4
 CNSTI4 13
-GTI4 $148
+GTI4 $150
 ADDRLP4 552
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $176-4
+ADDRGP4 $178-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $176
-address $151
+LABELV $178
 address $153
 address $155
-address $165
+address $157
 address $167
 address $169
-address $161
-address $161
-address $163
-address $157
-address $159
-address $173
 address $171
+address $163
+address $163
+address $165
+address $159
+address $161
+address $175
+address $173
 code
-LABELV $151
+LABELV $153
 line 289
 ;288:		case LTG_TEAMHELP:
 ;289:		{
@@ -1214,7 +1214,7 @@ line 291
 ;291:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: helping %s\n", netname, leader, flagstatus, goalname);
 CNSTI4 1
 ARGI4
-ADDRGP4 $152
+ADDRGP4 $154
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -1230,9 +1230,9 @@ CALLV
 pop
 line 292
 ;292:			break;
-ADDRGP4 $149
+ADDRGP4 $151
 JUMPV
-LABELV $153
+LABELV $155
 line 295
 ;293:		}
 ;294:		case LTG_TEAMACCOMPANY:
@@ -1256,7 +1256,7 @@ line 297
 ;297:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: accompanying %s\n", netname, leader, flagstatus, goalname);
 CNSTI4 1
 ARGI4
-ADDRGP4 $154
+ADDRGP4 $156
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -1272,9 +1272,9 @@ CALLV
 pop
 line 298
 ;298:			break;
-ADDRGP4 $149
+ADDRGP4 $151
 JUMPV
-LABELV $155
+LABELV $157
 line 301
 ;299:		}
 ;300:		case LTG_DEFENDKEYAREA:
@@ -1298,7 +1298,7 @@ line 303
 ;303:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: defending %s\n", netname, leader, flagstatus, goalname);
 CNSTI4 1
 ARGI4
-ADDRGP4 $156
+ADDRGP4 $158
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -1314,9 +1314,9 @@ CALLV
 pop
 line 304
 ;304:			break;
-ADDRGP4 $149
+ADDRGP4 $151
 JUMPV
-LABELV $157
+LABELV $159
 line 307
 ;305:		}
 ;306:		case LTG_GETITEM:
@@ -1340,7 +1340,7 @@ line 309
 ;309:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: getting item %s\n", netname, leader, flagstatus, goalname);
 CNSTI4 1
 ARGI4
-ADDRGP4 $158
+ADDRGP4 $160
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -1356,9 +1356,9 @@ CALLV
 pop
 line 310
 ;310:			break;
-ADDRGP4 $149
+ADDRGP4 $151
 JUMPV
-LABELV $159
+LABELV $161
 line 313
 ;311:		}
 ;312:		case LTG_KILL:
@@ -1382,7 +1382,7 @@ line 315
 ;315:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: killing %s\n", netname, leader, flagstatus, goalname);
 CNSTI4 1
 ARGI4
-ADDRGP4 $160
+ADDRGP4 $162
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -1398,9 +1398,9 @@ CALLV
 pop
 line 316
 ;316:			break;
-ADDRGP4 $149
+ADDRGP4 $151
 JUMPV
-LABELV $161
+LABELV $163
 line 320
 ;317:		}
 ;318:		case LTG_CAMP:
@@ -1408,31 +1408,6 @@ line 320
 ;320:		{
 line 321
 ;321:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: camping\n", netname, leader, flagstatus);
-CNSTI4 1
-ARGI4
-ADDRGP4 $162
-ARGP4
-ADDRLP4 0
-ARGP4
-ADDRLP4 288
-INDIRP4
-ARGP4
-ADDRLP4 256
-ARGP4
-ADDRGP4 BotAI_Print
-CALLV
-pop
-line 322
-;322:			break;
-ADDRGP4 $149
-JUMPV
-LABELV $163
-line 325
-;323:		}
-;324:		case LTG_PATROL:
-;325:		{
-line 326
-;326:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: patrolling\n", netname, leader, flagstatus);
 CNSTI4 1
 ARGI4
 ADDRGP4 $164
@@ -1447,17 +1422,17 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 327
-;327:			break;
-ADDRGP4 $149
+line 322
+;322:			break;
+ADDRGP4 $151
 JUMPV
 LABELV $165
-line 330
-;328:		}
-;329:		case LTG_GETFLAG:
-;330:		{
-line 331
-;331:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: capturing flag\n", netname, leader, flagstatus);
+line 325
+;323:		}
+;324:		case LTG_PATROL:
+;325:		{
+line 326
+;326:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: patrolling\n", netname, leader, flagstatus);
 CNSTI4 1
 ARGI4
 ADDRGP4 $166
@@ -1472,17 +1447,17 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 332
-;332:			break;
-ADDRGP4 $149
+line 327
+;327:			break;
+ADDRGP4 $151
 JUMPV
 LABELV $167
-line 335
-;333:		}
-;334:		case LTG_RUSHBASE:
-;335:		{
-line 336
-;336:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: rushing base\n", netname, leader, flagstatus);
+line 330
+;328:		}
+;329:		case LTG_GETFLAG:
+;330:		{
+line 331
+;331:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: capturing flag\n", netname, leader, flagstatus);
 CNSTI4 1
 ARGI4
 ADDRGP4 $168
@@ -1497,17 +1472,17 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 337
-;337:			break;
-ADDRGP4 $149
+line 332
+;332:			break;
+ADDRGP4 $151
 JUMPV
 LABELV $169
-line 340
-;338:		}
-;339:		case LTG_RETURNFLAG:
-;340:		{
-line 341
-;341:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: returning flag\n", netname, leader, flagstatus);
+line 335
+;333:		}
+;334:		case LTG_RUSHBASE:
+;335:		{
+line 336
+;336:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: rushing base\n", netname, leader, flagstatus);
 CNSTI4 1
 ARGI4
 ADDRGP4 $170
@@ -1522,17 +1497,17 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 342
-;342:			break;
-ADDRGP4 $149
+line 337
+;337:			break;
+ADDRGP4 $151
 JUMPV
 LABELV $171
-line 345
-;343:		}
-;344:		case LTG_ATTACKENEMYBASE:
-;345:		{
-line 346
-;346:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: attacking the enemy base\n", netname, leader, flagstatus);
+line 340
+;338:		}
+;339:		case LTG_RETURNFLAG:
+;340:		{
+line 341
+;341:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: returning flag\n", netname, leader, flagstatus);
 CNSTI4 1
 ARGI4
 ADDRGP4 $172
@@ -1547,17 +1522,17 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 347
-;347:			break;
-ADDRGP4 $149
+line 342
+;342:			break;
+ADDRGP4 $151
 JUMPV
 LABELV $173
-line 350
-;348:		}
-;349:		case LTG_HARVEST:
-;350:		{
-line 351
-;351:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: harvesting\n", netname, leader, flagstatus);
+line 345
+;343:		}
+;344:		case LTG_ATTACKENEMYBASE:
+;345:		{
+line 346
+;346:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: attacking the enemy base\n", netname, leader, flagstatus);
 CNSTI4 1
 ARGI4
 ADDRGP4 $174
@@ -1572,11 +1547,36 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
+line 347
+;347:			break;
+ADDRGP4 $151
+JUMPV
+LABELV $175
+line 350
+;348:		}
+;349:		case LTG_HARVEST:
+;350:		{
+line 351
+;351:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: harvesting\n", netname, leader, flagstatus);
+CNSTI4 1
+ARGI4
+ADDRGP4 $176
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRLP4 288
+INDIRP4
+ARGP4
+ADDRLP4 256
+ARGP4
+ADDRGP4 BotAI_Print
+CALLV
+pop
 line 352
 ;352:			break;
-ADDRGP4 $149
+ADDRGP4 $151
 JUMPV
-LABELV $148
+LABELV $150
 line 355
 ;353:		}
 ;354:		default:
@@ -1585,7 +1585,7 @@ line 356
 ;356:			BotAI_Print(PRT_MESSAGE, "%-20s%s%s: roaming\n", netname, leader, flagstatus);
 CNSTI4 1
 ARGI4
-ADDRGP4 $175
+ADDRGP4 $177
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -1599,12 +1599,12 @@ CALLV
 pop
 line 357
 ;357:			break;
-LABELV $149
+LABELV $151
 line 360
 ;358:		}
 ;359:	}
 ;360:}
-LABELV $134
+LABELV $136
 endproc BotReportStatus 560 24
 export BotTeamplayReport
 proc BotTeamplayReport 1056 12
@@ -1623,7 +1623,7 @@ line 371
 ;371:	BotAI_Print(PRT_MESSAGE, S_COLOR_RED"RED\n");
 CNSTI4 1
 ARGI4
-ADDRGP4 $179
+ADDRGP4 $181
 ARGP4
 ADDRGP4 BotAI_Print
 CALLV
@@ -1633,9 +1633,9 @@ line 372
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $183
+ADDRGP4 $185
 JUMPV
-LABELV $180
+LABELV $182
 line 374
 ;373:		//
 ;374:		if ( !botstates[i] || !botstates[i]->inuse ) continue;
@@ -1652,16 +1652,16 @@ ADDRLP4 1028
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $186
+EQU4 $188
 ADDRLP4 1028
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $184
-LABELV $186
-ADDRGP4 $181
+NEI4 $186
+LABELV $188
+ADDRGP4 $183
 JUMPV
-LABELV $184
+LABELV $186
 line 376
 ;375:		//
 ;376:		trap_GetConfigstring(CS_PLAYERS+i, buf, sizeof(buf));
@@ -1689,10 +1689,10 @@ ASGNI4
 ADDRLP4 1032
 INDIRI4
 CNSTI4 0
-EQI4 $190
+EQI4 $192
 ADDRLP4 4
 ARGP4
-ADDRGP4 $189
+ADDRGP4 $191
 ARGP4
 ADDRLP4 1036
 ADDRGP4 Info_ValueForKey
@@ -1708,17 +1708,17 @@ ASGNI4
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-NEI4 $187
-LABELV $190
-ADDRGP4 $181
+NEI4 $189
+LABELV $192
+ADDRGP4 $183
 JUMPV
-LABELV $187
+LABELV $189
 line 380
 ;379:		//skip spectators
 ;380:		if (atoi(Info_ValueForKey(buf, "t")) == TEAM_RED) {
 ADDRLP4 4
 ARGP4
-ADDRGP4 $193
+ADDRGP4 $195
 ARGP4
 ADDRLP4 1044
 ADDRGP4 Info_ValueForKey
@@ -1734,7 +1734,7 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 1
-NEI4 $191
+NEI4 $193
 line 381
 ;381:			BotReportStatus(botstates[i]);
 ADDRLP4 0
@@ -1750,10 +1750,10 @@ CALLV
 pop
 line 382
 ;382:		}
-LABELV $191
+LABELV $193
 line 383
 ;383:	}
-LABELV $181
+LABELV $183
 line 372
 ADDRLP4 0
 ADDRLP4 0
@@ -1761,22 +1761,22 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $183
+LABELV $185
 ADDRLP4 0
 INDIRI4
 ADDRGP4 maxclients
 INDIRI4
-GEI4 $194
+GEI4 $196
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $180
-LABELV $194
+LTI4 $182
+LABELV $196
 line 384
 ;384:	BotAI_Print(PRT_MESSAGE, S_COLOR_BLUE"BLUE\n");
 CNSTI4 1
 ARGI4
-ADDRGP4 $195
+ADDRGP4 $197
 ARGP4
 ADDRGP4 BotAI_Print
 CALLV
@@ -1786,9 +1786,9 @@ line 385
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $199
+ADDRGP4 $201
 JUMPV
-LABELV $196
+LABELV $198
 line 387
 ;386:		//
 ;387:		if ( !botstates[i] || !botstates[i]->inuse ) continue;
@@ -1805,16 +1805,16 @@ ADDRLP4 1032
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $202
+EQU4 $204
 ADDRLP4 1032
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $200
-LABELV $202
-ADDRGP4 $197
+NEI4 $202
+LABELV $204
+ADDRGP4 $199
 JUMPV
-LABELV $200
+LABELV $202
 line 389
 ;388:		//
 ;389:		trap_GetConfigstring(CS_PLAYERS+i, buf, sizeof(buf));
@@ -1842,10 +1842,10 @@ ASGNI4
 ADDRLP4 1036
 INDIRI4
 CNSTI4 0
-EQI4 $205
+EQI4 $207
 ADDRLP4 4
 ARGP4
-ADDRGP4 $189
+ADDRGP4 $191
 ARGP4
 ADDRLP4 1040
 ADDRGP4 Info_ValueForKey
@@ -1861,17 +1861,17 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-NEI4 $203
-LABELV $205
-ADDRGP4 $197
+NEI4 $205
+LABELV $207
+ADDRGP4 $199
 JUMPV
-LABELV $203
+LABELV $205
 line 393
 ;392:		//skip spectators
 ;393:		if (atoi(Info_ValueForKey(buf, "t")) == TEAM_BLUE) {
 ADDRLP4 4
 ARGP4
-ADDRGP4 $193
+ADDRGP4 $195
 ARGP4
 ADDRLP4 1048
 ADDRGP4 Info_ValueForKey
@@ -1887,7 +1887,7 @@ ASGNI4
 ADDRLP4 1052
 INDIRI4
 CNSTI4 2
-NEI4 $206
+NEI4 $208
 line 394
 ;394:			BotReportStatus(botstates[i]);
 ADDRLP4 0
@@ -1903,10 +1903,10 @@ CALLV
 pop
 line 395
 ;395:		}
-LABELV $206
+LABELV $208
 line 396
 ;396:	}
-LABELV $197
+LABELV $199
 line 385
 ADDRLP4 0
 ADDRLP4 0
@@ -1914,20 +1914,20 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $199
+LABELV $201
 ADDRLP4 0
 INDIRI4
 ADDRGP4 maxclients
 INDIRI4
-GEI4 $208
+GEI4 $210
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $196
-LABELV $208
+LTI4 $198
+LABELV $210
 line 397
 ;397:}
-LABELV $178
+LABELV $180
 endproc BotTeamplayReport 1056 12
 export BotSetInfoConfigString
 proc BotSetInfoConfigString 880 16
@@ -1976,25 +1976,25 @@ ASGNI4
 ADDRLP4 864
 INDIRI4
 CNSTI4 0
-NEI4 $210
+NEI4 $212
 ADDRLP4 544
-ADDRGP4 $137
+ADDRGP4 $139
 ASGNP4
-ADDRGP4 $211
+ADDRGP4 $213
 JUMPV
-LABELV $210
+LABELV $212
 line 413
 ;413:	else leader = " ";
 ADDRLP4 544
-ADDRGP4 $138
+ADDRGP4 $140
 ASGNP4
-LABELV $211
+LABELV $213
 line 415
 ;414:
 ;415:	strcpy(carrying, "  ");
 ADDRLP4 512
 ARGP4
-ADDRGP4 $139
+ADDRGP4 $141
 ARGP4
 ADDRGP4 strcpy
 CALLP4
@@ -2004,7 +2004,7 @@ line 416
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
-NEI4 $212
+NEI4 $214
 line 417
 ;417:		if (BotCTFCarryingFlag(bs)) {
 ADDRFP4 0
@@ -2017,22 +2017,22 @@ ASGNI4
 ADDRLP4 868
 INDIRI4
 CNSTI4 0
-EQI4 $214
+EQI4 $216
 line 418
 ;418:			strcpy(carrying, "F ");
 ADDRLP4 512
 ARGP4
-ADDRGP4 $216
+ADDRGP4 $218
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
 line 419
 ;419:		}
-LABELV $214
+LABELV $216
 line 420
 ;420:	}
-LABELV $212
+LABELV $214
 line 435
 ;421:#ifdef MISSIONPACK
 ;422:	else if (gametype == GT_1FCTF) {
@@ -2059,37 +2059,37 @@ ASGNI4
 ADDRLP4 868
 INDIRI4
 CNSTI4 1
-LTI4 $217
+LTI4 $219
 ADDRLP4 868
 INDIRI4
 CNSTI4 13
-GTI4 $217
+GTI4 $219
 ADDRLP4 868
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $246-4
+ADDRGP4 $248-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $246
-address $220
+LABELV $248
 address $222
 address $224
-address $234
+address $226
 address $236
 address $238
-address $230
-address $230
-address $232
-address $226
-address $228
-address $242
 address $240
+address $232
+address $232
+address $234
+address $228
+address $230
+address $244
+address $242
 code
-LABELV $220
+LABELV $222
 line 437
 ;436:		case LTG_TEAMHELP:
 ;437:		{
@@ -2114,7 +2114,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $221
+ADDRGP4 $223
 ARGP4
 ADDRLP4 552
 ARGP4
@@ -2123,9 +2123,9 @@ CALLV
 pop
 line 440
 ;440:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $222
+LABELV $224
 line 443
 ;441:		}
 ;442:		case LTG_TEAMACCOMPANY:
@@ -2151,7 +2151,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $223
+ADDRGP4 $225
 ARGP4
 ADDRLP4 552
 ARGP4
@@ -2160,9 +2160,9 @@ CALLV
 pop
 line 446
 ;446:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $224
+LABELV $226
 line 449
 ;447:		}
 ;448:		case LTG_DEFENDKEYAREA:
@@ -2188,7 +2188,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $225
+ADDRGP4 $227
 ARGP4
 ADDRLP4 552
 ARGP4
@@ -2197,9 +2197,9 @@ CALLV
 pop
 line 452
 ;452:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $226
+LABELV $228
 line 455
 ;453:		}
 ;454:		case LTG_GETITEM:
@@ -2225,7 +2225,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $227
+ADDRGP4 $229
 ARGP4
 ADDRLP4 552
 ARGP4
@@ -2234,9 +2234,9 @@ CALLV
 pop
 line 458
 ;458:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $228
+LABELV $230
 line 461
 ;459:		}
 ;460:		case LTG_KILL:
@@ -2262,7 +2262,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $229
+ADDRGP4 $231
 ARGP4
 ADDRLP4 552
 ARGP4
@@ -2271,9 +2271,9 @@ CALLV
 pop
 line 464
 ;464:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $230
+LABELV $232
 line 468
 ;465:		}
 ;466:		case LTG_CAMP:
@@ -2285,16 +2285,16 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $231
+ADDRGP4 $233
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
 line 470
 ;470:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $232
+LABELV $234
 line 473
 ;471:		}
 ;472:		case LTG_PATROL:
@@ -2305,16 +2305,16 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $233
+ADDRGP4 $235
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
 line 475
 ;475:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $234
+LABELV $236
 line 478
 ;476:		}
 ;477:		case LTG_GETFLAG:
@@ -2325,16 +2325,16 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $235
+ADDRGP4 $237
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
 line 480
 ;480:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $236
+LABELV $238
 line 483
 ;481:		}
 ;482:		case LTG_RUSHBASE:
@@ -2345,16 +2345,16 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $237
+ADDRGP4 $239
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
 line 485
 ;485:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $238
+LABELV $240
 line 488
 ;486:		}
 ;487:		case LTG_RETURNFLAG:
@@ -2365,16 +2365,16 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $239
+ADDRGP4 $241
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
 line 490
 ;490:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $240
+LABELV $242
 line 493
 ;491:		}
 ;492:		case LTG_ATTACKENEMYBASE:
@@ -2385,16 +2385,16 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $241
+ADDRGP4 $243
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
 line 495
 ;495:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $242
+LABELV $244
 line 498
 ;496:		}
 ;497:		case LTG_HARVEST:
@@ -2405,16 +2405,16 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $243
+ADDRGP4 $245
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
 line 500
 ;500:			break;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $217
+LABELV $219
 line 503
 ;501:		}
 ;502:		default:
@@ -2450,7 +2450,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $245
+ADDRGP4 $247
 ARGP4
 ADDRLP4 552
 ARGP4
@@ -2459,12 +2459,12 @@ CALLV
 pop
 line 507
 ;507:			break;
-LABELV $218
+LABELV $220
 line 510
 ;508:		}
 ;509:	}
 ;510:  	cs = va("l\\%s\\c\\%s\\a\\%s",
-ADDRGP4 $248
+ADDRGP4 $250
 ARGP4
 ADDRLP4 544
 INDIRP4
@@ -2502,7 +2502,7 @@ CALLV
 pop
 line 515
 ;515:}
-LABELV $209
+LABELV $211
 endproc BotSetInfoConfigString 880 16
 export BotUpdateInfoConfigStrings
 proc BotUpdateInfoConfigStrings 1044 12
@@ -2522,9 +2522,9 @@ line 526
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $253
+ADDRGP4 $255
 JUMPV
-LABELV $250
+LABELV $252
 line 528
 ;527:		//
 ;528:		if ( !botstates[i] || !botstates[i]->inuse )
@@ -2541,18 +2541,18 @@ ADDRLP4 1028
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $256
+EQU4 $258
 ADDRLP4 1028
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $254
-LABELV $256
+NEI4 $256
+LABELV $258
 line 529
 ;529:			continue;
-ADDRGP4 $251
+ADDRGP4 $253
 JUMPV
-LABELV $254
+LABELV $256
 line 531
 ;530:		//
 ;531:		trap_GetConfigstring(CS_PLAYERS+i, buf, sizeof(buf));
@@ -2580,10 +2580,10 @@ ASGNI4
 ADDRLP4 1032
 INDIRI4
 CNSTI4 0
-EQI4 $259
+EQI4 $261
 ADDRLP4 4
 ARGP4
-ADDRGP4 $189
+ADDRGP4 $191
 ARGP4
 ADDRLP4 1036
 ADDRGP4 Info_ValueForKey
@@ -2599,13 +2599,13 @@ ASGNI4
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-NEI4 $257
-LABELV $259
+NEI4 $259
+LABELV $261
 line 534
 ;534:			continue;
-ADDRGP4 $251
+ADDRGP4 $253
 JUMPV
-LABELV $257
+LABELV $259
 line 535
 ;535:		BotSetInfoConfigString(botstates[i]);
 ADDRLP4 0
@@ -2621,7 +2621,7 @@ CALLV
 pop
 line 536
 ;536:	}
-LABELV $251
+LABELV $253
 line 526
 ADDRLP4 0
 ADDRLP4 0
@@ -2629,20 +2629,20 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $253
+LABELV $255
 ADDRLP4 0
 INDIRI4
 ADDRGP4 maxclients
 INDIRI4
-GEI4 $260
+GEI4 $262
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $250
-LABELV $260
+LTI4 $252
+LABELV $262
 line 537
 ;537:}
-LABELV $249
+LABELV $251
 endproc BotUpdateInfoConfigStrings 1044 12
 export BotInterbreedBots
 proc BotInterbreedBots 288 20
@@ -2664,7 +2664,7 @@ line 550
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $262
+LABELV $264
 line 551
 ;551:		if ( botstates[i] && botstates[i]->inuse ) {
 ADDRLP4 272
@@ -2680,12 +2680,12 @@ ADDRLP4 272
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $266
+EQU4 $268
 ADDRLP4 272
 INDIRP4
 INDIRI4
 CNSTI4 0
-EQI4 $266
+EQI4 $268
 line 552
 ;552:			ranks[i] = botstates[i]->num_kills * 2 - botstates[i]->num_deaths;
 ADDRLP4 276
@@ -2722,9 +2722,9 @@ CVIF4 4
 ASGNF4
 line 553
 ;553:		}
-ADDRGP4 $267
+ADDRGP4 $269
 JUMPV
-LABELV $266
+LABELV $268
 line 554
 ;554:		else {
 line 555
@@ -2739,10 +2739,10 @@ CNSTF4 3212836864
 ASGNF4
 line 556
 ;556:		}
-LABELV $267
+LABELV $269
 line 557
 ;557:	}
-LABELV $263
+LABELV $265
 line 550
 ADDRLP4 0
 ADDRLP4 0
@@ -2753,7 +2753,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $262
+LTI4 $264
 line 559
 ;558:
 ;559:	if (trap_GeneticParentsAndChildSelection(MAX_CLIENTS, ranks, &parent1, &parent2, &child)) {
@@ -2774,7 +2774,7 @@ ASGNI4
 ADDRLP4 272
 INDIRI4
 CNSTI4 0
-EQI4 $268
+EQI4 $270
 line 560
 ;560:		trap_BotInterbreedGoalFuzzyLogic(botstates[parent1]->gs, botstates[parent2]->gs, botstates[child]->gs);
 ADDRLP4 276
@@ -2851,14 +2851,14 @@ CALLV
 pop
 line 562
 ;562:	}
-LABELV $268
+LABELV $270
 line 564
 ;563:	// reset the kills and deaths
 ;564:	for (i = 0; i < MAX_CLIENTS; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $270
+LABELV $272
 line 565
 ;565:		if (botstates[i] && botstates[i]->inuse) {
 ADDRLP4 276
@@ -2874,12 +2874,12 @@ ADDRLP4 276
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $274
+EQU4 $276
 ADDRLP4 276
 INDIRP4
 INDIRI4
 CNSTI4 0
-EQI4 $274
+EQI4 $276
 line 566
 ;566:			botstates[i]->num_kills = 0;
 ADDRLP4 0
@@ -2908,10 +2908,10 @@ CNSTI4 0
 ASGNI4
 line 568
 ;568:		}
-LABELV $274
+LABELV $276
 line 569
 ;569:	}
-LABELV $271
+LABELV $273
 line 564
 ADDRLP4 0
 ADDRLP4 0
@@ -2922,10 +2922,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $270
+LTI4 $272
 line 570
 ;570:}
-LABELV $261
+LABELV $263
 endproc BotInterbreedBots 288 20
 export BotWriteInterbreeded
 proc BotWriteInterbreeded 24 8
@@ -2956,7 +2956,7 @@ line 584
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $277
+LABELV $279
 line 585
 ;585:		if ( botstates[i] && botstates[i]->inuse ) {
 ADDRLP4 16
@@ -2972,12 +2972,12 @@ ADDRLP4 16
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $281
+EQU4 $283
 ADDRLP4 16
 INDIRP4
 INDIRI4
 CNSTI4 0
-EQI4 $281
+EQI4 $283
 line 586
 ;586:			rank = botstates[i]->num_kills * 2 - botstates[i]->num_deaths;
 ADDRLP4 20
@@ -3007,9 +3007,9 @@ CVIF4 4
 ASGNF4
 line 587
 ;587:		}
-ADDRGP4 $282
+ADDRGP4 $284
 JUMPV
-LABELV $281
+LABELV $283
 line 588
 ;588:		else {
 line 589
@@ -3019,14 +3019,14 @@ CNSTF4 3212836864
 ASGNF4
 line 590
 ;590:		}
-LABELV $282
+LABELV $284
 line 591
 ;591:		if (rank > bestrank) {
 ADDRLP4 4
 INDIRF4
 ADDRLP4 8
 INDIRF4
-LEF4 $283
+LEF4 $285
 line 592
 ;592:			bestrank = rank;
 ADDRLP4 8
@@ -3041,10 +3041,10 @@ INDIRI4
 ASGNI4
 line 594
 ;594:		}
-LABELV $283
+LABELV $285
 line 595
 ;595:	}
-LABELV $278
+LABELV $280
 line 584
 ADDRLP4 0
 ADDRLP4 0
@@ -3055,13 +3055,13 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $277
+LTI4 $279
 line 596
 ;596:	if (bestbot >= 0) {
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-LTI4 $285
+LTI4 $287
 line 598
 ;597:		//write out the new goal fuzzy logic
 ;598:		trap_BotSaveGoalFuzzyLogic(botstates[bestbot]->gs, filename);
@@ -3084,10 +3084,10 @@ CALLV
 pop
 line 599
 ;599:	}
-LABELV $285
+LABELV $287
 line 600
 ;600:}
-LABELV $276
+LABELV $278
 endproc BotWriteInterbreeded 24 8
 export BotInterbreedEndMatch
 proc BotInterbreedEndMatch 8 8
@@ -3107,10 +3107,10 @@ line 611
 ADDRGP4 bot_interbreed
 INDIRI4
 CNSTI4 0
-NEI4 $288
-ADDRGP4 $287
+NEI4 $290
+ADDRGP4 $289
 JUMPV
-LABELV $288
+LABELV $290
 line 612
 ;612:	bot_interbreedmatchcount++;
 ADDRLP4 0
@@ -3130,7 +3130,7 @@ ADDRGP4 bot_interbreedmatchcount
 INDIRI4
 ADDRGP4 bot_interbreedcycle+12
 INDIRI4
-LTI4 $290
+LTI4 $292
 line 614
 ;614:		bot_interbreedmatchcount = 0;
 ADDRGP4 bot_interbreedmatchcount
@@ -3155,7 +3155,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $293
+EQI4 $295
 line 618
 ;618:			BotWriteInterbreeded(bot_interbreedwrite.string);
 ADDRGP4 bot_interbreedwrite+16
@@ -3165,16 +3165,16 @@ CALLV
 pop
 line 619
 ;619:			trap_Cvar_Set("bot_interbreedwrite", "");
-ADDRGP4 $297
+ADDRGP4 $299
 ARGP4
-ADDRGP4 $298
+ADDRGP4 $300
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 620
 ;620:		}
-LABELV $293
+LABELV $295
 line 621
 ;621:		BotInterbreedBots();
 ADDRGP4 BotInterbreedBots
@@ -3182,10 +3182,10 @@ CALLV
 pop
 line 622
 ;622:	}
-LABELV $290
+LABELV $292
 line 623
 ;623:}
-LABELV $287
+LABELV $289
 endproc BotInterbreedEndMatch 8 8
 export BotInterbreeding
 proc BotInterbreeding 16 20
@@ -3217,20 +3217,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $300
-ADDRGP4 $299
+NEI4 $302
+ADDRGP4 $301
 JUMPV
-LABELV $300
+LABELV $302
 line 636
 ;635:	//make sure we are in tournament mode
 ;636:	if (gametype != GT_TOURNAMENT) {
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 1
-EQI4 $303
+EQI4 $305
 line 637
 ;637:		trap_Cvar_Set("g_gametype", va("%d", GT_TOURNAMENT));
-ADDRGP4 $306
+ADDRGP4 $308
 ARGP4
 CNSTI4 1
 ARGI4
@@ -3238,7 +3238,7 @@ ADDRLP4 8
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $305
+ADDRGP4 $307
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -3253,9 +3253,9 @@ CALLV
 pop
 line 639
 ;639:		return;
-ADDRGP4 $299
+ADDRGP4 $301
 JUMPV
-LABELV $303
+LABELV $305
 line 642
 ;640:	}
 ;641:	//shutdown all the bots
@@ -3263,7 +3263,7 @@ line 642
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $307
+LABELV $309
 line 643
 ;643:		if (botstates[i] && botstates[i]->inuse) {
 ADDRLP4 8
@@ -3279,12 +3279,12 @@ ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $311
+EQU4 $313
 ADDRLP4 8
 INDIRP4
 INDIRI4
 CNSTI4 0
-EQI4 $311
+EQI4 $313
 line 644
 ;644:			BotAIShutdownClient(botstates[i]->client, qfalse);
 ADDRLP4 0
@@ -3305,10 +3305,10 @@ CALLI4
 pop
 line 645
 ;645:		}
-LABELV $311
+LABELV $313
 line 646
 ;646:	}
-LABELV $308
+LABELV $310
 line 642
 ADDRLP4 0
 ADDRLP4 0
@@ -3319,13 +3319,13 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $307
+LTI4 $309
 line 648
 ;647:	//make sure all item weight configs are reloaded and Not shared
 ;648:	trap_BotLibVarSet("bot_reloadcharacters", "1");
-ADDRGP4 $313
+ADDRGP4 $315
 ARGP4
-ADDRGP4 $314
+ADDRGP4 $316
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
@@ -3336,12 +3336,12 @@ line 650
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $318
+ADDRGP4 $320
 JUMPV
-LABELV $315
+LABELV $317
 line 651
 ;651:		trap_SendConsoleCommand( EXEC_INSERT, va("addbot %s 4 free %i %s%d\n",
-ADDRGP4 $320
+ADDRGP4 $322
 ARGP4
 ADDRGP4 bot_interbreedchar+16
 ARGP4
@@ -3370,7 +3370,7 @@ pop
 line 653
 ;652:						bot_interbreedchar.string, i * 50, bot_interbreedchar.string, i) );
 ;653:	}
-LABELV $316
+LABELV $318
 line 650
 ADDRLP4 0
 ADDRLP4 0
@@ -3378,18 +3378,18 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $318
+LABELV $320
 ADDRLP4 0
 INDIRI4
 ADDRGP4 bot_interbreedbots+12
 INDIRI4
-LTI4 $315
+LTI4 $317
 line 655
 ;654:	//
 ;655:	trap_Cvar_Set("bot_interbreedchar", "");
-ADDRGP4 $323
+ADDRGP4 $325
 ARGP4
-ADDRGP4 $298
+ADDRGP4 $300
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
@@ -3401,7 +3401,7 @@ CNSTI4 1
 ASGNI4
 line 657
 ;657:}
-LABELV $299
+LABELV $301
 endproc BotInterbreeding 16 20
 export BotEntityInfo
 proc BotEntityInfo 0 8
@@ -3426,7 +3426,7 @@ CALLV
 pop
 line 666
 ;666:}
-LABELV $324
+LABELV $326
 endproc BotEntityInfo 0 8
 export NumBots
 proc NumBots 0 0
@@ -3443,7 +3443,7 @@ line 674
 ADDRGP4 numbots
 INDIRI4
 RETI4
-LABELV $325
+LABELV $327
 endproc NumBots 0 0
 export BotTeamLeader
 proc BotTeamLeader 12 4
@@ -3478,12 +3478,12 @@ line 686
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-GEI4 $327
+GEI4 $329
 CNSTI4 0
 RETI4
-ADDRGP4 $326
+ADDRGP4 $328
 JUMPV
-LABELV $327
+LABELV $329
 line 687
 ;687:	if (!botstates[leader] || !botstates[leader]->inuse) return qfalse;
 ADDRLP4 8
@@ -3499,23 +3499,23 @@ ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $331
+EQU4 $333
 ADDRLP4 8
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $329
-LABELV $331
+NEI4 $331
+LABELV $333
 CNSTI4 0
 RETI4
-ADDRGP4 $326
+ADDRGP4 $328
 JUMPV
-LABELV $329
+LABELV $331
 line 688
 ;688:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $326
+LABELV $328
 endproc BotTeamLeader 12 4
 export AngleDifference
 proc AngleDifference 4 0
@@ -3545,13 +3545,13 @@ ADDRFP4 0
 INDIRF4
 ADDRFP4 4
 INDIRF4
-LEF4 $333
+LEF4 $335
 line 701
 ;701:		if (diff > 180.0) diff -= 360.0;
 ADDRLP4 0
 INDIRF4
 CNSTF4 1127481344
-LEF4 $334
+LEF4 $336
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -3560,9 +3560,9 @@ SUBF4
 ASGNF4
 line 702
 ;702:	}
-ADDRGP4 $334
+ADDRGP4 $336
 JUMPV
-LABELV $333
+LABELV $335
 line 703
 ;703:	else {
 line 704
@@ -3570,23 +3570,23 @@ line 704
 ADDRLP4 0
 INDIRF4
 CNSTF4 3274964992
-GEF4 $337
+GEF4 $339
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
 CNSTF4 1135869952
 ADDF4
 ASGNF4
-LABELV $337
+LABELV $339
 line 705
 ;705:	}
-LABELV $334
+LABELV $336
 line 706
 ;706:	return diff;
 ADDRLP4 0
 INDIRF4
 RETF4
-LABELV $332
+LABELV $334
 endproc AngleDifference 4 0
 export BotChangeViewAngle
 proc BotChangeViewAngle 16 4
@@ -3633,13 +3633,13 @@ ADDRFP4 0
 INDIRF4
 ADDRFP4 4
 INDIRF4
-NEF4 $340
+NEF4 $342
 ADDRFP4 0
 INDIRF4
 RETF4
-ADDRGP4 $339
+ADDRGP4 $341
 JUMPV
-LABELV $340
+LABELV $342
 line 720
 ;720:	move = ideal_angle - angle;
 ADDRLP4 0
@@ -3655,13 +3655,13 @@ ADDRFP4 4
 INDIRF4
 ADDRFP4 0
 INDIRF4
-LEF4 $342
+LEF4 $344
 line 722
 ;722:		if (move > 180.0) move -= 360.0;
 ADDRLP4 0
 INDIRF4
 CNSTF4 1127481344
-LEF4 $343
+LEF4 $345
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -3670,9 +3670,9 @@ SUBF4
 ASGNF4
 line 723
 ;723:	}
-ADDRGP4 $343
+ADDRGP4 $345
 JUMPV
-LABELV $342
+LABELV $344
 line 724
 ;724:	else {
 line 725
@@ -3680,39 +3680,39 @@ line 725
 ADDRLP4 0
 INDIRF4
 CNSTF4 3274964992
-GEF4 $346
+GEF4 $348
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
 CNSTF4 1135869952
 ADDF4
 ASGNF4
-LABELV $346
+LABELV $348
 line 726
 ;726:	}
-LABELV $343
+LABELV $345
 line 727
 ;727:	if (move > 0) {
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
-LEF4 $348
+LEF4 $350
 line 728
 ;728:		if (move > speed) move = speed;
 ADDRLP4 0
 INDIRF4
 ADDRFP4 8
 INDIRF4
-LEF4 $349
+LEF4 $351
 ADDRLP4 0
 ADDRFP4 8
 INDIRF4
 ASGNF4
 line 729
 ;729:	}
-ADDRGP4 $349
+ADDRGP4 $351
 JUMPV
-LABELV $348
+LABELV $350
 line 730
 ;730:	else {
 line 731
@@ -3722,16 +3722,16 @@ INDIRF4
 ADDRFP4 8
 INDIRF4
 NEGF4
-GEF4 $352
+GEF4 $354
 ADDRLP4 0
 ADDRFP4 8
 INDIRF4
 NEGF4
 ASGNF4
-LABELV $352
+LABELV $354
 line 732
 ;732:	}
-LABELV $349
+LABELV $351
 line 733
 ;733:	return AngleMod(angle + move);
 ADDRFP4 0
@@ -3747,7 +3747,7 @@ ASGNF4
 ADDRLP4 12
 INDIRF4
 RETF4
-LABELV $339
+LABELV $341
 endproc BotChangeViewAngle 16 4
 export BotChangeViewAngles
 proc BotChangeViewAngles 80 16
@@ -3771,7 +3771,7 @@ CNSTI4 6576
 ADDP4
 INDIRF4
 CNSTF4 1127481344
-LEF4 $355
+LEF4 $357
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -3786,7 +3786,7 @@ INDIRF4
 CNSTF4 1135869952
 SUBF4
 ASGNF4
-LABELV $355
+LABELV $357
 line 747
 ;746:	//
 ;747:	if (bs->enemy >= 0) {
@@ -3796,7 +3796,7 @@ CNSTI4 6540
 ADDP4
 INDIRI4
 CNSTI4 0
-LTI4 $357
+LTI4 $359
 line 748
 ;748:		factor = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_VIEW_FACTOR, 0.01f, 1);
 ADDRFP4 0
@@ -3843,9 +3843,9 @@ INDIRF4
 ASGNF4
 line 750
 ;750:	}
-ADDRGP4 $358
+ADDRGP4 $360
 JUMPV
-LABELV $357
+LABELV $359
 line 751
 ;751:	else {
 line 752
@@ -3860,17 +3860,17 @@ CNSTF4 1135869952
 ASGNF4
 line 754
 ;754:	}
-LABELV $358
+LABELV $360
 line 755
 ;755:	if (maxchange < 240) maxchange = 240;
 ADDRLP4 8
 INDIRF4
 CNSTF4 1131413504
-GEF4 $359
+GEF4 $361
 ADDRLP4 8
 CNSTF4 1131413504
 ASGNF4
-LABELV $359
+LABELV $361
 line 756
 ;756:	maxchange *= thinktime;
 ADDRLP4 8
@@ -3885,14 +3885,14 @@ line 757
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $361
+LABELV $363
 line 759
 ;758:		//
 ;759:		if (bot_challenge.integer) {
 ADDRGP4 bot_challenge+12
 INDIRI4
 CNSTI4 0
-EQI4 $365
+EQI4 $367
 line 761
 ;760:			//smooth slowdown view model
 ;761:			diff = abs(AngleDifference(bs->viewangles[i], bs->ideal_viewangles[i]));
@@ -3956,12 +3956,12 @@ ADDRLP4 4
 INDIRF4
 ADDRLP4 8
 INDIRF4
-LEF4 $368
+LEF4 $370
 ADDRLP4 4
 ADDRLP4 8
 INDIRF4
 ASGNF4
-LABELV $368
+LABELV $370
 line 764
 ;764:			bs->viewangles[i] = BotChangeViewAngle(bs->viewangles[i],
 ADDRLP4 44
@@ -4011,9 +4011,9 @@ ASGNF4
 line 766
 ;765:											bs->ideal_viewangles[i], anglespeed);
 ;766:		}
-ADDRGP4 $366
+ADDRGP4 $368
 JUMPV
-LABELV $365
+LABELV $367
 line 767
 ;767:		else {
 line 769
@@ -4158,7 +4158,7 @@ ADDP4
 ADDP4
 INDIRF4
 CNSTF4 1127481344
-LEF4 $370
+LEF4 $372
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4171,7 +4171,7 @@ ADDP4
 ADDRLP4 8
 INDIRF4
 ASGNF4
-LABELV $370
+LABELV $372
 line 775
 ;775:			if (bs->viewanglespeed[i] < -180) bs->viewanglespeed[i] = -maxchange;
 ADDRLP4 0
@@ -4185,7 +4185,7 @@ ADDP4
 ADDP4
 INDIRF4
 CNSTF4 3274964992
-GEF4 $372
+GEF4 $374
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4199,7 +4199,7 @@ ADDRLP4 8
 INDIRF4
 NEGF4
 ASGNF4
-LABELV $372
+LABELV $374
 line 776
 ;776:			anglespeed = bs->viewanglespeed[i];
 ADDRLP4 4
@@ -4220,12 +4220,12 @@ ADDRLP4 4
 INDIRF4
 ADDRLP4 8
 INDIRF4
-LEF4 $374
+LEF4 $376
 ADDRLP4 4
 ADDRLP4 8
 INDIRF4
 ASGNF4
-LABELV $374
+LABELV $376
 line 778
 ;778:			if (anglespeed < -maxchange) anglespeed = -maxchange;
 ADDRLP4 4
@@ -4233,13 +4233,13 @@ INDIRF4
 ADDRLP4 8
 INDIRF4
 NEGF4
-GEF4 $376
+GEF4 $378
 ADDRLP4 4
 ADDRLP4 8
 INDIRF4
 NEGF4
 ASGNF4
-LABELV $376
+LABELV $378
 line 779
 ;779:			bs->viewangles[i] += anglespeed;
 ADDRLP4 64
@@ -4317,12 +4317,12 @@ MULF4
 ASGNF4
 line 783
 ;783:		}
-LABELV $366
+LABELV $368
 line 786
 ;784:		//BotAI_Print(PRT_MESSAGE, "ideal_angles %f %f\n", bs->ideal_viewangles[0], bs->ideal_viewangles[1], bs->ideal_viewangles[2]);`
 ;785:		//bs->viewangles[i] = bs->ideal_viewangles[i];
 ;786:	}
-LABELV $362
+LABELV $364
 line 757
 ADDRLP4 0
 ADDRLP4 0
@@ -4333,7 +4333,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
-LTI4 $361
+LTI4 $363
 line 788
 ;787:	//bs->viewangles[PITCH] = 0;
 ;788:	if (bs->viewangles[PITCH] > 180) bs->viewangles[PITCH] -= 360;
@@ -4343,7 +4343,7 @@ CNSTI4 6564
 ADDP4
 INDIRF4
 CNSTF4 1127481344
-LEF4 $378
+LEF4 $380
 ADDRLP4 28
 ADDRFP4 0
 INDIRP4
@@ -4358,7 +4358,7 @@ INDIRF4
 CNSTF4 1135869952
 SUBF4
 ASGNF4
-LABELV $378
+LABELV $380
 line 790
 ;789:	//elementary action: view
 ;790:	trap_EA_View(bs->client, bs->viewangles);
@@ -4382,7 +4382,7 @@ CALLV
 pop
 line 791
 ;791:}
-LABELV $354
+LABELV $356
 endproc BotChangeViewAngles 80 16
 export BotInputToUserCommand
 proc BotInputToUserCommand 136 16
@@ -4432,7 +4432,7 @@ INDIRI4
 CNSTI4 32768
 BANDI4
 CNSTI4 0
-EQI4 $381
+EQI4 $383
 line 811
 ;811:		bi->actionflags |= ACTION_JUMP;
 ADDRLP4 44
@@ -4467,7 +4467,7 @@ BANDI4
 ASGNI4
 line 813
 ;813:	}
-LABELV $381
+LABELV $383
 line 815
 ;814:	//set the buttons
 ;815:	if (bi->actionflags & ACTION_RESPAWN) ucmd->buttons = BUTTON_ATTACK;
@@ -4479,14 +4479,14 @@ INDIRI4
 CNSTI4 8
 BANDI4
 CNSTI4 0
-EQI4 $383
+EQI4 $385
 ADDRFP4 4
 INDIRP4
 CNSTI4 16
 ADDP4
 CNSTI4 1
 ASGNI4
-LABELV $383
+LABELV $385
 line 816
 ;816:	if (bi->actionflags & ACTION_ATTACK) ucmd->buttons |= BUTTON_ATTACK;
 ADDRFP4 0
@@ -4497,7 +4497,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $385
+EQI4 $387
 ADDRLP4 44
 ADDRFP4 4
 INDIRP4
@@ -4512,7 +4512,7 @@ INDIRI4
 CNSTI4 1
 BORI4
 ASGNI4
-LABELV $385
+LABELV $387
 line 817
 ;817:	if (bi->actionflags & ACTION_TALK) ucmd->buttons |= BUTTON_TALK;
 ADDRFP4 0
@@ -4523,7 +4523,7 @@ INDIRI4
 CNSTI4 65536
 BANDI4
 CNSTI4 0
-EQI4 $387
+EQI4 $389
 ADDRLP4 48
 ADDRFP4 4
 INDIRP4
@@ -4538,7 +4538,7 @@ INDIRI4
 CNSTI4 2
 BORI4
 ASGNI4
-LABELV $387
+LABELV $389
 line 818
 ;818:	if (bi->actionflags & ACTION_GESTURE) ucmd->buttons |= BUTTON_GESTURE;
 ADDRFP4 0
@@ -4549,7 +4549,7 @@ INDIRI4
 CNSTI4 131072
 BANDI4
 CNSTI4 0
-EQI4 $389
+EQI4 $391
 ADDRLP4 52
 ADDRFP4 4
 INDIRP4
@@ -4564,7 +4564,7 @@ INDIRI4
 CNSTI4 8
 BORI4
 ASGNI4
-LABELV $389
+LABELV $391
 line 819
 ;819:	if (bi->actionflags & ACTION_USE) ucmd->buttons |= BUTTON_USE_HOLDABLE;
 ADDRFP4 0
@@ -4575,7 +4575,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $391
+EQI4 $393
 ADDRLP4 56
 ADDRFP4 4
 INDIRP4
@@ -4590,7 +4590,7 @@ INDIRI4
 CNSTI4 4
 BORI4
 ASGNI4
-LABELV $391
+LABELV $393
 line 820
 ;820:	if (bi->actionflags & ACTION_WALK) ucmd->buttons |= BUTTON_WALKING;
 ADDRFP4 0
@@ -4601,7 +4601,7 @@ INDIRI4
 CNSTI4 524288
 BANDI4
 CNSTI4 0
-EQI4 $393
+EQI4 $395
 ADDRLP4 60
 CNSTI4 16
 ASGNI4
@@ -4621,7 +4621,7 @@ ADDRLP4 60
 INDIRI4
 BORI4
 ASGNI4
-LABELV $393
+LABELV $395
 line 821
 ;821:	if (bi->actionflags & ACTION_AFFIRMATIVE) ucmd->buttons |= BUTTON_AFFIRMATIVE;
 ADDRFP4 0
@@ -4632,7 +4632,7 @@ INDIRI4
 CNSTI4 1048576
 BANDI4
 CNSTI4 0
-EQI4 $395
+EQI4 $397
 ADDRLP4 68
 ADDRFP4 4
 INDIRP4
@@ -4647,7 +4647,7 @@ INDIRI4
 CNSTI4 32
 BORI4
 ASGNI4
-LABELV $395
+LABELV $397
 line 822
 ;822:	if (bi->actionflags & ACTION_NEGATIVE) ucmd->buttons |= BUTTON_NEGATIVE;
 ADDRFP4 0
@@ -4658,7 +4658,7 @@ INDIRI4
 CNSTI4 2097152
 BANDI4
 CNSTI4 0
-EQI4 $397
+EQI4 $399
 ADDRLP4 72
 ADDRFP4 4
 INDIRP4
@@ -4673,7 +4673,7 @@ INDIRI4
 CNSTI4 64
 BORI4
 ASGNI4
-LABELV $397
+LABELV $399
 line 823
 ;823:	if (bi->actionflags & ACTION_GETFLAG) ucmd->buttons |= BUTTON_GETFLAG;
 ADDRFP4 0
@@ -4684,7 +4684,7 @@ INDIRI4
 CNSTI4 8388608
 BANDI4
 CNSTI4 0
-EQI4 $399
+EQI4 $401
 ADDRLP4 76
 ADDRFP4 4
 INDIRP4
@@ -4699,7 +4699,7 @@ INDIRI4
 CNSTI4 128
 BORI4
 ASGNI4
-LABELV $399
+LABELV $401
 line 824
 ;824:	if (bi->actionflags & ACTION_GUARDBASE) ucmd->buttons |= BUTTON_GUARDBASE;
 ADDRFP4 0
@@ -4710,7 +4710,7 @@ INDIRI4
 CNSTI4 16777216
 BANDI4
 CNSTI4 0
-EQI4 $401
+EQI4 $403
 ADDRLP4 80
 ADDRFP4 4
 INDIRP4
@@ -4725,7 +4725,7 @@ INDIRI4
 CNSTI4 256
 BORI4
 ASGNI4
-LABELV $401
+LABELV $403
 line 825
 ;825:	if (bi->actionflags & ACTION_PATROL) ucmd->buttons |= BUTTON_PATROL;
 ADDRFP4 0
@@ -4736,7 +4736,7 @@ INDIRI4
 CNSTI4 33554432
 BANDI4
 CNSTI4 0
-EQI4 $403
+EQI4 $405
 ADDRLP4 84
 ADDRFP4 4
 INDIRP4
@@ -4751,7 +4751,7 @@ INDIRI4
 CNSTI4 512
 BORI4
 ASGNI4
-LABELV $403
+LABELV $405
 line 826
 ;826:	if (bi->actionflags & ACTION_FOLLOWME) ucmd->buttons |= BUTTON_FOLLOWME;
 ADDRFP4 0
@@ -4762,7 +4762,7 @@ INDIRI4
 CNSTI4 134217728
 BANDI4
 CNSTI4 0
-EQI4 $405
+EQI4 $407
 ADDRLP4 88
 ADDRFP4 4
 INDIRP4
@@ -4777,7 +4777,7 @@ INDIRI4
 CNSTI4 1024
 BORI4
 ASGNI4
-LABELV $405
+LABELV $407
 line 828
 ;827:	//
 ;828:	ucmd->weapon = bi->weapon;
@@ -4858,7 +4858,7 @@ line 835
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $407
+LABELV $409
 line 836
 ;836:		temp = ucmd->angles[j] - delta_angles[j];
 ADDRLP4 92
@@ -4909,7 +4909,7 @@ CVII4 2
 ASGNI4
 line 845
 ;845:	}
-LABELV $408
+LABELV $410
 line 835
 ADDRLP4 0
 ADDRLP4 0
@@ -4920,7 +4920,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $407
+LTI4 $409
 line 849
 ;846:	//NOTE: movement is relative to the REAL view angles
 ;847:	//get the horizontal forward and right vector
@@ -4932,7 +4932,7 @@ CNSTI4 12
 ADDP4
 INDIRF4
 CNSTF4 0
-EQF4 $411
+EQF4 $413
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -4940,15 +4940,15 @@ CNSTI4 20
 ADDP4
 INDIRF4
 ASGNF4
-ADDRGP4 $412
+ADDRGP4 $414
 JUMPV
-LABELV $411
+LABELV $413
 line 850
 ;850:	else angles[PITCH] = 0;
 ADDRLP4 20
 CNSTF4 0
 ASGNF4
-LABELV $412
+LABELV $414
 line 851
 ;851:	angles[YAW] = bi->viewangles[YAW];
 ADDRLP4 20+4
@@ -5133,7 +5133,7 @@ INDIRI4
 CNSTI4 512
 BANDI4
 CNSTI4 0
-EQI4 $420
+EQI4 $422
 ADDRLP4 112
 ADDRFP4 4
 INDIRP4
@@ -5150,7 +5150,7 @@ CNSTI4 127
 ADDI4
 CVII1 4
 ASGNI1
-LABELV $420
+LABELV $422
 line 862
 ;862:	if (bi->actionflags & ACTION_MOVEBACK) ucmd->forwardmove -= 127;
 ADDRFP4 0
@@ -5161,7 +5161,7 @@ INDIRI4
 CNSTI4 2048
 BANDI4
 CNSTI4 0
-EQI4 $422
+EQI4 $424
 ADDRLP4 116
 ADDRFP4 4
 INDIRP4
@@ -5178,7 +5178,7 @@ CNSTI4 127
 SUBI4
 CVII1 4
 ASGNI1
-LABELV $422
+LABELV $424
 line 863
 ;863:	if (bi->actionflags & ACTION_MOVELEFT) ucmd->rightmove -= 127;
 ADDRFP4 0
@@ -5189,7 +5189,7 @@ INDIRI4
 CNSTI4 4096
 BANDI4
 CNSTI4 0
-EQI4 $424
+EQI4 $426
 ADDRLP4 120
 ADDRFP4 4
 INDIRP4
@@ -5206,7 +5206,7 @@ CNSTI4 127
 SUBI4
 CVII1 4
 ASGNI1
-LABELV $424
+LABELV $426
 line 864
 ;864:	if (bi->actionflags & ACTION_MOVERIGHT) ucmd->rightmove += 127;
 ADDRFP4 0
@@ -5217,7 +5217,7 @@ INDIRI4
 CNSTI4 8192
 BANDI4
 CNSTI4 0
-EQI4 $426
+EQI4 $428
 ADDRLP4 124
 ADDRFP4 4
 INDIRP4
@@ -5234,7 +5234,7 @@ CNSTI4 127
 ADDI4
 CVII1 4
 ASGNI1
-LABELV $426
+LABELV $428
 line 866
 ;865:	//jump/moveup
 ;866:	if (bi->actionflags & ACTION_JUMP) ucmd->upmove += 127;
@@ -5246,7 +5246,7 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $428
+EQI4 $430
 ADDRLP4 128
 ADDRFP4 4
 INDIRP4
@@ -5263,7 +5263,7 @@ CNSTI4 127
 ADDI4
 CVII1 4
 ASGNI1
-LABELV $428
+LABELV $430
 line 868
 ;867:	//crouch/movedown
 ;868:	if (bi->actionflags & ACTION_CROUCH) ucmd->upmove -= 127;
@@ -5275,7 +5275,7 @@ INDIRI4
 CNSTI4 128
 BANDI4
 CNSTI4 0
-EQI4 $430
+EQI4 $432
 ADDRLP4 132
 ADDRFP4 4
 INDIRP4
@@ -5292,13 +5292,13 @@ CNSTI4 127
 SUBI4
 CVII1 4
 ASGNI1
-LABELV $430
+LABELV $432
 line 872
 ;869:	//
 ;870:	//Com_Printf("forward = %d right = %d up = %d\n", ucmd.forwardmove, ucmd.rightmove, ucmd.upmove);
 ;871:	//Com_Printf("ucmd->serverTime = %d\n", ucmd->serverTime);
 ;872:}
-LABELV $380
+LABELV $382
 endproc BotInputToUserCommand 136 16
 export BotUpdateInput
 proc BotUpdateInput 64 16
@@ -5319,7 +5319,7 @@ line 884
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $433
+LABELV $435
 line 885
 ;885:		bs->viewangles[j] = AngleMod(bs->viewangles[j] + SHORT2ANGLE(bs->cur_ps.delta_angles[j]));
 ADDRLP4 44
@@ -5368,7 +5368,7 @@ INDIRF4
 ASGNF4
 line 886
 ;886:	}
-LABELV $434
+LABELV $436
 line 884
 ADDRLP4 0
 ADDRLP4 0
@@ -5379,7 +5379,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $433
+LTI4 $435
 line 888
 ;887:	//change the bot view angles
 ;888:	BotChangeViewAngles(bs, (float) elapsed_time / 1000);
@@ -5423,7 +5423,7 @@ INDIRI4
 CNSTI4 8
 BANDI4
 CNSTI4 0
-EQI4 $437
+EQI4 $439
 line 893
 ;893:		if (bs->lastucmd.buttons & BUTTON_ATTACK) bi.actionflags &= ~(ACTION_RESPAWN|ACTION_ATTACK);
 ADDRFP4 0
@@ -5434,17 +5434,17 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $440
+EQI4 $442
 ADDRLP4 4+32
 ADDRLP4 4+32
 INDIRI4
 CNSTI4 -10
 BANDI4
 ASGNI4
-LABELV $440
+LABELV $442
 line 894
 ;894:	}
-LABELV $437
+LABELV $439
 line 896
 ;895:	//convert the bot input to a usercmd
 ;896:	BotInputToUserCommand(&bi, &bs->lastucmd, bs->cur_ps.delta_angles, time);
@@ -5476,7 +5476,7 @@ line 898
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $443
+LABELV $445
 line 899
 ;899:		bs->viewangles[j] = AngleMod(bs->viewangles[j] - SHORT2ANGLE(bs->cur_ps.delta_angles[j]));
 ADDRLP4 48
@@ -5525,7 +5525,7 @@ INDIRF4
 ASGNF4
 line 900
 ;900:	}
-LABELV $444
+LABELV $446
 line 898
 ADDRLP4 0
 ADDRLP4 0
@@ -5536,10 +5536,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $443
+LTI4 $445
 line 901
 ;901:}
-LABELV $432
+LABELV $434
 endproc BotUpdateInput 64 16
 export BotAIRegularUpdate
 proc BotAIRegularUpdate 0 0
@@ -5557,7 +5557,7 @@ ADDRGP4 regularupdate_time
 INDIRF4
 ADDRGP4 floattime
 INDIRF4
-GEF4 $448
+GEF4 $450
 line 910
 ;910:		trap_BotUpdateEntityItems();
 ADDRGP4 trap_BotUpdateEntityItems
@@ -5573,10 +5573,10 @@ ADDF4
 ASGNF4
 line 912
 ;912:	}
-LABELV $448
+LABELV $450
 line 913
 ;913:}
-LABELV $447
+LABELV $449
 endproc BotAIRegularUpdate 0 0
 export RemoveColorEscapeSequences
 proc RemoveColorEscapeSequences 28 0
@@ -5600,9 +5600,9 @@ line 924
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $454
+ADDRGP4 $456
 JUMPV
-LABELV $451
+LABELV $453
 line 925
 ;925:		if (Q_IsColorString(&text[i])) {
 ADDRLP4 8
@@ -5616,7 +5616,7 @@ ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $455
+EQU4 $457
 ADDRLP4 12
 CNSTI4 94
 ASGNI4
@@ -5626,7 +5626,7 @@ INDIRI1
 CVII4 1
 ADDRLP4 12
 INDIRI4
-NEI4 $455
+NEI4 $457
 ADDRLP4 16
 ADDRLP4 8
 INDIRP4
@@ -5638,12 +5638,12 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $455
+EQI4 $457
 ADDRLP4 16
 INDIRI4
 ADDRLP4 12
 INDIRI4
-EQI4 $455
+EQI4 $457
 line 926
 ;926:			i++;
 ADDRLP4 0
@@ -5654,9 +5654,9 @@ ADDI4
 ASGNI4
 line 927
 ;927:			continue;
-ADDRGP4 $452
+ADDRGP4 $454
 JUMPV
-LABELV $455
+LABELV $457
 line 929
 ;928:		}
 ;929:		if (text[i] > 0x7E)
@@ -5668,12 +5668,12 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 126
-LEI4 $457
+LEI4 $459
 line 930
 ;930:			continue;
-ADDRGP4 $452
+ADDRGP4 $454
 JUMPV
-LABELV $457
+LABELV $459
 line 931
 ;931:		text[l++] = text[i];
 ADDRLP4 20
@@ -5704,7 +5704,7 @@ INDIRI1
 ASGNI1
 line 932
 ;932:	}
-LABELV $452
+LABELV $454
 line 924
 ADDRLP4 0
 ADDRLP4 0
@@ -5712,7 +5712,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $454
+LABELV $456
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -5721,7 +5721,7 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $451
+NEI4 $453
 line 933
 ;933:	text[l] = '\0';
 ADDRLP4 4
@@ -5733,7 +5733,7 @@ CNSTI1 0
 ASGNI1
 line 934
 ;934:}
-LABELV $450
+LABELV $452
 endproc RemoveColorEscapeSequences 28 0
 export BotAI
 proc BotAI 1088 12
@@ -5775,18 +5775,18 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $462
+EQU4 $464
 ADDRLP4 4
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $460
-LABELV $462
+NEI4 $462
+LABELV $464
 line 950
 ;950:		BotAI_Print(PRT_FATAL, "BotAI: client %d is not setup\n", client);
 CNSTI4 4
 ARGI4
-ADDRGP4 $463
+ADDRGP4 $465
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -5798,9 +5798,9 @@ line 951
 ;951:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $459
+ADDRGP4 $461
 JUMPV
-LABELV $460
+LABELV $462
 line 955
 ;952:	}
 ;953:
@@ -5817,9 +5817,9 @@ ARGP4
 ADDRGP4 BotAI_GetClientState
 CALLI4
 pop
-ADDRGP4 $465
+ADDRGP4 $467
 JUMPV
-LABELV $464
+LABELV $466
 line 958
 ;956:
 ;957:	//retrieve any waiting server commands
@@ -5845,10 +5845,10 @@ ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $467
-ADDRGP4 $465
+NEU4 $469
+ADDRGP4 $467
 JUMPV
-LABELV $467
+LABELV $469
 line 962
 ;962:		*args++ = '\0';
 ADDRLP4 1044
@@ -5880,7 +5880,7 @@ line 967
 ;967:		if (!Q_stricmp(buf, "cp "))
 ADDRLP4 12
 ARGP4
-ADDRGP4 $471
+ADDRGP4 $473
 ARGP4
 ADDRLP4 1048
 ADDRGP4 Q_stricmp
@@ -5889,17 +5889,17 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-NEI4 $469
+NEI4 $471
 line 968
 ;968:			{ /*CenterPrintf*/ }
-ADDRGP4 $470
+ADDRGP4 $472
 JUMPV
-LABELV $469
+LABELV $471
 line 969
 ;969:		else if (!Q_stricmp(buf, "cs"))
 ADDRLP4 12
 ARGP4
-ADDRGP4 $474
+ADDRGP4 $476
 ARGP4
 ADDRLP4 1052
 ADDRGP4 Q_stricmp
@@ -5908,17 +5908,17 @@ ASGNI4
 ADDRLP4 1052
 INDIRI4
 CNSTI4 0
-NEI4 $472
+NEI4 $474
 line 970
 ;970:			{ /*ConfigStringModified*/ }
-ADDRGP4 $473
+ADDRGP4 $475
 JUMPV
-LABELV $472
+LABELV $474
 line 971
 ;971:		else if (!Q_stricmp(buf, "print")) {
 ADDRLP4 12
 ARGP4
-ADDRGP4 $477
+ADDRGP4 $479
 ARGP4
 ADDRLP4 1056
 ADDRGP4 Q_stricmp
@@ -5927,7 +5927,7 @@ ASGNI4
 ADDRLP4 1056
 INDIRI4
 CNSTI4 0
-NEI4 $475
+NEI4 $477
 line 973
 ;972:			//remove first and last quote from the chat message
 ;973:			memmove(args, args+1, strlen(args));
@@ -5988,14 +5988,14 @@ CALLV
 pop
 line 976
 ;976:		}
-ADDRGP4 $476
+ADDRGP4 $478
 JUMPV
-LABELV $475
+LABELV $477
 line 977
 ;977:		else if (!Q_stricmp(buf, "chat")) {
 ADDRLP4 12
 ARGP4
-ADDRGP4 $480
+ADDRGP4 $482
 ARGP4
 ADDRLP4 1060
 ADDRGP4 Q_stricmp
@@ -6004,7 +6004,7 @@ ASGNI4
 ADDRLP4 1060
 INDIRI4
 CNSTI4 0
-NEI4 $478
+NEI4 $480
 line 979
 ;978:			//remove first and last quote from the chat message
 ;979:			memmove(args, args+1, strlen(args));
@@ -6065,14 +6065,14 @@ CALLV
 pop
 line 982
 ;982:		}
-ADDRGP4 $479
+ADDRGP4 $481
 JUMPV
-LABELV $478
+LABELV $480
 line 983
 ;983:		else if (!Q_stricmp(buf, "tchat")) {
 ADDRLP4 12
 ARGP4
-ADDRGP4 $483
+ADDRGP4 $485
 ARGP4
 ADDRLP4 1064
 ADDRGP4 Q_stricmp
@@ -6081,7 +6081,7 @@ ASGNI4
 ADDRLP4 1064
 INDIRI4
 CNSTI4 0
-NEI4 $481
+NEI4 $483
 line 985
 ;984:			//remove first and last quote from the chat message
 ;985:			memmove(args, args+1, strlen(args));
@@ -6142,9 +6142,9 @@ CALLV
 pop
 line 988
 ;988:		}
-ADDRGP4 $482
+ADDRGP4 $484
 JUMPV
-LABELV $481
+LABELV $483
 line 1000
 ;989:#ifdef MISSIONPACK
 ;990:		else if (!Q_stricmp(buf, "vchat")) {
@@ -6160,7 +6160,7 @@ line 1000
 ;1000:		else if (!Q_stricmp(buf, "scores"))
 ADDRLP4 12
 ARGP4
-ADDRGP4 $486
+ADDRGP4 $488
 ARGP4
 ADDRLP4 1068
 ADDRGP4 Q_stricmp
@@ -6169,17 +6169,17 @@ ASGNI4
 ADDRLP4 1068
 INDIRI4
 CNSTI4 0
-NEI4 $484
+NEI4 $486
 line 1001
 ;1001:			{ /*FIXME: parse scores?*/ }
-ADDRGP4 $485
+ADDRGP4 $487
 JUMPV
-LABELV $484
+LABELV $486
 line 1002
 ;1002:		else if (!Q_stricmp(buf, "clientLevelShot"))
 ADDRLP4 12
 ARGP4
-ADDRGP4 $489
+ADDRGP4 $491
 ARGP4
 ADDRLP4 1072
 ADDRGP4 Q_stricmp
@@ -6188,19 +6188,19 @@ ASGNI4
 ADDRLP4 1072
 INDIRI4
 CNSTI4 0
-NEI4 $487
+NEI4 $489
 line 1003
 ;1003:			{ /*ignore*/ }
+LABELV $489
 LABELV $487
-LABELV $485
-LABELV $482
-LABELV $479
-LABELV $476
-LABELV $473
-LABELV $470
+LABELV $484
+LABELV $481
+LABELV $478
+LABELV $475
+LABELV $472
 line 1004
 ;1004:	}
-LABELV $465
+LABELV $467
 line 958
 ADDRFP4 0
 INDIRI4
@@ -6216,14 +6216,14 @@ ASGNI4
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-NEI4 $464
+NEI4 $466
 line 1006
 ;1005:	//add the delta angles to the bot's current view angles
 ;1006:	for (j = 0; j < 3; j++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $490
+LABELV $492
 line 1007
 ;1007:		bs->viewangles[j] = AngleMod(bs->viewangles[j] + SHORT2ANGLE(bs->cur_ps.delta_angles[j]));
 ADDRLP4 1044
@@ -6268,7 +6268,7 @@ INDIRF4
 ASGNF4
 line 1008
 ;1008:	}
-LABELV $491
+LABELV $493
 line 1006
 ADDRLP4 0
 ADDRLP4 0
@@ -6279,7 +6279,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $490
+LTI4 $492
 line 1010
 ;1009:	//increase the local time of the bot
 ;1010:	bs->ltime += thinktime;
@@ -6392,7 +6392,7 @@ line 1023
 ADDRGP4 g_instagib+12
 INDIRI4
 CNSTI4 0
-NEI4 $494
+NEI4 $496
 line 1024
 ;1024:	trap_EA_SelectWeapon(bs->client, bs->weaponnum);
 ADDRLP4 4
@@ -6412,7 +6412,7 @@ CALLV
 pop
 line 1025
 ;1025:	}
-LABELV $494
+LABELV $496
 line 1028
 ;1026:
 ;1027:	//subtract the delta angles
@@ -6420,7 +6420,7 @@ line 1028
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $497
+LABELV $499
 line 1029
 ;1029:		bs->viewangles[j] = AngleMod(bs->viewangles[j] - SHORT2ANGLE(bs->cur_ps.delta_angles[j]));
 ADDRLP4 1072
@@ -6465,7 +6465,7 @@ INDIRF4
 ASGNF4
 line 1030
 ;1030:	}
-LABELV $498
+LABELV $500
 line 1028
 ADDRLP4 0
 ADDRLP4 0
@@ -6476,13 +6476,13 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $497
+LTI4 $499
 line 1032
 ;1031:	//everything was ok
 ;1032:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $459
+LABELV $461
 endproc BotAI 1088 12
 export BotScheduleBotThink
 proc BotScheduleBotThink 12 0
@@ -6508,7 +6508,7 @@ line 1045
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $502
+LABELV $504
 line 1046
 ;1046:		if( !botstates[i] || !botstates[i]->inuse ) {
 ADDRLP4 8
@@ -6524,18 +6524,18 @@ ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $508
+EQU4 $510
 ADDRLP4 8
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $506
-LABELV $508
+NEI4 $508
+LABELV $510
 line 1047
 ;1047:			continue;
-ADDRGP4 $503
+ADDRGP4 $505
 JUMPV
-LABELV $506
+LABELV $508
 line 1050
 ;1048:		}
 ;1049:		//initialize the bot think residual time
@@ -6568,7 +6568,7 @@ ADDI4
 ASGNI4
 line 1052
 ;1052:	}
-LABELV $503
+LABELV $505
 line 1045
 ADDRLP4 0
 ADDRLP4 0
@@ -6579,10 +6579,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $502
+LTI4 $504
 line 1053
 ;1053:}
-LABELV $501
+LABELV $503
 endproc BotScheduleBotThink 12 0
 export BotWriteSessionData
 proc BotWriteSessionData 20 72
@@ -6599,7 +6599,7 @@ line 1064
 ;1062:	const char	*var;
 ;1063:
 ;1064:	s = va(
-ADDRGP4 $511
+ADDRGP4 $513
 ARGP4
 ADDRLP4 8
 ADDRFP4 0
@@ -6740,7 +6740,7 @@ line 1088
 ;1086:		);
 ;1087:
 ;1088:	var = va( "botsession%i", bs->client );
-ADDRGP4 $512
+ADDRGP4 $514
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -6770,7 +6770,7 @@ CALLV
 pop
 line 1091
 ;1091:}
-LABELV $510
+LABELV $512
 endproc BotWriteSessionData 20 72
 export BotReadSessionData
 proc BotReadSessionData 1036 76
@@ -6787,7 +6787,7 @@ line 1102
 ;1100:	const char	*var;
 ;1101:
 ;1102:	var = va( "botsession%i", bs->client );
-ADDRGP4 $512
+ADDRGP4 $514
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -6820,7 +6820,7 @@ line 1105
 ;1105:	sscanf(s,
 ADDRLP4 0
 ARGP4
-ADDRGP4 $511
+ADDRGP4 $513
 ARGP4
 ADDRLP4 1032
 ADDRFP4 0
@@ -6938,7 +6938,7 @@ line 1128
 ;1126:		&bs->lastgoal_teamgoal.maxs[2]
 ;1127:		);
 ;1128:}
-LABELV $513
+LABELV $515
 endproc BotReadSessionData 1036 76
 export BotAISetupClient
 proc BotAISetupClient 512 16
@@ -6965,7 +6965,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $515
+NEU4 $517
 CNSTI4 9088
 ARGI4
 ADDRLP4 440
@@ -6981,7 +6981,7 @@ ADDP4
 ADDRLP4 440
 INDIRP4
 ASGNP4
-LABELV $515
+LABELV $517
 line 1141
 ;1141:	bs = botstates[client];
 ADDRLP4 0
@@ -7000,17 +7000,17 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $517
+EQU4 $519
 ADDRLP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-EQI4 $517
+EQI4 $519
 line 1144
 ;1144:		BotAI_Print(PRT_FATAL, "BotAISetupClient: client %d already setup\n", client);
 CNSTI4 4
 ARGI4
-ADDRGP4 $519
+ADDRGP4 $521
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -7022,9 +7022,9 @@ line 1145
 ;1145:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $514
+ADDRGP4 $516
 JUMPV
-LABELV $517
+LABELV $519
 line 1148
 ;1146:	}
 ;1147:
@@ -7036,12 +7036,12 @@ ASGNI4
 ADDRLP4 448
 INDIRI4
 CNSTI4 0
-NEI4 $520
+NEI4 $522
 line 1149
 ;1149:		BotAI_Print(PRT_FATAL, "AAS not initialized\n");
 CNSTI4 4
 ARGI4
-ADDRGP4 $522
+ADDRGP4 $524
 ARGP4
 ADDRGP4 BotAI_Print
 CALLV
@@ -7050,9 +7050,9 @@ line 1150
 ;1150:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $514
+ADDRGP4 $516
 JUMPV
-LABELV $520
+LABELV $522
 line 1154
 ;1151:	}
 ;1152:
@@ -7090,12 +7090,12 @@ CNSTI4 6520
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $523
+NEI4 $525
 line 1156
 ;1156:		BotAI_Print(PRT_FATAL, "couldn't load skill %f from %s\n", settings->skill, settings->characterfile);
 CNSTI4 4
 ARGI4
-ADDRGP4 $525
+ADDRGP4 $527
 ARGP4
 ADDRLP4 460
 ADDRFP4 4
@@ -7117,9 +7117,9 @@ line 1157
 ;1157:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $514
+ADDRGP4 $516
 JUMPV
-LABELV $523
+LABELV $525
 line 1160
 ;1158:	}
 ;1159:	//copy the settings
@@ -7195,7 +7195,7 @@ line 1166
 ADDRLP4 148
 INDIRI4
 CNSTI4 0
-EQI4 $526
+EQI4 $528
 line 1167
 ;1167:		trap_BotFreeGoalState(bs->gs);
 ADDRLP4 0
@@ -7211,9 +7211,9 @@ line 1168
 ;1168:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $514
+ADDRGP4 $516
 JUMPV
-LABELV $526
+LABELV $528
 line 1171
 ;1169:	}
 ;1170:	//allocate a weapon state
@@ -7270,7 +7270,7 @@ line 1175
 ADDRLP4 148
 INDIRI4
 CNSTI4 0
-EQI4 $528
+EQI4 $530
 line 1176
 ;1176:		trap_BotFreeGoalState(bs->gs);
 ADDRLP4 0
@@ -7297,9 +7297,9 @@ line 1178
 ;1178:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $514
+ADDRGP4 $516
 JUMPV
-LABELV $528
+LABELV $530
 line 1181
 ;1179:	}
 ;1180:	//allocate a chat state
@@ -7375,7 +7375,7 @@ line 1186
 ADDRLP4 148
 INDIRI4
 CNSTI4 0
-EQI4 $530
+EQI4 $532
 line 1187
 ;1187:		trap_BotFreeChatState(bs->cs);
 ADDRLP4 0
@@ -7413,9 +7413,9 @@ line 1190
 ;1190:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $514
+ADDRGP4 $516
 JUMPV
-LABELV $530
+LABELV $532
 line 1193
 ;1191:	}
 ;1192:	//get the gender characteristic
@@ -7446,12 +7446,12 @@ ASGNI4
 ADDRLP4 484
 INDIRI4
 CNSTI4 102
-EQI4 $534
+EQI4 $536
 ADDRLP4 484
 INDIRI4
 CNSTI4 70
-NEI4 $532
-LABELV $534
+NEI4 $534
+LABELV $536
 ADDRLP4 0
 INDIRP4
 CNSTI4 6532
@@ -7463,9 +7463,9 @@ ARGI4
 ADDRGP4 trap_BotSetChatGender
 CALLV
 pop
-ADDRGP4 $533
+ADDRGP4 $535
 JUMPV
-LABELV $532
+LABELV $534
 line 1196
 ;1196:	else if (*gender == 'm' || *gender == 'M') trap_BotSetChatGender(bs->cs, CHAT_GENDERMALE);
 ADDRLP4 488
@@ -7476,12 +7476,12 @@ ASGNI4
 ADDRLP4 488
 INDIRI4
 CNSTI4 109
-EQI4 $537
+EQI4 $539
 ADDRLP4 488
 INDIRI4
 CNSTI4 77
-NEI4 $535
-LABELV $537
+NEI4 $537
+LABELV $539
 ADDRLP4 0
 INDIRP4
 CNSTI4 6532
@@ -7493,9 +7493,9 @@ ARGI4
 ADDRGP4 trap_BotSetChatGender
 CALLV
 pop
-ADDRGP4 $536
+ADDRGP4 $538
 JUMPV
-LABELV $535
+LABELV $537
 line 1197
 ;1197:	else trap_BotSetChatGender(bs->cs, CHAT_GENDERLESS);
 ADDRLP4 0
@@ -7509,8 +7509,8 @@ ARGI4
 ADDRGP4 trap_BotSetChatGender
 CALLV
 pop
-LABELV $536
-LABELV $533
+LABELV $538
+LABELV $535
 line 1199
 ;1198:
 ;1199:	bs->inuse = qtrue;
@@ -7607,7 +7607,7 @@ ASGNI4
 line 1208
 ;1207:
 ;1208:	if (trap_Cvar_VariableIntegerValue("bot_testichat")) {
-ADDRGP4 $540
+ADDRGP4 $542
 ARGP4
 ADDRLP4 508
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -7616,12 +7616,12 @@ ASGNI4
 ADDRLP4 508
 INDIRI4
 CNSTI4 0
-EQI4 $538
+EQI4 $540
 line 1209
 ;1209:		trap_BotLibVarSet("bot_testichat", "1");
-ADDRGP4 $540
+ADDRGP4 $542
 ARGP4
-ADDRGP4 $314
+ADDRGP4 $316
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
@@ -7636,7 +7636,7 @@ CALLV
 pop
 line 1211
 ;1211:	}
-LABELV $538
+LABELV $540
 line 1213
 ;1212:	//NOTE: reschedule the bot thinking
 ;1213:	BotScheduleBotThink();
@@ -7649,7 +7649,7 @@ line 1215
 ADDRGP4 bot_interbreed
 INDIRI4
 CNSTI4 0
-EQI4 $541
+EQI4 $543
 line 1216
 ;1216:		trap_BotMutateGoalFuzzyLogic(bs->gs, 1);
 ADDRLP4 0
@@ -7665,14 +7665,14 @@ CALLV
 pop
 line 1217
 ;1217:	}
-LABELV $541
+LABELV $543
 line 1219
 ;1218:	// if we kept the bot client
 ;1219:	if (restart) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $543
+EQI4 $545
 line 1220
 ;1220:		BotReadSessionData(bs);
 ADDRLP4 0
@@ -7683,13 +7683,13 @@ CALLV
 pop
 line 1221
 ;1221:	}
-LABELV $543
+LABELV $545
 line 1223
 ;1222:	//bot has been setup succesfully
 ;1223:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $514
+LABELV $516
 endproc BotAISetupClient 512 16
 export BotAIShutdownClient
 proc BotAIShutdownClient 16 12
@@ -7721,21 +7721,21 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $548
+EQU4 $550
 ADDRLP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $546
-LABELV $548
+NEI4 $548
+LABELV $550
 line 1237
 ;1236:		//BotAI_Print(PRT_ERROR, "BotAIShutdownClient: client %d already shutdown\n", client);
 ;1237:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $545
+ADDRGP4 $547
 JUMPV
-LABELV $546
+LABELV $548
 line 1240
 ;1238:	}
 ;1239:
@@ -7743,7 +7743,7 @@ line 1240
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $549
+EQI4 $551
 line 1241
 ;1241:		BotWriteSessionData(bs);
 ADDRLP4 0
@@ -7754,7 +7754,7 @@ CALLV
 pop
 line 1242
 ;1242:	}
-LABELV $549
+LABELV $551
 line 1244
 ;1243:
 ;1244:	if (BotChat_ExitGame(bs)) {
@@ -7768,7 +7768,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $551
+EQI4 $553
 line 1245
 ;1245:		trap_BotEnterChat(bs->cs, bs->client, CHAT_ALL);
 ADDRLP4 0
@@ -7790,7 +7790,7 @@ CALLV
 pop
 line 1246
 ;1246:	}
-LABELV $551
+LABELV $553
 line 1248
 ;1247:
 ;1248:	trap_BotFreeMoveState(bs->ms);
@@ -7922,7 +7922,7 @@ line 1269
 ;1269:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $545
+LABELV $547
 endproc BotAIShutdownClient 16 12
 export BotResetState
 proc BotResetState 796 12
@@ -8206,7 +8206,7 @@ CNSTI4 6524
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $554
+EQI4 $556
 ADDRFP4 0
 INDIRP4
 CNSTI4 6524
@@ -8216,7 +8216,7 @@ ARGI4
 ADDRGP4 trap_BotResetMoveState
 CALLV
 pop
-LABELV $554
+LABELV $556
 line 1319
 ;1319:	if (bs->gs) trap_BotResetGoalState(bs->gs);
 ADDRFP4 0
@@ -8225,7 +8225,7 @@ CNSTI4 6528
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $556
+EQI4 $558
 ADDRFP4 0
 INDIRP4
 CNSTI4 6528
@@ -8235,7 +8235,7 @@ ARGI4
 ADDRGP4 trap_BotResetGoalState
 CALLV
 pop
-LABELV $556
+LABELV $558
 line 1320
 ;1320:	if (bs->ws) trap_BotResetWeaponState(bs->ws);
 ADDRFP4 0
@@ -8244,7 +8244,7 @@ CNSTI4 6536
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $558
+EQI4 $560
 ADDRFP4 0
 INDIRP4
 CNSTI4 6536
@@ -8254,7 +8254,7 @@ ARGI4
 ADDRGP4 trap_BotResetWeaponState
 CALLV
 pop
-LABELV $558
+LABELV $560
 line 1321
 ;1321:	if (bs->gs) trap_BotResetAvoidGoals(bs->gs);
 ADDRFP4 0
@@ -8263,7 +8263,7 @@ CNSTI4 6528
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $560
+EQI4 $562
 ADDRFP4 0
 INDIRP4
 CNSTI4 6528
@@ -8273,7 +8273,7 @@ ARGI4
 ADDRGP4 trap_BotResetAvoidGoals
 CALLV
 pop
-LABELV $560
+LABELV $562
 line 1322
 ;1322:	if (bs->ms) trap_BotResetAvoidReach(bs->ms);
 ADDRFP4 0
@@ -8282,7 +8282,7 @@ CNSTI4 6524
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $562
+EQI4 $564
 ADDRFP4 0
 INDIRP4
 CNSTI4 6524
@@ -8292,10 +8292,10 @@ ARGI4
 ADDRGP4 trap_BotResetAvoidReach
 CALLV
 pop
-LABELV $562
+LABELV $564
 line 1323
 ;1323:}
-LABELV $553
+LABELV $555
 endproc BotResetState 796 12
 export BotAILoadMap
 proc BotAILoadMap 280 16
@@ -8315,14 +8315,14 @@ line 1334
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $565
+NEI4 $567
 line 1335
 ;1335:		trap_Cvar_Register( &mapname, "mapname", "", CVAR_SERVERINFO | CVAR_ROM );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $567
+ADDRGP4 $569
 ARGP4
-ADDRGP4 $298
+ADDRGP4 $300
 ARGP4
 CNSTI4 68
 ARGI4
@@ -8338,14 +8338,14 @@ CALLI4
 pop
 line 1337
 ;1337:	}
-LABELV $565
+LABELV $567
 line 1339
 ;1338:
 ;1339:	for (i = 0; i < MAX_CLIENTS; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $569
+LABELV $571
 line 1340
 ;1340:		if (botstates[i] && botstates[i]->inuse) {
 ADDRLP4 276
@@ -8361,12 +8361,12 @@ ADDRLP4 276
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $573
+EQU4 $575
 ADDRLP4 276
 INDIRP4
 INDIRI4
 CNSTI4 0
-EQI4 $573
+EQI4 $575
 line 1341
 ;1341:			BotResetState( botstates[i] );
 ADDRLP4 0
@@ -8395,10 +8395,10 @@ CNSTI4 4
 ASGNI4
 line 1343
 ;1343:		}
-LABELV $573
+LABELV $575
 line 1344
 ;1344:	}
-LABELV $570
+LABELV $572
 line 1339
 ADDRLP4 0
 ADDRLP4 0
@@ -8409,7 +8409,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $569
+LTI4 $571
 line 1346
 ;1345:
 ;1346:	BotSetupDeathmatchAI();
@@ -8421,17 +8421,17 @@ line 1348
 ;1348:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $564
+LABELV $566
 endproc BotAILoadMap 280 16
 bss
 align 4
-LABELV $576
-skip 4
-align 4
-LABELV $577
-skip 4
-align 4
 LABELV $578
+skip 4
+align 4
+LABELV $579
+skip 4
+align 4
+LABELV $580
 skip 4
 export BotAIStartFrame
 code
@@ -8539,7 +8539,7 @@ line 1382
 ADDRGP4 bot_report+12
 INDIRI4
 CNSTI4 0
-EQI4 $579
+EQI4 $581
 line 1385
 ;1383://		BotTeamplayReport();
 ;1384://		trap_Cvar_Set("bot_report", "0");
@@ -8549,21 +8549,21 @@ CALLV
 pop
 line 1386
 ;1386:	}
-LABELV $579
+LABELV $581
 line 1388
 ;1387:
 ;1388:	if (bot_pause.integer) {
 ADDRGP4 bot_pause+12
 INDIRI4
 CNSTI4 0
-EQI4 $582
+EQI4 $584
 line 1390
 ;1389:		// execute bot user commands every frame
 ;1390:		for( i = 0; i < MAX_CLIENTS; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $585
+LABELV $587
 line 1391
 ;1391:			if( !botstates[i] || !botstates[i]->inuse ) {
 ADDRLP4 128
@@ -8579,18 +8579,18 @@ ADDRLP4 128
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $591
+EQU4 $593
 ADDRLP4 128
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $589
-LABELV $591
+NEI4 $591
+LABELV $593
 line 1392
 ;1392:				continue;
-ADDRGP4 $586
+ADDRGP4 $588
 JUMPV
-LABELV $589
+LABELV $591
 line 1394
 ;1393:			}
 ;1394:			if( g_entities[i].client->pers.connected != CON_CONNECTED ) {
@@ -8605,12 +8605,12 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-EQI4 $592
+EQI4 $594
 line 1395
 ;1395:				continue;
-ADDRGP4 $586
+ADDRGP4 $588
 JUMPV
-LABELV $592
+LABELV $594
 line 1397
 ;1396:			}
 ;1397:			botstates[i]->lastucmd.forwardmove = 0;
@@ -8705,7 +8705,7 @@ CALLV
 pop
 line 1403
 ;1403:		}
-LABELV $586
+LABELV $588
 line 1390
 ADDRLP4 0
 ADDRLP4 0
@@ -8716,14 +8716,14 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $585
+LTI4 $587
 line 1404
 ;1404:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $575
+ADDRGP4 $577
 JUMPV
-LABELV $582
+LABELV $584
 line 1407
 ;1405:	}
 ;1406:
@@ -8731,55 +8731,55 @@ line 1407
 ADDRGP4 bot_memorydump+12
 INDIRI4
 CNSTI4 0
-EQI4 $595
+EQI4 $597
 line 1408
 ;1408:		trap_BotLibVarSet("memorydump", "1");
-ADDRGP4 $598
+ADDRGP4 $600
 ARGP4
-ADDRGP4 $314
+ADDRGP4 $316
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
 line 1409
 ;1409:		trap_Cvar_Set("bot_memorydump", "0");
-ADDRGP4 $599
+ADDRGP4 $601
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 1410
 ;1410:	}
-LABELV $595
+LABELV $597
 line 1411
 ;1411:	if (bot_saveroutingcache.integer) {
 ADDRGP4 bot_saveroutingcache+12
 INDIRI4
 CNSTI4 0
-EQI4 $601
+EQI4 $603
 line 1412
 ;1412:		trap_BotLibVarSet("saveroutingcache", "1");
-ADDRGP4 $604
+ADDRGP4 $606
 ARGP4
-ADDRGP4 $314
+ADDRGP4 $316
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
 line 1413
 ;1413:		trap_Cvar_Set("bot_saveroutingcache", "0");
-ADDRGP4 $605
+ADDRGP4 $607
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 1414
 ;1414:	}
-LABELV $601
+LABELV $603
 line 1416
 ;1415:	//check if bot interbreeding is activated
 ;1416:	BotInterbreeding();
@@ -8792,30 +8792,30 @@ line 1418
 ADDRGP4 bot_thinktime+12
 INDIRI4
 CNSTI4 200
-LEI4 $606
+LEI4 $608
 line 1419
 ;1419:		trap_Cvar_Set("bot_thinktime", "200");
-ADDRGP4 $609
+ADDRGP4 $611
 ARGP4
-ADDRGP4 $610
+ADDRGP4 $612
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 1420
 ;1420:	}
-LABELV $606
+LABELV $608
 line 1422
 ;1421:	//if the bot think time changed we should reschedule the bots
 ;1422:	if (bot_thinktime.integer != lastbotthink_time) {
 ADDRGP4 bot_thinktime+12
 INDIRI4
-ADDRGP4 $578
+ADDRGP4 $580
 INDIRI4
-EQI4 $611
+EQI4 $613
 line 1423
 ;1423:		lastbotthink_time = bot_thinktime.integer;
-ADDRGP4 $578
+ADDRGP4 $580
 ADDRGP4 bot_thinktime+12
 INDIRI4
 ASGNI4
@@ -8826,20 +8826,20 @@ CALLV
 pop
 line 1425
 ;1425:	}
-LABELV $611
+LABELV $613
 line 1427
 ;1426:
 ;1427:	elapsed_time = time - local_time;
 ADDRLP4 120
 ADDRFP4 0
 INDIRI4
-ADDRGP4 $576
+ADDRGP4 $578
 INDIRI4
 SUBI4
 ASGNI4
 line 1428
 ;1428:	local_time = time;
-ADDRGP4 $576
+ADDRGP4 $578
 ADDRFP4 0
 INDIRI4
 ASGNI4
@@ -8847,7 +8847,7 @@ line 1430
 ;1429:
 ;1430:	botlib_residual += elapsed_time;
 ADDRLP4 128
-ADDRGP4 $577
+ADDRGP4 $579
 ASGNP4
 ADDRLP4 128
 INDIRP4
@@ -8865,34 +8865,34 @@ ADDRLP4 120
 INDIRI4
 ADDRGP4 bot_thinktime+12
 INDIRI4
-LEI4 $615
+LEI4 $617
 ADDRLP4 124
 ADDRLP4 120
 INDIRI4
 ASGNI4
-ADDRGP4 $616
+ADDRGP4 $618
 JUMPV
-LABELV $615
+LABELV $617
 line 1433
 ;1433:	else thinktime = bot_thinktime.integer;
 ADDRLP4 124
 ADDRGP4 bot_thinktime+12
 INDIRI4
 ASGNI4
-LABELV $616
+LABELV $618
 line 1436
 ;1434:
 ;1435:	// update the bot library
 ;1436:	if ( botlib_residual >= thinktime ) {
-ADDRGP4 $577
+ADDRGP4 $579
 INDIRI4
 ADDRLP4 124
 INDIRI4
-LTI4 $619
+LTI4 $621
 line 1437
 ;1437:		botlib_residual -= thinktime;
 ADDRLP4 132
-ADDRGP4 $577
+ADDRGP4 $579
 ASGNP4
 ADDRLP4 132
 INDIRP4
@@ -8925,12 +8925,12 @@ ASGNI4
 ADDRLP4 136
 INDIRI4
 CNSTI4 0
-NEI4 $621
+NEI4 $623
 CNSTI4 0
 RETI4
-ADDRGP4 $575
+ADDRGP4 $577
 JUMPV
-LABELV $621
+LABELV $623
 line 1444
 ;1442:
 ;1443:		//update entities in the botlib
@@ -8938,7 +8938,7 @@ line 1444
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $623
+LABELV $625
 line 1445
 ;1445:			ent = &g_entities[i];
 ADDRLP4 4
@@ -8957,7 +8957,7 @@ CNSTI4 520
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $627
+NEI4 $629
 line 1447
 ;1447:				trap_BotLibUpdateEntity(i, NULL);
 ADDRLP4 0
@@ -8970,9 +8970,9 @@ CALLI4
 pop
 line 1448
 ;1448:				continue;
-ADDRGP4 $624
+ADDRGP4 $626
 JUMPV
-LABELV $627
+LABELV $629
 line 1450
 ;1449:			}
 ;1450:			if (!ent->r.linked) {
@@ -8982,7 +8982,7 @@ CNSTI4 416
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $629
+NEI4 $631
 line 1451
 ;1451:				trap_BotLibUpdateEntity(i, NULL);
 ADDRLP4 0
@@ -8995,9 +8995,9 @@ CALLI4
 pop
 line 1452
 ;1452:				continue;
-ADDRGP4 $624
+ADDRGP4 $626
 JUMPV
-LABELV $629
+LABELV $631
 line 1454
 ;1453:			}
 ;1454:			if (ent->r.svFlags & SVF_NOCLIENT) {
@@ -9009,7 +9009,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $631
+EQI4 $633
 line 1455
 ;1455:				trap_BotLibUpdateEntity(i, NULL);
 ADDRLP4 0
@@ -9022,9 +9022,9 @@ CALLI4
 pop
 line 1456
 ;1456:				continue;
-ADDRGP4 $624
+ADDRGP4 $626
 JUMPV
-LABELV $631
+LABELV $633
 line 1459
 ;1457:			}
 ;1458:			// do not update missiles
@@ -9035,14 +9035,14 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $633
+NEI4 $635
 ADDRLP4 4
 INDIRP4
 CNSTI4 192
 ADDP4
 INDIRI4
 CNSTI4 10
-EQI4 $633
+EQI4 $635
 line 1460
 ;1460:				trap_BotLibUpdateEntity(i, NULL);
 ADDRLP4 0
@@ -9055,9 +9055,9 @@ CALLI4
 pop
 line 1461
 ;1461:				continue;
-ADDRGP4 $624
+ADDRGP4 $626
 JUMPV
-LABELV $633
+LABELV $635
 line 1464
 ;1462:			}
 ;1463:			// do not update event only entities
@@ -9068,7 +9068,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 13
-LEI4 $635
+LEI4 $637
 line 1465
 ;1465:				trap_BotLibUpdateEntity(i, NULL);
 ADDRLP4 0
@@ -9081,9 +9081,9 @@ CALLI4
 pop
 line 1466
 ;1466:				continue;
-ADDRGP4 $624
+ADDRGP4 $626
 JUMPV
-LABELV $635
+LABELV $637
 line 1478
 ;1467:			}
 ;1468:#ifdef MISSIONPACK
@@ -9121,7 +9121,7 @@ line 1481
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-GEI4 $638
+GEI4 $640
 line 1482
 ;1482:				VectorCopy(ent->s.apos.trBase, state.angles);
 ADDRLP4 8+20
@@ -9133,9 +9133,9 @@ INDIRB
 ASGNB 12
 line 1483
 ;1483:			} else {
-ADDRGP4 $639
+ADDRGP4 $641
 JUMPV
-LABELV $638
+LABELV $640
 line 1484
 ;1484:				VectorCopy(ent->r.currentAngles, state.angles);
 ADDRLP4 8+20
@@ -9147,7 +9147,7 @@ INDIRB
 ASGNB 12
 line 1485
 ;1485:			}
-LABELV $639
+LABELV $641
 line 1486
 ;1486:			VectorCopy(ent->s.origin2, state.old_origin);
 ADDRLP4 8+32
@@ -9201,19 +9201,19 @@ CNSTI4 432
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $646
+EQI4 $648
 ADDRLP4 8+72
 CNSTI4 3
 ASGNI4
-ADDRGP4 $647
+ADDRGP4 $649
 JUMPV
-LABELV $646
+LABELV $648
 line 1492
 ;1492:			else state.solid = SOLID_BBOX;
 ADDRLP4 8+72
 CNSTI4 2
 ASGNI4
-LABELV $647
+LABELV $649
 line 1493
 ;1493:			state.groundent = ent->s.groundEntityNum;
 ADDRLP4 8+68
@@ -9317,7 +9317,7 @@ CALLI4
 pop
 line 1505
 ;1505:		}
-LABELV $624
+LABELV $626
 line 1444
 ADDRLP4 0
 ADDRLP4 0
@@ -9328,7 +9328,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 1024
-LTI4 $623
+LTI4 $625
 line 1507
 ;1506:
 ;1507:		BotAIRegularUpdate();
@@ -9337,7 +9337,7 @@ CALLV
 pop
 line 1508
 ;1508:	}
-LABELV $619
+LABELV $621
 line 1510
 ;1509:
 ;1510:	floattime = trap_AAS_Time();
@@ -9356,7 +9356,7 @@ line 1513
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $660
+LABELV $662
 line 1514
 ;1514:		if( !botstates[i] || !botstates[i]->inuse ) {
 ADDRLP4 136
@@ -9372,18 +9372,18 @@ ADDRLP4 136
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $666
+EQU4 $668
 ADDRLP4 136
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $664
-LABELV $666
+NEI4 $666
+LABELV $668
 line 1515
 ;1515:			continue;
-ADDRGP4 $661
+ADDRGP4 $663
 JUMPV
-LABELV $664
+LABELV $666
 line 1518
 ;1516:		}
 ;1517:		//
@@ -9423,7 +9423,7 @@ ADDP4
 INDIRI4
 ADDRLP4 124
 INDIRI4
-LTI4 $667
+LTI4 $669
 line 1521
 ;1521:			botstates[i]->botthink_residual -= thinktime;
 ADDRLP4 144
@@ -9456,12 +9456,12 @@ ASGNI4
 ADDRLP4 148
 INDIRI4
 CNSTI4 0
-NEI4 $669
+NEI4 $671
 CNSTI4 0
 RETI4
-ADDRGP4 $575
+ADDRGP4 $577
 JUMPV
-LABELV $669
+LABELV $671
 line 1525
 ;1524:
 ;1525:			if (g_entities[i].client->pers.connected == CON_CONNECTED) {
@@ -9476,7 +9476,7 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $671
+NEI4 $673
 line 1526
 ;1526:				BotAI(i, (float) thinktime / 1000);
 ADDRLP4 0
@@ -9493,13 +9493,13 @@ CALLI4
 pop
 line 1527
 ;1527:			}
-LABELV $671
+LABELV $673
 line 1528
 ;1528:		}
-LABELV $667
+LABELV $669
 line 1529
 ;1529:	}
-LABELV $661
+LABELV $663
 line 1513
 ADDRLP4 0
 ADDRLP4 0
@@ -9510,7 +9510,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $660
+LTI4 $662
 line 1533
 ;1530:
 ;1531:
@@ -9519,7 +9519,7 @@ line 1533
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $674
+LABELV $676
 line 1534
 ;1534:		if( !botstates[i] || !botstates[i]->inuse ) {
 ADDRLP4 136
@@ -9535,18 +9535,18 @@ ADDRLP4 136
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $680
+EQU4 $682
 ADDRLP4 136
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $678
-LABELV $680
+NEI4 $680
+LABELV $682
 line 1535
 ;1535:			continue;
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $678
+LABELV $680
 line 1537
 ;1536:		}
 ;1537:		if( g_entities[i].client->pers.connected != CON_CONNECTED ) {
@@ -9561,12 +9561,12 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-EQI4 $681
+EQI4 $683
 line 1538
 ;1538:			continue;
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $681
+LABELV $683
 line 1541
 ;1539:		}
 ;1540:
@@ -9615,7 +9615,7 @@ CALLV
 pop
 line 1543
 ;1543:	}
-LABELV $675
+LABELV $677
 line 1533
 ADDRLP4 0
 ADDRLP4 0
@@ -9626,13 +9626,13 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $674
+LTI4 $676
 line 1545
 ;1544:
 ;1545:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $575
+LABELV $577
 endproc BotAIStartFrame 152 12
 export BotInitLibrary
 proc BotInitLibrary 212 16
@@ -9650,7 +9650,7 @@ line 1557
 ;1555:
 ;1556:	//set the maxclients and maxentities library variables before calling BotSetupLibrary
 ;1557:	trap_Cvar_VariableStringBuffer("sv_maxclients", buf, sizeof(buf));
-ADDRGP4 $685
+ADDRGP4 $687
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9670,18 +9670,18 @@ ASGNI4
 ADDRLP4 144
 INDIRI4
 CNSTI4 0
-NEI4 $686
+NEI4 $688
 ADDRLP4 0
 ARGP4
-ADDRGP4 $688
+ADDRGP4 $690
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-LABELV $686
+LABELV $688
 line 1559
 ;1559:	trap_BotLibVarSet("maxclients", buf);
-ADDRGP4 $689
+ADDRGP4 $691
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9694,7 +9694,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 144
 ARGI4
-ADDRGP4 $306
+ADDRGP4 $308
 ARGP4
 CNSTI4 1024
 ARGI4
@@ -9703,7 +9703,7 @@ CALLV
 pop
 line 1561
 ;1561:	trap_BotLibVarSet("maxentities", buf);
-ADDRGP4 $690
+ADDRGP4 $692
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9713,7 +9713,7 @@ pop
 line 1563
 ;1562:	//bsp checksum
 ;1563:	trap_Cvar_VariableStringBuffer("sv_mapChecksum", buf, sizeof(buf));
-ADDRGP4 $691
+ADDRGP4 $693
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9733,19 +9733,19 @@ ASGNI4
 ADDRLP4 148
 INDIRI4
 CNSTI4 0
-EQI4 $692
-ADDRGP4 $691
+EQI4 $694
+ADDRGP4 $693
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $692
+LABELV $694
 line 1566
 ;1565:	//maximum number of aas links
 ;1566:	trap_Cvar_VariableStringBuffer("max_aaslinks", buf, sizeof(buf));
-ADDRGP4 $694
+ADDRGP4 $696
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9765,19 +9765,19 @@ ASGNI4
 ADDRLP4 152
 INDIRI4
 CNSTI4 0
-EQI4 $695
-ADDRGP4 $694
+EQI4 $697
+ADDRGP4 $696
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $695
+LABELV $697
 line 1569
 ;1568:	//maximum number of items in a level
 ;1569:	trap_Cvar_VariableStringBuffer("max_levelitems", buf, sizeof(buf));
-ADDRGP4 $697
+ADDRGP4 $699
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9797,19 +9797,19 @@ ASGNI4
 ADDRLP4 156
 INDIRI4
 CNSTI4 0
-EQI4 $698
-ADDRGP4 $697
+EQI4 $700
+ADDRGP4 $699
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $698
+LABELV $700
 line 1572
 ;1571:	//game type
 ;1572:	trap_Cvar_VariableStringBuffer("g_gametype", buf, sizeof(buf));
-ADDRGP4 $305
+ADDRGP4 $307
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9829,18 +9829,18 @@ ASGNI4
 ADDRLP4 160
 INDIRI4
 CNSTI4 0
-NEI4 $700
+NEI4 $702
 ADDRLP4 0
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-LABELV $700
+LABELV $702
 line 1574
 ;1574:	trap_BotLibVarSet("g_gametype", buf);
-ADDRGP4 $305
+ADDRGP4 $307
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9850,7 +9850,7 @@ pop
 line 1576
 ;1575:	//bot developer mode and log file
 ;1576:	trap_BotLibVarSet("bot_developer", bot_developer.string);
-ADDRGP4 $702
+ADDRGP4 $704
 ARGP4
 ADDRGP4 bot_developer+16
 ARGP4
@@ -9859,7 +9859,7 @@ CALLI4
 pop
 line 1577
 ;1577:	trap_BotLibVarSet("log", buf);
-ADDRGP4 $704
+ADDRGP4 $706
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9869,7 +9869,7 @@ pop
 line 1579
 ;1578:	//no chatting
 ;1579:	trap_Cvar_VariableStringBuffer("bot_nochat", buf, sizeof(buf));
-ADDRGP4 $705
+ADDRGP4 $707
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9889,19 +9889,19 @@ ASGNI4
 ADDRLP4 164
 INDIRI4
 CNSTI4 0
-EQI4 $706
-ADDRGP4 $708
+EQI4 $708
+ADDRGP4 $710
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $706
+LABELV $708
 line 1582
 ;1581:	//visualize jump pads
 ;1582:	trap_Cvar_VariableStringBuffer("bot_visualizejumppads", buf, sizeof(buf));
-ADDRGP4 $709
+ADDRGP4 $711
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9921,19 +9921,19 @@ ASGNI4
 ADDRLP4 168
 INDIRI4
 CNSTI4 0
-EQI4 $710
-ADDRGP4 $709
+EQI4 $712
+ADDRGP4 $711
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $710
+LABELV $712
 line 1585
 ;1584:	//forced clustering calculations
 ;1585:	trap_Cvar_VariableStringBuffer("bot_forceclustering", buf, sizeof(buf));
-ADDRGP4 $712
+ADDRGP4 $714
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9953,19 +9953,19 @@ ASGNI4
 ADDRLP4 172
 INDIRI4
 CNSTI4 0
-EQI4 $713
-ADDRGP4 $715
+EQI4 $715
+ADDRGP4 $717
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $713
+LABELV $715
 line 1588
 ;1587:	//forced reachability calculations
 ;1588:	trap_Cvar_VariableStringBuffer("bot_forcereachability", buf, sizeof(buf));
-ADDRGP4 $716
+ADDRGP4 $718
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9985,19 +9985,19 @@ ASGNI4
 ADDRLP4 176
 INDIRI4
 CNSTI4 0
-EQI4 $717
-ADDRGP4 $719
+EQI4 $719
+ADDRGP4 $721
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $717
+LABELV $719
 line 1591
 ;1590:	//force writing of AAS to file
 ;1591:	trap_Cvar_VariableStringBuffer("bot_forcewrite", buf, sizeof(buf));
-ADDRGP4 $720
+ADDRGP4 $722
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -10017,19 +10017,19 @@ ASGNI4
 ADDRLP4 180
 INDIRI4
 CNSTI4 0
-EQI4 $721
-ADDRGP4 $723
+EQI4 $723
+ADDRGP4 $725
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $721
+LABELV $723
 line 1594
 ;1593:	//no AAS optimization
 ;1594:	trap_Cvar_VariableStringBuffer("bot_aasoptimize", buf, sizeof(buf));
-ADDRGP4 $724
+ADDRGP4 $726
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -10049,19 +10049,19 @@ ASGNI4
 ADDRLP4 184
 INDIRI4
 CNSTI4 0
-EQI4 $725
-ADDRGP4 $727
+EQI4 $727
+ADDRGP4 $729
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $725
+LABELV $727
 line 1597
 ;1596:	//
 ;1597:	trap_Cvar_VariableStringBuffer("bot_saveroutingcache", buf, sizeof(buf));
-ADDRGP4 $605
+ADDRGP4 $607
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -10081,19 +10081,19 @@ ASGNI4
 ADDRLP4 188
 INDIRI4
 CNSTI4 0
-EQI4 $728
-ADDRGP4 $604
+EQI4 $730
+ADDRGP4 $606
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $728
+LABELV $730
 line 1600
 ;1599:	//reload instead of cache bot character files
 ;1600:	trap_Cvar_VariableStringBuffer("bot_reloadcharacters", buf, sizeof(buf));
-ADDRGP4 $313
+ADDRGP4 $315
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -10113,18 +10113,18 @@ ASGNI4
 ADDRLP4 192
 INDIRI4
 CNSTI4 0
-NEI4 $730
+NEI4 $732
 ADDRLP4 0
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-LABELV $730
+LABELV $732
 line 1602
 ;1602:	trap_BotLibVarSet("bot_reloadcharacters", buf);
-ADDRGP4 $313
+ADDRGP4 $315
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -10134,7 +10134,7 @@ pop
 line 1604
 ;1603:	//base directory
 ;1604:	trap_Cvar_VariableStringBuffer("fs_basepath", buf, sizeof(buf));
-ADDRGP4 $732
+ADDRGP4 $734
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -10154,19 +10154,19 @@ ASGNI4
 ADDRLP4 196
 INDIRI4
 CNSTI4 0
-EQI4 $733
-ADDRGP4 $735
+EQI4 $735
+ADDRGP4 $737
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $733
+LABELV $735
 line 1607
 ;1606:	//game directory
 ;1607:	trap_Cvar_VariableStringBuffer("fs_game", buf, sizeof(buf));
-ADDRGP4 $736
+ADDRGP4 $738
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -10186,19 +10186,19 @@ ASGNI4
 ADDRLP4 200
 INDIRI4
 CNSTI4 0
-EQI4 $737
-ADDRGP4 $739
+EQI4 $739
+ADDRGP4 $741
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $737
+LABELV $739
 line 1610
 ;1609:	//cd directory
 ;1610:	trap_Cvar_VariableStringBuffer("fs_cdpath", buf, sizeof(buf));
-ADDRGP4 $740
+ADDRGP4 $742
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -10218,15 +10218,15 @@ ASGNI4
 ADDRLP4 204
 INDIRI4
 CNSTI4 0
-EQI4 $741
-ADDRGP4 $743
+EQI4 $743
+ADDRGP4 $745
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-LABELV $741
+LABELV $743
 line 1617
 ;1612:	//
 ;1613:#ifdef MISSIONPACK
@@ -10241,7 +10241,7 @@ ASGNI4
 ADDRLP4 208
 INDIRI4
 RETI4
-LABELV $684
+LABELV $686
 endproc BotInitLibrary 212 16
 export BotAISetup
 proc BotAISetup 8 16
@@ -10260,9 +10260,9 @@ line 1628
 ;1628:	trap_Cvar_Register(&bot_thinktime, "bot_thinktime", "100", CVAR_CHEAT);
 ADDRGP4 bot_thinktime
 ARGP4
-ADDRGP4 $609
+ADDRGP4 $611
 ARGP4
-ADDRGP4 $745
+ADDRGP4 $747
 ARGP4
 CNSTI4 512
 ARGI4
@@ -10273,9 +10273,9 @@ line 1629
 ;1629:	trap_Cvar_Register(&bot_memorydump, "bot_memorydump", "0", CVAR_CHEAT);
 ADDRGP4 bot_memorydump
 ARGP4
-ADDRGP4 $599
+ADDRGP4 $601
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 CNSTI4 512
 ARGI4
@@ -10286,9 +10286,9 @@ line 1630
 ;1630:	trap_Cvar_Register(&bot_saveroutingcache, "bot_saveroutingcache", "0", CVAR_CHEAT);
 ADDRGP4 bot_saveroutingcache
 ARGP4
-ADDRGP4 $605
+ADDRGP4 $607
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 CNSTI4 512
 ARGI4
@@ -10299,9 +10299,9 @@ line 1631
 ;1631:	trap_Cvar_Register(&bot_pause, "bot_pause", "0", CVAR_CHEAT);
 ADDRGP4 bot_pause
 ARGP4
-ADDRGP4 $746
+ADDRGP4 $748
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 CNSTI4 512
 ARGI4
@@ -10312,9 +10312,9 @@ line 1632
 ;1632:	trap_Cvar_Register(&bot_report, "bot_report", "0", CVAR_CHEAT);
 ADDRGP4 bot_report
 ARGP4
-ADDRGP4 $747
+ADDRGP4 $749
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 CNSTI4 512
 ARGI4
@@ -10325,9 +10325,9 @@ line 1633
 ;1633:	trap_Cvar_Register(&bot_testsolid, "bot_testsolid", "0", CVAR_CHEAT);
 ADDRGP4 bot_testsolid
 ARGP4
-ADDRGP4 $748
+ADDRGP4 $750
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 CNSTI4 512
 ARGI4
@@ -10338,9 +10338,9 @@ line 1634
 ;1634:	trap_Cvar_Register(&bot_testclusters, "bot_testclusters", "0", CVAR_CHEAT);
 ADDRGP4 bot_testclusters
 ARGP4
-ADDRGP4 $749
+ADDRGP4 $751
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 CNSTI4 512
 ARGI4
@@ -10351,9 +10351,9 @@ line 1635
 ;1635:	trap_Cvar_Register(&bot_developer, "bot_developer", "0", CVAR_CHEAT);
 ADDRGP4 bot_developer
 ARGP4
-ADDRGP4 $702
+ADDRGP4 $704
 ARGP4
-ADDRGP4 $600
+ADDRGP4 $602
 ARGP4
 CNSTI4 512
 ARGI4
@@ -10364,9 +10364,9 @@ line 1636
 ;1636:	trap_Cvar_Register(&bot_interbreedchar, "bot_interbreedchar", "", 0);
 ADDRGP4 bot_interbreedchar
 ARGP4
-ADDRGP4 $323
+ADDRGP4 $325
 ARGP4
-ADDRGP4 $298
+ADDRGP4 $300
 ARGP4
 CNSTI4 0
 ARGI4
@@ -10377,9 +10377,9 @@ line 1637
 ;1637:	trap_Cvar_Register(&bot_interbreedbots, "bot_interbreedbots", "10", 0);
 ADDRGP4 bot_interbreedbots
 ARGP4
-ADDRGP4 $750
+ADDRGP4 $752
 ARGP4
-ADDRGP4 $751
+ADDRGP4 $753
 ARGP4
 CNSTI4 0
 ARGI4
@@ -10390,9 +10390,9 @@ line 1638
 ;1638:	trap_Cvar_Register(&bot_interbreedcycle, "bot_interbreedcycle", "20", 0);
 ADDRGP4 bot_interbreedcycle
 ARGP4
-ADDRGP4 $752
+ADDRGP4 $754
 ARGP4
-ADDRGP4 $753
+ADDRGP4 $755
 ARGP4
 CNSTI4 0
 ARGI4
@@ -10403,9 +10403,9 @@ line 1639
 ;1639:	trap_Cvar_Register(&bot_interbreedwrite, "bot_interbreedwrite", "", 0);
 ADDRGP4 bot_interbreedwrite
 ARGP4
-ADDRGP4 $297
+ADDRGP4 $299
 ARGP4
-ADDRGP4 $298
+ADDRGP4 $300
 ARGP4
 CNSTI4 0
 ARGI4
@@ -10419,14 +10419,14 @@ line 1642
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $754
+EQI4 $756
 line 1643
 ;1643:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $744
+ADDRGP4 $746
 JUMPV
-LABELV $754
+LABELV $756
 line 1647
 ;1644:	}
 ;1645:
@@ -10457,17 +10457,17 @@ line 1650
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $756
+EQI4 $758
 CNSTI4 0
 RETI4
-ADDRGP4 $744
+ADDRGP4 $746
 JUMPV
-LABELV $756
+LABELV $758
 line 1651
 ;1651:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $744
+LABELV $746
 endproc BotAISetup 8 16
 export BotAIShutdown
 proc BotAIShutdown 8 8
@@ -10489,14 +10489,14 @@ line 1664
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $759
+EQI4 $761
 line 1666
 ;1665:		//shutdown all the bots in the botlib
 ;1666:		for (i = 0; i < MAX_CLIENTS; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $761
+LABELV $763
 line 1667
 ;1667:			if (botstates[i] && botstates[i]->inuse) {
 ADDRLP4 4
@@ -10512,12 +10512,12 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $765
+EQU4 $767
 ADDRLP4 4
 INDIRP4
 INDIRI4
 CNSTI4 0
-EQI4 $765
+EQI4 $767
 line 1668
 ;1668:				BotAIShutdownClient(botstates[i]->client, restart);
 ADDRLP4 0
@@ -10539,10 +10539,10 @@ CALLI4
 pop
 line 1669
 ;1669:			}
-LABELV $765
+LABELV $767
 line 1670
 ;1670:		}
-LABELV $762
+LABELV $764
 line 1666
 ADDRLP4 0
 ADDRLP4 0
@@ -10553,13 +10553,13 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $761
+LTI4 $763
 line 1672
 ;1671:		//don't shutdown the bot library
 ;1672:	}
-ADDRGP4 $760
+ADDRGP4 $762
 JUMPV
-LABELV $759
+LABELV $761
 line 1673
 ;1673:	else {
 line 1674
@@ -10569,12 +10569,12 @@ CALLI4
 pop
 line 1675
 ;1675:	}
-LABELV $760
+LABELV $762
 line 1676
 ;1676:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $758
+LABELV $760
 endproc BotAIShutdown 8 8
 import ExitLevel
 bss
@@ -10882,6 +10882,8 @@ import EA_Command
 import EA_SayTeam
 import EA_Say
 import GetBotLibAPI
+import CheckPlayerPostions
+import G_SendCommandToClient
 import visible
 import findradius
 import trap_SnapVector
@@ -11061,6 +11063,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_MultiJump
 import g_instagib
 import sv_fps
 import g_lightningDamage
@@ -11453,8 +11456,35 @@ import srand
 import qsort
 lit
 align 1
-LABELV $753
+LABELV $755
 byte 1 50
+byte 1 48
+byte 1 0
+align 1
+LABELV $754
+byte 1 98
+byte 1 111
+byte 1 116
+byte 1 95
+byte 1 105
+byte 1 110
+byte 1 116
+byte 1 101
+byte 1 114
+byte 1 98
+byte 1 114
+byte 1 101
+byte 1 101
+byte 1 100
+byte 1 99
+byte 1 121
+byte 1 99
+byte 1 108
+byte 1 101
+byte 1 0
+align 1
+LABELV $753
+byte 1 49
 byte 1 48
 byte 1 0
 align 1
@@ -11473,16 +11503,29 @@ byte 1 114
 byte 1 101
 byte 1 101
 byte 1 100
-byte 1 99
-byte 1 121
-byte 1 99
-byte 1 108
-byte 1 101
+byte 1 98
+byte 1 111
+byte 1 116
+byte 1 115
 byte 1 0
 align 1
 LABELV $751
-byte 1 49
-byte 1 48
+byte 1 98
+byte 1 111
+byte 1 116
+byte 1 95
+byte 1 116
+byte 1 101
+byte 1 115
+byte 1 116
+byte 1 99
+byte 1 108
+byte 1 117
+byte 1 115
+byte 1 116
+byte 1 101
+byte 1 114
+byte 1 115
 byte 1 0
 align 1
 LABELV $750
@@ -11490,20 +11533,15 @@ byte 1 98
 byte 1 111
 byte 1 116
 byte 1 95
-byte 1 105
-byte 1 110
 byte 1 116
 byte 1 101
-byte 1 114
-byte 1 98
-byte 1 114
-byte 1 101
-byte 1 101
-byte 1 100
-byte 1 98
-byte 1 111
+byte 1 115
 byte 1 116
 byte 1 115
+byte 1 111
+byte 1 108
+byte 1 105
+byte 1 100
 byte 1 0
 align 1
 LABELV $749
@@ -11511,18 +11549,12 @@ byte 1 98
 byte 1 111
 byte 1 116
 byte 1 95
-byte 1 116
-byte 1 101
-byte 1 115
-byte 1 116
-byte 1 99
-byte 1 108
-byte 1 117
-byte 1 115
-byte 1 116
-byte 1 101
 byte 1 114
-byte 1 115
+byte 1 101
+byte 1 112
+byte 1 111
+byte 1 114
+byte 1 116
 byte 1 0
 align 1
 LABELV $748
@@ -11530,35 +11562,6 @@ byte 1 98
 byte 1 111
 byte 1 116
 byte 1 95
-byte 1 116
-byte 1 101
-byte 1 115
-byte 1 116
-byte 1 115
-byte 1 111
-byte 1 108
-byte 1 105
-byte 1 100
-byte 1 0
-align 1
-LABELV $747
-byte 1 98
-byte 1 111
-byte 1 116
-byte 1 95
-byte 1 114
-byte 1 101
-byte 1 112
-byte 1 111
-byte 1 114
-byte 1 116
-byte 1 0
-align 1
-LABELV $746
-byte 1 98
-byte 1 111
-byte 1 116
-byte 1 95
 byte 1 112
 byte 1 97
 byte 1 117
@@ -11566,13 +11569,13 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $745
+LABELV $747
 byte 1 49
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $743
+LABELV $745
 byte 1 99
 byte 1 100
 byte 1 100
@@ -11580,7 +11583,7 @@ byte 1 105
 byte 1 114
 byte 1 0
 align 1
-LABELV $740
+LABELV $742
 byte 1 102
 byte 1 115
 byte 1 95
@@ -11592,7 +11595,7 @@ byte 1 116
 byte 1 104
 byte 1 0
 align 1
-LABELV $739
+LABELV $741
 byte 1 103
 byte 1 97
 byte 1 109
@@ -11602,7 +11605,7 @@ byte 1 105
 byte 1 114
 byte 1 0
 align 1
-LABELV $736
+LABELV $738
 byte 1 102
 byte 1 115
 byte 1 95
@@ -11612,7 +11615,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $735
+LABELV $737
 byte 1 98
 byte 1 97
 byte 1 115
@@ -11622,7 +11625,7 @@ byte 1 105
 byte 1 114
 byte 1 0
 align 1
-LABELV $732
+LABELV $734
 byte 1 102
 byte 1 115
 byte 1 95
@@ -11636,7 +11639,7 @@ byte 1 116
 byte 1 104
 byte 1 0
 align 1
-LABELV $727
+LABELV $729
 byte 1 97
 byte 1 97
 byte 1 115
@@ -11650,7 +11653,7 @@ byte 1 122
 byte 1 101
 byte 1 0
 align 1
-LABELV $724
+LABELV $726
 byte 1 98
 byte 1 111
 byte 1 116
@@ -11668,7 +11671,7 @@ byte 1 122
 byte 1 101
 byte 1 0
 align 1
-LABELV $723
+LABELV $725
 byte 1 102
 byte 1 111
 byte 1 114
@@ -11681,7 +11684,7 @@ byte 1 116
 byte 1 101
 byte 1 0
 align 1
-LABELV $720
+LABELV $722
 byte 1 98
 byte 1 111
 byte 1 116
@@ -11698,7 +11701,7 @@ byte 1 116
 byte 1 101
 byte 1 0
 align 1
-LABELV $719
+LABELV $721
 byte 1 102
 byte 1 111
 byte 1 114
@@ -11718,7 +11721,7 @@ byte 1 116
 byte 1 121
 byte 1 0
 align 1
-LABELV $716
+LABELV $718
 byte 1 98
 byte 1 111
 byte 1 116
@@ -11742,7 +11745,7 @@ byte 1 116
 byte 1 121
 byte 1 0
 align 1
-LABELV $715
+LABELV $717
 byte 1 102
 byte 1 111
 byte 1 114
@@ -11760,7 +11763,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $712
+LABELV $714
 byte 1 98
 byte 1 111
 byte 1 116
@@ -11782,7 +11785,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $709
+LABELV $711
 byte 1 98
 byte 1 111
 byte 1 116
@@ -11806,7 +11809,7 @@ byte 1 100
 byte 1 115
 byte 1 0
 align 1
-LABELV $708
+LABELV $710
 byte 1 110
 byte 1 111
 byte 1 99
@@ -11815,7 +11818,7 @@ byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $705
+LABELV $707
 byte 1 98
 byte 1 111
 byte 1 116
@@ -11828,13 +11831,13 @@ byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $704
+LABELV $706
 byte 1 108
 byte 1 111
 byte 1 103
 byte 1 0
 align 1
-LABELV $702
+LABELV $704
 byte 1 98
 byte 1 111
 byte 1 116
@@ -11850,7 +11853,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $697
+LABELV $699
 byte 1 109
 byte 1 97
 byte 1 120
@@ -11867,7 +11870,7 @@ byte 1 109
 byte 1 115
 byte 1 0
 align 1
-LABELV $694
+LABELV $696
 byte 1 109
 byte 1 97
 byte 1 120
@@ -11882,7 +11885,7 @@ byte 1 107
 byte 1 115
 byte 1 0
 align 1
-LABELV $691
+LABELV $693
 byte 1 115
 byte 1 118
 byte 1 95
@@ -11899,7 +11902,7 @@ byte 1 117
 byte 1 109
 byte 1 0
 align 1
-LABELV $690
+LABELV $692
 byte 1 109
 byte 1 97
 byte 1 120
@@ -11913,7 +11916,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $689
+LABELV $691
 byte 1 109
 byte 1 97
 byte 1 120
@@ -11926,11 +11929,11 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $688
+LABELV $690
 byte 1 56
 byte 1 0
 align 1
-LABELV $685
+LABELV $687
 byte 1 115
 byte 1 118
 byte 1 95
@@ -11946,13 +11949,13 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $610
+LABELV $612
 byte 1 50
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $609
+LABELV $611
 byte 1 98
 byte 1 111
 byte 1 116
@@ -11968,7 +11971,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $605
+LABELV $607
 byte 1 98
 byte 1 111
 byte 1 116
@@ -11991,7 +11994,7 @@ byte 1 104
 byte 1 101
 byte 1 0
 align 1
-LABELV $604
+LABELV $606
 byte 1 115
 byte 1 97
 byte 1 118
@@ -12010,11 +12013,11 @@ byte 1 104
 byte 1 101
 byte 1 0
 align 1
-LABELV $600
+LABELV $602
 byte 1 48
 byte 1 0
 align 1
-LABELV $599
+LABELV $601
 byte 1 98
 byte 1 111
 byte 1 116
@@ -12031,7 +12034,7 @@ byte 1 109
 byte 1 112
 byte 1 0
 align 1
-LABELV $598
+LABELV $600
 byte 1 109
 byte 1 101
 byte 1 109
@@ -12044,7 +12047,7 @@ byte 1 109
 byte 1 112
 byte 1 0
 align 1
-LABELV $567
+LABELV $569
 byte 1 109
 byte 1 97
 byte 1 112
@@ -12054,7 +12057,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $540
+LABELV $542
 byte 1 98
 byte 1 111
 byte 1 116
@@ -12070,7 +12073,7 @@ byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $525
+LABELV $527
 byte 1 99
 byte 1 111
 byte 1 117
@@ -12104,7 +12107,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $522
+LABELV $524
 byte 1 65
 byte 1 65
 byte 1 83
@@ -12127,7 +12130,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $519
+LABELV $521
 byte 1 66
 byte 1 111
 byte 1 116
@@ -12172,7 +12175,7 @@ byte 1 112
 byte 1 10
 byte 1 0
 align 1
-LABELV $512
+LABELV $514
 byte 1 98
 byte 1 111
 byte 1 116
@@ -12187,7 +12190,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $511
+LABELV $513
 byte 1 37
 byte 1 105
 byte 1 32
@@ -12240,7 +12243,7 @@ byte 1 37
 byte 1 102
 byte 1 0
 align 1
-LABELV $489
+LABELV $491
 byte 1 99
 byte 1 108
 byte 1 105
@@ -12258,7 +12261,7 @@ byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $486
+LABELV $488
 byte 1 115
 byte 1 99
 byte 1 111
@@ -12267,7 +12270,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $483
+LABELV $485
 byte 1 116
 byte 1 99
 byte 1 104
@@ -12275,14 +12278,14 @@ byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $480
+LABELV $482
 byte 1 99
 byte 1 104
 byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $477
+LABELV $479
 byte 1 112
 byte 1 114
 byte 1 105
@@ -12290,18 +12293,18 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $474
+LABELV $476
 byte 1 99
 byte 1 115
 byte 1 0
 align 1
-LABELV $471
+LABELV $473
 byte 1 99
 byte 1 112
 byte 1 32
 byte 1 0
 align 1
-LABELV $463
+LABELV $465
 byte 1 66
 byte 1 111
 byte 1 116
@@ -12334,7 +12337,7 @@ byte 1 112
 byte 1 10
 byte 1 0
 align 1
-LABELV $323
+LABELV $325
 byte 1 98
 byte 1 111
 byte 1 116
@@ -12355,7 +12358,7 @@ byte 1 97
 byte 1 114
 byte 1 0
 align 1
-LABELV $320
+LABELV $322
 byte 1 97
 byte 1 100
 byte 1 100
@@ -12383,11 +12386,11 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $314
+LABELV $316
 byte 1 49
 byte 1 0
 align 1
-LABELV $313
+LABELV $315
 byte 1 98
 byte 1 111
 byte 1 116
@@ -12410,12 +12413,12 @@ byte 1 114
 byte 1 115
 byte 1 0
 align 1
-LABELV $306
+LABELV $308
 byte 1 37
 byte 1 100
 byte 1 0
 align 1
-LABELV $305
+LABELV $307
 byte 1 103
 byte 1 95
 byte 1 103
@@ -12428,10 +12431,10 @@ byte 1 112
 byte 1 101
 byte 1 0
 align 1
-LABELV $298
+LABELV $300
 byte 1 0
 align 1
-LABELV $297
+LABELV $299
 byte 1 98
 byte 1 111
 byte 1 116
@@ -12453,7 +12456,7 @@ byte 1 116
 byte 1 101
 byte 1 0
 align 1
-LABELV $248
+LABELV $250
 byte 1 108
 byte 1 92
 byte 1 37
@@ -12470,7 +12473,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $245
+LABELV $247
 byte 1 114
 byte 1 111
 byte 1 97
@@ -12483,7 +12486,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $243
+LABELV $245
 byte 1 104
 byte 1 97
 byte 1 114
@@ -12496,7 +12499,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $241
+LABELV $243
 byte 1 97
 byte 1 116
 byte 1 116
@@ -12523,7 +12526,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $239
+LABELV $241
 byte 1 114
 byte 1 101
 byte 1 116
@@ -12540,7 +12543,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $237
+LABELV $239
 byte 1 114
 byte 1 117
 byte 1 115
@@ -12555,7 +12558,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $235
+LABELV $237
 byte 1 99
 byte 1 97
 byte 1 112
@@ -12572,7 +12575,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $233
+LABELV $235
 byte 1 112
 byte 1 97
 byte 1 116
@@ -12585,7 +12588,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $231
+LABELV $233
 byte 1 99
 byte 1 97
 byte 1 109
@@ -12595,7 +12598,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $229
+LABELV $231
 byte 1 107
 byte 1 105
 byte 1 108
@@ -12608,7 +12611,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $227
+LABELV $229
 byte 1 103
 byte 1 101
 byte 1 116
@@ -12626,13 +12629,31 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $225
+LABELV $227
 byte 1 100
 byte 1 101
 byte 1 102
 byte 1 101
 byte 1 110
 byte 1 100
+byte 1 105
+byte 1 110
+byte 1 103
+byte 1 32
+byte 1 37
+byte 1 115
+byte 1 0
+align 1
+LABELV $225
+byte 1 97
+byte 1 99
+byte 1 99
+byte 1 111
+byte 1 109
+byte 1 112
+byte 1 97
+byte 1 110
+byte 1 121
 byte 1 105
 byte 1 110
 byte 1 103
@@ -12642,24 +12663,6 @@ byte 1 115
 byte 1 0
 align 1
 LABELV $223
-byte 1 97
-byte 1 99
-byte 1 99
-byte 1 111
-byte 1 109
-byte 1 112
-byte 1 97
-byte 1 110
-byte 1 121
-byte 1 105
-byte 1 110
-byte 1 103
-byte 1 32
-byte 1 37
-byte 1 115
-byte 1 0
-align 1
-LABELV $221
 byte 1 104
 byte 1 101
 byte 1 108
@@ -12672,12 +12675,12 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $216
+LABELV $218
 byte 1 70
 byte 1 32
 byte 1 0
 align 1
-LABELV $195
+LABELV $197
 byte 1 94
 byte 1 52
 byte 1 66
@@ -12687,15 +12690,15 @@ byte 1 69
 byte 1 10
 byte 1 0
 align 1
-LABELV $193
+LABELV $195
 byte 1 116
 byte 1 0
 align 1
-LABELV $189
+LABELV $191
 byte 1 110
 byte 1 0
 align 1
-LABELV $179
+LABELV $181
 byte 1 94
 byte 1 49
 byte 1 82
@@ -12704,7 +12707,7 @@ byte 1 68
 byte 1 10
 byte 1 0
 align 1
-LABELV $175
+LABELV $177
 byte 1 37
 byte 1 45
 byte 1 50
@@ -12720,6 +12723,31 @@ byte 1 114
 byte 1 111
 byte 1 97
 byte 1 109
+byte 1 105
+byte 1 110
+byte 1 103
+byte 1 10
+byte 1 0
+align 1
+LABELV $176
+byte 1 37
+byte 1 45
+byte 1 50
+byte 1 48
+byte 1 115
+byte 1 37
+byte 1 115
+byte 1 37
+byte 1 115
+byte 1 58
+byte 1 32
+byte 1 104
+byte 1 97
+byte 1 114
+byte 1 118
+byte 1 101
+byte 1 115
+byte 1 116
 byte 1 105
 byte 1 110
 byte 1 103
@@ -12738,31 +12766,6 @@ byte 1 37
 byte 1 115
 byte 1 58
 byte 1 32
-byte 1 104
-byte 1 97
-byte 1 114
-byte 1 118
-byte 1 101
-byte 1 115
-byte 1 116
-byte 1 105
-byte 1 110
-byte 1 103
-byte 1 10
-byte 1 0
-align 1
-LABELV $172
-byte 1 37
-byte 1 45
-byte 1 50
-byte 1 48
-byte 1 115
-byte 1 37
-byte 1 115
-byte 1 37
-byte 1 115
-byte 1 58
-byte 1 32
 byte 1 97
 byte 1 116
 byte 1 116
@@ -12790,7 +12793,7 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $170
+LABELV $172
 byte 1 37
 byte 1 45
 byte 1 50
@@ -12819,7 +12822,7 @@ byte 1 103
 byte 1 10
 byte 1 0
 align 1
-LABELV $168
+LABELV $170
 byte 1 37
 byte 1 45
 byte 1 50
@@ -12846,7 +12849,7 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $166
+LABELV $168
 byte 1 37
 byte 1 45
 byte 1 50
@@ -12875,7 +12878,7 @@ byte 1 103
 byte 1 10
 byte 1 0
 align 1
-LABELV $164
+LABELV $166
 byte 1 37
 byte 1 45
 byte 1 50
@@ -12900,7 +12903,7 @@ byte 1 103
 byte 1 10
 byte 1 0
 align 1
-LABELV $162
+LABELV $164
 byte 1 37
 byte 1 45
 byte 1 50
@@ -12922,7 +12925,7 @@ byte 1 103
 byte 1 10
 byte 1 0
 align 1
-LABELV $160
+LABELV $162
 byte 1 37
 byte 1 45
 byte 1 50
@@ -12947,7 +12950,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $158
+LABELV $160
 byte 1 37
 byte 1 45
 byte 1 50
@@ -12977,7 +12980,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $156
+LABELV $158
 byte 1 37
 byte 1 45
 byte 1 50
@@ -12995,6 +12998,36 @@ byte 1 102
 byte 1 101
 byte 1 110
 byte 1 100
+byte 1 105
+byte 1 110
+byte 1 103
+byte 1 32
+byte 1 37
+byte 1 115
+byte 1 10
+byte 1 0
+align 1
+LABELV $156
+byte 1 37
+byte 1 45
+byte 1 50
+byte 1 48
+byte 1 115
+byte 1 37
+byte 1 115
+byte 1 37
+byte 1 115
+byte 1 58
+byte 1 32
+byte 1 97
+byte 1 99
+byte 1 99
+byte 1 111
+byte 1 109
+byte 1 112
+byte 1 97
+byte 1 110
+byte 1 121
 byte 1 105
 byte 1 110
 byte 1 103
@@ -13016,36 +13049,6 @@ byte 1 37
 byte 1 115
 byte 1 58
 byte 1 32
-byte 1 97
-byte 1 99
-byte 1 99
-byte 1 111
-byte 1 109
-byte 1 112
-byte 1 97
-byte 1 110
-byte 1 121
-byte 1 105
-byte 1 110
-byte 1 103
-byte 1 32
-byte 1 37
-byte 1 115
-byte 1 10
-byte 1 0
-align 1
-LABELV $152
-byte 1 37
-byte 1 45
-byte 1 50
-byte 1 48
-byte 1 115
-byte 1 37
-byte 1 115
-byte 1 37
-byte 1 115
-byte 1 58
-byte 1 32
 byte 1 104
 byte 1 101
 byte 1 108
@@ -13059,34 +13062,34 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $147
+LABELV $149
 byte 1 94
 byte 1 52
 byte 1 70
 byte 1 32
 byte 1 0
 align 1
-LABELV $146
+LABELV $148
 byte 1 94
 byte 1 49
 byte 1 70
 byte 1 32
 byte 1 0
 align 1
+LABELV $141
+byte 1 32
+byte 1 32
+byte 1 0
+align 1
+LABELV $140
+byte 1 32
+byte 1 0
+align 1
 LABELV $139
-byte 1 32
-byte 1 32
-byte 1 0
-align 1
-LABELV $138
-byte 1 32
-byte 1 0
-align 1
-LABELV $137
 byte 1 76
 byte 1 0
 align 1
-LABELV $132
+LABELV $134
 byte 1 13
 byte 1 97
 byte 1 114
@@ -13116,7 +13119,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $131
+LABELV $133
 byte 1 13
 byte 1 94
 byte 1 49
@@ -13158,7 +13161,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $123
+LABELV $125
 byte 1 13
 byte 1 94
 byte 1 49
@@ -13174,7 +13177,7 @@ byte 1 101
 byte 1 97
 byte 1 0
 align 1
-LABELV $122
+LABELV $124
 byte 1 13
 byte 1 101
 byte 1 109
@@ -13188,7 +13191,7 @@ byte 1 101
 byte 1 97
 byte 1 0
 align 1
-LABELV $68
+LABELV $70
 byte 1 117
 byte 1 110
 byte 1 107
@@ -13210,7 +13213,7 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $67
+LABELV $69
 byte 1 94
 byte 1 49
 byte 1 69
@@ -13223,7 +13226,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $65
+LABELV $67
 byte 1 94
 byte 1 49
 byte 1 70
@@ -13237,7 +13240,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $63
+LABELV $65
 byte 1 94
 byte 1 49
 byte 1 69
@@ -13251,7 +13254,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $61
+LABELV $63
 byte 1 94
 byte 1 51
 byte 1 87
@@ -13267,7 +13270,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $59
+LABELV $61
 byte 1 37
 byte 1 115
 byte 1 0
