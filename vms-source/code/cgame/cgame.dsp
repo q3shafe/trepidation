@@ -264,6 +264,10 @@ SOURCE=.\cg_predict.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\cg_scanner.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\cg_scoreboard.c
 # End Source File
 # Begin Source File
