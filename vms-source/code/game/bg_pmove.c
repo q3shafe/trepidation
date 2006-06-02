@@ -1683,6 +1683,20 @@ static void PM_Weapon( void ) {
 		return;
 	}
 
+		// check for out of ammo for alt fire - Shafe - Trep 
+	if ( pm->cmd.buttons & 32)
+	{
+		if ( (pm->ps->ammo[ pm->ps->weapon ]-altAmmoUsage[pm->ps->weapon]) <= 0) 
+		{
+			PM_AddEvent( EV_NOAMMO );
+			pm->ps->weaponTime += 500;
+			return;
+		}
+
+	}
+	
+
+
 
 
 	// Shafe - Trep Instagib  Cant get this to work - But This would be the correct way to go about it
@@ -1777,14 +1791,21 @@ if (pm->cmd.buttons & 1) {
 	}
  }
 
-		// take an ammo away if not infinite
+	
+ 	// take an ammo away if not infinite
 	// Shafe - Trep - Alt Fire Ammo Mgt
+	// I moved this from above... hmmmm..
 	
 	if (altfired == qtrue) 
 	{
 			if ( pm->ps->ammo[ pm->ps->weapon ] != -1 ) 
 			{
 				pm->ps->ammo[pm->ps->weapon] -= altAmmoUsage[pm->ps->weapon];
+				// Let's not let them go -1 (infinite).. That is bad.. Just set the ammo to 0
+				// 
+				// This is gonna screw up mod makers who are used to using -1 for infinite ammo... 
+				// Infinite ammo should now be 9999  - Shafe
+				if (pm->ps->ammo[pm->ps->weapon] < 0) { pm->ps->ammo[pm->ps->weapon] = 0; }
 			}
 	} 
 	else 
@@ -1794,6 +1815,7 @@ if (pm->cmd.buttons & 1) {
 		}
 	}
  
+
 	if ( pm->ps->powerups[PW_HASTE] ) {
 		addTime /= 1.3;
 	}
