@@ -27,14 +27,14 @@ START SERVER MENU *****
 #define GAMESERVER_ARROWSL		"menu/art/gs_arrows_l"
 #define GAMESERVER_ARROWSR		"menu/art/gs_arrows_r"
 
-#define MAX_MAPROWS		2
+#define MAX_MAPROWS		3 // Shafe - Trep - was 2
 #define MAX_MAPCOLS		2
-#define MAX_MAPSPERPAGE	4
+#define MAX_MAPSPERPAGE	6 // Shafe - Trep -was 4
 
 #define	MAX_SERVERSTEXT	8192
 
-#define MAX_SERVERMAPS	64
-#define MAX_NAMELENGTH	16
+#define MAX_SERVERMAPS	254 // Shafe - Trep - was 64
+#define MAX_NAMELENGTH	124	// Shafe - Trep - was 16
 
 #define ID_GAMETYPE				10
 #define ID_PICTURES				11	// 12, 13, 14
@@ -1134,13 +1134,16 @@ static void ServerOptions_SetMenuItems( void ) {
 	Q_strncpyz( s_serveroptions.hostname.field.buffer, UI_Cvar_VariableString( "sv_hostname" ), sizeof( s_serveroptions.hostname.field.buffer ) );
 	s_serveroptions.pure.curvalue = Com_Clamp( 0, 1, trap_Cvar_VariableValue( "sv_pure" ) );
 
-	// set the map pic
-	Com_sprintf( picname, 64, "levelshots/%s", s_startserver.maplist[s_startserver.currentmap] );
+	// set the map pic 
+	// Shafe - Somewhere here is the bug with short filenames - load map create match
+	Com_sprintf( picname, 128, "levelshots/%s", s_startserver.maplist[s_startserver.currentmap] ); // Changed length from 64
 	s_serveroptions.mappic.generic.name = picname;
 
-	// set the map name
+	// set the map name - Why do we need to do this?
 	strcpy( s_serveroptions.mapnamebuffer, s_startserver.mapname.string );
-	Q_strupr( s_serveroptions.mapnamebuffer );
+
+	Q_strupr( s_startserver.mapname.string ); // Shafe - Try this?
+	//Q_strupr( s_serveroptions.mapnamebuffer );  // Create Match Thing - Shafe
 
 	// get the player selections initialized
 	ServerOptions_InitPlayerItems();
@@ -1446,7 +1449,7 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 	Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.next );
 	Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.go );
 
-	Menu_AddItem( &s_serveroptions.menu, (void*) &s_serveroptions.punkbuster );
+	//Menu_AddItem( &s_serveroptions.menu, (void*) &s_serveroptions.punkbuster );
 	
 	ServerOptions_SetMenuItems();
 }
