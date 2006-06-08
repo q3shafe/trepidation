@@ -675,7 +675,9 @@ void CG_RegisterWeapon( int weaponNum ) {
 		//weaponInfo->firingSound = trap_S_RegisterSound( "sound/weapons/lightning/lg_hum.wav", qfalse );
 
 		//weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/lightning/lg_fire.wav", qfalse );
-		//cgs.media.lightningShader = trap_R_RegisterShader( "lightningBoltNew");
+		
+		cgs.media.lightningShader = trap_R_RegisterShader( "lightningBoltNew"); // Shafe - Flame Thrower / Grapple I Think This is the problem
+		
 		//cgs.media.lightningExplosionModel = trap_R_RegisterModel( "models/weaphits/crackle.md3" );
 		//cgs.media.sfx_lghit1 = trap_S_RegisterSound( "sound/weapons/lightning/lg_hit.wav", qfalse );
 		//cgs.media.sfx_lghit2 = trap_S_RegisterSound( "sound/weapons/lightning/lg_hit2.wav", qfalse );
@@ -1355,7 +1357,7 @@ void CG_AddPlayerWeapon( refEntity_t *parent, playerState_t *ps, centity_t *cent
 	if ( ps || cg.renderingThirdPerson ||
 		cent->currentState.number != cg.predictedPlayerState.clientNum ) {
 		// add lightning bolt
-		CG_LightningBolt( nonPredictedCent, flash.origin );
+		//CG_LightningBolt( nonPredictedCent, flash.origin );  // Shafe - Trep - Lightning Bug - May have to fix this for the grapple
 
 		// add rail trail
 		CG_SpawnRailTrail( cent, flash.origin );
