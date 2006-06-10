@@ -94,16 +94,17 @@ typedef struct
 #define ID_CHAT4		34
 
 #define ID_SCANNER		35	// Shafe - Trep - Scanner
+#define ID_GRAPPLE		36	// Shafe - Trep - Grapple Offhand
 
 // all others
-#define ID_FREELOOK		36
-#define ID_INVERTMOUSE	37
-#define ID_ALWAYSRUN	38
-#define ID_AUTOSWITCH	39
-#define ID_MOUSESPEED	40
-#define ID_JOYENABLE	41
-#define ID_JOYTHRESHOLD	42
-#define ID_SMOOTHMOUSE	43
+#define ID_FREELOOK		37
+#define ID_INVERTMOUSE	38
+#define ID_ALWAYSRUN	39
+#define ID_AUTOSWITCH	40
+#define ID_MOUSESPEED	41
+#define ID_JOYENABLE	42
+#define ID_JOYTHRESHOLD	43
+#define ID_SMOOTHMOUSE	44
 
 
 
@@ -192,6 +193,7 @@ typedef struct
 	menuaction_s		chat3;
 	menuaction_s		chat4;
 	menuaction_s		scanner;  // Shafe - Scanner
+	menuaction_s		grapple;  // Shafe - Grapple
 	menuradiobutton_s	joyenable;
 	menuslider_s		joythreshold;
 	menuaction_s		altattack;  // Shafe - Alt Fire
@@ -246,13 +248,14 @@ static bind_t g_bindings[] =
 	{"+button5", 		"secondary attack",		ID_ALTATTACK,	ANIM_ATTACK,	K_ALT,			-1,		-1, -1},
 	{"weapprev",		"prev weapon",		ID_WEAPPREV,	ANIM_IDLE,		'[',			-1,		-1, -1},
 	{"weapnext", 		"next weapon",		ID_WEAPNEXT,	ANIM_IDLE,		']',			-1,		-1, -1},
-	{"+button3", 		"gesture",			ID_GESTURE,		ANIM_GESTURE,	K_MOUSE3,		-1,		-1, -1},
+	{"+button3", 		"gesture",			ID_GESTURE,		ANIM_GESTURE,	-1,		-1,		-1, -1},
 	{"messagemode", 	"chat",				ID_CHAT,		ANIM_CHAT,		't',			-1,		-1, -1},
 	{"messagemode2", 	"chat - team",		ID_CHAT2,		ANIM_CHAT,		-1,				-1,		-1, -1},
 	{"messagemode3", 	"chat - target",	ID_CHAT3,		ANIM_CHAT,		-1,				-1,		-1, -1},
 	{"messagemode4", 	"chat - attacker",	ID_CHAT4,		ANIM_CHAT,		-1,				-1,		-1, -1},
 	// Shafe - Scanner
 	{"+scanner", 		"tracking device",	ID_SCANNER,		ANIM_CHAT,		'l',				-1,		-1, -1},
+	{"+button6", 		"energy hoist",	ID_GRAPPLE,		ANIM_ATTACK,	K_MOUSE3,			-1,		-1, -1},
 
 	{(char*)NULL,		(char*)NULL,		0,				0,				-1,				-1,		-1,	-1},
 };
@@ -330,6 +333,7 @@ static menucommon_s *g_misc_controls[] = {
 	(menucommon_s *)&s_controls.chat3,
 	(menucommon_s *)&s_controls.chat4,
 	(menucommon_s *)&s_controls.scanner,  // Shafe
+	(menucommon_s *)&s_controls.grapple,  // Shafe
 	NULL,
 };
 
@@ -1550,6 +1554,13 @@ static void Controls_MenuInit( void )
 	s_controls.scanner.generic.ownerdraw = Controls_DrawKeyBinding;
 	s_controls.scanner.generic.id        = ID_SCANNER;
 
+	// Shafe - Grapple
+	s_controls.grapple.generic.type	    = MTYPE_ACTION;
+	s_controls.grapple.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
+	s_controls.grapple.generic.callback  = Controls_ActionEvent;
+	s_controls.grapple.generic.ownerdraw = Controls_DrawKeyBinding;
+	s_controls.grapple.generic.id        = ID_GRAPPLE;
+
 	s_controls.joyenable.generic.type      = MTYPE_RADIOBUTTON;
 	s_controls.joyenable.generic.flags	   = QMF_SMALLFONT;
 	s_controls.joyenable.generic.x	       = SCREEN_WIDTH/2;
@@ -1634,7 +1645,7 @@ static void Controls_MenuInit( void )
 	////////////////////////////////////////////////////////////
 	Menu_AddItem( &s_controls.menu, &s_controls.useitem );
 	Menu_AddItem( &s_controls.menu, &s_controls.scanner );
-	
+	Menu_AddItem( &s_controls.menu, &s_controls.grapple );  // Shafe - Trep - Grapple
 	Menu_AddItem( &s_controls.menu, &s_controls.gesture );
 	
 	Menu_AddItem( &s_controls.menu, &s_controls.chat );

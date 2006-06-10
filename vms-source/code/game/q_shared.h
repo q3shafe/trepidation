@@ -1194,6 +1194,7 @@ typedef struct playerState_s {
 	int			jumppad_frame;
 	int			entityEventSequence;
 //	int			MultiJumps;		// Shafe - Trep - Multijumping
+
 } playerState_t;
 
 
