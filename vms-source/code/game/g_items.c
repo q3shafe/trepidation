@@ -785,6 +785,9 @@ void ClearRegisteredItems( void ) {
 	RegisterItem( BG_FindItemForWeapon( WP_GAUNTLET ) );
 	// Let's Always Register The Rocket Launcher  - Shafe - Trep 
 	RegisterItem( BG_FindItemForWeapon( WP_ROCKET_LAUNCHER ) );
+	// Shafe - Trep Preregister Lighning and the Grapple For the offhand grapple
+	RegisterItem( BG_FindItemForWeapon( WP_LIGHTNING ) );
+	RegisterItem( BG_FindItemForWeapon( WP_GRAPPLING_HOOK ) );
 	
 	// Shafe - Trep - Pre-register Railgun For Instagib
 	if (g_instagib.integer == 1)
