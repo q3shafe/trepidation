@@ -370,6 +370,8 @@ static qboolean PM_CheckJump( void ) {
 		return qfalse;
 	}
 
+	
+
 	pml.groundPlane = qfalse;		// jumping away
 	pml.walking = qfalse;
 	pm->ps->pm_flags |= PMF_JUMP_HELD;
@@ -378,7 +380,7 @@ static qboolean PM_CheckJump( void ) {
 	pm->ps->velocity[2] = JUMP_VELOCITY;
 	PM_AddEvent( EV_JUMP );
 
-//	pm->ps->MultiJumps++; // Shafe - Trep - Multijumping
+//	pm->ps->MultiJumps++; // Shafe - Trep - Multijumping / wall jumping
 
 	if ( pm->cmd.forwardmove >= 0 ) {
 		PM_ForceLegsAnim( LEGS_JUMP );
@@ -1116,6 +1118,8 @@ static void PM_GroundTrace( void ) {
 
 	// do something corrective if the trace starts in a solid...
 	if ( trace.allsolid ) {
+
+
 		if ( !PM_CorrectAllSolid(&trace) )
 			return;
 	}
@@ -1128,10 +1132,10 @@ static void PM_GroundTrace( void ) {
 		
 		// Shafe - Holy Hell  How do I make this read g_multijump? ???
 		/*
-		if (g_MultiJump.integer != 0)
-		{
+		//if (g_MultiJump.integer != 0)
+		//{ 
 			
-			// Ignore and reset multijumps if they have the jetpack
+			// Ignore and reset multijumps and wall jump if they have the jetpack
 			if (pm->ps->powerups[PW_FLIGHT]) 
 			{
 				pm->ps->MultiJumps = 0;
@@ -1170,8 +1174,29 @@ static void PM_GroundTrace( void ) {
 		return;
 	}
 	
+
+	// Shafe - Trep is the slope a wall?  If so allow a wall jump
+	
+	if ( trace.plane.normal[2] < 1.00 ) 
+	{  
+	//	if (pm->ps->MultiJumps < 4 ) 
+	//	{
+			PM_CheckJump(); // Shafe - Trep - Wall jumping?
+	//	} 
+	} // End Shafe
+	
+	
+
 	// slopes that are too steep will not be considered onground
-	if ( trace.plane.normal[2] < MIN_WALK_NORMAL ) {
+	if ( trace.plane.normal[2] < MIN_WALK_NORMAL ) {  
+		
+		// Shafe - Wall Jumping 
+	
+	//	if (pm->ps->MultiJumps < 4 ) {
+			PM_CheckJump(); // Shafe - Trep - Wall jumping?
+	//	}
+	
+		
 		if ( pm->debugLevel ) {
 			Com_Printf("%i:steep\n", c_pmove);
 			
@@ -1216,7 +1241,7 @@ static void PM_GroundTrace( void ) {
 	// pm->ps->velocity[2] = 0;
 
 	PM_AddTouchEnt( trace.entityNum );
-//	pm->ps->MultiJumps = 0; // Shafe - Trep - Multijumping
+//	pm->ps->MultiJumps = 0; // Shafe - Trep - Multijumping / Wall Jumping
 }
 
 
@@ -1984,6 +2009,8 @@ static void PM_LadderMove( void ) {
         if ( wishspeed > pm->ps->speed * pm_ladderScale ) {
                 wishspeed = pm->ps->speed * pm_ladderScale;
         }
+		
+		PM_CheckJump(); // Shafe - Jump from a ladder?
 
         PM_Accelerate (wishdir, wishspeed, pm_ladderAccelerate);
 
