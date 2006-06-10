@@ -464,9 +464,20 @@ void G_RunMissile( gentity_t *ent ) {
 		// never explode or bounce on sky
 		if ( tr.surfaceFlags & SURF_NOIMPACT ) {
 			// If grapple, reset owner
+			/* Shafe - Trep - Comment this out for offhand grapple
 			if (ent->parent && ent->parent->client && ent->parent->client->hook == ent) {
 				ent->parent->client->hook = NULL;
 			}
+			*/
+			// Shafe - Trep - Offhand Grappling Hook
+			if (ent->parent && ent->parent->client->hook == ent)
+			{
+				ent->parent->client->hook = NULL;
+				ent->parent->client->hookhasbeenfired = qfalse;
+				ent->parent->client->fireHeld = qfalse;
+			}
+			// End Shafe
+
 			G_FreeEntity( ent );
 			return;
 		}
@@ -808,10 +819,10 @@ void G_HomingMissile( gentity_t *ent )
 		}
 	}
 
-	//if (target == NULL)	{	
-	//	ent->nextthink = level.time + 10000;
+	if (target == NULL)	{	
+		ent->nextthink = level.time + 10000;
 		// if once the rocket lose target,it will not search new enemy any more,and go away.
-	//} else {
+	} else {
 		ent->s.pos.trTime=level.time;
 		VectorCopy(ent->r.currentOrigin, ent->s.pos.trBase );
 		//for exact trajectory calculation,set current point to base.
@@ -832,7 +843,7 @@ void G_HomingMissile( gentity_t *ent )
 
 		SnapVector (ent->s.pos.trDelta);                      // save net bandwidth
 		ent->nextthink = level.time + 100;	//decrease this value also makes fast swing. -- // Shafe was 100
-	//}
+	}
 }
 
 

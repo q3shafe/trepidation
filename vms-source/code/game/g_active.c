@@ -2,7 +2,7 @@
 //
 
 #include "g_local.h"
-
+void Weapon_GrapplingHook_Fire (gentity_t *ent); // Shafe - Trep - Offhand Grapple
 
 /*
 ===============
@@ -951,10 +951,12 @@ void ClientThink_real( gentity_t *ent ) {
 	}
 
 	// Let go of the hook if we aren't firing
+	/*  - Shafe - Trep - Commented out for offhand grapple
 	if ( client->ps.weapon == WP_GRAPPLING_HOOK &&
 		client->hook && !( ucmd->buttons & BUTTON_ATTACK ) ) {
 		Weapon_HookFree(client->hook);
 	}
+	*/ 
 
 	// set up for pmove
 	oldEventSequence = client->ps.eventSequence;
@@ -1062,9 +1064,29 @@ void ClientThink_real( gentity_t *ent ) {
 
 	SendPendingPredictableEvents( &ent->client->ps );
 
+	/* - Shafe - Trep - Commented out for Offhand Grapple
 	if ( !( ent->client->ps.eFlags & EF_FIRING ) ) {
 		client->fireHeld = qfalse;		// for grapple
 	}
+	*/
+
+	// Shafe - Trep  - Offhand Grappling Hook
+	if ( (pm.cmd.buttons & 64)  && ent->client->ps.pm_type != PM_DEAD && !ent->client->hookhasbeenfired)
+		{
+			Weapon_GrapplingHook_Fire( ent );
+			ent->client->hookhasbeenfired = qtrue;
+		}
+		if ( !(pm.cmd.buttons & 64)  &&	ent->client->ps.pm_type != PM_DEAD && ent->client->hookhasbeenfired && ent->client->fireHeld)
+		{
+			ent->client->fireHeld = qfalse;
+			ent->client->hookhasbeenfired = qfalse;
+		}
+
+		if ( client->hook && client->fireHeld == qfalse )
+		{
+			Weapon_HookFree(client->hook);
+		}
+	// End Shafe - Offhand Grapple //////////////////////////////////////////////
 
 	// use the snapped origin for linking so it matches client predicted versions
 	VectorCopy( ent->s.pos.trBase, ent->r.currentOrigin );
