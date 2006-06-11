@@ -190,7 +190,7 @@ void Add_Ammo (gentity_t *ent, int weapon, int count)
 {
 	ent->client->ps.ammo[weapon] += count;
 	if ( ent->client->ps.ammo[weapon] > 200 ) {
-		ent->client->ps.ammo[weapon] = 200;
+		//ent->client->ps.ammo[weapon] = 200; // Shafe - Trep - Ammo is no longer maxxed at 200
 	}
 }
 
@@ -224,6 +224,7 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 			quantity = ent->item->quantity;
 		}
 
+
 		// dropped items and teamplay weapons always have full ammo
 		if ( ! (ent->flags & FL_DROPPED_ITEM) && g_gametype.integer != GT_TEAM ) {
 			// respawning rules
@@ -231,15 +232,40 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 			if ( other->client->ps.ammo[ ent->item->giTag ] < quantity ) {
 				quantity = quantity - other->client->ps.ammo[ ent->item->giTag ];
 			} else {
-				quantity = 1;		// only add a single shot
+				quantity = 0;
+				//quantity = 1;		// only add a single shot  // Shafe - Trep - We only give ammo if they are out now.
+				
 			}
 		}
 	}
+
+	// Shafe - Trep - New Way Of Doing All Of This
+	/*
+	if ( other->client->ps.stats[STAT_WEAPONS] & ( 1 << ent->item->giTag )) // They Have The Weapon
+	{
+		
+		// They are not out of ammo.. dont let them pick it up
+		if ( other->client->ps.ammo[ ent->item->giTag ] > 0 )  
+			{ 
+				// Do Nothing
+			}
+		// They are not out of ammo but it's a dropped weapon - So Let Them Have it with ammo
+		if ((ent->flags & FL_DROPPED_ITEM) && (other->client->ps.ammo[ ent->item->giTag ] > 0))
+		{
+			other->client->ps.stats[STAT_WEAPONS] |= ( 1 << ent->item->giTag );
+			Add_Ammo( other, ent->item->giTag, quantity );
+		}
+
+	} else 
+	{ // They Dont Have The Weapon Give it to them
+	*/
 
 	// add the weapon
 	other->client->ps.stats[STAT_WEAPONS] |= ( 1 << ent->item->giTag );
 
 	Add_Ammo( other, ent->item->giTag, quantity );
+
+	//}
 
 	if (ent->item->giTag == WP_GRAPPLING_HOOK)
 		other->client->ps.ammo[ent->item->giTag] = -1; // unlimited ammo
@@ -404,6 +430,9 @@ void Touch_Item (gentity_t *ent, gentity_t *other, trace_t *trace) {
 	if (other->health < 1)
 		return;		// dead people can't pickup
 
+	
+	//ent->flags & FL_DROPPED_ITEM
+
 	// the same pickup rules are used for client side and server side
 	if ( !BG_CanItemBeGrabbed( g_gametype.integer, &ent->s, &other->client->ps ) ) {
 		return;
@@ -416,7 +445,25 @@ void Touch_Item (gentity_t *ent, gentity_t *other, trace_t *trace) {
 	// call the item-specific pickup function
 	switch( ent->item->giType ) {
 	case IT_WEAPON:
-		respawn = Pickup_Weapon(ent, other);
+		// Shafe - Trep - Modified A Lot
+		if ( other->client->ps.stats[STAT_WEAPONS] & ( 1 << ent->item->giTag ))  // They have the weapon now see if we need to refuse it because they are out of ammo.
+		{
+			if ( other->client->ps.ammo[ ent->item->giTag ] == 0 )  // They are out of ammo.. let them pick it up
+			{ 
+				respawn = Pickup_Weapon(ent, other);
+			} else 
+			{
+				respawn = 0;
+			}
+		} else 
+		{
+			// They Dont have the weapon at all let's let em pickup	
+			respawn = Pickup_Weapon(ent, other);
+		}
+		if(ent->flags & FL_DROPPED_ITEM) // It's a dropped Item.. Let them have it
+		{
+			respawn = Pickup_Weapon(ent, other);
+		}
 //		predict = qfalse;
 		break;
 	case IT_AMMO:
