@@ -1049,14 +1049,26 @@ qboolean BG_CanItemBeGrabbed( int gametype, const entityState_t *ent, const play
 
 	switch( item->giType ) {
 	case IT_WEAPON:
+		// Shafe - Trep - Modified A Lot
+		// The Problem here is you cant pick up dropped weapons
+		/*
+		if ( ps->stats[STAT_WEAPONS] & ( 1 << item->giTag ))  // They have the weapon now see if we need to refuse it because they are out of ammo.
+		{
+			if ( ps->ammo[ item->giTag ] > 0 )  // They are not out of ammo.. dont let them pick it up
+			{ 
+				return qfalse;		// can't hold any more
+			}
+		}
+		*/
 		return qtrue;	// weapons are always picked up
 
 	case IT_AMMO:
 
 		//if ( ps->ammo[ item->giTag ] >= 200 ) {
-		if ( ps->ammo[ item->giTag ] >= Max_Ammo[ item->giTag ]) { // Shafe - Trep
-			return qfalse;		// can't hold any more
-		}
+	
+			if ( ps->ammo[ item->giTag ] >= Max_Ammo[ item->giTag ]) { // Shafe - Trep
+				return qfalse;		// can't hold any more
+			} 
 		return qtrue;
 
 	case IT_ARMOR:
