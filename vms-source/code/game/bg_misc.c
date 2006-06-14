@@ -1037,6 +1037,8 @@ This needs to be the same for client side prediction and server use.
 */
 qboolean BG_CanItemBeGrabbed( int gametype, const entityState_t *ent, const playerState_t *ps ) {
 	gitem_t	*item;
+	
+
 #ifdef MISSIONPACK
 	int		upperBound;
 #endif
@@ -1046,21 +1048,30 @@ qboolean BG_CanItemBeGrabbed( int gametype, const entityState_t *ent, const play
 	}
 
 	item = &bg_itemlist[ent->modelindex];
+	
 
+	
 	switch( item->giType ) {
 	case IT_WEAPON:
 		// Shafe - Trep - Modified A Lot
-		// The Problem here is you cant pick up dropped weapons
-		/*
+		// The Problem here is you cant pick up dropped weapons - 
+		// But I Took care of that with a cheap hack in g_items.c Touch_Item
+		//
+		//
+		//if ( ent->eFlags & EF_DEAD ) // drop weapons are always pick-up-able and will give ammo
+		//{	return qtrue;}					
+		
 		if ( ps->stats[STAT_WEAPONS] & ( 1 << item->giTag ))  // They have the weapon now see if we need to refuse it because they are out of ammo.
 		{
+			
 			if ( ps->ammo[ item->giTag ] > 0 )  // They are not out of ammo.. dont let them pick it up
 			{ 
-				return qfalse;		// can't hold any more
+				return qfalse;		
 			}
 		}
-		*/
-		return qtrue;	// weapons are always picked up
+		
+		// Otherwise just give it to them.
+		return qtrue;	
 
 	case IT_AMMO:
 

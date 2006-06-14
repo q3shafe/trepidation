@@ -1069,6 +1069,7 @@ void FireWeapon2( gentity_t *ent ) {
    Weapon_RocketLauncher_AltFire( ent );
   break; 
  case WP_PLASMAGUN: 
+	weapon_grenadelauncher_fire( ent );
    //Weapon_RocketLauncher_Fire( ent );
   break; 
  case WP_RAILGUN: 

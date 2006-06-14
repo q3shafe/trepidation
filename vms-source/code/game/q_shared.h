@@ -1214,10 +1214,10 @@ typedef struct playerState_s {
 										// only generate a small move value for that frame
 										// walking will use different animations and
 										// won't generate footsteps
-#define BUTTON_AFFIRMATIVE	32
-#define	BUTTON_NEGATIVE		64
+#define BUTTON_AFFIRMATIVE	32			// Alt Fire Now -- Shafe - Trep
+#define	BUTTON_NEGATIVE		64			// Grapple -- Shafe -- Trep
 
-#define BUTTON_GETFLAG		128
+#define BUTTON_GETFLAG		128			// Button 128 is now Drop Flag
 #define BUTTON_GUARDBASE	256
 #define BUTTON_PATROL		512
 #define BUTTON_FOLLOWME		1024

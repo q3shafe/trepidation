@@ -431,11 +431,18 @@ void Touch_Item (gentity_t *ent, gentity_t *other, trace_t *trace) {
 		return;		// dead people can't pickup
 
 	
-	//ent->flags & FL_DROPPED_ITEM
-
 	// the same pickup rules are used for client side and server side
-	if ( !BG_CanItemBeGrabbed( g_gametype.integer, &ent->s, &other->client->ps ) ) {
-		return;
+	
+	// Shafe - Trep this is a cheap hack to allow pickups of dropped weapons
+	if ((ent->flags & FL_DROPPED_ITEM) && (ent->item->giType == IT_WEAPON)) // It's a dropped Item.. Let them have it -- Shafe - Trep
+	{
+		// Let not do anything for now - change later
+	
+	} else {
+
+		if ( !BG_CanItemBeGrabbed( g_gametype.integer, &ent->s, &other->client->ps ) ) {
+			return;
+		}
 	}
 
 	G_LogPrintf( "Item: %i %s\n", other->s.number, ent->item->classname );
@@ -446,6 +453,7 @@ void Touch_Item (gentity_t *ent, gentity_t *other, trace_t *trace) {
 	switch( ent->item->giType ) {
 	case IT_WEAPON:
 		// Shafe - Trep - Modified A Lot
+		/* // Remove this Issue Corrected!!!!!!! Shafe
 		if ( other->client->ps.stats[STAT_WEAPONS] & ( 1 << ent->item->giTag ))  // They have the weapon now see if we need to refuse it because they are out of ammo.
 		{
 			if ( other->client->ps.ammo[ ent->item->giTag ] == 0 )  // They are out of ammo.. let them pick it up
@@ -463,7 +471,9 @@ void Touch_Item (gentity_t *ent, gentity_t *other, trace_t *trace) {
 		if(ent->flags & FL_DROPPED_ITEM) // It's a dropped Item.. Let them have it
 		{
 			respawn = Pickup_Weapon(ent, other);
-		}
+		} */
+		
+		respawn = Pickup_Weapon(ent, other);
 //		predict = qfalse;
 		break;
 	case IT_AMMO:
