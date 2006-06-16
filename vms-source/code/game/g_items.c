@@ -179,7 +179,12 @@ int Pickup_Holdable( gentity_t *ent, gentity_t *other ) {
 	if( ent->item->giTag == HI_KAMIKAZE ) {
 		other->client->ps.eFlags |= EF_KAMIKAZE;
 	}
-
+	
+	if( ent->item->giTag == HI_MEDKIT ) {
+		other->client->pers.holdable = 1;
+			
+	}
+	
 	return RESPAWN_HOLDABLE;
 }
 

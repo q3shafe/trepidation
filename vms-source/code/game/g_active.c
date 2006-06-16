@@ -562,6 +562,7 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 			break;
 
 		case EV_USE_ITEM1:		// teleporter
+			/*
 			// drop flags in CTF
 			item = NULL;
 			j = 0;
@@ -586,7 +587,7 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 				}
 
 				ent->client->ps.powerups[ j ] = 0;
-			}
+			}*/
 
 #ifdef MISSIONPACK
 			if ( g_gametype.integer == GT_HARVESTER ) {

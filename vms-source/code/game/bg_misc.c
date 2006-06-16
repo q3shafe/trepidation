@@ -171,7 +171,7 @@ gitem_t	bg_itemlist[] =
 		"models/powerups/health/mega_sphere.md3", 
 		0, 0 },
 /* icon */		"icons/iconh_mega",
-/* pickup */	"Mega Health",
+/* pickup */	"Medkit",
 		100,
 		IT_HEALTH,
 		0,

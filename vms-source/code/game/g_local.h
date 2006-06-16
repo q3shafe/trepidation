@@ -256,6 +256,8 @@ typedef struct {
 	int			realPing;
 	int			pingsamples[NUM_PING_SAMPLES];
 	int			samplehead;
+	int			holdable;		// Shafe - Trep - Notes any holdable 1=medkit
+	int			Multijumps;		// Shafe - Trep - Mulijumps
 //unlagged - true ping
 } clientPersistant_t;
 
