@@ -1629,14 +1629,15 @@ static void PM_Weapon( void ) {
 	// Shafe - Trep - I think here is where we want to force the medkit as a MUST use holdable... but nothing done yet
 	if ( pm->cmd.buttons & BUTTON_USE_HOLDABLE ) {
 		if ( ! ( pm->ps->pm_flags & PMF_USE_ITEM_HELD ) ) {
-			if ( bg_itemlist[pm->ps->stats[STAT_HOLDABLE_ITEM]].giTag == HI_MEDKIT) // && pm->ps->stats[STAT_HEALTH] >= (pm->ps->stats[STAT_MAX_HEALTH] + 25)) {
-			{	// don't use medkit if at max health
-				//pm->ps->stats[STAT_HOLDABLE_ITEM] = 1;
+			if ( bg_itemlist[pm->ps->stats[STAT_HOLDABLE_ITEM]].giTag == HI_MEDKIT && pm->ps->stats[STAT_HEALTH] >= (pm->ps->stats[STAT_MAX_HEALTH] + 25)) {
+				// don't use medkit if at max health
+				pm->ps->stats[STAT_HOLDABLE_ITEM] = 1;
 			} else {
 			
-				//pm->ps->pm_flags |= PMF_USE_ITEM_HELD;
-				//PM_AddEvent( EV_USE_ITEM0 + bg_itemlist[pm->ps->stats[STAT_HOLDABLE_ITEM]].giTag );
-				//pm->ps->stats[STAT_HOLDABLE_ITEM] = 0;
+			
+				pm->ps->pm_flags |= PMF_USE_ITEM_HELD;
+				PM_AddEvent( EV_USE_ITEM0 + bg_itemlist[pm->ps->stats[STAT_HOLDABLE_ITEM]].giTag );
+				pm->ps->stats[STAT_HOLDABLE_ITEM] = 0;
 			}
 			return;
 		}

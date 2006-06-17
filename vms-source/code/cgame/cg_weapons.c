@@ -357,7 +357,7 @@ static void CG_RocketTrail( centity_t *ent, const weaponInfo_t *wi ) {
 					  t,
 					  0,
 					  0, 
-					  cgs.media.smokePuffShader );
+					  cgs.media.smokePuffShader ); // Shafe set this to 2
 		// use the optimized local entity add
 		smoke->leType = LE_SCALE_FADE;
 	}
@@ -572,8 +572,69 @@ CG_GrenadeTrail
 ==========================
 */
 static void CG_GrenadeTrail( centity_t *ent, const weaponInfo_t *wi ) {
-	CG_RocketTrail( ent, wi );
+	//CG_RocketTrail( ent, wi );  // We now use separate effects  Shafe - Trep
+	// Shafe - Trep all of this is just copied from CG_RocketTrail with a changed shader... This can be consolidated a bit better... later
+	int		step;
+	vec3_t	origin, lastPos;
+	int		t;
+	int		startTime, contents;
+	int		lastContents;
+	entityState_t	*es;
+	vec3_t	up;
+	localEntity_t	*smoke;
+
+	if ( cg_noProjectileTrail.integer ) {
+		return;
+	}
+
+	up[0] = 0;
+	up[1] = 0;
+	up[2] = 0;
+
+	step = 50;
+
+	es = &ent->currentState;
+	startTime = ent->trailTime;
+	t = step * ( (startTime + step) / step );
+
+	BG_EvaluateTrajectory( &es->pos, cg.time, origin );
+	contents = CG_PointContents( origin, -1 );
+
+	// if object (e.g. grenade) is stationary, don't toss up smoke
+	if ( es->pos.trType == TR_STATIONARY ) {
+		ent->trailTime = cg.time;
+		return;
+	}
+
+	BG_EvaluateTrajectory( &es->pos, ent->trailTime, lastPos );
+	lastContents = CG_PointContents( lastPos, -1 );
+
+	ent->trailTime = cg.time;
+
+	if ( contents & ( CONTENTS_WATER | CONTENTS_SLIME | CONTENTS_LAVA ) ) {
+		if ( contents & lastContents & CONTENTS_WATER ) {
+			CG_BubbleTrail( lastPos, origin, 8 );
+		}
+		return;
+	}
+
+	for ( ; t <= ent->trailTime ; t += step ) {
+		BG_EvaluateTrajectory( &es->pos, t, lastPos );
+
+		smoke = CG_SmokePuff( lastPos, up, 
+					  wi->trailRadius, 
+					  1, 1, 1, 0.33f,
+					  wi->wiTrailTime, 
+					  t,
+					  0,
+					  0, 
+					  cgs.media.smokePuffShader );
+		// use the optimized local entity add
+		smoke->leType = LE_SCALE_FADE;
+	}
+
 }
+
 
 
 /*
@@ -732,8 +793,8 @@ void CG_RegisterWeapon( int weaponNum ) {
 		weaponInfo->missileSound = trap_S_RegisterSound( "sound/weapons/rocket/rockfly.wav", qfalse );
 		weaponInfo->missileTrailFunc = CG_RocketTrail;
 		weaponInfo->missileDlight = 200;
-		weaponInfo->wiTrailTime = 2000;
-		weaponInfo->trailRadius = 64;
+		weaponInfo->wiTrailTime = 2000; 
+		weaponInfo->trailRadius = 64; 
 		
 		MAKERGB( weaponInfo->missileDlightColor, 1, 0.75f, 0 );
 		MAKERGB( weaponInfo->flashDlightColor, 1, 0.75f, 0 );

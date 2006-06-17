@@ -562,7 +562,6 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 			break;
 
 		case EV_USE_ITEM1:		// teleporter
-			/*
 			// drop flags in CTF
 			item = NULL;
 			j = 0;
@@ -587,8 +586,7 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 				}
 
 				ent->client->ps.powerups[ j ] = 0;
-			}*/
-
+			}
 #ifdef MISSIONPACK
 			if ( g_gametype.integer == GT_HARVESTER ) {
 				if ( ent->client->ps.generic1 > 0 ) {
@@ -611,11 +609,13 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 				}
 			}
 #endif
+			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Teleporter\n", ent->item->giTag ); // Shafe - Debug
 			SelectSpawnPoint( ent->client->ps.origin, origin, angles );
 			TeleportPlayer( ent, origin, angles );
 			break;
 
 		case EV_USE_ITEM2:		// medkit
+			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Medkit\n", ent->item->giTag ); // Shafe - Debug
 			ent->health = ent->client->ps.stats[STAT_MAX_HEALTH] + 25;
 
 			break;
@@ -1097,6 +1097,9 @@ void ClientThink_real( gentity_t *ent ) {
 
 	ent->waterlevel = pm.waterlevel;
 	ent->watertype = pm.watertype;
+
+	// TryUse Here
+	
 
 	// execute client events
 	ClientEvents( ent, oldEventSequence );

@@ -737,9 +737,12 @@ typedef struct {
 	qhandle_t	lagometerShader;
 	qhandle_t	backTileShader;
 	qhandle_t	noammoShader;
-
 	qhandle_t	smokePuffShader;
 	qhandle_t	smokePuffRageProShader;
+	// Shafe - Singularity Cannon
+	qhandle_t	smokePuffShader2;
+	qhandle_t	smokePuffRageProShader2;
+	// End Shafe
 	qhandle_t	shotgunSmokePuffShader;
 	qhandle_t	plasmaBallShader;
 	qhandle_t	waterBubbleShader;

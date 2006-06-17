@@ -181,11 +181,12 @@ int Pickup_Holdable( gentity_t *ent, gentity_t *other ) {
 	}
 	
 	// Shafe - Trep -- Test
+	/*
 	if( ent->item->giTag == HI_MEDKIT ) {
 		other->client->pers.holdable = 1;
 			
 	}
-	PrintMsg( NULL, "%i" S_COLOR_WHITE " pickup holdable\n", ent->item->giTag ); // Shafe - Debug
+	*/
 	
 	return RESPAWN_HOLDABLE;
 }
@@ -199,7 +200,7 @@ void Add_Ammo (gentity_t *ent, int weapon, int count)
 	if ( ent->client->ps.ammo[weapon] > 200 ) {
 		//ent->client->ps.ammo[weapon] = 200; // Shafe - Trep - Ammo is no longer maxxed at 200
 	}
-	PrintMsg( NULL, "%i" S_COLOR_WHITE " add ammo\n", count ); // Shafe - Debug
+	
 }
 
 int Pickup_Ammo (gentity_t *ent, gentity_t *other)
@@ -214,7 +215,6 @@ int Pickup_Ammo (gentity_t *ent, gentity_t *other)
 	}
 	
 	
-	PrintMsg( NULL, "%i" S_COLOR_WHITE " ammo add pickup (PICKUP_AMMO)\n", quantity ); // Shafe Debug
 	Add_Ammo (other, ent->item->giTag, quantity);
 
 	return RESPAWN_AMMO;
@@ -256,7 +256,6 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 	// add the weapon
 	other->client->ps.stats[STAT_WEAPONS] |= ( 1 << ent->item->giTag );
 
-	PrintMsg( NULL, "%i" S_COLOR_WHITE " pickup_weapon\n", quantity ); // Shafe - Debug
 	Add_Ammo( other, ent->item->giTag, quantity );
 
 	//}

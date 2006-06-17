@@ -903,7 +903,15 @@ static void CG_RegisterGraphics( void ) {
 
 	cgs.media.smokePuffShader = trap_R_RegisterShader( "smokePuff" );
 	cgs.media.smokePuffRageProShader = trap_R_RegisterShader( "smokePuffRagePro" );
+
+	// Shafe - Singularity Cannon Shaders
+	cgs.media.smokePuffShader2 = trap_R_RegisterShader( "smokePuff2" );
+	cgs.media.smokePuffRageProShader2 = trap_R_RegisterShader( "smokePuffRagePro2" );
+	// End Shafe
+
 	cgs.media.shotgunSmokePuffShader = trap_R_RegisterShader( "shotgunSmokePuff" );
+
+
 #ifdef MISSIONPACK
 	cgs.media.nailPuffShader = trap_R_RegisterShader( "nailtrail" );
 	cgs.media.blueProxMine = trap_R_RegisterModel( "models/weaphits/proxmineb.md3" );
