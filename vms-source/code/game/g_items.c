@@ -180,10 +180,12 @@ int Pickup_Holdable( gentity_t *ent, gentity_t *other ) {
 		other->client->ps.eFlags |= EF_KAMIKAZE;
 	}
 	
+	// Shafe - Trep -- Test
 	if( ent->item->giTag == HI_MEDKIT ) {
 		other->client->pers.holdable = 1;
 			
 	}
+	PrintMsg( NULL, "%i" S_COLOR_WHITE " pickup holdable\n", ent->item->giTag ); // Shafe - Debug
 	
 	return RESPAWN_HOLDABLE;
 }
@@ -197,6 +199,7 @@ void Add_Ammo (gentity_t *ent, int weapon, int count)
 	if ( ent->client->ps.ammo[weapon] > 200 ) {
 		//ent->client->ps.ammo[weapon] = 200; // Shafe - Trep - Ammo is no longer maxxed at 200
 	}
+	PrintMsg( NULL, "%i" S_COLOR_WHITE " add ammo\n", count ); // Shafe - Debug
 }
 
 int Pickup_Ammo (gentity_t *ent, gentity_t *other)
@@ -206,9 +209,12 @@ int Pickup_Ammo (gentity_t *ent, gentity_t *other)
 	if ( ent->count ) {
 		quantity = ent->count;
 	} else {
+	
 		quantity = ent->item->quantity;
 	}
-
+	
+	
+	PrintMsg( NULL, "%i" S_COLOR_WHITE " ammo add pickup (PICKUP_AMMO)\n", quantity ); // Shafe Debug
 	Add_Ammo (other, ent->item->giTag, quantity);
 
 	return RESPAWN_AMMO;
@@ -220,16 +226,19 @@ int Pickup_Ammo (gentity_t *ent, gentity_t *other)
 int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 	int		quantity;
 
+	
+	
 	if ( ent->count < 0 ) {
 		quantity = 0; // None for you, sir!
 	} else {
 		if ( ent->count ) {
 			quantity = ent->count;
 		} else {
+
 			quantity = ent->item->quantity;
 		}
 
-
+		
 		// dropped items and teamplay weapons always have full ammo
 		if ( ! (ent->flags & FL_DROPPED_ITEM) && g_gametype.integer != GT_TEAM ) {
 			// respawning rules
@@ -237,37 +246,17 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 			if ( other->client->ps.ammo[ ent->item->giTag ] < quantity ) {
 				quantity = quantity - other->client->ps.ammo[ ent->item->giTag ];
 			} else {
-				quantity = 0;
-				//quantity = 1;		// only add a single shot  // Shafe - Trep - We only give ammo if they are out now.
+				quantity = 1;		// only add a single shot  
 				
 			}
 		}
 	}
 
-	// Shafe - Trep - New Way Of Doing All Of This
-	/*
-	if ( other->client->ps.stats[STAT_WEAPONS] & ( 1 << ent->item->giTag )) // They Have The Weapon
-	{
-		
-		// They are not out of ammo.. dont let them pick it up
-		if ( other->client->ps.ammo[ ent->item->giTag ] > 0 )  
-			{ 
-				// Do Nothing
-			}
-		// They are not out of ammo but it's a dropped weapon - So Let Them Have it with ammo
-		if ((ent->flags & FL_DROPPED_ITEM) && (other->client->ps.ammo[ ent->item->giTag ] > 0))
-		{
-			other->client->ps.stats[STAT_WEAPONS] |= ( 1 << ent->item->giTag );
-			Add_Ammo( other, ent->item->giTag, quantity );
-		}
-
-	} else 
-	{ // They Dont Have The Weapon Give it to them
-	*/
-
+	
 	// add the weapon
 	other->client->ps.stats[STAT_WEAPONS] |= ( 1 << ent->item->giTag );
 
+	PrintMsg( NULL, "%i" S_COLOR_WHITE " pickup_weapon\n", quantity ); // Shafe - Debug
 	Add_Ammo( other, ent->item->giTag, quantity );
 
 	//}
