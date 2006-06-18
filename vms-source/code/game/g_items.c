@@ -256,7 +256,17 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 	// add the weapon
 	other->client->ps.stats[STAT_WEAPONS] |= ( 1 << ent->item->giTag );
 
-	Add_Ammo( other, ent->item->giTag, quantity );
+	if ( (other->client->ps.ammo[ ent->item->giTag ] + quantity)  <= Max_Ammo[ ent->item->giTag ] ) 
+	{
+		// It's not gonna put them over give them the full amount
+		Add_Ammo( other, ent->item->giTag, quantity );
+	}
+	else 
+	{
+		// Otherwise just give them the max
+		quantity = Max_Ammo[ ent->item->giTag ];
+		Add_Ammo( other, ent->item->giTag, quantity );
+	}
 
 	//}
 
@@ -838,6 +848,10 @@ void ClearRegisteredItems( void ) {
 	// Shafe - Trep Preregister Lighning and the Grapple For the offhand grapple
 	RegisterItem( BG_FindItemForWeapon( WP_LIGHTNING ) );
 	RegisterItem( BG_FindItemForWeapon( WP_GRAPPLING_HOOK ) );
+	
+	// Shade - Trep - Register the Grenade Launcher for the PDG's... 
+	// If we get a model we wont need to pre-register this
+	RegisterItem( BG_FindItemForWeapon( WP_GRENADE_LAUNCHER ) );
 	
 	// Shafe - Trep - Pre-register Railgun For Instagib
 	if (g_instagib.integer == 1)

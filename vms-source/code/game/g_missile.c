@@ -30,6 +30,9 @@ void G_BounceMissile( gentity_t *ent, trace_t *trace ) {
 			    ent->parent->istelepoint = 1;
 				VectorCopy(ent->r.currentOrigin, ent->parent->teleloc);
 				ent->parent->teleloc[2] += 60;
+				
+				trap_SendServerCommand( ent->r.ownerNum, va("cp \"^9Particle Displacement Grenade Lock!\n\"") );
+				//G_Printf( S_COLOR_RED "Particle Displacement Grenade Lock!\n" );
 				// end shafe
 
 			return;
@@ -569,7 +572,8 @@ void G_ExplodePDGrenade( gentity_t *ent ) {
  
 	ent->parent->istelepoint = 0; // client cannot teleport
  	VectorClear( ent->parent->teleloc ); // clear the teleport location
-	G_Printf( S_COLOR_GREEN "Translocator Expired\n" );
+	//G_Printf( S_COLOR_GREEN "Particle Displacement Grenade Expired\n" );
+	trap_SendServerCommand( ent->r.ownerNum, va("cp \"^9Particle Displacement Grenade Expired!\n\"") );
 	G_ExplodeMissile( ent );
 }
 /*
@@ -580,7 +584,8 @@ void G_ExplodePDGrenade( gentity_t *ent ) {
 */
 gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 	gentity_t	*bolt;
-  
+	
+	
 	VectorNormalize (dir);
  
 	bolt = G_Spawn();
