@@ -26,6 +26,12 @@ void G_BounceMissile( gentity_t *ent, trace_t *trace ) {
 		// check for stop
 		if ( trace->plane.normal[2] > 0.2 && VectorLength( ent->s.pos.trDelta ) < 40 ) {
 			G_SetOrigin( ent, trace->endpos );
+				// Shafe - trep - pdg
+			    ent->parent->istelepoint = 1;
+				VectorCopy(ent->r.currentOrigin, ent->parent->teleloc);
+				ent->parent->teleloc[2] += 60;
+				// end shafe
+
 			return;
 		}
 	}
@@ -262,6 +268,14 @@ void G_MissileImpact( gentity_t *ent, trace_t *trace ) {
 		G_AddEvent( ent, EV_GRENADE_BOUNCE, 0 );
 		return;
 	}
+
+	// Shafe - trep - pdg - Only if not ET_MISSILE
+	/*
+	ent->parent->istelepoint = 1;
+	VectorCopy(ent->r.currentOrigin, ent->parent->teleloc);
+	ent->parent->teleloc[2] += 8;
+	*/
+	// End Shafe
 
 #ifdef MISSIONPACK
 	if ( other->takedamage ) {
@@ -549,6 +563,56 @@ gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
 //=============================================================================
 
 
+
+// Shafe - Trep 
+void G_ExplodePDGrenade( gentity_t *ent ) {
+ 
+	ent->parent->istelepoint = 0; // client cannot teleport
+ 	VectorClear( ent->parent->teleloc ); // clear the teleport location
+	G_Printf( S_COLOR_GREEN "Translocator Expired\n" );
+	G_ExplodeMissile( ent );
+}
+/*
+=================
+ fire_pdgrenade
+ Shafe - Trep 
+=================
+*/
+gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
+	gentity_t	*bolt;
+  
+	VectorNormalize (dir);
+ 
+	bolt = G_Spawn();
+	bolt->classname = "pdgrenade";
+	bolt->nextthink = level.time + 30000;
+	bolt->think = G_ExplodePDGrenade;
+	bolt->s.eType = ET_MISSILE;
+	//tr.surfaceFlags & SURF_NOIMPACT
+	
+	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+	bolt->s.weapon = WP_GRENADE_LAUNCHER;
+	bolt->s.eFlags = EF_BOUNCE_HALF;  // Get rid of this for no bounce
+	bolt->r.ownerNum = self->s.number;
+	bolt->parent = self;
+	bolt->damage = 1;
+	bolt->splashDamage = 0;
+	bolt->splashRadius = 0;
+	bolt->methodOfDeath = MOD_GRENADE;
+	bolt->splashMethodOfDeath = MOD_GRENADE_SPLASH;
+	bolt->clipmask = MASK_SHOT;
+ 
+	bolt->s.pos.trType = TR_GRAVITY;
+	 bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;
+	VectorCopy( start, bolt->s.pos.trBase );
+	VectorScale( dir, 700, bolt->s.pos.trDelta );
+	SnapVector( bolt->s.pos.trDelta );// save net bandwidth
+ 
+	VectorCopy (start, bolt->r.currentOrigin);
+ 
+ return bolt;
+}
+
 /*
 =================
 fire_grenade
@@ -619,16 +683,20 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) 
 	bolt->s.otherEntityNum = self->s.number;
 //unlagged - projectile nudge
 	bolt->parent = self;
-	bolt->damage = 30;
-	bolt->splashDamage = 25;
-	bolt->splashRadius = 45;
+	
 	
 	if (alt == qfalse ) 
 	{
 		bolt->methodOfDeath = MOD_LIGHTNING;
+		bolt->damage = 70;
+		bolt->splashDamage = 55;
+		bolt->splashRadius = 55;
 	} else
 	{
 		bolt->methodOfDeath = MOD_ALTFLAMER;
+		bolt->damage = 30;
+		bolt->splashDamage = 25;
+		bolt->splashRadius = 45;
 	}
 
 	bolt->splashMethodOfDeath = MOD_PLASMA_SPLASH;

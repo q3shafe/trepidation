@@ -1131,7 +1131,7 @@ static void PM_GroundTrace( void ) {
 		pml.walking = qfalse;
 		
 		// Shafe - Holy Hell  How do I make this read g_multijump? ???
-		/*
+		/*		
 		//if (g_MultiJump.integer != 0)
 		//{ 
 			
@@ -1149,8 +1149,8 @@ static void PM_GroundTrace( void ) {
 					PM_CheckJump ();
 				}
 			}
-		} */
-		
+		} 
+		*/
 		return;
 	}
 
@@ -1179,10 +1179,10 @@ static void PM_GroundTrace( void ) {
 	
 	if ( trace.plane.normal[2] < 1.00 ) 
 	{  
-	//	if (pm->ps->MultiJumps < 4 ) 
-	//	{
+		//if (pm->ps->MultiJumps < 4 ) 
+		//{
 			PM_CheckJump(); // Shafe - Trep - Wall jumping?
-	//	} 
+		//} 
 	} // End Shafe
 	
 	
@@ -1192,9 +1192,9 @@ static void PM_GroundTrace( void ) {
 		
 		// Shafe - Wall Jumping 
 	
-	//	if (pm->ps->MultiJumps < 4 ) {
+		//if (pm->ps->MultiJumps < 4 ) {
 			PM_CheckJump(); // Shafe - Trep - Wall jumping?
-	//	}
+		//}
 	
 		
 		if ( pm->debugLevel ) {
@@ -1765,7 +1765,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 100; 
 		break; 
 	case WP_RAILGUN: 
-		addTime = 1500; 
+		addTime = 1200; 
 		break; 
 	case WP_BFG: 
 		//  addTime = 100; 
@@ -1804,7 +1804,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 800; 
 		break; 
 	case WP_PLASMAGUN: 
-		addTime = 100; 
+		addTime = 1500; 
 		break; 
 	case WP_RAILGUN: 
 		addTime = 1500; 
