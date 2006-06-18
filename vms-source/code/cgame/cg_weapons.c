@@ -357,7 +357,7 @@ static void CG_RocketTrail( centity_t *ent, const weaponInfo_t *wi ) {
 					  t,
 					  0,
 					  0, 
-					  cgs.media.smokePuffShader ); // Shafe set this to 2
+					  cgs.media.smokePuffShader2 ); // Shafe set this to 2
 		// use the optimized local entity add
 		smoke->leType = LE_SCALE_FADE;
 	}
