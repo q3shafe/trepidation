@@ -156,6 +156,10 @@ struct gentity_s {
 	// timing variables
 	float		wait;
 	float		random;
+	// Shafe - trep - pdg
+	vec3_t      teleloc;
+	int         istelepoint;
+	// end shafe
 
 	gitem_t		*item;			// for bonus items
 };
@@ -257,7 +261,7 @@ typedef struct {
 	int			pingsamples[NUM_PING_SAMPLES];
 	int			samplehead;
 	int			holdable;		// Shafe - Trep - Notes any holdable 1=medkit
-	int			Multijumps;		// Shafe - Trep - Mulijumps
+//	int			Multijumps;		// Shafe - Trep - Mulijumps
 //unlagged - true ping
 } clientPersistant_t;
 
@@ -546,6 +550,7 @@ void G_AddEvent( gentity_t *ent, int event, int eventParm );
 void G_SetOrigin( gentity_t *ent, vec3_t origin );
 void AddRemap(const char *oldShader, const char *newShader, float timeOffset);
 const char *BuildShaderStateConfig();
+void G_ExplodeMissile( gentity_t *ent ); // Shafe - Trep - PDG
 
 //
 // g_combat.c
@@ -578,6 +583,7 @@ void G_RunMissile( gentity_t *ent );
 gentity_t *fire_blaster (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_grenade (gentity_t *self, vec3_t start, vec3_t aimdir);
+gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t aimdir);
 
 gentity_t *fire_altgrenade (gentity_t *self, vec3_t start, vec3_t aimdir); // Shafe Alternate Grenade Fire
 gentity_t *fire_alt_rocket (gentity_t *self, vec3_t start, vec3_t dir); // Shafe Alternate Rocket Fire
@@ -782,6 +788,9 @@ int BotAISetupClient(int client, struct bot_settings_s *settings, qboolean resta
 int BotAIShutdownClient( int client, qboolean restart );
 int BotAIStartFrame( int time );
 void BotTestAAS(vec3_t origin);
+
+
+
 
 #include "g_team.h" // teamplay specific stuff
 

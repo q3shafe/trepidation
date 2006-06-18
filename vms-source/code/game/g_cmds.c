@@ -77,6 +77,31 @@ void DeathmatchScoreboardMessage( gentity_t *ent ) {
 
 
 /*
+
+=================
+
+Cmd_TeleGren_f
+Shafe - Trep - PDG
+=================
+*/
+
+void Cmd_TeleGren_f (gentity_t *ent) {
+
+    if ( ent->istelepoint == 1 ) 
+	{
+		VectorCopy( ent->teleloc, ent->client->ps.origin );
+		ent->istelepoint = 0;
+		VectorClear( ent->teleloc );
+
+	} else {
+        G_Printf( S_COLOR_GREEN "Cannot Translocate to That Position\n" );
+
+	}
+
+}
+
+
+/*
 ==================
 Cmd_Score_f
 
@@ -1684,6 +1709,8 @@ void ClientCommand( int clientNum ) {
 		Cmd_SetViewpos_f( ent );
 	else if (Q_stricmp (cmd, "stats") == 0)
 		Cmd_Stats_f( ent );
+	else if (Q_stricmp (cmd, "pdg") == 0)
+		Cmd_TeleGren_f( ent );
 	else
 		trap_SendServerCommand( clientNum, va("print \"unknown cmd %s\n\"", cmd ) );
 }

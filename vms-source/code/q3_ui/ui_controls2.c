@@ -255,7 +255,7 @@ static bind_t g_bindings[] =
 	{"messagemode4", 	"chat - attacker",	ID_CHAT4,		ANIM_CHAT,		-1,				-1,		-1, -1},
 	// Shafe - Scanner
 	{"+scanner", 		"tracking device",	ID_SCANNER,		ANIM_CHAT,		'l',				-1,		-1, -1},
-	{"+button6", 		"energy hoist",	ID_GRAPPLE,		ANIM_ATTACK,	K_MOUSE3,			-1,		-1, -1},
+	{"+button6", 		"energy grapple",	ID_GRAPPLE,		ANIM_ATTACK,	K_MOUSE3,			-1,		-1, -1},
 
 	{(char*)NULL,		(char*)NULL,		0,				0,				-1,				-1,		-1,	-1},
 };

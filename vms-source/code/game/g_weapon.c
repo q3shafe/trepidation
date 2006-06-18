@@ -425,6 +425,31 @@ GRENADE LAUNCHER
 ======================================================================
 */
 
+// Shafe - PDG
+void weapon_pdlauncher_fire (gentity_t	*ent) {
+	gentity_t	*m;
+	gentity_t	*grenades = NULL;
+	 
+ while ((grenades = G_Find (grenades, FOFS(classname), "pdgrenade")) != NULL)
+ {
+	if(grenades->r.ownerNum == ent->s.clientNum)  //make sure its ours
+	{
+		ent->istelepoint = 0; // client cannot teleport
+		VectorClear( ent->teleloc ); // clear the teleport location
+		grenades->think = G_ExplodeMissile;
+		grenades->nextthink = level.time;
+	}
+ }
+ // extra vertical velocity
+ forward[2] += 0.2;
+ VectorNormalize( forward );
+ 
+ m = fire_pdgrenade (ent, muzzle, forward);
+// m = fire_grenade (ent, muzzle, forward);
+ m->damage *= s_quadFactor;
+ m->splashDamage *= s_quadFactor;
+} 
+
 void weapon_grenadelauncher_fire (gentity_t *ent) {
 	gentity_t	*m;
 
@@ -1069,8 +1094,7 @@ void FireWeapon2( gentity_t *ent ) {
    Weapon_RocketLauncher_AltFire( ent );
   break; 
  case WP_PLASMAGUN: 
-	weapon_grenadelauncher_fire( ent );
-   //Weapon_RocketLauncher_Fire( ent );
+	 weapon_pdlauncher_fire( ent); 
   break; 
  case WP_RAILGUN: 
    Weapon_RocketLauncher_Fire( ent );
