@@ -479,6 +479,10 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 #endif
 	self->client->ps.pm_type = PM_DEAD;
 
+	// Shafe - Trep - Clear out the PDG
+	self->istelepoint = 0;
+	VectorClear( self->teleloc ); 
+
 	if ( attacker ) {
 		killer = attacker->s.number;
 		if ( attacker->client ) {
