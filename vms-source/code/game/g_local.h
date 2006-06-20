@@ -734,6 +734,8 @@ qboolean OnSameTeam( gentity_t *ent1, gentity_t *ent2 );
 void Team_CheckDroppedItem( gentity_t *dropped );
 qboolean CheckObeliskAttack( gentity_t *obelisk, gentity_t *attacker );
 
+void Team_DropFlags( gentity_t *ent ); // Shafe - trep - Drop Flags
+
 //
 // g_mem.c
 //

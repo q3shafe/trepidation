@@ -94,9 +94,24 @@ void Cmd_TeleGren_f (gentity_t *ent) {
 		VectorClear( ent->teleloc );
 
 	} else {
-        G_Printf( S_COLOR_GREEN "Cannot Translocate to That Position\n" );
+        G_Printf( S_COLOR_GREEN "PDG Lock Not Established\n" );
 
 	}
+
+}
+
+/*
+
+=================
+
+Cmd_DropFlag_f
+Shafe - Trep - PDG
+=================
+*/
+
+void Cmd_DropFlag_f (gentity_t *ent) {
+
+	Team_DropFlags( ent );
 
 }
 
@@ -1711,6 +1726,8 @@ void ClientCommand( int clientNum ) {
 		Cmd_Stats_f( ent );
 	else if (Q_stricmp (cmd, "pdg") == 0)
 		Cmd_TeleGren_f( ent );
+	else if (Q_stricmp (cmd, "dropflag") == 0)
+		Cmd_DropFlag_f( ent );
 	else
 		trap_SendServerCommand( clientNum, va("print \"unknown cmd %s\n\"", cmd ) );
 }

@@ -1522,7 +1522,7 @@ int		altAmmoUsage[WP_NUM_WEAPONS] =
 	3,				//rocket launchet
 	1,				//flame thrower
 	3,				//rail gun
-	3,				//plasma 
+	6,				//plasma 
 	1,				//bfg
 	20,				//hmmmm... dunno what this one is
 

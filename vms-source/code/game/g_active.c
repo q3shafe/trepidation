@@ -563,6 +563,8 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 
 		case EV_USE_ITEM1:		// teleporter
 			// drop flags in CTF
+			Team_DropFlags( ent );
+			/* Shafe - Trep - This is now in g_team.c - Keeping it here only for reference
 			item = NULL;
 			j = 0;
 
@@ -586,7 +588,7 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 				}
 
 				ent->client->ps.powerups[ j ] = 0;
-			}
+			} */
 #ifdef MISSIONPACK
 			if ( g_gametype.integer == GT_HARVESTER ) {
 				if ( ent->client->ps.generic1 > 0 ) {
@@ -609,7 +611,7 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 				}
 			}
 #endif
-			//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Teleporter\n", ent->item->giTag ); // Shafe - Debug
+			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Teleporter\n", ent->item->giTag ); // Shafe - Debug
 			SelectSpawnPoint( ent->client->ps.origin, origin, angles );
 			TeleportPlayer( ent, origin, angles );
 			break;
@@ -617,9 +619,9 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 		case EV_USE_ITEM2:		// medkit
 			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Medkit\n", ent->item->giTag ); // Shafe - Debug
 			ent->health = ent->client->ps.stats[STAT_MAX_HEALTH] + 25;
-
 			break;
 
+		
 #ifdef MISSIONPACK
 		case EV_USE_ITEM3:		// kamikaze
 			// make sure the invulnerability is off
@@ -640,6 +642,9 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 			ent->client->invulnerabilityTime = level.time + 10000;
 			break;
 #endif
+		case EV_USE_ITEM6:		// drop flags? Shafe - Trep
+			Team_DropFlags( ent ); // Shafe - Trep - Drop Flags  - This doesnt seem to work.. 
+			break;
 
 		default:
 			break;

@@ -26,14 +26,17 @@ void G_BounceMissile( gentity_t *ent, trace_t *trace ) {
 		// check for stop
 		if ( trace->plane.normal[2] > 0.2 && VectorLength( ent->s.pos.trDelta ) < 40 ) {
 			G_SetOrigin( ent, trace->endpos );
-				// Shafe - trep - pdg
+				
+			// Shafe - trep - pdg
+			if (ent->classname == "pdgrenade") {
 			    ent->parent->istelepoint = 1;
 				VectorCopy(ent->r.currentOrigin, ent->parent->teleloc);
 				ent->parent->teleloc[2] += 60;
+			
 				
 				trap_SendServerCommand( ent->r.ownerNum, va("cp \"^9Particle Displacement Grenade Lock!\n\"") );
 				//G_Printf( S_COLOR_RED "Particle Displacement Grenade Lock!\n" );
-				// end shafe
+			} // end shafe
 
 			return;
 		}
@@ -570,10 +573,14 @@ gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
 // Shafe - Trep 
 void G_ExplodePDGrenade( gentity_t *ent ) {
  
+	if (ent->parent->istelepoint == 0)
+	{
+		trap_SendServerCommand( ent->r.ownerNum, va("cp \"^9PDG Lock Expired!\n\"") );
+	}
 	ent->parent->istelepoint = 0; // client cannot teleport
  	VectorClear( ent->parent->teleloc ); // clear the teleport location
 	//G_Printf( S_COLOR_GREEN "Particle Displacement Grenade Expired\n" );
-	trap_SendServerCommand( ent->r.ownerNum, va("cp \"^9Particle Displacement Grenade Expired!\n\"") );
+	
 	G_ExplodeMissile( ent );
 }
 /*
