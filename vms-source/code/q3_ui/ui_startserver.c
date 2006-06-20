@@ -1135,15 +1135,14 @@ static void ServerOptions_SetMenuItems( void ) {
 	s_serveroptions.pure.curvalue = Com_Clamp( 0, 1, trap_Cvar_VariableValue( "sv_pure" ) );
 
 	// set the map pic 
-	// Shafe - Somewhere here is the bug with short filenames - load map create match
 	Com_sprintf( picname, 128, "levelshots/%s", s_startserver.maplist[s_startserver.currentmap] ); // Changed length from 64
 	s_serveroptions.mappic.generic.name = picname;
 
 	// set the map name - Why do we need to do this?
 	strcpy( s_serveroptions.mapnamebuffer, s_startserver.mapname.string );
 
-	Q_strupr( s_startserver.mapname.string ); // Shafe - Try this?
-	//Q_strupr( s_serveroptions.mapnamebuffer );  // Create Match Thing - Shafe
+	//Q_strupr( s_startserver.mapname.string ); // Shafe - Try this?
+	Q_strupr( s_serveroptions.mapnamebuffer );  // Create Match Thing - Shafe
 
 	// get the player selections initialized
 	ServerOptions_InitPlayerItems();
