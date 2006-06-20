@@ -1521,8 +1521,8 @@ int		altAmmoUsage[WP_NUM_WEAPONS] =
 	2,				//grenade launcher
 	3,				//rocket launchet
 	1,				//flame thrower
-	3,				//rail gun
-	6,				//plasma 
+	4,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
+	12,				//plasma -  lets make this a lot until we get primary fire replaced
 	1,				//bfg
 	20,				//hmmmm... dunno what this one is
 

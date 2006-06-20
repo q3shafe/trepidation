@@ -1943,6 +1943,11 @@ void CheckPlayerPostions(void)
         }
     
         //finally broadcast the command
+		// 
+		// Hey XcyTng!  Why doesnt this work???? 
+		// Enable it and the game freezes when loading a map... 
+		// Driving me insane VVVVVVV
+
         //G_SendCommandToClient(NULL, cmd);
 		 
 }

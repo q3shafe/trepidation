@@ -611,13 +611,13 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 				}
 			}
 #endif
-			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Teleporter\n", ent->item->giTag ); // Shafe - Debug
+//			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Teleporter\n", ent->item->giTag ); // Shafe - Debug
 			SelectSpawnPoint( ent->client->ps.origin, origin, angles );
 			TeleportPlayer( ent, origin, angles );
 			break;
 
 		case EV_USE_ITEM2:		// medkit
-			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Medkit\n", ent->item->giTag ); // Shafe - Debug
+//			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Medkit\n", ent->item->giTag ); // Shafe - Debug
 			ent->health = ent->client->ps.stats[STAT_MAX_HEALTH] + 25;
 			break;
 

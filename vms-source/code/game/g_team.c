@@ -524,7 +524,7 @@ void Team_DropFlags(gentity_t *ent) {
 			}
 			ent->client->ps.powerups[ PW_REDFLAG ] = 0;
 			angle += 45;
-			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Red Flag\n", angle); // Shafe - Debug
+//			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Red Flag\n", angle); // Shafe - Debug
 		}
 	}
 	
@@ -540,7 +540,7 @@ void Team_DropFlags(gentity_t *ent) {
 			}
 			ent->client->ps.powerups[ PW_BLUEFLAG ] = 0;
 			angle += 45;
-			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Blue Flag\n", angle); // Shafe - Debug
+//			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Blue Flag\n", angle); // Shafe - Debug
 		}
 	}
 	
