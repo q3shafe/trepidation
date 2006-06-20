@@ -27,14 +27,14 @@ START SERVER MENU *****
 #define GAMESERVER_ARROWSL		"menu/art/gs_arrows_l"
 #define GAMESERVER_ARROWSR		"menu/art/gs_arrows_r"
 
-#define MAX_MAPROWS		3 // Shafe - Trep - was 2
+#define MAX_MAPROWS		2 // Shafe - Trep - was 2
 #define MAX_MAPCOLS		2
-#define MAX_MAPSPERPAGE	6 // Shafe - Trep -was 4
+#define MAX_MAPSPERPAGE	4 // Shafe - Trep -was 4
 
 #define	MAX_SERVERSTEXT	8192
 
 #define MAX_SERVERMAPS	254 // Shafe - Trep - was 64
-#define MAX_NAMELENGTH	124	// Shafe - Trep - was 16
+#define MAX_NAMELENGTH	254	// Shafe - Trep - was 16
 
 #define ID_GAMETYPE				10
 #define ID_PICTURES				11	// 12, 13, 14

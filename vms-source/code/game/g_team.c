@@ -504,6 +504,65 @@ void Team_CheckHurtCarrier(gentity_t *targ, gentity_t *attacker)
 }
 
 
+// Shafe - Trep - Moved From g_active.c - drop flags
+void Team_DropFlags(gentity_t *ent) {
+	gitem_t		*item;
+	gentity_t	*drop;
+	float		angle;
+
+	angle = 45;
+
+	item = NULL;
+	if ( ent->client->ps.powerups[ PW_REDFLAG ] ) {
+		item = BG_FindItemForPowerup( PW_REDFLAG );
+		if ( item ) {
+			drop = Drop_Item( ent, item, angle );
+			// decide how many seconds it has left
+			drop->count = ( ent->client->ps.powerups[ PW_REDFLAG ] - level.time ) / 1000;
+			if ( drop->count < 1 ) {
+				drop->count = 1;
+			}
+			ent->client->ps.powerups[ PW_REDFLAG ] = 0;
+			angle += 45;
+			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Red Flag\n", angle); // Shafe - Debug
+		}
+	}
+	
+	item = NULL;
+	if ( ent->client->ps.powerups[ PW_BLUEFLAG ] ) {
+		item = BG_FindItemForPowerup( PW_BLUEFLAG );
+		if ( item ) {
+			drop = Drop_Item( ent, item, angle );
+			// decide how many seconds it has left
+			drop->count = ( ent->client->ps.powerups[ PW_BLUEFLAG ] - level.time ) / 1000;
+			if ( drop->count < 1 ) {
+				drop->count = 1;
+			}
+			ent->client->ps.powerups[ PW_BLUEFLAG ] = 0;
+			angle += 45;
+			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Blue Flag\n", angle); // Shafe - Debug
+		}
+	}
+	
+	/*  we're not doing nueureal flags yet. 
+	item = NULL;
+	if ( ent->client->ps.powerups[ PW_NEUTRALFLAG ] ) {
+		item = BG_FindItemForPowerup( PW_NEUTRALFLAG );
+		if ( item ) {
+			drop = Drop_Item( ent, item, angle );
+			// decide how many seconds it has left
+			drop->count = ( ent->client->ps.powerups[ PW_NEUTRALFLAG ] - level.time ) / 1000;
+			if ( drop->count < 1 ) {
+				drop->count = 1;
+			}
+			ent->client->ps.powerups[ PW_NEUTRALFLAG ] = 0;
+		}
+	}
+	*/ 
+}
+// End Shafe - Trep - Drop Flags
+
+
 gentity_t *Team_ResetFlag( int team ) {
 	char *c;
 	gentity_t *ent, *rent = NULL;
@@ -677,6 +736,7 @@ void Team_DroppedFlagThink(gentity_t *ent) {
 Team_DroppedFlagThink
 ==============
 */
+
 int Team_TouchOurFlag( gentity_t *ent, gentity_t *other, int team ) {
 	int			i;
 	gentity_t	*player;
