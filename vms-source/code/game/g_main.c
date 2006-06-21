@@ -85,6 +85,7 @@ vmCvar_t	sv_fps;
 //Shafe - Trep
 vmCvar_t	g_instagib;
 vmCvar_t	g_MultiJump;
+//vmCvar_t	g_CTFGrapple; // Decided not to make this an option
 
 // bk001129 - made static to avoid aliasing
 static cvarTable_t		gameCvarTable[] = {
@@ -181,7 +182,9 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_rankings, "g_rankings", "0", 0, 0, qfalse},
 // Shafe - Trep - Cvars
 	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },
-	{ &g_MultiJump, "g_MultiJump", "0", CVAR_ARCHIVE, 0, qfalse }
+	{ &g_MultiJump, "g_MultiJump", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue }
+
+
 	
 };
 
@@ -1880,7 +1883,7 @@ playerpos_t		g_playerOrigins[MAX_CLIENTS]; //global storage for player positions
 void CheckPlayerPostions(void)
 {
         int i, valid_count;
-        gentity_t *loc, *ent;
+        gentity_t *ent;  // *loc, *ent; loc - unreferenced shafe - trep
         char cmd[16*MAX_CLIENTS + MAX_CLIENTS]; // make sure our command string is
                                               // large enough for all the data
 

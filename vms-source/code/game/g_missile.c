@@ -490,11 +490,14 @@ void G_RunMissile( gentity_t *ent ) {
 			}
 			*/
 			// Shafe - Trep - Offhand Grappling Hook
-			if (ent->parent && ent->parent->client->hook == ent)
+			if (g_gametype.integer != GT_CTF) 
 			{
-				ent->parent->client->hook = NULL;
-				ent->parent->client->hookhasbeenfired = qfalse;
-				ent->parent->client->fireHeld = qfalse;
+				if (ent->parent && ent->parent->client->hook == ent)
+				{
+					ent->parent->client->hook = NULL;
+					ent->parent->client->hookhasbeenfired = qfalse;
+					ent->parent->client->fireHeld = qfalse;
+				}
 			}
 			// End Shafe
 
@@ -606,6 +609,12 @@ gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->s.weapon = WP_GRENADE_LAUNCHER;
 	bolt->s.eFlags = EF_BOUNCE_HALF;  // Get rid of this for no bounce
 	bolt->r.ownerNum = self->s.number;
+
+	//unlagged - projectile nudge
+	// we'll need this for nudging projectiles later
+	bolt->s.otherEntityNum = self->s.number;
+	//unlagged - projectile nudge
+	
 	bolt->parent = self;
 	bolt->damage = 1;
 	bolt->splashDamage = 0;

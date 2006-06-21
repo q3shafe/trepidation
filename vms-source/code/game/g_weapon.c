@@ -445,7 +445,6 @@ void weapon_pdlauncher_fire (gentity_t	*ent) {
  VectorNormalize( forward );
  
  m = fire_pdgrenade (ent, muzzle, forward);
-// m = fire_grenade (ent, muzzle, forward);
  m->damage *= s_quadFactor;
  m->splashDamage *= s_quadFactor;
 } 
@@ -710,6 +709,7 @@ void Weapon_GrapplingHook_Fire (gentity_t *ent)
 
 	ent->client->fireHeld = qtrue;
 }
+
 
 void Weapon_HookFree (gentity_t *ent)
 {
