@@ -291,27 +291,29 @@ void UI_MainMenu( void ) {
 	s_main.menu.showlogo = qfalse; // Shafe - Trep - Temporarily qfalse
 
 	y = 134;
-	s_main.singleplayer.generic.type		= MTYPE_PTEXT;
-	s_main.singleplayer.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
-	s_main.singleplayer.generic.x			= 320;
-	s_main.singleplayer.generic.y			= y;
-	s_main.singleplayer.generic.id			= ID_SINGLEPLAYER;
-	s_main.singleplayer.generic.callback	= Main_MenuEvent; 
-	s_main.singleplayer.string				= "SINGLE PLAYER";
-	s_main.singleplayer.color				= color_red;
-	s_main.singleplayer.style				= style;
-
-	y += MAIN_MENU_VERTICAL_SPACING;
 	s_main.multiplayer.generic.type			= MTYPE_PTEXT;
 	s_main.multiplayer.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 	s_main.multiplayer.generic.x			= 320;
 	s_main.multiplayer.generic.y			= y;
 	s_main.multiplayer.generic.id			= ID_MULTIPLAYER;
 	s_main.multiplayer.generic.callback		= Main_MenuEvent; 
-	s_main.multiplayer.string				= "PLAY TREPIDATION"; // Shafe - Trep - Minor Text Change
+	s_main.multiplayer.string				= "PLAY TREPIDATION ONLINE"; // Shafe - Trep - Minor Text Change
 	s_main.multiplayer.color				= color_red;
 	s_main.multiplayer.style				= style;
 
+
+	y += MAIN_MENU_VERTICAL_SPACING;
+	s_main.singleplayer.generic.type		= MTYPE_PTEXT;
+	s_main.singleplayer.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	s_main.singleplayer.generic.x			= 320;
+	s_main.singleplayer.generic.y			= y;
+	s_main.singleplayer.generic.id			= ID_SINGLEPLAYER;
+	s_main.singleplayer.generic.callback	= Main_MenuEvent; 
+	s_main.singleplayer.string				= "PLAY OFFLINE ";
+	s_main.singleplayer.color				= color_red;
+	s_main.singleplayer.style				= style;
+	
+	
 	y += MAIN_MENU_VERTICAL_SPACING;
 	s_main.setup.generic.type				= MTYPE_PTEXT;
 	s_main.setup.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -335,7 +337,7 @@ void UI_MainMenu( void ) {
 	s_main.demos.color						= color_red;
 	s_main.demos.style						= style;
 
-	y += MAIN_MENU_VERTICAL_SPACING;
+	//y += MAIN_MENU_VERTICAL_SPACING;
 	s_main.cinematics.generic.type			= MTYPE_PTEXT;
 	s_main.cinematics.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 	s_main.cinematics.generic.x				= 320;
@@ -361,7 +363,7 @@ void UI_MainMenu( void ) {
 		s_main.teamArena.style					= style;
 	}
 
-	y += MAIN_MENU_VERTICAL_SPACING;
+	//y += MAIN_MENU_VERTICAL_SPACING;
 	s_main.mods.generic.type			= MTYPE_PTEXT;
 	s_main.mods.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 	s_main.mods.generic.x				= 320;
@@ -383,10 +385,10 @@ void UI_MainMenu( void ) {
 	s_main.exit.color						= color_red;
 	s_main.exit.style						= style;
 
-	//Menu_AddItem( &s_main.menu,	&s_main.singleplayer );
 	Menu_AddItem( &s_main.menu,	&s_main.multiplayer );
+	Menu_AddItem( &s_main.menu,	&s_main.singleplayer );
 	Menu_AddItem( &s_main.menu,	&s_main.setup );
-	//Menu_AddItem( &s_main.menu,	&s_main.demos );
+	Menu_AddItem( &s_main.menu,	&s_main.demos );
 	//Menu_AddItem( &s_main.menu,	&s_main.cinematics );
 	if (teamArena) {
 		Menu_AddItem( &s_main.menu,	&s_main.teamArena );

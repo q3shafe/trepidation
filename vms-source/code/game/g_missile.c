@@ -576,7 +576,7 @@ gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
 // Shafe - Trep 
 void G_ExplodePDGrenade( gentity_t *ent ) {
  
-	if (ent->parent->istelepoint == 0)
+	if (ent->parent->istelepoint != 0)
 	{
 		trap_SendServerCommand( ent->r.ownerNum, va("cp \"^9PDG Lock Expired!\n\"") );
 	}
