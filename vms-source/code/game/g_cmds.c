@@ -89,6 +89,7 @@ void Cmd_TeleGren_f (gentity_t *ent) {
 
     if ( ent->istelepoint == 1 ) 
 	{
+		Team_DropFlags( ent ); // Maybe we should check to see if they have one before we try to drop it?
 		VectorCopy( ent->teleloc, ent->client->ps.origin );
 		ent->istelepoint = 0;
 		VectorClear( ent->teleloc );

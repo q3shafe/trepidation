@@ -867,6 +867,9 @@ extern	vmCvar_t	sv_fps;
 // Shafe - Trep
 extern	vmCvar_t	g_instagib;
 extern	vmCvar_t	g_MultiJump;
+//extern	vmCvar_t	g_CTFGrapple; // Decided not to make this an option
+
+
 
 void	trap_Printf( const char *fmt );
 void	trap_Error( const char *fmt );

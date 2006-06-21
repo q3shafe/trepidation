@@ -515,15 +515,15 @@ but any server game effects are handled here
 ================
 */
 void ClientEvents( gentity_t *ent, int oldEventSequence ) {
-	int		i, j;
+	int		i; // , j; unreferenced - Shafe - trep
 	int		event;
 	gclient_t *client;
 	int		damage;
 	vec3_t	dir;
 	vec3_t	origin, angles;
 //	qboolean	fired;
-	gitem_t *item;
-	gentity_t *drop;
+//	gitem_t *item; // unreferenced - Shafe - trep
+//	gentity_t *drop; // unreferenced - Shafe - trep
 
 	client = ent->client;
 
@@ -1077,7 +1077,8 @@ void ClientThink_real( gentity_t *ent ) {
 	*/
 
 	// Shafe - Trep  - Offhand Grappling Hook
-	if ( (pm.cmd.buttons & 64)  && ent->client->ps.pm_type != PM_DEAD && !ent->client->hookhasbeenfired)
+	if (g_gametype.integer != GT_CTF) { // Not in CTF Games
+		if ( (pm.cmd.buttons & 64)  && ent->client->ps.pm_type != PM_DEAD && !ent->client->hookhasbeenfired)
 		{
 			Weapon_GrapplingHook_Fire( ent );
 			ent->client->hookhasbeenfired = qtrue;
@@ -1092,8 +1093,9 @@ void ClientThink_real( gentity_t *ent ) {
 		{
 			Weapon_HookFree(client->hook);
 		}
+	}
 	// End Shafe - Offhand Grapple //////////////////////////////////////////////
-
+	
 	// use the snapped origin for linking so it matches client predicted versions
 	VectorCopy( ent->s.pos.trBase, ent->r.currentOrigin );
 
