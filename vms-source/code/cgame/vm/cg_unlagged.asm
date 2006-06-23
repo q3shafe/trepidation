@@ -38,26 +38,26 @@ INDIRP4
 INDIRI4
 ADDRGP4 cg+107636+140
 INDIRI4
-EQI4 $71
+EQI4 $73
 line 25
 ;25:		return;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $71
+LABELV $73
 line 29
 ;26:	}
 ;27:
 ;28:	// if it's not switched on server-side, forget it
 ;29:	if ( !cgs.delagHitscan ) {
-ADDRGP4 cgs+153372
+ADDRGP4 cgs+153396
 INDIRI4
 CNSTI4 0
-NEI4 $75
+NEI4 $77
 line 30
 ;30:		return;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $75
+LABELV $77
 line 34
 ;31:	}
 ;32:
@@ -136,7 +136,7 @@ CNSTI4 192
 ADDP4
 INDIRI4
 CNSTI4 7
-NEI4 $91
+NEI4 $93
 line 44
 ;43:		// do we have it on for the rail gun?
 ;44:		if ( cg_delag.integer & 1 || cg_delag.integer & 16 ) {
@@ -149,15 +149,15 @@ CNSTI4 1
 BANDI4
 ADDRLP4 56
 INDIRI4
-NEI4 $97
+NEI4 $99
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 16
 BANDI4
 ADDRLP4 56
 INDIRI4
-EQI4 $92
-LABELV $97
+EQI4 $94
+LABELV $99
 line 49
 ;45:			trace_t trace;
 ;46:			vec3_t endPoint;
@@ -205,7 +205,7 @@ line 54
 ADDRGP4 cg_debugDelag+12
 INDIRI4
 CNSTI4 0
-EQI4 $104
+EQI4 $106
 line 56
 ;55:				// trace forward
 ;56:				CG_Trace( &trace, muzzlePoint, vec3_origin, vec3_origin, endPoint, cent->currentState.number, CONTENTS_BODY|CONTENTS_SOLID );
@@ -240,13 +240,13 @@ line 59
 ADDRLP4 60+8
 INDIRF4
 CNSTF4 1065353216
-GEF4 $107
+GEF4 $109
 ADDRLP4 60+48
 INDIRI4
 CNSTI4 33554432
 BANDI4
 CNSTI4 0
-EQI4 $107
+EQI4 $109
 line 61
 ;60:					// if we have two snapshots (we're interpolating)
 ;61:					if ( cg.nextSnap ) {
@@ -254,7 +254,7 @@ ADDRGP4 cg+40
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $111
+EQU4 $113
 line 62
 ;62:						centity_t *c = &cg_entities[trace.entityNum];
 ADDRLP4 136
@@ -310,7 +310,7 @@ line 72
 ;70:
 ;71:						// it starts with "Int:" to let you know the target was interpolated
 ;72:						CG_Printf("^3Int: time: %d, j: %d, k: %d, origin: %0.2f %0.2f %0.2f\n",
-ADDRGP4 $117
+ADDRGP4 $119
 ARGP4
 ADDRGP4 cg+107608
 INDIRI4
@@ -361,7 +361,7 @@ line 75
 ;73:								cg.oldTime, cg.snap->serverTime, cg.nextSnap->serverTime,
 ;74:								c->lerpOrigin[0], c->lerpOrigin[1], c->lerpOrigin[2]);
 ;75:						CG_Printf("^5frac: %0.4f, origin1: %0.2f %0.2f %0.2f, origin2: %0.2f %0.2f %0.2f\n",
-ADDRGP4 $121
+ADDRGP4 $123
 ARGP4
 ADDRGP4 cg+107588
 INDIRF4
@@ -390,9 +390,9 @@ pop
 line 77
 ;76:							cg.frameInterpolation, origin1[0], origin1[1], origin1[2], origin2[0], origin2[1], origin2[2]);
 ;77:					}
-ADDRGP4 $112
+ADDRGP4 $114
 JUMPV
-LABELV $111
+LABELV $113
 line 78
 ;78:					else {
 line 83
@@ -490,7 +490,7 @@ line 96
 ;94:
 ;95:						// it starts with "Ext:" to let you know the target was extrapolated
 ;96:						CG_Printf("^3Ext: time: %d, j: %d, k: %d, origin: %0.2f %0.2f %0.2f\n",
-ADDRGP4 $133
+ADDRGP4 $135
 ARGP4
 ADDRGP4 cg+107608
 INDIRI4
@@ -541,7 +541,7 @@ line 99
 ;97:								cg.oldTime, cg.snap->serverTime, cg.snap->serverTime,
 ;98:								c->lerpOrigin[0], c->lerpOrigin[1], c->lerpOrigin[2]);
 ;99:						CG_Printf("^5frac: %0.4f, origin1: %0.2f %0.2f %0.2f, origin2: %0.2f %0.2f %0.2f\n",
-ADDRGP4 $121
+ADDRGP4 $123
 ARGP4
 ADDRGP4 cg+107588
 INDIRF4
@@ -570,13 +570,13 @@ pop
 line 101
 ;100:							cg.frameInterpolation, origin1[0], origin1[1], origin1[2], origin2[0], origin2[1], origin2[2]);
 ;101:					}
-LABELV $112
+LABELV $114
 line 102
 ;102:				}
-LABELV $107
+LABELV $109
 line 103
 ;103:			}
-LABELV $104
+LABELV $106
 line 106
 ;104:
 ;105:			// find the rail's end point
@@ -703,7 +703,7 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-NEI4 $92
+NEI4 $94
 line 119
 ;118:				// predict an explosion
 ;119:				CG_MissileHitWall( ent->weapon, cg.predictedPlayerState.clientNum, trace.endpos, trace.plane.normal, IMPACTSOUND_DEFAULT );
@@ -731,9 +731,9 @@ line 121
 ;121:		}
 line 122
 ;122:	}
-ADDRGP4 $92
+ADDRGP4 $94
 JUMPV
-LABELV $91
+LABELV $93
 line 124
 ;123:	// was it a shotgun attack?
 ;124:	else if ( ent->weapon == WP_SHOTGUN ) {
@@ -743,7 +743,7 @@ CNSTI4 192
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $165
+NEI4 $167
 line 126
 ;125:		// do we have it on for the shotgun?
 ;126:		if ( cg_delag.integer & 1 || cg_delag.integer & 4 ) {
@@ -756,15 +756,15 @@ CNSTI4 1
 BANDI4
 ADDRLP4 56
 INDIRI4
-NEI4 $171
+NEI4 $173
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 4
 BANDI4
 ADDRLP4 56
 INDIRI4
-EQI4 $166
-LABELV $171
+EQI4 $168
+LABELV $173
 line 132
 ;127:			int contents;
 ;128:			vec3_t endPoint, v;
@@ -951,7 +951,7 @@ line 142
 ADDRGP4 cgs+20100+11288
 INDIRI4
 CNSTI4 3
-EQI4 $200
+EQI4 $202
 line 146
 ;143:				// ragepro can't alpha fade, so don't even bother with smoke
 ;144:				vec3_t			up;
@@ -976,7 +976,7 @@ INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-NEI4 $204
+NEI4 $206
 line 148
 ;148:					VectorSet( up, 0, 0, 8 );
 ADDRLP4 112
@@ -1024,7 +1024,7 @@ CNSTI4 0
 ARGI4
 CNSTI4 1
 ARGI4
-ADDRGP4 cgs+152340+284
+ADDRGP4 cgs+152340+292
 INDIRI4
 ARGI4
 ADDRGP4 CG_SmokePuff
@@ -1032,10 +1032,10 @@ CALLP4
 pop
 line 150
 ;150:				}
-LABELV $204
+LABELV $206
 line 151
 ;151:			}
-LABELV $200
+LABELV $202
 line 154
 ;152:
 ;153:			// do the shotgun pellets
@@ -1060,9 +1060,9 @@ line 156
 ;156:		}
 line 157
 ;157:	}
-ADDRGP4 $166
+ADDRGP4 $168
 JUMPV
-LABELV $165
+LABELV $167
 line 159
 ;158:	// was it a machinegun attack?
 ;159:	else if ( ent->weapon == WP_MACHINEGUN ) {
@@ -1072,7 +1072,7 @@ CNSTI4 192
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $214
+NEI4 $216
 line 161
 ;160:		// do we have it on for the machinegun?
 ;161:		if ( cg_delag.integer & 1 || cg_delag.integer & 2 ) {
@@ -1085,15 +1085,15 @@ CNSTI4 1
 BANDI4
 ADDRLP4 56
 INDIRI4
-NEI4 $220
+NEI4 $222
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 2
 BANDI4
 ADDRLP4 56
 INDIRI4
-EQI4 $216
-LABELV $220
+EQI4 $218
+LABELV $222
 line 163
 ;162:			// the server will use this exact time (it'll be serverTime on that end)
 ;163:			int seed = cg.oldTime % 256;
@@ -1320,12 +1320,12 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $242
+EQI4 $244
 line 183
 ;183:				return;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $242
+LABELV $244
 line 187
 ;184:			}
 ;185:
@@ -1345,7 +1345,7 @@ line 190
 ADDRLP4 80+52
 INDIRI4
 CNSTI4 64
-GEI4 $246
+GEI4 $248
 line 191
 ;191:				flesh = qtrue;
 ADDRLP4 140
@@ -1359,9 +1359,9 @@ INDIRI4
 ASGNI4
 line 193
 ;193:			} else {
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $246
+LABELV $248
 line 194
 ;194:				flesh = qfalse;
 ADDRLP4 140
@@ -1369,7 +1369,7 @@ CNSTI4 0
 ASGNI4
 line 195
 ;195:			}
-LABELV $247
+LABELV $249
 line 198
 ;196:
 ;197:			// do the bullet impact
@@ -1393,24 +1393,24 @@ pop
 line 200
 ;199:			//Com_Printf( "Predicted bullet\n" );
 ;200:		}
-LABELV $216
+LABELV $218
 line 201
 ;201:	}
-LABELV $214
-LABELV $166
-LABELV $92
+LABELV $216
+LABELV $168
+LABELV $94
 line 202
 ;202:}
-LABELV $70
+LABELV $72
 endproc CG_PredictWeaponEffects 184 48
 lit
 align 4
-LABELV $255
+LABELV $257
 byte 4 3245342720
 byte 4 3245342720
 byte 4 3250585600
 align 4
-LABELV $256
+LABELV $258
 byte 4 1097859072
 byte 4 1097859072
 byte 4 1107296256
@@ -1433,13 +1433,13 @@ line 215
 ;214:	int i;
 ;215:	vec3_t mins = {-15, -15, -24};
 ADDRLP4 216
-ADDRGP4 $255
+ADDRGP4 $257
 INDIRB
 ASGNB 12
 line 216
 ;216:	vec3_t maxs = {15, 15, 32};
 ADDRLP4 200
-ADDRGP4 $256
+ADDRGP4 $258
 INDIRB
 ASGNB 12
 line 221
@@ -1451,12 +1451,12 @@ line 221
 ADDRGP4 cg_drawBBox+12
 INDIRI4
 CNSTI4 0
-NEI4 $257
+NEI4 $259
 line 222
 ;222:		return;
-ADDRGP4 $254
+ADDRGP4 $256
 JUMPV
-LABELV $257
+LABELV $259
 line 226
 ;223:	}
 ;224:
@@ -1467,18 +1467,18 @@ INDIRP4
 INDIRI4
 ADDRGP4 cg+107636+140
 INDIRI4
-NEI4 $260
+NEI4 $262
 ADDRGP4 cg+107628
 INDIRI4
 CNSTI4 0
-NEI4 $260
+NEI4 $262
 line 227
 ;227:			!cg.renderingThirdPerson ) {
 line 228
 ;228:		return;
-ADDRGP4 $254
+ADDRGP4 $256
 JUMPV
-LABELV $260
+LABELV $262
 line 232
 ;229:	}
 ;230:
@@ -1492,18 +1492,18 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $265
+EQI4 $267
 line 233
 ;233:		return;
-ADDRGP4 $254
+ADDRGP4 $256
 JUMPV
-LABELV $265
+LABELV $267
 line 237
 ;234:	}
 ;235:
 ;236:	// get the shader handles
 ;237:	bboxShader = trap_R_RegisterShader( "bbox" );
-ADDRGP4 $267
+ADDRGP4 $269
 ARGP4
 ADDRLP4 244
 ADDRGP4 trap_R_RegisterShader
@@ -1515,7 +1515,7 @@ INDIRI4
 ASGNI4
 line 238
 ;238:	bboxShader_nocull = trap_R_RegisterShader( "bbox_nocull" );
-ADDRGP4 $268
+ADDRGP4 $270
 ARGP4
 ADDRLP4 248
 ADDRGP4 trap_R_RegisterShader
@@ -1536,18 +1536,18 @@ ADDRLP4 228
 INDIRI4
 ADDRLP4 252
 INDIRI4
-EQI4 $271
+EQI4 $273
 ADDRLP4 212
 INDIRI4
 ADDRLP4 252
 INDIRI4
-NEI4 $269
-LABELV $271
+NEI4 $271
+LABELV $273
 line 242
 ;242:		return;
-ADDRGP4 $254
+ADDRGP4 $256
 JUMPV
-LABELV $269
+LABELV $271
 line 246
 ;243:	}
 ;244:
@@ -1573,7 +1573,7 @@ INDIRP4
 INDIRI4
 ADDRGP4 cg+107636+140
 INDIRI4
-NEI4 $273
+NEI4 $275
 line 251
 ;250:		// use the view height
 ;251:		maxs[2] = cg.predictedPlayerState.viewheight + 6;
@@ -1586,9 +1586,9 @@ CVIF4 4
 ASGNF4
 line 252
 ;252:	}
-ADDRGP4 $274
+ADDRGP4 $276
 JUMPV
-LABELV $273
+LABELV $275
 line 253
 ;253:	else {
 line 257
@@ -1682,7 +1682,7 @@ CVIF4 4
 ASGNF4
 line 265
 ;265:	}
-LABELV $274
+LABELV $276
 line 268
 ;266:
 ;267:	// get the extents (size)
@@ -1765,13 +1765,13 @@ CNSTI4 68
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $306
+NEI4 $308
 line 285
 ;285:		for ( i = 0; i < 4; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $308
+LABELV $310
 line 286
 ;286:			verts[i].modulate[0] = 160;
 CNSTI4 24
@@ -1814,7 +1814,7 @@ CNSTU1 255
 ASGNU1
 line 290
 ;290:		}
-LABELV $309
+LABELV $311
 line 285
 ADDRLP4 0
 ADDRLP4 0
@@ -1825,12 +1825,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $308
+LTI4 $310
 line 291
 ;291:	}
-ADDRGP4 $307
+ADDRGP4 $309
 JUMPV
-LABELV $306
+LABELV $308
 line 292
 ;292:	else if ( ci->team == TEAM_BLUE ) {
 ADDRLP4 236
@@ -1839,13 +1839,13 @@ CNSTI4 68
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $319
+NEI4 $321
 line 293
 ;293:		for ( i = 0; i < 4; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $321
+LABELV $323
 line 294
 ;294:			verts[i].modulate[0] = 0;
 CNSTI4 24
@@ -1888,7 +1888,7 @@ CNSTU1 255
 ASGNU1
 line 298
 ;298:		}
-LABELV $322
+LABELV $324
 line 293
 ADDRLP4 0
 ADDRLP4 0
@@ -1899,12 +1899,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $321
+LTI4 $323
 line 299
 ;299:	}
-ADDRGP4 $320
+ADDRGP4 $322
 JUMPV
-LABELV $319
+LABELV $321
 line 300
 ;300:	else {
 line 301
@@ -1912,7 +1912,7 @@ line 301
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $332
+LABELV $334
 line 302
 ;302:			verts[i].modulate[0] = 0;
 CNSTI4 24
@@ -1955,7 +1955,7 @@ CNSTU1 255
 ASGNU1
 line 306
 ;306:		}
-LABELV $333
+LABELV $335
 line 301
 ADDRLP4 0
 ADDRLP4 0
@@ -1966,11 +1966,11 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $332
+LTI4 $334
 line 307
 ;307:	}
-LABELV $320
-LABELV $307
+LABELV $322
+LABELV $309
 line 309
 ;308:
 ;309:	VectorAdd( cent->lerpOrigin, maxs, corners[3] );
@@ -2058,7 +2058,7 @@ line 320
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $358
+LABELV $360
 line 321
 ;321:		VectorCopy( corners[i], corners[i + 4] );
 ADDRLP4 256
@@ -2098,7 +2098,7 @@ SUBF4
 ASGNF4
 line 323
 ;323:	}
-LABELV $359
+LABELV $361
 line 320
 ADDRLP4 0
 ADDRLP4 0
@@ -2109,7 +2109,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $358
+LTI4 $360
 line 326
 ;324:
 ;325:	// top
@@ -2340,7 +2340,7 @@ CALLV
 pop
 line 366
 ;366:}
-LABELV $254
+LABELV $256
 endproc CG_AddBoundingBox 276 12
 export CG_Cvar_ClampInt
 proc CG_Cvar_ClampInt 0 16
@@ -2363,10 +2363,10 @@ ADDP4
 INDIRI4
 ADDRFP4 12
 INDIRI4
-LEI4 $405
+LEI4 $407
 line 377
 ;377:		CG_Printf( "Allowed values are %d to %d.\n", min, max );
-ADDRGP4 $407
+ADDRGP4 $409
 ARGP4
 ADDRFP4 8
 INDIRI4
@@ -2387,7 +2387,7 @@ ADDP4
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $408
+ADDRGP4 $410
 ARGP4
 ADDRFP4 12
 INDIRI4
@@ -2432,9 +2432,9 @@ line 384
 ;384:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $404
+ADDRGP4 $406
 JUMPV
-LABELV $405
+LABELV $407
 line 387
 ;385:	}
 ;386:
@@ -2446,10 +2446,10 @@ ADDP4
 INDIRI4
 ADDRFP4 8
 INDIRI4
-GEI4 $409
+GEI4 $411
 line 388
 ;388:		CG_Printf( "Allowed values are %d to %d.\n", min, max );
-ADDRGP4 $407
+ADDRGP4 $409
 ARGP4
 ADDRFP4 8
 INDIRI4
@@ -2470,7 +2470,7 @@ ADDP4
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $408
+ADDRGP4 $410
 ARGP4
 ADDRFP4 8
 INDIRI4
@@ -2515,18 +2515,21 @@ line 395
 ;395:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $404
+ADDRGP4 $406
 JUMPV
-LABELV $409
+LABELV $411
 line 398
 ;396:	}
 ;397:
 ;398:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $404
+LABELV $406
 endproc CG_Cvar_ClampInt 0 16
 import CG_ShotgunPattern
+import CG_DrawScanner
+import CG_ScannerOff_f
+import CG_ScannerOn_f
 import CG_NewParticleArea
 import initparticles
 import CG_ParticleExplosion
@@ -2773,6 +2776,7 @@ import CG_Error
 import CG_Printf
 import CG_Argv
 import CG_ConfigString
+import cg_playerOrigins
 import cg_plOut
 import cg_latentCmds
 import cg_latentSnaps
@@ -2886,6 +2890,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -3050,12 +3055,12 @@ import srand
 import qsort
 lit
 align 1
-LABELV $408
+LABELV $410
 byte 1 37
 byte 1 100
 byte 1 0
 align 1
-LABELV $407
+LABELV $409
 byte 1 65
 byte 1 108
 byte 1 108
@@ -3087,7 +3092,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $268
+LABELV $270
 byte 1 98
 byte 1 98
 byte 1 111
@@ -3101,14 +3106,14 @@ byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $267
+LABELV $269
 byte 1 98
 byte 1 98
 byte 1 111
 byte 1 120
 byte 1 0
 align 1
-LABELV $133
+LABELV $135
 byte 1 94
 byte 1 51
 byte 1 69
@@ -3168,7 +3173,7 @@ byte 1 102
 byte 1 10
 byte 1 0
 align 1
-LABELV $121
+LABELV $123
 byte 1 94
 byte 1 53
 byte 1 102
@@ -3241,7 +3246,7 @@ byte 1 102
 byte 1 10
 byte 1 0
 align 1
-LABELV $117
+LABELV $119
 byte 1 94
 byte 1 51
 byte 1 73

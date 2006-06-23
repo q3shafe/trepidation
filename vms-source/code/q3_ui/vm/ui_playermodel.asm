@@ -1,8 +1,6 @@
 data
 align 4
 LABELV playermodel_artlist
-address $67
-address $68
 address $69
 address $70
 address $71
@@ -11,6 +9,8 @@ address $73
 address $74
 address $75
 address $76
+address $77
+address $78
 byte 4 0
 code
 proc PlayerModel_UpdateGrid 28 0
@@ -125,7 +125,7 @@ line 98
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $80
+LABELV $82
 line 99
 ;99:	{
 line 100
@@ -134,7 +134,7 @@ ADDRLP4 4
 INDIRI4
 ADDRGP4 s_playermodel+5204
 INDIRI4
-GEI4 $84
+GEI4 $86
 line 101
 ;101:		{ 
 line 103
@@ -173,9 +173,9 @@ BANDU4
 ASGNU4
 line 105
 ;105:		}
-ADDRGP4 $85
+ADDRGP4 $87
 JUMPV
-LABELV $84
+LABELV $86
 line 107
 ;106:		else
 ;107:		{
@@ -210,7 +210,7 @@ BORU4
 ASGNU4
 line 111
 ;111:		}
-LABELV $85
+LABELV $87
 line 113
 ;112:
 ;113: 		s_playermodel.pics[i].generic.flags       &= ~QMF_HIGHLIGHT;
@@ -260,7 +260,7 @@ BORU4
 ASGNU4
 line 116
 ;116:	}
-LABELV $81
+LABELV $83
 line 98
 ADDRLP4 8
 CNSTI4 1
@@ -282,7 +282,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $80
+LTI4 $82
 line 118
 ;117:
 ;118:	if (s_playermodel.selectedmodel/MAX_MODELSPERPAGE == s_playermodel.modelpage)
@@ -292,7 +292,7 @@ CNSTI4 16
 DIVI4
 ADDRGP4 s_playermodel+37976
 INDIRI4
-NEI4 $102
+NEI4 $104
 line 119
 ;119:	{
 line 121
@@ -343,14 +343,14 @@ BANDU4
 ASGNU4
 line 125
 ;125:	}
-LABELV $102
+LABELV $104
 line 127
 ;126:
 ;127:	if (s_playermodel.numpages > 1)
 ADDRGP4 s_playermodel+37980
 INDIRI4
 CNSTI4 1
-LEI4 $111
+LEI4 $113
 line 128
 ;128:	{
 line 129
@@ -358,7 +358,7 @@ line 129
 ADDRGP4 s_playermodel+37976
 INDIRI4
 CNSTI4 0
-LEI4 $114
+LEI4 $116
 line 130
 ;130:			s_playermodel.left.generic.flags &= ~QMF_INACTIVE;
 ADDRLP4 12
@@ -372,9 +372,9 @@ INDIRU4
 CNSTU4 4294950911
 BANDU4
 ASGNU4
-ADDRGP4 $115
+ADDRGP4 $117
 JUMPV
-LABELV $114
+LABELV $116
 line 132
 ;131:		else
 ;132:			s_playermodel.left.generic.flags |= QMF_INACTIVE;
@@ -389,7 +389,7 @@ INDIRU4
 CNSTU4 16384
 BORU4
 ASGNU4
-LABELV $115
+LABELV $117
 line 134
 ;133:
 ;134:		if (s_playermodel.modelpage < s_playermodel.numpages-1)
@@ -399,7 +399,7 @@ ADDRGP4 s_playermodel+37980
 INDIRI4
 CNSTI4 1
 SUBI4
-GEI4 $121
+GEI4 $123
 line 135
 ;135:			s_playermodel.right.generic.flags &= ~QMF_INACTIVE;
 ADDRLP4 20
@@ -413,9 +413,9 @@ INDIRU4
 CNSTU4 4294950911
 BANDU4
 ASGNU4
-ADDRGP4 $112
+ADDRGP4 $114
 JUMPV
-LABELV $121
+LABELV $123
 line 137
 ;136:		else
 ;137:			s_playermodel.right.generic.flags |= QMF_INACTIVE;
@@ -432,9 +432,9 @@ BORU4
 ASGNU4
 line 138
 ;138:	}
-ADDRGP4 $112
+ADDRGP4 $114
 JUMPV
-LABELV $111
+LABELV $113
 line 140
 ;139:	else
 ;140:	{
@@ -467,10 +467,10 @@ BORU4
 ASGNU4
 line 144
 ;144:	}
-LABELV $112
+LABELV $114
 line 145
 ;145:}
-LABELV $78
+LABELV $80
 endproc PlayerModel_UpdateGrid 28 0
 proc PlayerModel_UpdateModel 28 28
 line 153
@@ -560,7 +560,7 @@ CALLV
 pop
 line 166
 ;166:}
-LABELV $133
+LABELV $135
 endproc PlayerModel_UpdateModel 28 28
 proc PlayerModel_SaveChanges 0 8
 line 174
@@ -574,7 +574,7 @@ line 174
 ;174:{
 line 175
 ;175:	trap_Cvar_Set( "model", s_playermodel.modelskin );
-ADDRGP4 $143
+ADDRGP4 $145
 ARGP4
 ADDRGP4 s_playermodel+37984
 ARGP4
@@ -583,7 +583,7 @@ CALLV
 pop
 line 176
 ;176:	trap_Cvar_Set( "headmodel", s_playermodel.modelskin );
-ADDRGP4 $145
+ADDRGP4 $147
 ARGP4
 ADDRGP4 s_playermodel+37984
 ARGP4
@@ -592,7 +592,7 @@ CALLV
 pop
 line 177
 ;177:	trap_Cvar_Set( "team_model", s_playermodel.modelskin );
-ADDRGP4 $147
+ADDRGP4 $149
 ARGP4
 ADDRGP4 s_playermodel+37984
 ARGP4
@@ -601,7 +601,7 @@ CALLV
 pop
 line 178
 ;178:	trap_Cvar_Set( "team_headmodel", s_playermodel.modelskin );
-ADDRGP4 $149
+ADDRGP4 $151
 ARGP4
 ADDRGP4 s_playermodel+37984
 ARGP4
@@ -610,7 +610,7 @@ CALLV
 pop
 line 179
 ;179:}
-LABELV $142
+LABELV $144
 endproc PlayerModel_SaveChanges 0 8
 proc PlayerModel_MenuEvent 12 0
 line 187
@@ -627,12 +627,12 @@ line 188
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $152
+EQI4 $154
 line 189
 ;189:		return;
-ADDRGP4 $151
+ADDRGP4 $153
 JUMPV
-LABELV $152
+LABELV $154
 line 191
 ;190:
 ;191:	switch (((menucommon_s*)ptr)->id)
@@ -646,27 +646,27 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 100
-EQI4 $157
+EQI4 $159
 ADDRLP4 0
 INDIRI4
 CNSTI4 101
-EQI4 $162
+EQI4 $164
 ADDRLP4 0
 INDIRI4
 CNSTI4 102
-EQI4 $168
-ADDRGP4 $154
+EQI4 $170
+ADDRGP4 $156
 JUMPV
 line 192
 ;192:	{
-LABELV $157
+LABELV $159
 line 194
 ;193:		case ID_PREVPAGE:
 ;194:			if (s_playermodel.modelpage > 0)
 ADDRGP4 s_playermodel+37976
 INDIRI4
 CNSTI4 0
-LEI4 $155
+LEI4 $157
 line 195
 ;195:			{
 line 196
@@ -691,9 +691,9 @@ line 198
 ;198:			}
 line 199
 ;199:			break;
-ADDRGP4 $155
+ADDRGP4 $157
 JUMPV
-LABELV $162
+LABELV $164
 line 202
 ;200:
 ;201:		case ID_NEXTPAGE:
@@ -704,7 +704,7 @@ ADDRGP4 s_playermodel+37980
 INDIRI4
 CNSTI4 1
 SUBI4
-GEI4 $155
+GEI4 $157
 line 203
 ;203:			{
 line 204
@@ -729,9 +729,9 @@ line 206
 ;206:			}
 line 207
 ;207:			break;
-ADDRGP4 $155
+ADDRGP4 $157
 JUMPV
-LABELV $168
+LABELV $170
 line 210
 ;208:
 ;209:		case ID_BACK:
@@ -746,12 +746,12 @@ CALLV
 pop
 line 212
 ;212:			break;
-LABELV $154
-LABELV $155
+LABELV $156
+LABELV $157
 line 214
 ;213:	}
 ;214:}
-LABELV $151
+LABELV $153
 endproc PlayerModel_MenuEvent 12 0
 proc PlayerModel_MenuKey 52 8
 line 222
@@ -775,7 +775,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 134
-EQI4 $172
+EQI4 $174
 ADDRLP4 12
 CNSTI4 135
 ASGNI4
@@ -783,20 +783,20 @@ ADDRLP4 8
 INDIRI4
 ADDRLP4 12
 INDIRI4
-EQI4 $181
+EQI4 $183
 ADDRLP4 8
 INDIRI4
 ADDRLP4 12
 INDIRI4
-GTI4 $195
-LABELV $194
+GTI4 $197
+LABELV $196
 ADDRFP4 0
 INDIRI4
 CNSTI4 27
-EQI4 $193
-ADDRGP4 $170
+EQI4 $195
+ADDRGP4 $172
 JUMPV
-LABELV $195
+LABELV $197
 ADDRLP4 16
 ADDRFP4 0
 INDIRI4
@@ -808,26 +808,26 @@ ADDRLP4 16
 INDIRI4
 ADDRLP4 20
 INDIRI4
-EQI4 $172
+EQI4 $174
 ADDRLP4 16
 INDIRI4
 CNSTI4 165
-EQI4 $181
+EQI4 $183
 ADDRLP4 16
 INDIRI4
 ADDRLP4 20
 INDIRI4
-LTI4 $170
-LABELV $196
+LTI4 $172
+LABELV $198
 ADDRFP4 0
 INDIRI4
 CNSTI4 179
-EQI4 $193
-ADDRGP4 $170
+EQI4 $195
+ADDRGP4 $172
 JUMPV
 line 227
 ;227:	{
-LABELV $172
+LABELV $174
 line 230
 ;228:		case K_KP_LEFTARROW:
 ;229:		case K_LEFTARROW:
@@ -860,11 +860,11 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-LTI4 $171
+LTI4 $173
 ADDRLP4 28
 INDIRI4
 CNSTI4 15
-GTI4 $171
+GTI4 $173
 line 233
 ;233:			{
 line 234
@@ -872,7 +872,7 @@ line 234
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LEI4 $175
+LEI4 $177
 line 235
 ;235:				{
 line 236
@@ -897,9 +897,9 @@ line 237
 ADDRGP4 menu_move_sound
 INDIRI4
 RETI4
-ADDRGP4 $169
+ADDRGP4 $171
 JUMPV
-LABELV $175
+LABELV $177
 line 240
 ;238:					
 ;239:				}
@@ -907,7 +907,7 @@ line 240
 ADDRGP4 s_playermodel+37976
 INDIRI4
 CNSTI4 0
-LEI4 $177
+LEI4 $179
 line 241
 ;241:				{
 line 242
@@ -950,9 +950,9 @@ line 245
 ADDRGP4 menu_move_sound
 INDIRI4
 RETI4
-ADDRGP4 $169
+ADDRGP4 $171
 JUMPV
-LABELV $177
+LABELV $179
 line 248
 ;246:				}
 ;247:				else
@@ -960,12 +960,12 @@ line 248
 ADDRGP4 menu_buzz_sound
 INDIRI4
 RETI4
-ADDRGP4 $169
+ADDRGP4 $171
 JUMPV
 line 250
 ;249:			}
 ;250:			break;
-LABELV $181
+LABELV $183
 line 254
 ;251:
 ;252:		case K_KP_RIGHTARROW:
@@ -999,11 +999,11 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-LTI4 $171
+LTI4 $173
 ADDRLP4 36
 INDIRI4
 CNSTI4 15
-GTI4 $171
+GTI4 $173
 line 257
 ;257:			{
 line 258
@@ -1015,7 +1015,7 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 15
-GEI4 $184
+GEI4 $186
 ADDRGP4 s_playermodel+37976
 INDIRI4
 CNSTI4 4
@@ -1027,7 +1027,7 @@ CNSTI4 1
 ADDI4
 ADDRGP4 s_playermodel+5204
 INDIRI4
-GEI4 $184
+GEI4 $186
 line 259
 ;259:				{
 line 260
@@ -1052,23 +1052,23 @@ line 261
 ADDRGP4 menu_move_sound
 INDIRI4
 RETI4
-ADDRGP4 $169
+ADDRGP4 $171
 JUMPV
-LABELV $184
+LABELV $186
 line 263
 ;262:				}					
 ;263:				else if ((picnum == 15) && (s_playermodel.modelpage < s_playermodel.numpages-1))
 ADDRLP4 0
 INDIRI4
 CNSTI4 15
-NEI4 $188
+NEI4 $190
 ADDRGP4 s_playermodel+37976
 INDIRI4
 ADDRGP4 s_playermodel+37980
 INDIRI4
 CNSTI4 1
 SUBI4
-GEI4 $188
+GEI4 $190
 line 264
 ;264:				{
 line 265
@@ -1111,9 +1111,9 @@ line 268
 ADDRGP4 menu_move_sound
 INDIRI4
 RETI4
-ADDRGP4 $169
+ADDRGP4 $171
 JUMPV
-LABELV $188
+LABELV $190
 line 271
 ;269:				}
 ;270:				else
@@ -1121,12 +1121,12 @@ line 271
 ADDRGP4 menu_buzz_sound
 INDIRI4
 RETI4
-ADDRGP4 $169
+ADDRGP4 $171
 JUMPV
 line 273
 ;272:			}
 ;273:			break;
-LABELV $193
+LABELV $195
 line 277
 ;274:			
 ;275:		case K_MOUSE2:
@@ -1137,8 +1137,8 @@ CALLV
 pop
 line 278
 ;278:			break;
-LABELV $170
-LABELV $171
+LABELV $172
+LABELV $173
 line 281
 ;279:	}
 ;280:
@@ -1155,7 +1155,7 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 RETI4
-LABELV $169
+LABELV $171
 endproc PlayerModel_MenuKey 52 8
 proc PlayerModel_PicEvent 48 12
 line 290
@@ -1179,19 +1179,19 @@ line 297
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $198
+EQI4 $200
 line 298
 ;298:		return;
-ADDRGP4 $197
+ADDRGP4 $199
 JUMPV
-LABELV $198
+LABELV $200
 line 300
 ;299:
 ;300:	for (i=0; i<PLAYERGRID_ROWS*PLAYERGRID_COLS; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $200
+LABELV $202
 line 301
 ;301:	{
 line 303
@@ -1233,7 +1233,7 @@ BORU4
 ASGNU4
 line 305
 ;305:	}
-LABELV $201
+LABELV $203
 line 300
 ADDRLP4 0
 ADDRLP4 0
@@ -1244,7 +1244,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $200
+LTI4 $202
 line 308
 ;306:
 ;307:	// set selected
@@ -1307,7 +1307,7 @@ ADDI4
 ASGNI4
 line 314
 ;314:	buffptr  = s_playermodel.modelnames[modelnum] + strlen("models/players/");
-ADDRGP4 $214
+ADDRGP4 $216
 ARGP4
 ADDRLP4 28
 ADDRGP4 strlen
@@ -1329,7 +1329,7 @@ line 315
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $215
+ADDRGP4 $217
 ARGP4
 ADDRLP4 32
 ADDRGP4 strstr
@@ -1345,7 +1345,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $216
+EQU4 $218
 line 317
 ;317:	{
 line 319
@@ -1401,13 +1401,13 @@ line 324
 ADDRLP4 12
 INDIRI4
 CNSTI4 16
-LEI4 $220
+LEI4 $222
 line 325
 ;325:			maxlen = 16;
 ADDRLP4 12
 CNSTI4 16
 ASGNI4
-LABELV $220
+LABELV $222
 line 326
 ;326:		Q_strncpyz( s_playermodel.modelname.string, buffptr, maxlen );
 ADDRGP4 s_playermodel+3880+60
@@ -1454,13 +1454,13 @@ line 331
 ADDRLP4 12
 INDIRI4
 CNSTI4 16
-LEI4 $226
+LEI4 $228
 line 332
 ;332:			maxlen = 16;
 ADDRLP4 12
 CNSTI4 16
 ASGNI4
-LABELV $226
+LABELV $228
 line 333
 ;333:		Q_strncpyz( s_playermodel.skinname.string, pdest+5, maxlen );
 ADDRGP4 s_playermodel+3952+60
@@ -1502,7 +1502,7 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 5242880
-LEI4 $233
+LEI4 $235
 line 339
 ;339:			PlayerModel_UpdateModel();
 ADDRGP4 PlayerModel_UpdateModel
@@ -1510,13 +1510,13 @@ CALLV
 pop
 line 340
 ;340:		}
-LABELV $233
+LABELV $235
 line 341
 ;341:	}
-LABELV $216
+LABELV $218
 line 342
 ;342:}
-LABELV $197
+LABELV $199
 endproc PlayerModel_PicEvent 48 12
 proc PlayerModel_DrawPlayer 12 24
 line 350
@@ -1546,7 +1546,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 5242880
-GTI4 $236
+GTI4 $238
 line 356
 ;356:		UI_DrawProportionalString( b->generic.x, b->generic.y + b->height / 2, "LOW MEMORY", UI_LEFT, color_red );
 ADDRLP4 0
@@ -1569,7 +1569,7 @@ CNSTI4 2
 DIVI4
 ADDI4
 ARGI4
-ADDRGP4 $238
+ADDRGP4 $240
 ARGP4
 CNSTI4 0
 ARGI4
@@ -1580,9 +1580,9 @@ CALLV
 pop
 line 357
 ;357:		return;
-ADDRGP4 $235
+ADDRGP4 $237
 JUMPV
-LABELV $236
+LABELV $238
 line 360
 ;358:	}
 ;359:
@@ -1627,7 +1627,7 @@ CALLV
 pop
 line 361
 ;361:}
-LABELV $235
+LABELV $237
 endproc PlayerModel_DrawPlayer 12 24
 proc PlayerModel_BuildList 4244 20
 line 369
@@ -1654,7 +1654,7 @@ line 383
 ;381:	qboolean precache;
 ;382:
 ;383:	precache = trap_Cvar_VariableValue("com_buildscript");
-ADDRGP4 $242
+ADDRGP4 $244
 ARGP4
 ADDRLP4 4196
 ADDRGP4 trap_Cvar_VariableValue
@@ -1680,9 +1680,9 @@ line 389
 ;387:
 ;388:	// iterate directory of all player models
 ;389:	numdirs = trap_FS_GetFileList("models/players", "/", dirlist, 2048 );
-ADDRGP4 $245
+ADDRGP4 $247
 ARGP4
-ADDRGP4 $246
+ADDRGP4 $248
 ARGP4
 ADDRLP4 2148
 ARGP4
@@ -1706,9 +1706,9 @@ line 391
 ADDRLP4 92
 CNSTI4 0
 ASGNI4
-ADDRGP4 $250
+ADDRGP4 $252
 JUMPV
-LABELV $247
+LABELV $249
 line 392
 ;392:	{
 line 393
@@ -1730,7 +1730,7 @@ line 395
 ADDRLP4 88
 INDIRI4
 CNSTI4 0
-EQI4 $252
+EQI4 $254
 ADDRLP4 88
 INDIRI4
 CNSTI4 1
@@ -1741,7 +1741,7 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 47
-NEI4 $252
+NEI4 $254
 ADDRLP4 88
 INDIRI4
 CNSTI4 1
@@ -1751,14 +1751,14 @@ INDIRP4
 ADDP4
 CNSTI1 0
 ASGNI1
-LABELV $252
+LABELV $254
 line 397
 ;396:
 ;397:		if (!strcmp(dirptr,".") || !strcmp(dirptr,".."))
 ADDRLP4 76
 INDIRP4
 ARGP4
-ADDRGP4 $256
+ADDRGP4 $258
 ARGP4
 ADDRLP4 4212
 ADDRGP4 strcmp
@@ -1767,11 +1767,11 @@ ASGNI4
 ADDRLP4 4212
 INDIRI4
 CNSTI4 0
-EQI4 $258
+EQI4 $260
 ADDRLP4 76
 INDIRP4
 ARGP4
-ADDRGP4 $257
+ADDRGP4 $259
 ARGP4
 ADDRLP4 4216
 ADDRGP4 strcmp
@@ -1780,18 +1780,18 @@ ASGNI4
 ADDRLP4 4216
 INDIRI4
 CNSTI4 0
-NEI4 $254
-LABELV $258
+NEI4 $256
+LABELV $260
 line 398
 ;398:			continue;
-ADDRGP4 $248
+ADDRGP4 $250
 JUMPV
-LABELV $254
+LABELV $256
 line 401
 ;399:			
 ;400:		// iterate all skin files in directory
 ;401:		numfiles = trap_FS_GetFileList( va("models/players/%s",dirptr), "tga", filelist, 2048 );
-ADDRGP4 $259
+ADDRGP4 $261
 ARGP4
 ADDRLP4 76
 INDIRP4
@@ -1803,7 +1803,7 @@ ASGNP4
 ADDRLP4 4220
 INDIRP4
 ARGP4
-ADDRGP4 $260
+ADDRGP4 $262
 ARGP4
 ADDRLP4 96
 ARGP4
@@ -1827,9 +1827,9 @@ line 403
 ADDRLP4 68
 CNSTI4 0
 ASGNI4
-ADDRGP4 $264
+ADDRGP4 $266
 JUMPV
-LABELV $261
+LABELV $263
 line 404
 ;404:		{
 line 405
@@ -1862,7 +1862,7 @@ line 410
 ;410:			if (!Q_stricmpn(skinname,"icon_",5))
 ADDRLP4 4
 ARGP4
-ADDRGP4 $215
+ADDRGP4 $217
 ARGP4
 CNSTI4 5
 ARGI4
@@ -1873,7 +1873,7 @@ ASGNI4
 ADDRLP4 4232
 INDIRI4
 CNSTI4 0
-NEI4 $266
+NEI4 $268
 line 411
 ;411:			{
 line 412
@@ -1902,7 +1902,7 @@ ADDP4
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $272
+ADDRGP4 $274
 ARGP4
 ADDRLP4 76
 INDIRP4
@@ -1918,17 +1918,17 @@ line 417
 ;415:				//if (s_playermodel.nummodels >= MAX_PLAYERMODELS)
 ;416:				//	return;
 ;417:			}
-LABELV $266
+LABELV $268
 line 419
 ;418:
 ;419:			if( precache ) {
 ADDRLP4 84
 INDIRI4
 CNSTI4 0
-EQI4 $273
+EQI4 $275
 line 420
 ;420:				trap_S_RegisterSound( va( "sound/player/announce/%s_wins.wav", skinname), qfalse );
-ADDRGP4 $275
+ADDRGP4 $277
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -1946,10 +1946,10 @@ CALLI4
 pop
 line 421
 ;421:			}
-LABELV $273
+LABELV $275
 line 422
 ;422:		}
-LABELV $262
+LABELV $264
 line 403
 ADDRLP4 4228
 CNSTI4 1
@@ -1971,20 +1971,20 @@ ADDRLP4 0
 INDIRP4
 ADDP4
 ASGNP4
-LABELV $264
+LABELV $266
 ADDRLP4 68
 INDIRI4
 ADDRLP4 80
 INDIRI4
-GEI4 $276
+GEI4 $278
 ADDRGP4 s_playermodel+5204
 INDIRI4
 CNSTI4 256
-LTI4 $261
-LABELV $276
+LTI4 $263
+LABELV $278
 line 423
 ;423:	}	
-LABELV $248
+LABELV $250
 line 391
 ADDRLP4 4204
 CNSTI4 1
@@ -2006,17 +2006,17 @@ ADDRLP4 76
 INDIRP4
 ADDP4
 ASGNP4
-LABELV $250
+LABELV $252
 ADDRLP4 92
 INDIRI4
 ADDRLP4 2144
 INDIRI4
-GEI4 $277
+GEI4 $279
 ADDRGP4 s_playermodel+5204
 INDIRI4
 CNSTI4 256
-LTI4 $247
-LABELV $277
+LTI4 $249
+LABELV $279
 line 427
 ;424:
 ;425:	//APSFIXME - Degenerate no models case
@@ -2035,7 +2035,7 @@ INDIRI4
 CNSTI4 16
 MODI4
 CNSTI4 0
-EQI4 $280
+EQI4 $282
 line 429
 ;429:		s_playermodel.numpages++;
 ADDRLP4 4208
@@ -2049,10 +2049,10 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $280
+LABELV $282
 line 430
 ;430:}
-LABELV $241
+LABELV $243
 endproc PlayerModel_BuildList 4244 20
 proc PlayerModel_SetMenuItems 96 12
 line 438
@@ -2073,7 +2073,7 @@ line 446
 ;444:
 ;445:	// name
 ;446:	trap_Cvar_VariableStringBuffer( "name", s_playermodel.playername.string, 16 );
-ADDRGP4 $285
+ADDRGP4 $287
 ARGP4
 ADDRGP4 s_playermodel+4024+60
 INDIRP4
@@ -2095,7 +2095,7 @@ line 450
 ;448:
 ;449:	// model
 ;450:	trap_Cvar_VariableStringBuffer( "model", s_playermodel.modelskin, 64 );
-ADDRGP4 $143
+ADDRGP4 $145
 ARGP4
 ADDRGP4 s_playermodel+37984
 ARGP4
@@ -2111,15 +2111,15 @@ line 453
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $294
+ADDRGP4 $296
 JUMPV
-LABELV $291
+LABELV $293
 line 454
 ;454:	{
 line 456
 ;455:		// strip icon_
 ;456:		buffptr  = s_playermodel.modelnames[i] + strlen("models/players/");
-ADDRGP4 $214
+ADDRGP4 $216
 ARGP4
 ADDRLP4 80
 ADDRGP4 strlen
@@ -2141,7 +2141,7 @@ line 457
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $215
+ADDRGP4 $217
 ARGP4
 ADDRLP4 84
 ADDRGP4 strstr
@@ -2157,7 +2157,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $292
+EQU4 $294
 line 459
 ;459:		{
 line 460
@@ -2198,7 +2198,7 @@ line 462
 line 464
 ;463:		else
 ;464:			continue;
-LABELV $298
+LABELV $300
 line 466
 ;465:
 ;466:		if (!Q_stricmp( s_playermodel.modelskin, modelskin ))
@@ -2213,7 +2213,7 @@ ASGNI4
 ADDRLP4 88
 INDIRI4
 CNSTI4 0
-NEI4 $299
+NEI4 $301
 line 467
 ;467:		{
 line 469
@@ -2250,13 +2250,13 @@ line 474
 ADDRLP4 12
 INDIRI4
 CNSTI4 16
-LEI4 $304
+LEI4 $306
 line 475
 ;475:				maxlen = 16;
 ADDRLP4 12
 CNSTI4 16
 ASGNI4
-LABELV $304
+LABELV $306
 line 476
 ;476:			Q_strncpyz( s_playermodel.modelname.string, buffptr, maxlen );
 ADDRGP4 s_playermodel+3880+60
@@ -2303,13 +2303,13 @@ line 481
 ADDRLP4 12
 INDIRI4
 CNSTI4 16
-LEI4 $310
+LEI4 $312
 line 482
 ;482:				maxlen = 16;
 ADDRLP4 12
 CNSTI4 16
 ASGNI4
-LABELV $310
+LABELV $312
 line 483
 ;483:			Q_strncpyz( s_playermodel.skinname.string, pdest+5, maxlen );
 ADDRGP4 s_playermodel+3952+60
@@ -2336,13 +2336,13 @@ CALLP4
 pop
 line 485
 ;485:			break;
-ADDRGP4 $293
+ADDRGP4 $295
 JUMPV
-LABELV $299
+LABELV $301
 line 487
 ;486:		}
 ;487:	}
-LABELV $292
+LABELV $294
 line 453
 ADDRLP4 4
 ADDRLP4 4
@@ -2350,26 +2350,26 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $294
+LABELV $296
 ADDRLP4 4
 INDIRI4
 ADDRGP4 s_playermodel+5204
 INDIRI4
-LTI4 $291
-LABELV $293
+LTI4 $293
+LABELV $295
 line 488
 ;488:}
-LABELV $284
+LABELV $286
 endproc PlayerModel_SetMenuItems 96 12
 bss
 align 1
-LABELV $317
-skip 32
-align 1
-LABELV $318
-skip 32
-align 1
 LABELV $319
+skip 32
+align 1
+LABELV $320
+skip 32
+align 1
+LABELV $321
 skip 32
 code
 proc PlayerModel_MenuInit 28 12
@@ -2444,7 +2444,7 @@ ASGNI4
 line 518
 ;518:	s_playermodel.banner.string        = "PLAYER MODEL";
 ADDRGP4 s_playermodel+3368+60
-ADDRGP4 $330
+ADDRGP4 $332
 ASGNP4
 line 519
 ;519:	s_playermodel.banner.color         = color_white;
@@ -2465,7 +2465,7 @@ ASGNI4
 line 523
 ;523:	s_playermodel.framel.generic.name  = MODEL_FRAMEL;
 ADDRGP4 s_playermodel+3104+4
-ADDRGP4 $71
+ADDRGP4 $73
 ASGNP4
 line 524
 ;524:	s_playermodel.framel.generic.flags = QMF_LEFT_JUSTIFY|QMF_INACTIVE;
@@ -2501,7 +2501,7 @@ ASGNI4
 line 531
 ;531:	s_playermodel.framer.generic.name  = MODEL_FRAMER;
 ADDRGP4 s_playermodel+3192+4
-ADDRGP4 $72
+ADDRGP4 $74
 ASGNP4
 line 532
 ;532:	s_playermodel.framer.generic.flags = QMF_LEFT_JUSTIFY|QMF_INACTIVE;
@@ -2537,7 +2537,7 @@ ASGNI4
 line 539
 ;539:	s_playermodel.ports.generic.name  = MODEL_PORTS;
 ADDRGP4 s_playermodel+3280+4
-ADDRGP4 $73
+ADDRGP4 $75
 ASGNP4
 line 540
 ;540:	s_playermodel.ports.generic.flags = QMF_LEFT_JUSTIFY|QMF_INACTIVE;
@@ -2583,9 +2583,9 @@ ADDRLP4 0
 ADDRLP4 20
 INDIRI4
 ASGNI4
-ADDRGP4 $377
+ADDRGP4 $379
 JUMPV
-LABELV $374
+LABELV $376
 line 548
 ;548:	{
 line 549
@@ -2598,7 +2598,7 @@ line 550
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-LABELV $378
+LABELV $380
 line 551
 ;551:		{
 line 552
@@ -2671,7 +2671,7 @@ INDIRI4
 MULI4
 ADDRGP4 s_playermodel+288+60
 ADDP4
-ADDRGP4 $70
+ADDRGP4 $72
 ASGNP4
 line 559
 ;559:			s_playermodel.pics[k].focuscolor       = colorRed;
@@ -2827,7 +2827,7 @@ INDIRI4
 MULI4
 ADDRGP4 s_playermodel+1696+60
 ADDP4
-ADDRGP4 $69
+ADDRGP4 $71
 ASGNP4
 line 574
 ;574:			s_playermodel.picbuttons[k].focuscolor  	 = colorRed;
@@ -2850,7 +2850,7 @@ ADDI4
 ASGNI4
 line 577
 ;577:		}
-LABELV $379
+LABELV $381
 line 550
 ADDRLP4 24
 CNSTI4 1
@@ -2872,7 +2872,7 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 4
-LTI4 $378
+LTI4 $380
 line 578
 ;578:		y += 64+6;
 ADDRLP4 8
@@ -2883,7 +2883,7 @@ ADDI4
 ASGNI4
 line 579
 ;579:	}
-LABELV $375
+LABELV $377
 line 547
 ADDRLP4 16
 ADDRLP4 16
@@ -2891,11 +2891,11 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $377
+LABELV $379
 ADDRLP4 16
 INDIRI4
 CNSTI4 4
-LTI4 $374
+LTI4 $376
 line 581
 ;580:
 ;581:	s_playermodel.playername.generic.type  = MTYPE_PTEXT;
@@ -2920,7 +2920,7 @@ ASGNI4
 line 585
 ;585:	s_playermodel.playername.string	       = playername;
 ADDRGP4 s_playermodel+4024+60
-ADDRGP4 $317
+ADDRGP4 $319
 ASGNP4
 line 586
 ;586:	s_playermodel.playername.style		   = UI_CENTER;
@@ -2956,7 +2956,7 @@ ASGNI4
 line 593
 ;593:	s_playermodel.modelname.string	      = modelname;
 ADDRGP4 s_playermodel+3880+60
-ADDRGP4 $318
+ADDRGP4 $320
 ASGNP4
 line 594
 ;594:	s_playermodel.modelname.style		  = UI_CENTER;
@@ -2992,7 +2992,7 @@ ASGNI4
 line 601
 ;601:	s_playermodel.skinname.string	      = skinname;
 ADDRGP4 s_playermodel+3952+60
-ADDRGP4 $319
+ADDRGP4 $321
 ASGNP4
 line 602
 ;602:	s_playermodel.skinname.style		  = UI_CENTER;
@@ -3049,7 +3049,7 @@ ASGNI4
 line 614
 ;614:	s_playermodel.arrows.generic.name		= MODEL_ARROWS;
 ADDRGP4 s_playermodel+3616+4
-ADDRGP4 $74
+ADDRGP4 $76
 ASGNP4
 line 615
 ;615:	s_playermodel.arrows.generic.flags		= QMF_INACTIVE;
@@ -3120,7 +3120,7 @@ ASGNI4
 line 629
 ;629:	s_playermodel.left.focuspic				= MODEL_ARROWSL;
 ADDRGP4 s_playermodel+3704+60
-ADDRGP4 $75
+ADDRGP4 $77
 ASGNP4
 line 631
 ;630:
@@ -3166,7 +3166,7 @@ ASGNI4
 line 639
 ;639:	s_playermodel.right.focuspic			= MODEL_ARROWSR;
 ADDRGP4 s_playermodel+3792+60
-ADDRGP4 $76
+ADDRGP4 $78
 ASGNP4
 line 641
 ;640:
@@ -3177,7 +3177,7 @@ ASGNI4
 line 642
 ;642:	s_playermodel.back.generic.name     = MODEL_BACK0;
 ADDRGP4 s_playermodel+3440+4
-ADDRGP4 $67
+ADDRGP4 $69
 ASGNP4
 line 643
 ;643:	s_playermodel.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -3217,7 +3217,7 @@ ASGNI4
 line 650
 ;650:	s_playermodel.back.focuspic         = MODEL_BACK1;
 ADDRGP4 s_playermodel+3440+60
-ADDRGP4 $68
+ADDRGP4 $70
 ASGNP4
 line 652
 ;651:
@@ -3289,7 +3289,7 @@ line 660
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
-LABELV $549
+LABELV $551
 line 661
 ;661:	{
 line 662
@@ -3322,7 +3322,7 @@ CALLV
 pop
 line 664
 ;664:	}
-LABELV $550
+LABELV $552
 line 660
 ADDRLP4 16
 ADDRLP4 16
@@ -3333,7 +3333,7 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 16
-LTI4 $549
+LTI4 $551
 line 666
 ;665:
 ;666:	Menu_AddItem( &s_playermodel.menu,	&s_playermodel.player );
@@ -3404,7 +3404,7 @@ CALLV
 pop
 line 681
 ;681:}
-LABELV $316
+LABELV $318
 endproc PlayerModel_MenuInit 28 12
 export PlayerModel_Cache
 proc PlayerModel_Cache 4 4
@@ -3424,9 +3424,9 @@ line 692
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $564
+ADDRGP4 $566
 JUMPV
-LABELV $561
+LABELV $563
 line 693
 ;693:		trap_R_RegisterShaderNoMip( playermodel_artlist[i] );
 ADDRLP4 0
@@ -3442,7 +3442,7 @@ CALLI4
 pop
 line 694
 ;694:	}
-LABELV $562
+LABELV $564
 line 692
 ADDRLP4 0
 ADDRLP4 0
@@ -3450,7 +3450,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $564
+LABELV $566
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -3460,7 +3460,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $561
+NEU4 $563
 line 696
 ;695:
 ;696:	PlayerModel_BuildList();
@@ -3472,9 +3472,9 @@ line 697
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $568
+ADDRGP4 $570
 JUMPV
-LABELV $565
+LABELV $567
 line 698
 ;698:		trap_R_RegisterShaderNoMip( s_playermodel.modelnames[i] );
 ADDRLP4 0
@@ -3489,7 +3489,7 @@ CALLI4
 pop
 line 699
 ;699:	}
-LABELV $566
+LABELV $568
 line 697
 ADDRLP4 0
 ADDRLP4 0
@@ -3497,15 +3497,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $568
+LABELV $570
 ADDRLP4 0
 INDIRI4
 ADDRGP4 s_playermodel+5204
 INDIRI4
-LTI4 $565
+LTI4 $567
 line 700
 ;700:}
-LABELV $560
+LABELV $562
 endproc PlayerModel_Cache 4 4
 export UI_PlayerModelMenu
 proc UI_PlayerModelMenu 0 8
@@ -3545,7 +3545,7 @@ CALLV
 pop
 line 709
 ;709:}
-LABELV $571
+LABELV $573
 endproc UI_PlayerModelMenu 0 8
 bss
 align 4
@@ -3864,6 +3864,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -4028,7 +4029,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $330
+LABELV $332
 byte 1 80
 byte 1 76
 byte 1 65
@@ -4043,14 +4044,14 @@ byte 1 69
 byte 1 76
 byte 1 0
 align 1
-LABELV $285
+LABELV $287
 byte 1 110
 byte 1 97
 byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $275
+LABELV $277
 byte 1 115
 byte 1 111
 byte 1 117
@@ -4086,7 +4087,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $272
+LABELV $274
 byte 1 109
 byte 1 111
 byte 1 100
@@ -4109,13 +4110,13 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $260
+LABELV $262
 byte 1 116
 byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $259
+LABELV $261
 byte 1 109
 byte 1 111
 byte 1 100
@@ -4135,20 +4136,20 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $257
+LABELV $259
 byte 1 46
 byte 1 46
 byte 1 0
 align 1
-LABELV $256
+LABELV $258
 byte 1 46
 byte 1 0
 align 1
-LABELV $246
+LABELV $248
 byte 1 47
 byte 1 0
 align 1
-LABELV $245
+LABELV $247
 byte 1 109
 byte 1 111
 byte 1 100
@@ -4165,7 +4166,7 @@ byte 1 114
 byte 1 115
 byte 1 0
 align 1
-LABELV $242
+LABELV $244
 byte 1 99
 byte 1 111
 byte 1 109
@@ -4183,7 +4184,7 @@ byte 1 112
 byte 1 116
 byte 1 0
 align 1
-LABELV $238
+LABELV $240
 byte 1 76
 byte 1 79
 byte 1 87
@@ -4196,7 +4197,7 @@ byte 1 82
 byte 1 89
 byte 1 0
 align 1
-LABELV $215
+LABELV $217
 byte 1 105
 byte 1 99
 byte 1 111
@@ -4204,7 +4205,7 @@ byte 1 110
 byte 1 95
 byte 1 0
 align 1
-LABELV $214
+LABELV $216
 byte 1 109
 byte 1 111
 byte 1 100
@@ -4222,7 +4223,7 @@ byte 1 115
 byte 1 47
 byte 1 0
 align 1
-LABELV $149
+LABELV $151
 byte 1 116
 byte 1 101
 byte 1 97
@@ -4232,6 +4233,19 @@ byte 1 104
 byte 1 101
 byte 1 97
 byte 1 100
+byte 1 109
+byte 1 111
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 0
+align 1
+LABELV $149
+byte 1 116
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 95
 byte 1 109
 byte 1 111
 byte 1 100
@@ -4240,19 +4254,6 @@ byte 1 108
 byte 1 0
 align 1
 LABELV $147
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
-byte 1 95
-byte 1 109
-byte 1 111
-byte 1 100
-byte 1 101
-byte 1 108
-byte 1 0
-align 1
-LABELV $145
 byte 1 104
 byte 1 101
 byte 1 97
@@ -4264,11 +4265,57 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $143
+LABELV $145
 byte 1 109
 byte 1 111
 byte 1 100
 byte 1 101
+byte 1 108
+byte 1 0
+align 1
+LABELV $78
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 103
+byte 1 115
+byte 1 95
+byte 1 97
+byte 1 114
+byte 1 114
+byte 1 111
+byte 1 119
+byte 1 115
+byte 1 95
+byte 1 114
+byte 1 0
+align 1
+LABELV $77
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 103
+byte 1 115
+byte 1 95
+byte 1 97
+byte 1 114
+byte 1 114
+byte 1 111
+byte 1 119
+byte 1 115
+byte 1 95
 byte 1 108
 byte 1 0
 align 1
@@ -4292,56 +4339,10 @@ byte 1 111
 byte 1 119
 byte 1 115
 byte 1 95
-byte 1 114
-byte 1 0
-align 1
-LABELV $75
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 117
-byte 1 47
-byte 1 97
-byte 1 114
-byte 1 116
-byte 1 47
-byte 1 103
-byte 1 115
-byte 1 95
-byte 1 97
-byte 1 114
-byte 1 114
-byte 1 111
-byte 1 119
-byte 1 115
-byte 1 95
-byte 1 108
-byte 1 0
-align 1
-LABELV $74
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 117
-byte 1 47
-byte 1 97
-byte 1 114
-byte 1 116
-byte 1 47
-byte 1 103
-byte 1 115
-byte 1 95
-byte 1 97
-byte 1 114
-byte 1 114
-byte 1 111
-byte 1 119
-byte 1 115
-byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $73
+LABELV $75
 byte 1 109
 byte 1 101
 byte 1 110
@@ -4372,7 +4373,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $72
+LABELV $74
 byte 1 109
 byte 1 101
 byte 1 110
@@ -4392,7 +4393,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $71
+LABELV $73
 byte 1 109
 byte 1 101
 byte 1 110
@@ -4412,7 +4413,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $70
+LABELV $72
 byte 1 109
 byte 1 101
 byte 1 110
@@ -4442,7 +4443,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $69
+LABELV $71
 byte 1 109
 byte 1 101
 byte 1 110
@@ -4470,7 +4471,7 @@ byte 1 99
 byte 1 116
 byte 1 0
 align 1
-LABELV $68
+LABELV $70
 byte 1 109
 byte 1 101
 byte 1 110
@@ -4488,7 +4489,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $67
+LABELV $69
 byte 1 109
 byte 1 101
 byte 1 110

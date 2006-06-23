@@ -29,7 +29,7 @@ INDIRP4
 ASGNP4
 line 16
 ;16:}
-LABELV $53
+LABELV $55
 endproc dllEntry 0 0
 export PASSFLOAT
 proc PASSFLOAT 4 0
@@ -48,7 +48,7 @@ line 21
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $54
+LABELV $56
 endproc PASSFLOAT 4 0
 export trap_Printf
 proc trap_Printf 0 8
@@ -69,7 +69,7 @@ CALLI4
 pop
 line 26
 ;26:}
-LABELV $55
+LABELV $57
 endproc trap_Printf 0 8
 export trap_Error
 proc trap_Error 0 8
@@ -89,7 +89,7 @@ CALLI4
 pop
 line 30
 ;30:}
-LABELV $56
+LABELV $58
 endproc trap_Error 0 8
 export trap_Milliseconds
 proc trap_Milliseconds 4 4
@@ -108,7 +108,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $57
+LABELV $59
 endproc trap_Milliseconds 4 4
 export trap_Argc
 proc trap_Argc 4 4
@@ -127,7 +127,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $58
+LABELV $60
 endproc trap_Argc 4 4
 export trap_Argv
 proc trap_Argv 0 16
@@ -154,7 +154,7 @@ CALLI4
 pop
 line 41
 ;41:}
-LABELV $59
+LABELV $61
 endproc trap_Argv 0 16
 export trap_FS_FOpenFile
 proc trap_FS_FOpenFile 4 16
@@ -182,7 +182,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $60
+LABELV $62
 endproc trap_FS_FOpenFile 4 16
 export trap_FS_Read
 proc trap_FS_Read 0 16
@@ -209,7 +209,7 @@ CALLI4
 pop
 line 49
 ;49:}
-LABELV $61
+LABELV $63
 endproc trap_FS_Read 0 16
 export trap_FS_Write
 proc trap_FS_Write 0 16
@@ -235,7 +235,7 @@ CALLI4
 pop
 line 53
 ;53:}
-LABELV $62
+LABELV $64
 endproc trap_FS_Write 0 16
 export trap_FS_FCloseFile
 proc trap_FS_FCloseFile 0 8
@@ -255,7 +255,7 @@ CALLI4
 pop
 line 57
 ;57:}
-LABELV $63
+LABELV $65
 endproc trap_FS_FCloseFile 0 8
 export trap_FS_GetFileList
 proc trap_FS_GetFileList 4 20
@@ -286,7 +286,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $64
+LABELV $66
 endproc trap_FS_GetFileList 4 20
 export trap_FS_Seek
 proc trap_FS_Seek 4 16
@@ -315,7 +315,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $65
+LABELV $67
 endproc trap_FS_Seek 4 16
 export trap_SendConsoleCommand
 proc trap_SendConsoleCommand 0 12
@@ -339,7 +339,7 @@ CALLI4
 pop
 line 69
 ;69:}
-LABELV $66
+LABELV $68
 endproc trap_SendConsoleCommand 0 12
 export trap_Cvar_Register
 proc trap_Cvar_Register 0 20
@@ -368,7 +368,7 @@ CALLI4
 pop
 line 73
 ;73:}
-LABELV $67
+LABELV $69
 endproc trap_Cvar_Register 0 20
 export trap_Cvar_Update
 proc trap_Cvar_Update 0 8
@@ -388,7 +388,7 @@ CALLI4
 pop
 line 77
 ;77:}
-LABELV $68
+LABELV $70
 endproc trap_Cvar_Update 0 8
 export trap_Cvar_Set
 proc trap_Cvar_Set 0 12
@@ -411,7 +411,7 @@ CALLI4
 pop
 line 81
 ;81:}
-LABELV $69
+LABELV $71
 endproc trap_Cvar_Set 0 12
 export trap_Cvar_VariableIntegerValue
 proc trap_Cvar_VariableIntegerValue 4 8
@@ -433,7 +433,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $70
+LABELV $72
 endproc trap_Cvar_VariableIntegerValue 4 8
 export trap_Cvar_VariableStringBuffer
 proc trap_Cvar_VariableStringBuffer 0 16
@@ -460,7 +460,7 @@ CALLI4
 pop
 line 89
 ;89:}
-LABELV $71
+LABELV $73
 endproc trap_Cvar_VariableStringBuffer 0 16
 export trap_LocateGameData
 proc trap_LocateGameData 0 24
@@ -494,7 +494,7 @@ CALLI4
 pop
 line 95
 ;95:}
-LABELV $72
+LABELV $74
 endproc trap_LocateGameData 0 24
 export trap_DropClient
 proc trap_DropClient 0 12
@@ -517,7 +517,7 @@ CALLI4
 pop
 line 99
 ;99:}
-LABELV $73
+LABELV $75
 endproc trap_DropClient 0 12
 export trap_SendServerCommand
 proc trap_SendServerCommand 0 12
@@ -540,7 +540,7 @@ CALLI4
 pop
 line 103
 ;103:}
-LABELV $74
+LABELV $76
 endproc trap_SendServerCommand 0 12
 export trap_SetConfigstring
 proc trap_SetConfigstring 0 12
@@ -563,7 +563,7 @@ CALLI4
 pop
 line 107
 ;107:}
-LABELV $75
+LABELV $77
 endproc trap_SetConfigstring 0 12
 export trap_GetConfigstring
 proc trap_GetConfigstring 0 16
@@ -589,7 +589,7 @@ CALLI4
 pop
 line 111
 ;111:}
-LABELV $76
+LABELV $78
 endproc trap_GetConfigstring 0 16
 export trap_GetUserinfo
 proc trap_GetUserinfo 0 16
@@ -615,7 +615,7 @@ CALLI4
 pop
 line 115
 ;115:}
-LABELV $77
+LABELV $79
 endproc trap_GetUserinfo 0 16
 export trap_SetUserinfo
 proc trap_SetUserinfo 0 12
@@ -638,7 +638,7 @@ CALLI4
 pop
 line 119
 ;119:}
-LABELV $78
+LABELV $80
 endproc trap_SetUserinfo 0 12
 export trap_GetServerinfo
 proc trap_GetServerinfo 0 12
@@ -661,7 +661,7 @@ CALLI4
 pop
 line 123
 ;123:}
-LABELV $79
+LABELV $81
 endproc trap_GetServerinfo 0 12
 export trap_SetBrushModel
 proc trap_SetBrushModel 0 12
@@ -684,7 +684,7 @@ CALLI4
 pop
 line 127
 ;127:}
-LABELV $80
+LABELV $82
 endproc trap_SetBrushModel 0 12
 export trap_Trace
 proc trap_Trace 0 32
@@ -722,7 +722,7 @@ CALLI4
 pop
 line 131
 ;131:}
-LABELV $81
+LABELV $83
 endproc trap_Trace 0 32
 export trap_TraceCapsule
 proc trap_TraceCapsule 0 32
@@ -760,7 +760,7 @@ CALLI4
 pop
 line 135
 ;135:}
-LABELV $82
+LABELV $84
 endproc trap_TraceCapsule 0 32
 export trap_PointContents
 proc trap_PointContents 4 12
@@ -785,7 +785,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $83
+LABELV $85
 endproc trap_PointContents 4 12
 export trap_InPVS
 proc trap_InPVS 4 12
@@ -812,7 +812,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $84
+LABELV $86
 endproc trap_InPVS 4 12
 export trap_InPVSIgnorePortals
 proc trap_InPVSIgnorePortals 4 12
@@ -838,7 +838,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $85
+LABELV $87
 endproc trap_InPVSIgnorePortals 4 12
 export trap_AdjustAreaPortalState
 proc trap_AdjustAreaPortalState 0 12
@@ -862,7 +862,7 @@ CALLI4
 pop
 line 152
 ;152:}
-LABELV $86
+LABELV $88
 endproc trap_AdjustAreaPortalState 0 12
 export trap_AreasConnected
 proc trap_AreasConnected 4 12
@@ -887,7 +887,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $87
+LABELV $89
 endproc trap_AreasConnected 4 12
 export trap_LinkEntity
 proc trap_LinkEntity 0 8
@@ -908,7 +908,7 @@ CALLI4
 pop
 line 160
 ;160:}
-LABELV $88
+LABELV $90
 endproc trap_LinkEntity 0 8
 export trap_UnlinkEntity
 proc trap_UnlinkEntity 0 8
@@ -928,7 +928,7 @@ CALLI4
 pop
 line 164
 ;164:}
-LABELV $89
+LABELV $91
 endproc trap_UnlinkEntity 0 8
 export trap_EntitiesInBox
 proc trap_EntitiesInBox 4 20
@@ -959,7 +959,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $90
+LABELV $92
 endproc trap_EntitiesInBox 4 20
 export trap_EntityContact
 proc trap_EntityContact 4 16
@@ -988,7 +988,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $91
+LABELV $93
 endproc trap_EntityContact 4 16
 export trap_EntityContactCapsule
 proc trap_EntityContactCapsule 4 16
@@ -1017,7 +1017,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $92
+LABELV $94
 endproc trap_EntityContactCapsule 4 16
 export trap_BotAllocateClient
 proc trap_BotAllocateClient 4 4
@@ -1037,7 +1037,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $93
+LABELV $95
 endproc trap_BotAllocateClient 4 4
 export trap_BotFreeClient
 proc trap_BotFreeClient 0 8
@@ -1058,7 +1058,7 @@ CALLI4
 pop
 line 184
 ;184:}
-LABELV $94
+LABELV $96
 endproc trap_BotFreeClient 0 8
 export trap_GetUsercmd
 proc trap_GetUsercmd 0 12
@@ -1081,7 +1081,7 @@ CALLI4
 pop
 line 188
 ;188:}
-LABELV $95
+LABELV $97
 endproc trap_GetUsercmd 0 12
 export trap_GetEntityToken
 proc trap_GetEntityToken 4 12
@@ -1106,7 +1106,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $96
+LABELV $98
 endproc trap_GetEntityToken 4 12
 export trap_DebugPolygonCreate
 proc trap_DebugPolygonCreate 4 16
@@ -1135,7 +1135,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $97
+LABELV $99
 endproc trap_DebugPolygonCreate 4 16
 export trap_DebugPolygonDelete
 proc trap_DebugPolygonDelete 0 8
@@ -1156,7 +1156,7 @@ CALLI4
 pop
 line 200
 ;200:}
-LABELV $98
+LABELV $100
 endproc trap_DebugPolygonDelete 0 8
 export trap_RealTime
 proc trap_RealTime 4 8
@@ -1178,7 +1178,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $99
+LABELV $101
 endproc trap_RealTime 4 8
 export trap_SnapVector
 proc trap_SnapVector 0 8
@@ -1199,7 +1199,7 @@ CALLI4
 pop
 line 208
 ;208:	return;
-LABELV $100
+LABELV $102
 endproc trap_SnapVector 0 8
 export trap_BotLibSetup
 proc trap_BotLibSetup 4 4
@@ -1220,7 +1220,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $101
+LABELV $103
 endproc trap_BotLibSetup 4 4
 export trap_BotLibShutdown
 proc trap_BotLibShutdown 4 4
@@ -1240,7 +1240,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $102
+LABELV $104
 endproc trap_BotLibShutdown 4 4
 export trap_BotLibVarSet
 proc trap_BotLibVarSet 4 12
@@ -1266,7 +1266,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $103
+LABELV $105
 endproc trap_BotLibVarSet 4 12
 export trap_BotLibVarGet
 proc trap_BotLibVarGet 4 16
@@ -1295,7 +1295,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $104
+LABELV $106
 endproc trap_BotLibVarGet 4 16
 export trap_BotLibDefine
 proc trap_BotLibDefine 4 8
@@ -1318,7 +1318,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $105
+LABELV $107
 endproc trap_BotLibDefine 4 8
 export trap_BotLibStartFrame
 proc trap_BotLibStartFrame 8 8
@@ -1348,7 +1348,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $106
+LABELV $108
 endproc trap_BotLibStartFrame 8 8
 export trap_BotLibLoadMap
 proc trap_BotLibLoadMap 4 8
@@ -1371,7 +1371,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $107
+LABELV $109
 endproc trap_BotLibLoadMap 4 8
 export trap_BotLibUpdateEntity
 proc trap_BotLibUpdateEntity 4 12
@@ -1397,7 +1397,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $108
+LABELV $110
 endproc trap_BotLibUpdateEntity 4 12
 export trap_BotLibTest
 proc trap_BotLibTest 4 20
@@ -1429,7 +1429,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $109
+LABELV $111
 endproc trap_BotLibTest 4 20
 export trap_BotGetSnapshotEntity
 proc trap_BotGetSnapshotEntity 4 12
@@ -1455,7 +1455,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $110
+LABELV $112
 endproc trap_BotGetSnapshotEntity 4 12
 export trap_BotGetServerCommand
 proc trap_BotGetServerCommand 4 16
@@ -1484,7 +1484,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $111
+LABELV $113
 endproc trap_BotGetServerCommand 4 16
 export trap_BotUserCommand
 proc trap_BotUserCommand 0 12
@@ -1508,7 +1508,7 @@ CALLI4
 pop
 line 258
 ;258:}
-LABELV $112
+LABELV $114
 endproc trap_BotUserCommand 0 12
 export trap_AAS_EntityInfo
 proc trap_AAS_EntityInfo 0 12
@@ -1531,7 +1531,7 @@ CALLI4
 pop
 line 262
 ;262:}
-LABELV $113
+LABELV $115
 endproc trap_AAS_EntityInfo 0 12
 export trap_AAS_Initialized
 proc trap_AAS_Initialized 4 4
@@ -1550,7 +1550,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $114
+LABELV $116
 endproc trap_AAS_Initialized 4 4
 export trap_AAS_PresenceTypeBoundingBox
 proc trap_AAS_PresenceTypeBoundingBox 0 16
@@ -1577,7 +1577,7 @@ CALLI4
 pop
 line 270
 ;270:}
-LABELV $115
+LABELV $117
 endproc trap_AAS_PresenceTypeBoundingBox 0 16
 export trap_AAS_Time
 proc trap_AAS_Time 8 4
@@ -1603,7 +1603,7 @@ line 275
 ADDRLP4 0
 INDIRF4
 RETF4
-LABELV $116
+LABELV $118
 endproc trap_AAS_Time 8 4
 export trap_AAS_PointAreaNum
 proc trap_AAS_PointAreaNum 4 8
@@ -1626,7 +1626,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $117
+LABELV $119
 endproc trap_AAS_PointAreaNum 4 8
 export trap_AAS_PointReachabilityAreaIndex
 proc trap_AAS_PointReachabilityAreaIndex 4 8
@@ -1649,7 +1649,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $118
+LABELV $120
 endproc trap_AAS_PointReachabilityAreaIndex 4 8
 export trap_AAS_TraceAreas
 proc trap_AAS_TraceAreas 4 24
@@ -1684,7 +1684,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $119
+LABELV $121
 endproc trap_AAS_TraceAreas 4 24
 export trap_AAS_BBoxAreas
 proc trap_AAS_BBoxAreas 4 20
@@ -1716,7 +1716,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $120
+LABELV $122
 endproc trap_AAS_BBoxAreas 4 20
 export trap_AAS_AreaInfo
 proc trap_AAS_AreaInfo 4 12
@@ -1742,7 +1742,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $121
+LABELV $123
 endproc trap_AAS_AreaInfo 4 12
 export trap_AAS_PointContents
 proc trap_AAS_PointContents 4 8
@@ -1765,7 +1765,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $122
+LABELV $124
 endproc trap_AAS_PointContents 4 8
 export trap_AAS_NextBSPEntity
 proc trap_AAS_NextBSPEntity 4 8
@@ -1788,7 +1788,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $123
+LABELV $125
 endproc trap_AAS_NextBSPEntity 4 8
 export trap_AAS_ValueForBSPEpairKey
 proc trap_AAS_ValueForBSPEpairKey 4 20
@@ -1820,7 +1820,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $124
+LABELV $126
 endproc trap_AAS_ValueForBSPEpairKey 4 20
 export trap_AAS_VectorForBSPEpairKey
 proc trap_AAS_VectorForBSPEpairKey 4 16
@@ -1849,7 +1849,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $125
+LABELV $127
 endproc trap_AAS_VectorForBSPEpairKey 4 16
 export trap_AAS_FloatForBSPEpairKey
 proc trap_AAS_FloatForBSPEpairKey 4 16
@@ -1878,7 +1878,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $126
+LABELV $128
 endproc trap_AAS_FloatForBSPEpairKey 4 16
 export trap_AAS_IntForBSPEpairKey
 proc trap_AAS_IntForBSPEpairKey 4 16
@@ -1907,7 +1907,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $127
+LABELV $129
 endproc trap_AAS_IntForBSPEpairKey 4 16
 export trap_AAS_AreaReachability
 proc trap_AAS_AreaReachability 4 8
@@ -1930,7 +1930,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $128
+LABELV $130
 endproc trap_AAS_AreaReachability 4 8
 export trap_AAS_AreaTravelTimeToGoalArea
 proc trap_AAS_AreaTravelTimeToGoalArea 4 20
@@ -1962,7 +1962,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $129
+LABELV $131
 endproc trap_AAS_AreaTravelTimeToGoalArea 4 20
 export trap_AAS_EnableRoutingArea
 proc trap_AAS_EnableRoutingArea 4 12
@@ -1988,7 +1988,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $130
+LABELV $132
 endproc trap_AAS_EnableRoutingArea 4 12
 export trap_AAS_PredictRoute
 proc trap_AAS_PredictRoute 4 48
@@ -2043,7 +2043,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $131
+LABELV $133
 endproc trap_AAS_PredictRoute 4 48
 export trap_AAS_AlternativeRouteGoals
 proc trap_AAS_AlternativeRouteGoals 4 36
@@ -2089,7 +2089,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $132
+LABELV $134
 endproc trap_AAS_AlternativeRouteGoals 4 36
 export trap_AAS_Swimming
 proc trap_AAS_Swimming 4 8
@@ -2112,7 +2112,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $133
+LABELV $135
 endproc trap_AAS_Swimming 4 8
 export trap_AAS_PredictClientMovement
 proc trap_AAS_PredictClientMovement 8 56
@@ -2178,7 +2178,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $134
+LABELV $136
 endproc trap_AAS_PredictClientMovement 8 56
 export trap_EA_Say
 proc trap_EA_Say 0 12
@@ -2202,7 +2202,7 @@ CALLI4
 pop
 line 356
 ;356:}
-LABELV $135
+LABELV $137
 endproc trap_EA_Say 0 12
 export trap_EA_SayTeam
 proc trap_EA_SayTeam 0 12
@@ -2225,7 +2225,7 @@ CALLI4
 pop
 line 360
 ;360:}
-LABELV $136
+LABELV $138
 endproc trap_EA_SayTeam 0 12
 export trap_EA_Command
 proc trap_EA_Command 0 12
@@ -2248,7 +2248,7 @@ CALLI4
 pop
 line 364
 ;364:}
-LABELV $137
+LABELV $139
 endproc trap_EA_Command 0 12
 export trap_EA_Action
 proc trap_EA_Action 0 12
@@ -2271,7 +2271,7 @@ CALLI4
 pop
 line 368
 ;368:}
-LABELV $138
+LABELV $140
 endproc trap_EA_Action 0 12
 export trap_EA_Gesture
 proc trap_EA_Gesture 0 8
@@ -2291,7 +2291,7 @@ CALLI4
 pop
 line 372
 ;372:}
-LABELV $139
+LABELV $141
 endproc trap_EA_Gesture 0 8
 export trap_EA_Talk
 proc trap_EA_Talk 0 8
@@ -2311,7 +2311,7 @@ CALLI4
 pop
 line 376
 ;376:}
-LABELV $140
+LABELV $142
 endproc trap_EA_Talk 0 8
 export trap_EA_Attack
 proc trap_EA_Attack 0 8
@@ -2331,7 +2331,7 @@ CALLI4
 pop
 line 380
 ;380:}
-LABELV $141
+LABELV $143
 endproc trap_EA_Attack 0 8
 export trap_EA_Use
 proc trap_EA_Use 0 8
@@ -2351,7 +2351,7 @@ CALLI4
 pop
 line 384
 ;384:}
-LABELV $142
+LABELV $144
 endproc trap_EA_Use 0 8
 export trap_EA_Respawn
 proc trap_EA_Respawn 0 8
@@ -2371,7 +2371,7 @@ CALLI4
 pop
 line 388
 ;388:}
-LABELV $143
+LABELV $145
 endproc trap_EA_Respawn 0 8
 export trap_EA_Crouch
 proc trap_EA_Crouch 0 8
@@ -2391,7 +2391,7 @@ CALLI4
 pop
 line 392
 ;392:}
-LABELV $144
+LABELV $146
 endproc trap_EA_Crouch 0 8
 export trap_EA_MoveUp
 proc trap_EA_MoveUp 0 8
@@ -2411,7 +2411,7 @@ CALLI4
 pop
 line 396
 ;396:}
-LABELV $145
+LABELV $147
 endproc trap_EA_MoveUp 0 8
 export trap_EA_MoveDown
 proc trap_EA_MoveDown 0 8
@@ -2431,7 +2431,7 @@ CALLI4
 pop
 line 400
 ;400:}
-LABELV $146
+LABELV $148
 endproc trap_EA_MoveDown 0 8
 export trap_EA_MoveForward
 proc trap_EA_MoveForward 0 8
@@ -2451,7 +2451,7 @@ CALLI4
 pop
 line 404
 ;404:}
-LABELV $147
+LABELV $149
 endproc trap_EA_MoveForward 0 8
 export trap_EA_MoveBack
 proc trap_EA_MoveBack 0 8
@@ -2471,7 +2471,7 @@ CALLI4
 pop
 line 408
 ;408:}
-LABELV $148
+LABELV $150
 endproc trap_EA_MoveBack 0 8
 export trap_EA_MoveLeft
 proc trap_EA_MoveLeft 0 8
@@ -2491,7 +2491,7 @@ CALLI4
 pop
 line 412
 ;412:}
-LABELV $149
+LABELV $151
 endproc trap_EA_MoveLeft 0 8
 export trap_EA_MoveRight
 proc trap_EA_MoveRight 0 8
@@ -2511,7 +2511,7 @@ CALLI4
 pop
 line 416
 ;416:}
-LABELV $150
+LABELV $152
 endproc trap_EA_MoveRight 0 8
 export trap_EA_SelectWeapon
 proc trap_EA_SelectWeapon 0 12
@@ -2523,11 +2523,11 @@ line 419
 ADDRGP4 g_instagib+12
 INDIRI4
 CNSTI4 1
-NEI4 $152
+NEI4 $154
 ADDRFP4 4
 CNSTI4 7
 ASGNI4
-LABELV $152
+LABELV $154
 line 420
 ;420:		syscall( BOTLIB_EA_SELECT_WEAPON, client, weapon );
 CNSTI4 416
@@ -2545,7 +2545,7 @@ pop
 line 422
 ;421:
 ;422:}
-LABELV $151
+LABELV $153
 endproc trap_EA_SelectWeapon 0 12
 export trap_EA_Jump
 proc trap_EA_Jump 0 8
@@ -2565,7 +2565,7 @@ CALLI4
 pop
 line 426
 ;426:}
-LABELV $155
+LABELV $157
 endproc trap_EA_Jump 0 8
 export trap_EA_DelayedJump
 proc trap_EA_DelayedJump 0 8
@@ -2585,7 +2585,7 @@ CALLI4
 pop
 line 430
 ;430:}
-LABELV $156
+LABELV $158
 endproc trap_EA_DelayedJump 0 8
 export trap_EA_Move
 proc trap_EA_Move 4 16
@@ -2618,7 +2618,7 @@ CALLI4
 pop
 line 434
 ;434:}
-LABELV $157
+LABELV $159
 endproc trap_EA_Move 4 16
 export trap_EA_View
 proc trap_EA_View 0 12
@@ -2641,7 +2641,7 @@ CALLI4
 pop
 line 438
 ;438:}
-LABELV $158
+LABELV $160
 endproc trap_EA_View 0 12
 export trap_EA_EndRegular
 proc trap_EA_EndRegular 4 12
@@ -2671,7 +2671,7 @@ CALLI4
 pop
 line 442
 ;442:}
-LABELV $159
+LABELV $161
 endproc trap_EA_EndRegular 4 12
 export trap_EA_GetInput
 proc trap_EA_GetInput 4 16
@@ -2704,7 +2704,7 @@ CALLI4
 pop
 line 446
 ;446:}
-LABELV $160
+LABELV $162
 endproc trap_EA_GetInput 4 16
 export trap_EA_ResetInput
 proc trap_EA_ResetInput 0 8
@@ -2724,7 +2724,7 @@ CALLI4
 pop
 line 450
 ;450:}
-LABELV $161
+LABELV $163
 endproc trap_EA_ResetInput 0 8
 export trap_BotLoadCharacter
 proc trap_BotLoadCharacter 8 12
@@ -2756,7 +2756,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $162
+LABELV $164
 endproc trap_BotLoadCharacter 8 12
 export trap_BotFreeCharacter
 proc trap_BotFreeCharacter 0 8
@@ -2777,7 +2777,7 @@ CALLI4
 pop
 line 458
 ;458:}
-LABELV $163
+LABELV $165
 endproc trap_BotFreeCharacter 0 8
 export trap_Characteristic_Float
 proc trap_Characteristic_Float 8 12
@@ -2809,7 +2809,7 @@ line 463
 ADDRLP4 0
 INDIRF4
 RETF4
-LABELV $164
+LABELV $166
 endproc trap_Characteristic_Float 8 12
 export trap_Characteristic_BFloat
 proc trap_Characteristic_BFloat 16 20
@@ -2862,7 +2862,7 @@ line 469
 ADDRLP4 0
 INDIRF4
 RETF4
-LABELV $165
+LABELV $167
 endproc trap_Characteristic_BFloat 16 20
 export trap_Characteristic_Integer
 proc trap_Characteristic_Integer 4 12
@@ -2888,7 +2888,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $166
+LABELV $168
 endproc trap_Characteristic_Integer 4 12
 export trap_Characteristic_BInteger
 proc trap_Characteristic_BInteger 4 20
@@ -2920,7 +2920,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $167
+LABELV $169
 endproc trap_Characteristic_BInteger 4 20
 export trap_Characteristic_String
 proc trap_Characteristic_String 0 20
@@ -2950,7 +2950,7 @@ CALLI4
 pop
 line 482
 ;482:}
-LABELV $168
+LABELV $170
 endproc trap_Characteristic_String 0 20
 export trap_BotAllocChatState
 proc trap_BotAllocChatState 4 4
@@ -2969,7 +2969,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $169
+LABELV $171
 endproc trap_BotAllocChatState 4 4
 export trap_BotFreeChatState
 proc trap_BotFreeChatState 0 8
@@ -2990,7 +2990,7 @@ CALLI4
 pop
 line 490
 ;490:}
-LABELV $170
+LABELV $172
 endproc trap_BotFreeChatState 0 8
 export trap_BotQueueConsoleMessage
 proc trap_BotQueueConsoleMessage 0 16
@@ -3016,7 +3016,7 @@ CALLI4
 pop
 line 494
 ;494:}
-LABELV $171
+LABELV $173
 endproc trap_BotQueueConsoleMessage 0 16
 export trap_BotRemoveConsoleMessage
 proc trap_BotRemoveConsoleMessage 0 12
@@ -3039,7 +3039,7 @@ CALLI4
 pop
 line 498
 ;498:}
-LABELV $172
+LABELV $174
 endproc trap_BotRemoveConsoleMessage 0 12
 export trap_BotNextConsoleMessage
 proc trap_BotNextConsoleMessage 4 12
@@ -3064,7 +3064,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $173
+LABELV $175
 endproc trap_BotNextConsoleMessage 4 12
 export trap_BotNumConsoleMessages
 proc trap_BotNumConsoleMessages 4 8
@@ -3087,7 +3087,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $174
+LABELV $176
 endproc trap_BotNumConsoleMessages 4 8
 export trap_BotInitialChat
 proc trap_BotInitialChat 0 48
@@ -3138,7 +3138,7 @@ CALLI4
 pop
 line 510
 ;510:}
-LABELV $175
+LABELV $177
 endproc trap_BotInitialChat 0 48
 export trap_BotNumInitialChats
 proc trap_BotNumInitialChats 4 12
@@ -3163,7 +3163,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $176
+LABELV $178
 endproc trap_BotNumInitialChats 4 12
 export trap_BotReplyChat
 proc trap_BotReplyChat 4 52
@@ -3219,7 +3219,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $177
+LABELV $179
 endproc trap_BotReplyChat 4 52
 export trap_BotChatLength
 proc trap_BotChatLength 4 8
@@ -3242,7 +3242,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $178
+LABELV $180
 endproc trap_BotChatLength 4 8
 export trap_BotEnterChat
 proc trap_BotEnterChat 0 16
@@ -3269,7 +3269,7 @@ CALLI4
 pop
 line 526
 ;526:}
-LABELV $179
+LABELV $181
 endproc trap_BotEnterChat 0 16
 export trap_BotGetChatMessage
 proc trap_BotGetChatMessage 0 16
@@ -3295,7 +3295,7 @@ CALLI4
 pop
 line 530
 ;530:}
-LABELV $180
+LABELV $182
 endproc trap_BotGetChatMessage 0 16
 export trap_StringContains
 proc trap_StringContains 4 16
@@ -3323,7 +3323,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $181
+LABELV $183
 endproc trap_StringContains 4 16
 export trap_BotFindMatch
 proc trap_BotFindMatch 4 16
@@ -3352,7 +3352,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $182
+LABELV $184
 endproc trap_BotFindMatch 4 16
 export trap_BotMatchVariable
 proc trap_BotMatchVariable 0 20
@@ -3382,7 +3382,7 @@ CALLI4
 pop
 line 542
 ;542:}
-LABELV $183
+LABELV $185
 endproc trap_BotMatchVariable 0 20
 export trap_UnifyWhiteSpaces
 proc trap_UnifyWhiteSpaces 0 8
@@ -3402,7 +3402,7 @@ CALLI4
 pop
 line 546
 ;546:}
-LABELV $184
+LABELV $186
 endproc trap_UnifyWhiteSpaces 0 8
 export trap_BotReplaceSynonyms
 proc trap_BotReplaceSynonyms 0 12
@@ -3425,7 +3425,7 @@ CALLI4
 pop
 line 550
 ;550:}
-LABELV $185
+LABELV $187
 endproc trap_BotReplaceSynonyms 0 12
 export trap_BotLoadChatFile
 proc trap_BotLoadChatFile 4 16
@@ -3453,7 +3453,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $186
+LABELV $188
 endproc trap_BotLoadChatFile 4 16
 export trap_BotSetChatGender
 proc trap_BotSetChatGender 0 12
@@ -3477,7 +3477,7 @@ CALLI4
 pop
 line 558
 ;558:}
-LABELV $187
+LABELV $189
 endproc trap_BotSetChatGender 0 12
 export trap_BotSetChatName
 proc trap_BotSetChatName 0 16
@@ -3503,7 +3503,7 @@ CALLI4
 pop
 line 562
 ;562:}
-LABELV $188
+LABELV $190
 endproc trap_BotSetChatName 0 16
 export trap_BotResetGoalState
 proc trap_BotResetGoalState 0 8
@@ -3523,7 +3523,7 @@ CALLI4
 pop
 line 566
 ;566:}
-LABELV $189
+LABELV $191
 endproc trap_BotResetGoalState 0 8
 export trap_BotResetAvoidGoals
 proc trap_BotResetAvoidGoals 0 8
@@ -3543,7 +3543,7 @@ CALLI4
 pop
 line 570
 ;570:}
-LABELV $190
+LABELV $192
 endproc trap_BotResetAvoidGoals 0 8
 export trap_BotRemoveFromAvoidGoals
 proc trap_BotRemoveFromAvoidGoals 0 12
@@ -3566,7 +3566,7 @@ CALLI4
 pop
 line 574
 ;574:}
-LABELV $191
+LABELV $193
 endproc trap_BotRemoveFromAvoidGoals 0 12
 export trap_BotPushGoal
 proc trap_BotPushGoal 0 12
@@ -3589,7 +3589,7 @@ CALLI4
 pop
 line 578
 ;578:}
-LABELV $192
+LABELV $194
 endproc trap_BotPushGoal 0 12
 export trap_BotPopGoal
 proc trap_BotPopGoal 0 8
@@ -3609,7 +3609,7 @@ CALLI4
 pop
 line 582
 ;582:}
-LABELV $193
+LABELV $195
 endproc trap_BotPopGoal 0 8
 export trap_BotEmptyGoalStack
 proc trap_BotEmptyGoalStack 0 8
@@ -3629,7 +3629,7 @@ CALLI4
 pop
 line 586
 ;586:}
-LABELV $194
+LABELV $196
 endproc trap_BotEmptyGoalStack 0 8
 export trap_BotDumpAvoidGoals
 proc trap_BotDumpAvoidGoals 0 8
@@ -3649,7 +3649,7 @@ CALLI4
 pop
 line 590
 ;590:}
-LABELV $195
+LABELV $197
 endproc trap_BotDumpAvoidGoals 0 8
 export trap_BotDumpGoalStack
 proc trap_BotDumpGoalStack 0 8
@@ -3669,7 +3669,7 @@ CALLI4
 pop
 line 594
 ;594:}
-LABELV $196
+LABELV $198
 endproc trap_BotDumpGoalStack 0 8
 export trap_BotGoalName
 proc trap_BotGoalName 0 16
@@ -3695,7 +3695,7 @@ CALLI4
 pop
 line 598
 ;598:}
-LABELV $197
+LABELV $199
 endproc trap_BotGoalName 0 16
 export trap_BotGetTopGoal
 proc trap_BotGetTopGoal 4 12
@@ -3720,7 +3720,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $198
+LABELV $200
 endproc trap_BotGetTopGoal 4 12
 export trap_BotGetSecondGoal
 proc trap_BotGetSecondGoal 4 12
@@ -3746,7 +3746,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $199
+LABELV $201
 endproc trap_BotGetSecondGoal 4 12
 export trap_BotChooseLTGItem
 proc trap_BotChooseLTGItem 4 20
@@ -3778,7 +3778,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $200
+LABELV $202
 endproc trap_BotChooseLTGItem 4 20
 export trap_BotChooseNBGItem
 proc trap_BotChooseNBGItem 8 28
@@ -3823,7 +3823,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $201
+LABELV $203
 endproc trap_BotChooseNBGItem 8 28
 export trap_BotTouchingGoal
 proc trap_BotTouchingGoal 4 12
@@ -3849,7 +3849,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $202
+LABELV $204
 endproc trap_BotTouchingGoal 4 12
 export trap_BotItemGoalInVisButNotVisible
 proc trap_BotItemGoalInVisButNotVisible 4 20
@@ -3881,7 +3881,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $203
+LABELV $205
 endproc trap_BotItemGoalInVisButNotVisible 4 20
 export trap_BotGetLevelItemGoal
 proc trap_BotGetLevelItemGoal 4 16
@@ -3910,7 +3910,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $204
+LABELV $206
 endproc trap_BotGetLevelItemGoal 4 16
 export trap_BotGetNextCampSpotGoal
 proc trap_BotGetNextCampSpotGoal 4 12
@@ -3936,7 +3936,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $205
+LABELV $207
 endproc trap_BotGetNextCampSpotGoal 4 12
 export trap_BotGetMapLocationGoal
 proc trap_BotGetMapLocationGoal 4 12
@@ -3962,7 +3962,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $206
+LABELV $208
 endproc trap_BotGetMapLocationGoal 4 12
 export trap_BotAvoidGoalTime
 proc trap_BotAvoidGoalTime 8 12
@@ -3995,7 +3995,7 @@ line 639
 ADDRLP4 0
 INDIRF4
 RETF4
-LABELV $207
+LABELV $209
 endproc trap_BotAvoidGoalTime 8 12
 export trap_BotSetAvoidGoalTime
 proc trap_BotSetAvoidGoalTime 4 16
@@ -4029,7 +4029,7 @@ CALLI4
 pop
 line 644
 ;644:}
-LABELV $208
+LABELV $210
 endproc trap_BotSetAvoidGoalTime 4 16
 export trap_BotInitLevelItems
 proc trap_BotInitLevelItems 0 4
@@ -4046,7 +4046,7 @@ CALLI4
 pop
 line 648
 ;648:}
-LABELV $209
+LABELV $211
 endproc trap_BotInitLevelItems 0 4
 export trap_BotUpdateEntityItems
 proc trap_BotUpdateEntityItems 0 4
@@ -4063,7 +4063,7 @@ CALLI4
 pop
 line 652
 ;652:}
-LABELV $210
+LABELV $212
 endproc trap_BotUpdateEntityItems 0 4
 export trap_BotLoadItemWeights
 proc trap_BotLoadItemWeights 4 12
@@ -4088,7 +4088,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $211
+LABELV $213
 endproc trap_BotLoadItemWeights 4 12
 export trap_BotFreeItemWeights
 proc trap_BotFreeItemWeights 0 8
@@ -4109,7 +4109,7 @@ CALLI4
 pop
 line 660
 ;660:}
-LABELV $212
+LABELV $214
 endproc trap_BotFreeItemWeights 0 8
 export trap_BotInterbreedGoalFuzzyLogic
 proc trap_BotInterbreedGoalFuzzyLogic 0 16
@@ -4135,7 +4135,7 @@ CALLI4
 pop
 line 664
 ;664:}
-LABELV $213
+LABELV $215
 endproc trap_BotInterbreedGoalFuzzyLogic 0 16
 export trap_BotSaveGoalFuzzyLogic
 proc trap_BotSaveGoalFuzzyLogic 0 12
@@ -4158,7 +4158,7 @@ CALLI4
 pop
 line 668
 ;668:}
-LABELV $214
+LABELV $216
 endproc trap_BotSaveGoalFuzzyLogic 0 12
 export trap_BotMutateGoalFuzzyLogic
 proc trap_BotMutateGoalFuzzyLogic 0 12
@@ -4181,7 +4181,7 @@ CALLI4
 pop
 line 672
 ;672:}
-LABELV $215
+LABELV $217
 endproc trap_BotMutateGoalFuzzyLogic 0 12
 export trap_BotAllocGoalState
 proc trap_BotAllocGoalState 4 8
@@ -4203,7 +4203,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $216
+LABELV $218
 endproc trap_BotAllocGoalState 4 8
 export trap_BotFreeGoalState
 proc trap_BotFreeGoalState 0 8
@@ -4224,7 +4224,7 @@ CALLI4
 pop
 line 680
 ;680:}
-LABELV $217
+LABELV $219
 endproc trap_BotFreeGoalState 0 8
 export trap_BotResetMoveState
 proc trap_BotResetMoveState 0 8
@@ -4244,7 +4244,7 @@ CALLI4
 pop
 line 684
 ;684:}
-LABELV $218
+LABELV $220
 endproc trap_BotResetMoveState 0 8
 export trap_BotAddAvoidSpot
 proc trap_BotAddAvoidSpot 4 20
@@ -4280,7 +4280,7 @@ CALLI4
 pop
 line 688
 ;688:}
-LABELV $219
+LABELV $221
 endproc trap_BotAddAvoidSpot 4 20
 export trap_BotMoveToGoal
 proc trap_BotMoveToGoal 0 20
@@ -4309,7 +4309,7 @@ CALLI4
 pop
 line 692
 ;692:}
-LABELV $220
+LABELV $222
 endproc trap_BotMoveToGoal 0 20
 export trap_BotMoveInDirection
 proc trap_BotMoveInDirection 8 20
@@ -4347,7 +4347,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $221
+LABELV $223
 endproc trap_BotMoveInDirection 8 20
 export trap_BotResetAvoidReach
 proc trap_BotResetAvoidReach 0 8
@@ -4368,7 +4368,7 @@ CALLI4
 pop
 line 700
 ;700:}
-LABELV $222
+LABELV $224
 endproc trap_BotResetAvoidReach 0 8
 export trap_BotResetLastAvoidReach
 proc trap_BotResetLastAvoidReach 0 8
@@ -4388,7 +4388,7 @@ CALLI4
 pop
 line 704
 ;704:}
-LABELV $223
+LABELV $225
 endproc trap_BotResetLastAvoidReach 0 8
 export trap_BotReachabilityArea
 proc trap_BotReachabilityArea 4 12
@@ -4413,7 +4413,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $224
+LABELV $226
 endproc trap_BotReachabilityArea 4 12
 export trap_BotMovementViewTarget
 proc trap_BotMovementViewTarget 8 24
@@ -4455,7 +4455,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $225
+LABELV $227
 endproc trap_BotMovementViewTarget 8 24
 export trap_BotPredictVisiblePosition
 proc trap_BotPredictVisiblePosition 4 24
@@ -4490,7 +4490,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $226
+LABELV $228
 endproc trap_BotPredictVisiblePosition 4 24
 export trap_BotAllocMoveState
 proc trap_BotAllocMoveState 4 4
@@ -4510,7 +4510,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $227
+LABELV $229
 endproc trap_BotAllocMoveState 4 4
 export trap_BotFreeMoveState
 proc trap_BotFreeMoveState 0 8
@@ -4531,7 +4531,7 @@ CALLI4
 pop
 line 724
 ;724:}
-LABELV $228
+LABELV $230
 endproc trap_BotFreeMoveState 0 8
 export trap_BotInitMoveState
 proc trap_BotInitMoveState 0 12
@@ -4554,7 +4554,7 @@ CALLI4
 pop
 line 728
 ;728:}
-LABELV $229
+LABELV $231
 endproc trap_BotInitMoveState 0 12
 export trap_BotChooseBestFightWeapon
 proc trap_BotChooseBestFightWeapon 4 12
@@ -4579,7 +4579,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $230
+LABELV $232
 endproc trap_BotChooseBestFightWeapon 4 12
 export trap_BotGetWeaponInfo
 proc trap_BotGetWeaponInfo 0 16
@@ -4606,7 +4606,7 @@ CALLI4
 pop
 line 736
 ;736:}
-LABELV $231
+LABELV $233
 endproc trap_BotGetWeaponInfo 0 16
 export trap_BotLoadWeaponWeights
 proc trap_BotLoadWeaponWeights 4 12
@@ -4631,7 +4631,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $232
+LABELV $234
 endproc trap_BotLoadWeaponWeights 4 12
 export trap_BotAllocWeaponState
 proc trap_BotAllocWeaponState 4 4
@@ -4651,7 +4651,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $233
+LABELV $235
 endproc trap_BotAllocWeaponState 4 4
 export trap_BotFreeWeaponState
 proc trap_BotFreeWeaponState 0 8
@@ -4672,7 +4672,7 @@ CALLI4
 pop
 line 748
 ;748:}
-LABELV $234
+LABELV $236
 endproc trap_BotFreeWeaponState 0 8
 export trap_BotResetWeaponState
 proc trap_BotResetWeaponState 0 8
@@ -4692,7 +4692,7 @@ CALLI4
 pop
 line 752
 ;752:}
-LABELV $235
+LABELV $237
 endproc trap_BotResetWeaponState 0 8
 export trap_GeneticParentsAndChildSelection
 proc trap_GeneticParentsAndChildSelection 4 24
@@ -4726,7 +4726,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $236
+LABELV $238
 endproc trap_GeneticParentsAndChildSelection 4 24
 export trap_PC_LoadSource
 proc trap_PC_LoadSource 4 8
@@ -4749,7 +4749,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $237
+LABELV $239
 endproc trap_PC_LoadSource 4 8
 export trap_PC_FreeSource
 proc trap_PC_FreeSource 4 8
@@ -4772,7 +4772,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $238
+LABELV $240
 endproc trap_PC_FreeSource 4 8
 export trap_PC_ReadToken
 proc trap_PC_ReadToken 4 12
@@ -4798,7 +4798,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $239
+LABELV $241
 endproc trap_PC_ReadToken 4 12
 export trap_PC_SourceFileAndLine
 proc trap_PC_SourceFileAndLine 4 16
@@ -4827,12 +4827,15 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $240
+LABELV $242
 endproc trap_PC_SourceFileAndLine 4 16
+import CheckPlayerPostions
+import G_SendCommandToClient
 import visible
 import findradius
 import trap_Cvar_VariableValue
 import trap_Args
+import g_MultiJump
 import g_instagib
 import sv_fps
 import g_lightningDamage
@@ -4933,6 +4936,7 @@ import G_ReadSessionData
 import Svcmd_GameMem_f
 import G_InitMemory
 import G_Alloc
+import Team_DropFlags
 import CheckObeliskAttack
 import Team_CheckDroppedItem
 import OnSameTeam
@@ -4999,6 +5003,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_pdgrenade
 import fire_grenade
 import fire_plasma
 import fire_blaster
@@ -5010,6 +5015,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap
 import G_SetOrigin
@@ -5069,6 +5075,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup

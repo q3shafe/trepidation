@@ -1,11 +1,11 @@
 data
 align 4
 LABELV rate_items
-address $67
-address $68
 address $69
 address $70
 address $71
+address $72
+address $73
 byte 4 0
 code
 proc UI_NetworkOptionsMenu_Event 8 8
@@ -77,12 +77,12 @@ line 62
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $74
+EQI4 $76
 line 63
 ;63:		return;
-ADDRGP4 $73
+ADDRGP4 $75
 JUMPV
-LABELV $74
+LABELV $76
 line 66
 ;64:	}
 ;65:
@@ -97,30 +97,30 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-LTI4 $76
+LTI4 $78
 ADDRLP4 0
 INDIRI4
 CNSTI4 15
-GTI4 $76
+GTI4 $78
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $106-40
+ADDRGP4 $108-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $106
-address $79
-address $80
+LABELV $108
 address $81
-address $77
+address $82
 address $83
-address $105
+address $79
+address $85
+address $107
 code
-LABELV $79
+LABELV $81
 line 68
 ;67:	case ID_GRAPHICS:
 ;68:		UI_PopMenu();
@@ -134,9 +134,9 @@ CALLV
 pop
 line 70
 ;70:		break;
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $80
+LABELV $82
 line 73
 ;71:
 ;72:	case ID_DISPLAY:
@@ -151,9 +151,9 @@ CALLV
 pop
 line 75
 ;75:		break;
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $81
+LABELV $83
 line 78
 ;76:
 ;77:	case ID_SOUND:
@@ -168,13 +168,13 @@ CALLV
 pop
 line 80
 ;80:		break;
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
 line 83
 ;81:
 ;82:	case ID_NETWORK:
 ;83:		break;
-LABELV $83
+LABELV $85
 line 86
 ;84:
 ;85:	case ID_RATE:   // Shafe - Trep - Rearranged This To Default To The Popular
@@ -182,10 +182,10 @@ line 86
 ADDRGP4 networkOptionsInfo+824+64
 INDIRI4
 CNSTI4 0
-NEI4 $84
+NEI4 $86
 line 87
 ;87:			trap_Cvar_SetValue( "rate", 25000 );
-ADDRGP4 $88
+ADDRGP4 $90
 ARGP4
 CNSTF4 1187205120
 ARGF4
@@ -194,18 +194,18 @@ CALLV
 pop
 line 88
 ;88:		}
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $84
+LABELV $86
 line 89
 ;89:		else if( networkOptionsInfo.rate.curvalue == 1 ) {
 ADDRGP4 networkOptionsInfo+824+64
 INDIRI4
 CNSTI4 1
-NEI4 $89
+NEI4 $91
 line 90
 ;90:			trap_Cvar_SetValue( "rate", 3000 );
-ADDRGP4 $88
+ADDRGP4 $90
 ARGP4
 CNSTF4 1161527296
 ARGF4
@@ -214,18 +214,18 @@ CALLV
 pop
 line 91
 ;91:		}
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $89
+LABELV $91
 line 92
 ;92:		else if( networkOptionsInfo.rate.curvalue == 2 ) {
 ADDRGP4 networkOptionsInfo+824+64
 INDIRI4
 CNSTI4 2
-NEI4 $93
+NEI4 $95
 line 93
 ;93:			trap_Cvar_SetValue( "rate", 4000 );
-ADDRGP4 $88
+ADDRGP4 $90
 ARGP4
 CNSTF4 1165623296
 ARGF4
@@ -234,18 +234,18 @@ CALLV
 pop
 line 94
 ;94:		}
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $93
+LABELV $95
 line 95
 ;95:		else if( networkOptionsInfo.rate.curvalue == 3 ) {
 ADDRGP4 networkOptionsInfo+824+64
 INDIRI4
 CNSTI4 3
-NEI4 $97
+NEI4 $99
 line 96
 ;96:			trap_Cvar_SetValue( "rate", 5000 );
-ADDRGP4 $88
+ADDRGP4 $90
 ARGP4
 CNSTF4 1167867904
 ARGF4
@@ -254,18 +254,18 @@ CALLV
 pop
 line 97
 ;97:		}
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $97
+LABELV $99
 line 98
 ;98:		else if( networkOptionsInfo.rate.curvalue == 4 ) {
 ADDRGP4 networkOptionsInfo+824+64
 INDIRI4
 CNSTI4 4
-NEI4 $77
+NEI4 $79
 line 99
 ;99:			trap_Cvar_SetValue( "rate", 2500 );
-ADDRGP4 $88
+ADDRGP4 $90
 ARGP4
 CNSTF4 1159479296
 ARGF4
@@ -276,9 +276,9 @@ line 100
 ;100:		}
 line 101
 ;101:		break;
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $105
+LABELV $107
 line 104
 ;102:
 ;103:	case ID_BACK:
@@ -288,12 +288,12 @@ CALLV
 pop
 line 105
 ;105:		break;
-LABELV $76
-LABELV $77
+LABELV $78
+LABELV $79
 line 107
 ;106:	}
 ;107:}
-LABELV $73
+LABELV $75
 endproc UI_NetworkOptionsMenu_Event 8 8
 proc UI_NetworkOptionsMenu_Init 12 12
 line 115
@@ -359,7 +359,7 @@ ASGNI4
 line 129
 ;129:	networkOptionsInfo.banner.string			= "SYSTEM SETUP";
 ADDRGP4 networkOptionsInfo+288+60
-ADDRGP4 $120
+ADDRGP4 $122
 ASGNP4
 line 130
 ;130:	networkOptionsInfo.banner.color				= color_white;
@@ -380,7 +380,7 @@ ASGNI4
 line 134
 ;134:	networkOptionsInfo.framel.generic.name		= ART_FRAMEL;
 ADDRGP4 networkOptionsInfo+360+4
-ADDRGP4 $128
+ADDRGP4 $130
 ASGNP4
 line 135
 ;135:	networkOptionsInfo.framel.generic.flags		= QMF_INACTIVE;
@@ -416,7 +416,7 @@ ASGNI4
 line 142
 ;142:	networkOptionsInfo.framer.generic.name		= ART_FRAMER;
 ADDRGP4 networkOptionsInfo+448+4
-ADDRGP4 $142
+ADDRGP4 $144
 ASGNP4
 line 143
 ;143:	networkOptionsInfo.framer.generic.flags		= QMF_INACTIVE;
@@ -477,7 +477,7 @@ ASGNI4
 line 155
 ;155:	networkOptionsInfo.graphics.string				= "GRAPHICS";
 ADDRGP4 networkOptionsInfo+536+60
-ADDRGP4 $166
+ADDRGP4 $168
 ASGNP4
 line 156
 ;156:	networkOptionsInfo.graphics.style				= UI_RIGHT;
@@ -523,7 +523,7 @@ ASGNI4
 line 165
 ;165:	networkOptionsInfo.display.string				= "DISPLAY";
 ADDRGP4 networkOptionsInfo+608+60
-ADDRGP4 $184
+ADDRGP4 $186
 ASGNP4
 line 166
 ;166:	networkOptionsInfo.display.style				= UI_RIGHT;
@@ -569,7 +569,7 @@ ASGNI4
 line 175
 ;175:	networkOptionsInfo.sound.string					= "SOUND";
 ADDRGP4 networkOptionsInfo+680+60
-ADDRGP4 $202
+ADDRGP4 $204
 ASGNP4
 line 176
 ;176:	networkOptionsInfo.sound.style					= UI_RIGHT;
@@ -615,7 +615,7 @@ ASGNI4
 line 185
 ;185:	networkOptionsInfo.network.string				= "NETWORK";
 ADDRGP4 networkOptionsInfo+752+60
-ADDRGP4 $220
+ADDRGP4 $222
 ASGNP4
 line 186
 ;186:	networkOptionsInfo.network.style				= UI_RIGHT;
@@ -641,7 +641,7 @@ ASGNI4
 line 191
 ;191:	networkOptionsInfo.rate.generic.name		= "Data Rate:";
 ADDRGP4 networkOptionsInfo+824+4
-ADDRGP4 $228
+ADDRGP4 $230
 ASGNP4
 line 192
 ;192:	networkOptionsInfo.rate.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -683,7 +683,7 @@ ASGNI4
 line 200
 ;200:	networkOptionsInfo.back.generic.name		= ART_BACK0;
 ADDRGP4 networkOptionsInfo+920+4
-ADDRGP4 $244
+ADDRGP4 $246
 ASGNP4
 line 201
 ;201:	networkOptionsInfo.back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -723,7 +723,7 @@ ASGNI4
 line 208
 ;208:	networkOptionsInfo.back.focuspic			= ART_BACK1;
 ADDRGP4 networkOptionsInfo+920+60
-ADDRGP4 $261
+ADDRGP4 $263
 ASGNP4
 line 210
 ;209:
@@ -810,7 +810,7 @@ pop
 line 220
 ;219:
 ;220:	rate = trap_Cvar_VariableValue( "rate" );
-ADDRGP4 $88
+ADDRGP4 $90
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_Cvar_VariableValue
@@ -826,7 +826,7 @@ line 221
 ADDRLP4 0
 INDIRI4
 CNSTI4 2500
-GTI4 $271
+GTI4 $273
 line 222
 ;222:		networkOptionsInfo.rate.curvalue = 0;
 ADDRGP4 networkOptionsInfo+824+64
@@ -834,15 +834,15 @@ CNSTI4 0
 ASGNI4
 line 223
 ;223:	}
-ADDRGP4 $272
+ADDRGP4 $274
 JUMPV
-LABELV $271
+LABELV $273
 line 224
 ;224:	else if( rate <= 3000 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 3000
-GTI4 $275
+GTI4 $277
 line 225
 ;225:		networkOptionsInfo.rate.curvalue = 1;
 ADDRGP4 networkOptionsInfo+824+64
@@ -850,15 +850,15 @@ CNSTI4 1
 ASGNI4
 line 226
 ;226:	}
-ADDRGP4 $276
+ADDRGP4 $278
 JUMPV
-LABELV $275
+LABELV $277
 line 227
 ;227:	else if( rate <= 4000 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 4000
-GTI4 $279
+GTI4 $281
 line 228
 ;228:		networkOptionsInfo.rate.curvalue = 2;
 ADDRGP4 networkOptionsInfo+824+64
@@ -866,15 +866,15 @@ CNSTI4 2
 ASGNI4
 line 229
 ;229:	}
-ADDRGP4 $280
+ADDRGP4 $282
 JUMPV
-LABELV $279
+LABELV $281
 line 230
 ;230:	else if( rate <= 5000 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 5000
-GTI4 $283
+GTI4 $285
 line 231
 ;231:		networkOptionsInfo.rate.curvalue = 3;
 ADDRGP4 networkOptionsInfo+824+64
@@ -882,9 +882,9 @@ CNSTI4 3
 ASGNI4
 line 232
 ;232:	}
-ADDRGP4 $284
+ADDRGP4 $286
 JUMPV
-LABELV $283
+LABELV $285
 line 233
 ;233:	else {
 line 234
@@ -894,13 +894,13 @@ CNSTI4 4
 ASGNI4
 line 235
 ;235:	}
-LABELV $284
-LABELV $280
-LABELV $276
-LABELV $272
+LABELV $286
+LABELV $282
+LABELV $278
+LABELV $274
 line 236
 ;236:}
-LABELV $108
+LABELV $110
 endproc UI_NetworkOptionsMenu_Init 12 12
 export UI_NetworkOptionsMenu_Cache
 proc UI_NetworkOptionsMenu_Cache 0 4
@@ -915,35 +915,35 @@ line 244
 ;244:void UI_NetworkOptionsMenu_Cache( void ) {
 line 245
 ;245:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $128
+ADDRGP4 $130
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 246
 ;246:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $142
+ADDRGP4 $144
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 247
 ;247:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $244
+ADDRGP4 $246
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 248
 ;248:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $261
+ADDRGP4 $263
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 249
 ;249:}
-LABELV $289
+LABELV $291
 endproc UI_NetworkOptionsMenu_Cache 0 4
 export UI_NetworkOptionsMenu
 proc UI_NetworkOptionsMenu 0 8
@@ -979,7 +979,7 @@ CALLV
 pop
 line 261
 ;261:}
-LABELV $290
+LABELV $292
 endproc UI_NetworkOptionsMenu 0 8
 bss
 align 4
@@ -1298,6 +1298,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1462,7 +1463,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $261
+LABELV $263
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1480,7 +1481,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $244
+LABELV $246
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1498,7 +1499,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $228
+LABELV $230
 byte 1 68
 byte 1 97
 byte 1 116
@@ -1511,7 +1512,7 @@ byte 1 101
 byte 1 58
 byte 1 0
 align 1
-LABELV $220
+LABELV $222
 byte 1 78
 byte 1 69
 byte 1 84
@@ -1521,7 +1522,7 @@ byte 1 82
 byte 1 75
 byte 1 0
 align 1
-LABELV $202
+LABELV $204
 byte 1 83
 byte 1 79
 byte 1 85
@@ -1529,7 +1530,7 @@ byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $184
+LABELV $186
 byte 1 68
 byte 1 73
 byte 1 83
@@ -1539,7 +1540,7 @@ byte 1 65
 byte 1 89
 byte 1 0
 align 1
-LABELV $166
+LABELV $168
 byte 1 71
 byte 1 82
 byte 1 65
@@ -1550,7 +1551,7 @@ byte 1 67
 byte 1 83
 byte 1 0
 align 1
-LABELV $142
+LABELV $144
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1570,7 +1571,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $128
+LABELV $130
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1590,7 +1591,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $120
+LABELV $122
 byte 1 83
 byte 1 89
 byte 1 83
@@ -1605,14 +1606,14 @@ byte 1 85
 byte 1 80
 byte 1 0
 align 1
-LABELV $88
+LABELV $90
 byte 1 114
 byte 1 97
 byte 1 116
 byte 1 101
 byte 1 0
 align 1
-LABELV $71
+LABELV $73
 byte 1 60
 byte 1 61
 byte 1 32
@@ -1623,20 +1624,20 @@ byte 1 56
 byte 1 75
 byte 1 0
 align 1
-LABELV $70
+LABELV $72
 byte 1 73
 byte 1 83
 byte 1 68
 byte 1 78
 byte 1 0
 align 1
-LABELV $69
+LABELV $71
 byte 1 53
 byte 1 54
 byte 1 75
 byte 1 0
 align 1
-LABELV $68
+LABELV $70
 byte 1 51
 byte 1 51
 byte 1 46
@@ -1644,7 +1645,7 @@ byte 1 54
 byte 1 75
 byte 1 0
 align 1
-LABELV $67
+LABELV $69
 byte 1 76
 byte 1 65
 byte 1 78

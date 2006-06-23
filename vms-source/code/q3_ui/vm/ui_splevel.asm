@@ -145,7 +145,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $69
+EQU4 $71
 line 115
 ;115:		*skin++ = '\0';
 ADDRLP4 72
@@ -164,19 +164,19 @@ CNSTI1 0
 ASGNI1
 line 116
 ;116:	}
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $69
+LABELV $71
 line 117
 ;117:	else {
 line 118
 ;118:		skin = "default";
 ADDRLP4 0
-ADDRGP4 $71
+ADDRGP4 $73
 ASGNP4
 line 119
 ;119:	}
-LABELV $70
+LABELV $72
 line 121
 ;120:
 ;121:	Com_sprintf(iconName, iconNameMaxSize, "models/players/%s/icon_%s.tga", model, skin );
@@ -186,7 +186,7 @@ ARGP4
 ADDRFP4 8
 INDIRI4
 ARGI4
-ADDRGP4 $72
+ADDRGP4 $74
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -209,11 +209,11 @@ ASGNI4
 ADDRLP4 72
 INDIRI4
 CNSTI4 0
-NEI4 $73
+NEI4 $75
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $71
+ADDRGP4 $73
 ARGP4
 ADDRLP4 76
 ADDRGP4 Q_stricmp
@@ -222,7 +222,7 @@ ASGNI4
 ADDRLP4 76
 INDIRI4
 CNSTI4 0
-EQI4 $73
+EQI4 $75
 line 124
 ;124:		Com_sprintf(iconName, iconNameMaxSize, "models/players/%s/icon_default.tga", model );
 ADDRFP4 4
@@ -231,7 +231,7 @@ ARGP4
 ADDRFP4 8
 INDIRI4
 ARGI4
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -240,10 +240,10 @@ CALLV
 pop
 line 125
 ;125:	}
-LABELV $73
+LABELV $75
 line 126
 ;126:}
-LABELV $68
+LABELV $70
 endproc PlayerIcon 80 20
 proc PlayerIconHandle 68 12
 line 134
@@ -280,7 +280,7 @@ ASGNI4
 ADDRLP4 64
 INDIRI4
 RETI4
-LABELV $76
+LABELV $78
 endproc PlayerIconHandle 68 12
 proc UI_SPLevelMenu_SetBots 1068 12
 line 147
@@ -309,12 +309,12 @@ ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 currentSet
 INDIRI4
-LEI4 $79
+LEI4 $81
 line 155
 ;155:		return;
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $79
+LABELV $81
 line 158
 ;156:	}
 ;157:
@@ -322,7 +322,7 @@ line 158
 ADDRGP4 levelMenuInfo+1948
 INDIRP4
 ARGP4
-ADDRGP4 $82
+ADDRGP4 $84
 ARGP4
 ADDRLP4 1036
 ADDRGP4 Info_ValueForKey
@@ -344,11 +344,11 @@ line 160
 ADDRLP4 0
 ADDRLP4 12
 ASGNP4
-ADDRGP4 $84
+ADDRGP4 $86
 JUMPV
 line 161
 ;161:	while( *p && levelMenuInfo.numBots < 7 ) {
-LABELV $87
+LABELV $89
 line 163
 ;162:		//skip spaces
 ;163:		while( *p && *p == ' ' ) {
@@ -362,7 +362,7 @@ ADDP4
 ASGNP4
 line 165
 ;165:		}
-LABELV $88
+LABELV $90
 line 163
 ADDRLP4 1040
 ADDRLP4 0
@@ -373,24 +373,24 @@ ASGNI4
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-EQI4 $90
+EQI4 $92
 ADDRLP4 1040
 INDIRI4
 CNSTI4 32
-EQI4 $87
-LABELV $90
+EQI4 $89
+LABELV $92
 line 166
 ;166:		if( !p ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $91
+NEU4 $93
 line 167
 ;167:			break;
-ADDRGP4 $85
+ADDRGP4 $87
 JUMPV
-LABELV $91
+LABELV $93
 line 171
 ;168:		}
 ;169:
@@ -400,9 +400,9 @@ ADDRLP4 8
 ADDRLP4 0
 INDIRP4
 ASGNP4
-ADDRGP4 $94
+ADDRGP4 $96
 JUMPV
-LABELV $93
+LABELV $95
 line 174
 ;172:
 ;173:		// skip until space of null
@@ -417,7 +417,7 @@ ADDP4
 ASGNP4
 line 176
 ;176:		}
-LABELV $94
+LABELV $96
 line 174
 ADDRLP4 1044
 ADDRLP4 0
@@ -428,12 +428,12 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-EQI4 $96
+EQI4 $98
 ADDRLP4 1044
 INDIRI4
 CNSTI4 32
-NEI4 $93
-LABELV $96
+NEI4 $95
+LABELV $98
 line 177
 ;177:		if( *p ) {
 ADDRLP4 0
@@ -441,7 +441,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $97
+EQI4 $99
 line 178
 ;178:			*p++ = 0;
 ADDRLP4 1048
@@ -460,7 +460,7 @@ CNSTI1 0
 ASGNI1
 line 179
 ;179:		}
-LABELV $97
+LABELV $99
 line 181
 ;180:
 ;181:		botInfo = UI_GetBotInfoByName( bot );
@@ -481,13 +481,13 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $99
+EQU4 $101
 line 183
 ;183:			levelMenuInfo.botPics[levelMenuInfo.numBots] = PlayerIconHandle( Info_ValueForKey( botInfo, "model" ) );
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $103
+ADDRGP4 $105
 ARGP4
 ADDRLP4 1052
 ADDRGP4 Info_ValueForKey
@@ -514,7 +514,7 @@ line 184
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $106
+ADDRGP4 $108
 ARGP4
 ADDRLP4 1060
 ADDRGP4 Info_ValueForKey
@@ -542,9 +542,9 @@ CALLV
 pop
 line 185
 ;185:		}
-ADDRGP4 $100
+ADDRGP4 $102
 JUMPV
-LABELV $99
+LABELV $101
 line 186
 ;186:		else {
 line 187
@@ -581,7 +581,7 @@ CALLV
 pop
 line 189
 ;189:		}
-LABELV $100
+LABELV $102
 line 190
 ;190:		Q_CleanStr( levelMenuInfo.botNames[levelMenuInfo.numBots] );
 CNSTI4 10
@@ -609,23 +609,23 @@ ADDI4
 ASGNI4
 line 192
 ;192:	}
-LABELV $84
+LABELV $86
 line 161
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $114
+EQI4 $116
 ADDRGP4 levelMenuInfo+2512
 INDIRI4
 CNSTI4 7
-LTI4 $88
-LABELV $114
-LABELV $85
+LTI4 $90
+LABELV $116
+LABELV $87
 line 193
 ;193:}
-LABELV $77
+LABELV $79
 endproc UI_SPLevelMenu_SetBots 1068 12
 proc UI_SPLevelMenu_SetMenuArena 84 12
 line 201
@@ -644,7 +644,7 @@ line 204
 ADDRFP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $116
+ADDRGP4 $118
 ARGP4
 ADDRLP4 64
 ADDRGP4 Info_ValueForKey
@@ -724,7 +724,7 @@ ADDRGP4 levelMenuInfo+2276
 ADDP4
 INDIRI4
 CNSTI4 8
-LEI4 $122
+LEI4 $124
 line 211
 ;211:		levelMenuInfo.levelScores[n] = 8;
 ADDRFP4 0
@@ -737,11 +737,11 @@ CNSTI4 8
 ASGNI4
 line 212
 ;212:	}
-LABELV $122
+LABELV $124
 line 214
 ;213:
 ;214:	strcpy( levelMenuInfo.levelPicNames[n], va( "levelshots/%s.tga", map ) );
-ADDRGP4 $127
+ADDRGP4 $129
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -778,7 +778,7 @@ ASGNI4
 ADDRLP4 76
 INDIRI4
 CNSTI4 0
-NEI4 $128
+NEI4 $130
 line 216
 ;216:		strcpy( levelMenuInfo.levelPicNames[n], ART_MAP_UNKNOWN );
 ADDRFP4 0
@@ -788,14 +788,14 @@ LSHI4
 ADDRGP4 levelMenuInfo+1956
 ADDP4
 ARGP4
-ADDRGP4 $132
+ADDRGP4 $134
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
 line 217
 ;217:	}
-LABELV $128
+LABELV $130
 line 218
 ;218:	levelMenuInfo.item_maps[n].shader = 0;
 CNSTI4 88
@@ -812,7 +812,7 @@ ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 currentSet
 INDIRI4
-LEI4 $135
+LEI4 $137
 line 220
 ;220:		levelMenuInfo.item_maps[n].generic.flags |= QMF_GRAYED;
 ADDRLP4 80
@@ -833,9 +833,9 @@ BORU4
 ASGNU4
 line 221
 ;221:	}
-ADDRGP4 $136
+ADDRGP4 $138
 JUMPV
-LABELV $135
+LABELV $137
 line 222
 ;222:	else {
 line 223
@@ -858,7 +858,7 @@ BANDU4
 ASGNU4
 line 224
 ;224:	}
-LABELV $136
+LABELV $138
 line 226
 ;225:
 ;226:	levelMenuInfo.item_maps[n].generic.flags &= ~QMF_INACTIVE;
@@ -880,7 +880,7 @@ BANDU4
 ASGNU4
 line 227
 ;227:}
-LABELV $115
+LABELV $117
 endproc UI_SPLevelMenu_SetMenuArena 84 12
 proc UI_SPLevelMenu_SetMenuItems 44 12
 line 229
@@ -896,7 +896,7 @@ ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 currentSet
 INDIRI4
-LEI4 $144
+LEI4 $146
 line 235
 ;235:		selectedArena = -1;
 ADDRGP4 selectedArena
@@ -904,15 +904,15 @@ CNSTI4 -1
 ASGNI4
 line 236
 ;236:	}
-ADDRGP4 $145
+ADDRGP4 $147
 JUMPV
-LABELV $144
+LABELV $146
 line 237
 ;237:	else if ( selectedArena == -1 ) {
 ADDRGP4 selectedArena
 INDIRI4
 CNSTI4 -1
-NEI4 $146
+NEI4 $148
 line 238
 ;238:		selectedArena = 0;
 ADDRGP4 selectedArena
@@ -920,8 +920,8 @@ CNSTI4 0
 ASGNI4
 line 239
 ;239:	}
-LABELV $146
-LABELV $145
+LABELV $148
+LABELV $147
 line 241
 ;240:
 ;241:	if( selectedArenaSet == trainingTier || selectedArenaSet == finalTier ) {
@@ -933,13 +933,13 @@ ADDRLP4 12
 INDIRI4
 ADDRGP4 trainingTier
 INDIRI4
-EQI4 $150
+EQI4 $152
 ADDRLP4 12
 INDIRI4
 ADDRGP4 finalTier
 INDIRI4
-NEI4 $148
-LABELV $150
+NEI4 $150
+LABELV $152
 line 242
 ;242:		selectedArena = 0;
 ADDRGP4 selectedArena
@@ -947,17 +947,17 @@ CNSTI4 0
 ASGNI4
 line 243
 ;243:	}
-LABELV $148
+LABELV $150
 line 245
 ;244:
 ;245:	if( selectedArena != -1 ) {
 ADDRGP4 selectedArena
 INDIRI4
 CNSTI4 -1
-EQI4 $151
+EQI4 $153
 line 246
 ;246:		trap_Cvar_SetValue( "ui_spSelection", selectedArenaSet * ARENAS_PER_TIER + selectedArena );
-ADDRGP4 $153
+ADDRGP4 $155
 ARGP4
 ADDRGP4 selectedArenaSet
 INDIRI4
@@ -973,7 +973,7 @@ CALLV
 pop
 line 247
 ;247:	}
-LABELV $151
+LABELV $153
 line 249
 ;248:
 ;249:	if( selectedArenaSet == trainingTier ) {
@@ -981,10 +981,10 @@ ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 trainingTier
 INDIRI4
-NEI4 $154
+NEI4 $156
 line 250
 ;250:		arenaInfo = UI_GetSpecialArenaInfo( "training" );
-ADDRGP4 $156
+ADDRGP4 $158
 ARGP4
 ADDRLP4 16
 ADDRGP4 UI_GetSpecialArenaInfo
@@ -999,7 +999,7 @@ line 251
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $157
+ADDRGP4 $159
 ARGP4
 ADDRLP4 20
 ADDRGP4 Info_ValueForKey
@@ -1138,19 +1138,19 @@ CNSTI4 0
 ASGNI4
 line 269
 ;269:	}
-ADDRGP4 $155
+ADDRGP4 $157
 JUMPV
-LABELV $154
+LABELV $156
 line 270
 ;270:	else if( selectedArenaSet == finalTier ) {
 ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 finalTier
 INDIRI4
-NEI4 $189
+NEI4 $191
 line 271
 ;271:		arenaInfo = UI_GetSpecialArenaInfo( "final" );
-ADDRGP4 $191
+ADDRGP4 $193
 ARGP4
 ADDRLP4 16
 ADDRGP4 UI_GetSpecialArenaInfo
@@ -1165,7 +1165,7 @@ line 272
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $157
+ADDRGP4 $159
 ARGP4
 ADDRLP4 20
 ADDRGP4 Info_ValueForKey
@@ -1304,9 +1304,9 @@ CNSTI4 0
 ASGNI4
 line 290
 ;290:	}
-ADDRGP4 $190
+ADDRGP4 $192
 JUMPV
-LABELV $189
+LABELV $191
 line 291
 ;291:	else {
 line 292
@@ -1345,7 +1345,7 @@ line 297
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $229
+LABELV $231
 line 298
 ;298:			level = selectedArenaSet * ARENAS_PER_TIER + n;
 ADDRLP4 4
@@ -1386,7 +1386,7 @@ CALLV
 pop
 line 301
 ;301:		}
-LABELV $230
+LABELV $232
 line 297
 ADDRLP4 0
 ADDRLP4 0
@@ -1397,14 +1397,14 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $229
+LTI4 $231
 line 303
 ;302:
 ;303:		if( selectedArena != -1 ) {
 ADDRGP4 selectedArena
 INDIRI4
 CNSTI4 -1
-EQI4 $233
+EQI4 $235
 line 304
 ;304:			levelMenuInfo.selectedArenaInfo = UI_GetArenaInfoByNumber( selectedArenaSet * ARENAS_PER_TIER + selectedArena );
 ADDRGP4 selectedArenaSet
@@ -1425,11 +1425,11 @@ INDIRP4
 ASGNP4
 line 305
 ;305:		}
-LABELV $233
+LABELV $235
 line 306
 ;306:	}
-LABELV $190
-LABELV $155
+LABELV $192
+LABELV $157
 line 309
 ;307:
 ;308:	// enable/disable arrows when they are valid/invalid
@@ -1438,7 +1438,7 @@ ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 minTier
 INDIRI4
-NEI4 $236
+NEI4 $238
 line 310
 ;310:		levelMenuInfo.item_leftarrow.generic.flags |= ( QMF_INACTIVE | QMF_HIDDEN );
 ADDRLP4 16
@@ -1454,9 +1454,9 @@ BORU4
 ASGNU4
 line 311
 ;311:	}
-ADDRGP4 $237
+ADDRGP4 $239
 JUMPV
-LABELV $236
+LABELV $238
 line 312
 ;312:	else {
 line 313
@@ -1474,7 +1474,7 @@ BANDU4
 ASGNU4
 line 314
 ;314:	}
-LABELV $237
+LABELV $239
 line 316
 ;315:
 ;316:	if ( selectedArenaSet == maxTier ) {
@@ -1482,7 +1482,7 @@ ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 maxTier
 INDIRI4
-NEI4 $242
+NEI4 $244
 line 317
 ;317:		levelMenuInfo.item_rightarrow.generic.flags |= ( QMF_INACTIVE | QMF_HIDDEN );
 ADDRLP4 16
@@ -1498,9 +1498,9 @@ BORU4
 ASGNU4
 line 318
 ;318:	}
-ADDRGP4 $243
+ADDRGP4 $245
 JUMPV
-LABELV $242
+LABELV $244
 line 319
 ;319:	else {
 line 320
@@ -1518,7 +1518,7 @@ BANDU4
 ASGNU4
 line 321
 ;321:	}
-LABELV $243
+LABELV $245
 line 323
 ;322:
 ;323:	UI_SPLevelMenu_SetBots();
@@ -1527,7 +1527,7 @@ CALLV
 pop
 line 324
 ;324:}
-LABELV $143
+LABELV $145
 endproc UI_SPLevelMenu_SetMenuItems 44 12
 proc UI_SPLevelMenu_ResetDraw 0 20
 line 332
@@ -1545,7 +1545,7 @@ CNSTI4 320
 ARGI4
 CNSTI4 356
 ARGI4
-ADDRGP4 $249
+ADDRGP4 $251
 ARGP4
 CNSTI4 17
 ARGI4
@@ -1560,7 +1560,7 @@ CNSTI4 320
 ARGI4
 CNSTI4 383
 ARGI4
-ADDRGP4 $250
+ADDRGP4 $252
 ARGP4
 CNSTI4 17
 ARGI4
@@ -1575,7 +1575,7 @@ CNSTI4 320
 ARGI4
 CNSTI4 410
 ARGI4
-ADDRGP4 $251
+ADDRGP4 $253
 ARGP4
 CNSTI4 17
 ARGI4
@@ -1590,7 +1590,7 @@ CNSTI4 320
 ARGI4
 CNSTI4 437
 ARGI4
-ADDRGP4 $252
+ADDRGP4 $254
 ARGP4
 CNSTI4 17
 ARGI4
@@ -1601,7 +1601,7 @@ CALLV
 pop
 line 337
 ;337:}
-LABELV $248
+LABELV $250
 endproc UI_SPLevelMenu_ResetDraw 0 20
 proc UI_SPLevelMenu_ResetAction 0 8
 line 339
@@ -1612,12 +1612,12 @@ line 340
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $254
+NEI4 $256
 line 341
 ;341:		return;
-ADDRGP4 $253
+ADDRGP4 $255
 JUMPV
-LABELV $254
+LABELV $256
 line 345
 ;342:	}
 ;343:
@@ -1628,7 +1628,7 @@ CALLV
 pop
 line 346
 ;346:	trap_Cvar_SetValue( "ui_spSelection", -4 );
-ADDRGP4 $153
+ADDRGP4 $155
 ARGP4
 CNSTF4 3229614080
 ARGF4
@@ -1649,7 +1649,7 @@ CALLV
 pop
 line 351
 ;351:}
-LABELV $253
+LABELV $255
 endproc UI_SPLevelMenu_ResetAction 0 8
 proc UI_SPLevelMenu_ResetEvent 0 12
 line 354
@@ -1661,17 +1661,17 @@ line 355
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $257
+EQI4 $259
 line 356
 ;356:		return;
-ADDRGP4 $256
+ADDRGP4 $258
 JUMPV
-LABELV $257
+LABELV $259
 line 359
 ;357:	}
 ;358:
 ;359:	UI_ConfirmMenu( "RESET GAME?", UI_SPLevelMenu_ResetDraw, UI_SPLevelMenu_ResetAction );
-ADDRGP4 $259
+ADDRGP4 $261
 ARGP4
 ADDRGP4 UI_SPLevelMenu_ResetDraw
 ARGP4
@@ -1682,7 +1682,7 @@ CALLV
 pop
 line 360
 ;360:}
-LABELV $256
+LABELV $258
 endproc UI_SPLevelMenu_ResetEvent 0 12
 proc UI_SPLevelMenu_LevelEvent 8 8
 line 368
@@ -1699,12 +1699,12 @@ line 369
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $261
+EQI4 $263
 line 370
 ;370:		return;
-ADDRGP4 $260
+ADDRGP4 $262
 JUMPV
-LABELV $261
+LABELV $263
 line 373
 ;371:	}
 ;372:
@@ -1717,18 +1717,18 @@ ADDRLP4 0
 INDIRI4
 ADDRGP4 trainingTier
 INDIRI4
-EQI4 $265
+EQI4 $267
 ADDRLP4 0
 INDIRI4
 ADDRGP4 finalTier
 INDIRI4
-NEI4 $263
-LABELV $265
+NEI4 $265
+LABELV $267
 line 374
 ;374:		return;
-ADDRGP4 $260
+ADDRGP4 $262
 JUMPV
-LABELV $263
+LABELV $265
 line 377
 ;375:	}
 ;376:
@@ -1768,7 +1768,7 @@ pop
 line 381
 ;380:
 ;381:	trap_Cvar_SetValue( "ui_spSelection", selectedArenaSet * ARENAS_PER_TIER + selectedArena );
-ADDRGP4 $153
+ADDRGP4 $155
 ARGP4
 ADDRGP4 selectedArenaSet
 INDIRI4
@@ -1784,7 +1784,7 @@ CALLV
 pop
 line 382
 ;382:}
-LABELV $260
+LABELV $262
 endproc UI_SPLevelMenu_LevelEvent 8 8
 proc UI_SPLevelMenu_LeftArrowEvent 4 0
 line 390
@@ -1801,12 +1801,12 @@ line 391
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $268
+EQI4 $270
 line 392
 ;392:		return;
-ADDRGP4 $267
+ADDRGP4 $269
 JUMPV
-LABELV $268
+LABELV $270
 line 395
 ;393:	}
 ;394:
@@ -1815,12 +1815,12 @@ ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 minTier
 INDIRI4
-NEI4 $270
+NEI4 $272
 line 396
 ;396:		return;
-ADDRGP4 $267
+ADDRGP4 $269
 JUMPV
-LABELV $270
+LABELV $272
 line 399
 ;397:	}
 ;398:
@@ -1843,7 +1843,7 @@ CALLV
 pop
 line 401
 ;401:}
-LABELV $267
+LABELV $269
 endproc UI_SPLevelMenu_LeftArrowEvent 4 0
 proc UI_SPLevelMenu_RightArrowEvent 4 0
 line 409
@@ -1860,12 +1860,12 @@ line 410
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $273
+EQI4 $275
 line 411
 ;411:		return;
-ADDRGP4 $272
+ADDRGP4 $274
 JUMPV
-LABELV $273
+LABELV $275
 line 414
 ;412:	}
 ;413:
@@ -1874,12 +1874,12 @@ ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 maxTier
 INDIRI4
-NEI4 $275
+NEI4 $277
 line 415
 ;415:		return;
-ADDRGP4 $272
+ADDRGP4 $274
 JUMPV
-LABELV $275
+LABELV $277
 line 418
 ;416:	}
 ;417:
@@ -1902,7 +1902,7 @@ CALLV
 pop
 line 420
 ;420:}
-LABELV $272
+LABELV $274
 endproc UI_SPLevelMenu_RightArrowEvent 4 0
 proc UI_SPLevelMenu_PlayerEvent 0 0
 line 428
@@ -1919,12 +1919,12 @@ line 429
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $278
+EQI4 $280
 line 430
 ;430:		return;
-ADDRGP4 $277
+ADDRGP4 $279
 JUMPV
-LABELV $278
+LABELV $280
 line 433
 ;431:	}
 ;432:
@@ -1934,7 +1934,7 @@ CALLV
 pop
 line 434
 ;434:}
-LABELV $277
+LABELV $279
 endproc UI_SPLevelMenu_PlayerEvent 0 0
 proc UI_SPLevelMenu_AwardEvent 4 8
 line 442
@@ -1953,12 +1953,12 @@ line 445
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $281
+EQI4 $283
 line 446
 ;446:		return;
-ADDRGP4 $280
+ADDRGP4 $282
 JUMPV
-LABELV $281
+LABELV $283
 line 449
 ;447:	}
 ;448:
@@ -1989,7 +1989,7 @@ CALLV
 pop
 line 451
 ;451:}
-LABELV $280
+LABELV $282
 endproc UI_SPLevelMenu_AwardEvent 4 8
 proc UI_SPLevelMenu_NextEvent 0 4
 line 459
@@ -2006,12 +2006,12 @@ line 460
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $285
+EQI4 $287
 line 461
 ;461:		return;
-ADDRGP4 $284
+ADDRGP4 $286
 JUMPV
-LABELV $285
+LABELV $287
 line 464
 ;462:	}
 ;463:
@@ -2020,12 +2020,12 @@ ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 currentSet
 INDIRI4
-LEI4 $287
+LEI4 $289
 line 465
 ;465:		return;
-ADDRGP4 $284
+ADDRGP4 $286
 JUMPV
-LABELV $287
+LABELV $289
 line 468
 ;466:	}
 ;467:
@@ -2033,7 +2033,7 @@ line 468
 ADDRGP4 selectedArena
 INDIRI4
 CNSTI4 -1
-NEI4 $289
+NEI4 $291
 line 469
 ;469:		selectedArena = 0;
 ADDRGP4 selectedArena
@@ -2041,7 +2041,7 @@ CNSTI4 0
 ASGNI4
 line 470
 ;470:	}
-LABELV $289
+LABELV $291
 line 472
 ;471:
 ;472:	UI_SPSkillMenu( levelMenuInfo.selectedArenaInfo );
@@ -2053,7 +2053,7 @@ CALLV
 pop
 line 473
 ;473:}
-LABELV $284
+LABELV $286
 endproc UI_SPLevelMenu_NextEvent 0 4
 proc UI_SPLevelMenu_BackEvent 0 0
 line 481
@@ -2070,12 +2070,12 @@ line 482
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $293
+EQI4 $295
 line 483
 ;483:		return;
-ADDRGP4 $292
+ADDRGP4 $294
 JUMPV
-LABELV $293
+LABELV $295
 line 486
 ;484:	}
 ;485:
@@ -2083,7 +2083,7 @@ line 486
 ADDRGP4 selectedArena
 INDIRI4
 CNSTI4 -1
-NEI4 $295
+NEI4 $297
 line 487
 ;487:		selectedArena = 0;
 ADDRGP4 selectedArena
@@ -2091,7 +2091,7 @@ CNSTI4 0
 ASGNI4
 line 488
 ;488:	}
-LABELV $295
+LABELV $297
 line 490
 ;489:
 ;490:	UI_PopMenu();
@@ -2100,7 +2100,7 @@ CALLV
 pop
 line 491
 ;491:}
-LABELV $292
+LABELV $294
 endproc UI_SPLevelMenu_BackEvent 0 0
 proc UI_SPLevelMenu_CustomEvent 0 4
 line 499
@@ -2117,12 +2117,12 @@ line 500
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $298
+EQI4 $300
 line 501
 ;501:		return;
-ADDRGP4 $297
+ADDRGP4 $299
 JUMPV
-LABELV $298
+LABELV $300
 line 504
 ;502:	}
 ;503:
@@ -2134,7 +2134,7 @@ CALLV
 pop
 line 505
 ;505:}
-LABELV $297
+LABELV $299
 endproc UI_SPLevelMenu_CustomEvent 0 4
 proc UI_SPLevelMenu_MenuDraw 1152 20
 line 515
@@ -2162,7 +2162,7 @@ line 525
 ADDRGP4 levelMenuInfo+1944
 INDIRI4
 CNSTI4 0
-EQI4 $301
+EQI4 $303
 line 526
 ;526:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
@@ -2175,15 +2175,15 @@ CALLV
 pop
 line 528
 ;528:		return;
-ADDRGP4 $300
+ADDRGP4 $302
 JUMPV
-LABELV $301
+LABELV $303
 line 532
 ;529:	}
 ;530:
 ;531:	// draw player name
 ;532:	trap_Cvar_VariableStringBuffer( "name", string, 32 );
-ADDRGP4 $106
+ADDRGP4 $108
 ARGP4
 ADDRLP4 16
 ARGP4
@@ -2218,7 +2218,7 @@ line 537
 ;535:
 ;536:	// check for model changes
 ;537:	trap_Cvar_VariableStringBuffer( "model", buf, sizeof(buf) );
-ADDRGP4 $103
+ADDRGP4 $105
 ARGP4
 ADDRLP4 104
 ARGP4
@@ -2240,7 +2240,7 @@ ASGNI4
 ADDRLP4 1128
 INDIRI4
 CNSTI4 0
-EQI4 $304
+EQI4 $306
 line 539
 ;539:		Q_strncpyz( levelMenuInfo.playerModel, buf, sizeof(levelMenuInfo.playerModel) );
 ADDRGP4 levelMenuInfo+2336
@@ -2270,7 +2270,7 @@ CNSTI4 0
 ASGNI4
 line 542
 ;542:	}
-LABELV $304
+LABELV $306
 line 545
 ;543:
 ;544:	// standard menu drawing
@@ -2297,7 +2297,7 @@ line 550
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $314
+LABELV $316
 line 551
 ;551:		level = levelMenuInfo.awardLevels[n];
 ADDRLP4 12
@@ -2314,7 +2314,7 @@ line 552
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-LEI4 $319
+LEI4 $321
 line 553
 ;553:			if( i & 1 ) {
 ADDRLP4 80
@@ -2322,7 +2322,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $321
+EQI4 $323
 line 554
 ;554:				x = 224 - (i - 1 ) / 2 * (48 + 16);
 ADDRLP4 4
@@ -2339,9 +2339,9 @@ SUBI4
 ASGNI4
 line 555
 ;555:			}
-ADDRGP4 $322
+ADDRGP4 $324
 JUMPV
-LABELV $321
+LABELV $323
 line 556
 ;556:			else {
 line 557
@@ -2358,7 +2358,7 @@ ADDI4
 ASGNI4
 line 558
 ;558:			}
-LABELV $322
+LABELV $324
 line 559
 ;559:			i++;
 ADDRLP4 80
@@ -2373,12 +2373,12 @@ line 561
 ADDRLP4 12
 INDIRI4
 CNSTI4 1
-NEI4 $323
+NEI4 $325
 line 562
 ;562:				continue;
-ADDRGP4 $315
+ADDRGP4 $317
 JUMPV
-LABELV $323
+LABELV $325
 line 565
 ;563:			}
 ;564:
@@ -2386,14 +2386,14 @@ line 565
 ADDRLP4 12
 INDIRI4
 CNSTI4 1000000
-LTI4 $325
+LTI4 $327
 line 566
 ;566:				Com_sprintf( string, sizeof(string), "%im", level / 1000000 );
 ADDRLP4 16
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $327
+ADDRGP4 $329
 ARGP4
 ADDRLP4 12
 INDIRI4
@@ -2405,22 +2405,22 @@ CALLV
 pop
 line 567
 ;567:			}
-ADDRGP4 $326
+ADDRGP4 $328
 JUMPV
-LABELV $325
+LABELV $327
 line 568
 ;568:			else if( level >= 1000 ) {
 ADDRLP4 12
 INDIRI4
 CNSTI4 1000
-LTI4 $328
+LTI4 $330
 line 569
 ;569:				Com_sprintf( string, sizeof(string), "%ik", level / 1000 );
 ADDRLP4 16
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $330
+ADDRGP4 $332
 ARGP4
 ADDRLP4 12
 INDIRI4
@@ -2432,9 +2432,9 @@ CALLV
 pop
 line 570
 ;570:			}
-ADDRGP4 $329
+ADDRGP4 $331
 JUMPV
-LABELV $328
+LABELV $330
 line 571
 ;571:			else {
 line 572
@@ -2443,7 +2443,7 @@ ADDRLP4 16
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $331
+ADDRGP4 $333
 ARGP4
 ADDRLP4 12
 INDIRI4
@@ -2453,8 +2453,8 @@ CALLV
 pop
 line 573
 ;573:			}
-LABELV $329
-LABELV $326
+LABELV $331
+LABELV $328
 line 575
 ;574:
 ;575:			UI_DrawString( x + 24, y + 48, string, UI_CENTER, color_yellow );
@@ -2479,10 +2479,10 @@ CALLV
 pop
 line 576
 ;576:		}
-LABELV $319
+LABELV $321
 line 577
 ;577:	}
-LABELV $315
+LABELV $317
 line 550
 ADDRLP4 0
 ADDRLP4 0
@@ -2493,11 +2493,11 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 6
-LTI4 $314
+LTI4 $316
 line 579
 ;578:
 ;579:	UI_DrawProportionalString( 18, 38, va( "Tier %i", selectedArenaSet + 1 ), UI_LEFT|UI_SMALLFONT, color_orange );
-ADDRGP4 $332
+ADDRGP4 $334
 ARGP4
 ADDRGP4 selectedArenaSet
 INDIRI4
@@ -2528,9 +2528,9 @@ line 581
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $336
+ADDRGP4 $338
 JUMPV
-LABELV $333
+LABELV $335
 line 582
 ;582:		x = levelMenuInfo.item_maps[n].generic.x;
 ADDRLP4 4
@@ -2576,7 +2576,7 @@ CALLV
 pop
 line 585
 ;585:	}
-LABELV $334
+LABELV $336
 line 581
 ADDRLP4 0
 ADDRLP4 0
@@ -2584,12 +2584,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $336
+LABELV $338
 ADDRLP4 0
 INDIRI4
 ADDRGP4 levelMenuInfo+1952
 INDIRI4
-LTI4 $333
+LTI4 $335
 line 587
 ;586:
 ;587:	if ( selectedArenaSet > currentSet ) {
@@ -2597,14 +2597,14 @@ ADDRGP4 selectedArenaSet
 INDIRI4
 ADDRGP4 currentSet
 INDIRI4
-LEI4 $342
+LEI4 $344
 line 588
 ;588:		UI_DrawProportionalString( 320, 216, "ACCESS DENIED", UI_CENTER|UI_BIGFONT, color_red );
 CNSTI4 320
 ARGI4
 CNSTI4 216
 ARGI4
-ADDRGP4 $344
+ADDRGP4 $346
 ARGP4
 CNSTI4 33
 ARGI4
@@ -2615,9 +2615,9 @@ CALLV
 pop
 line 589
 ;589:		return;
-ADDRGP4 $300
+ADDRGP4 $302
 JUMPV
-LABELV $342
+LABELV $344
 line 593
 ;590:	}
 ;591:
@@ -2664,9 +2664,9 @@ line 595
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $356
+ADDRGP4 $358
 JUMPV
-LABELV $353
+LABELV $355
 line 596
 ;596:		x = levelMenuInfo.item_maps[n].generic.x;
 ADDRLP4 4
@@ -2727,7 +2727,7 @@ ADDRGP4 levelMenuInfo+2276
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $363
+NEI4 $365
 line 602
 ;602:			UI_DrawHandlePic( x, y, 128, 96, levelMenuInfo.levelCompletePic[levelMenuInfo.levelScoresSkill[n] - 1] ); 
 ADDRLP4 4
@@ -2765,7 +2765,7 @@ CALLV
 pop
 line 603
 ;603:		}
-LABELV $363
+LABELV $365
 line 605
 ;604:
 ;605:		if ( n == selectedArena ) {
@@ -2773,7 +2773,7 @@ ADDRLP4 0
 INDIRI4
 ADDRGP4 selectedArena
 INDIRI4
-NEI4 $369
+NEI4 $371
 line 606
 ;606:			if( Menu_ItemAtCursor( &levelMenuInfo.menu ) == &levelMenuInfo.item_maps[n] ) {
 ADDRGP4 levelMenuInfo
@@ -2792,7 +2792,7 @@ CVPU4 4
 ADDRLP4 1140
 INDIRP4
 CVPU4 4
-NEU4 $371
+NEU4 $373
 line 607
 ;607:				trap_R_SetColor( color );
 ADDRLP4 88
@@ -2802,7 +2802,7 @@ CALLV
 pop
 line 608
 ;608:			}
-LABELV $371
+LABELV $373
 line 609
 ;609:			UI_DrawHandlePic( x-1, y-1, 130, 130 - 14, levelMenuInfo.levelSelectedPic ); 
 ADDRLP4 1144
@@ -2841,9 +2841,9 @@ CALLV
 pop
 line 611
 ;611:		}
-ADDRGP4 $370
+ADDRGP4 $372
 JUMPV
-LABELV $369
+LABELV $371
 line 612
 ;612:		else if( Menu_ItemAtCursor( &levelMenuInfo.menu ) == &levelMenuInfo.item_maps[n] ) {
 ADDRGP4 levelMenuInfo
@@ -2862,7 +2862,7 @@ CVPU4 4
 ADDRLP4 1140
 INDIRP4
 CVPU4 4
-NEU4 $375
+NEU4 $377
 line 613
 ;613:			trap_R_SetColor( color );
 ADDRLP4 88
@@ -2903,11 +2903,11 @@ CALLV
 pop
 line 616
 ;616:		}
-LABELV $375
-LABELV $370
+LABELV $377
+LABELV $372
 line 617
 ;617:	}
-LABELV $354
+LABELV $356
 line 595
 ADDRLP4 0
 ADDRLP4 0
@@ -2915,12 +2915,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $356
+LABELV $358
 ADDRLP4 0
 INDIRI4
 ADDRGP4 levelMenuInfo+1952
 INDIRI4
-LTI4 $353
+LTI4 $355
 line 620
 ;618:
 ;619:	// show map name and long name of selected level
@@ -2933,7 +2933,7 @@ line 621
 ADDRGP4 levelMenuInfo+1948
 INDIRP4
 ARGP4
-ADDRGP4 $116
+ADDRGP4 $118
 ARGP4
 ADDRLP4 1140
 ADDRGP4 Info_ValueForKey
@@ -2961,7 +2961,7 @@ line 623
 ADDRGP4 levelMenuInfo+1948
 INDIRP4
 ARGP4
-ADDRGP4 $382
+ADDRGP4 $384
 ARGP4
 ADDRLP4 1144
 ADDRGP4 Info_ValueForKey
@@ -2971,7 +2971,7 @@ ADDRLP4 16
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $380
+ADDRGP4 $382
 ARGP4
 ADDRLP4 104
 ARGP4
@@ -3027,9 +3027,9 @@ line 632
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $387
+ADDRGP4 $389
 JUMPV
-LABELV $384
+LABELV $386
 line 633
 ;633:		x = 18 + pad + (64 + 26) * n;
 ADDRLP4 4
@@ -3053,7 +3053,7 @@ ADDRGP4 levelMenuInfo+2516
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $389
+EQI4 $391
 line 635
 ;635:			UI_DrawHandlePic( x, y, 64, 64, levelMenuInfo.botPics[n]);
 ADDRLP4 4
@@ -3086,9 +3086,9 @@ CALLV
 pop
 line 636
 ;636:		}
-ADDRGP4 $390
+ADDRGP4 $392
 JUMPV
-LABELV $389
+LABELV $391
 line 637
 ;637:		else {
 line 638
@@ -3127,7 +3127,7 @@ INDIRI4
 CNSTI4 18
 ADDI4
 ARGI4
-ADDRGP4 $393
+ADDRGP4 $395
 ARGP4
 CNSTI4 32
 ARGI4
@@ -3138,7 +3138,7 @@ CALLV
 pop
 line 640
 ;640:		}
-LABELV $390
+LABELV $392
 line 641
 ;641:		UI_DrawString( x, y + 64, levelMenuInfo.botNames[n], UI_SMALLFONT|UI_LEFT, color_orange );
 ADDRLP4 4
@@ -3165,7 +3165,7 @@ CALLV
 pop
 line 642
 ;642:	}
-LABELV $385
+LABELV $387
 line 632
 ADDRLP4 0
 ADDRLP4 0
@@ -3173,15 +3173,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $387
+LABELV $389
 ADDRLP4 0
 INDIRI4
 ADDRGP4 levelMenuInfo+2512
 INDIRI4
-LTI4 $384
+LTI4 $386
 line 643
 ;643:}
-LABELV $300
+LABELV $302
 endproc UI_SPLevelMenu_MenuDraw 1152 20
 export UI_SPLevelMenu_Cache
 proc UI_SPLevelMenu_Cache 32 8
@@ -3198,126 +3198,126 @@ line 654
 ;652:	int				n;
 ;653:
 ;654:	trap_R_RegisterShaderNoMip( ART_LEVELFRAME_FOCUS );
-ADDRGP4 $396
+ADDRGP4 $398
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 655
 ;655:	trap_R_RegisterShaderNoMip( ART_LEVELFRAME_SELECTED );
-ADDRGP4 $397
+ADDRGP4 $399
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 656
 ;656:	trap_R_RegisterShaderNoMip( ART_ARROW );
-ADDRGP4 $398
+ADDRGP4 $400
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 657
 ;657:	trap_R_RegisterShaderNoMip( ART_ARROW_FOCUS );
-ADDRGP4 $399
+ADDRGP4 $401
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 658
 ;658:	trap_R_RegisterShaderNoMip( ART_MAP_UNKNOWN );
-ADDRGP4 $132
+ADDRGP4 $134
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 659
 ;659:	trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE1 );
-ADDRGP4 $400
+ADDRGP4 $402
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 660
 ;660:	trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE2 );
-ADDRGP4 $401
+ADDRGP4 $403
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 661
 ;661:	trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE3 );
-ADDRGP4 $402
+ADDRGP4 $404
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 662
 ;662:	trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE4 );
-ADDRGP4 $403
+ADDRGP4 $405
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 663
 ;663:	trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE5 );
-ADDRGP4 $404
+ADDRGP4 $406
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 664
 ;664:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $405
+ADDRGP4 $407
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 665
 ;665:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $406
+ADDRGP4 $408
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 666
 ;666:	trap_R_RegisterShaderNoMip( ART_FIGHT0 );
-ADDRGP4 $407
+ADDRGP4 $409
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 667
 ;667:	trap_R_RegisterShaderNoMip( ART_FIGHT1 );
-ADDRGP4 $408
+ADDRGP4 $410
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 668
 ;668:	trap_R_RegisterShaderNoMip( ART_RESET0 );
-ADDRGP4 $409
+ADDRGP4 $411
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 669
 ;669:	trap_R_RegisterShaderNoMip( ART_RESET1 );
-ADDRGP4 $410
+ADDRGP4 $412
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 670
 ;670:	trap_R_RegisterShaderNoMip( ART_CUSTOM0 );
-ADDRGP4 $411
+ADDRGP4 $413
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 671
 ;671:	trap_R_RegisterShaderNoMip( ART_CUSTOM1 );
-ADDRGP4 $412
+ADDRGP4 $414
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
@@ -3328,7 +3328,7 @@ line 673
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $413
+LABELV $415
 line 674
 ;674:		trap_R_RegisterShaderNoMip( ui_medalPicNames[n] );
 ADDRLP4 0
@@ -3371,7 +3371,7 @@ INDIRI4
 ASGNI4
 line 676
 ;676:	}
-LABELV $414
+LABELV $416
 line 673
 ADDRLP4 0
 ADDRLP4 0
@@ -3382,11 +3382,11 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 6
-LTI4 $413
+LTI4 $415
 line 678
 ;677:
 ;678:	levelMenuInfo.levelSelectedPic = trap_R_RegisterShaderNoMip( ART_LEVELFRAME_SELECTED );
-ADDRGP4 $397
+ADDRGP4 $399
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -3398,7 +3398,7 @@ INDIRI4
 ASGNI4
 line 679
 ;679:	levelMenuInfo.levelFocusPic = trap_R_RegisterShaderNoMip( ART_LEVELFRAME_FOCUS );
-ADDRGP4 $396
+ADDRGP4 $398
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -3410,7 +3410,7 @@ INDIRI4
 ASGNI4
 line 680
 ;680:	levelMenuInfo.levelCompletePic[0] = trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE1 );
-ADDRGP4 $400
+ADDRGP4 $402
 ARGP4
 ADDRLP4 12
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -3422,7 +3422,7 @@ INDIRI4
 ASGNI4
 line 681
 ;681:	levelMenuInfo.levelCompletePic[1] = trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE2 );
-ADDRGP4 $401
+ADDRGP4 $403
 ARGP4
 ADDRLP4 16
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -3434,7 +3434,7 @@ INDIRI4
 ASGNI4
 line 682
 ;682:	levelMenuInfo.levelCompletePic[2] = trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE3 );
-ADDRGP4 $402
+ADDRGP4 $404
 ARGP4
 ADDRLP4 20
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -3446,7 +3446,7 @@ INDIRI4
 ASGNI4
 line 683
 ;683:	levelMenuInfo.levelCompletePic[3] = trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE4 );
-ADDRGP4 $403
+ADDRGP4 $405
 ARGP4
 ADDRLP4 24
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -3458,7 +3458,7 @@ INDIRI4
 ASGNI4
 line 684
 ;684:	levelMenuInfo.levelCompletePic[4] = trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE5 );
-ADDRGP4 $404
+ADDRGP4 $406
 ARGP4
 ADDRLP4 28
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -3470,7 +3470,7 @@ INDIRI4
 ASGNI4
 line 685
 ;685:}
-LABELV $395
+LABELV $397
 endproc UI_SPLevelMenu_Cache 32 8
 proc UI_SPLevelMenu_Init 116 12
 line 693
@@ -3490,7 +3490,7 @@ line 700
 ;698:	char	buf[MAX_QPATH];
 ;699:
 ;700:	skill = (int)trap_Cvar_VariableValue( "g_spSkill" );
-ADDRGP4 $430
+ADDRGP4 $432
 ARGP4
 ADDRLP4 84
 ADDRGP4 trap_Cvar_VariableValue
@@ -3506,17 +3506,17 @@ line 701
 ADDRLP4 16
 INDIRI4
 CNSTI4 1
-LTI4 $433
+LTI4 $435
 ADDRLP4 16
 INDIRI4
 CNSTI4 5
-LEI4 $431
-LABELV $433
+LEI4 $433
+LABELV $435
 line 702
 ;702:		trap_Cvar_Set( "g_spSkill", "2" );
-ADDRGP4 $430
+ADDRGP4 $432
 ARGP4
-ADDRGP4 $434
+ADDRGP4 $436
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
@@ -3528,7 +3528,7 @@ CNSTI4 2
 ASGNI4
 line 704
 ;704:	}
-LABELV $431
+LABELV $433
 line 706
 ;705:
 ;706:	memset( &levelMenuInfo, 0, sizeof(levelMenuInfo) );
@@ -3581,7 +3581,7 @@ ASGNI4
 line 716
 ;716:	levelMenuInfo.item_banner.string				= "CHOOSE LEVEL";
 ADDRGP4 levelMenuInfo+288+60
-ADDRGP4 $445
+ADDRGP4 $447
 ASGNP4
 line 717
 ;717:	levelMenuInfo.item_banner.color					= color_red;
@@ -3602,7 +3602,7 @@ ASGNI4
 line 721
 ;721:	levelMenuInfo.item_leftarrow.generic.name		= ART_ARROW;
 ADDRGP4 levelMenuInfo+360+4
-ADDRGP4 $398
+ADDRGP4 $400
 ASGNP4
 line 722
 ;722:	levelMenuInfo.item_leftarrow.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -3642,7 +3642,7 @@ ASGNI4
 line 729
 ;729:	levelMenuInfo.item_leftarrow.focuspic			= ART_ARROW_FOCUS;
 ADDRGP4 levelMenuInfo+360+60
-ADDRGP4 $399
+ADDRGP4 $401
 ASGNP4
 line 731
 ;730:
@@ -3837,7 +3837,7 @@ ASGNI4
 line 772
 ;772:	levelMenuInfo.item_rightarrow.generic.name		= ART_ARROW;
 ADDRGP4 levelMenuInfo+800+4
-ADDRGP4 $398
+ADDRGP4 $400
 ASGNP4
 line 773
 ;773:	levelMenuInfo.item_rightarrow.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -3877,12 +3877,12 @@ ASGNI4
 line 780
 ;780:	levelMenuInfo.item_rightarrow.focuspic			= ART_ARROW_FOCUS;
 ADDRGP4 levelMenuInfo+800+60
-ADDRGP4 $399
+ADDRGP4 $401
 ASGNP4
 line 782
 ;781:
 ;782:	trap_Cvar_VariableStringBuffer( "model", levelMenuInfo.playerModel, sizeof(levelMenuInfo.playerModel) );
-ADDRGP4 $103
+ADDRGP4 $105
 ARGP4
 ADDRGP4 levelMenuInfo+2336
 ARGP4
@@ -3953,7 +3953,7 @@ line 794
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $613
+LABELV $615
 line 795
 ;795:		levelMenuInfo.awardLevels[n] = UI_GetAwardLevel( n );
 ADDRLP4 0
@@ -3974,7 +3974,7 @@ INDIRI4
 ASGNI4
 line 796
 ;796:	}
-LABELV $614
+LABELV $616
 line 794
 ADDRLP4 0
 ADDRLP4 0
@@ -3985,7 +3985,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 6
-LTI4 $613
+LTI4 $615
 line 797
 ;797:	levelMenuInfo.awardLevels[AWARD_FRAGS] = 100 * (levelMenuInfo.awardLevels[AWARD_FRAGS] / 100);
 ADDRLP4 92
@@ -4017,7 +4017,7 @@ line 801
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $622
+LABELV $624
 line 802
 ;802:		if( levelMenuInfo.awardLevels[n] ) {
 ADDRLP4 0
@@ -4028,7 +4028,7 @@ ADDRGP4 levelMenuInfo+2464
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $626
+EQI4 $628
 line 803
 ;803:			if( count & 1 ) {
 ADDRLP4 4
@@ -4036,7 +4036,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $629
+EQI4 $631
 line 804
 ;804:				x = 224 - (count - 1 ) / 2 * (48 + 16);
 ADDRLP4 8
@@ -4053,9 +4053,9 @@ SUBI4
 ASGNI4
 line 805
 ;805:			}
-ADDRGP4 $630
+ADDRGP4 $632
 JUMPV
-LABELV $629
+LABELV $631
 line 806
 ;806:			else {
 line 807
@@ -4072,7 +4072,7 @@ ADDI4
 ASGNI4
 line 808
 ;808:			}
-LABELV $630
+LABELV $632
 line 810
 ;809:
 ;810:			levelMenuInfo.item_awards[count].generic.type		= MTYPE_BITMAP;
@@ -4185,10 +4185,10 @@ ADDI4
 ASGNI4
 line 820
 ;820:		}
-LABELV $626
+LABELV $628
 line 821
 ;821:	}
-LABELV $623
+LABELV $625
 line 801
 ADDRLP4 0
 ADDRLP4 0
@@ -4199,7 +4199,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 6
-LTI4 $622
+LTI4 $624
 line 823
 ;822:
 ;823:	levelMenuInfo.item_back.generic.type			= MTYPE_BITMAP;
@@ -4209,7 +4209,7 @@ ASGNI4
 line 824
 ;824:	levelMenuInfo.item_back.generic.name			= ART_BACK0;
 ADDRGP4 levelMenuInfo+1504+4
-ADDRGP4 $405
+ADDRGP4 $407
 ASGNP4
 line 825
 ;825:	levelMenuInfo.item_back.generic.flags			= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -4249,7 +4249,7 @@ ASGNI4
 line 832
 ;832:	levelMenuInfo.item_back.focuspic				= ART_BACK1;
 ADDRGP4 levelMenuInfo+1504+60
-ADDRGP4 $406
+ADDRGP4 $408
 ASGNP4
 line 834
 ;833:
@@ -4260,7 +4260,7 @@ ASGNI4
 line 835
 ;835:	levelMenuInfo.item_reset.generic.name			= ART_RESET0;
 ADDRGP4 levelMenuInfo+1592+4
-ADDRGP4 $409
+ADDRGP4 $411
 ASGNP4
 line 836
 ;836:	levelMenuInfo.item_reset.generic.flags			= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -4300,7 +4300,7 @@ ASGNI4
 line 843
 ;843:	levelMenuInfo.item_reset.focuspic				= ART_RESET1;
 ADDRGP4 levelMenuInfo+1592+60
-ADDRGP4 $410
+ADDRGP4 $412
 ASGNP4
 line 845
 ;844:
@@ -4311,7 +4311,7 @@ ASGNI4
 line 846
 ;846:	levelMenuInfo.item_custom.generic.name			= ART_CUSTOM0;
 ADDRGP4 levelMenuInfo+1680+4
-ADDRGP4 $411
+ADDRGP4 $413
 ASGNP4
 line 847
 ;847:	levelMenuInfo.item_custom.generic.flags			= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -4351,7 +4351,7 @@ ASGNI4
 line 854
 ;854:	levelMenuInfo.item_custom.focuspic				= ART_CUSTOM1;
 ADDRGP4 levelMenuInfo+1680+60
-ADDRGP4 $412
+ADDRGP4 $414
 ASGNP4
 line 856
 ;855:
@@ -4362,7 +4362,7 @@ ASGNI4
 line 857
 ;857:	levelMenuInfo.item_next.generic.name			= ART_FIGHT0;
 ADDRGP4 levelMenuInfo+1768+4
-ADDRGP4 $407
+ADDRGP4 $409
 ASGNP4
 line 858
 ;858:	levelMenuInfo.item_next.generic.flags			= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -4402,7 +4402,7 @@ ASGNI4
 line 865
 ;865:	levelMenuInfo.item_next.focuspic				= ART_FIGHT1;
 ADDRGP4 levelMenuInfo+1768+60
-ADDRGP4 $408
+ADDRGP4 $410
 ASGNP4
 line 867
 ;866:
@@ -4568,9 +4568,9 @@ line 889
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $760
+ADDRGP4 $762
 JUMPV
-LABELV $757
+LABELV $759
 line 890
 ;890:		Menu_AddItem( &levelMenuInfo.menu, &levelMenuInfo.item_awards[n] );
 ADDRGP4 levelMenuInfo
@@ -4587,7 +4587,7 @@ CALLV
 pop
 line 891
 ;891:	}
-LABELV $758
+LABELV $760
 line 889
 ADDRLP4 0
 ADDRLP4 0
@@ -4595,12 +4595,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $760
+LABELV $762
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-LTI4 $757
+LTI4 $759
 line 892
 ;892:	Menu_AddItem( &levelMenuInfo.menu, &levelMenuInfo.item_back );
 ADDRGP4 levelMenuInfo
@@ -4649,7 +4649,7 @@ pop
 line 898
 ;897:
 ;898:	trap_Cvar_VariableStringBuffer( "ui_spSelection", buf, sizeof(buf) );
-ADDRGP4 $153
+ADDRGP4 $155
 ARGP4
 ADDRLP4 20
 ARGP4
@@ -4664,7 +4664,7 @@ ADDRLP4 20
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $767
+EQI4 $769
 line 900
 ;900:		n = atoi( buf );
 ADDRLP4 20
@@ -4695,9 +4695,9 @@ MODI4
 ASGNI4
 line 903
 ;903:	}
-ADDRGP4 $768
+ADDRGP4 $770
 JUMPV
-LABELV $767
+LABELV $769
 line 904
 ;904:	else {
 line 905
@@ -4714,7 +4714,7 @@ INDIRI4
 ASGNI4
 line 907
 ;907:	}
-LABELV $768
+LABELV $770
 line 909
 ;908:
 ;909:	UI_SPLevelMenu_SetMenuItems();
@@ -4723,7 +4723,7 @@ CALLV
 pop
 line 910
 ;910:}
-LABELV $429
+LABELV $431
 endproc UI_SPLevelMenu_Init 116 12
 export UI_SPLevelMenu
 proc UI_SPLevelMenu 32 8
@@ -4747,7 +4747,7 @@ CNSTI4 -1
 ASGNI4
 line 924
 ;924:	arenaInfo = UI_GetSpecialArenaInfo( "training" );
-ADDRGP4 $156
+ADDRGP4 $158
 ARGP4
 ADDRLP4 12
 ADDRGP4 UI_GetSpecialArenaInfo
@@ -4763,7 +4763,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $770
+EQU4 $772
 line 926
 ;926:		minTier = trainingTier;
 ADDRGP4 minTier
@@ -4775,7 +4775,7 @@ line 927
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $157
+ADDRGP4 $159
 ARGP4
 ADDRLP4 16
 ADDRGP4 Info_ValueForKey
@@ -4794,9 +4794,9 @@ INDIRI4
 ASGNI4
 line 928
 ;928:	}
-ADDRGP4 $771
+ADDRGP4 $773
 JUMPV
-LABELV $770
+LABELV $772
 line 929
 ;929:	else {
 line 930
@@ -4811,7 +4811,7 @@ CNSTI4 -2
 ASGNI4
 line 932
 ;932:	}
-LABELV $771
+LABELV $773
 line 934
 ;933:
 ;934:	finalTier = UI_GetNumSPTiers();
@@ -4825,7 +4825,7 @@ INDIRI4
 ASGNI4
 line 935
 ;935:	arenaInfo = UI_GetSpecialArenaInfo( "final" );
-ADDRGP4 $191
+ADDRGP4 $193
 ARGP4
 ADDRLP4 20
 ADDRGP4 UI_GetSpecialArenaInfo
@@ -4841,7 +4841,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $772
+EQU4 $774
 line 937
 ;937:		maxTier = finalTier;
 ADDRGP4 maxTier
@@ -4850,9 +4850,9 @@ INDIRI4
 ASGNI4
 line 938
 ;938:	}
-ADDRGP4 $773
+ADDRGP4 $775
 JUMPV
-LABELV $772
+LABELV $774
 line 939
 ;939:	else {
 line 940
@@ -4869,7 +4869,7 @@ ADDRGP4 maxTier
 INDIRI4
 ADDRGP4 minTier
 INDIRI4
-GEI4 $774
+GEI4 $776
 line 942
 ;942:			maxTier = minTier;
 ADDRGP4 maxTier
@@ -4878,10 +4878,10 @@ INDIRI4
 ASGNI4
 line 943
 ;943:		}
-LABELV $774
+LABELV $776
 line 944
 ;944:	}
-LABELV $773
+LABELV $775
 line 946
 ;945:
 ;946:	level = UI_GetCurrentGame();
@@ -4898,7 +4898,7 @@ line 947
 ADDRLP4 0
 INDIRI4
 CNSTI4 -1
-NEI4 $776
+NEI4 $778
 line 948
 ;948:		level = UI_GetNumSPArenas() - 1;
 ADDRLP4 28
@@ -4917,7 +4917,7 @@ ADDRGP4 maxTier
 INDIRI4
 ADDRGP4 finalTier
 INDIRI4
-NEI4 $778
+NEI4 $780
 line 950
 ;950:			level++;
 ADDRLP4 0
@@ -4928,10 +4928,10 @@ ADDI4
 ASGNI4
 line 951
 ;951:		}
-LABELV $778
+LABELV $780
 line 952
 ;952:	}
-LABELV $776
+LABELV $778
 line 954
 ;953:
 ;954:	if( level == trainingLevel ) {
@@ -4939,7 +4939,7 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 8
 INDIRI4
-NEI4 $780
+NEI4 $782
 line 955
 ;955:		currentSet = -1;
 ADDRGP4 currentSet
@@ -4952,9 +4952,9 @@ CNSTI4 0
 ASGNI4
 line 957
 ;957:	}
-ADDRGP4 $781
+ADDRGP4 $783
 JUMPV
-LABELV $780
+LABELV $782
 line 958
 ;958:	else {
 line 959
@@ -4975,7 +4975,7 @@ MODI4
 ASGNI4
 line 961
 ;961:	}
-LABELV $781
+LABELV $783
 line 963
 ;962:
 ;963:	UI_SPLevelMenu_Init();
@@ -5000,7 +5000,7 @@ CALLV
 pop
 line 966
 ;966:}
-LABELV $769
+LABELV $771
 endproc UI_SPLevelMenu 32 8
 export UI_SPLevelMenu_f
 proc UI_SPLevelMenu_f 0 4
@@ -5032,7 +5032,7 @@ CALLV
 pop
 line 978
 ;978:}
-LABELV $783
+LABELV $785
 endproc UI_SPLevelMenu_f 0 4
 export UI_SPLevelMenu_ReInit
 proc UI_SPLevelMenu_ReInit 0 0
@@ -5052,7 +5052,7 @@ CNSTI4 1
 ASGNI4
 line 988
 ;988:}
-LABELV $785
+LABELV $787
 endproc UI_SPLevelMenu_ReInit 0 0
 bss
 align 4
@@ -5393,6 +5393,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -5557,7 +5558,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $445
+LABELV $447
 byte 1 67
 byte 1 72
 byte 1 79
@@ -5572,11 +5573,11 @@ byte 1 69
 byte 1 76
 byte 1 0
 align 1
-LABELV $434
+LABELV $436
 byte 1 50
 byte 1 0
 align 1
-LABELV $430
+LABELV $432
 byte 1 103
 byte 1 95
 byte 1 115
@@ -5588,7 +5589,7 @@ byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $412
+LABELV $414
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5610,7 +5611,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $411
+LABELV $413
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5632,7 +5633,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $410
+LABELV $412
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5646,6 +5647,44 @@ byte 1 114
 byte 1 101
 byte 1 115
 byte 1 101
+byte 1 116
+byte 1 95
+byte 1 49
+byte 1 0
+align 1
+LABELV $411
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 114
+byte 1 101
+byte 1 115
+byte 1 101
+byte 1 116
+byte 1 95
+byte 1 48
+byte 1 0
+align 1
+LABELV $410
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 102
+byte 1 105
+byte 1 103
+byte 1 104
 byte 1 116
 byte 1 95
 byte 1 49
@@ -5661,10 +5700,10 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 114
-byte 1 101
-byte 1 115
-byte 1 101
+byte 1 102
+byte 1 105
+byte 1 103
+byte 1 104
 byte 1 116
 byte 1 95
 byte 1 48
@@ -5680,11 +5719,10 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 102
-byte 1 105
-byte 1 103
-byte 1 104
-byte 1 116
+byte 1 98
+byte 1 97
+byte 1 99
+byte 1 107
 byte 1 95
 byte 1 49
 byte 1 0
@@ -5699,52 +5737,15 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 102
-byte 1 105
-byte 1 103
-byte 1 104
-byte 1 116
+byte 1 98
+byte 1 97
+byte 1 99
+byte 1 107
 byte 1 95
 byte 1 48
 byte 1 0
 align 1
 LABELV $406
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 117
-byte 1 47
-byte 1 97
-byte 1 114
-byte 1 116
-byte 1 47
-byte 1 98
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 95
-byte 1 49
-byte 1 0
-align 1
-LABELV $405
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 117
-byte 1 47
-byte 1 97
-byte 1 114
-byte 1 116
-byte 1 47
-byte 1 98
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 95
-byte 1 48
-byte 1 0
-align 1
-LABELV $404
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5771,7 +5772,7 @@ byte 1 101
 byte 1 53
 byte 1 0
 align 1
-LABELV $403
+LABELV $405
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5798,7 +5799,7 @@ byte 1 101
 byte 1 52
 byte 1 0
 align 1
-LABELV $402
+LABELV $404
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5825,7 +5826,7 @@ byte 1 101
 byte 1 51
 byte 1 0
 align 1
-LABELV $401
+LABELV $403
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5852,7 +5853,7 @@ byte 1 101
 byte 1 50
 byte 1 0
 align 1
-LABELV $400
+LABELV $402
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5879,7 +5880,7 @@ byte 1 101
 byte 1 49
 byte 1 0
 align 1
-LABELV $399
+LABELV $401
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5899,7 +5900,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $398
+LABELV $400
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5919,7 +5920,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $397
+LABELV $399
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5944,7 +5945,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $396
+LABELV $398
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5967,11 +5968,11 @@ byte 1 99
 byte 1 116
 byte 1 0
 align 1
-LABELV $393
+LABELV $395
 byte 1 63
 byte 1 0
 align 1
-LABELV $382
+LABELV $384
 byte 1 108
 byte 1 111
 byte 1 110
@@ -5982,7 +5983,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $380
+LABELV $382
 byte 1 37
 byte 1 115
 byte 1 58
@@ -5991,7 +5992,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $344
+LABELV $346
 byte 1 65
 byte 1 67
 byte 1 67
@@ -6007,7 +6008,7 @@ byte 1 69
 byte 1 68
 byte 1 0
 align 1
-LABELV $332
+LABELV $334
 byte 1 84
 byte 1 105
 byte 1 101
@@ -6017,24 +6018,24 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $331
+LABELV $333
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $330
+LABELV $332
 byte 1 37
 byte 1 105
 byte 1 107
 byte 1 0
 align 1
-LABELV $327
+LABELV $329
 byte 1 37
 byte 1 105
 byte 1 109
 byte 1 0
 align 1
-LABELV $259
+LABELV $261
 byte 1 82
 byte 1 69
 byte 1 83
@@ -6048,7 +6049,7 @@ byte 1 69
 byte 1 63
 byte 1 0
 align 1
-LABELV $252
+LABELV $254
 byte 1 115
 byte 1 116
 byte 1 97
@@ -6081,7 +6082,7 @@ byte 1 103
 byte 1 46
 byte 1 0
 align 1
-LABELV $251
+LABELV $253
 byte 1 68
 byte 1 111
 byte 1 32
@@ -6111,7 +6112,7 @@ byte 1 116
 byte 1 111
 byte 1 0
 align 1
-LABELV $250
+LABELV $252
 byte 1 115
 byte 1 105
 byte 1 110
@@ -6143,7 +6144,7 @@ byte 1 115
 byte 1 46
 byte 1 0
 align 1
-LABELV $249
+LABELV $251
 byte 1 87
 byte 1 65
 byte 1 82
@@ -6177,7 +6178,7 @@ byte 1 104
 byte 1 101
 byte 1 0
 align 1
-LABELV $191
+LABELV $193
 byte 1 102
 byte 1 105
 byte 1 110
@@ -6185,13 +6186,13 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $157
+LABELV $159
 byte 1 110
 byte 1 117
 byte 1 109
 byte 1 0
 align 1
-LABELV $156
+LABELV $158
 byte 1 116
 byte 1 114
 byte 1 97
@@ -6202,7 +6203,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $153
+LABELV $155
 byte 1 117
 byte 1 105
 byte 1 95
@@ -6219,7 +6220,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $132
+LABELV $134
 byte 1 109
 byte 1 101
 byte 1 110
@@ -6241,7 +6242,7 @@ byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $127
+LABELV $129
 byte 1 108
 byte 1 101
 byte 1 118
@@ -6261,20 +6262,20 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $116
+LABELV $118
 byte 1 109
 byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $106
+LABELV $108
 byte 1 110
 byte 1 97
 byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $103
+LABELV $105
 byte 1 109
 byte 1 111
 byte 1 100
@@ -6282,14 +6283,14 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $82
+LABELV $84
 byte 1 98
 byte 1 111
 byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $75
+LABELV $77
 byte 1 109
 byte 1 111
 byte 1 100
@@ -6326,7 +6327,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $72
+LABELV $74
 byte 1 109
 byte 1 111
 byte 1 100
@@ -6358,7 +6359,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $71
+LABELV $73
 byte 1 100
 byte 1 101
 byte 1 102

@@ -38,7 +38,7 @@ CALLV
 pop
 line 18
 ;18:}
-LABELV $53
+LABELV $55
 endproc SP_info_camp 4 8
 export SP_info_null
 proc SP_info_null 0 4
@@ -59,7 +59,7 @@ CALLV
 pop
 line 26
 ;26:}
-LABELV $54
+LABELV $56
 endproc SP_info_null 0 4
 export SP_info_notnull
 proc SP_info_notnull 4 8
@@ -90,7 +90,7 @@ CALLV
 pop
 line 35
 ;35:}
-LABELV $55
+LABELV $57
 endproc SP_info_notnull 4 8
 export SP_light
 proc SP_light 0 4
@@ -115,7 +115,7 @@ CALLV
 pop
 line 47
 ;47:}
-LABELV $56
+LABELV $58
 endproc SP_light 0 4
 export TeleportPlayer
 proc TeleportPlayer 40 16
@@ -143,11 +143,11 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2444
+CNSTI4 2448
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $58
+EQI4 $60
 line 65
 ;65:		tent = G_TempEntity( player->client->ps.origin, EV_PLAYER_TELEPORT_OUT );
 ADDRFP4 0
@@ -220,7 +220,7 @@ INDIRI4
 ASGNI4
 line 70
 ;70:	}
-LABELV $58
+LABELV $60
 line 73
 ;71:
 ;72:	// unlink to make sure it can't possibly interfere with G_KillBox
@@ -429,11 +429,11 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2444
+CNSTI4 2448
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $60
+EQI4 $62
 line 97
 ;97:		G_KillBox (player);
 ADDRFP4 0
@@ -444,7 +444,7 @@ CALLV
 pop
 line 98
 ;98:	}
-LABELV $60
+LABELV $62
 line 101
 ;99:
 ;100:	// save results of pmove
@@ -496,11 +496,11 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2444
+CNSTI4 2448
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $62
+EQI4 $64
 line 107
 ;107:		trap_LinkEntity (player);
 ADDRFP4 0
@@ -511,10 +511,10 @@ CALLV
 pop
 line 108
 ;108:	}
-LABELV $62
+LABELV $64
 line 109
 ;109:}
-LABELV $57
+LABELV $59
 endproc TeleportPlayer 40 16
 export SP_misc_teleporter_dest
 proc SP_misc_teleporter_dest 0 0
@@ -529,7 +529,7 @@ line 117
 ;117:void SP_misc_teleporter_dest( gentity_t *ent ) {
 line 118
 ;118:}
-LABELV $64
+LABELV $66
 endproc SP_misc_teleporter_dest 0 0
 export SP_misc_model
 proc SP_misc_model 0 4
@@ -563,7 +563,7 @@ pop
 line 139
 ;138:#endif
 ;139:}
-LABELV $65
+LABELV $67
 endproc SP_misc_model 0 4
 export locateCamera
 proc locateCamera 52 8
@@ -598,10 +598,10 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $67
+NEU4 $69
 line 150
 ;150:		G_Printf( "Couldn't find target for misc_partal_surface\n" );
-ADDRGP4 $69
+ADDRGP4 $71
 ARGP4
 ADDRGP4 G_Printf
 CALLV
@@ -616,9 +616,9 @@ CALLV
 pop
 line 152
 ;152:		return;
-ADDRGP4 $66
+ADDRGP4 $68
 JUMPV
-LABELV $67
+LABELV $69
 line 154
 ;153:	}
 ;154:	ent->r.ownerNum = owner->s.number;
@@ -642,7 +642,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $70
+EQI4 $72
 line 158
 ;158:		ent->s.frame = 25;
 ADDRFP4 0
@@ -653,9 +653,9 @@ CNSTI4 25
 ASGNI4
 line 159
 ;159:	} else if ( owner->spawnflags & 2 ) {
-ADDRGP4 $71
+ADDRGP4 $73
 JUMPV
-LABELV $70
+LABELV $72
 ADDRLP4 0
 INDIRP4
 CNSTI4 528
@@ -664,7 +664,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $72
+EQI4 $74
 line 160
 ;160:		ent->s.frame = 75;
 ADDRFP4 0
@@ -675,8 +675,8 @@ CNSTI4 75
 ASGNI4
 line 161
 ;161:	}
-LABELV $72
-LABELV $71
+LABELV $74
+LABELV $73
 line 164
 ;162:
 ;163:	// swing camera ?
@@ -689,7 +689,7 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-EQI4 $74
+EQI4 $76
 line 166
 ;165:		// set to 0 for no rotation at all
 ;166:		ent->s.powerups = 0;
@@ -701,9 +701,9 @@ CNSTI4 0
 ASGNI4
 line 167
 ;167:	}
-ADDRGP4 $75
+ADDRGP4 $77
 JUMPV
-LABELV $74
+LABELV $76
 line 168
 ;168:	else {
 line 169
@@ -716,7 +716,7 @@ CNSTI4 1
 ASGNI4
 line 170
 ;170:	}
-LABELV $75
+LABELV $77
 line 173
 ;171:
 ;172:	// clientNum holds the rotate offset
@@ -773,7 +773,7 @@ ADDRLP4 16
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $76
+EQU4 $78
 line 180
 ;180:		VectorSubtract( target->s.origin, owner->s.origin, dir );
 ADDRLP4 36
@@ -839,9 +839,9 @@ CALLF4
 pop
 line 182
 ;182:	} else {
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $76
+LABELV $78
 line 183
 ;183:		G_SetMovedir( owner->s.angles, dir );
 ADDRLP4 0
@@ -856,7 +856,7 @@ CALLV
 pop
 line 184
 ;184:	}
-LABELV $77
+LABELV $79
 line 186
 ;185:
 ;186:	ent->s.eventParm = DirToByte( dir );
@@ -875,7 +875,7 @@ INDIRI4
 ASGNI4
 line 187
 ;187:}
-LABELV $66
+LABELV $68
 endproc locateCamera 52 8
 export SP_misc_portal_surface
 proc SP_misc_portal_surface 20 4
@@ -981,7 +981,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $81
+NEU4 $83
 line 202
 ;202:		VectorCopy( ent->s.origin, ent->s.origin2 );
 ADDRLP4 16
@@ -1000,9 +1000,9 @@ INDIRB
 ASGNB 12
 line 203
 ;203:	} else {
-ADDRGP4 $82
+ADDRGP4 $84
 JUMPV
-LABELV $81
+LABELV $83
 line 204
 ;204:		ent->think = locateCamera;
 ADDRFP4 0
@@ -1024,10 +1024,10 @@ ADDI4
 ASGNI4
 line 206
 ;206:	}
-LABELV $82
+LABELV $84
 line 207
 ;207:}
-LABELV $80
+LABELV $82
 endproc SP_misc_portal_surface 20 4
 export SP_misc_portal_camera
 proc SP_misc_portal_camera 20 12
@@ -1111,9 +1111,9 @@ pop
 line 220
 ;219:
 ;220:	G_SpawnFloat( "roll", "0", &roll );
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
-ADDRGP4 $86
+ADDRGP4 $88
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -1137,7 +1137,7 @@ CVFI4 4
 ASGNI4
 line 223
 ;223:}
-LABELV $84
+LABELV $86
 endproc SP_misc_portal_camera 20 12
 export Use_Shooter
 proc Use_Shooter 76 12
@@ -1166,7 +1166,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $88
+EQU4 $90
 line 240
 ;240:		VectorSubtract( ent->enemy->r.currentOrigin, ent->s.origin, dir );
 ADDRLP4 40
@@ -1236,9 +1236,9 @@ CALLF4
 pop
 line 242
 ;242:	} else {
-ADDRGP4 $89
+ADDRGP4 $91
 JUMPV
-LABELV $88
+LABELV $90
 line 243
 ;243:		VectorCopy( ent->movedir, dir );
 ADDRLP4 0
@@ -1250,7 +1250,7 @@ INDIRB
 ASGNB 12
 line 244
 ;244:	}
-LABELV $89
+LABELV $91
 line 247
 ;245:
 ;246:	// randomize a bit
@@ -1410,18 +1410,18 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 4
-EQI4 $107
+EQI4 $109
 ADDRLP4 56
 INDIRI4
 CNSTI4 5
-EQI4 $108
+EQI4 $110
 ADDRLP4 56
 INDIRI4
 CNSTI4 8
-EQI4 $109
-ADDRGP4 $104
+EQI4 $111
+ADDRGP4 $106
 JUMPV
-LABELV $107
+LABELV $109
 line 260
 ;259:	case WP_GRENADE_LAUNCHER:
 ;260:		fire_grenade( ent, ent->s.origin, dir );
@@ -1444,9 +1444,9 @@ CALLP4
 pop
 line 261
 ;261:		break;
-ADDRGP4 $105
+ADDRGP4 $107
 JUMPV
-LABELV $108
+LABELV $110
 line 263
 ;262:	case WP_ROCKET_LAUNCHER:
 ;263:		fire_rocket( ent, ent->s.origin, dir );
@@ -1469,9 +1469,9 @@ CALLP4
 pop
 line 264
 ;264:		break;
-ADDRGP4 $105
+ADDRGP4 $107
 JUMPV
-LABELV $109
+LABELV $111
 line 266
 ;265:	case WP_PLASMAGUN:
 ;266:		fire_plasma( ent, ent->s.origin, dir );
@@ -1494,8 +1494,8 @@ CALLP4
 pop
 line 267
 ;267:		break;
-LABELV $104
-LABELV $105
+LABELV $106
+LABELV $107
 line 270
 ;268:	}
 ;269:
@@ -1512,7 +1512,7 @@ CALLV
 pop
 line 271
 ;271:}
-LABELV $87
+LABELV $89
 endproc Use_Shooter 76 12
 proc InitShooter_Finish 8 4
 line 274
@@ -1560,7 +1560,7 @@ CNSTI4 0
 ASGNI4
 line 278
 ;278:}
-LABELV $110
+LABELV $112
 endproc InitShooter_Finish 8 4
 export InitShooter
 proc InitShooter 16 8
@@ -1629,7 +1629,7 @@ CNSTI4 800
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $112
+NEF4 $114
 line 289
 ;289:		ent->random = 1.0;
 ADDRFP4 0
@@ -1640,7 +1640,7 @@ CNSTF4 1065353216
 ASGNF4
 line 290
 ;290:	}
-LABELV $112
+LABELV $114
 line 291
 ;291:	ent->random = sin( M_PI * ent->random / 180 );
 ADDRLP4 8
@@ -1676,7 +1676,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $114
+EQU4 $116
 line 294
 ;294:		ent->think = InitShooter_Finish;
 ADDRFP4 0
@@ -1698,7 +1698,7 @@ ADDI4
 ASGNI4
 line 296
 ;296:	}
-LABELV $114
+LABELV $116
 line 297
 ;297:	trap_LinkEntity( ent );
 ADDRFP4 0
@@ -1709,7 +1709,7 @@ CALLV
 pop
 line 298
 ;298:}
-LABELV $111
+LABELV $113
 endproc InitShooter 16 8
 export SP_shooter_rocket
 proc SP_shooter_rocket 0 8
@@ -1732,7 +1732,7 @@ CALLV
 pop
 line 306
 ;306:}
-LABELV $117
+LABELV $119
 endproc SP_shooter_rocket 0 8
 export SP_shooter_plasma
 proc SP_shooter_plasma 0 8
@@ -1755,7 +1755,7 @@ CALLV
 pop
 line 314
 ;314:}
-LABELV $118
+LABELV $120
 endproc SP_shooter_plasma 0 8
 export SP_shooter_grenade
 proc SP_shooter_grenade 0 8
@@ -1778,8 +1778,10 @@ CALLV
 pop
 line 322
 ;322:}
-LABELV $119
+LABELV $121
 endproc SP_shooter_grenade 0 8
+import CheckPlayerPostions
+import G_SendCommandToClient
 import visible
 import findradius
 import trap_SnapVector
@@ -1959,6 +1961,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_MultiJump
 import g_instagib
 import sv_fps
 import g_lightningDamage
@@ -2059,6 +2062,7 @@ import G_ReadSessionData
 import Svcmd_GameMem_f
 import G_InitMemory
 import G_Alloc
+import Team_DropFlags
 import CheckObeliskAttack
 import Team_CheckDroppedItem
 import OnSameTeam
@@ -2124,6 +2128,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_pdgrenade
 import fire_grenade
 import fire_plasma
 import fire_blaster
@@ -2135,6 +2140,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap
 import G_SetOrigin
@@ -2194,6 +2200,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -2358,18 +2365,18 @@ import srand
 import qsort
 lit
 align 1
-LABELV $86
+LABELV $88
 byte 1 48
 byte 1 0
 align 1
-LABELV $85
+LABELV $87
 byte 1 114
 byte 1 111
 byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $69
+LABELV $71
 byte 1 67
 byte 1 111
 byte 1 117

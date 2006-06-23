@@ -54,12 +54,12 @@ line 48
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $69
+EQI4 $71
 line 49
 ;49:		return;
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $69
+LABELV $71
 line 52
 ;50:	}
 ;51:
@@ -76,7 +76,7 @@ CNSTI4 8
 ADDP4
 INDIRI4
 CNSTI4 10
-NEI4 $71
+NEI4 $73
 line 55
 ;55:		result = qfalse;
 ADDRLP4 0
@@ -84,9 +84,9 @@ CNSTI4 0
 ASGNI4
 line 56
 ;56:	}
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $71
+LABELV $73
 line 57
 ;57:	else {
 line 58
@@ -96,7 +96,7 @@ CNSTI4 1
 ASGNI4
 line 59
 ;59:	}
-LABELV $72
+LABELV $74
 line 61
 ;60:
 ;61:	if( s_confirm.action ) {
@@ -104,7 +104,7 @@ ADDRGP4 s_confirm+444
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $73
+EQU4 $75
 line 62
 ;62:		s_confirm.action( result );
 ADDRLP4 0
@@ -116,10 +116,10 @@ CALLV
 pop
 line 63
 ;63:	}
-LABELV $73
+LABELV $75
 line 64
 ;64:}
-LABELV $68
+LABELV $70
 endproc ConfirmMenu_Event 4 4
 proc ConfirmMenu_Key 32 8
 line 72
@@ -144,13 +144,13 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-EQI4 $81
+EQI4 $83
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-GTI4 $86
-LABELV $85
+GTI4 $88
+LABELV $87
 ADDRLP4 8
 ADDRFP4 0
 INDIRI4
@@ -162,20 +162,20 @@ ADDRLP4 8
 INDIRI4
 ADDRLP4 12
 INDIRI4
-EQI4 $81
+EQI4 $83
 ADDRLP4 8
 INDIRI4
 ADDRLP4 12
 INDIRI4
-LTI4 $78
-LABELV $87
+LTI4 $80
+LABELV $89
 ADDRFP4 0
 INDIRI4
 CNSTI4 89
-EQI4 $83
-ADDRGP4 $78
+EQI4 $85
+ADDRGP4 $80
 JUMPV
-LABELV $86
+LABELV $88
 ADDRLP4 16
 ADDRFP4 0
 INDIRI4
@@ -183,7 +183,7 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 134
-EQI4 $80
+EQI4 $82
 ADDRLP4 20
 CNSTI4 135
 ASGNI4
@@ -191,20 +191,20 @@ ADDRLP4 16
 INDIRI4
 ADDRLP4 20
 INDIRI4
-EQI4 $80
+EQI4 $82
 ADDRLP4 16
 INDIRI4
 ADDRLP4 20
 INDIRI4
-GTI4 $89
-LABELV $88
+GTI4 $91
+LABELV $90
 ADDRFP4 0
 INDIRI4
 CNSTI4 121
-EQI4 $83
-ADDRGP4 $78
+EQI4 $85
+ADDRGP4 $80
 JUMPV
-LABELV $89
+LABELV $91
 ADDRLP4 24
 ADDRFP4 0
 INDIRI4
@@ -212,14 +212,14 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 163
-EQI4 $80
+EQI4 $82
 ADDRLP4 24
 INDIRI4
 CNSTI4 165
-EQI4 $80
-ADDRGP4 $78
+EQI4 $82
+ADDRGP4 $80
 JUMPV
-LABELV $80
+LABELV $82
 line 78
 ;74:	case K_KP_LEFTARROW:
 ;75:	case K_LEFTARROW:
@@ -231,9 +231,9 @@ CNSTI4 9
 ASGNI4
 line 79
 ;79:		break;
-ADDRGP4 $79
+ADDRGP4 $81
 JUMPV
-LABELV $81
+LABELV $83
 line 83
 ;80:
 ;81:	case 'n':
@@ -248,9 +248,9 @@ CALLV
 pop
 line 84
 ;84:		break;
-ADDRGP4 $79
+ADDRGP4 $81
 JUMPV
-LABELV $83
+LABELV $85
 line 88
 ;85:
 ;86:	case 'y':
@@ -265,8 +265,8 @@ CALLV
 pop
 line 89
 ;89:		break;
-LABELV $78
-LABELV $79
+LABELV $80
+LABELV $81
 line 92
 ;90:	}
 ;91:
@@ -283,7 +283,7 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 RETI4
-LABELV $77
+LABELV $79
 endproc ConfirmMenu_Key 32 8
 proc MessageMenu_Draw 8 20
 line 101
@@ -308,7 +308,7 @@ CNSTF4 1135837184
 ARGF4
 CNSTF4 1132462080
 ARGF4
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 ADDRGP4 UI_DrawNamedPic
 CALLV
@@ -324,9 +324,9 @@ line 107
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $95
+ADDRGP4 $97
 JUMPV
-LABELV $92
+LABELV $94
 line 108
 ;108:	{
 line 109
@@ -363,7 +363,7 @@ ADDI4
 ASGNI4
 line 111
 ;111:	}
-LABELV $93
+LABELV $95
 line 107
 ADDRLP4 0
 ADDRLP4 0
@@ -371,7 +371,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $95
+LABELV $97
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -382,7 +382,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $92
+NEU4 $94
 line 113
 ;112:
 ;113:	Menu_Draw( &s_confirm.menu );
@@ -398,7 +398,7 @@ ADDRGP4 s_confirm+440
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $99
+EQU4 $101
 line 116
 ;116:		s_confirm.draw();
 ADDRGP4 s_confirm+440
@@ -407,10 +407,10 @@ CALLV
 pop
 line 117
 ;117:	}
-LABELV $99
+LABELV $101
 line 118
 ;118:}
-LABELV $90
+LABELV $92
 endproc MessageMenu_Draw 8 20
 proc ConfirmMenu_Draw 0 20
 line 125
@@ -431,7 +431,7 @@ CNSTF4 1135837184
 ARGF4
 CNSTF4 1132462080
 ARGF4
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 ADDRGP4 UI_DrawNamedPic
 CALLV
@@ -460,7 +460,7 @@ INDIRI4
 ARGI4
 CNSTI4 265
 ARGI4
-ADDRGP4 $107
+ADDRGP4 $109
 ARGP4
 CNSTI4 8192
 ARGI4
@@ -484,7 +484,7 @@ ADDRGP4 s_confirm+440
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $108
+EQU4 $110
 line 133
 ;133:		s_confirm.draw();
 ADDRGP4 s_confirm+440
@@ -493,10 +493,10 @@ CALLV
 pop
 line 134
 ;134:	}
-LABELV $108
+LABELV $110
 line 135
 ;135:}
-LABELV $103
+LABELV $105
 endproc ConfirmMenu_Draw 0 20
 export ConfirmMenu_Cache
 proc ConfirmMenu_Cache 0 4
@@ -511,14 +511,14 @@ line 143
 ;143:void ConfirmMenu_Cache( void ) {
 line 144
 ;144:	trap_R_RegisterShaderNoMip( ART_CONFIRM_FRAME );
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 145
 ;145:}
-LABELV $112
+LABELV $114
 endproc ConfirmMenu_Cache 0 4
 export UI_ConfirmMenu_Style
 proc UI_ConfirmMenu_Style 3120 12
@@ -556,7 +556,7 @@ pop
 line 163
 ;162:
 ;163:	n1 = UI_ProportionalStringWidth( "YES/NO" );
-ADDRGP4 $114
+ADDRGP4 $116
 ARGP4
 ADDRLP4 3108
 ADDRGP4 UI_ProportionalStringWidth
@@ -568,7 +568,7 @@ INDIRI4
 ASGNI4
 line 164
 ;164:	n2 = UI_ProportionalStringWidth( "YES" ) + PROP_GAP_WIDTH;
-ADDRGP4 $115
+ADDRGP4 $117
 ARGP4
 ADDRLP4 3112
 ADDRGP4 UI_ProportionalStringWidth
@@ -582,7 +582,7 @@ ADDI4
 ASGNI4
 line 165
 ;165:	n3 = UI_ProportionalStringWidth( "/" )  + PROP_GAP_WIDTH;
-ADDRGP4 $107
+ADDRGP4 $109
 ARGP4
 ADDRLP4 3116
 ADDRGP4 UI_ProportionalStringWidth
@@ -682,7 +682,7 @@ line 181
 ADDRLP4 8
 INDIRI4
 CNSTI4 5
-LTI4 $124
+LTI4 $126
 line 182
 ;182:		s_confirm.menu.fullscreen = qfalse;
 ADDRGP4 s_confirm+280
@@ -690,9 +690,9 @@ CNSTI4 0
 ASGNI4
 line 183
 ;183:	}
-ADDRGP4 $125
+ADDRGP4 $127
 JUMPV
-LABELV $124
+LABELV $126
 line 184
 ;184:	else {
 line 185
@@ -702,7 +702,7 @@ CNSTI4 1
 ASGNI4
 line 186
 ;186:	}
-LABELV $125
+LABELV $127
 line 188
 ;187:
 ;188:	s_confirm.yes.generic.type		= MTYPE_PTEXT;      
@@ -738,7 +738,7 @@ ASGNI4
 line 194
 ;194:	s_confirm.yes.string			= "YES";
 ADDRGP4 s_confirm+360+60
-ADDRGP4 $115
+ADDRGP4 $117
 ASGNP4
 line 195
 ;195:	s_confirm.yes.color				= color_red;
@@ -785,7 +785,7 @@ ASGNI4
 line 204
 ;204:	s_confirm.no.string				= "NO";
 ADDRGP4 s_confirm+288+60
-ADDRGP4 $158
+ADDRGP4 $160
 ASGNP4
 line 205
 ;205:	s_confirm.no.color			    = color_red;
@@ -836,7 +836,7 @@ CALLV
 pop
 line 214
 ;214:}
-LABELV $113
+LABELV $115
 endproc UI_ConfirmMenu_Style 3120 12
 export UI_ConfirmMenu
 proc UI_ConfirmMenu 0 16
@@ -866,7 +866,7 @@ CALLV
 pop
 line 223
 ;223:}
-LABELV $166
+LABELV $168
 endproc UI_ConfirmMenu 0 16
 export UI_Message
 proc UI_Message 3096 12
@@ -903,7 +903,7 @@ pop
 line 240
 ;239:
 ;240:	n1 = UI_ProportionalStringWidth( "OK" );
-ADDRGP4 $168
+ADDRGP4 $170
 ARGP4
 ADDRLP4 3092
 ADDRGP4 UI_ProportionalStringWidth
@@ -964,7 +964,7 @@ line 251
 ADDRLP4 0
 INDIRI4
 CNSTI4 5
-LTI4 $174
+LTI4 $176
 line 252
 ;252:		s_confirm.menu.fullscreen = qfalse;
 ADDRGP4 s_confirm+280
@@ -972,9 +972,9 @@ CNSTI4 0
 ASGNI4
 line 253
 ;253:	}
-ADDRGP4 $175
+ADDRGP4 $177
 JUMPV
-LABELV $174
+LABELV $176
 line 254
 ;254:	else {
 line 255
@@ -984,7 +984,7 @@ CNSTI4 1
 ASGNI4
 line 256
 ;256:	}
-LABELV $175
+LABELV $177
 line 258
 ;257:
 ;258:	s_confirm.yes.generic.type		= MTYPE_PTEXT;      
@@ -1020,7 +1020,7 @@ ASGNI4
 line 264
 ;264:	s_confirm.yes.string			= "OK";
 ADDRGP4 s_confirm+360+60
-ADDRGP4 $168
+ADDRGP4 $170
 ASGNP4
 line 265
 ;265:	s_confirm.yes.color				= color_red;
@@ -1062,7 +1062,7 @@ CALLV
 pop
 line 273
 ;273:}
-LABELV $167
+LABELV $169
 endproc UI_Message 3096 12
 bss
 align 4
@@ -1379,6 +1379,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1543,23 +1544,23 @@ import srand
 import qsort
 lit
 align 1
-LABELV $168
+LABELV $170
 byte 1 79
 byte 1 75
 byte 1 0
 align 1
-LABELV $158
+LABELV $160
 byte 1 78
 byte 1 79
 byte 1 0
 align 1
-LABELV $115
+LABELV $117
 byte 1 89
 byte 1 69
 byte 1 83
 byte 1 0
 align 1
-LABELV $114
+LABELV $116
 byte 1 89
 byte 1 69
 byte 1 83
@@ -1568,11 +1569,11 @@ byte 1 78
 byte 1 79
 byte 1 0
 align 1
-LABELV $107
+LABELV $109
 byte 1 47
 byte 1 0
 align 1
-LABELV $91
+LABELV $93
 byte 1 109
 byte 1 101
 byte 1 110

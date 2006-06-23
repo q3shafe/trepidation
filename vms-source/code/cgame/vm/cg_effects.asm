@@ -29,12 +29,12 @@ line 22
 ADDRGP4 cg_noProjectileTrail+12
 INDIRI4
 CNSTI4 0
-EQI4 $71
+EQI4 $73
 line 23
 ;23:		return;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $71
+LABELV $73
 line 26
 ;24:	}
 ;25:
@@ -196,9 +196,9 @@ ASGNF4
 line 36
 ;35:
 ;36:	for ( ; i < len; i += spacing ) {
-ADDRGP4 $89
+ADDRGP4 $91
 JUMPV
-LABELV $86
+LABELV $88
 line 40
 ;37:		localEntity_t	*le;
 ;38:		refEntity_t		*re;
@@ -335,7 +335,7 @@ ADDRLP4 68
 INDIRP4
 CNSTI4 112
 ADDP4
-ADDRGP4 cgs+152340+292
+ADDRGP4 cgs+152340+300
 INDIRI4
 ASGNI4
 line 54
@@ -506,7 +506,7 @@ ADDF4
 ASGNF4
 line 69
 ;69:	}
-LABELV $87
+LABELV $89
 line 36
 ADDRLP4 24
 ADDRLP4 24
@@ -517,20 +517,20 @@ INDIRF4
 ADDF4
 CVFI4 4
 ASGNI4
-LABELV $89
+LABELV $91
 ADDRLP4 24
 INDIRI4
 CVIF4 4
 ADDRLP4 28
 INDIRF4
-LTF4 $86
+LTF4 $88
 line 70
 ;70:}
-LABELV $70
+LABELV $72
 endproc CG_BubbleTrail 96 4
 data
 align 4
-LABELV $103
+LABELV $105
 byte 4 146
 export CG_SmokePuff
 code
@@ -596,7 +596,7 @@ ADDP4
 ASGNP4
 line 97
 ;97:	re->rotation = Q_random( &seed ) * 360;
-ADDRGP4 $103
+ADDRGP4 $105
 ARGP4
 ADDRLP4 12
 ADDRGP4 Q_random
@@ -679,7 +679,7 @@ ADDRFP4 36
 INDIRI4
 ADDRFP4 32
 INDIRI4
-LEI4 $104
+LEI4 $106
 line 106
 ;106:		le->lifeRate = 1.0 / ( le->endTime - le->fadeInTime );
 ADDRLP4 0
@@ -703,9 +703,9 @@ DIVF4
 ASGNF4
 line 107
 ;107:	}
-ADDRGP4 $105
+ADDRGP4 $107
 JUMPV
-LABELV $104
+LABELV $106
 line 108
 ;108:	else {
 line 109
@@ -731,7 +731,7 @@ DIVF4
 ASGNF4
 line 110
 ;110:	}
-LABELV $105
+LABELV $107
 line 111
 ;111:	le->color[0] = r;
 ADDRLP4 0
@@ -834,7 +834,7 @@ line 126
 ADDRGP4 cgs+20100+11288
 INDIRI4
 CNSTI4 3
-NEI4 $106
+NEI4 $108
 line 127
 ;127:		re->customShader = cgs.media.smokePuffRageProShader;
 ADDRLP4 4
@@ -878,9 +878,9 @@ CNSTU1 255
 ASGNU1
 line 132
 ;132:	} else {
-ADDRGP4 $107
+ADDRGP4 $109
 JUMPV
-LABELV $106
+LABELV $108
 line 133
 ;133:		re->shaderRGBA[0] = le->color[0] * 0xff;
 ADDRLP4 20
@@ -899,7 +899,7 @@ ADDRLP4 20
 INDIRF4
 ADDRLP4 24
 INDIRF4
-LTF4 $113
+LTF4 $115
 ADDRLP4 16
 ADDRLP4 20
 INDIRF4
@@ -911,16 +911,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $114
+ADDRGP4 $116
 JUMPV
-LABELV $113
+LABELV $115
 ADDRLP4 16
 ADDRLP4 20
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $114
+LABELV $116
 ADDRLP4 4
 INDIRP4
 CNSTI4 116
@@ -947,7 +947,7 @@ ADDRLP4 32
 INDIRF4
 ADDRLP4 36
 INDIRF4
-LTF4 $116
+LTF4 $118
 ADDRLP4 28
 ADDRLP4 32
 INDIRF4
@@ -959,16 +959,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $117
+ADDRGP4 $119
 JUMPV
-LABELV $116
+LABELV $118
 ADDRLP4 28
 ADDRLP4 32
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $117
+LABELV $119
 ADDRLP4 4
 INDIRP4
 CNSTI4 117
@@ -995,7 +995,7 @@ ADDRLP4 44
 INDIRF4
 ADDRLP4 48
 INDIRF4
-LTF4 $119
+LTF4 $121
 ADDRLP4 40
 ADDRLP4 44
 INDIRF4
@@ -1007,16 +1007,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $120
+ADDRGP4 $122
 JUMPV
-LABELV $119
+LABELV $121
 ADDRLP4 40
 ADDRLP4 44
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $120
+LABELV $122
 ADDRLP4 4
 INDIRP4
 CNSTI4 118
@@ -1035,7 +1035,7 @@ CNSTU1 255
 ASGNU1
 line 137
 ;137:	}
-LABELV $107
+LABELV $109
 line 139
 ;138:
 ;139:	re->reType = RT_SPRITE;
@@ -1061,7 +1061,7 @@ line 142
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $102
+LABELV $104
 endproc CG_SmokePuff 52 4
 export CG_SpawnEffect
 proc CG_SpawnEffect 28 4
@@ -1216,7 +1216,7 @@ ADDRLP4 4
 INDIRP4
 CNSTI4 112
 ADDP4
-ADDRGP4 cgs+152340+488
+ADDRGP4 cgs+152340+496
 INDIRI4
 ASGNI4
 line 173
@@ -1226,7 +1226,7 @@ ADDRLP4 4
 INDIRP4
 CNSTI4 8
 ADDP4
-ADDRGP4 cgs+152340+484
+ADDRGP4 cgs+152340+492
 INDIRI4
 ASGNI4
 line 174
@@ -1272,11 +1272,11 @@ ASGNF4
 line 182
 ;181:#endif
 ;182:}
-LABELV $121
+LABELV $123
 endproc CG_SpawnEffect 28 4
 bss
 align 4
-LABELV $130
+LABELV $132
 skip 12
 export CG_ScorePlum
 code
@@ -1479,17 +1479,17 @@ ADDRFP4 0
 INDIRI4
 ADDRGP4 cg+107636+140
 INDIRI4
-NEI4 $136
+NEI4 $138
 ADDRGP4 cg_scorePlum+12
 INDIRI4
 CNSTI4 0
-NEI4 $131
-LABELV $136
+NEI4 $133
+LABELV $138
 line 375
 ;375:		return;
-ADDRGP4 $129
+ADDRGP4 $131
 JUMPV
-LABELV $131
+LABELV $133
 line 378
 ;376:	}
 ;377:
@@ -1634,20 +1634,20 @@ CNSTF4 1101004800
 ASGNF4
 ADDRLP4 40
 INDIRF4
-ADDRGP4 $130+8
+ADDRGP4 $132+8
 INDIRF4
 ADDRLP4 44
 INDIRF4
 SUBF4
-LTF4 $139
+LTF4 $141
 ADDRLP4 40
 INDIRF4
-ADDRGP4 $130+8
+ADDRGP4 $132+8
 INDIRF4
 ADDRLP4 44
 INDIRF4
 ADDF4
-GTF4 $139
+GTF4 $141
 line 391
 ;391:		le->pos.trBase[2] -= 20;
 ADDRLP4 48
@@ -1666,12 +1666,12 @@ SUBF4
 ASGNF4
 line 392
 ;392:	}
-LABELV $139
+LABELV $141
 line 395
 ;393:
 ;394:	//CG_Printf( "Plum origin %i %i %i -- %i\n", (int)org[0], (int)org[1], (int)org[2], (int)Distance(org, lastPos));
 ;395:	VectorCopy(org, lastPos);
-ADDRGP4 $130
+ADDRGP4 $132
 ADDRFP4 4
 INDIRP4
 INDIRB
@@ -1733,7 +1733,7 @@ CALLV
 pop
 line 405
 ;405:}
-LABELV $129
+LABELV $131
 endproc CG_ScorePlum 52 8
 export CG_MakeExplosion
 proc CG_MakeExplosion 60 8
@@ -1758,10 +1758,10 @@ line 421
 ADDRFP4 16
 INDIRI4
 CNSTI4 0
-GTI4 $146
+GTI4 $148
 line 422
 ;422:		CG_Error( "CG_MakeExplosion: msec = %i", msec );
-ADDRGP4 $148
+ADDRGP4 $150
 ARGP4
 ADDRFP4 16
 INDIRI4
@@ -1771,7 +1771,7 @@ CALLV
 pop
 line 423
 ;423:	}
-LABELV $146
+LABELV $148
 line 426
 ;424:
 ;425:	// skew the time a bit so they aren't all in sync
@@ -1802,7 +1802,7 @@ line 429
 ADDRFP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $149
+EQI4 $151
 line 430
 ;430:		ex->leType = LE_SPRITE_EXPLOSION;
 ADDRLP4 0
@@ -1901,9 +1901,9 @@ ADDF4
 ASGNF4
 line 436
 ;436:	} else {
-ADDRGP4 $150
+ADDRGP4 $152
 JUMPV
-LABELV $149
+LABELV $151
 line 437
 ;437:		ex->leType = LE_EXPLOSION;
 ADDRLP4 0
@@ -1927,7 +1927,7 @@ ADDRFP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $157
+NEU4 $159
 line 442
 ;442:			AxisClear( ex->refEntity.axis );
 ADDRLP4 0
@@ -1940,9 +1940,9 @@ CALLV
 pop
 line 443
 ;443:		} else {
-ADDRGP4 $158
+ADDRGP4 $160
 JUMPV
-LABELV $157
+LABELV $159
 line 444
 ;444:			ang = rand() % 360;
 ADDRLP4 44
@@ -1981,10 +1981,10 @@ CALLV
 pop
 line 447
 ;447:		}
-LABELV $158
+LABELV $160
 line 448
 ;448:	}
-LABELV $150
+LABELV $152
 line 450
 ;449:
 ;450:	ex->startTime = cg.time - offset;
@@ -2102,7 +2102,7 @@ line 465
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $145
+LABELV $147
 endproc CG_MakeExplosion 60 8
 export CG_Bleed
 proc CG_Bleed 20 0
@@ -2125,12 +2125,12 @@ line 479
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $161
+NEI4 $163
 line 480
 ;480:		return;
-ADDRGP4 $160
+ADDRGP4 $162
 JUMPV
-LABELV $161
+LABELV $163
 line 483
 ;481:	}
 ;482:
@@ -2225,7 +2225,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 264
 ADDP4
-ADDRGP4 cgs+152340+472
+ADDRGP4 cgs+152340+480
 INDIRI4
 ASGNI4
 line 497
@@ -2239,7 +2239,7 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-NEI4 $167
+NEI4 $169
 line 498
 ;498:		ex->refEntity.renderfx |= RF_THIRD_PERSON;
 ADDRLP4 16
@@ -2258,10 +2258,10 @@ BORI4
 ASGNI4
 line 499
 ;499:	}
-LABELV $167
+LABELV $169
 line 500
 ;500:}
-LABELV $160
+LABELV $162
 endproc CG_Bleed 20 0
 export CG_LaunchGib
 proc CG_LaunchGib 20 8
@@ -2442,7 +2442,7 @@ CNSTI4 2
 ASGNI4
 line 533
 ;533:}
-LABELV $170
+LABELV $172
 endproc CG_LaunchGib 20 8
 export CG_GibPlayer
 proc CG_GibPlayer 148 12
@@ -2465,12 +2465,12 @@ line 547
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $174
+NEI4 $176
 line 548
 ;548:		return;
-ADDRGP4 $173
+ADDRGP4 $175
 JUMPV
-LABELV $174
+LABELV $176
 line 551
 ;549:	}
 ;550:
@@ -2556,7 +2556,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $179
+EQI4 $181
 line 556
 ;556:		CG_LaunchGib( origin, velocity, cgs.media.gibSkull );
 ADDRLP4 12
@@ -2571,9 +2571,9 @@ CALLV
 pop
 line 557
 ;557:	} else {
-ADDRGP4 $180
+ADDRGP4 $182
 JUMPV
-LABELV $179
+LABELV $181
 line 558
 ;558:		CG_LaunchGib( origin, velocity, cgs.media.gibBrain );
 ADDRLP4 12
@@ -2588,7 +2588,7 @@ CALLV
 pop
 line 559
 ;559:	}
-LABELV $180
+LABELV $182
 line 562
 ;560:
 ;561:	// allow gibs to be turned off for speed
@@ -2596,12 +2596,12 @@ line 562
 ADDRGP4 cg_gibs+12
 INDIRI4
 CNSTI4 0
-NEI4 $185
+NEI4 $187
 line 563
 ;563:		return;
-ADDRGP4 $173
+ADDRGP4 $175
 JUMPV
-LABELV $185
+LABELV $187
 line 566
 ;564:	}
 ;565:
@@ -3370,7 +3370,7 @@ CALLV
 pop
 line 619
 ;619:}
-LABELV $173
+LABELV $175
 endproc CG_GibPlayer 148 12
 export CG_LaunchExplode
 proc CG_LaunchExplode 20 8
@@ -3549,7 +3549,7 @@ CNSTI4 0
 ASGNI4
 line 650
 ;650:}
-LABELV $224
+LABELV $226
 endproc CG_LaunchExplode 20 8
 export CG_BigExplode
 proc CG_BigExplode 92 12
@@ -3572,12 +3572,12 @@ line 664
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $228
+NEI4 $230
 line 665
 ;665:		return;
-ADDRGP4 $227
+ADDRGP4 $229
 JUMPV
-LABELV $228
+LABELV $230
 line 668
 ;666:	}
 ;667:
@@ -4028,7 +4028,7 @@ CALLV
 pop
 line 697
 ;697:}
-LABELV $227
+LABELV $229
 endproc CG_BigExplode 92 12
 export CG_GibPlayerHeadshot
 proc CG_GibPlayerHeadshot 76 12
@@ -4043,12 +4043,12 @@ line 703
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $252
+NEI4 $254
 line 704
 ;704:		return;
-ADDRGP4 $251
+ADDRGP4 $253
 JUMPV
-LABELV $252
+LABELV $254
 line 707
 ;705:	}
 ;706:
@@ -4142,7 +4142,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $258
+EQI4 $260
 line 713
 ;713:		CG_LaunchGib( origin, velocity, cgs.media.gibSkull );
 ADDRLP4 12
@@ -4157,9 +4157,9 @@ CALLV
 pop
 line 714
 ;714:	} else {
-ADDRGP4 $259
+ADDRGP4 $261
 JUMPV
-LABELV $258
+LABELV $260
 line 715
 ;715:		CG_LaunchGib( origin, velocity, cgs.media.gibBrain );
 ADDRLP4 12
@@ -4174,7 +4174,7 @@ CALLV
 pop
 line 716
 ;716:	}
-LABELV $259
+LABELV $261
 line 719
 ;717:
 ;718:	//delete from here
@@ -4432,11 +4432,17 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 738
+line 741
 ;737:
-;738:}
-LABELV $251
+;738:	
+;739:	
+;740:
+;741:}
+LABELV $253
 endproc CG_GibPlayerHeadshot 76 12
+import CG_DrawScanner
+import CG_ScannerOff_f
+import CG_ScannerOn_f
 import CG_NewParticleArea
 import initparticles
 import CG_ParticleExplosion
@@ -4677,6 +4683,7 @@ import CG_ConfigString
 import CG_Cvar_ClampInt
 import CG_AddBoundingBox
 import CG_PredictWeaponEffects
+import cg_playerOrigins
 import cg_plOut
 import cg_latentCmds
 import cg_latentSnaps
@@ -4790,6 +4797,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -4954,7 +4962,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $148
+LABELV $150
 byte 1 67
 byte 1 71
 byte 1 95

@@ -110,12 +110,12 @@ line 104
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $71
+NEI4 $73
 line 105
 ;105:		return;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $71
+LABELV $73
 line 108
 ;106:	}
 ;107:
@@ -127,14 +127,14 @@ line 109
 ;109:	trap_Cmd_ExecuteText( EXEC_APPEND, "map_restart 0\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $73
+ADDRGP4 $75
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
 line 110
 ;110:}
-LABELV $70
+LABELV $72
 endproc InGame_RestartAction 0 8
 proc InGame_QuitAction 0 0
 line 118
@@ -151,12 +151,12 @@ line 119
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $75
+NEI4 $77
 line 120
 ;120:		return;
-ADDRGP4 $74
+ADDRGP4 $76
 JUMPV
-LABELV $75
+LABELV $77
 line 122
 ;121:	}
 ;122:	UI_PopMenu();
@@ -170,7 +170,7 @@ CALLV
 pop
 line 124
 ;124:}
-LABELV $74
+LABELV $76
 endproc InGame_QuitAction 0 0
 export InGame_Event
 proc InGame_Event 8 12
@@ -188,12 +188,12 @@ line 133
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $78
+EQI4 $80
 line 134
 ;134:		return;
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $78
+LABELV $80
 line 137
 ;135:	}
 ;136:
@@ -208,34 +208,34 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-LTI4 $80
+LTI4 $82
 ADDRLP4 0
 INDIRI4
 CNSTI4 19
-GTI4 $80
+GTI4 $82
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $96-40
+ADDRGP4 $98-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $96
-address $83
-address $92
-address $93
-address $84
-address $91
+LABELV $98
 address $85
+address $94
+address $95
+address $86
+address $93
 address $87
 address $89
-address $95
-address $94
+address $91
+address $97
+address $96
 code
-LABELV $83
+LABELV $85
 line 139
 ;138:	case ID_TEAM:
 ;139:		UI_TeamMainMenu();
@@ -244,9 +244,9 @@ CALLV
 pop
 line 140
 ;140:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $84
+LABELV $86
 line 143
 ;141:
 ;142:	case ID_SETUP:
@@ -256,30 +256,30 @@ CALLV
 pop
 line 144
 ;144:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $85
+LABELV $87
 line 147
 ;145:
 ;146:	case ID_LEAVEARENA:
 ;147:		trap_Cmd_ExecuteText( EXEC_APPEND, "disconnect\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $86
+ADDRGP4 $88
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
 line 148
 ;148:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $87
+LABELV $89
 line 151
 ;149:
 ;150:	case ID_RESTART:
 ;151:		UI_ConfirmMenu( "RESTART ARENA?", (voidfunc_f)NULL, InGame_RestartAction );
-ADDRGP4 $88
+ADDRGP4 $90
 ARGP4
 CNSTP4 0
 ARGP4
@@ -290,14 +290,14 @@ CALLV
 pop
 line 152
 ;152:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $89
+LABELV $91
 line 155
 ;153:
 ;154:	case ID_QUIT:
 ;155:		UI_ConfirmMenu( "EXIT GAME?",  (voidfunc_f)NULL, InGame_QuitAction );
-ADDRGP4 $90
+ADDRGP4 $92
 ARGP4
 CNSTP4 0
 ARGP4
@@ -308,9 +308,9 @@ CALLV
 pop
 line 156
 ;156:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $91
+LABELV $93
 line 159
 ;157:
 ;158:	case ID_SERVERINFO:
@@ -320,9 +320,9 @@ CALLV
 pop
 line 160
 ;160:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $92
+LABELV $94
 line 163
 ;161:
 ;162:	case ID_ADDBOTS:
@@ -332,9 +332,9 @@ CALLV
 pop
 line 164
 ;164:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $93
+LABELV $95
 line 167
 ;165:
 ;166:	case ID_REMOVEBOTS:
@@ -344,9 +344,9 @@ CALLV
 pop
 line 168
 ;168:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $94
+LABELV $96
 line 171
 ;169:
 ;170:	case ID_TEAMORDERS:
@@ -356,9 +356,9 @@ CALLV
 pop
 line 172
 ;172:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $95
+LABELV $97
 line 175
 ;173:
 ;174:	case ID_RESUME:
@@ -368,12 +368,12 @@ CALLV
 pop
 line 176
 ;176:		break;
-LABELV $80
-LABELV $81
+LABELV $82
+LABELV $83
 line 178
 ;177:	}
 ;178:}
-LABELV $77
+LABELV $79
 endproc InGame_Event 8 12
 export InGame_MenuInit
 proc InGame_MenuInit 4156 12
@@ -433,7 +433,7 @@ ASGNU4
 line 201
 ;201:	s_ingame.frame.generic.name			= INGAME_FRAME;
 ADDRGP4 s_ingame+288+4
-ADDRGP4 $106
+ADDRGP4 $108
 ASGNP4
 line 202
 ;202:	s_ingame.frame.generic.x			= 320-233;//142;
@@ -496,7 +496,7 @@ ASGNP4
 line 215
 ;215:	s_ingame.team.string				= "START";
 ADDRGP4 s_ingame+376+60
-ADDRGP4 $128
+ADDRGP4 $130
 ASGNP4
 line 216
 ;216:	s_ingame.team.color					= color_red;
@@ -551,7 +551,7 @@ ASGNP4
 line 226
 ;226:	s_ingame.addbots.string				= "ADD BOTS";
 ADDRGP4 s_ingame+736+60
-ADDRGP4 $146
+ADDRGP4 $148
 ASGNP4
 line 227
 ;227:	s_ingame.addbots.color				= color_red;
@@ -565,27 +565,27 @@ CNSTI4 17
 ASGNI4
 line 229
 ;229:	if( !trap_Cvar_VariableValue( "sv_running" ) || !trap_Cvar_VariableValue( "bot_enable" ) || (trap_Cvar_VariableValue( "g_gametype" ) == GT_SINGLE_PLAYER)) {
-ADDRGP4 $153
-ARGP4
-ADDRLP4 4116
-ADDRGP4 trap_Cvar_VariableValue
-CALLF4
-ASGNF4
-ADDRLP4 4116
-INDIRF4
-CNSTF4 0
-EQF4 $157
-ADDRGP4 $154
-ARGP4
-ADDRLP4 4120
-ADDRGP4 trap_Cvar_VariableValue
-CALLF4
-ASGNF4
-ADDRLP4 4120
-INDIRF4
-CNSTF4 0
-EQF4 $157
 ADDRGP4 $155
+ARGP4
+ADDRLP4 4116
+ADDRGP4 trap_Cvar_VariableValue
+CALLF4
+ASGNF4
+ADDRLP4 4116
+INDIRF4
+CNSTF4 0
+EQF4 $159
+ADDRGP4 $156
+ARGP4
+ADDRLP4 4120
+ADDRGP4 trap_Cvar_VariableValue
+CALLF4
+ASGNF4
+ADDRLP4 4120
+INDIRF4
+CNSTF4 0
+EQF4 $159
+ADDRGP4 $157
 ARGP4
 ADDRLP4 4124
 ADDRGP4 trap_Cvar_VariableValue
@@ -594,8 +594,8 @@ ASGNF4
 ADDRLP4 4124
 INDIRF4
 CNSTF4 1073741824
-NEF4 $151
-LABELV $157
+NEF4 $153
+LABELV $159
 line 230
 ;230:		s_ingame.addbots.generic.flags |= QMF_GRAYED;
 ADDRLP4 4128
@@ -611,7 +611,7 @@ BORU4
 ASGNU4
 line 231
 ;231:	}
-LABELV $151
+LABELV $153
 line 233
 ;232:
 ;233:	y += INGAME_MENU_VERTICAL_SPACING;
@@ -655,7 +655,7 @@ ASGNP4
 line 240
 ;240:	s_ingame.removebots.string				= "REMOVE BOTS";
 ADDRGP4 s_ingame+808+60
-ADDRGP4 $173
+ADDRGP4 $175
 ASGNP4
 line 241
 ;241:	s_ingame.removebots.color				= color_red;
@@ -669,27 +669,27 @@ CNSTI4 17
 ASGNI4
 line 243
 ;243:	if( !trap_Cvar_VariableValue( "sv_running" ) || !trap_Cvar_VariableValue( "bot_enable" ) || (trap_Cvar_VariableValue( "g_gametype" ) == GT_SINGLE_PLAYER)) {
-ADDRGP4 $153
-ARGP4
-ADDRLP4 4128
-ADDRGP4 trap_Cvar_VariableValue
-CALLF4
-ASGNF4
-ADDRLP4 4128
-INDIRF4
-CNSTF4 0
-EQF4 $181
-ADDRGP4 $154
-ARGP4
-ADDRLP4 4132
-ADDRGP4 trap_Cvar_VariableValue
-CALLF4
-ASGNF4
-ADDRLP4 4132
-INDIRF4
-CNSTF4 0
-EQF4 $181
 ADDRGP4 $155
+ARGP4
+ADDRLP4 4128
+ADDRGP4 trap_Cvar_VariableValue
+CALLF4
+ASGNF4
+ADDRLP4 4128
+INDIRF4
+CNSTF4 0
+EQF4 $183
+ADDRGP4 $156
+ARGP4
+ADDRLP4 4132
+ADDRGP4 trap_Cvar_VariableValue
+CALLF4
+ASGNF4
+ADDRLP4 4132
+INDIRF4
+CNSTF4 0
+EQF4 $183
+ADDRGP4 $157
 ARGP4
 ADDRLP4 4136
 ADDRGP4 trap_Cvar_VariableValue
@@ -698,8 +698,8 @@ ASGNF4
 ADDRLP4 4136
 INDIRF4
 CNSTF4 1073741824
-NEF4 $178
-LABELV $181
+NEF4 $180
+LABELV $183
 line 244
 ;244:		s_ingame.removebots.generic.flags |= QMF_GRAYED;
 ADDRLP4 4140
@@ -715,7 +715,7 @@ BORU4
 ASGNU4
 line 245
 ;245:	}
-LABELV $178
+LABELV $180
 line 247
 ;246:
 ;247:	y += INGAME_MENU_VERTICAL_SPACING;
@@ -759,7 +759,7 @@ ASGNP4
 line 254
 ;254:	s_ingame.teamorders.string				= "TEAM ORDERS";
 ADDRGP4 s_ingame+880+60
-ADDRGP4 $197
+ADDRGP4 $199
 ASGNP4
 line 255
 ;255:	s_ingame.teamorders.color				= color_red;
@@ -773,7 +773,7 @@ CNSTI4 17
 ASGNI4
 line 257
 ;257:	if( !(trap_Cvar_VariableValue( "g_gametype" ) >= GT_TEAM) ) {
-ADDRGP4 $155
+ADDRGP4 $157
 ARGP4
 ADDRLP4 4140
 ADDRGP4 trap_Cvar_VariableValue
@@ -782,7 +782,7 @@ ASGNF4
 ADDRLP4 4140
 INDIRF4
 CNSTF4 1077936128
-GEF4 $202
+GEF4 $204
 line 258
 ;258:		s_ingame.teamorders.generic.flags |= QMF_GRAYED;
 ADDRLP4 4144
@@ -798,9 +798,9 @@ BORU4
 ASGNU4
 line 259
 ;259:	}
-ADDRGP4 $203
+ADDRGP4 $205
 JUMPV
-LABELV $202
+LABELV $204
 line 260
 ;260:	else {
 line 261
@@ -828,7 +828,7 @@ line 263
 ;263:		team = atoi( Info_ValueForKey( info, "t" ) );
 ADDRLP4 3088
 ARGP4
-ADDRGP4 $207
+ADDRGP4 $209
 ARGP4
 ADDRLP4 4144
 ADDRGP4 Info_ValueForKey
@@ -850,7 +850,7 @@ line 264
 ADDRLP4 4112
 INDIRI4
 CNSTI4 3
-NEI4 $208
+NEI4 $210
 line 265
 ;265:			s_ingame.teamorders.generic.flags |= QMF_GRAYED;
 ADDRLP4 4152
@@ -866,10 +866,10 @@ BORU4
 ASGNU4
 line 266
 ;266:		}
-LABELV $208
+LABELV $210
 line 267
 ;267:	}
-LABELV $203
+LABELV $205
 line 269
 ;268:
 ;269:	y += INGAME_MENU_VERTICAL_SPACING;
@@ -913,7 +913,7 @@ ASGNP4
 line 276
 ;276:	s_ingame.setup.string				= "SETUP";
 ADDRGP4 s_ingame+448+60
-ADDRGP4 $225
+ADDRGP4 $227
 ASGNP4
 line 277
 ;277:	s_ingame.setup.color				= color_red;
@@ -968,7 +968,7 @@ ASGNP4
 line 287
 ;287:	s_ingame.server.string				= "SERVER INFO";
 ADDRGP4 s_ingame+520+60
-ADDRGP4 $243
+ADDRGP4 $245
 ASGNP4
 line 288
 ;288:	s_ingame.server.color				= color_red;
@@ -1023,7 +1023,7 @@ ASGNP4
 line 298
 ;298:	s_ingame.restart.string				= "RESTART MAP"; // Shafe - Trep Minor Text Change
 ADDRGP4 s_ingame+664+60
-ADDRGP4 $261
+ADDRGP4 $263
 ASGNP4
 line 299
 ;299:	s_ingame.restart.color				= color_red;
@@ -1037,7 +1037,7 @@ CNSTI4 17
 ASGNI4
 line 301
 ;301:	if( !trap_Cvar_VariableValue( "sv_running" ) ) {
-ADDRGP4 $153
+ADDRGP4 $155
 ARGP4
 ADDRLP4 4144
 ADDRGP4 trap_Cvar_VariableValue
@@ -1046,7 +1046,7 @@ ASGNF4
 ADDRLP4 4144
 INDIRF4
 CNSTF4 0
-NEF4 $266
+NEF4 $268
 line 302
 ;302:		s_ingame.restart.generic.flags |= QMF_GRAYED;
 ADDRLP4 4148
@@ -1062,7 +1062,7 @@ BORU4
 ASGNU4
 line 303
 ;303:	}
-LABELV $266
+LABELV $268
 line 305
 ;304:
 ;305:	y += INGAME_MENU_VERTICAL_SPACING;
@@ -1106,7 +1106,7 @@ ASGNP4
 line 312
 ;312:	s_ingame.resume.string					= "RESUME GAME";
 ADDRGP4 s_ingame+1024+60
-ADDRGP4 $283
+ADDRGP4 $285
 ASGNP4
 line 313
 ;313:	s_ingame.resume.color					= color_red;
@@ -1161,7 +1161,7 @@ ASGNP4
 line 323
 ;323:	s_ingame.leave.string				= "MAIN MENU"; // Shafe - Trep Minor Text Change
 ADDRGP4 s_ingame+592+60
-ADDRGP4 $301
+ADDRGP4 $303
 ASGNP4
 line 324
 ;324:	s_ingame.leave.color				= color_red;
@@ -1216,7 +1216,7 @@ ASGNP4
 line 334
 ;334:	s_ingame.quit.string				= "EXIT TREPIDATION"; // Shafe - Trep - Minor Text Change
 ADDRGP4 s_ingame+952+60
-ADDRGP4 $319
+ADDRGP4 $321
 ASGNP4
 line 335
 ;335:	s_ingame.quit.color					= color_red;
@@ -1330,7 +1330,7 @@ CALLV
 pop
 line 349
 ;349:}
-LABELV $98
+LABELV $100
 endproc InGame_MenuInit 4156 12
 export InGame_Cache
 proc InGame_Cache 0 4
@@ -1345,14 +1345,14 @@ line 357
 ;357:void InGame_Cache( void ) {
 line 358
 ;358:	trap_R_RegisterShaderNoMip( INGAME_FRAME );
-ADDRGP4 $106
+ADDRGP4 $108
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 359
 ;359:}
-LABELV $335
+LABELV $337
 endproc InGame_Cache 0 4
 export UI_InGameMenu
 proc UI_InGameMenu 0 4
@@ -1398,7 +1398,7 @@ CALLV
 pop
 line 377
 ;377:}
-LABELV $336
+LABELV $338
 endproc UI_InGameMenu 0 4
 proc DynamicMenu_SubMenuInit 8 0
 line 397
@@ -1429,29 +1429,29 @@ line 400
 ADDRGP4 s_dynamic+7020
 INDIRI4
 CNSTI4 6
-NEI4 $341
+NEI4 $343
 line 401
 ;401:return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $340
+ADDRGP4 $342
 JUMPV
-LABELV $341
+LABELV $343
 line 403
 ;402:
 ;403:if (s_dynamic.depth == 0)
 ADDRGP4 s_dynamic+7020
 INDIRI4
 CNSTI4 0
-NEI4 $344
+NEI4 $346
 line 404
 ;404:pos = 0;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $345
+ADDRGP4 $347
 JUMPV
-LABELV $344
+LABELV $346
 line 406
 ;405:else
 ;406:pos = s_dynamic.end[s_dynamic.depth - 1];
@@ -1464,21 +1464,21 @@ ADDRGP4 s_dynamic+6968-4
 ADDP4
 INDIRI4
 ASGNI4
-LABELV $345
+LABELV $347
 line 408
 ;407:
 ;408:if (pos == MAX_MENUITEMS)
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-NEI4 $350
+NEI4 $352
 line 409
 ;409:return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $340
+ADDRGP4 $342
 JUMPV
-LABELV $350
+LABELV $352
 line 411
 ;410:
 ;411:s_dynamic.depth++;
@@ -1530,7 +1530,7 @@ line 416
 ;416:return qtrue;
 CNSTI4 1
 RETI4
-LABELV $340
+LABELV $342
 endproc DynamicMenu_SubMenuInit 8 0
 proc DynamicMenu_AddItem 24 12
 line 427
@@ -1572,14 +1572,14 @@ line 433
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-NEI4 $365
+NEI4 $367
 line 434
 ;434:return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $362
+ADDRGP4 $364
 JUMPV
-LABELV $365
+LABELV $367
 line 437
 ;435:
 ;436:// can't have submenu and event attached to menu item
@@ -1592,20 +1592,20 @@ INDIRP4
 CVPU4 4
 ADDRLP4 8
 INDIRU4
-EQU4 $367
+EQU4 $369
 ADDRFP4 12
 INDIRP4
 CVPU4 4
 ADDRLP4 8
 INDIRU4
-EQU4 $367
+EQU4 $369
 line 438
 ;438:return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $362
+ADDRGP4 $364
 JUMPV
-LABELV $367
+LABELV $369
 line 440
 ;439:
 ;440:if (!string || !string[0])
@@ -1617,20 +1617,20 @@ ADDRLP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $371
+EQU4 $373
 ADDRLP4 12
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $369
-LABELV $371
+NEI4 $371
+LABELV $373
 line 441
 ;441:string = "[no text]";
 ADDRFP4 0
-ADDRGP4 $372
+ADDRGP4 $374
 ASGNP4
-LABELV $369
+LABELV $371
 line 443
 ;442:
 ;443:s_dynamic.data[index].index = index;
@@ -1717,7 +1717,7 @@ line 451
 ;451:return qtrue;
 CNSTI4 1
 RETI4
-LABELV $362
+LABELV $364
 endproc DynamicMenu_AddItem 24 12
 proc DynamicMenu_FinishSubMenuInit 68 4
 line 461
@@ -1791,9 +1791,9 @@ line 479
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $390
+ADDRGP4 $392
 JUMPV
-LABELV $387
+LABELV $389
 line 480
 ;480:{
 line 481
@@ -1822,14 +1822,14 @@ ADDRLP4 28
 INDIRI4
 ADDRLP4 24
 INDIRI4
-LEI4 $392
+LEI4 $394
 line 483
 ;483:maxwidth = width;
 ADDRLP4 24
 ADDRLP4 28
 INDIRI4
 ASGNI4
-LABELV $392
+LABELV $394
 line 485
 ;484:
 ;485:if (s_dynamic.data[i + start].createSubMenu)
@@ -1845,16 +1845,16 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $394
+EQU4 $396
 line 486
 ;486:submenu = qtrue;
 ADDRLP4 36
 CNSTI4 1
 ASGNI4
-LABELV $394
+LABELV $396
 line 487
 ;487:}
-LABELV $388
+LABELV $390
 line 479
 ADDRLP4 0
 ADDRLP4 0
@@ -1862,12 +1862,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $390
+LABELV $392
 ADDRLP4 0
 INDIRI4
 ADDRLP4 32
 INDIRI4
-LTI4 $387
+LTI4 $389
 line 489
 ;488:
 ;489:scale = UI_ProportionalSizeScale(UI_SMALLFONT);
@@ -1886,13 +1886,13 @@ line 490
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $398
+EQI4 $400
 line 491
 ;491:{
 line 493
 ;492:// space and submenu pointer
 ;493:maxwidth += UI_ProportionalStringWidth(" \r");
-ADDRGP4 $400
+ADDRGP4 $402
 ARGP4
 ADDRLP4 60
 ADDRGP4 UI_ProportionalStringWidth
@@ -1907,7 +1907,7 @@ ADDI4
 ASGNI4
 line 494
 ;494:}
-LABELV $398
+LABELV $400
 line 496
 ;495:
 ;496:maxwidth *= scale;
@@ -1948,7 +1948,7 @@ line 502
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
-NEI4 $401
+NEI4 $403
 line 503
 ;503:{
 line 504
@@ -1968,9 +1968,9 @@ CNSTI4 0
 ASGNI4
 line 506
 ;506:}
-ADDRGP4 $402
+ADDRGP4 $404
 JUMPV
-LABELV $401
+LABELV $403
 line 508
 ;507:else
 ;508:{
@@ -2016,7 +2016,7 @@ ADDRLP4 48
 INDIRI4
 ADDI4
 CNSTI4 416
-LEI4 $409
+LEI4 $411
 line 514
 ;514:posy = 480 - 64 - height;
 ADDRLP4 16
@@ -2025,19 +2025,19 @@ ADDRLP4 48
 INDIRI4
 SUBI4
 ASGNI4
-LABELV $409
+LABELV $411
 line 515
 ;515:}
-LABELV $402
+LABELV $404
 line 517
 ;516:
 ;517:for (i = 0; i < count; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $414
+ADDRGP4 $416
 JUMPV
-LABELV $411
+LABELV $413
 line 518
 ;518:{
 line 519
@@ -2164,7 +2164,7 @@ BANDU4
 ASGNU4
 line 530
 ;530:}
-LABELV $412
+LABELV $414
 line 517
 ADDRLP4 0
 ADDRLP4 0
@@ -2172,15 +2172,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $414
+LABELV $416
 ADDRLP4 0
 INDIRI4
 ADDRLP4 32
 INDIRI4
-LTI4 $411
+LTI4 $413
 line 531
 ;531:}
-LABELV $383
+LABELV $385
 endproc DynamicMenu_FinishSubMenuInit 68 4
 proc DynamicMenu_OnActiveList 8 0
 line 540
@@ -2208,9 +2208,9 @@ line 546
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $421
+ADDRGP4 $423
 JUMPV
-LABELV $418
+LABELV $420
 line 547
 ;547:if (s_dynamic.active[i] == index)
 ADDRLP4 0
@@ -2222,15 +2222,15 @@ ADDP4
 INDIRI4
 ADDRFP4 0
 INDIRI4
-NEI4 $422
+NEI4 $424
 line 548
 ;548:return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $416
+ADDRGP4 $418
 JUMPV
-LABELV $422
-LABELV $419
+LABELV $424
+LABELV $421
 line 546
 ADDRLP4 0
 ADDRLP4 0
@@ -2238,18 +2238,18 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $421
+LABELV $423
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-LTI4 $418
+LTI4 $420
 line 550
 ;549:
 ;550:return qfalse;
 CNSTI4 0
 RETI4
-LABELV $416
+LABELV $418
 endproc DynamicMenu_OnActiveList 8 0
 proc DynamicMenu_MenuItemDraw 56 20
 line 562
@@ -2356,7 +2356,7 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
-EQI4 $428
+EQI4 $430
 line 585
 ;585:{
 line 586
@@ -2366,9 +2366,9 @@ CNSTF4 1051260355
 ASGNF4
 line 587
 ;587:	}
-ADDRGP4 $429
+ADDRGP4 $431
 JUMPV
-LABELV $428
+LABELV $430
 line 589
 ;588:	else
 ;589:	{
@@ -2379,7 +2379,7 @@ CNSTF4 1036831949
 ASGNF4
 line 591
 ;591:	}
-LABELV $429
+LABELV $431
 line 593
 ;592:
 ;593:UI_FillRect(x, y, w, h, back_color);
@@ -2435,15 +2435,15 @@ INDIRU4
 CNSTU4 8192
 BANDU4
 CNSTU4 0
-EQU4 $432
+EQU4 $434
 line 600
 ;600:color = text_color_disabled;
 ADDRLP4 36
 ADDRGP4 text_color_disabled
 ASGNP4
-ADDRGP4 $433
+ADDRGP4 $435
 JUMPV
-LABELV $432
+LABELV $434
 line 602
 ;601:else
 ;602:color = t->color;
@@ -2454,7 +2454,7 @@ CNSTI4 68
 ADDP4
 INDIRP4
 ASGNP4
-LABELV $433
+LABELV $435
 line 604
 ;603:
 ;604:style = t->style;
@@ -2475,7 +2475,7 @@ INDIRU4
 CNSTU4 256
 BANDU4
 CNSTU4 0
-EQU4 $434
+EQU4 $436
 line 606
 ;606:if( Menu_ItemAtCursor( t->generic.parent ) == t ) {
 ADDRLP4 0
@@ -2494,7 +2494,7 @@ CVPU4 4
 ADDRLP4 52
 INDIRP4
 CVPU4 4
-NEU4 $436
+NEU4 $438
 line 607
 ;607:style |= UI_PULSE;
 ADDRLP4 32
@@ -2505,9 +2505,9 @@ BORI4
 ASGNI4
 line 608
 ;608:}
-ADDRGP4 $437
+ADDRGP4 $439
 JUMPV
-LABELV $436
+LABELV $438
 line 609
 ;609:else {
 line 610
@@ -2520,10 +2520,10 @@ BORI4
 ASGNI4
 line 611
 ;611:}
-LABELV $437
+LABELV $439
 line 612
 ;612:}
-LABELV $434
+LABELV $436
 line 614
 ;613:
 ;614:UI_DrawProportionalString( x, y, t->string, style, color );
@@ -2576,7 +2576,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $438
+EQU4 $440
 line 619
 ;619:{
 line 620
@@ -2602,10 +2602,10 @@ CALLV
 pop
 line 621
 ;621:}
-LABELV $438
+LABELV $440
 line 622
 ;622:}
-LABELV $425
+LABELV $427
 endproc DynamicMenu_MenuItemDraw 56 20
 proc DynamicMenu_MenuDraw 0 4
 line 633
@@ -2635,7 +2635,7 @@ CALLV
 pop
 line 641
 ;641:}
-LABELV $442
+LABELV $444
 endproc DynamicMenu_MenuDraw 0 4
 proc DynamicMenu_IndexDepth 12 0
 line 651
@@ -2668,9 +2668,9 @@ line 657
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $448
+ADDRGP4 $450
 JUMPV
-LABELV $445
+LABELV $447
 line 658
 ;658:{
 line 659
@@ -2684,7 +2684,7 @@ LSHI4
 ADDRGP4 s_dynamic+6968
 ADDP4
 INDIRI4
-GEI4 $449
+GEI4 $451
 line 660
 ;660:{
 line 661
@@ -2697,13 +2697,13 @@ ADDI4
 ASGNI4
 line 662
 ;662:break;
-ADDRGP4 $447
+ADDRGP4 $449
 JUMPV
-LABELV $449
+LABELV $451
 line 664
 ;663:}
 ;664:}
-LABELV $446
+LABELV $448
 line 657
 ADDRLP4 0
 ADDRLP4 0
@@ -2711,20 +2711,20 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $448
+LABELV $450
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-LTI4 $445
-LABELV $447
+LTI4 $447
+LABELV $449
 line 666
 ;665:
 ;666:return depth;
 ADDRLP4 8
 INDIRI4
 RETI4
-LABELV $443
+LABELV $445
 endproc DynamicMenu_IndexDepth 12 0
 proc DynamicMenu_SetFocus 24 8
 line 677
@@ -2767,12 +2767,12 @@ line 684
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $454
+NEI4 $456
 line 685
 ;685:{
 line 686
 ;686:Com_Printf("SetFocus: index %i outside menu\n", pos);
-ADDRGP4 $456
+ADDRGP4 $458
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -2782,9 +2782,9 @@ CALLV
 pop
 line 687
 ;687:return;
-ADDRGP4 $452
+ADDRGP4 $454
 JUMPV
-LABELV $454
+LABELV $456
 line 690
 ;688:}
 ;689:
@@ -2812,7 +2812,7 @@ ADDRLP4 8
 INDIRI4
 ADDRLP4 4
 INDIRI4
-GEI4 $460
+GEI4 $462
 line 695
 ;695:{
 line 696
@@ -2826,9 +2826,9 @@ ADDRGP4 s_dynamic+6944
 ADDP4
 INDIRI4
 ASGNI4
-ADDRGP4 $465
+ADDRGP4 $467
 JUMPV
-LABELV $462
+LABELV $464
 line 698
 ;697:i < s_dynamic.end[depth - 1]; i++)
 ;698:{
@@ -2870,7 +2870,7 @@ BANDU4
 ASGNU4
 line 701
 ;701:}
-LABELV $463
+LABELV $465
 line 697
 ADDRLP4 0
 ADDRLP4 0
@@ -2878,7 +2878,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $465
+LABELV $467
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
@@ -2888,10 +2888,10 @@ LSHI4
 ADDRGP4 s_dynamic+6968-4
 ADDP4
 INDIRI4
-LTI4 $462
+LTI4 $464
 line 702
 ;702:}
-LABELV $460
+LABELV $462
 line 704
 ;703:
 ;704:s_dynamic.active[newdepth - 1] = pos;
@@ -2917,7 +2917,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $475
+EQU4 $477
 line 708
 ;708:s_dynamic.data[pos].createSubMenu();
 ADDRFP4 0
@@ -2929,10 +2929,10 @@ ADDP4
 INDIRP4
 CALLV
 pop
-LABELV $475
+LABELV $477
 line 709
 ;709:}
-LABELV $452
+LABELV $454
 endproc DynamicMenu_SetFocus 24 8
 proc DynamicMenu_ClearFocus 0 0
 line 718
@@ -2947,7 +2947,7 @@ line 718
 ;718:{
 line 719
 ;719:}
-LABELV $481
+LABELV $483
 endproc DynamicMenu_ClearFocus 0 0
 proc DynamicMenu_ActivateControl 12 8
 line 729
@@ -2983,12 +2983,12 @@ line 735
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $483
+NEI4 $485
 line 736
 ;736:{
 line 737
 ;737:Com_Printf("ActivateControl: index %i outside menu\n", pos);
-ADDRGP4 $485
+ADDRGP4 $487
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -2998,9 +2998,9 @@ CALLV
 pop
 line 738
 ;738:return;
-ADDRGP4 $482
+ADDRGP4 $484
 JUMPV
-LABELV $483
+LABELV $485
 line 742
 ;739:}
 ;740:
@@ -3010,12 +3010,12 @@ ADDRLP4 0
 INDIRI4
 ADDRGP4 s_dynamic+7020
 INDIRI4
-GEI4 $486
+GEI4 $488
 line 743
 ;743:return;
-ADDRGP4 $482
+ADDRGP4 $484
 JUMPV
-LABELV $486
+LABELV $488
 line 745
 ;744:
 ;745:if (s_dynamic.data[pos].runEvent)
@@ -3028,7 +3028,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $489
+EQU4 $491
 line 746
 ;746:s_dynamic.data[pos].runEvent(pos);
 ADDRLP4 8
@@ -3047,13 +3047,13 @@ ADDP4
 INDIRP4
 CALLV
 pop
-ADDRGP4 $490
+ADDRGP4 $492
 JUMPV
-LABELV $489
+LABELV $491
 line 748
 ;747:else
 ;748:Com_Printf("ActivateControl: index %i has no event\n", pos);
-ADDRGP4 $495
+ADDRGP4 $497
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -3061,10 +3061,10 @@ ARGI4
 ADDRGP4 Com_Printf
 CALLV
 pop
-LABELV $490
+LABELV $492
 line 749
 ;749:}
-LABELV $482
+LABELV $484
 endproc DynamicMenu_ActivateControl 12 8
 proc DynamicMenu_MenuEvent 8 4
 line 760
@@ -3097,20 +3097,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
-EQI4 $499
+EQI4 $501
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
-EQI4 $500
+EQI4 $502
 ADDRLP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $501
-ADDRGP4 $497
+EQI4 $503
+ADDRGP4 $499
 JUMPV
 line 766
 ;766:{
-LABELV $499
+LABELV $501
 line 768
 ;767:case QM_GOTFOCUS:
 ;768:DynamicMenu_SetFocus(t->generic.id);
@@ -3125,9 +3125,9 @@ CALLV
 pop
 line 769
 ;769:break;
-ADDRGP4 $498
+ADDRGP4 $500
 JUMPV
-LABELV $500
+LABELV $502
 line 771
 ;770:case QM_LOSTFOCUS:
 ;771:DynamicMenu_ClearFocus(t->generic.id);
@@ -3142,9 +3142,9 @@ CALLV
 pop
 line 772
 ;772:break;
-ADDRGP4 $498
+ADDRGP4 $500
 JUMPV
-LABELV $501
+LABELV $503
 line 774
 ;773:case QM_ACTIVATED:
 ;774:DynamicMenu_ActivateControl(t->generic.id);
@@ -3159,12 +3159,12 @@ CALLV
 pop
 line 775
 ;775:break;
-LABELV $497
-LABELV $498
+LABELV $499
+LABELV $500
 line 777
 ;776:}
 ;777:}
-LABELV $496
+LABELV $498
 endproc DynamicMenu_MenuEvent 8 4
 proc DynamicMenu_Close 0 0
 line 789
@@ -3187,7 +3187,7 @@ CALLV
 pop
 line 791
 ;791:}
-LABELV $502
+LABELV $504
 endproc DynamicMenu_Close 0 0
 proc DM_Close_Event 0 0
 line 801
@@ -3208,7 +3208,7 @@ CALLV
 pop
 line 803
 ;803:}
-LABELV $503
+LABELV $505
 endproc DM_Close_Event 0 0
 proc DynamicMenu_VoteMenu 0 16
 line 815
@@ -3232,7 +3232,7 @@ pop
 line 818
 ;817:	// The Menu Items
 ;818:	DynamicMenu_AddItem("Kick", 0 , NULL, DM_Close_Event);
-ADDRGP4 $505
+ADDRGP4 $507
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3245,7 +3245,7 @@ CALLI4
 pop
 line 819
 ;819:	DynamicMenu_AddItem("Next Map", 0 , NULL, DM_Close_Event);
-ADDRGP4 $506
+ADDRGP4 $508
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3258,7 +3258,7 @@ CALLI4
 pop
 line 820
 ;820:	DynamicMenu_AddItem("Restart Map", 0 , NULL, DM_Close_Event);
-ADDRGP4 $507
+ADDRGP4 $509
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3271,7 +3271,7 @@ CALLI4
 pop
 line 821
 ;821:	DynamicMenu_AddItem("Balance Teams", 0 , NULL, DM_Close_Event);
-ADDRGP4 $508
+ADDRGP4 $510
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3284,7 +3284,7 @@ CALLI4
 pop
 line 822
 ;822:	DynamicMenu_AddItem("Close!", 0, NULL, DM_Close_Event);
-ADDRGP4 $509
+ADDRGP4 $511
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3302,7 +3302,7 @@ CALLV
 pop
 line 824
 ;824:}
-LABELV $504
+LABELV $506
 endproc DynamicMenu_VoteMenu 0 16
 proc DynamicMenu_InitPrimaryMenu 0 16
 line 836
@@ -3326,7 +3326,7 @@ pop
 line 839
 ;838:
 ;839:DynamicMenu_AddItem("Call Vote", 0, DynamicMenu_VoteMenu, NULL);
-ADDRGP4 $511
+ADDRGP4 $513
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3339,7 +3339,7 @@ CALLI4
 pop
 line 840
 ;840:DynamicMenu_AddItem("Buy Equipment", 0 , NULL, DM_Close_Event);
-ADDRGP4 $512
+ADDRGP4 $514
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3352,7 +3352,7 @@ CALLI4
 pop
 line 841
 ;841:DynamicMenu_AddItem("Crap!", 0, NULL, DM_Close_Event);
-ADDRGP4 $513
+ADDRGP4 $515
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3365,7 +3365,7 @@ CALLI4
 pop
 line 842
 ;842:DynamicMenu_AddItem("Shit And Stuff!", 0, NULL, DM_Close_Event);
-ADDRGP4 $514
+ADDRGP4 $516
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3378,7 +3378,7 @@ CALLI4
 pop
 line 843
 ;843:DynamicMenu_AddItem("Close!", 0, NULL, DM_Close_Event);
-ADDRGP4 $509
+ADDRGP4 $511
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3397,7 +3397,7 @@ CALLV
 pop
 line 846
 ;846:}
-LABELV $510
+LABELV $512
 endproc DynamicMenu_InitPrimaryMenu 0 16
 proc DynamicMenu_MenuInit 12 8
 line 857
@@ -3435,7 +3435,7 @@ line 864
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $519
+LABELV $521
 line 865
 ;865:{
 line 866
@@ -3542,7 +3542,7 @@ CALLV
 pop
 line 877
 ;877:}
-LABELV $520
+LABELV $522
 line 864
 ADDRLP4 0
 ADDRLP4 0
@@ -3553,7 +3553,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $519
+LTI4 $521
 line 880
 ;878:
 ;879:// start up the menu system
@@ -3572,7 +3572,7 @@ CALLV
 pop
 line 886
 ;886:}
-LABELV $515
+LABELV $517
 endproc DynamicMenu_MenuInit 12 8
 export UI_DynamicMenuCache
 proc UI_DynamicMenuCache 0 0
@@ -3592,7 +3592,7 @@ line 899
 ;899:{
 line 900
 ;900:}
-LABELV $541
+LABELV $543
 endproc UI_DynamicMenuCache 0 0
 export UI_DynamicMenu
 proc UI_DynamicMenu 4124 12
@@ -3638,7 +3638,7 @@ line 919
 ;919:playerTeam = atoi(Info_ValueForKey(info, "t"));
 ADDRLP4 3084
 ARGP4
-ADDRGP4 $207
+ADDRGP4 $209
 ARGP4
 ADDRLP4 4112
 ADDRGP4 Info_ValueForKey
@@ -3675,7 +3675,7 @@ pop
 line 928
 ;927:
 ;928:s_dynamic.gametype = (int)trap_Cvar_VariableValue("g_gametype");
-ADDRGP4 $155
+ADDRGP4 $157
 ARGP4
 ADDRLP4 4120
 ADDRGP4 trap_Cvar_VariableValue
@@ -3732,7 +3732,7 @@ CALLV
 pop
 line 947
 ;947:}
-LABELV $542
+LABELV $544
 endproc UI_DynamicMenu 4124 12
 export UI_DynamicCommandMenu_f
 proc UI_DynamicCommandMenu_f 0 0
@@ -3754,7 +3754,7 @@ CALLV
 pop
 line 959
 ;959:}
-LABELV $548
+LABELV $550
 endproc UI_DynamicCommandMenu_f 0 0
 bss
 align 4
@@ -4074,6 +4074,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -4238,7 +4239,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $514
+LABELV $516
 byte 1 83
 byte 1 104
 byte 1 105
@@ -4256,7 +4257,7 @@ byte 1 102
 byte 1 33
 byte 1 0
 align 1
-LABELV $513
+LABELV $515
 byte 1 67
 byte 1 114
 byte 1 97
@@ -4264,7 +4265,7 @@ byte 1 112
 byte 1 33
 byte 1 0
 align 1
-LABELV $512
+LABELV $514
 byte 1 66
 byte 1 117
 byte 1 121
@@ -4280,7 +4281,7 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $511
+LABELV $513
 byte 1 67
 byte 1 97
 byte 1 108
@@ -4292,7 +4293,7 @@ byte 1 116
 byte 1 101
 byte 1 0
 align 1
-LABELV $509
+LABELV $511
 byte 1 67
 byte 1 108
 byte 1 111
@@ -4301,7 +4302,7 @@ byte 1 101
 byte 1 33
 byte 1 0
 align 1
-LABELV $508
+LABELV $510
 byte 1 66
 byte 1 97
 byte 1 108
@@ -4317,7 +4318,7 @@ byte 1 109
 byte 1 115
 byte 1 0
 align 1
-LABELV $507
+LABELV $509
 byte 1 82
 byte 1 101
 byte 1 115
@@ -4331,7 +4332,7 @@ byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $506
+LABELV $508
 byte 1 78
 byte 1 101
 byte 1 120
@@ -4342,14 +4343,14 @@ byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $505
+LABELV $507
 byte 1 75
 byte 1 105
 byte 1 99
 byte 1 107
 byte 1 0
 align 1
-LABELV $495
+LABELV $497
 byte 1 65
 byte 1 99
 byte 1 116
@@ -4391,7 +4392,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $485
+LABELV $487
 byte 1 65
 byte 1 99
 byte 1 116
@@ -4433,7 +4434,7 @@ byte 1 117
 byte 1 10
 byte 1 0
 align 1
-LABELV $456
+LABELV $458
 byte 1 83
 byte 1 101
 byte 1 116
@@ -4468,12 +4469,12 @@ byte 1 117
 byte 1 10
 byte 1 0
 align 1
-LABELV $400
+LABELV $402
 byte 1 32
 byte 1 13
 byte 1 0
 align 1
-LABELV $372
+LABELV $374
 byte 1 91
 byte 1 110
 byte 1 111
@@ -4485,7 +4486,7 @@ byte 1 116
 byte 1 93
 byte 1 0
 align 1
-LABELV $319
+LABELV $321
 byte 1 69
 byte 1 88
 byte 1 73
@@ -4504,7 +4505,7 @@ byte 1 79
 byte 1 78
 byte 1 0
 align 1
-LABELV $301
+LABELV $303
 byte 1 77
 byte 1 65
 byte 1 73
@@ -4516,7 +4517,7 @@ byte 1 78
 byte 1 85
 byte 1 0
 align 1
-LABELV $283
+LABELV $285
 byte 1 82
 byte 1 69
 byte 1 83
@@ -4530,7 +4531,7 @@ byte 1 77
 byte 1 69
 byte 1 0
 align 1
-LABELV $261
+LABELV $263
 byte 1 82
 byte 1 69
 byte 1 83
@@ -4544,7 +4545,7 @@ byte 1 65
 byte 1 80
 byte 1 0
 align 1
-LABELV $243
+LABELV $245
 byte 1 83
 byte 1 69
 byte 1 82
@@ -4558,7 +4559,7 @@ byte 1 70
 byte 1 79
 byte 1 0
 align 1
-LABELV $225
+LABELV $227
 byte 1 83
 byte 1 69
 byte 1 84
@@ -4566,11 +4567,11 @@ byte 1 85
 byte 1 80
 byte 1 0
 align 1
-LABELV $207
+LABELV $209
 byte 1 116
 byte 1 0
 align 1
-LABELV $197
+LABELV $199
 byte 1 84
 byte 1 69
 byte 1 65
@@ -4584,7 +4585,7 @@ byte 1 82
 byte 1 83
 byte 1 0
 align 1
-LABELV $173
+LABELV $175
 byte 1 82
 byte 1 69
 byte 1 77
@@ -4598,7 +4599,7 @@ byte 1 84
 byte 1 83
 byte 1 0
 align 1
-LABELV $155
+LABELV $157
 byte 1 103
 byte 1 95
 byte 1 103
@@ -4611,7 +4612,7 @@ byte 1 112
 byte 1 101
 byte 1 0
 align 1
-LABELV $154
+LABELV $156
 byte 1 98
 byte 1 111
 byte 1 116
@@ -4624,7 +4625,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $153
+LABELV $155
 byte 1 115
 byte 1 118
 byte 1 95
@@ -4637,7 +4638,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $146
+LABELV $148
 byte 1 65
 byte 1 68
 byte 1 68
@@ -4648,7 +4649,7 @@ byte 1 84
 byte 1 83
 byte 1 0
 align 1
-LABELV $128
+LABELV $130
 byte 1 83
 byte 1 84
 byte 1 65
@@ -4656,7 +4657,7 @@ byte 1 82
 byte 1 84
 byte 1 0
 align 1
-LABELV $106
+LABELV $108
 byte 1 109
 byte 1 101
 byte 1 110
@@ -4679,7 +4680,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $90
+LABELV $92
 byte 1 69
 byte 1 88
 byte 1 73
@@ -4692,7 +4693,7 @@ byte 1 69
 byte 1 63
 byte 1 0
 align 1
-LABELV $88
+LABELV $90
 byte 1 82
 byte 1 69
 byte 1 83
@@ -4709,7 +4710,7 @@ byte 1 65
 byte 1 63
 byte 1 0
 align 1
-LABELV $86
+LABELV $88
 byte 1 100
 byte 1 105
 byte 1 115
@@ -4723,7 +4724,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $73
+LABELV $75
 byte 1 109
 byte 1 97
 byte 1 112

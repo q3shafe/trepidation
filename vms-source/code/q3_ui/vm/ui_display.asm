@@ -61,12 +61,12 @@ line 55
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $69
+EQI4 $71
 line 56
 ;56:		return;
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $69
+LABELV $71
 line 59
 ;57:	}
 ;58:
@@ -81,31 +81,31 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-LTI4 $71
+LTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-GTI4 $71
+GTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $87-40
+ADDRGP4 $89-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $87
-address $74
-address $72
+LABELV $89
 address $76
-address $77
+address $74
 address $78
-address $82
-address $86
+address $79
+address $80
+address $84
+address $88
 code
-LABELV $74
+LABELV $76
 line 61
 ;60:	case ID_GRAPHICS:
 ;61:		UI_PopMenu();
@@ -119,13 +119,13 @@ CALLV
 pop
 line 63
 ;63:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
 line 66
 ;64:
 ;65:	case ID_DISPLAY:
 ;66:		break;
-LABELV $76
+LABELV $78
 line 69
 ;67:
 ;68:	case ID_SOUND:
@@ -140,9 +140,9 @@ CALLV
 pop
 line 71
 ;71:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $77
+LABELV $79
 line 74
 ;72:
 ;73:	case ID_NETWORK:
@@ -157,14 +157,14 @@ CALLV
 pop
 line 76
 ;76:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $78
+LABELV $80
 line 79
 ;77:
 ;78:	case ID_BRIGHTNESS:
 ;79:		trap_Cvar_SetValue( "r_gamma", displayOptionsInfo.brightness.curvalue / 10.0f );
-ADDRGP4 $79
+ADDRGP4 $81
 ARGP4
 ADDRGP4 displayOptionsInfo+824+68
 INDIRF4
@@ -176,14 +176,14 @@ CALLV
 pop
 line 80
 ;80:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $82
+LABELV $84
 line 83
 ;81:	
 ;82:	case ID_SCREENSIZE:
 ;83:		trap_Cvar_SetValue( "cg_viewsize", displayOptionsInfo.screensize.curvalue * 10 );
-ADDRGP4 $83
+ADDRGP4 $85
 ARGP4
 CNSTF4 1092616192
 ADDRGP4 displayOptionsInfo+900+68
@@ -195,9 +195,9 @@ CALLV
 pop
 line 84
 ;84:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $86
+LABELV $88
 line 87
 ;85:
 ;86:	case ID_BACK:
@@ -207,12 +207,12 @@ CALLV
 pop
 line 88
 ;88:		break;
-LABELV $71
-LABELV $72
+LABELV $73
+LABELV $74
 line 90
 ;89:	}
 ;90:}
-LABELV $68
+LABELV $70
 endproc UI_DisplayOptionsMenu_Event 8 8
 proc UI_DisplayOptionsMenu_Init 12 12
 line 98
@@ -277,7 +277,7 @@ ASGNI4
 line 111
 ;111:	displayOptionsInfo.banner.string			= "SYSTEM SETUP";
 ADDRGP4 displayOptionsInfo+288+60
-ADDRGP4 $101
+ADDRGP4 $103
 ASGNP4
 line 112
 ;112:	displayOptionsInfo.banner.color				= color_white;
@@ -298,7 +298,7 @@ ASGNI4
 line 116
 ;116:	displayOptionsInfo.framel.generic.name		= ART_FRAMEL;
 ADDRGP4 displayOptionsInfo+360+4
-ADDRGP4 $109
+ADDRGP4 $111
 ASGNP4
 line 117
 ;117:	displayOptionsInfo.framel.generic.flags		= QMF_INACTIVE;
@@ -334,7 +334,7 @@ ASGNI4
 line 124
 ;124:	displayOptionsInfo.framer.generic.name		= ART_FRAMER;
 ADDRGP4 displayOptionsInfo+448+4
-ADDRGP4 $123
+ADDRGP4 $125
 ASGNP4
 line 125
 ;125:	displayOptionsInfo.framer.generic.flags		= QMF_INACTIVE;
@@ -395,7 +395,7 @@ ASGNI4
 line 137
 ;137:	displayOptionsInfo.graphics.string				= "GRAPHICS";
 ADDRGP4 displayOptionsInfo+536+60
-ADDRGP4 $147
+ADDRGP4 $149
 ASGNP4
 line 138
 ;138:	displayOptionsInfo.graphics.style				= UI_RIGHT;
@@ -441,7 +441,7 @@ ASGNI4
 line 147
 ;147:	displayOptionsInfo.display.string				= "DISPLAY";
 ADDRGP4 displayOptionsInfo+608+60
-ADDRGP4 $165
+ADDRGP4 $167
 ASGNP4
 line 148
 ;148:	displayOptionsInfo.display.style				= UI_RIGHT;
@@ -487,7 +487,7 @@ ASGNI4
 line 157
 ;157:	displayOptionsInfo.sound.string					= "SOUND";
 ADDRGP4 displayOptionsInfo+680+60
-ADDRGP4 $183
+ADDRGP4 $185
 ASGNP4
 line 158
 ;158:	displayOptionsInfo.sound.style					= UI_RIGHT;
@@ -533,7 +533,7 @@ ASGNI4
 line 167
 ;167:	displayOptionsInfo.network.string				= "NETWORK";
 ADDRGP4 displayOptionsInfo+752+60
-ADDRGP4 $201
+ADDRGP4 $203
 ASGNP4
 line 168
 ;168:	displayOptionsInfo.network.style				= UI_RIGHT;
@@ -559,7 +559,7 @@ ASGNI4
 line 173
 ;173:	displayOptionsInfo.brightness.generic.name		= "Brightness:";
 ADDRGP4 displayOptionsInfo+824+4
-ADDRGP4 $209
+ADDRGP4 $211
 ASGNP4
 line 174
 ;174:	displayOptionsInfo.brightness.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -602,7 +602,7 @@ line 181
 ADDRGP4 uis+56+11292
 INDIRI4
 CNSTI4 0
-NEI4 $224
+NEI4 $226
 line 182
 ;182:		displayOptionsInfo.brightness.generic.flags |= QMF_GRAYED;
 ADDRLP4 4
@@ -618,7 +618,7 @@ BORU4
 ASGNU4
 line 183
 ;183:	}
-LABELV $224
+LABELV $226
 line 185
 ;184:
 ;185:	y += BIGCHAR_HEIGHT+2;
@@ -636,7 +636,7 @@ ASGNI4
 line 187
 ;187:	displayOptionsInfo.screensize.generic.name		= "Screen Size:";
 ADDRGP4 displayOptionsInfo+900+4
-ADDRGP4 $233
+ADDRGP4 $235
 ASGNP4
 line 188
 ;188:	displayOptionsInfo.screensize.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -683,7 +683,7 @@ ASGNI4
 line 197
 ;197:	displayOptionsInfo.back.generic.name		= ART_BACK0;
 ADDRGP4 displayOptionsInfo+976+4
-ADDRGP4 $251
+ADDRGP4 $253
 ASGNP4
 line 198
 ;198:	displayOptionsInfo.back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -723,7 +723,7 @@ ASGNI4
 line 205
 ;205:	displayOptionsInfo.back.focuspic			= ART_BACK1;
 ADDRGP4 displayOptionsInfo+976+60
-ADDRGP4 $268
+ADDRGP4 $270
 ASGNP4
 line 207
 ;206:
@@ -819,7 +819,7 @@ pop
 line 218
 ;217:
 ;218:	displayOptionsInfo.brightness.curvalue  = trap_Cvar_VariableValue("r_gamma") * 10;
-ADDRGP4 $79
+ADDRGP4 $81
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_Cvar_VariableValue
@@ -833,7 +833,7 @@ MULF4
 ASGNF4
 line 219
 ;219:	displayOptionsInfo.screensize.curvalue  = trap_Cvar_VariableValue( "cg_viewsize")/10;
-ADDRGP4 $83
+ADDRGP4 $85
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_Cvar_VariableValue
@@ -847,7 +847,7 @@ DIVF4
 ASGNF4
 line 220
 ;220:}
-LABELV $89
+LABELV $91
 endproc UI_DisplayOptionsMenu_Init 12 12
 export UI_DisplayOptionsMenu_Cache
 proc UI_DisplayOptionsMenu_Cache 0 4
@@ -862,35 +862,35 @@ line 228
 ;228:void UI_DisplayOptionsMenu_Cache( void ) {
 line 229
 ;229:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 230
 ;230:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $123
+ADDRGP4 $125
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 231
 ;231:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $251
+ADDRGP4 $253
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 232
 ;232:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $268
+ADDRGP4 $270
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 233
 ;233:}
-LABELV $283
+LABELV $285
 endproc UI_DisplayOptionsMenu_Cache 0 4
 export UI_DisplayOptionsMenu
 proc UI_DisplayOptionsMenu 0 8
@@ -926,7 +926,7 @@ CALLV
 pop
 line 245
 ;245:}
-LABELV $284
+LABELV $286
 endproc UI_DisplayOptionsMenu 0 8
 bss
 align 4
@@ -1245,6 +1245,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1409,7 +1410,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $268
+LABELV $270
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1427,7 +1428,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $251
+LABELV $253
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1445,7 +1446,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $233
+LABELV $235
 byte 1 83
 byte 1 99
 byte 1 114
@@ -1460,7 +1461,7 @@ byte 1 101
 byte 1 58
 byte 1 0
 align 1
-LABELV $209
+LABELV $211
 byte 1 66
 byte 1 114
 byte 1 105
@@ -1474,7 +1475,7 @@ byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $201
+LABELV $203
 byte 1 78
 byte 1 69
 byte 1 84
@@ -1484,7 +1485,7 @@ byte 1 82
 byte 1 75
 byte 1 0
 align 1
-LABELV $183
+LABELV $185
 byte 1 83
 byte 1 79
 byte 1 85
@@ -1492,7 +1493,7 @@ byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $165
+LABELV $167
 byte 1 68
 byte 1 73
 byte 1 83
@@ -1502,7 +1503,7 @@ byte 1 65
 byte 1 89
 byte 1 0
 align 1
-LABELV $147
+LABELV $149
 byte 1 71
 byte 1 82
 byte 1 65
@@ -1513,7 +1514,7 @@ byte 1 67
 byte 1 83
 byte 1 0
 align 1
-LABELV $123
+LABELV $125
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1533,7 +1534,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $109
+LABELV $111
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1553,7 +1554,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $101
+LABELV $103
 byte 1 83
 byte 1 89
 byte 1 83
@@ -1568,7 +1569,7 @@ byte 1 85
 byte 1 80
 byte 1 0
 align 1
-LABELV $83
+LABELV $85
 byte 1 99
 byte 1 103
 byte 1 95
@@ -1582,7 +1583,7 @@ byte 1 122
 byte 1 101
 byte 1 0
 align 1
-LABELV $79
+LABELV $81
 byte 1 114
 byte 1 95
 byte 1 103

@@ -35,12 +35,12 @@ line 19
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $80
+NEI4 $82
 line 20
 ;20:		return;
-ADDRGP4 $79
+ADDRGP4 $81
 JUMPV
-LABELV $80
+LABELV $82
 line 23
 ;21:	}
 ;22:
@@ -62,7 +62,7 @@ ADDRLP4 12
 ADDRGP4 atoi
 CALLI4
 ASGNI4
-ADDRGP4 $82
+ADDRGP4 $84
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -82,7 +82,7 @@ CALLV
 pop
 line 25
 ;25:}
-LABELV $79
+LABELV $81
 endproc CG_TargetCommand_f 20 12
 proc CG_SizeUp_f 4 8
 line 36
@@ -99,7 +99,7 @@ line 36
 ;36:static void CG_SizeUp_f (void) {
 line 37
 ;37:	trap_Cvar_Set("cg_viewsize", va("%i",(int)(cg_viewsize.integer+10)));
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
 ADDRGP4 cg_viewsize+12
 INDIRI4
@@ -110,7 +110,7 @@ ADDRLP4 0
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $84
+ADDRGP4 $86
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -120,7 +120,7 @@ CALLV
 pop
 line 38
 ;38:}
-LABELV $83
+LABELV $85
 endproc CG_SizeUp_f 4 8
 proc CG_SizeDown_f 4 8
 line 48
@@ -136,7 +136,7 @@ line 48
 ;48:static void CG_SizeDown_f (void) {
 line 49
 ;49:	trap_Cvar_Set("cg_viewsize", va("%i",(int)(cg_viewsize.integer-10)));
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
 ADDRGP4 cg_viewsize+12
 INDIRI4
@@ -147,7 +147,7 @@ ADDRLP4 0
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $84
+ADDRGP4 $86
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -157,7 +157,7 @@ CALLV
 pop
 line 50
 ;50:}
-LABELV $87
+LABELV $89
 endproc CG_SizeDown_f 4 8
 proc CG_Viewpos_f 0 20
 line 60
@@ -173,7 +173,7 @@ line 60
 ;60:static void CG_Viewpos_f (void) {
 line 61
 ;61:	CG_Printf ("(%i %i %i) : %i\n", (int)cg.refdef.vieworg[0],
-ADDRGP4 $90
+ADDRGP4 $92
 ARGP4
 ADDRGP4 cg+109048+24
 INDIRF4
@@ -198,7 +198,7 @@ line 64
 ;62:		(int)cg.refdef.vieworg[1], (int)cg.refdef.vieworg[2], 
 ;63:		(int)cg.refdefViewAngles[YAW]);
 ;64:}
-LABELV $89
+LABELV $91
 endproc CG_Viewpos_f 0 20
 proc CG_ScoresDown_f 0 4
 line 67
@@ -216,7 +216,7 @@ CNSTI4 2000
 ADDI4
 ADDRGP4 cg+107604
 INDIRI4
-GEI4 $102
+GEI4 $104
 line 74
 ;72:		// the scores are more than two seconds out of data,
 ;73:		// so request new ones
@@ -227,7 +227,7 @@ INDIRI4
 ASGNI4
 line 75
 ;75:		trap_SendClientCommand( "score" );
-ADDRGP4 $108
+ADDRGP4 $110
 ARGP4
 ADDRGP4 trap_SendClientCommand
 CALLV
@@ -240,7 +240,7 @@ line 79
 ADDRGP4 cg+114332
 INDIRI4
 CNSTI4 0
-NEI4 $103
+NEI4 $105
 line 80
 ;80:			cg.showScores = qtrue;
 ADDRGP4 cg+114332
@@ -255,9 +255,9 @@ line 82
 ;82:		}
 line 83
 ;83:	} else {
-ADDRGP4 $103
+ADDRGP4 $105
 JUMPV
-LABELV $102
+LABELV $104
 line 86
 ;84:		// show the cached contents even if they just pressed if it
 ;85:		// is within two seconds
@@ -267,10 +267,10 @@ CNSTI4 1
 ASGNI4
 line 87
 ;87:	}
-LABELV $103
+LABELV $105
 line 88
 ;88:}
-LABELV $101
+LABELV $103
 endproc CG_ScoresDown_f 0 4
 proc CG_ScoresUp_f 0 0
 line 90
@@ -281,7 +281,7 @@ line 91
 ADDRGP4 cg+114332
 INDIRI4
 CNSTI4 0
-EQI4 $116
+EQI4 $118
 line 92
 ;92:		cg.showScores = qfalse;
 ADDRGP4 cg+114332
@@ -295,10 +295,10 @@ INDIRI4
 ASGNI4
 line 94
 ;94:	}
-LABELV $116
+LABELV $118
 line 95
 ;95:}
-LABELV $115
+LABELV $117
 endproc CG_ScoresUp_f 0 0
 proc CG_TellTarget_f 264 20
 line 164
@@ -390,12 +390,12 @@ line 170
 ADDRLP4 0
 INDIRI4
 CNSTI4 -1
-NEI4 $123
+NEI4 $125
 line 171
 ;171:		return;
-ADDRGP4 $122
+ADDRGP4 $124
 JUMPV
-LABELV $123
+LABELV $125
 line 174
 ;172:	}
 ;173:
@@ -413,7 +413,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $125
+ADDRGP4 $127
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -432,7 +432,7 @@ CALLV
 pop
 line 177
 ;177:}
-LABELV $122
+LABELV $124
 endproc CG_TellTarget_f 264 20
 proc CG_TellAttacker_f 264 20
 line 179
@@ -457,12 +457,12 @@ line 185
 ADDRLP4 0
 INDIRI4
 CNSTI4 -1
-NEI4 $127
+NEI4 $129
 line 186
 ;186:		return;
-ADDRGP4 $126
+ADDRGP4 $128
 JUMPV
-LABELV $127
+LABELV $129
 line 189
 ;187:	}
 ;188:
@@ -480,7 +480,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $125
+ADDRGP4 $127
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -499,7 +499,7 @@ CALLV
 pop
 line 192
 ;192:}
-LABELV $126
+LABELV $128
 endproc CG_TellAttacker_f 264 20
 proc CG_VoiceTellTarget_f 264 20
 line 194
@@ -524,12 +524,12 @@ line 200
 ADDRLP4 0
 INDIRI4
 CNSTI4 -1
-NEI4 $130
+NEI4 $132
 line 201
 ;201:		return;
-ADDRGP4 $129
+ADDRGP4 $131
 JUMPV
-LABELV $130
+LABELV $132
 line 204
 ;202:	}
 ;203:
@@ -547,7 +547,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $132
+ADDRGP4 $134
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -566,7 +566,7 @@ CALLV
 pop
 line 207
 ;207:}
-LABELV $129
+LABELV $131
 endproc CG_VoiceTellTarget_f 264 20
 proc CG_VoiceTellAttacker_f 264 20
 line 209
@@ -591,12 +591,12 @@ line 215
 ADDRLP4 0
 INDIRI4
 CNSTI4 -1
-NEI4 $134
+NEI4 $136
 line 216
 ;216:		return;
-ADDRGP4 $133
+ADDRGP4 $135
 JUMPV
-LABELV $134
+LABELV $136
 line 219
 ;217:	}
 ;218:
@@ -614,7 +614,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $132
+ADDRGP4 $134
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -633,7 +633,7 @@ CALLV
 pop
 line 222
 ;222:}
-LABELV $133
+LABELV $135
 endproc CG_VoiceTellAttacker_f 264 20
 proc CG_StartOrbit_f 1028 12
 line 399
@@ -818,7 +818,7 @@ line 402
 ;400:	char var[MAX_TOKEN_CHARS];
 ;401:
 ;402:	trap_Cvar_VariableStringBuffer( "developer", var, sizeof( var ) );
-ADDRGP4 $137
+ADDRGP4 $139
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -838,138 +838,142 @@ ASGNI4
 ADDRLP4 1024
 INDIRI4
 CNSTI4 0
-NEI4 $138
+NEI4 $140
 line 404
 ;404:		return;
-ADDRGP4 $136
+ADDRGP4 $138
 JUMPV
-LABELV $138
+LABELV $140
 line 406
 ;405:	}
 ;406:	if (cg_cameraOrbit.value != 0) {
 ADDRGP4 cg_cameraOrbit+8
 INDIRF4
 CNSTF4 0
-EQF4 $140
+EQF4 $142
 line 407
 ;407:		trap_Cvar_Set ("cg_cameraOrbit", "0");
-ADDRGP4 $143
-ARGP4
-ADDRGP4 $144
-ARGP4
-ADDRGP4 trap_Cvar_Set
-CALLV
-pop
-line 408
-;408:		trap_Cvar_Set("cg_thirdPerson", "0");
 ADDRGP4 $145
-ARGP4
-ADDRGP4 $144
-ARGP4
-ADDRGP4 trap_Cvar_Set
-CALLV
-pop
-line 409
-;409:	} else {
-ADDRGP4 $141
-JUMPV
-LABELV $140
-line 410
-;410:		trap_Cvar_Set("cg_cameraOrbit", "5");
-ADDRGP4 $143
 ARGP4
 ADDRGP4 $146
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 411
-;411:		trap_Cvar_Set("cg_thirdPerson", "1");
+line 408
+;408:		trap_Cvar_Set("cg_thirdPerson", "0");
+ADDRGP4 $147
+ARGP4
+ADDRGP4 $146
+ARGP4
+ADDRGP4 trap_Cvar_Set
+CALLV
+pop
+line 409
+;409:	} else {
+ADDRGP4 $143
+JUMPV
+LABELV $142
+line 410
+;410:		trap_Cvar_Set("cg_cameraOrbit", "5");
 ADDRGP4 $145
 ARGP4
+ADDRGP4 $148
+ARGP4
+ADDRGP4 trap_Cvar_Set
+CALLV
+pop
+line 411
+;411:		trap_Cvar_Set("cg_thirdPerson", "1");
 ADDRGP4 $147
+ARGP4
+ADDRGP4 $149
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 412
 ;412:		trap_Cvar_Set("cg_thirdPersonAngle", "0");
-ADDRGP4 $148
+ADDRGP4 $150
 ARGP4
-ADDRGP4 $144
+ADDRGP4 $146
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 413
 ;413:		trap_Cvar_Set("cg_thirdPersonRange", "100");
-ADDRGP4 $149
+ADDRGP4 $151
 ARGP4
-ADDRGP4 $150
+ADDRGP4 $152
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 414
 ;414:	}
-LABELV $141
+LABELV $143
 line 415
 ;415:}
-LABELV $136
+LABELV $138
 endproc CG_StartOrbit_f 1028 12
 data
 align 4
 LABELV commands
-address $152
-address CG_TestGun_f
-address $153
-address CG_TestModel_f
 address $154
-address CG_TestModelNextFrame_f
+address CG_TestGun_f
 address $155
-address CG_TestModelPrevFrame_f
+address CG_TestModel_f
 address $156
-address CG_TestModelNextSkin_f
+address CG_TestModelNextFrame_f
 address $157
-address CG_TestModelPrevSkin_f
+address CG_TestModelPrevFrame_f
 address $158
-address CG_Viewpos_f
+address CG_TestModelNextSkin_f
 address $159
-address CG_ScoresDown_f
+address CG_TestModelPrevSkin_f
 address $160
-address CG_ScoresUp_f
+address CG_Viewpos_f
 address $161
-address CG_ZoomDown_f
+address CG_ScoresDown_f
 address $162
-address CG_ZoomUp_f
+address CG_ScoresUp_f
 address $163
-address CG_SizeUp_f
+address CG_ZoomDown_f
 address $164
-address CG_SizeDown_f
+address CG_ZoomUp_f
 address $165
-address CG_NextWeapon_f
+address CG_SizeUp_f
 address $166
-address CG_PrevWeapon_f
+address CG_SizeDown_f
 address $167
-address CG_Weapon_f
+address CG_NextWeapon_f
 address $168
-address CG_TellTarget_f
+address CG_PrevWeapon_f
 address $169
-address CG_TellAttacker_f
+address CG_Weapon_f
 address $170
-address CG_VoiceTellTarget_f
+address CG_TellTarget_f
 address $171
-address CG_VoiceTellAttacker_f
+address CG_TellAttacker_f
 address $172
-address CG_TargetCommand_f
+address CG_VoiceTellTarget_f
 address $173
-address CG_StartOrbit_f
+address CG_VoiceTellAttacker_f
 address $174
+address CG_TargetCommand_f
+address $175
+address CG_StartOrbit_f
+address $176
 address CG_LoadDeferredPlayers
+address $177
+address CG_ScannerOn_f
+address $178
+address CG_ScannerOff_f
 export CG_ConsoleCommand
 code
 proc CG_ConsoleCommand 16 8
-line 499
+line 503
 ;416:
 ;417:/*
 ;418:static void CG_Camera_f( void ) {
@@ -1041,24 +1045,28 @@ line 499
 ;484:#endif
 ;485:	{ "startOrbit", CG_StartOrbit_f },
 ;486:	//{ "camera", CG_Camera_f },
-;487:	{ "loaddeferred", CG_LoadDeferredPlayers }	
-;488:};
-;489:
-;490:
-;491:/*
-;492:=================
-;493:CG_ConsoleCommand
+;487:	{ "loaddeferred", CG_LoadDeferredPlayers },	
+;488:	// Shafe - Trep - Radar
+;489:	{ "+scanner", CG_ScannerOn_f },   
+;490:    { "-scanner", CG_ScannerOff_f }
+;491:	// Shafe - End Radar
+;492:};
+;493:
 ;494:
-;495:The string has been tokenized and can be retrieved with
-;496:Cmd_Argc() / Cmd_Argv()
-;497:=================
-;498:*/
-;499:qboolean CG_ConsoleCommand( void ) {
-line 503
-;500:	const char	*cmd;
-;501:	int		i;
-;502:
-;503:	cmd = CG_Argv(0);
+;495:/*
+;496:=================
+;497:CG_ConsoleCommand
+;498:
+;499:The string has been tokenized and can be retrieved with
+;500:Cmd_Argc() / Cmd_Argv()
+;501:=================
+;502:*/
+;503:qboolean CG_ConsoleCommand( void ) {
+line 507
+;504:	const char	*cmd;
+;505:	int		i;
+;506:
+;507:	cmd = CG_Argv(0);
 CNSTI4 0
 ARGI4
 ADDRLP4 8
@@ -1069,17 +1077,17 @@ ADDRLP4 4
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 505
-;504:
-;505:	for ( i = 0 ; i < sizeof( commands ) / sizeof( commands[0] ) ; i++ ) {
+line 509
+;508:
+;509:	for ( i = 0 ; i < sizeof( commands ) / sizeof( commands[0] ) ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $179
+ADDRGP4 $183
 JUMPV
-LABELV $176
-line 506
-;506:		if ( !Q_stricmp( cmd, commands[i].cmd ) ) {
+LABELV $180
+line 510
+;510:		if ( !Q_stricmp( cmd, commands[i].cmd ) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -1098,9 +1106,9 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $180
-line 507
-;507:			commands[i].function();
+NEI4 $184
+line 511
+;511:			commands[i].function();
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -1110,64 +1118,64 @@ ADDP4
 INDIRP4
 CALLV
 pop
-line 508
-;508:			return qtrue;
+line 512
+;512:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $175
+ADDRGP4 $179
 JUMPV
-LABELV $180
-line 510
-;509:		}
-;510:	}
-LABELV $177
-line 505
+LABELV $184
+line 514
+;513:		}
+;514:	}
+LABELV $181
+line 509
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $179
+LABELV $183
 ADDRLP4 0
 INDIRI4
 CVIU4 4
-CNSTU4 23
-LTU4 $176
-line 512
-;511:
-;512:	return qfalse;
+CNSTU4 25
+LTU4 $180
+line 516
+;515:
+;516:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $175
+LABELV $179
 endproc CG_ConsoleCommand 16 8
 export CG_InitConsoleCommands
 proc CG_InitConsoleCommands 4 4
-line 524
-;513:}
-;514:
-;515:
-;516:/*
-;517:=================
-;518:CG_InitConsoleCommands
+line 528
+;517:}
+;518:
 ;519:
-;520:Let the client system know about all of our commands
-;521:so it can perform tab completion
-;522:=================
-;523:*/
-;524:void CG_InitConsoleCommands( void ) {
-line 527
-;525:	int		i;
-;526:
-;527:	for ( i = 0 ; i < sizeof( commands ) / sizeof( commands[0] ) ; i++ ) {
+;520:/*
+;521:=================
+;522:CG_InitConsoleCommands
+;523:
+;524:Let the client system know about all of our commands
+;525:so it can perform tab completion
+;526:=================
+;527:*/
+;528:void CG_InitConsoleCommands( void ) {
+line 531
+;529:	int		i;
+;530:
+;531:	for ( i = 0 ; i < sizeof( commands ) / sizeof( commands[0] ) ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $187
+ADDRGP4 $191
 JUMPV
-LABELV $184
-line 528
-;528:		trap_AddCommand( commands[i].cmd );
+LABELV $188
+line 532
+;532:		trap_AddCommand( commands[i].cmd );
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -1179,219 +1187,219 @@ ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
-line 529
-;529:	}
-LABELV $185
-line 527
+line 533
+;533:	}
+LABELV $189
+line 531
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $187
+LABELV $191
 ADDRLP4 0
 INDIRI4
 CVIU4 4
-CNSTU4 23
-LTU4 $184
-line 535
-;530:
-;531:	//
-;532:	// the game server will interpret these commands, which will be automatically
-;533:	// forwarded to the server after they are not recognized locally
-;534:	//
-;535:	trap_AddCommand ("kill");
-ADDRGP4 $188
-ARGP4
-ADDRGP4 trap_AddCommand
-CALLV
-pop
-line 536
-;536:	trap_AddCommand ("say");
-ADDRGP4 $189
-ARGP4
-ADDRGP4 trap_AddCommand
-CALLV
-pop
-line 537
-;537:	trap_AddCommand ("say_team");
-ADDRGP4 $190
-ARGP4
-ADDRGP4 trap_AddCommand
-CALLV
-pop
-line 538
-;538:	trap_AddCommand ("tell");
-ADDRGP4 $191
-ARGP4
-ADDRGP4 trap_AddCommand
-CALLV
-pop
+CNSTU4 25
+LTU4 $188
 line 539
-;539:	trap_AddCommand ("vsay");
+;534:
+;535:	//
+;536:	// the game server will interpret these commands, which will be automatically
+;537:	// forwarded to the server after they are not recognized locally
+;538:	//
+;539:	trap_AddCommand ("kill");
 ADDRGP4 $192
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 540
-;540:	trap_AddCommand ("vsay_team");
+;540:	trap_AddCommand ("say");
 ADDRGP4 $193
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 541
-;541:	trap_AddCommand ("vtell");
+;541:	trap_AddCommand ("say_team");
 ADDRGP4 $194
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 542
-;542:	trap_AddCommand ("vtaunt");
+;542:	trap_AddCommand ("tell");
 ADDRGP4 $195
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 543
-;543:	trap_AddCommand ("vosay");
+;543:	trap_AddCommand ("vsay");
 ADDRGP4 $196
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 544
-;544:	trap_AddCommand ("vosay_team");
+;544:	trap_AddCommand ("vsay_team");
 ADDRGP4 $197
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 545
-;545:	trap_AddCommand ("votell");
+;545:	trap_AddCommand ("vtell");
 ADDRGP4 $198
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 546
-;546:	trap_AddCommand ("give");
+;546:	trap_AddCommand ("vtaunt");
 ADDRGP4 $199
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 547
-;547:	trap_AddCommand ("god");
+;547:	trap_AddCommand ("vosay");
 ADDRGP4 $200
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 548
-;548:	trap_AddCommand ("notarget");
+;548:	trap_AddCommand ("vosay_team");
 ADDRGP4 $201
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 549
-;549:	trap_AddCommand ("noclip");
+;549:	trap_AddCommand ("votell");
 ADDRGP4 $202
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 550
-;550:	trap_AddCommand ("team");
+;550:	trap_AddCommand ("give");
 ADDRGP4 $203
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 551
-;551:	trap_AddCommand ("follow");
+;551:	trap_AddCommand ("god");
 ADDRGP4 $204
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 552
-;552:	trap_AddCommand ("levelshot");
+;552:	trap_AddCommand ("notarget");
 ADDRGP4 $205
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 553
-;553:	trap_AddCommand ("addbot");
+;553:	trap_AddCommand ("noclip");
 ADDRGP4 $206
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 554
-;554:	trap_AddCommand ("setviewpos");
+;554:	trap_AddCommand ("team");
 ADDRGP4 $207
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 555
-;555:	trap_AddCommand ("callvote");
+;555:	trap_AddCommand ("follow");
 ADDRGP4 $208
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 556
-;556:	trap_AddCommand ("vote");
+;556:	trap_AddCommand ("levelshot");
 ADDRGP4 $209
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 557
-;557:	trap_AddCommand ("callteamvote");
+;557:	trap_AddCommand ("addbot");
 ADDRGP4 $210
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 558
-;558:	trap_AddCommand ("teamvote");
+;558:	trap_AddCommand ("setviewpos");
 ADDRGP4 $211
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 559
-;559:	trap_AddCommand ("stats");
+;559:	trap_AddCommand ("callvote");
 ADDRGP4 $212
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 560
-;560:	trap_AddCommand ("teamtask");
+;560:	trap_AddCommand ("vote");
 ADDRGP4 $213
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 561
-;561:	trap_AddCommand ("loaddefered");	// spelled wrong, but not changing for demo
+;561:	trap_AddCommand ("callteamvote");
 ADDRGP4 $214
 ARGP4
 ADDRGP4 trap_AddCommand
 CALLV
 pop
 line 562
-;562:}
-LABELV $183
+;562:	trap_AddCommand ("teamvote");
+ADDRGP4 $215
+ARGP4
+ADDRGP4 trap_AddCommand
+CALLV
+pop
+line 563
+;563:	trap_AddCommand ("stats");
+ADDRGP4 $216
+ARGP4
+ADDRGP4 trap_AddCommand
+CALLV
+pop
+line 564
+;564:	trap_AddCommand ("teamtask");
+ADDRGP4 $217
+ARGP4
+ADDRGP4 trap_AddCommand
+CALLV
+pop
+line 565
+;565:	trap_AddCommand ("loaddefered");	// spelled wrong, but not changing for demo
+ADDRGP4 $218
+ARGP4
+ADDRGP4 trap_AddCommand
+CALLV
+pop
+line 566
+;566:}
+LABELV $187
 endproc CG_InitConsoleCommands 4 4
 import trap_PC_SourceFileAndLine
 import trap_PC_ReadToken
@@ -1450,6 +1458,9 @@ import Init_Display
 import String_Report
 import String_Init
 import String_Alloc
+import CG_DrawScanner
+import CG_ScannerOff_f
+import CG_ScannerOn_f
 import CG_NewParticleArea
 import initparticles
 import CG_ParticleExplosion
@@ -1697,6 +1708,7 @@ import CG_ConfigString
 import CG_Cvar_ClampInt
 import CG_AddBoundingBox
 import CG_PredictWeaponEffects
+import cg_playerOrigins
 import cg_plOut
 import cg_latentCmds
 import cg_latentSnaps
@@ -1810,6 +1822,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1974,7 +1987,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $214
+LABELV $218
 byte 1 108
 byte 1 111
 byte 1 97
@@ -1988,7 +2001,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $213
+LABELV $217
 byte 1 116
 byte 1 101
 byte 1 97
@@ -1999,59 +2012,59 @@ byte 1 115
 byte 1 107
 byte 1 0
 align 1
-LABELV $212
+LABELV $216
 byte 1 115
 byte 1 116
 byte 1 97
 byte 1 116
 byte 1 115
+byte 1 0
+align 1
+LABELV $215
+byte 1 116
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 118
+byte 1 111
+byte 1 116
+byte 1 101
+byte 1 0
+align 1
+LABELV $214
+byte 1 99
+byte 1 97
+byte 1 108
+byte 1 108
+byte 1 116
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 118
+byte 1 111
+byte 1 116
+byte 1 101
+byte 1 0
+align 1
+LABELV $213
+byte 1 118
+byte 1 111
+byte 1 116
+byte 1 101
+byte 1 0
+align 1
+LABELV $212
+byte 1 99
+byte 1 97
+byte 1 108
+byte 1 108
+byte 1 118
+byte 1 111
+byte 1 116
+byte 1 101
 byte 1 0
 align 1
 LABELV $211
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
-byte 1 118
-byte 1 111
-byte 1 116
-byte 1 101
-byte 1 0
-align 1
-LABELV $210
-byte 1 99
-byte 1 97
-byte 1 108
-byte 1 108
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
-byte 1 118
-byte 1 111
-byte 1 116
-byte 1 101
-byte 1 0
-align 1
-LABELV $209
-byte 1 118
-byte 1 111
-byte 1 116
-byte 1 101
-byte 1 0
-align 1
-LABELV $208
-byte 1 99
-byte 1 97
-byte 1 108
-byte 1 108
-byte 1 118
-byte 1 111
-byte 1 116
-byte 1 101
-byte 1 0
-align 1
-LABELV $207
 byte 1 115
 byte 1 101
 byte 1 116
@@ -2064,7 +2077,7 @@ byte 1 111
 byte 1 115
 byte 1 0
 align 1
-LABELV $206
+LABELV $210
 byte 1 97
 byte 1 100
 byte 1 100
@@ -2073,7 +2086,7 @@ byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $205
+LABELV $209
 byte 1 108
 byte 1 101
 byte 1 118
@@ -2085,7 +2098,7 @@ byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $204
+LABELV $208
 byte 1 102
 byte 1 111
 byte 1 108
@@ -2094,14 +2107,14 @@ byte 1 111
 byte 1 119
 byte 1 0
 align 1
-LABELV $203
+LABELV $207
 byte 1 116
 byte 1 101
 byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $202
+LABELV $206
 byte 1 110
 byte 1 111
 byte 1 99
@@ -2110,7 +2123,7 @@ byte 1 105
 byte 1 112
 byte 1 0
 align 1
-LABELV $201
+LABELV $205
 byte 1 110
 byte 1 111
 byte 1 116
@@ -2121,20 +2134,20 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $200
+LABELV $204
 byte 1 103
 byte 1 111
 byte 1 100
 byte 1 0
 align 1
-LABELV $199
+LABELV $203
 byte 1 103
 byte 1 105
 byte 1 118
 byte 1 101
 byte 1 0
 align 1
-LABELV $198
+LABELV $202
 byte 1 118
 byte 1 111
 byte 1 116
@@ -2143,9 +2156,46 @@ byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $197
+LABELV $201
 byte 1 118
 byte 1 111
+byte 1 115
+byte 1 97
+byte 1 121
+byte 1 95
+byte 1 116
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 0
+align 1
+LABELV $200
+byte 1 118
+byte 1 111
+byte 1 115
+byte 1 97
+byte 1 121
+byte 1 0
+align 1
+LABELV $199
+byte 1 118
+byte 1 116
+byte 1 97
+byte 1 117
+byte 1 110
+byte 1 116
+byte 1 0
+align 1
+LABELV $198
+byte 1 118
+byte 1 116
+byte 1 101
+byte 1 108
+byte 1 108
+byte 1 0
+align 1
+LABELV $197
+byte 1 118
 byte 1 115
 byte 1 97
 byte 1 121
@@ -2158,80 +2208,65 @@ byte 1 0
 align 1
 LABELV $196
 byte 1 118
-byte 1 111
 byte 1 115
 byte 1 97
 byte 1 121
 byte 1 0
 align 1
 LABELV $195
-byte 1 118
 byte 1 116
-byte 1 97
-byte 1 117
-byte 1 110
-byte 1 116
+byte 1 101
+byte 1 108
+byte 1 108
 byte 1 0
 align 1
 LABELV $194
-byte 1 118
+byte 1 115
+byte 1 97
+byte 1 121
+byte 1 95
 byte 1 116
 byte 1 101
-byte 1 108
-byte 1 108
+byte 1 97
+byte 1 109
 byte 1 0
 align 1
 LABELV $193
-byte 1 118
 byte 1 115
 byte 1 97
 byte 1 121
-byte 1 95
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
 byte 1 0
 align 1
 LABELV $192
-byte 1 118
-byte 1 115
-byte 1 97
-byte 1 121
-byte 1 0
-align 1
-LABELV $191
-byte 1 116
-byte 1 101
-byte 1 108
-byte 1 108
-byte 1 0
-align 1
-LABELV $190
-byte 1 115
-byte 1 97
-byte 1 121
-byte 1 95
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
-byte 1 0
-align 1
-LABELV $189
-byte 1 115
-byte 1 97
-byte 1 121
-byte 1 0
-align 1
-LABELV $188
 byte 1 107
 byte 1 105
 byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $174
+LABELV $178
+byte 1 45
+byte 1 115
+byte 1 99
+byte 1 97
+byte 1 110
+byte 1 110
+byte 1 101
+byte 1 114
+byte 1 0
+align 1
+LABELV $177
+byte 1 43
+byte 1 115
+byte 1 99
+byte 1 97
+byte 1 110
+byte 1 110
+byte 1 101
+byte 1 114
+byte 1 0
+align 1
+LABELV $176
 byte 1 108
 byte 1 111
 byte 1 97
@@ -2246,7 +2281,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $173
+LABELV $175
 byte 1 115
 byte 1 116
 byte 1 97
@@ -2259,15 +2294,46 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $172
+LABELV $174
 byte 1 116
 byte 1 99
 byte 1 109
 byte 1 100
 byte 1 0
 align 1
-LABELV $171
+LABELV $173
 byte 1 118
+byte 1 116
+byte 1 101
+byte 1 108
+byte 1 108
+byte 1 95
+byte 1 97
+byte 1 116
+byte 1 116
+byte 1 97
+byte 1 99
+byte 1 107
+byte 1 101
+byte 1 114
+byte 1 0
+align 1
+LABELV $172
+byte 1 118
+byte 1 116
+byte 1 101
+byte 1 108
+byte 1 108
+byte 1 95
+byte 1 116
+byte 1 97
+byte 1 114
+byte 1 103
+byte 1 101
+byte 1 116
+byte 1 0
+align 1
+LABELV $171
 byte 1 116
 byte 1 101
 byte 1 108
@@ -2284,7 +2350,6 @@ byte 1 114
 byte 1 0
 align 1
 LABELV $170
-byte 1 118
 byte 1 116
 byte 1 101
 byte 1 108
@@ -2299,33 +2364,23 @@ byte 1 116
 byte 1 0
 align 1
 LABELV $169
-byte 1 116
+byte 1 119
 byte 1 101
-byte 1 108
-byte 1 108
-byte 1 95
 byte 1 97
-byte 1 116
-byte 1 116
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 101
-byte 1 114
+byte 1 112
+byte 1 111
+byte 1 110
 byte 1 0
 align 1
 LABELV $168
-byte 1 116
+byte 1 119
 byte 1 101
-byte 1 108
-byte 1 108
-byte 1 95
-byte 1 116
 byte 1 97
+byte 1 112
+byte 1 112
 byte 1 114
-byte 1 103
 byte 1 101
-byte 1 116
+byte 1 118
 byte 1 0
 align 1
 LABELV $167
@@ -2333,33 +2388,13 @@ byte 1 119
 byte 1 101
 byte 1 97
 byte 1 112
-byte 1 111
-byte 1 110
-byte 1 0
-align 1
-LABELV $166
-byte 1 119
-byte 1 101
-byte 1 97
-byte 1 112
-byte 1 112
-byte 1 114
-byte 1 101
-byte 1 118
-byte 1 0
-align 1
-LABELV $165
-byte 1 119
-byte 1 101
-byte 1 97
-byte 1 112
 byte 1 110
 byte 1 101
 byte 1 120
 byte 1 116
 byte 1 0
 align 1
-LABELV $164
+LABELV $166
 byte 1 115
 byte 1 105
 byte 1 122
@@ -2370,7 +2405,7 @@ byte 1 119
 byte 1 110
 byte 1 0
 align 1
-LABELV $163
+LABELV $165
 byte 1 115
 byte 1 105
 byte 1 122
@@ -2379,43 +2414,43 @@ byte 1 117
 byte 1 112
 byte 1 0
 align 1
-LABELV $162
+LABELV $164
 byte 1 45
 byte 1 122
 byte 1 111
 byte 1 111
 byte 1 109
+byte 1 0
+align 1
+LABELV $163
+byte 1 43
+byte 1 122
+byte 1 111
+byte 1 111
+byte 1 109
+byte 1 0
+align 1
+LABELV $162
+byte 1 45
+byte 1 115
+byte 1 99
+byte 1 111
+byte 1 114
+byte 1 101
+byte 1 115
 byte 1 0
 align 1
 LABELV $161
 byte 1 43
-byte 1 122
+byte 1 115
+byte 1 99
 byte 1 111
-byte 1 111
-byte 1 109
+byte 1 114
+byte 1 101
+byte 1 115
 byte 1 0
 align 1
 LABELV $160
-byte 1 45
-byte 1 115
-byte 1 99
-byte 1 111
-byte 1 114
-byte 1 101
-byte 1 115
-byte 1 0
-align 1
-LABELV $159
-byte 1 43
-byte 1 115
-byte 1 99
-byte 1 111
-byte 1 114
-byte 1 101
-byte 1 115
-byte 1 0
-align 1
-LABELV $158
 byte 1 118
 byte 1 105
 byte 1 101
@@ -2425,7 +2460,7 @@ byte 1 111
 byte 1 115
 byte 1 0
 align 1
-LABELV $157
+LABELV $159
 byte 1 112
 byte 1 114
 byte 1 101
@@ -2434,6 +2469,29 @@ byte 1 115
 byte 1 107
 byte 1 105
 byte 1 110
+byte 1 0
+align 1
+LABELV $158
+byte 1 110
+byte 1 101
+byte 1 120
+byte 1 116
+byte 1 115
+byte 1 107
+byte 1 105
+byte 1 110
+byte 1 0
+align 1
+LABELV $157
+byte 1 112
+byte 1 114
+byte 1 101
+byte 1 118
+byte 1 102
+byte 1 114
+byte 1 97
+byte 1 109
+byte 1 101
 byte 1 0
 align 1
 LABELV $156
@@ -2441,37 +2499,14 @@ byte 1 110
 byte 1 101
 byte 1 120
 byte 1 116
-byte 1 115
-byte 1 107
-byte 1 105
-byte 1 110
+byte 1 102
+byte 1 114
+byte 1 97
+byte 1 109
+byte 1 101
 byte 1 0
 align 1
 LABELV $155
-byte 1 112
-byte 1 114
-byte 1 101
-byte 1 118
-byte 1 102
-byte 1 114
-byte 1 97
-byte 1 109
-byte 1 101
-byte 1 0
-align 1
-LABELV $154
-byte 1 110
-byte 1 101
-byte 1 120
-byte 1 116
-byte 1 102
-byte 1 114
-byte 1 97
-byte 1 109
-byte 1 101
-byte 1 0
-align 1
-LABELV $153
 byte 1 116
 byte 1 101
 byte 1 115
@@ -2483,7 +2518,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $152
+LABELV $154
 byte 1 116
 byte 1 101
 byte 1 115
@@ -2493,13 +2528,13 @@ byte 1 117
 byte 1 110
 byte 1 0
 align 1
-LABELV $150
+LABELV $152
 byte 1 49
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $149
+LABELV $151
 byte 1 99
 byte 1 103
 byte 1 95
@@ -2521,7 +2556,7 @@ byte 1 103
 byte 1 101
 byte 1 0
 align 1
-LABELV $148
+LABELV $150
 byte 1 99
 byte 1 103
 byte 1 95
@@ -2543,15 +2578,15 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $147
+LABELV $149
 byte 1 49
 byte 1 0
 align 1
-LABELV $146
+LABELV $148
 byte 1 53
 byte 1 0
 align 1
-LABELV $145
+LABELV $147
 byte 1 99
 byte 1 103
 byte 1 95
@@ -2568,11 +2603,11 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $144
+LABELV $146
 byte 1 48
 byte 1 0
 align 1
-LABELV $143
+LABELV $145
 byte 1 99
 byte 1 103
 byte 1 95
@@ -2589,7 +2624,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $137
+LABELV $139
 byte 1 100
 byte 1 101
 byte 1 118
@@ -2601,7 +2636,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $132
+LABELV $134
 byte 1 118
 byte 1 116
 byte 1 101
@@ -2615,7 +2650,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $125
+LABELV $127
 byte 1 116
 byte 1 101
 byte 1 108
@@ -2628,7 +2663,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $108
+LABELV $110
 byte 1 115
 byte 1 99
 byte 1 111
@@ -2636,7 +2671,7 @@ byte 1 114
 byte 1 101
 byte 1 0
 align 1
-LABELV $90
+LABELV $92
 byte 1 40
 byte 1 37
 byte 1 105
@@ -2655,12 +2690,12 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $85
+LABELV $87
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $84
+LABELV $86
 byte 1 99
 byte 1 103
 byte 1 95
@@ -2674,7 +2709,7 @@ byte 1 122
 byte 1 101
 byte 1 0
 align 1
-LABELV $82
+LABELV $84
 byte 1 103
 byte 1 99
 byte 1 32

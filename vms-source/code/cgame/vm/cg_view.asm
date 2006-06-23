@@ -76,12 +76,12 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 2
-GEI4 $73
+GEI4 $75
 line 56
 ;56:		return;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $73
+LABELV $75
 line 59
 ;57:	}
 ;58:
@@ -124,7 +124,7 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 3
-NEI4 $79
+NEI4 $81
 line 63
 ;63:		cg.testModelEntity.backlerp = atof( CG_Argv( 2 ) );
 CNSTI4 2
@@ -156,25 +156,25 @@ CNSTI4 0
 ASGNI4
 line 66
 ;66:	}
-LABELV $79
+LABELV $81
 line 67
 ;67:	if (! cg.testModelEntity.hModel ) {
 ADDRGP4 cg+124796+8
 INDIRI4
 CNSTI4 0
-NEI4 $87
+NEI4 $89
 line 68
 ;68:		CG_Printf( "Can't register model\n" );
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
 line 69
 ;69:		return;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $87
+LABELV $89
 line 72
 ;70:	}
 ;71:
@@ -242,7 +242,7 @@ CNSTI4 0
 ASGNI4
 line 80
 ;80:}
-LABELV $70
+LABELV $72
 endproc CG_TestModel_f 36 12
 export CG_TestGun_f
 proc CG_TestGun_f 0 0
@@ -273,7 +273,7 @@ CNSTI4 13
 ASGNI4
 line 93
 ;93:}
-LABELV $123
+LABELV $125
 endproc CG_TestGun_f 0 0
 export CG_TestModelNextFrame_f
 proc CG_TestModelNextFrame_f 4 8
@@ -296,7 +296,7 @@ ADDI4
 ASGNI4
 line 98
 ;98:	CG_Printf( "frame %i\n", cg.testModelEntity.frame );
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRGP4 cg+124796+80
 INDIRI4
@@ -306,7 +306,7 @@ CALLV
 pop
 line 99
 ;99:}
-LABELV $127
+LABELV $129
 endproc CG_TestModelNextFrame_f 4 8
 export CG_TestModelPrevFrame_f
 proc CG_TestModelPrevFrame_f 4 8
@@ -331,7 +331,7 @@ line 103
 ADDRGP4 cg+124796+80
 INDIRI4
 CNSTI4 0
-GEI4 $136
+GEI4 $138
 line 104
 ;104:		cg.testModelEntity.frame = 0;
 ADDRGP4 cg+124796+80
@@ -339,10 +339,10 @@ CNSTI4 0
 ASGNI4
 line 105
 ;105:	}
-LABELV $136
+LABELV $138
 line 106
 ;106:	CG_Printf( "frame %i\n", cg.testModelEntity.frame );
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRGP4 cg+124796+80
 INDIRI4
@@ -352,7 +352,7 @@ CALLV
 pop
 line 107
 ;107:}
-LABELV $133
+LABELV $135
 endproc CG_TestModelPrevFrame_f 4 8
 export CG_TestModelNextSkin_f
 proc CG_TestModelNextSkin_f 4 8
@@ -374,7 +374,7 @@ ADDI4
 ASGNI4
 line 111
 ;111:	CG_Printf( "skin %i\n", cg.testModelEntity.skinNum );
-ADDRGP4 $147
+ADDRGP4 $149
 ARGP4
 ADDRGP4 cg+124796+104
 INDIRI4
@@ -384,7 +384,7 @@ CALLV
 pop
 line 112
 ;112:}
-LABELV $144
+LABELV $146
 endproc CG_TestModelNextSkin_f 4 8
 export CG_TestModelPrevSkin_f
 proc CG_TestModelPrevSkin_f 4 8
@@ -409,7 +409,7 @@ line 116
 ADDRGP4 cg+124796+104
 INDIRI4
 CNSTI4 0
-GEI4 $153
+GEI4 $155
 line 117
 ;117:		cg.testModelEntity.skinNum = 0;
 ADDRGP4 cg+124796+104
@@ -417,10 +417,10 @@ CNSTI4 0
 ASGNI4
 line 118
 ;118:	}
-LABELV $153
+LABELV $155
 line 119
 ;119:	CG_Printf( "skin %i\n", cg.testModelEntity.skinNum );
-ADDRGP4 $147
+ADDRGP4 $149
 ARGP4
 ADDRGP4 cg+124796+104
 INDIRI4
@@ -430,7 +430,7 @@ CALLV
 pop
 line 120
 ;120:}
-LABELV $150
+LABELV $152
 endproc CG_TestModelPrevSkin_f 4 8
 proc CG_AddTestModel 32 4
 line 122
@@ -456,19 +456,19 @@ line 127
 ADDRGP4 cg+124796+8
 INDIRI4
 CNSTI4 0
-NEI4 $165
+NEI4 $167
 line 128
 ;128:		CG_Printf ("Can't register model\n");
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
 line 129
 ;129:		return;
-ADDRGP4 $161
+ADDRGP4 $163
 JUMPV
-LABELV $165
+LABELV $167
 line 133
 ;130:	}
 ;131:
@@ -477,7 +477,7 @@ line 133
 ADDRGP4 cg+125000
 INDIRI4
 CNSTI4 0
-EQI4 $169
+EQI4 $171
 line 134
 ;134:		VectorCopy( cg.refdef.vieworg, cg.testModelEntity.origin );
 ADDRGP4 cg+124796+68
@@ -509,7 +509,7 @@ line 140
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $192
+LABELV $194
 line 141
 ;141:			cg.testModelEntity.origin[i] += cg.refdef.viewaxis[0][i] * cg_gun_x.value;
 ADDRLP4 8
@@ -599,7 +599,7 @@ ADDF4
 ASGNF4
 line 144
 ;144:		}
-LABELV $193
+LABELV $195
 line 140
 ADDRLP4 0
 ADDRLP4 0
@@ -610,10 +610,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $192
+LTI4 $194
 line 145
 ;145:	}
-LABELV $169
+LABELV $171
 line 147
 ;146:
 ;147:	trap_R_AddRefEntityToScene( &cg.testModelEntity );
@@ -624,7 +624,7 @@ CALLV
 pop
 line 148
 ;148:}
-LABELV $161
+LABELV $163
 endproc CG_AddTestModel 32 4
 proc CG_CalcVrect 12 8
 line 162
@@ -653,7 +653,7 @@ CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 5
-NEI4 $215
+NEI4 $217
 line 167
 ;167:		size = 100;
 ADDRLP4 0
@@ -661,21 +661,21 @@ CNSTI4 100
 ASGNI4
 line 168
 ;168:	} else {
-ADDRGP4 $216
+ADDRGP4 $218
 JUMPV
-LABELV $215
+LABELV $217
 line 170
 ;169:		// bound normal viewsize
 ;170:		if (cg_viewsize.integer < 30) {
 ADDRGP4 cg_viewsize+12
 INDIRI4
 CNSTI4 30
-GEI4 $218
+GEI4 $220
 line 171
 ;171:			trap_Cvar_Set ("cg_viewsize","30");
-ADDRGP4 $221
+ADDRGP4 $223
 ARGP4
-ADDRGP4 $222
+ADDRGP4 $224
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
@@ -687,18 +687,18 @@ CNSTI4 30
 ASGNI4
 line 173
 ;173:		} else if (cg_viewsize.integer > 100) {
-ADDRGP4 $219
+ADDRGP4 $221
 JUMPV
-LABELV $218
+LABELV $220
 ADDRGP4 cg_viewsize+12
 INDIRI4
 CNSTI4 100
-LEI4 $223
+LEI4 $225
 line 174
 ;174:			trap_Cvar_Set ("cg_viewsize","100");
-ADDRGP4 $221
+ADDRGP4 $223
 ARGP4
-ADDRGP4 $226
+ADDRGP4 $228
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
@@ -710,9 +710,9 @@ CNSTI4 100
 ASGNI4
 line 176
 ;176:		} else {
-ADDRGP4 $224
+ADDRGP4 $226
 JUMPV
-LABELV $223
+LABELV $225
 line 177
 ;177:			size = cg_viewsize.integer;
 ADDRLP4 0
@@ -721,12 +721,12 @@ INDIRI4
 ASGNI4
 line 178
 ;178:		}
-LABELV $224
-LABELV $219
+LABELV $226
+LABELV $221
 line 180
 ;179:
 ;180:	}
-LABELV $216
+LABELV $218
 line 181
 ;181:	cg.refdef.width = cgs.glconfig.vidWidth*size/100;
 ADDRGP4 cg+109048+8
@@ -801,16 +801,16 @@ DIVI4
 ASGNI4
 line 189
 ;189:}
-LABELV $214
+LABELV $216
 endproc CG_CalcVrect 12 8
 data
 align 4
-LABELV $252
+LABELV $254
 byte 4 3229614080
 byte 4 3229614080
 byte 4 3229614080
 align 4
-LABELV $253
+LABELV $255
 byte 4 1082130432
 byte 4 1082130432
 byte 4 1082130432
@@ -868,7 +868,7 @@ line 217
 ADDRGP4 cg+107636+184
 INDIRI4
 CNSTI4 0
-GTI4 $260
+GTI4 $262
 line 218
 ;218:		focusAngles[YAW] = cg.predictedPlayerState.stats[STAT_DEAD_YAW];
 ADDRLP4 48+4
@@ -885,14 +885,14 @@ CVIF4 4
 ASGNF4
 line 220
 ;220:	}
-LABELV $260
+LABELV $262
 line 222
 ;221:
 ;222:	if ( focusAngles[PITCH] > 45 ) {
 ADDRLP4 48
 INDIRF4
 CNSTF4 1110704128
-LEF4 $273
+LEF4 $275
 line 223
 ;223:		focusAngles[PITCH] = 45;		// don't go too far overhead
 ADDRLP4 48
@@ -900,7 +900,7 @@ CNSTF4 1110704128
 ASGNF4
 line 224
 ;224:	}
-LABELV $273
+LABELV $275
 line 225
 ;225:	AngleVectors( focusAngles, forward, NULL, NULL );
 ADDRLP4 48
@@ -1130,16 +1130,16 @@ line 245
 ADDRGP4 cg_cameraMode+12
 INDIRI4
 CNSTI4 0
-NEI4 $312
+NEI4 $314
 line 246
 ;246:		CG_Trace( &trace, cg.refdef.vieworg, mins, maxs, view, cg.predictedPlayerState.clientNum, MASK_SOLID );
 ADDRLP4 72
 ARGP4
 ADDRGP4 cg+109048+24
 ARGP4
-ADDRGP4 $252
+ADDRGP4 $254
 ARGP4
-ADDRGP4 $253
+ADDRGP4 $255
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -1157,7 +1157,7 @@ line 248
 ADDRLP4 72+8
 INDIRF4
 CNSTF4 1065353216
-EQF4 $319
+EQF4 $321
 line 249
 ;249:			VectorCopy( trace.endpos, view );
 ADDRLP4 0
@@ -1186,9 +1186,9 @@ ADDRLP4 72
 ARGP4
 ADDRGP4 cg+109048+24
 ARGP4
-ADDRGP4 $252
+ADDRGP4 $254
 ARGP4
-ADDRGP4 $253
+ADDRGP4 $255
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -1208,10 +1208,10 @@ INDIRB
 ASGNB 12
 line 256
 ;256:		}
-LABELV $319
+LABELV $321
 line 257
 ;257:	}
-LABELV $312
+LABELV $314
 line 260
 ;258:
 ;259:
@@ -1276,7 +1276,7 @@ line 265
 ADDRLP4 68
 INDIRF4
 CNSTF4 1065353216
-GEF4 $346
+GEF4 $348
 line 266
 ;266:		focusDist = 1;	// should never happen
 ADDRLP4 68
@@ -1284,7 +1284,7 @@ CNSTF4 1065353216
 ASGNF4
 line 267
 ;267:	}
-LABELV $346
+LABELV $348
 line 268
 ;268:	cg.refdefViewAngles[PITCH] = -180 / M_PI * atan2( focusPoint[2], focusDist );
 ADDRLP4 12+8
@@ -1319,7 +1319,7 @@ SUBF4
 ASGNF4
 line 270
 ;270:}
-LABELV $251
+LABELV $253
 endproc CG_OffsetThirdPersonView 188 28
 proc CG_StepOffset 8 0
 line 274
@@ -1344,7 +1344,7 @@ line 279
 ADDRLP4 0
 INDIRI4
 CNSTI4 200
-GEI4 $356
+GEI4 $358
 line 280
 ;280:		cg.refdef.vieworg[2] -= cg.stepChange 
 ADDRLP4 4
@@ -1370,10 +1370,10 @@ ASGNF4
 line 282
 ;281:			* (STEP_TIME - timeDelta) / STEP_TIME;
 ;282:	}
-LABELV $356
+LABELV $358
 line 283
 ;283:}
-LABELV $353
+LABELV $355
 endproc CG_StepOffset 8 0
 proc CG_OffsetFirstPersonView 96 0
 line 291
@@ -1403,12 +1403,12 @@ CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 5
-NEI4 $363
+NEI4 $365
 line 303
 ;303:		return;
-ADDRGP4 $362
+ADDRGP4 $364
 JUMPV
-LABELV $363
+LABELV $365
 line 306
 ;304:	}
 ;305:
@@ -1431,7 +1431,7 @@ CNSTI4 228
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $369
+GTI4 $371
 line 311
 ;311:		angles[ROLL] = 40;
 ADDRLP4 4
@@ -1479,9 +1479,9 @@ ADDF4
 ASGNF4
 line 315
 ;315:		return;
-ADDRGP4 $362
+ADDRGP4 $364
 JUMPV
-LABELV $369
+LABELV $371
 line 319
 ;316:	}
 ;317:
@@ -1533,7 +1533,7 @@ line 322
 ADDRGP4 cg+124700
 INDIRF4
 CNSTF4 0
-EQF4 $380
+EQF4 $382
 line 323
 ;323:		ratio = cg.time - cg.damageTime;
 ADDRLP4 32
@@ -1549,7 +1549,7 @@ line 324
 ADDRLP4 32
 INDIRF4
 CNSTF4 1120403456
-GEF4 $385
+GEF4 $387
 line 325
 ;325:			ratio /= DAMAGE_DEFLECT_TIME;
 ADDRLP4 32
@@ -1594,9 +1594,9 @@ ADDF4
 ASGNF4
 line 328
 ;328:		} else {
-ADDRGP4 $386
+ADDRGP4 $388
 JUMPV
-LABELV $385
+LABELV $387
 line 329
 ;329:			ratio = 1.0 - ( ratio - DAMAGE_DEFLECT_TIME ) / DAMAGE_RETURN_TIME;
 ADDRLP4 32
@@ -1614,7 +1614,7 @@ line 330
 ADDRLP4 32
 INDIRF4
 CNSTF4 0
-LEF4 $389
+LEF4 $391
 line 331
 ;331:				angles[PITCH] += ratio * cg.v_dmg_pitch;
 ADDRLP4 4
@@ -1651,13 +1651,13 @@ ADDF4
 ASGNF4
 line 333
 ;333:			}
-LABELV $389
+LABELV $391
 line 334
 ;334:		}
-LABELV $386
+LABELV $388
 line 335
 ;335:	}
-LABELV $380
+LABELV $382
 line 346
 ;336:
 ;337:	// add pitch based on fall kick
@@ -1761,18 +1761,18 @@ line 357
 ADDRGP4 cg+124788
 INDIRF4
 CNSTF4 1128792064
-LEF4 $423
+LEF4 $425
 ADDRLP4 64
 ADDRGP4 cg+124788
 INDIRF4
 ASGNF4
-ADDRGP4 $424
+ADDRGP4 $426
 JUMPV
-LABELV $423
+LABELV $425
 ADDRLP4 64
 CNSTF4 1128792064
 ASGNF4
-LABELV $424
+LABELV $426
 ADDRLP4 28
 ADDRLP4 64
 INDIRF4
@@ -1797,7 +1797,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $427
+EQI4 $429
 line 361
 ;361:		delta *= 3;		// crouching
 ADDRLP4 0
@@ -1806,7 +1806,7 @@ ADDRLP4 0
 INDIRF4
 MULF4
 ASGNF4
-LABELV $427
+LABELV $429
 line 362
 ;362:	angles[PITCH] += delta;
 ADDRLP4 4
@@ -1837,7 +1837,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $433
+EQI4 $435
 line 365
 ;365:		delta *= 3;		// crouching accentuates roll
 ADDRLP4 0
@@ -1846,7 +1846,7 @@ ADDRLP4 0
 INDIRF4
 MULF4
 ASGNF4
-LABELV $433
+LABELV $435
 line 366
 ;366:	if (cg.bobcycle & 1)
 ADDRGP4 cg+124784
@@ -1854,7 +1854,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $437
+EQI4 $439
 line 367
 ;367:		delta = -delta;
 ADDRLP4 0
@@ -1862,7 +1862,7 @@ ADDRLP4 0
 INDIRF4
 NEGF4
 ASGNF4
-LABELV $437
+LABELV $439
 line 368
 ;368:	angles[ROLL] += delta;
 ADDRLP4 72
@@ -1918,7 +1918,7 @@ line 377
 ADDRLP4 36
 INDIRI4
 CNSTI4 100
-GEI4 $444
+GEI4 $446
 line 378
 ;378:		cg.refdef.vieworg[2] -= cg.duckChange 
 ADDRLP4 80
@@ -1944,7 +1944,7 @@ ASGNF4
 line 380
 ;379:			* (DUCK_TIME - timeDelta) / DUCK_TIME;
 ;380:	}
-LABELV $444
+LABELV $446
 line 383
 ;381:
 ;382:	// add bob height
@@ -1964,7 +1964,7 @@ line 384
 ADDRLP4 24
 INDIRF4
 CNSTF4 1086324736
-LEF4 $453
+LEF4 $455
 line 385
 ;385:		bob = 6;
 ADDRLP4 24
@@ -1972,7 +1972,7 @@ CNSTF4 1086324736
 ASGNF4
 line 386
 ;386:	}
-LABELV $453
+LABELV $455
 line 388
 ;387:
 ;388:	origin[2] += bob;
@@ -2009,7 +2009,7 @@ line 393
 ADDRLP4 0
 INDIRF4
 CNSTF4 1125515264
-GEF4 $457
+GEF4 $459
 line 394
 ;394:		f = delta / LAND_DEFLECT_TIME;
 ADDRLP4 40
@@ -2037,13 +2037,13 @@ ADDF4
 ASGNF4
 line 396
 ;396:	} else if ( delta < LAND_DEFLECT_TIME + LAND_RETURN_TIME ) {
-ADDRGP4 $458
+ADDRGP4 $460
 JUMPV
-LABELV $457
+LABELV $459
 ADDRLP4 0
 INDIRF4
 CNSTF4 1138819072
-GEF4 $463
+GEF4 $465
 line 397
 ;397:		delta -= LAND_DEFLECT_TIME;
 ADDRLP4 0
@@ -2081,8 +2081,8 @@ ADDF4
 ASGNF4
 line 400
 ;400:	}
-LABELV $463
-LABELV $458
+LABELV $465
+LABELV $460
 line 403
 ;401:
 ;402:	// add step offset
@@ -2149,7 +2149,7 @@ line 421
 ;419:	}
 ;420:#endif
 ;421:}
-LABELV $362
+LABELV $364
 endproc CG_OffsetFirstPersonView 96 0
 export CG_ZoomDown_f
 proc CG_ZoomDown_f 4 0
@@ -2169,12 +2169,12 @@ ADDRGP4 cg+109428
 INDIRI4
 ADDRLP4 0
 INDIRI4
-EQI4 $475
+EQI4 $477
 ADDRGP4 cg+109440
 INDIRI4
 ADDRLP4 0
 INDIRI4
-NEI4 $475
+NEI4 $477
 line 429
 ;429:	{
 line 430
@@ -2190,20 +2190,20 @@ INDIRI4
 ASGNI4
 line 432
 ;432:	} else {
-ADDRGP4 $476
+ADDRGP4 $478
 JUMPV
-LABELV $475
+LABELV $477
 line 433
 ;433:		if(cg.zoomed)
 ADDRGP4 cg+109428
 INDIRI4
 CNSTI4 0
-EQI4 $482
+EQI4 $484
 line 434
 ;434:			return;
-ADDRGP4 $474
+ADDRGP4 $476
 JUMPV
-LABELV $482
+LABELV $484
 line 436
 ;435:
 ;436:		cg.zoomed = qtrue;
@@ -2223,10 +2223,10 @@ INDIRI4
 ASGNI4
 line 439
 ;439:	}
-LABELV $476
+LABELV $478
 line 440
 ;440:}
-LABELV $474
+LABELV $476
 endproc CG_ZoomDown_f 4 0
 export CG_ZoomUp_f
 proc CG_ZoomUp_f 0 0
@@ -2239,7 +2239,7 @@ line 444
 ADDRGP4 cg+109428
 INDIRI4
 CNSTI4 0
-EQI4 $490
+EQI4 $492
 line 445
 ;445:	{
 line 446
@@ -2254,10 +2254,10 @@ CNSTI4 0
 ASGNI4
 line 448
 ;448:	}
-LABELV $490
+LABELV $492
 line 449
 ;449:}
-LABELV $489
+LABELV $491
 endproc CG_ZoomUp_f 0 0
 proc CG_CalcFov 52 8
 line 480
@@ -2306,7 +2306,7 @@ line 490
 ADDRGP4 cg+107636+4
 INDIRI4
 CNSTI4 5
-NEI4 $496
+NEI4 $498
 line 492
 ;491:		// if in intermission, use a fixed value
 ;492:		fov_x = 90;
@@ -2315,9 +2315,9 @@ CNSTF4 1119092736
 ASGNF4
 line 493
 ;493:	} else {
-ADDRGP4 $497
+ADDRGP4 $499
 JUMPV
-LABELV $496
+LABELV $498
 line 495
 ;494:		// user selectable
 ;495:		if ( cgs.dmflags & DF_FIXED_FOV ) {
@@ -2326,7 +2326,7 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $500
+EQI4 $502
 line 497
 ;496:			// dmflag to prevent wide fov for all clients
 ;497:			fov_x = 90;
@@ -2335,9 +2335,9 @@ CNSTF4 1119092736
 ASGNF4
 line 498
 ;498:		} else {
-ADDRGP4 $501
+ADDRGP4 $503
 JUMPV
-LABELV $500
+LABELV $502
 line 499
 ;499:			fov_x = cg_fov.value;
 ADDRLP4 0
@@ -2349,7 +2349,7 @@ line 500
 ADDRLP4 0
 INDIRF4
 CNSTF4 1065353216
-GEF4 $504
+GEF4 $506
 line 501
 ;501:				fov_x = 1;
 ADDRLP4 0
@@ -2357,13 +2357,13 @@ CNSTF4 1065353216
 ASGNF4
 line 502
 ;502:			} else if ( fov_x > 160 ) {
-ADDRGP4 $505
+ADDRGP4 $507
 JUMPV
-LABELV $504
+LABELV $506
 ADDRLP4 0
 INDIRF4
 CNSTF4 1126170624
-LEF4 $506
+LEF4 $508
 line 503
 ;503:				fov_x = 160;
 ADDRLP4 0
@@ -2371,11 +2371,11 @@ CNSTF4 1126170624
 ASGNF4
 line 504
 ;504:			}
-LABELV $506
-LABELV $505
+LABELV $508
+LABELV $507
 line 505
 ;505:		}
-LABELV $501
+LABELV $503
 line 508
 ;506:
 ;507:		// account for zooms
@@ -2389,7 +2389,7 @@ line 509
 ADDRLP4 20
 INDIRF4
 CNSTF4 1065353216
-GEF4 $509
+GEF4 $511
 line 510
 ;510:			zoomFov = 1;
 ADDRLP4 20
@@ -2397,13 +2397,13 @@ CNSTF4 1065353216
 ASGNF4
 line 511
 ;511:		} else if ( zoomFov > 160 ) {
-ADDRGP4 $510
+ADDRGP4 $512
 JUMPV
-LABELV $509
+LABELV $511
 ADDRLP4 20
 INDIRF4
 CNSTF4 1126170624
-LEF4 $511
+LEF4 $513
 line 512
 ;512:			zoomFov = 160;
 ADDRLP4 20
@@ -2411,8 +2411,8 @@ CNSTF4 1126170624
 ASGNF4
 line 513
 ;513:		}
-LABELV $511
-LABELV $510
+LABELV $513
+LABELV $512
 line 516
 ;514:
 ;515:		// Shafe - Trep - Improved Zoom
@@ -2420,13 +2420,13 @@ line 516
 ADDRGP4 cg+109428
 INDIRI4
 CNSTI4 0
-EQI4 $513
+EQI4 $515
 line 517
 ;517:			if (cg.zoomTime != 0)
 ADDRGP4 cg+109432
 INDIRI4
 CNSTI4 0
-EQI4 $516
+EQI4 $518
 line 518
 ;518:				f = ( cg.time - cg.zoomTime ) / (float)ZOOM_TIME;
 ADDRLP4 28
@@ -2439,22 +2439,22 @@ CVIF4 4
 CNSTF4 1140457472
 DIVF4
 ASGNF4
-ADDRGP4 $517
+ADDRGP4 $519
 JUMPV
-LABELV $516
+LABELV $518
 line 520
 ;519:			else
 ;520:				f=-1;
 ADDRLP4 28
 CNSTF4 3212836864
 ASGNF4
-LABELV $517
+LABELV $519
 line 521
 ;521:			if ( f > 1.0 ) {
 ADDRLP4 28
 INDIRF4
 CNSTF4 1065353216
-LEF4 $521
+LEF4 $523
 line 522
 ;522:				fov_x = zoomFov;
 ADDRLP4 0
@@ -2470,15 +2470,15 @@ CVFI4 4
 ASGNI4
 line 524
 ;524:			} else {
-ADDRGP4 $514
+ADDRGP4 $516
 JUMPV
-LABELV $521
+LABELV $523
 line 525
 ;525:				if(f!=-1){
 ADDRLP4 28
 INDIRF4
 CNSTF4 3212836864
-EQF4 $524
+EQF4 $526
 line 526
 ;526:					fov_x = fov_x + f * ( zoomFov - fov_x );
 ADDRLP4 0
@@ -2503,9 +2503,9 @@ CVFI4 4
 ASGNI4
 line 528
 ;528:				}
-ADDRGP4 $514
+ADDRGP4 $516
 JUMPV
-LABELV $524
+LABELV $526
 line 530
 ;529:			else
 ;530:				fov_x = cg.setZoomFov;
@@ -2518,9 +2518,9 @@ line 531
 ;531:			}
 line 532
 ;532:			} else {
-ADDRGP4 $514
+ADDRGP4 $516
 JUMPV
-LABELV $513
+LABELV $515
 line 533
 ;533:				f = ( cg.time - cg.zoomTime ) / (float)ZOOM_TIME_OUT;
 ADDRLP4 28
@@ -2538,7 +2538,7 @@ line 534
 ADDRLP4 28
 INDIRF4
 CNSTF4 1065353216
-LEF4 $530
+LEF4 $532
 line 535
 ;535:					fov_x = fov_x;
 ADDRLP4 0
@@ -2547,9 +2547,9 @@ INDIRF4
 ASGNF4
 line 536
 ;536:				} else {
-ADDRGP4 $531
+ADDRGP4 $533
 JUMPV
-LABELV $530
+LABELV $532
 line 537
 ;537:					fov_x = cg.setZoomFov + f * ( fov_x - cg.setZoomFov );
 ADDRLP4 0
@@ -2569,10 +2569,10 @@ ADDF4
 ASGNF4
 line 538
 ;538:			}
-LABELV $531
+LABELV $533
 line 539
 ;539:		}
-LABELV $514
+LABELV $516
 line 556
 ;540:		/*if ( cg.zoomed ) {
 ;541:			f = ( cg.time - cg.zoomTime ) / (float)ZOOM_TIME;
@@ -2591,7 +2591,7 @@ line 556
 ;554:		} */
 ;555:
 ;556:	}
-LABELV $497
+LABELV $499
 line 558
 ;557:
 ;558:	x = cg.refdef.width / tan( fov_x / 360 * M_PI );
@@ -2664,7 +2664,7 @@ INDIRI4
 CNSTI4 56
 BANDI4
 CNSTI4 0
-EQI4 $540
+EQI4 $542
 line 565
 ;565:		phase = cg.time / 1000.0 * WAVE_FREQUENCY * M_PI * 2;
 ADDRLP4 32
@@ -2720,9 +2720,9 @@ CNSTI4 1
 ASGNI4
 line 570
 ;570:	}
-ADDRGP4 $541
+ADDRGP4 $543
 JUMPV
-LABELV $540
+LABELV $542
 line 571
 ;571:	else {
 line 572
@@ -2732,7 +2732,7 @@ CNSTI4 0
 ASGNI4
 line 573
 ;573:	}
-LABELV $541
+LABELV $543
 line 577
 ;574:
 ;575:
@@ -2754,7 +2754,7 @@ line 580
 ADDRGP4 cg+109428
 INDIRI4
 CNSTI4 0
-NEI4 $547
+NEI4 $549
 line 581
 ;581:		cg.zoomSensitivity = 1;
 ADDRGP4 cg+109436
@@ -2762,9 +2762,9 @@ CNSTF4 1065353216
 ASGNF4
 line 582
 ;582:	} else {
-ADDRGP4 $548
+ADDRGP4 $550
 JUMPV
-LABELV $547
+LABELV $549
 line 583
 ;583:		cg.zoomSensitivity = cg.refdef.fov_y / 75.0;
 ADDRGP4 cg+109436
@@ -2775,14 +2775,14 @@ DIVF4
 ASGNF4
 line 584
 ;584:	}
-LABELV $548
+LABELV $550
 line 586
 ;585:
 ;586:	return inwater;
 ADDRLP4 16
 INDIRI4
 RETI4
-LABELV $495
+LABELV $497
 endproc CG_CalcFov 52 8
 proc CG_DamageBlendBlob 164 12
 line 597
@@ -2806,12 +2806,12 @@ line 602
 ADDRGP4 cg+124712
 INDIRF4
 CNSTF4 0
-NEF4 $555
+NEF4 $557
 line 603
 ;603:		return;
-ADDRGP4 $554
+ADDRGP4 $556
 JUMPV
-LABELV $555
+LABELV $557
 line 611
 ;604:	}
 ;605:
@@ -2824,12 +2824,12 @@ line 611
 ADDRGP4 cgs+20100+11288
 INDIRI4
 CNSTI4 3
-NEI4 $558
+NEI4 $560
 line 612
 ;612:		return;
-ADDRGP4 $554
+ADDRGP4 $556
 JUMPV
-LABELV $558
+LABELV $560
 line 615
 ;613:	}
 ;614:
@@ -2853,18 +2853,18 @@ line 617
 ADDRLP4 140
 INDIRI4
 CNSTI4 0
-LEI4 $566
+LEI4 $568
 ADDRLP4 140
 INDIRI4
 ADDRLP4 144
 INDIRI4
-LTI4 $564
-LABELV $566
+LTI4 $566
+LABELV $568
 line 618
 ;618:		return;
-ADDRGP4 $554
+ADDRGP4 $556
 JUMPV
-LABELV $564
+LABELV $566
 line 622
 ;619:	}
 ;620:
@@ -3047,7 +3047,7 @@ ADDRLP4 156
 INDIRF4
 ADDRLP4 160
 INDIRF4
-LTF4 $650
+LTF4 $652
 ADDRLP4 152
 ADDRLP4 156
 INDIRF4
@@ -3059,16 +3059,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $651
+ADDRGP4 $653
 JUMPV
-LABELV $650
+LABELV $652
 ADDRLP4 152
 ADDRLP4 156
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $651
+LABELV $653
 ADDRLP4 0+116+3
 ADDRLP4 152
 INDIRU4
@@ -3083,7 +3083,7 @@ CALLV
 pop
 line 637
 ;637:}
-LABELV $554
+LABELV $556
 endproc CG_DamageBlendBlob 164 12
 proc CG_CalcViewValues 40 12
 line 647
@@ -3150,7 +3150,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 5
-NEI4 $656
+NEI4 $658
 line 676
 ;676:		VectorCopy( ps->origin, cg.refdef.vieworg );
 ADDRGP4 cg+109048+24
@@ -3187,9 +3187,9 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 RETI4
-ADDRGP4 $652
+ADDRGP4 $654
 JUMPV
-LABELV $656
+LABELV $658
 line 682
 ;680:	}
 ;681:
@@ -3298,14 +3298,14 @@ line 691
 ADDRGP4 cg_cameraOrbit+12
 INDIRI4
 CNSTI4 0
-EQI4 $670
+EQI4 $672
 line 692
 ;692:		if (cg.time > cg.nextOrbitTime) {
 ADDRGP4 cg+107604
 INDIRI4
 ADDRGP4 cg+124792
 INDIRI4
-LEI4 $673
+LEI4 $675
 line 693
 ;693:			cg.nextOrbitTime = cg.time + cg_cameraOrbitDelay.integer;
 ADDRGP4 cg+124792
@@ -3331,17 +3331,17 @@ ADDF4
 ASGNF4
 line 695
 ;695:		}
-LABELV $673
+LABELV $675
 line 696
 ;696:	}
-LABELV $670
+LABELV $672
 line 698
 ;697:	// add error decay
 ;698:	if ( cg_errorDecay.value > 0 ) {
 ADDRGP4 cg_errorDecay+8
 INDIRF4
 CNSTF4 0
-LEF4 $682
+LEF4 $684
 line 702
 ;699:		int		t;
 ;700:		float	f;
@@ -3376,11 +3376,11 @@ ASGNF4
 ADDRLP4 36
 INDIRF4
 CNSTF4 0
-LEF4 $689
+LEF4 $691
 ADDRLP4 36
 INDIRF4
 CNSTF4 1065353216
-GEF4 $689
+GEF4 $691
 line 705
 ;705:			VectorMA( cg.refdef.vieworg, f, cg.predictedError, cg.refdef.vieworg );
 ADDRGP4 cg+109048+24
@@ -3415,9 +3415,9 @@ ADDF4
 ASGNF4
 line 706
 ;706:		} else {
-ADDRGP4 $690
+ADDRGP4 $692
 JUMPV
-LABELV $689
+LABELV $691
 line 707
 ;707:			cg.predictedErrorTime = 0;
 ADDRGP4 cg+108840
@@ -3425,17 +3425,17 @@ CNSTI4 0
 ASGNI4
 line 708
 ;708:		}
-LABELV $690
+LABELV $692
 line 709
 ;709:	}
-LABELV $682
+LABELV $684
 line 711
 ;710:
 ;711:	if ( cg.renderingThirdPerson ) {
 ADDRGP4 cg+107628
 INDIRI4
 CNSTI4 0
-EQI4 $713
+EQI4 $715
 line 713
 ;712:		// back away from character
 ;713:		CG_OffsetThirdPersonView();
@@ -3444,9 +3444,9 @@ CALLV
 pop
 line 714
 ;714:	} else {
-ADDRGP4 $714
+ADDRGP4 $716
 JUMPV
-LABELV $713
+LABELV $715
 line 716
 ;715:		// offset for local bobbing and kicks
 ;716:		CG_OffsetFirstPersonView();
@@ -3455,7 +3455,7 @@ CALLV
 pop
 line 717
 ;717:	}
-LABELV $714
+LABELV $716
 line 720
 ;718:
 ;719:	// position eye reletive to origin
@@ -3473,7 +3473,7 @@ line 722
 ADDRGP4 cg+107632
 INDIRI4
 CNSTI4 0
-EQI4 $719
+EQI4 $721
 line 723
 ;723:		cg.refdef.rdflags |= RDF_NOWORLDMODEL | RDF_HYPERSPACE;
 ADDRLP4 28
@@ -3489,7 +3489,7 @@ BORI4
 ASGNI4
 line 724
 ;724:	}
-LABELV $719
+LABELV $721
 line 727
 ;725:
 ;726:	// field of view
@@ -3501,7 +3501,7 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 RETI4
-LABELV $652
+LABELV $654
 endproc CG_CalcViewValues 40 12
 proc CG_PowerupTimerSounds 16 16
 line 736
@@ -3523,7 +3523,7 @@ line 741
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-LABELV $725
+LABELV $727
 line 742
 ;742:		t = cg.snap->ps.powerups[i];
 ADDRLP4 0
@@ -3544,12 +3544,12 @@ ADDRLP4 0
 INDIRI4
 ADDRGP4 cg+107604
 INDIRI4
-GTI4 $730
+GTI4 $732
 line 744
 ;744:			continue;
-ADDRGP4 $726
+ADDRGP4 $728
 JUMPV
-LABELV $730
+LABELV $732
 line 746
 ;745:		}
 ;746:		if ( t - cg.time >= POWERUP_BLINKS * POWERUP_BLINK_TIME ) {
@@ -3559,12 +3559,12 @@ ADDRGP4 cg+107604
 INDIRI4
 SUBI4
 CNSTI4 5000
-LTI4 $733
+LTI4 $735
 line 747
 ;747:			continue;
-ADDRGP4 $726
+ADDRGP4 $728
 JUMPV
-LABELV $733
+LABELV $735
 line 749
 ;748:		}
 ;749:		if ( ( t - cg.time ) / POWERUP_BLINK_TIME != ( t - cg.oldTime ) / POWERUP_BLINK_TIME ) {
@@ -3587,7 +3587,7 @@ SUBI4
 ADDRLP4 12
 INDIRI4
 DIVI4
-EQI4 $736
+EQI4 $738
 line 750
 ;750:			trap_S_StartSound( NULL, cg.snap->ps.clientNum, CHAN_ITEM, cgs.media.wearOffSound );
 CNSTP4 0
@@ -3600,7 +3600,7 @@ INDIRI4
 ARGI4
 CNSTI4 4
 ARGI4
-ADDRGP4 cgs+152340+552
+ADDRGP4 cgs+152340+560
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
@@ -3608,10 +3608,10 @@ CALLV
 pop
 line 751
 ;751:		}
-LABELV $736
+LABELV $738
 line 752
 ;752:	}
-LABELV $726
+LABELV $728
 line 741
 ADDRLP4 4
 ADDRLP4 4
@@ -3622,10 +3622,10 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 16
-LTI4 $725
+LTI4 $727
 line 753
 ;753:}
-LABELV $724
+LABELV $726
 endproc CG_PowerupTimerSounds 16 16
 export CG_AddBufferedSound
 proc CG_AddBufferedSound 4 0
@@ -3642,12 +3642,12 @@ line 761
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $744
+NEI4 $746
 line 762
 ;762:		return;
-ADDRGP4 $743
+ADDRGP4 $745
 JUMPV
-LABELV $744
+LABELV $746
 line 763
 ;763:	cg.soundBuffer[cg.soundBufferIn] = sfx;
 ADDRGP4 cg+124564
@@ -3675,7 +3675,7 @@ ADDRGP4 cg+124564
 INDIRI4
 ADDRGP4 cg+124568
 INDIRI4
-NEI4 $750
+NEI4 $752
 line 766
 ;766:		cg.soundBufferOut++;
 ADDRLP4 0
@@ -3691,10 +3691,10 @@ ADDI4
 ASGNI4
 line 767
 ;767:	}
-LABELV $750
+LABELV $752
 line 768
 ;768:}
-LABELV $743
+LABELV $745
 endproc CG_AddBufferedSound 4 0
 proc CG_PlayBufferedSounds 0 8
 line 775
@@ -3711,14 +3711,14 @@ ADDRGP4 cg+124572
 INDIRI4
 ADDRGP4 cg+107604
 INDIRI4
-GEI4 $756
+GEI4 $758
 line 777
 ;777:		if (cg.soundBufferOut != cg.soundBufferIn && cg.soundBuffer[cg.soundBufferOut]) {
 ADDRGP4 cg+124568
 INDIRI4
 ADDRGP4 cg+124564
 INDIRI4
-EQI4 $760
+EQI4 $762
 ADDRGP4 cg+124568
 INDIRI4
 CNSTI4 2
@@ -3727,7 +3727,7 @@ ADDRGP4 cg+124576
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $760
+EQI4 $762
 line 778
 ;778:			trap_S_StartLocalSound(cg.soundBuffer[cg.soundBufferOut], CHAN_ANNOUNCER);
 ADDRGP4 cg+124568
@@ -3773,13 +3773,13 @@ ADDI4
 ASGNI4
 line 782
 ;782:		}
-LABELV $760
+LABELV $762
 line 783
 ;783:	}
-LABELV $756
+LABELV $758
 line 784
 ;784:}
-LABELV $755
+LABELV $757
 endproc CG_PlayBufferedSounds 0 8
 export CG_DrawActiveFrame
 proc CG_DrawActiveFrame 28 16
@@ -3849,7 +3849,7 @@ ADDRGP4 cg+109448
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $780
+EQI4 $782
 line 813
 ;813:		CG_DrawInformation();
 ADDRGP4 CG_DrawInformation
@@ -3857,9 +3857,9 @@ CALLV
 pop
 line 814
 ;814:		return;
-ADDRGP4 $774
+ADDRGP4 $776
 JUMPV
-LABELV $780
+LABELV $782
 line 819
 ;815:	}
 ;816:
@@ -3894,15 +3894,15 @@ ADDRGP4 cg+36
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $787
+EQU4 $789
 ADDRGP4 cg+36
 INDIRP4
 INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $783
-LABELV $787
+EQI4 $785
+LABELV $789
 line 830
 ;830:		CG_DrawInformation();
 ADDRGP4 CG_DrawInformation
@@ -3910,9 +3910,9 @@ CALLV
 pop
 line 831
 ;831:		return;
-ADDRGP4 $774
+ADDRGP4 $776
 JUMPV
-LABELV $783
+LABELV $785
 line 835
 ;832:	}
 ;833:
@@ -3960,7 +3960,7 @@ ADDRGP4 cg_thirdPerson+12
 INDIRI4
 ADDRLP4 16
 INDIRI4
-NEI4 $796
+NEI4 $798
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 228
@@ -3968,18 +3968,18 @@ ADDP4
 INDIRI4
 ADDRLP4 16
 INDIRI4
-GTI4 $794
-LABELV $796
+GTI4 $796
+LABELV $798
 ADDRLP4 12
 CNSTI4 1
 ASGNI4
-ADDRGP4 $795
+ADDRGP4 $797
 JUMPV
-LABELV $794
+LABELV $796
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-LABELV $795
+LABELV $797
 ADDRGP4 cg+107628
 ADDRLP4 12
 INDIRI4
@@ -4003,7 +4003,7 @@ line 850
 ADDRGP4 cg+107628
 INDIRI4
 CNSTI4 0
-NEI4 $797
+NEI4 $799
 line 851
 ;851:		CG_DamageBlendBlob();
 ADDRGP4 CG_DamageBlendBlob
@@ -4011,7 +4011,7 @@ CALLV
 pop
 line 852
 ;852:	}
-LABELV $797
+LABELV $799
 line 855
 ;853:
 ;854:	// build the render lists
@@ -4019,7 +4019,7 @@ line 855
 ADDRGP4 cg+107632
 INDIRI4
 CNSTI4 0
-NEI4 $800
+NEI4 $802
 line 856
 ;856:		CG_AddPacketEntities();			// adter calcViewValues, so predicted player state is correct
 ADDRGP4 CG_AddPacketEntities
@@ -4042,7 +4042,7 @@ CALLV
 pop
 line 860
 ;860:	}
-LABELV $800
+LABELV $802
 line 861
 ;861:	CG_AddViewWeapon( &cg.predictedPlayerState );
 ADDRGP4 cg+107636
@@ -4071,7 +4071,7 @@ line 870
 ADDRGP4 cg+124796+8
 INDIRI4
 CNSTI4 0
-EQI4 $804
+EQI4 $806
 line 871
 ;871:		CG_AddTestModel();
 ADDRGP4 CG_AddTestModel
@@ -4079,7 +4079,7 @@ CALLV
 pop
 line 872
 ;872:	}
-LABELV $804
+LABELV $806
 line 873
 ;873:	cg.refdef.time = cg.time;
 ADDRGP4 cg+109048+72
@@ -4134,7 +4134,7 @@ line 883
 ADDRFP4 4
 INDIRI4
 CNSTI4 2
-EQI4 $821
+EQI4 $823
 line 884
 ;884:		cg.frametime = cg.time - cg.oldTime;
 ADDRGP4 cg+107600
@@ -4149,7 +4149,7 @@ line 885
 ADDRGP4 cg+107600
 INDIRI4
 CNSTI4 0
-GEI4 $826
+GEI4 $828
 line 886
 ;886:			cg.frametime = 0;
 ADDRGP4 cg+107600
@@ -4157,7 +4157,7 @@ CNSTI4 0
 ASGNI4
 line 887
 ;887:		}
-LABELV $826
+LABELV $828
 line 888
 ;888:		cg.oldTime = cg.time;
 ADDRGP4 cg+107608
@@ -4171,21 +4171,21 @@ CALLV
 pop
 line 890
 ;890:	}
-LABELV $821
+LABELV $823
 line 891
 ;891:	if (cg_timescale.value != cg_timescaleFadeEnd.value) {
 ADDRGP4 cg_timescale+8
 INDIRF4
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
-EQF4 $832
+EQF4 $834
 line 892
 ;892:		if (cg_timescale.value < cg_timescaleFadeEnd.value) {
 ADDRGP4 cg_timescale+8
 INDIRF4
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
-GEF4 $836
+GEF4 $838
 line 893
 ;893:			cg_timescale.value += cg_timescaleFadeSpeed.value * ((float)cg.frametime) / 1000;
 ADDRLP4 24
@@ -4212,7 +4212,7 @@ ADDRGP4 cg_timescale+8
 INDIRF4
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
-LEF4 $837
+LEF4 $839
 line 895
 ;895:				cg_timescale.value = cg_timescaleFadeEnd.value;
 ADDRGP4 cg_timescale+8
@@ -4221,9 +4221,9 @@ INDIRF4
 ASGNF4
 line 896
 ;896:		}
-ADDRGP4 $837
+ADDRGP4 $839
 JUMPV
-LABELV $836
+LABELV $838
 line 897
 ;897:		else {
 line 898
@@ -4252,26 +4252,26 @@ ADDRGP4 cg_timescale+8
 INDIRF4
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
-GEF4 $852
+GEF4 $854
 line 900
 ;900:				cg_timescale.value = cg_timescaleFadeEnd.value;
 ADDRGP4 cg_timescale+8
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
 ASGNF4
-LABELV $852
+LABELV $854
 line 901
 ;901:		}
-LABELV $837
+LABELV $839
 line 902
 ;902:		if (cg_timescaleFadeSpeed.value) {
 ADDRGP4 cg_timescaleFadeSpeed+8
 INDIRF4
 CNSTF4 0
-EQF4 $858
+EQF4 $860
 line 903
 ;903:			trap_Cvar_Set("timescale", va("%f", cg_timescale.value));
-ADDRGP4 $862
+ADDRGP4 $864
 ARGP4
 ADDRGP4 cg_timescale+8
 INDIRF4
@@ -4280,7 +4280,7 @@ ADDRLP4 24
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $861
+ADDRGP4 $863
 ARGP4
 ADDRLP4 24
 INDIRP4
@@ -4290,10 +4290,10 @@ CALLV
 pop
 line 904
 ;904:		}
-LABELV $858
+LABELV $860
 line 905
 ;905:	}
-LABELV $832
+LABELV $834
 line 908
 ;906:
 ;907:	// actually issue the rendering calls
@@ -4310,10 +4310,10 @@ line 910
 ADDRGP4 cg_stats+12
 INDIRI4
 CNSTI4 0
-EQI4 $864
+EQI4 $866
 line 911
 ;911:		CG_Printf( "cg.clientFrame:%i\n", cg.clientFrame );
-ADDRGP4 $867
+ADDRGP4 $869
 ARGP4
 ADDRGP4 cg
 INDIRI4
@@ -4323,13 +4323,16 @@ CALLV
 pop
 line 912
 ;912:	}
-LABELV $864
+LABELV $866
 line 915
 ;913:
 ;914:
 ;915:}
-LABELV $774
+LABELV $776
 endproc CG_DrawActiveFrame 28 16
+import CG_DrawScanner
+import CG_ScannerOff_f
+import CG_ScannerOn_f
 import CG_NewParticleArea
 import initparticles
 import CG_ParticleExplosion
@@ -4569,6 +4572,7 @@ import CG_ConfigString
 import CG_Cvar_ClampInt
 import CG_AddBoundingBox
 import CG_PredictWeaponEffects
+import cg_playerOrigins
 import cg_plOut
 import cg_latentCmds
 import cg_latentSnaps
@@ -4682,6 +4686,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -4846,7 +4851,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $867
+LABELV $869
 byte 1 99
 byte 1 103
 byte 1 46
@@ -4867,12 +4872,12 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $862
+LABELV $864
 byte 1 37
 byte 1 102
 byte 1 0
 align 1
-LABELV $861
+LABELV $863
 byte 1 116
 byte 1 105
 byte 1 109
@@ -4884,18 +4889,18 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $226
+LABELV $228
 byte 1 49
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $222
+LABELV $224
 byte 1 51
 byte 1 48
 byte 1 0
 align 1
-LABELV $221
+LABELV $223
 byte 1 99
 byte 1 103
 byte 1 95
@@ -4909,7 +4914,7 @@ byte 1 122
 byte 1 101
 byte 1 0
 align 1
-LABELV $147
+LABELV $149
 byte 1 115
 byte 1 107
 byte 1 105
@@ -4920,7 +4925,7 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $130
+LABELV $132
 byte 1 102
 byte 1 114
 byte 1 97
@@ -4932,7 +4937,7 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $91
+LABELV $93
 byte 1 67
 byte 1 97
 byte 1 110

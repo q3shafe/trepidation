@@ -15,7 +15,7 @@ line 11
 ;9:	char	*txt;
 ;10:
 ;11:	n = (int)trap_Cvar_VariableValue( "sv_maxclients" );
-ADDRGP4 $68
+ADDRGP4 $70
 ARGP4
 ADDRLP4 16
 ADDRGP4 trap_Cvar_VariableValue
@@ -31,10 +31,10 @@ line 12
 ADDRLP4 12
 INDIRI4
 CNSTI4 8
-GEI4 $69
+GEI4 $71
 line 13
 ;13:		trap_Cvar_SetValue( "sv_maxclients", 8 );
-ADDRGP4 $68
+ADDRGP4 $70
 ARGP4
 CNSTF4 1090519040
 ARGF4
@@ -43,14 +43,14 @@ CALLV
 pop
 line 14
 ;14:	}
-LABELV $69
+LABELV $71
 line 16
 ;15:
 ;16:	level = atoi( Info_ValueForKey( arenaInfo, "num" ) );
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $71
+ADDRGP4 $73
 ARGP4
 ADDRLP4 20
 ADDRGP4 Info_ValueForKey
@@ -72,7 +72,7 @@ line 17
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $72
+ADDRGP4 $74
 ARGP4
 ADDRLP4 28
 ADDRGP4 Info_ValueForKey
@@ -89,13 +89,13 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $73
+EQI4 $75
 line 19
 ;19:		if( Q_stricmp( txt, "training" ) == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $77
+ADDRGP4 $79
 ARGP4
 ADDRLP4 32
 ADDRGP4 Q_stricmp
@@ -104,7 +104,7 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-NEI4 $75
+NEI4 $77
 line 20
 ;20:			level = -4;
 ADDRLP4 4
@@ -112,15 +112,15 @@ CNSTI4 -4
 ASGNI4
 line 21
 ;21:		}
-ADDRGP4 $76
+ADDRGP4 $78
 JUMPV
-LABELV $75
+LABELV $77
 line 22
 ;22:		else if( Q_stricmp( txt, "final" ) == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $80
+ADDRGP4 $82
 ARGP4
 ADDRLP4 36
 ADDRGP4 Q_stricmp
@@ -129,7 +129,7 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-NEI4 $78
+NEI4 $80
 line 23
 ;23:			level = UI_GetNumSPTiers() * ARENAS_PER_TIER;
 ADDRLP4 40
@@ -144,14 +144,14 @@ LSHI4
 ASGNI4
 line 24
 ;24:		}
+LABELV $80
 LABELV $78
-LABELV $76
 line 25
 ;25:	}
-LABELV $73
+LABELV $75
 line 26
 ;26:	trap_Cvar_SetValue( "ui_spSelection", level );
-ADDRGP4 $81
+ADDRGP4 $83
 ARGP4
 ADDRLP4 4
 INDIRI4
@@ -166,7 +166,7 @@ line 28
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $82
+ADDRGP4 $84
 ARGP4
 ADDRLP4 32
 ADDRGP4 Info_ValueForKey
@@ -178,7 +178,7 @@ INDIRP4
 ASGNP4
 line 29
 ;29:	trap_Cmd_ExecuteText( EXEC_APPEND, va( "spmap %s\n", map ) );
-ADDRGP4 $83
+ADDRGP4 $85
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -197,7 +197,7 @@ CALLV
 pop
 line 30
 ;30:}
-LABELV $67
+LABELV $69
 endproc UI_SPArena_Start 44 8
 import UI_RankStatusMenu
 import RankStatus_Cache
@@ -513,6 +513,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -677,7 +678,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $83
+LABELV $85
 byte 1 115
 byte 1 112
 byte 1 109
@@ -689,13 +690,13 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $82
+LABELV $84
 byte 1 109
 byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $81
+LABELV $83
 byte 1 117
 byte 1 105
 byte 1 95
@@ -712,7 +713,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $80
+LABELV $82
 byte 1 102
 byte 1 105
 byte 1 110
@@ -720,7 +721,7 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $77
+LABELV $79
 byte 1 116
 byte 1 114
 byte 1 97
@@ -731,7 +732,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $72
+LABELV $74
 byte 1 115
 byte 1 112
 byte 1 101
@@ -741,13 +742,13 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $71
+LABELV $73
 byte 1 110
 byte 1 117
 byte 1 109
 byte 1 0
 align 1
-LABELV $68
+LABELV $70
 byte 1 115
 byte 1 118
 byte 1 95

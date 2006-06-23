@@ -19,8 +19,6 @@ byte 4 5
 byte 4 7
 align 4
 LABELV handicap_items
-address $68
-address $69
 address $70
 address $71
 address $72
@@ -39,6 +37,8 @@ address $84
 address $85
 address $86
 address $87
+address $88
+address $89
 byte 4 0
 code
 proc PlayerSettings_DrawName 96 20
@@ -178,17 +178,17 @@ INDIRP4
 CNSTI4 40
 ADDP4
 INDIRI4
-NEI4 $90
+NEI4 $92
 ADDRLP4 72
 CNSTI4 1
 ASGNI4
-ADDRGP4 $91
+ADDRGP4 $93
 JUMPV
-LABELV $90
+LABELV $92
 ADDRLP4 72
 CNSTI4 0
 ASGNI4
-LABELV $91
+LABELV $93
 ADDRLP4 28
 ADDRLP4 72
 INDIRI4
@@ -209,7 +209,7 @@ line 105
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-EQI4 $92
+EQI4 $94
 line 106
 ;106:		style |= UI_PULSE;
 ADDRLP4 20
@@ -225,7 +225,7 @@ ADDRGP4 text_color_highlight
 ASGNP4
 line 108
 ;108:	}
-LABELV $92
+LABELV $94
 line 110
 ;109:
 ;110:	UI_DrawProportionalString( basex, y, "Name", style, color );
@@ -235,7 +235,7 @@ ARGI4
 ADDRLP4 24
 INDIRI4
 ARGI4
-ADDRGP4 $94
+ADDRGP4 $96
 ARGP4
 ADDRLP4 20
 INDIRI4
@@ -283,9 +283,9 @@ ADDRLP4 8
 ADDRLP4 36
 INDIRI4
 ASGNI4
-ADDRGP4 $97
+ADDRGP4 $99
 JUMPV
-LABELV $96
+LABELV $98
 line 118
 ;118:	while ( (c = *txt) != 0 ) {
 line 119
@@ -297,12 +297,12 @@ ADDRLP4 28
 INDIRI4
 ADDRLP4 80
 INDIRI4
-NEI4 $99
+NEI4 $101
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $99
+EQU4 $101
 ADDRLP4 88
 CNSTI4 94
 ASGNI4
@@ -312,7 +312,7 @@ INDIRI1
 CVII4 1
 ADDRLP4 88
 INDIRI4
-NEI4 $99
+NEI4 $101
 ADDRLP4 92
 ADDRLP4 0
 INDIRP4
@@ -325,12 +325,12 @@ ADDRLP4 92
 INDIRI4
 ADDRLP4 80
 INDIRI4
-EQI4 $99
+EQI4 $101
 ADDRLP4 92
 INDIRI4
 ADDRLP4 88
 INDIRI4
-EQI4 $99
+EQI4 $101
 line 120
 ;120:			n = ColorIndex( *(txt+1) );
 ADDRLP4 16
@@ -350,7 +350,7 @@ line 121
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-NEI4 $101
+NEI4 $103
 line 122
 ;122:				n = 7;
 ADDRLP4 16
@@ -358,7 +358,7 @@ CNSTI4 7
 ASGNI4
 line 123
 ;123:			}
-LABELV $101
+LABELV $103
 line 124
 ;124:			color = g_color_table[n];
 ADDRLP4 12
@@ -379,9 +379,9 @@ ADDP4
 ASGNP4
 line 126
 ;126:			continue;
-ADDRGP4 $97
+ADDRGP4 $99
 JUMPV
-LABELV $99
+LABELV $101
 line 128
 ;127:		}
 ;128:		UI_DrawChar( x, y, c, style, color );
@@ -422,7 +422,7 @@ ADDI4
 ASGNI4
 line 131
 ;131:	}
-LABELV $97
+LABELV $99
 line 118
 ADDRLP4 80
 ADDRLP4 0
@@ -437,7 +437,7 @@ ADDRLP4 80
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $96
+NEI4 $98
 line 134
 ;132:
 ;133:	// draw cursor if we have focus
@@ -445,7 +445,7 @@ line 134
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-EQI4 $103
+EQI4 $105
 line 135
 ;135:		if ( trap_Key_GetOverstrikeMode() ) {
 ADDRLP4 84
@@ -455,7 +455,7 @@ ASGNI4
 ADDRLP4 84
 INDIRI4
 CNSTI4 0
-EQI4 $105
+EQI4 $107
 line 136
 ;136:			c = 11;
 ADDRLP4 4
@@ -463,9 +463,9 @@ CNSTI1 11
 ASGNI1
 line 137
 ;137:		} else {
-ADDRGP4 $106
+ADDRGP4 $108
 JUMPV
-LABELV $105
+LABELV $107
 line 138
 ;138:			c = 10;
 ADDRLP4 4
@@ -473,7 +473,7 @@ CNSTI1 10
 ASGNI1
 line 139
 ;139:		}
-LABELV $106
+LABELV $108
 line 141
 ;140:
 ;141:		style &= ~UI_PULSE;
@@ -522,7 +522,7 @@ CALLV
 pop
 line 145
 ;145:	}
-LABELV $103
+LABELV $105
 line 148
 ;146:
 ;147:	// draw at bottom also using proportional font
@@ -563,7 +563,7 @@ CALLV
 pop
 line 151
 ;151:}
-LABELV $88
+LABELV $90
 endproc PlayerSettings_DrawName 96 20
 proc PlayerSettings_DrawHandicap 36 20
 line 159
@@ -599,17 +599,17 @@ INDIRP4
 CNSTI4 40
 ADDP4
 INDIRI4
-NEI4 $109
+NEI4 $111
 ADDRLP4 16
 CNSTI4 1
 ASGNI4
-ADDRGP4 $110
+ADDRGP4 $112
 JUMPV
-LABELV $109
+LABELV $111
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
-LABELV $110
+LABELV $112
 ADDRLP4 12
 ADDRLP4 16
 INDIRI4
@@ -630,7 +630,7 @@ line 170
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $111
+EQI4 $113
 line 171
 ;171:		style |= UI_PULSE;
 ADDRLP4 4
@@ -646,7 +646,7 @@ ADDRGP4 text_color_highlight
 ASGNP4
 line 173
 ;173:	}
-LABELV $111
+LABELV $113
 line 175
 ;174:
 ;175:	UI_DrawProportionalString( item->generic.x, item->generic.y, "Handicap", style, color );
@@ -662,7 +662,7 @@ CNSTI4 16
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $113
+ADDRGP4 $115
 ARGP4
 ADDRLP4 4
 INDIRI4
@@ -718,7 +718,7 @@ CALLV
 pop
 line 177
 ;177:}
-LABELV $107
+LABELV $109
 endproc PlayerSettings_DrawHandicap 36 20
 proc PlayerSettings_DrawEffects 44 20
 line 185
@@ -754,17 +754,17 @@ INDIRP4
 CNSTI4 40
 ADDP4
 INDIRI4
-NEI4 $116
+NEI4 $118
 ADDRLP4 16
 CNSTI4 1
 ASGNI4
-ADDRGP4 $117
+ADDRGP4 $119
 JUMPV
-LABELV $116
+LABELV $118
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
-LABELV $117
+LABELV $119
 ADDRLP4 12
 ADDRLP4 16
 INDIRI4
@@ -785,7 +785,7 @@ line 196
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $118
+EQI4 $120
 line 197
 ;197:		style |= UI_PULSE;
 ADDRLP4 4
@@ -801,7 +801,7 @@ ADDRGP4 text_color_highlight
 ASGNP4
 line 199
 ;199:	}
-LABELV $118
+LABELV $120
 line 201
 ;200:
 ;201:	UI_DrawProportionalString( item->generic.x, item->generic.y, "Effects", style, color );
@@ -817,7 +817,7 @@ CNSTI4 16
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $120
+ADDRGP4 $122
 ARGP4
 ADDRLP4 4
 INDIRI4
@@ -919,7 +919,7 @@ CALLV
 pop
 line 205
 ;205:}
-LABELV $114
+LABELV $116
 endproc PlayerSettings_DrawEffects 44 20
 proc PlayerSettings_DrawPlayer 88 28
 line 213
@@ -937,7 +937,7 @@ line 218
 ;216:	char			buf[MAX_QPATH];
 ;217:
 ;218:	trap_Cvar_VariableStringBuffer( "model", buf, sizeof( buf ) );
-ADDRGP4 $124
+ADDRGP4 $126
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -959,7 +959,7 @@ ASGNI4
 ADDRLP4 80
 INDIRI4
 CNSTI4 0
-EQI4 $125
+EQI4 $127
 line 220
 ;220:		UI_PlayerInfo_SetModel( &s_playersettings.playerinfo, buf );
 ADDRGP4 s_playersettings+1444
@@ -1015,7 +1015,7 @@ CALLV
 pop
 line 227
 ;227:	}
-LABELV $125
+LABELV $127
 line 229
 ;228:
 ;229:	b = (menubitmap_s*) self;
@@ -1065,7 +1065,7 @@ CALLV
 pop
 line 231
 ;231:}
-LABELV $123
+LABELV $125
 endproc PlayerSettings_DrawPlayer 88 28
 proc PlayerSettings_SaveChanges 0 8
 line 239
@@ -1080,7 +1080,7 @@ line 239
 line 241
 ;240:	// name
 ;241:	trap_Cvar_Set( "name", s_playersettings.name.field.buffer );
-ADDRGP4 $136
+ADDRGP4 $138
 ARGP4
 ADDRGP4 s_playersettings+624+60+12
 ARGP4
@@ -1091,7 +1091,7 @@ line 244
 ;242:
 ;243:	// handicap
 ;244:	trap_Cvar_SetValue( "handicap", 100 - s_playersettings.handicap.curvalue * 5 );
-ADDRGP4 $140
+ADDRGP4 $142
 ARGP4
 CNSTI4 100
 CNSTI4 5
@@ -1108,7 +1108,7 @@ line 247
 ;245:
 ;246:	// effects color
 ;247:	trap_Cvar_SetValue( "color1", uitogamecode[s_playersettings.effects.curvalue] );
-ADDRGP4 $143
+ADDRGP4 $145
 ARGP4
 ADDRGP4 s_playersettings+1052+64
 INDIRI4
@@ -1124,7 +1124,7 @@ CALLV
 pop
 line 248
 ;248:}
-LABELV $135
+LABELV $137
 endproc PlayerSettings_SaveChanges 0 8
 proc PlayerSettings_MenuKey 8 8
 line 256
@@ -1145,12 +1145,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 179
-EQI4 $149
+EQI4 $151
 ADDRLP4 0
 INDIRI4
 CNSTI4 27
-NEI4 $147
-LABELV $149
+NEI4 $149
+LABELV $151
 line 258
 ;258:		PlayerSettings_SaveChanges();
 ADDRGP4 PlayerSettings_SaveChanges
@@ -1158,7 +1158,7 @@ CALLV
 pop
 line 259
 ;259:	}
-LABELV $147
+LABELV $149
 line 260
 ;260:	return Menu_DefaultKey( &s_playersettings.menu, key );
 ADDRGP4 s_playersettings
@@ -1173,7 +1173,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $146
+LABELV $148
 endproc PlayerSettings_MenuKey 8 8
 proc PlayerSettings_SetMenuItems 44 28
 line 269
@@ -1193,7 +1193,7 @@ line 275
 ;273:
 ;274:	// name
 ;275:	Q_strncpyz( s_playersettings.name.field.buffer, UI_Cvar_VariableString("name"), sizeof(s_playersettings.name.field.buffer) );
-ADDRGP4 $136
+ADDRGP4 $138
 ARGP4
 ADDRLP4 20
 ADDRGP4 UI_Cvar_VariableString
@@ -1213,7 +1213,7 @@ line 278
 ;276:
 ;277:	// effects color
 ;278:	c = trap_Cvar_VariableValue( "color1" ) - 1;
-ADDRGP4 $143
+ADDRGP4 $145
 ARGP4
 ADDRLP4 24
 ADDRGP4 trap_Cvar_VariableValue
@@ -1231,12 +1231,12 @@ line 279
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LTI4 $159
+LTI4 $161
 ADDRLP4 0
 INDIRI4
 CNSTI4 6
-LEI4 $157
-LABELV $159
+LEI4 $159
+LABELV $161
 line 280
 ;280:		c = 6;
 ADDRLP4 0
@@ -1244,7 +1244,7 @@ CNSTI4 6
 ASGNI4
 line 281
 ;281:	}
-LABELV $157
+LABELV $159
 line 282
 ;282:	s_playersettings.effects.curvalue = gamecodetoui[c];
 ADDRGP4 s_playersettings+1052+64
@@ -1288,7 +1288,7 @@ ASGNF4
 line 291
 ;290:
 ;291:	UI_PlayerInfo_SetModel( &s_playersettings.playerinfo, UI_Cvar_VariableString( "model" ) );
-ADDRGP4 $124
+ADDRGP4 $126
 ARGP4
 ADDRLP4 32
 ADDRGP4 UI_Cvar_VariableString
@@ -1325,7 +1325,7 @@ line 295
 ;293:
 ;294:	// handicap
 ;295:	h = Com_Clamp( 5, 100, trap_Cvar_VariableValue("handicap") );
-ADDRGP4 $140
+ADDRGP4 $142
 ARGP4
 ADDRLP4 36
 ADDRGP4 trap_Cvar_VariableValue
@@ -1359,7 +1359,7 @@ SUBI4
 ASGNI4
 line 297
 ;297:}
-LABELV $150
+LABELV $152
 endproc PlayerSettings_SetMenuItems 44 28
 proc PlayerSettings_MenuEvent 12 8
 line 305
@@ -1376,12 +1376,12 @@ line 306
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $170
+EQI4 $172
 line 307
 ;307:		return;
-ADDRGP4 $169
+ADDRGP4 $171
 JUMPV
-LABELV $170
+LABELV $172
 line 310
 ;308:	}
 ;309:
@@ -1396,22 +1396,22 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 11
-EQI4 $175
+EQI4 $177
 ADDRLP4 0
 INDIRI4
 CNSTI4 13
-EQI4 $180
+EQI4 $182
 ADDRLP4 0
 INDIRI4
 CNSTI4 14
-EQI4 $179
-ADDRGP4 $172
+EQI4 $181
+ADDRGP4 $174
 JUMPV
-LABELV $175
+LABELV $177
 line 312
 ;311:	case ID_HANDICAP:
 ;312:		trap_Cvar_Set( "handicap", va( "%i", 100 - 25 * s_playersettings.handicap.curvalue ) );
-ADDRGP4 $176
+ADDRGP4 $178
 ARGP4
 CNSTI4 100
 CNSTI4 25
@@ -1424,7 +1424,7 @@ ADDRLP4 8
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $140
+ADDRGP4 $142
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -1434,9 +1434,9 @@ CALLV
 pop
 line 313
 ;313:		break;
-ADDRGP4 $173
+ADDRGP4 $175
 JUMPV
-LABELV $179
+LABELV $181
 line 316
 ;314:
 ;315:	case ID_MODEL:
@@ -1451,9 +1451,9 @@ CALLV
 pop
 line 318
 ;318:		break;
-ADDRGP4 $173
+ADDRGP4 $175
 JUMPV
-LABELV $180
+LABELV $182
 line 321
 ;319:
 ;320:	case ID_BACK:
@@ -1468,12 +1468,12 @@ CALLV
 pop
 line 323
 ;323:		break;
-LABELV $172
-LABELV $173
+LABELV $174
+LABELV $175
 line 325
 ;324:	}
 ;325:}
-LABELV $169
+LABELV $171
 endproc PlayerSettings_MenuEvent 12 8
 proc PlayerSettings_MenuInit 4 12
 line 333
@@ -1539,7 +1539,7 @@ ASGNI4
 line 347
 ;347:	s_playersettings.banner.string        = "PLAYER SETTINGS";
 ADDRGP4 s_playersettings+288+60
-ADDRGP4 $192
+ADDRGP4 $194
 ASGNP4
 line 348
 ;348:	s_playersettings.banner.color         = color_white;
@@ -1560,7 +1560,7 @@ ASGNI4
 line 352
 ;352:	s_playersettings.framel.generic.name  = ART_FRAMEL;
 ADDRGP4 s_playersettings+360+4
-ADDRGP4 $200
+ADDRGP4 $202
 ASGNP4
 line 353
 ;353:	s_playersettings.framel.generic.flags = QMF_LEFT_JUSTIFY|QMF_INACTIVE;
@@ -1596,7 +1596,7 @@ ASGNI4
 line 360
 ;360:	s_playersettings.framer.generic.name  = ART_FRAMER;
 ADDRGP4 s_playersettings+448+4
-ADDRGP4 $214
+ADDRGP4 $216
 ASGNP4
 line 361
 ;361:	s_playersettings.framer.generic.flags = QMF_LEFT_JUSTIFY|QMF_INACTIVE;
@@ -1842,7 +1842,7 @@ ASGNI4
 line 407
 ;407:	s_playersettings.model.generic.name			= ART_MODEL0;
 ADDRGP4 s_playersettings+1236+4
-ADDRGP4 $293
+ADDRGP4 $295
 ASGNP4
 line 408
 ;408:	s_playersettings.model.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -1882,7 +1882,7 @@ ASGNI4
 line 415
 ;415:	s_playersettings.model.focuspic				= ART_MODEL1;
 ADDRGP4 s_playersettings+1236+60
-ADDRGP4 $310
+ADDRGP4 $312
 ASGNP4
 line 417
 ;416:
@@ -1929,7 +1929,7 @@ ASGNI4
 line 426
 ;426:	s_playersettings.back.generic.name			= ART_BACK0;
 ADDRGP4 s_playersettings+1148+4
-ADDRGP4 $327
+ADDRGP4 $329
 ASGNP4
 line 427
 ;427:	s_playersettings.back.generic.flags			= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -1969,7 +1969,7 @@ ASGNI4
 line 434
 ;434:	s_playersettings.back.focuspic				= ART_BACK1;
 ADDRGP4 s_playersettings+1148+60
-ADDRGP4 $344
+ADDRGP4 $346
 ASGNP4
 line 436
 ;435:
@@ -2104,7 +2104,7 @@ CALLV
 pop
 line 458
 ;458:}
-LABELV $181
+LABELV $183
 endproc PlayerSettings_MenuInit 4 12
 export PlayerSettings_Cache
 proc PlayerSettings_Cache 32 4
@@ -2119,42 +2119,42 @@ line 466
 ;466:void PlayerSettings_Cache( void ) {
 line 467
 ;467:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $200
+ADDRGP4 $202
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 468
 ;468:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $214
+ADDRGP4 $216
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 469
 ;469:	trap_R_RegisterShaderNoMip( ART_MODEL0 );
-ADDRGP4 $293
+ADDRGP4 $295
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 470
 ;470:	trap_R_RegisterShaderNoMip( ART_MODEL1 );
-ADDRGP4 $310
+ADDRGP4 $312
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 471
 ;471:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $327
+ADDRGP4 $329
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 472
 ;472:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $344
+ADDRGP4 $346
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
@@ -2162,7 +2162,7 @@ pop
 line 474
 ;473:
 ;474:	s_playersettings.fxBasePic = trap_R_RegisterShaderNoMip( ART_FX_BASE );
-ADDRGP4 $368
+ADDRGP4 $370
 ARGP4
 ADDRLP4 0
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2174,7 +2174,7 @@ INDIRI4
 ASGNI4
 line 475
 ;475:	s_playersettings.fxPic[0] = trap_R_RegisterShaderNoMip( ART_FX_RED );
-ADDRGP4 $370
+ADDRGP4 $372
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2186,7 +2186,7 @@ INDIRI4
 ASGNI4
 line 476
 ;476:	s_playersettings.fxPic[1] = trap_R_RegisterShaderNoMip( ART_FX_YELLOW );
-ADDRGP4 $373
+ADDRGP4 $375
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2198,7 +2198,7 @@ INDIRI4
 ASGNI4
 line 477
 ;477:	s_playersettings.fxPic[2] = trap_R_RegisterShaderNoMip( ART_FX_GREEN );
-ADDRGP4 $376
+ADDRGP4 $378
 ARGP4
 ADDRLP4 12
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2210,7 +2210,7 @@ INDIRI4
 ASGNI4
 line 478
 ;478:	s_playersettings.fxPic[3] = trap_R_RegisterShaderNoMip( ART_FX_TEAL );
-ADDRGP4 $379
+ADDRGP4 $381
 ARGP4
 ADDRLP4 16
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2222,7 +2222,7 @@ INDIRI4
 ASGNI4
 line 479
 ;479:	s_playersettings.fxPic[4] = trap_R_RegisterShaderNoMip( ART_FX_BLUE );
-ADDRGP4 $382
+ADDRGP4 $384
 ARGP4
 ADDRLP4 20
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2234,7 +2234,7 @@ INDIRI4
 ASGNI4
 line 480
 ;480:	s_playersettings.fxPic[5] = trap_R_RegisterShaderNoMip( ART_FX_CYAN );
-ADDRGP4 $385
+ADDRGP4 $387
 ARGP4
 ADDRLP4 24
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2246,7 +2246,7 @@ INDIRI4
 ASGNI4
 line 481
 ;481:	s_playersettings.fxPic[6] = trap_R_RegisterShaderNoMip( ART_FX_WHITE );
-ADDRGP4 $388
+ADDRGP4 $390
 ARGP4
 ADDRLP4 28
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2258,7 +2258,7 @@ INDIRI4
 ASGNI4
 line 482
 ;482:}
-LABELV $366
+LABELV $368
 endproc PlayerSettings_Cache 32 4
 export UI_PlayerSettingsMenu
 proc UI_PlayerSettingsMenu 0 4
@@ -2285,7 +2285,7 @@ CALLV
 pop
 line 493
 ;493:}
-LABELV $389
+LABELV $391
 endproc UI_PlayerSettingsMenu 0 4
 bss
 align 4
@@ -2604,6 +2604,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -2768,7 +2769,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $388
+LABELV $390
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2788,7 +2789,7 @@ byte 1 116
 byte 1 101
 byte 1 0
 align 1
-LABELV $385
+LABELV $387
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2807,7 +2808,7 @@ byte 1 97
 byte 1 110
 byte 1 0
 align 1
-LABELV $382
+LABELV $384
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2826,7 +2827,7 @@ byte 1 117
 byte 1 101
 byte 1 0
 align 1
-LABELV $379
+LABELV $381
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2845,7 +2846,7 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $376
+LABELV $378
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2863,7 +2864,7 @@ byte 1 114
 byte 1 110
 byte 1 0
 align 1
-LABELV $373
+LABELV $375
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2881,7 +2882,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $370
+LABELV $372
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2899,7 +2900,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $368
+LABELV $370
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2918,7 +2919,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $344
+LABELV $346
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2936,7 +2937,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $327
+LABELV $329
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2954,7 +2955,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $310
+LABELV $312
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2973,7 +2974,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $293
+LABELV $295
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2992,7 +2993,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $214
+LABELV $216
 byte 1 109
 byte 1 101
 byte 1 110
@@ -3012,7 +3013,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $200
+LABELV $202
 byte 1 109
 byte 1 101
 byte 1 110
@@ -3032,7 +3033,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $192
+LABELV $194
 byte 1 80
 byte 1 76
 byte 1 65
@@ -3050,12 +3051,12 @@ byte 1 71
 byte 1 83
 byte 1 0
 align 1
-LABELV $176
+LABELV $178
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $143
+LABELV $145
 byte 1 99
 byte 1 111
 byte 1 108
@@ -3064,7 +3065,7 @@ byte 1 114
 byte 1 49
 byte 1 0
 align 1
-LABELV $140
+LABELV $142
 byte 1 104
 byte 1 97
 byte 1 110
@@ -3075,14 +3076,14 @@ byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $136
+LABELV $138
 byte 1 110
 byte 1 97
 byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $124
+LABELV $126
 byte 1 109
 byte 1 111
 byte 1 100
@@ -3090,7 +3091,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $120
+LABELV $122
 byte 1 69
 byte 1 102
 byte 1 102
@@ -3100,7 +3101,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $113
+LABELV $115
 byte 1 72
 byte 1 97
 byte 1 110
@@ -3111,108 +3112,108 @@ byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $94
+LABELV $96
 byte 1 78
 byte 1 97
 byte 1 109
 byte 1 101
 byte 1 0
 align 1
+LABELV $89
+byte 1 53
+byte 1 0
+align 1
+LABELV $88
+byte 1 49
+byte 1 48
+byte 1 0
+align 1
 LABELV $87
+byte 1 49
 byte 1 53
 byte 1 0
 align 1
 LABELV $86
-byte 1 49
+byte 1 50
 byte 1 48
 byte 1 0
 align 1
 LABELV $85
-byte 1 49
+byte 1 50
 byte 1 53
 byte 1 0
 align 1
 LABELV $84
-byte 1 50
+byte 1 51
 byte 1 48
 byte 1 0
 align 1
 LABELV $83
-byte 1 50
+byte 1 51
 byte 1 53
 byte 1 0
 align 1
 LABELV $82
-byte 1 51
+byte 1 52
 byte 1 48
 byte 1 0
 align 1
 LABELV $81
-byte 1 51
+byte 1 52
 byte 1 53
 byte 1 0
 align 1
 LABELV $80
-byte 1 52
+byte 1 53
 byte 1 48
 byte 1 0
 align 1
 LABELV $79
-byte 1 52
+byte 1 53
 byte 1 53
 byte 1 0
 align 1
 LABELV $78
-byte 1 53
+byte 1 54
 byte 1 48
 byte 1 0
 align 1
 LABELV $77
-byte 1 53
+byte 1 54
 byte 1 53
 byte 1 0
 align 1
 LABELV $76
-byte 1 54
+byte 1 55
 byte 1 48
 byte 1 0
 align 1
 LABELV $75
-byte 1 54
+byte 1 55
 byte 1 53
 byte 1 0
 align 1
 LABELV $74
-byte 1 55
+byte 1 56
 byte 1 48
 byte 1 0
 align 1
 LABELV $73
-byte 1 55
+byte 1 56
 byte 1 53
 byte 1 0
 align 1
 LABELV $72
-byte 1 56
+byte 1 57
 byte 1 48
 byte 1 0
 align 1
 LABELV $71
-byte 1 56
+byte 1 57
 byte 1 53
 byte 1 0
 align 1
 LABELV $70
-byte 1 57
-byte 1 48
-byte 1 0
-align 1
-LABELV $69
-byte 1 57
-byte 1 53
-byte 1 0
-align 1
-LABELV $68
 byte 1 78
 byte 1 111
 byte 1 110

@@ -73,12 +73,12 @@ line 67
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $69
+EQI4 $71
 line 68
 ;68:		return;
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $69
+LABELV $71
 line 71
 ;69:	}
 ;70:
@@ -93,29 +93,29 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-LTI4 $71
+LTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 14
-GTI4 $71
+GTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $85-40
+ADDRGP4 $87-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $85
-address $80
-address $74
-address $71
+LABELV $87
+address $82
+address $76
+address $73
+address $85
 address $83
-address $81
 code
-LABELV $74
+LABELV $76
 line 73
 ;72:	case ID_GO:
 ;73:		UI_ForceMenuOff ();
@@ -124,7 +124,7 @@ CALLV
 pop
 line 74
 ;74:		trap_Cmd_ExecuteText( EXEC_APPEND, va( "demo %s\n",
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
 ADDRGP4 s_demos+536+64
 INDIRI4
@@ -150,9 +150,9 @@ pop
 line 76
 ;75:								s_demos.list.itemnames[s_demos.list.curvalue]) );
 ;76:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $80
+LABELV $82
 line 79
 ;77:
 ;78:	case ID_BACK:
@@ -162,9 +162,9 @@ CALLV
 pop
 line 80
 ;80:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $81
+LABELV $83
 line 83
 ;81:
 ;82:	case ID_LEFT:
@@ -178,9 +178,9 @@ CALLI4
 pop
 line 84
 ;84:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $83
+LABELV $85
 line 87
 ;85:
 ;86:	case ID_RIGHT:
@@ -194,12 +194,12 @@ CALLI4
 pop
 line 88
 ;88:		break;
-LABELV $71
-LABELV $72
+LABELV $73
+LABELV $74
 line 90
 ;89:	}
 ;90:}
-LABELV $68
+LABELV $70
 endproc Demos_MenuEvent 12 8
 proc UI_DemosMenu_Key 12 8
 line 98
@@ -240,7 +240,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 RETI4
-LABELV $87
+LABELV $89
 endproc UI_DemosMenu_Key 12 8
 proc Demos_MenuInit 60 16
 line 112
@@ -309,7 +309,7 @@ ASGNI4
 line 128
 ;128:	s_demos.banner.string			= "DEMOS";
 ADDRGP4 s_demos+288+60
-ADDRGP4 $99
+ADDRGP4 $101
 ASGNP4
 line 129
 ;129:	s_demos.banner.color			= color_white;
@@ -330,7 +330,7 @@ ASGNI4
 line 133
 ;133:	s_demos.framel.generic.name		= ART_FRAMEL;
 ADDRGP4 s_demos+360+4
-ADDRGP4 $107
+ADDRGP4 $109
 ASGNP4
 line 134
 ;134:	s_demos.framel.generic.flags	= QMF_INACTIVE;
@@ -366,7 +366,7 @@ ASGNI4
 line 141
 ;141:	s_demos.framer.generic.name		= ART_FRAMER;
 ADDRGP4 s_demos+448+4
-ADDRGP4 $121
+ADDRGP4 $123
 ASGNP4
 line 142
 ;142:	s_demos.framer.generic.flags	= QMF_INACTIVE;
@@ -402,7 +402,7 @@ ASGNI4
 line 149
 ;149:	s_demos.arrows.generic.name		= ART_ARROWS;
 ADDRGP4 s_demos+632+4
-ADDRGP4 $135
+ADDRGP4 $137
 ASGNP4
 line 150
 ;150:	s_demos.arrows.generic.flags	= QMF_INACTIVE;
@@ -473,7 +473,7 @@ ASGNI4
 line 164
 ;164:	s_demos.left.focuspic			= ART_ARROWLEFT;
 ADDRGP4 s_demos+720+60
-ADDRGP4 $163
+ADDRGP4 $165
 ASGNP4
 line 166
 ;165:
@@ -519,7 +519,7 @@ ASGNI4
 line 174
 ;174:	s_demos.right.focuspic			= ART_ARROWRIGHT;
 ADDRGP4 s_demos+808+60
-ADDRGP4 $181
+ADDRGP4 $183
 ASGNP4
 line 176
 ;175:
@@ -530,7 +530,7 @@ ASGNI4
 line 177
 ;177:	s_demos.back.generic.name		= ART_BACK0;
 ADDRGP4 s_demos+896+4
-ADDRGP4 $185
+ADDRGP4 $187
 ASGNP4
 line 178
 ;178:	s_demos.back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -570,7 +570,7 @@ ASGNI4
 line 185
 ;185:	s_demos.back.focuspic			= ART_BACK1;
 ADDRGP4 s_demos+896+60
-ADDRGP4 $202
+ADDRGP4 $204
 ASGNP4
 line 187
 ;186:
@@ -581,7 +581,7 @@ ASGNI4
 line 188
 ;188:	s_demos.go.generic.name			= ART_GO0;
 ADDRGP4 s_demos+984+4
-ADDRGP4 $206
+ADDRGP4 $208
 ASGNP4
 line 189
 ;189:	s_demos.go.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -621,7 +621,7 @@ ASGNI4
 line 196
 ;196:	s_demos.go.focuspic				= ART_GO1;
 ADDRGP4 s_demos+984+60
-ADDRGP4 $223
+ADDRGP4 $225
 ASGNP4
 line 198
 ;197:
@@ -666,7 +666,7 @@ CNSTI4 14
 ASGNI4
 line 206
 ;206:	Com_sprintf(extension, sizeof(extension), "dm_%d", (int)trap_Cvar_VariableValue( "protocol" ) );
-ADDRGP4 $240
+ADDRGP4 $242
 ARGP4
 ADDRLP4 44
 ADDRGP4 trap_Cvar_VariableValue
@@ -676,7 +676,7 @@ ADDRLP4 12
 ARGP4
 CNSTI4 32
 ARGI4
-ADDRGP4 $239
+ADDRGP4 $241
 ARGP4
 ADDRLP4 44
 INDIRF4
@@ -687,7 +687,7 @@ CALLV
 pop
 line 207
 ;207:	s_demos.list.numitems			= trap_FS_GetFileList( "demos", extension, s_demos.names, NAMEBUFSIZE );
-ADDRGP4 $243
+ADDRGP4 $245
 ARGP4
 ADDRLP4 12
 ARGP4
@@ -719,12 +719,12 @@ line 211
 ADDRGP4 s_demos+536+68
 INDIRI4
 CNSTI4 0
-NEI4 $250
+NEI4 $252
 line 212
 ;212:		strcpy( s_demos.names, "No Demos Found." );
 ADDRGP4 s_demos+1076
 ARGP4
-ADDRGP4 $255
+ADDRGP4 $257
 ARGP4
 ADDRGP4 strcpy
 CALLP4
@@ -751,22 +751,22 @@ BORU4
 ASGNU4
 line 217
 ;217:	}
-ADDRGP4 $251
+ADDRGP4 $253
 JUMPV
-LABELV $250
+LABELV $252
 line 218
 ;218:	else if (s_demos.list.numitems > MAX_DEMOS)
 ADDRGP4 s_demos+536+68
 INDIRI4
 CNSTI4 128
-LEI4 $260
+LEI4 $262
 line 219
 ;219:		s_demos.list.numitems = MAX_DEMOS;
 ADDRGP4 s_demos+536+68
 CNSTI4 128
 ASGNI4
-LABELV $260
-LABELV $251
+LABELV $262
+LABELV $253
 line 221
 ;220:
 ;221:	demoname = s_demos.names;
@@ -778,9 +778,9 @@ line 222
 ADDRLP4 8
 CNSTI4 0
 ASGNI4
-ADDRGP4 $270
+ADDRGP4 $272
 JUMPV
-LABELV $267
+LABELV $269
 line 223
 ;223:		s_demos.list.itemnames[i] = demoname;
 ADDRLP4 8
@@ -818,7 +818,7 @@ ADDP4
 CNSTI4 -4
 ADDP4
 ARGP4
-ADDRGP4 $277
+ADDRGP4 $279
 ARGP4
 ADDRLP4 56
 ADDRGP4 Q_stricmp
@@ -827,7 +827,7 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-NEI4 $275
+NEI4 $277
 line 228
 ;228:			demoname[len-4] = '\0';
 ADDRLP4 4
@@ -839,7 +839,7 @@ INDIRP4
 ADDP4
 CNSTI1 0
 ASGNI1
-LABELV $275
+LABELV $277
 line 230
 ;229:
 ;230:		Q_strupr(demoname);
@@ -863,7 +863,7 @@ ADDP4
 ASGNP4
 line 233
 ;233:	}
-LABELV $268
+LABELV $270
 line 222
 ADDRLP4 8
 ADDRLP4 8
@@ -871,12 +871,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $270
+LABELV $272
 ADDRLP4 8
 INDIRI4
 ADDRGP4 s_demos+536+68
 INDIRI4
-LTI4 $267
+LTI4 $269
 line 235
 ;234:
 ;235:	Menu_AddItem( &s_demos.menu, &s_demos.banner );
@@ -961,7 +961,7 @@ CALLV
 pop
 line 244
 ;244:}
-LABELV $88
+LABELV $90
 endproc Demos_MenuInit 60 16
 export Demos_Cache
 proc Demos_Cache 0 4
@@ -975,70 +975,70 @@ line 251
 ;251:void Demos_Cache( void ) {
 line 252
 ;252:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $185
+ADDRGP4 $187
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 253
 ;253:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $202
+ADDRGP4 $204
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 254
 ;254:	trap_R_RegisterShaderNoMip( ART_GO0 );
-ADDRGP4 $206
+ADDRGP4 $208
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 255
 ;255:	trap_R_RegisterShaderNoMip( ART_GO1 );
-ADDRGP4 $223
+ADDRGP4 $225
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 256
 ;256:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $107
+ADDRGP4 $109
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 257
 ;257:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $121
+ADDRGP4 $123
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 258
 ;258:	trap_R_RegisterShaderNoMip( ART_ARROWS );
-ADDRGP4 $135
+ADDRGP4 $137
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 259
 ;259:	trap_R_RegisterShaderNoMip( ART_ARROWLEFT );
-ADDRGP4 $163
+ADDRGP4 $165
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 260
 ;260:	trap_R_RegisterShaderNoMip( ART_ARROWRIGHT );
-ADDRGP4 $181
+ADDRGP4 $183
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 261
 ;261:}
-LABELV $287
+LABELV $289
 endproc Demos_Cache 0 4
 export UI_DemosMenu
 proc UI_DemosMenu 0 4
@@ -1064,7 +1064,7 @@ CALLV
 pop
 line 271
 ;271:}
-LABELV $288
+LABELV $290
 endproc UI_DemosMenu 0 4
 bss
 align 4
@@ -1383,6 +1383,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1547,14 +1548,14 @@ import srand
 import qsort
 lit
 align 1
-LABELV $277
+LABELV $279
 byte 1 46
 byte 1 100
 byte 1 109
 byte 1 51
 byte 1 0
 align 1
-LABELV $255
+LABELV $257
 byte 1 78
 byte 1 111
 byte 1 32
@@ -1572,7 +1573,7 @@ byte 1 100
 byte 1 46
 byte 1 0
 align 1
-LABELV $243
+LABELV $245
 byte 1 100
 byte 1 101
 byte 1 109
@@ -1580,7 +1581,7 @@ byte 1 111
 byte 1 115
 byte 1 0
 align 1
-LABELV $240
+LABELV $242
 byte 1 112
 byte 1 114
 byte 1 111
@@ -1591,7 +1592,7 @@ byte 1 111
 byte 1 108
 byte 1 0
 align 1
-LABELV $239
+LABELV $241
 byte 1 100
 byte 1 109
 byte 1 95
@@ -1599,7 +1600,7 @@ byte 1 37
 byte 1 100
 byte 1 0
 align 1
-LABELV $223
+LABELV $225
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1617,7 +1618,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $206
+LABELV $208
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1635,7 +1636,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $202
+LABELV $204
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1653,7 +1654,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $185
+LABELV $187
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1671,7 +1672,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $181
+LABELV $183
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1700,7 +1701,7 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $163
+LABELV $165
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1728,7 +1729,7 @@ byte 1 102
 byte 1 116
 byte 1 0
 align 1
-LABELV $135
+LABELV $137
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1753,7 +1754,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $121
+LABELV $123
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1773,7 +1774,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $107
+LABELV $109
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1793,7 +1794,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $99
+LABELV $101
 byte 1 68
 byte 1 69
 byte 1 77
@@ -1801,7 +1802,7 @@ byte 1 79
 byte 1 83
 byte 1 0
 align 1
-LABELV $75
+LABELV $77
 byte 1 100
 byte 1 101
 byte 1 109

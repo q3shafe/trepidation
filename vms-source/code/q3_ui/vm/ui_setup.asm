@@ -65,18 +65,18 @@ line 59
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $69
+NEI4 $71
 line 60
 ;60:		return;
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $69
+LABELV $71
 line 62
 ;61:	}
 ;62:	trap_Cmd_ExecuteText( EXEC_APPEND, "exec default.cfg\n");
 CNSTI4 2
 ARGI4
-ADDRGP4 $71
+ADDRGP4 $73
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
@@ -85,7 +85,7 @@ line 63
 ;63:	trap_Cmd_ExecuteText( EXEC_APPEND, "cvar_restart\n");
 CNSTI4 2
 ARGI4
-ADDRGP4 $72
+ADDRGP4 $74
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
@@ -94,14 +94,14 @@ line 64
 ;64:	trap_Cmd_ExecuteText( EXEC_APPEND, "vid_restart\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $73
+ADDRGP4 $75
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
 line 65
 ;65:}
-LABELV $68
+LABELV $70
 endproc Setup_ResetDefaults_Action 0 8
 proc Setup_ResetDefaults_Draw 0 20
 line 73
@@ -119,7 +119,7 @@ CNSTI4 320
 ARGI4
 CNSTI4 356
 ARGI4
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
 CNSTI4 17
 ARGI4
@@ -134,7 +134,7 @@ CNSTI4 320
 ARGI4
 CNSTI4 383
 ARGI4
-ADDRGP4 $76
+ADDRGP4 $78
 ARGP4
 CNSTI4 17
 ARGI4
@@ -145,7 +145,7 @@ CALLV
 pop
 line 76
 ;76:}
-LABELV $74
+LABELV $76
 endproc Setup_ResetDefaults_Draw 0 20
 proc UI_SetupMenu_Event 8 12
 line 84
@@ -162,12 +162,12 @@ line 85
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $78
+EQI4 $80
 line 86
 ;86:		return;
-ADDRGP4 $77
+ADDRGP4 $79
 JUMPV
-LABELV $78
+LABELV $80
 line 89
 ;87:	}
 ;88:
@@ -182,33 +182,33 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-LTI4 $80
+LTI4 $82
 ADDRLP4 0
 INDIRI4
 CNSTI4 18
-GTI4 $80
+GTI4 $82
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $91-40
+ADDRGP4 $93-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $91
-address $83
-address $84
+LABELV $93
 address $85
 address $86
 address $87
-address $80
-address $80
 address $88
+address $89
+address $82
+address $82
 address $90
+address $92
 code
-LABELV $83
+LABELV $85
 line 91
 ;90:	case ID_CUSTOMIZEPLAYER:
 ;91:		UI_PlayerSettingsMenu();
@@ -217,9 +217,9 @@ CALLV
 pop
 line 92
 ;92:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $84
+LABELV $86
 line 95
 ;93:
 ;94:	case ID_CUSTOMIZECONTROLS:
@@ -229,9 +229,9 @@ CALLV
 pop
 line 96
 ;96:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $85
+LABELV $87
 line 99
 ;97:
 ;98:	case ID_SYSTEMCONFIG:
@@ -241,9 +241,9 @@ CALLV
 pop
 line 100
 ;100:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $86
+LABELV $88
 line 103
 ;101:
 ;102:	case ID_GAME:
@@ -253,9 +253,9 @@ CALLV
 pop
 line 104
 ;104:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $87
+LABELV $89
 line 107
 ;105:
 ;106:	case ID_CDKEY:
@@ -265,9 +265,9 @@ CALLV
 pop
 line 108
 ;108:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $88
+LABELV $90
 line 119
 ;109:
 ;110://	case ID_LOAD:
@@ -280,7 +280,7 @@ line 119
 ;117:
 ;118:	case ID_DEFAULTS:
 ;119:		UI_ConfirmMenu( "SET TO DEFAULTS?", Setup_ResetDefaults_Draw, Setup_ResetDefaults_Action );
-ADDRGP4 $89
+ADDRGP4 $91
 ARGP4
 ADDRGP4 Setup_ResetDefaults_Draw
 ARGP4
@@ -291,9 +291,9 @@ CALLV
 pop
 line 120
 ;120:		break;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $90
+LABELV $92
 line 123
 ;121:
 ;122:	case ID_BACK:
@@ -303,12 +303,12 @@ CALLV
 pop
 line 124
 ;124:		break;
-LABELV $80
-LABELV $81
+LABELV $82
+LABELV $83
 line 126
 ;125:	}
 ;126:}
-LABELV $77
+LABELV $79
 endproc UI_SetupMenu_Event 8 12
 proc UI_SetupMenu_Init 12 12
 line 134
@@ -368,7 +368,7 @@ ASGNI4
 line 146
 ;146:	setupMenuInfo.banner.string						= "SETUP";
 ADDRGP4 setupMenuInfo+288+60
-ADDRGP4 $103
+ADDRGP4 $105
 ASGNP4
 line 147
 ;147:	setupMenuInfo.banner.color						= color_white;
@@ -389,7 +389,7 @@ ASGNI4
 line 151
 ;151:	setupMenuInfo.framel.generic.name				= ART_FRAMEL;
 ADDRGP4 setupMenuInfo+360+4
-ADDRGP4 $111
+ADDRGP4 $113
 ASGNP4
 line 152
 ;152:	setupMenuInfo.framel.generic.flags				= QMF_INACTIVE;
@@ -425,7 +425,7 @@ ASGNI4
 line 159
 ;159:	setupMenuInfo.framer.generic.name				= ART_FRAMER;
 ADDRGP4 setupMenuInfo+448+4
-ADDRGP4 $125
+ADDRGP4 $127
 ASGNP4
 line 160
 ;160:	setupMenuInfo.framer.generic.flags				= QMF_INACTIVE;
@@ -492,7 +492,7 @@ ASGNP4
 line 173
 ;173:	setupMenuInfo.setupplayer.string				= "PLAYER";
 ADDRGP4 setupMenuInfo+536+60
-ADDRGP4 $149
+ADDRGP4 $151
 ASGNP4
 line 174
 ;174:	setupMenuInfo.setupplayer.color					= color_red;
@@ -547,7 +547,7 @@ ASGNP4
 line 184
 ;184:	setupMenuInfo.setupcontrols.string				= "CONTROLS";
 ADDRGP4 setupMenuInfo+608+60
-ADDRGP4 $167
+ADDRGP4 $169
 ASGNP4
 line 185
 ;185:	setupMenuInfo.setupcontrols.color				= color_red;
@@ -602,7 +602,7 @@ ASGNP4
 line 195
 ;195:	setupMenuInfo.setupsystem.string				= "SYSTEM";
 ADDRGP4 setupMenuInfo+680+60
-ADDRGP4 $185
+ADDRGP4 $187
 ASGNP4
 line 196
 ;196:	setupMenuInfo.setupsystem.color					= color_red;
@@ -657,7 +657,7 @@ ASGNP4
 line 206
 ;206:	setupMenuInfo.game.string						= "GAME OPTIONS";
 ADDRGP4 setupMenuInfo+752+60
-ADDRGP4 $203
+ADDRGP4 $205
 ASGNP4
 line 207
 ;207:	setupMenuInfo.game.color						= color_red;
@@ -712,7 +712,7 @@ ASGNP4
 line 217
 ;217:	setupMenuInfo.cdkey.string						= "CD Key";
 ADDRGP4 setupMenuInfo+824+60
-ADDRGP4 $221
+ADDRGP4 $223
 ASGNP4
 line 218
 ;218:	setupMenuInfo.cdkey.color						= color_red;
@@ -727,7 +727,7 @@ ASGNI4
 line 221
 ;220:
 ;221:	if( !trap_Cvar_VariableValue( "cl_paused" ) ) {
-ADDRGP4 $228
+ADDRGP4 $230
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_Cvar_VariableValue
@@ -736,7 +736,7 @@ ASGNF4
 ADDRLP4 4
 INDIRF4
 CNSTF4 0
-NEF4 $226
+NEF4 $228
 line 246
 ;222:#if 0
 ;223:		y += SETUP_MENU_VERTICAL_SPACING;
@@ -803,7 +803,7 @@ ASGNP4
 line 253
 ;253:		setupMenuInfo.defaults.string					= "DEFAULTS";
 ADDRGP4 setupMenuInfo+896+60
-ADDRGP4 $242
+ADDRGP4 $244
 ASGNP4
 line 254
 ;254:		setupMenuInfo.defaults.color					= color_red;
@@ -817,7 +817,7 @@ CNSTI4 1
 ASGNI4
 line 256
 ;256:	}
-LABELV $226
+LABELV $228
 line 258
 ;257:
 ;258:	setupMenuInfo.back.generic.type					= MTYPE_BITMAP;
@@ -827,7 +827,7 @@ ASGNI4
 line 259
 ;259:	setupMenuInfo.back.generic.name					= ART_BACK0;
 ADDRGP4 setupMenuInfo+968+4
-ADDRGP4 $250
+ADDRGP4 $252
 ASGNP4
 line 260
 ;260:	setupMenuInfo.back.generic.flags				= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -867,7 +867,7 @@ ASGNI4
 line 267
 ;267:	setupMenuInfo.back.focuspic						= ART_BACK1;
 ADDRGP4 setupMenuInfo+968+60
-ADDRGP4 $267
+ADDRGP4 $269
 ASGNP4
 line 269
 ;268:
@@ -938,7 +938,7 @@ line 279
 ;277://	Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.load );
 ;278://	Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.save );
 ;279:	if( !trap_Cvar_VariableValue( "cl_paused" ) ) {
-ADDRGP4 $228
+ADDRGP4 $230
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_Cvar_VariableValue
@@ -947,7 +947,7 @@ ASGNF4
 ADDRLP4 8
 INDIRF4
 CNSTF4 0
-NEF4 $275
+NEF4 $277
 line 280
 ;280:		Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.defaults );
 ADDRGP4 setupMenuInfo
@@ -959,7 +959,7 @@ CALLV
 pop
 line 281
 ;281:	}
-LABELV $275
+LABELV $277
 line 282
 ;282:	Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.back );
 ADDRGP4 setupMenuInfo
@@ -971,7 +971,7 @@ CALLV
 pop
 line 283
 ;283:}
-LABELV $93
+LABELV $95
 endproc UI_SetupMenu_Init 12 12
 export UI_SetupMenu_Cache
 proc UI_SetupMenu_Cache 0 4
@@ -986,35 +986,35 @@ line 291
 ;291:void UI_SetupMenu_Cache( void ) {
 line 292
 ;292:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $250
+ADDRGP4 $252
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 293
 ;293:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $267
+ADDRGP4 $269
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 294
 ;294:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $111
+ADDRGP4 $113
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 295
 ;295:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $125
+ADDRGP4 $127
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 296
 ;296:}
-LABELV $279
+LABELV $281
 endproc UI_SetupMenu_Cache 0 4
 export UI_SetupMenu
 proc UI_SetupMenu 0 4
@@ -1041,7 +1041,7 @@ CALLV
 pop
 line 307
 ;307:}
-LABELV $280
+LABELV $282
 endproc UI_SetupMenu 0 4
 bss
 align 4
@@ -1360,6 +1360,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1524,7 +1525,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $267
+LABELV $269
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1542,7 +1543,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $250
+LABELV $252
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1560,7 +1561,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $242
+LABELV $244
 byte 1 68
 byte 1 69
 byte 1 70
@@ -1571,7 +1572,7 @@ byte 1 84
 byte 1 83
 byte 1 0
 align 1
-LABELV $228
+LABELV $230
 byte 1 99
 byte 1 108
 byte 1 95
@@ -1583,7 +1584,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $221
+LABELV $223
 byte 1 67
 byte 1 68
 byte 1 32
@@ -1592,7 +1593,7 @@ byte 1 101
 byte 1 121
 byte 1 0
 align 1
-LABELV $203
+LABELV $205
 byte 1 71
 byte 1 65
 byte 1 77
@@ -1607,7 +1608,7 @@ byte 1 78
 byte 1 83
 byte 1 0
 align 1
-LABELV $185
+LABELV $187
 byte 1 83
 byte 1 89
 byte 1 83
@@ -1616,7 +1617,7 @@ byte 1 69
 byte 1 77
 byte 1 0
 align 1
-LABELV $167
+LABELV $169
 byte 1 67
 byte 1 79
 byte 1 78
@@ -1627,7 +1628,7 @@ byte 1 76
 byte 1 83
 byte 1 0
 align 1
-LABELV $149
+LABELV $151
 byte 1 80
 byte 1 76
 byte 1 65
@@ -1636,7 +1637,7 @@ byte 1 69
 byte 1 82
 byte 1 0
 align 1
-LABELV $125
+LABELV $127
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1656,7 +1657,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $111
+LABELV $113
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1676,7 +1677,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $103
+LABELV $105
 byte 1 83
 byte 1 69
 byte 1 84
@@ -1684,7 +1685,7 @@ byte 1 85
 byte 1 80
 byte 1 0
 align 1
-LABELV $89
+LABELV $91
 byte 1 83
 byte 1 69
 byte 1 84
@@ -1703,7 +1704,7 @@ byte 1 83
 byte 1 63
 byte 1 0
 align 1
-LABELV $76
+LABELV $78
 byte 1 111
 byte 1 112
 byte 1 116
@@ -1738,7 +1739,7 @@ byte 1 115
 byte 1 46
 byte 1 0
 align 1
-LABELV $75
+LABELV $77
 byte 1 87
 byte 1 65
 byte 1 82
@@ -1771,7 +1772,7 @@ byte 1 76
 byte 1 42
 byte 1 0
 align 1
-LABELV $73
+LABELV $75
 byte 1 118
 byte 1 105
 byte 1 100
@@ -1786,7 +1787,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $72
+LABELV $74
 byte 1 99
 byte 1 118
 byte 1 97
@@ -1802,7 +1803,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $71
+LABELV $73
 byte 1 101
 byte 1 120
 byte 1 101

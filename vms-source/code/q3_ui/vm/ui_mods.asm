@@ -58,12 +58,12 @@ line 52
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $69
+EQI4 $71
 line 53
 ;53:		return;
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $69
+LABELV $71
 line 56
 ;54:	}
 ;55:
@@ -78,18 +78,18 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-EQI4 $80
+EQI4 $82
 ADDRLP4 0
 INDIRI4
 CNSTI4 11
-EQI4 $74
-ADDRGP4 $71
+EQI4 $76
+ADDRGP4 $73
 JUMPV
-LABELV $74
+LABELV $76
 line 58
 ;57:	case ID_GO:
 ;58:		trap_Cvar_Set( "fs_game", s_mods.fs_gameList[s_mods.list.curvalue] );
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
 ADDRGP4 s_mods+536+64
 INDIRI4
@@ -106,7 +106,7 @@ line 59
 ;59:		trap_Cmd_ExecuteText( EXEC_APPEND, "vid_restart;" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $79
+ADDRGP4 $81
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
@@ -118,9 +118,9 @@ CALLV
 pop
 line 61
 ;61:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $80
+LABELV $82
 line 64
 ;62:
 ;63:	case ID_BACK:
@@ -130,12 +130,12 @@ CALLV
 pop
 line 65
 ;65:		break;
-LABELV $71
-LABELV $72
+LABELV $73
+LABELV $74
 line 67
 ;66:	}
 ;67:}
-LABELV $68
+LABELV $70
 endproc UI_Mods_MenuEvent 8 8
 proc UI_Mods_ParseInfos 20 12
 line 75
@@ -270,7 +270,7 @@ ADDI4
 ASGNI4
 line 86
 ;86:}
-LABELV $81
+LABELV $83
 endproc UI_Mods_ParseInfos 20 12
 proc UI_Mods_LoadMods 2084 16
 line 130
@@ -350,7 +350,7 @@ ASGNI4
 line 144
 ;144:	s_mods.list.itemnames[0] = s_mods.descriptionList[0] = "Quake III Arena";
 ADDRLP4 2068
-ADDRGP4 $116
+ADDRGP4 $118
 ASGNP4
 ADDRGP4 s_mods+4912
 ADDRLP4 2068
@@ -364,14 +364,14 @@ ASGNP4
 line 145
 ;145:	s_mods.fs_gameList[0] = "";
 ADDRGP4 s_mods+5168
-ADDRGP4 $118
+ADDRGP4 $120
 ASGNP4
 line 147
 ;146:
 ;147:	numdirs = trap_FS_GetFileList( "$modlist", "", dirlist, sizeof(dirlist) );
-ADDRGP4 $119
+ADDRGP4 $121
 ARGP4
-ADDRGP4 $118
+ADDRGP4 $120
 ARGP4
 ADDRLP4 20
 ARGP4
@@ -395,9 +395,9 @@ line 149
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-ADDRGP4 $123
+ADDRGP4 $125
 JUMPV
-LABELV $120
+LABELV $122
 line 150
 ;150:		dirlen = strlen( dirptr ) + 1;
 ADDRLP4 0
@@ -456,7 +456,7 @@ ADDP4
 ASGNP4
 line 154
 ;154:	}
-LABELV $121
+LABELV $123
 line 149
 ADDRLP4 12
 ADDRLP4 12
@@ -464,16 +464,16 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $123
+LABELV $125
 ADDRLP4 12
 INDIRI4
 ADDRLP4 16
 INDIRI4
-LTI4 $120
+LTI4 $122
 line 156
 ;155:
 ;156:	trap_Print( va( "%i mods parsed\n", s_mods.list.numitems ) );
-ADDRGP4 $124
+ADDRGP4 $126
 ARGP4
 ADDRGP4 s_mods+536+68
 INDIRI4
@@ -493,7 +493,7 @@ line 157
 ADDRGP4 s_mods+536+68
 INDIRI4
 CNSTI4 64
-LEI4 $127
+LEI4 $129
 line 158
 ;158:		s_mods.list.numitems = MAX_MODS;
 ADDRGP4 s_mods+536+68
@@ -501,10 +501,10 @@ CNSTI4 64
 ASGNI4
 line 159
 ;159:	}
-LABELV $127
+LABELV $129
 line 160
 ;160:}
-LABELV $103
+LABELV $105
 endproc UI_Mods_LoadMods 2084 16
 proc UI_Mods_MenuInit 0 12
 line 168
@@ -562,7 +562,7 @@ ASGNI4
 line 178
 ;178:	s_mods.banner.string			= "MODS";
 ADDRGP4 s_mods+288+60
-ADDRGP4 $143
+ADDRGP4 $145
 ASGNP4
 line 179
 ;179:	s_mods.banner.color				= color_white;
@@ -583,7 +583,7 @@ ASGNI4
 line 183
 ;183:	s_mods.framel.generic.name		= ART_FRAMEL;
 ADDRGP4 s_mods+360+4
-ADDRGP4 $151
+ADDRGP4 $153
 ASGNP4
 line 184
 ;184:	s_mods.framel.generic.flags		= QMF_INACTIVE;
@@ -619,7 +619,7 @@ ASGNI4
 line 191
 ;191:	s_mods.framer.generic.name		= ART_FRAMER;
 ADDRGP4 s_mods+448+4
-ADDRGP4 $165
+ADDRGP4 $167
 ASGNP4
 line 192
 ;192:	s_mods.framer.generic.flags		= QMF_INACTIVE;
@@ -655,7 +655,7 @@ ASGNI4
 line 199
 ;199:	s_mods.back.generic.name		= ART_BACK0;
 ADDRGP4 s_mods+632+4
-ADDRGP4 $179
+ADDRGP4 $181
 ASGNP4
 line 200
 ;200:	s_mods.back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -695,7 +695,7 @@ ASGNI4
 line 207
 ;207:	s_mods.back.focuspic			= ART_BACK1;
 ADDRGP4 s_mods+632+60
-ADDRGP4 $196
+ADDRGP4 $198
 ASGNP4
 line 209
 ;208:
@@ -706,7 +706,7 @@ ASGNI4
 line 210
 ;210:	s_mods.go.generic.name			= ART_FIGHT0;
 ADDRGP4 s_mods+720+4
-ADDRGP4 $200
+ADDRGP4 $202
 ASGNP4
 line 211
 ;211:	s_mods.go.generic.flags			= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -746,7 +746,7 @@ ASGNI4
 line 218
 ;218:	s_mods.go.focuspic				= ART_FIGHT1;
 ADDRGP4 s_mods+720+60
-ADDRGP4 $217
+ADDRGP4 $219
 ASGNP4
 line 221
 ;219:
@@ -853,7 +853,7 @@ CALLV
 pop
 line 238
 ;238:}
-LABELV $133
+LABELV $135
 endproc UI_Mods_MenuInit 0 12
 export UI_ModsMenu_Cache
 proc UI_ModsMenu_Cache 0 4
@@ -867,49 +867,49 @@ line 245
 ;245:void UI_ModsMenu_Cache( void ) {
 line 246
 ;246:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $179
+ADDRGP4 $181
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 247
 ;247:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $196
+ADDRGP4 $198
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 248
 ;248:	trap_R_RegisterShaderNoMip( ART_FIGHT0 );
-ADDRGP4 $200
+ADDRGP4 $202
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 249
 ;249:	trap_R_RegisterShaderNoMip( ART_FIGHT1 );
-ADDRGP4 $217
+ADDRGP4 $219
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 250
 ;250:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $151
+ADDRGP4 $153
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 251
 ;251:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $165
+ADDRGP4 $167
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 252
 ;252:}
-LABELV $239
+LABELV $241
 endproc UI_ModsMenu_Cache 0 4
 export UI_ModsMenu
 proc UI_ModsMenu 0 4
@@ -936,7 +936,7 @@ CALLV
 pop
 line 263
 ;263:}
-LABELV $240
+LABELV $242
 endproc UI_ModsMenu 0 4
 bss
 align 4
@@ -1255,6 +1255,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1419,7 +1420,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $217
+LABELV $219
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1437,7 +1438,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $200
+LABELV $202
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1455,7 +1456,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $196
+LABELV $198
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1473,7 +1474,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $179
+LABELV $181
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1491,7 +1492,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $165
+LABELV $167
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1511,7 +1512,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $151
+LABELV $153
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1531,14 +1532,14 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $143
+LABELV $145
 byte 1 77
 byte 1 79
 byte 1 68
 byte 1 83
 byte 1 0
 align 1
-LABELV $124
+LABELV $126
 byte 1 37
 byte 1 105
 byte 1 32
@@ -1556,7 +1557,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $119
+LABELV $121
 byte 1 36
 byte 1 109
 byte 1 111
@@ -1567,10 +1568,10 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $118
+LABELV $120
 byte 1 0
 align 1
-LABELV $116
+LABELV $118
 byte 1 81
 byte 1 117
 byte 1 97
@@ -1588,7 +1589,7 @@ byte 1 110
 byte 1 97
 byte 1 0
 align 1
-LABELV $79
+LABELV $81
 byte 1 118
 byte 1 105
 byte 1 100
@@ -1603,7 +1604,7 @@ byte 1 116
 byte 1 59
 byte 1 0
 align 1
-LABELV $75
+LABELV $77
 byte 1 102
 byte 1 115
 byte 1 95

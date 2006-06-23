@@ -36,21 +36,21 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $69
+EQI4 $71
 line 29
 ;29:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $69
+LABELV $71
 line 32
 ;30:	}
 ;31:
 ;32:	trap_Cmd_ExecuteText( EXEC_APPEND, "quit\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $71
+ADDRGP4 $73
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
@@ -59,7 +59,7 @@ line 33
 ;33:	return 0;
 CNSTI4 0
 RETI4
-LABELV $68
+LABELV $70
 endproc UI_CreditMenu_Key 0 8
 proc UI_CreditMenu_Draw 4 20
 line 42
@@ -86,7 +86,7 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $73
+ADDRGP4 $75
 ARGP4
 CNSTI4 17
 ARGI4
@@ -113,7 +113,7 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $74
+ADDRGP4 $76
 ARGP4
 CNSTI4 17
 ARGI4
@@ -133,13 +133,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 51
-;51:	UI_DrawProportionalString( 320, y, "Shafe, Xcytng'", UI_CENTER|UI_SMALLFONT, color_white );
+;51:	UI_DrawProportionalString( 320, y, "Shafe, XcyTng", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
 CNSTI4 17
 ARGI4
@@ -160,13 +160,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 54
-;54:	UI_DrawProportionalString( 320, y, "Mapping:", UI_CENTER|UI_SMALLFONT, color_white );
+;54:	UI_DrawProportionalString( 320, y, "Mapping And Art:", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $76
+ADDRGP4 $78
 ARGP4
 CNSTI4 17
 ARGI4
@@ -186,13 +186,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 56
-;56:	UI_DrawProportionalString( 320, y, "SkareKrow, RRE Mike, Petee, Gigabyte123", UI_CENTER|UI_SMALLFONT, color_white );
+;56:	UI_DrawProportionalString( 320, y, "Scott Hanke, RRE Mike, Petee, Gigabyte123", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $77
+ADDRGP4 $79
 ARGP4
 CNSTI4 17
 ARGI4
@@ -212,13 +212,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 58
-;58:	UI_DrawProportionalString( 320, y, " ", UI_CENTER|UI_SMALLFONT, color_white );
+;58:	UI_DrawProportionalString( 320, y, "Ryan McNeill", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $78
+ADDRGP4 $80
 ARGP4
 CNSTI4 17
 ARGI4
@@ -245,7 +245,7 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $79
+ADDRGP4 $81
 ARGP4
 CNSTI4 17
 ARGI4
@@ -265,13 +265,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 63
-;63:	UI_DrawProportionalString( 320, y, "No One Yet", UI_CENTER|UI_SMALLFONT, color_white );
+;63:	UI_DrawProportionalString( 320, y, "Petee, DrAkOn", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $80
+ADDRGP4 $82
 ARGP4
 CNSTI4 17
 ARGI4
@@ -292,13 +292,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 66
-;66:	UI_DrawProportionalString( 320, y, "Drink Of Choice", UI_CENTER|UI_SMALLFONT, color_white );
+;66:	UI_DrawProportionalString( 320, y, "Sound Engineer:", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $81
+ADDRGP4 $83
 ARGP4
 CNSTI4 17
 ARGI4
@@ -318,13 +318,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 68
-;68:	UI_DrawProportionalString( 320, y, "Coffee, Beer, Dr Pepper?", UI_CENTER|UI_SMALLFONT, color_white );
+;68:	UI_DrawProportionalString( 320, y, "Dave Cunningham", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $82
+ADDRGP4 $84
 ARGP4
 CNSTI4 17
 ARGI4
@@ -351,7 +351,7 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $83
+ADDRGP4 $85
 ARGP4
 CNSTI4 17
 ARGI4
@@ -377,7 +377,7 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $84
+ADDRGP4 $86
 ARGP4
 CNSTI4 17
 ARGI4
@@ -404,7 +404,7 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
 CNSTI4 17
 ARGI4
@@ -424,13 +424,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 78
-;78:	UI_DrawProportionalString( 320, y, "Blue, Dredge, Prodie", UI_CENTER|UI_SMALLFONT, color_white );
+;78:	UI_DrawProportionalString( 320, y, "Blue, Dredge, Prodie, Unknown", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $86
+ADDRGP4 $88
 ARGP4
 CNSTI4 17
 ARGI4
@@ -451,13 +451,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 81
-;81:	UI_DrawProportionalString( 320, y, "Favorite Colors", UI_CENTER|UI_SMALLFONT, color_white );
+;81:	UI_DrawProportionalString( 320, y, "Favorite Foods", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $87
+ADDRGP4 $89
 ARGP4
 CNSTI4 17
 ARGI4
@@ -477,13 +477,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 83
-;83:	UI_DrawProportionalString( 320, y, "Blue, Black, Grey?", UI_CENTER|UI_SMALLFONT, color_white );
+;83:	UI_DrawProportionalString( 320, y, "Pizza and M & M's", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $88
+ADDRGP4 $90
 ARGP4
 CNSTI4 17
 ARGI4
@@ -504,13 +504,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 86
-;86:	UI_DrawProportionalString( 320, y, "Yet Another Line Of Credit", UI_CENTER|UI_SMALLFONT, color_white );
+;86:	UI_DrawProportionalString( 320, y, "Website", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $89
+ADDRGP4 $91
 ARGP4
 CNSTI4 17
 ARGI4
@@ -530,13 +530,13 @@ ADDF4
 CVFI4 4
 ASGNI4
 line 88
-;88:	UI_DrawProportionalString( 320, y, "Someone Who Cares", UI_CENTER|UI_SMALLFONT, color_white );
+;88:	UI_DrawProportionalString( 320, y, "trepidation.sourceforge.net", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $90
+ADDRGP4 $92
 ARGP4
 CNSTI4 17
 ARGI4
@@ -563,7 +563,7 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 CNSTI4 17
 ARGI4
@@ -587,7 +587,7 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $92
+ADDRGP4 $94
 ARGP4
 CNSTI4 17
 ARGI4
@@ -598,7 +598,7 @@ CALLV
 pop
 line 94
 ;94:}
-LABELV $72
+LABELV $74
 endproc UI_CreditMenu_Draw 4 20
 export UI_CreditMenu
 proc UI_CreditMenu 0 12
@@ -647,7 +647,7 @@ CALLV
 pop
 line 109
 ;109:}
-LABELV $93
+LABELV $95
 endproc UI_CreditMenu 0 12
 bss
 align 4
@@ -967,6 +967,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1131,7 +1132,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $92
+LABELV $94
 byte 1 84
 byte 1 114
 byte 1 101
@@ -1174,7 +1175,7 @@ byte 1 101
 byte 1 46
 byte 1 0
 align 1
-LABELV $91
+LABELV $93
 byte 1 84
 byte 1 114
 byte 1 101
@@ -1253,77 +1254,67 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $90
-byte 1 83
-byte 1 111
-byte 1 109
-byte 1 101
-byte 1 111
-byte 1 110
-byte 1 101
-byte 1 32
-byte 1 87
-byte 1 104
-byte 1 111
-byte 1 32
-byte 1 67
-byte 1 97
+LABELV $92
+byte 1 116
 byte 1 114
 byte 1 101
+byte 1 112
+byte 1 105
+byte 1 100
+byte 1 97
+byte 1 116
+byte 1 105
+byte 1 111
+byte 1 110
+byte 1 46
+byte 1 115
+byte 1 111
+byte 1 117
+byte 1 114
+byte 1 99
+byte 1 101
+byte 1 102
+byte 1 111
+byte 1 114
+byte 1 103
+byte 1 101
+byte 1 46
+byte 1 110
+byte 1 101
+byte 1 116
+byte 1 0
+align 1
+LABELV $91
+byte 1 87
+byte 1 101
+byte 1 98
+byte 1 115
+byte 1 105
+byte 1 116
+byte 1 101
+byte 1 0
+align 1
+LABELV $90
+byte 1 80
+byte 1 105
+byte 1 122
+byte 1 122
+byte 1 97
+byte 1 32
+byte 1 97
+byte 1 110
+byte 1 100
+byte 1 32
+byte 1 77
+byte 1 32
+byte 1 38
+byte 1 32
+byte 1 77
+byte 1 39
 byte 1 115
 byte 1 0
 align 1
 LABELV $89
-byte 1 89
-byte 1 101
-byte 1 116
-byte 1 32
-byte 1 65
-byte 1 110
-byte 1 111
-byte 1 116
-byte 1 104
-byte 1 101
-byte 1 114
-byte 1 32
-byte 1 76
-byte 1 105
-byte 1 110
-byte 1 101
-byte 1 32
-byte 1 79
-byte 1 102
-byte 1 32
-byte 1 67
-byte 1 114
-byte 1 101
-byte 1 100
-byte 1 105
-byte 1 116
-byte 1 0
-align 1
-LABELV $88
-byte 1 66
-byte 1 108
-byte 1 117
-byte 1 101
-byte 1 44
-byte 1 32
-byte 1 66
-byte 1 108
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 44
-byte 1 32
-byte 1 71
-byte 1 114
-byte 1 101
-byte 1 121
-byte 1 63
-byte 1 0
-align 1
-LABELV $87
 byte 1 70
 byte 1 97
 byte 1 118
@@ -1333,15 +1324,14 @@ byte 1 105
 byte 1 116
 byte 1 101
 byte 1 32
-byte 1 67
+byte 1 70
 byte 1 111
-byte 1 108
 byte 1 111
-byte 1 114
+byte 1 100
 byte 1 115
 byte 1 0
 align 1
-LABELV $86
+LABELV $88
 byte 1 66
 byte 1 108
 byte 1 117
@@ -1362,9 +1352,18 @@ byte 1 111
 byte 1 100
 byte 1 105
 byte 1 101
+byte 1 44
+byte 1 32
+byte 1 85
+byte 1 110
+byte 1 107
+byte 1 110
+byte 1 111
+byte 1 119
+byte 1 110
 byte 1 0
 align 1
-LABELV $85
+LABELV $87
 byte 1 84
 byte 1 101
 byte 1 115
@@ -1386,7 +1385,7 @@ byte 1 114
 byte 1 116
 byte 1 0
 align 1
-LABELV $84
+LABELV $86
 byte 1 84
 byte 1 104
 byte 1 101
@@ -1411,7 +1410,7 @@ byte 1 99
 byte 1 116
 byte 1 0
 align 1
-LABELV $83
+LABELV $85
 byte 1 83
 byte 1 112
 byte 1 101
@@ -1431,65 +1430,59 @@ byte 1 84
 byte 1 111
 byte 1 0
 align 1
-LABELV $82
-byte 1 67
-byte 1 111
-byte 1 102
-byte 1 102
+LABELV $84
+byte 1 68
+byte 1 97
+byte 1 118
 byte 1 101
-byte 1 101
-byte 1 44
 byte 1 32
-byte 1 66
+byte 1 67
+byte 1 117
+byte 1 110
+byte 1 110
+byte 1 105
+byte 1 110
+byte 1 103
+byte 1 104
+byte 1 97
+byte 1 109
+byte 1 0
+align 1
+LABELV $83
+byte 1 83
+byte 1 111
+byte 1 117
+byte 1 110
+byte 1 100
+byte 1 32
+byte 1 69
+byte 1 110
+byte 1 103
+byte 1 105
+byte 1 110
 byte 1 101
 byte 1 101
 byte 1 114
+byte 1 58
+byte 1 0
+align 1
+LABELV $82
+byte 1 80
+byte 1 101
+byte 1 116
+byte 1 101
+byte 1 101
 byte 1 44
 byte 1 32
 byte 1 68
 byte 1 114
-byte 1 32
-byte 1 80
-byte 1 101
-byte 1 112
-byte 1 112
-byte 1 101
-byte 1 114
-byte 1 63
+byte 1 65
+byte 1 107
+byte 1 79
+byte 1 110
 byte 1 0
 align 1
 LABELV $81
-byte 1 68
-byte 1 114
-byte 1 105
-byte 1 110
-byte 1 107
-byte 1 32
-byte 1 79
-byte 1 102
-byte 1 32
-byte 1 67
-byte 1 104
-byte 1 111
-byte 1 105
-byte 1 99
-byte 1 101
-byte 1 0
-align 1
-LABELV $80
-byte 1 78
-byte 1 111
-byte 1 32
-byte 1 79
-byte 1 110
-byte 1 101
-byte 1 32
-byte 1 89
-byte 1 101
-byte 1 116
-byte 1 0
-align 1
-LABELV $79
 byte 1 77
 byte 1 111
 byte 1 100
@@ -1498,20 +1491,33 @@ byte 1 108
 byte 1 115
 byte 1 0
 align 1
-LABELV $78
+LABELV $80
+byte 1 82
+byte 1 121
+byte 1 97
+byte 1 110
 byte 1 32
+byte 1 77
+byte 1 99
+byte 1 78
+byte 1 101
+byte 1 105
+byte 1 108
+byte 1 108
 byte 1 0
 align 1
-LABELV $77
+LABELV $79
 byte 1 83
-byte 1 107
-byte 1 97
-byte 1 114
-byte 1 101
-byte 1 75
-byte 1 114
+byte 1 99
 byte 1 111
-byte 1 119
+byte 1 116
+byte 1 116
+byte 1 32
+byte 1 72
+byte 1 97
+byte 1 110
+byte 1 107
+byte 1 101
 byte 1 44
 byte 1 32
 byte 1 82
@@ -1544,7 +1550,7 @@ byte 1 50
 byte 1 51
 byte 1 0
 align 1
-LABELV $76
+LABELV $78
 byte 1 77
 byte 1 97
 byte 1 112
@@ -1552,10 +1558,18 @@ byte 1 112
 byte 1 105
 byte 1 110
 byte 1 103
+byte 1 32
+byte 1 65
+byte 1 110
+byte 1 100
+byte 1 32
+byte 1 65
+byte 1 114
+byte 1 116
 byte 1 58
 byte 1 0
 align 1
-LABELV $75
+LABELV $77
 byte 1 83
 byte 1 104
 byte 1 97
@@ -1566,13 +1580,12 @@ byte 1 32
 byte 1 88
 byte 1 99
 byte 1 121
-byte 1 116
+byte 1 84
 byte 1 110
 byte 1 103
-byte 1 39
 byte 1 0
 align 1
-LABELV $74
+LABELV $76
 byte 1 80
 byte 1 114
 byte 1 111
@@ -1586,7 +1599,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $73
+LABELV $75
 byte 1 84
 byte 1 104
 byte 1 101
@@ -1613,7 +1626,7 @@ byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $71
+LABELV $73
 byte 1 113
 byte 1 117
 byte 1 105

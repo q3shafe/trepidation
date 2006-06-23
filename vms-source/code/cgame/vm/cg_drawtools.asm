@@ -85,7 +85,7 @@ MULF4
 ASGNF4
 line 25
 ;25:}
-LABELV $70
+LABELV $72
 endproc CG_AdjustFrom640 16 0
 export CG_FillRect
 proc CG_FillRect 4 36
@@ -166,7 +166,7 @@ CALLV
 pop
 line 41
 ;41:}
-LABELV $75
+LABELV $77
 endproc CG_FillRect 4 36
 export CG_DrawSides
 proc CG_DrawSides 12 36
@@ -284,7 +284,7 @@ CALLV
 pop
 line 55
 ;55:}
-LABELV $78
+LABELV $80
 endproc CG_DrawSides 12 36
 export CG_DrawTopBottom
 proc CG_DrawTopBottom 12 36
@@ -395,7 +395,7 @@ CALLV
 pop
 line 62
 ;62:}
-LABELV $84
+LABELV $86
 endproc CG_DrawTopBottom 12 36
 export CG_DrawRect
 proc CG_DrawRect 0 20
@@ -467,7 +467,7 @@ CALLV
 pop
 line 77
 ;77:}
-LABELV $90
+LABELV $92
 endproc CG_DrawRect 0 20
 export CG_DrawPic
 proc CG_DrawPic 8 36
@@ -536,7 +536,7 @@ CALLV
 pop
 line 91
 ;91:}
-LABELV $91
+LABELV $93
 endproc CG_DrawPic 8 36
 export CG_DrawChar
 proc CG_DrawChar 48 36
@@ -571,12 +571,12 @@ line 110
 ADDRFP4 16
 INDIRI4
 CNSTI4 32
-NEI4 $93
+NEI4 $95
 line 111
 ;111:		return;
-ADDRGP4 $92
+ADDRGP4 $94
 JUMPV
-LABELV $93
+LABELV $95
 line 114
 ;112:	}
 ;113:
@@ -705,7 +705,7 @@ line 131
 ;129:					   fcol + size, frow + size, 
 ;130:					   cgs.media.charsetShader );
 ;131:}
-LABELV $92
+LABELV $94
 endproc CG_DrawChar 48 36
 export CG_DrawStringExt
 proc CG_DrawStringExt 48 20
@@ -734,13 +734,13 @@ line 151
 ADDRFP4 32
 INDIRI4
 CNSTI4 0
-GTI4 $97
+GTI4 $99
 line 152
 ;152:		maxChars = 32767; // do them all!
 ADDRFP4 32
 CNSTI4 32767
 ASGNI4
-LABELV $97
+LABELV $99
 line 155
 ;153:
 ;154:	// draw the drop shadow
@@ -748,7 +748,7 @@ line 155
 ADDRFP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $99
+EQI4 $101
 line 156
 ;156:		color[0] = color[1] = color[2] = 0;
 ADDRLP4 28
@@ -799,9 +799,9 @@ line 161
 ADDRLP4 8
 CNSTI4 0
 ASGNI4
-ADDRGP4 $105
+ADDRGP4 $107
 JUMPV
-LABELV $104
+LABELV $106
 line 162
 ;162:		while ( *s && cnt < maxChars) {
 line 163
@@ -810,7 +810,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $107
+EQU4 $109
 ADDRLP4 36
 CNSTI4 94
 ASGNI4
@@ -820,7 +820,7 @@ INDIRI1
 CVII4 1
 ADDRLP4 36
 INDIRI4
-NEI4 $107
+NEI4 $109
 ADDRLP4 40
 ADDRLP4 0
 INDIRP4
@@ -832,12 +832,12 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
-EQI4 $107
+EQI4 $109
 ADDRLP4 40
 INDIRI4
 ADDRLP4 36
 INDIRI4
-EQI4 $107
+EQI4 $109
 line 164
 ;164:				s += 2;
 ADDRLP4 0
@@ -848,9 +848,9 @@ ADDP4
 ASGNP4
 line 165
 ;165:				continue;
-ADDRGP4 $105
+ADDRGP4 $107
 JUMPV
-LABELV $107
+LABELV $109
 line 167
 ;166:			}
 ;167:			CG_DrawChar( xx + 2, y + 2, charWidth, charHeight, *s );
@@ -910,23 +910,23 @@ ADDP4
 ASGNP4
 line 171
 ;171:		}
-LABELV $105
+LABELV $107
 line 162
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $109
+EQI4 $111
 ADDRLP4 8
 INDIRI4
 ADDRFP4 32
 INDIRI4
-LTI4 $104
-LABELV $109
+LTI4 $106
+LABELV $111
 line 172
 ;172:	}
-LABELV $99
+LABELV $101
 line 175
 ;173:
 ;174:	// draw the colored text
@@ -954,9 +954,9 @@ ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-ADDRGP4 $111
+ADDRGP4 $113
 JUMPV
-LABELV $110
+LABELV $112
 line 179
 ;179:	while ( *s && cnt < maxChars) {
 line 180
@@ -965,7 +965,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $113
+EQU4 $115
 ADDRLP4 32
 CNSTI4 94
 ASGNI4
@@ -975,7 +975,7 @@ INDIRI1
 CVII4 1
 ADDRLP4 32
 INDIRI4
-NEI4 $113
+NEI4 $115
 ADDRLP4 36
 ADDRLP4 0
 INDIRP4
@@ -987,18 +987,18 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $113
+EQI4 $115
 ADDRLP4 36
 INDIRI4
 ADDRLP4 32
 INDIRI4
-EQI4 $113
+EQI4 $115
 line 181
 ;181:			if ( !forceColor ) {
 ADDRFP4 16
 INDIRI4
 CNSTI4 0
-NEI4 $115
+NEI4 $117
 line 182
 ;182:				memcpy( color, g_color_table[ColorIndex(*(s+1))], sizeof( color ) );
 ADDRLP4 12
@@ -1041,7 +1041,7 @@ CALLV
 pop
 line 185
 ;185:			}
-LABELV $115
+LABELV $117
 line 186
 ;186:			s += 2;
 ADDRLP4 0
@@ -1052,9 +1052,9 @@ ADDP4
 ASGNP4
 line 187
 ;187:			continue;
-ADDRGP4 $111
+ADDRGP4 $113
 JUMPV
-LABELV $113
+LABELV $115
 line 189
 ;188:		}
 ;189:		CG_DrawChar( xx, y, charWidth, charHeight, *s );
@@ -1105,20 +1105,20 @@ ADDP4
 ASGNP4
 line 193
 ;193:	}
-LABELV $111
+LABELV $113
 line 179
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $118
+EQI4 $120
 ADDRLP4 8
 INDIRI4
 ADDRFP4 32
 INDIRI4
-LTI4 $110
-LABELV $118
+LTI4 $112
+LABELV $120
 line 194
 ;194:	trap_R_SetColor( NULL );
 CNSTP4 0
@@ -1128,7 +1128,7 @@ CALLV
 pop
 line 195
 ;195:}
-LABELV $96
+LABELV $98
 endproc CG_DrawStringExt 48 20
 export CG_DrawBigString
 proc CG_DrawBigString 28 36
@@ -1198,7 +1198,7 @@ CALLV
 pop
 line 203
 ;203:}
-LABELV $119
+LABELV $121
 endproc CG_DrawBigString 28 36
 export CG_DrawBigStringColor
 proc CG_DrawBigStringColor 8 36
@@ -1244,7 +1244,7 @@ CALLV
 pop
 line 207
 ;207:}
-LABELV $123
+LABELV $125
 endproc CG_DrawBigStringColor 8 36
 export CG_DrawSmallString
 proc CG_DrawSmallString 24 36
@@ -1310,7 +1310,7 @@ CALLV
 pop
 line 215
 ;215:}
-LABELV $124
+LABELV $126
 endproc CG_DrawSmallString 24 36
 export CG_DrawSmallStringColor
 proc CG_DrawSmallStringColor 4 36
@@ -1351,7 +1351,7 @@ CALLV
 pop
 line 219
 ;219:}
-LABELV $128
+LABELV $130
 endproc CG_DrawSmallStringColor 4 36
 export CG_DrawStrlen
 proc CG_DrawStrlen 20 0
@@ -1376,9 +1376,9 @@ line 230
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $131
+ADDRGP4 $133
 JUMPV
-LABELV $130
+LABELV $132
 line 232
 ;231:
 ;232:	while ( *s ) {
@@ -1388,7 +1388,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $133
+EQU4 $135
 ADDRLP4 12
 CNSTI4 94
 ASGNI4
@@ -1398,7 +1398,7 @@ INDIRI1
 CVII4 1
 ADDRLP4 12
 INDIRI4
-NEI4 $133
+NEI4 $135
 ADDRLP4 16
 ADDRLP4 0
 INDIRP4
@@ -1410,12 +1410,12 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $133
+EQI4 $135
 ADDRLP4 16
 INDIRI4
 ADDRLP4 12
 INDIRI4
-EQI4 $133
+EQI4 $135
 line 234
 ;234:			s += 2;
 ADDRLP4 0
@@ -1426,9 +1426,9 @@ ADDP4
 ASGNP4
 line 235
 ;235:		} else {
-ADDRGP4 $134
+ADDRGP4 $136
 JUMPV
-LABELV $133
+LABELV $135
 line 236
 ;236:			count++;
 ADDRLP4 4
@@ -1447,24 +1447,24 @@ ADDP4
 ASGNP4
 line 238
 ;238:		}
-LABELV $134
+LABELV $136
 line 239
 ;239:	}
-LABELV $131
+LABELV $133
 line 232
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $130
+NEI4 $132
 line 241
 ;240:
 ;241:	return count;
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $129
+LABELV $131
 endproc CG_DrawStrlen 20 0
 proc CG_TileClearBox 16 36
 line 252
@@ -1561,7 +1561,7 @@ CALLV
 pop
 line 260
 ;260:}
-LABELV $135
+LABELV $137
 endproc CG_TileClearBox 16 36
 export CG_TileClear
 proc CG_TileClear 48 20
@@ -1602,29 +1602,29 @@ ADDRGP4 cg+109048
 INDIRI4
 ADDRLP4 24
 INDIRI4
-NEI4 $141
+NEI4 $143
 ADDRGP4 cg+109048+4
 INDIRI4
 ADDRLP4 24
 INDIRI4
-NEI4 $141
+NEI4 $143
 ADDRGP4 cg+109048+8
 INDIRI4
 ADDRLP4 8
 INDIRI4
-NEI4 $141
+NEI4 $143
 ADDRGP4 cg+109048+12
 INDIRI4
 ADDRLP4 20
 INDIRI4
-NEI4 $141
+NEI4 $143
 line 279
 ;279:		cg.refdef.width == w && cg.refdef.height == h ) {
 line 280
 ;280:		return;		// full screen rendering
-ADDRGP4 $136
+ADDRGP4 $138
 JUMPV
-LABELV $141
+LABELV $143
 line 283
 ;281:	}
 ;282:
@@ -1768,11 +1768,11 @@ CALLV
 pop
 line 299
 ;299:}
-LABELV $136
+LABELV $138
 endproc CG_TileClear 48 20
 bss
 align 4
-LABELV $166
+LABELV $168
 skip 16
 export CG_FadeColor
 code
@@ -1795,14 +1795,14 @@ line 312
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $167
+NEI4 $169
 line 313
 ;313:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $165
+ADDRGP4 $167
 JUMPV
-LABELV $167
+LABELV $169
 line 316
 ;314:	}
 ;315:
@@ -1821,14 +1821,14 @@ ADDRLP4 0
 INDIRI4
 ADDRFP4 4
 INDIRI4
-LTI4 $170
+LTI4 $172
 line 319
 ;319:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $165
+ADDRGP4 $167
 JUMPV
-LABELV $170
+LABELV $172
 line 323
 ;320:	}
 ;321:
@@ -1840,10 +1840,10 @@ ADDRLP4 0
 INDIRI4
 SUBI4
 CNSTI4 200
-GEI4 $172
+GEI4 $174
 line 324
 ;324:		color[3] = ( totalMsec - t ) * 1.0/FADE_TIME;
-ADDRGP4 $166+12
+ADDRGP4 $168+12
 CNSTF4 1065353216
 ADDRFP4 4
 INDIRI4
@@ -1857,62 +1857,62 @@ DIVF4
 ASGNF4
 line 325
 ;325:	} else {
-ADDRGP4 $173
+ADDRGP4 $175
 JUMPV
-LABELV $172
+LABELV $174
 line 326
 ;326:		color[3] = 1.0;
-ADDRGP4 $166+12
+ADDRGP4 $168+12
 CNSTF4 1065353216
 ASGNF4
 line 327
 ;327:	}
-LABELV $173
+LABELV $175
 line 328
 ;328:	color[0] = color[1] = color[2] = 1;
 ADDRLP4 4
 CNSTF4 1065353216
 ASGNF4
-ADDRGP4 $166+8
+ADDRGP4 $168+8
 ADDRLP4 4
 INDIRF4
 ASGNF4
-ADDRGP4 $166+4
+ADDRGP4 $168+4
 ADDRLP4 4
 INDIRF4
 ASGNF4
-ADDRGP4 $166
+ADDRGP4 $168
 ADDRLP4 4
 INDIRF4
 ASGNF4
 line 330
 ;329:
 ;330:	return color;
-ADDRGP4 $166
+ADDRGP4 $168
 RETP4
-LABELV $165
+LABELV $167
 endproc CG_FadeColor 8 0
 data
 align 4
-LABELV $179
-byte 4 1065353216
-byte 4 1045220557
-byte 4 1045220557
-byte 4 1065353216
-align 4
-LABELV $180
-byte 4 1045220557
-byte 4 1045220557
-byte 4 1065353216
-byte 4 1065353216
-align 4
 LABELV $181
 byte 4 1065353216
-byte 4 1065353216
-byte 4 1065353216
+byte 4 1045220557
+byte 4 1045220557
 byte 4 1065353216
 align 4
 LABELV $182
+byte 4 1045220557
+byte 4 1045220557
+byte 4 1065353216
+byte 4 1065353216
+align 4
+LABELV $183
+byte 4 1065353216
+byte 4 1065353216
+byte 4 1065353216
+byte 4 1065353216
+align 4
+LABELV $184
 byte 4 1060320051
 byte 4 1060320051
 byte 4 1060320051
@@ -1944,48 +1944,48 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
-EQI4 $185
+EQI4 $187
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
-EQI4 $186
+EQI4 $188
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-EQI4 $187
-ADDRGP4 $183
+EQI4 $189
+ADDRGP4 $185
 JUMPV
-LABELV $185
+LABELV $187
 line 347
 ;346:	case TEAM_RED:
 ;347:		return red;
-ADDRGP4 $179
+ADDRGP4 $181
 RETP4
-ADDRGP4 $178
+ADDRGP4 $180
 JUMPV
-LABELV $186
+LABELV $188
 line 349
 ;348:	case TEAM_BLUE:
 ;349:		return blue;
-ADDRGP4 $180
+ADDRGP4 $182
 RETP4
-ADDRGP4 $178
+ADDRGP4 $180
 JUMPV
-LABELV $187
+LABELV $189
 line 351
 ;350:	case TEAM_SPECTATOR:
 ;351:		return spectator;
-ADDRGP4 $182
+ADDRGP4 $184
 RETP4
-ADDRGP4 $178
+ADDRGP4 $180
 JUMPV
-LABELV $183
+LABELV $185
 line 353
 ;352:	default:
 ;353:		return other;
-ADDRGP4 $181
+ADDRGP4 $183
 RETP4
-LABELV $178
+LABELV $180
 endproc CG_TeamColor 4 0
 export CG_GetColorForHealth
 proc CG_GetColorForHealth 16 0
@@ -2011,7 +2011,7 @@ line 370
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-GTI4 $189
+GTI4 $191
 line 371
 ;371:		VectorClear( hcolor );	// black
 ADDRLP4 8
@@ -2050,9 +2050,9 @@ CNSTF4 1065353216
 ASGNF4
 line 373
 ;373:		return;
-ADDRGP4 $188
+ADDRGP4 $190
 JUMPV
-LABELV $189
+LABELV $191
 line 375
 ;374:	}
 ;375:	count = armor;
@@ -2078,7 +2078,7 @@ ADDRLP4 4
 INDIRI4
 ADDRLP4 0
 INDIRI4
-GEI4 $191
+GEI4 $193
 line 378
 ;378:		count = max;
 ADDRLP4 0
@@ -2087,7 +2087,7 @@ INDIRI4
 ASGNI4
 line 379
 ;379:	}
-LABELV $191
+LABELV $193
 line 380
 ;380:	health += count;
 ADDRFP4 0
@@ -2118,7 +2118,7 @@ line 385
 ADDRFP4 0
 INDIRI4
 CNSTI4 100
-LTI4 $193
+LTI4 $195
 line 386
 ;386:		hcolor[2] = 1.0;
 ADDRFP4 8
@@ -2129,13 +2129,13 @@ CNSTF4 1065353216
 ASGNF4
 line 387
 ;387:	} else if ( health < 66 ) {
-ADDRGP4 $194
+ADDRGP4 $196
 JUMPV
-LABELV $193
+LABELV $195
 ADDRFP4 0
 INDIRI4
 CNSTI4 66
-GEI4 $195
+GEI4 $197
 line 388
 ;388:		hcolor[2] = 0;
 ADDRFP4 8
@@ -2146,9 +2146,9 @@ CNSTF4 0
 ASGNF4
 line 389
 ;389:	} else {
-ADDRGP4 $196
+ADDRGP4 $198
 JUMPV
-LABELV $195
+LABELV $197
 line 390
 ;390:		hcolor[2] = ( health - 66 ) / 33.0;
 ADDRFP4 8
@@ -2165,15 +2165,15 @@ DIVF4
 ASGNF4
 line 391
 ;391:	}
+LABELV $198
 LABELV $196
-LABELV $194
 line 393
 ;392:
 ;393:	if ( health > 60 ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 60
-LEI4 $197
+LEI4 $199
 line 394
 ;394:		hcolor[1] = 1.0;
 ADDRFP4 8
@@ -2184,13 +2184,13 @@ CNSTF4 1065353216
 ASGNF4
 line 395
 ;395:	} else if ( health < 30 ) {
-ADDRGP4 $198
+ADDRGP4 $200
 JUMPV
-LABELV $197
+LABELV $199
 ADDRFP4 0
 INDIRI4
 CNSTI4 30
-GEI4 $199
+GEI4 $201
 line 396
 ;396:		hcolor[1] = 0;
 ADDRFP4 8
@@ -2201,9 +2201,9 @@ CNSTF4 0
 ASGNF4
 line 397
 ;397:	} else {
-ADDRGP4 $200
+ADDRGP4 $202
 JUMPV
-LABELV $199
+LABELV $201
 line 398
 ;398:		hcolor[1] = ( health - 30 ) / 30.0;
 ADDRFP4 8
@@ -2220,11 +2220,11 @@ DIVF4
 ASGNF4
 line 399
 ;399:	}
+LABELV $202
 LABELV $200
-LABELV $198
 line 400
 ;400:}
-LABELV $188
+LABELV $190
 endproc CG_GetColorForHealth 16 0
 export CG_ColorForHealth
 proc CG_ColorForHealth 0 12
@@ -2260,7 +2260,7 @@ pop
 line 411
 ;410:		cg.snap->ps.stats[STAT_ARMOR], hcolor );
 ;411:}
-LABELV $201
+LABELV $203
 endproc CG_ColorForHealth 0 12
 data
 align 4
@@ -2949,9 +2949,9 @@ ADDRLP4 4
 ADDRFP4 8
 INDIRP4
 ASGNP4
-ADDRGP4 $209
+ADDRGP4 $211
 JUMPV
-LABELV $208
+LABELV $210
 line 597
 ;596:	while ( *s )
 ;597:	{
@@ -2973,7 +2973,7 @@ ADDRLP4 0
 INDIRU1
 CVUI4 1
 CNSTI4 32
-NEI4 $211
+NEI4 $213
 line 600
 ;600:			ax += ((float)PROPB_SPACE_WIDTH + (float)PROPB_GAP_WIDTH)* cgs.screenXScale;
 ADDRLP4 8
@@ -2987,9 +2987,9 @@ ADDF4
 ASGNF4
 line 601
 ;601:		}
-ADDRGP4 $212
+ADDRGP4 $214
 JUMPV
-LABELV $211
+LABELV $213
 line 602
 ;602:		else if ( ch >= 'A' && ch <= 'Z' ) {
 ADDRLP4 40
@@ -3000,11 +3000,11 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 65
-LTI4 $214
+LTI4 $216
 ADDRLP4 40
 INDIRI4
 CNSTI4 90
-GTI4 $214
+GTI4 $216
 line 603
 ;603:			ch -= 'A';
 ADDRLP4 0
@@ -3144,8 +3144,8 @@ ADDF4
 ASGNF4
 line 612
 ;612:		}
+LABELV $216
 LABELV $214
-LABELV $212
 line 613
 ;613:		s++;
 ADDRLP4 4
@@ -3156,14 +3156,14 @@ ADDP4
 ASGNP4
 line 614
 ;614:	}
-LABELV $209
+LABELV $211
 line 596
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $208
+NEI4 $210
 line 616
 ;615:
 ;616:	trap_R_SetColor( NULL );
@@ -3174,7 +3174,7 @@ CALLV
 pop
 line 617
 ;617:}
-LABELV $204
+LABELV $206
 endproc UI_DrawBannerString2 52 36
 export UI_DrawBannerString
 proc UI_DrawBannerString 44 16
@@ -3198,9 +3198,9 @@ line 627
 ADDRLP4 8
 CNSTI4 0
 ASGNI4
-ADDRGP4 $226
+ADDRGP4 $228
 JUMPV
-LABELV $225
+LABELV $227
 line 628
 ;628:	while ( *s ) {
 line 629
@@ -3216,7 +3216,7 @@ line 630
 ADDRLP4 0
 INDIRI4
 CNSTI4 32
-NEI4 $228
+NEI4 $230
 line 631
 ;631:			width += PROPB_SPACE_WIDTH;
 ADDRLP4 8
@@ -3227,19 +3227,19 @@ ADDI4
 ASGNI4
 line 632
 ;632:		}
-ADDRGP4 $229
+ADDRGP4 $231
 JUMPV
-LABELV $228
+LABELV $230
 line 633
 ;633:		else if ( ch >= 'A' && ch <= 'Z' ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 65
-LTI4 $230
+LTI4 $232
 ADDRLP4 0
 INDIRI4
 CNSTI4 90
-GTI4 $230
+GTI4 $232
 line 634
 ;634:			width += propMapB[ch - 'A'][2] + PROPB_GAP_WIDTH;
 ADDRLP4 8
@@ -3258,8 +3258,8 @@ ADDI4
 ASGNI4
 line 635
 ;635:		}
-LABELV $230
-LABELV $229
+LABELV $232
+LABELV $231
 line 636
 ;636:		s++;
 ADDRLP4 4
@@ -3270,14 +3270,14 @@ ADDP4
 ASGNP4
 line 637
 ;637:	}
-LABELV $226
+LABELV $228
 line 628
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $225
+NEI4 $227
 line 638
 ;638:	width -= PROPB_GAP_WIDTH;
 ADDRLP4 8
@@ -3298,18 +3298,18 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-EQI4 $235
-ADDRLP4 28
-INDIRI4
-CNSTI4 1
 EQI4 $237
 ADDRLP4 28
 INDIRI4
+CNSTI4 1
+EQI4 $239
+ADDRLP4 28
+INDIRI4
 CNSTI4 2
-EQI4 $238
-ADDRGP4 $235
+EQI4 $240
+ADDRGP4 $237
 JUMPV
-LABELV $237
+LABELV $239
 line 642
 ;641:		case UI_CENTER:
 ;642:			x -= width / 2;
@@ -3324,9 +3324,9 @@ SUBI4
 ASGNI4
 line 643
 ;643:			break;
-ADDRGP4 $235
+ADDRGP4 $237
 JUMPV
-LABELV $238
+LABELV $240
 line 646
 ;644:
 ;645:		case UI_RIGHT:
@@ -3345,7 +3345,7 @@ line 651
 ;649:		case UI_LEFT:
 ;650:		default:
 ;651:			break;
-LABELV $235
+LABELV $237
 line 654
 ;652:	}
 ;653:
@@ -3355,7 +3355,7 @@ INDIRI4
 CNSTI4 2048
 BANDI4
 CNSTI4 0
-EQI4 $240
+EQI4 $242
 line 655
 ;655:		drawcolor[0] = drawcolor[1] = drawcolor[2] = 0;
 ADDRLP4 36
@@ -3409,7 +3409,7 @@ CALLV
 pop
 line 658
 ;658:	}
-LABELV $240
+LABELV $242
 line 660
 ;659:
 ;660:	UI_DrawBannerString2( x, y, str, color );
@@ -3430,7 +3430,7 @@ CALLV
 pop
 line 661
 ;661:}
-LABELV $224
+LABELV $226
 endproc UI_DrawBannerString 44 16
 export UI_ProportionalStringWidth
 proc UI_ProportionalStringWidth 16 0
@@ -3454,9 +3454,9 @@ line 671
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $246
+LABELV $248
 line 672
 ;672:	while ( *s ) {
 line 673
@@ -3485,7 +3485,7 @@ line 675
 ADDRLP4 4
 INDIRI4
 CNSTI4 -1
-EQI4 $250
+EQI4 $252
 line 676
 ;676:			width += charWidth;
 ADDRLP4 12
@@ -3505,7 +3505,7 @@ ADDI4
 ASGNI4
 line 678
 ;678:		}
-LABELV $250
+LABELV $252
 line 679
 ;679:		s++;
 ADDRLP4 0
@@ -3516,14 +3516,14 @@ ADDP4
 ASGNP4
 line 680
 ;680:	}
-LABELV $247
+LABELV $249
 line 672
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $246
+NEI4 $248
 line 682
 ;681:
 ;682:	width -= PROP_GAP_WIDTH;
@@ -3538,7 +3538,7 @@ line 683
 ADDRLP4 12
 INDIRI4
 RETI4
-LABELV $245
+LABELV $247
 endproc UI_ProportionalStringWidth 16 0
 proc UI_DrawProportionalString2 48 36
 line 687
@@ -3597,9 +3597,9 @@ ADDRLP4 4
 ADDRFP4 8
 INDIRP4
 ASGNP4
-ADDRGP4 $257
+ADDRGP4 $259
 JUMPV
-LABELV $256
+LABELV $258
 line 707
 ;706:	while ( *s )
 ;707:	{
@@ -3621,7 +3621,7 @@ ADDRLP4 0
 INDIRU1
 CVUI4 1
 CNSTI4 32
-NEI4 $259
+NEI4 $261
 line 710
 ;710:			aw = (float)PROP_SPACE_WIDTH * cgs.screenXScale * sizeScale;
 ADDRLP4 8
@@ -3635,9 +3635,9 @@ MULF4
 ASGNF4
 line 711
 ;711:		} else if ( propMap[ch][2] != -1 ) {
-ADDRGP4 $260
+ADDRGP4 $262
 JUMPV
-LABELV $259
+LABELV $261
 CNSTI4 12
 ADDRLP4 0
 INDIRU1
@@ -3647,7 +3647,7 @@ ADDRGP4 propMap+8
 ADDP4
 INDIRI4
 CNSTI4 -1
-EQI4 $262
+EQI4 $264
 line 712
 ;712:			fcol = (float)propMap[ch][0] / 256.0f;
 ADDRLP4 20
@@ -3768,9 +3768,9 @@ CALLV
 pop
 line 719
 ;719:		} else {
-ADDRGP4 $263
+ADDRGP4 $265
 JUMPV
-LABELV $262
+LABELV $264
 line 720
 ;720:			aw = 0;
 ADDRLP4 8
@@ -3778,8 +3778,8 @@ CNSTF4 0
 ASGNF4
 line 721
 ;721:		}
-LABELV $263
-LABELV $260
+LABELV $265
+LABELV $262
 line 723
 ;722:
 ;723:		ax += (aw + (float)PROP_GAP_WIDTH * cgs.screenXScale * sizeScale);
@@ -3808,14 +3808,14 @@ ADDP4
 ASGNP4
 line 725
 ;725:	}
-LABELV $257
+LABELV $259
 line 706
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $256
+NEI4 $258
 line 727
 ;726:
 ;727:	trap_R_SetColor( NULL );
@@ -3826,7 +3826,7 @@ CALLV
 pop
 line 728
 ;728:}
-LABELV $252
+LABELV $254
 endproc UI_DrawProportionalString2 48 36
 export UI_ProportionalSizeScale
 proc UI_ProportionalSizeScale 0 0
@@ -3845,21 +3845,21 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $272
+EQI4 $274
 line 737
 ;737:		return 0.75;
 CNSTF4 1061158912
 RETF4
-ADDRGP4 $271
+ADDRGP4 $273
 JUMPV
-LABELV $272
+LABELV $274
 line 740
 ;738:	}
 ;739:
 ;740:	return 1.00;
 CNSTF4 1065353216
 RETF4
-LABELV $271
+LABELV $273
 endproc UI_ProportionalSizeScale 0 0
 export UI_DrawProportionalString
 proc UI_DrawProportionalString 44 24
@@ -3902,18 +3902,18 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-EQI4 $276
-ADDRLP4 28
-INDIRI4
-CNSTI4 1
 EQI4 $278
 ADDRLP4 28
 INDIRI4
+CNSTI4 1
+EQI4 $280
+ADDRLP4 28
+INDIRI4
 CNSTI4 2
-EQI4 $279
-ADDRGP4 $276
+EQI4 $281
+ADDRGP4 $278
 JUMPV
-LABELV $278
+LABELV $280
 line 758
 ;757:		case UI_CENTER:
 ;758:			width = UI_ProportionalStringWidth( str ) * sizeScale;
@@ -3946,9 +3946,9 @@ SUBI4
 ASGNI4
 line 760
 ;760:			break;
-ADDRGP4 $276
+ADDRGP4 $278
 JUMPV
-LABELV $279
+LABELV $281
 line 763
 ;761:
 ;762:		case UI_RIGHT:
@@ -3985,7 +3985,7 @@ line 769
 ;767:		case UI_LEFT:
 ;768:		default:
 ;769:			break;
-LABELV $276
+LABELV $278
 line 772
 ;770:	}
 ;771:
@@ -3995,7 +3995,7 @@ INDIRI4
 CNSTI4 2048
 BANDI4
 CNSTI4 0
-EQI4 $281
+EQI4 $283
 line 773
 ;773:		drawcolor[0] = drawcolor[1] = drawcolor[2] = 0;
 ADDRLP4 36
@@ -4055,7 +4055,7 @@ CALLV
 pop
 line 776
 ;776:	}
-LABELV $281
+LABELV $283
 line 778
 ;777:
 ;778:	if ( style & UI_INVERSE ) {
@@ -4064,7 +4064,7 @@ INDIRI4
 CNSTI4 8192
 BANDI4
 CNSTI4 0
-EQI4 $288
+EQI4 $290
 line 779
 ;779:		drawcolor[0] = color[0] * 0.8;
 ADDRLP4 0
@@ -4129,9 +4129,9 @@ CALLV
 pop
 line 784
 ;784:		return;
-ADDRGP4 $274
+ADDRGP4 $276
 JUMPV
-LABELV $288
+LABELV $290
 line 787
 ;785:	}
 ;786:
@@ -4141,7 +4141,7 @@ INDIRI4
 CNSTI4 16384
 BANDI4
 CNSTI4 0
-EQI4 $295
+EQI4 $297
 line 788
 ;788:		drawcolor[0] = color[0] * 0.8;
 ADDRLP4 0
@@ -4275,9 +4275,9 @@ CALLV
 pop
 line 799
 ;799:		return;
-ADDRGP4 $274
+ADDRGP4 $276
 JUMPV
-LABELV $295
+LABELV $297
 line 802
 ;800:	}
 ;801:
@@ -4305,8 +4305,11 @@ CALLV
 pop
 line 803
 ;803:}
-LABELV $274
+LABELV $276
 endproc UI_DrawProportionalString 44 24
+import CG_DrawScanner
+import CG_ScannerOff_f
+import CG_ScannerOn_f
 import CG_NewParticleArea
 import initparticles
 import CG_ParticleExplosion
@@ -4538,6 +4541,7 @@ import CG_ConfigString
 import CG_Cvar_ClampInt
 import CG_AddBoundingBox
 import CG_PredictWeaponEffects
+import cg_playerOrigins
 import cg_plOut
 import cg_latentCmds
 import cg_latentSnaps
@@ -4651,6 +4655,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup

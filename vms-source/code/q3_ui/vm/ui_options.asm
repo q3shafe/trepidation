@@ -54,12 +54,12 @@ line 48
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $69
+EQI4 $71
 line 49
 ;49:		return;
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $69
+LABELV $71
 line 52
 ;50:	}
 ;51:
@@ -74,29 +74,29 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-LTI4 $71
+LTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 14
-GTI4 $71
+GTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $79-40
+ADDRGP4 $81-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $79
-address $74
-address $75
+LABELV $81
 address $76
 address $77
 address $78
+address $79
+address $80
 code
-LABELV $74
+LABELV $76
 line 54
 ;53:	case ID_GRAPHICS:
 ;54:		UI_GraphicsOptionsMenu();
@@ -105,9 +105,9 @@ CALLV
 pop
 line 55
 ;55:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $75
+LABELV $77
 line 58
 ;56:
 ;57:	case ID_DISPLAY:
@@ -117,9 +117,9 @@ CALLV
 pop
 line 59
 ;59:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $76
+LABELV $78
 line 62
 ;60:
 ;61:	case ID_SOUND:
@@ -129,9 +129,9 @@ CALLV
 pop
 line 63
 ;63:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $77
+LABELV $79
 line 66
 ;64:
 ;65:	case ID_NETWORK:
@@ -141,9 +141,9 @@ CALLV
 pop
 line 67
 ;67:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $78
+LABELV $80
 line 70
 ;68:
 ;69:	case ID_BACK:
@@ -153,12 +153,12 @@ CALLV
 pop
 line 71
 ;71:		break;
-LABELV $71
-LABELV $72
+LABELV $73
+LABELV $74
 line 73
 ;72:	}
 ;73:}
-LABELV $68
+LABELV $70
 endproc Options_Event 8 0
 export SystemConfig_Cache
 proc SystemConfig_Cache 0 4
@@ -173,35 +173,35 @@ line 81
 ;81:void SystemConfig_Cache( void ) {
 line 82
 ;82:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $82
+ADDRGP4 $84
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 83
 ;83:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $83
+ADDRGP4 $85
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 84
 ;84:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $84
+ADDRGP4 $86
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 85
 ;85:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 86
 ;86:}
-LABELV $81
+LABELV $83
 endproc SystemConfig_Cache 0 4
 export Options_MenuInit
 proc Options_MenuInit 3088 12
@@ -251,7 +251,7 @@ line 103
 ADDRLP4 4
 INDIRI4
 CNSTI4 5
-LTI4 $88
+LTI4 $90
 line 104
 ;104:		s_options.menu.fullscreen = qfalse;
 ADDRGP4 s_options+280
@@ -259,9 +259,9 @@ CNSTI4 0
 ASGNI4
 line 105
 ;105:	}
-ADDRGP4 $89
+ADDRGP4 $91
 JUMPV
-LABELV $88
+LABELV $90
 line 106
 ;106:	else {
 line 107
@@ -271,7 +271,7 @@ CNSTI4 1
 ASGNI4
 line 108
 ;108:	}
-LABELV $89
+LABELV $91
 line 110
 ;109:
 ;110:	s_options.banner.generic.type	= MTYPE_BTEXT;
@@ -296,7 +296,7 @@ ASGNI4
 line 114
 ;114:	s_options.banner.string		    = "SYSTEM SETUP";
 ADDRGP4 s_options+288+60
-ADDRGP4 $101
+ADDRGP4 $103
 ASGNP4
 line 115
 ;115:	s_options.banner.color			= color_white;
@@ -317,7 +317,7 @@ ASGNI4
 line 119
 ;119:	s_options.framel.generic.name  = ART_FRAMEL;
 ADDRGP4 s_options+360+4
-ADDRGP4 $82
+ADDRGP4 $84
 ASGNP4
 line 120
 ;120:	s_options.framel.generic.flags = QMF_INACTIVE;
@@ -353,7 +353,7 @@ ASGNI4
 line 127
 ;127:	s_options.framer.generic.name  = ART_FRAMER;
 ADDRGP4 s_options+448+4
-ADDRGP4 $83
+ADDRGP4 $85
 ASGNP4
 line 128
 ;128:	s_options.framer.generic.flags = QMF_INACTIVE;
@@ -420,7 +420,7 @@ ASGNI4
 line 141
 ;141:	s_options.graphics.string			= "GRAPHICS";
 ADDRGP4 s_options+536+60
-ADDRGP4 $145
+ADDRGP4 $147
 ASGNP4
 line 142
 ;142:	s_options.graphics.color			= color_red;
@@ -475,7 +475,7 @@ ASGNI4
 line 152
 ;152:	s_options.display.string			= "DISPLAY";
 ADDRGP4 s_options+608+60
-ADDRGP4 $163
+ADDRGP4 $165
 ASGNP4
 line 153
 ;153:	s_options.display.color				= color_red;
@@ -530,7 +530,7 @@ ASGNI4
 line 163
 ;163:	s_options.sound.string				= "SOUND";
 ADDRGP4 s_options+680+60
-ADDRGP4 $181
+ADDRGP4 $183
 ASGNP4
 line 164
 ;164:	s_options.sound.color				= color_red;
@@ -585,7 +585,7 @@ ASGNI4
 line 174
 ;174:	s_options.network.string			= "NETWORK";
 ADDRGP4 s_options+752+60
-ADDRGP4 $199
+ADDRGP4 $201
 ASGNP4
 line 175
 ;175:	s_options.network.color				= color_red;
@@ -606,7 +606,7 @@ ASGNI4
 line 179
 ;179:	s_options.back.generic.name     = ART_BACK0;
 ADDRGP4 s_options+824+4
-ADDRGP4 $84
+ADDRGP4 $86
 ASGNP4
 line 180
 ;180:	s_options.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -646,7 +646,7 @@ ASGNI4
 line 187
 ;187:	s_options.back.focuspic         = ART_BACK1;
 ADDRGP4 s_options+824+60
-ADDRGP4 $85
+ADDRGP4 $87
 ASGNP4
 line 189
 ;188:
@@ -723,7 +723,7 @@ CALLV
 pop
 line 197
 ;197:}
-LABELV $86
+LABELV $88
 endproc Options_MenuInit 3088 12
 export UI_SystemConfigMenu
 proc UI_SystemConfigMenu 0 4
@@ -750,7 +750,7 @@ CALLV
 pop
 line 208
 ;208:}
-LABELV $231
+LABELV $233
 endproc UI_SystemConfigMenu 0 4
 bss
 align 4
@@ -1071,6 +1071,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1235,7 +1236,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $199
+LABELV $201
 byte 1 78
 byte 1 69
 byte 1 84
@@ -1245,7 +1246,7 @@ byte 1 82
 byte 1 75
 byte 1 0
 align 1
-LABELV $181
+LABELV $183
 byte 1 83
 byte 1 79
 byte 1 85
@@ -1253,7 +1254,7 @@ byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $163
+LABELV $165
 byte 1 68
 byte 1 73
 byte 1 83
@@ -1263,7 +1264,7 @@ byte 1 65
 byte 1 89
 byte 1 0
 align 1
-LABELV $145
+LABELV $147
 byte 1 71
 byte 1 82
 byte 1 65
@@ -1274,7 +1275,7 @@ byte 1 67
 byte 1 83
 byte 1 0
 align 1
-LABELV $101
+LABELV $103
 byte 1 83
 byte 1 89
 byte 1 83
@@ -1289,7 +1290,7 @@ byte 1 85
 byte 1 80
 byte 1 0
 align 1
-LABELV $85
+LABELV $87
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1307,7 +1308,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $84
+LABELV $86
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1325,7 +1326,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $83
+LABELV $85
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1345,7 +1346,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $82
+LABELV $84
 byte 1 109
 byte 1 101
 byte 1 110

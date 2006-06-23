@@ -62,7 +62,7 @@ line 28
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $72
+LABELV $74
 line 29
 ;29:		cg_localEntities[i].next = &cg_localEntities[i+1];
 ADDRLP4 8
@@ -82,7 +82,7 @@ ADDP4
 ASGNP4
 line 30
 ;30:	}
-LABELV $73
+LABELV $75
 line 28
 ADDRLP4 0
 ADDRLP4 0
@@ -93,10 +93,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 511
-LTI4 $72
+LTI4 $74
 line 31
 ;31:}
-LABELV $70
+LABELV $72
 endproc CG_InitLocalEntities 12 12
 export CG_FreeLocalEntity
 proc CG_FreeLocalEntity 12 4
@@ -116,17 +116,17 @@ INDIRP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $79
+NEU4 $81
 line 41
 ;41:		CG_Error( "CG_FreeLocalEntity: not active" );
-ADDRGP4 $81
+ADDRGP4 $83
 ARGP4
 ADDRGP4 CG_Error
 CALLV
 pop
 line 42
 ;42:	}
-LABELV $79
+LABELV $81
 line 45
 ;43:
 ;44:	// remove from the doubly linked active list
@@ -185,7 +185,7 @@ INDIRP4
 ASGNP4
 line 51
 ;51:}
-LABELV $78
+LABELV $80
 endproc CG_FreeLocalEntity 12 4
 export CG_AllocLocalEntity
 proc CG_AllocLocalEntity 8 12
@@ -207,7 +207,7 @@ ADDRGP4 cg_freeLocalEntities
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $83
+NEU4 $85
 line 66
 ;64:		// no free entities, so free the one at the end of the chain
 ;65:		// remove the oldest active entity
@@ -220,7 +220,7 @@ CALLV
 pop
 line 67
 ;67:	}
-LABELV $83
+LABELV $85
 line 69
 ;68:
 ;69:	le = cg_freeLocalEntities;
@@ -290,7 +290,7 @@ line 79
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $82
+LABELV $84
 endproc CG_AllocLocalEntity 8 12
 export CG_BloodTrail
 proc CG_BloodTrail 48 48
@@ -361,9 +361,9 @@ ASGNI4
 line 112
 ;111:
 ;112:	for ( ; t <= t2; t += step ) {
-ADDRGP4 $95
+ADDRGP4 $97
 JUMPV
-LABELV $92
+LABELV $94
 line 113
 ;113:		BG_EvaluateTrajectory( &le->pos, t, newOrigin );
 ADDRFP4 0
@@ -417,7 +417,7 @@ ARGI4
 ADDRLP4 40
 INDIRI4
 ARGI4
-ADDRGP4 cgs+152340+296
+ADDRGP4 cgs+152340+304
 INDIRI4
 ARGI4
 ADDRLP4 44
@@ -455,7 +455,7 @@ CNSTF4 1109393408
 ASGNF4
 line 127
 ;127:	}
-LABELV $93
+LABELV $95
 line 112
 ADDRLP4 0
 ADDRLP4 0
@@ -464,15 +464,15 @@ ADDRLP4 20
 INDIRI4
 ADDI4
 ASGNI4
-LABELV $95
+LABELV $97
 ADDRLP4 0
 INDIRI4
 ADDRLP4 24
 INDIRI4
-LEI4 $92
+LEI4 $94
 line 128
 ;128:}
-LABELV $88
+LABELV $90
 endproc CG_BloodTrail 48 48
 export CG_FragmentBounceMark
 proc CG_FragmentBounceMark 20 44
@@ -495,7 +495,7 @@ CNSTI4 144
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $99
+NEI4 $101
 line 141
 ;140:
 ;141:		radius = 16 + (rand()&31);
@@ -513,93 +513,6 @@ ADDI4
 ASGNI4
 line 142
 ;142:		CG_ImpactMark( cgs.media.bloodMarkShader, trace->endpos, trace->plane.normal, random()*360,
-ADDRLP4 8
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+372
-INDIRI4
-ARGI4
-ADDRLP4 12
-ADDRFP4 4
-INDIRP4
-ASGNP4
-ADDRLP4 12
-INDIRP4
-CNSTI4 12
-ADDP4
-ARGP4
-ADDRLP4 12
-INDIRP4
-CNSTI4 24
-ADDP4
-ARGP4
-CNSTF4 1135869952
-ADDRLP4 8
-INDIRI4
-CNSTI4 32767
-BANDI4
-CVIF4 4
-CNSTF4 1191181824
-DIVF4
-MULF4
-ARGF4
-ADDRLP4 16
-CNSTF4 1065353216
-ASGNF4
-ADDRLP4 16
-INDIRF4
-ARGF4
-ADDRLP4 16
-INDIRF4
-ARGF4
-ADDRLP4 16
-INDIRF4
-ARGF4
-ADDRLP4 16
-INDIRF4
-ARGF4
-CNSTI4 1
-ARGI4
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-ARGF4
-CNSTI4 0
-ARGI4
-ADDRGP4 CG_ImpactMark
-CALLV
-pop
-line 144
-;143:			1,1,1,1, qtrue, radius, qfalse );
-;144:	} else if ( le->leMarkType == LEMT_BURN ) {
-ADDRGP4 $100
-JUMPV
-LABELV $99
-ADDRFP4 0
-INDIRP4
-CNSTI4 144
-ADDP4
-INDIRI4
-CNSTI4 1
-NEI4 $103
-line 146
-;145:
-;146:		radius = 8 + (rand()&15);
-ADDRLP4 4
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 0
-ADDRLP4 4
-INDIRI4
-CNSTI4 15
-BANDI4
-CNSTI4 8
-ADDI4
-ASGNI4
-line 147
-;147:		CG_ImpactMark( cgs.media.burnMarkShader, trace->endpos, trace->plane.normal, random()*360,
 ADDRLP4 8
 ADDRGP4 rand
 CALLI4
@@ -657,11 +570,98 @@ ARGI4
 ADDRGP4 CG_ImpactMark
 CALLV
 pop
+line 144
+;143:			1,1,1,1, qtrue, radius, qfalse );
+;144:	} else if ( le->leMarkType == LEMT_BURN ) {
+ADDRGP4 $102
+JUMPV
+LABELV $101
+ADDRFP4 0
+INDIRP4
+CNSTI4 144
+ADDP4
+INDIRI4
+CNSTI4 1
+NEI4 $105
+line 146
+;145:
+;146:		radius = 8 + (rand()&15);
+ADDRLP4 4
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0
+ADDRLP4 4
+INDIRI4
+CNSTI4 15
+BANDI4
+CNSTI4 8
+ADDI4
+ASGNI4
+line 147
+;147:		CG_ImpactMark( cgs.media.burnMarkShader, trace->endpos, trace->plane.normal, random()*360,
+ADDRLP4 8
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+388
+INDIRI4
+ARGI4
+ADDRLP4 12
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 12
+INDIRP4
+CNSTI4 12
+ADDP4
+ARGP4
+ADDRLP4 12
+INDIRP4
+CNSTI4 24
+ADDP4
+ARGP4
+CNSTF4 1135869952
+ADDRLP4 8
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+MULF4
+ARGF4
+ADDRLP4 16
+CNSTF4 1065353216
+ASGNF4
+ADDRLP4 16
+INDIRF4
+ARGF4
+ADDRLP4 16
+INDIRF4
+ARGF4
+ADDRLP4 16
+INDIRF4
+ARGF4
+ADDRLP4 16
+INDIRF4
+ARGF4
+CNSTI4 1
+ARGI4
+ADDRLP4 0
+INDIRI4
+CVIF4 4
+ARGF4
+CNSTI4 0
+ARGI4
+ADDRGP4 CG_ImpactMark
+CALLV
+pop
 line 149
 ;148:			1,1,1,1, qtrue, radius, qfalse );
 ;149:	}
-LABELV $103
-LABELV $100
+LABELV $105
+LABELV $102
 line 154
 ;150:
 ;151:
@@ -676,7 +676,7 @@ CNSTI4 0
 ASGNI4
 line 155
 ;155:}
-LABELV $98
+LABELV $100
 endproc CG_FragmentBounceMark 20 44
 export CG_FragmentBounceSound
 proc CG_FragmentBounceSound 16 16
@@ -696,7 +696,7 @@ CNSTI4 148
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $108
+NEI4 $110
 line 165
 ;164:		// half the gibs will make splat sounds
 ;165:		if ( rand() & 1 ) {
@@ -709,7 +709,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $109
+EQI4 $111
 line 166
 ;166:			int r = rand()&3;
 ADDRLP4 12
@@ -729,43 +729,43 @@ line 169
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $112
+NEI4 $114
 line 170
 ;170:				s = cgs.media.gibBounce1Sound;
-ADDRLP4 8
-ADDRGP4 cgs+152340+708
-INDIRI4
-ASGNI4
-line 171
-;171:			} else if ( r == 1 ) {
-ADDRGP4 $113
-JUMPV
-LABELV $112
-ADDRLP4 4
-INDIRI4
-CNSTI4 1
-NEI4 $116
-line 172
-;172:				s = cgs.media.gibBounce2Sound;
-ADDRLP4 8
-ADDRGP4 cgs+152340+712
-INDIRI4
-ASGNI4
-line 173
-;173:			} else {
-ADDRGP4 $117
-JUMPV
-LABELV $116
-line 174
-;174:				s = cgs.media.gibBounce3Sound;
 ADDRLP4 8
 ADDRGP4 cgs+152340+716
 INDIRI4
 ASGNI4
+line 171
+;171:			} else if ( r == 1 ) {
+ADDRGP4 $115
+JUMPV
+LABELV $114
+ADDRLP4 4
+INDIRI4
+CNSTI4 1
+NEI4 $118
+line 172
+;172:				s = cgs.media.gibBounce2Sound;
+ADDRLP4 8
+ADDRGP4 cgs+152340+720
+INDIRI4
+ASGNI4
+line 173
+;173:			} else {
+ADDRGP4 $119
+JUMPV
+LABELV $118
+line 174
+;174:				s = cgs.media.gibBounce3Sound;
+ADDRLP4 8
+ADDRGP4 cgs+152340+724
+INDIRI4
+ASGNI4
 line 175
 ;175:			}
-LABELV $117
-LABELV $113
+LABELV $119
+LABELV $115
 line 176
 ;176:			trap_S_StartSound( trace->endpos, ENTITYNUM_WORLD, CHAN_AUTO, s );
 ADDRFP4 4
@@ -787,21 +787,21 @@ line 177
 ;177:		}
 line 178
 ;178:	} else if ( le->leBounceSoundType == LEBS_BRASS ) {
-ADDRGP4 $109
+ADDRGP4 $111
 JUMPV
-LABELV $108
+LABELV $110
 ADDRFP4 0
 INDIRP4
 CNSTI4 148
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $122
+NEI4 $124
 line 180
 ;179:
 ;180:	}
-LABELV $122
-LABELV $109
+LABELV $124
+LABELV $111
 line 184
 ;181:
 ;182:	// don't allow a fragment to make multiple bounce sounds,
@@ -815,7 +815,7 @@ CNSTI4 0
 ASGNI4
 line 185
 ;185:}
-LABELV $107
+LABELV $109
 endproc CG_FragmentBounceSound 16 16
 export CG_ReflectVelocity
 proc CG_ReflectVelocity 56 12
@@ -1063,14 +1063,14 @@ ADDRLP4 48
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $137
+NEI4 $139
 ADDRLP4 48
 INDIRP4
 CNSTI4 32
 ADDP4
 INDIRF4
 CNSTF4 0
-LEF4 $133
+LEF4 $135
 ADDRLP4 52
 ADDRFP4 0
 INDIRP4
@@ -1081,7 +1081,7 @@ ASGNF4
 ADDRLP4 52
 INDIRF4
 CNSTF4 1109393408
-LTF4 $137
+LTF4 $139
 ADDRLP4 52
 INDIRF4
 ADDRGP4 cg+107600
@@ -1091,8 +1091,8 @@ CVIF4 4
 ADDRLP4 52
 INDIRF4
 MULF4
-GEF4 $133
-LABELV $137
+GEF4 $135
+LABELV $139
 line 213
 ;212:		( trace->plane.normal[2] > 0 && 
 ;213:		( le->pos.trDelta[2] < 40 || le->pos.trDelta[2] < -cg.frametime * le->pos.trDelta[2] ) ) ) {
@@ -1106,14 +1106,14 @@ CNSTI4 0
 ASGNI4
 line 215
 ;215:	} else {
-LABELV $133
+LABELV $135
 line 217
 ;216:
 ;217:	}
-LABELV $134
+LABELV $136
 line 218
 ;218:}
-LABELV $124
+LABELV $126
 endproc CG_ReflectVelocity 56 12
 export CG_AddFragment
 proc CG_AddFragment 88 28
@@ -1136,7 +1136,7 @@ CNSTI4 32
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $139
+NEI4 $141
 line 234
 ;230:		// sink into the ground if near the removal time
 ;231:		int		t;
@@ -1158,7 +1158,7 @@ line 235
 ADDRLP4 68
 INDIRI4
 CNSTI4 1000
-GEI4 $142
+GEI4 $144
 line 239
 ;236:			// we must use an explicit lighting origin, otherwise the
 ;237:			// lighting would be lost as soon as the origin went
@@ -1248,9 +1248,9 @@ INDIRF4
 ASGNF4
 line 245
 ;245:		} else {
-ADDRGP4 $138
+ADDRGP4 $140
 JUMPV
-LABELV $142
+LABELV $144
 line 246
 ;246:			trap_R_AddRefEntityToScene( &le->refEntity );
 ADDRFP4 0
@@ -1266,9 +1266,9 @@ line 247
 line 249
 ;248:
 ;249:		return;
-ADDRGP4 $138
+ADDRGP4 $140
 JUMPV
-LABELV $139
+LABELV $141
 line 253
 ;250:	}
 ;251:
@@ -1321,7 +1321,7 @@ line 257
 ADDRLP4 0+8
 INDIRF4
 CNSTF4 1065353216
-NEF4 $145
+NEF4 $147
 line 259
 ;258:		// still in free fall
 ;259:		VectorCopy( newOrigin, le->refEntity.origin );
@@ -1343,7 +1343,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $148
+EQI4 $150
 line 264
 ;262:			vec3_t angles;
 ;263:
@@ -1375,7 +1375,7 @@ CALLV
 pop
 line 266
 ;266:		}
-LABELV $148
+LABELV $150
 line 268
 ;267:
 ;268:		trap_R_AddRefEntityToScene( &le->refEntity );
@@ -1397,7 +1397,7 @@ CNSTI4 148
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $138
+NEI4 $140
 line 272
 ;272:			CG_BloodTrail( le );
 ADDRFP4 0
@@ -1411,9 +1411,9 @@ line 273
 line 275
 ;274:
 ;275:		return;
-ADDRGP4 $138
+ADDRGP4 $140
 JUMPV
-LABELV $145
+LABELV $147
 line 281
 ;276:	}
 ;277:
@@ -1435,7 +1435,7 @@ CVIU4 4
 CNSTU4 2147483648
 BANDU4
 CNSTU4 0
-EQU4 $153
+EQU4 $155
 line 282
 ;282:		CG_FreeLocalEntity( le );
 ADDRFP4 0
@@ -1446,9 +1446,9 @@ CALLV
 pop
 line 283
 ;283:		return;
-ADDRGP4 $138
+ADDRGP4 $140
 JUMPV
-LABELV $153
+LABELV $155
 line 287
 ;284:	}
 ;285:
@@ -1499,7 +1499,7 @@ CALLV
 pop
 line 296
 ;296:}
-LABELV $138
+LABELV $140
 endproc CG_AddFragment 88 28
 export CG_AddFadeRGB
 proc CG_AddFadeRGB 60 4
@@ -1583,7 +1583,7 @@ ADDRLP4 16
 INDIRF4
 ADDRLP4 20
 INDIRF4
-LTF4 $159
+LTF4 $161
 ADDRLP4 12
 ADDRLP4 16
 INDIRF4
@@ -1595,16 +1595,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $160
+ADDRGP4 $162
 JUMPV
-LABELV $159
+LABELV $161
 ADDRLP4 12
 ADDRLP4 16
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $160
+LABELV $162
 ADDRLP4 0
 INDIRP4
 CNSTI4 116
@@ -1632,7 +1632,7 @@ ADDRLP4 28
 INDIRF4
 ADDRLP4 32
 INDIRF4
-LTF4 $162
+LTF4 $164
 ADDRLP4 24
 ADDRLP4 28
 INDIRF4
@@ -1644,16 +1644,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $163
+ADDRGP4 $165
 JUMPV
-LABELV $162
+LABELV $164
 ADDRLP4 24
 ADDRLP4 28
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $163
+LABELV $165
 ADDRLP4 0
 INDIRP4
 CNSTI4 117
@@ -1681,7 +1681,7 @@ ADDRLP4 40
 INDIRF4
 ADDRLP4 44
 INDIRF4
-LTF4 $165
+LTF4 $167
 ADDRLP4 36
 ADDRLP4 40
 INDIRF4
@@ -1693,16 +1693,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $166
+ADDRGP4 $168
 JUMPV
-LABELV $165
+LABELV $167
 ADDRLP4 36
 ADDRLP4 40
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $166
+LABELV $168
 ADDRLP4 0
 INDIRP4
 CNSTI4 118
@@ -1730,7 +1730,7 @@ ADDRLP4 52
 INDIRF4
 ADDRLP4 56
 INDIRF4
-LTF4 $168
+LTF4 $170
 ADDRLP4 48
 ADDRLP4 52
 INDIRF4
@@ -1742,16 +1742,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $169
+ADDRGP4 $171
 JUMPV
-LABELV $168
+LABELV $170
 ADDRLP4 48
 ADDRLP4 52
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $169
+LABELV $171
 ADDRLP4 0
 INDIRP4
 CNSTI4 119
@@ -1771,7 +1771,7 @@ CALLV
 pop
 line 327
 ;327:}
-LABELV $156
+LABELV $158
 endproc CG_AddFadeRGB 60 4
 proc CG_AddMoveScaleFade 52 12
 line 334
@@ -1816,12 +1816,12 @@ INDIRP4
 CNSTI4 16
 ADDP4
 INDIRI4
-LEI4 $171
+LEI4 $173
 ADDRGP4 cg+107604
 INDIRI4
 ADDRLP4 28
 INDIRI4
-GEI4 $171
+GEI4 $173
 line 344
 ;343:		// fade / grow time
 ;344:		c = 1.0 - (float) ( le->fadeInTime - cg.time ) / ( le->fadeInTime - le->startTime );
@@ -1858,9 +1858,9 @@ SUBF4
 ASGNF4
 line 345
 ;345:	}
-ADDRGP4 $172
+ADDRGP4 $174
 JUMPV
-LABELV $171
+LABELV $173
 line 346
 ;346:	else {
 line 348
@@ -1889,7 +1889,7 @@ MULF4
 ASGNF4
 line 349
 ;349:	}
-LABELV $172
+LABELV $174
 line 351
 ;350:
 ;351:	re->shaderRGBA[3] = 0xff * c * le->color[3];
@@ -1912,7 +1912,7 @@ ADDRLP4 36
 INDIRF4
 ADDRLP4 40
 INDIRF4
-LTF4 $177
+LTF4 $179
 ADDRLP4 32
 ADDRLP4 36
 INDIRF4
@@ -1924,16 +1924,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $178
+ADDRGP4 $180
 JUMPV
-LABELV $177
+LABELV $179
 ADDRLP4 32
 ADDRLP4 36
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $178
+LABELV $180
 ADDRLP4 0
 INDIRP4
 CNSTI4 119
@@ -1953,7 +1953,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-NEI4 $179
+NEI4 $181
 line 354
 ;354:		re->radius = le->radius * ( 1.0 - c ) + 8;
 ADDRLP4 0
@@ -1975,7 +1975,7 @@ ADDF4
 ASGNF4
 line 355
 ;355:	}
-LABELV $179
+LABELV $181
 line 357
 ;356:
 ;357:	BG_EvaluateTrajectory( &le->pos, cg.time, re->origin );
@@ -2051,7 +2051,7 @@ INDIRP4
 CNSTI4 124
 ADDP4
 INDIRF4
-GEF4 $192
+GEF4 $194
 line 364
 ;364:		CG_FreeLocalEntity( le );
 ADDRFP4 0
@@ -2062,9 +2062,9 @@ CALLV
 pop
 line 365
 ;365:		return;
-ADDRGP4 $170
+ADDRGP4 $172
 JUMPV
-LABELV $192
+LABELV $194
 line 368
 ;366:	}
 ;367:
@@ -2077,7 +2077,7 @@ CALLV
 pop
 line 369
 ;369:}
-LABELV $170
+LABELV $172
 endproc CG_AddMoveScaleFade 52 12
 proc CG_AddScaleFade 48 4
 line 381
@@ -2153,7 +2153,7 @@ ADDRLP4 32
 INDIRF4
 ADDRLP4 36
 INDIRF4
-LTF4 $197
+LTF4 $199
 ADDRLP4 28
 ADDRLP4 32
 INDIRF4
@@ -2165,16 +2165,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $198
+ADDRGP4 $200
 JUMPV
-LABELV $197
+LABELV $199
 ADDRLP4 28
 ADDRLP4 32
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $198
+LABELV $200
 ADDRLP4 0
 INDIRP4
 CNSTI4 119
@@ -2258,7 +2258,7 @@ INDIRP4
 CNSTI4 124
 ADDP4
 INDIRF4
-GEF4 $209
+GEF4 $211
 line 400
 ;400:		CG_FreeLocalEntity( le );
 ADDRFP4 0
@@ -2269,9 +2269,9 @@ CALLV
 pop
 line 401
 ;401:		return;
-ADDRGP4 $194
+ADDRGP4 $196
 JUMPV
-LABELV $209
+LABELV $211
 line 404
 ;402:	}
 ;403:
@@ -2284,7 +2284,7 @@ CALLV
 pop
 line 405
 ;405:}
-LABELV $194
+LABELV $196
 endproc CG_AddScaleFade 48 4
 proc CG_AddFallScaleFade 52 4
 line 418
@@ -2361,7 +2361,7 @@ ADDRLP4 32
 INDIRF4
 ADDRLP4 36
 INDIRF4
-LTF4 $214
+LTF4 $216
 ADDRLP4 28
 ADDRLP4 32
 INDIRF4
@@ -2373,16 +2373,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $215
+ADDRGP4 $217
 JUMPV
-LABELV $214
+LABELV $216
 ADDRLP4 28
 ADDRLP4 32
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $215
+LABELV $217
 ADDRLP4 0
 INDIRP4
 CNSTI4 119
@@ -2495,7 +2495,7 @@ INDIRP4
 CNSTI4 124
 ADDP4
 INDIRF4
-GEF4 $226
+GEF4 $228
 line 440
 ;440:		CG_FreeLocalEntity( le );
 ADDRFP4 0
@@ -2506,9 +2506,9 @@ CALLV
 pop
 line 441
 ;441:		return;
-ADDRGP4 $211
+ADDRGP4 $213
 JUMPV
-LABELV $226
+LABELV $228
 line 444
 ;442:	}
 ;443:
@@ -2521,7 +2521,7 @@ CALLV
 pop
 line 445
 ;445:}
-LABELV $211
+LABELV $213
 endproc CG_AddFallScaleFade 52 4
 proc CG_AddExplosion 20 20
 line 454
@@ -2564,7 +2564,7 @@ CNSTI4 128
 ADDP4
 INDIRF4
 CNSTF4 0
-EQF4 $229
+EQF4 $231
 line 466
 ;464:		float		light;
 ;465:
@@ -2603,7 +2603,7 @@ line 467
 ADDRLP4 4
 INDIRF4
 CNSTF4 1056964608
-GEF4 $232
+GEF4 $234
 line 468
 ;468:			light = 1.0;
 ADDRLP4 4
@@ -2611,9 +2611,9 @@ CNSTF4 1065353216
 ASGNF4
 line 469
 ;469:		} else {
-ADDRGP4 $233
+ADDRGP4 $235
 JUMPV
-LABELV $232
+LABELV $234
 line 470
 ;470:			light = 1.0 - ( light - 0.5 ) * 2;
 ADDRLP4 4
@@ -2628,7 +2628,7 @@ SUBF4
 ASGNF4
 line 471
 ;471:		}
-LABELV $233
+LABELV $235
 line 472
 ;472:		light = ex->light * light;
 ADDRLP4 4
@@ -2678,10 +2678,10 @@ CALLV
 pop
 line 474
 ;474:	}
-LABELV $229
+LABELV $231
 line 475
 ;475:}
-LABELV $228
+LABELV $230
 endproc CG_AddExplosion 20 20
 proc CG_AddSpriteExplosion 180 20
 line 482
@@ -2741,7 +2741,7 @@ line 489
 ADDRLP4 140
 INDIRF4
 CNSTF4 1065353216
-LEF4 $236
+LEF4 $238
 line 490
 ;490:		c = 1.0;	// can happen during connection problems
 ADDRLP4 140
@@ -2749,7 +2749,7 @@ CNSTF4 1065353216
 ASGNF4
 line 491
 ;491:	}
-LABELV $236
+LABELV $238
 line 493
 ;492:
 ;493:	re.shaderRGBA[0] = 0xff;
@@ -2783,7 +2783,7 @@ ADDRLP4 156
 INDIRF4
 ADDRLP4 160
 INDIRF4
-LTF4 $246
+LTF4 $248
 ADDRLP4 152
 ADDRLP4 156
 INDIRF4
@@ -2795,16 +2795,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $246
+LABELV $248
 ADDRLP4 152
 ADDRLP4 156
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $247
+LABELV $249
 ADDRLP4 0+116+3
 ADDRLP4 152
 INDIRU4
@@ -2846,7 +2846,7 @@ CNSTI4 128
 ADDP4
 INDIRF4
 CNSTF4 0
-EQF4 $249
+EQF4 $251
 line 507
 ;505:		float		light;
 ;506:
@@ -2885,7 +2885,7 @@ line 508
 ADDRLP4 164
 INDIRF4
 CNSTF4 1056964608
-GEF4 $252
+GEF4 $254
 line 509
 ;509:			light = 1.0;
 ADDRLP4 164
@@ -2893,9 +2893,9 @@ CNSTF4 1065353216
 ASGNF4
 line 510
 ;510:		} else {
-ADDRGP4 $253
+ADDRGP4 $255
 JUMPV
-LABELV $252
+LABELV $254
 line 511
 ;511:			light = 1.0 - ( light - 0.5 ) * 2;
 ADDRLP4 164
@@ -2910,7 +2910,7 @@ SUBF4
 ASGNF4
 line 512
 ;512:		}
-LABELV $253
+LABELV $255
 line 513
 ;513:		light = le->light * light;
 ADDRLP4 164
@@ -2957,14 +2957,14 @@ CALLV
 pop
 line 515
 ;515:	}
-LABELV $249
+LABELV $251
 line 516
 ;516:}
-LABELV $234
+LABELV $236
 endproc CG_AddSpriteExplosion 180 20
 lit
 align 4
-LABELV $256
+LABELV $258
 byte 4 0
 byte 4 0
 byte 4 1065353216
@@ -3161,7 +3161,7 @@ line 703
 ;702:	refEntity_t	*re;
 ;703:	vec3_t		origin, delta, dir, vec, up = {0, 0, 1};
 ADDRLP4 112
-ADDRGP4 $256
+ADDRGP4 $258
 INDIRB
 ASGNB 12
 line 707
@@ -3215,7 +3215,7 @@ line 712
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-GEI4 $258
+GEI4 $260
 line 713
 ;713:		re->shaderRGBA[0] = 0xff;
 ADDRLP4 8
@@ -3242,9 +3242,9 @@ CNSTU1 17
 ASGNU1
 line 716
 ;716:	}
-ADDRGP4 $259
+ADDRGP4 $261
 JUMPV
-LABELV $258
+LABELV $260
 line 717
 ;717:	else {
 line 718
@@ -3276,7 +3276,7 @@ line 721
 ADDRLP4 12
 INDIRI4
 CNSTI4 50
-LTI4 $260
+LTI4 $262
 line 722
 ;722:			re->shaderRGBA[1] = 0;
 ADDRLP4 8
@@ -3287,13 +3287,13 @@ CNSTU1 0
 ASGNU1
 line 723
 ;723:		} else if (score >= 20) {
-ADDRGP4 $261
+ADDRGP4 $263
 JUMPV
-LABELV $260
+LABELV $262
 ADDRLP4 12
 INDIRI4
 CNSTI4 20
-LTI4 $262
+LTI4 $264
 line 724
 ;724:			re->shaderRGBA[0] = re->shaderRGBA[1] = 0;
 ADDRLP4 136
@@ -3315,13 +3315,13 @@ INDIRU1
 ASGNU1
 line 725
 ;725:		} else if (score >= 10) {
-ADDRGP4 $263
+ADDRGP4 $265
 JUMPV
-LABELV $262
+LABELV $264
 ADDRLP4 12
 INDIRI4
 CNSTI4 10
-LTI4 $264
+LTI4 $266
 line 726
 ;726:			re->shaderRGBA[2] = 0;
 ADDRLP4 8
@@ -3332,13 +3332,13 @@ CNSTU1 0
 ASGNU1
 line 727
 ;727:		} else if (score >= 2) {
-ADDRGP4 $265
+ADDRGP4 $267
 JUMPV
-LABELV $264
+LABELV $266
 ADDRLP4 12
 INDIRI4
 CNSTI4 2
-LTI4 $266
+LTI4 $268
 line 728
 ;728:			re->shaderRGBA[0] = re->shaderRGBA[2] = 0;
 ADDRLP4 136
@@ -3360,20 +3360,20 @@ INDIRU1
 ASGNU1
 line 729
 ;729:		}
-LABELV $266
+LABELV $268
+LABELV $267
 LABELV $265
 LABELV $263
-LABELV $261
 line 731
 ;730:
 ;731:	}
-LABELV $259
+LABELV $261
 line 732
 ;732:	if (c < 0.25)
 ADDRLP4 80
 INDIRF4
 CNSTF4 1048576000
-GEF4 $268
+GEF4 $270
 line 733
 ;733:		re->shaderRGBA[3] = 0xff * 4 * c;
 ADDRLP4 136
@@ -3389,7 +3389,7 @@ ADDRLP4 136
 INDIRF4
 ADDRLP4 140
 INDIRF4
-LTF4 $271
+LTF4 $273
 ADDRLP4 132
 ADDRLP4 136
 INDIRF4
@@ -3401,16 +3401,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $272
+ADDRGP4 $274
 JUMPV
-LABELV $271
+LABELV $273
 ADDRLP4 132
 ADDRLP4 136
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $272
+LABELV $274
 ADDRLP4 8
 INDIRP4
 CNSTI4 119
@@ -3419,9 +3419,9 @@ ADDRLP4 132
 INDIRU4
 CVUU1 4
 ASGNU1
-ADDRGP4 $269
+ADDRGP4 $271
 JUMPV
-LABELV $268
+LABELV $270
 line 735
 ;734:	else
 ;735:		re->shaderRGBA[3] = 0xff;
@@ -3431,7 +3431,7 @@ CNSTI4 119
 ADDP4
 CNSTU1 255
 ASGNU1
-LABELV $269
+LABELV $271
 line 737
 ;736:
 ;737:	re->radius = NUMBER_SIZE / 2;
@@ -3627,7 +3627,7 @@ line 752
 ADDRLP4 124
 INDIRF4
 CNSTF4 1101004800
-GEF4 $304
+GEF4 $306
 line 753
 ;753:		CG_FreeLocalEntity( le );
 ADDRFP4 0
@@ -3638,9 +3638,9 @@ CALLV
 pop
 line 754
 ;754:		return;
-ADDRGP4 $255
+ADDRGP4 $257
 JUMPV
-LABELV $304
+LABELV $306
 line 757
 ;755:	}
 ;756:
@@ -3653,7 +3653,7 @@ line 758
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-GEI4 $306
+GEI4 $308
 line 759
 ;759:		negative = qtrue;
 ADDRLP4 108
@@ -3668,16 +3668,16 @@ NEGI4
 ASGNI4
 line 761
 ;761:	}
-LABELV $306
+LABELV $308
 line 763
 ;762:
 ;763:	for (numdigits = 0; !(numdigits && !score); numdigits++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $311
+ADDRGP4 $313
 JUMPV
-LABELV $308
+LABELV $310
 line 764
 ;764:		digits[numdigits] = score % 10;
 ADDRLP4 0
@@ -3701,7 +3701,7 @@ DIVI4
 ASGNI4
 line 766
 ;766:	}
-LABELV $309
+LABELV $311
 line 763
 ADDRLP4 0
 ADDRLP4 0
@@ -3709,7 +3709,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $311
+LABELV $313
 ADDRLP4 160
 CNSTI4 0
 ASGNI4
@@ -3717,19 +3717,19 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 160
 INDIRI4
-EQI4 $308
+EQI4 $310
 ADDRLP4 12
 INDIRI4
 ADDRLP4 160
 INDIRI4
-NEI4 $308
+NEI4 $310
 line 768
 ;767:
 ;768:	if (negative) {
 ADDRLP4 108
 INDIRI4
 CNSTI4 0
-EQI4 $312
+EQI4 $314
 line 769
 ;769:		digits[numdigits] = 10;
 ADDRLP4 0
@@ -3750,16 +3750,16 @@ ADDI4
 ASGNI4
 line 771
 ;771:	}
-LABELV $312
+LABELV $314
 line 773
 ;772:
 ;773:	for (i = 0; i < numdigits; i++) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $317
+ADDRGP4 $319
 JUMPV
-LABELV $314
+LABELV $316
 line 774
 ;774:		VectorMA(origin, (float) (((float) numdigits / 2) - i) * NUMBER_SIZE, vec, re->origin);
 ADDRLP4 8
@@ -3853,7 +3853,7 @@ INDIRI4
 ADDRLP4 164
 INDIRI4
 LSHI4
-ADDRGP4 cgs+152340+300
+ADDRGP4 cgs+152340+308
 ADDP4
 INDIRI4
 ASGNI4
@@ -3867,7 +3867,7 @@ CALLV
 pop
 line 777
 ;777:	}
-LABELV $315
+LABELV $317
 line 773
 ADDRLP4 4
 ADDRLP4 4
@@ -3875,15 +3875,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $317
+LABELV $319
 ADDRLP4 4
 INDIRI4
 ADDRLP4 0
 INDIRI4
-LTI4 $314
+LTI4 $316
 line 778
 ;778:}
-LABELV $255
+LABELV $257
 endproc CG_AddScorePlum 168 12
 export CG_AddLocalEntities
 proc CG_AddLocalEntities 16 8
@@ -3913,9 +3913,9 @@ INDIRP4
 ASGNP4
 line 797
 ;797:	for ( ; le != &cg_activeLocalEntities ; le = next ) {
-ADDRGP4 $328
+ADDRGP4 $330
 JUMPV
-LABELV $325
+LABELV $327
 line 800
 ;798:		// grab next now, so if the local entity is freed we
 ;799:		// still have it
@@ -3935,7 +3935,7 @@ INDIRP4
 CNSTI4 20
 ADDP4
 INDIRI4
-LTI4 $329
+LTI4 $331
 line 803
 ;803:			CG_FreeLocalEntity( le );
 ADDRLP4 0
@@ -3946,9 +3946,9 @@ CALLV
 pop
 line 804
 ;804:			continue;
-ADDRGP4 $326
+ADDRGP4 $328
 JUMPV
-LABELV $329
+LABELV $331
 line 806
 ;805:		}
 ;806:		switch ( le->leType ) {
@@ -3962,37 +3962,37 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-LTI4 $332
+LTI4 $334
 ADDRLP4 8
 INDIRI4
 CNSTI4 8
-GTI4 $332
+GTI4 $334
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $345
+ADDRGP4 $347
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $345
-address $333
-address $338
-address $337
-address $339
+LABELV $347
+address $335
 address $340
-address $342
+address $339
 address $341
-address $343
+address $342
 address $344
+address $343
+address $345
+address $346
 code
-LABELV $332
+LABELV $334
 line 808
 ;807:		default:
 ;808:			CG_Error( "Bad leType: %i", le->leType );
-ADDRGP4 $335
+ADDRGP4 $337
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -4005,13 +4005,13 @@ CALLV
 pop
 line 809
 ;809:			break;
-ADDRGP4 $333
+ADDRGP4 $335
 JUMPV
 line 812
 ;810:
 ;811:		case LE_MARK:
 ;812:			break;
-LABELV $337
+LABELV $339
 line 815
 ;813:
 ;814:		case LE_SPRITE_EXPLOSION:
@@ -4024,9 +4024,9 @@ CALLV
 pop
 line 816
 ;816:			break;
-ADDRGP4 $333
+ADDRGP4 $335
 JUMPV
-LABELV $338
+LABELV $340
 line 819
 ;817:
 ;818:		case LE_EXPLOSION:
@@ -4039,9 +4039,9 @@ CALLV
 pop
 line 820
 ;820:			break;
-ADDRGP4 $333
+ADDRGP4 $335
 JUMPV
-LABELV $339
+LABELV $341
 line 823
 ;821:
 ;822:		case LE_FRAGMENT:			// gibs and brass
@@ -4054,9 +4054,9 @@ CALLV
 pop
 line 824
 ;824:			break;
-ADDRGP4 $333
+ADDRGP4 $335
 JUMPV
-LABELV $340
+LABELV $342
 line 827
 ;825:
 ;826:		case LE_MOVE_SCALE_FADE:		// water bubbles
@@ -4069,9 +4069,9 @@ CALLV
 pop
 line 828
 ;828:			break;
-ADDRGP4 $333
+ADDRGP4 $335
 JUMPV
-LABELV $341
+LABELV $343
 line 831
 ;829:
 ;830:		case LE_FADE_RGB:				// teleporters, railtrails
@@ -4084,9 +4084,9 @@ CALLV
 pop
 line 832
 ;832:			break;
-ADDRGP4 $333
+ADDRGP4 $335
 JUMPV
-LABELV $342
+LABELV $344
 line 835
 ;833:
 ;834:		case LE_FALL_SCALE_FADE: // gib blood trails
@@ -4099,9 +4099,9 @@ CALLV
 pop
 line 836
 ;836:			break;
-ADDRGP4 $333
+ADDRGP4 $335
 JUMPV
-LABELV $343
+LABELV $345
 line 839
 ;837:
 ;838:		case LE_SCALE_FADE:		// rocket trails
@@ -4114,9 +4114,9 @@ CALLV
 pop
 line 840
 ;840:			break;
-ADDRGP4 $333
+ADDRGP4 $335
 JUMPV
-LABELV $344
+LABELV $346
 line 843
 ;841:
 ;842:		case LE_SCOREPLUM:
@@ -4129,7 +4129,7 @@ CALLV
 pop
 line 844
 ;844:			break;
-LABELV $333
+LABELV $335
 line 861
 ;845:
 ;846:#ifdef MISSIONPACK
@@ -4148,22 +4148,22 @@ line 861
 ;859:#endif
 ;860:		}
 ;861:	}
-LABELV $326
+LABELV $328
 line 797
 ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-LABELV $328
+LABELV $330
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 ADDRGP4 cg_activeLocalEntities
 CVPU4 4
-NEU4 $325
+NEU4 $327
 line 862
 ;862:}
-LABELV $324
+LABELV $326
 endproc CG_AddLocalEntities 16 8
 bss
 export cg_freeLocalEntities
@@ -4178,6 +4178,9 @@ export cg_localEntities
 align 4
 LABELV cg_localEntities
 skip 149504
+import CG_DrawScanner
+import CG_ScannerOff_f
+import CG_ScannerOn_f
 import CG_NewParticleArea
 import initparticles
 import CG_ParticleExplosion
@@ -4424,6 +4427,7 @@ import CG_ConfigString
 import CG_Cvar_ClampInt
 import CG_AddBoundingBox
 import CG_PredictWeaponEffects
+import cg_playerOrigins
 import cg_plOut
 import cg_latentCmds
 import cg_latentSnaps
@@ -4537,6 +4541,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -4701,7 +4706,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $335
+LABELV $337
 byte 1 66
 byte 1 97
 byte 1 100
@@ -4718,7 +4723,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $81
+LABELV $83
 byte 1 67
 byte 1 71
 byte 1 95

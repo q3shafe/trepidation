@@ -410,7 +410,7 @@ line 145
 ;144:
 ;145:	ent = &g_entities[clientNum];
 ADDRLP4 0
-CNSTI4 808
+CNSTI4 824
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -491,7 +491,7 @@ line 165
 ;164:
 ;165:	ent = &g_entities[entityNum];
 ADDRLP4 0
-CNSTI4 808
+CNSTI4 824
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -8594,7 +8594,7 @@ LABELV $591
 line 1394
 ;1393:			}
 ;1394:			if( g_entities[i].client->pers.connected != CON_CONNECTED ) {
-CNSTI4 808
+CNSTI4 824
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -8942,7 +8942,7 @@ LABELV $625
 line 1445
 ;1445:			ent = &g_entities[i];
 ADDRLP4 4
-CNSTI4 808
+CNSTI4 824
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -9465,7 +9465,7 @@ LABELV $671
 line 1525
 ;1524:
 ;1525:			if (g_entities[i].client->pers.connected == CON_CONNECTED) {
-CNSTI4 808
+CNSTI4 824
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -9550,7 +9550,7 @@ LABELV $680
 line 1537
 ;1536:		}
 ;1537:		if( g_entities[i].client->pers.connected != CON_CONNECTED ) {
-CNSTI4 808
+CNSTI4 824
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -11156,6 +11156,7 @@ import G_ReadSessionData
 import Svcmd_GameMem_f
 import G_InitMemory
 import G_Alloc
+import Team_DropFlags
 import CheckObeliskAttack
 import Team_CheckDroppedItem
 import OnSameTeam
@@ -11222,6 +11223,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_pdgrenade
 import fire_grenade
 import fire_plasma
 import fire_blaster
@@ -11233,6 +11235,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap
 import G_SetOrigin
@@ -11292,6 +11295,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup

@@ -31,18 +31,12 @@ line 27
 ;25:	const char	*var;
 ;26:
 ;27:	s = va("%i %i %i %i %i %i %i", 
-ADDRGP4 $54
+ADDRGP4 $56
 ARGP4
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 8
-INDIRP4
-CNSTI4 2444
-ADDP4
-INDIRI4
-ARGI4
 ADDRLP4 8
 INDIRP4
 CNSTI4 2448
@@ -79,6 +73,12 @@ CNSTI4 2468
 ADDP4
 INDIRI4
 ARGI4
+ADDRLP4 8
+INDIRP4
+CNSTI4 2472
+ADDP4
+INDIRI4
+ARGI4
 ADDRLP4 12
 ADDRGP4 va
 CALLP4
@@ -98,7 +98,7 @@ line 37
 ;35:		);
 ;36:
 ;37:	var = va( "session%i", client - level.clients );
-ADDRGP4 $55
+ADDRGP4 $57
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -108,7 +108,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3340
+CNSTI4 3348
 DIVI4
 ARGI4
 ADDRLP4 16
@@ -133,7 +133,7 @@ CALLV
 pop
 line 40
 ;40:}
-LABELV $53
+LABELV $55
 endproc G_WriteClientSessionData 20 32
 export G_ReadSessionData
 proc G_ReadSessionData 1048 36
@@ -157,7 +157,7 @@ line 58
 ;56:	int sessionTeam;
 ;57:
 ;58:	var = va( "session%i", client - level.clients );
-ADDRGP4 $55
+ADDRGP4 $57
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -167,7 +167,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3340
+CNSTI4 3348
 DIVI4
 ARGI4
 ADDRLP4 1040
@@ -195,7 +195,7 @@ line 61
 ;61:	sscanf( s, "%i %i %i %i %i %i %i",
 ADDRLP4 0
 ARGP4
-ADDRGP4 $54
+ADDRGP4 $56
 ARGP4
 ADDRLP4 1036
 ARGP4
@@ -205,15 +205,10 @@ INDIRP4
 ASGNP4
 ADDRLP4 1044
 INDIRP4
-CNSTI4 2448
+CNSTI4 2452
 ADDP4
 ARGP4
 ADDRLP4 1032
-ARGP4
-ADDRLP4 1044
-INDIRP4
-CNSTI4 2456
-ADDP4
 ARGP4
 ADDRLP4 1044
 INDIRP4
@@ -223,6 +218,11 @@ ARGP4
 ADDRLP4 1044
 INDIRP4
 CNSTI4 2464
+ADDP4
+ARGP4
+ADDRLP4 1044
+INDIRP4
+CNSTI4 2468
 ADDP4
 ARGP4
 ADDRLP4 1028
@@ -244,7 +244,7 @@ line 72
 ;72:	client->sess.sessionTeam = (team_t)sessionTeam;
 ADDRFP4 0
 INDIRP4
-CNSTI4 2444
+CNSTI4 2448
 ADDP4
 ADDRLP4 1036
 INDIRI4
@@ -253,7 +253,7 @@ line 73
 ;73:	client->sess.spectatorState = (spectatorState_t)spectatorState;
 ADDRFP4 0
 INDIRP4
-CNSTI4 2452
+CNSTI4 2456
 ADDP4
 ADDRLP4 1032
 INDIRI4
@@ -262,14 +262,14 @@ line 74
 ;74:	client->sess.teamLeader = (qboolean)teamLeader;
 ADDRFP4 0
 INDIRP4
-CNSTI4 2468
+CNSTI4 2472
 ADDP4
 ADDRLP4 1028
 INDIRI4
 ASGNI4
 line 75
 ;75:}
-LABELV $56
+LABELV $58
 endproc G_ReadSessionData 1048 36
 export G_InitSessionData
 proc G_InitSessionData 16 8
@@ -292,7 +292,7 @@ line 89
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 2444
+CNSTI4 2448
 ADDP4
 ASGNP4
 line 92
@@ -302,13 +302,13 @@ line 92
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
-LTI4 $58
+LTI4 $60
 line 93
 ;93:		if ( g_teamAutoJoin.integer ) {
 ADDRGP4 g_teamAutoJoin+12
 INDIRI4
 CNSTI4 0
-EQI4 $61
+EQI4 $63
 line 94
 ;94:			sess->sessionTeam = PickTeam( -1 );
 CNSTI4 -1
@@ -334,9 +334,9 @@ CALLV
 pop
 line 96
 ;96:		} else {
-ADDRGP4 $59
+ADDRGP4 $61
 JUMPV
-LABELV $61
+LABELV $63
 line 98
 ;97:			// always spawn as spectator in team games
 ;98:			sess->sessionTeam = TEAM_SPECTATOR;	
@@ -348,15 +348,15 @@ line 99
 ;99:		}
 line 100
 ;100:	} else {
-ADDRGP4 $59
+ADDRGP4 $61
 JUMPV
-LABELV $58
+LABELV $60
 line 101
 ;101:		value = Info_ValueForKey( userinfo, "team" );
 ADDRFP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $64
+ADDRGP4 $66
 ARGP4
 ADDRLP4 8
 ADDRGP4 Info_ValueForKey
@@ -373,7 +373,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 115
-NEI4 $65
+NEI4 $67
 line 104
 ;103:			// a willing spectator, not a waiting-in-line
 ;104:			sess->sessionTeam = TEAM_SPECTATOR;
@@ -383,9 +383,9 @@ CNSTI4 3
 ASGNI4
 line 105
 ;105:		} else {
-ADDRGP4 $66
+ADDRGP4 $68
 JUMPV
-LABELV $65
+LABELV $67
 line 106
 ;106:			switch ( g_gametype.integer ) {
 ADDRLP4 12
@@ -395,19 +395,19 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $70
+EQI4 $72
 ADDRLP4 12
 INDIRI4
 CNSTI4 1
-EQI4 $76
+EQI4 $78
 ADDRLP4 12
 INDIRI4
 CNSTI4 2
-EQI4 $70
-ADDRGP4 $67
+EQI4 $72
+ADDRGP4 $69
 JUMPV
-LABELV $67
-LABELV $70
+LABELV $69
+LABELV $72
 line 110
 ;107:			default:
 ;108:			case GT_FFA:
@@ -416,12 +416,12 @@ line 110
 ADDRGP4 g_maxGameClients+12
 INDIRI4
 CNSTI4 0
-LEI4 $71
-ADDRGP4 level+76
+LEI4 $73
+ADDRGP4 level+80
 INDIRI4
 ADDRGP4 g_maxGameClients+12
 INDIRI4
-LTI4 $71
+LTI4 $73
 line 111
 ;111:					level.numNonSpectatorClients >= g_maxGameClients.integer ) {
 line 112
@@ -432,9 +432,9 @@ CNSTI4 3
 ASGNI4
 line 113
 ;113:				} else {
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $71
+LABELV $73
 line 114
 ;114:					sess->sessionTeam = TEAM_FREE;
 ADDRLP4 0
@@ -445,17 +445,17 @@ line 115
 ;115:				}
 line 116
 ;116:				break;
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $76
+LABELV $78
 line 119
 ;117:			case GT_TOURNAMENT:
 ;118:				// if the game is full, go into a waiting mode
 ;119:				if ( level.numNonSpectatorClients >= 2 ) {
-ADDRGP4 level+76
+ADDRGP4 level+80
 INDIRI4
 CNSTI4 2
-LTI4 $77
+LTI4 $79
 line 120
 ;120:					sess->sessionTeam = TEAM_SPECTATOR;
 ADDRLP4 0
@@ -464,9 +464,9 @@ CNSTI4 3
 ASGNI4
 line 121
 ;121:				} else {
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $77
+LABELV $79
 line 122
 ;122:					sess->sessionTeam = TEAM_FREE;
 ADDRLP4 0
@@ -477,14 +477,14 @@ line 123
 ;123:				}
 line 124
 ;124:				break;
-LABELV $68
+LABELV $70
 line 126
 ;125:			}
 ;126:		}
-LABELV $66
+LABELV $68
 line 127
 ;127:	}
-LABELV $59
+LABELV $61
 line 129
 ;128:
 ;129:	sess->spectatorState = SPECTATOR_FREE;
@@ -514,7 +514,7 @@ CALLV
 pop
 line 133
 ;133:}
-LABELV $57
+LABELV $59
 endproc G_InitSessionData 16 8
 export G_InitWorldSession
 proc G_InitWorldSession 1032 12
@@ -533,7 +533,7 @@ line 146
 ;144:	int			gt;
 ;145:
 ;146:	trap_Cvar_VariableStringBuffer( "session", s, sizeof(s) );
-ADDRGP4 $82
+ADDRGP4 $84
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -563,25 +563,25 @@ ADDRGP4 g_gametype+12
 INDIRI4
 ADDRLP4 1024
 INDIRI4
-EQI4 $83
+EQI4 $85
 line 152
 ;152:		level.newSession = qtrue;
-ADDRGP4 level+64
+ADDRGP4 level+68
 CNSTI4 1
 ASGNI4
 line 153
 ;153:		G_Printf( "Gametype changed, clearing session data.\n" );
-ADDRGP4 $87
+ADDRGP4 $89
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 154
 ;154:	}
-LABELV $83
+LABELV $85
 line 155
 ;155:}
-LABELV $81
+LABELV $83
 endproc G_InitWorldSession 1032 12
 export G_WriteSessionData
 proc G_WriteSessionData 8 8
@@ -598,7 +598,7 @@ line 166
 ;164:	int		i;
 ;165:
 ;166:	trap_Cvar_Set( "session", va("%i", g_gametype.integer) );
-ADDRGP4 $89
+ADDRGP4 $91
 ARGP4
 ADDRGP4 g_gametype+12
 INDIRI4
@@ -607,7 +607,7 @@ ADDRLP4 4
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $82
+ADDRGP4 $84
 ARGP4
 ADDRLP4 4
 INDIRP4
@@ -621,12 +621,12 @@ line 168
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $94
+ADDRGP4 $96
 JUMPV
-LABELV $91
+LABELV $93
 line 169
 ;169:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3340
+CNSTI4 3348
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -637,10 +637,10 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $96
+NEI4 $98
 line 170
 ;170:			G_WriteClientSessionData( &level.clients[i] );
-CNSTI4 3340
+CNSTI4 3348
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -653,10 +653,10 @@ CALLV
 pop
 line 171
 ;171:		}
-LABELV $96
+LABELV $98
 line 172
 ;172:	}
-LABELV $92
+LABELV $94
 line 168
 ADDRLP4 0
 ADDRLP4 0
@@ -664,16 +664,18 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $94
+LABELV $96
 ADDRLP4 0
 INDIRI4
 ADDRGP4 level+24
 INDIRI4
-LTI4 $91
+LTI4 $93
 line 173
 ;173:}
-LABELV $88
+LABELV $90
 endproc G_WriteSessionData 8 8
+import CheckPlayerPostions
+import G_SendCommandToClient
 import visible
 import findradius
 import trap_SnapVector
@@ -853,6 +855,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_MultiJump
 import g_instagib
 import sv_fps
 import g_lightningDamage
@@ -949,6 +952,7 @@ import UpdateTournamentInfo
 import Svcmd_GameMem_f
 import G_InitMemory
 import G_Alloc
+import Team_DropFlags
 import CheckObeliskAttack
 import Team_CheckDroppedItem
 import OnSameTeam
@@ -1015,6 +1019,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_pdgrenade
 import fire_grenade
 import fire_plasma
 import fire_blaster
@@ -1026,6 +1031,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap
 import G_SetOrigin
@@ -1085,6 +1091,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1249,12 +1256,12 @@ import srand
 import qsort
 lit
 align 1
-LABELV $89
+LABELV $91
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $87
+LABELV $89
 byte 1 71
 byte 1 97
 byte 1 109
@@ -1298,7 +1305,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $82
+LABELV $84
 byte 1 115
 byte 1 101
 byte 1 115
@@ -1308,14 +1315,14 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $64
+LABELV $66
 byte 1 116
 byte 1 101
 byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $55
+LABELV $57
 byte 1 115
 byte 1 101
 byte 1 115
@@ -1327,7 +1334,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $54
+LABELV $56
 byte 1 37
 byte 1 105
 byte 1 32

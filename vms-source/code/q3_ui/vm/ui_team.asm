@@ -52,12 +52,12 @@ line 46
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $69
+EQI4 $71
 line 47
 ;47:		return;
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $69
+LABELV $71
 line 50
 ;48:	}
 ;49:
@@ -72,34 +72,34 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 100
-LTI4 $71
+LTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 103
-GTI4 $71
+GTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $82-400
+ADDRGP4 $84-400
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $82
-address $74
+LABELV $84
 address $76
 address $78
 address $80
+address $82
 code
-LABELV $74
+LABELV $76
 line 52
 ;51:	case ID_JOINRED:
 ;52:		trap_Cmd_ExecuteText( EXEC_APPEND, "cmd team red\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
@@ -111,16 +111,16 @@ CALLV
 pop
 line 54
 ;54:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $76
+LABELV $78
 line 57
 ;55:
 ;56:	case ID_JOINBLUE:
 ;57:		trap_Cmd_ExecuteText( EXEC_APPEND, "cmd team blue\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $77
+ADDRGP4 $79
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
@@ -132,16 +132,16 @@ CALLV
 pop
 line 59
 ;59:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $78
+LABELV $80
 line 62
 ;60:
 ;61:	case ID_JOINGAME:
 ;62:		trap_Cmd_ExecuteText( EXEC_APPEND, "cmd team free\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $79
+ADDRGP4 $81
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
@@ -153,16 +153,16 @@ CALLV
 pop
 line 64
 ;64:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $80
+LABELV $82
 line 67
 ;65:
 ;66:	case ID_SPECTATE:
 ;67:		trap_Cmd_ExecuteText( EXEC_APPEND, "cmd team spectator\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $81
+ADDRGP4 $83
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
@@ -174,12 +174,12 @@ CALLV
 pop
 line 69
 ;69:		break;
-LABELV $71
-LABELV $72
+LABELV $73
+LABELV $74
 line 71
 ;70:	}
 ;71:}
-LABELV $68
+LABELV $70
 endproc TeamMain_MenuEvent 8 8
 export TeamMain_MenuInit
 proc TeamMain_MenuInit 1056 12
@@ -238,7 +238,7 @@ ASGNU4
 line 93
 ;93:	s_teammain.frame.generic.name   = TEAMMAIN_FRAME;
 ADDRGP4 s_teammain+288+4
-ADDRGP4 $92
+ADDRGP4 $94
 ASGNP4
 line 94
 ;94:	s_teammain.frame.generic.x		= 142;
@@ -301,7 +301,7 @@ ASGNI4
 line 107
 ;107:	s_teammain.joinred.string           = "JOIN RED";
 ADDRGP4 s_teammain+376+60
-ADDRGP4 $114
+ADDRGP4 $116
 ASGNP4
 line 108
 ;108:	s_teammain.joinred.style            = UI_CENTER|UI_SMALLFONT;
@@ -356,7 +356,7 @@ ASGNI4
 line 118
 ;118:	s_teammain.joinblue.string           = "JOIN BLUE";
 ADDRGP4 s_teammain+448+60
-ADDRGP4 $132
+ADDRGP4 $134
 ASGNP4
 line 119
 ;119:	s_teammain.joinblue.style            = UI_CENTER|UI_SMALLFONT;
@@ -411,7 +411,7 @@ ASGNI4
 line 129
 ;129:	s_teammain.joingame.string           = "JOIN GAME";
 ADDRGP4 s_teammain+520+60
-ADDRGP4 $150
+ADDRGP4 $152
 ASGNP4
 line 130
 ;130:	s_teammain.joingame.style            = UI_CENTER|UI_SMALLFONT;
@@ -466,7 +466,7 @@ ASGNI4
 line 140
 ;140:	s_teammain.spectate.string           = "SPECTATE";
 ADDRGP4 s_teammain+592+60
-ADDRGP4 $168
+ADDRGP4 $170
 ASGNP4
 line 141
 ;141:	s_teammain.spectate.style            = UI_CENTER|UI_SMALLFONT;
@@ -502,7 +502,7 @@ line 146
 ;146:	gametype = atoi( Info_ValueForKey( info,"g_gametype" ) );
 ADDRLP4 8
 ARGP4
-ADDRGP4 $173
+ADDRGP4 $175
 ARGP4
 ADDRLP4 1032
 ADDRGP4 Info_ValueForKey
@@ -530,29 +530,29 @@ ASGNI4
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-LTI4 $174
+LTI4 $176
 ADDRLP4 1040
 INDIRI4
 CNSTI4 4
-GTI4 $174
+GTI4 $176
 ADDRLP4 1040
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $184
+ADDRGP4 $186
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $184
-address $176
-address $176
-address $176
-address $181
-address $181
+LABELV $186
+address $178
+address $178
+address $178
+address $183
+address $183
 code
-LABELV $176
+LABELV $178
 line 153
 ;150:	case GT_SINGLE_PLAYER:
 ;151:	case GT_FFA:
@@ -584,10 +584,10 @@ BORU4
 ASGNU4
 line 155
 ;155:		break;
-ADDRGP4 $175
+ADDRGP4 $177
 JUMPV
-LABELV $174
-LABELV $181
+LABELV $176
+LABELV $183
 line 160
 ;156:
 ;157:	default:
@@ -607,7 +607,7 @@ BORU4
 ASGNU4
 line 161
 ;161:		break;
-LABELV $175
+LABELV $177
 line 164
 ;162:	}
 ;163:
@@ -657,7 +657,7 @@ CALLV
 pop
 line 169
 ;169:}
-LABELV $84
+LABELV $86
 endproc TeamMain_MenuInit 1056 12
 export TeamMain_Cache
 proc TeamMain_Cache 0 4
@@ -672,14 +672,14 @@ line 177
 ;177:void TeamMain_Cache( void ) {
 line 178
 ;178:	trap_R_RegisterShaderNoMip( TEAMMAIN_FRAME );
-ADDRGP4 $92
+ADDRGP4 $94
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 179
 ;179:}
-LABELV $190
+LABELV $192
 endproc TeamMain_Cache 0 4
 export UI_TeamMainMenu
 proc UI_TeamMainMenu 0 4
@@ -706,7 +706,7 @@ CALLV
 pop
 line 190
 ;190:}
-LABELV $191
+LABELV $193
 endproc UI_TeamMainMenu 0 4
 bss
 align 4
@@ -1025,6 +1025,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1189,7 +1190,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $173
+LABELV $175
 byte 1 103
 byte 1 95
 byte 1 103
@@ -1202,7 +1203,7 @@ byte 1 112
 byte 1 101
 byte 1 0
 align 1
-LABELV $168
+LABELV $170
 byte 1 83
 byte 1 80
 byte 1 69
@@ -1213,7 +1214,7 @@ byte 1 84
 byte 1 69
 byte 1 0
 align 1
-LABELV $150
+LABELV $152
 byte 1 74
 byte 1 79
 byte 1 73
@@ -1225,7 +1226,7 @@ byte 1 77
 byte 1 69
 byte 1 0
 align 1
-LABELV $132
+LABELV $134
 byte 1 74
 byte 1 79
 byte 1 73
@@ -1237,7 +1238,7 @@ byte 1 85
 byte 1 69
 byte 1 0
 align 1
-LABELV $114
+LABELV $116
 byte 1 74
 byte 1 79
 byte 1 73
@@ -1248,7 +1249,7 @@ byte 1 69
 byte 1 68
 byte 1 0
 align 1
-LABELV $92
+LABELV $94
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1269,7 +1270,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $81
+LABELV $83
 byte 1 99
 byte 1 109
 byte 1 100
@@ -1291,7 +1292,7 @@ byte 1 114
 byte 1 10
 byte 1 0
 align 1
-LABELV $79
+LABELV $81
 byte 1 99
 byte 1 109
 byte 1 100
@@ -1308,7 +1309,7 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $77
+LABELV $79
 byte 1 99
 byte 1 109
 byte 1 100
@@ -1325,7 +1326,7 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $75
+LABELV $77
 byte 1 99
 byte 1 109
 byte 1 100

@@ -71,7 +71,7 @@ line 65
 ADDRLP4 132
 CNSTI4 0
 ASGNI4
-LABELV $54
+LABELV $56
 line 66
 ;66:	{
 line 67
@@ -92,7 +92,7 @@ CNSTU1 0
 ASGNU1
 line 69
 ;69:	}
-LABELV $55
+LABELV $57
 line 65
 ADDRLP4 132
 ADDRLP4 132
@@ -103,14 +103,14 @@ ASGNI4
 ADDRLP4 132
 INDIRI4
 CNSTI4 4
-LTI4 $54
+LTI4 $56
 line 71
 ;70:	
 ;71:	for (i=0 ; i<4 ; i++)
 ADDRLP4 132
 CNSTI4 0
 ASGNI4
-LABELV $58
+LABELV $60
 line 72
 ;72:	{
 line 73
@@ -124,12 +124,12 @@ ASGNI4
 ADDRLP4 144
 INDIRI4
 CNSTI4 48
-LTI4 $64
+LTI4 $66
 ADDRLP4 144
 INDIRI4
 CNSTI4 57
-LEI4 $62
-LABELV $64
+LEI4 $64
+LABELV $66
 line 74
 ;74:		{
 line 75
@@ -139,7 +139,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 42
-NEI4 $65
+NEI4 $67
 line 76
 ;76:			{
 line 78
@@ -158,12 +158,12 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $67
+NEI4 $69
 line 80
 ;80:					break;
-ADDRGP4 $60
+ADDRGP4 $62
 JUMPV
-LABELV $67
+LABELV $69
 line 81
 ;81:				s++;
 ADDRFP4 0
@@ -174,13 +174,13 @@ ADDP4
 ASGNP4
 line 82
 ;82:				continue;
-ADDRGP4 $59
+ADDRGP4 $61
 JUMPV
-LABELV $65
+LABELV $67
 line 84
 ;83:			}
 ;84:			G_Printf( "Bad filter address: %s\n", s );
-ADDRGP4 $69
+ADDRGP4 $71
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -192,9 +192,9 @@ line 85
 ;85:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $53
+ADDRGP4 $55
 JUMPV
-LABELV $62
+LABELV $64
 line 88
 ;86:		}
 ;87:		
@@ -202,9 +202,9 @@ line 88
 ADDRLP4 128
 CNSTI4 0
 ASGNI4
-ADDRGP4 $71
+ADDRGP4 $73
 JUMPV
-LABELV $70
+LABELV $72
 line 90
 ;89:		while (*s >= '0' && *s <= '9')
 ;90:		{
@@ -245,7 +245,7 @@ INDIRI1
 ASGNI1
 line 92
 ;92:		}
-LABELV $71
+LABELV $73
 line 89
 ADDRLP4 148
 ADDRFP4 0
@@ -256,12 +256,12 @@ ASGNI4
 ADDRLP4 148
 INDIRI4
 CNSTI4 48
-LTI4 $73
+LTI4 $75
 ADDRLP4 148
 INDIRI4
 CNSTI4 57
-LEI4 $70
-LABELV $73
+LEI4 $72
+LABELV $75
 line 93
 ;93:		num[j] = 0;
 ADDRLP4 128
@@ -303,12 +303,12 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $74
+NEI4 $76
 line 98
 ;98:			break;
-ADDRGP4 $60
+ADDRGP4 $62
 JUMPV
-LABELV $74
+LABELV $76
 line 99
 ;99:		s++;
 ADDRFP4 0
@@ -319,7 +319,7 @@ ADDP4
 ASGNP4
 line 100
 ;100:	}
-LABELV $59
+LABELV $61
 line 71
 ADDRLP4 132
 ADDRLP4 132
@@ -330,8 +330,8 @@ ASGNI4
 ADDRLP4 132
 INDIRI4
 CNSTI4 4
-LTI4 $58
-LABELV $60
+LTI4 $60
+LABELV $62
 line 102
 ;101:	
 ;102:	f->mask = *(unsigned *)m;
@@ -354,7 +354,7 @@ line 105
 ;105:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $53
+LABELV $55
 endproc StringToFilter 160 8
 proc UpdateIPBans 344 12
 line 114
@@ -383,9 +383,9 @@ line 122
 ADDRLP4 76
 CNSTI4 0
 ASGNI4
-ADDRGP4 $80
+ADDRGP4 $82
 JUMPV
-LABELV $77
+LABELV $79
 line 123
 ;123:	{
 line 124
@@ -398,12 +398,12 @@ ADDRGP4 ipFilters+4
 ADDP4
 INDIRU4
 CNSTU4 4294967295
-NEU4 $81
+NEU4 $83
 line 125
 ;125:			continue;
-ADDRGP4 $78
+ADDRGP4 $80
 JUMPV
-LABELV $81
+LABELV $83
 line 127
 ;126:
 ;127:		*(unsigned *)b = ipFilters[i].compare;
@@ -437,7 +437,7 @@ line 130
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $85
+LABELV $87
 line 131
 ;131:		{
 line 132
@@ -449,25 +449,25 @@ ADDP4
 INDIRU1
 CVUI4 1
 CNSTI4 255
-EQI4 $89
+EQI4 $91
 line 133
 ;133:				Q_strcat(ip, sizeof(ip), "*");
 ADDRLP4 4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 ADDRGP4 Q_strcat
 CALLV
 pop
-ADDRGP4 $90
+ADDRGP4 $92
 JUMPV
-LABELV $89
+LABELV $91
 line 135
 ;134:			else
 ;135:				Q_strcat(ip, sizeof(ip), va("%i", b[j]));
-ADDRGP4 $92
+ADDRGP4 $94
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -490,7 +490,7 @@ ARGP4
 ADDRGP4 Q_strcat
 CALLV
 pop
-LABELV $90
+LABELV $92
 line 136
 ;136:			Q_strcat(ip, sizeof(ip), (j<3) ? "." : " ");
 ADDRLP4 4
@@ -500,17 +500,17 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-GEI4 $96
+GEI4 $98
 ADDRLP4 340
-ADDRGP4 $93
+ADDRGP4 $95
 ASGNP4
-ADDRGP4 $97
+ADDRGP4 $99
 JUMPV
-LABELV $96
+LABELV $98
 ADDRLP4 340
-ADDRGP4 $94
+ADDRGP4 $96
 ASGNP4
-LABELV $97
+LABELV $99
 ADDRLP4 340
 INDIRP4
 ARGP4
@@ -519,7 +519,7 @@ CALLV
 pop
 line 137
 ;137:		}		
-LABELV $86
+LABELV $88
 line 130
 ADDRLP4 0
 ADDRLP4 0
@@ -530,7 +530,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $85
+LTI4 $87
 line 138
 ;138:		if (strlen(iplist_final)+strlen(ip) < MAX_CVAR_VALUE_STRING)
 ADDRLP4 80
@@ -551,7 +551,7 @@ ADDRLP4 340
 INDIRI4
 ADDI4
 CNSTI4 256
-GEI4 $98
+GEI4 $100
 line 139
 ;139:		{
 line 140
@@ -567,28 +567,28 @@ CALLV
 pop
 line 141
 ;141:		}
-ADDRGP4 $99
+ADDRGP4 $101
 JUMPV
-LABELV $98
+LABELV $100
 line 143
 ;142:		else
 ;143:		{
 line 144
 ;144:			Com_Printf("g_banIPs overflowed at MAX_CVAR_VALUE_STRING\n");
-ADDRGP4 $100
+ADDRGP4 $102
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
 pop
 line 145
 ;145:			break;
-ADDRGP4 $79
+ADDRGP4 $81
 JUMPV
-LABELV $99
+LABELV $101
 line 147
 ;146:		}
 ;147:	}
-LABELV $78
+LABELV $80
 line 122
 ADDRLP4 76
 ADDRLP4 76
@@ -596,17 +596,17 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $80
+LABELV $82
 ADDRLP4 76
 INDIRI4
 ADDRGP4 numIPFilters
 INDIRI4
-LTI4 $77
-LABELV $79
+LTI4 $79
+LABELV $81
 line 149
 ;148:
 ;149:	trap_Cvar_Set( "g_banIPs", iplist_final );
-ADDRGP4 $101
+ADDRGP4 $103
 ARGP4
 ADDRLP4 80
 ARGP4
@@ -615,7 +615,7 @@ CALLV
 pop
 line 150
 ;150:}
-LABELV $76
+LABELV $78
 endproc UpdateIPBans 344 12
 export G_FilterPacket
 proc G_FilterPacket 28 0
@@ -644,9 +644,9 @@ ADDRLP4 0
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRGP4 $104
+ADDRGP4 $106
 JUMPV
-LABELV $103
+LABELV $105
 line 166
 ;166:	while (*p && i < 4) {
 line 167
@@ -657,9 +657,9 @@ ADDRLP4 8
 ADDP4
 CNSTU1 0
 ASGNU1
-ADDRGP4 $107
+ADDRGP4 $109
 JUMPV
-LABELV $106
+LABELV $108
 line 168
 ;168:		while (*p >= '0' && *p <= '9') {
 line 169
@@ -698,7 +698,7 @@ ADDP4
 ASGNP4
 line 171
 ;171:		}
-LABELV $107
+LABELV $109
 line 168
 ADDRLP4 16
 ADDRLP4 0
@@ -709,12 +709,12 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 48
-LTI4 $109
+LTI4 $111
 ADDRLP4 16
 INDIRI4
 CNSTI4 57
-LEI4 $106
-LABELV $109
+LEI4 $108
+LABELV $111
 line 172
 ;172:		if (!*p || *p == ':')
 ADDRLP4 20
@@ -726,17 +726,17 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $112
+EQI4 $114
 ADDRLP4 20
 INDIRI4
 CNSTI4 58
-NEI4 $110
-LABELV $112
+NEI4 $112
+LABELV $114
 line 173
 ;173:			break;
-ADDRGP4 $105
+ADDRGP4 $107
 JUMPV
-LABELV $110
+LABELV $112
 line 174
 ;174:		i++, p++;
 ADDRLP4 24
@@ -758,20 +758,20 @@ ADDP4
 ASGNP4
 line 175
 ;175:	}
-LABELV $104
+LABELV $106
 line 166
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $113
+EQI4 $115
 ADDRLP4 4
 INDIRI4
 CNSTI4 4
-LTI4 $103
-LABELV $113
-LABELV $105
+LTI4 $105
+LABELV $115
+LABELV $107
 line 177
 ;176:	
 ;177:	in = *(unsigned *)m;
@@ -785,9 +785,9 @@ line 179
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $117
+ADDRGP4 $119
 JUMPV
-LABELV $114
+LABELV $116
 line 180
 ;180:		if ( (in & ipFilters[i].mask) == ipFilters[i].compare)
 ADDRLP4 16
@@ -809,30 +809,30 @@ INDIRI4
 ADDRGP4 ipFilters+4
 ADDP4
 INDIRU4
-NEU4 $118
+NEU4 $120
 line 181
 ;181:			return g_filterBan.integer != 0;
 ADDRGP4 g_filterBan+12
 INDIRI4
 CNSTI4 0
-EQI4 $123
+EQI4 $125
 ADDRLP4 20
 CNSTI4 1
 ASGNI4
-ADDRGP4 $124
+ADDRGP4 $126
 JUMPV
-LABELV $123
+LABELV $125
 ADDRLP4 20
 CNSTI4 0
 ASGNI4
-LABELV $124
+LABELV $126
 ADDRLP4 20
 INDIRI4
 RETI4
-ADDRGP4 $102
+ADDRGP4 $104
 JUMPV
-LABELV $118
-LABELV $115
+LABELV $120
+LABELV $117
 line 179
 ADDRLP4 4
 ADDRLP4 4
@@ -840,33 +840,33 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $117
+LABELV $119
 ADDRLP4 4
 INDIRI4
 ADDRGP4 numIPFilters
 INDIRI4
-LTI4 $114
+LTI4 $116
 line 183
 ;182:
 ;183:	return g_filterBan.integer == 0;
 ADDRGP4 g_filterBan+12
 INDIRI4
 CNSTI4 0
-NEI4 $127
+NEI4 $129
 ADDRLP4 24
 CNSTI4 1
 ASGNI4
-ADDRGP4 $128
+ADDRGP4 $130
 JUMPV
-LABELV $127
+LABELV $129
 ADDRLP4 24
 CNSTI4 0
 ASGNI4
-LABELV $128
+LABELV $130
 ADDRLP4 24
 INDIRI4
 RETI4
-LABELV $102
+LABELV $104
 endproc G_FilterPacket 28 0
 proc AddIP 8 8
 line 192
@@ -886,9 +886,9 @@ line 195
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $133
+ADDRGP4 $135
 JUMPV
-LABELV $130
+LABELV $132
 line 196
 ;196:		if (ipFilters[i].compare == 0xffffffff)
 ADDRLP4 0
@@ -899,13 +899,13 @@ ADDRGP4 ipFilters+4
 ADDP4
 INDIRU4
 CNSTU4 4294967295
-NEU4 $134
+NEU4 $136
 line 197
 ;197:			break;		// free spot
-ADDRGP4 $132
+ADDRGP4 $134
 JUMPV
-LABELV $134
-LABELV $131
+LABELV $136
+LABELV $133
 line 195
 ADDRLP4 0
 ADDRLP4 0
@@ -913,20 +913,20 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $133
+LABELV $135
 ADDRLP4 0
 INDIRI4
 ADDRGP4 numIPFilters
 INDIRI4
-LTI4 $130
-LABELV $132
+LTI4 $132
+LABELV $134
 line 198
 ;198:	if (i == numIPFilters)
 ADDRLP4 0
 INDIRI4
 ADDRGP4 numIPFilters
 INDIRI4
-NEI4 $137
+NEI4 $139
 line 199
 ;199:	{
 line 200
@@ -934,21 +934,21 @@ line 200
 ADDRGP4 numIPFilters
 INDIRI4
 CNSTI4 1024
-NEI4 $139
+NEI4 $141
 line 201
 ;201:		{
 line 202
 ;202:			G_Printf ("IP filter list is full\n");
-ADDRGP4 $141
+ADDRGP4 $143
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 203
 ;203:			return;
-ADDRGP4 $129
+ADDRGP4 $131
 JUMPV
-LABELV $139
+LABELV $141
 line 205
 ;204:		}
 ;205:		numIPFilters++;
@@ -965,7 +965,7 @@ ADDI4
 ASGNI4
 line 206
 ;206:	}
-LABELV $137
+LABELV $139
 line 208
 ;207:	
 ;208:	if (!StringToFilter (str, &ipFilters[i]))
@@ -986,7 +986,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $142
+NEI4 $144
 line 209
 ;209:		ipFilters[i].compare = 0xffffffffu;
 ADDRLP4 0
@@ -997,7 +997,7 @@ ADDRGP4 ipFilters+4
 ADDP4
 CNSTU4 4294967295
 ASGNU4
-LABELV $142
+LABELV $144
 line 211
 ;210:
 ;211:	UpdateIPBans();
@@ -1006,7 +1006,7 @@ CALLV
 pop
 line 212
 ;212:}
-LABELV $129
+LABELV $131
 endproc AddIP 8 8
 export G_ProcessIPBans
 proc G_ProcessIPBans 276 12
@@ -1047,9 +1047,9 @@ ADDRLP4 4
 ADDRLP4 264
 INDIRP4
 ASGNP4
-ADDRGP4 $150
+ADDRGP4 $152
 JUMPV
-LABELV $147
+LABELV $149
 line 227
 ;227:		s = strchr(s, ' ');
 ADDRLP4 0
@@ -1071,12 +1071,12 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $155
+NEU4 $157
 line 229
 ;229:			break;
-ADDRGP4 $149
+ADDRGP4 $151
 JUMPV
-LABELV $154
+LABELV $156
 line 231
 ;230:		while (*s == ' ')
 ;231:			*s++ = 0;
@@ -1094,14 +1094,14 @@ ADDRLP4 272
 INDIRP4
 CNSTI1 0
 ASGNI1
-LABELV $155
+LABELV $157
 line 230
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 32
-EQI4 $154
+EQI4 $156
 line 232
 ;232:		if (*t)
 ADDRLP4 4
@@ -1109,7 +1109,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $157
+EQI4 $159
 line 233
 ;233:			AddIP( t );
 ADDRLP4 4
@@ -1118,7 +1118,7 @@ ARGP4
 ADDRGP4 AddIP
 CALLV
 pop
-LABELV $157
+LABELV $159
 line 234
 ;234:		t = s;
 ADDRLP4 4
@@ -1127,19 +1127,19 @@ INDIRP4
 ASGNP4
 line 235
 ;235:	}
-LABELV $148
-line 226
 LABELV $150
+line 226
+LABELV $152
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $147
-LABELV $149
+NEI4 $149
+LABELV $151
 line 236
 ;236:}
-LABELV $145
+LABELV $147
 endproc G_ProcessIPBans 276 12
 export Svcmd_AddIP_f
 proc Svcmd_AddIP_f 1028 12
@@ -1164,19 +1164,19 @@ ASGNI4
 ADDRLP4 1024
 INDIRI4
 CNSTI4 2
-GEI4 $160
+GEI4 $162
 line 249
 ;249:		G_Printf("Usage:  addip <ip-mask>\n");
-ADDRGP4 $162
+ADDRGP4 $164
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 250
 ;250:		return;
-ADDRGP4 $159
+ADDRGP4 $161
 JUMPV
-LABELV $160
+LABELV $162
 line 253
 ;251:	}
 ;252:
@@ -1201,7 +1201,7 @@ pop
 line 257
 ;256:
 ;257:}
-LABELV $159
+LABELV $161
 endproc Svcmd_AddIP_f 1028 12
 export Svcmd_RemoveIP_f
 proc Svcmd_RemoveIP_f 1048 12
@@ -1227,19 +1227,19 @@ ASGNI4
 ADDRLP4 1036
 INDIRI4
 CNSTI4 2
-GEI4 $164
+GEI4 $166
 line 271
 ;271:		G_Printf("Usage:  sv removeip <ip-mask>\n");
-ADDRGP4 $166
+ADDRGP4 $168
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 272
 ;272:		return;
-ADDRGP4 $163
+ADDRGP4 $165
 JUMPV
-LABELV $164
+LABELV $166
 line 275
 ;273:	}
 ;274:
@@ -1267,21 +1267,21 @@ ASGNI4
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-NEI4 $167
+NEI4 $169
 line 278
 ;278:		return;
-ADDRGP4 $163
+ADDRGP4 $165
 JUMPV
-LABELV $167
+LABELV $169
 line 280
 ;279:
 ;280:	for (i=0 ; i<numIPFilters ; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $172
+ADDRGP4 $174
 JUMPV
-LABELV $169
+LABELV $171
 line 281
 ;281:		if (ipFilters[i].mask == f.mask	&&
 ADDRLP4 1044
@@ -1297,7 +1297,7 @@ ADDP4
 INDIRU4
 ADDRLP4 4
 INDIRU4
-NEU4 $173
+NEU4 $175
 ADDRLP4 1044
 INDIRI4
 ADDRGP4 ipFilters+4
@@ -1305,7 +1305,7 @@ ADDP4
 INDIRU4
 ADDRLP4 4+4
 INDIRU4
-NEU4 $173
+NEU4 $175
 line 282
 ;282:			ipFilters[i].compare == f.compare) {
 line 283
@@ -1320,7 +1320,7 @@ CNSTU4 4294967295
 ASGNU4
 line 284
 ;284:			G_Printf ("Removed.\n");
-ADDRGP4 $178
+ADDRGP4 $180
 ARGP4
 ADDRGP4 G_Printf
 CALLV
@@ -1333,13 +1333,13 @@ CALLV
 pop
 line 287
 ;287:			return;
-ADDRGP4 $163
+ADDRGP4 $165
 JUMPV
-LABELV $173
+LABELV $175
 line 289
 ;288:		}
 ;289:	}
-LABELV $170
+LABELV $172
 line 280
 ADDRLP4 0
 ADDRLP4 0
@@ -1347,16 +1347,16 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $172
+LABELV $174
 ADDRLP4 0
 INDIRI4
 ADDRGP4 numIPFilters
 INDIRI4
-LTI4 $169
+LTI4 $171
 line 291
 ;290:
 ;291:	G_Printf ( "Didn't find %s.\n", str );
-ADDRGP4 $179
+ADDRGP4 $181
 ARGP4
 ADDRLP4 12
 ARGP4
@@ -1365,7 +1365,7 @@ CALLV
 pop
 line 292
 ;292:}
-LABELV $163
+LABELV $165
 endproc Svcmd_RemoveIP_f 1048 12
 export Svcmd_EntityList_f
 proc Svcmd_EntityList_f 16 8
@@ -1383,16 +1383,16 @@ line 303
 ;302:
 ;303:	check = g_entities+1;
 ADDRLP4 0
-ADDRGP4 g_entities+808
+ADDRGP4 g_entities+824
 ASGNP4
 line 304
 ;304:	for (e = 1; e < level.num_entities ; e++, check++) {
 ADDRLP4 4
 CNSTI4 1
 ASGNI4
-ADDRGP4 $185
+ADDRGP4 $187
 JUMPV
-LABELV $182
+LABELV $184
 line 305
 ;305:		if ( !check->inuse ) {
 ADDRLP4 0
@@ -1401,16 +1401,16 @@ CNSTI4 520
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $187
+NEI4 $189
 line 306
 ;306:			continue;
-ADDRGP4 $183
+ADDRGP4 $185
 JUMPV
-LABELV $187
+LABELV $189
 line 308
 ;307:		}
 ;308:		G_Printf("%3i:", e);
-ADDRGP4 $189
+ADDRGP4 $191
 ARGP4
 ADDRLP4 4
 INDIRI4
@@ -1430,23 +1430,22 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-LTI4 $190
+LTI4 $192
 ADDRLP4 8
 INDIRI4
 CNSTI4 11
-GTI4 $190
+GTI4 $192
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $218
+ADDRGP4 $220
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $218
-address $193
+LABELV $220
 address $195
 address $197
 address $199
@@ -1458,168 +1457,169 @@ address $209
 address $211
 address $213
 address $215
+address $217
 code
-LABELV $193
+LABELV $195
 line 311
 ;310:		case ET_GENERAL:
 ;311:			G_Printf("ET_GENERAL          ");
-ADDRGP4 $194
+ADDRGP4 $196
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 312
 ;312:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $195
+LABELV $197
 line 314
 ;313:		case ET_PLAYER:
 ;314:			G_Printf("ET_PLAYER           ");
-ADDRGP4 $196
+ADDRGP4 $198
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 315
 ;315:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $197
+LABELV $199
 line 317
 ;316:		case ET_ITEM:
 ;317:			G_Printf("ET_ITEM             ");
-ADDRGP4 $198
+ADDRGP4 $200
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 318
 ;318:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $199
+LABELV $201
 line 320
 ;319:		case ET_MISSILE:
 ;320:			G_Printf("ET_MISSILE          ");
-ADDRGP4 $200
+ADDRGP4 $202
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 321
 ;321:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $201
+LABELV $203
 line 323
 ;322:		case ET_MOVER:
 ;323:			G_Printf("ET_MOVER            ");
-ADDRGP4 $202
+ADDRGP4 $204
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 324
 ;324:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $203
+LABELV $205
 line 326
 ;325:		case ET_BEAM:
 ;326:			G_Printf("ET_BEAM             ");
-ADDRGP4 $204
+ADDRGP4 $206
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 327
 ;327:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $205
+LABELV $207
 line 329
 ;328:		case ET_PORTAL:
 ;329:			G_Printf("ET_PORTAL           ");
-ADDRGP4 $206
+ADDRGP4 $208
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 330
 ;330:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $207
+LABELV $209
 line 332
 ;331:		case ET_SPEAKER:
 ;332:			G_Printf("ET_SPEAKER          ");
-ADDRGP4 $208
+ADDRGP4 $210
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 333
 ;333:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $209
+LABELV $211
 line 335
 ;334:		case ET_PUSH_TRIGGER:
 ;335:			G_Printf("ET_PUSH_TRIGGER     ");
-ADDRGP4 $210
+ADDRGP4 $212
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 336
 ;336:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $211
+LABELV $213
 line 338
 ;337:		case ET_TELEPORT_TRIGGER:
 ;338:			G_Printf("ET_TELEPORT_TRIGGER ");
-ADDRGP4 $212
+ADDRGP4 $214
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 339
 ;339:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $213
+LABELV $215
 line 341
 ;340:		case ET_INVISIBLE:
 ;341:			G_Printf("ET_INVISIBLE        ");
-ADDRGP4 $214
+ADDRGP4 $216
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 342
 ;342:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $215
+LABELV $217
 line 344
 ;343:		case ET_GRAPPLE:
 ;344:			G_Printf("ET_GRAPPLE          ");
-ADDRGP4 $216
+ADDRGP4 $218
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 345
 ;345:			break;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $190
+LABELV $192
 line 347
 ;346:		default:
 ;347:			G_Printf("%3i                 ", check->s.eType);
-ADDRGP4 $217
+ADDRGP4 $219
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -1632,7 +1632,7 @@ CALLV
 pop
 line 348
 ;348:			break;
-LABELV $191
+LABELV $193
 line 351
 ;349:		}
 ;350:
@@ -1644,10 +1644,10 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $219
+EQU4 $221
 line 352
 ;352:			G_Printf("%s", check->classname);
-ADDRGP4 $221
+ADDRGP4 $223
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -1660,17 +1660,17 @@ CALLV
 pop
 line 353
 ;353:		}
-LABELV $219
+LABELV $221
 line 354
 ;354:		G_Printf("\n");
-ADDRGP4 $222
+ADDRGP4 $224
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 355
 ;355:	}
-LABELV $183
+LABELV $185
 line 304
 ADDRLP4 4
 ADDRLP4 4
@@ -1681,18 +1681,18 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 824
 ADDP4
 ASGNP4
-LABELV $185
+LABELV $187
 ADDRLP4 4
 INDIRI4
 ADDRGP4 level+12
 INDIRI4
-LTI4 $182
+LTI4 $184
 line 356
 ;356:}
-LABELV $180
+LABELV $182
 endproc Svcmd_EntityList_f 16 8
 export ClientForString
 proc ClientForString 24 8
@@ -1715,11 +1715,11 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 48
-LTI4 $224
+LTI4 $226
 ADDRLP4 12
 INDIRI4
 CNSTI4 57
-GTI4 $224
+GTI4 $226
 line 365
 ;365:		idnum = atoi( s );
 ADDRFP4 0
@@ -1742,16 +1742,16 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-LTI4 $229
+LTI4 $231
 ADDRLP4 20
 INDIRI4
 ADDRGP4 level+24
 INDIRI4
-LTI4 $226
-LABELV $229
+LTI4 $228
+LABELV $231
 line 367
 ;367:			Com_Printf( "Bad client slot: %i\n", idnum );
-ADDRGP4 $230
+ADDRGP4 $232
 ARGP4
 ADDRLP4 8
 INDIRI4
@@ -1763,15 +1763,15 @@ line 368
 ;368:			return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $223
+ADDRGP4 $225
 JUMPV
-LABELV $226
+LABELV $228
 line 371
 ;369:		}
 ;370:
 ;371:		cl = &level.clients[idnum];
 ADDRLP4 0
-CNSTI4 3340
+CNSTI4 3348
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -1787,10 +1787,10 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $231
+NEI4 $233
 line 373
 ;373:			G_Printf( "Client %i is not connected\n", idnum );
-ADDRGP4 $233
+ADDRGP4 $235
 ARGP4
 ADDRLP4 8
 INDIRI4
@@ -1802,18 +1802,18 @@ line 374
 ;374:			return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $223
+ADDRGP4 $225
 JUMPV
-LABELV $231
+LABELV $233
 line 376
 ;375:		}
 ;376:		return cl;
 ADDRLP4 0
 INDIRP4
 RETP4
-ADDRGP4 $223
+ADDRGP4 $225
 JUMPV
-LABELV $224
+LABELV $226
 line 380
 ;377:	}
 ;378:
@@ -1822,13 +1822,13 @@ line 380
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $237
+ADDRGP4 $239
 JUMPV
-LABELV $234
+LABELV $236
 line 381
 ;381:		cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3340
+CNSTI4 3348
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1844,12 +1844,12 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $239
+NEI4 $241
 line 383
 ;383:			continue;
-ADDRGP4 $235
+ADDRGP4 $237
 JUMPV
-LABELV $239
+LABELV $241
 line 385
 ;384:		}
 ;385:		if ( !Q_stricmp( cl->pers.netname, s ) ) {
@@ -1868,19 +1868,19 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-NEI4 $241
+NEI4 $243
 line 386
 ;386:			return cl;
 ADDRLP4 0
 INDIRP4
 RETP4
-ADDRGP4 $223
+ADDRGP4 $225
 JUMPV
-LABELV $241
+LABELV $243
 line 388
 ;387:		}
 ;388:	}
-LABELV $235
+LABELV $237
 line 380
 ADDRLP4 4
 ADDRLP4 4
@@ -1888,16 +1888,16 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $237
+LABELV $239
 ADDRLP4 4
 INDIRI4
 ADDRGP4 level+24
 INDIRI4
-LTI4 $234
+LTI4 $236
 line 390
 ;389:
 ;390:	G_Printf( "User %s is not on the server\n", s );
-ADDRGP4 $243
+ADDRGP4 $245
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -1910,7 +1910,7 @@ line 392
 ;392:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $223
+LABELV $225
 endproc ClientForString 24 8
 export Svcmd_ForceTeam_f
 proc Svcmd_ForceTeam_f 1032 12
@@ -1958,12 +1958,12 @@ ADDRLP4 1024
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $245
+NEU4 $247
 line 410
 ;410:		return;
-ADDRGP4 $244
+ADDRGP4 $246
 JUMPV
-LABELV $245
+LABELV $247
 line 414
 ;411:	}
 ;412:
@@ -1980,7 +1980,7 @@ CALLV
 pop
 line 415
 ;415:	SetTeam( &g_entities[cl - level.clients], str );
-CNSTI4 808
+CNSTI4 824
 ADDRLP4 1024
 INDIRP4
 CVPU4 4
@@ -1989,7 +1989,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3340
+CNSTI4 3348
 DIVI4
 MULI4
 ADDRGP4 g_entities
@@ -2002,7 +2002,7 @@ CALLV
 pop
 line 416
 ;416:}
-LABELV $244
+LABELV $246
 endproc Svcmd_ForceTeam_f 1032 12
 export ConsoleCommand
 proc ConsoleCommand 1072 12
@@ -2035,7 +2035,7 @@ line 431
 ;431:	if ( Q_stricmp (cmd, "entitylist") == 0 ) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $250
+ADDRGP4 $252
 ARGP4
 ADDRLP4 1024
 ADDRGP4 Q_stricmp
@@ -2044,7 +2044,7 @@ ASGNI4
 ADDRLP4 1024
 INDIRI4
 CNSTI4 0
-NEI4 $248
+NEI4 $250
 line 432
 ;432:		Svcmd_EntityList_f();
 ADDRGP4 Svcmd_EntityList_f
@@ -2054,16 +2054,16 @@ line 433
 ;433:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $248
+LABELV $250
 line 436
 ;434:	}
 ;435:
 ;436:	if ( Q_stricmp (cmd, "forceteam") == 0 ) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $253
+ADDRGP4 $255
 ARGP4
 ADDRLP4 1028
 ADDRGP4 Q_stricmp
@@ -2072,7 +2072,7 @@ ASGNI4
 ADDRLP4 1028
 INDIRI4
 CNSTI4 0
-NEI4 $251
+NEI4 $253
 line 437
 ;437:		Svcmd_ForceTeam_f();
 ADDRGP4 Svcmd_ForceTeam_f
@@ -2082,16 +2082,16 @@ line 438
 ;438:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $251
+LABELV $253
 line 441
 ;439:	}
 ;440:
 ;441:	if (Q_stricmp (cmd, "game_memory") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $256
+ADDRGP4 $258
 ARGP4
 ADDRLP4 1032
 ADDRGP4 Q_stricmp
@@ -2100,7 +2100,7 @@ ASGNI4
 ADDRLP4 1032
 INDIRI4
 CNSTI4 0
-NEI4 $254
+NEI4 $256
 line 442
 ;442:		Svcmd_GameMem_f();
 ADDRGP4 Svcmd_GameMem_f
@@ -2110,16 +2110,16 @@ line 443
 ;443:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $254
+LABELV $256
 line 446
 ;444:	}
 ;445:
 ;446:	if (Q_stricmp (cmd, "addbot") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $259
+ADDRGP4 $261
 ARGP4
 ADDRLP4 1036
 ADDRGP4 Q_stricmp
@@ -2128,7 +2128,7 @@ ASGNI4
 ADDRLP4 1036
 INDIRI4
 CNSTI4 0
-NEI4 $257
+NEI4 $259
 line 447
 ;447:		Svcmd_AddBot_f();
 ADDRGP4 Svcmd_AddBot_f
@@ -2138,16 +2138,16 @@ line 448
 ;448:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $257
+LABELV $259
 line 451
 ;449:	}
 ;450:
 ;451:	if (Q_stricmp (cmd, "botlist") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $262
+ADDRGP4 $264
 ARGP4
 ADDRLP4 1040
 ADDRGP4 Q_stricmp
@@ -2156,7 +2156,7 @@ ASGNI4
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-NEI4 $260
+NEI4 $262
 line 452
 ;452:		Svcmd_BotList_f();
 ADDRGP4 Svcmd_BotList_f
@@ -2166,16 +2166,16 @@ line 453
 ;453:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $260
+LABELV $262
 line 456
 ;454:	}
 ;455:
 ;456:	if (Q_stricmp (cmd, "abort_podium") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $265
+ADDRGP4 $267
 ARGP4
 ADDRLP4 1044
 ADDRGP4 Q_stricmp
@@ -2184,7 +2184,7 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-NEI4 $263
+NEI4 $265
 line 457
 ;457:		Svcmd_AbortPodium_f();
 ADDRGP4 Svcmd_AbortPodium_f
@@ -2194,16 +2194,16 @@ line 458
 ;458:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $263
+LABELV $265
 line 461
 ;459:	}
 ;460:
 ;461:	if (Q_stricmp (cmd, "addip") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $268
+ADDRGP4 $270
 ARGP4
 ADDRLP4 1048
 ADDRGP4 Q_stricmp
@@ -2212,7 +2212,7 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-NEI4 $266
+NEI4 $268
 line 462
 ;462:		Svcmd_AddIP_f();
 ADDRGP4 Svcmd_AddIP_f
@@ -2222,16 +2222,16 @@ line 463
 ;463:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $266
+LABELV $268
 line 466
 ;464:	}
 ;465:
 ;466:	if (Q_stricmp (cmd, "removeip") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $271
+ADDRGP4 $273
 ARGP4
 ADDRLP4 1052
 ADDRGP4 Q_stricmp
@@ -2240,7 +2240,7 @@ ASGNI4
 ADDRLP4 1052
 INDIRI4
 CNSTI4 0
-NEI4 $269
+NEI4 $271
 line 467
 ;467:		Svcmd_RemoveIP_f();
 ADDRGP4 Svcmd_RemoveIP_f
@@ -2250,16 +2250,16 @@ line 468
 ;468:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $269
+LABELV $271
 line 471
 ;469:	}
 ;470:
 ;471:	if (Q_stricmp (cmd, "listip") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $274
+ADDRGP4 $276
 ARGP4
 ADDRLP4 1056
 ADDRGP4 Q_stricmp
@@ -2268,12 +2268,12 @@ ASGNI4
 ADDRLP4 1056
 INDIRI4
 CNSTI4 0
-NEI4 $272
+NEI4 $274
 line 472
 ;472:		trap_SendConsoleCommand( EXEC_NOW, "g_banIPs\n" );
 CNSTI4 0
 ARGI4
-ADDRGP4 $275
+ADDRGP4 $277
 ARGP4
 ADDRGP4 trap_SendConsoleCommand
 CALLV
@@ -2282,9 +2282,9 @@ line 473
 ;473:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $272
+LABELV $274
 line 476
 ;474:	}
 ;475:
@@ -2292,12 +2292,12 @@ line 476
 ADDRGP4 g_dedicated+12
 INDIRI4
 CNSTI4 0
-EQI4 $276
+EQI4 $278
 line 477
 ;477:		if (Q_stricmp (cmd, "say") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $281
+ADDRGP4 $283
 ARGP4
 ADDRLP4 1060
 ADDRGP4 Q_stricmp
@@ -2306,7 +2306,7 @@ ASGNI4
 ADDRLP4 1060
 INDIRI4
 CNSTI4 0
-NEI4 $279
+NEI4 $281
 line 478
 ;478:			trap_SendServerCommand( -1, va("print \"server: %s\"", ConcatArgs(1) ) );
 CNSTI4 1
@@ -2315,7 +2315,7 @@ ADDRLP4 1064
 ADDRGP4 ConcatArgs
 CALLP4
 ASGNP4
-ADDRGP4 $282
+ADDRGP4 $284
 ARGP4
 ADDRLP4 1064
 INDIRP4
@@ -2336,9 +2336,9 @@ line 479
 ;479:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $279
+LABELV $281
 line 482
 ;480:		}
 ;481:		// everything else will also be printed as a say command
@@ -2349,7 +2349,7 @@ ADDRLP4 1064
 ADDRGP4 ConcatArgs
 CALLP4
 ASGNP4
-ADDRGP4 $282
+ADDRGP4 $284
 ARGP4
 ADDRLP4 1064
 INDIRP4
@@ -2370,16 +2370,16 @@ line 483
 ;483:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $276
+LABELV $278
 line 486
 ;484:	}
 ;485:
 ;486:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $247
+LABELV $249
 endproc ConsoleCommand 1072 12
 import ConcatArgs
 bss
@@ -2389,6 +2389,8 @@ skip 4
 align 4
 LABELV ipFilters
 skip 8192
+import CheckPlayerPostions
+import G_SendCommandToClient
 import visible
 import findradius
 import trap_SnapVector
@@ -2568,6 +2570,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_MultiJump
 import g_instagib
 import sv_fps
 import g_lightningDamage
@@ -2668,6 +2671,7 @@ import G_ReadSessionData
 import Svcmd_GameMem_f
 import G_InitMemory
 import G_Alloc
+import Team_DropFlags
 import CheckObeliskAttack
 import Team_CheckDroppedItem
 import OnSameTeam
@@ -2731,6 +2735,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_pdgrenade
 import fire_grenade
 import fire_plasma
 import fire_blaster
@@ -2742,6 +2747,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap
 import G_SetOrigin
@@ -2801,6 +2807,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -2965,7 +2972,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $282
+LABELV $284
 byte 1 112
 byte 1 114
 byte 1 105
@@ -2986,13 +2993,13 @@ byte 1 115
 byte 1 34
 byte 1 0
 align 1
-LABELV $281
+LABELV $283
 byte 1 115
 byte 1 97
 byte 1 121
 byte 1 0
 align 1
-LABELV $275
+LABELV $277
 byte 1 103
 byte 1 95
 byte 1 98
@@ -3004,7 +3011,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $274
+LABELV $276
 byte 1 108
 byte 1 105
 byte 1 115
@@ -3013,7 +3020,7 @@ byte 1 105
 byte 1 112
 byte 1 0
 align 1
-LABELV $271
+LABELV $273
 byte 1 114
 byte 1 101
 byte 1 109
@@ -3024,7 +3031,7 @@ byte 1 105
 byte 1 112
 byte 1 0
 align 1
-LABELV $268
+LABELV $270
 byte 1 97
 byte 1 100
 byte 1 100
@@ -3032,7 +3039,7 @@ byte 1 105
 byte 1 112
 byte 1 0
 align 1
-LABELV $265
+LABELV $267
 byte 1 97
 byte 1 98
 byte 1 111
@@ -3047,7 +3054,7 @@ byte 1 117
 byte 1 109
 byte 1 0
 align 1
-LABELV $262
+LABELV $264
 byte 1 98
 byte 1 111
 byte 1 116
@@ -3057,7 +3064,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $259
+LABELV $261
 byte 1 97
 byte 1 100
 byte 1 100
@@ -3066,7 +3073,7 @@ byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $256
+LABELV $258
 byte 1 103
 byte 1 97
 byte 1 109
@@ -3080,7 +3087,7 @@ byte 1 114
 byte 1 121
 byte 1 0
 align 1
-LABELV $253
+LABELV $255
 byte 1 102
 byte 1 111
 byte 1 114
@@ -3092,7 +3099,7 @@ byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $250
+LABELV $252
 byte 1 101
 byte 1 110
 byte 1 116
@@ -3105,7 +3112,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $243
+LABELV $245
 byte 1 85
 byte 1 115
 byte 1 101
@@ -3137,7 +3144,7 @@ byte 1 114
 byte 1 10
 byte 1 0
 align 1
-LABELV $233
+LABELV $235
 byte 1 67
 byte 1 108
 byte 1 105
@@ -3167,7 +3174,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $230
+LABELV $232
 byte 1 66
 byte 1 97
 byte 1 100
@@ -3190,16 +3197,16 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $222
+LABELV $224
 byte 1 10
 byte 1 0
 align 1
-LABELV $221
+LABELV $223
 byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $217
+LABELV $219
 byte 1 37
 byte 1 51
 byte 1 105
@@ -3222,7 +3229,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $216
+LABELV $218
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3245,7 +3252,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $214
+LABELV $216
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3268,7 +3275,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $212
+LABELV $214
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3291,7 +3298,7 @@ byte 1 82
 byte 1 32
 byte 1 0
 align 1
-LABELV $210
+LABELV $212
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3314,7 +3321,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $208
+LABELV $210
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3337,7 +3344,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $206
+LABELV $208
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3360,7 +3367,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $204
+LABELV $206
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3383,7 +3390,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $202
+LABELV $204
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3406,7 +3413,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $200
+LABELV $202
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3429,7 +3436,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $198
+LABELV $200
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3452,7 +3459,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $196
+LABELV $198
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3475,7 +3482,7 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $194
+LABELV $196
 byte 1 69
 byte 1 84
 byte 1 95
@@ -3498,14 +3505,14 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $189
+LABELV $191
 byte 1 37
 byte 1 51
 byte 1 105
 byte 1 58
 byte 1 0
 align 1
-LABELV $179
+LABELV $181
 byte 1 68
 byte 1 105
 byte 1 100
@@ -3524,7 +3531,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $178
+LABELV $180
 byte 1 82
 byte 1 101
 byte 1 109
@@ -3536,7 +3543,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $166
+LABELV $168
 byte 1 85
 byte 1 115
 byte 1 97
@@ -3569,7 +3576,7 @@ byte 1 62
 byte 1 10
 byte 1 0
 align 1
-LABELV $162
+LABELV $164
 byte 1 85
 byte 1 115
 byte 1 97
@@ -3596,7 +3603,7 @@ byte 1 62
 byte 1 10
 byte 1 0
 align 1
-LABELV $141
+LABELV $143
 byte 1 73
 byte 1 80
 byte 1 32
@@ -3622,7 +3629,7 @@ byte 1 108
 byte 1 10
 byte 1 0
 align 1
-LABELV $101
+LABELV $103
 byte 1 103
 byte 1 95
 byte 1 98
@@ -3633,7 +3640,7 @@ byte 1 80
 byte 1 115
 byte 1 0
 align 1
-LABELV $100
+LABELV $102
 byte 1 103
 byte 1 95
 byte 1 98
@@ -3681,24 +3688,24 @@ byte 1 71
 byte 1 10
 byte 1 0
 align 1
-LABELV $94
+LABELV $96
 byte 1 32
 byte 1 0
 align 1
-LABELV $93
+LABELV $95
 byte 1 46
 byte 1 0
 align 1
-LABELV $92
+LABELV $94
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $91
+LABELV $93
 byte 1 42
 byte 1 0
 align 1
-LABELV $69
+LABELV $71
 byte 1 66
 byte 1 97
 byte 1 100
