@@ -44,24 +44,22 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LTI4 $71
+LTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 8
-GTI4 $71
+GTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $83
+ADDRGP4 $85
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $83
-address $73
-address $74
+LABELV $85
 address $75
 address $76
 address $77
@@ -69,8 +67,10 @@ address $78
 address $79
 address $80
 address $81
+address $82
+address $83
 code
-LABELV $73
+LABELV $75
 line 30
 ;29:	case CG_INIT:
 ;30:		CG_Init( arg0, arg1, arg2 );
@@ -90,9 +90,9 @@ line 31
 ;31:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $74
+LABELV $76
 line 33
 ;32:	case CG_SHUTDOWN:
 ;33:		CG_Shutdown();
@@ -103,9 +103,9 @@ line 34
 ;34:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $75
+LABELV $77
 line 36
 ;35:	case CG_CONSOLE_COMMAND:
 ;36:		return CG_ConsoleCommand();
@@ -116,9 +116,9 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 RETI4
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $76
+LABELV $78
 line 38
 ;37:	case CG_DRAW_ACTIVE_FRAME:
 ;38:		CG_DrawActiveFrame( arg0, arg1, arg2 );
@@ -138,9 +138,9 @@ line 39
 ;39:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $77
+LABELV $79
 line 41
 ;40:	case CG_CROSSHAIR_PLAYER:
 ;41:		return CG_CrosshairPlayer();
@@ -151,9 +151,9 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 RETI4
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $78
+LABELV $80
 line 43
 ;42:	case CG_LAST_ATTACKER:
 ;43:		return CG_LastAttacker();
@@ -164,9 +164,9 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 RETI4
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $79
+LABELV $81
 line 45
 ;44:	case CG_KEY_EVENT:
 ;45:		CG_KeyEvent(arg0, arg1);
@@ -183,9 +183,9 @@ line 46
 ;46:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $80
+LABELV $82
 line 52
 ;47:	case CG_MOUSE_EVENT:
 ;48:#ifdef MISSIONPACK
@@ -206,9 +206,9 @@ line 53
 ;53:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $81
+LABELV $83
 line 55
 ;54:	case CG_EVENT_HANDLING:
 ;55:		CG_EventHandling(arg0);
@@ -222,13 +222,13 @@ line 56
 ;56:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $71
+LABELV $73
 line 58
 ;57:	default:
 ;58:		CG_Error( "vmMain: unknown command %i", command );
-ADDRGP4 $82
+ADDRGP4 $84
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -238,416 +238,416 @@ CALLV
 pop
 line 59
 ;59:		break;
-LABELV $72
+LABELV $74
 line 61
 ;60:	}
 ;61:	return -1;
 CNSTI4 -1
 RETI4
-LABELV $70
+LABELV $72
 endproc vmMain 16 12
 data
 align 4
 LABELV cvarTable
 address cg_ignore
-address $85
-address $86
-byte 4 0
-address cg_autoswitch
 address $87
 address $88
+byte 4 0
+address cg_autoswitch
+address $89
+address $90
 byte 4 1
 address cg_drawGun
-address $89
-address $88
+address $91
+address $90
 byte 4 1
 address cg_zoomFov
-address $90
-address $91
-byte 4 1
-address cg_fov
 address $92
 address $93
 byte 4 1
-address cg_viewsize
+address cg_fov
 address $94
 address $95
 byte 4 1
-address cg_stereoSeparation
+address cg_viewsize
 address $96
 address $97
 byte 4 1
-address cg_shadows
+address cg_stereoSeparation
 address $98
-address $88
+address $99
+byte 4 1
+address cg_shadows
+address $100
+address $90
 byte 4 1
 address cg_gibs
-address $99
-address $88
+address $101
+address $90
 byte 4 1
 address cg_draw2D
-address $100
-address $88
+address $102
+address $90
 byte 4 1
 address cg_drawStatus
-address $101
-address $88
+address $103
+address $90
 byte 4 1
 address cg_drawTimer
-address $102
-address $88
+address $104
+address $90
 byte 4 1
 address cg_drawFPS
-address $103
-address $88
+address $105
+address $90
 byte 4 1
 address cg_drawSnapshot
-address $104
-address $86
-byte 4 1
-address cg_draw3dIcons
-address $105
-address $88
-byte 4 1
-address cg_drawIcons
 address $106
 address $88
 byte 4 1
-address cg_drawAmmoWarning
+address cg_draw3dIcons
 address $107
-address $88
+address $90
+byte 4 1
+address cg_drawIcons
+address $108
+address $90
+byte 4 1
+address cg_drawAmmoWarning
+address $109
+address $90
 byte 4 1
 address cg_drawAttacker
-address $108
-address $88
+address $110
+address $90
 byte 4 1
 address cg_drawCrosshair
-address $109
-address $110
+address $111
+address $112
 byte 4 1
 address cg_drawCrosshairNames
-address $111
-address $88
+address $113
+address $90
 byte 4 1
 address cg_drawRewards
-address $112
-address $88
+address $114
+address $90
 byte 4 1
 address cg_crosshairSize
-address $113
-address $114
+address $115
+address $116
 byte 4 1
 address cg_crosshairHealth
-address $115
-address $88
+address $117
+address $90
 byte 4 1
 address cg_crosshairX
-address $116
-address $86
-byte 4 1
-address cg_crosshairY
-address $117
-address $86
-byte 4 1
-address cg_brassTime
 address $118
-address $119
-byte 4 1
-address cg_simpleItems
-address $120
-address $86
-byte 4 1
-address cg_addMarks
-address $121
 address $88
 byte 4 1
-address cg_lagometer
+address cg_crosshairY
+address $119
+address $88
+byte 4 1
+address cg_brassTime
+address $120
+address $121
+byte 4 1
+address cg_simpleItems
 address $122
 address $88
 byte 4 1
-address cg_railTrailTime
+address cg_addMarks
 address $123
+address $90
+byte 4 1
+address cg_lagometer
 address $124
+address $90
+byte 4 1
+address cg_railTrailTime
+address $125
+address $126
 byte 4 1
 address cg_gun_x
-address $125
-address $86
+address $127
+address $88
 byte 4 512
 address cg_gun_y
-address $126
-address $86
+address $128
+address $88
 byte 4 512
 address cg_gun_z
-address $127
-address $86
+address $129
+address $88
 byte 4 512
 address cg_centertime
-address $128
-address $129
-byte 4 512
-address cg_runpitch
 address $130
 address $131
-byte 4 1
-address cg_runroll
+byte 4 512
+address cg_runpitch
 address $132
 address $133
 byte 4 1
-address cg_bobup
+address cg_runroll
 address $134
-address $133
+address $135
+byte 4 1
+address cg_bobup
+address $136
+address $135
 byte 4 1
 address cg_bobpitch
-address $135
-address $131
+address $137
+address $133
 byte 4 1
 address cg_bobroll
-address $136
-address $131
+address $138
+address $133
 byte 4 1
 address cg_swingSpeed
-address $137
-address $138
+address $139
+address $140
 byte 4 512
 address cg_animSpeed
-address $139
-address $88
+address $141
+address $90
 byte 4 512
 address cg_debugAnim
-address $140
-address $86
+address $142
+address $88
 byte 4 512
 address cg_debugPosition
-address $141
-address $86
+address $143
+address $88
 byte 4 512
 address cg_debugEvents
-address $142
-address $86
+address $144
+address $88
 byte 4 512
 address cg_errorDecay
-address $143
-address $95
+address $145
+address $97
 byte 4 0
 address cg_nopredict
-address $144
-address $86
+address $146
+address $88
 byte 4 0
 address cg_noPlayerAnims
-address $145
-address $86
-byte 4 512
-address cg_showmiss
-address $146
-address $86
-byte 4 0
-address cg_footsteps
 address $147
 address $88
 byte 4 512
-address cg_tracerChance
+address cg_showmiss
 address $148
-address $97
+address $88
+byte 4 0
+address cg_footsteps
+address $149
+address $90
+byte 4 512
+address cg_tracerChance
+address $150
+address $99
 byte 4 512
 address cg_tracerWidth
-address $149
-address $88
+address $151
+address $90
 byte 4 512
 address cg_tracerLength
-address $150
-address $95
+address $152
+address $97
 byte 4 512
 address cg_thirdPersonRange
-address $151
-address $152
+address $153
+address $154
 byte 4 512
 address cg_thirdPersonAngle
-address $153
-address $86
+address $155
+address $88
 byte 4 512
 address cg_thirdPerson
-address $154
-address $86
+address $156
+address $88
 byte 4 0
 address cg_teamChatTime
-address $155
-address $156
+address $157
+address $158
 byte 4 1
 address cg_teamChatHeight
-address $157
-address $86
-byte 4 1
-address cg_forceModel
-address $158
-address $86
-byte 4 1
-address cg_predictItems
 address $159
 address $88
 byte 4 1
-address cg_deferPlayers
+address cg_forceModel
 address $160
 address $88
 byte 4 1
-address cg_drawTeamOverlay
+address cg_predictItems
 address $161
-address $86
+address $90
+byte 4 1
+address cg_deferPlayers
+address $162
+address $90
+byte 4 1
+address cg_drawTeamOverlay
+address $163
+address $88
 byte 4 1
 address cg_teamOverlayUserinfo
-address $162
-address $86
-byte 4 66
-address cg_stats
-address $163
-address $86
-byte 4 0
-address cg_drawFriend
 address $164
 address $88
+byte 4 66
+address cg_stats
+address $165
+address $88
+byte 4 0
+address cg_drawFriend
+address $166
+address $90
 byte 4 1
 address cg_teamChatsOnly
-address $165
-address $86
+address $167
+address $88
 byte 4 1
 address cg_noVoiceChats
-address $166
-address $86
+address $168
+address $88
 byte 4 1
 address cg_noVoiceText
-address $167
-address $86
+address $169
+address $88
 byte 4 1
 address cg_buildScript
-address $168
-address $86
-byte 4 0
-address cg_paused
-address $169
-address $86
-byte 4 64
-address cg_blood
 address $170
 address $88
+byte 4 0
+address cg_paused
+address $171
+address $88
+byte 4 64
+address cg_blood
+address $172
+address $90
 byte 4 1
 address cg_synchronousClients
-address $171
-address $86
+address $173
+address $88
 byte 4 0
 address cg_hudFiles
-address $172
-address $173
+address $174
+address $175
 byte 4 1
 address cg_cameraOrbit
-address $174
-address $86
+address $176
+address $88
 byte 4 512
 address cg_cameraOrbitDelay
-address $175
-address $176
+address $177
+address $178
 byte 4 1
 address cg_timescaleFadeEnd
-address $177
-address $88
+address $179
+address $90
 byte 4 0
 address cg_timescaleFadeSpeed
-address $178
-address $86
-byte 4 0
-address cg_timescale
-address $179
-address $88
-byte 4 0
-address cg_scorePlum
 address $180
 address $88
+byte 4 0
+address cg_timescale
+address $181
+address $90
+byte 4 0
+address cg_scorePlum
+address $182
+address $90
 byte 4 3
 address cg_cameraMode
-address $181
-address $86
+address $183
+address $88
 byte 4 512
 address pmove_fixed
-address $182
-address $86
+address $184
+address $88
 byte 4 0
 address pmove_msec
-address $183
-address $184
+address $185
+address $186
 byte 4 0
 address cg_noTaunt
-address $185
-address $86
+address $187
+address $88
 byte 4 1
 address cg_noProjectileTrail
-address $186
-address $86
+address $188
+address $88
 byte 4 1
 address cg_smallFont
-address $187
-address $188
+address $189
+address $190
 byte 4 1
 address cg_bigFont
-address $189
-address $97
+address $191
+address $99
 byte 4 1
 address cg_oldRail
-address $190
-address $88
+address $192
+address $90
 byte 4 1
 address cg_oldRocket
-address $191
-address $88
+address $193
+address $90
 byte 4 1
 address cg_oldPlasma
-address $192
-address $88
+address $194
+address $90
 byte 4 1
 address cg_delag
-address $193
-address $88
+address $195
+address $90
 byte 4 3
 address cg_debugDelag
-address $194
-address $86
+address $196
+address $88
 byte 4 514
 address cg_drawBBox
-address $195
-address $86
+address $197
+address $88
 byte 4 512
 address cg_cmdTimeNudge
-address $196
-address $86
+address $198
+address $88
 byte 4 3
 address sv_fps
-address $197
-address $198
+address $199
+address $200
 byte 4 0
 address cg_projectileNudge
-address $199
-address $86
-byte 4 1
-address cg_optimizePrediction
-address $200
+address $201
 address $88
 byte 4 1
+address cg_optimizePrediction
+address $202
+address $90
+byte 4 1
 address cl_timeNudge
-address $201
-address $86
+address $203
+address $88
 byte 4 1
 address cg_latentSnaps
-address $202
-address $86
+address $204
+address $88
 byte 4 514
 address cg_latentCmds
-address $203
-address $86
+address $205
+address $88
 byte 4 514
 address cg_plOut
-address $204
-address $86
+address $206
+address $88
 byte 4 514
 address cg_trueLightning
-address $205
-address $206
+address $207
+address $208
 byte 4 1
 align 4
 LABELV cvarTableSize
@@ -955,9 +955,9 @@ ASGNI4
 ADDRLP4 0
 ADDRGP4 cvarTable
 ASGNP4
-ADDRGP4 $211
+ADDRGP4 $213
 JUMPV
-LABELV $208
+LABELV $210
 line 354
 ;354:		trap_Cvar_Register( cv->vmCvar, cv->cvarName,
 ADDRLP4 0
@@ -988,7 +988,7 @@ pop
 line 356
 ;355:			cv->defaultString, cv->cvarFlags );
 ;356:	}
-LABELV $209
+LABELV $211
 line 353
 ADDRLP4 4
 ADDRLP4 4
@@ -1002,17 +1002,17 @@ INDIRP4
 CNSTI4 16
 ADDP4
 ASGNP4
-LABELV $211
+LABELV $213
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cvarTableSize
 INDIRI4
-LTI4 $208
+LTI4 $210
 line 359
 ;357:
 ;358:	// see if we are also running the server on this machine
 ;359:	trap_Cvar_VariableStringBuffer( "sv_running", var, sizeof( var ) );
-ADDRGP4 $212
+ADDRGP4 $214
 ARGP4
 ADDRLP4 8
 ARGP4
@@ -1045,9 +1045,9 @@ line 364
 ;364:	trap_Cvar_Register(NULL, "model", DEFAULT_MODEL, CVAR_USERINFO | CVAR_ARCHIVE );
 CNSTP4 0
 ARGP4
-ADDRGP4 $215
+ADDRGP4 $217
 ARGP4
-ADDRGP4 $216
+ADDRGP4 $218
 ARGP4
 CNSTI4 3
 ARGI4
@@ -1058,9 +1058,9 @@ line 365
 ;365:	trap_Cvar_Register(NULL, "headmodel", DEFAULT_MODEL, CVAR_USERINFO | CVAR_ARCHIVE );
 CNSTP4 0
 ARGP4
-ADDRGP4 $217
+ADDRGP4 $219
 ARGP4
-ADDRGP4 $216
+ADDRGP4 $218
 ARGP4
 CNSTI4 3
 ARGI4
@@ -1071,9 +1071,9 @@ line 366
 ;366:	trap_Cvar_Register(NULL, "team_model", DEFAULT_TEAM_MODEL, CVAR_USERINFO | CVAR_ARCHIVE );
 CNSTP4 0
 ARGP4
-ADDRGP4 $218
+ADDRGP4 $220
 ARGP4
-ADDRGP4 $216
+ADDRGP4 $218
 ARGP4
 CNSTI4 3
 ARGI4
@@ -1084,9 +1084,9 @@ line 367
 ;367:	trap_Cvar_Register(NULL, "team_headmodel", DEFAULT_TEAM_HEAD, CVAR_USERINFO | CVAR_ARCHIVE );
 CNSTP4 0
 ARGP4
-ADDRGP4 $219
+ADDRGP4 $221
 ARGP4
-ADDRGP4 $216
+ADDRGP4 $218
 ARGP4
 CNSTI4 3
 ARGI4
@@ -1095,7 +1095,7 @@ CALLV
 pop
 line 368
 ;368:}
-LABELV $207
+LABELV $209
 endproc CG_RegisterCvars 1036 16
 proc CG_ForceModelChange 12 4
 line 375
@@ -1113,7 +1113,7 @@ line 378
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $221
+LABELV $223
 line 381
 ;379:		const char		*clientInfo;
 ;380:
@@ -1138,12 +1138,12 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $225
+NEI4 $227
 line 383
 ;383:			continue;
-ADDRGP4 $222
+ADDRGP4 $224
 JUMPV
-LABELV $225
+LABELV $227
 line 385
 ;384:		}
 ;385:		CG_NewClientInfo( i );
@@ -1155,7 +1155,7 @@ CALLV
 pop
 line 386
 ;386:	}
-LABELV $222
+LABELV $224
 line 378
 ADDRLP4 0
 ADDRLP4 0
@@ -1166,10 +1166,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $221
+LTI4 $223
 line 387
 ;387:}
-LABELV $220
+LABELV $222
 endproc CG_ForceModelChange 12 4
 export CG_UpdateCvars
 proc CG_UpdateCvars 12 16
@@ -1192,9 +1192,9 @@ ASGNI4
 ADDRLP4 0
 ADDRGP4 cvarTable
 ASGNP4
-ADDRGP4 $231
+ADDRGP4 $233
 JUMPV
-LABELV $228
+LABELV $230
 line 403
 ;399://unlagged - client options
 ;400:		// clamp the value between 0 and 999
@@ -1207,7 +1207,7 @@ INDIRP4
 CVPU4 4
 ADDRGP4 cg_cmdTimeNudge
 CVPU4 4
-NEU4 $232
+NEU4 $234
 line 404
 ;404:			CG_Cvar_ClampInt( cv->cvarName, cv->vmCvar, 0, 999 );
 ADDRLP4 0
@@ -1229,9 +1229,9 @@ CALLI4
 pop
 line 405
 ;405:		}
-ADDRGP4 $233
+ADDRGP4 $235
 JUMPV
-LABELV $232
+LABELV $234
 line 410
 ;406:		// cl_timenudge less than -50 or greater than 50 doesn't actually
 ;407:		// do anything more than -50 or 50 (actually the numbers are probably
@@ -1244,7 +1244,7 @@ INDIRP4
 CVPU4 4
 ADDRGP4 cl_timeNudge
 CVPU4 4
-NEU4 $234
+NEU4 $236
 line 411
 ;411:			CG_Cvar_ClampInt( cv->cvarName, cv->vmCvar, -50, 50 );
 ADDRLP4 0
@@ -1266,9 +1266,9 @@ CALLI4
 pop
 line 412
 ;412:		}
-ADDRGP4 $235
+ADDRGP4 $237
 JUMPV
-LABELV $234
+LABELV $236
 line 414
 ;413:		// don't let this go too high - no point
 ;414:		else if ( cv->vmCvar == &cg_latentSnaps ) {
@@ -1278,7 +1278,7 @@ INDIRP4
 CVPU4 4
 ADDRGP4 cg_latentSnaps
 CVPU4 4
-NEU4 $236
+NEU4 $238
 line 415
 ;415:			CG_Cvar_ClampInt( cv->cvarName, cv->vmCvar, 0, 10 );
 ADDRLP4 0
@@ -1300,9 +1300,9 @@ CALLI4
 pop
 line 416
 ;416:		}
-ADDRGP4 $237
+ADDRGP4 $239
 JUMPV
-LABELV $236
+LABELV $238
 line 418
 ;417:		// don't let this get too large
 ;418:		else if ( cv->vmCvar == &cg_latentCmds ) {
@@ -1312,7 +1312,7 @@ INDIRP4
 CVPU4 4
 ADDRGP4 cg_latentCmds
 CVPU4 4
-NEU4 $238
+NEU4 $240
 line 419
 ;419:			CG_Cvar_ClampInt( cv->cvarName, cv->vmCvar, 0, MAX_LATENT_CMDS - 1 );
 ADDRLP4 0
@@ -1334,9 +1334,9 @@ CALLI4
 pop
 line 420
 ;420:		}
-ADDRGP4 $239
+ADDRGP4 $241
 JUMPV
-LABELV $238
+LABELV $240
 line 422
 ;421:		// no more than 100% packet loss
 ;422:		else if ( cv->vmCvar == &cg_plOut ) {
@@ -1346,7 +1346,7 @@ INDIRP4
 CVPU4 4
 ADDRGP4 cg_plOut
 CVPU4 4
-NEU4 $240
+NEU4 $242
 line 423
 ;423:			CG_Cvar_ClampInt( cv->cvarName, cv->vmCvar, 0, 100 );
 ADDRLP4 0
@@ -1368,11 +1368,11 @@ CALLI4
 pop
 line 424
 ;424:		}
-LABELV $240
+LABELV $242
+LABELV $241
 LABELV $239
 LABELV $237
 LABELV $235
-LABELV $233
 line 426
 ;425://unlagged - client options
 ;426:		trap_Cvar_Update( cv->vmCvar );
@@ -1385,7 +1385,7 @@ CALLV
 pop
 line 427
 ;427:	}
-LABELV $229
+LABELV $231
 line 398
 ADDRLP4 4
 ADDRLP4 4
@@ -1399,12 +1399,12 @@ INDIRP4
 CNSTI4 16
 ADDP4
 ASGNP4
-LABELV $231
+LABELV $233
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cvarTableSize
 INDIRI4
-LTI4 $228
+LTI4 $230
 line 433
 ;428:
 ;429:	// check for modications here
@@ -1416,7 +1416,7 @@ ADDRGP4 drawTeamOverlayModificationCount
 INDIRI4
 ADDRGP4 cg_drawTeamOverlay+4
 INDIRI4
-EQI4 $242
+EQI4 $244
 line 434
 ;434:		drawTeamOverlayModificationCount = cg_drawTeamOverlay.modificationCount;
 ADDRGP4 drawTeamOverlayModificationCount
@@ -1429,46 +1429,46 @@ line 436
 ADDRGP4 cg_drawTeamOverlay+12
 INDIRI4
 CNSTI4 0
-LEI4 $246
+LEI4 $248
 line 437
 ;437:			trap_Cvar_Set( "teamoverlay", "1" );
-ADDRGP4 $162
+ADDRGP4 $164
 ARGP4
-ADDRGP4 $88
+ADDRGP4 $90
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 438
 ;438:		} else {
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $246
+LABELV $248
 line 439
 ;439:			trap_Cvar_Set( "teamoverlay", "0" );
-ADDRGP4 $162
-ARGP4
-ADDRGP4 $86
-ARGP4
-ADDRGP4 trap_Cvar_Set
-CALLV
-pop
-line 440
-;440:		}
-LABELV $247
-line 442
-;441:		// FIXME E3 HACK
-;442:		trap_Cvar_Set( "teamoverlay", "1" );
-ADDRGP4 $162
+ADDRGP4 $164
 ARGP4
 ADDRGP4 $88
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
+line 440
+;440:		}
+LABELV $249
+line 442
+;441:		// FIXME E3 HACK
+;442:		trap_Cvar_Set( "teamoverlay", "1" );
+ADDRGP4 $164
+ARGP4
+ADDRGP4 $90
+ARGP4
+ADDRGP4 trap_Cvar_Set
+CALLV
+pop
 line 443
 ;443:	}
-LABELV $242
+LABELV $244
 line 446
 ;444:
 ;445:	// if force model changed
@@ -1477,7 +1477,7 @@ ADDRGP4 forceModelModificationCount
 INDIRI4
 ADDRGP4 cg_forceModel+4
 INDIRI4
-EQI4 $249
+EQI4 $251
 line 447
 ;447:		forceModelModificationCount = cg_forceModel.modificationCount;
 ADDRGP4 forceModelModificationCount
@@ -1491,10 +1491,10 @@ CALLV
 pop
 line 449
 ;449:	}
-LABELV $249
+LABELV $251
 line 450
 ;450:}
-LABELV $227
+LABELV $229
 endproc CG_UpdateCvars 12 16
 export CG_CrosshairPlayer
 proc CG_CrosshairPlayer 0 0
@@ -1509,21 +1509,21 @@ ADDRGP4 cg+124416
 INDIRI4
 CNSTI4 1000
 ADDI4
-LEI4 $254
+LEI4 $256
 line 454
 ;454:		return -1;
 CNSTI4 -1
 RETI4
-ADDRGP4 $253
+ADDRGP4 $255
 JUMPV
-LABELV $254
+LABELV $256
 line 456
 ;455:	}
 ;456:	return cg.crosshairClientNum;
 ADDRGP4 cg+124412
 INDIRI4
 RETI4
-LABELV $253
+LABELV $255
 endproc CG_CrosshairPlayer 0 0
 export CG_LastAttacker
 proc CG_LastAttacker 0 0
@@ -1536,14 +1536,14 @@ line 460
 ADDRGP4 cg+124428
 INDIRI4
 CNSTI4 0
-NEI4 $260
+NEI4 $262
 line 461
 ;461:		return -1;
 CNSTI4 -1
 RETI4
-ADDRGP4 $259
+ADDRGP4 $261
 JUMPV
-LABELV $260
+LABELV $262
 line 463
 ;462:	}
 ;463:	return cg.snap->ps.persistant[PERS_ATTACKER];
@@ -1553,7 +1553,7 @@ CNSTI4 316
 ADDP4
 INDIRI4
 RETI4
-LABELV $259
+LABELV $261
 endproc CG_LastAttacker 0 0
 export CG_Printf
 proc CG_Printf 1028 12
@@ -1597,7 +1597,7 @@ CALLV
 pop
 line 475
 ;475:}
-LABELV $264
+LABELV $266
 endproc CG_Printf 1028 12
 export CG_Error
 proc CG_Error 1028 12
@@ -1640,7 +1640,7 @@ CALLV
 pop
 line 486
 ;486:}
-LABELV $266
+LABELV $268
 endproc CG_Error 1028 12
 export Com_Error
 proc Com_Error 1028 12
@@ -1679,7 +1679,7 @@ ASGNP4
 line 499
 ;498:
 ;499:	CG_Error( "%s", text);
-ADDRGP4 $270
+ADDRGP4 $272
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -1688,7 +1688,7 @@ CALLV
 pop
 line 500
 ;500:}
-LABELV $268
+LABELV $270
 endproc Com_Error 1028 12
 export Com_Printf
 proc Com_Printf 1028 12
@@ -1724,7 +1724,7 @@ ASGNP4
 line 510
 ;509:
 ;510:	CG_Printf ("%s", text);
-ADDRGP4 $270
+ADDRGP4 $272
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -1733,11 +1733,11 @@ CALLV
 pop
 line 511
 ;511:}
-LABELV $271
+LABELV $273
 endproc Com_Printf 1028 12
 bss
 align 1
-LABELV $274
+LABELV $276
 skip 1024
 export CG_Argv
 code
@@ -1759,7 +1759,7 @@ line 523
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $274
+ADDRGP4 $276
 ARGP4
 CNSTI4 1024
 ARGI4
@@ -1769,9 +1769,9 @@ pop
 line 525
 ;524:
 ;525:	return buffer;
-ADDRGP4 $274
+ADDRGP4 $276
 RETP4
-LABELV $273
+LABELV $275
 endproc CG_Argv 0 12
 proc CG_RegisterItemSounds 96 12
 line 538
@@ -1813,7 +1813,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $276
+EQU4 $278
 line 547
 ;547:		trap_S_RegisterSound( item->pickup_sound, qfalse );
 ADDRLP4 76
@@ -1829,7 +1829,7 @@ CALLI4
 pop
 line 548
 ;548:	}
-LABELV $276
+LABELV $278
 line 551
 ;549:
 ;550:	// parse the space seperated precache string for other media
@@ -1847,19 +1847,19 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $280
+EQU4 $282
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $282
-LABELV $280
+NEI4 $284
+LABELV $282
 line 553
 ;553:		return;
-ADDRGP4 $275
+ADDRGP4 $277
 JUMPV
-LABELV $281
+LABELV $283
 line 555
 ;554:
 ;555:	while (*s) {
@@ -1869,9 +1869,9 @@ ADDRLP4 72
 ADDRLP4 0
 INDIRP4
 ASGNP4
-ADDRGP4 $285
+ADDRGP4 $287
 JUMPV
-LABELV $284
+LABELV $286
 line 557
 ;557:		while (*s && *s != ' ') {
 line 558
@@ -1884,7 +1884,7 @@ ADDP4
 ASGNP4
 line 559
 ;559:		}
-LABELV $285
+LABELV $287
 line 557
 ADDRLP4 84
 ADDRLP4 0
@@ -1895,12 +1895,12 @@ ASGNI4
 ADDRLP4 84
 INDIRI4
 CNSTI4 0
-EQI4 $287
+EQI4 $289
 ADDRLP4 84
 INDIRI4
 CNSTI4 32
-NEI4 $284
-LABELV $287
+NEI4 $286
+LABELV $289
 line 561
 ;560:
 ;561:		len = s-start;
@@ -1919,15 +1919,15 @@ line 562
 ADDRLP4 4
 INDIRI4
 CNSTI4 64
-GEI4 $290
+GEI4 $292
 ADDRLP4 4
 INDIRI4
 CNSTI4 5
-GEI4 $288
-LABELV $290
+GEI4 $290
+LABELV $292
 line 563
 ;563:			CG_Error( "PrecacheItem: %s has bad precache string", 
-ADDRGP4 $291
+ADDRGP4 $293
 ARGP4
 ADDRLP4 76
 INDIRP4
@@ -1939,9 +1939,9 @@ pop
 line 565
 ;564:				item->classname);
 ;565:			return;
-ADDRGP4 $275
+ADDRGP4 $277
 JUMPV
-LABELV $288
+LABELV $290
 line 567
 ;566:		}
 ;567:		memcpy (data, start, len);
@@ -1971,7 +1971,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $292
+EQI4 $294
 line 570
 ;570:			s++;
 ADDRLP4 0
@@ -1982,7 +1982,7 @@ ADDP4
 ASGNP4
 line 571
 ;571:		}
-LABELV $292
+LABELV $294
 line 573
 ;572:
 ;573:		if ( !strcmp(data+len-3, "wav" )) {
@@ -1991,7 +1991,7 @@ INDIRI4
 ADDRLP4 8-3
 ADDP4
 ARGP4
-ADDRGP4 $297
+ADDRGP4 $299
 ARGP4
 ADDRLP4 92
 ADDRGP4 strcmp
@@ -2000,7 +2000,7 @@ ASGNI4
 ADDRLP4 92
 INDIRI4
 CNSTI4 0
-NEI4 $294
+NEI4 $296
 line 574
 ;574:			trap_S_RegisterSound( data, qfalse );
 ADDRLP4 8
@@ -2012,20 +2012,20 @@ CALLI4
 pop
 line 575
 ;575:		}
-LABELV $294
+LABELV $296
 line 576
 ;576:	}
-LABELV $282
+LABELV $284
 line 555
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $281
+NEI4 $283
 line 577
 ;577:}
-LABELV $275
+LABELV $277
 endproc CG_RegisterItemSounds 96 12
 proc CG_RegisterSounds 552 16
 line 587
@@ -2051,7 +2051,7 @@ line 598
 ;596:#endif
 ;597:
 ;598:	cgs.media.oneMinuteSound = trap_S_RegisterSound( "sound/feedback/1_minute.wav", qtrue );
-ADDRGP4 $301
+ADDRGP4 $303
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2059,13 +2059,13 @@ ADDRLP4 332
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+752
+ADDRGP4 cgs+152340+760
 ADDRLP4 332
 INDIRI4
 ASGNI4
 line 599
 ;599:	cgs.media.fiveMinuteSound = trap_S_RegisterSound( "sound/feedback/5_minute.wav", qtrue );
-ADDRGP4 $304
+ADDRGP4 $306
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2073,13 +2073,13 @@ ADDRLP4 336
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+756
+ADDRGP4 cgs+152340+764
 ADDRLP4 336
 INDIRI4
 ASGNI4
 line 600
 ;600:	cgs.media.suddenDeathSound = trap_S_RegisterSound( "sound/feedback/sudden_death.wav", qtrue );
-ADDRGP4 $307
+ADDRGP4 $309
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2087,13 +2087,13 @@ ADDRLP4 340
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+760
+ADDRGP4 cgs+152340+768
 ADDRLP4 340
 INDIRI4
 ASGNI4
 line 601
 ;601:	cgs.media.oneFragSound = trap_S_RegisterSound( "sound/feedback/1_frag.wav", qtrue );
-ADDRGP4 $310
+ADDRGP4 $312
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2101,13 +2101,13 @@ ADDRLP4 344
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+772
+ADDRGP4 cgs+152340+780
 ADDRLP4 344
 INDIRI4
 ASGNI4
 line 602
 ;602:	cgs.media.twoFragSound = trap_S_RegisterSound( "sound/feedback/2_frags.wav", qtrue );
-ADDRGP4 $313
+ADDRGP4 $315
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2115,13 +2115,13 @@ ADDRLP4 348
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+768
+ADDRGP4 cgs+152340+776
 ADDRLP4 348
 INDIRI4
 ASGNI4
 line 603
 ;603:	cgs.media.threeFragSound = trap_S_RegisterSound( "sound/feedback/3_frags.wav", qtrue );
-ADDRGP4 $316
+ADDRGP4 $318
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2129,13 +2129,13 @@ ADDRLP4 352
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+764
+ADDRGP4 cgs+152340+772
 ADDRLP4 352
 INDIRI4
 ASGNI4
 line 604
 ;604:	cgs.media.count3Sound = trap_S_RegisterSound( "sound/feedback/three.wav", qtrue );
-ADDRGP4 $319
+ADDRGP4 $321
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2143,13 +2143,13 @@ ADDRLP4 356
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+964
+ADDRGP4 cgs+152340+972
 ADDRLP4 356
 INDIRI4
 ASGNI4
 line 605
 ;605:	cgs.media.count2Sound = trap_S_RegisterSound( "sound/feedback/two.wav", qtrue );
-ADDRGP4 $322
+ADDRGP4 $324
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2157,13 +2157,13 @@ ADDRLP4 360
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+968
+ADDRGP4 cgs+152340+976
 ADDRLP4 360
 INDIRI4
 ASGNI4
 line 606
 ;606:	cgs.media.count1Sound = trap_S_RegisterSound( "sound/feedback/one.wav", qtrue );
-ADDRGP4 $325
+ADDRGP4 $327
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2171,13 +2171,13 @@ ADDRLP4 364
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+972
+ADDRGP4 cgs+152340+980
 ADDRLP4 364
 INDIRI4
 ASGNI4
 line 607
 ;607:	cgs.media.countFightSound = trap_S_RegisterSound( "sound/feedback/fight.wav", qtrue );
-ADDRGP4 $328
+ADDRGP4 $330
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2185,13 +2185,13 @@ ADDRLP4 368
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+976
+ADDRGP4 cgs+152340+984
 ADDRLP4 368
 INDIRI4
 ASGNI4
 line 608
 ;608:	cgs.media.countPrepareSound = trap_S_RegisterSound( "sound/feedback/prepare.wav", qtrue );
-ADDRGP4 $331
+ADDRGP4 $333
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2199,7 +2199,7 @@ ADDRLP4 372
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+980
+ADDRGP4 cgs+152340+988
 ADDRLP4 372
 INDIRI4
 ASGNI4
@@ -2212,16 +2212,16 @@ line 613
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
-GEI4 $336
+GEI4 $338
 ADDRGP4 cg_buildScript+12
 INDIRI4
 CNSTI4 0
-EQI4 $332
-LABELV $336
+EQI4 $334
+LABELV $338
 line 615
 ;614:
 ;615:		cgs.media.captureAwardSound = trap_S_RegisterSound( "sound/teamplay/flagcapture_yourteam.wav", qtrue );
-ADDRGP4 $339
+ADDRGP4 $341
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2229,13 +2229,13 @@ ADDRLP4 376
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+876
+ADDRGP4 cgs+152340+884
 ADDRLP4 376
 INDIRI4
 ASGNI4
 line 616
 ;616:		cgs.media.redLeadsSound = trap_S_RegisterSound( "sound/feedback/redleads.wav", qtrue );
-ADDRGP4 $342
+ADDRGP4 $344
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2243,13 +2243,13 @@ ADDRLP4 380
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+888
+ADDRGP4 cgs+152340+896
 ADDRLP4 380
 INDIRI4
 ASGNI4
 line 617
 ;617:		cgs.media.blueLeadsSound = trap_S_RegisterSound( "sound/feedback/blueleads.wav", qtrue );
-ADDRGP4 $345
+ADDRGP4 $347
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2257,13 +2257,13 @@ ADDRLP4 384
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+892
+ADDRGP4 cgs+152340+900
 ADDRLP4 384
 INDIRI4
 ASGNI4
 line 618
 ;618:		cgs.media.teamsTiedSound = trap_S_RegisterSound( "sound/feedback/teamstied.wav", qtrue );
-ADDRGP4 $348
+ADDRGP4 $350
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2271,13 +2271,13 @@ ADDRLP4 388
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+896
+ADDRGP4 cgs+152340+904
 ADDRLP4 388
 INDIRI4
 ASGNI4
 line 619
 ;619:		cgs.media.hitTeamSound = trap_S_RegisterSound( "sound/feedback/hit_teammate.wav", qtrue );
-ADDRGP4 $351
+ADDRGP4 $353
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2285,14 +2285,14 @@ ADDRLP4 392
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+788
+ADDRGP4 cgs+152340+796
 ADDRLP4 392
 INDIRI4
 ASGNI4
 line 621
 ;620:
 ;621:		cgs.media.redScoredSound = trap_S_RegisterSound( "sound/teamplay/voc_red_scores.wav", qtrue );
-ADDRGP4 $354
+ADDRGP4 $356
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2300,13 +2300,13 @@ ADDRLP4 396
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+880
+ADDRGP4 cgs+152340+888
 ADDRLP4 396
 INDIRI4
 ASGNI4
 line 622
 ;622:		cgs.media.blueScoredSound = trap_S_RegisterSound( "sound/teamplay/voc_blue_scores.wav", qtrue );
-ADDRGP4 $357
+ADDRGP4 $359
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2314,14 +2314,14 @@ ADDRLP4 400
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+884
+ADDRGP4 cgs+152340+892
 ADDRLP4 400
 INDIRI4
 ASGNI4
 line 624
 ;623:
 ;624:		cgs.media.captureYourTeamSound = trap_S_RegisterSound( "sound/teamplay/flagcapture_yourteam.wav", qtrue );
-ADDRGP4 $339
+ADDRGP4 $341
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2329,13 +2329,13 @@ ADDRLP4 404
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+900
+ADDRGP4 cgs+152340+908
 ADDRLP4 404
 INDIRI4
 ASGNI4
 line 625
 ;625:		cgs.media.captureOpponentSound = trap_S_RegisterSound( "sound/teamplay/flagcapture_opponent.wav", qtrue );
-ADDRGP4 $362
+ADDRGP4 $364
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2343,14 +2343,14 @@ ADDRLP4 408
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+904
+ADDRGP4 cgs+152340+912
 ADDRLP4 408
 INDIRI4
 ASGNI4
 line 627
 ;626:
 ;627:		cgs.media.returnYourTeamSound = trap_S_RegisterSound( "sound/teamplay/flagreturn_yourteam.wav", qtrue );
-ADDRGP4 $365
+ADDRGP4 $367
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2358,13 +2358,13 @@ ADDRLP4 412
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+908
+ADDRGP4 cgs+152340+916
 ADDRLP4 412
 INDIRI4
 ASGNI4
 line 628
 ;628:		cgs.media.returnOpponentSound = trap_S_RegisterSound( "sound/teamplay/flagreturn_opponent.wav", qtrue );
-ADDRGP4 $368
+ADDRGP4 $370
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2372,14 +2372,14 @@ ADDRLP4 416
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+912
+ADDRGP4 cgs+152340+920
 ADDRLP4 416
 INDIRI4
 ASGNI4
 line 630
 ;629:
 ;630:		cgs.media.takenYourTeamSound = trap_S_RegisterSound( "sound/teamplay/flagtaken_yourteam.wav", qtrue );
-ADDRGP4 $371
+ADDRGP4 $373
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2387,13 +2387,13 @@ ADDRLP4 420
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+916
+ADDRGP4 cgs+152340+924
 ADDRLP4 420
 INDIRI4
 ASGNI4
 line 631
 ;631:		cgs.media.takenOpponentSound = trap_S_RegisterSound( "sound/teamplay/flagtaken_opponent.wav", qtrue );
-ADDRGP4 $374
+ADDRGP4 $376
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2401,7 +2401,7 @@ ADDRLP4 424
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+920
+ADDRGP4 cgs+152340+928
 ADDRLP4 424
 INDIRI4
 ASGNI4
@@ -2411,15 +2411,15 @@ line 633
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
-EQI4 $379
+EQI4 $381
 ADDRGP4 cg_buildScript+12
 INDIRI4
 CNSTI4 0
-EQI4 $375
-LABELV $379
+EQI4 $377
+LABELV $381
 line 634
 ;634:			cgs.media.redFlagReturnedSound = trap_S_RegisterSound( "sound/teamplay/voc_red_returned.wav", qtrue );
-ADDRGP4 $382
+ADDRGP4 $384
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2427,13 +2427,13 @@ ADDRLP4 428
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+924
+ADDRGP4 cgs+152340+932
 ADDRLP4 428
 INDIRI4
 ASGNI4
 line 635
 ;635:			cgs.media.blueFlagReturnedSound = trap_S_RegisterSound( "sound/teamplay/voc_blue_returned.wav", qtrue );
-ADDRGP4 $385
+ADDRGP4 $387
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2441,13 +2441,13 @@ ADDRLP4 432
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+928
+ADDRGP4 cgs+152340+936
 ADDRLP4 432
 INDIRI4
 ASGNI4
 line 636
 ;636:			cgs.media.enemyTookYourFlagSound = trap_S_RegisterSound( "sound/teamplay/voc_enemy_flag.wav", qtrue );
-ADDRGP4 $388
+ADDRGP4 $390
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2455,13 +2455,13 @@ ADDRLP4 436
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+936
+ADDRGP4 cgs+152340+944
 ADDRLP4 436
 INDIRI4
 ASGNI4
 line 637
 ;637:			cgs.media.yourTeamTookEnemyFlagSound = trap_S_RegisterSound( "sound/teamplay/voc_team_flag.wav", qtrue );
-ADDRGP4 $391
+ADDRGP4 $393
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2469,13 +2469,13 @@ ADDRLP4 440
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+944
+ADDRGP4 cgs+152340+952
 ADDRLP4 440
 INDIRI4
 ASGNI4
 line 638
 ;638:		}
-LABELV $375
+LABELV $377
 line 657
 ;639:
 ;640:#ifdef MISSIONPACK
@@ -2496,7 +2496,7 @@ line 657
 ;655:		}
 ;656:#else
 ;657:		cgs.media.youHaveFlagSound = trap_S_RegisterSound( "sound/teamplay/voc_you_flag.wav", qtrue );
-ADDRGP4 $394
+ADDRGP4 $396
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2504,13 +2504,13 @@ ADDRLP4 428
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+952
+ADDRGP4 cgs+152340+960
 ADDRLP4 428
 INDIRI4
 ASGNI4
 line 658
 ;658:		cgs.media.holyShitSound = trap_S_RegisterSound("sound/feedback/voc_holyshit.wav", qtrue);
-ADDRGP4 $397
+ADDRGP4 $399
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2518,13 +2518,13 @@ ADDRLP4 432
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+960
+ADDRGP4 cgs+152340+968
 ADDRLP4 432
 INDIRI4
 ASGNI4
 line 659
 ;659:		cgs.media.neutralFlagReturnedSound = trap_S_RegisterSound( "sound/teamplay/flagreturn_opponent.wav", qtrue );
-ADDRGP4 $368
+ADDRGP4 $370
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2532,13 +2532,13 @@ ADDRLP4 436
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+932
+ADDRGP4 cgs+152340+940
 ADDRLP4 436
 INDIRI4
 ASGNI4
 line 660
 ;660:		cgs.media.yourTeamTookTheFlagSound = trap_S_RegisterSound( "sound/teamplay/voc_team_1flag.wav", qtrue );
-ADDRGP4 $402
+ADDRGP4 $404
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2546,13 +2546,13 @@ ADDRLP4 440
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+948
+ADDRGP4 cgs+152340+956
 ADDRLP4 440
 INDIRI4
 ASGNI4
 line 661
 ;661:		cgs.media.enemyTookTheFlagSound = trap_S_RegisterSound( "sound/teamplay/voc_enemy_1flag.wav", qtrue );
-ADDRGP4 $405
+ADDRGP4 $407
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2560,18 +2560,18 @@ ADDRLP4 444
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+940
+ADDRGP4 cgs+152340+948
 ADDRLP4 444
 INDIRI4
 ASGNI4
 line 663
 ;662:#endif
 ;663:	}
-LABELV $332
+LABELV $334
 line 665
 ;664:
 ;665:	cgs.media.tracerSound = trap_S_RegisterSound( "sound/weapons/machinegun/buletby1.wav", qfalse );
-ADDRGP4 $408
+ADDRGP4 $410
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2579,13 +2579,13 @@ ADDRLP4 376
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+540
+ADDRGP4 cgs+152340+548
 ADDRLP4 376
 INDIRI4
 ASGNI4
 line 666
 ;666:	cgs.media.selectSound = trap_S_RegisterSound( "sound/weapons/change.wav", qfalse );
-ADDRGP4 $411
+ADDRGP4 $413
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2593,13 +2593,13 @@ ADDRLP4 380
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+544
+ADDRGP4 cgs+152340+552
 ADDRLP4 380
 INDIRI4
 ASGNI4
 line 667
 ;667:	cgs.media.wearOffSound = trap_S_RegisterSound( "sound/items/wearoff.wav", qfalse );
-ADDRGP4 $414
+ADDRGP4 $416
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2607,13 +2607,13 @@ ADDRLP4 384
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+552
+ADDRGP4 cgs+152340+560
 ADDRLP4 384
 INDIRI4
 ASGNI4
 line 668
 ;668:	cgs.media.useNothingSound = trap_S_RegisterSound( "sound/items/use_nothing.wav", qfalse );
-ADDRGP4 $417
+ADDRGP4 $419
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2621,13 +2621,13 @@ ADDRLP4 388
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+548
+ADDRGP4 cgs+152340+556
 ADDRLP4 388
 INDIRI4
 ASGNI4
 line 669
 ;669:	cgs.media.gibSound = trap_S_RegisterSound( "sound/player/gibsplt1.wav", qfalse );
-ADDRGP4 $420
+ADDRGP4 $422
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2635,13 +2635,13 @@ ADDRLP4 392
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+704
+ADDRGP4 cgs+152340+712
 ADDRLP4 392
 INDIRI4
 ASGNI4
 line 670
 ;670:	cgs.media.gibBounce1Sound = trap_S_RegisterSound( "sound/player/gibimp1.wav", qfalse );
-ADDRGP4 $423
+ADDRGP4 $425
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2649,13 +2649,13 @@ ADDRLP4 396
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+708
+ADDRGP4 cgs+152340+716
 ADDRLP4 396
 INDIRI4
 ASGNI4
 line 671
 ;671:	cgs.media.gibBounce2Sound = trap_S_RegisterSound( "sound/player/gibimp2.wav", qfalse );
-ADDRGP4 $426
+ADDRGP4 $428
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2663,13 +2663,13 @@ ADDRLP4 400
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+712
+ADDRGP4 cgs+152340+720
 ADDRLP4 400
 INDIRI4
 ASGNI4
 line 672
 ;672:	cgs.media.gibBounce3Sound = trap_S_RegisterSound( "sound/player/gibimp3.wav", qfalse );
-ADDRGP4 $429
+ADDRGP4 $431
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2677,7 +2677,7 @@ ADDRLP4 404
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+716
+ADDRGP4 cgs+152340+724
 ADDRLP4 404
 INDIRI4
 ASGNI4
@@ -2701,7 +2701,7 @@ line 691
 ;689:#endif
 ;690:
 ;691:	cgs.media.teleInSound = trap_S_RegisterSound( "sound/world/telein.wav", qfalse );
-ADDRGP4 $432
+ADDRGP4 $434
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2709,13 +2709,13 @@ ADDRLP4 408
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+720
+ADDRGP4 cgs+152340+728
 ADDRLP4 408
 INDIRI4
 ASGNI4
 line 692
 ;692:	cgs.media.teleOutSound = trap_S_RegisterSound( "sound/world/teleout.wav", qfalse );
-ADDRGP4 $435
+ADDRGP4 $437
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2723,13 +2723,13 @@ ADDRLP4 412
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+724
+ADDRGP4 cgs+152340+732
 ADDRLP4 412
 INDIRI4
 ASGNI4
 line 693
 ;693:	cgs.media.respawnSound = trap_S_RegisterSound( "sound/items/respawn1.wav", qfalse );
-ADDRGP4 $438
+ADDRGP4 $440
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2737,14 +2737,14 @@ ADDRLP4 416
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+732
+ADDRGP4 cgs+152340+740
 ADDRLP4 416
 INDIRI4
 ASGNI4
 line 695
 ;694:
 ;695:	cgs.media.noAmmoSound = trap_S_RegisterSound( "sound/weapons/noammo.wav", qfalse );
-ADDRGP4 $441
+ADDRGP4 $443
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2752,14 +2752,14 @@ ADDRLP4 420
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+728
+ADDRGP4 cgs+152340+736
 ADDRLP4 420
 INDIRI4
 ASGNI4
 line 697
 ;696:
 ;697:	cgs.media.talkSound = trap_S_RegisterSound( "sound/player/talk.wav", qfalse );
-ADDRGP4 $444
+ADDRGP4 $446
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2767,13 +2767,13 @@ ADDRLP4 424
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+736
+ADDRGP4 cgs+152340+744
 ADDRLP4 424
 INDIRI4
 ASGNI4
 line 698
 ;698:	cgs.media.landSound = trap_S_RegisterSound( "sound/player/land1.wav", qfalse);
-ADDRGP4 $447
+ADDRGP4 $449
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2781,14 +2781,14 @@ ADDRLP4 428
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+740
+ADDRGP4 cgs+152340+748
 ADDRLP4 428
 INDIRI4
 ASGNI4
 line 700
 ;699:
 ;700:	cgs.media.hitSound = trap_S_RegisterSound( "sound/feedback/hit.wav", qfalse );
-ADDRGP4 $450
+ADDRGP4 $452
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2796,7 +2796,7 @@ ADDRLP4 432
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+776
+ADDRGP4 cgs+152340+784
 ADDRLP4 432
 INDIRI4
 ASGNI4
@@ -2807,7 +2807,7 @@ line 706
 ;704:#endif
 ;705:
 ;706:	cgs.media.impressiveSound = trap_S_RegisterSound( "sound/feedback/impressive.wav", qtrue );
-ADDRGP4 $453
+ADDRGP4 $455
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2815,13 +2815,13 @@ ADDRLP4 436
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+792
+ADDRGP4 cgs+152340+800
 ADDRLP4 436
 INDIRI4
 ASGNI4
 line 707
 ;707:	cgs.media.excellentSound = trap_S_RegisterSound( "sound/feedback/excellent.wav", qtrue );
-ADDRGP4 $456
+ADDRGP4 $458
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2829,13 +2829,13 @@ ADDRLP4 440
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+796
+ADDRGP4 cgs+152340+804
 ADDRLP4 440
 INDIRI4
 ASGNI4
 line 708
 ;708:	cgs.media.deniedSound = trap_S_RegisterSound( "sound/feedback/denied.wav", qtrue );
-ADDRGP4 $459
+ADDRGP4 $461
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2843,13 +2843,13 @@ ADDRLP4 444
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+800
+ADDRGP4 cgs+152340+808
 ADDRLP4 444
 INDIRI4
 ASGNI4
 line 709
 ;709:	cgs.media.humiliationSound = trap_S_RegisterSound( "sound/feedback/humiliation.wav", qtrue );
-ADDRGP4 $462
+ADDRGP4 $464
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2857,13 +2857,13 @@ ADDRLP4 448
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+804
+ADDRGP4 cgs+152340+812
 ADDRLP4 448
 INDIRI4
 ASGNI4
 line 710
 ;710:	cgs.media.assistSound = trap_S_RegisterSound( "sound/feedback/assist.wav", qtrue );
-ADDRGP4 $465
+ADDRGP4 $467
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2871,13 +2871,13 @@ ADDRLP4 452
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+808
+ADDRGP4 cgs+152340+816
 ADDRLP4 452
 INDIRI4
 ASGNI4
 line 711
 ;711:	cgs.media.defendSound = trap_S_RegisterSound( "sound/feedback/defense.wav", qtrue );
-ADDRGP4 $468
+ADDRGP4 $470
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2885,7 +2885,7 @@ ADDRLP4 456
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+812
+ADDRGP4 cgs+152340+820
 ADDRLP4 456
 INDIRI4
 ASGNI4
@@ -2897,7 +2897,7 @@ line 718
 ;716:#endif
 ;717:
 ;718:	cgs.media.takenLeadSound = trap_S_RegisterSound( "sound/feedback/takenlead.wav", qtrue);
-ADDRGP4 $471
+ADDRGP4 $473
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2905,13 +2905,13 @@ ADDRLP4 460
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+828
+ADDRGP4 cgs+152340+836
 ADDRLP4 460
 INDIRI4
 ASGNI4
 line 719
 ;719:	cgs.media.tiedLeadSound = trap_S_RegisterSound( "sound/feedback/tiedlead.wav", qtrue);
-ADDRGP4 $474
+ADDRGP4 $476
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2919,13 +2919,13 @@ ADDRLP4 464
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+832
+ADDRGP4 cgs+152340+840
 ADDRLP4 464
 INDIRI4
 ASGNI4
 line 720
 ;720:	cgs.media.lostLeadSound = trap_S_RegisterSound( "sound/feedback/lostlead.wav", qtrue);
-ADDRGP4 $477
+ADDRGP4 $479
 ARGP4
 CNSTI4 1
 ARGI4
@@ -2933,7 +2933,7 @@ ADDRLP4 468
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+836
+ADDRGP4 cgs+152340+844
 ADDRLP4 468
 INDIRI4
 ASGNI4
@@ -2946,7 +2946,7 @@ line 728
 ;726:#endif
 ;727:
 ;728:	cgs.media.watrInSound = trap_S_RegisterSound( "sound/player/watr_in.wav", qfalse);
-ADDRGP4 $480
+ADDRGP4 $482
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2954,13 +2954,13 @@ ADDRLP4 472
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+852
+ADDRGP4 cgs+152340+860
 ADDRLP4 472
 INDIRI4
 ASGNI4
 line 729
 ;729:	cgs.media.watrOutSound = trap_S_RegisterSound( "sound/player/watr_out.wav", qfalse);
-ADDRGP4 $483
+ADDRGP4 $485
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2968,13 +2968,13 @@ ADDRLP4 476
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+856
+ADDRGP4 cgs+152340+864
 ADDRLP4 476
 INDIRI4
 ASGNI4
 line 730
 ;730:	cgs.media.watrUnSound = trap_S_RegisterSound( "sound/player/watr_un.wav", qfalse);
-ADDRGP4 $486
+ADDRGP4 $488
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2982,14 +2982,14 @@ ADDRLP4 480
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+860
+ADDRGP4 cgs+152340+868
 ADDRLP4 480
 INDIRI4
 ASGNI4
 line 732
 ;731:
 ;732:	cgs.media.jumpPadSound = trap_S_RegisterSound ("sound/world/jumppad.wav", qfalse );
-ADDRGP4 $489
+ADDRGP4 $491
 ARGP4
 CNSTI4 0
 ARGI4
@@ -2997,7 +2997,7 @@ ADDRLP4 484
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+748
+ADDRGP4 cgs+152340+756
 ADDRLP4 484
 INDIRI4
 ASGNI4
@@ -3007,14 +3007,14 @@ line 734
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $490
+LABELV $492
 line 735
 ;735:		Com_sprintf (name, sizeof(name), "sound/player/footsteps/step%i.wav", i+1);
 ADDRLP4 4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $494
+ADDRGP4 $496
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -3038,7 +3038,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+152340+556
+ADDRGP4 cgs+152340+564
 ADDP4
 ADDRLP4 488
 INDIRI4
@@ -3050,7 +3050,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $497
+ADDRGP4 $499
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -3074,7 +3074,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+152340+556+16
+ADDRGP4 cgs+152340+564+16
 ADDP4
 ADDRLP4 492
 INDIRI4
@@ -3086,7 +3086,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $501
+ADDRGP4 $503
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -3110,7 +3110,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+152340+556+32
+ADDRGP4 cgs+152340+564+32
 ADDP4
 ADDRLP4 496
 INDIRI4
@@ -3122,7 +3122,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $505
+ADDRGP4 $507
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -3146,7 +3146,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+152340+556+48
+ADDRGP4 cgs+152340+564+48
 ADDP4
 ADDRLP4 500
 INDIRI4
@@ -3158,7 +3158,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $509
+ADDRGP4 $511
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -3182,7 +3182,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+152340+556+64
+ADDRGP4 cgs+152340+564+64
 ADDP4
 ADDRLP4 504
 INDIRI4
@@ -3194,7 +3194,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $513
+ADDRGP4 $515
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -3218,7 +3218,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+152340+556+96
+ADDRGP4 cgs+152340+564+96
 ADDP4
 ADDRLP4 508
 INDIRI4
@@ -3230,7 +3230,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $517
+ADDRGP4 $519
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -3254,14 +3254,14 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+152340+556+80
+ADDRGP4 cgs+152340+564+80
 ADDP4
 ADDRLP4 512
 INDIRI4
 ASGNI4
 line 755
 ;755:	}
-LABELV $491
+LABELV $493
 line 734
 ADDRLP4 0
 ADDRLP4 0
@@ -3272,7 +3272,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $490
+LTI4 $492
 line 758
 ;756:
 ;757:	// only register the items that the server says we need
@@ -3297,9 +3297,9 @@ line 760
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-ADDRGP4 $524
+ADDRGP4 $526
 JUMPV
-LABELV $521
+LABELV $523
 line 762
 ;761://		if ( items[ i ] == '1' || cg_buildScript.integer ) {
 ;762:			CG_RegisterItemSounds( i );
@@ -3312,7 +3312,7 @@ pop
 line 764
 ;763://		}
 ;764:	}
-LABELV $522
+LABELV $524
 line 760
 ADDRLP4 0
 ADDRLP4 0
@@ -3320,19 +3320,19 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $524
+LABELV $526
 ADDRLP4 0
 INDIRI4
 ADDRGP4 bg_numItems
 INDIRI4
-LTI4 $521
+LTI4 $523
 line 766
 ;765:
 ;766:	for ( i = 1 ; i < MAX_SOUNDS ; i++ ) {
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-LABELV $525
+LABELV $527
 line 767
 ;767:		soundName = CG_ConfigString( CS_SOUNDS+i );
 ADDRLP4 0
@@ -3355,12 +3355,12 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $529
+NEI4 $531
 line 769
 ;769:			break;
-ADDRGP4 $527
+ADDRGP4 $529
 JUMPV
-LABELV $529
+LABELV $531
 line 771
 ;770:		}
 ;771:		if ( soundName[0] == '*' ) {
@@ -3369,12 +3369,12 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 42
-NEI4 $531
+NEI4 $533
 line 772
 ;772:			continue;	// custom sound
-ADDRGP4 $526
+ADDRGP4 $528
 JUMPV
-LABELV $531
+LABELV $533
 line 774
 ;773:		}
 ;774:		cgs.gameSounds[i] = trap_S_RegisterSound( soundName, qfalse );
@@ -3398,7 +3398,7 @@ INDIRI4
 ASGNI4
 line 775
 ;775:	}
-LABELV $526
+LABELV $528
 line 766
 ADDRLP4 0
 ADDRLP4 0
@@ -3409,13 +3409,13 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 256
-LTI4 $525
-LABELV $527
+LTI4 $527
+LABELV $529
 line 778
 ;776:
 ;777:	// FIXME: only needed with item
 ;778:	cgs.media.flightSound = trap_S_RegisterSound( "sound/items/flight.wav", qfalse );
-ADDRGP4 $536
+ADDRGP4 $538
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3423,13 +3423,13 @@ ADDRLP4 492
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+864
+ADDRGP4 cgs+152340+872
 ADDRLP4 492
 INDIRI4
 ASGNI4
 line 779
 ;779:	cgs.media.medkitSound = trap_S_RegisterSound ("sound/items/use_medkit.wav", qfalse);
-ADDRGP4 $539
+ADDRGP4 $541
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3437,13 +3437,13 @@ ADDRLP4 496
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+868
+ADDRGP4 cgs+152340+876
 ADDRLP4 496
 INDIRI4
 ASGNI4
 line 780
 ;780:	cgs.media.quadSound = trap_S_RegisterSound("sound/items/damage3.wav", qfalse);
-ADDRGP4 $542
+ADDRGP4 $544
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3451,13 +3451,13 @@ ADDRLP4 500
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+536
+ADDRGP4 cgs+152340+544
 ADDRLP4 500
 INDIRI4
 ASGNI4
 line 781
 ;781:	cgs.media.sfx_ric1 = trap_S_RegisterSound ("sound/weapons/machinegun/ric1.wav", qfalse);
-ADDRGP4 $545
+ADDRGP4 $547
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3465,13 +3465,13 @@ ADDRLP4 504
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+680
+ADDRGP4 cgs+152340+688
 ADDRLP4 504
 INDIRI4
 ASGNI4
 line 782
 ;782:	cgs.media.sfx_ric2 = trap_S_RegisterSound ("sound/weapons/machinegun/ric2.wav", qfalse);
-ADDRGP4 $548
+ADDRGP4 $550
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3479,13 +3479,13 @@ ADDRLP4 508
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+684
+ADDRGP4 cgs+152340+692
 ADDRLP4 508
 INDIRI4
 ASGNI4
 line 783
 ;783:	cgs.media.sfx_ric3 = trap_S_RegisterSound ("sound/weapons/machinegun/ric3.wav", qfalse);
-ADDRGP4 $551
+ADDRGP4 $553
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3493,13 +3493,13 @@ ADDRLP4 512
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+688
+ADDRGP4 cgs+152340+696
 ADDRLP4 512
 INDIRI4
 ASGNI4
 line 784
 ;784:	cgs.media.sfx_railg = trap_S_RegisterSound ("sound/weapons/railgun/railgf1a.wav", qfalse);
-ADDRGP4 $554
+ADDRGP4 $556
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3507,13 +3507,13 @@ ADDRLP4 516
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+692
+ADDRGP4 cgs+152340+700
 ADDRLP4 516
 INDIRI4
 ASGNI4
 line 785
 ;785:	cgs.media.sfx_rockexp = trap_S_RegisterSound ("sound/weapons/rocket/rocklx1a.wav", qfalse);
-ADDRGP4 $557
+ADDRGP4 $559
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3521,13 +3521,13 @@ ADDRLP4 520
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+696
+ADDRGP4 cgs+152340+704
 ADDRLP4 520
 INDIRI4
 ASGNI4
 line 786
 ;786:	cgs.media.sfx_plasmaexp = trap_S_RegisterSound ("sound/weapons/plasma/plasmx1a.wav", qfalse);
-ADDRGP4 $560
+ADDRGP4 $562
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3535,19 +3535,19 @@ ADDRLP4 524
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+700
+ADDRGP4 cgs+152340+708
 ADDRLP4 524
 INDIRI4
 ASGNI4
 line 787
 ;787:	cgs.media.flameBallShader = trap_R_RegisterShader( "sprites/flameball" );
-ADDRGP4 $563
+ADDRGP4 $565
 ARGP4
 ADDRLP4 528
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+476
+ADDRGP4 cgs+152340+484
 ADDRLP4 528
 INDIRI4
 ASGNI4
@@ -3575,7 +3575,7 @@ line 810
 ;808:#endif
 ;809:
 ;810:	cgs.media.regenSound = trap_S_RegisterSound("sound/items/regen.wav", qfalse);
-ADDRGP4 $566
+ADDRGP4 $568
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3583,13 +3583,13 @@ ADDRLP4 532
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+996
+ADDRGP4 cgs+152340+1004
 ADDRLP4 532
 INDIRI4
 ASGNI4
 line 811
 ;811:	cgs.media.protectSound = trap_S_RegisterSound("sound/items/protect3.wav", qfalse);
-ADDRGP4 $569
+ADDRGP4 $571
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3597,13 +3597,13 @@ ADDRLP4 536
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+1000
+ADDRGP4 cgs+152340+1008
 ADDRLP4 536
 INDIRI4
 ASGNI4
 line 812
 ;812:	cgs.media.n_healthSound = trap_S_RegisterSound("sound/items/n_health.wav", qfalse );
-ADDRGP4 $572
+ADDRGP4 $574
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3611,13 +3611,13 @@ ADDRLP4 540
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+1004
+ADDRGP4 cgs+152340+1012
 ADDRLP4 540
 INDIRI4
 ASGNI4
 line 813
 ;813:	cgs.media.hgrenb1aSound = trap_S_RegisterSound("sound/weapons/grenade/hgrenb1a.wav", qfalse);
-ADDRGP4 $575
+ADDRGP4 $577
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3625,13 +3625,13 @@ ADDRLP4 544
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+1008
+ADDRGP4 cgs+152340+1016
 ADDRLP4 544
 INDIRI4
 ASGNI4
 line 814
 ;814:	cgs.media.hgrenb2aSound = trap_S_RegisterSound("sound/weapons/grenade/hgrenb2a.wav", qfalse);
-ADDRGP4 $578
+ADDRGP4 $580
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3639,7 +3639,7 @@ ADDRLP4 548
 ADDRGP4 trap_S_RegisterSound
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+1012
+ADDRGP4 cgs+152340+1020
 ADDRLP4 548
 INDIRI4
 ASGNI4
@@ -3674,13 +3674,11 @@ line 844
 ;842:#endif
 ;843:
 ;844:}
-LABELV $298
+LABELV $300
 endproc CG_RegisterSounds 552 16
 data
 align 4
-LABELV $580
-address $581
-address $582
+LABELV $582
 address $583
 address $584
 address $585
@@ -3690,8 +3688,10 @@ address $588
 address $589
 address $590
 address $591
+address $592
+address $593
 code
-proc CG_RegisterGraphics 588 16
+proc CG_RegisterGraphics 612 16
 line 857
 ;845:
 ;846:
@@ -3759,7 +3759,7 @@ line 883
 ;881:
 ;882:	// precache status bar pics
 ;883:	CG_LoadingString( "game media" );
-ADDRGP4 $596
+ADDRGP4 $598
 ARGP4
 ADDRGP4 CG_LoadingString
 CALLV
@@ -3770,7 +3770,7 @@ line 885
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $597
+LABELV $599
 line 886
 ;886:		cgs.media.numberShaders[i] = trap_R_RegisterShader( sb_nums[i] );
 ADDRLP4 264
@@ -3781,7 +3781,7 @@ LSHI4
 ASGNI4
 ADDRLP4 264
 INDIRI4
-ADDRGP4 $580
+ADDRGP4 $582
 ADDP4
 INDIRP4
 ARGP4
@@ -3791,14 +3791,14 @@ CALLI4
 ASGNI4
 ADDRLP4 264
 INDIRI4
-ADDRGP4 cgs+152340+300
+ADDRGP4 cgs+152340+308
 ADDP4
 ADDRLP4 268
 INDIRI4
 ASGNI4
 line 887
 ;887:	}
-LABELV $598
+LABELV $600
 line 885
 ADDRLP4 0
 ADDRLP4 0
@@ -3809,72 +3809,72 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 11
-LTI4 $597
+LTI4 $599
 line 889
 ;888:
 ;889:	cgs.media.botSkillShaders[0] = trap_R_RegisterShader( "menu/art/skill1.tga" );
-ADDRGP4 $605
+ADDRGP4 $607
 ARGP4
 ADDRLP4 264
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+348
+ADDRGP4 cgs+152340+356
 ADDRLP4 264
 INDIRI4
 ASGNI4
 line 890
 ;890:	cgs.media.botSkillShaders[1] = trap_R_RegisterShader( "menu/art/skill2.tga" );
-ADDRGP4 $609
+ADDRGP4 $611
 ARGP4
 ADDRLP4 268
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+348+4
+ADDRGP4 cgs+152340+356+4
 ADDRLP4 268
 INDIRI4
 ASGNI4
 line 891
 ;891:	cgs.media.botSkillShaders[2] = trap_R_RegisterShader( "menu/art/skill3.tga" );
-ADDRGP4 $613
+ADDRGP4 $615
 ARGP4
 ADDRLP4 272
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+348+8
+ADDRGP4 cgs+152340+356+8
 ADDRLP4 272
 INDIRI4
 ASGNI4
 line 892
 ;892:	cgs.media.botSkillShaders[3] = trap_R_RegisterShader( "menu/art/skill4.tga" );
-ADDRGP4 $617
+ADDRGP4 $619
 ARGP4
 ADDRLP4 276
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+348+12
+ADDRGP4 cgs+152340+356+12
 ADDRLP4 276
 INDIRI4
 ASGNI4
 line 893
 ;893:	cgs.media.botSkillShaders[4] = trap_R_RegisterShader( "menu/art/skill5.tga" );
-ADDRGP4 $621
+ADDRGP4 $623
 ARGP4
 ADDRLP4 280
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+348+16
+ADDRGP4 cgs+152340+356+16
 ADDRLP4 280
 INDIRI4
 ASGNI4
 line 895
 ;894:
 ;895:	cgs.media.viewBloodShader = trap_R_RegisterShader( "viewBloodBlend" );
-ADDRGP4 $624
+ADDRGP4 $626
 ARGP4
 ADDRLP4 284
 ADDRGP4 trap_R_RegisterShader
@@ -3887,7 +3887,7 @@ ASGNI4
 line 897
 ;896:
 ;897:	cgs.media.deferShader = trap_R_RegisterShaderNoMip( "gfx/2d/defer.tga" );
-ADDRGP4 $627
+ADDRGP4 $629
 ARGP4
 ADDRLP4 288
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -3900,56 +3900,56 @@ ASGNI4
 line 899
 ;898:
 ;899:	cgs.media.scoreboardName = trap_R_RegisterShaderNoMip( "menu/tab/name.tga" );
-ADDRGP4 $630
+ADDRGP4 $632
 ARGP4
 ADDRLP4 292
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+496
+ADDRGP4 cgs+152340+504
 ADDRLP4 292
 INDIRI4
 ASGNI4
 line 900
 ;900:	cgs.media.scoreboardPing = trap_R_RegisterShaderNoMip( "menu/tab/ping.tga" );
-ADDRGP4 $633
+ADDRGP4 $635
 ARGP4
 ADDRLP4 296
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+500
+ADDRGP4 cgs+152340+508
 ADDRLP4 296
 INDIRI4
 ASGNI4
 line 901
 ;901:	cgs.media.scoreboardScore = trap_R_RegisterShaderNoMip( "menu/tab/score.tga" );
-ADDRGP4 $636
+ADDRGP4 $638
 ARGP4
 ADDRLP4 300
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+504
+ADDRGP4 cgs+152340+512
 ADDRLP4 300
 INDIRI4
 ASGNI4
 line 902
 ;902:	cgs.media.scoreboardTime = trap_R_RegisterShaderNoMip( "menu/tab/time.tga" );
-ADDRGP4 $639
+ADDRGP4 $641
 ARGP4
 ADDRLP4 304
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+508
+ADDRGP4 cgs+152340+516
 ADDRLP4 304
 INDIRI4
 ASGNI4
 line 904
 ;903:
 ;904:	cgs.media.smokePuffShader = trap_R_RegisterShader( "smokePuff" );
-ADDRGP4 $642
+ADDRGP4 $644
 ARGP4
 ADDRLP4 308
 ADDRGP4 trap_R_RegisterShader
@@ -3961,7 +3961,7 @@ INDIRI4
 ASGNI4
 line 905
 ;905:	cgs.media.smokePuffRageProShader = trap_R_RegisterShader( "smokePuffRagePro" );
-ADDRGP4 $645
+ADDRGP4 $647
 ARGP4
 ADDRLP4 312
 ADDRGP4 trap_R_RegisterShader
@@ -3971,9 +3971,11 @@ ADDRGP4 cgs+152340+280
 ADDRLP4 312
 INDIRI4
 ASGNI4
-line 906
-;906:	cgs.media.shotgunSmokePuffShader = trap_R_RegisterShader( "shotgunSmokePuff" );
-ADDRGP4 $648
+line 908
+;906:
+;907:	// Shafe - Singularity Cannon Shaders
+;908:	cgs.media.smokePuffShader2 = trap_R_RegisterShader( "smokePuff2" );
+ADDRGP4 $650
 ARGP4
 ADDRLP4 316
 ADDRGP4 trap_R_RegisterShader
@@ -3983,13 +3985,9 @@ ADDRGP4 cgs+152340+284
 ADDRLP4 316
 INDIRI4
 ASGNI4
-line 911
-;907:#ifdef MISSIONPACK
-;908:	cgs.media.nailPuffShader = trap_R_RegisterShader( "nailtrail" );
-;909:	cgs.media.blueProxMine = trap_R_RegisterModel( "models/weaphits/proxmineb.md3" );
-;910:#endif
-;911:	cgs.media.plasmaBallShader = trap_R_RegisterShader( "sprites/plasma1" );
-ADDRGP4 $651
+line 909
+;909:	cgs.media.smokePuffRageProShader2 = trap_R_RegisterShader( "smokePuffRagePro2" );
+ADDRGP4 $653
 ARGP4
 ADDRLP4 320
 ADDRGP4 trap_R_RegisterShader
@@ -4000,103 +3998,135 @@ ADDRLP4 320
 INDIRI4
 ASGNI4
 line 912
-;912:	cgs.media.bloodTrailShader = trap_R_RegisterShader( "bloodTrail" );
-ADDRGP4 $654
+;910:	// End Shafe
+;911:
+;912:	cgs.media.shotgunSmokePuffShader = trap_R_RegisterShader( "shotgunSmokePuff" );
+ADDRGP4 $656
 ARGP4
 ADDRLP4 324
-ADDRGP4 trap_R_RegisterShader
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+296
-ADDRLP4 324
-INDIRI4
-ASGNI4
-line 913
-;913:	cgs.media.lagometerShader = trap_R_RegisterShader("lagometer" );
-ADDRGP4 $657
-ARGP4
-ADDRLP4 328
-ADDRGP4 trap_R_RegisterShader
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+264
-ADDRLP4 328
-INDIRI4
-ASGNI4
-line 914
-;914:	cgs.media.connectionShader = trap_R_RegisterShader( "disconnected" );
-ADDRGP4 $660
-ARGP4
-ADDRLP4 332
-ADDRGP4 trap_R_RegisterShader
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+208
-ADDRLP4 332
-INDIRI4
-ASGNI4
-line 916
-;915:
-;916:	cgs.media.waterBubbleShader = trap_R_RegisterShader( "waterBubble" );
-ADDRGP4 $663
-ARGP4
-ADDRLP4 336
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+292
+ADDRLP4 324
+INDIRI4
+ASGNI4
+line 919
+;913:
+;914:
+;915:#ifdef MISSIONPACK
+;916:	cgs.media.nailPuffShader = trap_R_RegisterShader( "nailtrail" );
+;917:	cgs.media.blueProxMine = trap_R_RegisterModel( "models/weaphits/proxmineb.md3" );
+;918:#endif
+;919:	cgs.media.plasmaBallShader = trap_R_RegisterShader( "sprites/plasma1" );
+ADDRGP4 $659
+ARGP4
+ADDRLP4 328
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+296
+ADDRLP4 328
+INDIRI4
+ASGNI4
+line 920
+;920:	cgs.media.bloodTrailShader = trap_R_RegisterShader( "bloodTrail" );
+ADDRGP4 $662
+ARGP4
+ADDRLP4 332
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+304
+ADDRLP4 332
+INDIRI4
+ASGNI4
+line 921
+;921:	cgs.media.lagometerShader = trap_R_RegisterShader("lagometer" );
+ADDRGP4 $665
+ARGP4
+ADDRLP4 336
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+264
 ADDRLP4 336
 INDIRI4
 ASGNI4
-line 918
-;917:
-;918:	cgs.media.tracerShader = trap_R_RegisterShader( "gfx/misc/tracer" );
-ADDRGP4 $666
+line 922
+;922:	cgs.media.connectionShader = trap_R_RegisterShader( "disconnected" );
+ADDRGP4 $668
 ARGP4
 ADDRLP4 340
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+208
+ADDRLP4 340
+INDIRI4
+ASGNI4
+line 924
+;923:
+;924:	cgs.media.waterBubbleShader = trap_R_RegisterShader( "waterBubble" );
+ADDRGP4 $671
+ARGP4
+ADDRLP4 344
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+300
+ADDRLP4 344
+INDIRI4
+ASGNI4
+line 926
+;925:
+;926:	cgs.media.tracerShader = trap_R_RegisterShader( "gfx/misc/tracer" );
+ADDRGP4 $674
+ARGP4
+ADDRLP4 348
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+220
-ADDRLP4 340
+ADDRLP4 348
 INDIRI4
 ASGNI4
-line 919
-;919:	cgs.media.selectShader = trap_R_RegisterShader( "gfx/2d/select" );
-ADDRGP4 $669
+line 927
+;927:	cgs.media.selectShader = trap_R_RegisterShader( "gfx/2d/select" );
+ADDRGP4 $677
 ARGP4
-ADDRLP4 344
+ADDRLP4 352
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+212
-ADDRLP4 344
+ADDRLP4 352
 INDIRI4
 ASGNI4
-line 921
-;920:
-;921:	for ( i = 0 ; i < NUM_CROSSHAIRS ; i++ ) {
+line 929
+;928:
+;929:	for ( i = 0 ; i < NUM_CROSSHAIRS ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $670
-line 922
-;922:		cgs.media.crosshairShader[i] = trap_R_RegisterShader( va("gfx/2d/crosshair%c", 'a'+i) );
-ADDRGP4 $676
+LABELV $678
+line 930
+;930:		cgs.media.crosshairShader[i] = trap_R_RegisterShader( va("gfx/2d/crosshair%c", 'a'+i) );
+ADDRGP4 $684
 ARGP4
 ADDRLP4 0
 INDIRI4
 CNSTI4 97
 ADDI4
 ARGI4
-ADDRLP4 352
+ADDRLP4 360
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRLP4 352
+ADDRLP4 360
 INDIRP4
 ARGP4
-ADDRLP4 356
+ADDRLP4 364
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
@@ -4106,13 +4136,13 @@ CNSTI4 2
 LSHI4
 ADDRGP4 cgs+152340+224
 ADDP4
-ADDRLP4 356
+ADDRLP4 364
 INDIRI4
 ASGNI4
-line 923
-;923:	}
-LABELV $671
-line 921
+line 931
+;931:	}
+LABELV $679
+line 929
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4122,631 +4152,607 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-LTI4 $670
-line 925
-;924:
-;925:	cgs.media.backTileShader = trap_R_RegisterShader( "gfx/2d/backtile" );
-ADDRGP4 $679
+LTI4 $678
+line 933
+;932:
+;933:	cgs.media.backTileShader = trap_R_RegisterShader( "gfx/2d/backtile" );
+ADDRGP4 $687
 ARGP4
-ADDRLP4 348
+ADDRLP4 356
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+268
-ADDRLP4 348
+ADDRLP4 356
 INDIRI4
 ASGNI4
-line 926
-;926:	cgs.media.noammoShader = trap_R_RegisterShader( "icons/noammo" );
-ADDRGP4 $682
+line 934
+;934:	cgs.media.noammoShader = trap_R_RegisterShader( "icons/noammo" );
+ADDRGP4 $690
 ARGP4
-ADDRLP4 352
+ADDRLP4 360
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+272
-ADDRLP4 352
-INDIRI4
-ASGNI4
-line 929
-;927:
-;928:	// powerup shaders
-;929:	cgs.media.quadShader = trap_R_RegisterShader("powerups/quad" );
-ADDRGP4 $685
-ARGP4
-ADDRLP4 356
-ADDRGP4 trap_R_RegisterShader
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+392
-ADDRLP4 356
-INDIRI4
-ASGNI4
-line 930
-;930:	cgs.media.quadWeaponShader = trap_R_RegisterShader("powerups/quadWeapon" );
-ADDRGP4 $688
-ARGP4
 ADDRLP4 360
+INDIRI4
+ASGNI4
+line 937
+;935:
+;936:	// powerup shaders
+;937:	cgs.media.quadShader = trap_R_RegisterShader("powerups/quad" );
+ADDRGP4 $693
+ARGP4
+ADDRLP4 364
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+400
-ADDRLP4 360
-INDIRI4
-ASGNI4
-line 931
-;931:	cgs.media.battleSuitShader = trap_R_RegisterShader("powerups/battleSuit" );
-ADDRGP4 $691
-ARGP4
-ADDRLP4 364
-ADDRGP4 trap_R_RegisterShader
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+412
 ADDRLP4 364
 INDIRI4
 ASGNI4
-line 932
-;932:	cgs.media.battleWeaponShader = trap_R_RegisterShader("powerups/battleWeapon" );
-ADDRGP4 $694
+line 938
+;938:	cgs.media.quadWeaponShader = trap_R_RegisterShader("powerups/quadWeapon" );
+ADDRGP4 $696
 ARGP4
 ADDRLP4 368
-ADDRGP4 trap_R_RegisterShader
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+416
-ADDRLP4 368
-INDIRI4
-ASGNI4
-line 933
-;933:	cgs.media.invisShader = trap_R_RegisterShader("powerups/invisibility" );
-ADDRGP4 $697
-ARGP4
-ADDRLP4 372
-ADDRGP4 trap_R_RegisterShader
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+404
-ADDRLP4 372
-INDIRI4
-ASGNI4
-line 934
-;934:	cgs.media.regenShader = trap_R_RegisterShader("powerups/regen" );
-ADDRGP4 $700
-ARGP4
-ADDRLP4 376
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+408
-ADDRLP4 376
+ADDRLP4 368
 INDIRI4
 ASGNI4
-line 935
-;935:	cgs.media.hastePuffShader = trap_R_RegisterShader("hasteSmokePuff" );
-ADDRGP4 $703
+line 939
+;939:	cgs.media.battleSuitShader = trap_R_RegisterShader("powerups/battleSuit" );
+ADDRGP4 $699
 ARGP4
-ADDRLP4 380
+ADDRLP4 372
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+420
-ADDRLP4 380
+ADDRLP4 372
 INDIRI4
 ASGNI4
 line 940
-;936:
-;937:#ifdef MISSIONPACK
-;938:	if ( cgs.gametype == GT_CTF || cgs.gametype == GT_1FCTF || cgs.gametype == GT_HARVESTER || cg_buildScript.integer ) {
-;939:#else
-;940:	if ( cgs.gametype == GT_CTF || cg_buildScript.integer ) {
-ADDRGP4 cgs+31456
-INDIRI4
-CNSTI4 4
-EQI4 $708
-ADDRGP4 cg_buildScript+12
-INDIRI4
-CNSTI4 0
-EQI4 $704
-LABELV $708
-line 942
-;941:#endif
-;942:		cgs.media.redCubeModel = trap_R_RegisterModel( "models/powerups/orb/r_orb.md3" );
-ADDRGP4 $711
+;940:	cgs.media.battleWeaponShader = trap_R_RegisterShader("powerups/battleWeapon" );
+ADDRGP4 $702
 ARGP4
-ADDRLP4 384
-ADDRGP4 trap_R_RegisterModel
+ADDRLP4 376
+ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+20
+ADDRGP4 cgs+152340+424
+ADDRLP4 376
+INDIRI4
+ASGNI4
+line 941
+;941:	cgs.media.invisShader = trap_R_RegisterShader("powerups/invisibility" );
+ADDRGP4 $705
+ARGP4
+ADDRLP4 380
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+412
+ADDRLP4 380
+INDIRI4
+ASGNI4
+line 942
+;942:	cgs.media.regenShader = trap_R_RegisterShader("powerups/regen" );
+ADDRGP4 $708
+ARGP4
+ADDRLP4 384
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+416
 ADDRLP4 384
 INDIRI4
 ASGNI4
 line 943
-;943:		cgs.media.blueCubeModel = trap_R_RegisterModel( "models/powerups/orb/b_orb.md3" );
-ADDRGP4 $714
+;943:	cgs.media.hastePuffShader = trap_R_RegisterShader("hasteSmokePuff" );
+ADDRGP4 $711
 ARGP4
 ADDRLP4 388
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+428
+ADDRLP4 388
+INDIRI4
+ASGNI4
+line 948
+;944:
+;945:#ifdef MISSIONPACK
+;946:	if ( cgs.gametype == GT_CTF || cgs.gametype == GT_1FCTF || cgs.gametype == GT_HARVESTER || cg_buildScript.integer ) {
+;947:#else
+;948:	if ( cgs.gametype == GT_CTF || cg_buildScript.integer ) {
+ADDRGP4 cgs+31456
+INDIRI4
+CNSTI4 4
+EQI4 $716
+ADDRGP4 cg_buildScript+12
+INDIRI4
+CNSTI4 0
+EQI4 $712
+LABELV $716
+line 950
+;949:#endif
+;950:		cgs.media.redCubeModel = trap_R_RegisterModel( "models/powerups/orb/r_orb.md3" );
+ADDRGP4 $719
+ARGP4
+ADDRLP4 392
+ADDRGP4 trap_R_RegisterModel
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+20
+ADDRLP4 392
+INDIRI4
+ASGNI4
+line 951
+;951:		cgs.media.blueCubeModel = trap_R_RegisterModel( "models/powerups/orb/b_orb.md3" );
+ADDRGP4 $722
+ARGP4
+ADDRLP4 396
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+24
-ADDRLP4 388
+ADDRLP4 396
 INDIRI4
 ASGNI4
-line 944
-;944:		cgs.media.redCubeIcon = trap_R_RegisterShader( "icons/skull_red" );
-ADDRGP4 $717
+line 952
+;952:		cgs.media.redCubeIcon = trap_R_RegisterShader( "icons/skull_red" );
+ADDRGP4 $725
 ARGP4
-ADDRLP4 392
+ADDRLP4 400
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+28
-ADDRLP4 392
+ADDRLP4 400
 INDIRI4
 ASGNI4
-line 945
-;945:		cgs.media.blueCubeIcon = trap_R_RegisterShader( "icons/skull_blue" );
-ADDRGP4 $720
+line 953
+;953:		cgs.media.blueCubeIcon = trap_R_RegisterShader( "icons/skull_blue" );
+ADDRGP4 $728
 ARGP4
-ADDRLP4 396
+ADDRLP4 404
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+32
-ADDRLP4 396
+ADDRLP4 404
 INDIRI4
 ASGNI4
-line 946
-;946:	}
-LABELV $704
-line 951
-;947:
-;948:#ifdef MISSIONPACK
-;949:	if ( cgs.gametype == GT_CTF || cgs.gametype == GT_1FCTF || cgs.gametype == GT_HARVESTER || cg_buildScript.integer ) {
-;950:#else
-;951:	if ( cgs.gametype == GT_CTF || cg_buildScript.integer ) {
+line 954
+;954:	}
+LABELV $712
+line 959
+;955:
+;956:#ifdef MISSIONPACK
+;957:	if ( cgs.gametype == GT_CTF || cgs.gametype == GT_1FCTF || cgs.gametype == GT_HARVESTER || cg_buildScript.integer ) {
+;958:#else
+;959:	if ( cgs.gametype == GT_CTF || cg_buildScript.integer ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
-EQI4 $725
+EQI4 $733
 ADDRGP4 cg_buildScript+12
 INDIRI4
 CNSTI4 0
-EQI4 $721
-LABELV $725
-line 953
-;952:#endif
-;953:		cgs.media.redFlagModel = trap_R_RegisterModel( "models/flags/r_flag.md3" );
-ADDRGP4 $728
+EQI4 $729
+LABELV $733
+line 961
+;960:#endif
+;961:		cgs.media.redFlagModel = trap_R_RegisterModel( "models/flags/r_flag.md3" );
+ADDRGP4 $736
 ARGP4
-ADDRLP4 384
+ADDRLP4 392
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+36
-ADDRLP4 384
+ADDRLP4 392
 INDIRI4
 ASGNI4
-line 954
-;954:		cgs.media.blueFlagModel = trap_R_RegisterModel( "models/flags/b_flag.md3" );
-ADDRGP4 $731
+line 962
+;962:		cgs.media.blueFlagModel = trap_R_RegisterModel( "models/flags/b_flag.md3" );
+ADDRGP4 $739
 ARGP4
-ADDRLP4 388
+ADDRLP4 396
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+40
-ADDRLP4 388
-INDIRI4
-ASGNI4
-line 955
-;955:		cgs.media.redFlagShader[0] = trap_R_RegisterShaderNoMip( "icons/iconf_red1" );
-ADDRGP4 $734
-ARGP4
-ADDRLP4 392
-ADDRGP4 trap_R_RegisterShaderNoMip
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+48
-ADDRLP4 392
-INDIRI4
-ASGNI4
-line 956
-;956:		cgs.media.redFlagShader[1] = trap_R_RegisterShaderNoMip( "icons/iconf_red2" );
-ADDRGP4 $738
-ARGP4
-ADDRLP4 396
-ADDRGP4 trap_R_RegisterShaderNoMip
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+48+4
 ADDRLP4 396
 INDIRI4
 ASGNI4
-line 957
-;957:		cgs.media.redFlagShader[2] = trap_R_RegisterShaderNoMip( "icons/iconf_red3" );
+line 963
+;963:		cgs.media.redFlagShader[0] = trap_R_RegisterShaderNoMip( "icons/iconf_red1" );
 ADDRGP4 $742
 ARGP4
 ADDRLP4 400
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+48+8
+ADDRGP4 cgs+152340+48
 ADDRLP4 400
 INDIRI4
 ASGNI4
-line 958
-;958:		cgs.media.blueFlagShader[0] = trap_R_RegisterShaderNoMip( "icons/iconf_blu1" );
-ADDRGP4 $745
+line 964
+;964:		cgs.media.redFlagShader[1] = trap_R_RegisterShaderNoMip( "icons/iconf_red2" );
+ADDRGP4 $746
 ARGP4
 ADDRLP4 404
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+60
+ADDRGP4 cgs+152340+48+4
 ADDRLP4 404
 INDIRI4
 ASGNI4
-line 959
-;959:		cgs.media.blueFlagShader[1] = trap_R_RegisterShaderNoMip( "icons/iconf_blu2" );
-ADDRGP4 $749
+line 965
+;965:		cgs.media.redFlagShader[2] = trap_R_RegisterShaderNoMip( "icons/iconf_red3" );
+ADDRGP4 $750
 ARGP4
 ADDRLP4 408
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+60+4
+ADDRGP4 cgs+152340+48+8
 ADDRLP4 408
 INDIRI4
 ASGNI4
-line 960
-;960:		cgs.media.blueFlagShader[2] = trap_R_RegisterShaderNoMip( "icons/iconf_blu3" );
+line 966
+;966:		cgs.media.blueFlagShader[0] = trap_R_RegisterShaderNoMip( "icons/iconf_blu1" );
 ADDRGP4 $753
 ARGP4
 ADDRLP4 412
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+60+8
+ADDRGP4 cgs+152340+60
 ADDRLP4 412
 INDIRI4
 ASGNI4
-line 973
-;961:#ifdef MISSIONPACK
-;962:		cgs.media.flagPoleModel = trap_R_RegisterModel( "models/flag2/flagpole.md3" );
-;963:		cgs.media.flagFlapModel = trap_R_RegisterModel( "models/flag2/flagflap3.md3" );
-;964:
-;965:		cgs.media.redFlagFlapSkin = trap_R_RegisterSkin( "models/flag2/red.skin" );
-;966:		cgs.media.blueFlagFlapSkin = trap_R_RegisterSkin( "models/flag2/blue.skin" );
-;967:		cgs.media.neutralFlagFlapSkin = trap_R_RegisterSkin( "models/flag2/white.skin" );
-;968:
-;969:		cgs.media.redFlagBaseModel = trap_R_RegisterModel( "models/mapobjects/flagbase/red_base.md3" );
-;970:		cgs.media.blueFlagBaseModel = trap_R_RegisterModel( "models/mapobjects/flagbase/blue_base.md3" );
-;971:		cgs.media.neutralFlagBaseModel = trap_R_RegisterModel( "models/mapobjects/flagbase/ntrl_base.md3" );
-;972:#endif
-;973:	}
-LABELV $721
-line 1002
-;974:
-;975:#ifdef MISSIONPACK
-;976:	if ( cgs.gametype == GT_1FCTF || cg_buildScript.integer ) {
-;977:		cgs.media.neutralFlagModel = trap_R_RegisterModel( "models/flags/n_flag.md3" );
-;978:		cgs.media.flagShader[0] = trap_R_RegisterShaderNoMip( "icons/iconf_neutral1" );
-;979:		cgs.media.flagShader[1] = trap_R_RegisterShaderNoMip( "icons/iconf_red2" );
-;980:		cgs.media.flagShader[2] = trap_R_RegisterShaderNoMip( "icons/iconf_blu2" );
-;981:		cgs.media.flagShader[3] = trap_R_RegisterShaderNoMip( "icons/iconf_neutral3" );
-;982:	}
-;983:
-;984:	if ( cgs.gametype == GT_OBELISK || cg_buildScript.integer ) {
-;985:		cgs.media.overloadBaseModel = trap_R_RegisterModel( "models/powerups/overload_base.md3" );
-;986:		cgs.media.overloadTargetModel = trap_R_RegisterModel( "models/powerups/overload_target.md3" );
-;987:		cgs.media.overloadLightsModel = trap_R_RegisterModel( "models/powerups/overload_lights.md3" );
-;988:		cgs.media.overloadEnergyModel = trap_R_RegisterModel( "models/powerups/overload_energy.md3" );
-;989:	}
-;990:
-;991:	if ( cgs.gametype == GT_HARVESTER || cg_buildScript.integer ) {
-;992:		cgs.media.harvesterModel = trap_R_RegisterModel( "models/powerups/harvester/harvester.md3" );
-;993:		cgs.media.harvesterRedSkin = trap_R_RegisterSkin( "models/powerups/harvester/red.skin" );
-;994:		cgs.media.harvesterBlueSkin = trap_R_RegisterSkin( "models/powerups/harvester/blue.skin" );
-;995:		cgs.media.harvesterNeutralModel = trap_R_RegisterModel( "models/powerups/obelisk/obelisk.md3" );
-;996:	}
-;997:
-;998:	cgs.media.redKamikazeShader = trap_R_RegisterShader( "models/weaphits/kamikred" );
-;999:	cgs.media.dustPuffShader = trap_R_RegisterShader("hasteSmokePuff" );
-;1000:#endif
-;1001:
-;1002:	if ( cgs.gametype >= GT_TEAM || cg_buildScript.integer ) {
+line 967
+;967:		cgs.media.blueFlagShader[1] = trap_R_RegisterShaderNoMip( "icons/iconf_blu2" );
+ADDRGP4 $757
+ARGP4
+ADDRLP4 416
+ADDRGP4 trap_R_RegisterShaderNoMip
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+60+4
+ADDRLP4 416
+INDIRI4
+ASGNI4
+line 968
+;968:		cgs.media.blueFlagShader[2] = trap_R_RegisterShaderNoMip( "icons/iconf_blu3" );
+ADDRGP4 $761
+ARGP4
+ADDRLP4 420
+ADDRGP4 trap_R_RegisterShaderNoMip
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+60+8
+ADDRLP4 420
+INDIRI4
+ASGNI4
+line 981
+;969:#ifdef MISSIONPACK
+;970:		cgs.media.flagPoleModel = trap_R_RegisterModel( "models/flag2/flagpole.md3" );
+;971:		cgs.media.flagFlapModel = trap_R_RegisterModel( "models/flag2/flagflap3.md3" );
+;972:
+;973:		cgs.media.redFlagFlapSkin = trap_R_RegisterSkin( "models/flag2/red.skin" );
+;974:		cgs.media.blueFlagFlapSkin = trap_R_RegisterSkin( "models/flag2/blue.skin" );
+;975:		cgs.media.neutralFlagFlapSkin = trap_R_RegisterSkin( "models/flag2/white.skin" );
+;976:
+;977:		cgs.media.redFlagBaseModel = trap_R_RegisterModel( "models/mapobjects/flagbase/red_base.md3" );
+;978:		cgs.media.blueFlagBaseModel = trap_R_RegisterModel( "models/mapobjects/flagbase/blue_base.md3" );
+;979:		cgs.media.neutralFlagBaseModel = trap_R_RegisterModel( "models/mapobjects/flagbase/ntrl_base.md3" );
+;980:#endif
+;981:	}
+LABELV $729
+line 1010
+;982:
+;983:#ifdef MISSIONPACK
+;984:	if ( cgs.gametype == GT_1FCTF || cg_buildScript.integer ) {
+;985:		cgs.media.neutralFlagModel = trap_R_RegisterModel( "models/flags/n_flag.md3" );
+;986:		cgs.media.flagShader[0] = trap_R_RegisterShaderNoMip( "icons/iconf_neutral1" );
+;987:		cgs.media.flagShader[1] = trap_R_RegisterShaderNoMip( "icons/iconf_red2" );
+;988:		cgs.media.flagShader[2] = trap_R_RegisterShaderNoMip( "icons/iconf_blu2" );
+;989:		cgs.media.flagShader[3] = trap_R_RegisterShaderNoMip( "icons/iconf_neutral3" );
+;990:	}
+;991:
+;992:	if ( cgs.gametype == GT_OBELISK || cg_buildScript.integer ) {
+;993:		cgs.media.overloadBaseModel = trap_R_RegisterModel( "models/powerups/overload_base.md3" );
+;994:		cgs.media.overloadTargetModel = trap_R_RegisterModel( "models/powerups/overload_target.md3" );
+;995:		cgs.media.overloadLightsModel = trap_R_RegisterModel( "models/powerups/overload_lights.md3" );
+;996:		cgs.media.overloadEnergyModel = trap_R_RegisterModel( "models/powerups/overload_energy.md3" );
+;997:	}
+;998:
+;999:	if ( cgs.gametype == GT_HARVESTER || cg_buildScript.integer ) {
+;1000:		cgs.media.harvesterModel = trap_R_RegisterModel( "models/powerups/harvester/harvester.md3" );
+;1001:		cgs.media.harvesterRedSkin = trap_R_RegisterSkin( "models/powerups/harvester/red.skin" );
+;1002:		cgs.media.harvesterBlueSkin = trap_R_RegisterSkin( "models/powerups/harvester/blue.skin" );
+;1003:		cgs.media.harvesterNeutralModel = trap_R_RegisterModel( "models/powerups/obelisk/obelisk.md3" );
+;1004:	}
+;1005:
+;1006:	cgs.media.redKamikazeShader = trap_R_RegisterShader( "models/weaphits/kamikred" );
+;1007:	cgs.media.dustPuffShader = trap_R_RegisterShader("hasteSmokePuff" );
+;1008:#endif
+;1009:
+;1010:	if ( cgs.gametype >= GT_TEAM || cg_buildScript.integer ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
-GEI4 $758
+GEI4 $766
 ADDRGP4 cg_buildScript+12
 INDIRI4
 CNSTI4 0
-EQI4 $754
-LABELV $758
-line 1003
-;1003:		cgs.media.friendShader = trap_R_RegisterShader( "sprites/foe" );
-ADDRGP4 $761
+EQI4 $762
+LABELV $766
+line 1011
+;1011:		cgs.media.friendShader = trap_R_RegisterShader( "sprites/foe" );
+ADDRGP4 $769
 ARGP4
-ADDRLP4 384
+ADDRLP4 392
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+200
-ADDRLP4 384
+ADDRLP4 392
 INDIRI4
 ASGNI4
-line 1004
-;1004:		cgs.media.redQuadShader = trap_R_RegisterShader("powerups/blueflag" );
-ADDRGP4 $764
+line 1012
+;1012:		cgs.media.redQuadShader = trap_R_RegisterShader("powerups/blueflag" );
+ADDRGP4 $772
 ARGP4
-ADDRLP4 388
+ADDRLP4 396
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+396
-ADDRLP4 388
+ADDRGP4 cgs+152340+404
+ADDRLP4 396
 INDIRI4
 ASGNI4
-line 1005
-;1005:		cgs.media.teamStatusBar = trap_R_RegisterShader( "gfx/2d/colorbar.tga" );
-ADDRGP4 $767
+line 1013
+;1013:		cgs.media.teamStatusBar = trap_R_RegisterShader( "gfx/2d/colorbar.tga" );
+ADDRGP4 $775
 ARGP4
-ADDRLP4 392
+ADDRLP4 400
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+128
-ADDRLP4 392
+ADDRLP4 400
 INDIRI4
 ASGNI4
-line 1009
-;1006:#ifdef MISSIONPACK
-;1007:		cgs.media.blueKamikazeShader = trap_R_RegisterShader( "models/weaphits/kamikblu" );
-;1008:#endif
-;1009:	}
-LABELV $754
-line 1011
-;1010:
-;1011:	cgs.media.armorModel = trap_R_RegisterModel( "models/powerups/armor/armor_yel.md3" );
-ADDRGP4 $770
+line 1017
+;1014:#ifdef MISSIONPACK
+;1015:		cgs.media.blueKamikazeShader = trap_R_RegisterShader( "models/weaphits/kamikblu" );
+;1016:#endif
+;1017:	}
+LABELV $762
+line 1019
+;1018:
+;1019:	cgs.media.armorModel = trap_R_RegisterModel( "models/powerups/armor/armor_yel.md3" );
+ADDRGP4 $778
 ARGP4
-ADDRLP4 384
+ADDRLP4 392
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+120
-ADDRLP4 384
+ADDRLP4 392
 INDIRI4
 ASGNI4
-line 1012
-;1012:	cgs.media.armorIcon  = trap_R_RegisterShaderNoMip( "icons/iconr_yellow" );
-ADDRGP4 $773
+line 1020
+;1020:	cgs.media.armorIcon  = trap_R_RegisterShaderNoMip( "icons/iconr_yellow" );
+ADDRGP4 $781
 ARGP4
-ADDRLP4 388
+ADDRLP4 396
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+124
-ADDRLP4 388
+ADDRLP4 396
 INDIRI4
 ASGNI4
-line 1014
-;1013:
-;1014:	cgs.media.machinegunBrassModel = trap_R_RegisterModel( "models/weapons2/shells/m_shell.md3" );
-ADDRGP4 $776
+line 1022
+;1021:
+;1022:	cgs.media.machinegunBrassModel = trap_R_RegisterModel( "models/weapons2/shells/m_shell.md3" );
+ADDRGP4 $784
 ARGP4
-ADDRLP4 392
+ADDRLP4 400
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+180
-ADDRLP4 392
+ADDRLP4 400
 INDIRI4
 ASGNI4
-line 1015
-;1015:	cgs.media.shotgunBrassModel = trap_R_RegisterModel( "models/weapons2/shells/s_shell.md3" );
-ADDRGP4 $779
+line 1023
+;1023:	cgs.media.shotgunBrassModel = trap_R_RegisterModel( "models/weapons2/shells/s_shell.md3" );
+ADDRGP4 $787
 ARGP4
-ADDRLP4 396
+ADDRLP4 404
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+184
-ADDRLP4 396
+ADDRLP4 404
 INDIRI4
 ASGNI4
-line 1017
-;1016:
-;1017:	cgs.media.gibAbdomen = trap_R_RegisterModel( "models/gibs/abdomen.md3" );
-ADDRGP4 $782
+line 1025
+;1024:
+;1025:	cgs.media.gibAbdomen = trap_R_RegisterModel( "models/gibs/abdomen.md3" );
+ADDRGP4 $790
 ARGP4
-ADDRLP4 400
+ADDRLP4 408
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+136
-ADDRLP4 400
+ADDRLP4 408
 INDIRI4
 ASGNI4
-line 1018
-;1018:	cgs.media.gibArm = trap_R_RegisterModel( "models/gibs/arm.md3" );
-ADDRGP4 $785
+line 1026
+;1026:	cgs.media.gibArm = trap_R_RegisterModel( "models/gibs/arm.md3" );
+ADDRGP4 $793
 ARGP4
-ADDRLP4 404
+ADDRLP4 412
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+140
-ADDRLP4 404
+ADDRLP4 412
 INDIRI4
 ASGNI4
-line 1019
-;1019:	cgs.media.gibChest = trap_R_RegisterModel( "models/gibs/chest.md3" );
-ADDRGP4 $788
+line 1027
+;1027:	cgs.media.gibChest = trap_R_RegisterModel( "models/gibs/chest.md3" );
+ADDRGP4 $796
 ARGP4
-ADDRLP4 408
+ADDRLP4 416
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+144
-ADDRLP4 408
+ADDRLP4 416
 INDIRI4
 ASGNI4
-line 1020
-;1020:	cgs.media.gibFist = trap_R_RegisterModel( "models/gibs/fist.md3" );
-ADDRGP4 $791
+line 1028
+;1028:	cgs.media.gibFist = trap_R_RegisterModel( "models/gibs/fist.md3" );
+ADDRGP4 $799
 ARGP4
-ADDRLP4 412
+ADDRLP4 420
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+148
-ADDRLP4 412
+ADDRLP4 420
 INDIRI4
 ASGNI4
-line 1021
-;1021:	cgs.media.gibFoot = trap_R_RegisterModel( "models/gibs/foot.md3" );
-ADDRGP4 $794
+line 1029
+;1029:	cgs.media.gibFoot = trap_R_RegisterModel( "models/gibs/foot.md3" );
+ADDRGP4 $802
 ARGP4
-ADDRLP4 416
+ADDRLP4 424
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+152
-ADDRLP4 416
+ADDRLP4 424
 INDIRI4
 ASGNI4
-line 1022
-;1022:	cgs.media.gibForearm = trap_R_RegisterModel( "models/gibs/forearm.md3" );
-ADDRGP4 $797
+line 1030
+;1030:	cgs.media.gibForearm = trap_R_RegisterModel( "models/gibs/forearm.md3" );
+ADDRGP4 $805
 ARGP4
-ADDRLP4 420
+ADDRLP4 428
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+156
-ADDRLP4 420
+ADDRLP4 428
 INDIRI4
 ASGNI4
-line 1023
-;1023:	cgs.media.gibIntestine = trap_R_RegisterModel( "models/gibs/intestine.md3" );
-ADDRGP4 $800
+line 1031
+;1031:	cgs.media.gibIntestine = trap_R_RegisterModel( "models/gibs/intestine.md3" );
+ADDRGP4 $808
 ARGP4
-ADDRLP4 424
+ADDRLP4 432
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+160
-ADDRLP4 424
+ADDRLP4 432
 INDIRI4
 ASGNI4
-line 1024
-;1024:	cgs.media.gibLeg = trap_R_RegisterModel( "models/gibs/leg.md3" );
-ADDRGP4 $803
+line 1032
+;1032:	cgs.media.gibLeg = trap_R_RegisterModel( "models/gibs/leg.md3" );
+ADDRGP4 $811
 ARGP4
-ADDRLP4 428
+ADDRLP4 436
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+164
-ADDRLP4 428
+ADDRLP4 436
 INDIRI4
 ASGNI4
-line 1025
-;1025:	cgs.media.gibSkull = trap_R_RegisterModel( "models/gibs/skull.md3" );
-ADDRGP4 $806
+line 1033
+;1033:	cgs.media.gibSkull = trap_R_RegisterModel( "models/gibs/skull.md3" );
+ADDRGP4 $814
 ARGP4
-ADDRLP4 432
+ADDRLP4 440
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+168
-ADDRLP4 432
+ADDRLP4 440
 INDIRI4
 ASGNI4
-line 1026
-;1026:	cgs.media.gibBrain = trap_R_RegisterModel( "models/gibs/brain.md3" );
-ADDRGP4 $809
+line 1034
+;1034:	cgs.media.gibBrain = trap_R_RegisterModel( "models/gibs/brain.md3" );
+ADDRGP4 $817
 ARGP4
-ADDRLP4 436
+ADDRLP4 444
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+172
-ADDRLP4 436
+ADDRLP4 444
 INDIRI4
 ASGNI4
-line 1028
-;1027:
-;1028:	cgs.media.smoke2 = trap_R_RegisterModel( "models/weapons2/shells/s_shell.md3" );
-ADDRGP4 $779
+line 1036
+;1035:
+;1036:	cgs.media.smoke2 = trap_R_RegisterModel( "models/weapons2/shells/s_shell.md3" );
+ADDRGP4 $787
 ARGP4
-ADDRLP4 440
+ADDRLP4 448
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+176
-ADDRLP4 440
+ADDRLP4 448
 INDIRI4
 ASGNI4
-line 1030
-;1029:
-;1030:	cgs.media.balloonShader = trap_R_RegisterShader( "sprites/balloon3" );
-ADDRGP4 $814
+line 1038
+;1037:
+;1038:	cgs.media.balloonShader = trap_R_RegisterShader( "sprites/balloon3" );
+ADDRGP4 $822
 ARGP4
-ADDRLP4 444
+ADDRLP4 452
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
 ADDRGP4 cgs+152340+204
-ADDRLP4 444
+ADDRLP4 452
 INDIRI4
 ASGNI4
-line 1032
-;1031:
-;1032:	cgs.media.bloodExplosionShader = trap_R_RegisterShader( "bloodExplosion" );
-ADDRGP4 $817
+line 1040
+;1039:
+;1040:	cgs.media.bloodExplosionShader = trap_R_RegisterShader( "bloodExplosion" );
+ADDRGP4 $825
 ARGP4
-ADDRLP4 448
+ADDRLP4 456
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+472
-ADDRLP4 448
-INDIRI4
-ASGNI4
-line 1034
-;1033:
-;1034:	cgs.media.bulletFlashModel = trap_R_RegisterModel("models/weaphits/bullet.md3");
-ADDRGP4 $820
-ARGP4
-ADDRLP4 452
-ADDRGP4 trap_R_RegisterModel
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+432
-ADDRLP4 452
-INDIRI4
-ASGNI4
-line 1035
-;1035:	cgs.media.ringFlashModel = trap_R_RegisterModel("models/weaphits/ring02.md3");
-ADDRGP4 $823
-ARGP4
-ADDRLP4 456
-ADDRGP4 trap_R_RegisterModel
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+436
+ADDRGP4 cgs+152340+480
 ADDRLP4 456
 INDIRI4
 ASGNI4
-line 1036
-;1036:	cgs.media.dishFlashModel = trap_R_RegisterModel("models/weaphits/boom01.md3");
-ADDRGP4 $826
+line 1042
+;1041:
+;1042:	cgs.media.bulletFlashModel = trap_R_RegisterModel("models/weaphits/bullet.md3");
+ADDRGP4 $828
 ARGP4
 ADDRLP4 460
 ADDRGP4 trap_R_RegisterModel
@@ -4756,53 +4762,36 @@ ADDRGP4 cgs+152340+440
 ADDRLP4 460
 INDIRI4
 ASGNI4
-line 1040
-;1037:#ifdef MISSIONPACK
-;1038:	cgs.media.teleportEffectModel = trap_R_RegisterModel( "models/powerups/pop.md3" );
-;1039:#else
-;1040:	cgs.media.teleportEffectModel = trap_R_RegisterModel( "models/misc/telep.md3" );
-ADDRGP4 $829
+line 1043
+;1043:	cgs.media.ringFlashModel = trap_R_RegisterModel("models/weaphits/ring02.md3");
+ADDRGP4 $831
 ARGP4
 ADDRLP4 464
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+484
+ADDRGP4 cgs+152340+444
 ADDRLP4 464
 INDIRI4
 ASGNI4
-line 1041
-;1041:	cgs.media.teleportEffectShader = trap_R_RegisterShader( "teleportEffect" );
-ADDRGP4 $832
+line 1044
+;1044:	cgs.media.dishFlashModel = trap_R_RegisterModel("models/weaphits/boom01.md3");
+ADDRGP4 $834
 ARGP4
 ADDRLP4 468
-ADDRGP4 trap_R_RegisterShader
+ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+488
+ADDRGP4 cgs+152340+448
 ADDRLP4 468
 INDIRI4
 ASGNI4
-line 1059
-;1042:#endif
-;1043:#ifdef MISSIONPACK
-;1044:	cgs.media.kamikazeEffectModel = trap_R_RegisterModel( "models/weaphits/kamboom2.md3" );
-;1045:	cgs.media.kamikazeShockWave = trap_R_RegisterModel( "models/weaphits/kamwave.md3" );
-;1046:	cgs.media.kamikazeHeadModel = trap_R_RegisterModel( "models/powerups/kamikazi.md3" );
-;1047:	cgs.media.kamikazeHeadTrail = trap_R_RegisterModel( "models/powerups/trailtest.md3" );
-;1048:	cgs.media.guardPowerupModel = trap_R_RegisterModel( "models/powerups/guard_player.md3" );
-;1049:	cgs.media.scoutPowerupModel = trap_R_RegisterModel( "models/powerups/scout_player.md3" );
-;1050:	cgs.media.doublerPowerupModel = trap_R_RegisterModel( "models/powerups/doubler_player.md3" );
-;1051:	cgs.media.ammoRegenPowerupModel = trap_R_RegisterModel( "models/powerups/ammo_player.md3" );
-;1052:	cgs.media.invulnerabilityImpactModel = trap_R_RegisterModel( "models/powerups/shield/impact.md3" );
-;1053:	cgs.media.invulnerabilityJuicedModel = trap_R_RegisterModel( "models/powerups/shield/juicer.md3" );
-;1054:	cgs.media.medkitUsageModel = trap_R_RegisterModel( "models/powerups/regen.md3" );
-;1055:	cgs.media.heartShader = trap_R_RegisterShaderNoMip( "ui/assets/statusbar/selectedhealth.tga" );
-;1056:
-;1057:#endif
-;1058:
-;1059:	cgs.media.invulnerabilityPowerupModel = trap_R_RegisterModel( "models/powerups/shield/shield.md3" );
-ADDRGP4 $835
+line 1048
+;1045:#ifdef MISSIONPACK
+;1046:	cgs.media.teleportEffectModel = trap_R_RegisterModel( "models/powerups/pop.md3" );
+;1047:#else
+;1048:	cgs.media.teleportEffectModel = trap_R_RegisterModel( "models/misc/telep.md3" );
+ADDRGP4 $837
 ARGP4
 ADDRLP4 472
 ADDRGP4 trap_R_RegisterModel
@@ -4812,33 +4801,50 @@ ADDRGP4 cgs+152340+492
 ADDRLP4 472
 INDIRI4
 ASGNI4
-line 1060
-;1060:	cgs.media.medalImpressive = trap_R_RegisterShaderNoMip( "medal_impressive" );
-ADDRGP4 $838
+line 1049
+;1049:	cgs.media.teleportEffectShader = trap_R_RegisterShader( "teleportEffect" );
+ADDRGP4 $840
 ARGP4
 ADDRLP4 476
-ADDRGP4 trap_R_RegisterShaderNoMip
+ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+512
+ADDRGP4 cgs+152340+496
 ADDRLP4 476
 INDIRI4
 ASGNI4
-line 1061
-;1061:	cgs.media.medalExcellent = trap_R_RegisterShaderNoMip( "medal_excellent" );
-ADDRGP4 $841
+line 1067
+;1050:#endif
+;1051:#ifdef MISSIONPACK
+;1052:	cgs.media.kamikazeEffectModel = trap_R_RegisterModel( "models/weaphits/kamboom2.md3" );
+;1053:	cgs.media.kamikazeShockWave = trap_R_RegisterModel( "models/weaphits/kamwave.md3" );
+;1054:	cgs.media.kamikazeHeadModel = trap_R_RegisterModel( "models/powerups/kamikazi.md3" );
+;1055:	cgs.media.kamikazeHeadTrail = trap_R_RegisterModel( "models/powerups/trailtest.md3" );
+;1056:	cgs.media.guardPowerupModel = trap_R_RegisterModel( "models/powerups/guard_player.md3" );
+;1057:	cgs.media.scoutPowerupModel = trap_R_RegisterModel( "models/powerups/scout_player.md3" );
+;1058:	cgs.media.doublerPowerupModel = trap_R_RegisterModel( "models/powerups/doubler_player.md3" );
+;1059:	cgs.media.ammoRegenPowerupModel = trap_R_RegisterModel( "models/powerups/ammo_player.md3" );
+;1060:	cgs.media.invulnerabilityImpactModel = trap_R_RegisterModel( "models/powerups/shield/impact.md3" );
+;1061:	cgs.media.invulnerabilityJuicedModel = trap_R_RegisterModel( "models/powerups/shield/juicer.md3" );
+;1062:	cgs.media.medkitUsageModel = trap_R_RegisterModel( "models/powerups/regen.md3" );
+;1063:	cgs.media.heartShader = trap_R_RegisterShaderNoMip( "ui/assets/statusbar/selectedhealth.tga" );
+;1064:
+;1065:#endif
+;1066:
+;1067:	cgs.media.invulnerabilityPowerupModel = trap_R_RegisterModel( "models/powerups/shield/shield.md3" );
+ADDRGP4 $843
 ARGP4
 ADDRLP4 480
-ADDRGP4 trap_R_RegisterShaderNoMip
+ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+516
+ADDRGP4 cgs+152340+500
 ADDRLP4 480
 INDIRI4
 ASGNI4
-line 1062
-;1062:	cgs.media.medalGauntlet = trap_R_RegisterShaderNoMip( "medal_gauntlet" );
-ADDRGP4 $844
+line 1068
+;1068:	cgs.media.medalImpressive = trap_R_RegisterShaderNoMip( "medal_impressive" );
+ADDRGP4 $846
 ARGP4
 ADDRLP4 484
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -4848,9 +4854,9 @@ ADDRGP4 cgs+152340+520
 ADDRLP4 484
 INDIRI4
 ASGNI4
-line 1063
-;1063:	cgs.media.medalDefend = trap_R_RegisterShaderNoMip( "medal_defend" );
-ADDRGP4 $847
+line 1069
+;1069:	cgs.media.medalExcellent = trap_R_RegisterShaderNoMip( "medal_excellent" );
+ADDRGP4 $849
 ARGP4
 ADDRLP4 488
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -4860,9 +4866,9 @@ ADDRGP4 cgs+152340+524
 ADDRLP4 488
 INDIRI4
 ASGNI4
-line 1064
-;1064:	cgs.media.medalAssist = trap_R_RegisterShaderNoMip( "medal_assist" );
-ADDRGP4 $850
+line 1070
+;1070:	cgs.media.medalGauntlet = trap_R_RegisterShaderNoMip( "medal_gauntlet" );
+ADDRGP4 $852
 ARGP4
 ADDRLP4 492
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -4872,9 +4878,9 @@ ADDRGP4 cgs+152340+528
 ADDRLP4 492
 INDIRI4
 ASGNI4
-line 1065
-;1065:	cgs.media.medalCapture = trap_R_RegisterShaderNoMip( "medal_capture" );
-ADDRGP4 $853
+line 1071
+;1071:	cgs.media.medalDefend = trap_R_RegisterShaderNoMip( "medal_defend" );
+ADDRGP4 $855
 ARGP4
 ADDRLP4 496
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -4884,10 +4890,34 @@ ADDRGP4 cgs+152340+532
 ADDRLP4 496
 INDIRI4
 ASGNI4
-line 1068
-;1066:
-;1067:
-;1068:	memset( cg_items, 0, sizeof( cg_items ) );
+line 1072
+;1072:	cgs.media.medalAssist = trap_R_RegisterShaderNoMip( "medal_assist" );
+ADDRGP4 $858
+ARGP4
+ADDRLP4 500
+ADDRGP4 trap_R_RegisterShaderNoMip
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+536
+ADDRLP4 500
+INDIRI4
+ASGNI4
+line 1073
+;1073:	cgs.media.medalCapture = trap_R_RegisterShaderNoMip( "medal_capture" );
+ADDRGP4 $861
+ARGP4
+ADDRLP4 504
+ADDRGP4 trap_R_RegisterShaderNoMip
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+540
+ADDRLP4 504
+INDIRI4
+ASGNI4
+line 1076
+;1074:
+;1075:
+;1076:	memset( cg_items, 0, sizeof( cg_items ) );
 ADDRGP4 cg_items
 ARGP4
 CNSTI4 0
@@ -4897,8 +4927,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1069
-;1069:	memset( cg_weapons, 0, sizeof( cg_weapons ) );
+line 1077
+;1077:	memset( cg_weapons, 0, sizeof( cg_weapons ) );
 ADDRGP4 cg_weapons
 ARGP4
 CNSTI4 0
@@ -4908,35 +4938,35 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1072
-;1070:
-;1071:	// only register the items that the server says we need
-;1072:	strcpy( items, CG_ConfigString( CS_ITEMS) );
+line 1080
+;1078:
+;1079:	// only register the items that the server says we need
+;1080:	strcpy( items, CG_ConfigString( CS_ITEMS) );
 CNSTI4 27
 ARGI4
-ADDRLP4 500
+ADDRLP4 508
 ADDRGP4 CG_ConfigString
 CALLP4
 ASGNP4
 ADDRLP4 4
 ARGP4
-ADDRLP4 500
+ADDRLP4 508
 INDIRP4
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 1074
-;1073:
-;1074:	for ( i = 1 ; i < bg_numItems ; i++ ) {
+line 1082
+;1081:
+;1082:	for ( i = 1 ; i < bg_numItems ; i++ ) {
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-ADDRGP4 $857
+ADDRGP4 $865
 JUMPV
-LABELV $854
-line 1075
-;1075:		if ( items[ i ] == '1' || cg_buildScript.integer ) {
+LABELV $862
+line 1083
+;1083:		if ( items[ i ] == '1' || cg_buildScript.integer ) {
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
@@ -4944,76 +4974,52 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 49
-EQI4 $861
+EQI4 $869
 ADDRGP4 cg_buildScript+12
 INDIRI4
 CNSTI4 0
-EQI4 $858
-LABELV $861
-line 1076
-;1076:			CG_LoadingItem( i );
+EQI4 $866
+LABELV $869
+line 1084
+;1084:			CG_LoadingItem( i );
 ADDRLP4 0
 INDIRI4
 ARGI4
 ADDRGP4 CG_LoadingItem
 CALLV
 pop
-line 1077
-;1077:			CG_RegisterItemVisuals( i );
+line 1085
+;1085:			CG_RegisterItemVisuals( i );
 ADDRLP4 0
 INDIRI4
 ARGI4
 ADDRGP4 CG_RegisterItemVisuals
 CALLV
 pop
-line 1078
-;1078:		}
-LABELV $858
-line 1079
-;1079:	}
-LABELV $855
-line 1074
+line 1086
+;1086:		}
+LABELV $866
+line 1087
+;1087:	}
+LABELV $863
+line 1082
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $857
+LABELV $865
 ADDRLP4 0
 INDIRI4
 ADDRGP4 bg_numItems
 INDIRI4
-LTI4 $854
-line 1082
-;1080:
-;1081:	// wall marks
-;1082:	cgs.media.bulletMarkShader = trap_R_RegisterShader( "gfx/damage/bullet_mrk" );
-ADDRGP4 $864
-ARGP4
-ADDRLP4 504
-ADDRGP4 trap_R_RegisterShader
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+376
-ADDRLP4 504
-INDIRI4
-ASGNI4
-line 1083
-;1083:	cgs.media.burnMarkShader = trap_R_RegisterShader( "gfx/damage/burn_med_mrk" );
-ADDRGP4 $867
-ARGP4
-ADDRLP4 508
-ADDRGP4 trap_R_RegisterShader
-CALLI4
-ASGNI4
-ADDRGP4 cgs+152340+380
-ADDRLP4 508
-INDIRI4
-ASGNI4
-line 1084
-;1084:	cgs.media.holeMarkShader = trap_R_RegisterShader( "gfx/damage/hole_lg_mrk" );
-ADDRGP4 $870
+LTI4 $862
+line 1090
+;1088:
+;1089:	// wall marks
+;1090:	cgs.media.bulletMarkShader = trap_R_RegisterShader( "gfx/damage/bullet_mrk" );
+ADDRGP4 $872
 ARGP4
 ADDRLP4 512
 ADDRGP4 trap_R_RegisterShader
@@ -5023,9 +5029,9 @@ ADDRGP4 cgs+152340+384
 ADDRLP4 512
 INDIRI4
 ASGNI4
-line 1085
-;1085:	cgs.media.energyMarkShader = trap_R_RegisterShader( "gfx/damage/plasma_mrk" );
-ADDRGP4 $873
+line 1091
+;1091:	cgs.media.burnMarkShader = trap_R_RegisterShader( "gfx/damage/burn_med_mrk" );
+ADDRGP4 $875
 ARGP4
 ADDRLP4 516
 ADDRGP4 trap_R_RegisterShader
@@ -5035,73 +5041,148 @@ ADDRGP4 cgs+152340+388
 ADDRLP4 516
 INDIRI4
 ASGNI4
-line 1086
-;1086:	cgs.media.shadowMarkShader = trap_R_RegisterShader( "markShadow" );
-ADDRGP4 $876
+line 1092
+;1092:	cgs.media.holeMarkShader = trap_R_RegisterShader( "gfx/damage/hole_lg_mrk" );
+ADDRGP4 $878
 ARGP4
 ADDRLP4 520
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+344
+ADDRGP4 cgs+152340+392
 ADDRLP4 520
 INDIRI4
 ASGNI4
-line 1087
-;1087:	cgs.media.wakeMarkShader = trap_R_RegisterShader( "wake" );
-ADDRGP4 $879
+line 1093
+;1093:	cgs.media.energyMarkShader = trap_R_RegisterShader( "gfx/damage/plasma_mrk" );
+ADDRGP4 $881
 ARGP4
 ADDRLP4 524
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+368
+ADDRGP4 cgs+152340+396
 ADDRLP4 524
 INDIRI4
 ASGNI4
-line 1088
-;1088:	cgs.media.bloodMarkShader = trap_R_RegisterShader( "bloodMark" );
-ADDRGP4 $882
+line 1094
+;1094:	cgs.media.shadowMarkShader = trap_R_RegisterShader( "markShadow" );
+ADDRGP4 $884
 ARGP4
 ADDRLP4 528
 ADDRGP4 trap_R_RegisterShader
 CALLI4
 ASGNI4
-ADDRGP4 cgs+152340+372
+ADDRGP4 cgs+152340+352
 ADDRLP4 528
 INDIRI4
 ASGNI4
-line 1091
-;1089:
-;1090:	// register the inline models
-;1091:	cgs.numInlineModels = trap_CM_NumInlineModels();
+line 1095
+;1095:	cgs.media.wakeMarkShader = trap_R_RegisterShader( "wake" );
+ADDRGP4 $887
+ARGP4
 ADDRLP4 532
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+376
+ADDRLP4 532
+INDIRI4
+ASGNI4
+line 1096
+;1096:	cgs.media.bloodMarkShader = trap_R_RegisterShader( "bloodMark" );
+ADDRGP4 $890
+ARGP4
+ADDRLP4 536
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+380
+ADDRLP4 536
+INDIRI4
+ASGNI4
+line 1099
+;1097:
+;1098:	// Shafe - Trep - Radar
+;1099:	cgs.media.scannerShader = trap_R_RegisterShader("Scanner");
+ADDRGP4 $893
+ARGP4
+ADDRLP4 540
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+1040
+ADDRLP4 540
+INDIRI4
+ASGNI4
+line 1100
+;1100:    cgs.media.scannerBlipShader = trap_R_RegisterShader("ScannerBlip");
+ADDRGP4 $896
+ARGP4
+ADDRLP4 544
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+1044
+ADDRLP4 544
+INDIRI4
+ASGNI4
+line 1101
+;1101:    cgs.media.scannerBlipUpShader = trap_R_RegisterShader("ScannerBlipUp");
+ADDRGP4 $899
+ARGP4
+ADDRLP4 548
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+1048
+ADDRLP4 548
+INDIRI4
+ASGNI4
+line 1102
+;1102:    cgs.media.scannerBlipDownShader = trap_R_RegisterShader("ScannerBlipDown");
+ADDRGP4 $902
+ARGP4
+ADDRLP4 552
+ADDRGP4 trap_R_RegisterShader
+CALLI4
+ASGNI4
+ADDRGP4 cgs+152340+1052
+ADDRLP4 552
+INDIRI4
+ASGNI4
+line 1106
+;1103:	// Shafe - Trep - End Radar
+;1104:
+;1105:	// register the inline models
+;1106:	cgs.numInlineModels = trap_CM_NumInlineModels();
+ADDRLP4 556
 ADDRGP4 trap_CM_NumInlineModels
 CALLI4
 ASGNI4
 ADDRGP4 cgs+36872
-ADDRLP4 532
+ADDRLP4 556
 INDIRI4
 ASGNI4
-line 1092
-;1092:	for ( i = 1 ; i < cgs.numInlineModels ; i++ ) {
+line 1107
+;1107:	for ( i = 1 ; i < cgs.numInlineModels ; i++ ) {
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-ADDRGP4 $887
+ADDRGP4 $907
 JUMPV
-LABELV $884
-line 1097
-;1093:		char	name[10];
-;1094:		vec3_t			mins, maxs;
-;1095:		int				j;
-;1096:
-;1097:		Com_sprintf( name, sizeof(name), "*%i", i );
-ADDRLP4 564
+LABELV $904
+line 1112
+;1108:		char	name[10];
+;1109:		vec3_t			mins, maxs;
+;1110:		int				j;
+;1111:
+;1112:		Com_sprintf( name, sizeof(name), "*%i", i );
+ADDRLP4 588
 ARGP4
 CNSTI4 10
 ARGI4
-ADDRGP4 $889
+ADDRGP4 $909
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -5109,11 +5190,11 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 1098
-;1098:		cgs.inlineDrawModel[i] = trap_R_RegisterModel( name );
-ADDRLP4 564
+line 1113
+;1113:		cgs.inlineDrawModel[i] = trap_R_RegisterModel( name );
+ADDRLP4 588
 ARGP4
-ADDRLP4 576
+ADDRLP4 600
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
@@ -5123,11 +5204,11 @@ CNSTI4 2
 LSHI4
 ADDRGP4 cgs+36876
 ADDP4
-ADDRLP4 576
+ADDRLP4 600
 INDIRI4
 ASGNI4
-line 1099
-;1099:		trap_R_ModelBounds( cgs.inlineDrawModel[i], mins, maxs );
+line 1114
+;1114:		trap_R_ModelBounds( cgs.inlineDrawModel[i], mins, maxs );
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -5136,35 +5217,35 @@ ADDRGP4 cgs+36876
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 540
+ADDRLP4 564
 ARGP4
-ADDRLP4 552
+ADDRLP4 576
 ARGP4
 ADDRGP4 trap_R_ModelBounds
 CALLV
 pop
-line 1100
-;1100:		for ( j = 0 ; j < 3 ; j++ ) {
-ADDRLP4 536
+line 1115
+;1115:		for ( j = 0 ; j < 3 ; j++ ) {
+ADDRLP4 560
 CNSTI4 0
 ASGNI4
-LABELV $892
-line 1101
-;1101:			cgs.inlineModelMidpoints[i][j] = mins[j] + 0.5 * ( maxs[j] - mins[j] );
-ADDRLP4 580
-ADDRLP4 536
+LABELV $912
+line 1116
+;1116:			cgs.inlineModelMidpoints[i][j] = mins[j] + 0.5 * ( maxs[j] - mins[j] );
+ADDRLP4 604
+ADDRLP4 560
 INDIRI4
 CNSTI4 2
 LSHI4
 ASGNI4
-ADDRLP4 584
-ADDRLP4 580
+ADDRLP4 608
+ADDRLP4 604
 INDIRI4
-ADDRLP4 540
+ADDRLP4 564
 ADDP4
 INDIRF4
 ASGNF4
-ADDRLP4 580
+ADDRLP4 604
 INDIRI4
 CNSTI4 12
 ADDRLP4 0
@@ -5173,95 +5254,95 @@ MULI4
 ADDRGP4 cgs+37900
 ADDP4
 ADDP4
-ADDRLP4 584
+ADDRLP4 608
 INDIRF4
 CNSTF4 1056964608
-ADDRLP4 580
+ADDRLP4 604
 INDIRI4
-ADDRLP4 552
+ADDRLP4 576
 ADDP4
 INDIRF4
-ADDRLP4 584
+ADDRLP4 608
 INDIRF4
 SUBF4
 MULF4
 ADDF4
 ASGNF4
-line 1102
-;1102:		}
-LABELV $893
-line 1100
-ADDRLP4 536
-ADDRLP4 536
+line 1117
+;1117:		}
+LABELV $913
+line 1115
+ADDRLP4 560
+ADDRLP4 560
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-ADDRLP4 536
+ADDRLP4 560
 INDIRI4
 CNSTI4 3
-LTI4 $892
-line 1103
-;1103:	}
-LABELV $885
-line 1092
+LTI4 $912
+line 1118
+;1118:	}
+LABELV $905
+line 1107
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $887
+LABELV $907
 ADDRLP4 0
 INDIRI4
 ADDRGP4 cgs+36872
 INDIRI4
-LTI4 $884
-line 1106
-;1104:
-;1105:	// register all the server specified models
-;1106:	for (i=1 ; i<MAX_MODELS ; i++) {
+LTI4 $904
+line 1121
+;1119:
+;1120:	// register all the server specified models
+;1121:	for (i=1 ; i<MAX_MODELS ; i++) {
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-LABELV $897
-line 1109
-;1107:		const char		*modelName;
-;1108:
-;1109:		modelName = CG_ConfigString( CS_MODELS+i );
+LABELV $917
+line 1124
+;1122:		const char		*modelName;
+;1123:
+;1124:		modelName = CG_ConfigString( CS_MODELS+i );
 ADDRLP4 0
 INDIRI4
 CNSTI4 32
 ADDI4
 ARGI4
-ADDRLP4 540
+ADDRLP4 564
 ADDRGP4 CG_ConfigString
 CALLP4
 ASGNP4
-ADDRLP4 536
-ADDRLP4 540
+ADDRLP4 560
+ADDRLP4 564
 INDIRP4
 ASGNP4
-line 1110
-;1110:		if ( !modelName[0] ) {
-ADDRLP4 536
+line 1125
+;1125:		if ( !modelName[0] ) {
+ADDRLP4 560
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $901
-line 1111
-;1111:			break;
-ADDRGP4 $899
+NEI4 $921
+line 1126
+;1126:			break;
+ADDRGP4 $919
 JUMPV
-LABELV $901
-line 1113
-;1112:		}
-;1113:		cgs.gameModels[i] = trap_R_RegisterModel( modelName );
-ADDRLP4 536
+LABELV $921
+line 1128
+;1127:		}
+;1128:		cgs.gameModels[i] = trap_R_RegisterModel( modelName );
+ADDRLP4 560
 INDIRP4
 ARGP4
-ADDRLP4 544
+ADDRLP4 568
 ADDRGP4 trap_R_RegisterModel
 CALLI4
 ASGNI4
@@ -5271,13 +5352,13 @@ CNSTI4 2
 LSHI4
 ADDRGP4 cgs+34824
 ADDP4
-ADDRLP4 544
+ADDRLP4 568
 INDIRI4
 ASGNI4
-line 1114
-;1114:	}
-LABELV $898
-line 1106
+line 1129
+;1129:	}
+LABELV $918
+line 1121
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -5287,83 +5368,83 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 256
-LTI4 $897
-LABELV $899
-line 1142
-;1115:
-;1116:#ifdef MISSIONPACK
-;1117:	// new stuff
-;1118:	cgs.media.patrolShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/patrol.tga");
-;1119:	cgs.media.assaultShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/assault.tga");
-;1120:	cgs.media.campShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/camp.tga");
-;1121:	cgs.media.followShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/follow.tga");
-;1122:	cgs.media.defendShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/defend.tga");
-;1123:	cgs.media.teamLeaderShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/team_leader.tga");
-;1124:	cgs.media.retrieveShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/retrieve.tga");
-;1125:	cgs.media.escortShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/escort.tga");
-;1126:	cgs.media.cursor = trap_R_RegisterShaderNoMip( "menu/art/3_cursor2" );
-;1127:	cgs.media.sizeCursor = trap_R_RegisterShaderNoMip( "ui/assets/sizecursor.tga" );
-;1128:	cgs.media.selectCursor = trap_R_RegisterShaderNoMip( "ui/assets/selectcursor.tga" );
-;1129:	cgs.media.flagShaders[0] = trap_R_RegisterShaderNoMip("ui/assets/statusbar/flag_in_base.tga");
-;1130:	cgs.media.flagShaders[1] = trap_R_RegisterShaderNoMip("ui/assets/statusbar/flag_capture.tga");
-;1131:	cgs.media.flagShaders[2] = trap_R_RegisterShaderNoMip("ui/assets/statusbar/flag_missing.tga");
-;1132:
-;1133:	trap_R_RegisterModel( "models/players/james/lower.md3" );
-;1134:	trap_R_RegisterModel( "models/players/james/upper.md3" );
-;1135:	trap_R_RegisterModel( "models/players/heads/james/james.md3" );
-;1136:
-;1137:	trap_R_RegisterModel( "models/players/janet/lower.md3" );
-;1138:	trap_R_RegisterModel( "models/players/janet/upper.md3" );
-;1139:	trap_R_RegisterModel( "models/players/heads/janet/janet.md3" );
-;1140:
-;1141:#endif
-;1142:	CG_ClearParticles ();
+LTI4 $917
+LABELV $919
+line 1157
+;1130:
+;1131:#ifdef MISSIONPACK
+;1132:	// new stuff
+;1133:	cgs.media.patrolShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/patrol.tga");
+;1134:	cgs.media.assaultShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/assault.tga");
+;1135:	cgs.media.campShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/camp.tga");
+;1136:	cgs.media.followShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/follow.tga");
+;1137:	cgs.media.defendShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/defend.tga");
+;1138:	cgs.media.teamLeaderShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/team_leader.tga");
+;1139:	cgs.media.retrieveShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/retrieve.tga");
+;1140:	cgs.media.escortShader = trap_R_RegisterShaderNoMip("ui/assets/statusbar/escort.tga");
+;1141:	cgs.media.cursor = trap_R_RegisterShaderNoMip( "menu/art/3_cursor2" );
+;1142:	cgs.media.sizeCursor = trap_R_RegisterShaderNoMip( "ui/assets/sizecursor.tga" );
+;1143:	cgs.media.selectCursor = trap_R_RegisterShaderNoMip( "ui/assets/selectcursor.tga" );
+;1144:	cgs.media.flagShaders[0] = trap_R_RegisterShaderNoMip("ui/assets/statusbar/flag_in_base.tga");
+;1145:	cgs.media.flagShaders[1] = trap_R_RegisterShaderNoMip("ui/assets/statusbar/flag_capture.tga");
+;1146:	cgs.media.flagShaders[2] = trap_R_RegisterShaderNoMip("ui/assets/statusbar/flag_missing.tga");
+;1147:
+;1148:	trap_R_RegisterModel( "models/players/james/lower.md3" );
+;1149:	trap_R_RegisterModel( "models/players/james/upper.md3" );
+;1150:	trap_R_RegisterModel( "models/players/heads/james/james.md3" );
+;1151:
+;1152:	trap_R_RegisterModel( "models/players/janet/lower.md3" );
+;1153:	trap_R_RegisterModel( "models/players/janet/upper.md3" );
+;1154:	trap_R_RegisterModel( "models/players/heads/janet/janet.md3" );
+;1155:
+;1156:#endif
+;1157:	CG_ClearParticles ();
 ADDRGP4 CG_ClearParticles
 CALLV
 pop
-line 1155
-;1143:/*
-;1144:	for (i=1; i<MAX_PARTICLES_AREAS; i++)
-;1145:	{
-;1146:		{
-;1147:			int rval;
-;1148:
-;1149:			rval = CG_NewParticleArea ( CS_PARTICLES + i);
-;1150:			if (!rval)
-;1151:				break;
-;1152:		}
-;1153:	}
-;1154:*/
-;1155:}
-LABELV $579
-endproc CG_RegisterGraphics 588 16
+line 1170
+;1158:/*
+;1159:	for (i=1; i<MAX_PARTICLES_AREAS; i++)
+;1160:	{
+;1161:		{
+;1162:			int rval;
+;1163:
+;1164:			rval = CG_NewParticleArea ( CS_PARTICLES + i);
+;1165:			if (!rval)
+;1166:				break;
+;1167:		}
+;1168:	}
+;1169:*/
+;1170:}
+LABELV $581
+endproc CG_RegisterGraphics 612 16
 export CG_BuildSpectatorString
 proc CG_BuildSpectatorString 12 12
-line 1165
-;1156:
-;1157:
-;1158:
-;1159:/*																																			
-;1160:=======================
-;1161:CG_BuildSpectatorString
-;1162:
-;1163:=======================
-;1164:*/
-;1165:void CG_BuildSpectatorString() {
-line 1167
-;1166:	int i;
-;1167:	cg.spectatorList[0] = 0;
+line 1180
+;1171:
+;1172:
+;1173:
+;1174:/*																																			
+;1175:=======================
+;1176:CG_BuildSpectatorString
+;1177:
+;1178:=======================
+;1179:*/
+;1180:void CG_BuildSpectatorString() {
+line 1182
+;1181:	int i;
+;1182:	cg.spectatorList[0] = 0;
 ADDRGP4 cg+114376
 CNSTI1 0
 ASGNI1
-line 1168
-;1168:	for (i = 0; i < MAX_CLIENTS; i++) {
+line 1183
+;1183:	for (i = 0; i < MAX_CLIENTS; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $906
-line 1169
-;1169:		if (cgs.clientinfo[i].infoValid && cgs.clientinfo[i].team == TEAM_SPECTATOR ) {
+LABELV $926
+line 1184
+;1184:		if (cgs.clientinfo[i].infoValid && cgs.clientinfo[i].team == TEAM_SPECTATOR ) {
 ADDRLP4 4
 CNSTI4 1708
 ADDRLP4 0
@@ -5376,17 +5457,17 @@ ADDRGP4 cgs+40972
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $910
+EQI4 $930
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cgs+40972+68
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $910
-line 1170
-;1170:			Q_strcat(cg.spectatorList, sizeof(cg.spectatorList), va("%s     ", cgs.clientinfo[i].name));
-ADDRGP4 $917
+NEI4 $930
+line 1185
+;1185:			Q_strcat(cg.spectatorList, sizeof(cg.spectatorList), va("%s     ", cgs.clientinfo[i].name));
+ADDRGP4 $937
 ARGP4
 CNSTI4 1708
 ADDRLP4 0
@@ -5409,13 +5490,13 @@ ARGP4
 ADDRGP4 Q_strcat
 CALLV
 pop
-line 1171
-;1171:		}
-LABELV $910
-line 1172
-;1172:	}
-LABELV $907
-line 1168
+line 1186
+;1186:		}
+LABELV $930
+line 1187
+;1187:	}
+LABELV $927
+line 1183
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -5425,9 +5506,9 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $906
-line 1173
-;1173:	i = strlen(cg.spectatorList);
+LTI4 $926
+line 1188
+;1188:	i = strlen(cg.spectatorList);
 ADDRGP4 cg+114376
 ARGP4
 ADDRLP4 4
@@ -5438,84 +5519,84 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1174
-;1174:	if (i != cg.spectatorLen) {
+line 1189
+;1189:	if (i != cg.spectatorLen) {
 ADDRLP4 0
 INDIRI4
 ADDRGP4 cg+115400
 INDIRI4
-EQI4 $921
-line 1175
-;1175:		cg.spectatorLen = i;
+EQI4 $941
+line 1190
+;1190:		cg.spectatorLen = i;
 ADDRGP4 cg+115400
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 1176
-;1176:		cg.spectatorWidth = -1;
+line 1191
+;1191:		cg.spectatorWidth = -1;
 ADDRGP4 cg+115404
 CNSTF4 3212836864
 ASGNF4
-line 1177
-;1177:	}
-LABELV $921
-line 1178
-;1178:}
-LABELV $904
+line 1192
+;1192:	}
+LABELV $941
+line 1193
+;1193:}
+LABELV $924
 endproc CG_BuildSpectatorString 12 12
 proc CG_RegisterClients 12 4
-line 1186
-;1179:
-;1180:
-;1181:/*																																			
-;1182:===================
-;1183:CG_RegisterClients
-;1184:===================
-;1185:*/
-;1186:static void CG_RegisterClients( void ) {
-line 1189
-;1187:	int		i;
-;1188:
-;1189:	CG_LoadingClient(cg.clientNum);
+line 1201
+;1194:
+;1195:
+;1196:/*																																			
+;1197:===================
+;1198:CG_RegisterClients
+;1199:===================
+;1200:*/
+;1201:static void CG_RegisterClients( void ) {
+line 1204
+;1202:	int		i;
+;1203:
+;1204:	CG_LoadingClient(cg.clientNum);
 ADDRGP4 cg+4
 INDIRI4
 ARGI4
 ADDRGP4 CG_LoadingClient
 CALLV
 pop
-line 1190
-;1190:	CG_NewClientInfo(cg.clientNum);
+line 1205
+;1205:	CG_NewClientInfo(cg.clientNum);
 ADDRGP4 cg+4
 INDIRI4
 ARGI4
 ADDRGP4 CG_NewClientInfo
 CALLV
 pop
-line 1192
-;1191:
-;1192:	for (i=0 ; i<MAX_CLIENTS ; i++) {
+line 1207
+;1206:
+;1207:	for (i=0 ; i<MAX_CLIENTS ; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $929
-line 1195
-;1193:		const char		*clientInfo;
-;1194:
-;1195:		if (cg.clientNum == i) {
+LABELV $949
+line 1210
+;1208:		const char		*clientInfo;
+;1209:
+;1210:		if (cg.clientNum == i) {
 ADDRGP4 cg+4
 INDIRI4
 ADDRLP4 0
 INDIRI4
-NEI4 $933
-line 1196
-;1196:			continue;
-ADDRGP4 $930
+NEI4 $953
+line 1211
+;1211:			continue;
+ADDRGP4 $950
 JUMPV
-LABELV $933
-line 1199
-;1197:		}
-;1198:
-;1199:		clientInfo = CG_ConfigString( CS_PLAYERS+i );
+LABELV $953
+line 1214
+;1212:		}
+;1213:
+;1214:		clientInfo = CG_ConfigString( CS_PLAYERS+i );
 ADDRLP4 0
 INDIRI4
 CNSTI4 544
@@ -5529,40 +5610,40 @@ ADDRLP4 4
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 1200
-;1200:		if ( !clientInfo[0]) {
+line 1215
+;1215:		if ( !clientInfo[0]) {
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $936
-line 1201
-;1201:			continue;
-ADDRGP4 $930
+NEI4 $956
+line 1216
+;1216:			continue;
+ADDRGP4 $950
 JUMPV
-LABELV $936
-line 1203
-;1202:		}
-;1203:		CG_LoadingClient( i );
+LABELV $956
+line 1218
+;1217:		}
+;1218:		CG_LoadingClient( i );
 ADDRLP4 0
 INDIRI4
 ARGI4
 ADDRGP4 CG_LoadingClient
 CALLV
 pop
-line 1204
-;1204:		CG_NewClientInfo( i );
+line 1219
+;1219:		CG_NewClientInfo( i );
 ADDRLP4 0
 INDIRI4
 ARGI4
 ADDRGP4 CG_NewClientInfo
 CALLV
 pop
-line 1205
-;1205:	}
-LABELV $930
-line 1192
+line 1220
+;1220:	}
+LABELV $950
+line 1207
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -5572,30 +5653,30 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $929
-line 1206
-;1206:	CG_BuildSpectatorString();
+LTI4 $949
+line 1221
+;1221:	CG_BuildSpectatorString();
 ADDRGP4 CG_BuildSpectatorString
 CALLV
 pop
-line 1207
-;1207:}
-LABELV $926
+line 1222
+;1222:}
+LABELV $946
 endproc CG_RegisterClients 12 4
 export CG_ConfigString
 proc CG_ConfigString 4 8
-line 1216
-;1208:
-;1209://===========================================================================
-;1210:
-;1211:/*
-;1212:=================
-;1213:CG_ConfigString
-;1214:=================
-;1215:*/
-;1216:const char *CG_ConfigString( int index ) {
-line 1217
-;1217:	if ( index < 0 || index >= MAX_CONFIGSTRINGS ) {
+line 1231
+;1223:
+;1224://===========================================================================
+;1225:
+;1226:/*
+;1227:=================
+;1228:CG_ConfigString
+;1229:=================
+;1230:*/
+;1231:const char *CG_ConfigString( int index ) {
+line 1232
+;1232:	if ( index < 0 || index >= MAX_CONFIGSTRINGS ) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRI4
@@ -5603,15 +5684,15 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LTI4 $941
+LTI4 $961
 ADDRLP4 0
 INDIRI4
 CNSTI4 1024
-LTI4 $939
-LABELV $941
-line 1218
-;1218:		CG_Error( "CG_ConfigString: bad index: %i", index );
-ADDRGP4 $942
+LTI4 $959
+LABELV $961
+line 1233
+;1233:		CG_Error( "CG_ConfigString: bad index: %i", index );
+ADDRGP4 $962
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -5619,11 +5700,11 @@ ARGI4
 ADDRGP4 CG_Error
 CALLV
 pop
-line 1219
-;1219:	}
-LABELV $939
-line 1220
-;1220:	return cgs.gameState.stringData + cgs.gameState.stringOffsets[ index ];
+line 1234
+;1234:	}
+LABELV $959
+line 1235
+;1235:	return cgs.gameState.stringData + cgs.gameState.stringOffsets[ index ];
 ADDRFP4 0
 INDIRI4
 CNSTI4 2
@@ -5634,28 +5715,28 @@ INDIRI4
 ADDRGP4 cgs+4096
 ADDP4
 RETP4
-LABELV $938
+LABELV $958
 endproc CG_ConfigString 4 8
 export CG_StartMusic
 proc CG_StartMusic 144 12
-line 1231
-;1221:}
-;1222:
-;1223://==================================================================
-;1224:
-;1225:/*
-;1226:======================
-;1227:CG_StartMusic
-;1228:
-;1229:======================
-;1230:*/
-;1231:void CG_StartMusic( void ) {
-line 1236
-;1232:	char	*s;
-;1233:	char	parm1[MAX_QPATH], parm2[MAX_QPATH];
-;1234:
-;1235:	// start the background music
-;1236:	s = (char *)CG_ConfigString( CS_MUSIC );
+line 1246
+;1236:}
+;1237:
+;1238://==================================================================
+;1239:
+;1240:/*
+;1241:======================
+;1242:CG_StartMusic
+;1243:
+;1244:======================
+;1245:*/
+;1246:void CG_StartMusic( void ) {
+line 1251
+;1247:	char	*s;
+;1248:	char	parm1[MAX_QPATH], parm2[MAX_QPATH];
+;1249:
+;1250:	// start the background music
+;1251:	s = (char *)CG_ConfigString( CS_MUSIC );
 CNSTI4 2
 ARGI4
 ADDRLP4 132
@@ -5666,8 +5747,8 @@ ADDRLP4 0
 ADDRLP4 132
 INDIRP4
 ASGNP4
-line 1237
-;1237:	Q_strncpyz( parm1, COM_Parse( &s ), sizeof( parm1 ) );
+line 1252
+;1252:	Q_strncpyz( parm1, COM_Parse( &s ), sizeof( parm1 ) );
 ADDRLP4 0
 ARGP4
 ADDRLP4 136
@@ -5684,8 +5765,8 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 1238
-;1238:	Q_strncpyz( parm2, COM_Parse( &s ), sizeof( parm2 ) );
+line 1253
+;1253:	Q_strncpyz( parm2, COM_Parse( &s ), sizeof( parm2 ) );
 ADDRLP4 0
 ARGP4
 ADDRLP4 140
@@ -5702,9 +5783,9 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 1240
-;1239:
-;1240:	trap_S_StartBackgroundTrack( parm1, parm2 );
+line 1255
+;1254:
+;1255:	trap_S_StartBackgroundTrack( parm1, parm2 );
 ADDRLP4 4
 ARGP4
 ADDRLP4 68
@@ -5712,706 +5793,706 @@ ARGP4
 ADDRGP4 trap_S_StartBackgroundTrack
 CALLV
 pop
-line 1241
-;1241:}
-LABELV $944
+line 1256
+;1256:}
+LABELV $964
 endproc CG_StartMusic 144 12
 export CG_Init
 proc CG_Init 44 12
-line 1907
-;1242:#ifdef MISSIONPACK
-;1243:char *CG_GetMenuBuffer(const char *filename) {
-;1244:	int	len;
-;1245:	fileHandle_t	f;
-;1246:	static char buf[MAX_MENUFILE];
-;1247:
-;1248:	len = trap_FS_FOpenFile( filename, &f, FS_READ );
-;1249:	if ( !f ) {
-;1250:		trap_Print( va( S_COLOR_RED "menu file not found: %s, using default\n", filename ) );
-;1251:		return NULL;
-;1252:	}
-;1253:	if ( len >= MAX_MENUFILE ) {
-;1254:		trap_Print( va( S_COLOR_RED "menu file too large: %s is %i, max allowed is %i", filename, len, MAX_MENUFILE ) );
-;1255:		trap_FS_FCloseFile( f );
-;1256:		return NULL;
-;1257:	}
-;1258:
-;1259:	trap_FS_Read( buf, len, f );
-;1260:	buf[len] = 0;
-;1261:	trap_FS_FCloseFile( f );
+line 1922
+;1257:#ifdef MISSIONPACK
+;1258:char *CG_GetMenuBuffer(const char *filename) {
+;1259:	int	len;
+;1260:	fileHandle_t	f;
+;1261:	static char buf[MAX_MENUFILE];
 ;1262:
-;1263:	return buf;
-;1264:}
-;1265:
-;1266://
-;1267:// ==============================
-;1268:// new hud stuff ( mission pack )
-;1269:// ==============================
-;1270://
-;1271:qboolean CG_Asset_Parse(int handle) {
-;1272:	pc_token_t token;
-;1273:	const char *tempStr;
-;1274:
-;1275:	if (!trap_PC_ReadToken(handle, &token))
-;1276:		return qfalse;
-;1277:	if (Q_stricmp(token.string, "{") != 0) {
-;1278:		return qfalse;
-;1279:	}
-;1280:    
-;1281:	while ( 1 ) {
-;1282:		if (!trap_PC_ReadToken(handle, &token))
-;1283:			return qfalse;
-;1284:
-;1285:		if (Q_stricmp(token.string, "}") == 0) {
-;1286:			return qtrue;
-;1287:		}
-;1288:
-;1289:		// font
-;1290:		if (Q_stricmp(token.string, "font") == 0) {
-;1291:			int pointSize;
-;1292:			if (!PC_String_Parse(handle, &tempStr) || !PC_Int_Parse(handle, &pointSize)) {
-;1293:				return qfalse;
-;1294:			}
-;1295:			cgDC.registerFont(tempStr, pointSize, &cgDC.Assets.textFont);
-;1296:			continue;
-;1297:		}
-;1298:
-;1299:		// smallFont
-;1300:		if (Q_stricmp(token.string, "smallFont") == 0) {
-;1301:			int pointSize;
-;1302:			if (!PC_String_Parse(handle, &tempStr) || !PC_Int_Parse(handle, &pointSize)) {
-;1303:				return qfalse;
-;1304:			}
-;1305:			cgDC.registerFont(tempStr, pointSize, &cgDC.Assets.smallFont);
-;1306:			continue;
-;1307:		}
-;1308:
-;1309:		// font
-;1310:		if (Q_stricmp(token.string, "bigfont") == 0) {
-;1311:			int pointSize;
-;1312:			if (!PC_String_Parse(handle, &tempStr) || !PC_Int_Parse(handle, &pointSize)) {
-;1313:				return qfalse;
-;1314:			}
-;1315:			cgDC.registerFont(tempStr, pointSize, &cgDC.Assets.bigFont);
-;1316:			continue;
-;1317:		}
-;1318:
-;1319:		// gradientbar
-;1320:		if (Q_stricmp(token.string, "gradientbar") == 0) {
-;1321:			if (!PC_String_Parse(handle, &tempStr)) {
-;1322:				return qfalse;
-;1323:			}
-;1324:			cgDC.Assets.gradientBar = trap_R_RegisterShaderNoMip(tempStr);
-;1325:			continue;
-;1326:		}
-;1327:
-;1328:		// enterMenuSound
-;1329:		if (Q_stricmp(token.string, "menuEnterSound") == 0) {
-;1330:			if (!PC_String_Parse(handle, &tempStr)) {
-;1331:				return qfalse;
-;1332:			}
-;1333:			cgDC.Assets.menuEnterSound = trap_S_RegisterSound( tempStr, qfalse );
-;1334:			continue;
-;1335:		}
-;1336:
-;1337:		// exitMenuSound
-;1338:		if (Q_stricmp(token.string, "menuExitSound") == 0) {
-;1339:			if (!PC_String_Parse(handle, &tempStr)) {
-;1340:				return qfalse;
-;1341:			}
-;1342:			cgDC.Assets.menuExitSound = trap_S_RegisterSound( tempStr, qfalse );
-;1343:			continue;
-;1344:		}
-;1345:
-;1346:		// itemFocusSound
-;1347:		if (Q_stricmp(token.string, "itemFocusSound") == 0) {
-;1348:			if (!PC_String_Parse(handle, &tempStr)) {
-;1349:				return qfalse;
-;1350:			}
-;1351:			cgDC.Assets.itemFocusSound = trap_S_RegisterSound( tempStr, qfalse );
-;1352:			continue;
-;1353:		}
-;1354:
-;1355:		// menuBuzzSound
-;1356:		if (Q_stricmp(token.string, "menuBuzzSound") == 0) {
-;1357:			if (!PC_String_Parse(handle, &tempStr)) {
-;1358:				return qfalse;
-;1359:			}
-;1360:			cgDC.Assets.menuBuzzSound = trap_S_RegisterSound( tempStr, qfalse );
-;1361:			continue;
-;1362:		}
-;1363:
-;1364:		if (Q_stricmp(token.string, "cursor") == 0) {
-;1365:			if (!PC_String_Parse(handle, &cgDC.Assets.cursorStr)) {
-;1366:				return qfalse;
-;1367:			}
-;1368:			cgDC.Assets.cursor = trap_R_RegisterShaderNoMip( cgDC.Assets.cursorStr);
-;1369:			continue;
-;1370:		}
-;1371:
-;1372:		if (Q_stricmp(token.string, "fadeClamp") == 0) {
-;1373:			if (!PC_Float_Parse(handle, &cgDC.Assets.fadeClamp)) {
-;1374:				return qfalse;
-;1375:			}
+;1263:	len = trap_FS_FOpenFile( filename, &f, FS_READ );
+;1264:	if ( !f ) {
+;1265:		trap_Print( va( S_COLOR_RED "menu file not found: %s, using default\n", filename ) );
+;1266:		return NULL;
+;1267:	}
+;1268:	if ( len >= MAX_MENUFILE ) {
+;1269:		trap_Print( va( S_COLOR_RED "menu file too large: %s is %i, max allowed is %i", filename, len, MAX_MENUFILE ) );
+;1270:		trap_FS_FCloseFile( f );
+;1271:		return NULL;
+;1272:	}
+;1273:
+;1274:	trap_FS_Read( buf, len, f );
+;1275:	buf[len] = 0;
+;1276:	trap_FS_FCloseFile( f );
+;1277:
+;1278:	return buf;
+;1279:}
+;1280:
+;1281://
+;1282:// ==============================
+;1283:// new hud stuff ( mission pack )
+;1284:// ==============================
+;1285://
+;1286:qboolean CG_Asset_Parse(int handle) {
+;1287:	pc_token_t token;
+;1288:	const char *tempStr;
+;1289:
+;1290:	if (!trap_PC_ReadToken(handle, &token))
+;1291:		return qfalse;
+;1292:	if (Q_stricmp(token.string, "{") != 0) {
+;1293:		return qfalse;
+;1294:	}
+;1295:    
+;1296:	while ( 1 ) {
+;1297:		if (!trap_PC_ReadToken(handle, &token))
+;1298:			return qfalse;
+;1299:
+;1300:		if (Q_stricmp(token.string, "}") == 0) {
+;1301:			return qtrue;
+;1302:		}
+;1303:
+;1304:		// font
+;1305:		if (Q_stricmp(token.string, "font") == 0) {
+;1306:			int pointSize;
+;1307:			if (!PC_String_Parse(handle, &tempStr) || !PC_Int_Parse(handle, &pointSize)) {
+;1308:				return qfalse;
+;1309:			}
+;1310:			cgDC.registerFont(tempStr, pointSize, &cgDC.Assets.textFont);
+;1311:			continue;
+;1312:		}
+;1313:
+;1314:		// smallFont
+;1315:		if (Q_stricmp(token.string, "smallFont") == 0) {
+;1316:			int pointSize;
+;1317:			if (!PC_String_Parse(handle, &tempStr) || !PC_Int_Parse(handle, &pointSize)) {
+;1318:				return qfalse;
+;1319:			}
+;1320:			cgDC.registerFont(tempStr, pointSize, &cgDC.Assets.smallFont);
+;1321:			continue;
+;1322:		}
+;1323:
+;1324:		// font
+;1325:		if (Q_stricmp(token.string, "bigfont") == 0) {
+;1326:			int pointSize;
+;1327:			if (!PC_String_Parse(handle, &tempStr) || !PC_Int_Parse(handle, &pointSize)) {
+;1328:				return qfalse;
+;1329:			}
+;1330:			cgDC.registerFont(tempStr, pointSize, &cgDC.Assets.bigFont);
+;1331:			continue;
+;1332:		}
+;1333:
+;1334:		// gradientbar
+;1335:		if (Q_stricmp(token.string, "gradientbar") == 0) {
+;1336:			if (!PC_String_Parse(handle, &tempStr)) {
+;1337:				return qfalse;
+;1338:			}
+;1339:			cgDC.Assets.gradientBar = trap_R_RegisterShaderNoMip(tempStr);
+;1340:			continue;
+;1341:		}
+;1342:
+;1343:		// enterMenuSound
+;1344:		if (Q_stricmp(token.string, "menuEnterSound") == 0) {
+;1345:			if (!PC_String_Parse(handle, &tempStr)) {
+;1346:				return qfalse;
+;1347:			}
+;1348:			cgDC.Assets.menuEnterSound = trap_S_RegisterSound( tempStr, qfalse );
+;1349:			continue;
+;1350:		}
+;1351:
+;1352:		// exitMenuSound
+;1353:		if (Q_stricmp(token.string, "menuExitSound") == 0) {
+;1354:			if (!PC_String_Parse(handle, &tempStr)) {
+;1355:				return qfalse;
+;1356:			}
+;1357:			cgDC.Assets.menuExitSound = trap_S_RegisterSound( tempStr, qfalse );
+;1358:			continue;
+;1359:		}
+;1360:
+;1361:		// itemFocusSound
+;1362:		if (Q_stricmp(token.string, "itemFocusSound") == 0) {
+;1363:			if (!PC_String_Parse(handle, &tempStr)) {
+;1364:				return qfalse;
+;1365:			}
+;1366:			cgDC.Assets.itemFocusSound = trap_S_RegisterSound( tempStr, qfalse );
+;1367:			continue;
+;1368:		}
+;1369:
+;1370:		// menuBuzzSound
+;1371:		if (Q_stricmp(token.string, "menuBuzzSound") == 0) {
+;1372:			if (!PC_String_Parse(handle, &tempStr)) {
+;1373:				return qfalse;
+;1374:			}
+;1375:			cgDC.Assets.menuBuzzSound = trap_S_RegisterSound( tempStr, qfalse );
 ;1376:			continue;
 ;1377:		}
 ;1378:
-;1379:		if (Q_stricmp(token.string, "fadeCycle") == 0) {
-;1380:			if (!PC_Int_Parse(handle, &cgDC.Assets.fadeCycle)) {
+;1379:		if (Q_stricmp(token.string, "cursor") == 0) {
+;1380:			if (!PC_String_Parse(handle, &cgDC.Assets.cursorStr)) {
 ;1381:				return qfalse;
 ;1382:			}
-;1383:			continue;
-;1384:		}
-;1385:
-;1386:		if (Q_stricmp(token.string, "fadeAmount") == 0) {
-;1387:			if (!PC_Float_Parse(handle, &cgDC.Assets.fadeAmount)) {
-;1388:				return qfalse;
-;1389:			}
-;1390:			continue;
-;1391:		}
-;1392:
-;1393:		if (Q_stricmp(token.string, "shadowX") == 0) {
-;1394:			if (!PC_Float_Parse(handle, &cgDC.Assets.shadowX)) {
-;1395:				return qfalse;
-;1396:			}
-;1397:			continue;
-;1398:		}
-;1399:
-;1400:		if (Q_stricmp(token.string, "shadowY") == 0) {
-;1401:			if (!PC_Float_Parse(handle, &cgDC.Assets.shadowY)) {
-;1402:				return qfalse;
-;1403:			}
-;1404:			continue;
-;1405:		}
-;1406:
-;1407:		if (Q_stricmp(token.string, "shadowColor") == 0) {
-;1408:			if (!PC_Color_Parse(handle, &cgDC.Assets.shadowColor)) {
-;1409:				return qfalse;
-;1410:			}
-;1411:			cgDC.Assets.shadowFadeClamp = cgDC.Assets.shadowColor[3];
+;1383:			cgDC.Assets.cursor = trap_R_RegisterShaderNoMip( cgDC.Assets.cursorStr);
+;1384:			continue;
+;1385:		}
+;1386:
+;1387:		if (Q_stricmp(token.string, "fadeClamp") == 0) {
+;1388:			if (!PC_Float_Parse(handle, &cgDC.Assets.fadeClamp)) {
+;1389:				return qfalse;
+;1390:			}
+;1391:			continue;
+;1392:		}
+;1393:
+;1394:		if (Q_stricmp(token.string, "fadeCycle") == 0) {
+;1395:			if (!PC_Int_Parse(handle, &cgDC.Assets.fadeCycle)) {
+;1396:				return qfalse;
+;1397:			}
+;1398:			continue;
+;1399:		}
+;1400:
+;1401:		if (Q_stricmp(token.string, "fadeAmount") == 0) {
+;1402:			if (!PC_Float_Parse(handle, &cgDC.Assets.fadeAmount)) {
+;1403:				return qfalse;
+;1404:			}
+;1405:			continue;
+;1406:		}
+;1407:
+;1408:		if (Q_stricmp(token.string, "shadowX") == 0) {
+;1409:			if (!PC_Float_Parse(handle, &cgDC.Assets.shadowX)) {
+;1410:				return qfalse;
+;1411:			}
 ;1412:			continue;
 ;1413:		}
-;1414:	}
-;1415:	return qfalse; // bk001204 - why not?
-;1416:}
-;1417:
-;1418:void CG_ParseMenu(const char *menuFile) {
-;1419:	pc_token_t token;
-;1420:	int handle;
+;1414:
+;1415:		if (Q_stricmp(token.string, "shadowY") == 0) {
+;1416:			if (!PC_Float_Parse(handle, &cgDC.Assets.shadowY)) {
+;1417:				return qfalse;
+;1418:			}
+;1419:			continue;
+;1420:		}
 ;1421:
-;1422:	handle = trap_PC_LoadSource(menuFile);
-;1423:	if (!handle)
-;1424:		handle = trap_PC_LoadSource("ui/testhud.menu");
-;1425:	if (!handle)
-;1426:		return;
-;1427:
-;1428:	while ( 1 ) {
-;1429:		if (!trap_PC_ReadToken( handle, &token )) {
-;1430:			break;
-;1431:		}
+;1422:		if (Q_stricmp(token.string, "shadowColor") == 0) {
+;1423:			if (!PC_Color_Parse(handle, &cgDC.Assets.shadowColor)) {
+;1424:				return qfalse;
+;1425:			}
+;1426:			cgDC.Assets.shadowFadeClamp = cgDC.Assets.shadowColor[3];
+;1427:			continue;
+;1428:		}
+;1429:	}
+;1430:	return qfalse; // bk001204 - why not?
+;1431:}
 ;1432:
-;1433:		//if ( Q_stricmp( token, "{" ) ) {
-;1434:		//	Com_Printf( "Missing { in menu file\n" );
-;1435:		//	break;
-;1436:		//}
-;1437:
-;1438:		//if ( menuCount == MAX_MENUS ) {
-;1439:		//	Com_Printf( "Too many menus!\n" );
-;1440:		//	break;
-;1441:		//}
+;1433:void CG_ParseMenu(const char *menuFile) {
+;1434:	pc_token_t token;
+;1435:	int handle;
+;1436:
+;1437:	handle = trap_PC_LoadSource(menuFile);
+;1438:	if (!handle)
+;1439:		handle = trap_PC_LoadSource("ui/testhud.menu");
+;1440:	if (!handle)
+;1441:		return;
 ;1442:
-;1443:		if ( token.string[0] == '}' ) {
-;1444:			break;
-;1445:		}
-;1446:
-;1447:		if (Q_stricmp(token.string, "assetGlobalDef") == 0) {
-;1448:			if (CG_Asset_Parse(handle)) {
-;1449:				continue;
-;1450:			} else {
-;1451:				break;
-;1452:			}
-;1453:		}
-;1454:
-;1455:
-;1456:		if (Q_stricmp(token.string, "menudef") == 0) {
-;1457:			// start a new menu
-;1458:			Menu_New(handle);
-;1459:		}
-;1460:	}
-;1461:	trap_PC_FreeSource(handle);
-;1462:}
-;1463:
-;1464:qboolean CG_Load_Menu(char **p) {
-;1465:	char *token;
-;1466:
-;1467:	token = COM_ParseExt(p, qtrue);
-;1468:
-;1469:	if (token[0] != '{') {
-;1470:		return qfalse;
-;1471:	}
-;1472:
-;1473:	while ( 1 ) {
-;1474:
-;1475:		token = COM_ParseExt(p, qtrue);
-;1476:    
-;1477:		if (Q_stricmp(token, "}") == 0) {
-;1478:			return qtrue;
-;1479:		}
-;1480:
-;1481:		if ( !token || token[0] == 0 ) {
-;1482:			return qfalse;
-;1483:		}
-;1484:
-;1485:		CG_ParseMenu(token); 
+;1443:	while ( 1 ) {
+;1444:		if (!trap_PC_ReadToken( handle, &token )) {
+;1445:			break;
+;1446:		}
+;1447:
+;1448:		//if ( Q_stricmp( token, "{" ) ) {
+;1449:		//	Com_Printf( "Missing { in menu file\n" );
+;1450:		//	break;
+;1451:		//}
+;1452:
+;1453:		//if ( menuCount == MAX_MENUS ) {
+;1454:		//	Com_Printf( "Too many menus!\n" );
+;1455:		//	break;
+;1456:		//}
+;1457:
+;1458:		if ( token.string[0] == '}' ) {
+;1459:			break;
+;1460:		}
+;1461:
+;1462:		if (Q_stricmp(token.string, "assetGlobalDef") == 0) {
+;1463:			if (CG_Asset_Parse(handle)) {
+;1464:				continue;
+;1465:			} else {
+;1466:				break;
+;1467:			}
+;1468:		}
+;1469:
+;1470:
+;1471:		if (Q_stricmp(token.string, "menudef") == 0) {
+;1472:			// start a new menu
+;1473:			Menu_New(handle);
+;1474:		}
+;1475:	}
+;1476:	trap_PC_FreeSource(handle);
+;1477:}
+;1478:
+;1479:qboolean CG_Load_Menu(char **p) {
+;1480:	char *token;
+;1481:
+;1482:	token = COM_ParseExt(p, qtrue);
+;1483:
+;1484:	if (token[0] != '{') {
+;1485:		return qfalse;
 ;1486:	}
-;1487:	return qfalse;
-;1488:}
+;1487:
+;1488:	while ( 1 ) {
 ;1489:
-;1490:
-;1491:
-;1492:void CG_LoadMenus(const char *menuFile) {
-;1493:	char	*token;
-;1494:	char *p;
-;1495:	int	len, start;
-;1496:	fileHandle_t	f;
-;1497:	static char buf[MAX_MENUDEFFILE];
-;1498:
-;1499:	start = trap_Milliseconds();
-;1500:
-;1501:	len = trap_FS_FOpenFile( menuFile, &f, FS_READ );
-;1502:	if ( !f ) {
-;1503:		trap_Error( va( S_COLOR_YELLOW "menu file not found: %s, using default\n", menuFile ) );
-;1504:		len = trap_FS_FOpenFile( "ui/hud.txt", &f, FS_READ );
-;1505:		if (!f) {
-;1506:			trap_Error( va( S_COLOR_RED "default menu file not found: ui/hud.txt, unable to continue!\n", menuFile ) );
-;1507:		}
-;1508:	}
-;1509:
-;1510:	if ( len >= MAX_MENUDEFFILE ) {
-;1511:		trap_Error( va( S_COLOR_RED "menu file too large: %s is %i, max allowed is %i", menuFile, len, MAX_MENUDEFFILE ) );
-;1512:		trap_FS_FCloseFile( f );
-;1513:		return;
-;1514:	}
+;1490:		token = COM_ParseExt(p, qtrue);
+;1491:    
+;1492:		if (Q_stricmp(token, "}") == 0) {
+;1493:			return qtrue;
+;1494:		}
+;1495:
+;1496:		if ( !token || token[0] == 0 ) {
+;1497:			return qfalse;
+;1498:		}
+;1499:
+;1500:		CG_ParseMenu(token); 
+;1501:	}
+;1502:	return qfalse;
+;1503:}
+;1504:
+;1505:
+;1506:
+;1507:void CG_LoadMenus(const char *menuFile) {
+;1508:	char	*token;
+;1509:	char *p;
+;1510:	int	len, start;
+;1511:	fileHandle_t	f;
+;1512:	static char buf[MAX_MENUDEFFILE];
+;1513:
+;1514:	start = trap_Milliseconds();
 ;1515:
-;1516:	trap_FS_Read( buf, len, f );
-;1517:	buf[len] = 0;
-;1518:	trap_FS_FCloseFile( f );
-;1519:	
-;1520:	COM_Compress(buf);
-;1521:
-;1522:	Menu_Reset();
-;1523:
-;1524:	p = buf;
-;1525:
-;1526:	while ( 1 ) {
-;1527:		token = COM_ParseExt( &p, qtrue );
-;1528:		if( !token || token[0] == 0 || token[0] == '}') {
-;1529:			break;
-;1530:		}
-;1531:
-;1532:		//if ( Q_stricmp( token, "{" ) ) {
-;1533:		//	Com_Printf( "Missing { in menu file\n" );
-;1534:		//	break;
-;1535:		//}
+;1516:	len = trap_FS_FOpenFile( menuFile, &f, FS_READ );
+;1517:	if ( !f ) {
+;1518:		trap_Error( va( S_COLOR_YELLOW "menu file not found: %s, using default\n", menuFile ) );
+;1519:		len = trap_FS_FOpenFile( "ui/hud.txt", &f, FS_READ );
+;1520:		if (!f) {
+;1521:			trap_Error( va( S_COLOR_RED "default menu file not found: ui/hud.txt, unable to continue!\n", menuFile ) );
+;1522:		}
+;1523:	}
+;1524:
+;1525:	if ( len >= MAX_MENUDEFFILE ) {
+;1526:		trap_Error( va( S_COLOR_RED "menu file too large: %s is %i, max allowed is %i", menuFile, len, MAX_MENUDEFFILE ) );
+;1527:		trap_FS_FCloseFile( f );
+;1528:		return;
+;1529:	}
+;1530:
+;1531:	trap_FS_Read( buf, len, f );
+;1532:	buf[len] = 0;
+;1533:	trap_FS_FCloseFile( f );
+;1534:	
+;1535:	COM_Compress(buf);
 ;1536:
-;1537:		//if ( menuCount == MAX_MENUS ) {
-;1538:		//	Com_Printf( "Too many menus!\n" );
-;1539:		//	break;
-;1540:		//}
-;1541:
-;1542:		if ( Q_stricmp( token, "}" ) == 0 ) {
-;1543:			break;
-;1544:		}
-;1545:
-;1546:		if (Q_stricmp(token, "loadmenu") == 0) {
-;1547:			if (CG_Load_Menu(&p)) {
-;1548:				continue;
-;1549:			} else {
-;1550:				break;
-;1551:			}
-;1552:		}
-;1553:	}
-;1554:
-;1555:	Com_Printf("UI menu load time = %d milli seconds\n", trap_Milliseconds() - start);
+;1537:	Menu_Reset();
+;1538:
+;1539:	p = buf;
+;1540:
+;1541:	while ( 1 ) {
+;1542:		token = COM_ParseExt( &p, qtrue );
+;1543:		if( !token || token[0] == 0 || token[0] == '}') {
+;1544:			break;
+;1545:		}
+;1546:
+;1547:		//if ( Q_stricmp( token, "{" ) ) {
+;1548:		//	Com_Printf( "Missing { in menu file\n" );
+;1549:		//	break;
+;1550:		//}
+;1551:
+;1552:		//if ( menuCount == MAX_MENUS ) {
+;1553:		//	Com_Printf( "Too many menus!\n" );
+;1554:		//	break;
+;1555:		//}
 ;1556:
-;1557:}
-;1558:
-;1559:
+;1557:		if ( Q_stricmp( token, "}" ) == 0 ) {
+;1558:			break;
+;1559:		}
 ;1560:
-;1561:static qboolean CG_OwnerDrawHandleKey(int ownerDraw, int flags, float *special, int key) {
-;1562:	return qfalse;
-;1563:}
-;1564:
-;1565:
-;1566:static int CG_FeederCount(float feederID) {
-;1567:	int i, count;
-;1568:	count = 0;
-;1569:	if (feederID == FEEDER_REDTEAM_LIST) {
-;1570:		for (i = 0; i < cg.numScores; i++) {
-;1571:			if (cg.scores[i].team == TEAM_RED) {
-;1572:				count++;
-;1573:			}
-;1574:		}
-;1575:	} else if (feederID == FEEDER_BLUETEAM_LIST) {
-;1576:		for (i = 0; i < cg.numScores; i++) {
-;1577:			if (cg.scores[i].team == TEAM_BLUE) {
-;1578:				count++;
-;1579:			}
-;1580:		}
-;1581:	} else if (feederID == FEEDER_SCOREBOARD) {
-;1582:		return cg.numScores;
-;1583:	}
-;1584:	return count;
-;1585:}
-;1586:
-;1587:
-;1588:void CG_SetScoreSelection(void *p) {
-;1589:	menuDef_t *menu = (menuDef_t*)p;
-;1590:	playerState_t *ps = &cg.snap->ps;
-;1591:	int i, red, blue;
-;1592:	red = blue = 0;
-;1593:	for (i = 0; i < cg.numScores; i++) {
-;1594:		if (cg.scores[i].team == TEAM_RED) {
-;1595:			red++;
-;1596:		} else if (cg.scores[i].team == TEAM_BLUE) {
-;1597:			blue++;
-;1598:		}
-;1599:		if (ps->clientNum == cg.scores[i].client) {
-;1600:			cg.selectedScore = i;
-;1601:		}
-;1602:	}
-;1603:
-;1604:	if (menu == NULL) {
-;1605:		// just interested in setting the selected score
-;1606:		return;
-;1607:	}
-;1608:
-;1609:	if ( cgs.gametype >= GT_TEAM ) {
-;1610:		int feeder = FEEDER_REDTEAM_LIST;
-;1611:		i = red;
-;1612:		if (cg.scores[cg.selectedScore].team == TEAM_BLUE) {
-;1613:			feeder = FEEDER_BLUETEAM_LIST;
-;1614:			i = blue;
-;1615:		}
-;1616:		Menu_SetFeederSelection(menu, feeder, i, NULL);
-;1617:	} else {
-;1618:		Menu_SetFeederSelection(menu, FEEDER_SCOREBOARD, cg.selectedScore, NULL);
-;1619:	}
-;1620:}
-;1621:
-;1622:// FIXME: might need to cache this info
-;1623:static clientInfo_t * CG_InfoFromScoreIndex(int index, int team, int *scoreIndex) {
-;1624:	int i, count;
-;1625:	if ( cgs.gametype >= GT_TEAM ) {
-;1626:		count = 0;
-;1627:		for (i = 0; i < cg.numScores; i++) {
-;1628:			if (cg.scores[i].team == team) {
-;1629:				if (count == index) {
-;1630:					*scoreIndex = i;
-;1631:					return &cgs.clientinfo[cg.scores[i].client];
-;1632:				}
-;1633:				count++;
-;1634:			}
-;1635:		}
-;1636:	}
-;1637:	*scoreIndex = index;
-;1638:	return &cgs.clientinfo[ cg.scores[index].client ];
-;1639:}
-;1640:
-;1641:static const char *CG_FeederItemText(float feederID, int index, int column, qhandle_t *handle) {
-;1642:	gitem_t *item;
-;1643:	int scoreIndex = 0;
-;1644:	clientInfo_t *info = NULL;
-;1645:	int team = -1;
-;1646:	score_t *sp = NULL;
-;1647:
-;1648:	*handle = -1;
-;1649:
-;1650:	if (feederID == FEEDER_REDTEAM_LIST) {
-;1651:		team = TEAM_RED;
-;1652:	} else if (feederID == FEEDER_BLUETEAM_LIST) {
-;1653:		team = TEAM_BLUE;
-;1654:	}
+;1561:		if (Q_stricmp(token, "loadmenu") == 0) {
+;1562:			if (CG_Load_Menu(&p)) {
+;1563:				continue;
+;1564:			} else {
+;1565:				break;
+;1566:			}
+;1567:		}
+;1568:	}
+;1569:
+;1570:	Com_Printf("UI menu load time = %d milli seconds\n", trap_Milliseconds() - start);
+;1571:
+;1572:}
+;1573:
+;1574:
+;1575:
+;1576:static qboolean CG_OwnerDrawHandleKey(int ownerDraw, int flags, float *special, int key) {
+;1577:	return qfalse;
+;1578:}
+;1579:
+;1580:
+;1581:static int CG_FeederCount(float feederID) {
+;1582:	int i, count;
+;1583:	count = 0;
+;1584:	if (feederID == FEEDER_REDTEAM_LIST) {
+;1585:		for (i = 0; i < cg.numScores; i++) {
+;1586:			if (cg.scores[i].team == TEAM_RED) {
+;1587:				count++;
+;1588:			}
+;1589:		}
+;1590:	} else if (feederID == FEEDER_BLUETEAM_LIST) {
+;1591:		for (i = 0; i < cg.numScores; i++) {
+;1592:			if (cg.scores[i].team == TEAM_BLUE) {
+;1593:				count++;
+;1594:			}
+;1595:		}
+;1596:	} else if (feederID == FEEDER_SCOREBOARD) {
+;1597:		return cg.numScores;
+;1598:	}
+;1599:	return count;
+;1600:}
+;1601:
+;1602:
+;1603:void CG_SetScoreSelection(void *p) {
+;1604:	menuDef_t *menu = (menuDef_t*)p;
+;1605:	playerState_t *ps = &cg.snap->ps;
+;1606:	int i, red, blue;
+;1607:	red = blue = 0;
+;1608:	for (i = 0; i < cg.numScores; i++) {
+;1609:		if (cg.scores[i].team == TEAM_RED) {
+;1610:			red++;
+;1611:		} else if (cg.scores[i].team == TEAM_BLUE) {
+;1612:			blue++;
+;1613:		}
+;1614:		if (ps->clientNum == cg.scores[i].client) {
+;1615:			cg.selectedScore = i;
+;1616:		}
+;1617:	}
+;1618:
+;1619:	if (menu == NULL) {
+;1620:		// just interested in setting the selected score
+;1621:		return;
+;1622:	}
+;1623:
+;1624:	if ( cgs.gametype >= GT_TEAM ) {
+;1625:		int feeder = FEEDER_REDTEAM_LIST;
+;1626:		i = red;
+;1627:		if (cg.scores[cg.selectedScore].team == TEAM_BLUE) {
+;1628:			feeder = FEEDER_BLUETEAM_LIST;
+;1629:			i = blue;
+;1630:		}
+;1631:		Menu_SetFeederSelection(menu, feeder, i, NULL);
+;1632:	} else {
+;1633:		Menu_SetFeederSelection(menu, FEEDER_SCOREBOARD, cg.selectedScore, NULL);
+;1634:	}
+;1635:}
+;1636:
+;1637:// FIXME: might need to cache this info
+;1638:static clientInfo_t * CG_InfoFromScoreIndex(int index, int team, int *scoreIndex) {
+;1639:	int i, count;
+;1640:	if ( cgs.gametype >= GT_TEAM ) {
+;1641:		count = 0;
+;1642:		for (i = 0; i < cg.numScores; i++) {
+;1643:			if (cg.scores[i].team == team) {
+;1644:				if (count == index) {
+;1645:					*scoreIndex = i;
+;1646:					return &cgs.clientinfo[cg.scores[i].client];
+;1647:				}
+;1648:				count++;
+;1649:			}
+;1650:		}
+;1651:	}
+;1652:	*scoreIndex = index;
+;1653:	return &cgs.clientinfo[ cg.scores[index].client ];
+;1654:}
 ;1655:
-;1656:	info = CG_InfoFromScoreIndex(index, team, &scoreIndex);
-;1657:	sp = &cg.scores[scoreIndex];
-;1658:
-;1659:	if (info && info->infoValid) {
-;1660:		switch (column) {
-;1661:			case 0:
-;1662:				if ( info->powerups & ( 1 << PW_NEUTRALFLAG ) ) {
-;1663:					item = BG_FindItemForPowerup( PW_NEUTRALFLAG );
-;1664:					*handle = cg_items[ ITEM_INDEX(item) ].icon;
-;1665:				} else if ( info->powerups & ( 1 << PW_REDFLAG ) ) {
-;1666:					item = BG_FindItemForPowerup( PW_REDFLAG );
-;1667:					*handle = cg_items[ ITEM_INDEX(item) ].icon;
-;1668:				} else if ( info->powerups & ( 1 << PW_BLUEFLAG ) ) {
-;1669:					item = BG_FindItemForPowerup( PW_BLUEFLAG );
-;1670:					*handle = cg_items[ ITEM_INDEX(item) ].icon;
-;1671:				} else {
-;1672:					if ( info->botSkill > 0 && info->botSkill <= 5 ) {
-;1673:						*handle = cgs.media.botSkillShaders[ info->botSkill - 1 ];
-;1674:					} else if ( info->handicap < 100 ) {
-;1675:					return va("%i", info->handicap );
-;1676:					}
-;1677:				}
-;1678:			break;
-;1679:			case 1:
-;1680:				if (team == -1) {
-;1681:					return "";
-;1682:				} else {
-;1683:					*handle = CG_StatusHandle(info->teamTask);
-;1684:				}
-;1685:		  break;
-;1686:			case 2:
-;1687:				if ( cg.snap->ps.stats[ STAT_CLIENTS_READY ] & ( 1 << sp->client ) ) {
-;1688:					return "Ready";
-;1689:				}
-;1690:				if (team == -1) {
-;1691:					if (cgs.gametype == GT_TOURNAMENT) {
-;1692:						return va("%i/%i", info->wins, info->losses);
-;1693:					} else if (info->infoValid && info->team == TEAM_SPECTATOR ) {
-;1694:						return "Spectator";
-;1695:					} else {
-;1696:						return "";
-;1697:					}
-;1698:				} else {
-;1699:					if (info->teamLeader) {
-;1700:						return "Leader";
-;1701:					}
-;1702:				}
-;1703:			break;
-;1704:			case 3:
-;1705:				return info->name;
-;1706:			break;
-;1707:			case 4:
-;1708:				return va("%i", info->score);
-;1709:			break;
-;1710:			case 5:
-;1711:				return va("%4i", sp->time);
-;1712:			break;
-;1713:			case 6:
-;1714:				if ( sp->ping == -1 ) {
-;1715:					return "connecting";
-;1716:				} 
-;1717:				return va("%4i", sp->ping);
+;1656:static const char *CG_FeederItemText(float feederID, int index, int column, qhandle_t *handle) {
+;1657:	gitem_t *item;
+;1658:	int scoreIndex = 0;
+;1659:	clientInfo_t *info = NULL;
+;1660:	int team = -1;
+;1661:	score_t *sp = NULL;
+;1662:
+;1663:	*handle = -1;
+;1664:
+;1665:	if (feederID == FEEDER_REDTEAM_LIST) {
+;1666:		team = TEAM_RED;
+;1667:	} else if (feederID == FEEDER_BLUETEAM_LIST) {
+;1668:		team = TEAM_BLUE;
+;1669:	}
+;1670:
+;1671:	info = CG_InfoFromScoreIndex(index, team, &scoreIndex);
+;1672:	sp = &cg.scores[scoreIndex];
+;1673:
+;1674:	if (info && info->infoValid) {
+;1675:		switch (column) {
+;1676:			case 0:
+;1677:				if ( info->powerups & ( 1 << PW_NEUTRALFLAG ) ) {
+;1678:					item = BG_FindItemForPowerup( PW_NEUTRALFLAG );
+;1679:					*handle = cg_items[ ITEM_INDEX(item) ].icon;
+;1680:				} else if ( info->powerups & ( 1 << PW_REDFLAG ) ) {
+;1681:					item = BG_FindItemForPowerup( PW_REDFLAG );
+;1682:					*handle = cg_items[ ITEM_INDEX(item) ].icon;
+;1683:				} else if ( info->powerups & ( 1 << PW_BLUEFLAG ) ) {
+;1684:					item = BG_FindItemForPowerup( PW_BLUEFLAG );
+;1685:					*handle = cg_items[ ITEM_INDEX(item) ].icon;
+;1686:				} else {
+;1687:					if ( info->botSkill > 0 && info->botSkill <= 5 ) {
+;1688:						*handle = cgs.media.botSkillShaders[ info->botSkill - 1 ];
+;1689:					} else if ( info->handicap < 100 ) {
+;1690:					return va("%i", info->handicap );
+;1691:					}
+;1692:				}
+;1693:			break;
+;1694:			case 1:
+;1695:				if (team == -1) {
+;1696:					return "";
+;1697:				} else {
+;1698:					*handle = CG_StatusHandle(info->teamTask);
+;1699:				}
+;1700:		  break;
+;1701:			case 2:
+;1702:				if ( cg.snap->ps.stats[ STAT_CLIENTS_READY ] & ( 1 << sp->client ) ) {
+;1703:					return "Ready";
+;1704:				}
+;1705:				if (team == -1) {
+;1706:					if (cgs.gametype == GT_TOURNAMENT) {
+;1707:						return va("%i/%i", info->wins, info->losses);
+;1708:					} else if (info->infoValid && info->team == TEAM_SPECTATOR ) {
+;1709:						return "Spectator";
+;1710:					} else {
+;1711:						return "";
+;1712:					}
+;1713:				} else {
+;1714:					if (info->teamLeader) {
+;1715:						return "Leader";
+;1716:					}
+;1717:				}
 ;1718:			break;
-;1719:		}
-;1720:	}
-;1721:
-;1722:	return "";
-;1723:}
-;1724:
-;1725:static qhandle_t CG_FeederItemImage(float feederID, int index) {
-;1726:	return 0;
-;1727:}
-;1728:
-;1729:static void CG_FeederSelection(float feederID, int index) {
-;1730:	if ( cgs.gametype >= GT_TEAM ) {
-;1731:		int i, count;
-;1732:		int team = (feederID == FEEDER_REDTEAM_LIST) ? TEAM_RED : TEAM_BLUE;
-;1733:		count = 0;
-;1734:		for (i = 0; i < cg.numScores; i++) {
-;1735:			if (cg.scores[i].team == team) {
-;1736:				if (index == count) {
-;1737:					cg.selectedScore = i;
-;1738:				}
-;1739:				count++;
-;1740:			}
-;1741:		}
-;1742:	} else {
-;1743:		cg.selectedScore = index;
-;1744:	}
-;1745:}
-;1746:#endif
-;1747:
-;1748:#ifdef MISSIONPACK // bk001204 - only needed there
-;1749:static float CG_Cvar_Get(const char *cvar) {
-;1750:	char buff[128];
-;1751:	memset(buff, 0, sizeof(buff));
-;1752:	trap_Cvar_VariableStringBuffer(cvar, buff, sizeof(buff));
-;1753:	return atof(buff);
-;1754:}
-;1755:#endif
-;1756:
-;1757:#ifdef MISSIONPACK
-;1758:void CG_Text_PaintWithCursor(float x, float y, float scale, vec4_t color, const char *text, int cursorPos, char cursor, int limit, int style) {
-;1759:	CG_Text_Paint(x, y, scale, color, text, 0, limit, style);
+;1719:			case 3:
+;1720:				return info->name;
+;1721:			break;
+;1722:			case 4:
+;1723:				return va("%i", info->score);
+;1724:			break;
+;1725:			case 5:
+;1726:				return va("%4i", sp->time);
+;1727:			break;
+;1728:			case 6:
+;1729:				if ( sp->ping == -1 ) {
+;1730:					return "connecting";
+;1731:				} 
+;1732:				return va("%4i", sp->ping);
+;1733:			break;
+;1734:		}
+;1735:	}
+;1736:
+;1737:	return "";
+;1738:}
+;1739:
+;1740:static qhandle_t CG_FeederItemImage(float feederID, int index) {
+;1741:	return 0;
+;1742:}
+;1743:
+;1744:static void CG_FeederSelection(float feederID, int index) {
+;1745:	if ( cgs.gametype >= GT_TEAM ) {
+;1746:		int i, count;
+;1747:		int team = (feederID == FEEDER_REDTEAM_LIST) ? TEAM_RED : TEAM_BLUE;
+;1748:		count = 0;
+;1749:		for (i = 0; i < cg.numScores; i++) {
+;1750:			if (cg.scores[i].team == team) {
+;1751:				if (index == count) {
+;1752:					cg.selectedScore = i;
+;1753:				}
+;1754:				count++;
+;1755:			}
+;1756:		}
+;1757:	} else {
+;1758:		cg.selectedScore = index;
+;1759:	}
 ;1760:}
-;1761:
-;1762:static int CG_OwnerDrawWidth(int ownerDraw, float scale) {
-;1763:	switch (ownerDraw) {
-;1764:	  case CG_GAME_TYPE:
-;1765:			return CG_Text_Width(CG_GameTypeString(), scale, 0);
-;1766:	  case CG_GAME_STATUS:
-;1767:			return CG_Text_Width(CG_GetGameStatusText(), scale, 0);
-;1768:			break;
-;1769:	  case CG_KILLER:
-;1770:			return CG_Text_Width(CG_GetKillerText(), scale, 0);
-;1771:			break;
-;1772:	  case CG_RED_NAME:
-;1773:			return CG_Text_Width(cg_redTeamName.string, scale, 0);
-;1774:			break;
-;1775:	  case CG_BLUE_NAME:
-;1776:			return CG_Text_Width(cg_blueTeamName.string, scale, 0);
-;1777:			break;
-;1778:
-;1779:
-;1780:	}
-;1781:	return 0;
-;1782:}
-;1783:
-;1784:static int CG_PlayCinematic(const char *name, float x, float y, float w, float h) {
-;1785:  return trap_CIN_PlayCinematic(name, x, y, w, h, CIN_loop);
-;1786:}
-;1787:
-;1788:static void CG_StopCinematic(int handle) {
-;1789:  trap_CIN_StopCinematic(handle);
-;1790:}
-;1791:
-;1792:static void CG_DrawCinematic(int handle, float x, float y, float w, float h) {
-;1793:  trap_CIN_SetExtents(handle, x, y, w, h);
-;1794:  trap_CIN_DrawCinematic(handle);
-;1795:}
-;1796:
-;1797:static void CG_RunCinematicFrame(int handle) {
-;1798:  trap_CIN_RunCinematic(handle);
-;1799:}
-;1800:
-;1801:/*
-;1802:=================
-;1803:CG_LoadHudMenu();
-;1804:
-;1805:=================
-;1806:*/
-;1807:void CG_LoadHudMenu() {
-;1808:	char buff[1024];
-;1809:	const char *hudSet;
-;1810:
-;1811:	cgDC.registerShaderNoMip = &trap_R_RegisterShaderNoMip;
-;1812:	cgDC.setColor = &trap_R_SetColor;
-;1813:	cgDC.drawHandlePic = &CG_DrawPic;
-;1814:	cgDC.drawStretchPic = &trap_R_DrawStretchPic;
-;1815:	cgDC.drawText = &CG_Text_Paint;
-;1816:	cgDC.textWidth = &CG_Text_Width;
-;1817:	cgDC.textHeight = &CG_Text_Height;
-;1818:	cgDC.registerModel = &trap_R_RegisterModel;
-;1819:	cgDC.modelBounds = &trap_R_ModelBounds;
-;1820:	cgDC.fillRect = &CG_FillRect;
-;1821:	cgDC.drawRect = &CG_DrawRect;   
-;1822:	cgDC.drawSides = &CG_DrawSides;
-;1823:	cgDC.drawTopBottom = &CG_DrawTopBottom;
-;1824:	cgDC.clearScene = &trap_R_ClearScene;
-;1825:	cgDC.addRefEntityToScene = &trap_R_AddRefEntityToScene;
-;1826:	cgDC.renderScene = &trap_R_RenderScene;
-;1827:	cgDC.registerFont = &trap_R_RegisterFont;
-;1828:	cgDC.ownerDrawItem = &CG_OwnerDraw;
-;1829:	cgDC.getValue = &CG_GetValue;
-;1830:	cgDC.ownerDrawVisible = &CG_OwnerDrawVisible;
-;1831:	cgDC.runScript = &CG_RunMenuScript;
-;1832:	cgDC.getTeamColor = &CG_GetTeamColor;
-;1833:	cgDC.setCVar = trap_Cvar_Set;
-;1834:	cgDC.getCVarString = trap_Cvar_VariableStringBuffer;
-;1835:	cgDC.getCVarValue = CG_Cvar_Get;
-;1836:	cgDC.drawTextWithCursor = &CG_Text_PaintWithCursor;
-;1837:	//cgDC.setOverstrikeMode = &trap_Key_SetOverstrikeMode;
-;1838:	//cgDC.getOverstrikeMode = &trap_Key_GetOverstrikeMode;
-;1839:	cgDC.startLocalSound = &trap_S_StartLocalSound;
-;1840:	cgDC.ownerDrawHandleKey = &CG_OwnerDrawHandleKey;
-;1841:	cgDC.feederCount = &CG_FeederCount;
-;1842:	cgDC.feederItemImage = &CG_FeederItemImage;
-;1843:	cgDC.feederItemText = &CG_FeederItemText;
-;1844:	cgDC.feederSelection = &CG_FeederSelection;
-;1845:	//cgDC.setBinding = &trap_Key_SetBinding;
-;1846:	//cgDC.getBindingBuf = &trap_Key_GetBindingBuf;
-;1847:	//cgDC.keynumToStringBuf = &trap_Key_KeynumToStringBuf;
-;1848:	//cgDC.executeText = &trap_Cmd_ExecuteText;
-;1849:	cgDC.Error = &Com_Error; 
-;1850:	cgDC.Print = &Com_Printf; 
-;1851:	cgDC.ownerDrawWidth = &CG_OwnerDrawWidth;
-;1852:	//cgDC.Pause = &CG_Pause;
-;1853:	cgDC.registerSound = &trap_S_RegisterSound;
-;1854:	cgDC.startBackgroundTrack = &trap_S_StartBackgroundTrack;
-;1855:	cgDC.stopBackgroundTrack = &trap_S_StopBackgroundTrack;
-;1856:	cgDC.playCinematic = &CG_PlayCinematic;
-;1857:	cgDC.stopCinematic = &CG_StopCinematic;
-;1858:	cgDC.drawCinematic = &CG_DrawCinematic;
-;1859:	cgDC.runCinematicFrame = &CG_RunCinematicFrame;
-;1860:	
-;1861:	Init_Display(&cgDC);
-;1862:
-;1863:	Menu_Reset();
-;1864:	
-;1865:	trap_Cvar_VariableStringBuffer("cg_hudFiles", buff, sizeof(buff));
-;1866:	hudSet = buff;
-;1867:	if (hudSet[0] == '\0') {
-;1868:		hudSet = "ui/hud.txt";
-;1869:	}
-;1870:
-;1871:	CG_LoadMenus(hudSet);
-;1872:}
-;1873:
-;1874:void CG_AssetCache() {
-;1875:	//if (Assets.textFont == NULL) {
-;1876:	//  trap_R_RegisterFont("fonts/arial.ttf", 72, &Assets.textFont);
-;1877:	//}
-;1878:	//Assets.background = trap_R_RegisterShaderNoMip( ASSET_BACKGROUND );
-;1879:	//Com_Printf("Menu Size: %i bytes\n", sizeof(Menus));
-;1880:	cgDC.Assets.gradientBar = trap_R_RegisterShaderNoMip( ASSET_GRADIENTBAR );
-;1881:	cgDC.Assets.fxBasePic = trap_R_RegisterShaderNoMip( ART_FX_BASE );
-;1882:	cgDC.Assets.fxPic[0] = trap_R_RegisterShaderNoMip( ART_FX_RED );
-;1883:	cgDC.Assets.fxPic[1] = trap_R_RegisterShaderNoMip( ART_FX_YELLOW );
-;1884:	cgDC.Assets.fxPic[2] = trap_R_RegisterShaderNoMip( ART_FX_GREEN );
-;1885:	cgDC.Assets.fxPic[3] = trap_R_RegisterShaderNoMip( ART_FX_TEAL );
-;1886:	cgDC.Assets.fxPic[4] = trap_R_RegisterShaderNoMip( ART_FX_BLUE );
-;1887:	cgDC.Assets.fxPic[5] = trap_R_RegisterShaderNoMip( ART_FX_CYAN );
-;1888:	cgDC.Assets.fxPic[6] = trap_R_RegisterShaderNoMip( ART_FX_WHITE );
-;1889:	cgDC.Assets.scrollBar = trap_R_RegisterShaderNoMip( ASSET_SCROLLBAR );
-;1890:	cgDC.Assets.scrollBarArrowDown = trap_R_RegisterShaderNoMip( ASSET_SCROLLBAR_ARROWDOWN );
-;1891:	cgDC.Assets.scrollBarArrowUp = trap_R_RegisterShaderNoMip( ASSET_SCROLLBAR_ARROWUP );
-;1892:	cgDC.Assets.scrollBarArrowLeft = trap_R_RegisterShaderNoMip( ASSET_SCROLLBAR_ARROWLEFT );
-;1893:	cgDC.Assets.scrollBarArrowRight = trap_R_RegisterShaderNoMip( ASSET_SCROLLBAR_ARROWRIGHT );
-;1894:	cgDC.Assets.scrollBarThumb = trap_R_RegisterShaderNoMip( ASSET_SCROLL_THUMB );
-;1895:	cgDC.Assets.sliderBar = trap_R_RegisterShaderNoMip( ASSET_SLIDER_BAR );
-;1896:	cgDC.Assets.sliderThumb = trap_R_RegisterShaderNoMip( ASSET_SLIDER_THUMB );
-;1897:}
-;1898:#endif
-;1899:/*
-;1900:=================
-;1901:CG_Init
-;1902:
-;1903:Called after every level change or subsystem restart
-;1904:Will perform callbacks to make the loading info screen update.
-;1905:=================
-;1906:*/
-;1907:void CG_Init( int serverMessageNum, int serverCommandSequence, int clientNum ) {
-line 1911
-;1908:	const char	*s;
-;1909:
-;1910:	// clear everything
-;1911:	memset( &cgs, 0, sizeof( cgs ) );
+;1761:#endif
+;1762:
+;1763:#ifdef MISSIONPACK // bk001204 - only needed there
+;1764:static float CG_Cvar_Get(const char *cvar) {
+;1765:	char buff[128];
+;1766:	memset(buff, 0, sizeof(buff));
+;1767:	trap_Cvar_VariableStringBuffer(cvar, buff, sizeof(buff));
+;1768:	return atof(buff);
+;1769:}
+;1770:#endif
+;1771:
+;1772:#ifdef MISSIONPACK
+;1773:void CG_Text_PaintWithCursor(float x, float y, float scale, vec4_t color, const char *text, int cursorPos, char cursor, int limit, int style) {
+;1774:	CG_Text_Paint(x, y, scale, color, text, 0, limit, style);
+;1775:}
+;1776:
+;1777:static int CG_OwnerDrawWidth(int ownerDraw, float scale) {
+;1778:	switch (ownerDraw) {
+;1779:	  case CG_GAME_TYPE:
+;1780:			return CG_Text_Width(CG_GameTypeString(), scale, 0);
+;1781:	  case CG_GAME_STATUS:
+;1782:			return CG_Text_Width(CG_GetGameStatusText(), scale, 0);
+;1783:			break;
+;1784:	  case CG_KILLER:
+;1785:			return CG_Text_Width(CG_GetKillerText(), scale, 0);
+;1786:			break;
+;1787:	  case CG_RED_NAME:
+;1788:			return CG_Text_Width(cg_redTeamName.string, scale, 0);
+;1789:			break;
+;1790:	  case CG_BLUE_NAME:
+;1791:			return CG_Text_Width(cg_blueTeamName.string, scale, 0);
+;1792:			break;
+;1793:
+;1794:
+;1795:	}
+;1796:	return 0;
+;1797:}
+;1798:
+;1799:static int CG_PlayCinematic(const char *name, float x, float y, float w, float h) {
+;1800:  return trap_CIN_PlayCinematic(name, x, y, w, h, CIN_loop);
+;1801:}
+;1802:
+;1803:static void CG_StopCinematic(int handle) {
+;1804:  trap_CIN_StopCinematic(handle);
+;1805:}
+;1806:
+;1807:static void CG_DrawCinematic(int handle, float x, float y, float w, float h) {
+;1808:  trap_CIN_SetExtents(handle, x, y, w, h);
+;1809:  trap_CIN_DrawCinematic(handle);
+;1810:}
+;1811:
+;1812:static void CG_RunCinematicFrame(int handle) {
+;1813:  trap_CIN_RunCinematic(handle);
+;1814:}
+;1815:
+;1816:/*
+;1817:=================
+;1818:CG_LoadHudMenu();
+;1819:
+;1820:=================
+;1821:*/
+;1822:void CG_LoadHudMenu() {
+;1823:	char buff[1024];
+;1824:	const char *hudSet;
+;1825:
+;1826:	cgDC.registerShaderNoMip = &trap_R_RegisterShaderNoMip;
+;1827:	cgDC.setColor = &trap_R_SetColor;
+;1828:	cgDC.drawHandlePic = &CG_DrawPic;
+;1829:	cgDC.drawStretchPic = &trap_R_DrawStretchPic;
+;1830:	cgDC.drawText = &CG_Text_Paint;
+;1831:	cgDC.textWidth = &CG_Text_Width;
+;1832:	cgDC.textHeight = &CG_Text_Height;
+;1833:	cgDC.registerModel = &trap_R_RegisterModel;
+;1834:	cgDC.modelBounds = &trap_R_ModelBounds;
+;1835:	cgDC.fillRect = &CG_FillRect;
+;1836:	cgDC.drawRect = &CG_DrawRect;   
+;1837:	cgDC.drawSides = &CG_DrawSides;
+;1838:	cgDC.drawTopBottom = &CG_DrawTopBottom;
+;1839:	cgDC.clearScene = &trap_R_ClearScene;
+;1840:	cgDC.addRefEntityToScene = &trap_R_AddRefEntityToScene;
+;1841:	cgDC.renderScene = &trap_R_RenderScene;
+;1842:	cgDC.registerFont = &trap_R_RegisterFont;
+;1843:	cgDC.ownerDrawItem = &CG_OwnerDraw;
+;1844:	cgDC.getValue = &CG_GetValue;
+;1845:	cgDC.ownerDrawVisible = &CG_OwnerDrawVisible;
+;1846:	cgDC.runScript = &CG_RunMenuScript;
+;1847:	cgDC.getTeamColor = &CG_GetTeamColor;
+;1848:	cgDC.setCVar = trap_Cvar_Set;
+;1849:	cgDC.getCVarString = trap_Cvar_VariableStringBuffer;
+;1850:	cgDC.getCVarValue = CG_Cvar_Get;
+;1851:	cgDC.drawTextWithCursor = &CG_Text_PaintWithCursor;
+;1852:	//cgDC.setOverstrikeMode = &trap_Key_SetOverstrikeMode;
+;1853:	//cgDC.getOverstrikeMode = &trap_Key_GetOverstrikeMode;
+;1854:	cgDC.startLocalSound = &trap_S_StartLocalSound;
+;1855:	cgDC.ownerDrawHandleKey = &CG_OwnerDrawHandleKey;
+;1856:	cgDC.feederCount = &CG_FeederCount;
+;1857:	cgDC.feederItemImage = &CG_FeederItemImage;
+;1858:	cgDC.feederItemText = &CG_FeederItemText;
+;1859:	cgDC.feederSelection = &CG_FeederSelection;
+;1860:	//cgDC.setBinding = &trap_Key_SetBinding;
+;1861:	//cgDC.getBindingBuf = &trap_Key_GetBindingBuf;
+;1862:	//cgDC.keynumToStringBuf = &trap_Key_KeynumToStringBuf;
+;1863:	//cgDC.executeText = &trap_Cmd_ExecuteText;
+;1864:	cgDC.Error = &Com_Error; 
+;1865:	cgDC.Print = &Com_Printf; 
+;1866:	cgDC.ownerDrawWidth = &CG_OwnerDrawWidth;
+;1867:	//cgDC.Pause = &CG_Pause;
+;1868:	cgDC.registerSound = &trap_S_RegisterSound;
+;1869:	cgDC.startBackgroundTrack = &trap_S_StartBackgroundTrack;
+;1870:	cgDC.stopBackgroundTrack = &trap_S_StopBackgroundTrack;
+;1871:	cgDC.playCinematic = &CG_PlayCinematic;
+;1872:	cgDC.stopCinematic = &CG_StopCinematic;
+;1873:	cgDC.drawCinematic = &CG_DrawCinematic;
+;1874:	cgDC.runCinematicFrame = &CG_RunCinematicFrame;
+;1875:	
+;1876:	Init_Display(&cgDC);
+;1877:
+;1878:	Menu_Reset();
+;1879:	
+;1880:	trap_Cvar_VariableStringBuffer("cg_hudFiles", buff, sizeof(buff));
+;1881:	hudSet = buff;
+;1882:	if (hudSet[0] == '\0') {
+;1883:		hudSet = "ui/hud.txt";
+;1884:	}
+;1885:
+;1886:	CG_LoadMenus(hudSet);
+;1887:}
+;1888:
+;1889:void CG_AssetCache() {
+;1890:	//if (Assets.textFont == NULL) {
+;1891:	//  trap_R_RegisterFont("fonts/arial.ttf", 72, &Assets.textFont);
+;1892:	//}
+;1893:	//Assets.background = trap_R_RegisterShaderNoMip( ASSET_BACKGROUND );
+;1894:	//Com_Printf("Menu Size: %i bytes\n", sizeof(Menus));
+;1895:	cgDC.Assets.gradientBar = trap_R_RegisterShaderNoMip( ASSET_GRADIENTBAR );
+;1896:	cgDC.Assets.fxBasePic = trap_R_RegisterShaderNoMip( ART_FX_BASE );
+;1897:	cgDC.Assets.fxPic[0] = trap_R_RegisterShaderNoMip( ART_FX_RED );
+;1898:	cgDC.Assets.fxPic[1] = trap_R_RegisterShaderNoMip( ART_FX_YELLOW );
+;1899:	cgDC.Assets.fxPic[2] = trap_R_RegisterShaderNoMip( ART_FX_GREEN );
+;1900:	cgDC.Assets.fxPic[3] = trap_R_RegisterShaderNoMip( ART_FX_TEAL );
+;1901:	cgDC.Assets.fxPic[4] = trap_R_RegisterShaderNoMip( ART_FX_BLUE );
+;1902:	cgDC.Assets.fxPic[5] = trap_R_RegisterShaderNoMip( ART_FX_CYAN );
+;1903:	cgDC.Assets.fxPic[6] = trap_R_RegisterShaderNoMip( ART_FX_WHITE );
+;1904:	cgDC.Assets.scrollBar = trap_R_RegisterShaderNoMip( ASSET_SCROLLBAR );
+;1905:	cgDC.Assets.scrollBarArrowDown = trap_R_RegisterShaderNoMip( ASSET_SCROLLBAR_ARROWDOWN );
+;1906:	cgDC.Assets.scrollBarArrowUp = trap_R_RegisterShaderNoMip( ASSET_SCROLLBAR_ARROWUP );
+;1907:	cgDC.Assets.scrollBarArrowLeft = trap_R_RegisterShaderNoMip( ASSET_SCROLLBAR_ARROWLEFT );
+;1908:	cgDC.Assets.scrollBarArrowRight = trap_R_RegisterShaderNoMip( ASSET_SCROLLBAR_ARROWRIGHT );
+;1909:	cgDC.Assets.scrollBarThumb = trap_R_RegisterShaderNoMip( ASSET_SCROLL_THUMB );
+;1910:	cgDC.Assets.sliderBar = trap_R_RegisterShaderNoMip( ASSET_SLIDER_BAR );
+;1911:	cgDC.Assets.sliderThumb = trap_R_RegisterShaderNoMip( ASSET_SLIDER_THUMB );
+;1912:}
+;1913:#endif
+;1914:/*
+;1915:=================
+;1916:CG_Init
+;1917:
+;1918:Called after every level change or subsystem restart
+;1919:Will perform callbacks to make the loading info screen update.
+;1920:=================
+;1921:*/
+;1922:void CG_Init( int serverMessageNum, int serverCommandSequence, int clientNum ) {
+line 1926
+;1923:	const char	*s;
+;1924:
+;1925:	// clear everything
+;1926:	memset( &cgs, 0, sizeof( cgs ) );
 ADDRGP4 cgs
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 153376
+CNSTI4 153400
 ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1912
-;1912:	memset( &cg, 0, sizeof( cg ) );
+line 1927
+;1927:	memset( &cg, 0, sizeof( cg ) );
 ADDRGP4 cg
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 155908
+CNSTI4 155912
 ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1913
-;1913:	memset( cg_entities, 0, sizeof(cg_entities) );
+line 1928
+;1928:	memset( cg_entities, 0, sizeof(cg_entities) );
 ADDRGP4 cg_entities
 ARGP4
 CNSTI4 0
@@ -6421,8 +6502,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1914
-;1914:	memset( cg_weapons, 0, sizeof(cg_weapons) );
+line 1929
+;1929:	memset( cg_weapons, 0, sizeof(cg_weapons) );
 ADDRGP4 cg_weapons
 ARGP4
 CNSTI4 0
@@ -6432,8 +6513,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1915
-;1915:	memset( cg_items, 0, sizeof(cg_items) );
+line 1930
+;1930:	memset( cg_items, 0, sizeof(cg_items) );
 ADDRGP4 cg_items
 ARGP4
 CNSTI4 0
@@ -6443,31 +6524,31 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1917
-;1916:
-;1917:	cg.clientNum = clientNum;
+line 1932
+;1931:
+;1932:	cg.clientNum = clientNum;
 ADDRGP4 cg+4
 ADDRFP4 8
 INDIRI4
 ASGNI4
-line 1919
-;1918:
-;1919:	cgs.processedSnapshotNum = serverMessageNum;
+line 1934
+;1933:
+;1934:	cgs.processedSnapshotNum = serverMessageNum;
 ADDRGP4 cgs+31448
 ADDRFP4 0
 INDIRI4
 ASGNI4
-line 1920
-;1920:	cgs.serverCommandSequence = serverCommandSequence;
+line 1935
+;1935:	cgs.serverCommandSequence = serverCommandSequence;
 ADDRGP4 cgs+31444
 ADDRFP4 4
 INDIRI4
 ASGNI4
-line 1923
-;1921:
-;1922:	// load a few needed things before we do any screen updates
-;1923:	cgs.media.charsetShader		= trap_R_RegisterShader( "gfx/2d/bigchars" );
-ADDRGP4 $950
+line 1938
+;1936:
+;1937:	// load a few needed things before we do any screen updates
+;1938:	cgs.media.charsetShader		= trap_R_RegisterShader( "gfx/2d/bigchars" );
+ADDRGP4 $970
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_R_RegisterShader
@@ -6477,9 +6558,9 @@ ADDRGP4 cgs+152340
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1924
-;1924:	cgs.media.whiteShader		= trap_R_RegisterShader( "white" );
-ADDRGP4 $953
+line 1939
+;1939:	cgs.media.whiteShader		= trap_R_RegisterShader( "white" );
+ADDRGP4 $973
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_R_RegisterShader
@@ -6489,9 +6570,9 @@ ADDRGP4 cgs+152340+16
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 1925
-;1925:	cgs.media.charsetProp		= trap_R_RegisterShaderNoMip( "menu/art/font1_prop.tga" );
-ADDRGP4 $956
+line 1940
+;1940:	cgs.media.charsetProp		= trap_R_RegisterShaderNoMip( "menu/art/font1_prop.tga" );
+ADDRGP4 $976
 ARGP4
 ADDRLP4 12
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -6501,9 +6582,9 @@ ADDRGP4 cgs+152340+4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 1926
-;1926:	cgs.media.charsetPropGlow	= trap_R_RegisterShaderNoMip( "menu/art/font1_prop_glo.tga" );
-ADDRGP4 $959
+line 1941
+;1941:	cgs.media.charsetPropGlow	= trap_R_RegisterShaderNoMip( "menu/art/font1_prop_glo.tga" );
+ADDRGP4 $979
 ARGP4
 ADDRLP4 16
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -6513,9 +6594,9 @@ ADDRGP4 cgs+152340+8
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 1927
-;1927:	cgs.media.charsetPropB		= trap_R_RegisterShaderNoMip( "menu/art/font2_prop.tga" );
-ADDRGP4 $962
+line 1942
+;1942:	cgs.media.charsetPropB		= trap_R_RegisterShaderNoMip( "menu/art/font2_prop.tga" );
+ADDRGP4 $982
 ARGP4
 ADDRLP4 20
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -6525,27 +6606,27 @@ ADDRGP4 cgs+152340+12
 ADDRLP4 20
 INDIRI4
 ASGNI4
-line 1929
-;1928:
-;1929:	CG_RegisterCvars();
+line 1944
+;1943:
+;1944:	CG_RegisterCvars();
 ADDRGP4 CG_RegisterCvars
 CALLV
 pop
-line 1931
-;1930:
-;1931:	CG_InitConsoleCommands();
+line 1946
+;1945:
+;1946:	CG_InitConsoleCommands();
 ADDRGP4 CG_InitConsoleCommands
 CALLV
 pop
-line 1933
-;1932:
-;1933:	cg.weaponSelect = WP_MACHINEGUN;
+line 1948
+;1947:
+;1948:	cg.weaponSelect = WP_MACHINEGUN;
 ADDRGP4 cg+108948
 CNSTI4 2
 ASGNI4
-line 1935
-;1934:
-;1935:	cgs.redflag = cgs.blueflag = -1; // For compatibily, default to unset for
+line 1950
+;1949:
+;1950:	cgs.redflag = cgs.blueflag = -1; // For compatibily, default to unset for
 ADDRLP4 24
 CNSTI4 -1
 ASGNI4
@@ -6557,23 +6638,23 @@ ADDRGP4 cgs+34808
 ADDRLP4 24
 INDIRI4
 ASGNI4
-line 1936
-;1936:	cgs.flagStatus = -1;
+line 1951
+;1951:	cgs.flagStatus = -1;
 ADDRGP4 cgs+34816
 CNSTI4 -1
 ASGNI4
-line 1940
-;1937:	// old servers
-;1938:
-;1939:	// get the rendering configuration from the client system
-;1940:	trap_GetGlconfig( &cgs.glconfig );
+line 1955
+;1952:	// old servers
+;1953:
+;1954:	// get the rendering configuration from the client system
+;1955:	trap_GetGlconfig( &cgs.glconfig );
 ADDRGP4 cgs+20100
 ARGP4
 ADDRGP4 trap_GetGlconfig
 CALLV
 pop
-line 1941
-;1941:	cgs.screenXScale = cgs.glconfig.vidWidth / 640.0;
+line 1956
+;1956:	cgs.screenXScale = cgs.glconfig.vidWidth / 640.0;
 ADDRGP4 cgs+31432
 ADDRGP4 cgs+20100+11304
 INDIRI4
@@ -6581,8 +6662,8 @@ CVIF4 4
 CNSTF4 1142947840
 DIVF4
 ASGNF4
-line 1942
-;1942:	cgs.screenYScale = cgs.glconfig.vidHeight / 480.0;
+line 1957
+;1957:	cgs.screenYScale = cgs.glconfig.vidHeight / 480.0;
 ADDRGP4 cgs+31436
 ADDRGP4 cgs+20100+11308
 INDIRI4
@@ -6590,19 +6671,19 @@ CVIF4 4
 CNSTF4 1139802112
 DIVF4
 ASGNF4
-line 1945
-;1943:
-;1944:	// get the gamestate from the client system
-;1945:	trap_GetGameState( &cgs.gameState );
+line 1960
+;1958:
+;1959:	// get the gamestate from the client system
+;1960:	trap_GetGameState( &cgs.gameState );
 ADDRGP4 cgs
 ARGP4
 ADDRGP4 trap_GetGameState
 CALLV
 pop
-line 1948
-;1946:
-;1947:	// check version
-;1948:	s = CG_ConfigString( CS_GAME_VERSION );
+line 1963
+;1961:
+;1962:	// check version
+;1963:	s = CG_ConfigString( CS_GAME_VERSION );
 CNSTI4 20
 ARGI4
 ADDRLP4 28
@@ -6613,12 +6694,12 @@ ADDRLP4 0
 ADDRLP4 28
 INDIRP4
 ASGNP4
-line 1949
-;1949:	if ( strcmp( s, GAME_VERSION ) ) {
+line 1964
+;1964:	if ( strcmp( s, GAME_VERSION ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $976
+ADDRGP4 $996
 ARGP4
 ADDRLP4 32
 ADDRGP4 strcmp
@@ -6627,12 +6708,12 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-EQI4 $974
-line 1950
-;1950:		CG_Error( "Client/Server game mismatch: %s/%s", GAME_VERSION, s );
-ADDRGP4 $977
+EQI4 $994
+line 1965
+;1965:		CG_Error( "Client/Server game mismatch: %s/%s", GAME_VERSION, s );
+ADDRGP4 $997
 ARGP4
-ADDRGP4 $976
+ADDRGP4 $996
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -6640,12 +6721,12 @@ ARGP4
 ADDRGP4 CG_Error
 CALLV
 pop
-line 1951
-;1951:	}
-LABELV $974
-line 1953
-;1952:
-;1953:	s = CG_ConfigString( CS_LEVEL_START_TIME );
+line 1966
+;1966:	}
+LABELV $994
+line 1968
+;1967:
+;1968:	s = CG_ConfigString( CS_LEVEL_START_TIME );
 CNSTI4 21
 ARGI4
 ADDRLP4 36
@@ -6656,8 +6737,8 @@ ADDRLP4 0
 ADDRLP4 36
 INDIRP4
 ASGNP4
-line 1954
-;1954:	cgs.levelStartTime = atoi( s );
+line 1969
+;1969:	cgs.levelStartTime = atoi( s );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6669,213 +6750,213 @@ ADDRGP4 cgs+34796
 ADDRLP4 40
 INDIRI4
 ASGNI4
-line 1956
-;1955:
-;1956:	CG_ParseServerinfo();
+line 1971
+;1970:
+;1971:	CG_ParseServerinfo();
 ADDRGP4 CG_ParseServerinfo
 CALLV
 pop
-line 1959
-;1957:
-;1958:	// load the new map
-;1959:	CG_LoadingString( "collision map" );
-ADDRGP4 $979
+line 1974
+;1972:
+;1973:	// load the new map
+;1974:	CG_LoadingString( "collision map" );
+ADDRGP4 $999
 ARGP4
 ADDRGP4 CG_LoadingString
 CALLV
 pop
-line 1961
-;1960:
-;1961:	trap_CM_LoadMap( cgs.mapname );
+line 1976
+;1975:
+;1976:	trap_CM_LoadMap( cgs.mapname );
 ADDRGP4 cgs+31484
 ARGP4
 ADDRGP4 trap_CM_LoadMap
 CALLV
 pop
-line 1967
-;1962:
-;1963:#ifdef MISSIONPACK
-;1964:	String_Init();
-;1965:#endif
-;1966:
-;1967:	cg.loading = qtrue;		// force players to load instead of defer
+line 1982
+;1977:
+;1978:#ifdef MISSIONPACK
+;1979:	String_Init();
+;1980:#endif
+;1981:
+;1982:	cg.loading = qtrue;		// force players to load instead of defer
 ADDRGP4 cg+20
 CNSTI4 1
 ASGNI4
-line 1969
-;1968:
-;1969:	CG_LoadingString( "sounds" );
-ADDRGP4 $982
+line 1984
+;1983:
+;1984:	CG_LoadingString( "sounds" );
+ADDRGP4 $1002
 ARGP4
 ADDRGP4 CG_LoadingString
 CALLV
 pop
-line 1971
-;1970:
-;1971:	CG_RegisterSounds();
+line 1986
+;1985:
+;1986:	CG_RegisterSounds();
 ADDRGP4 CG_RegisterSounds
 CALLV
 pop
-line 1973
-;1972:
-;1973:	CG_LoadingString( "graphics" );
-ADDRGP4 $983
+line 1988
+;1987:
+;1988:	CG_LoadingString( "graphics" );
+ADDRGP4 $1003
 ARGP4
 ADDRGP4 CG_LoadingString
 CALLV
 pop
-line 1975
-;1974:
-;1975:	CG_RegisterGraphics();
+line 1990
+;1989:
+;1990:	CG_RegisterGraphics();
 ADDRGP4 CG_RegisterGraphics
 CALLV
 pop
-line 1977
-;1976:
-;1977:	CG_LoadingString( "clients" );
-ADDRGP4 $984
+line 1992
+;1991:
+;1992:	CG_LoadingString( "clients" );
+ADDRGP4 $1004
 ARGP4
 ADDRGP4 CG_LoadingString
-CALLV
-pop
-line 1979
-;1978:
-;1979:	CG_RegisterClients();		// if low on memory, some clients will be deferred
-ADDRGP4 CG_RegisterClients
-CALLV
-pop
-line 1987
-;1980:
-;1981:// Shafe - Trep Open TA Stuff Up
-;1982:#ifdef MISSIONPACK
-;1983:	CG_AssetCache();
-;1984:	CG_LoadHudMenu();      // load new hud stuff
-;1985:#endif
-;1986:
-;1987:	cg.loading = qfalse;	// future players will be deferred
-ADDRGP4 cg+20
-CNSTI4 0
-ASGNI4
-line 1989
-;1988:
-;1989:	CG_InitLocalEntities();
-ADDRGP4 CG_InitLocalEntities
-CALLV
-pop
-line 1991
-;1990:
-;1991:	CG_InitMarkPolys();
-ADDRGP4 CG_InitMarkPolys
 CALLV
 pop
 line 1994
-;1992:
-;1993:	// remove the last loading update
-;1994:	cg.infoScreenText[0] = 0;
+;1993:
+;1994:	CG_RegisterClients();		// if low on memory, some clients will be deferred
+ADDRGP4 CG_RegisterClients
+CALLV
+pop
+line 2002
+;1995:
+;1996:// Shafe - Trep Open TA Stuff Up
+;1997:#ifdef MISSIONPACK
+;1998:	CG_AssetCache();
+;1999:	CG_LoadHudMenu();      // load new hud stuff
+;2000:#endif
+;2001:
+;2002:	cg.loading = qfalse;	// future players will be deferred
+ADDRGP4 cg+20
+CNSTI4 0
+ASGNI4
+line 2004
+;2003:
+;2004:	CG_InitLocalEntities();
+ADDRGP4 CG_InitLocalEntities
+CALLV
+pop
+line 2006
+;2005:
+;2006:	CG_InitMarkPolys();
+ADDRGP4 CG_InitMarkPolys
+CALLV
+pop
+line 2009
+;2007:
+;2008:	// remove the last loading update
+;2009:	cg.infoScreenText[0] = 0;
 ADDRGP4 cg+109448
 CNSTI1 0
 ASGNI1
-line 1997
-;1995:
-;1996:	// Make sure we have update values (scores)
-;1997:	CG_SetConfigValues();
+line 2012
+;2010:
+;2011:	// Make sure we have update values (scores)
+;2012:	CG_SetConfigValues();
 ADDRGP4 CG_SetConfigValues
 CALLV
 pop
-line 1999
-;1998:
-;1999:	CG_StartMusic();
+line 2014
+;2013:
+;2014:	CG_StartMusic();
 ADDRGP4 CG_StartMusic
 CALLV
 pop
-line 2001
-;2000:
-;2001:	CG_LoadingString( "" );
-ADDRGP4 $987
+line 2016
+;2015:
+;2016:	CG_LoadingString( "" );
+ADDRGP4 $1007
 ARGP4
 ADDRGP4 CG_LoadingString
 CALLV
 pop
-line 2007
-;2002:
-;2003:#ifdef MISSIONPACK
-;2004:	CG_InitTeamChat();
-;2005:#endif
-;2006:
-;2007:	CG_ShaderStateChanged();
+line 2022
+;2017:
+;2018:#ifdef MISSIONPACK
+;2019:	CG_InitTeamChat();
+;2020:#endif
+;2021:
+;2022:	CG_ShaderStateChanged();
 ADDRGP4 CG_ShaderStateChanged
 CALLV
 pop
-line 2009
-;2008:
-;2009:	trap_S_ClearLoopingSounds( qtrue );
+line 2024
+;2023:
+;2024:	trap_S_ClearLoopingSounds( qtrue );
 CNSTI4 1
 ARGI4
 ADDRGP4 trap_S_ClearLoopingSounds
 CALLV
 pop
-line 2010
-;2010:}
-LABELV $945
+line 2025
+;2025:}
+LABELV $965
 endproc CG_Init 44 12
 export CG_Shutdown
 proc CG_Shutdown 0 0
-line 2019
-;2011:
-;2012:/*
-;2013:=================
-;2014:CG_Shutdown
-;2015:
-;2016:Called before every level change or subsystem restart
-;2017:=================
-;2018:*/
-;2019:void CG_Shutdown( void ) {
-line 2022
-;2020:	// some mods may need to do cleanup work here,
-;2021:	// like closing files or archiving session data
-;2022:}
-LABELV $988
+line 2034
+;2026:
+;2027:/*
+;2028:=================
+;2029:CG_Shutdown
+;2030:
+;2031:Called before every level change or subsystem restart
+;2032:=================
+;2033:*/
+;2034:void CG_Shutdown( void ) {
+line 2037
+;2035:	// some mods may need to do cleanup work here,
+;2036:	// like closing files or archiving session data
+;2037:}
+LABELV $1008
 endproc CG_Shutdown 0 0
 export CG_EventHandling
 proc CG_EventHandling 0 0
-line 2036
-;2023:
-;2024:
-;2025:/*
-;2026:==================
-;2027:CG_EventHandling
-;2028:==================
-;2029: type 0 - no event handling
-;2030:      1 - team menu
-;2031:      2 - hud editor
-;2032:
-;2033:*/
-;2034:
-;2035:#ifndef MISSIONPACK
-;2036:void CG_EventHandling(int type) {
-line 2037
-;2037:}
-LABELV $989
+line 2051
+;2038:
+;2039:
+;2040:/*
+;2041:==================
+;2042:CG_EventHandling
+;2043:==================
+;2044: type 0 - no event handling
+;2045:      1 - team menu
+;2046:      2 - hud editor
+;2047:
+;2048:*/
+;2049:
+;2050:#ifndef MISSIONPACK
+;2051:void CG_EventHandling(int type) {
+line 2052
+;2052:}
+LABELV $1009
 endproc CG_EventHandling 0 0
 export CG_KeyEvent
 proc CG_KeyEvent 0 0
-line 2041
-;2038:
-;2039:
-;2040:
-;2041:void CG_KeyEvent(int key, qboolean down) {
-line 2042
-;2042:}
-LABELV $990
+line 2056
+;2053:
+;2054:
+;2055:
+;2056:void CG_KeyEvent(int key, qboolean down) {
+line 2057
+;2057:}
+LABELV $1010
 endproc CG_KeyEvent 0 0
 export CG_MouseEvent
 proc CG_MouseEvent 0 0
-line 2044
-;2043:
-;2044:void CG_MouseEvent(int x, int y) {
-line 2045
-;2045:}
-LABELV $991
+line 2059
+;2058:
+;2059:void CG_MouseEvent(int x, int y) {
+line 2060
+;2060:}
+LABELV $1011
 endproc CG_MouseEvent 0 0
 bss
 export cg_pmove_msec
@@ -6886,6 +6967,9 @@ export cg_hudFiles
 align 4
 LABELV cg_hudFiles
 skip 272
+import CG_DrawScanner
+import CG_ScannerOff_f
+import CG_ScannerOn_f
 import CG_NewParticleArea
 import initparticles
 import CG_ParticleExplosion
@@ -7123,6 +7207,7 @@ import CG_LoadMenus
 import CG_Cvar_ClampInt
 import CG_AddBoundingBox
 import CG_PredictWeaponEffects
+import cg_playerOrigins
 export cg_plOut
 align 4
 LABELV cg_plOut
@@ -7539,11 +7624,11 @@ skip 749568
 export cg
 align 4
 LABELV cg
-skip 155908
+skip 155912
 export cgs
 align 4
 LABELV cgs
-skip 153376
+skip 153400
 import BG_PlayerTouchesItem
 import BG_PlayerStateToEntityStateExtraPolate
 import BG_PlayerStateToEntityState
@@ -7551,6 +7636,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -7713,10 +7799,10 @@ import srand
 import qsort
 lit
 align 1
-LABELV $987
+LABELV $1007
 byte 1 0
 align 1
-LABELV $984
+LABELV $1004
 byte 1 99
 byte 1 108
 byte 1 105
@@ -7726,7 +7812,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $983
+LABELV $1003
 byte 1 103
 byte 1 114
 byte 1 97
@@ -7737,7 +7823,7 @@ byte 1 99
 byte 1 115
 byte 1 0
 align 1
-LABELV $982
+LABELV $1002
 byte 1 115
 byte 1 111
 byte 1 117
@@ -7746,7 +7832,7 @@ byte 1 100
 byte 1 115
 byte 1 0
 align 1
-LABELV $979
+LABELV $999
 byte 1 99
 byte 1 111
 byte 1 108
@@ -7762,7 +7848,7 @@ byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $977
+LABELV $997
 byte 1 67
 byte 1 108
 byte 1 105
@@ -7799,7 +7885,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $976
+LABELV $996
 byte 1 98
 byte 1 97
 byte 1 115
@@ -7810,7 +7896,7 @@ byte 1 45
 byte 1 49
 byte 1 0
 align 1
-LABELV $962
+LABELV $982
 byte 1 109
 byte 1 101
 byte 1 110
@@ -7836,7 +7922,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $959
+LABELV $979
 byte 1 109
 byte 1 101
 byte 1 110
@@ -7866,7 +7952,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $956
+LABELV $976
 byte 1 109
 byte 1 101
 byte 1 110
@@ -7892,7 +7978,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $953
+LABELV $973
 byte 1 119
 byte 1 104
 byte 1 105
@@ -7900,7 +7986,7 @@ byte 1 116
 byte 1 101
 byte 1 0
 align 1
-LABELV $950
+LABELV $970
 byte 1 103
 byte 1 102
 byte 1 120
@@ -7918,7 +8004,7 @@ byte 1 114
 byte 1 115
 byte 1 0
 align 1
-LABELV $942
+LABELV $962
 byte 1 67
 byte 1 71
 byte 1 95
@@ -7951,7 +8037,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $917
+LABELV $937
 byte 1 37
 byte 1 115
 byte 1 32
@@ -7961,13 +8047,71 @@ byte 1 32
 byte 1 32
 byte 1 0
 align 1
-LABELV $889
+LABELV $909
 byte 1 42
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $882
+LABELV $902
+byte 1 83
+byte 1 99
+byte 1 97
+byte 1 110
+byte 1 110
+byte 1 101
+byte 1 114
+byte 1 66
+byte 1 108
+byte 1 105
+byte 1 112
+byte 1 68
+byte 1 111
+byte 1 119
+byte 1 110
+byte 1 0
+align 1
+LABELV $899
+byte 1 83
+byte 1 99
+byte 1 97
+byte 1 110
+byte 1 110
+byte 1 101
+byte 1 114
+byte 1 66
+byte 1 108
+byte 1 105
+byte 1 112
+byte 1 85
+byte 1 112
+byte 1 0
+align 1
+LABELV $896
+byte 1 83
+byte 1 99
+byte 1 97
+byte 1 110
+byte 1 110
+byte 1 101
+byte 1 114
+byte 1 66
+byte 1 108
+byte 1 105
+byte 1 112
+byte 1 0
+align 1
+LABELV $893
+byte 1 83
+byte 1 99
+byte 1 97
+byte 1 110
+byte 1 110
+byte 1 101
+byte 1 114
+byte 1 0
+align 1
+LABELV $890
 byte 1 98
 byte 1 108
 byte 1 111
@@ -7979,14 +8123,14 @@ byte 1 114
 byte 1 107
 byte 1 0
 align 1
-LABELV $879
+LABELV $887
 byte 1 119
 byte 1 97
 byte 1 107
 byte 1 101
 byte 1 0
 align 1
-LABELV $876
+LABELV $884
 byte 1 109
 byte 1 97
 byte 1 114
@@ -7999,7 +8143,7 @@ byte 1 111
 byte 1 119
 byte 1 0
 align 1
-LABELV $873
+LABELV $881
 byte 1 103
 byte 1 102
 byte 1 120
@@ -8023,7 +8167,7 @@ byte 1 114
 byte 1 107
 byte 1 0
 align 1
-LABELV $870
+LABELV $878
 byte 1 103
 byte 1 102
 byte 1 120
@@ -8048,7 +8192,7 @@ byte 1 114
 byte 1 107
 byte 1 0
 align 1
-LABELV $867
+LABELV $875
 byte 1 103
 byte 1 102
 byte 1 120
@@ -8074,7 +8218,7 @@ byte 1 114
 byte 1 107
 byte 1 0
 align 1
-LABELV $864
+LABELV $872
 byte 1 103
 byte 1 102
 byte 1 120
@@ -8098,7 +8242,7 @@ byte 1 114
 byte 1 107
 byte 1 0
 align 1
-LABELV $853
+LABELV $861
 byte 1 109
 byte 1 101
 byte 1 100
@@ -8114,7 +8258,7 @@ byte 1 114
 byte 1 101
 byte 1 0
 align 1
-LABELV $850
+LABELV $858
 byte 1 109
 byte 1 101
 byte 1 100
@@ -8129,7 +8273,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $847
+LABELV $855
 byte 1 109
 byte 1 101
 byte 1 100
@@ -8144,7 +8288,7 @@ byte 1 110
 byte 1 100
 byte 1 0
 align 1
-LABELV $844
+LABELV $852
 byte 1 109
 byte 1 101
 byte 1 100
@@ -8161,7 +8305,7 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $841
+LABELV $849
 byte 1 109
 byte 1 101
 byte 1 100
@@ -8179,7 +8323,7 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $838
+LABELV $846
 byte 1 109
 byte 1 101
 byte 1 100
@@ -8198,7 +8342,7 @@ byte 1 118
 byte 1 101
 byte 1 0
 align 1
-LABELV $835
+LABELV $843
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8234,7 +8378,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $832
+LABELV $840
 byte 1 116
 byte 1 101
 byte 1 108
@@ -8251,7 +8395,7 @@ byte 1 99
 byte 1 116
 byte 1 0
 align 1
-LABELV $829
+LABELV $837
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8275,7 +8419,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $826
+LABELV $834
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8304,7 +8448,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $823
+LABELV $831
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8333,7 +8477,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $820
+LABELV $828
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8362,7 +8506,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $817
+LABELV $825
 byte 1 98
 byte 1 108
 byte 1 111
@@ -8379,7 +8523,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $814
+LABELV $822
 byte 1 115
 byte 1 112
 byte 1 114
@@ -8398,7 +8542,7 @@ byte 1 110
 byte 1 51
 byte 1 0
 align 1
-LABELV $809
+LABELV $817
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8422,7 +8566,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $806
+LABELV $814
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8446,7 +8590,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $803
+LABELV $811
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8468,7 +8612,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $800
+LABELV $808
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8496,7 +8640,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $797
+LABELV $805
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8522,7 +8666,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $794
+LABELV $802
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8545,7 +8689,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $791
+LABELV $799
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8568,7 +8712,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $788
+LABELV $796
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8592,7 +8736,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $785
+LABELV $793
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8614,7 +8758,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $782
+LABELV $790
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8640,7 +8784,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $779
+LABELV $787
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8677,7 +8821,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $776
+LABELV $784
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8714,7 +8858,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $773
+LABELV $781
 byte 1 105
 byte 1 99
 byte 1 111
@@ -8735,7 +8879,7 @@ byte 1 111
 byte 1 119
 byte 1 0
 align 1
-LABELV $770
+LABELV $778
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8773,7 +8917,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $767
+LABELV $775
 byte 1 103
 byte 1 102
 byte 1 120
@@ -8795,7 +8939,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $764
+LABELV $772
 byte 1 112
 byte 1 111
 byte 1 119
@@ -8815,7 +8959,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $761
+LABELV $769
 byte 1 115
 byte 1 112
 byte 1 114
@@ -8827,6 +8971,44 @@ byte 1 47
 byte 1 102
 byte 1 111
 byte 1 101
+byte 1 0
+align 1
+LABELV $761
+byte 1 105
+byte 1 99
+byte 1 111
+byte 1 110
+byte 1 115
+byte 1 47
+byte 1 105
+byte 1 99
+byte 1 111
+byte 1 110
+byte 1 102
+byte 1 95
+byte 1 98
+byte 1 108
+byte 1 117
+byte 1 51
+byte 1 0
+align 1
+LABELV $757
+byte 1 105
+byte 1 99
+byte 1 111
+byte 1 110
+byte 1 115
+byte 1 47
+byte 1 105
+byte 1 99
+byte 1 111
+byte 1 110
+byte 1 102
+byte 1 95
+byte 1 98
+byte 1 108
+byte 1 117
+byte 1 50
 byte 1 0
 align 1
 LABELV $753
@@ -8845,10 +9027,29 @@ byte 1 95
 byte 1 98
 byte 1 108
 byte 1 117
+byte 1 49
+byte 1 0
+align 1
+LABELV $750
+byte 1 105
+byte 1 99
+byte 1 111
+byte 1 110
+byte 1 115
+byte 1 47
+byte 1 105
+byte 1 99
+byte 1 111
+byte 1 110
+byte 1 102
+byte 1 95
+byte 1 114
+byte 1 101
+byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $749
+LABELV $746
 byte 1 105
 byte 1 99
 byte 1 111
@@ -8861,29 +9062,10 @@ byte 1 111
 byte 1 110
 byte 1 102
 byte 1 95
-byte 1 98
-byte 1 108
-byte 1 117
+byte 1 114
+byte 1 101
+byte 1 100
 byte 1 50
-byte 1 0
-align 1
-LABELV $745
-byte 1 105
-byte 1 99
-byte 1 111
-byte 1 110
-byte 1 115
-byte 1 47
-byte 1 105
-byte 1 99
-byte 1 111
-byte 1 110
-byte 1 102
-byte 1 95
-byte 1 98
-byte 1 108
-byte 1 117
-byte 1 49
 byte 1 0
 align 1
 LABELV $742
@@ -8902,48 +9084,10 @@ byte 1 95
 byte 1 114
 byte 1 101
 byte 1 100
-byte 1 51
-byte 1 0
-align 1
-LABELV $738
-byte 1 105
-byte 1 99
-byte 1 111
-byte 1 110
-byte 1 115
-byte 1 47
-byte 1 105
-byte 1 99
-byte 1 111
-byte 1 110
-byte 1 102
-byte 1 95
-byte 1 114
-byte 1 101
-byte 1 100
-byte 1 50
-byte 1 0
-align 1
-LABELV $734
-byte 1 105
-byte 1 99
-byte 1 111
-byte 1 110
-byte 1 115
-byte 1 47
-byte 1 105
-byte 1 99
-byte 1 111
-byte 1 110
-byte 1 102
-byte 1 95
-byte 1 114
-byte 1 101
-byte 1 100
 byte 1 49
 byte 1 0
 align 1
-LABELV $731
+LABELV $739
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8958,6 +9102,32 @@ byte 1 103
 byte 1 115
 byte 1 47
 byte 1 98
+byte 1 95
+byte 1 102
+byte 1 108
+byte 1 97
+byte 1 103
+byte 1 46
+byte 1 109
+byte 1 100
+byte 1 51
+byte 1 0
+align 1
+LABELV $736
+byte 1 109
+byte 1 111
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 115
+byte 1 47
+byte 1 102
+byte 1 108
+byte 1 97
+byte 1 103
+byte 1 115
+byte 1 47
+byte 1 114
 byte 1 95
 byte 1 102
 byte 1 108
@@ -8970,32 +9140,6 @@ byte 1 51
 byte 1 0
 align 1
 LABELV $728
-byte 1 109
-byte 1 111
-byte 1 100
-byte 1 101
-byte 1 108
-byte 1 115
-byte 1 47
-byte 1 102
-byte 1 108
-byte 1 97
-byte 1 103
-byte 1 115
-byte 1 47
-byte 1 114
-byte 1 95
-byte 1 102
-byte 1 108
-byte 1 97
-byte 1 103
-byte 1 46
-byte 1 109
-byte 1 100
-byte 1 51
-byte 1 0
-align 1
-LABELV $720
 byte 1 105
 byte 1 99
 byte 1 111
@@ -9014,7 +9158,7 @@ byte 1 117
 byte 1 101
 byte 1 0
 align 1
-LABELV $717
+LABELV $725
 byte 1 105
 byte 1 99
 byte 1 111
@@ -9032,7 +9176,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $714
+LABELV $722
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9054,6 +9198,38 @@ byte 1 114
 byte 1 98
 byte 1 47
 byte 1 98
+byte 1 95
+byte 1 111
+byte 1 114
+byte 1 98
+byte 1 46
+byte 1 109
+byte 1 100
+byte 1 51
+byte 1 0
+align 1
+LABELV $719
+byte 1 109
+byte 1 111
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 115
+byte 1 47
+byte 1 112
+byte 1 111
+byte 1 119
+byte 1 101
+byte 1 114
+byte 1 117
+byte 1 112
+byte 1 115
+byte 1 47
+byte 1 111
+byte 1 114
+byte 1 98
+byte 1 47
+byte 1 114
 byte 1 95
 byte 1 111
 byte 1 114
@@ -9065,38 +9241,6 @@ byte 1 51
 byte 1 0
 align 1
 LABELV $711
-byte 1 109
-byte 1 111
-byte 1 100
-byte 1 101
-byte 1 108
-byte 1 115
-byte 1 47
-byte 1 112
-byte 1 111
-byte 1 119
-byte 1 101
-byte 1 114
-byte 1 117
-byte 1 112
-byte 1 115
-byte 1 47
-byte 1 111
-byte 1 114
-byte 1 98
-byte 1 47
-byte 1 114
-byte 1 95
-byte 1 111
-byte 1 114
-byte 1 98
-byte 1 46
-byte 1 109
-byte 1 100
-byte 1 51
-byte 1 0
-align 1
-LABELV $703
 byte 1 104
 byte 1 97
 byte 1 115
@@ -9113,7 +9257,7 @@ byte 1 102
 byte 1 102
 byte 1 0
 align 1
-LABELV $700
+LABELV $708
 byte 1 112
 byte 1 111
 byte 1 119
@@ -9130,7 +9274,7 @@ byte 1 101
 byte 1 110
 byte 1 0
 align 1
-LABELV $697
+LABELV $705
 byte 1 112
 byte 1 111
 byte 1 119
@@ -9154,7 +9298,7 @@ byte 1 116
 byte 1 121
 byte 1 0
 align 1
-LABELV $694
+LABELV $702
 byte 1 112
 byte 1 111
 byte 1 119
@@ -9178,7 +9322,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $691
+LABELV $699
 byte 1 112
 byte 1 111
 byte 1 119
@@ -9200,7 +9344,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $688
+LABELV $696
 byte 1 112
 byte 1 111
 byte 1 119
@@ -9222,7 +9366,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $685
+LABELV $693
 byte 1 112
 byte 1 111
 byte 1 119
@@ -9238,7 +9382,7 @@ byte 1 97
 byte 1 100
 byte 1 0
 align 1
-LABELV $682
+LABELV $690
 byte 1 105
 byte 1 99
 byte 1 111
@@ -9253,7 +9397,7 @@ byte 1 109
 byte 1 111
 byte 1 0
 align 1
-LABELV $679
+LABELV $687
 byte 1 103
 byte 1 102
 byte 1 120
@@ -9271,7 +9415,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $676
+LABELV $684
 byte 1 103
 byte 1 102
 byte 1 120
@@ -9292,7 +9436,7 @@ byte 1 37
 byte 1 99
 byte 1 0
 align 1
-LABELV $669
+LABELV $677
 byte 1 103
 byte 1 102
 byte 1 120
@@ -9308,7 +9452,7 @@ byte 1 99
 byte 1 116
 byte 1 0
 align 1
-LABELV $666
+LABELV $674
 byte 1 103
 byte 1 102
 byte 1 120
@@ -9326,7 +9470,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $663
+LABELV $671
 byte 1 119
 byte 1 97
 byte 1 116
@@ -9340,7 +9484,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $660
+LABELV $668
 byte 1 100
 byte 1 105
 byte 1 115
@@ -9355,7 +9499,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $657
+LABELV $665
 byte 1 108
 byte 1 97
 byte 1 103
@@ -9367,7 +9511,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $654
+LABELV $662
 byte 1 98
 byte 1 108
 byte 1 111
@@ -9380,7 +9524,7 @@ byte 1 105
 byte 1 108
 byte 1 0
 align 1
-LABELV $651
+LABELV $659
 byte 1 115
 byte 1 112
 byte 1 114
@@ -9398,7 +9542,7 @@ byte 1 97
 byte 1 49
 byte 1 0
 align 1
-LABELV $648
+LABELV $656
 byte 1 115
 byte 1 104
 byte 1 111
@@ -9417,7 +9561,40 @@ byte 1 102
 byte 1 102
 byte 1 0
 align 1
-LABELV $645
+LABELV $653
+byte 1 115
+byte 1 109
+byte 1 111
+byte 1 107
+byte 1 101
+byte 1 80
+byte 1 117
+byte 1 102
+byte 1 102
+byte 1 82
+byte 1 97
+byte 1 103
+byte 1 101
+byte 1 80
+byte 1 114
+byte 1 111
+byte 1 50
+byte 1 0
+align 1
+LABELV $650
+byte 1 115
+byte 1 109
+byte 1 111
+byte 1 107
+byte 1 101
+byte 1 80
+byte 1 117
+byte 1 102
+byte 1 102
+byte 1 50
+byte 1 0
+align 1
+LABELV $647
 byte 1 115
 byte 1 109
 byte 1 111
@@ -9436,7 +9613,7 @@ byte 1 114
 byte 1 111
 byte 1 0
 align 1
-LABELV $642
+LABELV $644
 byte 1 115
 byte 1 109
 byte 1 111
@@ -9448,7 +9625,7 @@ byte 1 102
 byte 1 102
 byte 1 0
 align 1
-LABELV $639
+LABELV $641
 byte 1 109
 byte 1 101
 byte 1 110
@@ -9468,7 +9645,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $636
+LABELV $638
 byte 1 109
 byte 1 101
 byte 1 110
@@ -9489,7 +9666,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $633
+LABELV $635
 byte 1 109
 byte 1 101
 byte 1 110
@@ -9509,7 +9686,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $630
+LABELV $632
 byte 1 109
 byte 1 101
 byte 1 110
@@ -9529,7 +9706,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $627
+LABELV $629
 byte 1 103
 byte 1 102
 byte 1 120
@@ -9548,7 +9725,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $624
+LABELV $626
 byte 1 118
 byte 1 105
 byte 1 101
@@ -9565,7 +9742,7 @@ byte 1 110
 byte 1 100
 byte 1 0
 align 1
-LABELV $621
+LABELV $623
 byte 1 109
 byte 1 101
 byte 1 110
@@ -9587,7 +9764,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $617
+LABELV $619
 byte 1 109
 byte 1 101
 byte 1 110
@@ -9609,7 +9786,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $613
+LABELV $615
 byte 1 109
 byte 1 101
 byte 1 110
@@ -9631,7 +9808,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $609
+LABELV $611
 byte 1 109
 byte 1 101
 byte 1 110
@@ -9653,7 +9830,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $605
+LABELV $607
 byte 1 109
 byte 1 101
 byte 1 110
@@ -9675,7 +9852,7 @@ byte 1 103
 byte 1 97
 byte 1 0
 align 1
-LABELV $596
+LABELV $598
 byte 1 103
 byte 1 97
 byte 1 109
@@ -9688,7 +9865,7 @@ byte 1 105
 byte 1 97
 byte 1 0
 align 1
-LABELV $591
+LABELV $593
 byte 1 103
 byte 1 102
 byte 1 120
@@ -9709,6 +9886,59 @@ byte 1 105
 byte 1 110
 byte 1 117
 byte 1 115
+byte 1 95
+byte 1 51
+byte 1 50
+byte 1 98
+byte 1 0
+align 1
+LABELV $592
+byte 1 103
+byte 1 102
+byte 1 120
+byte 1 47
+byte 1 50
+byte 1 100
+byte 1 47
+byte 1 110
+byte 1 117
+byte 1 109
+byte 1 98
+byte 1 101
+byte 1 114
+byte 1 115
+byte 1 47
+byte 1 110
+byte 1 105
+byte 1 110
+byte 1 101
+byte 1 95
+byte 1 51
+byte 1 50
+byte 1 98
+byte 1 0
+align 1
+LABELV $591
+byte 1 103
+byte 1 102
+byte 1 120
+byte 1 47
+byte 1 50
+byte 1 100
+byte 1 47
+byte 1 110
+byte 1 117
+byte 1 109
+byte 1 98
+byte 1 101
+byte 1 114
+byte 1 115
+byte 1 47
+byte 1 101
+byte 1 105
+byte 1 103
+byte 1 104
+byte 1 116
 byte 1 95
 byte 1 51
 byte 1 50
@@ -9731,10 +9961,11 @@ byte 1 101
 byte 1 114
 byte 1 115
 byte 1 47
-byte 1 110
-byte 1 105
-byte 1 110
+byte 1 115
 byte 1 101
+byte 1 118
+byte 1 101
+byte 1 110
 byte 1 95
 byte 1 51
 byte 1 50
@@ -9757,11 +9988,9 @@ byte 1 101
 byte 1 114
 byte 1 115
 byte 1 47
-byte 1 101
+byte 1 115
 byte 1 105
-byte 1 103
-byte 1 104
-byte 1 116
+byte 1 120
 byte 1 95
 byte 1 51
 byte 1 50
@@ -9784,11 +10013,10 @@ byte 1 101
 byte 1 114
 byte 1 115
 byte 1 47
-byte 1 115
-byte 1 101
+byte 1 102
+byte 1 105
 byte 1 118
 byte 1 101
-byte 1 110
 byte 1 95
 byte 1 51
 byte 1 50
@@ -9811,9 +10039,10 @@ byte 1 101
 byte 1 114
 byte 1 115
 byte 1 47
-byte 1 115
-byte 1 105
-byte 1 120
+byte 1 102
+byte 1 111
+byte 1 117
+byte 1 114
 byte 1 95
 byte 1 51
 byte 1 50
@@ -9836,9 +10065,10 @@ byte 1 101
 byte 1 114
 byte 1 115
 byte 1 47
-byte 1 102
-byte 1 105
-byte 1 118
+byte 1 116
+byte 1 104
+byte 1 114
+byte 1 101
 byte 1 101
 byte 1 95
 byte 1 51
@@ -9862,10 +10092,9 @@ byte 1 101
 byte 1 114
 byte 1 115
 byte 1 47
-byte 1 102
+byte 1 116
+byte 1 119
 byte 1 111
-byte 1 117
-byte 1 114
 byte 1 95
 byte 1 51
 byte 1 50
@@ -9888,10 +10117,8 @@ byte 1 101
 byte 1 114
 byte 1 115
 byte 1 47
-byte 1 116
-byte 1 104
-byte 1 114
-byte 1 101
+byte 1 111
+byte 1 110
 byte 1 101
 byte 1 95
 byte 1 51
@@ -9900,56 +10127,6 @@ byte 1 98
 byte 1 0
 align 1
 LABELV $583
-byte 1 103
-byte 1 102
-byte 1 120
-byte 1 47
-byte 1 50
-byte 1 100
-byte 1 47
-byte 1 110
-byte 1 117
-byte 1 109
-byte 1 98
-byte 1 101
-byte 1 114
-byte 1 115
-byte 1 47
-byte 1 116
-byte 1 119
-byte 1 111
-byte 1 95
-byte 1 51
-byte 1 50
-byte 1 98
-byte 1 0
-align 1
-LABELV $582
-byte 1 103
-byte 1 102
-byte 1 120
-byte 1 47
-byte 1 50
-byte 1 100
-byte 1 47
-byte 1 110
-byte 1 117
-byte 1 109
-byte 1 98
-byte 1 101
-byte 1 114
-byte 1 115
-byte 1 47
-byte 1 111
-byte 1 110
-byte 1 101
-byte 1 95
-byte 1 51
-byte 1 50
-byte 1 98
-byte 1 0
-align 1
-LABELV $581
 byte 1 103
 byte 1 102
 byte 1 120
@@ -9975,7 +10152,7 @@ byte 1 50
 byte 1 98
 byte 1 0
 align 1
-LABELV $578
+LABELV $580
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10012,7 +10189,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $575
+LABELV $577
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10049,7 +10226,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $572
+LABELV $574
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10076,7 +10253,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $569
+LABELV $571
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10103,7 +10280,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $566
+LABELV $568
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10127,7 +10304,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $563
+LABELV $565
 byte 1 115
 byte 1 112
 byte 1 114
@@ -10147,7 +10324,7 @@ byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $560
+LABELV $562
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10183,7 +10360,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $557
+LABELV $559
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10219,7 +10396,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $554
+LABELV $556
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10256,7 +10433,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $551
+LABELV $553
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10292,7 +10469,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $548
+LABELV $550
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10328,7 +10505,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $545
+LABELV $547
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10364,7 +10541,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $542
+LABELV $544
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10390,7 +10567,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $539
+LABELV $541
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10419,7 +10596,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $536
+LABELV $538
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10444,7 +10621,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $517
+LABELV $519
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10481,7 +10658,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $513
+LABELV $515
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10519,7 +10696,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $509
+LABELV $511
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10557,7 +10734,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $505
+LABELV $507
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10593,7 +10770,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $501
+LABELV $503
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10630,7 +10807,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $497
+LABELV $499
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10666,7 +10843,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $494
+LABELV $496
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10702,7 +10879,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $489
+LABELV $491
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10728,7 +10905,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $486
+LABELV $488
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10755,7 +10932,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $483
+LABELV $485
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10783,7 +10960,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $480
+LABELV $482
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10810,7 +10987,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $477
+LABELV $479
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10840,7 +11017,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $474
+LABELV $476
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10870,7 +11047,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $471
+LABELV $473
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10901,7 +11078,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $468
+LABELV $470
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10930,7 +11107,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $465
+LABELV $467
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10958,7 +11135,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $462
+LABELV $464
 byte 1 115
 byte 1 111
 byte 1 117
@@ -10991,7 +11168,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $459
+LABELV $461
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11019,7 +11196,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $456
+LABELV $458
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11050,7 +11227,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $453
+LABELV $455
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11082,7 +11259,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $450
+LABELV $452
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11107,7 +11284,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $447
+LABELV $449
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11132,7 +11309,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $444
+LABELV $446
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11156,7 +11333,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $441
+LABELV $443
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11183,7 +11360,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $438
+LABELV $440
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11210,7 +11387,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $435
+LABELV $437
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11236,7 +11413,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $432
+LABELV $434
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11261,7 +11438,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $429
+LABELV $431
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11288,7 +11465,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $426
+LABELV $428
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11315,7 +11492,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $423
+LABELV $425
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11342,7 +11519,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $420
+LABELV $422
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11370,7 +11547,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $417
+LABELV $419
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11400,7 +11577,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $414
+LABELV $416
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11426,7 +11603,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $411
+LABELV $413
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11453,7 +11630,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $408
+LABELV $410
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11493,7 +11670,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $405
+LABELV $407
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11530,7 +11707,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $402
+LABELV $404
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11566,7 +11743,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $397
+LABELV $399
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11600,7 +11777,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $394
+LABELV $396
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11634,7 +11811,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $391
+LABELV $393
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11669,7 +11846,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $388
+LABELV $390
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11705,7 +11882,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $385
+LABELV $387
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11744,7 +11921,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $382
+LABELV $384
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11782,7 +11959,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $374
+LABELV $376
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11822,7 +11999,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $371
+LABELV $373
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11862,7 +12039,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $368
+LABELV $370
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11903,7 +12080,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $365
+LABELV $367
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11944,7 +12121,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $362
+LABELV $364
 byte 1 115
 byte 1 111
 byte 1 117
@@ -11986,7 +12163,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $357
+LABELV $359
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12023,7 +12200,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $354
+LABELV $356
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12059,7 +12236,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $351
+LABELV $353
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12093,7 +12270,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $348
+LABELV $350
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12124,7 +12301,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $345
+LABELV $347
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12155,7 +12332,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $342
+LABELV $344
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12185,7 +12362,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $339
+LABELV $341
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12227,7 +12404,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $331
+LABELV $333
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12256,7 +12433,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $328
+LABELV $330
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12283,7 +12460,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $325
+LABELV $327
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12308,7 +12485,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $322
+LABELV $324
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12333,7 +12510,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $319
+LABELV $321
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12360,7 +12537,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $316
+LABELV $318
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12389,7 +12566,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $313
+LABELV $315
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12418,7 +12595,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $310
+LABELV $312
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12446,7 +12623,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $307
+LABELV $309
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12480,7 +12657,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $304
+LABELV $306
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12510,7 +12687,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $301
+LABELV $303
 byte 1 115
 byte 1 111
 byte 1 117
@@ -12540,13 +12717,13 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $297
+LABELV $299
 byte 1 119
 byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $291
+LABELV $293
 byte 1 80
 byte 1 114
 byte 1 101
@@ -12589,17 +12766,42 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $270
+LABELV $272
 byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $219
+LABELV $221
 byte 1 116
 byte 1 101
 byte 1 97
 byte 1 109
 byte 1 95
+byte 1 104
+byte 1 101
+byte 1 97
+byte 1 100
+byte 1 109
+byte 1 111
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 0
+align 1
+LABELV $220
+byte 1 116
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 95
+byte 1 109
+byte 1 111
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 0
+align 1
+LABELV $219
 byte 1 104
 byte 1 101
 byte 1 97
@@ -12612,31 +12814,6 @@ byte 1 108
 byte 1 0
 align 1
 LABELV $218
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
-byte 1 95
-byte 1 109
-byte 1 111
-byte 1 100
-byte 1 101
-byte 1 108
-byte 1 0
-align 1
-LABELV $217
-byte 1 104
-byte 1 101
-byte 1 97
-byte 1 100
-byte 1 109
-byte 1 111
-byte 1 100
-byte 1 101
-byte 1 108
-byte 1 0
-align 1
-LABELV $216
 byte 1 115
 byte 1 97
 byte 1 114
@@ -12644,7 +12821,7 @@ byte 1 103
 byte 1 101
 byte 1 0
 align 1
-LABELV $215
+LABELV $217
 byte 1 109
 byte 1 111
 byte 1 100
@@ -12652,7 +12829,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $212
+LABELV $214
 byte 1 115
 byte 1 118
 byte 1 95
@@ -12665,13 +12842,13 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $206
+LABELV $208
 byte 1 48
 byte 1 46
 byte 1 48
 byte 1 0
 align 1
-LABELV $205
+LABELV $207
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12690,7 +12867,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $204
+LABELV $206
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12701,7 +12878,7 @@ byte 1 117
 byte 1 116
 byte 1 0
 align 1
-LABELV $203
+LABELV $205
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12717,7 +12894,7 @@ byte 1 100
 byte 1 115
 byte 1 0
 align 1
-LABELV $202
+LABELV $204
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12734,7 +12911,7 @@ byte 1 112
 byte 1 115
 byte 1 0
 align 1
-LABELV $201
+LABELV $203
 byte 1 99
 byte 1 108
 byte 1 95
@@ -12749,7 +12926,7 @@ byte 1 103
 byte 1 101
 byte 1 0
 align 1
-LABELV $200
+LABELV $202
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12773,7 +12950,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $199
+LABELV $201
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12794,12 +12971,12 @@ byte 1 103
 byte 1 101
 byte 1 0
 align 1
-LABELV $198
+LABELV $200
 byte 1 50
 byte 1 48
 byte 1 0
 align 1
-LABELV $197
+LABELV $199
 byte 1 115
 byte 1 118
 byte 1 95
@@ -12808,7 +12985,7 @@ byte 1 112
 byte 1 115
 byte 1 0
 align 1
-LABELV $196
+LABELV $198
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12826,7 +13003,7 @@ byte 1 103
 byte 1 101
 byte 1 0
 align 1
-LABELV $195
+LABELV $197
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12840,7 +13017,7 @@ byte 1 111
 byte 1 120
 byte 1 0
 align 1
-LABELV $194
+LABELV $196
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12856,7 +13033,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $193
+LABELV $195
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12867,7 +13044,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $192
+LABELV $194
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12882,7 +13059,7 @@ byte 1 109
 byte 1 97
 byte 1 0
 align 1
-LABELV $191
+LABELV $193
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12897,7 +13074,7 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $190
+LABELV $192
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12910,7 +13087,7 @@ byte 1 105
 byte 1 108
 byte 1 0
 align 1
-LABELV $189
+LABELV $191
 byte 1 117
 byte 1 105
 byte 1 95
@@ -12923,14 +13100,14 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $188
+LABELV $190
 byte 1 48
 byte 1 46
 byte 1 50
 byte 1 53
 byte 1 0
 align 1
-LABELV $187
+LABELV $189
 byte 1 117
 byte 1 105
 byte 1 95
@@ -12945,7 +13122,7 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $186
+LABELV $188
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12968,7 +13145,7 @@ byte 1 105
 byte 1 108
 byte 1 0
 align 1
-LABELV $185
+LABELV $187
 byte 1 99
 byte 1 103
 byte 1 95
@@ -12981,11 +13158,11 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $184
+LABELV $186
 byte 1 56
 byte 1 0
 align 1
-LABELV $183
+LABELV $185
 byte 1 112
 byte 1 109
 byte 1 111
@@ -12998,7 +13175,7 @@ byte 1 101
 byte 1 99
 byte 1 0
 align 1
-LABELV $182
+LABELV $184
 byte 1 112
 byte 1 109
 byte 1 111
@@ -13012,7 +13189,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $181
+LABELV $183
 byte 1 99
 byte 1 111
 byte 1 109
@@ -13029,7 +13206,7 @@ byte 1 100
 byte 1 101
 byte 1 0
 align 1
-LABELV $180
+LABELV $182
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13045,7 +13222,7 @@ byte 1 109
 byte 1 115
 byte 1 0
 align 1
-LABELV $179
+LABELV $181
 byte 1 116
 byte 1 105
 byte 1 109
@@ -13057,7 +13234,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $178
+LABELV $180
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13081,7 +13258,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $177
+LABELV $179
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13103,12 +13280,12 @@ byte 1 110
 byte 1 100
 byte 1 0
 align 1
-LABELV $176
+LABELV $178
 byte 1 53
 byte 1 48
 byte 1 0
 align 1
-LABELV $175
+LABELV $177
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13130,7 +13307,7 @@ byte 1 97
 byte 1 121
 byte 1 0
 align 1
-LABELV $174
+LABELV $176
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13147,7 +13324,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $173
+LABELV $175
 byte 1 117
 byte 1 105
 byte 1 47
@@ -13160,7 +13337,7 @@ byte 1 120
 byte 1 116
 byte 1 0
 align 1
-LABELV $172
+LABELV $174
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13174,7 +13351,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $171
+LABELV $173
 byte 1 103
 byte 1 95
 byte 1 115
@@ -13197,7 +13374,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $170
+LABELV $172
 byte 1 99
 byte 1 111
 byte 1 109
@@ -13209,7 +13386,7 @@ byte 1 111
 byte 1 100
 byte 1 0
 align 1
-LABELV $169
+LABELV $171
 byte 1 99
 byte 1 108
 byte 1 95
@@ -13221,7 +13398,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $168
+LABELV $170
 byte 1 99
 byte 1 111
 byte 1 109
@@ -13239,7 +13416,7 @@ byte 1 112
 byte 1 116
 byte 1 0
 align 1
-LABELV $167
+LABELV $169
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13256,7 +13433,7 @@ byte 1 120
 byte 1 116
 byte 1 0
 align 1
-LABELV $166
+LABELV $168
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13274,7 +13451,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $165
+LABELV $167
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13293,7 +13470,7 @@ byte 1 108
 byte 1 121
 byte 1 0
 align 1
-LABELV $164
+LABELV $166
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13309,7 +13486,7 @@ byte 1 110
 byte 1 100
 byte 1 0
 align 1
-LABELV $163
+LABELV $165
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13320,7 +13497,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $162
+LABELV $164
 byte 1 116
 byte 1 101
 byte 1 97
@@ -13334,7 +13511,7 @@ byte 1 97
 byte 1 121
 byte 1 0
 align 1
-LABELV $161
+LABELV $163
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13355,7 +13532,7 @@ byte 1 97
 byte 1 121
 byte 1 0
 align 1
-LABELV $160
+LABELV $162
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13373,7 +13550,7 @@ byte 1 114
 byte 1 115
 byte 1 0
 align 1
-LABELV $159
+LABELV $161
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13391,7 +13568,7 @@ byte 1 109
 byte 1 115
 byte 1 0
 align 1
-LABELV $158
+LABELV $160
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13407,7 +13584,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $157
+LABELV $159
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13427,14 +13604,14 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $156
+LABELV $158
 byte 1 51
 byte 1 48
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $155
+LABELV $157
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13452,7 +13629,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $154
+LABELV $156
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13469,7 +13646,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $153
+LABELV $155
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13491,12 +13668,12 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $152
+LABELV $154
 byte 1 52
 byte 1 48
 byte 1 0
 align 1
-LABELV $151
+LABELV $153
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13518,7 +13695,7 @@ byte 1 103
 byte 1 101
 byte 1 0
 align 1
-LABELV $150
+LABELV $152
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13536,7 +13713,7 @@ byte 1 116
 byte 1 104
 byte 1 0
 align 1
-LABELV $149
+LABELV $151
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13553,7 +13730,7 @@ byte 1 116
 byte 1 104
 byte 1 0
 align 1
-LABELV $148
+LABELV $150
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13571,7 +13748,7 @@ byte 1 99
 byte 1 101
 byte 1 0
 align 1
-LABELV $147
+LABELV $149
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13586,7 +13763,7 @@ byte 1 112
 byte 1 115
 byte 1 0
 align 1
-LABELV $146
+LABELV $148
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13600,7 +13777,7 @@ byte 1 115
 byte 1 115
 byte 1 0
 align 1
-LABELV $145
+LABELV $147
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13619,7 +13796,7 @@ byte 1 109
 byte 1 115
 byte 1 0
 align 1
-LABELV $144
+LABELV $146
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13634,7 +13811,7 @@ byte 1 99
 byte 1 116
 byte 1 0
 align 1
-LABELV $143
+LABELV $145
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13650,7 +13827,7 @@ byte 1 97
 byte 1 121
 byte 1 0
 align 1
-LABELV $142
+LABELV $144
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13667,7 +13844,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $141
+LABELV $143
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13686,7 +13863,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $140
+LABELV $142
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13701,7 +13878,7 @@ byte 1 105
 byte 1 109
 byte 1 0
 align 1
-LABELV $139
+LABELV $141
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13716,13 +13893,13 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $138
+LABELV $140
 byte 1 48
 byte 1 46
 byte 1 51
 byte 1 0
 align 1
-LABELV $137
+LABELV $139
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13738,7 +13915,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $136
+LABELV $138
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13751,7 +13928,7 @@ byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $135
+LABELV $137
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13765,7 +13942,7 @@ byte 1 99
 byte 1 104
 byte 1 0
 align 1
-LABELV $134
+LABELV $136
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13776,12 +13953,33 @@ byte 1 117
 byte 1 112
 byte 1 0
 align 1
-LABELV $133
+LABELV $135
 byte 1 48
 byte 1 46
 byte 1 48
 byte 1 48
 byte 1 53
+byte 1 0
+align 1
+LABELV $134
+byte 1 99
+byte 1 103
+byte 1 95
+byte 1 114
+byte 1 117
+byte 1 110
+byte 1 114
+byte 1 111
+byte 1 108
+byte 1 108
+byte 1 0
+align 1
+LABELV $133
+byte 1 48
+byte 1 46
+byte 1 48
+byte 1 48
+byte 1 50
 byte 1 0
 align 1
 LABELV $132
@@ -13791,27 +13989,6 @@ byte 1 95
 byte 1 114
 byte 1 117
 byte 1 110
-byte 1 114
-byte 1 111
-byte 1 108
-byte 1 108
-byte 1 0
-align 1
-LABELV $131
-byte 1 48
-byte 1 46
-byte 1 48
-byte 1 48
-byte 1 50
-byte 1 0
-align 1
-LABELV $130
-byte 1 99
-byte 1 103
-byte 1 95
-byte 1 114
-byte 1 117
-byte 1 110
 byte 1 112
 byte 1 105
 byte 1 116
@@ -13819,11 +13996,11 @@ byte 1 99
 byte 1 104
 byte 1 0
 align 1
-LABELV $129
+LABELV $131
 byte 1 51
 byte 1 0
 align 1
-LABELV $128
+LABELV $130
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13839,7 +14016,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $127
+LABELV $129
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13849,7 +14026,7 @@ byte 1 110
 byte 1 90
 byte 1 0
 align 1
-LABELV $126
+LABELV $128
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13859,7 +14036,7 @@ byte 1 110
 byte 1 89
 byte 1 0
 align 1
-LABELV $125
+LABELV $127
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13869,13 +14046,13 @@ byte 1 110
 byte 1 88
 byte 1 0
 align 1
-LABELV $124
+LABELV $126
 byte 1 52
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $123
+LABELV $125
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13894,7 +14071,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $122
+LABELV $124
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13909,7 +14086,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $121
+LABELV $123
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13920,7 +14097,7 @@ byte 1 107
 byte 1 115
 byte 1 0
 align 1
-LABELV $120
+LABELV $122
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13937,14 +14114,14 @@ byte 1 109
 byte 1 115
 byte 1 0
 align 1
-LABELV $119
+LABELV $121
 byte 1 50
 byte 1 53
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $118
+LABELV $120
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13959,7 +14136,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $117
+LABELV $119
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13975,7 +14152,7 @@ byte 1 114
 byte 1 89
 byte 1 0
 align 1
-LABELV $116
+LABELV $118
 byte 1 99
 byte 1 103
 byte 1 95
@@ -13991,7 +14168,7 @@ byte 1 114
 byte 1 88
 byte 1 0
 align 1
-LABELV $115
+LABELV $117
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14012,12 +14189,12 @@ byte 1 116
 byte 1 104
 byte 1 0
 align 1
-LABELV $114
+LABELV $116
 byte 1 50
 byte 1 52
 byte 1 0
 align 1
-LABELV $113
+LABELV $115
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14036,7 +14213,7 @@ byte 1 122
 byte 1 101
 byte 1 0
 align 1
-LABELV $112
+LABELV $114
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14053,7 +14230,7 @@ byte 1 100
 byte 1 115
 byte 1 0
 align 1
-LABELV $111
+LABELV $113
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14077,11 +14254,11 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $110
+LABELV $112
 byte 1 52
 byte 1 0
 align 1
-LABELV $109
+LABELV $111
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14100,7 +14277,7 @@ byte 1 105
 byte 1 114
 byte 1 0
 align 1
-LABELV $108
+LABELV $110
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14118,7 +14295,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $107
+LABELV $109
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14139,7 +14316,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $106
+LABELV $108
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14154,7 +14331,7 @@ byte 1 110
 byte 1 115
 byte 1 0
 align 1
-LABELV $105
+LABELV $107
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14171,7 +14348,7 @@ byte 1 110
 byte 1 115
 byte 1 0
 align 1
-LABELV $104
+LABELV $106
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14189,7 +14366,7 @@ byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $103
+LABELV $105
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14202,7 +14379,7 @@ byte 1 80
 byte 1 83
 byte 1 0
 align 1
-LABELV $102
+LABELV $104
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14217,7 +14394,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $101
+LABELV $103
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14233,7 +14410,7 @@ byte 1 117
 byte 1 115
 byte 1 0
 align 1
-LABELV $100
+LABELV $102
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14245,7 +14422,7 @@ byte 1 50
 byte 1 68
 byte 1 0
 align 1
-LABELV $99
+LABELV $101
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14255,7 +14432,7 @@ byte 1 98
 byte 1 115
 byte 1 0
 align 1
-LABELV $98
+LABELV $100
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14268,13 +14445,13 @@ byte 1 119
 byte 1 115
 byte 1 0
 align 1
-LABELV $97
+LABELV $99
 byte 1 48
 byte 1 46
 byte 1 52
 byte 1 0
 align 1
-LABELV $96
+LABELV $98
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14296,13 +14473,13 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $95
+LABELV $97
 byte 1 49
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $94
+LABELV $96
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14316,12 +14493,12 @@ byte 1 122
 byte 1 101
 byte 1 0
 align 1
-LABELV $93
+LABELV $95
 byte 1 57
 byte 1 48
 byte 1 0
 align 1
-LABELV $92
+LABELV $94
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14330,14 +14507,14 @@ byte 1 111
 byte 1 118
 byte 1 0
 align 1
-LABELV $91
+LABELV $93
 byte 1 50
 byte 1 50
 byte 1 46
 byte 1 53
 byte 1 0
 align 1
-LABELV $90
+LABELV $92
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14350,7 +14527,7 @@ byte 1 111
 byte 1 118
 byte 1 0
 align 1
-LABELV $89
+LABELV $91
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14363,11 +14540,11 @@ byte 1 117
 byte 1 110
 byte 1 0
 align 1
-LABELV $88
+LABELV $90
 byte 1 49
 byte 1 0
 align 1
-LABELV $87
+LABELV $89
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14383,11 +14560,11 @@ byte 1 99
 byte 1 104
 byte 1 0
 align 1
-LABELV $86
+LABELV $88
 byte 1 48
 byte 1 0
 align 1
-LABELV $85
+LABELV $87
 byte 1 99
 byte 1 103
 byte 1 95
@@ -14399,7 +14576,7 @@ byte 1 114
 byte 1 101
 byte 1 0
 align 1
-LABELV $82
+LABELV $84
 byte 1 118
 byte 1 109
 byte 1 77

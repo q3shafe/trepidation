@@ -1,10 +1,10 @@
 data
 align 4
 LABELV serverinfo_artlist
-address $67
-address $68
 address $69
 address $70
+address $71
+address $72
 byte 4 0
 export Favorites_Add
 code
@@ -63,7 +63,7 @@ line 51
 ;49:	int		best;
 ;50:
 ;51:	trap_Cvar_VariableStringBuffer( "cl_currentServerAddress", serverbuff, sizeof(serverbuff) );
-ADDRGP4 $73
+ADDRGP4 $75
 ARGP4
 ADDRLP4 136
 ARGP4
@@ -78,12 +78,12 @@ ADDRLP4 136
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $74
+NEI4 $76
 line 53
 ;53:		return;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $74
+LABELV $76
 line 55
 ;54:
 ;55:	best = 0;
@@ -95,12 +95,12 @@ line 56
 ADDRLP4 128
 CNSTI4 0
 ASGNI4
-LABELV $76
+LABELV $78
 line 57
 ;57:	{
 line 58
 ;58:		trap_Cvar_VariableStringBuffer( va("server%d",i+1), adrstr, sizeof(adrstr) );
-ADDRGP4 $80
+ADDRGP4 $82
 ARGP4
 ADDRLP4 128
 INDIRI4
@@ -134,15 +134,15 @@ ASGNI4
 ADDRLP4 268
 INDIRI4
 CNSTI4 0
-NEI4 $81
+NEI4 $83
 line 60
 ;60:		{
 line 62
 ;61:			// already in list
 ;62:			return;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $81
+LABELV $83
 line 66
 ;63:		}
 ;64:		
@@ -156,16 +156,16 @@ ASGNI4
 ADDRLP4 272
 INDIRI4
 CNSTI4 48
-LTI4 $85
+LTI4 $87
 ADDRLP4 272
 INDIRI4
 CNSTI4 57
-LEI4 $83
-LABELV $85
+LEI4 $85
+LABELV $87
 ADDRLP4 132
 INDIRI4
 CNSTI4 0
-NEI4 $83
+NEI4 $85
 line 67
 ;67:			best = i+1;
 ADDRLP4 132
@@ -174,10 +174,10 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $83
+LABELV $85
 line 68
 ;68:	}
-LABELV $77
+LABELV $79
 line 56
 ADDRLP4 128
 ADDRLP4 128
@@ -188,17 +188,17 @@ ASGNI4
 ADDRLP4 128
 INDIRI4
 CNSTI4 16
-LTI4 $76
+LTI4 $78
 line 70
 ;69:
 ;70:	if (best)
 ADDRLP4 132
 INDIRI4
 CNSTI4 0
-EQI4 $86
+EQI4 $88
 line 71
 ;71:		trap_Cvar_Set( va("server%d",best), serverbuff);
-ADDRGP4 $80
+ADDRGP4 $82
 ARGP4
 ADDRLP4 132
 INDIRI4
@@ -215,10 +215,10 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-LABELV $86
+LABELV $88
 line 72
 ;72:}
-LABELV $72
+LABELV $74
 endproc Favorites_Add 276 12
 proc ServerInfo_Event 8 0
 line 81
@@ -243,28 +243,28 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 100
-EQI4 $92
+EQI4 $94
 ADDRLP4 0
 INDIRI4
 CNSTI4 101
-EQI4 $95
-ADDRGP4 $89
+EQI4 $97
+ADDRGP4 $91
 JUMPV
 line 83
 ;83:	{
-LABELV $92
+LABELV $94
 line 85
 ;84:		case ID_ADD:
 ;85:			if (event != QM_ACTIVATED)
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $93
+EQI4 $95
 line 86
 ;86:				break;
-ADDRGP4 $90
+ADDRGP4 $92
 JUMPV
-LABELV $93
+LABELV $95
 line 88
 ;87:		
 ;88:			Favorites_Add();
@@ -278,9 +278,9 @@ CALLV
 pop
 line 90
 ;90:			break;
-ADDRGP4 $90
+ADDRGP4 $92
 JUMPV
-LABELV $95
+LABELV $97
 line 93
 ;91:
 ;92:		case ID_BACK:
@@ -288,12 +288,12 @@ line 93
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $96
+EQI4 $98
 line 94
 ;94:				break;
-ADDRGP4 $90
+ADDRGP4 $92
 JUMPV
-LABELV $96
+LABELV $98
 line 96
 ;95:
 ;96:			UI_PopMenu();
@@ -302,12 +302,12 @@ CALLV
 pop
 line 97
 ;97:			break;
-LABELV $89
-LABELV $90
+LABELV $91
+LABELV $92
 line 99
 ;98:	}
 ;99:}
-LABELV $88
+LABELV $90
 endproc ServerInfo_Event 8 0
 proc ServerInfo_MenuDraw 2056 20
 line 107
@@ -343,9 +343,9 @@ line 114
 ADDRLP4 1028
 ADDRGP4 s_serverinfo+696
 ASGNP4
-ADDRGP4 $102
+ADDRGP4 $104
 JUMPV
-LABELV $101
+LABELV $103
 line 115
 ;115:	while ( s ) {
 line 116
@@ -365,12 +365,12 @@ ADDRLP4 0
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $104
+NEI4 $106
 line 118
 ;118:			break;
-ADDRGP4 $103
+ADDRGP4 $105
 JUMPV
-LABELV $104
+LABELV $106
 line 121
 ;119:		}
 ;120:
@@ -379,7 +379,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 1024
 ARGI4
-ADDRGP4 $106
+ADDRGP4 $108
 ARGP4
 ADDRGP4 Q_strcat
 CALLV
@@ -428,14 +428,14 @@ ADDI4
 ASGNI4
 line 127
 ;127:	}
-LABELV $102
+LABELV $104
 line 115
 ADDRLP4 1028
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $101
-LABELV $103
+NEU4 $103
+LABELV $105
 line 129
 ;128:
 ;129:	Menu_Draw( &s_serverinfo.menu );
@@ -446,7 +446,7 @@ CALLV
 pop
 line 130
 ;130:}
-LABELV $98
+LABELV $100
 endproc ServerInfo_MenuDraw 2056 20
 proc ServerInfo_MenuKey 4 8
 line 138
@@ -472,7 +472,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $107
+LABELV $109
 endproc ServerInfo_MenuKey 4 8
 export ServerInfo_Cache
 proc ServerInfo_Cache 4 4
@@ -494,7 +494,7 @@ line 152
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $109
+LABELV $111
 line 153
 ;153:	{
 line 154
@@ -508,12 +508,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $113
+NEU4 $115
 line 155
 ;155:			break;
-ADDRGP4 $111
+ADDRGP4 $113
 JUMPV
-LABELV $113
+LABELV $115
 line 156
 ;156:		trap_R_RegisterShaderNoMip(serverinfo_artlist[i]);
 ADDRLP4 0
@@ -529,7 +529,7 @@ CALLI4
 pop
 line 157
 ;157:	}
-LABELV $110
+LABELV $112
 line 152
 ADDRLP4 0
 ADDRLP4 0
@@ -537,12 +537,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-ADDRGP4 $109
+ADDRGP4 $111
 JUMPV
-LABELV $111
+LABELV $113
 line 158
 ;158:}
-LABELV $108
+LABELV $110
 endproc ServerInfo_Cache 4 4
 export UI_ServerInfoMenu
 proc UI_ServerInfoMenu 2060 12
@@ -617,7 +617,7 @@ ASGNI4
 line 184
 ;184:	s_serverinfo.banner.string		  = "SERVER INFO";
 ADDRGP4 s_serverinfo+288+60
-ADDRGP4 $127
+ADDRGP4 $129
 ASGNP4
 line 185
 ;185:	s_serverinfo.banner.color	      = color_white;
@@ -638,7 +638,7 @@ ASGNI4
 line 189
 ;189:	s_serverinfo.framel.generic.name  = SERVERINFO_FRAMEL;
 ADDRGP4 s_serverinfo+360+4
-ADDRGP4 $67
+ADDRGP4 $69
 ASGNP4
 line 190
 ;190:	s_serverinfo.framel.generic.flags = QMF_INACTIVE;
@@ -674,7 +674,7 @@ ASGNI4
 line 197
 ;197:	s_serverinfo.framer.generic.name  = SERVERINFO_FRAMER;
 ADDRGP4 s_serverinfo+448+4
-ADDRGP4 $68
+ADDRGP4 $70
 ASGNP4
 line 198
 ;198:	s_serverinfo.framer.generic.flags = QMF_INACTIVE;
@@ -735,7 +735,7 @@ ASGNI4
 line 210
 ;210:	s_serverinfo.add.string  		  = "ADD TO FAVORITES";
 ADDRGP4 s_serverinfo+624+60
-ADDRGP4 $171
+ADDRGP4 $173
 ASGNP4
 line 211
 ;211:	s_serverinfo.add.style  		  = UI_CENTER|UI_SMALLFONT;
@@ -749,7 +749,7 @@ ADDRGP4 color_red
 ASGNP4
 line 213
 ;213:	if( trap_Cvar_VariableValue( "sv_running" ) ) {
-ADDRGP4 $178
+ADDRGP4 $180
 ARGP4
 ADDRLP4 2052
 ADDRGP4 trap_Cvar_VariableValue
@@ -758,7 +758,7 @@ ASGNF4
 ADDRLP4 2052
 INDIRF4
 CNSTF4 0
-EQF4 $176
+EQF4 $178
 line 214
 ;214:		s_serverinfo.add.generic.flags |= QMF_GRAYED;
 ADDRLP4 2056
@@ -774,7 +774,7 @@ BORU4
 ASGNU4
 line 215
 ;215:	}
-LABELV $176
+LABELV $178
 line 217
 ;216:
 ;217:	s_serverinfo.back.generic.type	   = MTYPE_BITMAP;
@@ -784,7 +784,7 @@ ASGNI4
 line 218
 ;218:	s_serverinfo.back.generic.name     = SERVERINFO_BACK0;
 ADDRGP4 s_serverinfo+536+4
-ADDRGP4 $69
+ADDRGP4 $71
 ASGNP4
 line 219
 ;219:	s_serverinfo.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -824,7 +824,7 @@ ASGNI4
 line 226
 ;226:	s_serverinfo.back.focuspic         = SERVERINFO_BACK1;
 ADDRGP4 s_serverinfo+536+60
-ADDRGP4 $70
+ADDRGP4 $72
 ASGNP4
 line 228
 ;227:
@@ -849,9 +849,9 @@ line 231
 ADDRLP4 0
 ADDRGP4 s_serverinfo+696
 ASGNP4
-ADDRGP4 $204
+ADDRGP4 $206
 JUMPV
-LABELV $203
+LABELV $205
 line 232
 ;232:	while ( s ) {
 line 233
@@ -871,12 +871,12 @@ ADDRLP4 4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $206
+NEI4 $208
 line 235
 ;235:			break;
-ADDRGP4 $205
+ADDRGP4 $207
 JUMPV
-LABELV $206
+LABELV $208
 line 237
 ;236:		}
 ;237:		s_serverinfo.numlines++;
@@ -893,27 +893,27 @@ ADDI4
 ASGNI4
 line 238
 ;238:	}
-LABELV $204
+LABELV $206
 line 232
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $203
-LABELV $205
+NEU4 $205
+LABELV $207
 line 240
 ;239:
 ;240:	if (s_serverinfo.numlines > 16)
 ADDRGP4 s_serverinfo+1720
 INDIRI4
 CNSTI4 16
-LEI4 $209
+LEI4 $211
 line 241
 ;241:		s_serverinfo.numlines = 16;
 ADDRGP4 s_serverinfo+1720
 CNSTI4 16
 ASGNI4
-LABELV $209
+LABELV $211
 line 243
 ;242:
 ;243:	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.banner );
@@ -970,7 +970,7 @@ CALLV
 pop
 line 250
 ;250:}
-LABELV $115
+LABELV $117
 endproc UI_ServerInfoMenu 2060 12
 bss
 align 4
@@ -1289,6 +1289,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1453,7 +1454,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $178
+LABELV $180
 byte 1 115
 byte 1 118
 byte 1 95
@@ -1466,7 +1467,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $171
+LABELV $173
 byte 1 65
 byte 1 68
 byte 1 68
@@ -1485,7 +1486,7 @@ byte 1 69
 byte 1 83
 byte 1 0
 align 1
-LABELV $127
+LABELV $129
 byte 1 83
 byte 1 69
 byte 1 82
@@ -1499,11 +1500,11 @@ byte 1 70
 byte 1 79
 byte 1 0
 align 1
-LABELV $106
+LABELV $108
 byte 1 58
 byte 1 0
 align 1
-LABELV $80
+LABELV $82
 byte 1 115
 byte 1 101
 byte 1 114
@@ -1514,7 +1515,7 @@ byte 1 37
 byte 1 100
 byte 1 0
 align 1
-LABELV $73
+LABELV $75
 byte 1 99
 byte 1 108
 byte 1 95
@@ -1540,7 +1541,7 @@ byte 1 115
 byte 1 115
 byte 1 0
 align 1
-LABELV $70
+LABELV $72
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1558,7 +1559,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $69
+LABELV $71
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1576,7 +1577,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $68
+LABELV $70
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1596,7 +1597,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $67
+LABELV $69
 byte 1 109
 byte 1 101
 byte 1 110

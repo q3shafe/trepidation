@@ -70,29 +70,29 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
-LTI4 $70
+LTI4 $72
 ADDRLP4 0
 INDIRI4
 CNSTI4 5
-GTI4 $70
+GTI4 $72
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $86-4
+ADDRGP4 $88-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $86
-address $71
-address $74
-address $77
-address $80
-address $83
+LABELV $88
+address $73
+address $76
+address $79
+address $82
+address $85
 code
-LABELV $71
+LABELV $73
 line 62
 ;61:	case 1:
 ;62:		skillMenuInfo.item_baby.color = color;
@@ -102,9 +102,9 @@ INDIRP4
 ASGNP4
 line 63
 ;63:		break;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $74
+LABELV $76
 line 65
 ;64:	case 2:
 ;65:		skillMenuInfo.item_easy.color = color;
@@ -114,9 +114,9 @@ INDIRP4
 ASGNP4
 line 66
 ;66:		break;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $77
+LABELV $79
 line 68
 ;67:	case 3:
 ;68:		skillMenuInfo.item_medium.color = color;
@@ -126,9 +126,9 @@ INDIRP4
 ASGNP4
 line 69
 ;69:		break;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $80
+LABELV $82
 line 71
 ;70:	case 4:
 ;71:		skillMenuInfo.item_hard.color = color;
@@ -138,9 +138,9 @@ INDIRP4
 ASGNP4
 line 72
 ;72:		break;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $83
+LABELV $85
 line 74
 ;73:	case 5:
 ;74:		skillMenuInfo.item_nightmare.color = color;
@@ -153,11 +153,11 @@ line 75
 line 77
 ;76:	default:
 ;77:		break;
-LABELV $70
+LABELV $72
 line 79
 ;78:	}
 ;79:}
-LABELV $68
+LABELV $70
 endproc SetSkillColor 4 0
 proc UI_SPSkillMenu_SkillEvent 12 8
 line 87
@@ -177,16 +177,16 @@ line 91
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $89
+EQI4 $91
 line 92
 ;92:		return;
-ADDRGP4 $88
+ADDRGP4 $90
 JUMPV
-LABELV $89
+LABELV $91
 line 94
 ;93:
 ;94:	SetSkillColor( (int)trap_Cvar_VariableValue( "g_spSkill" ), color_red );
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_Cvar_VariableValue
@@ -223,7 +223,7 @@ ADDI4
 ASGNI4
 line 98
 ;98:	trap_Cvar_SetValue( "g_spSkill", skill );
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -260,7 +260,7 @@ line 103
 ADDRLP4 4
 INDIRI4
 CNSTI4 14
-NEI4 $96
+NEI4 $98
 line 104
 ;104:		trap_S_StartLocalSound( skillMenuInfo.nightmareSound, CHAN_ANNOUNCER );
 ADDRGP4 skillMenuInfo+1096
@@ -273,9 +273,9 @@ CALLV
 pop
 line 105
 ;105:	}
-ADDRGP4 $97
+ADDRGP4 $99
 JUMPV
-LABELV $96
+LABELV $98
 line 106
 ;106:	else {
 line 107
@@ -290,10 +290,10 @@ CALLV
 pop
 line 108
 ;108:	}
-LABELV $97
+LABELV $99
 line 109
 ;109:}
-LABELV $88
+LABELV $90
 endproc UI_SPSkillMenu_SkillEvent 12 8
 proc UI_SPSkillMenu_FightEvent 0 4
 line 117
@@ -310,12 +310,12 @@ line 118
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $101
+EQI4 $103
 line 119
 ;119:		return;
-ADDRGP4 $100
+ADDRGP4 $102
 JUMPV
-LABELV $101
+LABELV $103
 line 121
 ;120:
 ;121:	UI_SPArena_Start( skillMenuInfo.arenaInfo );
@@ -327,7 +327,7 @@ CALLV
 pop
 line 122
 ;122:}
-LABELV $100
+LABELV $102
 endproc UI_SPSkillMenu_FightEvent 0 4
 proc UI_SPSkillMenu_BackEvent 0 8
 line 130
@@ -344,12 +344,12 @@ line 131
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $105
+EQI4 $107
 line 132
 ;132:		return;
-ADDRGP4 $104
+ADDRGP4 $106
 JUMPV
-LABELV $105
+LABELV $107
 line 135
 ;133:	}
 ;134:
@@ -369,7 +369,7 @@ CALLV
 pop
 line 137
 ;137:}
-LABELV $104
+LABELV $106
 endproc UI_SPSkillMenu_BackEvent 0 8
 proc UI_SPSkillMenu_Key 8 8
 line 145
@@ -390,12 +390,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 179
-EQI4 $111
+EQI4 $113
 ADDRLP4 0
 INDIRI4
 CNSTI4 27
-NEI4 $109
-LABELV $111
+NEI4 $111
+LABELV $113
 line 147
 ;147:		trap_S_StartLocalSound( skillMenuInfo.silenceSound, CHAN_ANNOUNCER );
 ADDRGP4 skillMenuInfo+1100
@@ -408,7 +408,7 @@ CALLV
 pop
 line 148
 ;148:	}
-LABELV $109
+LABELV $111
 line 149
 ;149:	return Menu_DefaultKey( &skillMenuInfo.menu, key );
 ADDRGP4 skillMenuInfo
@@ -423,7 +423,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $108
+LABELV $110
 endproc UI_SPSkillMenu_Key 8 8
 export UI_SPSkillMenu_Cache
 proc UI_SPSkillMenu_Cache 28 8
@@ -439,42 +439,42 @@ line 158
 ;158:void UI_SPSkillMenu_Cache( void ) {
 line 159
 ;159:	trap_R_RegisterShaderNoMip( ART_FRAME );
-ADDRGP4 $114
+ADDRGP4 $116
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 160
 ;160:	trap_R_RegisterShaderNoMip( ART_BACK );
-ADDRGP4 $115
+ADDRGP4 $117
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 161
 ;161:	trap_R_RegisterShaderNoMip( ART_BACK_FOCUS );
-ADDRGP4 $116
+ADDRGP4 $118
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 162
 ;162:	trap_R_RegisterShaderNoMip( ART_FIGHT );
-ADDRGP4 $117
+ADDRGP4 $119
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 163
 ;163:	trap_R_RegisterShaderNoMip( ART_FIGHT_FOCUS );
-ADDRGP4 $118
+ADDRGP4 $120
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 164
 ;164:	skillMenuInfo.skillpics[0] = trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE1 );
-ADDRGP4 $120
+ADDRGP4 $122
 ARGP4
 ADDRLP4 0
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -486,7 +486,7 @@ INDIRI4
 ASGNI4
 line 165
 ;165:	skillMenuInfo.skillpics[1] = trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE2 );
-ADDRGP4 $123
+ADDRGP4 $125
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -498,7 +498,7 @@ INDIRI4
 ASGNI4
 line 166
 ;166:	skillMenuInfo.skillpics[2] = trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE3 );
-ADDRGP4 $126
+ADDRGP4 $128
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -510,7 +510,7 @@ INDIRI4
 ASGNI4
 line 167
 ;167:	skillMenuInfo.skillpics[3] = trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE4 );
-ADDRGP4 $129
+ADDRGP4 $131
 ARGP4
 ADDRLP4 12
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -522,7 +522,7 @@ INDIRI4
 ASGNI4
 line 168
 ;168:	skillMenuInfo.skillpics[4] = trap_R_RegisterShaderNoMip( ART_MAP_COMPLETE5 );
-ADDRGP4 $132
+ADDRGP4 $134
 ARGP4
 ADDRLP4 16
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -535,7 +535,7 @@ ASGNI4
 line 170
 ;169:
 ;170:	skillMenuInfo.nightmareSound = trap_S_RegisterSound( "sound/misc/nightmare.wav", qfalse );
-ADDRGP4 $134
+ADDRGP4 $136
 ARGP4
 CNSTI4 0
 ARGI4
@@ -549,7 +549,7 @@ INDIRI4
 ASGNI4
 line 171
 ;171:	skillMenuInfo.silenceSound = trap_S_RegisterSound( "sound/misc/silence.wav", qfalse );
-ADDRGP4 $136
+ADDRGP4 $138
 ARGP4
 CNSTI4 0
 ARGI4
@@ -563,7 +563,7 @@ INDIRI4
 ASGNI4
 line 172
 ;172:}
-LABELV $113
+LABELV $115
 endproc UI_SPSkillMenu_Cache 28 8
 proc UI_SPSkillMenu_Init 12 12
 line 180
@@ -613,7 +613,7 @@ ASGNI4
 line 190
 ;190:	skillMenuInfo.art_frame.generic.name		= ART_FRAME;
 ADDRGP4 skillMenuInfo+288+4
-ADDRGP4 $114
+ADDRGP4 $116
 ASGNP4
 line 191
 ;191:	skillMenuInfo.art_frame.generic.flags		= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
@@ -664,7 +664,7 @@ ASGNI4
 line 201
 ;201:	skillMenuInfo.art_banner.string				= "DIFFICULTY";
 ADDRGP4 skillMenuInfo+376+60
-ADDRGP4 $162
+ADDRGP4 $164
 ASGNP4
 line 202
 ;202:	skillMenuInfo.art_banner.color				= color_white;
@@ -710,7 +710,7 @@ ASGNI4
 line 211
 ;211:	skillMenuInfo.item_baby.string				= "I Can Win";
 ADDRGP4 skillMenuInfo+448+60
-ADDRGP4 $180
+ADDRGP4 $182
 ASGNP4
 line 212
 ;212:	skillMenuInfo.item_baby.color				= color_red;
@@ -756,7 +756,7 @@ ASGNI4
 line 221
 ;221:	skillMenuInfo.item_easy.string				= "Bring It On";
 ADDRGP4 skillMenuInfo+520+60
-ADDRGP4 $198
+ADDRGP4 $200
 ASGNP4
 line 222
 ;222:	skillMenuInfo.item_easy.color				= color_red;
@@ -802,7 +802,7 @@ ASGNI4
 line 231
 ;231:	skillMenuInfo.item_medium.string			= "Hurt Me Plenty";
 ADDRGP4 skillMenuInfo+592+60
-ADDRGP4 $216
+ADDRGP4 $218
 ASGNP4
 line 232
 ;232:	skillMenuInfo.item_medium.color				= color_red;
@@ -848,7 +848,7 @@ ASGNI4
 line 241
 ;241:	skillMenuInfo.item_hard.string				= "Hardcore";
 ADDRGP4 skillMenuInfo+664+60
-ADDRGP4 $234
+ADDRGP4 $236
 ASGNP4
 line 242
 ;242:	skillMenuInfo.item_hard.color				= color_red;
@@ -894,7 +894,7 @@ ASGNI4
 line 251
 ;251:	skillMenuInfo.item_nightmare.string				= "NIGHTMARE!";
 ADDRGP4 skillMenuInfo+736+60
-ADDRGP4 $252
+ADDRGP4 $254
 ASGNP4
 line 252
 ;252:	skillMenuInfo.item_nightmare.color				= color_red;
@@ -915,7 +915,7 @@ ASGNI4
 line 256
 ;256:	skillMenuInfo.item_back.generic.name		= ART_BACK;
 ADDRGP4 skillMenuInfo+896+4
-ADDRGP4 $115
+ADDRGP4 $117
 ASGNP4
 line 257
 ;257:	skillMenuInfo.item_back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -955,7 +955,7 @@ ASGNI4
 line 264
 ;264:	skillMenuInfo.item_back.focuspic			= ART_BACK_FOCUS;
 ADDRGP4 skillMenuInfo+896+60
-ADDRGP4 $116
+ADDRGP4 $118
 ASGNP4
 line 266
 ;265:
@@ -997,7 +997,7 @@ ASGNI4
 line 274
 ;274:	skillMenuInfo.item_fight.generic.name		= ART_FIGHT;
 ADDRGP4 skillMenuInfo+984+4
-ADDRGP4 $117
+ADDRGP4 $119
 ASGNP4
 line 275
 ;275:	skillMenuInfo.item_fight.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -1037,7 +1037,7 @@ ASGNI4
 line 282
 ;282:	skillMenuInfo.item_fight.focuspic			= ART_FIGHT_FOCUS;
 ADDRGP4 skillMenuInfo+984+60
-ADDRGP4 $118
+ADDRGP4 $120
 ASGNP4
 line 284
 ;283:
@@ -1133,7 +1133,7 @@ pop
 line 295
 ;294:
 ;295:	skill = (int)Com_Clamp( 1, 5, trap_Cvar_VariableValue( "g_spSkill" ) );
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_Cvar_VariableValue
@@ -1181,7 +1181,7 @@ line 298
 ADDRLP4 0
 INDIRI4
 CNSTI4 5
-NEI4 $320
+NEI4 $322
 line 299
 ;299:		trap_S_StartLocalSound( skillMenuInfo.nightmareSound, CHAN_ANNOUNCER );
 ADDRGP4 skillMenuInfo+1096
@@ -1194,10 +1194,10 @@ CALLV
 pop
 line 300
 ;300:	}
-LABELV $320
+LABELV $322
 line 301
 ;301:}
-LABELV $137
+LABELV $139
 endproc UI_SPSkillMenu_Init 12 12
 export UI_SPSkillMenu
 proc UI_SPSkillMenu 0 8
@@ -1234,7 +1234,7 @@ CALLV
 pop
 line 309
 ;309:}
-LABELV $323
+LABELV $325
 endproc UI_SPSkillMenu 0 8
 bss
 align 4
@@ -1553,6 +1553,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1717,7 +1718,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $252
+LABELV $254
 byte 1 78
 byte 1 73
 byte 1 71
@@ -1730,7 +1731,7 @@ byte 1 69
 byte 1 33
 byte 1 0
 align 1
-LABELV $234
+LABELV $236
 byte 1 72
 byte 1 97
 byte 1 114
@@ -1741,7 +1742,7 @@ byte 1 114
 byte 1 101
 byte 1 0
 align 1
-LABELV $216
+LABELV $218
 byte 1 72
 byte 1 117
 byte 1 114
@@ -1758,7 +1759,7 @@ byte 1 116
 byte 1 121
 byte 1 0
 align 1
-LABELV $198
+LABELV $200
 byte 1 66
 byte 1 114
 byte 1 105
@@ -1772,7 +1773,7 @@ byte 1 79
 byte 1 110
 byte 1 0
 align 1
-LABELV $180
+LABELV $182
 byte 1 73
 byte 1 32
 byte 1 67
@@ -1784,7 +1785,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $162
+LABELV $164
 byte 1 68
 byte 1 73
 byte 1 70
@@ -1797,7 +1798,7 @@ byte 1 84
 byte 1 89
 byte 1 0
 align 1
-LABELV $136
+LABELV $138
 byte 1 115
 byte 1 111
 byte 1 117
@@ -1822,7 +1823,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $134
+LABELV $136
 byte 1 115
 byte 1 111
 byte 1 117
@@ -1849,7 +1850,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $132
+LABELV $134
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1876,7 +1877,7 @@ byte 1 101
 byte 1 53
 byte 1 0
 align 1
-LABELV $129
+LABELV $131
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1903,7 +1904,7 @@ byte 1 101
 byte 1 52
 byte 1 0
 align 1
-LABELV $126
+LABELV $128
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1930,7 +1931,7 @@ byte 1 101
 byte 1 51
 byte 1 0
 align 1
-LABELV $123
+LABELV $125
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1957,7 +1958,7 @@ byte 1 101
 byte 1 50
 byte 1 0
 align 1
-LABELV $120
+LABELV $122
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1984,7 +1985,7 @@ byte 1 101
 byte 1 49
 byte 1 0
 align 1
-LABELV $118
+LABELV $120
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2001,6 +2002,47 @@ byte 1 104
 byte 1 116
 byte 1 95
 byte 1 49
+byte 1 0
+align 1
+LABELV $119
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 102
+byte 1 105
+byte 1 103
+byte 1 104
+byte 1 116
+byte 1 95
+byte 1 48
+byte 1 0
+align 1
+LABELV $118
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 98
+byte 1 97
+byte 1 99
+byte 1 107
+byte 1 95
+byte 1 49
+byte 1 46
+byte 1 116
+byte 1 103
+byte 1 97
 byte 1 0
 align 1
 LABELV $117
@@ -2013,13 +2055,16 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 102
-byte 1 105
-byte 1 103
-byte 1 104
-byte 1 116
+byte 1 98
+byte 1 97
+byte 1 99
+byte 1 107
 byte 1 95
 byte 1 48
+byte 1 46
+byte 1 116
+byte 1 103
+byte 1 97
 byte 1 0
 align 1
 LABELV $116
@@ -2032,50 +2077,6 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 98
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 95
-byte 1 49
-byte 1 46
-byte 1 116
-byte 1 103
-byte 1 97
-byte 1 0
-align 1
-LABELV $115
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 117
-byte 1 47
-byte 1 97
-byte 1 114
-byte 1 116
-byte 1 47
-byte 1 98
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 95
-byte 1 48
-byte 1 46
-byte 1 116
-byte 1 103
-byte 1 97
-byte 1 0
-align 1
-LABELV $114
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 117
-byte 1 47
-byte 1 97
-byte 1 114
-byte 1 116
-byte 1 47
 byte 1 99
 byte 1 117
 byte 1 116
@@ -2087,7 +2088,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $91
+LABELV $93
 byte 1 103
 byte 1 95
 byte 1 115

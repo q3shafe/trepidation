@@ -1,12 +1,12 @@
 data
 align 4
 LABELV specifyserver_artlist
-address $67
-address $68
 address $69
 address $70
 address $71
 address $72
+address $73
+address $74
 byte 4 0
 code
 proc SpecifyServer_Event 272 16
@@ -76,28 +76,28 @@ ASGNI4
 ADDRLP4 256
 INDIRI4
 CNSTI4 102
-EQI4 $99
+EQI4 $101
 ADDRLP4 256
 INDIRI4
 CNSTI4 103
-EQI4 $78
-ADDRGP4 $75
+EQI4 $80
+ADDRGP4 $77
 JUMPV
 line 54
 ;54:	{
-LABELV $78
+LABELV $80
 line 56
 ;55:		case ID_SPECIFYSERVERGO:
 ;56:			if (event != QM_ACTIVATED)
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $79
+EQI4 $81
 line 57
 ;57:				break;
-ADDRGP4 $76
+ADDRGP4 $78
 JUMPV
-LABELV $79
+LABELV $81
 line 59
 ;58:
 ;59:			if (s_specifyserver.domain.field.buffer[0])
@@ -105,7 +105,7 @@ ADDRGP4 s_specifyserver+536+60+12
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $76
+EQI4 $78
 line 60
 ;60:			{
 line 61
@@ -123,7 +123,7 @@ ADDRGP4 s_specifyserver+868+60+12
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $89
+EQI4 $91
 line 63
 ;63:					Com_sprintf( buff+strlen(buff), 128, ":%s", s_specifyserver.port.field.buffer );
 ADDRLP4 0
@@ -139,18 +139,18 @@ ADDP4
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $94
+ADDRGP4 $96
 ARGP4
 ADDRGP4 s_specifyserver+868+60+12
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-LABELV $89
+LABELV $91
 line 65
 ;64:
 ;65:				trap_Cmd_ExecuteText( EXEC_APPEND, va( "connect %s\n", buff ) );
-ADDRGP4 $98
+ADDRGP4 $100
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -170,9 +170,9 @@ line 66
 ;66:			}
 line 67
 ;67:			break;
-ADDRGP4 $76
+ADDRGP4 $78
 JUMPV
-LABELV $99
+LABELV $101
 line 70
 ;68:
 ;69:		case ID_SPECIFYSERVERBACK:
@@ -180,12 +180,12 @@ line 70
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $100
+EQI4 $102
 line 71
 ;71:				break;
-ADDRGP4 $76
+ADDRGP4 $78
 JUMPV
-LABELV $100
+LABELV $102
 line 73
 ;72:
 ;73:			UI_PopMenu();
@@ -194,12 +194,12 @@ CALLV
 pop
 line 74
 ;74:			break;
-LABELV $75
-LABELV $76
+LABELV $77
+LABELV $78
 line 76
 ;75:	}
 ;76:}
-LABELV $74
+LABELV $76
 endproc SpecifyServer_Event 272 16
 export SpecifyServer_MenuInit
 proc SpecifyServer_MenuInit 0 16
@@ -260,7 +260,7 @@ ASGNI4
 line 96
 ;96:	s_specifyserver.banner.string		 = "SPECIFY SERVER";
 ADDRGP4 s_specifyserver+288+60
-ADDRGP4 $112
+ADDRGP4 $114
 ASGNP4
 line 97
 ;97:	s_specifyserver.banner.color  		 = color_white;
@@ -281,7 +281,7 @@ ASGNI4
 line 101
 ;101:	s_specifyserver.framel.generic.name  = SPECIFYSERVER_FRAMEL;
 ADDRGP4 s_specifyserver+360+4
-ADDRGP4 $67
+ADDRGP4 $69
 ASGNP4
 line 102
 ;102:	s_specifyserver.framel.generic.flags = QMF_INACTIVE;
@@ -317,7 +317,7 @@ ASGNI4
 line 109
 ;109:	s_specifyserver.framer.generic.name  = SPECIFYSERVER_FRAMER;
 ADDRGP4 s_specifyserver+448+4
-ADDRGP4 $68
+ADDRGP4 $70
 ASGNP4
 line 110
 ;110:	s_specifyserver.framer.generic.flags = QMF_INACTIVE;
@@ -353,7 +353,7 @@ ASGNI4
 line 117
 ;117:	s_specifyserver.domain.generic.name       = "Address:";
 ADDRGP4 s_specifyserver+536+4
-ADDRGP4 $146
+ADDRGP4 $148
 ASGNP4
 line 118
 ;118:	s_specifyserver.domain.generic.flags      = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -389,7 +389,7 @@ ASGNI4
 line 125
 ;125:	s_specifyserver.port.generic.name	    = "Port:";
 ADDRGP4 s_specifyserver+868+4
-ADDRGP4 $162
+ADDRGP4 $164
 ASGNP4
 line 126
 ;126:	s_specifyserver.port.generic.flags	    = QMF_PULSEIFFOCUS|QMF_SMALLFONT|QMF_NUMBERSONLY;
@@ -425,7 +425,7 @@ ASGNI4
 line 133
 ;133:	s_specifyserver.go.generic.name     = SPECIFYSERVER_FIGHT0;
 ADDRGP4 s_specifyserver+1200+4
-ADDRGP4 $71
+ADDRGP4 $73
 ASGNP4
 line 134
 ;134:	s_specifyserver.go.generic.flags    = QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -465,7 +465,7 @@ ASGNI4
 line 141
 ;141:	s_specifyserver.go.focuspic         = SPECIFYSERVER_FIGHT1;
 ADDRGP4 s_specifyserver+1200+60
-ADDRGP4 $72
+ADDRGP4 $74
 ASGNP4
 line 143
 ;142:
@@ -476,7 +476,7 @@ ASGNI4
 line 144
 ;144:	s_specifyserver.back.generic.name     = SPECIFYSERVER_BACK0;
 ADDRGP4 s_specifyserver+1288+4
-ADDRGP4 $69
+ADDRGP4 $71
 ASGNP4
 line 145
 ;145:	s_specifyserver.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -516,7 +516,7 @@ ASGNI4
 line 152
 ;152:	s_specifyserver.back.focuspic         = SPECIFYSERVER_BACK1;
 ADDRGP4 s_specifyserver+1288+60
-ADDRGP4 $70
+ADDRGP4 $72
 ASGNP4
 line 154
 ;153:
@@ -589,7 +589,7 @@ ADDRGP4 s_specifyserver+868+60+12
 ARGP4
 CNSTI4 6
 ARGI4
-ADDRGP4 $223
+ADDRGP4 $225
 ARGP4
 CNSTI4 27960
 ARGI4
@@ -598,7 +598,7 @@ CALLV
 pop
 line 163
 ;163:}
-LABELV $102
+LABELV $104
 endproc SpecifyServer_MenuInit 0 16
 export SpecifyServer_Cache
 proc SpecifyServer_Cache 4 4
@@ -619,7 +619,7 @@ line 175
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $225
+LABELV $227
 line 176
 ;176:	{
 line 177
@@ -633,12 +633,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $229
+NEU4 $231
 line 178
 ;178:			break;
-ADDRGP4 $227
+ADDRGP4 $229
 JUMPV
-LABELV $229
+LABELV $231
 line 179
 ;179:		trap_R_RegisterShaderNoMip(specifyserver_artlist[i]);
 ADDRLP4 0
@@ -654,7 +654,7 @@ CALLI4
 pop
 line 180
 ;180:	}
-LABELV $226
+LABELV $228
 line 175
 ADDRLP4 0
 ADDRLP4 0
@@ -662,12 +662,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-ADDRGP4 $225
+ADDRGP4 $227
 JUMPV
-LABELV $227
+LABELV $229
 line 181
 ;181:}
-LABELV $224
+LABELV $226
 endproc SpecifyServer_Cache 4 4
 export UI_SpecifyServerMenu
 proc UI_SpecifyServerMenu 0 4
@@ -694,7 +694,7 @@ CALLV
 pop
 line 192
 ;192:}
-LABELV $231
+LABELV $233
 endproc UI_SpecifyServerMenu 0 4
 bss
 align 4
@@ -1013,6 +1013,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1177,12 +1178,12 @@ import srand
 import qsort
 lit
 align 1
-LABELV $223
+LABELV $225
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $162
+LABELV $164
 byte 1 80
 byte 1 111
 byte 1 114
@@ -1190,7 +1191,7 @@ byte 1 116
 byte 1 58
 byte 1 0
 align 1
-LABELV $146
+LABELV $148
 byte 1 65
 byte 1 100
 byte 1 100
@@ -1201,7 +1202,7 @@ byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $112
+LABELV $114
 byte 1 83
 byte 1 80
 byte 1 69
@@ -1218,7 +1219,7 @@ byte 1 69
 byte 1 82
 byte 1 0
 align 1
-LABELV $98
+LABELV $100
 byte 1 99
 byte 1 111
 byte 1 110
@@ -1232,13 +1233,13 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $94
+LABELV $96
 byte 1 58
 byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $72
+LABELV $74
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1253,6 +1254,43 @@ byte 1 105
 byte 1 103
 byte 1 104
 byte 1 116
+byte 1 95
+byte 1 49
+byte 1 0
+align 1
+LABELV $73
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 102
+byte 1 105
+byte 1 103
+byte 1 104
+byte 1 116
+byte 1 95
+byte 1 48
+byte 1 0
+align 1
+LABELV $72
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 98
+byte 1 97
+byte 1 99
+byte 1 107
 byte 1 95
 byte 1 49
 byte 1 0
@@ -1267,11 +1305,10 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 102
-byte 1 105
-byte 1 103
-byte 1 104
-byte 1 116
+byte 1 98
+byte 1 97
+byte 1 99
+byte 1 107
 byte 1 95
 byte 1 48
 byte 1 0
@@ -1286,42 +1323,6 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 98
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 95
-byte 1 49
-byte 1 0
-align 1
-LABELV $69
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 117
-byte 1 47
-byte 1 97
-byte 1 114
-byte 1 116
-byte 1 47
-byte 1 98
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 95
-byte 1 48
-byte 1 0
-align 1
-LABELV $68
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 117
-byte 1 47
-byte 1 97
-byte 1 114
-byte 1 116
-byte 1 47
 byte 1 102
 byte 1 114
 byte 1 97
@@ -1332,7 +1333,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $67
+LABELV $69
 byte 1 109
 byte 1 101
 byte 1 110

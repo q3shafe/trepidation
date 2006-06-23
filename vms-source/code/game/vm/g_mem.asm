@@ -26,10 +26,10 @@ line 19
 ADDRGP4 g_debugAlloc+12
 INDIRI4
 CNSTI4 0
-EQI4 $54
+EQI4 $56
 line 20
 ;20:		G_Printf( "G_Alloc of %i bytes (%i left)\n", size, POOLSIZE - allocPoint - ( ( size + 31 ) & ~31 ) );
-ADDRGP4 $57
+ADDRGP4 $59
 ARGP4
 ADDRLP4 4
 ADDRFP4 0
@@ -55,7 +55,7 @@ CALLV
 pop
 line 21
 ;21:	}
-LABELV $54
+LABELV $56
 line 23
 ;22:
 ;23:	if ( allocPoint + size > POOLSIZE ) {
@@ -65,10 +65,10 @@ ADDRFP4 0
 INDIRI4
 ADDI4
 CNSTI4 262144
-LEI4 $58
+LEI4 $60
 line 24
 ;24:	  G_Error( "G_Alloc: failed on allocation of %i bytes\n", size ); // bk010103 - was %u, but is signed
-ADDRGP4 $60
+ADDRGP4 $62
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -80,9 +80,9 @@ line 25
 ;25:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $53
+ADDRGP4 $55
 JUMPV
-LABELV $58
+LABELV $60
 line 28
 ;26:	}
 ;27:
@@ -118,7 +118,7 @@ line 32
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $53
+LABELV $55
 endproc G_Alloc 8 12
 export G_InitMemory
 proc G_InitMemory 0 0
@@ -133,7 +133,7 @@ CNSTI4 0
 ASGNI4
 line 37
 ;37:}
-LABELV $61
+LABELV $63
 endproc G_InitMemory 0 0
 export Svcmd_GameMem_f
 proc Svcmd_GameMem_f 0 12
@@ -142,7 +142,7 @@ line 39
 ;39:void Svcmd_GameMem_f( void ) {
 line 40
 ;40:	G_Printf( "Game memory status: %i out of %i bytes allocated\n", allocPoint, POOLSIZE );
-ADDRGP4 $63
+ADDRGP4 $65
 ARGP4
 ADDRGP4 allocPoint
 INDIRI4
@@ -154,7 +154,7 @@ CALLV
 pop
 line 41
 ;41:}
-LABELV $62
+LABELV $64
 endproc Svcmd_GameMem_f 0 12
 bss
 align 4
@@ -163,6 +163,8 @@ skip 4
 align 1
 LABELV memoryPool
 skip 262144
+import CheckPlayerPostions
+import G_SendCommandToClient
 import visible
 import findradius
 import trap_SnapVector
@@ -342,6 +344,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_MultiJump
 import g_instagib
 import sv_fps
 import g_lightningDamage
@@ -439,6 +442,7 @@ import G_WriteSessionData
 import G_InitWorldSession
 import G_InitSessionData
 import G_ReadSessionData
+import Team_DropFlags
 import CheckObeliskAttack
 import Team_CheckDroppedItem
 import OnSameTeam
@@ -505,6 +509,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_pdgrenade
 import fire_grenade
 import fire_plasma
 import fire_blaster
@@ -516,6 +521,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap
 import G_SetOrigin
@@ -575,6 +581,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -739,7 +746,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $63
+LABELV $65
 byte 1 71
 byte 1 97
 byte 1 109
@@ -791,7 +798,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $60
+LABELV $62
 byte 1 71
 byte 1 95
 byte 1 65
@@ -836,7 +843,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $57
+LABELV $59
 byte 1 71
 byte 1 95
 byte 1 65

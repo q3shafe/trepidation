@@ -1,10 +1,10 @@
 data
 align 4
 LABELV teamoverlay_names
-address $68
-address $69
 address $70
 address $71
+address $72
+address $73
 byte 4 0
 code
 proc Preferences_SetMenuItems 84 12
@@ -84,7 +84,7 @@ line 72
 ;72:static void Preferences_SetMenuItems( void ) {
 line 73
 ;73:	s_preferences.crosshair.curvalue		= (int)trap_Cvar_VariableValue( "cg_drawCrosshair" ) % NUM_CROSSHAIRS;
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
 ADDRLP4 0
 ADDRGP4 trap_Cvar_VariableValue
@@ -99,7 +99,7 @@ MODI4
 ASGNI4
 line 74
 ;74:	s_preferences.simpleitems.curvalue		= trap_Cvar_VariableValue( "cg_simpleItems" ) != 0;
-ADDRGP4 $78
+ADDRGP4 $80
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_Cvar_VariableValue
@@ -108,24 +108,24 @@ ASGNF4
 ADDRLP4 8
 INDIRF4
 CNSTF4 0
-EQF4 $80
+EQF4 $82
 ADDRLP4 4
 CNSTI4 1
 ASGNI4
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $80
+LABELV $82
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-LABELV $81
+LABELV $83
 ADDRGP4 s_preferences+632+60
 ADDRLP4 4
 INDIRI4
 ASGNI4
 line 75
 ;75:	s_preferences.brass.curvalue			= trap_Cvar_VariableValue( "cg_brassTime" ) != 0;
-ADDRGP4 $84
+ADDRGP4 $86
 ARGP4
 ADDRLP4 16
 ADDRGP4 trap_Cvar_VariableValue
@@ -134,24 +134,24 @@ ASGNF4
 ADDRLP4 16
 INDIRF4
 CNSTF4 0
-EQF4 $86
+EQF4 $88
 ADDRLP4 12
 CNSTI4 1
 ASGNI4
-ADDRGP4 $87
+ADDRGP4 $89
 JUMPV
-LABELV $86
+LABELV $88
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-LABELV $87
+LABELV $89
 ADDRGP4 s_preferences+696+60
 ADDRLP4 12
 INDIRI4
 ASGNI4
 line 76
 ;76:	s_preferences.wallmarks.curvalue		= trap_Cvar_VariableValue( "cg_marks" ) != 0;
-ADDRGP4 $90
+ADDRGP4 $92
 ARGP4
 ADDRLP4 24
 ADDRGP4 trap_Cvar_VariableValue
@@ -160,24 +160,24 @@ ASGNF4
 ADDRLP4 24
 INDIRF4
 CNSTF4 0
-EQF4 $92
+EQF4 $94
 ADDRLP4 20
 CNSTI4 1
 ASGNI4
-ADDRGP4 $93
+ADDRGP4 $95
 JUMPV
-LABELV $92
+LABELV $94
 ADDRLP4 20
 CNSTI4 0
 ASGNI4
-LABELV $93
+LABELV $95
 ADDRGP4 s_preferences+760+60
 ADDRLP4 20
 INDIRI4
 ASGNI4
 line 77
 ;77:	s_preferences.identifytarget.curvalue	= trap_Cvar_VariableValue( "cg_drawCrosshairNames" ) != 0;
-ADDRGP4 $96
+ADDRGP4 $98
 ARGP4
 ADDRLP4 32
 ADDRGP4 trap_Cvar_VariableValue
@@ -186,24 +186,24 @@ ASGNF4
 ADDRLP4 32
 INDIRF4
 CNSTF4 0
-EQF4 $98
+EQF4 $100
 ADDRLP4 28
 CNSTI4 1
 ASGNI4
-ADDRGP4 $99
+ADDRGP4 $101
 JUMPV
-LABELV $98
+LABELV $100
 ADDRLP4 28
 CNSTI4 0
 ASGNI4
-LABELV $99
+LABELV $101
 ADDRGP4 s_preferences+888+60
 ADDRLP4 28
 INDIRI4
 ASGNI4
 line 78
 ;78:	s_preferences.dynamiclights.curvalue	= trap_Cvar_VariableValue( "r_dynamiclight" ) != 0;
-ADDRGP4 $102
+ADDRGP4 $104
 ARGP4
 ADDRLP4 40
 ADDRGP4 trap_Cvar_VariableValue
@@ -212,24 +212,24 @@ ASGNF4
 ADDRLP4 40
 INDIRF4
 CNSTF4 0
-EQF4 $104
+EQF4 $106
 ADDRLP4 36
 CNSTI4 1
 ASGNI4
-ADDRGP4 $105
+ADDRGP4 $107
 JUMPV
-LABELV $104
+LABELV $106
 ADDRLP4 36
 CNSTI4 0
 ASGNI4
-LABELV $105
+LABELV $107
 ADDRGP4 s_preferences+824+60
 ADDRLP4 36
 INDIRI4
 ASGNI4
 line 79
 ;79:	s_preferences.highqualitysky.curvalue	= trap_Cvar_VariableValue ( "r_fastsky" ) == 0;
-ADDRGP4 $108
+ADDRGP4 $110
 ARGP4
 ADDRLP4 48
 ADDRGP4 trap_Cvar_VariableValue
@@ -238,24 +238,24 @@ ASGNF4
 ADDRLP4 48
 INDIRF4
 CNSTF4 0
-NEF4 $110
+NEF4 $112
 ADDRLP4 44
 CNSTI4 1
 ASGNI4
-ADDRGP4 $111
+ADDRGP4 $113
 JUMPV
-LABELV $110
+LABELV $112
 ADDRLP4 44
 CNSTI4 0
 ASGNI4
-LABELV $111
+LABELV $113
 ADDRGP4 s_preferences+952+60
 ADDRLP4 44
 INDIRI4
 ASGNI4
 line 80
 ;80:	s_preferences.synceveryframe.curvalue	= trap_Cvar_VariableValue( "r_finish" ) != 0;
-ADDRGP4 $114
+ADDRGP4 $116
 ARGP4
 ADDRLP4 56
 ADDRGP4 trap_Cvar_VariableValue
@@ -264,24 +264,24 @@ ASGNF4
 ADDRLP4 56
 INDIRF4
 CNSTF4 0
-EQF4 $116
+EQF4 $118
 ADDRLP4 52
 CNSTI4 1
 ASGNI4
-ADDRGP4 $117
+ADDRGP4 $119
 JUMPV
-LABELV $116
+LABELV $118
 ADDRLP4 52
 CNSTI4 0
 ASGNI4
-LABELV $117
+LABELV $119
 ADDRGP4 s_preferences+1016+60
 ADDRLP4 52
 INDIRI4
 ASGNI4
 line 81
 ;81:	s_preferences.forcemodel.curvalue		= trap_Cvar_VariableValue( "cg_forcemodel" ) != 0;
-ADDRGP4 $120
+ADDRGP4 $122
 ARGP4
 ADDRLP4 64
 ADDRGP4 trap_Cvar_VariableValue
@@ -290,24 +290,24 @@ ASGNF4
 ADDRLP4 64
 INDIRF4
 CNSTF4 0
-EQF4 $122
+EQF4 $124
 ADDRLP4 60
 CNSTI4 1
 ASGNI4
-ADDRGP4 $123
+ADDRGP4 $125
 JUMPV
-LABELV $122
+LABELV $124
 ADDRLP4 60
 CNSTI4 0
 ASGNI4
-LABELV $123
+LABELV $125
 ADDRGP4 s_preferences+1080+60
 ADDRLP4 60
 INDIRI4
 ASGNI4
 line 82
 ;82:	s_preferences.drawteamoverlay.curvalue	= Com_Clamp( 0, 3, trap_Cvar_VariableValue( "cg_drawTeamOverlay" ) );
-ADDRGP4 $126
+ADDRGP4 $128
 ARGP4
 ADDRLP4 68
 ADDRGP4 trap_Cvar_VariableValue
@@ -331,7 +331,7 @@ CVFI4 4
 ASGNI4
 line 83
 ;83:	s_preferences.allowdownload.curvalue	= trap_Cvar_VariableValue( "cl_allowDownload" ) != 0;
-ADDRGP4 $129
+ADDRGP4 $131
 ARGP4
 ADDRLP4 80
 ADDRGP4 trap_Cvar_VariableValue
@@ -340,24 +340,24 @@ ASGNF4
 ADDRLP4 80
 INDIRF4
 CNSTF4 0
-EQF4 $131
+EQF4 $133
 ADDRLP4 76
 CNSTI4 1
 ASGNI4
-ADDRGP4 $132
+ADDRGP4 $134
 JUMPV
-LABELV $131
+LABELV $133
 ADDRLP4 76
 CNSTI4 0
 ASGNI4
-LABELV $132
+LABELV $134
 ADDRGP4 s_preferences+1240+60
 ADDRLP4 76
 INDIRI4
 ASGNI4
 line 84
 ;84:}
-LABELV $72
+LABELV $74
 endproc Preferences_SetMenuItems 84 12
 proc Preferences_Event 16 8
 line 87
@@ -369,12 +369,12 @@ line 88
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $134
+EQI4 $136
 line 89
 ;89:		return;
-ADDRGP4 $133
+ADDRGP4 $135
 JUMPV
-LABELV $134
+LABELV $136
 line 92
 ;90:	}
 ;91:
@@ -389,36 +389,36 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 127
-LTI4 $136
+LTI4 $138
 ADDRLP4 0
 INDIRI4
 CNSTI4 138
-GTI4 $136
+GTI4 $138
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $189-508
+ADDRGP4 $191-508
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $189
-address $139
-address $150
-address $153
-address $159
-address $164
-address $167
-address $170
-address $173
-address $176
-address $179
-address $182
-address $188
+LABELV $191
+address $141
+address $152
+address $155
+address $161
+address $166
+address $169
+address $172
+address $175
+address $178
+address $181
+address $184
+address $190
 code
-LABELV $139
+LABELV $141
 line 94
 ;93:	case ID_CROSSHAIR:
 ;94:		s_preferences.crosshair.curvalue++;
@@ -438,7 +438,7 @@ line 95
 ADDRGP4 s_preferences+536+64
 INDIRI4
 CNSTI4 10
-NEI4 $142
+NEI4 $144
 line 96
 ;96:			s_preferences.crosshair.curvalue = 0;
 ADDRGP4 s_preferences+536+64
@@ -446,10 +446,10 @@ CNSTI4 0
 ASGNI4
 line 97
 ;97:		}
-LABELV $142
+LABELV $144
 line 98
 ;98:		trap_Cvar_SetValue( "cg_drawCrosshair", s_preferences.crosshair.curvalue );
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
 ADDRGP4 s_preferences+536+64
 INDIRI4
@@ -460,14 +460,14 @@ CALLV
 pop
 line 99
 ;99:		break;
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $150
+LABELV $152
 line 102
 ;100:
 ;101:	case ID_SIMPLEITEMS:
 ;102:		trap_Cvar_SetValue( "cg_simpleItems", s_preferences.simpleitems.curvalue );
-ADDRGP4 $78
+ADDRGP4 $80
 ARGP4
 ADDRGP4 s_preferences+632+60
 INDIRI4
@@ -478,29 +478,29 @@ CALLV
 pop
 line 103
 ;103:		break;
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $153
+LABELV $155
 line 106
 ;104:
 ;105:	case ID_HIGHQUALITYSKY:
 ;106:		trap_Cvar_SetValue( "r_fastsky", !s_preferences.highqualitysky.curvalue );
-ADDRGP4 $108
+ADDRGP4 $110
 ARGP4
 ADDRGP4 s_preferences+952+60
 INDIRI4
 CNSTI4 0
-NEI4 $157
+NEI4 $159
 ADDRLP4 12
 CNSTI4 1
 ASGNI4
-ADDRGP4 $158
+ADDRGP4 $160
 JUMPV
-LABELV $157
+LABELV $159
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-LABELV $158
+LABELV $160
 ADDRLP4 12
 INDIRI4
 CVIF4 4
@@ -510,9 +510,9 @@ CALLV
 pop
 line 107
 ;107:		break;
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $159
+LABELV $161
 line 110
 ;108:
 ;109:	case ID_EJECTINGBRASS:
@@ -520,21 +520,21 @@ line 110
 ADDRGP4 s_preferences+696+60
 INDIRI4
 CNSTI4 0
-EQI4 $160
+EQI4 $162
 line 111
 ;111:			trap_Cvar_Reset( "cg_brassTime" );
-ADDRGP4 $84
+ADDRGP4 $86
 ARGP4
 ADDRGP4 trap_Cvar_Reset
 CALLV
 pop
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $160
+LABELV $162
 line 113
 ;112:		else
 ;113:			trap_Cvar_SetValue( "cg_brassTime", 0 );
-ADDRGP4 $84
+ADDRGP4 $86
 ARGP4
 CNSTF4 0
 ARGF4
@@ -543,14 +543,14 @@ CALLV
 pop
 line 114
 ;114:		break;
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $164
+LABELV $166
 line 117
 ;115:
 ;116:	case ID_WALLMARKS:
 ;117:		trap_Cvar_SetValue( "cg_marks", s_preferences.wallmarks.curvalue );
-ADDRGP4 $90
+ADDRGP4 $92
 ARGP4
 ADDRGP4 s_preferences+760+60
 INDIRI4
@@ -561,14 +561,14 @@ CALLV
 pop
 line 118
 ;118:		break;
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $167
+LABELV $169
 line 121
 ;119:
 ;120:	case ID_DYNAMICLIGHTS:
 ;121:		trap_Cvar_SetValue( "r_dynamiclight", s_preferences.dynamiclights.curvalue );
-ADDRGP4 $102
+ADDRGP4 $104
 ARGP4
 ADDRGP4 s_preferences+824+60
 INDIRI4
@@ -579,14 +579,14 @@ CALLV
 pop
 line 122
 ;122:		break;		
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $170
+LABELV $172
 line 125
 ;123:
 ;124:	case ID_IDENTIFYTARGET:
 ;125:		trap_Cvar_SetValue( "cg_drawCrosshairNames", s_preferences.identifytarget.curvalue );
-ADDRGP4 $96
+ADDRGP4 $98
 ARGP4
 ADDRGP4 s_preferences+888+60
 INDIRI4
@@ -597,14 +597,14 @@ CALLV
 pop
 line 126
 ;126:		break;
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $173
+LABELV $175
 line 129
 ;127:
 ;128:	case ID_SYNCEVERYFRAME:
 ;129:		trap_Cvar_SetValue( "r_finish", s_preferences.synceveryframe.curvalue );
-ADDRGP4 $114
+ADDRGP4 $116
 ARGP4
 ADDRGP4 s_preferences+1016+60
 INDIRI4
@@ -615,14 +615,14 @@ CALLV
 pop
 line 130
 ;130:		break;
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $176
+LABELV $178
 line 133
 ;131:
 ;132:	case ID_FORCEMODEL:
 ;133:		trap_Cvar_SetValue( "cg_forcemodel", s_preferences.forcemodel.curvalue );
-ADDRGP4 $120
+ADDRGP4 $122
 ARGP4
 ADDRGP4 s_preferences+1080+60
 INDIRI4
@@ -633,14 +633,14 @@ CALLV
 pop
 line 134
 ;134:		break;
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $179
+LABELV $181
 line 137
 ;135:
 ;136:	case ID_DRAWTEAMOVERLAY:
 ;137:		trap_Cvar_SetValue( "cg_drawTeamOverlay", s_preferences.drawteamoverlay.curvalue );
-ADDRGP4 $126
+ADDRGP4 $128
 ARGP4
 ADDRGP4 s_preferences+1144+64
 INDIRI4
@@ -651,14 +651,14 @@ CALLV
 pop
 line 138
 ;138:		break;
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $182
+LABELV $184
 line 141
 ;139:
 ;140:	case ID_ALLOWDOWNLOAD:
 ;141:		trap_Cvar_SetValue( "cl_allowDownload", s_preferences.allowdownload.curvalue );
-ADDRGP4 $129
+ADDRGP4 $131
 ARGP4
 ADDRGP4 s_preferences+1240+60
 INDIRI4
@@ -669,7 +669,7 @@ CALLV
 pop
 line 142
 ;142:		trap_Cvar_SetValue( "sv_allowDownload", s_preferences.allowdownload.curvalue );
-ADDRGP4 $185
+ADDRGP4 $187
 ARGP4
 ADDRGP4 s_preferences+1240+60
 INDIRI4
@@ -680,9 +680,9 @@ CALLV
 pop
 line 143
 ;143:		break;
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $188
+LABELV $190
 line 146
 ;144:
 ;145:	case ID_BACK:
@@ -692,12 +692,12 @@ CALLV
 pop
 line 147
 ;147:		break;
-LABELV $136
-LABELV $137
+LABELV $138
+LABELV $139
 line 149
 ;148:	}
 ;149:}
-LABELV $133
+LABELV $135
 endproc Preferences_Event 16 8
 proc Crosshair_Draw 48 20
 line 157
@@ -758,17 +758,17 @@ INDIRP4
 CNSTI4 40
 ADDP4
 INDIRI4
-NEI4 $193
+NEI4 $195
 ADDRLP4 24
 CNSTI4 1
 ASGNI4
-ADDRGP4 $194
+ADDRGP4 $196
 JUMPV
-LABELV $193
+LABELV $195
 ADDRLP4 24
 CNSTI4 0
 ASGNI4
-LABELV $194
+LABELV $196
 ADDRLP4 16
 ADDRLP4 24
 INDIRI4
@@ -784,21 +784,21 @@ INDIRU4
 CNSTU4 8192
 BANDU4
 CNSTU4 0
-EQU4 $195
+EQU4 $197
 line 172
 ;172:		color = text_color_disabled;
 ADDRLP4 12
 ADDRGP4 text_color_disabled
 ASGNP4
-ADDRGP4 $196
+ADDRGP4 $198
 JUMPV
-LABELV $195
+LABELV $197
 line 173
 ;173:	else if ( focus )
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $197
+EQI4 $199
 line 174
 ;174:	{
 line 175
@@ -816,9 +816,9 @@ BORI4
 ASGNI4
 line 177
 ;177:	}
-ADDRGP4 $198
+ADDRGP4 $200
 JUMPV
-LABELV $197
+LABELV $199
 line 178
 ;178:	else if ( s->generic.flags & QMF_BLINK )
 ADDRLP4 0
@@ -829,7 +829,7 @@ INDIRU4
 CNSTU4 1
 BANDU4
 CNSTU4 0
-EQU4 $199
+EQU4 $201
 line 179
 ;179:	{
 line 180
@@ -847,25 +847,25 @@ BORI4
 ASGNI4
 line 182
 ;182:	}
-ADDRGP4 $200
+ADDRGP4 $202
 JUMPV
-LABELV $199
+LABELV $201
 line 184
 ;183:	else
 ;184:		color = text_color_normal;
 ADDRLP4 12
 ADDRGP4 text_color_normal
 ASGNP4
+LABELV $202
 LABELV $200
 LABELV $198
-LABELV $196
 line 186
 ;185:
 ;186:	if ( focus )
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $201
+EQI4 $203
 line 187
 ;187:	{
 line 189
@@ -947,7 +947,7 @@ CALLV
 pop
 line 191
 ;191:	}
-LABELV $201
+LABELV $203
 line 193
 ;192:
 ;193:	UI_DrawString( x - SMALLCHAR_WIDTH, y, s->generic.name, style|UI_RIGHT, color );
@@ -984,12 +984,12 @@ CNSTI4 64
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $203
+NEI4 $205
 line 195
 ;195:		return;
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $203
+LABELV $205
 line 197
 ;196:	}
 ;197:	UI_DrawHandlePic( x + SMALLCHAR_WIDTH, y - 4, 24, 24, s_preferences.crosshairShader[s->curvalue] );
@@ -1030,7 +1030,7 @@ CALLV
 pop
 line 198
 ;198:}
-LABELV $191
+LABELV $193
 endproc Crosshair_Draw 48 20
 proc Preferences_MenuInit 8 12
 line 201
@@ -1086,7 +1086,7 @@ ASGNI4
 line 214
 ;214:	s_preferences.banner.string		   = "GAME OPTIONS";
 ADDRGP4 s_preferences+288+60
-ADDRGP4 $216
+ADDRGP4 $218
 ASGNP4
 line 215
 ;215:	s_preferences.banner.color         = color_white;
@@ -1107,7 +1107,7 @@ ASGNI4
 line 219
 ;219:	s_preferences.framel.generic.name  = ART_FRAMEL;
 ADDRGP4 s_preferences+360+4
-ADDRGP4 $224
+ADDRGP4 $226
 ASGNP4
 line 220
 ;220:	s_preferences.framel.generic.flags = QMF_INACTIVE;
@@ -1143,7 +1143,7 @@ ASGNI4
 line 227
 ;227:	s_preferences.framer.generic.name  = ART_FRAMER;
 ADDRGP4 s_preferences+448+4
-ADDRGP4 $238
+ADDRGP4 $240
 ASGNP4
 line 228
 ;228:	s_preferences.framer.generic.flags = QMF_INACTIVE;
@@ -1200,7 +1200,7 @@ ASGNI4
 line 239
 ;239:	s_preferences.crosshair.generic.name		= "Crosshair:";
 ADDRGP4 s_preferences+536+4
-ADDRGP4 $258
+ADDRGP4 $260
 ASGNP4
 line 240
 ;240:	s_preferences.crosshair.generic.callback	= Preferences_Event;
@@ -1274,7 +1274,7 @@ ASGNI4
 line 250
 ;250:	s_preferences.simpleitems.generic.name	      = "Simple Items:";
 ADDRGP4 s_preferences+632+4
-ADDRGP4 $278
+ADDRGP4 $280
 ASGNP4
 line 251
 ;251:	s_preferences.simpleitems.generic.flags	      = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1319,7 +1319,7 @@ ASGNI4
 line 259
 ;259:	s_preferences.wallmarks.generic.name	      = "Marks on Walls:";
 ADDRGP4 s_preferences+760+4
-ADDRGP4 $292
+ADDRGP4 $294
 ASGNP4
 line 260
 ;260:	s_preferences.wallmarks.generic.flags	      = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1364,7 +1364,7 @@ ASGNI4
 line 268
 ;268:	s_preferences.brass.generic.name	          = "Ejecting Brass:";
 ADDRGP4 s_preferences+696+4
-ADDRGP4 $306
+ADDRGP4 $308
 ASGNP4
 line 269
 ;269:	s_preferences.brass.generic.flags	          = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1409,7 +1409,7 @@ ASGNI4
 line 277
 ;277:	s_preferences.dynamiclights.generic.name	  = "Dynamic Lights:";
 ADDRGP4 s_preferences+824+4
-ADDRGP4 $320
+ADDRGP4 $322
 ASGNP4
 line 278
 ;278:	s_preferences.dynamiclights.generic.flags     = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1454,7 +1454,7 @@ ASGNI4
 line 286
 ;286:	s_preferences.identifytarget.generic.name	  = "Identify Target:";
 ADDRGP4 s_preferences+888+4
-ADDRGP4 $334
+ADDRGP4 $336
 ASGNP4
 line 287
 ;287:	s_preferences.identifytarget.generic.flags    = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1499,7 +1499,7 @@ ASGNI4
 line 295
 ;295:	s_preferences.highqualitysky.generic.name	  = "High Quality Sky:";
 ADDRGP4 s_preferences+952+4
-ADDRGP4 $348
+ADDRGP4 $350
 ASGNP4
 line 296
 ;296:	s_preferences.highqualitysky.generic.flags	  = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1544,7 +1544,7 @@ ASGNI4
 line 304
 ;304:	s_preferences.synceveryframe.generic.name	  = "Sync Every Frame:";
 ADDRGP4 s_preferences+1016+4
-ADDRGP4 $362
+ADDRGP4 $364
 ASGNP4
 line 305
 ;305:	s_preferences.synceveryframe.generic.flags	  = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1589,7 +1589,7 @@ ASGNI4
 line 313
 ;313:	s_preferences.forcemodel.generic.name	  = "Force Player Models:";
 ADDRGP4 s_preferences+1080+4
-ADDRGP4 $376
+ADDRGP4 $378
 ASGNP4
 line 314
 ;314:	s_preferences.forcemodel.generic.flags	  = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1634,7 +1634,7 @@ ASGNI4
 line 322
 ;322:	s_preferences.drawteamoverlay.generic.name	   = "Draw Team Overlay:";
 ADDRGP4 s_preferences+1144+4
-ADDRGP4 $390
+ADDRGP4 $392
 ASGNP4
 line 323
 ;323:	s_preferences.drawteamoverlay.generic.flags	   = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1684,7 +1684,7 @@ ASGNI4
 line 332
 ;332:	s_preferences.allowdownload.generic.name	   = "Automatic Downloading:";
 ADDRGP4 s_preferences+1240+4
-ADDRGP4 $406
+ADDRGP4 $408
 ASGNP4
 line 333
 ;333:	s_preferences.allowdownload.generic.flags	   = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1729,7 +1729,7 @@ ASGNI4
 line 341
 ;341:	s_preferences.back.generic.name     = ART_BACK0;
 ADDRGP4 s_preferences+1304+4
-ADDRGP4 $420
+ADDRGP4 $422
 ASGNP4
 line 342
 ;342:	s_preferences.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -1769,7 +1769,7 @@ ASGNI4
 line 349
 ;349:	s_preferences.back.focuspic         = ART_BACK1;
 ADDRGP4 s_preferences+1304+60
-ADDRGP4 $437
+ADDRGP4 $439
 ASGNP4
 line 351
 ;350:
@@ -1917,7 +1917,7 @@ CALLV
 pop
 line 370
 ;370:}
-LABELV $206
+LABELV $208
 endproc Preferences_MenuInit 8 12
 export Preferences_Cache
 proc Preferences_Cache 16 8
@@ -1934,28 +1934,28 @@ line 381
 ;379:	int		n;
 ;380:
 ;381:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $224
+ADDRGP4 $226
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 382
 ;382:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $238
+ADDRGP4 $240
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 383
 ;383:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $420
+ADDRGP4 $422
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 384
 ;384:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $437
+ADDRGP4 $439
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
@@ -1965,10 +1965,10 @@ line 385
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $454
+LABELV $456
 line 386
 ;386:		s_preferences.crosshairShader[n] = trap_R_RegisterShaderNoMip( va("gfx/2d/crosshair%c", 'a' + n ) );
-ADDRGP4 $459
+ADDRGP4 $461
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -1997,7 +1997,7 @@ INDIRI4
 ASGNI4
 line 387
 ;387:	}
-LABELV $455
+LABELV $457
 line 385
 ADDRLP4 0
 ADDRLP4 0
@@ -2008,10 +2008,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-LTI4 $454
+LTI4 $456
 line 388
 ;388:}
-LABELV $453
+LABELV $455
 endproc Preferences_Cache 16 8
 export UI_PreferencesMenu
 proc UI_PreferencesMenu 0 4
@@ -2038,7 +2038,7 @@ CALLV
 pop
 line 399
 ;399:}
-LABELV $460
+LABELV $462
 endproc UI_PreferencesMenu 0 4
 bss
 align 4
@@ -2357,6 +2357,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -2521,7 +2522,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $459
+LABELV $461
 byte 1 103
 byte 1 102
 byte 1 120
@@ -2542,7 +2543,7 @@ byte 1 37
 byte 1 99
 byte 1 0
 align 1
-LABELV $437
+LABELV $439
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2560,7 +2561,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $420
+LABELV $422
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2578,7 +2579,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $406
+LABELV $408
 byte 1 65
 byte 1 117
 byte 1 116
@@ -2603,7 +2604,7 @@ byte 1 103
 byte 1 58
 byte 1 0
 align 1
-LABELV $390
+LABELV $392
 byte 1 68
 byte 1 114
 byte 1 97
@@ -2624,7 +2625,7 @@ byte 1 121
 byte 1 58
 byte 1 0
 align 1
-LABELV $376
+LABELV $378
 byte 1 70
 byte 1 111
 byte 1 114
@@ -2647,7 +2648,7 @@ byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $362
+LABELV $364
 byte 1 83
 byte 1 121
 byte 1 110
@@ -2667,7 +2668,7 @@ byte 1 101
 byte 1 58
 byte 1 0
 align 1
-LABELV $348
+LABELV $350
 byte 1 72
 byte 1 105
 byte 1 103
@@ -2687,7 +2688,7 @@ byte 1 121
 byte 1 58
 byte 1 0
 align 1
-LABELV $334
+LABELV $336
 byte 1 73
 byte 1 100
 byte 1 101
@@ -2706,7 +2707,7 @@ byte 1 116
 byte 1 58
 byte 1 0
 align 1
-LABELV $320
+LABELV $322
 byte 1 68
 byte 1 121
 byte 1 110
@@ -2724,7 +2725,7 @@ byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $306
+LABELV $308
 byte 1 69
 byte 1 106
 byte 1 101
@@ -2742,7 +2743,7 @@ byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $292
+LABELV $294
 byte 1 77
 byte 1 97
 byte 1 114
@@ -2760,7 +2761,7 @@ byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $278
+LABELV $280
 byte 1 83
 byte 1 105
 byte 1 109
@@ -2776,7 +2777,7 @@ byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $258
+LABELV $260
 byte 1 67
 byte 1 114
 byte 1 111
@@ -2789,7 +2790,7 @@ byte 1 114
 byte 1 58
 byte 1 0
 align 1
-LABELV $238
+LABELV $240
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2809,7 +2810,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $224
+LABELV $226
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2829,7 +2830,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $216
+LABELV $218
 byte 1 71
 byte 1 65
 byte 1 77
@@ -2844,7 +2845,7 @@ byte 1 78
 byte 1 83
 byte 1 0
 align 1
-LABELV $185
+LABELV $187
 byte 1 115
 byte 1 118
 byte 1 95
@@ -2863,7 +2864,7 @@ byte 1 97
 byte 1 100
 byte 1 0
 align 1
-LABELV $129
+LABELV $131
 byte 1 99
 byte 1 108
 byte 1 95
@@ -2882,7 +2883,7 @@ byte 1 97
 byte 1 100
 byte 1 0
 align 1
-LABELV $126
+LABELV $128
 byte 1 99
 byte 1 103
 byte 1 95
@@ -2903,7 +2904,7 @@ byte 1 97
 byte 1 121
 byte 1 0
 align 1
-LABELV $120
+LABELV $122
 byte 1 99
 byte 1 103
 byte 1 95
@@ -2919,7 +2920,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $114
+LABELV $116
 byte 1 114
 byte 1 95
 byte 1 102
@@ -2930,7 +2931,7 @@ byte 1 115
 byte 1 104
 byte 1 0
 align 1
-LABELV $108
+LABELV $110
 byte 1 114
 byte 1 95
 byte 1 102
@@ -2942,7 +2943,7 @@ byte 1 107
 byte 1 121
 byte 1 0
 align 1
-LABELV $102
+LABELV $104
 byte 1 114
 byte 1 95
 byte 1 100
@@ -2959,7 +2960,7 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $96
+LABELV $98
 byte 1 99
 byte 1 103
 byte 1 95
@@ -2983,7 +2984,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $90
+LABELV $92
 byte 1 99
 byte 1 103
 byte 1 95
@@ -2994,7 +2995,7 @@ byte 1 107
 byte 1 115
 byte 1 0
 align 1
-LABELV $84
+LABELV $86
 byte 1 99
 byte 1 103
 byte 1 95
@@ -3009,7 +3010,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $78
+LABELV $80
 byte 1 99
 byte 1 103
 byte 1 95
@@ -3026,7 +3027,7 @@ byte 1 109
 byte 1 115
 byte 1 0
 align 1
-LABELV $75
+LABELV $77
 byte 1 99
 byte 1 103
 byte 1 95
@@ -3045,7 +3046,7 @@ byte 1 105
 byte 1 114
 byte 1 0
 align 1
-LABELV $71
+LABELV $73
 byte 1 108
 byte 1 111
 byte 1 119
@@ -3058,7 +3059,7 @@ byte 1 102
 byte 1 116
 byte 1 0
 align 1
-LABELV $70
+LABELV $72
 byte 1 108
 byte 1 111
 byte 1 119
@@ -3072,7 +3073,7 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $69
+LABELV $71
 byte 1 117
 byte 1 112
 byte 1 112
@@ -3086,7 +3087,7 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $68
+LABELV $70
 byte 1 111
 byte 1 102
 byte 1 102

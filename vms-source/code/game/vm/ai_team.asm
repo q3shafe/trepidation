@@ -7173,7 +7173,7 @@ ASGNI4
 LABELV $432
 line 1883
 ;1883:		if ( g_entities[i].inuse ) {
-CNSTI4 808
+CNSTI4 824
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7185,7 +7185,7 @@ EQI4 $436
 line 1885
 ;1884:			// if this player is not a bot
 ;1885:			if ( !(g_entities[i].r.svFlags & SVF_BOT) ) {
-CNSTI4 808
+CNSTI4 824
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -8630,6 +8630,7 @@ import G_ReadSessionData
 import Svcmd_GameMem_f
 import G_InitMemory
 import G_Alloc
+import Team_DropFlags
 import CheckObeliskAttack
 import Team_CheckDroppedItem
 import OnSameTeam
@@ -8696,6 +8697,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_pdgrenade
 import fire_grenade
 import fire_plasma
 import fire_blaster
@@ -8707,6 +8709,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap
 import G_SetOrigin
@@ -8766,6 +8769,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup

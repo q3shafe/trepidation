@@ -77,9 +77,9 @@ line 71
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $69
+LABELV $71
 line 72
 ;72:		trap_GetConfigString( CS_PLAYERS + removeBotsMenuInfo.botClientNums[removeBotsMenuInfo.baseBotNum + n], info, MAX_INFO_STRING );
 ADDRGP4 removeBotsMenuInfo+1396
@@ -106,7 +106,7 @@ line 73
 ;73:		Q_strncpyz( removeBotsMenuInfo.botnames[n], Info_ValueForKey( info, "n" ), sizeof(removeBotsMenuInfo.botnames[n]) );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $78
+ADDRGP4 $80
 ARGP4
 ADDRLP4 1028
 ADDRGP4 Info_ValueForKey
@@ -141,7 +141,7 @@ CALLP4
 pop
 line 75
 ;75:	}
-LABELV $70
+LABELV $72
 line 71
 ADDRLP4 0
 ADDRLP4 0
@@ -149,11 +149,11 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $72
+LABELV $74
 ADDRLP4 0
 INDIRI4
 CNSTI4 7
-GEI4 $81
+GEI4 $83
 ADDRGP4 removeBotsMenuInfo+1396
 INDIRI4
 ADDRLP4 0
@@ -161,12 +161,12 @@ INDIRI4
 ADDI4
 ADDRGP4 removeBotsMenuInfo+1392
 INDIRI4
-LTI4 $69
-LABELV $81
+LTI4 $71
+LABELV $83
 line 77
 ;76:
 ;77:}
-LABELV $68
+LABELV $70
 endproc UI_RemoveBotsMenu_SetBotNames 1032 12
 proc UI_RemoveBotsMenu_DeleteEvent 4 8
 line 85
@@ -183,17 +183,17 @@ line 86
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $83
+EQI4 $85
 line 87
 ;87:		return;
-ADDRGP4 $82
+ADDRGP4 $84
 JUMPV
-LABELV $83
+LABELV $85
 line 90
 ;88:	}
 ;89:
 ;90:	trap_Cmd_ExecuteText( EXEC_APPEND, va("clientkick %i\n", removeBotsMenuInfo.botClientNums[removeBotsMenuInfo.baseBotNum + removeBotsMenuInfo.selectedBotNum]) );
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
 ADDRGP4 removeBotsMenuInfo+1396
 INDIRI4
@@ -220,7 +220,7 @@ CALLV
 pop
 line 91
 ;91:}
-LABELV $82
+LABELV $84
 endproc UI_RemoveBotsMenu_DeleteEvent 4 8
 proc UI_RemoveBotsMenu_BotEvent 0 0
 line 99
@@ -237,12 +237,12 @@ line 100
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $90
+EQI4 $92
 line 101
 ;101:		return;
-ADDRGP4 $89
+ADDRGP4 $91
 JUMPV
-LABELV $90
+LABELV $92
 line 104
 ;102:	}
 ;103:
@@ -278,7 +278,7 @@ ADDRGP4 color_white
 ASGNP4
 line 107
 ;107:}
-LABELV $89
+LABELV $91
 endproc UI_RemoveBotsMenu_BotEvent 0 0
 proc UI_RemoveBotsMenu_BackEvent 0 0
 line 115
@@ -295,12 +295,12 @@ line 116
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $100
+EQI4 $102
 line 117
 ;117:		return;
-ADDRGP4 $99
+ADDRGP4 $101
 JUMPV
-LABELV $100
+LABELV $102
 line 119
 ;118:	}
 ;119:	UI_PopMenu();
@@ -309,7 +309,7 @@ CALLV
 pop
 line 120
 ;120:}
-LABELV $99
+LABELV $101
 endproc UI_RemoveBotsMenu_BackEvent 0 0
 proc UI_RemoveBotsMenu_UpEvent 4 0
 line 128
@@ -326,12 +326,12 @@ line 129
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $103
+EQI4 $105
 line 130
 ;130:		return;
-ADDRGP4 $102
+ADDRGP4 $104
 JUMPV
-LABELV $103
+LABELV $105
 line 133
 ;131:	}
 ;132:
@@ -339,7 +339,7 @@ line 133
 ADDRGP4 removeBotsMenuInfo+1396
 INDIRI4
 CNSTI4 0
-LEI4 $105
+LEI4 $107
 line 134
 ;134:		removeBotsMenuInfo.baseBotNum--;
 ADDRLP4 0
@@ -360,10 +360,10 @@ CALLV
 pop
 line 136
 ;136:	}
-LABELV $105
+LABELV $107
 line 137
 ;137:}
-LABELV $102
+LABELV $104
 endproc UI_RemoveBotsMenu_UpEvent 4 0
 proc UI_RemoveBotsMenu_DownEvent 4 0
 line 145
@@ -380,12 +380,12 @@ line 146
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $110
+EQI4 $112
 line 147
 ;147:		return;
-ADDRGP4 $109
+ADDRGP4 $111
 JUMPV
-LABELV $110
+LABELV $112
 line 150
 ;148:	}
 ;149:
@@ -396,7 +396,7 @@ CNSTI4 7
 ADDI4
 ADDRGP4 removeBotsMenuInfo+1392
 INDIRI4
-GEI4 $112
+GEI4 $114
 line 151
 ;151:		removeBotsMenuInfo.baseBotNum++;
 ADDRLP4 0
@@ -417,10 +417,10 @@ CALLV
 pop
 line 153
 ;153:	}
-LABELV $112
+LABELV $114
 line 154
 ;154:}
-LABELV $109
+LABELV $111
 endproc UI_RemoveBotsMenu_DownEvent 4 0
 proc UI_RemoveBotsMenu_GetBots 1056 12
 line 162
@@ -452,7 +452,7 @@ line 169
 ;169:	numPlayers = atoi( Info_ValueForKey( info, "sv_maxclients" ) );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $118
+ADDRGP4 $120
 ARGP4
 ADDRLP4 1036
 ADDRGP4 Info_ValueForKey
@@ -480,9 +480,9 @@ line 172
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $123
+ADDRGP4 $125
 JUMPV
-LABELV $120
+LABELV $122
 line 173
 ;173:		trap_GetConfigString( CS_PLAYERS + n, info, MAX_INFO_STRING );
 ADDRLP4 0
@@ -502,7 +502,7 @@ line 175
 ;175:		isBot = atoi( Info_ValueForKey( info, "skill" ) );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $124
+ADDRGP4 $126
 ARGP4
 ADDRLP4 1044
 ADDRGP4 Info_ValueForKey
@@ -524,12 +524,12 @@ line 176
 ADDRLP4 1028
 INDIRI4
 CNSTI4 0
-NEI4 $125
+NEI4 $127
 line 177
 ;177:			continue;
-ADDRGP4 $121
+ADDRGP4 $123
 JUMPV
-LABELV $125
+LABELV $127
 line 180
 ;178:		}
 ;179:
@@ -558,7 +558,7 @@ ADDI4
 ASGNI4
 line 182
 ;182:	}
-LABELV $121
+LABELV $123
 line 172
 ADDRLP4 0
 ADDRLP4 0
@@ -566,15 +566,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $123
+LABELV $125
 ADDRLP4 0
 INDIRI4
 ADDRLP4 1032
 INDIRI4
-LTI4 $120
+LTI4 $122
 line 183
 ;183:}
-LABELV $117
+LABELV $119
 endproc UI_RemoveBotsMenu_GetBots 1056 12
 export UI_RemoveBots_Cache
 proc UI_RemoveBots_Cache 0 4
@@ -589,42 +589,42 @@ line 191
 ;191:void UI_RemoveBots_Cache( void ) {
 line 192
 ;192:	trap_R_RegisterShaderNoMip( ART_BACKGROUND );
-ADDRGP4 $131
+ADDRGP4 $133
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 193
 ;193:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $132
+ADDRGP4 $134
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 194
 ;194:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $133
+ADDRGP4 $135
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 195
 ;195:	trap_R_RegisterShaderNoMip( ART_DELETE0 );
-ADDRGP4 $134
+ADDRGP4 $136
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 196
 ;196:	trap_R_RegisterShaderNoMip( ART_DELETE1 );
-ADDRGP4 $135
+ADDRGP4 $137
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 197
 ;197:}
-LABELV $130
+LABELV $132
 endproc UI_RemoveBots_Cache 0 4
 proc UI_RemoveBotsMenu_Init 24 12
 line 205
@@ -683,18 +683,18 @@ line 218
 ADDRGP4 removeBotsMenuInfo+1392
 INDIRI4
 CNSTI4 7
-GEI4 $142
+GEI4 $144
 ADDRLP4 12
 ADDRGP4 removeBotsMenuInfo+1392
 INDIRI4
 ASGNI4
-ADDRGP4 $143
+ADDRGP4 $145
 JUMPV
-LABELV $142
+LABELV $144
 ADDRLP4 12
 CNSTI4 7
 ASGNI4
-LABELV $143
+LABELV $145
 ADDRLP4 4
 ADDRLP4 12
 INDIRI4
@@ -718,7 +718,7 @@ ASGNI4
 line 223
 ;223:	removeBotsMenuInfo.banner.string			= "REMOVE BOTS";
 ADDRGP4 removeBotsMenuInfo+288+60
-ADDRGP4 $151
+ADDRGP4 $153
 ASGNP4
 line 224
 ;224:	removeBotsMenuInfo.banner.color				= color_white;
@@ -739,7 +739,7 @@ ASGNI4
 line 228
 ;228:	removeBotsMenuInfo.background.generic.name	= ART_BACKGROUND;
 ADDRGP4 removeBotsMenuInfo+360+4
-ADDRGP4 $131
+ADDRGP4 $133
 ASGNP4
 line 229
 ;229:	removeBotsMenuInfo.background.generic.flags	= QMF_INACTIVE;
@@ -775,7 +775,7 @@ ASGNI4
 line 236
 ;236:	removeBotsMenuInfo.arrows.generic.name		= ART_ARROWS;
 ADDRGP4 removeBotsMenuInfo+448+4
-ADDRGP4 $172
+ADDRGP4 $174
 ASGNP4
 line 237
 ;237:	removeBotsMenuInfo.arrows.generic.flags		= QMF_INACTIVE;
@@ -846,7 +846,7 @@ ASGNI4
 line 251
 ;251:	removeBotsMenuInfo.up.focuspic				= ART_ARROWUP;
 ADDRGP4 removeBotsMenuInfo+536+60
-ADDRGP4 $200
+ADDRGP4 $202
 ASGNP4
 line 253
 ;252:
@@ -892,7 +892,7 @@ ASGNI4
 line 261
 ;261:	removeBotsMenuInfo.down.focuspic			= ART_ARROWDOWN;
 ADDRGP4 removeBotsMenuInfo+624+60
-ADDRGP4 $218
+ADDRGP4 $220
 ASGNP4
 line 263
 ;262:
@@ -903,9 +903,9 @@ ASGNI4
 ADDRLP4 8
 CNSTI4 120
 ASGNI4
-ADDRGP4 $222
+ADDRGP4 $224
 JUMPV
-LABELV $219
+LABELV $221
 line 264
 ;264:		removeBotsMenuInfo.bots[n].generic.type		= MTYPE_PTEXT;
 CNSTI4 72
@@ -1007,7 +1007,7 @@ CNSTI4 16
 ASGNI4
 line 273
 ;273:	}
-LABELV $220
+LABELV $222
 line 263
 ADDRLP4 0
 ADDRLP4 0
@@ -1021,12 +1021,12 @@ INDIRI4
 CNSTI4 20
 ADDI4
 ASGNI4
-LABELV $222
+LABELV $224
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-LTI4 $219
+LTI4 $221
 line 275
 ;274:
 ;275:	removeBotsMenuInfo.delete.generic.type		= MTYPE_BITMAP;
@@ -1036,7 +1036,7 @@ ASGNI4
 line 276
 ;276:	removeBotsMenuInfo.delete.generic.name		= ART_DELETE0;
 ADDRGP4 removeBotsMenuInfo+1216+4
-ADDRGP4 $134
+ADDRGP4 $136
 ASGNP4
 line 277
 ;277:	removeBotsMenuInfo.delete.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -1076,7 +1076,7 @@ ASGNI4
 line 284
 ;284:	removeBotsMenuInfo.delete.focuspic			= ART_DELETE1;
 ADDRGP4 removeBotsMenuInfo+1216+60
-ADDRGP4 $135
+ADDRGP4 $137
 ASGNP4
 line 286
 ;285:
@@ -1087,7 +1087,7 @@ ASGNI4
 line 287
 ;287:	removeBotsMenuInfo.back.generic.name		= ART_BACK0;
 ADDRGP4 removeBotsMenuInfo+1304+4
-ADDRGP4 $132
+ADDRGP4 $134
 ASGNP4
 line 288
 ;288:	removeBotsMenuInfo.back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -1127,7 +1127,7 @@ ASGNI4
 line 295
 ;295:	removeBotsMenuInfo.back.focuspic			= ART_BACK1;
 ADDRGP4 removeBotsMenuInfo+1304+60
-ADDRGP4 $133
+ADDRGP4 $135
 ASGNP4
 line 297
 ;296:
@@ -1180,9 +1180,9 @@ line 302
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $287
+ADDRGP4 $289
 JUMPV
-LABELV $284
+LABELV $286
 line 303
 ;303:		Menu_AddItem( &removeBotsMenuInfo.menu, &removeBotsMenuInfo.bots[n] );
 ADDRGP4 removeBotsMenuInfo
@@ -1199,7 +1199,7 @@ CALLV
 pop
 line 304
 ;304:	}
-LABELV $285
+LABELV $287
 line 302
 ADDRLP4 0
 ADDRLP4 0
@@ -1207,12 +1207,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $287
+LABELV $289
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-LTI4 $284
+LTI4 $286
 line 305
 ;305:	Menu_AddItem( &removeBotsMenuInfo.menu, &removeBotsMenuInfo.delete );
 ADDRGP4 removeBotsMenuInfo
@@ -1249,7 +1249,7 @@ ADDRGP4 color_white
 ASGNP4
 line 311
 ;311:}
-LABELV $136
+LABELV $138
 endproc UI_RemoveBotsMenu_Init 24 12
 export UI_RemoveBotsMenu
 proc UI_RemoveBotsMenu 0 4
@@ -1276,7 +1276,7 @@ CALLV
 pop
 line 322
 ;322:}
-LABELV $295
+LABELV $297
 endproc UI_RemoveBotsMenu 0 4
 bss
 align 4
@@ -1595,6 +1595,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1759,7 +1760,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $218
+LABELV $220
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1786,7 +1787,7 @@ byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $200
+LABELV $202
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1813,7 +1814,7 @@ byte 1 111
 byte 1 112
 byte 1 0
 align 1
-LABELV $172
+LABELV $174
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1838,7 +1839,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $151
+LABELV $153
 byte 1 82
 byte 1 69
 byte 1 77
@@ -1852,7 +1853,7 @@ byte 1 84
 byte 1 83
 byte 1 0
 align 1
-LABELV $135
+LABELV $137
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1868,6 +1869,44 @@ byte 1 108
 byte 1 101
 byte 1 116
 byte 1 101
+byte 1 95
+byte 1 49
+byte 1 0
+align 1
+LABELV $136
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 101
+byte 1 116
+byte 1 101
+byte 1 95
+byte 1 48
+byte 1 0
+align 1
+LABELV $135
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 98
+byte 1 97
+byte 1 99
+byte 1 107
 byte 1 95
 byte 1 49
 byte 1 0
@@ -1882,53 +1921,15 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 100
-byte 1 101
-byte 1 108
-byte 1 101
-byte 1 116
-byte 1 101
+byte 1 98
+byte 1 97
+byte 1 99
+byte 1 107
 byte 1 95
 byte 1 48
 byte 1 0
 align 1
 LABELV $133
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 117
-byte 1 47
-byte 1 97
-byte 1 114
-byte 1 116
-byte 1 47
-byte 1 98
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 95
-byte 1 49
-byte 1 0
-align 1
-LABELV $132
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 117
-byte 1 47
-byte 1 97
-byte 1 114
-byte 1 116
-byte 1 47
-byte 1 98
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 95
-byte 1 48
-byte 1 0
-align 1
-LABELV $131
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1951,7 +1952,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $124
+LABELV $126
 byte 1 115
 byte 1 107
 byte 1 105
@@ -1959,7 +1960,7 @@ byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $118
+LABELV $120
 byte 1 115
 byte 1 118
 byte 1 95
@@ -1975,7 +1976,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $85
+LABELV $87
 byte 1 99
 byte 1 108
 byte 1 105
@@ -1992,6 +1993,6 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $78
+LABELV $80
 byte 1 110
 byte 1 0

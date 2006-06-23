@@ -1,10 +1,10 @@
 data
 align 4
 LABELV driverinfo_artlist
-address $67
-address $68
 address $69
 address $70
+address $71
+address $72
 byte 4 0
 code
 proc DriverInfo_Event 4 0
@@ -67,12 +67,12 @@ line 53
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $73
+EQI4 $75
 line 54
 ;54:		return;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $73
+LABELV $75
 line 56
 ;55:
 ;56:	switch (((menucommon_s*)ptr)->id)
@@ -86,12 +86,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 100
-EQI4 $78
-ADDRGP4 $75
+EQI4 $80
+ADDRGP4 $77
 JUMPV
 line 57
 ;57:	{
-LABELV $78
+LABELV $80
 line 59
 ;58:		case ID_DRIVERINFOBACK:
 ;59:			UI_PopMenu();
@@ -100,12 +100,12 @@ CALLV
 pop
 line 60
 ;60:			break;
-LABELV $75
-LABELV $76
+LABELV $77
+LABELV $78
 line 62
 ;61:	}
 ;62:}
-LABELV $72
+LABELV $74
 endproc DriverInfo_Event 4 0
 proc DriverInfo_MenuDraw 12 20
 line 70
@@ -134,7 +134,7 @@ CNSTI4 320
 ARGI4
 CNSTI4 80
 ARGI4
-ADDRGP4 $80
+ADDRGP4 $82
 ARGP4
 CNSTI4 17
 ARGI4
@@ -149,7 +149,7 @@ CNSTI4 320
 ARGI4
 CNSTI4 152
 ARGI4
-ADDRGP4 $81
+ADDRGP4 $83
 ARGP4
 CNSTI4 17
 ARGI4
@@ -164,7 +164,7 @@ CNSTI4 320
 ARGI4
 CNSTI4 192
 ARGI4
-ADDRGP4 $82
+ADDRGP4 $84
 ARGP4
 CNSTI4 17
 ARGI4
@@ -221,7 +221,7 @@ CALLV
 pop
 line 83
 ;83:	UI_DrawString( 320, 152+16, va ("color(%d-bits) Z(%d-bits) stencil(%d-bits)", uis.glconfig.colorBits, uis.glconfig.depthBits, uis.glconfig.stencilBits), UI_CENTER|UI_SMALLFONT, text_color_normal );
-ADDRGP4 $88
+ADDRGP4 $90
 ARGP4
 ADDRGP4 uis+56+11272
 INDIRI4
@@ -262,9 +262,9 @@ line 87
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $98
+ADDRGP4 $100
 JUMPV
-LABELV $95
+LABELV $97
 line 88
 ;88:		UI_DrawString( 320-4, y, s_driverinfo.strings[i*2], UI_RIGHT|UI_SMALLFONT, text_color_normal );
 CNSTI4 316
@@ -323,7 +323,7 @@ ADDI4
 ASGNI4
 line 91
 ;91:	}
-LABELV $96
+LABELV $98
 line 87
 ADDRLP4 0
 ADDRLP4 0
@@ -331,14 +331,14 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $98
+LABELV $100
 ADDRLP4 0
 INDIRI4
 ADDRGP4 s_driverinfo+1904
 INDIRI4
 CNSTI4 2
 DIVI4
-LTI4 $95
+LTI4 $97
 line 93
 ;92:
 ;93:	if (s_driverinfo.numstrings & 1)
@@ -347,7 +347,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $103
+EQI4 $105
 line 94
 ;94:		UI_DrawString( 320, y, s_driverinfo.strings[s_driverinfo.numstrings-1], UI_CENTER|UI_SMALLFONT, text_color_normal );
 CNSTI4 320
@@ -370,10 +370,10 @@ ARGP4
 ADDRGP4 UI_DrawString
 CALLV
 pop
-LABELV $103
+LABELV $105
 line 95
 ;95:}
-LABELV $79
+LABELV $81
 endproc DriverInfo_MenuDraw 12 20
 export DriverInfo_Cache
 proc DriverInfo_Cache 4 4
@@ -394,7 +394,7 @@ line 107
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $110
+LABELV $112
 line 108
 ;108:	{
 line 109
@@ -408,12 +408,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $114
+NEU4 $116
 line 110
 ;110:			break;
-ADDRGP4 $112
+ADDRGP4 $114
 JUMPV
-LABELV $114
+LABELV $116
 line 111
 ;111:		trap_R_RegisterShaderNoMip(driverinfo_artlist[i]);
 ADDRLP4 0
@@ -429,7 +429,7 @@ CALLI4
 pop
 line 112
 ;112:	}
-LABELV $111
+LABELV $113
 line 107
 ADDRLP4 0
 ADDRLP4 0
@@ -437,12 +437,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-ADDRGP4 $110
+ADDRGP4 $112
 JUMPV
-LABELV $112
+LABELV $114
 line 113
 ;113:}
-LABELV $109
+LABELV $111
 endproc DriverInfo_Cache 4 4
 proc UI_DriverInfo_Menu 36 12
 line 121
@@ -506,7 +506,7 @@ ASGNI4
 line 137
 ;137:	s_driverinfo.banner.string		  = "DRIVER INFO";
 ADDRGP4 s_driverinfo+288+60
-ADDRGP4 $126
+ADDRGP4 $128
 ASGNP4
 line 138
 ;138:	s_driverinfo.banner.color	      = color_white;
@@ -527,7 +527,7 @@ ASGNI4
 line 142
 ;142:	s_driverinfo.framel.generic.name  = DRIVERINFO_FRAMEL;
 ADDRGP4 s_driverinfo+448+4
-ADDRGP4 $67
+ADDRGP4 $69
 ASGNP4
 line 143
 ;143:	s_driverinfo.framel.generic.flags = QMF_INACTIVE;
@@ -563,7 +563,7 @@ ASGNI4
 line 150
 ;150:	s_driverinfo.framer.generic.name  = DRIVERINFO_FRAMER;
 ADDRGP4 s_driverinfo+536+4
-ADDRGP4 $68
+ADDRGP4 $70
 ASGNP4
 line 151
 ;151:	s_driverinfo.framer.generic.flags = QMF_INACTIVE;
@@ -599,7 +599,7 @@ ASGNI4
 line 158
 ;158:	s_driverinfo.back.generic.name     = DRIVERINFO_BACK0;
 ADDRGP4 s_driverinfo+360+4
-ADDRGP4 $69
+ADDRGP4 $71
 ASGNP4
 line 159
 ;159:	s_driverinfo.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -639,7 +639,7 @@ ASGNI4
 line 166
 ;166:	s_driverinfo.back.focuspic         = DRIVERINFO_BACK1;
 ADDRGP4 s_driverinfo+360+60
-ADDRGP4 $70
+ADDRGP4 $72
 ASGNP4
 line 172
 ;167:
@@ -664,12 +664,12 @@ line 175
 ADDRLP4 0
 ADDRGP4 s_driverinfo+624
 ASGNP4
-ADDRGP4 $181
+ADDRGP4 $183
 JUMPV
 line 177
 ;176:	while ( s_driverinfo.numstrings<40 && *eptr )
 ;177:	{
-LABELV $184
+LABELV $186
 line 179
 ;178:		while ( *eptr && *eptr == ' ' )
 ;179:			*eptr++ = '\0';
@@ -687,7 +687,7 @@ ADDRLP4 12
 INDIRP4
 CNSTI1 0
 ASGNI1
-LABELV $185
+LABELV $187
 line 178
 ADDRLP4 16
 ADDRLP4 0
@@ -698,12 +698,12 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $187
+EQI4 $189
 ADDRLP4 16
 INDIRI4
 CNSTI4 32
-EQI4 $184
-LABELV $187
+EQI4 $186
+LABELV $189
 line 182
 ;180:
 ;181:		// track start of valid string
@@ -717,11 +717,11 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $193
+EQI4 $195
 ADDRLP4 20
 INDIRI4
 CNSTI4 32
-EQI4 $193
+EQI4 $195
 line 183
 ;183:			s_driverinfo.strings[s_driverinfo.numstrings++] = eptr;
 ADDRLP4 28
@@ -748,9 +748,9 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-ADDRGP4 $193
+ADDRGP4 $195
 JUMPV
-LABELV $192
+LABELV $194
 line 186
 ;184:
 ;185:		while ( *eptr && *eptr != ' ' )
@@ -761,7 +761,7 @@ INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-LABELV $193
+LABELV $195
 line 185
 ADDRLP4 32
 ADDRLP4 0
@@ -772,27 +772,27 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-EQI4 $195
+EQI4 $197
 ADDRLP4 32
 INDIRI4
 CNSTI4 32
-NEI4 $192
-LABELV $195
+NEI4 $194
+LABELV $197
 line 187
 ;187:	}
-LABELV $181
+LABELV $183
 line 176
 ADDRGP4 s_driverinfo+1904
 INDIRI4
 CNSTI4 40
-GEI4 $196
+GEI4 $198
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $185
-LABELV $196
+NEI4 $187
+LABELV $198
 line 190
 ;188:
 ;189:	// safety length strings for display
@@ -800,9 +800,9 @@ line 190
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $200
+ADDRGP4 $202
 JUMPV
-LABELV $197
+LABELV $199
 line 191
 ;191:		len = strlen(s_driverinfo.strings[i]);
 ADDRLP4 4
@@ -826,7 +826,7 @@ line 192
 ADDRLP4 8
 INDIRI4
 CNSTI4 32
-LEI4 $203
+LEI4 $205
 line 193
 ;193:			s_driverinfo.strings[i][len-1] = '>';
 ADDRLP4 8
@@ -859,10 +859,10 @@ CNSTI1 0
 ASGNI1
 line 195
 ;195:		}
-LABELV $203
+LABELV $205
 line 196
 ;196:	}
-LABELV $198
+LABELV $200
 line 190
 ADDRLP4 4
 ADDRLP4 4
@@ -870,12 +870,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $200
+LABELV $202
 ADDRLP4 4
 INDIRI4
 ADDRGP4 s_driverinfo+1904
 INDIRI4
-LTI4 $197
+LTI4 $199
 line 198
 ;197:
 ;198:	Menu_AddItem( &s_driverinfo.menu, &s_driverinfo.banner );
@@ -923,13 +923,13 @@ CALLV
 pop
 line 204
 ;204:}
-LABELV $116
+LABELV $118
 endproc UI_DriverInfo_Menu 36 12
 data
 align 4
 LABELV s_drivers
-address $211
-address $212
+address $213
+address $214
 byte 4 0
 align 4
 LABELV s_ivo_templates
@@ -1156,7 +1156,7 @@ INDIRI4
 ASGNI4
 line 322
 ;322:}
-LABELV $215
+LABELV $217
 endproc GraphicsOptions_GetInitialVideo 0 0
 proc GraphicsOptions_CheckConfig 4 0
 line 330
@@ -1175,9 +1175,9 @@ line 333
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $249
+ADDRGP4 $251
 JUMPV
-LABELV $246
+LABELV $248
 line 334
 ;334:	{
 line 335
@@ -1191,12 +1191,12 @@ ADDP4
 INDIRI4
 ADDRGP4 s_graphicsoptions+1572+64
 INDIRI4
-EQI4 $250
+EQI4 $252
 line 336
 ;336:			continue;
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $250
+LABELV $252
 line 337
 ;337:		if ( s_ivo_templates[i].driver != s_graphicsoptions.driver.curvalue )
 CNSTI4 40
@@ -1208,12 +1208,12 @@ ADDP4
 INDIRI4
 ADDRGP4 s_graphicsoptions+1016+64
 INDIRI4
-EQI4 $255
+EQI4 $257
 line 338
 ;338:			continue;
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $255
+LABELV $257
 line 339
 ;339:		if ( s_ivo_templates[i].mode != s_graphicsoptions.mode.curvalue )
 CNSTI4 40
@@ -1225,12 +1225,12 @@ ADDP4
 INDIRI4
 ADDRGP4 s_graphicsoptions+920+64
 INDIRI4
-EQI4 $260
+EQI4 $262
 line 340
 ;340:			continue;
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $260
+LABELV $262
 line 341
 ;341:		if ( s_ivo_templates[i].fullscreen != s_graphicsoptions.fs.curvalue )
 CNSTI4 40
@@ -1242,12 +1242,12 @@ ADDP4
 INDIRI4
 ADDRGP4 s_graphicsoptions+1188+64
 INDIRI4
-EQI4 $264
+EQI4 $266
 line 342
 ;342:			continue;
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $264
+LABELV $266
 line 343
 ;343:		if ( s_ivo_templates[i].tq != s_graphicsoptions.tq.curvalue )
 CNSTI4 40
@@ -1260,12 +1260,12 @@ INDIRI4
 CVIF4 4
 ADDRGP4 s_graphicsoptions+1112+68
 INDIRF4
-EQF4 $269
+EQF4 $271
 line 344
 ;344:			continue;
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $269
+LABELV $271
 line 345
 ;345:		if ( s_ivo_templates[i].lighting != s_graphicsoptions.lighting.curvalue )
 CNSTI4 40
@@ -1277,12 +1277,12 @@ ADDP4
 INDIRI4
 ADDRGP4 s_graphicsoptions+1284+64
 INDIRI4
-EQI4 $274
+EQI4 $276
 line 346
 ;346:			continue;
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $274
+LABELV $276
 line 347
 ;347:		if ( s_ivo_templates[i].geometry != s_graphicsoptions.geometry.curvalue )
 CNSTI4 40
@@ -1294,12 +1294,12 @@ ADDP4
 INDIRI4
 ADDRGP4 s_graphicsoptions+1668+64
 INDIRI4
-EQI4 $279
+EQI4 $281
 line 348
 ;348:			continue;
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $279
+LABELV $281
 line 349
 ;349:		if ( s_ivo_templates[i].filter != s_graphicsoptions.filter.curvalue )
 CNSTI4 40
@@ -1311,12 +1311,12 @@ ADDP4
 INDIRI4
 ADDRGP4 s_graphicsoptions+1764+64
 INDIRI4
-EQI4 $284
+EQI4 $286
 line 350
 ;350:			continue;
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $284
+LABELV $286
 line 353
 ;351://		if ( s_ivo_templates[i].texturebits != s_graphicsoptions.texturebits.curvalue )
 ;352://			continue;
@@ -1327,9 +1327,9 @@ INDIRI4
 ASGNI4
 line 354
 ;354:		return;
-ADDRGP4 $245
+ADDRGP4 $247
 JUMPV
-LABELV $247
+LABELV $249
 line 333
 ADDRLP4 0
 ADDRLP4 0
@@ -1337,12 +1337,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $249
+LABELV $251
 ADDRLP4 0
 INDIRI4
 CVIU4 4
 CNSTU4 5
-LTU4 $246
+LTU4 $248
 line 356
 ;355:	}
 ;356:	s_graphicsoptions.list.curvalue = 4;
@@ -1351,7 +1351,7 @@ CNSTI4 4
 ASGNI4
 line 357
 ;357:}
-LABELV $245
+LABELV $247
 endproc GraphicsOptions_CheckConfig 4 0
 proc GraphicsOptions_UpdateMenuItems 8 0
 line 365
@@ -1368,7 +1368,7 @@ line 366
 ADDRGP4 s_graphicsoptions+1016+64
 INDIRI4
 CNSTI4 1
-NEI4 $294
+NEI4 $296
 line 367
 ;367:	{
 line 368
@@ -1396,9 +1396,9 @@ CNSTI4 1
 ASGNI4
 line 371
 ;371:	}
-ADDRGP4 $295
+ADDRGP4 $297
 JUMPV
-LABELV $294
+LABELV $296
 line 373
 ;372:	else
 ;373:	{
@@ -1417,19 +1417,19 @@ BANDU4
 ASGNU4
 line 375
 ;375:	}
-LABELV $295
+LABELV $297
 line 377
 ;376:
 ;377:	if ( s_graphicsoptions.fs.curvalue == 0 || s_graphicsoptions.driver.curvalue == 1 )
 ADDRGP4 s_graphicsoptions+1188+64
 INDIRI4
 CNSTI4 0
-EQI4 $312
+EQI4 $314
 ADDRGP4 s_graphicsoptions+1016+64
 INDIRI4
 CNSTI4 1
-NEI4 $306
-LABELV $312
+NEI4 $308
+LABELV $314
 line 378
 ;378:	{
 line 379
@@ -1452,9 +1452,9 @@ BORU4
 ASGNU4
 line 381
 ;381:	}
-ADDRGP4 $307
+ADDRGP4 $309
 JUMPV
-LABELV $306
+LABELV $308
 line 383
 ;382:	else
 ;383:	{
@@ -1473,14 +1473,14 @@ BANDU4
 ASGNU4
 line 385
 ;385:	}
-LABELV $307
+LABELV $309
 line 387
 ;386:
 ;387:	if ( s_graphicsoptions.allow_extensions.curvalue == 0 )
 ADDRGP4 s_graphicsoptions+1380+64
 INDIRI4
 CNSTI4 0
-NEI4 $319
+NEI4 $321
 line 388
 ;388:	{
 line 389
@@ -1488,7 +1488,7 @@ line 389
 ADDRGP4 s_graphicsoptions+1476+64
 INDIRI4
 CNSTI4 0
-NEI4 $323
+NEI4 $325
 line 390
 ;390:		{
 line 391
@@ -1498,10 +1498,10 @@ CNSTI4 1
 ASGNI4
 line 392
 ;392:		}
-LABELV $323
+LABELV $325
 line 393
 ;393:	}
-LABELV $319
+LABELV $321
 line 395
 ;394:
 ;395:	s_graphicsoptions.apply.generic.flags |= QMF_HIDDEN|QMF_INACTIVE;
@@ -1523,7 +1523,7 @@ ADDRGP4 s_ivo
 INDIRI4
 ADDRGP4 s_graphicsoptions+920+64
 INDIRI4
-EQI4 $331
+EQI4 $333
 line 398
 ;398:	{
 line 399
@@ -1541,14 +1541,14 @@ BANDU4
 ASGNU4
 line 400
 ;400:	}
-LABELV $331
+LABELV $333
 line 401
 ;401:	if ( s_ivo.fullscreen != s_graphicsoptions.fs.curvalue )
 ADDRGP4 s_ivo+4
 INDIRI4
 ADDRGP4 s_graphicsoptions+1188+64
 INDIRI4
-EQI4 $337
+EQI4 $339
 line 402
 ;402:	{
 line 403
@@ -1566,14 +1566,14 @@ BANDU4
 ASGNU4
 line 404
 ;404:	}
-LABELV $337
+LABELV $339
 line 405
 ;405:	if ( s_ivo.extensions != s_graphicsoptions.allow_extensions.curvalue )
 ADDRGP4 s_ivo+36
 INDIRI4
 ADDRGP4 s_graphicsoptions+1380+64
 INDIRI4
-EQI4 $344
+EQI4 $346
 line 406
 ;406:	{
 line 407
@@ -1591,7 +1591,7 @@ BANDU4
 ASGNU4
 line 408
 ;408:	}
-LABELV $344
+LABELV $346
 line 409
 ;409:	if ( s_ivo.tq != s_graphicsoptions.tq.curvalue )
 ADDRGP4 s_ivo+8
@@ -1599,7 +1599,7 @@ INDIRI4
 CVIF4 4
 ADDRGP4 s_graphicsoptions+1112+68
 INDIRF4
-EQF4 $351
+EQF4 $353
 line 410
 ;410:	{
 line 411
@@ -1617,14 +1617,14 @@ BANDU4
 ASGNU4
 line 412
 ;412:	}
-LABELV $351
+LABELV $353
 line 413
 ;413:	if ( s_ivo.lighting != s_graphicsoptions.lighting.curvalue )
 ADDRGP4 s_ivo+12
 INDIRI4
 ADDRGP4 s_graphicsoptions+1284+64
 INDIRI4
-EQI4 $358
+EQI4 $360
 line 414
 ;414:	{
 line 415
@@ -1642,14 +1642,14 @@ BANDU4
 ASGNU4
 line 416
 ;416:	}
-LABELV $358
+LABELV $360
 line 417
 ;417:	if ( s_ivo.colordepth != s_graphicsoptions.colordepth.curvalue )
 ADDRGP4 s_ivo+16
 INDIRI4
 ADDRGP4 s_graphicsoptions+1572+64
 INDIRI4
-EQI4 $365
+EQI4 $367
 line 418
 ;418:	{
 line 419
@@ -1667,14 +1667,14 @@ BANDU4
 ASGNU4
 line 420
 ;420:	}
-LABELV $365
+LABELV $367
 line 421
 ;421:	if ( s_ivo.driver != s_graphicsoptions.driver.curvalue )
 ADDRGP4 s_ivo+32
 INDIRI4
 ADDRGP4 s_graphicsoptions+1016+64
 INDIRI4
-EQI4 $372
+EQI4 $374
 line 422
 ;422:	{
 line 423
@@ -1692,14 +1692,14 @@ BANDU4
 ASGNU4
 line 424
 ;424:	}
-LABELV $372
+LABELV $374
 line 425
 ;425:	if ( s_ivo.texturebits != s_graphicsoptions.texturebits.curvalue )
 ADDRGP4 s_ivo+20
 INDIRI4
 ADDRGP4 s_graphicsoptions+1476+64
 INDIRI4
-EQI4 $379
+EQI4 $381
 line 426
 ;426:	{
 line 427
@@ -1717,14 +1717,14 @@ BANDU4
 ASGNU4
 line 428
 ;428:	}
-LABELV $379
+LABELV $381
 line 429
 ;429:	if ( s_ivo.geometry != s_graphicsoptions.geometry.curvalue )
 ADDRGP4 s_ivo+24
 INDIRI4
 ADDRGP4 s_graphicsoptions+1668+64
 INDIRI4
-EQI4 $386
+EQI4 $388
 line 430
 ;430:	{
 line 431
@@ -1742,14 +1742,14 @@ BANDU4
 ASGNU4
 line 432
 ;432:	}
-LABELV $386
+LABELV $388
 line 433
 ;433:	if ( s_ivo.filter != s_graphicsoptions.filter.curvalue )
 ADDRGP4 s_ivo+28
 INDIRI4
 ADDRGP4 s_graphicsoptions+1764+64
 INDIRI4
-EQI4 $393
+EQI4 $395
 line 434
 ;434:	{
 line 435
@@ -1767,7 +1767,7 @@ BANDU4
 ASGNU4
 line 436
 ;436:	}
-LABELV $393
+LABELV $395
 line 438
 ;437:
 ;438:	GraphicsOptions_CheckConfig();
@@ -1776,7 +1776,7 @@ CALLV
 pop
 line 439
 ;439:}	
-LABELV $293
+LABELV $295
 endproc GraphicsOptions_UpdateMenuItems 8 0
 proc GraphicsOptions_ApplyChanges 8 8
 line 447
@@ -1793,12 +1793,12 @@ line 448
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $401
+EQI4 $403
 line 449
 ;449:		return;
-ADDRGP4 $400
+ADDRGP4 $402
 JUMPV
-LABELV $401
+LABELV $403
 line 451
 ;450:
 ;451:	switch ( s_graphicsoptions.texturebits.curvalue  )
@@ -1809,24 +1809,24 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $407
-ADDRLP4 0
-INDIRI4
-CNSTI4 1
 EQI4 $409
 ADDRLP4 0
 INDIRI4
+CNSTI4 1
+EQI4 $411
+ADDRLP4 0
+INDIRI4
 CNSTI4 2
-EQI4 $410
-ADDRGP4 $403
+EQI4 $412
+ADDRGP4 $405
 JUMPV
 line 452
 ;452:	{
-LABELV $407
+LABELV $409
 line 454
 ;453:	case 0:
 ;454:		trap_Cvar_SetValue( "r_texturebits", 0 );
-ADDRGP4 $408
+ADDRGP4 $410
 ARGP4
 CNSTF4 0
 ARGF4
@@ -1835,13 +1835,13 @@ CALLV
 pop
 line 455
 ;455:		break;
-ADDRGP4 $404
+ADDRGP4 $406
 JUMPV
-LABELV $409
+LABELV $411
 line 457
 ;456:	case 1:
 ;457:		trap_Cvar_SetValue( "r_texturebits", 16 );
-ADDRGP4 $408
+ADDRGP4 $410
 ARGP4
 CNSTF4 1098907648
 ARGF4
@@ -1850,13 +1850,13 @@ CALLV
 pop
 line 458
 ;458:		break;
-ADDRGP4 $404
+ADDRGP4 $406
 JUMPV
-LABELV $410
+LABELV $412
 line 460
 ;459:	case 2:
 ;460:		trap_Cvar_SetValue( "r_texturebits", 32 );
-ADDRGP4 $408
+ADDRGP4 $410
 ARGP4
 CNSTF4 1107296256
 ARGF4
@@ -1865,12 +1865,12 @@ CALLV
 pop
 line 461
 ;461:		break;
-LABELV $403
-LABELV $404
+LABELV $405
+LABELV $406
 line 463
 ;462:	}
 ;463:	trap_Cvar_SetValue( "r_picmip", 3 - s_graphicsoptions.tq.curvalue );
-ADDRGP4 $411
+ADDRGP4 $413
 ARGP4
 CNSTF4 1077936128
 ADDRGP4 s_graphicsoptions+1112+68
@@ -1882,7 +1882,7 @@ CALLV
 pop
 line 464
 ;464:	trap_Cvar_SetValue( "r_allowExtensions", s_graphicsoptions.allow_extensions.curvalue );
-ADDRGP4 $414
+ADDRGP4 $416
 ARGP4
 ADDRGP4 s_graphicsoptions+1380+64
 INDIRI4
@@ -1893,7 +1893,7 @@ CALLV
 pop
 line 465
 ;465:	trap_Cvar_SetValue( "r_mode", s_graphicsoptions.mode.curvalue );
-ADDRGP4 $417
+ADDRGP4 $419
 ARGP4
 ADDRGP4 s_graphicsoptions+920+64
 INDIRI4
@@ -1904,7 +1904,7 @@ CALLV
 pop
 line 466
 ;466:	trap_Cvar_SetValue( "r_fullscreen", s_graphicsoptions.fs.curvalue );
-ADDRGP4 $420
+ADDRGP4 $422
 ARGP4
 ADDRGP4 s_graphicsoptions+1188+64
 INDIRI4
@@ -1915,7 +1915,7 @@ CALLV
 pop
 line 467
 ;467:	trap_Cvar_Set( "r_glDriver", ( char * ) s_drivers[s_graphicsoptions.driver.curvalue] );
-ADDRGP4 $423
+ADDRGP4 $425
 ARGP4
 ADDRGP4 s_graphicsoptions+1016+64
 INDIRI4
@@ -1937,24 +1937,24 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $430
+EQI4 $432
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
-EQI4 $434
+EQI4 $436
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
-EQI4 $435
-ADDRGP4 $426
+EQI4 $437
+ADDRGP4 $428
 JUMPV
 line 469
 ;469:	{
-LABELV $430
+LABELV $432
 line 471
 ;470:	case 0:
 ;471:		trap_Cvar_SetValue( "r_colorbits", 0 );
-ADDRGP4 $431
+ADDRGP4 $433
 ARGP4
 CNSTF4 0
 ARGF4
@@ -1963,7 +1963,7 @@ CALLV
 pop
 line 472
 ;472:		trap_Cvar_SetValue( "r_depthbits", 0 );
-ADDRGP4 $432
+ADDRGP4 $434
 ARGP4
 CNSTF4 0
 ARGF4
@@ -1972,7 +1972,7 @@ CALLV
 pop
 line 473
 ;473:		trap_Cvar_SetValue( "r_stencilbits", 0 );
-ADDRGP4 $433
+ADDRGP4 $435
 ARGP4
 CNSTF4 0
 ARGF4
@@ -1981,13 +1981,13 @@ CALLV
 pop
 line 474
 ;474:		break;
-ADDRGP4 $427
+ADDRGP4 $429
 JUMPV
-LABELV $434
+LABELV $436
 line 476
 ;475:	case 1:
 ;476:		trap_Cvar_SetValue( "r_colorbits", 16 );
-ADDRGP4 $431
+ADDRGP4 $433
 ARGP4
 CNSTF4 1098907648
 ARGF4
@@ -1996,7 +1996,7 @@ CALLV
 pop
 line 477
 ;477:		trap_Cvar_SetValue( "r_depthbits", 16 );
-ADDRGP4 $432
+ADDRGP4 $434
 ARGP4
 CNSTF4 1098907648
 ARGF4
@@ -2005,7 +2005,7 @@ CALLV
 pop
 line 478
 ;478:		trap_Cvar_SetValue( "r_stencilbits", 0 );
-ADDRGP4 $433
+ADDRGP4 $435
 ARGP4
 CNSTF4 0
 ARGF4
@@ -2014,13 +2014,13 @@ CALLV
 pop
 line 479
 ;479:		break;
-ADDRGP4 $427
+ADDRGP4 $429
 JUMPV
-LABELV $435
+LABELV $437
 line 481
 ;480:	case 2:
 ;481:		trap_Cvar_SetValue( "r_colorbits", 32 );
-ADDRGP4 $431
+ADDRGP4 $433
 ARGP4
 CNSTF4 1107296256
 ARGF4
@@ -2029,7 +2029,7 @@ CALLV
 pop
 line 482
 ;482:		trap_Cvar_SetValue( "r_depthbits", 24 );
-ADDRGP4 $432
+ADDRGP4 $434
 ARGP4
 CNSTF4 1103101952
 ARGF4
@@ -2038,12 +2038,12 @@ CALLV
 pop
 line 483
 ;483:		break;
-LABELV $426
-LABELV $427
+LABELV $428
+LABELV $429
 line 485
 ;484:	}
 ;485:	trap_Cvar_SetValue( "r_vertexLight", s_graphicsoptions.lighting.curvalue );
-ADDRGP4 $436
+ADDRGP4 $438
 ARGP4
 ADDRGP4 s_graphicsoptions+1284+64
 INDIRI4
@@ -2058,12 +2058,12 @@ line 487
 ADDRGP4 s_graphicsoptions+1668+64
 INDIRI4
 CNSTI4 2
-NEI4 $439
+NEI4 $441
 line 488
 ;488:	{
 line 489
 ;489:		trap_Cvar_SetValue( "r_lodBias", 0 );
-ADDRGP4 $443
+ADDRGP4 $445
 ARGP4
 CNSTF4 0
 ARGF4
@@ -2072,7 +2072,7 @@ CALLV
 pop
 line 490
 ;490:		trap_Cvar_SetValue( "r_subdivisions", 4 );
-ADDRGP4 $444
+ADDRGP4 $446
 ARGP4
 CNSTF4 1082130432
 ARGF4
@@ -2081,20 +2081,20 @@ CALLV
 pop
 line 491
 ;491:	}
-ADDRGP4 $440
+ADDRGP4 $442
 JUMPV
-LABELV $439
+LABELV $441
 line 492
 ;492:	else if ( s_graphicsoptions.geometry.curvalue == 1 )
 ADDRGP4 s_graphicsoptions+1668+64
 INDIRI4
 CNSTI4 1
-NEI4 $445
+NEI4 $447
 line 493
 ;493:	{
 line 494
 ;494:		trap_Cvar_SetValue( "r_lodBias", 1 );
-ADDRGP4 $443
+ADDRGP4 $445
 ARGP4
 CNSTF4 1065353216
 ARGF4
@@ -2103,7 +2103,7 @@ CALLV
 pop
 line 495
 ;495:		trap_Cvar_SetValue( "r_subdivisions", 12 );
-ADDRGP4 $444
+ADDRGP4 $446
 ARGP4
 CNSTF4 1094713344
 ARGF4
@@ -2112,15 +2112,15 @@ CALLV
 pop
 line 496
 ;496:	}
-ADDRGP4 $446
+ADDRGP4 $448
 JUMPV
-LABELV $445
+LABELV $447
 line 498
 ;497:	else
 ;498:	{
 line 499
 ;499:		trap_Cvar_SetValue( "r_lodBias", 1 );
-ADDRGP4 $443
+ADDRGP4 $445
 ARGP4
 CNSTF4 1065353216
 ARGF4
@@ -2129,7 +2129,7 @@ CALLV
 pop
 line 500
 ;500:		trap_Cvar_SetValue( "r_subdivisions", 20 );
-ADDRGP4 $444
+ADDRGP4 $446
 ARGP4
 CNSTF4 1101004800
 ARGF4
@@ -2138,59 +2138,59 @@ CALLV
 pop
 line 501
 ;501:	}
-LABELV $446
-LABELV $440
+LABELV $448
+LABELV $442
 line 503
 ;502:
 ;503:	if ( s_graphicsoptions.filter.curvalue )
 ADDRGP4 s_graphicsoptions+1764+64
 INDIRI4
 CNSTI4 0
-EQI4 $449
+EQI4 $451
 line 504
 ;504:	{
 line 505
 ;505:		trap_Cvar_Set( "r_textureMode", "GL_LINEAR_MIPMAP_LINEAR" );
-ADDRGP4 $453
+ADDRGP4 $455
 ARGP4
-ADDRGP4 $454
+ADDRGP4 $456
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 506
 ;506:	}
-ADDRGP4 $450
+ADDRGP4 $452
 JUMPV
-LABELV $449
+LABELV $451
 line 508
 ;507:	else
 ;508:	{
 line 509
 ;509:		trap_Cvar_Set( "r_textureMode", "GL_LINEAR_MIPMAP_NEAREST" );
-ADDRGP4 $453
-ARGP4
 ADDRGP4 $455
+ARGP4
+ADDRGP4 $457
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 510
 ;510:	}
-LABELV $450
+LABELV $452
 line 512
 ;511:
 ;512:	trap_Cmd_ExecuteText( EXEC_APPEND, "vid_restart\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $456
+ADDRGP4 $458
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
 line 513
 ;513:}
-LABELV $400
+LABELV $402
 endproc GraphicsOptions_ApplyChanges 8 8
 proc GraphicsOptions_Event 12 0
 line 520
@@ -2208,12 +2208,12 @@ line 523
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $458
+EQI4 $460
 line 524
 ;524:	 	return;
-ADDRGP4 $457
+ADDRGP4 $459
 JUMPV
-LABELV $458
+LABELV $460
 line 527
 ;525:	}
 ;526:
@@ -2228,33 +2228,33 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 101
-LTI4 $460
+LTI4 $462
 ADDRLP4 4
 INDIRI4
 CNSTI4 109
-GTI4 $460
+GTI4 $462
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $505-404
+ADDRGP4 $507-404
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $505
-address $500
-address $460
-address $480
-address $463
-address $499
-address $461
+LABELV $507
 address $502
-address $503
+address $462
+address $482
+address $465
+address $501
+address $463
 address $504
+address $505
+address $506
 code
-LABELV $463
+LABELV $465
 line 530
 ;528:	case ID_MODE:
 ;529:		// clamp 3dfx video modes
@@ -2262,7 +2262,7 @@ line 530
 ADDRGP4 s_graphicsoptions+1016+64
 INDIRI4
 CNSTI4 1
-NEI4 $461
+NEI4 $463
 line 531
 ;531:		{
 line 532
@@ -2270,21 +2270,21 @@ line 532
 ADDRGP4 s_graphicsoptions+920+64
 INDIRI4
 CNSTI4 2
-GEI4 $468
+GEI4 $470
 line 533
 ;533:				s_graphicsoptions.mode.curvalue = 2;
 ADDRGP4 s_graphicsoptions+920+64
 CNSTI4 2
 ASGNI4
-ADDRGP4 $461
+ADDRGP4 $463
 JUMPV
-LABELV $468
+LABELV $470
 line 534
 ;534:			else if ( s_graphicsoptions.mode.curvalue > 6 )
 ADDRGP4 s_graphicsoptions+920+64
 INDIRI4
 CNSTI4 6
-LEI4 $461
+LEI4 $463
 line 535
 ;535:				s_graphicsoptions.mode.curvalue = 6;
 ADDRGP4 s_graphicsoptions+920+64
@@ -2294,9 +2294,9 @@ line 536
 ;536:		}
 line 537
 ;537:		break;
-ADDRGP4 $461
+ADDRGP4 $463
 JUMPV
-LABELV $480
+LABELV $482
 line 540
 ;538:
 ;539:	case ID_LIST:
@@ -2383,9 +2383,9 @@ INDIRI4
 ASGNI4
 line 550
 ;550:		break;
-ADDRGP4 $461
+ADDRGP4 $463
 JUMPV
-LABELV $499
+LABELV $501
 line 553
 ;551:
 ;552:	case ID_DRIVERINFO:
@@ -2395,9 +2395,9 @@ CALLV
 pop
 line 554
 ;554:		break;
-ADDRGP4 $461
+ADDRGP4 $463
 JUMPV
-LABELV $500
+LABELV $502
 line 557
 ;555:
 ;556:	case ID_BACK2:
@@ -2407,13 +2407,13 @@ CALLV
 pop
 line 558
 ;558:		break;
-ADDRGP4 $461
+ADDRGP4 $463
 JUMPV
 line 561
 ;559:
 ;560:	case ID_GRAPHICS:
 ;561:		break;
-LABELV $502
+LABELV $504
 line 564
 ;562:
 ;563:	case ID_DISPLAY:
@@ -2428,9 +2428,9 @@ CALLV
 pop
 line 566
 ;566:		break;
-ADDRGP4 $461
+ADDRGP4 $463
 JUMPV
-LABELV $503
+LABELV $505
 line 569
 ;567:
 ;568:	case ID_SOUND:
@@ -2445,9 +2445,9 @@ CALLV
 pop
 line 571
 ;571:		break;
-ADDRGP4 $461
+ADDRGP4 $463
 JUMPV
-LABELV $504
+LABELV $506
 line 574
 ;572:
 ;573:	case ID_NETWORK:
@@ -2462,12 +2462,12 @@ CALLV
 pop
 line 576
 ;576:		break;
-LABELV $460
-LABELV $461
+LABELV $462
+LABELV $463
 line 578
 ;577:	}
 ;578:}
-LABELV $457
+LABELV $459
 endproc GraphicsOptions_Event 12 0
 proc GraphicsOptions_TQEvent 0 0
 line 586
@@ -2484,12 +2484,12 @@ line 587
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $508
+EQI4 $510
 line 588
 ;588:	 	return;
-ADDRGP4 $507
+ADDRGP4 $509
 JUMPV
-LABELV $508
+LABELV $510
 line 590
 ;589:	}
 ;590:	s_graphicsoptions.tq.curvalue = (int)(s_graphicsoptions.tq.curvalue + 0.5);
@@ -2503,7 +2503,7 @@ CVIF4 4
 ASGNF4
 line 591
 ;591:}
-LABELV $507
+LABELV $509
 endproc GraphicsOptions_TQEvent 0 0
 export GraphicsOptions_MenuDraw
 proc GraphicsOptions_MenuDraw 0 4
@@ -2533,7 +2533,7 @@ CALLV
 pop
 line 605
 ;605:}
-LABELV $514
+LABELV $516
 endproc GraphicsOptions_MenuDraw 0 4
 proc GraphicsOptions_SetMenuItems 68 8
 line 613
@@ -2547,7 +2547,7 @@ line 613
 ;613:{
 line 614
 ;614:	s_graphicsoptions.mode.curvalue = trap_Cvar_VariableValue( "r_mode" );
-ADDRGP4 $417
+ADDRGP4 $419
 ARGP4
 ADDRLP4 0
 ADDRGP4 trap_Cvar_VariableValue
@@ -2563,7 +2563,7 @@ line 615
 ADDRGP4 s_graphicsoptions+920+64
 INDIRI4
 CNSTI4 0
-GEI4 $518
+GEI4 $520
 line 616
 ;616:	{
 line 617
@@ -2573,10 +2573,10 @@ CNSTI4 3
 ASGNI4
 line 618
 ;618:	}
-LABELV $518
+LABELV $520
 line 619
 ;619:	s_graphicsoptions.fs.curvalue = trap_Cvar_VariableValue("r_fullscreen");
-ADDRGP4 $420
+ADDRGP4 $422
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_Cvar_VariableValue
@@ -2589,7 +2589,7 @@ CVFI4 4
 ASGNI4
 line 620
 ;620:	s_graphicsoptions.allow_extensions.curvalue = trap_Cvar_VariableValue("r_allowExtensions");
-ADDRGP4 $414
+ADDRGP4 $416
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_Cvar_VariableValue
@@ -2602,7 +2602,7 @@ CVFI4 4
 ASGNI4
 line 621
 ;621:	s_graphicsoptions.tq.curvalue = 3-trap_Cvar_VariableValue( "r_picmip");
-ADDRGP4 $411
+ADDRGP4 $413
 ARGP4
 ADDRLP4 12
 ADDRGP4 trap_Cvar_VariableValue
@@ -2619,7 +2619,7 @@ line 622
 ADDRGP4 s_graphicsoptions+1112+68
 INDIRF4
 CNSTF4 0
-GEF4 $530
+GEF4 $532
 line 623
 ;623:	{
 line 624
@@ -2629,15 +2629,15 @@ CNSTF4 0
 ASGNF4
 line 625
 ;625:	}
-ADDRGP4 $531
+ADDRGP4 $533
 JUMPV
-LABELV $530
+LABELV $532
 line 626
 ;626:	else if ( s_graphicsoptions.tq.curvalue > 3 )
 ADDRGP4 s_graphicsoptions+1112+68
 INDIRF4
 CNSTF4 1077936128
-LEF4 $536
+LEF4 $538
 line 627
 ;627:	{
 line 628
@@ -2647,12 +2647,12 @@ CNSTF4 1077936128
 ASGNF4
 line 629
 ;629:	}
-LABELV $536
-LABELV $531
+LABELV $538
+LABELV $533
 line 631
 ;630:
 ;631:	s_graphicsoptions.lighting.curvalue = trap_Cvar_VariableValue( "r_vertexLight" ) != 0;
-ADDRGP4 $436
+ADDRGP4 $438
 ARGP4
 ADDRLP4 20
 ADDRGP4 trap_Cvar_VariableValue
@@ -2661,24 +2661,24 @@ ASGNF4
 ADDRLP4 20
 INDIRF4
 CNSTF4 0
-EQF4 $545
+EQF4 $547
 ADDRLP4 16
 CNSTI4 1
 ASGNI4
-ADDRGP4 $546
+ADDRGP4 $548
 JUMPV
-LABELV $545
+LABELV $547
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
-LABELV $546
+LABELV $548
 ADDRGP4 s_graphicsoptions+1284+64
 ADDRLP4 16
 INDIRI4
 ASGNI4
 line 632
 ;632:	switch ( ( int ) trap_Cvar_VariableValue( "r_texturebits" ) )
-ADDRGP4 $408
+ADDRGP4 $410
 ARGP4
 ADDRLP4 28
 ADDRGP4 trap_Cvar_VariableValue
@@ -2696,30 +2696,30 @@ ADDRLP4 24
 INDIRI4
 ADDRLP4 36
 INDIRI4
-EQI4 $553
+EQI4 $555
 ADDRLP4 24
 INDIRI4
 ADDRLP4 36
 INDIRI4
-GTI4 $560
-LABELV $559
+GTI4 $562
+LABELV $561
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $550
-ADDRGP4 $547
+EQI4 $552
+ADDRGP4 $549
 JUMPV
-LABELV $560
+LABELV $562
 ADDRLP4 24
 INDIRI4
 CNSTI4 32
-EQI4 $556
-ADDRGP4 $547
+EQI4 $558
+ADDRGP4 $549
 JUMPV
 line 633
 ;633:	{
-LABELV $547
-LABELV $550
+LABELV $549
+LABELV $552
 line 636
 ;634:	default:
 ;635:	case 0:
@@ -2729,9 +2729,9 @@ CNSTI4 0
 ASGNI4
 line 637
 ;637:		break;
-ADDRGP4 $548
+ADDRGP4 $550
 JUMPV
-LABELV $553
+LABELV $555
 line 639
 ;638:	case 16:
 ;639:		s_graphicsoptions.texturebits.curvalue = 1;
@@ -2740,9 +2740,9 @@ CNSTI4 1
 ASGNI4
 line 640
 ;640:		break;
-ADDRGP4 $548
+ADDRGP4 $550
 JUMPV
-LABELV $556
+LABELV $558
 line 642
 ;641:	case 32:
 ;642:		s_graphicsoptions.texturebits.curvalue = 2;
@@ -2751,12 +2751,12 @@ CNSTI4 2
 ASGNI4
 line 643
 ;643:		break;
-LABELV $548
+LABELV $550
 line 646
 ;644:	}
 ;645:
 ;646:	if ( !Q_stricmp( UI_Cvar_VariableString( "r_textureMode" ), "GL_LINEAR_MIPMAP_NEAREST" ) )
-ADDRGP4 $453
+ADDRGP4 $455
 ARGP4
 ADDRLP4 40
 ADDRGP4 UI_Cvar_VariableString
@@ -2765,7 +2765,7 @@ ASGNP4
 ADDRLP4 40
 INDIRP4
 ARGP4
-ADDRGP4 $455
+ADDRGP4 $457
 ARGP4
 ADDRLP4 44
 ADDRGP4 Q_stricmp
@@ -2774,7 +2774,7 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
-NEI4 $561
+NEI4 $563
 line 647
 ;647:	{
 line 648
@@ -2784,9 +2784,9 @@ CNSTI4 0
 ASGNI4
 line 649
 ;649:	}
-ADDRGP4 $562
+ADDRGP4 $564
 JUMPV
-LABELV $561
+LABELV $563
 line 651
 ;650:	else
 ;651:	{
@@ -2797,11 +2797,11 @@ CNSTI4 1
 ASGNI4
 line 653
 ;653:	}
-LABELV $562
+LABELV $564
 line 655
 ;654:
 ;655:	if ( trap_Cvar_VariableValue( "r_lodBias" ) > 0 )
-ADDRGP4 $443
+ADDRGP4 $445
 ARGP4
 ADDRLP4 48
 ADDRGP4 trap_Cvar_VariableValue
@@ -2810,12 +2810,12 @@ ASGNF4
 ADDRLP4 48
 INDIRF4
 CNSTF4 0
-LEF4 $567
+LEF4 $569
 line 656
 ;656:	{
 line 657
 ;657:		if ( trap_Cvar_VariableValue( "r_subdivisions" ) >= 20 )
-ADDRGP4 $444
+ADDRGP4 $446
 ARGP4
 ADDRLP4 52
 ADDRGP4 trap_Cvar_VariableValue
@@ -2824,7 +2824,7 @@ ASGNF4
 ADDRLP4 52
 INDIRF4
 CNSTF4 1101004800
-LTF4 $569
+LTF4 $571
 line 658
 ;658:		{
 line 659
@@ -2834,9 +2834,9 @@ CNSTI4 0
 ASGNI4
 line 660
 ;660:		}
-ADDRGP4 $568
+ADDRGP4 $570
 JUMPV
-LABELV $569
+LABELV $571
 line 662
 ;661:		else
 ;662:		{
@@ -2849,9 +2849,9 @@ line 664
 ;664:		}
 line 665
 ;665:	}
-ADDRGP4 $568
+ADDRGP4 $570
 JUMPV
-LABELV $567
+LABELV $569
 line 667
 ;666:	else
 ;667:	{
@@ -2862,11 +2862,11 @@ CNSTI4 2
 ASGNI4
 line 669
 ;669:	}
-LABELV $568
+LABELV $570
 line 671
 ;670:
 ;671:	switch ( ( int ) trap_Cvar_VariableValue( "r_colorbits" ) )
-ADDRGP4 $431
+ADDRGP4 $433
 ARGP4
 ADDRLP4 56
 ADDRGP4 trap_Cvar_VariableValue
@@ -2884,30 +2884,30 @@ ADDRLP4 52
 INDIRI4
 ADDRLP4 64
 INDIRI4
-EQI4 $583
+EQI4 $585
 ADDRLP4 52
 INDIRI4
 ADDRLP4 64
 INDIRI4
-GTI4 $590
-LABELV $589
+GTI4 $592
+LABELV $591
 ADDRLP4 52
 INDIRI4
 CNSTI4 0
-EQI4 $580
-ADDRGP4 $577
+EQI4 $582
+ADDRGP4 $579
 JUMPV
-LABELV $590
+LABELV $592
 ADDRLP4 52
 INDIRI4
 CNSTI4 32
-EQI4 $586
-ADDRGP4 $577
+EQI4 $588
+ADDRGP4 $579
 JUMPV
 line 672
 ;672:	{
-LABELV $577
-LABELV $580
+LABELV $579
+LABELV $582
 line 675
 ;673:	default:
 ;674:	case 0:
@@ -2917,9 +2917,9 @@ CNSTI4 0
 ASGNI4
 line 676
 ;676:		break;
-ADDRGP4 $578
+ADDRGP4 $580
 JUMPV
-LABELV $583
+LABELV $585
 line 678
 ;677:	case 16:
 ;678:		s_graphicsoptions.colordepth.curvalue = 1;
@@ -2928,9 +2928,9 @@ CNSTI4 1
 ASGNI4
 line 679
 ;679:		break;
-ADDRGP4 $578
+ADDRGP4 $580
 JUMPV
-LABELV $586
+LABELV $588
 line 681
 ;680:	case 32:
 ;681:		s_graphicsoptions.colordepth.curvalue = 2;
@@ -2939,7 +2939,7 @@ CNSTI4 2
 ASGNI4
 line 682
 ;682:		break;
-LABELV $578
+LABELV $580
 line 685
 ;683:	}
 ;684:
@@ -2947,7 +2947,7 @@ line 685
 ADDRGP4 s_graphicsoptions+1188+64
 INDIRI4
 CNSTI4 0
-NEI4 $591
+NEI4 $593
 line 686
 ;686:	{
 line 687
@@ -2957,13 +2957,13 @@ CNSTI4 0
 ASGNI4
 line 688
 ;688:	}
-LABELV $591
+LABELV $593
 line 689
 ;689:	if ( s_graphicsoptions.driver.curvalue == 1 )
 ADDRGP4 s_graphicsoptions+1016+64
 INDIRI4
 CNSTI4 1
-NEI4 $597
+NEI4 $599
 line 690
 ;690:	{
 line 691
@@ -2973,46 +2973,44 @@ CNSTI4 1
 ASGNI4
 line 692
 ;692:	}
-LABELV $597
+LABELV $599
 line 693
 ;693:}
-LABELV $515
+LABELV $517
 endproc GraphicsOptions_SetMenuItems 68 8
 data
 align 4
-LABELV $604
-address $605
-address $606
-byte 4 0
-align 4
-LABELV $607
-address $605
+LABELV $606
+address $607
 address $608
-address $609
 byte 4 0
 align 4
-LABELV $610
+LABELV $609
+address $607
+address $610
 address $611
-address $612
+byte 4 0
+align 4
+LABELV $612
 address $613
 address $614
 address $615
-byte 4 0
-align 4
-LABELV $616
+address $616
 address $617
-address $618
 byte 4 0
 align 4
-LABELV $619
-address $605
-address $608
-address $609
+LABELV $618
+address $619
+address $620
 byte 4 0
 align 4
-LABELV $620
-address $621
-address $622
+LABELV $621
+address $607
+address $610
+address $611
+byte 4 0
+align 4
+LABELV $622
 address $623
 address $624
 address $625
@@ -3023,22 +3021,24 @@ address $629
 address $630
 address $631
 address $632
-byte 4 0
-align 4
-LABELV $633
+address $633
 address $634
-address $635
 byte 4 0
 align 4
-LABELV $636
+LABELV $635
+address $636
 address $637
-address $638
-address $639
 byte 4 0
 align 4
-LABELV $640
+LABELV $638
+address $639
+address $640
 address $641
-address $642
+byte 4 0
+align 4
+LABELV $642
+address $643
+address $644
 byte 4 0
 export GraphicsOptions_MenuInit
 code
@@ -3183,7 +3183,7 @@ ASGNI4
 line 792
 ;792:	s_graphicsoptions.banner.string  	   = "SYSTEM SETUP";
 ADDRGP4 s_graphicsoptions+288+60
-ADDRGP4 $653
+ADDRGP4 $655
 ASGNP4
 line 793
 ;793:	s_graphicsoptions.banner.color         = color_white;
@@ -3204,7 +3204,7 @@ ASGNI4
 line 797
 ;797:	s_graphicsoptions.framel.generic.name  = GRAPHICSOPTIONS_FRAMEL;
 ADDRGP4 s_graphicsoptions+360+4
-ADDRGP4 $67
+ADDRGP4 $69
 ASGNP4
 line 798
 ;798:	s_graphicsoptions.framel.generic.flags = QMF_INACTIVE;
@@ -3240,7 +3240,7 @@ ASGNI4
 line 805
 ;805:	s_graphicsoptions.framer.generic.name  = GRAPHICSOPTIONS_FRAMER;
 ADDRGP4 s_graphicsoptions+448+4
-ADDRGP4 $68
+ADDRGP4 $70
 ASGNP4
 line 806
 ;806:	s_graphicsoptions.framer.generic.flags = QMF_INACTIVE;
@@ -3301,7 +3301,7 @@ ASGNI4
 line 818
 ;818:	s_graphicsoptions.graphics.string			= "GRAPHICS";
 ADDRGP4 s_graphicsoptions+536+60
-ADDRGP4 $697
+ADDRGP4 $699
 ASGNP4
 line 819
 ;819:	s_graphicsoptions.graphics.style			= UI_RIGHT;
@@ -3347,7 +3347,7 @@ ASGNI4
 line 828
 ;828:	s_graphicsoptions.display.string			= "DISPLAY";
 ADDRGP4 s_graphicsoptions+608+60
-ADDRGP4 $715
+ADDRGP4 $717
 ASGNP4
 line 829
 ;829:	s_graphicsoptions.display.style				= UI_RIGHT;
@@ -3393,7 +3393,7 @@ ASGNI4
 line 838
 ;838:	s_graphicsoptions.sound.string				= "SOUND";
 ADDRGP4 s_graphicsoptions+680+60
-ADDRGP4 $733
+ADDRGP4 $735
 ASGNP4
 line 839
 ;839:	s_graphicsoptions.sound.style				= UI_RIGHT;
@@ -3439,7 +3439,7 @@ ASGNI4
 line 848
 ;848:	s_graphicsoptions.network.string			= "NETWORK";
 ADDRGP4 s_graphicsoptions+752+60
-ADDRGP4 $751
+ADDRGP4 $753
 ASGNP4
 line 849
 ;849:	s_graphicsoptions.network.style				= UI_RIGHT;
@@ -3465,7 +3465,7 @@ ASGNI4
 line 854
 ;854:	s_graphicsoptions.list.generic.name     = "Graphics Settings:";
 ADDRGP4 s_graphicsoptions+824+4
-ADDRGP4 $759
+ADDRGP4 $761
 ASGNP4
 line 855
 ;855:	s_graphicsoptions.list.generic.flags    = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3496,7 +3496,7 @@ ASGNI4
 line 860
 ;860:	s_graphicsoptions.list.itemnames        = s_graphics_options_names;
 ADDRGP4 s_graphicsoptions+824+76
-ADDRGP4 $610
+ADDRGP4 $612
 ASGNP4
 line 861
 ;861:	y += 2 * ( BIGCHAR_HEIGHT + 2 );
@@ -3515,7 +3515,7 @@ ASGNI4
 line 864
 ;864:	s_graphicsoptions.driver.generic.name  = "GL Driver:";
 ADDRGP4 s_graphicsoptions+1016+4
-ADDRGP4 $775
+ADDRGP4 $777
 ASGNP4
 line 865
 ;865:	s_graphicsoptions.driver.generic.flags = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3536,24 +3536,24 @@ ASGNI4
 line 868
 ;868:	s_graphicsoptions.driver.itemnames     = s_driver_names;
 ADDRGP4 s_graphicsoptions+1016+76
-ADDRGP4 $604
+ADDRGP4 $606
 ASGNP4
 line 869
 ;869:	s_graphicsoptions.driver.curvalue      = (uis.glconfig.driverType == GLDRV_VOODOO);
 ADDRGP4 uis+56+11284
 INDIRI4
 CNSTI4 2
-NEI4 $789
+NEI4 $791
 ADDRLP4 4
 CNSTI4 1
 ASGNI4
-ADDRGP4 $790
+ADDRGP4 $792
 JUMPV
-LABELV $789
+LABELV $791
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-LABELV $790
+LABELV $792
 ADDRGP4 s_graphicsoptions+1016+64
 ADDRLP4 4
 INDIRI4
@@ -3576,7 +3576,7 @@ ASGNI4
 line 874
 ;874:	s_graphicsoptions.allow_extensions.generic.name	    = "GL Extensions:";
 ADDRGP4 s_graphicsoptions+1380+4
-ADDRGP4 $794
+ADDRGP4 $796
 ASGNP4
 line 875
 ;875:	s_graphicsoptions.allow_extensions.generic.flags	= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3597,7 +3597,7 @@ ASGNI4
 line 878
 ;878:	s_graphicsoptions.allow_extensions.itemnames        = enabled_names;
 ADDRGP4 s_graphicsoptions+1380+76
-ADDRGP4 $640
+ADDRGP4 $642
 ASGNP4
 line 879
 ;879:	y += BIGCHAR_HEIGHT+2;
@@ -3617,7 +3617,7 @@ ASGNI4
 line 883
 ;883:	s_graphicsoptions.mode.generic.name     = "Video Mode:";
 ADDRGP4 s_graphicsoptions+920+4
-ADDRGP4 $806
+ADDRGP4 $808
 ASGNP4
 line 884
 ;884:	s_graphicsoptions.mode.generic.flags    = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3638,7 +3638,7 @@ ASGNI4
 line 887
 ;887:	s_graphicsoptions.mode.itemnames        = resolutions;
 ADDRGP4 s_graphicsoptions+920+76
-ADDRGP4 $620
+ADDRGP4 $622
 ASGNP4
 line 888
 ;888:	s_graphicsoptions.mode.generic.callback = GraphicsOptions_Event;
@@ -3668,7 +3668,7 @@ ASGNI4
 line 894
 ;894:	s_graphicsoptions.colordepth.generic.name     = "Color Depth:";
 ADDRGP4 s_graphicsoptions+1572+4
-ADDRGP4 $822
+ADDRGP4 $824
 ASGNP4
 line 895
 ;895:	s_graphicsoptions.colordepth.generic.flags    = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3689,7 +3689,7 @@ ASGNI4
 line 898
 ;898:	s_graphicsoptions.colordepth.itemnames        = colordepth_names;
 ADDRGP4 s_graphicsoptions+1572+76
-ADDRGP4 $619
+ADDRGP4 $621
 ASGNP4
 line 899
 ;899:	y += BIGCHAR_HEIGHT+2;
@@ -3709,7 +3709,7 @@ ASGNI4
 line 903
 ;903:	s_graphicsoptions.fs.generic.name	  = "Fullscreen:";
 ADDRGP4 s_graphicsoptions+1188+4
-ADDRGP4 $834
+ADDRGP4 $836
 ASGNP4
 line 904
 ;904:	s_graphicsoptions.fs.generic.flags	  = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3730,7 +3730,7 @@ ASGNI4
 line 907
 ;907:	s_graphicsoptions.fs.itemnames	      = enabled_names;
 ADDRGP4 s_graphicsoptions+1188+76
-ADDRGP4 $640
+ADDRGP4 $642
 ASGNP4
 line 908
 ;908:	y += BIGCHAR_HEIGHT+2;
@@ -3750,7 +3750,7 @@ ASGNI4
 line 912
 ;912:	s_graphicsoptions.lighting.generic.name	 = "Lighting:";
 ADDRGP4 s_graphicsoptions+1284+4
-ADDRGP4 $846
+ADDRGP4 $848
 ASGNP4
 line 913
 ;913:	s_graphicsoptions.lighting.generic.flags = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3771,7 +3771,7 @@ ASGNI4
 line 916
 ;916:	s_graphicsoptions.lighting.itemnames     = lighting_names;
 ADDRGP4 s_graphicsoptions+1284+76
-ADDRGP4 $616
+ADDRGP4 $618
 ASGNP4
 line 917
 ;917:	y += BIGCHAR_HEIGHT+2;
@@ -3791,7 +3791,7 @@ ASGNI4
 line 921
 ;921:	s_graphicsoptions.geometry.generic.name	 = "Geometric Detail:";
 ADDRGP4 s_graphicsoptions+1668+4
-ADDRGP4 $858
+ADDRGP4 $860
 ASGNP4
 line 922
 ;922:	s_graphicsoptions.geometry.generic.flags = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3812,7 +3812,7 @@ ASGNI4
 line 925
 ;925:	s_graphicsoptions.geometry.itemnames     = quality_names;
 ADDRGP4 s_graphicsoptions+1668+76
-ADDRGP4 $636
+ADDRGP4 $638
 ASGNP4
 line 926
 ;926:	y += BIGCHAR_HEIGHT+2;
@@ -3832,7 +3832,7 @@ ASGNI4
 line 930
 ;930:	s_graphicsoptions.tq.generic.name	= "Texture Detail:";
 ADDRGP4 s_graphicsoptions+1112+4
-ADDRGP4 $870
+ADDRGP4 $872
 ASGNP4
 line 931
 ;931:	s_graphicsoptions.tq.generic.flags	= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3883,7 +3883,7 @@ ASGNI4
 line 941
 ;941:	s_graphicsoptions.texturebits.generic.name	= "Texture Quality:";
 ADDRGP4 s_graphicsoptions+1476+4
-ADDRGP4 $886
+ADDRGP4 $888
 ASGNP4
 line 942
 ;942:	s_graphicsoptions.texturebits.generic.flags	= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3904,7 +3904,7 @@ ASGNI4
 line 945
 ;945:	s_graphicsoptions.texturebits.itemnames     = tq_names;
 ADDRGP4 s_graphicsoptions+1476+76
-ADDRGP4 $607
+ADDRGP4 $609
 ASGNP4
 line 946
 ;946:	y += BIGCHAR_HEIGHT+2;
@@ -3924,7 +3924,7 @@ ASGNI4
 line 950
 ;950:	s_graphicsoptions.filter.generic.name	= "Texture Filter:";
 ADDRGP4 s_graphicsoptions+1764+4
-ADDRGP4 $898
+ADDRGP4 $900
 ASGNP4
 line 951
 ;951:	s_graphicsoptions.filter.generic.flags	= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -3945,7 +3945,7 @@ ASGNI4
 line 954
 ;954:	s_graphicsoptions.filter.itemnames      = filter_names;
 ADDRGP4 s_graphicsoptions+1764+76
-ADDRGP4 $633
+ADDRGP4 $635
 ASGNP4
 line 955
 ;955:	y += 2*BIGCHAR_HEIGHT;
@@ -3990,7 +3990,7 @@ ASGNI4
 line 963
 ;963:	s_graphicsoptions.driverinfo.string           = "Driver Info";
 ADDRGP4 s_graphicsoptions+1860+60
-ADDRGP4 $920
+ADDRGP4 $922
 ASGNP4
 line 964
 ;964:	s_graphicsoptions.driverinfo.style            = UI_CENTER|UI_SMALLFONT;
@@ -4019,7 +4019,7 @@ ASGNI4
 line 969
 ;969:	s_graphicsoptions.back.generic.name     = GRAPHICSOPTIONS_BACK0;
 ADDRGP4 s_graphicsoptions+2020+4
-ADDRGP4 $69
+ADDRGP4 $71
 ASGNP4
 line 970
 ;970:	s_graphicsoptions.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -4059,7 +4059,7 @@ ASGNI4
 line 977
 ;977:	s_graphicsoptions.back.focuspic         = GRAPHICSOPTIONS_BACK1;
 ADDRGP4 s_graphicsoptions+2020+60
-ADDRGP4 $70
+ADDRGP4 $72
 ASGNP4
 line 979
 ;978:
@@ -4070,7 +4070,7 @@ ASGNI4
 line 980
 ;980:	s_graphicsoptions.apply.generic.name     = GRAPHICSOPTIONS_ACCEPT0;
 ADDRGP4 s_graphicsoptions+1932+4
-ADDRGP4 $947
+ADDRGP4 $949
 ASGNP4
 line 981
 ;981:	s_graphicsoptions.apply.generic.flags    = QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_HIDDEN|QMF_INACTIVE;
@@ -4105,7 +4105,7 @@ ASGNI4
 line 987
 ;987:	s_graphicsoptions.apply.focuspic         = GRAPHICSOPTIONS_ACCEPT1;
 ADDRGP4 s_graphicsoptions+1932+60
-ADDRGP4 $962
+ADDRGP4 $964
 ASGNP4
 line 989
 ;988:
@@ -4317,11 +4317,11 @@ line 1017
 ADDRGP4 uis+56+11284
 INDIRI4
 CNSTI4 0
-NEI4 $984
+NEI4 $986
 ADDRGP4 uis+56+11288
 INDIRI4
 CNSTI4 1
-NEI4 $984
+NEI4 $986
 line 1019
 ;1018:		 uis.glconfig.hardwareType == GLHW_3DFX_2D3D )
 ;1019:	{
@@ -4340,10 +4340,10 @@ BORU4
 ASGNU4
 line 1021
 ;1021:	}
-LABELV $984
+LABELV $986
 line 1022
 ;1022:}
-LABELV $603
+LABELV $605
 endproc GraphicsOptions_MenuInit 12 12
 export GraphicsOptions_Cache
 proc GraphicsOptions_Cache 0 4
@@ -4358,49 +4358,49 @@ line 1030
 ;1030:void GraphicsOptions_Cache( void ) {
 line 1031
 ;1031:	trap_R_RegisterShaderNoMip( GRAPHICSOPTIONS_FRAMEL );
-ADDRGP4 $67
+ADDRGP4 $69
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 1032
 ;1032:	trap_R_RegisterShaderNoMip( GRAPHICSOPTIONS_FRAMER );
-ADDRGP4 $68
+ADDRGP4 $70
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 1033
 ;1033:	trap_R_RegisterShaderNoMip( GRAPHICSOPTIONS_BACK0 );
-ADDRGP4 $69
+ADDRGP4 $71
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 1034
 ;1034:	trap_R_RegisterShaderNoMip( GRAPHICSOPTIONS_BACK1 );
-ADDRGP4 $70
+ADDRGP4 $72
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 1035
 ;1035:	trap_R_RegisterShaderNoMip( GRAPHICSOPTIONS_ACCEPT0 );
-ADDRGP4 $947
+ADDRGP4 $949
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 1036
 ;1036:	trap_R_RegisterShaderNoMip( GRAPHICSOPTIONS_ACCEPT1 );
-ADDRGP4 $962
+ADDRGP4 $964
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 1037
 ;1037:}
-LABELV $992
+LABELV $994
 endproc GraphicsOptions_Cache 0 4
 export UI_GraphicsOptionsMenu
 proc UI_GraphicsOptionsMenu 0 8
@@ -4436,7 +4436,7 @@ CALLV
 pop
 line 1049
 ;1049:}
-LABELV $993
+LABELV $995
 endproc UI_GraphicsOptionsMenu 0 8
 bss
 align 4
@@ -4760,6 +4760,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -4924,7 +4925,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $962
+LABELV $964
 byte 1 109
 byte 1 101
 byte 1 110
@@ -4944,7 +4945,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $947
+LABELV $949
 byte 1 109
 byte 1 101
 byte 1 110
@@ -4964,7 +4965,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $920
+LABELV $922
 byte 1 68
 byte 1 114
 byte 1 105
@@ -4978,7 +4979,7 @@ byte 1 102
 byte 1 111
 byte 1 0
 align 1
-LABELV $898
+LABELV $900
 byte 1 84
 byte 1 101
 byte 1 120
@@ -4996,7 +4997,7 @@ byte 1 114
 byte 1 58
 byte 1 0
 align 1
-LABELV $886
+LABELV $888
 byte 1 84
 byte 1 101
 byte 1 120
@@ -5015,7 +5016,7 @@ byte 1 121
 byte 1 58
 byte 1 0
 align 1
-LABELV $870
+LABELV $872
 byte 1 84
 byte 1 101
 byte 1 120
@@ -5033,7 +5034,7 @@ byte 1 108
 byte 1 58
 byte 1 0
 align 1
-LABELV $858
+LABELV $860
 byte 1 71
 byte 1 101
 byte 1 111
@@ -5053,7 +5054,7 @@ byte 1 108
 byte 1 58
 byte 1 0
 align 1
-LABELV $846
+LABELV $848
 byte 1 76
 byte 1 105
 byte 1 103
@@ -5065,7 +5066,7 @@ byte 1 103
 byte 1 58
 byte 1 0
 align 1
-LABELV $834
+LABELV $836
 byte 1 70
 byte 1 117
 byte 1 108
@@ -5079,7 +5080,7 @@ byte 1 110
 byte 1 58
 byte 1 0
 align 1
-LABELV $822
+LABELV $824
 byte 1 67
 byte 1 111
 byte 1 108
@@ -5094,7 +5095,7 @@ byte 1 104
 byte 1 58
 byte 1 0
 align 1
-LABELV $806
+LABELV $808
 byte 1 86
 byte 1 105
 byte 1 100
@@ -5108,7 +5109,7 @@ byte 1 101
 byte 1 58
 byte 1 0
 align 1
-LABELV $794
+LABELV $796
 byte 1 71
 byte 1 76
 byte 1 32
@@ -5125,7 +5126,7 @@ byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $775
+LABELV $777
 byte 1 71
 byte 1 76
 byte 1 32
@@ -5138,7 +5139,7 @@ byte 1 114
 byte 1 58
 byte 1 0
 align 1
-LABELV $759
+LABELV $761
 byte 1 71
 byte 1 114
 byte 1 97
@@ -5159,7 +5160,7 @@ byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $751
+LABELV $753
 byte 1 78
 byte 1 69
 byte 1 84
@@ -5169,7 +5170,7 @@ byte 1 82
 byte 1 75
 byte 1 0
 align 1
-LABELV $733
+LABELV $735
 byte 1 83
 byte 1 79
 byte 1 85
@@ -5177,7 +5178,7 @@ byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $715
+LABELV $717
 byte 1 68
 byte 1 73
 byte 1 83
@@ -5187,7 +5188,7 @@ byte 1 65
 byte 1 89
 byte 1 0
 align 1
-LABELV $697
+LABELV $699
 byte 1 71
 byte 1 82
 byte 1 65
@@ -5198,7 +5199,7 @@ byte 1 67
 byte 1 83
 byte 1 0
 align 1
-LABELV $653
+LABELV $655
 byte 1 83
 byte 1 89
 byte 1 83
@@ -5213,25 +5214,25 @@ byte 1 85
 byte 1 80
 byte 1 0
 align 1
-LABELV $642
+LABELV $644
 byte 1 79
 byte 1 110
 byte 1 0
 align 1
-LABELV $641
+LABELV $643
 byte 1 79
 byte 1 102
 byte 1 102
 byte 1 0
 align 1
-LABELV $639
+LABELV $641
 byte 1 72
 byte 1 105
 byte 1 103
 byte 1 104
 byte 1 0
 align 1
-LABELV $638
+LABELV $640
 byte 1 77
 byte 1 101
 byte 1 100
@@ -5240,13 +5241,13 @@ byte 1 117
 byte 1 109
 byte 1 0
 align 1
-LABELV $637
+LABELV $639
 byte 1 76
 byte 1 111
 byte 1 119
 byte 1 0
 align 1
-LABELV $635
+LABELV $637
 byte 1 84
 byte 1 114
 byte 1 105
@@ -5258,7 +5259,7 @@ byte 1 97
 byte 1 114
 byte 1 0
 align 1
-LABELV $634
+LABELV $636
 byte 1 66
 byte 1 105
 byte 1 108
@@ -5269,7 +5270,7 @@ byte 1 97
 byte 1 114
 byte 1 0
 align 1
-LABELV $632
+LABELV $634
 byte 1 56
 byte 1 53
 byte 1 54
@@ -5291,7 +5292,7 @@ byte 1 101
 byte 1 110
 byte 1 0
 align 1
-LABELV $631
+LABELV $633
 byte 1 50
 byte 1 48
 byte 1 52
@@ -5303,7 +5304,7 @@ byte 1 51
 byte 1 54
 byte 1 0
 align 1
-LABELV $630
+LABELV $632
 byte 1 49
 byte 1 54
 byte 1 48
@@ -5315,7 +5316,7 @@ byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $629
+LABELV $631
 byte 1 49
 byte 1 50
 byte 1 56
@@ -5327,7 +5328,7 @@ byte 1 50
 byte 1 52
 byte 1 0
 align 1
-LABELV $628
+LABELV $630
 byte 1 49
 byte 1 49
 byte 1 53
@@ -5338,7 +5339,7 @@ byte 1 54
 byte 1 52
 byte 1 0
 align 1
-LABELV $627
+LABELV $629
 byte 1 49
 byte 1 48
 byte 1 50
@@ -5349,7 +5350,7 @@ byte 1 54
 byte 1 56
 byte 1 0
 align 1
-LABELV $626
+LABELV $628
 byte 1 57
 byte 1 54
 byte 1 48
@@ -5359,27 +5360,27 @@ byte 1 50
 byte 1 48
 byte 1 0
 align 1
+LABELV $627
+byte 1 56
+byte 1 48
+byte 1 48
+byte 1 120
+byte 1 54
+byte 1 48
+byte 1 48
+byte 1 0
+align 1
+LABELV $626
+byte 1 54
+byte 1 52
+byte 1 48
+byte 1 120
+byte 1 52
+byte 1 56
+byte 1 48
+byte 1 0
+align 1
 LABELV $625
-byte 1 56
-byte 1 48
-byte 1 48
-byte 1 120
-byte 1 54
-byte 1 48
-byte 1 48
-byte 1 0
-align 1
-LABELV $624
-byte 1 54
-byte 1 52
-byte 1 48
-byte 1 120
-byte 1 52
-byte 1 56
-byte 1 48
-byte 1 0
-align 1
-LABELV $623
 byte 1 53
 byte 1 49
 byte 1 50
@@ -5389,7 +5390,7 @@ byte 1 56
 byte 1 52
 byte 1 0
 align 1
-LABELV $622
+LABELV $624
 byte 1 52
 byte 1 48
 byte 1 48
@@ -5399,7 +5400,7 @@ byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $621
+LABELV $623
 byte 1 51
 byte 1 50
 byte 1 48
@@ -5409,7 +5410,7 @@ byte 1 52
 byte 1 48
 byte 1 0
 align 1
-LABELV $618
+LABELV $620
 byte 1 86
 byte 1 101
 byte 1 114
@@ -5418,7 +5419,7 @@ byte 1 101
 byte 1 120
 byte 1 0
 align 1
-LABELV $617
+LABELV $619
 byte 1 76
 byte 1 105
 byte 1 103
@@ -5429,7 +5430,7 @@ byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $615
+LABELV $617
 byte 1 67
 byte 1 117
 byte 1 115
@@ -5438,7 +5439,7 @@ byte 1 111
 byte 1 109
 byte 1 0
 align 1
-LABELV $614
+LABELV $616
 byte 1 70
 byte 1 97
 byte 1 115
@@ -5448,14 +5449,14 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $613
+LABELV $615
 byte 1 70
 byte 1 97
 byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $612
+LABELV $614
 byte 1 78
 byte 1 111
 byte 1 114
@@ -5464,7 +5465,7 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $611
+LABELV $613
 byte 1 72
 byte 1 105
 byte 1 103
@@ -5479,7 +5480,7 @@ byte 1 116
 byte 1 121
 byte 1 0
 align 1
-LABELV $609
+LABELV $611
 byte 1 51
 byte 1 50
 byte 1 32
@@ -5488,7 +5489,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $608
+LABELV $610
 byte 1 49
 byte 1 54
 byte 1 32
@@ -5497,7 +5498,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $606
+LABELV $608
 byte 1 86
 byte 1 111
 byte 1 111
@@ -5506,7 +5507,7 @@ byte 1 111
 byte 1 111
 byte 1 0
 align 1
-LABELV $605
+LABELV $607
 byte 1 68
 byte 1 101
 byte 1 102
@@ -5516,7 +5517,7 @@ byte 1 108
 byte 1 116
 byte 1 0
 align 1
-LABELV $456
+LABELV $458
 byte 1 118
 byte 1 105
 byte 1 100
@@ -5531,7 +5532,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $455
+LABELV $457
 byte 1 71
 byte 1 76
 byte 1 95
@@ -5558,7 +5559,7 @@ byte 1 83
 byte 1 84
 byte 1 0
 align 1
-LABELV $454
+LABELV $456
 byte 1 71
 byte 1 76
 byte 1 95
@@ -5584,7 +5585,7 @@ byte 1 65
 byte 1 82
 byte 1 0
 align 1
-LABELV $453
+LABELV $455
 byte 1 114
 byte 1 95
 byte 1 116
@@ -5600,7 +5601,7 @@ byte 1 100
 byte 1 101
 byte 1 0
 align 1
-LABELV $444
+LABELV $446
 byte 1 114
 byte 1 95
 byte 1 115
@@ -5617,7 +5618,7 @@ byte 1 110
 byte 1 115
 byte 1 0
 align 1
-LABELV $443
+LABELV $445
 byte 1 114
 byte 1 95
 byte 1 108
@@ -5629,7 +5630,7 @@ byte 1 97
 byte 1 115
 byte 1 0
 align 1
-LABELV $436
+LABELV $438
 byte 1 114
 byte 1 95
 byte 1 118
@@ -5645,7 +5646,7 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $433
+LABELV $435
 byte 1 114
 byte 1 95
 byte 1 115
@@ -5661,7 +5662,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $432
+LABELV $434
 byte 1 114
 byte 1 95
 byte 1 100
@@ -5675,7 +5676,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $431
+LABELV $433
 byte 1 114
 byte 1 95
 byte 1 99
@@ -5689,7 +5690,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $423
+LABELV $425
 byte 1 114
 byte 1 95
 byte 1 103
@@ -5702,7 +5703,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $420
+LABELV $422
 byte 1 114
 byte 1 95
 byte 1 102
@@ -5717,7 +5718,7 @@ byte 1 101
 byte 1 110
 byte 1 0
 align 1
-LABELV $417
+LABELV $419
 byte 1 114
 byte 1 95
 byte 1 109
@@ -5726,7 +5727,7 @@ byte 1 100
 byte 1 101
 byte 1 0
 align 1
-LABELV $414
+LABELV $416
 byte 1 114
 byte 1 95
 byte 1 97
@@ -5746,7 +5747,7 @@ byte 1 110
 byte 1 115
 byte 1 0
 align 1
-LABELV $411
+LABELV $413
 byte 1 114
 byte 1 95
 byte 1 112
@@ -5757,7 +5758,7 @@ byte 1 105
 byte 1 112
 byte 1 0
 align 1
-LABELV $408
+LABELV $410
 byte 1 114
 byte 1 95
 byte 1 116
@@ -5773,7 +5774,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $212
+LABELV $214
 byte 1 51
 byte 1 100
 byte 1 102
@@ -5783,7 +5784,7 @@ byte 1 103
 byte 1 108
 byte 1 0
 align 1
-LABELV $211
+LABELV $213
 byte 1 111
 byte 1 112
 byte 1 101
@@ -5794,7 +5795,7 @@ byte 1 51
 byte 1 50
 byte 1 0
 align 1
-LABELV $126
+LABELV $128
 byte 1 68
 byte 1 82
 byte 1 73
@@ -5808,7 +5809,7 @@ byte 1 70
 byte 1 79
 byte 1 0
 align 1
-LABELV $88
+LABELV $90
 byte 1 99
 byte 1 111
 byte 1 108
@@ -5853,7 +5854,7 @@ byte 1 115
 byte 1 41
 byte 1 0
 align 1
-LABELV $82
+LABELV $84
 byte 1 69
 byte 1 88
 byte 1 84
@@ -5866,7 +5867,7 @@ byte 1 78
 byte 1 83
 byte 1 0
 align 1
-LABELV $81
+LABELV $83
 byte 1 80
 byte 1 73
 byte 1 88
@@ -5880,7 +5881,7 @@ byte 1 65
 byte 1 84
 byte 1 0
 align 1
-LABELV $80
+LABELV $82
 byte 1 86
 byte 1 69
 byte 1 78
@@ -5889,7 +5890,7 @@ byte 1 79
 byte 1 82
 byte 1 0
 align 1
-LABELV $70
+LABELV $72
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5907,7 +5908,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $69
+LABELV $71
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5925,7 +5926,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $68
+LABELV $70
 byte 1 109
 byte 1 101
 byte 1 110
@@ -5945,7 +5946,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $67
+LABELV $69
 byte 1 109
 byte 1 101
 byte 1 110

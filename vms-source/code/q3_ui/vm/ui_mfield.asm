@@ -57,7 +57,7 @@ ADDRLP4 4
 INDIRI4
 ADDRLP4 0
 INDIRI4
-GTI4 $68
+GTI4 $70
 line 26
 ;26:		prestep = 0;
 ADDRLP4 8
@@ -65,9 +65,9 @@ CNSTI4 0
 ASGNI4
 line 27
 ;27:	} else {
-ADDRGP4 $69
+ADDRGP4 $71
 JUMPV
-LABELV $68
+LABELV $70
 line 28
 ;28:		if ( edit->scroll + drawLen > len ) {
 ADDRFP4 0
@@ -80,7 +80,7 @@ INDIRI4
 ADDI4
 ADDRLP4 4
 INDIRI4
-LEI4 $70
+LEI4 $72
 line 29
 ;29:			edit->scroll = len - drawLen;
 ADDRFP4 0
@@ -101,7 +101,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $72
+GEI4 $74
 line 31
 ;31:				edit->scroll = 0;
 ADDRFP4 0
@@ -112,10 +112,10 @@ CNSTI4 0
 ASGNI4
 line 32
 ;32:			}
-LABELV $72
+LABELV $74
 line 33
 ;33:		}
-LABELV $70
+LABELV $72
 line 34
 ;34:		prestep = edit->scroll;
 ADDRLP4 8
@@ -127,7 +127,7 @@ INDIRI4
 ASGNI4
 line 35
 ;35:	}
-LABELV $69
+LABELV $71
 line 37
 ;36:
 ;37:	if ( prestep + drawLen > len ) {
@@ -138,7 +138,7 @@ INDIRI4
 ADDI4
 ADDRLP4 4
 INDIRI4
-LEI4 $74
+LEI4 $76
 line 38
 ;38:		drawLen = len - prestep;
 ADDRLP4 0
@@ -150,7 +150,7 @@ SUBI4
 ASGNI4
 line 39
 ;39:	}
-LABELV $74
+LABELV $76
 line 42
 ;40:
 ;41:	// extract <drawLen> characters from the field at <prestep>
@@ -158,17 +158,17 @@ line 42
 ADDRLP4 0
 INDIRI4
 CNSTI4 1024
-LTI4 $76
+LTI4 $78
 line 43
 ;43:		trap_Error( "drawLen >= MAX_STRING_CHARS" );
-ADDRGP4 $78
+ADDRGP4 $80
 ARGP4
 ADDRGP4 trap_Error
 CALLV
 pop
 line 44
 ;44:	}
-LABELV $76
+LABELV $78
 line 45
 ;45:	memcpy( str, edit->buffer + prestep, drawLen );
 ADDRLP4 12
@@ -224,12 +224,12 @@ INDIRI4
 CNSTI4 16384
 BANDI4
 CNSTI4 0
-NEI4 $79
+NEI4 $81
 line 52
 ;52:		return;
-ADDRGP4 $67
+ADDRGP4 $69
 JUMPV
-LABELV $79
+LABELV $81
 line 55
 ;53:	}
 ;54:
@@ -241,7 +241,7 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-EQI4 $81
+EQI4 $83
 line 56
 ;56:		cursorChar = 11;
 ADDRLP4 1040
@@ -249,9 +249,9 @@ CNSTI4 11
 ASGNI4
 line 57
 ;57:	} else {
-ADDRGP4 $82
+ADDRGP4 $84
 JUMPV
-LABELV $81
+LABELV $83
 line 58
 ;58:		cursorChar = 10;
 ADDRLP4 1040
@@ -259,7 +259,7 @@ CNSTI4 10
 ASGNI4
 line 59
 ;59:	}
-LABELV $82
+LABELV $84
 line 61
 ;60:
 ;61:	style &= ~UI_PULSE;
@@ -285,7 +285,7 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $83
+EQI4 $85
 line 65
 ;65:	{
 line 66
@@ -295,9 +295,9 @@ CNSTI4 8
 ASGNI4
 line 67
 ;67:	}
-ADDRGP4 $84
+ADDRGP4 $86
 JUMPV
-LABELV $83
+LABELV $85
 line 68
 ;68:	else if (style & UI_GIANTFONT)
 ADDRFP4 12
@@ -305,7 +305,7 @@ INDIRI4
 CNSTI4 64
 BANDI4
 CNSTI4 0
-EQI4 $85
+EQI4 $87
 line 69
 ;69:	{
 line 70
@@ -315,9 +315,9 @@ CNSTI4 32
 ASGNI4
 line 71
 ;71:	}
-ADDRGP4 $86
+ADDRGP4 $88
 JUMPV
-LABELV $85
+LABELV $87
 line 73
 ;72:	else
 ;73:	{
@@ -328,8 +328,8 @@ CNSTI4 16
 ASGNI4
 line 75
 ;75:	}
+LABELV $88
 LABELV $86
-LABELV $84
 line 77
 ;76:
 ;77:	if (style & UI_CENTER)
@@ -338,7 +338,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $87
+EQI4 $89
 line 78
 ;78:	{
 line 79
@@ -369,9 +369,9 @@ SUBI4
 ASGNI4
 line 81
 ;81:	}
-ADDRGP4 $88
+ADDRGP4 $90
 JUMPV
-LABELV $87
+LABELV $89
 line 82
 ;82:	else if (style & UI_RIGHT)
 ADDRFP4 12
@@ -379,7 +379,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $89
+EQI4 $91
 line 83
 ;83:	{
 line 84
@@ -408,8 +408,8 @@ SUBI4
 ASGNI4
 line 86
 ;86:	}
-LABELV $89
-LABELV $88
+LABELV $91
+LABELV $90
 line 88
 ;87:	
 ;88:	UI_DrawChar( x + ( edit->cursor - prestep ) * charw, y, cursorChar, style & ~(UI_CENTER|UI_RIGHT), color );
@@ -445,7 +445,7 @@ CALLV
 pop
 line 89
 ;89:}
-LABELV $67
+LABELV $69
 endproc MField_Draw 1056 20
 export MField_Paste
 proc MField_Paste 76 8
@@ -488,9 +488,9 @@ line 104
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $95
+ADDRGP4 $97
 JUMPV
-LABELV $92
+LABELV $94
 line 105
 ;105:		MField_CharEvent( edit, pasteBuffer[i] );
 ADDRFP4 0
@@ -508,7 +508,7 @@ CALLV
 pop
 line 106
 ;106:	}
-LABELV $93
+LABELV $95
 line 104
 ADDRLP4 0
 ADDRLP4 0
@@ -516,15 +516,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $95
+LABELV $97
 ADDRLP4 0
 INDIRI4
 ADDRLP4 68
 INDIRI4
-LTI4 $92
+LTI4 $94
 line 107
 ;107:}
-LABELV $91
+LABELV $93
 endproc MField_Paste 76 8
 export MField_KeyDownEvent
 proc MField_KeyDownEvent 64 12
@@ -553,12 +553,12 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 139
-EQI4 $99
+EQI4 $101
 ADDRLP4 4
 INDIRI4
 CNSTI4 170
-NEI4 $97
-LABELV $99
+NEI4 $99
+LABELV $101
 CNSTI4 138
 ARGI4
 ADDRLP4 8
@@ -568,7 +568,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $97
+EQI4 $99
 line 124
 ;124:		MField_Paste( edit );
 ADDRFP4 0
@@ -579,9 +579,9 @@ CALLV
 pop
 line 125
 ;125:		return;
-ADDRGP4 $96
+ADDRGP4 $98
 JUMPV
-LABELV $97
+LABELV $99
 line 128
 ;126:	}
 ;127:
@@ -609,12 +609,12 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 140
-EQI4 $102
+EQI4 $104
 ADDRLP4 16
 INDIRI4
 CNSTI4 171
-NEI4 $100
-LABELV $102
+NEI4 $102
+LABELV $104
 line 131
 ;131:		if ( edit->cursor < len ) {
 ADDRFP4 0
@@ -622,7 +622,7 @@ INDIRP4
 INDIRI4
 ADDRLP4 0
 INDIRI4
-GEI4 $96
+GEI4 $98
 line 132
 ;132:			memmove( edit->buffer + edit->cursor, 
 ADDRLP4 20
@@ -665,9 +665,9 @@ line 134
 ;134:		}
 line 135
 ;135:		return;
-ADDRGP4 $96
+ADDRGP4 $98
 JUMPV
-LABELV $100
+LABELV $102
 line 138
 ;136:	}
 ;137:
@@ -679,12 +679,12 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 135
-EQI4 $107
+EQI4 $109
 ADDRLP4 20
 INDIRI4
 CNSTI4 165
-NEI4 $105
-LABELV $107
+NEI4 $107
+LABELV $109
 line 139
 ;139:	{
 line 140
@@ -694,7 +694,7 @@ INDIRP4
 INDIRI4
 ADDRLP4 0
 INDIRI4
-GEI4 $108
+GEI4 $110
 line 141
 ;141:			edit->cursor++;
 ADDRLP4 24
@@ -711,7 +711,7 @@ ADDI4
 ASGNI4
 line 142
 ;142:		}
-LABELV $108
+LABELV $110
 line 143
 ;143:		if ( edit->cursor >= edit->scroll + edit->widthInChars && edit->cursor <= len )
 ADDRLP4 24
@@ -736,12 +736,12 @@ CNSTI4 8
 ADDP4
 INDIRI4
 ADDI4
-LTI4 $96
+LTI4 $98
 ADDRLP4 28
 INDIRI4
 ADDRLP4 0
 INDIRI4
-GTI4 $96
+GTI4 $98
 line 144
 ;144:		{
 line 145
@@ -764,9 +764,9 @@ line 146
 ;146:		}
 line 147
 ;147:		return;
-ADDRGP4 $96
+ADDRGP4 $98
 JUMPV
-LABELV $105
+LABELV $107
 line 150
 ;148:	}
 ;149:
@@ -778,12 +778,12 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 134
-EQI4 $114
+EQI4 $116
 ADDRLP4 24
 INDIRI4
 CNSTI4 163
-NEI4 $112
-LABELV $114
+NEI4 $114
+LABELV $116
 line 151
 ;151:	{
 line 152
@@ -792,7 +792,7 @@ ADDRFP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-LEI4 $115
+LEI4 $117
 line 153
 ;153:			edit->cursor--;
 ADDRLP4 28
@@ -809,7 +809,7 @@ SUBI4
 ASGNI4
 line 154
 ;154:		}
-LABELV $115
+LABELV $117
 line 155
 ;155:		if ( edit->cursor < edit->scroll )
 ADDRLP4 28
@@ -824,7 +824,7 @@ INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
-GEI4 $96
+GEI4 $98
 line 156
 ;156:		{
 line 157
@@ -847,9 +847,9 @@ line 158
 ;158:		}
 line 159
 ;159:		return;
-ADDRGP4 $96
+ADDRGP4 $98
 JUMPV
-LABELV $112
+LABELV $114
 line 162
 ;160:	}
 ;161:
@@ -861,11 +861,11 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 143
-EQI4 $122
+EQI4 $124
 ADDRLP4 28
 INDIRI4
 CNSTI4 160
-EQI4 $122
+EQI4 $124
 ADDRLP4 28
 INDIRI4
 ARGI4
@@ -876,7 +876,7 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 97
-NEI4 $119
+NEI4 $121
 CNSTI4 137
 ARGI4
 ADDRLP4 36
@@ -886,8 +886,8 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $119
-LABELV $122
+EQI4 $121
+LABELV $124
 line 163
 ;163:		edit->cursor = 0;
 ADDRFP4 0
@@ -904,9 +904,9 @@ CNSTI4 0
 ASGNI4
 line 165
 ;165:		return;
-ADDRGP4 $96
+ADDRGP4 $98
 JUMPV
-LABELV $119
+LABELV $121
 line 168
 ;166:	}
 ;167:
@@ -918,11 +918,11 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 144
-EQI4 $126
+EQI4 $128
 ADDRLP4 40
 INDIRI4
 CNSTI4 166
-EQI4 $126
+EQI4 $128
 ADDRLP4 40
 INDIRI4
 ARGI4
@@ -933,7 +933,7 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 101
-NEI4 $123
+NEI4 $125
 CNSTI4 137
 ARGI4
 ADDRLP4 48
@@ -943,8 +943,8 @@ ASGNI4
 ADDRLP4 48
 INDIRI4
 CNSTI4 0
-EQI4 $123
-LABELV $126
+EQI4 $125
+LABELV $128
 line 169
 ;169:		edit->cursor = len;
 ADDRFP4 0
@@ -981,7 +981,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $96
+GEI4 $98
 line 172
 ;172:			edit->scroll = 0;
 ADDRFP4 0
@@ -992,9 +992,9 @@ CNSTI4 0
 ASGNI4
 line 173
 ;173:		return;
-ADDRGP4 $96
+ADDRGP4 $98
 JUMPV
-LABELV $123
+LABELV $125
 line 176
 ;174:	}
 ;175:
@@ -1006,12 +1006,12 @@ ASGNI4
 ADDRLP4 52
 INDIRI4
 CNSTI4 139
-EQI4 $131
+EQI4 $133
 ADDRLP4 52
 INDIRI4
 CNSTI4 170
-NEI4 $129
-LABELV $131
+NEI4 $131
+LABELV $133
 line 177
 ;177:		trap_Key_SetOverstrikeMode( !trap_Key_GetOverstrikeMode() );
 ADDRLP4 60
@@ -1021,17 +1021,17 @@ ASGNI4
 ADDRLP4 60
 INDIRI4
 CNSTI4 0
-NEI4 $133
+NEI4 $135
 ADDRLP4 56
 CNSTI4 1
 ASGNI4
-ADDRGP4 $134
+ADDRGP4 $136
 JUMPV
-LABELV $133
+LABELV $135
 ADDRLP4 56
 CNSTI4 0
 ASGNI4
-LABELV $134
+LABELV $136
 ADDRLP4 56
 INDIRI4
 ARGI4
@@ -1040,11 +1040,11 @@ CALLV
 pop
 line 178
 ;178:		return;
-LABELV $129
+LABELV $131
 line 180
 ;179:	}
 ;180:}
-LABELV $96
+LABELV $98
 endproc MField_KeyDownEvent 64 12
 export MField_CharEvent
 proc MField_CharEvent 36 12
@@ -1063,7 +1063,7 @@ line 190
 ADDRFP4 4
 INDIRI4
 CNSTI4 22
-NEI4 $136
+NEI4 $138
 line 191
 ;191:		MField_Paste( edit );
 ADDRFP4 0
@@ -1074,9 +1074,9 @@ CALLV
 pop
 line 192
 ;192:		return;
-ADDRGP4 $135
+ADDRGP4 $137
 JUMPV
-LABELV $136
+LABELV $138
 line 195
 ;193:	}
 ;194:
@@ -1084,7 +1084,7 @@ line 195
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-NEI4 $138
+NEI4 $140
 line 196
 ;196:		MField_Clear( edit );
 ADDRFP4 0
@@ -1095,9 +1095,9 @@ CALLV
 pop
 line 197
 ;197:		return;
-ADDRGP4 $135
+ADDRGP4 $137
 JUMPV
-LABELV $138
+LABELV $140
 line 200
 ;198:	}
 ;199:
@@ -1121,14 +1121,14 @@ line 202
 ADDRFP4 4
 INDIRI4
 CNSTI4 8
-NEI4 $140
+NEI4 $142
 line 203
 ;203:		if ( edit->cursor > 0 ) {
 ADDRFP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-LEI4 $135
+LEI4 $137
 line 204
 ;204:			memmove( edit->buffer + edit->cursor - 1, 
 ADDRLP4 8
@@ -1197,7 +1197,7 @@ INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
-GEI4 $135
+GEI4 $137
 line 208
 ;208:			{
 line 209
@@ -1222,9 +1222,9 @@ line 211
 ;211:		}
 line 212
 ;212:		return;
-ADDRGP4 $135
+ADDRGP4 $137
 JUMPV
-LABELV $140
+LABELV $142
 line 215
 ;213:	}
 ;214:
@@ -1232,7 +1232,7 @@ line 215
 ADDRFP4 4
 INDIRI4
 CNSTI4 1
-NEI4 $146
+NEI4 $148
 line 216
 ;216:		edit->cursor = 0;
 ADDRFP4 0
@@ -1249,9 +1249,9 @@ CNSTI4 0
 ASGNI4
 line 218
 ;218:		return;
-ADDRGP4 $135
+ADDRGP4 $137
 JUMPV
-LABELV $146
+LABELV $148
 line 221
 ;219:	}
 ;220:
@@ -1259,7 +1259,7 @@ line 221
 ADDRFP4 4
 INDIRI4
 CNSTI4 5
-NEI4 $148
+NEI4 $150
 line 222
 ;222:		edit->cursor = len;
 ADDRFP4 0
@@ -1297,7 +1297,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $135
+GEI4 $137
 line 225
 ;225:			edit->scroll = 0;
 ADDRFP4 0
@@ -1308,9 +1308,9 @@ CNSTI4 0
 ASGNI4
 line 226
 ;226:		return;
-ADDRGP4 $135
+ADDRGP4 $137
 JUMPV
-LABELV $148
+LABELV $150
 line 232
 ;227:	}
 ;228:
@@ -1321,12 +1321,12 @@ line 232
 ADDRFP4 4
 INDIRI4
 CNSTI4 32
-GEI4 $152
+GEI4 $154
 line 233
 ;233:		return;
-ADDRGP4 $135
+ADDRGP4 $137
 JUMPV
-LABELV $152
+LABELV $154
 line 236
 ;234:	}
 ;235:
@@ -1338,7 +1338,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $154
+NEI4 $156
 line 237
 ;237:		if ((edit->cursor == MAX_EDIT_LINE - 1) || (edit->maxchars && edit->cursor >= edit->maxchars))
 ADDRLP4 12
@@ -1353,7 +1353,7 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 255
-EQI4 $158
+EQI4 $160
 ADDRLP4 20
 ADDRLP4 12
 INDIRP4
@@ -1364,27 +1364,27 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $155
+EQI4 $157
 ADDRLP4 16
 INDIRI4
 ADDRLP4 20
 INDIRI4
-LTI4 $155
-LABELV $158
+LTI4 $157
+LABELV $160
 line 238
 ;238:			return;
-ADDRGP4 $135
+ADDRGP4 $137
 JUMPV
 line 239
 ;239:	} else {
-LABELV $154
+LABELV $156
 line 241
 ;240:		// insert mode
 ;241:		if (( len == MAX_EDIT_LINE - 1 ) || (edit->maxchars && len >= edit->maxchars))
 ADDRLP4 0
 INDIRI4
 CNSTI4 255
-EQI4 $161
+EQI4 $163
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -1395,18 +1395,18 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $159
+EQI4 $161
 ADDRLP4 0
 INDIRI4
 ADDRLP4 16
 INDIRI4
-LTI4 $159
-LABELV $161
+LTI4 $161
+LABELV $163
 line 242
 ;242:			return;
-ADDRGP4 $135
+ADDRGP4 $137
 JUMPV
-LABELV $159
+LABELV $161
 line 243
 ;243:		memmove( edit->buffer + edit->cursor + 1, edit->buffer + edit->cursor, len + 1 - edit->cursor );
 ADDRLP4 20
@@ -1453,7 +1453,7 @@ CALLP4
 pop
 line 244
 ;244:	}
-LABELV $155
+LABELV $157
 line 246
 ;245:
 ;246:	edit->buffer[edit->cursor] = ch;
@@ -1489,7 +1489,7 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $164
+EQI4 $166
 ADDRLP4 16
 INDIRP4
 INDIRI4
@@ -1497,8 +1497,8 @@ ADDRLP4 20
 INDIRI4
 CNSTI4 1
 SUBI4
-GEI4 $162
-LABELV $164
+GEI4 $164
+LABELV $166
 line 248
 ;248:		edit->cursor++;
 ADDRLP4 24
@@ -1513,7 +1513,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $162
+LABELV $164
 line 250
 ;249:
 ;250:	if ( edit->cursor >= edit->widthInChars )
@@ -1529,7 +1529,7 @@ INDIRP4
 CNSTI4 8
 ADDP4
 INDIRI4
-LTI4 $165
+LTI4 $167
 line 251
 ;251:	{
 line 252
@@ -1550,7 +1550,7 @@ ADDI4
 ASGNI4
 line 253
 ;253:	}
-LABELV $165
+LABELV $167
 line 255
 ;254:
 ;255:	if ( edit->cursor == len + 1) {
@@ -1561,7 +1561,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
-NEI4 $167
+NEI4 $169
 line 256
 ;256:		edit->buffer[edit->cursor] = 0;
 ADDRLP4 32
@@ -1580,10 +1580,10 @@ CNSTI1 0
 ASGNI1
 line 257
 ;257:	}
-LABELV $167
+LABELV $169
 line 258
 ;258:}
-LABELV $135
+LABELV $137
 endproc MField_CharEvent 36 12
 export MField_Clear
 proc MField_Clear 0 0
@@ -1619,7 +1619,7 @@ CNSTI4 0
 ASGNI4
 line 269
 ;269:}
-LABELV $169
+LABELV $171
 endproc MField_Clear 0 0
 export MenuField_Init
 proc MenuField_Init 32 4
@@ -1656,7 +1656,7 @@ INDIRU4
 CNSTU4 2
 BANDU4
 CNSTU4 0
-EQU4 $171
+EQU4 $173
 line 284
 ;284:	{
 line 285
@@ -1671,9 +1671,9 @@ CNSTI4 16
 ASGNI4
 line 287
 ;287:	}
-ADDRGP4 $172
+ADDRGP4 $174
 JUMPV
-LABELV $171
+LABELV $173
 line 289
 ;288:	else
 ;289:	{
@@ -1689,7 +1689,7 @@ CNSTI4 16
 ASGNI4
 line 292
 ;292:	}	
-LABELV $172
+LABELV $174
 line 294
 ;293:
 ;294:	if (m->generic.name) {
@@ -1700,7 +1700,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $173
+EQU4 $175
 line 295
 ;295:		l = (strlen( m->generic.name )+1) * w;		
 ADDRFP4 0
@@ -1724,9 +1724,9 @@ MULI4
 ASGNI4
 line 296
 ;296:	}
-ADDRGP4 $174
+ADDRGP4 $176
 JUMPV
-LABELV $173
+LABELV $175
 line 297
 ;297:	else {
 line 298
@@ -1736,7 +1736,7 @@ CNSTI4 0
 ASGNI4
 line 299
 ;299:	}
-LABELV $174
+LABELV $176
 line 301
 ;300:
 ;301:	m->generic.left   = m->generic.x - l;
@@ -1822,7 +1822,7 @@ ADDI4
 ASGNI4
 line 305
 ;305:}
-LABELV $170
+LABELV $172
 endproc MenuField_Init 32 4
 export MenuField_Draw
 proc MenuField_Draw 52 20
@@ -1872,7 +1872,7 @@ INDIRU4
 CNSTU4 2
 BANDU4
 CNSTU4 0
-EQU4 $176
+EQU4 $178
 line 326
 ;326:	{
 line 327
@@ -1892,9 +1892,9 @@ CNSTI4 16
 ASGNI4
 line 330
 ;330:	}
-ADDRGP4 $177
+ADDRGP4 $179
 JUMPV
-LABELV $176
+LABELV $178
 line 332
 ;331:	else
 ;332:	{
@@ -1915,7 +1915,7 @@ CNSTI4 32
 ASGNI4
 line 336
 ;336:	}	
-LABELV $177
+LABELV $179
 line 338
 ;337:
 ;338:	if (Menu_ItemAtCursor( f->generic.parent ) == f) {
@@ -1939,7 +1939,7 @@ CVPU4 4
 ADDRLP4 32
 INDIRP4
 CVPU4 4
-NEU4 $178
+NEU4 $180
 line 339
 ;339:		focus = qtrue;
 ADDRLP4 20
@@ -1955,9 +1955,9 @@ BORI4
 ASGNI4
 line 341
 ;341:	}
-ADDRGP4 $179
+ADDRGP4 $181
 JUMPV
-LABELV $178
+LABELV $180
 line 342
 ;342:	else {
 line 343
@@ -1967,7 +1967,7 @@ CNSTI4 0
 ASGNI4
 line 344
 ;344:	}
-LABELV $179
+LABELV $181
 line 346
 ;345:
 ;346:	if (f->generic.flags & QMF_GRAYED)
@@ -1979,44 +1979,44 @@ INDIRU4
 CNSTU4 8192
 BANDU4
 CNSTU4 0
-EQU4 $180
+EQU4 $182
 line 347
 ;347:		color = text_color_disabled;
 ADDRLP4 12
 ADDRGP4 text_color_disabled
 ASGNP4
-ADDRGP4 $181
+ADDRGP4 $183
 JUMPV
-LABELV $180
+LABELV $182
 line 348
 ;348:	else if (focus)
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $182
+EQI4 $184
 line 349
 ;349:		color = text_color_highlight;
 ADDRLP4 12
 ADDRGP4 text_color_highlight
 ASGNP4
-ADDRGP4 $183
+ADDRGP4 $185
 JUMPV
-LABELV $182
+LABELV $184
 line 351
 ;350:	else
 ;351:		color = text_color_normal;
 ADDRLP4 12
 ADDRGP4 text_color_normal
 ASGNP4
+LABELV $185
 LABELV $183
-LABELV $181
 line 353
 ;352:
 ;353:	if ( focus )
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $184
+EQI4 $186
 line 354
 ;354:	{
 line 356
@@ -2105,7 +2105,7 @@ CALLV
 pop
 line 358
 ;358:	}
-LABELV $184
+LABELV $186
 line 360
 ;359:
 ;360:	if ( f->generic.name ) {
@@ -2116,7 +2116,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $186
+EQU4 $188
 line 361
 ;361:		UI_DrawString( x - w, y, f->generic.name, style|UI_RIGHT, color );
 ADDRLP4 4
@@ -2147,7 +2147,7 @@ CALLV
 pop
 line 362
 ;362:	}
-LABELV $186
+LABELV $188
 line 364
 ;363:
 ;364:	MField_Draw( &f->field, x + w, y, style, color );
@@ -2176,7 +2176,7 @@ CALLV
 pop
 line 365
 ;365:}
-LABELV $175
+LABELV $177
 endproc MenuField_Draw 52 20
 export MenuField_Key
 proc MenuField_Key 44 8
@@ -2204,7 +2204,7 @@ line 378
 ADDRLP4 0
 INDIRI4
 CNSTI4 132
-EQI4 $190
+EQI4 $192
 ADDRLP4 8
 CNSTI4 133
 ASGNI4
@@ -2212,13 +2212,13 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 8
 INDIRI4
-EQI4 $190
+EQI4 $192
 ADDRLP4 0
 INDIRI4
 ADDRLP4 8
 INDIRI4
-GTI4 $202
-LABELV $201
+GTI4 $204
+LABELV $203
 ADDRLP4 16
 CNSTI4 9
 ASGNI4
@@ -2226,24 +2226,24 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 16
 INDIRI4
-EQI4 $190
+EQI4 $192
 ADDRLP4 0
 INDIRI4
 ADDRLP4 16
 INDIRI4
-LTI4 $189
-LABELV $203
+LTI4 $191
+LABELV $205
 ADDRLP4 0
 INDIRI4
 CNSTI4 13
-EQI4 $191
-ADDRGP4 $189
+EQI4 $193
+ADDRGP4 $191
 JUMPV
-LABELV $202
+LABELV $204
 ADDRLP4 0
 INDIRI4
 CNSTI4 167
-EQI4 $190
+EQI4 $192
 ADDRLP4 24
 CNSTI4 169
 ASGNI4
@@ -2251,47 +2251,47 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 24
 INDIRI4
-EQI4 $191
+EQI4 $193
 ADDRLP4 0
 INDIRI4
 ADDRLP4 24
 INDIRI4
-GTI4 $205
-LABELV $204
+GTI4 $207
+LABELV $206
 ADDRLP4 0
 INDIRI4
 CNSTI4 161
-EQI4 $190
-ADDRGP4 $189
+EQI4 $192
+ADDRGP4 $191
 JUMPV
-LABELV $205
+LABELV $207
 ADDRLP4 0
 INDIRI4
 CNSTI4 185
-LTI4 $189
+LTI4 $191
 ADDRLP4 0
 INDIRI4
 CNSTI4 188
-GTI4 $189
+GTI4 $191
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $206-740
+ADDRGP4 $208-740
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $206
-address $191
-address $191
-address $191
-address $191
+LABELV $208
+address $193
+address $193
+address $193
+address $193
 code
 line 379
 ;379:	{
-LABELV $191
+LABELV $193
 line 387
 ;380:		case K_KP_ENTER:
 ;381:		case K_ENTER:
@@ -2307,7 +2307,7 @@ CNSTI4 9
 ASGNI4
 line 388
 ;388:			break;
-ADDRGP4 $190
+ADDRGP4 $192
 JUMPV
 line 395
 ;389:
@@ -2317,7 +2317,7 @@ line 395
 ;393:		case K_KP_UPARROW:
 ;394:		case K_UPARROW:
 ;395:			break;
-LABELV $189
+LABELV $191
 line 398
 ;396:
 ;397:		default:
@@ -2327,7 +2327,7 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $193
+EQI4 $195
 line 399
 ;399:			{
 line 400
@@ -2349,7 +2349,7 @@ INDIRU4
 CNSTU4 524288
 BANDU4
 CNSTU4 0
-EQU4 $195
+EQU4 $197
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -2360,7 +2360,7 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-EQI4 $195
+EQI4 $197
 line 403
 ;403:					keycode -= 'a' - 'A';
 ADDRLP4 0
@@ -2369,9 +2369,9 @@ INDIRI4
 CNSTI4 32
 SUBI4
 ASGNI4
-ADDRGP4 $196
+ADDRGP4 $198
 JUMPV
-LABELV $195
+LABELV $197
 line 404
 ;404:				else if ((m->generic.flags & QMF_LOWERCASE) && Q_isupper( keycode ))
 ADDRFP4 0
@@ -2382,7 +2382,7 @@ INDIRU4
 CNSTU4 262144
 BANDU4
 CNSTU4 0
-EQU4 $197
+EQU4 $199
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -2393,7 +2393,7 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $197
+EQI4 $199
 line 405
 ;405:					keycode -= 'A' - 'a';
 ADDRLP4 0
@@ -2402,9 +2402,9 @@ INDIRI4
 CNSTI4 -32
 SUBI4
 ASGNI4
-ADDRGP4 $198
+ADDRGP4 $200
 JUMPV
-LABELV $197
+LABELV $199
 line 406
 ;406:				else if ((m->generic.flags & QMF_NUMBERSONLY) && Q_isalpha( keycode ))
 ADDRFP4 0
@@ -2415,7 +2415,7 @@ INDIRU4
 CNSTU4 32
 BANDU4
 CNSTU4 0
-EQU4 $199
+EQU4 $201
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -2426,17 +2426,17 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
-EQI4 $199
+EQI4 $201
 line 407
 ;407:					return (menu_buzz_sound);
 ADDRGP4 menu_buzz_sound
 INDIRI4
 RETI4
-ADDRGP4 $188
+ADDRGP4 $190
 JUMPV
-LABELV $199
+LABELV $201
+LABELV $200
 LABELV $198
-LABELV $196
 line 409
 ;408:
 ;409:				MField_CharEvent( &m->field, keycode);
@@ -2453,9 +2453,9 @@ CALLV
 pop
 line 410
 ;410:			}
-ADDRGP4 $190
+ADDRGP4 $192
 JUMPV
-LABELV $193
+LABELV $195
 line 412
 ;411:			else
 ;412:				MField_KeyDownEvent( &m->field, keycode );
@@ -2472,14 +2472,14 @@ CALLV
 pop
 line 413
 ;413:			break;
-LABELV $190
+LABELV $192
 line 416
 ;414:	}
 ;415:
 ;416:	return (0);
 CNSTI4 0
 RETI4
-LABELV $188
+LABELV $190
 endproc MenuField_Key 44 8
 import UI_RankStatusMenu
 import RankStatus_Cache
@@ -2789,6 +2789,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -2953,7 +2954,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $78
+LABELV $80
 byte 1 100
 byte 1 114
 byte 1 97

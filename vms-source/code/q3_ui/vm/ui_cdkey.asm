@@ -53,12 +53,12 @@ line 47
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $69
+EQI4 $71
 line 48
 ;48:		return;
-ADDRGP4 $68
+ADDRGP4 $70
 JUMPV
-LABELV $69
+LABELV $71
 line 51
 ;49:	}
 ;50:
@@ -73,14 +73,14 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 11
-EQI4 $74
+EQI4 $76
 ADDRLP4 0
 INDIRI4
 CNSTI4 12
-EQI4 $83
-ADDRGP4 $71
+EQI4 $85
+ADDRGP4 $73
 JUMPV
-LABELV $74
+LABELV $76
 line 53
 ;52:	case ID_ACCEPT:
 ;53:		if( cdkeyMenuInfo.cdkey.field.buffer[0] ) {
@@ -88,7 +88,7 @@ ADDRGP4 cdkeyMenuInfo+448+60+12
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $75
+EQI4 $77
 line 54
 ;54:			trap_SetCDKey( cdkeyMenuInfo.cdkey.field.buffer );
 ADDRGP4 cdkeyMenuInfo+448+60+12
@@ -98,7 +98,7 @@ CALLV
 pop
 line 55
 ;55:		}
-LABELV $75
+LABELV $77
 line 56
 ;56:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
@@ -106,9 +106,9 @@ CALLV
 pop
 line 57
 ;57:		break;
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $83
+LABELV $85
 line 60
 ;58:
 ;59:	case ID_BACK:
@@ -118,12 +118,12 @@ CALLV
 pop
 line 61
 ;61:		break;
-LABELV $71
-LABELV $72
+LABELV $73
+LABELV $74
 line 63
 ;62:	}
 ;63:}
-LABELV $68
+LABELV $70
 endproc UI_CDKeyMenu_Event 8 4
 proc UI_CDKeyMenu_PreValidateKey 24 4
 line 71
@@ -149,14 +149,14 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 16
-EQI4 $88
+EQI4 $90
 line 75
 ;75:		return 1;
 CNSTI4 1
 RETI4
-ADDRGP4 $84
+ADDRGP4 $86
 JUMPV
-LABELV $87
+LABELV $89
 line 78
 ;76:	}
 ;77:
@@ -175,63 +175,63 @@ ADDRLP4 8
 INDIRI4
 ADDRLP4 16
 INDIRI4
-EQI4 $88
+EQI4 $90
 ADDRLP4 8
 INDIRI4
 CNSTI4 51
-EQI4 $88
+EQI4 $90
 ADDRLP4 8
 INDIRI4
 CNSTI4 55
-EQI4 $88
+EQI4 $90
 ADDRLP4 8
 INDIRI4
 ADDRLP4 16
 INDIRI4
-LTI4 $90
-LABELV $94
+LTI4 $92
+LABELV $96
 ADDRLP4 8
 INDIRI4
 CNSTI4 97
-LTI4 $90
+LTI4 $92
 ADDRLP4 8
 INDIRI4
 CNSTI4 119
-GTI4 $90
+GTI4 $92
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $95-388
+ADDRGP4 $97-388
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $95
-address $88
-address $88
-address $88
-address $88
-address $90
-address $90
-address $88
-address $88
-address $90
-address $88
-address $90
-address $88
+LABELV $97
 address $90
 address $90
 address $90
-address $88
 address $90
-address $88
-address $88
-address $88
+address $92
+address $92
 address $90
 address $90
-address $88
+address $92
+address $90
+address $92
+address $90
+address $92
+address $92
+address $92
+address $90
+address $92
+address $90
+address $90
+address $90
+address $92
+address $92
+address $90
 code
 line 96
 ;80:		case '2':
@@ -251,15 +251,15 @@ line 96
 ;94:		case 't':
 ;95:		case 'w':
 ;96:			continue;
-LABELV $90
+LABELV $92
 line 98
 ;97:		default:
 ;98:			return -1;
 CNSTI4 -1
 RETI4
-ADDRGP4 $84
+ADDRGP4 $86
 JUMPV
-LABELV $88
+LABELV $90
 line 78
 ADDRLP4 8
 ADDRFP4 0
@@ -284,7 +284,7 @@ ADDRLP4 12
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $87
+NEI4 $89
 line 102
 ;99:		}
 ;100:	}
@@ -292,7 +292,7 @@ line 102
 ;102:	return 0;
 CNSTI4 0
 RETI4
-LABELV $84
+LABELV $86
 endproc UI_CDKeyMenu_PreValidateKey 24 4
 proc UI_CDKeyMenu_DrawKey 44 20
 line 111
@@ -333,17 +333,17 @@ INDIRP4
 CNSTI4 40
 ADDP4
 INDIRI4
-NEI4 $99
+NEI4 $101
 ADDRLP4 32
 CNSTI4 1
 ASGNI4
-ADDRGP4 $100
+ADDRGP4 $102
 JUMPV
-LABELV $99
+LABELV $101
 ADDRLP4 32
 CNSTI4 0
 ASGNI4
-LABELV $100
+LABELV $102
 ADDRLP4 16
 ADDRLP4 32
 INDIRI4
@@ -359,7 +359,7 @@ line 125
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $101
+EQI4 $103
 line 126
 ;126:		color = color_yellow;
 ADDRLP4 24
@@ -367,9 +367,9 @@ ADDRGP4 color_yellow
 ASGNP4
 line 127
 ;127:	}
-ADDRGP4 $102
+ADDRGP4 $104
 JUMPV
-LABELV $101
+LABELV $103
 line 128
 ;128:	else {
 line 129
@@ -379,7 +379,7 @@ ADDRGP4 color_orange
 ASGNP4
 line 130
 ;130:	}
-LABELV $102
+LABELV $104
 line 132
 ;131:
 ;132:	x = 320 - 8 * BIGCHAR_WIDTH;
@@ -439,7 +439,7 @@ line 138
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $103
+EQI4 $105
 line 139
 ;139:		if ( trap_Key_GetOverstrikeMode() ) {
 ADDRLP4 40
@@ -449,7 +449,7 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
-EQI4 $105
+EQI4 $107
 line 140
 ;140:			c = 11;
 ADDRLP4 28
@@ -457,9 +457,9 @@ CNSTI1 11
 ASGNI1
 line 141
 ;141:		} else {
-ADDRGP4 $106
+ADDRGP4 $108
 JUMPV
-LABELV $105
+LABELV $107
 line 142
 ;142:			c = 10;
 ADDRLP4 28
@@ -467,7 +467,7 @@ CNSTI1 10
 ASGNI1
 line 143
 ;143:		}
-LABELV $106
+LABELV $108
 line 145
 ;144:
 ;145:		style &= ~UI_PULSE;
@@ -516,7 +516,7 @@ CALLV
 pop
 line 149
 ;149:	}
-LABELV $103
+LABELV $105
 line 151
 ;150:
 ;151:	val = UI_CDKeyMenu_PreValidateKey( f->field.buffer );
@@ -538,14 +538,14 @@ line 152
 ADDRLP4 20
 INDIRI4
 CNSTI4 1
-NEI4 $107
+NEI4 $109
 line 153
 ;153:		UI_DrawProportionalString( 320, 376, "Ignore This, And Click The ACCEPT Button.", UI_CENTER|UI_SMALLFONT, color_yellow ); // Shafe - Trep - Need to Get Rid Of All This CD Key Shit
 CNSTI4 320
 ARGI4
 CNSTI4 376
 ARGI4
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 CNSTI4 17
 ARGI4
@@ -556,22 +556,22 @@ CALLV
 pop
 line 154
 ;154:	}
-ADDRGP4 $108
+ADDRGP4 $110
 JUMPV
-LABELV $107
+LABELV $109
 line 155
 ;155:	else if ( val == 0 ) {
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-NEI4 $110
+NEI4 $112
 line 156
 ;156:		UI_DrawProportionalString( 320, 376, "The CD Key appears to be valid, thank you", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 CNSTI4 376
 ARGI4
-ADDRGP4 $112
+ADDRGP4 $114
 ARGP4
 CNSTI4 17
 ARGI4
@@ -582,9 +582,9 @@ CALLV
 pop
 line 157
 ;157:	}
-ADDRGP4 $111
+ADDRGP4 $113
 JUMPV
-LABELV $110
+LABELV $112
 line 158
 ;158:	else {
 line 159
@@ -593,7 +593,7 @@ CNSTI4 320
 ARGI4
 CNSTI4 376
 ARGI4
-ADDRGP4 $113
+ADDRGP4 $115
 ARGP4
 CNSTI4 17
 ARGI4
@@ -604,11 +604,11 @@ CALLV
 pop
 line 160
 ;160:	}
-LABELV $111
-LABELV $108
+LABELV $113
+LABELV $110
 line 161
 ;161:}
-LABELV $97
+LABELV $99
 endproc UI_CDKeyMenu_DrawKey 44 20
 proc UI_CDKeyMenu_Init 4 12
 line 169
@@ -622,9 +622,9 @@ line 169
 ;169:static void UI_CDKeyMenu_Init( void ) {
 line 170
 ;170:	trap_Cvar_Set( "ui_cdkeychecked", "1" );
-ADDRGP4 $115
+ADDRGP4 $117
 ARGP4
-ADDRGP4 $116
+ADDRGP4 $118
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
@@ -676,7 +676,7 @@ ASGNI4
 line 181
 ;181:	cdkeyMenuInfo.banner.string						= "CD KEY";
 ADDRGP4 cdkeyMenuInfo+288+60
-ADDRGP4 $126
+ADDRGP4 $128
 ASGNP4
 line 182
 ;182:	cdkeyMenuInfo.banner.color						= color_white;
@@ -697,7 +697,7 @@ ASGNI4
 line 186
 ;186:	cdkeyMenuInfo.frame.generic.name				= ART_FRAME;
 ADDRGP4 cdkeyMenuInfo+360+4
-ADDRGP4 $134
+ADDRGP4 $136
 ASGNP4
 line 187
 ;187:	cdkeyMenuInfo.frame.generic.flags				= QMF_INACTIVE;
@@ -733,7 +733,7 @@ ASGNI4
 line 194
 ;194:	cdkeyMenuInfo.cdkey.generic.name				= "IGNORE THE CD KEY, PRESS ACCEPT:"; // Shafe - Trep - Need To Fix This Up Better
 ADDRGP4 cdkeyMenuInfo+448+4
-ADDRGP4 $148
+ADDRGP4 $150
 ASGNP4
 line 195
 ;195:	cdkeyMenuInfo.cdkey.generic.flags				= QMF_LOWERCASE;
@@ -774,7 +774,7 @@ ASGNI4
 line 203
 ;203:	cdkeyMenuInfo.accept.generic.name				= ART_ACCEPT0;
 ADDRGP4 cdkeyMenuInfo+780+4
-ADDRGP4 $166
+ADDRGP4 $168
 ASGNP4
 line 204
 ;204:	cdkeyMenuInfo.accept.generic.flags				= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -814,7 +814,7 @@ ASGNI4
 line 211
 ;211:	cdkeyMenuInfo.accept.focuspic					= ART_ACCEPT1;
 ADDRGP4 cdkeyMenuInfo+780+60
-ADDRGP4 $183
+ADDRGP4 $185
 ASGNP4
 line 213
 ;212:
@@ -825,7 +825,7 @@ ASGNI4
 line 214
 ;214:	cdkeyMenuInfo.back.generic.name					= ART_BACK0;
 ADDRGP4 cdkeyMenuInfo+868+4
-ADDRGP4 $187
+ADDRGP4 $189
 ASGNP4
 line 215
 ;215:	cdkeyMenuInfo.back.generic.flags				= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -865,7 +865,7 @@ ASGNI4
 line 222
 ;222:	cdkeyMenuInfo.back.focuspic						= ART_BACK1;
 ADDRGP4 cdkeyMenuInfo+868+60
-ADDRGP4 $204
+ADDRGP4 $206
 ASGNP4
 line 224
 ;223:
@@ -909,7 +909,7 @@ line 228
 ADDRGP4 uis+16
 INDIRI4
 CNSTI4 0
-EQI4 $209
+EQI4 $211
 line 229
 ;229:		Menu_AddItem( &cdkeyMenuInfo.menu, &cdkeyMenuInfo.back );
 ADDRGP4 cdkeyMenuInfo
@@ -921,7 +921,7 @@ CALLV
 pop
 line 230
 ;230:	}
-LABELV $209
+LABELV $211
 line 232
 ;231:
 ;232:	trap_GetCDKey( cdkeyMenuInfo.cdkey.field.buffer, cdkeyMenuInfo.cdkey.field.maxchars + 1 );
@@ -948,7 +948,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $219
+NEI4 $221
 line 234
 ;234:		cdkeyMenuInfo.cdkey.field.buffer[0] = 0;
 ADDRGP4 cdkeyMenuInfo+448+60+12
@@ -956,10 +956,10 @@ CNSTI1 0
 ASGNI1
 line 235
 ;235:	}
-LABELV $219
+LABELV $221
 line 236
 ;236:}
-LABELV $114
+LABELV $116
 endproc UI_CDKeyMenu_Init 4 12
 export UI_CDKeyMenu_Cache
 proc UI_CDKeyMenu_Cache 0 4
@@ -974,42 +974,42 @@ line 244
 ;244:void UI_CDKeyMenu_Cache( void ) {
 line 245
 ;245:	trap_R_RegisterShaderNoMip( ART_ACCEPT0 );
-ADDRGP4 $166
+ADDRGP4 $168
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 246
 ;246:	trap_R_RegisterShaderNoMip( ART_ACCEPT1 );
-ADDRGP4 $183
+ADDRGP4 $185
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 247
 ;247:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $187
+ADDRGP4 $189
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 248
 ;248:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $204
+ADDRGP4 $206
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 249
 ;249:	trap_R_RegisterShaderNoMip( ART_FRAME );
-ADDRGP4 $134
+ADDRGP4 $136
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 250
 ;250:}
-LABELV $227
+LABELV $229
 endproc UI_CDKeyMenu_Cache 0 4
 export UI_CDKeyMenu
 proc UI_CDKeyMenu 0 4
@@ -1036,7 +1036,7 @@ CALLV
 pop
 line 261
 ;261:}
-LABELV $228
+LABELV $230
 endproc UI_CDKeyMenu 0 4
 export UI_CDKeyMenu_f
 proc UI_CDKeyMenu_f 0 0
@@ -1056,7 +1056,7 @@ CALLV
 pop
 line 271
 ;271:}
-LABELV $229
+LABELV $231
 endproc UI_CDKeyMenu_f 0 0
 bss
 align 4
@@ -1374,6 +1374,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1538,7 +1539,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $204
+LABELV $206
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1556,7 +1557,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $187
+LABELV $189
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1574,7 +1575,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $183
+LABELV $185
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1594,7 +1595,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $166
+LABELV $168
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1614,7 +1615,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $148
+LABELV $150
 byte 1 73
 byte 1 71
 byte 1 78
@@ -1649,7 +1650,7 @@ byte 1 84
 byte 1 58
 byte 1 0
 align 1
-LABELV $134
+LABELV $136
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1670,7 +1671,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $126
+LABELV $128
 byte 1 67
 byte 1 68
 byte 1 32
@@ -1679,11 +1680,11 @@ byte 1 69
 byte 1 89
 byte 1 0
 align 1
-LABELV $116
+LABELV $118
 byte 1 49
 byte 1 0
 align 1
-LABELV $115
+LABELV $117
 byte 1 117
 byte 1 105
 byte 1 95
@@ -1701,7 +1702,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $113
+LABELV $115
 byte 1 84
 byte 1 104
 byte 1 101
@@ -1727,7 +1728,7 @@ byte 1 105
 byte 1 100
 byte 1 0
 align 1
-LABELV $112
+LABELV $114
 byte 1 84
 byte 1 104
 byte 1 101
@@ -1771,7 +1772,7 @@ byte 1 111
 byte 1 117
 byte 1 0
 align 1
-LABELV $109
+LABELV $111
 byte 1 73
 byte 1 103
 byte 1 110

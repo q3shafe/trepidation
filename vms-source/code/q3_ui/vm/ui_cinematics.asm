@@ -1,8 +1,6 @@
 data
 align 4
 LABELV cinematics
-address $68
-address $69
 address $70
 address $71
 address $72
@@ -11,6 +9,8 @@ address $74
 address $75
 address $76
 address $77
+address $78
+address $79
 code
 proc UI_CinematicsMenu_BackEvent 0 0
 file "../ui_cinematics.c"
@@ -84,12 +84,12 @@ line 65
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $79
+EQI4 $81
 line 66
 ;66:		return;
-ADDRGP4 $78
+ADDRGP4 $80
 JUMPV
-LABELV $79
+LABELV $81
 line 68
 ;67:	}
 ;68:	UI_PopMenu();
@@ -98,7 +98,7 @@ CALLV
 pop
 line 69
 ;69:}
-LABELV $78
+LABELV $80
 endproc UI_CinematicsMenu_BackEvent 0 0
 proc UI_CinematicsMenu_Event 12 8
 line 77
@@ -117,12 +117,12 @@ line 80
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $82
+EQI4 $84
 line 81
 ;81:		return;
-ADDRGP4 $81
+ADDRGP4 $83
 JUMPV
-LABELV $82
+LABELV $84
 line 83
 ;82:
 ;83:	n = ((menucommon_s*)ptr)->id - ID_CIN_IDLOGO;
@@ -137,7 +137,7 @@ SUBI4
 ASGNI4
 line 84
 ;84:	trap_Cvar_Set( "nextmap", va( "ui_cinematics %i", n ) );
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -146,7 +146,7 @@ ADDRLP4 4
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $84
+ADDRGP4 $86
 ARGP4
 ADDRLP4 4
 INDIRP4
@@ -159,33 +159,33 @@ line 85
 ADDRGP4 uis+11440
 INDIRI4
 CNSTI4 0
-EQI4 $86
+EQI4 $88
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 INDIRI4
 CNSTI4 20
-NEI4 $86
+NEI4 $88
 line 86
 ;86:		trap_Cmd_ExecuteText( EXEC_APPEND, "disconnect; cinematic demoEnd.RoQ 1\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $89
+ADDRGP4 $91
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
 line 87
 ;87:	}
-ADDRGP4 $87
+ADDRGP4 $89
 JUMPV
-LABELV $86
+LABELV $88
 line 88
 ;88:	else {
 line 89
 ;89:		trap_Cmd_ExecuteText( EXEC_APPEND, va( "disconnect; cinematic %s.RoQ\n", cinematics[n] ) );
-ADDRGP4 $90
+ADDRGP4 $92
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -209,10 +209,10 @@ CALLV
 pop
 line 90
 ;90:	}
-LABELV $87
+LABELV $89
 line 91
 ;91:}
-LABELV $81
+LABELV $83
 endproc UI_CinematicsMenu_Event 12 8
 proc UI_CinematicsMenu_Init 40 12
 line 99
@@ -267,7 +267,7 @@ ASGNI4
 line 110
 ;110:	cinematicsMenuInfo.banner.string			= "CINEMATICS";
 ADDRGP4 cinematicsMenuInfo+288+60
-ADDRGP4 $100
+ADDRGP4 $102
 ASGNP4
 line 111
 ;111:	cinematicsMenuInfo.banner.color				= color_white;
@@ -288,7 +288,7 @@ ASGNI4
 line 115
 ;115:	cinematicsMenuInfo.framel.generic.name		= ART_FRAMEL;
 ADDRGP4 cinematicsMenuInfo+360+4
-ADDRGP4 $108
+ADDRGP4 $110
 ASGNP4
 line 116
 ;116:	cinematicsMenuInfo.framel.generic.flags		= QMF_INACTIVE;
@@ -324,7 +324,7 @@ ASGNI4
 line 123
 ;123:	cinematicsMenuInfo.framer.generic.name		= ART_FRAMER;
 ADDRGP4 cinematicsMenuInfo+448+4
-ADDRGP4 $122
+ADDRGP4 $124
 ASGNP4
 line 124
 ;124:	cinematicsMenuInfo.framer.generic.flags		= QMF_INACTIVE;
@@ -391,7 +391,7 @@ ASGNP4
 line 137
 ;137:	cinematicsMenuInfo.cin_idlogo.string			= "ID LOGO";
 ADDRGP4 cinematicsMenuInfo+536+60
-ADDRGP4 $146
+ADDRGP4 $148
 ASGNP4
 line 138
 ;138:	cinematicsMenuInfo.cin_idlogo.color				= color_red;
@@ -446,7 +446,7 @@ ASGNP4
 line 148
 ;148:	cinematicsMenuInfo.cin_intro.string				= "INTRO";
 ADDRGP4 cinematicsMenuInfo+608+60
-ADDRGP4 $164
+ADDRGP4 $166
 ASGNP4
 line 149
 ;149:	cinematicsMenuInfo.cin_intro.color				= color_red;
@@ -463,7 +463,7 @@ line 151
 ADDRGP4 uis+11440
 INDIRI4
 CNSTI4 0
-EQI4 $169
+EQI4 $171
 line 152
 ;152:		cinematicsMenuInfo.cin_intro.generic.flags |= QMF_GRAYED;
 ADDRLP4 4
@@ -479,7 +479,7 @@ BORU4
 ASGNU4
 line 153
 ;153:	}
-LABELV $169
+LABELV $171
 line 155
 ;154:
 ;155:	y += VERTICAL_SPACING;
@@ -523,7 +523,7 @@ ASGNP4
 line 162
 ;162:	cinematicsMenuInfo.cin_tier1.string				= "Tier 1";
 ADDRGP4 cinematicsMenuInfo+680+60
-ADDRGP4 $187
+ADDRGP4 $189
 ASGNP4
 line 163
 ;163:	cinematicsMenuInfo.cin_tier1.color				= color_red;
@@ -546,7 +546,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $192
+NEI4 $194
 line 166
 ;166:		cinematicsMenuInfo.cin_tier1.generic.flags |= QMF_GRAYED;
 ADDRLP4 8
@@ -562,7 +562,7 @@ BORU4
 ASGNU4
 line 167
 ;167:	}
-LABELV $192
+LABELV $194
 line 169
 ;168:
 ;169:	y += VERTICAL_SPACING;
@@ -606,7 +606,7 @@ ASGNP4
 line 176
 ;176:	cinematicsMenuInfo.cin_tier2.string				= "Tier 2";
 ADDRGP4 cinematicsMenuInfo+752+60
-ADDRGP4 $209
+ADDRGP4 $211
 ASGNP4
 line 177
 ;177:	cinematicsMenuInfo.cin_tier2.color				= color_red;
@@ -629,7 +629,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $214
+NEI4 $216
 line 180
 ;180:		cinematicsMenuInfo.cin_tier2.generic.flags |= QMF_GRAYED;
 ADDRLP4 12
@@ -645,7 +645,7 @@ BORU4
 ASGNU4
 line 181
 ;181:	}
-LABELV $214
+LABELV $216
 line 183
 ;182:
 ;183:	y += VERTICAL_SPACING;
@@ -689,7 +689,7 @@ ASGNP4
 line 190
 ;190:	cinematicsMenuInfo.cin_tier3.string				= "Tier 3";
 ADDRGP4 cinematicsMenuInfo+824+60
-ADDRGP4 $231
+ADDRGP4 $233
 ASGNP4
 line 191
 ;191:	cinematicsMenuInfo.cin_tier3.color				= color_red;
@@ -712,7 +712,7 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $236
+NEI4 $238
 line 194
 ;194:		cinematicsMenuInfo.cin_tier3.generic.flags |= QMF_GRAYED;
 ADDRLP4 16
@@ -728,7 +728,7 @@ BORU4
 ASGNU4
 line 195
 ;195:	}
-LABELV $236
+LABELV $238
 line 197
 ;196:
 ;197:	y += VERTICAL_SPACING;
@@ -772,7 +772,7 @@ ASGNP4
 line 204
 ;204:	cinematicsMenuInfo.cin_tier4.string				= "Tier 4";
 ADDRGP4 cinematicsMenuInfo+896+60
-ADDRGP4 $253
+ADDRGP4 $255
 ASGNP4
 line 205
 ;205:	cinematicsMenuInfo.cin_tier4.color				= color_red;
@@ -795,7 +795,7 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-NEI4 $258
+NEI4 $260
 line 208
 ;208:		cinematicsMenuInfo.cin_tier4.generic.flags |= QMF_GRAYED;
 ADDRLP4 20
@@ -811,7 +811,7 @@ BORU4
 ASGNU4
 line 209
 ;209:	}
-LABELV $258
+LABELV $260
 line 211
 ;210:
 ;211:	y += VERTICAL_SPACING;
@@ -855,7 +855,7 @@ ASGNP4
 line 218
 ;218:	cinematicsMenuInfo.cin_tier5.string				= "Tier 5";
 ADDRGP4 cinematicsMenuInfo+968+60
-ADDRGP4 $275
+ADDRGP4 $277
 ASGNP4
 line 219
 ;219:	cinematicsMenuInfo.cin_tier5.color				= color_red;
@@ -878,7 +878,7 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-NEI4 $280
+NEI4 $282
 line 222
 ;222:		cinematicsMenuInfo.cin_tier5.generic.flags |= QMF_GRAYED;
 ADDRLP4 24
@@ -894,7 +894,7 @@ BORU4
 ASGNU4
 line 223
 ;223:	}
-LABELV $280
+LABELV $282
 line 225
 ;224:
 ;225:	y += VERTICAL_SPACING;
@@ -938,7 +938,7 @@ ASGNP4
 line 232
 ;232:	cinematicsMenuInfo.cin_tier6.string				= "Tier 6";
 ADDRGP4 cinematicsMenuInfo+1040+60
-ADDRGP4 $297
+ADDRGP4 $299
 ASGNP4
 line 233
 ;233:	cinematicsMenuInfo.cin_tier6.color				= color_red;
@@ -961,7 +961,7 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-NEI4 $302
+NEI4 $304
 line 236
 ;236:		cinematicsMenuInfo.cin_tier6.generic.flags |= QMF_GRAYED;
 ADDRLP4 28
@@ -977,7 +977,7 @@ BORU4
 ASGNU4
 line 237
 ;237:	}
-LABELV $302
+LABELV $304
 line 239
 ;238:
 ;239:	y += VERTICAL_SPACING;
@@ -1021,7 +1021,7 @@ ASGNP4
 line 246
 ;246:	cinematicsMenuInfo.cin_tier7.string				= "Tier 7";
 ADDRGP4 cinematicsMenuInfo+1112+60
-ADDRGP4 $319
+ADDRGP4 $321
 ASGNP4
 line 247
 ;247:	cinematicsMenuInfo.cin_tier7.color				= color_red;
@@ -1044,7 +1044,7 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-NEI4 $324
+NEI4 $326
 line 250
 ;250:		cinematicsMenuInfo.cin_tier7.generic.flags |= QMF_GRAYED;
 ADDRLP4 32
@@ -1060,7 +1060,7 @@ BORU4
 ASGNU4
 line 251
 ;251:	}
-LABELV $324
+LABELV $326
 line 253
 ;252:
 ;253:	y += VERTICAL_SPACING;
@@ -1104,7 +1104,7 @@ ASGNP4
 line 260
 ;260:	cinematicsMenuInfo.cin_end.string				= "END";
 ADDRGP4 cinematicsMenuInfo+1184+60
-ADDRGP4 $341
+ADDRGP4 $343
 ASGNP4
 line 261
 ;261:	cinematicsMenuInfo.cin_end.color				= color_red;
@@ -1127,7 +1127,7 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-NEI4 $346
+NEI4 $348
 line 264
 ;264:		cinematicsMenuInfo.cin_end.generic.flags |= QMF_GRAYED;
 ADDRLP4 36
@@ -1143,7 +1143,7 @@ BORU4
 ASGNU4
 line 265
 ;265:	}
-LABELV $346
+LABELV $348
 line 267
 ;266:
 ;267:	cinematicsMenuInfo.back.generic.type		= MTYPE_BITMAP;
@@ -1153,7 +1153,7 @@ ASGNI4
 line 268
 ;268:	cinematicsMenuInfo.back.generic.name		= ART_BACK0;
 ADDRGP4 cinematicsMenuInfo+1256+4
-ADDRGP4 $353
+ADDRGP4 $355
 ASGNP4
 line 269
 ;269:	cinematicsMenuInfo.back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -1193,7 +1193,7 @@ ASGNI4
 line 276
 ;276:	cinematicsMenuInfo.back.focuspic			= ART_BACK1;
 ADDRGP4 cinematicsMenuInfo+1256+60
-ADDRGP4 $370
+ADDRGP4 $372
 ASGNP4
 line 278
 ;277:
@@ -1324,7 +1324,7 @@ CALLV
 pop
 line 292
 ;292:}
-LABELV $91
+LABELV $93
 endproc UI_CinematicsMenu_Init 40 12
 export UI_CinematicsMenu_Cache
 proc UI_CinematicsMenu_Cache 0 4
@@ -1339,35 +1339,35 @@ line 300
 ;300:void UI_CinematicsMenu_Cache( void ) {
 line 301
 ;301:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $353
+ADDRGP4 $355
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 302
 ;302:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $370
+ADDRGP4 $372
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 303
 ;303:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $108
+ADDRGP4 $110
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 304
 ;304:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $122
+ADDRGP4 $124
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 305
 ;305:}
-LABELV $385
+LABELV $387
 endproc UI_CinematicsMenu_Cache 0 4
 export UI_CinematicsMenu
 proc UI_CinematicsMenu 0 4
@@ -1394,7 +1394,7 @@ CALLV
 pop
 line 316
 ;316:}
-LABELV $386
+LABELV $388
 endproc UI_CinematicsMenu 0 4
 export UI_CinematicsMenu_f
 proc UI_CinematicsMenu_f 12 8
@@ -1450,7 +1450,7 @@ CALLV
 pop
 line 330
 ;330:}
-LABELV $387
+LABELV $389
 endproc UI_CinematicsMenu_f 12 8
 bss
 align 4
@@ -1768,6 +1768,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1932,7 +1933,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $370
+LABELV $372
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1950,7 +1951,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $353
+LABELV $355
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1968,13 +1969,13 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $341
+LABELV $343
 byte 1 69
 byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $319
+LABELV $321
 byte 1 84
 byte 1 105
 byte 1 101
@@ -1983,7 +1984,7 @@ byte 1 32
 byte 1 55
 byte 1 0
 align 1
-LABELV $297
+LABELV $299
 byte 1 84
 byte 1 105
 byte 1 101
@@ -1992,7 +1993,7 @@ byte 1 32
 byte 1 54
 byte 1 0
 align 1
-LABELV $275
+LABELV $277
 byte 1 84
 byte 1 105
 byte 1 101
@@ -2001,7 +2002,7 @@ byte 1 32
 byte 1 53
 byte 1 0
 align 1
-LABELV $253
+LABELV $255
 byte 1 84
 byte 1 105
 byte 1 101
@@ -2010,7 +2011,7 @@ byte 1 32
 byte 1 52
 byte 1 0
 align 1
-LABELV $231
+LABELV $233
 byte 1 84
 byte 1 105
 byte 1 101
@@ -2019,7 +2020,7 @@ byte 1 32
 byte 1 51
 byte 1 0
 align 1
-LABELV $209
+LABELV $211
 byte 1 84
 byte 1 105
 byte 1 101
@@ -2028,7 +2029,7 @@ byte 1 32
 byte 1 50
 byte 1 0
 align 1
-LABELV $187
+LABELV $189
 byte 1 84
 byte 1 105
 byte 1 101
@@ -2037,7 +2038,7 @@ byte 1 32
 byte 1 49
 byte 1 0
 align 1
-LABELV $164
+LABELV $166
 byte 1 73
 byte 1 78
 byte 1 84
@@ -2045,7 +2046,7 @@ byte 1 82
 byte 1 79
 byte 1 0
 align 1
-LABELV $146
+LABELV $148
 byte 1 73
 byte 1 68
 byte 1 32
@@ -2055,7 +2056,7 @@ byte 1 71
 byte 1 79
 byte 1 0
 align 1
-LABELV $122
+LABELV $124
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2075,7 +2076,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $108
+LABELV $110
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2095,7 +2096,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $100
+LABELV $102
 byte 1 67
 byte 1 73
 byte 1 78
@@ -2108,7 +2109,7 @@ byte 1 67
 byte 1 83
 byte 1 0
 align 1
-LABELV $90
+LABELV $92
 byte 1 100
 byte 1 105
 byte 1 115
@@ -2140,7 +2141,7 @@ byte 1 81
 byte 1 10
 byte 1 0
 align 1
-LABELV $89
+LABELV $91
 byte 1 100
 byte 1 105
 byte 1 115
@@ -2179,7 +2180,7 @@ byte 1 49
 byte 1 10
 byte 1 0
 align 1
-LABELV $85
+LABELV $87
 byte 1 117
 byte 1 105
 byte 1 95
@@ -2198,7 +2199,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $84
+LABELV $86
 byte 1 110
 byte 1 101
 byte 1 120
@@ -2208,13 +2209,13 @@ byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $77
+LABELV $79
 byte 1 101
 byte 1 110
 byte 1 100
 byte 1 0
 align 1
-LABELV $76
+LABELV $78
 byte 1 116
 byte 1 105
 byte 1 101
@@ -2222,7 +2223,7 @@ byte 1 114
 byte 1 55
 byte 1 0
 align 1
-LABELV $75
+LABELV $77
 byte 1 116
 byte 1 105
 byte 1 101
@@ -2230,7 +2231,7 @@ byte 1 114
 byte 1 54
 byte 1 0
 align 1
-LABELV $74
+LABELV $76
 byte 1 116
 byte 1 105
 byte 1 101
@@ -2238,7 +2239,7 @@ byte 1 114
 byte 1 53
 byte 1 0
 align 1
-LABELV $73
+LABELV $75
 byte 1 116
 byte 1 105
 byte 1 101
@@ -2246,7 +2247,7 @@ byte 1 114
 byte 1 52
 byte 1 0
 align 1
-LABELV $72
+LABELV $74
 byte 1 116
 byte 1 105
 byte 1 101
@@ -2254,7 +2255,7 @@ byte 1 114
 byte 1 51
 byte 1 0
 align 1
-LABELV $71
+LABELV $73
 byte 1 116
 byte 1 105
 byte 1 101
@@ -2262,7 +2263,7 @@ byte 1 114
 byte 1 50
 byte 1 0
 align 1
-LABELV $70
+LABELV $72
 byte 1 116
 byte 1 105
 byte 1 101
@@ -2270,7 +2271,7 @@ byte 1 114
 byte 1 49
 byte 1 0
 align 1
-LABELV $69
+LABELV $71
 byte 1 105
 byte 1 110
 byte 1 116
@@ -2278,7 +2279,7 @@ byte 1 114
 byte 1 111
 byte 1 0
 align 1
-LABELV $68
+LABELV $70
 byte 1 105
 byte 1 100
 byte 1 108

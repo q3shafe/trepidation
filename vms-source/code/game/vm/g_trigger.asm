@@ -25,7 +25,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $54
+NEI4 $56
 line 8
 ;8:		G_SetMovedir (self->s.angles, self->movedir);
 ADDRLP4 4
@@ -45,7 +45,7 @@ ARGP4
 ADDRGP4 G_SetMovedir
 CALLV
 pop
-LABELV $54
+LABELV $56
 line 10
 ;9:
 ;10:	trap_SetBrushModel( self, self->model );
@@ -83,7 +83,7 @@ CNSTI4 1
 ASGNI4
 line 13
 ;13:}
-LABELV $53
+LABELV $55
 endproc InitTrigger 12 8
 export multi_wait
 proc multi_wait 0 0
@@ -102,7 +102,7 @@ CNSTI4 0
 ASGNI4
 line 19
 ;19:}
-LABELV $56
+LABELV $58
 endproc multi_wait 0 0
 export multi_trigger
 proc multi_trigger 12 8
@@ -130,12 +130,12 @@ CNSTI4 688
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $58
+EQI4 $60
 line 28
 ;28:		return;		// can't retrigger until the wait is over
-ADDRGP4 $57
+ADDRGP4 $59
 JUMPV
-LABELV $58
+LABELV $60
 line 31
 ;29:	}
 ;30:
@@ -147,7 +147,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $60
+EQU4 $62
 line 32
 ;32:		if ( ( ent->spawnflags & 1 ) &&
 ADDRLP4 0
@@ -162,25 +162,25 @@ ADDRLP4 0
 INDIRI4
 BANDI4
 CNSTI4 0
-EQI4 $62
+EQI4 $64
 ADDRFP4 4
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2444
+CNSTI4 2448
 ADDP4
 INDIRI4
 ADDRLP4 0
 INDIRI4
-EQI4 $62
+EQI4 $64
 line 33
 ;33:			activator->client->sess.sessionTeam != TEAM_RED ) {
 line 34
 ;34:			return;
-ADDRGP4 $57
+ADDRGP4 $59
 JUMPV
-LABELV $62
+LABELV $64
 line 36
 ;35:		}
 ;36:		if ( ( ent->spawnflags & 2 ) &&
@@ -196,29 +196,29 @@ ADDRLP4 4
 INDIRI4
 BANDI4
 CNSTI4 0
-EQI4 $64
+EQI4 $66
 ADDRFP4 4
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2444
+CNSTI4 2448
 ADDP4
 INDIRI4
 ADDRLP4 4
 INDIRI4
-EQI4 $64
+EQI4 $66
 line 37
 ;37:			activator->client->sess.sessionTeam != TEAM_BLUE ) {
 line 38
 ;38:			return;
-ADDRGP4 $57
+ADDRGP4 $59
 JUMPV
-LABELV $64
+LABELV $66
 line 40
 ;39:		}
 ;40:	}
-LABELV $60
+LABELV $62
 line 42
 ;41:
 ;42:	G_UseTargets (ent, ent->activator);
@@ -247,7 +247,7 @@ CNSTI4 796
 ADDP4
 INDIRF4
 CNSTF4 0
-LEF4 $66
+LEF4 $68
 line 45
 ;45:		ent->think = multi_wait;
 ADDRFP4 0
@@ -303,9 +303,9 @@ CVFI4 4
 ASGNI4
 line 47
 ;47:	} else {
-ADDRGP4 $67
+ADDRGP4 $69
 JUMPV
-LABELV $66
+LABELV $68
 line 50
 ;48:		// we can't just remove (self) here, because this is a touch function
 ;49:		// called while looping through area links...
@@ -337,10 +337,10 @@ ADDRGP4 G_FreeEntity
 ASGNP4
 line 53
 ;53:	}
-LABELV $67
+LABELV $69
 line 54
 ;54:}
-LABELV $57
+LABELV $59
 endproc multi_trigger 12 8
 export Use_Multi
 proc Use_Multi 0 8
@@ -360,7 +360,7 @@ CALLV
 pop
 line 58
 ;58:}
-LABELV $70
+LABELV $72
 endproc Use_Multi 0 8
 export Touch_Multi
 proc Touch_Multi 0 8
@@ -376,12 +376,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $72
+NEU4 $74
 line 62
 ;62:		return;
-ADDRGP4 $71
+ADDRGP4 $73
 JUMPV
-LABELV $72
+LABELV $74
 line 64
 ;63:	}
 ;64:	multi_trigger( self, other );
@@ -396,7 +396,7 @@ CALLV
 pop
 line 65
 ;65:}
-LABELV $71
+LABELV $73
 endproc Touch_Multi 0 8
 export SP_trigger_multiple
 proc SP_trigger_multiple 12 12
@@ -412,9 +412,9 @@ line 74
 ;74:void SP_trigger_multiple( gentity_t *ent ) {
 line 75
 ;75:	G_SpawnFloat( "wait", "0.5", &ent->wait );
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
-ADDRGP4 $76
+ADDRGP4 $78
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -426,9 +426,9 @@ CALLI4
 pop
 line 76
 ;76:	G_SpawnFloat( "random", "0", &ent->random );
-ADDRGP4 $77
+ADDRGP4 $79
 ARGP4
-ADDRGP4 $78
+ADDRGP4 $80
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -459,11 +459,11 @@ ADDP4
 INDIRF4
 ADDRLP4 4
 INDIRF4
-LTF4 $79
+LTF4 $81
 ADDRLP4 4
 INDIRF4
 CNSTF4 0
-LTF4 $79
+LTF4 $81
 line 79
 ;79:		ent->random = ent->wait - FRAMETIME;
 ADDRLP4 8
@@ -484,14 +484,14 @@ SUBF4
 ASGNF4
 line 80
 ;80:		G_Printf( "trigger_multiple has random >= wait\n" );
-ADDRGP4 $81
+ADDRGP4 $83
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 81
 ;81:	}
-LABELV $79
+LABELV $81
 line 83
 ;82:
 ;83:	ent->touch = Touch_Multi;
@@ -528,7 +528,7 @@ CALLV
 pop
 line 88
 ;88:}
-LABELV $74
+LABELV $76
 endproc SP_trigger_multiple 12 12
 export trigger_always_think
 proc trigger_always_think 4 8
@@ -570,7 +570,7 @@ CALLV
 pop
 line 103
 ;103:}
-LABELV $82
+LABELV $84
 endproc trigger_always_think 4 8
 export SP_trigger_always
 proc SP_trigger_always 0 0
@@ -602,7 +602,7 @@ ADDRGP4 trigger_always_think
 ASGNP4
 line 112
 ;112:}
-LABELV $83
+LABELV $85
 endproc SP_trigger_always 0 0
 export trigger_push_touch
 proc trigger_push_touch 0 8
@@ -628,12 +628,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $86
+NEU4 $88
 line 126
 ;126:		return;
-ADDRGP4 $85
+ADDRGP4 $87
 JUMPV
-LABELV $86
+LABELV $88
 line 129
 ;127:	}
 ;128:
@@ -652,7 +652,7 @@ CALLV
 pop
 line 130
 ;130:}
-LABELV $85
+LABELV $87
 endproc trigger_push_touch 0 8
 export AimAtTarget
 proc AimAtTarget 72 4
@@ -769,7 +769,7 @@ ADDRLP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $95
+NEU4 $97
 line 151
 ;151:		G_FreeEntity( self );
 ADDRFP4 0
@@ -780,9 +780,9 @@ CALLV
 pop
 line 152
 ;152:		return;
-ADDRGP4 $88
+ADDRGP4 $90
 JUMPV
-LABELV $95
+LABELV $97
 line 155
 ;153:	}
 ;154:
@@ -826,7 +826,7 @@ line 158
 ADDRLP4 16
 INDIRF4
 CNSTF4 0
-NEF4 $99
+NEF4 $101
 line 159
 ;159:		G_FreeEntity( self );
 ADDRFP4 0
@@ -837,9 +837,9 @@ CALLV
 pop
 line 160
 ;160:		return;
-ADDRGP4 $88
+ADDRGP4 $90
 JUMPV
-LABELV $99
+LABELV $101
 line 164
 ;161:	}
 ;162:
@@ -979,7 +979,7 @@ MULF4
 ASGNF4
 line 172
 ;172:}
-LABELV $88
+LABELV $90
 endproc AimAtTarget 72 4
 export SP_trigger_push
 proc SP_trigger_push 4 4
@@ -1021,7 +1021,7 @@ line 186
 ;184:
 ;185:	// make sure the client precaches this sound
 ;186:	G_SoundIndex("sound/world/jumppad.wav");
-ADDRGP4 $104
+ADDRGP4 $106
 ARGP4
 ADDRGP4 G_SoundIndex
 CALLI4
@@ -1072,7 +1072,7 @@ CALLV
 pop
 line 193
 ;193:}
-LABELV $103
+LABELV $105
 endproc SP_trigger_push 4 4
 export Use_target_push
 proc Use_target_push 0 12
@@ -1089,12 +1089,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $107
+NEU4 $109
 line 198
 ;198:		return;
-ADDRGP4 $106
+ADDRGP4 $108
 JUMPV
-LABELV $107
+LABELV $109
 line 201
 ;199:	}
 ;200:
@@ -1108,12 +1108,12 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $109
+EQI4 $111
 line 202
 ;202:		return;
-ADDRGP4 $106
+ADDRGP4 $108
 JUMPV
-LABELV $109
+LABELV $111
 line 204
 ;203:	}
 ;204:	if ( activator->client->ps.powerups[PW_FLIGHT] ) {
@@ -1126,12 +1126,12 @@ CNSTI4 336
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $111
+EQI4 $113
 line 205
 ;205:		return;
-ADDRGP4 $106
+ADDRGP4 $108
 JUMPV
-LABELV $111
+LABELV $113
 line 208
 ;206:	}
 ;207:
@@ -1160,7 +1160,7 @@ ADDP4
 INDIRI4
 ADDRGP4 level+32
 INDIRI4
-GEI4 $113
+GEI4 $115
 line 212
 ;212:		activator->fly_sound_debounce_time = level.time + 1500;
 ADDRFP4 8
@@ -1190,10 +1190,10 @@ CALLV
 pop
 line 214
 ;214:	}
-LABELV $113
+LABELV $115
 line 215
 ;215:}
-LABELV $106
+LABELV $108
 endproc Use_target_push 0 12
 export SP_target_push
 proc SP_target_push 36 8
@@ -1213,7 +1213,7 @@ CNSTI4 672
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $118
+NEF4 $120
 line 224
 ;224:		self->speed = 1000;
 ADDRFP4 0
@@ -1224,7 +1224,7 @@ CNSTF4 1148846080
 ASGNF4
 line 225
 ;225:	}
-LABELV $118
+LABELV $120
 line 226
 ;226:	G_SetMovedir (self->s.angles, self->s.origin2);
 ADDRLP4 0
@@ -1323,10 +1323,10 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $120
+EQI4 $122
 line 230
 ;230:		self->noise_index = G_SoundIndex("sound/world/jumppad.wav");
-ADDRGP4 $104
+ADDRGP4 $106
 ARGP4
 ADDRLP4 28
 ADDRGP4 G_SoundIndex
@@ -1341,12 +1341,12 @@ INDIRI4
 ASGNI4
 line 231
 ;231:	} else {
-ADDRGP4 $121
+ADDRGP4 $123
 JUMPV
-LABELV $120
+LABELV $122
 line 232
 ;232:		self->noise_index = G_SoundIndex("sound/misc/windfly.wav");
-ADDRGP4 $122
+ADDRGP4 $124
 ARGP4
 ADDRLP4 28
 ADDRGP4 G_SoundIndex
@@ -1361,7 +1361,7 @@ INDIRI4
 ASGNI4
 line 233
 ;233:	}
-LABELV $121
+LABELV $123
 line 234
 ;234:	if ( self->target ) {
 ADDRFP4 0
@@ -1371,7 +1371,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $123
+EQU4 $125
 line 235
 ;235:		VectorCopy( self->s.origin, self->r.absmin );
 ADDRLP4 28
@@ -1425,7 +1425,7 @@ ADDI4
 ASGNI4
 line 239
 ;239:	}
-LABELV $123
+LABELV $125
 line 240
 ;240:	self->use = Use_target_push;
 ADDRFP4 0
@@ -1436,7 +1436,7 @@ ADDRGP4 Use_target_push
 ASGNP4
 line 241
 ;241:}
-LABELV $117
+LABELV $119
 endproc SP_target_push 36 8
 export trigger_teleporter_touch
 proc trigger_teleporter_touch 12 12
@@ -1462,12 +1462,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $127
+NEU4 $129
 line 255
 ;255:		return;
-ADDRGP4 $126
+ADDRGP4 $128
 JUMPV
-LABELV $127
+LABELV $129
 line 257
 ;256:	}
 ;257:	if ( other->client->ps.pm_type == PM_DEAD ) {
@@ -1480,12 +1480,12 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $129
+NEI4 $131
 line 258
 ;258:		return;
-ADDRGP4 $126
+ADDRGP4 $128
 JUMPV
-LABELV $129
+LABELV $131
 line 261
 ;259:	}
 ;260:	// Spectators only?
@@ -1498,24 +1498,24 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $131
+EQI4 $133
 ADDRFP4 4
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2444
+CNSTI4 2448
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $131
+EQI4 $133
 line 262
 ;262:		other->client->sess.sessionTeam != TEAM_SPECTATOR ) {
 line 263
 ;263:		return;
-ADDRGP4 $126
+ADDRGP4 $128
 JUMPV
-LABELV $131
+LABELV $133
 line 267
 ;264:	}
 ;265:
@@ -1541,19 +1541,19 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $133
+NEU4 $135
 line 269
 ;269:		G_Printf ("Couldn't find teleporter destination\n");
-ADDRGP4 $135
+ADDRGP4 $137
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 270
 ;270:		return;
-ADDRGP4 $126
+ADDRGP4 $128
 JUMPV
-LABELV $133
+LABELV $135
 line 273
 ;271:	}
 ;272:
@@ -1576,7 +1576,7 @@ CALLV
 pop
 line 274
 ;274:}
-LABELV $126
+LABELV $128
 endproc trigger_teleporter_touch 12 12
 export SP_trigger_teleport
 proc SP_trigger_teleport 4 4
@@ -1613,7 +1613,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $137
+EQI4 $139
 line 291
 ;291:		self->r.svFlags |= SVF_NOCLIENT;
 ADDRLP4 0
@@ -1632,9 +1632,9 @@ BORI4
 ASGNI4
 line 292
 ;292:	} else {
-ADDRGP4 $138
+ADDRGP4 $140
 JUMPV
-LABELV $137
+LABELV $139
 line 293
 ;293:		self->r.svFlags &= ~SVF_NOCLIENT;
 ADDRLP4 0
@@ -1653,12 +1653,12 @@ BANDI4
 ASGNI4
 line 294
 ;294:	}
-LABELV $138
+LABELV $140
 line 297
 ;295:
 ;296:	// make sure the client precaches this sound
 ;297:	G_SoundIndex("sound/world/jumppad.wav");
-ADDRGP4 $104
+ADDRGP4 $106
 ARGP4
 ADDRGP4 G_SoundIndex
 CALLI4
@@ -1691,7 +1691,7 @@ CALLV
 pop
 line 303
 ;303:}
-LABELV $136
+LABELV $138
 endproc SP_trigger_teleport 4 4
 export hurt_use
 proc hurt_use 0 4
@@ -1727,7 +1727,7 @@ CNSTI4 416
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $140
+EQI4 $142
 line 328
 ;328:		trap_UnlinkEntity( self );
 ADDRFP4 0
@@ -1738,9 +1738,9 @@ CALLV
 pop
 line 329
 ;329:	} else {
-ADDRGP4 $141
+ADDRGP4 $143
 JUMPV
-LABELV $140
+LABELV $142
 line 330
 ;330:		trap_LinkEntity( self );
 ADDRFP4 0
@@ -1751,10 +1751,10 @@ CALLV
 pop
 line 331
 ;331:	}
-LABELV $141
+LABELV $143
 line 332
 ;332:}
-LABELV $139
+LABELV $141
 endproc hurt_use 0 4
 export hurt_touch
 proc hurt_touch 12 32
@@ -1771,12 +1771,12 @@ CNSTI4 736
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $143
+NEI4 $145
 line 338
 ;338:		return;
-ADDRGP4 $142
+ADDRGP4 $144
 JUMPV
-LABELV $143
+LABELV $145
 line 341
 ;339:	}
 ;340:
@@ -1788,12 +1788,12 @@ ADDP4
 INDIRI4
 ADDRGP4 level+32
 INDIRI4
-LEI4 $145
+LEI4 $147
 line 342
 ;342:		return;
-ADDRGP4 $142
+ADDRGP4 $144
 JUMPV
-LABELV $145
+LABELV $147
 line 345
 ;343:	}
 ;344:
@@ -1806,7 +1806,7 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $148
+EQI4 $150
 line 346
 ;346:		self->timestamp = level.time + 1000;
 ADDRFP4 0
@@ -1820,9 +1820,9 @@ ADDI4
 ASGNI4
 line 347
 ;347:	} else {
-ADDRGP4 $149
+ADDRGP4 $151
 JUMPV
-LABELV $148
+LABELV $150
 line 348
 ;348:		self->timestamp = level.time + FRAMETIME;
 ADDRFP4 0
@@ -1836,7 +1836,7 @@ ADDI4
 ASGNI4
 line 349
 ;349:	}
-LABELV $149
+LABELV $151
 line 352
 ;350:
 ;351:	// play sound
@@ -1849,7 +1849,7 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-NEI4 $152
+NEI4 $154
 line 353
 ;353:		G_Sound( other, CHAN_AUTO, self->noise_index );
 ADDRFP4 4
@@ -1868,7 +1868,7 @@ CALLV
 pop
 line 354
 ;354:	}
-LABELV $152
+LABELV $154
 line 356
 ;355:
 ;356:	if (self->spawnflags & 8)
@@ -1880,22 +1880,22 @@ INDIRI4
 CNSTI4 8
 BANDI4
 CNSTI4 0
-EQI4 $154
+EQI4 $156
 line 357
 ;357:		dflags = DAMAGE_NO_PROTECTION;
 ADDRLP4 0
 CNSTI4 8
 ASGNI4
-ADDRGP4 $155
+ADDRGP4 $157
 JUMPV
-LABELV $154
+LABELV $156
 line 359
 ;358:	else
 ;359:		dflags = 0;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $155
+LABELV $157
 line 360
 ;360:	G_Damage (other, self, self, NULL, NULL, self->damage, dflags, MOD_TRIGGER_HURT);
 ADDRFP4 4
@@ -1936,7 +1936,7 @@ CALLV
 pop
 line 361
 ;361:}
-LABELV $142
+LABELV $144
 endproc hurt_touch 12 32
 export SP_trigger_hurt
 proc SP_trigger_hurt 4 4
@@ -1954,7 +1954,7 @@ pop
 line 366
 ;365:
 ;366:	self->noise_index = G_SoundIndex( "sound/world/electro.wav" );
-ADDRGP4 $157
+ADDRGP4 $159
 ARGP4
 ADDRLP4 0
 ADDRGP4 G_SoundIndex
@@ -1984,7 +1984,7 @@ CNSTI4 740
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $158
+NEI4 $160
 line 370
 ;370:		self->damage = 5;
 ADDRFP4 0
@@ -1995,7 +1995,7 @@ CNSTI4 5
 ASGNI4
 line 371
 ;371:	}
-LABELV $158
+LABELV $160
 line 373
 ;372:
 ;373:	self->r.contents = CONTENTS_TRIGGER;
@@ -2016,7 +2016,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $160
+EQI4 $162
 line 376
 ;376:		self->use = hurt_use;
 ADDRFP4 0
@@ -2027,7 +2027,7 @@ ADDRGP4 hurt_use
 ASGNP4
 line 377
 ;377:	}
-LABELV $160
+LABELV $162
 line 380
 ;378:
 ;379:	// link in to the world if starting active
@@ -2040,7 +2040,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-NEI4 $162
+NEI4 $164
 line 381
 ;381:		trap_LinkEntity (self);
 ADDRFP4 0
@@ -2051,10 +2051,10 @@ CALLV
 pop
 line 382
 ;382:	}
-LABELV $162
+LABELV $164
 line 383
 ;383:}
-LABELV $156
+LABELV $158
 endproc SP_trigger_hurt 4 4
 export func_timer_think
 proc func_timer_think 12 8
@@ -2148,7 +2148,7 @@ CVFI4 4
 ASGNI4
 line 410
 ;410:}
-LABELV $164
+LABELV $166
 endproc func_timer_think 12 8
 export func_timer_use
 proc func_timer_use 0 4
@@ -2174,7 +2174,7 @@ CNSTI4 688
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $167
+EQI4 $169
 line 417
 ;417:		self->nextthink = 0;
 ADDRFP4 0
@@ -2185,9 +2185,9 @@ CNSTI4 0
 ASGNI4
 line 418
 ;418:		return;
-ADDRGP4 $166
+ADDRGP4 $168
 JUMPV
-LABELV $167
+LABELV $169
 line 422
 ;419:	}
 ;420:
@@ -2201,7 +2201,7 @@ CALLV
 pop
 line 423
 ;423:}
-LABELV $166
+LABELV $168
 endproc func_timer_use 0 4
 export SP_func_timer
 proc SP_func_timer 12 12
@@ -2210,9 +2210,9 @@ line 425
 ;425:void SP_func_timer( gentity_t *self ) {
 line 426
 ;426:	G_SpawnFloat( "random", "1", &self->random);
-ADDRGP4 $77
+ADDRGP4 $79
 ARGP4
-ADDRGP4 $170
+ADDRGP4 $172
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -2224,9 +2224,9 @@ CALLI4
 pop
 line 427
 ;427:	G_SpawnFloat( "wait", "1", &self->wait );
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
-ADDRGP4 $170
+ADDRGP4 $172
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -2270,7 +2270,7 @@ INDIRP4
 CNSTI4 796
 ADDP4
 INDIRF4
-LTF4 $171
+LTF4 $173
 line 433
 ;433:		self->random = self->wait - FRAMETIME;
 ADDRLP4 4
@@ -2300,7 +2300,7 @@ ADDRLP4 8
 ADDRGP4 vtos
 CALLP4
 ASGNP4
-ADDRGP4 $173
+ADDRGP4 $175
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -2310,7 +2310,7 @@ CALLV
 pop
 line 435
 ;435:	}
-LABELV $171
+LABELV $173
 line 437
 ;436:
 ;437:	if ( self->spawnflags & 1 ) {
@@ -2322,7 +2322,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $174
+EQI4 $176
 line 438
 ;438:		self->nextthink = level.time + FRAMETIME;
 ADDRFP4 0
@@ -2349,7 +2349,7 @@ INDIRP4
 ASGNP4
 line 440
 ;440:	}
-LABELV $174
+LABELV $176
 line 442
 ;441:
 ;442:	self->r.svFlags = SVF_NOCLIENT;
@@ -2361,8 +2361,10 @@ CNSTI4 1
 ASGNI4
 line 443
 ;443:}
-LABELV $169
+LABELV $171
 endproc SP_func_timer 12 12
+import CheckPlayerPostions
+import G_SendCommandToClient
 import visible
 import findradius
 import trap_SnapVector
@@ -2542,6 +2544,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_MultiJump
 import g_instagib
 import sv_fps
 import g_lightningDamage
@@ -2642,6 +2645,7 @@ import G_ReadSessionData
 import Svcmd_GameMem_f
 import G_InitMemory
 import G_Alloc
+import Team_DropFlags
 import CheckObeliskAttack
 import Team_CheckDroppedItem
 import OnSameTeam
@@ -2707,6 +2711,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_pdgrenade
 import fire_grenade
 import fire_plasma
 import fire_blaster
@@ -2718,6 +2723,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap
 import G_SetOrigin
@@ -2777,6 +2783,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -2941,7 +2948,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $173
+LABELV $175
 byte 1 102
 byte 1 117
 byte 1 110
@@ -2980,11 +2987,11 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $170
+LABELV $172
 byte 1 49
 byte 1 0
 align 1
-LABELV $157
+LABELV $159
 byte 1 115
 byte 1 111
 byte 1 117
@@ -3010,7 +3017,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $135
+LABELV $137
 byte 1 67
 byte 1 111
 byte 1 117
@@ -3050,7 +3057,7 @@ byte 1 110
 byte 1 10
 byte 1 0
 align 1
-LABELV $122
+LABELV $124
 byte 1 115
 byte 1 111
 byte 1 117
@@ -3075,7 +3082,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $104
+LABELV $106
 byte 1 115
 byte 1 111
 byte 1 117
@@ -3101,7 +3108,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $81
+LABELV $83
 byte 1 116
 byte 1 114
 byte 1 105
@@ -3140,11 +3147,11 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $78
+LABELV $80
 byte 1 48
 byte 1 0
 align 1
-LABELV $77
+LABELV $79
 byte 1 114
 byte 1 97
 byte 1 110
@@ -3153,13 +3160,13 @@ byte 1 111
 byte 1 109
 byte 1 0
 align 1
-LABELV $76
+LABELV $78
 byte 1 48
 byte 1 46
 byte 1 53
 byte 1 0
 align 1
-LABELV $75
+LABELV $77
 byte 1 119
 byte 1 97
 byte 1 105

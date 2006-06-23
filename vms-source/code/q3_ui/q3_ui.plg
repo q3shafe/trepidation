@@ -6,7 +6,7 @@
 --------------------Configuration: cgame - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP13.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP548.tmp" with contents
 [
 /nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"Release/cgame.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
 "G:\games\trepidation\source\vms-source\code\game\bg_misc.c"
@@ -25,6 +25,7 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP13.tmp" with 
 "G:\games\trepidation\source\vms-source\code\cgame\cg_players.c"
 "G:\games\trepidation\source\vms-source\code\cgame\cg_playerstate.c"
 "G:\games\trepidation\source\vms-source\code\cgame\cg_predict.c"
+"G:\games\trepidation\source\vms-source\code\cgame\cg_scanner.c"
 "G:\games\trepidation\source\vms-source\code\cgame\cg_scoreboard.c"
 "G:\games\trepidation\source\vms-source\code\cgame\cg_servercmds.c"
 "G:\games\trepidation\source\vms-source\code\cgame\cg_snapshot.c"
@@ -36,8 +37,8 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP13.tmp" with 
 "G:\games\trepidation\source\vms-source\code\game\q_shared.c"
 "G:\games\trepidation\source\vms-source\code\ui\ui_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP13.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP14.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP548.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP549.tmp" with contents
 [
 /nologo /base:"0x30000000" /subsystem:windows /dll /incremental:no /pdb:"Release/cgamex86.pdb" /map:"Release/cgamex86.map" /machine:I386 /def:".\cgame.def" /out:"../Release/cgamex86.dll" /implib:"Release/cgamex86.lib" 
 ".\Release\bg_misc.obj"
@@ -56,6 +57,7 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP14.tmp" with 
 ".\Release\cg_players.obj"
 ".\Release\cg_playerstate.obj"
 ".\Release\cg_predict.obj"
+".\Release\cg_scanner.obj"
 ".\Release\cg_scoreboard.obj"
 ".\Release\cg_servercmds.obj"
 ".\Release\cg_snapshot.obj"
@@ -67,13 +69,13 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP14.tmp" with 
 ".\Release\q_shared.obj"
 ".\Release\ui_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP14.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP549.tmp"
 <h3>Output Window</h3>
 Compiling...
 bg_misc.c
 bg_pmove.c
 bg_slidemove.c
-G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1734) : warning C4701: local variable 'addTime' may be used without having been initialized
+G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1841) : warning C4701: local variable 'addTime' may be used without having been initialized
 cg_consolecmds.c
 cg_draw.c
 cg_drawtools.c
@@ -87,9 +89,10 @@ cg_marks.c
 cg_players.c
 cg_playerstate.c
 cg_predict.c
-cg_scoreboard.c
+cg_scanner.c
 G:\games\trepidation\source\vms-source\code\cgame\cg_predict.c(787) : warning C4701: local variable 'predictCmd' may be used without having been initialized
 G:\games\trepidation\source\vms-source\code\cgame\cg_predict.c(797) : warning C4701: local variable 'stateIndex' may be used without having been initialized
+cg_scoreboard.c
 cg_servercmds.c
 cg_snapshot.c
 cg_syscalls.c
@@ -98,8 +101,10 @@ cg_unlagged.c
 cg_view.c
 G:\games\trepidation\source\vms-source\code\cgame\cg_unlagged.c(198) : warning C4701: local variable 'fleshEntityNum' may be used without having been initialized
 cg_weapons.c
-G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(669) : warning C4305: '=' : truncation from 'const double ' to 'float '
-G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(669) : warning C4305: '=' : truncation from 'const double ' to 'float '
+G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(730) : warning C4305: '=' : truncation from 'const double ' to 'float '
+G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(730) : warning C4305: '=' : truncation from 'const double ' to 'float '
+G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(2460) : warning C4505: 'CG_LightningBolt' : unreferenced local function has been removed
+        G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(1023) : see declaration of 'CG_LightningBolt'
 q_math.c
 G:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
 q_shared.c
@@ -110,7 +115,7 @@ Linking...
 --------------------Configuration: game - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP18.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP54D.tmp" with contents
 [
 /nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "GLOBALRANK" /Fp".\Release/game.pch" /YX /Fo".\Release/" /Fd".\Release/" /FD /c 
 "G:\games\trepidation\source\vms-source\code\game\ai_chat.c"
@@ -148,8 +153,8 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP18.tmp" with 
 "G:\games\trepidation\source\vms-source\code\game\q_math.c"
 "G:\games\trepidation\source\vms-source\code\game\q_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP18.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP19.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP54D.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP54E.tmp" with contents
 [
 kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows /dll /incremental:no /pdb:".\Release/qagamex86.pdb" /map:".\Release/qagamex86.map" /machine:I386 /def:".\game.def" /out:"../Release/qagamex86.dll" /implib:".\Release/qagamex86.lib" 
 ".\Release\ai_chat.obj"
@@ -187,7 +192,7 @@ kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows 
 ".\Release\q_math.obj"
 ".\Release\q_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP19.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP54E.tmp"
 <h3>Output Window</h3>
 Compiling...
 ai_chat.c
@@ -200,7 +205,7 @@ ai_vcmd.c
 bg_misc.c
 bg_pmove.c
 bg_slidemove.c
-G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1734) : warning C4701: local variable 'addTime' may be used without having been initialized
+G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1841) : warning C4701: local variable 'addTime' may be used without having been initialized
 g_active.c
 g_arenas.c
 g_bot.c
@@ -210,8 +215,10 @@ g_combat.c
 g_items.c
 g_main.c
 g_mem.c
+G:\games\trepidation\source\vms-source\code\game\g_main.c(1936) : warning C4701: local variable 'valid_count' may be used without having been initialized
 g_misc.c
 g_missile.c
+G:\games\trepidation\source\vms-source\code\game\g_missile.c(31) : warning C4130: '==' : logical operation on address of string constant
 g_mover.c
 g_session.c
 g_spawn.c
@@ -224,6 +231,7 @@ g_unlagged.c
 G:\games\trepidation\source\vms-source\code\game\g_unlagged.c(394) : warning C4189: 'worldUp' : local variable is initialized but not referenced
 g_utils.c
 g_weapon.c
+G:\games\trepidation\source\vms-source\code\game\g_weapon.c(444) : warning C4305: '+=' : truncation from 'const double ' to 'float '
 q_math.c
 G:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
 q_shared.c
@@ -233,9 +241,9 @@ Linking...
 --------------------Configuration: q3_ui - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP1D.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP552.tmp" with contents
 [
-/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "Q3_UI_EXPORTS" /Fp"Release/q3_ui.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "Q3_UI_EXPORTS" /FR"Release/" /Fp"Release/q3_ui.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
 "G:\games\trepidation\source\vms-source\code\game\bg_misc.c"
 "G:\games\trepidation\source\vms-source\code\game\q_math.c"
 "G:\games\trepidation\source\vms-source\code\game\q_shared.c"
@@ -279,8 +287,8 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP1D.tmp" with 
 "G:\games\trepidation\source\vms-source\code\q3_ui\ui_teamorders.c"
 "G:\games\trepidation\source\vms-source\code\q3_ui\ui_video.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP1D.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP1E.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP552.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP553.tmp" with contents
 [
 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"Release/uix86.pdb" /machine:I386 /def:".\ui.def" /out:"../Release/uix86.dll" /implib:"Release/uix86.lib" 
 ".\Release\bg_misc.obj"
@@ -328,7 +336,7 @@ kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32
 "\games\trepidation\source\vms-source\code\cgame\Release\cgamex86.lib"
 "\games\trepidation\source\vms-source\code\game\Release\qagamex86.lib"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP1E.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP553.tmp"
 <h3>Output Window</h3>
 Compiling...
 bg_misc.c
@@ -383,7 +391,7 @@ Linking...
 
 
 <h3>Results</h3>
-uix86.dll - 0 error(s), 15 warning(s)
+uix86.dll - 0 error(s), 19 warning(s)
 </pre>
 </body>
 </html>

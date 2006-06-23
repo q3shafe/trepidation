@@ -45,7 +45,7 @@ line 26
 ADDRLP4 0
 CNSTI4 2
 ASGNI4
-LABELV $72
+LABELV $74
 line 27
 ;27:		if ( ! ( weapons & ( 1 << i ) ) ) {
 ADDRLP4 8
@@ -56,41 +56,41 @@ INDIRI4
 LSHI4
 BANDI4
 CNSTI4 0
-NEI4 $76
+NEI4 $78
 line 28
 ;28:			continue;
-ADDRGP4 $73
+ADDRGP4 $75
 JUMPV
-LABELV $76
+LABELV $78
 line 30
 ;29:		}
 ;30:		switch ( i ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $78
+LTI4 $80
 ADDRLP4 0
 INDIRI4
 CNSTI4 7
-GTI4 $78
+GTI4 $80
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $83-12
+ADDRGP4 $85-12
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $83
+LABELV $85
+address $82
+address $82
+address $82
 address $80
-address $80
-address $80
-address $78
-address $80
+address $82
 code
-LABELV $80
+LABELV $82
 line 38
 ;31:		case WP_ROCKET_LAUNCHER:
 ;32:		case WP_GRENADE_LAUNCHER:
@@ -119,9 +119,9 @@ ADDI4
 ASGNI4
 line 39
 ;39:			break;
-ADDRGP4 $79
+ADDRGP4 $81
 JUMPV
-LABELV $78
+LABELV $80
 line 41
 ;40:		default:
 ;41:			total += cg.snap->ps.ammo[i] * 200;
@@ -144,14 +144,14 @@ ADDI4
 ASGNI4
 line 42
 ;42:			break;
-LABELV $79
+LABELV $81
 line 44
 ;43:		}
 ;44:		if ( total >= 5000 ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 5000
-LTI4 $85
+LTI4 $87
 line 45
 ;45:			cg.lowAmmoWarning = 0;
 ADDRGP4 cg+124404
@@ -159,13 +159,13 @@ CNSTI4 0
 ASGNI4
 line 46
 ;46:			return;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $85
+LABELV $87
 line 48
 ;47:		}
 ;48:	}
-LABELV $73
+LABELV $75
 line 26
 ADDRLP4 0
 ADDRLP4 0
@@ -176,7 +176,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 11
-LTI4 $72
+LTI4 $74
 line 50
 ;49:
 ;50:	previous = cg.lowAmmoWarning;
@@ -190,7 +190,7 @@ line 52
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $89
+NEI4 $91
 line 53
 ;53:		cg.lowAmmoWarning = 2;
 ADDRGP4 cg+124404
@@ -198,9 +198,9 @@ CNSTI4 2
 ASGNI4
 line 54
 ;54:	} else {
-ADDRGP4 $90
+ADDRGP4 $92
 JUMPV
-LABELV $89
+LABELV $91
 line 55
 ;55:		cg.lowAmmoWarning = 1;
 ADDRGP4 cg+124404
@@ -208,7 +208,7 @@ CNSTI4 1
 ASGNI4
 line 56
 ;56:	}
-LABELV $90
+LABELV $92
 line 59
 ;57:
 ;58:	// play a sound on transitions
@@ -217,10 +217,10 @@ ADDRGP4 cg+124404
 INDIRI4
 ADDRLP4 12
 INDIRI4
-EQI4 $93
+EQI4 $95
 line 60
 ;60:		trap_S_StartLocalSound( cgs.media.noAmmoSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+152340+728
+ADDRGP4 cgs+152340+736
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -230,10 +230,10 @@ CALLV
 pop
 line 61
 ;61:	}
-LABELV $93
+LABELV $95
 line 62
 ;62:}
-LABELV $70
+LABELV $72
 endproc CG_CheckAmmo 20 8
 export CG_DamageFeedback
 proc CG_DamageFeedback 72 16
@@ -277,7 +277,7 @@ line 84
 ADDRLP4 20
 INDIRI4
 CNSTI4 40
-GEI4 $102
+GEI4 $104
 line 85
 ;85:		scale = 1;
 ADDRLP4 28
@@ -285,9 +285,9 @@ CNSTF4 1065353216
 ASGNF4
 line 86
 ;86:	} else {
-ADDRGP4 $103
+ADDRGP4 $105
 JUMPV
-LABELV $102
+LABELV $104
 line 87
 ;87:		scale = 40.0 / health;
 ADDRLP4 28
@@ -299,7 +299,7 @@ DIVF4
 ASGNF4
 line 88
 ;88:	}
-LABELV $103
+LABELV $105
 line 89
 ;89:	kick = damage * scale;
 ADDRLP4 12
@@ -316,25 +316,25 @@ line 91
 ADDRLP4 12
 INDIRF4
 CNSTF4 1084227584
-GEF4 $104
+GEF4 $106
 line 92
 ;92:		kick = 5;
 ADDRLP4 12
 CNSTF4 1084227584
 ASGNF4
-LABELV $104
+LABELV $106
 line 93
 ;93:	if (kick > 10)
 ADDRLP4 12
 INDIRF4
 CNSTF4 1092616192
-LEF4 $106
+LEF4 $108
 line 94
 ;94:		kick = 10;
 ADDRLP4 12
 CNSTF4 1092616192
 ASGNF4
-LABELV $106
+LABELV $108
 line 97
 ;95:
 ;96:	// if yaw and pitch are both 255, make the damage always centered (falling, etc)
@@ -346,12 +346,12 @@ ADDRFP4 0
 INDIRI4
 ADDRLP4 60
 INDIRI4
-NEI4 $108
+NEI4 $110
 ADDRFP4 4
 INDIRI4
 ADDRLP4 60
 INDIRI4
-NEI4 $108
+NEI4 $110
 line 98
 ;98:		cg.damageX = 0;
 ADDRGP4 cg+124704
@@ -376,9 +376,9 @@ NEGF4
 ASGNF4
 line 102
 ;102:	} else {
-ADDRGP4 $109
+ADDRGP4 $111
 JUMPV
-LABELV $108
+LABELV $110
 line 104
 ;103:		// positional
 ;104:		pitch = pitchByte / 255.0 * 360;
@@ -561,7 +561,7 @@ line 122
 ADDRLP4 44
 INDIRF4
 CNSTF4 1036831949
-GEF4 $160
+GEF4 $162
 line 123
 ;123:			dist = 0.1f;
 ADDRLP4 44
@@ -569,7 +569,7 @@ CNSTF4 1036831949
 ASGNF4
 line 124
 ;124:		}
-LABELV $160
+LABELV $162
 line 126
 ;125:
 ;126:		cg.v_dmg_roll = kick * left;
@@ -597,7 +597,7 @@ line 130
 ADDRLP4 16
 INDIRF4
 CNSTF4 1036831949
-GTF4 $164
+GTF4 $166
 line 131
 ;131:			front = 0.1f;
 ADDRLP4 16
@@ -605,7 +605,7 @@ CNSTF4 1036831949
 ASGNF4
 line 132
 ;132:		}
-LABELV $164
+LABELV $166
 line 133
 ;133:		cg.damageX = -left / front;
 ADDRGP4 cg+124704
@@ -627,7 +627,7 @@ DIVF4
 ASGNF4
 line 135
 ;135:	}
-LABELV $109
+LABELV $111
 line 138
 ;136:
 ;137:	// clamp the position
@@ -635,7 +635,7 @@ line 138
 ADDRGP4 cg+124704
 INDIRF4
 CNSTF4 1065353216
-LEF4 $168
+LEF4 $170
 line 139
 ;139:		cg.damageX = 1.0;
 ADDRGP4 cg+124704
@@ -643,13 +643,13 @@ CNSTF4 1065353216
 ASGNF4
 line 140
 ;140:	}
-LABELV $168
+LABELV $170
 line 141
 ;141:	if ( cg.damageX < - 1.0 ) {
 ADDRGP4 cg+124704
 INDIRF4
 CNSTF4 3212836864
-GEF4 $172
+GEF4 $174
 line 142
 ;142:		cg.damageX = -1.0;
 ADDRGP4 cg+124704
@@ -657,14 +657,14 @@ CNSTF4 3212836864
 ASGNF4
 line 143
 ;143:	}
-LABELV $172
+LABELV $174
 line 145
 ;144:
 ;145:	if ( cg.damageY > 1.0 ) {
 ADDRGP4 cg+124708
 INDIRF4
 CNSTF4 1065353216
-LEF4 $176
+LEF4 $178
 line 146
 ;146:		cg.damageY = 1.0;
 ADDRGP4 cg+124708
@@ -672,13 +672,13 @@ CNSTF4 1065353216
 ASGNF4
 line 147
 ;147:	}
-LABELV $176
+LABELV $178
 line 148
 ;148:	if ( cg.damageY < - 1.0 ) {
 ADDRGP4 cg+124708
 INDIRF4
 CNSTF4 3212836864
-GEF4 $180
+GEF4 $182
 line 149
 ;149:		cg.damageY = -1.0;
 ADDRGP4 cg+124708
@@ -686,7 +686,7 @@ CNSTF4 3212836864
 ASGNF4
 line 150
 ;150:	}
-LABELV $180
+LABELV $182
 line 153
 ;151:
 ;152:	// don't let the screen flashes vary as much
@@ -694,7 +694,7 @@ line 153
 ADDRLP4 12
 INDIRF4
 CNSTF4 1092616192
-LEF4 $184
+LEF4 $186
 line 154
 ;154:		kick = 10;
 ADDRLP4 12
@@ -702,7 +702,7 @@ CNSTF4 1092616192
 ASGNF4
 line 155
 ;155:	}
-LABELV $184
+LABELV $186
 line 156
 ;156:	cg.damageValue = kick;
 ADDRGP4 cg+124712
@@ -730,7 +730,7 @@ CVIF4 4
 ASGNF4
 line 159
 ;159:}
-LABELV $98
+LABELV $100
 endproc CG_DamageFeedback 72 16
 export CG_Respawn
 proc CG_Respawn 0 0
@@ -774,7 +774,7 @@ INDIRI4
 ASGNI4
 line 180
 ;180:}
-LABELV $191
+LABELV $193
 endproc CG_Respawn 0 0
 export CG_CheckPlayerstateEvents
 proc CG_CheckPlayerstateEvents 52 8
@@ -808,7 +808,7 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $198
+EQI4 $200
 ADDRLP4 16
 INDIRI4
 ADDRFP4 4
@@ -817,7 +817,7 @@ ADDRLP4 12
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $198
+EQI4 $200
 line 195
 ;195:		cent = &cg_entities[ ps->clientNum ];
 ADDRLP4 4
@@ -870,7 +870,7 @@ CALLV
 pop
 line 199
 ;199:	}
-LABELV $198
+LABELV $200
 line 201
 ;200:
 ;201:	cent = &cg.predictedPlayerEntity; // cg_entities[ ps->clientNum ];
@@ -889,9 +889,9 @@ INDIRI4
 CNSTI4 2
 SUBI4
 ASGNI4
-ADDRGP4 $204
+ADDRGP4 $206
 JUMPV
-LABELV $201
+LABELV $203
 line 205
 ;204:		// if we have a new predictable event
 ;205:		if ( i >= ops->eventSequence
@@ -910,7 +910,7 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 28
 INDIRI4
-GEI4 $207
+GEI4 $209
 ADDRLP4 32
 CNSTI4 2
 ASGNI4
@@ -921,7 +921,7 @@ INDIRI4
 ADDRLP4 32
 INDIRI4
 SUBI4
-LEI4 $205
+LEI4 $207
 ADDRLP4 36
 ADDRLP4 0
 INDIRI4
@@ -952,8 +952,8 @@ INDIRI4
 ADDP4
 ADDP4
 INDIRI4
-EQI4 $205
-LABELV $207
+EQI4 $207
+LABELV $209
 line 208
 ;206:			// or the server told us to play another event instead of a predicted event we already issued
 ;207:			// or something the server told us changed our prediction causing a different event
@@ -1046,10 +1046,10 @@ ADDI4
 ASGNI4
 line 218
 ;218:		}
-LABELV $205
+LABELV $207
 line 219
 ;219:	}
-LABELV $202
+LABELV $204
 line 203
 ADDRLP4 0
 ADDRLP4 0
@@ -1057,7 +1057,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $204
+LABELV $206
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -1065,10 +1065,10 @@ INDIRP4
 CNSTI4 108
 ADDP4
 INDIRI4
-LTI4 $201
+LTI4 $203
 line 220
 ;220:}
-LABELV $197
+LABELV $199
 endproc CG_CheckPlayerstateEvents 52 8
 export CG_CheckChangedPredictableEvents
 proc CG_CheckChangedPredictableEvents 24 8
@@ -1100,9 +1100,9 @@ INDIRI4
 CNSTI4 2
 SUBI4
 ASGNI4
-ADDRGP4 $215
+ADDRGP4 $217
 JUMPV
-LABELV $212
+LABELV $214
 line 235
 ;234:		//
 ;235:		if (i >= cg.eventSequence) {
@@ -1110,12 +1110,12 @@ ADDRLP4 0
 INDIRI4
 ADDRGP4 cg+108856
 INDIRI4
-LTI4 $216
+LTI4 $218
 line 236
 ;236:			continue;
-ADDRGP4 $213
+ADDRGP4 $215
 JUMPV
-LABELV $216
+LABELV $218
 line 239
 ;237:		}
 ;238:		// if this event is not further back in than the maximum predictable events we remember
@@ -1126,7 +1126,7 @@ ADDRGP4 cg+108856
 INDIRI4
 CNSTI4 16
 SUBI4
-LEI4 $219
+LEI4 $221
 line 241
 ;240:			// if the new playerstate event is different from a previously predicted one
 ;241:			if ( ps->events[i & (MAX_PS_EVENTS-1)] != cg.predictableEvents[i & (MAX_PREDICTED_EVENTS-1) ] ) {
@@ -1156,7 +1156,7 @@ LSHI4
 ADDRGP4 cg+108860
 ADDP4
 INDIRI4
-EQI4 $222
+EQI4 $224
 line 243
 ;242:
 ;243:				event = ps->events[ i & (MAX_PS_EVENTS-1) ];
@@ -1235,26 +1235,26 @@ line 250
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $226
+EQI4 $228
 line 251
 ;251:					CG_Printf("WARNING: changed predicted event\n");
-ADDRGP4 $229
+ADDRGP4 $231
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
 line 252
 ;252:				}
-LABELV $226
+LABELV $228
 line 253
 ;253:			}
-LABELV $222
+LABELV $224
 line 254
 ;254:		}
-LABELV $219
+LABELV $221
 line 255
 ;255:	}
-LABELV $213
+LABELV $215
 line 233
 ADDRLP4 0
 ADDRLP4 0
@@ -1262,7 +1262,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $215
+LABELV $217
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -1270,10 +1270,10 @@ INDIRP4
 CNSTI4 108
 ADDP4
 INDIRI4
-LTI4 $212
+LTI4 $214
 line 256
 ;256:}
-LABELV $210
+LABELV $212
 endproc CG_CheckChangedPredictableEvents 24 8
 proc pushReward 4 0
 line 263
@@ -1289,7 +1289,7 @@ line 264
 ADDRGP4 cg+124436
 INDIRI4
 CNSTI4 9
-GEI4 $231
+GEI4 $233
 line 265
 ;265:		cg.rewardStack++;
 ADDRLP4 0
@@ -1338,10 +1338,10 @@ INDIRI4
 ASGNI4
 line 269
 ;269:	}
-LABELV $231
+LABELV $233
 line 270
 ;270:}
-LABELV $230
+LABELV $232
 endproc pushReward 4 0
 export CG_CheckLocalSounds
 proc CG_CheckLocalSounds 88 12
@@ -1374,12 +1374,12 @@ ADDRLP4 20
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $242
+EQI4 $244
 line 283
 ;283:		return;
-ADDRGP4 $241
+ADDRGP4 $243
 JUMPV
-LABELV $242
+LABELV $244
 line 287
 ;284:	}
 ;285:
@@ -1400,7 +1400,7 @@ ADDRLP4 24
 INDIRI4
 ADDP4
 INDIRI4
-LEI4 $244
+LEI4 $246
 line 288
 ;288:		armor  = ps->persistant[PERS_ATTACKEE_ARMOR] & 0xff;
 ADDRLP4 16
@@ -1434,7 +1434,7 @@ line 299
 ;297:		}
 ;298:#else
 ;299:		trap_S_StartLocalSound( cgs.media.hitSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+152340+776
+ADDRGP4 cgs+152340+784
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -1445,9 +1445,9 @@ pop
 line 301
 ;300:#endif
 ;301:	} else if ( ps->persistant[PERS_HITS] < ops->persistant[PERS_HITS] ) {
-ADDRGP4 $245
+ADDRGP4 $247
 JUMPV
-LABELV $244
+LABELV $246
 ADDRLP4 28
 CNSTI4 252
 ASGNI4
@@ -1463,10 +1463,10 @@ ADDRLP4 28
 INDIRI4
 ADDP4
 INDIRI4
-GEI4 $248
+GEI4 $250
 line 302
 ;302:		trap_S_StartLocalSound( cgs.media.hitTeamSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+152340+788
+ADDRGP4 cgs+152340+796
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -1476,8 +1476,8 @@ CALLV
 pop
 line 303
 ;303:	}
-LABELV $248
-LABELV $245
+LABELV $250
+LABELV $247
 line 306
 ;304:
 ;305:	// health changes of more than -1 should make pain sounds
@@ -1499,7 +1499,7 @@ ADDP4
 INDIRI4
 CNSTI4 1
 SUBI4
-GEI4 $252
+GEI4 $254
 line 307
 ;307:		if ( ps->stats[STAT_HEALTH] > 0 ) {
 ADDRFP4 0
@@ -1508,7 +1508,7 @@ CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 0
-LEI4 $254
+LEI4 $256
 line 308
 ;308:			CG_PainEvent( &cg.predictedPlayerEntity, ps->stats[STAT_HEALTH] );
 ADDRGP4 cg+108104
@@ -1524,10 +1524,10 @@ CALLV
 pop
 line 309
 ;309:		}
-LABELV $254
+LABELV $256
 line 310
 ;310:	}
-LABELV $252
+LABELV $254
 line 314
 ;311:
 ;312:
@@ -1536,12 +1536,12 @@ line 314
 ADDRGP4 cg+24
 INDIRI4
 CNSTI4 0
-EQI4 $257
+EQI4 $259
 line 315
 ;315:		return;
-ADDRGP4 $241
+ADDRGP4 $243
 JUMPV
-LABELV $257
+LABELV $259
 line 319
 ;316:	}
 ;317:
@@ -1567,13 +1567,13 @@ ADDRLP4 36
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $260
+EQI4 $262
 line 321
 ;321:		pushReward(cgs.media.captureAwardSound, cgs.media.medalCapture, ps->persistant[PERS_CAPTURES]);
-ADDRGP4 cgs+152340+876
+ADDRGP4 cgs+152340+884
 INDIRI4
 ARGI4
-ADDRGP4 cgs+152340+532
+ADDRGP4 cgs+152340+540
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1593,7 +1593,7 @@ ASGNI4
 line 324
 ;323:		//Com_Printf("capture\n");
 ;324:	}
-LABELV $260
+LABELV $262
 line 325
 ;325:	if (ps->persistant[PERS_IMPRESSIVE_COUNT] != ops->persistant[PERS_IMPRESSIVE_COUNT]) {
 ADDRLP4 40
@@ -1611,7 +1611,7 @@ ADDRLP4 40
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $266
+EQI4 $268
 line 333
 ;326:#ifdef MISSIONPACK
 ;327:		if (ps->persistant[PERS_IMPRESSIVE_COUNT] == 1) {
@@ -1622,7 +1622,7 @@ line 333
 ;332:#else
 ;333:		sfx = cgs.media.impressiveSound;
 ADDRLP4 4
-ADDRGP4 cgs+152340+792
+ADDRGP4 cgs+152340+800
 INDIRI4
 ASGNI4
 line 335
@@ -1631,7 +1631,7 @@ line 335
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRGP4 cgs+152340+512
+ADDRGP4 cgs+152340+520
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1651,7 +1651,7 @@ ASGNI4
 line 338
 ;337:		//Com_Printf("impressive\n");
 ;338:	}
-LABELV $266
+LABELV $268
 line 339
 ;339:	if (ps->persistant[PERS_EXCELLENT_COUNT] != ops->persistant[PERS_EXCELLENT_COUNT]) {
 ADDRLP4 44
@@ -1669,7 +1669,7 @@ ADDRLP4 44
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $272
+EQI4 $274
 line 347
 ;340:#ifdef MISSIONPACK
 ;341:		if (ps->persistant[PERS_EXCELLENT_COUNT] == 1) {
@@ -1680,7 +1680,7 @@ line 347
 ;346:#else
 ;347:		sfx = cgs.media.excellentSound;
 ADDRLP4 4
-ADDRGP4 cgs+152340+796
+ADDRGP4 cgs+152340+804
 INDIRI4
 ASGNI4
 line 349
@@ -1689,7 +1689,7 @@ line 349
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRGP4 cgs+152340+516
+ADDRGP4 cgs+152340+524
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1709,7 +1709,7 @@ ASGNI4
 line 352
 ;351:		//Com_Printf("excellent\n");
 ;352:	}
-LABELV $272
+LABELV $274
 line 353
 ;353:	if (ps->persistant[PERS_GAUNTLET_FRAG_COUNT] != ops->persistant[PERS_GAUNTLET_FRAG_COUNT]) {
 ADDRLP4 48
@@ -1727,7 +1727,7 @@ ADDRLP4 48
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $278
+EQI4 $280
 line 361
 ;354:#ifdef MISSIONPACK
 ;355:		if (ops->persistant[PERS_GAUNTLET_FRAG_COUNT] == 1) {
@@ -1738,7 +1738,7 @@ line 361
 ;360:#else
 ;361:		sfx = cgs.media.humiliationSound;
 ADDRLP4 4
-ADDRGP4 cgs+152340+804
+ADDRGP4 cgs+152340+812
 INDIRI4
 ASGNI4
 line 363
@@ -1747,7 +1747,7 @@ line 363
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRGP4 cgs+152340+520
+ADDRGP4 cgs+152340+528
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1767,7 +1767,7 @@ ASGNI4
 line 366
 ;365:		//Com_Printf("guantlet frag\n");
 ;366:	}
-LABELV $278
+LABELV $280
 line 367
 ;367:	if (ps->persistant[PERS_DEFEND_COUNT] != ops->persistant[PERS_DEFEND_COUNT]) {
 ADDRLP4 52
@@ -1785,13 +1785,13 @@ ADDRLP4 52
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $284
+EQI4 $286
 line 368
 ;368:		pushReward(cgs.media.defendSound, cgs.media.medalDefend, ps->persistant[PERS_DEFEND_COUNT]);
-ADDRGP4 cgs+152340+812
+ADDRGP4 cgs+152340+820
 INDIRI4
 ARGI4
-ADDRGP4 cgs+152340+524
+ADDRGP4 cgs+152340+532
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1811,7 +1811,7 @@ ASGNI4
 line 371
 ;370:		//Com_Printf("defend\n");
 ;371:	}
-LABELV $284
+LABELV $286
 line 372
 ;372:	if (ps->persistant[PERS_ASSIST_COUNT] != ops->persistant[PERS_ASSIST_COUNT]) {
 ADDRLP4 56
@@ -1829,13 +1829,13 @@ ADDRLP4 56
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $290
+EQI4 $292
 line 373
 ;373:		pushReward(cgs.media.assistSound, cgs.media.medalAssist, ps->persistant[PERS_ASSIST_COUNT]);
-ADDRGP4 cgs+152340+808
+ADDRGP4 cgs+152340+816
 INDIRI4
 ARGI4
-ADDRGP4 cgs+152340+528
+ADDRGP4 cgs+152340+536
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1855,7 +1855,7 @@ ASGNI4
 line 376
 ;375:		//Com_Printf("assist\n");
 ;376:	}
-LABELV $290
+LABELV $292
 line 378
 ;377:	// if any of the player event bits changed
 ;378:	if (ps->persistant[PERS_PLAYEREVENTS] != ops->persistant[PERS_PLAYEREVENTS]) {
@@ -1874,7 +1874,7 @@ ADDRLP4 60
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $296
+EQI4 $298
 line 379
 ;379:		if ((ps->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_DENIEDREWARD) !=
 ADDRLP4 64
@@ -1901,12 +1901,12 @@ INDIRI4
 ADDRLP4 68
 INDIRI4
 BANDI4
-EQI4 $298
+EQI4 $300
 line 380
 ;380:				(ops->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_DENIEDREWARD)) {
 line 381
 ;381:			trap_S_StartLocalSound( cgs.media.deniedSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+800
+ADDRGP4 cgs+152340+808
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -1916,9 +1916,9 @@ CALLV
 pop
 line 382
 ;382:		}
-ADDRGP4 $299
+ADDRGP4 $301
 JUMPV
-LABELV $298
+LABELV $300
 line 383
 ;383:		else if ((ps->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_GAUNTLETREWARD) !=
 ADDRLP4 72
@@ -1945,12 +1945,12 @@ INDIRI4
 ADDRLP4 76
 INDIRI4
 BANDI4
-EQI4 $302
+EQI4 $304
 line 384
 ;384:				(ops->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_GAUNTLETREWARD)) {
 line 385
 ;385:			trap_S_StartLocalSound( cgs.media.humiliationSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+804
+ADDRGP4 cgs+152340+812
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -1960,9 +1960,9 @@ CALLV
 pop
 line 386
 ;386:		}
-ADDRGP4 $303
+ADDRGP4 $305
 JUMPV
-LABELV $302
+LABELV $304
 line 387
 ;387:		else if ((ps->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_HOLYSHIT) !=
 ADDRLP4 80
@@ -1989,12 +1989,12 @@ INDIRI4
 ADDRLP4 84
 INDIRI4
 BANDI4
-EQI4 $306
+EQI4 $308
 line 388
 ;388:				(ops->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_HOLYSHIT)) {
 line 389
 ;389:			trap_S_StartLocalSound( cgs.media.holyShitSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+960
+ADDRGP4 cgs+152340+968
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2004,9 +2004,9 @@ CALLV
 pop
 line 390
 ;390:		}
-LABELV $306
-LABELV $303
-LABELV $299
+LABELV $308
+LABELV $305
+LABELV $301
 line 391
 ;391:		reward = qtrue;
 ADDRLP4 0
@@ -2014,7 +2014,7 @@ CNSTI4 1
 ASGNI4
 line 392
 ;392:	}
-LABELV $296
+LABELV $298
 line 395
 ;393:
 ;394:	// check for flag pickup
@@ -2022,7 +2022,7 @@ line 395
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
-LTI4 $310
+LTI4 $312
 line 396
 ;396:		if ((ps->powerups[PW_REDFLAG] != ops->powerups[PW_REDFLAG] && ps->powerups[PW_REDFLAG]) ||
 ADDRLP4 64
@@ -2044,12 +2044,12 @@ ADDRLP4 64
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $316
+EQI4 $318
 ADDRLP4 68
 INDIRI4
 CNSTI4 0
-NEI4 $317
-LABELV $316
+NEI4 $319
+LABELV $318
 ADDRLP4 72
 CNSTI4 344
 ASGNI4
@@ -2069,12 +2069,12 @@ ADDRLP4 72
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $318
+EQI4 $320
 ADDRLP4 76
 INDIRI4
 CNSTI4 0
-NEI4 $317
-LABELV $318
+NEI4 $319
+LABELV $320
 ADDRLP4 80
 CNSTI4 348
 ASGNI4
@@ -2094,19 +2094,19 @@ ADDRLP4 80
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $313
+EQI4 $315
 ADDRLP4 84
 INDIRI4
 CNSTI4 0
-EQI4 $313
-LABELV $317
+EQI4 $315
+LABELV $319
 line 399
 ;397:			(ps->powerups[PW_BLUEFLAG] != ops->powerups[PW_BLUEFLAG] && ps->powerups[PW_BLUEFLAG]) ||
 ;398:			(ps->powerups[PW_NEUTRALFLAG] != ops->powerups[PW_NEUTRALFLAG] && ps->powerups[PW_NEUTRALFLAG]) )
 ;399:		{
 line 400
 ;400:			trap_S_StartLocalSound( cgs.media.youHaveFlagSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+952
+ADDRGP4 cgs+152340+960
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2116,10 +2116,10 @@ CALLV
 pop
 line 401
 ;401:		}
-LABELV $313
+LABELV $315
 line 402
 ;402:	}
-LABELV $310
+LABELV $312
 line 405
 ;403:
 ;404:	// lead changes
@@ -2127,14 +2127,14 @@ line 405
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $321
+NEI4 $323
 line 407
 ;406:		//
 ;407:		if ( !cg.warmup ) {
 ADDRGP4 cg+124668
 INDIRI4
 CNSTI4 0
-NEI4 $323
+NEI4 $325
 line 409
 ;408:			// never play lead changes during warmup
 ;409:			if ( ps->persistant[PERS_RANK] != ops->persistant[PERS_RANK] ) {
@@ -2153,13 +2153,13 @@ ADDRLP4 64
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $326
+EQI4 $328
 line 410
 ;410:				if ( cgs.gametype < GT_TEAM) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
-GEI4 $328
+GEI4 $330
 line 411
 ;411:					if (  ps->persistant[PERS_RANK] == 0 ) {
 ADDRFP4 0
@@ -2168,10 +2168,10 @@ CNSTI4 256
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $331
+NEI4 $333
 line 412
 ;412:						CG_AddBufferedSound(cgs.media.takenLeadSound);
-ADDRGP4 cgs+152340+828
+ADDRGP4 cgs+152340+836
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2179,19 +2179,19 @@ CALLV
 pop
 line 413
 ;413:					} else if ( ps->persistant[PERS_RANK] == RANK_TIED_FLAG ) {
-ADDRGP4 $332
+ADDRGP4 $334
 JUMPV
-LABELV $331
+LABELV $333
 ADDRFP4 0
 INDIRP4
 CNSTI4 256
 ADDP4
 INDIRI4
 CNSTI4 16384
-NEI4 $335
+NEI4 $337
 line 414
 ;414:						CG_AddBufferedSound(cgs.media.tiedLeadSound);
-ADDRGP4 cgs+152340+832
+ADDRGP4 cgs+152340+840
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2199,9 +2199,9 @@ CALLV
 pop
 line 415
 ;415:					} else if ( ( ops->persistant[PERS_RANK] & ~RANK_TIED_FLAG ) == 0 ) {
-ADDRGP4 $336
+ADDRGP4 $338
 JUMPV
-LABELV $335
+LABELV $337
 ADDRFP4 4
 INDIRP4
 CNSTI4 256
@@ -2210,10 +2210,10 @@ INDIRI4
 CNSTI4 -16385
 BANDI4
 CNSTI4 0
-NEI4 $339
+NEI4 $341
 line 416
 ;416:						CG_AddBufferedSound(cgs.media.lostLeadSound);
-ADDRGP4 cgs+152340+836
+ADDRGP4 cgs+152340+844
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2221,21 +2221,21 @@ CALLV
 pop
 line 417
 ;417:					}
-LABELV $339
-LABELV $336
-LABELV $332
+LABELV $341
+LABELV $338
+LABELV $334
 line 418
 ;418:				}
-LABELV $328
+LABELV $330
 line 419
 ;419:			}
-LABELV $326
+LABELV $328
 line 420
 ;420:		}
-LABELV $323
+LABELV $325
 line 421
 ;421:	}
-LABELV $321
+LABELV $323
 line 424
 ;422:
 ;423:	// timelimit warnings
@@ -2243,7 +2243,7 @@ line 424
 ADDRGP4 cgs+31476
 INDIRI4
 CNSTI4 0
-LEI4 $343
+LEI4 $345
 line 427
 ;425:		int		msec;
 ;426:
@@ -2262,7 +2262,7 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-NEI4 $348
+NEI4 $350
 ADDRLP4 64
 INDIRI4
 CNSTI4 1000
@@ -2273,7 +2273,7 @@ MULI4
 MULI4
 CNSTI4 2000
 ADDI4
-LEI4 $348
+LEI4 $350
 line 429
 ;429:			cg.timelimitWarnings |= 1 | 2 | 4;
 ADDRLP4 68
@@ -2289,7 +2289,7 @@ BORI4
 ASGNI4
 line 430
 ;430:			trap_S_StartLocalSound( cgs.media.suddenDeathSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+760
+ADDRGP4 cgs+152340+768
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2299,9 +2299,9 @@ CALLV
 pop
 line 431
 ;431:		}
-ADDRGP4 $349
+ADDRGP4 $351
 JUMPV
-LABELV $348
+LABELV $350
 line 432
 ;432:		else if ( !( cg.timelimitWarnings & 2 ) && msec > (cgs.timelimit - 1) * 60 * 1000 ) {
 ADDRGP4 cg+107616
@@ -2309,7 +2309,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-NEI4 $355
+NEI4 $357
 ADDRLP4 64
 INDIRI4
 CNSTI4 1000
@@ -2320,7 +2320,7 @@ MULI4
 MULI4
 CNSTI4 60000
 SUBI4
-LEI4 $355
+LEI4 $357
 line 433
 ;433:			cg.timelimitWarnings |= 1 | 2;
 ADDRLP4 68
@@ -2336,7 +2336,7 @@ BORI4
 ASGNI4
 line 434
 ;434:			trap_S_StartLocalSound( cgs.media.oneMinuteSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+752
+ADDRGP4 cgs+152340+760
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2346,21 +2346,21 @@ CALLV
 pop
 line 435
 ;435:		}
-ADDRGP4 $356
+ADDRGP4 $358
 JUMPV
-LABELV $355
+LABELV $357
 line 436
 ;436:		else if ( cgs.timelimit > 5 && !( cg.timelimitWarnings & 1 ) && msec > (cgs.timelimit - 5) * 60 * 1000 ) {
 ADDRGP4 cgs+31476
 INDIRI4
 CNSTI4 5
-LEI4 $362
+LEI4 $364
 ADDRGP4 cg+107616
 INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-NEI4 $362
+NEI4 $364
 ADDRLP4 64
 INDIRI4
 CNSTI4 1000
@@ -2371,7 +2371,7 @@ MULI4
 MULI4
 CNSTI4 300000
 SUBI4
-LEI4 $362
+LEI4 $364
 line 437
 ;437:			cg.timelimitWarnings |= 1;
 ADDRLP4 68
@@ -2387,7 +2387,7 @@ BORI4
 ASGNI4
 line 438
 ;438:			trap_S_StartLocalSound( cgs.media.fiveMinuteSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+756
+ADDRGP4 cgs+152340+764
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2397,12 +2397,12 @@ CALLV
 pop
 line 439
 ;439:		}
-LABELV $362
-LABELV $356
-LABELV $349
+LABELV $364
+LABELV $358
+LABELV $351
 line 440
 ;440:	}
-LABELV $343
+LABELV $345
 line 443
 ;441:
 ;442:	// fraglimit warnings
@@ -2410,11 +2410,11 @@ line 443
 ADDRGP4 cgs+31468
 INDIRI4
 CNSTI4 0
-LEI4 $370
+LEI4 $372
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
-GEI4 $370
+GEI4 $372
 line 444
 ;444:		highScore = cgs.scores1;
 ADDRLP4 8
@@ -2428,14 +2428,14 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-NEI4 $375
+NEI4 $377
 ADDRLP4 8
 INDIRI4
 ADDRGP4 cgs+31468
 INDIRI4
 CNSTI4 1
 SUBI4
-NEI4 $375
+NEI4 $377
 line 446
 ;446:			cg.fraglimitWarnings |= 1 | 2 | 4;
 ADDRLP4 64
@@ -2451,7 +2451,7 @@ BORI4
 ASGNI4
 line 447
 ;447:			CG_AddBufferedSound(cgs.media.oneFragSound);
-ADDRGP4 cgs+152340+772
+ADDRGP4 cgs+152340+780
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2459,9 +2459,9 @@ CALLV
 pop
 line 448
 ;448:		}
-ADDRGP4 $376
+ADDRGP4 $378
 JUMPV
-LABELV $375
+LABELV $377
 line 449
 ;449:		else if ( cgs.fraglimit > 2 && !( cg.fraglimitWarnings & 2 ) && highScore == (cgs.fraglimit - 2) ) {
 ADDRLP4 64
@@ -2471,14 +2471,14 @@ ADDRGP4 cgs+31468
 INDIRI4
 ADDRLP4 64
 INDIRI4
-LEI4 $382
+LEI4 $384
 ADDRGP4 cg+107620
 INDIRI4
 ADDRLP4 64
 INDIRI4
 BANDI4
 CNSTI4 0
-NEI4 $382
+NEI4 $384
 ADDRLP4 8
 INDIRI4
 ADDRGP4 cgs+31468
@@ -2486,7 +2486,7 @@ INDIRI4
 ADDRLP4 64
 INDIRI4
 SUBI4
-NEI4 $382
+NEI4 $384
 line 450
 ;450:			cg.fraglimitWarnings |= 1 | 2;
 ADDRLP4 68
@@ -2502,7 +2502,7 @@ BORI4
 ASGNI4
 line 451
 ;451:			CG_AddBufferedSound(cgs.media.twoFragSound);
-ADDRGP4 cgs+152340+768
+ADDRGP4 cgs+152340+776
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2510,9 +2510,9 @@ CALLV
 pop
 line 452
 ;452:		}
-ADDRGP4 $383
+ADDRGP4 $385
 JUMPV
-LABELV $382
+LABELV $384
 line 453
 ;453:		else if ( cgs.fraglimit > 3 && !( cg.fraglimitWarnings & 1 ) && highScore == (cgs.fraglimit - 3) ) {
 ADDRLP4 68
@@ -2522,13 +2522,13 @@ ADDRGP4 cgs+31468
 INDIRI4
 ADDRLP4 68
 INDIRI4
-LEI4 $390
+LEI4 $392
 ADDRGP4 cg+107620
 INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-NEI4 $390
+NEI4 $392
 ADDRLP4 8
 INDIRI4
 ADDRGP4 cgs+31468
@@ -2536,7 +2536,7 @@ INDIRI4
 ADDRLP4 68
 INDIRI4
 SUBI4
-NEI4 $390
+NEI4 $392
 line 454
 ;454:			cg.fraglimitWarnings |= 1;
 ADDRLP4 72
@@ -2552,7 +2552,7 @@ BORI4
 ASGNI4
 line 455
 ;455:			CG_AddBufferedSound(cgs.media.threeFragSound);
-ADDRGP4 cgs+152340+764
+ADDRGP4 cgs+152340+772
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2560,15 +2560,15 @@ CALLV
 pop
 line 456
 ;456:		}
-LABELV $390
-LABELV $383
-LABELV $376
+LABELV $392
+LABELV $385
+LABELV $378
 line 457
 ;457:	}
-LABELV $370
+LABELV $372
 line 458
 ;458:}
-LABELV $241
+LABELV $243
 endproc CG_CheckLocalSounds 88 12
 export CG_TransitionPlayerState
 proc CG_TransitionPlayerState 24 12
@@ -2599,7 +2599,7 @@ ADDRLP4 0
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $399
+EQI4 $401
 line 469
 ;469:		cg.thisFrameTeleport = qtrue;
 ADDRGP4 cg+107592
@@ -2616,7 +2616,7 @@ INDIRB
 ASGNB 468
 line 472
 ;472:	}
-LABELV $399
+LABELV $401
 line 475
 ;473:
 ;474:	// damage events (player is getting wounded)
@@ -2640,14 +2640,14 @@ ADDRLP4 8
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $402
+EQI4 $404
 ADDRLP4 4
 INDIRP4
 CNSTI4 180
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $402
+EQI4 $404
 line 476
 ;476:		CG_DamageFeedback( ps->damageYaw, ps->damagePitch, ps->damageCount );
 ADDRLP4 12
@@ -2677,7 +2677,7 @@ CALLV
 pop
 line 477
 ;477:	}
-LABELV $402
+LABELV $404
 line 480
 ;478:
 ;479:	// respawning
@@ -2697,7 +2697,7 @@ ADDRLP4 12
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $404
+EQI4 $406
 line 481
 ;481:		CG_Respawn();
 ADDRGP4 CG_Respawn
@@ -2705,14 +2705,14 @@ CALLV
 pop
 line 482
 ;482:	}
-LABELV $404
+LABELV $406
 line 484
 ;483:
 ;484:	if ( cg.mapRestart ) {
 ADDRGP4 cg+107624
 INDIRI4
 CNSTI4 0
-EQI4 $406
+EQI4 $408
 line 485
 ;485:		CG_Respawn();
 ADDRGP4 CG_Respawn
@@ -2725,7 +2725,7 @@ CNSTI4 0
 ASGNI4
 line 487
 ;487:	}
-LABELV $406
+LABELV $408
 line 489
 ;488:
 ;489:	if ( cg.snap->ps.pm_type != PM_INTERMISSION 
@@ -2735,14 +2735,14 @@ CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 5
-EQI4 $410
+EQI4 $412
 ADDRFP4 0
 INDIRP4
 CNSTI4 260
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $410
+EQI4 $412
 line 490
 ;490:		&& ps->persistant[PERS_TEAM] != TEAM_SPECTATOR ) {
 line 491
@@ -2758,7 +2758,7 @@ CALLV
 pop
 line 492
 ;492:	}
-LABELV $410
+LABELV $412
 line 495
 ;493:
 ;494:	// check for going low on ammo
@@ -2798,7 +2798,7 @@ ADDRLP4 16
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $413
+EQI4 $415
 line 502
 ;502:		cg.duckChange = ps->viewheight - ops->viewheight;
 ADDRLP4 20
@@ -2828,12 +2828,15 @@ INDIRI4
 ASGNI4
 line 504
 ;504:	}
-LABELV $413
+LABELV $415
 line 505
 ;505:}
-LABELV $398
+LABELV $400
 endproc CG_TransitionPlayerState 24 12
 import eventnames
+import CG_DrawScanner
+import CG_ScannerOff_f
+import CG_ScannerOn_f
 import CG_NewParticleArea
 import initparticles
 import CG_ParticleExplosion
@@ -3080,6 +3083,7 @@ import CG_ConfigString
 import CG_Cvar_ClampInt
 import CG_AddBoundingBox
 import CG_PredictWeaponEffects
+import cg_playerOrigins
 import cg_plOut
 import cg_latentCmds
 import cg_latentSnaps
@@ -3193,6 +3197,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -3357,7 +3362,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $229
+LABELV $231
 byte 1 87
 byte 1 65
 byte 1 82

@@ -1,8 +1,8 @@
 data
 align 4
 LABELV quality_items
-address $67
-address $68
+address $69
+address $70
 byte 4 0
 code
 proc UI_SoundOptionsMenu_Event 8 8
@@ -75,12 +75,12 @@ line 63
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
-EQI4 $71
+EQI4 $73
 line 64
 ;64:		return;
-ADDRGP4 $70
+ADDRGP4 $72
 JUMPV
-LABELV $71
+LABELV $73
 line 67
 ;65:	}
 ;66:
@@ -95,33 +95,33 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-LTI4 $73
+LTI4 $75
 ADDRLP4 0
 INDIRI4
 CNSTI4 18
-GTI4 $73
+GTI4 $75
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $97-40
+ADDRGP4 $99-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $97
-address $76
-address $77
-address $74
+LABELV $99
+address $78
 address $79
-address $80
-address $84
-address $88
-address $73
-address $96
+address $76
+address $81
+address $82
+address $86
+address $90
+address $75
+address $98
 code
-LABELV $76
+LABELV $78
 line 69
 ;68:	case ID_GRAPHICS:
 ;69:		UI_PopMenu();
@@ -135,9 +135,9 @@ CALLV
 pop
 line 71
 ;71:		break;
-ADDRGP4 $74
+ADDRGP4 $76
 JUMPV
-LABELV $77
+LABELV $79
 line 74
 ;72:
 ;73:	case ID_DISPLAY:
@@ -152,13 +152,13 @@ CALLV
 pop
 line 76
 ;76:		break;
-ADDRGP4 $74
+ADDRGP4 $76
 JUMPV
 line 79
 ;77:
 ;78:	case ID_SOUND:
 ;79:		break;
-LABELV $79
+LABELV $81
 line 82
 ;80:
 ;81:	case ID_NETWORK:
@@ -173,14 +173,14 @@ CALLV
 pop
 line 84
 ;84:		break;
-ADDRGP4 $74
+ADDRGP4 $76
 JUMPV
-LABELV $80
+LABELV $82
 line 87
 ;85:
 ;86:	case ID_EFFECTSVOLUME:
 ;87:		trap_Cvar_SetValue( "s_volume", soundOptionsInfo.sfxvolume.curvalue / 10 );
-ADDRGP4 $81
+ADDRGP4 $83
 ARGP4
 ADDRGP4 soundOptionsInfo+824+68
 INDIRF4
@@ -192,14 +192,14 @@ CALLV
 pop
 line 88
 ;88:		break;
-ADDRGP4 $74
+ADDRGP4 $76
 JUMPV
-LABELV $84
+LABELV $86
 line 91
 ;89:
 ;90:	case ID_MUSICVOLUME:
 ;91:		trap_Cvar_SetValue( "s_musicvolume", soundOptionsInfo.musicvolume.curvalue / 10 );
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
 ADDRGP4 soundOptionsInfo+900+68
 INDIRF4
@@ -211,9 +211,9 @@ CALLV
 pop
 line 92
 ;92:		break;
-ADDRGP4 $74
+ADDRGP4 $76
 JUMPV
-LABELV $88
+LABELV $90
 line 95
 ;93:
 ;94:	case ID_QUALITY:
@@ -221,10 +221,10 @@ line 95
 ADDRGP4 soundOptionsInfo+976+64
 INDIRI4
 CNSTI4 0
-EQI4 $89
+EQI4 $91
 line 96
 ;96:			trap_Cvar_SetValue( "s_khz", 22 );
-ADDRGP4 $93
+ADDRGP4 $95
 ARGP4
 CNSTF4 1102053376
 ARGF4
@@ -233,7 +233,7 @@ CALLV
 pop
 line 97
 ;97:			trap_Cvar_SetValue( "s_compression", 0 );
-ADDRGP4 $94
+ADDRGP4 $96
 ARGP4
 CNSTF4 0
 ARGF4
@@ -242,14 +242,14 @@ CALLV
 pop
 line 98
 ;98:		}
-ADDRGP4 $90
+ADDRGP4 $92
 JUMPV
-LABELV $89
+LABELV $91
 line 99
 ;99:		else {
 line 100
 ;100:			trap_Cvar_SetValue( "s_khz", 11 );
-ADDRGP4 $93
+ADDRGP4 $95
 ARGP4
 CNSTF4 1093664768
 ARGF4
@@ -258,7 +258,7 @@ CALLV
 pop
 line 101
 ;101:			trap_Cvar_SetValue( "s_compression", 1 );
-ADDRGP4 $94
+ADDRGP4 $96
 ARGP4
 CNSTF4 1065353216
 ARGF4
@@ -267,7 +267,7 @@ CALLV
 pop
 line 102
 ;102:		}
-LABELV $90
+LABELV $92
 line 103
 ;103:		UI_ForceMenuOff();
 ADDRGP4 UI_ForceMenuOff
@@ -277,16 +277,16 @@ line 104
 ;104:		trap_Cmd_ExecuteText( EXEC_APPEND, "snd_restart\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $95
+ADDRGP4 $97
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
 line 105
 ;105:		break;
-ADDRGP4 $74
+ADDRGP4 $76
 JUMPV
-LABELV $96
+LABELV $98
 line 118
 ;106:/*
 ;107:	case ID_A3D:
@@ -306,12 +306,12 @@ CALLV
 pop
 line 119
 ;119:		break;
-LABELV $73
-LABELV $74
+LABELV $75
+LABELV $76
 line 121
 ;120:	}
 ;121:}
-LABELV $70
+LABELV $72
 endproc UI_SoundOptionsMenu_Event 8 8
 proc UI_SoundOptionsMenu_Init 20 12
 line 129
@@ -376,7 +376,7 @@ ASGNI4
 line 142
 ;142:	soundOptionsInfo.banner.string				= "SYSTEM SETUP";
 ADDRGP4 soundOptionsInfo+288+60
-ADDRGP4 $111
+ADDRGP4 $113
 ASGNP4
 line 143
 ;143:	soundOptionsInfo.banner.color				= color_white;
@@ -397,7 +397,7 @@ ASGNI4
 line 147
 ;147:	soundOptionsInfo.framel.generic.name		= ART_FRAMEL;
 ADDRGP4 soundOptionsInfo+360+4
-ADDRGP4 $119
+ADDRGP4 $121
 ASGNP4
 line 148
 ;148:	soundOptionsInfo.framel.generic.flags		= QMF_INACTIVE;
@@ -433,7 +433,7 @@ ASGNI4
 line 155
 ;155:	soundOptionsInfo.framer.generic.name		= ART_FRAMER;
 ADDRGP4 soundOptionsInfo+448+4
-ADDRGP4 $133
+ADDRGP4 $135
 ASGNP4
 line 156
 ;156:	soundOptionsInfo.framer.generic.flags		= QMF_INACTIVE;
@@ -494,7 +494,7 @@ ASGNI4
 line 168
 ;168:	soundOptionsInfo.graphics.string			= "GRAPHICS";
 ADDRGP4 soundOptionsInfo+536+60
-ADDRGP4 $157
+ADDRGP4 $159
 ASGNP4
 line 169
 ;169:	soundOptionsInfo.graphics.style				= UI_RIGHT;
@@ -540,7 +540,7 @@ ASGNI4
 line 178
 ;178:	soundOptionsInfo.display.string				= "DISPLAY";
 ADDRGP4 soundOptionsInfo+608+60
-ADDRGP4 $175
+ADDRGP4 $177
 ASGNP4
 line 179
 ;179:	soundOptionsInfo.display.style				= UI_RIGHT;
@@ -586,7 +586,7 @@ ASGNI4
 line 188
 ;188:	soundOptionsInfo.sound.string				= "SOUND";
 ADDRGP4 soundOptionsInfo+680+60
-ADDRGP4 $193
+ADDRGP4 $195
 ASGNP4
 line 189
 ;189:	soundOptionsInfo.sound.style				= UI_RIGHT;
@@ -632,7 +632,7 @@ ASGNI4
 line 198
 ;198:	soundOptionsInfo.network.string				= "NETWORK";
 ADDRGP4 soundOptionsInfo+752+60
-ADDRGP4 $211
+ADDRGP4 $213
 ASGNP4
 line 199
 ;199:	soundOptionsInfo.network.style				= UI_RIGHT;
@@ -658,7 +658,7 @@ ASGNI4
 line 204
 ;204:	soundOptionsInfo.sfxvolume.generic.name		= "Effects Volume:";
 ADDRGP4 soundOptionsInfo+824+4
-ADDRGP4 $219
+ADDRGP4 $221
 ASGNP4
 line 205
 ;205:	soundOptionsInfo.sfxvolume.generic.flags	= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -713,7 +713,7 @@ ASGNI4
 line 215
 ;215:	soundOptionsInfo.musicvolume.generic.name		= "Music Volume:";
 ADDRGP4 soundOptionsInfo+900+4
-ADDRGP4 $237
+ADDRGP4 $239
 ASGNP4
 line 216
 ;216:	soundOptionsInfo.musicvolume.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -768,7 +768,7 @@ ASGNI4
 line 226
 ;226:	soundOptionsInfo.quality.generic.name		= "Sound Quality:";
 ADDRGP4 soundOptionsInfo+976+4
-ADDRGP4 $255
+ADDRGP4 $257
 ASGNP4
 line 227
 ;227:	soundOptionsInfo.quality.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -819,7 +819,7 @@ ASGNI4
 line 244
 ;244:	soundOptionsInfo.back.generic.name			= ART_BACK0;
 ADDRGP4 soundOptionsInfo+1072+4
-ADDRGP4 $271
+ADDRGP4 $273
 ASGNP4
 line 245
 ;245:	soundOptionsInfo.back.generic.flags			= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -859,7 +859,7 @@ ASGNI4
 line 252
 ;252:	soundOptionsInfo.back.focuspic				= ART_BACK1;
 ADDRGP4 soundOptionsInfo+1072+60
-ADDRGP4 $288
+ADDRGP4 $290
 ASGNP4
 line 254
 ;253:
@@ -965,7 +965,7 @@ pop
 line 267
 ;266:
 ;267:	soundOptionsInfo.sfxvolume.curvalue = trap_Cvar_VariableValue( "s_volume" ) * 10;
-ADDRGP4 $81
+ADDRGP4 $83
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_Cvar_VariableValue
@@ -979,7 +979,7 @@ MULF4
 ASGNF4
 line 268
 ;268:	soundOptionsInfo.musicvolume.curvalue = trap_Cvar_VariableValue( "s_musicvolume" ) * 10;
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_Cvar_VariableValue
@@ -993,7 +993,7 @@ MULF4
 ASGNF4
 line 269
 ;269:	soundOptionsInfo.quality.curvalue = !trap_Cvar_VariableValue( "s_compression" );
-ADDRGP4 $94
+ADDRGP4 $96
 ARGP4
 ADDRLP4 16
 ADDRGP4 trap_Cvar_VariableValue
@@ -1002,17 +1002,17 @@ ASGNF4
 ADDRLP4 16
 INDIRF4
 CNSTF4 0
-NEF4 $307
+NEF4 $309
 ADDRLP4 12
 CNSTI4 1
 ASGNI4
-ADDRGP4 $308
+ADDRGP4 $310
 JUMPV
-LABELV $307
+LABELV $309
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-LABELV $308
+LABELV $310
 ADDRGP4 soundOptionsInfo+976+64
 ADDRLP4 12
 INDIRI4
@@ -1020,7 +1020,7 @@ ASGNI4
 line 271
 ;270://	soundOptionsInfo.a3d.curvalue = (int)trap_Cvar_VariableValue( "s_usingA3D" );
 ;271:}
-LABELV $99
+LABELV $101
 endproc UI_SoundOptionsMenu_Init 20 12
 export UI_SoundOptionsMenu_Cache
 proc UI_SoundOptionsMenu_Cache 0 4
@@ -1035,35 +1035,35 @@ line 279
 ;279:void UI_SoundOptionsMenu_Cache( void ) {
 line 280
 ;280:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $119
+ADDRGP4 $121
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 281
 ;281:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $133
+ADDRGP4 $135
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 282
 ;282:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $271
+ADDRGP4 $273
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 283
 ;283:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $288
+ADDRGP4 $290
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 284
 ;284:}
-LABELV $309
+LABELV $311
 endproc UI_SoundOptionsMenu_Cache 0 4
 export UI_SoundOptionsMenu
 proc UI_SoundOptionsMenu 0 8
@@ -1099,7 +1099,7 @@ CALLV
 pop
 line 296
 ;296:}
-LABELV $310
+LABELV $312
 endproc UI_SoundOptionsMenu 0 8
 bss
 align 4
@@ -1418,6 +1418,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -1582,7 +1583,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $288
+LABELV $290
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1600,7 +1601,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $271
+LABELV $273
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1618,7 +1619,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $255
+LABELV $257
 byte 1 83
 byte 1 111
 byte 1 117
@@ -1635,7 +1636,7 @@ byte 1 121
 byte 1 58
 byte 1 0
 align 1
-LABELV $237
+LABELV $239
 byte 1 77
 byte 1 117
 byte 1 115
@@ -1651,7 +1652,7 @@ byte 1 101
 byte 1 58
 byte 1 0
 align 1
-LABELV $219
+LABELV $221
 byte 1 69
 byte 1 102
 byte 1 102
@@ -1669,7 +1670,7 @@ byte 1 101
 byte 1 58
 byte 1 0
 align 1
-LABELV $211
+LABELV $213
 byte 1 78
 byte 1 69
 byte 1 84
@@ -1679,7 +1680,7 @@ byte 1 82
 byte 1 75
 byte 1 0
 align 1
-LABELV $193
+LABELV $195
 byte 1 83
 byte 1 79
 byte 1 85
@@ -1687,7 +1688,7 @@ byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $175
+LABELV $177
 byte 1 68
 byte 1 73
 byte 1 83
@@ -1697,7 +1698,7 @@ byte 1 65
 byte 1 89
 byte 1 0
 align 1
-LABELV $157
+LABELV $159
 byte 1 71
 byte 1 82
 byte 1 65
@@ -1708,7 +1709,7 @@ byte 1 67
 byte 1 83
 byte 1 0
 align 1
-LABELV $133
+LABELV $135
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1728,7 +1729,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $119
+LABELV $121
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1748,7 +1749,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $111
+LABELV $113
 byte 1 83
 byte 1 89
 byte 1 83
@@ -1763,7 +1764,7 @@ byte 1 85
 byte 1 80
 byte 1 0
 align 1
-LABELV $95
+LABELV $97
 byte 1 115
 byte 1 110
 byte 1 100
@@ -1778,7 +1779,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $94
+LABELV $96
 byte 1 115
 byte 1 95
 byte 1 99
@@ -1794,7 +1795,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $93
+LABELV $95
 byte 1 115
 byte 1 95
 byte 1 107
@@ -1802,7 +1803,7 @@ byte 1 104
 byte 1 122
 byte 1 0
 align 1
-LABELV $85
+LABELV $87
 byte 1 115
 byte 1 95
 byte 1 109
@@ -1818,7 +1819,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $81
+LABELV $83
 byte 1 115
 byte 1 95
 byte 1 118
@@ -1829,14 +1830,14 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $68
+LABELV $70
 byte 1 72
 byte 1 105
 byte 1 103
 byte 1 104
 byte 1 0
 align 1
-LABELV $67
+LABELV $69
 byte 1 76
 byte 1 111
 byte 1 119

@@ -47,7 +47,7 @@ ADDRFP4 0
 INDIRI4
 ADDI4
 CNSTI4 131072
-LEI4 $68
+LEI4 $70
 line 38
 ;38:		outOfMemory = qtrue;
 ADDRGP4 outOfMemory
@@ -57,9 +57,9 @@ line 39
 ;39:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $67
+ADDRGP4 $69
 JUMPV
-LABELV $68
+LABELV $70
 line 42
 ;40:	}
 ;41:
@@ -95,7 +95,7 @@ line 46
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $67
+LABELV $69
 endproc UI_Alloc 8 0
 export UI_InitMemory
 proc UI_InitMemory 0 0
@@ -120,7 +120,7 @@ CNSTI4 0
 ASGNI4
 line 57
 ;57:}
-LABELV $70
+LABELV $72
 endproc UI_InitMemory 0 0
 export UI_ParseInfos
 proc UI_ParseInfos 2084 12
@@ -142,9 +142,9 @@ line 70
 ADDRLP4 2052
 CNSTI4 0
 ASGNI4
-ADDRGP4 $73
+ADDRGP4 $75
 JUMPV
-LABELV $72
+LABELV $74
 line 72
 ;71:
 ;72:	while ( 1 ) {
@@ -167,19 +167,19 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $75
+NEI4 $77
 line 75
 ;75:			break;
-ADDRGP4 $74
+ADDRGP4 $76
 JUMPV
-LABELV $75
+LABELV $77
 line 77
 ;76:		}
 ;77:		if ( strcmp( token, "{" ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $79
+ADDRGP4 $81
 ARGP4
 ADDRLP4 2060
 ADDRGP4 strcmp
@@ -188,19 +188,19 @@ ASGNI4
 ADDRLP4 2060
 INDIRI4
 CNSTI4 0
-EQI4 $77
+EQI4 $79
 line 78
 ;78:			Com_Printf( "Missing { in info file\n" );
-ADDRGP4 $80
+ADDRGP4 $82
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
 pop
 line 79
 ;79:			break;
-ADDRGP4 $74
+ADDRGP4 $76
 JUMPV
-LABELV $77
+LABELV $79
 line 82
 ;80:		}
 ;81:
@@ -209,19 +209,19 @@ ADDRLP4 2052
 INDIRI4
 ADDRFP4 4
 INDIRI4
-NEI4 $81
+NEI4 $83
 line 83
 ;83:			Com_Printf( "Max infos exceeded\n" );
-ADDRGP4 $83
+ADDRGP4 $85
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
 pop
 line 84
 ;84:			break;
-ADDRGP4 $74
+ADDRGP4 $76
 JUMPV
-LABELV $81
+LABELV $83
 line 87
 ;85:		}
 ;86:
@@ -229,9 +229,9 @@ line 87
 ADDRLP4 1028
 CNSTI1 0
 ASGNI1
-ADDRGP4 $85
+ADDRGP4 $87
 JUMPV
-LABELV $84
+LABELV $86
 line 88
 ;88:		while ( 1 ) {
 line 89
@@ -255,26 +255,26 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $87
+NEI4 $89
 line 91
 ;91:				Com_Printf( "Unexpected end of info file\n" );
-ADDRGP4 $89
+ADDRGP4 $91
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
 pop
 line 92
 ;92:				break;
-ADDRGP4 $86
+ADDRGP4 $88
 JUMPV
-LABELV $87
+LABELV $89
 line 94
 ;93:			}
 ;94:			if ( !strcmp( token, "}" ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $92
+ADDRGP4 $94
 ARGP4
 ADDRLP4 2068
 ADDRGP4 strcmp
@@ -283,12 +283,12 @@ ASGNI4
 ADDRLP4 2068
 INDIRI4
 CNSTI4 0
-NEI4 $90
+NEI4 $92
 line 95
 ;95:				break;
-ADDRGP4 $86
+ADDRGP4 $88
 JUMPV
-LABELV $90
+LABELV $92
 line 97
 ;96:			}
 ;97:			Q_strncpyz( key, token, sizeof( key ) );
@@ -324,20 +324,20 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $93
+NEI4 $95
 line 101
 ;101:				strcpy( token, "<NULL>" );
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $95
+ADDRGP4 $97
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
 line 102
 ;102:			}
-LABELV $93
+LABELV $95
 line 103
 ;103:			Info_SetValueForKey( info, key, token );
 ADDRLP4 1028
@@ -352,11 +352,11 @@ CALLV
 pop
 line 104
 ;104:		}
-LABELV $85
+LABELV $87
 line 88
-ADDRGP4 $84
+ADDRGP4 $86
 JUMPV
-LABELV $86
+LABELV $88
 line 106
 ;105:		//NOTE: extra space for arena number
 ;106:		infos[count] = UI_Alloc(strlen(info) + strlen("\\num\\") + strlen(va("%d", MAX_ARENAS)) + 1);
@@ -366,13 +366,13 @@ ADDRLP4 2064
 ADDRGP4 strlen
 CALLI4
 ASGNI4
-ADDRGP4 $96
+ADDRGP4 $98
 ARGP4
 ADDRLP4 2068
 ADDRGP4 strlen
 CALLI4
 ASGNI4
-ADDRGP4 $97
+ADDRGP4 $99
 ARGP4
 CNSTI4 1024
 ARGI4
@@ -424,7 +424,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $98
+EQU4 $100
 line 108
 ;108:			strcpy(infos[count], info);
 ADDRLP4 2052
@@ -451,20 +451,20 @@ ADDI4
 ASGNI4
 line 110
 ;110:		}
-LABELV $98
+LABELV $100
 line 111
 ;111:	}
-LABELV $73
+LABELV $75
 line 72
-ADDRGP4 $72
+ADDRGP4 $74
 JUMPV
-LABELV $74
+LABELV $76
 line 112
 ;112:	return count;
 ADDRLP4 2052
 INDIRI4
 RETI4
-LABELV $71
+LABELV $73
 endproc UI_ParseInfos 2084 12
 proc UI_LoadArenasFromFile 8216 16
 line 120
@@ -502,10 +502,10 @@ line 126
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $101
+NEI4 $103
 line 127
 ;127:		trap_Print( va( S_COLOR_RED "file not found: %s\n", filename ) );
-ADDRGP4 $103
+ADDRGP4 $105
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -522,19 +522,19 @@ CALLV
 pop
 line 128
 ;128:		return;
-ADDRGP4 $100
+ADDRGP4 $102
 JUMPV
-LABELV $101
+LABELV $103
 line 130
 ;129:	}
 ;130:	if ( len >= MAX_ARENAS_TEXT ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 8192
-LTI4 $104
+LTI4 $106
 line 131
 ;131:		trap_Print( va( S_COLOR_RED "file too large: %s is %i, max allowed is %i", filename, len, MAX_ARENAS_TEXT ) );
-ADDRGP4 $106
+ADDRGP4 $108
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -564,9 +564,9 @@ CALLV
 pop
 line 133
 ;133:		return;
-ADDRGP4 $100
+ADDRGP4 $102
 JUMPV
-LABELV $104
+LABELV $106
 line 136
 ;134:	}
 ;135:
@@ -637,7 +637,7 @@ ADDI4
 ASGNI4
 line 141
 ;141:}
-LABELV $100
+LABELV $102
 endproc UI_LoadArenasFromFile 8216 16
 proc UI_LoadArenas 1496 16
 line 148
@@ -669,9 +669,9 @@ line 162
 ;162:	trap_Cvar_Register( &arenasFile, "g_arenasFile", "", CVAR_INIT|CVAR_ROM );
 ADDRLP4 168
 ARGP4
-ADDRGP4 $108
+ADDRGP4 $110
 ARGP4
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 CNSTI4 80
 ARGI4
@@ -684,7 +684,7 @@ ADDRLP4 168+16
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $110
+EQI4 $112
 line 164
 ;164:		UI_LoadArenasFromFile(arenasFile.string);
 ADDRLP4 168+16
@@ -694,28 +694,28 @@ CALLV
 pop
 line 165
 ;165:	}
-ADDRGP4 $111
+ADDRGP4 $113
 JUMPV
-LABELV $110
+LABELV $112
 line 166
 ;166:	else {
 line 167
 ;167:		UI_LoadArenasFromFile("scripts/arenas.txt");
-ADDRGP4 $114
+ADDRGP4 $116
 ARGP4
 ADDRGP4 UI_LoadArenasFromFile
 CALLV
 pop
 line 168
 ;168:	}
-LABELV $111
+LABELV $113
 line 171
 ;169:
 ;170:	// get all arenas from .arena files
 ;171:	numdirs = trap_FS_GetFileList("scripts", ".arena", dirlist, 1024 );
-ADDRGP4 $115
+ADDRGP4 $117
 ARGP4
-ADDRGP4 $116
+ADDRGP4 $118
 ARGP4
 ADDRLP4 440
 ARGP4
@@ -739,9 +739,9 @@ line 173
 ADDRLP4 140
 CNSTI4 0
 ASGNI4
-ADDRGP4 $120
+ADDRGP4 $122
 JUMPV
-LABELV $117
+LABELV $119
 line 174
 ;174:		dirlen = strlen(dirptr);
 ADDRLP4 8
@@ -759,7 +759,7 @@ line 175
 ;175:		strcpy(filename, "scripts/");
 ADDRLP4 12
 ARGP4
-ADDRGP4 $121
+ADDRGP4 $123
 ARGP4
 ADDRGP4 strcpy
 CALLP4
@@ -783,7 +783,7 @@ CALLV
 pop
 line 178
 ;178:	}
-LABELV $118
+LABELV $120
 line 173
 ADDRLP4 1468
 CNSTI4 1
@@ -805,15 +805,15 @@ ADDRLP4 8
 INDIRP4
 ADDP4
 ASGNP4
-LABELV $120
+LABELV $122
 ADDRLP4 140
 INDIRI4
 ADDRLP4 152
 INDIRI4
-LTI4 $117
+LTI4 $119
 line 179
 ;179:	trap_Print( va( "%i arenas parsed\n", ui_numArenas ) );
-ADDRGP4 $122
+ADDRGP4 $124
 ARGP4
 ADDRGP4 ui_numArenas
 INDIRI4
@@ -833,13 +833,13 @@ line 180
 ADDRGP4 outOfMemory
 INDIRI4
 CNSTI4 0
-EQI4 $123
-ADDRGP4 $125
+EQI4 $125
+ADDRGP4 $127
 ARGP4
 ADDRGP4 trap_Print
 CALLV
 pop
-LABELV $123
+LABELV $125
 line 183
 ;181:
 ;182:	// set initial numbers
@@ -847,12 +847,12 @@ line 183
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $129
+ADDRGP4 $131
 JUMPV
-LABELV $126
+LABELV $128
 line 184
 ;184:		Info_SetValueForKey( ui_arenaInfos[n], "num", va( "%i", n ) );
-ADDRGP4 $131
+ADDRGP4 $133
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -869,7 +869,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRLP4 1476
 INDIRP4
@@ -879,7 +879,7 @@ CALLV
 pop
 line 185
 ;185:	}
-LABELV $127
+LABELV $129
 line 183
 ADDRLP4 0
 ADDRLP4 0
@@ -887,12 +887,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $129
+LABELV $131
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numArenas
 INDIRI4
-LTI4 $126
+LTI4 $128
 line 188
 ;186:
 ;187:	// go through and count single players levels
@@ -910,9 +910,9 @@ line 190
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $135
+ADDRGP4 $137
 JUMPV
-LABELV $132
+LABELV $134
 line 192
 ;191:		// determine type
 ;192:		type = Info_ValueForKey( ui_arenaInfos[n], "type" );
@@ -924,7 +924,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $136
+ADDRGP4 $138
 ARGP4
 ADDRLP4 1476
 ADDRGP4 Info_ValueForKey
@@ -943,12 +943,12 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $137
+NEI4 $139
 line 196
 ;196:			continue;
-ADDRGP4 $133
+ADDRGP4 $135
 JUMPV
-LABELV $137
+LABELV $139
 line 199
 ;197:		}
 ;198:
@@ -956,7 +956,7 @@ line 199
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $141
+ADDRGP4 $143
 ARGP4
 ADDRLP4 1480
 ADDRGP4 strstr
@@ -966,7 +966,7 @@ ADDRLP4 1480
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $139
+EQU4 $141
 line 201
 ;200:			// check for special single player arenas (training, final)
 ;201:			tag = Info_ValueForKey( ui_arenaInfos[n], "special" );
@@ -978,7 +978,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $142
+ADDRGP4 $144
 ARGP4
 ADDRLP4 1484
 ADDRGP4 Info_ValueForKey
@@ -995,7 +995,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $143
+EQI4 $145
 line 203
 ;203:				ui_numSpecialSinglePlayerArenas++;
 ADDRLP4 1488
@@ -1011,9 +1011,9 @@ ADDI4
 ASGNI4
 line 204
 ;204:				continue;
-ADDRGP4 $133
+ADDRGP4 $135
 JUMPV
-LABELV $143
+LABELV $145
 line 207
 ;205:			}
 ;206:
@@ -1031,10 +1031,10 @@ ADDI4
 ASGNI4
 line 208
 ;208:		}
-LABELV $139
+LABELV $141
 line 209
 ;209:	}
-LABELV $133
+LABELV $135
 line 190
 ADDRLP4 0
 ADDRLP4 0
@@ -1042,12 +1042,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $135
+LABELV $137
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numArenas
 INDIRI4
-LTI4 $132
+LTI4 $134
 line 211
 ;210:
 ;211:	n = ui_numSinglePlayerArenas % ARENAS_PER_TIER;
@@ -1062,7 +1062,7 @@ line 212
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $145
+EQI4 $147
 line 213
 ;213:		ui_numSinglePlayerArenas -= n;
 ADDRLP4 1476
@@ -1079,7 +1079,7 @@ SUBI4
 ASGNI4
 line 214
 ;214:		trap_Print( va( "%i arenas ignored to make count divisible by %i\n", n, ARENAS_PER_TIER ) );
-ADDRGP4 $147
+ADDRGP4 $149
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -1098,7 +1098,7 @@ CALLV
 pop
 line 215
 ;215:	}
-LABELV $145
+LABELV $147
 line 218
 ;216:
 ;217:	// go through once more and assign number to the levels
@@ -1129,9 +1129,9 @@ line 221
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $151
+ADDRGP4 $153
 JUMPV
-LABELV $148
+LABELV $150
 line 223
 ;222:		// determine type
 ;223:		type = Info_ValueForKey( ui_arenaInfos[n], "type" );
@@ -1143,7 +1143,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $136
+ADDRGP4 $138
 ARGP4
 ADDRLP4 1476
 ADDRGP4 Info_ValueForKey
@@ -1162,13 +1162,13 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $152
+EQI4 $154
 line 227
 ;227:			if( strstr( type, "single" ) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $141
+ADDRGP4 $143
 ARGP4
 ADDRLP4 1480
 ADDRGP4 strstr
@@ -1178,7 +1178,7 @@ ADDRLP4 1480
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $154
+EQU4 $156
 line 229
 ;228:				// check for special single player arenas (training, final)
 ;229:				tag = Info_ValueForKey( ui_arenaInfos[n], "special" );
@@ -1190,7 +1190,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $142
+ADDRGP4 $144
 ARGP4
 ADDRLP4 1484
 ADDRGP4 Info_ValueForKey
@@ -1207,10 +1207,10 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $156
+EQI4 $158
 line 231
 ;231:					Info_SetValueForKey( ui_arenaInfos[n], "num", va( "%i", specialNum++ ) );
-ADDRGP4 $131
+ADDRGP4 $133
 ARGP4
 ADDRLP4 1488
 ADDRLP4 164
@@ -1237,7 +1237,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRLP4 1492
 INDIRP4
@@ -1247,14 +1247,14 @@ CALLV
 pop
 line 232
 ;232:					continue;
-ADDRGP4 $149
+ADDRGP4 $151
 JUMPV
-LABELV $156
+LABELV $158
 line 235
 ;233:				}
 ;234:
 ;235:				Info_SetValueForKey( ui_arenaInfos[n], "num", va( "%i", singlePlayerNum++ ) );
-ADDRGP4 $131
+ADDRGP4 $133
 ARGP4
 ADDRLP4 1488
 ADDRLP4 160
@@ -1281,7 +1281,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRLP4 1492
 INDIRP4
@@ -1291,17 +1291,17 @@ CALLV
 pop
 line 236
 ;236:				continue;
-ADDRGP4 $149
+ADDRGP4 $151
 JUMPV
-LABELV $154
+LABELV $156
 line 238
 ;237:			}
 ;238:		}
-LABELV $152
+LABELV $154
 line 240
 ;239:
 ;240:		Info_SetValueForKey( ui_arenaInfos[n], "num", va( "%i", otherNum++ ) );
-ADDRGP4 $131
+ADDRGP4 $133
 ARGP4
 ADDRLP4 1480
 ADDRLP4 156
@@ -1328,7 +1328,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRLP4 1484
 INDIRP4
@@ -1338,7 +1338,7 @@ CALLV
 pop
 line 241
 ;241:	}
-LABELV $149
+LABELV $151
 line 221
 ADDRLP4 0
 ADDRLP4 0
@@ -1346,15 +1346,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $151
+LABELV $153
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numArenas
 INDIRI4
-LTI4 $148
+LTI4 $150
 line 242
 ;242:}
-LABELV $107
+LABELV $109
 endproc UI_LoadArenas 1496 16
 export UI_GetArenaInfoByNumber
 proc UI_GetArenaInfoByNumber 24 8
@@ -1378,16 +1378,16 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-LTI4 $161
+LTI4 $163
 ADDRLP4 8
 INDIRI4
 ADDRGP4 ui_numArenas
 INDIRI4
-LTI4 $159
-LABELV $161
+LTI4 $161
+LABELV $163
 line 254
 ;254:		trap_Print( va( S_COLOR_RED "Invalid arena number: %i\n", num ) );
-ADDRGP4 $162
+ADDRGP4 $164
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -1406,9 +1406,9 @@ line 255
 ;255:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $158
+ADDRGP4 $160
 JUMPV
-LABELV $159
+LABELV $161
 line 258
 ;256:	}
 ;257:
@@ -1416,9 +1416,9 @@ line 258
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $166
+ADDRGP4 $168
 JUMPV
-LABELV $163
+LABELV $165
 line 259
 ;259:		value = Info_ValueForKey( ui_arenaInfos[n], "num" );
 ADDRLP4 0
@@ -1429,7 +1429,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRLP4 12
 ADDRGP4 Info_ValueForKey
@@ -1446,7 +1446,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $167
+EQI4 $169
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -1458,7 +1458,7 @@ ADDRLP4 20
 INDIRI4
 ADDRFP4 0
 INDIRI4
-NEI4 $167
+NEI4 $169
 line 261
 ;261:			return ui_arenaInfos[n];
 ADDRLP4 0
@@ -1469,13 +1469,13 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $158
+ADDRGP4 $160
 JUMPV
-LABELV $167
+LABELV $169
 line 263
 ;262:		}
 ;263:	}
-LABELV $164
+LABELV $166
 line 258
 ADDRLP4 0
 ADDRLP4 0
@@ -1483,18 +1483,18 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $166
+LABELV $168
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numArenas
 INDIRI4
-LTI4 $163
+LTI4 $165
 line 265
 ;264:
 ;265:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $158
+LABELV $160
 endproc UI_GetArenaInfoByNumber 24 8
 export UI_GetArenaInfoByMap
 proc UI_GetArenaInfoByMap 12 8
@@ -1515,9 +1515,9 @@ line 277
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $173
+ADDRGP4 $175
 JUMPV
-LABELV $170
+LABELV $172
 line 278
 ;278:		if( Q_stricmp( Info_ValueForKey( ui_arenaInfos[n], "map" ), map ) == 0 ) {
 ADDRLP4 0
@@ -1528,7 +1528,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $176
+ADDRGP4 $178
 ARGP4
 ADDRLP4 4
 ADDRGP4 Info_ValueForKey
@@ -1547,7 +1547,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $174
+NEI4 $176
 line 279
 ;279:			return ui_arenaInfos[n];
 ADDRLP4 0
@@ -1558,13 +1558,13 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $169
+ADDRGP4 $171
 JUMPV
-LABELV $174
+LABELV $176
 line 281
 ;280:		}
 ;281:	}
-LABELV $171
+LABELV $173
 line 277
 ADDRLP4 0
 ADDRLP4 0
@@ -1572,18 +1572,18 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $173
+LABELV $175
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numArenas
 INDIRI4
-LTI4 $170
+LTI4 $172
 line 283
 ;282:
 ;283:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $169
+LABELV $171
 endproc UI_GetArenaInfoByMap 12 8
 export UI_GetSpecialArenaInfo
 proc UI_GetSpecialArenaInfo 12 8
@@ -1604,9 +1604,9 @@ line 295
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $181
+ADDRGP4 $183
 JUMPV
-LABELV $178
+LABELV $180
 line 296
 ;296:		if( Q_stricmp( Info_ValueForKey( ui_arenaInfos[n], "special" ), tag ) == 0 ) {
 ADDRLP4 0
@@ -1617,7 +1617,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $142
+ADDRGP4 $144
 ARGP4
 ADDRLP4 4
 ADDRGP4 Info_ValueForKey
@@ -1636,7 +1636,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $182
+NEI4 $184
 line 297
 ;297:			return ui_arenaInfos[n];
 ADDRLP4 0
@@ -1647,13 +1647,13 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $177
+ADDRGP4 $179
 JUMPV
-LABELV $182
+LABELV $184
 line 299
 ;298:		}
 ;299:	}
-LABELV $179
+LABELV $181
 line 295
 ADDRLP4 0
 ADDRLP4 0
@@ -1661,18 +1661,18 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $181
+LABELV $183
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numArenas
 INDIRI4
-LTI4 $178
+LTI4 $180
 line 301
 ;300:
 ;301:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $177
+LABELV $179
 endproc UI_GetSpecialArenaInfo 12 8
 proc UI_LoadBotsFromFile 8216 16
 line 309
@@ -1710,10 +1710,10 @@ line 315
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $185
+NEI4 $187
 line 316
 ;316:		trap_Print( va( S_COLOR_RED "file not found: %s\n", filename ) );
-ADDRGP4 $103
+ADDRGP4 $105
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -1730,19 +1730,19 @@ CALLV
 pop
 line 317
 ;317:		return;
-ADDRGP4 $184
+ADDRGP4 $186
 JUMPV
-LABELV $185
+LABELV $187
 line 319
 ;318:	}
 ;319:	if ( len >= MAX_BOTS_TEXT ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 8192
-LTI4 $187
+LTI4 $189
 line 320
 ;320:		trap_Print( va( S_COLOR_RED "file too large: %s is %i, max allowed is %i", filename, len, MAX_BOTS_TEXT ) );
-ADDRGP4 $106
+ADDRGP4 $108
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -1772,9 +1772,9 @@ CALLV
 pop
 line 322
 ;322:		return;
-ADDRGP4 $184
+ADDRGP4 $186
 JUMPV
-LABELV $187
+LABELV $189
 line 325
 ;323:	}
 ;324:
@@ -1848,16 +1848,16 @@ line 330
 ADDRGP4 outOfMemory
 INDIRI4
 CNSTI4 0
-EQI4 $189
-ADDRGP4 $191
+EQI4 $191
+ADDRGP4 $193
 ARGP4
 ADDRGP4 trap_Print
 CALLV
 pop
-LABELV $189
+LABELV $191
 line 331
 ;331:}
-LABELV $184
+LABELV $186
 endproc UI_LoadBotsFromFile 8216 16
 proc UI_LoadBots 1452 16
 line 338
@@ -1886,9 +1886,9 @@ line 349
 ;349:	trap_Cvar_Register( &botsFile, "g_botsFile", "", CVAR_INIT|CVAR_ROM );
 ADDRLP4 144
 ARGP4
-ADDRGP4 $193
+ADDRGP4 $195
 ARGP4
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 CNSTI4 80
 ARGI4
@@ -1901,7 +1901,7 @@ ADDRLP4 144+16
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $194
+EQI4 $196
 line 351
 ;351:		UI_LoadBotsFromFile(botsFile.string);
 ADDRLP4 144+16
@@ -1911,28 +1911,28 @@ CALLV
 pop
 line 352
 ;352:	}
-ADDRGP4 $195
+ADDRGP4 $197
 JUMPV
-LABELV $194
+LABELV $196
 line 353
 ;353:	else {
 line 354
 ;354:		UI_LoadBotsFromFile("scripts/bots.txt");
-ADDRGP4 $198
+ADDRGP4 $200
 ARGP4
 ADDRGP4 UI_LoadBotsFromFile
 CALLV
 pop
 line 355
 ;355:	}
-LABELV $195
+LABELV $197
 line 358
 ;356:
 ;357:	// get all bots from .bot files
 ;358:	numdirs = trap_FS_GetFileList("scripts", ".bot", dirlist, 1024 );
-ADDRGP4 $115
+ADDRGP4 $117
 ARGP4
-ADDRGP4 $199
+ADDRGP4 $201
 ARGP4
 ADDRLP4 416
 ARGP4
@@ -1956,9 +1956,9 @@ line 360
 ADDRLP4 132
 CNSTI4 0
 ASGNI4
-ADDRGP4 $203
+ADDRGP4 $205
 JUMPV
-LABELV $200
+LABELV $202
 line 361
 ;361:		dirlen = strlen(dirptr);
 ADDRLP4 0
@@ -1976,7 +1976,7 @@ line 362
 ;362:		strcpy(filename, "scripts/");
 ADDRLP4 4
 ARGP4
-ADDRGP4 $121
+ADDRGP4 $123
 ARGP4
 ADDRGP4 strcpy
 CALLP4
@@ -2000,7 +2000,7 @@ CALLV
 pop
 line 365
 ;365:	}
-LABELV $201
+LABELV $203
 line 360
 ADDRLP4 1444
 CNSTI4 1
@@ -2022,15 +2022,15 @@ ADDRLP4 0
 INDIRP4
 ADDP4
 ASGNP4
-LABELV $203
+LABELV $205
 ADDRLP4 132
 INDIRI4
 ADDRLP4 140
 INDIRI4
-LTI4 $200
+LTI4 $202
 line 366
 ;366:	trap_Print( va( "%i bots parsed\n", ui_numBots ) );
-ADDRGP4 $204
+ADDRGP4 $206
 ARGP4
 ADDRGP4 ui_numBots
 INDIRI4
@@ -2047,7 +2047,7 @@ CALLV
 pop
 line 367
 ;367:}
-LABELV $192
+LABELV $194
 endproc UI_LoadBots 1452 16
 export UI_GetBotInfoByNumber
 proc UI_GetBotInfoByNumber 8 8
@@ -2069,16 +2069,16 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LTI4 $208
+LTI4 $210
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numBots
 INDIRI4
-LTI4 $206
-LABELV $208
+LTI4 $208
+LABELV $210
 line 377
 ;377:		trap_Print( va( S_COLOR_RED "Invalid bot number: %i\n", num ) );
-ADDRGP4 $209
+ADDRGP4 $211
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -2097,9 +2097,9 @@ line 378
 ;378:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $205
+ADDRGP4 $207
 JUMPV
-LABELV $206
+LABELV $208
 line 380
 ;379:	}
 ;380:	return ui_botInfos[num];
@@ -2111,7 +2111,7 @@ ADDRGP4 ui_botInfos
 ADDP4
 INDIRP4
 RETP4
-LABELV $205
+LABELV $207
 endproc UI_GetBotInfoByNumber 8 8
 export UI_GetBotInfoByName
 proc UI_GetBotInfoByName 16 8
@@ -2133,9 +2133,9 @@ line 393
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $214
+ADDRGP4 $216
 JUMPV
-LABELV $211
+LABELV $213
 line 394
 ;394:		value = Info_ValueForKey( ui_botInfos[n], "name" );
 ADDRLP4 0
@@ -2146,7 +2146,7 @@ ADDRGP4 ui_botInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $215
+ADDRGP4 $217
 ARGP4
 ADDRLP4 8
 ADDRGP4 Info_ValueForKey
@@ -2171,7 +2171,7 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $216
+NEI4 $218
 line 396
 ;396:			return ui_botInfos[n];
 ADDRLP4 0
@@ -2182,13 +2182,13 @@ ADDRGP4 ui_botInfos
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $210
+ADDRGP4 $212
 JUMPV
-LABELV $216
+LABELV $218
 line 398
 ;397:		}
 ;398:	}
-LABELV $212
+LABELV $214
 line 393
 ADDRLP4 0
 ADDRLP4 0
@@ -2196,18 +2196,18 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $214
+LABELV $216
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numBots
 INDIRI4
-LTI4 $211
+LTI4 $213
 line 400
 ;399:
 ;400:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $210
+LABELV $212
 endproc UI_GetBotInfoByName 16 8
 export UI_GetBestScore
 proc UI_GetBestScore 1084 16
@@ -2244,19 +2244,19 @@ INDIRP4
 CVPU4 4
 ADDRLP4 1056
 INDIRU4
-EQU4 $221
+EQU4 $223
 ADDRFP4 8
 INDIRP4
 CVPU4 4
 ADDRLP4 1056
 INDIRU4
-NEU4 $219
-LABELV $221
+NEU4 $221
+LABELV $223
 line 424
 ;424:		return;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $219
+LABELV $221
 line 427
 ;425:	}
 ;426:
@@ -2268,18 +2268,18 @@ ASGNI4
 ADDRLP4 1060
 INDIRI4
 CNSTI4 0
-LTI4 $224
+LTI4 $226
 ADDRLP4 1060
 INDIRI4
 ADDRGP4 ui_numArenas
 INDIRI4
-LEI4 $222
-LABELV $224
+LEI4 $224
+LABELV $226
 line 428
 ;428:		return;
-ADDRGP4 $218
+ADDRGP4 $220
 JUMPV
-LABELV $222
+LABELV $224
 line 431
 ;429:	}
 ;430:
@@ -2298,10 +2298,10 @@ line 434
 ADDRLP4 4
 CNSTI4 1
 ASGNI4
-LABELV $225
+LABELV $227
 line 435
 ;435:		trap_Cvar_VariableStringBuffer( va( "g_spScores%i", n ), scores, MAX_INFO_VALUE );
-ADDRGP4 $229
+ADDRGP4 $231
 ARGP4
 ADDRLP4 4
 INDIRI4
@@ -2327,7 +2327,7 @@ ADDRLP4 8
 ARGP4
 CNSTI4 16
 ARGI4
-ADDRGP4 $230
+ADDRGP4 $232
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -2362,17 +2362,17 @@ line 440
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
-LTI4 $233
+LTI4 $235
 ADDRLP4 0
 INDIRI4
 CNSTI4 8
-LEI4 $231
-LABELV $233
+LEI4 $233
+LABELV $235
 line 441
 ;441:			continue;
-ADDRGP4 $226
+ADDRGP4 $228
 JUMPV
-LABELV $231
+LABELV $233
 line 444
 ;442:		}
 ;443:
@@ -2380,13 +2380,13 @@ line 444
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $236
+EQI4 $238
 ADDRLP4 0
 INDIRI4
 ADDRLP4 24
 INDIRI4
-GTI4 $234
-LABELV $236
+GTI4 $236
+LABELV $238
 line 445
 ;445:			bestScore = skillScore;
 ADDRLP4 24
@@ -2401,10 +2401,10 @@ INDIRI4
 ASGNI4
 line 447
 ;447:		}
-LABELV $234
+LABELV $236
 line 448
 ;448:	}
-LABELV $226
+LABELV $228
 line 434
 ADDRLP4 4
 ADDRLP4 4
@@ -2415,7 +2415,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 5
-LEI4 $225
+LEI4 $227
 line 450
 ;449:
 ;450:	*score = bestScore;
@@ -2433,7 +2433,7 @@ INDIRI4
 ASGNI4
 line 452
 ;452:}
-LABELV $218
+LABELV $220
 endproc UI_GetBestScore 1084 16
 export UI_SetBestScore
 proc UI_SetBestScore 1084 16
@@ -2463,23 +2463,23 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 1
-LTI4 $240
+LTI4 $242
 ADDRLP4 1048
 INDIRI4
 CNSTI4 8
-LEI4 $238
-LABELV $240
+LEI4 $240
+LABELV $242
 line 470
 ;470:		return;
-ADDRGP4 $237
+ADDRGP4 $239
 JUMPV
-LABELV $238
+LABELV $240
 line 474
 ;471:	}
 ;472:
 ;473:	// validate skill
 ;474:	skill = (int)trap_Cvar_VariableValue( "g_spSkill" );
-ADDRGP4 $241
+ADDRGP4 $243
 ARGP4
 ADDRLP4 1052
 ADDRGP4 trap_Cvar_VariableValue
@@ -2495,23 +2495,23 @@ line 475
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
-LTI4 $244
+LTI4 $246
 ADDRLP4 0
 INDIRI4
 CNSTI4 5
-LEI4 $242
-LABELV $244
+LEI4 $244
+LABELV $246
 line 476
 ;476:		return;
-ADDRGP4 $237
+ADDRGP4 $239
 JUMPV
-LABELV $242
+LABELV $244
 line 480
 ;477:	}
 ;478:
 ;479:	// get scores
 ;480:	trap_Cvar_VariableStringBuffer( va( "g_spScores%i", skill ), scores, MAX_INFO_VALUE );
-ADDRGP4 $229
+ADDRGP4 $231
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -2538,7 +2538,7 @@ ADDRLP4 4
 ARGP4
 CNSTI4 16
 ARGI4
-ADDRGP4 $230
+ADDRGP4 $232
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -2572,23 +2572,23 @@ line 485
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-EQI4 $245
+EQI4 $247
 ADDRLP4 1044
 INDIRI4
 ADDRFP4 4
 INDIRI4
-GTI4 $245
+GTI4 $247
 line 486
 ;486:		return;
-ADDRGP4 $237
+ADDRGP4 $239
 JUMPV
-LABELV $245
+LABELV $247
 line 490
 ;487:	}
 ;488:
 ;489:	// update scores
 ;490:	Info_SetValueForKey( scores, arenaKey, va( "%i", score ) );
-ADDRGP4 $131
+ADDRGP4 $133
 ARGP4
 ADDRFP4 4
 INDIRI4
@@ -2609,7 +2609,7 @@ CALLV
 pop
 line 491
 ;491:	trap_Cvar_Set( va( "g_spScores%i", skill ), scores );
-ADDRGP4 $229
+ADDRGP4 $231
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -2628,7 +2628,7 @@ CALLV
 pop
 line 492
 ;492:}
-LABELV $237
+LABELV $239
 endproc UI_SetBestScore 1084 16
 export UI_LogAwardData
 proc UI_LogAwardData 1056 16
@@ -2650,12 +2650,12 @@ line 505
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $248
+NEI4 $250
 line 506
 ;506:		return;
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $248
+LABELV $250
 line 509
 ;507:	}
 ;508:
@@ -2663,10 +2663,10 @@ line 509
 ADDRFP4 0
 INDIRI4
 CNSTI4 5
-LEI4 $250
+LEI4 $252
 line 510
 ;510:		trap_Print( va( S_COLOR_RED "Bad award %i in UI_LogAwardData\n", award ) );
-ADDRGP4 $252
+ADDRGP4 $254
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -2683,14 +2683,14 @@ CALLV
 pop
 line 511
 ;511:		return;
-ADDRGP4 $247
+ADDRGP4 $249
 JUMPV
-LABELV $250
+LABELV $252
 line 514
 ;512:	}
 ;513:
 ;514:	trap_Cvar_VariableStringBuffer( "g_spAwards", awardData, sizeof(awardData) );
-ADDRGP4 $253
+ADDRGP4 $255
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -2706,7 +2706,7 @@ ADDRLP4 1024
 ARGP4
 CNSTI4 16
 ARGI4
-ADDRGP4 $254
+ADDRGP4 $256
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -2738,7 +2738,7 @@ ASGNI4
 line 519
 ;518:
 ;519:	Info_SetValueForKey( awardData, key, va( "%i", oldValue + data ) );
-ADDRGP4 $131
+ADDRGP4 $133
 ARGP4
 ADDRLP4 1040
 INDIRI4
@@ -2762,7 +2762,7 @@ CALLV
 pop
 line 520
 ;520:	trap_Cvar_Set( "g_spAwards", awardData );
-ADDRGP4 $253
+ADDRGP4 $255
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -2771,7 +2771,7 @@ CALLV
 pop
 line 521
 ;521:}
-LABELV $247
+LABELV $249
 endproc UI_LogAwardData 1056 16
 export UI_GetAwardLevel
 proc UI_GetAwardLevel 1048 16
@@ -2789,7 +2789,7 @@ line 533
 ;531:	char	awardData[MAX_INFO_VALUE];
 ;532:
 ;533:	trap_Cvar_VariableStringBuffer( "g_spAwards", awardData, sizeof(awardData) );
-ADDRGP4 $253
+ADDRGP4 $255
 ARGP4
 ADDRLP4 16
 ARGP4
@@ -2805,7 +2805,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 16
 ARGI4
-ADDRGP4 $254
+ADDRGP4 $256
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -2833,7 +2833,7 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 RETI4
-LABELV $255
+LABELV $257
 endproc UI_GetAwardLevel 1048 16
 export UI_TierCompleted
 proc UI_TierCompleted 56 12
@@ -2881,10 +2881,10 @@ ADDRLP4 16
 INDIRI4
 ADDRLP4 24
 INDIRI4
-NEI4 $257
+NEI4 $259
 line 557
 ;557:		info = UI_GetSpecialArenaInfo( "training" );
-ADDRGP4 $259
+ADDRGP4 $261
 ARGP4
 ADDRLP4 28
 ADDRGP4 UI_GetSpecialArenaInfo
@@ -2899,7 +2899,7 @@ line 558
 ADDRLP4 20
 INDIRP4
 ARGP4
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRLP4 32
 ADDRGP4 Info_ValueForKey
@@ -2916,18 +2916,18 @@ ADDRFP4 0
 INDIRI4
 ADDRLP4 36
 INDIRI4
-NEI4 $260
+NEI4 $262
 line 559
 ;559:			return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $256
+ADDRGP4 $258
 JUMPV
-LABELV $260
+LABELV $262
 line 561
 ;560:		}
 ;561:		info = UI_GetSpecialArenaInfo( "final" );
-ADDRGP4 $262
+ADDRGP4 $264
 ARGP4
 ADDRLP4 40
 ADDRGP4 UI_GetSpecialArenaInfo
@@ -2947,11 +2947,11 @@ ADDRLP4 44
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $265
+EQU4 $267
 ADDRLP4 44
 INDIRP4
 ARGP4
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRLP4 48
 ADDRGP4 Info_ValueForKey
@@ -2968,8 +2968,8 @@ ADDRFP4 0
 INDIRI4
 ADDRLP4 52
 INDIRI4
-NEI4 $263
-LABELV $265
+NEI4 $265
+LABELV $267
 line 563
 ;563:			return tier + 1;
 ADDRLP4 16
@@ -2977,17 +2977,17 @@ INDIRI4
 CNSTI4 1
 ADDI4
 RETI4
-ADDRGP4 $256
+ADDRGP4 $258
 JUMPV
-LABELV $263
+LABELV $265
 line 565
 ;564:		}
 ;565:		return -1;
 CNSTI4 -1
 RETI4
-ADDRGP4 $256
+ADDRGP4 $258
 JUMPV
-LABELV $257
+LABELV $259
 line 568
 ;566:	}
 ;567:
@@ -2995,7 +2995,7 @@ line 568
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-LABELV $266
+LABELV $268
 line 569
 ;569:		UI_GetBestScore( level, &score, &skill );
 ADDRLP4 0
@@ -3013,18 +3013,18 @@ line 570
 ADDRLP4 8
 INDIRI4
 CNSTI4 1
-EQI4 $270
+EQI4 $272
 line 571
 ;571:			return -1;
 CNSTI4 -1
 RETI4
-ADDRGP4 $256
+ADDRGP4 $258
 JUMPV
-LABELV $270
+LABELV $272
 line 573
 ;572:		}
 ;573:	}
-LABELV $267
+LABELV $269
 line 568
 ADDRLP4 28
 CNSTI4 1
@@ -3046,7 +3046,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 4
-LTI4 $266
+LTI4 $268
 line 574
 ;574:	return tier + 1;
 ADDRLP4 16
@@ -3054,7 +3054,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 RETI4
-LABELV $256
+LABELV $258
 endproc UI_TierCompleted 56 12
 export UI_ShowTierVideo
 proc UI_ShowTierVideo 1052 16
@@ -3076,19 +3076,19 @@ line 587
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-GTI4 $273
+GTI4 $275
 line 588
 ;588:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $272
+ADDRGP4 $274
 JUMPV
-LABELV $273
+LABELV $275
 line 591
 ;589:	}
 ;590:
 ;591:	trap_Cvar_VariableStringBuffer( "g_spVideos", videos, sizeof(videos) );
-ADDRGP4 $275
+ADDRGP4 $277
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -3104,7 +3104,7 @@ ADDRLP4 1024
 ARGP4
 CNSTI4 16
 ARGI4
-ADDRGP4 $276
+ADDRGP4 $278
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -3132,19 +3132,19 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-EQI4 $277
+EQI4 $279
 line 595
 ;595:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $272
+ADDRGP4 $274
 JUMPV
-LABELV $277
+LABELV $279
 line 598
 ;596:	}
 ;597:
 ;598:	Info_SetValueForKey( videos, key, va( "%i", 1 ) );
-ADDRGP4 $131
+ADDRGP4 $133
 ARGP4
 CNSTI4 1
 ARGI4
@@ -3164,7 +3164,7 @@ CALLV
 pop
 line 599
 ;599:	trap_Cvar_Set( "g_spVideos", videos );
-ADDRGP4 $275
+ADDRGP4 $277
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -3176,7 +3176,7 @@ line 601
 ;601:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $272
+LABELV $274
 endproc UI_ShowTierVideo 1052 16
 export UI_CanShowTierVideo
 proc UI_CanShowTierVideo 1048 16
@@ -3198,14 +3198,14 @@ line 614
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $280
+NEI4 $282
 line 615
 ;615:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $279
+ADDRGP4 $281
 JUMPV
-LABELV $280
+LABELV $282
 line 618
 ;616:	}
 ;617:
@@ -3213,23 +3213,23 @@ line 618
 ADDRGP4 uis+11440
 INDIRI4
 CNSTI4 0
-EQI4 $282
+EQI4 $284
 ADDRFP4 0
 INDIRI4
 CNSTI4 8
-EQI4 $282
+EQI4 $284
 line 619
 ;619:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $279
+ADDRGP4 $281
 JUMPV
-LABELV $282
+LABELV $284
 line 622
 ;620:	}
 ;621:
 ;622:	trap_Cvar_VariableStringBuffer( "g_spVideos", videos, sizeof(videos) );
-ADDRGP4 $275
+ADDRGP4 $277
 ARGP4
 ADDRLP4 16
 ARGP4
@@ -3245,7 +3245,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 16
 ARGI4
-ADDRGP4 $276
+ADDRGP4 $278
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -3273,21 +3273,21 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-EQI4 $285
+EQI4 $287
 line 626
 ;626:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $279
+ADDRGP4 $281
 JUMPV
-LABELV $285
+LABELV $287
 line 629
 ;627:	}
 ;628:
 ;629:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $279
+LABELV $281
 endproc UI_CanShowTierVideo 1048 16
 export UI_GetCurrentGame
 proc UI_GetCurrentGame 32 12
@@ -3310,7 +3310,7 @@ line 646
 ;644:	const char *info;
 ;645:
 ;646:	info = UI_GetSpecialArenaInfo( "training" );
-ADDRGP4 $259
+ADDRGP4 $261
 ARGP4
 ADDRLP4 16
 ADDRGP4 UI_GetSpecialArenaInfo
@@ -3326,13 +3326,13 @@ ADDRLP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $288
+EQU4 $290
 line 648
 ;648:		level = atoi( Info_ValueForKey( info, "num" ) );
 ADDRLP4 12
 INDIRP4
 ARGP4
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRLP4 20
 ADDRGP4 Info_ValueForKey
@@ -3370,33 +3370,33 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-EQI4 $292
+EQI4 $294
 ADDRLP4 28
 INDIRI4
 CNSTI4 1
-LEI4 $290
-LABELV $292
+LEI4 $292
+LABELV $294
 line 651
 ;651:			return level;
 ADDRLP4 0
 INDIRI4
 RETI4
-ADDRGP4 $287
+ADDRGP4 $289
 JUMPV
-LABELV $290
+LABELV $292
 line 653
 ;652:		}
 ;653:	}
-LABELV $288
+LABELV $290
 line 655
 ;654:
 ;655:	for( level = 0; level < ui_numSinglePlayerArenas; level++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $296
+ADDRGP4 $298
 JUMPV
-LABELV $293
+LABELV $295
 line 656
 ;656:		UI_GetBestScore( level, &rank, &skill );
 ADDRLP4 0
@@ -3418,24 +3418,24 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $299
+EQI4 $301
 ADDRLP4 20
 INDIRI4
 CNSTI4 1
-LEI4 $297
-LABELV $299
+LEI4 $299
+LABELV $301
 line 658
 ;658:			return level;
 ADDRLP4 0
 INDIRI4
 RETI4
-ADDRGP4 $287
+ADDRGP4 $289
 JUMPV
-LABELV $297
+LABELV $299
 line 660
 ;659:		}
 ;660:	}
-LABELV $294
+LABELV $296
 line 655
 ADDRLP4 0
 ADDRLP4 0
@@ -3443,16 +3443,16 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $296
+LABELV $298
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numSinglePlayerArenas
 INDIRI4
-LTI4 $293
+LTI4 $295
 line 662
 ;661:
 ;662:	info = UI_GetSpecialArenaInfo( "final" );
-ADDRGP4 $262
+ADDRGP4 $264
 ARGP4
 ADDRLP4 20
 ADDRGP4 UI_GetSpecialArenaInfo
@@ -3468,21 +3468,21 @@ ADDRLP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $300
+NEU4 $302
 line 664
 ;664:		return -1;
 CNSTI4 -1
 RETI4
-ADDRGP4 $287
+ADDRGP4 $289
 JUMPV
-LABELV $300
+LABELV $302
 line 666
 ;665:	}
 ;666:	return atoi( Info_ValueForKey( info, "num" ) );
 ADDRLP4 12
 INDIRP4
 ARGP4
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRLP4 24
 ADDRGP4 Info_ValueForKey
@@ -3498,7 +3498,7 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 RETI4
-LABELV $287
+LABELV $289
 endproc UI_GetCurrentGame 32 12
 export UI_NewGame
 proc UI_NewGame 0 8
@@ -3516,70 +3516,70 @@ line 677
 ;677:void UI_NewGame( void ) {
 line 678
 ;678:	trap_Cvar_Set( "g_spScores1", "" );
-ADDRGP4 $303
+ADDRGP4 $305
 ARGP4
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 679
 ;679:	trap_Cvar_Set( "g_spScores2", "" );
-ADDRGP4 $304
+ADDRGP4 $306
 ARGP4
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 680
 ;680:	trap_Cvar_Set( "g_spScores3", "" );
-ADDRGP4 $305
+ADDRGP4 $307
 ARGP4
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 681
 ;681:	trap_Cvar_Set( "g_spScores4", "" );
-ADDRGP4 $306
+ADDRGP4 $308
 ARGP4
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 682
 ;682:	trap_Cvar_Set( "g_spScores5", "" );
-ADDRGP4 $307
+ADDRGP4 $309
 ARGP4
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 683
 ;683:	trap_Cvar_Set( "g_spAwards", "" );
-ADDRGP4 $253
+ADDRGP4 $255
 ARGP4
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 684
 ;684:	trap_Cvar_Set( "g_spVideos", "" );
-ADDRGP4 $275
+ADDRGP4 $277
 ARGP4
-ADDRGP4 $109
+ADDRGP4 $111
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 685
 ;685:}
-LABELV $302
+LABELV $304
 endproc UI_NewGame 0 8
 export UI_GetNumArenas
 proc UI_GetNumArenas 0 0
@@ -3597,7 +3597,7 @@ line 694
 ADDRGP4 ui_numArenas
 INDIRI4
 RETI4
-LABELV $308
+LABELV $310
 endproc UI_GetNumArenas 0 0
 export UI_GetNumSPArenas
 proc UI_GetNumSPArenas 0 0
@@ -3616,7 +3616,7 @@ line 704
 ADDRGP4 ui_numSinglePlayerArenas
 INDIRI4
 RETI4
-LABELV $309
+LABELV $311
 endproc UI_GetNumSPArenas 0 0
 export UI_GetNumSPTiers
 proc UI_GetNumSPTiers 0 0
@@ -3637,7 +3637,7 @@ INDIRI4
 CNSTI4 4
 DIVI4
 RETI4
-LABELV $310
+LABELV $312
 endproc UI_GetNumSPTiers 0 0
 export UI_GetNumBots
 proc UI_GetNumBots 0 0
@@ -3656,7 +3656,7 @@ line 724
 ADDRGP4 ui_numBots
 INDIRI4
 RETI4
-LABELV $311
+LABELV $313
 endproc UI_GetNumBots 0 0
 export UI_SPUnlock_f
 proc UI_SPUnlock_f 1048 16
@@ -3678,7 +3678,7 @@ line 740
 ;738:
 ;739:	// get scores for skill 1
 ;740:	trap_Cvar_VariableStringBuffer( "g_spScores1", scores, MAX_INFO_VALUE );
-ADDRGP4 $303
+ADDRGP4 $305
 ARGP4
 ADDRLP4 24
 ARGP4
@@ -3694,16 +3694,16 @@ line 743
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $316
+ADDRGP4 $318
 JUMPV
-LABELV $313
+LABELV $315
 line 744
 ;744:		Com_sprintf( arenaKey, sizeof( arenaKey ), "l%i", level );
 ADDRLP4 8
 ARGP4
 CNSTI4 16
 ARGI4
-ADDRGP4 $230
+ADDRGP4 $232
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -3717,14 +3717,14 @@ ADDRLP4 24
 ARGP4
 ADDRLP4 8
 ARGP4
-ADDRGP4 $317
+ADDRGP4 $319
 ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
 line 746
 ;746:	}
-LABELV $314
+LABELV $316
 line 743
 ADDRLP4 0
 ADDRLP4 0
@@ -3732,7 +3732,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $316
+LABELV $318
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numSinglePlayerArenas
@@ -3740,10 +3740,10 @@ INDIRI4
 ADDRGP4 ui_numSpecialSinglePlayerArenas
 INDIRI4
 ADDI4
-LTI4 $313
+LTI4 $315
 line 747
 ;747:	trap_Cvar_Set( "g_spScores1", scores );
-ADDRGP4 $303
+ADDRGP4 $305
 ARGP4
 ADDRLP4 24
 ARGP4
@@ -3757,7 +3757,7 @@ line 750
 ADDRLP4 4
 CNSTI4 1
 ASGNI4
-LABELV $318
+LABELV $320
 line 751
 ;751:		UI_ShowTierVideo( tier );
 ADDRLP4 4
@@ -3768,7 +3768,7 @@ CALLI4
 pop
 line 752
 ;752:	}
-LABELV $319
+LABELV $321
 line 750
 ADDRLP4 4
 ADDRLP4 4
@@ -3779,11 +3779,11 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 8
-LEI4 $318
+LEI4 $320
 line 754
 ;753:
 ;754:	trap_Print( "All levels unlocked at skill level 1\n" );
-ADDRGP4 $322
+ADDRGP4 $324
 ARGP4
 ADDRGP4 trap_Print
 CALLV
@@ -3796,7 +3796,7 @@ CALLV
 pop
 line 757
 ;757:}
-LABELV $312
+LABELV $314
 endproc UI_SPUnlock_f 1048 16
 export UI_SPUnlockMedals_f
 proc UI_SPUnlockMedals_f 1044 16
@@ -3815,7 +3815,7 @@ line 770
 ;768:	char	awardData[MAX_INFO_VALUE];
 ;769:
 ;770:	trap_Cvar_VariableStringBuffer( "g_spAwards", awardData, MAX_INFO_VALUE );
-ADDRGP4 $253
+ADDRGP4 $255
 ARGP4
 ADDRLP4 20
 ARGP4
@@ -3830,14 +3830,14 @@ line 772
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $324
+LABELV $326
 line 773
 ;773:		Com_sprintf( key, sizeof(key), "a%i", n );
 ADDRLP4 4
 ARGP4
 CNSTI4 16
 ARGI4
-ADDRGP4 $254
+ADDRGP4 $256
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -3851,14 +3851,14 @@ ADDRLP4 20
 ARGP4
 ADDRLP4 4
 ARGP4
-ADDRGP4 $328
+ADDRGP4 $330
 ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
 line 775
 ;775:	}
-LABELV $325
+LABELV $327
 line 772
 ADDRLP4 0
 ADDRLP4 0
@@ -3869,11 +3869,11 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 6
-LTI4 $324
+LTI4 $326
 line 777
 ;776:
 ;777:	trap_Cvar_Set( "g_spAwards", awardData );
-ADDRGP4 $253
+ADDRGP4 $255
 ARGP4
 ADDRLP4 20
 ARGP4
@@ -3883,14 +3883,14 @@ pop
 line 779
 ;778:
 ;779:	trap_Print( "All levels unlocked at 100\n" );
-ADDRGP4 $329
+ADDRGP4 $331
 ARGP4
 ADDRGP4 trap_Print
 CALLV
 pop
 line 780
 ;780:}
-LABELV $323
+LABELV $325
 endproc UI_SPUnlockMedals_f 1044 16
 export UI_InitGameinfo
 proc UI_InitGameinfo 4 4
@@ -3922,7 +3922,7 @@ pop
 line 794
 ;793:
 ;794:	if( (trap_Cvar_VariableValue( "fs_restrict" )) || (ui_numSpecialSinglePlayerArenas == 0 && ui_numSinglePlayerArenas == 4) ) {
-ADDRGP4 $333
+ADDRGP4 $335
 ARGP4
 ADDRLP4 0
 ADDRGP4 trap_Cvar_VariableValue
@@ -3931,16 +3931,16 @@ ASGNF4
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
-NEF4 $334
+NEF4 $336
 ADDRGP4 ui_numSpecialSinglePlayerArenas
 INDIRI4
 CNSTI4 0
-NEI4 $331
+NEI4 $333
 ADDRGP4 ui_numSinglePlayerArenas
 INDIRI4
 CNSTI4 4
-NEI4 $331
-LABELV $334
+NEI4 $333
+LABELV $336
 line 795
 ;795:		uis.demoversion = qtrue;
 ADDRGP4 uis+11440
@@ -3948,9 +3948,9 @@ CNSTI4 1
 ASGNI4
 line 796
 ;796:	}
-ADDRGP4 $332
+ADDRGP4 $334
 JUMPV
-LABELV $331
+LABELV $333
 line 797
 ;797:	else {
 line 798
@@ -3960,10 +3960,10 @@ CNSTI4 0
 ASGNI4
 line 799
 ;799:	}
-LABELV $332
+LABELV $334
 line 800
 ;800:}
-LABELV $330
+LABELV $332
 endproc UI_InitGameinfo 4 4
 bss
 align 4
@@ -4288,6 +4288,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -4452,7 +4453,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $333
+LABELV $335
 byte 1 102
 byte 1 115
 byte 1 95
@@ -4466,7 +4467,7 @@ byte 1 99
 byte 1 116
 byte 1 0
 align 1
-LABELV $329
+LABELV $331
 byte 1 65
 byte 1 108
 byte 1 108
@@ -4496,13 +4497,13 @@ byte 1 48
 byte 1 10
 byte 1 0
 align 1
-LABELV $328
+LABELV $330
 byte 1 49
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $322
+LABELV $324
 byte 1 65
 byte 1 108
 byte 1 108
@@ -4542,11 +4543,11 @@ byte 1 49
 byte 1 10
 byte 1 0
 align 1
-LABELV $317
+LABELV $319
 byte 1 49
 byte 1 0
 align 1
-LABELV $307
+LABELV $309
 byte 1 103
 byte 1 95
 byte 1 115
@@ -4560,7 +4561,7 @@ byte 1 115
 byte 1 53
 byte 1 0
 align 1
-LABELV $306
+LABELV $308
 byte 1 103
 byte 1 95
 byte 1 115
@@ -4574,7 +4575,7 @@ byte 1 115
 byte 1 52
 byte 1 0
 align 1
-LABELV $305
+LABELV $307
 byte 1 103
 byte 1 95
 byte 1 115
@@ -4588,7 +4589,7 @@ byte 1 115
 byte 1 51
 byte 1 0
 align 1
-LABELV $304
+LABELV $306
 byte 1 103
 byte 1 95
 byte 1 115
@@ -4602,7 +4603,7 @@ byte 1 115
 byte 1 50
 byte 1 0
 align 1
-LABELV $303
+LABELV $305
 byte 1 103
 byte 1 95
 byte 1 115
@@ -4616,7 +4617,7 @@ byte 1 115
 byte 1 49
 byte 1 0
 align 1
-LABELV $276
+LABELV $278
 byte 1 116
 byte 1 105
 byte 1 101
@@ -4625,7 +4626,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $275
+LABELV $277
 byte 1 103
 byte 1 95
 byte 1 115
@@ -4638,7 +4639,7 @@ byte 1 111
 byte 1 115
 byte 1 0
 align 1
-LABELV $262
+LABELV $264
 byte 1 102
 byte 1 105
 byte 1 110
@@ -4646,7 +4647,7 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $259
+LABELV $261
 byte 1 116
 byte 1 114
 byte 1 97
@@ -4657,13 +4658,13 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $254
+LABELV $256
 byte 1 97
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $253
+LABELV $255
 byte 1 103
 byte 1 95
 byte 1 115
@@ -4676,7 +4677,7 @@ byte 1 100
 byte 1 115
 byte 1 0
 align 1
-LABELV $252
+LABELV $254
 byte 1 94
 byte 1 49
 byte 1 66
@@ -4713,7 +4714,7 @@ byte 1 97
 byte 1 10
 byte 1 0
 align 1
-LABELV $241
+LABELV $243
 byte 1 103
 byte 1 95
 byte 1 115
@@ -4725,13 +4726,13 @@ byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $230
+LABELV $232
 byte 1 108
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $229
+LABELV $231
 byte 1 103
 byte 1 95
 byte 1 115
@@ -4746,14 +4747,14 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $215
+LABELV $217
 byte 1 110
 byte 1 97
 byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $209
+LABELV $211
 byte 1 94
 byte 1 49
 byte 1 73
@@ -4781,7 +4782,7 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $204
+LABELV $206
 byte 1 37
 byte 1 105
 byte 1 32
@@ -4799,14 +4800,14 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $199
+LABELV $201
 byte 1 46
 byte 1 98
 byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $198
+LABELV $200
 byte 1 115
 byte 1 99
 byte 1 114
@@ -4823,22 +4824,22 @@ byte 1 46
 byte 1 116
 byte 1 120
 byte 1 116
+byte 1 0
+align 1
+LABELV $195
+byte 1 103
+byte 1 95
+byte 1 98
+byte 1 111
+byte 1 116
+byte 1 115
+byte 1 70
+byte 1 105
+byte 1 108
+byte 1 101
 byte 1 0
 align 1
 LABELV $193
-byte 1 103
-byte 1 95
-byte 1 98
-byte 1 111
-byte 1 116
-byte 1 115
-byte 1 70
-byte 1 105
-byte 1 108
-byte 1 101
-byte 1 0
-align 1
-LABELV $191
 byte 1 94
 byte 1 51
 byte 1 87
@@ -4895,13 +4896,13 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $176
+LABELV $178
 byte 1 109
 byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $162
+LABELV $164
 byte 1 94
 byte 1 49
 byte 1 73
@@ -4931,7 +4932,7 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $147
+LABELV $149
 byte 1 37
 byte 1 105
 byte 1 32
@@ -4982,7 +4983,7 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $142
+LABELV $144
 byte 1 115
 byte 1 112
 byte 1 101
@@ -4992,7 +4993,7 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $141
+LABELV $143
 byte 1 115
 byte 1 105
 byte 1 110
@@ -5001,25 +5002,25 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $136
+LABELV $138
 byte 1 116
 byte 1 121
 byte 1 112
 byte 1 101
 byte 1 0
 align 1
-LABELV $131
+LABELV $133
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $130
+LABELV $132
 byte 1 110
 byte 1 117
 byte 1 109
 byte 1 0
 align 1
-LABELV $125
+LABELV $127
 byte 1 94
 byte 1 51
 byte 1 87
@@ -5078,7 +5079,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $122
+LABELV $124
 byte 1 37
 byte 1 105
 byte 1 32
@@ -5098,7 +5099,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $121
+LABELV $123
 byte 1 115
 byte 1 99
 byte 1 114
@@ -5109,7 +5110,7 @@ byte 1 115
 byte 1 47
 byte 1 0
 align 1
-LABELV $116
+LABELV $118
 byte 1 46
 byte 1 97
 byte 1 114
@@ -5118,7 +5119,7 @@ byte 1 110
 byte 1 97
 byte 1 0
 align 1
-LABELV $115
+LABELV $117
 byte 1 115
 byte 1 99
 byte 1 114
@@ -5128,7 +5129,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $114
+LABELV $116
 byte 1 115
 byte 1 99
 byte 1 114
@@ -5149,10 +5150,10 @@ byte 1 120
 byte 1 116
 byte 1 0
 align 1
-LABELV $109
+LABELV $111
 byte 1 0
 align 1
-LABELV $108
+LABELV $110
 byte 1 103
 byte 1 95
 byte 1 97
@@ -5167,7 +5168,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $106
+LABELV $108
 byte 1 94
 byte 1 49
 byte 1 102
@@ -5215,7 +5216,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $103
+LABELV $105
 byte 1 94
 byte 1 49
 byte 1 102
@@ -5239,12 +5240,12 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $97
+LABELV $99
 byte 1 37
 byte 1 100
 byte 1 0
 align 1
-LABELV $96
+LABELV $98
 byte 1 92
 byte 1 110
 byte 1 117
@@ -5252,7 +5253,7 @@ byte 1 109
 byte 1 92
 byte 1 0
 align 1
-LABELV $95
+LABELV $97
 byte 1 60
 byte 1 78
 byte 1 85
@@ -5261,11 +5262,11 @@ byte 1 76
 byte 1 62
 byte 1 0
 align 1
-LABELV $92
+LABELV $94
 byte 1 125
 byte 1 0
 align 1
-LABELV $89
+LABELV $91
 byte 1 85
 byte 1 110
 byte 1 101
@@ -5296,7 +5297,7 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $83
+LABELV $85
 byte 1 77
 byte 1 97
 byte 1 120
@@ -5318,7 +5319,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $80
+LABELV $82
 byte 1 77
 byte 1 105
 byte 1 115
@@ -5344,6 +5345,6 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $79
+LABELV $81
 byte 1 123
 byte 1 0
