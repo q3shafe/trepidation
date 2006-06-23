@@ -1175,17 +1175,7 @@ static void PM_GroundTrace( void ) {
 	}
 	
 
-	// Shafe - Trep is the slope a wall?  If so allow a wall jump
-	
-	if ( trace.plane.normal[2] < 1.00 ) 
-	{  
-		//if (pm->ps->MultiJumps < 4 ) 
-		//{
-			PM_CheckJump(); // Shafe - Trep - Wall jumping?
-		//} 
-	} // End Shafe
-	
-	
+
 
 	// slopes that are too steep will not be considered onground
 	if ( trace.plane.normal[2] < MIN_WALK_NORMAL ) {  
