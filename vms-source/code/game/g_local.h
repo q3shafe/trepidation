@@ -11,7 +11,7 @@
 // the "gameversion" client command will print this plus compile date
 //unlagged - misc
 //#define	GAMEVERSION	"baseq3"
-#define GAMEVERSION "trepidation"
+#define GAMEVERSION "Trepidation"
 //unlagged - misc
 
 #define BODY_QUEUE_SIZE		8
