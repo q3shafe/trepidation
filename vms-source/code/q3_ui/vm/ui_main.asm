@@ -345,97 +345,101 @@ address ui_browserShowEmpty
 address $119
 address $95
 byte 4 1
-address ui_brassTime
+address ui_browserMasterNum
 address $120
+address $88
+byte 4 1
+address ui_brassTime
 address $121
+address $122
 byte 4 1
 address ui_drawCrosshair
-address $122
+address $123
 address $117
 byte 4 1
 address ui_drawCrosshairNames
-address $123
-address $95
-byte 4 1
-address ui_marks
 address $124
 address $95
 byte 4 1
-address ui_server1
+address ui_marks
 address $125
-address $102
+address $95
 byte 4 1
-address ui_server2
+address ui_server1
 address $126
 address $102
 byte 4 1
-address ui_server3
+address ui_server2
 address $127
 address $102
 byte 4 1
-address ui_server4
+address ui_server3
 address $128
 address $102
 byte 4 1
-address ui_server5
+address ui_server4
 address $129
 address $102
 byte 4 1
-address ui_server6
+address ui_server5
 address $130
 address $102
 byte 4 1
-address ui_server7
+address ui_server6
 address $131
 address $102
 byte 4 1
-address ui_server8
+address ui_server7
 address $132
 address $102
 byte 4 1
-address ui_server9
+address ui_server8
 address $133
 address $102
 byte 4 1
-address ui_server10
+address ui_server9
 address $134
 address $102
 byte 4 1
-address ui_server11
+address ui_server10
 address $135
 address $102
 byte 4 1
-address ui_server12
+address ui_server11
 address $136
 address $102
 byte 4 1
-address ui_server13
+address ui_server12
 address $137
 address $102
 byte 4 1
-address ui_server14
+address ui_server13
 address $138
 address $102
 byte 4 1
-address ui_server15
+address ui_server14
 address $139
 address $102
 byte 4 1
-address ui_server16
+address ui_server15
 address $140
 address $102
 byte 4 1
-address ui_cdkeychecked
+address ui_server16
 address $141
+address $102
+byte 4 1
+address ui_cdkeychecked
+address $142
 address $88
 byte 4 64
 align 4
 LABELV cvarTableSize
-byte 4 47
+byte 4 48
 export UI_RegisterCvars
 code
 proc UI_RegisterCvars 12 16
-line 208
+line 210
 ;66:}
 ;67:
 ;68:
@@ -484,117 +488,119 @@ line 208
 ;111:vmCvar_t	ui_browserSortKey;
 ;112:vmCvar_t	ui_browserShowFull;
 ;113:vmCvar_t	ui_browserShowEmpty;
-;114:
-;115:vmCvar_t	ui_brassTime;
-;116:vmCvar_t	ui_drawCrosshair;
-;117:vmCvar_t	ui_drawCrosshairNames;
-;118:vmCvar_t	ui_marks;
-;119:
-;120:vmCvar_t	ui_server1;
-;121:vmCvar_t	ui_server2;
-;122:vmCvar_t	ui_server3;
-;123:vmCvar_t	ui_server4;
-;124:vmCvar_t	ui_server5;
-;125:vmCvar_t	ui_server6;
-;126:vmCvar_t	ui_server7;
-;127:vmCvar_t	ui_server8;
-;128:vmCvar_t	ui_server9;
-;129:vmCvar_t	ui_server10;
-;130:vmCvar_t	ui_server11;
-;131:vmCvar_t	ui_server12;
-;132:vmCvar_t	ui_server13;
-;133:vmCvar_t	ui_server14;
-;134:vmCvar_t	ui_server15;
-;135:vmCvar_t	ui_server16;
-;136:
-;137:vmCvar_t	ui_cdkeychecked;
-;138:
-;139:// bk001129 - made static to avoid aliasing.
-;140:static cvarTable_t		cvarTable[] = {
-;141:	{ &ui_ffa_fraglimit, "ui_ffa_fraglimit", "20", CVAR_ARCHIVE },
-;142:	{ &ui_ffa_timelimit, "ui_ffa_timelimit", "0", CVAR_ARCHIVE },
-;143:
-;144:	{ &ui_tourney_fraglimit, "ui_tourney_fraglimit", "0", CVAR_ARCHIVE },
-;145:	{ &ui_tourney_timelimit, "ui_tourney_timelimit", "15", CVAR_ARCHIVE },
-;146:
-;147:	{ &ui_team_fraglimit, "ui_team_fraglimit", "0", CVAR_ARCHIVE },
-;148:	{ &ui_team_timelimit, "ui_team_timelimit", "20", CVAR_ARCHIVE },
-;149:	{ &ui_team_friendly, "ui_team_friendly",  "1", CVAR_ARCHIVE },
-;150:
-;151:	{ &ui_ctf_capturelimit, "ui_ctf_capturelimit", "8", CVAR_ARCHIVE },
-;152:	{ &ui_ctf_timelimit, "ui_ctf_timelimit", "30", CVAR_ARCHIVE },
-;153:	{ &ui_ctf_friendly, "ui_ctf_friendly",  "0", CVAR_ARCHIVE },
-;154:
-;155:	{ &ui_arenasFile, "g_arenasFile", "", CVAR_INIT|CVAR_ROM },
-;156:	{ &ui_botsFile, "g_botsFile", "", CVAR_INIT|CVAR_ROM },
-;157:	{ &ui_spScores1, "g_spScores1", "", CVAR_ARCHIVE | CVAR_ROM },
-;158:	{ &ui_spScores2, "g_spScores2", "", CVAR_ARCHIVE | CVAR_ROM },
-;159:	{ &ui_spScores3, "g_spScores3", "", CVAR_ARCHIVE | CVAR_ROM },
-;160:	{ &ui_spScores4, "g_spScores4", "", CVAR_ARCHIVE | CVAR_ROM },
-;161:	{ &ui_spScores5, "g_spScores5", "", CVAR_ARCHIVE | CVAR_ROM },
-;162:	{ &ui_spAwards, "g_spAwards", "", CVAR_ARCHIVE | CVAR_ROM },
-;163:	{ &ui_spVideos, "g_spVideos", "", CVAR_ARCHIVE | CVAR_ROM },
-;164:	{ &ui_spSkill, "g_spSkill", "2", CVAR_ARCHIVE | CVAR_LATCH },
-;165:
-;166:	{ &ui_spSelection, "ui_spSelection", "", CVAR_ROM },
-;167:
-;168:	{ &ui_browserMaster, "ui_browserMaster", "0", CVAR_ARCHIVE },
-;169:	{ &ui_browserGameType, "ui_browserGameType", "0", CVAR_ARCHIVE },
-;170:	{ &ui_browserSortKey, "ui_browserSortKey", "4", CVAR_ARCHIVE },
-;171:	{ &ui_browserShowFull, "ui_browserShowFull", "1", CVAR_ARCHIVE },
-;172:	{ &ui_browserShowEmpty, "ui_browserShowEmpty", "1", CVAR_ARCHIVE },
-;173:
-;174:	{ &ui_brassTime, "cg_brassTime", "2500", CVAR_ARCHIVE },
-;175:	{ &ui_drawCrosshair, "cg_drawCrosshair", "4", CVAR_ARCHIVE },
-;176:	{ &ui_drawCrosshairNames, "cg_drawCrosshairNames", "1", CVAR_ARCHIVE },
-;177:	{ &ui_marks, "cg_marks", "1", CVAR_ARCHIVE },
-;178:
-;179:	{ &ui_server1, "server1", "", CVAR_ARCHIVE },
-;180:	{ &ui_server2, "server2", "", CVAR_ARCHIVE },
-;181:	{ &ui_server3, "server3", "", CVAR_ARCHIVE },
-;182:	{ &ui_server4, "server4", "", CVAR_ARCHIVE },
-;183:	{ &ui_server5, "server5", "", CVAR_ARCHIVE },
-;184:	{ &ui_server6, "server6", "", CVAR_ARCHIVE },
-;185:	{ &ui_server7, "server7", "", CVAR_ARCHIVE },
-;186:	{ &ui_server8, "server8", "", CVAR_ARCHIVE },
-;187:	{ &ui_server9, "server9", "", CVAR_ARCHIVE },
-;188:	{ &ui_server10, "server10", "", CVAR_ARCHIVE },
-;189:	{ &ui_server11, "server11", "", CVAR_ARCHIVE },
-;190:	{ &ui_server12, "server12", "", CVAR_ARCHIVE },
-;191:	{ &ui_server13, "server13", "", CVAR_ARCHIVE },
-;192:	{ &ui_server14, "server14", "", CVAR_ARCHIVE },
-;193:	{ &ui_server15, "server15", "", CVAR_ARCHIVE },
-;194:	{ &ui_server16, "server16", "", CVAR_ARCHIVE },
-;195:
-;196:	{ &ui_cdkeychecked, "ui_cdkeychecked", "0", CVAR_ROM }
-;197:};
-;198:
-;199:// bk001129 - made static to avoid aliasing
-;200:static int cvarTableSize = sizeof(cvarTable) / sizeof(cvarTable[0]);
-;201:
-;202:
-;203:/*
-;204:=================
-;205:UI_RegisterCvars
+;114:vmCvar_t	ui_browserMasterNum;
+;115:
+;116:vmCvar_t	ui_brassTime;
+;117:vmCvar_t	ui_drawCrosshair;
+;118:vmCvar_t	ui_drawCrosshairNames;
+;119:vmCvar_t	ui_marks;
+;120:
+;121:vmCvar_t	ui_server1;
+;122:vmCvar_t	ui_server2;
+;123:vmCvar_t	ui_server3;
+;124:vmCvar_t	ui_server4;
+;125:vmCvar_t	ui_server5;
+;126:vmCvar_t	ui_server6;
+;127:vmCvar_t	ui_server7;
+;128:vmCvar_t	ui_server8;
+;129:vmCvar_t	ui_server9;
+;130:vmCvar_t	ui_server10;
+;131:vmCvar_t	ui_server11;
+;132:vmCvar_t	ui_server12;
+;133:vmCvar_t	ui_server13;
+;134:vmCvar_t	ui_server14;
+;135:vmCvar_t	ui_server15;
+;136:vmCvar_t	ui_server16;
+;137:
+;138:vmCvar_t	ui_cdkeychecked;
+;139:
+;140:// bk001129 - made static to avoid aliasing.
+;141:static cvarTable_t		cvarTable[] = {
+;142:	{ &ui_ffa_fraglimit, "ui_ffa_fraglimit", "20", CVAR_ARCHIVE },
+;143:	{ &ui_ffa_timelimit, "ui_ffa_timelimit", "0", CVAR_ARCHIVE },
+;144:
+;145:	{ &ui_tourney_fraglimit, "ui_tourney_fraglimit", "0", CVAR_ARCHIVE },
+;146:	{ &ui_tourney_timelimit, "ui_tourney_timelimit", "15", CVAR_ARCHIVE },
+;147:
+;148:	{ &ui_team_fraglimit, "ui_team_fraglimit", "0", CVAR_ARCHIVE },
+;149:	{ &ui_team_timelimit, "ui_team_timelimit", "20", CVAR_ARCHIVE },
+;150:	{ &ui_team_friendly, "ui_team_friendly",  "1", CVAR_ARCHIVE },
+;151:
+;152:	{ &ui_ctf_capturelimit, "ui_ctf_capturelimit", "8", CVAR_ARCHIVE },
+;153:	{ &ui_ctf_timelimit, "ui_ctf_timelimit", "30", CVAR_ARCHIVE },
+;154:	{ &ui_ctf_friendly, "ui_ctf_friendly",  "0", CVAR_ARCHIVE },
+;155:
+;156:	{ &ui_arenasFile, "g_arenasFile", "", CVAR_INIT|CVAR_ROM },
+;157:	{ &ui_botsFile, "g_botsFile", "", CVAR_INIT|CVAR_ROM },
+;158:	{ &ui_spScores1, "g_spScores1", "", CVAR_ARCHIVE | CVAR_ROM },
+;159:	{ &ui_spScores2, "g_spScores2", "", CVAR_ARCHIVE | CVAR_ROM },
+;160:	{ &ui_spScores3, "g_spScores3", "", CVAR_ARCHIVE | CVAR_ROM },
+;161:	{ &ui_spScores4, "g_spScores4", "", CVAR_ARCHIVE | CVAR_ROM },
+;162:	{ &ui_spScores5, "g_spScores5", "", CVAR_ARCHIVE | CVAR_ROM },
+;163:	{ &ui_spAwards, "g_spAwards", "", CVAR_ARCHIVE | CVAR_ROM },
+;164:	{ &ui_spVideos, "g_spVideos", "", CVAR_ARCHIVE | CVAR_ROM },
+;165:	{ &ui_spSkill, "g_spSkill", "2", CVAR_ARCHIVE | CVAR_LATCH },
+;166:
+;167:	{ &ui_spSelection, "ui_spSelection", "", CVAR_ROM },
+;168:
+;169:	{ &ui_browserMaster, "ui_browserMaster", "0", CVAR_ARCHIVE },
+;170:	{ &ui_browserGameType, "ui_browserGameType", "0", CVAR_ARCHIVE },
+;171:	{ &ui_browserSortKey, "ui_browserSortKey", "4", CVAR_ARCHIVE },
+;172:	{ &ui_browserShowFull, "ui_browserShowFull", "1", CVAR_ARCHIVE },
+;173:	{ &ui_browserShowEmpty, "ui_browserShowEmpty", "1", CVAR_ARCHIVE },
+;174:	{ &ui_browserMasterNum, "ui_browserMasterNum", "0", CVAR_ARCHIVE }, // Shafe - Trep 
+;175:
+;176:	{ &ui_brassTime, "cg_brassTime", "2500", CVAR_ARCHIVE },
+;177:	{ &ui_drawCrosshair, "cg_drawCrosshair", "4", CVAR_ARCHIVE },
+;178:	{ &ui_drawCrosshairNames, "cg_drawCrosshairNames", "1", CVAR_ARCHIVE },
+;179:	{ &ui_marks, "cg_marks", "1", CVAR_ARCHIVE },
+;180:
+;181:	{ &ui_server1, "server1", "", CVAR_ARCHIVE },
+;182:	{ &ui_server2, "server2", "", CVAR_ARCHIVE },
+;183:	{ &ui_server3, "server3", "", CVAR_ARCHIVE },
+;184:	{ &ui_server4, "server4", "", CVAR_ARCHIVE },
+;185:	{ &ui_server5, "server5", "", CVAR_ARCHIVE },
+;186:	{ &ui_server6, "server6", "", CVAR_ARCHIVE },
+;187:	{ &ui_server7, "server7", "", CVAR_ARCHIVE },
+;188:	{ &ui_server8, "server8", "", CVAR_ARCHIVE },
+;189:	{ &ui_server9, "server9", "", CVAR_ARCHIVE },
+;190:	{ &ui_server10, "server10", "", CVAR_ARCHIVE },
+;191:	{ &ui_server11, "server11", "", CVAR_ARCHIVE },
+;192:	{ &ui_server12, "server12", "", CVAR_ARCHIVE },
+;193:	{ &ui_server13, "server13", "", CVAR_ARCHIVE },
+;194:	{ &ui_server14, "server14", "", CVAR_ARCHIVE },
+;195:	{ &ui_server15, "server15", "", CVAR_ARCHIVE },
+;196:	{ &ui_server16, "server16", "", CVAR_ARCHIVE },
+;197:
+;198:	{ &ui_cdkeychecked, "ui_cdkeychecked", "0", CVAR_ROM }
+;199:};
+;200:
+;201:// bk001129 - made static to avoid aliasing
+;202:static int cvarTableSize = sizeof(cvarTable) / sizeof(cvarTable[0]);
+;203:
+;204:
+;205:/*
 ;206:=================
-;207:*/
-;208:void UI_RegisterCvars( void ) {
-line 212
-;209:	int			i;
-;210:	cvarTable_t	*cv;
-;211:
-;212:	for ( i = 0, cv = cvarTable ; i < cvarTableSize ; i++, cv++ ) {
+;207:UI_RegisterCvars
+;208:=================
+;209:*/
+;210:void UI_RegisterCvars( void ) {
+line 214
+;211:	int			i;
+;212:	cvarTable_t	*cv;
+;213:
+;214:	for ( i = 0, cv = cvarTable ; i < cvarTableSize ; i++, cv++ ) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
 ADDRLP4 0
 ADDRGP4 cvarTable
 ASGNP4
-ADDRGP4 $146
+ADDRGP4 $147
 JUMPV
-LABELV $143
-line 213
-;213:		trap_Cvar_Register( cv->vmCvar, cv->cvarName, cv->defaultString, cv->cvarFlags );
+LABELV $144
+line 215
+;215:		trap_Cvar_Register( cv->vmCvar, cv->cvarName, cv->defaultString, cv->cvarFlags );
 ADDRLP4 0
 INDIRP4
 INDIRP4
@@ -620,10 +626,10 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
+line 216
+;216:	}
+LABELV $145
 line 214
-;214:	}
-LABELV $144
-line 212
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -636,42 +642,42 @@ INDIRP4
 CNSTI4 16
 ADDP4
 ASGNP4
-LABELV $146
+LABELV $147
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cvarTableSize
 INDIRI4
-LTI4 $143
-line 215
-;215:}
-LABELV $142
+LTI4 $144
+line 217
+;217:}
+LABELV $143
 endproc UI_RegisterCvars 12 16
 export UI_UpdateCvars
 proc UI_UpdateCvars 8 4
-line 222
-;216:
-;217:/*
-;218:=================
-;219:UI_UpdateCvars
+line 224
+;218:
+;219:/*
 ;220:=================
-;221:*/
-;222:void UI_UpdateCvars( void ) {
-line 226
-;223:	int			i;
-;224:	cvarTable_t	*cv;
-;225:
-;226:	for ( i = 0, cv = cvarTable ; i < cvarTableSize ; i++, cv++ ) {
+;221:UI_UpdateCvars
+;222:=================
+;223:*/
+;224:void UI_UpdateCvars( void ) {
+line 228
+;225:	int			i;
+;226:	cvarTable_t	*cv;
+;227:
+;228:	for ( i = 0, cv = cvarTable ; i < cvarTableSize ; i++, cv++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRLP4 4
 ADDRGP4 cvarTable
 ASGNP4
-ADDRGP4 $151
+ADDRGP4 $152
 JUMPV
-LABELV $148
-line 227
-;227:		trap_Cvar_Update( cv->vmCvar );
+LABELV $149
+line 229
+;229:		trap_Cvar_Update( cv->vmCvar );
 ADDRLP4 4
 INDIRP4
 INDIRP4
@@ -679,10 +685,10 @@ ARGP4
 ADDRGP4 trap_Cvar_Update
 CALLV
 pop
+line 230
+;230:	}
+LABELV $150
 line 228
-;228:	}
-LABELV $149
-line 226
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -695,15 +701,15 @@ INDIRP4
 CNSTI4 16
 ADDP4
 ASGNP4
-LABELV $151
+LABELV $152
 ADDRLP4 0
 INDIRI4
 ADDRGP4 cvarTableSize
 INDIRI4
-LTI4 $148
-line 229
-;229:}
-LABELV $147
+LTI4 $149
+line 231
+;231:}
+LABELV $148
 endproc UI_UpdateCvars 8 4
 import UI_RankStatusMenu
 import RankStatus_Cache
@@ -1049,6 +1055,10 @@ export ui_brassTime
 align 4
 LABELV ui_brassTime
 skip 272
+export ui_browserMasterNum
+align 4
+LABELV ui_browserMasterNum
+skip 272
 export ui_browserShowEmpty
 align 4
 LABELV ui_browserShowEmpty
@@ -1325,7 +1335,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $141
+LABELV $142
 byte 1 117
 byte 1 105
 byte 1 95
@@ -1343,7 +1353,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $140
+LABELV $141
 byte 1 115
 byte 1 101
 byte 1 114
@@ -1352,6 +1362,17 @@ byte 1 101
 byte 1 114
 byte 1 49
 byte 1 54
+byte 1 0
+align 1
+LABELV $140
+byte 1 115
+byte 1 101
+byte 1 114
+byte 1 118
+byte 1 101
+byte 1 114
+byte 1 49
+byte 1 53
 byte 1 0
 align 1
 LABELV $139
@@ -1362,7 +1383,7 @@ byte 1 118
 byte 1 101
 byte 1 114
 byte 1 49
-byte 1 53
+byte 1 52
 byte 1 0
 align 1
 LABELV $138
@@ -1373,7 +1394,7 @@ byte 1 118
 byte 1 101
 byte 1 114
 byte 1 49
-byte 1 52
+byte 1 51
 byte 1 0
 align 1
 LABELV $137
@@ -1384,7 +1405,7 @@ byte 1 118
 byte 1 101
 byte 1 114
 byte 1 49
-byte 1 51
+byte 1 50
 byte 1 0
 align 1
 LABELV $136
@@ -1395,7 +1416,7 @@ byte 1 118
 byte 1 101
 byte 1 114
 byte 1 49
-byte 1 50
+byte 1 49
 byte 1 0
 align 1
 LABELV $135
@@ -1406,7 +1427,7 @@ byte 1 118
 byte 1 101
 byte 1 114
 byte 1 49
-byte 1 49
+byte 1 48
 byte 1 0
 align 1
 LABELV $134
@@ -1416,8 +1437,7 @@ byte 1 114
 byte 1 118
 byte 1 101
 byte 1 114
-byte 1 49
-byte 1 48
+byte 1 57
 byte 1 0
 align 1
 LABELV $133
@@ -1427,7 +1447,7 @@ byte 1 114
 byte 1 118
 byte 1 101
 byte 1 114
-byte 1 57
+byte 1 56
 byte 1 0
 align 1
 LABELV $132
@@ -1437,7 +1457,7 @@ byte 1 114
 byte 1 118
 byte 1 101
 byte 1 114
-byte 1 56
+byte 1 55
 byte 1 0
 align 1
 LABELV $131
@@ -1447,7 +1467,7 @@ byte 1 114
 byte 1 118
 byte 1 101
 byte 1 114
-byte 1 55
+byte 1 54
 byte 1 0
 align 1
 LABELV $130
@@ -1457,7 +1477,7 @@ byte 1 114
 byte 1 118
 byte 1 101
 byte 1 114
-byte 1 54
+byte 1 53
 byte 1 0
 align 1
 LABELV $129
@@ -1467,7 +1487,7 @@ byte 1 114
 byte 1 118
 byte 1 101
 byte 1 114
-byte 1 53
+byte 1 52
 byte 1 0
 align 1
 LABELV $128
@@ -1477,7 +1497,7 @@ byte 1 114
 byte 1 118
 byte 1 101
 byte 1 114
-byte 1 52
+byte 1 51
 byte 1 0
 align 1
 LABELV $127
@@ -1487,7 +1507,7 @@ byte 1 114
 byte 1 118
 byte 1 101
 byte 1 114
-byte 1 51
+byte 1 50
 byte 1 0
 align 1
 LABELV $126
@@ -1497,20 +1517,10 @@ byte 1 114
 byte 1 118
 byte 1 101
 byte 1 114
-byte 1 50
-byte 1 0
-align 1
-LABELV $125
-byte 1 115
-byte 1 101
-byte 1 114
-byte 1 118
-byte 1 101
-byte 1 114
 byte 1 49
 byte 1 0
 align 1
-LABELV $124
+LABELV $125
 byte 1 99
 byte 1 103
 byte 1 95
@@ -1521,7 +1531,7 @@ byte 1 107
 byte 1 115
 byte 1 0
 align 1
-LABELV $123
+LABELV $124
 byte 1 99
 byte 1 103
 byte 1 95
@@ -1545,7 +1555,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $122
+LABELV $123
 byte 1 99
 byte 1 103
 byte 1 95
@@ -1564,14 +1574,14 @@ byte 1 105
 byte 1 114
 byte 1 0
 align 1
-LABELV $121
+LABELV $122
 byte 1 50
 byte 1 53
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $120
+LABELV $121
 byte 1 99
 byte 1 103
 byte 1 95
@@ -1584,6 +1594,28 @@ byte 1 84
 byte 1 105
 byte 1 109
 byte 1 101
+byte 1 0
+align 1
+LABELV $120
+byte 1 117
+byte 1 105
+byte 1 95
+byte 1 98
+byte 1 114
+byte 1 111
+byte 1 119
+byte 1 115
+byte 1 101
+byte 1 114
+byte 1 77
+byte 1 97
+byte 1 115
+byte 1 116
+byte 1 101
+byte 1 114
+byte 1 78
+byte 1 117
+byte 1 109
 byte 1 0
 align 1
 LABELV $119
