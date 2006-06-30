@@ -1,0 +1,120 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: botlib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP16A.tmp" with contents
+[
+/nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_LIB" /D "BOTLIB" /D "_MBCS" /Fp".\build\botlib_release\botlib.pch" /YX /Fo".\build\botlib_release\\" /GF /c 
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_bspq3.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_cluster.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_debug.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_entity.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_file.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_main.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_move.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_optimize.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_reach.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_route.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_routealt.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_aas_sample.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_ai_char.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_ai_chat.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_ai_gen.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_ai_goal.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_ai_move.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_ai_weap.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_ai_weight.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_ea.c"
+"G:\games\trepidation\source\ioq3\code\botlib\be_interface.c"
+"G:\games\trepidation\source\ioq3\code\botlib\l_crc.c"
+"G:\games\trepidation\source\ioq3\code\botlib\l_libvar.c"
+"G:\games\trepidation\source\ioq3\code\botlib\l_log.c"
+"G:\games\trepidation\source\ioq3\code\botlib\l_memory.c"
+"G:\games\trepidation\source\ioq3\code\botlib\l_precomp.c"
+"G:\games\trepidation\source\ioq3\code\botlib\l_script.c"
+"G:\games\trepidation\source\ioq3\code\botlib\l_struct.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP16A.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP16B.tmp" with contents
+[
+/nologo /out:".\build\botlib_release\botlib.lib" 
+".\$(IntDir)\be_aas_bspq3.obj"
+".\$(IntDir)\be_aas_cluster.obj"
+".\$(IntDir)\be_aas_debug.obj"
+".\$(IntDir)\be_aas_entity.obj"
+".\$(IntDir)\be_aas_file.obj"
+".\$(IntDir)\be_aas_main.obj"
+".\$(IntDir)\be_aas_move.obj"
+".\$(IntDir)\be_aas_optimize.obj"
+".\$(IntDir)\be_aas_reach.obj"
+".\$(IntDir)\be_aas_route.obj"
+".\$(IntDir)\be_aas_routealt.obj"
+".\$(IntDir)\be_aas_sample.obj"
+".\$(IntDir)\be_ai_char.obj"
+".\$(IntDir)\be_ai_chat.obj"
+".\$(IntDir)\be_ai_gen.obj"
+".\$(IntDir)\be_ai_goal.obj"
+".\$(IntDir)\be_ai_move.obj"
+".\$(IntDir)\be_ai_weap.obj"
+".\$(IntDir)\be_ai_weight.obj"
+".\$(IntDir)\be_ea.obj"
+".\$(IntDir)\be_interface.obj"
+".\$(IntDir)\l_crc.obj"
+".\$(IntDir)\l_libvar.obj"
+".\$(IntDir)\l_log.obj"
+".\$(IntDir)\l_memory.obj"
+".\$(IntDir)\l_precomp.obj"
+".\$(IntDir)\l_script.obj"
+".\$(IntDir)\l_struct.obj"
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP16B.tmp"
+<h3>Output Window</h3>
+Compiling...
+be_aas_bspq3.c
+be_aas_cluster.c
+be_aas_debug.c
+be_aas_entity.c
+be_aas_file.c
+be_aas_main.c
+be_aas_move.c
+be_aas_optimize.c
+be_aas_reach.c
+be_aas_route.c
+be_aas_routealt.c
+be_aas_sample.c
+be_ai_char.c
+be_ai_chat.c
+be_ai_gen.c
+be_ai_goal.c
+be_ai_move.c
+be_ai_weap.c
+be_ai_weight.c
+be_ea.c
+be_interface.c
+l_crc.c
+l_libvar.c
+l_log.c
+l_memory.c
+l_precomp.c
+l_script.c
+l_struct.c
+Creating library...
+Microsoft (R) Library Manager Version 6.00.8168
+Copyright (C) Microsoft Corp 1992-1998. All rights reserved.
+
+/nologo "/out:.\build\botlib_release\botlib.lib" 
+".\$(IntDir)\be_aas_bspq3.obj" 
+LINK : fatal error LNK1181: cannot open input file ".\$(IntDir)\be_aas_bspq3.obj"
+Error executing link.exe.
+
+
+
+<h3>Results</h3>
+botlib.lib - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
