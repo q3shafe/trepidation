@@ -36,7 +36,7 @@
 #define TIMEOUT_CHALLENGE 2
 
 // Gamename used for Q3A
-#define GAMENAME_Q3A "Trepidation" 
+#define GAMENAME_Q3A "QuakeArena-1" 
 
 // Maximum size of a reponse packet
 #define MAX_PACKET_SIZE 1400
