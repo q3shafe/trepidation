@@ -236,8 +236,14 @@ extern int demo_protocols[];
 #define	UPDATE_SERVER_NAME	"" // Shafe
 // override on command line, config files etc.
 #ifndef MASTER_SERVER_NAME
-//#define MASTER_SERVER_NAME	"70.84.61.148" // Shafe - Trep 70.84.61.148:27950
-#define MASTER_SERVER_NAME	"master.tnlsoft.com" // Shafe - Trep 70.84.61.148:27950
+
+#define MASTER_SERVER_NAME	"master.tnlsoft.com" // Shafe - Trep 
+#define ALT_MASTER0	"master2.tnlsoft.com" // Shafe - Trep
+#define ALT_MASTER1	"master.tnltotalsolutions.com" // Shafe - Trep
+#define ALT_MASTER2	"master2.tnltotalsolutions.com" // Shafe - Trep
+#define ALT_MASTER3	"192.168.0.4" // Shafe - Trep - Not Usabel - Shafe Uses This Cuz Master Runs On His Local Network
+
+
 #endif
 #ifndef AUTHORIZE_SERVER_NAME
 #define	AUTHORIZE_SERVER_NAME	""

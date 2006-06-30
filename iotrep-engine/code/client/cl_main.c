@@ -1730,17 +1730,19 @@ void CL_ServersResponsePacket( netadr_t from, msg_t *msg ) {
 		}
 	}
 
-	if (cls.masterNum == 0) {
+	// Shafe - Trep - Multi Master - Hacking around AS_MPLAYER . bleh why didnt they clean this out
+	//if (cls.masterNum == 0) {
 		count = cls.numglobalservers;
 		max = MAX_GLOBAL_SERVERS;
-	} else {
-		count = cls.nummplayerservers;
-		max = MAX_OTHER_SERVERS;
-	}
+	//} else {
+	//	count = cls.nummplayerservers;
+	//	max = MAX_OTHER_SERVERS;
+	//}
 
 	for (i = 0; i < numservers && count < max; i++) {
 		// build net address
-		serverInfo_t *server = (cls.masterNum == 0) ? &cls.globalServers[count] : &cls.mplayerServers[count];
+		//serverInfo_t *server = (cls.masterNum == 0) ? &cls.globalServers[count] : &cls.mplayerServers[count];
+		serverInfo_t *server = (cls.masterNum == cls.masterNum) ? &cls.globalServers[count] : &cls.mplayerServers[count]; // Shafe - More multimaster mplayer stuff
 
 		CL_InitServerInfo( server, &addresses[i] );
 		// advance to next slot
@@ -1748,7 +1750,7 @@ void CL_ServersResponsePacket( netadr_t from, msg_t *msg ) {
 	}
 
 	// if getting the global list
-	if (cls.masterNum == 0) {
+	//if (cls.masterNum == 0) {
 		if ( cls.numGlobalServerAddresses < MAX_GLOBAL_SERVERS ) {
 			// if we couldn't store the servers in the main list anymore
 			for (; i < numservers && count >= max; i++) {
@@ -1762,15 +1764,15 @@ void CL_ServersResponsePacket( netadr_t from, msg_t *msg ) {
 				addr->port  = addresses[i].port;
 			}
 		}
-	}
+	//}
 
-	if (cls.masterNum == 0) {
+	//if (cls.masterNum == 0) {  // Shafe - Multi Master - More mplayer crap
 		cls.numglobalservers = count;
 		total = count + cls.numGlobalServerAddresses;
-	} else {
-		cls.nummplayerservers = count;
-		total = count;
-	}
+	//} else {
+	//	cls.nummplayerservers = count;
+	//	total = count;
+	//}
 
 	Com_Printf("%d servers parsed (total %d)\n", numservers, total);
 }
@@ -3016,29 +3018,67 @@ void CL_GlobalServers_f( void ) {
 	int			count;
 	char		*buffptr;
 	char		command[1024];
+
 	
 	if ( Cmd_Argc() < 3) {
-		Com_Printf( "usage: globalservers <master# 0-1> <protocol> [keywords]\n");
+		Com_Printf( "usage: globalservers <master# 0-4> <protocol> [keywords]\n");
 		return;	
 	}
 
 	cls.masterNum = atoi( Cmd_Argv(1) );
 
-	Com_Printf( "Requesting servers from the master...\n");
-
+	
 	// reset the list, waiting for response
 	// -1 is used to distinguish a "no response"
 
-	if( cls.masterNum == 1 ) {
+	// This will have to be reworked - I'm ditching AS_MPLAYER as I dont see a use for it
+	/*
+		if( cls.masterNum == 1 ) {
 		NET_StringToAdr( MASTER_SERVER_NAME, &to );
 		cls.nummplayerservers = -1;
 		cls.pingUpdateSource = AS_MPLAYER;
 	}
 	else {
+	*/
+	if( cls.masterNum == 0 ) {
+		Com_Printf( "Requesting servers from the Primary Master Server..\n" );
 		NET_StringToAdr( MASTER_SERVER_NAME, &to );
 		cls.numglobalservers = -1;
 		cls.pingUpdateSource = AS_GLOBAL;
+		
 	}
+
+	if( cls.masterNum == 1 ) {
+		Com_Printf( "Requesting servers from the master at master.tnltotalsolutions.com\n" );
+		NET_StringToAdr( ALT_MASTER0, &to );
+		cls.numglobalservers = -1;
+		cls.pingUpdateSource = AS_GLOBAL;
+	}
+	if( cls.masterNum == 2 ) {
+		Com_Printf( "Requesting servers from the master at master2.tnlsoft.com\n" );
+		NET_StringToAdr( ALT_MASTER1, &to );
+		cls.numglobalservers = -1;
+		cls.pingUpdateSource = AS_GLOBAL;
+	}
+
+	if( cls.masterNum == 3 ) {
+		Com_Printf( "Requesting servers from the master at master2.tnltotalsolutions.com\n" );
+		NET_StringToAdr( ALT_MASTER2, &to );
+		cls.numglobalservers = -1;
+		cls.pingUpdateSource = AS_GLOBAL;
+	}
+	if( cls.masterNum == 4 ) {
+		Com_Printf( "Requesting servers from the master at Shafe's Special Place :)\n" );
+		NET_StringToAdr( ALT_MASTER3, &to );
+		cls.numglobalservers = -1;
+		cls.pingUpdateSource = AS_GLOBAL;
+	}
+
+	//}
+	// End Shafe
+	
+
+
 	to.type = NA_IP;
 	to.port = BigShort(PORT_MASTER);
 
