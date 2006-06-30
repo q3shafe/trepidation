@@ -55,7 +55,9 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define ID_CREATE			21
 #define ID_CONNECT			22
 #define ID_REMOVE			23
-#define ID_PUNKBUSTER 24
+#define ID_PUNKBUSTER		24
+#define ID_MSERVER			25
+
 
 #define GR_LOGO				30
 #define GR_LETTERS			31
@@ -71,6 +73,15 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define SORT_GAME			3
 #define SORT_PING			4
 
+// Shafe - Trep Multi Master Support
+#define MASTER0				0
+#define MASTER1				1
+#define MASTER2				2
+#define MASTER3				3
+#define MASTER4				4
+// End Shyafe
+
+
 #define GAMES_ALL			0
 #define GAMES_FFA			1
 #define GAMES_TEAMPLAY		2
@@ -78,6 +89,17 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define GAMES_CTF			4
 #define GAMES_FREEZE		5	// Shafe - Trep - New Gametype
 #define GAMES_LASTMAN		6	// Shafe - Trep - New Gametype
+
+//Shafe - Trep - Mulimasters
+static const char *master_servers[] = {
+	"Primary Master Server",
+	"Alternate Master 1",
+	"Alternate Master 2",
+	"Alternate Master 3",
+	"Alternate Master 4",
+	0
+};
+// End Shafe
 
 static const char *master_items[] = {
 	"Local",
@@ -178,6 +200,7 @@ typedef struct {
 	menutext_s			banner;
 
 	menulist_s			master;
+	menulist_s			mserver;
 	menulist_s			gametype;
 	menulist_s			sortkey;
 	menuradiobutton_s	showfull;
@@ -232,6 +255,7 @@ static int				g_gametype;
 static int				g_sortkey;
 static int				g_emptyservers;
 static int				g_fullservers;
+static int				g_masteruse; // Shafe - Trep - Multimaster
 
 
 /*
@@ -377,6 +401,7 @@ static void ArenaServers_UpdateMenu( void ) {
 		else {
 			// all servers pinged - enable controls
 			g_arenaservers.master.generic.flags		&= ~QMF_GRAYED;
+			g_arenaservers.mserver.generic.flags		&= ~QMF_GRAYED;
 			g_arenaservers.gametype.generic.flags	&= ~QMF_GRAYED;
 			g_arenaservers.sortkey.generic.flags	&= ~QMF_GRAYED;
 			g_arenaservers.showempty.generic.flags	&= ~QMF_GRAYED;
@@ -404,6 +429,7 @@ static void ArenaServers_UpdateMenu( void ) {
 
 			// disable controls during refresh
 			g_arenaservers.master.generic.flags		|= QMF_GRAYED;
+			g_arenaservers.mserver.generic.flags		|= QMF_GRAYED;
 			g_arenaservers.gametype.generic.flags	|= QMF_GRAYED;
 			g_arenaservers.sortkey.generic.flags	|= QMF_GRAYED;
 			g_arenaservers.showempty.generic.flags	|= QMF_GRAYED;
@@ -431,6 +457,7 @@ static void ArenaServers_UpdateMenu( void ) {
 
 			// end of refresh - set control state
 			g_arenaservers.master.generic.flags		&= ~QMF_GRAYED;
+			g_arenaservers.mserver.generic.flags		&= ~QMF_GRAYED;
 			g_arenaservers.gametype.generic.flags	&= ~QMF_GRAYED;
 			g_arenaservers.sortkey.generic.flags	&= ~QMF_GRAYED;
 			g_arenaservers.showempty.generic.flags	&= ~QMF_GRAYED;
@@ -450,6 +477,7 @@ static void ArenaServers_UpdateMenu( void ) {
 		ArenaServers_UpdatePicture();
 		return;
 	}
+	
 
 	// build list box strings - apply culling filters
 	servernodeptr = g_arenaservers.serverlist;
@@ -1045,6 +1073,13 @@ static void ArenaServers_StartRefresh( void )
 
 		protocol[0] = '\0';
 		trap_Cvar_VariableStringBuffer( "debug_protocol", protocol, sizeof(protocol) );
+		
+
+		// Shafe - Trep Here is where we ditch the whole AS_MPLAYER Thing and replace it with multimaster support
+		// i will define which hardcoded master to use 0 is default or sv_master1
+		i = ui_browserMasterNum.integer;
+		// End Shafe
+		Com_Printf("Sending to master number %d \n", i);
 		if (strlen(protocol)) {
 			trap_Cmd_ExecuteText( EXEC_APPEND, va( "globalservers %d %s%s\n", i, protocol, myargs ));
 		}
@@ -1191,6 +1226,14 @@ static void ArenaServers_Event( void* ptr, int event ) {
 		ArenaServers_SetType( value );
 		break;
 
+	case ID_MSERVER:  // Shafe
+		trap_Cvar_SetValue( "ui_browserMasterNum", g_arenaservers.mserver.curvalue );
+		//ArenaServers_StartRefresh();
+		//ArenaServers_DoRefresh();
+		//ArenaServers_UpdateMenu();
+		
+		break;
+		
 	case ID_GAMETYPE:
 		trap_Cvar_SetValue( "ui_browserGameType", g_arenaservers.gametype.curvalue );
 		g_gametype = g_arenaservers.gametype.curvalue;
@@ -1351,6 +1394,17 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.master.generic.x				= 275;  // 320 -- Bleh Shafe
 	g_arenaservers.master.generic.y				= y;
 	g_arenaservers.master.itemnames				= master_items;
+
+	// Shafe - Multi Masters
+	y += SMALLCHAR_HEIGHT;	
+	g_arenaservers.mserver.generic.type			= MTYPE_SPINCONTROL;
+	g_arenaservers.mserver.generic.name			= "Master Server:";
+	g_arenaservers.mserver.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT|QMF_LEFT_JUSTIFY;
+	g_arenaservers.mserver.generic.callback		= ArenaServers_Event;
+	g_arenaservers.mserver.generic.id			= ID_MSERVER;
+	g_arenaservers.mserver.generic.x				= 275;  // 320 -- Bleh Shafe
+	g_arenaservers.mserver.generic.y				= y;
+	g_arenaservers.mserver.itemnames				= master_servers;
 
 	y += SMALLCHAR_HEIGHT;
 	g_arenaservers.gametype.generic.type		= MTYPE_SPINCONTROL;
@@ -1544,6 +1598,7 @@ static void ArenaServers_MenuInit( void ) {
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.banner );
 
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.master );
+	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.mserver ); // Shafe - Multimaster
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.gametype );
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.sortkey );
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.showfull);
@@ -1575,10 +1630,17 @@ static void ArenaServers_MenuInit( void ) {
 	value = g_servertype;
 	if (value >= 1)
 		value--;
+	
 	g_arenaservers.master.curvalue = value;
 
 	g_gametype = Com_Clamp( 0, 4, ui_browserGameType.integer );
 	g_arenaservers.gametype.curvalue = g_gametype;
+
+	// Shafe - Multi Master 
+	g_masteruse = Com_Clamp( 0, 4, ui_browserMasterNum.integer );
+	g_arenaservers.mserver.curvalue = g_masteruse;
+
+
 
 	g_sortkey = Com_Clamp( 0, 4, ui_browserSortKey.integer );
 	g_arenaservers.sortkey.curvalue = g_sortkey;

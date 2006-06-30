@@ -2116,6 +2116,7 @@ import ui_marks
 import ui_drawCrosshairNames
 import ui_drawCrosshair
 import ui_brassTime
+import ui_browserMasterNum
 import ui_browserShowEmpty
 import ui_browserShowFull
 import ui_browserSortKey
