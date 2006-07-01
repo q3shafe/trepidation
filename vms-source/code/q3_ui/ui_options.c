@@ -118,10 +118,10 @@ void Options_MenuInit( void ) {
 	s_options.framel.generic.type  = MTYPE_BITMAP;
 	s_options.framel.generic.name  = ART_FRAMEL;
 	s_options.framel.generic.flags = QMF_INACTIVE;
-	s_options.framel.generic.x	   = 8;  
-	s_options.framel.generic.y	   = 76;
-	s_options.framel.width  	   = 256;
-	s_options.framel.height  	   = 334;
+	s_options.framel.generic.x	   = 1;  
+	s_options.framel.generic.y	   = 1;
+	s_options.framel.width  	   = 800;
+	s_options.framel.height  	   = 600;
 
 	s_options.framer.generic.type  = MTYPE_BITMAP;
 	s_options.framer.generic.name  = ART_FRAMER;
@@ -188,7 +188,7 @@ void Options_MenuInit( void ) {
 
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.banner );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.framel );
-	Menu_AddItem( &s_options.menu, ( void * ) &s_options.framer );
+	//Menu_AddItem( &s_options.menu, ( void * ) &s_options.framer );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.graphics );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.display );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.sound );

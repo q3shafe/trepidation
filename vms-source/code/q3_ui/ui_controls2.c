@@ -1215,9 +1215,9 @@ static void Controls_MenuInit( void )
 	s_controls.framel.generic.name  = ART_FRAMEL;
 	s_controls.framel.generic.flags = QMF_LEFT_JUSTIFY|QMF_INACTIVE;
 	s_controls.framel.generic.x     = 0;
-	s_controls.framel.generic.y     = 78;
-	s_controls.framel.width  	    = 256;
-	s_controls.framel.height  	    = 329;
+	s_controls.framel.generic.y     = 0;
+	s_controls.framel.width  	    = 800;
+	s_controls.framel.height  	    = 600;
 
 	s_controls.framer.generic.type  = MTYPE_BITMAP;
 	s_controls.framer.generic.name  = ART_FRAMER;
@@ -1600,7 +1600,7 @@ static void Controls_MenuInit( void )
 
 	Menu_AddItem( &s_controls.menu, &s_controls.banner );
 	Menu_AddItem( &s_controls.menu, &s_controls.framel );
-	Menu_AddItem( &s_controls.menu, &s_controls.framer );
+	//Menu_AddItem( &s_controls.menu, &s_controls.framer );
 	Menu_AddItem( &s_controls.menu, &s_controls.player );
 	Menu_AddItem( &s_controls.menu, &s_controls.name );
 

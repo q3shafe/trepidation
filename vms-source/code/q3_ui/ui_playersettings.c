@@ -352,9 +352,9 @@ static void PlayerSettings_MenuInit( void ) {
 	s_playersettings.framel.generic.name  = ART_FRAMEL;
 	s_playersettings.framel.generic.flags = QMF_LEFT_JUSTIFY|QMF_INACTIVE;
 	s_playersettings.framel.generic.x     = 0;
-	s_playersettings.framel.generic.y     = 78;
-	s_playersettings.framel.width         = 256;
-	s_playersettings.framel.height        = 329;
+	s_playersettings.framel.generic.y     = 0;
+	s_playersettings.framel.width         = 800;
+	s_playersettings.framel.height        = 600;
 
 	s_playersettings.framer.generic.type  = MTYPE_BITMAP;
 	s_playersettings.framer.generic.name  = ART_FRAMER;
@@ -442,7 +442,7 @@ static void PlayerSettings_MenuInit( void ) {
 
 	Menu_AddItem( &s_playersettings.menu, &s_playersettings.banner );
 	Menu_AddItem( &s_playersettings.menu, &s_playersettings.framel );
-	Menu_AddItem( &s_playersettings.menu, &s_playersettings.framer );
+	//Menu_AddItem( &s_playersettings.menu, &s_playersettings.framer );
 
 	Menu_AddItem( &s_playersettings.menu, &s_playersettings.name );
 	Menu_AddItem( &s_playersettings.menu, &s_playersettings.handicap );

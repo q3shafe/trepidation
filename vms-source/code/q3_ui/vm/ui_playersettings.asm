@@ -1573,19 +1573,19 @@ ADDRGP4 s_playersettings+360+12
 CNSTI4 0
 ASGNI4
 line 355
-;355:	s_playersettings.framel.generic.y     = 78;
+;355:	s_playersettings.framel.generic.y     = 0;
 ADDRGP4 s_playersettings+360+16
-CNSTI4 78
+CNSTI4 0
 ASGNI4
 line 356
-;356:	s_playersettings.framel.width         = 256;
+;356:	s_playersettings.framel.width         = 800;
 ADDRGP4 s_playersettings+360+76
-CNSTI4 256
+CNSTI4 800
 ASGNI4
 line 357
-;357:	s_playersettings.framel.height        = 329;
+;357:	s_playersettings.framel.height        = 600;
 ADDRGP4 s_playersettings+360+80
-CNSTI4 329
+CNSTI4 600
 ASGNI4
 line 359
 ;358:
@@ -2021,16 +2021,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 445
-;445:	Menu_AddItem( &s_playersettings.menu, &s_playersettings.framer );
-ADDRGP4 s_playersettings
-ARGP4
-ADDRGP4 s_playersettings+448
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
 line 447
+;445:	//Menu_AddItem( &s_playersettings.menu, &s_playersettings.framer );
 ;446:
 ;447:	Menu_AddItem( &s_playersettings.menu, &s_playersettings.name );
 ADDRGP4 s_playersettings
@@ -2162,7 +2154,7 @@ pop
 line 474
 ;473:
 ;474:	s_playersettings.fxBasePic = trap_R_RegisterShaderNoMip( ART_FX_BASE );
-ADDRGP4 $370
+ADDRGP4 $369
 ARGP4
 ADDRLP4 0
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2174,7 +2166,7 @@ INDIRI4
 ASGNI4
 line 475
 ;475:	s_playersettings.fxPic[0] = trap_R_RegisterShaderNoMip( ART_FX_RED );
-ADDRGP4 $372
+ADDRGP4 $371
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2186,7 +2178,7 @@ INDIRI4
 ASGNI4
 line 476
 ;476:	s_playersettings.fxPic[1] = trap_R_RegisterShaderNoMip( ART_FX_YELLOW );
-ADDRGP4 $375
+ADDRGP4 $374
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2198,7 +2190,7 @@ INDIRI4
 ASGNI4
 line 477
 ;477:	s_playersettings.fxPic[2] = trap_R_RegisterShaderNoMip( ART_FX_GREEN );
-ADDRGP4 $378
+ADDRGP4 $377
 ARGP4
 ADDRLP4 12
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2210,7 +2202,7 @@ INDIRI4
 ASGNI4
 line 478
 ;478:	s_playersettings.fxPic[3] = trap_R_RegisterShaderNoMip( ART_FX_TEAL );
-ADDRGP4 $381
+ADDRGP4 $380
 ARGP4
 ADDRLP4 16
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2222,7 +2214,7 @@ INDIRI4
 ASGNI4
 line 479
 ;479:	s_playersettings.fxPic[4] = trap_R_RegisterShaderNoMip( ART_FX_BLUE );
-ADDRGP4 $384
+ADDRGP4 $383
 ARGP4
 ADDRLP4 20
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2234,7 +2226,7 @@ INDIRI4
 ASGNI4
 line 480
 ;480:	s_playersettings.fxPic[5] = trap_R_RegisterShaderNoMip( ART_FX_CYAN );
-ADDRGP4 $387
+ADDRGP4 $386
 ARGP4
 ADDRLP4 24
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2246,7 +2238,7 @@ INDIRI4
 ASGNI4
 line 481
 ;481:	s_playersettings.fxPic[6] = trap_R_RegisterShaderNoMip( ART_FX_WHITE );
-ADDRGP4 $390
+ADDRGP4 $389
 ARGP4
 ADDRLP4 28
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -2258,7 +2250,7 @@ INDIRI4
 ASGNI4
 line 482
 ;482:}
-LABELV $368
+LABELV $367
 endproc PlayerSettings_Cache 32 4
 export UI_PlayerSettingsMenu
 proc UI_PlayerSettingsMenu 0 4
@@ -2285,7 +2277,7 @@ CALLV
 pop
 line 493
 ;493:}
-LABELV $391
+LABELV $390
 endproc UI_PlayerSettingsMenu 0 4
 bss
 align 4
@@ -2770,7 +2762,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $390
+LABELV $389
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2790,7 +2782,7 @@ byte 1 116
 byte 1 101
 byte 1 0
 align 1
-LABELV $387
+LABELV $386
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2809,7 +2801,7 @@ byte 1 97
 byte 1 110
 byte 1 0
 align 1
-LABELV $384
+LABELV $383
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2828,7 +2820,7 @@ byte 1 117
 byte 1 101
 byte 1 0
 align 1
-LABELV $381
+LABELV $380
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2847,7 +2839,7 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $378
+LABELV $377
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2865,7 +2857,7 @@ byte 1 114
 byte 1 110
 byte 1 0
 align 1
-LABELV $375
+LABELV $374
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2883,7 +2875,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $372
+LABELV $371
 byte 1 109
 byte 1 101
 byte 1 110
@@ -2901,7 +2893,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $370
+LABELV $369
 byte 1 109
 byte 1 101
 byte 1 110

@@ -39,7 +39,16 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define ART_UNKNOWNMAP			"menu/art/unknownmap"
 #define ART_REMOVE0				"menu/art/delete_0"
 #define ART_REMOVE1				"menu/art/delete_1"
-#define ART_PUNKBUSTER		"menu/art/pblogo"
+#define ART_PUNKBUSTER			"menu/art/pblogo"
+// Shafe - Trep Server Browser Headers
+#define ART_LBLNAME				"menu/art/lbl_name"
+#define ART_LBLMAP				"menu/art/lbl_map"
+#define	ART_LBLLPLAYERS			"menu/art/lbl_players"
+#define	ART_LBLTYPE				"menu/art/lbl_gtype"
+#define	ART_LBLNET				"menu/art/lbl_net"
+#define	ART_LBLPING				"menu/art/lbl_ping"
+#define	ART_LBLIG				"menu/art/lbl_instagib"
+
 
 #define ID_MASTER			10
 #define ID_GAMETYPE			11
@@ -92,11 +101,11 @@ MULTIPLAYER MENU (SERVER BROWSER)
 
 //Shafe - Trep - Mulimasters
 static const char *master_servers[] = {
-	"Primary Master Server",
-	"Alternate Master 1",
-	"Alternate Master 2",
-	"Alternate Master 3",
-	"Alternate Master 4",
+	"Primary",
+	"Alternate 1",
+	"Alternate 2",
+	"Alternate 3",
+	"Alternate 4 (Not Used)",
 	0
 };
 // End Shafe
@@ -236,7 +245,15 @@ typedef struct {
 	int					numfavoriteaddresses;
 
 	menulist_s		punkbuster;
+	menubitmap_s	lblname;
+	menubitmap_s	lblmap;
+	menubitmap_s	lblplayers;
+	menubitmap_s	lblgtype;
+	menubitmap_s	lblnet;
+	menubitmap_s	lblping;
+	menubitmap_s	lblinstagib;
 	menubitmap_s	pblogo;
+
 } arenaservers_t;
 
 static arenaservers_t	g_arenaservers;
@@ -1227,11 +1244,7 @@ static void ArenaServers_Event( void* ptr, int event ) {
 		break;
 
 	case ID_MSERVER:  // Shafe
-		trap_Cvar_SetValue( "ui_browserMasterNum", g_arenaservers.mserver.curvalue );
-		//ArenaServers_StartRefresh();
-		//ArenaServers_DoRefresh();
-		//ArenaServers_UpdateMenu();
-		
+		trap_Cvar_SetValue( "ui_browserMasterNum", g_arenaservers.mserver.curvalue );	
 		break;
 		
 	case ID_GAMETYPE:
@@ -1384,6 +1397,8 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.banner.string  		= "TREPIDATION SERVERS";
 	g_arenaservers.banner.style  	    = UI_CENTER;
 	g_arenaservers.banner.color  	    = color_white;
+
+
 
 	y = 80;
 	g_arenaservers.master.generic.type			= MTYPE_SPINCONTROL;
@@ -1594,6 +1609,18 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.pblogo.width					= 32;
 	g_arenaservers.pblogo.height				= 16;
 	g_arenaservers.pblogo.errorpic				= ART_UNKNOWNMAP;
+
+	// Shafe
+	g_arenaservers.lblname.generic.type			= MTYPE_BITMAP;
+	g_arenaservers.lblname.generic.name			= ART_LBLNAME;
+	g_arenaservers.lblname.generic.flags		= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
+	g_arenaservers.lblname.generic.x			= 10;
+	g_arenaservers.lblname.generic.y			= 176;
+	g_arenaservers.lblname.width				= 800;
+	g_arenaservers.lblname.height				= 16;
+	g_arenaservers.lblname.errorpic				= ART_UNKNOWNMAP;
+
+
 	
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.banner );
 
@@ -1623,6 +1650,9 @@ static void ArenaServers_MenuInit( void ) {
 //	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.punkbuster );
 //	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.pblogo );
 	
+	// Shafe - Trep Menu Headers
+	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.lblname);
+
 	ArenaServers_LoadFavorites();
 
 	g_servertype = Com_Clamp( 0, 3, ui_browserMaster.integer );
