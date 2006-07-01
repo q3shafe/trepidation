@@ -241,7 +241,7 @@ extern int demo_protocols[];
 #define ALT_MASTER0	"master2.tnlsoft.com" // Shafe - Trep
 #define ALT_MASTER1	"master.tnltotalsolutions.com" // Shafe - Trep
 #define ALT_MASTER2	"master2.tnltotalsolutions.com" // Shafe - Trep
-#define ALT_MASTER3	"192.168.0.4" // Shafe - Trep - Not Usabel - Shafe Uses This Cuz Master Runs On His Local Network
+#define ALT_MASTER3	"192.168.0.4" // Shafe - Trep - Not Usable - Shafe Uses This Cuz Master Runs On His Local Network
 
 
 #endif
