@@ -1730,18 +1730,11 @@ void CL_ServersResponsePacket( netadr_t from, msg_t *msg ) {
 		}
 	}
 
-	// Shafe - Trep - Multi Master - Hacking around AS_MPLAYER . bleh why didnt they clean this out
-	//if (cls.masterNum == 0) {
 		count = cls.numglobalservers;
 		max = MAX_GLOBAL_SERVERS;
-	//} else {
-	//	count = cls.nummplayerservers;
-	//	max = MAX_OTHER_SERVERS;
-	//}
-
+	
 	for (i = 0; i < numservers && count < max; i++) {
 		// build net address
-		//serverInfo_t *server = (cls.masterNum == 0) ? &cls.globalServers[count] : &cls.mplayerServers[count];
 		serverInfo_t *server = (cls.masterNum == cls.masterNum) ? &cls.globalServers[count] : &cls.mplayerServers[count]; // Shafe - More multimaster mplayer stuff
 
 		CL_InitServerInfo( server, &addresses[i] );
@@ -1766,14 +1759,9 @@ void CL_ServersResponsePacket( netadr_t from, msg_t *msg ) {
 		}
 	//}
 
-	//if (cls.masterNum == 0) {  // Shafe - Multi Master - More mplayer crap
 		cls.numglobalservers = count;
 		total = count + cls.numGlobalServerAddresses;
-	//} else {
-	//	cls.nummplayerservers = count;
-	//	total = count;
-	//}
-
+	
 	Com_Printf("%d servers parsed (total %d)\n", numservers, total);
 }
 
@@ -3031,15 +3019,6 @@ void CL_GlobalServers_f( void ) {
 	// reset the list, waiting for response
 	// -1 is used to distinguish a "no response"
 
-	// This will have to be reworked - I'm ditching AS_MPLAYER as I dont see a use for it
-	/*
-		if( cls.masterNum == 1 ) {
-		NET_StringToAdr( MASTER_SERVER_NAME, &to );
-		cls.nummplayerservers = -1;
-		cls.pingUpdateSource = AS_MPLAYER;
-	}
-	else {
-	*/
 	if( cls.masterNum == 0 ) {
 		Com_Printf( "Requesting servers from the Primary Master Server..\n" );
 		NET_StringToAdr( MASTER_SERVER_NAME, &to );
@@ -3073,11 +3052,6 @@ void CL_GlobalServers_f( void ) {
 		cls.numglobalservers = -1;
 		cls.pingUpdateSource = AS_GLOBAL;
 	}
-
-	//}
-	// End Shafe
-	
-
 
 	to.type = NA_IP;
 	to.port = BigShort(PORT_MASTER);
