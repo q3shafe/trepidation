@@ -10,10 +10,12 @@ CREDITS
 
 
 #include "ui_local.h"
+#define ART_FRAMER				"menu/art/moons"
 
 
 typedef struct {
 	menuframework_s	menu;
+	menubitmap_s	framer;
 } creditsmenu_t;
 
 static creditsmenu_t	s_credits;
@@ -34,6 +36,8 @@ static sfxHandle_t UI_CreditMenu_Key( int key ) {
 }
 
 
+
+
 /*
 ===============
 UI_CreditMenu_Draw
@@ -41,6 +45,8 @@ UI_CreditMenu_Draw
 */
 static void UI_CreditMenu_Draw( void ) {
 	int		y;
+
+	Menu_Draw( &s_credits.menu );
 
 	y = 12;
 	UI_DrawProportionalString( 320, y, "The Trepidation Team is:", UI_CENTER|UI_SMALLFONT, color_white );
@@ -105,5 +111,27 @@ void UI_CreditMenu( void ) {
 	s_credits.menu.draw = UI_CreditMenu_Draw;
 	s_credits.menu.key = UI_CreditMenu_Key;
 	s_credits.menu.fullscreen = qtrue;
+
+
+	trap_R_RegisterShaderNoMip( ART_FRAMER );
+	
+
+	s_credits.menu.draw = UI_CreditMenu_Draw;
+	s_credits.menu.fullscreen = qtrue;
+	s_credits.menu.wrapAround = qtrue;
+	s_credits.menu.showlogo = qfalse; // Shafe - Trep - Temporarily qfalse
+
+	s_credits.framer.generic.type		= MTYPE_BITMAP;
+	s_credits.framer.generic.name		= ART_FRAMER;
+	s_credits.framer.generic.flags		= QMF_INACTIVE;
+	s_credits.framer.generic.x			= 0;  
+	s_credits.framer.generic.y			= 0;
+	s_credits.framer.width				= 800;
+	s_credits.framer.height			= 600;
+
+	Menu_AddItem( &s_credits.menu, ( void * ) &s_credits.framer );
+
+	trap_Key_SetCatcher( KEYCATCH_UI );
+	uis.menusp = 0;
 	UI_PushMenu ( &s_credits.menu );
 }

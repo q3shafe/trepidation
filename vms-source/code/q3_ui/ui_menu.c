@@ -20,6 +20,9 @@ MAIN MENU
 #define ID_TEAMARENA		15
 #define ID_MODS					16
 #define ID_EXIT					17
+#define ART_FRAMER				"menu/art/frame1_r"
+#define ART_TREPLOGO			"menu/art/treplogo"
+
 
 #define MAIN_BANNER_MODEL				"models/mapobjects/banner/banner5.md3"
 #define MAIN_MENU_VERTICAL_SPACING		34
@@ -36,6 +39,8 @@ typedef struct {
 	menutext_s		teamArena;
 	menutext_s		mods;
 	menutext_s		exit;
+	menubitmap_s	framer;
+	menubitmap_s	treplogo;
 
 	qhandle_t		bannerModel;
 } mainmenu_t;
@@ -285,10 +290,32 @@ void UI_MainMenu( void ) {
 		return;
 	}
 
+
+	trap_R_RegisterShaderNoMip( ART_FRAMER );
+	trap_R_RegisterShaderNoMip( ART_TREPLOGO );
+
 	s_main.menu.draw = Main_MenuDraw;
 	s_main.menu.fullscreen = qtrue;
 	s_main.menu.wrapAround = qtrue;
 	s_main.menu.showlogo = qfalse; // Shafe - Trep - Temporarily qfalse
+
+	s_main.framer.generic.type		= MTYPE_BITMAP;
+	s_main.framer.generic.name		= ART_FRAMER;
+	s_main.framer.generic.flags		= QMF_INACTIVE;
+	s_main.framer.generic.x			= 0;  
+	s_main.framer.generic.y			= 0;
+	s_main.framer.width				= 800;
+	s_main.framer.height			= 600;
+
+
+	s_main.treplogo.generic.type		= MTYPE_BITMAP;
+	s_main.treplogo.generic.name		= ART_TREPLOGO;
+	s_main.treplogo.generic.flags		= QMF_INACTIVE;
+	s_main.treplogo.generic.x			= 0;  
+	s_main.treplogo.generic.y			= 1;
+	s_main.treplogo.width				= 225;
+	s_main.treplogo.height			= 100;
+
 
 	y = 134;
 	s_main.multiplayer.generic.type			= MTYPE_PTEXT;
@@ -385,6 +412,9 @@ void UI_MainMenu( void ) {
 	s_main.exit.color						= color_red;
 	s_main.exit.style						= style;
 
+	Menu_AddItem( &s_main.menu, ( void * ) &s_main.framer );
+	Menu_AddItem( &s_main.menu, ( void * ) &s_main.treplogo );
+	
 	Menu_AddItem( &s_main.menu,	&s_main.multiplayer );
 	Menu_AddItem( &s_main.menu,	&s_main.singleplayer );
 	Menu_AddItem( &s_main.menu,	&s_main.setup );
@@ -394,7 +424,8 @@ void UI_MainMenu( void ) {
 		Menu_AddItem( &s_main.menu,	&s_main.teamArena );
 	}
 	//Menu_AddItem( &s_main.menu,	&s_main.mods );
-	Menu_AddItem( &s_main.menu,	&s_main.exit );             
+	Menu_AddItem( &s_main.menu,	&s_main.exit ); 
+	
 
 	trap_Key_SetCatcher( KEYCATCH_UI );
 	uis.menusp = 0;

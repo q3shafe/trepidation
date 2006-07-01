@@ -5280,19 +5280,19 @@ ADDRGP4 s_controls+360+12
 CNSTI4 0
 ASGNI4
 line 1218
-;1218:	s_controls.framel.generic.y     = 78;
+;1218:	s_controls.framel.generic.y     = 0;
 ADDRGP4 s_controls+360+16
-CNSTI4 78
+CNSTI4 0
 ASGNI4
 line 1219
-;1219:	s_controls.framel.width  	    = 256;
+;1219:	s_controls.framel.width  	    = 800;
 ADDRGP4 s_controls+360+76
-CNSTI4 256
+CNSTI4 800
 ASGNI4
 line 1220
-;1220:	s_controls.framel.height  	    = 329;
+;1220:	s_controls.framel.height  	    = 600;
 ADDRGP4 s_controls+360+80
-CNSTI4 329
+CNSTI4 600
 ASGNI4
 line 1222
 ;1221:
@@ -6960,16 +6960,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1603
-;1603:	Menu_AddItem( &s_controls.menu, &s_controls.framer );
-ADDRGP4 s_controls
-ARGP4
-ADDRGP4 s_controls+448
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
 line 1604
+;1603:	//Menu_AddItem( &s_controls.menu, &s_controls.framer );
 ;1604:	Menu_AddItem( &s_controls.menu, &s_controls.player );
 ADDRGP4 s_controls
 ARGP4
@@ -7463,7 +7455,7 @@ pop
 line 1672
 ;1671:
 ;1672:	trap_Cvar_VariableStringBuffer( "name", s_controls.name.string, 16 );
-ADDRGP4 $1344
+ADDRGP4 $1343
 ARGP4
 ADDRGP4 s_controls+5040+60
 INDIRP4
@@ -7568,7 +7560,7 @@ CALLI4
 pop
 line 1705
 ;1705:}
-LABELV $1350
+LABELV $1349
 endproc Controls_Cache 0 4
 export UI_ControlsMenu
 proc UI_ControlsMenu 0 4
@@ -7595,7 +7587,7 @@ CALLV
 pop
 line 1716
 ;1716:}
-LABELV $1351
+LABELV $1350
 endproc UI_ControlsMenu 0 4
 bss
 align 4
@@ -8080,7 +8072,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $1344
+LABELV $1343
 byte 1 110
 byte 1 97
 byte 1 109

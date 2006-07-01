@@ -325,24 +325,24 @@ ADDRGP4 s_options+360+44
 CNSTU4 16384
 ASGNU4
 line 121
-;121:	s_options.framel.generic.x	   = 8;  
+;121:	s_options.framel.generic.x	   = 1;  
 ADDRGP4 s_options+360+12
-CNSTI4 8
+CNSTI4 1
 ASGNI4
 line 122
-;122:	s_options.framel.generic.y	   = 76;
+;122:	s_options.framel.generic.y	   = 1;
 ADDRGP4 s_options+360+16
-CNSTI4 76
+CNSTI4 1
 ASGNI4
 line 123
-;123:	s_options.framel.width  	   = 256;
+;123:	s_options.framel.width  	   = 800;
 ADDRGP4 s_options+360+76
-CNSTI4 256
+CNSTI4 800
 ASGNI4
 line 124
-;124:	s_options.framel.height  	   = 334;
+;124:	s_options.framel.height  	   = 600;
 ADDRGP4 s_options+360+80
-CNSTI4 334
+CNSTI4 600
 ASGNI4
 line 126
 ;125:
@@ -667,16 +667,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 191
-;191:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.framer );
-ADDRGP4 s_options
-ARGP4
-ADDRGP4 s_options+448
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
 line 192
+;191:	//Menu_AddItem( &s_options.menu, ( void * ) &s_options.framer );
 ;192:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.graphics );
 ADDRGP4 s_options
 ARGP4
@@ -750,7 +742,7 @@ CALLV
 pop
 line 208
 ;208:}
-LABELV $233
+LABELV $232
 endproc UI_SystemConfigMenu 0 4
 bss
 align 4

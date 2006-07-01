@@ -1,7 +1,7 @@
 code
 proc UI_CreditMenu_Key 0 8
 file "../ui_credits.c"
-line 27
+line 29
 ;1:// Copyright (C) 1999-2000 Id Software, Inc.
 ;2://
 ;3:/*
@@ -14,40 +14,42 @@ line 27
 ;10:
 ;11:
 ;12:#include "ui_local.h"
-;13:
+;13:#define ART_FRAMER				"menu/art/moons"
 ;14:
-;15:typedef struct {
-;16:	menuframework_s	menu;
-;17:} creditsmenu_t;
-;18:
-;19:static creditsmenu_t	s_credits;
+;15:
+;16:typedef struct {
+;17:	menuframework_s	menu;
+;18:	menubitmap_s	framer;
+;19:} creditsmenu_t;
 ;20:
-;21:
-;22:/*
-;23:=================
-;24:UI_CreditMenu_Key
+;21:static creditsmenu_t	s_credits;
+;22:
+;23:
+;24:/*
 ;25:=================
-;26:*/
-;27:static sfxHandle_t UI_CreditMenu_Key( int key ) {
-line 28
-;28:	if( key & K_CHAR_FLAG ) {
+;26:UI_CreditMenu_Key
+;27:=================
+;28:*/
+;29:static sfxHandle_t UI_CreditMenu_Key( int key ) {
+line 30
+;30:	if( key & K_CHAR_FLAG ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
 EQI4 $71
-line 29
-;29:		return 0;
+line 31
+;31:		return 0;
 CNSTI4 0
 RETI4
 ADDRGP4 $70
 JUMPV
 LABELV $71
-line 32
-;30:	}
-;31:
-;32:	trap_Cmd_ExecuteText( EXEC_APPEND, "quit\n" );
+line 34
+;32:	}
+;33:
+;34:	trap_Cmd_ExecuteText( EXEC_APPEND, "quit\n" );
 CNSTI4 2
 ARGI4
 ADDRGP4 $73
@@ -55,32 +57,42 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 33
-;33:	return 0;
+line 35
+;35:	return 0;
 CNSTI4 0
 RETI4
 LABELV $70
 endproc UI_CreditMenu_Key 0 8
 proc UI_CreditMenu_Draw 4 20
-line 42
-;34:}
-;35:
-;36:
-;37:/*
-;38:===============
-;39:UI_CreditMenu_Draw
-;40:===============
-;41:*/
-;42:static void UI_CreditMenu_Draw( void ) {
-line 45
-;43:	int		y;
-;44:
-;45:	y = 12;
+line 46
+;36:}
+;37:
+;38:
+;39:
+;40:
+;41:/*
+;42:===============
+;43:UI_CreditMenu_Draw
+;44:===============
+;45:*/
+;46:static void UI_CreditMenu_Draw( void ) {
+line 49
+;47:	int		y;
+;48:
+;49:	Menu_Draw( &s_credits.menu );
+ADDRGP4 s_credits
+ARGP4
+ADDRGP4 Menu_Draw
+CALLV
+pop
+line 51
+;50:
+;51:	y = 12;
 ADDRLP4 0
 CNSTI4 12
 ASGNI4
-line 46
-;46:	UI_DrawProportionalString( 320, y, "The Trepidation Team is:", UI_CENTER|UI_SMALLFONT, color_white );
+line 52
+;52:	UI_DrawProportionalString( 320, y, "The Trepidation Team is:", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -95,9 +107,9 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 48
-;47:
-;48:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 54
+;53:
+;54:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -106,8 +118,8 @@ CNSTF4 1105594941
 ADDF4
 CVFI4 4
 ASGNI4
-line 49
-;49:	UI_DrawProportionalString( 320, y, "Programming", UI_CENTER|UI_SMALLFONT, color_white );
+line 55
+;55:	UI_DrawProportionalString( 320, y, "Programming", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -122,8 +134,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 50
-;50:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 56
+;56:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -132,8 +144,8 @@ CNSTF4 1101135872
 ADDF4
 CVFI4 4
 ASGNI4
-line 51
-;51:	UI_DrawProportionalString( 320, y, "Shafe, XcyTng", UI_CENTER|UI_SMALLFONT, color_white );
+line 57
+;57:	UI_DrawProportionalString( 320, y, "Shafe, XcyTng", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -148,9 +160,9 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 53
-;52:
-;53:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 59
+;58:
+;59:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -159,8 +171,8 @@ CNSTF4 1105594941
 ADDF4
 CVFI4 4
 ASGNI4
-line 54
-;54:	UI_DrawProportionalString( 320, y, "Mapping And Art:", UI_CENTER|UI_SMALLFONT, color_white );
+line 60
+;60:	UI_DrawProportionalString( 320, y, "Mapping And Art:", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -175,8 +187,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 55
-;55:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 61
+;61:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -185,8 +197,8 @@ CNSTF4 1101135872
 ADDF4
 CVFI4 4
 ASGNI4
-line 56
-;56:	UI_DrawProportionalString( 320, y, "Scott Hanke, RRE Mike, Petee, Gigabyte123", UI_CENTER|UI_SMALLFONT, color_white );
+line 62
+;62:	UI_DrawProportionalString( 320, y, "Scott Hanke, RRE Mike, Petee, Gigabyte123", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -201,8 +213,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 57
-;57:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 63
+;63:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -211,8 +223,8 @@ CNSTF4 1101135872
 ADDF4
 CVFI4 4
 ASGNI4
-line 58
-;58:	UI_DrawProportionalString( 320, y, "Ryan McNeill", UI_CENTER|UI_SMALLFONT, color_white );
+line 64
+;64:	UI_DrawProportionalString( 320, y, "Ryan McNeill", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -227,9 +239,9 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 60
-;59:
-;60:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 66
+;65:
+;66:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -238,8 +250,8 @@ CNSTF4 1105594941
 ADDF4
 CVFI4 4
 ASGNI4
-line 61
-;61:	UI_DrawProportionalString( 320, y, "Models", UI_CENTER|UI_SMALLFONT, color_white );
+line 67
+;67:	UI_DrawProportionalString( 320, y, "Models", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -254,8 +266,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 62
-;62:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 68
+;68:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -264,8 +276,8 @@ CNSTF4 1101135872
 ADDF4
 CVFI4 4
 ASGNI4
-line 63
-;63:	UI_DrawProportionalString( 320, y, "Petee, DrAkOn", UI_CENTER|UI_SMALLFONT, color_white );
+line 69
+;69:	UI_DrawProportionalString( 320, y, "Petee, DrAkOn", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -280,9 +292,9 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 65
-;64:
-;65:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 71
+;70:
+;71:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -291,8 +303,8 @@ CNSTF4 1105594941
 ADDF4
 CVFI4 4
 ASGNI4
-line 66
-;66:	UI_DrawProportionalString( 320, y, "Sound Engineer:", UI_CENTER|UI_SMALLFONT, color_white );
+line 72
+;72:	UI_DrawProportionalString( 320, y, "Sound Engineer:", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -307,8 +319,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 67
-;67:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 73
+;73:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -317,8 +329,8 @@ CNSTF4 1101135872
 ADDF4
 CVFI4 4
 ASGNI4
-line 68
-;68:	UI_DrawProportionalString( 320, y, "Dave Cunningham", UI_CENTER|UI_SMALLFONT, color_white );
+line 74
+;74:	UI_DrawProportionalString( 320, y, "Dave Cunningham", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -333,9 +345,9 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 70
-;69:
-;70:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 76
+;75:
+;76:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -344,8 +356,8 @@ CNSTF4 1105594941
 ADDF4
 CVFI4 4
 ASGNI4
-line 71
-;71:	UI_DrawProportionalString( 320, y, "Special Thanks To", UI_CENTER|UI_SMALLFONT, color_white );
+line 77
+;77:	UI_DrawProportionalString( 320, y, "Special Thanks To", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -360,8 +372,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 72
-;72:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 78
+;78:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -370,8 +382,8 @@ CNSTF4 1101135872
 ADDF4
 CVFI4 4
 ASGNI4
-line 73
-;73:	UI_DrawProportionalString( 320, y, "The Open Arena Project", UI_CENTER|UI_SMALLFONT, color_white );
+line 79
+;79:	UI_DrawProportionalString( 320, y, "The Open Arena Project", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -386,9 +398,9 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 75
-;74:
-;75:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 81
+;80:
+;81:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -397,8 +409,8 @@ CNSTF4 1105594941
 ADDF4
 CVFI4 4
 ASGNI4
-line 76
-;76:	UI_DrawProportionalString( 320, y, "Testing And Support", UI_CENTER|UI_SMALLFONT, color_white );
+line 82
+;82:	UI_DrawProportionalString( 320, y, "Testing And Support", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -413,8 +425,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 77
-;77:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 83
+;83:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -423,8 +435,8 @@ CNSTF4 1101135872
 ADDF4
 CVFI4 4
 ASGNI4
-line 78
-;78:	UI_DrawProportionalString( 320, y, "Blue, Dredge, Prodie, Unknown", UI_CENTER|UI_SMALLFONT, color_white );
+line 84
+;84:	UI_DrawProportionalString( 320, y, "Blue, Dredge, Prodie, Unknown", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -439,9 +451,9 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 80
-;79:
-;80:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 86
+;85:
+;86:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -450,8 +462,8 @@ CNSTF4 1105594941
 ADDF4
 CVFI4 4
 ASGNI4
-line 81
-;81:	UI_DrawProportionalString( 320, y, "Favorite Foods", UI_CENTER|UI_SMALLFONT, color_white );
+line 87
+;87:	UI_DrawProportionalString( 320, y, "Favorite Foods", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -466,8 +478,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 82
-;82:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 88
+;88:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -476,8 +488,8 @@ CNSTF4 1101135872
 ADDF4
 CVFI4 4
 ASGNI4
-line 83
-;83:	UI_DrawProportionalString( 320, y, "Pizza and M & M's", UI_CENTER|UI_SMALLFONT, color_white );
+line 89
+;89:	UI_DrawProportionalString( 320, y, "Pizza and M & M's", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -492,9 +504,9 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 85
-;84:
-;85:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 91
+;90:
+;91:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -503,8 +515,8 @@ CNSTF4 1105594941
 ADDF4
 CVFI4 4
 ASGNI4
-line 86
-;86:	UI_DrawProportionalString( 320, y, "Website", UI_CENTER|UI_SMALLFONT, color_white );
+line 92
+;92:	UI_DrawProportionalString( 320, y, "Website", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -519,8 +531,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 87
-;87:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 93
+;93:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -529,8 +541,8 @@ CNSTF4 1101135872
 ADDF4
 CVFI4 4
 ASGNI4
-line 88
-;88:	UI_DrawProportionalString( 320, y, "trepidation.sourceforge.net", UI_CENTER|UI_SMALLFONT, color_white );
+line 94
+;94:	UI_DrawProportionalString( 320, y, "trepidation.sourceforge.net", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -545,9 +557,9 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 90
-;89:
-;90:	y += 1.35 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 96
+;95:
+;96:	y += 1.35 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -556,8 +568,8 @@ CNSTF4 1104851763
 ADDF4
 CVFI4 4
 ASGNI4
-line 91
-;91:	UI_DrawString( 320, y, "Trepidation     trepidation.soourceforge.net     trepidation@sourceforge.net", UI_CENTER|UI_SMALLFONT, color_red );
+line 97
+;97:	UI_DrawString( 320, y, "Trepidation     trepidation.soourceforge.net     trepidation@sourceforge.net", UI_CENTER|UI_SMALLFONT, color_red );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -572,16 +584,16 @@ ARGP4
 ADDRGP4 UI_DrawString
 CALLV
 pop
-line 92
-;92:	y += SMALLCHAR_HEIGHT;
+line 98
+;98:	y += SMALLCHAR_HEIGHT;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
 ADDI4
 ASGNI4
-line 93
-;93:	UI_DrawString( 320, y, "Trepidation 2006 General Public License.", UI_CENTER|UI_SMALLFONT, color_red );
+line 99
+;99:	UI_DrawString( 320, y, "Trepidation 2006 General Public License.", UI_CENTER|UI_SMALLFONT, color_red );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -596,63 +608,153 @@ ARGP4
 ADDRGP4 UI_DrawString
 CALLV
 pop
-line 94
-;94:}
+line 100
+;100:}
 LABELV $74
 endproc UI_CreditMenu_Draw 4 20
 export UI_CreditMenu
 proc UI_CreditMenu 0 12
-line 102
-;95:
-;96:
-;97:/*
-;98:===============
-;99:UI_CreditMenu
-;100:===============
-;101:*/
-;102:void UI_CreditMenu( void ) {
-line 103
-;103:	memset( &s_credits, 0 ,sizeof(s_credits) );
+line 108
+;101:
+;102:
+;103:/*
+;104:===============
+;105:UI_CreditMenu
+;106:===============
+;107:*/
+;108:void UI_CreditMenu( void ) {
+line 109
+;109:	memset( &s_credits, 0 ,sizeof(s_credits) );
 ADDRGP4 s_credits
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 288
+CNSTI4 376
 ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 105
-;104:
-;105:	s_credits.menu.draw = UI_CreditMenu_Draw;
+line 111
+;110:
+;111:	s_credits.menu.draw = UI_CreditMenu_Draw;
 ADDRGP4 s_credits+268
 ADDRGP4 UI_CreditMenu_Draw
 ASGNP4
-line 106
-;106:	s_credits.menu.key = UI_CreditMenu_Key;
+line 112
+;112:	s_credits.menu.key = UI_CreditMenu_Key;
 ADDRGP4 s_credits+272
 ADDRGP4 UI_CreditMenu_Key
 ASGNP4
-line 107
-;107:	s_credits.menu.fullscreen = qtrue;
+line 113
+;113:	s_credits.menu.fullscreen = qtrue;
 ADDRGP4 s_credits+280
 CNSTI4 1
 ASGNI4
-line 108
-;108:	UI_PushMenu ( &s_credits.menu );
+line 116
+;114:
+;115:
+;116:	trap_R_RegisterShaderNoMip( ART_FRAMER );
+ADDRGP4 $99
+ARGP4
+ADDRGP4 trap_R_RegisterShaderNoMip
+CALLI4
+pop
+line 119
+;117:	
+;118:
+;119:	s_credits.menu.draw = UI_CreditMenu_Draw;
+ADDRGP4 s_credits+268
+ADDRGP4 UI_CreditMenu_Draw
+ASGNP4
+line 120
+;120:	s_credits.menu.fullscreen = qtrue;
+ADDRGP4 s_credits+280
+CNSTI4 1
+ASGNI4
+line 121
+;121:	s_credits.menu.wrapAround = qtrue;
+ADDRGP4 s_credits+276
+CNSTI4 1
+ASGNI4
+line 122
+;122:	s_credits.menu.showlogo = qfalse; // Shafe - Trep - Temporarily qfalse
+ADDRGP4 s_credits+284
+CNSTI4 0
+ASGNI4
+line 124
+;123:
+;124:	s_credits.framer.generic.type		= MTYPE_BITMAP;
+ADDRGP4 s_credits+288
+CNSTI4 6
+ASGNI4
+line 125
+;125:	s_credits.framer.generic.name		= ART_FRAMER;
+ADDRGP4 s_credits+288+4
+ADDRGP4 $99
+ASGNP4
+line 126
+;126:	s_credits.framer.generic.flags		= QMF_INACTIVE;
+ADDRGP4 s_credits+288+44
+CNSTU4 16384
+ASGNU4
+line 127
+;127:	s_credits.framer.generic.x			= 0;  
+ADDRGP4 s_credits+288+12
+CNSTI4 0
+ASGNI4
+line 128
+;128:	s_credits.framer.generic.y			= 0;
+ADDRGP4 s_credits+288+16
+CNSTI4 0
+ASGNI4
+line 129
+;129:	s_credits.framer.width				= 800;
+ADDRGP4 s_credits+288+76
+CNSTI4 800
+ASGNI4
+line 130
+;130:	s_credits.framer.height			= 600;
+ADDRGP4 s_credits+288+80
+CNSTI4 600
+ASGNI4
+line 132
+;131:
+;132:	Menu_AddItem( &s_credits.menu, ( void * ) &s_credits.framer );
+ADDRGP4 s_credits
+ARGP4
+ADDRGP4 s_credits+288
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 134
+;133:
+;134:	trap_Key_SetCatcher( KEYCATCH_UI );
+CNSTI4 2
+ARGI4
+ADDRGP4 trap_Key_SetCatcher
+CALLV
+pop
+line 135
+;135:	uis.menusp = 0;
+ADDRGP4 uis+16
+CNSTI4 0
+ASGNI4
+line 136
+;136:	UI_PushMenu ( &s_credits.menu );
 ADDRGP4 s_credits
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 109
-;109:}
+line 137
+;137:}
 LABELV $95
 endproc UI_CreditMenu 0 12
 bss
 align 4
 LABELV s_credits
-skip 288
+skip 376
 import UI_RankStatusMenu
 import RankStatus_Cache
 import UI_SignupMenu
@@ -1132,6 +1234,23 @@ import rand
 import srand
 import qsort
 lit
+align 1
+LABELV $99
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 117
+byte 1 47
+byte 1 97
+byte 1 114
+byte 1 116
+byte 1 47
+byte 1 109
+byte 1 111
+byte 1 111
+byte 1 110
+byte 1 115
+byte 1 0
 align 1
 LABELV $94
 byte 1 84
