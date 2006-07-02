@@ -88,7 +88,7 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define MASTER2				2
 #define MASTER3				3
 #define MASTER4				4
-// End Shyafe
+// End Shafe
 
 
 #define GAMES_ALL			0
@@ -123,7 +123,7 @@ static const char *servertype_items[] = {
 	"Team Deathmatch",
 	"Tournament",
 	"Capture the Flag",
-	"Freeze Tag",			// Shafe - Trep - New Gametype
+	"Arsenal",			// Shafe - Trep - New Gametype
 	"Last Man Standing",	// Shafe - Trep - New Gametype
 	0
 };
@@ -163,6 +163,7 @@ static char* netnames[] = {
 
 static char quake3worldMessage[] = "Visit treipidation.sourceforge.net - News, Community, Events, Files";
 
+
 const char* punkbuster_items[] = {
 	"Disabled",
 	"Enabled",
@@ -194,6 +195,12 @@ typedef struct servernode_s {
 	int		nettype;
 	int		minPing;
 	int		maxPing;
+	/*
+	// Shafe - Not quite sure how I want to display the gametypes yet.. 
+	// I'm thinking that Instagib should replace the yes/no in pb field of browser
+	int		instagib; 
+	int		arsenal; 
+	*/
 	qboolean bPB;
 
 } servernode_t; 
@@ -495,6 +502,9 @@ static void ArenaServers_UpdateMenu( void ) {
 		return;
 	}
 	
+	
+	
+	
 
 	// build list box strings - apply culling filters
 	servernodeptr = g_arenaservers.serverlist;
@@ -567,6 +577,7 @@ static void ArenaServers_UpdateMenu( void ) {
 		else {
 			pingColor = S_COLOR_RED;
 		}
+
 
 		Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
 			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,

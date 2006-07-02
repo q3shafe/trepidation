@@ -14,8 +14,8 @@ DEMOS MENU
 
 #define ART_BACK0			"menu/art/back_0"
 #define ART_BACK1			"menu/art/back_1"	
-#define ART_GO0				"menu/art/play_0"
-#define ART_GO1				"menu/art/play_1"
+#define ART_GO0				"menu/art/next_0" // Shafe Reusing Some Buttons- menu/art/play_0
+#define ART_GO1				"menu/art/next_1" // Shafe Reusing Some Buttons
 #define ART_FRAMEL			"menu/art/frame2_l"
 #define ART_FRAMER			"menu/art/frame1_r"
 #define ART_ARROWS			"menu/art/arrows_horz_0"

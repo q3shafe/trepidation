@@ -18,8 +18,8 @@ line 66
 ;14:
 ;15:#define ART_BACK0			"menu/art/back_0"
 ;16:#define ART_BACK1			"menu/art/back_1"	
-;17:#define ART_GO0				"menu/art/play_0"
-;18:#define ART_GO1				"menu/art/play_1"
+;17:#define ART_GO0				"menu/art/next_0" // Shafe Reusing Some Buttons- menu/art/play_0
+;18:#define ART_GO1				"menu/art/next_1" // Shafe Reusing Some Buttons
 ;19:#define ART_FRAMEL			"menu/art/frame2_l"
 ;20:#define ART_FRAMER			"menu/art/frame1_r"
 ;21:#define ART_ARROWS			"menu/art/arrows_horz_0"
@@ -1611,10 +1611,10 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 112
-byte 1 108
-byte 1 97
-byte 1 121
+byte 1 110
+byte 1 101
+byte 1 120
+byte 1 116
 byte 1 95
 byte 1 49
 byte 1 0
@@ -1629,10 +1629,10 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 112
-byte 1 108
-byte 1 97
-byte 1 121
+byte 1 110
+byte 1 101
+byte 1 120
+byte 1 116
 byte 1 95
 byte 1 48
 byte 1 0

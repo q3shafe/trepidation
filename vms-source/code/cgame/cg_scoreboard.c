@@ -12,7 +12,7 @@
 // Where the status bar starts, so we don't overwrite it
 #define SB_STATUSBAR		420
 
-#define SB_NORMAL_HEIGHT	40
+#define SB_NORMAL_HEIGHT	16 // Shafe was 40
 #define SB_INTER_HEIGHT		16 // interleaved height
 
 #define SB_MAXCLIENTS_NORMAL  ((SB_STATUSBAR - SB_TOP) / SB_NORMAL_HEIGHT)
@@ -77,21 +77,21 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 	// draw the handicap or bot skill marker (unless player has flag)
 	if ( ci->powerups & ( 1 << PW_NEUTRALFLAG ) ) {
 		if( largeFormat ) {
-			CG_DrawFlagModel( iconx, y - ( 32 - BIGCHAR_HEIGHT ) / 2, 32, 32, TEAM_FREE, qfalse );
+			CG_DrawFlagModel( iconx, y - ( 32 - SMALLCHAR_HEIGHT ) / 2, 32, 32, TEAM_FREE, qfalse );
 		}
 		else {
 			CG_DrawFlagModel( iconx, y, 16, 16, TEAM_FREE, qfalse );
 		}
 	} else if ( ci->powerups & ( 1 << PW_REDFLAG ) ) {
 		if( largeFormat ) {
-			CG_DrawFlagModel( iconx, y - ( 32 - BIGCHAR_HEIGHT ) / 2, 32, 32, TEAM_RED, qfalse );
+			CG_DrawFlagModel( iconx, y - ( 32 - SMALLCHAR_HEIGHT ) / 2, 32, 32, TEAM_RED, qfalse );
 		}
 		else {
 			CG_DrawFlagModel( iconx, y, 16, 16, TEAM_RED, qfalse );
 		}
 	} else if ( ci->powerups & ( 1 << PW_BLUEFLAG ) ) {
 		if( largeFormat ) {
-			CG_DrawFlagModel( iconx, y - ( 32 - BIGCHAR_HEIGHT ) / 2, 32, 32, TEAM_BLUE, qfalse );
+			CG_DrawFlagModel( iconx, y - ( 32 - SMALLCHAR_HEIGHT ) / 2, 32, 32, TEAM_BLUE, qfalse );
 		}
 		else {
 			CG_DrawFlagModel( iconx, y, 16, 16, TEAM_BLUE, qfalse );
@@ -100,7 +100,7 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 		if ( ci->botSkill > 0 && ci->botSkill <= 5 ) {
 			if ( cg_drawIcons.integer ) {
 				if( largeFormat ) {
-					CG_DrawPic( iconx, y - ( 32 - BIGCHAR_HEIGHT ) / 2, 32, 32, cgs.media.botSkillShaders[ ci->botSkill - 1 ] );
+					CG_DrawPic( iconx, y - ( 32 - SMALLCHAR_HEIGHT ) / 2, 32, 32, cgs.media.botSkillShaders[ ci->botSkill - 1 ] );
 				}
 				else {
 					CG_DrawPic( iconx, y, 16, 16, cgs.media.botSkillShaders[ ci->botSkill - 1 ] );
@@ -130,7 +130,7 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 	VectorClear( headAngles );
 	headAngles[YAW] = 180;
 	if( largeFormat ) {
-		CG_DrawHead( headx, y - ( ICON_SIZE - BIGCHAR_HEIGHT ) / 2, ICON_SIZE, ICON_SIZE, 
+		CG_DrawHead( headx, y - ( 16 - SMALLCHAR_HEIGHT ) / 2, 16, 16, 
 			score->client, headAngles );
 	}
 	else {
@@ -154,10 +154,11 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 			" connecting    %s", ci->name);
 	} else if ( ci->team == TEAM_SPECTATOR ) {
 		Com_sprintf(string, sizeof(string),
-			" SPECT %3i %4i %s", score->ping, score->time, ci->name);
+			"SPEC %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
 	} else {
+		// Shafe - Trep
 		Com_sprintf(string, sizeof(string),
-			"%5i %4i %4i %s", score->score, score->ping, score->time, ci->name);
+			"%9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
 	}
 
 	// highlight your position
@@ -194,16 +195,16 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 		hcolor[3] = fade * 0.7;
 		
 		
-		CG_FillRect( SB_SCORELINE_X + BIGCHAR_WIDTH + (SB_RATING_WIDTH / 2), y, 
-			640 - SB_SCORELINE_X - BIGCHAR_WIDTH, BIGCHAR_HEIGHT+1, hcolor );
+		CG_FillRect( SB_BOTICON_X + (SB_RATING_WIDTH / 2), y, 
+			450, SMALLCHAR_HEIGHT+1, hcolor );
 		
 	}
 
-	CG_DrawBigString( SB_SCORELINE_X + (SB_RATING_WIDTH / 2), y, string, fade );
+	CG_DrawSmallString( SB_SCORELINE_X + (SB_RATING_WIDTH / 2)-16, y, string, fade );
 
 	// add the "ready" marker for intermission exiting
 	if ( cg.snap->ps.stats[ STAT_CLIENTS_READY ] & ( 1 << score->client ) ) {
-		CG_DrawBigStringColor( iconx, y, "READY", color );
+		CG_DrawSmallStringColor( iconx, y, "READY", color );
 	}
 }
 
@@ -254,6 +255,7 @@ qboolean CG_DrawOldScoreboard( void ) {
 	int maxClients;
 	int lineHeight;
 	int topBorderSize, bottomBorderSize;
+	char	string[1024]; // shafe
 
 	// don't draw amuthing if the menu or console is up
 	if ( cg_paused.integer ) {
@@ -294,7 +296,7 @@ qboolean CG_DrawOldScoreboard( void ) {
 		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 		x = ( SCREEN_WIDTH - w ) / 2;
 		y = 40;
-		CG_DrawBigString( x, y, s, fade );
+		CG_DrawSmallString( x, y, s, fade );
 	}
 
 	// current rank
@@ -306,7 +308,7 @@ qboolean CG_DrawOldScoreboard( void ) {
 			w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 			x = ( SCREEN_WIDTH - w ) / 2;
 			y = 60;
-			CG_DrawBigString( x, y, s, fade );
+			CG_DrawSmallString( x, y, s, fade );
 		}
 	} else {
 		if ( cg.teamScores[0] == cg.teamScores[1] ) {
@@ -320,16 +322,20 @@ qboolean CG_DrawOldScoreboard( void ) {
 		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 		x = ( SCREEN_WIDTH - w ) / 2;
 		y = 60;
-		CG_DrawBigString( x, y, s, fade );
+		CG_DrawSmallString( x, y, s, fade );
 	}
 
 	// scoreboard
 	y = SB_HEADER;
-
-	CG_DrawPic( SB_SCORE_X + (SB_RATING_WIDTH / 2), y, 64, 32, cgs.media.scoreboardScore );
-	CG_DrawPic( SB_PING_X - (SB_RATING_WIDTH / 2), y, 64, 32, cgs.media.scoreboardPing );
-	CG_DrawPic( SB_TIME_X - (SB_RATING_WIDTH / 2), y, 64, 32, cgs.media.scoreboardTime );
-	CG_DrawPic( SB_NAME_X - (SB_RATING_WIDTH / 2), y, 64, 32, cgs.media.scoreboardName );
+	
+	//CG_DrawPic( SB_SCORE_X + (SB_RATING_WIDTH / 2), y, 64, 32, cgs.media.scoreboardScore );
+	//CG_DrawPic( SB_PING_X - (SB_RATING_WIDTH / 2), y, 64, 32, cgs.media.scoreboardPing );
+	//CG_DrawPic( SB_TIME_X - (SB_RATING_WIDTH / 2), y, 64, 32, cgs.media.scoreboardTime );
+	//CG_DrawPic( SB_NAME_X - (SB_RATING_WIDTH / 2), y, 64, 32, cgs.media.scoreboardName );
+	
+	// Shafe SB_SCORELINE_X + (SB_RATING_WIDTH / 2)
+	CG_DrawSmallString( SB_SCORE_X + (SB_RATING_WIDTH / 2), y, "SCORE  PING  TIME ACCURACY NAME", fade ); //1.0F
+	// End Shafe
 
 	y = SB_TOP;
 
@@ -346,6 +352,10 @@ qboolean CG_DrawOldScoreboard( void ) {
 		bottomBorderSize = 16;
 	}
 
+	y = SB_TOP;
+
+	//CG_DrawPic( SB_BOTICON_X + (SB_RATING_WIDTH / 2), y, 250, cg.numScores*lineHeight, cgs.media.scoreboardTrep ); // Shafe This is the Background For The Scoreboard
+	
 	localClient = qfalse;
 
 	if ( cgs.gametype >= GT_TEAM ) {
@@ -381,9 +391,9 @@ qboolean CG_DrawOldScoreboard( void ) {
 		// free for all scoreboard
 		//
 		n1 = CG_TeamScoreboard( y, TEAM_FREE, fade, maxClients, lineHeight );
-		y += (n1 * lineHeight) + BIGCHAR_HEIGHT;
+		y += (n1 * lineHeight) + SMALLCHAR_HEIGHT;
 		n2 = CG_TeamScoreboard( y, TEAM_SPECTATOR, fade, maxClients - n1, lineHeight );
-		y += (n2 * lineHeight) + BIGCHAR_HEIGHT;
+		y += (n2 * lineHeight) + SMALLCHAR_HEIGHT;
 	}
 
 	if (!localClient) {

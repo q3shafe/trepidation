@@ -10225,7 +10225,7 @@ CNSTI4 0
 ASGNI4
 line 2067
 ;2067:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+152340+744
+ADDRGP4 cgs+152340+748
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -10397,7 +10397,7 @@ CNSTI4 0
 ASGNI4
 line 2108
 ;2108:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+152340+744
+ADDRGP4 cgs+152340+748
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -11497,7 +11497,7 @@ LABELV $1119
 line 2412
 ;2411:		case 0:
 ;2412:			trap_S_StartLocalSound( cgs.media.count1Sound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+980
+ADDRGP4 cgs+152340+984
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -11513,7 +11513,7 @@ LABELV $1122
 line 2415
 ;2414:		case 1:
 ;2415:			trap_S_StartLocalSound( cgs.media.count2Sound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+976
+ADDRGP4 cgs+152340+980
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -11529,7 +11529,7 @@ LABELV $1125
 line 2418
 ;2417:		case 2:
 ;2418:			trap_S_StartLocalSound( cgs.media.count3Sound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+972
+ADDRGP4 cgs+152340+976
 INDIRI4
 ARGI4
 CNSTI4 7

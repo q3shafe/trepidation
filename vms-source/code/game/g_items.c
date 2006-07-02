@@ -265,7 +265,8 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 	{
 		// Otherwise just give them the max
 		quantity = Max_Ammo[ ent->item->giTag ];
-		Add_Ammo( other, ent->item->giTag, quantity );
+		other->client->ps.ammo[ ent->item->giTag ] = quantity;
+		//Add_Ammo( other, ent->item->giTag, quantity ); // Oops :) Shafe
 	}
 
 	//}
@@ -455,26 +456,7 @@ void Touch_Item (gentity_t *ent, gentity_t *other, trace_t *trace) {
 	// call the item-specific pickup function
 	switch( ent->item->giType ) {
 	case IT_WEAPON:
-		// Shafe - Trep - Modified A Lot
-		/* // Remove this Issue Corrected!!!!!!! Shafe
-		if ( other->client->ps.stats[STAT_WEAPONS] & ( 1 << ent->item->giTag ))  // They have the weapon now see if we need to refuse it because they are out of ammo.
-		{
-			if ( other->client->ps.ammo[ ent->item->giTag ] == 0 )  // They are out of ammo.. let them pick it up
-			{ 
-				respawn = Pickup_Weapon(ent, other);
-			} else 
-			{
-				respawn = 0;
-			}
-		} else 
-		{
-			// They Dont have the weapon at all let's let em pickup	
-			respawn = Pickup_Weapon(ent, other);
-		}
-		if(ent->flags & FL_DROPPED_ITEM) // It's a dropped Item.. Let them have it
-		{
-			respawn = Pickup_Weapon(ent, other);
-		} */
+	
 		
 		respawn = Pickup_Weapon(ent, other);
 //		predict = qfalse;
