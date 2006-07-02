@@ -50,7 +50,7 @@
 
 #define STAT_MINUS			10	// num frame for '-' stats digit
 
-#define	ICON_SIZE			48
+#define	ICON_SIZE			48 // Shafe was 48
 #define	CHAR_WIDTH			32
 #define	CHAR_HEIGHT			48
 #define	TEXT_ICON_SPACE		4
@@ -820,6 +820,7 @@ typedef struct {
 	qhandle_t	scoreboardName;
 	qhandle_t	scoreboardPing;
 	qhandle_t	scoreboardScore;
+	qhandle_t	scoreboardTrep;
 	qhandle_t	scoreboardTime;
 
 	// medals shown during gameplay

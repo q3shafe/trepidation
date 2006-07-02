@@ -31,7 +31,7 @@ void G_BounceMissile( gentity_t *ent, trace_t *trace ) {
 			if (ent->classname == "pdgrenade") {
 			    ent->parent->istelepoint = 1;
 				VectorCopy(ent->r.currentOrigin, ent->parent->teleloc);
-				ent->parent->teleloc[2] += 60;
+				ent->parent->teleloc[2] += 20;
 			
 				
 				trap_SendServerCommand( ent->r.ownerNum, va("cp \"^9Particle Displacement Grenade Lock!\n\"") );

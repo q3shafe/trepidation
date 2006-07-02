@@ -4,6 +4,9 @@
 
 #include "../../ui/menudef.h"			// for the voice chats
 
+extern void Team_ReturnFlagSound( gentity_t *ent, int team ); // Shafe
+extern void Team_ResetFlags( void ); // Shafe
+
 /*
 ==================
 DeathmatchScoreboardMessage
@@ -89,7 +92,11 @@ void Cmd_TeleGren_f (gentity_t *ent) {
 
     if ( ent->istelepoint == 1 ) 
 	{
-		Team_DropFlags( ent ); // Maybe we should check to see if they have one before we try to drop it?
+		// Shafe The old way was just to drop it now we return flags to base if you try to teleport with one
+		//Team_ReturnFlagSound(Team_ResetFlag(ent->client->sess.sessionTeam), ent->client->sess.sessionTeam); // Maybe we should check to see if they have one before we try to drop it?
+		//Team_ResetFlag(ent->client->sess.sessionTeam)
+		Team_DropFlags( ent );  // Old Way
+		
 		VectorCopy( ent->teleloc, ent->client->ps.origin );
 		ent->istelepoint = 0;
 		VectorClear( ent->teleloc );

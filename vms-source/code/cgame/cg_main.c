@@ -900,6 +900,7 @@ static void CG_RegisterGraphics( void ) {
 	cgs.media.scoreboardPing = trap_R_RegisterShaderNoMip( "menu/tab/ping.tga" );
 	cgs.media.scoreboardScore = trap_R_RegisterShaderNoMip( "menu/tab/score.tga" );
 	cgs.media.scoreboardTime = trap_R_RegisterShaderNoMip( "menu/tab/time.tga" );
+	cgs.media.scoreboardTrep = trap_R_RegisterShaderNoMip( "menu/tab/scoreboard.tga" ); // Shafe
 
 	cgs.media.smokePuffShader = trap_R_RegisterShader( "smokePuff" );
 	cgs.media.smokePuffRageProShader = trap_R_RegisterShader( "smokePuffRagePro" );

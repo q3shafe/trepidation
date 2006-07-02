@@ -1263,7 +1263,7 @@ ADDRLP4 88
 ADDRGP4 atoi
 CALLI4
 ASGNI4
-ADDRGP4 cgs+153396
+ADDRGP4 cgs+153400
 ADDRLP4 88
 INDIRI4
 ASGNI4
@@ -1271,7 +1271,7 @@ line 152
 ;152:	trap_Cvar_Set("g_delagHitscan", va("%i", cgs.delagHitscan));
 ADDRGP4 $160
 ARGP4
-ADDRGP4 cgs+153396
+ADDRGP4 cgs+153400
 INDIRI4
 ARGI4
 ADDRLP4 92
@@ -1378,7 +1378,7 @@ line 178
 ;178:		{
 line 179
 ;179:			trap_S_StartLocalSound( cgs.media.countPrepareSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+988
+ADDRGP4 cgs+152340+992
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -3089,7 +3089,7 @@ CNSTI4 0
 NEI4 $353
 line 455
 ;455:		trap_S_StartLocalSound( cgs.media.countFightSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152340+984
+ADDRGP4 cgs+152340+988
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -5639,7 +5639,7 @@ CNSTI4 0
 NEI4 $530
 line 1010
 ;1010:			trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+152340+744
+ADDRGP4 cgs+152340+748
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -5707,7 +5707,7 @@ CNSTI4 0
 NEI4 $551
 line 1019
 ;1019:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+152340+744
+ADDRGP4 cgs+152340+748
 INDIRI4
 ARGI4
 CNSTI4 6
