@@ -216,7 +216,13 @@ void CG_DrawInformation( void ) {
 	// game type
 	switch ( cgs.gametype ) {
 	case GT_FFA:
-		s = "Free For All";
+		if (cgs.g_Arsenal == 1) 
+		{
+			s = "Arsenal";
+		} else {
+			s = "Free For All";
+		}
+		
 		break;
 	case GT_SINGLE_PLAYER:
 		s = "Single Player";

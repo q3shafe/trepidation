@@ -143,14 +143,14 @@ pop
 line 52
 ;51:
 ;52:	if ( level.clients[playerClientNum].sess.sessionTeam == TEAM_SPECTATOR ) {
-CNSTI4 3348
+CNSTI4 3388
 ADDRLP4 1076
 INDIRI4
 MULI4
 ADDRGP4 level
 INDIRP4
 ADDP4
-CNSTI4 2448
+CNSTI4 2488
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -190,7 +190,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2540
+CNSTI4 2580
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -208,13 +208,13 @@ ADDRLP4 1080
 CNSTI4 100
 ADDRLP4 1088
 INDIRP4
-CNSTI4 2544
+CNSTI4 2584
 ADDP4
 INDIRI4
 MULI4
 ADDRLP4 1088
 INDIRP4
-CNSTI4 2540
+CNSTI4 2580
 ADDP4
 INDIRI4
 DIVI4
@@ -270,7 +270,7 @@ line 97
 ADDRLP4 1092
 CNSTI4 0
 ASGNI4
-CNSTI4 3348
+CNSTI4 3388
 ADDRLP4 1076
 INDIRI4
 MULI4
@@ -413,7 +413,7 @@ ADDRLP4 4
 INDIRI4
 ARGI4
 ADDRLP4 1096
-CNSTI4 3348
+CNSTI4 3388
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -2392,7 +2392,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3348
+CNSTI4 3388
 ADDRGP4 level+88
 INDIRI4
 MULI4
@@ -2464,7 +2464,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3348
+CNSTI4 3388
 ADDRGP4 level+88+4
 INDIRI4
 MULI4
@@ -2523,7 +2523,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3348
+CNSTI4 3388
 ADDRGP4 level+88+8
 INDIRI4
 MULI4
@@ -2817,7 +2817,17 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_StartBFG
+import g_StartPlasma
+import g_StartGauss
+import g_StartFlame
+import g_StartSingCan
+import g_StartGrenade
+import g_StartSG
+import g_StartMG
+import g_StartGauntlet
 import g_MultiJump
+import g_Arsenal
 import g_instagib
 import sv_fps
 import g_lightningDamage

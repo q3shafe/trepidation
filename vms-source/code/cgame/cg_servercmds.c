@@ -145,6 +145,9 @@ void CG_ParseServerinfo( void ) {
 	trap_Cvar_Set("g_redTeam", cgs.redTeam);
 	Q_strncpyz( cgs.blueTeam, Info_ValueForKey( info, "g_blueTeam" ), sizeof(cgs.blueTeam) );
 	trap_Cvar_Set("g_blueTeam", cgs.blueTeam);
+	// Shafe - Trep
+	cgs.g_instagib = atoi( Info_ValueForKey( info, "g_instagib" ) );
+	cgs.g_Arsenal = atoi( Info_ValueForKey( info, "g_Arsenal" ) );
 
 //unlagged - server options
 	// we'll need this for deciding whether or not to predict weapon effects
@@ -446,6 +449,7 @@ static void CG_MapRestart( void ) {
 
 	CG_StartMusic();
 
+
 	trap_S_ClearLoopingSounds(qtrue);
 
 	// we really should clear more parts of cg here and stop sounds
@@ -454,6 +458,7 @@ static void CG_MapRestart( void ) {
 	if ( cg.warmup == 0 /* && cgs.gametype == GT_TOURNAMENT */) {
 		trap_S_StartLocalSound( cgs.media.countFightSound, CHAN_ANNOUNCER );
 		CG_CenterPrint( "FIGHT!", 120, GIANTCHAR_WIDTH*2 );
+
 	}
 #ifdef MISSIONPACK
 	if (cg_singlePlayerActive.integer) {

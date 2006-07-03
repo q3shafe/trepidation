@@ -525,8 +525,16 @@ void BroadcastTeamChange( gclient_t *client, int oldTeam )
 		trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE " joined the blue team.\n\"",
 		client->pers.netname));
 	} else if ( client->sess.sessionTeam == TEAM_SPECTATOR && oldTeam != TEAM_SPECTATOR ) {
-		trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE " joined the spectators.\n\"",
-		client->pers.netname));
+		
+		if ((client->pers.Eliminated) && (g_Arsenal.integer > 0))
+		{
+			trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE "'s Arsenal Is Empty.\n\"", client->pers.netname));
+		} 
+		else 
+		{
+			trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE " joined the spectators.\n\"", client->pers.netname));
+		}
+
 	} else if ( client->sess.sessionTeam == TEAM_FREE ) {
 		trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE " joined the battle.\n\"",
 		client->pers.netname));
@@ -720,6 +728,23 @@ void Cmd_Team_f( gentity_t *ent ) {
 		trap_SendServerCommand( ent-g_entities, "print \"May not switch teams more than once per 5 seconds.\n\"" );
 		return;
 	}
+
+	if ((g_Arsenal.integer != 0) && (!level.warmupTime))
+	{
+				
+		if ((ent->client->pers.Eliminated == qtrue) || (level.firstStrike == qtrue))
+		{
+			if (ent->client->sess.sessionTeam == TEAM_SPECTATOR)
+			{
+				trap_SendServerCommand( ent-g_entities, "cp \"You Must Wait Until Next Round To Join\"" );
+				return;
+			}
+
+		}
+	}
+
+	
+
 
 	// if they are playing a tournement game, count as a loss
 	if ( (g_gametype.integer == GT_TOURNAMENT )

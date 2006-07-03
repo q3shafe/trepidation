@@ -286,6 +286,21 @@ void body_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int d
 	GibEntity( self, 0 );
 }
 
+// Shafe - Trep - Arsenal Mod
+extern qboolean IsOutOfWeapons( gentity_t *ent ) {
+
+	if (ent->client->pers.h_gauntlet) { return qfalse; }
+	if (ent->client->pers.h_mg) { return qfalse; }
+	if (ent->client->pers.h_sg) { return qfalse; }
+	if (ent->client->pers.h_grenade) { return qfalse; }
+	if (ent->client->pers.h_singcan) { return qfalse; }
+	if (ent->client->pers.h_flame) { return qfalse; }
+	if (ent->client->pers.h_gauss) { return qfalse; }
+	if (ent->client->pers.h_plasma) { return qfalse; }
+	if (ent->client->pers.h_bfg) { return qfalse; }
+	return qtrue;
+}
+
 
 // these are just for logging, the client prints its own messages
 char	*modNames[] = {
@@ -442,6 +457,7 @@ void CheckAlmostScored( gentity_t *self, gentity_t *attacker ) {
 player_die
 ==================
 */
+extern int CountSurvivors();
 void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int meansOfDeath ) {
 	gentity_t	*ent;
 	int			anim;
@@ -449,6 +465,11 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	int			killer;
 	int			i;
 	char		*killerName, *obit;
+	// Shafe - Trep - For Arsenal
+	int			tmpW;
+	int			tmpCnt;
+	static		int deathNum;
+	gentity_t	*xte;
 
 	if ( self->client->ps.pm_type == PM_DEAD ) {
 		return;
@@ -456,6 +477,17 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 	if ( level.intermissiontime ) {
 		return;
+	}
+
+	// Shafe - Trep is it first strike?  
+	// In arsenal you can join until the first kill has been made
+	if ( level.warmupTime ) 
+	{
+		level.firstStrike = qfalse;
+	} 
+	else
+	{
+		level.firstStrike = qtrue;
 	}
 
 //unlagged - backward reconciliation #2
@@ -603,6 +635,139 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	}
 #endif
 
+			// Shafe - Trep - Arsenal Stuff
+		if ( g_Arsenal.integer != 0 && meansOfDeath != MOD_TELEFRAG && level.firstStrike == qtrue) 
+		{
+			tmpW = self->s.weapon;
+			
+			//G_Printf( S_COLOR_GREEN "DEBUG: Weapon You Held by %s was %i\n", self->client->pers.netname, tmpW );
+			
+			if (tmpW == 9) { self->client->pers.h_bfg = qfalse;  }
+			if (tmpW == 8) { self->client->pers.h_plasma = qfalse;}
+			if (tmpW == 7) { self->client->pers.h_gauss = qfalse; }
+			if (tmpW == 6) { self->client->pers.h_flame = qfalse; }
+			if (tmpW == 5) { self->client->pers.h_singcan = qfalse; }
+			if (tmpW == 4) { self->client->pers.h_grenade = qfalse; }
+			if (tmpW == 3) { self->client->pers.h_sg = qfalse; }
+			if (tmpW == 2) { self->client->pers.h_mg = qfalse; }
+			if (tmpW == 1) { self->client->pers.h_gauntlet = qfalse; }
+
+			if (IsOutOfWeapons(self)) 
+			{
+				trap_SendServerCommand( -1, va("print \"%s's Arsenal Is Empty!\n\"",self->client->pers.netname));
+				trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE "'s Arsenal is Empty.\n\"", self->client->pers.netname) );
+				
+
+				// Send them to Spec
+				self->client->pers.Eliminated = qtrue;
+				SetTeam(self, "s");
+
+
+				tmpCnt = (CountSurvivors());
+
+						
+				if (tmpCnt != level.levelSurvivors)
+				{
+
+					level.levelSurvivors = tmpCnt;
+			
+			
+					if (tmpCnt == 5) 
+					{
+						BroadCastSound("sound/misc/5.wav");
+					}
+					
+					if (tmpCnt == 4) 
+					{
+						BroadCastSound("sound/misc/4.wav");
+					}
+
+					if (tmpCnt == 3) 
+					{
+						BroadCastSound("sound/misc/3.wav");
+					}
+
+					if (tmpCnt == 2) 
+					{
+						
+						BroadCastSound("sound/misc/2.wav");
+					}
+
+					if (tmpCnt == 1) 
+					{
+						BroadCastSound("sound/misc/laff01.wav");
+						// Win The Game
+						trap_SendServerCommand( -1, "print \"::: ^9WINNER BONUSES :::\n\"");	
+						trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", attacker->client->pers.netname) );
+						attacker->client->ps.persistant[PERS_SCORE]+=20;
+						trap_SendServerCommand( -1, "print \"^9Survivor Bonus: ^3+20\n\"");	
+						
+						if (attacker->client->pers.h_bfg) 
+						{ 
+							attacker->client->ps.persistant[PERS_SCORE]+=1; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: BFG: ^3+1\n\"");	
+						}
+						
+						if (attacker->client->pers.h_plasma) 
+						{ 
+							attacker->client->ps.persistant[PERS_SCORE]+=2; 
+							trap_SendServerCommand( -1, "print \"^Arsenal Contents: Particle Distruptor: ^3+2\n\"");	
+						}
+						
+						if (attacker->client->pers.h_gauss) 
+						{ 
+							attacker->client->ps.persistant[PERS_SCORE]+=3; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: M42 Gauss Rifle: ^3+3\n\"");	
+						}
+						
+						if (attacker->client->pers.h_flame) 
+						{ 
+							attacker->client->ps.persistant[PERS_SCORE]+=4; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Flame Thrower: ^3+4\n\"");	
+						}
+						if (attacker->client->pers.h_singcan) 
+						{ 
+							attacker->client->ps.persistant[PERS_SCORE]+=8; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Singularity Cannon: ^3+8\n\"");	
+						}
+						
+						if (attacker->client->pers.h_gauntlet) 
+						{ 
+							attacker->client->ps.persistant[PERS_SCORE]+=10; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Gauntlet: ^3+10\n\"");	
+						}
+
+						if (attacker->client->pers.h_grenade) 
+						{ 
+							attacker->client->ps.persistant[PERS_SCORE]+=9; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Grenade Launcher: ^3+9\n\"");	
+						}
+
+						if (attacker->client->pers.h_sg) 
+						{ 
+							attacker->client->ps.persistant[PERS_SCORE]+=5; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Shotgun: ^3+5\n\"");	
+						}
+
+						if (attacker->client->pers.h_mg) 
+						{ 
+							attacker->client->ps.persistant[PERS_SCORE]+=6; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Machine Gun: ^3+6\n\"");	
+						}
+				
+						
+						
+						LogExit( "Fraglimit hit." );
+						BroadCastSound("sound/misc/laff01.wav");
+
+						////////////////
+					}			
+				}
+			} 
+
+		}
+		// End Arsenal Stuff
+
 	Cmd_Score_f( self );		// show scores
 	// send updated scores to any clients that are following this one,
 	// or they would get stale scoreboards
@@ -702,6 +867,8 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 		// globally cycle through the different death animations
 		i = ( i + 1 ) % 3;
 
+
+
 #ifdef MISSIONPACK
 		if (self->s.eFlags & EF_KAMIKAZE) {
 			Kamikaze_DeathTimer( self );
@@ -709,6 +876,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 #endif
 	}
 
+	
 	trap_LinkEntity (self);
 
 }

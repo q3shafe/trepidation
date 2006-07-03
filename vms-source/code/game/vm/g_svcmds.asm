@@ -1771,7 +1771,7 @@ line 371
 ;370:
 ;371:		cl = &level.clients[idnum];
 ADDRLP4 0
-CNSTI4 3348
+CNSTI4 3388
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -1828,7 +1828,7 @@ LABELV $236
 line 381
 ;381:		cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3348
+CNSTI4 3388
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1989,7 +1989,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3348
+CNSTI4 3388
 DIVI4
 MULI4
 ADDRGP4 g_entities
@@ -2570,7 +2570,17 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_StartBFG
+import g_StartPlasma
+import g_StartGauss
+import g_StartFlame
+import g_StartSingCan
+import g_StartGrenade
+import g_StartSG
+import g_StartMG
+import g_StartGauntlet
 import g_MultiJump
+import g_Arsenal
 import g_instagib
 import sv_fps
 import g_lightningDamage

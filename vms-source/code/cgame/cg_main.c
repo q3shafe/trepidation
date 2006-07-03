@@ -2016,6 +2016,7 @@ void CG_Init( int serverMessageNum, int serverCommandSequence, int clientNum ) {
 
 	CG_LoadingString( "" );
 
+
 #ifdef MISSIONPACK
 	CG_InitTeamChat();
 #endif

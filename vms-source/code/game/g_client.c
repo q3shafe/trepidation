@@ -1044,6 +1044,23 @@ void ClientBegin( int clientNum ) {
 	memset( &client->ps, 0, sizeof( client->ps ) );
 	client->ps.eFlags = flags;
 
+	// Set What Weapons Are Allow for Arsenal
+	if (g_Arsenal.integer == 1) 
+	{
+			// Set Starting Weapons
+		if (g_StartGauntlet.integer > 0) { client->pers.h_gauntlet = qtrue; }
+		if (g_StartMG.integer > 0) { client->pers.h_mg = qtrue; }
+		if (g_StartSG.integer > 0) { client->pers.h_sg = qtrue; }
+		if (g_StartGrenade.integer > 0) { client->pers.h_grenade = qtrue; }
+		if (g_StartSingCan.integer > 0) { client->pers.h_singcan = qtrue; }
+		if (g_StartFlame.integer > 0) { client->pers.h_flame = qtrue; }
+		if (g_StartGauss.integer > 0) { client->pers.h_gauss = qtrue; }
+		if (g_StartPlasma.integer > 0) { client->pers.h_plasma = qtrue;}
+		if (g_StartBFG.integer > 0) { client->pers.h_bfg = qtrue;}
+	}
+	client->pers.Eliminated = qfalse;  // They are not eliminated
+	// End Arsenal
+
 	// locate ent at a spawn point
 	ClientSpawn( ent );
 
@@ -1207,7 +1224,8 @@ void ClientSpawn(gentity_t *ent) {
 	client->ps.clientNum = index;
 
 	
-	if (g_instagib.integer == 0)  // Shafe - Trep Instagib
+	// Regular
+	if (g_instagib.integer == 0 && g_Arsenal.integer == 0)  // Shafe - Trep Instagib
 	{	
 		client->ps.stats[STAT_WEAPONS] = ( 1 << WP_MACHINEGUN );
 		if ( g_gametype.integer == GT_TEAM ) {
@@ -1220,13 +1238,26 @@ void ClientSpawn(gentity_t *ent) {
 			client->ps.ammo[WP_GAUNTLET] = -1;
 			client->ps.ammo[WP_GRAPPLING_HOOK] = -1;
 
-	} else
+	} 
+	
+	// Instagib
+	if (g_instagib.integer == 1)
 	{
 		// InstaGib - weapons on spawning w/ammo  - Shafe Trep
 		client->ps.stats[STAT_WEAPONS] = ( 1 << WP_RAILGUN );
 		client->ps.ammo[WP_RAILGUN] = 9999;
  
 	}
+
+	if (g_Arsenal.integer > 0) 
+	{
+		// Arsenal does not run in instagib mode
+		if (g_instagib.integer == 1)
+		{
+			trap_SendServerCommand( -1, "print \"Instagib is not compatable with Arsenal Gametype\n\"" );
+			g_instagib.integer == 0; 
+		}
+
 
 
 
@@ -1248,15 +1279,85 @@ void ClientSpawn(gentity_t *ent) {
 		G_KillBox( ent );
 		trap_LinkEntity (ent);
 
-		if (g_instagib.integer == 0)  // Shafe - Trep Instagib
+		if (g_instagib.integer == 0 && g_Arsenal.integer == 0)  // Shafe - Trep Instagib
 		{
 		// force the base weapon up
 		client->ps.weapon = WP_MACHINEGUN;
 		client->ps.weaponstate = WEAPON_READY;
 		} else
+		
+		// Hand out weapons in instagib
+		if (g_instagib.integer == 1) 
 		{
 			client->ps.weapon = WP_RAILGUN; // InstaGib
 		}
+
+		// Hand out weapons for arsenal
+		if (g_Arsenal.integer == 1)
+		{
+			if (client->pers.h_gauntlet) 
+			{
+				client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GAUNTLET );
+				client->ps.ammo[WP_GAUNTLET] = 9999;
+			}
+			
+			if (client->pers.h_mg) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_MACHINEGUN );
+			client->ps.ammo[WP_MACHINEGUN] = 9999;
+			}
+			
+			if (client->pers.h_sg) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_SHOTGUN );
+			client->ps.ammo[WP_SHOTGUN] = 9999;
+			}
+			
+			if (client->pers.h_grenade ) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GRENADE_LAUNCHER );
+			client->ps.ammo[WP_GRENADE_LAUNCHER] = 9999;
+			}
+
+			if (client->pers.h_singcan) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_ROCKET_LAUNCHER );
+			client->ps.ammo[WP_ROCKET_LAUNCHER] = 9999;
+			}
+			
+			if (client->pers.h_flame) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_LIGHTNING );
+			client->ps.ammo[WP_LIGHTNING] = 9999;
+			}
+			
+			if (client->pers.h_gauss) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_RAILGUN );
+			client->ps.ammo[WP_RAILGUN] = 9999;
+			}
+	
+			if (client->pers.h_plasma) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_PLASMAGUN );
+			client->ps.ammo[WP_PLASMAGUN] = 9999;
+			}
+			
+			if (client->pers.h_bfg) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_BFG );
+			client->ps.ammo[WP_BFG] = 9999;
+			}
+			//client->ps.stats[STAT_WEAPONS] = ( 1 << wn );
+			//client->ps.ammo[wn] = INFINITE;
+		}
+
+
+	}
+
+
+
+
 
 	}
 

@@ -1090,6 +1090,10 @@ typedef struct {
 	// this will be set to the server's g_delagHitscan
 	int				delagHitscan;
 //unlagged - client options
+	// Shafe - Trep
+	int	g_instagib;
+	int g_Arsenal;
+	
 } cgs_t;
 
 //==============================================================================

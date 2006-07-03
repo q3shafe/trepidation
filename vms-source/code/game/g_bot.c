@@ -389,6 +389,13 @@ void G_CheckMinimumPlayers( void ) {
 	minplayers = bot_minplayers.integer;
 	if (minplayers <= 0) return;
 
+	// Arsenal 
+	if ((g_Arsenal.integer != 0) && (level.firstStrike = qtrue)) 
+	{
+		return; 
+	}
+	///////////////////////
+
 	if (g_gametype.integer >= GT_TEAM) {
 		if (minplayers >= g_maxclients.integer / 2) {
 			minplayers = (g_maxclients.integer / 2) -1;

@@ -83,8 +83,23 @@ vmCvar_t	sv_fps;
 //unlagged - server options
 
 //Shafe - Trep
+// Mods
 vmCvar_t	g_instagib;
+vmCvar_t	g_Arsenal;
+
 vmCvar_t	g_MultiJump;
+
+// Arsenal
+vmCvar_t	g_StartGauntlet;
+vmCvar_t	g_StartMG;
+vmCvar_t	g_StartSG;
+vmCvar_t	g_StartGrenade;
+vmCvar_t	g_StartSingCan;
+vmCvar_t	g_StartFlame;
+vmCvar_t	g_StartGauss;
+vmCvar_t	g_StartPlasma;
+vmCvar_t	g_StartBFG;
+
 //vmCvar_t	g_CTFGrapple; // Decided not to make this an option
 
 // bk001129 - made static to avoid aliasing
@@ -181,9 +196,25 @@ static cvarTable_t		gameCvarTable[] = {
 
 	{ &g_rankings, "g_rankings", "0", 0, 0, qfalse},
 // Shafe - Trep - Cvars
-	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },
-	{ &g_MultiJump, "g_MultiJump", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue }
+	// Mods
+	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_USERINFO | CVAR_SYSTEMINFO, 0, qtrue  },
+	{ &g_Arsenal, "g_Arsenal", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_USERINFO | CVAR_SYSTEMINFO, 0, qtrue  },
+	
+	
 
+	// Arsenal Stuff
+	{ &g_StartGauntlet, "g_StartGauntlet", "1", CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_StartMG, "g_StartMG", "0", CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_StartSG, "g_StartSG", "0", CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_StartGrenade, "g_StartGrenade", "1", CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_StartSingCan, "g_StartSingCan", "1", CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_StartFlame, "g_StartFlame", "0", CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_StartGauss, "g_StartGauss", "1", CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_StartPlasma, "g_StartPlasma", "0", CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_StartBFG, "g_StartBFG", "0", CVAR_ARCHIVE, 0, qtrue  },
+
+
+	{ &g_MultiJump, "g_MultiJump", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue }
 
 	
 };
@@ -338,6 +369,78 @@ void G_RemapTeamShaders() {
 
 
 /*
+===================
+Trepidation - Shafe
+CountSurvivors
+Used For Arsenal and Last Man Standing
+===================
+*/
+int CountSurvivors ( void )
+{
+		int			tmpCnt;
+		//gentity_t	*self;
+		
+		int			i;
+		gclient_t	*cl;
+
+			tmpCnt = 0;
+			for ( i = 0; i < level.maxclients; i++ )
+			{
+				cl = &level.clients[i];
+				
+				// Use this if still not reliable
+				//self = g_entities[i];
+				
+				//if (( cl->pers.connected == CON_CONNECTED && cl->sess.sessionTeam != TEAM_SPECTATOR) && (!(self->r.svFlags |= SVF_ELIMINATED) || !(cl->ps.eFlags&EF_ELIMINATED)))  //!(cl->ps.eFlags&EF_ELIMINATED))
+				if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
+				{
+					tmpCnt++;
+				
+				}
+			}
+
+			//G_Printf( S_COLOR_GREEN "DEBUG: Survivor Count %i\n", tmpCnt );
+return tmpCnt;
+}
+
+/*
+================
+G_InitModRules
+
+Shafe - Trep Set The Rules for Various Mods
+================
+*/
+extern int altAmmoUsage[];
+void G_InitModRules( void )
+{
+	
+	// EFAdmin - Dont Use up Ammo in Arsenal
+	if ( g_Arsenal.integer != 0 ) 
+	{
+		altAmmoUsage[WP_MACHINEGUN] = 0;
+		altAmmoUsage[WP_SHOTGUN] = 0;
+		altAmmoUsage[WP_GRENADE_LAUNCHER] = 0;
+		altAmmoUsage[WP_ROCKET_LAUNCHER] = 0;
+		altAmmoUsage[WP_LIGHTNING] = 0;
+		altAmmoUsage[WP_RAILGUN] = 0;
+		altAmmoUsage[WP_PLASMAGUN] = 0;
+		altAmmoUsage[WP_BFG] = 0;	
+		// Set some cvars
+		g_teamAutoJoin.integer = 0;
+		g_doWarmup.integer = 1;
+		g_warmup.integer = 50;
+
+
+		
+
+	}
+
+	if ( g_instagib.integer != 0 )
+	{//don't use up ammo in instagib mode
+		altAmmoUsage[WP_RAILGUN] = 0;
+	}
+}
+/*
 =================
 G_RegisterCvars
 =================
@@ -430,6 +533,9 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	memset( &level, 0, sizeof( level ) );
 	level.time = levelTime;
 	level.startTime = levelTime;
+	level.firstStrike = qfalse; // Shafe - Trep
+	
+	
 
 	level.snd_fry = G_SoundIndex("sound/player/fry.wav");	// FIXME standing in lava / slime
 
@@ -511,6 +617,9 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	}
 
 	G_RemapTeamShaders();
+
+	// Shafe - Trep
+	G_InitModRules();
 
 }
 
@@ -1040,6 +1149,7 @@ void ExitLevel (void) {
 			level.restarted = qtrue;
 			level.changemap = NULL;
 			level.intermissiontime = 0;
+			
 		}
 		return;	
 	}
@@ -1298,6 +1408,13 @@ can see the last frag.
 void CheckExitRules( void ) {
  	int			i;
 	gclient_t	*cl;
+	// Arsenal Trepidation Stuff
+	gentity_t	*self;
+	gitem_t	*quad = BG_FindItemForPowerup( PW_QUAD );
+	gitem_t	*flight = BG_FindItemForPowerup( PW_FLIGHT );
+	gitem_t	*battles = BG_FindItemForPowerup( PW_BATTLESUIT );
+	gitem_t	*regen = BG_FindItemForPowerup( PW_REGEN );
+
 	// if at the intermission, wait for all non-bots to
 	// signal ready, then go to next level
 	if ( level.intermissiontime ) {
@@ -1384,6 +1501,252 @@ void CheckExitRules( void ) {
 			return;
 		}
 	}
+
+		// EFAdmin Arsenal
+	if ( g_Arsenal.integer != 0 )
+	{
+		gclient_t		*survivor = NULL;		
+		int				tmpCnt;
+		tmpCnt = CountSurvivors();
+
+			
+			
+			/* This is from My EF Version.
+			   Lets Not Give Away Anything Just Yet
+
+			// If down to two people start the showdown music and slow spawining
+			// of health and powerups
+			if (tmpCnt == 3)
+			{
+				if (level.level3Players) 
+				{
+					level.level3Players = qfalse;
+					trap_SendServerCommand( -1, va("cp \"^93 Players Remaining!\n\"") );
+					
+					// Last 3 Players Get Detpacks  
+					
+					for ( i = 0; i < level.maxclients; i++ )
+					{
+						cl = &level.clients[i];
+						self = &g_entities[i];
+							
+						if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
+						{	
+							cl->ps.speed=+60;
+							cl->ps.stats[STAT_HOLDABLE_ITEM] = BG_FindItemForHoldable( HI_DETPACK ) - bg_itemlist;
+						
+						}
+
+					}
+					
+				} 
+				else 
+				{
+					level.level3Players = qfalse;
+				}
+
+
+			}
+			else
+			{
+				level.level3Players = qfalse;
+			}
+			*/
+
+			// Two People - Showdown
+			if (tmpCnt == 2)
+			{
+				if (!level.StopItemRespawn) 
+				{
+					
+					// Dont do this on warmup or before everyone spawns
+					if ((!level.warmupTime) && (level.time > level.startTime+5000)) 
+					{
+						char	*s;
+						//G_SpawnString( "music", "music/voy1part2.mp3", &s );
+						//trap_SetConfigstring( CS_MUSIC, s );
+						level.StopItemRespawn = qtrue;
+						trap_SendServerCommand( -1, va("cp \"^9Showdown!\n\"") );
+					
+						// Give The Last 2 People Some Powerups
+						for ( i = 0; i < level.maxclients; i++ )
+						{
+							cl = &level.clients[i];
+							self = &g_entities[i];
+							if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
+							{	
+								cl->ps.speed=+60;
+								cl->ps.powerups[quad->giTag] = level.time - ( level.time % 1000 );
+								cl->ps.powerups[quad->giTag] += 25 * 1000;
+								G_AddEvent( self, EV_ITEM_PICKUP, (quad-bg_itemlist) );
+
+								cl->ps.powerups[flight->giTag] = level.time - ( level.time % 1000 );
+								cl->ps.powerups[flight->giTag] += 15 * 1000;
+								G_AddEvent( self, EV_ITEM_PICKUP, (flight-bg_itemlist) );
+								
+								cl->ps.powerups[battles->giTag] = level.time - ( level.time % 1000 );
+								cl->ps.powerups[battles->giTag] += 10 * 1000;
+								G_AddEvent( self, EV_ITEM_PICKUP, (battles-bg_itemlist) );
+								
+								cl->ps.powerups[regen->giTag] = level.time - ( level.time % 1000 );
+								cl->ps.powerups[regen->giTag] += 20 * 1000;
+								G_AddEvent( self, EV_ITEM_PICKUP, (regen-bg_itemlist) );
+								
+								
+								
+
+							}
+						}
+						///////////////////////////////////
+					}
+
+
+
+				}
+			}  
+			else
+			{
+				// Just in case
+				if (level.StopItemRespawn)
+				{
+					level.StopItemRespawn = qfalse;
+				}
+
+			}
+
+
+			// Down to 1 player find the survivor
+			/* This code has morphed to utter shit
+			if (tmpCnt == 1) {
+				int		p;
+				for ( i = 0; i < level.maxclients; i++ )
+				{
+					cl = &level.clients[i];
+					//survivor = &level.clients[i];
+					if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
+					{	
+						//survivor = cl;	
+						p = i;
+						survivor = &level.clients[i];
+						G_Printf( S_COLOR_GREEN "DEBUG: Survivors %s %i\n", survivor->pers.netname, tmpCnt);
+						break;
+					}
+
+				}
+				//survivor = &level.clients[p];
+			// We dont have a survivor yet.. Something isnt right
+				G_Printf( S_COLOR_GREEN "DEBUG: Survivors %s %i\n", survivor->pers.netname, tmpCnt);
+						// If We Get To Here We should have a survivor	
+				//if ( survivor != NULL )
+				//{
+					
+					trap_SendServerCommand( -1, "print \"::: ^9WINNER BONUSES :::\n\"");	
+					trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", survivor->pers.netname) );
+					survivor->ps.persistant[PERS_SCORE]+=20;
+					trap_SendServerCommand( -1, "print \"^9Survivor Bonus: ^3+20\n\"");	
+					if (survivor->pers.h_bfg) 
+					{ 
+						survivor->ps.persistant[PERS_SCORE]+=1; 
+						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: BFG: ^3+1\n\"");	
+					}
+					
+					if (survivor->pers.h_plasma) 
+					{ 
+						survivor->ps.persistant[PERS_SCORE]+=2; 
+						trap_SendServerCommand( -1, "print \"^Arsenal Contents: Particle Distruptor: ^3+2\n\"");	
+					}
+					
+					if (survivor->pers.h_gauss) 
+					{ 
+						survivor->ps.persistant[PERS_SCORE]+=3; 
+						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: M42 Gauss Rifle: ^3+3\n\"");	
+					}
+					
+					if (survivor->pers.h_flame) 
+					{ 
+						survivor->ps.persistant[PERS_SCORE]+=4; 
+						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Flame Thrower: ^3+4\n\"");	
+					}
+					if (survivor->pers.h_singcan) 
+					{ 
+						survivor->ps.persistant[PERS_SCORE]+=8; 
+						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Singularity Cannon: ^3+8\n\"");	
+					}
+					
+					if (survivor->pers.h_gauntlet) 
+					{ 
+						survivor->ps.persistant[PERS_SCORE]+=10; 
+						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Gauntlet: ^3+10\n\"");	
+					}
+
+					if (survivor->pers.h_grenade) 
+					{ 
+						survivor->ps.persistant[PERS_SCORE]+=9; 
+						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Grenade Launcher: ^3+9\n\"");	
+					}
+
+					if (survivor->pers.h_sg) 
+					{ 
+						survivor->ps.persistant[PERS_SCORE]+=5; 
+						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Shotgun: ^3+5\n\"");	
+					}
+
+					if (survivor->pers.h_mg) 
+					{ 
+						survivor->ps.persistant[PERS_SCORE]+=6; 
+						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Machine Gun: ^3+6\n\"");	
+					}
+			
+			LogExit( "Fraglimit hit." );
+			//CalculateRanks();
+			return;
+				//}
+		} 
+		/* else
+		{
+			trap_SendServerCommand( -1, "print \"No Survivors!.\n\"");
+			G_Printf( S_COLOR_GREEN "DEBUG: No Survivors This Is A Problem! %i \n", tmpCnt);
+			trap_SendServerCommand( -1, "print \"DEBUG: This is a problem!!.\n\"");
+			//survivor->ps.persistant[PERS_SCORE] =+ 100;
+			LogExit( "Fraglimit hit." );
+			return;
+		}
+		*/
+			
+
+	}
+				
+		
+
+		/*  
+
+		I Have No Idea What This crap is.. I think this is just garbage from the Arsenal EF Port
+
+		// Make sure there arent 0 people BUT	
+		// Wait at least 20 seconds before deciding there are no players
+		if ((!level.warmupTime) && (tmpCnt < 2))
+		{
+			trap_SendServerCommand( -1, "print \"No Players!.\n\"");
+			LogExit( "Timelimit hit." );
+		}
+
+		// Check The Timelimit Again
+		if ( g_timelimit.integer && !level.warmupTime ) 
+		{
+			if ( level.time - level.startTime >= g_timelimit.integer*60000 ) 
+			{
+				trap_SendServerCommand( -1, "print \"Timelimit hit.\n\"");
+				LogExit( "Timelimit hit." );
+				return;
+			}
+		}
+		
+		//don't check anything else
+		return;
+		*/
+
+//	}
+
 }
 
 
@@ -1454,6 +1817,7 @@ void CheckTournament( void ) {
 			trap_Cvar_Set( "g_restarted", "1" );
 			trap_SendConsoleCommand( EXEC_APPEND, "map_restart 0\n" );
 			level.restarted = qtrue;
+			level.firstStrike = qfalse;
 			return;
 		}
 	} else if ( g_gametype.integer != GT_SINGLE_PLAYER && level.warmupTime != 0 ) {
@@ -1504,6 +1868,7 @@ void CheckTournament( void ) {
 			trap_Cvar_Set( "g_restarted", "1" );
 			trap_SendConsoleCommand( EXEC_APPEND, "map_restart 0\n" );
 			level.restarted = qtrue;
+			level.firstStrike = qfalse;
 			return;
 		}
 	}

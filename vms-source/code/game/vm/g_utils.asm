@@ -793,7 +793,7 @@ JUMPV
 LABELV $118
 line 160
 ;160:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3348
+CNSTI4 3388
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -807,14 +807,14 @@ CNSTI4 2
 NEI4 $123
 line 161
 ;161:			if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3348
+CNSTI4 3388
 ADDRLP4 0
 INDIRI4
 MULI4
 ADDRGP4 level
 INDIRP4
 ADDP4
-CNSTI4 2448
+CNSTI4 2488
 ADDP4
 INDIRI4
 ADDRFP4 0
@@ -2207,7 +2207,7 @@ ARGI4
 ADDRGP4 level
 INDIRP4
 ARGP4
-CNSTI4 3348
+CNSTI4 3388
 ARGI4
 ADDRGP4 trap_LocateGameData
 CALLV
@@ -3662,7 +3662,17 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_StartBFG
+import g_StartPlasma
+import g_StartGauss
+import g_StartFlame
+import g_StartSingCan
+import g_StartGrenade
+import g_StartSG
+import g_StartMG
+import g_StartGauntlet
 import g_MultiJump
+import g_Arsenal
 import g_instagib
 import sv_fps
 import g_lightningDamage

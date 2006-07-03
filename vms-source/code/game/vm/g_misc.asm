@@ -143,7 +143,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2448
+CNSTI4 2488
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -429,7 +429,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2448
+CNSTI4 2488
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -496,7 +496,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2448
+CNSTI4 2488
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -1961,7 +1961,17 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_StartBFG
+import g_StartPlasma
+import g_StartGauss
+import g_StartFlame
+import g_StartSingCan
+import g_StartGrenade
+import g_StartSG
+import g_StartMG
+import g_StartGauntlet
 import g_MultiJump
+import g_Arsenal
 import g_instagib
 import sv_fps
 import g_lightningDamage
