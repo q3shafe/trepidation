@@ -268,6 +268,12 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 		other->client->ps.ammo[ ent->item->giTag ] = quantity;
 		//Add_Ammo( other, ent->item->giTag, quantity ); // Oops :) Shafe
 	}
+	
+	// If it's arsenal then make sure they are still at infinite
+	if (g_Arsenal.integer == 1)
+	{
+		other->client->ps.ammo[ ent->item->giTag ] = 9999;
+	}
 
 	//}
 
@@ -841,7 +847,23 @@ void ClearRegisteredItems( void ) {
 		RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
 	} // End Shafe
 
-	
+	// Shafe - Trep - Arsenal Gets All Weapons Pre-Registered
+	if (g_Arsenal.integer == 1)
+	{
+		//RegisterItem( BG_FindItemForWeapon( WP_GAUNTLET ) ); // Already Registered
+		//RegisterItem( BG_FindItemForWeapon( WP_MACHINEGUN ) ); // Already Registered
+		//RegisterItem( BG_FindItemForWeapon( WP_LIGHTNING ) ); // Already Registered
+		//RegisterItem( BG_FindItemForWeapon( WP_GRENADE_LAUNCHER ) ); // Already Registerd
+		//RegisterItem( BG_FindItemForWeapon( WP_ROCKET_LAUNCHER ) );
+		//RegisterItem( BG_FindItemForWeapon( WP_GRAPPLING_HOOK ) );
+
+		RegisterItem( BG_FindItemForWeapon( WP_SHOTGUN ) );
+		RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
+		RegisterItem( BG_FindItemForWeapon( WP_PLASMAGUN ) );
+		RegisterItem( BG_FindItemForWeapon( WP_BFG ) );
+		
+		
+	}
 
 #ifdef MISSIONPACK
 	if( g_gametype.integer == GT_HARVESTER ) {
@@ -923,6 +945,15 @@ void G_SpawnItem (gentity_t *ent, gitem_t *item) {
 	if (g_instagib.integer == 1) 
 	{
 	// InstaGib - prevent weapons and ammo from spawning
+	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
+		return;
+	}
+	/////////////////////////////////////////////////////////
+
+	//Shafe - Trep Instagib
+	if (g_Arsenal.integer == 1) 
+	{
+	// Arsenal - prevent weapons and ammo from spawning
 	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
 		return;
 	}

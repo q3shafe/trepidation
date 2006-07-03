@@ -952,7 +952,7 @@ line 118
 LABELV $142
 endproc CG_ParseTeamInfo 68 4
 export CG_ParseServerinfo
-proc CG_ParseServerinfo 96 16
+proc CG_ParseServerinfo 112 16
 line 129
 ;119:
 ;120:
@@ -1242,11 +1242,9 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 151
-;148:
-;149://unlagged - server options
-;150:	// we'll need this for deciding whether or not to predict weapon effects
-;151:	cgs.delagHitscan = atoi( Info_ValueForKey( info, "g_delagHitscan" ) );
+line 149
+;148:	// Shafe - Trep
+;149:	cgs.g_instagib = atoi( Info_ValueForKey( info, "g_instagib" ) );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -1263,48 +1261,95 @@ ADDRLP4 88
 ADDRGP4 atoi
 CALLI4
 ASGNI4
-ADDRGP4 cgs+153400
+ADDRGP4 cgs+153404
 ADDRLP4 88
 INDIRI4
 ASGNI4
-line 152
-;152:	trap_Cvar_Set("g_delagHitscan", va("%i", cgs.delagHitscan));
+line 150
+;150:	cgs.g_Arsenal = atoi( Info_ValueForKey( info, "g_Arsenal" ) );
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRGP4 $189
+ARGP4
+ADDRLP4 92
+ADDRGP4 Info_ValueForKey
+CALLP4
+ASGNP4
+ADDRLP4 92
+INDIRP4
+ARGP4
+ADDRLP4 96
+ADDRGP4 atoi
+CALLI4
+ASGNI4
+ADDRGP4 cgs+153408
+ADDRLP4 96
+INDIRI4
+ASGNI4
+line 154
+;151:
+;152://unlagged - server options
+;153:	// we'll need this for deciding whether or not to predict weapon effects
+;154:	cgs.delagHitscan = atoi( Info_ValueForKey( info, "g_delagHitscan" ) );
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRGP4 $191
+ARGP4
+ADDRLP4 100
+ADDRGP4 Info_ValueForKey
+CALLP4
+ASGNP4
+ADDRLP4 100
+INDIRP4
+ARGP4
+ADDRLP4 104
+ADDRGP4 atoi
+CALLI4
+ASGNI4
+ADDRGP4 cgs+153400
+ADDRLP4 104
+INDIRI4
+ASGNI4
+line 155
+;155:	trap_Cvar_Set("g_delagHitscan", va("%i", cgs.delagHitscan));
 ADDRGP4 $160
 ARGP4
 ADDRGP4 cgs+153400
 INDIRI4
 ARGI4
-ADDRLP4 92
+ADDRLP4 108
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $187
+ADDRGP4 $191
 ARGP4
-ADDRLP4 92
+ADDRLP4 108
 INDIRP4
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 154
-;153://unlagged - server options
-;154:}
+line 157
+;156://unlagged - server options
+;157:}
 LABELV $157
-endproc CG_ParseServerinfo 96 16
+endproc CG_ParseServerinfo 112 16
 proc CG_ParseWarmup 24 8
-line 161
-;155:
-;156:/*
-;157:==================
-;158:CG_ParseWarmup
-;159:==================
-;160:*/
-;161:static void CG_ParseWarmup( void ) {
-line 165
-;162:	const char	*info;
-;163:	int			warmup;
-;164:
-;165:	info = CG_ConfigString( CS_WARMUP );
+line 164
+;158:
+;159:/*
+;160:==================
+;161:CG_ParseWarmup
+;162:==================
+;163:*/
+;164:static void CG_ParseWarmup( void ) {
+line 168
+;165:	const char	*info;
+;166:	int			warmup;
+;167:
+;168:	info = CG_ConfigString( CS_WARMUP );
 CNSTI4 5
 ARGI4
 ADDRLP4 8
@@ -1315,9 +1360,9 @@ ADDRLP4 4
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 167
-;166:
-;167:	warmup = atoi( info );
+line 170
+;169:
+;170:	warmup = atoi( info );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -1329,14 +1374,14 @@ ADDRLP4 0
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 168
-;168:	cg.warmupCount = -1;
+line 171
+;171:	cg.warmupCount = -1;
 ADDRGP4 cg+124672
 CNSTI4 -1
 ASGNI4
-line 170
-;169:
-;170:	if ( warmup == 0 && cg.warmup ) {
+line 173
+;172:
+;173:	if ( warmup == 0 && cg.warmup ) {
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
@@ -1344,18 +1389,18 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 16
 INDIRI4
-NEI4 $191
+NEI4 $195
 ADDRGP4 cg+124668
 INDIRI4
 ADDRLP4 16
 INDIRI4
-EQI4 $191
-line 172
-;171:
-;172:	} else if ( warmup > 0 && cg.warmup <= 0 ) {
-ADDRGP4 $192
+EQI4 $195
+line 175
+;174:
+;175:	} else if ( warmup > 0 && cg.warmup <= 0 ) {
+ADDRGP4 $196
 JUMPV
-LABELV $191
+LABELV $195
 ADDRLP4 20
 CNSTI4 0
 ASGNI4
@@ -1363,21 +1408,21 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 20
 INDIRI4
-LEI4 $194
+LEI4 $198
 ADDRGP4 cg+124668
 INDIRI4
 ADDRLP4 20
 INDIRI4
-GTI4 $194
-line 178
-;173:#ifdef MISSIONPACK
-;174:		if (cgs.gametype >= GT_CTF && cgs.gametype <= GT_HARVESTER) {
-;175:			trap_S_StartLocalSound( cgs.media.countPrepareTeamSound, CHAN_ANNOUNCER );
-;176:		} else
-;177:#endif
-;178:		{
-line 179
-;179:			trap_S_StartLocalSound( cgs.media.countPrepareSound, CHAN_ANNOUNCER );
+GTI4 $198
+line 181
+;176:#ifdef MISSIONPACK
+;177:		if (cgs.gametype >= GT_CTF && cgs.gametype <= GT_HARVESTER) {
+;178:			trap_S_StartLocalSound( cgs.media.countPrepareTeamSound, CHAN_ANNOUNCER );
+;179:		} else
+;180:#endif
+;181:		{
+line 182
+;182:			trap_S_StartLocalSound( cgs.media.countPrepareSound, CHAN_ANNOUNCER );
 ADDRGP4 cgs+152340+992
 INDIRI4
 ARGI4
@@ -1386,39 +1431,39 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 180
-;180:		}
-line 181
-;181:	}
-LABELV $194
-LABELV $192
 line 183
-;182:
-;183:	cg.warmup = warmup;
+;183:		}
+line 184
+;184:	}
+LABELV $198
+LABELV $196
+line 186
+;185:
+;186:	cg.warmup = warmup;
 ADDRGP4 cg+124668
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 184
-;184:}
-LABELV $189
+line 187
+;187:}
+LABELV $193
 endproc CG_ParseWarmup 24 8
 export CG_SetConfigValues
 proc CG_SetConfigValues 36 4
-line 193
-;185:
-;186:/*
-;187:================
-;188:CG_SetConfigValues
-;189:
-;190:Called on load to set the initial values from configure strings
-;191:================
-;192:*/
-;193:void CG_SetConfigValues( void ) {
 line 196
-;194:	const char *s;
-;195:
-;196:	cgs.scores1 = atoi( CG_ConfigString( CS_SCORES1 ) );
+;188:
+;189:/*
+;190:================
+;191:CG_SetConfigValues
+;192:
+;193:Called on load to set the initial values from configure strings
+;194:================
+;195:*/
+;196:void CG_SetConfigValues( void ) {
+line 199
+;197:	const char *s;
+;198:
+;199:	cgs.scores1 = atoi( CG_ConfigString( CS_SCORES1 ) );
 CNSTI4 6
 ARGI4
 ADDRLP4 4
@@ -1436,8 +1481,8 @@ ADDRGP4 cgs+34800
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 197
-;197:	cgs.scores2 = atoi( CG_ConfigString( CS_SCORES2 ) );
+line 200
+;200:	cgs.scores2 = atoi( CG_ConfigString( CS_SCORES2 ) );
 CNSTI4 7
 ARGI4
 ADDRLP4 12
@@ -1455,8 +1500,8 @@ ADDRGP4 cgs+34804
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 198
-;198:	cgs.levelStartTime = atoi( CG_ConfigString( CS_LEVEL_START_TIME ) );
+line 201
+;201:	cgs.levelStartTime = atoi( CG_ConfigString( CS_LEVEL_START_TIME ) );
 CNSTI4 21
 ARGI4
 ADDRLP4 20
@@ -1474,14 +1519,14 @@ ADDRGP4 cgs+34796
 ADDRLP4 24
 INDIRI4
 ASGNI4
-line 199
-;199:	if( cgs.gametype == GT_CTF ) {
+line 202
+;202:	if( cgs.gametype == GT_CTF ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
-NEI4 $204
-line 200
-;200:		s = CG_ConfigString( CS_FLAGSTATUS );
+NEI4 $208
+line 203
+;203:		s = CG_ConfigString( CS_FLAGSTATUS );
 CNSTI4 23
 ARGI4
 ADDRLP4 28
@@ -1492,8 +1537,8 @@ ADDRLP4 0
 ADDRLP4 28
 INDIRP4
 ASGNP4
-line 201
-;201:		cgs.redflag = s[0] - '0';
+line 204
+;204:		cgs.redflag = s[0] - '0';
 ADDRGP4 cgs+34808
 ADDRLP4 0
 INDIRP4
@@ -1502,8 +1547,8 @@ CVII4 1
 CNSTI4 48
 SUBI4
 ASGNI4
-line 202
-;202:		cgs.blueflag = s[1] - '0';
+line 205
+;205:		cgs.blueflag = s[1] - '0';
 ADDRGP4 cgs+34812
 ADDRLP4 0
 INDIRP4
@@ -1514,17 +1559,17 @@ CVII4 1
 CNSTI4 48
 SUBI4
 ASGNI4
-line 203
-;203:	}
-LABELV $204
-line 210
-;204:#ifdef MISSIONPACK
-;205:	else if( cgs.gametype == GT_1FCTF ) {
-;206:		s = CG_ConfigString( CS_FLAGSTATUS );
-;207:		cgs.flagStatus = s[0] - '0';
-;208:	}
-;209:#endif
-;210:	cg.warmup = atoi( CG_ConfigString( CS_WARMUP ) );
+line 206
+;206:	}
+LABELV $208
+line 213
+;207:#ifdef MISSIONPACK
+;208:	else if( cgs.gametype == GT_1FCTF ) {
+;209:		s = CG_ConfigString( CS_FLAGSTATUS );
+;210:		cgs.flagStatus = s[0] - '0';
+;211:	}
+;212:#endif
+;213:	cg.warmup = atoi( CG_ConfigString( CS_WARMUP ) );
 CNSTI4 5
 ARGI4
 ADDRLP4 28
@@ -1542,28 +1587,28 @@ ADDRGP4 cg+124668
 ADDRLP4 32
 INDIRI4
 ASGNI4
-line 211
-;211:}
-LABELV $200
+line 214
+;214:}
+LABELV $204
 endproc CG_SetConfigValues 36 4
 export CG_ShaderStateChanged
 proc CG_ShaderStateChanged 188 12
-line 218
-;212:
-;213:/*
-;214:=====================
-;215:CG_ShaderStateChanged
-;216:=====================
-;217:*/
-;218:void CG_ShaderStateChanged(void) {
-line 225
-;219:	char originalShader[MAX_QPATH];
-;220:	char newShader[MAX_QPATH];
-;221:	char timeOffset[16];
-;222:	const char *o;
-;223:	char *n,*t;
-;224:
-;225:	o = CG_ConfigString( CS_SHADERSTATE );
+line 221
+;215:
+;216:/*
+;217:=====================
+;218:CG_ShaderStateChanged
+;219:=====================
+;220:*/
+;221:void CG_ShaderStateChanged(void) {
+line 228
+;222:	char originalShader[MAX_QPATH];
+;223:	char newShader[MAX_QPATH];
+;224:	char timeOffset[16];
+;225:	const char *o;
+;226:	char *n,*t;
+;227:
+;228:	o = CG_ConfigString( CS_SHADERSTATE );
 CNSTI4 24
 ARGI4
 ADDRLP4 156
@@ -1574,41 +1619,41 @@ ADDRLP4 0
 ADDRLP4 156
 INDIRP4
 ASGNP4
-ADDRGP4 $212
+ADDRGP4 $216
 JUMPV
-LABELV $211
-line 226
-;226:	while (o && *o) {
-line 227
-;227:		n = strstr(o, "=");
-ADDRLP4 0
-INDIRP4
-ARGP4
-ADDRGP4 $214
-ARGP4
-ADDRLP4 160
-ADDRGP4 strstr
-CALLP4
-ASGNP4
-ADDRLP4 4
-ADDRLP4 160
-INDIRP4
-ASGNP4
-line 228
-;228:		if (n && *n) {
-ADDRLP4 4
-INDIRP4
-CVPU4 4
-CNSTU4 0
-EQU4 $213
-ADDRLP4 4
-INDIRP4
-INDIRI1
-CVII4 1
-CNSTI4 0
-EQI4 $213
+LABELV $215
 line 229
-;229:			strncpy(originalShader, o, n-o);
+;229:	while (o && *o) {
+line 230
+;230:		n = strstr(o, "=");
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRGP4 $218
+ARGP4
+ADDRLP4 160
+ADDRGP4 strstr
+CALLP4
+ASGNP4
+ADDRLP4 4
+ADDRLP4 160
+INDIRP4
+ASGNP4
+line 231
+;231:		if (n && *n) {
+ADDRLP4 4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $217
+ADDRLP4 4
+INDIRP4
+INDIRI1
+CVII4 1
+CNSTI4 0
+EQI4 $217
+line 232
+;232:			strncpy(originalShader, o, n-o);
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -1626,8 +1671,8 @@ ARGI4
 ADDRGP4 strncpy
 CALLP4
 pop
-line 230
-;230:			originalShader[n-o] = 0;
+line 233
+;233:			originalShader[n-o] = 0;
 ADDRLP4 4
 INDIRP4
 CVPU4 4
@@ -1640,20 +1685,20 @@ ADDRLP4 12
 ADDP4
 CNSTI1 0
 ASGNI1
-line 231
-;231:			n++;
+line 234
+;234:			n++;
 ADDRLP4 4
 ADDRLP4 4
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 232
-;232:			t = strstr(n, ":");
+line 235
+;235:			t = strstr(n, ":");
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $217
+ADDRGP4 $221
 ARGP4
 ADDRLP4 172
 ADDRGP4 strstr
@@ -1663,21 +1708,21 @@ ADDRLP4 8
 ADDRLP4 172
 INDIRP4
 ASGNP4
-line 233
-;233:			if (t && *t) {
+line 236
+;236:			if (t && *t) {
 ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $213
+EQU4 $217
 ADDRLP4 8
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $213
-line 234
-;234:				strncpy(newShader, n, t-n);
+EQI4 $217
+line 237
+;237:				strncpy(newShader, n, t-n);
 ADDRLP4 76
 ARGP4
 ADDRLP4 4
@@ -1695,8 +1740,8 @@ ARGI4
 ADDRGP4 strncpy
 CALLP4
 pop
-line 235
-;235:				newShader[t-n] = 0;
+line 238
+;238:				newShader[t-n] = 0;
 ADDRLP4 8
 INDIRP4
 CVPU4 4
@@ -1709,26 +1754,26 @@ ADDRLP4 76
 ADDP4
 CNSTI1 0
 ASGNI1
-line 236
-;236:			} else {
-line 237
-;237:				break;
-LABELV $219
 line 239
-;238:			}
-;239:			t++;
+;239:			} else {
+line 240
+;240:				break;
+LABELV $223
+line 242
+;241:			}
+;242:			t++;
 ADDRLP4 8
 ADDRLP4 8
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 240
-;240:			o = strstr(t, "@");
+line 243
+;243:			o = strstr(t, "@");
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $220
+ADDRGP4 $224
 ARGP4
 ADDRLP4 180
 ADDRGP4 strstr
@@ -1738,15 +1783,15 @@ ADDRLP4 0
 ADDRLP4 180
 INDIRP4
 ASGNP4
-line 241
-;241:			if (o) {
+line 244
+;244:			if (o) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $216
-line 242
-;242:				strncpy(timeOffset, t, o-t);
+EQU4 $220
+line 245
+;245:				strncpy(timeOffset, t, o-t);
 ADDRLP4 140
 ARGP4
 ADDRLP4 8
@@ -1764,8 +1809,8 @@ ARGI4
 ADDRGP4 strncpy
 CALLP4
 pop
-line 243
-;243:				timeOffset[o-t] = 0;
+line 246
+;246:				timeOffset[o-t] = 0;
 ADDRLP4 0
 INDIRP4
 CVPU4 4
@@ -1778,16 +1823,16 @@ ADDRLP4 140
 ADDP4
 CNSTI1 0
 ASGNI1
-line 244
-;244:				o++;
+line 247
+;247:				o++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 245
-;245:				trap_R_RemapShader( originalShader, newShader, timeOffset );
+line 248
+;248:				trap_R_RemapShader( originalShader, newShader, timeOffset );
 ADDRLP4 12
 ARGP4
 ADDRLP4 76
@@ -1797,50 +1842,50 @@ ARGP4
 ADDRGP4 trap_R_RemapShader
 CALLV
 pop
-line 246
-;246:			}
-line 247
-;247:		} else {
-line 248
-;248:			break;
-LABELV $216
+line 249
+;249:			}
 line 250
-;249:		}
-;250:	}
-LABELV $212
-line 226
+;250:		} else {
+line 251
+;251:			break;
+LABELV $220
+line 253
+;252:		}
+;253:	}
+LABELV $216
+line 229
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $223
+EQU4 $227
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $211
-LABELV $223
-LABELV $213
-line 251
-;251:}
-LABELV $210
+NEI4 $215
+LABELV $227
+LABELV $217
+line 254
+;254:}
+LABELV $214
 endproc CG_ShaderStateChanged 188 12
 proc CG_ConfigStringModified 48 12
-line 259
-;252:
-;253:/*
-;254:================
-;255:CG_ConfigStringModified
-;256:
+line 262
+;255:
+;256:/*
 ;257:================
-;258:*/
-;259:static void CG_ConfigStringModified( void ) {
-line 263
-;260:	const char	*str;
-;261:	int		num;
-;262:
-;263:	num = atoi( CG_Argv( 1 ) );
+;258:CG_ConfigStringModified
+;259:
+;260:================
+;261:*/
+;262:static void CG_ConfigStringModified( void ) {
+line 266
+;263:	const char	*str;
+;264:	int		num;
+;265:
+;266:	num = atoi( CG_Argv( 1 ) );
 CNSTI4 1
 ARGI4
 ADDRLP4 8
@@ -1858,20 +1903,20 @@ ADDRLP4 0
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 267
-;264:
-;265:	// get the gamestate from the client system, which will have the
-;266:	// new configstring already integrated
-;267:	trap_GetGameState( &cgs.gameState );
+line 270
+;267:
+;268:	// get the gamestate from the client system, which will have the
+;269:	// new configstring already integrated
+;270:	trap_GetGameState( &cgs.gameState );
 ADDRGP4 cgs
 ARGP4
 ADDRGP4 trap_GetGameState
 CALLV
 pop
-line 270
-;268:
-;269:	// look up the individual string that was modified
-;270:	str = CG_ConfigString( num );
+line 273
+;271:
+;272:	// look up the individual string that was modified
+;273:	str = CG_ConfigString( num );
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -1883,58 +1928,58 @@ ADDRLP4 4
 ADDRLP4 16
 INDIRP4
 ASGNP4
-line 273
-;271:
-;272:	// do something with it if necessary
-;273:	if ( num == CS_MUSIC ) {
+line 276
+;274:
+;275:	// do something with it if necessary
+;276:	if ( num == CS_MUSIC ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
-NEI4 $225
-line 274
-;274:		CG_StartMusic();
+NEI4 $229
+line 277
+;277:		CG_StartMusic();
 ADDRGP4 CG_StartMusic
 CALLV
 pop
-line 275
-;275:	} else if ( num == CS_SERVERINFO ) {
-ADDRGP4 $226
-JUMPV
-LABELV $225
-ADDRLP4 0
-INDIRI4
-CNSTI4 0
-NEI4 $227
-line 276
-;276:		CG_ParseServerinfo();
-ADDRGP4 CG_ParseServerinfo
-CALLV
-pop
-line 277
-;277:	} else if ( num == CS_WARMUP ) {
-ADDRGP4 $228
-JUMPV
-LABELV $227
-ADDRLP4 0
-INDIRI4
-CNSTI4 5
-NEI4 $229
 line 278
-;278:		CG_ParseWarmup();
-ADDRGP4 CG_ParseWarmup
-CALLV
-pop
-line 279
-;279:	} else if ( num == CS_SCORES1 ) {
+;278:	} else if ( num == CS_SERVERINFO ) {
 ADDRGP4 $230
 JUMPV
 LABELV $229
 ADDRLP4 0
 INDIRI4
-CNSTI4 6
+CNSTI4 0
 NEI4 $231
+line 279
+;279:		CG_ParseServerinfo();
+ADDRGP4 CG_ParseServerinfo
+CALLV
+pop
 line 280
-;280:		cgs.scores1 = atoi( str );
+;280:	} else if ( num == CS_WARMUP ) {
+ADDRGP4 $232
+JUMPV
+LABELV $231
+ADDRLP4 0
+INDIRI4
+CNSTI4 5
+NEI4 $233
+line 281
+;281:		CG_ParseWarmup();
+ADDRGP4 CG_ParseWarmup
+CALLV
+pop
+line 282
+;282:	} else if ( num == CS_SCORES1 ) {
+ADDRGP4 $234
+JUMPV
+LABELV $233
+ADDRLP4 0
+INDIRI4
+CNSTI4 6
+NEI4 $235
+line 283
+;283:		cgs.scores1 = atoi( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -1946,17 +1991,17 @@ ADDRGP4 cgs+34800
 ADDRLP4 20
 INDIRI4
 ASGNI4
-line 281
-;281:	} else if ( num == CS_SCORES2 ) {
-ADDRGP4 $232
+line 284
+;284:	} else if ( num == CS_SCORES2 ) {
+ADDRGP4 $236
 JUMPV
-LABELV $231
+LABELV $235
 ADDRLP4 0
 INDIRI4
 CNSTI4 7
-NEI4 $234
-line 282
-;282:		cgs.scores2 = atoi( str );
+NEI4 $238
+line 285
+;285:		cgs.scores2 = atoi( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -1968,17 +2013,17 @@ ADDRGP4 cgs+34804
 ADDRLP4 20
 INDIRI4
 ASGNI4
-line 283
-;283:	} else if ( num == CS_LEVEL_START_TIME ) {
-ADDRGP4 $235
+line 286
+;286:	} else if ( num == CS_LEVEL_START_TIME ) {
+ADDRGP4 $239
 JUMPV
-LABELV $234
+LABELV $238
 ADDRLP4 0
 INDIRI4
 CNSTI4 21
-NEI4 $237
-line 284
-;284:		cgs.levelStartTime = atoi( str );
+NEI4 $241
+line 287
+;287:		cgs.levelStartTime = atoi( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -1990,17 +2035,17 @@ ADDRGP4 cgs+34796
 ADDRLP4 20
 INDIRI4
 ASGNI4
-line 285
-;285:	} else if ( num == CS_VOTE_TIME ) {
-ADDRGP4 $238
+line 288
+;288:	} else if ( num == CS_VOTE_TIME ) {
+ADDRGP4 $242
 JUMPV
-LABELV $237
+LABELV $241
 ADDRLP4 0
 INDIRI4
 CNSTI4 8
-NEI4 $240
-line 286
-;286:		cgs.voteTime = atoi( str );
+NEI4 $244
+line 289
+;289:		cgs.voteTime = atoi( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2012,22 +2057,22 @@ ADDRGP4 cgs+31676
 ADDRLP4 20
 INDIRI4
 ASGNI4
-line 287
-;287:		cgs.voteModified = qtrue;
+line 290
+;290:		cgs.voteModified = qtrue;
 ADDRGP4 cgs+31688
 CNSTI4 1
 ASGNI4
-line 288
-;288:	} else if ( num == CS_VOTE_YES ) {
-ADDRGP4 $241
+line 291
+;291:	} else if ( num == CS_VOTE_YES ) {
+ADDRGP4 $245
 JUMPV
-LABELV $240
+LABELV $244
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-NEI4 $244
-line 289
-;289:		cgs.voteYes = atoi( str );
+NEI4 $248
+line 292
+;292:		cgs.voteYes = atoi( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2039,22 +2084,22 @@ ADDRGP4 cgs+31680
 ADDRLP4 20
 INDIRI4
 ASGNI4
-line 290
-;290:		cgs.voteModified = qtrue;
+line 293
+;293:		cgs.voteModified = qtrue;
 ADDRGP4 cgs+31688
 CNSTI4 1
 ASGNI4
-line 291
-;291:	} else if ( num == CS_VOTE_NO ) {
-ADDRGP4 $245
+line 294
+;294:	} else if ( num == CS_VOTE_NO ) {
+ADDRGP4 $249
 JUMPV
-LABELV $244
+LABELV $248
 ADDRLP4 0
 INDIRI4
 CNSTI4 11
-NEI4 $248
-line 292
-;292:		cgs.voteNo = atoi( str );
+NEI4 $252
+line 295
+;295:		cgs.voteNo = atoi( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2066,22 +2111,22 @@ ADDRGP4 cgs+31684
 ADDRLP4 20
 INDIRI4
 ASGNI4
-line 293
-;293:		cgs.voteModified = qtrue;
+line 296
+;296:		cgs.voteModified = qtrue;
 ADDRGP4 cgs+31688
 CNSTI4 1
 ASGNI4
-line 294
-;294:	} else if ( num == CS_VOTE_STRING ) {
-ADDRGP4 $249
+line 297
+;297:	} else if ( num == CS_VOTE_STRING ) {
+ADDRGP4 $253
 JUMPV
-LABELV $248
+LABELV $252
 ADDRLP4 0
 INDIRI4
 CNSTI4 9
-NEI4 $252
-line 295
-;295:		Q_strncpyz( cgs.voteString, str, sizeof( cgs.voteString ) );
+NEI4 $256
+line 298
+;298:		Q_strncpyz( cgs.voteString, str, sizeof( cgs.voteString ) );
 ADDRGP4 cgs+31692
 ARGP4
 ADDRLP4 4
@@ -2092,24 +2137,24 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 299
-;296:#ifdef MISSIONPACK
-;297:		trap_S_StartLocalSound( cgs.media.voteNow, CHAN_ANNOUNCER );
-;298:#endif //MISSIONPACK
-;299:	} else if ( num >= CS_TEAMVOTE_TIME && num <= CS_TEAMVOTE_TIME + 1) {
-ADDRGP4 $253
+line 302
+;299:#ifdef MISSIONPACK
+;300:		trap_S_StartLocalSound( cgs.media.voteNow, CHAN_ANNOUNCER );
+;301:#endif //MISSIONPACK
+;302:	} else if ( num >= CS_TEAMVOTE_TIME && num <= CS_TEAMVOTE_TIME + 1) {
+ADDRGP4 $257
 JUMPV
-LABELV $252
+LABELV $256
 ADDRLP4 0
 INDIRI4
 CNSTI4 12
-LTI4 $256
+LTI4 $260
 ADDRLP4 0
 INDIRI4
 CNSTI4 13
-GTI4 $256
-line 300
-;300:		cgs.teamVoteTime[num-CS_TEAMVOTE_TIME] = atoi( str );
+GTI4 $260
+line 303
+;303:		cgs.teamVoteTime[num-CS_TEAMVOTE_TIME] = atoi( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2126,8 +2171,8 @@ ADDP4
 ADDRLP4 24
 INDIRI4
 ASGNI4
-line 301
-;301:		cgs.teamVoteModified[num-CS_TEAMVOTE_TIME] = qtrue;
+line 304
+;304:		cgs.teamVoteModified[num-CS_TEAMVOTE_TIME] = qtrue;
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -2136,21 +2181,21 @@ ADDRGP4 cgs+32740-48
 ADDP4
 CNSTI4 1
 ASGNI4
-line 302
-;302:	} else if ( num >= CS_TEAMVOTE_YES && num <= CS_TEAMVOTE_YES + 1) {
-ADDRGP4 $257
+line 305
+;305:	} else if ( num >= CS_TEAMVOTE_YES && num <= CS_TEAMVOTE_YES + 1) {
+ADDRGP4 $261
 JUMPV
-LABELV $256
+LABELV $260
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $262
+LTI4 $266
 ADDRLP4 0
 INDIRI4
 CNSTI4 17
-GTI4 $262
-line 303
-;303:		cgs.teamVoteYes[num-CS_TEAMVOTE_YES] = atoi( str );
+GTI4 $266
+line 306
+;306:		cgs.teamVoteYes[num-CS_TEAMVOTE_YES] = atoi( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2167,8 +2212,8 @@ ADDP4
 ADDRLP4 28
 INDIRI4
 ASGNI4
-line 304
-;304:		cgs.teamVoteModified[num-CS_TEAMVOTE_YES] = qtrue;
+line 307
+;307:		cgs.teamVoteModified[num-CS_TEAMVOTE_YES] = qtrue;
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -2177,21 +2222,21 @@ ADDRGP4 cgs+32740-64
 ADDP4
 CNSTI4 1
 ASGNI4
-line 305
-;305:	} else if ( num >= CS_TEAMVOTE_NO && num <= CS_TEAMVOTE_NO + 1) {
-ADDRGP4 $263
+line 308
+;308:	} else if ( num >= CS_TEAMVOTE_NO && num <= CS_TEAMVOTE_NO + 1) {
+ADDRGP4 $267
 JUMPV
-LABELV $262
+LABELV $266
 ADDRLP4 0
 INDIRI4
 CNSTI4 18
-LTI4 $268
+LTI4 $272
 ADDRLP4 0
 INDIRI4
 CNSTI4 19
-GTI4 $268
-line 306
-;306:		cgs.teamVoteNo[num-CS_TEAMVOTE_NO] = atoi( str );
+GTI4 $272
+line 309
+;309:		cgs.teamVoteNo[num-CS_TEAMVOTE_NO] = atoi( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2208,8 +2253,8 @@ ADDP4
 ADDRLP4 32
 INDIRI4
 ASGNI4
-line 307
-;307:		cgs.teamVoteModified[num-CS_TEAMVOTE_NO] = qtrue;
+line 310
+;310:		cgs.teamVoteModified[num-CS_TEAMVOTE_NO] = qtrue;
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -2218,21 +2263,21 @@ ADDRGP4 cgs+32740-72
 ADDP4
 CNSTI4 1
 ASGNI4
-line 308
-;308:	} else if ( num >= CS_TEAMVOTE_STRING && num <= CS_TEAMVOTE_STRING + 1) {
-ADDRGP4 $269
+line 311
+;311:	} else if ( num >= CS_TEAMVOTE_STRING && num <= CS_TEAMVOTE_STRING + 1) {
+ADDRGP4 $273
 JUMPV
-LABELV $268
+LABELV $272
 ADDRLP4 0
 INDIRI4
 CNSTI4 14
-LTI4 $274
+LTI4 $278
 ADDRLP4 0
 INDIRI4
 CNSTI4 15
-GTI4 $274
-line 309
-;309:		Q_strncpyz( cgs.teamVoteString[num-CS_TEAMVOTE_STRING], str, sizeof( cgs.teamVoteString ) );
+GTI4 $278
+line 312
+;312:		Q_strncpyz( cgs.teamVoteString[num-CS_TEAMVOTE_STRING], str, sizeof( cgs.teamVoteString ) );
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
@@ -2248,20 +2293,20 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 313
-;310:#ifdef MISSIONPACK
-;311:		trap_S_StartLocalSound( cgs.media.voteNow, CHAN_ANNOUNCER );
-;312:#endif
-;313:	} else if ( num == CS_INTERMISSION ) {
-ADDRGP4 $275
+line 316
+;313:#ifdef MISSIONPACK
+;314:		trap_S_StartLocalSound( cgs.media.voteNow, CHAN_ANNOUNCER );
+;315:#endif
+;316:	} else if ( num == CS_INTERMISSION ) {
+ADDRGP4 $279
 JUMPV
-LABELV $274
+LABELV $278
 ADDRLP4 0
 INDIRI4
 CNSTI4 22
-NEI4 $279
-line 314
-;314:		cg.intermissionStarted = atoi( str );
+NEI4 $283
+line 317
+;317:		cg.intermissionStarted = atoi( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2273,21 +2318,21 @@ ADDRGP4 cg+24
 ADDRLP4 36
 INDIRI4
 ASGNI4
-line 315
-;315:	} else if ( num >= CS_MODELS && num < CS_MODELS+MAX_MODELS ) {
-ADDRGP4 $280
+line 318
+;318:	} else if ( num >= CS_MODELS && num < CS_MODELS+MAX_MODELS ) {
+ADDRGP4 $284
 JUMPV
-LABELV $279
+LABELV $283
 ADDRLP4 0
 INDIRI4
 CNSTI4 32
-LTI4 $282
+LTI4 $286
 ADDRLP4 0
 INDIRI4
 CNSTI4 288
-GEI4 $282
-line 316
-;316:		cgs.gameModels[ num-CS_MODELS ] = trap_R_RegisterModel( str );
+GEI4 $286
+line 319
+;319:		cgs.gameModels[ num-CS_MODELS ] = trap_R_RegisterModel( str );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2304,29 +2349,29 @@ ADDP4
 ADDRLP4 40
 INDIRI4
 ASGNI4
-line 317
-;317:	} else if ( num >= CS_SOUNDS && num < CS_SOUNDS+MAX_MODELS ) {
-ADDRGP4 $283
+line 320
+;320:	} else if ( num >= CS_SOUNDS && num < CS_SOUNDS+MAX_MODELS ) {
+ADDRGP4 $287
 JUMPV
-LABELV $282
+LABELV $286
 ADDRLP4 0
 INDIRI4
 CNSTI4 288
-LTI4 $286
+LTI4 $290
 ADDRLP4 0
 INDIRI4
 CNSTI4 544
-GEI4 $286
-line 318
-;318:		if ( str[0] != '*' ) {	// player specific sounds don't register here
+GEI4 $290
+line 321
+;321:		if ( str[0] != '*' ) {	// player specific sounds don't register here
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 42
-EQI4 $287
-line 319
-;319:			cgs.gameSounds[ num-CS_SOUNDS] = trap_S_RegisterSound( str, qfalse );
+EQI4 $291
+line 322
+;322:			cgs.gameSounds[ num-CS_SOUNDS] = trap_S_RegisterSound( str, qfalse );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2345,23 +2390,23 @@ ADDP4
 ADDRLP4 44
 INDIRI4
 ASGNI4
-line 320
-;320:		}
-line 321
-;321:	} else if ( num >= CS_PLAYERS && num < CS_PLAYERS+MAX_CLIENTS ) {
-ADDRGP4 $287
+line 323
+;323:		}
+line 324
+;324:	} else if ( num >= CS_PLAYERS && num < CS_PLAYERS+MAX_CLIENTS ) {
+ADDRGP4 $291
 JUMPV
-LABELV $286
+LABELV $290
 ADDRLP4 0
 INDIRI4
 CNSTI4 544
-LTI4 $292
+LTI4 $296
 ADDRLP4 0
 INDIRI4
 CNSTI4 608
-GEI4 $292
-line 322
-;322:		CG_NewClientInfo( num - CS_PLAYERS );
+GEI4 $296
+line 325
+;325:		CG_NewClientInfo( num - CS_PLAYERS );
 ADDRLP4 0
 INDIRI4
 CNSTI4 544
@@ -2370,29 +2415,29 @@ ARGI4
 ADDRGP4 CG_NewClientInfo
 CALLV
 pop
-line 323
-;323:		CG_BuildSpectatorString();
+line 326
+;326:		CG_BuildSpectatorString();
 ADDRGP4 CG_BuildSpectatorString
 CALLV
 pop
-line 324
-;324:	} else if ( num == CS_FLAGSTATUS ) {
-ADDRGP4 $293
+line 327
+;327:	} else if ( num == CS_FLAGSTATUS ) {
+ADDRGP4 $297
 JUMPV
-LABELV $292
+LABELV $296
 ADDRLP4 0
 INDIRI4
 CNSTI4 23
-NEI4 $294
-line 325
-;325:		if( cgs.gametype == GT_CTF ) {
+NEI4 $298
+line 328
+;328:		if( cgs.gametype == GT_CTF ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
-NEI4 $295
-line 327
-;326:			// format is rb where its red/blue, 0 is at base, 1 is taken, 2 is dropped
-;327:			cgs.redflag = str[0] - '0';
+NEI4 $299
+line 330
+;329:			// format is rb where its red/blue, 0 is at base, 1 is taken, 2 is dropped
+;330:			cgs.redflag = str[0] - '0';
 ADDRGP4 cgs+34808
 ADDRLP4 4
 INDIRP4
@@ -2401,8 +2446,8 @@ CVII4 1
 CNSTI4 48
 SUBI4
 ASGNI4
-line 328
-;328:			cgs.blueflag = str[1] - '0';
+line 331
+;331:			cgs.blueflag = str[1] - '0';
 ADDRGP4 cgs+34812
 ADDRLP4 4
 INDIRP4
@@ -2413,100 +2458,100 @@ CVII4 1
 CNSTI4 48
 SUBI4
 ASGNI4
-line 329
-;329:		}
-line 335
-;330:#ifdef MISSIONPACK
-;331:		else if( cgs.gametype == GT_1FCTF ) {
-;332:			cgs.flagStatus = str[0] - '0';
-;333:		}
-;334:#endif
-;335:	}
-ADDRGP4 $295
+line 332
+;332:		}
+line 338
+;333:#ifdef MISSIONPACK
+;334:		else if( cgs.gametype == GT_1FCTF ) {
+;335:			cgs.flagStatus = str[0] - '0';
+;336:		}
+;337:#endif
+;338:	}
+ADDRGP4 $299
 JUMPV
-LABELV $294
-line 336
-;336:	else if ( num == CS_SHADERSTATE ) {
+LABELV $298
+line 339
+;339:	else if ( num == CS_SHADERSTATE ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 24
-NEI4 $301
-line 337
-;337:		CG_ShaderStateChanged();
+NEI4 $305
+line 340
+;340:		CG_ShaderStateChanged();
 ADDRGP4 CG_ShaderStateChanged
 CALLV
 pop
-line 338
-;338:	}
-LABELV $301
-LABELV $295
-LABELV $293
+line 341
+;341:	}
+LABELV $305
+LABELV $299
+LABELV $297
+LABELV $291
 LABELV $287
-LABELV $283
-LABELV $280
-LABELV $275
-LABELV $269
-LABELV $263
+LABELV $284
+LABELV $279
+LABELV $273
+LABELV $267
+LABELV $261
 LABELV $257
 LABELV $253
 LABELV $249
 LABELV $245
-LABELV $241
-LABELV $238
-LABELV $235
+LABELV $242
+LABELV $239
+LABELV $236
+LABELV $234
 LABELV $232
 LABELV $230
+line 343
+;342:		
+;343:}
 LABELV $228
-LABELV $226
-line 340
-;339:		
-;340:}
-LABELV $224
 endproc CG_ConfigStringModified 48 12
 proc CG_AddToTeamChat 60 0
-line 349
-;341:
-;342:
-;343:/*
-;344:=======================
-;345:CG_AddToTeamChat
-;346:
+line 352
+;344:
+;345:
+;346:/*
 ;347:=======================
-;348:*/
-;349:static void CG_AddToTeamChat( const char *str ) {
-line 355
-;350:	int len;
-;351:	char *p, *ls;
-;352:	int lastcolor;
-;353:	int chatHeight;
-;354:
-;355:	if (cg_teamChatHeight.integer < TEAMCHAT_HEIGHT) {
-ADDRGP4 cg_teamChatHeight+12
-INDIRI4
-CNSTI4 8
-GEI4 $304
-line 356
-;356:		chatHeight = cg_teamChatHeight.integer;
-ADDRLP4 12
-ADDRGP4 cg_teamChatHeight+12
-INDIRI4
-ASGNI4
-line 357
-;357:	} else {
-ADDRGP4 $305
-JUMPV
-LABELV $304
+;348:CG_AddToTeamChat
+;349:
+;350:=======================
+;351:*/
+;352:static void CG_AddToTeamChat( const char *str ) {
 line 358
-;358:		chatHeight = TEAMCHAT_HEIGHT;
+;353:	int len;
+;354:	char *p, *ls;
+;355:	int lastcolor;
+;356:	int chatHeight;
+;357:
+;358:	if (cg_teamChatHeight.integer < TEAMCHAT_HEIGHT) {
+ADDRGP4 cg_teamChatHeight+12
+INDIRI4
+CNSTI4 8
+GEI4 $308
+line 359
+;359:		chatHeight = cg_teamChatHeight.integer;
+ADDRLP4 12
+ADDRGP4 cg_teamChatHeight+12
+INDIRI4
+ASGNI4
+line 360
+;360:	} else {
+ADDRGP4 $309
+JUMPV
+LABELV $308
+line 361
+;361:		chatHeight = TEAMCHAT_HEIGHT;
 ADDRLP4 12
 CNSTI4 8
 ASGNI4
-line 359
-;359:	}
-LABELV $305
-line 361
-;360:
-;361:	if (chatHeight <= 0 || cg_teamChatTime.integer <= 0) {
+line 362
+;362:	}
+LABELV $309
+line 364
+;363:
+;364:	if (chatHeight <= 0 || cg_teamChatTime.integer <= 0) {
 ADDRLP4 20
 CNSTI4 0
 ASGNI4
@@ -2514,16 +2559,16 @@ ADDRLP4 12
 INDIRI4
 ADDRLP4 20
 INDIRI4
-LEI4 $311
+LEI4 $315
 ADDRGP4 cg_teamChatTime+12
 INDIRI4
 ADDRLP4 20
 INDIRI4
-GTI4 $308
-LABELV $311
-line 363
-;362:		// team chat disabled, dump into normal chat
-;363:		cgs.teamChatPos = cgs.teamLastChatPos = 0;
+GTI4 $312
+LABELV $315
+line 366
+;365:		// team chat disabled, dump into normal chat
+;366:		cgs.teamChatPos = cgs.teamLastChatPos = 0;
 ADDRLP4 24
 CNSTI4 0
 ASGNI4
@@ -2535,21 +2580,21 @@ ADDRGP4 cgs+152244
 ADDRLP4 24
 INDIRI4
 ASGNI4
-line 364
-;364:		return;
-ADDRGP4 $303
-JUMPV
-LABELV $308
 line 367
-;365:	}
-;366:
-;367:	len = 0;
+;367:		return;
+ADDRGP4 $307
+JUMPV
+LABELV $312
+line 370
+;368:	}
+;369:
+;370:	len = 0;
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-line 369
-;368:
-;369:	p = cgs.teamChatMsgs[cgs.teamChatPos % chatHeight];
+line 372
+;371:
+;372:	p = cgs.teamChatMsgs[cgs.teamChatPos % chatHeight];
 ADDRLP4 0
 CNSTI4 241
 ADDRGP4 cgs+152244
@@ -2561,44 +2606,44 @@ MULI4
 ADDRGP4 cgs+150284
 ADDP4
 ASGNP4
-line 370
-;370:	*p = 0;
+line 373
+;373:	*p = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI1 0
 ASGNI1
-line 372
-;371:
-;372:	lastcolor = '7';
+line 375
+;374:
+;375:	lastcolor = '7';
 ADDRLP4 16
 CNSTI4 55
 ASGNI4
-line 374
-;373:
-;374:	ls = NULL;
+line 377
+;376:
+;377:	ls = NULL;
 ADDRLP4 8
 CNSTP4 0
 ASGNP4
-ADDRGP4 $317
+ADDRGP4 $321
 JUMPV
-LABELV $316
-line 375
-;375:	while (*str) {
-line 376
-;376:		if (len > TEAMCHAT_WIDTH - 1) {
+LABELV $320
+line 378
+;378:	while (*str) {
+line 379
+;379:		if (len > TEAMCHAT_WIDTH - 1) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 79
-LEI4 $319
-line 377
-;377:			if (ls) {
+LEI4 $323
+line 380
+;380:			if (ls) {
 ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $321
-line 378
-;378:				str -= (p - ls);
+EQU4 $325
+line 381
+;381:				str -= (p - ls);
 ADDRFP4 0
 ADDRFP4 0
 INDIRP4
@@ -2612,16 +2657,16 @@ SUBU4
 CVUI4 4
 SUBP4
 ASGNP4
-line 379
-;379:				str++;
+line 382
+;382:				str++;
 ADDRFP4 0
 ADDRFP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 380
-;380:				p -= (p - ls);
+line 383
+;383:				p -= (p - ls);
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
@@ -2635,18 +2680,18 @@ SUBU4
 CVUI4 4
 SUBP4
 ASGNP4
-line 381
-;381:			}
-LABELV $321
-line 382
-;382:			*p = 0;
+line 384
+;384:			}
+LABELV $325
+line 385
+;385:			*p = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI1 0
 ASGNI1
-line 384
-;383:
-;384:			cgs.teamChatMsgTimes[cgs.teamChatPos % chatHeight] = cg.time;
+line 387
+;386:
+;387:			cgs.teamChatMsgTimes[cgs.teamChatPos % chatHeight] = cg.time;
 ADDRGP4 cgs+152244
 INDIRI4
 ADDRLP4 12
@@ -2659,9 +2704,9 @@ ADDP4
 ADDRGP4 cg+107604
 INDIRI4
 ASGNI4
-line 386
-;385:
-;386:			cgs.teamChatPos++;
+line 389
+;388:
+;389:			cgs.teamChatPos++;
 ADDRLP4 24
 ADDRGP4 cgs+152244
 ASGNP4
@@ -2673,8 +2718,8 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 387
-;387:			p = cgs.teamChatMsgs[cgs.teamChatPos % chatHeight];
+line 390
+;390:			p = cgs.teamChatMsgs[cgs.teamChatPos % chatHeight];
 ADDRLP4 0
 CNSTI4 241
 ADDRGP4 cgs+152244
@@ -2686,14 +2731,14 @@ MULI4
 ADDRGP4 cgs+150284
 ADDP4
 ASGNP4
-line 388
-;388:			*p = 0;
+line 391
+;391:			*p = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI1 0
 ASGNI1
-line 389
-;389:			*p++ = Q_COLOR_ESCAPE;
+line 392
+;392:			*p++ = Q_COLOR_ESCAPE;
 ADDRLP4 28
 ADDRLP4 0
 INDIRP4
@@ -2708,8 +2753,8 @@ ADDRLP4 28
 INDIRP4
 CNSTI1 94
 ASGNI1
-line 390
-;390:			*p++ = lastcolor;
+line 393
+;393:			*p++ = lastcolor;
 ADDRLP4 32
 ADDRLP4 0
 INDIRP4
@@ -2726,22 +2771,22 @@ ADDRLP4 16
 INDIRI4
 CVII1 4
 ASGNI1
-line 391
-;391:			len = 0;
+line 394
+;394:			len = 0;
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-line 392
-;392:			ls = NULL;
+line 395
+;395:			ls = NULL;
 ADDRLP4 8
 CNSTP4 0
 ASGNP4
-line 393
-;393:		}
-LABELV $319
-line 395
-;394:
-;395:		if ( Q_IsColorString( str ) ) {
+line 396
+;396:		}
+LABELV $323
+line 398
+;397:
+;398:		if ( Q_IsColorString( str ) ) {
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -2750,7 +2795,7 @@ ADDRLP4 24
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $329
+EQU4 $333
 ADDRLP4 28
 CNSTI4 94
 ASGNI4
@@ -2760,7 +2805,7 @@ INDIRI1
 CVII4 1
 ADDRLP4 28
 INDIRI4
-NEI4 $329
+NEI4 $333
 ADDRLP4 32
 ADDRLP4 24
 INDIRP4
@@ -2772,14 +2817,14 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-EQI4 $329
+EQI4 $333
 ADDRLP4 32
 INDIRI4
 ADDRLP4 28
 INDIRI4
-EQI4 $329
-line 396
-;396:			*p++ = *str++;
+EQI4 $333
+line 399
+;399:			*p++ = *str++;
 ADDRLP4 36
 ADDRLP4 0
 INDIRP4
@@ -2811,16 +2856,16 @@ ADDRLP4 40
 INDIRP4
 INDIRI1
 ASGNI1
-line 397
-;397:			lastcolor = *str;
+line 400
+;400:			lastcolor = *str;
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 ASGNI4
-line 398
-;398:			*p++ = *str++;
+line 401
+;401:			*p++ = *str++;
 ADDRLP4 48
 ADDRLP4 0
 INDIRP4
@@ -2852,31 +2897,31 @@ ADDRLP4 52
 INDIRP4
 INDIRI1
 ASGNI1
-line 399
-;399:			continue;
-ADDRGP4 $317
+line 402
+;402:			continue;
+ADDRGP4 $321
 JUMPV
-LABELV $329
-line 401
-;400:		}
-;401:		if (*str == ' ') {
+LABELV $333
+line 404
+;403:		}
+;404:		if (*str == ' ') {
 ADDRFP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 32
-NEI4 $331
-line 402
-;402:			ls = p;
+NEI4 $335
+line 405
+;405:			ls = p;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 403
-;403:		}
-LABELV $331
-line 404
-;404:		*p++ = *str++;
+line 406
+;406:		}
+LABELV $335
+line 407
+;407:		*p++ = *str++;
 ADDRLP4 36
 ADDRLP4 0
 INDIRP4
@@ -2908,33 +2953,33 @@ ADDRLP4 40
 INDIRP4
 INDIRI1
 ASGNI1
-line 405
-;405:		len++;
+line 408
+;408:		len++;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 406
-;406:	}
-LABELV $317
-line 375
+line 409
+;409:	}
+LABELV $321
+line 378
 ADDRFP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $316
-line 407
-;407:	*p = 0;
+NEI4 $320
+line 410
+;410:	*p = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI1 0
 ASGNI1
-line 409
-;408:
-;409:	cgs.teamChatMsgTimes[cgs.teamChatPos % chatHeight] = cg.time;
+line 412
+;411:
+;412:	cgs.teamChatMsgTimes[cgs.teamChatPos % chatHeight] = cg.time;
 ADDRGP4 cgs+152244
 INDIRI4
 ADDRLP4 12
@@ -2947,8 +2992,8 @@ ADDP4
 ADDRGP4 cg+107604
 INDIRI4
 ASGNI4
-line 410
-;410:	cgs.teamChatPos++;
+line 413
+;413:	cgs.teamChatPos++;
 ADDRLP4 24
 ADDRGP4 cgs+152244
 ASGNP4
@@ -2960,9 +3005,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 412
-;411:
-;412:	if (cgs.teamChatPos - cgs.teamLastChatPos > chatHeight)
+line 415
+;414:
+;415:	if (cgs.teamChatPos - cgs.teamLastChatPos > chatHeight)
 ADDRGP4 cgs+152244
 INDIRI4
 ADDRGP4 cgs+152248
@@ -2970,9 +3015,9 @@ INDIRI4
 SUBI4
 ADDRLP4 12
 INDIRI4
-LEI4 $337
-line 413
-;413:		cgs.teamLastChatPos = cgs.teamChatPos - chatHeight;
+LEI4 $341
+line 416
+;416:		cgs.teamLastChatPos = cgs.teamChatPos - chatHeight;
 ADDRGP4 cgs+152248
 ADDRGP4 cgs+152244
 INDIRI4
@@ -2980,115 +3025,116 @@ ADDRLP4 12
 INDIRI4
 SUBI4
 ASGNI4
-LABELV $337
-line 414
-;414:}
-LABELV $303
+LABELV $341
+line 417
+;417:}
+LABELV $307
 endproc CG_AddToTeamChat 60 0
 proc CG_MapRestart 0 12
-line 427
-;415:
-;416:/*
-;417:===============
-;418:CG_MapRestart
-;419:
-;420:The server has issued a map_restart, so the next snapshot
-;421:is completely new and should not be interpolated to.
+line 430
+;418:
+;419:/*
+;420:===============
+;421:CG_MapRestart
 ;422:
-;423:A tournement restart will clear everything, but doesn't
-;424:require a reload of all the media
-;425:===============
-;426:*/
-;427:static void CG_MapRestart( void ) {
-line 428
-;428:	if ( cg_showmiss.integer ) {
+;423:The server has issued a map_restart, so the next snapshot
+;424:is completely new and should not be interpolated to.
+;425:
+;426:A tournement restart will clear everything, but doesn't
+;427:require a reload of all the media
+;428:===============
+;429:*/
+;430:static void CG_MapRestart( void ) {
+line 431
+;431:	if ( cg_showmiss.integer ) {
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $344
-line 429
-;429:		CG_Printf( "CG_MapRestart\n" );
-ADDRGP4 $347
+EQI4 $348
+line 432
+;432:		CG_Printf( "CG_MapRestart\n" );
+ADDRGP4 $351
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 430
-;430:	}
-LABELV $344
-line 432
-;431:
-;432:	CG_InitLocalEntities();
+line 433
+;433:	}
+LABELV $348
+line 435
+;434:
+;435:	CG_InitLocalEntities();
 ADDRGP4 CG_InitLocalEntities
 CALLV
 pop
-line 433
-;433:	CG_InitMarkPolys();
+line 436
+;436:	CG_InitMarkPolys();
 ADDRGP4 CG_InitMarkPolys
 CALLV
 pop
-line 434
-;434:	CG_ClearParticles ();
+line 437
+;437:	CG_ClearParticles ();
 ADDRGP4 CG_ClearParticles
 CALLV
 pop
-line 437
-;435:
-;436:	// make sure the "3 frags left" warnings play again
-;437:	cg.fraglimitWarnings = 0;
+line 440
+;438:
+;439:	// make sure the "3 frags left" warnings play again
+;440:	cg.fraglimitWarnings = 0;
 ADDRGP4 cg+107620
 CNSTI4 0
 ASGNI4
-line 439
-;438:
-;439:	cg.timelimitWarnings = 0;
+line 442
+;441:
+;442:	cg.timelimitWarnings = 0;
 ADDRGP4 cg+107616
 CNSTI4 0
 ASGNI4
-line 441
-;440:
-;441:	cg.intermissionStarted = qfalse;
+line 444
+;443:
+;444:	cg.intermissionStarted = qfalse;
 ADDRGP4 cg+24
 CNSTI4 0
 ASGNI4
-line 443
-;442:
-;443:	cgs.voteTime = 0;
+line 446
+;445:
+;446:	cgs.voteTime = 0;
 ADDRGP4 cgs+31676
 CNSTI4 0
 ASGNI4
-line 445
-;444:
-;445:	cg.mapRestart = qtrue;
+line 448
+;447:
+;448:	cg.mapRestart = qtrue;
 ADDRGP4 cg+107624
 CNSTI4 1
 ASGNI4
-line 447
-;446:
-;447:	CG_StartMusic();
+line 450
+;449:
+;450:	CG_StartMusic();
 ADDRGP4 CG_StartMusic
 CALLV
 pop
-line 449
-;448:
-;449:	trap_S_ClearLoopingSounds(qtrue);
+line 453
+;451:
+;452:
+;453:	trap_S_ClearLoopingSounds(qtrue);
 CNSTI4 1
 ARGI4
 ADDRGP4 trap_S_ClearLoopingSounds
 CALLV
 pop
-line 454
-;450:
-;451:	// we really should clear more parts of cg here and stop sounds
-;452:
-;453:	// play the "fight" sound if this is a restart without warmup
-;454:	if ( cg.warmup == 0 /* && cgs.gametype == GT_TOURNAMENT */) {
+line 458
+;454:
+;455:	// we really should clear more parts of cg here and stop sounds
+;456:
+;457:	// play the "fight" sound if this is a restart without warmup
+;458:	if ( cg.warmup == 0 /* && cgs.gametype == GT_TOURNAMENT */) {
 ADDRGP4 cg+124668
 INDIRI4
 CNSTI4 0
-NEI4 $353
-line 455
-;455:		trap_S_StartLocalSound( cgs.media.countFightSound, CHAN_ANNOUNCER );
+NEI4 $357
+line 459
+;459:		trap_S_StartLocalSound( cgs.media.countFightSound, CHAN_ANNOUNCER );
 ADDRGP4 cgs+152340+988
 INDIRI4
 ARGI4
@@ -3097,9 +3143,9 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 456
-;456:		CG_CenterPrint( "FIGHT!", 120, GIANTCHAR_WIDTH*2 );
-ADDRGP4 $358
+line 460
+;460:		CG_CenterPrint( "FIGHT!", 120, GIANTCHAR_WIDTH*2 );
+ADDRGP4 $362
 ARGP4
 CNSTI4 120
 ARGI4
@@ -3108,102 +3154,103 @@ ARGI4
 ADDRGP4 CG_CenterPrint
 CALLV
 pop
-line 457
-;457:	}
-LABELV $353
-line 466
-;458:#ifdef MISSIONPACK
-;459:	if (cg_singlePlayerActive.integer) {
-;460:		trap_Cvar_Set("ui_matchStartTime", va("%i", cg.time));
-;461:		if (cg_recordSPDemo.integer && cg_recordSPDemoName.string && *cg_recordSPDemoName.string) {
-;462:			trap_SendConsoleCommand(va("set g_synchronousclients 1 ; record %s \n", cg_recordSPDemoName.string));
-;463:		}
-;464:	}
-;465:#endif
-;466:	trap_Cvar_Set("cg_thirdPerson", "0");
-ADDRGP4 $359
+line 462
+;461:
+;462:	}
+LABELV $357
+line 471
+;463:#ifdef MISSIONPACK
+;464:	if (cg_singlePlayerActive.integer) {
+;465:		trap_Cvar_Set("ui_matchStartTime", va("%i", cg.time));
+;466:		if (cg_recordSPDemo.integer && cg_recordSPDemoName.string && *cg_recordSPDemoName.string) {
+;467:			trap_SendConsoleCommand(va("set g_synchronousclients 1 ; record %s \n", cg_recordSPDemoName.string));
+;468:		}
+;469:	}
+;470:#endif
+;471:	trap_Cvar_Set("cg_thirdPerson", "0");
+ADDRGP4 $363
 ARGP4
-ADDRGP4 $360
+ADDRGP4 $364
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 467
-;467:}
-LABELV $343
+line 472
+;472:}
+LABELV $347
 endproc CG_MapRestart 0 12
 export CG_ParseVoiceChats
 proc CG_ParseVoiceChats 16504 16
-line 506
-;468:
-;469:#define MAX_VOICEFILESIZE	16384
-;470:#define MAX_VOICEFILES		8
-;471:#define MAX_VOICECHATS		64
-;472:#define MAX_VOICESOUNDS		64
-;473:#define MAX_CHATSIZE		64
-;474:#define MAX_HEADMODELS		64
-;475:
-;476:typedef struct voiceChat_s
-;477:{
-;478:	char id[64];
-;479:	int numSounds;
-;480:	sfxHandle_t sounds[MAX_VOICESOUNDS];
-;481:	char chats[MAX_VOICESOUNDS][MAX_CHATSIZE];
-;482:} voiceChat_t;
-;483:
-;484:typedef struct voiceChatList_s
-;485:{
-;486:	char name[64];
-;487:	int gender;
-;488:	int numVoiceChats;
-;489:	voiceChat_t voiceChats[MAX_VOICECHATS];
-;490:} voiceChatList_t;
-;491:
-;492:typedef struct headModelVoiceChat_s
-;493:{
-;494:	char headmodel[64];
-;495:	int voiceChatNum;
-;496:} headModelVoiceChat_t;
-;497:
-;498:voiceChatList_t voiceChatLists[MAX_VOICEFILES];
-;499:headModelVoiceChat_t headModelVoiceChat[MAX_HEADMODELS];
-;500:
-;501:/*
-;502:=================
-;503:CG_ParseVoiceChats
-;504:=================
-;505:*/
-;506:int CG_ParseVoiceChats( const char *filename, voiceChatList_t *voiceChatList, int maxVoiceChats ) {
-line 515
-;507:	int	len, i;
-;508:	fileHandle_t f;
-;509:	char buf[MAX_VOICEFILESIZE];
-;510:	char **p, *ptr;
-;511:	char *token;
-;512:	voiceChat_t *voiceChats;
-;513:	qboolean compress;
-;514:
-;515:	compress = qtrue;
+line 511
+;473:
+;474:#define MAX_VOICEFILESIZE	16384
+;475:#define MAX_VOICEFILES		8
+;476:#define MAX_VOICECHATS		64
+;477:#define MAX_VOICESOUNDS		64
+;478:#define MAX_CHATSIZE		64
+;479:#define MAX_HEADMODELS		64
+;480:
+;481:typedef struct voiceChat_s
+;482:{
+;483:	char id[64];
+;484:	int numSounds;
+;485:	sfxHandle_t sounds[MAX_VOICESOUNDS];
+;486:	char chats[MAX_VOICESOUNDS][MAX_CHATSIZE];
+;487:} voiceChat_t;
+;488:
+;489:typedef struct voiceChatList_s
+;490:{
+;491:	char name[64];
+;492:	int gender;
+;493:	int numVoiceChats;
+;494:	voiceChat_t voiceChats[MAX_VOICECHATS];
+;495:} voiceChatList_t;
+;496:
+;497:typedef struct headModelVoiceChat_s
+;498:{
+;499:	char headmodel[64];
+;500:	int voiceChatNum;
+;501:} headModelVoiceChat_t;
+;502:
+;503:voiceChatList_t voiceChatLists[MAX_VOICEFILES];
+;504:headModelVoiceChat_t headModelVoiceChat[MAX_HEADMODELS];
+;505:
+;506:/*
+;507:=================
+;508:CG_ParseVoiceChats
+;509:=================
+;510:*/
+;511:int CG_ParseVoiceChats( const char *filename, voiceChatList_t *voiceChatList, int maxVoiceChats ) {
+line 520
+;512:	int	len, i;
+;513:	fileHandle_t f;
+;514:	char buf[MAX_VOICEFILESIZE];
+;515:	char **p, *ptr;
+;516:	char *token;
+;517:	voiceChat_t *voiceChats;
+;518:	qboolean compress;
+;519:
+;520:	compress = qtrue;
 ADDRLP4 12
 CNSTI4 1
 ASGNI4
-line 516
-;516:	if (cg_buildScript.integer) {
+line 521
+;521:	if (cg_buildScript.integer) {
 ADDRGP4 cg_buildScript+12
 INDIRI4
 CNSTI4 0
-EQI4 $362
-line 517
-;517:		compress = qfalse;
+EQI4 $366
+line 522
+;522:		compress = qfalse;
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-line 518
-;518:	}
-LABELV $362
-line 520
-;519:
-;520:	len = trap_FS_FOpenFile( filename, &f, FS_READ );
+line 523
+;523:	}
+LABELV $366
+line 525
+;524:
+;525:	len = trap_FS_FOpenFile( filename, &f, FS_READ );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3219,55 +3266,19 @@ ADDRLP4 20
 ADDRLP4 16416
 INDIRI4
 ASGNI4
-line 521
-;521:	if ( !f ) {
-ADDRLP4 24
-INDIRI4
-CNSTI4 0
-NEI4 $365
-line 522
-;522:		trap_Print( va( S_COLOR_RED "voice chat file not found: %s\n", filename ) );
-ADDRGP4 $367
-ARGP4
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRLP4 16420
-ADDRGP4 va
-CALLP4
-ASGNP4
-ADDRLP4 16420
-INDIRP4
-ARGP4
-ADDRGP4 trap_Print
-CALLV
-pop
-line 523
-;523:		return qfalse;
-CNSTI4 0
-RETI4
-ADDRGP4 $361
-JUMPV
-LABELV $365
-line 525
-;524:	}
-;525:	if ( len >= MAX_VOICEFILESIZE ) {
-ADDRLP4 20
-INDIRI4
-CNSTI4 16384
-LTI4 $368
 line 526
-;526:		trap_Print( va( S_COLOR_RED "voice chat file too large: %s is %i, max allowed is %i", filename, len, MAX_VOICEFILESIZE ) );
-ADDRGP4 $370
+;526:	if ( !f ) {
+ADDRLP4 24
+INDIRI4
+CNSTI4 0
+NEI4 $369
+line 527
+;527:		trap_Print( va( S_COLOR_RED "voice chat file not found: %s\n", filename ) );
+ADDRGP4 $371
 ARGP4
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRLP4 20
-INDIRI4
-ARGI4
-CNSTI4 16384
-ARGI4
 ADDRLP4 16420
 ADDRGP4 va
 CALLP4
@@ -3276,27 +3287,63 @@ ADDRLP4 16420
 INDIRP4
 ARGP4
 ADDRGP4 trap_Print
-CALLV
-pop
-line 527
-;527:		trap_FS_FCloseFile( f );
-ADDRLP4 24
-INDIRI4
-ARGI4
-ADDRGP4 trap_FS_FCloseFile
 CALLV
 pop
 line 528
 ;528:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $361
+ADDRGP4 $365
 JUMPV
-LABELV $368
-line 531
+LABELV $369
+line 530
 ;529:	}
-;530:
-;531:	trap_FS_Read( buf, len, f );
+;530:	if ( len >= MAX_VOICEFILESIZE ) {
+ADDRLP4 20
+INDIRI4
+CNSTI4 16384
+LTI4 $372
+line 531
+;531:		trap_Print( va( S_COLOR_RED "voice chat file too large: %s is %i, max allowed is %i", filename, len, MAX_VOICEFILESIZE ) );
+ADDRGP4 $374
+ARGP4
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRLP4 20
+INDIRI4
+ARGI4
+CNSTI4 16384
+ARGI4
+ADDRLP4 16420
+ADDRGP4 va
+CALLP4
+ASGNP4
+ADDRLP4 16420
+INDIRP4
+ARGP4
+ADDRGP4 trap_Print
+CALLV
+pop
+line 532
+;532:		trap_FS_FCloseFile( f );
+ADDRLP4 24
+INDIRI4
+ARGI4
+ADDRGP4 trap_FS_FCloseFile
+CALLV
+pop
+line 533
+;533:		return qfalse;
+CNSTI4 0
+RETI4
+ADDRGP4 $365
+JUMPV
+LABELV $372
+line 536
+;534:	}
+;535:
+;536:	trap_FS_Read( buf, len, f );
 ADDRLP4 28
 ARGP4
 ADDRLP4 20
@@ -3308,42 +3355,42 @@ ARGI4
 ADDRGP4 trap_FS_Read
 CALLV
 pop
-line 532
-;532:	buf[len] = 0;
+line 537
+;537:	buf[len] = 0;
 ADDRLP4 20
 INDIRI4
 ADDRLP4 28
 ADDP4
 CNSTI1 0
 ASGNI1
-line 533
-;533:	trap_FS_FCloseFile( f );
+line 538
+;538:	trap_FS_FCloseFile( f );
 ADDRLP4 24
 INDIRI4
 ARGI4
 ADDRGP4 trap_FS_FCloseFile
 CALLV
 pop
-line 535
-;534:
-;535:	ptr = buf;
+line 540
+;539:
+;540:	ptr = buf;
 ADDRLP4 16412
 ADDRLP4 28
 ASGNP4
-line 536
-;536:	p = &ptr;
+line 541
+;541:	p = &ptr;
 ADDRLP4 8
 ADDRLP4 16412
 ASGNP4
-line 538
-;537:
-;538:	Com_sprintf(voiceChatList->name, sizeof(voiceChatList->name), "%s", filename);
+line 543
+;542:
+;543:	Com_sprintf(voiceChatList->name, sizeof(voiceChatList->name), "%s", filename);
 ADDRFP4 4
 INDIRP4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $371
+ADDRGP4 $375
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3351,24 +3398,24 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 539
-;539:	voiceChats = voiceChatList->voiceChats;
+line 544
+;544:	voiceChats = voiceChatList->voiceChats;
 ADDRLP4 4
 ADDRFP4 4
 INDIRP4
 CNSTI4 72
 ADDP4
 ASGNP4
-line 540
-;540:	for ( i = 0; i < maxVoiceChats; i++ ) {
+line 545
+;545:	for ( i = 0; i < maxVoiceChats; i++ ) {
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
-ADDRGP4 $375
+ADDRGP4 $379
 JUMPV
-LABELV $372
-line 541
-;541:		voiceChats[i].id[0] = 0;
+LABELV $376
+line 546
+;546:		voiceChats[i].id[0] = 0;
 CNSTI4 4420
 ADDRLP4 16
 INDIRI4
@@ -3378,24 +3425,24 @@ INDIRP4
 ADDP4
 CNSTI1 0
 ASGNI1
-line 542
-;542:	}
-LABELV $373
-line 540
+line 547
+;547:	}
+LABELV $377
+line 545
 ADDRLP4 16
 ADDRLP4 16
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $375
+LABELV $379
 ADDRLP4 16
 INDIRI4
 ADDRFP4 8
 INDIRI4
-LTI4 $372
-line 543
-;543:	token = COM_ParseExt(p, qtrue);
+LTI4 $376
+line 548
+;548:	token = COM_ParseExt(p, qtrue);
 ADDRLP4 8
 INDIRP4
 ARGP4
@@ -3409,34 +3456,34 @@ ADDRLP4 0
 ADDRLP4 16420
 INDIRP4
 ASGNP4
-line 544
-;544:	if (!token || token[0] == 0) {
+line 549
+;549:	if (!token || token[0] == 0) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $378
+EQU4 $382
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $376
-LABELV $378
-line 545
-;545:		return qtrue;
+NEI4 $380
+LABELV $382
+line 550
+;550:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $361
+ADDRGP4 $365
 JUMPV
-LABELV $376
-line 547
-;546:	}
-;547:	if (!Q_stricmp(token, "female")) {
+LABELV $380
+line 552
+;551:	}
+;552:	if (!Q_stricmp(token, "female")) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $381
+ADDRGP4 $385
 ARGP4
 ADDRLP4 16428
 ADDRGP4 Q_stricmp
@@ -3445,26 +3492,26 @@ ASGNI4
 ADDRLP4 16428
 INDIRI4
 CNSTI4 0
-NEI4 $379
-line 548
-;548:		voiceChatList->gender = GENDER_FEMALE;
+NEI4 $383
+line 553
+;553:		voiceChatList->gender = GENDER_FEMALE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 64
 ADDP4
 CNSTI4 1
 ASGNI4
-line 549
-;549:	}
-ADDRGP4 $380
+line 554
+;554:	}
+ADDRGP4 $384
 JUMPV
-LABELV $379
-line 550
-;550:	else if (!Q_stricmp(token, "male")) {
+LABELV $383
+line 555
+;555:	else if (!Q_stricmp(token, "male")) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $384
+ADDRGP4 $388
 ARGP4
 ADDRLP4 16432
 ADDRGP4 Q_stricmp
@@ -3473,26 +3520,26 @@ ASGNI4
 ADDRLP4 16432
 INDIRI4
 CNSTI4 0
-NEI4 $382
-line 551
-;551:		voiceChatList->gender = GENDER_MALE;
+NEI4 $386
+line 556
+;556:		voiceChatList->gender = GENDER_MALE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 64
 ADDP4
 CNSTI4 0
 ASGNI4
-line 552
-;552:	}
-ADDRGP4 $383
+line 557
+;557:	}
+ADDRGP4 $387
 JUMPV
-LABELV $382
-line 553
-;553:	else if (!Q_stricmp(token, "neuter")) {
+LABELV $386
+line 558
+;558:	else if (!Q_stricmp(token, "neuter")) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $387
+ADDRGP4 $391
 ARGP4
 ADDRLP4 16436
 ADDRGP4 Q_stricmp
@@ -3501,25 +3548,25 @@ ASGNI4
 ADDRLP4 16436
 INDIRI4
 CNSTI4 0
-NEI4 $385
-line 554
-;554:		voiceChatList->gender = GENDER_NEUTER;
+NEI4 $389
+line 559
+;559:		voiceChatList->gender = GENDER_NEUTER;
 ADDRFP4 4
 INDIRP4
 CNSTI4 64
 ADDP4
 CNSTI4 2
 ASGNI4
-line 555
-;555:	}
-ADDRGP4 $386
+line 560
+;560:	}
+ADDRGP4 $390
 JUMPV
-LABELV $385
-line 556
-;556:	else {
-line 557
-;557:		trap_Print( va( S_COLOR_RED "expected gender not found in voice chat file: %s\n", filename ) );
-ADDRGP4 $388
+LABELV $389
+line 561
+;561:	else {
+line 562
+;562:		trap_Print( va( S_COLOR_RED "expected gender not found in voice chat file: %s\n", filename ) );
+ADDRGP4 $392
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3534,90 +3581,30 @@ ARGP4
 ADDRGP4 trap_Print
 CALLV
 pop
-line 558
-;558:		return qfalse;
+line 563
+;563:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $361
+ADDRGP4 $365
 JUMPV
-LABELV $386
-LABELV $383
-LABELV $380
-line 561
-;559:	}
-;560:
-;561:	voiceChatList->numVoiceChats = 0;
+LABELV $390
+LABELV $387
+LABELV $384
+line 566
+;564:	}
+;565:
+;566:	voiceChatList->numVoiceChats = 0;
 ADDRFP4 4
 INDIRP4
 CNSTI4 68
 ADDP4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $390
+ADDRGP4 $394
 JUMPV
-LABELV $389
-line 562
-;562:	while ( 1 ) {
-line 563
-;563:		token = COM_ParseExt(p, qtrue);
-ADDRLP4 8
-INDIRP4
-ARGP4
-CNSTI4 1
-ARGI4
-ADDRLP4 16440
-ADDRGP4 COM_ParseExt
-CALLP4
-ASGNP4
-ADDRLP4 0
-ADDRLP4 16440
-INDIRP4
-ASGNP4
-line 564
-;564:		if (!token || token[0] == 0) {
-ADDRLP4 0
-INDIRP4
-CVPU4 4
-CNSTU4 0
-EQU4 $394
-ADDRLP4 0
-INDIRP4
-INDIRI1
-CVII4 1
-CNSTI4 0
-NEI4 $392
-LABELV $394
-line 565
-;565:			return qtrue;
-CNSTI4 1
-RETI4
-ADDRGP4 $361
-JUMPV
-LABELV $392
+LABELV $393
 line 567
-;566:		}
-;567:		Com_sprintf(voiceChats[voiceChatList->numVoiceChats].id, sizeof( voiceChats[voiceChatList->numVoiceChats].id ), "%s", token);
-CNSTI4 4420
-ADDRFP4 4
-INDIRP4
-CNSTI4 68
-ADDP4
-INDIRI4
-MULI4
-ADDRLP4 4
-INDIRP4
-ADDP4
-ARGP4
-CNSTI4 64
-ARGI4
-ADDRGP4 $371
-ARGP4
-ADDRLP4 0
-INDIRP4
-ARGP4
-ADDRGP4 Com_sprintf
-CALLV
-pop
+;567:	while ( 1 ) {
 line 568
 ;568:		token = COM_ParseExt(p, qtrue);
 ADDRLP4 8
@@ -3625,6 +3612,66 @@ INDIRP4
 ARGP4
 CNSTI4 1
 ARGI4
+ADDRLP4 16440
+ADDRGP4 COM_ParseExt
+CALLP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 16440
+INDIRP4
+ASGNP4
+line 569
+;569:		if (!token || token[0] == 0) {
+ADDRLP4 0
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $398
+ADDRLP4 0
+INDIRP4
+INDIRI1
+CVII4 1
+CNSTI4 0
+NEI4 $396
+LABELV $398
+line 570
+;570:			return qtrue;
+CNSTI4 1
+RETI4
+ADDRGP4 $365
+JUMPV
+LABELV $396
+line 572
+;571:		}
+;572:		Com_sprintf(voiceChats[voiceChatList->numVoiceChats].id, sizeof( voiceChats[voiceChatList->numVoiceChats].id ), "%s", token);
+CNSTI4 4420
+ADDRFP4 4
+INDIRP4
+CNSTI4 68
+ADDP4
+INDIRI4
+MULI4
+ADDRLP4 4
+INDIRP4
+ADDP4
+ARGP4
+CNSTI4 64
+ARGI4
+ADDRGP4 $375
+ARGP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRGP4 Com_sprintf
+CALLV
+pop
+line 573
+;573:		token = COM_ParseExt(p, qtrue);
+ADDRLP4 8
+INDIRP4
+ARGP4
+CNSTI4 1
+ARGI4
 ADDRLP4 16448
 ADDRGP4 COM_ParseExt
 CALLP4
@@ -3633,12 +3680,12 @@ ADDRLP4 0
 ADDRLP4 16448
 INDIRP4
 ASGNP4
-line 569
-;569:		if (Q_stricmp(token, "{")) {
+line 574
+;574:		if (Q_stricmp(token, "{")) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $397
+ADDRGP4 $401
 ARGP4
 ADDRLP4 16452
 ADDRGP4 Q_stricmp
@@ -3647,10 +3694,10 @@ ASGNI4
 ADDRLP4 16452
 INDIRI4
 CNSTI4 0
-EQI4 $395
-line 570
-;570:			trap_Print( va( S_COLOR_RED "expected { found %s in voice chat file: %s\n", token, filename ) );
-ADDRGP4 $398
+EQI4 $399
+line 575
+;575:			trap_Print( va( S_COLOR_RED "expected { found %s in voice chat file: %s\n", token, filename ) );
+ADDRGP4 $402
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -3668,16 +3715,16 @@ ARGP4
 ADDRGP4 trap_Print
 CALLV
 pop
-line 571
-;571:			return qfalse;
+line 576
+;576:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $361
+ADDRGP4 $365
 JUMPV
-LABELV $395
-line 573
-;572:		}
-;573:		voiceChats[voiceChatList->numVoiceChats].numSounds = 0;
+LABELV $399
+line 578
+;577:		}
+;578:		voiceChats[voiceChatList->numVoiceChats].numSounds = 0;
 CNSTI4 4420
 ADDRFP4 4
 INDIRP4
@@ -3692,13 +3739,13 @@ CNSTI4 64
 ADDP4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $400
+ADDRGP4 $404
 JUMPV
-LABELV $399
-line 574
-;574:		while(1) {
-line 575
-;575:			token = COM_ParseExt(p, qtrue);
+LABELV $403
+line 579
+;579:		while(1) {
+line 580
+;580:			token = COM_ParseExt(p, qtrue);
 ADDRLP4 8
 INDIRP4
 ARGP4
@@ -3712,34 +3759,34 @@ ADDRLP4 0
 ADDRLP4 16456
 INDIRP4
 ASGNP4
-line 576
-;576:			if (!token || token[0] == 0) {
+line 581
+;581:			if (!token || token[0] == 0) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $404
+EQU4 $408
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $402
-LABELV $404
-line 577
-;577:				return qtrue;
+NEI4 $406
+LABELV $408
+line 582
+;582:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $361
+ADDRGP4 $365
 JUMPV
-LABELV $402
-line 579
-;578:			}
-;579:			if (!Q_stricmp(token, "}"))
+LABELV $406
+line 584
+;583:			}
+;584:			if (!Q_stricmp(token, "}"))
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $407
+ADDRGP4 $411
 ARGP4
 ADDRLP4 16464
 ADDRGP4 Q_stricmp
@@ -3748,14 +3795,14 @@ ASGNI4
 ADDRLP4 16464
 INDIRI4
 CNSTI4 0
-NEI4 $405
-line 580
-;580:				break;
-ADDRGP4 $401
+NEI4 $409
+line 585
+;585:				break;
+ADDRGP4 $405
 JUMPV
-LABELV $405
-line 581
-;581:			voiceChats[voiceChatList->numVoiceChats].sounds[voiceChats[voiceChatList->numVoiceChats].numSounds] = 
+LABELV $409
+line 586
+;586:			voiceChats[voiceChatList->numVoiceChats].sounds[voiceChats[voiceChatList->numVoiceChats].numSounds] = 
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -3798,9 +3845,9 @@ ADDP4
 ADDRLP4 16468
 INDIRI4
 ASGNI4
-line 583
-;582:          trap_S_RegisterSound( token , compress );
-;583:			token = COM_ParseExt(p, qtrue);
+line 588
+;587:          trap_S_RegisterSound( token , compress );
+;588:			token = COM_ParseExt(p, qtrue);
 ADDRLP4 8
 INDIRP4
 ARGP4
@@ -3814,30 +3861,30 @@ ADDRLP4 0
 ADDRLP4 16480
 INDIRP4
 ASGNP4
-line 584
-;584:			if (!token || token[0] == 0) {
+line 589
+;589:			if (!token || token[0] == 0) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $410
+EQU4 $414
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $408
-LABELV $410
-line 585
-;585:				return qtrue;
+NEI4 $412
+LABELV $414
+line 590
+;590:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $361
+ADDRGP4 $365
 JUMPV
-LABELV $408
-line 587
-;586:			}
-;587:			Com_sprintf(voiceChats[voiceChatList->numVoiceChats].chats[
+LABELV $412
+line 592
+;591:			}
+;592:			Com_sprintf(voiceChats[voiceChatList->numVoiceChats].chats[
 ADDRLP4 16488
 CNSTI4 4420
 ADDRFP4 4
@@ -3870,7 +3917,7 @@ ARGP4
 ADDRLP4 16492
 INDIRI4
 ARGI4
-ADDRGP4 $371
+ADDRGP4 $375
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -3878,83 +3925,83 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 589
-;588:							voiceChats[voiceChatList->numVoiceChats].numSounds], MAX_CHATSIZE, "%s", token);
-;589:			voiceChats[voiceChatList->numVoiceChats].numSounds++;
-ADDRLP4 16496
-CNSTI4 4420
-ADDRFP4 4
-INDIRP4
-CNSTI4 68
-ADDP4
-INDIRI4
-MULI4
-ADDRLP4 4
-INDIRP4
-ADDP4
-CNSTI4 64
-ADDP4
-ASGNP4
-ADDRLP4 16496
-INDIRP4
-ADDRLP4 16496
-INDIRP4
-INDIRI4
-CNSTI4 1
-ADDI4
-ASGNI4
-line 590
-;590:			if (voiceChats[voiceChatList->numVoiceChats].numSounds >= MAX_VOICESOUNDS)
-ADDRLP4 16500
-CNSTI4 64
-ASGNI4
-CNSTI4 4420
-ADDRFP4 4
-INDIRP4
-CNSTI4 68
-ADDP4
-INDIRI4
-MULI4
-ADDRLP4 4
-INDIRP4
-ADDP4
-ADDRLP4 16500
-INDIRI4
-ADDP4
-INDIRI4
-ADDRLP4 16500
-INDIRI4
-LTI4 $411
-line 591
-;591:				break;
-ADDRGP4 $401
-JUMPV
-LABELV $411
-line 592
-;592:		}
-LABELV $400
-line 574
-ADDRGP4 $399
-JUMPV
-LABELV $401
-line 593
-;593:		voiceChatList->numVoiceChats++;
-ADDRLP4 16456
-ADDRFP4 4
-INDIRP4
-CNSTI4 68
-ADDP4
-ASGNP4
-ADDRLP4 16456
-INDIRP4
-ADDRLP4 16456
-INDIRP4
-INDIRI4
-CNSTI4 1
-ADDI4
-ASGNI4
 line 594
-;594:		if (voiceChatList->numVoiceChats >= maxVoiceChats)
+;593:							voiceChats[voiceChatList->numVoiceChats].numSounds], MAX_CHATSIZE, "%s", token);
+;594:			voiceChats[voiceChatList->numVoiceChats].numSounds++;
+ADDRLP4 16496
+CNSTI4 4420
+ADDRFP4 4
+INDIRP4
+CNSTI4 68
+ADDP4
+INDIRI4
+MULI4
+ADDRLP4 4
+INDIRP4
+ADDP4
+CNSTI4 64
+ADDP4
+ASGNP4
+ADDRLP4 16496
+INDIRP4
+ADDRLP4 16496
+INDIRP4
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+line 595
+;595:			if (voiceChats[voiceChatList->numVoiceChats].numSounds >= MAX_VOICESOUNDS)
+ADDRLP4 16500
+CNSTI4 64
+ASGNI4
+CNSTI4 4420
+ADDRFP4 4
+INDIRP4
+CNSTI4 68
+ADDP4
+INDIRI4
+MULI4
+ADDRLP4 4
+INDIRP4
+ADDP4
+ADDRLP4 16500
+INDIRI4
+ADDP4
+INDIRI4
+ADDRLP4 16500
+INDIRI4
+LTI4 $415
+line 596
+;596:				break;
+ADDRGP4 $405
+JUMPV
+LABELV $415
+line 597
+;597:		}
+LABELV $404
+line 579
+ADDRGP4 $403
+JUMPV
+LABELV $405
+line 598
+;598:		voiceChatList->numVoiceChats++;
+ADDRLP4 16456
+ADDRFP4 4
+INDIRP4
+CNSTI4 68
+ADDP4
+ASGNP4
+ADDRLP4 16456
+INDIRP4
+ADDRLP4 16456
+INDIRP4
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+line 599
+;599:		if (voiceChatList->numVoiceChats >= maxVoiceChats)
 ADDRFP4 4
 INDIRP4
 CNSTI4 68
@@ -3962,41 +4009,41 @@ ADDP4
 INDIRI4
 ADDRFP4 8
 INDIRI4
-LTI4 $413
-line 595
-;595:			return qtrue;
+LTI4 $417
+line 600
+;600:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $361
+ADDRGP4 $365
 JUMPV
-LABELV $413
-line 596
-;596:	}
-LABELV $390
-line 562
-ADDRGP4 $389
+LABELV $417
+line 601
+;601:	}
+LABELV $394
+line 567
+ADDRGP4 $393
 JUMPV
-line 597
-;597:	return qtrue;
+line 602
+;602:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $361
+LABELV $365
 endproc CG_ParseVoiceChats 16504 16
 export CG_LoadVoiceChats
 proc CG_LoadVoiceChats 12 12
-line 605
-;598:}
-;599:
-;600:/*
-;601:=================
-;602:CG_LoadVoiceChats
-;603:=================
-;604:*/
-;605:void CG_LoadVoiceChats( void ) {
-line 608
-;606:	int size;
-;607:
-;608:	size = trap_MemoryRemaining();
+line 610
+;603:}
+;604:
+;605:/*
+;606:=================
+;607:CG_LoadVoiceChats
+;608:=================
+;609:*/
+;610:void CG_LoadVoiceChats( void ) {
+line 613
+;611:	int size;
+;612:
+;613:	size = trap_MemoryRemaining();
 ADDRLP4 4
 ADDRGP4 trap_MemoryRemaining
 CALLI4
@@ -4005,9 +4052,9 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 609
-;609:	CG_ParseVoiceChats( "scripts/female1.voice", &voiceChatLists[0], MAX_VOICECHATS );
-ADDRGP4 $416
+line 614
+;614:	CG_ParseVoiceChats( "scripts/female1.voice", &voiceChatLists[0], MAX_VOICECHATS );
+ADDRGP4 $420
 ARGP4
 ADDRGP4 voiceChatLists
 ARGP4
@@ -4016,9 +4063,9 @@ ARGI4
 ADDRGP4 CG_ParseVoiceChats
 CALLI4
 pop
-line 610
-;610:	CG_ParseVoiceChats( "scripts/female2.voice", &voiceChatLists[1], MAX_VOICECHATS );
-ADDRGP4 $417
+line 615
+;615:	CG_ParseVoiceChats( "scripts/female2.voice", &voiceChatLists[1], MAX_VOICECHATS );
+ADDRGP4 $421
 ARGP4
 ADDRGP4 voiceChatLists+282952
 ARGP4
@@ -4027,9 +4074,9 @@ ARGI4
 ADDRGP4 CG_ParseVoiceChats
 CALLI4
 pop
-line 611
-;611:	CG_ParseVoiceChats( "scripts/female3.voice", &voiceChatLists[2], MAX_VOICECHATS );
-ADDRGP4 $419
+line 616
+;616:	CG_ParseVoiceChats( "scripts/female3.voice", &voiceChatLists[2], MAX_VOICECHATS );
+ADDRGP4 $423
 ARGP4
 ADDRGP4 voiceChatLists+565904
 ARGP4
@@ -4038,9 +4085,9 @@ ARGI4
 ADDRGP4 CG_ParseVoiceChats
 CALLI4
 pop
-line 612
-;612:	CG_ParseVoiceChats( "scripts/male1.voice", &voiceChatLists[3], MAX_VOICECHATS );
-ADDRGP4 $421
+line 617
+;617:	CG_ParseVoiceChats( "scripts/male1.voice", &voiceChatLists[3], MAX_VOICECHATS );
+ADDRGP4 $425
 ARGP4
 ADDRGP4 voiceChatLists+848856
 ARGP4
@@ -4049,9 +4096,9 @@ ARGI4
 ADDRGP4 CG_ParseVoiceChats
 CALLI4
 pop
-line 613
-;613:	CG_ParseVoiceChats( "scripts/male2.voice", &voiceChatLists[4], MAX_VOICECHATS );
-ADDRGP4 $423
+line 618
+;618:	CG_ParseVoiceChats( "scripts/male2.voice", &voiceChatLists[4], MAX_VOICECHATS );
+ADDRGP4 $427
 ARGP4
 ADDRGP4 voiceChatLists+1131808
 ARGP4
@@ -4060,9 +4107,9 @@ ARGI4
 ADDRGP4 CG_ParseVoiceChats
 CALLI4
 pop
-line 614
-;614:	CG_ParseVoiceChats( "scripts/male3.voice", &voiceChatLists[5], MAX_VOICECHATS );
-ADDRGP4 $425
+line 619
+;619:	CG_ParseVoiceChats( "scripts/male3.voice", &voiceChatLists[5], MAX_VOICECHATS );
+ADDRGP4 $429
 ARGP4
 ADDRGP4 voiceChatLists+1414760
 ARGP4
@@ -4071,9 +4118,9 @@ ARGI4
 ADDRGP4 CG_ParseVoiceChats
 CALLI4
 pop
-line 615
-;615:	CG_ParseVoiceChats( "scripts/male4.voice", &voiceChatLists[6], MAX_VOICECHATS );
-ADDRGP4 $427
+line 620
+;620:	CG_ParseVoiceChats( "scripts/male4.voice", &voiceChatLists[6], MAX_VOICECHATS );
+ADDRGP4 $431
 ARGP4
 ADDRGP4 voiceChatLists+1697712
 ARGP4
@@ -4082,9 +4129,9 @@ ARGI4
 ADDRGP4 CG_ParseVoiceChats
 CALLI4
 pop
-line 616
-;616:	CG_ParseVoiceChats( "scripts/male5.voice", &voiceChatLists[7], MAX_VOICECHATS );
-ADDRGP4 $429
+line 621
+;621:	CG_ParseVoiceChats( "scripts/male5.voice", &voiceChatLists[7], MAX_VOICECHATS );
+ADDRGP4 $433
 ARGP4
 ADDRGP4 voiceChatLists+1980664
 ARGP4
@@ -4093,13 +4140,13 @@ ARGI4
 ADDRGP4 CG_ParseVoiceChats
 CALLI4
 pop
-line 617
-;617:	CG_Printf("voice chat memory size = %d\n", size - trap_MemoryRemaining());
+line 622
+;622:	CG_Printf("voice chat memory size = %d\n", size - trap_MemoryRemaining());
 ADDRLP4 8
 ADDRGP4 trap_MemoryRemaining
 CALLI4
 ASGNI4
-ADDRGP4 $431
+ADDRGP4 $435
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -4110,28 +4157,28 @@ ARGI4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 618
-;618:}
-LABELV $415
+line 623
+;623:}
+LABELV $419
 endproc CG_LoadVoiceChats 12 12
 export CG_HeadModelVoiceChats
 proc CG_HeadModelVoiceChats 16424 16
-line 625
-;619:
-;620:/*
-;621:=================
-;622:CG_HeadModelVoiceChats
-;623:=================
-;624:*/
-;625:int CG_HeadModelVoiceChats( char *filename ) {
-line 632
-;626:	int	len, i;
-;627:	fileHandle_t f;
-;628:	char buf[MAX_VOICEFILESIZE];
-;629:	char **p, *ptr;
-;630:	char *token;
-;631:
-;632:	len = trap_FS_FOpenFile( filename, &f, FS_READ );
+line 630
+;624:
+;625:/*
+;626:=================
+;627:CG_HeadModelVoiceChats
+;628:=================
+;629:*/
+;630:int CG_HeadModelVoiceChats( char *filename ) {
+line 637
+;631:	int	len, i;
+;632:	fileHandle_t f;
+;633:	char buf[MAX_VOICEFILESIZE];
+;634:	char **p, *ptr;
+;635:	char *token;
+;636:
+;637:	len = trap_FS_FOpenFile( filename, &f, FS_READ );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -4147,30 +4194,30 @@ ADDRLP4 8
 ADDRLP4 16408
 INDIRI4
 ASGNI4
-line 633
-;633:	if ( !f ) {
+line 638
+;638:	if ( !f ) {
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $433
-line 635
-;634:		//trap_Print( va( "voice chat file not found: %s\n", filename ) );
-;635:		return -1;
+NEI4 $437
+line 640
+;639:		//trap_Print( va( "voice chat file not found: %s\n", filename ) );
+;640:		return -1;
 CNSTI4 -1
 RETI4
-ADDRGP4 $432
+ADDRGP4 $436
 JUMPV
-LABELV $433
-line 637
-;636:	}
-;637:	if ( len >= MAX_VOICEFILESIZE ) {
+LABELV $437
+line 642
+;641:	}
+;642:	if ( len >= MAX_VOICEFILESIZE ) {
 ADDRLP4 8
 INDIRI4
 CNSTI4 16384
-LTI4 $435
-line 638
-;638:		trap_Print( va( S_COLOR_RED "voice chat file too large: %s is %i, max allowed is %i", filename, len, MAX_VOICEFILESIZE ) );
-ADDRGP4 $370
+LTI4 $439
+line 643
+;643:		trap_Print( va( S_COLOR_RED "voice chat file too large: %s is %i, max allowed is %i", filename, len, MAX_VOICEFILESIZE ) );
+ADDRGP4 $374
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -4190,25 +4237,25 @@ ARGP4
 ADDRGP4 trap_Print
 CALLV
 pop
-line 639
-;639:		trap_FS_FCloseFile( f );
+line 644
+;644:		trap_FS_FCloseFile( f );
 ADDRLP4 12
 INDIRI4
 ARGI4
 ADDRGP4 trap_FS_FCloseFile
 CALLV
 pop
-line 640
-;640:		return -1;
+line 645
+;645:		return -1;
 CNSTI4 -1
 RETI4
-ADDRGP4 $432
+ADDRGP4 $436
 JUMPV
-LABELV $435
-line 643
-;641:	}
-;642:
-;643:	trap_FS_Read( buf, len, f );
+LABELV $439
+line 648
+;646:	}
+;647:
+;648:	trap_FS_Read( buf, len, f );
 ADDRLP4 16
 ARGP4
 ADDRLP4 8
@@ -4220,36 +4267,36 @@ ARGI4
 ADDRGP4 trap_FS_Read
 CALLV
 pop
-line 644
-;644:	buf[len] = 0;
+line 649
+;649:	buf[len] = 0;
 ADDRLP4 8
 INDIRI4
 ADDRLP4 16
 ADDP4
 CNSTI1 0
 ASGNI1
-line 645
-;645:	trap_FS_FCloseFile( f );
+line 650
+;650:	trap_FS_FCloseFile( f );
 ADDRLP4 12
 INDIRI4
 ARGI4
 ADDRGP4 trap_FS_FCloseFile
 CALLV
 pop
-line 647
-;646:
-;647:	ptr = buf;
+line 652
+;651:
+;652:	ptr = buf;
 ADDRLP4 16404
 ADDRLP4 16
 ASGNP4
-line 648
-;648:	p = &ptr;
+line 653
+;653:	p = &ptr;
 ADDRLP4 16400
 ADDRLP4 16404
 ASGNP4
-line 650
-;649:
-;650:	token = COM_ParseExt(p, qtrue);
+line 655
+;654:
+;655:	token = COM_ParseExt(p, qtrue);
 ADDRLP4 16400
 INDIRP4
 ARGP4
@@ -4263,37 +4310,37 @@ ADDRLP4 4
 ADDRLP4 16412
 INDIRP4
 ASGNP4
-line 651
-;651:	if (!token || token[0] == 0) {
+line 656
+;656:	if (!token || token[0] == 0) {
 ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $439
+EQU4 $443
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $437
-LABELV $439
-line 652
-;652:		return -1;
+NEI4 $441
+LABELV $443
+line 657
+;657:		return -1;
 CNSTI4 -1
 RETI4
-ADDRGP4 $432
+ADDRGP4 $436
 JUMPV
-LABELV $437
-line 655
-;653:	}
-;654:
-;655:	for ( i = 0; i < MAX_VOICEFILES; i++ ) {
+LABELV $441
+line 660
+;658:	}
+;659:
+;660:	for ( i = 0; i < MAX_VOICEFILES; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $440
-line 656
-;656:		if ( !Q_stricmp(token, voiceChatLists[i].name) ) {
+LABELV $444
+line 661
+;661:		if ( !Q_stricmp(token, voiceChatLists[i].name) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -4311,20 +4358,20 @@ ASGNI4
 ADDRLP4 16420
 INDIRI4
 CNSTI4 0
-NEI4 $444
-line 657
-;657:			return i;
+NEI4 $448
+line 662
+;662:			return i;
 ADDRLP4 0
 INDIRI4
 RETI4
-ADDRGP4 $432
+ADDRGP4 $436
 JUMPV
-LABELV $444
-line 659
-;658:		}
-;659:	}
-LABELV $441
-line 655
+LABELV $448
+line 664
+;663:		}
+;664:	}
+LABELV $445
+line 660
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4334,40 +4381,40 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 8
-LTI4 $440
-line 663
-;660:
-;661:	//FIXME: maybe try to load the .voice file which name is stored in token?
-;662:
-;663:	return -1;
+LTI4 $444
+line 668
+;665:
+;666:	//FIXME: maybe try to load the .voice file which name is stored in token?
+;667:
+;668:	return -1;
 CNSTI4 -1
 RETI4
-LABELV $432
+LABELV $436
 endproc CG_HeadModelVoiceChats 16424 16
 export CG_GetVoiceChat
 proc CG_GetVoiceChat 16 8
-line 672
-;664:}
-;665:
-;666:
-;667:/*
-;668:=================
-;669:CG_GetVoiceChat
-;670:=================
-;671:*/
-;672:int CG_GetVoiceChat( voiceChatList_t *voiceChatList, const char *id, sfxHandle_t *snd, char **chat) {
-line 675
-;673:	int i, rnd;
-;674:
-;675:	for ( i = 0; i < voiceChatList->numVoiceChats; i++ ) {
+line 677
+;669:}
+;670:
+;671:
+;672:/*
+;673:=================
+;674:CG_GetVoiceChat
+;675:=================
+;676:*/
+;677:int CG_GetVoiceChat( voiceChatList_t *voiceChatList, const char *id, sfxHandle_t *snd, char **chat) {
+line 680
+;678:	int i, rnd;
+;679:
+;680:	for ( i = 0; i < voiceChatList->numVoiceChats; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $450
+ADDRGP4 $454
 JUMPV
-LABELV $447
-line 676
-;676:		if ( !Q_stricmp( id, voiceChatList->voiceChats[i].id ) ) {
+LABELV $451
+line 681
+;681:		if ( !Q_stricmp( id, voiceChatList->voiceChats[i].id ) ) {
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -4388,9 +4435,9 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $451
-line 677
-;677:			rnd = random() * voiceChatList->voiceChats[i].numSounds;
+NEI4 $455
+line 682
+;682:			rnd = random() * voiceChatList->voiceChats[i].numSounds;
 ADDRLP4 12
 ADDRGP4 rand
 CALLI4
@@ -4419,8 +4466,8 @@ CVIF4 4
 MULF4
 CVFI4 4
 ASGNI4
-line 678
-;678:			*snd = voiceChatList->voiceChats[i].sounds[rnd];
+line 683
+;683:			*snd = voiceChatList->voiceChats[i].sounds[rnd];
 ADDRFP4 8
 INDIRP4
 ADDRLP4 4
@@ -4441,8 +4488,8 @@ ADDP4
 ADDP4
 INDIRI4
 ASGNI4
-line 679
-;679:			*chat = voiceChatList->voiceChats[i].chats[rnd];
+line 684
+;684:			*chat = voiceChatList->voiceChats[i].chats[rnd];
 ADDRFP4 12
 INDIRP4
 ADDRLP4 4
@@ -4462,25 +4509,25 @@ CNSTI4 324
 ADDP4
 ADDP4
 ASGNP4
-line 680
-;680:			return qtrue;
+line 685
+;685:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $446
+ADDRGP4 $450
 JUMPV
-LABELV $451
-line 682
-;681:		}
-;682:	}
-LABELV $448
-line 675
+LABELV $455
+line 687
+;686:		}
+;687:	}
+LABELV $452
+line 680
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $450
+LABELV $454
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -4488,30 +4535,30 @@ INDIRP4
 CNSTI4 68
 ADDP4
 INDIRI4
-LTI4 $447
-line 683
-;683:	return qfalse;
+LTI4 $451
+line 688
+;688:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $446
+LABELV $450
 endproc CG_GetVoiceChat 16 8
 export CG_VoiceChatListForClient
 proc CG_VoiceChatListForClient 164 20
-line 691
-;684:}
-;685:
-;686:/*
-;687:=================
-;688:CG_VoiceChatListForClient
-;689:=================
-;690:*/
-;691:voiceChatList_t *CG_VoiceChatListForClient( int clientNum ) {
 line 696
-;692:	clientInfo_t *ci;
-;693:	int voiceChatNum, i, j, k, gender;
-;694:	char filename[MAX_QPATH], headModelName[MAX_QPATH];
-;695:
-;696:	if ( clientNum < 0 || clientNum >= MAX_CLIENTS ) {
+;689:}
+;690:
+;691:/*
+;692:=================
+;693:CG_VoiceChatListForClient
+;694:=================
+;695:*/
+;696:voiceChatList_t *CG_VoiceChatListForClient( int clientNum ) {
+line 701
+;697:	clientInfo_t *ci;
+;698:	int voiceChatNum, i, j, k, gender;
+;699:	char filename[MAX_QPATH], headModelName[MAX_QPATH];
+;700:
+;701:	if ( clientNum < 0 || clientNum >= MAX_CLIENTS ) {
 ADDRLP4 152
 ADDRFP4 0
 INDIRI4
@@ -4519,22 +4566,22 @@ ASGNI4
 ADDRLP4 152
 INDIRI4
 CNSTI4 0
-LTI4 $456
+LTI4 $460
 ADDRLP4 152
 INDIRI4
 CNSTI4 64
-LTI4 $454
-LABELV $456
-line 697
-;697:		clientNum = 0;
+LTI4 $458
+LABELV $460
+line 702
+;702:		clientNum = 0;
 ADDRFP4 0
 CNSTI4 0
 ASGNI4
-line 698
-;698:	}
-LABELV $454
-line 699
-;699:	ci = &cgs.clientinfo[ clientNum ];
+line 703
+;703:	}
+LABELV $458
+line 704
+;704:	ci = &cgs.clientinfo[ clientNum ];
 ADDRLP4 148
 CNSTI4 1708
 ADDRFP4 0
@@ -4543,89 +4590,21 @@ MULI4
 ADDRGP4 cgs+40972
 ADDP4
 ASGNP4
-line 701
-;700:
-;701:	for ( k = 0; k < 2; k++ ) {
+line 706
+;705:
+;706:	for ( k = 0; k < 2; k++ ) {
 ADDRLP4 144
 CNSTI4 0
 ASGNI4
-LABELV $458
-line 702
-;702:		if ( k == 0 ) {
+LABELV $462
+line 707
+;707:		if ( k == 0 ) {
 ADDRLP4 144
 INDIRI4
 CNSTI4 0
-NEI4 $462
-line 703
-;703:			if (ci->headModelName[0] == '*') {
-ADDRLP4 148
-INDIRP4
-CNSTI4 288
-ADDP4
-INDIRI1
-CVII4 1
-CNSTI4 42
-NEI4 $464
-line 704
-;704:				Com_sprintf( headModelName, sizeof(headModelName), "%s/%s", ci->headModelName+1, ci->headSkinName );
-ADDRLP4 8
-ARGP4
-CNSTI4 64
-ARGI4
-ADDRGP4 $466
-ARGP4
-ADDRLP4 148
-INDIRP4
-CNSTI4 289
-ADDP4
-ARGP4
-ADDRLP4 148
-INDIRP4
-CNSTI4 352
-ADDP4
-ARGP4
-ADDRGP4 Com_sprintf
-CALLV
-pop
-line 705
-;705:			}
-ADDRGP4 $463
-JUMPV
-LABELV $464
-line 706
-;706:			else {
-line 707
-;707:				Com_sprintf( headModelName, sizeof(headModelName), "%s/%s", ci->headModelName, ci->headSkinName );
-ADDRLP4 8
-ARGP4
-CNSTI4 64
-ARGI4
-ADDRGP4 $466
-ARGP4
-ADDRLP4 148
-INDIRP4
-CNSTI4 288
-ADDP4
-ARGP4
-ADDRLP4 148
-INDIRP4
-CNSTI4 352
-ADDP4
-ARGP4
-ADDRGP4 Com_sprintf
-CALLV
-pop
+NEI4 $466
 line 708
-;708:			}
-line 709
-;709:		}
-ADDRGP4 $463
-JUMPV
-LABELV $462
-line 710
-;710:		else {
-line 711
-;711:			if (ci->headModelName[0] == '*') {
+;708:			if (ci->headModelName[0] == '*') {
 ADDRLP4 148
 INDIRP4
 CNSTI4 288
@@ -4633,18 +4612,51 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 42
-NEI4 $467
-line 712
-;712:				Com_sprintf( headModelName, sizeof(headModelName), "%s", ci->headModelName+1 );
+NEI4 $468
+line 709
+;709:				Com_sprintf( headModelName, sizeof(headModelName), "%s/%s", ci->headModelName+1, ci->headSkinName );
 ADDRLP4 8
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $371
+ADDRGP4 $470
 ARGP4
 ADDRLP4 148
 INDIRP4
 CNSTI4 289
+ADDP4
+ARGP4
+ADDRLP4 148
+INDIRP4
+CNSTI4 352
+ADDP4
+ARGP4
+ADDRGP4 Com_sprintf
+CALLV
+pop
+line 710
+;710:			}
+ADDRGP4 $467
+JUMPV
+LABELV $468
+line 711
+;711:			else {
+line 712
+;712:				Com_sprintf( headModelName, sizeof(headModelName), "%s/%s", ci->headModelName, ci->headSkinName );
+ADDRLP4 8
+ARGP4
+CNSTI4 64
+ARGI4
+ADDRGP4 $470
+ARGP4
+ADDRLP4 148
+INDIRP4
+CNSTI4 288
+ADDP4
+ARGP4
+ADDRLP4 148
+INDIRP4
+CNSTI4 352
 ADDP4
 ARGP4
 ADDRGP4 Com_sprintf
@@ -4652,18 +4664,53 @@ CALLV
 pop
 line 713
 ;713:			}
-ADDRGP4 $468
-JUMPV
-LABELV $467
 line 714
-;714:			else {
+;714:		}
+ADDRGP4 $467
+JUMPV
+LABELV $466
 line 715
-;715:				Com_sprintf( headModelName, sizeof(headModelName), "%s", ci->headModelName );
+;715:		else {
+line 716
+;716:			if (ci->headModelName[0] == '*') {
+ADDRLP4 148
+INDIRP4
+CNSTI4 288
+ADDP4
+INDIRI1
+CVII4 1
+CNSTI4 42
+NEI4 $471
+line 717
+;717:				Com_sprintf( headModelName, sizeof(headModelName), "%s", ci->headModelName+1 );
 ADDRLP4 8
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $371
+ADDRGP4 $375
+ARGP4
+ADDRLP4 148
+INDIRP4
+CNSTI4 289
+ADDP4
+ARGP4
+ADDRGP4 Com_sprintf
+CALLV
+pop
+line 718
+;718:			}
+ADDRGP4 $472
+JUMPV
+LABELV $471
+line 719
+;719:			else {
+line 720
+;720:				Com_sprintf( headModelName, sizeof(headModelName), "%s", ci->headModelName );
+ADDRLP4 8
+ARGP4
+CNSTI4 64
+ARGI4
+ADDRGP4 $375
 ARGP4
 ADDRLP4 148
 INDIRP4
@@ -4673,21 +4720,21 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 716
-;716:			}
-LABELV $468
-line 717
-;717:		}
-LABELV $463
-line 719
-;718:		// find the voice file for the head model the client uses
-;719:		for ( i = 0; i < MAX_HEADMODELS; i++ ) {
+line 721
+;721:			}
+LABELV $472
+line 722
+;722:		}
+LABELV $467
+line 724
+;723:		// find the voice file for the head model the client uses
+;724:		for ( i = 0; i < MAX_HEADMODELS; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $469
-line 720
-;720:			if (!Q_stricmp(headModelVoiceChat[i].headmodel, headModelName)) {
+LABELV $473
+line 725
+;725:			if (!Q_stricmp(headModelVoiceChat[i].headmodel, headModelName)) {
 CNSTI4 68
 ADDRLP4 0
 INDIRI4
@@ -4704,17 +4751,17 @@ ASGNI4
 ADDRLP4 156
 INDIRI4
 CNSTI4 0
-NEI4 $473
-line 721
-;721:				break;
-ADDRGP4 $471
+NEI4 $477
+line 726
+;726:				break;
+ADDRGP4 $475
 JUMPV
-LABELV $473
-line 723
-;722:			}
-;723:		}
-LABELV $470
-line 719
+LABELV $477
+line 728
+;727:			}
+;728:		}
+LABELV $474
+line 724
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4724,16 +4771,16 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $469
-LABELV $471
-line 724
-;724:		if (i < MAX_HEADMODELS) {
+LTI4 $473
+LABELV $475
+line 729
+;729:		if (i < MAX_HEADMODELS) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-GEI4 $475
-line 725
-;725:			return &voiceChatLists[headModelVoiceChat[i].voiceChatNum];
+GEI4 $479
+line 730
+;730:			return &voiceChatLists[headModelVoiceChat[i].voiceChatNum];
 CNSTI4 282952
 CNSTI4 68
 ADDRLP4 0
@@ -4746,19 +4793,19 @@ MULI4
 ADDRGP4 voiceChatLists
 ADDP4
 RETP4
-ADDRGP4 $453
+ADDRGP4 $457
 JUMPV
-LABELV $475
-line 728
-;726:		}
-;727:		// find a <headmodelname>.vc file
-;728:		for ( i = 0; i < MAX_HEADMODELS; i++ ) {
+LABELV $479
+line 733
+;731:		}
+;732:		// find a <headmodelname>.vc file
+;733:		for ( i = 0; i < MAX_HEADMODELS; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $478
-line 729
-;729:			if (!strlen(headModelVoiceChat[i].headmodel)) {
+LABELV $482
+line 734
+;734:			if (!strlen(headModelVoiceChat[i].headmodel)) {
 CNSTI4 68
 ADDRLP4 0
 INDIRI4
@@ -4773,22 +4820,22 @@ ASGNI4
 ADDRLP4 156
 INDIRI4
 CNSTI4 0
-NEI4 $482
-line 730
-;730:				Com_sprintf(filename, sizeof(filename), "scripts/%s.vc", headModelName);
+NEI4 $486
+line 735
+;735:				Com_sprintf(filename, sizeof(filename), "scripts/%s.vc", headModelName);
 ADDRLP4 76
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $484
+ADDRGP4 $488
 ARGP4
 ADDRLP4 8
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 731
-;731:				voiceChatNum = CG_HeadModelVoiceChats(filename);
+line 736
+;736:				voiceChatNum = CG_HeadModelVoiceChats(filename);
 ADDRLP4 76
 ARGP4
 ADDRLP4 160
@@ -4799,19 +4846,19 @@ ADDRLP4 72
 ADDRLP4 160
 INDIRI4
 ASGNI4
-line 732
-;732:				if (voiceChatNum == -1)
+line 737
+;737:				if (voiceChatNum == -1)
 ADDRLP4 72
 INDIRI4
 CNSTI4 -1
-NEI4 $485
-line 733
-;733:					break;
-ADDRGP4 $480
+NEI4 $489
+line 738
+;738:					break;
+ADDRGP4 $484
 JUMPV
-LABELV $485
-line 734
-;734:				Com_sprintf(headModelVoiceChat[i].headmodel, sizeof ( headModelVoiceChat[i].headmodel ),
+LABELV $489
+line 739
+;739:				Com_sprintf(headModelVoiceChat[i].headmodel, sizeof ( headModelVoiceChat[i].headmodel ),
 CNSTI4 68
 ADDRLP4 0
 INDIRI4
@@ -4821,16 +4868,16 @@ ADDP4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $371
+ADDRGP4 $375
 ARGP4
 ADDRLP4 8
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 736
-;735:							"%s", headModelName);
-;736:				headModelVoiceChat[i].voiceChatNum = voiceChatNum;
+line 741
+;740:							"%s", headModelName);
+;741:				headModelVoiceChat[i].voiceChatNum = voiceChatNum;
 CNSTI4 68
 ADDRLP4 0
 INDIRI4
@@ -4840,8 +4887,8 @@ ADDP4
 ADDRLP4 72
 INDIRI4
 ASGNI4
-line 737
-;737:				return &voiceChatLists[headModelVoiceChat[i].voiceChatNum];
+line 742
+;742:				return &voiceChatLists[headModelVoiceChat[i].voiceChatNum];
 CNSTI4 282952
 CNSTI4 68
 ADDRLP4 0
@@ -4854,14 +4901,14 @@ MULI4
 ADDRGP4 voiceChatLists
 ADDP4
 RETP4
-ADDRGP4 $453
+ADDRGP4 $457
 JUMPV
-LABELV $482
-line 739
-;738:			}
-;739:		}
-LABELV $479
-line 728
+LABELV $486
+line 744
+;743:			}
+;744:		}
+LABELV $483
+line 733
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4871,12 +4918,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $478
-LABELV $480
-line 740
-;740:	}
-LABELV $459
-line 701
+LTI4 $482
+LABELV $484
+line 745
+;745:	}
+LABELV $463
+line 706
 ADDRLP4 144
 ADDRLP4 144
 INDIRI4
@@ -4886,9 +4933,9 @@ ASGNI4
 ADDRLP4 144
 INDIRI4
 CNSTI4 2
-LTI4 $458
-line 741
-;741:	gender = ci->gender;
+LTI4 $462
+line 746
+;746:	gender = ci->gender;
 ADDRLP4 140
 ADDRLP4 148
 INDIRP4
@@ -4896,21 +4943,21 @@ CNSTI4 512
 ADDP4
 INDIRI4
 ASGNI4
-line 742
-;742:	for (k = 0; k < 2; k++) {
+line 747
+;747:	for (k = 0; k < 2; k++) {
 ADDRLP4 144
 CNSTI4 0
 ASGNI4
-LABELV $489
-line 744
-;743:		// just pick the first with the right gender
-;744:		for ( i = 0; i < MAX_VOICEFILES; i++ ) {
+LABELV $493
+line 749
+;748:		// just pick the first with the right gender
+;749:		for ( i = 0; i < MAX_VOICEFILES; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $493
-line 745
-;745:			if (strlen(voiceChatLists[i].name)) {
+LABELV $497
+line 750
+;750:			if (strlen(voiceChatLists[i].name)) {
 CNSTI4 282952
 ADDRLP4 0
 INDIRI4
@@ -4925,9 +4972,9 @@ ASGNI4
 ADDRLP4 156
 INDIRI4
 CNSTI4 0
-EQI4 $497
-line 746
-;746:				if (voiceChatLists[i].gender == gender) {
+EQI4 $501
+line 751
+;751:				if (voiceChatLists[i].gender == gender) {
 CNSTI4 282952
 ADDRLP4 0
 INDIRI4
@@ -4937,16 +4984,16 @@ ADDP4
 INDIRI4
 ADDRLP4 140
 INDIRI4
-NEI4 $499
-line 748
-;747:					// store this head model with voice chat for future reference
-;748:					for ( j = 0; j < MAX_HEADMODELS; j++ ) {
+NEI4 $503
+line 753
+;752:					// store this head model with voice chat for future reference
+;753:					for ( j = 0; j < MAX_HEADMODELS; j++ ) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-LABELV $502
-line 749
-;749:						if (!strlen(headModelVoiceChat[j].headmodel)) {
+LABELV $506
+line 754
+;754:						if (!strlen(headModelVoiceChat[j].headmodel)) {
 CNSTI4 68
 ADDRLP4 4
 INDIRI4
@@ -4961,9 +5008,9 @@ ASGNI4
 ADDRLP4 160
 INDIRI4
 CNSTI4 0
-NEI4 $506
-line 750
-;750:							Com_sprintf(headModelVoiceChat[j].headmodel, sizeof ( headModelVoiceChat[j].headmodel ),
+NEI4 $510
+line 755
+;755:							Com_sprintf(headModelVoiceChat[j].headmodel, sizeof ( headModelVoiceChat[j].headmodel ),
 CNSTI4 68
 ADDRLP4 4
 INDIRI4
@@ -4973,16 +5020,16 @@ ADDP4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $371
+ADDRGP4 $375
 ARGP4
 ADDRLP4 8
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 752
-;751:									"%s", headModelName);
-;752:							headModelVoiceChat[j].voiceChatNum = i;
+line 757
+;756:									"%s", headModelName);
+;757:							headModelVoiceChat[j].voiceChatNum = i;
 CNSTI4 68
 ADDRLP4 4
 INDIRI4
@@ -4992,16 +5039,16 @@ ADDP4
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 753
-;753:							break;
-ADDRGP4 $504
+line 758
+;758:							break;
+ADDRGP4 $508
 JUMPV
-LABELV $506
-line 755
-;754:						}
-;755:					}
-LABELV $503
-line 748
+LABELV $510
+line 760
+;759:						}
+;760:					}
+LABELV $507
+line 753
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -5011,10 +5058,10 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 64
-LTI4 $502
-LABELV $504
-line 756
-;756:					return &voiceChatLists[i];
+LTI4 $506
+LABELV $508
+line 761
+;761:					return &voiceChatLists[i];
 CNSTI4 282952
 ADDRLP4 0
 INDIRI4
@@ -5022,17 +5069,17 @@ MULI4
 ADDRGP4 voiceChatLists
 ADDP4
 RETP4
-ADDRGP4 $453
+ADDRGP4 $457
 JUMPV
-LABELV $499
-line 758
-;757:				}
-;758:			}
-LABELV $497
-line 759
-;759:		}
-LABELV $494
-line 744
+LABELV $503
+line 763
+;762:				}
+;763:			}
+LABELV $501
+line 764
+;764:		}
+LABELV $498
+line 749
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -5042,28 +5089,28 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 8
-LTI4 $493
-line 761
-;760:		// fall back to male gender because we don't have neuter in the mission pack
-;761:		if (gender == GENDER_MALE)
+LTI4 $497
+line 766
+;765:		// fall back to male gender because we don't have neuter in the mission pack
+;766:		if (gender == GENDER_MALE)
 ADDRLP4 140
 INDIRI4
 CNSTI4 0
-NEI4 $509
-line 762
-;762:			break;
-ADDRGP4 $491
+NEI4 $513
+line 767
+;767:			break;
+ADDRGP4 $495
 JUMPV
-LABELV $509
-line 763
-;763:		gender = GENDER_MALE;
+LABELV $513
+line 768
+;768:		gender = GENDER_MALE;
 ADDRLP4 140
 CNSTI4 0
 ASGNI4
-line 764
-;764:	}
-LABELV $490
-line 742
+line 769
+;769:	}
+LABELV $494
+line 747
 ADDRLP4 144
 ADDRLP4 144
 INDIRI4
@@ -5073,17 +5120,17 @@ ASGNI4
 ADDRLP4 144
 INDIRI4
 CNSTI4 2
-LTI4 $489
-LABELV $491
-line 766
-;765:	// store this head model with voice chat for future reference
-;766:	for ( j = 0; j < MAX_HEADMODELS; j++ ) {
+LTI4 $493
+LABELV $495
+line 771
+;770:	// store this head model with voice chat for future reference
+;771:	for ( j = 0; j < MAX_HEADMODELS; j++ ) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-LABELV $511
-line 767
-;767:		if (!strlen(headModelVoiceChat[j].headmodel)) {
+LABELV $515
+line 772
+;772:		if (!strlen(headModelVoiceChat[j].headmodel)) {
 CNSTI4 68
 ADDRLP4 4
 INDIRI4
@@ -5098,9 +5145,9 @@ ASGNI4
 ADDRLP4 156
 INDIRI4
 CNSTI4 0
-NEI4 $515
-line 768
-;768:			Com_sprintf(headModelVoiceChat[j].headmodel, sizeof ( headModelVoiceChat[j].headmodel ),
+NEI4 $519
+line 773
+;773:			Com_sprintf(headModelVoiceChat[j].headmodel, sizeof ( headModelVoiceChat[j].headmodel ),
 CNSTI4 68
 ADDRLP4 4
 INDIRI4
@@ -5110,16 +5157,16 @@ ADDP4
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $371
+ADDRGP4 $375
 ARGP4
 ADDRLP4 8
 ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 770
-;769:					"%s", headModelName);
-;770:			headModelVoiceChat[j].voiceChatNum = 0;
+line 775
+;774:					"%s", headModelName);
+;775:			headModelVoiceChat[j].voiceChatNum = 0;
 CNSTI4 68
 ADDRLP4 4
 INDIRI4
@@ -5128,16 +5175,16 @@ ADDRGP4 headModelVoiceChat+64
 ADDP4
 CNSTI4 0
 ASGNI4
-line 771
-;771:			break;
-ADDRGP4 $513
+line 776
+;776:			break;
+ADDRGP4 $517
 JUMPV
-LABELV $515
-line 773
-;772:		}
-;773:	}
-LABELV $512
-line 766
+LABELV $519
+line 778
+;777:		}
+;778:	}
+LABELV $516
+line 771
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -5147,236 +5194,236 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 64
-LTI4 $511
-LABELV $513
-line 775
-;774:	// just return the first voice chat list
-;775:	return &voiceChatLists[0];
+LTI4 $515
+LABELV $517
+line 780
+;779:	// just return the first voice chat list
+;780:	return &voiceChatLists[0];
 ADDRGP4 voiceChatLists
 RETP4
-LABELV $453
+LABELV $457
 endproc CG_VoiceChatListForClient 164 20
 export CG_PlayVoiceChat
 proc CG_PlayVoiceChat 0 0
-line 796
-;776:}
-;777:
-;778:#define MAX_VOICECHATBUFFER		32
-;779:
-;780:typedef struct bufferedVoiceChat_s
-;781:{
-;782:	int clientNum;
-;783:	sfxHandle_t snd;
-;784:	int voiceOnly;
-;785:	char cmd[MAX_SAY_TEXT];
-;786:	char message[MAX_SAY_TEXT];
-;787:} bufferedVoiceChat_t;
-;788:
-;789:bufferedVoiceChat_t voiceChatBuffer[MAX_VOICECHATBUFFER];
-;790:
-;791:/*
-;792:=================
-;793:CG_PlayVoiceChat
-;794:=================
-;795:*/
-;796:void CG_PlayVoiceChat( bufferedVoiceChat_t *vchat ) {
-line 823
-;797:#ifdef MISSIONPACK
-;798:	// if we are going into the intermission, don't start any voices
-;799:	if ( cg.intermissionStarted ) {
-;800:		return;
-;801:	}
-;802:
-;803:	if ( !cg_noVoiceChats.integer ) {
-;804:		trap_S_StartLocalSound( vchat->snd, CHAN_VOICE);
-;805:		if (vchat->clientNum != cg.snap->ps.clientNum) {
-;806:			int orderTask = CG_ValidOrder(vchat->cmd);
-;807:			if (orderTask > 0) {
-;808:				cgs.acceptOrderTime = cg.time + 5000;
-;809:				Q_strncpyz(cgs.acceptVoice, vchat->cmd, sizeof(cgs.acceptVoice));
-;810:				cgs.acceptTask = orderTask;
-;811:				cgs.acceptLeader = vchat->clientNum;
-;812:			}
-;813:			// see if this was an order
-;814:			CG_ShowResponseHead();
-;815:		}
-;816:	}
-;817:	if (!vchat->voiceOnly && !cg_noVoiceText.integer) {
-;818:		CG_AddToTeamChat( vchat->message );
-;819:		CG_Printf( "%s\n", vchat->message );
-;820:	}
-;821:	voiceChatBuffer[cg.voiceChatBufferOut].snd = 0;
-;822:#endif
-;823:}
-LABELV $518
+line 801
+;781:}
+;782:
+;783:#define MAX_VOICECHATBUFFER		32
+;784:
+;785:typedef struct bufferedVoiceChat_s
+;786:{
+;787:	int clientNum;
+;788:	sfxHandle_t snd;
+;789:	int voiceOnly;
+;790:	char cmd[MAX_SAY_TEXT];
+;791:	char message[MAX_SAY_TEXT];
+;792:} bufferedVoiceChat_t;
+;793:
+;794:bufferedVoiceChat_t voiceChatBuffer[MAX_VOICECHATBUFFER];
+;795:
+;796:/*
+;797:=================
+;798:CG_PlayVoiceChat
+;799:=================
+;800:*/
+;801:void CG_PlayVoiceChat( bufferedVoiceChat_t *vchat ) {
+line 828
+;802:#ifdef MISSIONPACK
+;803:	// if we are going into the intermission, don't start any voices
+;804:	if ( cg.intermissionStarted ) {
+;805:		return;
+;806:	}
+;807:
+;808:	if ( !cg_noVoiceChats.integer ) {
+;809:		trap_S_StartLocalSound( vchat->snd, CHAN_VOICE);
+;810:		if (vchat->clientNum != cg.snap->ps.clientNum) {
+;811:			int orderTask = CG_ValidOrder(vchat->cmd);
+;812:			if (orderTask > 0) {
+;813:				cgs.acceptOrderTime = cg.time + 5000;
+;814:				Q_strncpyz(cgs.acceptVoice, vchat->cmd, sizeof(cgs.acceptVoice));
+;815:				cgs.acceptTask = orderTask;
+;816:				cgs.acceptLeader = vchat->clientNum;
+;817:			}
+;818:			// see if this was an order
+;819:			CG_ShowResponseHead();
+;820:		}
+;821:	}
+;822:	if (!vchat->voiceOnly && !cg_noVoiceText.integer) {
+;823:		CG_AddToTeamChat( vchat->message );
+;824:		CG_Printf( "%s\n", vchat->message );
+;825:	}
+;826:	voiceChatBuffer[cg.voiceChatBufferOut].snd = 0;
+;827:#endif
+;828:}
+LABELV $522
 endproc CG_PlayVoiceChat 0 0
 export CG_PlayBufferedVoiceChats
 proc CG_PlayBufferedVoiceChats 0 0
-line 830
-;824:
-;825:/*
-;826:=====================
-;827:CG_PlayBufferedVoieChats
-;828:=====================
-;829:*/
-;830:void CG_PlayBufferedVoiceChats( void ) {
-line 842
-;831:#ifdef MISSIONPACK
-;832:	if ( cg.voiceChatTime < cg.time ) {
-;833:		if (cg.voiceChatBufferOut != cg.voiceChatBufferIn && voiceChatBuffer[cg.voiceChatBufferOut].snd) {
-;834:			//
-;835:			CG_PlayVoiceChat(&voiceChatBuffer[cg.voiceChatBufferOut]);
-;836:			//
-;837:			cg.voiceChatBufferOut = (cg.voiceChatBufferOut + 1) % MAX_VOICECHATBUFFER;
-;838:			cg.voiceChatTime = cg.time + 1000;
-;839:		}
-;840:	}
-;841:#endif
-;842:}
-LABELV $519
+line 835
+;829:
+;830:/*
+;831:=====================
+;832:CG_PlayBufferedVoieChats
+;833:=====================
+;834:*/
+;835:void CG_PlayBufferedVoiceChats( void ) {
+line 847
+;836:#ifdef MISSIONPACK
+;837:	if ( cg.voiceChatTime < cg.time ) {
+;838:		if (cg.voiceChatBufferOut != cg.voiceChatBufferIn && voiceChatBuffer[cg.voiceChatBufferOut].snd) {
+;839:			//
+;840:			CG_PlayVoiceChat(&voiceChatBuffer[cg.voiceChatBufferOut]);
+;841:			//
+;842:			cg.voiceChatBufferOut = (cg.voiceChatBufferOut + 1) % MAX_VOICECHATBUFFER;
+;843:			cg.voiceChatTime = cg.time + 1000;
+;844:		}
+;845:	}
+;846:#endif
+;847:}
+LABELV $523
 endproc CG_PlayBufferedVoiceChats 0 0
 export CG_AddBufferedVoiceChat
 proc CG_AddBufferedVoiceChat 0 0
-line 849
-;843:
-;844:/*
-;845:=====================
-;846:CG_AddBufferedVoiceChat
-;847:=====================
-;848:*/
-;849:void CG_AddBufferedVoiceChat( bufferedVoiceChat_t *vchat ) {
-line 863
-;850:#ifdef MISSIONPACK
-;851:	// if we are going into the intermission, don't start any voices
-;852:	if ( cg.intermissionStarted ) {
-;853:		return;
-;854:	}
-;855:
-;856:	memcpy(&voiceChatBuffer[cg.voiceChatBufferIn], vchat, sizeof(bufferedVoiceChat_t));
-;857:	cg.voiceChatBufferIn = (cg.voiceChatBufferIn + 1) % MAX_VOICECHATBUFFER;
-;858:	if (cg.voiceChatBufferIn == cg.voiceChatBufferOut) {
-;859:		CG_PlayVoiceChat( &voiceChatBuffer[cg.voiceChatBufferOut] );
-;860:		cg.voiceChatBufferOut++;
-;861:	}
-;862:#endif
-;863:}
-LABELV $520
+line 854
+;848:
+;849:/*
+;850:=====================
+;851:CG_AddBufferedVoiceChat
+;852:=====================
+;853:*/
+;854:void CG_AddBufferedVoiceChat( bufferedVoiceChat_t *vchat ) {
+line 868
+;855:#ifdef MISSIONPACK
+;856:	// if we are going into the intermission, don't start any voices
+;857:	if ( cg.intermissionStarted ) {
+;858:		return;
+;859:	}
+;860:
+;861:	memcpy(&voiceChatBuffer[cg.voiceChatBufferIn], vchat, sizeof(bufferedVoiceChat_t));
+;862:	cg.voiceChatBufferIn = (cg.voiceChatBufferIn + 1) % MAX_VOICECHATBUFFER;
+;863:	if (cg.voiceChatBufferIn == cg.voiceChatBufferOut) {
+;864:		CG_PlayVoiceChat( &voiceChatBuffer[cg.voiceChatBufferOut] );
+;865:		cg.voiceChatBufferOut++;
+;866:	}
+;867:#endif
+;868:}
+LABELV $524
 endproc CG_AddBufferedVoiceChat 0 0
 export CG_VoiceChatLocal
 proc CG_VoiceChatLocal 0 0
-line 870
-;864:
-;865:/*
-;866:=================
-;867:CG_VoiceChatLocal
-;868:=================
-;869:*/
-;870:void CG_VoiceChatLocal( int mode, qboolean voiceOnly, int clientNum, int color, const char *cmd ) {
-line 912
-;871:#ifdef MISSIONPACK
-;872:	char *chat;
-;873:	voiceChatList_t *voiceChatList;
-;874:	clientInfo_t *ci;
-;875:	sfxHandle_t snd;
-;876:	bufferedVoiceChat_t vchat;
-;877:
-;878:	// if we are going into the intermission, don't start any voices
-;879:	if ( cg.intermissionStarted ) {
-;880:		return;
-;881:	}
+line 875
+;869:
+;870:/*
+;871:=================
+;872:CG_VoiceChatLocal
+;873:=================
+;874:*/
+;875:void CG_VoiceChatLocal( int mode, qboolean voiceOnly, int clientNum, int color, const char *cmd ) {
+line 917
+;876:#ifdef MISSIONPACK
+;877:	char *chat;
+;878:	voiceChatList_t *voiceChatList;
+;879:	clientInfo_t *ci;
+;880:	sfxHandle_t snd;
+;881:	bufferedVoiceChat_t vchat;
 ;882:
-;883:	if ( clientNum < 0 || clientNum >= MAX_CLIENTS ) {
-;884:		clientNum = 0;
-;885:	}
-;886:	ci = &cgs.clientinfo[ clientNum ];
+;883:	// if we are going into the intermission, don't start any voices
+;884:	if ( cg.intermissionStarted ) {
+;885:		return;
+;886:	}
 ;887:
-;888:	cgs.currentVoiceClient = clientNum;
-;889:
-;890:	voiceChatList = CG_VoiceChatListForClient( clientNum );
-;891:
-;892:	if ( CG_GetVoiceChat( voiceChatList, cmd, &snd, &chat ) ) {
-;893:		//
-;894:		if ( mode == SAY_TEAM || !cg_teamChatsOnly.integer ) {
-;895:			vchat.clientNum = clientNum;
-;896:			vchat.snd = snd;
-;897:			vchat.voiceOnly = voiceOnly;
-;898:			Q_strncpyz(vchat.cmd, cmd, sizeof(vchat.cmd));
-;899:			if ( mode == SAY_TELL ) {
-;900:				Com_sprintf(vchat.message, sizeof(vchat.message), "[%s]: %c%c%s", ci->name, Q_COLOR_ESCAPE, color, chat);
-;901:			}
-;902:			else if ( mode == SAY_TEAM ) {
-;903:				Com_sprintf(vchat.message, sizeof(vchat.message), "(%s): %c%c%s", ci->name, Q_COLOR_ESCAPE, color, chat);
-;904:			}
-;905:			else {
-;906:				Com_sprintf(vchat.message, sizeof(vchat.message), "%s: %c%c%s", ci->name, Q_COLOR_ESCAPE, color, chat);
-;907:			}
-;908:			CG_AddBufferedVoiceChat(&vchat);
-;909:		}
-;910:	}
-;911:#endif
-;912:}
-LABELV $521
+;888:	if ( clientNum < 0 || clientNum >= MAX_CLIENTS ) {
+;889:		clientNum = 0;
+;890:	}
+;891:	ci = &cgs.clientinfo[ clientNum ];
+;892:
+;893:	cgs.currentVoiceClient = clientNum;
+;894:
+;895:	voiceChatList = CG_VoiceChatListForClient( clientNum );
+;896:
+;897:	if ( CG_GetVoiceChat( voiceChatList, cmd, &snd, &chat ) ) {
+;898:		//
+;899:		if ( mode == SAY_TEAM || !cg_teamChatsOnly.integer ) {
+;900:			vchat.clientNum = clientNum;
+;901:			vchat.snd = snd;
+;902:			vchat.voiceOnly = voiceOnly;
+;903:			Q_strncpyz(vchat.cmd, cmd, sizeof(vchat.cmd));
+;904:			if ( mode == SAY_TELL ) {
+;905:				Com_sprintf(vchat.message, sizeof(vchat.message), "[%s]: %c%c%s", ci->name, Q_COLOR_ESCAPE, color, chat);
+;906:			}
+;907:			else if ( mode == SAY_TEAM ) {
+;908:				Com_sprintf(vchat.message, sizeof(vchat.message), "(%s): %c%c%s", ci->name, Q_COLOR_ESCAPE, color, chat);
+;909:			}
+;910:			else {
+;911:				Com_sprintf(vchat.message, sizeof(vchat.message), "%s: %c%c%s", ci->name, Q_COLOR_ESCAPE, color, chat);
+;912:			}
+;913:			CG_AddBufferedVoiceChat(&vchat);
+;914:		}
+;915:	}
+;916:#endif
+;917:}
+LABELV $525
 endproc CG_VoiceChatLocal 0 0
 export CG_VoiceChat
 proc CG_VoiceChat 0 0
-line 919
-;913:
-;914:/*
-;915:=================
-;916:CG_VoiceChat
-;917:=================
-;918:*/
-;919:void CG_VoiceChat( int mode ) {
-line 940
-;920:#ifdef MISSIONPACK
-;921:	const char *cmd;
-;922:	int clientNum, color;
-;923:	qboolean voiceOnly;
-;924:
-;925:	voiceOnly = atoi(CG_Argv(1));
-;926:	clientNum = atoi(CG_Argv(2));
-;927:	color = atoi(CG_Argv(3));
-;928:	cmd = CG_Argv(4);
+line 924
+;918:
+;919:/*
+;920:=================
+;921:CG_VoiceChat
+;922:=================
+;923:*/
+;924:void CG_VoiceChat( int mode ) {
+line 945
+;925:#ifdef MISSIONPACK
+;926:	const char *cmd;
+;927:	int clientNum, color;
+;928:	qboolean voiceOnly;
 ;929:
-;930:	if (cg_noTaunt.integer != 0) {
-;931:		if (!strcmp(cmd, VOICECHAT_KILLINSULT)  || !strcmp(cmd, VOICECHAT_TAUNT) || \
-;932:			!strcmp(cmd, VOICECHAT_DEATHINSULT) || !strcmp(cmd, VOICECHAT_KILLGAUNTLET) || \
-;933:			!strcmp(cmd, VOICECHAT_PRAISE)) {
-;934:			return;
-;935:		}
-;936:	}
-;937:
-;938:	CG_VoiceChatLocal( mode, voiceOnly, clientNum, color, cmd );
-;939:#endif
-;940:}
-LABELV $522
+;930:	voiceOnly = atoi(CG_Argv(1));
+;931:	clientNum = atoi(CG_Argv(2));
+;932:	color = atoi(CG_Argv(3));
+;933:	cmd = CG_Argv(4);
+;934:
+;935:	if (cg_noTaunt.integer != 0) {
+;936:		if (!strcmp(cmd, VOICECHAT_KILLINSULT)  || !strcmp(cmd, VOICECHAT_TAUNT) || \
+;937:			!strcmp(cmd, VOICECHAT_DEATHINSULT) || !strcmp(cmd, VOICECHAT_KILLGAUNTLET) || \
+;938:			!strcmp(cmd, VOICECHAT_PRAISE)) {
+;939:			return;
+;940:		}
+;941:	}
+;942:
+;943:	CG_VoiceChatLocal( mode, voiceOnly, clientNum, color, cmd );
+;944:#endif
+;945:}
+LABELV $526
 endproc CG_VoiceChat 0 0
 proc CG_RemoveChatEscapeChar 16 0
-line 947
-;941:
-;942:/*
-;943:=================
-;944:CG_RemoveChatEscapeChar
-;945:=================
-;946:*/
-;947:static void CG_RemoveChatEscapeChar( char *text ) {
-line 950
-;948:	int i, l;
-;949:
-;950:	l = 0;
+line 952
+;946:
+;947:/*
+;948:=================
+;949:CG_RemoveChatEscapeChar
+;950:=================
+;951:*/
+;952:static void CG_RemoveChatEscapeChar( char *text ) {
+line 955
+;953:	int i, l;
+;954:
+;955:	l = 0;
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-line 951
-;951:	for ( i = 0; text[i]; i++ ) {
+line 956
+;956:	for ( i = 0; text[i]; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $527
+ADDRGP4 $531
 JUMPV
-LABELV $524
-line 952
-;952:		if (text[i] == '\x19')
+LABELV $528
+line 957
+;957:		if (text[i] == '\x19')
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -5385,14 +5432,14 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 25
-NEI4 $528
-line 953
-;953:			continue;
-ADDRGP4 $525
+NEI4 $532
+line 958
+;958:			continue;
+ADDRGP4 $529
 JUMPV
-LABELV $528
-line 954
-;954:		text[l++] = text[i];
+LABELV $532
+line 959
+;959:		text[l++] = text[i];
 ADDRLP4 8
 ADDRLP4 4
 INDIRI4
@@ -5419,17 +5466,17 @@ INDIRP4
 ADDP4
 INDIRI1
 ASGNI1
-line 955
-;955:	}
-LABELV $525
-line 951
+line 960
+;960:	}
+LABELV $529
+line 956
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $527
+LABELV $531
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -5438,9 +5485,9 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $524
-line 956
-;956:	text[l] = '\0';
+NEI4 $528
+line 961
+;961:	text[l] = '\0';
 ADDRLP4 4
 INDIRI4
 ADDRFP4 0
@@ -5448,33 +5495,33 @@ INDIRP4
 ADDP4
 CNSTI1 0
 ASGNI1
-line 957
-;957:}
-LABELV $523
+line 962
+;962:}
+LABELV $527
 endproc CG_RemoveChatEscapeChar 16 0
 proc CG_ServerCommand 264 12
-line 967
-;958:
-;959:/*
-;960:=================
-;961:CG_ServerCommand
-;962:
-;963:The string has been tokenized and can be retrieved with
-;964:Cmd_Argc() / Cmd_Argv()
+line 972
+;963:
+;964:/*
 ;965:=================
-;966:*/
-;967:static void CG_ServerCommand( void ) {
-line 977
-;968:	const char	*cmd;
-;969:	char		text[MAX_SAY_TEXT];
-;970:	
-;971:	// Shafe - Trep Radar
-;972:	int				count;
-;973:    int				i;
-;974:    const char		*ptr;
-;975:	// End Shafe
-;976:
-;977:	cmd = CG_Argv(0);
+;966:CG_ServerCommand
+;967:
+;968:The string has been tokenized and can be retrieved with
+;969:Cmd_Argc() / Cmd_Argv()
+;970:=================
+;971:*/
+;972:static void CG_ServerCommand( void ) {
+line 982
+;973:	const char	*cmd;
+;974:	char		text[MAX_SAY_TEXT];
+;975:	
+;976:	// Shafe - Trep Radar
+;977:	int				count;
+;978:    int				i;
+;979:    const char		*ptr;
+;980:	// End Shafe
+;981:
+;982:	cmd = CG_Argv(0);
 CNSTI4 0
 ARGI4
 ADDRLP4 168
@@ -5485,29 +5532,29 @@ ADDRLP4 8
 ADDRLP4 168
 INDIRP4
 ASGNP4
-line 979
-;978:
-;979:	if ( !cmd[0] ) {
+line 984
+;983:
+;984:	if ( !cmd[0] ) {
 ADDRLP4 8
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $531
-line 981
-;980:		// server claimed the command
-;981:		return;
-ADDRGP4 $530
+NEI4 $535
+line 986
+;985:		// server claimed the command
+;986:		return;
+ADDRGP4 $534
 JUMPV
-LABELV $531
-line 984
-;982:	}
-;983:
-;984:	if ( !strcmp( cmd, "cp" ) ) {
+LABELV $535
+line 989
+;987:	}
+;988:
+;989:	if ( !strcmp( cmd, "cp" ) ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $535
+ADDRGP4 $539
 ARGP4
 ADDRLP4 172
 ADDRGP4 strcmp
@@ -5516,9 +5563,9 @@ ASGNI4
 ADDRLP4 172
 INDIRI4
 CNSTI4 0
-NEI4 $533
-line 985
-;985:		CG_CenterPrint( CG_Argv(1), SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
+NEI4 $537
+line 990
+;990:		CG_CenterPrint( CG_Argv(1), SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
 CNSTI4 1
 ARGI4
 ADDRLP4 176
@@ -5535,46 +5582,46 @@ ARGI4
 ADDRGP4 CG_CenterPrint
 CALLV
 pop
-line 986
-;986:		return;
-ADDRGP4 $530
-JUMPV
-LABELV $533
-line 989
-;987:	}
-;988:
-;989:	if ( !strcmp( cmd, "cs" ) ) {
-ADDRLP4 8
-INDIRP4
-ARGP4
-ADDRGP4 $538
-ARGP4
-ADDRLP4 176
-ADDRGP4 strcmp
-CALLI4
-ASGNI4
-ADDRLP4 176
-INDIRI4
-CNSTI4 0
-NEI4 $536
-line 990
-;990:		CG_ConfigStringModified();
-ADDRGP4 CG_ConfigStringModified
-CALLV
-pop
 line 991
 ;991:		return;
-ADDRGP4 $530
+ADDRGP4 $534
 JUMPV
-LABELV $536
+LABELV $537
 line 994
 ;992:	}
 ;993:
-;994:	if ( !strcmp( cmd, "print" ) ) {
+;994:	if ( !strcmp( cmd, "cs" ) ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $541
+ADDRGP4 $542
+ARGP4
+ADDRLP4 176
+ADDRGP4 strcmp
+CALLI4
+ASGNI4
+ADDRLP4 176
+INDIRI4
+CNSTI4 0
+NEI4 $540
+line 995
+;995:		CG_ConfigStringModified();
+ADDRGP4 CG_ConfigStringModified
+CALLV
+pop
+line 996
+;996:		return;
+ADDRGP4 $534
+JUMPV
+LABELV $540
+line 999
+;997:	}
+;998:
+;999:	if ( !strcmp( cmd, "print" ) ) {
+ADDRLP4 8
+INDIRP4
+ARGP4
+ADDRGP4 $545
 ARGP4
 ADDRLP4 180
 ADDRGP4 strcmp
@@ -5583,16 +5630,16 @@ ASGNI4
 ADDRLP4 180
 INDIRI4
 CNSTI4 0
-NEI4 $539
-line 995
-;995:		CG_Printf( "%s", CG_Argv(1) );
+NEI4 $543
+line 1000
+;1000:		CG_Printf( "%s", CG_Argv(1) );
 CNSTI4 1
 ARGI4
 ADDRLP4 184
 ADDRGP4 CG_Argv
 CALLP4
 ASGNP4
-ADDRGP4 $371
+ADDRGP4 $375
 ARGP4
 ADDRLP4 184
 INDIRP4
@@ -5600,28 +5647,28 @@ ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 1005
-;996:#ifdef MISSIONPACK
-;997:		cmd = CG_Argv(1);			// yes, this is obviously a hack, but so is the way we hear about
-;998:									// votes passing or failing
-;999:		if ( !Q_stricmpn( cmd, "vote failed", 11 ) || !Q_stricmpn( cmd, "team vote failed", 16 )) {
-;1000:			trap_S_StartLocalSound( cgs.media.voteFailed, CHAN_ANNOUNCER );
-;1001:		} else if ( !Q_stricmpn( cmd, "vote passed", 11 ) || !Q_stricmpn( cmd, "team vote passed", 16 ) ) {
-;1002:			trap_S_StartLocalSound( cgs.media.votePassed, CHAN_ANNOUNCER );
-;1003:		}
-;1004:#endif
-;1005:		return;
-ADDRGP4 $530
+line 1010
+;1001:#ifdef MISSIONPACK
+;1002:		cmd = CG_Argv(1);			// yes, this is obviously a hack, but so is the way we hear about
+;1003:									// votes passing or failing
+;1004:		if ( !Q_stricmpn( cmd, "vote failed", 11 ) || !Q_stricmpn( cmd, "team vote failed", 16 )) {
+;1005:			trap_S_StartLocalSound( cgs.media.voteFailed, CHAN_ANNOUNCER );
+;1006:		} else if ( !Q_stricmpn( cmd, "vote passed", 11 ) || !Q_stricmpn( cmd, "team vote passed", 16 ) ) {
+;1007:			trap_S_StartLocalSound( cgs.media.votePassed, CHAN_ANNOUNCER );
+;1008:		}
+;1009:#endif
+;1010:		return;
+ADDRGP4 $534
 JUMPV
-LABELV $539
-line 1008
-;1006:	}
-;1007:
-;1008:	if ( !strcmp( cmd, "chat" ) ) {
+LABELV $543
+line 1013
+;1011:	}
+;1012:
+;1013:	if ( !strcmp( cmd, "chat" ) ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $544
+ADDRGP4 $548
 ARGP4
 ADDRLP4 184
 ADDRGP4 strcmp
@@ -5630,15 +5677,15 @@ ASGNI4
 ADDRLP4 184
 INDIRI4
 CNSTI4 0
-NEI4 $542
-line 1009
-;1009:		if ( !cg_teamChatsOnly.integer ) {
+NEI4 $546
+line 1014
+;1014:		if ( !cg_teamChatsOnly.integer ) {
 ADDRGP4 cg_teamChatsOnly+12
 INDIRI4
 CNSTI4 0
-NEI4 $530
-line 1010
-;1010:			trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
+NEI4 $534
+line 1015
+;1015:			trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
 ADDRGP4 cgs+152340+748
 INDIRI4
 ARGI4
@@ -5647,8 +5694,8 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 1011
-;1011:			Q_strncpyz( text, CG_Argv(1), MAX_SAY_TEXT );
+line 1016
+;1016:			Q_strncpyz( text, CG_Argv(1), MAX_SAY_TEXT );
 CNSTI4 1
 ARGI4
 ADDRLP4 188
@@ -5665,37 +5712,37 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 1012
-;1012:			CG_RemoveChatEscapeChar( text );
+line 1017
+;1017:			CG_RemoveChatEscapeChar( text );
 ADDRLP4 16
 ARGP4
 ADDRGP4 CG_RemoveChatEscapeChar
 CALLV
 pop
-line 1013
-;1013:			CG_Printf( "%s\n", text );
-ADDRGP4 $550
+line 1018
+;1018:			CG_Printf( "%s\n", text );
+ADDRGP4 $554
 ARGP4
 ADDRLP4 16
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 1014
-;1014:		}
-line 1015
-;1015:		return;
-ADDRGP4 $530
+line 1019
+;1019:		}
+line 1020
+;1020:		return;
+ADDRGP4 $534
 JUMPV
-LABELV $542
-line 1018
-;1016:	}
-;1017:
-;1018:	if ( !strcmp( cmd, "tchat" ) ) {
+LABELV $546
+line 1023
+;1021:	}
+;1022:
+;1023:	if ( !strcmp( cmd, "tchat" ) ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $553
+ADDRGP4 $557
 ARGP4
 ADDRLP4 188
 ADDRGP4 strcmp
@@ -5704,9 +5751,9 @@ ASGNI4
 ADDRLP4 188
 INDIRI4
 CNSTI4 0
-NEI4 $551
-line 1019
-;1019:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
+NEI4 $555
+line 1024
+;1024:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
 ADDRGP4 cgs+152340+748
 INDIRI4
 ARGI4
@@ -5715,8 +5762,8 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 1020
-;1020:		Q_strncpyz( text, CG_Argv(1), MAX_SAY_TEXT );
+line 1025
+;1025:		Q_strncpyz( text, CG_Argv(1), MAX_SAY_TEXT );
 CNSTI4 1
 ARGI4
 ADDRLP4 192
@@ -5733,182 +5780,182 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 1021
-;1021:		CG_RemoveChatEscapeChar( text );
+line 1026
+;1026:		CG_RemoveChatEscapeChar( text );
 ADDRLP4 16
 ARGP4
 ADDRGP4 CG_RemoveChatEscapeChar
 CALLV
 pop
-line 1022
-;1022:		CG_AddToTeamChat( text );
+line 1027
+;1027:		CG_AddToTeamChat( text );
 ADDRLP4 16
 ARGP4
 ADDRGP4 CG_AddToTeamChat
 CALLV
 pop
-line 1023
-;1023:		CG_Printf( "%s\n", text );
-ADDRGP4 $550
+line 1028
+;1028:		CG_Printf( "%s\n", text );
+ADDRGP4 $554
 ARGP4
 ADDRLP4 16
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 1024
-;1024:		return;
-ADDRGP4 $530
+line 1029
+;1029:		return;
+ADDRGP4 $534
 JUMPV
-LABELV $551
-line 1026
-;1025:	}
-;1026:	if ( !strcmp( cmd, "vchat" ) ) {
-ADDRLP4 8
-INDIRP4
-ARGP4
-ADDRGP4 $558
-ARGP4
-ADDRLP4 192
-ADDRGP4 strcmp
-CALLI4
-ASGNI4
-ADDRLP4 192
-INDIRI4
-CNSTI4 0
-NEI4 $556
-line 1027
-;1027:		CG_VoiceChat( SAY_ALL );
-CNSTI4 0
-ARGI4
-ADDRGP4 CG_VoiceChat
-CALLV
-pop
-line 1028
-;1028:		return;
-ADDRGP4 $530
-JUMPV
-LABELV $556
+LABELV $555
 line 1031
-;1029:	}
-;1030:
-;1031:	if ( !strcmp( cmd, "vtchat" ) ) {
+;1030:	}
+;1031:	if ( !strcmp( cmd, "vchat" ) ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $561
+ADDRGP4 $562
 ARGP4
-ADDRLP4 196
+ADDRLP4 192
 ADDRGP4 strcmp
 CALLI4
 ASGNI4
-ADDRLP4 196
+ADDRLP4 192
 INDIRI4
 CNSTI4 0
-NEI4 $559
+NEI4 $560
 line 1032
-;1032:		CG_VoiceChat( SAY_TEAM );
-CNSTI4 1
+;1032:		CG_VoiceChat( SAY_ALL );
+CNSTI4 0
 ARGI4
 ADDRGP4 CG_VoiceChat
 CALLV
 pop
 line 1033
 ;1033:		return;
-ADDRGP4 $530
+ADDRGP4 $534
 JUMPV
-LABELV $559
+LABELV $560
 line 1036
 ;1034:	}
 ;1035:
-;1036:	if ( !strcmp( cmd, "vtell" ) ) {
+;1036:	if ( !strcmp( cmd, "vtchat" ) ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $564
+ADDRGP4 $565
 ARGP4
-ADDRLP4 200
+ADDRLP4 196
 ADDRGP4 strcmp
 CALLI4
 ASGNI4
-ADDRLP4 200
+ADDRLP4 196
 INDIRI4
 CNSTI4 0
-NEI4 $562
+NEI4 $563
 line 1037
-;1037:		CG_VoiceChat( SAY_TELL );
-CNSTI4 2
+;1037:		CG_VoiceChat( SAY_TEAM );
+CNSTI4 1
 ARGI4
 ADDRGP4 CG_VoiceChat
 CALLV
 pop
 line 1038
 ;1038:		return;
-ADDRGP4 $530
+ADDRGP4 $534
 JUMPV
-LABELV $562
+LABELV $563
 line 1041
 ;1039:	}
 ;1040:
-;1041:	if ( !strcmp( cmd, "scores" ) ) {
+;1041:	if ( !strcmp( cmd, "vtell" ) ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $567
+ADDRGP4 $568
 ARGP4
-ADDRLP4 204
+ADDRLP4 200
 ADDRGP4 strcmp
 CALLI4
 ASGNI4
-ADDRLP4 204
+ADDRLP4 200
 INDIRI4
 CNSTI4 0
-NEI4 $565
+NEI4 $566
 line 1042
-;1042:		CG_ParseScores();
-ADDRGP4 CG_ParseScores
+;1042:		CG_VoiceChat( SAY_TELL );
+CNSTI4 2
+ARGI4
+ADDRGP4 CG_VoiceChat
 CALLV
 pop
 line 1043
 ;1043:		return;
-ADDRGP4 $530
+ADDRGP4 $534
 JUMPV
-LABELV $565
+LABELV $566
 line 1046
 ;1044:	}
 ;1045:
-;1046:	if ( !strcmp( cmd, "tinfo" ) ) {
+;1046:	if ( !strcmp( cmd, "scores" ) ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $570
+ADDRGP4 $571
 ARGP4
-ADDRLP4 208
+ADDRLP4 204
 ADDRGP4 strcmp
 CALLI4
 ASGNI4
-ADDRLP4 208
+ADDRLP4 204
 INDIRI4
 CNSTI4 0
-NEI4 $568
+NEI4 $569
 line 1047
-;1047:		CG_ParseTeamInfo();
-ADDRGP4 CG_ParseTeamInfo
+;1047:		CG_ParseScores();
+ADDRGP4 CG_ParseScores
 CALLV
 pop
 line 1048
 ;1048:		return;
-ADDRGP4 $530
+ADDRGP4 $534
 JUMPV
-LABELV $568
+LABELV $569
 line 1051
 ;1049:	}
 ;1050:
-;1051:	if ( !strcmp( cmd, "map_restart" ) ) {
+;1051:	if ( !strcmp( cmd, "tinfo" ) ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $573
+ADDRGP4 $574
+ARGP4
+ADDRLP4 208
+ADDRGP4 strcmp
+CALLI4
+ASGNI4
+ADDRLP4 208
+INDIRI4
+CNSTI4 0
+NEI4 $572
+line 1052
+;1052:		CG_ParseTeamInfo();
+ADDRGP4 CG_ParseTeamInfo
+CALLV
+pop
+line 1053
+;1053:		return;
+ADDRGP4 $534
+JUMPV
+LABELV $572
+line 1056
+;1054:	}
+;1055:
+;1056:	if ( !strcmp( cmd, "map_restart" ) ) {
+ADDRLP4 8
+INDIRP4
+ARGP4
+ADDRGP4 $577
 ARGP4
 ADDRLP4 212
 ADDRGP4 strcmp
@@ -5917,25 +5964,25 @@ ASGNI4
 ADDRLP4 212
 INDIRI4
 CNSTI4 0
-NEI4 $571
-line 1052
-;1052:		CG_MapRestart();
+NEI4 $575
+line 1057
+;1057:		CG_MapRestart();
 ADDRGP4 CG_MapRestart
 CALLV
 pop
-line 1053
-;1053:		return;
-ADDRGP4 $530
+line 1058
+;1058:		return;
+ADDRGP4 $534
 JUMPV
-LABELV $571
-line 1056
-;1054:	}
-;1055:
-;1056:  if ( Q_stricmp (cmd, "remapShader") == 0 ) {
+LABELV $575
+line 1061
+;1059:	}
+;1060:
+;1061:  if ( Q_stricmp (cmd, "remapShader") == 0 ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $576
+ADDRGP4 $580
 ARGP4
 ADDRLP4 216
 ADDRGP4 Q_stricmp
@@ -5944,9 +5991,9 @@ ASGNI4
 ADDRLP4 216
 INDIRI4
 CNSTI4 0
-NEI4 $574
-line 1057
-;1057:		if (trap_Argc() == 4) {
+NEI4 $578
+line 1062
+;1062:		if (trap_Argc() == 4) {
 ADDRLP4 220
 ADDRGP4 trap_Argc
 CALLI4
@@ -5954,9 +6001,9 @@ ASGNI4
 ADDRLP4 220
 INDIRI4
 CNSTI4 4
-NEI4 $577
-line 1058
-;1058:			trap_R_RemapShader(CG_Argv(1), CG_Argv(2), CG_Argv(3));
+NEI4 $581
+line 1063
+;1063:			trap_R_RemapShader(CG_Argv(1), CG_Argv(2), CG_Argv(3));
 CNSTI4 1
 ARGI4
 ADDRLP4 224
@@ -5987,20 +6034,20 @@ ARGP4
 ADDRGP4 trap_R_RemapShader
 CALLV
 pop
-line 1059
-;1059:		}
-LABELV $577
-line 1060
-;1060:	}
-LABELV $574
-line 1063
-;1061:
-;1062:	// loaddeferred can be both a servercmd and a consolecmd
-;1063:	if ( !strcmp( cmd, "loaddefered" ) ) {	// FIXME: spelled wrong, but not changing for demo
+line 1064
+;1064:		}
+LABELV $581
+line 1065
+;1065:	}
+LABELV $578
+line 1068
+;1066:
+;1067:	// loaddeferred can be both a servercmd and a consolecmd
+;1068:	if ( !strcmp( cmd, "loaddefered" ) ) {	// FIXME: spelled wrong, but not changing for demo
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $581
+ADDRGP4 $585
 ARGP4
 ADDRLP4 220
 ADDRGP4 strcmp
@@ -6009,56 +6056,56 @@ ASGNI4
 ADDRLP4 220
 INDIRI4
 CNSTI4 0
-NEI4 $579
-line 1064
-;1064:		CG_LoadDeferredPlayers();
+NEI4 $583
+line 1069
+;1069:		CG_LoadDeferredPlayers();
 ADDRGP4 CG_LoadDeferredPlayers
 CALLV
 pop
-line 1065
-;1065:		return;
-ADDRGP4 $530
-JUMPV
-LABELV $579
 line 1070
-;1066:	}
-;1067:
-;1068:	// clientLevelShot is sent before taking a special screenshot for
-;1069:	// the menu system during development
-;1070:	if ( !strcmp( cmd, "clientLevelShot" ) ) {
-ADDRLP4 8
-INDIRP4
-ARGP4
-ADDRGP4 $584
-ARGP4
-ADDRLP4 224
-ADDRGP4 strcmp
-CALLI4
-ASGNI4
-ADDRLP4 224
-INDIRI4
-CNSTI4 0
-NEI4 $582
-line 1071
-;1071:		cg.levelShot = qtrue;
-ADDRGP4 cg+12
-CNSTI4 1
-ASGNI4
-line 1072
-;1072:		return;
-ADDRGP4 $530
+;1070:		return;
+ADDRGP4 $534
 JUMPV
-LABELV $582
-line 1076
-;1073:	}
-;1074:
-;1075:	// Shafe - Trep - Radar
-;1076:    if ( !strcmp( cmd, "playerpos" ) ) 
+LABELV $583
+line 1075
+;1071:	}
+;1072:
+;1073:	// clientLevelShot is sent before taking a special screenshot for
+;1074:	// the menu system during development
+;1075:	if ( !strcmp( cmd, "clientLevelShot" ) ) {
 ADDRLP4 8
 INDIRP4
 ARGP4
 ADDRGP4 $588
 ARGP4
+ADDRLP4 224
+ADDRGP4 strcmp
+CALLI4
+ASGNI4
+ADDRLP4 224
+INDIRI4
+CNSTI4 0
+NEI4 $586
+line 1076
+;1076:		cg.levelShot = qtrue;
+ADDRGP4 cg+12
+CNSTI4 1
+ASGNI4
+line 1077
+;1077:		return;
+ADDRGP4 $534
+JUMPV
+LABELV $586
+line 1081
+;1078:	}
+;1079:
+;1080:	// Shafe - Trep - Radar
+;1081:    if ( !strcmp( cmd, "playerpos" ) ) 
+ADDRLP4 8
+INDIRP4
+ARGP4
+ADDRGP4 $592
+ARGP4
 ADDRLP4 228
 ADDRGP4 strcmp
 CALLI4
@@ -6066,14 +6113,14 @@ ASGNI4
 ADDRLP4 228
 INDIRI4
 CNSTI4 0
-NEI4 $586
-line 1077
-;1077:    {
-line 1081
-;1078:        // -- expand the comma delimited string into the player positions --
-;1079:
-;1080:        //clear out old list of positions
-;1081:        memset(cg_playerOrigins, kENTRY_EOL, sizeof(cg_playerOrigins));
+NEI4 $590
+line 1082
+;1082:    {
+line 1086
+;1083:        // -- expand the comma delimited string into the player positions --
+;1084:
+;1085:        //clear out old list of positions
+;1086:        memset(cg_playerOrigins, kENTRY_EOL, sizeof(cg_playerOrigins));
 ADDRGP4 cg_playerOrigins
 ARGP4
 CNSTI4 0
@@ -6083,10 +6130,10 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1084
-;1082:
-;1083:        //get the number of entries in the list
-;1084:        count = atof(CG_Argv(1));
+line 1089
+;1087:
+;1088:        //get the number of entries in the list
+;1089:        count = atof(CG_Argv(1));
 CNSTI4 1
 ARGI4
 ADDRLP4 232
@@ -6105,19 +6152,19 @@ ADDRLP4 236
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1085
-;1085:        for(i=0;i<count;i++)
+line 1090
+;1090:        for(i=0;i<count;i++)
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $592
+ADDRGP4 $596
 JUMPV
-LABELV $589
-line 1086
-;1086:        {
-line 1088
-;1087:            //set the string pointer to the correct set of parameters
-;1088:            ptr = CG_Argv(i+2);
+LABELV $593
+line 1091
+;1091:        {
+line 1093
+;1092:            //set the string pointer to the correct set of parameters
+;1093:            ptr = CG_Argv(i+2);
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -6131,10 +6178,10 @@ ADDRLP4 0
 ADDRLP4 240
 INDIRP4
 ASGNP4
-line 1091
-;1089:
-;1090:            //read in the first number
-;1091:            cg_playerOrigins[i].pos[0] = atof(ptr);
+line 1096
+;1094:
+;1095:            //read in the first number
+;1096:            cg_playerOrigins[i].pos[0] = atof(ptr);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6151,10 +6198,10 @@ ADDP4
 ADDRLP4 244
 INDIRF4
 ASGNF4
-line 1094
-;1092:
-;1093:            //move the ptr on until we come to a comma
-;1094:            ptr = strchr(ptr, ',');
+line 1099
+;1097:
+;1098:            //move the ptr on until we come to a comma
+;1099:            ptr = strchr(ptr, ',');
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6168,20 +6215,20 @@ ADDRLP4 0
 ADDRLP4 248
 INDIRP4
 ASGNP4
-line 1097
-;1095:
-;1096:            //skip over the comma
-;1097:            ptr++;
+line 1102
+;1100:
+;1101:            //skip over the comma
+;1102:            ptr++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 1100
-;1098:
-;1099:            //read in the next number
-;1100:            cg_playerOrigins[i].pos[1] = atof(ptr);
+line 1105
+;1103:
+;1104:            //read in the next number
+;1105:            cg_playerOrigins[i].pos[1] = atof(ptr);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6198,10 +6245,10 @@ ADDP4
 ADDRLP4 252
 INDIRF4
 ASGNF4
-line 1103
-;1101:
-;1102:            //move the ptr on until we come to a comma
-;1103:            ptr = strchr(ptr, ',');
+line 1108
+;1106:
+;1107:            //move the ptr on until we come to a comma
+;1108:            ptr = strchr(ptr, ',');
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6215,20 +6262,20 @@ ADDRLP4 0
 ADDRLP4 256
 INDIRP4
 ASGNP4
-line 1106
-;1104:
-;1105:            //skip over the comma
-;1106:            ptr++;
+line 1111
+;1109:
+;1110:            //skip over the comma
+;1111:            ptr++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 1109
-;1107:
-;1108:            //read in the final number
-;1109:            cg_playerOrigins[i].pos[2] = atof(ptr);
+line 1114
+;1112:
+;1113:            //read in the final number
+;1114:            cg_playerOrigins[i].pos[2] = atof(ptr);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6245,10 +6292,10 @@ ADDP4
 ADDRLP4 260
 INDIRF4
 ASGNF4
-line 1112
-;1110:
-;1111:            //mark the entry as valid
-;1112:            cg_playerOrigins[i].valid = kENTRY_VALID;
+line 1117
+;1115:
+;1116:            //mark the entry as valid
+;1117:            cg_playerOrigins[i].valid = kENTRY_VALID;
 ADDRLP4 4
 INDIRI4
 CNSTI4 4
@@ -6257,33 +6304,33 @@ ADDRGP4 cg_playerOrigins
 ADDP4
 CNSTI4 2
 ASGNI4
-line 1113
-;1113:        }
-LABELV $590
-line 1085
+line 1118
+;1118:        }
+LABELV $594
+line 1090
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $592
+LABELV $596
 ADDRLP4 4
 INDIRI4
 ADDRLP4 12
 INDIRI4
-LTI4 $589
-line 1114
-;1114:        return;
-ADDRGP4 $530
+LTI4 $593
+line 1119
+;1119:        return;
+ADDRGP4 $534
 JUMPV
-LABELV $586
-line 1118
-;1115:    }
-;1116:	// End Shafe
-;1117:
-;1118:	CG_Printf( "Unknown client game command: %s\n", cmd );
-ADDRGP4 $598
+LABELV $590
+line 1123
+;1120:    }
+;1121:	// End Shafe
+;1122:
+;1123:	CG_Printf( "Unknown client game command: %s\n", cmd );
+ADDRGP4 $602
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -6291,31 +6338,31 @@ ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 1119
-;1119:}
-LABELV $530
+line 1124
+;1124:}
+LABELV $534
 endproc CG_ServerCommand 264 12
 export CG_ExecuteNewServerCommands
 proc CG_ExecuteNewServerCommands 12 4
-line 1130
-;1120:
-;1121:
-;1122:/*
-;1123:====================
-;1124:CG_ExecuteNewServerCommands
+line 1135
 ;1125:
-;1126:Execute all of the server commands that were received along
-;1127:with this this snapshot.
+;1126:
+;1127:/*
 ;1128:====================
-;1129:*/
-;1130:void CG_ExecuteNewServerCommands( int latestSequence ) {
-ADDRGP4 $601
+;1129:CG_ExecuteNewServerCommands
+;1130:
+;1131:Execute all of the server commands that were received along
+;1132:with this this snapshot.
+;1133:====================
+;1134:*/
+;1135:void CG_ExecuteNewServerCommands( int latestSequence ) {
+ADDRGP4 $605
 JUMPV
-LABELV $600
-line 1131
-;1131:	while ( cgs.serverCommandSequence < latestSequence ) {
-line 1132
-;1132:		if ( trap_GetServerCommand( ++cgs.serverCommandSequence ) ) {
+LABELV $604
+line 1136
+;1136:	while ( cgs.serverCommandSequence < latestSequence ) {
+line 1137
+;1137:		if ( trap_GetServerCommand( ++cgs.serverCommandSequence ) ) {
 ADDRLP4 0
 ADDRGP4 cgs+31444
 ASGNP4
@@ -6341,27 +6388,27 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $604
-line 1133
-;1133:			CG_ServerCommand();
+EQI4 $608
+line 1138
+;1138:			CG_ServerCommand();
 ADDRGP4 CG_ServerCommand
 CALLV
 pop
-line 1134
-;1134:		}
-LABELV $604
-line 1135
-;1135:	}
-LABELV $601
-line 1131
+line 1139
+;1139:		}
+LABELV $608
+line 1140
+;1140:	}
+LABELV $605
+line 1136
 ADDRGP4 cgs+31444
 INDIRI4
 ADDRFP4 0
 INDIRI4
-LTI4 $600
-line 1136
-;1136:}
-LABELV $599
+LTI4 $604
+line 1141
+;1141:}
+LABELV $603
 endproc CG_ExecuteNewServerCommands 12 4
 bss
 export voiceChatBuffer
@@ -6903,7 +6950,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $598
+LABELV $602
 byte 1 85
 byte 1 110
 byte 1 107
@@ -6938,7 +6985,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $588
+LABELV $592
 byte 1 112
 byte 1 108
 byte 1 97
@@ -6950,7 +6997,7 @@ byte 1 111
 byte 1 115
 byte 1 0
 align 1
-LABELV $584
+LABELV $588
 byte 1 99
 byte 1 108
 byte 1 105
@@ -6968,7 +7015,7 @@ byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $581
+LABELV $585
 byte 1 108
 byte 1 111
 byte 1 97
@@ -6982,7 +7029,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $576
+LABELV $580
 byte 1 114
 byte 1 101
 byte 1 109
@@ -6996,7 +7043,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $573
+LABELV $577
 byte 1 109
 byte 1 97
 byte 1 112
@@ -7010,7 +7057,7 @@ byte 1 114
 byte 1 116
 byte 1 0
 align 1
-LABELV $570
+LABELV $574
 byte 1 116
 byte 1 105
 byte 1 110
@@ -7018,7 +7065,7 @@ byte 1 102
 byte 1 111
 byte 1 0
 align 1
-LABELV $567
+LABELV $571
 byte 1 115
 byte 1 99
 byte 1 111
@@ -7027,7 +7074,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $564
+LABELV $568
 byte 1 118
 byte 1 116
 byte 1 101
@@ -7035,7 +7082,7 @@ byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $561
+LABELV $565
 byte 1 118
 byte 1 116
 byte 1 99
@@ -7044,7 +7091,7 @@ byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $558
+LABELV $562
 byte 1 118
 byte 1 99
 byte 1 104
@@ -7052,7 +7099,7 @@ byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $553
+LABELV $557
 byte 1 116
 byte 1 99
 byte 1 104
@@ -7060,20 +7107,20 @@ byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $550
+LABELV $554
 byte 1 37
 byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $544
+LABELV $548
 byte 1 99
 byte 1 104
 byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $541
+LABELV $545
 byte 1 112
 byte 1 114
 byte 1 105
@@ -7081,17 +7128,17 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $538
+LABELV $542
 byte 1 99
 byte 1 115
 byte 1 0
 align 1
-LABELV $535
+LABELV $539
 byte 1 99
 byte 1 112
 byte 1 0
 align 1
-LABELV $484
+LABELV $488
 byte 1 115
 byte 1 99
 byte 1 114
@@ -7107,7 +7154,7 @@ byte 1 118
 byte 1 99
 byte 1 0
 align 1
-LABELV $466
+LABELV $470
 byte 1 37
 byte 1 115
 byte 1 47
@@ -7115,7 +7162,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $431
+LABELV $435
 byte 1 118
 byte 1 111
 byte 1 105
@@ -7146,7 +7193,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $429
+LABELV $433
 byte 1 115
 byte 1 99
 byte 1 114
@@ -7168,7 +7215,7 @@ byte 1 99
 byte 1 101
 byte 1 0
 align 1
-LABELV $427
+LABELV $431
 byte 1 115
 byte 1 99
 byte 1 114
@@ -7190,7 +7237,7 @@ byte 1 99
 byte 1 101
 byte 1 0
 align 1
-LABELV $425
+LABELV $429
 byte 1 115
 byte 1 99
 byte 1 114
@@ -7204,6 +7251,50 @@ byte 1 97
 byte 1 108
 byte 1 101
 byte 1 51
+byte 1 46
+byte 1 118
+byte 1 111
+byte 1 105
+byte 1 99
+byte 1 101
+byte 1 0
+align 1
+LABELV $427
+byte 1 115
+byte 1 99
+byte 1 114
+byte 1 105
+byte 1 112
+byte 1 116
+byte 1 115
+byte 1 47
+byte 1 109
+byte 1 97
+byte 1 108
+byte 1 101
+byte 1 50
+byte 1 46
+byte 1 118
+byte 1 111
+byte 1 105
+byte 1 99
+byte 1 101
+byte 1 0
+align 1
+LABELV $425
+byte 1 115
+byte 1 99
+byte 1 114
+byte 1 105
+byte 1 112
+byte 1 116
+byte 1 115
+byte 1 47
+byte 1 109
+byte 1 97
+byte 1 108
+byte 1 101
+byte 1 49
 byte 1 46
 byte 1 118
 byte 1 111
@@ -7221,11 +7312,13 @@ byte 1 112
 byte 1 116
 byte 1 115
 byte 1 47
+byte 1 102
+byte 1 101
 byte 1 109
 byte 1 97
 byte 1 108
 byte 1 101
-byte 1 50
+byte 1 51
 byte 1 46
 byte 1 118
 byte 1 111
@@ -7243,52 +7336,6 @@ byte 1 112
 byte 1 116
 byte 1 115
 byte 1 47
-byte 1 109
-byte 1 97
-byte 1 108
-byte 1 101
-byte 1 49
-byte 1 46
-byte 1 118
-byte 1 111
-byte 1 105
-byte 1 99
-byte 1 101
-byte 1 0
-align 1
-LABELV $419
-byte 1 115
-byte 1 99
-byte 1 114
-byte 1 105
-byte 1 112
-byte 1 116
-byte 1 115
-byte 1 47
-byte 1 102
-byte 1 101
-byte 1 109
-byte 1 97
-byte 1 108
-byte 1 101
-byte 1 51
-byte 1 46
-byte 1 118
-byte 1 111
-byte 1 105
-byte 1 99
-byte 1 101
-byte 1 0
-align 1
-LABELV $417
-byte 1 115
-byte 1 99
-byte 1 114
-byte 1 105
-byte 1 112
-byte 1 116
-byte 1 115
-byte 1 47
 byte 1 102
 byte 1 101
 byte 1 109
@@ -7304,7 +7351,7 @@ byte 1 99
 byte 1 101
 byte 1 0
 align 1
-LABELV $416
+LABELV $420
 byte 1 115
 byte 1 99
 byte 1 114
@@ -7328,11 +7375,11 @@ byte 1 99
 byte 1 101
 byte 1 0
 align 1
-LABELV $407
+LABELV $411
 byte 1 125
 byte 1 0
 align 1
-LABELV $398
+LABELV $402
 byte 1 94
 byte 1 49
 byte 1 101
@@ -7380,11 +7427,11 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $397
+LABELV $401
 byte 1 123
 byte 1 0
 align 1
-LABELV $388
+LABELV $392
 byte 1 94
 byte 1 49
 byte 1 101
@@ -7438,7 +7485,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $387
+LABELV $391
 byte 1 110
 byte 1 101
 byte 1 117
@@ -7447,14 +7494,14 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $384
+LABELV $388
 byte 1 109
 byte 1 97
 byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $381
+LABELV $385
 byte 1 102
 byte 1 101
 byte 1 109
@@ -7463,12 +7510,12 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $371
+LABELV $375
 byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $370
+LABELV $374
 byte 1 94
 byte 1 49
 byte 1 118
@@ -7527,7 +7574,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $367
+LABELV $371
 byte 1 94
 byte 1 49
 byte 1 118
@@ -7562,11 +7609,11 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $360
+LABELV $364
 byte 1 48
 byte 1 0
 align 1
-LABELV $359
+LABELV $363
 byte 1 99
 byte 1 103
 byte 1 95
@@ -7583,7 +7630,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $358
+LABELV $362
 byte 1 70
 byte 1 73
 byte 1 71
@@ -7592,7 +7639,7 @@ byte 1 84
 byte 1 33
 byte 1 0
 align 1
-LABELV $347
+LABELV $351
 byte 1 67
 byte 1 71
 byte 1 95
@@ -7609,19 +7656,19 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $220
+LABELV $224
 byte 1 64
 byte 1 0
 align 1
-LABELV $217
+LABELV $221
 byte 1 58
 byte 1 0
 align 1
-LABELV $214
+LABELV $218
 byte 1 61
 byte 1 0
 align 1
-LABELV $187
+LABELV $191
 byte 1 103
 byte 1 95
 byte 1 100
@@ -7636,6 +7683,31 @@ byte 1 115
 byte 1 99
 byte 1 97
 byte 1 110
+byte 1 0
+align 1
+LABELV $189
+byte 1 103
+byte 1 95
+byte 1 65
+byte 1 114
+byte 1 115
+byte 1 101
+byte 1 110
+byte 1 97
+byte 1 108
+byte 1 0
+align 1
+LABELV $187
+byte 1 103
+byte 1 95
+byte 1 105
+byte 1 110
+byte 1 115
+byte 1 116
+byte 1 97
+byte 1 103
+byte 1 105
+byte 1 98
 byte 1 0
 align 1
 LABELV $183

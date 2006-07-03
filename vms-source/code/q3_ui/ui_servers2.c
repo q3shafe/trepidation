@@ -96,7 +96,7 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define GAMES_TEAMPLAY		2
 #define GAMES_TOURNEY		3
 #define GAMES_CTF			4
-#define GAMES_FREEZE		5	// Shafe - Trep - New Gametype
+#define GAMES_ARSENAL		5	// Shafe - Trep - New Gametype
 #define GAMES_LASTMAN		6	// Shafe - Trep - New Gametype
 
 //Shafe - Trep - Mulimasters
@@ -198,9 +198,10 @@ typedef struct servernode_s {
 	/*
 	// Shafe - Not quite sure how I want to display the gametypes yet.. 
 	// I'm thinking that Instagib should replace the yes/no in pb field of browser
-	int		instagib; 
-	int		arsenal; 
 	*/
+	int		g_instagib; 
+	int		g_Arsenal; 
+	
 	qboolean bPB;
 
 } servernode_t; 
@@ -550,10 +551,11 @@ static void ArenaServers_UpdateMenu( void ) {
 				continue;
 			}
 			break;
-		case GAMES_FREEZE:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
-			if( servernodeptr->gametype != GT_FREEZE ) {
+		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
+			if( servernodeptr->g_Arsenal != 1 ) {
 					continue;
 			}
+			
 			break;
 		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
 			if( servernodeptr->gametype != GT_LASTMAN ) {
@@ -578,11 +580,28 @@ static void ArenaServers_UpdateMenu( void ) {
 			pingColor = S_COLOR_RED;
 		}
 
+		if (servernodeptr->g_instagib == 1) 
+		{	
+			servernodeptr->bPB == qtrue; 
+		} else {
+			servernodeptr->bPB == qfalse;
+		}
 
-		Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
+
+		if ( servernodeptr->g_Arsenal == 1) 
+		{
+			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
+			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,
+ 			servernodeptr->maxclients, "arsenal",
+			netnames[servernodeptr->nettype], pingColor, servernodeptr->pingtime, servernodeptr->bPB ? "Yes" : "No" );
+		} else
+		{
+			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
 			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,
  			servernodeptr->maxclients, servernodeptr->gamename,
 			netnames[servernodeptr->nettype], pingColor, servernodeptr->pingtime, servernodeptr->bPB ? "Yes" : "No" );
+		}
+		
 		j++;
 	}
 
@@ -695,7 +714,9 @@ static void ArenaServers_Insert( char* adrstr, char* info, int pingtime )
 	servernodeptr->pingtime   = pingtime;
 	servernodeptr->minPing    = atoi( Info_ValueForKey( info, "minPing") );
 	servernodeptr->maxPing    = atoi( Info_ValueForKey( info, "maxPing") );
-	servernodeptr->bPB = atoi( Info_ValueForKey( info, "punkbuster") );
+	servernodeptr->bPB = atoi( Info_ValueForKey( info, "g_instagib") );
+	servernodeptr->g_Arsenal = atoi( Info_ValueForKey( info, "g_Arsenal") );
+	servernodeptr->g_instagib = atoi( Info_ValueForKey( info, "g_instagib") );
 
 	/*
 	s = Info_ValueForKey( info, "nettype" );

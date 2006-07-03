@@ -6487,7 +6487,7 @@ ADDRGP4 cgs
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 153404
+CNSTI4 153412
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -6889,85 +6889,86 @@ ARGP4
 ADDRGP4 CG_LoadingString
 CALLV
 pop
-line 2023
+line 2024
 ;2018:
-;2019:#ifdef MISSIONPACK
-;2020:	CG_InitTeamChat();
-;2021:#endif
-;2022:
-;2023:	CG_ShaderStateChanged();
+;2019:
+;2020:#ifdef MISSIONPACK
+;2021:	CG_InitTeamChat();
+;2022:#endif
+;2023:
+;2024:	CG_ShaderStateChanged();
 ADDRGP4 CG_ShaderStateChanged
 CALLV
 pop
-line 2025
-;2024:
-;2025:	trap_S_ClearLoopingSounds( qtrue );
+line 2026
+;2025:
+;2026:	trap_S_ClearLoopingSounds( qtrue );
 CNSTI4 1
 ARGI4
 ADDRGP4 trap_S_ClearLoopingSounds
 CALLV
 pop
-line 2026
-;2026:}
+line 2027
+;2027:}
 LABELV $968
 endproc CG_Init 44 12
 export CG_Shutdown
 proc CG_Shutdown 0 0
-line 2035
-;2027:
-;2028:/*
-;2029:=================
-;2030:CG_Shutdown
-;2031:
-;2032:Called before every level change or subsystem restart
-;2033:=================
-;2034:*/
-;2035:void CG_Shutdown( void ) {
-line 2038
-;2036:	// some mods may need to do cleanup work here,
-;2037:	// like closing files or archiving session data
-;2038:}
+line 2036
+;2028:
+;2029:/*
+;2030:=================
+;2031:CG_Shutdown
+;2032:
+;2033:Called before every level change or subsystem restart
+;2034:=================
+;2035:*/
+;2036:void CG_Shutdown( void ) {
+line 2039
+;2037:	// some mods may need to do cleanup work here,
+;2038:	// like closing files or archiving session data
+;2039:}
 LABELV $1011
 endproc CG_Shutdown 0 0
 export CG_EventHandling
 proc CG_EventHandling 0 0
-line 2052
-;2039:
-;2040:
-;2041:/*
-;2042:==================
-;2043:CG_EventHandling
-;2044:==================
-;2045: type 0 - no event handling
-;2046:      1 - team menu
-;2047:      2 - hud editor
-;2048:
-;2049:*/
-;2050:
-;2051:#ifndef MISSIONPACK
-;2052:void CG_EventHandling(int type) {
 line 2053
-;2053:}
+;2040:
+;2041:
+;2042:/*
+;2043:==================
+;2044:CG_EventHandling
+;2045:==================
+;2046: type 0 - no event handling
+;2047:      1 - team menu
+;2048:      2 - hud editor
+;2049:
+;2050:*/
+;2051:
+;2052:#ifndef MISSIONPACK
+;2053:void CG_EventHandling(int type) {
+line 2054
+;2054:}
 LABELV $1012
 endproc CG_EventHandling 0 0
 export CG_KeyEvent
 proc CG_KeyEvent 0 0
-line 2057
-;2054:
+line 2058
 ;2055:
 ;2056:
-;2057:void CG_KeyEvent(int key, qboolean down) {
-line 2058
-;2058:}
+;2057:
+;2058:void CG_KeyEvent(int key, qboolean down) {
+line 2059
+;2059:}
 LABELV $1013
 endproc CG_KeyEvent 0 0
 export CG_MouseEvent
 proc CG_MouseEvent 0 0
-line 2060
-;2059:
-;2060:void CG_MouseEvent(int x, int y) {
 line 2061
-;2061:}
+;2060:
+;2061:void CG_MouseEvent(int x, int y) {
+line 2062
+;2062:}
 LABELV $1014
 endproc CG_MouseEvent 0 0
 bss
@@ -7640,7 +7641,7 @@ skip 155912
 export cgs
 align 4
 LABELV cgs
-skip 153404
+skip 153412
 import BG_PlayerTouchesItem
 import BG_PlayerStateToEntityStateExtraPolate
 import BG_PlayerStateToEntityState

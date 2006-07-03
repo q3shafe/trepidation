@@ -1226,56 +1226,55 @@ ADDRLP4 1096
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $158
+ADDRGP4 $162
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $158
+LABELV $162
 address $147
-address $151
-address $149
-address $153
 address $155
+address $153
+address $157
+address $159
 code
 LABELV $147
 line 219
 ;218:	case GT_FFA:
-;219:		s = "Free For All";
-ADDRLP4 0
-ADDRGP4 $148
-ASGNP4
+;219:		if (cgs.g_Arsenal == 1) 
+ADDRGP4 cgs+153408
+INDIRI4
+CNSTI4 1
+NEI4 $148
 line 220
-;220:		break;
-ADDRGP4 $144
-JUMPV
-LABELV $149
-line 222
-;221:	case GT_SINGLE_PLAYER:
-;222:		s = "Single Player";
+;220:		{
+line 221
+;221:			s = "Arsenal";
 ADDRLP4 0
-ADDRGP4 $150
+ADDRGP4 $151
 ASGNP4
-line 223
-;223:		break;
+line 222
+;222:		} else {
 ADDRGP4 $144
 JUMPV
-LABELV $151
-line 225
-;224:	case GT_TOURNAMENT:
-;225:		s = "Tournament";
+LABELV $148
+line 223
+;223:			s = "Free For All";
 ADDRLP4 0
 ADDRGP4 $152
 ASGNP4
+line 224
+;224:		}
 line 226
+;225:		
 ;226:		break;
 ADDRGP4 $144
 JUMPV
 LABELV $153
 line 228
-;227:	case GT_TEAM:
-;228:		s = "Team Deathmatch";
+;227:	case GT_SINGLE_PLAYER:
+;228:		s = "Single Player";
 ADDRLP4 0
 ADDRGP4 $154
 ASGNP4
@@ -1285,8 +1284,8 @@ ADDRGP4 $144
 JUMPV
 LABELV $155
 line 231
-;230:	case GT_CTF:
-;231:		s = "Capture The Flag";
+;230:	case GT_TOURNAMENT:
+;231:		s = "Tournament";
 ADDRLP4 0
 ADDRGP4 $156
 ASGNP4
@@ -1294,100 +1293,58 @@ line 232
 ;232:		break;
 ADDRGP4 $144
 JUMPV
+LABELV $157
+line 234
+;233:	case GT_TEAM:
+;234:		s = "Team Deathmatch";
+ADDRLP4 0
+ADDRGP4 $158
+ASGNP4
+line 235
+;235:		break;
+ADDRGP4 $144
+JUMPV
+LABELV $159
+line 237
+;236:	case GT_CTF:
+;237:		s = "Capture The Flag";
+ADDRLP4 0
+ADDRGP4 $160
+ASGNP4
+line 238
+;238:		break;
+ADDRGP4 $144
+JUMPV
 LABELV $143
-line 245
-;233:#ifdef MISSIONPACK
-;234:	case GT_1FCTF:
-;235:		s = "One Flag CTF";
-;236:		break;
-;237:	case GT_OBELISK:
-;238:		s = "Overload";
-;239:		break;
-;240:	case GT_HARVESTER:
-;241:		s = "Harvester";
+line 251
+;239:#ifdef MISSIONPACK
+;240:	case GT_1FCTF:
+;241:		s = "One Flag CTF";
 ;242:		break;
-;243:#endif
-;244:	default:
-;245:		s = "Unknown Gametype";
+;243:	case GT_OBELISK:
+;244:		s = "Overload";
+;245:		break;
+;246:	case GT_HARVESTER:
+;247:		s = "Harvester";
+;248:		break;
+;249:#endif
+;250:	default:
+;251:		s = "Unknown Gametype";
 ADDRLP4 0
-ADDRGP4 $157
+ADDRGP4 $161
 ASGNP4
-line 246
-;246:		break;
-LABELV $144
-line 248
-;247:	}
-;248:	UI_DrawProportionalString( 320, y, s,
-CNSTI4 320
-ARGI4
-ADDRLP4 4
-INDIRI4
-ARGI4
-ADDRLP4 0
-INDIRP4
-ARGP4
-CNSTI4 2065
-ARGI4
-ADDRGP4 colorWhite
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 250
-;249:		UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, colorWhite );
-;250:	y += PROP_HEIGHT;
-ADDRLP4 4
-ADDRLP4 4
-INDIRI4
-CNSTI4 27
-ADDI4
-ASGNI4
 line 252
-;251:		
-;252:	value = atoi( Info_ValueForKey( info, "timelimit" ) );
-ADDRLP4 12
-INDIRP4
-ARGP4
-ADDRGP4 $159
-ARGP4
-ADDRLP4 1104
-ADDRGP4 Info_ValueForKey
-CALLP4
-ASGNP4
-ADDRLP4 1104
-INDIRP4
-ARGP4
-ADDRLP4 1108
-ADDRGP4 atoi
-CALLI4
-ASGNI4
-ADDRLP4 8
-ADDRLP4 1108
-INDIRI4
-ASGNI4
-line 253
-;253:	if ( value ) {
-ADDRLP4 8
-INDIRI4
-CNSTI4 0
-EQI4 $160
+;252:		break;
+LABELV $144
 line 254
-;254:		UI_DrawProportionalString( 320, y, va( "timelimit %i", value ),
-ADDRGP4 $162
-ARGP4
-ADDRLP4 8
-INDIRI4
-ARGI4
-ADDRLP4 1112
-ADDRGP4 va
-CALLP4
-ASGNP4
+;253:	}
+;254:	UI_DrawProportionalString( 320, y, s,
 CNSTI4 320
 ARGI4
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRLP4 1112
+ADDRLP4 0
 INDIRP4
 ARGP4
 CNSTI4 2065
@@ -1398,60 +1355,51 @@ ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
 line 256
-;255:			UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, colorWhite );
-;256:		y += PROP_HEIGHT;
+;255:		UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, colorWhite );
+;256:	y += PROP_HEIGHT;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 27
 ADDI4
 ASGNI4
-line 257
-;257:	}
-LABELV $160
-line 259
-;258:
-;259:	if (cgs.gametype < GT_CTF ) {
-ADDRGP4 cgs+31456
-INDIRI4
-CNSTI4 4
-GEI4 $163
-line 260
-;260:		value = atoi( Info_ValueForKey( info, "fraglimit" ) );
+line 258
+;257:		
+;258:	value = atoi( Info_ValueForKey( info, "timelimit" ) );
 ADDRLP4 12
 INDIRP4
 ARGP4
+ADDRGP4 $163
+ARGP4
+ADDRLP4 1104
+ADDRGP4 Info_ValueForKey
+CALLP4
+ASGNP4
+ADDRLP4 1104
+INDIRP4
+ARGP4
+ADDRLP4 1108
+ADDRGP4 atoi
+CALLI4
+ASGNI4
+ADDRLP4 8
+ADDRLP4 1108
+INDIRI4
+ASGNI4
+line 259
+;259:	if ( value ) {
+ADDRLP4 8
+INDIRI4
+CNSTI4 0
+EQI4 $164
+line 260
+;260:		UI_DrawProportionalString( 320, y, va( "timelimit %i", value ),
 ADDRGP4 $166
 ARGP4
-ADDRLP4 1112
-ADDRGP4 Info_ValueForKey
-CALLP4
-ASGNP4
-ADDRLP4 1112
-INDIRP4
-ARGP4
-ADDRLP4 1116
-ADDRGP4 atoi
-CALLI4
-ASGNI4
-ADDRLP4 8
-ADDRLP4 1116
-INDIRI4
-ASGNI4
-line 261
-;261:		if ( value ) {
-ADDRLP4 8
-INDIRI4
-CNSTI4 0
-EQI4 $167
-line 262
-;262:			UI_DrawProportionalString( 320, y, va( "fraglimit %i", value ),
-ADDRGP4 $169
-ARGP4
 ADDRLP4 8
 INDIRI4
 ARGI4
-ADDRLP4 1120
+ADDRLP4 1112
 ADDRGP4 va
 CALLP4
 ASGNP4
@@ -1460,7 +1408,7 @@ ARGI4
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRLP4 1120
+ADDRLP4 1112
 INDIRP4
 ARGP4
 CNSTI4 2065
@@ -1470,34 +1418,31 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 264
-;263:				UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, colorWhite );
-;264:			y += PROP_HEIGHT;
+line 262
+;261:			UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, colorWhite );
+;262:		y += PROP_HEIGHT;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 27
 ADDI4
 ASGNI4
+line 263
+;263:	}
+LABELV $164
 line 265
-;265:		}
-LABELV $167
-line 266
-;266:	}
-LABELV $163
-line 268
-;267:
-;268:	if (cgs.gametype >= GT_CTF) {
+;264:
+;265:	if (cgs.gametype < GT_CTF ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
-LTI4 $170
-line 269
-;269:		value = atoi( Info_ValueForKey( info, "capturelimit" ) );
+GEI4 $167
+line 266
+;266:		value = atoi( Info_ValueForKey( info, "fraglimit" ) );
 ADDRLP4 12
 INDIRP4
 ARGP4
-ADDRGP4 $173
+ADDRGP4 $170
 ARGP4
 ADDRLP4 1112
 ADDRGP4 Info_ValueForKey
@@ -1514,15 +1459,15 @@ ADDRLP4 8
 ADDRLP4 1116
 INDIRI4
 ASGNI4
-line 270
-;270:		if ( value ) {
+line 267
+;267:		if ( value ) {
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $174
-line 271
-;271:			UI_DrawProportionalString( 320, y, va( "capturelimit %i", value ),
-ADDRGP4 $176
+EQI4 $171
+line 268
+;268:			UI_DrawProportionalString( 320, y, va( "fraglimit %i", value ),
+ADDRGP4 $173
 ARGP4
 ADDRLP4 8
 INDIRI4
@@ -1546,23 +1491,99 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 273
-;272:				UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, colorWhite );
-;273:			y += PROP_HEIGHT;
+line 270
+;269:				UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, colorWhite );
+;270:			y += PROP_HEIGHT;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 27
 ADDI4
 ASGNI4
+line 271
+;271:		}
+LABELV $171
+line 272
+;272:	}
+LABELV $167
 line 274
-;274:		}
-LABELV $174
+;273:
+;274:	if (cgs.gametype >= GT_CTF) {
+ADDRGP4 cgs+31456
+INDIRI4
+CNSTI4 4
+LTI4 $174
 line 275
-;275:	}
-LABELV $170
+;275:		value = atoi( Info_ValueForKey( info, "capturelimit" ) );
+ADDRLP4 12
+INDIRP4
+ARGP4
+ADDRGP4 $177
+ARGP4
+ADDRLP4 1112
+ADDRGP4 Info_ValueForKey
+CALLP4
+ASGNP4
+ADDRLP4 1112
+INDIRP4
+ARGP4
+ADDRLP4 1116
+ADDRGP4 atoi
+CALLI4
+ASGNI4
+ADDRLP4 8
+ADDRLP4 1116
+INDIRI4
+ASGNI4
 line 276
-;276:}
+;276:		if ( value ) {
+ADDRLP4 8
+INDIRI4
+CNSTI4 0
+EQI4 $178
+line 277
+;277:			UI_DrawProportionalString( 320, y, va( "capturelimit %i", value ),
+ADDRGP4 $180
+ARGP4
+ADDRLP4 8
+INDIRI4
+ARGI4
+ADDRLP4 1120
+ADDRGP4 va
+CALLP4
+ASGNP4
+CNSTI4 320
+ARGI4
+ADDRLP4 4
+INDIRI4
+ARGI4
+ADDRLP4 1120
+INDIRP4
+ARGP4
+CNSTI4 2065
+ARGI4
+ADDRGP4 colorWhite
+ARGP4
+ADDRGP4 UI_DrawProportionalString
+CALLV
+pop
+line 279
+;278:				UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, colorWhite );
+;279:			y += PROP_HEIGHT;
+ADDRLP4 4
+ADDRLP4 4
+INDIRI4
+CNSTI4 27
+ADDI4
+ASGNI4
+line 280
+;280:		}
+LABELV $178
+line 281
+;281:	}
+LABELV $174
+line 282
+;282:}
 LABELV $110
 endproc CG_DrawInformation 1124 36
 bss
@@ -2105,7 +2126,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $176
+LABELV $180
 byte 1 99
 byte 1 97
 byte 1 112
@@ -2121,24 +2142,24 @@ byte 1 116
 byte 1 32
 byte 1 37
 byte 1 105
+byte 1 0
+align 1
+LABELV $177
+byte 1 99
+byte 1 97
+byte 1 112
+byte 1 116
+byte 1 117
+byte 1 114
+byte 1 101
+byte 1 108
+byte 1 105
+byte 1 109
+byte 1 105
+byte 1 116
 byte 1 0
 align 1
 LABELV $173
-byte 1 99
-byte 1 97
-byte 1 112
-byte 1 116
-byte 1 117
-byte 1 114
-byte 1 101
-byte 1 108
-byte 1 105
-byte 1 109
-byte 1 105
-byte 1 116
-byte 1 0
-align 1
-LABELV $169
 byte 1 102
 byte 1 114
 byte 1 97
@@ -2151,21 +2172,21 @@ byte 1 116
 byte 1 32
 byte 1 37
 byte 1 105
+byte 1 0
+align 1
+LABELV $170
+byte 1 102
+byte 1 114
+byte 1 97
+byte 1 103
+byte 1 108
+byte 1 105
+byte 1 109
+byte 1 105
+byte 1 116
 byte 1 0
 align 1
 LABELV $166
-byte 1 102
-byte 1 114
-byte 1 97
-byte 1 103
-byte 1 108
-byte 1 105
-byte 1 109
-byte 1 105
-byte 1 116
-byte 1 0
-align 1
-LABELV $162
 byte 1 116
 byte 1 105
 byte 1 109
@@ -2180,7 +2201,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $159
+LABELV $163
 byte 1 116
 byte 1 105
 byte 1 109
@@ -2192,7 +2213,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $157
+LABELV $161
 byte 1 85
 byte 1 110
 byte 1 107
@@ -2211,7 +2232,7 @@ byte 1 112
 byte 1 101
 byte 1 0
 align 1
-LABELV $156
+LABELV $160
 byte 1 67
 byte 1 97
 byte 1 112
@@ -2230,7 +2251,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $154
+LABELV $158
 byte 1 84
 byte 1 101
 byte 1 97
@@ -2248,7 +2269,7 @@ byte 1 99
 byte 1 104
 byte 1 0
 align 1
-LABELV $152
+LABELV $156
 byte 1 84
 byte 1 111
 byte 1 117
@@ -2261,7 +2282,7 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $150
+LABELV $154
 byte 1 83
 byte 1 105
 byte 1 110
@@ -2277,7 +2298,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $148
+LABELV $152
 byte 1 70
 byte 1 114
 byte 1 101
@@ -2289,6 +2310,16 @@ byte 1 114
 byte 1 32
 byte 1 65
 byte 1 108
+byte 1 108
+byte 1 0
+align 1
+LABELV $151
+byte 1 65
+byte 1 114
+byte 1 115
+byte 1 101
+byte 1 110
+byte 1 97
 byte 1 108
 byte 1 0
 align 1

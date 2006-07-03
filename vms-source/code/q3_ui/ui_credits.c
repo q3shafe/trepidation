@@ -58,10 +58,12 @@ static void UI_CreditMenu_Draw( void ) {
 
 	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 	UI_DrawProportionalString( 320, y, "Mapping And Art:", UI_CENTER|UI_SMALLFONT, color_white );
+	
 	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-	UI_DrawProportionalString( 320, y, "Scott Hanke, RRE Mike, Petee, Gigabyte123", UI_CENTER|UI_SMALLFONT, color_white );
-	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-	UI_DrawProportionalString( 320, y, "Ryan McNeill", UI_CENTER|UI_SMALLFONT, color_white );
+	UI_DrawProportionalString( 320, y, "Scott Hanke, Ryan McNeill, Petee", UI_CENTER|UI_SMALLFONT, color_white );
+	
+	//y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+	//UI_DrawProportionalString( 320, y, "Ryan McNeill", UI_CENTER|UI_SMALLFONT, color_white );
 
 	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 	UI_DrawProportionalString( 320, y, "Models", UI_CENTER|UI_SMALLFONT, color_white );
@@ -94,7 +96,7 @@ static void UI_CreditMenu_Draw( void ) {
 	UI_DrawProportionalString( 320, y, "trepidation.sourceforge.net", UI_CENTER|UI_SMALLFONT, color_white );
 
 	y += 1.35 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-	UI_DrawString( 320, y, "Trepidation     trepidation.soourceforge.net     trepidation@sourceforge.net", UI_CENTER|UI_SMALLFONT, color_red );
+	UI_DrawString( 320, y, "Trepidation     trepidation.soourceforge.net     Support Open Source!", UI_CENTER|UI_SMALLFONT, color_red );
 	y += SMALLCHAR_HEIGHT;
 	UI_DrawString( 320, y, "Trepidation 2006 General Public License.", UI_CENTER|UI_SMALLFONT, color_red );
 }

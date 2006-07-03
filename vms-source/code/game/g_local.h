@@ -260,8 +260,19 @@ typedef struct {
 	int			realPing;
 	int			pingsamples[NUM_PING_SAMPLES];
 	int			samplehead;
-	int			holdable;		// Shafe - Trep - Notes any holdable 1=medkit
+	// Shafe - Trep Specific Stuff
+	int			holdable;		// Shafe - Trep - Notes any holdable 1=medkit NOT USED 
 //	int			Multijumps;		// Shafe - Trep - Mulijumps
+	qboolean	h_gauntlet;
+	qboolean	h_mg;
+	qboolean	h_sg;
+	qboolean	h_grenade;
+	qboolean	h_singcan;
+	qboolean	h_flame;
+	qboolean	h_gauss;
+	qboolean	h_plasma;
+	qboolean	h_bfg;
+	qboolean	Eliminated;		// For Arsenal and LMS
 //unlagged - true ping
 } clientPersistant_t;
 
@@ -464,13 +475,16 @@ typedef struct {
 	gentity_t	*bodyQue[BODY_QUEUE_SIZE];
 #ifdef MISSIONPACK
 	int			portalSequence;
+	
 #endif
 
 //unlagged - backward reconciliation #4
 	// actual time this server frame started
 	int			frameStartTime;
 //unlagged - backward reconciliation #4
-
+	int			levelSurvivors;			// Shafe Trep For Arsenal and LMS
+	qboolean	StopItemRespawn;		// Arsenal
+	qboolean	firstStrike;			// Shafe - Trep
 
 } level_locals_t;
 
@@ -865,8 +879,24 @@ extern	vmCvar_t	sv_fps;
 //unlagged - server options
 
 // Shafe - Trep
+
+//Mods
 extern	vmCvar_t	g_instagib;
+extern	vmCvar_t	g_Arsenal;
+
+// Arsenal
 extern	vmCvar_t	g_MultiJump;
+extern	vmCvar_t	g_StartGauntlet;
+extern	vmCvar_t	g_StartMG;
+extern	vmCvar_t	g_StartSG;
+extern	vmCvar_t	g_StartGrenade;
+extern	vmCvar_t	g_StartSingCan;
+extern	vmCvar_t	g_StartFlame;
+extern	vmCvar_t	g_StartGauss;
+extern	vmCvar_t	g_StartPlasma;
+extern	vmCvar_t	g_StartBFG;
+
+
 //extern	vmCvar_t	g_CTFGrapple; // Decided not to make this an option
 
 

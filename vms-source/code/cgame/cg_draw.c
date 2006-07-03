@@ -2364,10 +2364,13 @@ static void CG_DrawWarmup( void ) {
 			}
 			CG_DrawStringExt( 320 - w * cw/2, 20,s, colorWhite, 
 					qfalse, qtrue, cw, (int)(cw * 1.5f), 0 );
+			
 #endif
 		}
 	} else {
-		if ( cgs.gametype == GT_FFA ) {
+		if ( cgs.g_Arsenal == 1) {
+			s = "Arsenal";
+		} else if ( cgs.gametype == GT_FFA && cgs.g_Arsenal != 1) {
 			s = "Free For All";
 		} else if ( cgs.gametype == GT_TEAM ) {
 			s = "Team Deathmatch";
@@ -2404,7 +2407,16 @@ static void CG_DrawWarmup( void ) {
 		cg.warmup = 0;
 		sec = 0;
 	}
-	s = va( "Starts in: %i", sec + 1 );
+	
+	if(cgs.g_Arsenal == 1)
+	{
+		s = va( "You Have %i Seconds To Join This Round", sec + 1 );
+	} else
+	{
+		s = va( "Starts in: %i", sec + 1 );
+	}
+	
+
 	if ( sec != cg.warmupCount ) {
 		cg.warmupCount = sec;
 		switch ( sec ) {
