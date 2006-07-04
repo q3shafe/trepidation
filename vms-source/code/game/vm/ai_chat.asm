@@ -1445,7 +1445,7 @@ ADDRGP4 $174
 JUMPV
 LABELV $181
 line 265
-;265:		case MOD_MACHINEGUN: return "Machinegun";
+;265:		case MOD_MACHINEGUN: return "Assault Rifle";
 ADDRGP4 $182
 RETP4
 ADDRGP4 $174
@@ -1603,7 +1603,7 @@ ADDRGP4 $200
 JUMPV
 LABELV $205
 line 304
-;304:		case 2: return "Machinegun";
+;304:		case 2: return "Assault Rifle";
 ADDRGP4 $182
 RETP4
 ADDRGP4 $200
@@ -10534,16 +10534,19 @@ byte 1 114
 byte 1 0
 align 1
 LABELV $182
-byte 1 77
+byte 1 65
+byte 1 115
+byte 1 115
 byte 1 97
-byte 1 99
-byte 1 104
-byte 1 105
-byte 1 110
-byte 1 101
-byte 1 103
 byte 1 117
-byte 1 110
+byte 1 108
+byte 1 116
+byte 1 32
+byte 1 82
+byte 1 105
+byte 1 102
+byte 1 108
+byte 1 101
 byte 1 0
 align 1
 LABELV $180

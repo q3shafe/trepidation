@@ -53,7 +53,10 @@ void UpdateTournamentInfo( void ) {
 #ifdef MISSIONPACK
 		Com_sprintf( msg, sizeof(msg), "postgame %i %i 0 0 0 0 0 0 0 0 0 0 0", level.numNonSpectatorClients, playerClientNum );
 #else
-		Com_sprintf( msg, sizeof(msg), "postgame %i %i 0 0 0 0 0 0", level.numNonSpectatorClients, playerClientNum );
+		if (g_gametype.integer == GT_SINGLE_PLAYER || g_gametype.integer == GT_TOURNAMENT)
+		{
+			Com_sprintf( msg, sizeof(msg), "postgame %i %i 0 0 0 0 0 0", level.numNonSpectatorClients, playerClientNum );
+		}
 #endif
 	}
 	else {
@@ -88,17 +91,21 @@ void UpdateTournamentInfo( void ) {
 		} else {
 			perfect = 0;
 		}
+	
 		Com_sprintf( msg, sizeof(msg), "postgame %i %i %i %i %i %i %i %i %i %i %i %i %i %i", level.numNonSpectatorClients, playerClientNum, accuracy,
 			player->client->ps.persistant[PERS_IMPRESSIVE_COUNT], player->client->ps.persistant[PERS_EXCELLENT_COUNT],player->client->ps.persistant[PERS_DEFEND_COUNT],
 			player->client->ps.persistant[PERS_ASSIST_COUNT], player->client->ps.persistant[PERS_GAUNTLET_FRAG_COUNT], player->client->ps.persistant[PERS_SCORE],
 			perfect, score1, score2, level.time, player->client->ps.persistant[PERS_CAPTURES] );
 
 #else
-		perfect = ( level.clients[playerClientNum].ps.persistant[PERS_RANK] == 0 && player->client->ps.persistant[PERS_KILLED] == 0 ) ? 1 : 0;
-		Com_sprintf( msg, sizeof(msg), "postgame %i %i %i %i %i %i %i %i", level.numNonSpectatorClients, playerClientNum, accuracy,
-			player->client->ps.persistant[PERS_IMPRESSIVE_COUNT], player->client->ps.persistant[PERS_EXCELLENT_COUNT],
-			player->client->ps.persistant[PERS_GAUNTLET_FRAG_COUNT], player->client->ps.persistant[PERS_SCORE],
-			perfect );
+		if (g_gametype.integer == GT_SINGLE_PLAYER || g_gametype.integer == GT_TOURNAMENT)
+		{
+			perfect = ( level.clients[playerClientNum].ps.persistant[PERS_RANK] == 0 && player->client->ps.persistant[PERS_KILLED] == 0 ) ? 1 : 0;
+			Com_sprintf( msg, sizeof(msg), "postgame %i %i %i %i %i %i %i %i", level.numNonSpectatorClients, playerClientNum, accuracy,
+				player->client->ps.persistant[PERS_IMPRESSIVE_COUNT], player->client->ps.persistant[PERS_EXCELLENT_COUNT],
+				player->client->ps.persistant[PERS_GAUNTLET_FRAG_COUNT], player->client->ps.persistant[PERS_SCORE],
+				perfect );
+		}
 #endif
 	}
 
@@ -345,9 +352,12 @@ Svcmd_AbortPodium_f
 ===============
 */
 void Svcmd_AbortPodium_f( void ) {
+
+	/* Shafe podium
 	if( g_gametype.integer != GT_SINGLE_PLAYER ) {
 		return;
 	}
+	*/
 
 	if( podium1 ) {
 		podium1->nextthink = level.time;

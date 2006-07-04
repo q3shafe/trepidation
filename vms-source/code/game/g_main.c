@@ -378,8 +378,6 @@ Used For Arsenal and Last Man Standing
 int CountSurvivors ( void )
 {
 		int			tmpCnt;
-		//gentity_t	*self;
-		
 		int			i;
 		gclient_t	*cl;
 
@@ -387,19 +385,12 @@ int CountSurvivors ( void )
 			for ( i = 0; i < level.maxclients; i++ )
 			{
 				cl = &level.clients[i];
-				
-				// Use this if still not reliable
-				//self = g_entities[i];
-				
-				//if (( cl->pers.connected == CON_CONNECTED && cl->sess.sessionTeam != TEAM_SPECTATOR) && (!(self->r.svFlags |= SVF_ELIMINATED) || !(cl->ps.eFlags&EF_ELIMINATED)))  //!(cl->ps.eFlags&EF_ELIMINATED))
 				if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
 				{
 					tmpCnt++;
 				
 				}
 			}
-
-			//G_Printf( S_COLOR_GREEN "DEBUG: Survivor Count %i\n", tmpCnt );
 return tmpCnt;
 }
 
@@ -429,7 +420,8 @@ void G_InitModRules( void )
 		g_teamAutoJoin.integer = 0;
 		g_doWarmup.integer = 1;
 		g_warmup.integer = 50;
-
+		// We only allow ffa in arsenal
+		g_gametype.integer = 0;
 
 		
 
@@ -609,6 +601,11 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 		G_SoundIndex( "sound/player/gurp1.wav" );
 		G_SoundIndex( "sound/player/gurp2.wav" );
 	}
+
+		// Shafe - podium
+		G_ModelIndex( SP_PODIUM_MODEL );
+		G_SoundIndex( "sound/player/gurp1.wav" );
+		G_SoundIndex( "sound/player/gurp2.wav" );
 
 	if ( trap_Cvar_VariableIntegerValue( "bot_enable" ) ) {
 		BotAISetup( restart );
@@ -1103,6 +1100,12 @@ void BeginIntermission( void ) {
 	if ( g_gametype.integer == GT_SINGLE_PLAYER ) {
 		UpdateTournamentInfo();
 		SpawnModelsOnVictoryPads();
+	}
+	// Shafe - Podium
+	if (g_gametype.integer != GT_CTF || g_gametype.integer != GT_TEAM || g_gametype.integer != GT_SINGLE_PLAYER)
+	{
+	UpdateTournamentInfo();
+	SpawnModelsOnVictoryPads();
 	}
 #endif
 
