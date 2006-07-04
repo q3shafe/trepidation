@@ -237,11 +237,11 @@ extern int demo_protocols[];
 // override on command line, config files etc.
 #ifndef MASTER_SERVER_NAME
 
-#define MASTER_SERVER_NAME	"master.tnlsoft.com" // Shafe - Trep 
-#define ALT_MASTER0	"master2.tnlsoft.com" // Shafe - Trep
-#define ALT_MASTER1	"master.tnltotalsolutions.com" // Shafe - Trep
-#define ALT_MASTER2	"master2.tnltotalsolutions.com" // Shafe - Trep
-#define ALT_MASTER3	"192.168.0.4" // Shafe - Trep - Not Usable - Shafe Uses This Cuz Master Runs On His Local Network
+#define MASTER_SERVER_NAME	"master.tnlsoft.com:27950" // Shafe - Trep 
+#define ALT_MASTER0	"master2.tnlsoft.com:27950" // Shafe - Trep
+#define ALT_MASTER1	"master.tnltotalsolutions.com:27950" // Shafe - Trep
+#define ALT_MASTER2	"master2.tnltotalsolutions.com:27950" // Shafe - Trep
+#define ALT_MASTER3	"192.168.0.4:27950" // Shafe - Trep - Not Usable - Shafe Uses This Cuz Master Runs On His Local Network
 
 
 #endif
