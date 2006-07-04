@@ -2998,6 +2998,10 @@ void CL_LocalServers_f( void ) {
 /*
 ==================
 CL_GlobalServers_f
+The globalservers # command now works how I always assumed it worked, I was wrong
+It used to be that # 0-1 was 0 for global 1 for AS_MPLAYER which was never used
+Now the correct usage is globalservers 0-4 with the # being the master server
+you wish to query. -Shafe
 ==================
 */
 void CL_GlobalServers_f( void ) {
