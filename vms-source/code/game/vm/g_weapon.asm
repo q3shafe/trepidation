@@ -701,7 +701,7 @@ line 159
 ;152:#ifdef MISSIONPACK
 ;153:#define CHAINGUN_SPREAD		600
 ;154:#endif
-;155:#define MACHINEGUN_SPREAD	200
+;155:#define MACHINEGUN_SPREAD	100
 ;156:#define	MACHINEGUN_DAMAGE	7
 ;157:#define	MACHINEGUN_TEAM_DAMAGE	5		// wimpier MG in teamplay
 ;158:
@@ -4994,7 +4994,7 @@ line 1004
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTF4 1128792064
+CNSTF4 1120403456
 ARGF4
 CNSTI4 7
 ARGI4
@@ -5011,7 +5011,7 @@ line 1006
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTF4 1128792064
+CNSTF4 1120403456
 ARGF4
 CNSTI4 5
 ARGI4
@@ -5265,7 +5265,7 @@ align 4
 LABELV $328
 address $315
 address $318
-address $313
+address $317
 address $322
 address $323
 address $316
@@ -5304,145 +5304,156 @@ line 1077
 ;1077:	break; 
 ADDRGP4 $313
 JUMPV
+LABELV $317
 line 1080
 ;1078: case WP_SHOTGUN: 
 ;1079:	//Weapon_RocketLauncher_Fire( ent );
-;1080:	break; 
+;1080:	weapon_supershotgun_fire( ent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 weapon_supershotgun_fire
+CALLV
+pop
+line 1081
+;1081:	break; 
+ADDRGP4 $313
+JUMPV
 LABELV $318
-line 1084
-;1081: case WP_MACHINEGUN: 
-;1082:  //Weapon_RocketLauncher_Fire( ent );
-;1083: 
-;1084:	 if ( g_gametype.integer != GT_TEAM ) { 
+line 1085
+;1082: case WP_MACHINEGUN: 
+;1083:  //Weapon_RocketLauncher_Fire( ent );
+;1084: 
+;1085:	 if ( g_gametype.integer != GT_TEAM ) { 
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
 EQI4 $319
-line 1085
-;1085:   Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 
+line 1086
+;1086:   Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTF4 1128792064
+CNSTF4 1120403456
 ARGF4
 CNSTI4 7
 ARGI4
 ADDRGP4 Bullet_Fire
 CALLV
 pop
-line 1086
-;1086:  } else { 
+line 1087
+;1087:  } else { 
 ADDRGP4 $313
 JUMPV
 LABELV $319
-line 1087
-;1087:   Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE ); 
+line 1088
+;1088:   Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTF4 1128792064
+CNSTF4 1120403456
 ARGF4
 CNSTI4 5
 ARGI4
 ADDRGP4 Bullet_Fire
 CALLV
 pop
-line 1088
-;1088:  } 
 line 1089
-;1089:  break; 
+;1089:  } 
+line 1090
+;1090:  break; 
 ADDRGP4 $313
 JUMPV
 LABELV $322
-line 1091
-;1090: case WP_GRENADE_LAUNCHER: 
-;1091:  weapon_altgrenadelauncher_fire( ent ); 
+line 1092
+;1091: case WP_GRENADE_LAUNCHER: 
+;1092:  weapon_altgrenadelauncher_fire( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_altgrenadelauncher_fire
 CALLV
 pop
-line 1092
-;1092:  break; 
+line 1093
+;1093:  break; 
 ADDRGP4 $313
 JUMPV
 LABELV $323
-line 1094
-;1093: case WP_ROCKET_LAUNCHER: 
-;1094:   Weapon_RocketLauncher_AltFire( ent );
+line 1095
+;1094: case WP_ROCKET_LAUNCHER: 
+;1095:   Weapon_RocketLauncher_AltFire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_RocketLauncher_AltFire
 CALLV
 pop
-line 1095
-;1095:  break; 
+line 1096
+;1096:  break; 
 ADDRGP4 $313
 JUMPV
 LABELV $324
-line 1097
-;1096: case WP_PLASMAGUN: 
-;1097:	 weapon_pdlauncher_fire( ent); 
+line 1098
+;1097: case WP_PLASMAGUN: 
+;1098:	 weapon_pdlauncher_fire( ent); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_pdlauncher_fire
 CALLV
 pop
-line 1098
-;1098:  break; 
+line 1099
+;1099:  break; 
 ADDRGP4 $313
 JUMPV
 LABELV $325
-line 1100
-;1099: case WP_RAILGUN: 
-;1100:   Weapon_RocketLauncher_Fire( ent );
+line 1101
+;1100: case WP_RAILGUN: 
+;1101:   Weapon_RocketLauncher_Fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_RocketLauncher_Fire
 CALLV
 pop
-line 1101
-;1101:  break; 
+line 1102
+;1102:  break; 
 ADDRGP4 $313
 JUMPV
 LABELV $326
-line 1103
-;1102: case WP_BFG: 
-;1103:  BFG_Fire( ent ); 
+line 1104
+;1103: case WP_BFG: 
+;1104:  BFG_Fire( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BFG_Fire
 CALLV
 pop
-line 1104
-;1104:  break; 
+line 1105
+;1105:  break; 
 ADDRGP4 $313
 JUMPV
 LABELV $327
-line 1106
-;1105: case WP_GRAPPLING_HOOK: 
-;1106:  Weapon_GrapplingHook_Fire( ent ); 
+line 1107
+;1106: case WP_GRAPPLING_HOOK: 
+;1107:  Weapon_GrapplingHook_Fire( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_GrapplingHook_Fire
 CALLV
 pop
-line 1107
-;1107:  break; 
-line 1110
-;1108: default: 
-;1109:// FIXME  G_Error( "Bad ent->s.weapon" ); 
-;1110:  break; 
+line 1108
+;1108:  break; 
+line 1111
+;1109: default: 
+;1110:// FIXME  G_Error( "Bad ent->s.weapon" ); 
+;1111:  break; 
 LABELV $313
-line 1112
-;1111: } 
-;1112:}
+line 1113
+;1112: } 
+;1113:}
 LABELV $306
 endproc FireWeapon2 12 20
 bss

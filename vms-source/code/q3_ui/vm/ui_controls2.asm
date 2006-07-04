@@ -655,7 +655,7 @@ line 357
 ;237:	{"centerview", 		"center view",		ID_CENTERVIEW,	ANIM_IDLE,		K_END,			-1,		-1, -1},
 ;238:	{"+zoom", 			"zoom view",		ID_ZOOMVIEW,	ANIM_IDLE,		-1,				-1,		-1, -1},
 ;239:	{"weapon 1",		"gauntlet",			ID_WEAPON1,		ANIM_WEAPON1,	'1',			-1,		-1, -1},
-;240:	{"weapon 2",		"machinegun",		ID_WEAPON2,		ANIM_WEAPON2,	'2',			-1,		-1, -1},
+;240:	{"weapon 2",		"assault rifle",		ID_WEAPON2,		ANIM_WEAPON2,	'2',			-1,		-1, -1},
 ;241:	{"weapon 3",		"shotgun",			ID_WEAPON3,		ANIM_WEAPON3,	'3',			-1,		-1, -1},
 ;242:	{"weapon 4",		"grenade launcher",	ID_WEAPON4,		ANIM_WEAPON4,	'4',			-1,		-1, -1},
 ;243:	{"weapon 5",		"singularity cannon",	ID_WEAPON5,		ANIM_WEAPON5,	'5',			-1,		-1, -1},
@@ -9185,16 +9185,19 @@ byte 1 51
 byte 1 0
 align 1
 LABELV $109
-byte 1 109
 byte 1 97
-byte 1 99
-byte 1 104
-byte 1 105
-byte 1 110
-byte 1 101
-byte 1 103
+byte 1 115
+byte 1 115
+byte 1 97
 byte 1 117
-byte 1 110
+byte 1 108
+byte 1 116
+byte 1 32
+byte 1 114
+byte 1 105
+byte 1 102
+byte 1 108
+byte 1 101
 byte 1 0
 align 1
 LABELV $108

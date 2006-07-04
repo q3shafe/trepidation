@@ -268,7 +268,7 @@ static void CG_Obituary( entityState_t *ent ) {
 			message = "was pummeled by";
 			break;
 		case MOD_MACHINEGUN:
-			message = "was machinegunned by";
+			message = "was assaulted by";
 			break;
 		case MOD_SHOTGUN:
 			message = "was gunned down by";
@@ -403,7 +403,6 @@ static void CG_UseItem( centity_t *cent ) {
 #ifdef MISSIONPACK
 	case HI_KAMIKAZE:
 		break;
-
 	case HI_PORTAL:
 		break;
 	case HI_INVULNERABILITY:
@@ -1144,11 +1143,10 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 				case GTS_TEAMS_ARE_TIED:
 					CG_AddBufferedSound( cgs.media.teamsTiedSound );
 					break;
-#ifdef MISSIONPACK
 				case GTS_KAMIKAZE:
-					trap_S_StartLocalSound(cgs.media.kamikazeFarSound, CHAN_ANNOUNCER);
+					//trap_S_StartLocalSound(cgs.media.kamikazeFarSound, CHAN_ANNOUNCER);
 					break;
-#endif
+
 				default:
 					break;
 			}

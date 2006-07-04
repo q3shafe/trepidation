@@ -152,7 +152,7 @@ void SnapVectorTowards( vec3_t v, vec3_t to ) {
 #ifdef MISSIONPACK
 #define CHAINGUN_SPREAD		600
 #endif
-#define MACHINEGUN_SPREAD	200
+#define MACHINEGUN_SPREAD	100
 #define	MACHINEGUN_DAMAGE	7
 #define	MACHINEGUN_TEAM_DAMAGE	5		// wimpier MG in teamplay
 
@@ -1077,6 +1077,7 @@ void FireWeapon2( gentity_t *ent ) {
 	break; 
  case WP_SHOTGUN: 
 	//Weapon_RocketLauncher_Fire( ent );
+	weapon_supershotgun_fire( ent );
 	break; 
  case WP_MACHINEGUN: 
   //Weapon_RocketLauncher_Fire( ent );

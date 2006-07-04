@@ -993,11 +993,12 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 
 //unlagged - backward reconciliation #5
 	// announce it
+	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build v0.0.1!\n\"" );
 	if ( g_delagHitscan.integer ) {
-		trap_SendServerCommand( clientNum, "print \"This server is Unlagged: full lag compensation is ON!\n\"" );
+//		trap_SendServerCommand( clientNum, "print \"This server is Unlagged: full lag compensation is ON!\n\"" );
 	}
 	else {
-		trap_SendServerCommand( clientNum, "print \"This server is Unlagged: full lag compensation is OFF!\n\"" );
+//		trap_SendServerCommand( clientNum, "print \"This server is Unlagged: full lag compensation is OFF!\n\"" );
 	}
 //unlagged - backward reconciliation #5
 
@@ -1258,7 +1259,7 @@ void ClientSpawn(gentity_t *ent) {
 			g_instagib.integer == 0; 
 		}
 
-
+	}
 
 
 	// health will count down towards max_health
@@ -1284,7 +1285,7 @@ void ClientSpawn(gentity_t *ent) {
 		// force the base weapon up
 		client->ps.weapon = WP_MACHINEGUN;
 		client->ps.weaponstate = WEAPON_READY;
-		} else
+		} 
 		
 		// Hand out weapons in instagib
 		if (g_instagib.integer == 1) 
@@ -1357,9 +1358,6 @@ void ClientSpawn(gentity_t *ent) {
 
 
 
-
-
-	}
 
 	// don't allow full run speed for a bit
 	client->ps.pm_flags |= PMF_TIME_KNOCKBACK;

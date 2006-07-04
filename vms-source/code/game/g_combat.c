@@ -471,13 +471,6 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	static		int deathNum;
 	gentity_t	*xte;
 
-	if ( self->client->ps.pm_type == PM_DEAD ) {
-		return;
-	}
-
-	if ( level.intermissiontime ) {
-		return;
-	}
 
 	// Shafe - Trep is it first strike?  
 	// In arsenal you can join until the first kill has been made
@@ -489,6 +482,16 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	{
 		level.firstStrike = qtrue;
 	}
+
+
+	if ( self->client->ps.pm_type == PM_DEAD ) {
+		return;
+	}
+
+	if ( level.intermissiontime ) {
+		return;
+	}
+
 
 //unlagged - backward reconciliation #2
 	// make sure the body shows up in the client's current position
@@ -752,7 +755,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 						if (attacker->client->pers.h_mg) 
 						{ 
 							attacker->client->ps.persistant[PERS_SCORE]+=6; 
-							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Machine Gun: ^3+6\n\"");	
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Assault Rifle: ^3+6\n\"");	
 						}
 				
 						

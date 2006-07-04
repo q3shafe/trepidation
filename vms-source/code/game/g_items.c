@@ -294,6 +294,7 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 int Pickup_Health (gentity_t *ent, gentity_t *other) {
 	int			max;
 	int			quantity;
+	int			respawnTime;
 
 	// small and mega healths will go over the max
 #ifdef MISSIONPACK
@@ -320,6 +321,16 @@ int Pickup_Health (gentity_t *ent, gentity_t *other) {
 		other->health = max;
 	}
 	other->client->ps.stats[STAT_HEALTH] = other->health;
+		
+	// Arsenal - In arsenal things respawn really slowly when it's down to 2 people
+	if (level.StopItemRespawn) 
+	{ 
+			// If it's down to 2 players make it a really long time
+			respawnTime = RESPAWN_HEALTH * 60.0;  
+			return	respawnTime;
+	}
+	
+
 
 	if ( ent->item->quantity == 100 ) {		// mega health respawns slow
 		return RESPAWN_MEGAHEALTH;
@@ -331,8 +342,10 @@ int Pickup_Health (gentity_t *ent, gentity_t *other) {
 //======================================================================
 
 int Pickup_Armor( gentity_t *ent, gentity_t *other ) {
+	int		respawnTime;
 #ifdef MISSIONPACK
 	int		upperBound;
+	
 
 	other->client->ps.stats[STAT_ARMOR] += ent->item->quantity;
 
@@ -351,7 +364,17 @@ int Pickup_Armor( gentity_t *ent, gentity_t *other ) {
 	if ( other->client->ps.stats[STAT_ARMOR] > other->client->ps.stats[STAT_MAX_HEALTH] * 2 ) {
 		other->client->ps.stats[STAT_ARMOR] = other->client->ps.stats[STAT_MAX_HEALTH] * 2;
 	}
+
 #endif
+
+
+	// Arsenal - In arsenal things respawn really slowly when it's down to 2 people
+	if (level.StopItemRespawn) 
+	{ 
+			// If it's down to 2 players make it a really long time
+			respawnTime = RESPAWN_ARMOR * 60.0;  
+			return	respawnTime;
+	}
 
 	return RESPAWN_ARMOR;
 }
