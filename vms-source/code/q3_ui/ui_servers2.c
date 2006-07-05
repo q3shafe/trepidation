@@ -281,6 +281,9 @@ static int				g_sortkey;
 static int				g_emptyservers;
 static int				g_fullservers;
 static int				g_masteruse; // Shafe - Trep - Multimaster
+static int				g_Arsenal;
+static int				g_instagib;
+
 
 
 /*
@@ -555,7 +558,7 @@ static void ArenaServers_UpdateMenu( void ) {
 			if( servernodeptr->g_Arsenal != 1 ) {
 					continue;
 			}
-			
+			if(!g_Arsenal) { continue;	}
 			break;
 		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
 			if( servernodeptr->gametype != GT_LASTMAN ) {

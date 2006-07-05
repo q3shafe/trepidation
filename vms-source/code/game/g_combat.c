@@ -477,10 +477,18 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	if ( level.warmupTime ) 
 	{
 		level.firstStrike = qfalse;
+		level.OneSurvivor = qfalse;
+		level.lastClient = -1;
+
 	} 
 	else
 	{
+		if (level.firstStrike == qfalse)
+		{
 		level.firstStrike = qtrue;
+		BroadCastSound("sound/misc/laff02.wav");
+		trap_SendServerCommand( -1, va("print \"%s Made First Strike!\n\"",attacker->client->pers.netname));
+		}
 	}
 
 
@@ -700,6 +708,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 					{
 						BroadCastSound("sound/misc/laff01.wav");
 						// Win The Game
+						/*
 						trap_SendServerCommand( -1, "print \"::: ^9WINNER BONUSES :::\n\"");	
 						trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", attacker->client->pers.netname) );
 						attacker->client->ps.persistant[PERS_SCORE]+=20;
@@ -762,6 +771,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 						
 						LogExit( "Fraglimit hit." );
 						BroadCastSound("sound/misc/laff01.wav");
+						*/
 
 						////////////////
 					}			

@@ -2360,21 +2360,37 @@ ADDRGP4 level+16
 CNSTI4 0
 ASGNI4
 line 588
-;588:	} else if ( g_doWarmup.integer ) { // Turn it on
+;588:		level.firstStrike = qfalse;
+ADDRGP4 level+9228
+CNSTI4 0
+ASGNI4
+line 589
+;589:		level.OneSurvivor = qfalse;
+ADDRGP4 level+9232
+CNSTI4 0
+ASGNI4
+line 590
+;590:		level.lastClient = -1;
+ADDRGP4 level+9236
+CNSTI4 -1
+ASGNI4
+line 592
+;591:
+;592:	} else if ( g_doWarmup.integer ) { // Turn it on
 ADDRGP4 $302
 JUMPV
 LABELV $301
 ADDRGP4 g_doWarmup+12
 INDIRI4
 CNSTI4 0
-EQI4 $306
-line 589
-;589:		level.warmupTime = -1;
+EQI4 $309
+line 593
+;593:		level.warmupTime = -1;
 ADDRGP4 level+16
 CNSTI4 -1
 ASGNI4
-line 590
-;590:		trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
+line 594
+;594:		trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
 ADDRGP4 $287
 ARGP4
 ADDRGP4 level+16
@@ -2392,52 +2408,53 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 591
-;591:		G_LogPrintf( "Warmup:\n" );
-ADDRGP4 $311
+line 596
+;595:
+;596:		G_LogPrintf( "Warmup:\n" );
+ADDRGP4 $314
 ARGP4
 ADDRGP4 G_LogPrintf
 CALLV
 pop
-line 592
-;592:	}
-LABELV $306
+line 597
+;597:	}
+LABELV $309
 LABELV $302
-line 594
-;593:
-;594:}
+line 599
+;598:
+;599:}
 LABELV $280
 endproc SP_worldspawn 16 12
 export G_SpawnEntitiesFromString
 proc G_SpawnEntitiesFromString 8 4
-line 604
-;595:
-;596:
-;597:/*
-;598:==============
-;599:G_SpawnEntitiesFromString
+line 609
 ;600:
-;601:Parses textual entity definitions out of an entstring and spawns gentities.
-;602:==============
-;603:*/
-;604:void G_SpawnEntitiesFromString( void ) {
-line 606
-;605:	// allow calls to G_Spawn*()
-;606:	level.spawning = qtrue;
+;601:
+;602:/*
+;603:==============
+;604:G_SpawnEntitiesFromString
+;605:
+;606:Parses textual entity definitions out of an entstring and spawns gentities.
+;607:==============
+;608:*/
+;609:void G_SpawnEntitiesFromString( void ) {
+line 611
+;610:	// allow calls to G_Spawn*()
+;611:	level.spawning = qtrue;
 ADDRGP4 level+4508
 CNSTI4 1
 ASGNI4
-line 607
-;607:	level.numSpawnVars = 0;
+line 612
+;612:	level.numSpawnVars = 0;
 ADDRGP4 level+4512
 CNSTI4 0
 ASGNI4
-line 612
-;608:
-;609:	// the worldspawn is not an actual entity, but it still
-;610:	// has a "spawn" function to perform any global setup
-;611:	// needed by a level (setting configstrings or cvars, etc)
-;612:	if ( !G_ParseSpawnVars() ) {
+line 617
+;613:
+;614:	// the worldspawn is not an actual entity, but it still
+;615:	// has a "spawn" function to perform any global setup
+;616:	// needed by a level (setting configstrings or cvars, etc)
+;617:	if ( !G_ParseSpawnVars() ) {
 ADDRLP4 0
 ADDRGP4 G_ParseSpawnVars
 CALLI4
@@ -2445,38 +2462,38 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $315
-line 613
-;613:		G_Error( "SpawnEntities: no entities" );
-ADDRGP4 $317
+NEI4 $318
+line 618
+;618:		G_Error( "SpawnEntities: no entities" );
+ADDRGP4 $320
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 614
-;614:	}
-LABELV $315
-line 615
-;615:	SP_worldspawn();
+line 619
+;619:	}
+LABELV $318
+line 620
+;620:	SP_worldspawn();
 ADDRGP4 SP_worldspawn
 CALLV
 pop
-ADDRGP4 $319
+ADDRGP4 $322
 JUMPV
-LABELV $318
-line 618
-;616:
-;617:	// parse ents
-;618:	while( G_ParseSpawnVars() ) {
-line 619
-;619:		G_SpawnGEntityFromSpawnVars();
+LABELV $321
+line 623
+;621:
+;622:	// parse ents
+;623:	while( G_ParseSpawnVars() ) {
+line 624
+;624:		G_SpawnGEntityFromSpawnVars();
 ADDRGP4 G_SpawnGEntityFromSpawnVars
 CALLV
 pop
-line 620
-;620:	}	
-LABELV $319
-line 618
+line 625
+;625:	}	
+LABELV $322
+line 623
 ADDRLP4 4
 ADDRGP4 G_ParseSpawnVars
 CALLI4
@@ -2484,16 +2501,16 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $318
-line 622
-;621:
-;622:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
+NEI4 $321
+line 627
+;626:
+;627:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
 ADDRGP4 level+4508
 CNSTI4 0
 ASGNI4
-line 623
-;623:}
-LABELV $312
+line 628
+;628:}
+LABELV $315
 endproc G_SpawnEntitiesFromString 8 4
 import SP_team_CTF_bluespawn
 import SP_team_CTF_redspawn
@@ -3136,7 +3153,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $317
+LABELV $320
 byte 1 83
 byte 1 112
 byte 1 97
@@ -3165,7 +3182,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $311
+LABELV $314
 byte 1 87
 byte 1 97
 byte 1 114

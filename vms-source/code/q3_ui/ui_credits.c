@@ -62,7 +62,7 @@ static void UI_CreditMenu_Draw( void ) {
 	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 	UI_DrawProportionalString( 320, y, "Scott Hanke, Ryan McNeill, Petee", UI_CENTER|UI_SMALLFONT, color_white );
 	
-	//y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 	UI_DrawProportionalString( 320, y, "Gigon, Gigabyte123", UI_CENTER|UI_SMALLFONT, color_white );
 
 	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
@@ -85,11 +85,12 @@ static void UI_CreditMenu_Draw( void ) {
 	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 	UI_DrawProportionalString( 320, y, "Blue, Dredge, Prodie, Unknown", UI_CENTER|UI_SMALLFONT, color_white );
 
+	/*
 	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 	UI_DrawProportionalString( 320, y, "Favorite Foods", UI_CENTER|UI_SMALLFONT, color_white );
 	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 	UI_DrawProportionalString( 320, y, "Pizza and M & M's", UI_CENTER|UI_SMALLFONT, color_white );
-
+	*/
 	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 	UI_DrawProportionalString( 320, y, "Website", UI_CENTER|UI_SMALLFONT, color_white );
 	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;

@@ -385,12 +385,14 @@ int CountSurvivors ( void )
 			for ( i = 0; i < level.maxclients; i++ )
 			{
 				cl = &level.clients[i];
+
 				if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
 				{
 					tmpCnt++;
 				
 				}
 			}
+
 return tmpCnt;
 }
 
@@ -526,6 +528,8 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	level.time = levelTime;
 	level.startTime = levelTime;
 	level.firstStrike = qfalse; // Shafe - Trep
+	level.OneSurvivor = qfalse;
+	level.lastClient = -1;
 	
 	
 
@@ -1408,6 +1412,9 @@ and the time everyone is moved to the intermission spot, so you
 can see the last frag.
 =================
 */
+
+
+	
 void CheckExitRules( void ) {
  	int			i;
 	gclient_t	*cl;
@@ -1424,6 +1431,7 @@ void CheckExitRules( void ) {
 		CheckIntermissionExit ();
 		return;
 	}
+	
 
 	if ( level.intermissionQueued ) {
 #ifdef MISSIONPACK
@@ -1440,7 +1448,7 @@ void CheckExitRules( void ) {
 #endif
 		return;
 	}
-
+	
 	// check for sudden death
 	if ( ScoreIsTied() ) {
 		// always wait for sudden death
@@ -1455,106 +1463,17 @@ void CheckExitRules( void ) {
 		}
 	}
 
-	if ( level.numPlayingClients < 2 ) {
-		return;
-	}
 
-	if ( g_gametype.integer < GT_CTF && g_fraglimit.integer ) {
-		if ( level.teamScores[TEAM_RED] >= g_fraglimit.integer ) {
-			trap_SendServerCommand( -1, "print \"Red hit the fraglimit.\n\"" );
-			LogExit( "Fraglimit hit." );
-			return;
-		}
-
-		if ( level.teamScores[TEAM_BLUE] >= g_fraglimit.integer ) {
-			trap_SendServerCommand( -1, "print \"Blue hit the fraglimit.\n\"" );
-			LogExit( "Fraglimit hit." );
-			return;
-		}
-
-		for ( i=0 ; i< g_maxclients.integer ; i++ ) {
-			cl = level.clients + i;
-			if ( cl->pers.connected != CON_CONNECTED ) {
-				continue;
-			}
-			if ( cl->sess.sessionTeam != TEAM_FREE ) {
-				continue;
-			}
-
-			if ( cl->ps.persistant[PERS_SCORE] >= g_fraglimit.integer ) {
-				LogExit( "Fraglimit hit." );
-				trap_SendServerCommand( -1, va("print \"%s" S_COLOR_WHITE " hit the fraglimit.\n\"",
-					cl->pers.netname ) );
-				return;
-			}
-		}
-	}
-
-	if ( g_gametype.integer >= GT_CTF && g_capturelimit.integer ) {
-
-		if ( level.teamScores[TEAM_RED] >= g_capturelimit.integer ) {
-			trap_SendServerCommand( -1, "print \"Red hit the capturelimit.\n\"" );
-			LogExit( "Capturelimit hit." );
-			return;
-		}
-
-		if ( level.teamScores[TEAM_BLUE] >= g_capturelimit.integer ) {
-			trap_SendServerCommand( -1, "print \"Blue hit the capturelimit.\n\"" );
-			LogExit( "Capturelimit hit." );
-			return;
-		}
-	}
-
-		// EFAdmin Arsenal
-	if ( g_Arsenal.integer != 0 )
+	// We dont do a showdown or find a winner for at least 20 seconds into the game.
+	if (( g_Arsenal.integer != 0)  && ((level.time-level.startTime) > 25000) && (level.firstStrike == qtrue))
 	{
 		gclient_t		*survivor = NULL;		
 		int				tmpCnt;
 		tmpCnt = CountSurvivors();
 
 			
-			
-			/* This is from My EF Version.
-			   Lets Not Give Away Anything Just Yet
-
-			// If down to two people start the showdown music and slow spawining
-			// of health and powerups
-			if (tmpCnt == 3)
-			{
-				if (level.level3Players) 
-				{
-					level.level3Players = qfalse;
-					trap_SendServerCommand( -1, va("cp \"^93 Players Remaining!\n\"") );
-					
-					// Last 3 Players Get Detpacks  
-					
-					for ( i = 0; i < level.maxclients; i++ )
-					{
-						cl = &level.clients[i];
-						self = &g_entities[i];
-							
-						if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
-						{	
-							cl->ps.speed=+60;
-							cl->ps.stats[STAT_HOLDABLE_ITEM] = BG_FindItemForHoldable( HI_DETPACK ) - bg_itemlist;
-						
-						}
-
-					}
-					
-				} 
-				else 
-				{
-					level.level3Players = qfalse;
-				}
-
-
-			}
-			else
-			{
-				level.level3Players = qfalse;
-			}
-			*/
+	
+		
 
 			// Two People - Showdown
 			if (tmpCnt == 2)
@@ -1619,8 +1538,10 @@ void CheckExitRules( void ) {
 
 
 			// Down to 1 player find the survivor
-			/* This code has morphed to utter shit
-			if (tmpCnt == 1) {
+			/* This code has morphed to utter shit */
+			
+			if (tmpCnt == 1)
+			{
 				int		p;
 				for ( i = 0; i < level.maxclients; i++ )
 				{
@@ -1628,9 +1549,9 @@ void CheckExitRules( void ) {
 					//survivor = &level.clients[i];
 					if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
 					{	
-						//survivor = cl;	
+						survivor = cl;	
 						p = i;
-						survivor = &level.clients[i];
+						//survivor = &level.clients[i];
 						G_Printf( S_COLOR_GREEN "DEBUG: Survivors %s %i\n", survivor->pers.netname, tmpCnt);
 						break;
 					}
@@ -1642,7 +1563,7 @@ void CheckExitRules( void ) {
 						// If We Get To Here We should have a survivor	
 				//if ( survivor != NULL )
 				//{
-					
+					BroadCastSound("sound/misc/laff01.wav");
 					trap_SendServerCommand( -1, "print \"::: ^9WINNER BONUSES :::\n\"");	
 					trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", survivor->pers.netname) );
 					survivor->ps.persistant[PERS_SCORE]+=20;
@@ -1718,37 +1639,72 @@ void CheckExitRules( void ) {
 			
 
 	}
-				
-		
+			
 
-		/*  
+	// End Arsenal
 
-		I Have No Idea What This crap is.. I think this is just garbage from the Arsenal EF Port
+	if (g_Arsenal.integer != 1)
+	{
+		if ( level.numPlayingClients < 2 ) {
+			return;
+		}
+	}
 
-		// Make sure there arent 0 people BUT	
-		// Wait at least 20 seconds before deciding there are no players
-		if ((!level.warmupTime) && (tmpCnt < 2))
-		{
-			trap_SendServerCommand( -1, "print \"No Players!.\n\"");
-			LogExit( "Timelimit hit." );
+	
+	
+	if ( g_gametype.integer < GT_CTF && g_fraglimit.integer ) {
+		if ( level.teamScores[TEAM_RED] >= g_fraglimit.integer ) {
+			trap_SendServerCommand( -1, "print \"Red hit the fraglimit.\n\"" );
+			LogExit( "Fraglimit hit." );
+			return;
 		}
 
-		// Check The Timelimit Again
-		if ( g_timelimit.integer && !level.warmupTime ) 
-		{
-			if ( level.time - level.startTime >= g_timelimit.integer*60000 ) 
-			{
-				trap_SendServerCommand( -1, "print \"Timelimit hit.\n\"");
-				LogExit( "Timelimit hit." );
+		if ( level.teamScores[TEAM_BLUE] >= g_fraglimit.integer ) {
+			trap_SendServerCommand( -1, "print \"Blue hit the fraglimit.\n\"" );
+			LogExit( "Fraglimit hit." );
+			return;
+		}
+	
+		for ( i=0 ; i< g_maxclients.integer ; i++ ) {
+			cl = level.clients + i;
+			if ( cl->pers.connected != CON_CONNECTED ) {
+				continue;
+			}
+			if ( cl->sess.sessionTeam != TEAM_FREE ) {
+				continue;
+			}
+
+			if ( cl->ps.persistant[PERS_SCORE] >= g_fraglimit.integer ) {
+				LogExit( "Fraglimit hit." );
+				trap_SendServerCommand( -1, va("print \"%s" S_COLOR_WHITE " hit the fraglimit.\n\"",
+					cl->pers.netname ) );
 				return;
 			}
 		}
-		
-		//don't check anything else
-		return;
-		*/
+	}
+	
+	
+	if ( g_gametype.integer >= GT_CTF && g_capturelimit.integer ) {
 
-//	}
+		if ( level.teamScores[TEAM_RED] >= g_capturelimit.integer ) {
+			trap_SendServerCommand( -1, "print \"Red hit the capturelimit.\n\"" );
+			LogExit( "Capturelimit hit." );
+			return;
+		}
+
+		if ( level.teamScores[TEAM_BLUE] >= g_capturelimit.integer ) {
+			trap_SendServerCommand( -1, "print \"Blue hit the capturelimit.\n\"" );
+			LogExit( "Capturelimit hit." );
+			return;
+		}
+	}
+	
+	
+				
+	
+
+
+
 
 }
 
