@@ -214,9 +214,18 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 66
+line 65
 ;64:	
-;65:	//y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+;65:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+ADDRLP4 0
+ADDRLP4 0
+INDIRI4
+CVIF4 4
+CNSTF4 1101135872
+ADDF4
+CVFI4 4
+ASGNI4
+line 66
 ;66:	UI_DrawProportionalString( 320, y, "Gigon, Gigabyte123", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
@@ -444,9 +453,15 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 88
+line 94
 ;87:
-;88:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+;88:	/*
+;89:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+;90:	UI_DrawProportionalString( 320, y, "Favorite Foods", UI_CENTER|UI_SMALLFONT, color_white );
+;91:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+;92:	UI_DrawProportionalString( 320, y, "Pizza and M & M's", UI_CENTER|UI_SMALLFONT, color_white );
+;93:	*/
+;94:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -455,8 +470,8 @@ CNSTF4 1105594941
 ADDF4
 CVFI4 4
 ASGNI4
-line 89
-;89:	UI_DrawProportionalString( 320, y, "Favorite Foods", UI_CENTER|UI_SMALLFONT, color_white );
+line 95
+;95:	UI_DrawProportionalString( 320, y, "Website", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -471,8 +486,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 90
-;90:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 96
+;96:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -481,8 +496,8 @@ CNSTF4 1101135872
 ADDF4
 CVFI4 4
 ASGNI4
-line 91
-;91:	UI_DrawProportionalString( 320, y, "Pizza and M & M's", UI_CENTER|UI_SMALLFONT, color_white );
+line 97
+;97:	UI_DrawProportionalString( 320, y, "trepidation.sourceforge.net", UI_CENTER|UI_SMALLFONT, color_white );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -497,19 +512,19 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 93
-;92:
-;93:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 99
+;98:
+;99:	y += 1.35 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CVIF4 4
-CNSTF4 1105594941
+CNSTF4 1104851763
 ADDF4
 CVFI4 4
 ASGNI4
-line 94
-;94:	UI_DrawProportionalString( 320, y, "Website", UI_CENTER|UI_SMALLFONT, color_white );
+line 100
+;100:	UI_DrawString( 320, y, "Trepidation     trepidation.soourceforge.net     Support Open Source!", UI_CENTER|UI_SMALLFONT, color_red );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -519,23 +534,21 @@ ADDRGP4 $91
 ARGP4
 CNSTI4 17
 ARGI4
-ADDRGP4 color_white
+ADDRGP4 color_red
 ARGP4
-ADDRGP4 UI_DrawProportionalString
+ADDRGP4 UI_DrawString
 CALLV
 pop
-line 95
-;95:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+line 101
+;101:	y += SMALLCHAR_HEIGHT;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
-CVIF4 4
-CNSTF4 1101135872
-ADDF4
-CVFI4 4
+CNSTI4 16
+ADDI4
 ASGNI4
-line 96
-;96:	UI_DrawProportionalString( 320, y, "trepidation.sourceforge.net", UI_CENTER|UI_SMALLFONT, color_white );
+line 102
+;102:	UI_DrawString( 320, y, "Trepidation 2006 General Public License.", UI_CENTER|UI_SMALLFONT, color_red );
 CNSTI4 320
 ARGI4
 ADDRLP4 0
@@ -545,79 +558,28 @@ ADDRGP4 $92
 ARGP4
 CNSTI4 17
 ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 98
-;97:
-;98:	y += 1.35 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1104851763
-ADDF4
-CVFI4 4
-ASGNI4
-line 99
-;99:	UI_DrawString( 320, y, "Trepidation     trepidation.soourceforge.net     Support Open Source!", UI_CENTER|UI_SMALLFONT, color_red );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $93
-ARGP4
-CNSTI4 17
-ARGI4
 ADDRGP4 color_red
 ARGP4
 ADDRGP4 UI_DrawString
 CALLV
 pop
-line 100
-;100:	y += SMALLCHAR_HEIGHT;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CNSTI4 16
-ADDI4
-ASGNI4
-line 101
-;101:	UI_DrawString( 320, y, "Trepidation 2006 General Public License.", UI_CENTER|UI_SMALLFONT, color_red );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $94
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_red
-ARGP4
-ADDRGP4 UI_DrawString
-CALLV
-pop
-line 102
-;102:}
+line 103
+;103:}
 LABELV $74
 endproc UI_CreditMenu_Draw 4 20
 export UI_CreditMenu
 proc UI_CreditMenu 0 12
-line 110
-;103:
-;104:
-;105:/*
-;106:===============
-;107:UI_CreditMenu
-;108:===============
-;109:*/
-;110:void UI_CreditMenu( void ) {
 line 111
-;111:	memset( &s_credits, 0 ,sizeof(s_credits) );
+;104:
+;105:
+;106:/*
+;107:===============
+;108:UI_CreditMenu
+;109:===============
+;110:*/
+;111:void UI_CreditMenu( void ) {
+line 112
+;112:	memset( &s_credits, 0 ,sizeof(s_credits) );
 ADDRGP4 s_credits
 ARGP4
 CNSTI4 0
@@ -627,92 +589,92 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 113
-;112:
-;113:	s_credits.menu.draw = UI_CreditMenu_Draw;
+line 114
+;113:
+;114:	s_credits.menu.draw = UI_CreditMenu_Draw;
 ADDRGP4 s_credits+268
 ADDRGP4 UI_CreditMenu_Draw
 ASGNP4
-line 114
-;114:	s_credits.menu.key = UI_CreditMenu_Key;
+line 115
+;115:	s_credits.menu.key = UI_CreditMenu_Key;
 ADDRGP4 s_credits+272
 ADDRGP4 UI_CreditMenu_Key
 ASGNP4
-line 115
-;115:	s_credits.menu.fullscreen = qtrue;
+line 116
+;116:	s_credits.menu.fullscreen = qtrue;
 ADDRGP4 s_credits+280
 CNSTI4 1
 ASGNI4
-line 118
-;116:
+line 119
 ;117:
-;118:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $99
+;118:
+;119:	trap_R_RegisterShaderNoMip( ART_FRAMER );
+ADDRGP4 $97
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 121
-;119:	
-;120:
-;121:	s_credits.menu.draw = UI_CreditMenu_Draw;
+line 122
+;120:	
+;121:
+;122:	s_credits.menu.draw = UI_CreditMenu_Draw;
 ADDRGP4 s_credits+268
 ADDRGP4 UI_CreditMenu_Draw
 ASGNP4
-line 122
-;122:	s_credits.menu.fullscreen = qtrue;
+line 123
+;123:	s_credits.menu.fullscreen = qtrue;
 ADDRGP4 s_credits+280
 CNSTI4 1
 ASGNI4
-line 123
-;123:	s_credits.menu.wrapAround = qtrue;
+line 124
+;124:	s_credits.menu.wrapAround = qtrue;
 ADDRGP4 s_credits+276
 CNSTI4 1
 ASGNI4
-line 124
-;124:	s_credits.menu.showlogo = qfalse; // Shafe - Trep - Temporarily qfalse
+line 125
+;125:	s_credits.menu.showlogo = qfalse; // Shafe - Trep - Temporarily qfalse
 ADDRGP4 s_credits+284
 CNSTI4 0
 ASGNI4
-line 126
-;125:
-;126:	s_credits.framer.generic.type		= MTYPE_BITMAP;
+line 127
+;126:
+;127:	s_credits.framer.generic.type		= MTYPE_BITMAP;
 ADDRGP4 s_credits+288
 CNSTI4 6
 ASGNI4
-line 127
-;127:	s_credits.framer.generic.name		= ART_FRAMER;
-ADDRGP4 s_credits+288+4
-ADDRGP4 $99
-ASGNP4
 line 128
-;128:	s_credits.framer.generic.flags		= QMF_INACTIVE;
+;128:	s_credits.framer.generic.name		= ART_FRAMER;
+ADDRGP4 s_credits+288+4
+ADDRGP4 $97
+ASGNP4
+line 129
+;129:	s_credits.framer.generic.flags		= QMF_INACTIVE;
 ADDRGP4 s_credits+288+44
 CNSTU4 16384
 ASGNU4
-line 129
-;129:	s_credits.framer.generic.x			= 0;  
+line 130
+;130:	s_credits.framer.generic.x			= 0;  
 ADDRGP4 s_credits+288+12
 CNSTI4 0
 ASGNI4
-line 130
-;130:	s_credits.framer.generic.y			= 0;
+line 131
+;131:	s_credits.framer.generic.y			= 0;
 ADDRGP4 s_credits+288+16
 CNSTI4 0
 ASGNI4
-line 131
-;131:	s_credits.framer.width				= 800;
+line 132
+;132:	s_credits.framer.width				= 800;
 ADDRGP4 s_credits+288+76
 CNSTI4 800
 ASGNI4
-line 132
-;132:	s_credits.framer.height			= 600;
+line 133
+;133:	s_credits.framer.height			= 600;
 ADDRGP4 s_credits+288+80
 CNSTI4 600
 ASGNI4
-line 134
-;133:
-;134:	Menu_AddItem( &s_credits.menu, ( void * ) &s_credits.framer );
+line 135
+;134:
+;135:	Menu_AddItem( &s_credits.menu, ( void * ) &s_credits.framer );
 ADDRGP4 s_credits
 ARGP4
 ADDRGP4 s_credits+288
@@ -720,29 +682,29 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 136
-;135:
-;136:	trap_Key_SetCatcher( KEYCATCH_UI );
+line 137
+;136:
+;137:	trap_Key_SetCatcher( KEYCATCH_UI );
 CNSTI4 2
 ARGI4
 ADDRGP4 trap_Key_SetCatcher
 CALLV
 pop
-line 137
-;137:	uis.menusp = 0;
+line 138
+;138:	uis.menusp = 0;
 ADDRGP4 uis+16
 CNSTI4 0
 ASGNI4
-line 138
-;138:	UI_PushMenu ( &s_credits.menu );
+line 139
+;139:	UI_PushMenu ( &s_credits.menu );
 ADDRGP4 s_credits
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 139
-;139:}
-LABELV $95
+line 140
+;140:}
+LABELV $93
 endproc UI_CreditMenu 0 12
 bss
 align 4
@@ -1228,7 +1190,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $99
+LABELV $97
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1245,7 +1207,7 @@ byte 1 110
 byte 1 115
 byte 1 0
 align 1
-LABELV $94
+LABELV $92
 byte 1 84
 byte 1 114
 byte 1 101
@@ -1288,7 +1250,7 @@ byte 1 101
 byte 1 46
 byte 1 0
 align 1
-LABELV $93
+LABELV $91
 byte 1 84
 byte 1 114
 byte 1 101
@@ -1360,7 +1322,7 @@ byte 1 101
 byte 1 33
 byte 1 0
 align 1
-LABELV $92
+LABELV $90
 byte 1 116
 byte 1 114
 byte 1 101
@@ -1390,7 +1352,7 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $91
+LABELV $89
 byte 1 87
 byte 1 101
 byte 1 98
@@ -1398,43 +1360,6 @@ byte 1 115
 byte 1 105
 byte 1 116
 byte 1 101
-byte 1 0
-align 1
-LABELV $90
-byte 1 80
-byte 1 105
-byte 1 122
-byte 1 122
-byte 1 97
-byte 1 32
-byte 1 97
-byte 1 110
-byte 1 100
-byte 1 32
-byte 1 77
-byte 1 32
-byte 1 38
-byte 1 32
-byte 1 77
-byte 1 39
-byte 1 115
-byte 1 0
-align 1
-LABELV $89
-byte 1 70
-byte 1 97
-byte 1 118
-byte 1 111
-byte 1 114
-byte 1 105
-byte 1 116
-byte 1 101
-byte 1 32
-byte 1 70
-byte 1 111
-byte 1 111
-byte 1 100
-byte 1 115
 byte 1 0
 align 1
 LABELV $88

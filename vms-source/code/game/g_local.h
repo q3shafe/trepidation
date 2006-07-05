@@ -485,6 +485,8 @@ typedef struct {
 	int			levelSurvivors;			// Shafe Trep For Arsenal and LMS
 	qboolean	StopItemRespawn;		// Arsenal
 	qboolean	firstStrike;			// Shafe - Trep
+	qboolean	OneSurvivor;			// Shafe - Trep
+	int			lastClient;			// Shafe - Trep
 
 } level_locals_t;
 
