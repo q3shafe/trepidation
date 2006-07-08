@@ -555,6 +555,7 @@ static void ArenaServers_UpdateMenu( void ) {
 			}
 			break;
 		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
+			 //strcmp(servernodeptr->gamename,"eternal") != 0
 			if( servernodeptr->g_Arsenal != 1 ) {
 					continue;
 			}

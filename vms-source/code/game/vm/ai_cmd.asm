@@ -7775,7 +7775,7 @@ line 1534
 ;1504:		"Plasmagun",
 ;1505:		"M42 Gauss Rifle",
 ;1506:		"Flame Thrower",
-;1507:		"BFG10K",
+;1507:		"Devastator",
 ;1508:		"Quad Damage",
 ;1509:		"Regeneration",
 ;1510:		"Battle Suit",
@@ -11166,12 +11166,16 @@ byte 1 101
 byte 1 0
 align 1
 LABELV $517
-byte 1 66
-byte 1 70
-byte 1 71
-byte 1 49
-byte 1 48
-byte 1 75
+byte 1 68
+byte 1 101
+byte 1 118
+byte 1 97
+byte 1 115
+byte 1 116
+byte 1 97
+byte 1 116
+byte 1 111
+byte 1 114
 byte 1 0
 align 1
 LABELV $516

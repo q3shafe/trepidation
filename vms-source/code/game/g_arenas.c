@@ -92,6 +92,7 @@ void UpdateTournamentInfo( void ) {
 			perfect = 0;
 		}
 	
+		
 		Com_sprintf( msg, sizeof(msg), "postgame %i %i %i %i %i %i %i %i %i %i %i %i %i %i", level.numNonSpectatorClients, playerClientNum, accuracy,
 			player->client->ps.persistant[PERS_IMPRESSIVE_COUNT], player->client->ps.persistant[PERS_EXCELLENT_COUNT],player->client->ps.persistant[PERS_DEFEND_COUNT],
 			player->client->ps.persistant[PERS_ASSIST_COUNT], player->client->ps.persistant[PERS_GAUNTLET_FRAG_COUNT], player->client->ps.persistant[PERS_SCORE],
@@ -245,33 +246,34 @@ static void PodiumPlacementThink( gentity_t *podium ) {
 		G_SetOrigin( podium1, vec );
 	}
 
-	if( podium2 ) {
-		VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
-		vectoangles( vec, podium2->s.apos.trBase );
-		podium2->s.apos.trBase[PITCH] = 0;
-		podium2->s.apos.trBase[ROLL] = 0;
+		if( podium2 ) {
+			VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
+			vectoangles( vec, podium2->s.apos.trBase );
+			podium2->s.apos.trBase[PITCH] = 0;
+			podium2->s.apos.trBase[ROLL] = 0;
 
-		AngleVectors( podium2->s.apos.trBase, f, r, u );
-		VectorMA( podium->r.currentOrigin, offsetSecond[0], f, vec );
-		VectorMA( vec, offsetSecond[1], r, vec );
-		VectorMA( vec, offsetSecond[2], u, vec );
+			AngleVectors( podium2->s.apos.trBase, f, r, u );
+			VectorMA( podium->r.currentOrigin, offsetSecond[0], f, vec );
+			VectorMA( vec, offsetSecond[1], r, vec );
+			VectorMA( vec, offsetSecond[2], u, vec );
 
-		G_SetOrigin( podium2, vec );
-	}
+			G_SetOrigin( podium2, vec );
+		}
 
-	if( podium3 ) {
-		VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
-		vectoangles( vec, podium3->s.apos.trBase );
-		podium3->s.apos.trBase[PITCH] = 0;
-		podium3->s.apos.trBase[ROLL] = 0;
+		if( podium3 ) {
+			VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
+			vectoangles( vec, podium3->s.apos.trBase );
+			podium3->s.apos.trBase[PITCH] = 0;
+			podium3->s.apos.trBase[ROLL] = 0;
 
-		AngleVectors( podium3->s.apos.trBase, f, r, u );
-		VectorMA( podium->r.currentOrigin, offsetThird[0], f, vec );
-		VectorMA( vec, offsetThird[1], r, vec );
-		VectorMA( vec, offsetThird[2], u, vec );
+			AngleVectors( podium3->s.apos.trBase, f, r, u );
+			VectorMA( podium->r.currentOrigin, offsetThird[0], f, vec );
+			VectorMA( vec, offsetThird[1], r, vec );
+			VectorMA( vec, offsetThird[2], u, vec );
 
-		G_SetOrigin( podium3, vec );
-	}
+			G_SetOrigin( podium3, vec );
+		}
+
 }
 
 
@@ -336,13 +338,21 @@ void SpawnModelsOnVictoryPads( void ) {
 		podium2 = player;
 	}
 
-	if ( level.numNonSpectatorClients > 2 ) {
+	if ( level.numNonSpectatorClients > 2 )  {
 		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
 				level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
 		if ( player ) {
 			podium3 = player;
 		}
+	} else if ((g_Arsenal.integer == 1) && (level.numConnectedClients > 2)) // Spawn the 3rd person in arsenal... The 3rd person will always be a spec
+	{
+		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
+		level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
+		if ( player ) {
+		podium3 = player;
+		}
 	}
+
 }
 
 

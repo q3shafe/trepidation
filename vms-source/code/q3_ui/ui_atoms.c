@@ -7,6 +7,8 @@
 **********************************************************************/
 #include "ui_local.h"
 
+extern void UI_DynamicMenu( void );
+
 uiStatic_t		uis;
 qboolean		m_entersound;		// after a frame, so caching won't disrupt the sound
 

@@ -1504,7 +1504,7 @@ void BotMatch_WhereAreYou(bot_state_t *bs, bot_match_t *match) {
 		"Plasmagun",
 		"M42 Gauss Rifle",
 		"Flame Thrower",
-		"BFG10K",
+		"Devastator",
 		"Quad Damage",
 		"Regeneration",
 		"Battle Suit",

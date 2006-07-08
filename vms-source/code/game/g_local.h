@@ -273,6 +273,8 @@ typedef struct {
 	qboolean	h_plasma;
 	qboolean	h_bfg;
 	qboolean	Eliminated;		// For Arsenal and LMS
+	int			TrueScore;		// For Arsenal and LMS
+	
 //unlagged - true ping
 } clientPersistant_t;
 

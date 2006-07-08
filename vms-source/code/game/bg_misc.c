@@ -17,7 +17,7 @@ int Max_Ammo[WP_NUM_WEAPONS] =
 	400,				// Flame Thrower / Lignting,
 	50,					// Rail Gun/Guass Rifle,
 	120,				// Plasma,	
-	10,					// BFG,		
+	6,					// BFG,		
 	200					// Dunno,
 
 };
@@ -322,8 +322,8 @@ gitem_t	bg_itemlist[] =
         { "models/weapons2/bfg/bfg.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_bfg",
-/* pickup */	"BFG10K",
-		20,
+/* pickup */	"Devastator",
+		2,
 		IT_WEAPON,
 		WP_BFG,
 /* precache */ "",
@@ -470,8 +470,8 @@ gitem_t	bg_itemlist[] =
         { "models/powerups/ammo/bfgam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_bfg",
-/* pickup */	"Bfg Ammo",
-		15,
+/* pickup */	"Devastator",
+		2,
 		IT_AMMO,
 		WP_BFG,
 /* precache */ "",
@@ -1222,7 +1222,7 @@ BG_EvaluateTrajectory
 void BG_EvaluateTrajectory( const trajectory_t *tr, int atTime, vec3_t result ) {
 	float		deltaTime;
 	float		phase;
-
+	
 	switch( tr->trType ) {
 	case TR_STATIONARY:
 	case TR_INTERPOLATE:
@@ -1251,6 +1251,11 @@ void BG_EvaluateTrajectory( const trajectory_t *tr, int atTime, vec3_t result ) 
 		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
 		VectorMA( tr->trBase, deltaTime, tr->trDelta, result );
 		result[2] -= 0.5 * DEFAULT_GRAVITY * deltaTime * deltaTime;		// FIXME: local gravity...
+		break;
+	case TR_ORBITAL:
+		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
+		VectorMA( tr->trBase, deltaTime, tr->trDelta, result );
+		result[2] -= 0.5 * DEVASTATOR_GRAVITY * deltaTime * deltaTime;		// FIXME: local gravity...
 		break;
 	default:
 		Com_Error( ERR_DROP, "BG_EvaluateTrajectory: unknown trType: %i", tr->trTime ); // Shafe Temp Fix
@@ -1295,9 +1300,15 @@ void BG_EvaluateTrajectoryDelta( const trajectory_t *tr, int atTime, vec3_t resu
 		VectorCopy( tr->trDelta, result );
 		result[2] -= DEFAULT_GRAVITY * deltaTime;		// FIXME: local gravity...
 		break;
+	case TR_ORBITAL:
+		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
+		VectorCopy( tr->trDelta, result );
+		result[2] -= DEVASTATOR_GRAVITY * deltaTime;		// FIXME: local gravity...
+		break;
 	default:
 		Com_Error( ERR_DROP, "BG_EvaluateTrajectoryDelta: unknown trType: %i", tr->trTime );
 		break;
+		
 	}
 }
 

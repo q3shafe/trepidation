@@ -1247,7 +1247,8 @@ typedef enum {
 	TR_LINEAR,
 	TR_LINEAR_STOP,
 	TR_SINE,					// value = base + sin( time / duration ) * delta
-	TR_GRAVITY
+	TR_GRAVITY,
+	TR_ORBITAL
 } trType_t;
 
 typedef struct {
@@ -1256,6 +1257,7 @@ typedef struct {
 	int		trDuration;			// if non 0, trTime + trDuration = stop time
 	vec3_t	trBase;
 	vec3_t	trDelta;			// velocity, etc
+//	int		gravity;			// velocity, etc
 } trajectory_t;
 
 // entityState_t is the information conveyed from the server

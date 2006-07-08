@@ -8,6 +8,7 @@
 #define	GAME_VERSION		"baseq3-1"
 
 #define	DEFAULT_GRAVITY		800
+#define	DEVASTATOR_GRAVITY	120
 #define	GIB_HEALTH			-40
 #define	ARMOR_PROTECTION	0.66
 

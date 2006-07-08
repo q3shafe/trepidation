@@ -262,7 +262,7 @@ qboolean CG_DrawOldScoreboard( void ) {
 	int maxClients;
 	int lineHeight;
 	int topBorderSize, bottomBorderSize;
-	char	string[1024]; // shafe
+//	char	string[1024]; // shafe
 
 	// don't draw amuthing if the menu or console is up
 	if ( cg_paused.integer ) {

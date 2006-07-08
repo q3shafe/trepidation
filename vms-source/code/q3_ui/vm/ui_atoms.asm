@@ -2,7 +2,7 @@ export Com_Error
 code
 proc Com_Error 1032 12
 file "../ui_atoms.c"
-line 16
+line 18
 ;1:// Copyright (C) 1999-2000 Id Software, Inc.
 ;2://
 ;3:/**********************************************************************
@@ -12,23 +12,25 @@ line 16
 ;7:**********************************************************************/
 ;8:#include "ui_local.h"
 ;9:
-;10:uiStatic_t		uis;
-;11:qboolean		m_entersound;		// after a frame, so caching won't disrupt the sound
-;12:
-;13:// these are here so the functions in q_shared.c can link
-;14:#ifndef UI_HARD_LINKED
-;15:
-;16:void QDECL Com_Error( int level, const char *error, ... ) {
-line 20
-;17:	va_list		argptr;
-;18:	char		text[1024];
-;19:
-;20:	va_start (argptr, error);
+;10:extern void UI_DynamicMenu( void );
+;11:
+;12:uiStatic_t		uis;
+;13:qboolean		m_entersound;		// after a frame, so caching won't disrupt the sound
+;14:
+;15:// these are here so the functions in q_shared.c can link
+;16:#ifndef UI_HARD_LINKED
+;17:
+;18:void QDECL Com_Error( int level, const char *error, ... ) {
+line 22
+;19:	va_list		argptr;
+;20:	char		text[1024];
+;21:
+;22:	va_start (argptr, error);
 ADDRLP4 0
 ADDRFP4 4+4
 ASGNP4
-line 21
-;21:	vsprintf (text, error, argptr);
+line 23
+;23:	vsprintf (text, error, argptr);
 ADDRLP4 4
 ARGP4
 ADDRFP4 4
@@ -40,14 +42,14 @@ ARGP4
 ADDRGP4 vsprintf
 CALLI4
 pop
-line 22
-;22:	va_end (argptr);
+line 24
+;24:	va_end (argptr);
 ADDRLP4 0
 CNSTP4 0
 ASGNP4
-line 24
-;23:
-;24:	trap_Error( va("%s", text) );
+line 26
+;25:
+;26:	trap_Error( va("%s", text) );
 ADDRGP4 $71
 ARGP4
 ADDRLP4 4
@@ -62,25 +64,25 @@ ARGP4
 ADDRGP4 trap_Error
 CALLV
 pop
-line 25
-;25:}
+line 27
+;27:}
 LABELV $69
 endproc Com_Error 1032 12
 export Com_Printf
 proc Com_Printf 1032 12
-line 27
-;26:
-;27:void QDECL Com_Printf( const char *msg, ... ) {
-line 31
-;28:	va_list		argptr;
-;29:	char		text[1024];
-;30:
-;31:	va_start (argptr, msg);
+line 29
+;28:
+;29:void QDECL Com_Printf( const char *msg, ... ) {
+line 33
+;30:	va_list		argptr;
+;31:	char		text[1024];
+;32:
+;33:	va_start (argptr, msg);
 ADDRLP4 0
 ADDRFP4 0+4
 ASGNP4
-line 32
-;32:	vsprintf (text, msg, argptr);
+line 34
+;34:	vsprintf (text, msg, argptr);
 ADDRLP4 4
 ARGP4
 ADDRFP4 0
@@ -92,14 +94,14 @@ ARGP4
 ADDRGP4 vsprintf
 CALLI4
 pop
-line 33
-;33:	va_end (argptr);
+line 35
+;35:	va_end (argptr);
 ADDRLP4 0
 CNSTP4 0
 ASGNP4
-line 35
-;34:
-;35:	trap_Print( va("%s", text) );
+line 37
+;36:
+;37:	trap_Print( va("%s", text) );
 ADDRGP4 $71
 ARGP4
 ADDRLP4 4
@@ -114,25 +116,25 @@ ARGP4
 ADDRGP4 trap_Print
 CALLV
 pop
-line 36
-;36:}
+line 38
+;38:}
 LABELV $72
 endproc Com_Printf 1032 12
 export UI_ClampCvar
 proc UI_ClampCvar 0 0
-line 46
-;37:
-;38:#endif
+line 48
 ;39:
-;40:/*
-;41:=================
-;42:UI_ClampCvar
+;40:#endif
+;41:
+;42:/*
 ;43:=================
-;44:*/
-;45:float UI_ClampCvar( float min, float max, float value )
-;46:{
-line 47
-;47:	if ( value < min ) return min;
+;44:UI_ClampCvar
+;45:=================
+;46:*/
+;47:float UI_ClampCvar( float min, float max, float value )
+;48:{
+line 49
+;49:	if ( value < min ) return min;
 ADDRFP4 8
 INDIRF4
 ADDRFP4 0
@@ -144,8 +146,8 @@ RETF4
 ADDRGP4 $74
 JUMPV
 LABELV $75
-line 48
-;48:	if ( value > max ) return max;
+line 50
+;50:	if ( value > max ) return max;
 ADDRFP4 8
 INDIRF4
 ADDRFP4 4
@@ -157,8 +159,8 @@ RETF4
 ADDRGP4 $74
 JUMPV
 LABELV $77
-line 49
-;49:	return value;
+line 51
+;51:	return value;
 ADDRFP4 8
 INDIRF4
 RETF4
@@ -166,17 +168,17 @@ LABELV $74
 endproc UI_ClampCvar 0 0
 export UI_StartDemoLoop
 proc UI_StartDemoLoop 0 8
-line 57
-;50:}
-;51:
-;52:/*
-;53:=================
-;54:UI_StartDemoLoop
+line 59
+;52:}
+;53:
+;54:/*
 ;55:=================
-;56:*/
-;57:void UI_StartDemoLoop( void ) {
-line 58
-;58:	trap_Cmd_ExecuteText( EXEC_APPEND, "d1\n" );
+;56:UI_StartDemoLoop
+;57:=================
+;58:*/
+;59:void UI_StartDemoLoop( void ) {
+line 60
+;60:	trap_Cmd_ExecuteText( EXEC_APPEND, "d1\n" );
 CNSTI4 2
 ARGI4
 ADDRGP4 $80
@@ -184,37 +186,37 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 59
-;59:}
+line 61
+;61:}
 LABELV $79
 endproc UI_StartDemoLoop 0 8
 export UI_PushMenu
 proc UI_PushMenu 16 8
-line 67
-;60:
-;61:/*
-;62:=================
-;63:UI_PushMenu
+line 69
+;62:
+;63:/*
 ;64:=================
-;65:*/
-;66:void UI_PushMenu( menuframework_s *menu )
-;67:{
-line 72
-;68:	int				i;
-;69:	menucommon_s*	item;
-;70:
-;71:	// avoid stacking menus invoked by hotkeys
-;72:	for (i=0 ; i<uis.menusp ; i++)
+;65:UI_PushMenu
+;66:=================
+;67:*/
+;68:void UI_PushMenu( menuframework_s *menu )
+;69:{
+line 74
+;70:	int				i;
+;71:	menucommon_s*	item;
+;72:
+;73:	// avoid stacking menus invoked by hotkeys
+;74:	for (i=0 ; i<uis.menusp ; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $85
 JUMPV
 LABELV $82
-line 73
-;73:	{
-line 74
-;74:		if (uis.stack[i] == menu)
+line 75
+;75:	{
+line 76
+;76:		if (uis.stack[i] == menu)
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -227,24 +229,24 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 NEU4 $87
-line 75
-;75:		{
-line 76
-;76:			uis.menusp = i;
+line 77
+;77:		{
+line 78
+;78:			uis.menusp = i;
 ADDRGP4 uis+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 77
-;77:			break;
+line 79
+;79:			break;
 ADDRGP4 $84
 JUMPV
 LABELV $87
-line 79
-;78:		}
-;79:	}
+line 81
+;80:		}
+;81:	}
 LABELV $83
-line 72
+line 74
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -258,33 +260,33 @@ ADDRGP4 uis+16
 INDIRI4
 LTI4 $82
 LABELV $84
-line 81
-;80:
-;81:	if (i == uis.menusp)
+line 83
+;82:
+;83:	if (i == uis.menusp)
 ADDRLP4 0
 INDIRI4
 ADDRGP4 uis+16
 INDIRI4
 NEI4 $91
-line 82
-;82:	{
-line 83
-;83:		if (uis.menusp >= MAX_MENUDEPTH)
+line 84
+;84:	{
+line 85
+;85:		if (uis.menusp >= MAX_MENUDEPTH)
 ADDRGP4 uis+16
 INDIRI4
 CNSTI4 8
 LTI4 $94
-line 84
-;84:			trap_Error("UI_PushMenu: menu stack overflow");
+line 86
+;86:			trap_Error("UI_PushMenu: menu stack overflow");
 ADDRGP4 $97
 ARGP4
 ADDRGP4 trap_Error
 CALLV
 pop
 LABELV $94
-line 86
-;85:
-;86:		uis.stack[uis.menusp++] = menu;
+line 88
+;87:
+;88:		uis.stack[uis.menusp++] = menu;
 ADDRLP4 12
 ADDRGP4 uis+16
 ASGNP4
@@ -309,60 +311,60 @@ ADDP4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 87
-;87:	}
-LABELV $91
 line 89
-;88:
-;89:	uis.activemenu = menu;
+;89:	}
+LABELV $91
+line 91
+;90:
+;91:	uis.activemenu = menu;
 ADDRGP4 uis+20
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 92
-;90:
-;91:	// default cursor position
-;92:	menu->cursor      = 0;
+line 94
+;92:
+;93:	// default cursor position
+;94:	menu->cursor      = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 0
 ASGNI4
-line 93
-;93:	menu->cursor_prev = 0;
+line 95
+;95:	menu->cursor_prev = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 95
-;94:
-;95:	m_entersound = qtrue;
+line 97
+;96:
+;97:	m_entersound = qtrue;
 ADDRGP4 m_entersound
 CNSTI4 1
 ASGNI4
-line 97
-;96:
-;97:	trap_Key_SetCatcher( KEYCATCH_UI );
+line 99
+;98:
+;99:	trap_Key_SetCatcher( KEYCATCH_UI );
 CNSTI4 2
 ARGI4
 ADDRGP4 trap_Key_SetCatcher
 CALLV
 pop
-line 100
-;98:
-;99:	// force first available item to have focus
-;100:	for (i=0; i<menu->nitems; i++)
+line 102
+;100:
+;101:	// force first available item to have focus
+;102:	for (i=0; i<menu->nitems; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $104
 JUMPV
 LABELV $101
-line 101
-;101:	{
-line 102
-;102:		item = (menucommon_s *)menu->items[i];
+line 103
+;103:	{
+line 104
+;104:		item = (menucommon_s *)menu->items[i];
 ADDRLP4 4
 ADDRLP4 0
 INDIRI4
@@ -375,8 +377,8 @@ ADDP4
 ADDP4
 INDIRP4
 ASGNP4
-line 103
-;103:		if (!(item->flags & (QMF_GRAYED|QMF_MOUSEONLY|QMF_INACTIVE)))
+line 105
+;105:		if (!(item->flags & (QMF_GRAYED|QMF_MOUSEONLY|QMF_INACTIVE)))
 ADDRLP4 4
 INDIRP4
 CNSTI4 44
@@ -386,18 +388,18 @@ CNSTU4 26624
 BANDU4
 CNSTU4 0
 NEU4 $105
-line 104
-;104:		{
-line 105
-;105:			menu->cursor_prev = -1;
+line 106
+;106:		{
+line 107
+;107:			menu->cursor_prev = -1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 -1
 ASGNI4
-line 106
-;106:			Menu_SetCursor( menu, i );
+line 108
+;108:			Menu_SetCursor( menu, i );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -407,16 +409,16 @@ ARGI4
 ADDRGP4 Menu_SetCursor
 CALLV
 pop
-line 107
-;107:			break;
+line 109
+;109:			break;
 ADDRGP4 $103
 JUMPV
 LABELV $105
-line 109
-;108:		}
-;109:	}
+line 111
+;110:		}
+;111:	}
 LABELV $102
-line 100
+line 102
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -433,29 +435,29 @@ ADDP4
 INDIRI4
 LTI4 $101
 LABELV $103
-line 111
-;110:
-;111:	uis.firstdraw = qtrue;
+line 113
+;112:
+;113:	uis.firstdraw = qtrue;
 ADDRGP4 uis+11444
 CNSTI4 1
 ASGNI4
-line 112
-;112:}
+line 114
+;114:}
 LABELV $81
 endproc UI_PushMenu 16 8
 export UI_PopMenu
 proc UI_PopMenu 4 8
-line 120
-;113:
-;114:/*
-;115:=================
-;116:UI_PopMenu
+line 122
+;115:
+;116:/*
 ;117:=================
-;118:*/
-;119:void UI_PopMenu (void)
-;120:{
-line 121
-;121:	trap_S_StartLocalSound( menu_out_sound, CHAN_LOCAL_SOUND );
+;118:UI_PopMenu
+;119:=================
+;120:*/
+;121:void UI_PopMenu (void)
+;122:{
+line 123
+;123:	trap_S_StartLocalSound( menu_out_sound, CHAN_LOCAL_SOUND );
 ADDRGP4 menu_out_sound
 INDIRI4
 ARGI4
@@ -464,9 +466,9 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 123
-;122:
-;123:	uis.menusp--;
+line 125
+;124:
+;125:	uis.menusp--;
 ADDRLP4 0
 ADDRGP4 uis+16
 ASGNP4
@@ -478,30 +480,30 @@ INDIRI4
 CNSTI4 1
 SUBI4
 ASGNI4
-line 125
-;124:
-;125:	if (uis.menusp < 0)
+line 127
+;126:
+;127:	if (uis.menusp < 0)
 ADDRGP4 uis+16
 INDIRI4
 CNSTI4 0
 GEI4 $110
-line 126
-;126:		trap_Error ("UI_PopMenu: menu stack underflow");
+line 128
+;128:		trap_Error ("UI_PopMenu: menu stack underflow");
 ADDRGP4 $113
 ARGP4
 ADDRGP4 trap_Error
 CALLV
 pop
 LABELV $110
-line 128
-;127:
-;128:	if (uis.menusp) {
+line 130
+;129:
+;130:	if (uis.menusp) {
 ADDRGP4 uis+16
 INDIRI4
 CNSTI4 0
 EQI4 $114
-line 129
-;129:		uis.activemenu = uis.stack[uis.menusp-1];
+line 131
+;131:		uis.activemenu = uis.stack[uis.menusp-1];
 ADDRGP4 uis+20
 ADDRGP4 uis+16
 INDIRI4
@@ -511,49 +513,49 @@ ADDRGP4 uis+24-4
 ADDP4
 INDIRP4
 ASGNP4
-line 130
-;130:		uis.firstdraw = qtrue;
+line 132
+;132:		uis.firstdraw = qtrue;
 ADDRGP4 uis+11444
 CNSTI4 1
 ASGNI4
-line 131
-;131:	}
+line 133
+;133:	}
 ADDRGP4 $115
 JUMPV
 LABELV $114
-line 132
-;132:	else {
-line 133
-;133:		UI_ForceMenuOff ();
+line 134
+;134:	else {
+line 135
+;135:		UI_ForceMenuOff ();
 ADDRGP4 UI_ForceMenuOff
 CALLV
 pop
-line 134
-;134:	}
+line 136
+;136:	}
 LABELV $115
-line 135
-;135:}
+line 137
+;137:}
 LABELV $108
 endproc UI_PopMenu 4 8
 export UI_ForceMenuOff
 proc UI_ForceMenuOff 4 8
-line 138
-;136:
-;137:void UI_ForceMenuOff (void)
-;138:{
-line 139
-;139:	uis.menusp     = 0;
+line 140
+;138:
+;139:void UI_ForceMenuOff (void)
+;140:{
+line 141
+;141:	uis.menusp     = 0;
 ADDRGP4 uis+16
 CNSTI4 0
 ASGNI4
-line 140
-;140:	uis.activemenu = NULL;
+line 142
+;142:	uis.activemenu = NULL;
 ADDRGP4 uis+20
 CNSTP4 0
 ASGNP4
-line 142
-;141:
-;142:	trap_Key_SetCatcher( trap_Key_GetCatcher() & ~KEYCATCH_UI );
+line 144
+;143:
+;144:	trap_Key_SetCatcher( trap_Key_GetCatcher() & ~KEYCATCH_UI );
 ADDRLP4 0
 ADDRGP4 trap_Key_GetCatcher
 CALLI4
@@ -566,13 +568,13 @@ ARGI4
 ADDRGP4 trap_Key_SetCatcher
 CALLV
 pop
-line 143
-;143:	trap_Key_ClearStates();
+line 145
+;145:	trap_Key_ClearStates();
 ADDRGP4 trap_Key_ClearStates
 CALLV
 pop
-line 144
-;144:	trap_Cvar_Set( "cl_paused", "0" );
+line 146
+;146:	trap_Cvar_Set( "cl_paused", "0" );
 ADDRGP4 $125
 ARGP4
 ADDRGP4 $126
@@ -580,34 +582,34 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 145
-;145:}
+line 147
+;147:}
 LABELV $122
 endproc UI_ForceMenuOff 4 8
 export UI_LerpColor
 proc UI_LerpColor 12 0
-line 153
-;146:
-;147:/*
-;148:=================
-;149:UI_LerpColor
+line 155
+;148:
+;149:/*
 ;150:=================
-;151:*/
-;152:void UI_LerpColor(vec4_t a, vec4_t b, vec4_t c, float t)
-;153:{
-line 157
-;154:	int i;
-;155:
-;156:	// lerp and clamp each component
-;157:	for (i=0; i<4; i++)
+;151:UI_LerpColor
+;152:=================
+;153:*/
+;154:void UI_LerpColor(vec4_t a, vec4_t b, vec4_t c, float t)
+;155:{
+line 159
+;156:	int i;
+;157:
+;158:	// lerp and clamp each component
+;159:	for (i=0; i<4; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $128
-line 158
-;158:	{
-line 159
-;159:		c[i] = a[i] + t*(b[i]-a[i]);
+line 160
+;160:	{
+line 161
+;161:		c[i] = a[i] + t*(b[i]-a[i]);
 ADDRLP4 4
 ADDRLP4 0
 INDIRI4
@@ -643,8 +645,8 @@ SUBF4
 MULF4
 ADDF4
 ASGNF4
-line 160
-;160:		if (c[i] < 0)
+line 162
+;162:		if (c[i] < 0)
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -655,8 +657,8 @@ ADDP4
 INDIRF4
 CNSTF4 0
 GEF4 $132
-line 161
-;161:			c[i] = 0;
+line 163
+;163:			c[i] = 0;
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -669,8 +671,8 @@ ASGNF4
 ADDRGP4 $133
 JUMPV
 LABELV $132
-line 162
-;162:		else if (c[i] > 1.0)
+line 164
+;164:		else if (c[i] > 1.0)
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -681,8 +683,8 @@ ADDP4
 INDIRF4
 CNSTF4 1065353216
 LEF4 $134
-line 163
-;163:			c[i] = 1.0;
+line 165
+;165:			c[i] = 1.0;
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -694,10 +696,10 @@ CNSTF4 1065353216
 ASGNF4
 LABELV $134
 LABELV $133
-line 164
-;164:	}
+line 166
+;166:	}
 LABELV $129
-line 157
+line 159
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -708,8 +710,8 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 4
 LTI4 $128
-line 165
-;165:}
+line 167
+;167:}
 LABELV $127
 endproc UI_LerpColor 12 0
 data
@@ -1181,191 +1183,191 @@ byte 4 139
 byte 4 25
 code
 proc UI_DrawBannerString2 52 36
-line 326
-;166:
-;167:/*
-;168:=================
-;169:UI_DrawProportionalString2
+line 328
+;168:
+;169:/*
 ;170:=================
-;171:*/
-;172:static int	propMap[128][3] = {
-;173:{0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1},
-;174:{0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1},
-;175:
+;171:UI_DrawProportionalString2
+;172:=================
+;173:*/
+;174:static int	propMap[128][3] = {
+;175:{0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1},
 ;176:{0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1},
-;177:{0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1},
-;178:
-;179:{0, 0, PROP_SPACE_WIDTH},		// SPACE
-;180:{11, 122, 7},	// !
-;181:{154, 181, 14},	// "
-;182:{55, 122, 17},	// #
-;183:{79, 122, 18},	// $
-;184:{101, 122, 23},	// %
-;185:{153, 122, 18},	// &
-;186:{9, 93, 7},		// '
-;187:{207, 122, 8},	// (
-;188:{230, 122, 9},	// )
-;189:{177, 122, 18},	// *
-;190:{30, 152, 18},	// +
-;191:{85, 181, 7},	// ,
-;192:{34, 93, 11},	// -
-;193:{110, 181, 6},	// .
-;194:{130, 152, 14},	// /
-;195:
-;196:{22, 64, 17},	// 0
-;197:{41, 64, 12},	// 1
-;198:{58, 64, 17},	// 2
-;199:{78, 64, 18},	// 3
-;200:{98, 64, 19},	// 4
-;201:{120, 64, 18},	// 5
-;202:{141, 64, 18},	// 6
-;203:{204, 64, 16},	// 7
-;204:{162, 64, 17},	// 8
-;205:{182, 64, 18},	// 9
-;206:{59, 181, 7},	// :
-;207:{35,181, 7},	// ;
-;208:{203, 152, 14},	// <
-;209:{56, 93, 14},	// =
-;210:{228, 152, 14},	// >
-;211:{177, 181, 18},	// ?
-;212:
-;213:{28, 122, 22},	// @
-;214:{5, 4, 18},		// A
-;215:{27, 4, 18},	// B
-;216:{48, 4, 18},	// C
-;217:{69, 4, 17},	// D
-;218:{90, 4, 13},	// E
-;219:{106, 4, 13},	// F
-;220:{121, 4, 18},	// G
-;221:{143, 4, 17},	// H
-;222:{164, 4, 8},	// I
-;223:{175, 4, 16},	// J
-;224:{195, 4, 18},	// K
-;225:{216, 4, 12},	// L
-;226:{230, 4, 23},	// M
-;227:{6, 34, 18},	// N
-;228:{27, 34, 18},	// O
-;229:
-;230:{48, 34, 18},	// P
-;231:{68, 34, 18},	// Q
-;232:{90, 34, 17},	// R
-;233:{110, 34, 18},	// S
-;234:{130, 34, 14},	// T
-;235:{146, 34, 18},	// U
-;236:{166, 34, 19},	// V
-;237:{185, 34, 29},	// W
-;238:{215, 34, 18},	// X
-;239:{234, 34, 18},	// Y
-;240:{5, 64, 14},	// Z
-;241:{60, 152, 7},	// [
-;242:{106, 151, 13},	// '\'
-;243:{83, 152, 7},	// ]
-;244:{128, 122, 17},	// ^
-;245:{4, 152, 21},	// _
-;246:
-;247:{134, 181, 5},	// '
-;248:{5, 4, 18},		// A
-;249:{27, 4, 18},	// B
-;250:{48, 4, 18},	// C
-;251:{69, 4, 17},	// D
-;252:{90, 4, 13},	// E
-;253:{106, 4, 13},	// F
-;254:{121, 4, 18},	// G
-;255:{143, 4, 17},	// H
-;256:{164, 4, 8},	// I
-;257:{175, 4, 16},	// J
-;258:{195, 4, 18},	// K
-;259:{216, 4, 12},	// L
-;260:{230, 4, 23},	// M
-;261:{6, 34, 18},	// N
-;262:{27, 34, 18},	// O
-;263:
-;264:{48, 34, 18},	// P
-;265:{68, 34, 18},	// Q
-;266:{90, 34, 17},	// R
-;267:{110, 34, 18},	// S
-;268:{130, 34, 14},	// T
-;269:{146, 34, 18},	// U
-;270:{166, 34, 19},	// V
-;271:{185, 34, 29},	// W
-;272:{215, 34, 18},	// X
-;273:{234, 34, 18},	// Y
-;274:{5, 64, 14},	// Z
-;275:{153, 152, 13},	// {
-;276:{11, 181, 5},	// |
-;277:{180, 152, 13},	// }
-;278:{79, 93, 17},	// ~
-;279:{0, 0, -1}		// DEL
-;280:};
-;281:
-;282:static int propMapB[26][3] = {
-;283:{11, 12, 33},
-;284:{49, 12, 31},
-;285:{85, 12, 31},
-;286:{120, 12, 30},
-;287:{156, 12, 21},
-;288:{183, 12, 21},
-;289:{207, 12, 32},
-;290:
-;291:{13, 55, 30},
-;292:{49, 55, 13},
-;293:{66, 55, 29},
-;294:{101, 55, 31},
-;295:{135, 55, 21},
-;296:{158, 55, 40},
-;297:{204, 55, 32},
-;298:
-;299:{12, 97, 31},
-;300:{48, 97, 31},
-;301:{82, 97, 30},
-;302:{118, 97, 30},
-;303:{153, 97, 30},
-;304:{185, 97, 25},
-;305:{213, 97, 30},
-;306:
-;307:{11, 139, 32},
-;308:{42, 139, 51},
-;309:{93, 139, 32},
-;310:{126, 139, 31},
-;311:{158, 139, 25},
-;312:};
-;313:
-;314:#define PROPB_GAP_WIDTH		4
-;315:#define PROPB_SPACE_WIDTH	12
-;316:#define PROPB_HEIGHT		36
-;317:
-;318:// bk001205 - code below duplicated in cgame/cg_drawtools.c
-;319:// bk001205 - FIXME: does this belong in ui_shared.c?
-;320:/*
-;321:=================
-;322:UI_DrawBannerString
+;177:
+;178:{0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1},
+;179:{0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1}, {0, 0, -1},
+;180:
+;181:{0, 0, PROP_SPACE_WIDTH},		// SPACE
+;182:{11, 122, 7},	// !
+;183:{154, 181, 14},	// "
+;184:{55, 122, 17},	// #
+;185:{79, 122, 18},	// $
+;186:{101, 122, 23},	// %
+;187:{153, 122, 18},	// &
+;188:{9, 93, 7},		// '
+;189:{207, 122, 8},	// (
+;190:{230, 122, 9},	// )
+;191:{177, 122, 18},	// *
+;192:{30, 152, 18},	// +
+;193:{85, 181, 7},	// ,
+;194:{34, 93, 11},	// -
+;195:{110, 181, 6},	// .
+;196:{130, 152, 14},	// /
+;197:
+;198:{22, 64, 17},	// 0
+;199:{41, 64, 12},	// 1
+;200:{58, 64, 17},	// 2
+;201:{78, 64, 18},	// 3
+;202:{98, 64, 19},	// 4
+;203:{120, 64, 18},	// 5
+;204:{141, 64, 18},	// 6
+;205:{204, 64, 16},	// 7
+;206:{162, 64, 17},	// 8
+;207:{182, 64, 18},	// 9
+;208:{59, 181, 7},	// :
+;209:{35,181, 7},	// ;
+;210:{203, 152, 14},	// <
+;211:{56, 93, 14},	// =
+;212:{228, 152, 14},	// >
+;213:{177, 181, 18},	// ?
+;214:
+;215:{28, 122, 22},	// @
+;216:{5, 4, 18},		// A
+;217:{27, 4, 18},	// B
+;218:{48, 4, 18},	// C
+;219:{69, 4, 17},	// D
+;220:{90, 4, 13},	// E
+;221:{106, 4, 13},	// F
+;222:{121, 4, 18},	// G
+;223:{143, 4, 17},	// H
+;224:{164, 4, 8},	// I
+;225:{175, 4, 16},	// J
+;226:{195, 4, 18},	// K
+;227:{216, 4, 12},	// L
+;228:{230, 4, 23},	// M
+;229:{6, 34, 18},	// N
+;230:{27, 34, 18},	// O
+;231:
+;232:{48, 34, 18},	// P
+;233:{68, 34, 18},	// Q
+;234:{90, 34, 17},	// R
+;235:{110, 34, 18},	// S
+;236:{130, 34, 14},	// T
+;237:{146, 34, 18},	// U
+;238:{166, 34, 19},	// V
+;239:{185, 34, 29},	// W
+;240:{215, 34, 18},	// X
+;241:{234, 34, 18},	// Y
+;242:{5, 64, 14},	// Z
+;243:{60, 152, 7},	// [
+;244:{106, 151, 13},	// '\'
+;245:{83, 152, 7},	// ]
+;246:{128, 122, 17},	// ^
+;247:{4, 152, 21},	// _
+;248:
+;249:{134, 181, 5},	// '
+;250:{5, 4, 18},		// A
+;251:{27, 4, 18},	// B
+;252:{48, 4, 18},	// C
+;253:{69, 4, 17},	// D
+;254:{90, 4, 13},	// E
+;255:{106, 4, 13},	// F
+;256:{121, 4, 18},	// G
+;257:{143, 4, 17},	// H
+;258:{164, 4, 8},	// I
+;259:{175, 4, 16},	// J
+;260:{195, 4, 18},	// K
+;261:{216, 4, 12},	// L
+;262:{230, 4, 23},	// M
+;263:{6, 34, 18},	// N
+;264:{27, 34, 18},	// O
+;265:
+;266:{48, 34, 18},	// P
+;267:{68, 34, 18},	// Q
+;268:{90, 34, 17},	// R
+;269:{110, 34, 18},	// S
+;270:{130, 34, 14},	// T
+;271:{146, 34, 18},	// U
+;272:{166, 34, 19},	// V
+;273:{185, 34, 29},	// W
+;274:{215, 34, 18},	// X
+;275:{234, 34, 18},	// Y
+;276:{5, 64, 14},	// Z
+;277:{153, 152, 13},	// {
+;278:{11, 181, 5},	// |
+;279:{180, 152, 13},	// }
+;280:{79, 93, 17},	// ~
+;281:{0, 0, -1}		// DEL
+;282:};
+;283:
+;284:static int propMapB[26][3] = {
+;285:{11, 12, 33},
+;286:{49, 12, 31},
+;287:{85, 12, 31},
+;288:{120, 12, 30},
+;289:{156, 12, 21},
+;290:{183, 12, 21},
+;291:{207, 12, 32},
+;292:
+;293:{13, 55, 30},
+;294:{49, 55, 13},
+;295:{66, 55, 29},
+;296:{101, 55, 31},
+;297:{135, 55, 21},
+;298:{158, 55, 40},
+;299:{204, 55, 32},
+;300:
+;301:{12, 97, 31},
+;302:{48, 97, 31},
+;303:{82, 97, 30},
+;304:{118, 97, 30},
+;305:{153, 97, 30},
+;306:{185, 97, 25},
+;307:{213, 97, 30},
+;308:
+;309:{11, 139, 32},
+;310:{42, 139, 51},
+;311:{93, 139, 32},
+;312:{126, 139, 31},
+;313:{158, 139, 25},
+;314:};
+;315:
+;316:#define PROPB_GAP_WIDTH		4
+;317:#define PROPB_SPACE_WIDTH	12
+;318:#define PROPB_HEIGHT		36
+;319:
+;320:// bk001205 - code below duplicated in cgame/cg_drawtools.c
+;321:// bk001205 - FIXME: does this belong in ui_shared.c?
+;322:/*
 ;323:=================
-;324:*/
-;325:static void UI_DrawBannerString2( int x, int y, const char* str, vec4_t color )
-;326:{
-line 339
-;327:	const char* s;
-;328:	unsigned char	ch; // bk001204 - unsigned
-;329:	float	ax;
-;330:	float	ay;
-;331:	float	aw;
-;332:	float	ah;
-;333:	float	frow;
-;334:	float	fcol;
-;335:	float	fwidth;
-;336:	float	fheight;
-;337:
-;338:	// draw the colored text
-;339:	trap_R_SetColor( color );
+;324:UI_DrawBannerString
+;325:=================
+;326:*/
+;327:static void UI_DrawBannerString2( int x, int y, const char* str, vec4_t color )
+;328:{
+line 341
+;329:	const char* s;
+;330:	unsigned char	ch; // bk001204 - unsigned
+;331:	float	ax;
+;332:	float	ay;
+;333:	float	aw;
+;334:	float	ah;
+;335:	float	frow;
+;336:	float	fcol;
+;337:	float	fwidth;
+;338:	float	fheight;
+;339:
+;340:	// draw the colored text
+;341:	trap_R_SetColor( color );
 ADDRFP4 12
 INDIRP4
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 341
-;340:	
-;341:	ax = x * uis.scale + uis.bias;
+line 343
+;342:	
+;343:	ax = x * uis.scale + uis.bias;
 ADDRLP4 8
 ADDRFP4 0
 INDIRI4
@@ -1377,8 +1379,8 @@ ADDRGP4 uis+11436
 INDIRF4
 ADDF4
 ASGNF4
-line 342
-;342:	ay = y * uis.scale;
+line 344
+;344:	ay = y * uis.scale;
 ADDRLP4 36
 ADDRFP4 4
 INDIRI4
@@ -1387,9 +1389,9 @@ ADDRGP4 uis+11432
 INDIRF4
 MULF4
 ASGNF4
-line 344
-;343:
-;344:	s = str;
+line 346
+;345:
+;346:	s = str;
 ADDRLP4 4
 ADDRFP4 8
 INDIRP4
@@ -1397,11 +1399,11 @@ ASGNP4
 ADDRGP4 $141
 JUMPV
 LABELV $140
-line 346
-;345:	while ( *s )
-;346:	{
-line 347
-;347:		ch = *s & 127;
+line 348
+;347:	while ( *s )
+;348:	{
+line 349
+;349:		ch = *s & 127;
 ADDRLP4 0
 ADDRLP4 4
 INDIRP4
@@ -1412,15 +1414,15 @@ BANDI4
 CVIU4 4
 CVUU1 4
 ASGNU1
-line 348
-;348:		if ( ch == ' ' ) {
+line 350
+;350:		if ( ch == ' ' ) {
 ADDRLP4 0
 INDIRU1
 CVUI4 1
 CNSTI4 32
 NEI4 $143
-line 349
-;349:			ax += ((float)PROPB_SPACE_WIDTH + (float)PROPB_GAP_WIDTH)* uis.scale;
+line 351
+;351:			ax += ((float)PROPB_SPACE_WIDTH + (float)PROPB_GAP_WIDTH)* uis.scale;
 ADDRLP4 8
 ADDRLP4 8
 INDIRF4
@@ -1430,13 +1432,13 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 350
-;350:		}
+line 352
+;352:		}
 ADDRGP4 $144
 JUMPV
 LABELV $143
-line 351
-;351:		else if ( ch >= 'A' && ch <= 'Z' ) {
+line 353
+;353:		else if ( ch >= 'A' && ch <= 'Z' ) {
 ADDRLP4 40
 ADDRLP4 0
 INDIRU1
@@ -1450,8 +1452,8 @@ ADDRLP4 40
 INDIRI4
 CNSTI4 90
 GTI4 $146
-line 352
-;352:			ch -= 'A';
+line 354
+;354:			ch -= 'A';
 ADDRLP4 0
 ADDRLP4 0
 INDIRU1
@@ -1461,8 +1463,8 @@ SUBI4
 CVIU4 4
 CVUU1 4
 ASGNU1
-line 353
-;353:			fcol = (float)propMapB[ch][0] / 256.0f;
+line 355
+;355:			fcol = (float)propMapB[ch][0] / 256.0f;
 ADDRLP4 20
 CNSTI4 12
 ADDRLP4 0
@@ -1476,8 +1478,8 @@ CVIF4 4
 CNSTF4 1132462080
 DIVF4
 ASGNF4
-line 354
-;354:			frow = (float)propMapB[ch][1] / 256.0f;
+line 356
+;356:			frow = (float)propMapB[ch][1] / 256.0f;
 ADDRLP4 16
 CNSTI4 12
 ADDRLP4 0
@@ -1491,8 +1493,8 @@ CVIF4 4
 CNSTF4 1132462080
 DIVF4
 ASGNF4
-line 355
-;355:			fwidth = (float)propMapB[ch][2] / 256.0f;
+line 357
+;357:			fwidth = (float)propMapB[ch][2] / 256.0f;
 ADDRLP4 28
 CNSTI4 12
 ADDRLP4 0
@@ -1506,13 +1508,13 @@ CVIF4 4
 CNSTF4 1132462080
 DIVF4
 ASGNF4
-line 356
-;356:			fheight = (float)PROPB_HEIGHT / 256.0f;
+line 358
+;358:			fheight = (float)PROPB_HEIGHT / 256.0f;
 ADDRLP4 32
 CNSTF4 1041235968
 ASGNF4
-line 357
-;357:			aw = (float)propMapB[ch][2] * uis.scale;
+line 359
+;359:			aw = (float)propMapB[ch][2] * uis.scale;
 ADDRLP4 12
 CNSTI4 12
 ADDRLP4 0
@@ -1527,16 +1529,16 @@ ADDRGP4 uis+11432
 INDIRF4
 MULF4
 ASGNF4
-line 358
-;358:			ah = (float)PROPB_HEIGHT * uis.scale;
+line 360
+;360:			ah = (float)PROPB_HEIGHT * uis.scale;
 ADDRLP4 24
 CNSTF4 1108344832
 ADDRGP4 uis+11432
 INDIRF4
 MULF4
 ASGNF4
-line 359
-;359:			trap_R_DrawStretchPic( ax, ay, aw, ah, fcol, frow, fcol+fwidth, frow+fheight, uis.charsetPropB );
+line 361
+;361:			trap_R_DrawStretchPic( ax, ay, aw, ah, fcol, frow, fcol+fwidth, frow+fheight, uis.charsetPropB );
 ADDRLP4 8
 INDIRF4
 ARGF4
@@ -1573,8 +1575,8 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 360
-;360:			ax += (aw + (float)PROPB_GAP_WIDTH * uis.scale);
+line 362
+;362:			ax += (aw + (float)PROPB_GAP_WIDTH * uis.scale);
 ADDRLP4 8
 ADDRLP4 8
 INDIRF4
@@ -1587,96 +1589,96 @@ MULF4
 ADDF4
 ADDF4
 ASGNF4
-line 361
-;361:		}
+line 363
+;363:		}
 LABELV $146
 LABELV $144
-line 362
-;362:		s++;
+line 364
+;364:		s++;
 ADDRLP4 4
 ADDRLP4 4
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 363
-;363:	}
+line 365
+;365:	}
 LABELV $141
-line 345
+line 347
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $140
-line 365
-;364:
-;365:	trap_R_SetColor( NULL );
+line 367
+;366:
+;367:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 366
-;366:}
+line 368
+;368:}
 LABELV $136
 endproc UI_DrawBannerString2 52 36
 export UI_DrawBannerString
 proc UI_DrawBannerString 44 16
-line 368
-;367:
-;368:void UI_DrawBannerString( int x, int y, const char* str, int style, vec4_t color ) {
-line 375
-;369:	const char *	s;
-;370:	int				ch;
-;371:	int				width;
-;372:	vec4_t			drawcolor;
-;373:
-;374:	// find the width of the drawn text
-;375:	s = str;
+line 370
+;369:
+;370:void UI_DrawBannerString( int x, int y, const char* str, int style, vec4_t color ) {
+line 377
+;371:	const char *	s;
+;372:	int				ch;
+;373:	int				width;
+;374:	vec4_t			drawcolor;
+;375:
+;376:	// find the width of the drawn text
+;377:	s = str;
 ADDRLP4 4
 ADDRFP4 8
 INDIRP4
 ASGNP4
-line 376
-;376:	width = 0;
+line 378
+;378:	width = 0;
 ADDRLP4 8
 CNSTI4 0
 ASGNI4
 ADDRGP4 $157
 JUMPV
 LABELV $156
-line 377
-;377:	while ( *s ) {
-line 378
-;378:		ch = *s;
+line 379
+;379:	while ( *s ) {
+line 380
+;380:		ch = *s;
 ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 ASGNI4
-line 379
-;379:		if ( ch == ' ' ) {
+line 381
+;381:		if ( ch == ' ' ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 32
 NEI4 $159
-line 380
-;380:			width += PROPB_SPACE_WIDTH;
+line 382
+;382:			width += PROPB_SPACE_WIDTH;
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
 CNSTI4 12
 ADDI4
 ASGNI4
-line 381
-;381:		}
+line 383
+;383:		}
 ADDRGP4 $160
 JUMPV
 LABELV $159
-line 382
-;382:		else if ( ch >= 'A' && ch <= 'Z' ) {
+line 384
+;384:		else if ( ch >= 'A' && ch <= 'Z' ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 65
@@ -1685,8 +1687,8 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 90
 GTI4 $161
-line 383
-;383:			width += propMapB[ch - 'A'][2] + PROPB_GAP_WIDTH;
+line 385
+;385:			width += propMapB[ch - 'A'][2] + PROPB_GAP_WIDTH;
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
@@ -1701,39 +1703,39 @@ CNSTI4 4
 ADDI4
 ADDI4
 ASGNI4
-line 384
-;384:		}
+line 386
+;386:		}
 LABELV $161
 LABELV $160
-line 385
-;385:		s++;
+line 387
+;387:		s++;
 ADDRLP4 4
 ADDRLP4 4
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 386
-;386:	}
+line 388
+;388:	}
 LABELV $157
-line 377
+line 379
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $156
-line 387
-;387:	width -= PROPB_GAP_WIDTH;
+line 389
+;389:	width -= PROPB_GAP_WIDTH;
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
 CNSTI4 4
 SUBI4
 ASGNI4
-line 389
-;388:
-;389:	switch( style & UI_FORMATMASK ) {
+line 391
+;390:
+;391:	switch( style & UI_FORMATMASK ) {
 ADDRLP4 28
 ADDRFP4 12
 INDIRI4
@@ -1755,9 +1757,9 @@ EQI4 $169
 ADDRGP4 $166
 JUMPV
 LABELV $168
-line 391
-;390:		case UI_CENTER:
-;391:			x -= width / 2;
+line 393
+;392:		case UI_CENTER:
+;393:			x -= width / 2;
 ADDRFP4 0
 ADDRFP4 0
 INDIRI4
@@ -1767,15 +1769,15 @@ CNSTI4 2
 DIVI4
 SUBI4
 ASGNI4
-line 392
-;392:			break;
+line 394
+;394:			break;
 ADDRGP4 $166
 JUMPV
 LABELV $169
-line 395
-;393:
-;394:		case UI_RIGHT:
-;395:			x -= width;
+line 397
+;395:
+;396:		case UI_RIGHT:
+;397:			x -= width;
 ADDRFP4 0
 ADDRFP4 0
 INDIRI4
@@ -1783,26 +1785,26 @@ ADDRLP4 8
 INDIRI4
 SUBI4
 ASGNI4
-line 396
-;396:			break;
-line 400
-;397:
-;398:		case UI_LEFT:
-;399:		default:
-;400:			break;
+line 398
+;398:			break;
+line 402
+;399:
+;400:		case UI_LEFT:
+;401:		default:
+;402:			break;
 LABELV $166
-line 403
-;401:	}
-;402:
-;403:	if ( style & UI_DROPSHADOW ) {
+line 405
+;403:	}
+;404:
+;405:	if ( style & UI_DROPSHADOW ) {
 ADDRFP4 12
 INDIRI4
 CNSTI4 2048
 BANDI4
 CNSTI4 0
 EQI4 $171
-line 404
-;404:		drawcolor[0] = drawcolor[1] = drawcolor[2] = 0;
+line 406
+;406:		drawcolor[0] = drawcolor[1] = drawcolor[2] = 0;
 ADDRLP4 36
 CNSTF4 0
 ASGNF4
@@ -1818,8 +1820,8 @@ ADDRLP4 12
 ADDRLP4 36
 INDIRF4
 ASGNF4
-line 405
-;405:		drawcolor[3] = color[3];
+line 407
+;407:		drawcolor[3] = color[3];
 ADDRLP4 12+12
 ADDRFP4 16
 INDIRP4
@@ -1827,8 +1829,8 @@ CNSTI4 12
 ADDP4
 INDIRF4
 ASGNF4
-line 406
-;406:		UI_DrawBannerString2( x+2, y+2, str, drawcolor );
+line 408
+;408:		UI_DrawBannerString2( x+2, y+2, str, drawcolor );
 ADDRLP4 40
 CNSTI4 2
 ASGNI4
@@ -1852,12 +1854,12 @@ ARGP4
 ADDRGP4 UI_DrawBannerString2
 CALLV
 pop
-line 407
-;407:	}
-LABELV $171
 line 409
-;408:
-;409:	UI_DrawBannerString2( x, y, str, color );
+;409:	}
+LABELV $171
+line 411
+;410:
+;411:	UI_DrawBannerString2( x, y, str, color );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -1873,39 +1875,39 @@ ARGP4
 ADDRGP4 UI_DrawBannerString2
 CALLV
 pop
-line 410
-;410:}
+line 412
+;412:}
 LABELV $155
 endproc UI_DrawBannerString 44 16
 export UI_ProportionalStringWidth
 proc UI_ProportionalStringWidth 16 0
-line 413
-;411:
-;412:
-;413:int UI_ProportionalStringWidth( const char* str ) {
-line 419
-;414:	const char *	s;
-;415:	int				ch;
-;416:	int				charWidth;
-;417:	int				width;
-;418:
-;419:	s = str;
+line 415
+;413:
+;414:
+;415:int UI_ProportionalStringWidth( const char* str ) {
+line 421
+;416:	const char *	s;
+;417:	int				ch;
+;418:	int				charWidth;
+;419:	int				width;
+;420:
+;421:	s = str;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 420
-;420:	width = 0;
+line 422
+;422:	width = 0;
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
 ADDRGP4 $178
 JUMPV
 LABELV $177
-line 421
-;421:	while ( *s ) {
-line 422
-;422:		ch = *s & 127;
+line 423
+;423:	while ( *s ) {
+line 424
+;424:		ch = *s & 127;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -1914,8 +1916,8 @@ CVII4 1
 CNSTI4 127
 BANDI4
 ASGNI4
-line 423
-;423:		charWidth = propMap[ch][2];
+line 425
+;425:		charWidth = propMap[ch][2];
 ADDRLP4 4
 CNSTI4 12
 ADDRLP4 8
@@ -1925,14 +1927,14 @@ ADDRGP4 propMap+8
 ADDP4
 INDIRI4
 ASGNI4
-line 424
-;424:		if ( charWidth != -1 ) {
+line 426
+;426:		if ( charWidth != -1 ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 -1
 EQI4 $181
-line 425
-;425:			width += charWidth;
+line 427
+;427:			width += charWidth;
 ADDRLP4 12
 ADDRLP4 12
 INDIRI4
@@ -1940,84 +1942,84 @@ ADDRLP4 4
 INDIRI4
 ADDI4
 ASGNI4
-line 426
-;426:			width += PROP_GAP_WIDTH;
+line 428
+;428:			width += PROP_GAP_WIDTH;
 ADDRLP4 12
 ADDRLP4 12
 INDIRI4
 CNSTI4 3
 ADDI4
 ASGNI4
-line 427
-;427:		}
+line 429
+;429:		}
 LABELV $181
-line 428
-;428:		s++;
+line 430
+;430:		s++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 429
-;429:	}
+line 431
+;431:	}
 LABELV $178
-line 421
+line 423
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $177
-line 431
-;430:
-;431:	width -= PROP_GAP_WIDTH;
+line 433
+;432:
+;433:	width -= PROP_GAP_WIDTH;
 ADDRLP4 12
 ADDRLP4 12
 INDIRI4
 CNSTI4 3
 SUBI4
 ASGNI4
-line 432
-;432:	return width;
+line 434
+;434:	return width;
 ADDRLP4 12
 INDIRI4
 RETI4
 LABELV $176
 endproc UI_ProportionalStringWidth 16 0
 proc UI_DrawProportionalString2 48 36
-line 436
-;433:}
-;434:
-;435:static void UI_DrawProportionalString2( int x, int y, const char* str, vec4_t color, float sizeScale, qhandle_t charset )
-;436:{
-line 441
-;437:	const char* s;
-;438:	unsigned char	ch; // bk001204 - unsigned
-;439:	float	ax;
-;440:	float	ay;
-;441:	float	aw = 0; // bk001204 - init
+line 438
+;435:}
+;436:
+;437:static void UI_DrawProportionalString2( int x, int y, const char* str, vec4_t color, float sizeScale, qhandle_t charset )
+;438:{
+line 443
+;439:	const char* s;
+;440:	unsigned char	ch; // bk001204 - unsigned
+;441:	float	ax;
+;442:	float	ay;
+;443:	float	aw = 0; // bk001204 - init
 ADDRLP4 8
 CNSTF4 0
 ASGNF4
-line 449
-;442:	float	ah;
-;443:	float	frow;
-;444:	float	fcol;
-;445:	float	fwidth;
-;446:	float	fheight;
-;447:
-;448:	// draw the colored text
-;449:	trap_R_SetColor( color );
+line 451
+;444:	float	ah;
+;445:	float	frow;
+;446:	float	fcol;
+;447:	float	fwidth;
+;448:	float	fheight;
+;449:
+;450:	// draw the colored text
+;451:	trap_R_SetColor( color );
 ADDRFP4 12
 INDIRP4
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 451
-;450:	
-;451:	ax = x * uis.scale + uis.bias;
+line 453
+;452:	
+;453:	ax = x * uis.scale + uis.bias;
 ADDRLP4 12
 ADDRFP4 0
 INDIRI4
@@ -2029,8 +2031,8 @@ ADDRGP4 uis+11436
 INDIRF4
 ADDF4
 ASGNF4
-line 452
-;452:	ay = y * uis.scale;
+line 454
+;454:	ay = y * uis.scale;
 ADDRLP4 36
 ADDRFP4 4
 INDIRI4
@@ -2039,9 +2041,9 @@ ADDRGP4 uis+11432
 INDIRF4
 MULF4
 ASGNF4
-line 454
-;453:
-;454:	s = str;
+line 456
+;455:
+;456:	s = str;
 ADDRLP4 4
 ADDRFP4 8
 INDIRP4
@@ -2049,11 +2051,11 @@ ASGNP4
 ADDRGP4 $188
 JUMPV
 LABELV $187
-line 456
-;455:	while ( *s )
-;456:	{
-line 457
-;457:		ch = *s & 127;
+line 458
+;457:	while ( *s )
+;458:	{
+line 459
+;459:		ch = *s & 127;
 ADDRLP4 0
 ADDRLP4 4
 INDIRP4
@@ -2064,15 +2066,15 @@ BANDI4
 CVIU4 4
 CVUU1 4
 ASGNU1
-line 458
-;458:		if ( ch == ' ' ) {
+line 460
+;460:		if ( ch == ' ' ) {
 ADDRLP4 0
 INDIRU1
 CVUI4 1
 CNSTI4 32
 NEI4 $190
-line 459
-;459:			aw = (float)PROP_SPACE_WIDTH * uis.scale * sizeScale;
+line 461
+;461:			aw = (float)PROP_SPACE_WIDTH * uis.scale * sizeScale;
 ADDRLP4 8
 CNSTF4 1090519040
 ADDRGP4 uis+11432
@@ -2082,13 +2084,13 @@ ADDRFP4 16
 INDIRF4
 MULF4
 ASGNF4
-line 460
-;460:		}
+line 462
+;462:		}
 ADDRGP4 $191
 JUMPV
 LABELV $190
-line 461
-;461:		else if ( propMap[ch][2] != -1 ) {
+line 463
+;463:		else if ( propMap[ch][2] != -1 ) {
 CNSTI4 12
 ADDRLP4 0
 INDIRU1
@@ -2099,8 +2101,8 @@ ADDP4
 INDIRI4
 CNSTI4 -1
 EQI4 $193
-line 462
-;462:			fcol = (float)propMap[ch][0] / 256.0f;
+line 464
+;464:			fcol = (float)propMap[ch][0] / 256.0f;
 ADDRLP4 20
 CNSTI4 12
 ADDRLP4 0
@@ -2114,8 +2116,8 @@ CVIF4 4
 CNSTF4 1132462080
 DIVF4
 ASGNF4
-line 463
-;463:			frow = (float)propMap[ch][1] / 256.0f;
+line 465
+;465:			frow = (float)propMap[ch][1] / 256.0f;
 ADDRLP4 16
 CNSTI4 12
 ADDRLP4 0
@@ -2129,8 +2131,8 @@ CVIF4 4
 CNSTF4 1132462080
 DIVF4
 ASGNF4
-line 464
-;464:			fwidth = (float)propMap[ch][2] / 256.0f;
+line 466
+;466:			fwidth = (float)propMap[ch][2] / 256.0f;
 ADDRLP4 28
 CNSTI4 12
 ADDRLP4 0
@@ -2144,13 +2146,13 @@ CVIF4 4
 CNSTF4 1132462080
 DIVF4
 ASGNF4
-line 465
-;465:			fheight = (float)PROP_HEIGHT / 256.0f;
+line 467
+;467:			fheight = (float)PROP_HEIGHT / 256.0f;
 ADDRLP4 32
 CNSTF4 1037565952
 ASGNF4
-line 466
-;466:			aw = (float)propMap[ch][2] * uis.scale * sizeScale;
+line 468
+;468:			aw = (float)propMap[ch][2] * uis.scale * sizeScale;
 ADDRLP4 8
 CNSTI4 12
 ADDRLP4 0
@@ -2168,8 +2170,8 @@ ADDRFP4 16
 INDIRF4
 MULF4
 ASGNF4
-line 467
-;467:			ah = (float)PROP_HEIGHT * uis.scale * sizeScale;
+line 469
+;469:			ah = (float)PROP_HEIGHT * uis.scale * sizeScale;
 ADDRLP4 24
 CNSTF4 1104674816
 ADDRGP4 uis+11432
@@ -2179,8 +2181,8 @@ ADDRFP4 16
 INDIRF4
 MULF4
 ASGNF4
-line 468
-;468:			trap_R_DrawStretchPic( ax, ay, aw, ah, fcol, frow, fcol+fwidth, frow+fheight, charset );
+line 470
+;470:			trap_R_DrawStretchPic( ax, ay, aw, ah, fcol, frow, fcol+fwidth, frow+fheight, charset );
 ADDRLP4 12
 INDIRF4
 ARGF4
@@ -2217,13 +2219,13 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 469
-;469:		}
+line 471
+;471:		}
 LABELV $193
 LABELV $191
-line 471
-;470:
-;471:		ax += (aw + (float)PROP_GAP_WIDTH * uis.scale * sizeScale);
+line 473
+;472:
+;473:		ax += (aw + (float)PROP_GAP_WIDTH * uis.scale * sizeScale);
 ADDRLP4 12
 ADDRLP4 12
 INDIRF4
@@ -2239,87 +2241,87 @@ MULF4
 ADDF4
 ADDF4
 ASGNF4
-line 472
-;472:		s++;
+line 474
+;474:		s++;
 ADDRLP4 4
 ADDRLP4 4
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 473
-;473:	}
+line 475
+;475:	}
 LABELV $188
-line 455
+line 457
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $187
-line 475
-;474:
-;475:	trap_R_SetColor( NULL );
+line 477
+;476:
+;477:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 476
-;476:}
+line 478
+;478:}
 LABELV $183
 endproc UI_DrawProportionalString2 48 36
 export UI_ProportionalSizeScale
 proc UI_ProportionalSizeScale 0 0
-line 483
-;477:
-;478:/*
-;479:=================
-;480:UI_ProportionalSizeScale
+line 485
+;479:
+;480:/*
 ;481:=================
-;482:*/
-;483:float UI_ProportionalSizeScale( int style ) {
-line 484
-;484:	if(  style & UI_SMALLFONT ) {
+;482:UI_ProportionalSizeScale
+;483:=================
+;484:*/
+;485:float UI_ProportionalSizeScale( int style ) {
+line 486
+;486:	if(  style & UI_SMALLFONT ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
 EQI4 $203
-line 485
-;485:		return PROP_SMALL_SIZE_SCALE;
+line 487
+;487:		return PROP_SMALL_SIZE_SCALE;
 CNSTF4 1061158912
 RETF4
 ADDRGP4 $202
 JUMPV
 LABELV $203
-line 488
-;486:	}
-;487:
-;488:	return 1.00;
+line 490
+;488:	}
+;489:
+;490:	return 1.00;
 CNSTF4 1065353216
 RETF4
 LABELV $202
 endproc UI_ProportionalSizeScale 0 0
 export UI_DrawProportionalString
 proc UI_DrawProportionalString 44 24
-line 497
-;489:}
-;490:
-;491:
-;492:/*
-;493:=================
-;494:UI_DrawProportionalString
+line 499
+;491:}
+;492:
+;493:
+;494:/*
 ;495:=================
-;496:*/
-;497:void UI_DrawProportionalString( int x, int y, const char* str, int style, vec4_t color ) {
-line 502
-;498:	vec4_t	drawcolor;
-;499:	int		width;
-;500:	float	sizeScale;
-;501:
-;502:	sizeScale = UI_ProportionalSizeScale( style );
+;496:UI_DrawProportionalString
+;497:=================
+;498:*/
+;499:void UI_DrawProportionalString( int x, int y, const char* str, int style, vec4_t color ) {
+line 504
+;500:	vec4_t	drawcolor;
+;501:	int		width;
+;502:	float	sizeScale;
+;503:
+;504:	sizeScale = UI_ProportionalSizeScale( style );
 ADDRFP4 12
 INDIRI4
 ARGI4
@@ -2331,9 +2333,9 @@ ADDRLP4 16
 ADDRLP4 24
 INDIRF4
 ASGNF4
-line 504
-;503:
-;504:	switch( style & UI_FORMATMASK ) {
+line 506
+;505:
+;506:	switch( style & UI_FORMATMASK ) {
 ADDRLP4 28
 ADDRFP4 12
 INDIRI4
@@ -2355,9 +2357,9 @@ EQI4 $210
 ADDRGP4 $207
 JUMPV
 LABELV $209
-line 506
-;505:		case UI_CENTER:
-;506:			width = UI_ProportionalStringWidth( str ) * sizeScale;
+line 508
+;507:		case UI_CENTER:
+;508:			width = UI_ProportionalStringWidth( str ) * sizeScale;
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -2374,8 +2376,8 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 507
-;507:			x -= width / 2;
+line 509
+;509:			x -= width / 2;
 ADDRFP4 0
 ADDRFP4 0
 INDIRI4
@@ -2385,15 +2387,15 @@ CNSTI4 2
 DIVI4
 SUBI4
 ASGNI4
-line 508
-;508:			break;
+line 510
+;510:			break;
 ADDRGP4 $207
 JUMPV
 LABELV $210
-line 511
-;509:
-;510:		case UI_RIGHT:
-;511:			width = UI_ProportionalStringWidth( str ) * sizeScale;
+line 513
+;511:
+;512:		case UI_RIGHT:
+;513:			width = UI_ProportionalStringWidth( str ) * sizeScale;
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -2410,8 +2412,8 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 512
-;512:			x -= width;
+line 514
+;514:			x -= width;
 ADDRFP4 0
 ADDRFP4 0
 INDIRI4
@@ -2419,26 +2421,26 @@ ADDRLP4 20
 INDIRI4
 SUBI4
 ASGNI4
-line 513
-;513:			break;
-line 517
-;514:
-;515:		case UI_LEFT:
-;516:		default:
-;517:			break;
+line 515
+;515:			break;
+line 519
+;516:
+;517:		case UI_LEFT:
+;518:		default:
+;519:			break;
 LABELV $207
-line 520
-;518:	}
-;519:
-;520:	if ( style & UI_DROPSHADOW ) {
+line 522
+;520:	}
+;521:
+;522:	if ( style & UI_DROPSHADOW ) {
 ADDRFP4 12
 INDIRI4
 CNSTI4 2048
 BANDI4
 CNSTI4 0
 EQI4 $212
-line 521
-;521:		drawcolor[0] = drawcolor[1] = drawcolor[2] = 0;
+line 523
+;523:		drawcolor[0] = drawcolor[1] = drawcolor[2] = 0;
 ADDRLP4 36
 CNSTF4 0
 ASGNF4
@@ -2454,8 +2456,8 @@ ADDRLP4 0
 ADDRLP4 36
 INDIRF4
 ASGNF4
-line 522
-;522:		drawcolor[3] = color[3];
+line 524
+;524:		drawcolor[3] = color[3];
 ADDRLP4 0+12
 ADDRFP4 16
 INDIRP4
@@ -2463,8 +2465,8 @@ CNSTI4 12
 ADDP4
 INDIRF4
 ASGNF4
-line 523
-;523:		UI_DrawProportionalString2( x+2, y+2, str, drawcolor, sizeScale, uis.charsetProp );
+line 525
+;525:		UI_DrawProportionalString2( x+2, y+2, str, drawcolor, sizeScale, uis.charsetProp );
 ADDRLP4 40
 CNSTI4 2
 ASGNI4
@@ -2494,20 +2496,20 @@ ARGI4
 ADDRGP4 UI_DrawProportionalString2
 CALLV
 pop
-line 524
-;524:	}
-LABELV $212
 line 526
-;525:
-;526:	if ( style & UI_INVERSE ) {
+;526:	}
+LABELV $212
+line 528
+;527:
+;528:	if ( style & UI_INVERSE ) {
 ADDRFP4 12
 INDIRI4
 CNSTI4 8192
 BANDI4
 CNSTI4 0
 EQI4 $218
-line 527
-;527:		drawcolor[0] = color[0] * 0.7;
+line 529
+;529:		drawcolor[0] = color[0] * 0.7;
 ADDRLP4 0
 CNSTF4 1060320051
 ADDRFP4 16
@@ -2515,8 +2517,8 @@ INDIRP4
 INDIRF4
 MULF4
 ASGNF4
-line 528
-;528:		drawcolor[1] = color[1] * 0.7;
+line 530
+;530:		drawcolor[1] = color[1] * 0.7;
 ADDRLP4 0+4
 CNSTF4 1060320051
 ADDRFP4 16
@@ -2526,8 +2528,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 529
-;529:		drawcolor[2] = color[2] * 0.7;
+line 531
+;531:		drawcolor[2] = color[2] * 0.7;
 ADDRLP4 0+8
 CNSTF4 1060320051
 ADDRFP4 16
@@ -2537,8 +2539,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 530
-;530:		drawcolor[3] = color[3];
+line 532
+;532:		drawcolor[3] = color[3];
 ADDRLP4 0+12
 ADDRFP4 16
 INDIRP4
@@ -2546,8 +2548,8 @@ CNSTI4 12
 ADDP4
 INDIRF4
 ASGNF4
-line 531
-;531:		UI_DrawProportionalString2( x, y, str, drawcolor, sizeScale, uis.charsetProp );
+line 533
+;533:		UI_DrawProportionalString2( x, y, str, drawcolor, sizeScale, uis.charsetProp );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -2568,23 +2570,23 @@ ARGI4
 ADDRGP4 UI_DrawProportionalString2
 CALLV
 pop
-line 532
-;532:		return;
+line 534
+;534:		return;
 ADDRGP4 $205
 JUMPV
 LABELV $218
-line 535
-;533:	}
-;534:
-;535:	if ( style & UI_PULSE ) {
+line 537
+;535:	}
+;536:
+;537:	if ( style & UI_PULSE ) {
 ADDRFP4 12
 INDIRI4
 CNSTI4 16384
 BANDI4
 CNSTI4 0
 EQI4 $224
-line 536
-;536:		drawcolor[0] = color[0] * 0.7;
+line 538
+;538:		drawcolor[0] = color[0] * 0.7;
 ADDRLP4 0
 CNSTF4 1060320051
 ADDRFP4 16
@@ -2592,8 +2594,8 @@ INDIRP4
 INDIRF4
 MULF4
 ASGNF4
-line 537
-;537:		drawcolor[1] = color[1] * 0.7;
+line 539
+;539:		drawcolor[1] = color[1] * 0.7;
 ADDRLP4 0+4
 CNSTF4 1060320051
 ADDRFP4 16
@@ -2603,8 +2605,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 538
-;538:		drawcolor[2] = color[2] * 0.7;
+line 540
+;540:		drawcolor[2] = color[2] * 0.7;
 ADDRLP4 0+8
 CNSTF4 1060320051
 ADDRFP4 16
@@ -2614,8 +2616,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 539
-;539:		drawcolor[3] = color[3];
+line 541
+;541:		drawcolor[3] = color[3];
 ADDRLP4 0+12
 ADDRFP4 16
 INDIRP4
@@ -2623,8 +2625,8 @@ CNSTI4 12
 ADDP4
 INDIRF4
 ASGNF4
-line 540
-;540:		UI_DrawProportionalString2( x, y, str, color, sizeScale, uis.charsetProp );
+line 542
+;542:		UI_DrawProportionalString2( x, y, str, color, sizeScale, uis.charsetProp );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -2646,16 +2648,16 @@ ARGI4
 ADDRGP4 UI_DrawProportionalString2
 CALLV
 pop
-line 542
-;541:
-;542:		drawcolor[0] = color[0];
+line 544
+;543:
+;544:		drawcolor[0] = color[0];
 ADDRLP4 0
 ADDRFP4 16
 INDIRP4
 INDIRF4
 ASGNF4
-line 543
-;543:		drawcolor[1] = color[1];
+line 545
+;545:		drawcolor[1] = color[1];
 ADDRLP4 0+4
 ADDRFP4 16
 INDIRP4
@@ -2663,8 +2665,8 @@ CNSTI4 4
 ADDP4
 INDIRF4
 ASGNF4
-line 544
-;544:		drawcolor[2] = color[2];
+line 546
+;546:		drawcolor[2] = color[2];
 ADDRLP4 0+8
 ADDRFP4 16
 INDIRP4
@@ -2672,8 +2674,8 @@ CNSTI4 8
 ADDP4
 INDIRF4
 ASGNF4
-line 545
-;545:		drawcolor[3] = 0.5 + 0.5 * sin( uis.realtime / PULSE_DIVISOR );
+line 547
+;547:		drawcolor[3] = 0.5 + 0.5 * sin( uis.realtime / PULSE_DIVISOR );
 ADDRGP4 uis+4
 INDIRI4
 CNSTI4 75
@@ -2692,8 +2694,8 @@ MULF4
 CNSTF4 1056964608
 ADDF4
 ASGNF4
-line 546
-;546:		UI_DrawProportionalString2( x, y, str, drawcolor, sizeScale, uis.charsetPropGlow );
+line 548
+;548:		UI_DrawProportionalString2( x, y, str, drawcolor, sizeScale, uis.charsetPropGlow );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -2714,15 +2716,15 @@ ARGI4
 ADDRGP4 UI_DrawProportionalString2
 CALLV
 pop
-line 547
-;547:		return;
+line 549
+;549:		return;
 ADDRGP4 $205
 JUMPV
 LABELV $224
-line 550
-;548:	}
-;549:
-;550:	UI_DrawProportionalString2( x, y, str, color, sizeScale, uis.charsetProp );
+line 552
+;550:	}
+;551:
+;552:	UI_DrawProportionalString2( x, y, str, color, sizeScale, uis.charsetProp );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -2744,28 +2746,28 @@ ARGI4
 ADDRGP4 UI_DrawProportionalString2
 CALLV
 pop
-line 551
-;551:}
+line 553
+;553:}
 LABELV $205
 endproc UI_DrawProportionalString 44 24
 export UI_DrawProportionalString_AutoWrapped
 proc UI_DrawProportionalString_AutoWrapped 1064 20
-line 558
-;552:
-;553:/*
-;554:=================
-;555:UI_DrawProportionalString_Wrapped
+line 560
+;554:
+;555:/*
 ;556:=================
-;557:*/
-;558:void UI_DrawProportionalString_AutoWrapped( int x, int y, int xmax, int ystep, const char* str, int style, vec4_t color ) {
-line 565
-;559:	int width;
-;560:	char *s1,*s2,*s3;
-;561:	char c_bcp;
-;562:	char buf[1024];
-;563:	float   sizeScale;
-;564:
-;565:	if (!str || str[0]=='\0')
+;557:UI_DrawProportionalString_Wrapped
+;558:=================
+;559:*/
+;560:void UI_DrawProportionalString_AutoWrapped( int x, int y, int xmax, int ystep, const char* str, int style, vec4_t color ) {
+line 567
+;561:	int width;
+;562:	char *s1,*s2,*s3;
+;563:	char c_bcp;
+;564:	char buf[1024];
+;565:	float   sizeScale;
+;566:
+;567:	if (!str || str[0]=='\0')
 ADDRLP4 1048
 ADDRFP4 16
 INDIRP4
@@ -2782,14 +2784,14 @@ CVII4 1
 CNSTI4 0
 NEI4 $237
 LABELV $239
-line 566
-;566:		return;
+line 568
+;568:		return;
 ADDRGP4 $236
 JUMPV
 LABELV $237
-line 568
-;567:	
-;568:	sizeScale = UI_ProportionalSizeScale( style );
+line 570
+;569:	
+;570:	sizeScale = UI_ProportionalSizeScale( style );
 ADDRFP4 20
 INDIRI4
 ARGI4
@@ -2801,9 +2803,9 @@ ADDRLP4 20
 ADDRLP4 1052
 INDIRF4
 ASGNF4
-line 570
-;569:	
-;570:	Q_strncpyz(buf, str, sizeof(buf));
+line 572
+;571:	
+;572:	Q_strncpyz(buf, str, sizeof(buf));
 ADDRLP4 24
 ARGP4
 ADDRFP4 16
@@ -2814,8 +2816,8 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 571
-;571:	s1 = s2 = s3 = buf;
+line 573
+;573:	s1 = s2 = s3 = buf;
 ADDRLP4 0
 ADDRLP4 24
 ASGNP4
@@ -2828,22 +2830,22 @@ ASGNP4
 ADDRGP4 $241
 JUMPV
 LABELV $240
-line 573
-;572:
-;573:	while (1) {
-LABELV $243
-line 574
-;574:		do {
 line 575
-;575:			s3++;
+;574:
+;575:	while (1) {
+LABELV $243
+line 576
+;576:		do {
+line 577
+;577:			s3++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 576
-;576:		} while (*s3!=' ' && *s3!='\0');
+line 578
+;578:		} while (*s3!=' ' && *s3!='\0');
 LABELV $244
 ADDRLP4 1056
 ADDRLP4 0
@@ -2860,21 +2862,21 @@ INDIRI4
 CNSTI4 0
 NEI4 $243
 LABELV $246
-line 577
-;577:		c_bcp = *s3;
+line 579
+;579:		c_bcp = *s3;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
 INDIRI1
 ASGNI1
-line 578
-;578:		*s3 = '\0';
+line 580
+;580:		*s3 = '\0';
 ADDRLP4 0
 INDIRP4
 CNSTI1 0
 ASGNI1
-line 579
-;579:		width = UI_ProportionalStringWidth(s1) * sizeScale;
+line 581
+;581:		width = UI_ProportionalStringWidth(s1) * sizeScale;
 ADDRLP4 12
 INDIRP4
 ARGP4
@@ -2891,22 +2893,22 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 580
-;580:		*s3 = c_bcp;
+line 582
+;582:		*s3 = c_bcp;
 ADDRLP4 0
 INDIRP4
 ADDRLP4 8
 INDIRI1
 ASGNI1
-line 581
-;581:		if (width > xmax) {
+line 583
+;583:		if (width > xmax) {
 ADDRLP4 16
 INDIRI4
 ADDRFP4 8
 INDIRI4
 LEI4 $247
-line 582
-;582:			if (s1==s2)
+line 584
+;584:			if (s1==s2)
 ADDRLP4 12
 INDIRP4
 CVPU4 4
@@ -2914,26 +2916,26 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 NEU4 $249
-line 583
-;583:			{
 line 585
-;584:				// fuck, don't have a clean cut, we'll overflow
-;585:				s2 = s3;
+;585:			{
+line 587
+;586:				// fuck, don't have a clean cut, we'll overflow
+;587:				s2 = s3;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 586
-;586:			}
+line 588
+;588:			}
 LABELV $249
-line 587
-;587:			*s2 = '\0';
+line 589
+;589:			*s2 = '\0';
 ADDRLP4 4
 INDIRP4
 CNSTI1 0
 ASGNI1
-line 588
-;588:			UI_DrawProportionalString(x, y, s1, style, color);
+line 590
+;590:			UI_DrawProportionalString(x, y, s1, style, color);
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -2952,8 +2954,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 589
-;589:			y += ystep;
+line 591
+;591:			y += ystep;
 ADDRFP4 4
 ADDRFP4 4
 INDIRI4
@@ -2961,37 +2963,37 @@ ADDRFP4 12
 INDIRI4
 ADDI4
 ASGNI4
-line 590
-;590:			if (c_bcp == '\0')
+line 592
+;592:			if (c_bcp == '\0')
 ADDRLP4 8
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $251
-line 591
-;591:      {
-line 596
-;592:        // that was the last word
-;593:        // we could start a new loop, but that wouldn't be much use
-;594:        // even if the word is too long, we would overflow it (see above)
-;595:        // so just print it now if needed
-;596:        s2++;
+line 593
+;593:      {
+line 598
+;594:        // that was the last word
+;595:        // we could start a new loop, but that wouldn't be much use
+;596:        // even if the word is too long, we would overflow it (see above)
+;597:        // so just print it now if needed
+;598:        s2++;
 ADDRLP4 4
 ADDRLP4 4
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 597
-;597:        if (*s2 != '\0') // if we are printing an overflowing line we have s2 == s3
+line 599
+;599:        if (*s2 != '\0') // if we are printing an overflowing line we have s2 == s3
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 EQI4 $242
-line 598
-;598:          UI_DrawProportionalString(x, y, s2, style, color);
+line 600
+;600:          UI_DrawProportionalString(x, y, s2, style, color);
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -3010,57 +3012,57 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 599
-;599:				break; 
+line 601
+;601:				break; 
 ADDRGP4 $242
 JUMPV
 LABELV $251
-line 601
-;600:      }
-;601:			s2++;
+line 603
+;602:      }
+;603:			s2++;
 ADDRLP4 4
 ADDRLP4 4
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 602
-;602:			s1 = s2;
+line 604
+;604:			s1 = s2;
 ADDRLP4 12
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 603
-;603:			s3 = s2;
+line 605
+;605:			s3 = s2;
 ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 604
-;604:		}
+line 606
+;606:		}
 ADDRGP4 $248
 JUMPV
 LABELV $247
-line 606
-;605:		else
-;606:		{
-line 607
-;607:			s2 = s3;
+line 608
+;607:		else
+;608:		{
+line 609
+;609:			s2 = s3;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 608
-;608:			if (c_bcp == '\0') // we reached the end
+line 610
+;610:			if (c_bcp == '\0') // we reached the end
 ADDRLP4 8
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $255
-line 609
-;609:			{
-line 610
-;610:				UI_DrawProportionalString(x, y, s1, style, color);
+line 611
+;611:			{
+line 612
+;612:				UI_DrawProportionalString(x, y, s1, style, color);
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -3079,78 +3081,78 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 611
-;611:				break;
+line 613
+;613:				break;
 ADDRGP4 $242
 JUMPV
 LABELV $255
-line 613
-;612:			}
-;613:		}
+line 615
+;614:			}
+;615:		}
 LABELV $248
-line 614
-;614:	}
+line 616
+;616:	}
 LABELV $241
-line 573
+line 575
 ADDRGP4 $240
 JUMPV
 LABELV $242
-line 615
-;615:}
+line 617
+;617:}
 LABELV $236
 endproc UI_DrawProportionalString_AutoWrapped 1064 20
 proc UI_DrawString2 76 36
-line 623
-;616:
-;617:/*
-;618:=================
-;619:UI_DrawString2
+line 625
+;618:
+;619:/*
 ;620:=================
-;621:*/
-;622:static void UI_DrawString2( int x, int y, const char* str, vec4_t color, int charw, int charh )
-;623:{
-line 626
-;624:	const char* s;
-;625:	char	ch;
-;626:	int forceColor = qfalse; //APSFIXME;
+;621:UI_DrawString2
+;622:=================
+;623:*/
+;624:static void UI_DrawString2( int x, int y, const char* str, vec4_t color, int charw, int charh )
+;625:{
+line 628
+;626:	const char* s;
+;627:	char	ch;
+;628:	int forceColor = qfalse; //APSFIXME;
 ADDRLP4 40
 CNSTI4 0
 ASGNI4
-line 635
-;627:	vec4_t	tempcolor;
-;628:	float	ax;
-;629:	float	ay;
-;630:	float	aw;
-;631:	float	ah;
-;632:	float	frow;
-;633:	float	fcol;
-;634:
-;635:	if (y < -charh)
+line 637
+;629:	vec4_t	tempcolor;
+;630:	float	ax;
+;631:	float	ay;
+;632:	float	aw;
+;633:	float	ah;
+;634:	float	frow;
+;635:	float	fcol;
+;636:
+;637:	if (y < -charh)
 ADDRFP4 4
 INDIRI4
 ADDRFP4 20
 INDIRI4
 NEGI4
 GEI4 $258
-line 637
-;636:		// offscreen
-;637:		return;
+line 639
+;638:		// offscreen
+;639:		return;
 ADDRGP4 $257
 JUMPV
 LABELV $258
-line 640
-;638:
-;639:	// draw the colored text
-;640:	trap_R_SetColor( color );
+line 642
+;640:
+;641:	// draw the colored text
+;642:	trap_R_SetColor( color );
 ADDRFP4 12
 INDIRP4
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 642
-;641:	
-;642:	ax = x * uis.scale + uis.bias;
+line 644
+;643:	
+;644:	ax = x * uis.scale + uis.bias;
 ADDRLP4 8
 ADDRFP4 0
 INDIRI4
@@ -3162,8 +3164,8 @@ ADDRGP4 uis+11436
 INDIRF4
 ADDF4
 ASGNF4
-line 643
-;643:	ay = y * uis.scale;
+line 645
+;645:	ay = y * uis.scale;
 ADDRLP4 44
 ADDRFP4 4
 INDIRI4
@@ -3172,8 +3174,8 @@ ADDRGP4 uis+11432
 INDIRF4
 MULF4
 ASGNF4
-line 644
-;644:	aw = charw * uis.scale;
+line 646
+;646:	aw = charw * uis.scale;
 ADDRLP4 12
 ADDRFP4 16
 INDIRI4
@@ -3182,8 +3184,8 @@ ADDRGP4 uis+11432
 INDIRF4
 MULF4
 ASGNF4
-line 645
-;645:	ah = charh * uis.scale;
+line 647
+;647:	ah = charh * uis.scale;
 ADDRLP4 48
 ADDRFP4 20
 INDIRI4
@@ -3192,9 +3194,9 @@ ADDRGP4 uis+11432
 INDIRF4
 MULF4
 ASGNF4
-line 647
-;646:
-;647:	s = str;
+line 649
+;648:
+;649:	s = str;
 ADDRLP4 0
 ADDRFP4 8
 INDIRP4
@@ -3202,11 +3204,11 @@ ASGNP4
 ADDRGP4 $266
 JUMPV
 LABELV $265
-line 649
-;648:	while ( *s )
-;649:	{
-line 650
-;650:		if ( Q_IsColorString( s ) )
+line 651
+;650:	while ( *s )
+;651:	{
+line 652
+;652:		if ( Q_IsColorString( s ) )
 ADDRLP4 0
 INDIRP4
 CVPU4 4
@@ -3239,18 +3241,18 @@ INDIRI4
 ADDRLP4 56
 INDIRI4
 EQI4 $268
-line 651
-;651:		{
-line 652
-;652:			if ( !forceColor )
+line 653
+;653:		{
+line 654
+;654:			if ( !forceColor )
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
 NEI4 $270
-line 653
-;653:			{
-line 654
-;654:				memcpy( tempcolor, g_color_table[ColorIndex(s[1])], sizeof( tempcolor ) );
+line 655
+;655:			{
+line 656
+;656:				memcpy( tempcolor, g_color_table[ColorIndex(s[1])], sizeof( tempcolor ) );
 ADDRLP4 24
 ARGP4
 ADDRLP4 0
@@ -3273,8 +3275,8 @@ ARGI4
 ADDRGP4 memcpy
 CALLP4
 pop
-line 655
-;655:				tempcolor[3] = color[3];
+line 657
+;657:				tempcolor[3] = color[3];
 ADDRLP4 24+12
 ADDRFP4 12
 INDIRP4
@@ -3282,33 +3284,33 @@ CNSTI4 12
 ADDP4
 INDIRF4
 ASGNF4
-line 656
-;656:				trap_R_SetColor( tempcolor );
+line 658
+;658:				trap_R_SetColor( tempcolor );
 ADDRLP4 24
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 657
-;657:			}
+line 659
+;659:			}
 LABELV $270
-line 658
-;658:			s += 2;
+line 660
+;660:			s += 2;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 2
 ADDP4
 ASGNP4
-line 659
-;659:			continue;
+line 661
+;661:			continue;
 ADDRGP4 $266
 JUMPV
 LABELV $268
-line 662
-;660:		}
-;661:
-;662:		ch = *s & 255;
+line 664
+;662:		}
+;663:
+;664:		ch = *s & 255;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
@@ -3318,17 +3320,17 @@ CNSTI4 255
 BANDI4
 CVII1 4
 ASGNI1
-line 663
-;663:		if (ch != ' ')
+line 665
+;665:		if (ch != ' ')
 ADDRLP4 4
 INDIRI1
 CVII4 1
 CNSTI4 32
 EQI4 $273
-line 664
-;664:		{
-line 665
-;665:			frow = (ch>>4)*0.0625;
+line 666
+;666:		{
+line 667
+;667:			frow = (ch>>4)*0.0625;
 ADDRLP4 16
 CNSTF4 1031798784
 ADDRLP4 4
@@ -3339,8 +3341,8 @@ RSHI4
 CVIF4 4
 MULF4
 ASGNF4
-line 666
-;666:			fcol = (ch&15)*0.0625;
+line 668
+;668:			fcol = (ch&15)*0.0625;
 ADDRLP4 20
 CNSTF4 1031798784
 ADDRLP4 4
@@ -3351,8 +3353,8 @@ BANDI4
 CVIF4 4
 MULF4
 ASGNF4
-line 667
-;667:			trap_R_DrawStretchPic( ax, ay, aw, ah, fcol, frow, fcol + 0.0625, frow + 0.0625, uis.charset );
+line 669
+;669:			trap_R_DrawStretchPic( ax, ay, aw, ah, fcol, frow, fcol + 0.0625, frow + 0.0625, uis.charset );
 ADDRLP4 8
 INDIRF4
 ARGF4
@@ -3392,12 +3394,12 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 668
-;668:		}
-LABELV $273
 line 670
-;669:
-;670:		ax += aw;
+;670:		}
+LABELV $273
+line 672
+;671:
+;672:		ax += aw;
 ADDRLP4 8
 ADDRLP4 8
 INDIRF4
@@ -3405,71 +3407,71 @@ ADDRLP4 12
 INDIRF4
 ADDF4
 ASGNF4
-line 671
-;671:		s++;
+line 673
+;673:		s++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 672
-;672:	}
+line 674
+;674:	}
 LABELV $266
-line 648
+line 650
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $265
-line 674
-;673:
-;674:	trap_R_SetColor( NULL );
+line 676
+;675:
+;676:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 675
-;675:}
+line 677
+;677:}
 LABELV $257
 endproc UI_DrawString2 76 36
 export UI_DrawString
 proc UI_DrawString 84 24
-line 683
-;676:
-;677:/*
-;678:=================
-;679:UI_DrawString
+line 685
+;678:
+;679:/*
 ;680:=================
-;681:*/
-;682:void UI_DrawString( int x, int y, const char* str, int style, vec4_t color )
-;683:{
-line 692
-;684:	int		len;
-;685:	int		charw;
-;686:	int		charh;
-;687:	vec4_t	newcolor;
-;688:	vec4_t	lowlight;
-;689:	float	*drawcolor;
-;690:	vec4_t	dropcolor;
-;691:
-;692:	if( !str ) {
+;681:UI_DrawString
+;682:=================
+;683:*/
+;684:void UI_DrawString( int x, int y, const char* str, int style, vec4_t color )
+;685:{
+line 694
+;686:	int		len;
+;687:	int		charw;
+;688:	int		charh;
+;689:	vec4_t	newcolor;
+;690:	vec4_t	lowlight;
+;691:	float	*drawcolor;
+;692:	vec4_t	dropcolor;
+;693:
+;694:	if( !str ) {
 ADDRFP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $277
-line 693
-;693:		return;
+line 695
+;695:		return;
 ADDRGP4 $276
 JUMPV
 LABELV $277
-line 696
-;694:	}
-;695:
-;696:	if ((style & UI_BLINK) && ((uis.realtime/BLINK_DIVISOR) & 1))
+line 698
+;696:	}
+;697:
+;698:	if ((style & UI_BLINK) && ((uis.realtime/BLINK_DIVISOR) & 1))
 ADDRLP4 64
 CNSTI4 0
 ASGNI4
@@ -3489,92 +3491,92 @@ BANDI4
 ADDRLP4 64
 INDIRI4
 EQI4 $279
-line 697
-;697:		return;
+line 699
+;699:		return;
 ADDRGP4 $276
 JUMPV
 LABELV $279
-line 699
-;698:
-;699:	if (style & UI_SMALLFONT)
+line 701
+;700:
+;701:	if (style & UI_SMALLFONT)
 ADDRFP4 12
 INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
 EQI4 $282
-line 700
-;700:	{
-line 701
-;701:		charw =	SMALLCHAR_WIDTH;
+line 702
+;702:	{
+line 703
+;703:		charw =	SMALLCHAR_WIDTH;
 ADDRLP4 0
 CNSTI4 8
 ASGNI4
-line 702
-;702:		charh =	SMALLCHAR_HEIGHT;
+line 704
+;704:		charh =	SMALLCHAR_HEIGHT;
 ADDRLP4 4
 CNSTI4 16
 ASGNI4
-line 703
-;703:	}
+line 705
+;705:	}
 ADDRGP4 $283
 JUMPV
 LABELV $282
-line 704
-;704:	else if (style & UI_GIANTFONT)
+line 706
+;706:	else if (style & UI_GIANTFONT)
 ADDRFP4 12
 INDIRI4
 CNSTI4 64
 BANDI4
 CNSTI4 0
 EQI4 $284
-line 705
-;705:	{
-line 706
-;706:		charw =	GIANTCHAR_WIDTH;
+line 707
+;707:	{
+line 708
+;708:		charw =	GIANTCHAR_WIDTH;
 ADDRLP4 0
 CNSTI4 32
 ASGNI4
-line 707
-;707:		charh =	GIANTCHAR_HEIGHT;
+line 709
+;709:		charh =	GIANTCHAR_HEIGHT;
 ADDRLP4 4
 CNSTI4 48
 ASGNI4
-line 708
-;708:	}
+line 710
+;710:	}
 ADDRGP4 $285
 JUMPV
 LABELV $284
-line 710
-;709:	else
-;710:	{
-line 711
-;711:		charw =	BIGCHAR_WIDTH;
+line 712
+;711:	else
+;712:	{
+line 713
+;713:		charw =	BIGCHAR_WIDTH;
 ADDRLP4 0
 CNSTI4 16
 ASGNI4
-line 712
-;712:		charh =	BIGCHAR_HEIGHT;
+line 714
+;714:		charh =	BIGCHAR_HEIGHT;
 ADDRLP4 4
 CNSTI4 16
 ASGNI4
-line 713
-;713:	}
+line 715
+;715:	}
 LABELV $285
 LABELV $283
-line 715
-;714:
-;715:	if (style & UI_PULSE)
+line 717
+;716:
+;717:	if (style & UI_PULSE)
 ADDRFP4 12
 INDIRI4
 CNSTI4 16384
 BANDI4
 CNSTI4 0
 EQI4 $286
-line 716
-;716:	{
-line 717
-;717:		lowlight[0] = 0.8*color[0]; 
+line 718
+;718:	{
+line 719
+;719:		lowlight[0] = 0.8*color[0]; 
 ADDRLP4 8
 CNSTF4 1061997773
 ADDRFP4 16
@@ -3582,8 +3584,8 @@ INDIRP4
 INDIRF4
 MULF4
 ASGNF4
-line 718
-;718:		lowlight[1] = 0.8*color[1];
+line 720
+;720:		lowlight[1] = 0.8*color[1];
 ADDRLP4 8+4
 CNSTF4 1061997773
 ADDRFP4 16
@@ -3593,8 +3595,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 719
-;719:		lowlight[2] = 0.8*color[2];
+line 721
+;721:		lowlight[2] = 0.8*color[2];
 ADDRLP4 8+8
 CNSTF4 1061997773
 ADDRFP4 16
@@ -3604,8 +3606,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 720
-;720:		lowlight[3] = 0.8*color[3];
+line 722
+;722:		lowlight[3] = 0.8*color[3];
 ADDRLP4 8+12
 CNSTF4 1061997773
 ADDRFP4 16
@@ -3615,8 +3617,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 721
-;721:		UI_LerpColor(color,lowlight,newcolor,0.5+0.5*sin(uis.realtime/PULSE_DIVISOR));
+line 723
+;723:		UI_LerpColor(color,lowlight,newcolor,0.5+0.5*sin(uis.realtime/PULSE_DIVISOR));
 ADDRGP4 uis+4
 INDIRI4
 CNSTI4 75
@@ -3644,27 +3646,27 @@ ARGF4
 ADDRGP4 UI_LerpColor
 CALLV
 pop
-line 722
-;722:		drawcolor = newcolor;
+line 724
+;724:		drawcolor = newcolor;
 ADDRLP4 24
 ADDRLP4 44
 ASGNP4
-line 723
-;723:	}	
+line 725
+;725:	}	
 ADDRGP4 $287
 JUMPV
 LABELV $286
-line 725
-;724:	else
-;725:		drawcolor = color;
+line 727
+;726:	else
+;727:		drawcolor = color;
 ADDRLP4 24
 ADDRFP4 16
 INDIRP4
 ASGNP4
 LABELV $287
-line 727
-;726:
-;727:	switch (style & UI_FORMATMASK)
+line 729
+;728:
+;729:	switch (style & UI_FORMATMASK)
 ADDRLP4 68
 ADDRFP4 12
 INDIRI4
@@ -3681,13 +3683,13 @@ CNSTI4 2
 EQI4 $296
 ADDRGP4 $293
 JUMPV
-line 728
-;728:	{
+line 730
+;730:	{
 LABELV $295
-line 731
-;729:		case UI_CENTER:
-;730:			// center justify at x
-;731:			len = strlen(str);
+line 733
+;731:		case UI_CENTER:
+;732:			// center justify at x
+;733:			len = strlen(str);
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -3699,8 +3701,8 @@ ADDRLP4 60
 ADDRLP4 76
 INDIRI4
 ASGNI4
-line 732
-;732:			x   = x - len*charw/2;
+line 734
+;734:			x   = x - len*charw/2;
 ADDRFP4 0
 ADDRFP4 0
 INDIRI4
@@ -3713,16 +3715,16 @@ CNSTI4 2
 DIVI4
 SUBI4
 ASGNI4
-line 733
-;733:			break;
+line 735
+;735:			break;
 ADDRGP4 $293
 JUMPV
 LABELV $296
-line 737
-;734:
-;735:		case UI_RIGHT:
-;736:			// right justify at x
-;737:			len = strlen(str);
+line 739
+;736:
+;737:		case UI_RIGHT:
+;738:			// right justify at x
+;739:			len = strlen(str);
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -3734,8 +3736,8 @@ ADDRLP4 60
 ADDRLP4 80
 INDIRI4
 ASGNI4
-line 738
-;738:			x   = x - len*charw;
+line 740
+;740:			x   = x - len*charw;
 ADDRFP4 0
 ADDRFP4 0
 INDIRI4
@@ -3746,28 +3748,28 @@ INDIRI4
 MULI4
 SUBI4
 ASGNI4
-line 739
-;739:			break;
-line 743
-;740:
-;741:		default:
-;742:			// left justify at x
-;743:			break;
+line 741
+;741:			break;
+line 745
+;742:
+;743:		default:
+;744:			// left justify at x
+;745:			break;
 LABELV $293
-line 746
-;744:	}
-;745:
-;746:	if ( style & UI_DROPSHADOW )
+line 748
+;746:	}
+;747:
+;748:	if ( style & UI_DROPSHADOW )
 ADDRFP4 12
 INDIRI4
 CNSTI4 2048
 BANDI4
 CNSTI4 0
 EQI4 $297
-line 747
-;747:	{
-line 748
-;748:		dropcolor[0] = dropcolor[1] = dropcolor[2] = 0;
+line 749
+;749:	{
+line 750
+;750:		dropcolor[0] = dropcolor[1] = dropcolor[2] = 0;
 ADDRLP4 76
 CNSTF4 0
 ASGNF4
@@ -3783,8 +3785,8 @@ ADDRLP4 28
 ADDRLP4 76
 INDIRF4
 ASGNF4
-line 749
-;749:		dropcolor[3] = drawcolor[3];
+line 751
+;751:		dropcolor[3] = drawcolor[3];
 ADDRLP4 28+12
 ADDRLP4 24
 INDIRP4
@@ -3792,8 +3794,8 @@ CNSTI4 12
 ADDP4
 INDIRF4
 ASGNF4
-line 750
-;750:		UI_DrawString2(x+2,y+2,str,dropcolor,charw,charh);
+line 752
+;752:		UI_DrawString2(x+2,y+2,str,dropcolor,charw,charh);
 ADDRLP4 80
 CNSTI4 2
 ASGNI4
@@ -3823,12 +3825,12 @@ ARGI4
 ADDRGP4 UI_DrawString2
 CALLV
 pop
-line 751
-;751:	}
-LABELV $297
 line 753
-;752:
-;753:	UI_DrawString2(x,y,str,drawcolor,charw,charh);
+;753:	}
+LABELV $297
+line 755
+;754:
+;755:	UI_DrawString2(x,y,str,drawcolor,charw,charh);
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -3850,38 +3852,38 @@ ARGI4
 ADDRGP4 UI_DrawString2
 CALLV
 pop
-line 754
-;754:}
+line 756
+;756:}
 LABELV $276
 endproc UI_DrawString 84 24
 export UI_DrawChar
 proc UI_DrawChar 2 20
-line 762
-;755:
-;756:/*
-;757:=================
-;758:UI_DrawChar
+line 764
+;757:
+;758:/*
 ;759:=================
-;760:*/
-;761:void UI_DrawChar( int x, int y, int ch, int style, vec4_t color )
-;762:{
-line 765
-;763:	char	buff[2];
-;764:
-;765:	buff[0] = ch;
+;760:UI_DrawChar
+;761:=================
+;762:*/
+;763:void UI_DrawChar( int x, int y, int ch, int style, vec4_t color )
+;764:{
+line 767
+;765:	char	buff[2];
+;766:
+;767:	buff[0] = ch;
 ADDRLP4 0
 ADDRFP4 8
 INDIRI4
 CVII1 4
 ASGNI1
-line 766
-;766:	buff[1] = '\0';
+line 768
+;768:	buff[1] = '\0';
 ADDRLP4 0+1
 CNSTI1 0
 ASGNI1
-line 768
-;767:
-;768:	UI_DrawString( x, y, buff, style, color );
+line 770
+;769:
+;770:	UI_DrawString( x, y, buff, style, color );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -3899,17 +3901,17 @@ ARGP4
 ADDRGP4 UI_DrawString
 CALLV
 pop
-line 769
-;769:}
+line 771
+;771:}
 LABELV $302
 endproc UI_DrawChar 2 20
 export UI_IsFullscreen
 proc UI_IsFullscreen 4 0
-line 771
-;770:
-;771:qboolean UI_IsFullscreen( void ) {
-line 772
-;772:	if ( uis.activemenu && ( trap_Key_GetCatcher() & KEYCATCH_UI ) ) {
+line 773
+;772:
+;773:qboolean UI_IsFullscreen( void ) {
+line 774
+;774:	if ( uis.activemenu && ( trap_Key_GetCatcher() & KEYCATCH_UI ) ) {
 ADDRGP4 uis+20
 INDIRP4
 CVPU4 4
@@ -3925,8 +3927,8 @@ CNSTI4 2
 BANDI4
 CNSTI4 0
 EQI4 $305
-line 773
-;773:		return uis.activemenu->fullscreen;
+line 775
+;775:		return uis.activemenu->fullscreen;
 ADDRGP4 uis+20
 INDIRP4
 CNSTI4 280
@@ -3936,27 +3938,27 @@ RETI4
 ADDRGP4 $304
 JUMPV
 LABELV $305
-line 776
-;774:	}
-;775:
-;776:	return qfalse;
+line 778
+;776:	}
+;777:
+;778:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $304
 endproc UI_IsFullscreen 4 0
 proc NeedCDAction 0 8
-line 779
-;777:}
-;778:
-;779:static void NeedCDAction( qboolean result ) {
-line 780
-;780:	if ( !result ) {
+line 781
+;779:}
+;780:
+;781:static void NeedCDAction( qboolean result ) {
+line 782
+;782:	if ( !result ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
 NEI4 $310
-line 781
-;781:		trap_Cmd_ExecuteText( EXEC_APPEND, "quit\n" );
+line 783
+;783:		trap_Cmd_ExecuteText( EXEC_APPEND, "quit\n" );
 CNSTI4 2
 ARGI4
 ADDRGP4 $312
@@ -3964,25 +3966,25 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 782
-;782:	}
+line 784
+;784:	}
 LABELV $310
-line 783
-;783:}
+line 785
+;785:}
 LABELV $309
 endproc NeedCDAction 0 8
 proc NeedCDKeyAction 0 8
-line 785
-;784:
-;785:static void NeedCDKeyAction( qboolean result ) {
-line 786
-;786:	if ( !result ) {
+line 787
+;786:
+;787:static void NeedCDKeyAction( qboolean result ) {
+line 788
+;788:	if ( !result ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
 NEI4 $314
-line 787
-;787:		trap_Cmd_ExecuteText( EXEC_APPEND, "quit\n" );
+line 789
+;789:		trap_Cmd_ExecuteText( EXEC_APPEND, "quit\n" );
 CNSTI4 2
 ARGI4
 ADDRGP4 $312
@@ -3990,28 +3992,28 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 788
-;788:	}
+line 790
+;790:	}
 LABELV $314
-line 789
-;789:}
+line 791
+;791:}
 LABELV $313
 endproc NeedCDKeyAction 0 8
 export UI_SetActiveMenu
 proc UI_SetActiveMenu 8 12
-line 791
-;790:
-;791:void UI_SetActiveMenu( uiMenuCommand_t menu ) {
-line 794
-;792:	// this should be the ONLY way the menu system is brought up
-;793:	// enusure minumum menu data is cached
-;794:	Menu_Cache();
+line 793
+;792:
+;793:void UI_SetActiveMenu( uiMenuCommand_t menu ) {
+line 796
+;794:	// this should be the ONLY way the menu system is brought up
+;795:	// enusure minumum menu data is cached
+;796:	Menu_Cache();
 ADDRGP4 Menu_Cache
 CALLV
 pop
-line 796
-;795:
-;796:	switch ( menu ) {
+line 798
+;797:
+;798:	switch ( menu ) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRI4
@@ -4044,31 +4046,31 @@ address $328
 address $328
 code
 LABELV $320
-line 798
-;797:	case UIMENU_NONE:
-;798:		UI_ForceMenuOff();
+line 800
+;799:	case UIMENU_NONE:
+;800:		UI_ForceMenuOff();
 ADDRGP4 UI_ForceMenuOff
 CALLV
 pop
-line 799
-;799:		return;
+line 801
+;801:		return;
 ADDRGP4 $316
 JUMPV
 LABELV $321
-line 801
-;800:	case UIMENU_MAIN:
-;801:		UI_MainMenu();
+line 803
+;802:	case UIMENU_MAIN:
+;803:		UI_MainMenu();
 ADDRGP4 UI_MainMenu
 CALLV
 pop
-line 802
-;802:		return;
+line 804
+;804:		return;
 ADDRGP4 $316
 JUMPV
 LABELV $322
-line 804
-;803:	case UIMENU_NEED_CD:
-;804:		UI_ConfirmMenu( "Insert the CD", (voidfunc_f)NULL, NeedCDAction );
+line 806
+;805:	case UIMENU_NEED_CD:
+;806:		UI_ConfirmMenu( "Insert the CD", (voidfunc_f)NULL, NeedCDAction );
 ADDRGP4 $323
 ARGP4
 CNSTP4 0
@@ -4078,14 +4080,14 @@ ARGP4
 ADDRGP4 UI_ConfirmMenu
 CALLV
 pop
-line 805
-;805:		return;
+line 807
+;807:		return;
 ADDRGP4 $316
 JUMPV
 LABELV $324
-line 807
-;806:	case UIMENU_BAD_CD_KEY:
-;807:		UI_ConfirmMenu( "Bad CD Key", (voidfunc_f)NULL, NeedCDKeyAction );
+line 809
+;808:	case UIMENU_BAD_CD_KEY:
+;809:		UI_ConfirmMenu( "Bad CD Key", (voidfunc_f)NULL, NeedCDKeyAction );
 ADDRGP4 $325
 ARGP4
 CNSTP4 0
@@ -4095,19 +4097,19 @@ ARGP4
 ADDRGP4 UI_ConfirmMenu
 CALLV
 pop
-line 808
-;808:		return;
+line 810
+;810:		return;
 ADDRGP4 $316
 JUMPV
 LABELV $326
-line 815
-;809:	case UIMENU_INGAME:
-;810:		/*
-;811:		//GRank
-;812:		UI_RankingsMenu();
-;813:		return;
-;814:		*/
-;815:		trap_Cvar_Set( "cl_paused", "1" );
+line 817
+;811:	case UIMENU_INGAME:
+;812:		/*
+;813:		//GRank
+;814:		UI_RankingsMenu();
+;815:		return;
+;816:		*/
+;817:		trap_Cvar_Set( "cl_paused", "1" );
 ADDRGP4 $125
 ARGP4
 ADDRGP4 $327
@@ -4115,25 +4117,25 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 816
-;816:		UI_InGameMenu();
+line 818
+;818:		UI_InGameMenu();
 ADDRGP4 UI_InGameMenu
 CALLV
 pop
-line 817
-;817:		return;
+line 819
+;819:		return;
 ADDRGP4 $316
 JUMPV
 LABELV $328
 LABELV $317
-line 824
-;818:		
-;819:	// bk001204
-;820:	case UIMENU_TEAM:
-;821:	case UIMENU_POSTGAME:
-;822:	default:
-;823:#ifndef NDEBUG
-;824:	  Com_Printf("UI_SetActiveMenu: bad enum %d\n", menu );
+line 826
+;820:		
+;821:	// bk001204
+;822:	case UIMENU_TEAM:
+;823:	case UIMENU_POSTGAME:
+;824:	default:
+;825:#ifndef NDEBUG
+;826:	  Com_Printf("UI_SetActiveMenu: bad enum %d\n", menu );
 ADDRGP4 $329
 ARGP4
 ADDRFP4 0
@@ -4142,56 +4144,56 @@ ARGI4
 ADDRGP4 Com_Printf
 CALLV
 pop
-line 826
-;825:#endif
-;826:	  break;
-LABELV $318
 line 828
-;827:	}
-;828:}
+;827:#endif
+;828:	  break;
+LABELV $318
+line 830
+;829:	}
+;830:}
 LABELV $316
 endproc UI_SetActiveMenu 8 12
 export UI_KeyEvent
 proc UI_KeyEvent 16 8
-line 835
-;829:
-;830:/*
-;831:=================
-;832:UI_KeyEvent
+line 837
+;831:
+;832:/*
 ;833:=================
-;834:*/
-;835:void UI_KeyEvent( int key, int down ) {
-line 838
-;836:	sfxHandle_t		s;
-;837:
-;838:	if (!uis.activemenu) {
+;834:UI_KeyEvent
+;835:=================
+;836:*/
+;837:void UI_KeyEvent( int key, int down ) {
+line 840
+;838:	sfxHandle_t		s;
+;839:
+;840:	if (!uis.activemenu) {
 ADDRGP4 uis+20
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $332
-line 839
-;839:		return;
+line 841
+;841:		return;
 ADDRGP4 $331
 JUMPV
 LABELV $332
-line 842
-;840:	}
-;841:
-;842:	if (!down) {
+line 844
+;842:	}
+;843:
+;844:	if (!down) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $335
-line 843
-;843:		return;
+line 845
+;845:		return;
 ADDRGP4 $331
 JUMPV
 LABELV $335
-line 846
-;844:	}
-;845:
-;846:	if (uis.activemenu->key)
+line 848
+;846:	}
+;847:
+;848:	if (uis.activemenu->key)
 ADDRGP4 uis+20
 INDIRP4
 CNSTI4 272
@@ -4200,8 +4202,8 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $337
-line 847
-;847:		s = uis.activemenu->key( key );
+line 849
+;849:		s = uis.activemenu->key( key );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -4220,9 +4222,9 @@ ASGNI4
 ADDRGP4 $338
 JUMPV
 LABELV $337
-line 849
-;848:	else
-;849:		s = Menu_DefaultKey( uis.activemenu, key );
+line 851
+;850:	else
+;851:		s = Menu_DefaultKey( uis.activemenu, key );
 ADDRGP4 uis+20
 INDIRP4
 ARGP4
@@ -4238,9 +4240,9 @@ ADDRLP4 8
 INDIRI4
 ASGNI4
 LABELV $338
-line 851
-;850:
-;851:	if ((s > 0) && (s != menu_null_sound))
+line 853
+;852:
+;853:	if ((s > 0) && (s != menu_null_sound))
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
@@ -4250,8 +4252,8 @@ INDIRI4
 ADDRGP4 menu_null_sound
 INDIRI4
 EQI4 $342
-line 852
-;852:		trap_S_StartLocalSound( s, CHAN_LOCAL_SOUND );
+line 854
+;854:		trap_S_StartLocalSound( s, CHAN_LOCAL_SOUND );
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -4261,40 +4263,40 @@ ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
 LABELV $342
-line 853
-;853:}
+line 855
+;855:}
 LABELV $331
 endproc UI_KeyEvent 16 8
 export UI_MouseEvent
 proc UI_MouseEvent 24 8
-line 861
-;854:
-;855:/*
-;856:=================
-;857:UI_MouseEvent
+line 863
+;856:
+;857:/*
 ;858:=================
-;859:*/
-;860:void UI_MouseEvent( int dx, int dy )
-;861:{
-line 865
-;862:	int				i;
-;863:	menucommon_s*	m;
-;864:
-;865:	if (!uis.activemenu)
+;859:UI_MouseEvent
+;860:=================
+;861:*/
+;862:void UI_MouseEvent( int dx, int dy )
+;863:{
+line 867
+;864:	int				i;
+;865:	menucommon_s*	m;
+;866:
+;867:	if (!uis.activemenu)
 ADDRGP4 uis+20
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $345
-line 866
-;866:		return;
+line 868
+;868:		return;
 ADDRGP4 $344
 JUMPV
 LABELV $345
-line 869
-;867:
-;868:	// update mouse screen position
-;869:	uis.cursorx += dx;
+line 871
+;869:
+;870:	// update mouse screen position
+;871:	uis.cursorx += dx;
 ADDRLP4 8
 ADDRGP4 uis+8
 ASGNP4
@@ -4307,36 +4309,36 @@ ADDRFP4 0
 INDIRI4
 ADDI4
 ASGNI4
-line 870
-;870:	if (uis.cursorx < 0)
+line 872
+;872:	if (uis.cursorx < 0)
 ADDRGP4 uis+8
 INDIRI4
 CNSTI4 0
 GEI4 $349
-line 871
-;871:		uis.cursorx = 0;
+line 873
+;873:		uis.cursorx = 0;
 ADDRGP4 uis+8
 CNSTI4 0
 ASGNI4
 ADDRGP4 $350
 JUMPV
 LABELV $349
-line 872
-;872:	else if (uis.cursorx > SCREEN_WIDTH)
+line 874
+;874:	else if (uis.cursorx > SCREEN_WIDTH)
 ADDRGP4 uis+8
 INDIRI4
 CNSTI4 640
 LEI4 $353
-line 873
-;873:		uis.cursorx = SCREEN_WIDTH;
+line 875
+;875:		uis.cursorx = SCREEN_WIDTH;
 ADDRGP4 uis+8
 CNSTI4 640
 ASGNI4
 LABELV $353
 LABELV $350
-line 875
-;874:
-;875:	uis.cursory += dy;
+line 877
+;876:
+;877:	uis.cursory += dy;
 ADDRLP4 12
 ADDRGP4 uis+12
 ASGNP4
@@ -4349,47 +4351,47 @@ ADDRFP4 4
 INDIRI4
 ADDI4
 ASGNI4
-line 876
-;876:	if (uis.cursory < 0)
+line 878
+;878:	if (uis.cursory < 0)
 ADDRGP4 uis+12
 INDIRI4
 CNSTI4 0
 GEI4 $358
-line 877
-;877:		uis.cursory = 0;
+line 879
+;879:		uis.cursory = 0;
 ADDRGP4 uis+12
 CNSTI4 0
 ASGNI4
 ADDRGP4 $359
 JUMPV
 LABELV $358
-line 878
-;878:	else if (uis.cursory > SCREEN_HEIGHT)
+line 880
+;880:	else if (uis.cursory > SCREEN_HEIGHT)
 ADDRGP4 uis+12
 INDIRI4
 CNSTI4 480
 LEI4 $362
-line 879
-;879:		uis.cursory = SCREEN_HEIGHT;
+line 881
+;881:		uis.cursory = SCREEN_HEIGHT;
 ADDRGP4 uis+12
 CNSTI4 480
 ASGNI4
 LABELV $362
 LABELV $359
-line 882
-;880:
-;881:	// region test the active menu items
-;882:	for (i=0; i<uis.activemenu->nitems; i++)
+line 884
+;882:
+;883:	// region test the active menu items
+;884:	for (i=0; i<uis.activemenu->nitems; i++)
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
 ADDRGP4 $369
 JUMPV
 LABELV $366
-line 883
-;883:	{
-line 884
-;884:		m = (menucommon_s*)uis.activemenu->items[i];
+line 885
+;885:	{
+line 886
+;886:		m = (menucommon_s*)uis.activemenu->items[i];
 ADDRLP4 0
 ADDRLP4 4
 INDIRI4
@@ -4402,9 +4404,9 @@ ADDP4
 ADDP4
 INDIRP4
 ASGNP4
-line 886
-;885:
-;886:		if (m->flags & (QMF_GRAYED|QMF_INACTIVE))
+line 888
+;887:
+;888:		if (m->flags & (QMF_GRAYED|QMF_INACTIVE))
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
@@ -4414,14 +4416,14 @@ CNSTU4 24576
 BANDU4
 CNSTU4 0
 EQU4 $372
-line 887
-;887:			continue;
+line 889
+;889:			continue;
 ADDRGP4 $367
 JUMPV
 LABELV $372
-line 889
-;888:
-;889:		if ((uis.cursorx < m->left) ||
+line 891
+;890:
+;891:		if ((uis.cursorx < m->left) ||
 ADDRGP4 uis+8
 INDIRI4
 ADDRLP4 0
@@ -4455,32 +4457,32 @@ ADDP4
 INDIRI4
 LEI4 $374
 LABELV $382
-line 893
-;890:			(uis.cursorx > m->right) ||
-;891:			(uis.cursory < m->top) ||
-;892:			(uis.cursory > m->bottom))
-;893:		{
 line 895
-;894:			// cursor out of item bounds
-;895:			continue;
+;892:			(uis.cursorx > m->right) ||
+;893:			(uis.cursory < m->top) ||
+;894:			(uis.cursory > m->bottom))
+;895:		{
+line 897
+;896:			// cursor out of item bounds
+;897:			continue;
 ADDRGP4 $367
 JUMPV
 LABELV $374
-line 899
-;896:		}
-;897:
-;898:		// set focus to item at cursor
-;899:		if (uis.activemenu->cursor != i)
+line 901
+;898:		}
+;899:
+;900:		// set focus to item at cursor
+;901:		if (uis.activemenu->cursor != i)
 ADDRGP4 uis+20
 INDIRP4
 INDIRI4
 ADDRLP4 4
 INDIRI4
 EQI4 $383
-line 900
-;900:		{
-line 901
-;901:			Menu_SetCursor( uis.activemenu, i );
+line 902
+;902:		{
+line 903
+;903:			Menu_SetCursor( uis.activemenu, i );
 ADDRGP4 uis+20
 INDIRP4
 ARGP4
@@ -4490,8 +4492,8 @@ ARGI4
 ADDRGP4 Menu_SetCursor
 CALLV
 pop
-line 902
-;902:			((menucommon_s*)(uis.activemenu->items[uis.activemenu->cursor_prev]))->flags &= ~QMF_HASMOUSEFOCUS;
+line 904
+;904:			((menucommon_s*)(uis.activemenu->items[uis.activemenu->cursor_prev]))->flags &= ~QMF_HASMOUSEFOCUS;
 ADDRLP4 20
 ADDRGP4 uis+20
 INDIRP4
@@ -4517,9 +4519,9 @@ INDIRU4
 CNSTU4 4294966783
 BANDU4
 ASGNU4
-line 904
-;903:
-;904:			if ( !(((menucommon_s*)(uis.activemenu->items[uis.activemenu->cursor]))->flags & QMF_SILENT ) ) {
+line 906
+;905:
+;906:			if ( !(((menucommon_s*)(uis.activemenu->items[uis.activemenu->cursor]))->flags & QMF_SILENT ) ) {
 ADDRGP4 uis+20
 INDIRP4
 INDIRI4
@@ -4538,8 +4540,8 @@ CNSTU4 1048576
 BANDU4
 CNSTU4 0
 NEU4 $389
-line 905
-;905:				trap_S_StartLocalSound( menu_move_sound, CHAN_LOCAL_SOUND );
+line 907
+;907:				trap_S_StartLocalSound( menu_move_sound, CHAN_LOCAL_SOUND );
 ADDRGP4 menu_move_sound
 INDIRI4
 ARGI4
@@ -4548,15 +4550,15 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 906
-;906:			}
+line 908
+;908:			}
 LABELV $389
-line 907
-;907:		}
-LABELV $383
 line 909
-;908:
-;909:		((menucommon_s*)(uis.activemenu->items[uis.activemenu->cursor]))->flags |= QMF_HASMOUSEFOCUS;
+;909:		}
+LABELV $383
+line 911
+;910:
+;911:		((menucommon_s*)(uis.activemenu->items[uis.activemenu->cursor]))->flags |= QMF_HASMOUSEFOCUS;
 ADDRLP4 20
 ADDRGP4 uis+20
 INDIRP4
@@ -4580,12 +4582,12 @@ INDIRU4
 CNSTU4 512
 BORU4
 ASGNU4
-line 910
-;910:		return;
+line 912
+;912:		return;
 ADDRGP4 $344
 JUMPV
 LABELV $367
-line 882
+line 884
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -4601,10 +4603,10 @@ CNSTI4 8
 ADDP4
 INDIRI4
 LTI4 $366
-line 913
-;911:	}  
-;912:
-;913:	if (uis.activemenu->nitems > 0) {
+line 915
+;913:	}  
+;914:
+;915:	if (uis.activemenu->nitems > 0) {
 ADDRGP4 uis+20
 INDIRP4
 CNSTI4 8
@@ -4612,9 +4614,9 @@ ADDP4
 INDIRI4
 CNSTI4 0
 LEI4 $395
-line 915
-;914:		// out of any region
-;915:		((menucommon_s*)(uis.activemenu->items[uis.activemenu->cursor]))->flags &= ~QMF_HASMOUSEFOCUS;
+line 917
+;916:		// out of any region
+;917:		((menucommon_s*)(uis.activemenu->items[uis.activemenu->cursor]))->flags &= ~QMF_HASMOUSEFOCUS;
 ADDRLP4 16
 ADDRGP4 uis+20
 INDIRP4
@@ -4638,11 +4640,11 @@ INDIRU4
 CNSTU4 4294966783
 BANDU4
 ASGNU4
-line 916
-;916:	}
+line 918
+;918:	}
 LABELV $395
-line 917
-;917:}
+line 919
+;919:}
 LABELV $344
 endproc UI_MouseEvent 24 8
 bss
@@ -4652,13 +4654,13 @@ skip 1024
 export UI_Argv
 code
 proc UI_Argv 0 12
-line 919
-;918:
-;919:char *UI_Argv( int arg ) {
-line 922
-;920:	static char	buffer[MAX_STRING_CHARS];
-;921:
-;922:	trap_Argv( arg, buffer, sizeof( buffer ) );
+line 921
+;920:
+;921:char *UI_Argv( int arg ) {
+line 924
+;922:	static char	buffer[MAX_STRING_CHARS];
+;923:
+;924:	trap_Argv( arg, buffer, sizeof( buffer ) );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -4669,9 +4671,9 @@ ARGI4
 ADDRGP4 trap_Argv
 CALLV
 pop
-line 924
-;923:
-;924:	return buffer;
+line 926
+;925:
+;926:	return buffer;
 ADDRGP4 $401
 RETP4
 LABELV $400
@@ -4683,15 +4685,15 @@ skip 1024
 export UI_Cvar_VariableString
 code
 proc UI_Cvar_VariableString 0 12
-line 928
-;925:}
-;926:
-;927:
-;928:char *UI_Cvar_VariableString( const char *var_name ) {
-line 931
-;929:	static char	buffer[MAX_STRING_CHARS];
-;930:
-;931:	trap_Cvar_VariableStringBuffer( var_name, buffer, sizeof( buffer ) );
+line 930
+;927:}
+;928:
+;929:
+;930:char *UI_Cvar_VariableString( const char *var_name ) {
+line 933
+;931:	static char	buffer[MAX_STRING_CHARS];
+;932:
+;933:	trap_Cvar_VariableStringBuffer( var_name, buffer, sizeof( buffer ) );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -4702,192 +4704,192 @@ ARGI4
 ADDRGP4 trap_Cvar_VariableStringBuffer
 CALLV
 pop
-line 933
-;932:
-;933:	return buffer;
+line 935
+;934:
+;935:	return buffer;
 ADDRGP4 $403
 RETP4
 LABELV $402
 endproc UI_Cvar_VariableString 0 12
 export UI_Cache_f
 proc UI_Cache_f 0 0
-line 942
-;934:}
-;935:
-;936:
-;937:/*
-;938:=================
-;939:UI_Cache
+line 944
+;936:}
+;937:
+;938:
+;939:/*
 ;940:=================
-;941:*/
-;942:void UI_Cache_f( void ) {
-line 943
-;943:	MainMenu_Cache();
+;941:UI_Cache
+;942:=================
+;943:*/
+;944:void UI_Cache_f( void ) {
+line 945
+;945:	MainMenu_Cache();
 ADDRGP4 MainMenu_Cache
 CALLV
 pop
-line 944
-;944:	InGame_Cache();
+line 946
+;946:	InGame_Cache();
 ADDRGP4 InGame_Cache
 CALLV
 pop
-line 945
-;945:	ConfirmMenu_Cache();
+line 947
+;947:	ConfirmMenu_Cache();
 ADDRGP4 ConfirmMenu_Cache
 CALLV
 pop
-line 946
-;946:	PlayerModel_Cache();
+line 948
+;948:	PlayerModel_Cache();
 ADDRGP4 PlayerModel_Cache
 CALLV
 pop
-line 947
-;947:	PlayerSettings_Cache();
+line 949
+;949:	PlayerSettings_Cache();
 ADDRGP4 PlayerSettings_Cache
 CALLV
 pop
-line 948
-;948:	Controls_Cache();
+line 950
+;950:	Controls_Cache();
 ADDRGP4 Controls_Cache
 CALLV
 pop
-line 949
-;949:	Demos_Cache();
+line 951
+;951:	Demos_Cache();
 ADDRGP4 Demos_Cache
 CALLV
 pop
-line 950
-;950:	UI_CinematicsMenu_Cache();
+line 952
+;952:	UI_CinematicsMenu_Cache();
 ADDRGP4 UI_CinematicsMenu_Cache
 CALLV
 pop
-line 951
-;951:	Preferences_Cache();
+line 953
+;953:	Preferences_Cache();
 ADDRGP4 Preferences_Cache
 CALLV
 pop
-line 952
-;952:	ServerInfo_Cache();
+line 954
+;954:	ServerInfo_Cache();
 ADDRGP4 ServerInfo_Cache
 CALLV
 pop
-line 953
-;953:	SpecifyServer_Cache();
+line 955
+;955:	SpecifyServer_Cache();
 ADDRGP4 SpecifyServer_Cache
 CALLV
 pop
-line 954
-;954:	ArenaServers_Cache();
+line 956
+;956:	ArenaServers_Cache();
 ADDRGP4 ArenaServers_Cache
 CALLV
 pop
-line 955
-;955:	StartServer_Cache();
+line 957
+;957:	StartServer_Cache();
 ADDRGP4 StartServer_Cache
 CALLV
 pop
-line 956
-;956:	ServerOptions_Cache();
+line 958
+;958:	ServerOptions_Cache();
 ADDRGP4 ServerOptions_Cache
 CALLV
 pop
-line 957
-;957:	DriverInfo_Cache();
+line 959
+;959:	DriverInfo_Cache();
 ADDRGP4 DriverInfo_Cache
 CALLV
 pop
-line 958
-;958:	GraphicsOptions_Cache();
+line 960
+;960:	GraphicsOptions_Cache();
 ADDRGP4 GraphicsOptions_Cache
 CALLV
 pop
-line 959
-;959:	UI_DisplayOptionsMenu_Cache();
+line 961
+;961:	UI_DisplayOptionsMenu_Cache();
 ADDRGP4 UI_DisplayOptionsMenu_Cache
 CALLV
 pop
-line 960
-;960:	UI_SoundOptionsMenu_Cache();
+line 962
+;962:	UI_SoundOptionsMenu_Cache();
 ADDRGP4 UI_SoundOptionsMenu_Cache
 CALLV
 pop
-line 961
-;961:	UI_NetworkOptionsMenu_Cache();
+line 963
+;963:	UI_NetworkOptionsMenu_Cache();
 ADDRGP4 UI_NetworkOptionsMenu_Cache
 CALLV
 pop
-line 962
-;962:	UI_SPLevelMenu_Cache();
+line 964
+;964:	UI_SPLevelMenu_Cache();
 ADDRGP4 UI_SPLevelMenu_Cache
 CALLV
 pop
-line 963
-;963:	UI_SPSkillMenu_Cache();
+line 965
+;965:	UI_SPSkillMenu_Cache();
 ADDRGP4 UI_SPSkillMenu_Cache
 CALLV
 pop
-line 964
-;964:	UI_SPPostgameMenu_Cache();
+line 966
+;966:	UI_SPPostgameMenu_Cache();
 ADDRGP4 UI_SPPostgameMenu_Cache
 CALLV
 pop
-line 965
-;965:	TeamMain_Cache();
+line 967
+;967:	TeamMain_Cache();
 ADDRGP4 TeamMain_Cache
 CALLV
 pop
-line 966
-;966:	UI_AddBots_Cache();
+line 968
+;968:	UI_AddBots_Cache();
 ADDRGP4 UI_AddBots_Cache
 CALLV
 pop
-line 967
-;967:	UI_RemoveBots_Cache();
+line 969
+;969:	UI_RemoveBots_Cache();
 ADDRGP4 UI_RemoveBots_Cache
 CALLV
 pop
-line 968
-;968:	UI_SetupMenu_Cache();
+line 970
+;970:	UI_SetupMenu_Cache();
 ADDRGP4 UI_SetupMenu_Cache
 CALLV
 pop
-line 971
-;969://	UI_LoadConfig_Cache();
-;970://	UI_SaveConfigMenu_Cache();
-;971:	UI_BotSelectMenu_Cache();
+line 973
+;971://	UI_LoadConfig_Cache();
+;972://	UI_SaveConfigMenu_Cache();
+;973:	UI_BotSelectMenu_Cache();
 ADDRGP4 UI_BotSelectMenu_Cache
 CALLV
 pop
-line 972
-;972:	UI_CDKeyMenu_Cache();
+line 974
+;974:	UI_CDKeyMenu_Cache();
 ADDRGP4 UI_CDKeyMenu_Cache
 CALLV
 pop
-line 973
-;973:	UI_ModsMenu_Cache();
+line 975
+;975:	UI_ModsMenu_Cache();
 ADDRGP4 UI_ModsMenu_Cache
 CALLV
 pop
-line 975
-;974:
-;975:}
+line 977
+;976:
+;977:}
 LABELV $404
 endproc UI_Cache_f 0 0
 export UI_ConsoleCommand
 proc UI_ConsoleCommand 44 8
-line 983
-;976:
-;977:
-;978:/*
-;979:=================
-;980:UI_ConsoleCommand
+line 985
+;978:
+;979:
+;980:/*
 ;981:=================
-;982:*/
-;983:qboolean UI_ConsoleCommand( int realTime ) {
-line 986
-;984:	char	*cmd;
-;985:
-;986:	cmd = UI_Argv( 0 );
+;982:UI_ConsoleCommand
+;983:=================
+;984:*/
+;985:qboolean UI_ConsoleCommand( int realTime ) {
+line 988
+;986:	char	*cmd;
+;987:
+;988:	cmd = UI_Argv( 0 );
 CNSTI4 0
 ARGI4
 ADDRLP4 4
@@ -4898,16 +4900,16 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 989
-;987:
-;988:	// ensure minimum menu data is available
-;989:	Menu_Cache();
+line 991
+;989:
+;990:	// ensure minimum menu data is available
+;991:	Menu_Cache();
 ADDRGP4 Menu_Cache
 CALLV
 pop
-line 991
-;990:
-;991:	if ( Q_stricmp (cmd, "levelselect") == 0 ) {
+line 993
+;992:
+;993:	if ( Q_stricmp (cmd, "levelselect") == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -4921,22 +4923,22 @@ ADDRLP4 8
 INDIRI4
 CNSTI4 0
 NEI4 $406
-line 992
-;992:		UI_SPLevelMenu_f();
+line 994
+;994:		UI_SPLevelMenu_f();
 ADDRGP4 UI_SPLevelMenu_f
 CALLV
 pop
-line 993
-;993:		return qtrue;
+line 995
+;995:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $405
 JUMPV
 LABELV $406
-line 996
-;994:	}
-;995:
-;996:	if ( Q_stricmp (cmd, "postgame") == 0 ) {
+line 998
+;996:	}
+;997:
+;998:	if ( Q_stricmp (cmd, "postgame") == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -4950,22 +4952,22 @@ ADDRLP4 12
 INDIRI4
 CNSTI4 0
 NEI4 $409
-line 997
-;997:		UI_SPPostgameMenu_f();
+line 999
+;999:		UI_SPPostgameMenu_f();
 ADDRGP4 UI_SPPostgameMenu_f
 CALLV
 pop
-line 998
-;998:		return qtrue;
+line 1000
+;1000:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $405
 JUMPV
 LABELV $409
-line 1001
-;999:	}
-;1000:
-;1001:	if ( Q_stricmp (cmd, "ui_cache") == 0 ) {
+line 1003
+;1001:	}
+;1002:
+;1003:	if ( Q_stricmp (cmd, "ui_cache") == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -4979,22 +4981,22 @@ ADDRLP4 16
 INDIRI4
 CNSTI4 0
 NEI4 $412
-line 1002
-;1002:		UI_Cache_f();
+line 1004
+;1004:		UI_Cache_f();
 ADDRGP4 UI_Cache_f
 CALLV
 pop
-line 1003
-;1003:		return qtrue;
+line 1005
+;1005:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $405
 JUMPV
 LABELV $412
-line 1006
-;1004:	}
-;1005:
-;1006:	if ( Q_stricmp (cmd, "ui_cinematics") == 0 ) {
+line 1008
+;1006:	}
+;1007:
+;1008:	if ( Q_stricmp (cmd, "ui_cinematics") == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5008,24 +5010,24 @@ ADDRLP4 20
 INDIRI4
 CNSTI4 0
 NEI4 $415
-line 1007
-;1007:		UI_CinematicsMenu_f();
+line 1009
+;1009:		UI_CinematicsMenu_f();
 ADDRGP4 UI_CinematicsMenu_f
 CALLV
 pop
-line 1008
-;1008:		return qtrue;
+line 1010
+;1010:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $405
 JUMPV
 LABELV $415
-line 1013
-;1009:	}
-;1010:
-;1011:	
-;1012:	// Shafe - Trep  Call Dyanmic Menu (Example)
-;1013:	if ( Q_stricmp (cmd, "ui_dynamicmenu") == 0 ) {
+line 1015
+;1011:	}
+;1012:
+;1013:	
+;1014:	// Shafe - Trep  Call Dyanmic Menu (Example)
+;1015:	if ( Q_stricmp (cmd, "ui_dynamicmenu") == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5039,22 +5041,22 @@ ADDRLP4 24
 INDIRI4
 CNSTI4 0
 NEI4 $418
-line 1014
-;1014:		UI_DynamicCommandMenu_f();
+line 1016
+;1016:		UI_DynamicCommandMenu_f();
 ADDRGP4 UI_DynamicCommandMenu_f
 CALLI4
 pop
-line 1015
-;1015:	return qtrue;
+line 1017
+;1017:	return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $405
 JUMPV
 LABELV $418
-line 1018
-;1016:	}
-;1017:
-;1018:	if ( Q_stricmp (cmd, "ui_teamOrders") == 0 ) {
+line 1020
+;1018:	}
+;1019:
+;1020:	if ( Q_stricmp (cmd, "ui_teamOrders") == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5068,22 +5070,22 @@ ADDRLP4 28
 INDIRI4
 CNSTI4 0
 NEI4 $421
-line 1019
-;1019:		UI_TeamOrdersMenu_f();
+line 1021
+;1021:		UI_TeamOrdersMenu_f();
 ADDRGP4 UI_TeamOrdersMenu_f
 CALLV
 pop
-line 1020
-;1020:		return qtrue;
+line 1022
+;1022:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $405
 JUMPV
 LABELV $421
-line 1023
-;1021:	}
-;1022:
-;1023:	if ( Q_stricmp (cmd, "iamacheater") == 0 ) {
+line 1025
+;1023:	}
+;1024:
+;1025:	if ( Q_stricmp (cmd, "iamacheater") == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5097,22 +5099,22 @@ ADDRLP4 32
 INDIRI4
 CNSTI4 0
 NEI4 $424
-line 1024
-;1024:		UI_SPUnlock_f();
+line 1026
+;1026:		UI_SPUnlock_f();
 ADDRGP4 UI_SPUnlock_f
 CALLV
 pop
-line 1025
-;1025:		return qtrue;
+line 1027
+;1027:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $405
 JUMPV
 LABELV $424
-line 1028
-;1026:	}
-;1027:
-;1028:	if ( Q_stricmp (cmd, "iamamonkey") == 0 ) {
+line 1030
+;1028:	}
+;1029:
+;1030:	if ( Q_stricmp (cmd, "iamamonkey") == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5126,22 +5128,22 @@ ADDRLP4 36
 INDIRI4
 CNSTI4 0
 NEI4 $427
-line 1029
-;1029:		UI_SPUnlockMedals_f();
+line 1031
+;1031:		UI_SPUnlockMedals_f();
 ADDRGP4 UI_SPUnlockMedals_f
 CALLV
 pop
-line 1030
-;1030:		return qtrue;
+line 1032
+;1032:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $405
 JUMPV
 LABELV $427
-line 1033
-;1031:	}
-;1032:
-;1033:	if ( Q_stricmp (cmd, "ui_cdkey") == 0 ) {
+line 1035
+;1033:	}
+;1034:
+;1035:	if ( Q_stricmp (cmd, "ui_cdkey") == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5155,75 +5157,75 @@ ADDRLP4 40
 INDIRI4
 CNSTI4 0
 NEI4 $430
-line 1034
-;1034:		UI_CDKeyMenu_f();
+line 1036
+;1036:		UI_CDKeyMenu_f();
 ADDRGP4 UI_CDKeyMenu_f
 CALLV
 pop
-line 1035
-;1035:		return qtrue;
+line 1037
+;1037:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $405
 JUMPV
 LABELV $430
-line 1038
-;1036:	}
-;1037:
-;1038:	return qfalse;
+line 1040
+;1038:	}
+;1039:
+;1040:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $405
 endproc UI_ConsoleCommand 44 8
 export UI_Shutdown
 proc UI_Shutdown 0 0
-line 1046
-;1039:}
-;1040:
-;1041:/*
-;1042:=================
-;1043:UI_Shutdown
+line 1048
+;1041:}
+;1042:
+;1043:/*
 ;1044:=================
-;1045:*/
-;1046:void UI_Shutdown( void ) {
-line 1047
-;1047:}
+;1045:UI_Shutdown
+;1046:=================
+;1047:*/
+;1048:void UI_Shutdown( void ) {
+line 1049
+;1049:}
 LABELV $433
 endproc UI_Shutdown 0 0
 export UI_Init
 proc UI_Init 0 4
-line 1054
-;1048:
-;1049:/*
-;1050:=================
-;1051:UI_Init
+line 1056
+;1050:
+;1051:/*
 ;1052:=================
-;1053:*/
-;1054:void UI_Init( void ) {
-line 1055
-;1055:	UI_RegisterCvars();
+;1053:UI_Init
+;1054:=================
+;1055:*/
+;1056:void UI_Init( void ) {
+line 1057
+;1057:	UI_RegisterCvars();
 ADDRGP4 UI_RegisterCvars
 CALLV
 pop
-line 1057
-;1056:
-;1057:	UI_InitGameinfo();
+line 1059
+;1058:
+;1059:	UI_InitGameinfo();
 ADDRGP4 UI_InitGameinfo
 CALLV
 pop
-line 1060
-;1058:
-;1059:	// cache redundant calulations
-;1060:	trap_GetGlconfig( &uis.glconfig );
+line 1062
+;1060:
+;1061:	// cache redundant calulations
+;1062:	trap_GetGlconfig( &uis.glconfig );
 ADDRGP4 uis+56
 ARGP4
 ADDRGP4 trap_GetGlconfig
 CALLV
 pop
-line 1063
-;1061:
-;1062:	// for 640x480 virtualized screen
-;1063:	uis.scale = uis.glconfig.vidHeight * (1.0/480.0);
+line 1065
+;1063:
+;1064:	// for 640x480 virtualized screen
+;1065:	uis.scale = uis.glconfig.vidHeight * (1.0/480.0);
 ADDRGP4 uis+11432
 CNSTF4 990414985
 ADDRGP4 uis+56+11308
@@ -5231,8 +5233,8 @@ INDIRI4
 CVIF4 4
 MULF4
 ASGNF4
-line 1064
-;1064:	if ( uis.glconfig.vidWidth * 480 > uis.glconfig.vidHeight * 640 ) {
+line 1066
+;1066:	if ( uis.glconfig.vidWidth * 480 > uis.glconfig.vidHeight * 640 ) {
 CNSTI4 480
 ADDRGP4 uis+56+11304
 INDIRI4
@@ -5242,9 +5244,9 @@ ADDRGP4 uis+56+11308
 INDIRI4
 MULI4
 LEI4 $439
-line 1066
-;1065:		// wide screen
-;1066:		uis.bias = 0.5 * ( uis.glconfig.vidWidth - ( uis.glconfig.vidHeight * (640.0/480.0) ) );
+line 1068
+;1067:		// wide screen
+;1068:		uis.bias = 0.5 * ( uis.glconfig.vidWidth - ( uis.glconfig.vidHeight * (640.0/480.0) ) );
 ADDRGP4 uis+11436
 CNSTF4 1056964608
 ADDRGP4 uis+56+11304
@@ -5258,59 +5260,59 @@ MULF4
 SUBF4
 MULF4
 ASGNF4
-line 1067
-;1067:	}
+line 1069
+;1069:	}
 ADDRGP4 $440
 JUMPV
 LABELV $439
-line 1068
-;1068:	else {
 line 1070
-;1069:		// no wide screen
-;1070:		uis.bias = 0;
+;1070:	else {
+line 1072
+;1071:		// no wide screen
+;1072:		uis.bias = 0;
 ADDRGP4 uis+11436
 CNSTF4 0
 ASGNF4
-line 1071
-;1071:	}
+line 1073
+;1073:	}
 LABELV $440
-line 1074
-;1072:
-;1073:	// initialize the menu system
-;1074:	Menu_Cache();
+line 1076
+;1074:
+;1075:	// initialize the menu system
+;1076:	Menu_Cache();
 ADDRGP4 Menu_Cache
 CALLV
 pop
-line 1076
-;1075:
-;1076:	uis.activemenu = NULL;
+line 1078
+;1077:
+;1078:	uis.activemenu = NULL;
 ADDRGP4 uis+20
 CNSTP4 0
 ASGNP4
-line 1077
-;1077:	uis.menusp     = 0;
+line 1079
+;1079:	uis.menusp     = 0;
 ADDRGP4 uis+16
 CNSTI4 0
 ASGNI4
-line 1078
-;1078:}
+line 1080
+;1080:}
 LABELV $434
 endproc UI_Init 0 4
 export UI_AdjustFrom640
 proc UI_AdjustFrom640 16 0
-line 1087
-;1079:
-;1080:/*
-;1081:================
-;1082:UI_AdjustFrom640
-;1083:
-;1084:Adjusted for resolution and screen aspect ratio
-;1085:================
-;1086:*/
-;1087:void UI_AdjustFrom640( float *x, float *y, float *w, float *h ) {
 line 1089
-;1088:	// expect valid pointers
-;1089:	*x = *x * uis.scale + uis.bias;
+;1081:
+;1082:/*
+;1083:================
+;1084:UI_AdjustFrom640
+;1085:
+;1086:Adjusted for resolution and screen aspect ratio
+;1087:================
+;1088:*/
+;1089:void UI_AdjustFrom640( float *x, float *y, float *w, float *h ) {
+line 1091
+;1090:	// expect valid pointers
+;1091:	*x = *x * uis.scale + uis.bias;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -5327,8 +5329,8 @@ ADDRGP4 uis+11436
 INDIRF4
 ADDF4
 ASGNF4
-line 1090
-;1090:	*y *= uis.scale;
+line 1092
+;1092:	*y *= uis.scale;
 ADDRLP4 4
 ADDRFP4 4
 INDIRP4
@@ -5342,8 +5344,8 @@ ADDRGP4 uis+11432
 INDIRF4
 MULF4
 ASGNF4
-line 1091
-;1091:	*w *= uis.scale;
+line 1093
+;1093:	*w *= uis.scale;
 ADDRLP4 8
 ADDRFP4 8
 INDIRP4
@@ -5357,8 +5359,8 @@ ADDRGP4 uis+11432
 INDIRF4
 MULF4
 ASGNF4
-line 1092
-;1092:	*h *= uis.scale;
+line 1094
+;1094:	*h *= uis.scale;
 ADDRLP4 12
 ADDRFP4 12
 INDIRP4
@@ -5372,19 +5374,19 @@ ADDRGP4 uis+11432
 INDIRF4
 MULF4
 ASGNF4
-line 1093
-;1093:}
+line 1095
+;1095:}
 LABELV $453
 endproc UI_AdjustFrom640 16 0
 export UI_DrawNamedPic
 proc UI_DrawNamedPic 16 36
-line 1095
-;1094:
-;1095:void UI_DrawNamedPic( float x, float y, float width, float height, const char *picname ) {
-line 1098
-;1096:	qhandle_t	hShader;
-;1097:
-;1098:	hShader = trap_R_RegisterShaderNoMip( picname );
+line 1097
+;1096:
+;1097:void UI_DrawNamedPic( float x, float y, float width, float height, const char *picname ) {
+line 1100
+;1098:	qhandle_t	hShader;
+;1099:
+;1100:	hShader = trap_R_RegisterShaderNoMip( picname );
 ADDRFP4 16
 INDIRP4
 ARGP4
@@ -5396,8 +5398,8 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1099
-;1099:	UI_AdjustFrom640( &x, &y, &width, &height );
+line 1101
+;1101:	UI_AdjustFrom640( &x, &y, &width, &height );
 ADDRFP4 0
 ARGP4
 ADDRFP4 4
@@ -5409,8 +5411,8 @@ ARGP4
 ADDRGP4 UI_AdjustFrom640
 CALLV
 pop
-line 1100
-;1100:	trap_R_DrawStretchPic( x, y, width, height, 0, 0, 1, 1, hShader );
+line 1102
+;1102:	trap_R_DrawStretchPic( x, y, width, height, 0, 0, 1, 1, hShader );
 ADDRFP4 0
 INDIRF4
 ARGF4
@@ -5447,110 +5449,110 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 1101
-;1101:}
+line 1103
+;1103:}
 LABELV $459
 endproc UI_DrawNamedPic 16 36
 export UI_DrawHandlePic
 proc UI_DrawHandlePic 16 36
-line 1103
-;1102:
-;1103:void UI_DrawHandlePic( float x, float y, float w, float h, qhandle_t hShader ) {
-line 1109
-;1104:	float	s0;
-;1105:	float	s1;
-;1106:	float	t0;
-;1107:	float	t1;
-;1108:
-;1109:	if( w < 0 ) {	// flip about vertical
+line 1105
+;1104:
+;1105:void UI_DrawHandlePic( float x, float y, float w, float h, qhandle_t hShader ) {
+line 1111
+;1106:	float	s0;
+;1107:	float	s1;
+;1108:	float	t0;
+;1109:	float	t1;
+;1110:
+;1111:	if( w < 0 ) {	// flip about vertical
 ADDRFP4 8
 INDIRF4
 CNSTF4 0
 GEF4 $461
-line 1110
-;1110:		w  = -w;
+line 1112
+;1112:		w  = -w;
 ADDRFP4 8
 ADDRFP4 8
 INDIRF4
 NEGF4
 ASGNF4
-line 1111
-;1111:		s0 = 1;
+line 1113
+;1113:		s0 = 1;
 ADDRLP4 0
 CNSTF4 1065353216
 ASGNF4
-line 1112
-;1112:		s1 = 0;
+line 1114
+;1114:		s1 = 0;
 ADDRLP4 4
 CNSTF4 0
 ASGNF4
-line 1113
-;1113:	}
+line 1115
+;1115:	}
 ADDRGP4 $462
 JUMPV
 LABELV $461
-line 1114
-;1114:	else {
-line 1115
-;1115:		s0 = 0;
+line 1116
+;1116:	else {
+line 1117
+;1117:		s0 = 0;
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-line 1116
-;1116:		s1 = 1;
+line 1118
+;1118:		s1 = 1;
 ADDRLP4 4
 CNSTF4 1065353216
 ASGNF4
-line 1117
-;1117:	}
-LABELV $462
 line 1119
-;1118:
-;1119:	if( h < 0 ) {	// flip about horizontal
+;1119:	}
+LABELV $462
+line 1121
+;1120:
+;1121:	if( h < 0 ) {	// flip about horizontal
 ADDRFP4 12
 INDIRF4
 CNSTF4 0
 GEF4 $463
-line 1120
-;1120:		h  = -h;
+line 1122
+;1122:		h  = -h;
 ADDRFP4 12
 ADDRFP4 12
 INDIRF4
 NEGF4
 ASGNF4
-line 1121
-;1121:		t0 = 1;
+line 1123
+;1123:		t0 = 1;
 ADDRLP4 8
 CNSTF4 1065353216
 ASGNF4
-line 1122
-;1122:		t1 = 0;
+line 1124
+;1124:		t1 = 0;
 ADDRLP4 12
 CNSTF4 0
 ASGNF4
-line 1123
-;1123:	}
+line 1125
+;1125:	}
 ADDRGP4 $464
 JUMPV
 LABELV $463
-line 1124
-;1124:	else {
-line 1125
-;1125:		t0 = 0;
+line 1126
+;1126:	else {
+line 1127
+;1127:		t0 = 0;
 ADDRLP4 8
 CNSTF4 0
 ASGNF4
-line 1126
-;1126:		t1 = 1;
+line 1128
+;1128:		t1 = 1;
 ADDRLP4 12
 CNSTF4 1065353216
 ASGNF4
-line 1127
-;1127:	}
-LABELV $464
 line 1129
-;1128:	
-;1129:	UI_AdjustFrom640( &x, &y, &w, &h );
+;1129:	}
+LABELV $464
+line 1131
+;1130:	
+;1131:	UI_AdjustFrom640( &x, &y, &w, &h );
 ADDRFP4 0
 ARGP4
 ADDRFP4 4
@@ -5562,8 +5564,8 @@ ARGP4
 ADDRGP4 UI_AdjustFrom640
 CALLV
 pop
-line 1130
-;1130:	trap_R_DrawStretchPic( x, y, w, h, s0, t0, s1, t1, hShader );
+line 1132
+;1132:	trap_R_DrawStretchPic( x, y, w, h, s0, t0, s1, t1, hShader );
 ADDRFP4 0
 INDIRF4
 ARGF4
@@ -5594,33 +5596,33 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 1131
-;1131:}
+line 1133
+;1133:}
 LABELV $460
 endproc UI_DrawHandlePic 16 36
 export UI_FillRect
 proc UI_FillRect 4 36
-line 1140
-;1132:
-;1133:/*
-;1134:================
-;1135:UI_FillRect
-;1136:
-;1137:Coordinates are 640*480 virtual values
-;1138:=================
-;1139:*/
-;1140:void UI_FillRect( float x, float y, float width, float height, const float *color ) {
-line 1141
-;1141:	trap_R_SetColor( color );
+line 1142
+;1134:
+;1135:/*
+;1136:================
+;1137:UI_FillRect
+;1138:
+;1139:Coordinates are 640*480 virtual values
+;1140:=================
+;1141:*/
+;1142:void UI_FillRect( float x, float y, float width, float height, const float *color ) {
+line 1143
+;1143:	trap_R_SetColor( color );
 ADDRFP4 16
 INDIRP4
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1143
-;1142:
-;1143:	UI_AdjustFrom640( &x, &y, &width, &height );
+line 1145
+;1144:
+;1145:	UI_AdjustFrom640( &x, &y, &width, &height );
 ADDRFP4 0
 ARGP4
 ADDRFP4 4
@@ -5632,8 +5634,8 @@ ARGP4
 ADDRGP4 UI_AdjustFrom640
 CALLV
 pop
-line 1144
-;1144:	trap_R_DrawStretchPic( x, y, width, height, 0, 0, 0, 0, uis.whiteShader );
+line 1146
+;1146:	trap_R_DrawStretchPic( x, y, width, height, 0, 0, 0, 0, uis.whiteShader );
 ADDRFP4 0
 INDIRF4
 ARGF4
@@ -5667,41 +5669,41 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 1146
-;1145:
-;1146:	trap_R_SetColor( NULL );
+line 1148
+;1147:
+;1148:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1147
-;1147:}
+line 1149
+;1149:}
 LABELV $465
 endproc UI_FillRect 4 36
 export UI_DrawRect
 proc UI_DrawRect 24 36
-line 1156
-;1148:
-;1149:/*
-;1150:================
-;1151:UI_DrawRect
-;1152:
-;1153:Coordinates are 640*480 virtual values
-;1154:=================
-;1155:*/
-;1156:void UI_DrawRect( float x, float y, float width, float height, const float *color ) {
-line 1157
-;1157:	trap_R_SetColor( color );
+line 1158
+;1150:
+;1151:/*
+;1152:================
+;1153:UI_DrawRect
+;1154:
+;1155:Coordinates are 640*480 virtual values
+;1156:=================
+;1157:*/
+;1158:void UI_DrawRect( float x, float y, float width, float height, const float *color ) {
+line 1159
+;1159:	trap_R_SetColor( color );
 ADDRFP4 16
 INDIRP4
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1159
-;1158:
-;1159:	UI_AdjustFrom640( &x, &y, &width, &height );
+line 1161
+;1160:
+;1161:	UI_AdjustFrom640( &x, &y, &width, &height );
 ADDRFP4 0
 ARGP4
 ADDRFP4 4
@@ -5713,111 +5715,33 @@ ARGP4
 ADDRGP4 UI_AdjustFrom640
 CALLV
 pop
-line 1161
-;1160:
-;1161:	trap_R_DrawStretchPic( x, y, width, 1, 0, 0, 0, 0, uis.whiteShader );
-ADDRFP4 0
-INDIRF4
-ARGF4
-ADDRFP4 4
-INDIRF4
-ARGF4
-ADDRFP4 8
-INDIRF4
-ARGF4
-CNSTF4 1065353216
-ARGF4
-ADDRLP4 0
-CNSTF4 0
-ASGNF4
-ADDRLP4 0
-INDIRF4
-ARGF4
-ADDRLP4 0
-INDIRF4
-ARGF4
-ADDRLP4 0
-INDIRF4
-ARGF4
-ADDRLP4 0
-INDIRF4
-ARGF4
-ADDRGP4 uis+11392
-INDIRI4
-ARGI4
-ADDRGP4 trap_R_DrawStretchPic
-CALLV
-pop
-line 1162
-;1162:	trap_R_DrawStretchPic( x, y, 1, height, 0, 0, 0, 0, uis.whiteShader );
-ADDRFP4 0
-INDIRF4
-ARGF4
-ADDRFP4 4
-INDIRF4
-ARGF4
-CNSTF4 1065353216
-ARGF4
-ADDRFP4 12
-INDIRF4
-ARGF4
-ADDRLP4 4
-CNSTF4 0
-ASGNF4
-ADDRLP4 4
-INDIRF4
-ARGF4
-ADDRLP4 4
-INDIRF4
-ARGF4
-ADDRLP4 4
-INDIRF4
-ARGF4
-ADDRLP4 4
-INDIRF4
-ARGF4
-ADDRGP4 uis+11392
-INDIRI4
-ARGI4
-ADDRGP4 trap_R_DrawStretchPic
-CALLV
-pop
 line 1163
-;1163:	trap_R_DrawStretchPic( x, y + height - 1, width, 1, 0, 0, 0, 0, uis.whiteShader );
+;1162:
+;1163:	trap_R_DrawStretchPic( x, y, width, 1, 0, 0, 0, 0, uis.whiteShader );
 ADDRFP4 0
 INDIRF4
 ARGF4
-ADDRLP4 8
-CNSTF4 1065353216
-ASGNF4
 ADDRFP4 4
 INDIRF4
-ADDRFP4 12
-INDIRF4
-ADDF4
-ADDRLP4 8
-INDIRF4
-SUBF4
 ARGF4
 ADDRFP4 8
 INDIRF4
 ARGF4
-ADDRLP4 8
-INDIRF4
+CNSTF4 1065353216
 ARGF4
-ADDRLP4 12
+ADDRLP4 0
 CNSTF4 0
 ASGNF4
-ADDRLP4 12
+ADDRLP4 0
 INDIRF4
 ARGF4
-ADDRLP4 12
+ADDRLP4 0
 INDIRF4
 ARGF4
-ADDRLP4 12
+ADDRLP4 0
 INDIRF4
 ARGF4
-ADDRLP4 12
+ADDRLP4 0
 INDIRF4
 ARGF4
 ADDRGP4 uis+11392
@@ -5827,7 +5751,85 @@ ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
 line 1164
-;1164:	trap_R_DrawStretchPic( x + width - 1, y, 1, height, 0, 0, 0, 0, uis.whiteShader );
+;1164:	trap_R_DrawStretchPic( x, y, 1, height, 0, 0, 0, 0, uis.whiteShader );
+ADDRFP4 0
+INDIRF4
+ARGF4
+ADDRFP4 4
+INDIRF4
+ARGF4
+CNSTF4 1065353216
+ARGF4
+ADDRFP4 12
+INDIRF4
+ARGF4
+ADDRLP4 4
+CNSTF4 0
+ASGNF4
+ADDRLP4 4
+INDIRF4
+ARGF4
+ADDRLP4 4
+INDIRF4
+ARGF4
+ADDRLP4 4
+INDIRF4
+ARGF4
+ADDRLP4 4
+INDIRF4
+ARGF4
+ADDRGP4 uis+11392
+INDIRI4
+ARGI4
+ADDRGP4 trap_R_DrawStretchPic
+CALLV
+pop
+line 1165
+;1165:	trap_R_DrawStretchPic( x, y + height - 1, width, 1, 0, 0, 0, 0, uis.whiteShader );
+ADDRFP4 0
+INDIRF4
+ARGF4
+ADDRLP4 8
+CNSTF4 1065353216
+ASGNF4
+ADDRFP4 4
+INDIRF4
+ADDRFP4 12
+INDIRF4
+ADDF4
+ADDRLP4 8
+INDIRF4
+SUBF4
+ARGF4
+ADDRFP4 8
+INDIRF4
+ARGF4
+ADDRLP4 8
+INDIRF4
+ARGF4
+ADDRLP4 12
+CNSTF4 0
+ASGNF4
+ADDRLP4 12
+INDIRF4
+ARGF4
+ADDRLP4 12
+INDIRF4
+ARGF4
+ADDRLP4 12
+INDIRF4
+ARGF4
+ADDRLP4 12
+INDIRF4
+ARGF4
+ADDRGP4 uis+11392
+INDIRI4
+ARGI4
+ADDRGP4 trap_R_DrawStretchPic
+CALLV
+pop
+line 1166
+;1166:	trap_R_DrawStretchPic( x + width - 1, y, 1, height, 0, 0, 0, 0, uis.whiteShader );
 ADDRLP4 16
 CNSTF4 1065353216
 ASGNF4
@@ -5870,62 +5872,62 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 1166
-;1165:
-;1166:	trap_R_SetColor( NULL );
+line 1168
+;1167:
+;1168:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1167
-;1167:}
+line 1169
+;1169:}
 LABELV $467
 endproc UI_DrawRect 24 36
 export UI_SetColor
 proc UI_SetColor 0 4
-line 1169
-;1168:
-;1169:void UI_SetColor( const float *rgba ) {
-line 1170
-;1170:	trap_R_SetColor( rgba );
+line 1171
+;1170:
+;1171:void UI_SetColor( const float *rgba ) {
+line 1172
+;1172:	trap_R_SetColor( rgba );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1171
-;1171:}
+line 1173
+;1173:}
 LABELV $472
 endproc UI_SetColor 0 4
 export UI_UpdateScreen
 proc UI_UpdateScreen 0 0
-line 1173
-;1172:
-;1173:void UI_UpdateScreen( void ) {
-line 1174
-;1174:	trap_UpdateScreen();
+line 1175
+;1174:
+;1175:void UI_UpdateScreen( void ) {
+line 1176
+;1176:	trap_UpdateScreen();
 ADDRGP4 trap_UpdateScreen
 CALLV
 pop
-line 1175
-;1175:}
+line 1177
+;1177:}
 LABELV $473
 endproc UI_UpdateScreen 0 0
 export UI_Refresh
 proc UI_Refresh 20 20
-line 1183
-;1176:
-;1177:/*
-;1178:=================
-;1179:UI_Refresh
+line 1185
+;1178:
+;1179:/*
 ;1180:=================
-;1181:*/
-;1182:void UI_Refresh( int realtime )
-;1183:{
-line 1184
-;1184:	uis.frametime = realtime - uis.realtime;
+;1181:UI_Refresh
+;1182:=================
+;1183:*/
+;1184:void UI_Refresh( int realtime )
+;1185:{
+line 1186
+;1186:	uis.frametime = realtime - uis.realtime;
 ADDRGP4 uis
 ADDRFP4 0
 INDIRI4
@@ -5933,15 +5935,15 @@ ADDRGP4 uis+4
 INDIRI4
 SUBI4
 ASGNI4
-line 1185
-;1185:	uis.realtime  = realtime;
+line 1187
+;1187:	uis.realtime  = realtime;
 ADDRGP4 uis+4
 ADDRFP4 0
 INDIRI4
 ASGNI4
-line 1187
-;1186:
-;1187:	if ( !( trap_Key_GetCatcher() & KEYCATCH_UI ) ) {
+line 1189
+;1188:
+;1189:	if ( !( trap_Key_GetCatcher() & KEYCATCH_UI ) ) {
 ADDRLP4 0
 ADDRGP4 trap_Key_GetCatcher
 CALLI4
@@ -5952,30 +5954,30 @@ CNSTI4 2
 BANDI4
 CNSTI4 0
 NEI4 $477
-line 1188
-;1188:		return;
+line 1190
+;1190:		return;
 ADDRGP4 $474
 JUMPV
 LABELV $477
-line 1191
-;1189:	}
-;1190:
-;1191:	UI_UpdateCvars();
+line 1193
+;1191:	}
+;1192:
+;1193:	UI_UpdateCvars();
 ADDRGP4 UI_UpdateCvars
 CALLV
 pop
-line 1193
-;1192:
-;1193:	if ( uis.activemenu )
+line 1195
+;1194:
+;1195:	if ( uis.activemenu )
 ADDRGP4 uis+20
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $479
-line 1194
-;1194:	{
-line 1195
-;1195:		if (uis.activemenu->fullscreen)
+line 1196
+;1196:	{
+line 1197
+;1197:		if (uis.activemenu->fullscreen)
 ADDRGP4 uis+20
 INDIRP4
 CNSTI4 280
@@ -5983,11 +5985,11 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $482
-line 1196
-;1196:		{
 line 1198
-;1197:			// draw the background
-;1198:			if( uis.activemenu->showlogo ) {
+;1198:		{
+line 1200
+;1199:			// draw the background
+;1200:			if( uis.activemenu->showlogo ) {
 ADDRGP4 uis+20
 INDIRP4
 CNSTI4 284
@@ -5995,8 +5997,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $485
-line 1199
-;1199:				UI_DrawHandlePic( 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, uis.menuBackShader );
+line 1201
+;1201:				UI_DrawHandlePic( 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, uis.menuBackShader );
 ADDRLP4 4
 CNSTF4 0
 ASGNF4
@@ -6016,15 +6018,15 @@ ARGI4
 ADDRGP4 UI_DrawHandlePic
 CALLV
 pop
-line 1200
-;1200:			}
+line 1202
+;1202:			}
 ADDRGP4 $486
 JUMPV
 LABELV $485
-line 1201
-;1201:			else {
-line 1202
-;1202:				UI_DrawHandlePic( 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, uis.menuBackNoLogoShader );
+line 1203
+;1203:			else {
+line 1204
+;1204:				UI_DrawHandlePic( 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, uis.menuBackNoLogoShader );
 ADDRLP4 4
 CNSTF4 0
 ASGNF4
@@ -6044,15 +6046,15 @@ ARGI4
 ADDRGP4 UI_DrawHandlePic
 CALLV
 pop
-line 1203
-;1203:			}
+line 1205
+;1205:			}
 LABELV $486
-line 1204
-;1204:		}
-LABELV $482
 line 1206
-;1205:
-;1206:		if (uis.activemenu->draw)
+;1206:		}
+LABELV $482
+line 1208
+;1207:
+;1208:		if (uis.activemenu->draw)
 ADDRGP4 uis+20
 INDIRP4
 CNSTI4 268
@@ -6061,8 +6063,8 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $490
-line 1207
-;1207:			uis.activemenu->draw();
+line 1209
+;1209:			uis.activemenu->draw();
 ADDRGP4 uis+20
 INDIRP4
 CNSTI4 268
@@ -6073,9 +6075,9 @@ pop
 ADDRGP4 $491
 JUMPV
 LABELV $490
-line 1209
-;1208:		else
-;1209:			Menu_Draw( uis.activemenu );
+line 1211
+;1210:		else
+;1211:			Menu_Draw( uis.activemenu );
 ADDRGP4 uis+20
 INDIRP4
 ARGP4
@@ -6083,15 +6085,15 @@ ADDRGP4 Menu_Draw
 CALLV
 pop
 LABELV $491
-line 1211
-;1210:
-;1211:		if( uis.firstdraw ) {
+line 1213
+;1212:
+;1213:		if( uis.firstdraw ) {
 ADDRGP4 uis+11444
 INDIRI4
 CNSTI4 0
 EQI4 $495
-line 1212
-;1212:			UI_MouseEvent( 0, 0 );
+line 1214
+;1214:			UI_MouseEvent( 0, 0 );
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
@@ -6104,28 +6106,28 @@ ARGI4
 ADDRGP4 UI_MouseEvent
 CALLV
 pop
-line 1213
-;1213:			uis.firstdraw = qfalse;
+line 1215
+;1215:			uis.firstdraw = qfalse;
 ADDRGP4 uis+11444
 CNSTI4 0
 ASGNI4
-line 1214
-;1214:		}
+line 1216
+;1216:		}
 LABELV $495
-line 1215
-;1215:	}
+line 1217
+;1217:	}
 LABELV $479
-line 1218
-;1216:
-;1217:	// draw cursor
-;1218:	UI_SetColor( NULL );
+line 1220
+;1218:
+;1219:	// draw cursor
+;1220:	UI_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 UI_SetColor
 CALLV
 pop
-line 1219
-;1219:	UI_DrawHandlePic( uis.cursorx-16, uis.cursory-16, 32, 32, uis.cursor);
+line 1221
+;1221:	UI_DrawHandlePic( uis.cursorx-16, uis.cursory-16, 32, 32, uis.cursor);
 ADDRLP4 4
 CNSTI4 16
 ASGNI4
@@ -6158,19 +6160,19 @@ ARGI4
 ADDRGP4 UI_DrawHandlePic
 CALLV
 pop
-line 1222
-;1220:
-;1221:#ifndef NDEBUG
-;1222:	if (uis.debug)
+line 1224
+;1222:
+;1223:#ifndef NDEBUG
+;1224:	if (uis.debug)
 ADDRGP4 uis+11388
 INDIRI4
 CNSTI4 0
 EQI4 $502
-line 1223
-;1223:	{
 line 1225
-;1224:		// cursor coordinates
-;1225:		UI_DrawString( 0, 0, va("(%d,%d)",uis.cursorx,uis.cursory), UI_LEFT|UI_SMALLFONT, colorRed );
+;1225:	{
+line 1227
+;1226:		// cursor coordinates
+;1227:		UI_DrawString( 0, 0, va("(%d,%d)",uis.cursorx,uis.cursory), UI_LEFT|UI_SMALLFONT, colorRed );
 ADDRGP4 $505
 ARGP4
 ADDRGP4 uis+8
@@ -6202,24 +6204,24 @@ ARGP4
 ADDRGP4 UI_DrawString
 CALLV
 pop
-line 1226
-;1226:	}
+line 1228
+;1228:	}
 LABELV $502
-line 1232
-;1227:#endif
-;1228:
-;1229:	// delay playing the enter sound until after the
-;1230:	// menu has been drawn, to avoid delay while
-;1231:	// caching images
-;1232:	if (m_entersound)
+line 1234
+;1229:#endif
+;1230:
+;1231:	// delay playing the enter sound until after the
+;1232:	// menu has been drawn, to avoid delay while
+;1233:	// caching images
+;1234:	if (m_entersound)
 ADDRGP4 m_entersound
 INDIRI4
 CNSTI4 0
 EQI4 $508
-line 1233
-;1233:	{
-line 1234
-;1234:		trap_S_StartLocalSound( menu_in_sound, CHAN_LOCAL_SOUND );
+line 1235
+;1235:	{
+line 1236
+;1236:		trap_S_StartLocalSound( menu_in_sound, CHAN_LOCAL_SOUND );
 ADDRGP4 menu_in_sound
 INDIRI4
 ARGI4
@@ -6228,26 +6230,26 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 1235
-;1235:		m_entersound = qfalse;
+line 1237
+;1237:		m_entersound = qfalse;
 ADDRGP4 m_entersound
 CNSTI4 0
 ASGNI4
-line 1236
-;1236:	}
+line 1238
+;1238:	}
 LABELV $508
-line 1237
-;1237:}
+line 1239
+;1239:}
 LABELV $474
 endproc UI_Refresh 20 20
 export UI_DrawTextBox
 proc UI_DrawTextBox 24 20
-line 1240
-;1238:
-;1239:void UI_DrawTextBox (int x, int y, int width, int lines)
-;1240:{
-line 1241
-;1241:	UI_FillRect( x + BIGCHAR_WIDTH/2, y + BIGCHAR_HEIGHT/2, ( width + 1 ) * BIGCHAR_WIDTH, ( lines + 1 ) * BIGCHAR_HEIGHT, colorBlack );
+line 1242
+;1240:
+;1241:void UI_DrawTextBox (int x, int y, int width, int lines)
+;1242:{
+line 1243
+;1243:	UI_FillRect( x + BIGCHAR_WIDTH/2, y + BIGCHAR_HEIGHT/2, ( width + 1 ) * BIGCHAR_WIDTH, ( lines + 1 ) * BIGCHAR_HEIGHT, colorBlack );
 ADDRLP4 0
 CNSTI4 8
 ASGNI4
@@ -6296,8 +6298,8 @@ ARGP4
 ADDRGP4 UI_FillRect
 CALLV
 pop
-line 1242
-;1242:	UI_DrawRect( x + BIGCHAR_WIDTH/2, y + BIGCHAR_HEIGHT/2, ( width + 1 ) * BIGCHAR_WIDTH, ( lines + 1 ) * BIGCHAR_HEIGHT, colorWhite );
+line 1244
+;1244:	UI_DrawRect( x + BIGCHAR_WIDTH/2, y + BIGCHAR_HEIGHT/2, ( width + 1 ) * BIGCHAR_WIDTH, ( lines + 1 ) * BIGCHAR_HEIGHT, colorWhite );
 ADDRLP4 12
 CNSTI4 8
 ASGNI4
@@ -6346,18 +6348,18 @@ ARGP4
 ADDRGP4 UI_DrawRect
 CALLV
 pop
-line 1243
-;1243:}
+line 1245
+;1245:}
 LABELV $510
 endproc UI_DrawTextBox 24 20
 export UI_CursorInRect
 proc UI_CursorInRect 8 0
-line 1246
-;1244:
-;1245:qboolean UI_CursorInRect (int x, int y, int width, int height)
-;1246:{
-line 1247
-;1247:	if (uis.cursorx < x ||
+line 1248
+;1246:
+;1247:qboolean UI_CursorInRect (int x, int y, int width, int height)
+;1248:{
+line 1249
+;1249:	if (uis.cursorx < x ||
 ADDRLP4 0
 ADDRFP4 0
 INDIRI4
@@ -6393,19 +6395,19 @@ INDIRI4
 ADDI4
 LEI4 $512
 LABELV $520
-line 1251
-;1248:		uis.cursory < y ||
-;1249:		uis.cursorx > x+width ||
-;1250:		uis.cursory > y+height)
-;1251:		return qfalse;
+line 1253
+;1250:		uis.cursory < y ||
+;1251:		uis.cursorx > x+width ||
+;1252:		uis.cursory > y+height)
+;1253:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $511
 JUMPV
 LABELV $512
-line 1253
-;1252:
-;1253:	return qtrue;
+line 1255
+;1254:
+;1255:	return qtrue;
 CNSTI4 1
 RETI4
 LABELV $511

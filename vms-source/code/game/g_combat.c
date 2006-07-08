@@ -469,27 +469,10 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	int			tmpW;
 	int			tmpCnt;
 	static		int deathNum;
-	gentity_t	*xte;
+	//gentity_t	*xte;
 
 
-	// Shafe - Trep is it first strike?  
-	// In arsenal you can join until the first kill has been made
-	if ( level.warmupTime ) 
-	{
-		level.firstStrike = qfalse;
-		level.OneSurvivor = qfalse;
-		level.lastClient = -1;
 
-	} 
-	else
-	{
-		if (level.firstStrike == qfalse)
-		{
-		level.firstStrike = qtrue;
-		BroadCastSound("sound/misc/laff02.wav");
-		trap_SendServerCommand( -1, va("print \"%s Made First Strike!\n\"",attacker->client->pers.netname));
-		}
-	}
 
 
 	if ( self->client->ps.pm_type == PM_DEAD ) {
@@ -647,12 +630,18 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 #endif
 
 			// Shafe - Trep - Arsenal Stuff
-		if ( g_Arsenal.integer != 0 && meansOfDeath != MOD_TELEFRAG && level.firstStrike == qtrue) 
+		if ( g_Arsenal.integer != 0 && meansOfDeath != MOD_TELEFRAG && !level.warmupTime) 
 		{
 			tmpW = self->s.weapon;
 			
 			//G_Printf( S_COLOR_GREEN "DEBUG: Weapon You Held by %s was %i\n", self->client->pers.netname, tmpW );
-			
+			if (level.firstStrike == qfalse)
+			{
+				level.firstStrike = qtrue;
+				BroadCastSound("sound/misc/laff02.wav");
+				trap_SendServerCommand( -1, va("print \"%s Made First Strike!\n\"",attacker->client->pers.netname));
+			}
+
 			if (tmpW == 9) { self->client->pers.h_bfg = qfalse;  }
 			if (tmpW == 8) { self->client->pers.h_plasma = qfalse;}
 			if (tmpW == 7) { self->client->pers.h_gauss = qfalse; }
@@ -671,6 +660,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 				// Send them to Spec
 				self->client->pers.Eliminated = qtrue;
+				self->client->pers.TrueScore = self->client->ps.persistant[PERS_SCORE];
 				SetTeam(self, "s");
 
 
@@ -707,71 +697,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 					if (tmpCnt == 1) 
 					{
 						BroadCastSound("sound/misc/laff01.wav");
-						// Win The Game
-						/*
-						trap_SendServerCommand( -1, "print \"::: ^9WINNER BONUSES :::\n\"");	
-						trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", attacker->client->pers.netname) );
-						attacker->client->ps.persistant[PERS_SCORE]+=20;
-						trap_SendServerCommand( -1, "print \"^9Survivor Bonus: ^3+20\n\"");	
-						
-						if (attacker->client->pers.h_bfg) 
-						{ 
-							attacker->client->ps.persistant[PERS_SCORE]+=1; 
-							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: BFG: ^3+1\n\"");	
-						}
-						
-						if (attacker->client->pers.h_plasma) 
-						{ 
-							attacker->client->ps.persistant[PERS_SCORE]+=2; 
-							trap_SendServerCommand( -1, "print \"^Arsenal Contents: Particle Distruptor: ^3+2\n\"");	
-						}
-						
-						if (attacker->client->pers.h_gauss) 
-						{ 
-							attacker->client->ps.persistant[PERS_SCORE]+=3; 
-							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: M42 Gauss Rifle: ^3+3\n\"");	
-						}
-						
-						if (attacker->client->pers.h_flame) 
-						{ 
-							attacker->client->ps.persistant[PERS_SCORE]+=4; 
-							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Flame Thrower: ^3+4\n\"");	
-						}
-						if (attacker->client->pers.h_singcan) 
-						{ 
-							attacker->client->ps.persistant[PERS_SCORE]+=8; 
-							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Singularity Cannon: ^3+8\n\"");	
-						}
-						
-						if (attacker->client->pers.h_gauntlet) 
-						{ 
-							attacker->client->ps.persistant[PERS_SCORE]+=10; 
-							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Gauntlet: ^3+10\n\"");	
-						}
-
-						if (attacker->client->pers.h_grenade) 
-						{ 
-							attacker->client->ps.persistant[PERS_SCORE]+=9; 
-							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Grenade Launcher: ^3+9\n\"");	
-						}
-
-						if (attacker->client->pers.h_sg) 
-						{ 
-							attacker->client->ps.persistant[PERS_SCORE]+=5; 
-							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Shotgun: ^3+5\n\"");	
-						}
-
-						if (attacker->client->pers.h_mg) 
-						{ 
-							attacker->client->ps.persistant[PERS_SCORE]+=6; 
-							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Assault Rifle: ^3+6\n\"");	
-						}
-				
-						
-						
-						LogExit( "Fraglimit hit." );
-						BroadCastSound("sound/misc/laff01.wav");
-						*/
+					
 
 						////////////////
 					}			
@@ -890,6 +816,8 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	}
 
 	
+
+
 	trap_LinkEntity (self);
 
 }
