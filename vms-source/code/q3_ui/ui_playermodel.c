@@ -424,6 +424,52 @@ static void PlayerModel_BuildList( void )
 
 	//APSFIXME - Degenerate no models case
 
+
+	// iterate directory of all player models
+	numdirs = trap_FS_GetFileList("models/players2", "/", dirlist, 2048 );
+	dirptr  = dirlist;
+	for (i=0; i<numdirs && s_playermodel.nummodels < MAX_PLAYERMODELS; i++,dirptr+=dirlen+1)
+	{
+		dirlen = strlen(dirptr);
+		
+		if (dirlen && dirptr[dirlen-1]=='/') dirptr[dirlen-1]='\0';
+
+		if (!strcmp(dirptr,".") || !strcmp(dirptr,".."))
+			continue;
+			
+		// iterate all skin files in directory
+		numfiles = trap_FS_GetFileList( va("models/players2/%s",dirptr), "tga", filelist, 2048 );
+		fileptr  = filelist;
+		for (j=0; j<numfiles && s_playermodel.nummodels < MAX_PLAYERMODELS;j++,fileptr+=filelen+1)
+		{
+			filelen = strlen(fileptr);
+
+			COM_StripExtension(fileptr,skinname);
+
+			// look for icon_????
+			if (!Q_stricmpn(skinname,"icon_",5))
+			{
+				Com_sprintf( s_playermodel.modelnames[s_playermodel.nummodels++],
+					sizeof( s_playermodel.modelnames[s_playermodel.nummodels] ),
+					"models/players/%s/%s", dirptr, skinname );
+				//if (s_playermodel.nummodels >= MAX_PLAYERMODELS)
+				//	return;
+			}
+
+			if( precache ) {
+				trap_S_RegisterSound( va( "sound/player/announce/%s_wins.wav", skinname), qfalse );
+			}
+		}
+	}	
+
+	//APSFIXME - Degenerate no models case
+
+
+
+
+
+
+
 	s_playermodel.numpages = s_playermodel.nummodels/MAX_MODELSPERPAGE;
 	if (s_playermodel.nummodels % MAX_MODELSPERPAGE)
 		s_playermodel.numpages++;

@@ -3,6 +3,8 @@
 
 #include "g_local.h"
 
+extern void BroadCastSound(char *path);
+
 level_locals_t	level;
 
 typedef struct {
@@ -396,6 +398,28 @@ int CountSurvivors ( void )
 return tmpCnt;
 }
 
+
+int CountEliminated ( void )
+{
+		int			tmpCnt;
+		int			i;
+		gclient_t	*cl;
+
+			tmpCnt = 0;
+			for ( i = 0; i < level.maxclients; i++ )
+			{
+				cl = &level.clients[i];
+
+				if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qtrue && cl->sess.sessionTeam == TEAM_SPECTATOR)
+				{
+					tmpCnt++;
+				
+				}
+			}
+
+return tmpCnt;
+}
+
 /*
 ================
 G_InitModRules
@@ -622,6 +646,8 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	// Shafe - Trep
 	G_InitModRules();
 
+	level.firstStrike = qfalse;
+
 }
 
 
@@ -640,6 +666,7 @@ void G_ShutdownGame( int restart ) {
 		trap_FS_FCloseFile( level.logFile );
 	}
 
+	level.firstStrike = qfalse;
 	// write all the client session data so we can get it back
 	G_WriteSessionData();
 
@@ -735,7 +762,7 @@ void AddTournamentPlayer( void ) {
 	}
 
 	level.warmupTime = -1;
-
+	level.firstStrike = qfalse;
 	// set them to free-for-all team
 	SetTeam( &g_entities[ nextInLine - level.clients ], "f" );
 }
@@ -1247,6 +1274,19 @@ void LogExit( const char *string ) {
 	// that will get cut off when the queued intermission starts
 	trap_SetConfigstring( CS_INTERMISSION, "1" );
 
+	// Lets give spectators back their score for arsenal & lms
+	for ( i = 0; i < level.maxclients; i++ )
+	{
+		cl = &level.clients[i];
+		//survivor = &level.clients[i];
+		if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qtrue && cl->sess.sessionTeam == TEAM_SPECTATOR)
+		{	
+			cl->ps.persistant[PERS_SCORE] == cl->pers.TrueScore;
+		}
+
+	}
+	i=0;
+
 	// don't send more than 32 scores (FIXME?)
 	numSorted = level.numConnectedClients;
 	if ( numSorted > 32 ) {
@@ -1263,9 +1303,15 @@ void LogExit( const char *string ) {
 
 		cl = &level.clients[level.sortedClients[i]];
 
-		if ( cl->sess.sessionTeam == TEAM_SPECTATOR ) {
-			continue;
+		if (g_Arsenal.integer != 1) 
+		{
+
+			if ( cl->sess.sessionTeam == TEAM_SPECTATOR ) {
+				continue;
+			}
 		}
+
+
 		if ( cl->pers.connected == CON_CONNECTING ) {
 			continue;
 		}
@@ -1469,6 +1515,15 @@ void CheckExitRules( void ) {
 	{
 		gclient_t		*survivor = NULL;		
 		int				tmpCnt;
+		int				tmpCnt2;
+		
+		// Dont end it just because there is only one person on the server
+		//tmpCnt2 = CountEliminated();
+		//tmpCnt = CountSurvivors();
+		//if ((tmpCnt < 2) && (tmpCnt2 == 0)) { return;}
+		if (level.warmupTime) { return; }
+		
+		tmpCnt = 0;
 		tmpCnt = CountSurvivors();
 
 			
@@ -1484,9 +1539,6 @@ void CheckExitRules( void ) {
 					// Dont do this on warmup or before everyone spawns
 					if ((!level.warmupTime) && (level.time > level.startTime+5000)) 
 					{
-						char	*s;
-						//G_SpawnString( "music", "music/voy1part2.mp3", &s );
-						//trap_SetConfigstring( CS_MUSIC, s );
 						level.StopItemRespawn = qtrue;
 						trap_SendServerCommand( -1, va("cp \"^9Showdown!\n\"") );
 					
@@ -1522,8 +1574,6 @@ void CheckExitRules( void ) {
 						///////////////////////////////////
 					}
 
-
-
 				}
 			}  
 			else
@@ -1557,6 +1607,9 @@ void CheckExitRules( void ) {
 					}
 
 				}
+
+			
+
 				//survivor = &level.clients[p];
 			// We dont have a survivor yet.. Something isnt right
 				G_Printf( S_COLOR_GREEN "DEBUG: Survivors %s %i\n", survivor->pers.netname, tmpCnt);
@@ -1571,7 +1624,7 @@ void CheckExitRules( void ) {
 					if (survivor->pers.h_bfg) 
 					{ 
 						survivor->ps.persistant[PERS_SCORE]+=1; 
-						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: BFG: ^3+1\n\"");	
+						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Devastator: ^3+1\n\"");	
 					}
 					
 					if (survivor->pers.h_plasma) 
@@ -1621,6 +1674,7 @@ void CheckExitRules( void ) {
 						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Machine Gun: ^3+6\n\"");	
 					}
 			
+
 			LogExit( "Fraglimit hit." );
 			//CalculateRanks();
 			return;
@@ -1745,6 +1799,7 @@ void CheckTournament( void ) {
 			if ( level.warmupTime != -1 ) {
 				level.warmupTime = -1;
 				trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
+				level.firstStrike = qfalse;
 				G_LogPrintf( "Warmup:\n" );
 			}
 			return;
@@ -1758,6 +1813,7 @@ void CheckTournament( void ) {
 		if ( g_warmup.modificationCount != level.warmupModificationCount ) {
 			level.warmupModificationCount = g_warmup.modificationCount;
 			level.warmupTime = -1;
+			level.firstStrike = qfalse;
 		}
 
 		// if all players have arrived, start the countdown
@@ -1773,10 +1829,11 @@ void CheckTournament( void ) {
 		// if the warmup time has counted down, restart
 		if ( level.time > level.warmupTime ) {
 			level.warmupTime += 10000;
+			level.firstStrike = qfalse;
 			trap_Cvar_Set( "g_restarted", "1" );
 			trap_SendConsoleCommand( EXEC_APPEND, "map_restart 0\n" );
 			level.restarted = qtrue;
-			level.firstStrike = qfalse;
+
 			return;
 		}
 	} else if ( g_gametype.integer != GT_SINGLE_PLAYER && level.warmupTime != 0 ) {
@@ -1797,6 +1854,7 @@ void CheckTournament( void ) {
 		if ( notEnough ) {
 			if ( level.warmupTime != -1 ) {
 				level.warmupTime = -1;
+				level.firstStrike = qfalse;
 				trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
 				G_LogPrintf( "Warmup:\n" );
 			}
@@ -1811,6 +1869,7 @@ void CheckTournament( void ) {
 		if ( g_warmup.modificationCount != level.warmupModificationCount ) {
 			level.warmupModificationCount = g_warmup.modificationCount;
 			level.warmupTime = -1;
+			level.firstStrike = qfalse;
 		}
 
 		// if all players have arrived, start the countdown
@@ -1825,9 +1884,10 @@ void CheckTournament( void ) {
 		if ( level.time > level.warmupTime ) {
 			level.warmupTime += 10000;
 			trap_Cvar_Set( "g_restarted", "1" );
+			level.firstStrike = qfalse;
 			trap_SendConsoleCommand( EXEC_APPEND, "map_restart 0\n" );
 			level.restarted = qtrue;
-			level.firstStrike = qfalse;
+
 			return;
 		}
 	}

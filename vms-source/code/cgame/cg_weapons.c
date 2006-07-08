@@ -859,11 +859,23 @@ void CG_RegisterWeapon( int weaponNum ) {
 
 	case WP_BFG:
 		weaponInfo->readySound = trap_S_RegisterSound( "sound/weapons/bfg/bfg_hum.wav", qfalse );
+		
+		// Devastator
+		weaponInfo->missileTrailFunc = CG_GrenadeTrail;
+		weaponInfo->wiTrailTime = 900;
+		weaponInfo->trailRadius = 90;
+		
 		MAKERGB( weaponInfo->flashDlightColor, 1, 0.7f, 1 );
 		weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/bfg/bfg_fire.wav", qfalse );
 		cgs.media.bfgExplosionShader = trap_R_RegisterShader( "bfgExplosion" );
+		//cgs.media.bfgExplosionShader = trap_R_RegisterShader( "grenadeExplosion" );
 		weaponInfo->missileModel = trap_R_RegisterModel( "models/weaphits/bfg.md3" );
 		weaponInfo->missileSound = trap_S_RegisterSound( "sound/weapons/rocket/rockfly.wav", qfalse );
+		
+
+
+		
+
 		break;
 
 	 default:
@@ -2014,11 +2026,25 @@ void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, im
 		break;
 	case WP_BFG:
 		mod = cgs.media.dishFlashModel;
-		shader = cgs.media.bfgExplosionShader;
+		//shader = cgs.media.bfgExplosionShader;
+		shader = cgs.media.grenadeExplosionShader;
 		sfx = cgs.media.sfx_rockexp;
 		mark = cgs.media.burnMarkShader;
-		radius = 32;
+		radius = 200;
+		light = 400;
 		isSprite = qtrue;
+		duration = 1500;
+		lightColor[0] = 1;
+		lightColor[1] = 0.75;
+		lightColor[2] = 0.0;
+		//if (cg_oldRocket.integer == 0) {
+			// explosion sprite animation
+			VectorMA( origin, 24, dir, sprOrg );
+			VectorScale( dir, 64, sprVel );
+
+			CG_ParticleExplosion( "explode1", sprOrg, sprVel, 2000, 20, 430 );
+		//}
+		
 		break;
 	case WP_SHOTGUN:
 		mod = cgs.media.bulletFlashModel;

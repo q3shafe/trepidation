@@ -449,8 +449,9 @@ void G_RunMissile( gentity_t *ent ) {
 	trace_t		tr;
 	int			passent;
 
-	// get current position
+	
 	BG_EvaluateTrajectory( &ent->s.pos, level.time, origin );
+
 
 	// if this missile bounced off an invulnerability sphere
 	if ( ent->target_ent ) {
@@ -708,7 +709,7 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) 
 	
 	if (alt == qfalse ) 
 	{
-		bolt->methodOfDeath = MOD_LIGHTNING;
+		bolt->methodOfDeath = MOD_ALTFLAMER;
 		bolt->damage = 70;
 		bolt->splashDamage = 55;
 		bolt->splashRadius = 55;
@@ -720,7 +721,7 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) 
 		bolt->splashRadius = 45;
 	}
 
-	bolt->splashMethodOfDeath = MOD_PLASMA_SPLASH;
+	bolt->splashMethodOfDeath = MOD_ALTFLAMER;
 	bolt->clipmask = MASK_SHOT;
 
 	bolt->s.pos.trType = TR_LINEAR;
@@ -732,139 +733,6 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) 
 	VectorCopy (start, bolt->r.currentOrigin);
 
 return bolt;
-}
-
-
-/*
-=================
-fire_altgrenade
-Shafe - Trep - Sticky Grenades for Alt
-=================
-*/
-gentity_t *fire_altgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
-	gentity_t	*bolt;
-
-	VectorNormalize (dir);
-
-	bolt = G_Spawn();
-	bolt->classname = "grenade";
-	bolt->nextthink = level.time + 2500;
-	bolt->think = G_ExplodeMissile;
-	bolt->s.eType = ET_MISSILE;
-	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
-	bolt->s.weapon = WP_GRENADE_LAUNCHER;
-//	bolt->s.eFlags = EF_BOUNCE_HALF;  // Simple Change
-	bolt->r.ownerNum = self->s.number;
-//unlagged - projectile nudge
-	// we'll need this for nudging projectiles later
-	bolt->s.otherEntityNum = self->s.number;
-//unlagged - projectile nudge
-	bolt->parent = self;
-	bolt->damage = 100;
-	bolt->splashDamage = 100;
-	bolt->splashRadius = 150;
-	bolt->methodOfDeath = MOD_GRENADE;
-	bolt->splashMethodOfDeath = MOD_GRENADE_SPLASH;
-	bolt->clipmask = MASK_SHOT;
-	bolt->target_ent = NULL;
-
-	bolt->s.pos.trType = TR_GRAVITY;
-	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
-	VectorCopy( start, bolt->s.pos.trBase );
-	VectorScale( dir, 700, bolt->s.pos.trDelta );
-	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
-
-	VectorCopy (start, bolt->r.currentOrigin);
-
-	return bolt;
-}
-
-//=============================================================================
-
-
-/*
-=================
-fire_bfg
-=================
-*/
-gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir) {
-	gentity_t	*bolt;
-
-	VectorNormalize (dir);
-
-	bolt = G_Spawn();
-	bolt->classname = "bfg";
-	bolt->nextthink = level.time + 10000;
-	bolt->think = G_ExplodeMissile;
-	bolt->s.eType = ET_MISSILE;
-	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
-	bolt->s.weapon = WP_BFG;
-	bolt->r.ownerNum = self->s.number;
-//unlagged - projectile nudge
-	// we'll need this for nudging projectiles later
-	bolt->s.otherEntityNum = self->s.number;
-//unlagged - projectile nudge
-	bolt->parent = self;
-	bolt->damage = 100;
-	bolt->splashDamage = 100;
-	bolt->splashRadius = 120;
-	bolt->methodOfDeath = MOD_BFG;
-	bolt->splashMethodOfDeath = MOD_BFG_SPLASH;
-	bolt->clipmask = MASK_SHOT;
-	bolt->target_ent = NULL;
-
-	bolt->s.pos.trType = TR_LINEAR;
-	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
-	VectorCopy( start, bolt->s.pos.trBase );
-	VectorScale( dir, 2000, bolt->s.pos.trDelta );
-	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
-	VectorCopy (start, bolt->r.currentOrigin);
-
-	return bolt;
-}
-
-//=============================================================================
-
-
-/*
-=================
-fire_rocket
-=================
-*/
-gentity_t *fire_rocket (gentity_t *self, vec3_t start, vec3_t dir) {
-	gentity_t	*bolt;
-
-	VectorNormalize (dir);
-
-	bolt = G_Spawn();
-	bolt->classname = "rocket";
-	bolt->nextthink = level.time + 15000;
-	bolt->think = G_ExplodeMissile;
-	bolt->s.eType = ET_MISSILE;
-	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
-	bolt->s.weapon = WP_ROCKET_LAUNCHER;
-	bolt->r.ownerNum = self->s.number;
-//unlagged - projectile nudge
-	// we'll need this for nudging projectiles later
-	bolt->s.otherEntityNum = self->s.number;
-//unlagged - projectile nudge
-	bolt->parent = self;
-	bolt->damage = 100;
-	bolt->splashDamage = 100;
-	bolt->splashRadius = 120;
-	bolt->methodOfDeath = MOD_ROCKET;
-	bolt->splashMethodOfDeath = MOD_ROCKET_SPLASH;
-	bolt->clipmask = MASK_SHOT;
-	bolt->target_ent = NULL;
-
-	bolt->s.pos.trType = TR_LINEAR;
-	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
-	VectorCopy( start, bolt->s.pos.trBase );
-	VectorScale( dir, 900, bolt->s.pos.trDelta );
-	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
-	VectorCopy (start, bolt->r.currentOrigin);
-
-	return bolt;
 }
 
 
@@ -935,6 +803,172 @@ void G_HomingMissile( gentity_t *ent )
 	}
 }
 
+
+
+
+/*
+=================
+fire_altgrenade
+Shafe - Trep - Sticky Grenades for Alt
+=================
+*/
+gentity_t *fire_altgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
+	gentity_t	*bolt;
+
+	VectorNormalize (dir);
+
+	bolt = G_Spawn();
+	bolt->classname = "grenade";
+	bolt->nextthink = level.time + 2500;
+	bolt->think = G_ExplodeMissile;
+	bolt->s.eType = ET_MISSILE;
+	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+	bolt->s.weapon = WP_GRENADE_LAUNCHER;
+//	bolt->s.eFlags = EF_BOUNCE_HALF;  // Simple Change
+	bolt->r.ownerNum = self->s.number;
+//unlagged - projectile nudge
+	// we'll need this for nudging projectiles later
+	bolt->s.otherEntityNum = self->s.number;
+//unlagged - projectile nudge
+	bolt->parent = self;
+	bolt->damage = 100;
+	bolt->splashDamage = 100;
+	bolt->splashRadius = 150;
+	bolt->methodOfDeath = MOD_GRENADE;
+	bolt->splashMethodOfDeath = MOD_GRENADE_SPLASH;
+	bolt->clipmask = MASK_SHOT;
+	bolt->target_ent = NULL;
+
+	bolt->s.pos.trType = TR_GRAVITY;
+	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+	VectorCopy( start, bolt->s.pos.trBase );
+	VectorScale( dir, 700, bolt->s.pos.trDelta );
+	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
+
+	VectorCopy (start, bolt->r.currentOrigin);
+
+	return bolt;
+}
+
+//=============================================================================
+
+
+/*
+=================
+fire_bfg
+=================
+*/
+gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir) {
+	gentity_t	*bolt;
+
+	VectorNormalize (dir);
+
+	bolt = G_Spawn();
+	bolt->classname = "bfg";
+	/*
+	bolt->nextthink = level.time + 1000; 
+	bolt->think = G_ExplodeMissile;
+	bolt->s.eType = ET_MISSILE;
+	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+	bolt->s.weapon = WP_BFG;
+	bolt->r.ownerNum = self->s.number;
+//unlagged - projectile nudge
+	// we'll need this for nudging projectiles later
+	bolt->s.otherEntityNum = self->s.number;
+//unlagged - projectile nudge
+	bolt->parent = self;
+	bolt->damage = 100;
+	bolt->splashDamage = 100;
+	bolt->splashRadius = 120;
+	bolt->methodOfDeath = MOD_BFG;
+	bolt->splashMethodOfDeath = MOD_BFG_SPLASH;
+	bolt->clipmask = MASK_SHOT;
+	bolt->target_ent = NULL;
+
+	//bolt->s.pos.trType = TR_GRAVITY;
+	bolt->s.pos.trType = TR_LINEAR;
+	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+	VectorCopy( start, bolt->s.pos.trBase );
+	VectorScale( dir, 2000, bolt->s.pos.trDelta ); //		was 2000
+	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
+	VectorCopy (start, bolt->r.currentOrigin);
+	return bolt;
+	*/
+	bolt->nextthink = level.time + 20;
+	bolt->think = G_HomingMissile;
+	bolt->s.eType = ET_MISSILE;
+	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+	bolt->s.weapon = WP_BFG;
+	bolt->r.ownerNum = self->s.number;
+//unlagged - projectile nudge
+	// we'll need this for nudging projectiles later
+	bolt->s.otherEntityNum = self->s.number;
+//unlagged - projectile nudge
+	bolt->parent = self;
+	bolt->damage = 500;
+	bolt->splashDamage = 300;
+	bolt->splashRadius = 420;
+	bolt->methodOfDeath = MOD_BFG;
+	bolt->splashMethodOfDeath = MOD_BFG_SPLASH;
+	bolt->clipmask = MASK_SHOT;
+	bolt->target_ent = NULL;
+
+		bolt->s.pos.trType = TR_ORBITAL;
+	
+	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+	VectorCopy( start, bolt->s.pos.trBase );
+	VectorScale( dir, 300, bolt->s.pos.trDelta );
+	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
+	VectorCopy (start, bolt->r.currentOrigin);
+
+	return bolt;
+
+
+}
+
+//=============================================================================
+
+
+/*
+=================
+fire_rocket
+=================
+*/
+gentity_t *fire_rocket (gentity_t *self, vec3_t start, vec3_t dir) {
+	gentity_t	*bolt;
+
+	VectorNormalize (dir);
+
+	bolt = G_Spawn();
+	bolt->classname = "rocket";
+	bolt->nextthink = level.time + 15000;
+	bolt->think = G_ExplodeMissile;
+	bolt->s.eType = ET_MISSILE;
+	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+	bolt->s.weapon = WP_ROCKET_LAUNCHER;
+	bolt->r.ownerNum = self->s.number;
+//unlagged - projectile nudge
+	// we'll need this for nudging projectiles later
+	bolt->s.otherEntityNum = self->s.number;
+//unlagged - projectile nudge
+	bolt->parent = self;
+	bolt->damage = 100;
+	bolt->splashDamage = 100;
+	bolt->splashRadius = 120;
+	bolt->methodOfDeath = MOD_ROCKET;
+	bolt->splashMethodOfDeath = MOD_ROCKET_SPLASH;
+	bolt->clipmask = MASK_SHOT;
+	bolt->target_ent = NULL;
+
+	bolt->s.pos.trType = TR_LINEAR;
+	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+	VectorCopy( start, bolt->s.pos.trBase );
+	VectorScale( dir, 900, bolt->s.pos.trDelta );
+	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
+	VectorCopy (start, bolt->r.currentOrigin);
+
+	return bolt;
+}
 
 
 /*

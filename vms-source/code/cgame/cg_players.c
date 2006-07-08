@@ -509,14 +509,25 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 	else {
 		headName = headModelName;
 	}
+	
 	Com_sprintf( filename, sizeof( filename ), "models/players/%s/lower.md3", modelName );
 	ci->legsModel = trap_R_RegisterModel( filename );
 	if ( !ci->legsModel ) {
 		Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/lower.md3", modelName );
 		ci->legsModel = trap_R_RegisterModel( filename );
 		if ( !ci->legsModel ) {
-			Com_Printf( "Failed to load model file %s\n", filename );
-			return qfalse;
+			// Now Try Md4/MDr format Shafe - Trep 
+			Com_sprintf( filename, sizeof( filename ), "models/players2/%s/lower.mdr", modelName );
+			ci->legsModel = trap_R_RegisterModel( filename );
+			if ( !ci->legsModel ) {
+				// Now Try Md3 in the players 2 folder format Shafe - Trep 
+				Com_sprintf( filename, sizeof( filename ), "models/players2/%s/lower.md3", modelName );
+				ci->legsModel = trap_R_RegisterModel( filename );
+				if ( !ci->legsModel ) {
+					Com_Printf( "Failed to load model file %s\n", filename );
+					return qfalse;
+				}
+			}
 		}
 	}
 
@@ -526,8 +537,17 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 		Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/upper.md3", modelName );
 		ci->torsoModel = trap_R_RegisterModel( filename );
 		if ( !ci->torsoModel ) {
-			Com_Printf( "Failed to load model file %s\n", filename );
-			return qfalse;
+			// Try MDR/MD4 Shafe - Trep
+			Com_sprintf( filename, sizeof( filename ), "models/players2/%s/upper.mdr", modelName );
+			ci->torsoModel = trap_R_RegisterModel( filename );
+			if ( !ci->torsoModel ) {
+				Com_sprintf( filename, sizeof( filename ), "models/players2/%s/upper.md3", modelName );
+				ci->torsoModel = trap_R_RegisterModel( filename );
+				if ( !ci->torsoModel ) {
+					Com_Printf( "Failed to load model file %s\n", filename );
+					return qfalse;
+				}		
+			}		
 		}
 	}
 
@@ -544,8 +564,20 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 		ci->headModel = trap_R_RegisterModel( filename );
 	}
 	if ( !ci->headModel ) {
-		Com_Printf( "Failed to load model file %s\n", filename );
-		return qfalse;
+		// Let's Try MD4 for the head.. // Shafe - Trep
+		Com_sprintf( filename, sizeof( filename ), "models/players2/%s/head.mdr", headName );
+		ci->headModel = trap_R_RegisterModel( filename );
+
+		if ( !ci->headModel ) {
+			Com_sprintf( filename, sizeof( filename ), "models/players2/%s/head.md3", headName );
+			ci->headModel = trap_R_RegisterModel( filename );
+
+			if ( !ci->headModel ) {
+			Com_Printf( "Failed to load model file %s\n", filename );
+			return qfalse;
+			}
+		
+		}
 	}
 
 	// if any skins failed to load, return failure

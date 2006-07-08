@@ -276,6 +276,11 @@ BFG
 void BFG_Fire ( gentity_t *ent ) {
 	gentity_t	*m;
 
+	forward[2] += 0.2f;
+	forward[2] += 0.2f;
+	VectorNormalize( forward );
+
+
 	m = fire_bfg (ent, muzzle, forward);
 	m->damage *= s_quadFactor;
 	m->splashDamage *= s_quadFactor;

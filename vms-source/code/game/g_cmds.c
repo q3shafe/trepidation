@@ -724,11 +724,14 @@ void Cmd_Team_f( gentity_t *ent ) {
 		return;
 	}
 
-	if ( ent->client->switchTeamTime > level.time ) {
+	if (( ent->client->switchTeamTime > level.time ) && (g_gametype.integer != GT_FFA)) 
+	{
+
 		trap_SendServerCommand( ent-g_entities, "print \"May not switch teams more than once per 5 seconds.\n\"" );
 		return;
 	}
 
+	/* This is the old way that had issues
 	if ((g_Arsenal.integer != 0) && (!level.warmupTime))
 	{
 				
@@ -742,6 +745,30 @@ void Cmd_Team_f( gentity_t *ent ) {
 
 		}
 	}
+	*/ 
+	if ((g_Arsenal.integer != 0) && (!level.warmupTime))
+	{
+				
+		if (ent->client->sess.sessionTeam == TEAM_SPECTATOR)
+		{
+			
+			if (ent->client->pers.Eliminated == qtrue) 
+			{
+				trap_SendServerCommand( ent-g_entities, "cp \"You Are Eliminated Until Next Round.\"" );
+				return;
+			}
+			if (level.firstStrike == qtrue)
+			{
+				trap_SendServerCommand( ent-g_entities, "cp \"You Must Wait Until Next Round To Join.\"" );
+				return;
+			}
+
+		}
+
+
+
+	}
+
 
 	
 

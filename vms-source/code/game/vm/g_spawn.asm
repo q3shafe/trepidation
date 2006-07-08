@@ -2390,7 +2390,12 @@ ADDRGP4 level+16
 CNSTI4 -1
 ASGNI4
 line 594
-;594:		trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
+;594:		level.firstStrike = qfalse;
+ADDRGP4 level+9228
+CNSTI4 0
+ASGNI4
+line 595
+;595:		trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
 ADDRGP4 $287
 ARGP4
 ADDRGP4 level+16
@@ -2408,53 +2413,53 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 596
-;595:
-;596:		G_LogPrintf( "Warmup:\n" );
-ADDRGP4 $314
+line 597
+;596:
+;597:		G_LogPrintf( "Warmup:\n" );
+ADDRGP4 $315
 ARGP4
 ADDRGP4 G_LogPrintf
 CALLV
 pop
-line 597
-;597:	}
+line 598
+;598:	}
 LABELV $309
 LABELV $302
-line 599
-;598:
-;599:}
+line 600
+;599:
+;600:}
 LABELV $280
 endproc SP_worldspawn 16 12
 export G_SpawnEntitiesFromString
 proc G_SpawnEntitiesFromString 8 4
-line 609
-;600:
+line 610
 ;601:
-;602:/*
-;603:==============
-;604:G_SpawnEntitiesFromString
-;605:
-;606:Parses textual entity definitions out of an entstring and spawns gentities.
-;607:==============
-;608:*/
-;609:void G_SpawnEntitiesFromString( void ) {
-line 611
-;610:	// allow calls to G_Spawn*()
-;611:	level.spawning = qtrue;
+;602:
+;603:/*
+;604:==============
+;605:G_SpawnEntitiesFromString
+;606:
+;607:Parses textual entity definitions out of an entstring and spawns gentities.
+;608:==============
+;609:*/
+;610:void G_SpawnEntitiesFromString( void ) {
+line 612
+;611:	// allow calls to G_Spawn*()
+;612:	level.spawning = qtrue;
 ADDRGP4 level+4508
 CNSTI4 1
 ASGNI4
-line 612
-;612:	level.numSpawnVars = 0;
+line 613
+;613:	level.numSpawnVars = 0;
 ADDRGP4 level+4512
 CNSTI4 0
 ASGNI4
-line 617
-;613:
-;614:	// the worldspawn is not an actual entity, but it still
-;615:	// has a "spawn" function to perform any global setup
-;616:	// needed by a level (setting configstrings or cvars, etc)
-;617:	if ( !G_ParseSpawnVars() ) {
+line 618
+;614:
+;615:	// the worldspawn is not an actual entity, but it still
+;616:	// has a "spawn" function to perform any global setup
+;617:	// needed by a level (setting configstrings or cvars, etc)
+;618:	if ( !G_ParseSpawnVars() ) {
 ADDRLP4 0
 ADDRGP4 G_ParseSpawnVars
 CALLI4
@@ -2462,38 +2467,38 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $318
-line 618
-;618:		G_Error( "SpawnEntities: no entities" );
-ADDRGP4 $320
+NEI4 $319
+line 619
+;619:		G_Error( "SpawnEntities: no entities" );
+ADDRGP4 $321
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 619
-;619:	}
-LABELV $318
 line 620
-;620:	SP_worldspawn();
+;620:	}
+LABELV $319
+line 621
+;621:	SP_worldspawn();
 ADDRGP4 SP_worldspawn
 CALLV
 pop
-ADDRGP4 $322
+ADDRGP4 $323
 JUMPV
-LABELV $321
-line 623
-;621:
-;622:	// parse ents
-;623:	while( G_ParseSpawnVars() ) {
+LABELV $322
 line 624
-;624:		G_SpawnGEntityFromSpawnVars();
+;622:
+;623:	// parse ents
+;624:	while( G_ParseSpawnVars() ) {
+line 625
+;625:		G_SpawnGEntityFromSpawnVars();
 ADDRGP4 G_SpawnGEntityFromSpawnVars
 CALLV
 pop
-line 625
-;625:	}	
-LABELV $322
-line 623
+line 626
+;626:	}	
+LABELV $323
+line 624
 ADDRLP4 4
 ADDRGP4 G_ParseSpawnVars
 CALLI4
@@ -2501,16 +2506,16 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $321
-line 627
-;626:
-;627:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
+NEI4 $322
+line 628
+;627:
+;628:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
 ADDRGP4 level+4508
 CNSTI4 0
 ASGNI4
-line 628
-;628:}
-LABELV $315
+line 629
+;629:}
+LABELV $316
 endproc G_SpawnEntitiesFromString 8 4
 import SP_team_CTF_bluespawn
 import SP_team_CTF_redspawn
@@ -3153,7 +3158,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $320
+LABELV $321
 byte 1 83
 byte 1 112
 byte 1 97
@@ -3182,7 +3187,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $314
+LABELV $315
 byte 1 87
 byte 1 97
 byte 1 114

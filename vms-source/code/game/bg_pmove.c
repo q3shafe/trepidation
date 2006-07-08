@@ -1513,7 +1513,7 @@ int		altAmmoUsage[WP_NUM_WEAPONS] =
 	1,				//flame thrower
 	4,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
 	12,				//plasma -  lets make this a lot until we get primary fire replaced
-	1,				//bfg
+	2,				//bfg
 	20,				//hmmmm... dunno what this one is
 
 
@@ -1758,8 +1758,8 @@ if (pm->cmd.buttons & 1) {
 		addTime = 1200; 
 		break; 
 	case WP_BFG: 
-		//  addTime = 100; 
-		addTime = 200; 
+		//  addTime = 1000; 
+		addTime = 2000; 
 		break; 
 	case WP_GRAPPLING_HOOK: 
 		addTime = 400; 
@@ -1779,7 +1779,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 400; 
 		break; 
 	case WP_LIGHTNING: 
-		addTime = 10;  // Shafe - Trep - Flame Thrower was 50  // Streaming Flames
+		addTime = 60;  // Shafe - Trep - Flame Thrower was 50  // Streaming Flames
 		break; 
 	case WP_SHOTGUN: 
 		addTime = 1000; 
@@ -1801,7 +1801,7 @@ if (pm->cmd.buttons & 1) {
 		break; 
 	case WP_BFG: 
 		//  addTime = 100; 
-		addTime = 200; 
+		addTime = 2000; 
 		break; 
 	case WP_GRAPPLING_HOOK: 
 		addTime = 400; 

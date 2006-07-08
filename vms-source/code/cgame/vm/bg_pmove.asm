@@ -7981,7 +7981,7 @@ byte 4 3
 byte 4 1
 byte 4 4
 byte 4 12
-byte 4 1
+byte 4 2
 byte 4 20
 code
 proc PM_BeginWeaponChange 8 4
@@ -8002,7 +8002,7 @@ line 1527
 ;1513:	1,				//flame thrower
 ;1514:	4,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
 ;1515:	12,				//plasma -  lets make this a lot until we get primary fire replaced
-;1516:	1,				//bfg
+;1516:	2,				//bfg
 ;1517:	20,				//hmmmm... dunno what this one is
 ;1518:
 ;1519:
@@ -9162,10 +9162,10 @@ JUMPV
 LABELV $630
 line 1762
 ;1760:	case WP_BFG: 
-;1761:		//  addTime = 100; 
-;1762:		addTime = 200; 
+;1761:		//  addTime = 1000; 
+;1762:		addTime = 2000; 
 ADDRLP4 4
-CNSTI4 200
+CNSTI4 2000
 ASGNI4
 line 1763
 ;1763:		break; 
@@ -9268,9 +9268,9 @@ JUMPV
 LABELV $640
 line 1782
 ;1781:	case WP_LIGHTNING: 
-;1782:		addTime = 10;  // Shafe - Trep - Flame Thrower was 50  // Streaming Flames
+;1782:		addTime = 60;  // Shafe - Trep - Flame Thrower was 50  // Streaming Flames
 ADDRLP4 4
-CNSTI4 10
+CNSTI4 60
 ASGNI4
 line 1783
 ;1783:		break; 
@@ -9346,9 +9346,9 @@ LABELV $647
 line 1804
 ;1802:	case WP_BFG: 
 ;1803:		//  addTime = 100; 
-;1804:		addTime = 200; 
+;1804:		addTime = 2000; 
 ADDRLP4 4
-CNSTI4 200
+CNSTI4 2000
 ASGNI4
 line 1805
 ;1805:		break; 
