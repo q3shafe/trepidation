@@ -3024,7 +3024,7 @@ void CL_GlobalServers_f( void ) {
 	// -1 is used to distinguish a "no response"
 
 	if( cls.masterNum == 0 ) {
-		Com_Printf( "Requesting servers from the Primary Master Server..\n" );
+		Com_Printf( "Requesting servers from master.planettrepidation.com..\n" );
 		NET_StringToAdr( MASTER_SERVER_NAME, &to );
 		cls.numglobalservers = -1;
 		cls.pingUpdateSource = AS_GLOBAL;
@@ -3032,20 +3032,20 @@ void CL_GlobalServers_f( void ) {
 	}
 
 	if( cls.masterNum == 1 ) {
-		Com_Printf( "Requesting servers from the master at master.tnltotalsolutions.com\n" );
+		Com_Printf( "Requesting servers from the master at master.tnlsoft.com\n" );
 		NET_StringToAdr( ALT_MASTER0, &to );
 		cls.numglobalservers = -1;
 		cls.pingUpdateSource = AS_GLOBAL;
 	}
 	if( cls.masterNum == 2 ) {
-		Com_Printf( "Requesting servers from the master at master2.tnlsoft.com\n" );
+		Com_Printf( "Requesting servers from the master at master2.planettrepidation.com\n" );
 		NET_StringToAdr( ALT_MASTER1, &to );
 		cls.numglobalservers = -1;
 		cls.pingUpdateSource = AS_GLOBAL;
 	}
 
 	if( cls.masterNum == 3 ) {
-		Com_Printf( "Requesting servers from the master at master2.tnltotalsolutions.com\n" );
+		Com_Printf( "Requesting servers from the master at master2.tnlsoft.com\n" );
 		NET_StringToAdr( ALT_MASTER2, &to );
 		cls.numglobalservers = -1;
 		cls.pingUpdateSource = AS_GLOBAL;

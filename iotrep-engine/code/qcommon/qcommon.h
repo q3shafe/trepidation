@@ -226,7 +226,7 @@ PROTOCOL
 ==============================================================
 */
 
-#define	PROTOCOL_VERSION	68
+#define	PROTOCOL_VERSION	90
 // 1.31 - 67
 
 // maintain a list of compatible protocols for demo playing
@@ -237,10 +237,10 @@ extern int demo_protocols[];
 // override on command line, config files etc.
 #ifndef MASTER_SERVER_NAME
 
-#define MASTER_SERVER_NAME	"master.tnlsoft.com:27950" // Shafe - Trep 
-#define ALT_MASTER0	"master2.tnlsoft.com" // Shafe - Trep
-#define ALT_MASTER1	"master.tnltotalsolutions.com:27950" // Shafe - Trep
-#define ALT_MASTER2	"master2.tnltotalsolutions.com:27950" // Shafe - Trep
+#define MASTER_SERVER_NAME	"master.planettrepidation.com:27950" // Shafe - Trep 
+#define ALT_MASTER0	"master.tnlsoft.com" // Shafe - Trep
+#define ALT_MASTER1	"master2.planettrepidation.com:27950" // Shafe - Trep
+#define ALT_MASTER2	"master2.tnlsoft.com:27950" // Shafe - Trep
 #define ALT_MASTER3	"192.168.0.4:27950" // Shafe - Trep - Not Usable - Shafe Uses This Cuz Master Runs On His Local Network
 
 
