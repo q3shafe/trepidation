@@ -1169,7 +1169,6 @@ typedef struct playerState_s {
 	int			clientNum;		// ranges from 0 to MAX_CLIENTS-1
 	int			weapon;			// copied to entityState_t->weapon
 	int			weaponstate;
-
 	vec3_t		viewangles;		// for fixed views
 	int			viewheight;
 

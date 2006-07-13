@@ -322,6 +322,21 @@ static qboolean	CG_FindClientModelFile( char *filename, int length, clientInfo_t
 			if ( CG_FileExists( filename ) ) {
 				return qtrue;
 			}
+			// MDR Format
+			if ( i == 0 && teamName && *teamName ) {
+				//								"models/players/characters/james/stroggs/lower_lily_red.skin"
+				Com_sprintf( filename, length, "models/players2/%s%s/%s%s_%s_%s.%s", charactersFolder, modelName, teamName, base, skinName, team, ext );
+			}
+			else {
+				//								"models/players/characters/james/lower_lily_red.skin"
+				Com_sprintf( filename, length, "models/players2/%s%s/%s_%s_%s.%s", charactersFolder, modelName, base, skinName, team, ext );
+			}
+			if ( CG_FileExists( filename ) ) {
+				return qtrue;
+			}
+
+
+
 			if ( cgs.gametype >= GT_TEAM ) {
 				if ( i == 0 && teamName && *teamName ) {
 					//								"models/players/characters/james/stroggs/lower_red.skin"
@@ -345,6 +360,36 @@ static qboolean	CG_FindClientModelFile( char *filename, int length, clientInfo_t
 			if ( CG_FileExists( filename ) ) {
 				return qtrue;
 			}
+
+
+			// Same thing MDR format thoguh
+			if ( cgs.gametype >= GT_TEAM ) {
+				if ( i == 0 && teamName && *teamName ) {
+					//								"models/players/characters/james/stroggs/lower_red.skin"
+					Com_sprintf( filename, length, "models/players2/%s%s/%s%s_%s.%s", charactersFolder, modelName, teamName, base, team, ext );
+				}
+				else {
+					//								"models/players/characters/james/lower_red.skin"
+					Com_sprintf( filename, length, "models/players2/%s%s/%s_%s.%s", charactersFolder, modelName, base, team, ext );
+				}
+			}
+			else {
+				if ( i == 0 && teamName && *teamName ) {
+					//								"models/players/characters/james/stroggs/lower_lily.skin"
+					Com_sprintf( filename, length, "models/players2/%s%s/%s%s_%s.%s", charactersFolder, modelName, teamName, base, skinName, ext );
+				}
+				else {
+					//								"models/players/characters/james/lower_lily.skin"
+					Com_sprintf( filename, length, "models/players2/%s%s/%s_%s.%s", charactersFolder, modelName, base, skinName, ext );
+				}
+			}
+			if ( CG_FileExists( filename ) ) {
+				return qtrue;
+			}
+
+
+
+
 			if ( !teamName || !*teamName ) {
 				break;
 			}
@@ -488,6 +533,8 @@ static qboolean	CG_RegisterClientSkin( clientInfo_t *ci, const char *teamName, c
 
 	// if any skins failed to load
 	if ( !ci->legsSkin || !ci->torsoSkin || !ci->headSkin ) {
+		// Try EF Folders
+
 		return qfalse;
 	}
 	return qtrue;
@@ -524,7 +571,7 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 				Com_sprintf( filename, sizeof( filename ), "models/players2/%s/lower.md3", modelName );
 				ci->legsModel = trap_R_RegisterModel( filename );
 				if ( !ci->legsModel ) {
-					Com_Printf( "Failed to load model file %s\n", filename );
+					Com_Printf( "CG_RegisterClientModelname: Failed to load model file %s\n", filename );
 					return qfalse;
 				}
 			}
@@ -544,19 +591,20 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 				Com_sprintf( filename, sizeof( filename ), "models/players2/%s/upper.md3", modelName );
 				ci->torsoModel = trap_R_RegisterModel( filename );
 				if ( !ci->torsoModel ) {
-					Com_Printf( "Failed to load model file %s\n", filename );
+					Com_Printf( "CG_RegisterClientModelname: Failed to load model file %s\n", filename );
 					return qfalse;
 				}		
 			}		
 		}
 	}
 
-	if( headName[0] == '*' ) {
+if( headName[0] == '*' ) {
 		Com_sprintf( filename, sizeof( filename ), "models/players/heads/%s/%s.md3", &headModelName[1], &headModelName[1] );
 	}
 	else {
 		Com_sprintf( filename, sizeof( filename ), "models/players/%s/head.md3", headName );
 	}
+
 	ci->headModel = trap_R_RegisterModel( filename );
 	// if the head model could not be found and we didn't load from the heads folder try to load from there
 	if ( !ci->headModel && headName[0] != '*' ) {
@@ -564,19 +612,12 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 		ci->headModel = trap_R_RegisterModel( filename );
 	}
 	if ( !ci->headModel ) {
-		// Let's Try MD4 for the head.. // Shafe - Trep
-		Com_sprintf( filename, sizeof( filename ), "models/players2/%s/head.mdr", headName );
+		Com_sprintf( filename, sizeof( filename ), "models/players2/%s/head.md3", headName );
 		ci->headModel = trap_R_RegisterModel( filename );
-
-		if ( !ci->headModel ) {
-			Com_sprintf( filename, sizeof( filename ), "models/players2/%s/head.md3", headName );
-			ci->headModel = trap_R_RegisterModel( filename );
-
-			if ( !ci->headModel ) {
-			Com_Printf( "Failed to load model file %s\n", filename );
-			return qfalse;
-			}
 		
+		if ( !ci->headModel ) {
+			Com_Printf( "CG_RegisterClientModelname: Failed to load model file %s\n", filename );
+			return qfalse;
 		}
 	}
 
@@ -591,11 +632,11 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 				Com_sprintf(newTeamName, sizeof(newTeamName), "%s/", DEFAULT_REDTEAM_NAME);
 			}
 			if ( !CG_RegisterClientSkin( ci, newTeamName, modelName, skinName, headName, headSkinName ) ) {
-				Com_Printf( "Failed to load skin file: %s : %s : %s, %s : %s\n", newTeamName, modelName, skinName, headName, headSkinName );
+				Com_Printf( "CG_RegisterClientModelname: Failed to load skin file: %s : %s : %s, %s : %s\n", newTeamName, modelName, skinName, headName, headSkinName );
 				return qfalse;
 			}
 		} else {
-			Com_Printf( "Failed to load skin file: %s : %s, %s : %s\n", modelName, skinName, headName, headSkinName );
+			Com_Printf( "CG_RegisterClientModelname: Failed to load skin file: %s : %s, %s : %s\n", modelName, skinName, headName, headSkinName );
 			return qfalse;
 		}
 	}
@@ -605,8 +646,11 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 	if ( !CG_ParseAnimationFile( filename, ci ) ) {
 		Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/animation.cfg", modelName );
 		if ( !CG_ParseAnimationFile( filename, ci ) ) {
-			Com_Printf( "Failed to load animation file %s\n", filename );
-			return qfalse;
+			Com_sprintf( filename, sizeof( filename ), "models/players2/%s/animation.cfg", modelName );
+			if ( !CG_ParseAnimationFile( filename, ci ) ) {
+				Com_Printf( "CG_RegisterClientModelname: Failed to load animation file %s\n", filename );
+				return qfalse;
+			}
 		}
 	}
 
@@ -728,6 +772,11 @@ static void CG_LoadClientInfo( clientInfo_t *ci ) {
 		if (modelloaded) {
 			ci->sounds[i] = trap_S_RegisterSound( va("sound/player/%s/%s", dir, s + 1), qfalse );
 		}
+		
+		if ( !ci->sounds[i] ) {
+			ci->sounds[i] = trap_S_RegisterSound( va("sound/voice/%s/%s", dir, s + 1), qfalse );
+		}
+		
 		if ( !ci->sounds[i] ) {
 			ci->sounds[i] = trap_S_RegisterSound( va("sound/player/%s/%s", fallback, s + 1), qfalse );
 		}

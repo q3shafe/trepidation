@@ -1025,6 +1025,7 @@ PM_CorrectAllSolid
 static int PM_CorrectAllSolid( trace_t *trace ) {
 	int			i, j, k;
 	vec3_t		point;
+	
 
 	if ( pm->debugLevel ) {
 		Com_Printf("%i:allsolid\n", c_pmove);
@@ -1593,10 +1594,10 @@ PM_Weapon
 Generates weapon events and modifes the weapon counter
 ==============
 */
+
 static void PM_Weapon( void ) {
 	int		addTime;
 	qboolean	altfired = qfalse;
-
 
 
 	// don't allow attack until all buttons are up
@@ -1660,6 +1661,9 @@ static void PM_Weapon( void ) {
 		return;
 	}
 
+
+
+
 	if ( pm->ps->weaponstate == WEAPON_RAISING ) {
 		pm->ps->weaponstate = WEAPON_READY;
 		if ( pm->ps->weapon == WP_GAUNTLET ) {
@@ -1670,14 +1674,83 @@ static void PM_Weapon( void ) {
 		return;
 	}
 
+
+
+
 	// check for fire
 	// Shafe - Trep - Alt Fire
+	
 	if ( ! ((pm->cmd.buttons & BUTTON_ATTACK) ||( pm->cmd.buttons & 32)) ) {
 		pm->ps->weaponTime = 0;
 		pm->ps->weaponstate = WEAPON_READY;
 		altfired = qtrue;
 		return;
 	}
+	
+
+	
+	// The Devastator Only Fires When Button Is Released
+	// check for fire
+	/*
+	if (pm->cmd.buttons & 1) 
+	{
+		if (pm->ps->weapon == WP_BFG) {
+			pm->ps->weaponTime = 0;
+			// put it in the "charging" position
+			pm->ps->weaponstate = WEAPON_CHARGING;
+			//pm->ps->weaponcharge++;
+			return;
+		} else {
+			// Any oother weapon
+
+	}
+
+	
+	// Alt Fire May Work Differently in the future
+	if ((pm->cmd.buttons & 32) && (pm->ps->weapon == WP_BFG)) 
+	{
+		pm->ps->weaponTime = 0;
+		// put it in the "charging" position
+		pm->ps->weaponstate = WEAPON_CHARGING;
+		//pm->ps->weaponcharge++;
+		return;
+	} 
+	
+	// if they arn't pressing attack
+	
+	if (!(pm->cmd.buttons & 1)) {
+		// if we had them charging and then they arnt pressing it then that means they released it
+		if (pm->ps->weaponstate == WEAPON_CHARGING) 
+		{
+			// set to be able to fire
+			pm->ps->weaponstate = WEAPON_READY;
+		} else {
+			// else if they arn't pressing attack, then they just are running around
+			pm->ps->weaponTime = 0;
+			pm->ps->weaponstate = WEAPON_READY;
+			//pm->ps->weaponcharge == 0;
+			return;
+		}
+	}
+
+	// if they arn't pressing alt attack - Right now these are the same
+	
+	if (!(pm->cmd.buttons & 32)) {
+		// if we had them charging and then they arnt pressing it then that means they released it
+		if (pm->ps->weaponstate == WEAPON_CHARGING) 
+		{
+			// set to be able to fire
+			pm->ps->weaponstate = WEAPON_READY;
+			altfired = qtrue;
+		} else {
+			// else if they arn't pressing attack, then they just are running around
+			pm->ps->weaponTime = 0;
+			pm->ps->weaponstate = WEAPON_READY;
+			return;
+		}
+	} 
+	*/
+
 
 	// start the animation even if out of ammo
 	if ( pm->ps->weapon == WP_GAUNTLET ) {
@@ -1691,6 +1764,10 @@ static void PM_Weapon( void ) {
 	} else {
 		PM_StartTorsoAnim( TORSO_ATTACK );
 	}
+
+
+	// Check For Devastator Charging
+
 
 	pm->ps->weaponstate = WEAPON_FIRING;
 
@@ -1712,7 +1789,11 @@ static void PM_Weapon( void ) {
 		}
 
 	}
+
 	
+
+
+		
 
 
 
@@ -1759,7 +1840,7 @@ if (pm->cmd.buttons & 1) {
 		break; 
 	case WP_BFG: 
 		//  addTime = 1000; 
-		addTime = 2000; 
+		addTime = 3000; 
 		break; 
 	case WP_GRAPPLING_HOOK: 
 		addTime = 400; 
@@ -1785,7 +1866,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 1000; 
 		break; 
 	case WP_MACHINEGUN: 
-		addTime = 100; 
+		addTime = 1000; 
 		break; 
 	case WP_GRENADE_LAUNCHER: 
 		addTime = 800; 
@@ -1801,7 +1882,7 @@ if (pm->cmd.buttons & 1) {
 		break; 
 	case WP_BFG: 
 		//  addTime = 100; 
-		addTime = 2000; 
+		addTime = 3000; 
 		break; 
 	case WP_GRAPPLING_HOOK: 
 		addTime = 400; 
