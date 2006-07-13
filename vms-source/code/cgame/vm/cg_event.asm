@@ -1429,12 +1429,12 @@ LABELV $248
 line 308
 ;306:		case MOD_BFG:
 ;307:		case MOD_BFG_SPLASH:
-;308:			message = "was blasted by";
+;308:			message = "was annialated by";
 ADDRLP4 44
 ADDRGP4 $249
 ASGNP4
 line 309
-;309:			message2 = "'s BFG";
+;309:			message2 = "'s Devastator";
 ADDRLP4 88
 ADDRGP4 $250
 ASGNP4
@@ -8636,9 +8636,16 @@ LABELV $250
 byte 1 39
 byte 1 115
 byte 1 32
-byte 1 66
-byte 1 70
-byte 1 71
+byte 1 68
+byte 1 101
+byte 1 118
+byte 1 97
+byte 1 115
+byte 1 116
+byte 1 97
+byte 1 116
+byte 1 111
+byte 1 114
 byte 1 0
 align 1
 LABELV $249
@@ -8646,10 +8653,13 @@ byte 1 119
 byte 1 97
 byte 1 115
 byte 1 32
-byte 1 98
+byte 1 97
+byte 1 110
+byte 1 110
+byte 1 105
+byte 1 97
 byte 1 108
 byte 1 97
-byte 1 115
 byte 1 116
 byte 1 101
 byte 1 100

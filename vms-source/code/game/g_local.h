@@ -113,6 +113,10 @@ struct gentity_s {
 	vec3_t		movedir;
 
 	int			nextthink;
+	
+	void		(*lastthink)(gentity_t *self);
+	int			lastthinktime; // Shafe
+
 	void		(*think)(gentity_t *self);
 	void		(*reached)(gentity_t *self);	// movers call this when hitting endpoint
 	void		(*blocked)(gentity_t *self, gentity_t *other);
@@ -162,6 +166,8 @@ struct gentity_s {
 	// end shafe
 
 	gitem_t		*item;			// for bonus items
+	int			constantSpeed;	// used for homing missiles to avoid floating point error
+								// in speed calculations
 };
 
 
@@ -606,11 +612,8 @@ gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_altgrenade (gentity_t *self, vec3_t start, vec3_t aimdir); // Shafe Alternate Grenade Fire
 gentity_t *fire_alt_rocket (gentity_t *self, vec3_t start, vec3_t dir); // Shafe Alternate Rocket Fire
 gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t aimdir, qboolean alt); // Shafe Flame Thrower
-
 gentity_t *fire_rocket (gentity_t *self, vec3_t start, vec3_t dir);
-
-
-gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir);
+gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, int charge);
 gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir);
 #ifdef MISSIONPACK
 gentity_t *fire_nail( gentity_t *self, vec3_t start, vec3_t forward, vec3_t right, vec3_t up );

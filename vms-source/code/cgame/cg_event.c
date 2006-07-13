@@ -305,8 +305,8 @@ static void CG_Obituary( entityState_t *ent ) {
 			break;
 		case MOD_BFG:
 		case MOD_BFG_SPLASH:
-			message = "was blasted by";
-			message2 = "'s BFG";
+			message = "was annialated by";
+			message2 = "'s Devastator";
 			break;
 #ifdef MISSIONPACK
 		case MOD_NAIL:

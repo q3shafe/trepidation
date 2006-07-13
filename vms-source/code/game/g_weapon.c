@@ -273,15 +273,15 @@ BFG
 ======================================================================
 */
 
-void BFG_Fire ( gentity_t *ent ) {
+void BFG_Fire ( gentity_t *ent, int charge ) {
 	gentity_t	*m;
 
 	forward[2] += 0.2f;
 	forward[2] += 0.2f;
 	VectorNormalize( forward );
 
-
-	m = fire_bfg (ent, muzzle, forward);
+	//ent->client->ps.weaponcharge = 0;
+	m = fire_bfg (ent, muzzle, forward, charge);
 	m->damage *= s_quadFactor;
 	m->splashDamage *= s_quadFactor;
 
@@ -1024,7 +1024,7 @@ void FireWeapon( gentity_t *ent ) {
 		weapon_railgun_fire( ent );
 		break;
 	case WP_BFG:
-		BFG_Fire( ent );
+		BFG_Fire( ent, 0 );
 		break;
 	case WP_GRAPPLING_HOOK:
 		Weapon_GrapplingHook_Fire( ent );
@@ -1106,7 +1106,7 @@ void FireWeapon2( gentity_t *ent ) {
    Weapon_RocketLauncher_Fire( ent );
   break; 
  case WP_BFG: 
-  BFG_Fire( ent ); 
+  //BFG_Fire( ent, 0);  Nothing right now... we'll work on it
   break; 
  case WP_GRAPPLING_HOOK: 
   Weapon_GrapplingHook_Fire( ent ); 
