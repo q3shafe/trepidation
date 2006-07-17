@@ -1020,6 +1020,8 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, int charge) {
 
 	// How much did the power it up
 	
+	if (charge > 200) { charge = 163; }
+	
 	VectorScale( dir, 325, bolt->s.pos.trDelta );
 	
 	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth

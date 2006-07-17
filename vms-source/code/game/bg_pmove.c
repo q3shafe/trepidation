@@ -1679,77 +1679,15 @@ static void PM_Weapon( void ) {
 
 	// check for fire
 	// Shafe - Trep - Alt Fire
-	
-	if ( ! ((pm->cmd.buttons & BUTTON_ATTACK) ||( pm->cmd.buttons & 32)) ) {
-		pm->ps->weaponTime = 0;
-		pm->ps->weaponstate = WEAPON_READY;
-		altfired = qtrue;
-		return;
-	}
-	
 
-	
-	// The Devastator Only Fires When Button Is Released
-	// check for fire
-	/*
-	if (pm->cmd.buttons & 1) 
+	if ( ! ((pm->cmd.buttons & BUTTON_ATTACK) ||( pm->cmd.buttons & 32)) ) 
 	{
-		if (pm->ps->weapon == WP_BFG) {
-			pm->ps->weaponTime = 0;
-			// put it in the "charging" position
-			pm->ps->weaponstate = WEAPON_CHARGING;
-			//pm->ps->weaponcharge++;
-			return;
-		} else {
-			// Any oother weapon
-
+				pm->ps->weaponTime = 0;
+				pm->ps->weaponstate = WEAPON_READY;
+				altfired = qtrue;
+				return;
 	}
-
 	
-	// Alt Fire May Work Differently in the future
-	if ((pm->cmd.buttons & 32) && (pm->ps->weapon == WP_BFG)) 
-	{
-		pm->ps->weaponTime = 0;
-		// put it in the "charging" position
-		pm->ps->weaponstate = WEAPON_CHARGING;
-		//pm->ps->weaponcharge++;
-		return;
-	} 
-	
-	// if they arn't pressing attack
-	
-	if (!(pm->cmd.buttons & 1)) {
-		// if we had them charging and then they arnt pressing it then that means they released it
-		if (pm->ps->weaponstate == WEAPON_CHARGING) 
-		{
-			// set to be able to fire
-			pm->ps->weaponstate = WEAPON_READY;
-		} else {
-			// else if they arn't pressing attack, then they just are running around
-			pm->ps->weaponTime = 0;
-			pm->ps->weaponstate = WEAPON_READY;
-			//pm->ps->weaponcharge == 0;
-			return;
-		}
-	}
-
-	// if they arn't pressing alt attack - Right now these are the same
-	
-	if (!(pm->cmd.buttons & 32)) {
-		// if we had them charging and then they arnt pressing it then that means they released it
-		if (pm->ps->weaponstate == WEAPON_CHARGING) 
-		{
-			// set to be able to fire
-			pm->ps->weaponstate = WEAPON_READY;
-			altfired = qtrue;
-		} else {
-			// else if they arn't pressing attack, then they just are running around
-			pm->ps->weaponTime = 0;
-			pm->ps->weaponstate = WEAPON_READY;
-			return;
-		}
-	} 
-	*/
 
 
 	// start the animation even if out of ammo
@@ -1767,7 +1705,25 @@ static void PM_Weapon( void ) {
 
 
 	// Check For Devastator Charging
+	/* Doesnt Work
+	if (( pm->cmd.buttons & 1) || ( pm->cmd.buttons & 32))
+	{
+		if (pm->ps->weapon == WP_BFG) 
+		{
+			if (pm->ps->weaponstate != WEAPON_CHARGING)
+			{
+				pm->ps->weaponstate = WEAPON_CHARGING;
+				return;
+			} 
+			else
+			{
+				pm->ps->weaponstate = WEAPON_FIRING;
+			}
+		}
 
+	}
+
+	*/
 
 	pm->ps->weaponstate = WEAPON_FIRING;
 
@@ -1790,6 +1746,7 @@ static void PM_Weapon( void ) {
 
 	}
 
+	
 	
 
 

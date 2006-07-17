@@ -6192,9 +6192,16 @@ CNSTI4 112
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1054
+line 1052
 ;1051:
-;1052:	
+;1052:	pi->efmodel = qfalse;
+ADDRFP4 0
+INDIRP4
+CNSTI4 1092
+ADDP4
+CNSTI4 0
+ASGNI4
+line 1054
 ;1053:
 ;1054:	if ( !modelSkinName[0] ) {
 ADDRFP4 4
