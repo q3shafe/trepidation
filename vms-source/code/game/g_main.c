@@ -1281,7 +1281,7 @@ void LogExit( const char *string ) {
 		//survivor = &level.clients[i];
 		if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qtrue && cl->sess.sessionTeam == TEAM_SPECTATOR)
 		{	
-			cl->ps.persistant[PERS_SCORE] == cl->pers.TrueScore;
+			cl->ps.persistant[PERS_SCORE] = cl->pers.TrueScore;
 		}
 
 	}

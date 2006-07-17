@@ -586,9 +586,9 @@ static void ArenaServers_UpdateMenu( void ) {
 
 		if (servernodeptr->g_instagib == 1) 
 		{	
-			servernodeptr->bPB == qtrue; 
+			servernodeptr->bPB = qtrue; 
 		} else {
-			servernodeptr->bPB == qfalse;
+			servernodeptr->bPB = qfalse;
 		}
 
 

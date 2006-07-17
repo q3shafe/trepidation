@@ -499,6 +499,7 @@ typedef struct {
 
 	qboolean		chat;
 	qboolean		newModel;
+	qboolean		efmodel;
 
 	qboolean		barrelSpinning;
 	float			barrelAngle;

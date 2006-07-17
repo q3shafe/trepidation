@@ -2425,7 +2425,7 @@ ASGNF4
 line 446
 ;446:		ent.customShader = cgs.media.plasmaBallShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+152340+296
+ADDRGP4 cgs+152852+296
 INDIRI4
 ASGNI4
 line 447
@@ -2470,7 +2470,7 @@ ASGNF4
 line 456
 ;456:		ent.customShader = cgs.media.flameBallShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+152340+484
+ADDRGP4 cgs+152852+484
 INDIRI4
 ASGNI4
 line 457
@@ -4324,7 +4324,7 @@ NEI4 $537
 line 846
 ;846:			model.hModel = cgs.media.redFlagBaseModel;
 ADDRLP4 0+8
-ADDRGP4 cgs+152340+108
+ADDRGP4 cgs+152852+108
 INDIRI4
 ASGNI4
 line 847
@@ -4344,7 +4344,7 @@ NEI4 $542
 line 849
 ;849:			model.hModel = cgs.media.blueFlagBaseModel;
 ADDRLP4 0+8
-ADDRGP4 cgs+152340+112
+ADDRGP4 cgs+152852+112
 INDIRI4
 ASGNI4
 line 850
@@ -4357,7 +4357,7 @@ line 851
 line 852
 ;852:			model.hModel = cgs.media.neutralFlagBaseModel;
 ADDRLP4 0+8
-ADDRGP4 cgs+152340+116
+ADDRGP4 cgs+152852+116
 INDIRI4
 ASGNI4
 line 853

@@ -6207,7 +6207,10 @@ ADDRGP4 trap_SendServerCommand
 CALLV
 pop
 line 1259
-;1259:			g_instagib.integer == 0; 
+;1259:			g_instagib.integer = 0; 
+ADDRGP4 g_instagib+12
+CNSTI4 0
+ASGNI4
 line 1260
 ;1260:		}
 LABELV $443

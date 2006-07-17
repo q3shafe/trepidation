@@ -5620,7 +5620,17 @@ NEI4 $632
 line 1283
 ;1283:		{	
 line 1284
-;1284:			cl->ps.persistant[PERS_SCORE] == cl->pers.TrueScore;
+;1284:			cl->ps.persistant[PERS_SCORE] = cl->pers.TrueScore;
+ADDRLP4 0
+INDIRP4
+CNSTI4 248
+ADDP4
+ADDRLP4 0
+INDIRP4
+CNSTI4 2488
+ADDP4
+INDIRI4
+ASGNI4
 line 1285
 ;1285:		}
 LABELV $632
@@ -14408,7 +14418,7 @@ byte 1 117
 byte 1 108
 byte 1 32
 byte 1 49
-byte 1 51
+byte 1 54
 byte 1 32
 byte 1 50
 byte 1 48

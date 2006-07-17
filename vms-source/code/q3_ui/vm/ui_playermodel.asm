@@ -115,7 +115,7 @@ line 97
 ;96:
 ;97:	j = s_playermodel.modelpage * MAX_MODELSPERPAGE;
 ADDRLP4 4
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 INDIRI4
 CNSTI4 4
 LSHI4
@@ -132,7 +132,7 @@ line 100
 ;100:		if (j < s_playermodel.nummodels)
 ADDRLP4 4
 INDIRI4
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 INDIRI4
 GEI4 $86
 line 101
@@ -150,7 +150,7 @@ ADDRLP4 4
 INDIRI4
 CNSTI4 7
 LSHI4
-ADDRGP4 s_playermodel+5208
+ADDRGP4 s_playermodel+5212
 ADDP4
 ASGNP4
 line 104
@@ -286,11 +286,11 @@ LTI4 $82
 line 118
 ;117:
 ;118:	if (s_playermodel.selectedmodel/MAX_MODELSPERPAGE == s_playermodel.modelpage)
-ADDRGP4 s_playermodel+38048
+ADDRGP4 s_playermodel+38052
 INDIRI4
 CNSTI4 16
 DIVI4
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 INDIRI4
 NEI4 $104
 line 119
@@ -299,7 +299,7 @@ line 121
 ;120:		// set selected model
 ;121:		i = s_playermodel.selectedmodel % MAX_MODELSPERPAGE;
 ADDRLP4 0
-ADDRGP4 s_playermodel+38048
+ADDRGP4 s_playermodel+38052
 INDIRI4
 CNSTI4 16
 MODI4
@@ -347,7 +347,7 @@ LABELV $104
 line 127
 ;126:
 ;127:	if (s_playermodel.numpages > 1)
-ADDRGP4 s_playermodel+37980
+ADDRGP4 s_playermodel+37984
 INDIRI4
 CNSTI4 1
 LEI4 $113
@@ -355,7 +355,7 @@ line 128
 ;128:	{
 line 129
 ;129:		if (s_playermodel.modelpage > 0)
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 INDIRI4
 CNSTI4 0
 LEI4 $116
@@ -393,9 +393,9 @@ LABELV $117
 line 134
 ;133:
 ;134:		if (s_playermodel.modelpage < s_playermodel.numpages-1)
-ADDRGP4 s_playermodel+37976
-INDIRI4
 ADDRGP4 s_playermodel+37980
+INDIRI4
+ADDRGP4 s_playermodel+37984
 INDIRI4
 CNSTI4 1
 SUBI4
@@ -491,7 +491,7 @@ ADDRGP4 s_playermodel+4096
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 1108
+CNSTI4 1112
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -534,7 +534,7 @@ line 164
 ;164:	UI_PlayerInfo_SetModel( &s_playermodel.playerinfo, s_playermodel.modelskin );
 ADDRGP4 s_playermodel+4096
 ARGP4
-ADDRGP4 s_playermodel+37984
+ADDRGP4 s_playermodel+37988
 ARGP4
 ADDRGP4 UI_PlayerInfo_SetModel
 CALLV
@@ -576,7 +576,7 @@ line 175
 ;175:	trap_Cvar_Set( "model", s_playermodel.modelskin );
 ADDRGP4 $145
 ARGP4
-ADDRGP4 s_playermodel+37984
+ADDRGP4 s_playermodel+37988
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
@@ -585,7 +585,7 @@ line 176
 ;176:	trap_Cvar_Set( "headmodel", s_playermodel.modelskin );
 ADDRGP4 $147
 ARGP4
-ADDRGP4 s_playermodel+37984
+ADDRGP4 s_playermodel+37988
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
@@ -594,7 +594,7 @@ line 177
 ;177:	trap_Cvar_Set( "team_model", s_playermodel.modelskin );
 ADDRGP4 $149
 ARGP4
-ADDRGP4 s_playermodel+37984
+ADDRGP4 s_playermodel+37988
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
@@ -603,7 +603,7 @@ line 178
 ;178:	trap_Cvar_Set( "team_headmodel", s_playermodel.modelskin );
 ADDRGP4 $151
 ARGP4
-ADDRGP4 s_playermodel+37984
+ADDRGP4 s_playermodel+37988
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
@@ -663,7 +663,7 @@ LABELV $159
 line 194
 ;193:		case ID_PREVPAGE:
 ;194:			if (s_playermodel.modelpage > 0)
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 INDIRI4
 CNSTI4 0
 LEI4 $157
@@ -672,7 +672,7 @@ line 195
 line 196
 ;196:				s_playermodel.modelpage--;
 ADDRLP4 8
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 ASGNP4
 ADDRLP4 8
 INDIRP4
@@ -698,9 +698,9 @@ line 202
 ;200:
 ;201:		case ID_NEXTPAGE:
 ;202:			if (s_playermodel.modelpage < s_playermodel.numpages-1)
-ADDRGP4 s_playermodel+37976
-INDIRI4
 ADDRGP4 s_playermodel+37980
+INDIRI4
+ADDRGP4 s_playermodel+37984
 INDIRI4
 CNSTI4 1
 SUBI4
@@ -710,7 +710,7 @@ line 203
 line 204
 ;204:				s_playermodel.modelpage++;
 ADDRLP4 8
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 ASGNP4
 ADDRLP4 8
 INDIRP4
@@ -904,7 +904,7 @@ line 240
 ;238:					
 ;239:				}
 ;240:				else if (s_playermodel.modelpage > 0)
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 INDIRI4
 CNSTI4 0
 LEI4 $179
@@ -913,7 +913,7 @@ line 241
 line 242
 ;242:					s_playermodel.modelpage--;
 ADDRLP4 32
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 ASGNP4
 ADDRLP4 32
 INDIRP4
@@ -1016,7 +1016,7 @@ ADDRLP4 40
 INDIRI4
 CNSTI4 15
 GEI4 $186
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 INDIRI4
 CNSTI4 4
 LSHI4
@@ -1025,7 +1025,7 @@ INDIRI4
 ADDI4
 CNSTI4 1
 ADDI4
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 INDIRI4
 GEI4 $186
 line 259
@@ -1062,9 +1062,9 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 15
 NEI4 $190
-ADDRGP4 s_playermodel+37976
-INDIRI4
 ADDRGP4 s_playermodel+37980
+INDIRI4
+ADDRGP4 s_playermodel+37984
 INDIRI4
 CNSTI4 1
 SUBI4
@@ -1074,7 +1074,7 @@ line 264
 line 265
 ;265:					s_playermodel.modelpage++;
 ADDRLP4 44
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 ASGNP4
 ADDRLP4 44
 INDIRP4
@@ -1297,7 +1297,7 @@ line 313
 ;312:	// get model and strip icon_
 ;313:	modelnum = s_playermodel.modelpage*MAX_MODELSPERPAGE + i;
 ADDRLP4 16
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 INDIRI4
 CNSTI4 4
 LSHI4
@@ -1320,7 +1320,7 @@ ADDRLP4 16
 INDIRI4
 CNSTI4 7
 LSHI4
-ADDRGP4 s_playermodel+5208
+ADDRGP4 s_playermodel+5212
 ADDP4
 ADDP4
 ASGNP4
@@ -1351,7 +1351,7 @@ line 317
 line 319
 ;318:		// track the whole model/skin name
 ;319:		Q_strncpyz(s_playermodel.modelskin,buffptr,pdest-buffptr+1);
-ADDRGP4 s_playermodel+37984
+ADDRGP4 s_playermodel+37988
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -1372,7 +1372,7 @@ CALLV
 pop
 line 320
 ;320:		strcat(s_playermodel.modelskin,pdest + 5);
-ADDRGP4 s_playermodel+37984
+ADDRGP4 s_playermodel+37988
 ARGP4
 ADDRLP4 4
 INDIRP4
@@ -1488,7 +1488,7 @@ pop
 line 336
 ;335:
 ;336:		s_playermodel.selectedmodel = modelnum;
-ADDRGP4 s_playermodel+38048
+ADDRGP4 s_playermodel+38052
 ADDRLP4 16
 INDIRI4
 ASGNI4
@@ -1668,12 +1668,12 @@ ASGNI4
 line 385
 ;384:
 ;385:	s_playermodel.modelpage = 0;
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 CNSTI4 0
 ASGNI4
 line 386
 ;386:	s_playermodel.nummodels = 0;
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 CNSTI4 0
 ASGNI4
 line 389
@@ -1879,7 +1879,7 @@ line 411
 line 412
 ;412:				Com_sprintf( s_playermodel.modelnames[s_playermodel.nummodels++],
 ADDRLP4 4240
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 ASGNP4
 ADDRLP4 4236
 ADDRLP4 4240
@@ -1897,7 +1897,7 @@ ADDRLP4 4236
 INDIRI4
 CNSTI4 7
 LSHI4
-ADDRGP4 s_playermodel+5208
+ADDRGP4 s_playermodel+5212
 ADDP4
 ARGP4
 CNSTI4 128
@@ -1977,7 +1977,7 @@ INDIRI4
 ADDRLP4 80
 INDIRI4
 GEI4 $278
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 INDIRI4
 CNSTI4 256
 LTI4 $263
@@ -2012,7 +2012,7 @@ INDIRI4
 ADDRLP4 2144
 INDIRI4
 GEI4 $279
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 INDIRI4
 CNSTI4 256
 LTI4 $249
@@ -2223,7 +2223,7 @@ line 451
 line 452
 ;452:				Com_sprintf( s_playermodel.modelnames[s_playermodel.nummodels++],
 ADDRLP4 4248
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 ASGNP4
 ADDRLP4 4244
 ADDRLP4 4248
@@ -2241,7 +2241,7 @@ ADDRLP4 4244
 INDIRI4
 CNSTI4 7
 LSHI4
-ADDRGP4 s_playermodel+5208
+ADDRGP4 s_playermodel+5212
 ADDP4
 ARGP4
 CNSTI4 128
@@ -2321,7 +2321,7 @@ INDIRI4
 ADDRLP4 80
 INDIRI4
 GEI4 $305
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 INDIRI4
 CNSTI4 256
 LTI4 $292
@@ -2356,7 +2356,7 @@ INDIRI4
 ADDRLP4 2144
 INDIRI4
 GEI4 $306
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 INDIRI4
 CNSTI4 256
 LTI4 $281
@@ -2372,15 +2372,15 @@ line 473
 ;471:
 ;472:
 ;473:	s_playermodel.numpages = s_playermodel.nummodels/MAX_MODELSPERPAGE;
-ADDRGP4 s_playermodel+37980
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+37984
+ADDRGP4 s_playermodel+5208
 INDIRI4
 CNSTI4 16
 DIVI4
 ASGNI4
 line 474
 ;474:	if (s_playermodel.nummodels % MAX_MODELSPERPAGE)
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 INDIRI4
 CNSTI4 16
 MODI4
@@ -2389,7 +2389,7 @@ EQI4 $309
 line 475
 ;475:		s_playermodel.numpages++;
 ADDRLP4 4216
-ADDRGP4 s_playermodel+37980
+ADDRGP4 s_playermodel+37984
 ASGNP4
 ADDRLP4 4216
 INDIRP4
@@ -2447,7 +2447,7 @@ line 496
 ;496:	trap_Cvar_VariableStringBuffer( "model", s_playermodel.modelskin, 64 );
 ADDRGP4 $145
 ARGP4
-ADDRGP4 s_playermodel+37984
+ADDRGP4 s_playermodel+37988
 ARGP4
 CNSTI4 64
 ARGI4
@@ -2482,7 +2482,7 @@ ADDRLP4 4
 INDIRI4
 CNSTI4 7
 LSHI4
-ADDRGP4 s_playermodel+5208
+ADDRGP4 s_playermodel+5212
 ADDP4
 ADDP4
 ASGNP4
@@ -2552,7 +2552,7 @@ LABELV $327
 line 512
 ;511:
 ;512:		if (!Q_stricmp( s_playermodel.modelskin, modelskin ))
-ADDRGP4 s_playermodel+37984
+ADDRGP4 s_playermodel+37988
 ARGP4
 ADDRLP4 16
 ARGP4
@@ -2569,13 +2569,13 @@ line 513
 line 515
 ;514:			// found pic, set selection here		
 ;515:			s_playermodel.selectedmodel = i;
-ADDRGP4 s_playermodel+38048
+ADDRGP4 s_playermodel+38052
 ADDRLP4 4
 INDIRI4
 ASGNI4
 line 516
 ;516:			s_playermodel.modelpage     = i/MAX_MODELSPERPAGE;
-ADDRGP4 s_playermodel+37976
+ADDRGP4 s_playermodel+37980
 ADDRLP4 4
 INDIRI4
 CNSTI4 16
@@ -2703,7 +2703,7 @@ ASGNI4
 LABELV $323
 ADDRLP4 4
 INDIRI4
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 INDIRI4
 LTI4 $320
 LABELV $322
@@ -2748,7 +2748,7 @@ ADDRGP4 s_playermodel
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 38052
+CNSTI4 38056
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -3831,7 +3831,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 7
 LSHI4
-ADDRGP4 s_playermodel+5208
+ADDRGP4 s_playermodel+5212
 ADDP4
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -3850,7 +3850,7 @@ ASGNI4
 LABELV $597
 ADDRLP4 0
 INDIRI4
-ADDRGP4 s_playermodel+5204
+ADDRGP4 s_playermodel+5208
 INDIRI4
 LTI4 $594
 line 746
@@ -3882,7 +3882,7 @@ line 754
 ADDRGP4 s_playermodel
 ARGP4
 CNSTI4 88
-ADDRGP4 s_playermodel+38048
+ADDRGP4 s_playermodel+38052
 INDIRI4
 CNSTI4 16
 MODI4
@@ -3900,7 +3900,7 @@ endproc UI_PlayerModelMenu 0 8
 bss
 align 4
 LABELV s_playermodel
-skip 38052
+skip 38056
 import UI_RankStatusMenu
 import RankStatus_Cache
 import UI_SignupMenu

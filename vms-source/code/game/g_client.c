@@ -1256,7 +1256,7 @@ void ClientSpawn(gentity_t *ent) {
 		if (g_instagib.integer == 1)
 		{
 			trap_SendServerCommand( -1, "print \"Instagib is not compatable with Arsenal Gametype\n\"" );
-			g_instagib.integer == 0; 
+			g_instagib.integer = 0; 
 		}
 
 	}

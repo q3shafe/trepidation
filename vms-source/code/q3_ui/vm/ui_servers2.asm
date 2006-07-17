@@ -2038,12 +2038,26 @@ NEI4 $331
 line 588
 ;588:		{	
 line 589
-;589:			servernodeptr->bPB == qtrue; 
+;589:			servernodeptr->bPB = qtrue; 
+ADDRLP4 0
+INDIRP4
+CNSTI4 268
+ADDP4
+CNSTI4 1
+ASGNI4
 line 590
 ;590:		} else {
+ADDRGP4 $332
+JUMPV
 LABELV $331
 line 591
-;591:			servernodeptr->bPB == qfalse;
+;591:			servernodeptr->bPB = qfalse;
+ADDRLP4 0
+INDIRP4
+CNSTI4 268
+ADDP4
+CNSTI4 0
+ASGNI4
 line 592
 ;592:		}
 LABELV $332

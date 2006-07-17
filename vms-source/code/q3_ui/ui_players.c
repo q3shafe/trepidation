@@ -1042,13 +1042,14 @@ qboolean UI_RegisterClientModelname( playerInfo_t *pi, const char *modelSkinName
 	char		modelName[MAX_QPATH];
 	char		skinName[MAX_QPATH];
 	char		filename[MAX_QPATH];
+	
 	char		*slash;
 //	qboolean	isMdr;			// Shafe -  mdr/md4 support
 
 	pi->torsoModel = 0;
 	pi->headModel = 0;
 
-	
+	pi->efmodel = qfalse;
 
 	if ( !modelSkinName[0] ) {
 		return qfalse;
@@ -1071,12 +1072,15 @@ qboolean UI_RegisterClientModelname( playerInfo_t *pi, const char *modelSkinName
 	// Shafe - Trep All of this is updated.. It'll try md3 then if all else fails try the new mdr/md4 format
 	Com_sprintf( filename, sizeof( filename ), "models/players/%s/lower.md3", modelName );
 	pi->legsModel = trap_R_RegisterModel( filename );
+	pi->efmodel = qfalse;
 	if ( !pi->legsModel ) {
 		Com_sprintf( filename, sizeof( filename ), "models/players2/%s/lower.mdr", modelName );
 		pi->legsModel = trap_R_RegisterModel( filename );
+		pi->efmodel = qtrue;
 		if ( !pi->legsModel ) {
 			Com_sprintf( filename, sizeof( filename ), "models/players2/%s/lower.md3", modelName );
 			pi->legsModel = trap_R_RegisterModel( filename );
+			pi->efmodel = qtrue;
 			if ( !pi->legsModel ) {
 				Com_Printf( "UI_RegisterClientModelname: Failed to load model file %s\n", filename );
 				return qfalse;
@@ -1087,12 +1091,15 @@ qboolean UI_RegisterClientModelname( playerInfo_t *pi, const char *modelSkinName
 
 	Com_sprintf( filename, sizeof( filename ), "models/players/%s/upper.md3", modelName );
 	pi->torsoModel = trap_R_RegisterModel( filename );
+	pi->efmodel = qfalse;
 	if ( !pi->torsoModel ) {
 		Com_sprintf( filename, sizeof( filename ), "models/players2/%s/upper.mdr", modelName );
 		pi->torsoModel = trap_R_RegisterModel( filename );
+		pi->efmodel = qtrue;
 		if ( !pi->torsoModel ) {
 				Com_sprintf( filename, sizeof( filename ), "models/players2/%s/upper.md3", modelName );
 				pi->torsoModel = trap_R_RegisterModel( filename );
+				pi->efmodel = qtrue;
 				if ( !pi->torsoModel ) {
 				Com_Printf( "UI_RegisterClientModelname: Failed to load model file %s\n", filename );
 				return qfalse;

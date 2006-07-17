@@ -950,7 +950,7 @@ line 219
 ;219:	if ( strcmp( buf, s_playersettings.playerModel ) != 0 ) {
 ADDRLP4 4
 ARGP4
-ADDRGP4 s_playersettings+2556
+ADDRGP4 s_playersettings+2560
 ARGP4
 ADDRLP4 80
 ADDRGP4 strcmp
@@ -971,7 +971,7 @@ CALLV
 pop
 line 221
 ;221:		strcpy( s_playersettings.playerModel, buf );
-ADDRGP4 s_playersettings+2556
+ADDRGP4 s_playersettings+2560
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -1264,7 +1264,7 @@ ADDRGP4 s_playersettings+1444
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 1108
+CNSTI4 1112
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -1493,7 +1493,7 @@ ADDRGP4 s_playersettings
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 2620
+CNSTI4 2624
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -2282,7 +2282,7 @@ endproc UI_PlayerSettingsMenu 0 4
 bss
 align 4
 LABELV s_playersettings
-skip 2620
+skip 2624
 import UI_RankStatusMenu
 import RankStatus_Cache
 import UI_SignupMenu

@@ -49,7 +49,7 @@ line 29
 ;27:
 ;28:	// if it's not switched on server-side, forget it
 ;29:	if ( !cgs.delagHitscan ) {
-ADDRGP4 cgs+153400
+ADDRGP4 cgs+153912
 INDIRI4
 CNSTI4 0
 NEI4 $77
@@ -678,7 +678,7 @@ line 113
 ;111:
 ;112:			// draw a rail trail
 ;113:			CG_RailTrail( &cgs.clientinfo[cent->currentState.number], muzzlePoint, trace.endpos );
-CNSTI4 1708
+CNSTI4 1716
 ADDRFP4 0
 INDIRP4
 INDIRI4
@@ -1024,7 +1024,7 @@ CNSTI4 0
 ARGI4
 CNSTI4 1
 ARGI4
-ADDRGP4 cgs+152340+292
+ADDRGP4 cgs+152852+292
 INDIRI4
 ARGI4
 ADDRGP4 CG_SmokePuff
@@ -1554,7 +1554,7 @@ line 246
 ;245:	// get the player's client info
 ;246:	ci = &cgs.clientinfo[cent->currentState.clientNum];
 ADDRLP4 236
-CNSTI4 1708
+CNSTI4 1716
 ADDRFP4 0
 INDIRP4
 CNSTI4 168

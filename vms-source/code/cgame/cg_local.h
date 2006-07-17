@@ -346,6 +346,7 @@ typedef struct {
 	vec3_t			headOffset;		// move head in icon views
 	footstep_t		footsteps;
 	gender_t		gender;			// from model
+	qboolean		efmodel;
 
 	qhandle_t		legsModel;
 	qhandle_t		legsSkin;
@@ -361,6 +362,7 @@ typedef struct {
 	animation_t		animations[MAX_TOTALANIMATIONS];
 
 	sfxHandle_t		sounds[MAX_CUSTOM_SOUNDS];
+	int				numTaunts;
 } clientInfo_t;
 
 
