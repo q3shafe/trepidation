@@ -54,6 +54,7 @@ void AddScore( gentity_t *ent, vec3_t origin, int score ) {
 	ScorePlum(ent, origin, score);
 	//
 	ent->client->ps.persistant[PERS_SCORE] += score;
+	ent->client->pers.TrueScore = ent->client->ps.persistant[PERS_SCORE];
 	if ( g_gametype.integer == GT_TEAM )
 		level.teamScores[ ent->client->ps.persistant[PERS_TEAM] ] += score;
 	CalculateRanks();
@@ -494,6 +495,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	// check for a player that almost brought in cubes
 	CheckAlmostScored( self, attacker );
 
+
 	if (self->client && self->client->hook)
 		Weapon_HookFree(self->client->hook);
 #ifdef MISSIONPACK
@@ -552,6 +554,8 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 		if ( attacker == self || OnSameTeam (self, attacker ) ) {
 			AddScore( attacker, self->r.currentOrigin, -1 );
+			
+
 		} else {
 			AddScore( attacker, self->r.currentOrigin, 1 );
 
@@ -659,8 +663,8 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				
 
 				// Send them to Spec
-				self->client->pers.Eliminated = qtrue;
 				self->client->pers.TrueScore = self->client->ps.persistant[PERS_SCORE];
+				self->client->pers.Eliminated = qtrue;
 				SetTeam(self, "s");
 
 

@@ -52,10 +52,11 @@ void DeathmatchScoreboardMessage( gentity_t *ent ) {
 		}
 		perfect = ( cl->ps.persistant[PERS_RANK] == 0 && cl->ps.persistant[PERS_KILLED] == 0 ) ? 1 : 0;
 
+		// Changed cl->ps.persistant[PERS_SCORE] to .truescore
 		Com_sprintf (entry, sizeof(entry),
 			" %i %i %i %i %i %i %i %i %i %i %i %i %i %i", level.sortedClients[i],
 			
-			cl->ps.persistant[PERS_SCORE], ping, (level.time - cl->pers.enterTime)/60000,
+			cl->pers.TrueScore, ping, (level.time - cl->pers.enterTime)/60000,
 			
 
 			scoreFlags, g_entities[level.sortedClients[i]].s.powerups, accuracy, 

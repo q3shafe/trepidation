@@ -1274,6 +1274,7 @@ void LogExit( const char *string ) {
 	// that will get cut off when the queued intermission starts
 	trap_SetConfigstring( CS_INTERMISSION, "1" );
 
+	// Shafe - This doesnt work
 	// Lets give spectators back their score for arsenal & lms
 	for ( i = 0; i < level.maxclients; i++ )
 	{
@@ -1601,8 +1602,6 @@ void CheckExitRules( void ) {
 					{	
 						survivor = cl;	
 						p = i;
-						//survivor = &level.clients[i];
-						G_Printf( S_COLOR_GREEN "DEBUG: Survivors %s %i\n", survivor->pers.netname, tmpCnt);
 						break;
 					}
 
@@ -1674,9 +1673,9 @@ void CheckExitRules( void ) {
 						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Machine Gun: ^3+6\n\"");	
 					}
 			
-
+			survivor->pers.TrueScore = survivor->ps.persistant[PERS_SCORE];
 			LogExit( "Fraglimit hit." );
-			//CalculateRanks();
+
 			return;
 				//}
 		} 
