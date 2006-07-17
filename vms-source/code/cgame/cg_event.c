@@ -640,7 +640,16 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 		break;
 	case EV_TAUNT:
 		DEBUGNAME("EV_TAUNT");
-		trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, "*taunt.wav" ) );
+		if (ci->efmodel == qfalse) 
+		{
+			//CG_CenterPrint( "QUAKE 3 MODEL TAUNT", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );// Shafe - Debug
+			trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, "*taunt.wav" ) );
+		}
+		else
+		{
+			//CG_CenterPrint( "Elite Force MODEL TAUNT", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );// Shafe - Debug
+			trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, va("*taunt%d.wav", irandom(1, ci->numTaunts) ) ) );
+		}
 		break;
 #ifdef MISSIONPACK
 	case EV_TAUNT_YES:

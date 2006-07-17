@@ -365,7 +365,7 @@ byte 4 0
 align 4
 LABELV g_weapons_controls
 address s_controls+2052
-address s_controls+4780
+address s_controls+4784
 address s_controls+2172
 address s_controls+2112
 address s_controls+2984
@@ -390,21 +390,21 @@ address s_controls+2352
 address s_controls+2412
 address s_controls+2476
 address s_controls+2536
-address s_controls+4640
-address s_controls+4704
+address s_controls+4644
+address s_controls+4708
 byte 4 0
 align 4
 LABELV g_misc_controls
 address s_controls+2924
 address s_controls+3048
 address s_controls+2596
-address s_controls+4220
-address s_controls+4280
-address s_controls+4340
-address s_controls+4400
-address s_controls+4460
-address s_controls+4520
-address s_controls+4580
+address s_controls+4224
+address s_controls+4284
+address s_controls+4344
+address s_controls+4404
+address s_controls+4464
+address s_controls+4524
+address s_controls+4584
 byte 4 0
 align 4
 LABELV g_controls
@@ -1094,15 +1094,15 @@ line 432
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-ADDRGP4 s_controls+4912+8
+ADDRGP4 s_controls+4916+8
 ADDRLP4 0
 INDIRF4
 ASGNF4
-ADDRGP4 s_controls+4912+4
+ADDRGP4 s_controls+4916+4
 ADDRLP4 0
 INDIRF4
 ASGNF4
-ADDRGP4 s_controls+4912
+ADDRGP4 s_controls+4916
 ADDRLP4 0
 INDIRF4
 ASGNF4
@@ -1111,47 +1111,47 @@ line 433
 ADDRLP4 4
 CNSTF4 0
 ASGNF4
-ADDRGP4 s_controls+4924+8
+ADDRGP4 s_controls+4928+8
 ADDRLP4 4
 INDIRF4
 ASGNF4
-ADDRGP4 s_controls+4924+4
+ADDRGP4 s_controls+4928+4
 ADDRLP4 4
 INDIRF4
 ASGNF4
-ADDRGP4 s_controls+4924
+ADDRGP4 s_controls+4928
 ADDRLP4 4
 INDIRF4
 ASGNF4
 line 434
 ;434:	s_controls.playerViewangles[YAW] = 180 - 30;
-ADDRGP4 s_controls+4912+4
+ADDRGP4 s_controls+4916+4
 CNSTF4 1125515264
 ASGNF4
 line 435
 ;435:	s_controls.playerMoveangles[YAW] = s_controls.playerViewangles[YAW];
-ADDRGP4 s_controls+4924+4
-ADDRGP4 s_controls+4912+4
+ADDRGP4 s_controls+4928+4
+ADDRGP4 s_controls+4916+4
 INDIRF4
 ASGNF4
 line 436
 ;436:	s_controls.playerLegs		     = LEGS_IDLE;
-ADDRGP4 s_controls+4936
+ADDRGP4 s_controls+4940
 CNSTI4 22
 ASGNI4
 line 437
 ;437:	s_controls.playerTorso			 = TORSO_STAND;
-ADDRGP4 s_controls+4940
+ADDRGP4 s_controls+4944
 CNSTI4 11
 ASGNI4
 line 438
 ;438:	s_controls.playerWeapon			 = -1;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 -1
 ASGNI4
 line 439
 ;439:	s_controls.playerChat			 = qfalse;
-ADDRGP4 s_controls+4948
+ADDRGP4 s_controls+4952
 CNSTI4 0
 ASGNI4
 line 441
@@ -1210,7 +1210,7 @@ LABELV $250
 line 443
 ;442:	case ANIM_RUN:	
 ;443:		s_controls.playerLegs = LEGS_RUN;
-ADDRGP4 s_controls+4936
+ADDRGP4 s_controls+4940
 CNSTI4 15
 ASGNI4
 line 444
@@ -1222,7 +1222,7 @@ line 447
 ;445:
 ;446:	case ANIM_WALK:	
 ;447:		s_controls.playerLegs = LEGS_WALK;
-ADDRGP4 s_controls+4936
+ADDRGP4 s_controls+4940
 CNSTI4 14
 ASGNI4
 line 448
@@ -1234,7 +1234,7 @@ line 451
 ;449:
 ;450:	case ANIM_BACK:	
 ;451:		s_controls.playerLegs = LEGS_BACK;
-ADDRGP4 s_controls+4936
+ADDRGP4 s_controls+4940
 CNSTI4 16
 ASGNI4
 line 452
@@ -1246,7 +1246,7 @@ line 455
 ;453:
 ;454:	case ANIM_JUMP:	
 ;455:		s_controls.playerLegs = LEGS_JUMP;
-ADDRGP4 s_controls+4936
+ADDRGP4 s_controls+4940
 CNSTI4 18
 ASGNI4
 line 456
@@ -1258,7 +1258,7 @@ line 459
 ;457:
 ;458:	case ANIM_CROUCH:	
 ;459:		s_controls.playerLegs = LEGS_IDLECR;
-ADDRGP4 s_controls+4936
+ADDRGP4 s_controls+4940
 CNSTI4 23
 ASGNI4
 line 460
@@ -1271,7 +1271,7 @@ line 463
 ;462:	case ANIM_TURNLEFT:
 ;463:		s_controls.playerViewangles[YAW] += 90;
 ADDRLP4 12
-ADDRGP4 s_controls+4912+4
+ADDRGP4 s_controls+4916+4
 ASGNP4
 ADDRLP4 12
 INDIRP4
@@ -1291,7 +1291,7 @@ line 467
 ;466:	case ANIM_TURNRIGHT:
 ;467:		s_controls.playerViewangles[YAW] -= 90;
 ADDRLP4 16
-ADDRGP4 s_controls+4912+4
+ADDRGP4 s_controls+4916+4
 ASGNP4
 ADDRLP4 16
 INDIRP4
@@ -1310,13 +1310,13 @@ line 471
 ;469:
 ;470:	case ANIM_STEPLEFT:
 ;471:		s_controls.playerLegs = LEGS_WALK;
-ADDRGP4 s_controls+4936
+ADDRGP4 s_controls+4940
 CNSTI4 14
 ASGNI4
 line 472
 ;472:		s_controls.playerMoveangles[YAW] = s_controls.playerViewangles[YAW] + 90;
-ADDRGP4 s_controls+4924+4
-ADDRGP4 s_controls+4912+4
+ADDRGP4 s_controls+4928+4
+ADDRGP4 s_controls+4916+4
 INDIRF4
 CNSTF4 1119092736
 ADDF4
@@ -1330,13 +1330,13 @@ line 476
 ;474:
 ;475:	case ANIM_STEPRIGHT:
 ;476:		s_controls.playerLegs = LEGS_WALK;
-ADDRGP4 s_controls+4936
+ADDRGP4 s_controls+4940
 CNSTI4 14
 ASGNI4
 line 477
 ;477:		s_controls.playerMoveangles[YAW] = s_controls.playerViewangles[YAW] - 90;
-ADDRGP4 s_controls+4924+4
-ADDRGP4 s_controls+4912+4
+ADDRGP4 s_controls+4928+4
+ADDRGP4 s_controls+4916+4
 INDIRF4
 CNSTF4 1119092736
 SUBF4
@@ -1350,7 +1350,7 @@ line 481
 ;479:
 ;480:	case ANIM_LOOKUP:
 ;481:		s_controls.playerViewangles[PITCH] = -45;
-ADDRGP4 s_controls+4912
+ADDRGP4 s_controls+4916
 CNSTF4 3258187776
 ASGNF4
 line 482
@@ -1362,7 +1362,7 @@ line 485
 ;483:
 ;484:	case ANIM_LOOKDOWN:
 ;485:		s_controls.playerViewangles[PITCH] = 45;
-ADDRGP4 s_controls+4912
+ADDRGP4 s_controls+4916
 CNSTF4 1110704128
 ASGNF4
 line 486
@@ -1374,7 +1374,7 @@ line 489
 ;487:
 ;488:	case ANIM_WEAPON1:
 ;489:		s_controls.playerWeapon = WP_GAUNTLET;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 1
 ASGNI4
 line 490
@@ -1386,7 +1386,7 @@ line 493
 ;491:
 ;492:	case ANIM_WEAPON2:
 ;493:		s_controls.playerWeapon = WP_MACHINEGUN;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 2
 ASGNI4
 line 494
@@ -1398,7 +1398,7 @@ line 497
 ;495:
 ;496:	case ANIM_WEAPON3:
 ;497:		s_controls.playerWeapon = WP_SHOTGUN;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 3
 ASGNI4
 line 498
@@ -1410,7 +1410,7 @@ line 501
 ;499:
 ;500:	case ANIM_WEAPON4:
 ;501:		s_controls.playerWeapon = WP_GRENADE_LAUNCHER;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 4
 ASGNI4
 line 502
@@ -1422,7 +1422,7 @@ line 505
 ;503:
 ;504:	case ANIM_WEAPON5:
 ;505:		s_controls.playerWeapon = WP_ROCKET_LAUNCHER;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 5
 ASGNI4
 line 506
@@ -1434,7 +1434,7 @@ line 509
 ;507:
 ;508:	case ANIM_WEAPON6:
 ;509:		s_controls.playerWeapon = WP_LIGHTNING;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 6
 ASGNI4
 line 510
@@ -1446,7 +1446,7 @@ line 513
 ;511:
 ;512:	case ANIM_WEAPON7:
 ;513:		s_controls.playerWeapon = WP_RAILGUN;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 7
 ASGNI4
 line 514
@@ -1458,7 +1458,7 @@ line 517
 ;515:
 ;516:	case ANIM_WEAPON8:
 ;517:		s_controls.playerWeapon = WP_PLASMAGUN;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 8
 ASGNI4
 line 518
@@ -1470,7 +1470,7 @@ line 521
 ;519:
 ;520:	case ANIM_WEAPON9:
 ;521:		s_controls.playerWeapon = WP_BFG;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 9
 ASGNI4
 line 522
@@ -1482,7 +1482,7 @@ line 525
 ;523:
 ;524:	case ANIM_WEAPON10:
 ;525:		s_controls.playerWeapon = WP_GRAPPLING_HOOK;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 10
 ASGNI4
 line 526
@@ -1494,7 +1494,7 @@ line 529
 ;527:
 ;528:	case ANIM_ATTACK:
 ;529:		s_controls.playerTorso = TORSO_ATTACK;
-ADDRGP4 s_controls+4940
+ADDRGP4 s_controls+4944
 CNSTI4 7
 ASGNI4
 line 530
@@ -1506,7 +1506,7 @@ line 533
 ;531:
 ;532:	case ANIM_GESTURE:
 ;533:		s_controls.playerTorso = TORSO_GESTURE;
-ADDRGP4 s_controls+4940
+ADDRGP4 s_controls+4944
 CNSTI4 6
 ASGNI4
 line 534
@@ -1518,17 +1518,17 @@ line 537
 ;535:
 ;536:	case ANIM_DIE:
 ;537:		s_controls.playerLegs = BOTH_DEATH1;
-ADDRGP4 s_controls+4936
+ADDRGP4 s_controls+4940
 CNSTI4 0
 ASGNI4
 line 538
 ;538:		s_controls.playerTorso = BOTH_DEATH1;
-ADDRGP4 s_controls+4940
+ADDRGP4 s_controls+4944
 CNSTI4 0
 ASGNI4
 line 539
 ;539:		s_controls.playerWeapon = WP_NONE;
-ADDRGP4 s_controls+4944
+ADDRGP4 s_controls+4948
 CNSTI4 0
 ASGNI4
 line 540
@@ -1540,7 +1540,7 @@ line 543
 ;541:
 ;542:	case ANIM_CHAT:
 ;543:		s_controls.playerChat = qtrue;
-ADDRGP4 s_controls+4948
+ADDRGP4 s_controls+4952
 CNSTI4 1
 ASGNI4
 line 544
@@ -1556,20 +1556,20 @@ line 550
 ;550:	UI_PlayerInfo_SetInfo( &s_controls.playerinfo, s_controls.playerLegs, s_controls.playerTorso, s_controls.playerViewangles, s_controls.playerMoveangles, s_controls.playerWeapon, s_controls.playerChat );
 ADDRGP4 s_controls+3108
 ARGP4
-ADDRGP4 s_controls+4936
-INDIRI4
-ARGI4
 ADDRGP4 s_controls+4940
 INDIRI4
 ARGI4
-ADDRGP4 s_controls+4912
-ARGP4
-ADDRGP4 s_controls+4924
-ARGP4
 ADDRGP4 s_controls+4944
 INDIRI4
 ARGI4
+ADDRGP4 s_controls+4916
+ARGP4
+ADDRGP4 s_controls+4928
+ARGP4
 ADDRGP4 s_controls+4948
+INDIRI4
+ARGI4
+ADDRGP4 s_controls+4952
 INDIRI4
 ARGI4
 ADDRGP4 UI_PlayerInfo_SetInfo
@@ -1686,7 +1686,7 @@ line 575
 ;574:
 ;575:	controls = g_controls[s_controls.section];
 ADDRLP4 8
-ADDRGP4 s_controls+4840
+ADDRGP4 s_controls+4844
 INDIRI4
 CNSTI4 2
 LSHI4
@@ -1866,7 +1866,7 @@ NEU4 $335
 line 595
 ;594:
 ;595:	if( s_controls.waitingforkey ) {
-ADDRGP4 s_controls+4844
+ADDRGP4 s_controls+4848
 INDIRI4
 CNSTI4 0
 EQI4 $339
@@ -1944,7 +1944,7 @@ line 605
 ;604:		// don't gray out player's name
 ;605:		s_controls.name.generic.flags &= ~QMF_GRAYED;
 ADDRLP4 32
-ADDRGP4 s_controls+5040+44
+ADDRGP4 s_controls+5044+44
 ASGNP4
 ADDRLP4 32
 INDIRP4
@@ -2120,7 +2120,7 @@ line 627
 ;626:	// set buttons
 ;627:	switch( s_controls.section ) {
 ADDRLP4 60
-ADDRGP4 s_controls+4840
+ADDRGP4 s_controls+4844
 INDIRI4
 ASGNI4
 ADDRLP4 60
@@ -2607,7 +2607,7 @@ pop
 line 700
 ;699:
 ;700:		if (s_controls.waitingforkey)
-ADDRGP4 s_controls+4844
+ADDRGP4 s_controls+4848
 INDIRI4
 CNSTI4 0
 EQI4 $412
@@ -2902,7 +2902,7 @@ line 748
 ;748:	if ( strcmp( buf, s_controls.playerModel ) != 0 ) {
 ADDRLP4 4
 ARGP4
-ADDRGP4 s_controls+4848
+ADDRGP4 s_controls+4852
 ARGP4
 ADDRLP4 68
 ADDRGP4 strcmp
@@ -2923,7 +2923,7 @@ CALLV
 pop
 line 750
 ;750:		strcpy( s_controls.playerModel, buf );
-ADDRGP4 s_controls+4848
+ADDRGP4 s_controls+4852
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -3370,7 +3370,7 @@ ADDRLP4 60
 ADDRGP4 UI_ClampCvar
 CALLF4
 ASGNF4
-ADDRGP4 s_controls+4640+60
+ADDRGP4 s_controls+4644+60
 ADDRLP4 60
 INDIRF4
 CVFI4 4
@@ -3394,7 +3394,7 @@ ADDRLP4 68
 ADDRGP4 UI_ClampCvar
 CALLF4
 ASGNF4
-ADDRGP4 s_controls+4704+68
+ADDRGP4 s_controls+4708+68
 ADDRLP4 68
 INDIRF4
 ASGNF4
@@ -3652,7 +3652,7 @@ line 861
 ;861:	trap_Cvar_SetValue( "in_joystick", s_controls.joyenable.curvalue );
 ADDRGP4 $152
 ARGP4
-ADDRGP4 s_controls+4640+60
+ADDRGP4 s_controls+4644+60
 INDIRI4
 CVIF4 4
 ARGF4
@@ -3663,7 +3663,7 @@ line 862
 ;862:	trap_Cvar_SetValue( "joy_threshold", s_controls.joythreshold.curvalue );
 ADDRGP4 $153
 ARGP4
-ADDRGP4 s_controls+4704+68
+ADDRGP4 s_controls+4708+68
 INDIRF4
 ARGF4
 ADDRGP4 trap_Cvar_SetValue
@@ -3867,7 +3867,7 @@ ADDRLP4 32
 ADDRGP4 Controls_GetCvarDefault
 CALLF4
 ASGNF4
-ADDRGP4 s_controls+4640+60
+ADDRGP4 s_controls+4644+60
 ADDRLP4 32
 INDIRF4
 CVFI4 4
@@ -3880,7 +3880,7 @@ ADDRLP4 36
 ADDRGP4 Controls_GetCvarDefault
 CALLF4
 ASGNF4
-ADDRGP4 s_controls+4704+68
+ADDRGP4 s_controls+4708+68
 ADDRLP4 36
 INDIRF4
 ASGNF4
@@ -3923,7 +3923,7 @@ ASGNI4
 line 913
 ;912:
 ;913:	if (!s_controls.waitingforkey)
-ADDRGP4 s_controls+4844
+ADDRGP4 s_controls+4848
 INDIRI4
 CNSTI4 0
 NEI4 $528
@@ -4019,7 +4019,7 @@ line 925
 ;923:			case K_MOUSE2:
 ;924:			case K_ESCAPE:
 ;925:				if (s_controls.changesmade)
-ADDRGP4 s_controls+4216
+ADDRGP4 s_controls+4220
 INDIRI4
 CNSTI4 0
 EQI4 $538
@@ -4089,7 +4089,7 @@ LABELV $547
 line 941
 ;940:			case K_ESCAPE:
 ;941:				s_controls.waitingforkey = qfalse;
-ADDRGP4 s_controls+4844
+ADDRGP4 s_controls+4848
 CNSTI4 0
 ASGNI4
 line 942
@@ -4116,7 +4116,7 @@ LABELV $529
 line 950
 ;949:
 ;950:	s_controls.changesmade = qtrue;
-ADDRGP4 s_controls+4216
+ADDRGP4 s_controls+4220
 CNSTI4 1
 ASGNI4
 line 952
@@ -4505,7 +4505,7 @@ LABELV $567
 line 1011
 ;1010:		
 ;1011:	s_controls.waitingforkey = qfalse;
-ADDRGP4 s_controls+4844
+ADDRGP4 s_controls+4848
 CNSTI4 0
 ASGNI4
 line 1013
@@ -4575,7 +4575,7 @@ line 1033
 ;1031:	}
 ;1032:
 ;1033:	s_controls.changesmade = qtrue;
-ADDRGP4 s_controls+4216
+ADDRGP4 s_controls+4220
 CNSTI4 1
 ASGNI4
 line 1034
@@ -4725,7 +4725,7 @@ line 1059
 ;1059:			{
 line 1060
 ;1060:				s_controls.section = C_MOVEMENT; 
-ADDRGP4 s_controls+4840
+ADDRGP4 s_controls+4844
 CNSTI4 0
 ASGNI4
 line 1061
@@ -4752,7 +4752,7 @@ line 1067
 ;1067:			{
 line 1068
 ;1068:				s_controls.section = C_LOOKING; 
-ADDRGP4 s_controls+4840
+ADDRGP4 s_controls+4844
 CNSTI4 1
 ASGNI4
 line 1069
@@ -4779,7 +4779,7 @@ line 1075
 ;1075:			{
 line 1076
 ;1076:				s_controls.section = C_WEAPONS; 
-ADDRGP4 s_controls+4840
+ADDRGP4 s_controls+4844
 CNSTI4 2
 ASGNI4
 line 1077
@@ -4806,7 +4806,7 @@ line 1083
 ;1083:			{
 line 1084
 ;1084:				s_controls.section = C_MISC; 
-ADDRGP4 s_controls+4840
+ADDRGP4 s_controls+4844
 CNSTI4 3
 ASGNI4
 line 1085
@@ -4861,7 +4861,7 @@ line 1098
 ;1098:			{
 line 1099
 ;1099:				if (s_controls.changesmade)
-ADDRGP4 s_controls+4216
+ADDRGP4 s_controls+4220
 INDIRI4
 CNSTI4 0
 EQI4 $621
@@ -4951,7 +4951,7 @@ line 1129
 ;1129:			{
 line 1130
 ;1130:				s_controls.changesmade = qtrue;
-ADDRGP4 s_controls+4216
+ADDRGP4 s_controls+4220
 CNSTI4 1
 ASGNI4
 line 1131
@@ -5030,7 +5030,7 @@ ADDRFP4 4
 INDIRI4
 CNSTI4 3
 NEI4 $645
-ADDRGP4 s_controls+4844
+ADDRGP4 s_controls+4848
 INDIRI4
 CNSTI4 0
 NEI4 $645
@@ -5038,7 +5038,7 @@ line 1152
 ;1152:	{
 line 1153
 ;1153:		s_controls.waitingforkey = 1;
-ADDRGP4 s_controls+4844
+ADDRGP4 s_controls+4848
 CNSTI4 1
 ASGNI4
 line 1154
@@ -5071,7 +5071,7 @@ ADDRGP4 s_controls+3108
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 1108
+CNSTI4 1112
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -5195,7 +5195,7 @@ ADDRGP4 s_controls
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 5112
+CNSTI4 5116
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -5518,52 +5518,52 @@ ASGNP4
 line 1271
 ;1270:
 ;1271:	s_controls.back.generic.type	 = MTYPE_BITMAP;
-ADDRGP4 s_controls+4952
+ADDRGP4 s_controls+4956
 CNSTI4 6
 ASGNI4
 line 1272
 ;1272:	s_controls.back.generic.name     = ART_BACK0;
-ADDRGP4 s_controls+4952+4
+ADDRGP4 s_controls+4956+4
 ADDRGP4 $782
 ASGNP4
 line 1273
 ;1273:	s_controls.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
-ADDRGP4 s_controls+4952+44
+ADDRGP4 s_controls+4956+44
 CNSTU4 260
 ASGNU4
 line 1274
 ;1274:	s_controls.back.generic.x		 = 0;
-ADDRGP4 s_controls+4952+12
+ADDRGP4 s_controls+4956+12
 CNSTI4 0
 ASGNI4
 line 1275
 ;1275:	s_controls.back.generic.y		 = 480-64;
-ADDRGP4 s_controls+4952+16
+ADDRGP4 s_controls+4956+16
 CNSTI4 416
 ASGNI4
 line 1276
 ;1276:	s_controls.back.generic.id	     = ID_BACK;
-ADDRGP4 s_controls+4952+8
+ADDRGP4 s_controls+4956+8
 CNSTI4 105
 ASGNI4
 line 1277
 ;1277:	s_controls.back.generic.callback = Controls_MenuEvent;
-ADDRGP4 s_controls+4952+48
+ADDRGP4 s_controls+4956+48
 ADDRGP4 Controls_MenuEvent
 ASGNP4
 line 1278
 ;1278:	s_controls.back.width  		     = 128;
-ADDRGP4 s_controls+4952+76
+ADDRGP4 s_controls+4956+76
 CNSTI4 128
 ASGNI4
 line 1279
 ;1279:	s_controls.back.height  		 = 64;
-ADDRGP4 s_controls+4952+80
+ADDRGP4 s_controls+4956+80
 CNSTI4 64
 ASGNI4
 line 1280
 ;1280:	s_controls.back.focuspic         = ART_BACK1;
-ADDRGP4 s_controls+4952+60
+ADDRGP4 s_controls+4956+60
 ADDRGP4 $799
 ASGNP4
 line 1282
@@ -6126,27 +6126,27 @@ line 1411
 ;1409:
 ;1410:		// Shafe - Alt Fire Menu 
 ;1411:	s_controls.altattack.generic.type	    = MTYPE_ACTION;
-ADDRGP4 s_controls+4780
+ADDRGP4 s_controls+4784
 CNSTI4 2
 ASGNI4
 line 1412
 ;1412:	s_controls.altattack.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
-ADDRGP4 s_controls+4780+44
+ADDRGP4 s_controls+4784+44
 CNSTU4 12548
 ASGNU4
 line 1413
 ;1413:	s_controls.altattack.generic.callback  = Controls_ActionEvent;
-ADDRGP4 s_controls+4780+48
+ADDRGP4 s_controls+4784+48
 ADDRGP4 Controls_ActionEvent
 ASGNP4
 line 1414
 ;1414:	s_controls.altattack.generic.ownerdraw = Controls_DrawKeyBinding;
-ADDRGP4 s_controls+4780+56
+ADDRGP4 s_controls+4784+56
 ADDRGP4 Controls_DrawKeyBinding
 ASGNP4
 line 1415
 ;1415:	s_controls.altattack.generic.id        = ID_ALTATTACK;
-ADDRGP4 s_controls+4780+8
+ADDRGP4 s_controls+4784+8
 CNSTI4 27
 ASGNI4
 line 1418
@@ -6641,304 +6641,304 @@ ASGNI4
 line 1530
 ;1529:
 ;1530:	s_controls.chat.generic.type	  = MTYPE_ACTION;
-ADDRGP4 s_controls+4220
+ADDRGP4 s_controls+4224
 CNSTI4 2
 ASGNI4
 line 1531
 ;1531:	s_controls.chat.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
-ADDRGP4 s_controls+4220+44
+ADDRGP4 s_controls+4224+44
 CNSTU4 12548
 ASGNU4
 line 1532
 ;1532:	s_controls.chat.generic.callback  = Controls_ActionEvent;
-ADDRGP4 s_controls+4220+48
+ADDRGP4 s_controls+4224+48
 ADDRGP4 Controls_ActionEvent
 ASGNP4
 line 1533
 ;1533:	s_controls.chat.generic.ownerdraw = Controls_DrawKeyBinding;
-ADDRGP4 s_controls+4220+56
+ADDRGP4 s_controls+4224+56
 ADDRGP4 Controls_DrawKeyBinding
 ASGNP4
 line 1534
 ;1534:	s_controls.chat.generic.id        = ID_CHAT;
-ADDRGP4 s_controls+4220+8
+ADDRGP4 s_controls+4224+8
 CNSTI4 31
 ASGNI4
 line 1536
 ;1535:
 ;1536:	s_controls.chat2.generic.type	   = MTYPE_ACTION;
-ADDRGP4 s_controls+4280
+ADDRGP4 s_controls+4284
 CNSTI4 2
 ASGNI4
 line 1537
 ;1537:	s_controls.chat2.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
-ADDRGP4 s_controls+4280+44
+ADDRGP4 s_controls+4284+44
 CNSTU4 12548
 ASGNU4
 line 1538
 ;1538:	s_controls.chat2.generic.callback  = Controls_ActionEvent;
-ADDRGP4 s_controls+4280+48
+ADDRGP4 s_controls+4284+48
 ADDRGP4 Controls_ActionEvent
 ASGNP4
 line 1539
 ;1539:	s_controls.chat2.generic.ownerdraw = Controls_DrawKeyBinding;
-ADDRGP4 s_controls+4280+56
+ADDRGP4 s_controls+4284+56
 ADDRGP4 Controls_DrawKeyBinding
 ASGNP4
 line 1540
 ;1540:	s_controls.chat2.generic.id        = ID_CHAT2;
-ADDRGP4 s_controls+4280+8
+ADDRGP4 s_controls+4284+8
 CNSTI4 32
 ASGNI4
 line 1542
 ;1541:
 ;1542:	s_controls.chat3.generic.type	   = MTYPE_ACTION;
-ADDRGP4 s_controls+4340
+ADDRGP4 s_controls+4344
 CNSTI4 2
 ASGNI4
 line 1543
 ;1543:	s_controls.chat3.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
-ADDRGP4 s_controls+4340+44
+ADDRGP4 s_controls+4344+44
 CNSTU4 12548
 ASGNU4
 line 1544
 ;1544:	s_controls.chat3.generic.callback  = Controls_ActionEvent;
-ADDRGP4 s_controls+4340+48
+ADDRGP4 s_controls+4344+48
 ADDRGP4 Controls_ActionEvent
 ASGNP4
 line 1545
 ;1545:	s_controls.chat3.generic.ownerdraw = Controls_DrawKeyBinding;
-ADDRGP4 s_controls+4340+56
+ADDRGP4 s_controls+4344+56
 ADDRGP4 Controls_DrawKeyBinding
 ASGNP4
 line 1546
 ;1546:	s_controls.chat3.generic.id        = ID_CHAT3;
-ADDRGP4 s_controls+4340+8
+ADDRGP4 s_controls+4344+8
 CNSTI4 33
 ASGNI4
 line 1548
 ;1547:
 ;1548:	s_controls.chat4.generic.type	   = MTYPE_ACTION;
-ADDRGP4 s_controls+4400
+ADDRGP4 s_controls+4404
 CNSTI4 2
 ASGNI4
 line 1549
 ;1549:	s_controls.chat4.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
-ADDRGP4 s_controls+4400+44
+ADDRGP4 s_controls+4404+44
 CNSTU4 12548
 ASGNU4
 line 1550
 ;1550:	s_controls.chat4.generic.callback  = Controls_ActionEvent;
-ADDRGP4 s_controls+4400+48
+ADDRGP4 s_controls+4404+48
 ADDRGP4 Controls_ActionEvent
 ASGNP4
 line 1551
 ;1551:	s_controls.chat4.generic.ownerdraw = Controls_DrawKeyBinding;
-ADDRGP4 s_controls+4400+56
+ADDRGP4 s_controls+4404+56
 ADDRGP4 Controls_DrawKeyBinding
 ASGNP4
 line 1552
 ;1552:	s_controls.chat4.generic.id        = ID_CHAT4;
-ADDRGP4 s_controls+4400+8
+ADDRGP4 s_controls+4404+8
 CNSTI4 34
 ASGNI4
 line 1555
 ;1553:
 ;1554:	// Shafe - Scanner
 ;1555:	s_controls.scanner.generic.type	    = MTYPE_ACTION;
-ADDRGP4 s_controls+4460
+ADDRGP4 s_controls+4464
 CNSTI4 2
 ASGNI4
 line 1556
 ;1556:	s_controls.scanner.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
-ADDRGP4 s_controls+4460+44
+ADDRGP4 s_controls+4464+44
 CNSTU4 12548
 ASGNU4
 line 1557
 ;1557:	s_controls.scanner.generic.callback  = Controls_ActionEvent;
-ADDRGP4 s_controls+4460+48
+ADDRGP4 s_controls+4464+48
 ADDRGP4 Controls_ActionEvent
 ASGNP4
 line 1558
 ;1558:	s_controls.scanner.generic.ownerdraw = Controls_DrawKeyBinding;
-ADDRGP4 s_controls+4460+56
+ADDRGP4 s_controls+4464+56
 ADDRGP4 Controls_DrawKeyBinding
 ASGNP4
 line 1559
 ;1559:	s_controls.scanner.generic.id        = ID_SCANNER;
-ADDRGP4 s_controls+4460+8
+ADDRGP4 s_controls+4464+8
 CNSTI4 35
 ASGNI4
 line 1562
 ;1560:
 ;1561:	// Shafe - Grapple
 ;1562:	s_controls.grapple.generic.type	    = MTYPE_ACTION;
-ADDRGP4 s_controls+4520
+ADDRGP4 s_controls+4524
 CNSTI4 2
 ASGNI4
 line 1563
 ;1563:	s_controls.grapple.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
-ADDRGP4 s_controls+4520+44
+ADDRGP4 s_controls+4524+44
 CNSTU4 12548
 ASGNU4
 line 1564
 ;1564:	s_controls.grapple.generic.callback  = Controls_ActionEvent;
-ADDRGP4 s_controls+4520+48
+ADDRGP4 s_controls+4524+48
 ADDRGP4 Controls_ActionEvent
 ASGNP4
 line 1565
 ;1565:	s_controls.grapple.generic.ownerdraw = Controls_DrawKeyBinding;
-ADDRGP4 s_controls+4520+56
+ADDRGP4 s_controls+4524+56
 ADDRGP4 Controls_DrawKeyBinding
 ASGNP4
 line 1566
 ;1566:	s_controls.grapple.generic.id        = ID_GRAPPLE;
-ADDRGP4 s_controls+4520+8
+ADDRGP4 s_controls+4524+8
 CNSTI4 36
 ASGNI4
 line 1569
 ;1567:	
 ;1568:	// Shafe - Grapple
 ;1569:	s_controls.pdg.generic.type	    = MTYPE_ACTION;
-ADDRGP4 s_controls+4580
+ADDRGP4 s_controls+4584
 CNSTI4 2
 ASGNI4
 line 1570
 ;1570:	s_controls.pdg.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
-ADDRGP4 s_controls+4580+44
+ADDRGP4 s_controls+4584+44
 CNSTU4 12548
 ASGNU4
 line 1571
 ;1571:	s_controls.pdg.generic.callback  = Controls_ActionEvent;
-ADDRGP4 s_controls+4580+48
+ADDRGP4 s_controls+4584+48
 ADDRGP4 Controls_ActionEvent
 ASGNP4
 line 1572
 ;1572:	s_controls.pdg.generic.ownerdraw = Controls_DrawKeyBinding;
-ADDRGP4 s_controls+4580+56
+ADDRGP4 s_controls+4584+56
 ADDRGP4 Controls_DrawKeyBinding
 ASGNP4
 line 1573
 ;1573:	s_controls.pdg.generic.id        = ID_PDG;
-ADDRGP4 s_controls+4580+8
+ADDRGP4 s_controls+4584+8
 CNSTI4 37
 ASGNI4
 line 1575
 ;1574:
 ;1575:	s_controls.joyenable.generic.type      = MTYPE_RADIOBUTTON;
-ADDRGP4 s_controls+4640
+ADDRGP4 s_controls+4644
 CNSTI4 5
 ASGNI4
 line 1576
 ;1576:	s_controls.joyenable.generic.flags	   = QMF_SMALLFONT;
-ADDRGP4 s_controls+4640+44
+ADDRGP4 s_controls+4644+44
 CNSTU4 2
 ASGNU4
 line 1577
 ;1577:	s_controls.joyenable.generic.x	       = SCREEN_WIDTH/2;
-ADDRGP4 s_controls+4640+12
+ADDRGP4 s_controls+4644+12
 CNSTI4 320
 ASGNI4
 line 1578
 ;1578:	s_controls.joyenable.generic.name	   = "joystick";
-ADDRGP4 s_controls+4640+4
+ADDRGP4 s_controls+4644+4
 ADDRGP4 $1250
 ASGNP4
 line 1579
 ;1579:	s_controls.joyenable.generic.id        = ID_JOYENABLE;
-ADDRGP4 s_controls+4640+8
+ADDRGP4 s_controls+4644+8
 CNSTI4 43
 ASGNI4
 line 1580
 ;1580:	s_controls.joyenable.generic.callback  = Controls_MenuEvent;
-ADDRGP4 s_controls+4640+48
+ADDRGP4 s_controls+4644+48
 ADDRGP4 Controls_MenuEvent
 ASGNP4
 line 1581
 ;1581:	s_controls.joyenable.generic.statusbar = Controls_StatusBar;
-ADDRGP4 s_controls+4640+52
+ADDRGP4 s_controls+4644+52
 ADDRGP4 Controls_StatusBar
 ASGNP4
 line 1583
 ;1582:
 ;1583:	s_controls.joythreshold.generic.type	  = MTYPE_SLIDER;
-ADDRGP4 s_controls+4704
+ADDRGP4 s_controls+4708
 CNSTI4 1
 ASGNI4
 line 1584
 ;1584:	s_controls.joythreshold.generic.x		  = SCREEN_WIDTH/2;
-ADDRGP4 s_controls+4704+12
+ADDRGP4 s_controls+4708+12
 CNSTI4 320
 ASGNI4
 line 1585
 ;1585:	s_controls.joythreshold.generic.flags	  = QMF_SMALLFONT;
-ADDRGP4 s_controls+4704+44
+ADDRGP4 s_controls+4708+44
 CNSTU4 2
 ASGNU4
 line 1586
 ;1586:	s_controls.joythreshold.generic.name	  = "joystick threshold";
-ADDRGP4 s_controls+4704+4
+ADDRGP4 s_controls+4708+4
 ADDRGP4 $1264
 ASGNP4
 line 1587
 ;1587:	s_controls.joythreshold.generic.id 	      = ID_JOYTHRESHOLD;
-ADDRGP4 s_controls+4704+8
+ADDRGP4 s_controls+4708+8
 CNSTI4 44
 ASGNI4
 line 1588
 ;1588:	s_controls.joythreshold.generic.callback  = Controls_MenuEvent;
-ADDRGP4 s_controls+4704+48
+ADDRGP4 s_controls+4708+48
 ADDRGP4 Controls_MenuEvent
 ASGNP4
 line 1589
 ;1589:	s_controls.joythreshold.minvalue		  = 0.05f;
-ADDRGP4 s_controls+4704+60
+ADDRGP4 s_controls+4708+60
 CNSTF4 1028443341
 ASGNF4
 line 1590
 ;1590:	s_controls.joythreshold.maxvalue		  = 0.75f;
-ADDRGP4 s_controls+4704+64
+ADDRGP4 s_controls+4708+64
 CNSTF4 1061158912
 ASGNF4
 line 1591
 ;1591:	s_controls.joythreshold.generic.statusbar = Controls_StatusBar;
-ADDRGP4 s_controls+4704+52
+ADDRGP4 s_controls+4708+52
 ADDRGP4 Controls_StatusBar
 ASGNP4
 line 1593
 ;1592:
 ;1593:	s_controls.name.generic.type	= MTYPE_PTEXT;
-ADDRGP4 s_controls+5040
+ADDRGP4 s_controls+5044
 CNSTI4 9
 ASGNI4
 line 1594
 ;1594:	s_controls.name.generic.flags	= QMF_CENTER_JUSTIFY|QMF_INACTIVE;
-ADDRGP4 s_controls+5040+44
+ADDRGP4 s_controls+5044+44
 CNSTU4 16392
 ASGNU4
 line 1595
 ;1595:	s_controls.name.generic.x		= 320;
-ADDRGP4 s_controls+5040+12
+ADDRGP4 s_controls+5044+12
 CNSTI4 320
 ASGNI4
 line 1596
 ;1596:	s_controls.name.generic.y		= 440;
-ADDRGP4 s_controls+5040+16
+ADDRGP4 s_controls+5044+16
 CNSTI4 440
 ASGNI4
 line 1597
 ;1597:	s_controls.name.string			= playername;
-ADDRGP4 s_controls+5040+60
+ADDRGP4 s_controls+5044+60
 ADDRGP4 $661
 ASGNP4
 line 1598
 ;1598:	s_controls.name.style			= UI_CENTER;
-ADDRGP4 s_controls+5040+64
+ADDRGP4 s_controls+5044+64
 CNSTI4 1
 ASGNI4
 line 1599
 ;1599:	s_controls.name.color			= text_color_normal;
-ADDRGP4 s_controls+5040+68
+ADDRGP4 s_controls+5044+68
 ADDRGP4 text_color_normal
 ASGNP4
 line 1601
@@ -6974,7 +6974,7 @@ line 1605
 ;1605:	Menu_AddItem( &s_controls.menu, &s_controls.name );
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+5040
+ADDRGP4 s_controls+5044
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7102,7 +7102,7 @@ line 1621
 ;1621:	Menu_AddItem( &s_controls.menu, &s_controls.joyenable );
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4640
+ADDRGP4 s_controls+4644
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7111,7 +7111,7 @@ line 1622
 ;1622:	Menu_AddItem( &s_controls.menu, &s_controls.joythreshold );
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4704
+ADDRGP4 s_controls+4708
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7231,7 +7231,7 @@ line 1638
 ;1638:	Menu_AddItem( &s_controls.menu, &s_controls.altattack );
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4780
+ADDRGP4 s_controls+4784
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7371,7 +7371,7 @@ line 1658
 ;1658:	Menu_AddItem( &s_controls.menu, &s_controls.scanner );	// Shafe - Radar
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4460
+ADDRGP4 s_controls+4464
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7380,7 +7380,7 @@ line 1659
 ;1659:	Menu_AddItem( &s_controls.menu, &s_controls.grapple );  // Shafe - Trep - Grapple
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4520
+ADDRGP4 s_controls+4524
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7389,7 +7389,7 @@ line 1660
 ;1660:	Menu_AddItem( &s_controls.menu, &s_controls.pdg );  // Shafe - Trep - pdg
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4580
+ADDRGP4 s_controls+4584
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7408,7 +7408,7 @@ line 1663
 ;1663:	Menu_AddItem( &s_controls.menu, &s_controls.chat );
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4220
+ADDRGP4 s_controls+4224
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7417,7 +7417,7 @@ line 1664
 ;1664:	Menu_AddItem( &s_controls.menu, &s_controls.chat2 );
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4280
+ADDRGP4 s_controls+4284
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7426,7 +7426,7 @@ line 1665
 ;1665:	Menu_AddItem( &s_controls.menu, &s_controls.chat3 );
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4340
+ADDRGP4 s_controls+4344
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7435,7 +7435,7 @@ line 1666
 ;1666:	Menu_AddItem( &s_controls.menu, &s_controls.chat4 );
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4400
+ADDRGP4 s_controls+4404
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7447,7 +7447,7 @@ line 1670
 ;1670:	Menu_AddItem( &s_controls.menu, &s_controls.back );
 ADDRGP4 s_controls
 ARGP4
-ADDRGP4 s_controls+4952
+ADDRGP4 s_controls+4956
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -7457,7 +7457,7 @@ line 1672
 ;1672:	trap_Cvar_VariableStringBuffer( "name", s_controls.name.string, 16 );
 ADDRGP4 $1343
 ARGP4
-ADDRGP4 s_controls+5040+60
+ADDRGP4 s_controls+5044+60
 INDIRP4
 ARGP4
 CNSTI4 16
@@ -7467,7 +7467,7 @@ CALLV
 pop
 line 1673
 ;1673:	Q_CleanStr( s_controls.name.string );
-ADDRGP4 s_controls+5040+60
+ADDRGP4 s_controls+5044+60
 INDIRP4
 ARGP4
 ADDRGP4 Q_CleanStr
@@ -7505,7 +7505,7 @@ line 1688
 ;1686:
 ;1687:	// initial default section
 ;1688:	s_controls.section = C_LOOKING;
-ADDRGP4 s_controls+4840
+ADDRGP4 s_controls+4844
 CNSTI4 1
 ASGNI4
 line 1691
@@ -7592,7 +7592,7 @@ endproc UI_ControlsMenu 0 4
 bss
 align 4
 LABELV s_controls
-skip 5112
+skip 5116
 import UI_RankStatusMenu
 import RankStatus_Cache
 import UI_SignupMenu

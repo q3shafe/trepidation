@@ -717,6 +717,27 @@ void SetPlaneSignbits (cplane_t *out) {
 }
 
 
+
+/*
+** flrandom
+  Returns a float min <= x < max (exclusive; will get max - 0.00001; but never max
+*/
+float flrandom(float min, float max)
+{
+	return ((rand() * (max - min)) / 32768.0F) + min;
+}
+
+/*
+** irandom
+  Returns an integer min <= x <= max (ie inclusive)
+*/
+int irandom(int min, int max)
+{
+	max++; //so it can round down
+	return ((rand() * (max - min)) >> 15) + min;
+}
+
+
 /*
 ==================
 BoxOnPlaneSide

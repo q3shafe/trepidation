@@ -4742,64 +4742,149 @@ line 717
 ;717:}
 LABELV $230
 endproc SetPlaneSignbits 8 0
-export BoxOnPlaneSide
-proc BoxOnPlaneSide 280 0
-line 766
+export flrandom
+proc flrandom 8 0
+line 726
 ;718:
 ;719:
-;720:/*
-;721:==================
-;722:BoxOnPlaneSide
-;723:
-;724:Returns 1, 2, or 1 + 2
-;725:
-;726:// this is the slow, general version
-;727:int BoxOnPlaneSide2 (vec3_t emins, vec3_t emaxs, struct cplane_s *p)
-;728:{
-;729:	int		i;
-;730:	float	dist1, dist2;
-;731:	int		sides;
-;732:	vec3_t	corners[2];
-;733:
-;734:	for (i=0 ; i<3 ; i++)
-;735:	{
-;736:		if (p->normal[i] < 0)
-;737:		{
-;738:			corners[0][i] = emins[i];
-;739:			corners[1][i] = emaxs[i];
-;740:		}
-;741:		else
-;742:		{
-;743:			corners[1][i] = emins[i];
-;744:			corners[0][i] = emaxs[i];
-;745:		}
-;746:	}
-;747:	dist1 = DotProduct (p->normal, corners[0]) - p->dist;
-;748:	dist2 = DotProduct (p->normal, corners[1]) - p->dist;
-;749:	sides = 0;
-;750:	if (dist1 >= 0)
-;751:		sides = 1;
-;752:	if (dist2 < 0)
-;753:		sides |= 2;
+;720:
+;721:/*
+;722:** flrandom
+;723:  Returns a float min <= x < max (exclusive; will get max - 0.00001; but never max
+;724:*/
+;725:float flrandom(float min, float max)
+;726:{
+line 727
+;727:	return ((rand() * (max - min)) / 32768.0F) + min;
+ADDRLP4 0
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 4
+ADDRFP4 0
+INDIRF4
+ASGNF4
+ADDRLP4 0
+INDIRI4
+CVIF4 4
+ADDRFP4 4
+INDIRF4
+ADDRLP4 4
+INDIRF4
+SUBF4
+MULF4
+CNSTF4 1191182336
+DIVF4
+ADDRLP4 4
+INDIRF4
+ADDF4
+RETF4
+LABELV $237
+endproc flrandom 8 0
+export irandom
+proc irandom 8 0
+line 735
+;728:}
+;729:
+;730:/*
+;731:** irandom
+;732:  Returns an integer min <= x <= max (ie inclusive)
+;733:*/
+;734:int irandom(int min, int max)
+;735:{
+line 736
+;736:	max++; //so it can round down
+ADDRFP4 4
+ADDRFP4 4
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+line 737
+;737:	return ((rand() * (max - min)) >> 15) + min;
+ADDRLP4 0
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 4
+ADDRFP4 0
+INDIRI4
+ASGNI4
+ADDRLP4 0
+INDIRI4
+ADDRFP4 4
+INDIRI4
+ADDRLP4 4
+INDIRI4
+SUBI4
+MULI4
+CNSTI4 15
+RSHI4
+ADDRLP4 4
+INDIRI4
+ADDI4
+RETI4
+LABELV $238
+endproc irandom 8 0
+export BoxOnPlaneSide
+proc BoxOnPlaneSide 280 0
+line 787
+;738:}
+;739:
+;740:
+;741:/*
+;742:==================
+;743:BoxOnPlaneSide
+;744:
+;745:Returns 1, 2, or 1 + 2
+;746:
+;747:// this is the slow, general version
+;748:int BoxOnPlaneSide2 (vec3_t emins, vec3_t emaxs, struct cplane_s *p)
+;749:{
+;750:	int		i;
+;751:	float	dist1, dist2;
+;752:	int		sides;
+;753:	vec3_t	corners[2];
 ;754:
-;755:	return sides;
-;756:}
-;757:
-;758:==================
-;759:*/
-;760:
-;761:#if !( (defined __linux__ || __FreeBSD__) && (defined __i386__) && (!defined C_ONLY)) // rb010123
-;762:
-;763:#if defined __LCC__ || defined C_ONLY || !id386 || defined __VECTORC
-;764:
-;765:int BoxOnPlaneSide (vec3_t emins, vec3_t emaxs, struct cplane_s *p)
-;766:{
-line 771
-;767:	float	dist1, dist2;
-;768:	int		sides;
-;769:
-;770:// fast axial cases
-;771:	if (p->type < 3)
+;755:	for (i=0 ; i<3 ; i++)
+;756:	{
+;757:		if (p->normal[i] < 0)
+;758:		{
+;759:			corners[0][i] = emins[i];
+;760:			corners[1][i] = emaxs[i];
+;761:		}
+;762:		else
+;763:		{
+;764:			corners[1][i] = emins[i];
+;765:			corners[0][i] = emaxs[i];
+;766:		}
+;767:	}
+;768:	dist1 = DotProduct (p->normal, corners[0]) - p->dist;
+;769:	dist2 = DotProduct (p->normal, corners[1]) - p->dist;
+;770:	sides = 0;
+;771:	if (dist1 >= 0)
+;772:		sides = 1;
+;773:	if (dist2 < 0)
+;774:		sides |= 2;
+;775:
+;776:	return sides;
+;777:}
+;778:
+;779:==================
+;780:*/
+;781:
+;782:#if !( (defined __linux__ || __FreeBSD__) && (defined __i386__) && (!defined C_ONLY)) // rb010123
+;783:
+;784:#if defined __LCC__ || defined C_ONLY || !id386 || defined __VECTORC
+;785:
+;786:int BoxOnPlaneSide (vec3_t emins, vec3_t emaxs, struct cplane_s *p)
+;787:{
+line 792
+;788:	float	dist1, dist2;
+;789:	int		sides;
+;790:
+;791:// fast axial cases
+;792:	if (p->type < 3)
 ADDRFP4 8
 INDIRP4
 CNSTI4 16
@@ -4807,11 +4892,11 @@ ADDP4
 INDIRU1
 CVUI4 1
 CNSTI4 3
-GEI4 $238
-line 772
-;772:	{
-line 773
-;773:		if (p->dist <= emins[p->type])
+GEI4 $240
+line 793
+;793:	{
+line 794
+;794:		if (p->dist <= emins[p->type])
 ADDRLP4 12
 ADDRFP4 8
 INDIRP4
@@ -4833,16 +4918,16 @@ ADDRFP4 0
 INDIRP4
 ADDP4
 INDIRF4
-GTF4 $240
-line 774
-;774:			return 1;
+GTF4 $242
+line 795
+;795:			return 1;
 CNSTI4 1
 RETI4
-ADDRGP4 $237
+ADDRGP4 $239
 JUMPV
-LABELV $240
-line 775
-;775:		if (p->dist >= emaxs[p->type])
+LABELV $242
+line 796
+;796:		if (p->dist >= emaxs[p->type])
 ADDRLP4 16
 ADDRFP4 8
 INDIRP4
@@ -4864,26 +4949,26 @@ ADDRFP4 4
 INDIRP4
 ADDP4
 INDIRF4
-LTF4 $242
-line 776
-;776:			return 2;
+LTF4 $244
+line 797
+;797:			return 2;
 CNSTI4 2
 RETI4
-ADDRGP4 $237
+ADDRGP4 $239
 JUMPV
-LABELV $242
-line 777
-;777:		return 3;
+LABELV $244
+line 798
+;798:		return 3;
 CNSTI4 3
 RETI4
-ADDRGP4 $237
+ADDRGP4 $239
 JUMPV
-LABELV $238
-line 781
-;778:	}
-;779:
-;780:// general case
-;781:	switch (p->signbits)
+LABELV $240
+line 802
+;799:	}
+;800:
+;801:// general case
+;802:	switch (p->signbits)
 ADDRLP4 12
 ADDRFP4 8
 INDIRP4
@@ -4895,695 +4980,82 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-LTI4 $244
+LTI4 $246
 ADDRLP4 12
 INDIRI4
 CNSTI4 7
-GTI4 $244
+GTI4 $246
 ADDRLP4 12
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $255
+ADDRGP4 $257
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $255
-address $247
-address $248
+LABELV $257
 address $249
 address $250
 address $251
 address $252
 address $253
 address $254
+address $255
+address $256
 code
-line 782
-;782:	{
-LABELV $247
-line 784
-;783:	case 0:
-;784:		dist1 = p->normal[0]*emaxs[0] + p->normal[1]*emaxs[1] + p->normal[2]*emaxs[2];
-ADDRLP4 20
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 24
-ADDRFP4 4
-INDIRP4
-ASGNP4
-ADDRLP4 28
-CNSTI4 4
-ASGNI4
-ADDRLP4 32
-CNSTI4 8
-ASGNI4
-ADDRLP4 4
-ADDRLP4 20
-INDIRP4
-INDIRF4
-ADDRLP4 24
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 20
-INDIRP4
-ADDRLP4 28
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 24
-INDIRP4
-ADDRLP4 28
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 20
-INDIRP4
-ADDRLP4 32
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 24
-INDIRP4
-ADDRLP4 32
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 785
-;785:		dist2 = p->normal[0]*emins[0] + p->normal[1]*emins[1] + p->normal[2]*emins[2];
-ADDRLP4 36
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 40
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 44
-CNSTI4 4
-ASGNI4
-ADDRLP4 48
-CNSTI4 8
-ASGNI4
-ADDRLP4 8
-ADDRLP4 36
-INDIRP4
-INDIRF4
-ADDRLP4 40
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 36
-INDIRP4
-ADDRLP4 44
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 40
-INDIRP4
-ADDRLP4 44
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 36
-INDIRP4
-ADDRLP4 48
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 40
-INDIRP4
-ADDRLP4 48
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 786
-;786:		break;
-ADDRGP4 $245
-JUMPV
-LABELV $248
-line 788
-;787:	case 1:
-;788:		dist1 = p->normal[0]*emins[0] + p->normal[1]*emaxs[1] + p->normal[2]*emaxs[2];
-ADDRLP4 52
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 56
-CNSTI4 4
-ASGNI4
-ADDRLP4 60
-ADDRFP4 4
-INDIRP4
-ASGNP4
-ADDRLP4 64
-CNSTI4 8
-ASGNI4
-ADDRLP4 4
-ADDRLP4 52
-INDIRP4
-INDIRF4
-ADDRFP4 0
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 52
-INDIRP4
-ADDRLP4 56
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 60
-INDIRP4
-ADDRLP4 56
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 52
-INDIRP4
-ADDRLP4 64
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 60
-INDIRP4
-ADDRLP4 64
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 789
-;789:		dist2 = p->normal[0]*emaxs[0] + p->normal[1]*emins[1] + p->normal[2]*emins[2];
-ADDRLP4 68
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 72
-CNSTI4 4
-ASGNI4
-ADDRLP4 76
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 80
-CNSTI4 8
-ASGNI4
-ADDRLP4 8
-ADDRLP4 68
-INDIRP4
-INDIRF4
-ADDRFP4 4
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 68
-INDIRP4
-ADDRLP4 72
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 76
-INDIRP4
-ADDRLP4 72
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 68
-INDIRP4
-ADDRLP4 80
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 76
-INDIRP4
-ADDRLP4 80
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 790
-;790:		break;
-ADDRGP4 $245
-JUMPV
+line 803
+;803:	{
 LABELV $249
-line 792
-;791:	case 2:
-;792:		dist1 = p->normal[0]*emaxs[0] + p->normal[1]*emins[1] + p->normal[2]*emaxs[2];
-ADDRLP4 84
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 88
-ADDRFP4 4
-INDIRP4
-ASGNP4
-ADDRLP4 92
-CNSTI4 4
-ASGNI4
-ADDRLP4 96
-CNSTI4 8
-ASGNI4
-ADDRLP4 4
-ADDRLP4 84
-INDIRP4
-INDIRF4
-ADDRLP4 88
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 84
-INDIRP4
-ADDRLP4 92
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 92
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 84
-INDIRP4
-ADDRLP4 96
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 88
-INDIRP4
-ADDRLP4 96
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 793
-;793:		dist2 = p->normal[0]*emins[0] + p->normal[1]*emaxs[1] + p->normal[2]*emins[2];
-ADDRLP4 100
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 104
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 108
-CNSTI4 4
-ASGNI4
-ADDRLP4 112
-CNSTI4 8
-ASGNI4
-ADDRLP4 8
-ADDRLP4 100
-INDIRP4
-INDIRF4
-ADDRLP4 104
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 100
-INDIRP4
-ADDRLP4 108
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 4
-INDIRP4
-ADDRLP4 108
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 100
-INDIRP4
-ADDRLP4 112
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 104
-INDIRP4
-ADDRLP4 112
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 794
-;794:		break;
-ADDRGP4 $245
-JUMPV
-LABELV $250
-line 796
-;795:	case 3:
-;796:		dist1 = p->normal[0]*emins[0] + p->normal[1]*emins[1] + p->normal[2]*emaxs[2];
-ADDRLP4 116
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 120
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 124
-CNSTI4 4
-ASGNI4
-ADDRLP4 128
-CNSTI4 8
-ASGNI4
-ADDRLP4 4
-ADDRLP4 116
-INDIRP4
-INDIRF4
-ADDRLP4 120
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 116
-INDIRP4
-ADDRLP4 124
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 120
-INDIRP4
-ADDRLP4 124
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 116
-INDIRP4
-ADDRLP4 128
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 4
-INDIRP4
-ADDRLP4 128
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 797
-;797:		dist2 = p->normal[0]*emaxs[0] + p->normal[1]*emaxs[1] + p->normal[2]*emins[2];
-ADDRLP4 132
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 136
-ADDRFP4 4
-INDIRP4
-ASGNP4
-ADDRLP4 140
-CNSTI4 4
-ASGNI4
-ADDRLP4 144
-CNSTI4 8
-ASGNI4
-ADDRLP4 8
-ADDRLP4 132
-INDIRP4
-INDIRF4
-ADDRLP4 136
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 132
-INDIRP4
-ADDRLP4 140
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 136
-INDIRP4
-ADDRLP4 140
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 132
-INDIRP4
-ADDRLP4 144
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 144
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 798
-;798:		break;
-ADDRGP4 $245
-JUMPV
-LABELV $251
-line 800
-;799:	case 4:
-;800:		dist1 = p->normal[0]*emaxs[0] + p->normal[1]*emaxs[1] + p->normal[2]*emins[2];
-ADDRLP4 148
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 152
-ADDRFP4 4
-INDIRP4
-ASGNP4
-ADDRLP4 156
-CNSTI4 4
-ASGNI4
-ADDRLP4 160
-CNSTI4 8
-ASGNI4
-ADDRLP4 4
-ADDRLP4 148
-INDIRP4
-INDIRF4
-ADDRLP4 152
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 148
-INDIRP4
-ADDRLP4 156
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 152
-INDIRP4
-ADDRLP4 156
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 148
-INDIRP4
-ADDRLP4 160
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 160
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 801
-;801:		dist2 = p->normal[0]*emins[0] + p->normal[1]*emins[1] + p->normal[2]*emaxs[2];
-ADDRLP4 164
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 168
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 172
-CNSTI4 4
-ASGNI4
-ADDRLP4 176
-CNSTI4 8
-ASGNI4
-ADDRLP4 8
-ADDRLP4 164
-INDIRP4
-INDIRF4
-ADDRLP4 168
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 164
-INDIRP4
-ADDRLP4 172
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 168
-INDIRP4
-ADDRLP4 172
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 164
-INDIRP4
-ADDRLP4 176
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 4
-INDIRP4
-ADDRLP4 176
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 802
-;802:		break;
-ADDRGP4 $245
-JUMPV
-LABELV $252
-line 804
-;803:	case 5:
-;804:		dist1 = p->normal[0]*emins[0] + p->normal[1]*emaxs[1] + p->normal[2]*emins[2];
-ADDRLP4 180
-ADDRFP4 8
-INDIRP4
-ASGNP4
-ADDRLP4 184
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 188
-CNSTI4 4
-ASGNI4
-ADDRLP4 192
-CNSTI4 8
-ASGNI4
-ADDRLP4 4
-ADDRLP4 180
-INDIRP4
-INDIRF4
-ADDRLP4 184
-INDIRP4
-INDIRF4
-MULF4
-ADDRLP4 180
-INDIRP4
-ADDRLP4 188
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 4
-INDIRP4
-ADDRLP4 188
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 180
-INDIRP4
-ADDRLP4 192
-INDIRI4
-ADDP4
-INDIRF4
-ADDRLP4 184
-INDIRP4
-ADDRLP4 192
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
 line 805
-;805:		dist2 = p->normal[0]*emaxs[0] + p->normal[1]*emins[1] + p->normal[2]*emaxs[2];
-ADDRLP4 196
+;804:	case 0:
+;805:		dist1 = p->normal[0]*emaxs[0] + p->normal[1]*emaxs[1] + p->normal[2]*emaxs[2];
+ADDRLP4 20
 ADDRFP4 8
 INDIRP4
 ASGNP4
-ADDRLP4 200
+ADDRLP4 24
 ADDRFP4 4
 INDIRP4
 ASGNP4
-ADDRLP4 204
+ADDRLP4 28
 CNSTI4 4
 ASGNI4
-ADDRLP4 208
+ADDRLP4 32
 CNSTI4 8
 ASGNI4
-ADDRLP4 8
-ADDRLP4 196
+ADDRLP4 4
+ADDRLP4 20
 INDIRP4
 INDIRF4
-ADDRLP4 200
+ADDRLP4 24
 INDIRP4
 INDIRF4
 MULF4
-ADDRLP4 196
+ADDRLP4 20
 INDIRP4
-ADDRLP4 204
+ADDRLP4 28
 INDIRI4
 ADDP4
 INDIRF4
-ADDRFP4 0
+ADDRLP4 24
 INDIRP4
-ADDRLP4 204
+ADDRLP4 28
 INDIRI4
 ADDP4
 INDIRF4
 MULF4
 ADDF4
-ADDRLP4 196
+ADDRLP4 20
 INDIRP4
-ADDRLP4 208
+ADDRLP4 32
 INDIRI4
 ADDP4
 INDIRF4
-ADDRLP4 200
+ADDRLP4 24
 INDIRP4
-ADDRLP4 208
+ADDRLP4 32
 INDIRI4
 ADDP4
 INDIRF4
@@ -5591,111 +5063,111 @@ MULF4
 ADDF4
 ASGNF4
 line 806
-;806:		break;
-ADDRGP4 $245
-JUMPV
-LABELV $253
-line 808
-;807:	case 6:
-;808:		dist1 = p->normal[0]*emaxs[0] + p->normal[1]*emins[1] + p->normal[2]*emins[2];
-ADDRLP4 212
+;806:		dist2 = p->normal[0]*emins[0] + p->normal[1]*emins[1] + p->normal[2]*emins[2];
+ADDRLP4 36
 ADDRFP4 8
 INDIRP4
 ASGNP4
-ADDRLP4 216
-CNSTI4 4
-ASGNI4
-ADDRLP4 220
+ADDRLP4 40
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 224
+ADDRLP4 44
+CNSTI4 4
+ASGNI4
+ADDRLP4 48
 CNSTI4 8
 ASGNI4
-ADDRLP4 4
-ADDRLP4 212
+ADDRLP4 8
+ADDRLP4 36
 INDIRP4
 INDIRF4
-ADDRFP4 4
+ADDRLP4 40
 INDIRP4
 INDIRF4
 MULF4
-ADDRLP4 212
+ADDRLP4 36
 INDIRP4
-ADDRLP4 216
+ADDRLP4 44
 INDIRI4
 ADDP4
 INDIRF4
-ADDRLP4 220
+ADDRLP4 40
 INDIRP4
-ADDRLP4 216
+ADDRLP4 44
 INDIRI4
 ADDP4
 INDIRF4
 MULF4
 ADDF4
-ADDRLP4 212
+ADDRLP4 36
 INDIRP4
-ADDRLP4 224
+ADDRLP4 48
 INDIRI4
 ADDP4
 INDIRF4
-ADDRLP4 220
+ADDRLP4 40
 INDIRP4
-ADDRLP4 224
+ADDRLP4 48
 INDIRI4
 ADDP4
 INDIRF4
 MULF4
 ADDF4
 ASGNF4
+line 807
+;807:		break;
+ADDRGP4 $247
+JUMPV
+LABELV $250
 line 809
-;809:		dist2 = p->normal[0]*emins[0] + p->normal[1]*emaxs[1] + p->normal[2]*emaxs[2];
-ADDRLP4 228
+;808:	case 1:
+;809:		dist1 = p->normal[0]*emins[0] + p->normal[1]*emaxs[1] + p->normal[2]*emaxs[2];
+ADDRLP4 52
 ADDRFP4 8
 INDIRP4
 ASGNP4
-ADDRLP4 232
+ADDRLP4 56
 CNSTI4 4
 ASGNI4
-ADDRLP4 236
+ADDRLP4 60
 ADDRFP4 4
 INDIRP4
 ASGNP4
-ADDRLP4 240
+ADDRLP4 64
 CNSTI4 8
 ASGNI4
-ADDRLP4 8
-ADDRLP4 228
+ADDRLP4 4
+ADDRLP4 52
 INDIRP4
 INDIRF4
 ADDRFP4 0
 INDIRP4
 INDIRF4
 MULF4
-ADDRLP4 228
+ADDRLP4 52
 INDIRP4
-ADDRLP4 232
+ADDRLP4 56
 INDIRI4
 ADDP4
 INDIRF4
-ADDRLP4 236
+ADDRLP4 60
 INDIRP4
-ADDRLP4 232
+ADDRLP4 56
 INDIRI4
 ADDP4
 INDIRF4
 MULF4
 ADDF4
-ADDRLP4 228
+ADDRLP4 52
 INDIRP4
-ADDRLP4 240
+ADDRLP4 64
 INDIRI4
 ADDP4
 INDIRF4
-ADDRLP4 236
+ADDRLP4 60
 INDIRP4
-ADDRLP4 240
+ADDRLP4 64
 INDIRI4
 ADDP4
 INDIRF4
@@ -5703,13 +5175,626 @@ MULF4
 ADDF4
 ASGNF4
 line 810
-;810:		break;
-ADDRGP4 $245
+;810:		dist2 = p->normal[0]*emaxs[0] + p->normal[1]*emins[1] + p->normal[2]*emins[2];
+ADDRLP4 68
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 72
+CNSTI4 4
+ASGNI4
+ADDRLP4 76
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 80
+CNSTI4 8
+ASGNI4
+ADDRLP4 8
+ADDRLP4 68
+INDIRP4
+INDIRF4
+ADDRFP4 4
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 68
+INDIRP4
+ADDRLP4 72
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 76
+INDIRP4
+ADDRLP4 72
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 68
+INDIRP4
+ADDRLP4 80
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 76
+INDIRP4
+ADDRLP4 80
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 811
+;811:		break;
+ADDRGP4 $247
+JUMPV
+LABELV $251
+line 813
+;812:	case 2:
+;813:		dist1 = p->normal[0]*emaxs[0] + p->normal[1]*emins[1] + p->normal[2]*emaxs[2];
+ADDRLP4 84
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 88
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 92
+CNSTI4 4
+ASGNI4
+ADDRLP4 96
+CNSTI4 8
+ASGNI4
+ADDRLP4 4
+ADDRLP4 84
+INDIRP4
+INDIRF4
+ADDRLP4 88
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 84
+INDIRP4
+ADDRLP4 92
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 92
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 84
+INDIRP4
+ADDRLP4 96
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 88
+INDIRP4
+ADDRLP4 96
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 814
+;814:		dist2 = p->normal[0]*emins[0] + p->normal[1]*emaxs[1] + p->normal[2]*emins[2];
+ADDRLP4 100
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 104
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 108
+CNSTI4 4
+ASGNI4
+ADDRLP4 112
+CNSTI4 8
+ASGNI4
+ADDRLP4 8
+ADDRLP4 100
+INDIRP4
+INDIRF4
+ADDRLP4 104
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 100
+INDIRP4
+ADDRLP4 108
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 4
+INDIRP4
+ADDRLP4 108
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 100
+INDIRP4
+ADDRLP4 112
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 104
+INDIRP4
+ADDRLP4 112
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 815
+;815:		break;
+ADDRGP4 $247
+JUMPV
+LABELV $252
+line 817
+;816:	case 3:
+;817:		dist1 = p->normal[0]*emins[0] + p->normal[1]*emins[1] + p->normal[2]*emaxs[2];
+ADDRLP4 116
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 120
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 124
+CNSTI4 4
+ASGNI4
+ADDRLP4 128
+CNSTI4 8
+ASGNI4
+ADDRLP4 4
+ADDRLP4 116
+INDIRP4
+INDIRF4
+ADDRLP4 120
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 116
+INDIRP4
+ADDRLP4 124
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 120
+INDIRP4
+ADDRLP4 124
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 116
+INDIRP4
+ADDRLP4 128
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 4
+INDIRP4
+ADDRLP4 128
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 818
+;818:		dist2 = p->normal[0]*emaxs[0] + p->normal[1]*emaxs[1] + p->normal[2]*emins[2];
+ADDRLP4 132
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 136
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 140
+CNSTI4 4
+ASGNI4
+ADDRLP4 144
+CNSTI4 8
+ASGNI4
+ADDRLP4 8
+ADDRLP4 132
+INDIRP4
+INDIRF4
+ADDRLP4 136
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 132
+INDIRP4
+ADDRLP4 140
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 136
+INDIRP4
+ADDRLP4 140
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 132
+INDIRP4
+ADDRLP4 144
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 144
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 819
+;819:		break;
+ADDRGP4 $247
+JUMPV
+LABELV $253
+line 821
+;820:	case 4:
+;821:		dist1 = p->normal[0]*emaxs[0] + p->normal[1]*emaxs[1] + p->normal[2]*emins[2];
+ADDRLP4 148
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 152
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 156
+CNSTI4 4
+ASGNI4
+ADDRLP4 160
+CNSTI4 8
+ASGNI4
+ADDRLP4 4
+ADDRLP4 148
+INDIRP4
+INDIRF4
+ADDRLP4 152
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 148
+INDIRP4
+ADDRLP4 156
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 152
+INDIRP4
+ADDRLP4 156
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 148
+INDIRP4
+ADDRLP4 160
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 160
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 822
+;822:		dist2 = p->normal[0]*emins[0] + p->normal[1]*emins[1] + p->normal[2]*emaxs[2];
+ADDRLP4 164
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 168
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 172
+CNSTI4 4
+ASGNI4
+ADDRLP4 176
+CNSTI4 8
+ASGNI4
+ADDRLP4 8
+ADDRLP4 164
+INDIRP4
+INDIRF4
+ADDRLP4 168
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 164
+INDIRP4
+ADDRLP4 172
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 168
+INDIRP4
+ADDRLP4 172
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 164
+INDIRP4
+ADDRLP4 176
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 4
+INDIRP4
+ADDRLP4 176
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 823
+;823:		break;
+ADDRGP4 $247
 JUMPV
 LABELV $254
-line 812
-;811:	case 7:
-;812:		dist1 = p->normal[0]*emins[0] + p->normal[1]*emins[1] + p->normal[2]*emins[2];
+line 825
+;824:	case 5:
+;825:		dist1 = p->normal[0]*emins[0] + p->normal[1]*emaxs[1] + p->normal[2]*emins[2];
+ADDRLP4 180
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 184
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 188
+CNSTI4 4
+ASGNI4
+ADDRLP4 192
+CNSTI4 8
+ASGNI4
+ADDRLP4 4
+ADDRLP4 180
+INDIRP4
+INDIRF4
+ADDRLP4 184
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 180
+INDIRP4
+ADDRLP4 188
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 4
+INDIRP4
+ADDRLP4 188
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 180
+INDIRP4
+ADDRLP4 192
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 184
+INDIRP4
+ADDRLP4 192
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 826
+;826:		dist2 = p->normal[0]*emaxs[0] + p->normal[1]*emins[1] + p->normal[2]*emaxs[2];
+ADDRLP4 196
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 200
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 204
+CNSTI4 4
+ASGNI4
+ADDRLP4 208
+CNSTI4 8
+ASGNI4
+ADDRLP4 8
+ADDRLP4 196
+INDIRP4
+INDIRF4
+ADDRLP4 200
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 196
+INDIRP4
+ADDRLP4 204
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 204
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 196
+INDIRP4
+ADDRLP4 208
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 200
+INDIRP4
+ADDRLP4 208
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 827
+;827:		break;
+ADDRGP4 $247
+JUMPV
+LABELV $255
+line 829
+;828:	case 6:
+;829:		dist1 = p->normal[0]*emaxs[0] + p->normal[1]*emins[1] + p->normal[2]*emins[2];
+ADDRLP4 212
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 216
+CNSTI4 4
+ASGNI4
+ADDRLP4 220
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 224
+CNSTI4 8
+ASGNI4
+ADDRLP4 4
+ADDRLP4 212
+INDIRP4
+INDIRF4
+ADDRFP4 4
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 212
+INDIRP4
+ADDRLP4 216
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 220
+INDIRP4
+ADDRLP4 216
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 212
+INDIRP4
+ADDRLP4 224
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 220
+INDIRP4
+ADDRLP4 224
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 830
+;830:		dist2 = p->normal[0]*emins[0] + p->normal[1]*emaxs[1] + p->normal[2]*emaxs[2];
+ADDRLP4 228
+ADDRFP4 8
+INDIRP4
+ASGNP4
+ADDRLP4 232
+CNSTI4 4
+ASGNI4
+ADDRLP4 236
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 240
+CNSTI4 8
+ASGNI4
+ADDRLP4 8
+ADDRLP4 228
+INDIRP4
+INDIRF4
+ADDRFP4 0
+INDIRP4
+INDIRF4
+MULF4
+ADDRLP4 228
+INDIRP4
+ADDRLP4 232
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 236
+INDIRP4
+ADDRLP4 232
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 228
+INDIRP4
+ADDRLP4 240
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 236
+INDIRP4
+ADDRLP4 240
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 831
+;831:		break;
+ADDRGP4 $247
+JUMPV
+LABELV $256
+line 833
+;832:	case 7:
+;833:		dist1 = p->normal[0]*emins[0] + p->normal[1]*emins[1] + p->normal[2]*emins[2];
 ADDRLP4 244
 ADDRFP4 8
 INDIRP4
@@ -5761,8 +5846,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 813
-;813:		dist2 = p->normal[0]*emaxs[0] + p->normal[1]*emaxs[1] + p->normal[2]*emaxs[2];
+line 834
+;834:		dist2 = p->normal[0]*emaxs[0] + p->normal[1]*emaxs[1] + p->normal[2]*emaxs[2];
 ADDRLP4 260
 ADDRFP4 8
 INDIRP4
@@ -5814,14 +5899,14 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 814
-;814:		break;
-ADDRGP4 $245
+line 835
+;835:		break;
+ADDRGP4 $247
 JUMPV
-LABELV $244
-line 816
-;815:	default:
-;816:		dist1 = dist2 = 0;		// shut up compiler
+LABELV $246
+line 837
+;836:	default:
+;837:		dist1 = dist2 = 0;		// shut up compiler
 ADDRLP4 276
 CNSTF4 0
 ASGNF4
@@ -5833,18 +5918,18 @@ ADDRLP4 4
 ADDRLP4 276
 INDIRF4
 ASGNF4
-line 817
-;817:		break;
-LABELV $245
-line 820
-;818:	}
-;819:
-;820:	sides = 0;
+line 838
+;838:		break;
+LABELV $247
+line 841
+;839:	}
+;840:
+;841:	sides = 0;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-line 821
-;821:	if (dist1 >= p->dist)
+line 842
+;842:	if (dist1 >= p->dist)
 ADDRLP4 4
 INDIRF4
 ADDRFP4 8
@@ -5852,15 +5937,15 @@ INDIRP4
 CNSTI4 12
 ADDP4
 INDIRF4
-LTF4 $256
-line 822
-;822:		sides = 1;
+LTF4 $258
+line 843
+;843:		sides = 1;
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-LABELV $256
-line 823
-;823:	if (dist2 < p->dist)
+LABELV $258
+line 844
+;844:	if (dist2 < p->dist)
 ADDRLP4 8
 INDIRF4
 ADDRFP4 8
@@ -5868,283 +5953,283 @@ INDIRP4
 CNSTI4 12
 ADDP4
 INDIRF4
-GEF4 $258
-line 824
-;824:		sides |= 2;
+GEF4 $260
+line 845
+;845:		sides |= 2;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 BORI4
 ASGNI4
-LABELV $258
-line 826
-;825:
-;826:	return sides;
+LABELV $260
+line 847
+;846:
+;847:	return sides;
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $237
+LABELV $239
 endproc BoxOnPlaneSide 280 0
 export RadiusFromBounds
 proc RadiusFromBounds 36 4
-line 1070
-;827:}
-;828:#else
-;829:#pragma warning( disable: 4035 )
-;830:
-;831:__declspec( naked ) int BoxOnPlaneSide (vec3_t emins, vec3_t emaxs, struct cplane_s *p)
-;832:{
-;833:	static int bops_initialized;
-;834:	static int Ljmptab[8];
-;835:
-;836:	__asm {
-;837:
-;838:		push ebx
-;839:			
-;840:		cmp bops_initialized, 1
-;841:		je  initialized
-;842:		mov bops_initialized, 1
-;843:		
-;844:		mov Ljmptab[0*4], offset Lcase0
-;845:		mov Ljmptab[1*4], offset Lcase1
-;846:		mov Ljmptab[2*4], offset Lcase2
-;847:		mov Ljmptab[3*4], offset Lcase3
-;848:		mov Ljmptab[4*4], offset Lcase4
-;849:		mov Ljmptab[5*4], offset Lcase5
-;850:		mov Ljmptab[6*4], offset Lcase6
-;851:		mov Ljmptab[7*4], offset Lcase7
-;852:			
-;853:initialized:
-;854:
-;855:		mov edx,dword ptr[4+12+esp]
-;856:		mov ecx,dword ptr[4+4+esp]
-;857:		xor eax,eax
-;858:		mov ebx,dword ptr[4+8+esp]
-;859:		mov al,byte ptr[17+edx]
-;860:		cmp al,8
-;861:		jge Lerror
-;862:		fld dword ptr[0+edx]
-;863:		fld st(0)
-;864:		jmp dword ptr[Ljmptab+eax*4]
-;865:Lcase0:
-;866:		fmul dword ptr[ebx]
-;867:		fld dword ptr[0+4+edx]
-;868:		fxch st(2)
-;869:		fmul dword ptr[ecx]
-;870:		fxch st(2)
-;871:		fld st(0)
-;872:		fmul dword ptr[4+ebx]
-;873:		fld dword ptr[0+8+edx]
-;874:		fxch st(2)
-;875:		fmul dword ptr[4+ecx]
-;876:		fxch st(2)
-;877:		fld st(0)
-;878:		fmul dword ptr[8+ebx]
-;879:		fxch st(5)
-;880:		faddp st(3),st(0)
-;881:		fmul dword ptr[8+ecx]
-;882:		fxch st(1)
-;883:		faddp st(3),st(0)
-;884:		fxch st(3)
-;885:		faddp st(2),st(0)
-;886:		jmp LSetSides
-;887:Lcase1:
-;888:		fmul dword ptr[ecx]
-;889:		fld dword ptr[0+4+edx]
-;890:		fxch st(2)
-;891:		fmul dword ptr[ebx]
-;892:		fxch st(2)
-;893:		fld st(0)
-;894:		fmul dword ptr[4+ebx]
-;895:		fld dword ptr[0+8+edx]
-;896:		fxch st(2)
-;897:		fmul dword ptr[4+ecx]
-;898:		fxch st(2)
-;899:		fld st(0)
-;900:		fmul dword ptr[8+ebx]
-;901:		fxch st(5)
-;902:		faddp st(3),st(0)
-;903:		fmul dword ptr[8+ecx]
-;904:		fxch st(1)
-;905:		faddp st(3),st(0)
-;906:		fxch st(3)
-;907:		faddp st(2),st(0)
-;908:		jmp LSetSides
-;909:Lcase2:
-;910:		fmul dword ptr[ebx]
-;911:		fld dword ptr[0+4+edx]
-;912:		fxch st(2)
-;913:		fmul dword ptr[ecx]
-;914:		fxch st(2)
-;915:		fld st(0)
-;916:		fmul dword ptr[4+ecx]
-;917:		fld dword ptr[0+8+edx]
-;918:		fxch st(2)
-;919:		fmul dword ptr[4+ebx]
-;920:		fxch st(2)
-;921:		fld st(0)
-;922:		fmul dword ptr[8+ebx]
-;923:		fxch st(5)
-;924:		faddp st(3),st(0)
-;925:		fmul dword ptr[8+ecx]
-;926:		fxch st(1)
-;927:		faddp st(3),st(0)
-;928:		fxch st(3)
-;929:		faddp st(2),st(0)
-;930:		jmp LSetSides
-;931:Lcase3:
-;932:		fmul dword ptr[ecx]
-;933:		fld dword ptr[0+4+edx]
-;934:		fxch st(2)
-;935:		fmul dword ptr[ebx]
-;936:		fxch st(2)
-;937:		fld st(0)
-;938:		fmul dword ptr[4+ecx]
-;939:		fld dword ptr[0+8+edx]
-;940:		fxch st(2)
-;941:		fmul dword ptr[4+ebx]
-;942:		fxch st(2)
-;943:		fld st(0)
-;944:		fmul dword ptr[8+ebx]
-;945:		fxch st(5)
-;946:		faddp st(3),st(0)
-;947:		fmul dword ptr[8+ecx]
-;948:		fxch st(1)
-;949:		faddp st(3),st(0)
-;950:		fxch st(3)
-;951:		faddp st(2),st(0)
-;952:		jmp LSetSides
-;953:Lcase4:
-;954:		fmul dword ptr[ebx]
-;955:		fld dword ptr[0+4+edx]
-;956:		fxch st(2)
-;957:		fmul dword ptr[ecx]
-;958:		fxch st(2)
-;959:		fld st(0)
-;960:		fmul dword ptr[4+ebx]
-;961:		fld dword ptr[0+8+edx]
-;962:		fxch st(2)
-;963:		fmul dword ptr[4+ecx]
-;964:		fxch st(2)
-;965:		fld st(0)
-;966:		fmul dword ptr[8+ecx]
-;967:		fxch st(5)
-;968:		faddp st(3),st(0)
-;969:		fmul dword ptr[8+ebx]
-;970:		fxch st(1)
-;971:		faddp st(3),st(0)
-;972:		fxch st(3)
-;973:		faddp st(2),st(0)
-;974:		jmp LSetSides
-;975:Lcase5:
-;976:		fmul dword ptr[ecx]
-;977:		fld dword ptr[0+4+edx]
-;978:		fxch st(2)
-;979:		fmul dword ptr[ebx]
-;980:		fxch st(2)
-;981:		fld st(0)
-;982:		fmul dword ptr[4+ebx]
-;983:		fld dword ptr[0+8+edx]
-;984:		fxch st(2)
-;985:		fmul dword ptr[4+ecx]
-;986:		fxch st(2)
-;987:		fld st(0)
-;988:		fmul dword ptr[8+ecx]
-;989:		fxch st(5)
-;990:		faddp st(3),st(0)
-;991:		fmul dword ptr[8+ebx]
-;992:		fxch st(1)
-;993:		faddp st(3),st(0)
-;994:		fxch st(3)
-;995:		faddp st(2),st(0)
-;996:		jmp LSetSides
-;997:Lcase6:
-;998:		fmul dword ptr[ebx]
-;999:		fld dword ptr[0+4+edx]
-;1000:		fxch st(2)
-;1001:		fmul dword ptr[ecx]
-;1002:		fxch st(2)
-;1003:		fld st(0)
-;1004:		fmul dword ptr[4+ecx]
-;1005:		fld dword ptr[0+8+edx]
-;1006:		fxch st(2)
-;1007:		fmul dword ptr[4+ebx]
-;1008:		fxch st(2)
-;1009:		fld st(0)
-;1010:		fmul dword ptr[8+ecx]
-;1011:		fxch st(5)
-;1012:		faddp st(3),st(0)
-;1013:		fmul dword ptr[8+ebx]
-;1014:		fxch st(1)
-;1015:		faddp st(3),st(0)
-;1016:		fxch st(3)
-;1017:		faddp st(2),st(0)
-;1018:		jmp LSetSides
-;1019:Lcase7:
-;1020:		fmul dword ptr[ecx]
-;1021:		fld dword ptr[0+4+edx]
-;1022:		fxch st(2)
-;1023:		fmul dword ptr[ebx]
-;1024:		fxch st(2)
-;1025:		fld st(0)
-;1026:		fmul dword ptr[4+ecx]
-;1027:		fld dword ptr[0+8+edx]
-;1028:		fxch st(2)
-;1029:		fmul dword ptr[4+ebx]
-;1030:		fxch st(2)
-;1031:		fld st(0)
-;1032:		fmul dword ptr[8+ecx]
-;1033:		fxch st(5)
-;1034:		faddp st(3),st(0)
-;1035:		fmul dword ptr[8+ebx]
-;1036:		fxch st(1)
-;1037:		faddp st(3),st(0)
-;1038:		fxch st(3)
-;1039:		faddp st(2),st(0)
-;1040:LSetSides:
-;1041:		faddp st(2),st(0)
-;1042:		fcomp dword ptr[12+edx]
-;1043:		xor ecx,ecx
-;1044:		fnstsw ax
-;1045:		fcomp dword ptr[12+edx]
-;1046:		and ah,1
-;1047:		xor ah,1
-;1048:		add cl,ah
-;1049:		fnstsw ax
-;1050:		and ah,1
-;1051:		add ah,ah
-;1052:		add cl,ah
-;1053:		pop ebx
-;1054:		mov eax,ecx
-;1055:		ret
-;1056:Lerror:
-;1057:		int 3
-;1058:	}
-;1059:}
-;1060:#pragma warning( default: 4035 )
-;1061:
-;1062:#endif
-;1063:#endif
-;1064:
-;1065:/*
-;1066:=================
-;1067:RadiusFromBounds
-;1068:=================
-;1069:*/
-;1070:float RadiusFromBounds( const vec3_t mins, const vec3_t maxs ) {
-line 1075
-;1071:	int		i;
-;1072:	vec3_t	corner;
-;1073:	float	a, b;
-;1074:
-;1075:	for (i=0 ; i<3 ; i++) {
+line 1091
+;848:}
+;849:#else
+;850:#pragma warning( disable: 4035 )
+;851:
+;852:__declspec( naked ) int BoxOnPlaneSide (vec3_t emins, vec3_t emaxs, struct cplane_s *p)
+;853:{
+;854:	static int bops_initialized;
+;855:	static int Ljmptab[8];
+;856:
+;857:	__asm {
+;858:
+;859:		push ebx
+;860:			
+;861:		cmp bops_initialized, 1
+;862:		je  initialized
+;863:		mov bops_initialized, 1
+;864:		
+;865:		mov Ljmptab[0*4], offset Lcase0
+;866:		mov Ljmptab[1*4], offset Lcase1
+;867:		mov Ljmptab[2*4], offset Lcase2
+;868:		mov Ljmptab[3*4], offset Lcase3
+;869:		mov Ljmptab[4*4], offset Lcase4
+;870:		mov Ljmptab[5*4], offset Lcase5
+;871:		mov Ljmptab[6*4], offset Lcase6
+;872:		mov Ljmptab[7*4], offset Lcase7
+;873:			
+;874:initialized:
+;875:
+;876:		mov edx,dword ptr[4+12+esp]
+;877:		mov ecx,dword ptr[4+4+esp]
+;878:		xor eax,eax
+;879:		mov ebx,dword ptr[4+8+esp]
+;880:		mov al,byte ptr[17+edx]
+;881:		cmp al,8
+;882:		jge Lerror
+;883:		fld dword ptr[0+edx]
+;884:		fld st(0)
+;885:		jmp dword ptr[Ljmptab+eax*4]
+;886:Lcase0:
+;887:		fmul dword ptr[ebx]
+;888:		fld dword ptr[0+4+edx]
+;889:		fxch st(2)
+;890:		fmul dword ptr[ecx]
+;891:		fxch st(2)
+;892:		fld st(0)
+;893:		fmul dword ptr[4+ebx]
+;894:		fld dword ptr[0+8+edx]
+;895:		fxch st(2)
+;896:		fmul dword ptr[4+ecx]
+;897:		fxch st(2)
+;898:		fld st(0)
+;899:		fmul dword ptr[8+ebx]
+;900:		fxch st(5)
+;901:		faddp st(3),st(0)
+;902:		fmul dword ptr[8+ecx]
+;903:		fxch st(1)
+;904:		faddp st(3),st(0)
+;905:		fxch st(3)
+;906:		faddp st(2),st(0)
+;907:		jmp LSetSides
+;908:Lcase1:
+;909:		fmul dword ptr[ecx]
+;910:		fld dword ptr[0+4+edx]
+;911:		fxch st(2)
+;912:		fmul dword ptr[ebx]
+;913:		fxch st(2)
+;914:		fld st(0)
+;915:		fmul dword ptr[4+ebx]
+;916:		fld dword ptr[0+8+edx]
+;917:		fxch st(2)
+;918:		fmul dword ptr[4+ecx]
+;919:		fxch st(2)
+;920:		fld st(0)
+;921:		fmul dword ptr[8+ebx]
+;922:		fxch st(5)
+;923:		faddp st(3),st(0)
+;924:		fmul dword ptr[8+ecx]
+;925:		fxch st(1)
+;926:		faddp st(3),st(0)
+;927:		fxch st(3)
+;928:		faddp st(2),st(0)
+;929:		jmp LSetSides
+;930:Lcase2:
+;931:		fmul dword ptr[ebx]
+;932:		fld dword ptr[0+4+edx]
+;933:		fxch st(2)
+;934:		fmul dword ptr[ecx]
+;935:		fxch st(2)
+;936:		fld st(0)
+;937:		fmul dword ptr[4+ecx]
+;938:		fld dword ptr[0+8+edx]
+;939:		fxch st(2)
+;940:		fmul dword ptr[4+ebx]
+;941:		fxch st(2)
+;942:		fld st(0)
+;943:		fmul dword ptr[8+ebx]
+;944:		fxch st(5)
+;945:		faddp st(3),st(0)
+;946:		fmul dword ptr[8+ecx]
+;947:		fxch st(1)
+;948:		faddp st(3),st(0)
+;949:		fxch st(3)
+;950:		faddp st(2),st(0)
+;951:		jmp LSetSides
+;952:Lcase3:
+;953:		fmul dword ptr[ecx]
+;954:		fld dword ptr[0+4+edx]
+;955:		fxch st(2)
+;956:		fmul dword ptr[ebx]
+;957:		fxch st(2)
+;958:		fld st(0)
+;959:		fmul dword ptr[4+ecx]
+;960:		fld dword ptr[0+8+edx]
+;961:		fxch st(2)
+;962:		fmul dword ptr[4+ebx]
+;963:		fxch st(2)
+;964:		fld st(0)
+;965:		fmul dword ptr[8+ebx]
+;966:		fxch st(5)
+;967:		faddp st(3),st(0)
+;968:		fmul dword ptr[8+ecx]
+;969:		fxch st(1)
+;970:		faddp st(3),st(0)
+;971:		fxch st(3)
+;972:		faddp st(2),st(0)
+;973:		jmp LSetSides
+;974:Lcase4:
+;975:		fmul dword ptr[ebx]
+;976:		fld dword ptr[0+4+edx]
+;977:		fxch st(2)
+;978:		fmul dword ptr[ecx]
+;979:		fxch st(2)
+;980:		fld st(0)
+;981:		fmul dword ptr[4+ebx]
+;982:		fld dword ptr[0+8+edx]
+;983:		fxch st(2)
+;984:		fmul dword ptr[4+ecx]
+;985:		fxch st(2)
+;986:		fld st(0)
+;987:		fmul dword ptr[8+ecx]
+;988:		fxch st(5)
+;989:		faddp st(3),st(0)
+;990:		fmul dword ptr[8+ebx]
+;991:		fxch st(1)
+;992:		faddp st(3),st(0)
+;993:		fxch st(3)
+;994:		faddp st(2),st(0)
+;995:		jmp LSetSides
+;996:Lcase5:
+;997:		fmul dword ptr[ecx]
+;998:		fld dword ptr[0+4+edx]
+;999:		fxch st(2)
+;1000:		fmul dword ptr[ebx]
+;1001:		fxch st(2)
+;1002:		fld st(0)
+;1003:		fmul dword ptr[4+ebx]
+;1004:		fld dword ptr[0+8+edx]
+;1005:		fxch st(2)
+;1006:		fmul dword ptr[4+ecx]
+;1007:		fxch st(2)
+;1008:		fld st(0)
+;1009:		fmul dword ptr[8+ecx]
+;1010:		fxch st(5)
+;1011:		faddp st(3),st(0)
+;1012:		fmul dword ptr[8+ebx]
+;1013:		fxch st(1)
+;1014:		faddp st(3),st(0)
+;1015:		fxch st(3)
+;1016:		faddp st(2),st(0)
+;1017:		jmp LSetSides
+;1018:Lcase6:
+;1019:		fmul dword ptr[ebx]
+;1020:		fld dword ptr[0+4+edx]
+;1021:		fxch st(2)
+;1022:		fmul dword ptr[ecx]
+;1023:		fxch st(2)
+;1024:		fld st(0)
+;1025:		fmul dword ptr[4+ecx]
+;1026:		fld dword ptr[0+8+edx]
+;1027:		fxch st(2)
+;1028:		fmul dword ptr[4+ebx]
+;1029:		fxch st(2)
+;1030:		fld st(0)
+;1031:		fmul dword ptr[8+ecx]
+;1032:		fxch st(5)
+;1033:		faddp st(3),st(0)
+;1034:		fmul dword ptr[8+ebx]
+;1035:		fxch st(1)
+;1036:		faddp st(3),st(0)
+;1037:		fxch st(3)
+;1038:		faddp st(2),st(0)
+;1039:		jmp LSetSides
+;1040:Lcase7:
+;1041:		fmul dword ptr[ecx]
+;1042:		fld dword ptr[0+4+edx]
+;1043:		fxch st(2)
+;1044:		fmul dword ptr[ebx]
+;1045:		fxch st(2)
+;1046:		fld st(0)
+;1047:		fmul dword ptr[4+ecx]
+;1048:		fld dword ptr[0+8+edx]
+;1049:		fxch st(2)
+;1050:		fmul dword ptr[4+ebx]
+;1051:		fxch st(2)
+;1052:		fld st(0)
+;1053:		fmul dword ptr[8+ecx]
+;1054:		fxch st(5)
+;1055:		faddp st(3),st(0)
+;1056:		fmul dword ptr[8+ebx]
+;1057:		fxch st(1)
+;1058:		faddp st(3),st(0)
+;1059:		fxch st(3)
+;1060:		faddp st(2),st(0)
+;1061:LSetSides:
+;1062:		faddp st(2),st(0)
+;1063:		fcomp dword ptr[12+edx]
+;1064:		xor ecx,ecx
+;1065:		fnstsw ax
+;1066:		fcomp dword ptr[12+edx]
+;1067:		and ah,1
+;1068:		xor ah,1
+;1069:		add cl,ah
+;1070:		fnstsw ax
+;1071:		and ah,1
+;1072:		add ah,ah
+;1073:		add cl,ah
+;1074:		pop ebx
+;1075:		mov eax,ecx
+;1076:		ret
+;1077:Lerror:
+;1078:		int 3
+;1079:	}
+;1080:}
+;1081:#pragma warning( default: 4035 )
+;1082:
+;1083:#endif
+;1084:#endif
+;1085:
+;1086:/*
+;1087:=================
+;1088:RadiusFromBounds
+;1089:=================
+;1090:*/
+;1091:float RadiusFromBounds( const vec3_t mins, const vec3_t maxs ) {
+line 1096
+;1092:	int		i;
+;1093:	vec3_t	corner;
+;1094:	float	a, b;
+;1095:
+;1096:	for (i=0 ; i<3 ; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $261
-line 1076
-;1076:		a = fabs( mins[i] );
+LABELV $263
+line 1097
+;1097:		a = fabs( mins[i] );
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -6162,8 +6247,8 @@ ADDRLP4 4
 ADDRLP4 24
 INDIRF4
 ASGNF4
-line 1077
-;1077:		b = fabs( maxs[i] );
+line 1098
+;1098:		b = fabs( maxs[i] );
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -6181,25 +6266,25 @@ ADDRLP4 8
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1078
-;1078:		corner[i] = a > b ? a : b;
+line 1099
+;1099:		corner[i] = a > b ? a : b;
 ADDRLP4 4
 INDIRF4
 ADDRLP4 8
 INDIRF4
-LEF4 $266
+LEF4 $268
 ADDRLP4 32
 ADDRLP4 4
 INDIRF4
 ASGNF4
-ADDRGP4 $267
+ADDRGP4 $269
 JUMPV
-LABELV $266
+LABELV $268
 ADDRLP4 32
 ADDRLP4 8
 INDIRF4
 ASGNF4
-LABELV $267
+LABELV $269
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -6209,10 +6294,10 @@ ADDP4
 ADDRLP4 32
 INDIRF4
 ASGNF4
-line 1079
-;1079:	}
-LABELV $262
-line 1075
+line 1100
+;1100:	}
+LABELV $264
+line 1096
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -6222,10 +6307,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $261
-line 1081
-;1080:
-;1081:	return VectorLength (corner);
+LTI4 $263
+line 1102
+;1101:
+;1102:	return VectorLength (corner);
 ADDRLP4 12
 ARGP4
 ADDRLP4 24
@@ -6235,17 +6320,17 @@ ASGNF4
 ADDRLP4 24
 INDIRF4
 RETF4
-LABELV $260
+LABELV $262
 endproc RadiusFromBounds 36 4
 export ClearBounds
 proc ClearBounds 16 0
-line 1085
-;1082:}
-;1083:
-;1084:
-;1085:void ClearBounds( vec3_t mins, vec3_t maxs ) {
-line 1086
-;1086:	mins[0] = mins[1] = mins[2] = 99999;
+line 1106
+;1103:}
+;1104:
+;1105:
+;1106:void ClearBounds( vec3_t mins, vec3_t maxs ) {
+line 1107
+;1107:	mins[0] = mins[1] = mins[2] = 99999;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -6272,8 +6357,8 @@ INDIRP4
 ADDRLP4 4
 INDIRF4
 ASGNF4
-line 1087
-;1087:	maxs[0] = maxs[1] = maxs[2] = -99999;
+line 1108
+;1108:	maxs[0] = maxs[1] = maxs[2] = -99999;
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -6300,223 +6385,223 @@ INDIRP4
 ADDRLP4 12
 INDIRF4
 ASGNF4
-line 1088
-;1088:}
-LABELV $268
+line 1109
+;1109:}
+LABELV $270
 endproc ClearBounds 16 0
 export AddPointToBounds
 proc AddPointToBounds 20 0
-line 1090
-;1089:
-;1090:void AddPointToBounds( const vec3_t v, vec3_t mins, vec3_t maxs ) {
-line 1091
-;1091:	if ( v[0] < mins[0] ) {
-ADDRFP4 0
-INDIRP4
-INDIRF4
-ADDRFP4 4
-INDIRP4
-INDIRF4
-GEF4 $270
-line 1092
-;1092:		mins[0] = v[0];
-ADDRFP4 4
-INDIRP4
-ADDRFP4 0
-INDIRP4
-INDIRF4
-ASGNF4
-line 1093
-;1093:	}
-LABELV $270
-line 1094
-;1094:	if ( v[0] > maxs[0]) {
-ADDRFP4 0
-INDIRP4
-INDIRF4
-ADDRFP4 8
-INDIRP4
-INDIRF4
-LEF4 $272
-line 1095
-;1095:		maxs[0] = v[0];
-ADDRFP4 8
-INDIRP4
-ADDRFP4 0
-INDIRP4
-INDIRF4
-ASGNF4
-line 1096
-;1096:	}
-LABELV $272
-line 1098
-;1097:
-;1098:	if ( v[1] < mins[1] ) {
-ADDRLP4 0
-CNSTI4 4
-ASGNI4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 0
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 4
-INDIRP4
-ADDRLP4 0
-INDIRI4
-ADDP4
-INDIRF4
-GEF4 $274
-line 1099
-;1099:		mins[1] = v[1];
-ADDRLP4 4
-CNSTI4 4
-ASGNI4
-ADDRFP4 4
-INDIRP4
-ADDRLP4 4
-INDIRI4
-ADDP4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 4
-INDIRI4
-ADDP4
-INDIRF4
-ASGNF4
-line 1100
-;1100:	}
-LABELV $274
-line 1101
-;1101:	if ( v[1] > maxs[1]) {
-ADDRLP4 4
-CNSTI4 4
-ASGNI4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 4
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 8
-INDIRP4
-ADDRLP4 4
-INDIRI4
-ADDP4
-INDIRF4
-LEF4 $276
-line 1102
-;1102:		maxs[1] = v[1];
-ADDRLP4 8
-CNSTI4 4
-ASGNI4
-ADDRFP4 8
-INDIRP4
-ADDRLP4 8
-INDIRI4
-ADDP4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 8
-INDIRI4
-ADDP4
-INDIRF4
-ASGNF4
-line 1103
-;1103:	}
-LABELV $276
-line 1105
-;1104:
-;1105:	if ( v[2] < mins[2] ) {
-ADDRLP4 8
-CNSTI4 8
-ASGNI4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 8
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 4
-INDIRP4
-ADDRLP4 8
-INDIRI4
-ADDP4
-INDIRF4
-GEF4 $278
-line 1106
-;1106:		mins[2] = v[2];
-ADDRLP4 12
-CNSTI4 8
-ASGNI4
-ADDRFP4 4
-INDIRP4
-ADDRLP4 12
-INDIRI4
-ADDP4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 12
-INDIRI4
-ADDP4
-INDIRF4
-ASGNF4
-line 1107
-;1107:	}
-LABELV $278
-line 1108
-;1108:	if ( v[2] > maxs[2]) {
-ADDRLP4 12
-CNSTI4 8
-ASGNI4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 12
-INDIRI4
-ADDP4
-INDIRF4
-ADDRFP4 8
-INDIRP4
-ADDRLP4 12
-INDIRI4
-ADDP4
-INDIRF4
-LEF4 $280
-line 1109
-;1109:		maxs[2] = v[2];
-ADDRLP4 16
-CNSTI4 8
-ASGNI4
-ADDRFP4 8
-INDIRP4
-ADDRLP4 16
-INDIRI4
-ADDP4
-ADDRFP4 0
-INDIRP4
-ADDRLP4 16
-INDIRI4
-ADDP4
-INDIRF4
-ASGNF4
-line 1110
-;1110:	}
-LABELV $280
 line 1111
-;1111:}
-LABELV $269
+;1110:
+;1111:void AddPointToBounds( const vec3_t v, vec3_t mins, vec3_t maxs ) {
+line 1112
+;1112:	if ( v[0] < mins[0] ) {
+ADDRFP4 0
+INDIRP4
+INDIRF4
+ADDRFP4 4
+INDIRP4
+INDIRF4
+GEF4 $272
+line 1113
+;1113:		mins[0] = v[0];
+ADDRFP4 4
+INDIRP4
+ADDRFP4 0
+INDIRP4
+INDIRF4
+ASGNF4
+line 1114
+;1114:	}
+LABELV $272
+line 1115
+;1115:	if ( v[0] > maxs[0]) {
+ADDRFP4 0
+INDIRP4
+INDIRF4
+ADDRFP4 8
+INDIRP4
+INDIRF4
+LEF4 $274
+line 1116
+;1116:		maxs[0] = v[0];
+ADDRFP4 8
+INDIRP4
+ADDRFP4 0
+INDIRP4
+INDIRF4
+ASGNF4
+line 1117
+;1117:	}
+LABELV $274
+line 1119
+;1118:
+;1119:	if ( v[1] < mins[1] ) {
+ADDRLP4 0
+CNSTI4 4
+ASGNI4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 0
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 4
+INDIRP4
+ADDRLP4 0
+INDIRI4
+ADDP4
+INDIRF4
+GEF4 $276
+line 1120
+;1120:		mins[1] = v[1];
+ADDRLP4 4
+CNSTI4 4
+ASGNI4
+ADDRFP4 4
+INDIRP4
+ADDRLP4 4
+INDIRI4
+ADDP4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 4
+INDIRI4
+ADDP4
+INDIRF4
+ASGNF4
+line 1121
+;1121:	}
+LABELV $276
+line 1122
+;1122:	if ( v[1] > maxs[1]) {
+ADDRLP4 4
+CNSTI4 4
+ASGNI4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 4
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 8
+INDIRP4
+ADDRLP4 4
+INDIRI4
+ADDP4
+INDIRF4
+LEF4 $278
+line 1123
+;1123:		maxs[1] = v[1];
+ADDRLP4 8
+CNSTI4 4
+ASGNI4
+ADDRFP4 8
+INDIRP4
+ADDRLP4 8
+INDIRI4
+ADDP4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 8
+INDIRI4
+ADDP4
+INDIRF4
+ASGNF4
+line 1124
+;1124:	}
+LABELV $278
+line 1126
+;1125:
+;1126:	if ( v[2] < mins[2] ) {
+ADDRLP4 8
+CNSTI4 8
+ASGNI4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 8
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 4
+INDIRP4
+ADDRLP4 8
+INDIRI4
+ADDP4
+INDIRF4
+GEF4 $280
+line 1127
+;1127:		mins[2] = v[2];
+ADDRLP4 12
+CNSTI4 8
+ASGNI4
+ADDRFP4 4
+INDIRP4
+ADDRLP4 12
+INDIRI4
+ADDP4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 12
+INDIRI4
+ADDP4
+INDIRF4
+ASGNF4
+line 1128
+;1128:	}
+LABELV $280
+line 1129
+;1129:	if ( v[2] > maxs[2]) {
+ADDRLP4 12
+CNSTI4 8
+ASGNI4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 12
+INDIRI4
+ADDP4
+INDIRF4
+ADDRFP4 8
+INDIRP4
+ADDRLP4 12
+INDIRI4
+ADDP4
+INDIRF4
+LEF4 $282
+line 1130
+;1130:		maxs[2] = v[2];
+ADDRLP4 16
+CNSTI4 8
+ASGNI4
+ADDRFP4 8
+INDIRP4
+ADDRLP4 16
+INDIRI4
+ADDP4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 16
+INDIRI4
+ADDP4
+INDIRF4
+ASGNF4
+line 1131
+;1131:	}
+LABELV $282
+line 1132
+;1132:}
+LABELV $271
 endproc AddPointToBounds 20 0
 export VectorNormalize
 proc VectorNormalize 40 4
-line 1114
-;1112:
-;1113:
-;1114:vec_t VectorNormalize( vec3_t v ) {
-line 1117
-;1115:	float	length, ilength;
-;1116:
-;1117:	length = v[0]*v[0] + v[1]*v[1] + v[2]*v[2];
+line 1135
+;1133:
+;1134:
+;1135:vec_t VectorNormalize( vec3_t v ) {
+line 1138
+;1136:	float	length, ilength;
+;1137:
+;1138:	length = v[0]*v[0] + v[1]*v[1] + v[2]*v[2];
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -6559,8 +6644,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1118
-;1118:	length = sqrt (length);
+line 1139
+;1139:	length = sqrt (length);
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -6572,199 +6657,199 @@ ADDRLP4 0
 ADDRLP4 24
 INDIRF4
 ASGNF4
-line 1120
-;1119:
-;1120:	if ( length ) {
-ADDRLP4 0
-INDIRF4
-CNSTF4 0
-EQF4 $283
-line 1121
-;1121:		ilength = 1/length;
-ADDRLP4 4
-CNSTF4 1065353216
-ADDRLP4 0
-INDIRF4
-DIVF4
-ASGNF4
-line 1122
-;1122:		v[0] *= ilength;
-ADDRLP4 28
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 28
-INDIRP4
-ADDRLP4 28
-INDIRP4
-INDIRF4
-ADDRLP4 4
-INDIRF4
-MULF4
-ASGNF4
-line 1123
-;1123:		v[1] *= ilength;
-ADDRLP4 32
-ADDRFP4 0
-INDIRP4
-CNSTI4 4
-ADDP4
-ASGNP4
-ADDRLP4 32
-INDIRP4
-ADDRLP4 32
-INDIRP4
-INDIRF4
-ADDRLP4 4
-INDIRF4
-MULF4
-ASGNF4
-line 1124
-;1124:		v[2] *= ilength;
-ADDRLP4 36
-ADDRFP4 0
-INDIRP4
-CNSTI4 8
-ADDP4
-ASGNP4
-ADDRLP4 36
-INDIRP4
-ADDRLP4 36
-INDIRP4
-INDIRF4
-ADDRLP4 4
-INDIRF4
-MULF4
-ASGNF4
-line 1125
-;1125:	}
-LABELV $283
-line 1127
-;1126:		
-;1127:	return length;
-ADDRLP4 0
-INDIRF4
-RETF4
-LABELV $282
-endproc VectorNormalize 40 4
-export VectorNormalize2
-proc VectorNormalize2 36 4
-line 1130
-;1128:}
-;1129:
-;1130:vec_t VectorNormalize2( const vec3_t v, vec3_t out) {
-line 1133
-;1131:	float	length, ilength;
-;1132:
-;1133:	length = v[0]*v[0] + v[1]*v[1] + v[2]*v[2];
-ADDRLP4 8
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 12
-ADDRLP4 8
-INDIRP4
-INDIRF4
-ASGNF4
-ADDRLP4 16
-ADDRLP4 8
-INDIRP4
-CNSTI4 4
-ADDP4
-INDIRF4
-ASGNF4
-ADDRLP4 20
-ADDRLP4 8
-INDIRP4
-CNSTI4 8
-ADDP4
-INDIRF4
-ASGNF4
-ADDRLP4 0
-ADDRLP4 12
-INDIRF4
-ADDRLP4 12
-INDIRF4
-MULF4
-ADDRLP4 16
-INDIRF4
-ADDRLP4 16
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 20
-INDIRF4
-ADDRLP4 20
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 1134
-;1134:	length = sqrt (length);
-ADDRLP4 0
-INDIRF4
-ARGF4
-ADDRLP4 24
-ADDRGP4 sqrt
-CALLF4
-ASGNF4
-ADDRLP4 0
-ADDRLP4 24
-INDIRF4
-ASGNF4
-line 1136
-;1135:
-;1136:	if (length)
-ADDRLP4 0
-INDIRF4
-CNSTF4 0
-EQF4 $286
-line 1137
-;1137:	{
 line 1141
-;1138:#ifndef Q3_VM // bk0101022 - FPE related
-;1139://	  assert( ((Q_fabs(v[0])!=0.0f) || (Q_fabs(v[1])!=0.0f) || (Q_fabs(v[2])!=0.0f)) );
-;1140:#endif
-;1141:		ilength = 1/length;
+;1140:
+;1141:	if ( length ) {
+ADDRLP4 0
+INDIRF4
+CNSTF4 0
+EQF4 $285
+line 1142
+;1142:		ilength = 1/length;
 ADDRLP4 4
 CNSTF4 1065353216
 ADDRLP4 0
 INDIRF4
 DIVF4
-ASGNF4
-line 1142
-;1142:		out[0] = v[0]*ilength;
-ADDRFP4 4
-INDIRP4
-ADDRFP4 0
-INDIRP4
-INDIRF4
-ADDRLP4 4
-INDIRF4
-MULF4
 ASGNF4
 line 1143
-;1143:		out[1] = v[1]*ilength;
+;1143:		v[0] *= ilength;
 ADDRLP4 28
-CNSTI4 4
-ASGNI4
-ADDRFP4 4
-INDIRP4
-ADDRLP4 28
-INDIRI4
-ADDP4
 ADDRFP4 0
 INDIRP4
+ASGNP4
 ADDRLP4 28
-INDIRI4
-ADDP4
+INDIRP4
+ADDRLP4 28
+INDIRP4
 INDIRF4
 ADDRLP4 4
 INDIRF4
 MULF4
 ASGNF4
 line 1144
-;1144:		out[2] = v[2]*ilength;
+;1144:		v[1] *= ilength;
+ADDRLP4 32
+ADDRFP4 0
+INDIRP4
+CNSTI4 4
+ADDP4
+ASGNP4
+ADDRLP4 32
+INDIRP4
+ADDRLP4 32
+INDIRP4
+INDIRF4
+ADDRLP4 4
+INDIRF4
+MULF4
+ASGNF4
+line 1145
+;1145:		v[2] *= ilength;
+ADDRLP4 36
+ADDRFP4 0
+INDIRP4
+CNSTI4 8
+ADDP4
+ASGNP4
+ADDRLP4 36
+INDIRP4
+ADDRLP4 36
+INDIRP4
+INDIRF4
+ADDRLP4 4
+INDIRF4
+MULF4
+ASGNF4
+line 1146
+;1146:	}
+LABELV $285
+line 1148
+;1147:		
+;1148:	return length;
+ADDRLP4 0
+INDIRF4
+RETF4
+LABELV $284
+endproc VectorNormalize 40 4
+export VectorNormalize2
+proc VectorNormalize2 36 4
+line 1151
+;1149:}
+;1150:
+;1151:vec_t VectorNormalize2( const vec3_t v, vec3_t out) {
+line 1154
+;1152:	float	length, ilength;
+;1153:
+;1154:	length = v[0]*v[0] + v[1]*v[1] + v[2]*v[2];
+ADDRLP4 8
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 12
+ADDRLP4 8
+INDIRP4
+INDIRF4
+ASGNF4
+ADDRLP4 16
+ADDRLP4 8
+INDIRP4
+CNSTI4 4
+ADDP4
+INDIRF4
+ASGNF4
+ADDRLP4 20
+ADDRLP4 8
+INDIRP4
+CNSTI4 8
+ADDP4
+INDIRF4
+ASGNF4
+ADDRLP4 0
+ADDRLP4 12
+INDIRF4
+ADDRLP4 12
+INDIRF4
+MULF4
+ADDRLP4 16
+INDIRF4
+ADDRLP4 16
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 20
+INDIRF4
+ADDRLP4 20
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 1155
+;1155:	length = sqrt (length);
+ADDRLP4 0
+INDIRF4
+ARGF4
+ADDRLP4 24
+ADDRGP4 sqrt
+CALLF4
+ASGNF4
+ADDRLP4 0
+ADDRLP4 24
+INDIRF4
+ASGNF4
+line 1157
+;1156:
+;1157:	if (length)
+ADDRLP4 0
+INDIRF4
+CNSTF4 0
+EQF4 $288
+line 1158
+;1158:	{
+line 1162
+;1159:#ifndef Q3_VM // bk0101022 - FPE related
+;1160://	  assert( ((Q_fabs(v[0])!=0.0f) || (Q_fabs(v[1])!=0.0f) || (Q_fabs(v[2])!=0.0f)) );
+;1161:#endif
+;1162:		ilength = 1/length;
+ADDRLP4 4
+CNSTF4 1065353216
+ADDRLP4 0
+INDIRF4
+DIVF4
+ASGNF4
+line 1163
+;1163:		out[0] = v[0]*ilength;
+ADDRFP4 4
+INDIRP4
+ADDRFP4 0
+INDIRP4
+INDIRF4
+ADDRLP4 4
+INDIRF4
+MULF4
+ASGNF4
+line 1164
+;1164:		out[1] = v[1]*ilength;
+ADDRLP4 28
+CNSTI4 4
+ASGNI4
+ADDRFP4 4
+INDIRP4
+ADDRLP4 28
+INDIRI4
+ADDP4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 28
+INDIRI4
+ADDP4
+INDIRF4
+ADDRLP4 4
+INDIRF4
+MULF4
+ASGNF4
+line 1165
+;1165:		out[2] = v[2]*ilength;
 ADDRLP4 32
 CNSTI4 8
 ASGNI4
@@ -6783,16 +6868,16 @@ ADDRLP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 1145
-;1145:	} else {
-ADDRGP4 $287
+line 1166
+;1166:	} else {
+ADDRGP4 $289
 JUMPV
-LABELV $286
-line 1149
-;1146:#ifndef Q3_VM // bk0101022 - FPE related
-;1147://	  assert( ((Q_fabs(v[0])==0.0f) && (Q_fabs(v[1])==0.0f) && (Q_fabs(v[2])==0.0f)) );
-;1148:#endif
-;1149:		VectorClear( out );
+LABELV $288
+line 1170
+;1167:#ifndef Q3_VM // bk0101022 - FPE related
+;1168://	  assert( ((Q_fabs(v[0])==0.0f) && (Q_fabs(v[1])==0.0f) && (Q_fabs(v[2])==0.0f)) );
+;1169:#endif
+;1170:		VectorClear( out );
 ADDRLP4 28
 ADDRFP4 4
 INDIRP4
@@ -6819,26 +6904,26 @@ INDIRP4
 ADDRLP4 32
 INDIRF4
 ASGNF4
-line 1150
-;1150:	}
-LABELV $287
-line 1152
-;1151:		
-;1152:	return length;
+line 1171
+;1171:	}
+LABELV $289
+line 1173
+;1172:		
+;1173:	return length;
 ADDRLP4 0
 INDIRF4
 RETF4
-LABELV $285
+LABELV $287
 endproc VectorNormalize2 36 4
 export _VectorMA
 proc _VectorMA 8 0
-line 1156
-;1153:
-;1154:}
-;1155:
-;1156:void _VectorMA( const vec3_t veca, float scale, const vec3_t vecb, vec3_t vecc) {
-line 1157
-;1157:	vecc[0] = veca[0] + scale*vecb[0];
+line 1177
+;1174:
+;1175:}
+;1176:
+;1177:void _VectorMA( const vec3_t veca, float scale, const vec3_t vecb, vec3_t vecc) {
+line 1178
+;1178:	vecc[0] = veca[0] + scale*vecb[0];
 ADDRFP4 12
 INDIRP4
 ADDRFP4 0
@@ -6852,8 +6937,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1158
-;1158:	vecc[1] = veca[1] + scale*vecb[1];
+line 1179
+;1179:	vecc[1] = veca[1] + scale*vecb[1];
 ADDRLP4 0
 CNSTI4 4
 ASGNI4
@@ -6879,8 +6964,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1159
-;1159:	vecc[2] = veca[2] + scale*vecb[2];
+line 1180
+;1180:	vecc[2] = veca[2] + scale*vecb[2];
 ADDRLP4 4
 CNSTI4 8
 ASGNI4
@@ -6906,18 +6991,18 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1160
-;1160:}
-LABELV $288
+line 1181
+;1181:}
+LABELV $290
 endproc _VectorMA 8 0
 export _DotProduct
 proc _DotProduct 16 0
-line 1163
-;1161:
-;1162:
-;1163:vec_t _DotProduct( const vec3_t v1, const vec3_t v2 ) {
-line 1164
-;1164:	return v1[0]*v2[0] + v1[1]*v2[1] + v1[2]*v2[2];
+line 1184
+;1182:
+;1183:
+;1184:vec_t _DotProduct( const vec3_t v1, const vec3_t v2 ) {
+line 1185
+;1185:	return v1[0]*v2[0] + v1[1]*v2[1] + v1[2]*v2[2];
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -6968,16 +7053,16 @@ INDIRF4
 MULF4
 ADDF4
 RETF4
-LABELV $289
+LABELV $291
 endproc _DotProduct 16 0
 export _VectorSubtract
 proc _VectorSubtract 8 0
-line 1167
-;1165:}
-;1166:
-;1167:void _VectorSubtract( const vec3_t veca, const vec3_t vecb, vec3_t out ) {
-line 1168
-;1168:	out[0] = veca[0]-vecb[0];
+line 1188
+;1186:}
+;1187:
+;1188:void _VectorSubtract( const vec3_t veca, const vec3_t vecb, vec3_t out ) {
+line 1189
+;1189:	out[0] = veca[0]-vecb[0];
 ADDRFP4 8
 INDIRP4
 ADDRFP4 0
@@ -6988,8 +7073,8 @@ INDIRP4
 INDIRF4
 SUBF4
 ASGNF4
-line 1169
-;1169:	out[1] = veca[1]-vecb[1];
+line 1190
+;1190:	out[1] = veca[1]-vecb[1];
 ADDRLP4 0
 CNSTI4 4
 ASGNI4
@@ -7012,8 +7097,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 1170
-;1170:	out[2] = veca[2]-vecb[2];
+line 1191
+;1191:	out[2] = veca[2]-vecb[2];
 ADDRLP4 4
 CNSTI4 8
 ASGNI4
@@ -7036,17 +7121,17 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 1171
-;1171:}
-LABELV $290
+line 1192
+;1192:}
+LABELV $292
 endproc _VectorSubtract 8 0
 export _VectorAdd
 proc _VectorAdd 8 0
-line 1173
-;1172:
-;1173:void _VectorAdd( const vec3_t veca, const vec3_t vecb, vec3_t out ) {
-line 1174
-;1174:	out[0] = veca[0]+vecb[0];
+line 1194
+;1193:
+;1194:void _VectorAdd( const vec3_t veca, const vec3_t vecb, vec3_t out ) {
+line 1195
+;1195:	out[0] = veca[0]+vecb[0];
 ADDRFP4 8
 INDIRP4
 ADDRFP4 0
@@ -7057,8 +7142,8 @@ INDIRP4
 INDIRF4
 ADDF4
 ASGNF4
-line 1175
-;1175:	out[1] = veca[1]+vecb[1];
+line 1196
+;1196:	out[1] = veca[1]+vecb[1];
 ADDRLP4 0
 CNSTI4 4
 ASGNI4
@@ -7081,8 +7166,8 @@ ADDP4
 INDIRF4
 ADDF4
 ASGNF4
-line 1176
-;1176:	out[2] = veca[2]+vecb[2];
+line 1197
+;1197:	out[2] = veca[2]+vecb[2];
 ADDRLP4 4
 CNSTI4 8
 ASGNI4
@@ -7105,25 +7190,25 @@ ADDP4
 INDIRF4
 ADDF4
 ASGNF4
-line 1177
-;1177:}
-LABELV $291
+line 1198
+;1198:}
+LABELV $293
 endproc _VectorAdd 8 0
 export _VectorCopy
 proc _VectorCopy 8 0
-line 1179
-;1178:
-;1179:void _VectorCopy( const vec3_t in, vec3_t out ) {
-line 1180
-;1180:	out[0] = in[0];
+line 1200
+;1199:
+;1200:void _VectorCopy( const vec3_t in, vec3_t out ) {
+line 1201
+;1201:	out[0] = in[0];
 ADDRFP4 4
 INDIRP4
 ADDRFP4 0
 INDIRP4
 INDIRF4
 ASGNF4
-line 1181
-;1181:	out[1] = in[1];
+line 1202
+;1202:	out[1] = in[1];
 ADDRLP4 0
 CNSTI4 4
 ASGNI4
@@ -7139,8 +7224,8 @@ INDIRI4
 ADDP4
 INDIRF4
 ASGNF4
-line 1182
-;1182:	out[2] = in[2];
+line 1203
+;1203:	out[2] = in[2];
 ADDRLP4 4
 CNSTI4 8
 ASGNI4
@@ -7156,17 +7241,17 @@ INDIRI4
 ADDP4
 INDIRF4
 ASGNF4
-line 1183
-;1183:}
-LABELV $292
+line 1204
+;1204:}
+LABELV $294
 endproc _VectorCopy 8 0
 export _VectorScale
 proc _VectorScale 8 0
-line 1185
-;1184:
-;1185:void _VectorScale( const vec3_t in, vec_t scale, vec3_t out ) {
-line 1186
-;1186:	out[0] = in[0]*scale;
+line 1206
+;1205:
+;1206:void _VectorScale( const vec3_t in, vec_t scale, vec3_t out ) {
+line 1207
+;1207:	out[0] = in[0]*scale;
 ADDRFP4 8
 INDIRP4
 ADDRFP4 0
@@ -7176,8 +7261,8 @@ ADDRFP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 1187
-;1187:	out[1] = in[1]*scale;
+line 1208
+;1208:	out[1] = in[1]*scale;
 ADDRLP4 0
 CNSTI4 4
 ASGNI4
@@ -7196,8 +7281,8 @@ ADDRFP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 1188
-;1188:	out[2] = in[2]*scale;
+line 1209
+;1209:	out[2] = in[2]*scale;
 ADDRLP4 4
 CNSTI4 8
 ASGNI4
@@ -7216,17 +7301,17 @@ ADDRFP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 1189
-;1189:}
-LABELV $293
+line 1210
+;1210:}
+LABELV $295
 endproc _VectorScale 8 0
 export Vector4Scale
 proc Vector4Scale 12 0
-line 1191
-;1190:
-;1191:void Vector4Scale( const vec4_t in, vec_t scale, vec4_t out ) {
-line 1192
-;1192:	out[0] = in[0]*scale;
+line 1212
+;1211:
+;1212:void Vector4Scale( const vec4_t in, vec_t scale, vec4_t out ) {
+line 1213
+;1213:	out[0] = in[0]*scale;
 ADDRFP4 8
 INDIRP4
 ADDRFP4 0
@@ -7236,8 +7321,8 @@ ADDRFP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 1193
-;1193:	out[1] = in[1]*scale;
+line 1214
+;1214:	out[1] = in[1]*scale;
 ADDRLP4 0
 CNSTI4 4
 ASGNI4
@@ -7256,8 +7341,8 @@ ADDRFP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 1194
-;1194:	out[2] = in[2]*scale;
+line 1215
+;1215:	out[2] = in[2]*scale;
 ADDRLP4 4
 CNSTI4 8
 ASGNI4
@@ -7276,8 +7361,8 @@ ADDRFP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 1195
-;1195:	out[3] = in[3]*scale;
+line 1216
+;1216:	out[3] = in[3]*scale;
 ADDRLP4 8
 CNSTI4 12
 ASGNI4
@@ -7296,40 +7381,40 @@ ADDRFP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 1196
-;1196:}
-LABELV $294
+line 1217
+;1217:}
+LABELV $296
 endproc Vector4Scale 12 0
 export Q_log2
 proc Q_log2 8 0
-line 1199
-;1197:
-;1198:
-;1199:int Q_log2( int val ) {
-line 1202
-;1200:	int answer;
-;1201:
-;1202:	answer = 0;
+line 1220
+;1218:
+;1219:
+;1220:int Q_log2( int val ) {
+line 1223
+;1221:	int answer;
+;1222:
+;1223:	answer = 0;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $297
+ADDRGP4 $299
 JUMPV
-LABELV $296
-line 1203
-;1203:	while ( ( val>>=1 ) != 0 ) {
-line 1204
-;1204:		answer++;
+LABELV $298
+line 1224
+;1224:	while ( ( val>>=1 ) != 0 ) {
+line 1225
+;1225:		answer++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1205
-;1205:	}
-LABELV $297
-line 1203
+line 1226
+;1226:	}
+LABELV $299
+line 1224
 ADDRLP4 4
 ADDRFP4 0
 INDIRI4
@@ -7343,48 +7428,48 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $296
-line 1206
-;1206:	return answer;
+NEI4 $298
+line 1227
+;1227:	return answer;
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $295
+LABELV $297
 endproc Q_log2 8 0
 export MatrixMultiply
 proc MatrixMultiply 104 0
-line 1235
-;1207:}
-;1208:
-;1209:
-;1210:
-;1211:/*
-;1212:=================
-;1213:PlaneTypeForNormal
-;1214:=================
-;1215:*/
-;1216:/*
-;1217:int	PlaneTypeForNormal (vec3_t normal) {
-;1218:	if ( normal[0] == 1.0 )
-;1219:		return PLANE_X;
-;1220:	if ( normal[1] == 1.0 )
-;1221:		return PLANE_Y;
-;1222:	if ( normal[2] == 1.0 )
-;1223:		return PLANE_Z;
-;1224:	
-;1225:	return PLANE_NON_AXIAL;
-;1226:}
-;1227:*/
-;1228:
+line 1256
+;1228:}
 ;1229:
-;1230:/*
-;1231:================
-;1232:MatrixMultiply
-;1233:================
-;1234:*/
-;1235:void MatrixMultiply(float in1[3][3], float in2[3][3], float out[3][3]) {
-line 1236
-;1236:	out[0][0] = in1[0][0] * in2[0][0] + in1[0][1] * in2[1][0] +
+;1230:
+;1231:
+;1232:/*
+;1233:=================
+;1234:PlaneTypeForNormal
+;1235:=================
+;1236:*/
+;1237:/*
+;1238:int	PlaneTypeForNormal (vec3_t normal) {
+;1239:	if ( normal[0] == 1.0 )
+;1240:		return PLANE_X;
+;1241:	if ( normal[1] == 1.0 )
+;1242:		return PLANE_Y;
+;1243:	if ( normal[2] == 1.0 )
+;1244:		return PLANE_Z;
+;1245:	
+;1246:	return PLANE_NON_AXIAL;
+;1247:}
+;1248:*/
+;1249:
+;1250:
+;1251:/*
+;1252:================
+;1253:MatrixMultiply
+;1254:================
+;1255:*/
+;1256:void MatrixMultiply(float in1[3][3], float in2[3][3], float out[3][3]) {
+line 1257
+;1257:	out[0][0] = in1[0][0] * in2[0][0] + in1[0][1] * in2[1][0] +
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -7427,9 +7512,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1238
-;1237:				in1[0][2] * in2[2][0];
-;1238:	out[0][1] = in1[0][0] * in2[0][1] + in1[0][1] * in2[1][1] +
+line 1259
+;1258:				in1[0][2] * in2[2][0];
+;1259:	out[0][1] = in1[0][0] * in2[0][1] + in1[0][1] * in2[1][1] +
 ADDRLP4 8
 CNSTI4 4
 ASGNI4
@@ -7482,9 +7567,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1240
-;1239:				in1[0][2] * in2[2][1];
-;1240:	out[0][2] = in1[0][0] * in2[0][2] + in1[0][1] * in2[1][2] +
+line 1261
+;1260:				in1[0][2] * in2[2][1];
+;1261:	out[0][2] = in1[0][0] * in2[0][2] + in1[0][1] * in2[1][2] +
 ADDRLP4 20
 CNSTI4 8
 ASGNI4
@@ -7537,9 +7622,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1242
-;1241:				in1[0][2] * in2[2][2];
-;1242:	out[1][0] = in1[1][0] * in2[0][0] + in1[1][1] * in2[1][0] +
+line 1263
+;1262:				in1[0][2] * in2[2][2];
+;1263:	out[1][0] = in1[1][0] * in2[0][0] + in1[1][1] * in2[1][0] +
 ADDRLP4 32
 CNSTI4 12
 ASGNI4
@@ -7592,9 +7677,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1244
-;1243:				in1[1][2] * in2[2][0];
-;1244:	out[1][1] = in1[1][0] * in2[0][1] + in1[1][1] * in2[1][1] +
+line 1265
+;1264:				in1[1][2] * in2[2][0];
+;1265:	out[1][1] = in1[1][0] * in2[0][1] + in1[1][1] * in2[1][1] +
 ADDRLP4 44
 CNSTI4 16
 ASGNI4
@@ -7649,9 +7734,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1246
-;1245:				in1[1][2] * in2[2][1];
-;1246:	out[1][2] = in1[1][0] * in2[0][2] + in1[1][1] * in2[1][2] +
+line 1267
+;1266:				in1[1][2] * in2[2][1];
+;1267:	out[1][2] = in1[1][0] * in2[0][2] + in1[1][1] * in2[1][2] +
 ADDRLP4 56
 CNSTI4 20
 ASGNI4
@@ -7706,9 +7791,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1248
-;1247:				in1[1][2] * in2[2][2];
-;1248:	out[2][0] = in1[2][0] * in2[0][0] + in1[2][1] * in2[1][0] +
+line 1269
+;1268:				in1[1][2] * in2[2][2];
+;1269:	out[2][0] = in1[2][0] * in2[0][0] + in1[2][1] * in2[1][0] +
 ADDRLP4 68
 CNSTI4 24
 ASGNI4
@@ -7761,9 +7846,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1250
-;1249:				in1[2][2] * in2[2][0];
-;1250:	out[2][1] = in1[2][0] * in2[0][1] + in1[2][1] * in2[1][1] +
+line 1271
+;1270:				in1[2][2] * in2[2][0];
+;1271:	out[2][1] = in1[2][0] * in2[0][1] + in1[2][1] * in2[1][1] +
 ADDRLP4 80
 CNSTI4 28
 ASGNI4
@@ -7818,9 +7903,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1252
-;1251:				in1[2][2] * in2[2][1];
-;1252:	out[2][2] = in1[2][0] * in2[0][2] + in1[2][1] * in2[1][2] +
+line 1273
+;1272:				in1[2][2] * in2[2][1];
+;1273:	out[2][2] = in1[2][0] * in2[0][2] + in1[2][1] * in2[1][2] +
 ADDRLP4 92
 CNSTI4 32
 ASGNI4
@@ -7875,18 +7960,12 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1254
-;1253:				in1[2][2] * in2[2][2];
-;1254:}
-LABELV $299
+line 1275
+;1274:				in1[2][2] * in2[2][2];
+;1275:}
+LABELV $301
 endproc MatrixMultiply 104 0
 bss
-align 4
-LABELV $301
-skip 4
-align 4
-LABELV $302
-skip 4
 align 4
 LABELV $303
 skip 4
@@ -7899,19 +7978,25 @@ skip 4
 align 4
 LABELV $306
 skip 4
+align 4
+LABELV $307
+skip 4
+align 4
+LABELV $308
+skip 4
 export AngleVectors
 code
 proc AngleVectors 36 4
-line 1257
-;1255:
-;1256:
-;1257:void AngleVectors( const vec3_t angles, vec3_t forward, vec3_t right, vec3_t up) {
-line 1262
-;1258:	float		angle;
-;1259:	static float		sr, sp, sy, cr, cp, cy;
-;1260:	// static to help MS compiler fp bugs
-;1261:
-;1262:	angle = angles[YAW] * (M_PI*2 / 360);
+line 1278
+;1276:
+;1277:
+;1278:void AngleVectors( const vec3_t angles, vec3_t forward, vec3_t right, vec3_t up) {
+line 1283
+;1279:	float		angle;
+;1280:	static float		sr, sp, sy, cr, cp, cy;
+;1281:	// static to help MS compiler fp bugs
+;1282:
+;1283:	angle = angles[YAW] * (M_PI*2 / 360);
 ADDRLP4 0
 CNSTF4 1016003125
 ADDRFP4 0
@@ -7921,328 +8006,328 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 1263
-;1263:	sy = sin(angle);
+line 1284
+;1284:	sy = sin(angle);
 ADDRLP4 0
 INDIRF4
 ARGF4
 ADDRLP4 4
 ADDRGP4 sin
-CALLF4
-ASGNF4
-ADDRGP4 $303
-ADDRLP4 4
-INDIRF4
-ASGNF4
-line 1264
-;1264:	cy = cos(angle);
-ADDRLP4 0
-INDIRF4
-ARGF4
-ADDRLP4 8
-ADDRGP4 cos
-CALLF4
-ASGNF4
-ADDRGP4 $306
-ADDRLP4 8
-INDIRF4
-ASGNF4
-line 1265
-;1265:	angle = angles[PITCH] * (M_PI*2 / 360);
-ADDRLP4 0
-CNSTF4 1016003125
-ADDRFP4 0
-INDIRP4
-INDIRF4
-MULF4
-ASGNF4
-line 1266
-;1266:	sp = sin(angle);
-ADDRLP4 0
-INDIRF4
-ARGF4
-ADDRLP4 12
-ADDRGP4 sin
-CALLF4
-ASGNF4
-ADDRGP4 $302
-ADDRLP4 12
-INDIRF4
-ASGNF4
-line 1267
-;1267:	cp = cos(angle);
-ADDRLP4 0
-INDIRF4
-ARGF4
-ADDRLP4 16
-ADDRGP4 cos
 CALLF4
 ASGNF4
 ADDRGP4 $305
-ADDRLP4 16
+ADDRLP4 4
 INDIRF4
 ASGNF4
-line 1268
-;1268:	angle = angles[ROLL] * (M_PI*2 / 360);
+line 1285
+;1285:	cy = cos(angle);
+ADDRLP4 0
+INDIRF4
+ARGF4
+ADDRLP4 8
+ADDRGP4 cos
+CALLF4
+ASGNF4
+ADDRGP4 $308
+ADDRLP4 8
+INDIRF4
+ASGNF4
+line 1286
+;1286:	angle = angles[PITCH] * (M_PI*2 / 360);
 ADDRLP4 0
 CNSTF4 1016003125
 ADDRFP4 0
 INDIRP4
-CNSTI4 8
-ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 1269
-;1269:	sr = sin(angle);
+line 1287
+;1287:	sp = sin(angle);
 ADDRLP4 0
 INDIRF4
 ARGF4
-ADDRLP4 20
+ADDRLP4 12
 ADDRGP4 sin
-CALLF4
-ASGNF4
-ADDRGP4 $301
-ADDRLP4 20
-INDIRF4
-ASGNF4
-line 1270
-;1270:	cr = cos(angle);
-ADDRLP4 0
-INDIRF4
-ARGF4
-ADDRLP4 24
-ADDRGP4 cos
 CALLF4
 ASGNF4
 ADDRGP4 $304
-ADDRLP4 24
+ADDRLP4 12
 INDIRF4
 ASGNF4
-line 1272
-;1271:
-;1272:	if (forward)
-ADDRFP4 4
-INDIRP4
-CVPU4 4
-CNSTU4 0
-EQU4 $307
-line 1273
-;1273:	{
-line 1274
-;1274:		forward[0] = cp*cy;
-ADDRFP4 4
-INDIRP4
-ADDRGP4 $305
+line 1288
+;1288:	cp = cos(angle);
+ADDRLP4 0
 INDIRF4
-ADDRGP4 $306
-INDIRF4
-MULF4
+ARGF4
+ADDRLP4 16
+ADDRGP4 cos
+CALLF4
 ASGNF4
-line 1275
-;1275:		forward[1] = cp*sy;
-ADDRFP4 4
-INDIRP4
-CNSTI4 4
-ADDP4
-ADDRGP4 $305
+ADDRGP4 $307
+ADDRLP4 16
 INDIRF4
-ADDRGP4 $303
-INDIRF4
-MULF4
 ASGNF4
-line 1276
-;1276:		forward[2] = -sp;
-ADDRFP4 4
+line 1289
+;1289:	angle = angles[ROLL] * (M_PI*2 / 360);
+ADDRLP4 0
+CNSTF4 1016003125
+ADDRFP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
-ADDRGP4 $302
 INDIRF4
-NEGF4
+MULF4
 ASGNF4
-line 1277
-;1277:	}
-LABELV $307
-line 1278
-;1278:	if (right)
-ADDRFP4 8
+line 1290
+;1290:	sr = sin(angle);
+ADDRLP4 0
+INDIRF4
+ARGF4
+ADDRLP4 20
+ADDRGP4 sin
+CALLF4
+ASGNF4
+ADDRGP4 $303
+ADDRLP4 20
+INDIRF4
+ASGNF4
+line 1291
+;1291:	cr = cos(angle);
+ADDRLP4 0
+INDIRF4
+ARGF4
+ADDRLP4 24
+ADDRGP4 cos
+CALLF4
+ASGNF4
+ADDRGP4 $306
+ADDRLP4 24
+INDIRF4
+ASGNF4
+line 1293
+;1292:
+;1293:	if (forward)
+ADDRFP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $309
-line 1279
-;1279:	{
-line 1280
-;1280:		right[0] = (-1*sr*sp*cy+-1*cr*-sy);
-ADDRLP4 28
-CNSTF4 3212836864
-ASGNF4
-ADDRFP4 8
+line 1294
+;1294:	{
+line 1295
+;1295:		forward[0] = cp*cy;
+ADDRFP4 4
 INDIRP4
-ADDRLP4 28
+ADDRGP4 $307
 INDIRF4
-ADDRGP4 $301
-INDIRF4
-MULF4
-ADDRGP4 $302
+ADDRGP4 $308
 INDIRF4
 MULF4
-ADDRGP4 $306
-INDIRF4
-MULF4
-ADDRLP4 28
-INDIRF4
-ADDRGP4 $304
-INDIRF4
-MULF4
-ADDRGP4 $303
-INDIRF4
-NEGF4
-MULF4
-ADDF4
 ASGNF4
-line 1281
-;1281:		right[1] = (-1*sr*sp*sy+-1*cr*cy);
-ADDRLP4 32
-CNSTF4 3212836864
-ASGNF4
-ADDRFP4 8
+line 1296
+;1296:		forward[1] = cp*sy;
+ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
-ADDRLP4 32
+ADDRGP4 $307
 INDIRF4
-ADDRGP4 $301
-INDIRF4
-MULF4
-ADDRGP4 $302
-INDIRF4
-MULF4
-ADDRGP4 $303
-INDIRF4
-MULF4
-ADDRLP4 32
-INDIRF4
-ADDRGP4 $304
-INDIRF4
-MULF4
-ADDRGP4 $306
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 1282
-;1282:		right[2] = -1*sr*cp;
-ADDRFP4 8
-INDIRP4
-CNSTI4 8
-ADDP4
-CNSTF4 3212836864
-ADDRGP4 $301
-INDIRF4
-MULF4
 ADDRGP4 $305
 INDIRF4
 MULF4
 ASGNF4
-line 1283
-;1283:	}
+line 1297
+;1297:		forward[2] = -sp;
+ADDRFP4 4
+INDIRP4
+CNSTI4 8
+ADDP4
+ADDRGP4 $304
+INDIRF4
+NEGF4
+ASGNF4
+line 1298
+;1298:	}
 LABELV $309
-line 1284
-;1284:	if (up)
-ADDRFP4 12
+line 1299
+;1299:	if (right)
+ADDRFP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $311
-line 1285
-;1285:	{
-line 1286
-;1286:		up[0] = (cr*sp*cy+-sr*-sy);
-ADDRFP4 12
+line 1300
+;1300:	{
+line 1301
+;1301:		right[0] = (-1*sr*sp*cy+-1*cr*-sy);
+ADDRLP4 28
+CNSTF4 3212836864
+ASGNF4
+ADDRFP4 8
 INDIRP4
-ADDRGP4 $304
+ADDRLP4 28
 INDIRF4
-ADDRGP4 $302
+ADDRGP4 $303
 INDIRF4
 MULF4
+ADDRGP4 $304
+INDIRF4
+MULF4
+ADDRGP4 $308
+INDIRF4
+MULF4
+ADDRLP4 28
+INDIRF4
 ADDRGP4 $306
 INDIRF4
 MULF4
-ADDRGP4 $301
-INDIRF4
-NEGF4
-ADDRGP4 $303
+ADDRGP4 $305
 INDIRF4
 NEGF4
 MULF4
 ADDF4
 ASGNF4
-line 1287
-;1287:		up[1] = (cr*sp*sy+-sr*cy);
+line 1302
+;1302:		right[1] = (-1*sr*sp*sy+-1*cr*cy);
+ADDRLP4 32
+CNSTF4 3212836864
+ASGNF4
+ADDRFP4 8
+INDIRP4
+CNSTI4 4
+ADDP4
+ADDRLP4 32
+INDIRF4
+ADDRGP4 $303
+INDIRF4
+MULF4
+ADDRGP4 $304
+INDIRF4
+MULF4
+ADDRGP4 $305
+INDIRF4
+MULF4
+ADDRLP4 32
+INDIRF4
+ADDRGP4 $306
+INDIRF4
+MULF4
+ADDRGP4 $308
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 1303
+;1303:		right[2] = -1*sr*cp;
+ADDRFP4 8
+INDIRP4
+CNSTI4 8
+ADDP4
+CNSTF4 3212836864
+ADDRGP4 $303
+INDIRF4
+MULF4
+ADDRGP4 $307
+INDIRF4
+MULF4
+ASGNF4
+line 1304
+;1304:	}
+LABELV $311
+line 1305
+;1305:	if (up)
+ADDRFP4 12
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $313
+line 1306
+;1306:	{
+line 1307
+;1307:		up[0] = (cr*sp*cy+-sr*-sy);
+ADDRFP4 12
+INDIRP4
+ADDRGP4 $306
+INDIRF4
+ADDRGP4 $304
+INDIRF4
+MULF4
+ADDRGP4 $308
+INDIRF4
+MULF4
+ADDRGP4 $303
+INDIRF4
+NEGF4
+ADDRGP4 $305
+INDIRF4
+NEGF4
+MULF4
+ADDF4
+ASGNF4
+line 1308
+;1308:		up[1] = (cr*sp*sy+-sr*cy);
 ADDRFP4 12
 INDIRP4
 CNSTI4 4
 ADDP4
+ADDRGP4 $306
+INDIRF4
 ADDRGP4 $304
 INDIRF4
-ADDRGP4 $302
+MULF4
+ADDRGP4 $305
 INDIRF4
 MULF4
 ADDRGP4 $303
 INDIRF4
-MULF4
-ADDRGP4 $301
-INDIRF4
 NEGF4
-ADDRGP4 $306
+ADDRGP4 $308
 INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1288
-;1288:		up[2] = cr*cp;
+line 1309
+;1309:		up[2] = cr*cp;
 ADDRFP4 12
 INDIRP4
 CNSTI4 8
 ADDP4
-ADDRGP4 $304
+ADDRGP4 $306
 INDIRF4
-ADDRGP4 $305
+ADDRGP4 $307
 INDIRF4
 MULF4
 ASGNF4
-line 1289
-;1289:	}
-LABELV $311
-line 1290
-;1290:}
-LABELV $300
+line 1310
+;1310:	}
+LABELV $313
+line 1311
+;1311:}
+LABELV $302
 endproc AngleVectors 36 4
 export PerpendicularVector
 proc PerpendicularVector 36 12
-line 1296
-;1291:
-;1292:/*
-;1293:** assumes "src" is normalized
-;1294:*/
-;1295:void PerpendicularVector( vec3_t dst, const vec3_t src )
-;1296:{
-line 1299
-;1297:	int	pos;
-;1298:	int i;
-;1299:	float minelem = 1.0F;
+line 1317
+;1312:
+;1313:/*
+;1314:** assumes "src" is normalized
+;1315:*/
+;1316:void PerpendicularVector( vec3_t dst, const vec3_t src )
+;1317:{
+line 1320
+;1318:	int	pos;
+;1319:	int i;
+;1320:	float minelem = 1.0F;
 ADDRLP4 4
 CNSTF4 1065353216
 ASGNF4
-line 1305
-;1300:	vec3_t tempvec;
-;1301:
-;1302:	/*
-;1303:	** find the smallest magnitude axially aligned vector
-;1304:	*/
-;1305:	for ( pos = 0, i = 0; i < 3; i++ )
+line 1326
+;1321:	vec3_t tempvec;
+;1322:
+;1323:	/*
+;1324:	** find the smallest magnitude axially aligned vector
+;1325:	*/
+;1326:	for ( pos = 0, i = 0; i < 3; i++ )
 ADDRLP4 24
 CNSTI4 0
 ASGNI4
@@ -8254,13 +8339,13 @@ ADDRLP4 0
 ADDRLP4 24
 INDIRI4
 ASGNI4
-ADDRGP4 $317
+ADDRGP4 $319
 JUMPV
-LABELV $314
-line 1306
-;1306:	{
-line 1307
-;1307:		if ( fabs( src[i] ) < minelem )
+LABELV $316
+line 1327
+;1327:	{
+line 1328
+;1328:		if ( fabs( src[i] ) < minelem )
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -8278,17 +8363,17 @@ ADDRLP4 28
 INDIRF4
 ADDRLP4 4
 INDIRF4
-GEF4 $318
-line 1308
-;1308:		{
-line 1309
-;1309:			pos = i;
+GEF4 $320
+line 1329
+;1329:		{
+line 1330
+;1330:			pos = i;
 ADDRLP4 8
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 1310
-;1310:			minelem = fabs( src[i] );
+line 1331
+;1331:			minelem = fabs( src[i] );
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -8306,26 +8391,26 @@ ADDRLP4 4
 ADDRLP4 32
 INDIRF4
 ASGNF4
-line 1311
-;1311:		}
-LABELV $318
-line 1312
-;1312:	}
-LABELV $315
-line 1305
+line 1332
+;1332:		}
+LABELV $320
+line 1333
+;1333:	}
+LABELV $317
+line 1326
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $317
+LABELV $319
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $314
-line 1313
-;1313:	tempvec[0] = tempvec[1] = tempvec[2] = 0.0F;
+LTI4 $316
+line 1334
+;1334:	tempvec[0] = tempvec[1] = tempvec[2] = 0.0F;
 ADDRLP4 28
 CNSTF4 0
 ASGNF4
@@ -8341,8 +8426,8 @@ ADDRLP4 12
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1314
-;1314:	tempvec[pos] = 1.0F;
+line 1335
+;1335:	tempvec[pos] = 1.0F;
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
@@ -8351,12 +8436,12 @@ ADDRLP4 12
 ADDP4
 CNSTF4 1065353216
 ASGNF4
-line 1319
-;1315:
-;1316:	/*
-;1317:	** project the point onto the plane defined by src
-;1318:	*/
-;1319:	ProjectPointOnPlane( dst, tempvec, src );
+line 1340
+;1336:
+;1337:	/*
+;1338:	** project the point onto the plane defined by src
+;1339:	*/
+;1340:	ProjectPointOnPlane( dst, tempvec, src );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -8368,21 +8453,21 @@ ARGP4
 ADDRGP4 ProjectPointOnPlane
 CALLV
 pop
-line 1324
-;1320:
-;1321:	/*
-;1322:	** normalize the result
-;1323:	*/
-;1324:	VectorNormalize( dst );
+line 1345
+;1341:
+;1342:	/*
+;1343:	** normalize the result
+;1344:	*/
+;1345:	VectorNormalize( dst );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 1325
-;1325:}
-LABELV $313
+line 1346
+;1346:}
+LABELV $315
 endproc PerpendicularVector 36 12
 import Com_Printf
 import Com_Error

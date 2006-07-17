@@ -16,7 +16,12 @@ char	*cg_customSoundNames[MAX_CUSTOM_SOUNDS] = {
 	"*gasp.wav",
 	"*drown.wav",
 	"*fall1.wav",
-	"*taunt.wav"
+	"*taunt.wav",
+	"*taunt1.wav",
+	"*taunt2.wav",
+	"*taunt3.wav",
+	"*taunt4.wav",
+	"*taunt5.wav"
 };
 
 
@@ -293,6 +298,7 @@ static qboolean	CG_FindClientModelFile( char *filename, int length, clientInfo_t
 	char *team, *charactersFolder;
 	int i;
 
+	ci->efmodel = qfalse;
 	if ( cgs.gametype >= GT_TEAM ) {
 		switch ( ci->team ) {
 			case TEAM_BLUE: {
@@ -314,12 +320,15 @@ static qboolean	CG_FindClientModelFile( char *filename, int length, clientInfo_t
 			if ( i == 0 && teamName && *teamName ) {
 				//								"models/players/characters/james/stroggs/lower_lily_red.skin"
 				Com_sprintf( filename, length, "models/players/%s%s/%s%s_%s_%s.%s", charactersFolder, modelName, teamName, base, skinName, team, ext );
+				
+				
 			}
 			else {
 				//								"models/players/characters/james/lower_lily_red.skin"
 				Com_sprintf( filename, length, "models/players/%s%s/%s_%s_%s.%s", charactersFolder, modelName, base, skinName, team, ext );
 			}
 			if ( CG_FileExists( filename ) ) {
+				ci->efmodel = qfalse;
 				return qtrue;
 			}
 			// MDR Format
@@ -332,6 +341,7 @@ static qboolean	CG_FindClientModelFile( char *filename, int length, clientInfo_t
 				Com_sprintf( filename, length, "models/players2/%s%s/%s_%s_%s.%s", charactersFolder, modelName, base, skinName, team, ext );
 			}
 			if ( CG_FileExists( filename ) ) {
+				ci->efmodel = qtrue;
 				return qtrue;
 			}
 
@@ -358,7 +368,9 @@ static qboolean	CG_FindClientModelFile( char *filename, int length, clientInfo_t
 				}
 			}
 			if ( CG_FileExists( filename ) ) {
+				ci->efmodel = qfalse;
 				return qtrue;
+
 			}
 
 
@@ -384,6 +396,7 @@ static qboolean	CG_FindClientModelFile( char *filename, int length, clientInfo_t
 				}
 			}
 			if ( CG_FileExists( filename ) ) {
+				ci->efmodel = qtrue;
 				return qtrue;
 			}
 
@@ -559,17 +572,21 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 	
 	Com_sprintf( filename, sizeof( filename ), "models/players/%s/lower.md3", modelName );
 	ci->legsModel = trap_R_RegisterModel( filename );
+	ci->efmodel = qfalse;
 	if ( !ci->legsModel ) {
 		Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/lower.md3", modelName );
 		ci->legsModel = trap_R_RegisterModel( filename );
+		ci->efmodel = qfalse;
 		if ( !ci->legsModel ) {
 			// Now Try Md4/MDr format Shafe - Trep 
 			Com_sprintf( filename, sizeof( filename ), "models/players2/%s/lower.mdr", modelName );
+			ci->efmodel = qtrue;
 			ci->legsModel = trap_R_RegisterModel( filename );
 			if ( !ci->legsModel ) {
 				// Now Try Md3 in the players 2 folder format Shafe - Trep 
 				Com_sprintf( filename, sizeof( filename ), "models/players2/%s/lower.md3", modelName );
 				ci->legsModel = trap_R_RegisterModel( filename );
+				ci->efmodel = qtrue;
 				if ( !ci->legsModel ) {
 					Com_Printf( "CG_RegisterClientModelname: Failed to load model file %s\n", filename );
 					return qfalse;
@@ -710,6 +727,9 @@ static void CG_LoadClientInfo( clientInfo_t *ci ) {
 	const char	*s;
 	int			clientNum;
 	char		teamname[MAX_QPATH];
+	char		*filename;
+	char		temp_string[200];
+	qboolean	noMoreTaunts, loadingTaunt;
 
 	teamname[0] = 0;
 #ifdef MISSIONPACK
@@ -767,19 +787,45 @@ static void CG_LoadClientInfo( clientInfo_t *ci ) {
 		if ( !s ) {
 			break;
 		}
+
+		/*
+		if ( strstr( s, "taunt" ) != NULL ) {
+			if ( noMoreTaunts )	{continue;}
+			loadingTaunt = qtrue;
+		} else {loadingTaunt=qfalse;}
+		*/
+
 		ci->sounds[i] = 0;
-		// if the model didn't load use the sounds of the default model
-		if (modelloaded) {
+		if (ci->efmodel == qtrue)
+		{
+			ci->sounds[i] = trap_S_RegisterSound( va("sound/voice/%s/misc/%s", dir, s + 1), qfalse );
+		} 
+		else
+		{
 			ci->sounds[i] = trap_S_RegisterSound( va("sound/player/%s/%s", dir, s + 1), qfalse );
 		}
+				
 		
-		if ( !ci->sounds[i] ) {
-			ci->sounds[i] = trap_S_RegisterSound( va("sound/voice/%s/%s", dir, s + 1), qfalse );
-		}
-		
+		//if (modelloaded) {	
+		//		ci->sounds[i] = trap_S_RegisterSound( va("sound/voice/%s/misc/%s", dir, s + 1), qfalse );
+		//}
+
+		// if the model didn't load use the sounds of the default model
+
+		/*
 		if ( !ci->sounds[i] ) {
 			ci->sounds[i] = trap_S_RegisterSound( va("sound/player/%s/%s", fallback, s + 1), qfalse );
 		}
+		*/
+
+		/*
+		if ( loadingTaunt ) {//NOTE: this requires the taunts to not have any gaps
+			if ( ci->sounds[i] ) {ci->numTaunts++;}
+			else {noMoreTaunts=qtrue;}
+		}
+		*/
+		
+
 	}
 
 	ci->deferred = qfalse;
@@ -804,6 +850,7 @@ static void CG_CopyClientInfoModel( clientInfo_t *from, clientInfo_t *to ) {
 	VectorCopy( from->headOffset, to->headOffset );
 	to->footsteps = from->footsteps;
 	to->gender = from->gender;
+	to->numTaunts = from->numTaunts;
 
 	to->legsModel = from->legsModel;
 	to->legsSkin = from->legsSkin;
