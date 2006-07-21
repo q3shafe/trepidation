@@ -613,7 +613,7 @@ gentity_t *fire_altgrenade (gentity_t *self, vec3_t start, vec3_t aimdir); // Sh
 gentity_t *fire_alt_rocket (gentity_t *self, vec3_t start, vec3_t dir); // Shafe Alternate Rocket Fire
 gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t aimdir, qboolean alt); // Shafe Flame Thrower
 gentity_t *fire_rocket (gentity_t *self, vec3_t start, vec3_t dir);
-gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, int charge);
+gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt);
 gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir);
 #ifdef MISSIONPACK
 gentity_t *fire_nail( gentity_t *self, vec3_t start, vec3_t forward, vec3_t right, vec3_t up );

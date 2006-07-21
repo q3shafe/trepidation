@@ -11,7 +11,7 @@ byte 4 30
 byte 4 400
 byte 4 50
 byte 4 120
-byte 4 6
+byte 4 15
 byte 4 200
 export bg_itemlist
 align 4
@@ -514,7 +514,7 @@ line 930
 ;17:	400,				// Flame Thrower / Lignting,
 ;18:	50,					// Rail Gun/Guass Rifle,
 ;19:	120,				// Plasma,	
-;20:	6,					// BFG,		
+;20:	15,					// BFG,		
 ;21:	200					// Dunno,
 ;22:
 ;23:};

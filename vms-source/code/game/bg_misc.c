@@ -17,7 +17,7 @@ int Max_Ammo[WP_NUM_WEAPONS] =
 	400,				// Flame Thrower / Lignting,
 	50,					// Rail Gun/Guass Rifle,
 	120,				// Plasma,	
-	6,					// BFG,		
+	15,					// BFG,		
 	200					// Dunno,
 
 };
@@ -323,7 +323,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/iconw_bfg",
 /* pickup */	"Devastator",
-		2,
+		5,
 		IT_WEAPON,
 		WP_BFG,
 /* precache */ "",
@@ -471,7 +471,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/icona_bfg",
 /* pickup */	"Devastator",
-		2,
+		5,
 		IT_AMMO,
 		WP_BFG,
 /* precache */ "",
