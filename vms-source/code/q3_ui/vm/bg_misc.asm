@@ -11,7 +11,7 @@ byte 4 30
 byte 4 400
 byte 4 50
 byte 4 120
-byte 4 6
+byte 4 15
 byte 4 200
 export bg_itemlist
 align 4
@@ -232,7 +232,7 @@ byte 4 0
 byte 4 0
 address $118
 address $119
-byte 4 2
+byte 4 5
 byte 4 1
 byte 4 9
 address $42
@@ -349,7 +349,7 @@ byte 4 0
 byte 4 0
 address $154
 address $119
-byte 4 2
+byte 4 5
 byte 4 2
 byte 4 9
 address $42
@@ -514,7 +514,7 @@ line 930
 ;17:	400,				// Flame Thrower / Lignting,
 ;18:	50,					// Rail Gun/Guass Rifle,
 ;19:	120,				// Plasma,	
-;20:	6,					// BFG,		
+;20:	15,					// BFG,		
 ;21:	200					// Dunno,
 ;22:
 ;23:};
@@ -802,7 +802,7 @@ line 930
 ;305:        { "models/weapons2/plasma/plasma.md3", 
 ;306:		0, 0, 0},
 ;307:/* icon */		"icons/iconw_plasma",
-;308:/* pickup */	"Plasma Gun",
+;308:/* pickup */	"Gata Gun",
 ;309:		50,
 ;310:		IT_WEAPON,
 ;311:		WP_PLASMAGUN,
@@ -820,7 +820,7 @@ line 930
 ;323:		0, 0, 0},
 ;324:/* icon */		"icons/iconw_bfg",
 ;325:/* pickup */	"Devastator",
-;326:		2,
+;326:		5,
 ;327:		IT_WEAPON,
 ;328:		WP_BFG,
 ;329:/* precache */ "",
@@ -903,7 +903,7 @@ line 930
 ;406:        { "models/powerups/ammo/plasmaam.md3", 
 ;407:		0, 0, 0},
 ;408:/* icon */		"icons/icona_plasma",
-;409:/* pickup */	"Cells",
+;409:/* pickup */	"Gata Discs",
 ;410:		30,
 ;411:		IT_AMMO,
 ;412:		WP_PLASMAGUN,
@@ -968,7 +968,7 @@ line 930
 ;471:		0, 0, 0},
 ;472:/* icon */		"icons/icona_bfg",
 ;473:/* pickup */	"Devastator",
-;474:		2,
+;474:		5,
 ;475:		IT_AMMO,
 ;476:		WP_BFG,
 ;477:/* precache */ "",
@@ -8680,10 +8680,15 @@ byte 1 103
 byte 1 0
 align 1
 LABELV $139
-byte 1 67
-byte 1 101
-byte 1 108
-byte 1 108
+byte 1 71
+byte 1 97
+byte 1 116
+byte 1 97
+byte 1 32
+byte 1 68
+byte 1 105
+byte 1 115
+byte 1 99
 byte 1 115
 byte 1 0
 align 1
@@ -9205,11 +9210,9 @@ byte 1 103
 byte 1 0
 align 1
 LABELV $115
-byte 1 80
-byte 1 108
+byte 1 71
 byte 1 97
-byte 1 115
-byte 1 109
+byte 1 116
 byte 1 97
 byte 1 32
 byte 1 71

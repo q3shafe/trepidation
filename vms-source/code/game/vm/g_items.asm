@@ -1083,8 +1083,8 @@ LABELV $109
 line 273
 ;271:	
 ;272:	// If it's arsenal then make sure they are still at infinite
-;273:	if (g_Arsenal.integer == 1)
-ADDRGP4 g_Arsenal+12
+;273:	if (g_GameMode.integer == 1)
+ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 1
 NEI4 $110
@@ -4085,22 +4085,15 @@ LABELV $254
 line 874
 ;872:
 ;873:	// Shafe - Trep - Arsenal Gets All Weapons Pre-Registered
-;874:	if (g_Arsenal.integer == 1)
-ADDRGP4 g_Arsenal+12
+;874:	if (g_GameMode.integer == 1)
+ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 1
 NEI4 $257
 line 875
 ;875:	{
-line 883
-;876:		//RegisterItem( BG_FindItemForWeapon( WP_GAUNTLET ) ); // Already Registered
-;877:		//RegisterItem( BG_FindItemForWeapon( WP_MACHINEGUN ) ); // Already Registered
-;878:		//RegisterItem( BG_FindItemForWeapon( WP_LIGHTNING ) ); // Already Registered
-;879:		//RegisterItem( BG_FindItemForWeapon( WP_GRENADE_LAUNCHER ) ); // Already Registerd
-;880:		//RegisterItem( BG_FindItemForWeapon( WP_ROCKET_LAUNCHER ) );
-;881:		//RegisterItem( BG_FindItemForWeapon( WP_GRAPPLING_HOOK ) );
-;882:
-;883:		RegisterItem( BG_FindItemForWeapon( WP_SHOTGUN ) );
+line 876
+;876:		RegisterItem( BG_FindItemForWeapon( WP_SHOTGUN ) );
 CNSTI4 3
 ARGI4
 ADDRLP4 24
@@ -4113,8 +4106,8 @@ ARGP4
 ADDRGP4 RegisterItem
 CALLV
 pop
-line 884
-;884:		RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
+line 877
+;877:		RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
 CNSTI4 7
 ARGI4
 ADDRLP4 28
@@ -4127,8 +4120,8 @@ ARGP4
 ADDRGP4 RegisterItem
 CALLV
 pop
-line 885
-;885:		RegisterItem( BG_FindItemForWeapon( WP_PLASMAGUN ) );
+line 878
+;878:		RegisterItem( BG_FindItemForWeapon( WP_PLASMAGUN ) );
 CNSTI4 8
 ARGI4
 ADDRLP4 32
@@ -4141,8 +4134,8 @@ ARGP4
 ADDRGP4 RegisterItem
 CALLV
 pop
-line 886
-;886:		RegisterItem( BG_FindItemForWeapon( WP_BFG ) );
+line 879
+;879:		RegisterItem( BG_FindItemForWeapon( WP_BFG ) );
 CNSTI4 9
 ARGI4
 ADDRLP4 36
@@ -4155,53 +4148,51 @@ ARGP4
 ADDRGP4 RegisterItem
 CALLV
 pop
-line 889
-;887:		
-;888:		
-;889:	}
+line 880
+;880:	}
 LABELV $257
-line 897
-;890:
-;891:#ifdef MISSIONPACK
-;892:	if( g_gametype.integer == GT_HARVESTER ) {
-;893:		RegisterItem( BG_FindItem( "Red Cube" ) );
-;894:		RegisterItem( BG_FindItem( "Blue Cube" ) );
-;895:	}
-;896:#endif
-;897:}
+line 888
+;881:
+;882:#ifdef MISSIONPACK
+;883:	if( g_gametype.integer == GT_HARVESTER ) {
+;884:		RegisterItem( BG_FindItem( "Red Cube" ) );
+;885:		RegisterItem( BG_FindItem( "Blue Cube" ) );
+;886:	}
+;887:#endif
+;888:}
 LABELV $253
 endproc ClearRegisteredItems 40 12
 export RegisterItem
 proc RegisterItem 0 4
-line 906
-;898:
-;899:/*
-;900:===============
-;901:RegisterItem
-;902:
-;903:The item will be added to the precache list
-;904:===============
-;905:*/
-;906:void RegisterItem( gitem_t *item ) {
-line 907
-;907:	if ( !item ) {
+line 897
+;889:
+;890:/*
+;891:===============
+;892:RegisterItem
+;893:
+;894:The item will be added to the precache list
+;895:===============
+;896:*/
+;897:void RegisterItem( gitem_t *item ) {
+line 898
+;898:	if ( !item ) {
 ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $261
-line 908
-;908:		G_Error( "RegisterItem: NULL" );
+line 899
+;899:		G_Error( "RegisterItem: NULL" );
 ADDRGP4 $263
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 909
-;909:	}
+line 900
+;900:	}
 LABELV $261
-line 910
-;910:	itemRegistered[ item - bg_itemlist ] = qtrue;
+line 901
+;901:	itemRegistered[ item - bg_itemlist ] = qtrue;
 ADDRFP4 0
 INDIRP4
 CVPU4 4
@@ -4217,43 +4208,43 @@ ADDRGP4 itemRegistered
 ADDP4
 CNSTI4 1
 ASGNI4
-line 911
-;911:}
+line 902
+;902:}
 LABELV $260
 endproc RegisterItem 0 4
 export SaveRegisteredItems
 proc SaveRegisteredItems 268 8
-line 922
-;912:
-;913:
-;914:/*
-;915:===============
-;916:SaveRegisteredItems
+line 913
+;903:
+;904:
+;905:/*
+;906:===============
+;907:SaveRegisteredItems
+;908:
+;909:Write the needed items to a config string
+;910:so the client will know which ones to precache
+;911:===============
+;912:*/
+;913:void SaveRegisteredItems( void ) {
+line 918
+;914:	char	string[MAX_ITEMS+1];
+;915:	int		i;
+;916:	int		count;
 ;917:
-;918:Write the needed items to a config string
-;919:so the client will know which ones to precache
-;920:===============
-;921:*/
-;922:void SaveRegisteredItems( void ) {
-line 927
-;923:	char	string[MAX_ITEMS+1];
-;924:	int		i;
-;925:	int		count;
-;926:
-;927:	count = 0;
+;918:	count = 0;
 ADDRLP4 264
 CNSTI4 0
 ASGNI4
-line 928
-;928:	for ( i = 0 ; i < bg_numItems ; i++ ) {
+line 919
+;919:	for ( i = 0 ; i < bg_numItems ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $268
 JUMPV
 LABELV $265
-line 929
-;929:		if ( itemRegistered[i] ) {
+line 920
+;920:		if ( itemRegistered[i] ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4263,42 +4254,42 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $269
-line 930
-;930:			count++;
+line 921
+;921:			count++;
 ADDRLP4 264
 ADDRLP4 264
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 931
-;931:			string[i] = '1';
+line 922
+;922:			string[i] = '1';
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 ADDP4
 CNSTI1 49
 ASGNI1
-line 932
-;932:		} else {
+line 923
+;923:		} else {
 ADDRGP4 $270
 JUMPV
 LABELV $269
-line 933
-;933:			string[i] = '0';
+line 924
+;924:			string[i] = '0';
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 ADDP4
 CNSTI1 48
 ASGNI1
-line 934
-;934:		}
+line 925
+;925:		}
 LABELV $270
-line 935
-;935:	}
+line 926
+;926:	}
 LABELV $266
-line 928
+line 919
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4311,17 +4302,17 @@ INDIRI4
 ADDRGP4 bg_numItems
 INDIRI4
 LTI4 $265
-line 936
-;936:	string[ bg_numItems ] = 0;
+line 927
+;927:	string[ bg_numItems ] = 0;
 ADDRGP4 bg_numItems
 INDIRI4
 ADDRLP4 4
 ADDP4
 CNSTI1 0
 ASGNI1
-line 938
-;937:
-;938:	G_Printf( "%i items registered\n", count );
+line 929
+;928:
+;929:	G_Printf( "%i items registered\n", count );
 ADDRGP4 $271
 ARGP4
 ADDRLP4 264
@@ -4330,8 +4321,8 @@ ARGI4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 939
-;939:	trap_SetConfigstring(CS_ITEMS, string);
+line 930
+;930:	trap_SetConfigstring(CS_ITEMS, string);
 CNSTI4 27
 ARGI4
 ADDRLP4 4
@@ -4339,25 +4330,25 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 940
-;940:}
+line 931
+;931:}
 LABELV $264
 endproc SaveRegisteredItems 268 8
 export G_ItemDisabled
 proc G_ItemDisabled 132 16
-line 947
+line 938
+;932:
+;933:/*
+;934:============
+;935:G_ItemDisabled
+;936:============
+;937:*/
+;938:int G_ItemDisabled( gitem_t *item ) {
+line 942
+;939:
+;940:	char name[128];
 ;941:
-;942:/*
-;943:============
-;944:G_ItemDisabled
-;945:============
-;946:*/
-;947:int G_ItemDisabled( gitem_t *item ) {
-line 951
-;948:
-;949:	char name[128];
-;950:
-;951:	Com_sprintf(name, sizeof(name), "disable_%s", item->classname);
+;942:	Com_sprintf(name, sizeof(name), "disable_%s", item->classname);
 ADDRLP4 0
 ARGP4
 CNSTI4 128
@@ -4371,8 +4362,8 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 952
-;952:	return trap_Cvar_VariableIntegerValue( name );
+line 943
+;943:	return trap_Cvar_VariableIntegerValue( name );
 ADDRLP4 0
 ARGP4
 ADDRLP4 128
@@ -4386,33 +4377,33 @@ LABELV $272
 endproc G_ItemDisabled 132 16
 export G_SpawnItem
 proc G_SpawnItem 4 12
-line 965
-;953:}
-;954:
-;955:/*
-;956:============
-;957:G_SpawnItem
-;958:
-;959:Sets the clipping size and plants the object on the floor.
-;960:
-;961:Items can't be immediately dropped to floor, because they might
-;962:be on an entity that hasn't spawned yet.
-;963:============
-;964:*/
-;965:void G_SpawnItem (gentity_t *ent, gitem_t *item) {
-line 968
-;966:	
-;967:	//Shafe - Trep Instagib
-;968:	if (g_instagib.integer == 1) 
+line 956
+;944:}
+;945:
+;946:/*
+;947:============
+;948:G_SpawnItem
+;949:
+;950:Sets the clipping size and plants the object on the floor.
+;951:
+;952:Items can't be immediately dropped to floor, because they might
+;953:be on an entity that hasn't spawned yet.
+;954:============
+;955:*/
+;956:void G_SpawnItem (gentity_t *ent, gitem_t *item) {
+line 959
+;957:	
+;958:	//Shafe - Trep Instagib
+;959:	if (g_instagib.integer == 1) 
 ADDRGP4 g_instagib+12
 INDIRI4
 CNSTI4 1
 NEI4 $275
-line 969
-;969:	{
-line 971
-;970:	// InstaGib - prevent weapons and ammo from spawning
-;971:	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
+line 960
+;960:	{
+line 962
+;961:	// InstaGib - prevent weapons and ammo from spawning
+;962:	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
 ADDRLP4 0
 ADDRFP4 4
 INDIRP4
@@ -4429,28 +4420,28 @@ INDIRI4
 CNSTI4 2
 NEI4 $278
 LABELV $280
-line 972
-;972:		return;
+line 963
+;963:		return;
 ADDRGP4 $274
 JUMPV
 LABELV $278
-line 973
-;973:	}
+line 964
+;964:	}
 LABELV $275
-line 977
-;974:	/////////////////////////////////////////////////////////
-;975:
-;976:	//Shafe - Trep Instagib
-;977:	if (g_Arsenal.integer == 1) 
-ADDRGP4 g_Arsenal+12
+line 968
+;965:	/////////////////////////////////////////////////////////
+;966:
+;967:	//Shafe - Trep Instagib
+;968:	if (g_GameMode.integer == 1) 
+ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 1
 NEI4 $281
-line 978
-;978:	{
-line 980
-;979:	// Arsenal - prevent weapons and ammo from spawning
-;980:	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
+line 969
+;969:	{
+line 971
+;970:	// Arsenal - prevent weapons and ammo from spawning
+;971:	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
 ADDRLP4 0
 ADDRFP4 4
 INDIRP4
@@ -4467,18 +4458,18 @@ INDIRI4
 CNSTI4 2
 NEI4 $284
 LABELV $286
-line 981
-;981:		return;
+line 972
+;972:		return;
 ADDRGP4 $274
 JUMPV
 LABELV $284
-line 982
-;982:	}
+line 973
+;973:	}
 LABELV $281
-line 985
-;983:	/////////////////////////////////////////////////////////
-;984: 
-;985:	G_SpawnFloat( "random", "0", &ent->random );
+line 976
+;974:	/////////////////////////////////////////////////////////
+;975: 
+;976:	G_SpawnFloat( "random", "0", &ent->random );
 ADDRGP4 $287
 ARGP4
 ADDRGP4 $288
@@ -4491,8 +4482,8 @@ ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 986
-;986:	G_SpawnFloat( "wait", "0", &ent->wait );
+line 977
+;977:	G_SpawnFloat( "wait", "0", &ent->wait );
 ADDRGP4 $289
 ARGP4
 ADDRGP4 $288
@@ -4505,17 +4496,17 @@ ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 988
-;987:
-;988:	RegisterItem( item );
+line 979
+;978:
+;979:	RegisterItem( item );
 ADDRFP4 4
 INDIRP4
 ARGP4
 ADDRGP4 RegisterItem
 CALLV
 pop
-line 989
-;989:	if ( G_ItemDisabled(item) )
+line 980
+;980:	if ( G_ItemDisabled(item) )
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -4527,14 +4518,14 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 0
 EQI4 $290
-line 990
-;990:		return;
+line 981
+;981:		return;
 ADDRGP4 $274
 JUMPV
 LABELV $290
-line 992
-;991:
-;992:	ent->item = item;
+line 983
+;982:
+;983:	ent->item = item;
 ADDRFP4 0
 INDIRP4
 CNSTI4 828
@@ -4542,10 +4533,10 @@ ADDP4
 ADDRFP4 4
 INDIRP4
 ASGNP4
-line 995
-;993:	// some movers spawn on the second frame, so delay item
-;994:	// spawns until the third frame so they can ride trains
-;995:	ent->nextthink = level.time + FRAMETIME * 2;
+line 986
+;984:	// some movers spawn on the second frame, so delay item
+;985:	// spawns until the third frame so they can ride trains
+;986:	ent->nextthink = level.time + FRAMETIME * 2;
 ADDRFP4 0
 INDIRP4
 CNSTI4 688
@@ -4555,26 +4546,26 @@ INDIRI4
 CNSTI4 200
 ADDI4
 ASGNI4
-line 996
-;996:	ent->think = FinishSpawningItem;
+line 987
+;987:	ent->think = FinishSpawningItem;
 ADDRFP4 0
 INDIRP4
 CNSTI4 700
 ADDP4
 ADDRGP4 FinishSpawningItem
 ASGNP4
-line 998
-;997:
-;998:	ent->physicsBounce = 0.50;		// items are bouncy
+line 989
+;988:
+;989:	ent->physicsBounce = 0.50;		// items are bouncy
 ADDRFP4 0
 INDIRP4
 CNSTI4 568
 ADDP4
 CNSTF4 1056964608
 ASGNF4
-line 1000
-;999:
-;1000:	if ( item->giType == IT_POWERUP ) {
+line 991
+;990:
+;991:	if ( item->giType == IT_POWERUP ) {
 ADDRFP4 4
 INDIRP4
 CNSTI4 36
@@ -4582,15 +4573,15 @@ ADDP4
 INDIRI4
 CNSTI4 5
 NEI4 $293
-line 1001
-;1001:		G_SoundIndex( "sound/items/poweruprespawn.wav" );
+line 992
+;992:		G_SoundIndex( "sound/items/poweruprespawn.wav" );
 ADDRGP4 $156
 ARGP4
 ADDRGP4 G_SoundIndex
 CALLI4
 pop
-line 1002
-;1002:		G_SpawnFloat( "noglobalsound", "0", &ent->speed);
+line 993
+;993:		G_SpawnFloat( "noglobalsound", "0", &ent->speed);
 ADDRGP4 $295
 ARGP4
 ADDRGP4 $288
@@ -4603,38 +4594,38 @@ ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1003
-;1003:	}
+line 994
+;994:	}
 LABELV $293
-line 1010
-;1004:
-;1005:#ifdef MISSIONPACK
-;1006:	if ( item->giType == IT_PERSISTANT_POWERUP ) {
-;1007:		ent->s.generic1 = ent->spawnflags;
-;1008:	}
-;1009:#endif
-;1010:}
+line 1001
+;995:
+;996:#ifdef MISSIONPACK
+;997:	if ( item->giType == IT_PERSISTANT_POWERUP ) {
+;998:		ent->s.generic1 = ent->spawnflags;
+;999:	}
+;1000:#endif
+;1001:}
 LABELV $274
 endproc G_SpawnItem 4 12
 export G_BounceItem
 proc G_BounceItem 76 12
-line 1019
-;1011:
-;1012:
-;1013:/*
-;1014:================
-;1015:G_BounceItem
-;1016:
-;1017:================
-;1018:*/
-;1019:void G_BounceItem( gentity_t *ent, trace_t *trace ) {
-line 1025
-;1020:	vec3_t	velocity;
-;1021:	float	dot;
-;1022:	int		hitTime;
-;1023:
-;1024:	// reflect the velocity on the trace plane
-;1025:	hitTime = level.previousTime + ( level.time - level.previousTime ) * trace->fraction;
+line 1010
+;1002:
+;1003:
+;1004:/*
+;1005:================
+;1006:G_BounceItem
+;1007:
+;1008:================
+;1009:*/
+;1010:void G_BounceItem( gentity_t *ent, trace_t *trace ) {
+line 1016
+;1011:	vec3_t	velocity;
+;1012:	float	dot;
+;1013:	int		hitTime;
+;1014:
+;1015:	// reflect the velocity on the trace plane
+;1016:	hitTime = level.previousTime + ( level.time - level.previousTime ) * trace->fraction;
 ADDRLP4 16
 ADDRGP4 level+36
 INDIRI4
@@ -4654,8 +4645,8 @@ MULF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 1026
-;1026:	BG_EvaluateTrajectoryDelta( &ent->s.pos, hitTime, velocity );
+line 1017
+;1017:	BG_EvaluateTrajectoryDelta( &ent->s.pos, hitTime, velocity );
 ADDRFP4 0
 INDIRP4
 CNSTI4 12
@@ -4669,8 +4660,8 @@ ARGP4
 ADDRGP4 BG_EvaluateTrajectoryDelta
 CALLV
 pop
-line 1027
-;1027:	dot = DotProduct( velocity, trace->plane.normal );
+line 1018
+;1018:	dot = DotProduct( velocity, trace->plane.normal );
 ADDRLP4 20
 ADDRFP4 4
 INDIRP4
@@ -4703,8 +4694,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1028
-;1028:	VectorMA( velocity, -2*dot, trace->plane.normal, ent->s.pos.trDelta );
+line 1019
+;1019:	VectorMA( velocity, -2*dot, trace->plane.normal, ent->s.pos.trDelta );
 ADDRFP4 0
 INDIRP4
 CNSTI4 36
@@ -4759,10 +4750,10 @@ MULF4
 MULF4
 ADDF4
 ASGNF4
-line 1031
-;1029:
-;1030:	// cut the velocity to keep from bouncing forever
-;1031:	VectorScale( ent->s.pos.trDelta, ent->physicsBounce, ent->s.pos.trDelta );
+line 1022
+;1020:
+;1021:	// cut the velocity to keep from bouncing forever
+;1022:	VectorScale( ent->s.pos.trDelta, ent->physicsBounce, ent->s.pos.trDelta );
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -4829,10 +4820,10 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 1034
-;1032:
-;1033:	// check for stop
-;1034:	if ( trace->plane.normal[2] > 0 && ent->s.pos.trDelta[2] < 40 ) {
+line 1025
+;1023:
+;1024:	// check for stop
+;1025:	if ( trace->plane.normal[2] > 0 && ent->s.pos.trDelta[2] < 40 ) {
 ADDRFP4 4
 INDIRP4
 CNSTI4 32
@@ -4847,8 +4838,8 @@ ADDP4
 INDIRF4
 CNSTF4 1109393408
 GEF4 $304
-line 1035
-;1035:		trace->endpos[2] += 1.0;	// make sure it is off ground
+line 1026
+;1026:		trace->endpos[2] += 1.0;	// make sure it is off ground
 ADDRLP4 48
 ADDRFP4 4
 INDIRP4
@@ -4863,8 +4854,8 @@ INDIRF4
 CNSTF4 1065353216
 ADDF4
 ASGNF4
-line 1036
-;1036:		SnapVector( trace->endpos );
+line 1027
+;1027:		SnapVector( trace->endpos );
 ADDRLP4 52
 ADDRFP4 4
 INDIRP4
@@ -4922,8 +4913,8 @@ INDIRP4
 ADDRLP4 72
 INDIRF4
 ASGNF4
-line 1037
-;1037:		G_SetOrigin( ent, trace->endpos );
+line 1028
+;1028:		G_SetOrigin( ent, trace->endpos );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -4935,8 +4926,8 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 1038
-;1038:		ent->s.groundEntityNum = trace->entityNum;
+line 1029
+;1029:		ent->s.groundEntityNum = trace->entityNum;
 ADDRFP4 0
 INDIRP4
 CNSTI4 148
@@ -4947,15 +4938,15 @@ CNSTI4 52
 ADDP4
 INDIRI4
 ASGNI4
-line 1039
-;1039:		return;
+line 1030
+;1030:		return;
 ADDRGP4 $296
 JUMPV
 LABELV $304
-line 1042
-;1040:	}
-;1041:
-;1042:	VectorAdd( ent->r.currentOrigin, trace->plane.normal, ent->r.currentOrigin);
+line 1033
+;1031:	}
+;1032:
+;1033:	VectorAdd( ent->r.currentOrigin, trace->plane.normal, ent->r.currentOrigin);
 ADDRLP4 48
 ADDRFP4 0
 INDIRP4
@@ -5010,8 +5001,8 @@ ADDP4
 INDIRF4
 ADDF4
 ASGNF4
-line 1043
-;1043:	VectorCopy( ent->r.currentOrigin, ent->s.pos.trBase );
+line 1034
+;1034:	VectorCopy( ent->r.currentOrigin, ent->s.pos.trBase );
 ADDRLP4 60
 ADDRFP4 0
 INDIRP4
@@ -5026,8 +5017,8 @@ CNSTI4 488
 ADDP4
 INDIRB
 ASGNB 12
-line 1044
-;1044:	ent->s.pos.trTime = level.time;
+line 1035
+;1035:	ent->s.pos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 16
@@ -5035,30 +5026,30 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1045
-;1045:}
+line 1036
+;1036:}
 LABELV $296
 endproc G_BounceItem 76 12
 export G_RunItem
 proc G_RunItem 88 28
-line 1054
-;1046:
-;1047:
-;1048:/*
-;1049:================
-;1050:G_RunItem
-;1051:
-;1052:================
-;1053:*/
-;1054:void G_RunItem( gentity_t *ent ) {
-line 1061
-;1055:	vec3_t		origin;
-;1056:	trace_t		tr;
-;1057:	int			contents;
-;1058:	int			mask;
-;1059:
-;1060:	// if groundentity has been set to -1, it may have been pushed off an edge
-;1061:	if ( ent->s.groundEntityNum == -1 ) {
+line 1045
+;1037:
+;1038:
+;1039:/*
+;1040:================
+;1041:G_RunItem
+;1042:
+;1043:================
+;1044:*/
+;1045:void G_RunItem( gentity_t *ent ) {
+line 1052
+;1046:	vec3_t		origin;
+;1047:	trace_t		tr;
+;1048:	int			contents;
+;1049:	int			mask;
+;1050:
+;1051:	// if groundentity has been set to -1, it may have been pushed off an edge
+;1052:	if ( ent->s.groundEntityNum == -1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 148
@@ -5066,8 +5057,8 @@ ADDP4
 INDIRI4
 CNSTI4 -1
 NEI4 $308
-line 1062
-;1062:		if ( ent->s.pos.trType != TR_GRAVITY ) {
+line 1053
+;1053:		if ( ent->s.pos.trType != TR_GRAVITY ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 12
@@ -5075,16 +5066,16 @@ ADDP4
 INDIRI4
 CNSTI4 5
 EQI4 $310
-line 1063
-;1063:			ent->s.pos.trType = TR_GRAVITY;
+line 1054
+;1054:			ent->s.pos.trType = TR_GRAVITY;
 ADDRFP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 5
 ASGNI4
-line 1064
-;1064:			ent->s.pos.trTime = level.time;
+line 1055
+;1055:			ent->s.pos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 16
@@ -5092,15 +5083,15 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1065
-;1065:		}
+line 1056
+;1056:		}
 LABELV $310
-line 1066
-;1066:	}
+line 1057
+;1057:	}
 LABELV $308
-line 1068
-;1067:
-;1068:	if ( ent->s.pos.trType == TR_STATIONARY ) {
+line 1059
+;1058:
+;1059:	if ( ent->s.pos.trType == TR_STATIONARY ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 12
@@ -5108,25 +5099,25 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $313
-line 1070
-;1069:		// check think function
-;1070:		G_RunThink( ent );
+line 1061
+;1060:		// check think function
+;1061:		G_RunThink( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_RunThink
 CALLV
 pop
-line 1071
-;1071:		return;
+line 1062
+;1062:		return;
 ADDRGP4 $307
 JUMPV
 LABELV $313
-line 1075
-;1072:	}
-;1073:
-;1074:	// get current position
-;1075:	BG_EvaluateTrajectory( &ent->s.pos, level.time, origin );
+line 1066
+;1063:	}
+;1064:
+;1065:	// get current position
+;1066:	BG_EvaluateTrajectory( &ent->s.pos, level.time, origin );
 ADDRFP4 0
 INDIRP4
 CNSTI4 12
@@ -5140,10 +5131,10 @@ ARGP4
 ADDRGP4 BG_EvaluateTrajectory
 CALLV
 pop
-line 1078
-;1076:
-;1077:	// trace a line from the previous position to the current position
-;1078:	if ( ent->clipmask ) {
+line 1069
+;1067:
+;1068:	// trace a line from the previous position to the current position
+;1069:	if ( ent->clipmask ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 572
@@ -5151,8 +5142,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $316
-line 1079
-;1079:		mask = ent->clipmask;
+line 1070
+;1070:		mask = ent->clipmask;
 ADDRLP4 72
 ADDRFP4 0
 INDIRP4
@@ -5160,21 +5151,21 @@ CNSTI4 572
 ADDP4
 INDIRI4
 ASGNI4
-line 1080
-;1080:	} else {
+line 1071
+;1071:	} else {
 ADDRGP4 $317
 JUMPV
 LABELV $316
-line 1081
-;1081:		mask = MASK_PLAYERSOLID & ~CONTENTS_BODY;//MASK_SOLID;
+line 1072
+;1072:		mask = MASK_PLAYERSOLID & ~CONTENTS_BODY;//MASK_SOLID;
 ADDRLP4 72
 CNSTI4 65537
 ASGNI4
-line 1082
-;1082:	}
+line 1073
+;1073:	}
 LABELV $317
-line 1083
-;1083:	trap_Trace( &tr, ent->r.currentOrigin, ent->r.mins, ent->r.maxs, origin, 
+line 1074
+;1074:	trap_Trace( &tr, ent->r.currentOrigin, ent->r.mins, ent->r.maxs, origin, 
 ADDRLP4 0
 ARGP4
 ADDRLP4 76
@@ -5210,10 +5201,10 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 1086
-;1084:		ent->r.ownerNum, mask );
-;1085:
-;1086:	VectorCopy( tr.endpos, ent->r.currentOrigin );
+line 1077
+;1075:		ent->r.ownerNum, mask );
+;1076:
+;1077:	VectorCopy( tr.endpos, ent->r.currentOrigin );
 ADDRFP4 0
 INDIRP4
 CNSTI4 488
@@ -5221,57 +5212,57 @@ ADDP4
 ADDRLP4 0+12
 INDIRB
 ASGNB 12
-line 1088
-;1087:
-;1088:	if ( tr.startsolid ) {
+line 1079
+;1078:
+;1079:	if ( tr.startsolid ) {
 ADDRLP4 0+4
 INDIRI4
 CNSTI4 0
 EQI4 $319
-line 1089
-;1089:		tr.fraction = 0;
+line 1080
+;1080:		tr.fraction = 0;
 ADDRLP4 0+8
 CNSTF4 0
 ASGNF4
-line 1090
-;1090:	}
+line 1081
+;1081:	}
 LABELV $319
-line 1092
-;1091:
-;1092:	trap_LinkEntity( ent );	// FIXME: avoid this for stationary?
+line 1083
+;1082:
+;1083:	trap_LinkEntity( ent );	// FIXME: avoid this for stationary?
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 1095
-;1093:
-;1094:	// check think function
-;1095:	G_RunThink( ent );
+line 1086
+;1084:
+;1085:	// check think function
+;1086:	G_RunThink( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_RunThink
 CALLV
 pop
-line 1097
-;1096:
-;1097:	if ( tr.fraction == 1 ) {
+line 1088
+;1087:
+;1088:	if ( tr.fraction == 1 ) {
 ADDRLP4 0+8
 INDIRF4
 CNSTF4 1065353216
 NEF4 $323
-line 1098
-;1098:		return;
+line 1089
+;1089:		return;
 ADDRGP4 $307
 JUMPV
 LABELV $323
-line 1102
-;1099:	}
-;1100:
-;1101:	// if it is in a nodrop volume, remove it
-;1102:	contents = trap_PointContents( ent->r.currentOrigin, -1 );
+line 1093
+;1090:	}
+;1091:
+;1092:	// if it is in a nodrop volume, remove it
+;1093:	contents = trap_PointContents( ent->r.currentOrigin, -1 );
 ADDRFP4 0
 INDIRP4
 CNSTI4 488
@@ -5287,8 +5278,8 @@ ADDRLP4 68
 ADDRLP4 80
 INDIRI4
 ASGNI4
-line 1103
-;1103:	if ( contents & CONTENTS_NODROP ) {
+line 1094
+;1094:	if ( contents & CONTENTS_NODROP ) {
 ADDRLP4 68
 INDIRI4
 CVIU4 4
@@ -5296,8 +5287,8 @@ CNSTU4 2147483648
 BANDU4
 CNSTU4 0
 EQU4 $326
-line 1104
-;1104:		if (ent->item && ent->item->giType == IT_TEAM) {
+line 1095
+;1095:		if (ent->item && ent->item->giType == IT_TEAM) {
 ADDRLP4 84
 ADDRFP4 0
 INDIRP4
@@ -5317,38 +5308,38 @@ ADDP4
 INDIRI4
 CNSTI4 8
 NEI4 $328
-line 1105
-;1105:			Team_FreeEntity(ent);
+line 1096
+;1096:			Team_FreeEntity(ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Team_FreeEntity
 CALLV
 pop
-line 1106
-;1106:		} else {
+line 1097
+;1097:		} else {
 ADDRGP4 $307
 JUMPV
 LABELV $328
-line 1107
-;1107:			G_FreeEntity( ent );
+line 1098
+;1098:			G_FreeEntity( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 1108
-;1108:		}
-line 1109
-;1109:		return;
+line 1099
+;1099:		}
+line 1100
+;1100:		return;
 ADDRGP4 $307
 JUMPV
 LABELV $326
-line 1112
-;1110:	}
-;1111:
-;1112:	G_BounceItem( ent, &tr );
+line 1103
+;1101:	}
+;1102:
+;1103:	G_BounceItem( ent, &tr );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5357,8 +5348,8 @@ ARGP4
 ADDRGP4 G_BounceItem
 CALLV
 pop
-line 1113
-;1113:}
+line 1104
+;1104:}
 LABELV $307
 endproc G_RunItem 88 28
 bss
@@ -5557,7 +5548,7 @@ import g_StartSG
 import g_StartMG
 import g_StartGauntlet
 import g_MultiJump
-import g_Arsenal
+import g_GameMode
 import g_instagib
 import sv_fps
 import g_lightningDamage

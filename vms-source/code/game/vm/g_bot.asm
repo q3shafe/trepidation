@@ -2115,14 +2115,15 @@ LABELV $251
 line 393
 ;391:
 ;392:	// Arsenal 
-;393:	if ((g_Arsenal.integer != 0) && (level.firstStrike = qtrue)) 
-ADDRGP4 g_Arsenal+12
-INDIRI4
-CNSTI4 0
-EQI4 $253
+;393:	if ((g_GameMode.integer == 1) && (level.firstStrike = qtrue)) 
 ADDRLP4 12
 CNSTI4 1
 ASGNI4
+ADDRGP4 g_GameMode+12
+INDIRI4
+ADDRLP4 12
+INDIRI4
+NEI4 $253
 ADDRGP4 level+9228
 ADDRLP4 12
 INDIRI4
@@ -5748,7 +5749,7 @@ import g_StartSG
 import g_StartMG
 import g_StartGauntlet
 import g_MultiJump
-import g_Arsenal
+import g_GameMode
 import g_instagib
 import sv_fps
 import g_lightningDamage

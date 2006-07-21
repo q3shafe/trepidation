@@ -200,7 +200,7 @@ typedef struct servernode_s {
 	// I'm thinking that Instagib should replace the yes/no in pb field of browser
 	*/
 	int		g_instagib; 
-	int		g_Arsenal; 
+	int		g_GameMode; 
 	
 	qboolean bPB;
 
@@ -281,7 +281,7 @@ static int				g_sortkey;
 static int				g_emptyservers;
 static int				g_fullservers;
 static int				g_masteruse; // Shafe - Trep - Multimaster
-static int				g_Arsenal;
+static int				g_GameMode;
 static int				g_instagib;
 
 
@@ -556,10 +556,10 @@ static void ArenaServers_UpdateMenu( void ) {
 			break;
 		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
 			 //strcmp(servernodeptr->gamename,"eternal") != 0
-			if( servernodeptr->g_Arsenal != 1 ) {
+			if( servernodeptr->g_GameMode == 0 ) {
 					continue;
 			}
-			if(!g_Arsenal) { continue;	}
+			if(g_GameMode == 0) { continue;	}
 			break;
 		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
 			if( servernodeptr->gametype != GT_LASTMAN ) {
@@ -592,7 +592,7 @@ static void ArenaServers_UpdateMenu( void ) {
 		}
 
 
-		if ( servernodeptr->g_Arsenal == 1) 
+		if ( servernodeptr->g_GameMode == 1) 
 		{
 			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
 			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,
@@ -719,7 +719,7 @@ static void ArenaServers_Insert( char* adrstr, char* info, int pingtime )
 	servernodeptr->minPing    = atoi( Info_ValueForKey( info, "minPing") );
 	servernodeptr->maxPing    = atoi( Info_ValueForKey( info, "maxPing") );
 	servernodeptr->bPB = atoi( Info_ValueForKey( info, "g_instagib") );
-	servernodeptr->g_Arsenal = atoi( Info_ValueForKey( info, "g_Arsenal") );
+	servernodeptr->g_GameMode = atoi( Info_ValueForKey( info, "g_GameMode") );
 	servernodeptr->g_instagib = atoi( Info_ValueForKey( info, "g_instagib") );
 
 	/*

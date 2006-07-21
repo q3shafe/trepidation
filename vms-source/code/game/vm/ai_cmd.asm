@@ -7772,7 +7772,7 @@ line 1534
 ;1501:		"Shotgun",
 ;1502:		"Grenade Launcher",
 ;1503:		"Singularity Cannon",
-;1504:		"Plasmagun",
+;1504:		"Gata Gun",
 ;1505:		"M42 Gauss Rifle",
 ;1506:		"Flame Thrower",
 ;1507:		"Devastator",
@@ -10518,7 +10518,7 @@ import g_StartSG
 import g_StartMG
 import g_StartGauntlet
 import g_MultiJump
-import g_Arsenal
+import g_GameMode
 import g_instagib
 import sv_fps
 import g_lightningDamage
@@ -11213,13 +11213,12 @@ byte 1 101
 byte 1 0
 align 1
 LABELV $514
-byte 1 80
-byte 1 108
+byte 1 71
 byte 1 97
-byte 1 115
-byte 1 109
+byte 1 116
 byte 1 97
-byte 1 103
+byte 1 32
+byte 1 71
 byte 1 117
 byte 1 110
 byte 1 0

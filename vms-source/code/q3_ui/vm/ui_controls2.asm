@@ -661,7 +661,7 @@ line 357
 ;243:	{"weapon 5",		"singularity cannon",	ID_WEAPON5,		ANIM_WEAPON5,	'5',			-1,		-1, -1},
 ;244:	{"weapon 6",		"flame thrower",	ID_WEAPON6,		ANIM_WEAPON6,	'6',			-1,		-1, -1},
 ;245:	{"weapon 7",		"m42 gauss rifle",			ID_WEAPON7,		ANIM_WEAPON7,	'7',			-1,		-1, -1},
-;246:	{"weapon 8",		"plasma gun",		ID_WEAPON8,		ANIM_WEAPON8,	'8',			-1,		-1, -1},
+;246:	{"weapon 8",		"gata gun",		ID_WEAPON8,		ANIM_WEAPON8,	'8',			-1,		-1, -1},
 ;247:	{"weapon 9",		"devastator",				ID_WEAPON9,		ANIM_WEAPON9,	'9',			-1,		-1, -1},
 ;248:	{"+attack", 		"attack",			ID_ATTACK,		ANIM_ATTACK,	K_CTRL,			-1,		-1, -1},
 ;249:	// Shafe - Alt Fire Attack
@@ -9029,11 +9029,9 @@ byte 1 57
 byte 1 0
 align 1
 LABELV $121
-byte 1 112
-byte 1 108
+byte 1 103
 byte 1 97
-byte 1 115
-byte 1 109
+byte 1 116
 byte 1 97
 byte 1 32
 byte 1 103

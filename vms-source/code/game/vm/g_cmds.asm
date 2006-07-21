@@ -2621,7 +2621,7 @@ line 511
 LABELV $230
 endproc Cmd_Kill_f 16 20
 export BroadcastTeamChange
-proc BroadcastTeamChange 12 8
+proc BroadcastTeamChange 8 8
 line 521
 ;512:
 ;513:/*
@@ -2721,23 +2721,18 @@ INDIRI4
 EQI4 $242
 line 530
 ;529:		
-;530:		if ((client->pers.Eliminated) && (g_Arsenal.integer > 0))
-ADDRLP4 4
-CNSTI4 0
-ASGNI4
+;530:		if ((client->pers.Eliminated) && (g_GameMode.integer == 1))
 ADDRFP4 0
 INDIRP4
 CNSTI4 2484
 ADDP4
 INDIRI4
-ADDRLP4 4
-INDIRI4
+CNSTI4 0
 EQI4 $244
-ADDRGP4 g_Arsenal+12
+ADDRGP4 g_GameMode+12
 INDIRI4
-ADDRLP4 4
-INDIRI4
-LEI4 $244
+CNSTI4 1
+NEI4 $244
 line 531
 ;531:		{
 line 532
@@ -2749,13 +2744,13 @@ INDIRP4
 CNSTI4 512
 ADDP4
 ARGP4
-ADDRLP4 8
+ADDRLP4 4
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 -1
 ARGI4
-ADDRLP4 8
+ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
@@ -2778,13 +2773,13 @@ INDIRP4
 CNSTI4 512
 ADDP4
 ARGP4
-ADDRLP4 8
+ADDRLP4 4
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 -1
 ARGI4
-ADDRLP4 8
+ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
@@ -2836,7 +2831,7 @@ LABELV $237
 line 543
 ;543:}
 LABELV $235
-endproc BroadcastTeamChange 12 8
+endproc BroadcastTeamChange 8 8
 export SetTeam
 proc SetTeam 96 20
 line 550
@@ -3795,7 +3790,7 @@ line 698
 LABELV $328
 endproc StopFollowing 12 0
 export Cmd_Team_f
-proc Cmd_Team_f 1040 12
+proc Cmd_Team_f 1036 12
 line 705
 ;699:
 ;700:/*
@@ -4017,19 +4012,14 @@ line 750
 ;747:		}
 ;748:	}
 ;749:	*/ 
-;750:	if ((g_Arsenal.integer != 0) && (!level.warmupTime))
-ADDRLP4 1032
-CNSTI4 0
-ASGNI4
-ADDRGP4 g_Arsenal+12
+;750:	if ((g_GameMode.integer == 1) && (!level.warmupTime))
+ADDRGP4 g_GameMode+12
 INDIRI4
-ADDRLP4 1032
-INDIRI4
-EQI4 $348
+CNSTI4 1
+NEI4 $348
 ADDRGP4 level+16
 INDIRI4
-ADDRLP4 1032
-INDIRI4
+CNSTI4 0
 NEI4 $348
 line 751
 ;751:	{
@@ -4153,7 +4143,7 @@ line 779
 ;779:		&& ent->client->sess.sessionTeam == TEAM_FREE ) {
 line 780
 ;780:		ent->client->sess.losses++;
-ADDRLP4 1036
+ADDRLP4 1032
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -4162,9 +4152,9 @@ INDIRP4
 CNSTI4 2512
 ADDP4
 ASGNP4
-ADDRLP4 1036
+ADDRLP4 1032
 INDIRP4
-ADDRLP4 1036
+ADDRLP4 1032
 INDIRP4
 INDIRI4
 CNSTI4 1
@@ -4214,7 +4204,7 @@ ASGNI4
 line 788
 ;788:}
 LABELV $329
-endproc Cmd_Team_f 1040 12
+endproc Cmd_Team_f 1036 12
 export Cmd_Follow_f
 proc Cmd_Follow_f 1040 12
 line 796
@@ -11414,7 +11404,7 @@ import g_StartSG
 import g_StartMG
 import g_StartGauntlet
 import g_MultiJump
-import g_Arsenal
+import g_GameMode
 import g_instagib
 import sv_fps
 import g_lightningDamage

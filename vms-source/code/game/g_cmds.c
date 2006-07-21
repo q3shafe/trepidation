@@ -527,7 +527,7 @@ void BroadcastTeamChange( gclient_t *client, int oldTeam )
 		client->pers.netname));
 	} else if ( client->sess.sessionTeam == TEAM_SPECTATOR && oldTeam != TEAM_SPECTATOR ) {
 		
-		if ((client->pers.Eliminated) && (g_Arsenal.integer > 0))
+		if ((client->pers.Eliminated) && (g_GameMode.integer == 1))
 		{
 			trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE "'s Arsenal Is Empty.\n\"", client->pers.netname));
 		} 
@@ -747,7 +747,7 @@ void Cmd_Team_f( gentity_t *ent ) {
 		}
 	}
 	*/ 
-	if ((g_Arsenal.integer != 0) && (!level.warmupTime))
+	if ((g_GameMode.integer == 1) && (!level.warmupTime))
 	{
 				
 		if (ent->client->sess.sessionTeam == TEAM_SPECTATOR)

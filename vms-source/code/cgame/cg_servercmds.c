@@ -147,7 +147,7 @@ void CG_ParseServerinfo( void ) {
 	trap_Cvar_Set("g_blueTeam", cgs.blueTeam);
 	// Shafe - Trep
 	cgs.g_instagib = atoi( Info_ValueForKey( info, "g_instagib" ) );
-	cgs.g_Arsenal = atoi( Info_ValueForKey( info, "g_Arsenal" ) );
+	cgs.g_GameMode = atoi( Info_ValueForKey( info, "g_GameMode" ) );
 
 //unlagged - server options
 	// we'll need this for deciding whether or not to predict weapon effects

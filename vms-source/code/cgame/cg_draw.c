@@ -2369,9 +2369,9 @@ static void CG_DrawWarmup( void ) {
 #endif
 		}
 	} else {
-		if ( cgs.g_Arsenal == 1) {
+		if ( cgs.g_GameMode == 1) {
 			s = "Arsenal";
-		} else if ( cgs.gametype == GT_FFA && cgs.g_Arsenal != 1) {
+		} else if ( cgs.gametype == GT_FFA && cgs.g_GameMode != 1) {
 			s = "Free For All";
 		} else if ( cgs.gametype == GT_TEAM ) {
 			s = "Team Deathmatch";
@@ -2409,7 +2409,7 @@ static void CG_DrawWarmup( void ) {
 		sec = 0;
 	}
 	
-	if(cgs.g_Arsenal == 1)
+	if(cgs.g_GameMode == 1)
 	{
 		s = va( "You Have %i Seconds To Join This Round", sec + 1 );
 	} else

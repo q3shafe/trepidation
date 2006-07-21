@@ -889,7 +889,7 @@ extern	vmCvar_t	sv_fps;
 
 //Mods
 extern	vmCvar_t	g_instagib;
-extern	vmCvar_t	g_Arsenal;
+extern	vmCvar_t	g_GameMode;
 
 // Arsenal
 extern	vmCvar_t	g_MultiJump;

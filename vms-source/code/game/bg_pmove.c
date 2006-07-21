@@ -1703,28 +1703,6 @@ static void PM_Weapon( void ) {
 		PM_StartTorsoAnim( TORSO_ATTACK );
 	}
 
-
-	// Check For Devastator Charging
-	/* Doesnt Work
-	if (( pm->cmd.buttons & 1) || ( pm->cmd.buttons & 32))
-	{
-		if (pm->ps->weapon == WP_BFG) 
-		{
-			if (pm->ps->weaponstate != WEAPON_CHARGING)
-			{
-				pm->ps->weaponstate = WEAPON_CHARGING;
-				return;
-			} 
-			else
-			{
-				pm->ps->weaponstate = WEAPON_FIRING;
-			}
-		}
-
-	}
-
-	*/
-
 	pm->ps->weaponstate = WEAPON_FIRING;
 
 	// check for out of ammo

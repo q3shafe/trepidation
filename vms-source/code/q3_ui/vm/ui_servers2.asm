@@ -343,7 +343,7 @@ line 294
 ;200:	// I'm thinking that Instagib should replace the yes/no in pb field of browser
 ;201:	*/
 ;202:	int		g_instagib; 
-;203:	int		g_Arsenal; 
+;203:	int		g_GameMode; 
 ;204:	
 ;205:	qboolean bPB;
 ;206:
@@ -424,7 +424,7 @@ line 294
 ;281:static int				g_emptyservers;
 ;282:static int				g_fullservers;
 ;283:static int				g_masteruse; // Shafe - Trep - Multimaster
-;284:static int				g_Arsenal;
+;284:static int				g_GameMode;
 ;285:static int				g_instagib;
 ;286:
 ;287:
@@ -1874,14 +1874,14 @@ LABELV $310
 line 559
 ;557:		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
 ;558:			 //strcmp(servernodeptr->gamename,"eternal") != 0
-;559:			if( servernodeptr->g_Arsenal != 1 ) {
+;559:			if( servernodeptr->g_GameMode == 0 ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 264
 ADDP4
 INDIRI4
-CNSTI4 1
-EQI4 $311
+CNSTI4 0
+NEI4 $311
 line 560
 ;560:					continue;
 ADDRGP4 $287
@@ -1889,8 +1889,8 @@ JUMPV
 LABELV $311
 line 562
 ;561:			}
-;562:			if(!g_Arsenal) { continue;	}
-ADDRGP4 g_Arsenal
+;562:			if(g_GameMode == 0) { continue;	}
+ADDRGP4 g_GameMode
 INDIRI4
 CNSTI4 0
 NEI4 $296
@@ -2064,7 +2064,7 @@ LABELV $332
 line 595
 ;593:
 ;594:
-;595:		if ( servernodeptr->g_Arsenal == 1) 
+;595:		if ( servernodeptr->g_GameMode == 1) 
 ADDRLP4 0
 INDIRP4
 CNSTI4 264
@@ -2957,7 +2957,7 @@ ADDRLP4 60
 INDIRI4
 ASGNI4
 line 722
-;722:	servernodeptr->g_Arsenal = atoi( Info_ValueForKey( info, "g_Arsenal") );
+;722:	servernodeptr->g_GameMode = atoi( Info_ValueForKey( info, "g_GameMode") );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -7806,7 +7806,7 @@ align 4
 LABELV g_instagib
 skip 4
 align 4
-LABELV g_Arsenal
+LABELV g_GameMode
 skip 4
 align 4
 LABELV g_masteruse
@@ -9275,13 +9275,14 @@ align 1
 LABELV $412
 byte 1 103
 byte 1 95
-byte 1 65
-byte 1 114
-byte 1 115
-byte 1 101
-byte 1 110
+byte 1 71
 byte 1 97
-byte 1 108
+byte 1 109
+byte 1 101
+byte 1 77
+byte 1 111
+byte 1 100
+byte 1 101
 byte 1 0
 align 1
 LABELV $411

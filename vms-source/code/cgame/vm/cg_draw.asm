@@ -11265,7 +11265,7 @@ ADDRGP4 $1072
 JUMPV
 LABELV $1071
 line 2372
-;2372:		if ( cgs.g_Arsenal == 1) {
+;2372:		if ( cgs.g_GameMode == 1) {
 ADDRGP4 cgs+153920
 INDIRI4
 CNSTI4 1
@@ -11276,7 +11276,7 @@ ADDRLP4 8
 ADDRGP4 $1096
 ASGNP4
 line 2374
-;2374:		} else if ( cgs.gametype == GT_FFA && cgs.g_Arsenal != 1) {
+;2374:		} else if ( cgs.gametype == GT_FFA && cgs.g_GameMode != 1) {
 ADDRGP4 $1094
 JUMPV
 LABELV $1093
@@ -11470,7 +11470,7 @@ line 2410
 LABELV $1114
 line 2412
 ;2411:	
-;2412:	if(cgs.g_Arsenal == 1)
+;2412:	if(cgs.g_GameMode == 1)
 ADDRGP4 cgs+153920
 INDIRI4
 CNSTI4 1

@@ -1501,7 +1501,7 @@ void BotMatch_WhereAreYou(bot_state_t *bs, bot_match_t *match) {
 		"Shotgun",
 		"Grenade Launcher",
 		"Singularity Cannon",
-		"Plasmagun",
+		"Gata Gun",
 		"M42 Gauss Rifle",
 		"Flame Thrower",
 		"Devastator",

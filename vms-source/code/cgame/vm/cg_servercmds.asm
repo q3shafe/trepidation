@@ -1266,7 +1266,7 @@ ADDRLP4 88
 INDIRI4
 ASGNI4
 line 150
-;150:	cgs.g_Arsenal = atoi( Info_ValueForKey( info, "g_Arsenal" ) );
+;150:	cgs.g_GameMode = atoi( Info_ValueForKey( info, "g_GameMode" ) );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -7688,13 +7688,14 @@ align 1
 LABELV $189
 byte 1 103
 byte 1 95
-byte 1 65
-byte 1 114
-byte 1 115
-byte 1 101
-byte 1 110
+byte 1 71
 byte 1 97
-byte 1 108
+byte 1 109
+byte 1 101
+byte 1 77
+byte 1 111
+byte 1 100
+byte 1 101
 byte 1 0
 align 1
 LABELV $187

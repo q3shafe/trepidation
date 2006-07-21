@@ -1242,7 +1242,7 @@ code
 LABELV $147
 line 219
 ;218:	case GT_FFA:
-;219:		if (cgs.g_Arsenal == 1) 
+;219:		if (cgs.g_GameMode == 1) 
 ADDRGP4 cgs+153920
 INDIRI4
 CNSTI4 1
