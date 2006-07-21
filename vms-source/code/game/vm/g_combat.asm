@@ -3132,11 +3132,11 @@ line 637
 ;634:#endif
 ;635:
 ;636:			// Shafe - Trep - Arsenal Stuff
-;637:		if ( g_Arsenal.integer != 0 && meansOfDeath != MOD_TELEFRAG && !level.warmupTime) 
+;637:		if ( g_GameMode.integer != 0 && meansOfDeath != MOD_TELEFRAG && !level.warmupTime) 
 ADDRLP4 84
 CNSTI4 0
 ASGNI4
-ADDRGP4 g_Arsenal+12
+ADDRGP4 g_GameMode+12
 INDIRI4
 ADDRLP4 84
 INDIRI4
@@ -7592,7 +7592,7 @@ import g_StartSG
 import g_StartMG
 import g_StartGauntlet
 import g_MultiJump
-import g_Arsenal
+import g_GameMode
 import g_instagib
 import sv_fps
 import g_lightningDamage

@@ -4979,8 +4979,8 @@ ASGNI4
 line 1049
 ;1047:
 ;1048:	// Set What Weapons Are Allow for Arsenal
-;1049:	if (g_Arsenal.integer == 1) 
-ADDRGP4 g_Arsenal+12
+;1049:	if (g_GameMode.integer == 1) 
+ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 1
 NEI4 $365
@@ -6057,7 +6057,7 @@ line 1229
 ;1226:
 ;1227:	
 ;1228:	// Regular
-;1229:	if (g_instagib.integer == 0 && g_Arsenal.integer == 0)  // Shafe - Trep Instagib
+;1229:	if (g_instagib.integer == 0 && g_GameMode.integer == 0)  // Shafe - Trep Instagib
 ADDRLP4 3228
 CNSTI4 0
 ASGNI4
@@ -6066,7 +6066,7 @@ INDIRI4
 ADDRLP4 3228
 INDIRI4
 NEI4 $430
-ADDRGP4 g_Arsenal+12
+ADDRGP4 g_GameMode+12
 INDIRI4
 ADDRLP4 3228
 INDIRI4
@@ -6181,11 +6181,11 @@ line 1251
 LABELV $437
 line 1253
 ;1252:
-;1253:	if (g_Arsenal.integer > 0) 
-ADDRGP4 g_Arsenal+12
+;1253:	if (g_GameMode.integer == 1) 
+ADDRGP4 g_GameMode+12
 INDIRI4
-CNSTI4 0
-LEI4 $440
+CNSTI4 1
+NEI4 $440
 line 1254
 ;1254:	{
 line 1256
@@ -6356,7 +6356,7 @@ CALLV
 pop
 line 1283
 ;1282:
-;1283:		if (g_instagib.integer == 0 && g_Arsenal.integer == 0)  // Shafe - Trep Instagib
+;1283:		if (g_instagib.integer == 0 && g_GameMode.integer == 0)  // Shafe - Trep Instagib
 ADDRLP4 3244
 CNSTI4 0
 ASGNI4
@@ -6365,7 +6365,7 @@ INDIRI4
 ADDRLP4 3244
 INDIRI4
 NEI4 $450
-ADDRGP4 g_Arsenal+12
+ADDRGP4 g_GameMode+12
 INDIRI4
 ADDRLP4 3244
 INDIRI4
@@ -6416,8 +6416,8 @@ LABELV $454
 line 1297
 ;1295:
 ;1296:		// Hand out weapons for arsenal
-;1297:		if (g_Arsenal.integer == 1)
-ADDRGP4 g_Arsenal+12
+;1297:		if (g_GameMode.integer == 1)
+ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 1
 NEI4 $457
@@ -7694,7 +7694,7 @@ import g_StartSG
 import g_StartMG
 import g_StartGauntlet
 import g_MultiJump
-import g_Arsenal
+import g_GameMode
 import g_instagib
 import sv_fps
 import g_lightningDamage

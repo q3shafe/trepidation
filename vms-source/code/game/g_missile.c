@@ -545,7 +545,7 @@ gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
 
 	bolt = G_Spawn();
 	bolt->classname = "plasma";
-	bolt->nextthink = level.time + 10000;
+	bolt->nextthink = level.time + 1000; //10000;
 	bolt->think = G_ExplodeMissile;
 	bolt->s.eType = ET_MISSILE;
 	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
@@ -556,7 +556,7 @@ gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->s.otherEntityNum = self->s.number;
 //unlagged - projectile nudge
 	bolt->parent = self;
-	bolt->damage = 20;
+	bolt->damage = 30;
 	bolt->splashDamage = 15;
 	bolt->splashRadius = 20;
 	bolt->methodOfDeath = MOD_PLASMA;
@@ -968,7 +968,10 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 
 	bolt = G_Spawn();
 	bolt->classname = "bfg";
-	/*
+
+	// All of this stuff from the original BFG Is Just For Reference
+	// CLEANME - later
+		/*
 	bolt->nextthink = level.time + 1000; 
 	bolt->think = G_ExplodeMissile;
 	bolt->s.eType = ET_MISSILE;
@@ -1014,15 +1017,15 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 	bolt->splashMethodOfDeath = MOD_BFG_SPLASH;
 	bolt->clipmask = MASK_SHOT;
 	bolt->target_ent = NULL;
-	
+	bolt->s.pos.trType = TR_ORBITAL;
+	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+
 	if (alt == qtrue)
 	{
 		// Alt Fire
 		bolt->damage = 500;
 		bolt->splashDamage = 300;
 		bolt->splashRadius = 420;
-		bolt->s.pos.trType = TR_ORBITAL;
-		bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
 		VectorCopy( start, bolt->s.pos.trBase );
 		VectorScale( dir, 325, bolt->s.pos.trDelta );
 	} 
@@ -1032,8 +1035,6 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 		bolt->damage = 100;
 		bolt->splashDamage = 100;
 		bolt->splashRadius = 100;
-		bolt->s.pos.trType = TR_ORBITAL;
-		bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
 		VectorCopy( start, bolt->s.pos.trBase );
 		VectorScale( dir, 1300, bolt->s.pos.trDelta );
 

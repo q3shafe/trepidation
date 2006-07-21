@@ -1046,7 +1046,7 @@ void ClientBegin( int clientNum ) {
 	client->ps.eFlags = flags;
 
 	// Set What Weapons Are Allow for Arsenal
-	if (g_Arsenal.integer == 1) 
+	if (g_GameMode.integer == 1) 
 	{
 			// Set Starting Weapons
 		if (g_StartGauntlet.integer > 0) { client->pers.h_gauntlet = qtrue; }
@@ -1226,7 +1226,7 @@ void ClientSpawn(gentity_t *ent) {
 
 	
 	// Regular
-	if (g_instagib.integer == 0 && g_Arsenal.integer == 0)  // Shafe - Trep Instagib
+	if (g_instagib.integer == 0 && g_GameMode.integer == 0)  // Shafe - Trep Instagib
 	{	
 		client->ps.stats[STAT_WEAPONS] = ( 1 << WP_MACHINEGUN );
 		if ( g_gametype.integer == GT_TEAM ) {
@@ -1250,7 +1250,7 @@ void ClientSpawn(gentity_t *ent) {
  
 	}
 
-	if (g_Arsenal.integer > 0) 
+	if (g_GameMode.integer == 1) 
 	{
 		// Arsenal does not run in instagib mode
 		if (g_instagib.integer == 1)
@@ -1280,7 +1280,7 @@ void ClientSpawn(gentity_t *ent) {
 		G_KillBox( ent );
 		trap_LinkEntity (ent);
 
-		if (g_instagib.integer == 0 && g_Arsenal.integer == 0)  // Shafe - Trep Instagib
+		if (g_instagib.integer == 0 && g_GameMode.integer == 0)  // Shafe - Trep Instagib
 		{
 		// force the base weapon up
 		client->ps.weapon = WP_MACHINEGUN;
@@ -1294,7 +1294,7 @@ void ClientSpawn(gentity_t *ent) {
 		}
 
 		// Hand out weapons for arsenal
-		if (g_Arsenal.integer == 1)
+		if (g_GameMode.integer == 1)
 		{
 			if (client->pers.h_gauntlet) 
 			{

@@ -216,7 +216,7 @@ void CG_DrawInformation( void ) {
 	// game type
 	switch ( cgs.gametype ) {
 	case GT_FFA:
-		if (cgs.g_Arsenal == 1) 
+		if (cgs.g_GameMode == 1) 
 		{
 			s = "Arsenal";
 		} else {

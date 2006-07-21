@@ -87,7 +87,7 @@ vmCvar_t	sv_fps;
 //Shafe - Trep
 // Mods
 vmCvar_t	g_instagib;
-vmCvar_t	g_Arsenal;
+vmCvar_t	g_GameMode;
 
 vmCvar_t	g_MultiJump;
 
@@ -200,7 +200,7 @@ static cvarTable_t		gameCvarTable[] = {
 // Shafe - Trep - Cvars
 	// Mods
 	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_USERINFO | CVAR_SYSTEMINFO, 0, qtrue  },
-	{ &g_Arsenal, "g_Arsenal", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_USERINFO | CVAR_SYSTEMINFO, 0, qtrue  },
+	{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_USERINFO | CVAR_SYSTEMINFO, 0, qtrue  },
 	
 	
 
@@ -431,8 +431,8 @@ extern int altAmmoUsage[];
 void G_InitModRules( void )
 {
 	
-	// EFAdmin - Dont Use up Ammo in Arsenal
-	if ( g_Arsenal.integer != 0 ) 
+	// Dont Use up Ammo in Arsenal
+	if ( g_GameMode.integer == 1 ) 
 	{
 		altAmmoUsage[WP_MACHINEGUN] = 0;
 		altAmmoUsage[WP_SHOTGUN] = 0;
@@ -1304,7 +1304,7 @@ void LogExit( const char *string ) {
 
 		cl = &level.clients[level.sortedClients[i]];
 
-		if (g_Arsenal.integer != 1) 
+		if (g_GameMode.integer == 0) 
 		{
 
 			if ( cl->sess.sessionTeam == TEAM_SPECTATOR ) {
@@ -1512,16 +1512,12 @@ void CheckExitRules( void ) {
 
 
 	// We dont do a showdown or find a winner for at least 20 seconds into the game.
-	if (( g_Arsenal.integer != 0)  && ((level.time-level.startTime) > 25000) && (level.firstStrike == qtrue))
+	if (( g_GameMode.integer == 1)  && ((level.time-level.startTime) > 25000) && (level.firstStrike == qtrue))
 	{
 		gclient_t		*survivor = NULL;		
 		int				tmpCnt;
-		int				tmpCnt2;
 		
 		// Dont end it just because there is only one person on the server
-		//tmpCnt2 = CountEliminated();
-		//tmpCnt = CountSurvivors();
-		//if ((tmpCnt < 2) && (tmpCnt2 == 0)) { return;}
 		if (level.warmupTime) { return; }
 		
 		tmpCnt = 0;
@@ -1629,7 +1625,7 @@ void CheckExitRules( void ) {
 					if (survivor->pers.h_plasma) 
 					{ 
 						survivor->ps.persistant[PERS_SCORE]+=2; 
-						trap_SendServerCommand( -1, "print \"^Arsenal Contents: Particle Distruptor: ^3+2\n\"");	
+						trap_SendServerCommand( -1, "print \"^Arsenal Contents: Gata Gun: ^3+2\n\"");	
 					}
 					
 					if (survivor->pers.h_gauss) 
@@ -1696,7 +1692,7 @@ void CheckExitRules( void ) {
 
 	// End Arsenal
 
-	if (g_Arsenal.integer != 1)
+	if (g_GameMode.integer < 1)
 	{
 		if ( level.numPlayingClients < 2 ) {
 			return;

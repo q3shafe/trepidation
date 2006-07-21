@@ -290,12 +290,12 @@ static void CG_Obituary( entityState_t *ent ) {
 			message2 = "'s singularity";
 			break;
 		case MOD_PLASMA:
-			message = "was melted by";
-			message2 = "'s plasmagun";
+			message = "was sliced to shreds by";
+			message2 = "'s gata gun";
 			break;
 		case MOD_PLASMA_SPLASH:
-			message = "was melted by";
-			message2 = "'s plasmagun";
+			message = "was shreded by";
+			message2 = "'s gata fun";
 			break;
 		case MOD_RAILGUN:
 			message = "was degaussed by"; // Shafe - Trep - Reworded

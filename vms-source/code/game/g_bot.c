@@ -390,7 +390,7 @@ void G_CheckMinimumPlayers( void ) {
 	if (minplayers <= 0) return;
 
 	// Arsenal 
-	if ((g_Arsenal.integer != 0) && (level.firstStrike = qtrue)) 
+	if ((g_GameMode.integer == 1) && (level.firstStrike = qtrue)) 
 	{
 		return; 
 	}

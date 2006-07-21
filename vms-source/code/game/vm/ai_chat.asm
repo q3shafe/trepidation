@@ -1469,7 +1469,7 @@ JUMPV
 LABELV $187
 line 271
 ;270:		case MOD_PLASMA:
-;271:		case MOD_PLASMA_SPLASH: return "Plasmagun";
+;271:		case MOD_PLASMA_SPLASH: return "Gata Gun";
 ADDRGP4 $188
 RETP4
 ADDRGP4 $174
@@ -1624,7 +1624,7 @@ ADDRGP4 $200
 JUMPV
 LABELV $208
 line 307
-;307:		case 5: return "Plasmagun";
+;307:		case 5: return "Gata Gun";
 ADDRGP4 $188
 RETP4
 ADDRGP4 $200
@@ -9523,7 +9523,7 @@ import g_StartSG
 import g_StartMG
 import g_StartGauntlet
 import g_MultiJump
-import g_Arsenal
+import g_GameMode
 import g_instagib
 import sv_fps
 import g_lightningDamage
@@ -10486,13 +10486,12 @@ byte 1 101
 byte 1 0
 align 1
 LABELV $188
-byte 1 80
-byte 1 108
+byte 1 71
 byte 1 97
-byte 1 115
-byte 1 109
+byte 1 116
 byte 1 97
-byte 1 103
+byte 1 32
+byte 1 71
 byte 1 117
 byte 1 110
 byte 1 0

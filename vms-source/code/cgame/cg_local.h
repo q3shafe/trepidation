@@ -1094,7 +1094,7 @@ typedef struct {
 //unlagged - client options
 	// Shafe - Trep
 	int	g_instagib;
-	int g_Arsenal;
+	int g_GameMode;
 	
 } cgs_t;
 

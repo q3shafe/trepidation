@@ -634,7 +634,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 #endif
 
 			// Shafe - Trep - Arsenal Stuff
-		if ( g_Arsenal.integer != 0 && meansOfDeath != MOD_TELEFRAG && !level.warmupTime) 
+		if ( g_GameMode.integer != 0 && meansOfDeath != MOD_TELEFRAG && !level.warmupTime) 
 		{
 			tmpW = self->s.weapon;
 			

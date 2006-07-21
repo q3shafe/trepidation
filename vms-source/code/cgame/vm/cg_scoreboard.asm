@@ -822,7 +822,7 @@ INDIRI4
 CNSTI4 3
 NEI4 $124
 line 156
-;156:		if (cgs.g_Arsenal == 1) 
+;156:		if (cgs.g_GameMode == 1) 
 ADDRGP4 cgs+153920
 INDIRI4
 CNSTI4 1

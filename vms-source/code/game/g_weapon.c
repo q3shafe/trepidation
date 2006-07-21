@@ -534,6 +534,16 @@ PLASMA GUN
 
 void Weapon_Plasmagun_Fire (gentity_t *ent) {
 	gentity_t	*m;
+	int		i;
+	
+	// Shafe - Add Some Randomness so that 
+	// it doesnt fire straight every time
+	i = irandom(0,10);
+	if (i > 5)
+	{
+		forward[2] += 0.2f;
+		VectorNormalize( forward );
+	}
 
 	m = fire_plasma (ent, muzzle, forward);
 	m->damage *= s_quadFactor;

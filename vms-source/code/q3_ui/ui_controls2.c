@@ -243,7 +243,7 @@ static bind_t g_bindings[] =
 	{"weapon 5",		"singularity cannon",	ID_WEAPON5,		ANIM_WEAPON5,	'5',			-1,		-1, -1},
 	{"weapon 6",		"flame thrower",	ID_WEAPON6,		ANIM_WEAPON6,	'6',			-1,		-1, -1},
 	{"weapon 7",		"m42 gauss rifle",			ID_WEAPON7,		ANIM_WEAPON7,	'7',			-1,		-1, -1},
-	{"weapon 8",		"plasma gun",		ID_WEAPON8,		ANIM_WEAPON8,	'8',			-1,		-1, -1},
+	{"weapon 8",		"gata gun",		ID_WEAPON8,		ANIM_WEAPON8,	'8',			-1,		-1, -1},
 	{"weapon 9",		"devastator",				ID_WEAPON9,		ANIM_WEAPON9,	'9',			-1,		-1, -1},
 	{"+attack", 		"attack",			ID_ATTACK,		ANIM_ATTACK,	K_CTRL,			-1,		-1, -1},
 	// Shafe - Alt Fire Attack
