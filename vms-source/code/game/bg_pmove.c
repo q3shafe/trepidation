@@ -1510,11 +1510,11 @@ int		altAmmoUsage[WP_NUM_WEAPONS] =
 	1,				//machine gun
 	1,				//shotgun
 	2,				//grenade launcher
-	3,				//rocket launchet
+	3,				//rocket launcher/singularity cannon
 	1,				//flame thrower
 	4,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
-	12,				//plasma -  lets make this a lot until we get primary fire replaced
-	2,				//bfg
+	12,				//Gata Gun
+	3,				//bfg/devastator
 	20,				//hmmmm... dunno what this one is
 
 
@@ -1797,7 +1797,7 @@ if (pm->cmd.buttons & 1) {
 		break; 
 	case WP_BFG: 
 		//  addTime = 1000; 
-		addTime = 3000; 
+		addTime = 500; 
 		break; 
 	case WP_GRAPPLING_HOOK: 
 		addTime = 400; 

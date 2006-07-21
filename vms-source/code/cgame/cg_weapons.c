@@ -840,6 +840,7 @@ void CG_RegisterWeapon( int weaponNum ) {
 
 	case WP_PLASMAGUN:
 //		weaponInfo->missileModel = cgs.media.invulnerabilityPowerupModel;
+		weaponInfo->missileModel = trap_R_RegisterModel( "models/weaphits/disc.md3" );
 		weaponInfo->missileTrailFunc = CG_PlasmaTrail;
 		weaponInfo->missileSound = trap_S_RegisterSound( "sound/weapons/plasma/lasfly.wav", qfalse );
 		MAKERGB( weaponInfo->flashDlightColor, 0.6f, 0.6f, 1.0f );

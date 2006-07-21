@@ -1277,7 +1277,7 @@ line 265
 LABELV $89
 endproc Bullet_Fire 152 32
 export BFG_Fire
-proc BFG_Fire 24 16
+proc BFG_Fire 16 16
 line 276
 ;266:
 ;267:
@@ -1289,46 +1289,57 @@ line 276
 ;273:======================================================================
 ;274:*/
 ;275:
-;276:void BFG_Fire ( gentity_t *ent, int charge ) {
-line 279
+;276:void BFG_Fire ( gentity_t *ent, qboolean alt ) {
+line 280
 ;277:	gentity_t	*m;
 ;278:
-;279:	forward[2] += 0.2f;
-ADDRLP4 4
-ADDRGP4 forward+8
-ASGNP4
-ADDRLP4 4
-INDIRP4
-ADDRLP4 4
-INDIRP4
-INDIRF4
-CNSTF4 1045220557
-ADDF4
-ASGNF4
-line 280
-;280:	forward[2] += 0.2f;
-ADDRLP4 8
-ADDRGP4 forward+8
-ASGNP4
-ADDRLP4 8
-INDIRP4
-ADDRLP4 8
-INDIRP4
-INDIRF4
-CNSTF4 1045220557
-ADDF4
-ASGNF4
+;279:	// Alt Fire Shoots Upward Just A Bit MOre
+;280:	if (alt == qtrue)
+ADDRFP4 4
+INDIRI4
+CNSTI4 1
+NEI4 $128
 line 281
-;281:	VectorNormalize( forward );
+;281:	{
+line 282
+;282:		forward[2] += 0.2f;
+ADDRLP4 4
+ADDRGP4 forward+8
+ASGNP4
+ADDRLP4 4
+INDIRP4
+ADDRLP4 4
+INDIRP4
+INDIRF4
+CNSTF4 1045220557
+ADDF4
+ASGNF4
+line 283
+;283:		forward[2] += 0.2f;
+ADDRLP4 8
+ADDRGP4 forward+8
+ASGNP4
+ADDRLP4 8
+INDIRP4
+ADDRLP4 8
+INDIRP4
+INDIRF4
+CNSTF4 1045220557
+ADDF4
+ASGNF4
+line 284
+;284:	}
+LABELV $128
+line 286
+;285:	
+;286:	VectorNormalize( forward );
 ADDRGP4 forward
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 284
-;282:
-;283:	//ent->client->ps.weaponcharge = 0;
-;284:	m = fire_bfg (ent, muzzle, forward, charge);
+line 287
+;287:	m = fire_bfg (ent, muzzle, forward, alt);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -1339,44 +1350,25 @@ ARGP4
 ADDRFP4 4
 INDIRI4
 ARGI4
-ADDRLP4 12
+ADDRLP4 4
 ADDRGP4 fire_bfg
 CALLP4
 ASGNP4
 ADDRLP4 0
-ADDRLP4 12
+ADDRLP4 4
 INDIRP4
 ASGNP4
-line 285
-;285:	m->damage *= s_quadFactor;
-ADDRLP4 16
+line 288
+;288:	m->damage *= s_quadFactor;
+ADDRLP4 8
 ADDRLP4 0
 INDIRP4
 CNSTI4 748
 ADDP4
 ASGNP4
-ADDRLP4 16
+ADDRLP4 8
 INDIRP4
-ADDRLP4 16
-INDIRP4
-INDIRI4
-CVIF4 4
-ADDRGP4 s_quadFactor
-INDIRF4
-MULF4
-CVFI4 4
-ASGNI4
-line 286
-;286:	m->splashDamage *= s_quadFactor;
-ADDRLP4 20
-ADDRLP4 0
-INDIRP4
-CNSTI4 752
-ADDP4
-ASGNP4
-ADDRLP4 20
-INDIRP4
-ADDRLP4 20
+ADDRLP4 8
 INDIRP4
 INDIRI4
 CVIF4 4
@@ -1386,66 +1378,85 @@ MULF4
 CVFI4 4
 ASGNI4
 line 289
-;287:
-;288://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
-;289:}
+;289:	m->splashDamage *= s_quadFactor;
+ADDRLP4 12
+ADDRLP4 0
+INDIRP4
+CNSTI4 752
+ADDP4
+ASGNP4
+ADDRLP4 12
+INDIRP4
+ADDRLP4 12
+INDIRP4
+INDIRI4
+CVIF4 4
+ADDRGP4 s_quadFactor
+INDIRF4
+MULF4
+CVFI4 4
+ASGNI4
+line 292
+;290:
+;291://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
+;292:}
 LABELV $127
-endproc BFG_Fire 24 16
+endproc BFG_Fire 16 16
 export ShotgunPellet
 proc ShotgunPellet 108 32
-line 304
-;290:
-;291:
-;292:/*
-;293:======================================================================
+line 307
+;293:
 ;294:
-;295:SHOTGUN
-;296:
-;297:======================================================================
-;298:*/
+;295:/*
+;296:======================================================================
+;297:
+;298:SHOTGUN
 ;299:
-;300:// DEFAULT_SHOTGUN_SPREAD and DEFAULT_SHOTGUN_COUNT	are in bg_public.h, because
-;301:// client predicts same spreads
-;302:#define	DEFAULT_SHOTGUN_DAMAGE	10
-;303:
-;304:qboolean ShotgunPellet( vec3_t start, vec3_t end, gentity_t *ent ) {
-line 313
-;305:	trace_t		tr;
-;306:	int			damage, i, passent;
-;307:	gentity_t	*traceEnt;
-;308:#ifdef MISSIONPACK
-;309:	vec3_t		impactpoint, bouncedir;
-;310:#endif
-;311:	vec3_t		tr_start, tr_end;
-;312:
-;313:	passent = ent->s.number;
+;300:======================================================================
+;301:*/
+;302:
+;303:// DEFAULT_SHOTGUN_SPREAD and DEFAULT_SHOTGUN_COUNT	are in bg_public.h, because
+;304:// client predicts same spreads
+;305:#define	DEFAULT_SHOTGUN_DAMAGE	10
+;306:
+;307:qboolean ShotgunPellet( vec3_t start, vec3_t end, gentity_t *ent ) {
+line 316
+;308:	trace_t		tr;
+;309:	int			damage, i, passent;
+;310:	gentity_t	*traceEnt;
+;311:#ifdef MISSIONPACK
+;312:	vec3_t		impactpoint, bouncedir;
+;313:#endif
+;314:	vec3_t		tr_start, tr_end;
+;315:
+;316:	passent = ent->s.number;
 ADDRLP4 64
 ADDRFP4 8
 INDIRP4
 INDIRI4
 ASGNI4
-line 314
-;314:	VectorCopy( start, tr_start );
+line 317
+;317:	VectorCopy( start, tr_start );
 ADDRLP4 68
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 315
-;315:	VectorCopy( end, tr_end );
+line 318
+;318:	VectorCopy( end, tr_end );
 ADDRLP4 80
 ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 316
-;316:	for (i = 0; i < 10; i++) {
+line 319
+;319:	for (i = 0; i < 10; i++) {
 ADDRLP4 60
 CNSTI4 0
 ASGNI4
-LABELV $131
-line 317
-;317:		trap_Trace (&tr, tr_start, NULL, NULL, tr_end, passent, MASK_SHOT);
+LABELV $133
+line 320
+;320:		trap_Trace (&tr, tr_start, NULL, NULL, tr_end, passent, MASK_SHOT);
 ADDRLP4 0
 ARGP4
 ADDRLP4 68
@@ -1469,8 +1480,8 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 318
-;318:		traceEnt = &g_entities[ tr.entityNum ];
+line 321
+;321:		traceEnt = &g_entities[ tr.entityNum ];
 ADDRLP4 56
 CNSTI4 836
 ADDRLP4 0+52
@@ -1479,36 +1490,36 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 321
-;319:
-;320:		// send bullet impact
-;321:		if (  tr.surfaceFlags & SURF_NOIMPACT ) {
+line 324
+;322:
+;323:		// send bullet impact
+;324:		if (  tr.surfaceFlags & SURF_NOIMPACT ) {
 ADDRLP4 0+44
 INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $136
-line 322
-;322:			return qfalse;
+EQI4 $138
+line 325
+;325:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $130
+ADDRGP4 $132
 JUMPV
-LABELV $136
-line 325
-;323:		}
-;324:
-;325:		if ( traceEnt->takedamage) {
+LABELV $138
+line 328
+;326:		}
+;327:
+;328:		if ( traceEnt->takedamage) {
 ADDRLP4 56
 INDIRP4
 CNSTI4 744
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $139
-line 326
-;326:			damage = DEFAULT_SHOTGUN_DAMAGE * s_quadFactor;
+EQI4 $141
+line 329
+;329:			damage = DEFAULT_SHOTGUN_DAMAGE * s_quadFactor;
 ADDRLP4 92
 CNSTF4 1092616192
 ADDRGP4 s_quadFactor
@@ -1516,30 +1527,30 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 349
-;327:#ifdef MISSIONPACK
-;328:			if ( traceEnt->client && traceEnt->client->invulnerabilityTime > level.time ) {
-;329:				if (G_InvulnerabilityEffect( traceEnt, forward, tr.endpos, impactpoint, bouncedir )) {
-;330:					G_BounceProjectile( tr_start, impactpoint, bouncedir, tr_end );
-;331:					VectorCopy( impactpoint, tr_start );
-;332:					// the player can hit him/herself with the bounced rail
-;333:					passent = ENTITYNUM_NONE;
-;334:				}
-;335:				else {
-;336:					VectorCopy( tr.endpos, tr_start );
-;337:					passent = traceEnt->s.number;
-;338:				}
-;339:				continue;
-;340:			}
-;341:			else {
-;342:				G_Damage( traceEnt, ent, ent, forward, tr.endpos,
-;343:					damage, 0, MOD_SHOTGUN);
-;344:				if( LogAccuracyHit( traceEnt, ent ) ) {
-;345:					return qtrue;
-;346:				}
-;347:			}
-;348:#else
-;349:			G_Damage( traceEnt, ent, ent, forward, tr.endpos,	damage, 0, MOD_SHOTGUN);
+line 352
+;330:#ifdef MISSIONPACK
+;331:			if ( traceEnt->client && traceEnt->client->invulnerabilityTime > level.time ) {
+;332:				if (G_InvulnerabilityEffect( traceEnt, forward, tr.endpos, impactpoint, bouncedir )) {
+;333:					G_BounceProjectile( tr_start, impactpoint, bouncedir, tr_end );
+;334:					VectorCopy( impactpoint, tr_start );
+;335:					// the player can hit him/herself with the bounced rail
+;336:					passent = ENTITYNUM_NONE;
+;337:				}
+;338:				else {
+;339:					VectorCopy( tr.endpos, tr_start );
+;340:					passent = traceEnt->s.number;
+;341:				}
+;342:				continue;
+;343:			}
+;344:			else {
+;345:				G_Damage( traceEnt, ent, ent, forward, tr.endpos,
+;346:					damage, 0, MOD_SHOTGUN);
+;347:				if( LogAccuracyHit( traceEnt, ent ) ) {
+;348:					return qtrue;
+;349:				}
+;350:			}
+;351:#else
+;352:			G_Damage( traceEnt, ent, ent, forward, tr.endpos,	damage, 0, MOD_SHOTGUN);
 ADDRLP4 56
 INDIRP4
 ARGP4
@@ -1567,8 +1578,8 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 350
-;350:				if( LogAccuracyHit( traceEnt, ent ) ) {
+line 353
+;353:				if( LogAccuracyHit( traceEnt, ent ) ) {
 ADDRLP4 56
 INDIRP4
 ARGP4
@@ -1582,27 +1593,27 @@ ASGNI4
 ADDRLP4 104
 INDIRI4
 CNSTI4 0
-EQI4 $142
-line 351
-;351:					return qtrue;
+EQI4 $144
+line 354
+;354:					return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $130
+ADDRGP4 $132
 JUMPV
-LABELV $142
-line 354
-;352:				}
-;353:#endif
-;354:		}
-LABELV $139
-line 355
-;355:		return qfalse;
+LABELV $144
+line 357
+;355:				}
+;356:#endif
+;357:		}
+LABELV $141
+line 358
+;358:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $130
+ADDRGP4 $132
 JUMPV
-LABELV $132
-line 316
+LABELV $134
+line 319
 ADDRLP4 60
 ADDRLP4 60
 INDIRI4
@@ -1612,41 +1623,41 @@ ASGNI4
 ADDRLP4 60
 INDIRI4
 CNSTI4 10
-LTI4 $131
-line 357
-;356:	}
-;357:	return qfalse;
+LTI4 $133
+line 360
+;359:	}
+;360:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $130
+LABELV $132
 endproc ShotgunPellet 108 32
 export ShotgunPattern
 proc ShotgunPattern 104 12
-line 361
-;358:}
-;359:
-;360:// this should match CG_ShotgunPattern
-;361:void ShotgunPattern( vec3_t origin, vec3_t origin2, int seed, gentity_t *ent ) {
-line 367
-;362:	int			i;
-;363:	float		r, u;
-;364:	vec3_t		end;
-;365:	vec3_t		forward, right, up;
-;366:	int			oldScore;
-;367:	qboolean	hitClient = qfalse;
+line 364
+;361:}
+;362:
+;363:// this should match CG_ShotgunPattern
+;364:void ShotgunPattern( vec3_t origin, vec3_t origin2, int seed, gentity_t *ent ) {
+line 370
+;365:	int			i;
+;366:	float		r, u;
+;367:	vec3_t		end;
+;368:	vec3_t		forward, right, up;
+;369:	int			oldScore;
+;370:	qboolean	hitClient = qfalse;
 ADDRLP4 60
 CNSTI4 0
 ASGNI4
-line 376
-;368:
-;369://unlagged - attack prediction #2
-;370:	// use this for testing
-;371:	//Com_Printf( "Server seed: %d\n", seed );
+line 379
+;371:
 ;372://unlagged - attack prediction #2
-;373:
-;374:	// derive the right and up vectors from the forward vector, because
-;375:	// the client won't have any other information
-;376:	VectorNormalize2( origin2, forward );
+;373:	// use this for testing
+;374:	//Com_Printf( "Server seed: %d\n", seed );
+;375://unlagged - attack prediction #2
+;376:
+;377:	// derive the right and up vectors from the forward vector, because
+;378:	// the client won't have any other information
+;379:	VectorNormalize2( origin2, forward );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -1655,8 +1666,8 @@ ARGP4
 ADDRGP4 VectorNormalize2
 CALLF4
 pop
-line 377
-;377:	PerpendicularVector( right, forward );
+line 380
+;380:	PerpendicularVector( right, forward );
 ADDRLP4 32
 ARGP4
 ADDRLP4 20
@@ -1664,8 +1675,8 @@ ARGP4
 ADDRGP4 PerpendicularVector
 CALLV
 pop
-line 378
-;378:	CrossProduct( forward, right, up );
+line 381
+;381:	CrossProduct( forward, right, up );
 ADDRLP4 20
 ARGP4
 ADDRLP4 32
@@ -1675,9 +1686,9 @@ ARGP4
 ADDRGP4 CrossProduct
 CALLV
 pop
-line 380
-;379:
-;380:	oldScore = ent->client->ps.persistant[PERS_SCORE];
+line 383
+;382:
+;383:	oldScore = ent->client->ps.persistant[PERS_SCORE];
 ADDRLP4 64
 ADDRFP4 12
 INDIRP4
@@ -1688,28 +1699,28 @@ CNSTI4 248
 ADDP4
 INDIRI4
 ASGNI4
-line 384
-;381:
-;382://unlagged - backward reconciliation #2
-;383:	// backward-reconcile the other clients
-;384:	G_DoTimeShiftFor( ent );
+line 387
+;384:
+;385://unlagged - backward reconciliation #2
+;386:	// backward-reconcile the other clients
+;387:	G_DoTimeShiftFor( ent );
 ADDRFP4 12
 INDIRP4
 ARGP4
 ADDRGP4 G_DoTimeShiftFor
 CALLV
 pop
-line 388
-;385://unlagged - backward reconciliation #2
-;386:
-;387:	// generate the "random" spread pattern
-;388:	for ( i = 0 ; i < DEFAULT_SHOTGUN_COUNT ; i++ ) {
+line 391
+;388://unlagged - backward reconciliation #2
+;389:
+;390:	// generate the "random" spread pattern
+;391:	for ( i = 0 ; i < DEFAULT_SHOTGUN_COUNT ; i++ ) {
 ADDRLP4 56
 CNSTI4 0
 ASGNI4
-LABELV $145
-line 389
-;389:		r = Q_crandom( &seed ) * DEFAULT_SHOTGUN_SPREAD * 16;
+LABELV $147
+line 392
+;392:		r = Q_crandom( &seed ) * DEFAULT_SHOTGUN_SPREAD * 16;
 ADDRFP4 8
 ARGP4
 ADDRLP4 68
@@ -1724,8 +1735,8 @@ INDIRF4
 MULF4
 MULF4
 ASGNF4
-line 390
-;390:		u = Q_crandom( &seed ) * DEFAULT_SHOTGUN_SPREAD * 16;
+line 393
+;393:		u = Q_crandom( &seed ) * DEFAULT_SHOTGUN_SPREAD * 16;
 ADDRFP4 8
 ARGP4
 ADDRLP4 72
@@ -1740,8 +1751,8 @@ INDIRF4
 MULF4
 MULF4
 ASGNF4
-line 391
-;391:		VectorMA( origin, 8192 * 16, forward, end);
+line 394
+;394:		VectorMA( origin, 8192 * 16, forward, end);
 ADDRLP4 76
 ADDRFP4 0
 INDIRP4
@@ -1785,8 +1796,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 392
-;392:		VectorMA (end, r, right, end);
+line 395
+;395:		VectorMA (end, r, right, end);
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -1817,8 +1828,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 393
-;393:		VectorMA (end, u, up, end);
+line 396
+;396:		VectorMA (end, u, up, end);
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -1849,8 +1860,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 394
-;394:		if( ShotgunPellet( origin, end, ent ) && !hitClient ) {
+line 397
+;397:		if( ShotgunPellet( origin, end, ent ) && !hitClient ) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -1870,19 +1881,19 @@ ADDRLP4 92
 INDIRI4
 ADDRLP4 96
 INDIRI4
-EQI4 $165
+EQI4 $167
 ADDRLP4 60
 INDIRI4
 ADDRLP4 96
 INDIRI4
-NEI4 $165
-line 395
-;395:			hitClient = qtrue;
+NEI4 $167
+line 398
+;398:			hitClient = qtrue;
 ADDRLP4 60
 CNSTI4 1
 ASGNI4
-line 396
-;396:			ent->client->accuracy_hits++;
+line 399
+;399:			ent->client->accuracy_hits++;
 ADDRLP4 100
 ADDRFP4 12
 INDIRP4
@@ -1900,13 +1911,13 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 397
-;397:		}
-LABELV $165
-line 398
-;398:	}
-LABELV $146
-line 388
+line 400
+;400:		}
+LABELV $167
+line 401
+;401:	}
+LABELV $148
+line 391
 ADDRLP4 56
 ADDRLP4 56
 INDIRI4
@@ -1916,34 +1927,34 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 11
-LTI4 $145
-line 402
-;399:
-;400://unlagged - backward reconciliation #2
-;401:	// put them back
-;402:	G_UndoTimeShiftFor( ent );
+LTI4 $147
+line 405
+;402:
+;403://unlagged - backward reconciliation #2
+;404:	// put them back
+;405:	G_UndoTimeShiftFor( ent );
 ADDRFP4 12
 INDIRP4
 ARGP4
 ADDRGP4 G_UndoTimeShiftFor
 CALLV
 pop
-line 404
-;403://unlagged - backward reconciliation #2
-;404:}
-LABELV $144
+line 407
+;406://unlagged - backward reconciliation #2
+;407:}
+LABELV $146
 endproc ShotgunPattern 104 12
 export weapon_supershotgun_fire
 proc weapon_supershotgun_fire 32 16
-line 407
-;405:
-;406:
-;407:void weapon_supershotgun_fire (gentity_t *ent) {
-line 411
-;408:	gentity_t		*tent;
+line 410
+;408:
 ;409:
-;410:	// send shotgun blast
-;411:	tent = G_TempEntity( muzzle, EV_SHOTGUN );
+;410:void weapon_supershotgun_fire (gentity_t *ent) {
+line 414
+;411:	gentity_t		*tent;
+;412:
+;413:	// send shotgun blast
+;414:	tent = G_TempEntity( muzzle, EV_SHOTGUN );
 ADDRGP4 muzzle
 ARGP4
 CNSTI4 55
@@ -1956,8 +1967,8 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 412
-;412:	VectorScale( forward, 4096, tent->s.origin2 );
+line 415
+;415:	VectorScale( forward, 4096, tent->s.origin2 );
 ADDRLP4 0
 INDIRP4
 CNSTI4 104
@@ -1985,8 +1996,8 @@ ADDRGP4 forward+8
 INDIRF4
 MULF4
 ASGNF4
-line 413
-;413:	SnapVector( tent->s.origin2 );
+line 416
+;416:	SnapVector( tent->s.origin2 );
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -2044,11 +2055,11 @@ INDIRP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 417
-;414://unlagged - attack prediction #2
-;415:	// this has to be something the client can predict now
-;416:	//tent->s.eventParm = rand() & 255;		// seed for spread pattern
-;417:	tent->s.eventParm = ent->client->attackTime % 256; // seed for spread pattern
+line 420
+;417://unlagged - attack prediction #2
+;418:	// this has to be something the client can predict now
+;419:	//tent->s.eventParm = rand() & 255;		// seed for spread pattern
+;420:	tent->s.eventParm = ent->client->attackTime % 256; // seed for spread pattern
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
@@ -2064,9 +2075,9 @@ INDIRI4
 CNSTI4 256
 MODI4
 ASGNI4
-line 419
-;418://unlagged - attack prediction #2
-;419:	tent->s.otherEntityNum = ent->s.number;
+line 422
+;421://unlagged - attack prediction #2
+;422:	tent->s.otherEntityNum = ent->s.number;
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -2075,9 +2086,9 @@ ADDRFP4 0
 INDIRP4
 INDIRI4
 ASGNI4
-line 421
-;420:
-;421:	ShotgunPattern( tent->s.pos.trBase, tent->s.origin2, tent->s.eventParm, ent );
+line 424
+;423:
+;424:	ShotgunPattern( tent->s.pos.trBase, tent->s.origin2, tent->s.eventParm, ent );
 ADDRLP4 0
 INDIRP4
 CNSTI4 24
@@ -2100,40 +2111,40 @@ ARGP4
 ADDRGP4 ShotgunPattern
 CALLV
 pop
-line 422
-;422:}
-LABELV $167
+line 425
+;425:}
+LABELV $169
 endproc weapon_supershotgun_fire 32 16
 export weapon_pdlauncher_fire
 proc weapon_pdlauncher_fire 28 12
-line 434
-;423:
-;424:
-;425:/*
-;426:======================================================================
+line 437
+;426:
 ;427:
-;428:GRENADE LAUNCHER
-;429:
-;430:======================================================================
-;431:*/
+;428:/*
+;429:======================================================================
+;430:
+;431:GRENADE LAUNCHER
 ;432:
-;433:// Shafe - PDG
-;434:void weapon_pdlauncher_fire (gentity_t	*ent) {
-line 436
-;435:	gentity_t	*m;
-;436:	gentity_t	*grenades = NULL;
+;433:======================================================================
+;434:*/
+;435:
+;436:// Shafe - PDG
+;437:void weapon_pdlauncher_fire (gentity_t	*ent) {
+line 439
+;438:	gentity_t	*m;
+;439:	gentity_t	*grenades = NULL;
 ADDRLP4 0
 CNSTP4 0
 ASGNP4
-ADDRGP4 $172
+ADDRGP4 $174
 JUMPV
-LABELV $171
-line 439
-;437:	 
-;438: while ((grenades = G_Find (grenades, FOFS(classname), "pdgrenade")) != NULL)
-;439: {
-line 440
-;440:	if(grenades->r.ownerNum == ent->s.clientNum)  //make sure its ours
+LABELV $173
+line 442
+;440:	 
+;441: while ((grenades = G_Find (grenades, FOFS(classname), "pdgrenade")) != NULL)
+;442: {
+line 443
+;443:	if(grenades->r.ownerNum == ent->s.clientNum)  //make sure its ours
 ADDRLP4 0
 INDIRP4
 CNSTI4 512
@@ -2144,19 +2155,19 @@ INDIRP4
 CNSTI4 168
 ADDP4
 INDIRI4
-NEI4 $175
-line 441
-;441:	{
-line 442
-;442:		ent->istelepoint = 0; // client cannot teleport
+NEI4 $177
+line 444
+;444:	{
+line 445
+;445:		ent->istelepoint = 0; // client cannot teleport
 ADDRFP4 0
 INDIRP4
 CNSTI4 824
 ADDP4
 CNSTI4 0
 ASGNI4
-line 443
-;443:		VectorClear( ent->teleloc ); // clear the teleport location
+line 446
+;446:		VectorClear( ent->teleloc ); // clear the teleport location
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -2185,16 +2196,16 @@ ADDP4
 ADDRLP4 12
 INDIRF4
 ASGNF4
-line 444
-;444:		grenades->think = G_ExplodeMissile;
+line 447
+;447:		grenades->think = G_ExplodeMissile;
 ADDRLP4 0
 INDIRP4
 CNSTI4 700
 ADDP4
 ADDRGP4 G_ExplodeMissile
 ASGNP4
-line 445
-;445:		grenades->nextthink = level.time;
+line 448
+;448:		grenades->nextthink = level.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 688
@@ -2202,19 +2213,19 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 446
-;446:	}
-LABELV $175
-line 447
-;447: }
-LABELV $172
-line 438
+line 449
+;449:	}
+LABELV $177
+line 450
+;450: }
+LABELV $174
+line 441
 ADDRLP4 0
 INDIRP4
 ARGP4
 CNSTI4 524
 ARGI4
-ADDRGP4 $174
+ADDRGP4 $176
 ARGP4
 ADDRLP4 8
 ADDRGP4 G_Find
@@ -2228,10 +2239,10 @@ ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $171
-line 449
-;448: // extra vertical velocity
-;449: forward[2] += 0.2;
+NEU4 $173
+line 452
+;451: // extra vertical velocity
+;452: forward[2] += 0.2;
 ADDRLP4 12
 ADDRGP4 forward+8
 ASGNP4
@@ -2243,16 +2254,16 @@ INDIRF4
 CNSTF4 1045220557
 ADDF4
 ASGNF4
-line 450
-;450: VectorNormalize( forward );
+line 453
+;453: VectorNormalize( forward );
 ADDRGP4 forward
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 452
-;451: 
-;452: m = fire_pdgrenade (ent, muzzle, forward);
+line 455
+;454: 
+;455: m = fire_pdgrenade (ent, muzzle, forward);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -2268,8 +2279,8 @@ ADDRLP4 4
 ADDRLP4 16
 INDIRP4
 ASGNP4
-line 453
-;453: m->damage *= s_quadFactor;
+line 456
+;456: m->damage *= s_quadFactor;
 ADDRLP4 20
 ADDRLP4 4
 INDIRP4
@@ -2287,8 +2298,8 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 454
-;454: m->splashDamage *= s_quadFactor;
+line 457
+;457: m->splashDamage *= s_quadFactor;
 ADDRLP4 24
 ADDRLP4 4
 INDIRP4
@@ -2306,20 +2317,20 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 455
-;455:} 
-LABELV $170
+line 458
+;458:} 
+LABELV $172
 endproc weapon_pdlauncher_fire 28 12
 export weapon_grenadelauncher_fire
 proc weapon_grenadelauncher_fire 20 12
-line 457
-;456:
-;457:void weapon_grenadelauncher_fire (gentity_t *ent) {
-line 461
-;458:	gentity_t	*m;
+line 460
 ;459:
-;460:	// extra vertical velocity
-;461:	forward[2] += 0.2f;
+;460:void weapon_grenadelauncher_fire (gentity_t *ent) {
+line 464
+;461:	gentity_t	*m;
+;462:
+;463:	// extra vertical velocity
+;464:	forward[2] += 0.2f;
 ADDRLP4 4
 ADDRGP4 forward+8
 ASGNP4
@@ -2331,16 +2342,16 @@ INDIRF4
 CNSTF4 1045220557
 ADDF4
 ASGNF4
-line 462
-;462:	VectorNormalize( forward );
+line 465
+;465:	VectorNormalize( forward );
 ADDRGP4 forward
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 464
-;463:
-;464:	m = fire_grenade (ent, muzzle, forward);
+line 467
+;466:
+;467:	m = fire_grenade (ent, muzzle, forward);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -2356,8 +2367,8 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 465
-;465:	m->damage *= s_quadFactor;
+line 468
+;468:	m->damage *= s_quadFactor;
 ADDRLP4 12
 ADDRLP4 0
 INDIRP4
@@ -2375,8 +2386,8 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 466
-;466:	m->splashDamage *= s_quadFactor;
+line 469
+;469:	m->splashDamage *= s_quadFactor;
 ADDRLP4 16
 ADDRLP4 0
 INDIRP4
@@ -2394,31 +2405,31 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 469
-;467:
-;468://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
-;469:}
-LABELV $179
+line 472
+;470:
+;471://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
+;472:}
+LABELV $181
 endproc weapon_grenadelauncher_fire 20 12
 export weapon_altgrenadelauncher_fire
 proc weapon_altgrenadelauncher_fire 20 12
-line 480
-;470:
-;471:/*
-;472:======================================================================
+line 483
 ;473:
-;474:ALT GRENADE LAUNCHER 
-;475:Shafe - Trep - Alternate Fire Grenade
+;474:/*
+;475:======================================================================
 ;476:
-;477:======================================================================
-;478:*/
+;477:ALT GRENADE LAUNCHER 
+;478:Shafe - Trep - Alternate Fire Grenade
 ;479:
-;480:void weapon_altgrenadelauncher_fire (gentity_t *ent) {
-line 484
-;481:	gentity_t	*m;
+;480:======================================================================
+;481:*/
 ;482:
-;483:	// extra vertical velocity
-;484:	forward[2] += 0.2f;
+;483:void weapon_altgrenadelauncher_fire (gentity_t *ent) {
+line 487
+;484:	gentity_t	*m;
+;485:
+;486:	// extra vertical velocity
+;487:	forward[2] += 0.2f;
 ADDRLP4 4
 ADDRGP4 forward+8
 ASGNP4
@@ -2430,16 +2441,16 @@ INDIRF4
 CNSTF4 1045220557
 ADDF4
 ASGNF4
-line 485
-;485:	VectorNormalize( forward );
+line 488
+;488:	VectorNormalize( forward );
 ADDRGP4 forward
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 487
-;486:
-;487:	m = fire_altgrenade (ent, muzzle, forward);
+line 490
+;489:
+;490:	m = fire_altgrenade (ent, muzzle, forward);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -2455,8 +2466,8 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 488
-;488:	m->damage *= s_quadFactor;
+line 491
+;491:	m->damage *= s_quadFactor;
 ADDRLP4 12
 ADDRLP4 0
 INDIRP4
@@ -2474,8 +2485,8 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 489
-;489:	m->splashDamage *= s_quadFactor;
+line 492
+;492:	m->splashDamage *= s_quadFactor;
 ADDRLP4 16
 ADDRLP4 0
 INDIRP4
@@ -2493,29 +2504,29 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 492
-;490:
-;491://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
-;492:}
-LABELV $181
+line 495
+;493:
+;494://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
+;495:}
+LABELV $183
 endproc weapon_altgrenadelauncher_fire 20 12
 export Weapon_RocketLauncher_Fire
 proc Weapon_RocketLauncher_Fire 16 12
-line 502
-;493:
-;494:/*
-;495:======================================================================
-;496:
-;497:ROCKET
-;498:
-;499:======================================================================
-;500:*/
-;501:
-;502:void Weapon_RocketLauncher_Fire (gentity_t *ent) {
 line 505
-;503:	gentity_t	*m;
+;496:
+;497:/*
+;498:======================================================================
+;499:
+;500:ROCKET
+;501:
+;502:======================================================================
+;503:*/
 ;504:
-;505:	m = fire_rocket (ent, muzzle, forward);
+;505:void Weapon_RocketLauncher_Fire (gentity_t *ent) {
+line 508
+;506:	gentity_t	*m;
+;507:
+;508:	m = fire_rocket (ent, muzzle, forward);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -2531,8 +2542,8 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 506
-;506:	m->damage *= s_quadFactor;
+line 509
+;509:	m->damage *= s_quadFactor;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -2550,8 +2561,8 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 507
-;507:	m->splashDamage *= s_quadFactor;
+line 510
+;510:	m->splashDamage *= s_quadFactor;
 ADDRLP4 12
 ADDRLP4 0
 INDIRP4
@@ -2569,22 +2580,22 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 510
-;508:
-;509://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
-;510:}
-LABELV $183
+line 513
+;511:
+;512://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
+;513:}
+LABELV $185
 endproc Weapon_RocketLauncher_Fire 16 12
 export Weapon_RocketLauncher_AltFire
 proc Weapon_RocketLauncher_AltFire 16 12
-line 513
-;511:
-;512:// Shafe - Trep Alt Rocket Launcher
-;513:void Weapon_RocketLauncher_AltFire (gentity_t *ent) {
 line 516
-;514:	gentity_t	*m;
-;515:
-;516:	m = fire_alt_rocket (ent, muzzle, forward);
+;514:
+;515:// Shafe - Trep Alt Rocket Launcher
+;516:void Weapon_RocketLauncher_AltFire (gentity_t *ent) {
+line 519
+;517:	gentity_t	*m;
+;518:
+;519:	m = fire_alt_rocket (ent, muzzle, forward);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -2600,8 +2611,8 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 517
-;517:	m->damage *= s_quadFactor;
+line 520
+;520:	m->damage *= s_quadFactor;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -2619,8 +2630,8 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 518
-;518:	m->splashDamage *= s_quadFactor;
+line 521
+;521:	m->splashDamage *= s_quadFactor;
 ADDRLP4 12
 ADDRLP4 0
 INDIRP4
@@ -2638,30 +2649,30 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 521
-;519:
-;520://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
-;521:}
-LABELV $184
+line 524
+;522:
+;523://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
+;524:}
+LABELV $186
 endproc Weapon_RocketLauncher_AltFire 16 12
 export Weapon_Plasmagun_Fire
 proc Weapon_Plasmagun_Fire 16 12
-line 532
-;522:
-;523:
-;524:/*
-;525:======================================================================
-;526:
-;527:PLASMA GUN
-;528:
-;529:======================================================================
-;530:*/
-;531:
-;532:void Weapon_Plasmagun_Fire (gentity_t *ent) {
 line 535
-;533:	gentity_t	*m;
+;525:
+;526:
+;527:/*
+;528:======================================================================
+;529:
+;530:PLASMA GUN
+;531:
+;532:======================================================================
+;533:*/
 ;534:
-;535:	m = fire_plasma (ent, muzzle, forward);
+;535:void Weapon_Plasmagun_Fire (gentity_t *ent) {
+line 538
+;536:	gentity_t	*m;
+;537:
+;538:	m = fire_plasma (ent, muzzle, forward);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -2677,8 +2688,8 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 536
-;536:	m->damage *= s_quadFactor;
+line 539
+;539:	m->damage *= s_quadFactor;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -2696,8 +2707,8 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 537
-;537:	m->splashDamage *= s_quadFactor;
+line 540
+;540:	m->splashDamage *= s_quadFactor;
 ADDRLP4 12
 ADDRLP4 0
 INDIRP4
@@ -2715,57 +2726,57 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 540
-;538:
-;539://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
-;540:}
-LABELV $185
+line 543
+;541:
+;542://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
+;543:}
+LABELV $187
 endproc Weapon_Plasmagun_Fire 16 12
 export weapon_railgun_fire
 proc weapon_railgun_fire 172 32
-line 557
-;541:
-;542:/*
-;543:======================================================================
+line 560
 ;544:
-;545:RAILGUN
-;546:
-;547:======================================================================
-;548:*/
+;545:/*
+;546:======================================================================
+;547:
+;548:RAILGUN
 ;549:
-;550:
-;551:/*
-;552:=================
-;553:weapon_railgun_fire
-;554:=================
-;555:*/
-;556:#define	MAX_RAIL_HITS	4
-;557:void weapon_railgun_fire (gentity_t *ent) {
-line 573
-;558:	vec3_t		end;
-;559:#ifdef MISSIONPACK
-;560:	vec3_t impactpoint, bouncedir;
-;561:#endif
-;562:	trace_t		trace;
-;563:	gentity_t	*tent;
-;564:	gentity_t	*traceEnt;
-;565:	int			damage;
-;566:	int			i;
-;567:	int			hits;
-;568:	int			unlinked;
-;569:	int			passent;
-;570:	gentity_t	*unlinkedEntities[MAX_RAIL_HITS];
-;571:
-;572:	// Shafe - Trep - Instagib
-;573:	if (g_instagib.integer == 0)
+;550:======================================================================
+;551:*/
+;552:
+;553:
+;554:/*
+;555:=================
+;556:weapon_railgun_fire
+;557:=================
+;558:*/
+;559:#define	MAX_RAIL_HITS	4
+;560:void weapon_railgun_fire (gentity_t *ent) {
+line 576
+;561:	vec3_t		end;
+;562:#ifdef MISSIONPACK
+;563:	vec3_t impactpoint, bouncedir;
+;564:#endif
+;565:	trace_t		trace;
+;566:	gentity_t	*tent;
+;567:	gentity_t	*traceEnt;
+;568:	int			damage;
+;569:	int			i;
+;570:	int			hits;
+;571:	int			unlinked;
+;572:	int			passent;
+;573:	gentity_t	*unlinkedEntities[MAX_RAIL_HITS];
+;574:
+;575:	// Shafe - Trep - Instagib
+;576:	if (g_instagib.integer == 0)
 ADDRGP4 g_instagib+12
 INDIRI4
 CNSTI4 0
-NEI4 $187
-line 574
-;574:	{
-line 575
-;575:		damage = 100 * s_quadFactor;
+NEI4 $189
+line 577
+;577:	{
+line 578
+;578:		damage = 100 * s_quadFactor;
 ADDRLP4 104
 CNSTF4 1120403456
 ADDRGP4 s_quadFactor
@@ -2773,13 +2784,13 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 576
-;576:	} else {
-ADDRGP4 $188
+line 579
+;579:	} else {
+ADDRGP4 $190
 JUMPV
-LABELV $187
-line 577
-;577:		damage = 1000 * s_quadFactor;
+LABELV $189
+line 580
+;580:		damage = 1000 * s_quadFactor;
 ADDRLP4 104
 CNSTF4 1148846080
 ADDRGP4 s_quadFactor
@@ -2787,13 +2798,13 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 578
-;578:	}
-LABELV $188
 line 581
-;579:	/////////////////////////////////////
-;580:
-;581:	VectorMA (muzzle, 8192, forward, end);
+;581:	}
+LABELV $190
+line 584
+;582:	/////////////////////////////////////
+;583:
+;584:	VectorMA (muzzle, 8192, forward, end);
 ADDRLP4 112
 CNSTF4 1174405120
 ASGNF4
@@ -2826,42 +2837,42 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 585
-;582:
-;583://unlagged - backward reconciliation #2
-;584:	// backward-reconcile the other clients
-;585:	G_DoTimeShiftFor( ent );
+line 588
+;585:
+;586://unlagged - backward reconciliation #2
+;587:	// backward-reconcile the other clients
+;588:	G_DoTimeShiftFor( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_DoTimeShiftFor
 CALLV
 pop
-line 589
-;586://unlagged - backward reconciliation #2
-;587:
-;588:	// trace only against the solids, so the railgun will go through people
-;589:	unlinked = 0;
+line 592
+;589://unlagged - backward reconciliation #2
+;590:
+;591:	// trace only against the solids, so the railgun will go through people
+;592:	unlinked = 0;
 ADDRLP4 60
 CNSTI4 0
 ASGNI4
-line 590
-;590:	hits = 0;
+line 593
+;593:	hits = 0;
 ADDRLP4 108
 CNSTI4 0
 ASGNI4
-line 591
-;591:	passent = ent->s.number;
+line 594
+;594:	passent = ent->s.number;
 ADDRLP4 100
 ADDRFP4 0
 INDIRP4
 INDIRI4
 ASGNI4
-LABELV $196
-line 592
-;592:	do {
-line 593
-;593:		trap_Trace (&trace, muzzle, NULL, NULL, end, passent, MASK_SHOT );
+LABELV $198
+line 595
+;595:	do {
+line 596
+;596:		trap_Trace (&trace, muzzle, NULL, NULL, end, passent, MASK_SHOT );
 ADDRLP4 4
 ARGP4
 ADDRGP4 muzzle
@@ -2885,20 +2896,20 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 594
-;594:		if ( trace.entityNum >= ENTITYNUM_MAX_NORMAL ) {
+line 597
+;597:		if ( trace.entityNum >= ENTITYNUM_MAX_NORMAL ) {
 ADDRLP4 4+52
 INDIRI4
 CNSTI4 1022
-LTI4 $199
-line 595
-;595:			break;
-ADDRGP4 $198
+LTI4 $201
+line 598
+;598:			break;
+ADDRGP4 $200
 JUMPV
-LABELV $199
-line 597
-;596:		}
-;597:		traceEnt = &g_entities[ trace.entityNum ];
+LABELV $201
+line 600
+;599:		}
+;600:		traceEnt = &g_entities[ trace.entityNum ];
 ADDRLP4 0
 CNSTI4 836
 ADDRLP4 4+52
@@ -2907,45 +2918,45 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 598
-;598:		if ( traceEnt->takedamage ) {
+line 601
+;601:		if ( traceEnt->takedamage ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 744
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $203
-line 627
-;599:#ifdef MISSIONPACK
-;600:			if ( traceEnt->client && traceEnt->client->invulnerabilityTime > level.time ) {
-;601:				if ( G_InvulnerabilityEffect( traceEnt, forward, trace.endpos, impactpoint, bouncedir ) ) {
-;602:					G_BounceProjectile( muzzle, impactpoint, bouncedir, end );
-;603:					// snap the endpos to integers to save net bandwidth, but nudged towards the line
-;604:					SnapVectorTowards( trace.endpos, muzzle );
-;605:					// send railgun beam effect
-;606:					tent = G_TempEntity( trace.endpos, EV_RAILTRAIL );
-;607:					// set player number for custom colors on the railtrail
-;608:					tent->s.clientNum = ent->s.clientNum;
-;609:					VectorCopy( muzzle, tent->s.origin2 );
-;610:					// move origin a bit to come closer to the drawn gun muzzle
-;611:					VectorMA( tent->s.origin2, 4, right, tent->s.origin2 );
-;612:					VectorMA( tent->s.origin2, -1, up, tent->s.origin2 );
-;613:					tent->s.eventParm = 255;	// don't make the explosion at the end
-;614:					//
-;615:					VectorCopy( impactpoint, muzzle );
-;616:					// the player can hit him/herself with the bounced rail
-;617:					passent = ENTITYNUM_NONE;
-;618:				}
-;619:			}
-;620:			else {
-;621:				if( LogAccuracyHit( traceEnt, ent ) ) {
-;622:					hits++;
-;623:				}
-;624:				G_Damage (traceEnt, ent, ent, forward, trace.endpos, damage, 0, MOD_RAILGUN);
-;625:			}
-;626:#else
-;627:				if( LogAccuracyHit( traceEnt, ent ) ) {
+EQI4 $205
+line 630
+;602:#ifdef MISSIONPACK
+;603:			if ( traceEnt->client && traceEnt->client->invulnerabilityTime > level.time ) {
+;604:				if ( G_InvulnerabilityEffect( traceEnt, forward, trace.endpos, impactpoint, bouncedir ) ) {
+;605:					G_BounceProjectile( muzzle, impactpoint, bouncedir, end );
+;606:					// snap the endpos to integers to save net bandwidth, but nudged towards the line
+;607:					SnapVectorTowards( trace.endpos, muzzle );
+;608:					// send railgun beam effect
+;609:					tent = G_TempEntity( trace.endpos, EV_RAILTRAIL );
+;610:					// set player number for custom colors on the railtrail
+;611:					tent->s.clientNum = ent->s.clientNum;
+;612:					VectorCopy( muzzle, tent->s.origin2 );
+;613:					// move origin a bit to come closer to the drawn gun muzzle
+;614:					VectorMA( tent->s.origin2, 4, right, tent->s.origin2 );
+;615:					VectorMA( tent->s.origin2, -1, up, tent->s.origin2 );
+;616:					tent->s.eventParm = 255;	// don't make the explosion at the end
+;617:					//
+;618:					VectorCopy( impactpoint, muzzle );
+;619:					// the player can hit him/herself with the bounced rail
+;620:					passent = ENTITYNUM_NONE;
+;621:				}
+;622:			}
+;623:			else {
+;624:				if( LogAccuracyHit( traceEnt, ent ) ) {
+;625:					hits++;
+;626:				}
+;627:				G_Damage (traceEnt, ent, ent, forward, trace.endpos, damage, 0, MOD_RAILGUN);
+;628:			}
+;629:#else
+;630:				if( LogAccuracyHit( traceEnt, ent ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -2959,20 +2970,20 @@ ASGNI4
 ADDRLP4 120
 INDIRI4
 CNSTI4 0
-EQI4 $205
-line 628
-;628:					hits++;
+EQI4 $207
+line 631
+;631:					hits++;
 ADDRLP4 108
 ADDRLP4 108
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 629
-;629:				}
-LABELV $205
-line 630
-;630:				G_Damage (traceEnt, ent, ent, forward, trace.endpos, damage, 0, MOD_RAILGUN);
+line 632
+;632:				}
+LABELV $207
+line 633
+;633:				G_Damage (traceEnt, ent, ent, forward, trace.endpos, damage, 0, MOD_RAILGUN);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -3000,35 +3011,35 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 632
-;631:#endif
-;632:		}
-LABELV $203
-line 633
-;633:		if ( trace.contents & CONTENTS_SOLID ) {
+line 635
+;634:#endif
+;635:		}
+LABELV $205
+line 636
+;636:		if ( trace.contents & CONTENTS_SOLID ) {
 ADDRLP4 4+48
 INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $208
-line 634
-;634:			break;		// we hit something solid enough to stop the beam
-ADDRGP4 $198
-JUMPV
-LABELV $208
+EQI4 $210
 line 637
-;635:		}
-;636:		// unlink this entity, so the next trace will go past it
-;637:		trap_UnlinkEntity( traceEnt );
+;637:			break;		// we hit something solid enough to stop the beam
+ADDRGP4 $200
+JUMPV
+LABELV $210
+line 640
+;638:		}
+;639:		// unlink this entity, so the next trace will go past it
+;640:		trap_UnlinkEntity( traceEnt );
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_UnlinkEntity
 CALLV
 pop
-line 638
-;638:		unlinkedEntities[unlinked] = traceEnt;
+line 641
+;641:		unlinkedEntities[unlinked] = traceEnt;
 ADDRLP4 60
 INDIRI4
 CNSTI4 2
@@ -3038,46 +3049,46 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 639
-;639:		unlinked++;
+line 642
+;642:		unlinked++;
 ADDRLP4 60
 ADDRLP4 60
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 640
-;640:	} while ( unlinked < MAX_RAIL_HITS );
-LABELV $197
+line 643
+;643:	} while ( unlinked < MAX_RAIL_HITS );
+LABELV $199
 ADDRLP4 60
 INDIRI4
 CNSTI4 4
-LTI4 $196
-LABELV $198
-line 644
-;641:
-;642://unlagged - backward reconciliation #2
-;643:	// put them back
-;644:	G_UndoTimeShiftFor( ent );
+LTI4 $198
+LABELV $200
+line 647
+;644:
+;645://unlagged - backward reconciliation #2
+;646:	// put them back
+;647:	G_UndoTimeShiftFor( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_UndoTimeShiftFor
 CALLV
 pop
-line 648
-;645://unlagged - backward reconciliation #2
-;646:
-;647:	// link back in any entities we unlinked
-;648:	for ( i = 0 ; i < unlinked ; i++ ) {
+line 651
+;648://unlagged - backward reconciliation #2
+;649:
+;650:	// link back in any entities we unlinked
+;651:	for ( i = 0 ; i < unlinked ; i++ ) {
 ADDRLP4 64
 CNSTI4 0
 ASGNI4
-ADDRGP4 $214
+ADDRGP4 $216
 JUMPV
-LABELV $211
-line 649
-;649:		trap_LinkEntity( unlinkedEntities[i] );
+LABELV $213
+line 652
+;652:		trap_LinkEntity( unlinkedEntities[i] );
 ADDRLP4 64
 INDIRI4
 CNSTI4 2
@@ -3089,28 +3100,28 @@ ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 650
-;650:	}
-LABELV $212
-line 648
+line 653
+;653:	}
+LABELV $214
+line 651
 ADDRLP4 64
 ADDRLP4 64
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $214
+LABELV $216
 ADDRLP4 64
 INDIRI4
 ADDRLP4 60
 INDIRI4
-LTI4 $211
-line 655
-;651:
-;652:	// the final trace endpos will be the terminal point of the rail trail
-;653:
-;654:	// snap the endpos to integers to save net bandwidth, but nudged towards the line
-;655:	SnapVectorTowards( trace.endpos, muzzle );
+LTI4 $213
+line 658
+;654:
+;655:	// the final trace endpos will be the terminal point of the rail trail
+;656:
+;657:	// snap the endpos to integers to save net bandwidth, but nudged towards the line
+;658:	SnapVectorTowards( trace.endpos, muzzle );
 ADDRLP4 4+12
 ARGP4
 ADDRGP4 muzzle
@@ -3118,10 +3129,10 @@ ARGP4
 ADDRGP4 SnapVectorTowards
 CALLV
 pop
-line 658
-;656:
-;657:	// send railgun beam effect
-;658:	tent = G_TempEntity( trace.endpos, EV_RAILTRAIL );
+line 661
+;659:
+;660:	// send railgun beam effect
+;661:	tent = G_TempEntity( trace.endpos, EV_RAILTRAIL );
 ADDRLP4 4+12
 ARGP4
 CNSTI4 54
@@ -3134,10 +3145,10 @@ ADDRLP4 84
 ADDRLP4 116
 INDIRP4
 ASGNP4
-line 661
-;659:
-;660:	// set player number for custom colors on the railtrail
-;661:	tent->s.clientNum = ent->s.clientNum;
+line 664
+;662:
+;663:	// set player number for custom colors on the railtrail
+;664:	tent->s.clientNum = ent->s.clientNum;
 ADDRLP4 120
 CNSTI4 168
 ASGNI4
@@ -3153,9 +3164,9 @@ INDIRI4
 ADDP4
 INDIRI4
 ASGNI4
-line 663
-;662:
-;663:	VectorCopy( muzzle, tent->s.origin2 );
+line 666
+;665:
+;666:	VectorCopy( muzzle, tent->s.origin2 );
 ADDRLP4 84
 INDIRP4
 CNSTI4 104
@@ -3163,9 +3174,9 @@ ADDP4
 ADDRGP4 muzzle
 INDIRB
 ASGNB 12
-line 665
-;664:	// move origin a bit to come closer to the drawn gun muzzle
-;665:	VectorMA( tent->s.origin2, 4, right, tent->s.origin2 );
+line 668
+;667:	// move origin a bit to come closer to the drawn gun muzzle
+;668:	VectorMA( tent->s.origin2, 4, right, tent->s.origin2 );
 ADDRLP4 124
 ADDRLP4 84
 INDIRP4
@@ -3217,8 +3228,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 666
-;666:	VectorMA( tent->s.origin2, -1, up, tent->s.origin2 );
+line 669
+;669:	VectorMA( tent->s.origin2, -1, up, tent->s.origin2 );
 ADDRLP4 136
 ADDRLP4 84
 INDIRP4
@@ -3270,31 +3281,31 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 669
-;667:
-;668:	// no explosion at end if SURF_NOIMPACT, but still make the trail
-;669:	if ( trace.surfaceFlags & SURF_NOIMPACT ) {
+line 672
+;670:
+;671:	// no explosion at end if SURF_NOIMPACT, but still make the trail
+;672:	if ( trace.surfaceFlags & SURF_NOIMPACT ) {
 ADDRLP4 4+44
 INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $221
-line 670
-;670:		tent->s.eventParm = 255;	// don't make the explosion at the end
+EQI4 $223
+line 673
+;673:		tent->s.eventParm = 255;	// don't make the explosion at the end
 ADDRLP4 84
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 255
 ASGNI4
-line 671
-;671:	} else {
-ADDRGP4 $222
+line 674
+;674:	} else {
+ADDRGP4 $224
 JUMPV
-LABELV $221
-line 672
-;672:		tent->s.eventParm = DirToByte( trace.plane.normal );
+LABELV $223
+line 675
+;675:		tent->s.eventParm = DirToByte( trace.plane.normal );
 ADDRLP4 4+24
 ARGP4
 ADDRLP4 148
@@ -3308,11 +3319,11 @@ ADDP4
 ADDRLP4 148
 INDIRI4
 ASGNI4
-line 673
-;673:	}
-LABELV $222
-line 674
-;674:	tent->s.clientNum = ent->s.clientNum;
+line 676
+;676:	}
+LABELV $224
+line 677
+;677:	tent->s.clientNum = ent->s.clientNum;
 ADDRLP4 148
 CNSTI4 168
 ASGNI4
@@ -3328,17 +3339,17 @@ INDIRI4
 ADDP4
 INDIRI4
 ASGNI4
-line 677
-;675:
-;676:	// give the shooter a reward sound if they have made two railgun hits in a row
-;677:	if ( hits == 0 ) {
+line 680
+;678:
+;679:	// give the shooter a reward sound if they have made two railgun hits in a row
+;680:	if ( hits == 0 ) {
 ADDRLP4 108
 INDIRI4
 CNSTI4 0
-NEI4 $225
-line 679
-;678:		// complete miss
-;679:		ent->client->accurateCount = 0;
+NEI4 $227
+line 682
+;681:		// complete miss
+;682:		ent->client->accurateCount = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3348,14 +3359,14 @@ CNSTI4 2580
 ADDP4
 CNSTI4 0
 ASGNI4
-line 680
-;680:	} else {
-ADDRGP4 $226
+line 683
+;683:	} else {
+ADDRGP4 $228
 JUMPV
-LABELV $225
-line 682
-;681:		// check for "impressive" reward sound
-;682:		ent->client->accurateCount += hits;
+LABELV $227
+line 685
+;684:		// check for "impressive" reward sound
+;685:		ent->client->accurateCount += hits;
 ADDRLP4 152
 ADDRFP4 0
 INDIRP4
@@ -3374,8 +3385,8 @@ ADDRLP4 108
 INDIRI4
 ADDI4
 ASGNI4
-line 683
-;683:		if ( ent->client->accurateCount >= 2 ) {
+line 686
+;686:		if ( ent->client->accurateCount >= 2 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3385,9 +3396,9 @@ CNSTI4 2580
 ADDP4
 INDIRI4
 CNSTI4 2
-LTI4 $227
-line 684
-;684:			ent->client->accurateCount -= 2;
+LTI4 $229
+line 687
+;687:			ent->client->accurateCount -= 2;
 ADDRLP4 156
 ADDRFP4 0
 INDIRP4
@@ -3405,8 +3416,8 @@ INDIRI4
 CNSTI4 2
 SUBI4
 ASGNI4
-line 685
-;685:			ent->client->ps.persistant[PERS_IMPRESSIVE_COUNT]++;
+line 688
+;688:			ent->client->ps.persistant[PERS_IMPRESSIVE_COUNT]++;
 ADDRLP4 160
 ADDRFP4 0
 INDIRP4
@@ -3424,9 +3435,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 687
-;686:			// add the sprite over the player's head
-;687:			ent->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
+line 690
+;689:			// add the sprite over the player's head
+;690:			ent->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
 ADDRLP4 164
 ADDRFP4 0
 INDIRP4
@@ -3444,8 +3455,8 @@ INDIRI4
 CNSTI4 -231497
 BANDI4
 ASGNI4
-line 688
-;688:			ent->client->ps.eFlags |= EF_AWARD_IMPRESSIVE;
+line 691
+;691:			ent->client->ps.eFlags |= EF_AWARD_IMPRESSIVE;
 ADDRLP4 168
 ADDRFP4 0
 INDIRP4
@@ -3463,8 +3474,8 @@ INDIRI4
 CNSTI4 32768
 BORI4
 ASGNI4
-line 689
-;689:			ent->client->rewardTime = level.time + REWARD_SPRITE_TIME;
+line 692
+;692:			ent->client->rewardTime = level.time + REWARD_SPRITE_TIME;
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3477,11 +3488,11 @@ INDIRI4
 CNSTI4 2000
 ADDI4
 ASGNI4
-line 690
-;690:		}
-LABELV $227
-line 691
-;691:		ent->client->accuracy_hits++;
+line 693
+;693:		}
+LABELV $229
+line 694
+;694:		ent->client->accuracy_hits++;
 ADDRLP4 156
 ADDRFP4 0
 INDIRP4
@@ -3499,32 +3510,32 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 692
-;692:	}
-LABELV $226
-line 694
-;693:
-;694:}
-LABELV $186
+line 695
+;695:	}
+LABELV $228
+line 697
+;696:
+;697:}
+LABELV $188
 endproc weapon_railgun_fire 172 32
 export Weapon_GrapplingHook_Fire
 proc Weapon_GrapplingHook_Fire 4 20
-line 706
-;695:
-;696:
-;697:/*
-;698:======================================================================
+line 709
+;698:
 ;699:
-;700:GRAPPLING HOOK
-;701:
-;702:======================================================================
-;703:*/
+;700:/*
+;701:======================================================================
+;702:
+;703:GRAPPLING HOOK
 ;704:
-;705:void Weapon_GrapplingHook_Fire (gentity_t *ent)
-;706:{
-line 708
-;707:	// Shafe - Trep  - Offhand Grappling Hook
-;708:	AngleVectors (ent->client->ps.viewangles, forward, right, up);
+;705:======================================================================
+;706:*/
+;707:
+;708:void Weapon_GrapplingHook_Fire (gentity_t *ent)
+;709:{
+line 711
+;710:	// Shafe - Trep  - Offhand Grappling Hook
+;711:	AngleVectors (ent->client->ps.viewangles, forward, right, up);
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3542,8 +3553,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 709
-;709:	CalcMuzzlePoint ( ent, forward, right, up, muzzle );
+line 712
+;712:	CalcMuzzlePoint ( ent, forward, right, up, muzzle );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3558,10 +3569,10 @@ ARGP4
 ADDRGP4 CalcMuzzlePoint
 CALLV
 pop
-line 712
-;710:	// End Shafe
-;711:	
-;712:	if (!ent->client->fireHeld && !ent->client->hook)
+line 715
+;713:	// End Shafe
+;714:	
+;715:	if (!ent->client->fireHeld && !ent->client->hook)
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3575,7 +3586,7 @@ CNSTI4 2628
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $231
+NEI4 $233
 ADDRLP4 0
 INDIRP4
 CNSTI4 2632
@@ -3583,9 +3594,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $231
-line 713
-;713:		fire_grapple (ent, muzzle, forward);
+NEU4 $233
+line 716
+;716:		fire_grapple (ent, muzzle, forward);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3596,10 +3607,10 @@ ARGP4
 ADDRGP4 fire_grapple
 CALLP4
 pop
-LABELV $231
-line 715
-;714:
-;715:	ent->client->fireHeld = qtrue;
+LABELV $233
+line 718
+;717:
+;718:	ent->client->fireHeld = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3609,19 +3620,19 @@ CNSTI4 2628
 ADDP4
 CNSTI4 1
 ASGNI4
-line 716
-;716:}
-LABELV $230
+line 719
+;719:}
+LABELV $232
 endproc Weapon_GrapplingHook_Fire 4 20
 export Weapon_HookFree
 proc Weapon_HookFree 4 4
-line 720
-;717:
-;718:
-;719:void Weapon_HookFree (gentity_t *ent)
-;720:{
-line 721
-;721:	ent->parent->client->hook = NULL;
+line 723
+;720:
+;721:
+;722:void Weapon_HookFree (gentity_t *ent)
+;723:{
+line 724
+;724:	ent->parent->client->hook = NULL;
 ADDRFP4 0
 INDIRP4
 CNSTI4 600
@@ -3634,8 +3645,8 @@ CNSTI4 2632
 ADDP4
 CNSTP4 0
 ASGNP4
-line 722
-;722:	ent->parent->client->ps.pm_flags &= ~PMF_GRAPPLE_PULL;
+line 725
+;725:	ent->parent->client->ps.pm_flags &= ~PMF_GRAPPLE_PULL;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3656,26 +3667,26 @@ INDIRI4
 CNSTI4 -2049
 BANDI4
 ASGNI4
-line 723
-;723:	G_FreeEntity( ent );
+line 726
+;726:	G_FreeEntity( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 724
-;724:}
-LABELV $233
+line 727
+;727:}
+LABELV $235
 endproc Weapon_HookFree 4 4
 export Weapon_HookThink
 proc Weapon_HookThink 36 8
-line 727
-;725:
-;726:void Weapon_HookThink (gentity_t *ent)
-;727:{
-line 728
-;728:	if (ent->enemy) {
+line 730
+;728:
+;729:void Weapon_HookThink (gentity_t *ent)
+;730:{
+line 731
+;731:	if (ent->enemy) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 776
@@ -3683,11 +3694,11 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $235
-line 731
-;729:		vec3_t v, oldorigin;
-;730:
-;731:		VectorCopy(ent->r.currentOrigin, oldorigin);
+EQU4 $237
+line 734
+;732:		vec3_t v, oldorigin;
+;733:
+;734:		VectorCopy(ent->r.currentOrigin, oldorigin);
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -3695,8 +3706,8 @@ CNSTI4 488
 ADDP4
 INDIRB
 ASGNB 12
-line 732
-;732:		v[0] = ent->enemy->r.currentOrigin[0] + (ent->enemy->r.mins[0] + ent->enemy->r.maxs[0]) * 0.5;
+line 735
+;735:		v[0] = ent->enemy->r.currentOrigin[0] + (ent->enemy->r.mins[0] + ent->enemy->r.maxs[0]) * 0.5;
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -3725,8 +3736,8 @@ ADDF4
 MULF4
 ADDF4
 ASGNF4
-line 733
-;733:		v[1] = ent->enemy->r.currentOrigin[1] + (ent->enemy->r.mins[1] + ent->enemy->r.maxs[1]) * 0.5;
+line 736
+;736:		v[1] = ent->enemy->r.currentOrigin[1] + (ent->enemy->r.mins[1] + ent->enemy->r.maxs[1]) * 0.5;
 ADDRLP4 28
 ADDRFP4 0
 INDIRP4
@@ -3755,8 +3766,8 @@ ADDF4
 MULF4
 ADDF4
 ASGNF4
-line 734
-;734:		v[2] = ent->enemy->r.currentOrigin[2] + (ent->enemy->r.mins[2] + ent->enemy->r.maxs[2]) * 0.5;
+line 737
+;737:		v[2] = ent->enemy->r.currentOrigin[2] + (ent->enemy->r.mins[2] + ent->enemy->r.maxs[2]) * 0.5;
 ADDRLP4 32
 ADDRFP4 0
 INDIRP4
@@ -3785,8 +3796,8 @@ ADDF4
 MULF4
 ADDF4
 ASGNF4
-line 735
-;735:		SnapVectorTowards( v, oldorigin );	// save net bandwidth
+line 738
+;738:		SnapVectorTowards( v, oldorigin );	// save net bandwidth
 ADDRLP4 0
 ARGP4
 ADDRLP4 12
@@ -3794,9 +3805,9 @@ ARGP4
 ADDRGP4 SnapVectorTowards
 CALLV
 pop
-line 737
-;736:
-;737:		G_SetOrigin( ent, v );
+line 740
+;739:
+;740:		G_SetOrigin( ent, v );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3805,12 +3816,12 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 738
-;738:	}
-LABELV $235
-line 740
-;739:
-;740:	VectorCopy( ent->r.currentOrigin, ent->parent->client->ps.grapplePoint);
+line 741
+;741:	}
+LABELV $237
+line 743
+;742:
+;743:	VectorCopy( ent->r.currentOrigin, ent->parent->client->ps.grapplePoint);
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3831,36 +3842,36 @@ CNSTI4 488
 ADDP4
 INDIRB
 ASGNB 12
-line 741
-;741:}
-LABELV $234
+line 744
+;744:}
+LABELV $236
 endproc Weapon_HookThink 36 8
 export Weapon_LightningFire
 proc Weapon_LightningFire 120 32
-line 751
-;742:
-;743:/*
-;744:======================================================================
+line 754
 ;745:
-;746:LIGHTNING GUN
-;747:
-;748:======================================================================
-;749:*/
+;746:/*
+;747:======================================================================
+;748:
+;749:LIGHTNING GUN
 ;750:
-;751:void Weapon_LightningFire( gentity_t *ent ) {
-line 763
-;752:	trace_t		tr;
-;753:	vec3_t		end;
-;754:#ifdef MISSIONPACK
-;755:	vec3_t impactpoint, bouncedir;
-;756:#endif
-;757:	gentity_t	*traceEnt, *tent;
-;758:	int			damage, i, passent;
-;759:
-;760://unlagged - server options
-;761:	// this is configurable now
-;762://	damage = 8 * s_quadFactor;
-;763:	damage = g_lightningDamage.integer * s_quadFactor;
+;751:======================================================================
+;752:*/
+;753:
+;754:void Weapon_LightningFire( gentity_t *ent ) {
+line 766
+;755:	trace_t		tr;
+;756:	vec3_t		end;
+;757:#ifdef MISSIONPACK
+;758:	vec3_t impactpoint, bouncedir;
+;759:#endif
+;760:	gentity_t	*traceEnt, *tent;
+;761:	int			damage, i, passent;
+;762:
+;763://unlagged - server options
+;764:	// this is configurable now
+;765://	damage = 8 * s_quadFactor;
+;766:	damage = g_lightningDamage.integer * s_quadFactor;
 ADDRLP4 84
 ADDRGP4 g_lightningDamage+12
 INDIRI4
@@ -3870,23 +3881,23 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 766
-;764://unlagged - server options
-;765:
-;766:	passent = ent->s.number;
+line 769
+;767://unlagged - server options
+;768:
+;769:	passent = ent->s.number;
 ADDRLP4 80
 ADDRFP4 0
 INDIRP4
 INDIRI4
 ASGNI4
-line 767
-;767:	for (i = 0; i < 10; i++) {
+line 770
+;770:	for (i = 0; i < 10; i++) {
 ADDRLP4 76
 CNSTI4 0
 ASGNI4
-LABELV $241
-line 768
-;768:		VectorMA( muzzle, LIGHTNING_RANGE, forward, end );
+LABELV $243
+line 771
+;771:		VectorMA( muzzle, LIGHTNING_RANGE, forward, end );
 ADDRLP4 88
 CNSTF4 1145044992
 ASGNF4
@@ -3919,21 +3930,21 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 772
-;769:
-;770://unlagged - backward reconciliation #2
-;771:	// backward-reconcile the other clients
-;772:	G_DoTimeShiftFor( ent );
+line 775
+;772:
+;773://unlagged - backward reconciliation #2
+;774:	// backward-reconcile the other clients
+;775:	G_DoTimeShiftFor( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_DoTimeShiftFor
 CALLV
 pop
-line 775
-;773://unlagged - backward reconciliation #2
-;774:
-;775:		trap_Trace (&tr, muzzle, NULL, NULL, end, passent, MASK_SHOT);
+line 778
+;776://unlagged - backward reconciliation #2
+;777:
+;778:		trap_Trace (&tr, muzzle, NULL, NULL, end, passent, MASK_SHOT);
 ADDRLP4 0
 ARGP4
 ADDRGP4 muzzle
@@ -3957,46 +3968,46 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 779
-;776:
-;777://unlagged - backward reconciliation #2
-;778:	// put them back
-;779:	G_UndoTimeShiftFor( ent );
+line 782
+;779:
+;780://unlagged - backward reconciliation #2
+;781:	// put them back
+;782:	G_UndoTimeShiftFor( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_UndoTimeShiftFor
 CALLV
 pop
-line 794
-;780://unlagged - backward reconciliation #2
-;781:
-;782:#ifdef MISSIONPACK
-;783:		// if not the first trace (the lightning bounced of an invulnerability sphere)
-;784:		if (i) {
-;785:			// add bounced off lightning bolt temp entity
-;786:			// the first lightning bolt is a cgame only visual
-;787:			//
-;788:			tent = G_TempEntity( muzzle, EV_LIGHTNINGBOLT );
-;789:			VectorCopy( tr.endpos, end );
-;790:			SnapVector( end );
-;791:			VectorCopy( end, tent->s.origin2 );
-;792:		}
-;793:#endif
-;794:		if ( tr.entityNum == ENTITYNUM_NONE ) {
+line 797
+;783://unlagged - backward reconciliation #2
+;784:
+;785:#ifdef MISSIONPACK
+;786:		// if not the first trace (the lightning bounced of an invulnerability sphere)
+;787:		if (i) {
+;788:			// add bounced off lightning bolt temp entity
+;789:			// the first lightning bolt is a cgame only visual
+;790:			//
+;791:			tent = G_TempEntity( muzzle, EV_LIGHTNINGBOLT );
+;792:			VectorCopy( tr.endpos, end );
+;793:			SnapVector( end );
+;794:			VectorCopy( end, tent->s.origin2 );
+;795:		}
+;796:#endif
+;797:		if ( tr.entityNum == ENTITYNUM_NONE ) {
 ADDRLP4 0+52
 INDIRI4
 CNSTI4 1023
-NEI4 $251
-line 795
-;795:			return;
-ADDRGP4 $239
-JUMPV
-LABELV $251
+NEI4 $253
 line 798
-;796:		}
-;797:
-;798:		traceEnt = &g_entities[ tr.entityNum ];
+;798:			return;
+ADDRGP4 $241
+JUMPV
+LABELV $253
+line 801
+;799:		}
+;800:
+;801:		traceEnt = &g_entities[ tr.entityNum ];
 ADDRLP4 56
 CNSTI4 836
 ADDRLP4 0+52
@@ -4005,39 +4016,39 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 800
-;799:
-;800:		if ( traceEnt->takedamage) {
+line 803
+;802:
+;803:		if ( traceEnt->takedamage) {
 ADDRLP4 56
 INDIRP4
 CNSTI4 744
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $255
-line 822
-;801:#ifdef MISSIONPACK
-;802:			if ( traceEnt->client && traceEnt->client->invulnerabilityTime > level.time ) {
-;803:				if (G_InvulnerabilityEffect( traceEnt, forward, tr.endpos, impactpoint, bouncedir )) {
-;804:					G_BounceProjectile( muzzle, impactpoint, bouncedir, end );
-;805:					VectorCopy( impactpoint, muzzle );
-;806:					VectorSubtract( end, impactpoint, forward );
-;807:					VectorNormalize(forward);
-;808:					// the player can hit him/herself with the bounced lightning
-;809:					passent = ENTITYNUM_NONE;
-;810:				}
-;811:				else {
-;812:					VectorCopy( tr.endpos, muzzle );
-;813:					passent = traceEnt->s.number;
-;814:				}
-;815:				continue;
-;816:			}
-;817:			else {
-;818:				G_Damage( traceEnt, ent, ent, forward, tr.endpos,
-;819:					damage, 0, MOD_LIGHTNING);
-;820:			}
-;821:#else
-;822:				G_Damage( traceEnt, ent, ent, forward, tr.endpos,
+EQI4 $257
+line 825
+;804:#ifdef MISSIONPACK
+;805:			if ( traceEnt->client && traceEnt->client->invulnerabilityTime > level.time ) {
+;806:				if (G_InvulnerabilityEffect( traceEnt, forward, tr.endpos, impactpoint, bouncedir )) {
+;807:					G_BounceProjectile( muzzle, impactpoint, bouncedir, end );
+;808:					VectorCopy( impactpoint, muzzle );
+;809:					VectorSubtract( end, impactpoint, forward );
+;810:					VectorNormalize(forward);
+;811:					// the player can hit him/herself with the bounced lightning
+;812:					passent = ENTITYNUM_NONE;
+;813:				}
+;814:				else {
+;815:					VectorCopy( tr.endpos, muzzle );
+;816:					passent = traceEnt->s.number;
+;817:				}
+;818:				continue;
+;819:			}
+;820:			else {
+;821:				G_Damage( traceEnt, ent, ent, forward, tr.endpos,
+;822:					damage, 0, MOD_LIGHTNING);
+;823:			}
+;824:#else
+;825:				G_Damage( traceEnt, ent, ent, forward, tr.endpos,
 ADDRLP4 56
 INDIRP4
 ARGP4
@@ -4065,21 +4076,21 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 825
-;823:					damage, 0, MOD_LIGHTNING);
-;824:#endif
-;825:		}
-LABELV $255
-line 827
-;826:
-;827:		if ( traceEnt->takedamage && traceEnt->client ) {
+line 828
+;826:					damage, 0, MOD_LIGHTNING);
+;827:#endif
+;828:		}
+LABELV $257
+line 830
+;829:
+;830:		if ( traceEnt->takedamage && traceEnt->client ) {
 ADDRLP4 56
 INDIRP4
 CNSTI4 744
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $258
+EQI4 $260
 ADDRLP4 56
 INDIRP4
 CNSTI4 516
@@ -4087,9 +4098,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $258
-line 828
-;828:			tent = G_TempEntity( tr.endpos, EV_MISSILE_HIT );
+EQU4 $260
+line 831
+;831:			tent = G_TempEntity( tr.endpos, EV_MISSILE_HIT );
 ADDRLP4 0+12
 ARGP4
 CNSTI4 51
@@ -4102,8 +4113,8 @@ ADDRLP4 72
 ADDRLP4 100
 INDIRP4
 ASGNP4
-line 829
-;829:			tent->s.otherEntityNum = traceEnt->s.number;
+line 832
+;832:			tent->s.otherEntityNum = traceEnt->s.number;
 ADDRLP4 72
 INDIRP4
 CNSTI4 140
@@ -4112,8 +4123,8 @@ ADDRLP4 56
 INDIRP4
 INDIRI4
 ASGNI4
-line 830
-;830:			tent->s.eventParm = DirToByte( tr.plane.normal );
+line 833
+;833:			tent->s.eventParm = DirToByte( tr.plane.normal );
 ADDRLP4 0+24
 ARGP4
 ADDRLP4 104
@@ -4127,8 +4138,8 @@ ADDP4
 ADDRLP4 104
 INDIRI4
 ASGNI4
-line 831
-;831:			tent->s.weapon = ent->s.weapon;
+line 834
+;834:			tent->s.weapon = ent->s.weapon;
 ADDRLP4 108
 CNSTI4 192
 ASGNI4
@@ -4144,8 +4155,8 @@ INDIRI4
 ADDP4
 INDIRI4
 ASGNI4
-line 832
-;832:			if( LogAccuracyHit( traceEnt, ent ) ) {
+line 835
+;835:			if( LogAccuracyHit( traceEnt, ent ) ) {
 ADDRLP4 56
 INDIRP4
 ARGP4
@@ -4159,9 +4170,9 @@ ASGNI4
 ADDRLP4 112
 INDIRI4
 CNSTI4 0
-EQI4 $243
-line 833
-;833:				ent->client->accuracy_hits++;
+EQI4 $245
+line 836
+;836:				ent->client->accuracy_hits++;
 ADDRLP4 116
 ADDRFP4 0
 INDIRP4
@@ -4179,21 +4190,21 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 834
-;834:			}
-line 835
-;835:		} else if ( !( tr.surfaceFlags & SURF_NOIMPACT ) ) {
-ADDRGP4 $243
+line 837
+;837:			}
+line 838
+;838:		} else if ( !( tr.surfaceFlags & SURF_NOIMPACT ) ) {
+ADDRGP4 $245
 JUMPV
-LABELV $258
+LABELV $260
 ADDRLP4 0+44
 INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-NEI4 $243
-line 836
-;836:			tent = G_TempEntity( tr.endpos, EV_MISSILE_MISS );
+NEI4 $245
+line 839
+;839:			tent = G_TempEntity( tr.endpos, EV_MISSILE_MISS );
 ADDRLP4 0+12
 ARGP4
 CNSTI4 52
@@ -4206,8 +4217,8 @@ ADDRLP4 72
 ADDRLP4 100
 INDIRP4
 ASGNP4
-line 837
-;837:			tent->s.eventParm = DirToByte( tr.plane.normal );
+line 840
+;840:			tent->s.eventParm = DirToByte( tr.plane.normal );
 ADDRLP4 0+24
 ARGP4
 ADDRLP4 104
@@ -4221,15 +4232,15 @@ ADDP4
 ADDRLP4 104
 INDIRI4
 ASGNI4
-line 838
-;838:		}
-line 840
-;839:
-;840:		break;
-ADDRGP4 $243
+line 841
+;841:		}
+line 843
+;842:
+;843:		break;
+ADDRGP4 $245
 JUMPV
-LABELV $242
-line 767
+LABELV $244
+line 770
 ADDRLP4 76
 ADDRLP4 76
 INDIRI4
@@ -4239,131 +4250,112 @@ ASGNI4
 ADDRLP4 76
 INDIRI4
 CNSTI4 10
-LTI4 $241
-LABELV $243
-line 842
-;841:	}
-;842:}
-LABELV $239
+LTI4 $243
+LABELV $245
+line 845
+;844:	}
+;845:}
+LABELV $241
 endproc Weapon_LightningFire 120 32
 export LogAccuracyHit
 proc LogAccuracyHit 4 8
-line 899
-;843:
-;844:#ifdef MISSIONPACK
-;845:/*
-;846:======================================================================
-;847:
-;848:NAILGUN
-;849:
-;850:======================================================================
-;851:*/
+line 902
+;846:
+;847:#ifdef MISSIONPACK
+;848:/*
+;849:======================================================================
+;850:
+;851:NAILGUN
 ;852:
-;853:void Weapon_Nailgun_Fire (gentity_t *ent) {
-;854:	gentity_t	*m;
-;855:	int			count;
-;856:
-;857:	for( count = 0; count < NUM_NAILSHOTS; count++ ) {
-;858:		m = fire_nail (ent, muzzle, forward, right, up );
-;859:		m->damage *= s_quadFactor;
-;860:		m->splashDamage *= s_quadFactor;
-;861:	}
-;862:
-;863://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
-;864:}
+;853:======================================================================
+;854:*/
+;855:
+;856:void Weapon_Nailgun_Fire (gentity_t *ent) {
+;857:	gentity_t	*m;
+;858:	int			count;
+;859:
+;860:	for( count = 0; count < NUM_NAILSHOTS; count++ ) {
+;861:		m = fire_nail (ent, muzzle, forward, right, up );
+;862:		m->damage *= s_quadFactor;
+;863:		m->splashDamage *= s_quadFactor;
+;864:	}
 ;865:
-;866:
-;867:/*
-;868:======================================================================
+;866://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
+;867:}
+;868:
 ;869:
-;870:PROXIMITY MINE LAUNCHER
-;871:
-;872:======================================================================
-;873:*/
+;870:/*
+;871:======================================================================
+;872:
+;873:PROXIMITY MINE LAUNCHER
 ;874:
-;875:void weapon_proxlauncher_fire (gentity_t *ent) {
-;876:	gentity_t	*m;
+;875:======================================================================
+;876:*/
 ;877:
-;878:	// extra vertical velocity
-;879:	forward[2] += 0.2f;
-;880:	VectorNormalize( forward );
-;881:
-;882:	m = fire_prox (ent, muzzle, forward);
-;883:	m->damage *= s_quadFactor;
-;884:	m->splashDamage *= s_quadFactor;
-;885:
-;886://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
-;887:}
+;878:void weapon_proxlauncher_fire (gentity_t *ent) {
+;879:	gentity_t	*m;
+;880:
+;881:	// extra vertical velocity
+;882:	forward[2] += 0.2f;
+;883:	VectorNormalize( forward );
+;884:
+;885:	m = fire_prox (ent, muzzle, forward);
+;886:	m->damage *= s_quadFactor;
+;887:	m->splashDamage *= s_quadFactor;
 ;888:
-;889:#endif
-;890:
-;891://======================================================================
-;892:
+;889://	VectorAdd( m->s.pos.trDelta, ent->client->ps.velocity, m->s.pos.trDelta );	// "real" physics
+;890:}
+;891:
+;892:#endif
 ;893:
-;894:/*
-;895:===============
-;896:LogAccuracyHit
-;897:===============
-;898:*/
-;899:qboolean LogAccuracyHit( gentity_t *target, gentity_t *attacker ) {
-line 900
-;900:	if( !target->takedamage ) {
+;894://======================================================================
+;895:
+;896:
+;897:/*
+;898:===============
+;899:LogAccuracyHit
+;900:===============
+;901:*/
+;902:qboolean LogAccuracyHit( gentity_t *target, gentity_t *attacker ) {
+line 903
+;903:	if( !target->takedamage ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 744
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $270
-line 901
-;901:		return qfalse;
-CNSTI4 0
-RETI4
-ADDRGP4 $269
-JUMPV
-LABELV $270
+NEI4 $272
 line 904
-;902:	}
-;903:
-;904:	if ( target == attacker ) {
-ADDRFP4 0
-INDIRP4
-CVPU4 4
-ADDRFP4 4
-INDIRP4
-CVPU4 4
-NEU4 $272
-line 905
-;905:		return qfalse;
+;904:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $269
+ADDRGP4 $271
 JUMPV
 LABELV $272
-line 908
-;906:	}
-;907:
-;908:	if( !target->client ) {
+line 907
+;905:	}
+;906:
+;907:	if ( target == attacker ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 516
-ADDP4
+CVPU4 4
+ADDRFP4 4
 INDIRP4
 CVPU4 4
-CNSTU4 0
 NEU4 $274
-line 909
-;909:		return qfalse;
+line 908
+;908:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $269
+ADDRGP4 $271
 JUMPV
 LABELV $274
-line 912
-;910:	}
-;911:
-;912:	if( !attacker->client ) {
-ADDRFP4 4
+line 911
+;909:	}
+;910:
+;911:	if( !target->client ) {
+ADDRFP4 0
 INDIRP4
 CNSTI4 516
 ADDP4
@@ -4371,17 +4363,36 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $276
-line 913
-;913:		return qfalse;
+line 912
+;912:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $269
+ADDRGP4 $271
 JUMPV
 LABELV $276
+line 915
+;913:	}
+;914:
+;915:	if( !attacker->client ) {
+ADDRFP4 4
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+NEU4 $278
 line 916
-;914:	}
-;915:
-;916:	if( target->client->ps.stats[STAT_HEALTH] <= 0 ) {
+;916:		return qfalse;
+CNSTI4 0
+RETI4
+ADDRGP4 $271
+JUMPV
+LABELV $278
+line 919
+;917:	}
+;918:
+;919:	if( target->client->ps.stats[STAT_HEALTH] <= 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -4391,18 +4402,18 @@ CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $278
-line 917
-;917:		return qfalse;
+GTI4 $280
+line 920
+;920:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $269
+ADDRGP4 $271
 JUMPV
-LABELV $278
-line 920
-;918:	}
-;919:
-;920:	if ( OnSameTeam( target, attacker ) ) {
+LABELV $280
+line 923
+;921:	}
+;922:
+;923:	if ( OnSameTeam( target, attacker ) ) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -4416,38 +4427,38 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $280
-line 921
-;921:		return qfalse;
+EQI4 $282
+line 924
+;924:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $269
+ADDRGP4 $271
 JUMPV
-LABELV $280
-line 924
-;922:	}
-;923:
-;924:	return qtrue;
+LABELV $282
+line 927
+;925:	}
+;926:
+;927:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $269
+LABELV $271
 endproc LogAccuracyHit 4 8
 export CalcMuzzlePoint
 proc CalcMuzzlePoint 48 4
-line 935
-;925:}
-;926:
-;927:
-;928:/*
-;929:===============
-;930:CalcMuzzlePoint
-;931:
-;932:set muzzle location relative to pivoting eye
-;933:===============
-;934:*/
-;935:void CalcMuzzlePoint ( gentity_t *ent, vec3_t forward, vec3_t right, vec3_t up, vec3_t muzzlePoint ) {
-line 936
-;936:	VectorCopy( ent->s.pos.trBase, muzzlePoint );
+line 938
+;928:}
+;929:
+;930:
+;931:/*
+;932:===============
+;933:CalcMuzzlePoint
+;934:
+;935:set muzzle location relative to pivoting eye
+;936:===============
+;937:*/
+;938:void CalcMuzzlePoint ( gentity_t *ent, vec3_t forward, vec3_t right, vec3_t up, vec3_t muzzlePoint ) {
+line 939
+;939:	VectorCopy( ent->s.pos.trBase, muzzlePoint );
 ADDRFP4 16
 INDIRP4
 ADDRFP4 0
@@ -4456,8 +4467,8 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 937
-;937:	muzzlePoint[2] += ent->client->ps.viewheight;
+line 940
+;940:	muzzlePoint[2] += ent->client->ps.viewheight;
 ADDRLP4 0
 ADDRFP4 16
 INDIRP4
@@ -4480,150 +4491,150 @@ INDIRI4
 CVIF4 4
 ADDF4
 ASGNF4
-line 938
-;938:	VectorMA( muzzlePoint, 14, forward, muzzlePoint );
-ADDRLP4 4
-ADDRFP4 16
-INDIRP4
-ASGNP4
-ADDRLP4 4
-INDIRP4
-ADDRLP4 4
-INDIRP4
-INDIRF4
-CNSTF4 1096810496
-ADDRFP4 4
-INDIRP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-ADDRLP4 8
-CNSTI4 4
-ASGNI4
-ADDRLP4 12
-ADDRFP4 16
-INDIRP4
-ADDRLP4 8
-INDIRI4
-ADDP4
-ASGNP4
-ADDRLP4 12
-INDIRP4
-ADDRLP4 12
-INDIRP4
-INDIRF4
-CNSTF4 1096810496
-ADDRFP4 4
-INDIRP4
-ADDRLP4 8
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-ADDRLP4 16
-CNSTI4 8
-ASGNI4
-ADDRLP4 20
-ADDRFP4 16
-INDIRP4
-ADDRLP4 16
-INDIRI4
-ADDP4
-ASGNP4
-ADDRLP4 20
-INDIRP4
-ADDRLP4 20
-INDIRP4
-INDIRF4
-CNSTF4 1096810496
-ADDRFP4 4
-INDIRP4
-ADDRLP4 16
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 940
-;939:	// snap to integer coordinates for more efficient network bandwidth usage
-;940:	SnapVector( muzzlePoint );
-ADDRLP4 24
-ADDRFP4 16
-INDIRP4
-ASGNP4
-ADDRLP4 24
-INDIRP4
-INDIRF4
-ARGF4
-ADDRLP4 28
-ADDRGP4 tonextint
-CALLF4
-ASGNF4
-ADDRLP4 24
-INDIRP4
-ADDRLP4 28
-INDIRF4
-ASGNF4
-ADDRLP4 32
-ADDRFP4 16
-INDIRP4
-CNSTI4 4
-ADDP4
-ASGNP4
-ADDRLP4 32
-INDIRP4
-INDIRF4
-ARGF4
-ADDRLP4 36
-ADDRGP4 tonextint
-CALLF4
-ASGNF4
-ADDRLP4 32
-INDIRP4
-ADDRLP4 36
-INDIRF4
-ASGNF4
-ADDRLP4 40
-ADDRFP4 16
-INDIRP4
-CNSTI4 8
-ADDP4
-ASGNP4
-ADDRLP4 40
-INDIRP4
-INDIRF4
-ARGF4
-ADDRLP4 44
-ADDRGP4 tonextint
-CALLF4
-ASGNF4
-ADDRLP4 40
-INDIRP4
-ADDRLP4 44
-INDIRF4
-ASGNF4
 line 941
-;941:}
-LABELV $282
+;941:	VectorMA( muzzlePoint, 14, forward, muzzlePoint );
+ADDRLP4 4
+ADDRFP4 16
+INDIRP4
+ASGNP4
+ADDRLP4 4
+INDIRP4
+ADDRLP4 4
+INDIRP4
+INDIRF4
+CNSTF4 1096810496
+ADDRFP4 4
+INDIRP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+ADDRLP4 8
+CNSTI4 4
+ASGNI4
+ADDRLP4 12
+ADDRFP4 16
+INDIRP4
+ADDRLP4 8
+INDIRI4
+ADDP4
+ASGNP4
+ADDRLP4 12
+INDIRP4
+ADDRLP4 12
+INDIRP4
+INDIRF4
+CNSTF4 1096810496
+ADDRFP4 4
+INDIRP4
+ADDRLP4 8
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+ADDRLP4 16
+CNSTI4 8
+ASGNI4
+ADDRLP4 20
+ADDRFP4 16
+INDIRP4
+ADDRLP4 16
+INDIRI4
+ADDP4
+ASGNP4
+ADDRLP4 20
+INDIRP4
+ADDRLP4 20
+INDIRP4
+INDIRF4
+CNSTF4 1096810496
+ADDRFP4 4
+INDIRP4
+ADDRLP4 16
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 943
+;942:	// snap to integer coordinates for more efficient network bandwidth usage
+;943:	SnapVector( muzzlePoint );
+ADDRLP4 24
+ADDRFP4 16
+INDIRP4
+ASGNP4
+ADDRLP4 24
+INDIRP4
+INDIRF4
+ARGF4
+ADDRLP4 28
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 24
+INDIRP4
+ADDRLP4 28
+INDIRF4
+ASGNF4
+ADDRLP4 32
+ADDRFP4 16
+INDIRP4
+CNSTI4 4
+ADDP4
+ASGNP4
+ADDRLP4 32
+INDIRP4
+INDIRF4
+ARGF4
+ADDRLP4 36
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 32
+INDIRP4
+ADDRLP4 36
+INDIRF4
+ASGNF4
+ADDRLP4 40
+ADDRFP4 16
+INDIRP4
+CNSTI4 8
+ADDP4
+ASGNP4
+ADDRLP4 40
+INDIRP4
+INDIRF4
+ARGF4
+ADDRLP4 44
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 40
+INDIRP4
+ADDRLP4 44
+INDIRF4
+ASGNF4
+line 944
+;944:}
+LABELV $284
 endproc CalcMuzzlePoint 48 4
 export CalcMuzzlePointOrigin
 proc CalcMuzzlePointOrigin 48 4
-line 950
-;942:
-;943:/*
-;944:===============
-;945:CalcMuzzlePointOrigin
-;946:
-;947:set muzzle location relative to pivoting eye
-;948:===============
-;949:*/
-;950:void CalcMuzzlePointOrigin ( gentity_t *ent, vec3_t origin, vec3_t forward, vec3_t right, vec3_t up, vec3_t muzzlePoint ) {
-line 951
-;951:	VectorCopy( ent->s.pos.trBase, muzzlePoint );
+line 953
+;945:
+;946:/*
+;947:===============
+;948:CalcMuzzlePointOrigin
+;949:
+;950:set muzzle location relative to pivoting eye
+;951:===============
+;952:*/
+;953:void CalcMuzzlePointOrigin ( gentity_t *ent, vec3_t origin, vec3_t forward, vec3_t right, vec3_t up, vec3_t muzzlePoint ) {
+line 954
+;954:	VectorCopy( ent->s.pos.trBase, muzzlePoint );
 ADDRFP4 20
 INDIRP4
 ADDRFP4 0
@@ -4632,8 +4643,8 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 952
-;952:	muzzlePoint[2] += ent->client->ps.viewheight;
+line 955
+;955:	muzzlePoint[2] += ent->client->ps.viewheight;
 ADDRLP4 0
 ADDRFP4 20
 INDIRP4
@@ -4656,150 +4667,150 @@ INDIRI4
 CVIF4 4
 ADDF4
 ASGNF4
-line 953
-;953:	VectorMA( muzzlePoint, 14, forward, muzzlePoint );
-ADDRLP4 4
-ADDRFP4 20
-INDIRP4
-ASGNP4
-ADDRLP4 4
-INDIRP4
-ADDRLP4 4
-INDIRP4
-INDIRF4
-CNSTF4 1096810496
-ADDRFP4 8
-INDIRP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-ADDRLP4 8
-CNSTI4 4
-ASGNI4
-ADDRLP4 12
-ADDRFP4 20
-INDIRP4
-ADDRLP4 8
-INDIRI4
-ADDP4
-ASGNP4
-ADDRLP4 12
-INDIRP4
-ADDRLP4 12
-INDIRP4
-INDIRF4
-CNSTF4 1096810496
-ADDRFP4 8
-INDIRP4
-ADDRLP4 8
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-ADDRLP4 16
-CNSTI4 8
-ASGNI4
-ADDRLP4 20
-ADDRFP4 20
-INDIRP4
-ADDRLP4 16
-INDIRI4
-ADDP4
-ASGNP4
-ADDRLP4 20
-INDIRP4
-ADDRLP4 20
-INDIRP4
-INDIRF4
-CNSTF4 1096810496
-ADDRFP4 8
-INDIRP4
-ADDRLP4 16
-INDIRI4
-ADDP4
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 955
-;954:	// snap to integer coordinates for more efficient network bandwidth usage
-;955:	SnapVector( muzzlePoint );
-ADDRLP4 24
-ADDRFP4 20
-INDIRP4
-ASGNP4
-ADDRLP4 24
-INDIRP4
-INDIRF4
-ARGF4
-ADDRLP4 28
-ADDRGP4 tonextint
-CALLF4
-ASGNF4
-ADDRLP4 24
-INDIRP4
-ADDRLP4 28
-INDIRF4
-ASGNF4
-ADDRLP4 32
-ADDRFP4 20
-INDIRP4
-CNSTI4 4
-ADDP4
-ASGNP4
-ADDRLP4 32
-INDIRP4
-INDIRF4
-ARGF4
-ADDRLP4 36
-ADDRGP4 tonextint
-CALLF4
-ASGNF4
-ADDRLP4 32
-INDIRP4
-ADDRLP4 36
-INDIRF4
-ASGNF4
-ADDRLP4 40
-ADDRFP4 20
-INDIRP4
-CNSTI4 8
-ADDP4
-ASGNP4
-ADDRLP4 40
-INDIRP4
-INDIRF4
-ARGF4
-ADDRLP4 44
-ADDRGP4 tonextint
-CALLF4
-ASGNF4
-ADDRLP4 40
-INDIRP4
-ADDRLP4 44
-INDIRF4
-ASGNF4
 line 956
-;956:}
-LABELV $283
+;956:	VectorMA( muzzlePoint, 14, forward, muzzlePoint );
+ADDRLP4 4
+ADDRFP4 20
+INDIRP4
+ASGNP4
+ADDRLP4 4
+INDIRP4
+ADDRLP4 4
+INDIRP4
+INDIRF4
+CNSTF4 1096810496
+ADDRFP4 8
+INDIRP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+ADDRLP4 8
+CNSTI4 4
+ASGNI4
+ADDRLP4 12
+ADDRFP4 20
+INDIRP4
+ADDRLP4 8
+INDIRI4
+ADDP4
+ASGNP4
+ADDRLP4 12
+INDIRP4
+ADDRLP4 12
+INDIRP4
+INDIRF4
+CNSTF4 1096810496
+ADDRFP4 8
+INDIRP4
+ADDRLP4 8
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+ADDRLP4 16
+CNSTI4 8
+ASGNI4
+ADDRLP4 20
+ADDRFP4 20
+INDIRP4
+ADDRLP4 16
+INDIRI4
+ADDP4
+ASGNP4
+ADDRLP4 20
+INDIRP4
+ADDRLP4 20
+INDIRP4
+INDIRF4
+CNSTF4 1096810496
+ADDRFP4 8
+INDIRP4
+ADDRLP4 16
+INDIRI4
+ADDP4
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 958
+;957:	// snap to integer coordinates for more efficient network bandwidth usage
+;958:	SnapVector( muzzlePoint );
+ADDRLP4 24
+ADDRFP4 20
+INDIRP4
+ASGNP4
+ADDRLP4 24
+INDIRP4
+INDIRF4
+ARGF4
+ADDRLP4 28
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 24
+INDIRP4
+ADDRLP4 28
+INDIRF4
+ASGNF4
+ADDRLP4 32
+ADDRFP4 20
+INDIRP4
+CNSTI4 4
+ADDP4
+ASGNP4
+ADDRLP4 32
+INDIRP4
+INDIRF4
+ARGF4
+ADDRLP4 36
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 32
+INDIRP4
+ADDRLP4 36
+INDIRF4
+ASGNF4
+ADDRLP4 40
+ADDRFP4 20
+INDIRP4
+CNSTI4 8
+ADDP4
+ASGNP4
+ADDRLP4 40
+INDIRP4
+INDIRF4
+ARGF4
+ADDRLP4 44
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 40
+INDIRP4
+ADDRLP4 44
+INDIRF4
+ASGNF4
+line 959
+;959:}
+LABELV $285
 endproc CalcMuzzlePointOrigin 48 4
 export FireWeapon
 proc FireWeapon 16 24
-line 965
-;957:
-;958:
-;959:
-;960:/*
-;961:===============
-;962:FireWeapon
-;963:===============
-;964:*/
-;965:void FireWeapon( gentity_t *ent ) {
-line 966
-;966:	if (ent->client->ps.powerups[PW_QUAD] ) {
+line 968
+;960:
+;961:
+;962:
+;963:/*
+;964:===============
+;965:FireWeapon
+;966:===============
+;967:*/
+;968:void FireWeapon( gentity_t *ent ) {
+line 969
+;969:	if (ent->client->ps.powerups[PW_QUAD] ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -4809,35 +4820,35 @@ CNSTI4 316
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $285
-line 967
-;967:		s_quadFactor = g_quadfactor.value;
+EQI4 $287
+line 970
+;970:		s_quadFactor = g_quadfactor.value;
 ADDRGP4 s_quadFactor
 ADDRGP4 g_quadfactor+8
 INDIRF4
 ASGNF4
-line 968
-;968:	} else {
-ADDRGP4 $286
+line 971
+;971:	} else {
+ADDRGP4 $288
 JUMPV
-LABELV $285
-line 969
-;969:		s_quadFactor = 1;
+LABELV $287
+line 972
+;972:		s_quadFactor = 1;
 ADDRGP4 s_quadFactor
 CNSTF4 1065353216
 ASGNF4
-line 970
-;970:	}
-LABELV $286
-line 978
-;971:#ifdef MISSIONPACK
-;972:	if( ent->client->persistantPowerup && ent->client->persistantPowerup->item && ent->client->persistantPowerup->item->giTag == PW_DOUBLER ) {
-;973:		s_quadFactor *= 2;
-;974:	}
-;975:#endif
-;976:
-;977:	// track shots taken for accuracy tracking.  Grapple is not a weapon and gauntet is just not tracked
-;978:	if( ent->s.weapon != WP_GRAPPLING_HOOK && ent->s.weapon != WP_GAUNTLET ) {
+line 973
+;973:	}
+LABELV $288
+line 981
+;974:#ifdef MISSIONPACK
+;975:	if( ent->client->persistantPowerup && ent->client->persistantPowerup->item && ent->client->persistantPowerup->item->giTag == PW_DOUBLER ) {
+;976:		s_quadFactor *= 2;
+;977:	}
+;978:#endif
+;979:
+;980:	// track shots taken for accuracy tracking.  Grapple is not a weapon and gauntet is just not tracked
+;981:	if( ent->s.weapon != WP_GRAPPLING_HOOK && ent->s.weapon != WP_GAUNTLET ) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -4848,20 +4859,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-EQI4 $288
+EQI4 $290
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
-EQI4 $288
-line 986
-;979:#ifdef MISSIONPACK
-;980:		if( ent->s.weapon == WP_NAILGUN ) {
-;981:			ent->client->accuracy_shots += NUM_NAILSHOTS;
-;982:		} else {
-;983:			ent->client->accuracy_shots++;
-;984:		}
-;985:#else
-;986:		ent->client->accuracy_shots++;
+EQI4 $290
+line 989
+;982:#ifdef MISSIONPACK
+;983:		if( ent->s.weapon == WP_NAILGUN ) {
+;984:			ent->client->accuracy_shots += NUM_NAILSHOTS;
+;985:		} else {
+;986:			ent->client->accuracy_shots++;
+;987:		}
+;988:#else
+;989:		ent->client->accuracy_shots++;
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -4879,14 +4890,14 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 988
-;987:#endif
-;988:	}
-LABELV $288
 line 991
-;989:
-;990:	// set aiming directions
-;991:	AngleVectors (ent->client->ps.viewangles, forward, right, up);
+;990:#endif
+;991:	}
+LABELV $290
+line 994
+;992:
+;993:	// set aiming directions
+;994:	AngleVectors (ent->client->ps.viewangles, forward, right, up);
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -4904,9 +4915,9 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 993
-;992:
-;993:	CalcMuzzlePointOrigin ( ent, ent->client->oldOrigin, forward, right, up, muzzle );
+line 996
+;995:
+;996:	CalcMuzzlePointOrigin ( ent, ent->client->oldOrigin, forward, right, up, muzzle );
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -4933,10 +4944,10 @@ ARGP4
 ADDRGP4 CalcMuzzlePointOrigin
 CALLV
 pop
-line 996
-;994:
-;995:	// fire the specific weapon
-;996:	switch( ent->s.weapon ) {
+line 999
+;997:
+;998:	// fire the specific weapon
+;999:	switch( ent->s.weapon ) {
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -4947,52 +4958,52 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 1
-LTI4 $291
+LTI4 $293
 ADDRLP4 8
 INDIRI4
 CNSTI4 10
-GTI4 $291
+GTI4 $293
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $306-4
+ADDRGP4 $308-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $306
-address $293
-address $296
+LABELV $308
 address $295
-address $300
-address $301
-address $294
-address $303
+address $298
+address $297
 address $302
-address $304
+address $303
+address $296
 address $305
+address $304
+address $306
+address $307
 code
-LABELV $293
-line 998
-;997:	case WP_GAUNTLET:
-;998:		Weapon_Gauntlet( ent );
+LABELV $295
+line 1001
+;1000:	case WP_GAUNTLET:
+;1001:		Weapon_Gauntlet( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_Gauntlet
 CALLV
 pop
-line 999
-;999:		break;
-ADDRGP4 $291
-JUMPV
-LABELV $294
 line 1002
-;1000:	case WP_LIGHTNING:
-;1001:		//Weapon_LightningFire( ent );
-;1002:		Weapon_fire_flame(ent , qfalse );  // Shafe - Trep - Flame Thrower
+;1002:		break;
+ADDRGP4 $293
+JUMPV
+LABELV $296
+line 1005
+;1003:	case WP_LIGHTNING:
+;1004:		//Weapon_LightningFire( ent );
+;1005:		Weapon_fire_flame(ent , qfalse );  // Shafe - Trep - Flame Thrower
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5001,34 +5012,34 @@ ARGI4
 ADDRGP4 Weapon_fire_flame
 CALLV
 pop
-line 1003
-;1003:		break;
-ADDRGP4 $291
+line 1006
+;1006:		break;
+ADDRGP4 $293
 JUMPV
-LABELV $295
-line 1005
-;1004:	case WP_SHOTGUN:
-;1005:		weapon_supershotgun_fire( ent );
+LABELV $297
+line 1008
+;1007:	case WP_SHOTGUN:
+;1008:		weapon_supershotgun_fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_supershotgun_fire
 CALLV
 pop
-line 1006
-;1006:		break;
-ADDRGP4 $291
+line 1009
+;1009:		break;
+ADDRGP4 $293
 JUMPV
-LABELV $296
-line 1008
-;1007:	case WP_MACHINEGUN:
-;1008:		if ( g_gametype.integer != GT_TEAM ) {
+LABELV $298
+line 1011
+;1010:	case WP_MACHINEGUN:
+;1011:		if ( g_gametype.integer != GT_TEAM ) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
-EQI4 $297
-line 1009
-;1009:			Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE );
+EQI4 $299
+line 1012
+;1012:			Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5039,13 +5050,13 @@ ARGI4
 ADDRGP4 Bullet_Fire
 CALLV
 pop
-line 1010
-;1010:		} else {
-ADDRGP4 $291
+line 1013
+;1013:		} else {
+ADDRGP4 $293
 JUMPV
-LABELV $297
-line 1011
-;1011:			Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE );
+LABELV $299
+line 1014
+;1014:			Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5056,72 +5067,72 @@ ARGI4
 ADDRGP4 Bullet_Fire
 CALLV
 pop
-line 1012
-;1012:		}
-line 1013
-;1013:		break;
-ADDRGP4 $291
-JUMPV
-LABELV $300
 line 1015
-;1014:	case WP_GRENADE_LAUNCHER:
-;1015:		weapon_grenadelauncher_fire( ent );
+;1015:		}
+line 1016
+;1016:		break;
+ADDRGP4 $293
+JUMPV
+LABELV $302
+line 1018
+;1017:	case WP_GRENADE_LAUNCHER:
+;1018:		weapon_grenadelauncher_fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_grenadelauncher_fire
 CALLV
 pop
-line 1016
-;1016:		break;
-ADDRGP4 $291
+line 1019
+;1019:		break;
+ADDRGP4 $293
 JUMPV
-LABELV $301
-line 1018
-;1017:	case WP_ROCKET_LAUNCHER:
-;1018:		Weapon_RocketLauncher_Fire( ent );
+LABELV $303
+line 1021
+;1020:	case WP_ROCKET_LAUNCHER:
+;1021:		Weapon_RocketLauncher_Fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_RocketLauncher_Fire
 CALLV
 pop
-line 1019
-;1019:		break;
-ADDRGP4 $291
+line 1022
+;1022:		break;
+ADDRGP4 $293
 JUMPV
-LABELV $302
-line 1021
-;1020:	case WP_PLASMAGUN:
-;1021:		Weapon_Plasmagun_Fire( ent );
+LABELV $304
+line 1024
+;1023:	case WP_PLASMAGUN:
+;1024:		Weapon_Plasmagun_Fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_Plasmagun_Fire
 CALLV
 pop
-line 1022
-;1022:		break;
-ADDRGP4 $291
+line 1025
+;1025:		break;
+ADDRGP4 $293
 JUMPV
-LABELV $303
-line 1024
-;1023:	case WP_RAILGUN:
-;1024:		weapon_railgun_fire( ent );
+LABELV $305
+line 1027
+;1026:	case WP_RAILGUN:
+;1027:		weapon_railgun_fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_railgun_fire
 CALLV
 pop
-line 1025
-;1025:		break;
-ADDRGP4 $291
+line 1028
+;1028:		break;
+ADDRGP4 $293
 JUMPV
-LABELV $304
-line 1027
-;1026:	case WP_BFG:
-;1027:		BFG_Fire( ent, 0 );
+LABELV $306
+line 1030
+;1029:	case WP_BFG:
+;1030:		BFG_Fire( ent, qfalse );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5130,58 +5141,58 @@ ARGI4
 ADDRGP4 BFG_Fire
 CALLV
 pop
-line 1028
-;1028:		break;
-ADDRGP4 $291
+line 1031
+;1031:		break;
+ADDRGP4 $293
 JUMPV
-LABELV $305
-line 1030
-;1029:	case WP_GRAPPLING_HOOK:
-;1030:		Weapon_GrapplingHook_Fire( ent );
+LABELV $307
+line 1033
+;1032:	case WP_GRAPPLING_HOOK:
+;1033:		Weapon_GrapplingHook_Fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_GrapplingHook_Fire
 CALLV
 pop
-line 1031
-;1031:		break;
-line 1045
-;1032:#ifdef MISSIONPACK
-;1033:	case WP_NAILGUN:
-;1034:		Weapon_Nailgun_Fire( ent );
-;1035:		break;
-;1036:	case WP_PROX_LAUNCHER:
-;1037:		weapon_proxlauncher_fire( ent );
+line 1034
+;1034:		break;
+line 1048
+;1035:#ifdef MISSIONPACK
+;1036:	case WP_NAILGUN:
+;1037:		Weapon_Nailgun_Fire( ent );
 ;1038:		break;
-;1039:	case WP_CHAINGUN:
-;1040:		Bullet_Fire( ent, CHAINGUN_SPREAD, MACHINEGUN_DAMAGE );
+;1039:	case WP_PROX_LAUNCHER:
+;1040:		weapon_proxlauncher_fire( ent );
 ;1041:		break;
-;1042:#endif
-;1043:	default:
-;1044:// FIXME		G_Error( "Bad ent->s.weapon" );
-;1045:		break;
-LABELV $291
-line 1047
-;1046:	}
-;1047:}
-LABELV $284
+;1042:	case WP_CHAINGUN:
+;1043:		Bullet_Fire( ent, CHAINGUN_SPREAD, MACHINEGUN_DAMAGE );
+;1044:		break;
+;1045:#endif
+;1046:	default:
+;1047:// FIXME		G_Error( "Bad ent->s.weapon" );
+;1048:		break;
+LABELV $293
+line 1050
+;1049:	}
+;1050:}
+LABELV $286
 endproc FireWeapon 16 24
 export FireWeapon2
 proc FireWeapon2 12 20
-line 1057
-;1048:
-;1049:
-;1050:/* 
-;1051:=============== 
-;1052:FireWeapon2 
-;1053:Shafe - Trep - Alt Fire FireWeapon2
-;1054:Right now this just shoots rockets...
-;1055:=============== 
-;1056:*/ 
-;1057:void FireWeapon2( gentity_t *ent ) { 
-line 1058
-;1058: if (ent->client->ps.powerups[PW_QUAD] ) { 
+line 1060
+;1051:
+;1052:
+;1053:/* 
+;1054:=============== 
+;1055:FireWeapon2 
+;1056:Shafe - Trep - Alt Fire FireWeapon2
+;1057:Right now this just shoots rockets...
+;1058:=============== 
+;1059:*/ 
+;1060:void FireWeapon2( gentity_t *ent ) { 
+line 1061
+;1061: if (ent->client->ps.powerups[PW_QUAD] ) { 
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -5191,30 +5202,30 @@ CNSTI4 316
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $309
-line 1059
-;1059:  s_quadFactor = g_quadfactor.value; 
+EQI4 $311
+line 1062
+;1062:  s_quadFactor = g_quadfactor.value; 
 ADDRGP4 s_quadFactor
 ADDRGP4 g_quadfactor+8
 INDIRF4
 ASGNF4
-line 1060
-;1060: } else { 
-ADDRGP4 $310
+line 1063
+;1063: } else { 
+ADDRGP4 $312
 JUMPV
-LABELV $309
-line 1061
-;1061:  s_quadFactor = 1; 
+LABELV $311
+line 1064
+;1064:  s_quadFactor = 1; 
 ADDRGP4 s_quadFactor
 CNSTF4 1065353216
 ASGNF4
-line 1062
-;1062: } 
-LABELV $310
 line 1065
-;1063:
-;1064: // track shots taken for accuracy tracking.  Grapple is not a weapon and gauntet is just not tracked 
-;1065: if( ent->s.weapon != WP_GRAPPLING_HOOK && ent->s.weapon != WP_GAUNTLET ) { 
+;1065: } 
+LABELV $312
+line 1068
+;1066:
+;1067: // track shots taken for accuracy tracking.  Grapple is not a weapon and gauntet is just not tracked 
+;1068: if( ent->s.weapon != WP_GRAPPLING_HOOK && ent->s.weapon != WP_GAUNTLET ) { 
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -5225,20 +5236,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-EQI4 $312
+EQI4 $314
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
-EQI4 $312
-line 1068
-;1066:   //ent->client->ps.persistant[PERS_ACCURACY_SHOTS]++;  // This doesnt exist?
-;1067:	// ent->client->accuracy_shots++;
-;1068: } 
-LABELV $312
+EQI4 $314
 line 1071
-;1069:
-;1070: // set aiming directions 
-;1071: AngleVectors (ent->client->ps.viewangles, forward, right, up); 
+;1069:   //ent->client->ps.persistant[PERS_ACCURACY_SHOTS]++;  // This doesnt exist?
+;1070:	// ent->client->accuracy_shots++;
+;1071: } 
+LABELV $314
+line 1074
+;1072:
+;1073: // set aiming directions 
+;1074: AngleVectors (ent->client->ps.viewangles, forward, right, up); 
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -5256,9 +5267,9 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 1073
-;1072:
-;1073: CalcMuzzlePoint ( ent, forward, right, up, muzzle ); 
+line 1076
+;1075:
+;1076: CalcMuzzlePoint ( ent, forward, right, up, muzzle ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5273,10 +5284,10 @@ ARGP4
 ADDRGP4 CalcMuzzlePoint
 CALLV
 pop
-line 1076
-;1074:
-;1075: // fire the specific weapon 
-;1076: switch( ent->s.weapon ) { 
+line 1079
+;1077:
+;1078: // fire the specific weapon 
+;1079: switch( ent->s.weapon ) { 
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -5287,51 +5298,51 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
-LTI4 $315
+LTI4 $317
 ADDRLP4 4
 INDIRI4
 CNSTI4 10
-GTI4 $315
+GTI4 $317
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $330-4
+ADDRGP4 $332-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $330
-address $317
-address $320
+LABELV $332
 address $319
-address $324
-address $325
-address $318
-address $327
+address $322
+address $321
 address $326
-address $315
+address $327
+address $320
 address $329
+address $328
+address $330
+address $331
 code
-LABELV $317
-line 1078
-;1077: case WP_GAUNTLET: 
-;1078:	Weapon_Gauntlet( ent ); 
+LABELV $319
+line 1081
+;1080: case WP_GAUNTLET: 
+;1081:	Weapon_Gauntlet( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_Gauntlet
 CALLV
 pop
-line 1079
-;1079:	break; 
-ADDRGP4 $315
+line 1082
+;1082:	break; 
+ADDRGP4 $317
 JUMPV
-LABELV $318
-line 1081
-;1080: case WP_LIGHTNING: 
-;1081:	Weapon_fire_flame( ent, qtrue);  // Shafe - Trep - Flame Thrower
+LABELV $320
+line 1084
+;1083: case WP_LIGHTNING: 
+;1084:	Weapon_fire_flame( ent, qtrue);  // Shafe - Trep - Flame Thrower
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5340,37 +5351,37 @@ ARGI4
 ADDRGP4 Weapon_fire_flame
 CALLV
 pop
-line 1082
-;1082:	break; 
-ADDRGP4 $315
-JUMPV
-LABELV $319
 line 1085
-;1083: case WP_SHOTGUN: 
-;1084:	//Weapon_RocketLauncher_Fire( ent );
-;1085:	weapon_supershotgun_fire( ent );
+;1085:	break; 
+ADDRGP4 $317
+JUMPV
+LABELV $321
+line 1088
+;1086: case WP_SHOTGUN: 
+;1087:	//Weapon_RocketLauncher_Fire( ent );
+;1088:	weapon_supershotgun_fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_supershotgun_fire
 CALLV
 pop
-line 1086
-;1086:	break; 
-ADDRGP4 $315
+line 1089
+;1089:	break; 
+ADDRGP4 $317
 JUMPV
-LABELV $320
-line 1090
-;1087: case WP_MACHINEGUN: 
-;1088:  //Weapon_RocketLauncher_Fire( ent );
-;1089: 
-;1090:	 if ( g_gametype.integer != GT_TEAM ) { 
+LABELV $322
+line 1093
+;1090: case WP_MACHINEGUN: 
+;1091:  //Weapon_RocketLauncher_Fire( ent );
+;1092: 
+;1093:	 if ( g_gametype.integer != GT_TEAM ) { 
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
-EQI4 $321
-line 1091
-;1091:   Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 
+EQI4 $323
+line 1094
+;1094:   Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5381,13 +5392,13 @@ ARGI4
 ADDRGP4 Bullet_Fire
 CALLV
 pop
-line 1092
-;1092:  } else { 
-ADDRGP4 $315
+line 1095
+;1095:  } else { 
+ADDRGP4 $317
 JUMPV
-LABELV $321
-line 1093
-;1093:   Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE ); 
+LABELV $323
+line 1096
+;1096:   Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5398,93 +5409,105 @@ ARGI4
 ADDRGP4 Bullet_Fire
 CALLV
 pop
-line 1094
-;1094:  } 
-line 1095
-;1095:  break; 
-ADDRGP4 $315
-JUMPV
-LABELV $324
 line 1097
-;1096: case WP_GRENADE_LAUNCHER: 
-;1097:  weapon_altgrenadelauncher_fire( ent ); 
+;1097:  } 
+line 1098
+;1098:  break; 
+ADDRGP4 $317
+JUMPV
+LABELV $326
+line 1100
+;1099: case WP_GRENADE_LAUNCHER: 
+;1100:	weapon_altgrenadelauncher_fire( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_altgrenadelauncher_fire
 CALLV
 pop
-line 1098
-;1098:  break; 
-ADDRGP4 $315
+line 1101
+;1101:	break; 
+ADDRGP4 $317
 JUMPV
-LABELV $325
-line 1100
-;1099: case WP_ROCKET_LAUNCHER: 
-;1100:   Weapon_RocketLauncher_AltFire( ent );
+LABELV $327
+line 1103
+;1102: case WP_ROCKET_LAUNCHER: 
+;1103:	Weapon_RocketLauncher_AltFire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_RocketLauncher_AltFire
 CALLV
 pop
-line 1101
-;1101:  break; 
-ADDRGP4 $315
+line 1104
+;1104:	break; 
+ADDRGP4 $317
 JUMPV
-LABELV $326
-line 1103
-;1102: case WP_PLASMAGUN: 
-;1103:	 weapon_pdlauncher_fire( ent); 
+LABELV $328
+line 1106
+;1105: case WP_PLASMAGUN: 
+;1106:	weapon_pdlauncher_fire( ent); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_pdlauncher_fire
 CALLV
 pop
-line 1104
-;1104:  break; 
-ADDRGP4 $315
+line 1107
+;1107:	break; 
+ADDRGP4 $317
 JUMPV
-LABELV $327
-line 1106
-;1105: case WP_RAILGUN: 
-;1106:   Weapon_RocketLauncher_Fire( ent );
+LABELV $329
+line 1109
+;1108: case WP_RAILGUN: 
+;1109:	Weapon_RocketLauncher_Fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_RocketLauncher_Fire
 CALLV
 pop
-line 1107
-;1107:  break; 
-ADDRGP4 $315
-JUMPV
 line 1110
-;1108: case WP_BFG: 
-;1109:  //BFG_Fire( ent, 0);  Nothing right now... we'll work on it
-;1110:  break; 
-LABELV $329
+;1110:	break; 
+ADDRGP4 $317
+JUMPV
+LABELV $330
 line 1112
-;1111: case WP_GRAPPLING_HOOK: 
-;1112:  Weapon_GrapplingHook_Fire( ent ); 
+;1111: case WP_BFG: 
+;1112:	BFG_Fire( ent, qtrue); 
+ADDRFP4 0
+INDIRP4
+ARGP4
+CNSTI4 1
+ARGI4
+ADDRGP4 BFG_Fire
+CALLV
+pop
+line 1113
+;1113:	break; 
+ADDRGP4 $317
+JUMPV
+LABELV $331
+line 1115
+;1114: case WP_GRAPPLING_HOOK: 
+;1115:	Weapon_GrapplingHook_Fire( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_GrapplingHook_Fire
 CALLV
 pop
-line 1113
-;1113:  break; 
 line 1116
-;1114: default: 
-;1115:// FIXME  G_Error( "Bad ent->s.weapon" ); 
-;1116:  break; 
-LABELV $315
-line 1118
-;1117: } 
-;1118:}
-LABELV $308
+;1116:	break; 
+line 1119
+;1117: default: 
+;1118:// FIXME  G_Error( "Bad ent->s.weapon" ); 
+;1119:  break; 
+LABELV $317
+line 1121
+;1120: } 
+;1121:}
+LABELV $310
 endproc FireWeapon2 12 20
 bss
 align 4
@@ -6091,7 +6114,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $174
+LABELV $176
 byte 1 112
 byte 1 100
 byte 1 103

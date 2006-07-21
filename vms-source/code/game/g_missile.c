@@ -564,6 +564,9 @@ gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->clipmask = MASK_SHOT;
 	bolt->target_ent = NULL;
 
+	// Shafe - Make it bounce
+	bolt->s.eFlags = EF_BOUNCE;
+
 	bolt->s.pos.trType = TR_LINEAR;
 	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
 	VectorCopy( start, bolt->s.pos.trBase );
@@ -958,7 +961,7 @@ gentity_t *fire_altgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 fire_bfg
 =================
 */
-gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, int charge) {
+gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 	gentity_t	*bolt;
 	int			speed;
 	VectorNormalize (dir);
@@ -994,6 +997,7 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, int charge) {
 	VectorCopy (start, bolt->r.currentOrigin);
 	return bolt;
 	*/
+
 	bolt->nextthink = level.time + 20;
 	bolt->think = G_HomingMissile;
 	bolt->s.eType = ET_MISSILE;
@@ -1005,24 +1009,36 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, int charge) {
 	bolt->s.otherEntityNum = self->s.number;
 //unlagged - projectile nudge
 	bolt->parent = self;
-	bolt->damage = 500;
-	bolt->splashDamage = 300;
-	bolt->splashRadius = 420;
+	
 	bolt->methodOfDeath = MOD_BFG;
 	bolt->splashMethodOfDeath = MOD_BFG_SPLASH;
 	bolt->clipmask = MASK_SHOT;
 	bolt->target_ent = NULL;
-
+	
+	if (alt == qtrue)
+	{
+		// Alt Fire
+		bolt->damage = 500;
+		bolt->splashDamage = 300;
+		bolt->splashRadius = 420;
 		bolt->s.pos.trType = TR_ORBITAL;
-	
-	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
-	VectorCopy( start, bolt->s.pos.trBase );
+		bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+		VectorCopy( start, bolt->s.pos.trBase );
+		VectorScale( dir, 325, bolt->s.pos.trDelta );
+	} 
+	else
+	{
+		// Regular Fire
+		bolt->damage = 100;
+		bolt->splashDamage = 100;
+		bolt->splashRadius = 100;
+		bolt->s.pos.trType = TR_ORBITAL;
+		bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+		VectorCopy( start, bolt->s.pos.trBase );
+		VectorScale( dir, 1300, bolt->s.pos.trDelta );
 
-	// How much did the power it up
-	
-	if (charge > 200) { charge = 163; }
-	
-	VectorScale( dir, 325, bolt->s.pos.trDelta );
+	}
+
 	
 	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
 	VectorCopy (start, bolt->r.currentOrigin);

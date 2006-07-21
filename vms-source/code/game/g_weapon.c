@@ -273,15 +273,18 @@ BFG
 ======================================================================
 */
 
-void BFG_Fire ( gentity_t *ent, int charge ) {
+void BFG_Fire ( gentity_t *ent, qboolean alt ) {
 	gentity_t	*m;
 
-	forward[2] += 0.2f;
-	forward[2] += 0.2f;
+	// Alt Fire Shoots Upward Just A Bit MOre
+	if (alt == qtrue)
+	{
+		forward[2] += 0.2f;
+		forward[2] += 0.2f;
+	}
+	
 	VectorNormalize( forward );
-
-	//ent->client->ps.weaponcharge = 0;
-	m = fire_bfg (ent, muzzle, forward, charge);
+	m = fire_bfg (ent, muzzle, forward, alt);
 	m->damage *= s_quadFactor;
 	m->splashDamage *= s_quadFactor;
 
@@ -1024,7 +1027,7 @@ void FireWeapon( gentity_t *ent ) {
 		weapon_railgun_fire( ent );
 		break;
 	case WP_BFG:
-		BFG_Fire( ent, 0 );
+		BFG_Fire( ent, qfalse );
 		break;
 	case WP_GRAPPLING_HOOK:
 		Weapon_GrapplingHook_Fire( ent );
@@ -1094,23 +1097,23 @@ void FireWeapon2( gentity_t *ent ) {
   } 
   break; 
  case WP_GRENADE_LAUNCHER: 
-  weapon_altgrenadelauncher_fire( ent ); 
-  break; 
+	weapon_altgrenadelauncher_fire( ent ); 
+	break; 
  case WP_ROCKET_LAUNCHER: 
-   Weapon_RocketLauncher_AltFire( ent );
-  break; 
+	Weapon_RocketLauncher_AltFire( ent );
+	break; 
  case WP_PLASMAGUN: 
-	 weapon_pdlauncher_fire( ent); 
-  break; 
+	weapon_pdlauncher_fire( ent); 
+	break; 
  case WP_RAILGUN: 
-   Weapon_RocketLauncher_Fire( ent );
-  break; 
+	Weapon_RocketLauncher_Fire( ent );
+	break; 
  case WP_BFG: 
-  //BFG_Fire( ent, 0);  Nothing right now... we'll work on it
-  break; 
+	BFG_Fire( ent, qtrue); 
+	break; 
  case WP_GRAPPLING_HOOK: 
-  Weapon_GrapplingHook_Fire( ent ); 
-  break; 
+	Weapon_GrapplingHook_Fire( ent ); 
+	break; 
  default: 
 // FIXME  G_Error( "Bad ent->s.weapon" ); 
   break; 
