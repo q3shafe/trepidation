@@ -269,8 +269,8 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 		//Add_Ammo( other, ent->item->giTag, quantity ); // Oops :) Shafe
 	}
 	
-	// If it's arsenal then make sure they are still at infinite
-	if (g_GameMode.integer == 1)
+	// If it's arsenal and lms then make sure they are still at infinite
+	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
 	{
 		other->client->ps.ammo[ ent->item->giTag ] = 9999;
 	}
@@ -870,8 +870,8 @@ void ClearRegisteredItems( void ) {
 		RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
 	} // End Shafe
 
-	// Shafe - Trep - Arsenal Gets All Weapons Pre-Registered
-	if (g_GameMode.integer == 1)
+	// Shafe - Trep - Arsenal and LMS Gets All Weapons Pre-Registered
+	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
 	{
 		RegisterItem( BG_FindItemForWeapon( WP_SHOTGUN ) );
 		RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
@@ -965,7 +965,7 @@ void G_SpawnItem (gentity_t *ent, gitem_t *item) {
 	/////////////////////////////////////////////////////////
 
 	//Shafe - Trep Instagib
-	if (g_GameMode.integer == 1) 
+	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
 	{
 	// Arsenal - prevent weapons and ammo from spawning
 	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)

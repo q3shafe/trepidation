@@ -290,6 +290,8 @@ void body_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int d
 // Shafe - Trep - Arsenal Mod
 extern qboolean IsOutOfWeapons( gentity_t *ent ) {
 
+	if (g_GameMode.integer != 1) { return qfalse; } // Do nothing unless it's arsenal
+
 	if (ent->client->pers.h_gauntlet) { return qfalse; }
 	if (ent->client->pers.h_mg) { return qfalse; }
 	if (ent->client->pers.h_sg) { return qfalse; }
@@ -299,6 +301,7 @@ extern qboolean IsOutOfWeapons( gentity_t *ent ) {
 	if (ent->client->pers.h_gauss) { return qfalse; }
 	if (ent->client->pers.h_plasma) { return qfalse; }
 	if (ent->client->pers.h_bfg) { return qfalse; }
+
 	return qtrue;
 }
 
@@ -633,8 +636,10 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	}
 #endif
 
-			// Shafe - Trep - Arsenal Stuff
-		if ( g_GameMode.integer != 0 && meansOfDeath != MOD_TELEFRAG && !level.warmupTime) 
+		
+	
+		// Shafe - Trep - Arsenal Stuff
+		if ( g_GameMode.integer > 0 && meansOfDeath != MOD_TELEFRAG && !level.warmupTime) 
 		{
 			tmpW = self->s.weapon;
 			
@@ -646,22 +651,38 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				trap_SendServerCommand( -1, va("print \"%s Made First Strike!\n\"",attacker->client->pers.netname));
 			}
 
-			if (tmpW == 9) { self->client->pers.h_bfg = qfalse;  }
-			if (tmpW == 8) { self->client->pers.h_plasma = qfalse;}
-			if (tmpW == 7) { self->client->pers.h_gauss = qfalse; }
-			if (tmpW == 6) { self->client->pers.h_flame = qfalse; }
-			if (tmpW == 5) { self->client->pers.h_singcan = qfalse; }
-			if (tmpW == 4) { self->client->pers.h_grenade = qfalse; }
-			if (tmpW == 3) { self->client->pers.h_sg = qfalse; }
-			if (tmpW == 2) { self->client->pers.h_mg = qfalse; }
-			if (tmpW == 1) { self->client->pers.h_gauntlet = qfalse; }
-
-			if (IsOutOfWeapons(self)) 
+			if (g_GameMode.integer == 1)
 			{
-				trap_SendServerCommand( -1, va("print \"%s's Arsenal Is Empty!\n\"",self->client->pers.netname));
-				trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE "'s Arsenal is Empty.\n\"", self->client->pers.netname) );
-				
+				if (tmpW == 9) { self->client->pers.h_bfg = qfalse;  }
+				if (tmpW == 8) { self->client->pers.h_plasma = qfalse;}
+				if (tmpW == 7) { self->client->pers.h_gauss = qfalse; }
+				if (tmpW == 6) { self->client->pers.h_flame = qfalse; }
+				if (tmpW == 5) { self->client->pers.h_singcan = qfalse; }
+				if (tmpW == 4) { self->client->pers.h_grenade = qfalse; }
+				if (tmpW == 3) { self->client->pers.h_sg = qfalse; }
+				if (tmpW == 2) { self->client->pers.h_mg = qfalse; }
+				if (tmpW == 1) { self->client->pers.h_gauntlet = qfalse; }
 
+			}
+			
+			
+			if ((g_GameMode.integer == 2) || (IsOutOfWeapons(self)))
+			{
+				
+				// Arsenal Message
+				if (g_GameMode.integer == 1)
+				{
+					trap_SendServerCommand( -1, va("print \"%s's Arsenal Is Empty!\n\"",self->client->pers.netname));
+					trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE "'s Arsenal is Empty.\n\"", self->client->pers.netname) );
+				}
+
+				// LMS Message
+				if (g_GameMode.integer == 2)
+				{
+					trap_SendServerCommand( -1, va("print \"%s Has Been Eliminated!!\n\"",self->client->pers.netname));
+					trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Has Been Eliminated.\n\"", self->client->pers.netname) );
+				}
+				
 				// Send them to Spec
 				self->client->pers.TrueScore = self->client->ps.persistant[PERS_SCORE];
 				self->client->pers.Eliminated = qtrue;

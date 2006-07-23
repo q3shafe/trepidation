@@ -2371,10 +2371,17 @@ static void CG_DrawWarmup( void ) {
 	} else {
 		if ( cgs.g_GameMode == 1) {
 			s = "Arsenal";
-		} else if ( cgs.gametype == GT_FFA && cgs.g_GameMode != 1) {
+		} else if ( cgs.gametype == GT_FFA && cgs.g_GameMode == 0) {
 			s = "Free For All";
+		} else if ( cgs.g_GameMode == 2) {
+			s = "Last Man Standing";
 		} else if ( cgs.gametype == GT_TEAM ) {
-			s = "Team Deathmatch";
+			if ( cgs.g_GameMode == 2) 
+			{
+				s = "Team Last Man Standing";
+			} else {
+				s = "Team Deathmatch";
+			}
 		} else if ( cgs.gametype == GT_CTF ) {
 			s = "Capture the Flag";
 #ifdef MISSIONPACK

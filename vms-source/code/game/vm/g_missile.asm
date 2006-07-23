@@ -2241,14 +2241,14 @@ ADDP4
 ADDRGP4 $142
 ASGNP4
 line 548
-;548:	bolt->nextthink = level.time + 1000; //10000;
+;548:	bolt->nextthink = level.time + 1200; //10000;
 ADDRLP4 0
 INDIRP4
 CNSTI4 688
 ADDP4
 ADDRGP4 level+32
 INDIRI4
-CNSTI4 1000
+CNSTI4 1200
 ADDI4
 ASGNI4
 line 549

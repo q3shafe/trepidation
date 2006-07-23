@@ -556,13 +556,13 @@ static void ArenaServers_UpdateMenu( void ) {
 			break;
 		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
 			 //strcmp(servernodeptr->gamename,"eternal") != 0
-			if( servernodeptr->g_GameMode == 0 ) {
+			if( servernodeptr->g_GameMode != 1 ) {
 					continue;
 			}
 			if(g_GameMode == 0) { continue;	}
 			break;
 		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
-			if( servernodeptr->gametype != GT_LASTMAN ) {
+			if( servernodeptr->g_GameMode != 2) {
 				continue;
 			}
 			break;

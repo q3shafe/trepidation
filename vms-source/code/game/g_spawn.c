@@ -596,6 +596,7 @@ void SP_worldspawn( void ) {
 
 		G_LogPrintf( "Warmup:\n" );
 	}
+	//level.firstStrike = qfalse;
 
 }
 

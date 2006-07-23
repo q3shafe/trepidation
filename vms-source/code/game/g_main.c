@@ -432,7 +432,7 @@ void G_InitModRules( void )
 {
 	
 	// Dont Use up Ammo in Arsenal
-	if ( g_GameMode.integer == 1 ) 
+	if (( g_GameMode.integer == 1 ) || (g_GameMode.integer == 2)) 
 	{
 		altAmmoUsage[WP_MACHINEGUN] = 0;
 		altAmmoUsage[WP_SHOTGUN] = 0;
@@ -443,11 +443,16 @@ void G_InitModRules( void )
 		altAmmoUsage[WP_PLASMAGUN] = 0;
 		altAmmoUsage[WP_BFG] = 0;	
 		// Set some cvars
+
 		g_teamAutoJoin.integer = 0;
 		g_doWarmup.integer = 1;
 		g_warmup.integer = 50;
+		
 		// We only allow ffa in arsenal
-		g_gametype.integer = 0;
+		if (g_GameMode.integer == 1)
+		{
+			g_gametype.integer = 0;
+		}
 
 		
 
@@ -1510,185 +1515,187 @@ void CheckExitRules( void ) {
 		}
 	}
 
-
+	// Arsenal And Last Man Standing
 	// We dont do a showdown or find a winner for at least 20 seconds into the game.
-	if (( g_GameMode.integer == 1)  && ((level.time-level.startTime) > 25000) && (level.firstStrike == qtrue))
+	if (( g_GameMode.integer == 1) || (g_GameMode.integer == 2))
 	{
-		gclient_t		*survivor = NULL;		
-		int				tmpCnt;
-		
-		// Dont end it just because there is only one person on the server
-		if (level.warmupTime) { return; }
-		
-		tmpCnt = 0;
-		tmpCnt = CountSurvivors();
-
-			
-	
-		
-
-			// Two People - Showdown
-			if (tmpCnt == 2)
-			{
-				if (!level.StopItemRespawn) 
-				{
-					
-					// Dont do this on warmup or before everyone spawns
-					if ((!level.warmupTime) && (level.time > level.startTime+5000)) 
-					{
-						level.StopItemRespawn = qtrue;
-						trap_SendServerCommand( -1, va("cp \"^9Showdown!\n\"") );
-					
-						// Give The Last 2 People Some Powerups
-						for ( i = 0; i < level.maxclients; i++ )
-						{
-							cl = &level.clients[i];
-							self = &g_entities[i];
-							if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
-							{	
-								cl->ps.speed=+60;
-								cl->ps.powerups[quad->giTag] = level.time - ( level.time % 1000 );
-								cl->ps.powerups[quad->giTag] += 25 * 1000;
-								G_AddEvent( self, EV_ITEM_PICKUP, (quad-bg_itemlist) );
-
-								cl->ps.powerups[flight->giTag] = level.time - ( level.time % 1000 );
-								cl->ps.powerups[flight->giTag] += 15 * 1000;
-								G_AddEvent( self, EV_ITEM_PICKUP, (flight-bg_itemlist) );
-								
-								cl->ps.powerups[battles->giTag] = level.time - ( level.time % 1000 );
-								cl->ps.powerups[battles->giTag] += 10 * 1000;
-								G_AddEvent( self, EV_ITEM_PICKUP, (battles-bg_itemlist) );
-								
-								cl->ps.powerups[regen->giTag] = level.time - ( level.time % 1000 );
-								cl->ps.powerups[regen->giTag] += 20 * 1000;
-								G_AddEvent( self, EV_ITEM_PICKUP, (regen-bg_itemlist) );
-								
-								
-								
-
-							}
-						}
-						///////////////////////////////////
-					}
-
-				}
-			}  
-			else
-			{
-				// Just in case
-				if (level.StopItemRespawn)
-				{
-					level.StopItemRespawn = qfalse;
-				}
-
-			}
-
-
-			// Down to 1 player find the survivor
-			/* This code has morphed to utter shit */
-			
-			if (tmpCnt == 1)
-			{
-				int		p;
-				for ( i = 0; i < level.maxclients; i++ )
-				{
-					cl = &level.clients[i];
-					//survivor = &level.clients[i];
-					if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
-					{	
-						survivor = cl;	
-						p = i;
-						break;
-					}
-
-				}
-
-			
-
-				//survivor = &level.clients[p];
-			// We dont have a survivor yet.. Something isnt right
-				G_Printf( S_COLOR_GREEN "DEBUG: Survivors %s %i\n", survivor->pers.netname, tmpCnt);
-						// If We Get To Here We should have a survivor	
-				//if ( survivor != NULL )
-				//{
-					BroadCastSound("sound/misc/laff01.wav");
-					trap_SendServerCommand( -1, "print \"::: ^9WINNER BONUSES :::\n\"");	
-					trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", survivor->pers.netname) );
-					survivor->ps.persistant[PERS_SCORE]+=20;
-					trap_SendServerCommand( -1, "print \"^9Survivor Bonus: ^3+20\n\"");	
-					if (survivor->pers.h_bfg) 
-					{ 
-						survivor->ps.persistant[PERS_SCORE]+=1; 
-						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Devastator: ^3+1\n\"");	
-					}
-					
-					if (survivor->pers.h_plasma) 
-					{ 
-						survivor->ps.persistant[PERS_SCORE]+=2; 
-						trap_SendServerCommand( -1, "print \"^Arsenal Contents: Gata Gun: ^3+2\n\"");	
-					}
-					
-					if (survivor->pers.h_gauss) 
-					{ 
-						survivor->ps.persistant[PERS_SCORE]+=3; 
-						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: M42 Gauss Rifle: ^3+3\n\"");	
-					}
-					
-					if (survivor->pers.h_flame) 
-					{ 
-						survivor->ps.persistant[PERS_SCORE]+=4; 
-						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Flame Thrower: ^3+4\n\"");	
-					}
-					if (survivor->pers.h_singcan) 
-					{ 
-						survivor->ps.persistant[PERS_SCORE]+=8; 
-						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Singularity Cannon: ^3+8\n\"");	
-					}
-					
-					if (survivor->pers.h_gauntlet) 
-					{ 
-						survivor->ps.persistant[PERS_SCORE]+=10; 
-						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Gauntlet: ^3+10\n\"");	
-					}
-
-					if (survivor->pers.h_grenade) 
-					{ 
-						survivor->ps.persistant[PERS_SCORE]+=9; 
-						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Grenade Launcher: ^3+9\n\"");	
-					}
-
-					if (survivor->pers.h_sg) 
-					{ 
-						survivor->ps.persistant[PERS_SCORE]+=5; 
-						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Shotgun: ^3+5\n\"");	
-					}
-
-					if (survivor->pers.h_mg) 
-					{ 
-						survivor->ps.persistant[PERS_SCORE]+=6; 
-						trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Machine Gun: ^3+6\n\"");	
-					}
-			
-			survivor->pers.TrueScore = survivor->ps.persistant[PERS_SCORE];
-			LogExit( "Fraglimit hit." );
-
-			return;
-				//}
-		} 
-		/* else
+		if (((level.time-level.startTime) > 25000) && (level.firstStrike == qtrue))
 		{
-			trap_SendServerCommand( -1, "print \"No Survivors!.\n\"");
-			G_Printf( S_COLOR_GREEN "DEBUG: No Survivors This Is A Problem! %i \n", tmpCnt);
-			trap_SendServerCommand( -1, "print \"DEBUG: This is a problem!!.\n\"");
-			//survivor->ps.persistant[PERS_SCORE] =+ 100;
-			LogExit( "Fraglimit hit." );
-			return;
-		}
-		*/
+			gclient_t		*survivor = NULL;		
+			int				tmpCnt;
+			
+			// Dont end it just because there is only one person on the server
+			if (level.warmupTime) { return; }
+			
+			tmpCnt = 0;
+			tmpCnt = CountSurvivors();
 			
 
-	}
-			
+				// Two People - Showdown
+				if (tmpCnt == 2)
+				{
+					if (!level.StopItemRespawn) 
+					{
+						
+						// Dont do this on warmup or before everyone spawns
+						if ((!level.warmupTime) && (level.time > level.startTime+5000)) 
+						{
+							level.StopItemRespawn = qtrue;
+							trap_SendServerCommand( -1, va("cp \"^9Showdown!\n\"") );
+						
+							// Give The Last 2 People Some Powerups
+							for ( i = 0; i < level.maxclients; i++ )
+							{
+								cl = &level.clients[i];
+								self = &g_entities[i];
+								if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
+								{	
+									cl->ps.speed=+60;
+									cl->ps.powerups[quad->giTag] = level.time - ( level.time % 1000 );
+									cl->ps.powerups[quad->giTag] += 25 * 1000;
+									G_AddEvent( self, EV_ITEM_PICKUP, (quad-bg_itemlist) );
+
+									cl->ps.powerups[flight->giTag] = level.time - ( level.time % 1000 );
+									cl->ps.powerups[flight->giTag] += 15 * 1000;
+									G_AddEvent( self, EV_ITEM_PICKUP, (flight-bg_itemlist) );
+									
+									cl->ps.powerups[battles->giTag] = level.time - ( level.time % 1000 );
+									cl->ps.powerups[battles->giTag] += 10 * 1000;
+									G_AddEvent( self, EV_ITEM_PICKUP, (battles-bg_itemlist) );
+									
+									cl->ps.powerups[regen->giTag] = level.time - ( level.time % 1000 );
+									cl->ps.powerups[regen->giTag] += 20 * 1000;
+									G_AddEvent( self, EV_ITEM_PICKUP, (regen-bg_itemlist) );
+									
+									
+									
+
+								}
+							}
+							///////////////////////////////////
+						}
+
+					}
+				}  
+				else
+				{
+					// Just in case
+					if (level.StopItemRespawn)
+					{
+						level.StopItemRespawn = qfalse;
+					}
+
+				}
+
+
+				// Down to 1 player find the survivor
+				/* This code has morphed to utter shit */
+				
+				if (tmpCnt == 1)
+				{
+					int		p;
+					for ( i = 0; i < level.maxclients; i++ )
+					{
+						cl = &level.clients[i];
+						//survivor = &level.clients[i];
+						if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR)
+						{	
+							survivor = cl;	
+							p = i;
+							break;
+						}
+
+					}
+
+				
+				// We dont have a survivor yet.. Something isnt right
+				//G_Printf( S_COLOR_GREEN "DEBUG: Survivors %s %i\n", survivor->pers.netname, tmpCnt);
+				// If We Get To Here We should have a survivor	
+		
+						BroadCastSound("sound/misc/laff01.wav");
+						trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", survivor->pers.netname) );
+
+
+				if (g_GameMode.integer == 1)
+				{
+						trap_SendServerCommand( -1, "print \"::: ^9WINNER BONUSES :::\n\"");	
+						survivor->ps.persistant[PERS_SCORE]+=20;
+						trap_SendServerCommand( -1, "print \"^9Survivor Bonus: ^3+20\n\"");	
+						if (survivor->pers.h_bfg) 
+						{ 
+							survivor->ps.persistant[PERS_SCORE]+=1; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Devastator: ^3+1\n\"");	
+						}
+						
+						if (survivor->pers.h_plasma) 
+						{ 
+							survivor->ps.persistant[PERS_SCORE]+=2; 
+							trap_SendServerCommand( -1, "print \"^Arsenal Contents: Gata Gun: ^3+2\n\"");	
+						}
+						
+						if (survivor->pers.h_gauss) 
+						{ 
+							survivor->ps.persistant[PERS_SCORE]+=3; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: M42 Gauss Rifle: ^3+3\n\"");	
+						}
+						
+						if (survivor->pers.h_flame) 
+						{ 
+							survivor->ps.persistant[PERS_SCORE]+=4; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Flame Thrower: ^3+4\n\"");	
+						}
+						if (survivor->pers.h_singcan) 
+						{ 
+							survivor->ps.persistant[PERS_SCORE]+=8; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Singularity Cannon: ^3+8\n\"");	
+						}
+						
+						if (survivor->pers.h_gauntlet) 
+						{ 
+							survivor->ps.persistant[PERS_SCORE]+=10; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Gauntlet: ^3+10\n\"");	
+						}
+
+						if (survivor->pers.h_grenade) 
+						{ 
+							survivor->ps.persistant[PERS_SCORE]+=9; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Grenade Launcher: ^3+9\n\"");	
+						}
+
+						if (survivor->pers.h_sg) 
+						{ 
+							survivor->ps.persistant[PERS_SCORE]+=5; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Shotgun: ^3+5\n\"");	
+						}
+
+						if (survivor->pers.h_mg) 
+						{ 
+							survivor->ps.persistant[PERS_SCORE]+=6; 
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Machine Gun: ^3+6\n\"");	
+						}
+				}
+				
+				survivor->pers.TrueScore = survivor->ps.persistant[PERS_SCORE];
+				LogExit( "Fraglimit hit." );
+
+				return;
+					//}
+			} 
+			/* else
+			{
+				trap_SendServerCommand( -1, "print \"No Survivors!.\n\"");
+				G_Printf( S_COLOR_GREEN "DEBUG: No Survivors This Is A Problem! %i \n", tmpCnt);
+				trap_SendServerCommand( -1, "print \"DEBUG: This is a problem!!.\n\"");
+				//survivor->ps.persistant[PERS_SCORE] =+ 100;
+				LogExit( "Fraglimit hit." );
+				return;
+			}
+			*/
+				
+
+		}
+		}
+
 
 	// End Arsenal
 
@@ -2329,8 +2336,21 @@ void CheckPlayerPostions(void)
 		// Hey XcyTng!  Why doesnt this work???? 
 		// Enable it and the game freezes when loading a map... 
 		// Driving me insane VVVVVVV
+	
+		/*
+		for (i = 0; i < g_maxclients.integer; i++) 
+        {
+			//get a pointer to the entity
+			ent = g_entities + i;
+			if ( ent->client->pers.connected == CON_CONNECTED && ent->client->pers.Eliminated == qfalse && ent->client->sess.sessionTeam != TEAM_SPECTATOR)
+			{
+				//G_SendCommandToClient(ent, cmd);
+			}
+				
+		}
+		*/
 
-        //G_SendCommandToClient(NULL, cmd);
+        
 		 
 }
 // Shafe - Trep - End Radar

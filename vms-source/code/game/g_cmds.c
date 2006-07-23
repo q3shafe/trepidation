@@ -527,10 +527,19 @@ void BroadcastTeamChange( gclient_t *client, int oldTeam )
 		client->pers.netname));
 	} else if ( client->sess.sessionTeam == TEAM_SPECTATOR && oldTeam != TEAM_SPECTATOR ) {
 		
-		if ((client->pers.Eliminated) && (g_GameMode.integer == 1))
+		if (client->pers.Eliminated) 
 		{
-			trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE "'s Arsenal Is Empty.\n\"", client->pers.netname));
+		
+			if (g_GameMode.integer == 1) 
+			{
+				trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE "'s Arsenal Is Empty.\n\"", client->pers.netname));
+			}
+			if (g_GameMode.integer == 2) 
+			{
+				trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE " Has Been Eliminated!.\n\"", client->pers.netname));
+			}
 		} 
+
 		else 
 		{
 			trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE " joined the spectators.\n\"", client->pers.netname));
@@ -747,25 +756,27 @@ void Cmd_Team_f( gentity_t *ent ) {
 		}
 	}
 	*/ 
-	if ((g_GameMode.integer == 1) && (!level.warmupTime))
+	if (!level.warmupTime)
 	{
-				
-		if (ent->client->sess.sessionTeam == TEAM_SPECTATOR)
+		if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
 		{
-			
-			if (ent->client->pers.Eliminated == qtrue) 
+		
+			if (ent->client->sess.sessionTeam == TEAM_SPECTATOR)
 			{
-				trap_SendServerCommand( ent-g_entities, "cp \"You Are Eliminated Until Next Round.\"" );
-				return;
-			}
-			if (level.firstStrike == qtrue)
-			{
-				trap_SendServerCommand( ent-g_entities, "cp \"You Must Wait Until Next Round To Join.\"" );
-				return;
-			}
+				
+				if (ent->client->pers.Eliminated == qtrue) 
+				{
+					trap_SendServerCommand( ent-g_entities, "cp \"You Are Eliminated Until Next Round.\"" );
+					return;
+				}
+				if (level.firstStrike == qtrue)
+				{
+					trap_SendServerCommand( ent-g_entities, "cp \"You Must Wait Until Next Round To Join.\"" );
+					return;
+				}
 
+			}
 		}
-
 
 
 	}

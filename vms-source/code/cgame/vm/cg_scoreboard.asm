@@ -822,72 +822,20 @@ INDIRI4
 CNSTI4 3
 NEI4 $124
 line 156
-;156:		if (cgs.g_GameMode == 1) 
+;156:		if ((cgs.g_GameMode == 1) || (cgs.g_GameMode == 2)) 
 ADDRGP4 cgs+153920
 INDIRI4
 CNSTI4 1
+EQI4 $130
+ADDRGP4 cgs+153920
+INDIRI4
+CNSTI4 2
 NEI4 $126
+LABELV $130
 line 157
 ;157:		{
 line 158
 ;158:		Com_sprintf(string, sizeof(string),
-ADDRLP4 16
-ARGP4
-CNSTI4 1024
-ARGI4
-ADDRGP4 $129
-ARGP4
-ADDRLP4 1056
-ADDRFP4 4
-INDIRP4
-ASGNP4
-ADDRLP4 1060
-CNSTI4 4
-ASGNI4
-ADDRLP4 1056
-INDIRP4
-ADDRLP4 1060
-INDIRI4
-ADDP4
-INDIRI4
-ARGI4
-ADDRLP4 1056
-INDIRP4
-CNSTI4 8
-ADDP4
-INDIRI4
-ARGI4
-ADDRLP4 1056
-INDIRP4
-CNSTI4 12
-ADDP4
-INDIRI4
-ARGI4
-ADDRLP4 1056
-INDIRP4
-CNSTI4 24
-ADDP4
-INDIRI4
-ARGI4
-ADDRGP4 $130
-ARGP4
-ADDRLP4 12
-INDIRP4
-ADDRLP4 1060
-INDIRI4
-ADDP4
-ARGP4
-ADDRGP4 Com_sprintf
-CALLV
-pop
-line 160
-;159:			"(X) %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
-;160:		} else {
-ADDRGP4 $125
-JUMPV
-LABELV $126
-line 161
-;161:		Com_sprintf(string, sizeof(string),
 ADDRLP4 16
 ARGP4
 CNSTI4 1024
@@ -926,7 +874,7 @@ CNSTI4 24
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $130
+ADDRGP4 $132
 ARGP4
 ADDRLP4 12
 INDIRP4
@@ -937,23 +885,19 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 163
-;162:			"SPEC %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
-;163:		}
-line 165
-;164:		
-;165:	} else {
+line 160
+;159:			"(X) %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
+;160:		} else {
 ADDRGP4 $125
 JUMPV
-LABELV $124
-line 167
-;166:		// Shafe - Trep
-;167:		Com_sprintf(string, sizeof(string),
+LABELV $126
+line 161
+;161:		Com_sprintf(string, sizeof(string),
 ADDRLP4 16
 ARGP4
 CNSTI4 1024
 ARGI4
-ADDRGP4 $132
+ADDRGP4 $133
 ARGP4
 ADDRLP4 1056
 ADDRFP4 4
@@ -987,7 +931,68 @@ CNSTI4 24
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $130
+ADDRGP4 $132
+ARGP4
+ADDRLP4 12
+INDIRP4
+ADDRLP4 1060
+INDIRI4
+ADDP4
+ARGP4
+ADDRGP4 Com_sprintf
+CALLV
+pop
+line 163
+;162:			"SPEC %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
+;163:		}
+line 165
+;164:		
+;165:	} else {
+ADDRGP4 $125
+JUMPV
+LABELV $124
+line 167
+;166:		// Shafe - Trep
+;167:		Com_sprintf(string, sizeof(string),
+ADDRLP4 16
+ARGP4
+CNSTI4 1024
+ARGI4
+ADDRGP4 $134
+ARGP4
+ADDRLP4 1056
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 1060
+CNSTI4 4
+ASGNI4
+ADDRLP4 1056
+INDIRP4
+ADDRLP4 1060
+INDIRI4
+ADDP4
+INDIRI4
+ARGI4
+ADDRLP4 1056
+INDIRP4
+CNSTI4 8
+ADDP4
+INDIRI4
+ARGI4
+ADDRLP4 1056
+INDIRP4
+CNSTI4 12
+ADDP4
+INDIRI4
+ARGI4
+ADDRLP4 1056
+INDIRP4
+CNSTI4 24
+ADDP4
+INDIRI4
+ARGI4
+ADDRGP4 $132
 ARGP4
 ADDRLP4 12
 INDIRP4
@@ -1015,7 +1020,7 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-NEI4 $133
+NEI4 $135
 line 176
 ;173:		float	hcolor[4];
 ;174:		int		rank;
@@ -1037,13 +1042,13 @@ ADDP4
 INDIRI4
 ADDRLP4 1076
 INDIRI4
-EQI4 $140
+EQI4 $142
 ADDRGP4 cgs+31456
 INDIRI4
 ADDRLP4 1076
 INDIRI4
-LTI4 $136
-LABELV $140
+LTI4 $138
+LABELV $142
 line 179
 ;179:			|| cgs.gametype >= GT_TEAM ) {
 line 180
@@ -1053,9 +1058,9 @@ CNSTI4 -1
 ASGNI4
 line 181
 ;181:		} else {
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $136
+LABELV $138
 line 182
 ;182:			rank = cg.snap->ps.persistant[PERS_RANK] & ~RANK_TIED_FLAG;
 ADDRLP4 1072
@@ -1069,13 +1074,13 @@ BANDI4
 ASGNI4
 line 183
 ;183:		}
-LABELV $137
+LABELV $139
 line 184
 ;184:		if ( rank == 0 ) {
 ADDRLP4 1072
 INDIRI4
 CNSTI4 0
-NEI4 $142
+NEI4 $144
 line 185
 ;185:			hcolor[0] = 0;
 ADDRLP4 1056
@@ -1093,13 +1098,13 @@ CNSTF4 1060320051
 ASGNF4
 line 188
 ;188:		} else if ( rank == 1 ) {
-ADDRGP4 $143
+ADDRGP4 $145
 JUMPV
-LABELV $142
+LABELV $144
 ADDRLP4 1072
 INDIRI4
 CNSTI4 1
-NEI4 $146
+NEI4 $148
 line 189
 ;189:			hcolor[0] = 0.7f;
 ADDRLP4 1056
@@ -1117,13 +1122,13 @@ CNSTF4 0
 ASGNF4
 line 192
 ;192:		} else if ( rank == 2 ) {
-ADDRGP4 $147
+ADDRGP4 $149
 JUMPV
-LABELV $146
+LABELV $148
 ADDRLP4 1072
 INDIRI4
 CNSTI4 2
-NEI4 $150
+NEI4 $152
 line 193
 ;193:			hcolor[0] = 0.7f;
 ADDRLP4 1056
@@ -1141,9 +1146,9 @@ CNSTF4 0
 ASGNF4
 line 196
 ;196:		} else {
-ADDRGP4 $151
+ADDRGP4 $153
 JUMPV
-LABELV $150
+LABELV $152
 line 197
 ;197:			hcolor[0] = 0.7f;
 ADDRLP4 1056
@@ -1161,9 +1166,9 @@ CNSTF4 1060320051
 ASGNF4
 line 200
 ;200:		}
-LABELV $151
-LABELV $147
-LABELV $143
+LABELV $153
+LABELV $149
+LABELV $145
 line 202
 ;201:
 ;202:		hcolor[3] = fade * 0.7;
@@ -1196,7 +1201,7 @@ line 208
 ;206:			450, SMALLCHAR_HEIGHT+1, hcolor );
 ;207:		
 ;208:	}
-LABELV $133
+LABELV $135
 line 210
 ;209:
 ;210:	CG_DrawSmallString( SB_SCORELINE_X + (SB_RATING_WIDTH / 2)-16, y, string, fade );
@@ -1229,7 +1234,7 @@ INDIRI4
 LSHI4
 BANDI4
 CNSTI4 0
-EQI4 $157
+EQI4 $159
 line 214
 ;214:		CG_DrawSmallStringColor( iconx, y, "READY", color );
 ADDRLP4 1040
@@ -1238,7 +1243,7 @@ ARGI4
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $160
+ADDRGP4 $162
 ARGP4
 ADDRFP4 8
 INDIRP4
@@ -1248,7 +1253,7 @@ CALLV
 pop
 line 215
 ;215:	}
-LABELV $157
+LABELV $159
 line 216
 ;216:}
 LABELV $72
@@ -1302,9 +1307,9 @@ line 234
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $168
+ADDRGP4 $170
 JUMPV
-LABELV $165
+LABELV $167
 line 235
 ;235:		score = &cg.scores[i];
 ADDRLP4 8
@@ -1336,12 +1341,12 @@ INDIRP4
 CNSTI4 68
 ADDP4
 INDIRI4
-EQI4 $172
+EQI4 $174
 line 239
 ;239:			continue;
-ADDRGP4 $166
+ADDRGP4 $168
 JUMPV
-LABELV $172
+LABELV $174
 line 242
 ;240:		}
 ;241:
@@ -1370,17 +1375,17 @@ ARGF4
 ADDRLP4 40
 INDIRI4
 CNSTI4 16
-NEI4 $175
+NEI4 $177
 ADDRLP4 36
 CNSTI4 1
 ASGNI4
-ADDRGP4 $176
+ADDRGP4 $178
 JUMPV
-LABELV $175
+LABELV $177
 ADDRLP4 36
 CNSTI4 0
 ASGNI4
-LABELV $176
+LABELV $178
 ADDRLP4 36
 INDIRI4
 ARGI4
@@ -1398,7 +1403,7 @@ ADDI4
 ASGNI4
 line 245
 ;245:	}
-LABELV $166
+LABELV $168
 line 234
 ADDRLP4 4
 ADDRLP4 4
@@ -1406,25 +1411,25 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $168
+LABELV $170
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cg+110476
 INDIRI4
-GEI4 $177
+GEI4 $179
 ADDRLP4 0
 INDIRI4
 ADDRFP4 12
 INDIRI4
-LTI4 $165
-LABELV $177
+LTI4 $167
+LABELV $179
 line 247
 ;246:
 ;247:	return count;
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $161
+LABELV $163
 endproc CG_TeamScoreboard 44 20
 export CG_DrawOldScoreboard
 proc CG_DrawOldScoreboard 68 24
@@ -1454,7 +1459,7 @@ line 268
 ADDRGP4 cg_paused+12
 INDIRI4
 CNSTI4 0
-EQI4 $179
+EQI4 $181
 line 269
 ;269:		cg.deferredPlayerLoading = 0;
 ADDRGP4 cg+16
@@ -1464,9 +1469,9 @@ line 270
 ;270:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $178
+ADDRGP4 $180
 JUMPV
-LABELV $179
+LABELV $181
 line 273
 ;271:	}
 ;272:
@@ -1474,11 +1479,11 @@ line 273
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 2
-NEI4 $183
+NEI4 $185
 ADDRGP4 cg+107636+4
 INDIRI4
 CNSTI4 5
-NEI4 $183
+NEI4 $185
 line 274
 ;274:		cg.deferredPlayerLoading = 0;
 ADDRGP4 cg+16
@@ -1488,9 +1493,9 @@ line 275
 ;275:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $178
+ADDRGP4 $180
 JUMPV
-LABELV $183
+LABELV $185
 line 279
 ;276:	}
 ;277:
@@ -1503,19 +1508,19 @@ ADDRGP4 cg+124668
 INDIRI4
 ADDRLP4 52
 INDIRI4
-EQI4 $189
+EQI4 $191
 ADDRGP4 cg+114332
 INDIRI4
 ADDRLP4 52
 INDIRI4
-NEI4 $189
+NEI4 $191
 line 280
 ;280:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $178
+ADDRGP4 $180
 JUMPV
-LABELV $189
+LABELV $191
 line 283
 ;281:	}
 ;282:
@@ -1523,16 +1528,16 @@ line 283
 ADDRGP4 cg+114332
 INDIRI4
 CNSTI4 0
-NEI4 $201
+NEI4 $203
 ADDRGP4 cg+107636+4
 INDIRI4
 CNSTI4 3
-EQI4 $201
+EQI4 $203
 ADDRGP4 cg+107636+4
 INDIRI4
 CNSTI4 5
-NEI4 $193
-LABELV $201
+NEI4 $195
+LABELV $203
 line 284
 ;284:		 cg.predictedPlayerState.pm_type == PM_INTERMISSION ) {
 line 285
@@ -1547,9 +1552,9 @@ ADDRGP4 colorWhite
 ASGNP4
 line 287
 ;287:	} else {
-ADDRGP4 $194
+ADDRGP4 $196
 JUMPV
-LABELV $193
+LABELV $195
 line 288
 ;288:		fadeColor = CG_FadeColor( cg.scoreFadeTime, FADE_TIME );
 ADDRGP4 cg+114340
@@ -1572,7 +1577,7 @@ ADDRLP4 20
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $203
+NEU4 $205
 line 292
 ;291:			// next time scoreboard comes up, don't print killer
 ;292:			cg.deferredPlayerLoading = 0;
@@ -1588,9 +1593,9 @@ line 294
 ;294:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $178
+ADDRGP4 $180
 JUMPV
-LABELV $203
+LABELV $205
 line 296
 ;295:		}
 ;296:		fade = *fadeColor;
@@ -1601,7 +1606,7 @@ INDIRF4
 ASGNF4
 line 297
 ;297:	}
-LABELV $194
+LABELV $196
 line 301
 ;298:
 ;299:
@@ -1611,10 +1616,10 @@ ADDRGP4 cg+114344
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $207
+EQI4 $209
 line 302
 ;302:		s = va("Fragged by %s", cg.killerName );
-ADDRGP4 $210
+ADDRGP4 $212
 ARGP4
 ADDRGP4 cg+114344
 ARGP4
@@ -1675,7 +1680,7 @@ CALLV
 pop
 line 307
 ;307:	}
-LABELV $207
+LABELV $209
 line 310
 ;308:
 ;309:	// current rank
@@ -1683,7 +1688,7 @@ line 310
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
-GEI4 $212
+GEI4 $214
 line 311
 ;311:		if (cg.snap->ps.persistant[PERS_TEAM] != TEAM_SPECTATOR ) {
 ADDRGP4 cg+36
@@ -1692,7 +1697,7 @@ CNSTI4 304
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $213
+EQI4 $215
 line 312
 ;312:			s = va("%s place with %i",
 ADDRGP4 cg+36
@@ -1707,7 +1712,7 @@ ADDRLP4 56
 ADDRGP4 CG_PlaceString
 CALLP4
 ASGNP4
-ADDRGP4 $218
+ADDRGP4 $220
 ARGP4
 ADDRLP4 56
 INDIRP4
@@ -1779,19 +1784,19 @@ line 319
 ;319:		}
 line 320
 ;320:	} else {
-ADDRGP4 $213
+ADDRGP4 $215
 JUMPV
-LABELV $212
+LABELV $214
 line 321
 ;321:		if ( cg.teamScores[0] == cg.teamScores[1] ) {
 ADDRGP4 cg+110484
 INDIRI4
 ADDRGP4 cg+110484+4
 INDIRI4
-NEI4 $221
+NEI4 $223
 line 322
 ;322:			s = va("Teams are tied at %i", cg.teamScores[0] );
-ADDRGP4 $226
+ADDRGP4 $228
 ARGP4
 ADDRGP4 cg+110484
 INDIRI4
@@ -1806,17 +1811,17 @@ INDIRP4
 ASGNP4
 line 323
 ;323:		} else if ( cg.teamScores[0] >= cg.teamScores[1] ) {
-ADDRGP4 $222
+ADDRGP4 $224
 JUMPV
-LABELV $221
+LABELV $223
 ADDRGP4 cg+110484
 INDIRI4
 ADDRGP4 cg+110484+4
 INDIRI4
-LTI4 $228
+LTI4 $230
 line 324
 ;324:			s = va("Red leads %i to %i",cg.teamScores[0], cg.teamScores[1] );
-ADDRGP4 $233
+ADDRGP4 $235
 ARGP4
 ADDRGP4 cg+110484
 INDIRI4
@@ -1834,12 +1839,12 @@ INDIRP4
 ASGNP4
 line 325
 ;325:		} else {
-ADDRGP4 $229
+ADDRGP4 $231
 JUMPV
-LABELV $228
+LABELV $230
 line 326
 ;326:			s = va("Blue leads %i to %i",cg.teamScores[1], cg.teamScores[0] );
-ADDRGP4 $237
+ADDRGP4 $239
 ARGP4
 ADDRGP4 cg+110484+4
 INDIRI4
@@ -1857,8 +1862,8 @@ INDIRP4
 ASGNP4
 line 327
 ;327:		}
-LABELV $229
-LABELV $222
+LABELV $231
+LABELV $224
 line 329
 ;328:
 ;329:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
@@ -1909,7 +1914,7 @@ CALLV
 pop
 line 333
 ;333:	}
-LABELV $213
+LABELV $215
 line 336
 ;334:
 ;335:	// scoreboard
@@ -1931,7 +1936,7 @@ ARGI4
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRGP4 $241
+ADDRGP4 $243
 ARGP4
 ADDRLP4 12
 INDIRF4
@@ -1953,7 +1958,7 @@ line 350
 ADDRGP4 cg+110476
 INDIRI4
 CNSTI4 18
-LEI4 $242
+LEI4 $244
 line 351
 ;351:		maxClients = SB_MAXCLIENTS_INTER;
 ADDRLP4 24
@@ -1976,9 +1981,9 @@ CNSTI4 16
 ASGNI4
 line 355
 ;355:	} else {
-ADDRGP4 $243
+ADDRGP4 $245
 JUMPV
-LABELV $242
+LABELV $244
 line 356
 ;356:		maxClients = SB_MAXCLIENTS_NORMAL;
 ADDRLP4 24
@@ -2001,7 +2006,7 @@ CNSTI4 16
 ASGNI4
 line 360
 ;360:	}
-LABELV $243
+LABELV $245
 line 362
 ;361:
 ;362:	y = SB_TOP;
@@ -2022,7 +2027,7 @@ line 368
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
-LTI4 $245
+LTI4 $247
 line 372
 ;369:		//
 ;370:		// teamplay scoreboard
@@ -2044,7 +2049,7 @@ ADDRGP4 cg+110484
 INDIRI4
 ADDRGP4 cg+110484+4
 INDIRI4
-LTI4 $248
+LTI4 $250
 line 375
 ;375:			n1 = CG_TeamScoreboard( y, TEAM_RED, fade, maxClients, lineHeight );
 ADDRLP4 4
@@ -2197,9 +2202,9 @@ SUBI4
 ASGNI4
 line 383
 ;383:		} else {
-ADDRGP4 $249
+ADDRGP4 $251
 JUMPV
-LABELV $248
+LABELV $250
 line 384
 ;384:			n1 = CG_TeamScoreboard( y, TEAM_BLUE, fade, maxClients, lineHeight );
 ADDRLP4 4
@@ -2352,7 +2357,7 @@ SUBI4
 ASGNI4
 line 392
 ;392:		}
-LABELV $249
+LABELV $251
 line 393
 ;393:		n1 = CG_TeamScoreboard( y, TEAM_SPECTATOR, fade, maxClients, lineHeight );
 ADDRLP4 4
@@ -2394,9 +2399,9 @@ ASGNI4
 line 396
 ;395:
 ;396:	} else {
-ADDRGP4 $246
+ADDRGP4 $248
 JUMPV
-LABELV $245
+LABELV $247
 line 400
 ;397:		//
 ;398:		// free for all scoreboard
@@ -2481,23 +2486,23 @@ ADDI4
 ASGNI4
 line 404
 ;404:	}
-LABELV $246
+LABELV $248
 line 406
 ;405:
 ;406:	if (!localClient) {
 ADDRGP4 localClient
 INDIRI4
 CNSTI4 0
-NEI4 $253
+NEI4 $255
 line 408
 ;407:		// draw local client at the bottom
 ;408:		for ( i = 0 ; i < cg.numScores ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $258
+ADDRGP4 $260
 JUMPV
-LABELV $255
+LABELV $257
 line 409
 ;409:			if ( cg.scores[i].client == cg.snap->ps.clientNum ) {
 CNSTI4 60
@@ -2512,7 +2517,7 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-NEI4 $260
+NEI4 $262
 line 410
 ;410:				CG_DrawClientScore( y, &cg.scores[i], fadeColor, fade, lineHeight == SB_NORMAL_HEIGHT );
 ADDRLP4 4
@@ -2534,17 +2539,17 @@ ARGF4
 ADDRLP4 8
 INDIRI4
 CNSTI4 16
-NEI4 $266
+NEI4 $268
 ADDRLP4 56
 CNSTI4 1
 ASGNI4
-ADDRGP4 $267
+ADDRGP4 $269
 JUMPV
-LABELV $266
+LABELV $268
 ADDRLP4 56
 CNSTI4 0
 ASGNI4
-LABELV $267
+LABELV $269
 ADDRLP4 56
 INDIRI4
 ARGI4
@@ -2553,13 +2558,13 @@ CALLV
 pop
 line 411
 ;411:				break;
-ADDRGP4 $257
+ADDRGP4 $259
 JUMPV
-LABELV $260
+LABELV $262
 line 413
 ;412:			}
 ;413:		}
-LABELV $256
+LABELV $258
 line 408
 ADDRLP4 0
 ADDRLP4 0
@@ -2567,16 +2572,16 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $258
+LABELV $260
 ADDRLP4 0
 INDIRI4
 ADDRGP4 cg+110476
 INDIRI4
-LTI4 $255
-LABELV $257
+LTI4 $257
+LABELV $259
 line 414
 ;414:	}
-LABELV $253
+LABELV $255
 line 417
 ;415:
 ;416:	// load any models that have been deferred
@@ -2599,7 +2604,7 @@ ASGNI4
 ADDRLP4 60
 INDIRI4
 CNSTI4 10
-LEI4 $268
+LEI4 $270
 line 418
 ;418:		CG_LoadDeferredPlayers();
 ADDRGP4 CG_LoadDeferredPlayers
@@ -2607,13 +2612,13 @@ CALLV
 pop
 line 419
 ;419:	}
-LABELV $268
+LABELV $270
 line 421
 ;420:
 ;421:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $178
+LABELV $180
 endproc CG_DrawOldScoreboard 68 24
 proc CG_CenterGiantLine 28 36
 line 431
@@ -2707,7 +2712,7 @@ CALLV
 pop
 line 443
 ;443:}
-LABELV $271
+LABELV $273
 endproc CG_CenterGiantLine 28 36
 export CG_DrawOldTourneyScoreboard
 proc CG_DrawOldTourneyScoreboard 92 36
@@ -2737,7 +2742,7 @@ CNSTI4 2000
 ADDI4
 ADDRGP4 cg+107604
 INDIRI4
-GEI4 $276
+GEI4 $278
 line 462
 ;462:		cg.scoresRequestTime = cg.time;
 ADDRGP4 cg+110472
@@ -2746,14 +2751,14 @@ INDIRI4
 ASGNI4
 line 463
 ;463:		trap_SendClientCommand( "score" );
-ADDRGP4 $282
+ADDRGP4 $284
 ARGP4
 ADDRGP4 trap_SendClientCommand
 CALLV
 pop
 line 464
 ;464:	}
-LABELV $276
+LABELV $278
 line 466
 ;465:
 ;466:	color[0] = 1;
@@ -2840,15 +2845,15 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $289
+NEI4 $291
 line 479
 ;479:		s = "Scoreboard";
 ADDRLP4 4
-ADDRGP4 $291
+ADDRGP4 $293
 ASGNP4
 line 480
 ;480:	}
-LABELV $289
+LABELV $291
 line 483
 ;481:
 ;482:	// print optional title
@@ -2905,7 +2910,7 @@ MODI4
 ASGNI4
 line 491
 ;491:	s = va("%i:%i%i", min, tens, ones );
-ADDRGP4 $293
+ADDRGP4 $295
 ARGP4
 ADDRLP4 36
 INDIRI4
@@ -2949,7 +2954,7 @@ line 499
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
-LTI4 $294
+LTI4 $296
 line 503
 ;500:		//
 ;501:		// teamplay scoreboard
@@ -2960,7 +2965,7 @@ ARGI4
 ADDRLP4 24
 INDIRI4
 ARGI4
-ADDRGP4 $297
+ADDRGP4 $299
 ARGP4
 ADDRLP4 8
 ARGP4
@@ -3056,7 +3061,7 @@ ARGI4
 ADDRLP4 24
 INDIRI4
 ARGI4
-ADDRGP4 $299
+ADDRGP4 $301
 ARGP4
 ADDRLP4 8
 ARGP4
@@ -3137,9 +3142,9 @@ CALLV
 pop
 line 512
 ;512:	} else {
-ADDRGP4 $295
+ADDRGP4 $297
 JUMPV
-LABELV $294
+LABELV $296
 line 516
 ;513:		//
 ;514:		// free for all scoreboard
@@ -3148,7 +3153,7 @@ line 516
 ADDRLP4 28
 CNSTI4 0
 ASGNI4
-LABELV $302
+LABELV $304
 line 517
 ;517:			ci = &cgs.clientinfo[i];
 ADDRLP4 0
@@ -3165,12 +3170,12 @@ ADDRLP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $307
+NEI4 $309
 line 519
 ;519:				continue;
-ADDRGP4 $303
+ADDRGP4 $305
 JUMPV
-LABELV $307
+LABELV $309
 line 521
 ;520:			}
 ;521:			if ( ci->team != TEAM_FREE ) {
@@ -3180,12 +3185,12 @@ CNSTI4 68
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $309
+EQI4 $311
 line 522
 ;522:				continue;
-ADDRGP4 $303
+ADDRGP4 $305
 JUMPV
-LABELV $309
+LABELV $311
 line 525
 ;523:			}
 ;524:
@@ -3290,7 +3295,7 @@ ADDI4
 ASGNI4
 line 529
 ;529:		}
-LABELV $303
+LABELV $305
 line 516
 ADDRLP4 28
 ADDRLP4 28
@@ -3301,15 +3306,15 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 64
-LTI4 $302
+LTI4 $304
 line 530
 ;530:	}
-LABELV $295
+LABELV $297
 line 533
 ;531:
 ;532:
 ;533:}
-LABELV $275
+LABELV $277
 endproc CG_DrawOldTourneyScoreboard 92 36
 bss
 align 4
@@ -3844,7 +3849,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $299
+LABELV $301
 byte 1 66
 byte 1 108
 byte 1 117
@@ -3856,7 +3861,7 @@ byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $297
+LABELV $299
 byte 1 82
 byte 1 101
 byte 1 100
@@ -3867,7 +3872,7 @@ byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $293
+LABELV $295
 byte 1 37
 byte 1 105
 byte 1 58
@@ -3877,7 +3882,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $291
+LABELV $293
 byte 1 83
 byte 1 99
 byte 1 111
@@ -3890,7 +3895,7 @@ byte 1 114
 byte 1 100
 byte 1 0
 align 1
-LABELV $282
+LABELV $284
 byte 1 115
 byte 1 99
 byte 1 111
@@ -3898,7 +3903,7 @@ byte 1 114
 byte 1 101
 byte 1 0
 align 1
-LABELV $241
+LABELV $243
 byte 1 83
 byte 1 67
 byte 1 79
@@ -3932,7 +3937,7 @@ byte 1 77
 byte 1 69
 byte 1 0
 align 1
-LABELV $237
+LABELV $239
 byte 1 66
 byte 1 108
 byte 1 117
@@ -3954,7 +3959,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $233
+LABELV $235
 byte 1 82
 byte 1 101
 byte 1 100
@@ -3975,7 +3980,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $226
+LABELV $228
 byte 1 84
 byte 1 101
 byte 1 97
@@ -3998,7 +4003,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $218
+LABELV $220
 byte 1 37
 byte 1 115
 byte 1 32
@@ -4017,7 +4022,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $210
+LABELV $212
 byte 1 70
 byte 1 114
 byte 1 97
@@ -4033,7 +4038,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $160
+LABELV $162
 byte 1 82
 byte 1 69
 byte 1 65
@@ -4041,7 +4046,7 @@ byte 1 68
 byte 1 89
 byte 1 0
 align 1
-LABELV $132
+LABELV $134
 byte 1 37
 byte 1 57
 byte 1 105
@@ -4067,7 +4072,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $131
+LABELV $133
 byte 1 83
 byte 1 80
 byte 1 69
@@ -4098,11 +4103,11 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $130
+LABELV $132
 byte 1 37
 byte 1 0
 align 1
-LABELV $129
+LABELV $131
 byte 1 40
 byte 1 88
 byte 1 41

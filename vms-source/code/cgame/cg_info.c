@@ -216,13 +216,18 @@ void CG_DrawInformation( void ) {
 	// game type
 	switch ( cgs.gametype ) {
 	case GT_FFA:
+		if (cgs.g_GameMode == 0) 
+		{
+			s = "Free For All";
+		}
 		if (cgs.g_GameMode == 1) 
 		{
 			s = "Arsenal";
-		} else {
-			s = "Free For All";
 		}
-		
+		if (cgs.g_GameMode == 2) 
+		{
+			s = "Last Man Standing";
+		}
 		break;
 	case GT_SINGLE_PLAYER:
 		s = "Single Player";
@@ -231,7 +236,12 @@ void CG_DrawInformation( void ) {
 		s = "Tournament";
 		break;
 	case GT_TEAM:
-		s = "Team Deathmatch";
+		if (cgs.g_GameMode == 2) 
+		{
+			s = "Team Last Man Standing";
+		} else {
+			s = "Team Deathmatch";
+		}
 		break;
 	case GT_CTF:
 		s = "Capture The Flag";

@@ -153,7 +153,7 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 		Com_sprintf(string, sizeof(string),
 			" connecting    %s", ci->name);
 	} else if ( ci->team == TEAM_SPECTATOR ) {
-		if (cgs.g_GameMode == 1) 
+		if ((cgs.g_GameMode == 1) || (cgs.g_GameMode == 2)) 
 		{
 		Com_sprintf(string, sizeof(string),
 			"(X) %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
