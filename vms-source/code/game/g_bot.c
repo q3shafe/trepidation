@@ -394,6 +394,11 @@ void G_CheckMinimumPlayers( void ) {
 	{
 		return; 
 	}
+	// LMS?
+	if ((g_GameMode.integer == 2) && (level.firstStrike = qtrue)) 
+	{
+		return; 
+	}
 	///////////////////////
 
 	if (g_gametype.integer >= GT_TEAM) {

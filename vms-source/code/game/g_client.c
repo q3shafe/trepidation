@@ -1104,6 +1104,7 @@ void ClientSpawn(gentity_t *ent) {
 	int		accuracy_hits, accuracy_shots;
 	int		eventSequence;
 	char	userinfo[MAX_INFO_STRING];
+	int		wpn;
 
 	index = ent - g_entities;
 	client = ent->client;
@@ -1293,6 +1294,14 @@ void ClientSpawn(gentity_t *ent) {
 			client->ps.weapon = WP_RAILGUN; // InstaGib
 		}
 
+		// Hand out weapons for LMS
+		if (g_GameMode.integer == 2)
+		{
+			wpn = irandom(1,9); // Lets clean this up so you can specify which weapons are allowed
+			client->ps.stats[STAT_WEAPONS] = ( 1 << wpn );
+			client->ps.ammo[wpn] = 9999;
+		}
+		
 		// Hand out weapons for arsenal
 		if (g_GameMode.integer == 1)
 		{
@@ -1406,6 +1415,9 @@ void ClientSpawn(gentity_t *ent) {
 
 	// Shafe - Trep - Headshots -- Best give em their head back when they respawn
 	ent->client->noHead=qfalse;
+
+	// This is probably going to screw everything up.
+	ent->client->pers.Eliminated == qfalse;
 
 	// clear entity state values
 	BG_PlayerStateToEntityState( &client->ps, &ent->s, qtrue );

@@ -344,7 +344,7 @@ void SpawnModelsOnVictoryPads( void ) {
 		if ( player ) {
 			podium3 = player;
 		}
-	} else if ((g_GameMode.integer == 1) && (level.numConnectedClients > 2)) // Spawn the 3rd person in arsenal... The 3rd person will always be a spec
+	} else if ((g_gametype.integer == GT_FFA) && (level.numConnectedClients > 2)) // Spawn the 3rd person in arsenal... The 3rd person will always be a spec
 	{
 		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
 		level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );

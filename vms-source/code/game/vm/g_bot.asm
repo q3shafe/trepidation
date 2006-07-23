@@ -2045,7 +2045,7 @@ LABELV $242
 skip 4
 export G_CheckMinimumPlayers
 code
-proc G_CheckMinimumPlayers 40 4
+proc G_CheckMinimumPlayers 44 4
 line 377
 ;370:}
 ;371:
@@ -2139,26 +2139,52 @@ line 395
 ADDRGP4 $241
 JUMPV
 LABELV $253
-line 399
+line 398
 ;396:	}
-;397:	///////////////////////
-;398:
-;399:	if (g_gametype.integer >= GT_TEAM) {
+;397:	// LMS?
+;398:	if ((g_GameMode.integer == 2) && (level.firstStrike = qtrue)) 
+ADDRGP4 g_GameMode+12
+INDIRI4
+CNSTI4 2
+NEI4 $257
+ADDRLP4 16
+CNSTI4 1
+ASGNI4
+ADDRGP4 level+9228
+ADDRLP4 16
+INDIRI4
+ASGNI4
+ADDRLP4 16
+INDIRI4
+CNSTI4 0
+EQI4 $257
+line 399
+;399:	{
+line 400
+;400:		return; 
+ADDRGP4 $241
+JUMPV
+LABELV $257
+line 404
+;401:	}
+;402:	///////////////////////
+;403:
+;404:	if (g_gametype.integer >= GT_TEAM) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
-LTI4 $257
-line 400
-;400:		if (minplayers >= g_maxclients.integer / 2) {
+LTI4 $261
+line 405
+;405:		if (minplayers >= g_maxclients.integer / 2) {
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_maxclients+12
 INDIRI4
 CNSTI4 2
 DIVI4
-LTI4 $260
-line 401
-;401:			minplayers = (g_maxclients.integer / 2) -1;
+LTI4 $264
+line 406
+;406:			minplayers = (g_maxclients.integer / 2) -1;
 ADDRLP4 0
 ADDRGP4 g_maxclients+12
 INDIRI4
@@ -2167,108 +2193,37 @@ DIVI4
 CNSTI4 1
 SUBI4
 ASGNI4
-line 402
-;402:		}
-LABELV $260
-line 404
-;403:
-;404:		humanplayers = G_CountHumanPlayers( TEAM_RED );
-CNSTI4 1
-ARGI4
-ADDRLP4 16
-ADDRGP4 G_CountHumanPlayers
-CALLI4
-ASGNI4
-ADDRLP4 8
-ADDRLP4 16
-INDIRI4
-ASGNI4
-line 405
-;405:		botplayers = G_CountBotPlayers(	TEAM_RED );
-CNSTI4 1
-ARGI4
-ADDRLP4 20
-ADDRGP4 G_CountBotPlayers
-CALLI4
-ASGNI4
-ADDRLP4 4
-ADDRLP4 20
-INDIRI4
-ASGNI4
 line 407
-;406:		//
-;407:		if (humanplayers + botplayers < minplayers) {
-ADDRLP4 8
-INDIRI4
-ADDRLP4 4
-INDIRI4
-ADDI4
-ADDRLP4 0
-INDIRI4
-GEI4 $264
-line 408
-;408:			G_AddRandomBot( TEAM_RED );
-CNSTI4 1
-ARGI4
-ADDRGP4 G_AddRandomBot
-CALLV
-pop
-line 409
-;409:		} else if (humanplayers + botplayers > minplayers && botplayers) {
-ADDRGP4 $265
-JUMPV
+;407:		}
 LABELV $264
-ADDRLP4 8
-INDIRI4
-ADDRLP4 4
-INDIRI4
-ADDI4
-ADDRLP4 0
-INDIRI4
-LEI4 $266
-ADDRLP4 4
-INDIRI4
-CNSTI4 0
-EQI4 $266
-line 410
-;410:			G_RemoveRandomBot( TEAM_RED );
+line 409
+;408:
+;409:		humanplayers = G_CountHumanPlayers( TEAM_RED );
 CNSTI4 1
 ARGI4
-ADDRGP4 G_RemoveRandomBot
-CALLI4
-pop
-line 411
-;411:		}
-LABELV $266
-LABELV $265
-line 413
-;412:		//
-;413:		humanplayers = G_CountHumanPlayers( TEAM_BLUE );
-CNSTI4 2
-ARGI4
-ADDRLP4 28
+ADDRLP4 20
 ADDRGP4 G_CountHumanPlayers
 CALLI4
 ASGNI4
 ADDRLP4 8
-ADDRLP4 28
+ADDRLP4 20
 INDIRI4
 ASGNI4
-line 414
-;414:		botplayers = G_CountBotPlayers( TEAM_BLUE );
-CNSTI4 2
+line 410
+;410:		botplayers = G_CountBotPlayers(	TEAM_RED );
+CNSTI4 1
 ARGI4
-ADDRLP4 32
+ADDRLP4 24
 ADDRGP4 G_CountBotPlayers
 CALLI4
 ASGNI4
 ADDRLP4 4
-ADDRLP4 32
+ADDRLP4 24
 INDIRI4
 ASGNI4
-line 416
-;415:		//
-;416:		if (humanplayers + botplayers < minplayers) {
+line 412
+;411:		//
+;412:		if (humanplayers + botplayers < minplayers) {
 ADDRLP4 8
 INDIRI4
 ADDRLP4 4
@@ -2277,16 +2232,16 @@ ADDI4
 ADDRLP4 0
 INDIRI4
 GEI4 $268
-line 417
-;417:			G_AddRandomBot( TEAM_BLUE );
-CNSTI4 2
+line 413
+;413:			G_AddRandomBot( TEAM_RED );
+CNSTI4 1
 ARGI4
 ADDRGP4 G_AddRandomBot
 CALLV
 pop
-line 418
-;418:		} else if (humanplayers + botplayers > minplayers && botplayers) {
-ADDRGP4 $258
+line 414
+;414:		} else if (humanplayers + botplayers > minplayers && botplayers) {
+ADDRGP4 $269
 JUMPV
 LABELV $268
 ADDRLP4 8
@@ -2296,189 +2251,147 @@ INDIRI4
 ADDI4
 ADDRLP4 0
 INDIRI4
-LEI4 $258
+LEI4 $270
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $258
+EQI4 $270
+line 415
+;415:			G_RemoveRandomBot( TEAM_RED );
+CNSTI4 1
+ARGI4
+ADDRGP4 G_RemoveRandomBot
+CALLI4
+pop
+line 416
+;416:		}
+LABELV $270
+LABELV $269
+line 418
+;417:		//
+;418:		humanplayers = G_CountHumanPlayers( TEAM_BLUE );
+CNSTI4 2
+ARGI4
+ADDRLP4 32
+ADDRGP4 G_CountHumanPlayers
+CALLI4
+ASGNI4
+ADDRLP4 8
+ADDRLP4 32
+INDIRI4
+ASGNI4
 line 419
-;419:			G_RemoveRandomBot( TEAM_BLUE );
+;419:		botplayers = G_CountBotPlayers( TEAM_BLUE );
+CNSTI4 2
+ARGI4
+ADDRLP4 36
+ADDRGP4 G_CountBotPlayers
+CALLI4
+ASGNI4
+ADDRLP4 4
+ADDRLP4 36
+INDIRI4
+ASGNI4
+line 421
+;420:		//
+;421:		if (humanplayers + botplayers < minplayers) {
+ADDRLP4 8
+INDIRI4
+ADDRLP4 4
+INDIRI4
+ADDI4
+ADDRLP4 0
+INDIRI4
+GEI4 $272
+line 422
+;422:			G_AddRandomBot( TEAM_BLUE );
+CNSTI4 2
+ARGI4
+ADDRGP4 G_AddRandomBot
+CALLV
+pop
+line 423
+;423:		} else if (humanplayers + botplayers > minplayers && botplayers) {
+ADDRGP4 $262
+JUMPV
+LABELV $272
+ADDRLP4 8
+INDIRI4
+ADDRLP4 4
+INDIRI4
+ADDI4
+ADDRLP4 0
+INDIRI4
+LEI4 $262
+ADDRLP4 4
+INDIRI4
+CNSTI4 0
+EQI4 $262
+line 424
+;424:			G_RemoveRandomBot( TEAM_BLUE );
 CNSTI4 2
 ARGI4
 ADDRGP4 G_RemoveRandomBot
 CALLI4
 pop
-line 420
-;420:		}
-line 421
-;421:	}
-ADDRGP4 $258
-JUMPV
-LABELV $257
-line 422
-;422:	else if (g_gametype.integer == GT_TOURNAMENT ) {
-ADDRGP4 g_gametype+12
-INDIRI4
-CNSTI4 1
-NEI4 $272
-line 423
-;423:		if (minplayers >= g_maxclients.integer) {
-ADDRLP4 0
-INDIRI4
-ADDRGP4 g_maxclients+12
-INDIRI4
-LTI4 $275
-line 424
-;424:			minplayers = g_maxclients.integer-1;
-ADDRLP4 0
-ADDRGP4 g_maxclients+12
-INDIRI4
-CNSTI4 1
-SUBI4
-ASGNI4
 line 425
 ;425:		}
-LABELV $275
 line 426
-;426:		humanplayers = G_CountHumanPlayers( -1 );
-CNSTI4 -1
-ARGI4
-ADDRLP4 16
-ADDRGP4 G_CountHumanPlayers
-CALLI4
-ASGNI4
-ADDRLP4 8
-ADDRLP4 16
-INDIRI4
-ASGNI4
+;426:	}
+ADDRGP4 $262
+JUMPV
+LABELV $261
 line 427
-;427:		botplayers = G_CountBotPlayers( -1 );
-CNSTI4 -1
-ARGI4
-ADDRLP4 20
-ADDRGP4 G_CountBotPlayers
-CALLI4
-ASGNI4
-ADDRLP4 4
-ADDRLP4 20
-INDIRI4
-ASGNI4
-line 429
-;428:		//
-;429:		if (humanplayers + botplayers < minplayers) {
-ADDRLP4 8
-INDIRI4
-ADDRLP4 4
-INDIRI4
-ADDI4
-ADDRLP4 0
-INDIRI4
-GEI4 $279
-line 430
-;430:			G_AddRandomBot( TEAM_FREE );
-CNSTI4 0
-ARGI4
-ADDRGP4 G_AddRandomBot
-CALLV
-pop
-line 431
-;431:		} else if (humanplayers + botplayers > minplayers && botplayers) {
-ADDRGP4 $273
-JUMPV
-LABELV $279
-ADDRLP4 8
-INDIRI4
-ADDRLP4 4
-INDIRI4
-ADDI4
-ADDRLP4 0
-INDIRI4
-LEI4 $273
-ADDRLP4 4
-INDIRI4
-CNSTI4 0
-EQI4 $273
-line 433
-;432:			// try to remove spectators first
-;433:			if (!G_RemoveRandomBot( TEAM_SPECTATOR )) {
-CNSTI4 3
-ARGI4
-ADDRLP4 28
-ADDRGP4 G_RemoveRandomBot
-CALLI4
-ASGNI4
-ADDRLP4 28
-INDIRI4
-CNSTI4 0
-NEI4 $273
-line 435
-;434:				// just remove the bot that is playing
-;435:				G_RemoveRandomBot( -1 );
-CNSTI4 -1
-ARGI4
-ADDRGP4 G_RemoveRandomBot
-CALLI4
-pop
-line 436
-;436:			}
-line 437
-;437:		}
-line 438
-;438:	}
-ADDRGP4 $273
-JUMPV
-LABELV $272
-line 439
-;439:	else if (g_gametype.integer == GT_FFA) {
+;427:	else if (g_gametype.integer == GT_TOURNAMENT ) {
 ADDRGP4 g_gametype+12
 INDIRI4
-CNSTI4 0
-NEI4 $285
-line 440
-;440:		if (minplayers >= g_maxclients.integer) {
+CNSTI4 1
+NEI4 $276
+line 428
+;428:		if (minplayers >= g_maxclients.integer) {
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_maxclients+12
 INDIRI4
-LTI4 $288
-line 441
-;441:			minplayers = g_maxclients.integer-1;
+LTI4 $279
+line 429
+;429:			minplayers = g_maxclients.integer-1;
 ADDRLP4 0
 ADDRGP4 g_maxclients+12
 INDIRI4
 CNSTI4 1
 SUBI4
 ASGNI4
-line 442
-;442:		}
-LABELV $288
-line 443
-;443:		humanplayers = G_CountHumanPlayers( TEAM_FREE );
-CNSTI4 0
+line 430
+;430:		}
+LABELV $279
+line 431
+;431:		humanplayers = G_CountHumanPlayers( -1 );
+CNSTI4 -1
 ARGI4
-ADDRLP4 16
+ADDRLP4 20
 ADDRGP4 G_CountHumanPlayers
 CALLI4
 ASGNI4
 ADDRLP4 8
-ADDRLP4 16
+ADDRLP4 20
 INDIRI4
 ASGNI4
-line 444
-;444:		botplayers = G_CountBotPlayers( TEAM_FREE );
-CNSTI4 0
+line 432
+;432:		botplayers = G_CountBotPlayers( -1 );
+CNSTI4 -1
 ARGI4
-ADDRLP4 20
+ADDRLP4 24
 ADDRGP4 G_CountBotPlayers
 CALLI4
 ASGNI4
 ADDRLP4 4
-ADDRLP4 20
+ADDRLP4 24
 INDIRI4
 ASGNI4
-line 446
-;445:		//
-;446:		if (humanplayers + botplayers < minplayers) {
+line 434
+;433:		//
+;434:		if (humanplayers + botplayers < minplayers) {
 ADDRLP4 8
 INDIRI4
 ADDRLP4 4
@@ -2486,19 +2399,19 @@ INDIRI4
 ADDI4
 ADDRLP4 0
 INDIRI4
-GEI4 $292
-line 447
-;447:			G_AddRandomBot( TEAM_FREE );
+GEI4 $283
+line 435
+;435:			G_AddRandomBot( TEAM_FREE );
 CNSTI4 0
 ARGI4
 ADDRGP4 G_AddRandomBot
 CALLV
 pop
-line 448
-;448:		} else if (humanplayers + botplayers > minplayers && botplayers) {
-ADDRGP4 $293
+line 436
+;436:		} else if (humanplayers + botplayers > minplayers && botplayers) {
+ADDRGP4 $277
 JUMPV
-LABELV $292
+LABELV $283
 ADDRLP4 8
 INDIRI4
 ADDRLP4 4
@@ -2506,58 +2419,171 @@ INDIRI4
 ADDI4
 ADDRLP4 0
 INDIRI4
-LEI4 $294
+LEI4 $277
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $294
+EQI4 $277
+line 438
+;437:			// try to remove spectators first
+;438:			if (!G_RemoveRandomBot( TEAM_SPECTATOR )) {
+CNSTI4 3
+ARGI4
+ADDRLP4 32
+ADDRGP4 G_RemoveRandomBot
+CALLI4
+ASGNI4
+ADDRLP4 32
+INDIRI4
+CNSTI4 0
+NEI4 $277
+line 440
+;439:				// just remove the bot that is playing
+;440:				G_RemoveRandomBot( -1 );
+CNSTI4 -1
+ARGI4
+ADDRGP4 G_RemoveRandomBot
+CALLI4
+pop
+line 441
+;441:			}
+line 442
+;442:		}
+line 443
+;443:	}
+ADDRGP4 $277
+JUMPV
+LABELV $276
+line 444
+;444:	else if (g_gametype.integer == GT_FFA) {
+ADDRGP4 g_gametype+12
+INDIRI4
+CNSTI4 0
+NEI4 $289
+line 445
+;445:		if (minplayers >= g_maxclients.integer) {
+ADDRLP4 0
+INDIRI4
+ADDRGP4 g_maxclients+12
+INDIRI4
+LTI4 $292
+line 446
+;446:			minplayers = g_maxclients.integer-1;
+ADDRLP4 0
+ADDRGP4 g_maxclients+12
+INDIRI4
+CNSTI4 1
+SUBI4
+ASGNI4
+line 447
+;447:		}
+LABELV $292
+line 448
+;448:		humanplayers = G_CountHumanPlayers( TEAM_FREE );
+CNSTI4 0
+ARGI4
+ADDRLP4 20
+ADDRGP4 G_CountHumanPlayers
+CALLI4
+ASGNI4
+ADDRLP4 8
+ADDRLP4 20
+INDIRI4
+ASGNI4
 line 449
-;449:			G_RemoveRandomBot( TEAM_FREE );
+;449:		botplayers = G_CountBotPlayers( TEAM_FREE );
+CNSTI4 0
+ARGI4
+ADDRLP4 24
+ADDRGP4 G_CountBotPlayers
+CALLI4
+ASGNI4
+ADDRLP4 4
+ADDRLP4 24
+INDIRI4
+ASGNI4
+line 451
+;450:		//
+;451:		if (humanplayers + botplayers < minplayers) {
+ADDRLP4 8
+INDIRI4
+ADDRLP4 4
+INDIRI4
+ADDI4
+ADDRLP4 0
+INDIRI4
+GEI4 $296
+line 452
+;452:			G_AddRandomBot( TEAM_FREE );
+CNSTI4 0
+ARGI4
+ADDRGP4 G_AddRandomBot
+CALLV
+pop
+line 453
+;453:		} else if (humanplayers + botplayers > minplayers && botplayers) {
+ADDRGP4 $297
+JUMPV
+LABELV $296
+ADDRLP4 8
+INDIRI4
+ADDRLP4 4
+INDIRI4
+ADDI4
+ADDRLP4 0
+INDIRI4
+LEI4 $298
+ADDRLP4 4
+INDIRI4
+CNSTI4 0
+EQI4 $298
+line 454
+;454:			G_RemoveRandomBot( TEAM_FREE );
 CNSTI4 0
 ARGI4
 ADDRGP4 G_RemoveRandomBot
 CALLI4
 pop
-line 450
-;450:		}
-LABELV $294
-LABELV $293
-line 451
-;451:	}
-LABELV $285
-LABELV $273
-LABELV $258
-line 452
-;452:}
+line 455
+;455:		}
+LABELV $298
+LABELV $297
+line 456
+;456:	}
+LABELV $289
+LABELV $277
+LABELV $262
+line 457
+;457:}
 LABELV $241
-endproc G_CheckMinimumPlayers 40 4
+endproc G_CheckMinimumPlayers 44 4
 export G_CheckBotSpawn
 proc G_CheckBotSpawn 1032 12
-line 459
-;453:
-;454:/*
-;455:===============
-;456:G_CheckBotSpawn
-;457:===============
-;458:*/
-;459:void G_CheckBotSpawn( void ) {
-line 463
-;460:	int		n;
-;461:	char	userinfo[MAX_INFO_VALUE];
-;462:
-;463:	G_CheckMinimumPlayers();
+line 464
+;458:
+;459:/*
+;460:===============
+;461:G_CheckBotSpawn
+;462:===============
+;463:*/
+;464:void G_CheckBotSpawn( void ) {
+line 468
+;465:	int		n;
+;466:	char	userinfo[MAX_INFO_VALUE];
+;467:
+;468:	G_CheckMinimumPlayers();
 ADDRGP4 G_CheckMinimumPlayers
 CALLV
 pop
-line 465
-;464:
-;465:	for( n = 0; n < BOT_SPAWN_QUEUE_DEPTH; n++ ) {
+line 470
+;469:
+;470:	for( n = 0; n < BOT_SPAWN_QUEUE_DEPTH; n++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $297
-line 466
-;466:		if( !botSpawnQueue[n].spawnTime ) {
+LABELV $301
+line 471
+;471:		if( !botSpawnQueue[n].spawnTime ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -2566,15 +2592,15 @@ ADDRGP4 botSpawnQueue+4
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $301
-line 467
-;467:			continue;
-ADDRGP4 $298
+NEI4 $305
+line 472
+;472:			continue;
+ADDRGP4 $302
 JUMPV
-LABELV $301
-line 469
-;468:		}
-;469:		if ( botSpawnQueue[n].spawnTime > level.time ) {
+LABELV $305
+line 474
+;473:		}
+;474:		if ( botSpawnQueue[n].spawnTime > level.time ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -2584,15 +2610,15 @@ ADDP4
 INDIRI4
 ADDRGP4 level+32
 INDIRI4
-LEI4 $304
-line 470
-;470:			continue;
-ADDRGP4 $298
+LEI4 $308
+line 475
+;475:			continue;
+ADDRGP4 $302
 JUMPV
-LABELV $304
-line 472
-;471:		}
-;472:		ClientBegin( botSpawnQueue[n].clientNum );
+LABELV $308
+line 477
+;476:		}
+;477:		ClientBegin( botSpawnQueue[n].clientNum );
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -2604,8 +2630,8 @@ ARGI4
 ADDRGP4 ClientBegin
 CALLV
 pop
-line 473
-;473:		botSpawnQueue[n].spawnTime = 0;
+line 478
+;478:		botSpawnQueue[n].spawnTime = 0;
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -2614,15 +2640,15 @@ ADDRGP4 botSpawnQueue+4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 475
-;474:
-;475:		if( g_gametype.integer == GT_SINGLE_PLAYER ) {
+line 480
+;479:
+;480:		if( g_gametype.integer == GT_SINGLE_PLAYER ) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 2
-NEI4 $309
-line 476
-;476:			trap_GetUserinfo( botSpawnQueue[n].clientNum, userinfo, sizeof(userinfo) );
+NEI4 $313
+line 481
+;481:			trap_GetUserinfo( botSpawnQueue[n].clientNum, userinfo, sizeof(userinfo) );
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -2638,11 +2664,11 @@ ARGI4
 ADDRGP4 trap_GetUserinfo
 CALLV
 pop
-line 477
-;477:			PlayerIntroSound( Info_ValueForKey (userinfo, "model") );
+line 482
+;482:			PlayerIntroSound( Info_ValueForKey (userinfo, "model") );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $312
+ADDRGP4 $316
 ARGP4
 ADDRLP4 1028
 ADDRGP4 Info_ValueForKey
@@ -2654,13 +2680,13 @@ ARGP4
 ADDRGP4 PlayerIntroSound
 CALLV
 pop
-line 478
-;478:		}
-LABELV $309
-line 479
-;479:	}
-LABELV $298
-line 465
+line 483
+;483:		}
+LABELV $313
+line 484
+;484:	}
+LABELV $302
+line 470
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -2670,31 +2696,31 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $297
-line 480
-;480:}
-LABELV $296
+LTI4 $301
+line 485
+;485:}
+LABELV $300
 endproc G_CheckBotSpawn 1032 12
 proc AddBotToSpawnQueue 4 4
-line 488
-;481:
-;482:
-;483:/*
-;484:===============
-;485:AddBotToSpawnQueue
-;486:===============
-;487:*/
-;488:static void AddBotToSpawnQueue( int clientNum, int delay ) {
-line 491
-;489:	int		n;
-;490:
-;491:	for( n = 0; n < BOT_SPAWN_QUEUE_DEPTH; n++ ) {
+line 493
+;486:
+;487:
+;488:/*
+;489:===============
+;490:AddBotToSpawnQueue
+;491:===============
+;492:*/
+;493:static void AddBotToSpawnQueue( int clientNum, int delay ) {
+line 496
+;494:	int		n;
+;495:
+;496:	for( n = 0; n < BOT_SPAWN_QUEUE_DEPTH; n++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $314
-line 492
-;492:		if( !botSpawnQueue[n].spawnTime ) {
+LABELV $318
+line 497
+;497:		if( !botSpawnQueue[n].spawnTime ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -2703,9 +2729,9 @@ ADDRGP4 botSpawnQueue+4
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $318
-line 493
-;493:			botSpawnQueue[n].spawnTime = level.time + delay;
+NEI4 $322
+line 498
+;498:			botSpawnQueue[n].spawnTime = level.time + delay;
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -2718,8 +2744,8 @@ ADDRFP4 4
 INDIRI4
 ADDI4
 ASGNI4
-line 494
-;494:			botSpawnQueue[n].clientNum = clientNum;
+line 499
+;499:			botSpawnQueue[n].clientNum = clientNum;
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -2729,16 +2755,16 @@ ADDP4
 ADDRFP4 0
 INDIRI4
 ASGNI4
-line 495
-;495:			return;
-ADDRGP4 $313
+line 500
+;500:			return;
+ADDRGP4 $317
 JUMPV
-LABELV $318
-line 497
-;496:		}
-;497:	}
-LABELV $315
-line 491
+LABELV $322
+line 502
+;501:		}
+;502:	}
+LABELV $319
+line 496
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -2748,51 +2774,51 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $314
-line 499
-;498:
-;499:	G_Printf( S_COLOR_YELLOW "Unable to delay spawn\n" );
-ADDRGP4 $323
+LTI4 $318
+line 504
+;503:
+;504:	G_Printf( S_COLOR_YELLOW "Unable to delay spawn\n" );
+ADDRGP4 $327
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 500
-;500:	ClientBegin( clientNum );
+line 505
+;505:	ClientBegin( clientNum );
 ADDRFP4 0
 INDIRI4
 ARGI4
 ADDRGP4 ClientBegin
 CALLV
 pop
-line 501
-;501:}
-LABELV $313
+line 506
+;506:}
+LABELV $317
 endproc AddBotToSpawnQueue 4 4
 export G_RemoveQueuedBotBegin
 proc G_RemoveQueuedBotBegin 4 0
-line 512
-;502:
-;503:
-;504:/*
-;505:===============
-;506:G_RemoveQueuedBotBegin
+line 517
 ;507:
-;508:Called on client disconnect to make sure the delayed spawn
-;509:doesn't happen on a freed index
+;508:
+;509:/*
 ;510:===============
-;511:*/
-;512:void G_RemoveQueuedBotBegin( int clientNum ) {
-line 515
-;513:	int		n;
-;514:
-;515:	for( n = 0; n < BOT_SPAWN_QUEUE_DEPTH; n++ ) {
+;511:G_RemoveQueuedBotBegin
+;512:
+;513:Called on client disconnect to make sure the delayed spawn
+;514:doesn't happen on a freed index
+;515:===============
+;516:*/
+;517:void G_RemoveQueuedBotBegin( int clientNum ) {
+line 520
+;518:	int		n;
+;519:
+;520:	for( n = 0; n < BOT_SPAWN_QUEUE_DEPTH; n++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $325
-line 516
-;516:		if( botSpawnQueue[n].clientNum == clientNum ) {
+LABELV $329
+line 521
+;521:		if( botSpawnQueue[n].clientNum == clientNum ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -2802,9 +2828,9 @@ ADDP4
 INDIRI4
 ADDRFP4 0
 INDIRI4
-NEI4 $329
-line 517
-;517:			botSpawnQueue[n].spawnTime = 0;
+NEI4 $333
+line 522
+;522:			botSpawnQueue[n].spawnTime = 0;
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
@@ -2813,16 +2839,16 @@ ADDRGP4 botSpawnQueue+4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 518
-;518:			return;
-ADDRGP4 $324
+line 523
+;523:			return;
+ADDRGP4 $328
 JUMPV
-LABELV $329
+LABELV $333
+line 525
+;524:		}
+;525:	}
+LABELV $330
 line 520
-;519:		}
-;520:	}
-LABELV $326
-line 515
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -2832,27 +2858,27 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $325
-line 521
-;521:}
-LABELV $324
+LTI4 $329
+line 526
+;526:}
+LABELV $328
 endproc G_RemoveQueuedBotBegin 4 0
 export G_BotConnect
 proc G_BotConnect 1336 12
-line 529
-;522:
-;523:
-;524:/*
-;525:===============
-;526:G_BotConnect
-;527:===============
-;528:*/
-;529:qboolean G_BotConnect( int clientNum, qboolean restart ) {
-line 533
-;530:	bot_settings_t	settings;
-;531:	char			userinfo[MAX_INFO_STRING];
-;532:
-;533:	trap_GetUserinfo( clientNum, userinfo, sizeof(userinfo) );
+line 534
+;527:
+;528:
+;529:/*
+;530:===============
+;531:G_BotConnect
+;532:===============
+;533:*/
+;534:qboolean G_BotConnect( int clientNum, qboolean restart ) {
+line 538
+;535:	bot_settings_t	settings;
+;536:	char			userinfo[MAX_INFO_STRING];
+;537:
+;538:	trap_GetUserinfo( clientNum, userinfo, sizeof(userinfo) );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -2863,12 +2889,12 @@ ARGI4
 ADDRGP4 trap_GetUserinfo
 CALLV
 pop
-line 535
-;534:
-;535:	Q_strncpyz( settings.characterfile, Info_ValueForKey( userinfo, "characterfile" ), sizeof(settings.characterfile) );
+line 540
+;539:
+;540:	Q_strncpyz( settings.characterfile, Info_ValueForKey( userinfo, "characterfile" ), sizeof(settings.characterfile) );
 ADDRLP4 292
 ARGP4
-ADDRGP4 $333
+ADDRGP4 $337
 ARGP4
 ADDRLP4 1316
 ADDRGP4 Info_ValueForKey
@@ -2884,11 +2910,11 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 536
-;536:	settings.skill = atof( Info_ValueForKey( userinfo, "skill" ) );
+line 541
+;541:	settings.skill = atof( Info_ValueForKey( userinfo, "skill" ) );
 ADDRLP4 292
 ARGP4
-ADDRGP4 $335
+ADDRGP4 $339
 ARGP4
 ADDRLP4 1320
 ADDRGP4 Info_ValueForKey
@@ -2905,11 +2931,11 @@ ADDRLP4 0+144
 ADDRLP4 1324
 INDIRF4
 ASGNF4
-line 537
-;537:	Q_strncpyz( settings.team, Info_ValueForKey( userinfo, "team" ), sizeof(settings.team) );
+line 542
+;542:	Q_strncpyz( settings.team, Info_ValueForKey( userinfo, "team" ), sizeof(settings.team) );
 ADDRLP4 292
 ARGP4
-ADDRGP4 $337
+ADDRGP4 $341
 ARGP4
 ADDRLP4 1328
 ADDRGP4 Info_ValueForKey
@@ -2925,9 +2951,9 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 539
-;538:
-;539:	if (!BotAISetupClient( clientNum, &settings, restart )) {
+line 544
+;543:
+;544:	if (!BotAISetupClient( clientNum, &settings, restart )) {
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -2943,56 +2969,56 @@ ASGNI4
 ADDRLP4 1332
 INDIRI4
 CNSTI4 0
-NEI4 $339
-line 540
-;540:		trap_DropClient( clientNum, "BotAISetupClient failed" );
+NEI4 $343
+line 545
+;545:		trap_DropClient( clientNum, "BotAISetupClient failed" );
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $341
+ADDRGP4 $345
 ARGP4
 ADDRGP4 trap_DropClient
 CALLV
 pop
-line 541
-;541:		return qfalse;
+line 546
+;546:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $332
+ADDRGP4 $336
 JUMPV
-LABELV $339
-line 544
-;542:	}
-;543:
-;544:	return qtrue;
+LABELV $343
+line 549
+;547:	}
+;548:
+;549:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $332
+LABELV $336
 endproc G_BotConnect 1336 12
 proc G_AddBot 1136 12
-line 553
-;545:}
-;546:
-;547:
-;548:/*
-;549:===============
-;550:G_AddBot
-;551:===============
-;552:*/
-;553:static void G_AddBot( const char *name, float skill, const char *team, int delay, char *altname) {
-line 565
-;554:	int				clientNum;
-;555:	char			*botinfo;
-;556:	gentity_t		*bot;
-;557:	char			*key;
-;558:	char			*s;
-;559:	char			*botname;
-;560:	char			*model;
-;561:	char			*headmodel;
-;562:	char			userinfo[MAX_INFO_STRING];
-;563:
-;564:	// get the botinfo from bots.txt
-;565:	botinfo = G_GetBotInfoByName( name );
+line 558
+;550:}
+;551:
+;552:
+;553:/*
+;554:===============
+;555:G_AddBot
+;556:===============
+;557:*/
+;558:static void G_AddBot( const char *name, float skill, const char *team, int delay, char *altname) {
+line 570
+;559:	int				clientNum;
+;560:	char			*botinfo;
+;561:	gentity_t		*bot;
+;562:	char			*key;
+;563:	char			*s;
+;564:	char			*botname;
+;565:	char			*model;
+;566:	char			*headmodel;
+;567:	char			userinfo[MAX_INFO_STRING];
+;568:
+;569:	// get the botinfo from bots.txt
+;570:	botinfo = G_GetBotInfoByName( name );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3004,16 +3030,16 @@ ADDRLP4 1032
 ADDRLP4 1056
 INDIRP4
 ASGNP4
-line 566
-;566:	if ( !botinfo ) {
+line 571
+;571:	if ( !botinfo ) {
 ADDRLP4 1032
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $343
-line 567
-;567:		G_Printf( S_COLOR_RED "Error: Bot '%s' not defined\n", name );
-ADDRGP4 $345
+NEU4 $347
+line 572
+;572:		G_Printf( S_COLOR_RED "Error: Bot '%s' not defined\n", name );
+ADDRGP4 $349
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3021,26 +3047,26 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 568
-;568:		return;
-ADDRGP4 $342
+line 573
+;573:		return;
+ADDRGP4 $346
 JUMPV
-LABELV $343
-line 572
-;569:	}
-;570:
-;571:	// create the bot's userinfo
-;572:	userinfo[0] = '\0';
+LABELV $347
+line 577
+;574:	}
+;575:
+;576:	// create the bot's userinfo
+;577:	userinfo[0] = '\0';
 ADDRLP4 4
 CNSTI1 0
 ASGNI1
-line 574
-;573:
-;574:	botname = Info_ValueForKey( botinfo, "funname" );
+line 579
+;578:
+;579:	botname = Info_ValueForKey( botinfo, "funname" );
 ADDRLP4 1032
 INDIRP4
 ARGP4
-ADDRGP4 $346
+ADDRGP4 $350
 ARGP4
 ADDRLP4 1060
 ADDRGP4 Info_ValueForKey
@@ -3050,16 +3076,16 @@ ADDRLP4 1048
 ADDRLP4 1060
 INDIRP4
 ASGNP4
-line 575
-;575:	if( !botname[0] ) {
+line 580
+;580:	if( !botname[0] ) {
 ADDRLP4 1048
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $347
-line 576
-;576:		botname = Info_ValueForKey( botinfo, "name" );
+NEI4 $351
+line 581
+;581:		botname = Info_ValueForKey( botinfo, "name" );
 ADDRLP4 1032
 INDIRP4
 ARGP4
@@ -3073,12 +3099,12 @@ ADDRLP4 1048
 ADDRLP4 1064
 INDIRP4
 ASGNP4
-line 577
-;577:	}
-LABELV $347
-line 579
-;578:	// check for an alternative name
-;579:	if (altname && altname[0]) {
+line 582
+;582:	}
+LABELV $351
+line 584
+;583:	// check for an alternative name
+;584:	if (altname && altname[0]) {
 ADDRLP4 1064
 ADDRFP4 16
 INDIRP4
@@ -3087,24 +3113,24 @@ ADDRLP4 1064
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $349
+EQU4 $353
 ADDRLP4 1064
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $349
-line 580
-;580:		botname = altname;
+EQI4 $353
+line 585
+;585:		botname = altname;
 ADDRLP4 1048
 ADDRFP4 16
 INDIRP4
 ASGNP4
-line 581
-;581:	}
-LABELV $349
-line 582
-;582:	Info_SetValueForKey( userinfo, "name", botname );
+line 586
+;586:	}
+LABELV $353
+line 587
+;587:	Info_SetValueForKey( userinfo, "name", botname );
 ADDRLP4 4
 ARGP4
 ADDRGP4 $135
@@ -3115,31 +3141,31 @@ ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 583
-;583:	Info_SetValueForKey( userinfo, "rate", "25000" );
+line 588
+;588:	Info_SetValueForKey( userinfo, "rate", "25000" );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $351
-ARGP4
-ADDRGP4 $352
-ARGP4
-ADDRGP4 Info_SetValueForKey
-CALLV
-pop
-line 584
-;584:	Info_SetValueForKey( userinfo, "snaps", "20" );
-ADDRLP4 4
-ARGP4
-ADDRGP4 $353
-ARGP4
-ADDRGP4 $354
-ARGP4
-ADDRGP4 Info_SetValueForKey
-CALLV
-pop
-line 585
-;585:	Info_SetValueForKey( userinfo, "skill", va("%1.2f", skill) );
 ADDRGP4 $355
+ARGP4
+ADDRGP4 $356
+ARGP4
+ADDRGP4 Info_SetValueForKey
+CALLV
+pop
+line 589
+;589:	Info_SetValueForKey( userinfo, "snaps", "20" );
+ADDRLP4 4
+ARGP4
+ADDRGP4 $357
+ARGP4
+ADDRGP4 $358
+ARGP4
+ADDRGP4 Info_SetValueForKey
+CALLV
+pop
+line 590
+;590:	Info_SetValueForKey( userinfo, "skill", va("%1.2f", skill) );
+ADDRGP4 $359
 ARGP4
 ADDRFP4 4
 INDIRF4
@@ -3150,7 +3176,7 @@ CALLP4
 ASGNP4
 ADDRLP4 4
 ARGP4
-ADDRGP4 $335
+ADDRGP4 $339
 ARGP4
 ADDRLP4 1068
 INDIRP4
@@ -3158,9 +3184,9 @@ ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 587
-;586:
-;587:	if ( skill >= 1 && skill < 2 ) {
+line 592
+;591:
+;592:	if ( skill >= 1 && skill < 2 ) {
 ADDRLP4 1072
 ADDRFP4 4
 INDIRF4
@@ -3168,29 +3194,29 @@ ASGNF4
 ADDRLP4 1072
 INDIRF4
 CNSTF4 1065353216
-LTF4 $356
+LTF4 $360
 ADDRLP4 1072
 INDIRF4
 CNSTF4 1073741824
-GEF4 $356
-line 588
-;588:		Info_SetValueForKey( userinfo, "handicap", "50" );
+GEF4 $360
+line 593
+;593:		Info_SetValueForKey( userinfo, "handicap", "50" );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $358
+ADDRGP4 $362
 ARGP4
-ADDRGP4 $359
+ADDRGP4 $363
 ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 589
-;589:	}
-ADDRGP4 $357
+line 594
+;594:	}
+ADDRGP4 $361
 JUMPV
-LABELV $356
-line 590
-;590:	else if ( skill >= 2 && skill < 3 ) {
+LABELV $360
+line 595
+;595:	else if ( skill >= 2 && skill < 3 ) {
 ADDRLP4 1076
 ADDRFP4 4
 INDIRF4
@@ -3198,29 +3224,29 @@ ASGNF4
 ADDRLP4 1076
 INDIRF4
 CNSTF4 1073741824
-LTF4 $360
+LTF4 $364
 ADDRLP4 1076
 INDIRF4
 CNSTF4 1077936128
-GEF4 $360
-line 591
-;591:		Info_SetValueForKey( userinfo, "handicap", "70" );
+GEF4 $364
+line 596
+;596:		Info_SetValueForKey( userinfo, "handicap", "70" );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $358
-ARGP4
 ADDRGP4 $362
+ARGP4
+ADDRGP4 $366
 ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 592
-;592:	}
-ADDRGP4 $361
+line 597
+;597:	}
+ADDRGP4 $365
 JUMPV
-LABELV $360
-line 593
-;593:	else if ( skill >= 3 && skill < 4 ) {
+LABELV $364
+line 598
+;598:	else if ( skill >= 3 && skill < 4 ) {
 ADDRLP4 1080
 ADDRFP4 4
 INDIRF4
@@ -3228,35 +3254,35 @@ ASGNF4
 ADDRLP4 1080
 INDIRF4
 CNSTF4 1077936128
-LTF4 $363
+LTF4 $367
 ADDRLP4 1080
 INDIRF4
 CNSTF4 1082130432
-GEF4 $363
-line 594
-;594:		Info_SetValueForKey( userinfo, "handicap", "90" );
+GEF4 $367
+line 599
+;599:		Info_SetValueForKey( userinfo, "handicap", "90" );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $358
+ADDRGP4 $362
 ARGP4
-ADDRGP4 $365
+ADDRGP4 $369
 ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 595
-;595:	}
-LABELV $363
+line 600
+;600:	}
+LABELV $367
+LABELV $365
 LABELV $361
-LABELV $357
-line 597
-;596:
-;597:	key = "model";
+line 602
+;601:
+;602:	key = "model";
 ADDRLP4 0
-ADDRGP4 $312
+ADDRGP4 $316
 ASGNP4
-line 598
-;598:	model = Info_ValueForKey( botinfo, key );
+line 603
+;603:	model = Info_ValueForKey( botinfo, key );
 ADDRLP4 1032
 INDIRP4
 ARGP4
@@ -3270,218 +3296,167 @@ ASGNP4
 ADDRLP4 1040
 ADDRLP4 1084
 INDIRP4
-ASGNP4
-line 599
-;599:	if ( !*model ) {
-ADDRLP4 1040
-INDIRP4
-INDIRI1
-CVII4 1
-CNSTI4 0
-NEI4 $366
-line 600
-;600:		model = "visor/default";
-ADDRLP4 1040
-ADDRGP4 $368
-ASGNP4
-line 601
-;601:	}
-LABELV $366
-line 602
-;602:	Info_SetValueForKey( userinfo, key, model );
-ADDRLP4 4
-ARGP4
-ADDRLP4 0
-INDIRP4
-ARGP4
-ADDRLP4 1040
-INDIRP4
-ARGP4
-ADDRGP4 Info_SetValueForKey
-CALLV
-pop
-line 603
-;603:	key = "team_model";
-ADDRLP4 0
-ADDRGP4 $369
 ASGNP4
 line 604
-;604:	Info_SetValueForKey( userinfo, key, model );
-ADDRLP4 4
-ARGP4
-ADDRLP4 0
-INDIRP4
-ARGP4
+;604:	if ( !*model ) {
 ADDRLP4 1040
-INDIRP4
-ARGP4
-ADDRGP4 Info_SetValueForKey
-CALLV
-pop
-line 606
-;605:
-;606:	key = "headmodel";
-ADDRLP4 0
-ADDRGP4 $370
-ASGNP4
-line 607
-;607:	headmodel = Info_ValueForKey( botinfo, key );
-ADDRLP4 1032
-INDIRP4
-ARGP4
-ADDRLP4 0
-INDIRP4
-ARGP4
-ADDRLP4 1088
-ADDRGP4 Info_ValueForKey
-CALLP4
-ASGNP4
-ADDRLP4 1044
-ADDRLP4 1088
-INDIRP4
-ASGNP4
-line 608
-;608:	if ( !*headmodel ) {
-ADDRLP4 1044
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $371
-line 609
-;609:		headmodel = model;
-ADDRLP4 1044
+NEI4 $370
+line 605
+;605:		model = "visor/default";
 ADDRLP4 1040
-INDIRP4
+ADDRGP4 $372
 ASGNP4
-line 610
-;610:	}
-LABELV $371
-line 611
-;611:	Info_SetValueForKey( userinfo, key, headmodel );
+line 606
+;606:	}
+LABELV $370
+line 607
+;607:	Info_SetValueForKey( userinfo, key, model );
 ADDRLP4 4
 ARGP4
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRLP4 1044
+ADDRLP4 1040
 INDIRP4
 ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 612
-;612:	key = "team_headmodel";
+line 608
+;608:	key = "team_model";
 ADDRLP4 0
 ADDRGP4 $373
 ASGNP4
-line 613
-;613:	Info_SetValueForKey( userinfo, key, headmodel );
+line 609
+;609:	Info_SetValueForKey( userinfo, key, model );
 ADDRLP4 4
 ARGP4
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRLP4 1044
+ADDRLP4 1040
 INDIRP4
 ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 615
-;614:
-;615:	key = "gender";
+line 611
+;610:
+;611:	key = "headmodel";
 ADDRLP4 0
 ADDRGP4 $374
 ASGNP4
-line 616
-;616:	s = Info_ValueForKey( botinfo, key );
+line 612
+;612:	headmodel = Info_ValueForKey( botinfo, key );
 ADDRLP4 1032
 INDIRP4
 ARGP4
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRLP4 1092
+ADDRLP4 1088
 ADDRGP4 Info_ValueForKey
 CALLP4
 ASGNP4
-ADDRLP4 1028
-ADDRLP4 1092
+ADDRLP4 1044
+ADDRLP4 1088
 INDIRP4
 ASGNP4
-line 617
-;617:	if ( !*s ) {
-ADDRLP4 1028
+line 613
+;613:	if ( !*headmodel ) {
+ADDRLP4 1044
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $375
-line 618
-;618:		s = "male";
-ADDRLP4 1028
-ADDRGP4 $377
+line 614
+;614:		headmodel = model;
+ADDRLP4 1044
+ADDRLP4 1040
+INDIRP4
 ASGNP4
-line 619
-;619:	}
+line 615
+;615:	}
 LABELV $375
-line 620
-;620:	Info_SetValueForKey( userinfo, "sex", s );
+line 616
+;616:	Info_SetValueForKey( userinfo, key, headmodel );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $378
+ADDRLP4 0
+INDIRP4
 ARGP4
-ADDRLP4 1028
+ADDRLP4 1044
 INDIRP4
 ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 622
-;621:
-;622:	key = "color1";
+line 617
+;617:	key = "team_headmodel";
 ADDRLP4 0
-ADDRGP4 $379
+ADDRGP4 $377
 ASGNP4
-line 623
-;623:	s = Info_ValueForKey( botinfo, key );
+line 618
+;618:	Info_SetValueForKey( userinfo, key, headmodel );
+ADDRLP4 4
+ARGP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 1044
+INDIRP4
+ARGP4
+ADDRGP4 Info_SetValueForKey
+CALLV
+pop
+line 620
+;619:
+;620:	key = "gender";
+ADDRLP4 0
+ADDRGP4 $378
+ASGNP4
+line 621
+;621:	s = Info_ValueForKey( botinfo, key );
 ADDRLP4 1032
 INDIRP4
 ARGP4
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRLP4 1096
+ADDRLP4 1092
 ADDRGP4 Info_ValueForKey
 CALLP4
 ASGNP4
 ADDRLP4 1028
-ADDRLP4 1096
+ADDRLP4 1092
 INDIRP4
 ASGNP4
-line 624
-;624:	if ( !*s ) {
+line 622
+;622:	if ( !*s ) {
 ADDRLP4 1028
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $380
-line 625
-;625:		s = "4";
+NEI4 $379
+line 623
+;623:		s = "male";
 ADDRLP4 1028
-ADDRGP4 $382
+ADDRGP4 $381
 ASGNP4
-line 626
-;626:	}
-LABELV $380
-line 627
-;627:	Info_SetValueForKey( userinfo, key, s );
+line 624
+;624:	}
+LABELV $379
+line 625
+;625:	Info_SetValueForKey( userinfo, "sex", s );
 ADDRLP4 4
 ARGP4
-ADDRLP4 0
-INDIRP4
+ADDRGP4 $382
 ARGP4
 ADDRLP4 1028
 INDIRP4
@@ -3489,46 +3464,46 @@ ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 629
-;628:
-;629:	key = "color2";
+line 627
+;626:
+;627:	key = "color1";
 ADDRLP4 0
 ADDRGP4 $383
 ASGNP4
-line 630
-;630:	s = Info_ValueForKey( botinfo, key );
+line 628
+;628:	s = Info_ValueForKey( botinfo, key );
 ADDRLP4 1032
 INDIRP4
 ARGP4
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRLP4 1100
+ADDRLP4 1096
 ADDRGP4 Info_ValueForKey
 CALLP4
 ASGNP4
 ADDRLP4 1028
-ADDRLP4 1100
+ADDRLP4 1096
 INDIRP4
 ASGNP4
-line 631
-;631:	if ( !*s ) {
+line 629
+;629:	if ( !*s ) {
 ADDRLP4 1028
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $384
-line 632
-;632:		s = "5";
+line 630
+;630:		s = "4";
 ADDRLP4 1028
 ADDRGP4 $386
 ASGNP4
-line 633
-;633:	}
+line 631
+;631:	}
 LABELV $384
-line 634
-;634:	Info_SetValueForKey( userinfo, key, s );
+line 632
+;632:	Info_SetValueForKey( userinfo, key, s );
 ADDRLP4 4
 ARGP4
 ADDRLP4 0
@@ -3540,13 +3515,64 @@ ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 636
-;635:
-;636:	s = Info_ValueForKey(botinfo, "aifile");
+line 634
+;633:
+;634:	key = "color2";
+ADDRLP4 0
+ADDRGP4 $387
+ASGNP4
+line 635
+;635:	s = Info_ValueForKey( botinfo, key );
 ADDRLP4 1032
 INDIRP4
 ARGP4
-ADDRGP4 $387
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 1100
+ADDRGP4 Info_ValueForKey
+CALLP4
+ASGNP4
+ADDRLP4 1028
+ADDRLP4 1100
+INDIRP4
+ASGNP4
+line 636
+;636:	if ( !*s ) {
+ADDRLP4 1028
+INDIRP4
+INDIRI1
+CVII4 1
+CNSTI4 0
+NEI4 $388
+line 637
+;637:		s = "5";
+ADDRLP4 1028
+ADDRGP4 $390
+ASGNP4
+line 638
+;638:	}
+LABELV $388
+line 639
+;639:	Info_SetValueForKey( userinfo, key, s );
+ADDRLP4 4
+ARGP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 1028
+INDIRP4
+ARGP4
+ADDRGP4 Info_SetValueForKey
+CALLV
+pop
+line 641
+;640:
+;641:	s = Info_ValueForKey(botinfo, "aifile");
+ADDRLP4 1032
+INDIRP4
+ARGP4
+ADDRGP4 $391
 ARGP4
 ADDRLP4 1104
 ADDRGP4 Info_ValueForKey
@@ -3556,31 +3582,31 @@ ADDRLP4 1028
 ADDRLP4 1104
 INDIRP4
 ASGNP4
-line 637
-;637:	if (!*s ) {
+line 642
+;642:	if (!*s ) {
 ADDRLP4 1028
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $388
-line 638
-;638:		trap_Printf( S_COLOR_RED "Error: bot has no aifile specified\n" );
-ADDRGP4 $390
+NEI4 $392
+line 643
+;643:		trap_Printf( S_COLOR_RED "Error: bot has no aifile specified\n" );
+ADDRGP4 $394
 ARGP4
 ADDRGP4 trap_Printf
 CALLV
 pop
-line 639
-;639:		return;
-ADDRGP4 $342
+line 644
+;644:		return;
+ADDRGP4 $346
 JUMPV
-LABELV $388
-line 643
-;640:	}
-;641:
-;642:	// have the server allocate a client slot
-;643:	clientNum = trap_BotAllocateClient();
+LABELV $392
+line 648
+;645:	}
+;646:
+;647:	// have the server allocate a client slot
+;648:	clientNum = trap_BotAllocateClient();
 ADDRLP4 1108
 ADDRGP4 trap_BotAllocateClient
 CALLI4
@@ -3589,36 +3615,36 @@ ADDRLP4 1036
 ADDRLP4 1108
 INDIRI4
 ASGNI4
-line 644
-;644:	if ( clientNum == -1 ) {
+line 649
+;649:	if ( clientNum == -1 ) {
 ADDRLP4 1036
 INDIRI4
 CNSTI4 -1
-NEI4 $391
-line 645
-;645:		G_Printf( S_COLOR_RED "Unable to add bot.  All player slots are in use.\n" );
-ADDRGP4 $393
+NEI4 $395
+line 650
+;650:		G_Printf( S_COLOR_RED "Unable to add bot.  All player slots are in use.\n" );
+ADDRGP4 $397
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 646
-;646:		G_Printf( S_COLOR_RED "Start server with more 'open' slots (or check setting of sv_maxclients cvar).\n" );
-ADDRGP4 $394
-ARGP4
-ADDRGP4 G_Printf
-CALLV
-pop
-line 647
-;647:		return;
-ADDRGP4 $342
-JUMPV
-LABELV $391
 line 651
-;648:	}
-;649:
-;650:	// initialize the bot settings
-;651:	if( !team || !*team ) {
+;651:		G_Printf( S_COLOR_RED "Start server with more 'open' slots (or check setting of sv_maxclients cvar).\n" );
+ADDRGP4 $398
+ARGP4
+ADDRGP4 G_Printf
+CALLV
+pop
+line 652
+;652:		return;
+ADDRGP4 $346
+JUMPV
+LABELV $395
+line 656
+;653:	}
+;654:
+;655:	// initialize the bot settings
+;656:	if( !team || !*team ) {
 ADDRLP4 1112
 ADDRFP4 8
 INDIRP4
@@ -3627,22 +3653,22 @@ ADDRLP4 1112
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $397
+EQU4 $401
 ADDRLP4 1112
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $395
-LABELV $397
-line 652
-;652:		if( g_gametype.integer >= GT_TEAM ) {
+NEI4 $399
+LABELV $401
+line 657
+;657:		if( g_gametype.integer >= GT_TEAM ) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
-LTI4 $398
-line 653
-;653:			if( PickTeam(clientNum) == TEAM_RED) {
+LTI4 $402
+line 658
+;658:			if( PickTeam(clientNum) == TEAM_RED) {
 ADDRLP4 1036
 INDIRI4
 ARGI4
@@ -3653,50 +3679,50 @@ ASGNI4
 ADDRLP4 1116
 INDIRI4
 CNSTI4 1
-NEI4 $401
-line 654
-;654:				team = "red";
+NEI4 $405
+line 659
+;659:				team = "red";
 ADDRFP4 8
 ADDRGP4 $181
 ASGNP4
-line 655
-;655:			}
-ADDRGP4 $399
+line 660
+;660:			}
+ADDRGP4 $403
 JUMPV
-LABELV $401
-line 656
-;656:			else {
-line 657
-;657:				team = "blue";
+LABELV $405
+line 661
+;661:			else {
+line 662
+;662:				team = "blue";
 ADDRFP4 8
 ADDRGP4 $184
 ASGNP4
-line 658
-;658:			}
-line 659
-;659:		}
-ADDRGP4 $399
+line 663
+;663:			}
+line 664
+;664:		}
+ADDRGP4 $403
 JUMPV
-LABELV $398
-line 660
-;660:		else {
-line 661
-;661:			team = "red";
+LABELV $402
+line 665
+;665:		else {
+line 666
+;666:			team = "red";
 ADDRFP4 8
 ADDRGP4 $181
 ASGNP4
-line 662
-;662:		}
+line 667
+;667:		}
+LABELV $403
+line 668
+;668:	}
 LABELV $399
-line 663
-;663:	}
-LABELV $395
-line 664
-;664:	Info_SetValueForKey( userinfo, "characterfile", Info_ValueForKey( botinfo, "aifile" ) );
+line 669
+;669:	Info_SetValueForKey( userinfo, "characterfile", Info_ValueForKey( botinfo, "aifile" ) );
 ADDRLP4 1032
 INDIRP4
 ARGP4
-ADDRGP4 $387
+ADDRGP4 $391
 ARGP4
 ADDRLP4 1116
 ADDRGP4 Info_ValueForKey
@@ -3704,7 +3730,7 @@ CALLP4
 ASGNP4
 ADDRLP4 4
 ARGP4
-ADDRGP4 $333
+ADDRGP4 $337
 ARGP4
 ADDRLP4 1116
 INDIRP4
@@ -3712,9 +3738,9 @@ ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 665
-;665:	Info_SetValueForKey( userinfo, "skill", va( "%5.2f", skill ) );
-ADDRGP4 $403
+line 670
+;670:	Info_SetValueForKey( userinfo, "skill", va( "%5.2f", skill ) );
+ADDRGP4 $407
 ARGP4
 ADDRFP4 4
 INDIRF4
@@ -3725,7 +3751,7 @@ CALLP4
 ASGNP4
 ADDRLP4 4
 ARGP4
-ADDRGP4 $335
+ADDRGP4 $339
 ARGP4
 ADDRLP4 1120
 INDIRP4
@@ -3733,11 +3759,11 @@ ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 666
-;666:	Info_SetValueForKey( userinfo, "team", team );
+line 671
+;671:	Info_SetValueForKey( userinfo, "team", team );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $337
+ADDRGP4 $341
 ARGP4
 ADDRFP4 8
 INDIRP4
@@ -3745,9 +3771,9 @@ ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 668
-;667:
-;668:	bot = &g_entities[ clientNum ];
+line 673
+;672:
+;673:	bot = &g_entities[ clientNum ];
 ADDRLP4 1052
 CNSTI4 836
 ADDRLP4 1036
@@ -3756,8 +3782,8 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 669
-;669:	bot->r.svFlags |= SVF_BOT;
+line 674
+;674:	bot->r.svFlags |= SVF_BOT;
 ADDRLP4 1124
 ADDRLP4 1052
 INDIRP4
@@ -3772,18 +3798,18 @@ INDIRI4
 CNSTI4 8
 BORI4
 ASGNI4
-line 670
-;670:	bot->inuse = qtrue;
+line 675
+;675:	bot->inuse = qtrue;
 ADDRLP4 1052
 INDIRP4
 CNSTI4 520
 ADDP4
 CNSTI4 1
 ASGNI4
-line 673
-;671:
-;672:	// register the userinfo
-;673:	trap_SetUserinfo( clientNum, userinfo );
+line 678
+;676:
+;677:	// register the userinfo
+;678:	trap_SetUserinfo( clientNum, userinfo );
 ADDRLP4 1036
 INDIRI4
 ARGI4
@@ -3792,10 +3818,10 @@ ARGP4
 ADDRGP4 trap_SetUserinfo
 CALLV
 pop
-line 676
-;674:
-;675:	// have it connect to the game as a normal client
-;676:	if ( ClientConnect( clientNum, qtrue, qtrue ) ) {
+line 681
+;679:
+;680:	// have it connect to the game as a normal client
+;681:	if ( ClientConnect( clientNum, qtrue, qtrue ) ) {
 ADDRLP4 1036
 INDIRI4
 ARGI4
@@ -3816,37 +3842,37 @@ ADDRLP4 1132
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $404
-line 677
-;677:		return;
-ADDRGP4 $342
+EQU4 $408
+line 682
+;682:		return;
+ADDRGP4 $346
 JUMPV
-LABELV $404
-line 680
-;678:	}
-;679:
-;680:	if( delay == 0 ) {
+LABELV $408
+line 685
+;683:	}
+;684:
+;685:	if( delay == 0 ) {
 ADDRFP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $406
-line 681
-;681:		ClientBegin( clientNum );
+NEI4 $410
+line 686
+;686:		ClientBegin( clientNum );
 ADDRLP4 1036
 INDIRI4
 ARGI4
 ADDRGP4 ClientBegin
 CALLV
 pop
-line 682
-;682:		return;
-ADDRGP4 $342
+line 687
+;687:		return;
+ADDRGP4 $346
 JUMPV
-LABELV $406
-line 685
-;683:	}
-;684:
-;685:	AddBotToSpawnQueue( clientNum, delay );
+LABELV $410
+line 690
+;688:	}
+;689:
+;690:	AddBotToSpawnQueue( clientNum, delay );
 ADDRLP4 1036
 INDIRI4
 ARGI4
@@ -3856,32 +3882,32 @@ ARGI4
 ADDRGP4 AddBotToSpawnQueue
 CALLV
 pop
-line 686
-;686:}
-LABELV $342
+line 691
+;691:}
+LABELV $346
 endproc G_AddBot 1136 12
 export Svcmd_AddBot_f
 proc Svcmd_AddBot_f 4112 20
-line 694
-;687:
-;688:
-;689:/*
-;690:===============
-;691:Svcmd_AddBot_f
-;692:===============
-;693:*/
-;694:void Svcmd_AddBot_f( void ) {
-line 703
-;695:	float			skill;
-;696:	int				delay;
-;697:	char			name[MAX_TOKEN_CHARS];
-;698:	char			altname[MAX_TOKEN_CHARS];
-;699:	char			string[MAX_TOKEN_CHARS];
-;700:	char			team[MAX_TOKEN_CHARS];
-;701:
-;702:	// are bots enabled?
-;703:	if ( !trap_Cvar_VariableIntegerValue( "bot_enable" ) ) {
-ADDRGP4 $411
+line 699
+;692:
+;693:
+;694:/*
+;695:===============
+;696:Svcmd_AddBot_f
+;697:===============
+;698:*/
+;699:void Svcmd_AddBot_f( void ) {
+line 708
+;700:	float			skill;
+;701:	int				delay;
+;702:	char			name[MAX_TOKEN_CHARS];
+;703:	char			altname[MAX_TOKEN_CHARS];
+;704:	char			string[MAX_TOKEN_CHARS];
+;705:	char			team[MAX_TOKEN_CHARS];
+;706:
+;707:	// are bots enabled?
+;708:	if ( !trap_Cvar_VariableIntegerValue( "bot_enable" ) ) {
+ADDRGP4 $415
 ARGP4
 ADDRLP4 4104
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -3890,17 +3916,17 @@ ASGNI4
 ADDRLP4 4104
 INDIRI4
 CNSTI4 0
-NEI4 $409
-line 704
-;704:		return;
-ADDRGP4 $408
+NEI4 $413
+line 709
+;709:		return;
+ADDRGP4 $412
 JUMPV
-LABELV $409
-line 708
-;705:	}
-;706:
-;707:	// name
-;708:	trap_Argv( 1, name, sizeof( name ) );
+LABELV $413
+line 713
+;710:	}
+;711:
+;712:	// name
+;713:	trap_Argv( 1, name, sizeof( name ) );
 CNSTI4 1
 ARGI4
 ADDRLP4 1024
@@ -3910,30 +3936,30 @@ ARGI4
 ADDRGP4 trap_Argv
 CALLV
 pop
-line 709
-;709:	if ( !name[0] ) {
+line 714
+;714:	if ( !name[0] ) {
 ADDRLP4 1024
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $412
-line 710
-;710:		trap_Printf( "Usage: Addbot <botname> [skill 1-5] [team] [msec delay] [altname]\n" );
-ADDRGP4 $414
+NEI4 $416
+line 715
+;715:		trap_Printf( "Usage: Addbot <botname> [skill 1-5] [team] [msec delay] [altname]\n" );
+ADDRGP4 $418
 ARGP4
 ADDRGP4 trap_Printf
 CALLV
 pop
-line 711
-;711:		return;
-ADDRGP4 $408
+line 716
+;716:		return;
+ADDRGP4 $412
 JUMPV
-LABELV $412
-line 715
-;712:	}
-;713:
-;714:	// skill
-;715:	trap_Argv( 2, string, sizeof( string ) );
+LABELV $416
+line 720
+;717:	}
+;718:
+;719:	// skill
+;720:	trap_Argv( 2, string, sizeof( string ) );
 CNSTI4 2
 ARGI4
 ADDRLP4 0
@@ -3943,27 +3969,27 @@ ARGI4
 ADDRGP4 trap_Argv
 CALLV
 pop
-line 716
-;716:	if ( !string[0] ) {
+line 721
+;721:	if ( !string[0] ) {
 ADDRLP4 0
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $415
-line 717
-;717:		skill = 4;
+NEI4 $419
+line 722
+;722:		skill = 4;
 ADDRLP4 4096
 CNSTF4 1082130432
 ASGNF4
-line 718
-;718:	}
-ADDRGP4 $416
+line 723
+;723:	}
+ADDRGP4 $420
 JUMPV
-LABELV $415
-line 719
-;719:	else {
-line 720
-;720:		skill = atof( string );
+LABELV $419
+line 724
+;724:	else {
+line 725
+;725:		skill = atof( string );
 ADDRLP4 0
 ARGP4
 ADDRLP4 4108
@@ -3974,13 +4000,13 @@ ADDRLP4 4096
 ADDRLP4 4108
 INDIRF4
 ASGNF4
-line 721
-;721:	}
-LABELV $416
-line 724
-;722:
-;723:	// team
-;724:	trap_Argv( 3, team, sizeof( team ) );
+line 726
+;726:	}
+LABELV $420
+line 729
+;727:
+;728:	// team
+;729:	trap_Argv( 3, team, sizeof( team ) );
 CNSTI4 3
 ARGI4
 ADDRLP4 3072
@@ -3990,10 +4016,10 @@ ARGI4
 ADDRGP4 trap_Argv
 CALLV
 pop
-line 727
-;725:
-;726:	// delay
-;727:	trap_Argv( 4, string, sizeof( string ) );
+line 732
+;730:
+;731:	// delay
+;732:	trap_Argv( 4, string, sizeof( string ) );
 CNSTI4 4
 ARGI4
 ADDRLP4 0
@@ -4003,27 +4029,27 @@ ARGI4
 ADDRGP4 trap_Argv
 CALLV
 pop
-line 728
-;728:	if ( !string[0] ) {
+line 733
+;733:	if ( !string[0] ) {
 ADDRLP4 0
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $417
-line 729
-;729:		delay = 0;
+NEI4 $421
+line 734
+;734:		delay = 0;
 ADDRLP4 4100
 CNSTI4 0
 ASGNI4
-line 730
-;730:	}
-ADDRGP4 $418
+line 735
+;735:	}
+ADDRGP4 $422
 JUMPV
-LABELV $417
-line 731
-;731:	else {
-line 732
-;732:		delay = atoi( string );
+LABELV $421
+line 736
+;736:	else {
+line 737
+;737:		delay = atoi( string );
 ADDRLP4 0
 ARGP4
 ADDRLP4 4108
@@ -4034,13 +4060,13 @@ ADDRLP4 4100
 ADDRLP4 4108
 INDIRI4
 ASGNI4
-line 733
-;733:	}
-LABELV $418
-line 736
-;734:
-;735:	// alternative name
-;736:	trap_Argv( 5, altname, sizeof( altname ) );
+line 738
+;738:	}
+LABELV $422
+line 741
+;739:
+;740:	// alternative name
+;741:	trap_Argv( 5, altname, sizeof( altname ) );
 CNSTI4 5
 ARGI4
 ADDRLP4 2048
@@ -4050,9 +4076,9 @@ ARGI4
 ADDRGP4 trap_Argv
 CALLV
 pop
-line 738
-;737:
-;738:	G_AddBot( name, skill, team, delay, altname );
+line 743
+;742:
+;743:	G_AddBot( name, skill, team, delay, altname );
 ADDRLP4 1024
 ARGP4
 ADDRLP4 4096
@@ -4068,19 +4094,19 @@ ARGP4
 ADDRGP4 G_AddBot
 CALLV
 pop
-line 742
-;739:
-;740:	// if this was issued during gameplay and we are playing locally,
-;741:	// go ahead and load the bot's media immediately
-;742:	if ( level.time - level.startTime > 1000 &&
+line 747
+;744:
+;745:	// if this was issued during gameplay and we are playing locally,
+;746:	// go ahead and load the bot's media immediately
+;747:	if ( level.time - level.startTime > 1000 &&
 ADDRGP4 level+32
 INDIRI4
 ADDRGP4 level+40
 INDIRI4
 SUBI4
 CNSTI4 1000
-LEI4 $419
-ADDRGP4 $423
+LEI4 $423
+ADDRGP4 $427
 ARGP4
 ADDRLP4 4108
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -4089,58 +4115,58 @@ ASGNI4
 ADDRLP4 4108
 INDIRI4
 CNSTI4 0
-EQI4 $419
-line 743
-;743:		trap_Cvar_VariableIntegerValue( "cl_running" ) ) {
-line 744
-;744:		trap_SendServerCommand( -1, "loaddefered\n" );	// FIXME: spelled wrong, but not changing for demo
+EQI4 $423
+line 748
+;748:		trap_Cvar_VariableIntegerValue( "cl_running" ) ) {
+line 749
+;749:		trap_SendServerCommand( -1, "loaddefered\n" );	// FIXME: spelled wrong, but not changing for demo
 CNSTI4 -1
 ARGI4
-ADDRGP4 $424
+ADDRGP4 $428
 ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 745
-;745:	}
-LABELV $419
-line 746
-;746:}
-LABELV $408
+line 750
+;750:	}
+LABELV $423
+line 751
+;751:}
+LABELV $412
 endproc Svcmd_AddBot_f 4112 20
 export Svcmd_BotList_f
 proc Svcmd_BotList_f 4120 20
-line 753
-;747:
-;748:/*
-;749:===============
-;750:Svcmd_BotList_f
-;751:===============
-;752:*/
-;753:void Svcmd_BotList_f( void ) {
-line 760
-;754:	int i;
-;755:	char name[MAX_TOKEN_CHARS];
-;756:	char funname[MAX_TOKEN_CHARS];
-;757:	char model[MAX_TOKEN_CHARS];
-;758:	char aifile[MAX_TOKEN_CHARS];
-;759:
-;760:	trap_Printf("^1name             model            aifile              funname\n");
-ADDRGP4 $426
+line 758
+;752:
+;753:/*
+;754:===============
+;755:Svcmd_BotList_f
+;756:===============
+;757:*/
+;758:void Svcmd_BotList_f( void ) {
+line 765
+;759:	int i;
+;760:	char name[MAX_TOKEN_CHARS];
+;761:	char funname[MAX_TOKEN_CHARS];
+;762:	char model[MAX_TOKEN_CHARS];
+;763:	char aifile[MAX_TOKEN_CHARS];
+;764:
+;765:	trap_Printf("^1name             model            aifile              funname\n");
+ADDRGP4 $430
 ARGP4
 ADDRGP4 trap_Printf
 CALLV
 pop
-line 761
-;761:	for (i = 0; i < g_numBots; i++) {
+line 766
+;766:	for (i = 0; i < g_numBots; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $430
+ADDRGP4 $434
 JUMPV
-LABELV $427
-line 762
-;762:		strcpy(name, Info_ValueForKey( g_botInfos[i], "name" ));
+LABELV $431
+line 767
+;767:		strcpy(name, Info_ValueForKey( g_botInfos[i], "name" ));
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4163,27 +4189,27 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 763
-;763:		if ( !*name ) {
+line 768
+;768:		if ( !*name ) {
 ADDRLP4 4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $431
-line 764
-;764:			strcpy(name, "UnnamedPlayer");
+NEI4 $435
+line 769
+;769:			strcpy(name, "UnnamedPlayer");
 ADDRLP4 4
 ARGP4
-ADDRGP4 $433
+ADDRGP4 $437
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 765
-;765:		}
-LABELV $431
-line 766
-;766:		strcpy(funname, Info_ValueForKey( g_botInfos[i], "funname" ));
+line 770
+;770:		}
+LABELV $435
+line 771
+;771:		strcpy(funname, Info_ValueForKey( g_botInfos[i], "funname" ));
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4192,7 +4218,7 @@ ADDRGP4 g_botInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $346
+ADDRGP4 $350
 ARGP4
 ADDRLP4 4104
 ADDRGP4 Info_ValueForKey
@@ -4206,15 +4232,15 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 767
-;767:		if ( !*funname ) {
+line 772
+;772:		if ( !*funname ) {
 ADDRLP4 1028
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $434
-line 768
-;768:			strcpy(funname, "");
+NEI4 $438
+line 773
+;773:			strcpy(funname, "");
 ADDRLP4 1028
 ARGP4
 ADDRGP4 $95
@@ -4222,54 +4248,11 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 769
-;769:		}
-LABELV $434
-line 770
-;770:		strcpy(model, Info_ValueForKey( g_botInfos[i], "model" ));
-ADDRLP4 0
-INDIRI4
-CNSTI4 2
-LSHI4
-ADDRGP4 g_botInfos
-ADDP4
-INDIRP4
-ARGP4
-ADDRGP4 $312
-ARGP4
-ADDRLP4 4108
-ADDRGP4 Info_ValueForKey
-CALLP4
-ASGNP4
-ADDRLP4 2052
-ARGP4
-ADDRLP4 4108
-INDIRP4
-ARGP4
-ADDRGP4 strcpy
-CALLP4
-pop
-line 771
-;771:		if ( !*model ) {
-ADDRLP4 2052
-INDIRI1
-CVII4 1
-CNSTI4 0
-NEI4 $436
-line 772
-;772:			strcpy(model, "visor/default");
-ADDRLP4 2052
-ARGP4
-ADDRGP4 $368
-ARGP4
-ADDRGP4 strcpy
-CALLP4
-pop
-line 773
-;773:		}
-LABELV $436
 line 774
-;774:		strcpy(aifile, Info_ValueForKey( g_botInfos[i], "aifile"));
+;774:		}
+LABELV $438
+line 775
+;775:		strcpy(model, Info_ValueForKey( g_botInfos[i], "model" ));
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4278,7 +4261,50 @@ ADDRGP4 g_botInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $387
+ADDRGP4 $316
+ARGP4
+ADDRLP4 4108
+ADDRGP4 Info_ValueForKey
+CALLP4
+ASGNP4
+ADDRLP4 2052
+ARGP4
+ADDRLP4 4108
+INDIRP4
+ARGP4
+ADDRGP4 strcpy
+CALLP4
+pop
+line 776
+;776:		if ( !*model ) {
+ADDRLP4 2052
+INDIRI1
+CVII4 1
+CNSTI4 0
+NEI4 $440
+line 777
+;777:			strcpy(model, "visor/default");
+ADDRLP4 2052
+ARGP4
+ADDRGP4 $372
+ARGP4
+ADDRGP4 strcpy
+CALLP4
+pop
+line 778
+;778:		}
+LABELV $440
+line 779
+;779:		strcpy(aifile, Info_ValueForKey( g_botInfos[i], "aifile"));
+ADDRLP4 0
+INDIRI4
+CNSTI4 2
+LSHI4
+ADDRGP4 g_botInfos
+ADDP4
+INDIRP4
+ARGP4
+ADDRGP4 $391
 ARGP4
 ADDRLP4 4112
 ADDRGP4 Info_ValueForKey
@@ -4292,28 +4318,28 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 775
-;775:		if (!*aifile ) {
+line 780
+;780:		if (!*aifile ) {
 ADDRLP4 3076
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $438
-line 776
-;776:			strcpy(aifile, "bots/default_c.c");
+NEI4 $442
+line 781
+;781:			strcpy(aifile, "bots/default_c.c");
 ADDRLP4 3076
 ARGP4
-ADDRGP4 $440
+ADDRGP4 $444
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 777
-;777:		}
-LABELV $438
-line 778
-;778:		trap_Printf(va("%-16s %-16s %-20s %-20s\n", name, model, aifile, funname));
-ADDRGP4 $441
+line 782
+;782:		}
+LABELV $442
+line 783
+;783:		trap_Printf(va("%-16s %-16s %-20s %-20s\n", name, model, aifile, funname));
+ADDRGP4 $445
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -4333,60 +4359,60 @@ ARGP4
 ADDRGP4 trap_Printf
 CALLV
 pop
-line 779
-;779:	}
-LABELV $428
-line 761
+line 784
+;784:	}
+LABELV $432
+line 766
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $430
+LABELV $434
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_numBots
 INDIRI4
-LTI4 $427
-line 780
-;780:}
-LABELV $425
+LTI4 $431
+line 785
+;785:}
+LABELV $429
 endproc Svcmd_BotList_f 4120 20
 proc G_SpawnBots 1056 16
-line 788
-;781:
-;782:
-;783:/*
-;784:===============
-;785:G_SpawnBots
-;786:===============
-;787:*/
-;788:static void G_SpawnBots( char *botList, int baseDelay ) {
-line 795
-;789:	char		*bot;
-;790:	char		*p;
-;791:	float		skill;
-;792:	int			delay;
-;793:	char		bots[MAX_INFO_VALUE];
-;794:
-;795:	podium1 = NULL;
+line 793
+;786:
+;787:
+;788:/*
+;789:===============
+;790:G_SpawnBots
+;791:===============
+;792:*/
+;793:static void G_SpawnBots( char *botList, int baseDelay ) {
+line 800
+;794:	char		*bot;
+;795:	char		*p;
+;796:	float		skill;
+;797:	int			delay;
+;798:	char		bots[MAX_INFO_VALUE];
+;799:
+;800:	podium1 = NULL;
 ADDRGP4 podium1
 CNSTP4 0
 ASGNP4
-line 796
-;796:	podium2 = NULL;
+line 801
+;801:	podium2 = NULL;
 ADDRGP4 podium2
 CNSTP4 0
 ASGNP4
-line 797
-;797:	podium3 = NULL;
+line 802
+;802:	podium3 = NULL;
 ADDRGP4 podium3
 CNSTP4 0
 ASGNP4
-line 799
-;798:
-;799:	skill = trap_Cvar_VariableValue( "g_spSkill" );
+line 804
+;803:
+;804:	skill = trap_Cvar_VariableValue( "g_spSkill" );
 ADDRGP4 $178
 ARGP4
 ADDRLP4 1040
@@ -4397,58 +4423,58 @@ ADDRLP4 12
 ADDRLP4 1040
 INDIRF4
 ASGNF4
-line 800
-;800:	if( skill < 1 ) {
-ADDRLP4 12
-INDIRF4
-CNSTF4 1065353216
-GEF4 $443
-line 801
-;801:		trap_Cvar_Set( "g_spSkill", "1" );
-ADDRGP4 $178
-ARGP4
-ADDRGP4 $445
-ARGP4
-ADDRGP4 trap_Cvar_Set
-CALLV
-pop
-line 802
-;802:		skill = 1;
-ADDRLP4 12
-CNSTF4 1065353216
-ASGNF4
-line 803
-;803:	}
-ADDRGP4 $444
-JUMPV
-LABELV $443
-line 804
-;804:	else if ( skill > 5 ) {
-ADDRLP4 12
-INDIRF4
-CNSTF4 1084227584
-LEF4 $446
 line 805
-;805:		trap_Cvar_Set( "g_spSkill", "5" );
+;805:	if( skill < 1 ) {
+ADDRLP4 12
+INDIRF4
+CNSTF4 1065353216
+GEF4 $447
+line 806
+;806:		trap_Cvar_Set( "g_spSkill", "1" );
 ADDRGP4 $178
 ARGP4
-ADDRGP4 $386
+ADDRGP4 $449
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 806
-;806:		skill = 5;
+line 807
+;807:		skill = 1;
+ADDRLP4 12
+CNSTF4 1065353216
+ASGNF4
+line 808
+;808:	}
+ADDRGP4 $448
+JUMPV
+LABELV $447
+line 809
+;809:	else if ( skill > 5 ) {
+ADDRLP4 12
+INDIRF4
+CNSTF4 1084227584
+LEF4 $450
+line 810
+;810:		trap_Cvar_Set( "g_spSkill", "5" );
+ADDRGP4 $178
+ARGP4
+ADDRGP4 $390
+ARGP4
+ADDRGP4 trap_Cvar_Set
+CALLV
+pop
+line 811
+;811:		skill = 5;
 ADDRLP4 12
 CNSTF4 1084227584
 ASGNF4
-line 807
-;807:	}
-LABELV $446
-LABELV $444
-line 809
-;808:
-;809:	Q_strncpyz( bots, botList, sizeof(bots) );
+line 812
+;812:	}
+LABELV $450
+LABELV $448
+line 814
+;813:
+;814:	Q_strncpyz( bots, botList, sizeof(bots) );
 ADDRLP4 16
 ARGP4
 ADDRFP4 0
@@ -4459,37 +4485,37 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 810
-;810:	p = &bots[0];
+line 815
+;815:	p = &bots[0];
 ADDRLP4 0
 ADDRLP4 16
 ASGNP4
-line 811
-;811:	delay = baseDelay;
+line 816
+;816:	delay = baseDelay;
 ADDRLP4 4
 ADDRFP4 4
 INDIRI4
 ASGNI4
-ADDRGP4 $449
+ADDRGP4 $453
 JUMPV
-line 812
-;812:	while( *p ) {
-LABELV $451
-line 814
-;813:		//skip spaces
-;814:		while( *p && *p == ' ' ) {
-line 815
-;815:			p++;
+line 817
+;817:	while( *p ) {
+LABELV $455
+line 819
+;818:		//skip spaces
+;819:		while( *p && *p == ' ' ) {
+line 820
+;820:			p++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 816
-;816:		}
-LABELV $452
-line 814
+line 821
+;821:		}
+LABELV $456
+line 819
 ADDRLP4 1044
 ADDRLP4 0
 INDIRP4
@@ -4499,52 +4525,52 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-EQI4 $454
+EQI4 $458
 ADDRLP4 1044
 INDIRI4
 CNSTI4 32
-EQI4 $451
-LABELV $454
-line 817
-;817:		if( !p ) {
+EQI4 $455
+LABELV $458
+line 822
+;822:		if( !p ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $455
-line 818
-;818:			break;
-ADDRGP4 $450
+NEU4 $459
+line 823
+;823:			break;
+ADDRGP4 $454
 JUMPV
-LABELV $455
-line 822
-;819:		}
-;820:
-;821:		// mark start of bot name
-;822:		bot = p;
+LABELV $459
+line 827
+;824:		}
+;825:
+;826:		// mark start of bot name
+;827:		bot = p;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
 ASGNP4
-ADDRGP4 $458
+ADDRGP4 $462
 JUMPV
-LABELV $457
-line 825
-;823:
-;824:		// skip until space of null
-;825:		while( *p && *p != ' ' ) {
-line 826
-;826:			p++;
+LABELV $461
+line 830
+;828:
+;829:		// skip until space of null
+;830:		while( *p && *p != ' ' ) {
+line 831
+;831:			p++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 827
-;827:		}
-LABELV $458
-line 825
+line 832
+;832:		}
+LABELV $462
+line 830
 ADDRLP4 1048
 ADDRLP4 0
 INDIRP4
@@ -4554,22 +4580,22 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-EQI4 $460
+EQI4 $464
 ADDRLP4 1048
 INDIRI4
 CNSTI4 32
-NEI4 $457
-LABELV $460
-line 828
-;828:		if( *p ) {
+NEI4 $461
+LABELV $464
+line 833
+;833:		if( *p ) {
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $461
-line 829
-;829:			*p++ = 0;
+EQI4 $465
+line 834
+;834:			*p++ = 0;
 ADDRLP4 1052
 ADDRLP4 0
 INDIRP4
@@ -4584,15 +4610,15 @@ ADDRLP4 1052
 INDIRP4
 CNSTI1 0
 ASGNI1
-line 830
-;830:		}
-LABELV $461
-line 834
-;831:
-;832:		// we must add the bot this way, calling G_AddBot directly at this stage
-;833:		// does "Bad Things"
-;834:		trap_SendConsoleCommand( EXEC_INSERT, va("addbot %s %f free %i\n", bot, skill, delay) );
-ADDRGP4 $463
+line 835
+;835:		}
+LABELV $465
+line 839
+;836:
+;837:		// we must add the bot this way, calling G_AddBot directly at this stage
+;838:		// does "Bad Things"
+;839:		trap_SendConsoleCommand( EXEC_INSERT, va("addbot %s %f free %i\n", bot, skill, delay) );
+ADDRGP4 $467
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -4615,46 +4641,46 @@ ARGP4
 ADDRGP4 trap_SendConsoleCommand
 CALLV
 pop
-line 836
-;835:
-;836:		delay += BOT_BEGIN_DELAY_INCREMENT;
+line 841
+;840:
+;841:		delay += BOT_BEGIN_DELAY_INCREMENT;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1500
 ADDI4
 ASGNI4
-line 837
-;837:	}
-LABELV $449
-line 812
+line 842
+;842:	}
+LABELV $453
+line 817
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $452
-LABELV $450
-line 838
-;838:}
-LABELV $442
+NEI4 $456
+LABELV $454
+line 843
+;843:}
+LABELV $446
 endproc G_SpawnBots 1056 16
 proc G_LoadBotsFromFile 8216 16
-line 846
-;839:
-;840:
-;841:/*
-;842:===============
-;843:G_LoadBotsFromFile
-;844:===============
-;845:*/
-;846:static void G_LoadBotsFromFile( char *filename ) {
 line 851
-;847:	int				len;
-;848:	fileHandle_t	f;
-;849:	char			buf[MAX_BOTS_TEXT];
-;850:
-;851:	len = trap_FS_FOpenFile( filename, &f, FS_READ );
+;844:
+;845:
+;846:/*
+;847:===============
+;848:G_LoadBotsFromFile
+;849:===============
+;850:*/
+;851:static void G_LoadBotsFromFile( char *filename ) {
+line 856
+;852:	int				len;
+;853:	fileHandle_t	f;
+;854:	char			buf[MAX_BOTS_TEXT];
+;855:
+;856:	len = trap_FS_FOpenFile( filename, &f, FS_READ );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -4670,14 +4696,14 @@ ADDRLP4 0
 ADDRLP4 8200
 INDIRI4
 ASGNI4
-line 852
-;852:	if ( !f ) {
+line 857
+;857:	if ( !f ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $465
-line 853
-;853:		trap_Printf( va( S_COLOR_RED "file not found: %s\n", filename ) );
+NEI4 $469
+line 858
+;858:		trap_Printf( va( S_COLOR_RED "file not found: %s\n", filename ) );
 ADDRGP4 $89
 ARGP4
 ADDRFP4 0
@@ -4693,20 +4719,20 @@ ARGP4
 ADDRGP4 trap_Printf
 CALLV
 pop
-line 854
-;854:		return;
-ADDRGP4 $464
+line 859
+;859:		return;
+ADDRGP4 $468
 JUMPV
-LABELV $465
-line 856
-;855:	}
-;856:	if ( len >= MAX_BOTS_TEXT ) {
+LABELV $469
+line 861
+;860:	}
+;861:	if ( len >= MAX_BOTS_TEXT ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 8192
-LTI4 $467
-line 857
-;857:		trap_Printf( va( S_COLOR_RED "file too large: %s is %i, max allowed is %i", filename, len, MAX_BOTS_TEXT ) );
+LTI4 $471
+line 862
+;862:		trap_Printf( va( S_COLOR_RED "file too large: %s is %i, max allowed is %i", filename, len, MAX_BOTS_TEXT ) );
 ADDRGP4 $92
 ARGP4
 ADDRFP4 0
@@ -4727,23 +4753,23 @@ ARGP4
 ADDRGP4 trap_Printf
 CALLV
 pop
-line 858
-;858:		trap_FS_FCloseFile( f );
+line 863
+;863:		trap_FS_FCloseFile( f );
 ADDRLP4 4
 INDIRI4
 ARGI4
 ADDRGP4 trap_FS_FCloseFile
 CALLV
 pop
-line 859
-;859:		return;
-ADDRGP4 $464
+line 864
+;864:		return;
+ADDRGP4 $468
 JUMPV
-LABELV $467
-line 862
-;860:	}
-;861:
-;862:	trap_FS_Read( buf, len, f );
+LABELV $471
+line 867
+;865:	}
+;866:
+;867:	trap_FS_Read( buf, len, f );
 ADDRLP4 8
 ARGP4
 ADDRLP4 0
@@ -4755,25 +4781,25 @@ ARGI4
 ADDRGP4 trap_FS_Read
 CALLV
 pop
-line 863
-;863:	buf[len] = 0;
+line 868
+;868:	buf[len] = 0;
 ADDRLP4 0
 INDIRI4
 ADDRLP4 8
 ADDP4
 CNSTI1 0
 ASGNI1
-line 864
-;864:	trap_FS_FCloseFile( f );
+line 869
+;869:	trap_FS_FCloseFile( f );
 ADDRLP4 4
 INDIRI4
 ARGI4
 ADDRGP4 trap_FS_FCloseFile
 CALLV
 pop
-line 866
-;865:
-;866:	g_numBots += G_ParseInfos( buf, MAX_BOTS - g_numBots, &g_botInfos[g_numBots] );
+line 871
+;870:
+;871:	g_numBots += G_ParseInfos( buf, MAX_BOTS - g_numBots, &g_botInfos[g_numBots] );
 ADDRLP4 8
 ARGP4
 ADDRLP4 8204
@@ -4808,30 +4834,30 @@ ADDRLP4 8212
 INDIRI4
 ADDI4
 ASGNI4
-line 867
-;867:}
-LABELV $464
+line 872
+;872:}
+LABELV $468
 endproc G_LoadBotsFromFile 8216 16
 proc G_LoadBots 1456 16
-line 874
-;868:
-;869:/*
-;870:===============
-;871:G_LoadBots
-;872:===============
-;873:*/
-;874:static void G_LoadBots( void ) {
-line 883
-;875:	vmCvar_t	botsFile;
-;876:	int			numdirs;
-;877:	char		filename[128];
-;878:	char		dirlist[1024];
-;879:	char*		dirptr;
-;880:	int			i;
-;881:	int			dirlen;
-;882:
-;883:	if ( !trap_Cvar_VariableIntegerValue( "bot_enable" ) ) {
-ADDRGP4 $411
+line 879
+;873:
+;874:/*
+;875:===============
+;876:G_LoadBots
+;877:===============
+;878:*/
+;879:static void G_LoadBots( void ) {
+line 888
+;880:	vmCvar_t	botsFile;
+;881:	int			numdirs;
+;882:	char		filename[128];
+;883:	char		dirlist[1024];
+;884:	char*		dirptr;
+;885:	int			i;
+;886:	int			dirlen;
+;887:
+;888:	if ( !trap_Cvar_VariableIntegerValue( "bot_enable" ) ) {
+ADDRGP4 $415
 ARGP4
 ADDRLP4 1440
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -4840,25 +4866,25 @@ ASGNI4
 ADDRLP4 1440
 INDIRI4
 CNSTI4 0
-NEI4 $470
-line 884
-;884:		return;
-ADDRGP4 $469
+NEI4 $474
+line 889
+;889:		return;
+ADDRGP4 $473
 JUMPV
-LABELV $470
-line 887
-;885:	}
-;886:
-;887:	g_numBots = 0;
+LABELV $474
+line 892
+;890:	}
+;891:
+;892:	g_numBots = 0;
 ADDRGP4 g_numBots
 CNSTI4 0
 ASGNI4
-line 889
-;888:
-;889:	trap_Cvar_Register( &botsFile, "g_botsFile", "", CVAR_INIT|CVAR_ROM );
+line 894
+;893:
+;894:	trap_Cvar_Register( &botsFile, "g_botsFile", "", CVAR_INIT|CVAR_ROM );
 ADDRLP4 144
 ARGP4
-ADDRGP4 $472
+ADDRGP4 $476
 ARGP4
 ADDRGP4 $95
 ARGP4
@@ -4867,44 +4893,44 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 890
-;890:	if( *botsFile.string ) {
+line 895
+;895:	if( *botsFile.string ) {
 ADDRLP4 144+16
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $473
-line 891
-;891:		G_LoadBotsFromFile(botsFile.string);
+EQI4 $477
+line 896
+;896:		G_LoadBotsFromFile(botsFile.string);
 ADDRLP4 144+16
 ARGP4
 ADDRGP4 G_LoadBotsFromFile
 CALLV
 pop
-line 892
-;892:	}
-ADDRGP4 $474
+line 897
+;897:	}
+ADDRGP4 $478
 JUMPV
-LABELV $473
-line 893
-;893:	else {
-line 894
-;894:		G_LoadBotsFromFile("scripts/bots.txt");
-ADDRGP4 $477
+LABELV $477
+line 898
+;898:	else {
+line 899
+;899:		G_LoadBotsFromFile("scripts/bots.txt");
+ADDRGP4 $481
 ARGP4
 ADDRGP4 G_LoadBotsFromFile
 CALLV
 pop
-line 895
-;895:	}
-LABELV $474
-line 898
-;896:
-;897:	// get all bots from .bot files
-;898:	numdirs = trap_FS_GetFileList("scripts", ".bot", dirlist, 1024 );
+line 900
+;900:	}
+LABELV $478
+line 903
+;901:
+;902:	// get all bots from .bot files
+;903:	numdirs = trap_FS_GetFileList("scripts", ".bot", dirlist, 1024 );
 ADDRGP4 $101
 ARGP4
-ADDRGP4 $478
+ADDRGP4 $482
 ARGP4
 ADDRLP4 416
 ARGP4
@@ -4918,21 +4944,21 @@ ADDRLP4 140
 ADDRLP4 1444
 INDIRI4
 ASGNI4
-line 899
-;899:	dirptr  = dirlist;
+line 904
+;904:	dirptr  = dirlist;
 ADDRLP4 0
 ADDRLP4 416
 ASGNP4
-line 900
-;900:	for (i = 0; i < numdirs; i++, dirptr += dirlen+1) {
+line 905
+;905:	for (i = 0; i < numdirs; i++, dirptr += dirlen+1) {
 ADDRLP4 132
 CNSTI4 0
 ASGNI4
-ADDRGP4 $482
+ADDRGP4 $486
 JUMPV
-LABELV $479
-line 901
-;901:		dirlen = strlen(dirptr);
+LABELV $483
+line 906
+;906:		dirlen = strlen(dirptr);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -4944,8 +4970,8 @@ ADDRLP4 136
 ADDRLP4 1448
 INDIRI4
 ASGNI4
-line 902
-;902:		strcpy(filename, "scripts/");
+line 907
+;907:		strcpy(filename, "scripts/");
 ADDRLP4 4
 ARGP4
 ADDRGP4 $107
@@ -4953,8 +4979,8 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 903
-;903:		strcat(filename, dirptr);
+line 908
+;908:		strcat(filename, dirptr);
 ADDRLP4 4
 ARGP4
 ADDRLP4 0
@@ -4963,17 +4989,17 @@ ARGP4
 ADDRGP4 strcat
 CALLP4
 pop
-line 904
-;904:		G_LoadBotsFromFile(filename);
+line 909
+;909:		G_LoadBotsFromFile(filename);
 ADDRLP4 4
 ARGP4
 ADDRGP4 G_LoadBotsFromFile
 CALLV
 pop
+line 910
+;910:	}
+LABELV $484
 line 905
-;905:	}
-LABELV $480
-line 900
 ADDRLP4 1448
 CNSTI4 1
 ASGNI4
@@ -4994,15 +5020,15 @@ ADDRLP4 0
 INDIRP4
 ADDP4
 ASGNP4
-LABELV $482
+LABELV $486
 ADDRLP4 132
 INDIRI4
 ADDRLP4 140
 INDIRI4
-LTI4 $479
-line 906
-;906:	trap_Printf( va( "%i bots parsed\n", g_numBots ) );
-ADDRGP4 $483
+LTI4 $483
+line 911
+;911:	trap_Printf( va( "%i bots parsed\n", g_numBots ) );
+ADDRGP4 $487
 ARGP4
 ADDRGP4 g_numBots
 INDIRI4
@@ -5017,24 +5043,24 @@ ARGP4
 ADDRGP4 trap_Printf
 CALLV
 pop
-line 907
-;907:}
-LABELV $469
+line 912
+;912:}
+LABELV $473
 endproc G_LoadBots 1456 16
 export G_GetBotInfoByNumber
 proc G_GetBotInfoByNumber 8 8
-line 916
-;908:
-;909:
-;910:
-;911:/*
-;912:===============
-;913:G_GetBotInfoByNumber
-;914:===============
-;915:*/
-;916:char *G_GetBotInfoByNumber( int num ) {
-line 917
-;917:	if( num < 0 || num >= g_numBots ) {
+line 921
+;913:
+;914:
+;915:
+;916:/*
+;917:===============
+;918:G_GetBotInfoByNumber
+;919:===============
+;920:*/
+;921:char *G_GetBotInfoByNumber( int num ) {
+line 922
+;922:	if( num < 0 || num >= g_numBots ) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRI4
@@ -5042,16 +5068,16 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LTI4 $487
+LTI4 $491
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_numBots
 INDIRI4
-LTI4 $485
-LABELV $487
-line 918
-;918:		trap_Printf( va( S_COLOR_RED "Invalid bot number: %i\n", num ) );
-ADDRGP4 $488
+LTI4 $489
+LABELV $491
+line 923
+;923:		trap_Printf( va( S_COLOR_RED "Invalid bot number: %i\n", num ) );
+ADDRGP4 $492
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -5066,16 +5092,16 @@ ARGP4
 ADDRGP4 trap_Printf
 CALLV
 pop
-line 919
-;919:		return NULL;
+line 924
+;924:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $484
+ADDRGP4 $488
 JUMPV
-LABELV $485
-line 921
-;920:	}
-;921:	return g_botInfos[num];
+LABELV $489
+line 926
+;925:	}
+;926:	return g_botInfos[num];
 ADDRFP4 0
 INDIRI4
 CNSTI4 2
@@ -5084,33 +5110,33 @@ ADDRGP4 g_botInfos
 ADDP4
 INDIRP4
 RETP4
-LABELV $484
+LABELV $488
 endproc G_GetBotInfoByNumber 8 8
 export G_GetBotInfoByName
 proc G_GetBotInfoByName 16 8
-line 930
-;922:}
-;923:
-;924:
-;925:/*
-;926:===============
-;927:G_GetBotInfoByName
-;928:===============
-;929:*/
-;930:char *G_GetBotInfoByName( const char *name ) {
-line 934
-;931:	int		n;
-;932:	char	*value;
-;933:
-;934:	for ( n = 0; n < g_numBots ; n++ ) {
+line 935
+;927:}
+;928:
+;929:
+;930:/*
+;931:===============
+;932:G_GetBotInfoByName
+;933:===============
+;934:*/
+;935:char *G_GetBotInfoByName( const char *name ) {
+line 939
+;936:	int		n;
+;937:	char	*value;
+;938:
+;939:	for ( n = 0; n < g_numBots ; n++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $493
+ADDRGP4 $497
 JUMPV
-LABELV $490
-line 935
-;935:		value = Info_ValueForKey( g_botInfos[n], "name" );
+LABELV $494
+line 940
+;940:		value = Info_ValueForKey( g_botInfos[n], "name" );
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -5129,8 +5155,8 @@ ADDRLP4 4
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 936
-;936:		if ( !Q_stricmp( value, name ) ) {
+line 941
+;941:		if ( !Q_stricmp( value, name ) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -5144,9 +5170,9 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $494
-line 937
-;937:			return g_botInfos[n];
+NEI4 $498
+line 942
+;942:			return g_botInfos[n];
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -5155,85 +5181,85 @@ ADDRGP4 g_botInfos
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $489
+ADDRGP4 $493
 JUMPV
-LABELV $494
+LABELV $498
+line 944
+;943:		}
+;944:	}
+LABELV $495
 line 939
-;938:		}
-;939:	}
-LABELV $491
-line 934
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $493
+LABELV $497
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_numBots
 INDIRI4
-LTI4 $490
-line 941
-;940:
-;941:	return NULL;
+LTI4 $494
+line 946
+;945:
+;946:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $489
+LABELV $493
 endproc G_GetBotInfoByName 16 8
 export G_InitBots
 proc G_InitBots 1148 16
-line 949
-;942:}
-;943:
-;944:/*
-;945:===============
-;946:G_InitBots
-;947:===============
-;948:*/
-;949:void G_InitBots( qboolean restart ) {
-line 958
-;950:	int			fragLimit;
-;951:	int			timeLimit;
-;952:	const char	*arenainfo;
-;953:	char		*strValue;
-;954:	int			basedelay;
-;955:	char		map[MAX_QPATH];
-;956:	char		serverinfo[MAX_INFO_STRING];
-;957:
-;958:	G_LoadBots();
+line 954
+;947:}
+;948:
+;949:/*
+;950:===============
+;951:G_InitBots
+;952:===============
+;953:*/
+;954:void G_InitBots( qboolean restart ) {
+line 963
+;955:	int			fragLimit;
+;956:	int			timeLimit;
+;957:	const char	*arenainfo;
+;958:	char		*strValue;
+;959:	int			basedelay;
+;960:	char		map[MAX_QPATH];
+;961:	char		serverinfo[MAX_INFO_STRING];
+;962:
+;963:	G_LoadBots();
 ADDRGP4 G_LoadBots
 CALLV
 pop
-line 959
-;959:	G_LoadArenas();
+line 964
+;964:	G_LoadArenas();
 ADDRGP4 G_LoadArenas
 CALLV
 pop
-line 961
-;960:
-;961:	trap_Cvar_Register( &bot_minplayers, "bot_minplayers", "0", CVAR_SERVERINFO );
+line 966
+;965:
+;966:	trap_Cvar_Register( &bot_minplayers, "bot_minplayers", "0", CVAR_SERVERINFO );
 ADDRGP4 bot_minplayers
 ARGP4
-ADDRGP4 $497
+ADDRGP4 $501
 ARGP4
-ADDRGP4 $498
+ADDRGP4 $502
 ARGP4
 CNSTI4 4
 ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 963
-;962:
-;963:	if( g_gametype.integer == GT_SINGLE_PLAYER ) {
+line 968
+;967:
+;968:	if( g_gametype.integer == GT_SINGLE_PLAYER ) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 2
-NEI4 $499
-line 964
-;964:		trap_GetServerinfo( serverinfo, sizeof(serverinfo) );
+NEI4 $503
+line 969
+;969:		trap_GetServerinfo( serverinfo, sizeof(serverinfo) );
 ADDRLP4 80
 ARGP4
 CNSTI4 1024
@@ -5241,11 +5267,11 @@ ARGI4
 ADDRGP4 trap_GetServerinfo
 CALLV
 pop
-line 965
-;965:		Q_strncpyz( map, Info_ValueForKey( serverinfo, "mapname" ), sizeof(map) );
+line 970
+;970:		Q_strncpyz( map, Info_ValueForKey( serverinfo, "mapname" ), sizeof(map) );
 ADDRLP4 80
 ARGP4
-ADDRGP4 $502
+ADDRGP4 $506
 ARGP4
 ADDRLP4 1108
 ADDRGP4 Info_ValueForKey
@@ -5261,8 +5287,8 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 966
-;966:		arenainfo = G_GetArenaInfoByMap( map );
+line 971
+;971:		arenainfo = G_GetArenaInfoByMap( map );
 ADDRLP4 16
 ARGP4
 ADDRLP4 1112
@@ -5273,57 +5299,57 @@ ADDRLP4 4
 ADDRLP4 1112
 INDIRP4
 ASGNP4
-line 967
-;967:		if ( !arenainfo ) {
+line 972
+;972:		if ( !arenainfo ) {
 ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $503
-line 968
-;968:			return;
-ADDRGP4 $496
-JUMPV
-LABELV $503
-line 971
-;969:		}
-;970:
-;971:		strValue = Info_ValueForKey( arenainfo, "fraglimit" );
-ADDRLP4 4
-INDIRP4
-ARGP4
-ADDRGP4 $505
-ARGP4
-ADDRLP4 1116
-ADDRGP4 Info_ValueForKey
-CALLP4
-ASGNP4
-ADDRLP4 0
-ADDRLP4 1116
-INDIRP4
-ASGNP4
-line 972
-;972:		fragLimit = atoi( strValue );
-ADDRLP4 0
-INDIRP4
-ARGP4
-ADDRLP4 1120
-ADDRGP4 atoi
-CALLI4
-ASGNI4
-ADDRLP4 8
-ADDRLP4 1120
-INDIRI4
-ASGNI4
+NEU4 $507
 line 973
-;973:		if ( fragLimit ) {
+;973:			return;
+ADDRGP4 $500
+JUMPV
+LABELV $507
+line 976
+;974:		}
+;975:
+;976:		strValue = Info_ValueForKey( arenainfo, "fraglimit" );
+ADDRLP4 4
+INDIRP4
+ARGP4
+ADDRGP4 $509
+ARGP4
+ADDRLP4 1116
+ADDRGP4 Info_ValueForKey
+CALLP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 1116
+INDIRP4
+ASGNP4
+line 977
+;977:		fragLimit = atoi( strValue );
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 1120
+ADDRGP4 atoi
+CALLI4
+ASGNI4
+ADDRLP4 8
+ADDRLP4 1120
+INDIRI4
+ASGNI4
+line 978
+;978:		if ( fragLimit ) {
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $506
-line 974
-;974:			trap_Cvar_Set( "fraglimit", strValue );
-ADDRGP4 $505
+EQI4 $510
+line 979
+;979:			trap_Cvar_Set( "fraglimit", strValue );
+ADDRGP4 $509
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -5331,32 +5357,32 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 975
-;975:		}
-ADDRGP4 $507
+line 980
+;980:		}
+ADDRGP4 $511
 JUMPV
-LABELV $506
-line 976
-;976:		else {
-line 977
-;977:			trap_Cvar_Set( "fraglimit", "0" );
-ADDRGP4 $505
+LABELV $510
+line 981
+;981:		else {
+line 982
+;982:			trap_Cvar_Set( "fraglimit", "0" );
+ADDRGP4 $509
 ARGP4
-ADDRGP4 $498
+ADDRGP4 $502
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 978
-;978:		}
-LABELV $507
-line 980
-;979:
-;980:		strValue = Info_ValueForKey( arenainfo, "timelimit" );
+line 983
+;983:		}
+LABELV $511
+line 985
+;984:
+;985:		strValue = Info_ValueForKey( arenainfo, "timelimit" );
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $508
+ADDRGP4 $512
 ARGP4
 ADDRLP4 1124
 ADDRGP4 Info_ValueForKey
@@ -5366,8 +5392,8 @@ ADDRLP4 0
 ADDRLP4 1124
 INDIRP4
 ASGNP4
-line 981
-;981:		timeLimit = atoi( strValue );
+line 986
+;986:		timeLimit = atoi( strValue );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5379,15 +5405,15 @@ ADDRLP4 12
 ADDRLP4 1128
 INDIRI4
 ASGNI4
-line 982
-;982:		if ( timeLimit ) {
+line 987
+;987:		if ( timeLimit ) {
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $509
-line 983
-;983:			trap_Cvar_Set( "timelimit", strValue );
-ADDRGP4 $508
+EQI4 $513
+line 988
+;988:			trap_Cvar_Set( "timelimit", strValue );
+ADDRGP4 $512
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -5395,74 +5421,74 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 984
-;984:		}
-ADDRGP4 $510
-JUMPV
-LABELV $509
-line 985
-;985:		else {
-line 986
-;986:			trap_Cvar_Set( "timelimit", "0" );
-ADDRGP4 $508
-ARGP4
-ADDRGP4 $498
-ARGP4
-ADDRGP4 trap_Cvar_Set
-CALLV
-pop
-line 987
-;987:		}
-LABELV $510
 line 989
-;988:
-;989:		if ( !fragLimit && !timeLimit ) {
-ADDRLP4 1132
-CNSTI4 0
-ASGNI4
-ADDRLP4 8
-INDIRI4
-ADDRLP4 1132
-INDIRI4
-NEI4 $511
-ADDRLP4 12
-INDIRI4
-ADDRLP4 1132
-INDIRI4
-NEI4 $511
+;989:		}
+ADDRGP4 $514
+JUMPV
+LABELV $513
 line 990
-;990:			trap_Cvar_Set( "fraglimit", "10" );
-ADDRGP4 $505
-ARGP4
-ADDRGP4 $513
-ARGP4
-ADDRGP4 trap_Cvar_Set
-CALLV
-pop
+;990:		else {
 line 991
 ;991:			trap_Cvar_Set( "timelimit", "0" );
-ADDRGP4 $508
+ADDRGP4 $512
 ARGP4
-ADDRGP4 $498
+ADDRGP4 $502
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 992
 ;992:		}
-LABELV $511
+LABELV $514
 line 994
 ;993:
-;994:		basedelay = BOT_BEGIN_DELAY_BASE;
+;994:		if ( !fragLimit && !timeLimit ) {
+ADDRLP4 1132
+CNSTI4 0
+ASGNI4
+ADDRLP4 8
+INDIRI4
+ADDRLP4 1132
+INDIRI4
+NEI4 $515
+ADDRLP4 12
+INDIRI4
+ADDRLP4 1132
+INDIRI4
+NEI4 $515
+line 995
+;995:			trap_Cvar_Set( "fraglimit", "10" );
+ADDRGP4 $509
+ARGP4
+ADDRGP4 $517
+ARGP4
+ADDRGP4 trap_Cvar_Set
+CALLV
+pop
+line 996
+;996:			trap_Cvar_Set( "timelimit", "0" );
+ADDRGP4 $512
+ARGP4
+ADDRGP4 $502
+ARGP4
+ADDRGP4 trap_Cvar_Set
+CALLV
+pop
+line 997
+;997:		}
+LABELV $515
+line 999
+;998:
+;999:		basedelay = BOT_BEGIN_DELAY_BASE;
 ADDRLP4 1104
 CNSTI4 2000
 ASGNI4
-line 995
-;995:		strValue = Info_ValueForKey( arenainfo, "special" );
+line 1000
+;1000:		strValue = Info_ValueForKey( arenainfo, "special" );
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $514
+ADDRGP4 $518
 ARGP4
 ADDRLP4 1136
 ADDRGP4 Info_ValueForKey
@@ -5472,12 +5498,12 @@ ADDRLP4 0
 ADDRLP4 1136
 INDIRP4
 ASGNP4
-line 996
-;996:		if( Q_stricmp( strValue, "training" ) == 0 ) {
+line 1001
+;1001:		if( Q_stricmp( strValue, "training" ) == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $517
+ADDRGP4 $521
 ARGP4
 ADDRLP4 1140
 ADDRGP4 Q_stricmp
@@ -5486,31 +5512,31 @@ ASGNI4
 ADDRLP4 1140
 INDIRI4
 CNSTI4 0
-NEI4 $515
-line 997
-;997:			basedelay += 10000;
+NEI4 $519
+line 1002
+;1002:			basedelay += 10000;
 ADDRLP4 1104
 ADDRLP4 1104
 INDIRI4
 CNSTI4 10000
 ADDI4
 ASGNI4
-line 998
-;998:		}
-LABELV $515
-line 1000
-;999:
-;1000:		if( !restart ) {
+line 1003
+;1003:		}
+LABELV $519
+line 1005
+;1004:
+;1005:		if( !restart ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $518
-line 1001
-;1001:			G_SpawnBots( Info_ValueForKey( arenainfo, "bots" ), basedelay );
+NEI4 $522
+line 1006
+;1006:			G_SpawnBots( Info_ValueForKey( arenainfo, "bots" ), basedelay );
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $520
+ADDRGP4 $524
 ARGP4
 ADDRLP4 1144
 ADDRGP4 Info_ValueForKey
@@ -5525,15 +5551,15 @@ ARGI4
 ADDRGP4 G_SpawnBots
 CALLV
 pop
-line 1002
-;1002:		}
-LABELV $518
-line 1003
-;1003:	}
-LABELV $499
-line 1004
-;1004:}
-LABELV $496
+line 1007
+;1007:		}
+LABELV $522
+line 1008
+;1008:	}
+LABELV $503
+line 1009
+;1009:}
+LABELV $500
 endproc G_InitBots 1148 16
 import podium3
 import podium2
@@ -6146,14 +6172,14 @@ import srand
 import qsort
 lit
 align 1
-LABELV $520
+LABELV $524
 byte 1 98
 byte 1 111
 byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $517
+LABELV $521
 byte 1 116
 byte 1 114
 byte 1 97
@@ -6164,7 +6190,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $514
+LABELV $518
 byte 1 115
 byte 1 112
 byte 1 101
@@ -6174,12 +6200,12 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $513
+LABELV $517
 byte 1 49
 byte 1 48
 byte 1 0
 align 1
-LABELV $508
+LABELV $512
 byte 1 116
 byte 1 105
 byte 1 109
@@ -6191,7 +6217,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $505
+LABELV $509
 byte 1 102
 byte 1 114
 byte 1 97
@@ -6203,7 +6229,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $502
+LABELV $506
 byte 1 109
 byte 1 97
 byte 1 112
@@ -6213,11 +6239,11 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $498
+LABELV $502
 byte 1 48
 byte 1 0
 align 1
-LABELV $497
+LABELV $501
 byte 1 98
 byte 1 111
 byte 1 116
@@ -6234,7 +6260,7 @@ byte 1 114
 byte 1 115
 byte 1 0
 align 1
-LABELV $488
+LABELV $492
 byte 1 94
 byte 1 49
 byte 1 73
@@ -6262,7 +6288,7 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $483
+LABELV $487
 byte 1 37
 byte 1 105
 byte 1 32
@@ -6280,14 +6306,14 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $478
+LABELV $482
 byte 1 46
 byte 1 98
 byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $477
+LABELV $481
 byte 1 115
 byte 1 99
 byte 1 114
@@ -6306,7 +6332,7 @@ byte 1 120
 byte 1 116
 byte 1 0
 align 1
-LABELV $472
+LABELV $476
 byte 1 103
 byte 1 95
 byte 1 98
@@ -6319,7 +6345,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $463
+LABELV $467
 byte 1 97
 byte 1 100
 byte 1 100
@@ -6343,11 +6369,11 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $445
+LABELV $449
 byte 1 49
 byte 1 0
 align 1
-LABELV $441
+LABELV $445
 byte 1 37
 byte 1 45
 byte 1 49
@@ -6374,7 +6400,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $440
+LABELV $444
 byte 1 98
 byte 1 111
 byte 1 116
@@ -6393,7 +6419,7 @@ byte 1 46
 byte 1 99
 byte 1 0
 align 1
-LABELV $433
+LABELV $437
 byte 1 85
 byte 1 110
 byte 1 110
@@ -6409,7 +6435,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $426
+LABELV $430
 byte 1 94
 byte 1 49
 byte 1 110
@@ -6476,7 +6502,7 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $424
+LABELV $428
 byte 1 108
 byte 1 111
 byte 1 97
@@ -6491,7 +6517,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $423
+LABELV $427
 byte 1 99
 byte 1 108
 byte 1 95
@@ -6504,7 +6530,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $414
+LABELV $418
 byte 1 85
 byte 1 115
 byte 1 97
@@ -6573,7 +6599,7 @@ byte 1 93
 byte 1 10
 byte 1 0
 align 1
-LABELV $411
+LABELV $415
 byte 1 98
 byte 1 111
 byte 1 116
@@ -6586,7 +6612,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $403
+LABELV $407
 byte 1 37
 byte 1 53
 byte 1 46
@@ -6594,7 +6620,7 @@ byte 1 50
 byte 1 102
 byte 1 0
 align 1
-LABELV $394
+LABELV $398
 byte 1 94
 byte 1 49
 byte 1 83
@@ -6677,7 +6703,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $393
+LABELV $397
 byte 1 94
 byte 1 49
 byte 1 85
@@ -6731,7 +6757,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $390
+LABELV $394
 byte 1 94
 byte 1 49
 byte 1 69
@@ -6771,7 +6797,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $387
+LABELV $391
 byte 1 97
 byte 1 105
 byte 1 102
@@ -6780,11 +6806,11 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $386
+LABELV $390
 byte 1 53
 byte 1 0
 align 1
-LABELV $383
+LABELV $387
 byte 1 99
 byte 1 111
 byte 1 108
@@ -6793,11 +6819,11 @@ byte 1 114
 byte 1 50
 byte 1 0
 align 1
-LABELV $382
+LABELV $386
 byte 1 52
 byte 1 0
 align 1
-LABELV $379
+LABELV $383
 byte 1 99
 byte 1 111
 byte 1 108
@@ -6806,20 +6832,20 @@ byte 1 114
 byte 1 49
 byte 1 0
 align 1
-LABELV $378
+LABELV $382
 byte 1 115
 byte 1 101
 byte 1 120
 byte 1 0
 align 1
-LABELV $377
+LABELV $381
 byte 1 109
 byte 1 97
 byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $374
+LABELV $378
 byte 1 103
 byte 1 101
 byte 1 110
@@ -6828,16 +6854,41 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
+LABELV $377
+byte 1 116
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 95
+byte 1 104
+byte 1 101
+byte 1 97
+byte 1 100
+byte 1 109
+byte 1 111
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 0
+align 1
+LABELV $374
+byte 1 104
+byte 1 101
+byte 1 97
+byte 1 100
+byte 1 109
+byte 1 111
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 0
+align 1
 LABELV $373
 byte 1 116
 byte 1 101
 byte 1 97
 byte 1 109
 byte 1 95
-byte 1 104
-byte 1 101
-byte 1 97
-byte 1 100
 byte 1 109
 byte 1 111
 byte 1 100
@@ -6845,32 +6896,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $370
-byte 1 104
-byte 1 101
-byte 1 97
-byte 1 100
-byte 1 109
-byte 1 111
-byte 1 100
-byte 1 101
-byte 1 108
-byte 1 0
-align 1
-LABELV $369
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
-byte 1 95
-byte 1 109
-byte 1 111
-byte 1 100
-byte 1 101
-byte 1 108
-byte 1 0
-align 1
-LABELV $368
+LABELV $372
 byte 1 118
 byte 1 105
 byte 1 115
@@ -6886,22 +6912,22 @@ byte 1 108
 byte 1 116
 byte 1 0
 align 1
-LABELV $365
+LABELV $369
 byte 1 57
 byte 1 48
 byte 1 0
 align 1
-LABELV $362
+LABELV $366
 byte 1 55
 byte 1 48
 byte 1 0
 align 1
-LABELV $359
+LABELV $363
 byte 1 53
 byte 1 48
 byte 1 0
 align 1
-LABELV $358
+LABELV $362
 byte 1 104
 byte 1 97
 byte 1 110
@@ -6912,7 +6938,7 @@ byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $355
+LABELV $359
 byte 1 37
 byte 1 49
 byte 1 46
@@ -6920,12 +6946,12 @@ byte 1 50
 byte 1 102
 byte 1 0
 align 1
-LABELV $354
+LABELV $358
 byte 1 50
 byte 1 48
 byte 1 0
 align 1
-LABELV $353
+LABELV $357
 byte 1 115
 byte 1 110
 byte 1 97
@@ -6933,7 +6959,7 @@ byte 1 112
 byte 1 115
 byte 1 0
 align 1
-LABELV $352
+LABELV $356
 byte 1 50
 byte 1 53
 byte 1 48
@@ -6941,14 +6967,14 @@ byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $351
+LABELV $355
 byte 1 114
 byte 1 97
 byte 1 116
 byte 1 101
 byte 1 0
 align 1
-LABELV $346
+LABELV $350
 byte 1 102
 byte 1 117
 byte 1 110
@@ -6958,7 +6984,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $345
+LABELV $349
 byte 1 94
 byte 1 49
 byte 1 69
@@ -6991,7 +7017,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $341
+LABELV $345
 byte 1 66
 byte 1 111
 byte 1 116
@@ -7017,14 +7043,14 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $337
+LABELV $341
 byte 1 116
 byte 1 101
 byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $335
+LABELV $339
 byte 1 115
 byte 1 107
 byte 1 105
@@ -7032,7 +7058,7 @@ byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $333
+LABELV $337
 byte 1 99
 byte 1 104
 byte 1 97
@@ -7048,7 +7074,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $323
+LABELV $327
 byte 1 94
 byte 1 51
 byte 1 85
@@ -7075,7 +7101,7 @@ byte 1 110
 byte 1 10
 byte 1 0
 align 1
-LABELV $312
+LABELV $316
 byte 1 109
 byte 1 111
 byte 1 100

@@ -2595,13 +2595,13 @@ ASGNP4
 line 346
 ;346:		}
 line 347
-;347:	} else if ((g_GameMode.integer == 1) && (level.numConnectedClients > 2)) // Spawn the 3rd person in arsenal... The 3rd person will always be a spec
+;347:	} else if ((g_gametype.integer == GT_FFA) && (level.numConnectedClients > 2)) // Spawn the 3rd person in arsenal... The 3rd person will always be a spec
 ADDRGP4 $281
 JUMPV
 LABELV $280
-ADDRGP4 g_GameMode+12
+ADDRGP4 g_gametype+12
 INDIRI4
-CNSTI4 1
+CNSTI4 0
 NEI4 $289
 ADDRGP4 level+76
 INDIRI4
