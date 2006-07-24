@@ -138,6 +138,24 @@ void Cmd_Score_f( gentity_t *ent ) {
 
 
 
+
+
+void Cmd_Test_f (gentity_t *ent) {
+	
+	if (level.firstStrike == qtrue)
+	{
+		trap_SendServerCommand( ent-g_entities, va("print \"level.firstStrike = qtrue\n\"" ));		
+	} else if (level.firstStrike == qfalse)
+	{
+		trap_SendServerCommand( ent-g_entities, va("print \"level.firstStrike = qfalse\n\"" ));		
+	} else
+	{
+		trap_SendServerCommand( ent-g_entities, va("print \"level.firstStrike is not set!\n\"" ));		
+	}
+
+}
+
+
 /*
 ==================
 CheatsOk
@@ -1800,6 +1818,8 @@ void ClientCommand( int clientNum ) {
 		Cmd_TeleGren_f( ent );
 	else if (Q_stricmp (cmd, "dropflag") == 0)
 		Cmd_DropFlag_f( ent );
+	else if (Q_stricmp (cmd, "test") == 0)
+		Cmd_Test_f( ent );
 	else
 		trap_SendServerCommand( clientNum, va("print \"unknown cmd %s\n\"", cmd ) );
 }

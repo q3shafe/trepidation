@@ -26,6 +26,9 @@ INGAME MENU
 #define ID_QUIT					17
 #define ID_RESUME				18
 #define ID_TEAMORDERS			19
+#define ID_CALLVOTE				20
+#define ID_CLASS				21
+
 
 
 typedef struct {
@@ -42,6 +45,8 @@ typedef struct {
 	menutext_s		teamorders;
 	menutext_s		quit;
 	menutext_s		resume;
+	menutext_s		callvote;
+	menutext_s		pickclass;
 } ingamemenu_t;
 
 static ingamemenu_t	s_ingame;
@@ -167,6 +172,14 @@ void InGame_Event( void *ptr, int notification ) {
 		UI_RemoveBotsMenu();
 		break;
 
+	case ID_CALLVOTE:
+		//UI_RemoveBotsMenu();
+		break;
+
+	case ID_CLASS:
+		//UI_RemoveBotsMenu();
+		break;
+
 	case ID_TEAMORDERS:
 		UI_TeamOrdersMenu();
 		break;
@@ -212,10 +225,11 @@ void InGame_MenuInit( void ) {
 	s_ingame.team.generic.y				= y;
 	s_ingame.team.generic.id			= ID_TEAM;
 	s_ingame.team.generic.callback		= InGame_Event; 
-	s_ingame.team.string				= "START";
+	s_ingame.team.string				= "JOIN / CHOOSE TEAM";
 	s_ingame.team.color					= color_red;
 	s_ingame.team.style					= UI_CENTER|UI_SMALLFONT;
 
+	if( !trap_Cvar_VariableValue( "sv_running" ) ) {
 	y += INGAME_MENU_VERTICAL_SPACING;
 	s_ingame.addbots.generic.type		= MTYPE_PTEXT;
 	s_ingame.addbots.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -226,9 +240,10 @@ void InGame_MenuInit( void ) {
 	s_ingame.addbots.string				= "ADD BOTS";
 	s_ingame.addbots.color				= color_red;
 	s_ingame.addbots.style				= UI_CENTER|UI_SMALLFONT;
-	if( !trap_Cvar_VariableValue( "sv_running" ) || !trap_Cvar_VariableValue( "bot_enable" ) || (trap_Cvar_VariableValue( "g_gametype" ) == GT_SINGLE_PLAYER)) {
-		s_ingame.addbots.generic.flags |= QMF_GRAYED;
-	}
+		if( !trap_Cvar_VariableValue( "sv_running" ) || !trap_Cvar_VariableValue( "bot_enable" ) || (trap_Cvar_VariableValue( "g_gametype" ) == GT_SINGLE_PLAYER)) {
+			s_ingame.addbots.generic.flags |= QMF_GRAYED;
+		}
+	
 
 	y += INGAME_MENU_VERTICAL_SPACING;
 	s_ingame.removebots.generic.type		= MTYPE_PTEXT;
@@ -242,6 +257,7 @@ void InGame_MenuInit( void ) {
 	s_ingame.removebots.style				= UI_CENTER|UI_SMALLFONT;
 	if( !trap_Cvar_VariableValue( "sv_running" ) || !trap_Cvar_VariableValue( "bot_enable" ) || (trap_Cvar_VariableValue( "g_gametype" ) == GT_SINGLE_PLAYER)) {
 		s_ingame.removebots.generic.flags |= QMF_GRAYED;
+		}
 	}
 
 	y += INGAME_MENU_VERTICAL_SPACING;
@@ -266,6 +282,30 @@ void InGame_MenuInit( void ) {
 		}
 	}
 
+
+	y += INGAME_MENU_VERTICAL_SPACING;
+	s_ingame.callvote.generic.type			= MTYPE_PTEXT;
+	s_ingame.callvote.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	s_ingame.callvote.generic.x			= 320;
+	s_ingame.callvote.generic.y			= y;
+	s_ingame.callvote.generic.id			= ID_CALLVOTE;
+	s_ingame.callvote.generic.callback		= InGame_Event; 
+	s_ingame.callvote.string				= "CALL VOTE";
+	s_ingame.callvote.color				= color_red;
+	s_ingame.callvote.style				= UI_CENTER|UI_SMALLFONT;
+
+	y += INGAME_MENU_VERTICAL_SPACING;
+	s_ingame.pickclass.generic.type			= MTYPE_PTEXT;
+	s_ingame.pickclass.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	s_ingame.pickclass.generic.x			= 320;
+	s_ingame.pickclass.generic.y			= y;
+	s_ingame.pickclass.generic.id			= ID_CLASS;
+	s_ingame.pickclass.generic.callback		= InGame_Event; 
+	s_ingame.pickclass.string				= "CHOOSE CLASS";
+	s_ingame.pickclass.color				= color_red;
+	s_ingame.pickclass.style				= UI_CENTER|UI_SMALLFONT;
+
+
 	y += INGAME_MENU_VERTICAL_SPACING;
 	s_ingame.setup.generic.type			= MTYPE_PTEXT;
 	s_ingame.setup.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -288,6 +328,7 @@ void InGame_MenuInit( void ) {
 	s_ingame.server.color				= color_red;
 	s_ingame.server.style				= UI_CENTER|UI_SMALLFONT;
 
+	if( !trap_Cvar_VariableValue( "sv_running" ) ) {
 	y += INGAME_MENU_VERTICAL_SPACING;
 	s_ingame.restart.generic.type		= MTYPE_PTEXT;
 	s_ingame.restart.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -300,8 +341,8 @@ void InGame_MenuInit( void ) {
 	s_ingame.restart.style				= UI_CENTER|UI_SMALLFONT;
 	if( !trap_Cvar_VariableValue( "sv_running" ) ) {
 		s_ingame.restart.generic.flags |= QMF_GRAYED;
+		}
 	}
-
 	y += INGAME_MENU_VERTICAL_SPACING;
 	s_ingame.resume.generic.type			= MTYPE_PTEXT;
 	s_ingame.resume.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -337,12 +378,20 @@ void InGame_MenuInit( void ) {
 
 	Menu_AddItem( &s_ingame.menu, &s_ingame.frame );
 	Menu_AddItem( &s_ingame.menu, &s_ingame.team );
-	Menu_AddItem( &s_ingame.menu, &s_ingame.addbots );
-	Menu_AddItem( &s_ingame.menu, &s_ingame.removebots );
+	if( !trap_Cvar_VariableValue( "sv_running" ) ) {
+		Menu_AddItem( &s_ingame.menu, &s_ingame.addbots );
+		Menu_AddItem( &s_ingame.menu, &s_ingame.removebots );
+	}
+	
+	Menu_AddItem( &s_ingame.menu, &s_ingame.callvote );
+	Menu_AddItem( &s_ingame.menu, &s_ingame.pickclass );
 	Menu_AddItem( &s_ingame.menu, &s_ingame.teamorders );
 	Menu_AddItem( &s_ingame.menu, &s_ingame.setup );
 	Menu_AddItem( &s_ingame.menu, &s_ingame.server );
-	Menu_AddItem( &s_ingame.menu, &s_ingame.restart );
+
+	if( !trap_Cvar_VariableValue( "sv_running" ) ) {
+		Menu_AddItem( &s_ingame.menu, &s_ingame.restart );
+	}
 	Menu_AddItem( &s_ingame.menu, &s_ingame.resume );
 	Menu_AddItem( &s_ingame.menu, &s_ingame.leave );
 	Menu_AddItem( &s_ingame.menu, &s_ingame.quit );

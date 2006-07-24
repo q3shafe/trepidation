@@ -4785,7 +4785,7 @@ line 996
 ;993:
 ;994://unlagged - backward reconciliation #5
 ;995:	// announce it
-;996:	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build v0.0.1!\n\"" );
+;996:	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 07-27-06!\n\"" );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -6417,15 +6417,19 @@ LABELV $454
 line 1298
 ;1296:
 ;1297:		// Hand out weapons for LMS
-;1298:		if (g_GameMode.integer == 2)
+;1298:		if ((g_GameMode.integer == 2) && (g_instagib.integer == 0))
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 2
 NEI4 $457
+ADDRGP4 g_instagib+12
+INDIRI4
+CNSTI4 0
+NEI4 $457
 line 1299
 ;1299:		{
 line 1300
-;1300:			wpn = irandom(1,9);
+;1300:			wpn = irandom(1,9); // Lets clean this up so you can specify which weapons are allowed
 CNSTI4 1
 ARGI4
 CNSTI4 9
@@ -6472,7 +6476,7 @@ line 1306
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 1
-NEI4 $460
+NEI4 $461
 line 1307
 ;1307:		{
 line 1308
@@ -6483,7 +6487,7 @@ CNSTI4 2448
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $463
+EQI4 $464
 line 1309
 ;1309:			{
 line 1310
@@ -6512,7 +6516,7 @@ CNSTI4 9999
 ASGNI4
 line 1312
 ;1312:			}
-LABELV $463
+LABELV $464
 line 1314
 ;1313:			
 ;1314:			if (client->pers.h_mg) 
@@ -6522,7 +6526,7 @@ CNSTI4 2452
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $465
+EQI4 $466
 line 1315
 ;1315:			{
 line 1316
@@ -6551,7 +6555,7 @@ CNSTI4 9999
 ASGNI4
 line 1318
 ;1318:			}
-LABELV $465
+LABELV $466
 line 1320
 ;1319:			
 ;1320:			if (client->pers.h_sg) 
@@ -6561,7 +6565,7 @@ CNSTI4 2456
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $467
+EQI4 $468
 line 1321
 ;1321:			{
 line 1322
@@ -6590,7 +6594,7 @@ CNSTI4 9999
 ASGNI4
 line 1324
 ;1324:			}
-LABELV $467
+LABELV $468
 line 1326
 ;1325:			
 ;1326:			if (client->pers.h_grenade ) 
@@ -6600,7 +6604,7 @@ CNSTI4 2460
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $469
+EQI4 $470
 line 1327
 ;1327:			{
 line 1328
@@ -6629,7 +6633,7 @@ CNSTI4 9999
 ASGNI4
 line 1330
 ;1330:			}
-LABELV $469
+LABELV $470
 line 1332
 ;1331:
 ;1332:			if (client->pers.h_singcan) 
@@ -6639,7 +6643,7 @@ CNSTI4 2464
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $471
+EQI4 $472
 line 1333
 ;1333:			{
 line 1334
@@ -6668,7 +6672,7 @@ CNSTI4 9999
 ASGNI4
 line 1336
 ;1336:			}
-LABELV $471
+LABELV $472
 line 1338
 ;1337:			
 ;1338:			if (client->pers.h_flame) 
@@ -6678,7 +6682,7 @@ CNSTI4 2468
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $473
+EQI4 $474
 line 1339
 ;1339:			{
 line 1340
@@ -6707,7 +6711,7 @@ CNSTI4 9999
 ASGNI4
 line 1342
 ;1342:			}
-LABELV $473
+LABELV $474
 line 1344
 ;1343:			
 ;1344:			if (client->pers.h_gauss) 
@@ -6717,7 +6721,7 @@ CNSTI4 2472
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $475
+EQI4 $476
 line 1345
 ;1345:			{
 line 1346
@@ -6746,7 +6750,7 @@ CNSTI4 9999
 ASGNI4
 line 1348
 ;1348:			}
-LABELV $475
+LABELV $476
 line 1350
 ;1349:	
 ;1350:			if (client->pers.h_plasma) 
@@ -6756,7 +6760,7 @@ CNSTI4 2476
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $477
+EQI4 $478
 line 1351
 ;1351:			{
 line 1352
@@ -6785,7 +6789,7 @@ CNSTI4 9999
 ASGNI4
 line 1354
 ;1354:			}
-LABELV $477
+LABELV $478
 line 1356
 ;1355:			
 ;1356:			if (client->pers.h_bfg) 
@@ -6795,7 +6799,7 @@ CNSTI4 2480
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $479
+EQI4 $480
 line 1357
 ;1357:			{
 line 1358
@@ -6824,12 +6828,12 @@ CNSTI4 9999
 ASGNI4
 line 1360
 ;1360:			}
-LABELV $479
+LABELV $480
 line 1363
 ;1361:			//client->ps.stats[STAT_WEAPONS] = ( 1 << wn );
 ;1362:			//client->ps.ammo[wn] = INFINITE;
 ;1363:		}
-LABELV $460
+LABELV $461
 line 1366
 ;1364:
 ;1365:
@@ -6920,7 +6924,7 @@ line 1383
 ADDRGP4 level+9132
 INDIRI4
 CNSTI4 0
-EQI4 $484
+EQI4 $485
 line 1384
 ;1384:		MoveClientToIntermission( ent );
 ADDRFP4 0
@@ -6931,9 +6935,9 @@ CALLV
 pop
 line 1385
 ;1385:	} else {
-ADDRGP4 $485
+ADDRGP4 $486
 JUMPV
-LABELV $484
+LABELV $485
 line 1387
 ;1386:		// fire the targets of the spawn point
 ;1387:		G_UseTargets( spawnPoint, ent );
@@ -6962,7 +6966,7 @@ line 1392
 ADDRLP4 0
 CNSTI4 10
 ASGNI4
-LABELV $487
+LABELV $488
 line 1393
 ;1393:			if ( client->ps.stats[STAT_WEAPONS] & ( 1 << i ) ) {
 ADDRLP4 4
@@ -6976,7 +6980,7 @@ INDIRI4
 LSHI4
 BANDI4
 CNSTI4 0
-EQI4 $491
+EQI4 $492
 line 1394
 ;1394:				client->ps.weapon = i;
 ADDRLP4 4
@@ -6988,13 +6992,13 @@ INDIRI4
 ASGNI4
 line 1395
 ;1395:				break;
-ADDRGP4 $489
+ADDRGP4 $490
 JUMPV
-LABELV $491
+LABELV $492
 line 1397
 ;1396:			}
 ;1397:		}
-LABELV $488
+LABELV $489
 line 1392
 ADDRLP4 0
 ADDRLP4 0
@@ -7005,11 +7009,11 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-GTI4 $487
-LABELV $489
+GTI4 $488
+LABELV $490
 line 1398
 ;1398:	}
-LABELV $485
+LABELV $486
 line 1402
 ;1399:
 ;1400:	// run a client frame to drop exactly to the floor,
@@ -7062,7 +7066,7 @@ CNSTI4 2492
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $495
+EQI4 $496
 line 1408
 ;1408:		BG_PlayerStateToEntityState( &client->ps, &ent->s, qtrue );
 ADDRLP4 4
@@ -7105,7 +7109,7 @@ CALLV
 pop
 line 1411
 ;1411:	}
-LABELV $495
+LABELV $496
 line 1414
 ;1412:
 ;1413:	// run the presend to set anything else
@@ -7204,12 +7208,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $498
+NEU4 $499
 line 1450
 ;1450:		return;
-ADDRGP4 $497
+ADDRGP4 $498
 JUMPV
-LABELV $498
+LABELV $499
 line 1454
 ;1451:	}
 ;1452:
@@ -7218,9 +7222,9 @@ line 1454
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $503
+ADDRGP4 $504
 JUMPV
-LABELV $500
+LABELV $501
 line 1455
 ;1455:		if ( level.clients[i].sess.sessionTeam == TEAM_SPECTATOR
 ADDRLP4 12
@@ -7238,14 +7242,14 @@ CNSTI4 2492
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $505
+NEI4 $506
 ADDRLP4 12
 INDIRP4
 CNSTI4 2500
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $505
+NEI4 $506
 ADDRLP4 12
 INDIRP4
 CNSTI4 2504
@@ -7253,7 +7257,7 @@ ADDP4
 INDIRI4
 ADDRFP4 0
 INDIRI4
-NEI4 $505
+NEI4 $506
 line 1457
 ;1456:			&& level.clients[i].sess.spectatorState == SPECTATOR_FOLLOW
 ;1457:			&& level.clients[i].sess.spectatorClient == clientNum ) {
@@ -7271,10 +7275,10 @@ CALLV
 pop
 line 1459
 ;1459:		}
-LABELV $505
+LABELV $506
 line 1460
 ;1460:	}
-LABELV $501
+LABELV $502
 line 1454
 ADDRLP4 0
 ADDRLP4 0
@@ -7282,12 +7286,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $503
+LABELV $504
 ADDRLP4 0
 INDIRI4
 ADDRGP4 level+24
 INDIRI4
-LTI4 $500
+LTI4 $501
 line 1463
 ;1461:
 ;1462:	// send effect if they were completely connected
@@ -7305,14 +7309,14 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $507
+NEI4 $508
 ADDRLP4 12
 INDIRP4
 CNSTI4 2492
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $507
+EQI4 $508
 line 1464
 ;1464:		&& ent->client->sess.sessionTeam != TEAM_SPECTATOR ) {
 line 1465
@@ -7372,11 +7376,11 @@ line 1478
 ;1476:#endif
 ;1477:
 ;1478:	}
-LABELV $507
+LABELV $508
 line 1480
 ;1479:
 ;1480:	G_LogPrintf( "ClientDisconnect: %i\n", clientNum );
-ADDRGP4 $509
+ADDRGP4 $510
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -7391,7 +7395,7 @@ line 1483
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 1
-NEI4 $510
+NEI4 $511
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
@@ -7399,17 +7403,17 @@ ADDRGP4 level+9132
 INDIRI4
 ADDRLP4 16
 INDIRI4
-NEI4 $510
+NEI4 $511
 ADDRGP4 level+16
 INDIRI4
 ADDRLP4 16
 INDIRI4
-NEI4 $510
+NEI4 $511
 ADDRGP4 level+88+4
 INDIRI4
 ADDRFP4 0
 INDIRI4
-NEI4 $510
+NEI4 $511
 line 1485
 ;1484:		&& !level.intermissiontime
 ;1485:		&& !level.warmupTime && level.sortedClients[1] == clientNum ) {
@@ -7444,7 +7448,7 @@ CALLV
 pop
 line 1488
 ;1488:	}
-LABELV $510
+LABELV $511
 line 1490
 ;1489:
 ;1490:	trap_UnlinkEntity (ent);
@@ -7476,7 +7480,7 @@ ADDRLP4 4
 INDIRP4
 CNSTI4 524
 ADDP4
-ADDRGP4 $519
+ADDRGP4 $520
 ASGNP4
 line 1494
 ;1494:	ent->client->pers.connected = CON_DISCONNECTED;
@@ -7519,7 +7523,7 @@ INDIRI4
 CNSTI4 544
 ADDI4
 ARGI4
-ADDRGP4 $520
+ADDRGP4 $521
 ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
@@ -7541,7 +7545,7 @@ INDIRI4
 CNSTI4 8
 BANDI4
 CNSTI4 0
-EQI4 $521
+EQI4 $522
 line 1503
 ;1503:		BotAIShutdownClient( clientNum, qfalse );
 ADDRFP4 0
@@ -7554,10 +7558,10 @@ CALLI4
 pop
 line 1504
 ;1504:	}
-LABELV $521
+LABELV $522
 line 1505
 ;1505:}
-LABELV $497
+LABELV $498
 endproc ClientDisconnect 24 8
 import irandom
 import CheckPlayerPostions
@@ -8142,10 +8146,10 @@ import srand
 import qsort
 lit
 align 1
-LABELV $520
+LABELV $521
 byte 1 0
 align 1
-LABELV $519
+LABELV $520
 byte 1 100
 byte 1 105
 byte 1 115
@@ -8160,7 +8164,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $509
+LABELV $510
 byte 1 67
 byte 1 108
 byte 1 105
@@ -8343,12 +8347,14 @@ byte 1 105
 byte 1 108
 byte 1 100
 byte 1 32
-byte 1 118
 byte 1 48
-byte 1 46
+byte 1 55
+byte 1 45
+byte 1 50
+byte 1 55
+byte 1 45
 byte 1 48
-byte 1 46
-byte 1 49
+byte 1 54
 byte 1 33
 byte 1 10
 byte 1 34

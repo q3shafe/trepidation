@@ -873,10 +873,13 @@ void ClearRegisteredItems( void ) {
 	// Shafe - Trep - Arsenal and LMS Gets All Weapons Pre-Registered
 	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
 	{
-		RegisterItem( BG_FindItemForWeapon( WP_SHOTGUN ) );
-		RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
-		RegisterItem( BG_FindItemForWeapon( WP_PLASMAGUN ) );
-		RegisterItem( BG_FindItemForWeapon( WP_BFG ) );
+		if (g_instagib.integer == 0)
+		{
+			RegisterItem( BG_FindItemForWeapon( WP_SHOTGUN ) );
+			RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
+			RegisterItem( BG_FindItemForWeapon( WP_PLASMAGUN ) );
+			RegisterItem( BG_FindItemForWeapon( WP_BFG ) );
+		}
 	}
 
 #ifdef MISSIONPACK

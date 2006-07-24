@@ -494,7 +494,7 @@ typedef struct {
 	qboolean	StopItemRespawn;		// Arsenal
 	qboolean	firstStrike;			// Shafe - Trep
 	qboolean	OneSurvivor;			// Shafe - Trep
-	int			lastClient;			// Shafe - Trep
+	struct gclient_s	*lastClient;			// NULL if not a client// Shafe - Trep
 
 } level_locals_t;
 

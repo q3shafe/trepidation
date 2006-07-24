@@ -462,6 +462,7 @@ player_die
 ==================
 */
 extern int CountSurvivors();
+
 void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int meansOfDeath ) {
 	gentity_t	*ent;
 	int			anim;
@@ -486,6 +487,9 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	if ( level.intermissiontime ) {
 		return;
 	}
+
+
+
 
 
 //unlagged - backward reconciliation #2
@@ -636,20 +640,28 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	}
 #endif
 
+	
+	if ((level.firstStrike == qfalse) && (!level.warmupTime))
+	{
+		if (self != attacker)
+		{
+			level.firstStrike = qtrue;
+			BroadCastSound("sound/misc/laff02.wav");
+			trap_SendServerCommand( -1, va("print \"%s Made First Strike!\n\"",attacker->client->pers.netname));
+		}
+	}
+
+	if (level.warmupTime != 0)
+	{
+		level.firstStrike == qfalse;
+		//trap_SendServerCommand( -1, va("print \"%s FS Is FALSE!!\n\"",attacker->client->pers.netname));	
+	} 
 		
 	
 		// Shafe - Trep - Arsenal Stuff
 		if ( g_GameMode.integer > 0 && meansOfDeath != MOD_TELEFRAG && !level.warmupTime) 
 		{
 			tmpW = self->s.weapon;
-			
-			//G_Printf( S_COLOR_GREEN "DEBUG: Weapon You Held by %s was %i\n", self->client->pers.netname, tmpW );
-			if (level.firstStrike == qfalse)
-			{
-				level.firstStrike = qtrue;
-				BroadCastSound("sound/misc/laff02.wav");
-				trap_SendServerCommand( -1, va("print \"%s Made First Strike!\n\"",attacker->client->pers.netname));
-			}
 
 			if (g_GameMode.integer == 1)
 			{
@@ -687,7 +699,8 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				self->client->pers.TrueScore = self->client->ps.persistant[PERS_SCORE];
 				self->client->pers.Eliminated = qtrue;
 				SetTeam(self, "s");
-
+				// Set The Last Attacker In Case The Winner Blows Themself up on the winning shot
+				level.lastClient == attacker->client;
 
 				tmpCnt = (CountSurvivors());
 
@@ -722,10 +735,9 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 					if (tmpCnt == 1) 
 					{
 						BroadCastSound("sound/misc/laff01.wav");
-					
 
-						////////////////
-					}			
+					}
+				
 				}
 			} 
 

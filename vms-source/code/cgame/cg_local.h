@@ -650,6 +650,8 @@ typedef struct {
 //unlagged - optimized prediction
 
 	int			scanner; // Shafe - Trep - Radar
+	int			bgnumber;
+	qboolean	gotbg;
 } cg_t;
 
 
