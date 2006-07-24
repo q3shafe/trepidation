@@ -1249,7 +1249,7 @@ line 177
 LABELV $124
 line 179
 ;178:
-;179:	UI_DrawProportionalString( 320, 64, va("Connecting to %s", cstate.servername), UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, menu_text_color );
+;179:	UI_DrawProportionalString( 320, 44, va("Connecting to %s", cstate.servername), UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, menu_text_color );
 ADDRGP4 $128
 ARGP4
 ADDRLP4 0+12
@@ -1260,7 +1260,7 @@ CALLP4
 ASGNP4
 CNSTI4 320
 ARGI4
-CNSTI4 64
+CNSTI4 44
 ARGI4
 ADDRLP4 4116
 INDIRP4

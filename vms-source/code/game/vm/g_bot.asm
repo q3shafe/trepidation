@@ -2045,7 +2045,7 @@ LABELV $242
 skip 4
 export G_CheckMinimumPlayers
 code
-proc G_CheckMinimumPlayers 44 4
+proc G_CheckMinimumPlayers 40 4
 line 377
 ;370:}
 ;371:
@@ -2115,7 +2115,7 @@ LABELV $251
 line 393
 ;391:
 ;392:	// Arsenal 
-;393:	if ((g_GameMode.integer == 1) && (level.firstStrike = qtrue)) 
+;393:	if ((g_GameMode.integer == 1) && (level.firstStrike == qtrue)) 
 ADDRLP4 12
 CNSTI4 1
 ASGNI4
@@ -2125,13 +2125,10 @@ ADDRLP4 12
 INDIRI4
 NEI4 $253
 ADDRGP4 level+9228
+INDIRI4
 ADDRLP4 12
 INDIRI4
-ASGNI4
-ADDRLP4 12
-INDIRI4
-CNSTI4 0
-EQI4 $253
+NEI4 $253
 line 394
 ;394:	{
 line 395
@@ -2142,22 +2139,15 @@ LABELV $253
 line 398
 ;396:	}
 ;397:	// LMS?
-;398:	if ((g_GameMode.integer == 2) && (level.firstStrike = qtrue)) 
+;398:	if ((g_GameMode.integer == 2) && (level.firstStrike == qtrue)) 
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 2
 NEI4 $257
-ADDRLP4 16
-CNSTI4 1
-ASGNI4
 ADDRGP4 level+9228
-ADDRLP4 16
 INDIRI4
-ASGNI4
-ADDRLP4 16
-INDIRI4
-CNSTI4 0
-EQI4 $257
+CNSTI4 1
+NEI4 $257
 line 399
 ;399:	{
 line 400
@@ -2201,24 +2191,24 @@ line 409
 ;409:		humanplayers = G_CountHumanPlayers( TEAM_RED );
 CNSTI4 1
 ARGI4
-ADDRLP4 20
+ADDRLP4 16
 ADDRGP4 G_CountHumanPlayers
 CALLI4
 ASGNI4
 ADDRLP4 8
-ADDRLP4 20
+ADDRLP4 16
 INDIRI4
 ASGNI4
 line 410
 ;410:		botplayers = G_CountBotPlayers(	TEAM_RED );
 CNSTI4 1
 ARGI4
-ADDRLP4 24
+ADDRLP4 20
 ADDRGP4 G_CountBotPlayers
 CALLI4
 ASGNI4
 ADDRLP4 4
-ADDRLP4 24
+ADDRLP4 20
 INDIRI4
 ASGNI4
 line 412
@@ -2272,24 +2262,24 @@ line 418
 ;418:		humanplayers = G_CountHumanPlayers( TEAM_BLUE );
 CNSTI4 2
 ARGI4
-ADDRLP4 32
+ADDRLP4 28
 ADDRGP4 G_CountHumanPlayers
 CALLI4
 ASGNI4
 ADDRLP4 8
-ADDRLP4 32
+ADDRLP4 28
 INDIRI4
 ASGNI4
 line 419
 ;419:		botplayers = G_CountBotPlayers( TEAM_BLUE );
 CNSTI4 2
 ARGI4
-ADDRLP4 36
+ADDRLP4 32
 ADDRGP4 G_CountBotPlayers
 CALLI4
 ASGNI4
 ADDRLP4 4
-ADDRLP4 36
+ADDRLP4 32
 INDIRI4
 ASGNI4
 line 421
@@ -2369,24 +2359,24 @@ line 431
 ;431:		humanplayers = G_CountHumanPlayers( -1 );
 CNSTI4 -1
 ARGI4
-ADDRLP4 20
+ADDRLP4 16
 ADDRGP4 G_CountHumanPlayers
 CALLI4
 ASGNI4
 ADDRLP4 8
-ADDRLP4 20
+ADDRLP4 16
 INDIRI4
 ASGNI4
 line 432
 ;432:		botplayers = G_CountBotPlayers( -1 );
 CNSTI4 -1
 ARGI4
-ADDRLP4 24
+ADDRLP4 20
 ADDRGP4 G_CountBotPlayers
 CALLI4
 ASGNI4
 ADDRLP4 4
-ADDRLP4 24
+ADDRLP4 20
 INDIRI4
 ASGNI4
 line 434
@@ -2429,11 +2419,11 @@ line 438
 ;438:			if (!G_RemoveRandomBot( TEAM_SPECTATOR )) {
 CNSTI4 3
 ARGI4
-ADDRLP4 32
+ADDRLP4 28
 ADDRGP4 G_RemoveRandomBot
 CALLI4
 ASGNI4
-ADDRLP4 32
+ADDRLP4 28
 INDIRI4
 CNSTI4 0
 NEI4 $277
@@ -2482,24 +2472,24 @@ line 448
 ;448:		humanplayers = G_CountHumanPlayers( TEAM_FREE );
 CNSTI4 0
 ARGI4
-ADDRLP4 20
+ADDRLP4 16
 ADDRGP4 G_CountHumanPlayers
 CALLI4
 ASGNI4
 ADDRLP4 8
-ADDRLP4 20
+ADDRLP4 16
 INDIRI4
 ASGNI4
 line 449
 ;449:		botplayers = G_CountBotPlayers( TEAM_FREE );
 CNSTI4 0
 ARGI4
-ADDRLP4 24
+ADDRLP4 20
 ADDRGP4 G_CountBotPlayers
 CALLI4
 ASGNI4
 ADDRLP4 4
-ADDRLP4 24
+ADDRLP4 20
 INDIRI4
 ASGNI4
 line 451
@@ -2556,7 +2546,7 @@ LABELV $262
 line 457
 ;457:}
 LABELV $241
-endproc G_CheckMinimumPlayers 44 4
+endproc G_CheckMinimumPlayers 40 4
 export G_CheckBotSpawn
 proc G_CheckBotSpawn 1032 12
 line 464

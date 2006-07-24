@@ -586,8 +586,7 @@ void SP_worldspawn( void ) {
 		trap_Cvar_Set( "g_restarted", "0" );
 		level.warmupTime = 0;
 		level.firstStrike = qfalse;
-		level.OneSurvivor = qfalse;
-		level.lastClient = -1;
+		//level.lastClient = -1;
 
 	} else if ( g_doWarmup.integer ) { // Turn it on
 		level.warmupTime = -1;

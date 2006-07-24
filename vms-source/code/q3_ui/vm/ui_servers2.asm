@@ -1874,14 +1874,14 @@ LABELV $310
 line 559
 ;557:		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
 ;558:			 //strcmp(servernodeptr->gamename,"eternal") != 0
-;559:			if( servernodeptr->g_GameMode == 0 ) {
+;559:			if( servernodeptr->g_GameMode != 1 ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 264
 ADDP4
 INDIRI4
-CNSTI4 0
-NEI4 $311
+CNSTI4 1
+EQI4 $311
 line 560
 ;560:					continue;
 ADDRGP4 $287
@@ -1901,13 +1901,13 @@ line 563
 LABELV $315
 line 565
 ;564:		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
-;565:			if( servernodeptr->gametype != GT_LASTMAN ) {
+;565:			if( servernodeptr->g_GameMode != 2) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 232
+CNSTI4 264
 ADDP4
 INDIRI4
-CNSTI4 9
+CNSTI4 2
 EQI4 $296
 line 566
 ;566:				continue;

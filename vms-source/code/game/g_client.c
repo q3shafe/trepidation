@@ -993,7 +993,7 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 
 //unlagged - backward reconciliation #5
 	// announce it
-	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build v0.0.1!\n\"" );
+	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 07-27-06!\n\"" );
 	if ( g_delagHitscan.integer ) {
 //		trap_SendServerCommand( clientNum, "print \"This server is Unlagged: full lag compensation is ON!\n\"" );
 	}
@@ -1295,7 +1295,7 @@ void ClientSpawn(gentity_t *ent) {
 		}
 
 		// Hand out weapons for LMS
-		if (g_GameMode.integer == 2)
+		if ((g_GameMode.integer == 2) && (g_instagib.integer == 0))
 		{
 			wpn = irandom(1,9); // Lets clean this up so you can specify which weapons are allowed
 			client->ps.stats[STAT_WEAPONS] = ( 1 << wpn );

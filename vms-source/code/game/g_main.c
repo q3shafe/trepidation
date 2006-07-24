@@ -444,9 +444,9 @@ void G_InitModRules( void )
 		altAmmoUsage[WP_BFG] = 0;	
 		// Set some cvars
 
-		g_teamAutoJoin.integer = 0;
+		//g_teamAutoJoin.integer = 0;
 		g_doWarmup.integer = 1;
-		g_warmup.integer = 50;
+		//g_warmup.integer = 50;
 		
 		// We only allow ffa in arsenal
 		if (g_GameMode.integer == 1)
@@ -557,8 +557,7 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	level.time = levelTime;
 	level.startTime = levelTime;
 	level.firstStrike = qfalse; // Shafe - Trep
-	level.OneSurvivor = qfalse;
-	level.lastClient = -1;
+	//level.lastClient = -1;
 	
 	
 
@@ -1516,10 +1515,10 @@ void CheckExitRules( void ) {
 	}
 
 	// Arsenal And Last Man Standing
-	// We dont do a showdown or find a winner for at least 20 seconds into the game.
+	// We dont do a showdown or find a winner for at least 15 seconds into the game.
 	if (( g_GameMode.integer == 1) || (g_GameMode.integer == 2))
 	{
-		if (((level.time-level.startTime) > 25000) && (level.firstStrike == qtrue))
+		if (((level.time-level.startTime) > 15000) && (level.firstStrike == qtrue))
 		{
 			gclient_t		*survivor = NULL;		
 			int				tmpCnt;
@@ -1607,10 +1606,12 @@ void CheckExitRules( void ) {
 
 					}
 
-				
-				// We dont have a survivor yet.. Something isnt right
-				//G_Printf( S_COLOR_GREEN "DEBUG: Survivors %s %i\n", survivor->pers.netname, tmpCnt);
-				// If We Get To Here We should have a survivor	
+											
+					// If We Get To Here We should have a survivor	
+					// if Not Lets Use The Person Who Made The Last Kill
+					if (survivor == NULL) {
+						survivor == level.lastClient;
+					}
 		
 						BroadCastSound("sound/misc/laff01.wav");
 						trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", survivor->pers.netname) );

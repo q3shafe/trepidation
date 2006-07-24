@@ -390,12 +390,12 @@ void G_CheckMinimumPlayers( void ) {
 	if (minplayers <= 0) return;
 
 	// Arsenal 
-	if ((g_GameMode.integer == 1) && (level.firstStrike = qtrue)) 
+	if ((g_GameMode.integer == 1) && (level.firstStrike == qtrue)) 
 	{
 		return; 
 	}
 	// LMS?
-	if ((g_GameMode.integer == 2) && (level.firstStrike = qtrue)) 
+	if ((g_GameMode.integer == 2) && (level.firstStrike == qtrue)) 
 	{
 		return; 
 	}
