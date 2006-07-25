@@ -1368,6 +1368,7 @@ char *eventnames[] = {
 	"EV_PLAYER_TELEPORT_OUT",
 
 	"EV_GRENADE_BOUNCE",		// eventParm will be the soundindex
+	"EV_PL_BOUNCE",		// eventParm will be the soundindex
 
 	"EV_GENERAL_SOUND",
 	"EV_GLOBAL_SOUND",		// no attenuation
@@ -1408,7 +1409,9 @@ char *eventnames[] = {
 
 	"EV_DEBUG_LINE",
 	"EV_STOPLOOPINGSOUND",
-	"EV_TAUNT"
+	"EV_TAUNT",
+
+	
 
 };
 

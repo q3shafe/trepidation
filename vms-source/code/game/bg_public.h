@@ -385,6 +385,7 @@ typedef enum {
 	EV_PLAYER_TELEPORT_OUT,
 
 	EV_GRENADE_BOUNCE,		// eventParm will be the soundindex
+	EV_PL_BOUNCE,		// eventParm will be the soundindex
 
 	EV_GENERAL_SOUND,
 	EV_GLOBAL_SOUND,		// no attenuation
@@ -656,7 +657,8 @@ qboolean	BG_CanItemBeGrabbed( int gametype, const entityState_t *ent, const play
 #define	MASK_DEADSOLID			(CONTENTS_SOLID|CONTENTS_PLAYERCLIP)
 #define	MASK_WATER				(CONTENTS_WATER|CONTENTS_LAVA|CONTENTS_SLIME)
 #define	MASK_OPAQUE				(CONTENTS_SOLID|CONTENTS_SLIME|CONTENTS_LAVA)
-#define	MASK_SHOT				(CONTENTS_SOLID|CONTENTS_BODY|CONTENTS_CORPSE)
+// Now Shootable
+#define	MASK_SHOT				(CONTENTS_SOLID|CONTENTS_BODY|CONTENTS_CORPSE|CONTENTS_SHOOTABLE) 
 
 extern int Max_Ammo[]; // Shafe - Trep Max Ammo Mgt We need this global.
 

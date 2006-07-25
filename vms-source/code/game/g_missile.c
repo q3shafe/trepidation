@@ -11,6 +11,16 @@
 
 /*
 ================
+G_Missile_Die
+================
+*/
+void G_Missile_Die( gentity_t *ent, gentity_t *inflictor, gentity_t *attacker, int damage, int mod ) {
+	ent->nextthink = level.time + 1;
+	ent->think = G_ExplodeMissile;
+}
+
+/*
+================
 G_BounceMissile
 
 ================
@@ -276,7 +286,17 @@ void G_MissileImpact( gentity_t *ent, trace_t *trace ) {
 	if ( !other->takedamage &&
 		( ent->s.eFlags & ( EF_BOUNCE | EF_BOUNCE_HALF ) ) ) {
 		G_BounceMissile( ent, trace );
-		G_AddEvent( ent, EV_GRENADE_BOUNCE, 0 );
+		
+		if (ent->classname == "plasma")
+		{
+			G_AddEvent( ent, EV_PL_BOUNCE, 0 );
+		} 
+		else
+		{
+			// Regular Grenade
+			G_AddEvent( ent, EV_GRENADE_BOUNCE, 0 );
+		}
+
 		return;
 	}
 
@@ -603,8 +623,8 @@ void G_ExplodePDGrenade( gentity_t *ent ) {
 */
 gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 	gentity_t	*bolt;
-	
-	
+	//vec3_t		mins = { -8, -8, -8 }, maxs = { 8, 8, 8 };
+
 	VectorNormalize (dir);
  
 	bolt = G_Spawn();
@@ -632,6 +652,17 @@ gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->splashMethodOfDeath = MOD_GRENADE_SPLASH;
 	bolt->clipmask = MASK_SHOT;
  
+	// Make Em Shootable
+	/*
+	bolt->r.contents = CONTENTS_SHOOTABLE;
+	VectorCopy(mins, bolt->r.mins);
+	VectorCopy(maxs, bolt->r.maxs);
+	bolt->takedamage = qtrue;
+	bolt->health = 70;
+	bolt->die = G_ExplodePDGrenade;
+	//bolt-ignoresize = qtrue;
+	*/
+
 	bolt->s.pos.trType = TR_GRAVITY;
 	 bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;
 	VectorCopy( start, bolt->s.pos.trBase );

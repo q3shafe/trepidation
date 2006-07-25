@@ -850,6 +850,7 @@ typedef struct {
 	sfxHandle_t	sfx_ric3;
 	sfxHandle_t	sfx_railg;
 	sfxHandle_t	sfx_rockexp;
+	sfxHandle_t	sfx_devexp;
 	sfxHandle_t	sfx_plasmaexp;
 #ifdef MISSIONPACK
 	sfxHandle_t	sfx_proxexp;
@@ -998,6 +999,9 @@ typedef struct {
     qhandle_t scannerBlipUpShader;
     qhandle_t scannerBlipDownShader;
 	// End Shafe
+	
+	sfxHandle_t	hplb1aSound;
+	sfxHandle_t	hplb2aSound;
 
 } cgMedia_t;
 

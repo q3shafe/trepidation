@@ -2374,11 +2374,11 @@ static void CG_DrawWarmup( void ) {
 		} else if ( cgs.gametype == GT_FFA && cgs.g_GameMode == 0) {
 			s = "Free For All";
 		} else if ( cgs.g_GameMode == 2) {
-			s = "Last Man Standing";
+			s = "Survival";
 		} else if ( cgs.gametype == GT_TEAM ) {
 			if ( cgs.g_GameMode == 2) 
 			{
-				s = "Team Last Man Standing";
+				s = "Team Survival";
 			} else {
 				s = "Team Deathmatch";
 			}

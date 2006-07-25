@@ -279,7 +279,7 @@ void CG_DrawInformation( void ) {
 		}
 		if (cgs.g_GameMode == 2) 
 		{
-			s = "Last Man Standing";
+			s = "Survival";
 		}
 		break;
 	case GT_SINGLE_PLAYER:
@@ -291,7 +291,7 @@ void CG_DrawInformation( void ) {
 	case GT_TEAM:
 		if (cgs.g_GameMode == 2) 
 		{
-			s = "Team Last Man Standing";
+			s = "Team Survival";
 		} else {
 			s = "Team Deathmatch";
 		}

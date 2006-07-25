@@ -2029,10 +2029,10 @@ void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, im
 		mod = cgs.media.dishFlashModel;
 		//shader = cgs.media.bfgExplosionShader;
 		shader = cgs.media.grenadeExplosionShader;
-		sfx = cgs.media.sfx_rockexp;
+		sfx = cgs.media.sfx_devexp;
 		mark = cgs.media.burnMarkShader;
-		radius = 200;
-		light = 400;
+		radius = 350;
+		light = 300;
 		isSprite = qtrue;
 		duration = 1500;
 		lightColor[0] = 1;
@@ -2099,7 +2099,17 @@ void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, im
 	}
 
 	if ( sfx ) {
-		trap_S_StartSound( origin, ENTITYNUM_WORLD, CHAN_AUTO, sfx );
+		
+		if (sfx == cgs.media.sfx_devexp)
+		{
+			
+			trap_S_StartLocalSound(sfx, CHAN_AUTO);
+		} 
+		else 
+		{
+			trap_S_StartSound( origin, ENTITYNUM_WORLD, CHAN_AUTO, sfx );
+		}
+		
 	}
 
 	//

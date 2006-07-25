@@ -49,7 +49,7 @@ line 29
 ;27:
 ;28:	// if it's not switched on server-side, forget it
 ;29:	if ( !cgs.delagHitscan ) {
-ADDRGP4 cgs+153912
+ADDRGP4 cgs+153924
 INDIRI4
 CNSTI4 0
 NEI4 $77
@@ -1307,7 +1307,7 @@ ARGP4
 ADDRGP4 cg+107636+140
 INDIRI4
 ARGI4
-CNSTI4 100663297
+CNSTI4 100664321
 ARGI4
 ADDRGP4 CG_Trace
 CALLV
