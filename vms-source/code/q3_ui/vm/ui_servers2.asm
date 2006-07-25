@@ -267,7 +267,7 @@ line 294
 ;124:	"Tournament",
 ;125:	"Capture the Flag",
 ;126:	"Arsenal",			// Shafe - Trep - New Gametype
-;127:	"Last Man Standing",	// Shafe - Trep - New Gametype
+;127:	"Survival",	// Shafe - Trep - New Gametype
 ;128:	0
 ;129:};
 ;130:
@@ -9954,23 +9954,14 @@ byte 1 101
 byte 1 0
 align 1
 LABELV $83
-byte 1 76
-byte 1 97
-byte 1 115
-byte 1 116
-byte 1 32
-byte 1 77
-byte 1 97
-byte 1 110
-byte 1 32
 byte 1 83
-byte 1 116
-byte 1 97
-byte 1 110
-byte 1 100
+byte 1 117
+byte 1 114
+byte 1 118
 byte 1 105
-byte 1 110
-byte 1 103
+byte 1 118
+byte 1 97
+byte 1 108
 byte 1 0
 align 1
 LABELV $82

@@ -124,7 +124,7 @@ static const char *servertype_items[] = {
 	"Tournament",
 	"Capture the Flag",
 	"Arsenal",			// Shafe - Trep - New Gametype
-	"Last Man Standing",	// Shafe - Trep - New Gametype
+	"Survival",	// Shafe - Trep - New Gametype
 	0
 };
 

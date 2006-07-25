@@ -10226,7 +10226,7 @@ CNSTI4 0
 ASGNI4
 line 2068
 ;2068:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+152852+748
+ADDRGP4 cgs+152852+752
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -10398,7 +10398,7 @@ CNSTI4 0
 ASGNI4
 line 2109
 ;2109:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+152852+748
+ADDRGP4 cgs+152852+752
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -11266,7 +11266,7 @@ JUMPV
 LABELV $1071
 line 2372
 ;2372:		if ( cgs.g_GameMode == 1) {
-ADDRGP4 cgs+153920
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 1
 NEI4 $1093
@@ -11288,7 +11288,7 @@ INDIRI4
 ADDRLP4 32
 INDIRI4
 NEI4 $1097
-ADDRGP4 cgs+153920
+ADDRGP4 cgs+153932
 INDIRI4
 ADDRLP4 32
 INDIRI4
@@ -11303,12 +11303,12 @@ line 2376
 ADDRGP4 $1098
 JUMPV
 LABELV $1097
-ADDRGP4 cgs+153920
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 2
 NEI4 $1102
 line 2377
-;2377:			s = "Last Man Standing";
+;2377:			s = "Survival";
 ADDRLP4 8
 ADDRGP4 $1105
 ASGNP4
@@ -11323,14 +11323,14 @@ CNSTI4 3
 NEI4 $1106
 line 2379
 ;2379:			if ( cgs.g_GameMode == 2) 
-ADDRGP4 cgs+153920
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 2
 NEI4 $1109
 line 2380
 ;2380:			{
 line 2381
-;2381:				s = "Team Last Man Standing";
+;2381:				s = "Team Survival";
 ADDRLP4 8
 ADDRGP4 $1112
 ASGNP4
@@ -11511,7 +11511,7 @@ LABELV $1122
 line 2419
 ;2418:	
 ;2419:	if(cgs.g_GameMode == 1)
-ADDRGP4 cgs+153920
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 1
 NEI4 $1125
@@ -11596,7 +11596,7 @@ LABELV $1136
 line 2432
 ;2431:		case 0:
 ;2432:			trap_S_StartLocalSound( cgs.media.count1Sound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152852+984
+ADDRGP4 cgs+152852+988
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -11612,7 +11612,7 @@ LABELV $1139
 line 2435
 ;2434:		case 1:
 ;2435:			trap_S_StartLocalSound( cgs.media.count2Sound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152852+980
+ADDRGP4 cgs+152852+984
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -11628,7 +11628,7 @@ LABELV $1142
 line 2438
 ;2437:		case 2:
 ;2438:			trap_S_StartLocalSound( cgs.media.count3Sound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+152852+976
+ADDRGP4 cgs+152852+980
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -13049,43 +13049,25 @@ byte 1 101
 byte 1 97
 byte 1 109
 byte 1 32
-byte 1 76
-byte 1 97
-byte 1 115
-byte 1 116
-byte 1 32
-byte 1 77
-byte 1 97
-byte 1 110
-byte 1 32
 byte 1 83
-byte 1 116
-byte 1 97
-byte 1 110
-byte 1 100
+byte 1 117
+byte 1 114
+byte 1 118
 byte 1 105
-byte 1 110
-byte 1 103
+byte 1 118
+byte 1 97
+byte 1 108
 byte 1 0
 align 1
 LABELV $1105
-byte 1 76
-byte 1 97
-byte 1 115
-byte 1 116
-byte 1 32
-byte 1 77
-byte 1 97
-byte 1 110
-byte 1 32
 byte 1 83
-byte 1 116
-byte 1 97
-byte 1 110
-byte 1 100
+byte 1 117
+byte 1 114
+byte 1 118
 byte 1 105
-byte 1 110
-byte 1 103
+byte 1 118
+byte 1 97
+byte 1 108
 byte 1 0
 align 1
 LABELV $1101

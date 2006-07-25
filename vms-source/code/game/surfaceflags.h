@@ -17,7 +17,12 @@
 #define CONTENTS_NOTTEAM2		0x0100
 #define CONTENTS_NOBOTCLIP		0x0200
 
+// new contents for things like ammo boxes and rockets
+#define CONTENTS_SHOOTABLE		0x0400
+
+
 #define	CONTENTS_AREAPORTAL		0x8000
+
 
 #define	CONTENTS_PLAYERCLIP		0x10000
 #define	CONTENTS_MONSTERCLIP	0x20000

@@ -487,6 +487,7 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 	int				clientNum;
 	clientInfo_t	*ci;
 
+	
 	es = &cent->currentState;
 	event = es->event & ~EV_EVENT_BITS;
 
@@ -881,6 +882,15 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hgrenb1aSound );
 		} else {
 			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hgrenb2aSound );
+		}
+		break;
+
+	case EV_PL_BOUNCE:
+		DEBUGNAME("EV_PL_BOUNCE");
+		if ( rand() & 1 ) {
+			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hplb1aSound );
+		} else {
+			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hplb2aSound );
 		}
 		break;
 

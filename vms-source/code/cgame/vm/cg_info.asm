@@ -1495,7 +1495,7 @@ LABELV $157
 line 272
 ;271:	case GT_FFA:
 ;272:		if (cgs.g_GameMode == 0) 
-ADDRGP4 cgs+153920
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 0
 NEI4 $158
@@ -1511,7 +1511,7 @@ line 275
 LABELV $158
 line 276
 ;276:		if (cgs.g_GameMode == 1) 
-ADDRGP4 cgs+153920
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 1
 NEI4 $162
@@ -1527,14 +1527,14 @@ line 279
 LABELV $162
 line 280
 ;280:		if (cgs.g_GameMode == 2) 
-ADDRGP4 cgs+153920
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 2
 NEI4 $154
 line 281
 ;281:		{
 line 282
-;282:			s = "Last Man Standing";
+;282:			s = "Survival";
 ADDRLP4 0
 ADDRGP4 $169
 ASGNP4
@@ -1570,14 +1570,14 @@ LABELV $174
 line 292
 ;291:	case GT_TEAM:
 ;292:		if (cgs.g_GameMode == 2) 
-ADDRGP4 cgs+153920
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 2
 NEI4 $175
 line 293
 ;293:		{
 line 294
-;294:			s = "Team Last Man Standing";
+;294:			s = "Team Survival";
 ADDRLP4 0
 ADDRGP4 $178
 ASGNP4
@@ -2568,23 +2568,14 @@ byte 1 101
 byte 1 97
 byte 1 109
 byte 1 32
-byte 1 76
-byte 1 97
-byte 1 115
-byte 1 116
-byte 1 32
-byte 1 77
-byte 1 97
-byte 1 110
-byte 1 32
 byte 1 83
-byte 1 116
-byte 1 97
-byte 1 110
-byte 1 100
+byte 1 117
+byte 1 114
+byte 1 118
 byte 1 105
-byte 1 110
-byte 1 103
+byte 1 118
+byte 1 97
+byte 1 108
 byte 1 0
 align 1
 LABELV $173
@@ -2617,23 +2608,14 @@ byte 1 114
 byte 1 0
 align 1
 LABELV $169
-byte 1 76
-byte 1 97
-byte 1 115
-byte 1 116
-byte 1 32
-byte 1 77
-byte 1 97
-byte 1 110
-byte 1 32
 byte 1 83
-byte 1 116
-byte 1 97
-byte 1 110
-byte 1 100
+byte 1 117
+byte 1 114
+byte 1 118
 byte 1 105
-byte 1 110
-byte 1 103
+byte 1 118
+byte 1 97
+byte 1 108
 byte 1 0
 align 1
 LABELV $165
