@@ -657,7 +657,7 @@ line 93
 line 94
 ;94:			g_entities[ent->r.ownerNum].client->accuracy_hits++;
 ADDRLP4 40
-CNSTI4 836
+CNSTI4 860
 ADDRFP4 0
 INDIRP4
 CNSTI4 512
@@ -890,7 +890,7 @@ line 283
 ;282:#endif
 ;283:	other = &g_entities[trace->entityNum];
 ADDRLP4 0
-CNSTI4 836
+CNSTI4 860
 ADDRFP4 4
 INDIRP4
 CNSTI4 52
@@ -1050,7 +1050,7 @@ line 337
 ADDRLP4 0
 INDIRP4
 ARGP4
-CNSTI4 836
+CNSTI4 860
 ADDRFP4 0
 INDIRP4
 CNSTI4 512
@@ -1071,7 +1071,7 @@ EQI4 $97
 line 338
 ;338:				g_entities[ent->r.ownerNum].client->accuracy_hits++;
 ADDRLP4 28
-CNSTI4 836
+CNSTI4 860
 ADDRFP4 0
 INDIRP4
 CNSTI4 512
@@ -1147,7 +1147,7 @@ ASGNP4
 ADDRLP4 32
 INDIRP4
 ARGP4
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 32
 INDIRP4
 CNSTI4 512
@@ -1836,7 +1836,7 @@ NEI4 $120
 line 459
 ;459:				g_entities[ent->r.ownerNum].client->accuracy_hits++;
 ADDRLP4 28
-CNSTI4 836
+CNSTI4 860
 ADDRFP4 0
 INDIRP4
 CNSTI4 512

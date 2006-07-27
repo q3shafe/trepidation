@@ -1027,7 +1027,7 @@ LABELV $113
 line 248
 ;248:			ent = &g_entities[i];
 ADDRLP4 0
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -3826,7 +3826,7 @@ INDIRI4
 NEI4 $353
 line 761
 ;761:			Cmd_Score_f( g_entities + i );
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -5089,7 +5089,7 @@ NEU4 $398
 line 1038
 ;1038:		inflictor = &g_entities[ENTITYNUM_WORLD];
 ADDRFP4 4
-ADDRGP4 g_entities+854392
+ADDRGP4 g_entities+878920
 ASGNP4
 line 1039
 ;1039:	}
@@ -5104,7 +5104,7 @@ NEU4 $401
 line 1041
 ;1041:		attacker = &g_entities[ENTITYNUM_WORLD];
 ADDRFP4 8
-ADDRGP4 g_entities+854392
+ADDRGP4 g_entities+878920
 ASGNP4
 line 1042
 ;1042:	}
@@ -7172,7 +7172,7 @@ LABELV $530
 line 1371
 ;1371:		ent = &g_entities[entityList[ e ]];
 ADDRLP4 4
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 20
 INDIRI4
 CNSTI4 2

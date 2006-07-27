@@ -1045,7 +1045,7 @@ ADDRLP4 16
 CNSTI4 1
 ASGNI4
 ADDRLP4 4
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 16
 INDIRI4
 MULI4
@@ -1136,7 +1136,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 4
 INDIRP4
-CNSTI4 836
+CNSTI4 860
 ADDP4
 ASGNP4
 ADDRGP4 $170
@@ -1333,7 +1333,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 836
+CNSTI4 860
 ADDP4
 ASGNP4
 LABELV $170
@@ -1355,7 +1355,7 @@ ASGNI4
 ADDRLP4 4
 ADDRLP4 4
 INDIRP4
-CNSTI4 836
+CNSTI4 860
 ADDP4
 ASGNP4
 LABELV $159
@@ -2331,7 +2331,7 @@ ADDRGP4 g_entities
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 856064
+CNSTI4 880640
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -2377,7 +2377,7 @@ JUMPV
 LABELV $290
 line 599
 ;599:		g_entities[i].client = level.clients + i;
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2426,7 +2426,7 @@ ARGP4
 ADDRGP4 level+12
 INDIRI4
 ARGI4
-CNSTI4 836
+CNSTI4 860
 ARGI4
 ADDRGP4 level
 INDIRP4
@@ -3024,7 +3024,7 @@ ASGNI4
 line 771
 ;770:	// set them to free-for-all team
 ;771:	SetTeam( &g_entities[ nextInLine - level.clients ], "f" );
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 8
 INDIRP4
 CVPU4 4
@@ -3106,7 +3106,7 @@ line 795
 ;793:
 ;794:	// make them a spectator
 ;795:	SetTeam( &g_entities[ clientNum ], "s" );
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -3178,7 +3178,7 @@ line 817
 ;815:
 ;816:	// make them a spectator
 ;817:	SetTeam( &g_entities[ clientNum ], "s" );
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -3814,7 +3814,7 @@ ADDI4
 ASGNI4
 line 936
 ;936:					if ( !(g_entities[i].r.svFlags & SVF_BOT) ) {
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4555,7 +4555,7 @@ CNSTI4 2
 NEI4 $523
 line 1039
 ;1039:			DeathmatchScoreboardMessage( g_entities + i );
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -5046,7 +5046,7 @@ LABELV $570
 line 1149
 ;1149:		client = g_entities + i;
 ADDRLP4 0
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -5959,7 +5959,7 @@ LABELV $672
 line 1379
 ;1378:		}
 ;1379:		if ( g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT ) {
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -6532,7 +6532,7 @@ LABELV $742
 line 1519
 ;1516:
 ;1517:	// Arsenal And Last Man Standing
-;1518:	// We dont do a showdown or find a winner for at least 15 seconds into the game.
+;1518:	// We dont do a showdown or find a winner for at least 10 seconds into the game.
 ;1519:	if (( g_GameMode.integer == 1) || (g_GameMode.integer == 2))
 ADDRGP4 g_GameMode+12
 INDIRI4
@@ -6546,13 +6546,13 @@ LABELV $757
 line 1520
 ;1520:	{
 line 1521
-;1521:		if (((level.time-level.startTime) > 15000) && (level.firstStrike == qtrue))
+;1521:		if (((level.time-level.startTime) > 10000) && (level.firstStrike == qtrue))
 ADDRGP4 level+32
 INDIRI4
 ADDRGP4 level+40
 INDIRI4
 SUBI4
-CNSTI4 15000
+CNSTI4 10000
 LEI4 $758
 ADDRGP4 level+9228
 INDIRI4
@@ -6676,7 +6676,7 @@ ASGNP4
 line 1549
 ;1549:								self = &g_entities[i];
 ADDRLP4 24
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -9102,7 +9102,7 @@ JUMPV
 LABELV $1066
 line 1995
 ;1995:			if (!(g_entities[i].r.svFlags & SVF_BOT)) {
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10066,7 +10066,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 836
+CNSTI4 860
 ADDP4
 ASGNP4
 LABELV $1142
@@ -10170,7 +10170,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 836
+CNSTI4 860
 ADDP4
 ASGNP4
 LABELV $1172
@@ -10257,7 +10257,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 836
+CNSTI4 860
 ADDP4
 ASGNP4
 LABELV $1183
@@ -10354,7 +10354,7 @@ ARGP4
 ADDRLP4 4
 INDIRI4
 ARGI4
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -10477,7 +10477,7 @@ line 2291
 ;2290:                //get a pointer to the entity
 ;2291:                ent = g_entities + i;
 ADDRLP4 4
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -11233,7 +11233,7 @@ skip 272
 export g_entities
 align 4
 LABELV g_entities
-skip 856064
+skip 880640
 export level
 align 4
 LABELV level
@@ -14402,7 +14402,7 @@ byte 1 117
 byte 1 108
 byte 1 32
 byte 1 50
-byte 1 53
+byte 1 55
 byte 1 32
 byte 1 50
 byte 1 48

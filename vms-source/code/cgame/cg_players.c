@@ -460,6 +460,19 @@ static qboolean	CG_FindClientHeadFile( char *filename, int length, clientInfo_t 
 			if ( CG_FileExists( filename ) ) {
 				return qtrue;
 			}
+			
+			// Try EF Format
+			if ( i == 0 && teamName && *teamName ) {
+				Com_sprintf( filename, length, "models/players2/%s%s/%s/%s%s_%s.%s", headsFolder, headModelName, headSkinName, teamName, base, team, ext );
+			}
+			else {
+				Com_sprintf( filename, length, "models/players2/%s%s/%s/%s_%s.%s", headsFolder, headModelName, headSkinName, base, team, ext );
+			}
+			if ( CG_FileExists( filename ) ) {
+				return qtrue;
+			}
+
+			// q3 format
 			if ( cgs.gametype >= GT_TEAM ) {
 				if ( i == 0 &&  teamName && *teamName ) {
 					Com_sprintf( filename, length, "models/players/%s%s/%s%s_%s.%s", headsFolder, headModelName, teamName, base, team, ext );
@@ -476,9 +489,35 @@ static qboolean	CG_FindClientHeadFile( char *filename, int length, clientInfo_t 
 					Com_sprintf( filename, length, "models/players/%s%s/%s_%s.%s", headsFolder, headModelName, base, headSkinName, ext );
 				}
 			}
+
 			if ( CG_FileExists( filename ) ) {
 				return qtrue;
+			} 
+
+			// EF Format
+			if ( cgs.gametype >= GT_TEAM ) {
+				if ( i == 0 &&  teamName && *teamName ) {
+					Com_sprintf( filename, length, "models/players2/%s%s/%s%s_%s.%s", headsFolder, headModelName, teamName, base, team, ext );
+				}
+				else {
+					Com_sprintf( filename, length, "models/players2/%s%s/%s_%s.%s", headsFolder, headModelName, base, team, ext );
+				}
 			}
+			else {
+				if ( i == 0 && teamName && *teamName ) {
+					Com_sprintf( filename, length, "models/players2/%s%s/%s%s_%s.%s", headsFolder, headModelName, teamName, base, headSkinName, ext );
+				}
+				else {
+					Com_sprintf( filename, length, "models/players2/%s%s/%s_%s.%s", headsFolder, headModelName, base, headSkinName, ext );
+				}
+			}
+
+			if ( CG_FileExists( filename ) ) {
+				return qtrue;
+			} 
+
+
+
 			if ( !teamName || !*teamName ) {
 				break;
 			}

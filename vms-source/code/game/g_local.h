@@ -168,6 +168,8 @@ struct gentity_s {
 	gitem_t		*item;			// for bonus items
 	int			constantSpeed;	// used for homing missiles to avoid floating point error
 								// in speed calculations
+	vec3_t		turloc;			// Used for turrets
+	vec3_t		centerpoint;	// USed for Turrets
 };
 
 
