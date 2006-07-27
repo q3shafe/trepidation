@@ -1080,6 +1080,8 @@ void ClientBegin( int clientNum ) {
 	CalculateRanks();
 }
 
+
+
 /*
 ===========
 ClientSpawn
@@ -1298,6 +1300,21 @@ void ClientSpawn(gentity_t *ent) {
 		if ((g_GameMode.integer == 2) && (g_instagib.integer == 0))
 		{
 			wpn = irandom(1,9); // Lets clean this up so you can specify which weapons are allowed
+			
+			/* This is such a bad way to do this
+			if (g_StartGauntlet.integer == 0) && (wpn == 1) { wpn++; }
+			if (g_StartMG.integer == 0) && (wpn == 2) { wpn++; }
+			if (g_StartSG.integer == 0) && (wpn == 3) { wpn++; }
+			if (g_StartGrenade.integer == 0) && (wpn == 4) { wpn++; }
+			if (g_StartSingCan.integer == 0) && (wpn == 5) { wpn++; }
+			if (g_StartSingFlame.integer == 0) && (wpn == 6) { wpn++; }
+			if (g_StartGauss.integer == 0) && (wpn == 7) { wpn++; }
+			if (g_StartPlasma.integer == 0) && (wpn == 8) { wpn++; }
+			// If the bfg is disabled... Revert to the machine gun..
+			// This is just flat out bad code.
+			if (g_StartBFG.integer == 0) && (wpn == 9) { wpn = 2; } 
+			*/
+
 			client->ps.stats[STAT_WEAPONS] = ( 1 << wpn );
 			client->ps.ammo[wpn] = 9999;
 		}

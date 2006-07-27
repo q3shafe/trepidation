@@ -5,6 +5,46 @@
 #include "cg_local.h"
 
 
+static void CG_TURRET(centity_t *cent)
+{
+	refEntity_t			ent;
+	entityState_t		*s1;
+	
+
+	s1 = &cent->currentState;
+
+	memset (&ent, 0, sizeof(ent));
+
+	VectorCopy( cent->lerpOrigin, ent.origin);
+	VectorCopy( cent->lerpOrigin, ent.oldorigin);
+
+
+	ent.frame = s1->frame;
+	ent.oldframe = ent.frame;
+	ent.backlerp = 0;
+	// convert angles to axis
+	AnglesToAxis( cent->lerpAngles, ent.axis );
+	
+	ent.hModel=cgs.gameModels[s1->modelindex];
+	// add to refresh list
+	switch (s1->time2){
+	case 1:
+		trap_R_AddRefEntityToScene (&ent); // make the model show up
+		ent.customShader=cgs.media.battleSuitShader;
+		trap_R_AddRefEntityToScene (&ent); // make the shader show up
+		break;	
+	case 2:
+		ent.customShader=cgs.media.invisShader;
+		trap_R_AddRefEntityToScene (&ent); // make the shader show up. no model
+		break;
+	case 3:
+		trap_R_AddRefEntityToScene (&ent); // just add the model (uncloaked cloaking turret)
+		break;
+	default:
+		trap_R_AddRefEntityToScene (&ent); // if something else has happened
+	}
+}
+
 /*
 ======================
 CG_PositionEntityOnTag
@@ -1027,6 +1067,9 @@ static void CG_AddCEntity( centity_t *cent ) {
 		break;
 	case ET_GRAPPLE:
 		CG_Grapple( cent );
+		break;
+	case ET_TURRET:
+		CG_TURRET(cent);
 		break;
 	case ET_TEAM:
 		CG_TeamBase( cent );

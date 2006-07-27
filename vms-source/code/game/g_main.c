@@ -1515,10 +1515,10 @@ void CheckExitRules( void ) {
 	}
 
 	// Arsenal And Last Man Standing
-	// We dont do a showdown or find a winner for at least 15 seconds into the game.
+	// We dont do a showdown or find a winner for at least 10 seconds into the game.
 	if (( g_GameMode.integer == 1) || (g_GameMode.integer == 2))
 	{
-		if (((level.time-level.startTime) > 15000) && (level.firstStrike == qtrue))
+		if (((level.time-level.startTime) > 10000) && (level.firstStrike == qtrue))
 		{
 			gclient_t		*survivor = NULL;		
 			int				tmpCnt;

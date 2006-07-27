@@ -76,10 +76,13 @@ typedef struct
 	playerInfo_t	playerinfo;
 	int				nummodels;
 	char			modelnames[MAX_PLAYERMODELS][128];
+	char			iconnames[MAX_PLAYERMODELS][128];
 	int				modelpage;
 	int				numpages;
 	char			modelskin[64];
 	int				selectedmodel;
+	char			efmodel[MAX_PLAYERMODELS][1];
+	
 } playermodel_t;
 
 static playermodel_t s_playermodel;
@@ -100,7 +103,8 @@ static void PlayerModel_UpdateGrid( void )
 		if (j < s_playermodel.nummodels)
 		{ 
 			// model/skin portrait
- 			s_playermodel.pics[i].generic.name         = s_playermodel.modelnames[j];
+ 			s_playermodel.pics[i].generic.name         = s_playermodel.iconnames[j];//s_playermodel.modelnames[j];
+			Com_Printf( "s_playermodel.pics[i].generic.name: %s  n", s_playermodel.iconnames[j] );	
 			s_playermodel.picbuttons[i].generic.flags &= ~QMF_INACTIVE;
 		}
 		else
@@ -311,7 +315,10 @@ static void PlayerModel_PicEvent( void* ptr, int event )
 
 	// get model and strip icon_
 	modelnum = s_playermodel.modelpage*MAX_MODELSPERPAGE + i;
+	
+
 	buffptr  = s_playermodel.modelnames[modelnum] + strlen("models/players/");
+		
 	pdest    = strstr(buffptr,"icon_");
 	if (pdest)
 	{
@@ -320,6 +327,7 @@ static void PlayerModel_PicEvent( void* ptr, int event )
 		strcat(s_playermodel.modelskin,pdest + 5);
 
 		// seperate the model name
+
 		maxlen = pdest-buffptr;
 		if (maxlen > 16)
 			maxlen = 16;
@@ -370,6 +378,7 @@ static void PlayerModel_BuildList( void )
 	int		numdirs;
 	int		numfiles;
 	char	dirlist[2048];
+	char	dirlist2[2048];
 	char	filelist[2048];
 	char	skinname[64];
 	char*	dirptr;
@@ -409,9 +418,17 @@ static void PlayerModel_BuildList( void )
 			// look for icon_????
 			if (!Q_stricmpn(skinname,"icon_",5))
 			{
+				
+				Com_sprintf( s_playermodel.iconnames[s_playermodel.nummodels],
+					sizeof( s_playermodel.iconnames[s_playermodel.nummodels] ),
+					"models/players/%s/%s", dirptr, skinname );
+
 				Com_sprintf( s_playermodel.modelnames[s_playermodel.nummodels++],
 					sizeof( s_playermodel.modelnames[s_playermodel.nummodels] ),
 					"models/players/%s/%s", dirptr, skinname );
+				
+
+				
 				//if (s_playermodel.nummodels >= MAX_PLAYERMODELS)
 				//	return;
 			}
@@ -426,8 +443,8 @@ static void PlayerModel_BuildList( void )
 
 
 	// iterate directory of all player models
-	numdirs = trap_FS_GetFileList("models/players2", "/", dirlist, 2048 );
-	dirptr  = dirlist;
+	numdirs = trap_FS_GetFileList("models/players2", "/", dirlist2, 2048 );
+	dirptr  = dirlist2;
 	for (i=0; i<numdirs && s_playermodel.nummodels < MAX_PLAYERMODELS; i++,dirptr+=dirlen+1)
 	{
 		dirlen = strlen(dirptr);
@@ -445,13 +462,23 @@ static void PlayerModel_BuildList( void )
 			filelen = strlen(fileptr);
 
 			COM_StripExtension(fileptr,skinname);
-
+			
 			// look for icon_????
 			if (!Q_stricmpn(skinname,"icon_",5))
 			{
+				
+				
+				Com_sprintf( s_playermodel.iconnames[s_playermodel.nummodels],
+					sizeof( s_playermodel.iconnames[s_playermodel.nummodels] ),
+					"models/players2/%s/%s", dirptr, skinname );
+				
 				Com_sprintf( s_playermodel.modelnames[s_playermodel.nummodels++],
 					sizeof( s_playermodel.modelnames[s_playermodel.nummodels] ),
 					"models/players/%s/%s", dirptr, skinname );
+
+
+				
+				
 				//if (s_playermodel.nummodels >= MAX_PLAYERMODELS)
 				//	return;
 			}
@@ -487,6 +514,9 @@ static void PlayerModel_SetMenuItems( void )
 	char			modelskin[64];
 	char*			buffptr;
 	char*			pdest;
+	qboolean		gotmodel;
+
+	gotmodel = qfalse;
 
 	// name
 	trap_Cvar_VariableStringBuffer( "name", s_playermodel.playername.string, 16 );
@@ -505,9 +535,26 @@ static void PlayerModel_SetMenuItems( void )
 		{
 			Q_strncpyz(modelskin,buffptr,pdest-buffptr+1);
 			strcat(modelskin,pdest + 5);
+			gotmodel = qtrue;
 		}
-		else
+		
+		//q3 didnt work, now try for ef
+		if (gotmodel == qfalse)
+		{
+			buffptr  = s_playermodel.modelnames[i] + strlen("models/players2/");
+			pdest    = strstr(buffptr,"icon_");
+			if (pdest)
+			{
+				Q_strncpyz(modelskin,buffptr,pdest-buffptr+1);
+				strcat(modelskin,pdest + 5);
+				gotmodel = qtrue;
+			}
+		}
+
+		if (gotmodel == qfalse)
+		{
 			continue;
+		}
 
 		if (!Q_stricmp( s_playermodel.modelskin, modelskin ))
 		{

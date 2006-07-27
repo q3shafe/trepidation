@@ -180,7 +180,7 @@ CNSTI4 0
 EQI4 $61
 line 49
 ;49:		return &g_entities[ tr.entityNum ];
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 0+52
 INDIRI4
 MULI4
@@ -2464,7 +2464,7 @@ LABELV $182
 line 300
 ;300:		check = &g_entities[ entityList[ e ] ];
 ADDRLP4 8
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 12
 INDIRI4
 CNSTI4 2

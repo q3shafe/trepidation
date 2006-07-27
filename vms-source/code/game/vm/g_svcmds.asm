@@ -1383,7 +1383,7 @@ line 303
 ;302:
 ;303:	check = g_entities+1;
 ADDRLP4 0
-ADDRGP4 g_entities+836
+ADDRGP4 g_entities+860
 ASGNP4
 line 304
 ;304:	for (e = 1; e < level.num_entities ; e++, check++) {
@@ -1681,7 +1681,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 836
+CNSTI4 860
 ADDP4
 ASGNP4
 LABELV $187
@@ -1980,7 +1980,7 @@ CALLV
 pop
 line 415
 ;415:	SetTeam( &g_entities[cl - level.clients], str );
-CNSTI4 836
+CNSTI4 860
 ADDRLP4 1024
 INDIRP4
 CVPU4 4

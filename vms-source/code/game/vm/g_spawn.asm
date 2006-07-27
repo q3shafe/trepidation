@@ -2320,12 +2320,12 @@ pop
 line 580
 ;579:
 ;580:	g_entities[ENTITYNUM_WORLD].s.number = ENTITYNUM_WORLD;
-ADDRGP4 g_entities+854392
+ADDRGP4 g_entities+878920
 CNSTI4 1022
 ASGNI4
 line 581
 ;581:	g_entities[ENTITYNUM_WORLD].classname = "worldspawn";
-ADDRGP4 g_entities+854392+524
+ADDRGP4 g_entities+878920+524
 ADDRGP4 $284
 ASGNP4
 line 584
