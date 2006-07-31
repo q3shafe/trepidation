@@ -1182,6 +1182,8 @@ G_Say
 ==================
 */
 
+
+
 static void G_SayTo( gentity_t *ent, gentity_t *other, int mode, int color, const char *name, const char *message ) {
 	if (!other) {
 		return;
@@ -1250,6 +1252,12 @@ void G_Say( gentity_t *ent, gentity_t *target, int mode, const char *chatText ) 
 		else
 			Com_sprintf (name, sizeof(name), EC"[%s%c%c"EC"]"EC": ", ent->client->pers.netname, Q_COLOR_ESCAPE, COLOR_WHITE );
 		color = COLOR_MAGENTA;
+		break;
+	case SAY_INVAL:
+		G_LogPrintf( "Invalid During Intermission: %s: %s\n", ent->client->pers.netname, chatText );
+		Com_sprintf (name, sizeof(name), "[Invalid During Intermission%c%c]: ", Q_COLOR_ESCAPE, COLOR_WHITE );
+		color = COLOR_GREEN;
+		target = ent;
 		break;
 	}
 
@@ -2030,7 +2038,7 @@ void ClientCommand( int clientNum ) {
 
 	// ignore all other commands when at intermission
 	if (level.intermissiontime) {
-		Cmd_Say_f (ent, qfalse, qtrue);
+		Cmd_Say_f (ent, SAY_INVAL, qtrue);
 		return;
 	}
 

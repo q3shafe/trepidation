@@ -44,9 +44,9 @@ line 37
 ADDRLP4 2052
 CNSTI4 0
 ASGNI4
-ADDRGP4 $89
+ADDRGP4 $91
 JUMPV
-LABELV $88
+LABELV $90
 line 39
 ;38:
 ;39:	while ( 1 ) {
@@ -69,19 +69,19 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $91
+NEI4 $93
 line 42
 ;42:			break;
-ADDRGP4 $90
+ADDRGP4 $92
 JUMPV
-LABELV $91
+LABELV $93
 line 44
 ;43:		}
 ;44:		if ( strcmp( token, "{" ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $95
+ADDRGP4 $97
 ARGP4
 ADDRLP4 2060
 ADDRGP4 strcmp
@@ -90,19 +90,19 @@ ASGNI4
 ADDRLP4 2060
 INDIRI4
 CNSTI4 0
-EQI4 $93
+EQI4 $95
 line 45
 ;45:			Com_Printf( "Missing { in info file\n" );
-ADDRGP4 $96
+ADDRGP4 $98
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
 pop
 line 46
 ;46:			break;
-ADDRGP4 $90
+ADDRGP4 $92
 JUMPV
-LABELV $93
+LABELV $95
 line 49
 ;47:		}
 ;48:
@@ -111,19 +111,19 @@ ADDRLP4 2052
 INDIRI4
 ADDRFP4 4
 INDIRI4
-NEI4 $97
+NEI4 $99
 line 50
 ;50:			Com_Printf( "Max infos exceeded\n" );
-ADDRGP4 $99
+ADDRGP4 $101
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
 pop
 line 51
 ;51:			break;
-ADDRGP4 $90
+ADDRGP4 $92
 JUMPV
-LABELV $97
+LABELV $99
 line 54
 ;52:		}
 ;53:
@@ -131,9 +131,9 @@ line 54
 ADDRLP4 1028
 CNSTI1 0
 ASGNI1
-ADDRGP4 $101
+ADDRGP4 $103
 JUMPV
-LABELV $100
+LABELV $102
 line 55
 ;55:		while ( 1 ) {
 line 56
@@ -157,26 +157,26 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $103
+NEI4 $105
 line 58
 ;58:				Com_Printf( "Unexpected end of info file\n" );
-ADDRGP4 $105
+ADDRGP4 $107
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
 pop
 line 59
 ;59:				break;
-ADDRGP4 $102
+ADDRGP4 $104
 JUMPV
-LABELV $103
+LABELV $105
 line 61
 ;60:			}
 ;61:			if ( !strcmp( token, "}" ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $108
+ADDRGP4 $110
 ARGP4
 ADDRLP4 2068
 ADDRGP4 strcmp
@@ -185,12 +185,12 @@ ASGNI4
 ADDRLP4 2068
 INDIRI4
 CNSTI4 0
-NEI4 $106
+NEI4 $108
 line 62
 ;62:				break;
-ADDRGP4 $102
+ADDRGP4 $104
 JUMPV
-LABELV $106
+LABELV $108
 line 64
 ;63:			}
 ;64:			Q_strncpyz( key, token, sizeof( key ) );
@@ -226,20 +226,20 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $109
+NEI4 $111
 line 68
 ;68:				strcpy( token, "<NULL>" );
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $111
+ADDRGP4 $113
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
 line 69
 ;69:			}
-LABELV $109
+LABELV $111
 line 70
 ;70:			Info_SetValueForKey( info, key, token );
 ADDRLP4 1028
@@ -254,11 +254,11 @@ CALLV
 pop
 line 71
 ;71:		}
-LABELV $101
+LABELV $103
 line 55
-ADDRGP4 $100
+ADDRGP4 $102
 JUMPV
-LABELV $102
+LABELV $104
 line 73
 ;72:		//NOTE: extra space for arena number
 ;73:		infos[count] = UI_Alloc(strlen(info) + strlen("\\num\\") + strlen(va("%d", MAX_ARENAS)) + 1);
@@ -268,13 +268,13 @@ ADDRLP4 2064
 ADDRGP4 strlen
 CALLI4
 ASGNI4
-ADDRGP4 $112
+ADDRGP4 $114
 ARGP4
 ADDRLP4 2068
 ADDRGP4 strlen
 CALLI4
 ASGNI4
-ADDRGP4 $113
+ADDRGP4 $115
 ARGP4
 CNSTI4 1024
 ARGI4
@@ -326,7 +326,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $114
+EQU4 $116
 line 75
 ;75:			strcpy(infos[count], info);
 ADDRLP4 2052
@@ -353,20 +353,20 @@ ADDI4
 ASGNI4
 line 77
 ;77:		}
-LABELV $114
+LABELV $116
 line 78
 ;78:	}
-LABELV $89
+LABELV $91
 line 39
-ADDRGP4 $88
+ADDRGP4 $90
 JUMPV
-LABELV $90
+LABELV $92
 line 79
 ;79:	return count;
 ADDRLP4 2052
 INDIRI4
 RETI4
-LABELV $87
+LABELV $89
 endproc UI_ParseInfos 2084 12
 proc UI_LoadArenasFromFile 8216 16
 line 87
@@ -404,10 +404,10 @@ line 93
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $117
+NEI4 $119
 line 94
 ;94:		trap_Print( va( S_COLOR_RED "file not found: %s\n", filename ) );
-ADDRGP4 $119
+ADDRGP4 $121
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -424,19 +424,19 @@ CALLV
 pop
 line 95
 ;95:		return;
-ADDRGP4 $116
+ADDRGP4 $118
 JUMPV
-LABELV $117
+LABELV $119
 line 97
 ;96:	}
 ;97:	if ( len >= MAX_ARENAS_TEXT ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 8192
-LTI4 $120
+LTI4 $122
 line 98
 ;98:		trap_Print( va( S_COLOR_RED "file too large: %s is %i, max allowed is %i", filename, len, MAX_ARENAS_TEXT ) );
-ADDRGP4 $122
+ADDRGP4 $124
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -466,9 +466,9 @@ CALLV
 pop
 line 100
 ;100:		return;
-ADDRGP4 $116
+ADDRGP4 $118
 JUMPV
-LABELV $120
+LABELV $122
 line 103
 ;101:	}
 ;102:
@@ -539,7 +539,7 @@ ADDI4
 ASGNI4
 line 108
 ;108:}
-LABELV $116
+LABELV $118
 endproc UI_LoadArenasFromFile 8216 16
 export UI_LoadArenas
 proc UI_LoadArenas 1524 16
@@ -575,9 +575,9 @@ line 128
 ;128:	trap_Cvar_Register( &arenasFile, "g_arenasFile", "", CVAR_INIT|CVAR_ROM );
 ADDRLP4 152
 ARGP4
-ADDRGP4 $125
+ADDRGP4 $127
 ARGP4
-ADDRGP4 $126
+ADDRGP4 $128
 ARGP4
 CNSTI4 80
 ARGI4
@@ -590,7 +590,7 @@ ADDRLP4 152+16
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $127
+EQI4 $129
 line 130
 ;130:		UI_LoadArenasFromFile(arenasFile.string);
 ADDRLP4 152+16
@@ -600,28 +600,28 @@ CALLV
 pop
 line 131
 ;131:	}
-ADDRGP4 $128
+ADDRGP4 $130
 JUMPV
-LABELV $127
+LABELV $129
 line 132
 ;132:	else {
 line 133
 ;133:		UI_LoadArenasFromFile("scripts/arenas.txt");
-ADDRGP4 $131
+ADDRGP4 $133
 ARGP4
 ADDRGP4 UI_LoadArenasFromFile
 CALLV
 pop
 line 134
 ;134:	}
-LABELV $128
+LABELV $130
 line 137
 ;135:
 ;136:	// get all arenas from .arena files
 ;137:	numdirs = trap_FS_GetFileList("scripts", ".arena", dirlist, 1024 );
-ADDRGP4 $132
+ADDRGP4 $134
 ARGP4
-ADDRGP4 $133
+ADDRGP4 $135
 ARGP4
 ADDRLP4 424
 ARGP4
@@ -645,9 +645,9 @@ line 139
 ADDRLP4 140
 CNSTI4 0
 ASGNI4
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $134
+LABELV $136
 line 140
 ;140:		dirlen = strlen(dirptr);
 ADDRLP4 8
@@ -665,7 +665,7 @@ line 141
 ;141:		strcpy(filename, "scripts/");
 ADDRLP4 12
 ARGP4
-ADDRGP4 $138
+ADDRGP4 $140
 ARGP4
 ADDRGP4 strcpy
 CALLP4
@@ -689,7 +689,7 @@ CALLV
 pop
 line 144
 ;144:	}
-LABELV $135
+LABELV $137
 line 139
 ADDRLP4 1452
 CNSTI4 1
@@ -711,15 +711,15 @@ ADDRLP4 8
 INDIRP4
 ADDP4
 ASGNP4
-LABELV $137
+LABELV $139
 ADDRLP4 140
 INDIRI4
 ADDRLP4 148
 INDIRI4
-LTI4 $134
+LTI4 $136
 line 145
 ;145:	trap_Print( va( "%i arenas parsed\n", ui_numArenas ) );
-ADDRGP4 $139
+ADDRGP4 $141
 ARGP4
 ADDRGP4 ui_numArenas
 INDIRI4
@@ -743,26 +743,26 @@ ASGNI4
 ADDRLP4 1460
 INDIRI4
 CNSTI4 0
-EQI4 $140
+EQI4 $142
 line 147
 ;147:		trap_Print(S_COLOR_YELLOW"WARNING: not anough memory in pool to load all arenas\n");
-ADDRGP4 $142
+ADDRGP4 $144
 ARGP4
 ADDRGP4 trap_Print
 CALLV
 pop
 line 148
 ;148:	}
-LABELV $140
+LABELV $142
 line 150
 ;149:
 ;150:	for( n = 0; n < ui_numArenas; n++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $146
+ADDRGP4 $148
 JUMPV
-LABELV $143
+LABELV $145
 line 153
 ;151:		// determine type
 ;152:
@@ -785,7 +785,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $153
+ADDRGP4 $155
 ARGP4
 ADDRLP4 1464
 ADDRGP4 Info_ValueForKey
@@ -817,7 +817,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $156
+ADDRGP4 $158
 ARGP4
 ADDRLP4 1472
 ADDRGP4 Info_ValueForKey
@@ -851,7 +851,7 @@ CNSTI4 -1
 ASGNI4
 line 157
 ;157:		uiInfo.mapList[uiInfo.mapCount].imageName = String_Alloc(va("levelshots/%s", uiInfo.mapList[uiInfo.mapCount].mapLoadName));
-ADDRGP4 $163
+ADDRGP4 $165
 ARGP4
 ADDRLP4 1480
 CNSTI4 100
@@ -907,7 +907,7 @@ ADDRGP4 ui_arenaInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $170
+ADDRGP4 $172
 ARGP4
 ADDRLP4 1492
 ADDRGP4 Info_ValueForKey
@@ -925,13 +925,13 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $171
+EQI4 $173
 line 163
 ;163:			if( strstr( type, "ffa" ) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $175
+ADDRGP4 $177
 ARGP4
 ADDRLP4 1496
 ADDRGP4 strstr
@@ -941,7 +941,7 @@ ADDRLP4 1496
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $173
+EQU4 $175
 line 164
 ;164:				uiInfo.mapList[uiInfo.mapCount].typeBits |= (1 << GT_FFA);
 ADDRLP4 1500
@@ -962,13 +962,13 @@ BORI4
 ASGNI4
 line 165
 ;165:			}
-LABELV $173
+LABELV $175
 line 166
 ;166:			if( strstr( type, "tourney" ) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $181
+ADDRGP4 $183
 ARGP4
 ADDRLP4 1500
 ADDRGP4 strstr
@@ -978,7 +978,7 @@ ADDRLP4 1500
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $179
+EQU4 $181
 line 167
 ;167:				uiInfo.mapList[uiInfo.mapCount].typeBits |= (1 << GT_TOURNAMENT);
 ADDRLP4 1504
@@ -999,13 +999,13 @@ BORI4
 ASGNI4
 line 168
 ;168:			}
-LABELV $179
+LABELV $181
 line 169
 ;169:			if( strstr( type, "ctf" ) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $187
+ADDRGP4 $189
 ARGP4
 ADDRLP4 1504
 ADDRGP4 strstr
@@ -1015,7 +1015,7 @@ ADDRLP4 1504
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $185
+EQU4 $187
 line 170
 ;170:				uiInfo.mapList[uiInfo.mapCount].typeBits |= (1 << GT_CTF);
 ADDRLP4 1508
@@ -1036,13 +1036,13 @@ BORI4
 ASGNI4
 line 171
 ;171:			}
-LABELV $185
+LABELV $187
 line 172
 ;172:			if( strstr( type, "oneflag" ) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $193
+ADDRGP4 $195
 ARGP4
 ADDRLP4 1508
 ADDRGP4 strstr
@@ -1052,7 +1052,7 @@ ADDRLP4 1508
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $191
+EQU4 $193
 line 173
 ;173:				uiInfo.mapList[uiInfo.mapCount].typeBits |= (1 << GT_1FCTF);
 ADDRLP4 1512
@@ -1073,13 +1073,13 @@ BORI4
 ASGNI4
 line 174
 ;174:			}
-LABELV $191
+LABELV $193
 line 175
 ;175:			if( strstr( type, "overload" ) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $199
+ADDRGP4 $201
 ARGP4
 ADDRLP4 1512
 ADDRGP4 strstr
@@ -1089,7 +1089,7 @@ ADDRLP4 1512
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $197
+EQU4 $199
 line 176
 ;176:				uiInfo.mapList[uiInfo.mapCount].typeBits |= (1 << GT_OBELISK);
 ADDRLP4 1516
@@ -1110,13 +1110,13 @@ BORI4
 ASGNI4
 line 177
 ;177:			}
-LABELV $197
+LABELV $199
 line 178
 ;178:			if( strstr( type, "harvester" ) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $205
+ADDRGP4 $207
 ARGP4
 ADDRLP4 1516
 ADDRGP4 strstr
@@ -1126,7 +1126,7 @@ ADDRLP4 1516
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $172
+EQU4 $174
 line 179
 ;179:				uiInfo.mapList[uiInfo.mapCount].typeBits |= (1 << GT_HARVESTER);
 ADDRLP4 1520
@@ -1149,9 +1149,9 @@ line 180
 ;180:			}
 line 181
 ;181:		} else {
-ADDRGP4 $172
+ADDRGP4 $174
 JUMPV
-LABELV $171
+LABELV $173
 line 182
 ;182:			uiInfo.mapList[uiInfo.mapCount].typeBits |= (1 << GT_FFA);
 ADDRLP4 1496
@@ -1172,7 +1172,7 @@ BORI4
 ASGNI4
 line 183
 ;183:		}
-LABELV $172
+LABELV $174
 line 185
 ;184:
 ;185:		uiInfo.mapCount++;
@@ -1192,16 +1192,16 @@ line 186
 ADDRGP4 uiInfo+83224
 INDIRI4
 CNSTI4 128
-LTI4 $213
+LTI4 $215
 line 187
 ;187:			break;
-ADDRGP4 $145
+ADDRGP4 $147
 JUMPV
-LABELV $213
+LABELV $215
 line 189
 ;188:		}
 ;189:	}
-LABELV $144
+LABELV $146
 line 150
 ADDRLP4 0
 ADDRLP4 0
@@ -1209,16 +1209,16 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $146
+LABELV $148
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numArenas
 INDIRI4
-LTI4 $143
-LABELV $145
+LTI4 $145
+LABELV $147
 line 190
 ;190:}
-LABELV $123
+LABELV $125
 endproc UI_LoadArenas 1524 16
 proc UI_LoadBotsFromFile 8216 16
 line 198
@@ -1256,10 +1256,10 @@ line 204
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $217
+NEI4 $219
 line 205
 ;205:		trap_Print( va( S_COLOR_RED "file not found: %s\n", filename ) );
-ADDRGP4 $119
+ADDRGP4 $121
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -1276,19 +1276,19 @@ CALLV
 pop
 line 206
 ;206:		return;
-ADDRGP4 $216
+ADDRGP4 $218
 JUMPV
-LABELV $217
+LABELV $219
 line 208
 ;207:	}
 ;208:	if ( len >= MAX_BOTS_TEXT ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 8192
-LTI4 $219
+LTI4 $221
 line 209
 ;209:		trap_Print( va( S_COLOR_RED "file too large: %s is %i, max allowed is %i", filename, len, MAX_BOTS_TEXT ) );
-ADDRGP4 $122
+ADDRGP4 $124
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -1318,9 +1318,9 @@ CALLV
 pop
 line 211
 ;211:		return;
-ADDRGP4 $216
+ADDRGP4 $218
 JUMPV
-LABELV $219
+LABELV $221
 line 214
 ;212:	}
 ;213:
@@ -1399,7 +1399,7 @@ ADDI4
 ASGNI4
 line 221
 ;221:}
-LABELV $216
+LABELV $218
 endproc UI_LoadBotsFromFile 8216 16
 export UI_LoadBots
 proc UI_LoadBots 1452 16
@@ -1429,9 +1429,9 @@ line 239
 ;239:	trap_Cvar_Register( &botsFile, "g_botsFile", "", CVAR_INIT|CVAR_ROM );
 ADDRLP4 144
 ARGP4
-ADDRGP4 $222
+ADDRGP4 $224
 ARGP4
-ADDRGP4 $126
+ADDRGP4 $128
 ARGP4
 CNSTI4 80
 ARGI4
@@ -1444,7 +1444,7 @@ ADDRLP4 144+16
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $223
+EQI4 $225
 line 241
 ;241:		UI_LoadBotsFromFile(botsFile.string);
 ADDRLP4 144+16
@@ -1454,28 +1454,28 @@ CALLV
 pop
 line 242
 ;242:	}
-ADDRGP4 $224
+ADDRGP4 $226
 JUMPV
-LABELV $223
+LABELV $225
 line 243
 ;243:	else {
 line 244
 ;244:		UI_LoadBotsFromFile("scripts/bots.txt");
-ADDRGP4 $227
+ADDRGP4 $229
 ARGP4
 ADDRGP4 UI_LoadBotsFromFile
 CALLV
 pop
 line 245
 ;245:	}
-LABELV $224
+LABELV $226
 line 248
 ;246:
 ;247:	// get all bots from .bot files
 ;248:	numdirs = trap_FS_GetFileList("scripts", ".bot", dirlist, 1024 );
-ADDRGP4 $132
+ADDRGP4 $134
 ARGP4
-ADDRGP4 $228
+ADDRGP4 $230
 ARGP4
 ADDRLP4 416
 ARGP4
@@ -1499,9 +1499,9 @@ line 250
 ADDRLP4 132
 CNSTI4 0
 ASGNI4
-ADDRGP4 $232
+ADDRGP4 $234
 JUMPV
-LABELV $229
+LABELV $231
 line 251
 ;251:		dirlen = strlen(dirptr);
 ADDRLP4 0
@@ -1519,7 +1519,7 @@ line 252
 ;252:		strcpy(filename, "scripts/");
 ADDRLP4 4
 ARGP4
-ADDRGP4 $138
+ADDRGP4 $140
 ARGP4
 ADDRGP4 strcpy
 CALLP4
@@ -1543,7 +1543,7 @@ CALLV
 pop
 line 255
 ;255:	}
-LABELV $230
+LABELV $232
 line 250
 ADDRLP4 1444
 CNSTI4 1
@@ -1565,15 +1565,15 @@ ADDRLP4 0
 INDIRP4
 ADDP4
 ASGNP4
-LABELV $232
+LABELV $234
 ADDRLP4 132
 INDIRI4
 ADDRLP4 140
 INDIRI4
-LTI4 $229
+LTI4 $231
 line 256
 ;256:	trap_Print( va( "%i bots parsed\n", ui_numBots ) );
-ADDRGP4 $233
+ADDRGP4 $235
 ARGP4
 ADDRGP4 ui_numBots
 INDIRI4
@@ -1590,7 +1590,7 @@ CALLV
 pop
 line 257
 ;257:}
-LABELV $221
+LABELV $223
 endproc UI_LoadBots 1452 16
 export UI_GetBotInfoByNumber
 proc UI_GetBotInfoByNumber 8 8
@@ -1612,16 +1612,16 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LTI4 $237
+LTI4 $239
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numBots
 INDIRI4
-LTI4 $235
-LABELV $237
+LTI4 $237
+LABELV $239
 line 267
 ;267:		trap_Print( va( S_COLOR_RED "Invalid bot number: %i\n", num ) );
-ADDRGP4 $238
+ADDRGP4 $240
 ARGP4
 ADDRFP4 0
 INDIRI4
@@ -1640,9 +1640,9 @@ line 268
 ;268:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $234
+ADDRGP4 $236
 JUMPV
-LABELV $235
+LABELV $237
 line 270
 ;269:	}
 ;270:	return ui_botInfos[num];
@@ -1654,7 +1654,7 @@ ADDRGP4 ui_botInfos
 ADDP4
 INDIRP4
 RETP4
-LABELV $234
+LABELV $236
 endproc UI_GetBotInfoByNumber 8 8
 export UI_GetBotInfoByName
 proc UI_GetBotInfoByName 16 8
@@ -1676,9 +1676,9 @@ line 283
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $243
+ADDRGP4 $245
 JUMPV
-LABELV $240
+LABELV $242
 line 284
 ;284:		value = Info_ValueForKey( ui_botInfos[n], "name" );
 ADDRLP4 0
@@ -1689,7 +1689,7 @@ ADDRGP4 ui_botInfos
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $244
+ADDRGP4 $246
 ARGP4
 ADDRLP4 8
 ADDRGP4 Info_ValueForKey
@@ -1714,7 +1714,7 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $245
+NEI4 $247
 line 286
 ;286:			return ui_botInfos[n];
 ADDRLP4 0
@@ -1725,13 +1725,13 @@ ADDRGP4 ui_botInfos
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $239
+ADDRGP4 $241
 JUMPV
-LABELV $245
+LABELV $247
 line 288
 ;287:		}
 ;288:	}
-LABELV $241
+LABELV $243
 line 283
 ADDRLP4 0
 ADDRLP4 0
@@ -1739,18 +1739,18 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $243
+LABELV $245
 ADDRLP4 0
 INDIRI4
 ADDRGP4 ui_numBots
 INDIRI4
-LTI4 $240
+LTI4 $242
 line 290
 ;289:
 ;290:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $239
+LABELV $241
 endproc UI_GetBotInfoByName 16 8
 export UI_GetNumBots
 proc UI_GetNumBots 0 0
@@ -1763,7 +1763,7 @@ line 294
 ADDRGP4 ui_numBots
 INDIRI4
 RETI4
-LABELV $247
+LABELV $249
 endproc UI_GetNumBots 0 0
 export UI_GetBotNameByNumber
 proc UI_GetBotNameByNumber 12 8
@@ -1791,13 +1791,13 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $249
+EQU4 $251
 line 301
 ;301:		return Info_ValueForKey( info, "name" );
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $244
+ADDRGP4 $246
 ARGP4
 ADDRLP4 8
 ADDRGP4 Info_ValueForKey
@@ -1806,15 +1806,15 @@ ASGNP4
 ADDRLP4 8
 INDIRP4
 RETP4
-ADDRGP4 $248
+ADDRGP4 $250
 JUMPV
-LABELV $249
+LABELV $251
 line 303
 ;302:	}
 ;303:	return "Sarge";
-ADDRGP4 $251
+ADDRGP4 $253
 RETP4
-LABELV $248
+LABELV $250
 endproc UI_GetBotNameByNumber 12 8
 bss
 align 4
@@ -2170,6 +2170,7 @@ import ui_marks
 import ui_drawCrosshairNames
 import ui_drawCrosshair
 import ui_brassTime
+import ui_browserMasterNum
 import ui_browserShowEmpty
 import ui_browserShowFull
 import ui_browserSortKey
@@ -2260,6 +2261,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -2362,6 +2364,8 @@ import _VectorAdd
 import _VectorSubtract
 import _DotProduct
 import SnapVectorTowards
+import tonextint
+import init_tonextint
 import ByteToDir
 import DirToByte
 import ClampShort
@@ -2422,7 +2426,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $251
+LABELV $253
 byte 1 83
 byte 1 97
 byte 1 114
@@ -2430,14 +2434,14 @@ byte 1 103
 byte 1 101
 byte 1 0
 align 1
-LABELV $244
+LABELV $246
 byte 1 110
 byte 1 97
 byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $238
+LABELV $240
 byte 1 94
 byte 1 49
 byte 1 73
@@ -2465,7 +2469,7 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $233
+LABELV $235
 byte 1 37
 byte 1 105
 byte 1 32
@@ -2483,14 +2487,14 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $228
+LABELV $230
 byte 1 46
 byte 1 98
 byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $227
+LABELV $229
 byte 1 115
 byte 1 99
 byte 1 114
@@ -2509,7 +2513,7 @@ byte 1 120
 byte 1 116
 byte 1 0
 align 1
-LABELV $222
+LABELV $224
 byte 1 103
 byte 1 95
 byte 1 98
@@ -2522,7 +2526,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $205
+LABELV $207
 byte 1 104
 byte 1 97
 byte 1 114
@@ -2534,7 +2538,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $199
+LABELV $201
 byte 1 111
 byte 1 118
 byte 1 101
@@ -2545,7 +2549,7 @@ byte 1 97
 byte 1 100
 byte 1 0
 align 1
-LABELV $193
+LABELV $195
 byte 1 111
 byte 1 110
 byte 1 101
@@ -2555,13 +2559,13 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $187
+LABELV $189
 byte 1 99
 byte 1 116
 byte 1 102
 byte 1 0
 align 1
-LABELV $181
+LABELV $183
 byte 1 116
 byte 1 111
 byte 1 117
@@ -2571,20 +2575,20 @@ byte 1 101
 byte 1 121
 byte 1 0
 align 1
-LABELV $175
+LABELV $177
 byte 1 102
 byte 1 102
 byte 1 97
 byte 1 0
 align 1
-LABELV $170
+LABELV $172
 byte 1 116
 byte 1 121
 byte 1 112
 byte 1 101
 byte 1 0
 align 1
-LABELV $163
+LABELV $165
 byte 1 108
 byte 1 101
 byte 1 118
@@ -2600,7 +2604,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $156
+LABELV $158
 byte 1 108
 byte 1 111
 byte 1 110
@@ -2611,13 +2615,13 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $153
+LABELV $155
 byte 1 109
 byte 1 97
 byte 1 112
 byte 1 0
 align 1
-LABELV $142
+LABELV $144
 byte 1 94
 byte 1 51
 byte 1 87
@@ -2676,7 +2680,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $139
+LABELV $141
 byte 1 37
 byte 1 105
 byte 1 32
@@ -2696,7 +2700,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $138
+LABELV $140
 byte 1 115
 byte 1 99
 byte 1 114
@@ -2707,7 +2711,7 @@ byte 1 115
 byte 1 47
 byte 1 0
 align 1
-LABELV $133
+LABELV $135
 byte 1 46
 byte 1 97
 byte 1 114
@@ -2716,7 +2720,7 @@ byte 1 110
 byte 1 97
 byte 1 0
 align 1
-LABELV $132
+LABELV $134
 byte 1 115
 byte 1 99
 byte 1 114
@@ -2726,7 +2730,7 @@ byte 1 116
 byte 1 115
 byte 1 0
 align 1
-LABELV $131
+LABELV $133
 byte 1 115
 byte 1 99
 byte 1 114
@@ -2747,10 +2751,10 @@ byte 1 120
 byte 1 116
 byte 1 0
 align 1
-LABELV $126
+LABELV $128
 byte 1 0
 align 1
-LABELV $125
+LABELV $127
 byte 1 103
 byte 1 95
 byte 1 97
@@ -2765,7 +2769,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $122
+LABELV $124
 byte 1 94
 byte 1 49
 byte 1 102
@@ -2813,7 +2817,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $119
+LABELV $121
 byte 1 94
 byte 1 49
 byte 1 102
@@ -2837,12 +2841,12 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $113
+LABELV $115
 byte 1 37
 byte 1 100
 byte 1 0
 align 1
-LABELV $112
+LABELV $114
 byte 1 92
 byte 1 110
 byte 1 117
@@ -2850,7 +2854,7 @@ byte 1 109
 byte 1 92
 byte 1 0
 align 1
-LABELV $111
+LABELV $113
 byte 1 60
 byte 1 78
 byte 1 85
@@ -2859,11 +2863,11 @@ byte 1 76
 byte 1 62
 byte 1 0
 align 1
-LABELV $108
+LABELV $110
 byte 1 125
 byte 1 0
 align 1
-LABELV $105
+LABELV $107
 byte 1 85
 byte 1 110
 byte 1 101
@@ -2894,7 +2898,7 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $99
+LABELV $101
 byte 1 77
 byte 1 97
 byte 1 120
@@ -2916,7 +2920,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $96
+LABELV $98
 byte 1 77
 byte 1 105
 byte 1 115
@@ -2942,6 +2946,6 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $95
+LABELV $97
 byte 1 123
 byte 1 0

@@ -515,15 +515,15 @@ but any server game effects are handled here
 ================
 */
 void ClientEvents( gentity_t *ent, int oldEventSequence ) {
-	int		i; // , j; unreferenced - Shafe - trep
+	int		i,j; // , j; unreferenced - Shafe - trep
 	int		event;
 	gclient_t *client;
 	int		damage;
 	vec3_t	dir;
 	vec3_t	origin, angles;
-//	qboolean	fired;
-//	gitem_t *item; // unreferenced - Shafe - trep
-//	gentity_t *drop; // unreferenced - Shafe - trep
+	qboolean	fired;
+	gitem_t *item; // unreferenced - Shafe - trep
+	gentity_t *drop; // unreferenced - Shafe - trep
 
 	client = ent->client;
 

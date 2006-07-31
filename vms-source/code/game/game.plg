@@ -3,12 +3,12 @@
 <pre>
 <h1>Build Log</h1>
 <h3>
---------------------Configuration: game - Win32 Release--------------------
+--------------------Configuration: game - Win32 Release TA--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP669.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSPF49.tmp" with contents
 [
-/nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "GLOBALRANK" /Fp".\Release/game.pch" /YX /Fo".\Release/" /Fd".\Release/" /FD /c 
+/nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "MISSIONPACK" /Fp"Release_TA/game.pch" /YX /Fo"Release_TA/" /Fd"Release_TA/" /FD /c 
 "G:\games\trepidation\source\vms-source\code\game\ai_chat.c"
 "G:\games\trepidation\source\vms-source\code\game\ai_cmd.c"
 "G:\games\trepidation\source\vms-source\code\game\ai_dmnet.c"
@@ -44,46 +44,46 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP669.tmp" with
 "G:\games\trepidation\source\vms-source\code\game\q_math.c"
 "G:\games\trepidation\source\vms-source\code\game\q_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP669.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP66A.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSPF49.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSPF4A.tmp" with contents
 [
-kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows /dll /incremental:no /pdb:".\Release/qagamex86.pdb" /map:".\Release/qagamex86.map" /machine:I386 /def:".\game.def" /out:"../Release/qagamex86.dll" /implib:".\Release/qagamex86.lib" 
-".\Release\ai_chat.obj"
-".\Release\ai_cmd.obj"
-".\Release\ai_dmnet.obj"
-".\Release\ai_dmq3.obj"
-".\Release\ai_main.obj"
-".\Release\ai_team.obj"
-".\Release\ai_vcmd.obj"
-".\Release\bg_misc.obj"
-".\Release\bg_pmove.obj"
-".\Release\bg_slidemove.obj"
-".\Release\g_active.obj"
-".\Release\g_arenas.obj"
-".\Release\g_bot.obj"
-".\Release\g_client.obj"
-".\Release\g_cmds.obj"
-".\Release\g_combat.obj"
-".\Release\g_items.obj"
-".\Release\g_main.obj"
-".\Release\g_mem.obj"
-".\Release\g_misc.obj"
-".\Release\g_missile.obj"
-".\Release\g_mover.obj"
-".\Release\g_session.obj"
-".\Release\g_spawn.obj"
-".\Release\g_svcmds.obj"
-".\Release\g_syscalls.obj"
-".\Release\g_target.obj"
-".\Release\g_team.obj"
-".\Release\g_trigger.obj"
-".\Release\g_unlagged.obj"
-".\Release\g_utils.obj"
-".\Release\g_weapon.obj"
-".\Release\q_math.obj"
-".\Release\q_shared.obj"
+kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows /dll /incremental:no /pdb:"Release_TA/qagamex86.pdb" /map:"Release_TA/qagamex86.map" /machine:I386 /def:".\game.def" /out:"../Release_TA/qagamex86.dll" /implib:"Release_TA/qagamex86.lib" 
+".\Release_TA\ai_chat.obj"
+".\Release_TA\ai_cmd.obj"
+".\Release_TA\ai_dmnet.obj"
+".\Release_TA\ai_dmq3.obj"
+".\Release_TA\ai_main.obj"
+".\Release_TA\ai_team.obj"
+".\Release_TA\ai_vcmd.obj"
+".\Release_TA\bg_misc.obj"
+".\Release_TA\bg_pmove.obj"
+".\Release_TA\bg_slidemove.obj"
+".\Release_TA\g_active.obj"
+".\Release_TA\g_arenas.obj"
+".\Release_TA\g_bot.obj"
+".\Release_TA\g_client.obj"
+".\Release_TA\g_cmds.obj"
+".\Release_TA\g_combat.obj"
+".\Release_TA\g_items.obj"
+".\Release_TA\g_main.obj"
+".\Release_TA\g_mem.obj"
+".\Release_TA\g_misc.obj"
+".\Release_TA\g_missile.obj"
+".\Release_TA\g_mover.obj"
+".\Release_TA\g_session.obj"
+".\Release_TA\g_spawn.obj"
+".\Release_TA\g_svcmds.obj"
+".\Release_TA\g_syscalls.obj"
+".\Release_TA\g_target.obj"
+".\Release_TA\g_team.obj"
+".\Release_TA\g_trigger.obj"
+".\Release_TA\g_unlagged.obj"
+".\Release_TA\g_utils.obj"
+".\Release_TA\g_weapon.obj"
+".\Release_TA\q_math.obj"
+".\Release_TA\q_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP66A.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSPF4A.tmp"
 <h3>Output Window</h3>
 Compiling...
 ai_chat.c
@@ -96,21 +96,34 @@ ai_vcmd.c
 bg_misc.c
 bg_pmove.c
 bg_slidemove.c
-G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1851) : warning C4701: local variable 'addTime' may be used without having been initialized
+G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1857) : warning C4701: local variable 'addTime' may be used without having been initialized
 g_active.c
-G:\games\trepidation\source\vms-source\code\game\g_active.c(612) : warning C4013: 'PrintMsg' undefined; assuming extern returning int
+G:\games\trepidation\source\vms-source\code\game\g_active.c(524) : warning C4101: 'fired' : unreferenced local variable
 g_arenas.c
 g_bot.c
 g_client.c
+G:\games\trepidation\source\vms-source\code\game\g_client.c(1302) : warning C4013: 'irandom' undefined; assuming extern returning int
+G:\games\trepidation\source\vms-source\code\game\g_client.c(1437) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_cmds.c
+G:\games\trepidation\source\vms-source\code\game\g_cmds.c(26) : warning C4101: 'forward' : unreferenced local variable
+G:\games\trepidation\source\vms-source\code\game\g_cmds.c(244) : warning C4101: 'forward' : unreferenced local variable
+G:\games\trepidation\source\vms-source\code\game\g_cmds.c(244) : warning C4101: 'up' : unreferenced local variable
 g_combat.c
+G:\games\trepidation\source\vms-source\code\game\g_combat.c(656) : warning C4553: '==' : operator has no effect; did you intend '='?
+G:\games\trepidation\source\vms-source\code\game\g_combat.c(703) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_items.c
 g_main.c
-G:\games\trepidation\source\vms-source\code\game\g_main.c(1883) : warning C4101: 'loc' : unreferenced local variable
+G:\games\trepidation\source\vms-source\code\game\g_main.c(1613) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_mem.c
-G:\games\trepidation\source\vms-source\code\game\g_main.c(1933) : warning C4701: local variable 'valid_count' may be used without having been initialized
+G:\games\trepidation\source\vms-source\code\game\g_main.c(2323) : warning C4701: local variable 'valid_count' may be used without having been initialized
 g_misc.c
 g_missile.c
+G:\games\trepidation\source\vms-source\code\game\g_missile.c(46) : warning C4130: '==' : logical operation on address of string constant
+G:\games\trepidation\source\vms-source\code\game\g_missile.c(290) : warning C4130: '==' : logical operation on address of string constant
+G:\games\trepidation\source\vms-source\code\game\g_missile.c(785) : warning C4189: 'ignorechaff' : local variable is initialized but not referenced
+G:\games\trepidation\source\vms-source\code\game\g_missile.c(997) : warning C4101: 'speed' : unreferenced local variable
+G:\games\trepidation\source\vms-source\code\game\g_missile.c(1135) : warning C4189: 'mins' : local variable is initialized but not referenced
+G:\games\trepidation\source\vms-source\code\game\g_missile.c(1135) : warning C4189: 'maxs' : local variable is initialized but not referenced
 g_mover.c
 g_session.c
 g_spawn.c
@@ -123,17 +136,18 @@ g_unlagged.c
 G:\games\trepidation\source\vms-source\code\game\g_unlagged.c(394) : warning C4189: 'worldUp' : local variable is initialized but not referenced
 g_utils.c
 g_weapon.c
-G:\games\trepidation\source\vms-source\code\game\g_weapon.c(444) : warning C4305: '+=' : truncation from 'const double ' to 'float '
+G:\games\trepidation\source\vms-source\code\game\g_weapon.c(452) : warning C4305: '+=' : truncation from 'const double ' to 'float '
+G:\games\trepidation\source\vms-source\code\game\g_weapon.c(541) : warning C4013: 'irandom' undefined; assuming extern returning int
 q_math.c
 G:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
 q_shared.c
 Linking...
-   Creating library .\Release/qagamex86.lib and object .\Release/qagamex86.exp
+   Creating library Release_TA/qagamex86.lib and object Release_TA/qagamex86.exp
 
 
 
 <h3>Results</h3>
-qagamex86.dll - 0 error(s), 7 warning(s)
+qagamex86.dll - 0 error(s), 21 warning(s)
 </pre>
 </body>
 </html>

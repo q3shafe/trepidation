@@ -1358,7 +1358,7 @@ INDIRP4
 CNSTI4 12
 ADDP4
 INDIRI4
-ADDRGP4 cgs+152852+396
+ADDRGP4 cgs+152852+436
 INDIRI4
 NEI4 $179
 line 238
@@ -12738,7 +12738,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 68
 ADDP4
-ADDRGP4 cgs+152852+220
+ADDRGP4 cgs+152852+252
 INDIRI4
 ASGNI4
 line 1460
@@ -13643,7 +13643,7 @@ CNSTI4 4
 LTI4 $1480
 line 1603
 ;1603:			CG_ParticleBubble (cgs.media.waterBubbleShader, origin, origin2, turb, range, snum);
-ADDRGP4 cgs+152852+300
+ADDRGP4 cgs+152852+332
 INDIRI4
 ARGI4
 ADDRLP4 12
@@ -13668,7 +13668,7 @@ LABELV $1480
 line 1605
 ;1604:		else
 ;1605:			CG_ParticleSnow (cgs.media.waterBubbleShader, origin, origin2, turb, range, snum);
-ADDRGP4 cgs+152852+300
+ADDRGP4 cgs+152852+332
 INDIRI4
 ARGI4
 ADDRLP4 12
@@ -16311,7 +16311,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 68
 ADDP4
-ADDRGP4 cgs+152852+276
+ADDRGP4 cgs+152852+308
 INDIRI4
 ASGNI4
 line 2038
@@ -16678,7 +16678,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 68
 ADDP4
-ADDRGP4 cgs+152852+220
+ADDRGP4 cgs+152852+252
 INDIRI4
 ASGNI4
 line 2096
@@ -17255,7 +17255,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 68
 ADDP4
-ADDRGP4 cgs+152852+276
+ADDRGP4 cgs+152852+308
 INDIRI4
 ASGNI4
 line 2165
@@ -18071,6 +18071,12 @@ import CG_BigExplode
 import CG_GibPlayerHeadshot
 import CG_GibPlayer
 import CG_ScorePlum
+import CG_LightningBoltBeam
+import CG_InvulnerabilityJuiced
+import CG_InvulnerabilityImpact
+import CG_ObeliskPain
+import CG_ObeliskExplode
+import CG_KamikazeEffect
 import CG_SpawnEffect
 import CG_BubbleTrail
 import CG_SmokePuff
@@ -18209,6 +18215,17 @@ import cg_cmdTimeNudge
 import cg_drawBBox
 import cg_debugDelag
 import cg_delag
+import cg_obeliskRespawnDelay
+import cg_recordSPDemoName
+import cg_recordSPDemo
+import cg_singlePlayerActive
+import cg_enableBreath
+import cg_enableDust
+import cg_singlePlayer
+import cg_currentSelectedPlayerName
+import cg_currentSelectedPlayer
+import cg_blueTeamName
+import cg_redTeamName
 import cg_trueLightning
 import cg_oldPlasma
 import cg_oldRocket

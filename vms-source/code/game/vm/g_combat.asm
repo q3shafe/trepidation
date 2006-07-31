@@ -394,7 +394,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 192
+CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 1
@@ -652,9 +652,9 @@ line 125
 ;125:}
 LABELV $71
 endproc TossClientItems 36 12
-export LookAtKiller
-proc LookAtKiller 52 4
-line 215
+export TossClientCubes
+proc TossClientCubes 64 16
+line 136
 ;126:
 ;127:#ifdef MISSIONPACK
 ;128:
@@ -666,6 +666,7 @@ line 215
 ;134:extern gentity_t	*neutralObelisk;
 ;135:
 ;136:void TossClientCubes( gentity_t *self ) {
+line 143
 ;137:	gitem_t		*item;
 ;138:	gentity_t	*drop;
 ;139:	vec3_t		velocity;
@@ -673,41 +674,284 @@ line 215
 ;141:	vec3_t		origin;
 ;142:
 ;143:	self->client->ps.generic1 = 0;
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 440
+ADDP4
+CNSTI4 0
+ASGNI4
+line 147
 ;144:
 ;145:	// this should never happen but we should never
 ;146:	// get the server to crash due to skull being spawned in
 ;147:	if (!G_EntitiesFree()) {
+ADDRLP4 44
+ADDRGP4 G_EntitiesFree
+CALLI4
+ASGNI4
+ADDRLP4 44
+INDIRI4
+CNSTI4 0
+NEI4 $100
+line 148
 ;148:		return;
+ADDRGP4 $99
+JUMPV
+LABELV $100
+line 151
 ;149:	}
 ;150:
 ;151:	if( self->client->sess.sessionTeam == TEAM_RED ) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 2492
+ADDP4
+INDIRI4
+CNSTI4 1
+NEI4 $102
+line 152
 ;152:		item = BG_FindItem( "Red Cube" );
+ADDRGP4 $104
+ARGP4
+ADDRLP4 48
+ADDRGP4 BG_FindItem
+CALLP4
+ASGNP4
+ADDRLP4 40
+ADDRLP4 48
+INDIRP4
+ASGNP4
+line 153
 ;153:	}
+ADDRGP4 $103
+JUMPV
+LABELV $102
+line 154
 ;154:	else {
+line 155
 ;155:		item = BG_FindItem( "Blue Cube" );
+ADDRGP4 $105
+ARGP4
+ADDRLP4 48
+ADDRGP4 BG_FindItem
+CALLP4
+ASGNP4
+ADDRLP4 40
+ADDRLP4 48
+INDIRP4
+ASGNP4
+line 156
 ;156:	}
+LABELV $103
+line 158
 ;157:
 ;158:	angles[YAW] = (float)(level.time % 360);
+ADDRLP4 16+4
+ADDRGP4 level+32
+INDIRI4
+CNSTI4 360
+MODI4
+CVIF4 4
+ASGNF4
+line 159
 ;159:	angles[PITCH] = 0;	// always forward
+ADDRLP4 16
+CNSTF4 0
+ASGNF4
+line 160
 ;160:	angles[ROLL] = 0;
+ADDRLP4 16+8
+CNSTF4 0
+ASGNF4
+line 162
 ;161:
 ;162:	AngleVectors( angles, velocity, NULL, NULL );
+ADDRLP4 16
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRLP4 48
+CNSTP4 0
+ASGNP4
+ADDRLP4 48
+INDIRP4
+ARGP4
+ADDRLP4 48
+INDIRP4
+ARGP4
+ADDRGP4 AngleVectors
+CALLV
+pop
+line 163
 ;163:	VectorScale( velocity, 150, velocity );
+ADDRLP4 52
+CNSTF4 1125515264
+ASGNF4
+ADDRLP4 0
+ADDRLP4 52
+INDIRF4
+ADDRLP4 0
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 0+4
+ADDRLP4 52
+INDIRF4
+ADDRLP4 0+4
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 0+8
+CNSTF4 1125515264
+ADDRLP4 0+8
+INDIRF4
+MULF4
+ASGNF4
+line 164
 ;164:	velocity[2] += 200 + crandom() * 50;
+ADDRLP4 56
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0+8
+ADDRLP4 0+8
+INDIRF4
+CNSTF4 1112014848
+CNSTF4 1073741824
+ADDRLP4 56
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
+CNSTF4 1128792064
+ADDF4
+ADDF4
+ASGNF4
+line 166
 ;165:
 ;166:	if( neutralObelisk ) {
+ADDRGP4 neutralObelisk
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $114
+line 167
 ;167:		VectorCopy( neutralObelisk->s.pos.trBase, origin );
+ADDRLP4 28
+ADDRGP4 neutralObelisk
+INDIRP4
+CNSTI4 24
+ADDP4
+INDIRB
+ASGNB 12
+line 168
 ;168:		origin[2] += 44;
+ADDRLP4 28+8
+ADDRLP4 28+8
+INDIRF4
+CNSTF4 1110441984
+ADDF4
+ASGNF4
+line 169
 ;169:	} else {
+ADDRGP4 $115
+JUMPV
+LABELV $114
+line 170
 ;170:		VectorClear( origin ) ;
+ADDRLP4 60
+CNSTF4 0
+ASGNF4
+ADDRLP4 28+8
+ADDRLP4 60
+INDIRF4
+ASGNF4
+ADDRLP4 28+4
+ADDRLP4 60
+INDIRF4
+ASGNF4
+ADDRLP4 28
+ADDRLP4 60
+INDIRF4
+ASGNF4
+line 171
 ;171:	}
+LABELV $115
+line 173
 ;172:
 ;173:	drop = LaunchItem( item, origin, velocity );
+ADDRLP4 40
+INDIRP4
+ARGP4
+ADDRLP4 28
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRLP4 60
+ADDRGP4 LaunchItem
+CALLP4
+ASGNP4
+ADDRLP4 12
+ADDRLP4 60
+INDIRP4
+ASGNP4
+line 175
 ;174:
 ;175:	drop->nextthink = level.time + g_cubeTimeout.integer * 1000;
+ADDRLP4 12
+INDIRP4
+CNSTI4 688
+ADDP4
+ADDRGP4 level+32
+INDIRI4
+CNSTI4 1000
+ADDRGP4 g_cubeTimeout+12
+INDIRI4
+MULI4
+ADDI4
+ASGNI4
+line 176
 ;176:	drop->think = G_FreeEntity;
+ADDRLP4 12
+INDIRP4
+CNSTI4 700
+ADDP4
+ADDRGP4 G_FreeEntity
+ASGNP4
+line 177
 ;177:	drop->spawnflags = self->client->sess.sessionTeam;
+ADDRLP4 12
+INDIRP4
+CNSTI4 528
+ADDP4
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 2492
+ADDP4
+INDIRI4
+ASGNI4
+line 178
 ;178:}
+LABELV $99
+endproc TossClientCubes 64 16
+export TossClientPersistantPowerups
+proc TossClientPersistantPowerups 12 4
+line 186
 ;179:
 ;180:
 ;181:/*
@@ -716,26 +960,136 @@ line 215
 ;184:=================
 ;185:*/
 ;186:void TossClientPersistantPowerups( gentity_t *ent ) {
+line 189
 ;187:	gentity_t	*powerup;
 ;188:
 ;189:	if( !ent->client ) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+NEU4 $122
+line 190
 ;190:		return;
+ADDRGP4 $121
+JUMPV
+LABELV $122
+line 193
 ;191:	}
 ;192:
 ;193:	if( !ent->client->persistantPowerup ) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 2652
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+NEU4 $124
+line 194
 ;194:		return;
+ADDRGP4 $121
+JUMPV
+LABELV $124
+line 197
 ;195:	}
 ;196:
 ;197:	powerup = ent->client->persistantPowerup;
+ADDRLP4 0
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 2652
+ADDP4
+INDIRP4
+ASGNP4
+line 199
 ;198:
 ;199:	powerup->r.svFlags &= ~SVF_NOCLIENT;
+ADDRLP4 4
+ADDRLP4 0
+INDIRP4
+CNSTI4 424
+ADDP4
+ASGNP4
+ADDRLP4 4
+INDIRP4
+ADDRLP4 4
+INDIRP4
+INDIRI4
+CNSTI4 -2
+BANDI4
+ASGNI4
+line 200
 ;200:	powerup->s.eFlags &= ~EF_NODRAW;
+ADDRLP4 8
+ADDRLP4 0
+INDIRP4
+CNSTI4 8
+ADDP4
+ASGNP4
+ADDRLP4 8
+INDIRP4
+ADDRLP4 8
+INDIRP4
+INDIRI4
+CNSTI4 -129
+BANDI4
+ASGNI4
+line 201
 ;201:	powerup->r.contents = CONTENTS_TRIGGER;
+ADDRLP4 0
+INDIRP4
+CNSTI4 460
+ADDP4
+CNSTI4 1073741824
+ASGNI4
+line 202
 ;202:	trap_LinkEntity( powerup );
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRGP4 trap_LinkEntity
+CALLV
+pop
+line 204
 ;203:
 ;204:	ent->client->ps.stats[STAT_PERSISTANT_POWERUP] = 0;
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 192
+ADDP4
+CNSTI4 0
+ASGNI4
+line 205
 ;205:	ent->client->persistantPowerup = NULL;
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 2652
+ADDP4
+CNSTP4 0
+ASGNP4
+line 206
 ;206:}
+LABELV $121
+endproc TossClientPersistantPowerups 12 4
+export LookAtKiller
+proc LookAtKiller 52 4
+line 215
 ;207:#endif
 ;208:
 ;209:
@@ -758,13 +1112,13 @@ ASGNU4
 ADDRLP4 24
 INDIRU4
 CNSTU4 0
-EQU4 $100
+EQU4 $127
 ADDRLP4 24
 INDIRU4
 ADDRFP4 0
 INDIRP4
 CVPU4 4
-EQU4 $100
+EQU4 $127
 line 220
 ;220:		VectorSubtract (attacker->s.pos.trBase, self->s.pos.trBase, dir);
 ADDRLP4 28
@@ -831,9 +1185,9 @@ SUBF4
 ASGNF4
 line 221
 ;221:	} else if ( inflictor && inflictor != self ) {
-ADDRGP4 $101
+ADDRGP4 $128
 JUMPV
-LABELV $100
+LABELV $127
 ADDRLP4 28
 ADDRFP4 4
 INDIRP4
@@ -842,13 +1196,13 @@ ASGNU4
 ADDRLP4 28
 INDIRU4
 CNSTU4 0
-EQU4 $104
+EQU4 $131
 ADDRLP4 28
 INDIRU4
 ADDRFP4 0
 INDIRP4
 CVPU4 4
-EQU4 $104
+EQU4 $131
 line 222
 ;222:		VectorSubtract (inflictor->s.pos.trBase, self->s.pos.trBase, dir);
 ADDRLP4 32
@@ -915,9 +1269,9 @@ SUBF4
 ASGNF4
 line 223
 ;223:	} else {
-ADDRGP4 $105
+ADDRGP4 $132
 JUMPV
-LABELV $104
+LABELV $131
 line 224
 ;224:		self->client->ps.stats[STAT_DEAD_YAW] = self->s.angles[YAW];
 ADDRLP4 32
@@ -929,7 +1283,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 200
+CNSTI4 204
 ADDP4
 ADDRLP4 32
 INDIRP4
@@ -940,10 +1294,10 @@ CVFI4 4
 ASGNI4
 line 225
 ;225:		return;
-ADDRGP4 $99
+ADDRGP4 $126
 JUMPV
-LABELV $105
-LABELV $101
+LABELV $132
+LABELV $128
 line 228
 ;226:	}
 ;227:
@@ -959,7 +1313,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 200
+CNSTI4 204
 ADDP4
 ADDRLP4 32
 INDIRF4
@@ -990,7 +1344,7 @@ CNSTF4 0
 ASGNF4
 line 233
 ;233:}
-LABELV $99
+LABELV $126
 endproc LookAtKiller 52 4
 export GibEntity
 proc GibEntity 12 12
@@ -1016,18 +1370,18 @@ INDIRI4
 CNSTI4 512
 BANDI4
 CNSTI4 0
-EQI4 $111
+EQI4 $138
 line 247
 ;246:		// check if there is a kamikaze timer around for this owner
 ;247:		for (i = 0; i < MAX_GENTITIES; i++) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-LABELV $113
+LABELV $140
 line 248
 ;248:			ent = &g_entities[i];
 ADDRLP4 0
-CNSTI4 860
+CNSTI4 868
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1042,12 +1396,12 @@ CNSTI4 520
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $117
+NEI4 $144
 line 250
 ;250:				continue;
-ADDRGP4 $114
+ADDRGP4 $141
 JUMPV
-LABELV $117
+LABELV $144
 line 251
 ;251:			if (ent->activator != self)
 ADDRLP4 0
@@ -1059,12 +1413,12 @@ CVPU4 4
 ADDRFP4 0
 INDIRP4
 CVPU4 4
-EQU4 $119
+EQU4 $146
 line 252
 ;252:				continue;
-ADDRGP4 $114
+ADDRGP4 $141
 JUMPV
-LABELV $119
+LABELV $146
 line 253
 ;253:			if (strcmp(ent->classname, "kamikaze timer"))
 ADDRLP4 0
@@ -1073,7 +1427,7 @@ CNSTI4 524
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $123
+ADDRGP4 $150
 ARGP4
 ADDRLP4 8
 ADDRGP4 strcmp
@@ -1082,12 +1436,12 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $121
+EQI4 $148
 line 254
 ;254:				continue;
-ADDRGP4 $114
+ADDRGP4 $141
 JUMPV
-LABELV $121
+LABELV $148
 line 255
 ;255:			G_FreeEntity(ent);
 ADDRLP4 0
@@ -1098,9 +1452,9 @@ CALLV
 pop
 line 256
 ;256:			break;
-ADDRGP4 $115
+ADDRGP4 $142
 JUMPV
-LABELV $114
+LABELV $141
 line 247
 ADDRLP4 4
 ADDRLP4 4
@@ -1111,12 +1465,12 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1024
-LTI4 $113
-LABELV $115
+LTI4 $140
+LABELV $142
 line 258
 ;257:		}
 ;258:	}
-LABELV $111
+LABELV $138
 line 259
 ;259:	G_AddEvent( self, EV_GIB_PLAYER, killer );
 ADDRFP4 0
@@ -1156,7 +1510,7 @@ CNSTI4 0
 ASGNI4
 line 263
 ;263:}
-LABELV $110
+LABELV $137
 endproc GibEntity 12 12
 export GibEntity_Headshot
 proc GibEntity_Headshot 0 12
@@ -1190,7 +1544,7 @@ CNSTI4 1
 ASGNI4
 line 270
 ;270:}
-LABELV $124
+LABELV $151
 endproc GibEntity_Headshot 0 12
 export body_die
 proc body_die 0 8
@@ -1211,19 +1565,19 @@ CNSTI4 740
 ADDP4
 INDIRI4
 CNSTI4 -40
-LEI4 $126
+LEI4 $153
 line 280
 ;280:		return;
-ADDRGP4 $125
+ADDRGP4 $152
 JUMPV
-LABELV $126
+LABELV $153
 line 282
 ;281:	}
 ;282:	if ( !g_blood.integer ) {
 ADDRGP4 g_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $128
+NEI4 $155
 line 283
 ;283:		self->health = GIB_HEALTH+1;
 ADDRFP4 0
@@ -1234,9 +1588,9 @@ CNSTI4 -39
 ASGNI4
 line 284
 ;284:		return;
-ADDRGP4 $125
+ADDRGP4 $152
 JUMPV
-LABELV $128
+LABELV $155
 line 287
 ;285:	}
 ;286:
@@ -1251,7 +1605,7 @@ CALLV
 pop
 line 288
 ;288:}
-LABELV $125
+LABELV $152
 endproc body_die 0 8
 export IsOutOfWeapons
 proc IsOutOfWeapons 0 0
@@ -1265,12 +1619,12 @@ line 293
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 1
-EQI4 $132
+EQI4 $159
 CNSTI4 0
 RETI4
-ADDRGP4 $131
+ADDRGP4 $158
 JUMPV
-LABELV $132
+LABELV $159
 line 295
 ;294:
 ;295:	if (ent->client->pers.h_gauntlet) { return qfalse; }
@@ -1283,12 +1637,12 @@ CNSTI4 2448
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $135
+EQI4 $162
 CNSTI4 0
 RETI4
-ADDRGP4 $131
+ADDRGP4 $158
 JUMPV
-LABELV $135
+LABELV $162
 line 296
 ;296:	if (ent->client->pers.h_mg) { return qfalse; }
 ADDRFP4 0
@@ -1300,12 +1654,12 @@ CNSTI4 2452
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $137
+EQI4 $164
 CNSTI4 0
 RETI4
-ADDRGP4 $131
+ADDRGP4 $158
 JUMPV
-LABELV $137
+LABELV $164
 line 297
 ;297:	if (ent->client->pers.h_sg) { return qfalse; }
 ADDRFP4 0
@@ -1317,12 +1671,12 @@ CNSTI4 2456
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $139
+EQI4 $166
 CNSTI4 0
 RETI4
-ADDRGP4 $131
+ADDRGP4 $158
 JUMPV
-LABELV $139
+LABELV $166
 line 298
 ;298:	if (ent->client->pers.h_grenade) { return qfalse; }
 ADDRFP4 0
@@ -1334,12 +1688,12 @@ CNSTI4 2460
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $141
+EQI4 $168
 CNSTI4 0
 RETI4
-ADDRGP4 $131
+ADDRGP4 $158
 JUMPV
-LABELV $141
+LABELV $168
 line 299
 ;299:	if (ent->client->pers.h_singcan) { return qfalse; }
 ADDRFP4 0
@@ -1351,12 +1705,12 @@ CNSTI4 2464
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $143
+EQI4 $170
 CNSTI4 0
 RETI4
-ADDRGP4 $131
+ADDRGP4 $158
 JUMPV
-LABELV $143
+LABELV $170
 line 300
 ;300:	if (ent->client->pers.h_flame) { return qfalse; }
 ADDRFP4 0
@@ -1368,12 +1722,12 @@ CNSTI4 2468
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $145
+EQI4 $172
 CNSTI4 0
 RETI4
-ADDRGP4 $131
+ADDRGP4 $158
 JUMPV
-LABELV $145
+LABELV $172
 line 301
 ;301:	if (ent->client->pers.h_gauss) { return qfalse; }
 ADDRFP4 0
@@ -1385,12 +1739,12 @@ CNSTI4 2472
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $147
+EQI4 $174
 CNSTI4 0
 RETI4
-ADDRGP4 $131
+ADDRGP4 $158
 JUMPV
-LABELV $147
+LABELV $174
 line 302
 ;302:	if (ent->client->pers.h_plasma) { return qfalse; }
 ADDRFP4 0
@@ -1402,12 +1756,12 @@ CNSTI4 2476
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $149
+EQI4 $176
 CNSTI4 0
 RETI4
-ADDRGP4 $131
+ADDRGP4 $158
 JUMPV
-LABELV $149
+LABELV $176
 line 303
 ;303:	if (ent->client->pers.h_bfg) { return qfalse; }
 ADDRFP4 0
@@ -1419,52 +1773,55 @@ CNSTI4 2480
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $151
+EQI4 $178
 CNSTI4 0
 RETI4
-ADDRGP4 $131
+ADDRGP4 $158
 JUMPV
-LABELV $151
+LABELV $178
 line 305
 ;304:
 ;305:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $131
+LABELV $158
 endproc IsOutOfWeapons 0 0
 data
 export modNames
 align 4
 LABELV modNames
-address $153
-address $154
-address $155
-address $156
-address $157
-address $158
-address $159
-address $160
-address $161
-address $162
-address $163
-address $164
-address $165
-address $166
-address $167
-address $168
-address $169
-address $170
-address $171
-address $172
-address $173
-address $174
-address $175
-address $176
-address $177
-export CheckAlmostCapture
+address $180
+address $181
+address $182
+address $183
+address $184
+address $185
+address $186
+address $187
+address $188
+address $189
+address $190
+address $191
+address $192
+address $193
+address $194
+address $195
+address $196
+address $197
+address $198
+address $199
+address $200
+address $201
+address $202
+address $203
+address $204
+address $205
+address $206
+address $207
+export Kamikaze_DeathActivate
 code
-proc CheckAlmostCapture 56 12
-line 379
+proc Kamikaze_DeathActivate 0 4
+line 349
 ;306:}
 ;307:
 ;308:
@@ -1509,9 +1866,29 @@ line 379
 ;347:==================
 ;348:*/
 ;349:void Kamikaze_DeathActivate( gentity_t *ent ) {
+line 350
 ;350:	G_StartKamikaze(ent);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 G_StartKamikaze
+CALLV
+pop
+line 351
 ;351:	G_FreeEntity(ent);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 G_FreeEntity
+CALLV
+pop
+line 352
 ;352:}
+LABELV $208
+endproc Kamikaze_DeathActivate 0 4
+export Kamikaze_DeathTimer
+proc Kamikaze_DeathTimer 16 0
+line 359
 ;353:
 ;354:/*
 ;355:==================
@@ -1519,17 +1896,95 @@ line 379
 ;357:==================
 ;358:*/
 ;359:void Kamikaze_DeathTimer( gentity_t *self ) {
+line 362
 ;360:	gentity_t *ent;
 ;361:
 ;362:	ent = G_Spawn();
+ADDRLP4 4
+ADDRGP4 G_Spawn
+CALLP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 4
+INDIRP4
+ASGNP4
+line 363
 ;363:	ent->classname = "kamikaze timer";
+ADDRLP4 0
+INDIRP4
+CNSTI4 524
+ADDP4
+ADDRGP4 $150
+ASGNP4
+line 364
 ;364:	VectorCopy(self->s.pos.trBase, ent->s.pos.trBase);
+ADDRLP4 8
+CNSTI4 24
+ASGNI4
+ADDRLP4 0
+INDIRP4
+ADDRLP4 8
+INDIRI4
+ADDP4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 8
+INDIRI4
+ADDP4
+INDIRB
+ASGNB 12
+line 365
 ;365:	ent->r.svFlags |= SVF_NOCLIENT;
+ADDRLP4 12
+ADDRLP4 0
+INDIRP4
+CNSTI4 424
+ADDP4
+ASGNP4
+ADDRLP4 12
+INDIRP4
+ADDRLP4 12
+INDIRP4
+INDIRI4
+CNSTI4 1
+BORI4
+ASGNI4
+line 366
 ;366:	ent->think = Kamikaze_DeathActivate;
+ADDRLP4 0
+INDIRP4
+CNSTI4 700
+ADDP4
+ADDRGP4 Kamikaze_DeathActivate
+ASGNP4
+line 367
 ;367:	ent->nextthink = level.time + 5 * 1000;
+ADDRLP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+ADDRGP4 level+32
+INDIRI4
+CNSTI4 5000
+ADDI4
+ASGNI4
+line 369
 ;368:
 ;369:	ent->activator = self;
+ADDRLP4 0
+INDIRP4
+CNSTI4 780
+ADDP4
+ADDRFP4 0
+INDIRP4
+ASGNP4
+line 370
 ;370:}
+LABELV $209
+endproc Kamikaze_DeathTimer 16 0
+export CheckAlmostCapture
+proc CheckAlmostCapture 56 12
+line 379
 ;371:
 ;372:#endif
 ;373:
@@ -1563,7 +2018,7 @@ ADDP4
 INDIRI4
 ADDRLP4 24
 INDIRI4
-NEI4 $182
+NEI4 $215
 ADDRLP4 20
 INDIRP4
 CNSTI4 344
@@ -1571,7 +2026,7 @@ ADDP4
 INDIRI4
 ADDRLP4 24
 INDIRI4
-NEI4 $182
+NEI4 $215
 ADDRLP4 20
 INDIRP4
 CNSTI4 348
@@ -1579,8 +2034,8 @@ ADDP4
 INDIRI4
 ADDRLP4 24
 INDIRI4
-EQI4 $179
-LABELV $182
+EQI4 $212
+LABELV $215
 line 387
 ;386:		self->client->ps.powerups[PW_BLUEFLAG] ||
 ;387:		self->client->ps.powerups[PW_NEUTRALFLAG] ) {
@@ -1590,7 +2045,7 @@ line 389
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 4
-NEI4 $183
+NEI4 $216
 line 390
 ;390:			if ( self->client->sess.sessionTeam == TEAM_BLUE ) {
 ADDRFP4 0
@@ -1602,31 +2057,31 @@ CNSTI4 2492
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $186
+NEI4 $219
 line 391
 ;391:				classname = "team_CTF_blueflag";
 ADDRLP4 4
-ADDRGP4 $188
+ADDRGP4 $221
 ASGNP4
 line 392
 ;392:			}
-ADDRGP4 $184
+ADDRGP4 $217
 JUMPV
-LABELV $186
+LABELV $219
 line 393
 ;393:			else {
 line 394
 ;394:				classname = "team_CTF_redflag";
 ADDRLP4 4
-ADDRGP4 $189
+ADDRGP4 $222
 ASGNP4
 line 395
 ;395:			}
 line 396
 ;396:		}
-ADDRGP4 $184
+ADDRGP4 $217
 JUMPV
-LABELV $183
+LABELV $216
 line 397
 ;397:		else {
 line 398
@@ -1640,36 +2095,36 @@ CNSTI4 2492
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $190
+NEI4 $223
 line 399
 ;399:				classname = "team_CTF_redflag";
 ADDRLP4 4
-ADDRGP4 $189
+ADDRGP4 $222
 ASGNP4
 line 400
 ;400:			}
-ADDRGP4 $191
+ADDRGP4 $224
 JUMPV
-LABELV $190
+LABELV $223
 line 401
 ;401:			else {
 line 402
 ;402:				classname = "team_CTF_blueflag";
 ADDRLP4 4
-ADDRGP4 $188
+ADDRGP4 $221
 ASGNP4
 line 403
 ;403:			}
-LABELV $191
+LABELV $224
 line 404
 ;404:		}
-LABELV $184
+LABELV $217
 line 405
 ;405:		ent = NULL;
 ADDRLP4 0
 CNSTP4 0
 ASGNP4
-LABELV $192
+LABELV $225
 line 407
 ;406:		do
 ;407:		{
@@ -1693,12 +2148,12 @@ INDIRP4
 ASGNP4
 line 409
 ;409:		} while (ent && (ent->flags & FL_DROPPED_ITEM));
-LABELV $193
+LABELV $226
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $195
+EQU4 $228
 ADDRLP4 0
 INDIRP4
 CNSTI4 536
@@ -1707,8 +2162,8 @@ INDIRI4
 CNSTI4 4096
 BANDI4
 CNSTI4 0
-NEI4 $192
-LABELV $195
+NEI4 $225
+LABELV $228
 line 411
 ;410:		// if we found the destination flag and it's not picked up
 ;411:		if (ent && !(ent->r.svFlags & SVF_NOCLIENT) ) {
@@ -1716,7 +2171,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $196
+EQU4 $229
 ADDRLP4 0
 INDIRP4
 CNSTI4 424
@@ -1725,7 +2180,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-NEI4 $196
+NEI4 $229
 line 413
 ;412:			// if the player was *very* close
 ;413:			VectorSubtract( self->client->ps.origin, ent->s.origin, dir );
@@ -1790,7 +2245,7 @@ ASGNF4
 ADDRLP4 44
 INDIRF4
 CNSTF4 1128792064
-GEF4 $200
+GEF4 $233
 line 415
 ;415:				self->client->ps.persistant[PERS_PLAYEREVENTS] ^= PLAYEREVENT_HOLYSHIT;
 ADDRLP4 48
@@ -1819,7 +2274,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $202
+EQU4 $235
 line 417
 ;417:					attacker->client->ps.persistant[PERS_PLAYEREVENTS] ^= PLAYEREVENT_HOLYSHIT;
 ADDRLP4 52
@@ -1841,19 +2296,19 @@ BXORI4
 ASGNI4
 line 418
 ;418:				}
-LABELV $202
+LABELV $235
 line 419
 ;419:			}
-LABELV $200
+LABELV $233
 line 420
 ;420:		}
-LABELV $196
+LABELV $229
 line 421
 ;421:	}
-LABELV $179
+LABELV $212
 line 422
 ;422:}
-LABELV $178
+LABELV $211
 endproc CheckAlmostCapture 56 12
 export CheckAlmostScored
 proc CheckAlmostScored 44 12
@@ -1881,7 +2336,7 @@ CNSTI4 440
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $205
+EQI4 $238
 line 436
 ;436:		if ( self->client->sess.sessionTeam == TEAM_BLUE ) {
 ADDRFP4 0
@@ -1893,27 +2348,27 @@ CNSTI4 2492
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $207
+NEI4 $240
 line 437
 ;437:			classname = "team_redobelisk";
 ADDRLP4 16
-ADDRGP4 $209
+ADDRGP4 $242
 ASGNP4
 line 438
 ;438:		}
-ADDRGP4 $208
+ADDRGP4 $241
 JUMPV
-LABELV $207
+LABELV $240
 line 439
 ;439:		else {
 line 440
 ;440:			classname = "team_blueobelisk";
 ADDRLP4 16
-ADDRGP4 $210
+ADDRGP4 $243
 ASGNP4
 line 441
 ;441:		}
-LABELV $208
+LABELV $241
 line 442
 ;442:		ent = G_Find(NULL, FOFS(classname), classname);
 CNSTP4 0
@@ -1938,7 +2393,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $211
+EQU4 $244
 line 446
 ;445:			// if the player was *very* close
 ;446:			VectorSubtract( self->client->ps.origin, ent->s.origin, dir );
@@ -2007,7 +2462,7 @@ ASGNF4
 ADDRLP4 32
 INDIRF4
 CNSTF4 1128792064
-GEF4 $215
+GEF4 $248
 line 448
 ;448:				self->client->ps.persistant[PERS_PLAYEREVENTS] ^= PLAYEREVENT_HOLYSHIT;
 ADDRLP4 36
@@ -2036,7 +2491,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $217
+EQU4 $250
 line 450
 ;450:					attacker->client->ps.persistant[PERS_PLAYEREVENTS] ^= PLAYEREVENT_HOLYSHIT;
 ADDRLP4 40
@@ -2058,30 +2513,30 @@ BXORI4
 ASGNI4
 line 451
 ;451:				}
-LABELV $217
+LABELV $250
 line 452
 ;452:			}
-LABELV $215
+LABELV $248
 line 453
 ;453:		}
-LABELV $211
+LABELV $244
 line 454
 ;454:	}
-LABELV $205
+LABELV $238
 line 455
 ;455:}
-LABELV $204
+LABELV $237
 endproc CheckAlmostScored 44 12
 bss
 align 4
-LABELV $220
+LABELV $253
 skip 4
 align 4
-LABELV $366
+LABELV $405
 skip 4
 export player_die
 code
-proc player_die 120 28
+proc player_die 124 28
 line 466
 ;456:
 ;457:
@@ -2121,12 +2576,12 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $221
+NEI4 $254
 line 484
 ;484:		return;
-ADDRGP4 $219
+ADDRGP4 $252
 JUMPV
-LABELV $221
+LABELV $254
 line 487
 ;485:	}
 ;486:
@@ -2134,12 +2589,12 @@ line 487
 ADDRGP4 level+9132
 INDIRI4
 CNSTI4 0
-EQI4 $223
+EQI4 $256
 line 488
 ;488:		return;
-ADDRGP4 $219
+ADDRGP4 $252
 JUMPV
-LABELV $223
+LABELV $256
 line 497
 ;489:	}
 ;490:
@@ -2201,7 +2656,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 40
 INDIRU4
-EQU4 $226
+EQU4 $259
 ADDRLP4 36
 INDIRP4
 CNSTI4 2632
@@ -2210,7 +2665,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 40
 INDIRU4
-EQU4 $226
+EQU4 $259
 line 507
 ;507:		Weapon_HookFree(self->client->hook);
 ADDRFP4 0
@@ -2225,14 +2680,80 @@ ARGP4
 ADDRGP4 Weapon_HookFree
 CALLV
 pop
-LABELV $226
-line 515
+LABELV $259
+line 509
 ;508:#ifdef MISSIONPACK
 ;509:	if ((self->client->ps.eFlags & EF_TICKING) && self->activator) {
+ADDRLP4 44
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 44
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 104
+ADDP4
+INDIRI4
+CNSTI4 2
+BANDI4
+CNSTI4 0
+EQI4 $261
+ADDRLP4 44
+INDIRP4
+CNSTI4 780
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $261
+line 510
 ;510:		self->client->ps.eFlags &= ~EF_TICKING;
+ADDRLP4 48
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 104
+ADDP4
+ASGNP4
+ADDRLP4 48
+INDIRP4
+ADDRLP4 48
+INDIRP4
+INDIRI4
+CNSTI4 -3
+BANDI4
+ASGNI4
+line 511
 ;511:		self->activator->think = G_FreeEntity;
+ADDRFP4 0
+INDIRP4
+CNSTI4 780
+ADDP4
+INDIRP4
+CNSTI4 700
+ADDP4
+ADDRGP4 G_FreeEntity
+ASGNP4
+line 512
 ;512:		self->activator->nextthink = level.time;
+ADDRFP4 0
+INDIRP4
+CNSTI4 780
+ADDP4
+INDIRP4
+CNSTI4 688
+ADDP4
+ADDRGP4 level+32
+INDIRI4
+ASGNI4
+line 513
 ;513:	}
+LABELV $261
+line 515
 ;514:#endif
 ;515:	self->client->ps.pm_type = PM_DEAD;
 ADDRFP4 0
@@ -2250,38 +2771,38 @@ line 518
 ;518:	self->istelepoint = 0;
 ADDRFP4 0
 INDIRP4
-CNSTI4 824
+CNSTI4 832
 ADDP4
 CNSTI4 0
 ASGNI4
 line 519
 ;519:	VectorClear( self->teleloc ); 
-ADDRLP4 44
+ADDRLP4 48
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 48
+ADDRLP4 52
 CNSTF4 0
 ASGNF4
-ADDRLP4 44
+ADDRLP4 48
+INDIRP4
+CNSTI4 828
+ADDP4
+ADDRLP4 52
+INDIRF4
+ASGNF4
+ADDRLP4 48
+INDIRP4
+CNSTI4 824
+ADDP4
+ADDRLP4 52
+INDIRF4
+ASGNF4
+ADDRLP4 48
 INDIRP4
 CNSTI4 820
 ADDP4
-ADDRLP4 48
-INDIRF4
-ASGNF4
-ADDRLP4 44
-INDIRP4
-CNSTI4 816
-ADDP4
-ADDRLP4 48
-INDIRF4
-ASGNF4
-ADDRLP4 44
-INDIRP4
-CNSTI4 812
-ADDP4
-ADDRLP4 48
+ADDRLP4 52
 INDIRF4
 ASGNF4
 line 521
@@ -2291,7 +2812,7 @@ ADDRFP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $228
+EQU4 $264
 line 522
 ;522:		killer = attacker->s.number;
 ADDRLP4 4
@@ -2308,7 +2829,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $230
+EQU4 $266
 line 524
 ;524:			killerName = attacker->client->pers.netname;
 ADDRLP4 20
@@ -2322,21 +2843,21 @@ ADDP4
 ASGNP4
 line 525
 ;525:		} else {
-ADDRGP4 $229
+ADDRGP4 $265
 JUMPV
-LABELV $230
+LABELV $266
 line 526
 ;526:			killerName = "<non-client>";
 ADDRLP4 20
-ADDRGP4 $232
+ADDRGP4 $268
 ASGNP4
 line 527
 ;527:		}
 line 528
 ;528:	} else {
-ADDRGP4 $229
+ADDRGP4 $265
 JUMPV
-LABELV $228
+LABELV $264
 line 529
 ;529:		killer = ENTITYNUM_WORLD;
 ADDRLP4 4
@@ -2345,23 +2866,23 @@ ASGNI4
 line 530
 ;530:		killerName = "<world>";
 ADDRLP4 20
-ADDRGP4 $233
+ADDRGP4 $269
 ASGNP4
 line 531
 ;531:	}
-LABELV $229
+LABELV $265
 line 533
 ;532:
 ;533:	if ( killer < 0 || killer >= MAX_CLIENTS ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-LTI4 $236
+LTI4 $272
 ADDRLP4 4
 INDIRI4
 CNSTI4 64
-LTI4 $234
-LABELV $236
+LTI4 $270
+LABELV $272
 line 534
 ;534:		killer = ENTITYNUM_WORLD;
 ADDRLP4 4
@@ -2370,38 +2891,38 @@ ASGNI4
 line 535
 ;535:		killerName = "<world>";
 ADDRLP4 20
-ADDRGP4 $233
+ADDRGP4 $269
 ASGNP4
 line 536
 ;536:	}
-LABELV $234
+LABELV $270
 line 538
 ;537:
 ;538:	if ( meansOfDeath < 0 || meansOfDeath >= sizeof( modNames ) / sizeof( modNames[0] ) ) {
-ADDRLP4 56
+ADDRLP4 60
 ADDRFP4 16
 INDIRI4
 ASGNI4
-ADDRLP4 56
+ADDRLP4 60
 INDIRI4
 CNSTI4 0
-LTI4 $239
-ADDRLP4 56
+LTI4 $275
+ADDRLP4 60
 INDIRI4
 CVIU4 4
-CNSTU4 25
-LTU4 $237
-LABELV $239
+CNSTU4 28
+LTU4 $273
+LABELV $275
 line 539
 ;539:		obit = "<bad obituary>";
 ADDRLP4 24
-ADDRGP4 $240
+ADDRGP4 $276
 ASGNP4
 line 540
 ;540:	} else {
-ADDRGP4 $238
+ADDRGP4 $274
 JUMPV
-LABELV $237
+LABELV $273
 line 541
 ;541:		obit = modNames[ meansOfDeath ];
 ADDRLP4 24
@@ -2415,20 +2936,20 @@ INDIRP4
 ASGNP4
 line 542
 ;542:	}
-LABELV $238
+LABELV $274
 line 544
 ;543:
 ;544:	G_LogPrintf("Kill: %i %i %i: %s killed %s by %s\n", 
-ADDRGP4 $241
+ADDRGP4 $277
 ARGP4
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRLP4 60
+ADDRLP4 64
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 60
+ADDRLP4 64
 INDIRP4
 INDIRI4
 ARGI4
@@ -2438,7 +2959,7 @@ ARGI4
 ADDRLP4 20
 INDIRP4
 ARGP4
-ADDRLP4 60
+ADDRLP4 64
 INDIRP4
 CNSTI4 516
 ADDP4
@@ -2465,12 +2986,12 @@ ADDP4
 ARGP4
 CNSTI4 62
 ARGI4
-ADDRLP4 64
+ADDRLP4 68
 ADDRGP4 G_TempEntity
 CALLP4
 ASGNP4
 ADDRLP4 8
-ADDRLP4 64
+ADDRLP4 68
 INDIRP4
 ASGNP4
 line 550
@@ -2522,7 +3043,7 @@ ASGNP4
 line 557
 ;556:
 ;557:	self->client->ps.persistant[PERS_KILLED]++;
-ADDRLP4 68
+ADDRLP4 72
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -2531,9 +3052,9 @@ INDIRP4
 CNSTI4 280
 ADDP4
 ASGNP4
-ADDRLP4 68
+ADDRLP4 72
 INDIRP4
-ADDRLP4 68
+ADDRLP4 72
 INDIRP4
 INDIRI4
 CNSTI4 1
@@ -2542,28 +3063,28 @@ ASGNI4
 line 559
 ;558:
 ;559:	if (attacker && attacker->client) {
-ADDRLP4 72
+ADDRLP4 76
 ADDRFP4 8
 INDIRP4
 ASGNP4
-ADDRLP4 76
+ADDRLP4 80
 CNSTU4 0
 ASGNU4
-ADDRLP4 72
+ADDRLP4 76
 INDIRP4
 CVPU4 4
-ADDRLP4 76
+ADDRLP4 80
 INDIRU4
-EQU4 $242
-ADDRLP4 72
+EQU4 $278
+ADDRLP4 76
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
 CVPU4 4
-ADDRLP4 76
+ADDRLP4 80
 INDIRU4
-EQU4 $242
+EQU4 $278
 line 560
 ;560:		attacker->client->lastkilled_client = self->s.number;
 ADDRFP4 8
@@ -2580,36 +3101,36 @@ ASGNI4
 line 562
 ;561:
 ;562:		if ( attacker == self || OnSameTeam (self, attacker ) ) {
-ADDRLP4 80
+ADDRLP4 84
 ADDRFP4 8
 INDIRP4
 ASGNP4
-ADDRLP4 84
+ADDRLP4 88
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 80
-INDIRP4
-CVPU4 4
 ADDRLP4 84
 INDIRP4
 CVPU4 4
-EQU4 $246
-ADDRLP4 84
-INDIRP4
-ARGP4
-ADDRLP4 80
-INDIRP4
-ARGP4
 ADDRLP4 88
+INDIRP4
+CVPU4 4
+EQU4 $282
+ADDRLP4 88
+INDIRP4
+ARGP4
+ADDRLP4 84
+INDIRP4
+ARGP4
+ADDRLP4 92
 ADDRGP4 OnSameTeam
 CALLI4
 ASGNI4
-ADDRLP4 88
+ADDRLP4 92
 INDIRI4
 CNSTI4 0
-EQI4 $244
-LABELV $246
+EQI4 $280
+LABELV $282
 line 563
 ;563:			AddScore( attacker, self->r.currentOrigin, -1 );
 ADDRFP4 8
@@ -2629,9 +3150,9 @@ line 566
 ;564:			
 ;565:
 ;566:		} else {
-ADDRGP4 $243
+ADDRGP4 $279
 JUMPV
-LABELV $244
+LABELV $280
 line 567
 ;567:			AddScore( attacker, self->r.currentOrigin, 1 );
 ADDRFP4 8
@@ -2653,12 +3174,12 @@ line 569
 ADDRFP4 16
 INDIRI4
 CNSTI4 2
-NEI4 $247
+NEI4 $283
 line 572
 ;570:				
 ;571:				// play humiliation on player
 ;572:				attacker->client->ps.persistant[PERS_GAUNTLET_FRAG_COUNT]++;
-ADDRLP4 92
+ADDRLP4 96
 ADDRFP4 8
 INDIRP4
 CNSTI4 516
@@ -2667,9 +3188,9 @@ INDIRP4
 CNSTI4 300
 ADDP4
 ASGNP4
-ADDRLP4 92
+ADDRLP4 96
 INDIRP4
-ADDRLP4 92
+ADDRLP4 96
 INDIRP4
 INDIRI4
 CNSTI4 1
@@ -2679,7 +3200,7 @@ line 575
 ;573:
 ;574:				// add the sprite over the player's head
 ;575:				attacker->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
-ADDRLP4 96
+ADDRLP4 100
 ADDRFP4 8
 INDIRP4
 CNSTI4 516
@@ -2688,9 +3209,9 @@ INDIRP4
 CNSTI4 104
 ADDP4
 ASGNP4
-ADDRLP4 96
+ADDRLP4 100
 INDIRP4
-ADDRLP4 96
+ADDRLP4 100
 INDIRP4
 INDIRI4
 CNSTI4 -231497
@@ -2698,7 +3219,7 @@ BANDI4
 ASGNI4
 line 576
 ;576:				attacker->client->ps.eFlags |= EF_AWARD_GAUNTLET;
-ADDRLP4 100
+ADDRLP4 104
 ADDRFP4 8
 INDIRP4
 CNSTI4 516
@@ -2707,9 +3228,9 @@ INDIRP4
 CNSTI4 104
 ADDP4
 ASGNP4
-ADDRLP4 100
+ADDRLP4 104
 INDIRP4
-ADDRLP4 100
+ADDRLP4 104
 INDIRP4
 INDIRI4
 CNSTI4 64
@@ -2733,7 +3254,7 @@ line 580
 ;578:
 ;579:				// also play humiliation on target
 ;580:				self->client->ps.persistant[PERS_PLAYEREVENTS] ^= PLAYEREVENT_GAUNTLETREWARD;
-ADDRLP4 104
+ADDRLP4 108
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -2742,9 +3263,9 @@ INDIRP4
 CNSTI4 268
 ADDP4
 ASGNP4
-ADDRLP4 104
+ADDRLP4 108
 INDIRP4
-ADDRLP4 104
+ADDRLP4 108
 INDIRP4
 INDIRI4
 CNSTI4 2
@@ -2752,7 +3273,7 @@ BXORI4
 ASGNI4
 line 581
 ;581:			}
-LABELV $247
+LABELV $283
 line 585
 ;582:
 ;583:			// check for two kills in a short amount of time
@@ -2770,11 +3291,11 @@ ADDP4
 INDIRI4
 SUBI4
 CNSTI4 3000
-GEI4 $250
+GEI4 $286
 line 587
 ;586:				// play excellent on player
 ;587:				attacker->client->ps.persistant[PERS_EXCELLENT_COUNT]++;
-ADDRLP4 92
+ADDRLP4 96
 ADDRFP4 8
 INDIRP4
 CNSTI4 516
@@ -2783,9 +3304,9 @@ INDIRP4
 CNSTI4 288
 ADDP4
 ASGNP4
-ADDRLP4 92
+ADDRLP4 96
 INDIRP4
-ADDRLP4 92
+ADDRLP4 96
 INDIRP4
 INDIRI4
 CNSTI4 1
@@ -2795,7 +3316,7 @@ line 590
 ;588:
 ;589:				// add the sprite over the player's head
 ;590:				attacker->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
-ADDRLP4 96
+ADDRLP4 100
 ADDRFP4 8
 INDIRP4
 CNSTI4 516
@@ -2804,9 +3325,9 @@ INDIRP4
 CNSTI4 104
 ADDP4
 ASGNP4
-ADDRLP4 96
+ADDRLP4 100
 INDIRP4
-ADDRLP4 96
+ADDRLP4 100
 INDIRP4
 INDIRI4
 CNSTI4 -231497
@@ -2814,7 +3335,7 @@ BANDI4
 ASGNI4
 line 591
 ;591:				attacker->client->ps.eFlags |= EF_AWARD_EXCELLENT;
-ADDRLP4 100
+ADDRLP4 104
 ADDRFP4 8
 INDIRP4
 CNSTI4 516
@@ -2823,9 +3344,9 @@ INDIRP4
 CNSTI4 104
 ADDP4
 ASGNP4
-ADDRLP4 100
+ADDRLP4 104
 INDIRP4
-ADDRLP4 100
+ADDRLP4 104
 INDIRP4
 INDIRI4
 CNSTI4 8
@@ -2847,7 +3368,7 @@ ADDI4
 ASGNI4
 line 593
 ;593:			}
-LABELV $250
+LABELV $286
 line 594
 ;594:			attacker->client->lastKillTime = level.time;
 ADDRFP4 8
@@ -2865,19 +3386,19 @@ line 596
 ;596:		}
 line 597
 ;597:	} else {
-ADDRGP4 $243
+ADDRGP4 $279
 JUMPV
-LABELV $242
+LABELV $278
 line 598
 ;598:		AddScore( self, self->r.currentOrigin, -1 );
-ADDRLP4 80
+ADDRLP4 84
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 80
+ADDRLP4 84
 INDIRP4
 ARGP4
-ADDRLP4 80
+ADDRLP4 84
 INDIRP4
 CNSTI4 488
 ADDP4
@@ -2889,7 +3410,7 @@ CALLV
 pop
 line 599
 ;599:	}
-LABELV $243
+LABELV $279
 line 602
 ;600:
 ;601:	// Add team bonuses
@@ -2913,7 +3434,7 @@ line 605
 ADDRFP4 16
 INDIRI4
 CNSTI4 20
-NEI4 $255
+NEI4 $291
 line 606
 ;606:		if ( self->client->ps.powerups[PW_NEUTRALFLAG] ) {		// only happens in One Flag CTF
 ADDRFP4 0
@@ -2925,7 +3446,7 @@ CNSTI4 348
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $257
+EQI4 $293
 line 607
 ;607:			Team_ReturnFlag( TEAM_FREE );
 CNSTI4 0
@@ -2946,9 +3467,9 @@ CNSTI4 0
 ASGNI4
 line 609
 ;609:		}
-ADDRGP4 $258
+ADDRGP4 $294
 JUMPV
-LABELV $257
+LABELV $293
 line 610
 ;610:		else if ( self->client->ps.powerups[PW_REDFLAG] ) {		// only happens in standard CTF
 ADDRFP4 0
@@ -2960,7 +3481,7 @@ CNSTI4 340
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $259
+EQI4 $295
 line 611
 ;611:			Team_ReturnFlag( TEAM_RED );
 CNSTI4 1
@@ -2981,9 +3502,9 @@ CNSTI4 0
 ASGNI4
 line 613
 ;613:		}
-ADDRGP4 $260
+ADDRGP4 $296
 JUMPV
-LABELV $259
+LABELV $295
 line 614
 ;614:		else if ( self->client->ps.powerups[PW_BLUEFLAG] ) {	// only happens in standard CTF
 ADDRFP4 0
@@ -2995,7 +3516,7 @@ CNSTI4 344
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $261
+EQI4 $297
 line 615
 ;615:			Team_ReturnFlag( TEAM_BLUE );
 CNSTI4 2
@@ -3016,12 +3537,12 @@ CNSTI4 0
 ASGNI4
 line 617
 ;617:		}
-LABELV $261
-LABELV $260
-LABELV $258
+LABELV $297
+LABELV $296
+LABELV $294
 line 618
 ;618:	}
-LABELV $255
+LABELV $291
 line 621
 ;619:
 ;620:	// if client is in a nodrop area, don't drop anything (but return CTF flags!)
@@ -3033,12 +3554,12 @@ ADDP4
 ARGP4
 CNSTI4 -1
 ARGI4
-ADDRLP4 80
+ADDRLP4 84
 ADDRGP4 trap_PointContents
 CALLI4
 ASGNI4
 ADDRLP4 12
-ADDRLP4 80
+ADDRLP4 84
 INDIRI4
 ASGNI4
 line 622
@@ -3049,7 +3570,7 @@ CVIU4 4
 CNSTU4 2147483648
 BANDU4
 CNSTU4 0
-NEU4 $263
+NEU4 $299
 line 623
 ;623:		TossClientItems( self );
 ADDRFP4 0
@@ -3060,9 +3581,9 @@ CALLV
 pop
 line 624
 ;624:	}
-ADDRGP4 $264
+ADDRGP4 $300
 JUMPV
-LABELV $263
+LABELV $299
 line 625
 ;625:	else {
 line 626
@@ -3076,7 +3597,7 @@ CNSTI4 348
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $265
+EQI4 $301
 line 627
 ;627:			Team_ReturnFlag( TEAM_FREE );
 CNSTI4 0
@@ -3086,9 +3607,9 @@ CALLV
 pop
 line 628
 ;628:		}
-ADDRGP4 $266
+ADDRGP4 $302
 JUMPV
-LABELV $265
+LABELV $301
 line 629
 ;629:		else if ( self->client->ps.powerups[PW_REDFLAG] ) {		// only happens in standard CTF
 ADDRFP4 0
@@ -3100,7 +3621,7 @@ CNSTI4 340
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $267
+EQI4 $303
 line 630
 ;630:			Team_ReturnFlag( TEAM_RED );
 CNSTI4 1
@@ -3110,9 +3631,9 @@ CALLV
 pop
 line 631
 ;631:		}
-ADDRGP4 $268
+ADDRGP4 $304
 JUMPV
-LABELV $267
+LABELV $303
 line 632
 ;632:		else if ( self->client->ps.powerups[PW_BLUEFLAG] ) {	// only happens in standard CTF
 ADDRFP4 0
@@ -3124,7 +3645,7 @@ CNSTI4 344
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $269
+EQI4 $305
 line 633
 ;633:			Team_ReturnFlag( TEAM_BLUE );
 CNSTI4 2
@@ -3134,35 +3655,56 @@ CALLV
 pop
 line 634
 ;634:		}
-LABELV $269
-LABELV $268
-LABELV $266
+LABELV $305
+LABELV $304
+LABELV $302
 line 635
 ;635:	}
-LABELV $264
-line 644
+LABELV $300
+line 637
 ;636:#ifdef MISSIONPACK
 ;637:	TossClientPersistantPowerups( self );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 TossClientPersistantPowerups
+CALLV
+pop
+line 638
 ;638:	if( g_gametype.integer == GT_HARVESTER ) {
+ADDRGP4 g_gametype+12
+INDIRI4
+CNSTI4 7
+NEI4 $307
+line 639
 ;639:		TossClientCubes( self );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 TossClientCubes
+CALLV
+pop
+line 640
 ;640:	}
+LABELV $307
+line 644
 ;641:#endif
 ;642:
 ;643:	
 ;644:	if ((level.firstStrike == qfalse) && (!level.warmupTime))
-ADDRLP4 84
+ADDRLP4 88
 CNSTI4 0
 ASGNI4
-ADDRGP4 level+9228
+ADDRGP4 level+9232
 INDIRI4
-ADDRLP4 84
+ADDRLP4 88
 INDIRI4
-NEI4 $271
+NEI4 $310
 ADDRGP4 level+16
 INDIRI4
-ADDRLP4 84
+ADDRLP4 88
 INDIRI4
-NEI4 $271
+NEI4 $310
 line 645
 ;645:	{
 line 646
@@ -3173,24 +3715,24 @@ CVPU4 4
 ADDRFP4 8
 INDIRP4
 CVPU4 4
-EQU4 $275
+EQU4 $314
 line 647
 ;647:		{
 line 648
 ;648:			level.firstStrike = qtrue;
-ADDRGP4 level+9228
+ADDRGP4 level+9232
 CNSTI4 1
 ASGNI4
 line 649
 ;649:			BroadCastSound("sound/misc/laff02.wav");
-ADDRGP4 $278
+ADDRGP4 $317
 ARGP4
 ADDRGP4 BroadCastSound
 CALLV
 pop
 line 650
 ;650:			trap_SendServerCommand( -1, va("print \"%s Made First Strike!\n\"",attacker->client->pers.netname));
-ADDRGP4 $279
+ADDRGP4 $318
 ARGP4
 ADDRFP4 8
 INDIRP4
@@ -3200,13 +3742,13 @@ INDIRP4
 CNSTI4 512
 ADDP4
 ARGP4
-ADDRLP4 88
+ADDRLP4 92
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 -1
 ARGI4
-ADDRLP4 88
+ADDRLP4 92
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
@@ -3214,17 +3756,17 @@ CALLV
 pop
 line 651
 ;651:		}
-LABELV $275
+LABELV $314
 line 652
 ;652:	}
-LABELV $271
+LABELV $310
 line 654
 ;653:
 ;654:	if (level.warmupTime != 0)
 ADDRGP4 level+16
 INDIRI4
 CNSTI4 0
-EQI4 $280
+EQI4 $319
 line 655
 ;655:	{
 line 656
@@ -3232,29 +3774,29 @@ line 656
 line 658
 ;657:		//trap_SendServerCommand( -1, va("print \"%s FS Is FALSE!!\n\"",attacker->client->pers.netname));	
 ;658:	} 
-LABELV $280
+LABELV $319
 line 662
 ;659:		
 ;660:	
 ;661:		// Shafe - Trep - Arsenal Stuff
 ;662:		if ( g_GameMode.integer > 0 && meansOfDeath != MOD_TELEFRAG && !level.warmupTime) 
-ADDRLP4 88
+ADDRLP4 92
 CNSTI4 0
 ASGNI4
 ADDRGP4 g_GameMode+12
 INDIRI4
-ADDRLP4 88
+ADDRLP4 92
 INDIRI4
-LEI4 $284
+LEI4 $323
 ADDRFP4 16
 INDIRI4
 CNSTI4 18
-EQI4 $284
+EQI4 $323
 ADDRGP4 level+16
 INDIRI4
-ADDRLP4 88
+ADDRLP4 92
 INDIRI4
-NEI4 $284
+NEI4 $323
 line 663
 ;663:		{
 line 664
@@ -3272,7 +3814,7 @@ line 666
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 1
-NEI4 $288
+NEI4 $327
 line 667
 ;667:			{
 line 668
@@ -3280,7 +3822,7 @@ line 668
 ADDRLP4 16
 INDIRI4
 CNSTI4 9
-NEI4 $291
+NEI4 $330
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3290,13 +3832,13 @@ CNSTI4 2480
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $291
+LABELV $330
 line 669
 ;669:				if (tmpW == 8) { self->client->pers.h_plasma = qfalse;}
 ADDRLP4 16
 INDIRI4
 CNSTI4 8
-NEI4 $293
+NEI4 $332
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3306,13 +3848,13 @@ CNSTI4 2476
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $293
+LABELV $332
 line 670
 ;670:				if (tmpW == 7) { self->client->pers.h_gauss = qfalse; }
 ADDRLP4 16
 INDIRI4
 CNSTI4 7
-NEI4 $295
+NEI4 $334
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3322,13 +3864,13 @@ CNSTI4 2472
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $295
+LABELV $334
 line 671
 ;671:				if (tmpW == 6) { self->client->pers.h_flame = qfalse; }
 ADDRLP4 16
 INDIRI4
 CNSTI4 6
-NEI4 $297
+NEI4 $336
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3338,13 +3880,13 @@ CNSTI4 2468
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $297
+LABELV $336
 line 672
 ;672:				if (tmpW == 5) { self->client->pers.h_singcan = qfalse; }
 ADDRLP4 16
 INDIRI4
 CNSTI4 5
-NEI4 $299
+NEI4 $338
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3354,13 +3896,13 @@ CNSTI4 2464
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $299
+LABELV $338
 line 673
 ;673:				if (tmpW == 4) { self->client->pers.h_grenade = qfalse; }
 ADDRLP4 16
 INDIRI4
 CNSTI4 4
-NEI4 $301
+NEI4 $340
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3370,13 +3912,13 @@ CNSTI4 2460
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $301
+LABELV $340
 line 674
 ;674:				if (tmpW == 3) { self->client->pers.h_sg = qfalse; }
 ADDRLP4 16
 INDIRI4
 CNSTI4 3
-NEI4 $303
+NEI4 $342
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3386,13 +3928,13 @@ CNSTI4 2456
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $303
+LABELV $342
 line 675
 ;675:				if (tmpW == 2) { self->client->pers.h_mg = qfalse; }
 ADDRLP4 16
 INDIRI4
 CNSTI4 2
-NEI4 $305
+NEI4 $344
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3402,13 +3944,13 @@ CNSTI4 2452
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $305
+LABELV $344
 line 676
 ;676:				if (tmpW == 1) { self->client->pers.h_gauntlet = qfalse; }
 ADDRLP4 16
 INDIRI4
 CNSTI4 1
-NEI4 $307
+NEI4 $346
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -3418,11 +3960,11 @@ CNSTI4 2448
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $307
+LABELV $346
 line 678
 ;677:
 ;678:			}
-LABELV $288
+LABELV $327
 line 681
 ;679:			
 ;680:			
@@ -3430,19 +3972,19 @@ line 681
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 2
-EQI4 $312
+EQI4 $351
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRLP4 92
+ADDRLP4 96
 ADDRGP4 IsOutOfWeapons
 CALLI4
 ASGNI4
-ADDRLP4 92
+ADDRLP4 96
 INDIRI4
 CNSTI4 0
-EQI4 $309
-LABELV $312
+EQI4 $348
+LABELV $351
 line 682
 ;682:			{
 line 685
@@ -3452,12 +3994,12 @@ line 685
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 1
-NEI4 $313
+NEI4 $352
 line 686
 ;686:				{
 line 687
 ;687:					trap_SendServerCommand( -1, va("print \"%s's Arsenal Is Empty!\n\"",self->client->pers.netname));
-ADDRGP4 $316
+ADDRGP4 $355
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3467,13 +4009,13 @@ INDIRP4
 CNSTI4 512
 ADDP4
 ARGP4
-ADDRLP4 96
+ADDRLP4 100
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 -1
 ARGI4
-ADDRLP4 96
+ADDRLP4 100
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
@@ -3481,7 +4023,7 @@ CALLV
 pop
 line 688
 ;688:					trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE "'s Arsenal is Empty.\n\"", self->client->pers.netname) );
-ADDRGP4 $317
+ADDRGP4 $356
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3491,13 +4033,13 @@ INDIRP4
 CNSTI4 512
 ADDP4
 ARGP4
-ADDRLP4 100
+ADDRLP4 104
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 -1
 ARGI4
-ADDRLP4 100
+ADDRLP4 104
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
@@ -3505,7 +4047,7 @@ CALLV
 pop
 line 689
 ;689:				}
-LABELV $313
+LABELV $352
 line 692
 ;690:
 ;691:				// LMS Message
@@ -3513,12 +4055,12 @@ line 692
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 2
-NEI4 $318
+NEI4 $357
 line 693
 ;693:				{
 line 694
 ;694:					trap_SendServerCommand( -1, va("print \"%s Has Been Eliminated!!\n\"",self->client->pers.netname));
-ADDRGP4 $321
+ADDRGP4 $360
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3528,13 +4070,13 @@ INDIRP4
 CNSTI4 512
 ADDP4
 ARGP4
-ADDRLP4 96
+ADDRLP4 100
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 -1
 ARGI4
-ADDRLP4 96
+ADDRLP4 100
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
@@ -3542,7 +4084,7 @@ CALLV
 pop
 line 695
 ;695:					trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Has Been Eliminated.\n\"", self->client->pers.netname) );
-ADDRGP4 $322
+ADDRGP4 $361
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3552,13 +4094,13 @@ INDIRP4
 CNSTI4 512
 ADDP4
 ARGP4
-ADDRLP4 100
+ADDRLP4 104
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 -1
 ARGI4
-ADDRLP4 100
+ADDRLP4 104
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
@@ -3566,23 +4108,23 @@ CALLV
 pop
 line 696
 ;696:				}
-LABELV $318
+LABELV $357
 line 699
 ;697:				
 ;698:				// Send them to Spec
 ;699:				self->client->pers.TrueScore = self->client->ps.persistant[PERS_SCORE];
-ADDRLP4 96
+ADDRLP4 100
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
 ASGNP4
-ADDRLP4 96
+ADDRLP4 100
 INDIRP4
 CNSTI4 2488
 ADDP4
-ADDRLP4 96
+ADDRLP4 100
 INDIRP4
 CNSTI4 248
 ADDP4
@@ -3604,7 +4146,7 @@ line 701
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $323
+ADDRGP4 $362
 ARGP4
 ADDRGP4 SetTeam
 CALLV
@@ -3615,12 +4157,12 @@ line 703
 line 705
 ;704:
 ;705:				tmpCnt = (CountSurvivors());
-ADDRLP4 100
+ADDRLP4 104
 ADDRGP4 CountSurvivors
 CALLI4
 ASGNI4
 ADDRLP4 28
-ADDRLP4 100
+ADDRLP4 104
 INDIRI4
 ASGNI4
 line 708
@@ -3629,15 +4171,15 @@ line 708
 ;708:				if (tmpCnt != level.levelSurvivors)
 ADDRLP4 28
 INDIRI4
-ADDRGP4 level+9220
+ADDRGP4 level+9224
 INDIRI4
-EQI4 $325
+EQI4 $364
 line 709
 ;709:				{
 line 711
 ;710:
 ;711:					level.levelSurvivors = tmpCnt;
-ADDRGP4 level+9220
+ADDRGP4 level+9224
 ADDRLP4 28
 INDIRI4
 ASGNI4
@@ -3648,89 +4190,89 @@ line 714
 ADDRLP4 28
 INDIRI4
 CNSTI4 5
-NEI4 $329
+NEI4 $368
 line 715
 ;715:					{
 line 716
 ;716:						BroadCastSound("sound/misc/5.wav");
-ADDRGP4 $331
+ADDRGP4 $370
 ARGP4
 ADDRGP4 BroadCastSound
 CALLV
 pop
 line 717
 ;717:					}
-LABELV $329
+LABELV $368
 line 719
 ;718:					
 ;719:					if (tmpCnt == 4) 
 ADDRLP4 28
 INDIRI4
 CNSTI4 4
-NEI4 $332
+NEI4 $371
 line 720
 ;720:					{
 line 721
 ;721:						BroadCastSound("sound/misc/4.wav");
-ADDRGP4 $334
+ADDRGP4 $373
 ARGP4
 ADDRGP4 BroadCastSound
 CALLV
 pop
 line 722
 ;722:					}
-LABELV $332
+LABELV $371
 line 724
 ;723:
 ;724:					if (tmpCnt == 3) 
 ADDRLP4 28
 INDIRI4
 CNSTI4 3
-NEI4 $335
+NEI4 $374
 line 725
 ;725:					{
 line 726
 ;726:						BroadCastSound("sound/misc/3.wav");
-ADDRGP4 $337
+ADDRGP4 $376
 ARGP4
 ADDRGP4 BroadCastSound
 CALLV
 pop
 line 727
 ;727:					}
-LABELV $335
+LABELV $374
 line 729
 ;728:
 ;729:					if (tmpCnt == 2) 
 ADDRLP4 28
 INDIRI4
 CNSTI4 2
-NEI4 $338
+NEI4 $377
 line 730
 ;730:					{
 line 732
 ;731:						
 ;732:						BroadCastSound("sound/misc/2.wav");
-ADDRGP4 $340
+ADDRGP4 $379
 ARGP4
 ADDRGP4 BroadCastSound
 CALLV
 pop
 line 733
 ;733:					}
-LABELV $338
+LABELV $377
 line 735
 ;734:
 ;735:					if (tmpCnt == 1) 
 ADDRLP4 28
 INDIRI4
 CNSTI4 1
-NEI4 $341
+NEI4 $380
 line 736
 ;736:					{
 line 737
 ;737:						BroadCastSound("sound/misc/laff01.wav");
-ADDRGP4 $343
+ADDRGP4 $382
 ARGP4
 ADDRGP4 BroadCastSound
 CALLV
@@ -3738,18 +4280,18 @@ pop
 line 739
 ;738:
 ;739:					}
-LABELV $341
+LABELV $380
 line 741
 ;740:				
 ;741:				}
-LABELV $325
+LABELV $364
 line 742
 ;742:			} 
-LABELV $309
+LABELV $348
 line 744
 ;743:
 ;744:		}
-LABELV $284
+LABELV $323
 line 747
 ;745:		// End Arsenal Stuff
 ;746:
@@ -3767,15 +4309,15 @@ line 750
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $347
+ADDRGP4 $386
 JUMPV
-LABELV $344
+LABELV $383
 line 753
 ;751:		gclient_t	*client;
 ;752:
 ;753:		client = &level.clients[i];
-ADDRLP4 92
-CNSTI4 3392
+ADDRLP4 96
+CNSTI4 3460
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -3785,37 +4327,37 @@ ADDP4
 ASGNP4
 line 754
 ;754:		if ( client->pers.connected != CON_CONNECTED ) {
-ADDRLP4 92
+ADDRLP4 96
 INDIRP4
 CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-EQI4 $349
+EQI4 $388
 line 755
 ;755:			continue;
-ADDRGP4 $345
+ADDRGP4 $384
 JUMPV
-LABELV $349
+LABELV $388
 line 757
 ;756:		}
 ;757:		if ( client->sess.sessionTeam != TEAM_SPECTATOR ) {
-ADDRLP4 92
+ADDRLP4 96
 INDIRP4
 CNSTI4 2492
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $351
+EQI4 $390
 line 758
 ;758:			continue;
-ADDRGP4 $345
+ADDRGP4 $384
 JUMPV
-LABELV $351
+LABELV $390
 line 760
 ;759:		}
 ;760:		if ( client->sess.spectatorClient == self->s.number ) {
-ADDRLP4 92
+ADDRLP4 96
 INDIRP4
 CNSTI4 2504
 ADDP4
@@ -3823,10 +4365,10 @@ INDIRI4
 ADDRFP4 0
 INDIRP4
 INDIRI4
-NEI4 $353
+NEI4 $392
 line 761
 ;761:			Cmd_Score_f( g_entities + i );
-CNSTI4 860
+CNSTI4 868
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -3838,10 +4380,10 @@ CALLV
 pop
 line 762
 ;762:		}
-LABELV $353
+LABELV $392
 line 763
 ;763:	}
-LABELV $345
+LABELV $384
 line 750
 ADDRLP4 0
 ADDRLP4 0
@@ -3849,12 +4391,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $347
+LABELV $386
 ADDRLP4 0
 INDIRI4
 ADDRGP4 level+24
 INDIRI4
-LTI4 $344
+LTI4 $383
 line 765
 ;764:
 ;765:	self->takedamage = qtrue;	// can still be gibbed
@@ -3923,18 +4465,18 @@ pop
 line 775
 ;774:
 ;775:	VectorCopy( self->s.angles, self->client->ps.viewangles );
-ADDRLP4 92
+ADDRLP4 96
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 92
+ADDRLP4 96
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
 CNSTI4 152
 ADDP4
-ADDRLP4 92
+ADDRLP4 96
 INDIRP4
 CNSTI4 116
 ADDP4
@@ -4004,19 +4546,19 @@ line 792
 ADDRFP4 16
 INDIRI4
 CNSTI4 23
-NEI4 $356
+NEI4 $395
 line 793
 ;793:	{
 line 794
 ;794:			BroadCastSound("sound/misc/headshot.wav");
-ADDRGP4 $358
+ADDRGP4 $397
 ARGP4
 ADDRGP4 BroadCastSound
 CALLV
 pop
 line 795
 ;795:	}
-LABELV $356
+LABELV $395
 line 800
 ;796:
 ;797:
@@ -4029,28 +4571,28 @@ CNSTI4 740
 ADDP4
 INDIRI4
 CNSTI4 -40
-GTI4 $365
+GTI4 $404
 ADDRLP4 12
 INDIRI4
 CVIU4 4
 CNSTU4 2147483648
 BANDU4
 CNSTU4 0
-NEU4 $365
+NEU4 $404
 ADDRGP4 g_blood+12
 INDIRI4
 CNSTI4 0
-EQI4 $365
+EQI4 $404
 ADDRFP4 16
 INDIRI4
 CNSTI4 23
-NEI4 $362
-LABELV $365
+NEI4 $401
+LABELV $404
 ADDRFP4 16
 INDIRI4
 CNSTI4 20
-NEI4 $359
-LABELV $362
+NEI4 $398
+LABELV $401
 line 802
 ;801:		// gib death
 ;802:		GibEntity( self, killer );
@@ -4065,33 +4607,33 @@ CALLV
 pop
 line 803
 ;803:	} else {
-ADDRGP4 $360
+ADDRGP4 $399
 JUMPV
-LABELV $359
+LABELV $398
 line 807
 ;804:		// normal death
 ;805:		static int i;
 ;806:
 ;807:		switch ( i ) {
-ADDRLP4 96
-ADDRGP4 $366
+ADDRLP4 100
+ADDRGP4 $405
 INDIRI4
 ASGNI4
-ADDRLP4 96
+ADDRLP4 100
 INDIRI4
 CNSTI4 0
-EQI4 $369
-ADDRLP4 96
+EQI4 $408
+ADDRLP4 100
 INDIRI4
 CNSTI4 1
-EQI4 $370
-ADDRLP4 96
+EQI4 $409
+ADDRLP4 100
 INDIRI4
 CNSTI4 2
-EQI4 $371
-ADDRGP4 $367
+EQI4 $410
+ADDRGP4 $406
 JUMPV
-LABELV $369
+LABELV $408
 line 809
 ;808:		case 0:
 ;809:			anim = BOTH_DEATH1;
@@ -4100,9 +4642,9 @@ CNSTI4 0
 ASGNI4
 line 810
 ;810:			break;
-ADDRGP4 $368
+ADDRGP4 $407
 JUMPV
-LABELV $370
+LABELV $409
 line 812
 ;811:		case 1:
 ;812:			anim = BOTH_DEATH2;
@@ -4111,10 +4653,10 @@ CNSTI4 2
 ASGNI4
 line 813
 ;813:			break;
-ADDRGP4 $368
+ADDRGP4 $407
 JUMPV
-LABELV $371
-LABELV $367
+LABELV $410
+LABELV $406
 line 816
 ;814:		case 2:
 ;815:		default:
@@ -4124,7 +4666,7 @@ CNSTI4 4
 ASGNI4
 line 817
 ;817:			break;
-LABELV $368
+LABELV $407
 line 822
 ;818:		}
 ;819:
@@ -4137,7 +4679,7 @@ CNSTI4 740
 ADDP4
 INDIRI4
 CNSTI4 -40
-GTI4 $372
+GTI4 $411
 line 823
 ;823:			self->health = GIB_HEALTH+1;
 ADDRFP4 0
@@ -4148,11 +4690,11 @@ CNSTI4 -39
 ASGNI4
 line 824
 ;824:		}
-LABELV $372
+LABELV $411
 line 826
 ;825:
 ;826:		self->client->ps.legsAnim = 
-ADDRLP4 100
+ADDRLP4 104
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -4161,18 +4703,18 @@ INDIRP4
 CNSTI4 76
 ADDP4
 ASGNP4
-ADDRLP4 104
+ADDRLP4 108
 CNSTI4 128
 ASGNI4
-ADDRLP4 100
+ADDRLP4 104
 INDIRP4
-ADDRLP4 100
+ADDRLP4 104
 INDIRP4
 INDIRI4
-ADDRLP4 104
+ADDRLP4 108
 INDIRI4
 BANDI4
-ADDRLP4 104
+ADDRLP4 108
 INDIRI4
 BXORI4
 ADDRLP4 32
@@ -4182,7 +4724,7 @@ ASGNI4
 line 828
 ;827:			( ( self->client->ps.legsAnim & ANIM_TOGGLEBIT ) ^ ANIM_TOGGLEBIT ) | anim;
 ;828:		self->client->ps.torsoAnim = 
-ADDRLP4 108
+ADDRLP4 112
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -4191,18 +4733,18 @@ INDIRP4
 CNSTI4 84
 ADDP4
 ASGNP4
-ADDRLP4 112
+ADDRLP4 116
 CNSTI4 128
 ASGNI4
-ADDRLP4 108
+ADDRLP4 112
 INDIRP4
-ADDRLP4 108
+ADDRLP4 112
 INDIRP4
 INDIRI4
-ADDRLP4 112
+ADDRLP4 116
 INDIRI4
 BANDI4
-ADDRLP4 112
+ADDRLP4 116
 INDIRI4
 BXORI4
 ADDRLP4 32
@@ -4216,7 +4758,7 @@ line 831
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $366
+ADDRGP4 $405
 INDIRI4
 CNSTI4 59
 ADDI4
@@ -4234,7 +4776,7 @@ line 834
 ADDRFP4 16
 INDIRI4
 CNSTI4 23
-NEI4 $374
+NEI4 $413
 line 835
 ;835:			GibEntity_Headshot( self, killer );
 ADDRFP4 0
@@ -4246,9 +4788,9 @@ ARGI4
 ADDRGP4 GibEntity_Headshot
 CALLV
 pop
-ADDRGP4 $375
+ADDRGP4 $414
 JUMPV
-LABELV $374
+LABELV $413
 line 837
 ;836:		else
 ;837:			self->client->noHead = qfalse;
@@ -4261,7 +4803,7 @@ CNSTI4 2648
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $375
+LABELV $414
 line 841
 ;838:		// Shafe - Trep - End Headshot /////////////////////////////
 ;839:
@@ -4277,12 +4819,12 @@ line 844
 ;842:
 ;843:		// globally cycle through the different death animations
 ;844:		i = ( i + 1 ) % 3;
-ADDRLP4 116
-ADDRGP4 $366
+ADDRLP4 120
+ADDRGP4 $405
 ASGNP4
-ADDRLP4 116
+ADDRLP4 120
 INDIRP4
-ADDRLP4 116
+ADDRLP4 120
 INDIRP4
 INDIRI4
 CNSTI4 1
@@ -4290,17 +4832,36 @@ ADDI4
 CNSTI4 3
 MODI4
 ASGNI4
-line 853
+line 849
 ;845:
 ;846:
 ;847:
 ;848:#ifdef MISSIONPACK
 ;849:		if (self->s.eFlags & EF_KAMIKAZE) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 8
+ADDP4
+INDIRI4
+CNSTI4 512
+BANDI4
+CNSTI4 0
+EQI4 $415
+line 850
 ;850:			Kamikaze_DeathTimer( self );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 Kamikaze_DeathTimer
+CALLV
+pop
+line 851
 ;851:		}
+LABELV $415
+line 853
 ;852:#endif
 ;853:	}
-LABELV $360
+LABELV $399
 line 858
 ;854:
 ;855:	
@@ -4316,8 +4877,8 @@ pop
 line 860
 ;859:
 ;860:}
-LABELV $219
-endproc player_die 120 28
+LABELV $252
+endproc player_die 124 28
 export CheckArmor
 proc CheckArmor 20 4
 line 869
@@ -4339,14 +4900,14 @@ line 874
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $377
+NEI4 $418
 line 875
 ;875:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $376
+ADDRGP4 $417
 JUMPV
-LABELV $377
+LABELV $418
 line 877
 ;876:
 ;877:	client = ent->client;
@@ -4364,14 +4925,14 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $379
+NEU4 $420
 line 880
 ;880:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $376
+ADDRGP4 $417
 JUMPV
-LABELV $379
+LABELV $420
 line 882
 ;881:
 ;882:	if (dflags & DAMAGE_NO_ARMOR)
@@ -4380,14 +4941,14 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $381
+EQI4 $422
 line 883
 ;883:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $376
+ADDRGP4 $417
 JUMPV
-LABELV $381
+LABELV $422
 line 886
 ;884:
 ;885:	// armor
@@ -4395,7 +4956,7 @@ line 886
 ADDRLP4 8
 ADDRLP4 4
 INDIRP4
-CNSTI4 196
+CNSTI4 200
 ADDP4
 INDIRI4
 ASGNI4
@@ -4422,35 +4983,35 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 8
 INDIRI4
-LTI4 $383
+LTI4 $424
 line 889
 ;889:		save = count;
 ADDRLP4 0
 ADDRLP4 8
 INDIRI4
 ASGNI4
-LABELV $383
+LABELV $424
 line 891
 ;890:
 ;891:	if (!save)
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $385
+NEI4 $426
 line 892
 ;892:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $376
+ADDRGP4 $417
 JUMPV
-LABELV $385
+LABELV $426
 line 894
 ;893:
 ;894:	client->ps.stats[STAT_ARMOR] -= save;
 ADDRLP4 16
 ADDRLP4 4
 INDIRP4
-CNSTI4 196
+CNSTI4 200
 ADDP4
 ASGNP4
 ADDRLP4 16
@@ -4468,7 +5029,7 @@ line 896
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $376
+LABELV $417
 endproc CheckArmor 20 4
 export RaySphereIntersections
 proc RaySphereIntersections 96 4
@@ -4681,7 +5242,7 @@ line 921
 ADDRLP4 8
 INDIRF4
 CNSTF4 0
-LEF4 $388
+LEF4 $429
 line 922
 ;922:		t = (- b + sqrt(d)) / 2;
 ADDRLP4 8
@@ -4854,16 +5415,16 @@ line 926
 ;926:		return 2;
 CNSTI4 2
 RETI4
-ADDRGP4 $387
+ADDRGP4 $428
 JUMPV
-LABELV $388
+LABELV $429
 line 928
 ;927:	}
 ;928:	else if (d == 0) {
 ADDRLP4 8
 INDIRF4
 CNSTF4 0
-NEF4 $390
+NEF4 $431
 line 929
 ;929:		t = (- b ) / 2;
 ADDRLP4 0
@@ -4942,19 +5503,19 @@ line 931
 ;931:		return 1;
 CNSTI4 1
 RETI4
-ADDRGP4 $387
+ADDRGP4 $428
 JUMPV
-LABELV $390
+LABELV $431
 line 933
 ;932:	}
 ;933:	return 0;
 CNSTI4 0
 RETI4
-LABELV $387
+LABELV $428
 endproc RaySphereIntersections 96 4
-export G_Damage
-proc G_Damage 96 24
-line 1000
+export G_InvulnerabilityEffect
+proc G_InvulnerabilityEffect 64 20
+line 942
 ;934:}
 ;935:
 ;936:#ifdef MISSIONPACK
@@ -4964,35 +5525,254 @@ line 1000
 ;940:================
 ;941:*/
 ;942:int G_InvulnerabilityEffect( gentity_t *targ, vec3_t dir, vec3_t point, vec3_t impactpoint, vec3_t bouncedir ) {
+line 947
 ;943:	gentity_t	*impact;
 ;944:	vec3_t		intersections[2], vec;
 ;945:	int			n;
 ;946:
 ;947:	if ( !targ->client ) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+NEU4 $434
+line 948
 ;948:		return qfalse;
+CNSTI4 0
+RETI4
+ADDRGP4 $433
+JUMPV
+LABELV $434
+line 950
 ;949:	}
 ;950:	VectorCopy(dir, vec);
+ADDRLP4 0
+ADDRFP4 4
+INDIRP4
+INDIRB
+ASGNB 12
+line 951
 ;951:	VectorInverse(vec);
+ADDRLP4 0
+ARGP4
+ADDRGP4 VectorInverse
+CALLV
+pop
+line 953
 ;952:	// sphere model radius = 42 units
 ;953:	n = RaySphereIntersections( targ->client->ps.origin, 42, point, vec, intersections);
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 20
+ADDP4
+ARGP4
+CNSTF4 1109917696
+ARGF4
+ADDRFP4 8
+INDIRP4
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRLP4 12
+ARGP4
+ADDRLP4 44
+ADDRGP4 RaySphereIntersections
+CALLI4
+ASGNI4
+ADDRLP4 40
+ADDRLP4 44
+INDIRI4
+ASGNI4
+line 954
 ;954:	if (n > 0) {
+ADDRLP4 40
+INDIRI4
+CNSTI4 0
+LEI4 $436
+line 955
 ;955:		impact = G_TempEntity( targ->client->ps.origin, EV_INVUL_IMPACT );
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 20
+ADDP4
+ARGP4
+CNSTI4 75
+ARGI4
+ADDRLP4 48
+ADDRGP4 G_TempEntity
+CALLP4
+ASGNP4
+ADDRLP4 36
+ADDRLP4 48
+INDIRP4
+ASGNP4
+line 956
 ;956:		VectorSubtract(intersections[0], targ->client->ps.origin, vec);
+ADDRLP4 52
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 12
+INDIRF4
+ADDRLP4 52
+INDIRP4
+INDIRP4
+CNSTI4 20
+ADDP4
+INDIRF4
+SUBF4
+ASGNF4
+ADDRLP4 0+4
+ADDRLP4 12+4
+INDIRF4
+ADDRLP4 52
+INDIRP4
+INDIRP4
+CNSTI4 24
+ADDP4
+INDIRF4
+SUBF4
+ASGNF4
+ADDRLP4 0+8
+ADDRLP4 12+8
+INDIRF4
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 28
+ADDP4
+INDIRF4
+SUBF4
+ASGNF4
+line 957
 ;957:		vectoangles(vec, impact->s.angles);
+ADDRLP4 0
+ARGP4
+ADDRLP4 36
+INDIRP4
+CNSTI4 116
+ADDP4
+ARGP4
+ADDRGP4 vectoangles
+CALLV
+pop
+line 958
 ;958:		impact->s.angles[0] += 90;
+ADDRLP4 56
+ADDRLP4 36
+INDIRP4
+CNSTI4 116
+ADDP4
+ASGNP4
+ADDRLP4 56
+INDIRP4
+ADDRLP4 56
+INDIRP4
+INDIRF4
+CNSTF4 1119092736
+ADDF4
+ASGNF4
+line 959
 ;959:		if (impact->s.angles[0] > 360)
+ADDRLP4 36
+INDIRP4
+CNSTI4 116
+ADDP4
+INDIRF4
+CNSTF4 1135869952
+LEF4 $442
+line 960
 ;960:			impact->s.angles[0] -= 360;
+ADDRLP4 60
+ADDRLP4 36
+INDIRP4
+CNSTI4 116
+ADDP4
+ASGNP4
+ADDRLP4 60
+INDIRP4
+ADDRLP4 60
+INDIRP4
+INDIRF4
+CNSTF4 1135869952
+SUBF4
+ASGNF4
+LABELV $442
+line 961
 ;961:		if ( impactpoint ) {
+ADDRFP4 12
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $444
+line 962
 ;962:			VectorCopy( intersections[0], impactpoint );
+ADDRFP4 12
+INDIRP4
+ADDRLP4 12
+INDIRB
+ASGNB 12
+line 963
 ;963:		}
+LABELV $444
+line 964
 ;964:		if ( bouncedir ) {
+ADDRFP4 16
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $446
+line 965
 ;965:			VectorCopy( vec, bouncedir );
+ADDRFP4 16
+INDIRP4
+ADDRLP4 0
+INDIRB
+ASGNB 12
+line 966
 ;966:			VectorNormalize( bouncedir );
+ADDRFP4 16
+INDIRP4
+ARGP4
+ADDRGP4 VectorNormalize
+CALLF4
+pop
+line 967
 ;967:		}
+LABELV $446
+line 968
 ;968:		return qtrue;
+CNSTI4 1
+RETI4
+ADDRGP4 $433
+JUMPV
+LABELV $436
+line 970
 ;969:	}
 ;970:	else {
+line 971
 ;971:		return qfalse;
+CNSTI4 0
+RETI4
+LABELV $433
+endproc G_InvulnerabilityEffect 64 20
+export G_Damage
+proc G_Damage 124 24
+line 1000
 ;972:	}
 ;973:}
 ;974:#endif
@@ -5047,12 +5827,12 @@ CNSTI4 744
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $393
+NEI4 $449
 line 1019
 ;1019:		return;
-ADDRGP4 $392
+ADDRGP4 $448
 JUMPV
-LABELV $393
+LABELV $449
 line 1024
 ;1020:	}
 ;1021:
@@ -5062,97 +5842,162 @@ line 1024
 ADDRGP4 level+9128
 INDIRI4
 CNSTI4 0
-EQI4 $395
+EQI4 $451
 line 1025
 ;1025:		return;
-ADDRGP4 $392
+ADDRGP4 $448
 JUMPV
-LABELV $395
-line 1037
+LABELV $451
+line 1028
 ;1026:	}
 ;1027:#ifdef MISSIONPACK
 ;1028:	if ( targ->client && mod != MOD_JUICED) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $454
+ADDRFP4 28
+INDIRI4
+CNSTI4 28
+EQI4 $454
+line 1029
 ;1029:		if ( targ->client->invulnerabilityTime > level.time) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 2716
+ADDP4
+INDIRI4
+ADDRGP4 level+32
+INDIRI4
+LEI4 $456
+line 1030
 ;1030:			if ( dir && point ) {
+ADDRLP4 64
+CNSTU4 0
+ASGNU4
+ADDRFP4 12
+INDIRP4
+CVPU4 4
+ADDRLP4 64
+INDIRU4
+EQU4 $448
+ADDRFP4 16
+INDIRP4
+CVPU4 4
+ADDRLP4 64
+INDIRU4
+EQU4 $448
+line 1031
 ;1031:				G_InvulnerabilityEffect( targ, dir, point, impactpoint, bouncedir );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRFP4 12
+INDIRP4
+ARGP4
+ADDRFP4 16
+INDIRP4
+ARGP4
+ADDRLP4 52
+ARGP4
+ADDRLP4 40
+ARGP4
+ADDRGP4 G_InvulnerabilityEffect
+CALLI4
+pop
+line 1032
 ;1032:			}
+line 1033
 ;1033:			return;
+ADDRGP4 $448
+JUMPV
+LABELV $456
+line 1035
 ;1034:		}
 ;1035:	}
+LABELV $454
+line 1037
 ;1036:#endif
 ;1037:	if ( !inflictor ) {
 ADDRFP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $398
+NEU4 $461
 line 1038
 ;1038:		inflictor = &g_entities[ENTITYNUM_WORLD];
 ADDRFP4 4
-ADDRGP4 g_entities+878920
+ADDRGP4 g_entities+887096
 ASGNP4
 line 1039
 ;1039:	}
-LABELV $398
+LABELV $461
 line 1040
 ;1040:	if ( !attacker ) {
 ADDRFP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $401
+NEU4 $464
 line 1041
 ;1041:		attacker = &g_entities[ENTITYNUM_WORLD];
 ADDRFP4 8
-ADDRGP4 g_entities+878920
+ADDRGP4 g_entities+887096
 ASGNP4
 line 1042
 ;1042:	}
-LABELV $401
+LABELV $464
 line 1045
 ;1043:
 ;1044:	// shootable doors / buttons don't actually have any health
 ;1045:	if ( targ->s.eType == ET_MOVER ) {
-ADDRLP4 40
+ADDRLP4 64
 CNSTI4 4
 ASGNI4
 ADDRFP4 0
 INDIRP4
-ADDRLP4 40
+ADDRLP4 64
 INDIRI4
 ADDP4
 INDIRI4
-ADDRLP4 40
+ADDRLP4 64
 INDIRI4
-NEI4 $404
+NEI4 $467
 line 1046
 ;1046:		if ( targ->use && targ->moverState == MOVER_POS1 ) {
-ADDRLP4 44
+ADDRLP4 68
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 44
+ADDRLP4 68
 INDIRP4
 CNSTI4 716
 ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $392
-ADDRLP4 44
+EQU4 $448
+ADDRLP4 68
 INDIRP4
 CNSTI4 576
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $392
+NEI4 $448
 line 1047
 ;1047:			targ->use( targ, inflictor, attacker );
-ADDRLP4 48
+ADDRLP4 72
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 48
+ADDRLP4 72
 INDIRP4
 ARGP4
 ADDRFP4 4
@@ -5161,7 +6006,7 @@ ARGP4
 ADDRFP4 8
 INDIRP4
 ARGP4
-ADDRLP4 48
+ADDRLP4 72
 INDIRP4
 CNSTI4 716
 ADDP4
@@ -5172,61 +6017,109 @@ line 1048
 ;1048:		}
 line 1049
 ;1049:		return;
-ADDRGP4 $392
+ADDRGP4 $448
 JUMPV
-LABELV $404
-line 1058
+LABELV $467
+line 1052
 ;1050:	}
 ;1051:#ifdef MISSIONPACK
 ;1052:	if( g_gametype.integer == GT_OBELISK && CheckObeliskAttack( targ, attacker ) ) {
+ADDRGP4 g_gametype+12
+INDIRI4
+CNSTI4 6
+NEI4 $471
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRFP4 8
+INDIRP4
+ARGP4
+ADDRLP4 68
+ADDRGP4 CheckObeliskAttack
+CALLI4
+ASGNI4
+ADDRLP4 68
+INDIRI4
+CNSTI4 0
+EQI4 $471
+line 1053
 ;1053:		return;
+ADDRGP4 $448
+JUMPV
+LABELV $471
+line 1058
 ;1054:	}
 ;1055:#endif
 ;1056:	// reduce damage by the attacker's handicap value
 ;1057:	// unless they are rocket jumping
 ;1058:	if ( attacker->client && attacker != targ ) {
-ADDRLP4 44
+ADDRLP4 72
 ADDRFP4 8
 INDIRP4
 ASGNP4
-ADDRLP4 44
+ADDRLP4 72
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $408
-ADDRLP4 44
+EQU4 $474
+ADDRLP4 72
 INDIRP4
 CVPU4 4
 ADDRFP4 0
 INDIRP4
 CVPU4 4
-EQU4 $408
+EQU4 $474
 line 1059
 ;1059:		max = attacker->client->ps.stats[STAT_MAX_HEALTH];
-ADDRLP4 20
+ADDRLP4 16
 ADDRFP4 8
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 208
+CNSTI4 212
 ADDP4
 INDIRI4
 ASGNI4
-line 1065
+line 1061
 ;1060:#ifdef MISSIONPACK
 ;1061:		if( bg_itemlist[attacker->client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_GUARD ) {
+CNSTI4 52
+ADDRFP4 8
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 192
+ADDP4
+INDIRI4
+MULI4
+ADDRGP4 bg_itemlist+40
+ADDP4
+INDIRI4
+CNSTI4 11
+NEI4 $476
+line 1062
 ;1062:			max /= 2;
+ADDRLP4 16
+ADDRLP4 16
+INDIRI4
+CNSTI4 2
+DIVI4
+ASGNI4
+line 1063
 ;1063:		}
+LABELV $476
+line 1065
 ;1064:#endif
 ;1065:		damage = damage * max / 100;
 ADDRFP4 20
 ADDRFP4 20
 INDIRI4
-ADDRLP4 20
+ADDRLP4 16
 INDIRI4
 MULI4
 CNSTI4 100
@@ -5234,7 +6127,7 @@ DIVI4
 ASGNI4
 line 1066
 ;1066:	}
-LABELV $408
+LABELV $474
 line 1068
 ;1067:
 ;1068:	client = targ->client;
@@ -5252,7 +6145,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $410
+EQU4 $479
 line 1071
 ;1071:		if ( client->noclip ) {
 ADDRLP4 0
@@ -5261,16 +6154,16 @@ CNSTI4 2524
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $412
+EQI4 $481
 line 1072
 ;1072:			return;
-ADDRGP4 $392
+ADDRGP4 $448
 JUMPV
-LABELV $412
+LABELV $481
 line 1074
 ;1073:		}
 ;1074:	}
-LABELV $410
+LABELV $479
 line 1076
 ;1075:
 ;1076:	if ( !dir ) {
@@ -5278,7 +6171,7 @@ ADDRFP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $414
+NEU4 $483
 line 1077
 ;1077:		dflags |= DAMAGE_NO_KNOCKBACK;
 ADDRFP4 24
@@ -5289,9 +6182,9 @@ BORI4
 ASGNI4
 line 1078
 ;1078:	} else {
-ADDRGP4 $415
+ADDRGP4 $484
 JUMPV
-LABELV $414
+LABELV $483
 line 1079
 ;1079:		VectorNormalize(dir);
 ADDRFP4 12
@@ -5302,7 +6195,7 @@ CALLF4
 pop
 line 1080
 ;1080:	}
-LABELV $415
+LABELV $484
 line 1082
 ;1081:
 ;1082:	knockback = damage;
@@ -5315,7 +6208,7 @@ line 1083
 ADDRLP4 4
 INDIRI4
 CNSTI4 200
-LEI4 $416
+LEI4 $485
 line 1084
 ;1084:		knockback = 200;
 ADDRLP4 4
@@ -5323,7 +6216,7 @@ CNSTI4 200
 ASGNI4
 line 1085
 ;1085:	}
-LABELV $416
+LABELV $485
 line 1086
 ;1086:	if ( targ->flags & FL_NO_KNOCKBACK ) {
 ADDRFP4 0
@@ -5334,7 +6227,7 @@ INDIRI4
 CNSTI4 2048
 BANDI4
 CNSTI4 0
-EQI4 $418
+EQI4 $487
 line 1087
 ;1087:		knockback = 0;
 ADDRLP4 4
@@ -5342,7 +6235,7 @@ CNSTI4 0
 ASGNI4
 line 1088
 ;1088:	}
-LABELV $418
+LABELV $487
 line 1089
 ;1089:	if ( dflags & DAMAGE_NO_KNOCKBACK ) {
 ADDRFP4 24
@@ -5350,7 +6243,7 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-EQI4 $420
+EQI4 $489
 line 1090
 ;1090:		knockback = 0;
 ADDRLP4 4
@@ -5358,7 +6251,7 @@ CNSTI4 0
 ASGNI4
 line 1091
 ;1091:	}
-LABELV $420
+LABELV $489
 line 1094
 ;1092:
 ;1093:	// figure momentum add, even if the damage won't be taken
@@ -5366,7 +6259,7 @@ line 1094
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $422
+EQI4 $491
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -5374,62 +6267,62 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $422
+EQU4 $491
 line 1098
 ;1095:		vec3_t	kvel;
 ;1096:		float	mass;
 ;1097:
 ;1098:		mass = 200;
-ADDRLP4 60
+ADDRLP4 88
 CNSTF4 1128792064
 ASGNF4
 line 1100
 ;1099:
 ;1100:		VectorScale (dir, g_knockback.value * (float)knockback / mass, kvel);
-ADDRLP4 64
+ADDRLP4 92
 ADDRFP4 12
 INDIRP4
 ASGNP4
-ADDRLP4 68
+ADDRLP4 96
 ADDRLP4 4
 INDIRI4
 CVIF4 4
 ASGNF4
-ADDRLP4 72
-ADDRLP4 60
+ADDRLP4 100
+ADDRLP4 88
 INDIRF4
 ASGNF4
-ADDRLP4 48
-ADDRLP4 64
+ADDRLP4 76
+ADDRLP4 92
 INDIRP4
 INDIRF4
 ADDRGP4 g_knockback+8
 INDIRF4
-ADDRLP4 68
+ADDRLP4 96
 INDIRF4
 MULF4
-ADDRLP4 72
+ADDRLP4 100
 INDIRF4
 DIVF4
 MULF4
 ASGNF4
-ADDRLP4 48+4
-ADDRLP4 64
+ADDRLP4 76+4
+ADDRLP4 92
 INDIRP4
 CNSTI4 4
 ADDP4
 INDIRF4
 ADDRGP4 g_knockback+8
 INDIRF4
-ADDRLP4 68
+ADDRLP4 96
 INDIRF4
 MULF4
-ADDRLP4 72
+ADDRLP4 100
 INDIRF4
 DIVF4
 MULF4
 ASGNF4
-ADDRLP4 48+8
+ADDRLP4 76+8
 ADDRFP4 12
 INDIRP4
 CNSTI4 8
@@ -5441,14 +6334,14 @@ ADDRLP4 4
 INDIRI4
 CVIF4 4
 MULF4
-ADDRLP4 60
+ADDRLP4 88
 INDIRF4
 DIVF4
 MULF4
 ASGNF4
 line 1101
 ;1101:		VectorAdd (targ->client->ps.velocity, kvel, targ->client->ps.velocity);
-ADDRLP4 76
+ADDRLP4 104
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -5457,16 +6350,16 @@ INDIRP4
 CNSTI4 32
 ADDP4
 ASGNP4
-ADDRLP4 76
+ADDRLP4 104
 INDIRP4
-ADDRLP4 76
+ADDRLP4 104
 INDIRP4
 INDIRF4
-ADDRLP4 48
+ADDRLP4 76
 INDIRF4
 ADDF4
 ASGNF4
-ADDRLP4 80
+ADDRLP4 108
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -5475,16 +6368,16 @@ INDIRP4
 CNSTI4 36
 ADDP4
 ASGNP4
-ADDRLP4 80
+ADDRLP4 108
 INDIRP4
-ADDRLP4 80
+ADDRLP4 108
 INDIRP4
 INDIRF4
-ADDRLP4 48+4
+ADDRLP4 76+4
 INDIRF4
 ADDF4
 ASGNF4
-ADDRLP4 84
+ADDRLP4 112
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -5493,12 +6386,12 @@ INDIRP4
 CNSTI4 40
 ADDP4
 ASGNP4
-ADDRLP4 84
+ADDRLP4 112
 INDIRP4
-ADDRLP4 84
+ADDRLP4 112
 INDIRP4
 INDIRF4
-ADDRLP4 48+8
+ADDRLP4 76+8
 INDIRF4
 ADDF4
 ASGNF4
@@ -5516,12 +6409,12 @@ CNSTI4 16
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $431
+NEI4 $500
 line 1108
 ;1106:			int		t;
 ;1107:
 ;1108:			t = knockback * 2;
-ADDRLP4 88
+ADDRLP4 116
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
@@ -5529,32 +6422,32 @@ LSHI4
 ASGNI4
 line 1109
 ;1109:			if ( t < 50 ) {
-ADDRLP4 88
+ADDRLP4 116
 INDIRI4
 CNSTI4 50
-GEI4 $433
+GEI4 $502
 line 1110
 ;1110:				t = 50;
-ADDRLP4 88
+ADDRLP4 116
 CNSTI4 50
 ASGNI4
 line 1111
 ;1111:			}
-LABELV $433
+LABELV $502
 line 1112
 ;1112:			if ( t > 200 ) {
-ADDRLP4 88
+ADDRLP4 116
 INDIRI4
 CNSTI4 200
-LEI4 $435
+LEI4 $504
 line 1113
 ;1113:				t = 200;
-ADDRLP4 88
+ADDRLP4 116
 CNSTI4 200
 ASGNI4
 line 1114
 ;1114:			}
-LABELV $435
+LABELV $504
 line 1115
 ;1115:			targ->client->ps.pm_time = t;
 ADDRFP4 0
@@ -5564,12 +6457,12 @@ ADDP4
 INDIRP4
 CNSTI4 16
 ADDP4
-ADDRLP4 88
+ADDRLP4 116
 INDIRI4
 ASGNI4
 line 1116
 ;1116:			targ->client->ps.pm_flags |= PMF_TIME_KNOCKBACK;
-ADDRLP4 92
+ADDRLP4 120
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -5578,9 +6471,9 @@ INDIRP4
 CNSTI4 12
 ADDP4
 ASGNP4
-ADDRLP4 92
+ADDRLP4 120
 INDIRP4
-ADDRLP4 92
+ADDRLP4 120
 INDIRP4
 INDIRI4
 CNSTI4 64
@@ -5588,10 +6481,10 @@ BORI4
 ASGNI4
 line 1117
 ;1117:		}
-LABELV $431
+LABELV $500
 line 1118
 ;1118:	}
-LABELV $422
+LABELV $491
 line 1121
 ;1119:
 ;1120:	// check for completely getting out of the damage
@@ -5601,70 +6494,144 @@ INDIRI4
 CNSTI4 8
 BANDI4
 CNSTI4 0
-NEI4 $437
-line 1128
+NEI4 $506
+line 1126
 ;1122:
 ;1123:		// if TF_NO_FRIENDLY_FIRE is set, don't do damage to the target
 ;1124:		// if the attacker was on the same team
 ;1125:#ifdef MISSIONPACK
 ;1126:		if ( mod != MOD_JUICED && targ != attacker && !(dflags & DAMAGE_NO_TEAM_PROTECTION) && OnSameTeam (targ, attacker)  ) {
-;1127:#else	
-;1128:		if ( targ != attacker && OnSameTeam (targ, attacker)  ) {
-ADDRLP4 48
+ADDRFP4 28
+INDIRI4
+CNSTI4 28
+EQI4 $508
+ADDRLP4 76
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 52
+ADDRLP4 80
 ADDRFP4 8
 INDIRP4
 ASGNP4
-ADDRLP4 48
+ADDRLP4 76
 INDIRP4
 CVPU4 4
-ADDRLP4 52
+ADDRLP4 80
 INDIRP4
 CVPU4 4
-EQU4 $439
-ADDRLP4 48
+EQU4 $508
+ADDRFP4 24
+INDIRI4
+CNSTI4 16
+BANDI4
+CNSTI4 0
+NEI4 $508
+ADDRLP4 76
 INDIRP4
 ARGP4
-ADDRLP4 52
+ADDRLP4 80
 INDIRP4
 ARGP4
-ADDRLP4 56
+ADDRLP4 84
 ADDRGP4 OnSameTeam
 CALLI4
 ASGNI4
-ADDRLP4 56
+ADDRLP4 84
 INDIRI4
 CNSTI4 0
-EQI4 $439
+EQI4 $508
 line 1130
+;1127:#else	
+;1128:		if ( targ != attacker && OnSameTeam (targ, attacker)  ) {
 ;1129:#endif
 ;1130:			if ( !g_friendlyFire.integer ) {
 ADDRGP4 g_friendlyFire+12
 INDIRI4
 CNSTI4 0
-NEI4 $441
+NEI4 $510
 line 1131
 ;1131:				return;
-ADDRGP4 $392
+ADDRGP4 $448
 JUMPV
-LABELV $441
+LABELV $510
 line 1133
 ;1132:			}
 ;1133:		}
-LABELV $439
-line 1146
+LABELV $508
+line 1135
 ;1134:#ifdef MISSIONPACK
 ;1135:		if (mod == MOD_PROXIMITY_MINE) {
+ADDRFP4 28
+INDIRI4
+CNSTI4 26
+NEI4 $513
+line 1136
 ;1136:			if (inflictor && inflictor->parent && OnSameTeam(targ, inflictor->parent)) {
+ADDRLP4 88
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 92
+CNSTU4 0
+ASGNU4
+ADDRLP4 88
+INDIRP4
+CVPU4 4
+ADDRLP4 92
+INDIRU4
+EQU4 $515
+ADDRLP4 96
+ADDRLP4 88
+INDIRP4
+CNSTI4 600
+ADDP4
+INDIRP4
+ASGNP4
+ADDRLP4 96
+INDIRP4
+CVPU4 4
+ADDRLP4 92
+INDIRU4
+EQU4 $515
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRLP4 96
+INDIRP4
+ARGP4
+ADDRLP4 100
+ADDRGP4 OnSameTeam
+CALLI4
+ASGNI4
+ADDRLP4 100
+INDIRI4
+CNSTI4 0
+EQI4 $515
+line 1137
 ;1137:				return;
+ADDRGP4 $448
+JUMPV
+LABELV $515
+line 1139
 ;1138:			}
 ;1139:			if (targ == attacker) {
+ADDRFP4 0
+INDIRP4
+CVPU4 4
+ADDRFP4 8
+INDIRP4
+CVPU4 4
+NEU4 $517
+line 1140
 ;1140:				return;
+ADDRGP4 $448
+JUMPV
+LABELV $517
+line 1142
 ;1141:			}
 ;1142:		}
+LABELV $513
+line 1146
 ;1143:#endif
 ;1144:
 ;1145:		// check for godmode
@@ -5677,16 +6644,16 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $444
+EQI4 $519
 line 1147
 ;1147:			return;
-ADDRGP4 $392
+ADDRGP4 $448
 JUMPV
-LABELV $444
+LABELV $519
 line 1149
 ;1148:		}
 ;1149:	}
-LABELV $437
+LABELV $506
 line 1153
 ;1150:
 ;1151:	// battlesuit protects from all radius damage (but takes knockback)
@@ -5696,14 +6663,14 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $446
+EQU4 $521
 ADDRLP4 0
 INDIRP4
 CNSTI4 320
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $446
+EQI4 $521
 line 1154
 ;1154:		G_AddEvent( targ, EV_POWERUP_BATTLESUIT, 0 );
 ADDRFP4 0
@@ -5723,17 +6690,17 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-NEI4 $450
+NEI4 $525
 ADDRFP4 28
 INDIRI4
 CNSTI4 19
-NEI4 $448
-LABELV $450
+NEI4 $523
+LABELV $525
 line 1156
 ;1156:			return;
-ADDRGP4 $392
+ADDRGP4 $448
 JUMPV
-LABELV $448
+LABELV $523
 line 1158
 ;1157:		}
 ;1158:		damage *= 0.5;
@@ -5747,61 +6714,61 @@ CVFI4 4
 ASGNI4
 line 1159
 ;1159:	}
-LABELV $446
+LABELV $521
 line 1162
 ;1160:
 ;1161:	// add to the attacker's hit counter (if the target isn't a general entity like a prox mine)
 ;1162:	if ( attacker->client && targ != attacker && targ->health > 0
-ADDRLP4 52
+ADDRLP4 80
 ADDRFP4 8
 INDIRP4
 ASGNP4
-ADDRLP4 52
+ADDRLP4 80
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $451
-ADDRLP4 56
+EQU4 $526
+ADDRLP4 84
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 56
+ADDRLP4 84
 INDIRP4
 CVPU4 4
-ADDRLP4 52
+ADDRLP4 80
 INDIRP4
 CVPU4 4
-EQU4 $451
-ADDRLP4 60
+EQU4 $526
+ADDRLP4 88
 CNSTI4 0
 ASGNI4
-ADDRLP4 56
+ADDRLP4 84
 INDIRP4
 CNSTI4 740
 ADDP4
 INDIRI4
-ADDRLP4 60
+ADDRLP4 88
 INDIRI4
-LEI4 $451
-ADDRLP4 64
-ADDRLP4 56
+LEI4 $526
+ADDRLP4 92
+ADDRLP4 84
 INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
 ASGNI4
-ADDRLP4 64
+ADDRLP4 92
 INDIRI4
 CNSTI4 3
-EQI4 $451
-ADDRLP4 64
+EQI4 $526
+ADDRLP4 92
 INDIRI4
-ADDRLP4 60
+ADDRLP4 88
 INDIRI4
-EQI4 $451
+EQI4 $526
 line 1164
 ;1163:			&& targ->s.eType != ET_MISSILE
 ;1164:			&& targ->s.eType != ET_GENERAL) {
@@ -5813,17 +6780,17 @@ ARGP4
 ADDRFP4 8
 INDIRP4
 ARGP4
-ADDRLP4 68
+ADDRLP4 96
 ADDRGP4 OnSameTeam
 CALLI4
 ASGNI4
-ADDRLP4 68
+ADDRLP4 96
 INDIRI4
 CNSTI4 0
-EQI4 $453
+EQI4 $528
 line 1166
 ;1166:			attacker->client->ps.persistant[PERS_HITS]--;
-ADDRLP4 72
+ADDRLP4 100
 ADDRFP4 8
 INDIRP4
 CNSTI4 516
@@ -5832,9 +6799,9 @@ INDIRP4
 CNSTI4 252
 ADDP4
 ASGNP4
-ADDRLP4 72
+ADDRLP4 100
 INDIRP4
-ADDRLP4 72
+ADDRLP4 100
 INDIRP4
 INDIRI4
 CNSTI4 1
@@ -5842,12 +6809,12 @@ SUBI4
 ASGNI4
 line 1167
 ;1167:		} else {
-ADDRGP4 $454
+ADDRGP4 $529
 JUMPV
-LABELV $453
+LABELV $528
 line 1168
 ;1168:			attacker->client->ps.persistant[PERS_HITS]++;
-ADDRLP4 72
+ADDRLP4 100
 ADDRFP4 8
 INDIRP4
 CNSTI4 516
@@ -5856,9 +6823,9 @@ INDIRP4
 CNSTI4 252
 ADDP4
 ASGNP4
-ADDRLP4 72
+ADDRLP4 100
 INDIRP4
-ADDRLP4 72
+ADDRLP4 100
 INDIRP4
 INDIRI4
 CNSTI4 1
@@ -5866,7 +6833,7 @@ ADDI4
 ASGNI4
 line 1169
 ;1169:		}
-LABELV $454
+LABELV $529
 line 1170
 ;1170:		attacker->client->ps.persistant[PERS_ATTACKEE_ARMOR] = (targ->health<<8)|(client->ps.stats[STAT_ARMOR]);
 ADDRFP4 8
@@ -5885,14 +6852,14 @@ CNSTI4 8
 LSHI4
 ADDRLP4 0
 INDIRP4
-CNSTI4 196
+CNSTI4 200
 ADDP4
 INDIRI4
 BORI4
 ASGNI4
 line 1171
 ;1171:	}
-LABELV $451
+LABELV $526
 line 1175
 ;1172:
 ;1173:	// always give half damage if hurting self
@@ -5904,7 +6871,7 @@ CVPU4 4
 ADDRFP4 8
 INDIRP4
 CVPU4 4
-NEU4 $455
+NEU4 $530
 line 1176
 ;1176:		damage *= 0.5;
 ADDRFP4 20
@@ -5917,14 +6884,14 @@ CVFI4 4
 ASGNI4
 line 1177
 ;1177:	}
-LABELV $455
+LABELV $530
 line 1179
 ;1178:
 ;1179:	if ( damage < 1 ) {
 ADDRFP4 20
 INDIRI4
 CNSTI4 1
-GEI4 $457
+GEI4 $532
 line 1180
 ;1180:		damage = 1;
 ADDRFP4 20
@@ -5932,7 +6899,7 @@ CNSTI4 1
 ASGNI4
 line 1181
 ;1181:	}
-LABELV $457
+LABELV $532
 line 1182
 ;1182:	take = damage;
 ADDRLP4 8
@@ -5941,7 +6908,7 @@ INDIRI4
 ASGNI4
 line 1183
 ;1183:	save = 0;
-ADDRLP4 16
+ADDRLP4 20
 CNSTI4 0
 ASGNI4
 line 1186
@@ -5957,12 +6924,12 @@ ARGI4
 ADDRFP4 24
 INDIRI4
 ARGI4
-ADDRLP4 68
+ADDRLP4 96
 ADDRGP4 CheckArmor
 CALLI4
 ASGNI4
 ADDRLP4 12
-ADDRLP4 68
+ADDRLP4 96
 INDIRI4
 ASGNI4
 line 1187
@@ -5980,23 +6947,23 @@ line 1189
 ADDRGP4 g_debugDamage+12
 INDIRI4
 CNSTI4 0
-EQI4 $459
+EQI4 $534
 line 1190
 ;1190:		G_Printf( "%i: client:%i health:%i damage:%i armor:%i\n", level.time, targ->s.number,
-ADDRGP4 $462
+ADDRGP4 $537
 ARGP4
 ADDRGP4 level+32
 INDIRI4
 ARGI4
-ADDRLP4 72
+ADDRLP4 100
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 72
+ADDRLP4 100
 INDIRP4
 INDIRI4
 ARGI4
-ADDRLP4 72
+ADDRLP4 100
 INDIRP4
 CNSTI4 740
 ADDP4
@@ -6014,7 +6981,7 @@ pop
 line 1192
 ;1191:			targ->health, take, asave );
 ;1192:	}
-LABELV $459
+LABELV $534
 line 1197
 ;1193:
 ;1194:	// add to the damage inflicted on a player this frame
@@ -6025,14 +6992,14 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $464
+EQU4 $539
 line 1198
 ;1198:		if ( attacker ) {
 ADDRFP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $466
+EQU4 $541
 line 1199
 ;1199:			client->ps.persistant[PERS_ATTACKER] = attacker->s.number;
 ADDRLP4 0
@@ -6045,9 +7012,9 @@ INDIRI4
 ASGNI4
 line 1200
 ;1200:		} else {
-ADDRGP4 $467
+ADDRGP4 $542
 JUMPV
-LABELV $466
+LABELV $541
 line 1201
 ;1201:			client->ps.persistant[PERS_ATTACKER] = ENTITYNUM_WORLD;
 ADDRLP4 0
@@ -6058,18 +7025,18 @@ CNSTI4 1022
 ASGNI4
 line 1202
 ;1202:		}
-LABELV $467
+LABELV $542
 line 1203
 ;1203:		client->damage_armor += asave;
-ADDRLP4 72
+ADDRLP4 100
 ADDRLP4 0
 INDIRP4
 CNSTI4 2552
 ADDP4
 ASGNP4
-ADDRLP4 72
+ADDRLP4 100
 INDIRP4
-ADDRLP4 72
+ADDRLP4 100
 INDIRP4
 INDIRI4
 ADDRLP4 12
@@ -6078,15 +7045,15 @@ ADDI4
 ASGNI4
 line 1204
 ;1204:		client->damage_blood += take;
-ADDRLP4 76
+ADDRLP4 104
 ADDRLP4 0
 INDIRP4
 CNSTI4 2556
 ADDP4
 ASGNP4
-ADDRLP4 76
+ADDRLP4 104
 INDIRP4
-ADDRLP4 76
+ADDRLP4 104
 INDIRP4
 INDIRI4
 ADDRLP4 8
@@ -6095,15 +7062,15 @@ ADDI4
 ASGNI4
 line 1205
 ;1205:		client->damage_knockback += knockback;
-ADDRLP4 80
+ADDRLP4 108
 ADDRLP4 0
 INDIRP4
 CNSTI4 2560
 ADDP4
 ASGNP4
-ADDRLP4 80
+ADDRLP4 108
 INDIRP4
-ADDRLP4 80
+ADDRLP4 108
 INDIRP4
 INDIRI4
 ADDRLP4 4
@@ -6116,7 +7083,7 @@ ADDRFP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $468
+EQU4 $543
 line 1207
 ;1207:			VectorCopy ( dir, client->damage_from );
 ADDRLP4 0
@@ -6137,9 +7104,9 @@ CNSTI4 0
 ASGNI4
 line 1209
 ;1209:		} else {
-ADDRGP4 $469
+ADDRGP4 $544
 JUMPV
-LABELV $468
+LABELV $543
 line 1210
 ;1210:			VectorCopy ( targ->r.currentOrigin, client->damage_from );
 ADDRLP4 0
@@ -6162,22 +7129,27 @@ CNSTI4 1
 ASGNI4
 line 1212
 ;1212:		}
-LABELV $469
+LABELV $544
 line 1213
 ;1213:	}
-LABELV $464
-line 1219
+LABELV $539
+line 1217
 ;1214:
 ;1215:	// See if it's the player hurting the emeny flag carrier
 ;1216:#ifdef MISSIONPACK
 ;1217:	if( g_gametype.integer == GT_CTF || g_gametype.integer == GT_1FCTF ) {
-;1218:#else	
-;1219:	if( g_gametype.integer == GT_CTF) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 4
-NEI4 $470
+EQI4 $549
+ADDRGP4 g_gametype+12
+INDIRI4
+CNSTI4 5
+NEI4 $545
+LABELV $549
 line 1221
+;1218:#else	
+;1219:	if( g_gametype.integer == GT_CTF) {
 ;1220:#endif
 ;1221:		Team_CheckHurtCarrier(targ, attacker);
 ADDRFP4 0
@@ -6191,7 +7163,7 @@ CALLV
 pop
 line 1222
 ;1222:	}
-LABELV $470
+LABELV $545
 line 1224
 ;1223:
 ;1224:	if (targ->client) {
@@ -6202,7 +7174,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $473
+EQU4 $550
 line 1226
 ;1225:		// set the last client who damaged the target
 ;1226:		targ->client->lasthurt_client = attacker->s.number;
@@ -6231,48 +7203,48 @@ INDIRI4
 ASGNI4
 line 1228
 ;1228:	}
-LABELV $473
+LABELV $550
 line 1231
 ;1229:
 ;1230:	// Shafe - Trep - Headshots
 ;1231:	if (targ->client && attacker->client && targ->health > 0)
-ADDRLP4 72
+ADDRLP4 100
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 76
+ADDRLP4 104
 CNSTI4 516
 ASGNI4
-ADDRLP4 80
+ADDRLP4 108
 CNSTU4 0
 ASGNU4
-ADDRLP4 72
+ADDRLP4 100
 INDIRP4
-ADDRLP4 76
+ADDRLP4 104
 INDIRI4
 ADDP4
 INDIRP4
 CVPU4 4
-ADDRLP4 80
+ADDRLP4 108
 INDIRU4
-EQU4 $475
+EQU4 $552
 ADDRFP4 8
 INDIRP4
-ADDRLP4 76
+ADDRLP4 104
 INDIRI4
 ADDP4
 INDIRP4
 CVPU4 4
-ADDRLP4 80
+ADDRLP4 108
 INDIRU4
-EQU4 $475
-ADDRLP4 72
+EQU4 $552
+ADDRLP4 100
 INDIRP4
 CNSTI4 740
 ADDP4
 INDIRI4
 CNSTI4 0
-LEI4 $475
+LEI4 $552
 line 1232
 ;1232:	{   
 line 1234
@@ -6284,7 +7256,7 @@ CNSTI4 192
 ADDP4
 INDIRI4
 CNSTI4 7
-NEI4 $477
+NEI4 $554
 line 1235
 ;1235:			targ_maxs2 = targ->r.maxs[2];
 ADDRLP4 36
@@ -6309,7 +7281,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $479
+EQI4 $556
 line 1239
 ;1239:				height = (abs(targ->r.mins[2]) + targ_maxs2)*(0.75);
 ADDRFP4 0
@@ -6319,13 +7291,13 @@ ADDP4
 INDIRF4
 CVFI4 4
 ARGI4
-ADDRLP4 84
+ADDRLP4 112
 ADDRGP4 abs
 CALLI4
 ASGNI4
 ADDRLP4 32
 CNSTF4 1061158912
-ADDRLP4 84
+ADDRLP4 112
 INDIRI4
 CVIF4 4
 ADDRLP4 36
@@ -6336,9 +7308,9 @@ CVFI4 4
 ASGNI4
 line 1240
 ;1240:			}
-ADDRGP4 $480
+ADDRGP4 $557
 JUMPV
-LABELV $479
+LABELV $556
 line 1242
 ;1241:			else
 ;1242:				height = abs(targ->r.mins[2]) + targ_maxs2; 
@@ -6349,12 +7321,12 @@ ADDP4
 INDIRF4
 CVFI4 4
 ARGI4
-ADDRLP4 84
+ADDRLP4 112
 ADDRGP4 abs
 CALLI4
 ASGNI4
 ADDRLP4 32
-ADDRLP4 84
+ADDRLP4 112
 INDIRI4
 CVIF4 4
 ADDRLP4 36
@@ -6362,25 +7334,25 @@ INDIRF4
 ADDF4
 CVFI4 4
 ASGNI4
-LABELV $480
+LABELV $557
 line 1247
 ;1243:				
 ;1244:			// project the z component of point 
 ;1245:			// onto the z component of the model's origin
 ;1246:			// this results in the z component from the origin at 0
 ;1247:			z_rel = point[2] - targ->r.currentOrigin[2] + abs(targ->r.mins[2]);
-ADDRLP4 88
+ADDRLP4 116
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 88
+ADDRLP4 116
 INDIRP4
 CNSTI4 444
 ADDP4
 INDIRF4
 CVFI4 4
 ARGI4
-ADDRLP4 92
+ADDRLP4 120
 ADDRGP4 abs
 CALLI4
 ASGNI4
@@ -6390,13 +7362,13 @@ INDIRP4
 CNSTI4 8
 ADDP4
 INDIRF4
-ADDRLP4 88
+ADDRLP4 116
 INDIRP4
 CNSTI4 496
 ADDP4
 INDIRF4
 SUBF4
-ADDRLP4 92
+ADDRLP4 120
 INDIRI4
 CVIF4 4
 ADDF4
@@ -6417,7 +7389,7 @@ line 1250
 ADDRLP4 24
 INDIRF4
 CNSTF4 1063675494
-LEF4 $481
+LEF4 $558
 line 1251
 ;1251:				take=9999; // head shot is a sure kill
 ADDRLP4 8
@@ -6430,13 +7402,13 @@ CNSTI4 23
 ASGNI4
 line 1253
 ;1253:			}
-LABELV $481
+LABELV $558
 line 1254
 ;1254:		}
-LABELV $477
+LABELV $554
 line 1255
 ;1255:	}
-LABELV $475
+LABELV $552
 line 1260
 ;1256:	// Shafe - Trep - End Headshot Code
 ;1257:
@@ -6446,18 +7418,18 @@ line 1260
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $483
+EQI4 $560
 line 1261
 ;1261:		targ->health = targ->health - take;
-ADDRLP4 84
+ADDRLP4 112
 ADDRFP4 0
 INDIRP4
 CNSTI4 740
 ADDP4
 ASGNP4
-ADDRLP4 84
+ADDRLP4 112
 INDIRP4
-ADDRLP4 84
+ADDRLP4 112
 INDIRP4
 INDIRI4
 ADDRLP4 8
@@ -6473,21 +7445,21 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $485
+EQU4 $562
 line 1263
 ;1263:			targ->client->ps.stats[STAT_HEALTH] = targ->health;
-ADDRLP4 88
+ADDRLP4 116
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 88
+ADDRLP4 116
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
 CNSTI4 184
 ADDP4
-ADDRLP4 88
+ADDRLP4 116
 INDIRP4
 CNSTI4 740
 ADDP4
@@ -6495,7 +7467,7 @@ INDIRI4
 ASGNI4
 line 1264
 ;1264:		}
-LABELV $485
+LABELV $562
 line 1266
 ;1265:			
 ;1266:		if ( targ->health <= 0 ) {
@@ -6505,31 +7477,31 @@ CNSTI4 740
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $487
+GTI4 $564
 line 1267
 ;1267:			if ( client )
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $489
+EQU4 $566
 line 1268
 ;1268:				targ->flags |= FL_NO_KNOCKBACK;
-ADDRLP4 88
+ADDRLP4 116
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
 ADDP4
 ASGNP4
-ADDRLP4 88
+ADDRLP4 116
 INDIRP4
-ADDRLP4 88
+ADDRLP4 116
 INDIRP4
 INDIRI4
 CNSTI4 2048
 BORI4
 ASGNI4
-LABELV $489
+LABELV $566
 line 1270
 ;1269:
 ;1270:			if (targ->health < -999)
@@ -6539,7 +7511,7 @@ CNSTI4 740
 ADDP4
 INDIRI4
 CNSTI4 -999
-GEI4 $491
+GEI4 $568
 line 1271
 ;1271:				targ->health = -999;
 ADDRFP4 0
@@ -6548,7 +7520,7 @@ CNSTI4 740
 ADDP4
 CNSTI4 -999
 ASGNI4
-LABELV $491
+LABELV $568
 line 1273
 ;1272:
 ;1273:			targ->enemy = attacker;
@@ -6561,11 +7533,11 @@ INDIRP4
 ASGNP4
 line 1274
 ;1274:			targ->die (targ, inflictor, attacker, take, mod);
-ADDRLP4 92
+ADDRLP4 120
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 92
+ADDRLP4 120
 INDIRP4
 ARGP4
 ADDRFP4 4
@@ -6580,7 +7552,7 @@ ARGI4
 ADDRFP4 28
 INDIRI4
 ARGI4
-ADDRLP4 92
+ADDRLP4 120
 INDIRP4
 CNSTI4 724
 ADDP4
@@ -6589,9 +7561,9 @@ CALLV
 pop
 line 1275
 ;1275:			return;
-ADDRGP4 $392
+ADDRGP4 $448
 JUMPV
-LABELV $487
+LABELV $564
 line 1276
 ;1276:		} else if ( targ->pain ) {
 ADDRFP4 0
@@ -6601,14 +7573,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $493
+EQU4 $570
 line 1277
 ;1277:			targ->pain (targ, attacker, take);
-ADDRLP4 88
+ADDRLP4 116
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 88
+ADDRLP4 116
 INDIRP4
 ARGP4
 ADDRFP4 8
@@ -6617,7 +7589,7 @@ ARGP4
 ADDRLP4 8
 INDIRI4
 ARGI4
-ADDRLP4 88
+ADDRLP4 116
 INDIRP4
 CNSTI4 720
 ADDP4
@@ -6626,15 +7598,15 @@ CALLV
 pop
 line 1278
 ;1278:		}
-LABELV $493
+LABELV $570
 line 1279
 ;1279:	}
-LABELV $483
+LABELV $560
 line 1281
 ;1280:
 ;1281:}
-LABELV $392
-endproc G_Damage 96 24
+LABELV $448
+endproc G_Damage 124 24
 export CanDamage
 proc CanDamage 112 28
 line 1292
@@ -6766,21 +7738,21 @@ line 1304
 ADDRLP4 24+8
 INDIRF4
 CNSTF4 1065353216
-EQF4 $506
+EQF4 $583
 ADDRLP4 24+52
 INDIRI4
 ADDRFP4 0
 INDIRP4
 INDIRI4
-NEI4 $502
-LABELV $506
+NEI4 $579
+LABELV $583
 line 1305
 ;1305:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $495
+ADDRGP4 $572
 JUMPV
-LABELV $502
+LABELV $579
 line 1309
 ;1306:
 ;1307:	// this should probably check in the plane of projection, 
@@ -6836,14 +7808,14 @@ line 1313
 ADDRLP4 24+8
 INDIRF4
 CNSTF4 1065353216
-NEF4 $508
+NEF4 $585
 line 1314
 ;1314:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $495
+ADDRGP4 $572
 JUMPV
-LABELV $508
+LABELV $585
 line 1316
 ;1315:
 ;1316:	VectorCopy (midpoint, dest);
@@ -6897,14 +7869,14 @@ line 1320
 ADDRLP4 24+8
 INDIRF4
 CNSTF4 1065353216
-NEF4 $512
+NEF4 $589
 line 1321
 ;1321:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $495
+ADDRGP4 $572
 JUMPV
-LABELV $512
+LABELV $589
 line 1323
 ;1322:
 ;1323:	VectorCopy (midpoint, dest);
@@ -6958,14 +7930,14 @@ line 1327
 ADDRLP4 24+8
 INDIRF4
 CNSTF4 1065353216
-NEF4 $516
+NEF4 $593
 line 1328
 ;1328:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $495
+ADDRGP4 $572
 JUMPV
-LABELV $516
+LABELV $593
 line 1330
 ;1329:
 ;1330:	VectorCopy (midpoint, dest);
@@ -7019,21 +7991,21 @@ line 1334
 ADDRLP4 24+8
 INDIRF4
 CNSTF4 1065353216
-NEF4 $520
+NEF4 $597
 line 1335
 ;1335:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $495
+ADDRGP4 $572
 JUMPV
-LABELV $520
+LABELV $597
 line 1338
 ;1336:
 ;1337:
 ;1338:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $495
+LABELV $572
 endproc CanDamage 112 28
 export G_RadiusDamage
 proc G_RadiusDamage 4196 32
@@ -7067,7 +8039,7 @@ line 1359
 ADDRFP4 12
 INDIRF4
 CNSTF4 1065353216
-GEF4 $524
+GEF4 $601
 line 1360
 ;1360:		radius = 1;
 ADDRFP4 12
@@ -7075,14 +8047,14 @@ CNSTF4 1065353216
 ASGNF4
 line 1361
 ;1361:	}
-LABELV $524
+LABELV $601
 line 1363
 ;1362:
 ;1363:	for ( i = 0 ; i < 3 ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $526
+LABELV $603
 line 1364
 ;1364:		mins[i] = origin[i] - radius;
 ADDRLP4 4172
@@ -7129,7 +8101,7 @@ ADDF4
 ASGNF4
 line 1366
 ;1366:	}
-LABELV $527
+LABELV $604
 line 1363
 ADDRLP4 0
 ADDRLP4 0
@@ -7140,7 +8112,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $526
+LTI4 $603
 line 1368
 ;1367:
 ;1368:	numListedEntities = trap_EntitiesInBox( mins, maxs, entityList, MAX_GENTITIES );
@@ -7166,13 +8138,13 @@ line 1370
 ADDRLP4 20
 CNSTI4 0
 ASGNI4
-ADDRGP4 $533
+ADDRGP4 $610
 JUMPV
-LABELV $530
+LABELV $607
 line 1371
 ;1371:		ent = &g_entities[entityList[ e ]];
 ADDRLP4 4
-CNSTI4 860
+CNSTI4 868
 ADDRLP4 20
 INDIRI4
 CNSTI4 2
@@ -7193,12 +8165,12 @@ CVPU4 4
 ADDRFP4 16
 INDIRP4
 CVPU4 4
-NEU4 $534
+NEU4 $611
 line 1374
 ;1374:			continue;
-ADDRGP4 $531
+ADDRGP4 $608
 JUMPV
-LABELV $534
+LABELV $611
 line 1375
 ;1375:		if (!ent->takedamage)
 ADDRLP4 4
@@ -7207,12 +8179,12 @@ CNSTI4 744
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $536
+NEI4 $613
 line 1376
 ;1376:			continue;
-ADDRGP4 $531
+ADDRGP4 $608
 JUMPV
-LABELV $536
+LABELV $613
 line 1379
 ;1377:
 ;1378:		// find the distance from the edge of the bounding box
@@ -7220,7 +8192,7 @@ line 1379
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $538
+LABELV $615
 line 1380
 ;1380:			if ( origin[i] < ent->r.absmin[i] ) {
 ADDRLP4 4176
@@ -7243,7 +8215,7 @@ CNSTI4 464
 ADDP4
 ADDP4
 INDIRF4
-GEF4 $542
+GEF4 $619
 line 1381
 ;1381:				v[i] = ent->r.absmin[i] - origin[i];
 ADDRLP4 4180
@@ -7274,9 +8246,9 @@ SUBF4
 ASGNF4
 line 1382
 ;1382:			} else if ( origin[i] > ent->r.absmax[i] ) {
-ADDRGP4 $543
+ADDRGP4 $620
 JUMPV
-LABELV $542
+LABELV $619
 ADDRLP4 4180
 ADDRLP4 0
 INDIRI4
@@ -7297,7 +8269,7 @@ CNSTI4 476
 ADDP4
 ADDP4
 INDIRF4
-LEF4 $544
+LEF4 $621
 line 1383
 ;1383:				v[i] = origin[i] - ent->r.absmax[i];
 ADDRLP4 4184
@@ -7328,9 +8300,9 @@ SUBF4
 ASGNF4
 line 1384
 ;1384:			} else {
-ADDRGP4 $545
+ADDRGP4 $622
 JUMPV
-LABELV $544
+LABELV $621
 line 1385
 ;1385:				v[i] = 0;
 ADDRLP4 0
@@ -7343,11 +8315,11 @@ CNSTF4 0
 ASGNF4
 line 1386
 ;1386:			}
-LABELV $545
-LABELV $543
+LABELV $622
+LABELV $620
 line 1387
 ;1387:		}
-LABELV $539
+LABELV $616
 line 1379
 ADDRLP4 0
 ADDRLP4 0
@@ -7358,7 +8330,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $538
+LTI4 $615
 line 1389
 ;1388:
 ;1389:		dist = VectorLength( v );
@@ -7378,12 +8350,12 @@ ADDRLP4 24
 INDIRF4
 ADDRFP4 12
 INDIRF4
-LTF4 $546
+LTF4 $623
 line 1391
 ;1391:			continue;
-ADDRGP4 $531
+ADDRGP4 $608
 JUMPV
-LABELV $546
+LABELV $623
 line 1394
 ;1392:		}
 ;1393:
@@ -7416,7 +8388,7 @@ ASGNI4
 ADDRLP4 4180
 INDIRI4
 CNSTI4 0
-EQI4 $548
+EQI4 $625
 line 1397
 ;1397:			if( LogAccuracyHit( ent, attacker ) ) {
 ADDRLP4 4
@@ -7432,7 +8404,7 @@ ASGNI4
 ADDRLP4 4184
 INDIRI4
 CNSTI4 0
-EQI4 $550
+EQI4 $627
 line 1398
 ;1398:				hitClient = qtrue;
 ADDRLP4 4168
@@ -7440,7 +8412,7 @@ CNSTI4 1
 ASGNI4
 line 1399
 ;1399:			}
-LABELV $550
+LABELV $627
 line 1400
 ;1400:			VectorSubtract (ent->r.currentOrigin, origin, dir);
 ADDRLP4 4192
@@ -7523,10 +8495,10 @@ CALLV
 pop
 line 1405
 ;1405:		}
-LABELV $548
+LABELV $625
 line 1406
 ;1406:	}
-LABELV $531
+LABELV $608
 line 1370
 ADDRLP4 20
 ADDRLP4 20
@@ -7534,21 +8506,22 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $533
+LABELV $610
 ADDRLP4 20
 INDIRI4
 ADDRLP4 4140
 INDIRI4
-LTI4 $530
+LTI4 $607
 line 1408
 ;1407:
 ;1408:	return hitClient;
 ADDRLP4 4168
 INDIRI4
 RETI4
-LABELV $523
+LABELV $600
 endproc G_RadiusDamage 4196 32
 import CountSurvivors
+import neutralObelisk
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible
@@ -7864,6 +8837,7 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
+import G_StartKamikaze
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -7896,10 +8870,14 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
+import DropPortalDestination
+import DropPortalSource
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
+import fire_prox
+import fire_nail
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -7911,8 +8889,6 @@ import fire_grenade
 import fire_plasma
 import fire_blaster
 import G_RunMissile
-import TossClientCubes
-import G_InvulnerabilityEffect
 import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap
@@ -8138,7 +9114,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $462
+LABELV $537
 byte 1 37
 byte 1 105
 byte 1 58
@@ -8184,7 +9160,7 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $358
+LABELV $397
 byte 1 115
 byte 1 111
 byte 1 117
@@ -8210,7 +9186,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $343
+LABELV $382
 byte 1 115
 byte 1 111
 byte 1 117
@@ -8234,7 +9210,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $340
+LABELV $379
 byte 1 115
 byte 1 111
 byte 1 117
@@ -8253,7 +9229,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $337
+LABELV $376
 byte 1 115
 byte 1 111
 byte 1 117
@@ -8272,7 +9248,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $334
+LABELV $373
 byte 1 115
 byte 1 111
 byte 1 117
@@ -8291,7 +9267,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $331
+LABELV $370
 byte 1 115
 byte 1 111
 byte 1 117
@@ -8310,11 +9286,11 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $323
+LABELV $362
 byte 1 115
 byte 1 0
 align 1
-LABELV $322
+LABELV $361
 byte 1 99
 byte 1 112
 byte 1 32
@@ -8351,7 +9327,7 @@ byte 1 10
 byte 1 34
 byte 1 0
 align 1
-LABELV $321
+LABELV $360
 byte 1 112
 byte 1 114
 byte 1 105
@@ -8387,7 +9363,7 @@ byte 1 10
 byte 1 34
 byte 1 0
 align 1
-LABELV $317
+LABELV $356
 byte 1 99
 byte 1 112
 byte 1 32
@@ -8423,7 +9399,7 @@ byte 1 10
 byte 1 34
 byte 1 0
 align 1
-LABELV $316
+LABELV $355
 byte 1 112
 byte 1 114
 byte 1 105
@@ -8457,7 +9433,7 @@ byte 1 10
 byte 1 34
 byte 1 0
 align 1
-LABELV $279
+LABELV $318
 byte 1 112
 byte 1 114
 byte 1 105
@@ -8490,7 +9466,7 @@ byte 1 10
 byte 1 34
 byte 1 0
 align 1
-LABELV $278
+LABELV $317
 byte 1 115
 byte 1 111
 byte 1 117
@@ -8514,7 +9490,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $241
+LABELV $277
 byte 1 75
 byte 1 105
 byte 1 108
@@ -8552,7 +9528,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $240
+LABELV $276
 byte 1 60
 byte 1 98
 byte 1 97
@@ -8569,7 +9545,7 @@ byte 1 121
 byte 1 62
 byte 1 0
 align 1
-LABELV $233
+LABELV $269
 byte 1 60
 byte 1 119
 byte 1 111
@@ -8579,7 +9555,7 @@ byte 1 100
 byte 1 62
 byte 1 0
 align 1
-LABELV $232
+LABELV $268
 byte 1 60
 byte 1 110
 byte 1 111
@@ -8594,7 +9570,7 @@ byte 1 116
 byte 1 62
 byte 1 0
 align 1
-LABELV $210
+LABELV $243
 byte 1 116
 byte 1 101
 byte 1 97
@@ -8613,7 +9589,7 @@ byte 1 115
 byte 1 107
 byte 1 0
 align 1
-LABELV $209
+LABELV $242
 byte 1 116
 byte 1 101
 byte 1 97
@@ -8631,7 +9607,7 @@ byte 1 115
 byte 1 107
 byte 1 0
 align 1
-LABELV $189
+LABELV $222
 byte 1 116
 byte 1 101
 byte 1 97
@@ -8650,7 +9626,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $188
+LABELV $221
 byte 1 116
 byte 1 101
 byte 1 97
@@ -8670,7 +9646,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $177
+LABELV $207
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8684,7 +9660,54 @@ byte 1 76
 byte 1 69
 byte 1 0
 align 1
-LABELV $176
+LABELV $206
+byte 1 77
+byte 1 79
+byte 1 68
+byte 1 95
+byte 1 80
+byte 1 82
+byte 1 79
+byte 1 88
+byte 1 73
+byte 1 77
+byte 1 73
+byte 1 84
+byte 1 89
+byte 1 95
+byte 1 77
+byte 1 73
+byte 1 78
+byte 1 69
+byte 1 0
+align 1
+LABELV $205
+byte 1 77
+byte 1 79
+byte 1 68
+byte 1 95
+byte 1 67
+byte 1 72
+byte 1 65
+byte 1 73
+byte 1 78
+byte 1 71
+byte 1 85
+byte 1 78
+byte 1 0
+align 1
+LABELV $204
+byte 1 77
+byte 1 79
+byte 1 68
+byte 1 95
+byte 1 78
+byte 1 65
+byte 1 73
+byte 1 76
+byte 1 0
+align 1
+LABELV $203
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8699,7 +9722,7 @@ byte 1 79
 byte 1 84
 byte 1 0
 align 1
-LABELV $175
+LABELV $202
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8718,7 +9741,7 @@ byte 1 82
 byte 1 84
 byte 1 0
 align 1
-LABELV $174
+LABELV $201
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8737,7 +9760,7 @@ byte 1 69
 byte 1 82
 byte 1 0
 align 1
-LABELV $173
+LABELV $200
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8751,7 +9774,7 @@ byte 1 68
 byte 1 69
 byte 1 0
 align 1
-LABELV $172
+LABELV $199
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8765,7 +9788,7 @@ byte 1 78
 byte 1 71
 byte 1 0
 align 1
-LABELV $171
+LABELV $198
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8780,7 +9803,7 @@ byte 1 65
 byte 1 71
 byte 1 0
 align 1
-LABELV $170
+LABELV $197
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8792,7 +9815,7 @@ byte 1 83
 byte 1 72
 byte 1 0
 align 1
-LABELV $169
+LABELV $196
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8803,7 +9826,7 @@ byte 1 86
 byte 1 65
 byte 1 0
 align 1
-LABELV $168
+LABELV $195
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8815,7 +9838,7 @@ byte 1 77
 byte 1 69
 byte 1 0
 align 1
-LABELV $167
+LABELV $194
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8827,7 +9850,7 @@ byte 1 69
 byte 1 82
 byte 1 0
 align 1
-LABELV $166
+LABELV $193
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8844,7 +9867,7 @@ byte 1 83
 byte 1 72
 byte 1 0
 align 1
-LABELV $165
+LABELV $192
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8854,7 +9877,7 @@ byte 1 70
 byte 1 71
 byte 1 0
 align 1
-LABELV $164
+LABELV $191
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8870,7 +9893,7 @@ byte 1 78
 byte 1 71
 byte 1 0
 align 1
-LABELV $163
+LABELV $190
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8884,7 +9907,7 @@ byte 1 85
 byte 1 78
 byte 1 0
 align 1
-LABELV $162
+LABELV $189
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8904,7 +9927,7 @@ byte 1 83
 byte 1 72
 byte 1 0
 align 1
-LABELV $161
+LABELV $188
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8917,7 +9940,7 @@ byte 1 77
 byte 1 65
 byte 1 0
 align 1
-LABELV $160
+LABELV $187
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8937,7 +9960,7 @@ byte 1 83
 byte 1 72
 byte 1 0
 align 1
-LABELV $159
+LABELV $186
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8950,7 +9973,7 @@ byte 1 69
 byte 1 84
 byte 1 0
 align 1
-LABELV $158
+LABELV $185
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8971,7 +9994,7 @@ byte 1 83
 byte 1 72
 byte 1 0
 align 1
-LABELV $157
+LABELV $184
 byte 1 77
 byte 1 79
 byte 1 68
@@ -8985,7 +10008,7 @@ byte 1 68
 byte 1 69
 byte 1 0
 align 1
-LABELV $156
+LABELV $183
 byte 1 77
 byte 1 79
 byte 1 68
@@ -9002,7 +10025,7 @@ byte 1 85
 byte 1 78
 byte 1 0
 align 1
-LABELV $155
+LABELV $182
 byte 1 77
 byte 1 79
 byte 1 68
@@ -9017,7 +10040,7 @@ byte 1 69
 byte 1 84
 byte 1 0
 align 1
-LABELV $154
+LABELV $181
 byte 1 77
 byte 1 79
 byte 1 68
@@ -9031,7 +10054,7 @@ byte 1 85
 byte 1 78
 byte 1 0
 align 1
-LABELV $153
+LABELV $180
 byte 1 77
 byte 1 79
 byte 1 68
@@ -9045,7 +10068,7 @@ byte 1 87
 byte 1 78
 byte 1 0
 align 1
-LABELV $123
+LABELV $150
 byte 1 107
 byte 1 97
 byte 1 109
@@ -9060,4 +10083,27 @@ byte 1 105
 byte 1 109
 byte 1 101
 byte 1 114
+byte 1 0
+align 1
+LABELV $105
+byte 1 66
+byte 1 108
+byte 1 117
+byte 1 101
+byte 1 32
+byte 1 67
+byte 1 117
+byte 1 98
+byte 1 101
+byte 1 0
+align 1
+LABELV $104
+byte 1 82
+byte 1 101
+byte 1 100
+byte 1 32
+byte 1 67
+byte 1 117
+byte 1 98
+byte 1 101
 byte 1 0

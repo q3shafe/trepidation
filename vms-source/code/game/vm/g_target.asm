@@ -75,7 +75,7 @@ line 25
 ;25:		if ( !t->item ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 828
+CNSTI4 836
 ADDP4
 INDIRP4
 CVPU4 4
@@ -362,12 +362,12 @@ CVIF4 4
 CNSTF4 1148846080
 ADDRLP4 4
 INDIRP4
-CNSTI4 804
+CNSTI4 812
 ADDP4
 INDIRF4
 ADDRLP4 4
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRF4
 CNSTF4 1073741824
@@ -422,7 +422,7 @@ ADDRGP4 $83
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 804
+CNSTI4 812
 ADDP4
 ARGP4
 ADDRLP4 0
@@ -441,7 +441,7 @@ ADDRGP4 $85
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 804
+CNSTI4 812
 ADDP4
 ARGP4
 ADDRGP4 G_SpawnFloat
@@ -455,7 +455,7 @@ line 90
 ;90:	if ( !ent->wait ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 804
+CNSTI4 812
 ADDP4
 INDIRF4
 CNSTF4 0
@@ -464,7 +464,7 @@ line 91
 ;91:		ent->wait = 1;
 ADDRFP4 0
 INDIRP4
-CNSTI4 804
+CNSTI4 812
 ADDP4
 CNSTF4 1065353216
 ASGNF4
@@ -612,7 +612,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 868
 DIVI4
 ARGI4
 ADDRLP4 0
@@ -825,7 +825,7 @@ CNSTI4 156
 ADDP4
 ADDRLP4 0
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 INDIRI4
 ASGNI4
@@ -854,7 +854,7 @@ CNSTI4 47
 ARGI4
 ADDRFP4 0
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 INDIRI4
 ARGI4
@@ -888,7 +888,7 @@ CNSTI4 48
 ARGI4
 ADDRLP4 0
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 INDIRI4
 ARGI4
@@ -913,7 +913,7 @@ CNSTI4 47
 ARGI4
 ADDRLP4 0
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 INDIRI4
 ARGI4
@@ -947,7 +947,7 @@ ADDRGP4 $83
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 804
+CNSTI4 812
 ADDP4
 ARGP4
 ADDRGP4 G_SpawnFloat
@@ -961,7 +961,7 @@ ADDRGP4 $83
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 ARGP4
 ADDRGP4 G_SpawnFloat
@@ -1097,7 +1097,7 @@ CALLI4
 ASGNI4
 ADDRFP4 0
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 ADDRLP4 76
 INDIRI4
@@ -1124,7 +1124,7 @@ CNSTI4 184
 ADDP4
 ADDRLP4 80
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 INDIRI4
 ASGNI4
@@ -1141,7 +1141,7 @@ ADDP4
 CNSTF4 1092616192
 ADDRLP4 84
 INDIRP4
-CNSTI4 804
+CNSTI4 812
 ADDP4
 INDIRF4
 MULF4
@@ -1160,7 +1160,7 @@ ADDP4
 CNSTF4 1092616192
 ADDRLP4 88
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRF4
 MULF4
@@ -1192,7 +1192,7 @@ CNSTI4 156
 ADDP4
 ADDRLP4 92
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 INDIRI4
 ASGNI4
@@ -1599,7 +1599,7 @@ EQI4 $142
 line 254
 ;253:		// hurt it if we can
 ;254:		G_Damage ( &g_entities[tr.entityNum], self, self->activator, self->movedir, 
-CNSTI4 860
+CNSTI4 868
 ADDRLP4 24+52
 INDIRI4
 MULI4
@@ -2626,7 +2626,7 @@ ASGNI4
 ADDRFP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 860
+CNSTI4 868
 ADDP4
 ASGNP4
 LABELV $201
@@ -3011,6 +3011,7 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
+import G_StartKamikaze
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -3045,10 +3046,14 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
+import DropPortalDestination
+import DropPortalSource
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
+import fire_prox
+import fire_nail
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -3061,6 +3066,7 @@ import fire_plasma
 import fire_blaster
 import G_RunMissile
 import TossClientCubes
+import TossClientPersistantPowerups
 import TossClientItems
 import body_die
 import G_InvulnerabilityEffect

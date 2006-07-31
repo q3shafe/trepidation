@@ -4242,7 +4242,7 @@ line 813
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
-NEI4 $321
+NEI4 $322
 line 814
 ;814:		if (!ctf_redflag.areanum || !ctf_blueflag.areanum)
 ADDRLP4 260
@@ -4265,16 +4265,47 @@ ADDRGP4 $321
 JUMPV
 line 816
 ;816:	}
-line 823
+LABELV $322
+line 818
 ;817:#ifdef MISSIONPACK
 ;818:	else if (gametype == GT_1FCTF) {
+ADDRGP4 gametype
+INDIRI4
+CNSTI4 5
+NEI4 $321
+line 819
 ;819:		if (!ctf_neutralflag.areanum || !ctf_redflag.areanum || !ctf_blueflag.areanum)
+ADDRLP4 260
+CNSTI4 0
+ASGNI4
+ADDRGP4 ctf_neutralflag+12
+INDIRI4
+ADDRLP4 260
+INDIRI4
+EQI4 $337
+ADDRGP4 ctf_redflag+12
+INDIRI4
+ADDRLP4 260
+INDIRI4
+EQI4 $337
+ADDRGP4 ctf_blueflag+12
+INDIRI4
+ADDRLP4 260
+INDIRI4
+NEI4 $330
+LABELV $337
+line 820
 ;820:			return;
+ADDRGP4 $321
+JUMPV
+line 821
 ;821:	}
+line 823
 ;822:#endif
 ;823:	else {
 line 824
 ;824:		return;
+LABELV $330
 LABELV $323
 line 827
 ;825:	}
@@ -4293,10 +4324,10 @@ ASGNI4
 ADDRLP4 260
 INDIRI4
 CNSTI4 0
-NEI4 $329
+NEI4 $338
 ADDRGP4 $321
 JUMPV
-LABELV $329
+LABELV $338
 line 829
 ;828:	//
 ;829:	trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
@@ -4403,7 +4434,7 @@ line 843
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
-NEI4 $331
+NEI4 $340
 line 845
 ;844:		//get an alternative route goal towards the enemy base
 ;845:		BotGetAlternateRouteGoal(bs, BotOppositeTeam(bs));
@@ -4425,7 +4456,7 @@ CALLI4
 pop
 line 846
 ;846:	}
-LABELV $331
+LABELV $340
 line 848
 ;847:	//
 ;848:	BotSetTeamStatus(bs);
@@ -4452,7 +4483,7 @@ line 854
 LABELV $321
 endproc BotMatch_GetFlag 276 16
 export BotMatch_AttackEnemyBase
-proc BotMatch_AttackEnemyBase 272 16
+proc BotMatch_AttackEnemyBase 276 16
 line 861
 ;855:
 ;856:/*
@@ -4469,7 +4500,7 @@ line 865
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
-NEI4 $333
+NEI4 $343
 line 866
 ;866:		BotMatch_GetFlag(bs, match);
 ADDRFP4 0
@@ -4483,17 +4514,58 @@ CALLV
 pop
 line 867
 ;867:	}
-line 874
+ADDRGP4 $344
+JUMPV
+LABELV $343
+line 869
 ;868:#ifdef MISSIONPACK
 ;869:	else if (gametype == GT_1FCTF || gametype == GT_OBELISK || gametype == GT_HARVESTER) {
+ADDRLP4 260
+ADDRGP4 gametype
+INDIRI4
+ASGNI4
+ADDRLP4 260
+INDIRI4
+CNSTI4 5
+EQI4 $348
+ADDRLP4 260
+INDIRI4
+CNSTI4 6
+EQI4 $348
+ADDRLP4 260
+INDIRI4
+CNSTI4 7
+NEI4 $342
+LABELV $348
+line 870
 ;870:		if (!redobelisk.areanum || !blueobelisk.areanum)
+ADDRLP4 264
+CNSTI4 0
+ASGNI4
+ADDRGP4 redobelisk+12
+INDIRI4
+ADDRLP4 264
+INDIRI4
+EQI4 $353
+ADDRGP4 blueobelisk+12
+INDIRI4
+ADDRLP4 264
+INDIRI4
+NEI4 $346
+LABELV $353
+line 871
 ;871:			return;
+ADDRGP4 $342
+JUMPV
+line 872
 ;872:	}
+line 874
 ;873:#endif
 ;874:	else {
 line 875
 ;875:		return;
-LABELV $335
+LABELV $346
+LABELV $344
 line 878
 ;876:	}
 ;877:	//if not addressed to this bot
@@ -4504,17 +4576,17 @@ ARGP4
 ADDRFP4 4
 INDIRP4
 ARGP4
-ADDRLP4 260
+ADDRLP4 264
 ADDRGP4 BotAddressedToBot
 CALLI4
 ASGNI4
-ADDRLP4 260
+ADDRLP4 264
 INDIRI4
 CNSTI4 0
-NEI4 $336
-ADDRGP4 $333
+NEI4 $354
+ADDRGP4 $342
 JUMPV
-LABELV $336
+LABELV $354
 line 880
 ;879:	//
 ;880:	trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
@@ -4535,12 +4607,12 @@ line 882
 ;882:	client = FindClientByName(netname);
 ADDRLP4 0
 ARGP4
-ADDRLP4 264
+ADDRLP4 268
 ADDRGP4 FindClientByName
 CALLI4
 ASGNI4
 ADDRLP4 256
-ADDRLP4 264
+ADDRLP4 268
 INDIRI4
 ASGNI4
 line 884
@@ -4573,7 +4645,7 @@ ASGNF4
 line 888
 ;887:	//set the time to send a message to the team mates
 ;888:	bs->teammessage_time = FloatTime() + 2 * random();
-ADDRLP4 268
+ADDRLP4 272
 ADDRGP4 rand
 CALLI4
 ASGNI4
@@ -4584,7 +4656,7 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 CNSTF4 1073741824
-ADDRLP4 268
+ADDRLP4 272
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -4646,11 +4718,11 @@ line 901
 ;899:	BotPrintTeamGoal(bs);
 ;900:#endif //DEBUG
 ;901:}
-LABELV $333
-endproc BotMatch_AttackEnemyBase 272 16
-export BotMatch_RushBase
-proc BotMatch_RushBase 272 16
-line 952
+LABELV $342
+endproc BotMatch_AttackEnemyBase 276 16
+export BotMatch_Harvest
+proc BotMatch_Harvest 272 16
+line 909
 ;902:
 ;903:#ifdef MISSIONPACK
 ;904:/*
@@ -4659,41 +4731,204 @@ line 952
 ;907:==================
 ;908:*/
 ;909:void BotMatch_Harvest(bot_state_t *bs, bot_match_t *match) {
+line 913
 ;910:	char netname[MAX_MESSAGE_SIZE];
 ;911:	int client;
 ;912:
 ;913:	if (gametype == GT_HARVESTER) {
+ADDRGP4 gametype
+INDIRI4
+CNSTI4 7
+NEI4 $356
+line 914
 ;914:		if (!neutralobelisk.areanum || !redobelisk.areanum || !blueobelisk.areanum)
+ADDRLP4 260
+CNSTI4 0
+ASGNI4
+ADDRGP4 neutralobelisk+12
+INDIRI4
+ADDRLP4 260
+INDIRI4
+EQI4 $365
+ADDRGP4 redobelisk+12
+INDIRI4
+ADDRLP4 260
+INDIRI4
+EQI4 $365
+ADDRGP4 blueobelisk+12
+INDIRI4
+ADDRLP4 260
+INDIRI4
+NEI4 $358
+LABELV $365
+line 915
 ;915:			return;
+ADDRGP4 $356
+JUMPV
+line 916
 ;916:	}
+line 917
 ;917:	else {
+line 918
 ;918:		return;
+LABELV $358
+line 921
 ;919:	}
 ;920:	//if not addressed to this bot
 ;921:	if (!BotAddressedToBot(bs, match)) return;
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRFP4 4
+INDIRP4
+ARGP4
+ADDRLP4 260
+ADDRGP4 BotAddressedToBot
+CALLI4
+ASGNI4
+ADDRLP4 260
+INDIRI4
+CNSTI4 0
+NEI4 $366
+ADDRGP4 $356
+JUMPV
+LABELV $366
+line 923
 ;922:	//
 ;923:	trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
+ADDRFP4 4
+INDIRP4
+ARGP4
+CNSTI4 0
+ARGI4
+ADDRLP4 0
+ARGP4
+CNSTI4 256
+ARGI4
+ADDRGP4 trap_BotMatchVariable
+CALLV
+pop
+line 925
 ;924:	//
 ;925:	client = FindClientByName(netname);
+ADDRLP4 0
+ARGP4
+ADDRLP4 264
+ADDRGP4 FindClientByName
+CALLI4
+ASGNI4
+ADDRLP4 256
+ADDRLP4 264
+INDIRI4
+ASGNI4
+line 927
 ;926:	//
 ;927:	bs->decisionmaker = client;
+ADDRFP4 0
+INDIRP4
+CNSTI4 6608
+ADDP4
+ADDRLP4 256
+INDIRI4
+ASGNI4
+line 928
 ;928:	bs->ordered = qtrue;
+ADDRFP4 0
+INDIRP4
+CNSTI4 6612
+ADDP4
+CNSTI4 1
+ASGNI4
+line 929
 ;929:	bs->order_time = FloatTime();
+ADDRFP4 0
+INDIRP4
+CNSTI4 6616
+ADDP4
+ADDRGP4 floattime
+INDIRF4
+ASGNF4
+line 931
 ;930:	//set the time to send a message to the team mates
 ;931:	bs->teammessage_time = FloatTime() + 2 * random();
+ADDRLP4 268
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRFP4 0
+INDIRP4
+CNSTI4 6740
+ADDP4
+ADDRGP4 floattime
+INDIRF4
+CNSTF4 1073741824
+ADDRLP4 268
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+MULF4
+ADDF4
+ASGNF4
+line 933
 ;932:	//set the ltg type
 ;933:	bs->ltgtype = LTG_HARVEST;
+ADDRFP4 0
+INDIRP4
+CNSTI4 6600
+ADDP4
+CNSTI4 12
+ASGNI4
+line 935
 ;934:	//set the team goal time
 ;935:	bs->teamgoal_time = FloatTime() + TEAM_HARVEST_TIME;
+ADDRFP4 0
+INDIRP4
+CNSTI4 6744
+ADDP4
+ADDRGP4 floattime
+INDIRF4
+CNSTF4 1123024896
+ADDF4
+ASGNF4
+line 936
 ;936:	bs->harvestaway_time = 0;
+ADDRFP4 0
+INDIRP4
+CNSTI4 6160
+ADDP4
+CNSTF4 0
+ASGNF4
+line 938
 ;937:	//
 ;938:	BotSetTeamStatus(bs);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 BotSetTeamStatus
+CALLV
+pop
+line 940
 ;939:	// remember last ordered task
 ;940:	BotRememberLastOrderedTask(bs);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 BotRememberLastOrderedTask
+CALLV
+pop
+line 944
 ;941:#ifdef DEBUG
 ;942:	BotPrintTeamGoal(bs);
 ;943:#endif //DEBUG
 ;944:}
+LABELV $356
+endproc BotMatch_Harvest 272 16
+export BotMatch_RushBase
+proc BotMatch_RushBase 276 16
+line 952
 ;945:#endif
 ;946:
 ;947:/*
@@ -4710,7 +4945,7 @@ line 956
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
-NEI4 $338
+NEI4 $369
 line 957
 ;957:		if (!ctf_redflag.areanum || !ctf_blueflag.areanum)
 ADDRLP4 260
@@ -4720,30 +4955,65 @@ ADDRGP4 ctf_redflag+12
 INDIRI4
 ADDRLP4 260
 INDIRI4
-EQI4 $345
+EQI4 $375
 ADDRGP4 ctf_blueflag+12
 INDIRI4
 ADDRLP4 260
 INDIRI4
-NEI4 $340
-LABELV $345
+NEI4 $370
+LABELV $375
 line 958
 ;958:			return;
-ADDRGP4 $338
+ADDRGP4 $368
 JUMPV
 line 959
 ;959:	}
-line 966
+LABELV $369
+line 961
 ;960:#ifdef MISSIONPACK
 ;961:	else if (gametype == GT_1FCTF || gametype == GT_HARVESTER) {
+ADDRLP4 260
+ADDRGP4 gametype
+INDIRI4
+ASGNI4
+ADDRLP4 260
+INDIRI4
+CNSTI4 5
+EQI4 $378
+ADDRLP4 260
+INDIRI4
+CNSTI4 7
+NEI4 $368
+LABELV $378
+line 962
 ;962:		if (!redobelisk.areanum || !blueobelisk.areanum)
+ADDRLP4 264
+CNSTI4 0
+ASGNI4
+ADDRGP4 redobelisk+12
+INDIRI4
+ADDRLP4 264
+INDIRI4
+EQI4 $383
+ADDRGP4 blueobelisk+12
+INDIRI4
+ADDRLP4 264
+INDIRI4
+NEI4 $377
+LABELV $383
+line 963
 ;963:			return;
+ADDRGP4 $368
+JUMPV
+line 964
 ;964:	}
+line 966
 ;965:#endif
 ;966:	else {
 line 967
 ;967:		return;
-LABELV $340
+LABELV $377
+LABELV $370
 line 970
 ;968:	}
 ;969:	//if not addressed to this bot
@@ -4754,17 +5024,17 @@ ARGP4
 ADDRFP4 4
 INDIRP4
 ARGP4
-ADDRLP4 260
+ADDRLP4 264
 ADDRGP4 BotAddressedToBot
 CALLI4
 ASGNI4
-ADDRLP4 260
+ADDRLP4 264
 INDIRI4
 CNSTI4 0
-NEI4 $346
-ADDRGP4 $338
+NEI4 $384
+ADDRGP4 $368
 JUMPV
-LABELV $346
+LABELV $384
 line 972
 ;971:	//
 ;972:	trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
@@ -4785,12 +5055,12 @@ line 974
 ;974:	client = FindClientByName(netname);
 ADDRLP4 0
 ARGP4
-ADDRLP4 264
+ADDRLP4 268
 ADDRGP4 FindClientByName
 CALLI4
 ASGNI4
 ADDRLP4 256
-ADDRLP4 264
+ADDRLP4 268
 INDIRI4
 ASGNI4
 line 976
@@ -4823,7 +5093,7 @@ ASGNF4
 line 980
 ;979:	//set the time to send a message to the team mates
 ;980:	bs->teammessage_time = FloatTime() + 2 * random();
-ADDRLP4 268
+ADDRLP4 272
 ADDRGP4 rand
 CALLI4
 ASGNI4
@@ -4834,7 +5104,7 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 CNSTF4 1073741824
-ADDRLP4 268
+ADDRLP4 272
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -4887,8 +5157,8 @@ line 991
 ;989:	BotPrintTeamGoal(bs);
 ;990:#endif //DEBUG
 ;991:}
-LABELV $338
-endproc BotMatch_RushBase 272 16
+LABELV $368
+endproc BotMatch_RushBase 276 16
 export BotMatch_TaskPreference
 proc BotMatch_TaskPreference 320 16
 line 998
@@ -4934,10 +5204,10 @@ ASGNI4
 ADDRLP4 300
 INDIRI4
 CNSTI4 0
-EQI4 $349
-ADDRGP4 $348
+EQI4 $387
+ADDRGP4 $386
 JUMPV
-LABELV $349
+LABELV $387
 line 1006
 ;1005:
 ;1006:	trap_BotMatchVariable(match, NETNAME, teammatename, sizeof(teammatename));
@@ -4970,10 +5240,10 @@ line 1008
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-GEI4 $351
-ADDRGP4 $348
+GEI4 $389
+ADDRGP4 $386
 JUMPV
-LABELV $351
+LABELV $389
 line 1010
 ;1009:
 ;1010:	preference = BotGetTeamMateTaskPreference(bs, teammate);
@@ -5003,20 +5273,20 @@ ASGNI4
 ADDRLP4 312
 INDIRI4
 CNSTI4 1
-EQI4 $356
+EQI4 $394
 ADDRLP4 312
 INDIRI4
 CNSTI4 2
-EQI4 $357
+EQI4 $395
 ADDRLP4 312
 INDIRI4
 CNSTI4 4
-EQI4 $358
-ADDRGP4 $353
+EQI4 $396
+ADDRGP4 $391
 JUMPV
 line 1012
 ;1012:	{
-LABELV $356
+LABELV $394
 line 1014
 ;1013:		case ST_DEFENDER:
 ;1014:		{
@@ -5038,9 +5308,9 @@ BORI4
 ASGNI4
 line 1017
 ;1017:			break;
-ADDRGP4 $354
+ADDRGP4 $392
 JUMPV
-LABELV $357
+LABELV $395
 line 1020
 ;1018:		}
 ;1019:		case ST_ATTACKER:
@@ -5063,9 +5333,9 @@ BORI4
 ASGNI4
 line 1023
 ;1023:			break;
-ADDRGP4 $354
+ADDRGP4 $392
 JUMPV
-LABELV $358
+LABELV $396
 line 1026
 ;1024:		}
 ;1025:		case ST_ROAMER:
@@ -5080,8 +5350,8 @@ BANDI4
 ASGNI4
 line 1028
 ;1028:			break;
-LABELV $353
-LABELV $354
+LABELV $391
+LABELV $392
 line 1031
 ;1029:		}
 ;1030:	}
@@ -5116,7 +5386,7 @@ line 1034
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $359
+ADDRGP4 $397
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -5149,7 +5419,7 @@ ARGP4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $360
+ADDRGP4 $398
 ARGP4
 ADDRGP4 BotVoiceChatOnly
 CALLV
@@ -5169,10 +5439,10 @@ CALLV
 pop
 line 1038
 ;1038:}
-LABELV $348
+LABELV $386
 endproc BotMatch_TaskPreference 320 16
 export BotMatch_ReturnFlag
-proc BotMatch_ReturnFlag 272 16
+proc BotMatch_ReturnFlag 276 16
 line 1045
 ;1039:
 ;1040:/*
@@ -5188,19 +5458,27 @@ line 1051
 ;1049:	//if not in CTF mode
 ;1050:	if (
 ;1051:		gametype != GT_CTF
+ADDRLP4 260
 ADDRGP4 gametype
 INDIRI4
+ASGNI4
+ADDRLP4 260
+INDIRI4
 CNSTI4 4
-EQI4 $362
+EQI4 $400
+ADDRLP4 260
+INDIRI4
+CNSTI4 5
+EQI4 $400
 line 1056
 ;1052:#ifdef MISSIONPACK
 ;1053:		&& gametype != GT_1FCTF
 ;1054:#endif
 ;1055:		)
 ;1056:		return;
-ADDRGP4 $361
+ADDRGP4 $399
 JUMPV
-LABELV $362
+LABELV $400
 line 1058
 ;1057:	//if not addressed to this bot
 ;1058:	if (!BotAddressedToBot(bs, match))
@@ -5210,19 +5488,19 @@ ARGP4
 ADDRFP4 4
 INDIRP4
 ARGP4
-ADDRLP4 260
+ADDRLP4 264
 ADDRGP4 BotAddressedToBot
 CALLI4
 ASGNI4
-ADDRLP4 260
+ADDRLP4 264
 INDIRI4
 CNSTI4 0
-NEI4 $364
+NEI4 $402
 line 1059
 ;1059:		return;
-ADDRGP4 $361
+ADDRGP4 $399
 JUMPV
-LABELV $364
+LABELV $402
 line 1061
 ;1060:	//
 ;1061:	trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
@@ -5243,12 +5521,12 @@ line 1063
 ;1063:	client = FindClientByName(netname);
 ADDRLP4 0
 ARGP4
-ADDRLP4 264
+ADDRLP4 268
 ADDRGP4 FindClientByName
 CALLI4
 ASGNI4
 ADDRLP4 256
-ADDRLP4 264
+ADDRLP4 268
 INDIRI4
 ASGNI4
 line 1065
@@ -5281,7 +5559,7 @@ ASGNF4
 line 1069
 ;1068:	//set the time to send a message to the team mates
 ;1069:	bs->teammessage_time = FloatTime() + 2 * random();
-ADDRLP4 268
+ADDRLP4 272
 ADDRGP4 rand
 CALLI4
 ASGNI4
@@ -5292,7 +5570,7 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 CNSTF4 1073741824
-ADDRLP4 268
+ADDRLP4 272
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -5345,8 +5623,8 @@ line 1080
 ;1078:	BotPrintTeamGoal(bs);
 ;1079:#endif //DEBUG
 ;1080:}
-LABELV $361
-endproc BotMatch_ReturnFlag 272 16
+LABELV $399
+endproc BotMatch_ReturnFlag 276 16
 export BotMatch_JoinSubteam
 proc BotMatch_JoinSubteam 528 16
 line 1087
@@ -5370,10 +5648,10 @@ ASGNI4
 ADDRLP4 516
 INDIRI4
 CNSTI4 0
-NEI4 $367
-ADDRGP4 $366
+NEI4 $405
+ADDRGP4 $404
 JUMPV
-LABELV $367
+LABELV $405
 line 1094
 ;1093:	//if not addressed to this bot
 ;1094:	if (!BotAddressedToBot(bs, match)) return;
@@ -5390,10 +5668,10 @@ ASGNI4
 ADDRLP4 520
 INDIRI4
 CNSTI4 0
-NEI4 $369
-ADDRGP4 $366
+NEI4 $407
+ADDRGP4 $404
 JUMPV
-LABELV $369
+LABELV $407
 line 1096
 ;1095:	//get the sub team name
 ;1096:	trap_BotMatchVariable(match, TEAMNAME, teammate, sizeof(teammate));
@@ -5452,7 +5730,7 @@ line 1102
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $371
+ADDRGP4 $409
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -5491,7 +5769,7 @@ CALLV
 pop
 line 1105
 ;1105:}
-LABELV $366
+LABELV $404
 endproc BotMatch_JoinSubteam 528 16
 export BotMatch_LeaveSubteam
 proc BotMatch_LeaveSubteam 280 16
@@ -5515,10 +5793,10 @@ ASGNI4
 ADDRLP4 260
 INDIRI4
 CNSTI4 0
-NEI4 $373
-ADDRGP4 $372
+NEI4 $411
+ADDRGP4 $410
 JUMPV
-LABELV $373
+LABELV $411
 line 1118
 ;1117:	//if not addressed to this bot
 ;1118:	if (!BotAddressedToBot(bs, match)) return;
@@ -5535,10 +5813,10 @@ ASGNI4
 ADDRLP4 264
 INDIRI4
 CNSTI4 0
-NEI4 $375
-ADDRGP4 $372
+NEI4 $413
+ADDRGP4 $410
 JUMPV
-LABELV $375
+LABELV $413
 line 1120
 ;1119:	//
 ;1120:	if (strlen(bs->subteam))
@@ -5554,7 +5832,7 @@ ASGNI4
 ADDRLP4 268
 INDIRI4
 CNSTI4 0
-EQI4 $377
+EQI4 $415
 line 1121
 ;1121:	{
 line 1122
@@ -5566,7 +5844,7 @@ ASGNP4
 ADDRLP4 272
 INDIRP4
 ARGP4
-ADDRGP4 $379
+ADDRGP4 $417
 ARGP4
 ADDRLP4 272
 INDIRP4
@@ -5622,7 +5900,7 @@ CALLV
 pop
 line 1126
 ;1126:	} //end if
-LABELV $377
+LABELV $415
 line 1127
 ;1127:	strcpy(bs->subteam, "");
 ADDRFP4 0
@@ -5630,14 +5908,14 @@ INDIRP4
 CNSTI4 6980
 ADDP4
 ARGP4
-ADDRGP4 $380
+ADDRGP4 $418
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
 line 1128
 ;1128:}
-LABELV $372
+LABELV $410
 endproc BotMatch_LeaveSubteam 280 16
 export BotMatch_WhichTeam
 proc BotMatch_WhichTeam 16 16
@@ -5658,10 +5936,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $382
-ADDRGP4 $381
+NEI4 $420
+ADDRGP4 $419
 JUMPV
-LABELV $382
+LABELV $420
 line 1138
 ;1137:	//if not addressed to this bot
 ;1138:	if (!BotAddressedToBot(bs, match)) return;
@@ -5678,10 +5956,10 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $384
-ADDRGP4 $381
+NEI4 $422
+ADDRGP4 $419
 JUMPV
-LABELV $384
+LABELV $422
 line 1140
 ;1139:	//
 ;1140:	if (strlen(bs->subteam)) {
@@ -5697,7 +5975,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $386
+EQI4 $424
 line 1141
 ;1141:		BotAI_BotInitialChat(bs, "inteam", bs->subteam, NULL);
 ADDRLP4 12
@@ -5707,7 +5985,7 @@ ASGNP4
 ADDRLP4 12
 INDIRP4
 ARGP4
-ADDRGP4 $388
+ADDRGP4 $426
 ARGP4
 ADDRLP4 12
 INDIRP4
@@ -5721,9 +5999,9 @@ CALLV
 pop
 line 1142
 ;1142:	}
-ADDRGP4 $387
+ADDRGP4 $425
 JUMPV
-LABELV $386
+LABELV $424
 line 1143
 ;1143:	else {
 line 1144
@@ -5731,7 +6009,7 @@ line 1144
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $389
+ADDRGP4 $427
 ARGP4
 CNSTP4 0
 ARGP4
@@ -5740,7 +6018,7 @@ CALLV
 pop
 line 1145
 ;1145:	}
-LABELV $387
+LABELV $425
 line 1146
 ;1146:	trap_BotEnterChat(bs->cs, bs->client, CHAT_TEAM);
 ADDRLP4 12
@@ -5766,7 +6044,7 @@ CALLV
 pop
 line 1147
 ;1147:}
-LABELV $381
+LABELV $419
 endproc BotMatch_WhichTeam 16 16
 export BotMatch_CheckPoint
 proc BotMatch_CheckPoint 572 24
@@ -5793,10 +6071,10 @@ ASGNI4
 ADDRLP4 536
 INDIRI4
 CNSTI4 0
-NEI4 $391
-ADDRGP4 $390
+NEI4 $429
+ADDRGP4 $428
 JUMPV
-LABELV $391
+LABELV $429
 line 1163
 ;1162:	//
 ;1163:	trap_BotMatchVariable(match, POSITION, buf, MAX_MESSAGE_SIZE);
@@ -5861,7 +6139,7 @@ line 1169
 ;1169:	sscanf(buf, "%f %f %f", &position[0], &position[1], &position[2]);
 ADDRLP4 16
 ARGP4
-ADDRGP4 $395
+ADDRGP4 $433
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -5897,7 +6175,7 @@ line 1172
 ADDRLP4 272
 INDIRI4
 CNSTI4 0
-NEI4 $399
+NEI4 $437
 line 1173
 ;1173:		if (BotAddressedToBot(bs, match)) {
 ADDRFP4 0
@@ -5913,13 +6191,13 @@ ASGNI4
 ADDRLP4 552
 INDIRI4
 CNSTI4 0
-EQI4 $390
+EQI4 $428
 line 1174
 ;1174:			BotAI_BotInitialChat(bs, "checkpoint_invalid", NULL);
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $403
+ADDRGP4 $441
 ARGP4
 CNSTP4 0
 ARGP4
@@ -5946,9 +6224,9 @@ line 1176
 ;1176:		}
 line 1177
 ;1177:		return;
-ADDRGP4 $390
+ADDRGP4 $428
 JUMPV
-LABELV $399
+LABELV $437
 line 1180
 ;1178:	}
 ;1179:	//
@@ -5990,7 +6268,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $404
+EQU4 $442
 line 1184
 ;1184:		if (cp->next) cp->next->prev = cp->prev;
 ADDRLP4 0
@@ -6000,7 +6278,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $406
+EQU4 $444
 ADDRLP4 560
 CNSTI4 96
 ASGNI4
@@ -6019,7 +6297,7 @@ INDIRI4
 ADDP4
 INDIRP4
 ASGNP4
-LABELV $406
+LABELV $444
 line 1185
 ;1185:		if (cp->prev) cp->prev->next = cp->next;
 ADDRLP4 0
@@ -6029,7 +6307,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $408
+EQU4 $446
 ADDRLP4 568
 CNSTI4 92
 ASGNI4
@@ -6048,9 +6326,9 @@ INDIRI4
 ADDP4
 INDIRP4
 ASGNP4
-ADDRGP4 $409
+ADDRGP4 $447
 JUMPV
-LABELV $408
+LABELV $446
 line 1186
 ;1186:		else bs->checkpoints = cp->next;
 ADDRFP4 0
@@ -6063,7 +6341,7 @@ CNSTI4 92
 ADDP4
 INDIRP4
 ASGNP4
-LABELV $409
+LABELV $447
 line 1187
 ;1187:		cp->inuse = qfalse;
 ADDRLP4 0
@@ -6072,7 +6350,7 @@ CNSTI4 0
 ASGNI4
 line 1188
 ;1188:	}
-LABELV $404
+LABELV $442
 line 1190
 ;1189:	//create a new check point
 ;1190:	cp = BotCreateWayPoint(buf, position, areanum);
@@ -6113,7 +6391,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $410
+EQU4 $448
 ADDRFP4 0
 INDIRP4
 CNSTI4 9072
@@ -6124,7 +6402,7 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-LABELV $410
+LABELV $448
 line 1194
 ;1194:	bs->checkpoints = cp;
 ADDRFP4 0
@@ -6150,14 +6428,14 @@ ASGNI4
 ADDRLP4 560
 INDIRI4
 CNSTI4 0
-EQI4 $412
+EQI4 $450
 line 1197
 ;1197:		Com_sprintf(buf, sizeof(buf), "%1.0f %1.0f %1.0f", cp->goal.origin[0],
 ADDRLP4 16
 ARGP4
 CNSTI4 256
 ARGI4
-ADDRGP4 $414
+ADDRGP4 $452
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -6188,7 +6466,7 @@ line 1201
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $415
+ADDRGP4 $453
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -6220,10 +6498,10 @@ CALLV
 pop
 line 1203
 ;1203:	}
-LABELV $412
+LABELV $450
 line 1204
 ;1204:}
-LABELV $390
+LABELV $428
 endproc BotMatch_CheckPoint 572 24
 export BotMatch_FormationSpace
 proc BotMatch_FormationSpace 280 16
@@ -6247,10 +6525,10 @@ ASGNI4
 ADDRLP4 260
 INDIRI4
 CNSTI4 0
-NEI4 $417
-ADDRGP4 $416
+NEI4 $455
+ADDRGP4 $454
 JUMPV
-LABELV $417
+LABELV $455
 line 1217
 ;1216:	//if not addressed to this bot
 ;1217:	if (!BotAddressedToBot(bs, match)) return;
@@ -6267,10 +6545,10 @@ ASGNI4
 ADDRLP4 264
 INDIRI4
 CNSTI4 0
-NEI4 $419
-ADDRGP4 $416
+NEI4 $457
+ADDRGP4 $454
 JUMPV
-LABELV $419
+LABELV $457
 line 1219
 ;1218:	//
 ;1219:	trap_BotMatchVariable(match, NUMBER, buf, MAX_MESSAGE_SIZE);
@@ -6297,7 +6575,7 @@ INDIRI4
 CNSTI4 8
 BANDI4
 CNSTI4 0
-EQI4 $421
+EQI4 $459
 ADDRLP4 4
 ARGP4
 ADDRLP4 268
@@ -6310,9 +6588,9 @@ ADDRLP4 268
 INDIRF4
 MULF4
 ASGNF4
-ADDRGP4 $422
+ADDRGP4 $460
 JUMPV
-LABELV $421
+LABELV $459
 line 1223
 ;1222:	//else it's in meters
 ;1223:	else space = 32 * atof(buf);
@@ -6328,23 +6606,23 @@ ADDRLP4 272
 INDIRF4
 MULF4
 ASGNF4
-LABELV $422
+LABELV $460
 line 1225
 ;1224:	//check if the formation intervening space is valid
 ;1225:	if (space < 48 || space > 500) space = 100;
 ADDRLP4 0
 INDIRF4
 CNSTF4 1111490560
-LTF4 $425
+LTF4 $463
 ADDRLP4 0
 INDIRF4
 CNSTF4 1140457472
-LEF4 $423
-LABELV $425
+LEF4 $461
+LABELV $463
 ADDRLP4 0
 CNSTF4 1120403456
 ASGNF4
-LABELV $423
+LABELV $461
 line 1226
 ;1226:	bs->formation_dist = space;
 ADDRFP4 0
@@ -6356,7 +6634,7 @@ INDIRF4
 ASGNF4
 line 1227
 ;1227:}
-LABELV $416
+LABELV $454
 endproc BotMatch_FormationSpace 280 16
 export BotMatch_Dismiss
 proc BotMatch_Dismiss 272 16
@@ -6380,10 +6658,10 @@ ASGNI4
 ADDRLP4 260
 INDIRI4
 CNSTI4 0
-NEI4 $427
-ADDRGP4 $426
+NEI4 $465
+ADDRGP4 $464
 JUMPV
-LABELV $427
+LABELV $465
 line 1240
 ;1239:	//if not addressed to this bot
 ;1240:	if (!BotAddressedToBot(bs, match)) return;
@@ -6400,10 +6678,10 @@ ASGNI4
 ADDRLP4 264
 INDIRI4
 CNSTI4 0
-NEI4 $429
-ADDRGP4 $426
+NEI4 $467
+ADDRGP4 $464
 JUMPV
-LABELV $429
+LABELV $467
 line 1241
 ;1241:	trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
 ADDRFP4 4
@@ -6471,7 +6749,7 @@ line 1250
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $431
+ADDRGP4 $469
 ARGP4
 CNSTP4 0
 ARGP4
@@ -6496,7 +6774,7 @@ CALLV
 pop
 line 1252
 ;1252:}
-LABELV $426
+LABELV $464
 endproc BotMatch_Dismiss 272 16
 export BotMatch_Suicide
 proc BotMatch_Suicide 272 16
@@ -6520,10 +6798,10 @@ ASGNI4
 ADDRLP4 260
 INDIRI4
 CNSTI4 0
-NEI4 $433
-ADDRGP4 $432
+NEI4 $471
+ADDRGP4 $470
 JUMPV
-LABELV $433
+LABELV $471
 line 1265
 ;1264:	//if not addressed to this bot
 ;1265:	if (!BotAddressedToBot(bs, match)) return;
@@ -6540,10 +6818,10 @@ ASGNI4
 ADDRLP4 264
 INDIRI4
 CNSTI4 0
-NEI4 $435
-ADDRGP4 $432
+NEI4 $473
+ADDRGP4 $470
 JUMPV
-LABELV $435
+LABELV $473
 line 1267
 ;1266:	//
 ;1267:	trap_EA_Command(bs->client, "kill");
@@ -6553,7 +6831,7 @@ CNSTI4 8
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $437
+ADDRGP4 $475
 ARGP4
 ADDRGP4 trap_EA_Command
 CALLV
@@ -6594,7 +6872,7 @@ ARGP4
 ADDRLP4 256
 INDIRI4
 ARGI4
-ADDRGP4 $438
+ADDRGP4 $476
 ARGP4
 ADDRGP4 BotVoiceChat
 CALLV
@@ -6614,7 +6892,7 @@ CALLV
 pop
 line 1274
 ;1274:}
-LABELV $432
+LABELV $470
 endproc BotMatch_Suicide 272 16
 export BotMatch_StartTeamLeaderShip
 proc BotMatch_StartTeamLeaderShip 268 16
@@ -6638,10 +6916,10 @@ ASGNI4
 ADDRLP4 260
 INDIRI4
 CNSTI4 0
-NEI4 $440
-ADDRGP4 $439
+NEI4 $478
+ADDRGP4 $477
 JUMPV
-LABELV $440
+LABELV $478
 line 1287
 ;1286:	//if chats for him or herself
 ;1287:	if (match->subtype & ST_I) {
@@ -6653,7 +6931,7 @@ INDIRI4
 CNSTI4 128
 BANDI4
 CNSTI4 0
-EQI4 $442
+EQI4 $480
 line 1289
 ;1288:		//get the team mate that will be the team leader
 ;1289:		trap_BotMatchVariable(match, NETNAME, teammate, sizeof(teammate));
@@ -6695,9 +6973,9 @@ CNSTI1 0
 ASGNI1
 line 1292
 ;1292:	}
-ADDRGP4 $443
+ADDRGP4 $481
 JUMPV
-LABELV $442
+LABELV $480
 line 1294
 ;1293:	//chats for someone else
 ;1294:	else {
@@ -6733,7 +7011,7 @@ line 1298
 ADDRLP4 256
 INDIRI4
 CNSTI4 0
-LTI4 $444
+LTI4 $482
 ADDRLP4 256
 INDIRI4
 ARGI4
@@ -6747,13 +7025,13 @@ ARGI4
 ADDRGP4 ClientName
 CALLP4
 pop
-LABELV $444
+LABELV $482
 line 1299
 ;1299:	}
-LABELV $443
+LABELV $481
 line 1300
 ;1300:}
-LABELV $439
+LABELV $477
 endproc BotMatch_StartTeamLeaderShip 268 16
 export BotMatch_StopTeamLeaderShip
 proc BotMatch_StopTeamLeaderShip 528 16
@@ -6778,10 +7056,10 @@ ASGNI4
 ADDRLP4 516
 INDIRI4
 CNSTI4 0
-NEI4 $447
-ADDRGP4 $446
+NEI4 $485
+ADDRGP4 $484
 JUMPV
-LABELV $447
+LABELV $485
 line 1314
 ;1313:	//get the team mate that stops being the team leader
 ;1314:	trap_BotMatchVariable(match, TEAMMATE, teammate, sizeof(teammate));
@@ -6808,7 +7086,7 @@ INDIRI4
 CNSTI4 128
 BANDI4
 CNSTI4 0
-EQI4 $449
+EQI4 $487
 line 1317
 ;1317:		trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
 ADDRFP4 4
@@ -6837,9 +7115,9 @@ INDIRI4
 ASGNI4
 line 1319
 ;1319:	}
-ADDRGP4 $450
+ADDRGP4 $488
 JUMPV
-LABELV $449
+LABELV $487
 line 1321
 ;1320:	//chats for someone else
 ;1321:	else {
@@ -6857,13 +7135,13 @@ INDIRI4
 ASGNI4
 line 1323
 ;1323:	} //end else
-LABELV $450
+LABELV $488
 line 1324
 ;1324:	if (client >= 0) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LTI4 $451
+LTI4 $489
 line 1325
 ;1325:		if (!Q_stricmp(bs->teamleader, ClientName(client, netname, sizeof(netname)))) {
 ADDRLP4 0
@@ -6892,7 +7170,7 @@ ASGNI4
 ADDRLP4 524
 INDIRI4
 CNSTI4 0
-NEI4 $453
+NEI4 $491
 line 1326
 ;1326:			bs->teamleader[0] = '\0';
 ADDRFP4 0
@@ -6913,13 +7191,13 @@ CNSTI4 1
 ASGNI4
 line 1328
 ;1328:		}
-LABELV $453
+LABELV $491
 line 1329
 ;1329:	}
-LABELV $451
+LABELV $489
 line 1330
 ;1330:}
-LABELV $446
+LABELV $484
 endproc BotMatch_StopTeamLeaderShip 528 16
 export BotMatch_WhoIsTeamLeader
 proc BotMatch_WhoIsTeamLeader 264 12
@@ -6942,10 +7220,10 @@ ASGNI4
 ADDRLP4 256
 INDIRI4
 CNSTI4 0
-NEI4 $456
-ADDRGP4 $455
+NEI4 $494
+ADDRGP4 $493
 JUMPV
-LABELV $456
+LABELV $494
 line 1342
 ;1341:
 ;1342:	ClientName(bs->client, netname, sizeof(netname));
@@ -6979,7 +7257,7 @@ ASGNI4
 ADDRLP4 260
 INDIRI4
 CNSTI4 0
-NEI4 $458
+NEI4 $496
 line 1345
 ;1345:		trap_EA_SayTeam(bs->client, "I'm the team leader\n");
 ADDRFP4 0
@@ -6988,17 +7266,17 @@ CNSTI4 8
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $460
+ADDRGP4 $498
 ARGP4
 ADDRGP4 trap_EA_SayTeam
 CALLV
 pop
 line 1346
 ;1346:	}
-LABELV $458
+LABELV $496
 line 1347
 ;1347:}
-LABELV $455
+LABELV $493
 endproc BotMatch_WhoIsTeamLeader 264 12
 export BotMatch_WhatAreYouDoing
 proc BotMatch_WhatAreYouDoing 532 16
@@ -7030,10 +7308,10 @@ ASGNI4
 ADDRLP4 516
 INDIRI4
 CNSTI4 0
-NEI4 $462
-ADDRGP4 $461
+NEI4 $500
+ADDRGP4 $499
 JUMPV
-LABELV $462
+LABELV $500
 line 1362
 ;1361:	//
 ;1362:	switch(bs->ltgtype) {
@@ -7047,35 +7325,37 @@ ASGNI4
 ADDRLP4 520
 INDIRI4
 CNSTI4 1
-LTI4 $464
+LTI4 $502
 ADDRLP4 520
 INDIRI4
-CNSTI4 11
-GTI4 $464
+CNSTI4 13
+GTI4 $502
 ADDRLP4 520
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $488-4
+ADDRGP4 $530-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $488
-address $467
-address $469
-address $471
-address $481
-address $483
-address $485
-address $477
-address $477
-address $479
-address $473
-address $475
+LABELV $530
+address $505
+address $507
+address $509
+address $519
+address $521
+address $523
+address $515
+address $515
+address $517
+address $511
+address $513
+address $527
+address $525
 code
-LABELV $467
+LABELV $505
 line 1364
 ;1363:		case LTG_TEAMHELP:
 ;1364:		{
@@ -7099,7 +7379,7 @@ line 1366
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $468
+ADDRGP4 $506
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -7110,9 +7390,9 @@ CALLV
 pop
 line 1367
 ;1367:			break;
-ADDRGP4 $465
+ADDRGP4 $503
 JUMPV
-LABELV $469
+LABELV $507
 line 1370
 ;1368:		}
 ;1369:		case LTG_TEAMACCOMPANY:
@@ -7137,7 +7417,7 @@ line 1372
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $470
+ADDRGP4 $508
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -7148,9 +7428,9 @@ CALLV
 pop
 line 1373
 ;1373:			break;
-ADDRGP4 $465
+ADDRGP4 $503
 JUMPV
-LABELV $471
+LABELV $509
 line 1376
 ;1374:		}
 ;1375:		case LTG_DEFENDKEYAREA:
@@ -7175,7 +7455,7 @@ line 1378
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $472
+ADDRGP4 $510
 ARGP4
 ADDRLP4 260
 ARGP4
@@ -7186,9 +7466,9 @@ CALLV
 pop
 line 1379
 ;1379:			break;
-ADDRGP4 $465
+ADDRGP4 $503
 JUMPV
-LABELV $473
+LABELV $511
 line 1382
 ;1380:		}
 ;1381:		case LTG_GETITEM:
@@ -7213,7 +7493,7 @@ line 1384
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $474
+ADDRGP4 $512
 ARGP4
 ADDRLP4 260
 ARGP4
@@ -7224,9 +7504,9 @@ CALLV
 pop
 line 1385
 ;1385:			break;
-ADDRGP4 $465
+ADDRGP4 $503
 JUMPV
-LABELV $475
+LABELV $513
 line 1388
 ;1386:		}
 ;1387:		case LTG_KILL:
@@ -7251,7 +7531,7 @@ line 1390
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $476
+ADDRGP4 $514
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -7262,9 +7542,9 @@ CALLV
 pop
 line 1391
 ;1391:			break;
-ADDRGP4 $465
+ADDRGP4 $503
 JUMPV
-LABELV $477
+LABELV $515
 line 1395
 ;1392:		}
 ;1393:		case LTG_CAMP:
@@ -7275,7 +7555,7 @@ line 1396
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $478
+ADDRGP4 $516
 ARGP4
 CNSTP4 0
 ARGP4
@@ -7284,9 +7564,9 @@ CALLV
 pop
 line 1397
 ;1397:			break;
-ADDRGP4 $465
+ADDRGP4 $503
 JUMPV
-LABELV $479
+LABELV $517
 line 1400
 ;1398:		}
 ;1399:		case LTG_PATROL:
@@ -7296,7 +7576,7 @@ line 1401
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $480
+ADDRGP4 $518
 ARGP4
 CNSTP4 0
 ARGP4
@@ -7305,9 +7585,9 @@ CALLV
 pop
 line 1402
 ;1402:			break;
-ADDRGP4 $465
+ADDRGP4 $503
 JUMPV
-LABELV $481
+LABELV $519
 line 1405
 ;1403:		}
 ;1404:		case LTG_GETFLAG:
@@ -7317,7 +7597,7 @@ line 1406
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $482
+ADDRGP4 $520
 ARGP4
 CNSTP4 0
 ARGP4
@@ -7326,9 +7606,9 @@ CALLV
 pop
 line 1407
 ;1407:			break;
-ADDRGP4 $465
+ADDRGP4 $503
 JUMPV
-LABELV $483
+LABELV $521
 line 1410
 ;1408:		}
 ;1409:		case LTG_RUSHBASE:
@@ -7338,7 +7618,7 @@ line 1411
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $484
+ADDRGP4 $522
 ARGP4
 CNSTP4 0
 ARGP4
@@ -7347,9 +7627,9 @@ CALLV
 pop
 line 1412
 ;1412:			break;
-ADDRGP4 $465
+ADDRGP4 $503
 JUMPV
-LABELV $485
+LABELV $523
 line 1415
 ;1413:		}
 ;1414:		case LTG_RETURNFLAG:
@@ -7359,7 +7639,7 @@ line 1416
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $486
+ADDRGP4 $524
 ARGP4
 CNSTP4 0
 ARGP4
@@ -7368,21 +7648,53 @@ CALLV
 pop
 line 1417
 ;1417:			break;
-ADDRGP4 $465
+ADDRGP4 $503
 JUMPV
-LABELV $464
-line 1432
+LABELV $525
+line 1421
 ;1418:		}
 ;1419:#ifdef MISSIONPACK
 ;1420:		case LTG_ATTACKENEMYBASE:
 ;1421:		{
+line 1422
 ;1422:			BotAI_BotInitialChat(bs, "attackingenemybase", NULL);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 $526
+ARGP4
+CNSTP4 0
+ARGP4
+ADDRGP4 BotAI_BotInitialChat
+CALLV
+pop
+line 1423
 ;1423:			break;
+ADDRGP4 $503
+JUMPV
+LABELV $527
+line 1426
 ;1424:		}
 ;1425:		case LTG_HARVEST:
 ;1426:		{
+line 1427
 ;1427:			BotAI_BotInitialChat(bs, "harvesting", NULL);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 $528
+ARGP4
+CNSTP4 0
+ARGP4
+ADDRGP4 BotAI_BotInitialChat
+CALLV
+pop
+line 1428
 ;1428:			break;
+ADDRGP4 $503
+JUMPV
+LABELV $502
+line 1432
 ;1429:		}
 ;1430:#endif
 ;1431:		default:
@@ -7392,7 +7704,7 @@ line 1433
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $487
+ADDRGP4 $529
 ARGP4
 CNSTP4 0
 ARGP4
@@ -7401,7 +7713,7 @@ CALLV
 pop
 line 1434
 ;1434:			break;
-LABELV $465
+LABELV $503
 line 1438
 ;1435:		}
 ;1436:	}
@@ -7449,7 +7761,7 @@ CALLV
 pop
 line 1441
 ;1441:}
-LABELV $461
+LABELV $499
 endproc BotMatch_WhatAreYouDoing 532 16
 export BotMatch_WhatIsMyCommand
 proc BotMatch_WhatIsMyCommand 40 12
@@ -7494,10 +7806,10 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $491
-ADDRGP4 $490
+EQI4 $533
+ADDRGP4 $532
 JUMPV
-LABELV $491
+LABELV $533
 line 1453
 ;1453:	bs->forceorders = qtrue;
 ADDRFP4 0
@@ -7508,7 +7820,7 @@ CNSTI4 1
 ASGNI4
 line 1454
 ;1454:}
-LABELV $490
+LABELV $532
 endproc BotMatch_WhatIsMyCommand 40 12
 export BotNearestVisibleItem
 proc BotNearestVisibleItem 252 28
@@ -7537,7 +7849,7 @@ line 1470
 ADDRLP4 68
 CNSTI4 -1
 ASGNI4
-LABELV $494
+LABELV $536
 line 1471
 ;1471:	do {
 line 1472
@@ -7584,12 +7896,12 @@ ASGNI4
 ADDRLP4 232
 INDIRI4
 CNSTI4 0
-EQI4 $498
+EQI4 $540
 line 1475
 ;1475:			continue;
-ADDRGP4 $495
+ADDRGP4 $537
 JUMPV
-LABELV $498
+LABELV $540
 line 1476
 ;1476:		VectorSubtract(tmpgoal.origin, bs->origin, dir);
 ADDRLP4 236
@@ -7644,7 +7956,7 @@ ADDRLP4 136
 INDIRF4
 ADDRLP4 140
 INDIRF4
-GEF4 $504
+GEF4 $546
 line 1480
 ;1479:			//trace from start to end
 ;1480:			BotAI_Trace(&trace, bs->eye, NULL, NULL, tmpgoal.origin, bs->client, CONTENTS_SOLID|CONTENTS_PLAYERCLIP);
@@ -7686,7 +7998,7 @@ line 1481
 ADDRLP4 144+8
 INDIRF4
 CNSTF4 1065353216
-LTF4 $506
+LTF4 $548
 line 1482
 ;1482:				bestdist = dist;
 ADDRLP4 140
@@ -7707,48 +8019,59 @@ CALLP4
 pop
 line 1484
 ;1484:			}
-LABELV $506
+LABELV $548
 line 1485
 ;1485:		}
-LABELV $504
+LABELV $546
 line 1486
 ;1486:	} while(i > 0);
-LABELV $495
+LABELV $537
 ADDRLP4 68
 INDIRI4
 CNSTI4 0
-GTI4 $494
+GTI4 $536
 line 1487
 ;1487:	return bestdist;
 ADDRLP4 140
 INDIRF4
 RETF4
-LABELV $493
+LABELV $535
 endproc BotNearestVisibleItem 252 28
 lit
 align 4
-LABELV $510
-address $511
-address $512
-address $513
-address $514
-address $515
-address $516
-address $517
-address $518
-address $519
-address $520
-address $521
-address $522
-address $523
-address $524
-address $525
-address $526
-address $527
+LABELV $552
+address $553
+address $554
+address $555
+address $556
+address $557
+address $558
+address $559
+address $560
+address $561
+address $562
+address $563
+address $564
+address $565
+address $566
+address $567
+address $568
+address $569
+address $570
+address $571
+address $572
+address $573
+address $574
+address $575
+address $576
+address $577
+address $578
+address $579
+address $580
 byte 4 0
 export BotMatch_WhereAreYou
 code
-proc BotMatch_WhereAreYou 444 20
+proc BotMatch_WhereAreYou 496 20
 line 1495
 ;1488:}
 ;1489:
@@ -7765,9 +8088,9 @@ line 1500
 ;1499:	char netname[MAX_MESSAGE_SIZE];
 ;1500:	char *nearbyitems[] = {
 ADDRLP4 8
-ADDRGP4 $510
+ADDRGP4 $552
 INDIRB
-ASGNB 72
+ASGNB 116
 line 1534
 ;1501:		"Shotgun",
 ;1502:		"Grenade Launcher",
@@ -7803,19 +8126,19 @@ line 1534
 ;1532:	};
 ;1533:	//
 ;1534:	if (!TeamPlayIsOn())
-ADDRLP4 412
+ADDRLP4 456
 ADDRGP4 TeamPlayIsOn
 CALLI4
 ASGNI4
-ADDRLP4 412
+ADDRLP4 456
 INDIRI4
 CNSTI4 0
-NEI4 $528
+NEI4 $581
 line 1535
 ;1535:		return;
-ADDRGP4 $509
+ADDRGP4 $551
 JUMPV
-LABELV $528
+LABELV $581
 line 1537
 ;1536:	//if not addressed to this bot
 ;1537:	if (!BotAddressedToBot(bs, match))
@@ -7825,28 +8148,28 @@ ARGP4
 ADDRFP4 4
 INDIRP4
 ARGP4
-ADDRLP4 416
+ADDRLP4 460
 ADDRGP4 BotAddressedToBot
 CALLI4
 ASGNI4
-ADDRLP4 416
+ADDRLP4 460
 INDIRI4
 CNSTI4 0
-NEI4 $530
+NEI4 $583
 line 1538
 ;1538:		return;
-ADDRGP4 $509
+ADDRGP4 $551
 JUMPV
-LABELV $530
+LABELV $583
 line 1540
 ;1539:
 ;1540:	bestitem = -1;
-ADDRLP4 140
+ADDRLP4 184
 CNSTI4 -1
 ASGNI4
 line 1541
 ;1541:	bestdist = 999999;
-ADDRLP4 80
+ADDRLP4 124
 CNSTF4 1232348144
 ASGNF4
 line 1542
@@ -7854,9 +8177,9 @@ line 1542
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $535
+ADDRGP4 $588
 JUMPV
-LABELV $532
+LABELV $585
 line 1543
 ;1543:		dist = BotNearestVisibleItem(bs, nearbyitems[i], &goal);
 ADDRFP4 0
@@ -7870,41 +8193,41 @@ ADDRLP4 8
 ADDP4
 INDIRP4
 ARGP4
-ADDRLP4 84
+ADDRLP4 128
 ARGP4
-ADDRLP4 420
+ADDRLP4 464
 ADDRGP4 BotNearestVisibleItem
 CALLF4
 ASGNF4
 ADDRLP4 4
-ADDRLP4 420
+ADDRLP4 464
 INDIRF4
 ASGNF4
 line 1544
 ;1544:		if (dist < bestdist) {
 ADDRLP4 4
 INDIRF4
-ADDRLP4 80
+ADDRLP4 124
 INDIRF4
-GEF4 $536
+GEF4 $589
 line 1545
 ;1545:			bestdist = dist;
-ADDRLP4 80
+ADDRLP4 124
 ADDRLP4 4
 INDIRF4
 ASGNF4
 line 1546
 ;1546:			bestitem = i;
-ADDRLP4 140
+ADDRLP4 184
 ADDRLP4 0
 INDIRI4
 ASGNI4
 line 1547
 ;1547:		}
-LABELV $536
+LABELV $589
 line 1548
 ;1548:	}
-LABELV $533
+LABELV $586
 line 1542
 ADDRLP4 0
 ADDRLP4 0
@@ -7912,7 +8235,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $535
+LABELV $588
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -7922,19 +8245,28 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $532
+NEU4 $585
 line 1549
 ;1549:	if (bestitem != -1) {
-ADDRLP4 140
+ADDRLP4 184
 INDIRI4
 CNSTI4 -1
-EQI4 $538
+EQI4 $591
 line 1550
 ;1550:		if (gametype == GT_CTF
+ADDRLP4 464
 ADDRGP4 gametype
 INDIRI4
+ASGNI4
+ADDRLP4 464
+INDIRI4
 CNSTI4 4
-NEI4 $540
+EQI4 $595
+ADDRLP4 464
+INDIRI4
+CNSTI4 5
+NEI4 $593
+LABELV $595
 line 1554
 ;1551:#ifdef MISSIONPACK
 ;1552:			|| gametype == GT_1FCTF
@@ -7942,17 +8274,17 @@ line 1554
 ;1554:			) {
 line 1555
 ;1555:			redtt = trap_AAS_AreaTravelTimeToGoalArea(bs->areanum, bs->origin, ctf_redflag.areanum, TFL_DEFAULT);
-ADDRLP4 420
+ADDRLP4 468
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 420
+ADDRLP4 468
 INDIRP4
 CNSTI4 4948
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 420
+ADDRLP4 468
 INDIRP4
 CNSTI4 4908
 ADDP4
@@ -7962,27 +8294,27 @@ INDIRI4
 ARGI4
 CNSTI4 18616254
 ARGI4
-ADDRLP4 424
+ADDRLP4 472
 ADDRGP4 trap_AAS_AreaTravelTimeToGoalArea
 CALLI4
 ASGNI4
-ADDRLP4 404
-ADDRLP4 424
+ADDRLP4 444
+ADDRLP4 472
 INDIRI4
 ASGNI4
 line 1556
 ;1556:			bluett = trap_AAS_AreaTravelTimeToGoalArea(bs->areanum, bs->origin, ctf_blueflag.areanum, TFL_DEFAULT);
-ADDRLP4 428
+ADDRLP4 476
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 428
+ADDRLP4 476
 INDIRP4
 CNSTI4 4948
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 428
+ADDRLP4 476
 INDIRP4
 CNSTI4 4908
 ADDP4
@@ -7992,40 +8324,40 @@ INDIRI4
 ARGI4
 CNSTI4 18616254
 ARGI4
-ADDRLP4 432
+ADDRLP4 480
 ADDRGP4 trap_AAS_AreaTravelTimeToGoalArea
 CALLI4
 ASGNI4
-ADDRLP4 408
-ADDRLP4 432
+ADDRLP4 448
+ADDRLP4 480
 INDIRI4
 ASGNI4
 line 1557
 ;1557:			if (redtt < (redtt + bluett) * 0.4) {
-ADDRLP4 436
-ADDRLP4 404
+ADDRLP4 484
+ADDRLP4 444
 INDIRI4
 ASGNI4
-ADDRLP4 436
+ADDRLP4 484
 INDIRI4
 CVIF4 4
 CNSTF4 1053609165
-ADDRLP4 436
+ADDRLP4 484
 INDIRI4
-ADDRLP4 408
+ADDRLP4 448
 INDIRI4
 ADDI4
 CVIF4 4
 MULF4
-GEF4 $544
+GEF4 $598
 line 1558
 ;1558:				BotAI_BotInitialChat(bs, "teamlocation", nearbyitems[bestitem], "red", NULL);
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $546
+ADDRGP4 $600
 ARGP4
-ADDRLP4 140
+ADDRLP4 184
 INDIRI4
 CNSTI4 2
 LSHI4
@@ -8033,7 +8365,7 @@ ADDRLP4 8
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $547
+ADDRGP4 $601
 ARGP4
 CNSTP4 0
 ARGP4
@@ -8042,35 +8374,35 @@ CALLV
 pop
 line 1559
 ;1559:			}
-ADDRGP4 $541
+ADDRGP4 $594
 JUMPV
-LABELV $544
+LABELV $598
 line 1560
 ;1560:			else if (bluett < (redtt + bluett) * 0.4) {
-ADDRLP4 440
-ADDRLP4 408
+ADDRLP4 488
+ADDRLP4 448
 INDIRI4
 ASGNI4
-ADDRLP4 440
+ADDRLP4 488
 INDIRI4
 CVIF4 4
 CNSTF4 1053609165
-ADDRLP4 404
+ADDRLP4 444
 INDIRI4
-ADDRLP4 440
+ADDRLP4 488
 INDIRI4
 ADDI4
 CVIF4 4
 MULF4
-GEF4 $548
+GEF4 $602
 line 1561
 ;1561:				BotAI_BotInitialChat(bs, "teamlocation", nearbyitems[bestitem], "blue", NULL);
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $546
+ADDRGP4 $600
 ARGP4
-ADDRLP4 140
+ADDRLP4 184
 INDIRI4
 CNSTI4 2
 LSHI4
@@ -8078,7 +8410,7 @@ ADDRLP4 8
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $550
+ADDRGP4 $604
 ARGP4
 CNSTP4 0
 ARGP4
@@ -8087,9 +8419,9 @@ CALLV
 pop
 line 1562
 ;1562:			}
-ADDRGP4 $541
+ADDRGP4 $594
 JUMPV
-LABELV $548
+LABELV $602
 line 1563
 ;1563:			else {
 line 1564
@@ -8097,9 +8429,9 @@ line 1564
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $551
+ADDRGP4 $605
 ARGP4
-ADDRLP4 140
+ADDRLP4 184
 INDIRI4
 CNSTI4 2
 LSHI4
@@ -8116,24 +8448,205 @@ line 1565
 ;1565:			}
 line 1566
 ;1566:		}
-ADDRGP4 $541
+ADDRGP4 $594
 JUMPV
-LABELV $540
-line 1582
+LABELV $593
+line 1568
 ;1567:#ifdef MISSIONPACK
 ;1568:		else if (gametype == GT_OBELISK || gametype == GT_HARVESTER) {
+ADDRLP4 468
+ADDRGP4 gametype
+INDIRI4
+ASGNI4
+ADDRLP4 468
+INDIRI4
+CNSTI4 6
+EQI4 $608
+ADDRLP4 468
+INDIRI4
+CNSTI4 7
+NEI4 $606
+LABELV $608
+line 1569
 ;1569:			redtt = trap_AAS_AreaTravelTimeToGoalArea(bs->areanum, bs->origin, redobelisk.areanum, TFL_DEFAULT);
+ADDRLP4 472
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 472
+INDIRP4
+CNSTI4 4948
+ADDP4
+INDIRI4
+ARGI4
+ADDRLP4 472
+INDIRP4
+CNSTI4 4908
+ADDP4
+ARGP4
+ADDRGP4 redobelisk+12
+INDIRI4
+ARGI4
+CNSTI4 18616254
+ARGI4
+ADDRLP4 476
+ADDRGP4 trap_AAS_AreaTravelTimeToGoalArea
+CALLI4
+ASGNI4
+ADDRLP4 444
+ADDRLP4 476
+INDIRI4
+ASGNI4
+line 1570
 ;1570:			bluett = trap_AAS_AreaTravelTimeToGoalArea(bs->areanum, bs->origin, blueobelisk.areanum, TFL_DEFAULT);
+ADDRLP4 480
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 480
+INDIRP4
+CNSTI4 4948
+ADDP4
+INDIRI4
+ARGI4
+ADDRLP4 480
+INDIRP4
+CNSTI4 4908
+ADDP4
+ARGP4
+ADDRGP4 blueobelisk+12
+INDIRI4
+ARGI4
+CNSTI4 18616254
+ARGI4
+ADDRLP4 484
+ADDRGP4 trap_AAS_AreaTravelTimeToGoalArea
+CALLI4
+ASGNI4
+ADDRLP4 448
+ADDRLP4 484
+INDIRI4
+ASGNI4
+line 1571
 ;1571:			if (redtt < (redtt + bluett) * 0.4) {
+ADDRLP4 488
+ADDRLP4 444
+INDIRI4
+ASGNI4
+ADDRLP4 488
+INDIRI4
+CVIF4 4
+CNSTF4 1053609165
+ADDRLP4 488
+INDIRI4
+ADDRLP4 448
+INDIRI4
+ADDI4
+CVIF4 4
+MULF4
+GEF4 $611
+line 1572
 ;1572:				BotAI_BotInitialChat(bs, "teamlocation", nearbyitems[bestitem], "red", NULL);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 $600
+ARGP4
+ADDRLP4 184
+INDIRI4
+CNSTI4 2
+LSHI4
+ADDRLP4 8
+ADDP4
+INDIRP4
+ARGP4
+ADDRGP4 $601
+ARGP4
+CNSTP4 0
+ARGP4
+ADDRGP4 BotAI_BotInitialChat
+CALLV
+pop
+line 1573
 ;1573:			}
+ADDRGP4 $607
+JUMPV
+LABELV $611
+line 1574
 ;1574:			else if (bluett < (redtt + bluett) * 0.4) {
+ADDRLP4 492
+ADDRLP4 448
+INDIRI4
+ASGNI4
+ADDRLP4 492
+INDIRI4
+CVIF4 4
+CNSTF4 1053609165
+ADDRLP4 444
+INDIRI4
+ADDRLP4 492
+INDIRI4
+ADDI4
+CVIF4 4
+MULF4
+GEF4 $613
+line 1575
 ;1575:				BotAI_BotInitialChat(bs, "teamlocation", nearbyitems[bestitem], "blue", NULL);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 $600
+ARGP4
+ADDRLP4 184
+INDIRI4
+CNSTI4 2
+LSHI4
+ADDRLP4 8
+ADDP4
+INDIRP4
+ARGP4
+ADDRGP4 $604
+ARGP4
+CNSTP4 0
+ARGP4
+ADDRGP4 BotAI_BotInitialChat
+CALLV
+pop
+line 1576
 ;1576:			}
+ADDRGP4 $607
+JUMPV
+LABELV $613
+line 1577
 ;1577:			else {
+line 1578
 ;1578:				BotAI_BotInitialChat(bs, "location", nearbyitems[bestitem], NULL);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 $605
+ARGP4
+ADDRLP4 184
+INDIRI4
+CNSTI4 2
+LSHI4
+ADDRLP4 8
+ADDP4
+INDIRP4
+ARGP4
+CNSTP4 0
+ARGP4
+ADDRGP4 BotAI_BotInitialChat
+CALLV
+pop
+line 1579
 ;1579:			}
+line 1580
 ;1580:		}
+ADDRGP4 $607
+JUMPV
+LABELV $606
+line 1582
 ;1581:#endif
 ;1582:		else {
 line 1583
@@ -8141,9 +8654,9 @@ line 1583
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $551
+ADDRGP4 $605
 ARGP4
-ADDRLP4 140
+ADDRLP4 184
 INDIRI4
 CNSTI4 2
 LSHI4
@@ -8158,7 +8671,8 @@ CALLV
 pop
 line 1584
 ;1584:		}
-LABELV $541
+LABELV $607
+LABELV $594
 line 1585
 ;1585:		trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
 ADDRFP4 4
@@ -8166,7 +8680,7 @@ INDIRP4
 ARGP4
 CNSTI4 0
 ARGI4
-ADDRLP4 144
+ADDRLP4 188
 ARGP4
 CNSTI4 256
 ARGI4
@@ -8175,14 +8689,14 @@ CALLV
 pop
 line 1586
 ;1586:		client = ClientFromName(netname);
-ADDRLP4 144
+ADDRLP4 188
 ARGP4
-ADDRLP4 420
+ADDRLP4 472
 ADDRGP4 ClientFromName
 CALLI4
 ASGNI4
-ADDRLP4 400
-ADDRLP4 420
+ADDRLP4 452
+ADDRLP4 472
 INDIRI4
 ASGNI4
 line 1587
@@ -8193,7 +8707,7 @@ CNSTI4 6532
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 400
+ADDRLP4 452
 INDIRI4
 ARGI4
 CNSTI4 2
@@ -8203,11 +8717,11 @@ CALLV
 pop
 line 1588
 ;1588:	}
-LABELV $538
+LABELV $591
 line 1589
 ;1589:}
-LABELV $509
-endproc BotMatch_WhereAreYou 444 20
+LABELV $551
+endproc BotMatch_WhereAreYou 496 20
 export BotMatch_LeadTheWay
 proc BotMatch_LeadTheWay 680 16
 line 1596
@@ -8231,10 +8745,10 @@ ASGNI4
 ADDRLP4 664
 INDIRI4
 CNSTI4 0
-NEI4 $553
-ADDRGP4 $552
+NEI4 $616
+ADDRGP4 $615
 JUMPV
-LABELV $553
+LABELV $616
 line 1603
 ;1602:	//if not addressed to this bot
 ;1603:	if (!BotAddressedToBot(bs, match)) return;
@@ -8251,10 +8765,10 @@ ASGNI4
 ADDRLP4 668
 INDIRI4
 CNSTI4 0
-NEI4 $555
-ADDRGP4 $552
+NEI4 $618
+ADDRGP4 $615
 JUMPV
-LABELV $555
+LABELV $618
 line 1605
 ;1604:	//if someone asks for someone else
 ;1605:	if (match->subtype & ST_SOMEONE) {
@@ -8266,7 +8780,7 @@ INDIRI4
 CNSTI4 2048
 BANDI4
 CNSTI4 0
-EQI4 $557
+EQI4 $620
 line 1607
 ;1606:		//get the team mate name
 ;1607:		trap_BotMatchVariable(match, TEAMMATE, teammate, sizeof(teammate));
@@ -8304,7 +8818,7 @@ INDIRP4
 CNSTI4 8
 ADDP4
 INDIRI4
-NEI4 $559
+NEI4 $622
 line 1611
 ;1611:			other = qfalse;
 ADDRLP4 656
@@ -8312,9 +8826,9 @@ CNSTI4 0
 ASGNI4
 line 1612
 ;1612:		}
-ADDRGP4 $558
+ADDRGP4 $621
 JUMPV
-LABELV $559
+LABELV $622
 line 1613
 ;1613:		else if (!BotSameTeam(bs, client)) {
 ADDRFP4 0
@@ -8330,13 +8844,13 @@ ASGNI4
 ADDRLP4 676
 INDIRI4
 CNSTI4 0
-NEI4 $561
+NEI4 $624
 line 1615
 ;1614:			//FIXME: say "I don't help the enemy"
 ;1615:			return;
-ADDRGP4 $552
+ADDRGP4 $615
 JUMPV
-LABELV $561
+LABELV $624
 line 1617
 ;1616:		}
 ;1617:		else {
@@ -8349,9 +8863,9 @@ line 1619
 ;1619:		}
 line 1620
 ;1620:	}
-ADDRGP4 $558
+ADDRGP4 $621
 JUMPV
-LABELV $557
+LABELV $620
 line 1621
 ;1621:	else {
 line 1623
@@ -8388,14 +8902,14 @@ CNSTI4 0
 ASGNI4
 line 1626
 ;1626:	}
-LABELV $558
+LABELV $621
 line 1628
 ;1627:	//if the bot doesn't know who to help (FindClientByName returned -1)
 ;1628:	if (client < 0) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-GEI4 $563
+GEI4 $626
 line 1629
 ;1629:		BotAI_BotInitialChat(bs, "whois", netname, NULL);
 ADDRFP4 0
@@ -8435,9 +8949,9 @@ CALLV
 pop
 line 1631
 ;1631:		return;
-ADDRGP4 $552
+ADDRGP4 $615
 JUMPV
-LABELV $563
+LABELV $626
 line 1634
 ;1632:	}
 ;1633:	//
@@ -8464,7 +8978,7 @@ line 1637
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $565
+EQI4 $628
 line 1638
 ;1638:		areanum = BotPointAreaNum(entinfo.origin);
 ADDRLP4 4+24
@@ -8482,7 +8996,7 @@ line 1639
 ADDRLP4 660
 INDIRI4
 CNSTI4 0
-EQI4 $568
+EQI4 $631
 line 1640
 ;1640:			bs->lead_teamgoal.entitynum = client;
 ADDRFP4 0
@@ -8552,10 +9066,10 @@ CNSTF4 1090519040
 ASGNF4
 line 1645
 ;1645:		}
-LABELV $568
+LABELV $631
 line 1646
 ;1646:	}
-LABELV $565
+LABELV $628
 line 1648
 ;1647:
 ;1648:	if (bs->teamgoal.entitynum < 0) {
@@ -8565,13 +9079,13 @@ CNSTI4 6664
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $571
+GEI4 $634
 line 1649
 ;1649:		if (other) BotAI_BotInitialChat(bs, "whereis", teammate, NULL);
 ADDRLP4 656
 INDIRI4
 CNSTI4 0
-EQI4 $573
+EQI4 $636
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -8584,9 +9098,9 @@ ARGP4
 ADDRGP4 BotAI_BotInitialChat
 CALLV
 pop
-ADDRGP4 $574
+ADDRGP4 $637
 JUMPV
-LABELV $573
+LABELV $636
 line 1650
 ;1650:		else BotAI_BotInitialChat(bs, "whereareyou", netname, NULL);
 ADDRFP4 0
@@ -8601,7 +9115,7 @@ ARGP4
 ADDRGP4 BotAI_BotInitialChat
 CALLV
 pop
-LABELV $574
+LABELV $637
 line 1651
 ;1651:		trap_BotEnterChat(bs->cs, bs->client, CHAT_TEAM);
 ADDRLP4 672
@@ -8627,9 +9141,9 @@ CALLV
 pop
 line 1652
 ;1652:		return;
-ADDRGP4 $552
+ADDRGP4 $615
 JUMPV
-LABELV $571
+LABELV $634
 line 1654
 ;1653:	}
 ;1654:	bs->lead_teammate = client;
@@ -8685,7 +9199,7 @@ NEGF4
 ASGNF4
 line 1658
 ;1658:}
-LABELV $552
+LABELV $615
 endproc BotMatch_LeadTheWay 680 16
 export BotMatch_Kill
 proc BotMatch_Kill 532 16
@@ -8710,10 +9224,10 @@ ASGNI4
 ADDRLP4 516
 INDIRI4
 CNSTI4 0
-NEI4 $576
-ADDRGP4 $575
+NEI4 $639
+ADDRGP4 $638
 JUMPV
-LABELV $576
+LABELV $639
 line 1672
 ;1671:	//if not addressed to this bot
 ;1672:	if (!BotAddressedToBot(bs, match)) return;
@@ -8730,10 +9244,10 @@ ASGNI4
 ADDRLP4 520
 INDIRI4
 CNSTI4 0
-NEI4 $578
-ADDRGP4 $575
+NEI4 $641
+ADDRGP4 $638
 JUMPV
-LABELV $578
+LABELV $641
 line 1674
 ;1673:
 ;1674:	trap_BotMatchVariable(match, ENEMY, enemy, sizeof(enemy));
@@ -8770,7 +9284,7 @@ line 1677
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-GEI4 $580
+GEI4 $643
 line 1678
 ;1678:		BotAI_BotInitialChat(bs, "whois", enemy, NULL);
 ADDRFP4 0
@@ -8829,9 +9343,9 @@ CALLV
 pop
 line 1682
 ;1682:		return;
-ADDRGP4 $575
+ADDRGP4 $638
 JUMPV
-LABELV $580
+LABELV $643
 line 1684
 ;1683:	}
 ;1684:	bs->teamgoal.entitynum = client;
@@ -8901,7 +9415,7 @@ line 1696
 ;1694:	BotPrintTeamGoal(bs);
 ;1695:#endif //DEBUG
 ;1696:}
-LABELV $575
+LABELV $638
 endproc BotMatch_Kill 532 16
 export BotMatch_CTF
 proc BotMatch_CTF 176 16
@@ -8921,7 +9435,7 @@ line 1707
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
-NEI4 $583
+NEI4 $646
 line 1708
 ;1708:		trap_BotMatchVariable(match, FLAG, flag, sizeof(flag));
 ADDRFP4 4
@@ -8946,12 +9460,12 @@ INDIRI4
 CNSTI4 4096
 BANDI4
 CNSTI4 0
-EQI4 $585
+EQI4 $648
 line 1710
 ;1710:			if (!Q_stricmp(flag, "red")) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $547
+ADDRGP4 $601
 ARGP4
 ADDRLP4 164
 ADDRGP4 Q_stricmp
@@ -8960,7 +9474,7 @@ ASGNI4
 ADDRLP4 164
 INDIRI4
 CNSTI4 0
-NEI4 $587
+NEI4 $650
 line 1711
 ;1711:				bs->redflagstatus = 1;
 ADDRFP4 0
@@ -8981,7 +9495,7 @@ ASGNI4
 ADDRLP4 168
 INDIRI4
 CNSTI4 2
-NEI4 $588
+NEI4 $651
 line 1713
 ;1713:					trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
 ADDRFP4 4
@@ -9015,9 +9529,9 @@ line 1715
 ;1715:				}
 line 1716
 ;1716:			}
-ADDRGP4 $588
+ADDRGP4 $651
 JUMPV
-LABELV $587
+LABELV $650
 line 1717
 ;1717:			else {
 line 1718
@@ -9040,7 +9554,7 @@ ASGNI4
 ADDRLP4 168
 INDIRI4
 CNSTI4 1
-NEI4 $591
+NEI4 $654
 line 1720
 ;1720:					trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
 ADDRFP4 4
@@ -9072,10 +9586,10 @@ INDIRI4
 ASGNI4
 line 1722
 ;1722:				}
-LABELV $591
+LABELV $654
 line 1723
 ;1723:			}
-LABELV $588
+LABELV $651
 line 1724
 ;1724:			bs->flagstatuschanged = 1;
 ADDRFP4 0
@@ -9095,9 +9609,9 @@ INDIRF4
 ASGNF4
 line 1726
 ;1726:		}
-ADDRGP4 $586
+ADDRGP4 $647
 JUMPV
-LABELV $585
+LABELV $648
 line 1727
 ;1727:		else if (match->subtype & ST_CAPTUREDFLAG) {
 ADDRFP4 4
@@ -9108,7 +9622,7 @@ INDIRI4
 CNSTI4 8192
 BANDI4
 CNSTI4 0
-EQI4 $593
+EQI4 $656
 line 1728
 ;1728:			bs->redflagstatus = 0;
 ADDRFP4 0
@@ -9143,9 +9657,9 @@ CNSTI4 1
 ASGNI4
 line 1732
 ;1732:		}
-ADDRGP4 $594
+ADDRGP4 $647
 JUMPV
-LABELV $593
+LABELV $656
 line 1733
 ;1733:		else if (match->subtype & ST_RETURNEDFLAG) {
 ADDRFP4 4
@@ -9156,12 +9670,12 @@ INDIRI4
 CNSTI4 16384
 BANDI4
 CNSTI4 0
-EQI4 $595
+EQI4 $647
 line 1734
 ;1734:			if (!Q_stricmp(flag, "red")) bs->redflagstatus = 0;
 ADDRLP4 0
 ARGP4
-ADDRGP4 $547
+ADDRGP4 $601
 ARGP4
 ADDRLP4 164
 ADDRGP4 Q_stricmp
@@ -9170,16 +9684,16 @@ ASGNI4
 ADDRLP4 164
 INDIRI4
 CNSTI4 0
-NEI4 $597
+NEI4 $660
 ADDRFP4 0
 INDIRP4
 CNSTI4 6952
 ADDP4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $598
+ADDRGP4 $661
 JUMPV
-LABELV $597
+LABELV $660
 line 1735
 ;1735:			else bs->blueflagstatus = 0;
 ADDRFP4 0
@@ -9188,7 +9702,7 @@ CNSTI4 6956
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $598
+LABELV $661
 line 1736
 ;1736:			bs->flagstatuschanged = 1;
 ADDRFP4 0
@@ -9199,23 +9713,69 @@ CNSTI4 1
 ASGNI4
 line 1737
 ;1737:		}
-LABELV $595
-LABELV $594
-LABELV $586
 line 1738
 ;1738:	}
-LABELV $583
-line 1747
+ADDRGP4 $647
+JUMPV
+LABELV $646
+line 1740
 ;1739:#ifdef MISSIONPACK
 ;1740:	else if (gametype == GT_1FCTF) {
+ADDRGP4 gametype
+INDIRI4
+CNSTI4 5
+NEI4 $662
+line 1741
 ;1741:		if (match->subtype & ST_1FCTFGOTFLAG) {
+ADDRFP4 4
+INDIRP4
+CNSTI4 260
+ADDP4
+INDIRI4
+CNSTI4 65535
+BANDI4
+CNSTI4 0
+EQI4 $664
+line 1742
 ;1742:			trap_BotMatchVariable(match, NETNAME, netname, sizeof(netname));
+ADDRFP4 4
+INDIRP4
+ARGP4
+CNSTI4 0
+ARGI4
+ADDRLP4 128
+ARGP4
+CNSTI4 36
+ARGI4
+ADDRGP4 trap_BotMatchVariable
+CALLV
+pop
+line 1743
 ;1743:			bs->flagcarrier = ClientFromName(netname);
+ADDRLP4 128
+ARGP4
+ADDRLP4 164
+ADDRGP4 ClientFromName
+CALLI4
+ASGNI4
+ADDRFP4 0
+INDIRP4
+CNSTI4 6972
+ADDP4
+ADDRLP4 164
+INDIRI4
+ASGNI4
+line 1744
 ;1744:		}
+LABELV $664
+line 1745
 ;1745:	}
+LABELV $662
+LABELV $647
+line 1747
 ;1746:#endif
 ;1747:}
-LABELV $582
+LABELV $645
 endproc BotMatch_CTF 176 16
 export BotMatch_EnterGame
 proc BotMatch_EnterGame 44 16
@@ -9256,7 +9816,7 @@ line 1755
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-LTI4 $600
+LTI4 $667
 line 1756
 ;1756:		notleader[client] = qfalse;
 ADDRLP4 36
@@ -9269,13 +9829,13 @@ CNSTI4 0
 ASGNI4
 line 1757
 ;1757:	}
-LABELV $600
+LABELV $667
 line 1761
 ;1758:	//NOTE: eliza chats will catch this
 ;1759:	//Com_sprintf(buf, sizeof(buf), "heya %s", netname);
 ;1760:	//EA_Say(bs->client, buf);
 ;1761:}
-LABELV $599
+LABELV $666
 endproc BotMatch_EnterGame 44 16
 export BotMatch_NewLeader
 proc BotMatch_NewLeader 48 16
@@ -9326,12 +9886,12 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
-NEI4 $603
+NEI4 $670
 line 1770
 ;1770:		return;
-ADDRGP4 $602
+ADDRGP4 $669
 JUMPV
-LABELV $603
+LABELV $670
 line 1771
 ;1771:	Q_strncpyz(bs->teamleader, netname, sizeof(bs->teamleader));
 ADDRFP4 0
@@ -9348,7 +9908,7 @@ CALLV
 pop
 line 1772
 ;1772:}
-LABELV $602
+LABELV $669
 endproc BotMatch_NewLeader 48 16
 export BotMatchMessage
 proc BotMatchMessage 336 12
@@ -9384,7 +9944,7 @@ ASGNI4
 ADDRLP4 328
 INDIRI4
 CNSTI4 0
-NEI4 $607
+NEI4 $674
 line 1786
 ;1785:											|MTCONTEXT_INITIALTEAMCHAT
 ;1786:											|MTCONTEXT_CTF)) {
@@ -9392,9 +9952,9 @@ line 1787
 ;1787:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $605
+ADDRGP4 $672
 JUMPV
-LABELV $607
+LABELV $674
 line 1790
 ;1788:	}
 ;1789:	//react to the found message
@@ -9406,66 +9966,66 @@ ASGNI4
 ADDRLP4 332
 INDIRI4
 CNSTI4 1
-LTI4 $609
+LTI4 $676
 ADDRLP4 332
 INDIRI4
 CNSTI4 33
-GTI4 $645
+GTI4 $714
 ADDRLP4 332
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $646-4
+ADDRGP4 $715-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $646
-address $641
-address $640
-address $612
-address $612
-address $613
-address $617
-address $616
-address $632
-address $633
-address $634
-address $610
-address $635
-address $622
-address $623
-address $626
-address $628
-address $629
-address $610
-address $631
-address $614
-address $625
-address $615
-address $638
-address $621
-address $639
-address $637
-address $618
-address $636
-address $624
-address $619
-address $609
-address $609
-address $643
+LABELV $715
+address $710
+address $709
+address $679
+address $679
+address $680
+address $686
+address $683
+address $701
+address $702
+address $703
+address $677
+address $704
+address $691
+address $692
+address $695
+address $697
+address $698
+address $677
+address $700
+address $681
+address $694
+address $682
+address $707
+address $690
+address $708
+address $706
+address $687
+address $705
+address $693
+address $688
+address $684
+address $685
+address $712
 code
-LABELV $645
+LABELV $714
 ADDRLP4 0+256
 INDIRI4
 CNSTI4 300
-EQI4 $620
-ADDRGP4 $609
+EQI4 $689
+ADDRGP4 $676
 JUMPV
 line 1791
 ;1791:	{
-LABELV $612
+LABELV $679
 line 1794
 ;1792:		case MSG_HELP:					//someone calling for help
 ;1793:		case MSG_ACCOMPANY:				//someone calling for company
@@ -9482,9 +10042,9 @@ CALLV
 pop
 line 1796
 ;1796:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $613
+LABELV $680
 line 1799
 ;1797:		}
 ;1798:		case MSG_DEFENDKEYAREA:			//teamplay defend a key area
@@ -9501,9 +10061,9 @@ CALLV
 pop
 line 1801
 ;1801:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $614
+LABELV $681
 line 1804
 ;1802:		}
 ;1803:		case MSG_CAMP:					//camp somewhere
@@ -9520,9 +10080,9 @@ CALLV
 pop
 line 1806
 ;1806:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $615
+LABELV $682
 line 1809
 ;1807:		}
 ;1808:		case MSG_PATROL:				//patrol between several key areas
@@ -9539,9 +10099,9 @@ CALLV
 pop
 line 1811
 ;1811:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $616
+LABELV $683
 line 1815
 ;1812:		}
 ;1813:		//CTF & 1FCTF
@@ -9559,23 +10119,51 @@ CALLV
 pop
 line 1817
 ;1817:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $617
-line 1835
+LABELV $684
+line 1822
 ;1818:		}
 ;1819:#ifdef MISSIONPACK
 ;1820:		//CTF & 1FCTF & Obelisk & Harvester
 ;1821:		case MSG_ATTACKENEMYBASE:
 ;1822:		{
+line 1823
 ;1823:			BotMatch_AttackEnemyBase(bs, &match);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 BotMatch_AttackEnemyBase
+CALLV
+pop
+line 1824
 ;1824:			break;
+ADDRGP4 $677
+JUMPV
+LABELV $685
+line 1828
 ;1825:		}
 ;1826:		//Harvester
 ;1827:		case MSG_HARVEST:
 ;1828:		{
+line 1829
 ;1829:			BotMatch_Harvest(bs, &match);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 BotMatch_Harvest
+CALLV
+pop
+line 1830
 ;1830:			break;
+ADDRGP4 $677
+JUMPV
+LABELV $686
+line 1835
 ;1831:		}
 ;1832:#endif
 ;1833:		//CTF & 1FCTF & Harvester
@@ -9593,9 +10181,9 @@ CALLV
 pop
 line 1837
 ;1837:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $618
+LABELV $687
 line 1841
 ;1838:		}
 ;1839:		//CTF & 1FCTF
@@ -9613,9 +10201,9 @@ CALLV
 pop
 line 1843
 ;1843:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $619
+LABELV $688
 line 1847
 ;1844:		}
 ;1845:		//CTF & 1FCTF & Obelisk & Harvester
@@ -9633,9 +10221,9 @@ CALLV
 pop
 line 1849
 ;1849:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $620
+LABELV $689
 line 1853
 ;1850:		}
 ;1851:		//CTF & 1FCTF
@@ -9653,9 +10241,9 @@ CALLV
 pop
 line 1855
 ;1855:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $621
+LABELV $690
 line 1858
 ;1856:		}
 ;1857:		case MSG_GETITEM:
@@ -9672,9 +10260,9 @@ CALLV
 pop
 line 1860
 ;1860:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $622
+LABELV $691
 line 1863
 ;1861:		}
 ;1862:		case MSG_JOINSUBTEAM:			//join a sub team
@@ -9691,9 +10279,9 @@ CALLV
 pop
 line 1865
 ;1865:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $623
+LABELV $692
 line 1868
 ;1866:		}
 ;1867:		case MSG_LEAVESUBTEAM:			//leave a sub team
@@ -9710,9 +10298,9 @@ CALLV
 pop
 line 1870
 ;1870:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $624
+LABELV $693
 line 1873
 ;1871:		}
 ;1872:		case MSG_WHICHTEAM:
@@ -9729,9 +10317,9 @@ CALLV
 pop
 line 1875
 ;1875:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $625
+LABELV $694
 line 1878
 ;1876:		}
 ;1877:		case MSG_CHECKPOINT:			//remember a check point
@@ -9748,9 +10336,9 @@ CALLV
 pop
 line 1880
 ;1880:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $626
+LABELV $695
 line 1883
 ;1881:		}
 ;1882:		case MSG_CREATENEWFORMATION:	//start the creation of a new formation
@@ -9763,16 +10351,16 @@ CNSTI4 8
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $627
+ADDRGP4 $696
 ARGP4
 ADDRGP4 trap_EA_SayTeam
 CALLV
 pop
 line 1885
 ;1885:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $628
+LABELV $697
 line 1888
 ;1886:		}
 ;1887:		case MSG_FORMATIONPOSITION:		//tell someone his/her position in the formation
@@ -9785,16 +10373,16 @@ CNSTI4 8
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $627
+ADDRGP4 $696
 ARGP4
 ADDRGP4 trap_EA_SayTeam
 CALLV
 pop
 line 1890
 ;1890:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $629
+LABELV $698
 line 1893
 ;1891:		}
 ;1892:		case MSG_FORMATIONSPACE:		//set the formation space
@@ -9811,7 +10399,7 @@ CALLV
 pop
 line 1895
 ;1895:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
 line 1898
 ;1896:		}
@@ -9819,7 +10407,7 @@ line 1898
 ;1898:		{
 line 1899
 ;1899:			break;
-LABELV $631
+LABELV $700
 line 1902
 ;1900:		}
 ;1901:		case MSG_DISMISS:				//dismiss someone
@@ -9836,9 +10424,9 @@ CALLV
 pop
 line 1904
 ;1904:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $632
+LABELV $701
 line 1907
 ;1905:		}
 ;1906:		case MSG_STARTTEAMLEADERSHIP:	//someone will become the team leader
@@ -9855,9 +10443,9 @@ CALLV
 pop
 line 1909
 ;1909:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $633
+LABELV $702
 line 1912
 ;1910:		}
 ;1911:		case MSG_STOPTEAMLEADERSHIP:	//someone will stop being the team leader
@@ -9874,9 +10462,9 @@ CALLV
 pop
 line 1914
 ;1914:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $634
+LABELV $703
 line 1917
 ;1915:		}
 ;1916:		case MSG_WHOISTEAMLAEDER:
@@ -9893,9 +10481,9 @@ CALLV
 pop
 line 1919
 ;1919:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $635
+LABELV $704
 line 1922
 ;1920:		}
 ;1921:		case MSG_WHATAREYOUDOING:		//ask a bot what he/she is doing
@@ -9912,9 +10500,9 @@ CALLV
 pop
 line 1924
 ;1924:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $636
+LABELV $705
 line 1927
 ;1925:		}
 ;1926:		case MSG_WHATISMYCOMMAND:
@@ -9931,9 +10519,9 @@ CALLV
 pop
 line 1929
 ;1929:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $637
+LABELV $706
 line 1932
 ;1930:		}
 ;1931:		case MSG_WHEREAREYOU:
@@ -9950,9 +10538,9 @@ CALLV
 pop
 line 1934
 ;1934:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $638
+LABELV $707
 line 1937
 ;1935:		}
 ;1936:		case MSG_LEADTHEWAY:
@@ -9969,9 +10557,9 @@ CALLV
 pop
 line 1939
 ;1939:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $639
+LABELV $708
 line 1942
 ;1940:		}
 ;1941:		case MSG_KILL:
@@ -9988,9 +10576,9 @@ CALLV
 pop
 line 1944
 ;1944:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $640
+LABELV $709
 line 1947
 ;1945:		}
 ;1946:		case MSG_ENTERGAME:				//someone entered the game
@@ -10007,9 +10595,9 @@ CALLV
 pop
 line 1949
 ;1949:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $641
+LABELV $710
 line 1952
 ;1950:		}
 ;1951:		case MSG_NEWLEADER:
@@ -10026,7 +10614,7 @@ CALLV
 pop
 line 1954
 ;1954:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
 line 1957
 ;1955:		}
@@ -10034,7 +10622,7 @@ line 1957
 ;1957:		{
 line 1958
 ;1958:			break;
-LABELV $643
+LABELV $712
 line 1961
 ;1959:		}
 ;1960:		case MSG_SUICIDE:
@@ -10051,9 +10639,9 @@ CALLV
 pop
 line 1963
 ;1963:			break;
-ADDRGP4 $610
+ADDRGP4 $677
 JUMPV
-LABELV $609
+LABELV $676
 line 1966
 ;1964:		}
 ;1965:		default:
@@ -10062,21 +10650,21 @@ line 1967
 ;1967:			BotAI_Print(PRT_MESSAGE, "unknown match type\n");
 CNSTI4 1
 ARGI4
-ADDRGP4 $644
+ADDRGP4 $713
 ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
 line 1968
 ;1968:			break;
-LABELV $610
+LABELV $677
 line 1971
 ;1969:		}
 ;1970:	}
 ;1971:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $605
+LABELV $672
 endproc BotMatchMessage 336 12
 import BotVoiceChatOnly
 import BotVoiceChat
@@ -10128,6 +10716,10 @@ import BotChat_EndLevel
 import BotChat_StartLevel
 import BotChat_ExitGame
 import BotChat_EnterGame
+import neutralobelisk
+import blueobelisk
+import redobelisk
+import ctf_neutralflag
 import ctf_blueflag
 import ctf_redflag
 import bot_challenge
@@ -10147,6 +10739,17 @@ import BotFindWayPoint
 import BotCreateWayPoint
 import BotAlternateRoute
 import BotGetAlternateRouteGoal
+import BotEnemyCubeCarrierVisible
+import BotTeamCubeCarrierVisible
+import BotHarvesterRetreatGoals
+import BotHarvesterSeekGoals
+import BotGoHarvest
+import BotObeliskRetreatGoals
+import BotObeliskSeekGoals
+import Bot1FCTFRetreatGoals
+import Bot1FCTFSeekGoals
+import BotHarvesterCarryingCubes
+import Bot1FCTFCarryingFlag
 import BotCTFRetreatGoals
 import BotCTFSeekGoals
 import BotRememberLastOrderedTask
@@ -10187,6 +10790,7 @@ import EasyClientName
 import ClientName
 import BotSetTeamStatus
 import BotSetUserInfo
+import EntityHasKamikaze
 import EntityIsShooting
 import EntityIsInvisible
 import EntityIsDead
@@ -10642,6 +11246,7 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
+import G_StartKamikaze
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -10676,10 +11281,14 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
+import DropPortalDestination
+import DropPortalSource
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
+import fire_prox
+import fire_nail
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -10692,6 +11301,7 @@ import fire_plasma
 import fire_blaster
 import G_RunMissile
 import TossClientCubes
+import TossClientPersistantPowerups
 import TossClientItems
 import body_die
 import G_InvulnerabilityEffect
@@ -10923,7 +11533,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $644
+LABELV $713
 byte 1 117
 byte 1 110
 byte 1 107
@@ -10945,7 +11555,7 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $627
+LABELV $696
 byte 1 116
 byte 1 104
 byte 1 101
@@ -11006,7 +11616,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $551
+LABELV $605
 byte 1 108
 byte 1 111
 byte 1 99
@@ -11017,20 +11627,20 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $550
+LABELV $604
 byte 1 98
 byte 1 108
 byte 1 117
 byte 1 101
 byte 1 0
 align 1
-LABELV $547
+LABELV $601
 byte 1 114
 byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $546
+LABELV $600
 byte 1 116
 byte 1 101
 byte 1 97
@@ -11045,7 +11655,145 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $527
+LABELV $580
+byte 1 78
+byte 1 101
+byte 1 117
+byte 1 116
+byte 1 114
+byte 1 97
+byte 1 108
+byte 1 32
+byte 1 79
+byte 1 98
+byte 1 101
+byte 1 108
+byte 1 105
+byte 1 115
+byte 1 107
+byte 1 0
+align 1
+LABELV $579
+byte 1 66
+byte 1 108
+byte 1 117
+byte 1 101
+byte 1 32
+byte 1 79
+byte 1 98
+byte 1 101
+byte 1 108
+byte 1 105
+byte 1 115
+byte 1 107
+byte 1 0
+align 1
+LABELV $578
+byte 1 82
+byte 1 101
+byte 1 100
+byte 1 32
+byte 1 79
+byte 1 98
+byte 1 101
+byte 1 108
+byte 1 105
+byte 1 115
+byte 1 107
+byte 1 0
+align 1
+LABELV $577
+byte 1 78
+byte 1 101
+byte 1 117
+byte 1 116
+byte 1 114
+byte 1 97
+byte 1 108
+byte 1 32
+byte 1 70
+byte 1 108
+byte 1 97
+byte 1 103
+byte 1 0
+align 1
+LABELV $576
+byte 1 65
+byte 1 109
+byte 1 109
+byte 1 111
+byte 1 32
+byte 1 82
+byte 1 101
+byte 1 103
+byte 1 101
+byte 1 110
+byte 1 0
+align 1
+LABELV $575
+byte 1 68
+byte 1 111
+byte 1 117
+byte 1 98
+byte 1 108
+byte 1 101
+byte 1 114
+byte 1 0
+align 1
+LABELV $574
+byte 1 71
+byte 1 117
+byte 1 97
+byte 1 114
+byte 1 100
+byte 1 0
+align 1
+LABELV $573
+byte 1 83
+byte 1 99
+byte 1 111
+byte 1 117
+byte 1 116
+byte 1 0
+align 1
+LABELV $572
+byte 1 67
+byte 1 104
+byte 1 97
+byte 1 105
+byte 1 110
+byte 1 103
+byte 1 117
+byte 1 110
+byte 1 0
+align 1
+LABELV $571
+byte 1 80
+byte 1 114
+byte 1 111
+byte 1 120
+byte 1 32
+byte 1 76
+byte 1 97
+byte 1 117
+byte 1 110
+byte 1 99
+byte 1 104
+byte 1 101
+byte 1 114
+byte 1 0
+align 1
+LABELV $570
+byte 1 78
+byte 1 97
+byte 1 105
+byte 1 108
+byte 1 103
+byte 1 117
+byte 1 110
+byte 1 0
+align 1
+LABELV $569
 byte 1 66
 byte 1 108
 byte 1 117
@@ -11057,7 +11805,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $526
+LABELV $568
 byte 1 82
 byte 1 101
 byte 1 100
@@ -11068,7 +11816,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $525
+LABELV $567
 byte 1 72
 byte 1 101
 byte 1 97
@@ -11082,7 +11830,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $524
+LABELV $566
 byte 1 65
 byte 1 114
 byte 1 109
@@ -11090,7 +11838,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $523
+LABELV $565
 byte 1 70
 byte 1 108
 byte 1 105
@@ -11099,7 +11847,7 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $522
+LABELV $564
 byte 1 73
 byte 1 110
 byte 1 118
@@ -11114,7 +11862,7 @@ byte 1 116
 byte 1 121
 byte 1 0
 align 1
-LABELV $521
+LABELV $563
 byte 1 83
 byte 1 112
 byte 1 101
@@ -11122,7 +11870,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $520
+LABELV $562
 byte 1 66
 byte 1 97
 byte 1 116
@@ -11136,7 +11884,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $519
+LABELV $561
 byte 1 82
 byte 1 101
 byte 1 103
@@ -11151,7 +11899,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $518
+LABELV $560
 byte 1 81
 byte 1 117
 byte 1 97
@@ -11165,7 +11913,7 @@ byte 1 103
 byte 1 101
 byte 1 0
 align 1
-LABELV $517
+LABELV $559
 byte 1 68
 byte 1 101
 byte 1 118
@@ -11178,7 +11926,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $516
+LABELV $558
 byte 1 70
 byte 1 108
 byte 1 97
@@ -11194,7 +11942,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $515
+LABELV $557
 byte 1 77
 byte 1 52
 byte 1 50
@@ -11212,7 +11960,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $514
+LABELV $556
 byte 1 71
 byte 1 97
 byte 1 116
@@ -11223,7 +11971,7 @@ byte 1 117
 byte 1 110
 byte 1 0
 align 1
-LABELV $513
+LABELV $555
 byte 1 83
 byte 1 105
 byte 1 110
@@ -11244,7 +11992,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $512
+LABELV $554
 byte 1 71
 byte 1 114
 byte 1 101
@@ -11263,7 +12011,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $511
+LABELV $553
 byte 1 83
 byte 1 104
 byte 1 111
@@ -11273,7 +12021,7 @@ byte 1 117
 byte 1 110
 byte 1 0
 align 1
-LABELV $487
+LABELV $529
 byte 1 114
 byte 1 111
 byte 1 97
@@ -11283,7 +12031,41 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $486
+LABELV $528
+byte 1 104
+byte 1 97
+byte 1 114
+byte 1 118
+byte 1 101
+byte 1 115
+byte 1 116
+byte 1 105
+byte 1 110
+byte 1 103
+byte 1 0
+align 1
+LABELV $526
+byte 1 97
+byte 1 116
+byte 1 116
+byte 1 97
+byte 1 99
+byte 1 107
+byte 1 105
+byte 1 110
+byte 1 103
+byte 1 101
+byte 1 110
+byte 1 101
+byte 1 109
+byte 1 121
+byte 1 98
+byte 1 97
+byte 1 115
+byte 1 101
+byte 1 0
+align 1
+LABELV $524
 byte 1 114
 byte 1 101
 byte 1 116
@@ -11299,7 +12081,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $484
+LABELV $522
 byte 1 114
 byte 1 117
 byte 1 115
@@ -11313,7 +12095,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $482
+LABELV $520
 byte 1 99
 byte 1 97
 byte 1 112
@@ -11329,7 +12111,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $480
+LABELV $518
 byte 1 112
 byte 1 97
 byte 1 116
@@ -11342,7 +12124,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $478
+LABELV $516
 byte 1 99
 byte 1 97
 byte 1 109
@@ -11352,7 +12134,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $476
+LABELV $514
 byte 1 107
 byte 1 105
 byte 1 108
@@ -11362,7 +12144,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $474
+LABELV $512
 byte 1 103
 byte 1 101
 byte 1 116
@@ -11376,7 +12158,7 @@ byte 1 101
 byte 1 109
 byte 1 0
 align 1
-LABELV $472
+LABELV $510
 byte 1 100
 byte 1 101
 byte 1 102
@@ -11388,7 +12170,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $470
+LABELV $508
 byte 1 97
 byte 1 99
 byte 1 99
@@ -11403,7 +12185,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $468
+LABELV $506
 byte 1 104
 byte 1 101
 byte 1 108
@@ -11413,7 +12195,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $460
+LABELV $498
 byte 1 73
 byte 1 39
 byte 1 109
@@ -11436,7 +12218,7 @@ byte 1 114
 byte 1 10
 byte 1 0
 align 1
-LABELV $438
+LABELV $476
 byte 1 116
 byte 1 97
 byte 1 117
@@ -11444,14 +12226,14 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $437
+LABELV $475
 byte 1 107
 byte 1 105
 byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $431
+LABELV $469
 byte 1 100
 byte 1 105
 byte 1 115
@@ -11463,7 +12245,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $415
+LABELV $453
 byte 1 99
 byte 1 104
 byte 1 101
@@ -11484,7 +12266,7 @@ byte 1 114
 byte 1 109
 byte 1 0
 align 1
-LABELV $414
+LABELV $452
 byte 1 37
 byte 1 49
 byte 1 46
@@ -11504,7 +12286,7 @@ byte 1 48
 byte 1 102
 byte 1 0
 align 1
-LABELV $403
+LABELV $441
 byte 1 99
 byte 1 104
 byte 1 101
@@ -11525,7 +12307,7 @@ byte 1 105
 byte 1 100
 byte 1 0
 align 1
-LABELV $395
+LABELV $433
 byte 1 37
 byte 1 102
 byte 1 32
@@ -11536,7 +12318,7 @@ byte 1 37
 byte 1 102
 byte 1 0
 align 1
-LABELV $389
+LABELV $427
 byte 1 110
 byte 1 111
 byte 1 116
@@ -11545,7 +12327,7 @@ byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $388
+LABELV $426
 byte 1 105
 byte 1 110
 byte 1 116
@@ -11554,10 +12336,10 @@ byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $380
+LABELV $418
 byte 1 0
 align 1
-LABELV $379
+LABELV $417
 byte 1 108
 byte 1 101
 byte 1 102
@@ -11568,7 +12350,7 @@ byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $371
+LABELV $409
 byte 1 106
 byte 1 111
 byte 1 105
@@ -11581,13 +12363,13 @@ byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $360
+LABELV $398
 byte 1 121
 byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $359
+LABELV $397
 byte 1 107
 byte 1 101
 byte 1 101

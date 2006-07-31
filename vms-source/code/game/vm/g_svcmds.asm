@@ -1383,7 +1383,7 @@ line 303
 ;302:
 ;303:	check = g_entities+1;
 ADDRLP4 0
-ADDRGP4 g_entities+860
+ADDRGP4 g_entities+868
 ASGNP4
 line 304
 ;304:	for (e = 1; e < level.num_entities ; e++, check++) {
@@ -1681,7 +1681,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 860
+CNSTI4 868
 ADDP4
 ASGNP4
 LABELV $187
@@ -1771,7 +1771,7 @@ line 371
 ;370:
 ;371:		cl = &level.clients[idnum];
 ADDRLP4 0
-CNSTI4 3392
+CNSTI4 3460
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -1828,7 +1828,7 @@ LABELV $236
 line 381
 ;381:		cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3392
+CNSTI4 3460
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1980,7 +1980,7 @@ CALLV
 pop
 line 415
 ;415:	SetTeam( &g_entities[cl - level.clients], str );
-CNSTI4 860
+CNSTI4 868
 ADDRLP4 1024
 INDIRP4
 CVPU4 4
@@ -1989,7 +1989,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3392
+CNSTI4 3460
 DIVI4
 MULI4
 ADDRGP4 g_entities
@@ -2704,6 +2704,7 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
+import G_StartKamikaze
 import FireWeapon2
 import FireWeapon
 import SpotWouldTelefrag
@@ -2735,10 +2736,14 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
+import DropPortalDestination
+import DropPortalSource
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
+import fire_prox
+import fire_nail
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -2751,6 +2756,7 @@ import fire_plasma
 import fire_blaster
 import G_RunMissile
 import TossClientCubes
+import TossClientPersistantPowerups
 import TossClientItems
 import body_die
 import G_InvulnerabilityEffect

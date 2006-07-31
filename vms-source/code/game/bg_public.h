@@ -195,7 +195,9 @@ typedef enum {
 	STAT_DEAD_YAW,					// look this direction when dead (FIXME: get rid of?)
 	STAT_CLIENTS_READY,				// bit mask of clients wishing to exit the intermission (FIXME: configstring?)
 	STAT_MAX_HEALTH					// health / armor limit, changable by handicap
+
 } statIndex_t;
+
 
 
 // player_state->persistant[] indexes
@@ -246,6 +248,10 @@ typedef enum {
 #define	EF_AWARD_ASSIST		0x00020000		// draw a assist sprite
 #define EF_AWARD_DENIED		0x00040000		// denied
 #define EF_TEAMVOTED		0x00080000		// already cast a team vote
+
+// Start Listing Holdables?
+//#define EF_TEAMVOTED		0x00080000		// already cast a team vote
+
 
 // NOTE: may not have more than 16
 typedef enum {

@@ -1294,7 +1294,7 @@ SUBF4
 MULF4
 ADDRFP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRF4
 MULF4
@@ -1352,7 +1352,7 @@ SUBF4
 MULF4
 ADDRFP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRF4
 MULF4
@@ -1625,7 +1625,7 @@ line 288
 ;288:	if ( !ent->random ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRF4
 CNSTF4 0
@@ -1634,7 +1634,7 @@ line 289
 ;289:		ent->random = 1.0;
 ADDRFP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 CNSTF4 1065353216
 ASGNF4
@@ -1646,7 +1646,7 @@ line 291
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 ASGNP4
 CNSTF4 1078530011
@@ -1780,6 +1780,1037 @@ line 322
 ;322:}
 LABELV $121
 endproc SP_shooter_grenade 0 8
+proc PortalDie 0 4
+line 326
+;323:
+;324:
+;325:#ifdef MISSIONPACK
+;326:static void PortalDie (gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod) {
+line 327
+;327:	G_FreeEntity( self );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 G_FreeEntity
+CALLV
+pop
+line 329
+;328:	//FIXME do something more interesting
+;329:}
+LABELV $122
+endproc PortalDie 0 4
+export DropPortalDestination
+proc DropPortalDestination 44 8
+line 332
+;330:
+;331:
+;332:void DropPortalDestination( gentity_t *player ) {
+line 337
+;333:	gentity_t	*ent;
+;334:	vec3_t		snapped;
+;335:
+;336:	// create the portal destination
+;337:	ent = G_Spawn();
+ADDRLP4 16
+ADDRGP4 G_Spawn
+CALLP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 16
+INDIRP4
+ASGNP4
+line 338
+;338:	ent->s.modelindex = G_ModelIndex( "models/powerups/teleporter/tele_exit.md3" );
+ADDRGP4 $124
+ARGP4
+ADDRLP4 20
+ADDRGP4 G_ModelIndex
+CALLI4
+ASGNI4
+ADDRLP4 0
+INDIRP4
+CNSTI4 160
+ADDP4
+ADDRLP4 20
+INDIRI4
+ASGNI4
+line 340
+;339:
+;340:	VectorCopy( player->s.pos.trBase, snapped );
+ADDRLP4 4
+ADDRFP4 0
+INDIRP4
+CNSTI4 24
+ADDP4
+INDIRB
+ASGNB 12
+line 341
+;341:	SnapVector( snapped );
+ADDRLP4 4
+INDIRF4
+ARGF4
+ADDRLP4 24
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 4
+ADDRLP4 24
+INDIRF4
+ASGNF4
+ADDRLP4 4+4
+INDIRF4
+ARGF4
+ADDRLP4 28
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 4+4
+ADDRLP4 28
+INDIRF4
+ASGNF4
+ADDRLP4 4+8
+INDIRF4
+ARGF4
+ADDRLP4 32
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 4+8
+ADDRLP4 32
+INDIRF4
+ASGNF4
+line 342
+;342:	G_SetOrigin( ent, snapped );
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 4
+ARGP4
+ADDRGP4 G_SetOrigin
+CALLV
+pop
+line 343
+;343:	VectorCopy( player->r.mins, ent->r.mins );
+ADDRLP4 24
+CNSTI4 436
+ASGNI4
+ADDRLP4 0
+INDIRP4
+ADDRLP4 24
+INDIRI4
+ADDP4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 24
+INDIRI4
+ADDP4
+INDIRB
+ASGNB 12
+line 344
+;344:	VectorCopy( player->r.maxs, ent->r.maxs );
+ADDRLP4 28
+CNSTI4 448
+ASGNI4
+ADDRLP4 0
+INDIRP4
+ADDRLP4 28
+INDIRI4
+ADDP4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 28
+INDIRI4
+ADDP4
+INDIRB
+ASGNB 12
+line 346
+;345:
+;346:	ent->classname = "hi_portal destination";
+ADDRLP4 0
+INDIRP4
+CNSTI4 524
+ADDP4
+ADDRGP4 $129
+ASGNP4
+line 347
+;347:	ent->s.pos.trType = TR_STATIONARY;
+ADDRLP4 0
+INDIRP4
+CNSTI4 12
+ADDP4
+CNSTI4 0
+ASGNI4
+line 349
+;348:
+;349:	ent->r.contents = CONTENTS_CORPSE;
+ADDRLP4 0
+INDIRP4
+CNSTI4 460
+ADDP4
+CNSTI4 67108864
+ASGNI4
+line 350
+;350:	ent->takedamage = qtrue;
+ADDRLP4 0
+INDIRP4
+CNSTI4 744
+ADDP4
+CNSTI4 1
+ASGNI4
+line 351
+;351:	ent->health = 200;
+ADDRLP4 0
+INDIRP4
+CNSTI4 740
+ADDP4
+CNSTI4 200
+ASGNI4
+line 352
+;352:	ent->die = PortalDie;
+ADDRLP4 0
+INDIRP4
+CNSTI4 724
+ADDP4
+ADDRGP4 PortalDie
+ASGNP4
+line 354
+;353:
+;354:	VectorCopy( player->s.apos.trBase, ent->s.angles );
+ADDRLP4 0
+INDIRP4
+CNSTI4 116
+ADDP4
+ADDRFP4 0
+INDIRP4
+CNSTI4 60
+ADDP4
+INDIRB
+ASGNB 12
+line 356
+;355:
+;356:	ent->think = G_FreeEntity;
+ADDRLP4 0
+INDIRP4
+CNSTI4 700
+ADDP4
+ADDRGP4 G_FreeEntity
+ASGNP4
+line 357
+;357:	ent->nextthink = level.time + 2 * 60 * 1000;
+ADDRLP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+ADDRGP4 level+32
+INDIRI4
+CNSTI4 120000
+ADDI4
+ASGNI4
+line 359
+;358:
+;359:	trap_LinkEntity( ent );
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRGP4 trap_LinkEntity
+CALLV
+pop
+line 361
+;360:
+;361:	player->client->portalID = ++level.portalSequence;
+ADDRLP4 32
+ADDRGP4 level+9216
+ASGNP4
+ADDRLP4 36
+ADDRLP4 32
+INDIRP4
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+ADDRLP4 32
+INDIRP4
+ADDRLP4 36
+INDIRI4
+ASGNI4
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 2656
+ADDP4
+ADDRLP4 36
+INDIRI4
+ASGNI4
+line 362
+;362:	ent->count = player->client->portalID;
+ADDRLP4 0
+INDIRP4
+CNSTI4 768
+ADDP4
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 2656
+ADDP4
+INDIRI4
+ASGNI4
+line 365
+;363:
+;364:	// give the item back so they can drop the source now
+;365:	player->client->ps.stats[STAT_HOLDABLE_ITEM] = BG_FindItem( "Portal" ) - bg_itemlist;
+ADDRGP4 $132
+ARGP4
+ADDRLP4 40
+ADDRGP4 BG_FindItem
+CALLP4
+ASGNP4
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 188
+ADDP4
+ADDRLP4 40
+INDIRP4
+CVPU4 4
+ADDRGP4 bg_itemlist
+CVPU4 4
+SUBU4
+CVUI4 4
+CNSTI4 52
+DIVI4
+ASGNI4
+line 366
+;366:}
+LABELV $123
+endproc DropPortalDestination 44 8
+proc PortalTouch 24 32
+line 369
+;367:
+;368:
+;369:static void PortalTouch( gentity_t *self, gentity_t *other, trace_t *trace) {
+line 373
+;370:	gentity_t	*destination;
+;371:
+;372:	// see if we will even let other try to use it
+;373:	if( other->health <= 0 ) {
+ADDRFP4 4
+INDIRP4
+CNSTI4 740
+ADDP4
+INDIRI4
+CNSTI4 0
+GTI4 $134
+line 374
+;374:		return;
+ADDRGP4 $133
+JUMPV
+LABELV $134
+line 376
+;375:	}
+;376:	if( !other->client ) {
+ADDRFP4 4
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+NEU4 $136
+line 377
+;377:		return;
+ADDRGP4 $133
+JUMPV
+LABELV $136
+line 383
+;378:	}
+;379://	if( other->client->ps.persistant[PERS_TEAM] != self->spawnflags ) {
+;380://		return;
+;381://	}
+;382:
+;383:	if ( other->client->ps.powerups[PW_NEUTRALFLAG] ) {		// only happens in One Flag CTF
+ADDRFP4 4
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 348
+ADDP4
+INDIRI4
+CNSTI4 0
+EQI4 $138
+line 384
+;384:		Drop_Item( other, BG_FindItemForPowerup( PW_NEUTRALFLAG ), 0 );
+CNSTI4 9
+ARGI4
+ADDRLP4 4
+ADDRGP4 BG_FindItemForPowerup
+CALLP4
+ASGNP4
+ADDRFP4 4
+INDIRP4
+ARGP4
+ADDRLP4 4
+INDIRP4
+ARGP4
+CNSTF4 0
+ARGF4
+ADDRGP4 Drop_Item
+CALLP4
+pop
+line 385
+;385:		other->client->ps.powerups[PW_NEUTRALFLAG] = 0;
+ADDRFP4 4
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 348
+ADDP4
+CNSTI4 0
+ASGNI4
+line 386
+;386:	}
+ADDRGP4 $139
+JUMPV
+LABELV $138
+line 387
+;387:	else if ( other->client->ps.powerups[PW_REDFLAG] ) {		// only happens in standard CTF
+ADDRFP4 4
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 340
+ADDP4
+INDIRI4
+CNSTI4 0
+EQI4 $140
+line 388
+;388:		Drop_Item( other, BG_FindItemForPowerup( PW_REDFLAG ), 0 );
+CNSTI4 7
+ARGI4
+ADDRLP4 4
+ADDRGP4 BG_FindItemForPowerup
+CALLP4
+ASGNP4
+ADDRFP4 4
+INDIRP4
+ARGP4
+ADDRLP4 4
+INDIRP4
+ARGP4
+CNSTF4 0
+ARGF4
+ADDRGP4 Drop_Item
+CALLP4
+pop
+line 389
+;389:		other->client->ps.powerups[PW_REDFLAG] = 0;
+ADDRFP4 4
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 340
+ADDP4
+CNSTI4 0
+ASGNI4
+line 390
+;390:	}
+ADDRGP4 $141
+JUMPV
+LABELV $140
+line 391
+;391:	else if ( other->client->ps.powerups[PW_BLUEFLAG] ) {	// only happens in standard CTF
+ADDRFP4 4
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 344
+ADDP4
+INDIRI4
+CNSTI4 0
+EQI4 $142
+line 392
+;392:		Drop_Item( other, BG_FindItemForPowerup( PW_BLUEFLAG ), 0 );
+CNSTI4 8
+ARGI4
+ADDRLP4 4
+ADDRGP4 BG_FindItemForPowerup
+CALLP4
+ASGNP4
+ADDRFP4 4
+INDIRP4
+ARGP4
+ADDRLP4 4
+INDIRP4
+ARGP4
+CNSTF4 0
+ARGF4
+ADDRGP4 Drop_Item
+CALLP4
+pop
+line 393
+;393:		other->client->ps.powerups[PW_BLUEFLAG] = 0;
+ADDRFP4 4
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 344
+ADDP4
+CNSTI4 0
+ASGNI4
+line 394
+;394:	}
+LABELV $142
+LABELV $141
+LABELV $139
+line 397
+;395:
+;396:	// find the destination
+;397:	destination = NULL;
+ADDRLP4 0
+CNSTP4 0
+ASGNP4
+ADDRGP4 $145
+JUMPV
+LABELV $144
+line 398
+;398:	while( (destination = G_Find(destination, FOFS(classname), "hi_portal destination")) != NULL ) {
+line 399
+;399:		if( destination->count == self->count ) {
+ADDRLP4 4
+CNSTI4 768
+ASGNI4
+ADDRLP4 0
+INDIRP4
+ADDRLP4 4
+INDIRI4
+ADDP4
+INDIRI4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 4
+INDIRI4
+ADDP4
+INDIRI4
+NEI4 $147
+line 400
+;400:			break;
+ADDRGP4 $146
+JUMPV
+LABELV $147
+line 402
+;401:		}
+;402:	}
+LABELV $145
+line 398
+ADDRLP4 0
+INDIRP4
+ARGP4
+CNSTI4 524
+ARGI4
+ADDRGP4 $129
+ARGP4
+ADDRLP4 4
+ADDRGP4 G_Find
+CALLP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+NEU4 $144
+LABELV $146
+line 405
+;403:
+;404:	// if there is not one, die!
+;405:	if( !destination ) {
+ADDRLP4 0
+INDIRP4
+CVPU4 4
+CNSTU4 0
+NEU4 $149
+line 406
+;406:		if( self->pos1[0] || self->pos1[1] || self->pos1[2] ) {
+ADDRLP4 8
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 12
+CNSTF4 0
+ASGNF4
+ADDRLP4 8
+INDIRP4
+CNSTI4 612
+ADDP4
+INDIRF4
+ADDRLP4 12
+INDIRF4
+NEF4 $154
+ADDRLP4 8
+INDIRP4
+CNSTI4 616
+ADDP4
+INDIRF4
+ADDRLP4 12
+INDIRF4
+NEF4 $154
+ADDRLP4 8
+INDIRP4
+CNSTI4 620
+ADDP4
+INDIRF4
+ADDRLP4 12
+INDIRF4
+EQF4 $151
+LABELV $154
+line 407
+;407:			TeleportPlayer( other, self->pos1, self->s.angles );
+ADDRFP4 4
+INDIRP4
+ARGP4
+ADDRLP4 16
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 16
+INDIRP4
+CNSTI4 612
+ADDP4
+ARGP4
+ADDRLP4 16
+INDIRP4
+CNSTI4 116
+ADDP4
+ARGP4
+ADDRGP4 TeleportPlayer
+CALLV
+pop
+line 408
+;408:		}
+LABELV $151
+line 409
+;409:		G_Damage( other, other, other, NULL, NULL, 100000, DAMAGE_NO_PROTECTION, MOD_TELEFRAG );
+ADDRLP4 16
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 16
+INDIRP4
+ARGP4
+ADDRLP4 16
+INDIRP4
+ARGP4
+ADDRLP4 16
+INDIRP4
+ARGP4
+ADDRLP4 20
+CNSTP4 0
+ASGNP4
+ADDRLP4 20
+INDIRP4
+ARGP4
+ADDRLP4 20
+INDIRP4
+ARGP4
+CNSTI4 100000
+ARGI4
+CNSTI4 8
+ARGI4
+CNSTI4 18
+ARGI4
+ADDRGP4 G_Damage
+CALLV
+pop
+line 410
+;410:		return;
+ADDRGP4 $133
+JUMPV
+LABELV $149
+line 413
+;411:	}
+;412:
+;413:	TeleportPlayer( other, destination->s.pos.trBase, destination->s.angles );
+ADDRFP4 4
+INDIRP4
+ARGP4
+ADDRLP4 0
+INDIRP4
+CNSTI4 24
+ADDP4
+ARGP4
+ADDRLP4 0
+INDIRP4
+CNSTI4 116
+ADDP4
+ARGP4
+ADDRGP4 TeleportPlayer
+CALLV
+pop
+line 414
+;414:}
+LABELV $133
+endproc PortalTouch 24 32
+proc PortalEnable 0 0
+line 417
+;415:
+;416:
+;417:static void PortalEnable( gentity_t *self ) {
+line 418
+;418:	self->touch = PortalTouch;
+ADDRFP4 0
+INDIRP4
+CNSTI4 712
+ADDP4
+ADDRGP4 PortalTouch
+ASGNP4
+line 419
+;419:	self->think = G_FreeEntity;
+ADDRFP4 0
+INDIRP4
+CNSTI4 700
+ADDP4
+ADDRGP4 G_FreeEntity
+ASGNP4
+line 420
+;420:	self->nextthink = level.time + 2 * 60 * 1000;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+ADDRGP4 level+32
+INDIRI4
+CNSTI4 120000
+ADDI4
+ASGNI4
+line 421
+;421:}
+LABELV $155
+endproc PortalEnable 0 0
+export DropPortalSource
+proc DropPortalSource 40 12
+line 424
+;422:
+;423:
+;424:void DropPortalSource( gentity_t *player ) {
+line 430
+;425:	gentity_t	*ent;
+;426:	gentity_t	*destination;
+;427:	vec3_t		snapped;
+;428:
+;429:	// create the portal source
+;430:	ent = G_Spawn();
+ADDRLP4 20
+ADDRGP4 G_Spawn
+CALLP4
+ASGNP4
+ADDRLP4 4
+ADDRLP4 20
+INDIRP4
+ASGNP4
+line 431
+;431:	ent->s.modelindex = G_ModelIndex( "models/powerups/teleporter/tele_enter.md3" );
+ADDRGP4 $158
+ARGP4
+ADDRLP4 24
+ADDRGP4 G_ModelIndex
+CALLI4
+ASGNI4
+ADDRLP4 4
+INDIRP4
+CNSTI4 160
+ADDP4
+ADDRLP4 24
+INDIRI4
+ASGNI4
+line 433
+;432:
+;433:	VectorCopy( player->s.pos.trBase, snapped );
+ADDRLP4 8
+ADDRFP4 0
+INDIRP4
+CNSTI4 24
+ADDP4
+INDIRB
+ASGNB 12
+line 434
+;434:	SnapVector( snapped );
+ADDRLP4 8
+INDIRF4
+ARGF4
+ADDRLP4 28
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 8
+ADDRLP4 28
+INDIRF4
+ASGNF4
+ADDRLP4 8+4
+INDIRF4
+ARGF4
+ADDRLP4 32
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 8+4
+ADDRLP4 32
+INDIRF4
+ASGNF4
+ADDRLP4 8+8
+INDIRF4
+ARGF4
+ADDRLP4 36
+ADDRGP4 tonextint
+CALLF4
+ASGNF4
+ADDRLP4 8+8
+ADDRLP4 36
+INDIRF4
+ASGNF4
+line 435
+;435:	G_SetOrigin( ent, snapped );
+ADDRLP4 4
+INDIRP4
+ARGP4
+ADDRLP4 8
+ARGP4
+ADDRGP4 G_SetOrigin
+CALLV
+pop
+line 436
+;436:	VectorCopy( player->r.mins, ent->r.mins );
+ADDRLP4 28
+CNSTI4 436
+ASGNI4
+ADDRLP4 4
+INDIRP4
+ADDRLP4 28
+INDIRI4
+ADDP4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 28
+INDIRI4
+ADDP4
+INDIRB
+ASGNB 12
+line 437
+;437:	VectorCopy( player->r.maxs, ent->r.maxs );
+ADDRLP4 32
+CNSTI4 448
+ASGNI4
+ADDRLP4 4
+INDIRP4
+ADDRLP4 32
+INDIRI4
+ADDP4
+ADDRFP4 0
+INDIRP4
+ADDRLP4 32
+INDIRI4
+ADDP4
+INDIRB
+ASGNB 12
+line 439
+;438:
+;439:	ent->classname = "hi_portal source";
+ADDRLP4 4
+INDIRP4
+CNSTI4 524
+ADDP4
+ADDRGP4 $163
+ASGNP4
+line 440
+;440:	ent->s.pos.trType = TR_STATIONARY;
+ADDRLP4 4
+INDIRP4
+CNSTI4 12
+ADDP4
+CNSTI4 0
+ASGNI4
+line 442
+;441:
+;442:	ent->r.contents = CONTENTS_CORPSE | CONTENTS_TRIGGER;
+ADDRLP4 4
+INDIRP4
+CNSTI4 460
+ADDP4
+CNSTI4 1140850688
+ASGNI4
+line 443
+;443:	ent->takedamage = qtrue;
+ADDRLP4 4
+INDIRP4
+CNSTI4 744
+ADDP4
+CNSTI4 1
+ASGNI4
+line 444
+;444:	ent->health = 200;
+ADDRLP4 4
+INDIRP4
+CNSTI4 740
+ADDP4
+CNSTI4 200
+ASGNI4
+line 445
+;445:	ent->die = PortalDie;
+ADDRLP4 4
+INDIRP4
+CNSTI4 724
+ADDP4
+ADDRGP4 PortalDie
+ASGNP4
+line 447
+;446:
+;447:	trap_LinkEntity( ent );
+ADDRLP4 4
+INDIRP4
+ARGP4
+ADDRGP4 trap_LinkEntity
+CALLV
+pop
+line 449
+;448:
+;449:	ent->count = player->client->portalID;
+ADDRLP4 4
+INDIRP4
+CNSTI4 768
+ADDP4
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 2656
+ADDP4
+INDIRI4
+ASGNI4
+line 450
+;450:	player->client->portalID = 0;
+ADDRFP4 0
+INDIRP4
+CNSTI4 516
+ADDP4
+INDIRP4
+CNSTI4 2656
+ADDP4
+CNSTI4 0
+ASGNI4
+line 454
+;451:
+;452://	ent->spawnflags = player->client->ps.persistant[PERS_TEAM];
+;453:
+;454:	ent->nextthink = level.time + 1000;
+ADDRLP4 4
+INDIRP4
+CNSTI4 688
+ADDP4
+ADDRGP4 level+32
+INDIRI4
+CNSTI4 1000
+ADDI4
+ASGNI4
+line 455
+;455:	ent->think = PortalEnable;
+ADDRLP4 4
+INDIRP4
+CNSTI4 700
+ADDP4
+ADDRGP4 PortalEnable
+ASGNP4
+line 458
+;456:
+;457:	// find the destination
+;458:	destination = NULL;
+ADDRLP4 0
+CNSTP4 0
+ASGNP4
+ADDRGP4 $166
+JUMPV
+LABELV $165
+line 459
+;459:	while( (destination = G_Find(destination, FOFS(classname), "hi_portal destination")) != NULL ) {
+line 460
+;460:		if( destination->count == ent->count ) {
+ADDRLP4 36
+CNSTI4 768
+ASGNI4
+ADDRLP4 0
+INDIRP4
+ADDRLP4 36
+INDIRI4
+ADDP4
+INDIRI4
+ADDRLP4 4
+INDIRP4
+ADDRLP4 36
+INDIRI4
+ADDP4
+INDIRI4
+NEI4 $168
+line 461
+;461:			VectorCopy( destination->s.pos.trBase, ent->pos1 );
+ADDRLP4 4
+INDIRP4
+CNSTI4 612
+ADDP4
+ADDRLP4 0
+INDIRP4
+CNSTI4 24
+ADDP4
+INDIRB
+ASGNB 12
+line 462
+;462:			break;
+ADDRGP4 $167
+JUMPV
+LABELV $168
+line 464
+;463:		}
+;464:	}
+LABELV $166
+line 459
+ADDRLP4 0
+INDIRP4
+ARGP4
+CNSTI4 524
+ARGI4
+ADDRGP4 $129
+ARGP4
+ADDRLP4 36
+ADDRGP4 G_Find
+CALLP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 36
+INDIRP4
+ASGNP4
+ADDRLP4 36
+INDIRP4
+CVPU4 4
+CNSTU4 0
+NEU4 $165
+LABELV $167
+line 466
+;465:
+;466:}
+LABELV $157
+endproc DropPortalSource 40 12
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible
@@ -2095,6 +3126,7 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
+import G_StartKamikaze
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -2132,6 +3164,8 @@ import LogAccuracyHit
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
+import fire_prox
+import fire_nail
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -2144,6 +3178,7 @@ import fire_plasma
 import fire_blaster
 import G_RunMissile
 import TossClientCubes
+import TossClientPersistantPowerups
 import TossClientItems
 import body_die
 import G_InvulnerabilityEffect
@@ -2374,6 +3409,145 @@ import rand
 import srand
 import qsort
 lit
+align 1
+LABELV $163
+byte 1 104
+byte 1 105
+byte 1 95
+byte 1 112
+byte 1 111
+byte 1 114
+byte 1 116
+byte 1 97
+byte 1 108
+byte 1 32
+byte 1 115
+byte 1 111
+byte 1 117
+byte 1 114
+byte 1 99
+byte 1 101
+byte 1 0
+align 1
+LABELV $158
+byte 1 109
+byte 1 111
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 115
+byte 1 47
+byte 1 112
+byte 1 111
+byte 1 119
+byte 1 101
+byte 1 114
+byte 1 117
+byte 1 112
+byte 1 115
+byte 1 47
+byte 1 116
+byte 1 101
+byte 1 108
+byte 1 101
+byte 1 112
+byte 1 111
+byte 1 114
+byte 1 116
+byte 1 101
+byte 1 114
+byte 1 47
+byte 1 116
+byte 1 101
+byte 1 108
+byte 1 101
+byte 1 95
+byte 1 101
+byte 1 110
+byte 1 116
+byte 1 101
+byte 1 114
+byte 1 46
+byte 1 109
+byte 1 100
+byte 1 51
+byte 1 0
+align 1
+LABELV $132
+byte 1 80
+byte 1 111
+byte 1 114
+byte 1 116
+byte 1 97
+byte 1 108
+byte 1 0
+align 1
+LABELV $129
+byte 1 104
+byte 1 105
+byte 1 95
+byte 1 112
+byte 1 111
+byte 1 114
+byte 1 116
+byte 1 97
+byte 1 108
+byte 1 32
+byte 1 100
+byte 1 101
+byte 1 115
+byte 1 116
+byte 1 105
+byte 1 110
+byte 1 97
+byte 1 116
+byte 1 105
+byte 1 111
+byte 1 110
+byte 1 0
+align 1
+LABELV $124
+byte 1 109
+byte 1 111
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 115
+byte 1 47
+byte 1 112
+byte 1 111
+byte 1 119
+byte 1 101
+byte 1 114
+byte 1 117
+byte 1 112
+byte 1 115
+byte 1 47
+byte 1 116
+byte 1 101
+byte 1 108
+byte 1 101
+byte 1 112
+byte 1 111
+byte 1 114
+byte 1 116
+byte 1 101
+byte 1 114
+byte 1 47
+byte 1 116
+byte 1 101
+byte 1 108
+byte 1 101
+byte 1 95
+byte 1 101
+byte 1 120
+byte 1 105
+byte 1 116
+byte 1 46
+byte 1 109
+byte 1 100
+byte 1 51
+byte 1 0
 align 1
 LABELV $88
 byte 1 48
