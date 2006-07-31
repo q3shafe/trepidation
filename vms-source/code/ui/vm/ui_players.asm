@@ -48,7 +48,7 @@ ADDP4
 ADDRFP4 4
 INDIRI4
 ASGNI4
-LABELV $88
+LABELV $90
 line 40
 ;39:tryagain:
 ;40:	pi->realWeapon = weaponNum;
@@ -89,12 +89,12 @@ line 45
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $89
+NEI4 $91
 line 46
 ;46:		return;
-ADDRGP4 $87
+ADDRGP4 $89
 JUMPV
-LABELV $89
+LABELV $91
 line 49
 ;47:	}
 ;48:
@@ -102,9 +102,9 @@ line 49
 ADDRLP4 0
 ADDRGP4 bg_itemlist+52
 ASGNP4
-ADDRGP4 $94
+ADDRGP4 $96
 JUMPV
-LABELV $91
+LABELV $93
 line 50
 ;50:		if ( item->giType != IT_WEAPON ) {
 ADDRLP4 0
@@ -113,12 +113,12 @@ CNSTI4 36
 ADDP4
 INDIRI4
 CNSTI4 1
-EQI4 $96
+EQI4 $98
 line 51
 ;51:			continue;
-ADDRGP4 $92
+ADDRGP4 $94
 JUMPV
-LABELV $96
+LABELV $98
 line 53
 ;52:		}
 ;53:		if ( item->giTag == weaponNum ) {
@@ -129,16 +129,16 @@ ADDP4
 INDIRI4
 ADDRFP4 4
 INDIRI4
-NEI4 $98
+NEI4 $100
 line 54
 ;54:			break;
-ADDRGP4 $93
+ADDRGP4 $95
 JUMPV
-LABELV $98
+LABELV $100
 line 56
 ;55:		}
 ;56:	}
-LABELV $92
+LABELV $94
 line 49
 ADDRLP4 0
 ADDRLP4 0
@@ -146,14 +146,14 @@ INDIRP4
 CNSTI4 52
 ADDP4
 ASGNP4
-LABELV $94
+LABELV $96
 ADDRLP4 0
 INDIRP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $91
-LABELV $93
+NEU4 $93
+LABELV $95
 line 58
 ;57:
 ;58:	if ( item->classname ) {
@@ -162,7 +162,7 @@ INDIRP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $100
+EQU4 $102
 line 59
 ;59:		pi->weaponModel = trap_R_RegisterModel( item->world_model[0] );
 ADDRLP4 0
@@ -184,7 +184,7 @@ INDIRI4
 ASGNI4
 line 60
 ;60:	}
-LABELV $100
+LABELV $102
 line 62
 ;61:
 ;62:	if( pi->weaponModel == 0 ) {
@@ -194,13 +194,13 @@ CNSTI4 1156
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $102
+NEI4 $104
 line 63
 ;63:		if( weaponNum == WP_MACHINEGUN ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 2
-NEI4 $104
+NEI4 $106
 line 64
 ;64:			weaponNum = WP_NONE;
 ADDRFP4 4
@@ -208,9 +208,9 @@ CNSTI4 0
 ASGNI4
 line 65
 ;65:			goto tryagain;
-ADDRGP4 $88
+ADDRGP4 $90
 JUMPV
-LABELV $104
+LABELV $106
 line 67
 ;66:		}
 ;67:		weaponNum = WP_MACHINEGUN;
@@ -219,9 +219,9 @@ CNSTI4 2
 ASGNI4
 line 68
 ;68:		goto tryagain;
-ADDRGP4 $88
+ADDRGP4 $90
 JUMPV
-LABELV $102
+LABELV $104
 line 71
 ;69:	}
 ;70:
@@ -233,16 +233,16 @@ ASGNI4
 ADDRLP4 68
 INDIRI4
 CNSTI4 2
-EQI4 $109
+EQI4 $111
 ADDRLP4 68
 INDIRI4
 CNSTI4 1
-EQI4 $109
+EQI4 $111
 ADDRLP4 68
 INDIRI4
 CNSTI4 9
-NEI4 $106
-LABELV $109
+NEI4 $108
+LABELV $111
 line 72
 ;72:		strcpy( path, item->world_model[0] );
 ADDRLP4 4
@@ -269,7 +269,7 @@ line 74
 ;74:		strcat( path, "_barrel.md3" );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $110
+ADDRGP4 $112
 ARGP4
 ADDRGP4 strcat
 CALLP4
@@ -291,7 +291,7 @@ INDIRI4
 ASGNI4
 line 76
 ;76:	}
-LABELV $106
+LABELV $108
 line 78
 ;77:
 ;78:	strcpy( path, item->world_model[0] );
@@ -319,7 +319,7 @@ line 80
 ;80:	strcat( path, "_flash.md3" );
 ADDRLP4 4
 ARGP4
-ADDRGP4 $111
+ADDRGP4 $113
 ARGP4
 ADDRGP4 strcat
 CALLP4
@@ -349,24 +349,22 @@ ASGNI4
 ADDRLP4 76
 INDIRI4
 CNSTI4 1
-LTI4 $112
+LTI4 $114
 ADDRLP4 76
 INDIRI4
 CNSTI4 10
-GTI4 $112
+GTI4 $114
 ADDRLP4 76
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $125-4
+ADDRGP4 $127-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $125
-address $115
-address $116
+LABELV $127
 address $117
 address $118
 address $119
@@ -375,8 +373,10 @@ address $121
 address $122
 address $123
 address $124
+address $125
+address $126
 code
-LABELV $115
+LABELV $117
 line 85
 ;84:	case WP_GAUNTLET:
 ;85:		MAKERGB( pi->flashDlightColor, 0.6f, 0.6f, 1 );
@@ -400,9 +400,9 @@ CNSTF4 1065353216
 ASGNF4
 line 86
 ;86:		break;
-ADDRGP4 $113
+ADDRGP4 $115
 JUMPV
-LABELV $116
+LABELV $118
 line 89
 ;87:
 ;88:	case WP_MACHINEGUN:
@@ -427,9 +427,9 @@ CNSTF4 0
 ASGNF4
 line 90
 ;90:		break;
-ADDRGP4 $113
+ADDRGP4 $115
 JUMPV
-LABELV $117
+LABELV $119
 line 93
 ;91:
 ;92:	case WP_SHOTGUN:
@@ -454,9 +454,9 @@ CNSTF4 0
 ASGNF4
 line 94
 ;94:		break;
-ADDRGP4 $113
+ADDRGP4 $115
 JUMPV
-LABELV $118
+LABELV $120
 line 97
 ;95:
 ;96:	case WP_GRENADE_LAUNCHER:
@@ -481,9 +481,9 @@ CNSTF4 1056964608
 ASGNF4
 line 98
 ;98:		break;
-ADDRGP4 $113
+ADDRGP4 $115
 JUMPV
-LABELV $119
+LABELV $121
 line 101
 ;99:
 ;100:	case WP_ROCKET_LAUNCHER:
@@ -508,9 +508,9 @@ CNSTF4 0
 ASGNF4
 line 102
 ;102:		break;
-ADDRGP4 $113
+ADDRGP4 $115
 JUMPV
-LABELV $120
+LABELV $122
 line 105
 ;103:
 ;104:	case WP_LIGHTNING:
@@ -535,9 +535,9 @@ CNSTF4 1065353216
 ASGNF4
 line 106
 ;106:		break;
-ADDRGP4 $113
+ADDRGP4 $115
 JUMPV
-LABELV $121
+LABELV $123
 line 109
 ;107:
 ;108:	case WP_RAILGUN:
@@ -562,9 +562,9 @@ CNSTF4 0
 ASGNF4
 line 110
 ;110:		break;
-ADDRGP4 $113
+ADDRGP4 $115
 JUMPV
-LABELV $122
+LABELV $124
 line 113
 ;111:
 ;112:	case WP_PLASMAGUN:
@@ -589,9 +589,9 @@ CNSTF4 1065353216
 ASGNF4
 line 114
 ;114:		break;
-ADDRGP4 $113
+ADDRGP4 $115
 JUMPV
-LABELV $123
+LABELV $125
 line 117
 ;115:
 ;116:	case WP_BFG:
@@ -616,9 +616,9 @@ CNSTF4 1065353216
 ASGNF4
 line 118
 ;118:		break;
-ADDRGP4 $113
+ADDRGP4 $115
 JUMPV
-LABELV $124
+LABELV $126
 line 121
 ;119:
 ;120:	case WP_GRAPPLING_HOOK:
@@ -643,9 +643,9 @@ CNSTF4 1065353216
 ASGNF4
 line 122
 ;122:		break;
-ADDRGP4 $113
+ADDRGP4 $115
 JUMPV
-LABELV $112
+LABELV $114
 line 125
 ;123:
 ;124:	default:
@@ -670,11 +670,11 @@ CNSTF4 1065353216
 ASGNF4
 line 126
 ;126:		break;
-LABELV $113
+LABELV $115
 line 128
 ;127:	}
 ;128:}
-LABELV $87
+LABELV $89
 endproc UI_PlayerInfo_SetWeapon 84 8
 proc UI_ForceLegsAnim 8 0
 line 136
@@ -718,7 +718,7 @@ line 139
 ADDRFP4 4
 INDIRI4
 CNSTI4 18
-NEI4 $128
+NEI4 $130
 line 140
 ;140:		pi->legsAnimationTimer = UI_TIMER_JUMP;
 ADDRFP4 0
@@ -729,10 +729,10 @@ CNSTI4 1000
 ASGNI4
 line 141
 ;141:	}
-LABELV $128
+LABELV $130
 line 142
 ;142:}
-LABELV $127
+LABELV $129
 endproc UI_ForceLegsAnim 8 0
 proc UI_SetLegsAnim 0 8
 line 150
@@ -752,7 +752,7 @@ CNSTI4 1236
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $131
+EQI4 $133
 line 152
 ;152:		anim = pi->pendingLegsAnim;
 ADDRFP4 4
@@ -772,7 +772,7 @@ CNSTI4 0
 ASGNI4
 line 154
 ;154:	}
-LABELV $131
+LABELV $133
 line 155
 ;155:	UI_ForceLegsAnim( pi, anim );
 ADDRFP4 0
@@ -786,7 +786,7 @@ CALLV
 pop
 line 156
 ;156:}
-LABELV $130
+LABELV $132
 endproc UI_SetLegsAnim 0 8
 proc UI_ForceTorsoAnim 12 0
 line 164
@@ -830,7 +830,7 @@ line 167
 ADDRFP4 4
 INDIRI4
 CNSTI4 6
-NEI4 $134
+NEI4 $136
 line 168
 ;168:		pi->torsoAnimationTimer = UI_TIMER_GESTURE;
 ADDRFP4 0
@@ -841,7 +841,7 @@ CNSTI4 2300
 ASGNI4
 line 169
 ;169:	}
-LABELV $134
+LABELV $136
 line 171
 ;170:
 ;171:	if ( anim == TORSO_ATTACK || anim == TORSO_ATTACK2 ) {
@@ -852,12 +852,12 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 7
-EQI4 $138
+EQI4 $140
 ADDRLP4 8
 INDIRI4
 CNSTI4 8
-NEI4 $136
-LABELV $138
+NEI4 $138
+LABELV $140
 line 172
 ;172:		pi->torsoAnimationTimer = UI_TIMER_ATTACK;
 ADDRFP4 0
@@ -868,10 +868,10 @@ CNSTI4 500
 ASGNI4
 line 173
 ;173:	}
-LABELV $136
+LABELV $138
 line 174
 ;174:}
-LABELV $133
+LABELV $135
 endproc UI_ForceTorsoAnim 12 0
 proc UI_SetTorsoAnim 0 8
 line 182
@@ -891,7 +891,7 @@ CNSTI4 1244
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $140
+EQI4 $142
 line 184
 ;184:		anim = pi->pendingTorsoAnim;
 ADDRFP4 4
@@ -911,7 +911,7 @@ CNSTI4 0
 ASGNI4
 line 186
 ;186:	}
-LABELV $140
+LABELV $142
 line 188
 ;187:
 ;188:	UI_ForceTorsoAnim( pi, anim );
@@ -926,7 +926,7 @@ CALLV
 pop
 line 189
 ;189:}
-LABELV $139
+LABELV $141
 endproc UI_SetTorsoAnim 0 8
 proc UI_TorsoSequencing 16 8
 line 197
@@ -968,13 +968,13 @@ INDIRP4
 CNSTI4 1208
 ADDP4
 INDIRI4
-EQI4 $143
+EQI4 $145
 line 203
 ;203:		if ( currentAnim != TORSO_DROP ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 9
-EQI4 $145
+EQI4 $147
 line 204
 ;204:			pi->torsoAnimationTimer = UI_TIMER_WEAPON_SWITCH;
 ADDRFP4 0
@@ -995,10 +995,10 @@ CALLV
 pop
 line 206
 ;206:		}
-LABELV $145
+LABELV $147
 line 207
 ;207:	}
-LABELV $143
+LABELV $145
 line 209
 ;208:
 ;209:	if ( pi->torsoAnimationTimer > 0 ) {
@@ -1008,12 +1008,12 @@ CNSTI4 1240
 ADDP4
 INDIRI4
 CNSTI4 0
-LEI4 $147
+LEI4 $149
 line 210
 ;210:		return;
-ADDRGP4 $142
+ADDRGP4 $144
 JUMPV
-LABELV $147
+LABELV $149
 line 213
 ;211:	}
 ;212:
@@ -1021,7 +1021,7 @@ line 213
 ADDRLP4 0
 INDIRI4
 CNSTI4 6
-NEI4 $149
+NEI4 $151
 line 214
 ;214:		UI_SetTorsoAnim( pi, TORSO_STAND );
 ADDRFP4 0
@@ -1034,9 +1034,9 @@ CALLV
 pop
 line 215
 ;215:		return;
-ADDRGP4 $142
+ADDRGP4 $144
 JUMPV
-LABELV $149
+LABELV $151
 line 218
 ;216:	}
 ;217:
@@ -1044,12 +1044,12 @@ line 218
 ADDRLP4 0
 INDIRI4
 CNSTI4 7
-EQI4 $153
+EQI4 $155
 ADDRLP4 0
 INDIRI4
 CNSTI4 8
-NEI4 $151
-LABELV $153
+NEI4 $153
+LABELV $155
 line 219
 ;219:		UI_SetTorsoAnim( pi, TORSO_STAND );
 ADDRFP4 0
@@ -1062,9 +1062,9 @@ CALLV
 pop
 line 220
 ;220:		return;
-ADDRGP4 $142
+ADDRGP4 $144
 JUMPV
-LABELV $151
+LABELV $153
 line 223
 ;221:	}
 ;222:
@@ -1072,7 +1072,7 @@ line 223
 ADDRLP4 0
 INDIRI4
 CNSTI4 9
-NEI4 $154
+NEI4 $156
 line 224
 ;224:		UI_PlayerInfo_SetWeapon( pi, pi->weapon );
 ADDRLP4 12
@@ -1111,9 +1111,9 @@ CALLV
 pop
 line 227
 ;227:		return;
-ADDRGP4 $142
+ADDRGP4 $144
 JUMPV
-LABELV $154
+LABELV $156
 line 230
 ;228:	}
 ;229:
@@ -1121,7 +1121,7 @@ line 230
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-NEI4 $156
+NEI4 $158
 line 231
 ;231:		UI_SetTorsoAnim( pi, TORSO_STAND );
 ADDRFP4 0
@@ -1134,11 +1134,11 @@ CALLV
 pop
 line 232
 ;232:		return;
-LABELV $156
+LABELV $158
 line 234
 ;233:	}
 ;234:}
-LABELV $142
+LABELV $144
 endproc UI_TorsoSequencing 16 8
 proc UI_LegsSequencing 8 8
 line 242
@@ -1172,13 +1172,13 @@ CNSTI4 1248
 ADDP4
 INDIRI4
 CNSTI4 0
-LEI4 $159
+LEI4 $161
 line 248
 ;248:		if ( currentAnim == LEGS_JUMP ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 18
-NEI4 $158
+NEI4 $160
 line 249
 ;249:			jumpHeight = JUMP_HEIGHT * sin( M_PI * ( UI_TIMER_JUMP - pi->legsAnimationTimer ) / UI_TIMER_JUMP );
 CNSTF4 1078530011
@@ -1208,9 +1208,9 @@ line 250
 ;250:		}
 line 251
 ;251:		return;
-ADDRGP4 $158
+ADDRGP4 $160
 JUMPV
-LABELV $159
+LABELV $161
 line 254
 ;252:	}
 ;253:
@@ -1218,7 +1218,7 @@ line 254
 ADDRLP4 0
 INDIRI4
 CNSTI4 18
-NEI4 $163
+NEI4 $165
 line 255
 ;255:		UI_ForceLegsAnim( pi, LEGS_LAND );
 ADDRFP4 0
@@ -1244,9 +1244,9 @@ CNSTF4 0
 ASGNF4
 line 258
 ;258:		return;
-ADDRGP4 $158
+ADDRGP4 $160
 JUMPV
-LABELV $163
+LABELV $165
 line 261
 ;259:	}
 ;260:
@@ -1254,7 +1254,7 @@ line 261
 ADDRLP4 0
 INDIRI4
 CNSTI4 19
-NEI4 $165
+NEI4 $167
 line 262
 ;262:		UI_SetLegsAnim( pi, LEGS_IDLE );
 ADDRFP4 0
@@ -1267,11 +1267,11 @@ CALLV
 pop
 line 263
 ;263:		return;
-LABELV $165
+LABELV $167
 line 265
 ;264:	}
 ;265:}
-LABELV $158
+LABELV $160
 endproc UI_LegsSequencing 8 8
 proc UI_PositionEntityOnTag 84 24
 line 274
@@ -1350,7 +1350,7 @@ line 284
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $168
+LABELV $170
 line 285
 ;285:		VectorMA( entity->origin, lerped.origin[i], parent->axis[i], entity->origin );
 ADDRLP4 60
@@ -1452,7 +1452,7 @@ ADDF4
 ASGNF4
 line 286
 ;286:	}
-LABELV $169
+LABELV $171
 line 284
 ADDRLP4 0
 ADDRLP4 0
@@ -1463,7 +1463,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $168
+LTI4 $170
 line 289
 ;287:
 ;288:	// cast away const because of compiler problems
@@ -1507,7 +1507,7 @@ INDIRF4
 ASGNF4
 line 291
 ;291:}
-LABELV $167
+LABELV $169
 endproc UI_PositionEntityOnTag 84 24
 proc UI_PositionRotatedEntityOnTag 120 24
 line 300
@@ -1587,7 +1587,7 @@ line 311
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $174
+LABELV $176
 line 312
 ;312:		VectorMA( entity->origin, lerped.origin[i], parent->axis[i], entity->origin );
 ADDRLP4 96
@@ -1689,7 +1689,7 @@ ADDF4
 ASGNF4
 line 313
 ;313:	}
-LABELV $175
+LABELV $177
 line 311
 ADDRLP4 0
 ADDRLP4 0
@@ -1700,7 +1700,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $174
+LTI4 $176
 line 316
 ;314:
 ;315:	// cast away const because of compiler problems
@@ -1741,7 +1741,7 @@ CALLV
 pop
 line 318
 ;318:}
-LABELV $173
+LABELV $175
 endproc UI_PositionRotatedEntityOnTag 120 24
 proc UI_SetLerpFrameAnimation 12 8
 line 326
@@ -1782,15 +1782,15 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-LTI4 $182
+LTI4 $184
 ADDRLP4 4
 INDIRI4
 CNSTI4 31
-LTI4 $180
-LABELV $182
+LTI4 $182
+LABELV $184
 line 333
 ;333:		trap_Error( va("Bad animation number: %i", newAnimation) );
-ADDRGP4 $183
+ADDRGP4 $185
 ARGP4
 ADDRFP4 8
 INDIRI4
@@ -1807,7 +1807,7 @@ CALLV
 pop
 line 334
 ;334:	}
-LABELV $180
+LABELV $182
 line 336
 ;335:
 ;336:	anim = &ci->animations[ newAnimation ];
@@ -1856,7 +1856,7 @@ ADDI4
 ASGNI4
 line 340
 ;340:}
-LABELV $179
+LABELV $181
 endproc UI_SetLerpFrameAnimation 12 8
 proc UI_RunLerpFrame 32 12
 line 348
@@ -1885,7 +1885,7 @@ INDIRP4
 CNSTI4 36
 ADDP4
 INDIRI4
-NEI4 $187
+NEI4 $189
 ADDRLP4 8
 INDIRP4
 CNSTI4 40
@@ -1893,8 +1893,8 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $185
-LABELV $187
+NEU4 $187
+LABELV $189
 line 354
 ;354:		UI_SetLerpFrameAnimation( ci, lf, newAnimation );
 ADDRFP4 0
@@ -1911,7 +1911,7 @@ CALLV
 pop
 line 355
 ;355:	}
-LABELV $185
+LABELV $187
 line 359
 ;356:
 ;357:	// if we have passed the current frame, move it to
@@ -1924,7 +1924,7 @@ INDIRP4
 CNSTI4 12
 ADDP4
 INDIRI4
-LTI4 $188
+LTI4 $190
 line 360
 ;360:		lf->oldFrame = lf->frame;
 ADDRLP4 12
@@ -1975,7 +1975,7 @@ INDIRP4
 CNSTI4 44
 ADDP4
 INDIRI4
-GEI4 $190
+GEI4 $192
 line 366
 ;366:			lf->frameTime = lf->animationTime;		// initial lerp
 ADDRLP4 20
@@ -1994,9 +1994,9 @@ INDIRI4
 ASGNI4
 line 367
 ;367:		} else {
-ADDRGP4 $191
+ADDRGP4 $193
 JUMPV
-LABELV $190
+LABELV $192
 line 368
 ;368:			lf->frameTime = lf->oldFrameTime + anim->frameLerp;
 ADDRLP4 20
@@ -2026,7 +2026,7 @@ ADDI4
 ASGNI4
 line 369
 ;369:		}
-LABELV $191
+LABELV $193
 line 370
 ;370:		f = ( lf->frameTime - lf->animationTime ) / anim->frameLerp;
 ADDRLP4 20
@@ -2066,7 +2066,7 @@ INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
-LTI4 $192
+LTI4 $194
 line 372
 ;372:			f -= anim->numFrames;
 ADDRLP4 4
@@ -2087,7 +2087,7 @@ CNSTI4 8
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $194
+EQI4 $196
 line 374
 ;374:				f %= anim->loopFrames;
 ADDRLP4 4
@@ -2120,9 +2120,9 @@ ADDI4
 ASGNI4
 line 376
 ;376:			} else {
-ADDRGP4 $195
+ADDRGP4 $197
 JUMPV
-LABELV $194
+LABELV $196
 line 377
 ;377:				f = anim->numFrames - 1;
 ADDRLP4 4
@@ -2147,10 +2147,10 @@ INDIRI4
 ASGNI4
 line 381
 ;381:			}
-LABELV $195
+LABELV $197
 line 382
 ;382:		}
-LABELV $192
+LABELV $194
 line 383
 ;383:		lf->frame = anim->firstFrame + f;
 ADDRFP4 4
@@ -2173,7 +2173,7 @@ INDIRP4
 CNSTI4 12
 ADDP4
 INDIRI4
-LEI4 $196
+LEI4 $198
 line 385
 ;385:			lf->frameTime = dp_realtime;
 ADDRFP4 4
@@ -2185,10 +2185,10 @@ INDIRI4
 ASGNI4
 line 386
 ;386:		}
-LABELV $196
+LABELV $198
 line 387
 ;387:	}
-LABELV $188
+LABELV $190
 line 389
 ;388:
 ;389:	if ( lf->frameTime > dp_realtime + 200 ) {
@@ -2201,7 +2201,7 @@ ADDRGP4 dp_realtime
 INDIRI4
 CNSTI4 200
 ADDI4
-LEI4 $198
+LEI4 $200
 line 390
 ;390:		lf->frameTime = dp_realtime;
 ADDRFP4 4
@@ -2213,7 +2213,7 @@ INDIRI4
 ASGNI4
 line 391
 ;391:	}
-LABELV $198
+LABELV $200
 line 393
 ;392:
 ;393:	if ( lf->oldFrameTime > dp_realtime ) {
@@ -2224,7 +2224,7 @@ ADDP4
 INDIRI4
 ADDRGP4 dp_realtime
 INDIRI4
-LEI4 $200
+LEI4 $202
 line 394
 ;394:		lf->oldFrameTime = dp_realtime;
 ADDRFP4 4
@@ -2236,7 +2236,7 @@ INDIRI4
 ASGNI4
 line 395
 ;395:	}
-LABELV $200
+LABELV $202
 line 397
 ;396:	// calculate current lerp value
 ;397:	if ( lf->frameTime == lf->oldFrameTime ) {
@@ -2254,7 +2254,7 @@ INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
-NEI4 $202
+NEI4 $204
 line 398
 ;398:		lf->backlerp = 0;
 ADDRFP4 4
@@ -2265,9 +2265,9 @@ CNSTF4 0
 ASGNF4
 line 399
 ;399:	} else {
-ADDRGP4 $203
+ADDRGP4 $205
 JUMPV
-LABELV $202
+LABELV $204
 line 400
 ;400:		lf->backlerp = 1.0 - (float)( dp_realtime - lf->oldFrameTime ) / ( lf->frameTime - lf->oldFrameTime );
 ADDRLP4 16
@@ -2306,10 +2306,10 @@ SUBF4
 ASGNF4
 line 401
 ;401:	}
-LABELV $203
+LABELV $205
 line 402
 ;402:}
-LABELV $184
+LABELV $186
 endproc UI_RunLerpFrame 32 12
 proc UI_PlayerAnimation 16 12
 line 411
@@ -2349,7 +2349,7 @@ CNSTI4 1248
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $206
+GEI4 $208
 line 416
 ;416:		pi->legsAnimationTimer = 0;
 ADDRFP4 0
@@ -2360,7 +2360,7 @@ CNSTI4 0
 ASGNI4
 line 417
 ;417:	}
-LABELV $206
+LABELV $208
 line 419
 ;418:
 ;419:	UI_LegsSequencing( pi );
@@ -2383,7 +2383,7 @@ CNSTI4 32
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $208
+EQI4 $210
 ADDRLP4 4
 INDIRP4
 CNSTI4 1212
@@ -2392,7 +2392,7 @@ INDIRI4
 CNSTI4 -129
 BANDI4
 CNSTI4 22
-NEI4 $208
+NEI4 $210
 line 422
 ;422:		UI_RunLerpFrame( pi, &pi->legs, LEGS_TURN );
 ADDRLP4 8
@@ -2414,9 +2414,9 @@ CALLV
 pop
 line 423
 ;423:	} else {
-ADDRGP4 $209
+ADDRGP4 $211
 JUMPV
-LABELV $208
+LABELV $210
 line 424
 ;424:		UI_RunLerpFrame( pi, &pi->legs, pi->legsAnim );
 ADDRLP4 8
@@ -2442,7 +2442,7 @@ CALLV
 pop
 line 425
 ;425:	}
-LABELV $209
+LABELV $211
 line 426
 ;426:	*legsOld = pi->legs.oldFrame;
 ADDRFP4 4
@@ -2500,7 +2500,7 @@ CNSTI4 1240
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $211
+GEI4 $213
 line 433
 ;433:		pi->torsoAnimationTimer = 0;
 ADDRFP4 0
@@ -2511,7 +2511,7 @@ CNSTI4 0
 ASGNI4
 line 434
 ;434:	}
-LABELV $211
+LABELV $213
 line 436
 ;435:
 ;436:	UI_TorsoSequencing( pi );
@@ -2577,7 +2577,7 @@ INDIRF4
 ASGNF4
 line 442
 ;442:}
-LABELV $204
+LABELV $206
 endproc UI_PlayerAnimation 16 12
 proc UI_SwingAngles 28 8
 line 451
@@ -2600,7 +2600,7 @@ ADDRFP4 20
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $214
+NEI4 $216
 line 458
 ;457:		// see if a swing should be started
 ;458:		swing = AngleSubtract( *angle, destination );
@@ -2629,14 +2629,14 @@ ADDRLP4 0
 INDIRF4
 ADDRLP4 20
 INDIRF4
-GTF4 $218
+GTF4 $220
 ADDRLP4 0
 INDIRF4
 ADDRLP4 20
 INDIRF4
 NEGF4
-GEF4 $216
-LABELV $218
+GEF4 $218
+LABELV $220
 line 460
 ;460:			*swinging = qtrue;
 ADDRFP4 20
@@ -2645,10 +2645,10 @@ CNSTI4 1
 ASGNI4
 line 461
 ;461:		}
-LABELV $216
+LABELV $218
 line 462
 ;462:	}
-LABELV $214
+LABELV $216
 line 464
 ;463:
 ;464:	if ( !*swinging ) {
@@ -2656,12 +2656,12 @@ ADDRFP4 20
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $219
+NEI4 $221
 line 465
 ;465:		return;
-ADDRGP4 $213
+ADDRGP4 $215
 JUMPV
-LABELV $219
+LABELV $221
 line 470
 ;466:	}
 ;467:	
@@ -2704,7 +2704,7 @@ CNSTF4 1056964608
 ADDRFP4 4
 INDIRF4
 MULF4
-GEF4 $221
+GEF4 $223
 line 473
 ;473:		scale = 0.5;
 ADDRLP4 4
@@ -2712,14 +2712,14 @@ CNSTF4 1056964608
 ASGNF4
 line 474
 ;474:	} else if ( scale < swingTolerance ) {
-ADDRGP4 $222
+ADDRGP4 $224
 JUMPV
-LABELV $221
+LABELV $223
 ADDRLP4 4
 INDIRF4
 ADDRFP4 4
 INDIRF4
-GEF4 $223
+GEF4 $225
 line 475
 ;475:		scale = 1.0;
 ADDRLP4 4
@@ -2727,9 +2727,9 @@ CNSTF4 1065353216
 ASGNF4
 line 476
 ;476:	} else {
-ADDRGP4 $224
+ADDRGP4 $226
 JUMPV
-LABELV $223
+LABELV $225
 line 477
 ;477:		scale = 2.0;
 ADDRLP4 4
@@ -2737,8 +2737,8 @@ CNSTF4 1073741824
 ASGNF4
 line 478
 ;478:	}
+LABELV $226
 LABELV $224
-LABELV $222
 line 481
 ;479:
 ;480:	// swing towards the destination angle
@@ -2746,7 +2746,7 @@ line 481
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
-LTF4 $225
+LTF4 $227
 line 482
 ;482:		move = uiInfo.uiDC.frameTime * scale * speed;
 ADDRLP4 8
@@ -2766,7 +2766,7 @@ ADDRLP4 8
 INDIRF4
 ADDRLP4 0
 INDIRF4
-LTF4 $228
+LTF4 $230
 line 484
 ;484:			move = swing;
 ADDRLP4 8
@@ -2781,7 +2781,7 @@ CNSTI4 0
 ASGNI4
 line 486
 ;486:		}
-LABELV $228
+LABELV $230
 line 487
 ;487:		*angle = AngleMod( *angle + move );
 ADDRLP4 20
@@ -2806,13 +2806,13 @@ INDIRF4
 ASGNF4
 line 488
 ;488:	} else if ( swing < 0 ) {
-ADDRGP4 $226
+ADDRGP4 $228
 JUMPV
-LABELV $225
+LABELV $227
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
-GEF4 $230
+GEF4 $232
 line 489
 ;489:		move = uiInfo.uiDC.frameTime * scale * -speed;
 ADDRLP4 8
@@ -2833,7 +2833,7 @@ ADDRLP4 8
 INDIRF4
 ADDRLP4 0
 INDIRF4
-GTF4 $233
+GTF4 $235
 line 491
 ;491:			move = swing;
 ADDRLP4 8
@@ -2848,7 +2848,7 @@ CNSTI4 0
 ASGNI4
 line 493
 ;493:		}
-LABELV $233
+LABELV $235
 line 494
 ;494:		*angle = AngleMod( *angle + move );
 ADDRLP4 20
@@ -2873,8 +2873,8 @@ INDIRF4
 ASGNF4
 line 495
 ;495:	}
-LABELV $230
-LABELV $226
+LABELV $232
+LABELV $228
 line 498
 ;496:
 ;497:	// clamp to no more than tolerance
@@ -2900,7 +2900,7 @@ ADDRLP4 0
 INDIRF4
 ADDRFP4 8
 INDIRF4
-LEF4 $235
+LEF4 $237
 line 500
 ;500:		*angle = AngleMod( destination - (clampTolerance - 1) );
 ADDRFP4 0
@@ -2922,15 +2922,15 @@ INDIRF4
 ASGNF4
 line 501
 ;501:	} else if ( swing < -clampTolerance ) {
-ADDRGP4 $236
+ADDRGP4 $238
 JUMPV
-LABELV $235
+LABELV $237
 ADDRLP4 0
 INDIRF4
 ADDRFP4 8
 INDIRF4
 NEGF4
-GEF4 $237
+GEF4 $239
 line 502
 ;502:		*angle = AngleMod( destination + (clampTolerance - 1) );
 ADDRFP4 0
@@ -2952,11 +2952,11 @@ INDIRF4
 ASGNF4
 line 503
 ;503:	}
-LABELV $237
-LABELV $236
+LABELV $239
+LABELV $238
 line 504
 ;504:}
-LABELV $213
+LABELV $215
 endproc UI_SwingAngles 28 8
 proc UI_MovedirAdjustment 72 16
 line 512
@@ -3050,7 +3050,7 @@ ASGNF4
 ADDRLP4 36
 INDIRF4
 CNSTF4 1008981770
-GEF4 $242
+GEF4 $244
 line 519
 ;519:		moveVector[0] = 0.0;
 ADDRLP4 0
@@ -3058,7 +3058,7 @@ CNSTF4 0
 ASGNF4
 line 520
 ;520:	}
-LABELV $242
+LABELV $244
 line 521
 ;521:	if ( Q_fabs( moveVector[1] ) < 0.01 ) {
 ADDRLP4 0+4
@@ -3071,7 +3071,7 @@ ASGNF4
 ADDRLP4 40
 INDIRF4
 CNSTF4 1008981770
-GEF4 $244
+GEF4 $246
 line 522
 ;522:		moveVector[1] = 0.0;
 ADDRLP4 0+4
@@ -3079,7 +3079,7 @@ CNSTF4 0
 ASGNF4
 line 523
 ;523:	}
-LABELV $244
+LABELV $246
 line 525
 ;524:
 ;525:	if ( moveVector[1] == 0 && moveVector[0] > 0 ) {
@@ -3090,19 +3090,19 @@ ADDRLP4 0+4
 INDIRF4
 ADDRLP4 44
 INDIRF4
-NEF4 $248
+NEF4 $250
 ADDRLP4 0
 INDIRF4
 ADDRLP4 44
 INDIRF4
-LEF4 $248
+LEF4 $250
 line 526
 ;526:		return 0;
 CNSTF4 0
 RETF4
-ADDRGP4 $239
+ADDRGP4 $241
 JUMPV
-LABELV $248
+LABELV $250
 line 528
 ;527:	}
 ;528:	if ( moveVector[1] < 0 && moveVector[0] > 0 ) {
@@ -3113,19 +3113,19 @@ ADDRLP4 0+4
 INDIRF4
 ADDRLP4 48
 INDIRF4
-GEF4 $251
+GEF4 $253
 ADDRLP4 0
 INDIRF4
 ADDRLP4 48
 INDIRF4
-LEF4 $251
+LEF4 $253
 line 529
 ;529:		return 22;
 CNSTF4 1102053376
 RETF4
-ADDRGP4 $239
+ADDRGP4 $241
 JUMPV
-LABELV $251
+LABELV $253
 line 531
 ;530:	}
 ;531:	if ( moveVector[1] < 0 && moveVector[0] == 0 ) {
@@ -3136,19 +3136,19 @@ ADDRLP4 0+4
 INDIRF4
 ADDRLP4 52
 INDIRF4
-GEF4 $254
+GEF4 $256
 ADDRLP4 0
 INDIRF4
 ADDRLP4 52
 INDIRF4
-NEF4 $254
+NEF4 $256
 line 532
 ;532:		return 45;
 CNSTF4 1110704128
 RETF4
-ADDRGP4 $239
+ADDRGP4 $241
 JUMPV
-LABELV $254
+LABELV $256
 line 534
 ;533:	}
 ;534:	if ( moveVector[1] < 0 && moveVector[0] < 0 ) {
@@ -3159,19 +3159,19 @@ ADDRLP4 0+4
 INDIRF4
 ADDRLP4 56
 INDIRF4
-GEF4 $257
+GEF4 $259
 ADDRLP4 0
 INDIRF4
 ADDRLP4 56
 INDIRF4
-GEF4 $257
+GEF4 $259
 line 535
 ;535:		return -22;
 CNSTF4 3249537024
 RETF4
-ADDRGP4 $239
+ADDRGP4 $241
 JUMPV
-LABELV $257
+LABELV $259
 line 537
 ;536:	}
 ;537:	if ( moveVector[1] == 0 && moveVector[0] < 0 ) {
@@ -3182,19 +3182,19 @@ ADDRLP4 0+4
 INDIRF4
 ADDRLP4 60
 INDIRF4
-NEF4 $260
+NEF4 $262
 ADDRLP4 0
 INDIRF4
 ADDRLP4 60
 INDIRF4
-GEF4 $260
+GEF4 $262
 line 538
 ;538:		return 0;
 CNSTF4 0
 RETF4
-ADDRGP4 $239
+ADDRGP4 $241
 JUMPV
-LABELV $260
+LABELV $262
 line 540
 ;539:	}
 ;540:	if ( moveVector[1] > 0 && moveVector[0] < 0 ) {
@@ -3205,19 +3205,19 @@ ADDRLP4 0+4
 INDIRF4
 ADDRLP4 64
 INDIRF4
-LEF4 $263
+LEF4 $265
 ADDRLP4 0
 INDIRF4
 ADDRLP4 64
 INDIRF4
-GEF4 $263
+GEF4 $265
 line 541
 ;541:		return 22;
 CNSTF4 1102053376
 RETF4
-ADDRGP4 $239
+ADDRGP4 $241
 JUMPV
-LABELV $263
+LABELV $265
 line 543
 ;542:	}
 ;543:	if ( moveVector[1] > 0 && moveVector[0] == 0 ) {
@@ -3228,26 +3228,26 @@ ADDRLP4 0+4
 INDIRF4
 ADDRLP4 68
 INDIRF4
-LEF4 $266
+LEF4 $268
 ADDRLP4 0
 INDIRF4
 ADDRLP4 68
 INDIRF4
-NEF4 $266
+NEF4 $268
 line 544
 ;544:		return  -45;
 CNSTF4 3258187776
 RETF4
-ADDRGP4 $239
+ADDRGP4 $241
 JUMPV
-LABELV $266
+LABELV $268
 line 547
 ;545:	}
 ;546:
 ;547:	return -22;
 CNSTF4 3249537024
 RETF4
-LABELV $239
+LABELV $241
 endproc UI_MovedirAdjustment 72 16
 proc UI_PlayerAngles 80 24
 line 556
@@ -3342,7 +3342,7 @@ ADDRLP4 60
 INDIRI4
 BANDI4
 CNSTI4 22
-NEI4 $278
+NEI4 $280
 ADDRLP4 56
 INDIRP4
 CNSTI4 1216
@@ -3352,8 +3352,8 @@ ADDRLP4 60
 INDIRI4
 BANDI4
 CNSTI4 11
-EQI4 $276
-LABELV $278
+EQI4 $278
+LABELV $280
 line 570
 ;570:		|| ( pi->torsoAnim & ~ANIM_TOGGLEBIT ) != TORSO_STAND  ) {
 line 572
@@ -3383,7 +3383,7 @@ CNSTI4 1
 ASGNI4
 line 575
 ;575:	}
-LABELV $276
+LABELV $278
 line 578
 ;576:
 ;577:	// adjust legs for movement dir
@@ -3506,7 +3506,7 @@ line 593
 ADDRLP4 12
 INDIRF4
 CNSTF4 1127481344
-LEF4 $287
+LEF4 $289
 line 594
 ;594:		dest = (-360 + headAngles[PITCH]) * 0.75;
 ADDRLP4 40
@@ -3519,9 +3519,9 @@ MULF4
 ASGNF4
 line 595
 ;595:	} else {
-ADDRGP4 $288
+ADDRGP4 $290
 JUMPV
-LABELV $287
+LABELV $289
 line 596
 ;596:		dest = headAngles[PITCH] * 0.75;
 ADDRLP4 40
@@ -3532,7 +3532,7 @@ MULF4
 ASGNF4
 line 597
 ;597:	}
-LABELV $288
+LABELV $290
 line 598
 ;598:	UI_SwingAngles( dest, 15, 30, 0.1f, &pi->torso.pitchAngle, &pi->torso.pitching );
 ADDRLP4 40
@@ -3626,7 +3626,7 @@ CALLV
 pop
 line 607
 ;607:}
-LABELV $269
+LABELV $271
 endproc UI_PlayerAngles 80 24
 proc UI_PlayerFloatSprite 140 12
 line 615
@@ -3696,7 +3696,7 @@ CALLV
 pop
 line 626
 ;626:}
-LABELV $289
+LABELV $291
 endproc UI_PlayerFloatSprite 140 12
 export UI_MachinegunSpinAngle
 proc UI_MachinegunSpinAngle 28 4
@@ -3734,7 +3734,7 @@ CNSTI4 1260
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $297
+EQI4 $299
 line 642
 ;642:		angle = pi->barrelAngle + delta * SPIN_SPEED;
 ADDRLP4 8
@@ -3752,15 +3752,15 @@ ADDF4
 ASGNF4
 line 643
 ;643:	} else {
-ADDRGP4 $298
+ADDRGP4 $300
 JUMPV
-LABELV $297
+LABELV $299
 line 644
 ;644:		if ( delta > COAST_TIME ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 1000
-LEI4 $299
+LEI4 $301
 line 645
 ;645:			delta = COAST_TIME;
 ADDRLP4 4
@@ -3768,7 +3768,7 @@ CNSTI4 1000
 ASGNI4
 line 646
 ;646:		}
-LABELV $299
+LABELV $301
 line 648
 ;647:
 ;648:		speed = 0.5 * ( SPIN_SPEED + (float)( COAST_TIME - delta ) / COAST_TIME );
@@ -3803,7 +3803,7 @@ ADDF4
 ASGNF4
 line 650
 ;650:	}
-LABELV $298
+LABELV $300
 line 652
 ;651:
 ;652:	torsoAnim = pi->torsoAnim  & ~ANIM_TOGGLEBIT;
@@ -3821,7 +3821,7 @@ line 653
 ADDRLP4 0
 INDIRI4
 CNSTI4 8
-NEI4 $301
+NEI4 $303
 line 654
 ;654:		torsoAnim = TORSO_ATTACK;
 ADDRLP4 0
@@ -3829,23 +3829,23 @@ CNSTI4 7
 ASGNI4
 line 655
 ;655:	}
-LABELV $301
+LABELV $303
 line 656
 ;656:	if ( pi->barrelSpinning == !(torsoAnim == TORSO_ATTACK) ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 7
-EQI4 $306
+EQI4 $308
 ADDRLP4 16
 CNSTI4 1
 ASGNI4
-ADDRGP4 $307
+ADDRGP4 $309
 JUMPV
-LABELV $306
+LABELV $308
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
-LABELV $307
+LABELV $309
 ADDRFP4 0
 INDIRP4
 CNSTI4 1260
@@ -3853,7 +3853,7 @@ ADDP4
 INDIRI4
 ADDRLP4 16
 INDIRI4
-NEI4 $303
+NEI4 $305
 line 657
 ;657:		pi->barrelTime = dp_realtime;
 ADDRFP4 0
@@ -3884,17 +3884,17 @@ line 659
 ADDRLP4 0
 INDIRI4
 CNSTI4 7
-NEI4 $309
+NEI4 $311
 ADDRLP4 24
 CNSTI4 1
 ASGNI4
-ADDRGP4 $310
+ADDRGP4 $312
 JUMPV
-LABELV $309
+LABELV $311
 ADDRLP4 24
 CNSTI4 0
 ASGNI4
-LABELV $310
+LABELV $312
 ADDRFP4 0
 INDIRP4
 CNSTI4 1260
@@ -3904,23 +3904,23 @@ INDIRI4
 ASGNI4
 line 660
 ;660:	}
-LABELV $303
+LABELV $305
 line 662
 ;661:
 ;662:	return angle;
 ADDRLP4 8
 INDIRF4
 RETF4
-LABELV $296
+LABELV $298
 endproc UI_MachinegunSpinAngle 28 4
 lit
 align 4
-LABELV $312
+LABELV $314
 byte 4 3246391296
 byte 4 3246391296
 byte 4 3250585600
 align 4
-LABELV $313
+LABELV $315
 byte 4 1098907648
 byte 4 1098907648
 byte 4 1107296256
@@ -3949,13 +3949,13 @@ line 681
 ;680:	int				renderfx;
 ;681:	vec3_t			mins = {-16, -16, -24};
 ADDRLP4 1084
-ADDRGP4 $312
+ADDRGP4 $314
 INDIRB
 ASGNB 12
 line 682
 ;682:	vec3_t			maxs = {16, 16, 32};
 ADDRLP4 1096
-ADDRGP4 $313
+ADDRGP4 $315
 INDIRB
 ASGNB 12
 line 686
@@ -3975,7 +3975,7 @@ INDIRP4
 INDIRI4
 ADDRLP4 1260
 INDIRI4
-EQI4 $318
+EQI4 $320
 ADDRLP4 1256
 INDIRP4
 CNSTI4 56
@@ -3983,7 +3983,7 @@ ADDP4
 INDIRI4
 ADDRLP4 1260
 INDIRI4
-EQI4 $318
+EQI4 $320
 ADDRLP4 1256
 INDIRP4
 CNSTI4 112
@@ -3991,7 +3991,7 @@ ADDP4
 INDIRI4
 ADDRLP4 1260
 INDIRI4
-EQI4 $318
+EQI4 $320
 ADDRLP4 1256
 INDIRP4
 CNSTI4 124
@@ -3999,13 +3999,13 @@ ADDP4
 INDIRI4
 ADDRLP4 1260
 INDIRI4
-NEI4 $314
-LABELV $318
+NEI4 $316
+LABELV $320
 line 687
 ;687:		return;
-ADDRGP4 $311
+ADDRGP4 $313
 JUMPV
-LABELV $314
+LABELV $316
 line 691
 ;688:	}
 ;689:
@@ -4018,18 +4018,18 @@ ADDRFP4 8
 INDIRF4
 ADDRLP4 1264
 INDIRF4
-EQF4 $321
+EQF4 $323
 ADDRFP4 12
 INDIRF4
 ADDRLP4 1264
 INDIRF4
-NEF4 $319
-LABELV $321
+NEF4 $321
+LABELV $323
 line 692
 ;692:		return;
-ADDRGP4 $311
+ADDRGP4 $313
 JUMPV
-LABELV $319
+LABELV $321
 line 695
 ;693:	}
 ;694:
@@ -4051,7 +4051,7 @@ CNSTI4 1228
 ADDP4
 INDIRI4
 CNSTI4 -1
-EQI4 $322
+EQI4 $324
 ADDRGP4 dp_realtime
 INDIRI4
 ADDRLP4 1268
@@ -4059,7 +4059,7 @@ INDIRP4
 CNSTI4 1232
 ADDP4
 INDIRI4
-LEI4 $322
+LEI4 $324
 line 698
 ;698:		pi->weapon = pi->pendingWeapon;
 ADDRLP4 1272
@@ -4124,7 +4124,7 @@ INDIRP4
 CNSTI4 1220
 ADDP4
 INDIRI4
-EQI4 $324
+EQI4 $326
 line 703
 ;703:			trap_S_StartLocalSound( weaponChangeSound, CHAN_LOCAL );
 ADDRGP4 weaponChangeSound
@@ -4137,10 +4137,10 @@ CALLV
 pop
 line 704
 ;704:		}
-LABELV $324
+LABELV $326
 line 705
 ;705:	}
-LABELV $322
+LABELV $324
 line 707
 ;706:
 ;707:	UI_AdjustFrom640( &x, &y, &w, &h );
@@ -4488,12 +4488,12 @@ line 763
 ADDRLP4 380+8
 INDIRI4
 CNSTI4 0
-NEI4 $364
+NEI4 $366
 line 764
 ;764:		return;
-ADDRGP4 $311
+ADDRGP4 $313
 JUMPV
-LABELV $364
+LABELV $366
 line 770
 ;765:	}
 ;766:
@@ -4513,12 +4513,12 @@ line 771
 ADDRLP4 520+8
 INDIRI4
 CNSTI4 0
-NEI4 $368
+NEI4 $370
 line 772
 ;772:		return;
-ADDRGP4 $311
+ADDRGP4 $313
 JUMPV
-LABELV $368
+LABELV $370
 line 775
 ;773:	}
 ;774:
@@ -4548,7 +4548,7 @@ ADDRFP4 16
 INDIRP4
 INDIRI4
 ARGI4
-ADDRGP4 $373
+ADDRGP4 $375
 ARGP4
 ADDRGP4 UI_PositionRotatedEntityOnTag
 CALLV
@@ -4586,12 +4586,12 @@ line 789
 ADDRLP4 660+8
 INDIRI4
 CNSTI4 0
-NEI4 $376
+NEI4 $378
 line 790
 ;790:		return;
-ADDRGP4 $311
+ADDRGP4 $313
 JUMPV
-LABELV $376
+LABELV $378
 line 792
 ;791:	}
 ;792:	head.customSkin = pi->headSkin;
@@ -4622,7 +4622,7 @@ CNSTI4 56
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $381
+ADDRGP4 $383
 ARGP4
 ADDRGP4 UI_PositionRotatedEntityOnTag
 CALLV
@@ -4654,7 +4654,7 @@ CNSTI4 1208
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $383
+EQI4 $385
 line 806
 ;806:		memset( &gun, 0, sizeof(gun) );
 ADDRLP4 804
@@ -4693,7 +4693,7 @@ CNSTI4 56
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $387
+ADDRGP4 $389
 ARGP4
 ADDRGP4 UI_PositionEntityOnTag
 CALLV
@@ -4713,7 +4713,7 @@ CALLV
 pop
 line 812
 ;812:	}
-LABELV $383
+LABELV $385
 line 817
 ;813:
 ;814:	//
@@ -4730,16 +4730,16 @@ ASGNI4
 ADDRLP4 1284
 INDIRI4
 CNSTI4 2
-EQI4 $392
+EQI4 $394
 ADDRLP4 1284
 INDIRI4
 CNSTI4 1
-EQI4 $392
+EQI4 $394
 ADDRLP4 1284
 INDIRI4
 CNSTI4 9
-NEI4 $389
-LABELV $392
+NEI4 $391
+LABELV $394
 line 820
 ;818:		vec3_t	angles;
 ;819:
@@ -4810,12 +4810,12 @@ ASGNI4
 ADDRLP4 1304
 INDIRI4
 CNSTI4 1
-EQI4 $400
+EQI4 $402
 ADDRLP4 1304
 INDIRI4
 CNSTI4 9
-NEI4 $398
-LABELV $400
+NEI4 $400
+LABELV $402
 line 829
 ;829:			angles[PITCH] = angles[ROLL];
 ADDRLP4 1288
@@ -4829,7 +4829,7 @@ CNSTF4 0
 ASGNF4
 line 831
 ;831:		}
-LABELV $398
+LABELV $400
 line 832
 ;832:		AnglesToAxis( angles, barrel.axis );
 ADDRLP4 1288
@@ -4852,7 +4852,7 @@ CNSTI4 1156
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $404
+ADDRGP4 $406
 ARGP4
 ADDRGP4 UI_PositionRotatedEntityOnTag
 CALLV
@@ -4867,7 +4867,7 @@ CALLV
 pop
 line 837
 ;837:	}
-LABELV $389
+LABELV $391
 line 842
 ;838:
 ;839:	//
@@ -4881,7 +4881,7 @@ INDIRP4
 CNSTI4 1180
 ADDP4
 INDIRI4
-GTI4 $405
+GTI4 $407
 line 843
 ;843:		if ( pi->flashModel ) {
 ADDRFP4 16
@@ -4890,7 +4890,7 @@ CNSTI4 1164
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $407
+EQI4 $409
 line 844
 ;844:			memset( &flash, 0, sizeof(flash) );
 ADDRLP4 1108
@@ -4929,7 +4929,7 @@ CNSTI4 1156
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $411
+ADDRGP4 $413
 ARGP4
 ADDRGP4 UI_PositionEntityOnTag
 CALLV
@@ -4949,7 +4949,7 @@ CALLV
 pop
 line 850
 ;850:		}
-LABELV $407
+LABELV $409
 line 853
 ;851:
 ;852:		// make a dlight for the flash
@@ -4968,7 +4968,7 @@ ADDP4
 INDIRF4
 ADDRLP4 1292
 INDIRF4
-NEF4 $416
+NEF4 $418
 ADDRLP4 1288
 INDIRP4
 CNSTI4 1172
@@ -4976,7 +4976,7 @@ ADDP4
 INDIRF4
 ADDRLP4 1292
 INDIRF4
-NEF4 $416
+NEF4 $418
 ADDRLP4 1288
 INDIRP4
 CNSTI4 1176
@@ -4984,8 +4984,8 @@ ADDP4
 INDIRF4
 ADDRLP4 1292
 INDIRF4
-EQF4 $413
-LABELV $416
+EQF4 $415
+LABELV $418
 line 854
 ;854:			trap_R_AddLightToScene( flash.origin, 200 + (rand()&31), pi->flashDlightColor[0],
 ADDRLP4 1296
@@ -5030,10 +5030,10 @@ pop
 line 856
 ;855:				pi->flashDlightColor[1], pi->flashDlightColor[2] );
 ;856:		}
-LABELV $413
+LABELV $415
 line 857
 ;857:	}
-LABELV $405
+LABELV $407
 line 862
 ;858:
 ;859:	//
@@ -5046,10 +5046,10 @@ CNSTI4 1252
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $418
+EQI4 $420
 line 863
 ;863:		UI_PlayerFloatSprite( pi, origin, trap_R_RegisterShaderNoMip( "sprites/balloon3" ) );
-ADDRGP4 $420
+ADDRGP4 $422
 ARGP4
 ADDRLP4 1288
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -5068,7 +5068,7 @@ CALLV
 pop
 line 864
 ;864:	}
-LABELV $418
+LABELV $420
 line 869
 ;865:
 ;866:	//
@@ -5173,7 +5173,7 @@ CALLV
 pop
 line 880
 ;880:}
-LABELV $311
+LABELV $313
 endproc UI_DrawPlayer 1308 28
 proc UI_FileExists 8 12
 line 887
@@ -5208,20 +5208,20 @@ line 891
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LEI4 $426
+LEI4 $428
 line 892
 ;892:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $425
+ADDRGP4 $427
 JUMPV
-LABELV $426
+LABELV $428
 line 894
 ;893:	}
 ;894:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $425
+LABELV $427
 endproc UI_FileExists 8 12
 proc UI_FindClientHeadFile 40 40
 line 902
@@ -5239,7 +5239,7 @@ line 906
 ;905:
 ;906:	team = "default";
 ADDRLP4 8
-ADDRGP4 $429
+ADDRGP4 $431
 ASGNP4
 line 908
 ;907:
@@ -5249,11 +5249,11 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 42
-NEI4 $430
+NEI4 $432
 line 909
 ;909:		headsFolder = "heads/";
 ADDRLP4 4
-ADDRGP4 $432
+ADDRGP4 $434
 ASGNP4
 line 910
 ;910:		headModelName++;
@@ -5265,21 +5265,21 @@ ADDP4
 ASGNP4
 line 911
 ;911:	}
-ADDRGP4 $435
+ADDRGP4 $437
 JUMPV
-LABELV $430
+LABELV $432
 line 912
 ;912:	else {
 line 913
 ;913:		headsFolder = "";
 ADDRLP4 4
-ADDRGP4 $433
+ADDRGP4 $435
 ASGNP4
 line 914
 ;914:	}
-ADDRGP4 $435
+ADDRGP4 $437
 JUMPV
-LABELV $434
+LABELV $436
 line 915
 ;915:	while(1) {
 line 916
@@ -5287,7 +5287,7 @@ line 916
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $437
+LABELV $439
 line 917
 ;917:			if ( i == 0 && teamName && *teamName ) {
 ADDRLP4 12
@@ -5297,7 +5297,7 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 12
 INDIRI4
-NEI4 $441
+NEI4 $443
 ADDRLP4 16
 ADDRFP4 8
 INDIRP4
@@ -5306,14 +5306,14 @@ ADDRLP4 16
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $441
+EQU4 $443
 ADDRLP4 16
 INDIRP4
 INDIRI1
 CVII4 1
 ADDRLP4 12
 INDIRI4
-EQI4 $441
+EQI4 $443
 line 918
 ;918:				Com_sprintf( filename, length, "models/players/%s%s/%s/%s%s_%s.%s", headsFolder, headModelName, headSkinName, teamName, base, team, ext );
 ADDRFP4 0
@@ -5322,7 +5322,7 @@ ARGP4
 ADDRFP4 4
 INDIRI4
 ARGI4
-ADDRGP4 $443
+ADDRGP4 $445
 ARGP4
 ADDRLP4 4
 INDIRP4
@@ -5350,9 +5350,9 @@ CALLV
 pop
 line 919
 ;919:			}
-ADDRGP4 $442
+ADDRGP4 $444
 JUMPV
-LABELV $441
+LABELV $443
 line 920
 ;920:			else {
 line 921
@@ -5363,7 +5363,7 @@ ARGP4
 ADDRFP4 4
 INDIRI4
 ARGI4
-ADDRGP4 $444
+ADDRGP4 $446
 ARGP4
 ADDRLP4 4
 INDIRP4
@@ -5388,7 +5388,7 @@ CALLV
 pop
 line 922
 ;922:			}
-LABELV $442
+LABELV $444
 line 923
 ;923:			if ( UI_FileExists( filename ) ) {
 ADDRFP4 0
@@ -5401,14 +5401,14 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $445
+EQI4 $447
 line 924
 ;924:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $428
+ADDRGP4 $430
 JUMPV
-LABELV $445
+LABELV $447
 line 926
 ;925:			}
 ;926:			if ( i == 0 && teamName && *teamName ) {
@@ -5419,7 +5419,7 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 24
 INDIRI4
-NEI4 $447
+NEI4 $449
 ADDRLP4 28
 ADDRFP4 8
 INDIRP4
@@ -5428,14 +5428,14 @@ ADDRLP4 28
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $447
+EQU4 $449
 ADDRLP4 28
 INDIRP4
 INDIRI1
 CVII4 1
 ADDRLP4 24
 INDIRI4
-EQI4 $447
+EQI4 $449
 line 927
 ;927:				Com_sprintf( filename, length, "models/players/%s%s/%s%s_%s.%s", headsFolder, headModelName, teamName, base, headSkinName, ext );
 ADDRFP4 0
@@ -5444,7 +5444,7 @@ ARGP4
 ADDRFP4 4
 INDIRI4
 ARGI4
-ADDRGP4 $449
+ADDRGP4 $451
 ARGP4
 ADDRLP4 4
 INDIRP4
@@ -5469,9 +5469,9 @@ CALLV
 pop
 line 928
 ;928:			}
-ADDRGP4 $448
+ADDRGP4 $450
 JUMPV
-LABELV $447
+LABELV $449
 line 929
 ;929:			else {
 line 930
@@ -5482,7 +5482,7 @@ ARGP4
 ADDRFP4 4
 INDIRI4
 ARGI4
-ADDRGP4 $450
+ADDRGP4 $452
 ARGP4
 ADDRLP4 4
 INDIRP4
@@ -5504,7 +5504,7 @@ CALLV
 pop
 line 931
 ;931:			}
-LABELV $448
+LABELV $450
 line 932
 ;932:			if ( UI_FileExists( filename ) ) {
 ADDRFP4 0
@@ -5517,14 +5517,14 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-EQI4 $451
+EQI4 $453
 line 933
 ;933:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $428
+ADDRGP4 $430
 JUMPV
-LABELV $451
+LABELV $453
 line 935
 ;934:			}
 ;935:			if ( !teamName || !*teamName ) {
@@ -5536,23 +5536,23 @@ ADDRLP4 36
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $455
+EQU4 $457
 ADDRLP4 36
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $453
-LABELV $455
+NEI4 $455
+LABELV $457
 line 936
 ;936:				break;
-ADDRGP4 $439
+ADDRGP4 $441
 JUMPV
-LABELV $453
+LABELV $455
 line 938
 ;937:			}
 ;938:		}
-LABELV $438
+LABELV $440
 line 916
 ADDRLP4 0
 ADDRLP4 0
@@ -5563,8 +5563,8 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
-LTI4 $437
-LABELV $439
+LTI4 $439
+LABELV $441
 line 940
 ;939:		// if tried the heads folder first
 ;940:		if ( headsFolder[0] ) {
@@ -5573,31 +5573,31 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $456
+EQI4 $458
 line 941
 ;941:			break;
-ADDRGP4 $436
+ADDRGP4 $438
 JUMPV
-LABELV $456
+LABELV $458
 line 943
 ;942:		}
 ;943:		headsFolder = "heads/";
 ADDRLP4 4
-ADDRGP4 $432
+ADDRGP4 $434
 ASGNP4
 line 944
 ;944:	}
-LABELV $435
+LABELV $437
 line 915
-ADDRGP4 $434
+ADDRGP4 $436
 JUMPV
-LABELV $436
+LABELV $438
 line 946
 ;945:
 ;946:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $428
+LABELV $430
 endproc UI_FindClientHeadFile 40 40
 proc UI_RegisterClientSkin 156 28
 line 954
@@ -5621,20 +5621,20 @@ ADDRLP4 128
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $459
+EQU4 $461
 ADDRLP4 128
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $459
+EQI4 $461
 line 958
 ;958:		Com_sprintf( filename, sizeof( filename ), "models/players/%s/%s/lower_%s.skin", modelName, teamName, skinName );
 ADDRLP4 0
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $461
+ADDRGP4 $463
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -5650,16 +5650,16 @@ CALLV
 pop
 line 959
 ;959:	} else {
-ADDRGP4 $460
+ADDRGP4 $462
 JUMPV
-LABELV $459
+LABELV $461
 line 960
 ;960:		Com_sprintf( filename, sizeof( filename ), "models/players/%s/lower_%s.skin", modelName, skinName );
 ADDRLP4 0
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $462
+ADDRGP4 $464
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -5672,7 +5672,7 @@ CALLV
 pop
 line 961
 ;961:	}
-LABELV $460
+LABELV $462
 line 962
 ;962:	pi->legsSkin = trap_R_RegisterSkin( filename );
 ADDRLP4 0
@@ -5696,7 +5696,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $463
+NEI4 $465
 line 964
 ;964:		if (teamName && *teamName) {
 ADDRLP4 136
@@ -5707,20 +5707,20 @@ ADDRLP4 136
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $465
+EQU4 $467
 ADDRLP4 136
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $465
+EQI4 $467
 line 965
 ;965:			Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/%s/lower_%s.skin", modelName, teamName, skinName );
 ADDRLP4 0
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $467
+ADDRGP4 $469
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -5736,16 +5736,16 @@ CALLV
 pop
 line 966
 ;966:		} else {
-ADDRGP4 $466
+ADDRGP4 $468
 JUMPV
-LABELV $465
+LABELV $467
 line 967
 ;967:			Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/lower_%s.skin", modelName, skinName );
 ADDRLP4 0
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $468
+ADDRGP4 $470
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -5758,7 +5758,7 @@ CALLV
 pop
 line 968
 ;968:		}
-LABELV $466
+LABELV $468
 line 969
 ;969:		pi->legsSkin = trap_R_RegisterSkin( filename );
 ADDRLP4 0
@@ -5776,7 +5776,7 @@ INDIRI4
 ASGNI4
 line 970
 ;970:	}
-LABELV $463
+LABELV $465
 line 972
 ;971:
 ;972:	if (teamName && *teamName) {
@@ -5788,20 +5788,20 @@ ADDRLP4 136
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $469
+EQU4 $471
 ADDRLP4 136
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $469
+EQI4 $471
 line 973
 ;973:		Com_sprintf( filename, sizeof( filename ), "models/players/%s/%s/upper_%s.skin", modelName, teamName, skinName );
 ADDRLP4 0
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $471
+ADDRGP4 $473
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -5817,16 +5817,16 @@ CALLV
 pop
 line 974
 ;974:	} else {
-ADDRGP4 $470
+ADDRGP4 $472
 JUMPV
-LABELV $469
+LABELV $471
 line 975
 ;975:		Com_sprintf( filename, sizeof( filename ), "models/players/%s/upper_%s.skin", modelName, skinName );
 ADDRLP4 0
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $472
+ADDRGP4 $474
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -5839,7 +5839,7 @@ CALLV
 pop
 line 976
 ;976:	}
-LABELV $470
+LABELV $472
 line 977
 ;977:	pi->torsoSkin = trap_R_RegisterSkin( filename );
 ADDRLP4 0
@@ -5863,7 +5863,7 @@ CNSTI4 60
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $473
+NEI4 $475
 line 979
 ;979:		if (teamName && *teamName) {
 ADDRLP4 144
@@ -5874,20 +5874,20 @@ ADDRLP4 144
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $475
+EQU4 $477
 ADDRLP4 144
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $475
+EQI4 $477
 line 980
 ;980:			Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/%s/upper_%s.skin", modelName, teamName, skinName );
 ADDRLP4 0
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $477
+ADDRGP4 $479
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -5903,16 +5903,16 @@ CALLV
 pop
 line 981
 ;981:		} else {
-ADDRGP4 $476
+ADDRGP4 $478
 JUMPV
-LABELV $475
+LABELV $477
 line 982
 ;982:			Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/upper_%s.skin", modelName, skinName );
 ADDRLP4 0
 ARGP4
 CNSTI4 128
 ARGI4
-ADDRGP4 $478
+ADDRGP4 $480
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -5925,7 +5925,7 @@ CALLV
 pop
 line 983
 ;983:		}
-LABELV $476
+LABELV $478
 line 984
 ;984:		pi->torsoSkin = trap_R_RegisterSkin( filename );
 ADDRLP4 0
@@ -5943,7 +5943,7 @@ INDIRI4
 ASGNI4
 line 985
 ;985:	}
-LABELV $473
+LABELV $475
 line 987
 ;986:
 ;987:	if ( UI_FindClientHeadFile( filename, sizeof(filename), teamName, headModelName, headSkinName, "head", "skin" ) ) {
@@ -5960,9 +5960,9 @@ ARGP4
 ADDRFP4 16
 INDIRP4
 ARGP4
-ADDRGP4 $481
+ADDRGP4 $483
 ARGP4
-ADDRGP4 $482
+ADDRGP4 $484
 ARGP4
 ADDRLP4 144
 ADDRGP4 UI_FindClientHeadFile
@@ -5971,7 +5971,7 @@ ASGNI4
 ADDRLP4 144
 INDIRI4
 CNSTI4 0
-EQI4 $479
+EQI4 $481
 line 988
 ;988:		pi->headSkin = trap_R_RegisterSkin( filename );
 ADDRLP4 0
@@ -5989,7 +5989,7 @@ INDIRI4
 ASGNI4
 line 989
 ;989:	}
-LABELV $479
+LABELV $481
 line 991
 ;990:
 ;991:	if ( !pi->legsSkin || !pi->torsoSkin || !pi->headSkin ) {
@@ -6007,7 +6007,7 @@ ADDP4
 INDIRI4
 ADDRLP4 152
 INDIRI4
-EQI4 $486
+EQI4 $488
 ADDRLP4 148
 INDIRP4
 CNSTI4 60
@@ -6015,7 +6015,7 @@ ADDP4
 INDIRI4
 ADDRLP4 152
 INDIRI4
-EQI4 $486
+EQI4 $488
 ADDRLP4 148
 INDIRP4
 CNSTI4 116
@@ -6023,22 +6023,22 @@ ADDP4
 INDIRI4
 ADDRLP4 152
 INDIRI4
-NEI4 $483
-LABELV $486
+NEI4 $485
+LABELV $488
 line 992
 ;992:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $458
+ADDRGP4 $460
 JUMPV
-LABELV $483
+LABELV $485
 line 995
 ;993:	}
 ;994:
 ;995:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $458
+LABELV $460
 endproc UI_RegisterClientSkin 156 28
 proc UI_ParseAnimationFile 20068 12
 line 1004
@@ -6096,14 +6096,14 @@ line 1018
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-GTI4 $488
+GTI4 $490
 line 1019
 ;1019:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $487
+ADDRGP4 $489
 JUMPV
-LABELV $488
+LABELV $490
 line 1021
 ;1020:	}
 ;1021:	if ( len >= ( sizeof( text ) - 1 ) ) {
@@ -6111,10 +6111,10 @@ ADDRLP4 24
 INDIRI4
 CVIU4 4
 CNSTU4 19999
-LTU4 $490
+LTU4 $492
 line 1022
 ;1022:		Com_Printf( "File %s too long\n", filename );
-ADDRGP4 $492
+ADDRGP4 $494
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -6126,9 +6126,9 @@ line 1023
 ;1023:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $487
+ADDRGP4 $489
 JUMPV
-LABELV $490
+LABELV $492
 line 1025
 ;1024:	}
 ;1025:	trap_FS_Read( text, len, f );
@@ -6179,9 +6179,9 @@ line 1033
 ADDRLP4 20
 CNSTI4 0
 ASGNI4
-ADDRGP4 $494
+ADDRGP4 $496
 JUMPV
-LABELV $493
+LABELV $495
 line 1036
 ;1034:
 ;1035:	// read optional parameters
@@ -6210,19 +6210,19 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $496
+NEU4 $498
 line 1040
 ;1040:			break;
-ADDRGP4 $495
+ADDRGP4 $497
 JUMPV
-LABELV $496
+LABELV $498
 line 1042
 ;1041:		}
 ;1042:		if ( !Q_stricmp( token, "footsteps" ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $500
+ADDRGP4 $502
 ARGP4
 ADDRLP4 20040
 ADDRGP4 Q_stricmp
@@ -6231,7 +6231,7 @@ ASGNI4
 ADDRLP4 20040
 INDIRI4
 CNSTI4 0
-NEI4 $498
+NEI4 $500
 line 1043
 ;1043:			token = COM_Parse( &text_p );
 ADDRLP4 8
@@ -6250,21 +6250,21 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $494
+NEU4 $496
 line 1045
 ;1045:				break;
-ADDRGP4 $495
+ADDRGP4 $497
 JUMPV
 line 1047
 ;1046:			}
 ;1047:			continue;
-LABELV $498
+LABELV $500
 line 1048
 ;1048:		} else if ( !Q_stricmp( token, "headoffset" ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $505
+ADDRGP4 $507
 ARGP4
 ADDRLP4 20044
 ADDRGP4 Q_stricmp
@@ -6273,13 +6273,13 @@ ASGNI4
 ADDRLP4 20044
 INDIRI4
 CNSTI4 0
-NEI4 $503
+NEI4 $505
 line 1049
 ;1049:			for ( i = 0 ; i < 3 ; i++ ) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-LABELV $506
+LABELV $508
 line 1050
 ;1050:				token = COM_Parse( &text_p );
 ADDRLP4 8
@@ -6298,16 +6298,16 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $510
+NEU4 $512
 line 1052
 ;1052:					break;
-ADDRGP4 $494
+ADDRGP4 $496
 JUMPV
-LABELV $510
+LABELV $512
 line 1054
 ;1053:				}
 ;1054:			}
-LABELV $507
+LABELV $509
 line 1049
 ADDRLP4 4
 ADDRLP4 4
@@ -6318,18 +6318,18 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 3
-LTI4 $506
+LTI4 $508
 line 1055
 ;1055:			continue;
-ADDRGP4 $494
+ADDRGP4 $496
 JUMPV
-LABELV $503
+LABELV $505
 line 1056
 ;1056:		} else if ( !Q_stricmp( token, "sex" ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $514
+ADDRGP4 $516
 ARGP4
 ADDRLP4 20048
 ADDRGP4 Q_stricmp
@@ -6338,7 +6338,7 @@ ASGNI4
 ADDRLP4 20048
 INDIRI4
 CNSTI4 0
-NEI4 $512
+NEI4 $514
 line 1057
 ;1057:			token = COM_Parse( &text_p );
 ADDRLP4 8
@@ -6357,15 +6357,15 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $494
+NEU4 $496
 line 1059
 ;1059:				break;
-ADDRGP4 $495
+ADDRGP4 $497
 JUMPV
 line 1061
 ;1060:			}
 ;1061:			continue;
-LABELV $512
+LABELV $514
 line 1065
 ;1062:		}
 ;1063:
@@ -6380,11 +6380,11 @@ ASGNI4
 ADDRLP4 20052
 INDIRI4
 CNSTI4 48
-LTI4 $517
+LTI4 $519
 ADDRLP4 20052
 INDIRI4
 CNSTI4 57
-GTI4 $517
+GTI4 $519
 line 1066
 ;1066:			text_p = prev;	// unget the token
 ADDRLP4 8
@@ -6393,14 +6393,14 @@ INDIRP4
 ASGNP4
 line 1067
 ;1067:			break;
-ADDRGP4 $495
+ADDRGP4 $497
 JUMPV
-LABELV $517
+LABELV $519
 line 1070
 ;1068:		}
 ;1069:
 ;1070:		Com_Printf( "unknown token '%s' is %s\n", token, filename );
-ADDRGP4 $519
+ADDRGP4 $521
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -6413,11 +6413,11 @@ CALLV
 pop
 line 1071
 ;1071:	}
-LABELV $494
+LABELV $496
 line 1036
-ADDRGP4 $493
+ADDRGP4 $495
 JUMPV
-LABELV $495
+LABELV $497
 line 1074
 ;1072:
 ;1073:	// read information for each frame
@@ -6425,7 +6425,7 @@ line 1074
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-LABELV $520
+LABELV $522
 line 1076
 ;1075:
 ;1076:		token = COM_Parse( &text_p );
@@ -6445,12 +6445,12 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $524
+NEU4 $526
 line 1078
 ;1078:			break;
-ADDRGP4 $522
+ADDRGP4 $524
 JUMPV
-LABELV $524
+LABELV $526
 line 1080
 ;1079:		}
 ;1080:		animations[i].firstFrame = atoi( token );
@@ -6477,7 +6477,7 @@ line 1082
 ADDRLP4 4
 INDIRI4
 CNSTI4 13
-NEI4 $526
+NEI4 $528
 line 1083
 ;1083:			skip = animations[LEGS_WALKCR].firstFrame - animations[TORSO_GESTURE].firstFrame;
 ADDRLP4 20044
@@ -6499,13 +6499,13 @@ SUBI4
 ASGNI4
 line 1084
 ;1084:		}
-LABELV $526
+LABELV $528
 line 1085
 ;1085:		if ( i >= LEGS_WALKCR ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 13
-LTI4 $528
+LTI4 $530
 line 1086
 ;1086:			animations[i].firstFrame -= skip;
 ADDRLP4 20044
@@ -6528,7 +6528,7 @@ SUBI4
 ASGNI4
 line 1087
 ;1087:		}
-LABELV $528
+LABELV $530
 line 1089
 ;1088:
 ;1089:		token = COM_Parse( &text_p );
@@ -6548,12 +6548,12 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $530
+NEU4 $532
 line 1091
 ;1091:			break;
-ADDRGP4 $522
+ADDRGP4 $524
 JUMPV
-LABELV $530
+LABELV $532
 line 1093
 ;1092:		}
 ;1093:		animations[i].numFrames = atoi( token );
@@ -6595,12 +6595,12 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $532
+NEU4 $534
 line 1097
 ;1097:			break;
-ADDRGP4 $522
+ADDRGP4 $524
 JUMPV
-LABELV $532
+LABELV $534
 line 1099
 ;1098:		}
 ;1099:		animations[i].loopFrames = atoi( token );
@@ -6642,12 +6642,12 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $534
+NEU4 $536
 line 1103
 ;1103:			break;
-ADDRGP4 $522
+ADDRGP4 $524
 JUMPV
-LABELV $534
+LABELV $536
 line 1105
 ;1104:		}
 ;1105:		fps = atof( token );
@@ -6667,7 +6667,7 @@ line 1106
 ADDRLP4 12
 INDIRF4
 CNSTF4 0
-NEF4 $536
+NEF4 $538
 line 1107
 ;1107:			fps = 1;
 ADDRLP4 12
@@ -6675,7 +6675,7 @@ CNSTF4 1065353216
 ASGNF4
 line 1108
 ;1108:		}
-LABELV $536
+LABELV $538
 line 1109
 ;1109:		animations[i].frameLerp = 1000 / fps;
 CNSTI4 28
@@ -6712,7 +6712,7 @@ CVFI4 4
 ASGNI4
 line 1111
 ;1111:	}
-LABELV $521
+LABELV $523
 line 1074
 ADDRLP4 4
 ADDRLP4 4
@@ -6723,18 +6723,18 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 31
-LTI4 $520
-LABELV $522
+LTI4 $522
+LABELV $524
 line 1113
 ;1112:
 ;1113:	if ( i != MAX_ANIMATIONS ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 31
-EQI4 $538
+EQI4 $540
 line 1114
 ;1114:		Com_Printf( "Error parsing animation file: %s", filename );
-ADDRGP4 $540
+ADDRGP4 $542
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -6746,16 +6746,16 @@ line 1115
 ;1115:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $487
+ADDRGP4 $489
 JUMPV
-LABELV $538
+LABELV $540
 line 1118
 ;1116:	}
 ;1117:
 ;1118:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $487
+LABELV $489
 endproc UI_ParseAnimationFile 20068 12
 export UI_RegisterClientModelname
 proc UI_RegisterClientModelname 356 24
@@ -6799,14 +6799,14 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $542
+NEI4 $544
 line 1138
 ;1138:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $541
+ADDRGP4 $543
 JUMPV
-LABELV $542
+LABELV $544
 line 1141
 ;1139:	}
 ;1140:
@@ -6842,13 +6842,13 @@ ADDRLP4 192
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $544
+NEU4 $546
 line 1146
 ;1145:		// modelName did not include a skin name
 ;1146:		Q_strncpyz( skinName, "default", sizeof( skinName ) );
 ADDRLP4 196
 ARGP4
-ADDRGP4 $429
+ADDRGP4 $431
 ARGP4
 CNSTI4 64
 ARGI4
@@ -6857,9 +6857,9 @@ CALLV
 pop
 line 1147
 ;1147:	} else {
-ADDRGP4 $545
+ADDRGP4 $547
 JUMPV
-LABELV $544
+LABELV $546
 line 1148
 ;1148:		Q_strncpyz( skinName, slash + 1, sizeof( skinName ) );
 ADDRLP4 196
@@ -6882,7 +6882,7 @@ CNSTI1 0
 ASGNI1
 line 1150
 ;1150:	}
-LABELV $545
+LABELV $547
 line 1152
 ;1151:
 ;1152:	Q_strncpyz( headModelName, headModelSkinName, sizeof( headModelName ) );
@@ -6916,13 +6916,13 @@ ADDRLP4 192
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $546
+NEU4 $548
 line 1156
 ;1155:		// modelName did not include a skin name
 ;1156:		Q_strncpyz( headSkinName, "default", sizeof( skinName ) );
 ADDRLP4 260
 ARGP4
-ADDRGP4 $429
+ADDRGP4 $431
 ARGP4
 CNSTI4 64
 ARGI4
@@ -6931,9 +6931,9 @@ CALLV
 pop
 line 1157
 ;1157:	} else {
-ADDRGP4 $547
+ADDRGP4 $549
 JUMPV
-LABELV $546
+LABELV $548
 line 1158
 ;1158:		Q_strncpyz( headSkinName, slash + 1, sizeof( skinName ) );
 ADDRLP4 260
@@ -6956,7 +6956,7 @@ CNSTI1 0
 ASGNI1
 line 1160
 ;1160:	}
-LABELV $547
+LABELV $549
 line 1164
 ;1161:
 ;1162:	// load cmodels before models so filecache works
@@ -6966,7 +6966,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $548
+ADDRGP4 $550
 ARGP4
 ADDRLP4 128
 ARGP4
@@ -6992,14 +6992,14 @@ ADDRFP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $549
+NEI4 $551
 line 1167
 ;1167:		Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/lower.md3", modelName );
 ADDRLP4 0
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $551
+ADDRGP4 $553
 ARGP4
 ADDRLP4 128
 ARGP4
@@ -7025,10 +7025,10 @@ ADDRFP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $552
+NEI4 $554
 line 1170
 ;1170:			Com_Printf( "Failed to load model file %s\n", filename );
-ADDRGP4 $554
+ADDRGP4 $556
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -7039,13 +7039,13 @@ line 1171
 ;1171:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $541
+ADDRGP4 $543
 JUMPV
-LABELV $552
+LABELV $554
 line 1173
 ;1172:		}
 ;1173:	}
-LABELV $549
+LABELV $551
 line 1175
 ;1174:
 ;1175:	Com_sprintf( filename, sizeof( filename ), "models/players/%s/upper.md3", modelName );
@@ -7053,7 +7053,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $555
+ADDRGP4 $557
 ARGP4
 ADDRLP4 128
 ARGP4
@@ -7083,14 +7083,14 @@ CNSTI4 56
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $556
+NEI4 $558
 line 1178
 ;1178:		Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/upper.md3", modelName );
 ADDRLP4 0
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $558
+ADDRGP4 $560
 ARGP4
 ADDRLP4 128
 ARGP4
@@ -7120,10 +7120,10 @@ CNSTI4 56
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $559
+NEI4 $561
 line 1181
 ;1181:			Com_Printf( "Failed to load model file %s\n", filename );
-ADDRGP4 $554
+ADDRGP4 $556
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -7134,32 +7134,32 @@ line 1182
 ;1182:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $541
+ADDRGP4 $543
 JUMPV
-LABELV $559
+LABELV $561
 line 1184
 ;1183:		}
 ;1184:	}
-LABELV $556
+LABELV $558
 line 1186
 ;1185:
 ;1186:	if (headModelName && headModelName[0] == '*' ) {
 ADDRLP4 64
 CVPU4 4
 CNSTU4 0
-EQU4 $561
+EQU4 $563
 ADDRLP4 64
 INDIRI1
 CVII4 1
 CNSTI4 42
-NEI4 $561
+NEI4 $563
 line 1187
 ;1187:		Com_sprintf( filename, sizeof( filename ), "models/players/heads/%s/%s.md3", &headModelName[1], &headModelName[1] );
 ADDRLP4 0
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $563
+ADDRGP4 $565
 ARGP4
 ADDRLP4 64+1
 ARGP4
@@ -7170,9 +7170,9 @@ CALLV
 pop
 line 1188
 ;1188:	}
-ADDRGP4 $562
+ADDRGP4 $564
 JUMPV
-LABELV $561
+LABELV $563
 line 1189
 ;1189:	else {
 line 1190
@@ -7181,7 +7181,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $566
+ADDRGP4 $568
 ARGP4
 ADDRLP4 64
 ARGP4
@@ -7190,7 +7190,7 @@ CALLV
 pop
 line 1191
 ;1191:	}
-LABELV $562
+LABELV $564
 line 1192
 ;1192:	pi->headModel = trap_R_RegisterModel( filename );
 ADDRLP4 0
@@ -7214,19 +7214,19 @@ CNSTI4 112
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $567
+NEI4 $569
 ADDRLP4 64
 INDIRI1
 CVII4 1
 CNSTI4 42
-EQI4 $567
+EQI4 $569
 line 1194
 ;1194:		Com_sprintf( filename, sizeof( filename ), "models/players/heads/%s/%s.md3", headModelName, headModelName );
 ADDRLP4 0
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $563
+ADDRGP4 $565
 ARGP4
 ADDRLP4 64
 ARGP4
@@ -7252,7 +7252,7 @@ INDIRI4
 ASGNI4
 line 1196
 ;1196:	}
-LABELV $567
+LABELV $569
 line 1198
 ;1197:
 ;1198:	if (!pi->headModel) {
@@ -7262,10 +7262,10 @@ CNSTI4 112
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $569
+NEI4 $571
 line 1199
 ;1199:		Com_Printf( "Failed to load model file %s\n", filename );
-ADDRGP4 $554
+ADDRGP4 $556
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -7276,9 +7276,9 @@ line 1200
 ;1200:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $541
+ADDRGP4 $543
 JUMPV
-LABELV $569
+LABELV $571
 line 1204
 ;1201:	}
 ;1202:
@@ -7305,7 +7305,7 @@ ASGNI4
 ADDRLP4 344
 INDIRI4
 CNSTI4 0
-NEI4 $571
+NEI4 $573
 line 1205
 ;1205:		if ( !UI_RegisterClientSkin( pi, modelName, "default", headModelName, "default", teamName ) ) {
 ADDRFP4 0
@@ -7314,7 +7314,7 @@ ARGP4
 ADDRLP4 128
 ARGP4
 ADDRLP4 348
-ADDRGP4 $429
+ADDRGP4 $431
 ASGNP4
 ADDRLP4 348
 INDIRP4
@@ -7334,10 +7334,10 @@ ASGNI4
 ADDRLP4 352
 INDIRI4
 CNSTI4 0
-NEI4 $573
+NEI4 $575
 line 1206
 ;1206:			Com_Printf( "Failed to load skin file: %s : %s\n", modelName, skinName );
-ADDRGP4 $575
+ADDRGP4 $577
 ARGP4
 ADDRLP4 128
 ARGP4
@@ -7350,13 +7350,13 @@ line 1207
 ;1207:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $541
+ADDRGP4 $543
 JUMPV
-LABELV $573
+LABELV $575
 line 1209
 ;1208:		}
 ;1209:	}
-LABELV $571
+LABELV $573
 line 1212
 ;1210:
 ;1211:	// load the animations
@@ -7365,7 +7365,7 @@ ADDRLP4 0
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $576
+ADDRGP4 $578
 ARGP4
 ADDRLP4 128
 ARGP4
@@ -7388,14 +7388,14 @@ ASGNI4
 ADDRLP4 348
 INDIRI4
 CNSTI4 0
-NEI4 $577
+NEI4 $579
 line 1214
 ;1214:		Com_sprintf( filename, sizeof( filename ), "models/players/characters/%s/animation.cfg", modelName );
 ADDRLP4 0
 ARGP4
 CNSTI4 64
 ARGI4
-ADDRGP4 $579
+ADDRGP4 $581
 ARGP4
 ADDRLP4 128
 ARGP4
@@ -7418,10 +7418,10 @@ ASGNI4
 ADDRLP4 352
 INDIRI4
 CNSTI4 0
-NEI4 $580
+NEI4 $582
 line 1216
 ;1216:			Com_Printf( "Failed to load animation file %s\n", filename );
-ADDRGP4 $582
+ADDRGP4 $584
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -7432,19 +7432,19 @@ line 1217
 ;1217:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $541
+ADDRGP4 $543
 JUMPV
-LABELV $580
+LABELV $582
 line 1219
 ;1218:		}
 ;1219:	}
-LABELV $577
+LABELV $579
 line 1221
 ;1220:
 ;1221:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $541
+LABELV $543
 endproc UI_RegisterClientModelname 356 24
 export UI_PlayerInfo_SetModel
 proc UI_PlayerInfo_SetModel 12 16
@@ -7579,7 +7579,7 @@ CALLV
 pop
 line 1241
 ;1241:}
-LABELV $583
+LABELV $585
 endproc UI_PlayerInfo_SetModel 12 16
 export UI_PlayerInfo_SetInfo
 proc UI_PlayerInfo_SetInfo 36 8
@@ -7637,7 +7637,7 @@ CNSTI4 1256
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $585
+EQI4 $587
 line 1262
 ;1262:		pi->newModel = qfalse;
 ADDRFP4 0
@@ -7737,7 +7737,7 @@ line 1275
 ADDRFP4 20
 INDIRI4
 CNSTI4 -1
-EQI4 $584
+EQI4 $586
 line 1276
 ;1276:			pi->weapon = weaponNumber;
 ADDRFP4 0
@@ -7804,9 +7804,9 @@ line 1282
 line 1284
 ;1283:
 ;1284:		return;
-ADDRGP4 $584
+ADDRGP4 $586
 JUMPV
-LABELV $585
+LABELV $587
 line 1288
 ;1285:	}
 ;1286:
@@ -7815,7 +7815,7 @@ line 1288
 ADDRFP4 20
 INDIRI4
 CNSTI4 -1
-NEI4 $589
+NEI4 $591
 line 1289
 ;1289:		pi->pendingWeapon = -1;
 ADDRFP4 0
@@ -7834,15 +7834,15 @@ CNSTI4 0
 ASGNI4
 line 1291
 ;1291:	}
-ADDRGP4 $590
+ADDRGP4 $592
 JUMPV
-LABELV $589
+LABELV $591
 line 1292
 ;1292:	else if ( weaponNumber != WP_NONE ) {
 ADDRFP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $591
+EQI4 $593
 line 1293
 ;1293:		pi->pendingWeapon = weaponNumber;
 ADDRFP4 0
@@ -7865,8 +7865,8 @@ ADDI4
 ASGNI4
 line 1295
 ;1295:	}
-LABELV $591
-LABELV $590
+LABELV $593
+LABELV $592
 line 1296
 ;1296:	weaponNum = pi->lastWeapon;
 ADDRLP4 4
@@ -7895,13 +7895,13 @@ ADDRFP4 8
 INDIRI4
 ADDRLP4 8
 INDIRI4
-EQI4 $595
+EQI4 $597
 ADDRFP4 4
 INDIRI4
 ADDRLP4 8
 INDIRI4
-NEI4 $593
-LABELV $595
+NEI4 $595
+LABELV $597
 line 1300
 ;1300:		torsoAnim = legsAnim = BOTH_DEATH1;
 ADDRLP4 12
@@ -8004,9 +8004,9 @@ pop
 line 1311
 ;1310:
 ;1311:		return;
-ADDRGP4 $584
+ADDRGP4 $586
 JUMPV
-LABELV $593
+LABELV $595
 line 1315
 ;1312:	}
 ;1313:
@@ -8030,17 +8030,17 @@ ADDRFP4 4
 INDIRI4
 ADDRLP4 12
 INDIRI4
-EQI4 $596
+EQI4 $598
 ADDRLP4 0
 INDIRI4
 ADDRLP4 12
 INDIRI4
-EQI4 $598
+EQI4 $600
 ADDRLP4 0
 INDIRI4
 CNSTI4 19
-NEI4 $596
-LABELV $598
+NEI4 $598
+LABELV $600
 line 1317
 ;1317:		pi->pendingLegsAnim = legsAnim;
 ADDRFP4 0
@@ -8052,16 +8052,16 @@ INDIRI4
 ASGNI4
 line 1318
 ;1318:	}
-ADDRGP4 $597
+ADDRGP4 $599
 JUMPV
-LABELV $596
+LABELV $598
 line 1319
 ;1319:	else if ( legsAnim != currentAnim ) {
 ADDRFP4 4
 INDIRI4
 ADDRLP4 0
 INDIRI4
-EQI4 $599
+EQI4 $601
 line 1320
 ;1320:		jumpHeight = 0;
 ADDRGP4 jumpHeight
@@ -8088,8 +8088,8 @@ CALLV
 pop
 line 1323
 ;1323:	}
+LABELV $601
 LABELV $599
-LABELV $597
 line 1326
 ;1324:
 ;1325:	// torso animation
@@ -8101,23 +8101,23 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 11
-EQI4 $603
+EQI4 $605
 ADDRLP4 20
 INDIRI4
 CNSTI4 12
-NEI4 $601
-LABELV $603
+NEI4 $603
+LABELV $605
 line 1327
 ;1327:		if ( weaponNum == WP_NONE || weaponNum == WP_GAUNTLET ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $606
+EQI4 $608
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
-NEI4 $604
-LABELV $606
+NEI4 $606
+LABELV $608
 line 1328
 ;1328:			torsoAnim = TORSO_STAND2;
 ADDRFP4 8
@@ -8125,9 +8125,9 @@ CNSTI4 12
 ASGNI4
 line 1329
 ;1329:		}
-ADDRGP4 $605
+ADDRGP4 $607
 JUMPV
-LABELV $604
+LABELV $606
 line 1330
 ;1330:		else {
 line 1331
@@ -8137,10 +8137,10 @@ CNSTI4 11
 ASGNI4
 line 1332
 ;1332:		}
-LABELV $605
+LABELV $607
 line 1333
 ;1333:	}
-LABELV $601
+LABELV $603
 line 1335
 ;1334:
 ;1335:	if ( torsoAnim == TORSO_ATTACK || torsoAnim == TORSO_ATTACK2 ) {
@@ -8151,23 +8151,23 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 7
-EQI4 $609
+EQI4 $611
 ADDRLP4 24
 INDIRI4
 CNSTI4 8
-NEI4 $607
-LABELV $609
+NEI4 $609
+LABELV $611
 line 1336
 ;1336:		if ( weaponNum == WP_NONE || weaponNum == WP_GAUNTLET ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $612
+EQI4 $614
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
-NEI4 $610
-LABELV $612
+NEI4 $612
+LABELV $614
 line 1337
 ;1337:			torsoAnim = TORSO_ATTACK2;
 ADDRFP4 8
@@ -8175,9 +8175,9 @@ CNSTI4 8
 ASGNI4
 line 1338
 ;1338:		}
-ADDRGP4 $611
+ADDRGP4 $613
 JUMPV
-LABELV $610
+LABELV $612
 line 1339
 ;1339:		else {
 line 1340
@@ -8187,7 +8187,7 @@ CNSTI4 7
 ASGNI4
 line 1341
 ;1341:		}
-LABELV $611
+LABELV $613
 line 1342
 ;1342:		pi->muzzleFlashTime = dp_realtime + UI_TIMER_MUZZLE_FLASH;
 ADDRFP4 0
@@ -8202,7 +8202,7 @@ ASGNI4
 line 1344
 ;1343:		//FIXME play firing sound here
 ;1344:	}
-LABELV $607
+LABELV $609
 line 1346
 ;1345:
 ;1346:	currentAnim = pi->torsoAnim & ~ANIM_TOGGLEBIT;
@@ -8225,16 +8225,16 @@ INDIRP4
 CNSTI4 1208
 ADDP4
 INDIRI4
-NEI4 $616
+NEI4 $618
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-EQI4 $616
+EQI4 $618
 ADDRLP4 0
 INDIRI4
 CNSTI4 9
-NEI4 $613
-LABELV $616
+NEI4 $615
+LABELV $618
 line 1349
 ;1349:		pi->pendingTorsoAnim = torsoAnim;
 ADDRFP4 0
@@ -8246,25 +8246,25 @@ INDIRI4
 ASGNI4
 line 1350
 ;1350:	}
-ADDRGP4 $614
+ADDRGP4 $616
 JUMPV
-LABELV $613
+LABELV $615
 line 1351
 ;1351:	else if ( ( currentAnim == TORSO_GESTURE || currentAnim == TORSO_ATTACK ) && ( torsoAnim != currentAnim ) ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 6
-EQI4 $619
+EQI4 $621
 ADDRLP4 0
 INDIRI4
 CNSTI4 7
-NEI4 $617
-LABELV $619
+NEI4 $619
+LABELV $621
 ADDRFP4 8
 INDIRI4
 ADDRLP4 0
 INDIRI4
-EQI4 $617
+EQI4 $619
 line 1352
 ;1352:		pi->pendingTorsoAnim = torsoAnim;
 ADDRFP4 0
@@ -8276,16 +8276,16 @@ INDIRI4
 ASGNI4
 line 1353
 ;1353:	}
-ADDRGP4 $618
+ADDRGP4 $620
 JUMPV
-LABELV $617
+LABELV $619
 line 1354
 ;1354:	else if ( torsoAnim != currentAnim ) {
 ADDRFP4 8
 INDIRI4
 ADDRLP4 0
 INDIRI4
-EQI4 $620
+EQI4 $622
 line 1355
 ;1355:		pi->pendingTorsoAnim = 0;
 ADDRFP4 0
@@ -8307,12 +8307,12 @@ CALLV
 pop
 line 1357
 ;1357:	}
+LABELV $622
 LABELV $620
-LABELV $618
-LABELV $614
+LABELV $616
 line 1358
 ;1358:}
-LABELV $584
+LABELV $586
 endproc UI_PlayerInfo_SetInfo 36 8
 bss
 align 4
@@ -8666,6 +8666,7 @@ import ui_marks
 import ui_drawCrosshairNames
 import ui_drawCrosshair
 import ui_brassTime
+import ui_browserMasterNum
 import ui_browserShowEmpty
 import ui_browserShowFull
 import ui_browserSortKey
@@ -8756,6 +8757,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
 import BG_FindItemForPowerup
@@ -8858,6 +8860,8 @@ import _VectorAdd
 import _VectorSubtract
 import _DotProduct
 import SnapVectorTowards
+import tonextint
+import init_tonextint
 import ByteToDir
 import DirToByte
 import ClampShort
@@ -8918,7 +8922,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $582
+LABELV $584
 byte 1 70
 byte 1 97
 byte 1 105
@@ -8954,7 +8958,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $579
+LABELV $581
 byte 1 109
 byte 1 111
 byte 1 100
@@ -8999,7 +9003,7 @@ byte 1 102
 byte 1 103
 byte 1 0
 align 1
-LABELV $576
+LABELV $578
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9033,7 +9037,7 @@ byte 1 102
 byte 1 103
 byte 1 0
 align 1
-LABELV $575
+LABELV $577
 byte 1 70
 byte 1 97
 byte 1 105
@@ -9070,7 +9074,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $566
+LABELV $568
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9099,7 +9103,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $563
+LABELV $565
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9132,7 +9136,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $558
+LABELV $560
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9173,7 +9177,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $555
+LABELV $557
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9203,7 +9207,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $554
+LABELV $556
 byte 1 70
 byte 1 97
 byte 1 105
@@ -9235,7 +9239,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $551
+LABELV $553
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9276,7 +9280,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $548
+LABELV $550
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9306,7 +9310,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $540
+LABELV $542
 byte 1 69
 byte 1 114
 byte 1 114
@@ -9341,7 +9345,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $519
+LABELV $521
 byte 1 117
 byte 1 110
 byte 1 107
@@ -9369,13 +9373,13 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $514
+LABELV $516
 byte 1 115
 byte 1 101
 byte 1 120
 byte 1 0
 align 1
-LABELV $505
+LABELV $507
 byte 1 104
 byte 1 101
 byte 1 97
@@ -9388,7 +9392,7 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $500
+LABELV $502
 byte 1 102
 byte 1 111
 byte 1 111
@@ -9400,7 +9404,7 @@ byte 1 112
 byte 1 115
 byte 1 0
 align 1
-LABELV $492
+LABELV $494
 byte 1 70
 byte 1 105
 byte 1 108
@@ -9420,21 +9424,21 @@ byte 1 103
 byte 1 10
 byte 1 0
 align 1
-LABELV $482
+LABELV $484
 byte 1 115
 byte 1 107
 byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $481
+LABELV $483
 byte 1 104
 byte 1 101
 byte 1 97
 byte 1 100
 byte 1 0
 align 1
-LABELV $478
+LABELV $480
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9479,7 +9483,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $477
+LABELV $479
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9527,7 +9531,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $472
+LABELV $474
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9561,7 +9565,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $471
+LABELV $473
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9598,7 +9602,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $468
+LABELV $470
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9643,7 +9647,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $467
+LABELV $469
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9691,7 +9695,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $462
+LABELV $464
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9725,7 +9729,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $461
+LABELV $463
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9762,7 +9766,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $450
+LABELV $452
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9793,7 +9797,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $449
+LABELV $451
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9826,7 +9830,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $444
+LABELV $446
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9860,7 +9864,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $443
+LABELV $445
 byte 1 109
 byte 1 111
 byte 1 100
@@ -9896,10 +9900,10 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $433
+LABELV $435
 byte 1 0
 align 1
-LABELV $432
+LABELV $434
 byte 1 104
 byte 1 101
 byte 1 97
@@ -9908,7 +9912,7 @@ byte 1 115
 byte 1 47
 byte 1 0
 align 1
-LABELV $429
+LABELV $431
 byte 1 100
 byte 1 101
 byte 1 102
@@ -9918,7 +9922,7 @@ byte 1 108
 byte 1 116
 byte 1 0
 align 1
-LABELV $420
+LABELV $422
 byte 1 115
 byte 1 112
 byte 1 114
@@ -9937,7 +9941,7 @@ byte 1 110
 byte 1 51
 byte 1 0
 align 1
-LABELV $411
+LABELV $413
 byte 1 116
 byte 1 97
 byte 1 103
@@ -9949,7 +9953,7 @@ byte 1 115
 byte 1 104
 byte 1 0
 align 1
-LABELV $404
+LABELV $406
 byte 1 116
 byte 1 97
 byte 1 103
@@ -9962,7 +9966,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $387
+LABELV $389
 byte 1 116
 byte 1 97
 byte 1 103
@@ -9975,7 +9979,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $381
+LABELV $383
 byte 1 116
 byte 1 97
 byte 1 103
@@ -9986,7 +9990,7 @@ byte 1 97
 byte 1 100
 byte 1 0
 align 1
-LABELV $373
+LABELV $375
 byte 1 116
 byte 1 97
 byte 1 103
@@ -9998,7 +10002,7 @@ byte 1 115
 byte 1 111
 byte 1 0
 align 1
-LABELV $183
+LABELV $185
 byte 1 66
 byte 1 97
 byte 1 100
@@ -10025,7 +10029,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $111
+LABELV $113
 byte 1 95
 byte 1 102
 byte 1 108
@@ -10038,7 +10042,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $110
+LABELV $112
 byte 1 95
 byte 1 98
 byte 1 97

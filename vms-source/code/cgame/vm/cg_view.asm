@@ -872,14 +872,14 @@ GTI4 $262
 line 218
 ;218:		focusAngles[YAW] = cg.predictedPlayerState.stats[STAT_DEAD_YAW];
 ADDRLP4 48+4
-ADDRGP4 cg+107636+184+16
+ADDRGP4 cg+107636+184+20
 INDIRI4
 CVIF4 4
 ASGNF4
 line 219
 ;219:		cg.refdefViewAngles[YAW] = cg.predictedPlayerState.stats[STAT_DEAD_YAW];
 ADDRGP4 cg+109416+4
-ADDRGP4 cg+107636+184+16
+ADDRGP4 cg+107636+184+20
 INDIRI4
 CVIF4 4
 ASGNF4
@@ -1454,7 +1454,7 @@ CNSTI4 4
 ADDP4
 ADDRGP4 cg+36
 INDIRP4
-CNSTI4 244
+CNSTI4 248
 ADDP4
 INDIRI4
 CVIF4 4
@@ -3007,7 +3007,7 @@ ASGNF4
 line 631
 ;631:	ent.customShader = cgs.media.viewBloodShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+152852+216
+ADDRGP4 cgs+152852+248
 INDIRI4
 ASGNI4
 line 632
@@ -3600,7 +3600,7 @@ INDIRI4
 ARGI4
 CNSTI4 4
 ARGI4
-ADDRGP4 cgs+152852+564
+ADDRGP4 cgs+152852+656
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
@@ -4453,6 +4453,12 @@ import CG_BigExplode
 import CG_GibPlayerHeadshot
 import CG_GibPlayer
 import CG_ScorePlum
+import CG_LightningBoltBeam
+import CG_InvulnerabilityJuiced
+import CG_InvulnerabilityImpact
+import CG_ObeliskPain
+import CG_ObeliskExplode
+import CG_KamikazeEffect
 import CG_SpawnEffect
 import CG_BubbleTrail
 import CG_SmokePuff
@@ -4584,6 +4590,17 @@ import cg_cmdTimeNudge
 import cg_drawBBox
 import cg_debugDelag
 import cg_delag
+import cg_obeliskRespawnDelay
+import cg_recordSPDemoName
+import cg_recordSPDemo
+import cg_singlePlayerActive
+import cg_enableBreath
+import cg_enableDust
+import cg_singlePlayer
+import cg_currentSelectedPlayerName
+import cg_currentSelectedPlayer
+import cg_blueTeamName
+import cg_redTeamName
 import cg_trueLightning
 import cg_oldPlasma
 import cg_oldRocket

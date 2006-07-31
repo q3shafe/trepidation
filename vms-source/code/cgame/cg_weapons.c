@@ -1658,9 +1658,10 @@ void CG_NextWeapon_f( void ) {
 		if ( cg.weaponSelect == 16 ) {
 			cg.weaponSelect = 0;
 		}
+		/* - You can now scroll wheel to the gauntlet
 		if ( cg.weaponSelect == WP_GAUNTLET ) {
 			continue;		// never cycle to gauntlet
-		}
+		}*/ 
 		if ( CG_WeaponSelectable( cg.weaponSelect ) ) {
 			break;
 		}

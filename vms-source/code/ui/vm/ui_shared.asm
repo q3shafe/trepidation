@@ -124,7 +124,7 @@ ADDRFP4 0
 INDIRI4
 ADDI4
 CNSTI4 1048576
-LEI4 $41
+LEI4 $43
 line 75
 ;75:		outOfMemory = qtrue;
 ADDRGP4 outOfMemory
@@ -139,10 +139,10 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $43
+EQU4 $45
 line 77
 ;77:			DC->Print("UI_Alloc: Failure. Out of memory!\n");
-ADDRGP4 $45
+ADDRGP4 $47
 ARGP4
 ADDRGP4 DC
 INDIRP4
@@ -153,15 +153,15 @@ CALLV
 pop
 line 78
 ;78:		}
-LABELV $43
+LABELV $45
 line 80
 ;79:    //DC->trap_Print(S_COLOR_YELLOW"WARNING: UI Out of Memory!\n");
 ;80:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $40
+ADDRGP4 $42
 JUMPV
-LABELV $41
+LABELV $43
 line 83
 ;81:	}
 ;82:
@@ -197,7 +197,7 @@ line 87
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $40
+LABELV $42
 endproc UI_Alloc 8 4
 export UI_InitMemory
 proc UI_InitMemory 0 0
@@ -222,7 +222,7 @@ CNSTI4 0
 ASGNI4
 line 98
 ;98:}
-LABELV $46
+LABELV $48
 endproc UI_InitMemory 0 0
 export UI_OutOfMemory
 proc UI_OutOfMemory 0 0
@@ -234,7 +234,7 @@ line 101
 ADDRGP4 outOfMemory
 INDIRI4
 RETI4
-LABELV $47
+LABELV $49
 endproc UI_OutOfMemory 0 0
 proc hashForString 16 4
 line 114
@@ -265,9 +265,9 @@ line 120
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $50
+ADDRGP4 $52
 JUMPV
-LABELV $49
+LABELV $51
 line 121
 ;121:	while (str[i] != '\0') {
 line 122
@@ -314,7 +314,7 @@ ADDI4
 ASGNI4
 line 125
 ;125:	}
-LABELV $50
+LABELV $52
 line 121
 ADDRLP4 0
 INDIRI4
@@ -324,7 +324,7 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $49
+NEI4 $51
 line 126
 ;126:	hash &= (HASH_TABLE_SIZE-1);
 ADDRLP4 8
@@ -338,7 +338,7 @@ line 127
 ADDRLP4 8
 INDIRI4
 RETI4
-LABELV $48
+LABELV $50
 endproc hashForString 16 4
 data
 align 4
@@ -348,8 +348,8 @@ align 4
 LABELV strHandleCount
 byte 4 0
 align 4
-LABELV $53
-address $54
+LABELV $55
+address $56
 export String_Alloc
 code
 proc String_Alloc 44 8
@@ -380,14 +380,14 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $55
+NEU4 $57
 line 149
 ;149:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $52
+ADDRGP4 $54
 JUMPV
-LABELV $55
+LABELV $57
 line 152
 ;150:	}
 ;151:
@@ -397,15 +397,15 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $57
+NEI4 $59
 line 153
 ;153:		return staticNULL;
-ADDRGP4 $53
+ADDRGP4 $55
 INDIRP4
 RETP4
-ADDRGP4 $52
+ADDRGP4 $54
 JUMPV
-LABELV $57
+LABELV $59
 line 156
 ;154:	}
 ;155:
@@ -433,9 +433,9 @@ ADDRGP4 strHandle
 ADDP4
 INDIRP4
 ASGNP4
-ADDRGP4 $60
+ADDRGP4 $62
 JUMPV
-LABELV $59
+LABELV $61
 line 159
 ;159:	while (str) {
 line 160
@@ -456,7 +456,7 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-NEI4 $62
+NEI4 $64
 line 161
 ;161:			return str->str;
 ADDRLP4 0
@@ -465,9 +465,9 @@ CNSTI4 4
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $52
+ADDRGP4 $54
 JUMPV
-LABELV $62
+LABELV $64
 line 163
 ;162:		}
 ;163:		str = str->next;
@@ -478,13 +478,13 @@ INDIRP4
 ASGNP4
 line 164
 ;164:	}
-LABELV $60
+LABELV $62
 line 159
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $59
+NEU4 $61
 line 166
 ;165:
 ;166:	len = strlen(p);
@@ -509,7 +509,7 @@ ADDI4
 CNSTI4 1
 ADDI4
 CNSTI4 393216
-GEI4 $64
+GEI4 $66
 line 168
 ;168:		int ph = strPoolIndex;
 ADDRLP4 24
@@ -563,9 +563,9 @@ ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-ADDRGP4 $67
+ADDRGP4 $69
 JUMPV
-LABELV $66
+LABELV $68
 line 174
 ;174:		while (str && str->next) {
 line 175
@@ -583,7 +583,7 @@ INDIRP4
 ASGNP4
 line 177
 ;177:		}
-LABELV $67
+LABELV $69
 line 174
 ADDRLP4 36
 CNSTU4 0
@@ -593,15 +593,15 @@ INDIRP4
 CVPU4 4
 ADDRLP4 36
 INDIRU4
-EQU4 $69
+EQU4 $71
 ADDRLP4 0
 INDIRP4
 INDIRP4
 CVPU4 4
 ADDRLP4 36
 INDIRU4
-NEU4 $66
-LABELV $69
+NEU4 $68
+LABELV $71
 line 179
 ;178:
 ;179:		str  = UI_Alloc(sizeof(stringDef_t));
@@ -638,7 +638,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $70
+EQU4 $72
 line 183
 ;183:			last->next = str;
 ADDRLP4 4
@@ -648,9 +648,9 @@ INDIRP4
 ASGNP4
 line 184
 ;184:		} else {
-ADDRGP4 $71
+ADDRGP4 $73
 JUMPV
-LABELV $70
+LABELV $72
 line 185
 ;185:			strHandle[hash] = str;
 ADDRLP4 8
@@ -664,7 +664,7 @@ INDIRP4
 ASGNP4
 line 186
 ;186:		}
-LABELV $71
+LABELV $73
 line 187
 ;187:		return &strPool[ph];
 ADDRLP4 24
@@ -672,15 +672,15 @@ INDIRI4
 ADDRGP4 strPool
 ADDP4
 RETP4
-ADDRGP4 $52
+ADDRGP4 $54
 JUMPV
-LABELV $64
+LABELV $66
 line 189
 ;188:	}
 ;189:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $52
+LABELV $54
 endproc String_Alloc 44 8
 export String_Report
 proc String_Report 4 16
@@ -691,14 +691,14 @@ line 192
 line 194
 ;193:	float f;
 ;194:	Com_Printf("Memory/String Pool Info\n");
-ADDRGP4 $73
+ADDRGP4 $75
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
 pop
 line 195
 ;195:	Com_Printf("----------------\n");
-ADDRGP4 $74
+ADDRGP4 $76
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
@@ -728,7 +728,7 @@ MULF4
 ASGNF4
 line 199
 ;199:	Com_Printf("String Pool is %.1f%% full, %i bytes out of %i used.\n", f, strPoolIndex, STRING_POOL_SIZE);
-ADDRGP4 $75
+ADDRGP4 $77
 ARGP4
 ADDRLP4 0
 INDIRF4
@@ -766,7 +766,7 @@ MULF4
 ASGNF4
 line 203
 ;203:	Com_Printf("Memory Pool is %.1f%% full, %i bytes out of %i used.\n", f, allocPoint, MEM_POOL_SIZE);
-ADDRGP4 $76
+ADDRGP4 $78
 ARGP4
 ADDRLP4 0
 INDIRF4
@@ -781,7 +781,7 @@ CALLV
 pop
 line 204
 ;204:}
-LABELV $72
+LABELV $74
 endproc String_Report 4 16
 export String_Init
 proc String_Init 12 0
@@ -799,7 +799,7 @@ line 213
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $78
+LABELV $80
 line 214
 ;214:		strHandle[i] = 0;
 ADDRLP4 0
@@ -812,7 +812,7 @@ CNSTP4 0
 ASGNP4
 line 215
 ;215:	}
-LABELV $79
+LABELV $81
 line 213
 ADDRLP4 0
 ADDRLP4 0
@@ -823,7 +823,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 2048
-LTI4 $78
+LTI4 $80
 line 216
 ;216:	strHandleCount = 0;
 ADDRGP4 strHandleCount
@@ -873,7 +873,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 8
 INDIRU4
-EQU4 $82
+EQU4 $84
 ADDRLP4 4
 INDIRP4
 CNSTI4 140
@@ -882,7 +882,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 8
 INDIRU4
-EQU4 $82
+EQU4 $84
 line 224
 ;224:		Controls_GetConfig();
 ADDRGP4 Controls_GetConfig
@@ -890,14 +890,14 @@ CALLV
 pop
 line 225
 ;225:	}
-LABELV $82
+LABELV $84
 line 226
 ;226:}
-LABELV $77
+LABELV $79
 endproc String_Init 12 0
 bss
 align 1
-LABELV $85
+LABELV $87
 skip 4096
 export PC_SourceWarning
 code
@@ -922,7 +922,7 @@ ADDRFP4 4+4
 ASGNP4
 line 240
 ;240:	vsprintf (string, format, argptr);
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -964,25 +964,25 @@ pop
 line 247
 ;246:
 ;247:	Com_Printf(S_COLOR_YELLOW "WARNING: %s, line %d: %s\n", filename, line, string);
-ADDRGP4 $87
+ADDRGP4 $89
 ARGP4
 ADDRLP4 4
 ARGP4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $85
+ADDRGP4 $87
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
 pop
 line 248
 ;248:}
-LABELV $84
+LABELV $86
 endproc PC_SourceWarning 136 16
 bss
 align 1
-LABELV $89
+LABELV $91
 skip 4096
 export PC_SourceError
 code
@@ -1007,7 +1007,7 @@ ADDRFP4 4+4
 ASGNP4
 line 262
 ;262:	vsprintf (string, format, argptr);
-ADDRGP4 $89
+ADDRGP4 $91
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -1049,21 +1049,21 @@ pop
 line 269
 ;268:
 ;269:	Com_Printf(S_COLOR_RED "ERROR: %s, line %d: %s\n", filename, line, string);
-ADDRGP4 $91
+ADDRGP4 $93
 ARGP4
 ADDRLP4 4
 ARGP4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $89
+ADDRGP4 $91
 ARGP4
 ADDRGP4 Com_Printf
 CALLV
 pop
 line 270
 ;270:}
-LABELV $88
+LABELV $90
 endproc PC_SourceError 136 16
 export LerpColor
 proc LerpColor 12 0
@@ -1084,7 +1084,7 @@ line 282
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $93
+LABELV $95
 line 283
 ;283:	{
 line 284
@@ -1135,7 +1135,7 @@ INDIRP4
 ADDP4
 INDIRF4
 CNSTF4 0
-GEF4 $97
+GEF4 $99
 line 286
 ;286:			c[i] = 0;
 ADDRLP4 0
@@ -1147,9 +1147,9 @@ INDIRP4
 ADDP4
 CNSTF4 0
 ASGNF4
-ADDRGP4 $98
+ADDRGP4 $100
 JUMPV
-LABELV $97
+LABELV $99
 line 287
 ;287:		else if (c[i] > 1.0)
 ADDRLP4 0
@@ -1161,7 +1161,7 @@ INDIRP4
 ADDP4
 INDIRF4
 CNSTF4 1065353216
-LEF4 $99
+LEF4 $101
 line 288
 ;288:			c[i] = 1.0;
 ADDRLP4 0
@@ -1173,11 +1173,11 @@ INDIRP4
 ADDP4
 CNSTF4 1065353216
 ASGNF4
-LABELV $99
-LABELV $98
+LABELV $101
+LABELV $100
 line 289
 ;289:	}
-LABELV $94
+LABELV $96
 line 282
 ADDRLP4 0
 ADDRLP4 0
@@ -1188,10 +1188,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $93
+LTI4 $95
 line 290
 ;290:}
-LABELV $92
+LABELV $94
 endproc LerpColor 12 0
 export Float_Parse
 proc Float_Parse 16 8
@@ -1225,13 +1225,13 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $102
+EQU4 $104
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $102
+EQI4 $104
 line 301
 ;301:		*f = atof(token);
 ADDRLP4 0
@@ -1250,16 +1250,16 @@ line 302
 ;302:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $101
+ADDRGP4 $103
 JUMPV
-LABELV $102
+LABELV $104
 line 303
 ;303:	} else {
 line 304
 ;304:		return qfalse;
 CNSTI4 0
 RETI4
-LABELV $101
+LABELV $103
 endproc Float_Parse 16 8
 export PC_Float_Parse
 proc PC_Float_Parse 1052 12
@@ -1294,21 +1294,21 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-NEI4 $105
+NEI4 $107
 line 318
 ;318:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $104
+ADDRGP4 $106
 JUMPV
-LABELV $105
+LABELV $107
 line 319
 ;319:	if (token.string[0] == '-') {
 ADDRLP4 0+16
 INDIRI1
 CVII4 1
 CNSTI4 45
-NEI4 $107
+NEI4 $109
 line 320
 ;320:		if (!trap_PC_ReadToken(handle, &token))
 ADDRFP4 0
@@ -1323,14 +1323,14 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-NEI4 $110
+NEI4 $112
 line 321
 ;321:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $104
+ADDRGP4 $106
 JUMPV
-LABELV $110
+LABELV $112
 line 322
 ;322:		negative = qtrue;
 ADDRLP4 1040
@@ -1338,19 +1338,19 @@ CNSTI4 1
 ASGNI4
 line 323
 ;323:	}
-LABELV $107
+LABELV $109
 line 324
 ;324:	if (token.type != TT_NUMBER) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-EQI4 $112
+EQI4 $114
 line 325
 ;325:		PC_SourceError(handle, "expected float but found %s\n", token.string);
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $114
+ADDRGP4 $116
 ARGP4
 ADDRLP4 0+16
 ARGP4
@@ -1361,16 +1361,16 @@ line 326
 ;326:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $104
+ADDRGP4 $106
 JUMPV
-LABELV $112
+LABELV $114
 line 328
 ;327:	}
 ;328:	if (negative)
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-EQI4 $116
+EQI4 $118
 line 329
 ;329:		*f = -token.floatvalue;
 ADDRFP4 4
@@ -1379,9 +1379,9 @@ ADDRLP4 0+12
 INDIRF4
 NEGF4
 ASGNF4
-ADDRGP4 $117
+ADDRGP4 $119
 JUMPV
-LABELV $116
+LABELV $118
 line 331
 ;330:	else
 ;331:		*f = token.floatvalue;
@@ -1390,12 +1390,12 @@ INDIRP4
 ADDRLP4 0+12
 INDIRF4
 ASGNF4
-LABELV $117
+LABELV $119
 line 332
 ;332:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $104
+LABELV $106
 endproc PC_Float_Parse 1052 12
 export Color_Parse
 proc Color_Parse 12 8
@@ -1416,7 +1416,7 @@ line 344
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $121
+LABELV $123
 line 345
 ;345:		if (!Float_Parse(p, &f)) {
 ADDRFP4 0
@@ -1431,14 +1431,14 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $125
+NEI4 $127
 line 346
 ;346:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $120
+ADDRGP4 $122
 JUMPV
-LABELV $125
+LABELV $127
 line 348
 ;347:		}
 ;348:		(*c)[i] = f;
@@ -1454,7 +1454,7 @@ INDIRF4
 ASGNF4
 line 349
 ;349:	}
-LABELV $122
+LABELV $124
 line 344
 ADDRLP4 0
 ADDRLP4 0
@@ -1465,12 +1465,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $121
+LTI4 $123
 line 350
 ;350:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $120
+LABELV $122
 endproc Color_Parse 12 8
 export PC_Color_Parse
 proc PC_Color_Parse 12 8
@@ -1491,7 +1491,7 @@ line 362
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $128
+LABELV $130
 line 363
 ;363:		if (!PC_Float_Parse(handle, &f)) {
 ADDRFP4 0
@@ -1506,14 +1506,14 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $132
+NEI4 $134
 line 364
 ;364:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $127
+ADDRGP4 $129
 JUMPV
-LABELV $132
+LABELV $134
 line 366
 ;365:		}
 ;366:		(*c)[i] = f;
@@ -1529,7 +1529,7 @@ INDIRF4
 ASGNF4
 line 367
 ;367:	}
-LABELV $129
+LABELV $131
 line 362
 ADDRLP4 0
 ADDRLP4 0
@@ -1540,12 +1540,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $128
+LTI4 $130
 line 368
 ;368:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $127
+LABELV $129
 endproc PC_Color_Parse 12 8
 export Int_Parse
 proc Int_Parse 16 8
@@ -1581,13 +1581,13 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $135
+EQU4 $137
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $135
+EQI4 $137
 line 381
 ;381:		*i = atoi(token);
 ADDRLP4 0
@@ -1606,16 +1606,16 @@ line 382
 ;382:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $134
+ADDRGP4 $136
 JUMPV
-LABELV $135
+LABELV $137
 line 383
 ;383:	} else {
 line 384
 ;384:		return qfalse;
 CNSTI4 0
 RETI4
-LABELV $134
+LABELV $136
 endproc Int_Parse 16 8
 export PC_Int_Parse
 proc PC_Int_Parse 1052 12
@@ -1650,21 +1650,21 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-NEI4 $138
+NEI4 $140
 line 398
 ;398:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $138
+LABELV $140
 line 399
 ;399:	if (token.string[0] == '-') {
 ADDRLP4 0+16
 INDIRI1
 CVII4 1
 CNSTI4 45
-NEI4 $140
+NEI4 $142
 line 400
 ;400:		if (!trap_PC_ReadToken(handle, &token))
 ADDRFP4 0
@@ -1679,14 +1679,14 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-NEI4 $143
+NEI4 $145
 line 401
 ;401:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $143
+LABELV $145
 line 402
 ;402:		negative = qtrue;
 ADDRLP4 1040
@@ -1694,19 +1694,19 @@ CNSTI4 1
 ASGNI4
 line 403
 ;403:	}
-LABELV $140
+LABELV $142
 line 404
 ;404:	if (token.type != TT_NUMBER) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-EQI4 $145
+EQI4 $147
 line 405
 ;405:		PC_SourceError(handle, "expected integer but found %s\n", token.string);
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $147
+ADDRGP4 $149
 ARGP4
 ADDRLP4 0+16
 ARGP4
@@ -1717,9 +1717,9 @@ line 406
 ;406:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $137
+ADDRGP4 $139
 JUMPV
-LABELV $145
+LABELV $147
 line 408
 ;407:	}
 ;408:	*i = token.intvalue;
@@ -1733,7 +1733,7 @@ line 409
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-EQI4 $150
+EQI4 $152
 line 410
 ;410:		*i = - *i;
 ADDRLP4 1048
@@ -1747,12 +1747,12 @@ INDIRP4
 INDIRI4
 NEGI4
 ASGNI4
-LABELV $150
+LABELV $152
 line 411
 ;411:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $137
+LABELV $139
 endproc PC_Int_Parse 1052 12
 export Rect_Parse
 proc Rect_Parse 16 8
@@ -1780,7 +1780,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $153
+EQI4 $155
 line 421
 ;421:		if (Float_Parse(p, &r->y)) {
 ADDRFP4 0
@@ -1798,7 +1798,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $155
+EQI4 $157
 line 422
 ;422:			if (Float_Parse(p, &r->w)) {
 ADDRFP4 0
@@ -1816,7 +1816,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $157
+EQI4 $159
 line 423
 ;423:				if (Float_Parse(p, &r->h)) {
 ADDRFP4 0
@@ -1834,29 +1834,29 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $159
+EQI4 $161
 line 424
 ;424:					return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $152
+ADDRGP4 $154
 JUMPV
-LABELV $159
+LABELV $161
 line 426
 ;425:				}
 ;426:			}
-LABELV $157
+LABELV $159
 line 427
 ;427:		}
-LABELV $155
+LABELV $157
 line 428
 ;428:	}
-LABELV $153
+LABELV $155
 line 429
 ;429:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $152
+LABELV $154
 endproc Rect_Parse 16 8
 export PC_Rect_Parse
 proc PC_Rect_Parse 16 8
@@ -1884,7 +1884,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $162
+EQI4 $164
 line 439
 ;439:		if (PC_Float_Parse(handle, &r->y)) {
 ADDRFP4 0
@@ -1902,7 +1902,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $164
+EQI4 $166
 line 440
 ;440:			if (PC_Float_Parse(handle, &r->w)) {
 ADDRFP4 0
@@ -1920,7 +1920,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $166
+EQI4 $168
 line 441
 ;441:				if (PC_Float_Parse(handle, &r->h)) {
 ADDRFP4 0
@@ -1938,29 +1938,29 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $168
+EQI4 $170
 line 442
 ;442:					return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $161
+ADDRGP4 $163
 JUMPV
-LABELV $168
+LABELV $170
 line 444
 ;443:				}
 ;444:			}
-LABELV $166
+LABELV $168
 line 445
 ;445:		}
-LABELV $164
+LABELV $166
 line 446
 ;446:	}
-LABELV $162
+LABELV $164
 line 447
 ;447:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $161
+LABELV $163
 endproc PC_Rect_Parse 16 8
 export String_Parse
 proc String_Parse 16 8
@@ -1996,13 +1996,13 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $171
+EQU4 $173
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $171
+EQI4 $173
 line 460
 ;460:		*(out) = String_Alloc(token);
 ADDRLP4 0
@@ -2021,15 +2021,15 @@ line 461
 ;461:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $170
+ADDRGP4 $172
 JUMPV
-LABELV $171
+LABELV $173
 line 463
 ;462:	}
 ;463:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $170
+LABELV $172
 endproc String_Parse 16 8
 export PC_String_Parse
 proc PC_String_Parse 1048 8
@@ -2058,14 +2058,14 @@ ASGNI4
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-NEI4 $174
+NEI4 $176
 line 475
 ;475:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $173
+ADDRGP4 $175
 JUMPV
-LABELV $174
+LABELV $176
 line 477
 ;476:	
 ;477:	*(out) = String_Alloc(token.string);
@@ -2084,7 +2084,7 @@ line 478
 ;478:    return qtrue;
 CNSTI4 1
 RETI4
-LABELV $173
+LABELV $175
 endproc PC_String_Parse 1048 8
 export PC_Script_Parse
 proc PC_Script_Parse 2084 12
@@ -2128,19 +2128,19 @@ ASGNI4
 ADDRLP4 2064
 INDIRI4
 CNSTI4 0
-NEI4 $178
+NEI4 $180
 line 495
 ;495:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $177
+ADDRGP4 $179
 JUMPV
-LABELV $178
+LABELV $180
 line 496
 ;496:	if (Q_stricmp(token.string, "{") != 0) {
 ADDRLP4 0+16
 ARGP4
-ADDRGP4 $183
+ADDRGP4 $185
 ARGP4
 ADDRLP4 2068
 ADDRGP4 Q_stricmp
@@ -2149,14 +2149,14 @@ ASGNI4
 ADDRLP4 2068
 INDIRI4
 CNSTI4 0
-EQI4 $185
+EQI4 $187
 line 497
 ;497:	    return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $177
+ADDRGP4 $179
 JUMPV
-LABELV $184
+LABELV $186
 line 500
 ;498:	}
 ;499:
@@ -2175,20 +2175,20 @@ ASGNI4
 ADDRLP4 2072
 INDIRI4
 CNSTI4 0
-NEI4 $187
+NEI4 $189
 line 502
 ;502:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $177
+ADDRGP4 $179
 JUMPV
-LABELV $187
+LABELV $189
 line 504
 ;503:
 ;504:		if (Q_stricmp(token.string, "}") == 0) {
 ADDRLP4 0+16
 ARGP4
-ADDRGP4 $192
+ADDRGP4 $194
 ARGP4
 ADDRLP4 2076
 ADDRGP4 Q_stricmp
@@ -2197,7 +2197,7 @@ ASGNI4
 ADDRLP4 2076
 INDIRI4
 CNSTI4 0
-NEI4 $189
+NEI4 $191
 line 505
 ;505:			*out = String_Alloc(script);
 ADDRLP4 1040
@@ -2215,9 +2215,9 @@ line 506
 ;506:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $177
+ADDRGP4 $179
 JUMPV
-LABELV $189
+LABELV $191
 line 509
 ;507:		}
 ;508:
@@ -2226,10 +2226,10 @@ ADDRLP4 0+16+1
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $193
+EQI4 $195
 line 510
 ;510:			Q_strcat(script, 1024, va("\"%s\"", token.string));
-ADDRGP4 $197
+ADDRGP4 $199
 ARGP4
 ADDRLP4 0+16
 ARGP4
@@ -2249,9 +2249,9 @@ CALLV
 pop
 line 511
 ;511:		} else {
-ADDRGP4 $194
+ADDRGP4 $196
 JUMPV
-LABELV $193
+LABELV $195
 line 512
 ;512:			Q_strcat(script, 1024, token.string);
 ADDRLP4 1040
@@ -2265,29 +2265,29 @@ CALLV
 pop
 line 513
 ;513:		}
-LABELV $194
+LABELV $196
 line 514
 ;514:		Q_strcat(script, 1024, " ");
 ADDRLP4 1040
 ARGP4
 CNSTI4 1024
 ARGI4
-ADDRGP4 $200
+ADDRGP4 $202
 ARGP4
 ADDRGP4 Q_strcat
 CALLV
 pop
 line 515
 ;515:	}
-LABELV $185
+LABELV $187
 line 500
-ADDRGP4 $184
+ADDRGP4 $186
 JUMPV
 line 516
 ;516:	return qfalse; 	// bk001105 - LCC   missing return value
 CNSTI4 0
 RETI4
-LABELV $177
+LABELV $179
 endproc PC_Script_Parse 2084 12
 export Init_Display
 proc Init_Display 0 0
@@ -2313,7 +2313,7 @@ INDIRP4
 ASGNP4
 line 531
 ;531:}
-LABELV $201
+LABELV $203
 endproc Init_Display 0 0
 export GradientBar_Paint
 proc GradientBar_Paint 12 20
@@ -2400,7 +2400,7 @@ CALLV
 pop
 line 542
 ;542:}
-LABELV $202
+LABELV $204
 endproc GradientBar_Paint 12 20
 export Window_Init
 proc Window_Init 8 12
@@ -2483,7 +2483,7 @@ CNSTI4 -1
 ASGNI4
 line 558
 ;558:}
-LABELV $203
+LABELV $205
 endproc Window_Init 8 12
 export Fade
 proc Fade 8 0
@@ -2498,7 +2498,7 @@ INDIRI4
 CNSTI4 96
 BANDI4
 CNSTI4 0
-EQI4 $205
+EQI4 $207
 line 562
 ;562:    if (DC->realTime > *nextTime) {
 ADDRGP4 DC
@@ -2509,7 +2509,7 @@ INDIRI4
 ADDRFP4 12
 INDIRP4
 INDIRI4
-LEI4 $207
+LEI4 $209
 line 563
 ;563:      *nextTime = DC->realTime + offsetTime;
 ADDRFP4 12
@@ -2531,7 +2531,7 @@ INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-EQI4 $209
+EQI4 $211
 line 565
 ;565:        *f -= fadeAmount;
 ADDRLP4 0
@@ -2552,12 +2552,12 @@ line 566
 ADDRFP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $210
+EQI4 $212
 ADDRFP4 4
 INDIRP4
 INDIRF4
 CNSTF4 0
-GTF4 $210
+GTF4 $212
 line 567
 ;567:          *flags &= ~(WINDOW_FADINGOUT | WINDOW_VISIBLE);
 ADDRLP4 4
@@ -2576,9 +2576,9 @@ line 568
 ;568:        }
 line 569
 ;569:      } else {
-ADDRGP4 $210
+ADDRGP4 $212
 JUMPV
-LABELV $209
+LABELV $211
 line 570
 ;570:        *f += fadeAmount;
 ADDRLP4 0
@@ -2601,7 +2601,7 @@ INDIRP4
 INDIRF4
 ADDRFP4 8
 INDIRF4
-LTF4 $213
+LTF4 $215
 line 572
 ;572:          *f = clamp;
 ADDRFP4 4
@@ -2614,7 +2614,7 @@ line 573
 ADDRFP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $215
+EQI4 $217
 line 574
 ;574:            *flags &= ~WINDOW_FADINGIN;
 ADDRLP4 4
@@ -2631,22 +2631,22 @@ BANDI4
 ASGNI4
 line 575
 ;575:          }
-LABELV $215
+LABELV $217
 line 576
 ;576:        }
-LABELV $213
+LABELV $215
 line 577
 ;577:      }
-LABELV $210
+LABELV $212
 line 578
 ;578:    }
-LABELV $207
+LABELV $209
 line 579
 ;579:  }
-LABELV $205
+LABELV $207
 line 580
 ;580:}
-LABELV $204
+LABELV $206
 endproc Fade 8 0
 export Window_Paint
 proc Window_Paint 60 28
@@ -2671,7 +2671,7 @@ line 590
 ADDRGP4 debugMode
 INDIRI4
 CNSTI4 0
-EQI4 $218
+EQI4 $220
 line 591
 ;591:    color[0] = color[1] = color[2] = color[3] = 1;
 ADDRLP4 32
@@ -2734,7 +2734,7 @@ CALLV
 pop
 line 593
 ;593:  }
-LABELV $218
+LABELV $220
 line 595
 ;594:
 ;595:  if (w == NULL || (w->style == 0 && w->border == 0)) {
@@ -2746,7 +2746,7 @@ ADDRLP4 32
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $225
+EQU4 $227
 ADDRLP4 36
 CNSTI4 0
 ASGNI4
@@ -2757,7 +2757,7 @@ ADDP4
 INDIRI4
 ADDRLP4 36
 INDIRI4
-NEI4 $223
+NEI4 $225
 ADDRLP4 32
 INDIRP4
 CNSTI4 52
@@ -2765,13 +2765,13 @@ ADDP4
 INDIRI4
 ADDRLP4 36
 INDIRI4
-NEI4 $223
-LABELV $225
+NEI4 $225
+LABELV $227
 line 596
 ;596:    return;
-ADDRGP4 $217
+ADDRGP4 $219
 JUMPV
-LABELV $223
+LABELV $225
 line 599
 ;597:  }
 ;598:
@@ -2782,7 +2782,7 @@ CNSTI4 52
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $226
+EQI4 $228
 line 600
 ;600:    fillRect.x += w->borderSize;
 ADDRLP4 0
@@ -2837,7 +2837,7 @@ SUBF4
 ASGNF4
 line 604
 ;604:  }
-LABELV $226
+LABELV $228
 line 606
 ;605:
 ;606:  if (w->style == WINDOW_STYLE_FILLED) {
@@ -2847,7 +2847,7 @@ CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $231
+NEI4 $233
 line 608
 ;607:    // box, but possible a shader that needs filled
 ;608:		if (w->background) {
@@ -2857,7 +2857,7 @@ CNSTI4 176
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $233
+EQI4 $235
 line 609
 ;609:		  Fade(&w->flags, &w->backColor[3], fadeClamp, &w->nextTime, fadeCycle, qtrue, fadeAmount);
 ADDRLP4 40
@@ -2948,9 +2948,9 @@ CALLV
 pop
 line 613
 ;613:		} else {
-ADDRGP4 $232
+ADDRGP4 $234
 JUMPV
-LABELV $233
+LABELV $235
 line 614
 ;614:	    DC->fillRect(fillRect.x, fillRect.y, fillRect.w, fillRect.h, w->backColor);
 ADDRLP4 0
@@ -2981,16 +2981,16 @@ line 615
 ;615:		}
 line 616
 ;616:  } else if (w->style == WINDOW_STYLE_GRADIENT) {
-ADDRGP4 $232
+ADDRGP4 $234
 JUMPV
-LABELV $231
+LABELV $233
 ADDRFP4 0
 INDIRP4
 CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $241
+NEI4 $243
 line 617
 ;617:    GradientBar_Paint(&fillRect, w->backColor);
 ADDRLP4 0
@@ -3006,16 +3006,16 @@ pop
 line 619
 ;618:    // gradient bar
 ;619:  } else if (w->style == WINDOW_STYLE_SHADER) {
-ADDRGP4 $242
+ADDRGP4 $244
 JUMPV
-LABELV $241
+LABELV $243
 ADDRFP4 0
 INDIRP4
 CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $243
+NEI4 $245
 line 620
 ;620:    if (w->flags & WINDOW_FORECOLORSET) {
 ADDRFP4 0
@@ -3026,7 +3026,7 @@ INDIRI4
 CNSTI4 512
 BANDI4
 CNSTI4 0
-EQI4 $245
+EQI4 $247
 line 621
 ;621:      DC->setColor(w->foreColor);
 ADDRFP4 0
@@ -3043,7 +3043,7 @@ CALLV
 pop
 line 622
 ;622:    }
-LABELV $245
+LABELV $247
 line 623
 ;623:    DC->drawHandlePic(fillRect.x, fillRect.y, fillRect.w, fillRect.h, w->background);
 ADDRLP4 0
@@ -3084,16 +3084,16 @@ CALLV
 pop
 line 625
 ;625:  } else if (w->style == WINDOW_STYLE_TEAMCOLOR) {
-ADDRGP4 $244
+ADDRGP4 $246
 JUMPV
-LABELV $243
+LABELV $245
 ADDRFP4 0
 INDIRP4
 CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 4
-NEI4 $250
+NEI4 $252
 line 626
 ;626:    if (DC->getTeamColor) {
 ADDRGP4 DC
@@ -3103,7 +3103,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $251
+EQU4 $253
 line 627
 ;627:      DC->getTeamColor(&color);
 ADDRLP4 16
@@ -3142,16 +3142,16 @@ line 629
 ;629:    }
 line 630
 ;630:  } else if (w->style == WINDOW_STYLE_CINEMATIC) {
-ADDRGP4 $251
+ADDRGP4 $253
 JUMPV
-LABELV $250
+LABELV $252
 ADDRFP4 0
 INDIRP4
 CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 5
-NEI4 $257
+NEI4 $259
 line 631
 ;631:		if (w->cinematic == -1) {
 ADDRFP4 0
@@ -3160,7 +3160,7 @@ CNSTI4 44
 ADDP4
 INDIRI4
 CNSTI4 -1
-NEI4 $259
+NEI4 $261
 line 632
 ;632:			w->cinematic = DC->playCinematic(w->cinematicName, fillRect.x, fillRect.y, fillRect.w, fillRect.h);
 ADDRLP4 40
@@ -3208,7 +3208,7 @@ CNSTI4 44
 ADDP4
 INDIRI4
 CNSTI4 -1
-NEI4 $264
+NEI4 $266
 line 634
 ;634:				w->cinematic = -2;
 ADDRFP4 0
@@ -3219,10 +3219,10 @@ CNSTI4 -2
 ASGNI4
 line 635
 ;635:			}
-LABELV $264
+LABELV $266
 line 636
 ;636:		} 
-LABELV $259
+LABELV $261
 line 637
 ;637:		if (w->cinematic >= 0) {
 ADDRFP4 0
@@ -3231,7 +3231,7 @@ CNSTI4 44
 ADDP4
 INDIRI4
 CNSTI4 0
-LTI4 $266
+LTI4 $268
 line 638
 ;638:	    DC->runCinematicFrame(w->cinematic);
 ADDRFP4 0
@@ -3276,14 +3276,14 @@ CALLV
 pop
 line 640
 ;640:		}
-LABELV $266
+LABELV $268
 line 641
 ;641:  }
-LABELV $257
-LABELV $251
+LABELV $259
+LABELV $253
+LABELV $246
 LABELV $244
-LABELV $242
-LABELV $232
+LABELV $234
 line 643
 ;642:
 ;643:  if (w->border == WINDOW_BORDER_FULL) {
@@ -3293,7 +3293,7 @@ CNSTI4 52
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $271
+NEI4 $273
 line 646
 ;644:    // full
 ;645:    // HACK HACK HACK
@@ -3304,13 +3304,13 @@ CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 4
-NEI4 $273
+NEI4 $275
 line 647
 ;647:      if (color[0] > 0) { 
 ADDRLP4 16
 INDIRF4
 CNSTF4 0
-LEF4 $275
+LEF4 $277
 line 649
 ;648:        // red
 ;649:        color[0] = 1;
@@ -3333,9 +3333,9 @@ ASGNF4
 line 652
 ;651:
 ;652:      } else {
-ADDRGP4 $276
+ADDRGP4 $278
 JUMPV
-LABELV $275
+LABELV $277
 line 653
 ;653:        color[2] = 1;
 ADDRLP4 16+8
@@ -3356,7 +3356,7 @@ INDIRF4
 ASGNF4
 line 655
 ;655:      }
-LABELV $276
+LABELV $278
 line 656
 ;656:      color[3] = 1;
 ADDRLP4 16+12
@@ -3407,9 +3407,9 @@ CALLV
 pop
 line 658
 ;658:    } else {
-ADDRGP4 $272
+ADDRGP4 $274
 JUMPV
-LABELV $273
+LABELV $275
 line 659
 ;659:      DC->drawRect(w->rect.x, w->rect.y, w->rect.w, w->rect.h, w->borderSize, w->borderColor);
 ADDRLP4 40
@@ -3460,16 +3460,16 @@ line 660
 ;660:    }
 line 661
 ;661:  } else if (w->border == WINDOW_BORDER_HORZ) {
-ADDRGP4 $272
+ADDRGP4 $274
 JUMPV
-LABELV $271
+LABELV $273
 ADDRFP4 0
 INDIRP4
 CNSTI4 52
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $282
+NEI4 $284
 line 663
 ;662:    // top/bottom
 ;663:    DC->setColor(w->borderColor);
@@ -3539,16 +3539,16 @@ CALLV
 pop
 line 666
 ;666:  } else if (w->border == WINDOW_BORDER_VERT) {
-ADDRGP4 $283
+ADDRGP4 $285
 JUMPV
-LABELV $282
+LABELV $284
 ADDRFP4 0
 INDIRP4
 CNSTI4 52
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $284
+NEI4 $286
 line 668
 ;667:    // left right
 ;668:    DC->setColor(w->borderColor);
@@ -3618,16 +3618,16 @@ CALLV
 pop
 line 671
 ;671:  } else if (w->border == WINDOW_BORDER_KCGRADIENT) {
-ADDRGP4 $285
+ADDRGP4 $287
 JUMPV
-LABELV $284
+LABELV $286
 ADDRFP4 0
 INDIRP4
 CNSTI4 52
 ADDP4
 INDIRI4
 CNSTI4 4
-NEI4 $286
+NEI4 $288
 line 673
 ;672:    // this is just two gradient bars along each horz edge
 ;673:    rectDef_t r = w->rect;
@@ -3692,14 +3692,14 @@ CALLV
 pop
 line 678
 ;678:  }
-LABELV $286
+LABELV $288
+LABELV $287
 LABELV $285
-LABELV $283
-LABELV $272
+LABELV $274
 line 680
 ;679:
 ;680:}
-LABELV $217
+LABELV $219
 endproc Window_Paint 60 28
 export Item_SetScreenCoords
 proc Item_SetScreenCoords 16 0
@@ -3714,12 +3714,12 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $291
+NEU4 $293
 line 686
 ;686:    return;
-ADDRGP4 $290
+ADDRGP4 $292
 JUMPV
-LABELV $291
+LABELV $293
 line 689
 ;687:  }
 ;688:
@@ -3730,7 +3730,7 @@ CNSTI4 52
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $293
+EQI4 $295
 line 690
 ;690:    x += item->window.borderSize;
 ADDRFP4 4
@@ -3757,7 +3757,7 @@ ADDF4
 ASGNF4
 line 692
 ;692:  }
-LABELV $293
+LABELV $295
 line 694
 ;693:
 ;694:  item->window.rect.x = x + item->window.rectClient.x;
@@ -3847,7 +3847,7 @@ CNSTF4 0
 ASGNF4
 line 702
 ;702:}
-LABELV $290
+LABELV $292
 endproc Item_SetScreenCoords 16 0
 export Item_UpdatePosition
 proc Item_UpdatePosition 20 12
@@ -3872,7 +3872,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 16
 INDIRU4
-EQU4 $298
+EQU4 $300
 ADDRLP4 12
 INDIRP4
 CNSTI4 228
@@ -3881,13 +3881,13 @@ INDIRP4
 CVPU4 4
 ADDRLP4 16
 INDIRU4
-NEU4 $296
-LABELV $298
+NEU4 $298
+LABELV $300
 line 710
 ;710:    return;
-ADDRGP4 $295
+ADDRGP4 $297
 JUMPV
-LABELV $296
+LABELV $298
 line 713
 ;711:  }
 ;712:
@@ -3925,7 +3925,7 @@ CNSTI4 52
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $299
+EQI4 $301
 line 719
 ;719:    x += menu->window.borderSize;
 ADDRLP4 4
@@ -3952,7 +3952,7 @@ ADDF4
 ASGNF4
 line 721
 ;721:  }
-LABELV $299
+LABELV $301
 line 723
 ;722:
 ;723:  Item_SetScreenCoords(item, x, y);
@@ -3971,7 +3971,7 @@ pop
 line 725
 ;724:
 ;725:}
-LABELV $295
+LABELV $297
 endproc Item_UpdatePosition 20 12
 export Menu_UpdatePosition
 proc Menu_UpdatePosition 12 12
@@ -3988,12 +3988,12 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $302
+NEU4 $304
 line 733
 ;733:    return;
-ADDRGP4 $301
+ADDRGP4 $303
 JUMPV
-LABELV $302
+LABELV $304
 line 736
 ;734:  }
 ;735:  
@@ -4020,7 +4020,7 @@ CNSTI4 52
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $304
+EQI4 $306
 line 739
 ;739:    x += menu->window.borderSize;
 ADDRLP4 4
@@ -4047,16 +4047,16 @@ ADDF4
 ASGNF4
 line 741
 ;741:  }
-LABELV $304
+LABELV $306
 line 743
 ;742:
 ;743:  for (i = 0; i < menu->itemCount; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $309
+ADDRGP4 $311
 JUMPV
-LABELV $306
+LABELV $308
 line 744
 ;744:    Item_SetScreenCoords(menu->items[i], x, y);
 ADDRLP4 0
@@ -4081,7 +4081,7 @@ CALLV
 pop
 line 745
 ;745:  }
-LABELV $307
+LABELV $309
 line 743
 ADDRLP4 0
 ADDRLP4 0
@@ -4089,7 +4089,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $309
+LABELV $311
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -4097,10 +4097,10 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $306
+LTI4 $308
 line 746
 ;746:}
-LABELV $301
+LABELV $303
 endproc Menu_UpdatePosition 12 12
 export Menu_PostParse
 proc Menu_PostParse 0 4
@@ -4113,12 +4113,12 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $311
+NEU4 $313
 line 750
 ;750:		return;
-ADDRGP4 $310
+ADDRGP4 $312
 JUMPV
-LABELV $311
+LABELV $313
 line 752
 ;751:	}
 ;752:	if (menu->fullScreen) {
@@ -4128,7 +4128,7 @@ CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $313
+EQI4 $315
 line 753
 ;753:		menu->window.rect.x = 0;
 ADDRFP4 0
@@ -4161,7 +4161,7 @@ CNSTF4 1139802112
 ASGNF4
 line 757
 ;757:	}
-LABELV $313
+LABELV $315
 line 758
 ;758:	Menu_UpdatePosition(menu);
 ADDRFP4 0
@@ -4172,7 +4172,7 @@ CALLV
 pop
 line 759
 ;759:}
-LABELV $310
+LABELV $312
 endproc Menu_PostParse 0 4
 export Menu_ClearFocus
 proc Menu_ClearFocus 28 8
@@ -4192,14 +4192,14 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $316
+NEU4 $318
 line 766
 ;766:    return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $315
+ADDRGP4 $317
 JUMPV
-LABELV $316
+LABELV $318
 line 769
 ;767:  }
 ;768:
@@ -4207,9 +4207,9 @@ line 769
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $321
+ADDRGP4 $323
 JUMPV
-LABELV $318
+LABELV $320
 line 770
 ;770:    if (menu->items[i]->window.flags & WINDOW_HASFOCUS) {
 ADDRLP4 8
@@ -4233,7 +4233,7 @@ ADDRLP4 8
 INDIRI4
 BANDI4
 CNSTI4 0
-EQI4 $322
+EQI4 $324
 line 771
 ;771:      ret = menu->items[i];
 ADDRLP4 4
@@ -4250,7 +4250,7 @@ INDIRP4
 ASGNP4
 line 772
 ;772:    } 
-LABELV $322
+LABELV $324
 line 773
 ;773:    menu->items[i]->window.flags &= ~WINDOW_HASFOCUS;
 ADDRLP4 12
@@ -4297,7 +4297,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $324
+EQU4 $326
 line 775
 ;775:      Item_RunScript(menu->items[i], menu->items[i]->leaveFocus);
 ADDRLP4 20
@@ -4331,10 +4331,10 @@ CALLV
 pop
 line 776
 ;776:    }
-LABELV $324
+LABELV $326
 line 777
 ;777:  }
-LABELV $319
+LABELV $321
 line 769
 ADDRLP4 0
 ADDRLP4 0
@@ -4342,7 +4342,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $321
+LABELV $323
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -4350,14 +4350,14 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $318
+LTI4 $320
 line 779
 ;778: 
 ;779:  return ret;
 ADDRLP4 4
 INDIRP4
 RETP4
-LABELV $315
+LABELV $317
 endproc Menu_ClearFocus 28 8
 export IsVisible
 proc IsVisible 12 0
@@ -4380,28 +4380,28 @@ CNSTI4 4
 BANDI4
 ADDRLP4 8
 INDIRI4
-EQI4 $328
+EQI4 $330
 ADDRLP4 4
 INDIRI4
 CNSTI4 32
 BANDI4
 ADDRLP4 8
 INDIRI4
-NEI4 $328
+NEI4 $330
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-ADDRGP4 $329
+ADDRGP4 $331
 JUMPV
-LABELV $328
+LABELV $330
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $329
+LABELV $331
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $326
+LABELV $328
 endproc IsVisible 12 0
 export Rect_ContainsPoint
 proc Rect_ContainsPoint 20 0
@@ -4415,7 +4415,7 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $331
+EQU4 $333
 line 788
 ;788:    if (x > rect->x && x < rect->x + rect->w && y > rect->y && y < rect->y + rect->h) {
 ADDRLP4 0
@@ -4435,7 +4435,7 @@ ADDRLP4 0
 INDIRF4
 ADDRLP4 8
 INDIRF4
-LEF4 $333
+LEF4 $335
 ADDRLP4 0
 INDIRF4
 ADDRLP4 8
@@ -4446,7 +4446,7 @@ CNSTI4 8
 ADDP4
 INDIRF4
 ADDF4
-GEF4 $333
+GEF4 $335
 ADDRLP4 12
 ADDRFP4 8
 INDIRF4
@@ -4462,7 +4462,7 @@ ADDRLP4 12
 INDIRF4
 ADDRLP4 16
 INDIRF4
-LEF4 $333
+LEF4 $335
 ADDRLP4 12
 INDIRF4
 ADDRLP4 16
@@ -4473,23 +4473,23 @@ CNSTI4 12
 ADDP4
 INDIRF4
 ADDF4
-GEF4 $333
+GEF4 $335
 line 789
 ;789:      return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $330
+ADDRGP4 $332
 JUMPV
-LABELV $333
+LABELV $335
 line 791
 ;790:    }
 ;791:  }
-LABELV $331
+LABELV $333
 line 792
 ;792:  return qfalse;
 CNSTI4 0
 RETI4
-LABELV $330
+LABELV $332
 endproc Rect_ContainsPoint 20 0
 export Menu_ItemsMatchingGroup
 proc Menu_ItemsMatchingGroup 20 8
@@ -4508,9 +4508,9 @@ line 798
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $339
+ADDRGP4 $341
 JUMPV
-LABELV $336
+LABELV $338
 line 799
 ;799:    if (Q_stricmp(menu->items[i]->window.name, name) == 0 || (menu->items[i]->window.group && Q_stricmp(menu->items[i]->window.group, name) == 0)) {
 ADDRLP4 0
@@ -4537,7 +4537,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $342
+EQI4 $344
 ADDRLP4 12
 ADDRLP4 0
 INDIRI4
@@ -4557,7 +4557,7 @@ ADDRLP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $340
+EQU4 $342
 ADDRLP4 12
 INDIRP4
 ARGP4
@@ -4571,8 +4571,8 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-NEI4 $340
-LABELV $342
+NEI4 $342
+LABELV $344
 line 800
 ;800:      count++;
 ADDRLP4 4
@@ -4583,10 +4583,10 @@ ADDI4
 ASGNI4
 line 801
 ;801:    } 
-LABELV $340
+LABELV $342
 line 802
 ;802:  }
-LABELV $337
+LABELV $339
 line 798
 ADDRLP4 0
 ADDRLP4 0
@@ -4594,7 +4594,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $339
+LABELV $341
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -4602,13 +4602,13 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $336
+LTI4 $338
 line 803
 ;803:  return count;
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $335
+LABELV $337
 endproc Menu_ItemsMatchingGroup 20 8
 export Menu_GetMatchingItemByNumber
 proc Menu_GetMatchingItemByNumber 20 8
@@ -4627,9 +4627,9 @@ line 809
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $347
+ADDRGP4 $349
 JUMPV
-LABELV $344
+LABELV $346
 line 810
 ;810:    if (Q_stricmp(menu->items[i]->window.name, name) == 0 || (menu->items[i]->window.group && Q_stricmp(menu->items[i]->window.group, name) == 0)) {
 ADDRLP4 0
@@ -4656,7 +4656,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $350
+EQI4 $352
 ADDRLP4 12
 ADDRLP4 0
 INDIRI4
@@ -4676,7 +4676,7 @@ ADDRLP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $348
+EQU4 $350
 ADDRLP4 12
 INDIRP4
 ARGP4
@@ -4690,15 +4690,15 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-NEI4 $348
-LABELV $350
+NEI4 $350
+LABELV $352
 line 811
 ;811:      if (count == index) {
 ADDRLP4 4
 INDIRI4
 ADDRFP4 4
 INDIRI4
-NEI4 $351
+NEI4 $353
 line 812
 ;812:        return menu->items[i];
 ADDRLP4 0
@@ -4712,9 +4712,9 @@ ADDP4
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $343
+ADDRGP4 $345
 JUMPV
-LABELV $351
+LABELV $353
 line 814
 ;813:      }
 ;814:      count++;
@@ -4726,10 +4726,10 @@ ADDI4
 ASGNI4
 line 815
 ;815:    } 
-LABELV $348
+LABELV $350
 line 816
 ;816:  }
-LABELV $345
+LABELV $347
 line 809
 ADDRLP4 0
 ADDRLP4 0
@@ -4737,7 +4737,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $347
+LABELV $349
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -4745,12 +4745,12 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $344
+LTI4 $346
 line 817
 ;817:  return NULL;
 CNSTP4 0
 RETP4
-LABELV $343
+LABELV $345
 endproc Menu_GetMatchingItemByNumber 20 8
 export Script_SetColor
 proc Script_SetColor 36 8
@@ -4779,7 +4779,7 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $354
+EQI4 $356
 line 829
 ;829:      out = NULL;
 ADDRLP4 8
@@ -4790,7 +4790,7 @@ line 830
 ADDRLP4 12
 INDIRP4
 ARGP4
-ADDRGP4 $358
+ADDRGP4 $360
 ARGP4
 ADDRLP4 20
 ADDRGP4 Q_stricmp
@@ -4799,7 +4799,7 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-NEI4 $356
+NEI4 $358
 line 831
 ;831:        out = &item->window.backColor;
 ADDRLP4 8
@@ -4826,13 +4826,13 @@ BORI4
 ASGNI4
 line 833
 ;833:      } else if (Q_stricmp(name, "forecolor") == 0) {
-ADDRGP4 $357
+ADDRGP4 $359
 JUMPV
-LABELV $356
+LABELV $358
 ADDRLP4 12
 INDIRP4
 ARGP4
-ADDRGP4 $361
+ADDRGP4 $363
 ARGP4
 ADDRLP4 24
 ADDRGP4 Q_stricmp
@@ -4841,7 +4841,7 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-NEI4 $359
+NEI4 $361
 line 834
 ;834:        out = &item->window.foreColor;
 ADDRLP4 8
@@ -4868,13 +4868,13 @@ BORI4
 ASGNI4
 line 836
 ;836:      } else if (Q_stricmp(name, "bordercolor") == 0) {
-ADDRGP4 $360
+ADDRGP4 $362
 JUMPV
-LABELV $359
+LABELV $361
 ADDRLP4 12
 INDIRP4
 ARGP4
-ADDRGP4 $364
+ADDRGP4 $366
 ARGP4
 ADDRLP4 28
 ADDRGP4 Q_stricmp
@@ -4883,7 +4883,7 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-NEI4 $362
+NEI4 $364
 line 837
 ;837:        out = &item->window.borderColor;
 ADDRLP4 8
@@ -4894,9 +4894,9 @@ ADDP4
 ASGNP4
 line 838
 ;838:      }
+LABELV $364
 LABELV $362
-LABELV $360
-LABELV $357
+LABELV $359
 line 840
 ;839:
 ;840:      if (out) {
@@ -4904,13 +4904,13 @@ ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $365
+EQU4 $367
 line 841
 ;841:        for (i = 0; i < 4; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $367
+LABELV $369
 line 842
 ;842:          if (!Float_Parse(args, &f)) {
 ADDRFP4 4
@@ -4925,12 +4925,12 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-NEI4 $371
+NEI4 $373
 line 843
 ;843:            return;
-ADDRGP4 $353
+ADDRGP4 $355
 JUMPV
-LABELV $371
+LABELV $373
 line 845
 ;844:          }
 ;845:          (*out)[i] = f;
@@ -4946,7 +4946,7 @@ INDIRF4
 ASGNF4
 line 846
 ;846:        }
-LABELV $368
+LABELV $370
 line 841
 ADDRLP4 0
 ADDRLP4 0
@@ -4957,16 +4957,16 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $367
+LTI4 $369
 line 847
 ;847:      }
-LABELV $365
+LABELV $367
 line 848
 ;848:  }
-LABELV $354
+LABELV $356
 line 849
 ;849:}
-LABELV $353
+LABELV $355
 endproc Script_SetColor 36 8
 export Script_SetAsset
 proc Script_SetAsset 8 8
@@ -4989,7 +4989,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $374
+EQI4 $376
 line 856
 ;855:    // check for a model 
 ;856:    if (item->type == ITEM_TYPE_MODEL) {
@@ -4999,16 +4999,16 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 7
-NEI4 $376
+NEI4 $378
 line 857
 ;857:    }
-LABELV $376
+LABELV $378
 line 858
 ;858:  }
-LABELV $374
+LABELV $376
 line 859
 ;859:}
-LABELV $373
+LABELV $375
 endproc Script_SetAsset 8 8
 export Script_SetBackground
 proc Script_SetBackground 12 8
@@ -5031,7 +5031,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $379
+EQI4 $381
 line 865
 ;865:    item->window.background = DC->registerShaderNoMip(name);
 ADDRLP4 0
@@ -5052,10 +5052,10 @@ INDIRI4
 ASGNI4
 line 866
 ;866:  }
-LABELV $379
+LABELV $381
 line 867
 ;867:}
-LABELV $378
+LABELV $380
 endproc Script_SetBackground 12 8
 export Menu_FindItemByName
 proc Menu_FindItemByName 12 8
@@ -5076,21 +5076,21 @@ INDIRP4
 CVPU4 4
 ADDRLP4 4
 INDIRU4
-EQU4 $384
+EQU4 $386
 ADDRFP4 4
 INDIRP4
 CVPU4 4
 ADDRLP4 4
 INDIRU4
-NEU4 $382
-LABELV $384
+NEU4 $384
+LABELV $386
 line 875
 ;875:    return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $381
+ADDRGP4 $383
 JUMPV
-LABELV $382
+LABELV $384
 line 878
 ;876:  }
 ;877:
@@ -5098,9 +5098,9 @@ line 878
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $388
+ADDRGP4 $390
 JUMPV
-LABELV $385
+LABELV $387
 line 879
 ;879:    if (Q_stricmp(p, menu->items[i]->window.name) == 0) {
 ADDRFP4 4
@@ -5127,7 +5127,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $389
+NEI4 $391
 line 880
 ;880:      return menu->items[i];
 ADDRLP4 0
@@ -5141,13 +5141,13 @@ ADDP4
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $381
+ADDRGP4 $383
 JUMPV
-LABELV $389
+LABELV $391
 line 882
 ;881:    }
 ;882:  }
-LABELV $386
+LABELV $388
 line 878
 ADDRLP4 0
 ADDRLP4 0
@@ -5155,7 +5155,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $388
+LABELV $390
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -5163,13 +5163,13 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $385
+LTI4 $387
 line 884
 ;883:
 ;884:  return NULL;
 CNSTP4 0
 RETP4
-LABELV $381
+LABELV $383
 endproc Menu_FindItemByName 12 8
 export Script_SetTeamColor
 proc Script_SetTeamColor 24 4
@@ -5186,7 +5186,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $392
+EQU4 $394
 line 891
 ;889:    int i;
 ;890:    vec4_t color;
@@ -5205,7 +5205,7 @@ line 892
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $394
+LABELV $396
 line 893
 ;893:      item->window.backColor[i] = color[i];
 ADDRLP4 20
@@ -5229,7 +5229,7 @@ INDIRF4
 ASGNF4
 line 894
 ;894:    }
-LABELV $395
+LABELV $397
 line 892
 ADDRLP4 0
 ADDRLP4 0
@@ -5240,13 +5240,13 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $394
+LTI4 $396
 line 895
 ;895:  }
-LABELV $392
+LABELV $394
 line 896
 ;896:}
-LABELV $391
+LABELV $393
 endproc Script_SetTeamColor 24 4
 export Script_SetItemColor
 proc Script_SetItemColor 80 12
@@ -5273,7 +5273,7 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-EQI4 $399
+EQI4 $401
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -5286,7 +5286,7 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $399
+EQI4 $401
 line 908
 ;906:    itemDef_t *item2;
 ;907:    int j;
@@ -5323,12 +5323,12 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-NEI4 $401
+NEI4 $403
 line 911
 ;911:      return;
-ADDRGP4 $398
+ADDRGP4 $400
 JUMPV
-LABELV $401
+LABELV $403
 line 914
 ;912:    }
 ;913:
@@ -5336,9 +5336,9 @@ line 914
 ADDRLP4 40
 CNSTI4 0
 ASGNI4
-ADDRGP4 $406
+ADDRGP4 $408
 JUMPV
-LABELV $403
+LABELV $405
 line 915
 ;915:      item2 = Menu_GetMatchingItemByNumber(item->parent, j, itemname);
 ADDRFP4 0
@@ -5367,7 +5367,7 @@ ADDRLP4 44
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $407
+EQU4 $409
 line 917
 ;917:        out = NULL;
 ADDRLP4 4
@@ -5378,7 +5378,7 @@ line 918
 ADDRLP4 28
 INDIRP4
 ARGP4
-ADDRGP4 $358
+ADDRGP4 $360
 ARGP4
 ADDRLP4 64
 ADDRGP4 Q_stricmp
@@ -5387,7 +5387,7 @@ ASGNI4
 ADDRLP4 64
 INDIRI4
 CNSTI4 0
-NEI4 $409
+NEI4 $411
 line 919
 ;919:          out = &item2->window.backColor;
 ADDRLP4 4
@@ -5398,13 +5398,13 @@ ADDP4
 ASGNP4
 line 920
 ;920:        } else if (Q_stricmp(name, "forecolor") == 0) {
-ADDRGP4 $410
+ADDRGP4 $412
 JUMPV
-LABELV $409
+LABELV $411
 ADDRLP4 28
 INDIRP4
 ARGP4
-ADDRGP4 $361
+ADDRGP4 $363
 ARGP4
 ADDRLP4 68
 ADDRGP4 Q_stricmp
@@ -5413,7 +5413,7 @@ ASGNI4
 ADDRLP4 68
 INDIRI4
 CNSTI4 0
-NEI4 $411
+NEI4 $413
 line 921
 ;921:          out = &item2->window.foreColor;
 ADDRLP4 4
@@ -5440,13 +5440,13 @@ BORI4
 ASGNI4
 line 923
 ;923:        } else if (Q_stricmp(name, "bordercolor") == 0) {
-ADDRGP4 $412
+ADDRGP4 $414
 JUMPV
-LABELV $411
+LABELV $413
 ADDRLP4 28
 INDIRP4
 ARGP4
-ADDRGP4 $364
+ADDRGP4 $366
 ARGP4
 ADDRLP4 72
 ADDRGP4 Q_stricmp
@@ -5455,7 +5455,7 @@ ASGNI4
 ADDRLP4 72
 INDIRI4
 CNSTI4 0
-NEI4 $413
+NEI4 $415
 line 924
 ;924:          out = &item2->window.borderColor;
 ADDRLP4 4
@@ -5466,9 +5466,9 @@ ADDP4
 ASGNP4
 line 925
 ;925:        }
-LABELV $413
+LABELV $415
+LABELV $414
 LABELV $412
-LABELV $410
 line 927
 ;926:
 ;927:        if (out) {
@@ -5476,13 +5476,13 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $415
+EQU4 $417
 line 928
 ;928:          for (i = 0; i < 4; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $417
+LABELV $419
 line 929
 ;929:            (*out)[i] = color[i];
 ADDRLP4 76
@@ -5504,7 +5504,7 @@ INDIRF4
 ASGNF4
 line 930
 ;930:          }
-LABELV $418
+LABELV $420
 line 928
 ADDRLP4 0
 ADDRLP4 0
@@ -5515,16 +5515,16 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $417
+LTI4 $419
 line 931
 ;931:        }
-LABELV $415
+LABELV $417
 line 932
 ;932:      }
-LABELV $407
+LABELV $409
 line 933
 ;933:    }
-LABELV $404
+LABELV $406
 line 914
 ADDRLP4 40
 ADDRLP4 40
@@ -5532,18 +5532,18 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $406
+LABELV $408
 ADDRLP4 40
 INDIRI4
 ADDRLP4 48
 INDIRI4
-LTI4 $403
+LTI4 $405
 line 934
 ;934:  }
-LABELV $399
+LABELV $401
 line 935
 ;935:}
-LABELV $398
+LABELV $400
 endproc Script_SetItemColor 80 12
 export Menu_ShowItemByName
 proc Menu_ShowItemByName 24 12
@@ -5574,9 +5574,9 @@ line 942
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $425
+ADDRGP4 $427
 JUMPV
-LABELV $422
+LABELV $424
 line 943
 ;943:		item = Menu_GetMatchingItemByNumber(menu, i, p);
 ADDRFP4 0
@@ -5602,13 +5602,13 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $426
+EQU4 $428
 line 945
 ;945:			if (bShow) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $428
+EQI4 $430
 line 946
 ;946:				item->window.flags |= WINDOW_VISIBLE;
 ADDRLP4 20
@@ -5627,9 +5627,9 @@ BORI4
 ASGNI4
 line 947
 ;947:			} else {
-ADDRGP4 $429
+ADDRGP4 $431
 JUMPV
-LABELV $428
+LABELV $430
 line 948
 ;948:				item->window.flags &= ~WINDOW_VISIBLE;
 ADDRLP4 20
@@ -5655,7 +5655,7 @@ CNSTI4 44
 ADDP4
 INDIRI4
 CNSTI4 0
-LTI4 $430
+LTI4 $432
 line 951
 ;951:					DC->stopCinematic(item->window.cinematic);
 ADDRLP4 4
@@ -5681,16 +5681,16 @@ CNSTI4 -1
 ASGNI4
 line 953
 ;953:				}
-LABELV $430
+LABELV $432
 line 954
 ;954:			}
-LABELV $429
+LABELV $431
 line 955
 ;955:		}
-LABELV $426
+LABELV $428
 line 956
 ;956:	}
-LABELV $423
+LABELV $425
 line 942
 ADDRLP4 0
 ADDRLP4 0
@@ -5698,15 +5698,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $425
+LABELV $427
 ADDRLP4 0
 INDIRI4
 ADDRLP4 8
 INDIRI4
-LTI4 $422
+LTI4 $424
 line 957
 ;957:}
-LABELV $421
+LABELV $423
 endproc Menu_ShowItemByName 24 12
 export Menu_FadeItemByName
 proc Menu_FadeItemByName 32 12
@@ -5736,9 +5736,9 @@ line 963
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $436
+ADDRGP4 $438
 JUMPV
-LABELV $433
+LABELV $435
 line 964
 ;964:    item = Menu_GetMatchingItemByNumber(menu, i, p);
 ADDRFP4 0
@@ -5764,13 +5764,13 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $437
+EQU4 $439
 line 966
 ;966:      if (fadeOut) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $439
+EQI4 $441
 line 967
 ;967:        item->window.flags |= (WINDOW_FADINGOUT | WINDOW_VISIBLE);
 ADDRLP4 20
@@ -5805,9 +5805,9 @@ BANDI4
 ASGNI4
 line 969
 ;969:      } else {
-ADDRGP4 $440
+ADDRGP4 $442
 JUMPV
-LABELV $439
+LABELV $441
 line 970
 ;970:        item->window.flags |= (WINDOW_VISIBLE | WINDOW_FADINGIN);
 ADDRLP4 20
@@ -5847,13 +5847,13 @@ BANDI4
 ASGNI4
 line 972
 ;972:      }
-LABELV $440
+LABELV $442
 line 973
 ;973:    }
-LABELV $437
+LABELV $439
 line 974
 ;974:  }
-LABELV $434
+LABELV $436
 line 963
 ADDRLP4 0
 ADDRLP4 0
@@ -5861,15 +5861,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $436
+LABELV $438
 ADDRLP4 0
 INDIRI4
 ADDRLP4 8
 INDIRI4
-LTI4 $433
+LTI4 $435
 line 975
 ;975:}
-LABELV $432
+LABELV $434
 endproc Menu_FadeItemByName 32 12
 export Menus_FindByName
 proc Menus_FindByName 8 8
@@ -5882,9 +5882,9 @@ line 979
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $445
+ADDRGP4 $447
 JUMPV
-LABELV $442
+LABELV $444
 line 980
 ;980:    if (Q_stricmp(Menus[i].window.name, p) == 0) {
 CNSTI4 644
@@ -5905,7 +5905,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $446
+NEI4 $448
 line 981
 ;981:      return &Menus[i];
 CNSTI4 644
@@ -5915,13 +5915,13 @@ MULI4
 ADDRGP4 Menus
 ADDP4
 RETP4
-ADDRGP4 $441
+ADDRGP4 $443
 JUMPV
-LABELV $446
+LABELV $448
 line 983
 ;982:    } 
 ;983:  }
-LABELV $443
+LABELV $445
 line 979
 ADDRLP4 0
 ADDRLP4 0
@@ -5929,17 +5929,17 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $445
+LABELV $447
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $442
+LTI4 $444
 line 984
 ;984:  return NULL;
 CNSTP4 0
 RETP4
-LABELV $441
+LABELV $443
 endproc Menus_FindByName 8 8
 export Menus_ShowByName
 proc Menus_ShowByName 8 4
@@ -5966,7 +5966,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $450
+EQU4 $452
 line 990
 ;990:		Menus_Activate(menu);
 ADDRLP4 0
@@ -5977,10 +5977,10 @@ CALLV
 pop
 line 991
 ;991:	}
-LABELV $450
+LABELV $452
 line 992
 ;992:}
-LABELV $449
+LABELV $451
 endproc Menus_ShowByName 8 4
 export Menus_OpenByName
 proc Menus_OpenByName 0 4
@@ -5997,7 +5997,7 @@ CALLP4
 pop
 line 996
 ;996:}
-LABELV $452
+LABELV $454
 endproc Menus_OpenByName 0 4
 proc Menu_RunCloseScript 548 8
 line 998
@@ -6017,7 +6017,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 4
 INDIRU4
-EQU4 $454
+EQU4 $456
 ADDRLP4 0
 INDIRP4
 CNSTI4 68
@@ -6026,7 +6026,7 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-EQI4 $454
+EQI4 $456
 ADDRLP4 0
 INDIRP4
 CNSTI4 216
@@ -6035,7 +6035,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 4
 INDIRU4
-EQU4 $454
+EQU4 $456
 line 1001
 ;1000:		itemDef_t item;
 ;1001:    item.parent = menu;
@@ -6058,10 +6058,10 @@ CALLV
 pop
 line 1003
 ;1003:	}
-LABELV $454
+LABELV $456
 line 1004
 ;1004:}
-LABELV $453
+LABELV $455
 endproc Menu_RunCloseScript 548 8
 export Menus_CloseByName
 proc Menus_CloseByName 12 4
@@ -6087,7 +6087,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $458
+EQU4 $460
 line 1009
 ;1009:		Menu_RunCloseScript(menu);
 ADDRLP4 0
@@ -6114,10 +6114,10 @@ BANDI4
 ASGNI4
 line 1011
 ;1011:  }
-LABELV $458
+LABELV $460
 line 1012
 ;1012:}
-LABELV $457
+LABELV $459
 endproc Menus_CloseByName 12 4
 export Menus_CloseAll
 proc Menus_CloseAll 8 4
@@ -6130,9 +6130,9 @@ line 1016
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $464
+ADDRGP4 $466
 JUMPV
-LABELV $461
+LABELV $463
 line 1017
 ;1017:		Menu_RunCloseScript(&Menus[i]);
 CNSTI4 644
@@ -6165,7 +6165,7 @@ BANDI4
 ASGNI4
 line 1019
 ;1019:  }
-LABELV $462
+LABELV $464
 line 1016
 ADDRLP4 0
 ADDRLP4 0
@@ -6173,15 +6173,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $464
+LABELV $466
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $461
+LTI4 $463
 line 1020
 ;1020:}
-LABELV $460
+LABELV $462
 endproc Menus_CloseAll 8 4
 export Script_Show
 proc Script_Show 8 12
@@ -6204,7 +6204,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $467
+EQI4 $469
 line 1026
 ;1026:    Menu_ShowItemByName(item->parent, name, qtrue);
 ADDRFP4 0
@@ -6223,10 +6223,10 @@ CALLV
 pop
 line 1027
 ;1027:  }
-LABELV $467
+LABELV $469
 line 1028
 ;1028:}
-LABELV $466
+LABELV $468
 endproc Script_Show 8 12
 export Script_Hide
 proc Script_Hide 8 12
@@ -6248,7 +6248,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $470
+EQI4 $472
 line 1033
 ;1033:    Menu_ShowItemByName(item->parent, name, qfalse);
 ADDRFP4 0
@@ -6267,10 +6267,10 @@ CALLV
 pop
 line 1034
 ;1034:  }
-LABELV $470
+LABELV $472
 line 1035
 ;1035:}
-LABELV $469
+LABELV $471
 endproc Script_Hide 8 12
 export Script_FadeIn
 proc Script_FadeIn 8 12
@@ -6292,7 +6292,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $473
+EQI4 $475
 line 1040
 ;1040:    Menu_FadeItemByName(item->parent, name, qfalse);
 ADDRFP4 0
@@ -6311,10 +6311,10 @@ CALLV
 pop
 line 1041
 ;1041:  }
-LABELV $473
+LABELV $475
 line 1042
 ;1042:}
-LABELV $472
+LABELV $474
 endproc Script_FadeIn 8 12
 export Script_FadeOut
 proc Script_FadeOut 8 12
@@ -6336,7 +6336,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $476
+EQI4 $478
 line 1047
 ;1047:    Menu_FadeItemByName(item->parent, name, qtrue);
 ADDRFP4 0
@@ -6355,10 +6355,10 @@ CALLV
 pop
 line 1048
 ;1048:  }
-LABELV $476
+LABELV $478
 line 1049
 ;1049:}
-LABELV $475
+LABELV $477
 endproc Script_FadeOut 8 12
 export Script_Open
 proc Script_Open 8 8
@@ -6382,7 +6382,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $479
+EQI4 $481
 line 1056
 ;1056:    Menus_OpenByName(name);
 ADDRLP4 0
@@ -6393,10 +6393,10 @@ CALLV
 pop
 line 1057
 ;1057:  }
-LABELV $479
+LABELV $481
 line 1058
 ;1058:}
-LABELV $478
+LABELV $480
 endproc Script_Open 8 8
 export Script_ConditionalOpen
 proc Script_ConditionalOpen 32 8
@@ -6422,7 +6422,7 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $482
+EQI4 $484
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -6435,7 +6435,7 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $482
+EQI4 $484
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -6448,7 +6448,7 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $482
+EQI4 $484
 line 1067
 ;1067:		val = DC->getCVarValue( cvar );
 ADDRLP4 0
@@ -6471,7 +6471,7 @@ line 1068
 ADDRLP4 12
 INDIRF4
 CNSTF4 0
-NEF4 $484
+NEF4 $486
 line 1069
 ;1069:			Menus_OpenByName(name2);
 ADDRLP4 8
@@ -6482,9 +6482,9 @@ CALLV
 pop
 line 1070
 ;1070:		} else {
-ADDRGP4 $485
+ADDRGP4 $487
 JUMPV
-LABELV $484
+LABELV $486
 line 1071
 ;1071:			Menus_OpenByName(name1);
 ADDRLP4 4
@@ -6495,13 +6495,13 @@ CALLV
 pop
 line 1072
 ;1072:		}
-LABELV $485
+LABELV $487
 line 1073
 ;1073:	}
-LABELV $482
+LABELV $484
 line 1074
 ;1074:}
-LABELV $481
+LABELV $483
 endproc Script_ConditionalOpen 32 8
 export Script_Close
 proc Script_Close 8 8
@@ -6523,7 +6523,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $487
+EQI4 $489
 line 1079
 ;1079:    Menus_CloseByName(name);
 ADDRLP4 0
@@ -6534,10 +6534,10 @@ CALLV
 pop
 line 1080
 ;1080:  }
-LABELV $487
+LABELV $489
 line 1081
 ;1081:}
-LABELV $486
+LABELV $488
 endproc Script_Close 8 8
 export Menu_TransitionItemByName
 proc Menu_TransitionItemByName 56 12
@@ -6567,9 +6567,9 @@ line 1087
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $493
+ADDRGP4 $495
 JUMPV
-LABELV $490
+LABELV $492
 line 1088
 ;1088:    item = Menu_GetMatchingItemByNumber(menu, i, p);
 ADDRFP4 0
@@ -6595,7 +6595,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $494
+EQU4 $496
 line 1090
 ;1090:      item->window.flags |= (WINDOW_INTRANSITION | WINDOW_VISIBLE);
 ADDRLP4 20
@@ -6797,10 +6797,10 @@ CALLV
 pop
 line 1099
 ;1099:    }
-LABELV $494
+LABELV $496
 line 1100
 ;1100:  }
-LABELV $491
+LABELV $493
 line 1087
 ADDRLP4 4
 ADDRLP4 4
@@ -6808,15 +6808,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $493
+LABELV $495
 ADDRLP4 4
 INDIRI4
 ADDRLP4 8
 INDIRI4
-LTI4 $490
+LTI4 $492
 line 1101
 ;1101:}
-LABELV $489
+LABELV $491
 endproc Menu_TransitionItemByName 56 12
 export Script_Transition
 proc Script_Transition 96 24
@@ -6843,7 +6843,7 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
-EQI4 $497
+EQI4 $499
 line 1111
 ;1111:    if ( Rect_Parse(args, &rectFrom) && Rect_Parse(args, &rectTo) && Int_Parse(args, &time) && Float_Parse(args, &amt)) {
 ADDRFP4 4
@@ -6858,7 +6858,7 @@ ASGNI4
 ADDRLP4 48
 INDIRI4
 CNSTI4 0
-EQI4 $499
+EQI4 $501
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -6871,7 +6871,7 @@ ASGNI4
 ADDRLP4 52
 INDIRI4
 CNSTI4 0
-EQI4 $499
+EQI4 $501
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -6884,7 +6884,7 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-EQI4 $499
+EQI4 $501
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -6897,7 +6897,7 @@ ASGNI4
 ADDRLP4 60
 INDIRI4
 CNSTI4 0
-EQI4 $499
+EQI4 $501
 line 1112
 ;1112:      Menu_TransitionItemByName(item->parent, name, rectFrom, rectTo, time, amt);
 ADDRFP4 0
@@ -6932,13 +6932,13 @@ CALLV
 pop
 line 1113
 ;1113:    }
-LABELV $499
+LABELV $501
 line 1114
 ;1114:  }
-LABELV $497
+LABELV $499
 line 1115
 ;1115:}
-LABELV $496
+LABELV $498
 endproc Script_Transition 96 24
 export Menu_OrbitItemByName
 proc Menu_OrbitItemByName 24 12
@@ -6969,9 +6969,9 @@ line 1122
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $505
+ADDRGP4 $507
 JUMPV
-LABELV $502
+LABELV $504
 line 1123
 ;1123:    item = Menu_GetMatchingItemByNumber(menu, i, p);
 ADDRFP4 0
@@ -6997,7 +6997,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $506
+EQU4 $508
 line 1125
 ;1125:      item->window.flags |= (WINDOW_ORBITING | WINDOW_VISIBLE);
 ADDRLP4 20
@@ -7069,10 +7069,10 @@ CALLV
 pop
 line 1132
 ;1132:    }
-LABELV $506
+LABELV $508
 line 1133
 ;1133:  }
-LABELV $503
+LABELV $505
 line 1122
 ADDRLP4 4
 ADDRLP4 4
@@ -7080,15 +7080,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $505
+LABELV $507
 ADDRLP4 4
 INDIRI4
 ADDRLP4 8
 INDIRI4
-LTI4 $502
+LTI4 $504
 line 1134
 ;1134:}
-LABELV $501
+LABELV $503
 endproc Menu_OrbitItemByName 24 12
 export Script_Orbit
 proc Script_Orbit 48 28
@@ -7114,7 +7114,7 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $509
+EQI4 $511
 line 1143
 ;1143:    if ( Float_Parse(args, &x) && Float_Parse(args, &y) && Float_Parse(args, &cx) && Float_Parse(args, &cy) && Int_Parse(args, &time) ) {
 ADDRFP4 4
@@ -7129,7 +7129,7 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-EQI4 $511
+EQI4 $513
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -7142,7 +7142,7 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-EQI4 $511
+EQI4 $513
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -7155,7 +7155,7 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $511
+EQI4 $513
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -7168,7 +7168,7 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
-EQI4 $511
+EQI4 $513
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -7181,7 +7181,7 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
-EQI4 $511
+EQI4 $513
 line 1144
 ;1144:      Menu_OrbitItemByName(item->parent, name, x, y, cx, cy, time);
 ADDRFP4 0
@@ -7213,13 +7213,13 @@ CALLV
 pop
 line 1145
 ;1145:    }
-LABELV $511
+LABELV $513
 line 1146
 ;1146:  }
-LABELV $509
+LABELV $511
 line 1147
 ;1147:}
-LABELV $508
+LABELV $510
 endproc Script_Orbit 48 28
 export Script_SetFocus
 proc Script_SetFocus 36 8
@@ -7245,7 +7245,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $514
+EQI4 $516
 line 1156
 ;1156:    focusItem = Menu_FindItemByName(item->parent, name);
 ADDRFP4 0
@@ -7275,7 +7275,7 @@ ADDRLP4 16
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $516
+EQU4 $518
 ADDRLP4 20
 ADDRLP4 16
 INDIRP4
@@ -7292,14 +7292,14 @@ CNSTI4 16
 BANDI4
 ADDRLP4 24
 INDIRI4
-NEI4 $516
+NEI4 $518
 ADDRLP4 20
 INDIRI4
 CNSTI4 2
 BANDI4
 ADDRLP4 24
 INDIRI4
-NEI4 $516
+NEI4 $518
 line 1158
 ;1158:      Menu_ClearFocus(item->parent);
 ADDRFP4 0
@@ -7336,7 +7336,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $518
+EQU4 $520
 line 1161
 ;1161:        Item_RunScript(focusItem, focusItem->onFocus);
 ADDRLP4 32
@@ -7357,7 +7357,7 @@ CALLV
 pop
 line 1162
 ;1162:      }
-LABELV $518
+LABELV $520
 line 1163
 ;1163:      if (DC->Assets.itemFocusSound) {
 ADDRGP4 DC
@@ -7366,7 +7366,7 @@ CNSTI4 61948
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $520
+EQI4 $522
 line 1164
 ;1164:        DC->startLocalSound( DC->Assets.itemFocusSound, CHAN_LOCAL_SOUND );
 ADDRLP4 32
@@ -7390,16 +7390,16 @@ CALLV
 pop
 line 1165
 ;1165:      }
-LABELV $520
+LABELV $522
 line 1166
 ;1166:    }
-LABELV $516
+LABELV $518
 line 1167
 ;1167:  }
-LABELV $514
+LABELV $516
 line 1168
 ;1168:}
-LABELV $513
+LABELV $515
 endproc Script_SetFocus 36 8
 export Script_SetPlayerModel
 proc Script_SetPlayerModel 8 8
@@ -7421,10 +7421,10 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $523
+EQI4 $525
 line 1173
 ;1173:    DC->setCVar("team_model", name);
-ADDRGP4 $525
+ADDRGP4 $527
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -7438,10 +7438,10 @@ CALLV
 pop
 line 1174
 ;1174:  }
-LABELV $523
+LABELV $525
 line 1175
 ;1175:}
-LABELV $522
+LABELV $524
 endproc Script_SetPlayerModel 8 8
 export Script_SetPlayerHead
 proc Script_SetPlayerHead 8 8
@@ -7463,10 +7463,10 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $527
+EQI4 $529
 line 1180
 ;1180:    DC->setCVar("team_headmodel", name);
-ADDRGP4 $529
+ADDRGP4 $531
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -7480,10 +7480,10 @@ CALLV
 pop
 line 1181
 ;1181:  }
-LABELV $527
+LABELV $529
 line 1182
 ;1182:}
-LABELV $526
+LABELV $528
 endproc Script_SetPlayerHead 8 8
 export Script_SetCvar
 proc Script_SetCvar 16 8
@@ -7505,7 +7505,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $531
+EQI4 $533
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -7518,7 +7518,7 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $531
+EQI4 $533
 line 1187
 ;1187:		DC->setCVar(cvar, val);
 ADDRLP4 0
@@ -7536,11 +7536,11 @@ CALLV
 pop
 line 1188
 ;1188:	}
-LABELV $531
+LABELV $533
 line 1190
 ;1189:	
 ;1190:}
-LABELV $530
+LABELV $532
 endproc Script_SetCvar 16 8
 export Script_Exec
 proc Script_Exec 12 8
@@ -7562,10 +7562,10 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $534
+EQI4 $536
 line 1195
 ;1195:		DC->executeText(EXEC_APPEND, va("%s ; ", val));
-ADDRGP4 $536
+ADDRGP4 $538
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -7588,10 +7588,10 @@ CALLV
 pop
 line 1196
 ;1196:	}
-LABELV $534
+LABELV $536
 line 1197
 ;1197:}
-LABELV $533
+LABELV $535
 endproc Script_Exec 12 8
 export Script_Play
 proc Script_Play 12 8
@@ -7613,7 +7613,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $538
+EQI4 $540
 line 1202
 ;1202:		DC->startLocalSound(DC->registerSound(val, qfalse), CHAN_LOCAL_SOUND);
 ADDRLP4 0
@@ -7643,10 +7643,10 @@ CALLV
 pop
 line 1203
 ;1203:	}
-LABELV $538
+LABELV $540
 line 1204
 ;1204:}
-LABELV $537
+LABELV $539
 endproc Script_Play 12 8
 export Script_playLooped
 proc Script_playLooped 12 8
@@ -7668,7 +7668,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $541
+EQI4 $543
 line 1209
 ;1209:		DC->stopBackgroundTrack();
 ADDRGP4 DC
@@ -7699,56 +7699,56 @@ CALLV
 pop
 line 1211
 ;1211:	}
-LABELV $541
+LABELV $543
 line 1212
 ;1212:}
-LABELV $540
+LABELV $542
 endproc Script_playLooped 12 8
 data
 export commandList
 align 4
 LABELV commandList
-address $543
-address Script_FadeIn
-address $544
-address Script_FadeOut
 address $545
-address Script_Show
+address Script_FadeIn
 address $546
-address Script_Hide
+address Script_FadeOut
 address $547
-address Script_SetColor
+address Script_Show
 address $548
-address Script_Open
+address Script_Hide
 address $549
-address Script_ConditionalOpen
+address Script_SetColor
 address $550
-address Script_Close
+address Script_Open
 address $551
-address Script_SetAsset
+address Script_ConditionalOpen
 address $552
-address Script_SetBackground
+address Script_Close
 address $553
-address Script_SetItemColor
+address Script_SetAsset
 address $554
-address Script_SetTeamColor
+address Script_SetBackground
 address $555
-address Script_SetFocus
+address Script_SetItemColor
 address $556
-address Script_SetPlayerModel
+address Script_SetTeamColor
 address $557
-address Script_SetPlayerHead
+address Script_SetFocus
 address $558
-address Script_Transition
+address Script_SetPlayerModel
 address $559
-address Script_SetCvar
+address Script_SetPlayerHead
 address $560
-address Script_Exec
+address Script_Transition
 address $561
-address Script_Play
+address Script_SetCvar
 address $562
-address Script_playLooped
+address Script_Exec
 address $563
+address Script_Play
+address $564
+address Script_playLooped
+address $565
 address Script_Orbit
 export scriptCommandCount
 align 4
@@ -7813,7 +7813,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 1036
 INDIRU4
-EQU4 $565
+EQU4 $567
 ADDRLP4 1040
 ADDRFP4 4
 INDIRP4
@@ -7823,13 +7823,13 @@ INDIRP4
 CVPU4 4
 ADDRLP4 1036
 INDIRU4
-EQU4 $565
+EQU4 $567
 ADDRLP4 1040
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $565
+EQI4 $567
 line 1249
 ;1249:    Q_strcat(script, 1024, s);
 ADDRLP4 12
@@ -7847,9 +7847,9 @@ line 1250
 ADDRLP4 8
 ADDRLP4 12
 ASGNP4
-ADDRGP4 $568
+ADDRGP4 $570
 JUMPV
-LABELV $567
+LABELV $569
 line 1251
 ;1251:    while (1) {
 line 1254
@@ -7867,12 +7867,12 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-NEI4 $570
+NEI4 $572
 line 1255
 ;1255:        return;
-ADDRGP4 $564
+ADDRGP4 $566
 JUMPV
-LABELV $570
+LABELV $572
 line 1258
 ;1256:      }
 ;1257:
@@ -7886,7 +7886,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 59
-NEI4 $572
+NEI4 $574
 ADDRLP4 1052
 INDIRP4
 CNSTI4 1
@@ -7894,12 +7894,12 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $572
+NEI4 $574
 line 1259
 ;1259:        continue;
-ADDRGP4 $568
+ADDRGP4 $570
 JUMPV
-LABELV $572
+LABELV $574
 line 1262
 ;1260:      }
 ;1261:
@@ -7912,9 +7912,9 @@ line 1263
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $577
+ADDRGP4 $579
 JUMPV
-LABELV $574
+LABELV $576
 line 1264
 ;1264:        if (Q_stricmp(command, commandList[i].name) == 0) {
 ADDRLP4 1044
@@ -7935,7 +7935,7 @@ ASGNI4
 ADDRLP4 1056
 INDIRI4
 CNSTI4 0
-NEI4 $578
+NEI4 $580
 line 1265
 ;1265:          (commandList[i].handler(item, &p));
 ADDRFP4 0
@@ -7959,13 +7959,13 @@ CNSTI4 1
 ASGNI4
 line 1267
 ;1267:          break;
-ADDRGP4 $576
+ADDRGP4 $578
 JUMPV
-LABELV $578
+LABELV $580
 line 1269
 ;1268:        }
 ;1269:      }
-LABELV $575
+LABELV $577
 line 1263
 ADDRLP4 0
 ADDRLP4 0
@@ -7973,20 +7973,20 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $577
+LABELV $579
 ADDRLP4 0
 INDIRI4
 ADDRGP4 scriptCommandCount
 INDIRI4
-LTI4 $574
-LABELV $576
+LTI4 $576
+LABELV $578
 line 1271
 ;1270:      // not in our auto list, pass to handler
 ;1271:      if (!bRan) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $581
+NEI4 $583
 line 1272
 ;1272:        DC->runScript(&p);
 ADDRLP4 8
@@ -8000,19 +8000,19 @@ CALLV
 pop
 line 1273
 ;1273:      }
-LABELV $581
+LABELV $583
 line 1274
 ;1274:    }
-LABELV $568
+LABELV $570
 line 1251
-ADDRGP4 $567
+ADDRGP4 $569
 JUMPV
 line 1275
 ;1275:  }
-LABELV $565
+LABELV $567
 line 1276
 ;1276:}
-LABELV $564
+LABELV $566
 endproc Item_RunScript 1060 12
 export Item_EnableShowViaCvar
 proc Item_EnableShowViaCvar 2088 12
@@ -8046,7 +8046,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 1032
 INDIRU4
-EQU4 $584
+EQU4 $586
 ADDRLP4 1036
 ADDRLP4 1028
 INDIRP4
@@ -8059,7 +8059,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 1032
 INDIRU4
-EQU4 $584
+EQU4 $586
 ADDRLP4 1040
 CNSTI4 0
 ASGNI4
@@ -8069,7 +8069,7 @@ INDIRI1
 CVII4 1
 ADDRLP4 1040
 INDIRI4
-EQI4 $584
+EQI4 $586
 ADDRLP4 1044
 ADDRLP4 1028
 INDIRP4
@@ -8082,14 +8082,14 @@ INDIRP4
 CVPU4 4
 ADDRLP4 1032
 INDIRU4
-EQU4 $584
+EQU4 $586
 ADDRLP4 1044
 INDIRP4
 INDIRI1
 CVII4 1
 ADDRLP4 1040
 INDIRI4
-EQI4 $584
+EQI4 $586
 line 1284
 ;1283:		char buff[1024];
 ;1284:	  DC->getCVarString(item->cvarTest, buff, sizeof(buff));
@@ -8131,9 +8131,9 @@ line 1287
 ADDRLP4 0
 ADDRLP4 4
 ASGNP4
-ADDRGP4 $587
+ADDRGP4 $589
 JUMPV
-LABELV $586
+LABELV $588
 line 1288
 ;1288:    while (1) {
 line 1291
@@ -8151,7 +8151,7 @@ ASGNI4
 ADDRLP4 2076
 INDIRI4
 CNSTI4 0
-NEI4 $589
+NEI4 $591
 line 1292
 ;1292:				return (item->cvarFlags & flag) ? qfalse : qtrue;
 ADDRFP4 0
@@ -8163,23 +8163,23 @@ ADDRFP4 4
 INDIRI4
 BANDI4
 CNSTI4 0
-EQI4 $592
+EQI4 $594
 ADDRLP4 2080
 CNSTI4 0
 ASGNI4
-ADDRGP4 $593
+ADDRGP4 $595
 JUMPV
-LABELV $592
+LABELV $594
 ADDRLP4 2080
 CNSTI4 1
 ASGNI4
-LABELV $593
+LABELV $595
 ADDRLP4 2080
 INDIRI4
 RETI4
-ADDRGP4 $583
+ADDRGP4 $585
 JUMPV
-LABELV $589
+LABELV $591
 line 1295
 ;1293:      }
 ;1294:
@@ -8193,7 +8193,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 59
-NEI4 $594
+NEI4 $596
 ADDRLP4 2080
 INDIRP4
 CNSTI4 1
@@ -8201,12 +8201,12 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $594
+NEI4 $596
 line 1296
 ;1296:        continue;
-ADDRGP4 $587
+ADDRGP4 $589
 JUMPV
-LABELV $594
+LABELV $596
 line 1300
 ;1297:      }
 ;1298:
@@ -8221,7 +8221,7 @@ ADDRFP4 4
 INDIRI4
 BANDI4
 CNSTI4 0
-EQI4 $596
+EQI4 $598
 line 1301
 ;1301:        if (Q_stricmp(buff, val) == 0) {
 ADDRLP4 1048
@@ -8236,17 +8236,17 @@ ASGNI4
 ADDRLP4 2084
 INDIRI4
 CNSTI4 0
-NEI4 $597
+NEI4 $599
 line 1302
 ;1302:					return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $583
+ADDRGP4 $585
 JUMPV
 line 1304
 ;1303:				}
 ;1304:			} else {
-LABELV $596
+LABELV $598
 line 1306
 ;1305:				// disable it if any of the values are true
 ;1306:        if (Q_stricmp(buff, val) == 0) {
@@ -8262,24 +8262,24 @@ ASGNI4
 ADDRLP4 2084
 INDIRI4
 CNSTI4 0
-NEI4 $600
+NEI4 $602
 line 1307
 ;1307:					return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $583
+ADDRGP4 $585
 JUMPV
-LABELV $600
+LABELV $602
 line 1309
 ;1308:				}
 ;1309:			}
-LABELV $597
+LABELV $599
 line 1311
 ;1310:
 ;1311:    }
-LABELV $587
+LABELV $589
 line 1288
-ADDRGP4 $586
+ADDRGP4 $588
 JUMPV
 line 1312
 ;1312:		return (item->cvarFlags & flag) ? qfalse : qtrue;
@@ -8292,29 +8292,29 @@ ADDRFP4 4
 INDIRI4
 BANDI4
 CNSTI4 0
-EQI4 $603
+EQI4 $605
 ADDRLP4 2072
 CNSTI4 0
 ASGNI4
-ADDRGP4 $604
+ADDRGP4 $606
 JUMPV
-LABELV $603
+LABELV $605
 ADDRLP4 2072
 CNSTI4 1
 ASGNI4
-LABELV $604
+LABELV $606
 ADDRLP4 2072
 INDIRI4
 RETI4
-ADDRGP4 $583
+ADDRGP4 $585
 JUMPV
-LABELV $584
+LABELV $586
 line 1314
 ;1313:  }
 ;1314:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $583
+LABELV $585
 endproc Item_EnableShowViaCvar 2088 12
 export Item_SetFocus
 proc Item_SetFocus 80 12
@@ -8351,7 +8351,7 @@ ADDRLP4 20
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $610
+EQU4 $612
 ADDRLP4 24
 ADDRLP4 20
 INDIRP4
@@ -8368,29 +8368,29 @@ CNSTI4 16
 BANDI4
 ADDRLP4 28
 INDIRI4
-NEI4 $610
+NEI4 $612
 ADDRLP4 24
 INDIRI4
 CNSTI4 2
 BANDI4
 ADDRLP4 28
 INDIRI4
-NEI4 $610
+NEI4 $612
 ADDRLP4 24
 INDIRI4
 CNSTI4 4
 BANDI4
 ADDRLP4 28
 INDIRI4
-NEI4 $606
-LABELV $610
+NEI4 $608
+LABELV $612
 line 1327
 ;1327:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $605
+ADDRGP4 $607
 JUMPV
-LABELV $606
+LABELV $608
 line 1331
 ;1328:	}
 ;1329:
@@ -8419,7 +8419,7 @@ INDIRI4
 CNSTI4 3
 BANDI4
 CNSTI4 0
-EQI4 $611
+EQI4 $613
 ADDRLP4 32
 INDIRP4
 ARGP4
@@ -8432,14 +8432,14 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-NEI4 $611
+NEI4 $613
 line 1335
 ;1335:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $605
+ADDRGP4 $607
 JUMPV
-LABELV $611
+LABELV $613
 line 1338
 ;1336:	}
 ;1337:
@@ -8456,7 +8456,7 @@ INDIRI4
 CNSTI4 12
 BANDI4
 CNSTI4 0
-EQI4 $613
+EQI4 $615
 ADDRLP4 40
 INDIRP4
 ARGP4
@@ -8469,14 +8469,14 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
-NEI4 $613
+NEI4 $615
 line 1339
 ;1339:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $605
+ADDRGP4 $607
 JUMPV
-LABELV $613
+LABELV $615
 line 1342
 ;1340:	}
 ;1341:
@@ -8504,7 +8504,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $615
+NEI4 $617
 line 1346
 ;1345:		rectDef_t r;
 ;1346:		r = item->textRect;
@@ -8541,7 +8541,7 @@ ASGNI4
 ADDRLP4 68
 INDIRI4
 CNSTI4 0
-EQI4 $619
+EQI4 $621
 line 1349
 ;1349:			item->window.flags |= WINDOW_HASFOCUS;
 ADDRLP4 72
@@ -8566,7 +8566,7 @@ CNSTI4 280
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $621
+EQI4 $623
 line 1351
 ;1351:				sfx = &item->focusSound;
 ADDRLP4 8
@@ -8577,7 +8577,7 @@ ADDP4
 ASGNP4
 line 1352
 ;1352:			}
-LABELV $621
+LABELV $623
 line 1353
 ;1353:			playSound = qtrue;
 ADDRLP4 12
@@ -8585,16 +8585,16 @@ CNSTI4 1
 ASGNI4
 line 1354
 ;1354:		} else {
-ADDRGP4 $616
+ADDRGP4 $618
 JUMPV
-LABELV $619
+LABELV $621
 line 1355
 ;1355:			if (oldFocus) {
 ADDRLP4 16
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $616
+EQU4 $618
 line 1356
 ;1356:				oldFocus->window.flags |= WINDOW_HASFOCUS;
 ADDRLP4 72
@@ -8620,7 +8620,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $616
+EQU4 $618
 line 1358
 ;1358:					Item_RunScript(oldFocus, oldFocus->onFocus);
 ADDRLP4 76
@@ -8647,9 +8647,9 @@ line 1361
 ;1361:		}
 line 1362
 ;1362:	} else {
-ADDRGP4 $616
+ADDRGP4 $618
 JUMPV
-LABELV $615
+LABELV $617
 line 1363
 ;1363:	    item->window.flags |= WINDOW_HASFOCUS;
 ADDRLP4 52
@@ -8675,7 +8675,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $627
+EQU4 $629
 line 1365
 ;1365:			Item_RunScript(item, item->onFocus);
 ADDRLP4 56
@@ -8696,7 +8696,7 @@ CALLV
 pop
 line 1366
 ;1366:		}
-LABELV $627
+LABELV $629
 line 1367
 ;1367:		if (item->focusSound) {
 ADDRFP4 0
@@ -8705,7 +8705,7 @@ CNSTI4 280
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $629
+EQI4 $631
 line 1368
 ;1368:			sfx = &item->focusSound;
 ADDRLP4 8
@@ -8716,7 +8716,7 @@ ADDP4
 ASGNP4
 line 1369
 ;1369:		}
-LABELV $629
+LABELV $631
 line 1370
 ;1370:		playSound = qtrue;
 ADDRLP4 12
@@ -8724,19 +8724,19 @@ CNSTI4 1
 ASGNI4
 line 1371
 ;1371:	}
-LABELV $616
+LABELV $618
 line 1373
 ;1372:
 ;1373:	if (playSound && sfx) {
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $631
+EQI4 $633
 ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $631
+EQU4 $633
 line 1374
 ;1374:		DC->startLocalSound( *sfx, CHAN_LOCAL_SOUND );
 ADDRLP4 8
@@ -8754,16 +8754,16 @@ CALLV
 pop
 line 1375
 ;1375:	}
-LABELV $631
+LABELV $633
 line 1377
 ;1376:
 ;1377:	for (i = 0; i < parent->itemCount; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $636
+ADDRGP4 $638
 JUMPV
-LABELV $633
+LABELV $635
 line 1378
 ;1378:		if (parent->items[i] == item) {
 ADDRLP4 0
@@ -8780,7 +8780,7 @@ CVPU4 4
 ADDRFP4 0
 INDIRP4
 CVPU4 4
-NEU4 $637
+NEU4 $639
 line 1379
 ;1379:			parent->cursorItem = i;
 ADDRLP4 4
@@ -8792,13 +8792,13 @@ INDIRI4
 ASGNI4
 line 1380
 ;1380:			break;
-ADDRGP4 $635
+ADDRGP4 $637
 JUMPV
-LABELV $637
+LABELV $639
 line 1382
 ;1381:		}
 ;1382:	}
-LABELV $634
+LABELV $636
 line 1377
 ADDRLP4 0
 ADDRLP4 0
@@ -8806,7 +8806,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $636
+LABELV $638
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
@@ -8814,14 +8814,14 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $633
-LABELV $635
+LTI4 $635
+LABELV $637
 line 1384
 ;1383:
 ;1384:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $605
+LABELV $607
 endproc Item_SetFocus 80 12
 export Item_ListBox_MaxScroll
 proc Item_ListBox_MaxScroll 16 4
@@ -8870,7 +8870,7 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $640
+EQI4 $642
 line 1393
 ;1393:		max = count - (item->window.rect.w / listPtr->elementWidth) + 1;
 ADDRLP4 0
@@ -8895,9 +8895,9 @@ CVFI4 4
 ASGNI4
 line 1394
 ;1394:	}
-ADDRGP4 $641
+ADDRGP4 $643
 JUMPV
-LABELV $640
+LABELV $642
 line 1395
 ;1395:	else {
 line 1396
@@ -8924,27 +8924,27 @@ CVFI4 4
 ASGNI4
 line 1397
 ;1397:	}
-LABELV $641
+LABELV $643
 line 1398
 ;1398:	if (max < 0) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-GEI4 $642
+GEI4 $644
 line 1399
 ;1399:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $639
+ADDRGP4 $641
 JUMPV
-LABELV $642
+LABELV $644
 line 1401
 ;1400:	}
 ;1401:	return max;
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $639
+LABELV $641
 endproc Item_ListBox_MaxScroll 16 4
 export Item_ListBox_ThumbPosition
 proc Item_ListBox_ThumbPosition 20 4
@@ -8987,7 +8987,7 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $645
+EQI4 $647
 line 1410
 ;1410:		size = item->window.rect.w - (SCROLLBAR_SIZE * 2) - 2;
 ADDRLP4 12
@@ -9006,7 +9006,7 @@ line 1411
 ADDRLP4 4
 INDIRF4
 CNSTF4 0
-LEF4 $647
+LEF4 $649
 line 1412
 ;1412:			pos = (size-SCROLLBAR_SIZE) / (float) max;
 ADDRLP4 0
@@ -9020,9 +9020,9 @@ DIVF4
 ASGNF4
 line 1413
 ;1413:		} else {
-ADDRGP4 $648
+ADDRGP4 $650
 JUMPV
-LABELV $647
+LABELV $649
 line 1414
 ;1414:			pos = 0;
 ADDRLP4 0
@@ -9030,7 +9030,7 @@ CNSTF4 0
 ASGNF4
 line 1415
 ;1415:		}
-LABELV $648
+LABELV $650
 line 1416
 ;1416:		pos *= listPtr->startPos;
 ADDRLP4 0
@@ -9056,9 +9056,9 @@ INDIRF4
 ADDF4
 CVFI4 4
 RETI4
-ADDRGP4 $644
+ADDRGP4 $646
 JUMPV
-LABELV $645
+LABELV $647
 line 1419
 ;1418:	}
 ;1419:	else {
@@ -9080,7 +9080,7 @@ line 1421
 ADDRLP4 4
 INDIRF4
 CNSTF4 0
-LEF4 $649
+LEF4 $651
 line 1422
 ;1422:			pos = (size-SCROLLBAR_SIZE) / (float) max;
 ADDRLP4 0
@@ -9094,9 +9094,9 @@ DIVF4
 ASGNF4
 line 1423
 ;1423:		} else {
-ADDRGP4 $650
+ADDRGP4 $652
 JUMPV
-LABELV $649
+LABELV $651
 line 1424
 ;1424:			pos = 0;
 ADDRLP4 0
@@ -9104,7 +9104,7 @@ CNSTF4 0
 ASGNF4
 line 1425
 ;1425:		}
-LABELV $650
+LABELV $652
 line 1426
 ;1426:		pos *= listPtr->startPos;
 ADDRLP4 0
@@ -9132,7 +9132,7 @@ INDIRF4
 ADDF4
 CVFI4 4
 RETI4
-LABELV $644
+LABELV $646
 endproc Item_ListBox_ThumbPosition 20 4
 export Item_ListBox_ThumbDrawPosition
 proc Item_ListBox_ThumbDrawPosition 24 4
@@ -9151,7 +9151,7 @@ CVPU4 4
 ADDRFP4 0
 INDIRP4
 CVPU4 4
-NEU4 $652
+NEU4 $654
 line 1435
 ;1435:		if (item->window.flags & WINDOW_HORIZONTAL) {
 ADDRFP4 0
@@ -9162,7 +9162,7 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $654
+EQI4 $656
 line 1436
 ;1436:			min = item->window.rect.x + SCROLLBAR_SIZE + 1;
 ADDRLP4 0
@@ -9218,7 +9218,7 @@ CVIF4 4
 ADDRLP4 16
 INDIRF4
 ADDF4
-LTF4 $656
+LTF4 $658
 ADDRLP4 12
 INDIRF4
 ADDRLP4 4
@@ -9227,7 +9227,7 @@ CVIF4 4
 ADDRLP4 16
 INDIRF4
 ADDF4
-GTF4 $656
+GTF4 $658
 line 1439
 ;1439:				return DC->cursorx - SCROLLBAR_SIZE/2;
 ADDRGP4 DC
@@ -9240,9 +9240,9 @@ CNSTF4 1090519040
 SUBF4
 CVFI4 4
 RETI4
-ADDRGP4 $651
+ADDRGP4 $653
 JUMPV
-LABELV $656
+LABELV $658
 line 1441
 ;1440:			}
 ;1441:			else {
@@ -9258,9 +9258,9 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 RETI4
-ADDRGP4 $651
+ADDRGP4 $653
 JUMPV
-LABELV $654
+LABELV $656
 line 1445
 ;1443:			}
 ;1444:		}
@@ -9324,7 +9324,7 @@ CVIF4 4
 ADDRLP4 16
 INDIRF4
 ADDF4
-LTF4 $658
+LTF4 $660
 ADDRLP4 12
 INDIRF4
 ADDRLP4 4
@@ -9333,7 +9333,7 @@ CVIF4 4
 ADDRLP4 16
 INDIRF4
 ADDF4
-GTF4 $658
+GTF4 $660
 line 1449
 ;1449:				return DC->cursory - SCROLLBAR_SIZE/2;
 ADDRGP4 DC
@@ -9346,9 +9346,9 @@ CNSTF4 1090519040
 SUBF4
 CVFI4 4
 RETI4
-ADDRGP4 $651
+ADDRGP4 $653
 JUMPV
-LABELV $658
+LABELV $660
 line 1451
 ;1450:			}
 ;1451:			else {
@@ -9364,9 +9364,9 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 RETI4
-ADDRGP4 $651
+ADDRGP4 $653
 JUMPV
-LABELV $652
+LABELV $654
 line 1456
 ;1453:			}
 ;1454:		}
@@ -9384,7 +9384,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 RETI4
-LABELV $651
+LABELV $653
 endproc Item_ListBox_ThumbDrawPosition 24 4
 export Item_Slider_ThumbPosition
 proc Item_Slider_ThumbPosition 28 4
@@ -9413,7 +9413,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $661
+EQU4 $663
 line 1466
 ;1466:		x = item->textRect.x + item->textRect.w + 8;
 ADDRLP4 16
@@ -9437,9 +9437,9 @@ ADDF4
 ASGNF4
 line 1467
 ;1467:	} else {
-ADDRGP4 $662
+ADDRGP4 $664
 JUMPV
-LABELV $661
+LABELV $663
 line 1468
 ;1468:		x = item->window.rect.x;
 ADDRLP4 8
@@ -9449,7 +9449,7 @@ INDIRF4
 ASGNF4
 line 1469
 ;1469:	}
-LABELV $662
+LABELV $664
 line 1471
 ;1470:
 ;1471:	if (editDef == NULL && item->cvar) {
@@ -9461,7 +9461,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 16
 INDIRU4
-NEU4 $663
+NEU4 $665
 ADDRFP4 0
 INDIRP4
 CNSTI4 264
@@ -9470,15 +9470,15 @@ INDIRP4
 CVPU4 4
 ADDRLP4 16
 INDIRU4
-EQU4 $663
+EQU4 $665
 line 1472
 ;1472:		return x;
 ADDRLP4 8
 INDIRF4
 RETF4
-ADDRGP4 $660
+ADDRGP4 $662
 JUMPV
-LABELV $663
+LABELV $665
 line 1475
 ;1473:	}
 ;1474:
@@ -9509,7 +9509,7 @@ INDIRF4
 ADDRLP4 4
 INDIRP4
 INDIRF4
-GEF4 $665
+GEF4 $667
 line 1478
 ;1478:		value = editDef->minVal;
 ADDRLP4 0
@@ -9519,9 +9519,9 @@ INDIRF4
 ASGNF4
 line 1479
 ;1479:	} else if (value > editDef->maxVal) {
-ADDRGP4 $666
+ADDRGP4 $668
 JUMPV
-LABELV $665
+LABELV $667
 ADDRLP4 0
 INDIRF4
 ADDRLP4 4
@@ -9529,7 +9529,7 @@ INDIRP4
 CNSTI4 4
 ADDP4
 INDIRF4
-LEF4 $667
+LEF4 $669
 line 1480
 ;1480:		value = editDef->maxVal;
 ADDRLP4 0
@@ -9541,8 +9541,8 @@ INDIRF4
 ASGNF4
 line 1481
 ;1481:	}
-LABELV $667
-LABELV $666
+LABELV $669
+LABELV $668
 line 1483
 ;1482:
 ;1483:	range = editDef->maxVal - editDef->minVal;
@@ -9601,7 +9601,7 @@ line 1491
 ADDRLP4 8
 INDIRF4
 RETF4
-LABELV $660
+LABELV $662
 endproc Item_Slider_ThumbPosition 28 4
 export Item_Slider_OverSlider
 proc Item_Slider_OverSlider 24 12
@@ -9665,20 +9665,20 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $673
+EQI4 $675
 line 1503
 ;1503:		return WINDOW_LB_THUMB;
 CNSTI4 8192
 RETI4
-ADDRGP4 $669
+ADDRGP4 $671
 JUMPV
-LABELV $673
+LABELV $675
 line 1505
 ;1504:	}
 ;1505:	return 0;
 CNSTI4 0
 RETI4
-LABELV $669
+LABELV $671
 endproc Item_Slider_OverSlider 24 12
 export Item_ListBox_OverLB
 proc Item_ListBox_OverLB 72 12
@@ -9730,7 +9730,7 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $676
+EQI4 $678
 line 1518
 ;1517:		// check if on left arrow
 ;1518:		r.x = item->window.rect.x;
@@ -9790,14 +9790,14 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
-EQI4 $681
+EQI4 $683
 line 1522
 ;1522:			return WINDOW_LB_LEFTARROW;
 CNSTI4 2048
 RETI4
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $681
+LABELV $683
 line 1525
 ;1523:		}
 ;1524:		// check if on right arrow
@@ -9836,14 +9836,14 @@ ASGNI4
 ADDRLP4 48
 INDIRI4
 CNSTI4 0
-EQI4 $683
+EQI4 $685
 line 1527
 ;1527:			return WINDOW_LB_RIGHTARROW;
 CNSTI4 4096
 RETI4
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $683
+LABELV $685
 line 1530
 ;1528:		}
 ;1529:		// check if on thumb
@@ -9883,14 +9883,14 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-EQI4 $685
+EQI4 $687
 line 1533
 ;1533:			return WINDOW_LB_THUMB;
 CNSTI4 8192
 RETI4
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $685
+LABELV $687
 line 1535
 ;1534:		}
 ;1535:		r.x = item->window.rect.x + SCROLLBAR_SIZE;
@@ -9928,14 +9928,14 @@ ASGNI4
 ADDRLP4 60
 INDIRI4
 CNSTI4 0
-EQI4 $688
+EQI4 $690
 line 1538
 ;1538:			return WINDOW_LB_PGUP;
 CNSTI4 16384
 RETI4
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $688
+LABELV $690
 line 1540
 ;1539:		}
 ;1540:		r.x = thumbstart + SCROLLBAR_SIZE;
@@ -9982,17 +9982,17 @@ ASGNI4
 ADDRLP4 68
 INDIRI4
 CNSTI4 0
-EQI4 $677
+EQI4 $679
 line 1543
 ;1543:			return WINDOW_LB_PGDN;
 CNSTI4 32768
 RETI4
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
 line 1545
 ;1544:		}
 ;1545:	} else {
-LABELV $676
+LABELV $678
 line 1546
 ;1546:		r.x = item->window.rect.x + item->window.rect.w - SCROLLBAR_SIZE;
 ADDRLP4 32
@@ -10051,14 +10051,14 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
-EQI4 $696
+EQI4 $698
 line 1550
 ;1550:			return WINDOW_LB_LEFTARROW;
 CNSTI4 2048
 RETI4
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $696
+LABELV $698
 line 1552
 ;1551:		}
 ;1552:		r.y = item->window.rect.y + item->window.rect.h - SCROLLBAR_SIZE;
@@ -10098,14 +10098,14 @@ ASGNI4
 ADDRLP4 48
 INDIRI4
 CNSTI4 0
-EQI4 $699
+EQI4 $701
 line 1554
 ;1554:			return WINDOW_LB_RIGHTARROW;
 CNSTI4 4096
 RETI4
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $699
+LABELV $701
 line 1556
 ;1555:		}
 ;1556:		thumbstart = Item_ListBox_ThumbPosition(item);
@@ -10144,14 +10144,14 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-EQI4 $702
+EQI4 $704
 line 1559
 ;1559:			return WINDOW_LB_THUMB;
 CNSTI4 8192
 RETI4
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $702
+LABELV $704
 line 1561
 ;1560:		}
 ;1561:		r.y = item->window.rect.y + SCROLLBAR_SIZE;
@@ -10191,14 +10191,14 @@ ASGNI4
 ADDRLP4 60
 INDIRI4
 CNSTI4 0
-EQI4 $707
+EQI4 $709
 line 1564
 ;1564:			return WINDOW_LB_PGUP;
 CNSTI4 16384
 RETI4
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $707
+LABELV $709
 line 1566
 ;1565:		}
 ;1566:		r.y = thumbstart + SCROLLBAR_SIZE;
@@ -10247,23 +10247,23 @@ ASGNI4
 ADDRLP4 68
 INDIRI4
 CNSTI4 0
-EQI4 $711
+EQI4 $713
 line 1569
 ;1569:			return WINDOW_LB_PGDN;
 CNSTI4 32768
 RETI4
-ADDRGP4 $675
+ADDRGP4 $677
 JUMPV
-LABELV $711
+LABELV $713
 line 1571
 ;1570:		}
 ;1571:	}
-LABELV $677
+LABELV $679
 line 1572
 ;1572:	return 0;
 CNSTI4 0
 RETI4
-LABELV $675
+LABELV $677
 endproc Item_ListBox_OverLB 72 12
 export Item_ListBox_MouseEnter
 proc Item_ListBox_MouseEnter 56 12
@@ -10345,7 +10345,7 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $714
+EQI4 $716
 line 1585
 ;1585:		if (!(item->window.flags & (WINDOW_LB_LEFTARROW | WINDOW_LB_RIGHTARROW | WINDOW_LB_THUMB | WINDOW_LB_PGUP | WINDOW_LB_PGDN))) {
 ADDRFP4 0
@@ -10356,7 +10356,7 @@ INDIRI4
 CNSTI4 63488
 BANDI4
 CNSTI4 0
-NEI4 $715
+NEI4 $717
 line 1587
 ;1586:			// check for selection hit as we have exausted buttons and thumb
 ;1587:			if (listPtr->elementStyle == LISTBOX_IMAGE) {
@@ -10366,7 +10366,7 @@ CNSTI4 24
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $715
+NEI4 $717
 line 1588
 ;1588:				r.x = item->window.rect.x;
 ADDRLP4 4
@@ -10432,7 +10432,7 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
-EQI4 $715
+EQI4 $717
 line 1593
 ;1593:					listPtr->cursorPos =  (int)((x - r.x) / listPtr->elementWidth)  + listPtr->startPos;
 ADDRLP4 44
@@ -10476,7 +10476,7 @@ INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
-LTI4 $715
+LTI4 $717
 line 1595
 ;1595:						listPtr->cursorPos = listPtr->endPos;
 ADDRLP4 52
@@ -10506,9 +10506,9 @@ line 1601
 ;1601:		}
 line 1602
 ;1602:	} else if (!(item->window.flags & (WINDOW_LB_LEFTARROW | WINDOW_LB_RIGHTARROW | WINDOW_LB_THUMB | WINDOW_LB_PGUP | WINDOW_LB_PGDN))) {
-ADDRGP4 $715
+ADDRGP4 $717
 JUMPV
-LABELV $714
+LABELV $716
 ADDRFP4 0
 INDIRP4
 CNSTI4 68
@@ -10517,7 +10517,7 @@ INDIRI4
 CNSTI4 63488
 BANDI4
 CNSTI4 0
-NEI4 $727
+NEI4 $729
 line 1603
 ;1603:		r.x = item->window.rect.x;
 ADDRLP4 4
@@ -10578,7 +10578,7 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $732
+EQI4 $734
 line 1608
 ;1608:			listPtr->cursorPos =  (int)((y - 2 - r.y) / listPtr->elementHeight)  + listPtr->startPos;
 ADDRLP4 40
@@ -10624,7 +10624,7 @@ INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
-LEI4 $735
+LEI4 $737
 line 1610
 ;1610:				listPtr->cursorPos = listPtr->endPos;
 ADDRLP4 48
@@ -10643,17 +10643,17 @@ INDIRI4
 ASGNI4
 line 1611
 ;1611:			}
-LABELV $735
+LABELV $737
 line 1612
 ;1612:		}
-LABELV $732
+LABELV $734
 line 1613
 ;1613:	}
-LABELV $727
-LABELV $715
+LABELV $729
+LABELV $717
 line 1614
 ;1614:}
-LABELV $713
+LABELV $715
 endproc Item_ListBox_MouseEnter 56 12
 export Item_MouseEnter
 proc Item_MouseEnter 44 12
@@ -10667,7 +10667,7 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $738
+EQU4 $740
 line 1619
 ;1619:		r = item->textRect;
 ADDRLP4 0
@@ -10703,7 +10703,7 @@ INDIRI4
 CNSTI4 3
 BANDI4
 CNSTI4 0
-EQI4 $742
+EQI4 $744
 ADDRLP4 16
 INDIRP4
 ARGP4
@@ -10716,12 +10716,12 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-NEI4 $742
+NEI4 $744
 line 1625
 ;1625:			return;
-ADDRGP4 $737
+ADDRGP4 $739
 JUMPV
-LABELV $742
+LABELV $744
 line 1628
 ;1626:		}
 ;1627:
@@ -10738,7 +10738,7 @@ INDIRI4
 CNSTI4 12
 BANDI4
 CNSTI4 0
-EQI4 $744
+EQI4 $746
 ADDRLP4 24
 INDIRP4
 ARGP4
@@ -10751,12 +10751,12 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-NEI4 $744
+NEI4 $746
 line 1629
 ;1629:			return;
-ADDRGP4 $737
+ADDRGP4 $739
 JUMPV
-LABELV $744
+LABELV $746
 line 1632
 ;1630:		}
 ;1631:
@@ -10776,7 +10776,7 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-EQI4 $746
+EQI4 $748
 line 1633
 ;1633:			if (!(item->window.flags & WINDOW_MOUSEOVERTEXT)) {
 ADDRFP4 0
@@ -10787,7 +10787,7 @@ INDIRI4
 CNSTI4 128
 BANDI4
 CNSTI4 0
-NEI4 $748
+NEI4 $750
 line 1634
 ;1634:				Item_RunScript(item, item->mouseEnterText);
 ADDRLP4 36
@@ -10824,7 +10824,7 @@ BORI4
 ASGNI4
 line 1636
 ;1636:			}
-LABELV $748
+LABELV $750
 line 1637
 ;1637:			if (!(item->window.flags & WINDOW_MOUSEOVER)) {
 ADDRFP4 0
@@ -10835,7 +10835,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-NEI4 $747
+NEI4 $749
 line 1638
 ;1638:				Item_RunScript(item, item->mouseEnter);
 ADDRLP4 36
@@ -10875,9 +10875,9 @@ line 1640
 line 1642
 ;1641:
 ;1642:		} else {
-ADDRGP4 $747
+ADDRGP4 $749
 JUMPV
-LABELV $746
+LABELV $748
 line 1644
 ;1643:			// not in the text rect
 ;1644:			if (item->window.flags & WINDOW_MOUSEOVERTEXT) {
@@ -10889,7 +10889,7 @@ INDIRI4
 CNSTI4 128
 BANDI4
 CNSTI4 0
-EQI4 $752
+EQI4 $754
 line 1646
 ;1645:				// if we were
 ;1646:				Item_RunScript(item, item->mouseExitText);
@@ -10927,7 +10927,7 @@ BANDI4
 ASGNI4
 line 1648
 ;1648:			}
-LABELV $752
+LABELV $754
 line 1649
 ;1649:			if (!(item->window.flags & WINDOW_MOUSEOVER)) {
 ADDRFP4 0
@@ -10938,7 +10938,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-NEI4 $754
+NEI4 $756
 line 1650
 ;1650:				Item_RunScript(item, item->mouseEnter);
 ADDRLP4 36
@@ -10975,7 +10975,7 @@ BORI4
 ASGNI4
 line 1652
 ;1652:			}
-LABELV $754
+LABELV $756
 line 1654
 ;1653:
 ;1654:			if (item->type == ITEM_TYPE_LISTBOX) {
@@ -10985,7 +10985,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 6
-NEI4 $756
+NEI4 $758
 line 1655
 ;1655:				Item_ListBox_MouseEnter(item, x, y);
 ADDRFP4 0
@@ -11002,16 +11002,16 @@ CALLV
 pop
 line 1656
 ;1656:			}
-LABELV $756
+LABELV $758
 line 1657
 ;1657:		}
-LABELV $747
+LABELV $749
 line 1658
 ;1658:	}
-LABELV $738
+LABELV $740
 line 1659
 ;1659:}
-LABELV $737
+LABELV $739
 endproc Item_MouseEnter 44 12
 export Item_MouseLeave
 proc Item_MouseLeave 8 8
@@ -11024,7 +11024,7 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $759
+EQU4 $761
 line 1663
 ;1663:    if (item->window.flags & WINDOW_MOUSEOVERTEXT) {
 ADDRFP4 0
@@ -11035,7 +11035,7 @@ INDIRI4
 CNSTI4 128
 BANDI4
 CNSTI4 0
-EQI4 $761
+EQI4 $763
 line 1664
 ;1664:      Item_RunScript(item, item->mouseExitText);
 ADDRLP4 0
@@ -11072,7 +11072,7 @@ BANDI4
 ASGNI4
 line 1666
 ;1666:    }
-LABELV $761
+LABELV $763
 line 1667
 ;1667:    Item_RunScript(item, item->mouseExit);
 ADDRLP4 0
@@ -11109,10 +11109,10 @@ BANDI4
 ASGNI4
 line 1669
 ;1669:  }
-LABELV $759
+LABELV $761
 line 1670
 ;1670:}
-LABELV $758
+LABELV $760
 endproc Item_MouseLeave 8 8
 export Menu_HitTest
 proc Menu_HitTest 8 12
@@ -11125,9 +11125,9 @@ line 1674
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $767
+ADDRGP4 $769
 JUMPV
-LABELV $764
+LABELV $766
 line 1675
 ;1675:    if (Rect_ContainsPoint(&menu->items[i]->window.rect, x, y)) {
 ADDRLP4 0
@@ -11154,7 +11154,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $768
+EQI4 $770
 line 1676
 ;1676:      return menu->items[i];
 ADDRLP4 0
@@ -11168,13 +11168,13 @@ ADDP4
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $763
+ADDRGP4 $765
 JUMPV
-LABELV $768
+LABELV $770
 line 1678
 ;1677:    }
 ;1678:  }
-LABELV $765
+LABELV $767
 line 1674
 ADDRLP4 0
 ADDRLP4 0
@@ -11182,7 +11182,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $767
+LABELV $769
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -11190,12 +11190,12 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $764
+LTI4 $766
 line 1679
 ;1679:  return NULL;
 CNSTP4 0
 RETP4
-LABELV $763
+LABELV $765
 endproc Menu_HitTest 8 12
 export Item_SetMouseOver
 proc Item_SetMouseOver 4 0
@@ -11209,13 +11209,13 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $771
+EQU4 $773
 line 1684
 ;1684:    if (focus) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $773
+EQI4 $775
 line 1685
 ;1685:      item->window.flags |= WINDOW_MOUSEOVER;
 ADDRLP4 0
@@ -11234,9 +11234,9 @@ BORI4
 ASGNI4
 line 1686
 ;1686:    } else {
-ADDRGP4 $774
+ADDRGP4 $776
 JUMPV
-LABELV $773
+LABELV $775
 line 1687
 ;1687:      item->window.flags &= ~WINDOW_MOUSEOVER;
 ADDRLP4 0
@@ -11255,13 +11255,13 @@ BANDI4
 ASGNI4
 line 1688
 ;1688:    }
-LABELV $774
+LABELV $776
 line 1689
 ;1689:  }
-LABELV $771
+LABELV $773
 line 1690
 ;1690:}
-LABELV $770
+LABELV $772
 endproc Item_SetMouseOver 4 0
 export Item_OwnerDraw_HandleKey
 proc Item_OwnerDraw_HandleKey 12 16
@@ -11279,7 +11279,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 0
 INDIRU4
-EQU4 $776
+EQU4 $778
 ADDRGP4 DC
 INDIRP4
 CNSTI4 116
@@ -11288,7 +11288,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 0
 INDIRU4
-EQU4 $776
+EQU4 $778
 line 1695
 ;1695:    return DC->ownerDrawHandleKey(item->window.ownerDraw, item->window.ownerDrawFlags, &item->special, key);
 ADDRLP4 4
@@ -11326,15 +11326,15 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 RETI4
-ADDRGP4 $775
+ADDRGP4 $777
 JUMPV
-LABELV $776
+LABELV $778
 line 1697
 ;1696:  }
 ;1697:  return qfalse;
 CNSTI4 0
 RETI4
-LABELV $775
+LABELV $777
 endproc Item_OwnerDraw_HandleKey 12 16
 export Item_ListBox_HandleKey
 proc Item_ListBox_HandleKey 72 12
@@ -11378,7 +11378,7 @@ line 1705
 ADDRFP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $781
+NEI4 $783
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -11411,7 +11411,7 @@ ADDRLP4 24
 INDIRI4
 ADDRLP4 28
 INDIRI4
-EQI4 $779
+EQI4 $781
 ADDRFP4 0
 INDIRP4
 CNSTI4 68
@@ -11421,8 +11421,8 @@ CNSTI4 2
 BANDI4
 ADDRLP4 28
 INDIRI4
-EQI4 $779
-LABELV $781
+EQI4 $781
+LABELV $783
 line 1706
 ;1706:		max = Item_ListBox_MaxScroll(item);
 ADDRFP4 0
@@ -11446,7 +11446,7 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $782
+EQI4 $784
 line 1708
 ;1708:			viewmax = (item->window.rect.w / listPtr->elementWidth);
 ADDRLP4 4
@@ -11472,12 +11472,12 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 134
-EQI4 $786
+EQI4 $788
 ADDRLP4 36
 INDIRI4
 CNSTI4 163
-NEI4 $784
-LABELV $786
+NEI4 $786
+LABELV $788
 line 1710
 ;1710:			{
 line 1711
@@ -11488,7 +11488,7 @@ CNSTI4 228
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $787
+NEI4 $789
 line 1712
 ;1712:					listPtr->cursorPos--;
 ADDRLP4 40
@@ -11513,7 +11513,7 @@ CNSTI4 12
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $789
+GEI4 $791
 line 1714
 ;1714:						listPtr->cursorPos = 0;
 ADDRLP4 0
@@ -11524,7 +11524,7 @@ CNSTI4 0
 ASGNI4
 line 1715
 ;1715:					}
-LABELV $789
+LABELV $791
 line 1716
 ;1716:					if (listPtr->cursorPos < listPtr->startPos) {
 ADDRLP4 0
@@ -11535,7 +11535,7 @@ INDIRI4
 ADDRLP4 0
 INDIRP4
 INDIRI4
-GEI4 $791
+GEI4 $793
 line 1717
 ;1717:						listPtr->startPos = listPtr->cursorPos;
 ADDRLP4 0
@@ -11548,7 +11548,7 @@ INDIRI4
 ASGNI4
 line 1718
 ;1718:					}
-LABELV $791
+LABELV $793
 line 1719
 ;1719:					if (listPtr->cursorPos >= listPtr->startPos + viewmax) {
 ADDRLP4 0
@@ -11562,7 +11562,7 @@ INDIRI4
 ADDRLP4 4
 INDIRI4
 ADDI4
-LTI4 $793
+LTI4 $795
 line 1720
 ;1720:						listPtr->startPos = listPtr->cursorPos - viewmax + 1;
 ADDRLP4 0
@@ -11580,7 +11580,7 @@ ADDI4
 ASGNI4
 line 1721
 ;1721:					}
-LABELV $793
+LABELV $795
 line 1722
 ;1722:					item->cursorPos = listPtr->cursorPos;
 ADDRFP4 0
@@ -11620,9 +11620,9 @@ CALLV
 pop
 line 1724
 ;1724:				}
-ADDRGP4 $788
+ADDRGP4 $790
 JUMPV
-LABELV $787
+LABELV $789
 line 1725
 ;1725:				else {
 line 1726
@@ -11641,24 +11641,24 @@ ADDRLP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-GEI4 $795
+GEI4 $797
 line 1728
 ;1728:						listPtr->startPos = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 0
 ASGNI4
-LABELV $795
+LABELV $797
 line 1729
 ;1729:				}
-LABELV $788
+LABELV $790
 line 1730
 ;1730:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $778
+ADDRGP4 $780
 JUMPV
-LABELV $784
+LABELV $786
 line 1732
 ;1731:			}
 ;1732:			if ( key == K_RIGHTARROW || key == K_KP_RIGHTARROW ) 
@@ -11669,12 +11669,12 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 135
-EQI4 $799
+EQI4 $801
 ADDRLP4 40
 INDIRI4
 CNSTI4 165
-NEI4 $783
-LABELV $799
+NEI4 $785
+LABELV $801
 line 1733
 ;1733:			{
 line 1734
@@ -11685,7 +11685,7 @@ CNSTI4 228
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $800
+NEI4 $802
 line 1735
 ;1735:					listPtr->cursorPos++;
 ADDRLP4 44
@@ -11712,7 +11712,7 @@ INDIRI4
 ADDRLP4 0
 INDIRP4
 INDIRI4
-GEI4 $802
+GEI4 $804
 line 1737
 ;1737:						listPtr->startPos = listPtr->cursorPos;
 ADDRLP4 0
@@ -11725,7 +11725,7 @@ INDIRI4
 ASGNI4
 line 1738
 ;1738:					}
-LABELV $802
+LABELV $804
 line 1739
 ;1739:					if (listPtr->cursorPos >= count) {
 ADDRLP4 0
@@ -11735,7 +11735,7 @@ ADDP4
 INDIRI4
 ADDRLP4 8
 INDIRI4
-LTI4 $804
+LTI4 $806
 line 1740
 ;1740:						listPtr->cursorPos = count-1;
 ADDRLP4 0
@@ -11749,7 +11749,7 @@ SUBI4
 ASGNI4
 line 1741
 ;1741:					}
-LABELV $804
+LABELV $806
 line 1742
 ;1742:					if (listPtr->cursorPos >= listPtr->startPos + viewmax) {
 ADDRLP4 0
@@ -11763,7 +11763,7 @@ INDIRI4
 ADDRLP4 4
 INDIRI4
 ADDI4
-LTI4 $806
+LTI4 $808
 line 1743
 ;1743:						listPtr->startPos = listPtr->cursorPos - viewmax + 1;
 ADDRLP4 0
@@ -11781,7 +11781,7 @@ ADDI4
 ASGNI4
 line 1744
 ;1744:					}
-LABELV $806
+LABELV $808
 line 1745
 ;1745:					item->cursorPos = listPtr->cursorPos;
 ADDRFP4 0
@@ -11821,9 +11821,9 @@ CALLV
 pop
 line 1747
 ;1747:				}
-ADDRGP4 $801
+ADDRGP4 $803
 JUMPV
-LABELV $800
+LABELV $802
 line 1748
 ;1748:				else {
 line 1749
@@ -11843,7 +11843,7 @@ INDIRP4
 INDIRI4
 ADDRLP4 8
 INDIRI4
-LTI4 $808
+LTI4 $810
 line 1751
 ;1751:						listPtr->startPos = count-1;
 ADDRLP4 0
@@ -11853,20 +11853,20 @@ INDIRI4
 CNSTI4 1
 SUBI4
 ASGNI4
-LABELV $808
+LABELV $810
 line 1752
 ;1752:				}
-LABELV $801
+LABELV $803
 line 1753
 ;1753:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $778
+ADDRGP4 $780
 JUMPV
 line 1755
 ;1754:			}
 ;1755:		}
-LABELV $782
+LABELV $784
 line 1756
 ;1756:		else {
 line 1757
@@ -11894,12 +11894,12 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 132
-EQI4 $812
+EQI4 $814
 ADDRLP4 36
 INDIRI4
 CNSTI4 161
-NEI4 $810
-LABELV $812
+NEI4 $812
+LABELV $814
 line 1759
 ;1759:			{
 line 1760
@@ -11910,7 +11910,7 @@ CNSTI4 228
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $813
+NEI4 $815
 line 1761
 ;1761:					listPtr->cursorPos--;
 ADDRLP4 40
@@ -11935,7 +11935,7 @@ CNSTI4 12
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $815
+GEI4 $817
 line 1763
 ;1763:						listPtr->cursorPos = 0;
 ADDRLP4 0
@@ -11946,7 +11946,7 @@ CNSTI4 0
 ASGNI4
 line 1764
 ;1764:					}
-LABELV $815
+LABELV $817
 line 1765
 ;1765:					if (listPtr->cursorPos < listPtr->startPos) {
 ADDRLP4 0
@@ -11957,7 +11957,7 @@ INDIRI4
 ADDRLP4 0
 INDIRP4
 INDIRI4
-GEI4 $817
+GEI4 $819
 line 1766
 ;1766:						listPtr->startPos = listPtr->cursorPos;
 ADDRLP4 0
@@ -11970,7 +11970,7 @@ INDIRI4
 ASGNI4
 line 1767
 ;1767:					}
-LABELV $817
+LABELV $819
 line 1768
 ;1768:					if (listPtr->cursorPos >= listPtr->startPos + viewmax) {
 ADDRLP4 0
@@ -11984,7 +11984,7 @@ INDIRI4
 ADDRLP4 4
 INDIRI4
 ADDI4
-LTI4 $819
+LTI4 $821
 line 1769
 ;1769:						listPtr->startPos = listPtr->cursorPos - viewmax + 1;
 ADDRLP4 0
@@ -12002,7 +12002,7 @@ ADDI4
 ASGNI4
 line 1770
 ;1770:					}
-LABELV $819
+LABELV $821
 line 1771
 ;1771:					item->cursorPos = listPtr->cursorPos;
 ADDRFP4 0
@@ -12042,9 +12042,9 @@ CALLV
 pop
 line 1773
 ;1773:				}
-ADDRGP4 $814
+ADDRGP4 $816
 JUMPV
-LABELV $813
+LABELV $815
 line 1774
 ;1774:				else {
 line 1775
@@ -12063,24 +12063,24 @@ ADDRLP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-GEI4 $821
+GEI4 $823
 line 1777
 ;1777:						listPtr->startPos = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 0
 ASGNI4
-LABELV $821
+LABELV $823
 line 1778
 ;1778:				}
-LABELV $814
+LABELV $816
 line 1779
 ;1779:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $778
+ADDRGP4 $780
 JUMPV
-LABELV $810
+LABELV $812
 line 1781
 ;1780:			}
 ;1781:			if ( key == K_DOWNARROW || key == K_KP_DOWNARROW ) 
@@ -12091,12 +12091,12 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 133
-EQI4 $825
+EQI4 $827
 ADDRLP4 40
 INDIRI4
 CNSTI4 167
-NEI4 $823
-LABELV $825
+NEI4 $825
+LABELV $827
 line 1782
 ;1782:			{
 line 1783
@@ -12107,7 +12107,7 @@ CNSTI4 228
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $826
+NEI4 $828
 line 1784
 ;1784:					listPtr->cursorPos++;
 ADDRLP4 44
@@ -12134,7 +12134,7 @@ INDIRI4
 ADDRLP4 0
 INDIRP4
 INDIRI4
-GEI4 $828
+GEI4 $830
 line 1786
 ;1786:						listPtr->startPos = listPtr->cursorPos;
 ADDRLP4 0
@@ -12147,7 +12147,7 @@ INDIRI4
 ASGNI4
 line 1787
 ;1787:					}
-LABELV $828
+LABELV $830
 line 1788
 ;1788:					if (listPtr->cursorPos >= count) {
 ADDRLP4 0
@@ -12157,7 +12157,7 @@ ADDP4
 INDIRI4
 ADDRLP4 8
 INDIRI4
-LTI4 $830
+LTI4 $832
 line 1789
 ;1789:						listPtr->cursorPos = count-1;
 ADDRLP4 0
@@ -12171,7 +12171,7 @@ SUBI4
 ASGNI4
 line 1790
 ;1790:					}
-LABELV $830
+LABELV $832
 line 1791
 ;1791:					if (listPtr->cursorPos >= listPtr->startPos + viewmax) {
 ADDRLP4 0
@@ -12185,7 +12185,7 @@ INDIRI4
 ADDRLP4 4
 INDIRI4
 ADDI4
-LTI4 $832
+LTI4 $834
 line 1792
 ;1792:						listPtr->startPos = listPtr->cursorPos - viewmax + 1;
 ADDRLP4 0
@@ -12203,7 +12203,7 @@ ADDI4
 ASGNI4
 line 1793
 ;1793:					}
-LABELV $832
+LABELV $834
 line 1794
 ;1794:					item->cursorPos = listPtr->cursorPos;
 ADDRFP4 0
@@ -12243,9 +12243,9 @@ CALLV
 pop
 line 1796
 ;1796:				}
-ADDRGP4 $827
+ADDRGP4 $829
 JUMPV
-LABELV $826
+LABELV $828
 line 1797
 ;1797:				else {
 line 1798
@@ -12265,7 +12265,7 @@ INDIRP4
 INDIRI4
 ADDRLP4 12
 INDIRI4
-LEI4 $834
+LEI4 $836
 line 1800
 ;1800:						listPtr->startPos = max;
 ADDRLP4 0
@@ -12273,21 +12273,21 @@ INDIRP4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-LABELV $834
+LABELV $836
 line 1801
 ;1801:				}
-LABELV $827
+LABELV $829
 line 1802
 ;1802:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $778
+ADDRGP4 $780
 JUMPV
-LABELV $823
+LABELV $825
 line 1804
 ;1803:			}
 ;1804:		}
-LABELV $783
+LABELV $785
 line 1806
 ;1805:		// mouse hit
 ;1806:		if (key == K_MOUSE1 || key == K_MOUSE2) {
@@ -12298,12 +12298,12 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 178
-EQI4 $838
+EQI4 $840
 ADDRLP4 36
 INDIRI4
 CNSTI4 179
-NEI4 $836
-LABELV $838
+NEI4 $838
+LABELV $840
 line 1807
 ;1807:			if (item->window.flags & WINDOW_LB_LEFTARROW) {
 ADDRFP4 0
@@ -12314,7 +12314,7 @@ INDIRI4
 CNSTI4 2048
 BANDI4
 CNSTI4 0
-EQI4 $839
+EQI4 $841
 line 1808
 ;1808:				listPtr->startPos--;
 ADDRLP4 0
@@ -12331,7 +12331,7 @@ ADDRLP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-GEI4 $840
+GEI4 $842
 line 1810
 ;1810:					listPtr->startPos = 0;
 ADDRLP4 0
@@ -12342,9 +12342,9 @@ line 1811
 ;1811:				}
 line 1812
 ;1812:			} else if (item->window.flags & WINDOW_LB_RIGHTARROW) {
-ADDRGP4 $840
+ADDRGP4 $842
 JUMPV
-LABELV $839
+LABELV $841
 ADDRFP4 0
 INDIRP4
 CNSTI4 68
@@ -12353,7 +12353,7 @@ INDIRI4
 CNSTI4 4096
 BANDI4
 CNSTI4 0
-EQI4 $843
+EQI4 $845
 line 1814
 ;1813:				// one down
 ;1814:				listPtr->startPos++;
@@ -12372,7 +12372,7 @@ INDIRP4
 INDIRI4
 ADDRLP4 12
 INDIRI4
-LEI4 $844
+LEI4 $846
 line 1816
 ;1816:					listPtr->startPos = max;
 ADDRLP4 0
@@ -12384,9 +12384,9 @@ line 1817
 ;1817:				}
 line 1818
 ;1818:			} else if (item->window.flags & WINDOW_LB_PGUP) {
-ADDRGP4 $844
+ADDRGP4 $846
 JUMPV
-LABELV $843
+LABELV $845
 ADDRFP4 0
 INDIRP4
 CNSTI4 68
@@ -12395,7 +12395,7 @@ INDIRI4
 CNSTI4 16384
 BANDI4
 CNSTI4 0
-EQI4 $847
+EQI4 $849
 line 1820
 ;1819:				// page up
 ;1820:				listPtr->startPos -= viewmax;
@@ -12414,7 +12414,7 @@ ADDRLP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-GEI4 $848
+GEI4 $850
 line 1822
 ;1822:					listPtr->startPos = 0;
 ADDRLP4 0
@@ -12425,9 +12425,9 @@ line 1823
 ;1823:				}
 line 1824
 ;1824:			} else if (item->window.flags & WINDOW_LB_PGDN) {
-ADDRGP4 $848
+ADDRGP4 $850
 JUMPV
-LABELV $847
+LABELV $849
 ADDRFP4 0
 INDIRP4
 CNSTI4 68
@@ -12436,7 +12436,7 @@ INDIRI4
 CNSTI4 32768
 BANDI4
 CNSTI4 0
-EQI4 $851
+EQI4 $853
 line 1826
 ;1825:				// page down
 ;1826:				listPtr->startPos += viewmax;
@@ -12456,7 +12456,7 @@ INDIRP4
 INDIRI4
 ADDRLP4 12
 INDIRI4
-LEI4 $852
+LEI4 $854
 line 1828
 ;1828:					listPtr->startPos = max;
 ADDRLP4 0
@@ -12468,9 +12468,9 @@ line 1829
 ;1829:				}
 line 1830
 ;1830:			} else if (item->window.flags & WINDOW_LB_THUMB) {
-ADDRGP4 $852
+ADDRGP4 $854
 JUMPV
-LABELV $851
+LABELV $853
 ADDRFP4 0
 INDIRP4
 CNSTI4 68
@@ -12479,13 +12479,13 @@ INDIRI4
 CNSTI4 8192
 BANDI4
 CNSTI4 0
-EQI4 $855
+EQI4 $857
 line 1832
 ;1831:				// Display_SetCaptureItem(item);
 ;1832:			} else {
-ADDRGP4 $856
+ADDRGP4 $858
 JUMPV
-LABELV $855
+LABELV $857
 line 1834
 ;1833:				// select an item
 ;1834:				if (DC->realTime < lastListBoxClickTime && listPtr->doubleClick) {
@@ -12496,7 +12496,7 @@ ADDP4
 INDIRI4
 ADDRGP4 lastListBoxClickTime
 INDIRI4
-GEI4 $857
+GEI4 $859
 ADDRLP4 0
 INDIRP4
 CNSTI4 224
@@ -12504,7 +12504,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $857
+EQU4 $859
 line 1835
 ;1835:					Item_RunScript(item, listPtr->doubleClick);
 ADDRFP4 0
@@ -12521,7 +12521,7 @@ CALLV
 pop
 line 1836
 ;1836:				}
-LABELV $857
+LABELV $859
 line 1837
 ;1837:				lastListBoxClickTime = DC->realTime + DOUBLE_CLICK_DELAY;
 ADDRGP4 lastListBoxClickTime
@@ -12545,7 +12545,7 @@ INDIRP4
 CNSTI4 12
 ADDP4
 INDIRI4
-EQI4 $859
+EQI4 $861
 line 1839
 ;1839:					item->cursorPos = listPtr->cursorPos;
 ADDRFP4 0
@@ -12585,21 +12585,21 @@ CALLV
 pop
 line 1841
 ;1841:				}
-LABELV $859
+LABELV $861
 line 1842
 ;1842:			}
-LABELV $856
-LABELV $852
-LABELV $848
-LABELV $844
-LABELV $840
+LABELV $858
+LABELV $854
+LABELV $850
+LABELV $846
+LABELV $842
 line 1843
 ;1843:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $778
+ADDRGP4 $780
 JUMPV
-LABELV $836
+LABELV $838
 line 1845
 ;1844:		}
 ;1845:		if ( key == K_HOME || key == K_KP_HOME) {
@@ -12610,12 +12610,12 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 143
-EQI4 $863
+EQI4 $865
 ADDRLP4 40
 INDIRI4
 CNSTI4 160
-NEI4 $861
-LABELV $863
+NEI4 $863
+LABELV $865
 line 1847
 ;1846:			// home
 ;1847:			listPtr->startPos = 0;
@@ -12627,9 +12627,9 @@ line 1848
 ;1848:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $778
+ADDRGP4 $780
 JUMPV
-LABELV $861
+LABELV $863
 line 1850
 ;1849:		}
 ;1850:		if ( key == K_END || key == K_KP_END) {
@@ -12640,12 +12640,12 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 144
-EQI4 $866
+EQI4 $868
 ADDRLP4 44
 INDIRI4
 CNSTI4 166
-NEI4 $864
-LABELV $866
+NEI4 $866
+LABELV $868
 line 1852
 ;1851:			// end
 ;1852:			listPtr->startPos = max;
@@ -12658,9 +12658,9 @@ line 1853
 ;1853:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $778
+ADDRGP4 $780
 JUMPV
-LABELV $864
+LABELV $866
 line 1855
 ;1854:		}
 ;1855:		if (key == K_PGUP || key == K_KP_PGUP ) {
@@ -12671,12 +12671,12 @@ ASGNI4
 ADDRLP4 48
 INDIRI4
 CNSTI4 142
-EQI4 $869
+EQI4 $871
 ADDRLP4 48
 INDIRI4
 CNSTI4 162
-NEI4 $867
-LABELV $869
+NEI4 $869
+LABELV $871
 line 1857
 ;1856:			// page up
 ;1857:			if (!listPtr->notselectable) {
@@ -12686,7 +12686,7 @@ CNSTI4 228
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $870
+NEI4 $872
 line 1858
 ;1858:				listPtr->cursorPos -= viewmax;
 ADDRLP4 52
@@ -12712,7 +12712,7 @@ CNSTI4 12
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $872
+GEI4 $874
 line 1860
 ;1860:					listPtr->cursorPos = 0;
 ADDRLP4 0
@@ -12723,7 +12723,7 @@ CNSTI4 0
 ASGNI4
 line 1861
 ;1861:				}
-LABELV $872
+LABELV $874
 line 1862
 ;1862:				if (listPtr->cursorPos < listPtr->startPos) {
 ADDRLP4 0
@@ -12734,7 +12734,7 @@ INDIRI4
 ADDRLP4 0
 INDIRP4
 INDIRI4
-GEI4 $874
+GEI4 $876
 line 1863
 ;1863:					listPtr->startPos = listPtr->cursorPos;
 ADDRLP4 0
@@ -12747,7 +12747,7 @@ INDIRI4
 ASGNI4
 line 1864
 ;1864:				}
-LABELV $874
+LABELV $876
 line 1865
 ;1865:				if (listPtr->cursorPos >= listPtr->startPos + viewmax) {
 ADDRLP4 0
@@ -12761,7 +12761,7 @@ INDIRI4
 ADDRLP4 4
 INDIRI4
 ADDI4
-LTI4 $876
+LTI4 $878
 line 1866
 ;1866:					listPtr->startPos = listPtr->cursorPos - viewmax + 1;
 ADDRLP4 0
@@ -12779,7 +12779,7 @@ ADDI4
 ASGNI4
 line 1867
 ;1867:				}
-LABELV $876
+LABELV $878
 line 1868
 ;1868:				item->cursorPos = listPtr->cursorPos;
 ADDRFP4 0
@@ -12819,9 +12819,9 @@ CALLV
 pop
 line 1870
 ;1870:			}
-ADDRGP4 $871
+ADDRGP4 $873
 JUMPV
-LABELV $870
+LABELV $872
 line 1871
 ;1871:			else {
 line 1872
@@ -12841,7 +12841,7 @@ ADDRLP4 0
 INDIRP4
 INDIRI4
 CNSTI4 0
-GEI4 $878
+GEI4 $880
 line 1874
 ;1874:					listPtr->startPos = 0;
 ADDRLP4 0
@@ -12850,17 +12850,17 @@ CNSTI4 0
 ASGNI4
 line 1875
 ;1875:				}
-LABELV $878
+LABELV $880
 line 1876
 ;1876:			}
-LABELV $871
+LABELV $873
 line 1877
 ;1877:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $778
+ADDRGP4 $780
 JUMPV
-LABELV $867
+LABELV $869
 line 1879
 ;1878:		}
 ;1879:		if ( key == K_PGDN || key == K_KP_PGDN ) {
@@ -12871,12 +12871,12 @@ ASGNI4
 ADDRLP4 52
 INDIRI4
 CNSTI4 141
-EQI4 $882
+EQI4 $884
 ADDRLP4 52
 INDIRI4
 CNSTI4 168
-NEI4 $880
-LABELV $882
+NEI4 $882
+LABELV $884
 line 1881
 ;1880:			// page down
 ;1881:			if (!listPtr->notselectable) {
@@ -12886,7 +12886,7 @@ CNSTI4 228
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $883
+NEI4 $885
 line 1882
 ;1882:				listPtr->cursorPos += viewmax;
 ADDRLP4 56
@@ -12914,7 +12914,7 @@ INDIRI4
 ADDRLP4 0
 INDIRP4
 INDIRI4
-GEI4 $885
+GEI4 $887
 line 1884
 ;1884:					listPtr->startPos = listPtr->cursorPos;
 ADDRLP4 0
@@ -12927,7 +12927,7 @@ INDIRI4
 ASGNI4
 line 1885
 ;1885:				}
-LABELV $885
+LABELV $887
 line 1886
 ;1886:				if (listPtr->cursorPos >= count) {
 ADDRLP4 0
@@ -12937,7 +12937,7 @@ ADDP4
 INDIRI4
 ADDRLP4 8
 INDIRI4
-LTI4 $887
+LTI4 $889
 line 1887
 ;1887:					listPtr->cursorPos = count-1;
 ADDRLP4 0
@@ -12951,7 +12951,7 @@ SUBI4
 ASGNI4
 line 1888
 ;1888:				}
-LABELV $887
+LABELV $889
 line 1889
 ;1889:				if (listPtr->cursorPos >= listPtr->startPos + viewmax) {
 ADDRLP4 0
@@ -12965,7 +12965,7 @@ INDIRI4
 ADDRLP4 4
 INDIRI4
 ADDI4
-LTI4 $889
+LTI4 $891
 line 1890
 ;1890:					listPtr->startPos = listPtr->cursorPos - viewmax + 1;
 ADDRLP4 0
@@ -12983,7 +12983,7 @@ ADDI4
 ASGNI4
 line 1891
 ;1891:				}
-LABELV $889
+LABELV $891
 line 1892
 ;1892:				item->cursorPos = listPtr->cursorPos;
 ADDRFP4 0
@@ -13023,9 +13023,9 @@ CALLV
 pop
 line 1894
 ;1894:			}
-ADDRGP4 $884
+ADDRGP4 $886
 JUMPV
-LABELV $883
+LABELV $885
 line 1895
 ;1895:			else {
 line 1896
@@ -13046,7 +13046,7 @@ INDIRP4
 INDIRI4
 ADDRLP4 12
 INDIRI4
-LEI4 $891
+LEI4 $893
 line 1898
 ;1898:					listPtr->startPos = max;
 ADDRLP4 0
@@ -13056,26 +13056,26 @@ INDIRI4
 ASGNI4
 line 1899
 ;1899:				}
-LABELV $891
+LABELV $893
 line 1900
 ;1900:			}
-LABELV $884
+LABELV $886
 line 1901
 ;1901:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $778
+ADDRGP4 $780
 JUMPV
-LABELV $880
+LABELV $882
 line 1903
 ;1902:		}
 ;1903:	}
-LABELV $779
+LABELV $781
 line 1904
 ;1904:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $778
+LABELV $780
 endproc Item_ListBox_HandleKey 72 12
 export Item_YesNo_HandleKey
 proc Item_YesNo_HandleKey 32 12
@@ -13118,7 +13118,7 @@ ADDRLP4 4
 INDIRI4
 ADDRLP4 8
 INDIRI4
-EQI4 $894
+EQI4 $896
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -13132,7 +13132,7 @@ CNSTI4 2
 BANDI4
 ADDRLP4 8
 INDIRI4
-EQI4 $894
+EQI4 $896
 ADDRLP4 12
 INDIRP4
 CNSTI4 264
@@ -13140,7 +13140,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $894
+EQU4 $896
 line 1910
 ;1910:		if (key == K_MOUSE1 || key == K_ENTER || key == K_MOUSE2 || key == K_MOUSE3) {
 ADDRLP4 16
@@ -13150,20 +13150,20 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 178
-EQI4 $900
+EQI4 $902
 ADDRLP4 16
 INDIRI4
 CNSTI4 13
-EQI4 $900
+EQI4 $902
 ADDRLP4 16
 INDIRI4
 CNSTI4 179
-EQI4 $900
+EQI4 $902
 ADDRLP4 16
 INDIRI4
 CNSTI4 180
-NEI4 $896
-LABELV $900
+NEI4 $898
+LABELV $902
 line 1911
 ;1911:	    DC->setCVar(item->cvar, va("%i", !DC->getCVarValue(item->cvar)));
 ADDRFP4 0
@@ -13183,18 +13183,18 @@ ASGNF4
 ADDRLP4 24
 INDIRF4
 CNSTF4 0
-NEF4 $903
+NEF4 $905
 ADDRLP4 20
 CNSTI4 1
 ASGNI4
-ADDRGP4 $904
+ADDRGP4 $906
 JUMPV
-LABELV $903
+LABELV $905
 ADDRLP4 20
 CNSTI4 0
 ASGNI4
-LABELV $904
-ADDRGP4 $901
+LABELV $906
+ADDRGP4 $903
 ARGP4
 ADDRLP4 20
 INDIRI4
@@ -13223,19 +13223,19 @@ line 1912
 ;1912:		  return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $893
+ADDRGP4 $895
 JUMPV
-LABELV $896
+LABELV $898
 line 1914
 ;1913:		}
 ;1914:  }
-LABELV $894
+LABELV $896
 line 1916
 ;1915:
 ;1916:  return qfalse;
 CNSTI4 0
 RETI4
-LABELV $893
+LABELV $895
 endproc Item_YesNo_HandleKey 32 12
 export Item_Multi_CountSettings
 proc Item_Multi_CountSettings 4 0
@@ -13259,14 +13259,14 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $906
+NEU4 $908
 line 1923
 ;1923:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $905
+ADDRGP4 $907
 JUMPV
-LABELV $906
+LABELV $908
 line 1925
 ;1924:	}
 ;1925:	return multiPtr->count;
@@ -13276,7 +13276,7 @@ CNSTI4 384
 ADDP4
 INDIRI4
 RETI4
-LABELV $905
+LABELV $907
 endproc Item_Multi_CountSettings 4 0
 export Item_Multi_FindCvarByValue
 proc Item_Multi_FindCvarByValue 1040 12
@@ -13306,7 +13306,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $909
+EQU4 $911
 line 1934
 ;1934:		if (multiPtr->strDef) {
 ADDRLP4 4
@@ -13315,7 +13315,7 @@ CNSTI4 388
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $911
+EQI4 $913
 line 1935
 ;1935:	    DC->getCVarString(item->cvar, buff, sizeof(buff));
 ADDRFP4 0
@@ -13337,9 +13337,9 @@ CALLV
 pop
 line 1936
 ;1936:		} else {
-ADDRGP4 $912
+ADDRGP4 $914
 JUMPV
-LABELV $911
+LABELV $913
 line 1937
 ;1937:			value = DC->getCVarValue(item->cvar);
 ADDRFP4 0
@@ -13362,15 +13362,15 @@ INDIRF4
 ASGNF4
 line 1938
 ;1938:		}
-LABELV $912
+LABELV $914
 line 1939
 ;1939:		for (i = 0; i < multiPtr->count; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $916
+ADDRGP4 $918
 JUMPV
-LABELV $913
+LABELV $915
 line 1940
 ;1940:			if (multiPtr->strDef) {
 ADDRLP4 4
@@ -13379,7 +13379,7 @@ CNSTI4 388
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $917
+EQI4 $919
 line 1941
 ;1941:				if (Q_stricmp(buff, multiPtr->cvarStr[i]) == 0) {
 ADDRLP4 12
@@ -13402,18 +13402,18 @@ ASGNI4
 ADDRLP4 1036
 INDIRI4
 CNSTI4 0
-NEI4 $918
+NEI4 $920
 line 1942
 ;1942:					return i;
 ADDRLP4 0
 INDIRI4
 RETI4
-ADDRGP4 $908
+ADDRGP4 $910
 JUMPV
 line 1944
 ;1943:				}
 ;1944:			} else {
-LABELV $917
+LABELV $919
 line 1945
 ;1945: 				if (multiPtr->cvarValue[i] == value) {
 ADDRLP4 0
@@ -13428,22 +13428,22 @@ ADDP4
 INDIRF4
 ADDRLP4 8
 INDIRF4
-NEF4 $921
+NEF4 $923
 line 1946
 ;1946: 					return i;
 ADDRLP4 0
 INDIRI4
 RETI4
-ADDRGP4 $908
+ADDRGP4 $910
 JUMPV
-LABELV $921
+LABELV $923
 line 1948
 ;1947: 				}
 ;1948: 			}
-LABELV $918
+LABELV $920
 line 1949
 ;1949: 		}
-LABELV $914
+LABELV $916
 line 1939
 ADDRLP4 0
 ADDRLP4 0
@@ -13451,7 +13451,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $916
+LABELV $918
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
@@ -13459,15 +13459,15 @@ INDIRP4
 CNSTI4 384
 ADDP4
 INDIRI4
-LTI4 $913
+LTI4 $915
 line 1950
 ;1950:	}
-LABELV $909
+LABELV $911
 line 1951
 ;1951:	return 0;
 CNSTI4 0
 RETI4
-LABELV $908
+LABELV $910
 endproc Item_Multi_FindCvarByValue 1040 12
 export Item_Multi_Setting
 proc Item_Multi_Setting 1040 12
@@ -13497,7 +13497,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $924
+EQU4 $926
 line 1960
 ;1960:		if (multiPtr->strDef) {
 ADDRLP4 0
@@ -13506,7 +13506,7 @@ CNSTI4 388
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $926
+EQI4 $928
 line 1961
 ;1961:	    DC->getCVarString(item->cvar, buff, sizeof(buff));
 ADDRFP4 0
@@ -13528,9 +13528,9 @@ CALLV
 pop
 line 1962
 ;1962:		} else {
-ADDRGP4 $927
+ADDRGP4 $929
 JUMPV
-LABELV $926
+LABELV $928
 line 1963
 ;1963:			value = DC->getCVarValue(item->cvar);
 ADDRFP4 0
@@ -13553,15 +13553,15 @@ INDIRF4
 ASGNF4
 line 1964
 ;1964:		}
-LABELV $927
+LABELV $929
 line 1965
 ;1965:		for (i = 0; i < multiPtr->count; i++) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $931
+ADDRGP4 $933
 JUMPV
-LABELV $928
+LABELV $930
 line 1966
 ;1966:			if (multiPtr->strDef) {
 ADDRLP4 0
@@ -13570,7 +13570,7 @@ CNSTI4 388
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $932
+EQI4 $934
 line 1967
 ;1967:				if (Q_stricmp(buff, multiPtr->cvarStr[i]) == 0) {
 ADDRLP4 12
@@ -13593,7 +13593,7 @@ ASGNI4
 ADDRLP4 1036
 INDIRI4
 CNSTI4 0
-NEI4 $933
+NEI4 $935
 line 1968
 ;1968:					return multiPtr->cvarList[i];
 ADDRLP4 4
@@ -13605,12 +13605,12 @@ INDIRP4
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $923
+ADDRGP4 $925
 JUMPV
 line 1970
 ;1969:				}
 ;1970:			} else {
-LABELV $932
+LABELV $934
 line 1971
 ;1971: 				if (multiPtr->cvarValue[i] == value) {
 ADDRLP4 4
@@ -13625,7 +13625,7 @@ ADDP4
 INDIRF4
 ADDRLP4 8
 INDIRF4
-NEF4 $936
+NEF4 $938
 line 1972
 ;1972:					return multiPtr->cvarList[i];
 ADDRLP4 4
@@ -13637,16 +13637,16 @@ INDIRP4
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $923
+ADDRGP4 $925
 JUMPV
-LABELV $936
+LABELV $938
 line 1974
 ;1973: 				}
 ;1974: 			}
-LABELV $933
+LABELV $935
 line 1975
 ;1975: 		}
-LABELV $929
+LABELV $931
 line 1965
 ADDRLP4 4
 ADDRLP4 4
@@ -13654,7 +13654,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $931
+LABELV $933
 ADDRLP4 4
 INDIRI4
 ADDRLP4 0
@@ -13662,15 +13662,15 @@ INDIRP4
 CNSTI4 384
 ADDP4
 INDIRI4
-LTI4 $928
+LTI4 $930
 line 1976
 ;1976:	}
-LABELV $924
+LABELV $926
 line 1977
 ;1977:	return "";
-ADDRGP4 $54
+ADDRGP4 $56
 RETP4
-LABELV $923
+LABELV $925
 endproc Item_Multi_Setting 1040 12
 export Item_Multi_HandleKey
 proc Item_Multi_HandleKey 56 12
@@ -13693,7 +13693,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $939
+EQU4 $941
 line 1983
 ;1983:	  if (Rect_ContainsPoint(&item->window.rect, DC->cursorx, DC->cursory) && item->window.flags & WINDOW_HASFOCUS && item->cvar) {
 ADDRFP4 0
@@ -13728,7 +13728,7 @@ ADDRLP4 8
 INDIRI4
 ADDRLP4 12
 INDIRI4
-EQI4 $941
+EQI4 $943
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -13742,7 +13742,7 @@ CNSTI4 2
 BANDI4
 ADDRLP4 12
 INDIRI4
-EQI4 $941
+EQI4 $943
 ADDRLP4 16
 INDIRP4
 CNSTI4 264
@@ -13750,7 +13750,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $941
+EQU4 $943
 line 1984
 ;1984:			if (key == K_MOUSE1 || key == K_ENTER || key == K_MOUSE2 || key == K_MOUSE3) {
 ADDRLP4 20
@@ -13760,20 +13760,20 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 178
-EQI4 $947
+EQI4 $949
 ADDRLP4 20
 INDIRI4
 CNSTI4 13
-EQI4 $947
+EQI4 $949
 ADDRLP4 20
 INDIRI4
 CNSTI4 179
-EQI4 $947
+EQI4 $949
 ADDRLP4 20
 INDIRI4
 CNSTI4 180
-NEI4 $943
-LABELV $947
+NEI4 $945
+LABELV $949
 line 1985
 ;1985:				int current = Item_Multi_FindCvarByValue(item) + 1;
 ADDRFP4 0
@@ -13811,13 +13811,13 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
-LTI4 $950
+LTI4 $952
 ADDRLP4 40
 INDIRI4
 ADDRLP4 28
 INDIRI4
-LTI4 $948
-LABELV $950
+LTI4 $950
+LABELV $952
 line 1988
 ;1988:					current = 0;
 ADDRLP4 24
@@ -13825,7 +13825,7 @@ CNSTI4 0
 ASGNI4
 line 1989
 ;1989:				}
-LABELV $948
+LABELV $950
 line 1990
 ;1990:				if (multiPtr->strDef) {
 ADDRLP4 0
@@ -13834,7 +13834,7 @@ CNSTI4 388
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $951
+EQI4 $953
 line 1991
 ;1991:					DC->setCVar(item->cvar, multiPtr->cvarStr[current]);
 ADDRFP4 0
@@ -13863,9 +13863,9 @@ CALLV
 pop
 line 1992
 ;1992:				} else {
-ADDRGP4 $952
+ADDRGP4 $954
 JUMPV
-LABELV $951
+LABELV $953
 line 1993
 ;1993:					float value = multiPtr->cvarValue[current];
 ADDRLP4 44
@@ -13892,10 +13892,10 @@ CVFI4 4
 CVIF4 4
 ADDRLP4 48
 INDIRF4
-NEF4 $953
+NEF4 $955
 line 1995
 ;1995:						DC->setCVar(item->cvar, va("%i", (int) value ));
-ADDRGP4 $901
+ADDRGP4 $903
 ARGP4
 ADDRLP4 44
 INDIRF4
@@ -13923,14 +13923,14 @@ CALLV
 pop
 line 1996
 ;1996:					}
-ADDRGP4 $954
+ADDRGP4 $956
 JUMPV
-LABELV $953
+LABELV $955
 line 1997
 ;1997:					else {
 line 1998
 ;1998:						DC->setCVar(item->cvar, va("%f", value ));
-ADDRGP4 $955
+ADDRGP4 $957
 ARGP4
 ADDRLP4 44
 INDIRF4
@@ -13957,29 +13957,29 @@ CALLV
 pop
 line 1999
 ;1999:					}
-LABELV $954
+LABELV $956
 line 2000
 ;2000:				}
-LABELV $952
+LABELV $954
 line 2001
 ;2001:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $938
+ADDRGP4 $940
 JUMPV
-LABELV $943
+LABELV $945
 line 2003
 ;2002:			}
 ;2003:		}
-LABELV $941
+LABELV $943
 line 2004
 ;2004:	}
-LABELV $939
+LABELV $941
 line 2005
 ;2005:  return qfalse;
 CNSTI4 0
 RETI4
-LABELV $938
+LABELV $940
 endproc Item_Multi_HandleKey 56 12
 export Item_TextField_HandleKey
 proc Item_TextField_HandleKey 1076 12
@@ -14013,7 +14013,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $957
+EQU4 $959
 line 2016
 ;2015:
 ;2016:		memset(buff, 0, sizeof(buff));
@@ -14069,12 +14069,12 @@ ASGNI4
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-EQI4 $959
+EQI4 $961
 ADDRLP4 1032
 INDIRI4
 ADDRLP4 1040
 INDIRI4
-LEI4 $959
+LEI4 $961
 line 2020
 ;2020:			len = editPtr->maxChars;
 ADDRLP4 1032
@@ -14086,7 +14086,7 @@ INDIRI4
 ASGNI4
 line 2021
 ;2021:		}
-LABELV $959
+LABELV $961
 line 2022
 ;2022:		if ( key & K_CHAR_FLAG ) {
 ADDRFP4 4
@@ -14094,7 +14094,7 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $961
+EQI4 $963
 line 2023
 ;2023:			key &= ~K_CHAR_FLAG;
 ADDRFP4 4
@@ -14110,7 +14110,7 @@ line 2026
 ADDRFP4 4
 INDIRI4
 CNSTI4 8
-NEI4 $963
+NEI4 $965
 line 2027
 ;2027:				if ( item->cursorPos > 0 ) {
 ADDRFP4 0
@@ -14119,7 +14119,7 @@ CNSTI4 532
 ADDP4
 INDIRI4
 CNSTI4 0
-LEI4 $965
+LEI4 $967
 line 2028
 ;2028:					memmove( &buff[item->cursorPos - 1], &buff[item->cursorPos], len + 1 - item->cursorPos);
 ADDRLP4 1044
@@ -14178,7 +14178,7 @@ INDIRP4
 CNSTI4 24
 ADDP4
 INDIRI4
-GEI4 $968
+GEI4 $970
 line 2031
 ;2031:						editPtr->paintOffset--;
 ADDRLP4 1052
@@ -14197,10 +14197,10 @@ SUBI4
 ASGNI4
 line 2032
 ;2032:					}
-LABELV $968
+LABELV $970
 line 2033
 ;2033:				}
-LABELV $965
+LABELV $967
 line 2034
 ;2034:				DC->setCVar(item->cvar, buff);
 ADDRFP4 0
@@ -14222,9 +14222,9 @@ line 2035
 ;2035:	    		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $963
+LABELV $965
 line 2042
 ;2036:			}
 ;2037:
@@ -14236,7 +14236,7 @@ line 2042
 ADDRFP4 4
 INDIRI4
 CNSTI4 32
-LTI4 $972
+LTI4 $974
 ADDRFP4 0
 INDIRP4
 CNSTI4 264
@@ -14244,15 +14244,15 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $970
-LABELV $972
+NEU4 $972
+LABELV $974
 line 2043
 ;2043:			    return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $970
+LABELV $972
 line 2046
 ;2044:		    }
 ;2045:
@@ -14263,7 +14263,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 9
-NEI4 $973
+NEI4 $975
 line 2047
 ;2047:				if (key < '0' || key > '9') {
 ADDRLP4 1044
@@ -14273,23 +14273,23 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 48
-LTI4 $977
+LTI4 $979
 ADDRLP4 1044
 INDIRI4
 CNSTI4 57
-LEI4 $975
-LABELV $977
+LEI4 $977
+LABELV $979
 line 2048
 ;2048:					return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $975
+LABELV $977
 line 2050
 ;2049:				}
 ;2050:			}
-LABELV $973
+LABELV $975
 line 2052
 ;2051:
 ;2052:			if (!DC->getOverstrikeMode()) {
@@ -14304,7 +14304,7 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-NEI4 $978
+NEI4 $980
 line 2053
 ;2053:				if (( len == MAX_EDITFIELD - 1 ) || (editPtr->maxChars && len >= editPtr->maxChars)) {
 ADDRLP4 1048
@@ -14314,7 +14314,7 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 255
-EQI4 $982
+EQI4 $984
 ADDRLP4 1052
 ADDRLP4 0
 INDIRP4
@@ -14325,20 +14325,20 @@ ASGNI4
 ADDRLP4 1052
 INDIRI4
 CNSTI4 0
-EQI4 $980
+EQI4 $982
 ADDRLP4 1048
 INDIRI4
 ADDRLP4 1052
 INDIRI4
-LTI4 $980
-LABELV $982
+LTI4 $982
+LABELV $984
 line 2054
 ;2054:					return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $980
+LABELV $982
 line 2056
 ;2055:				}
 ;2056:				memmove( &buff[item->cursorPos + 1], &buff[item->cursorPos], len + 1 - item->cursorPos );
@@ -14372,9 +14372,9 @@ CALLP4
 pop
 line 2057
 ;2057:			} else {
-ADDRGP4 $979
+ADDRGP4 $981
 JUMPV
-LABELV $978
+LABELV $980
 line 2058
 ;2058:				if (editPtr->maxChars && item->cursorPos >= editPtr->maxChars) {
 ADDRLP4 1048
@@ -14387,7 +14387,7 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-EQI4 $984
+EQI4 $986
 ADDRFP4 0
 INDIRP4
 CNSTI4 532
@@ -14395,18 +14395,18 @@ ADDP4
 INDIRI4
 ADDRLP4 1048
 INDIRI4
-LTI4 $984
+LTI4 $986
 line 2059
 ;2059:					return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $984
+LABELV $986
 line 2061
 ;2060:				}
 ;2061:			}
-LABELV $979
+LABELV $981
 line 2063
 ;2062:
 ;2063:			buff[item->cursorPos] = key;
@@ -14451,7 +14451,7 @@ ADDRLP4 1032
 INDIRI4
 CNSTI4 1
 ADDI4
-GEI4 $962
+GEI4 $964
 line 2068
 ;2068:				item->cursorPos++;
 ADDRLP4 1048
@@ -14480,7 +14480,7 @@ ASGNI4
 ADDRLP4 1052
 INDIRI4
 CNSTI4 0
-EQI4 $962
+EQI4 $964
 ADDRFP4 0
 INDIRP4
 CNSTI4 532
@@ -14488,7 +14488,7 @@ ADDP4
 INDIRI4
 ADDRLP4 1052
 INDIRI4
-LEI4 $962
+LEI4 $964
 line 2070
 ;2070:					editPtr->paintOffset++;
 ADDRLP4 1056
@@ -14512,9 +14512,9 @@ line 2072
 line 2074
 ;2073:
 ;2074:		} else {
-ADDRGP4 $962
+ADDRGP4 $964
 JUMPV
-LABELV $961
+LABELV $963
 line 2076
 ;2075:
 ;2076:			if ( key == K_DEL || key == K_KP_DEL ) {
@@ -14525,12 +14525,12 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 140
-EQI4 $992
+EQI4 $994
 ADDRLP4 1044
 INDIRI4
 CNSTI4 171
-NEI4 $990
-LABELV $992
+NEI4 $992
+LABELV $994
 line 2077
 ;2077:				if ( item->cursorPos < len ) {
 ADDRFP4 0
@@ -14540,7 +14540,7 @@ ADDP4
 INDIRI4
 ADDRLP4 1032
 INDIRI4
-GEI4 $993
+GEI4 $995
 line 2078
 ;2078:					memmove( buff + item->cursorPos, buff + item->cursorPos + 1, len - item->cursorPos);
 ADDRLP4 1048
@@ -14588,14 +14588,14 @@ CALLV
 pop
 line 2080
 ;2080:				}
-LABELV $993
+LABELV $995
 line 2081
 ;2081:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $990
+LABELV $992
 line 2084
 ;2082:			}
 ;2083:
@@ -14607,12 +14607,12 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 135
-EQI4 $998
+EQI4 $1000
 ADDRLP4 1048
 INDIRI4
 CNSTI4 165
-NEI4 $996
-LABELV $998
+NEI4 $998
+LABELV $1000
 line 2085
 ;2085:			{
 line 2086
@@ -14627,7 +14627,7 @@ ASGNI4
 ADDRLP4 1052
 INDIRI4
 CNSTI4 0
-EQI4 $999
+EQI4 $1001
 ADDRLP4 1056
 ADDRFP4 0
 INDIRP4
@@ -14639,12 +14639,12 @@ ADDRLP4 1056
 INDIRI4
 ADDRLP4 1052
 INDIRI4
-LTI4 $999
+LTI4 $1001
 ADDRLP4 1056
 INDIRI4
 ADDRLP4 1032
 INDIRI4
-GEI4 $999
+GEI4 $1001
 line 2087
 ;2087:					item->cursorPos++;
 ADDRLP4 1060
@@ -14681,9 +14681,9 @@ line 2089
 ;2089:					return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $999
+LABELV $1001
 line 2091
 ;2090:				}
 ;2091:				if (item->cursorPos < len) {
@@ -14694,7 +14694,7 @@ ADDP4
 INDIRI4
 ADDRLP4 1032
 INDIRI4
-GEI4 $1001
+GEI4 $1003
 line 2092
 ;2092:					item->cursorPos++;
 ADDRLP4 1060
@@ -14713,14 +14713,14 @@ ADDI4
 ASGNI4
 line 2093
 ;2093:				} 
-LABELV $1001
+LABELV $1003
 line 2094
 ;2094:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $996
+LABELV $998
 line 2097
 ;2095:			}
 ;2096:
@@ -14732,12 +14732,12 @@ ASGNI4
 ADDRLP4 1052
 INDIRI4
 CNSTI4 134
-EQI4 $1005
+EQI4 $1007
 ADDRLP4 1052
 INDIRI4
 CNSTI4 163
-NEI4 $1003
-LABELV $1005
+NEI4 $1005
+LABELV $1007
 line 2098
 ;2098:			{
 line 2099
@@ -14748,7 +14748,7 @@ CNSTI4 532
 ADDP4
 INDIRI4
 CNSTI4 0
-LEI4 $1006
+LEI4 $1008
 line 2100
 ;2100:					item->cursorPos--;
 ADDRLP4 1056
@@ -14767,7 +14767,7 @@ SUBI4
 ASGNI4
 line 2101
 ;2101:				}
-LABELV $1006
+LABELV $1008
 line 2102
 ;2102:				if (item->cursorPos < editPtr->paintOffset) {
 ADDRFP4 0
@@ -14780,7 +14780,7 @@ INDIRP4
 CNSTI4 24
 ADDP4
 INDIRI4
-GEI4 $1008
+GEI4 $1010
 line 2103
 ;2103:					editPtr->paintOffset--;
 ADDRLP4 1056
@@ -14799,14 +14799,14 @@ SUBI4
 ASGNI4
 line 2104
 ;2104:				}
-LABELV $1008
+LABELV $1010
 line 2105
 ;2105:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $1003
+LABELV $1005
 line 2108
 ;2106:			}
 ;2107:
@@ -14818,12 +14818,12 @@ ASGNI4
 ADDRLP4 1056
 INDIRI4
 CNSTI4 143
-EQI4 $1012
+EQI4 $1014
 ADDRLP4 1056
 INDIRI4
 CNSTI4 160
-NEI4 $1010
-LABELV $1012
+NEI4 $1012
+LABELV $1014
 line 2109
 ;2109:				item->cursorPos = 0;
 ADDRFP4 0
@@ -14844,9 +14844,9 @@ line 2111
 ;2111:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $1010
+LABELV $1012
 line 2114
 ;2112:			}
 ;2113:
@@ -14858,12 +14858,12 @@ ASGNI4
 ADDRLP4 1060
 INDIRI4
 CNSTI4 144
-EQI4 $1015
+EQI4 $1017
 ADDRLP4 1060
 INDIRI4
 CNSTI4 166
-NEI4 $1013
-LABELV $1015
+NEI4 $1015
+LABELV $1017
 line 2115
 ;2115:				item->cursorPos = len;
 ADDRFP4 0
@@ -14885,7 +14885,7 @@ INDIRP4
 CNSTI4 20
 ADDP4
 INDIRI4
-LEI4 $1016
+LEI4 $1018
 line 2117
 ;2117:					editPtr->paintOffset = len - editPtr->maxPaintChars;
 ADDRLP4 0
@@ -14903,14 +14903,14 @@ SUBI4
 ASGNI4
 line 2118
 ;2118:				}
-LABELV $1016
+LABELV $1018
 line 2119
 ;2119:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $1013
+LABELV $1015
 line 2122
 ;2120:			}
 ;2121:
@@ -14922,12 +14922,12 @@ ASGNI4
 ADDRLP4 1064
 INDIRI4
 CNSTI4 139
-EQI4 $1020
+EQI4 $1022
 ADDRLP4 1064
 INDIRI4
 CNSTI4 170
-NEI4 $1018
-LABELV $1020
+NEI4 $1020
+LABELV $1022
 line 2123
 ;2123:				DC->setOverstrikeMode(!DC->getOverstrikeMode());
 ADDRLP4 1072
@@ -14941,17 +14941,17 @@ ASGNI4
 ADDRLP4 1072
 INDIRI4
 CNSTI4 0
-NEI4 $1022
+NEI4 $1024
 ADDRLP4 1068
 CNSTI4 1
 ASGNI4
-ADDRGP4 $1023
+ADDRGP4 $1025
 JUMPV
-LABELV $1022
+LABELV $1024
 ADDRLP4 1068
 CNSTI4 0
 ASGNI4
-LABELV $1023
+LABELV $1025
 ADDRLP4 1068
 INDIRI4
 ARGI4
@@ -14966,13 +14966,13 @@ line 2124
 ;2124:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $1018
+LABELV $1020
 line 2126
 ;2125:			}
 ;2126:		}
-LABELV $962
+LABELV $964
 line 2128
 ;2127:
 ;2128:		if (key == K_TAB || key == K_DOWNARROW || key == K_KP_DOWNARROW) {
@@ -14983,16 +14983,16 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 9
-EQI4 $1027
+EQI4 $1029
 ADDRLP4 1044
 INDIRI4
 CNSTI4 133
-EQI4 $1027
+EQI4 $1029
 ADDRLP4 1044
 INDIRI4
 CNSTI4 167
-NEI4 $1024
-LABELV $1027
+NEI4 $1026
+LABELV $1029
 line 2129
 ;2129:			newItem = Menu_SetNextCursorItem(item->parent);
 ADDRFP4 0
@@ -15015,7 +15015,7 @@ ADDRLP4 1028
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1028
+EQU4 $1030
 ADDRLP4 1056
 ADDRLP4 1028
 INDIRP4
@@ -15026,12 +15026,12 @@ ASGNI4
 ADDRLP4 1056
 INDIRI4
 CNSTI4 4
-EQI4 $1030
+EQI4 $1032
 ADDRLP4 1056
 INDIRI4
 CNSTI4 9
-NEI4 $1028
-LABELV $1030
+NEI4 $1030
+LABELV $1032
 line 2131
 ;2131:				g_editItem = newItem;
 ADDRGP4 g_editItem
@@ -15040,10 +15040,10 @@ INDIRP4
 ASGNP4
 line 2132
 ;2132:			}
-LABELV $1028
+LABELV $1030
 line 2133
 ;2133:		}
-LABELV $1024
+LABELV $1026
 line 2135
 ;2134:
 ;2135:		if (key == K_UPARROW || key == K_KP_UPARROW) {
@@ -15054,12 +15054,12 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 132
-EQI4 $1033
+EQI4 $1035
 ADDRLP4 1048
 INDIRI4
 CNSTI4 161
-NEI4 $1031
-LABELV $1033
+NEI4 $1033
+LABELV $1035
 line 2136
 ;2136:			newItem = Menu_SetPrevCursorItem(item->parent);
 ADDRFP4 0
@@ -15082,7 +15082,7 @@ ADDRLP4 1028
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1034
+EQU4 $1036
 ADDRLP4 1060
 ADDRLP4 1028
 INDIRP4
@@ -15093,12 +15093,12 @@ ASGNI4
 ADDRLP4 1060
 INDIRI4
 CNSTI4 4
-EQI4 $1036
+EQI4 $1038
 ADDRLP4 1060
 INDIRI4
 CNSTI4 9
-NEI4 $1034
-LABELV $1036
+NEI4 $1036
+LABELV $1038
 line 2138
 ;2138:				g_editItem = newItem;
 ADDRGP4 g_editItem
@@ -15107,10 +15107,10 @@ INDIRP4
 ASGNP4
 line 2139
 ;2139:			}
-LABELV $1034
+LABELV $1036
 line 2140
 ;2140:		}
-LABELV $1031
+LABELV $1033
 line 2142
 ;2141:
 ;2142:		if ( key == K_ENTER || key == K_KP_ENTER || key == K_ESCAPE)  {
@@ -15121,38 +15121,38 @@ ASGNI4
 ADDRLP4 1052
 INDIRI4
 CNSTI4 13
-EQI4 $1040
+EQI4 $1042
 ADDRLP4 1052
 INDIRI4
 CNSTI4 169
-EQI4 $1040
+EQI4 $1042
 ADDRLP4 1052
 INDIRI4
 CNSTI4 27
-NEI4 $1037
-LABELV $1040
+NEI4 $1039
+LABELV $1042
 line 2143
 ;2143:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $1037
+LABELV $1039
 line 2146
 ;2144:		}
 ;2145:
 ;2146:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $956
+ADDRGP4 $958
 JUMPV
-LABELV $957
+LABELV $959
 line 2148
 ;2147:	}
 ;2148:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $956
+LABELV $958
 endproc Item_TextField_HandleKey 1076 12
 proc Scroll_ListBox_AutoFunc 12 16
 line 2152
@@ -15176,7 +15176,7 @@ INDIRI4
 ADDRLP4 0
 INDIRP4
 INDIRI4
-LEI4 $1042
+LEI4 $1044
 line 2158
 ;2155:		// need to scroll which is done by simulating a click to the item
 ;2156:		// this is done a bit sideways as the autoscroll "knows" that the item is a listbox
@@ -15219,7 +15219,7 @@ ADDI4
 ASGNI4
 line 2160
 ;2160:	}
-LABELV $1042
+LABELV $1044
 line 2162
 ;2161:
 ;2162:	if (DC->realTime > si->nextAdjustTime) {
@@ -15233,7 +15233,7 @@ INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
-LEI4 $1044
+LEI4 $1046
 line 2163
 ;2163:		si->nextAdjustTime = DC->realTime + SCROLL_TIME_ADJUST;
 ADDRLP4 0
@@ -15256,7 +15256,7 @@ CNSTI4 8
 ADDP4
 INDIRI4
 CNSTI4 20
-LEI4 $1046
+LEI4 $1048
 line 2165
 ;2165:			si->adjustValue -= SCROLL_TIME_ADJUSTOFFSET;
 ADDRLP4 4
@@ -15275,13 +15275,13 @@ SUBI4
 ASGNI4
 line 2166
 ;2166:		}
-LABELV $1046
+LABELV $1048
 line 2167
 ;2167:	}
-LABELV $1044
+LABELV $1046
 line 2168
 ;2168:}
-LABELV $1041
+LABELV $1043
 endproc Scroll_ListBox_AutoFunc 12 16
 proc Scroll_ListBox_ThumbFunc 40 16
 line 2170
@@ -15321,7 +15321,7 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $1049
+EQI4 $1051
 line 2177
 ;2177:		if (DC->cursorx == si->xStart) {
 ADDRGP4 DC
@@ -15335,12 +15335,12 @@ INDIRP4
 CNSTI4 16
 ADDP4
 INDIRF4
-NEF4 $1051
+NEF4 $1053
 line 2178
 ;2178:			return;
-ADDRGP4 $1048
+ADDRGP4 $1050
 JUMPV
-LABELV $1051
+LABELV $1053
 line 2180
 ;2179:		}
 ;2180:		r.x = si->item->window.rect.x + SCROLLBAR_SIZE + 1;
@@ -15450,7 +15450,7 @@ line 2187
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-GEI4 $1057
+GEI4 $1059
 line 2188
 ;2188:			pos = 0;
 ADDRLP4 20
@@ -15458,16 +15458,16 @@ CNSTI4 0
 ASGNI4
 line 2189
 ;2189:		}
-ADDRGP4 $1058
+ADDRGP4 $1060
 JUMPV
-LABELV $1057
+LABELV $1059
 line 2190
 ;2190:		else if (pos > max) {
 ADDRLP4 20
 INDIRI4
 ADDRLP4 24
 INDIRI4
-LEI4 $1059
+LEI4 $1061
 line 2191
 ;2191:			pos = max;
 ADDRLP4 20
@@ -15476,8 +15476,8 @@ INDIRI4
 ASGNI4
 line 2192
 ;2192:		}
-LABELV $1059
-LABELV $1058
+LABELV $1061
+LABELV $1060
 line 2193
 ;2193:		listPtr->startPos = pos;
 ADDRLP4 28
@@ -15500,9 +15500,9 @@ CVIF4 4
 ASGNF4
 line 2195
 ;2195:	}
-ADDRGP4 $1050
+ADDRGP4 $1052
 JUMPV
-LABELV $1049
+LABELV $1051
 line 2196
 ;2196:	else if (DC->cursory != si->yStart) {
 ADDRGP4 DC
@@ -15516,7 +15516,7 @@ INDIRP4
 CNSTI4 20
 ADDP4
 INDIRF4
-EQF4 $1061
+EQF4 $1063
 line 2198
 ;2197:
 ;2198:		r.x = si->item->window.rect.x + si->item->window.rect.w - SCROLLBAR_SIZE - 1;
@@ -15626,7 +15626,7 @@ line 2205
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-GEI4 $1068
+GEI4 $1070
 line 2206
 ;2206:			pos = 0;
 ADDRLP4 20
@@ -15634,16 +15634,16 @@ CNSTI4 0
 ASGNI4
 line 2207
 ;2207:		}
-ADDRGP4 $1069
+ADDRGP4 $1071
 JUMPV
-LABELV $1068
+LABELV $1070
 line 2208
 ;2208:		else if (pos > max) {
 ADDRLP4 20
 INDIRI4
 ADDRLP4 24
 INDIRI4
-LEI4 $1070
+LEI4 $1072
 line 2209
 ;2209:			pos = max;
 ADDRLP4 20
@@ -15652,8 +15652,8 @@ INDIRI4
 ASGNI4
 line 2210
 ;2210:		}
-LABELV $1070
-LABELV $1069
+LABELV $1072
+LABELV $1071
 line 2211
 ;2211:		listPtr->startPos = pos;
 ADDRLP4 28
@@ -15676,8 +15676,8 @@ CVIF4 4
 ASGNF4
 line 2213
 ;2213:	}
-LABELV $1061
-LABELV $1050
+LABELV $1063
+LABELV $1052
 line 2215
 ;2214:
 ;2215:	if (DC->realTime > si->nextScrollTime) { 
@@ -15689,7 +15689,7 @@ INDIRI4
 ADDRLP4 0
 INDIRP4
 INDIRI4
-LEI4 $1072
+LEI4 $1074
 line 2219
 ;2216:		// need to scroll which is done by simulating a click to the item
 ;2217:		// this is done a bit sideways as the autoscroll "knows" that the item is a listbox
@@ -15732,7 +15732,7 @@ ADDI4
 ASGNI4
 line 2221
 ;2221:	}
-LABELV $1072
+LABELV $1074
 line 2223
 ;2222:
 ;2223:	if (DC->realTime > si->nextAdjustTime) {
@@ -15746,7 +15746,7 @@ INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
-LEI4 $1074
+LEI4 $1076
 line 2224
 ;2224:		si->nextAdjustTime = DC->realTime + SCROLL_TIME_ADJUST;
 ADDRLP4 0
@@ -15769,7 +15769,7 @@ CNSTI4 8
 ADDP4
 INDIRI4
 CNSTI4 20
-LEI4 $1076
+LEI4 $1078
 line 2226
 ;2226:			si->adjustValue -= SCROLL_TIME_ADJUSTOFFSET;
 ADDRLP4 32
@@ -15788,13 +15788,13 @@ SUBI4
 ASGNI4
 line 2227
 ;2227:		}
-LABELV $1076
+LABELV $1078
 line 2228
 ;2228:	}
-LABELV $1074
+LABELV $1076
 line 2229
 ;2229:}
-LABELV $1048
+LABELV $1050
 endproc Scroll_ListBox_ThumbFunc 40 16
 proc Scroll_Slider_ThumbFunc 28 8
 line 2231
@@ -15832,7 +15832,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1079
+EQU4 $1081
 line 2237
 ;2237:		x = si->item->textRect.x + si->item->textRect.w + 8;
 ADDRLP4 20
@@ -15859,9 +15859,9 @@ ADDF4
 ASGNF4
 line 2238
 ;2238:	} else {
-ADDRGP4 $1080
+ADDRGP4 $1082
 JUMPV
-LABELV $1079
+LABELV $1081
 line 2239
 ;2239:		x = si->item->window.rect.x;
 ADDRLP4 8
@@ -15874,7 +15874,7 @@ INDIRF4
 ASGNF4
 line 2240
 ;2240:	}
-LABELV $1080
+LABELV $1082
 line 2242
 ;2241:
 ;2242:	cursorx = DC->cursorx;
@@ -15893,7 +15893,7 @@ ADDRLP4 12
 INDIRF4
 ADDRLP4 8
 INDIRF4
-GEF4 $1081
+GEF4 $1083
 line 2245
 ;2245:		cursorx = x;
 ADDRLP4 12
@@ -15902,16 +15902,16 @@ INDIRF4
 ASGNF4
 line 2246
 ;2246:	} else if (cursorx > x + SLIDER_WIDTH) {
-ADDRGP4 $1082
+ADDRGP4 $1084
 JUMPV
-LABELV $1081
+LABELV $1083
 ADDRLP4 12
 INDIRF4
 ADDRLP4 8
 INDIRF4
 CNSTF4 1119879168
 ADDF4
-LEF4 $1083
+LEF4 $1085
 line 2247
 ;2247:		cursorx = x + SLIDER_WIDTH;
 ADDRLP4 12
@@ -15922,8 +15922,8 @@ ADDF4
 ASGNF4
 line 2248
 ;2248:	}
-LABELV $1083
-LABELV $1082
+LABELV $1085
+LABELV $1084
 line 2249
 ;2249:	value = cursorx - x;
 ADDRLP4 4
@@ -15969,7 +15969,7 @@ ADDF4
 ASGNF4
 line 2253
 ;2253:	DC->setCVar(si->item->cvar, va("%f", value));
-ADDRGP4 $955
+ADDRGP4 $957
 ARGP4
 ADDRLP4 4
 INDIRF4
@@ -15999,7 +15999,7 @@ CALLV
 pop
 line 2254
 ;2254:}
-LABELV $1078
+LABELV $1080
 endproc Scroll_Slider_ThumbFunc 28 8
 export Item_StartCapture
 proc Item_StartCapture 24 12
@@ -16019,31 +16019,31 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 4
-LTI4 $1086
+LTI4 $1088
 ADDRLP4 4
 INDIRI4
 CNSTI4 10
-GTI4 $1086
+GTI4 $1088
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $1113-16
+ADDRGP4 $1115-16
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $1113
-address $1089
-address $1086
-address $1089
-address $1086
-address $1086
-address $1089
-address $1106
+LABELV $1115
+address $1091
+address $1088
+address $1091
+address $1088
+address $1088
+address $1091
+address $1108
 code
-LABELV $1089
+LABELV $1091
 line 2263
 ;2259:    case ITEM_TYPE_EDITFIELD:
 ;2260:    case ITEM_TYPE_NUMERICFIELD:
@@ -16088,7 +16088,7 @@ INDIRI4
 CNSTI4 6144
 BANDI4
 CNSTI4 0
-EQI4 $1090
+EQI4 $1092
 line 2266
 ;2266:				scrollInfo.nextScrollTime = DC->realTime + SCROLL_TIME_START;
 ADDRGP4 scrollInfo
@@ -16129,17 +16129,17 @@ INDIRI4
 CNSTI4 2048
 BANDI4
 CNSTI4 0
-EQI4 $1097
+EQI4 $1099
 ADDRLP4 20
 CNSTI4 1
 ASGNI4
-ADDRGP4 $1098
+ADDRGP4 $1100
 JUMPV
-LABELV $1097
+LABELV $1099
 ADDRLP4 20
 CNSTI4 0
 ASGNI4
-LABELV $1098
+LABELV $1100
 ADDRGP4 scrollInfo+28
 ADDRLP4 20
 INDIRI4
@@ -16168,15 +16168,15 @@ INDIRP4
 ASGNP4
 line 2275
 ;2275:			} else if (flags & WINDOW_LB_THUMB) {
-ADDRGP4 $1087
+ADDRGP4 $1089
 JUMPV
-LABELV $1090
+LABELV $1092
 ADDRLP4 0
 INDIRI4
 CNSTI4 8192
 BANDI4
 CNSTI4 0
-EQI4 $1087
+EQI4 $1089
 line 2276
 ;2276:				scrollInfo.scrollKey = key;
 ADDRGP4 scrollInfo+12
@@ -16229,9 +16229,9 @@ line 2283
 ;2283:			}
 line 2284
 ;2284:			break;
-ADDRGP4 $1087
+ADDRGP4 $1089
 JUMPV
-LABELV $1106
+LABELV $1108
 line 2287
 ;2285:		}
 ;2286:		case ITEM_TYPE_SLIDER:
@@ -16274,7 +16274,7 @@ INDIRI4
 CNSTI4 8192
 BANDI4
 CNSTI4 0
-EQI4 $1087
+EQI4 $1089
 line 2290
 ;2290:				scrollInfo.scrollKey = key;
 ADDRGP4 scrollInfo+12
@@ -16327,13 +16327,13 @@ line 2297
 ;2297:			}
 line 2298
 ;2298:			break;
-LABELV $1086
-LABELV $1087
+LABELV $1088
+LABELV $1089
 line 2301
 ;2299:		}
 ;2300:	}
 ;2301:}
-LABELV $1085
+LABELV $1087
 endproc Item_StartCapture 24 12
 export Item_StopCapture
 proc Item_StopCapture 0 0
@@ -16343,7 +16343,7 @@ line 2303
 line 2305
 ;2304:
 ;2305:}
-LABELV $1115
+LABELV $1117
 endproc Item_StopCapture 0 0
 export Item_Slider_HandleKey
 proc Item_Slider_HandleKey 68 12
@@ -16367,7 +16367,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $1117
+EQI4 $1119
 ADDRLP4 16
 INDIRP4
 CNSTI4 264
@@ -16375,7 +16375,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1117
+EQU4 $1119
 ADDRLP4 16
 INDIRP4
 ARGP4
@@ -16404,7 +16404,7 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $1117
+EQI4 $1119
 line 2312
 ;2312:		if (key == K_MOUSE1 || key == K_ENTER || key == K_MOUSE2 || key == K_MOUSE3) {
 ADDRLP4 28
@@ -16414,20 +16414,20 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 178
-EQI4 $1123
+EQI4 $1125
 ADDRLP4 28
 INDIRI4
 CNSTI4 13
-EQI4 $1123
+EQI4 $1125
 ADDRLP4 28
 INDIRI4
 CNSTI4 179
-EQI4 $1123
+EQI4 $1125
 ADDRLP4 28
 INDIRI4
 CNSTI4 180
-NEI4 $1119
-LABELV $1123
+NEI4 $1121
+LABELV $1125
 line 2313
 ;2313:			editFieldDef_t *editDef = item->typeData;
 ADDRLP4 32
@@ -16443,7 +16443,7 @@ ADDRLP4 32
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1124
+EQU4 $1126
 line 2316
 ;2315:				rectDef_t testRect;
 ;2316:				width = SLIDER_WIDTH;
@@ -16459,7 +16459,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1126
+EQU4 $1128
 line 2318
 ;2318:					x = item->textRect.x + item->textRect.w + 8;
 ADDRLP4 52
@@ -16483,9 +16483,9 @@ ADDF4
 ASGNF4
 line 2319
 ;2319:				} else {
-ADDRGP4 $1127
+ADDRGP4 $1129
 JUMPV
-LABELV $1126
+LABELV $1128
 line 2320
 ;2320:					x = item->window.rect.x;
 ADDRLP4 4
@@ -16495,7 +16495,7 @@ INDIRF4
 ASGNF4
 line 2321
 ;2321:				}
-LABELV $1127
+LABELV $1129
 line 2323
 ;2322:
 ;2323:				testRect = item->window.rect;
@@ -16560,7 +16560,7 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-EQI4 $1129
+EQI4 $1131
 line 2331
 ;2331:					work = DC->cursorx - x;
 ADDRLP4 12
@@ -16617,7 +16617,7 @@ ADDF4
 ASGNF4
 line 2337
 ;2337:					DC->setCVar(item->cvar, va("%f", value));
-ADDRGP4 $955
+ADDRGP4 $957
 ARGP4
 ADDRLP4 0
 INDIRF4
@@ -16646,22 +16646,22 @@ line 2338
 ;2338:					return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $1116
+ADDRGP4 $1118
 JUMPV
-LABELV $1129
+LABELV $1131
 line 2340
 ;2339:				}
 ;2340:			}
-LABELV $1124
+LABELV $1126
 line 2341
 ;2341:		}
-LABELV $1119
+LABELV $1121
 line 2342
 ;2342:	}
-LABELV $1117
+LABELV $1119
 line 2343
 ;2343:	DC->Print("slider handle key exit\n");
-ADDRGP4 $1131
+ADDRGP4 $1133
 ARGP4
 ADDRGP4 DC
 INDIRP4
@@ -16674,7 +16674,7 @@ line 2344
 ;2344:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $1116
+LABELV $1118
 endproc Item_Slider_HandleKey 68 12
 export Item_HandleKey
 proc Item_HandleKey 32 16
@@ -16690,7 +16690,7 @@ ADDRGP4 itemCapture
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1133
+EQU4 $1135
 line 2351
 ;2351:		Item_StopCapture(itemCapture);
 ADDRGP4 itemCapture
@@ -16716,16 +16716,16 @@ CNSTP4 0
 ASGNP4
 line 2355
 ;2355:	} else {
-ADDRGP4 $1134
+ADDRGP4 $1136
 JUMPV
-LABELV $1133
+LABELV $1135
 line 2357
 ;2356:	  // bk001206 - parentheses
 ;2357:		if ( down && ( key == K_MOUSE1 || key == K_MOUSE2 || key == K_MOUSE3 ) ) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $1135
+EQI4 $1137
 ADDRLP4 0
 ADDRFP4 4
 INDIRI4
@@ -16733,16 +16733,16 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 178
-EQI4 $1138
+EQI4 $1140
 ADDRLP4 0
 INDIRI4
 CNSTI4 179
-EQI4 $1138
+EQI4 $1140
 ADDRLP4 0
 INDIRI4
 CNSTI4 180
-NEI4 $1135
-LABELV $1138
+NEI4 $1137
+LABELV $1140
 line 2358
 ;2358:			Item_StartCapture(item, key);
 ADDRFP4 0
@@ -16756,24 +16756,24 @@ CALLV
 pop
 line 2359
 ;2359:		}
-LABELV $1135
+LABELV $1137
 line 2360
 ;2360:	}
-LABELV $1134
+LABELV $1136
 line 2362
 ;2361:
 ;2362:	if (!down) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $1139
+NEI4 $1141
 line 2363
 ;2363:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
-LABELV $1139
+LABELV $1141
 line 2366
 ;2364:	}
 ;2365:
@@ -16788,67 +16788,67 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
-LTI4 $1141
+LTI4 $1143
 ADDRLP4 0
 INDIRI4
 CNSTI4 13
-GTI4 $1141
+GTI4 $1143
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $1155-4
+ADDRGP4 $1157-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $1155
-address $1144
-address $1145
+LABELV $1157
 address $1146
 address $1147
 address $1148
 address $1149
-address $1141
-address $1152
-address $1147
-address $1154
 address $1150
 address $1151
+address $1143
+address $1154
+address $1149
+address $1156
+address $1152
 address $1153
+address $1155
 code
-LABELV $1144
+LABELV $1146
 line 2368
 ;2367:    case ITEM_TYPE_BUTTON:
 ;2368:      return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2369
 ;2369:      break;
-LABELV $1145
+LABELV $1147
 line 2371
 ;2370:    case ITEM_TYPE_RADIOBUTTON:
 ;2371:      return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2372
 ;2372:      break;
-LABELV $1146
+LABELV $1148
 line 2374
 ;2373:    case ITEM_TYPE_CHECKBOX:
 ;2374:      return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2375
 ;2375:      break;
-LABELV $1147
+LABELV $1149
 line 2379
 ;2376:    case ITEM_TYPE_EDITFIELD:
 ;2377:    case ITEM_TYPE_NUMERICFIELD:
@@ -16856,21 +16856,21 @@ line 2379
 ;2379:      return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2380
 ;2380:      break;
-LABELV $1148
+LABELV $1150
 line 2382
 ;2381:    case ITEM_TYPE_COMBO:
 ;2382:      return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2383
 ;2383:      break;
-LABELV $1149
+LABELV $1151
 line 2385
 ;2384:    case ITEM_TYPE_LISTBOX:
 ;2385:      return Item_ListBox_HandleKey(item, key, down, qfalse);
@@ -16892,11 +16892,11 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2386
 ;2386:      break;
-LABELV $1150
+LABELV $1152
 line 2388
 ;2387:    case ITEM_TYPE_YESNO:
 ;2388:      return Item_YesNo_HandleKey(item, key);
@@ -16913,11 +16913,11 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2389
 ;2389:      break;
-LABELV $1151
+LABELV $1153
 line 2391
 ;2390:    case ITEM_TYPE_MULTI:
 ;2391:      return Item_Multi_HandleKey(item, key);
@@ -16934,11 +16934,11 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2392
 ;2392:      break;
-LABELV $1152
+LABELV $1154
 line 2394
 ;2393:    case ITEM_TYPE_OWNERDRAW:
 ;2394:      return Item_OwnerDraw_HandleKey(item, key);
@@ -16955,11 +16955,11 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2395
 ;2395:      break;
-LABELV $1153
+LABELV $1155
 line 2397
 ;2396:    case ITEM_TYPE_BIND:
 ;2397:			return Item_Bind_HandleKey(item, key, down);
@@ -16979,11 +16979,11 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2398
 ;2398:      break;
-LABELV $1154
+LABELV $1156
 line 2400
 ;2399:    case ITEM_TYPE_SLIDER:
 ;2400:      return Item_Slider_HandleKey(item, key, down);
@@ -17003,11 +17003,11 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 RETI4
-ADDRGP4 $1132
+ADDRGP4 $1134
 JUMPV
 line 2401
 ;2401:      break;
-LABELV $1141
+LABELV $1143
 line 2406
 ;2402:    //case ITEM_TYPE_IMAGE:
 ;2403:    //  Item_Image_Paint(item);
@@ -17018,7 +17018,7 @@ CNSTI4 0
 RETI4
 line 2407
 ;2407:      break;
-LABELV $1132
+LABELV $1134
 endproc Item_HandleKey 32 16
 export Item_Action
 proc Item_Action 4 8
@@ -17035,7 +17035,7 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1158
+EQU4 $1160
 line 2415
 ;2415:    Item_RunScript(item, item->action);
 ADDRLP4 0
@@ -17056,10 +17056,10 @@ CALLV
 pop
 line 2416
 ;2416:  }
-LABELV $1158
+LABELV $1160
 line 2417
 ;2417:}
-LABELV $1157
+LABELV $1159
 endproc Item_Action 4 8
 export Menu_SetPrevCursorItem
 proc Menu_SetPrevCursorItem 44 12
@@ -17089,7 +17089,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $1164
+GEI4 $1166
 line 2424
 ;2424:    menu->cursorItem = menu->itemCount-1;
 ADDRLP4 8
@@ -17115,9 +17115,9 @@ CNSTI4 1
 ASGNI4
 line 2426
 ;2426:  } 
-ADDRGP4 $1164
+ADDRGP4 $1166
 JUMPV
-LABELV $1163
+LABELV $1165
 line 2428
 ;2427:
 ;2428:  while (menu->cursorItem > -1) {
@@ -17150,12 +17150,12 @@ ADDP4
 INDIRI4
 ADDRLP4 12
 INDIRI4
-GEI4 $1166
+GEI4 $1168
 ADDRLP4 0
 INDIRI4
 ADDRLP4 12
 INDIRI4
-NEI4 $1166
+NEI4 $1168
 line 2432
 ;2432:      wrapped = qtrue;
 ADDRLP4 0
@@ -17181,7 +17181,7 @@ SUBI4
 ASGNI4
 line 2434
 ;2434:    }
-LABELV $1166
+LABELV $1168
 line 2436
 ;2435:
 ;2436:		if (Item_SetFocus(menu->items[menu->cursorItem], DC->cursorx, DC->cursory)) {
@@ -17228,7 +17228,7 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $1168
+EQI4 $1170
 line 2437
 ;2437:			Menu_HandleMouseMove(menu, menu->items[menu->cursorItem]->window.rect.x + 1, menu->items[menu->cursorItem]->window.rect.y + 1);
 ADDRLP4 28
@@ -17295,13 +17295,13 @@ ADDP4
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $1160
+ADDRGP4 $1162
 JUMPV
-LABELV $1168
+LABELV $1170
 line 2440
 ;2439:    }
 ;2440:  }
-LABELV $1164
+LABELV $1166
 line 2428
 ADDRFP4 0
 INDIRP4
@@ -17309,7 +17309,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 -1
-GTI4 $1163
+GTI4 $1165
 line 2441
 ;2441:	menu->cursorItem = oldCursor;
 ADDRFP4 0
@@ -17323,7 +17323,7 @@ line 2442
 ;2442:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $1160
+LABELV $1162
 endproc Menu_SetPrevCursorItem 44 12
 export Menu_SetNextCursorItem
 proc Menu_SetNextCursorItem 44 12
@@ -17357,7 +17357,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 -1
-NEI4 $1174
+NEI4 $1176
 line 2453
 ;2453:    menu->cursorItem = 0;
 ADDRFP4 0
@@ -17373,9 +17373,9 @@ CNSTI4 1
 ASGNI4
 line 2455
 ;2455:  }
-ADDRGP4 $1174
+ADDRGP4 $1176
 JUMPV
-LABELV $1173
+LABELV $1175
 line 2457
 ;2456:
 ;2457:  while (menu->cursorItem < menu->itemCount) {
@@ -17412,11 +17412,11 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $1176
+LTI4 $1178
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $1176
+NEI4 $1178
 line 2461
 ;2461:      wrapped = qtrue;
 ADDRLP4 0
@@ -17432,7 +17432,7 @@ CNSTI4 0
 ASGNI4
 line 2463
 ;2463:    }
-LABELV $1176
+LABELV $1178
 line 2464
 ;2464:		if (Item_SetFocus(menu->items[menu->cursorItem], DC->cursorx, DC->cursory)) {
 ADDRLP4 16
@@ -17478,7 +17478,7 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $1178
+EQI4 $1180
 line 2465
 ;2465:			Menu_HandleMouseMove(menu, menu->items[menu->cursorItem]->window.rect.x + 1, menu->items[menu->cursorItem]->window.rect.y + 1);
 ADDRLP4 28
@@ -17545,14 +17545,14 @@ ADDP4
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $1170
+ADDRGP4 $1172
 JUMPV
-LABELV $1178
+LABELV $1180
 line 2469
 ;2467:    }
 ;2468:    
 ;2469:  }
-LABELV $1174
+LABELV $1176
 line 2457
 ADDRLP4 8
 ADDRFP4 0
@@ -17568,7 +17568,7 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $1173
+LTI4 $1175
 line 2471
 ;2470:
 ;2471:	menu->cursorItem = oldCursor;
@@ -17583,7 +17583,7 @@ line 2472
 ;2472:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $1170
+LABELV $1172
 endproc Menu_SetNextCursorItem 44 12
 proc Window_CloseCinematic 4 4
 line 2475
@@ -17602,14 +17602,14 @@ CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 5
-NEI4 $1181
+NEI4 $1183
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
 ADDP4
 INDIRI4
 CNSTI4 0
-LTI4 $1181
+LTI4 $1183
 line 2477
 ;2477:		DC->stopCinematic(window->cinematic);
 ADDRFP4 0
@@ -17635,10 +17635,10 @@ CNSTI4 -1
 ASGNI4
 line 2479
 ;2479:	}
-LABELV $1181
+LABELV $1183
 line 2480
 ;2480:}
-LABELV $1180
+LABELV $1182
 endproc Window_CloseCinematic 4 4
 proc Menu_CloseCinematics 4 4
 line 2482
@@ -17650,7 +17650,7 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1184
+EQU4 $1186
 line 2485
 ;2484:		int i;
 ;2485:		Window_CloseCinematic(&menu->window);
@@ -17665,9 +17665,9 @@ line 2486
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1189
+ADDRGP4 $1191
 JUMPV
-LABELV $1186
+LABELV $1188
 line 2487
 ;2487:		  Window_CloseCinematic(&menu->items[i]->window);
 ADDRLP4 0
@@ -17700,7 +17700,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 8
-NEI4 $1190
+NEI4 $1192
 line 2489
 ;2489:				DC->stopCinematic(0-menu->items[i]->window.ownerDraw);
 CNSTI4 0
@@ -17728,10 +17728,10 @@ CALLV
 pop
 line 2490
 ;2490:			}
-LABELV $1190
+LABELV $1192
 line 2491
 ;2491:	  }
-LABELV $1187
+LABELV $1189
 line 2486
 ADDRLP4 0
 ADDRLP4 0
@@ -17739,7 +17739,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1189
+LABELV $1191
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -17747,13 +17747,13 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $1186
+LTI4 $1188
 line 2492
 ;2492:	}
-LABELV $1184
+LABELV $1186
 line 2493
 ;2493:}
-LABELV $1183
+LABELV $1185
 endproc Menu_CloseCinematics 4 4
 proc Display_CloseCinematics 4 4
 line 2495
@@ -17765,9 +17765,9 @@ line 2497
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1196
+ADDRGP4 $1198
 JUMPV
-LABELV $1193
+LABELV $1195
 line 2498
 ;2498:		Menu_CloseCinematics(&Menus[i]);
 CNSTI4 644
@@ -17782,7 +17782,7 @@ CALLV
 pop
 line 2499
 ;2499:	}
-LABELV $1194
+LABELV $1196
 line 2497
 ADDRLP4 0
 ADDRLP4 0
@@ -17790,15 +17790,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1196
+LABELV $1198
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $1193
+LTI4 $1195
 line 2500
 ;2500:}
-LABELV $1192
+LABELV $1194
 endproc Display_CloseCinematics 4 4
 export Menus_Activate
 proc Menus_Activate 544 8
@@ -17830,7 +17830,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1198
+EQU4 $1200
 line 2506
 ;2505:		itemDef_t item;
 ;2506:		item.parent = menu;
@@ -17853,7 +17853,7 @@ CALLV
 pop
 line 2508
 ;2508:	}
-LABELV $1198
+LABELV $1200
 line 2510
 ;2509:
 ;2510:	if (menu->soundName && *menu->soundName) {
@@ -17868,13 +17868,13 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1201
+EQU4 $1203
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $1201
+EQI4 $1203
 line 2512
 ;2511://		DC->stopBackgroundTrack();					// you don't want to do this since it will reset s_rawend
 ;2512:		DC->startBackgroundTrack(menu->soundName, menu->soundName);
@@ -17900,7 +17900,7 @@ CALLV
 pop
 line 2513
 ;2513:	}
-LABELV $1201
+LABELV $1203
 line 2515
 ;2514:
 ;2515:	Display_CloseCinematics();
@@ -17910,7 +17910,7 @@ pop
 line 2517
 ;2516:
 ;2517:}
-LABELV $1197
+LABELV $1199
 endproc Menus_Activate 544 8
 export Display_VisibleMenuCount
 proc Display_VisibleMenuCount 8 0
@@ -17928,9 +17928,9 @@ line 2522
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1207
+ADDRGP4 $1209
 JUMPV
-LABELV $1204
+LABELV $1206
 line 2523
 ;2523:		if (Menus[i].window.flags & (WINDOW_FORCED | WINDOW_VISIBLE)) {
 CNSTI4 644
@@ -17943,7 +17943,7 @@ INDIRI4
 CNSTI4 1048580
 BANDI4
 CNSTI4 0
-EQI4 $1208
+EQI4 $1210
 line 2524
 ;2524:			count++;
 ADDRLP4 4
@@ -17954,10 +17954,10 @@ ADDI4
 ASGNI4
 line 2525
 ;2525:		}
-LABELV $1208
+LABELV $1210
 line 2526
 ;2526:	}
-LABELV $1205
+LABELV $1207
 line 2522
 ADDRLP4 0
 ADDRLP4 0
@@ -17965,18 +17965,18 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1207
+LABELV $1209
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $1204
+LTI4 $1206
 line 2527
 ;2527:	return count;
 ADDRLP4 4
 INDIRI4
 RETI4
-LABELV $1203
+LABELV $1205
 endproc Display_VisibleMenuCount 8 0
 export Menus_HandleOOBClick
 proc Menus_HandleOOBClick 24 12
@@ -17990,7 +17990,7 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1212
+EQU4 $1214
 line 2536
 ;2532:		int i;
 ;2533:		// basically the behaviour we are looking for is if there are windows in the stack.. see if 
@@ -18004,7 +18004,7 @@ ADDRFP4 8
 INDIRI4
 ADDRLP4 4
 INDIRI4
-EQI4 $1214
+EQI4 $1216
 ADDRFP4 0
 INDIRP4
 CNSTI4 68
@@ -18014,7 +18014,7 @@ CNSTI4 131072
 BANDI4
 ADDRLP4 4
 INDIRI4
-EQI4 $1214
+EQI4 $1216
 line 2537
 ;2537:			Menu_RunCloseScript(menu);
 ADDRFP4 0
@@ -18041,16 +18041,16 @@ BANDI4
 ASGNI4
 line 2539
 ;2539:		}
-LABELV $1214
+LABELV $1216
 line 2541
 ;2540:
 ;2541:		for (i = 0; i < menuCount; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1219
+ADDRGP4 $1221
 JUMPV
-LABELV $1216
+LABELV $1218
 line 2542
 ;2542:			if (Menu_OverActiveItem(&Menus[i], DC->cursorx, DC->cursory)) {
 CNSTI4 644
@@ -18085,7 +18085,7 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $1220
+EQI4 $1222
 line 2543
 ;2543:				Menu_RunCloseScript(menu);
 ADDRFP4 0
@@ -18172,10 +18172,10 @@ CALLV
 pop
 line 2548
 ;2548:			}
-LABELV $1220
+LABELV $1222
 line 2549
 ;2549:		}
-LABELV $1217
+LABELV $1219
 line 2541
 ADDRLP4 0
 ADDRLP4 0
@@ -18183,12 +18183,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1219
+LABELV $1221
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $1216
+LTI4 $1218
 line 2551
 ;2550:
 ;2551:		if (Display_VisibleMenuCount() == 0) {
@@ -18199,7 +18199,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $1222
+NEI4 $1224
 line 2552
 ;2552:			if (DC->Pause) {
 ADDRGP4 DC
@@ -18209,7 +18209,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1224
+EQU4 $1226
 line 2553
 ;2553:				DC->Pause(qfalse);
 CNSTI4 0
@@ -18223,10 +18223,10 @@ CALLV
 pop
 line 2554
 ;2554:			}
-LABELV $1224
+LABELV $1226
 line 2555
 ;2555:		}
-LABELV $1222
+LABELV $1224
 line 2556
 ;2556:		Display_CloseCinematics();
 ADDRGP4 Display_CloseCinematics
@@ -18234,14 +18234,14 @@ CALLV
 pop
 line 2557
 ;2557:	}
-LABELV $1212
+LABELV $1214
 line 2558
 ;2558:}
-LABELV $1211
+LABELV $1213
 endproc Menus_HandleOOBClick 24 12
 bss
 align 4
-LABELV $1227
+LABELV $1229
 skip 16
 code
 proc Item_CorrectedTextRect 4 12
@@ -18251,7 +18251,7 @@ line 2560
 line 2562
 ;2561:	static rectDef_t rect;
 ;2562:	memset(&rect, 0, sizeof(rectDef_t));
-ADDRGP4 $1227
+ADDRGP4 $1229
 ARGP4
 CNSTI4 0
 ARGI4
@@ -18266,10 +18266,10 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1228
+EQU4 $1230
 line 2564
 ;2564:		rect = item->textRect;
-ADDRGP4 $1227
+ADDRGP4 $1229
 ADDRFP4 0
 INDIRP4
 CNSTI4 180
@@ -18278,39 +18278,39 @@ INDIRB
 ASGNB 16
 line 2565
 ;2565:		if (rect.w) {
-ADDRGP4 $1227+8
+ADDRGP4 $1229+8
 INDIRF4
 CNSTF4 0
-EQF4 $1230
+EQF4 $1232
 line 2566
 ;2566:			rect.y -= rect.h;
 ADDRLP4 0
-ADDRGP4 $1227+4
+ADDRGP4 $1229+4
 ASGNP4
 ADDRLP4 0
 INDIRP4
 ADDRLP4 0
 INDIRP4
 INDIRF4
-ADDRGP4 $1227+12
+ADDRGP4 $1229+12
 INDIRF4
 SUBF4
 ASGNF4
 line 2567
 ;2567:		}
-LABELV $1230
+LABELV $1232
 line 2568
 ;2568:	}
-LABELV $1228
+LABELV $1230
 line 2569
 ;2569:	return &rect;
-ADDRGP4 $1227
+ADDRGP4 $1229
 RETP4
-LABELV $1226
+LABELV $1228
 endproc Item_CorrectedTextRect 4 12
 data
 align 4
-LABELV $1256
+LABELV $1258
 byte 4 0
 export Menu_HandleKey
 code
@@ -18336,12 +18336,12 @@ line 2577
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $1236
+EQI4 $1238
 line 2578
 ;2578:		return;
-ADDRGP4 $1235
+ADDRGP4 $1237
 JUMPV
-LABELV $1236
+LABELV $1238
 line 2581
 ;2579:	}
 ;2580:
@@ -18358,12 +18358,12 @@ ADDRGP4 g_waitingForKey
 INDIRI4
 ADDRLP4 12
 INDIRI4
-EQI4 $1238
+EQI4 $1240
 ADDRFP4 8
 INDIRI4
 ADDRLP4 12
 INDIRI4
-EQI4 $1238
+EQI4 $1240
 line 2583
 ;2583:		Item_Bind_HandleKey(g_bindItem, key, down);
 ADDRGP4 g_bindItem
@@ -18385,9 +18385,9 @@ CNSTI4 0
 ASGNI4
 line 2585
 ;2585:		return;
-ADDRGP4 $1235
+ADDRGP4 $1237
 JUMPV
-LABELV $1238
+LABELV $1240
 line 2588
 ;2586:	}
 ;2587:
@@ -18399,12 +18399,12 @@ ADDRGP4 g_editingField
 INDIRI4
 ADDRLP4 16
 INDIRI4
-EQI4 $1240
+EQI4 $1242
 ADDRFP4 8
 INDIRI4
 ADDRLP4 16
 INDIRI4
-EQI4 $1240
+EQI4 $1242
 line 2589
 ;2589:		if (!Item_TextField_HandleKey(g_editItem, key)) {
 ADDRGP4 g_editItem
@@ -18420,7 +18420,7 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-NEI4 $1242
+NEI4 $1244
 line 2590
 ;2590:			g_editingField = qfalse;
 ADDRGP4 g_editingField
@@ -18438,9 +18438,9 @@ CNSTI4 0
 ASGNI4
 line 2593
 ;2593:			return;
-ADDRGP4 $1235
+ADDRGP4 $1237
 JUMPV
-LABELV $1242
+LABELV $1244
 line 2594
 ;2594:		} else if (key == K_MOUSE1 || key == K_MOUSE2 || key == K_MOUSE3) {
 ADDRLP4 24
@@ -18450,16 +18450,16 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 178
-EQI4 $1247
+EQI4 $1249
 ADDRLP4 24
 INDIRI4
 CNSTI4 179
-EQI4 $1247
+EQI4 $1249
 ADDRLP4 24
 INDIRI4
 CNSTI4 180
-NEI4 $1244
-LABELV $1247
+NEI4 $1246
+LABELV $1249
 line 2595
 ;2595:			g_editingField = qfalse;
 ADDRGP4 g_editingField
@@ -18495,9 +18495,9 @@ CALLI4
 pop
 line 2598
 ;2598:		} else if (key == K_TAB || key == K_UPARROW || key == K_DOWNARROW) {
-ADDRGP4 $1245
+ADDRGP4 $1247
 JUMPV
-LABELV $1244
+LABELV $1246
 ADDRLP4 28
 ADDRFP4 4
 INDIRI4
@@ -18505,26 +18505,26 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 9
-EQI4 $1251
+EQI4 $1253
 ADDRLP4 28
 INDIRI4
 CNSTI4 132
-EQI4 $1251
+EQI4 $1253
 ADDRLP4 28
 INDIRI4
 CNSTI4 133
-NEI4 $1248
-LABELV $1251
+NEI4 $1250
+LABELV $1253
 line 2599
 ;2599:			return;
-ADDRGP4 $1235
+ADDRGP4 $1237
 JUMPV
-LABELV $1248
-LABELV $1245
+LABELV $1250
+LABELV $1247
 line 2601
 ;2600:		}
 ;2601:	}
-LABELV $1240
+LABELV $1242
 line 2603
 ;2602:
 ;2603:	if (menu == NULL) {
@@ -18532,7 +18532,7 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1252
+NEU4 $1254
 line 2604
 ;2604:		inHandler = qfalse;
 ADDRLP4 8
@@ -18540,9 +18540,9 @@ CNSTI4 0
 ASGNI4
 line 2605
 ;2605:		return;
-ADDRGP4 $1235
+ADDRGP4 $1237
 JUMPV
-LABELV $1252
+LABELV $1254
 line 2609
 ;2606:	}
 ;2607:
@@ -18555,7 +18555,7 @@ ADDRFP4 8
 INDIRI4
 ADDRLP4 20
 INDIRI4
-EQI4 $1254
+EQI4 $1256
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -18569,7 +18569,7 @@ CNSTI4 2097152
 BANDI4
 ADDRLP4 20
 INDIRI4
-NEI4 $1254
+NEI4 $1256
 ADDRLP4 24
 INDIRP4
 ARGP4
@@ -18598,15 +18598,15 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-NEI4 $1254
+NEI4 $1256
 line 2612
 ;2610:		static qboolean inHandleKey = qfalse;
 ;2611:		// bk001206 - parentheses
 ;2612:		if (!inHandleKey && ( key == K_MOUSE1 || key == K_MOUSE2 || key == K_MOUSE3 ) ) {
-ADDRGP4 $1256
+ADDRGP4 $1258
 INDIRI4
 CNSTI4 0
-NEI4 $1257
+NEI4 $1259
 ADDRLP4 36
 ADDRFP4 4
 INDIRI4
@@ -18614,19 +18614,19 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 178
-EQI4 $1260
+EQI4 $1262
 ADDRLP4 36
 INDIRI4
 CNSTI4 179
-EQI4 $1260
+EQI4 $1262
 ADDRLP4 36
 INDIRI4
 CNSTI4 180
-NEI4 $1257
-LABELV $1260
+NEI4 $1259
+LABELV $1262
 line 2613
 ;2613:			inHandleKey = qtrue;
-ADDRGP4 $1256
+ADDRGP4 $1258
 CNSTI4 1
 ASGNI4
 line 2614
@@ -18645,7 +18645,7 @@ CALLV
 pop
 line 2615
 ;2615:			inHandleKey = qfalse;
-ADDRGP4 $1256
+ADDRGP4 $1258
 CNSTI4 0
 ASGNI4
 line 2616
@@ -18655,13 +18655,13 @@ CNSTI4 0
 ASGNI4
 line 2617
 ;2617:			return;
-ADDRGP4 $1235
+ADDRGP4 $1237
 JUMPV
-LABELV $1257
+LABELV $1259
 line 2619
 ;2618:		}
 ;2619:	}
-LABELV $1254
+LABELV $1256
 line 2622
 ;2620:
 ;2621:	// get the item with focus
@@ -18669,9 +18669,9 @@ line 2622
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1264
+ADDRGP4 $1266
 JUMPV
-LABELV $1261
+LABELV $1263
 line 2623
 ;2623:		if (menu->items[i]->window.flags & WINDOW_HASFOCUS) {
 ADDRLP4 36
@@ -18695,7 +18695,7 @@ ADDRLP4 36
 INDIRI4
 BANDI4
 CNSTI4 0
-EQI4 $1265
+EQI4 $1267
 line 2624
 ;2624:			item = menu->items[i];
 ADDRLP4 4
@@ -18712,10 +18712,10 @@ INDIRP4
 ASGNP4
 line 2625
 ;2625:		}
-LABELV $1265
+LABELV $1267
 line 2626
 ;2626:	}
-LABELV $1262
+LABELV $1264
 line 2622
 ADDRLP4 0
 ADDRLP4 0
@@ -18723,7 +18723,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1264
+LABELV $1266
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -18731,7 +18731,7 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $1261
+LTI4 $1263
 line 2628
 ;2627:
 ;2628:	if (item != NULL) {
@@ -18739,7 +18739,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1267
+EQU4 $1269
 line 2629
 ;2629:		if (Item_HandleKey(item, key, down)) {
 ADDRLP4 4
@@ -18758,7 +18758,7 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $1269
+EQI4 $1271
 line 2630
 ;2630:			Item_Action(item);
 ADDRLP4 4
@@ -18774,20 +18774,20 @@ CNSTI4 0
 ASGNI4
 line 2632
 ;2632:			return;
-ADDRGP4 $1235
+ADDRGP4 $1237
 JUMPV
-LABELV $1269
+LABELV $1271
 line 2634
 ;2633:		}
 ;2634:	}
-LABELV $1267
+LABELV $1269
 line 2636
 ;2635:
 ;2636:	if (!down) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $1271
+NEI4 $1273
 line 2637
 ;2637:		inHandler = qfalse;
 ADDRLP4 8
@@ -18795,9 +18795,9 @@ CNSTI4 0
 ASGNI4
 line 2638
 ;2638:		return;
-ADDRGP4 $1235
+ADDRGP4 $1237
 JUMPV
-LABELV $1271
+LABELV $1273
 line 2642
 ;2639:	}
 ;2640:
@@ -18810,7 +18810,7 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 155
-EQI4 $1275
+EQI4 $1277
 ADDRLP4 40
 CNSTI4 156
 ASGNI4
@@ -18818,13 +18818,13 @@ ADDRLP4 36
 INDIRI4
 ADDRLP4 40
 INDIRI4
-EQI4 $1279
+EQI4 $1281
 ADDRLP4 36
 INDIRI4
 ADDRLP4 40
 INDIRI4
-GTI4 $1311
-LABELV $1310
+GTI4 $1313
+LABELV $1312
 ADDRLP4 44
 ADDRFP4 4
 INDIRI4
@@ -18836,20 +18836,20 @@ ADDRLP4 44
 INDIRI4
 ADDRLP4 48
 INDIRI4
-EQI4 $1304
+EQI4 $1306
 ADDRLP4 44
 INDIRI4
 ADDRLP4 48
 INDIRI4
-GTI4 $1313
-LABELV $1312
+GTI4 $1315
+LABELV $1314
 ADDRFP4 4
 INDIRI4
 CNSTI4 9
-EQI4 $1288
-ADDRGP4 $1273
+EQI4 $1290
+ADDRGP4 $1275
 JUMPV
-LABELV $1313
+LABELV $1315
 ADDRLP4 52
 ADDRFP4 4
 INDIRI4
@@ -18861,13 +18861,13 @@ ADDRLP4 52
 INDIRI4
 ADDRLP4 56
 INDIRI4
-EQI4 $1284
+EQI4 $1286
 ADDRLP4 52
 INDIRI4
 ADDRLP4 56
 INDIRI4
-LTI4 $1273
-LABELV $1314
+LTI4 $1275
+LABELV $1316
 ADDRLP4 60
 ADDRFP4 4
 INDIRI4
@@ -18875,14 +18875,14 @@ ASGNI4
 ADDRLP4 60
 INDIRI4
 CNSTI4 132
-EQI4 $1283
+EQI4 $1285
 ADDRLP4 60
 INDIRI4
 CNSTI4 133
-EQI4 $1288
-ADDRGP4 $1273
+EQI4 $1290
+ADDRGP4 $1275
 JUMPV
-LABELV $1311
+LABELV $1313
 ADDRLP4 64
 ADDRFP4 4
 INDIRI4
@@ -18890,7 +18890,7 @@ ASGNI4
 ADDRLP4 64
 INDIRI4
 CNSTI4 167
-EQI4 $1288
+EQI4 $1290
 ADDRLP4 68
 CNSTI4 169
 ASGNI4
@@ -18898,20 +18898,20 @@ ADDRLP4 64
 INDIRI4
 ADDRLP4 68
 INDIRI4
-EQI4 $1304
+EQI4 $1306
 ADDRLP4 64
 INDIRI4
 ADDRLP4 68
 INDIRI4
-GTI4 $1316
-LABELV $1315
+GTI4 $1318
+LABELV $1317
 ADDRFP4 4
 INDIRI4
 CNSTI4 161
-EQI4 $1283
-ADDRGP4 $1273
+EQI4 $1285
+ADDRGP4 $1275
 JUMPV
-LABELV $1316
+LABELV $1318
 ADDRLP4 72
 ADDRFP4 4
 INDIRI4
@@ -18919,35 +18919,35 @@ ASGNI4
 ADDRLP4 72
 INDIRI4
 CNSTI4 178
-LTI4 $1273
+LTI4 $1275
 ADDRLP4 72
 INDIRI4
 CNSTI4 188
-GTI4 $1317
+GTI4 $1319
 ADDRLP4 72
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $1318-712
+ADDRGP4 $1320-712
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $1318
-address $1289
-address $1289
-address $1273
-address $1273
-address $1273
-address $1273
-address $1273
-address $1274
-address $1274
-address $1274
-address $1274
+LABELV $1320
+address $1291
+address $1291
+address $1275
+address $1275
+address $1275
+address $1275
+address $1275
+address $1276
+address $1276
+address $1276
+address $1276
 code
-LABELV $1317
+LABELV $1319
 ADDRLP4 76
 ADDRFP4 4
 INDIRI4
@@ -18955,45 +18955,45 @@ ASGNI4
 ADDRLP4 76
 INDIRI4
 CNSTI4 217
-LTI4 $1273
+LTI4 $1275
 ADDRLP4 76
 INDIRI4
 CNSTI4 232
-GTI4 $1273
+GTI4 $1275
 ADDRLP4 76
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $1320-868
+ADDRGP4 $1322-868
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $1320
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
-address $1274
+LABELV $1322
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
+address $1276
 code
-LABELV $1275
+LABELV $1277
 line 2645
 ;2643:
 ;2644:		case K_F11:
 ;2645:			if (DC->getCVarValue("developer")) {
-ADDRGP4 $1278
+ADDRGP4 $1280
 ARGP4
 ADDRLP4 80
 ADDRGP4 DC
@@ -19006,7 +19006,7 @@ ASGNF4
 ADDRLP4 80
 INDIRF4
 CNSTF4 0
-EQF4 $1274
+EQF4 $1276
 line 2646
 ;2646:				debugMode ^= 1;
 ADDRLP4 84
@@ -19024,14 +19024,14 @@ line 2647
 ;2647:			}
 line 2648
 ;2648:			break;
-ADDRGP4 $1274
+ADDRGP4 $1276
 JUMPV
-LABELV $1279
+LABELV $1281
 line 2651
 ;2649:
 ;2650:		case K_F12:
 ;2651:			if (DC->getCVarValue("developer")) {
-ADDRGP4 $1278
+ADDRGP4 $1280
 ARGP4
 ADDRLP4 84
 ADDRGP4 DC
@@ -19044,12 +19044,12 @@ ASGNF4
 ADDRLP4 84
 INDIRF4
 CNSTF4 0
-EQF4 $1274
+EQF4 $1276
 line 2652
 ;2652:				DC->executeText(EXEC_APPEND, "screenshot\n");
 CNSTI4 2
 ARGI4
-ADDRGP4 $1282
+ADDRGP4 $1284
 ARGP4
 ADDRGP4 DC
 INDIRP4
@@ -19062,9 +19062,9 @@ line 2653
 ;2653:			}
 line 2654
 ;2654:			break;
-ADDRGP4 $1274
+ADDRGP4 $1276
 JUMPV
-LABELV $1283
+LABELV $1285
 line 2657
 ;2655:		case K_KP_UPARROW:
 ;2656:		case K_UPARROW:
@@ -19077,9 +19077,9 @@ CALLP4
 pop
 line 2658
 ;2658:			break;
-ADDRGP4 $1274
+ADDRGP4 $1276
 JUMPV
-LABELV $1284
+LABELV $1286
 line 2661
 ;2659:
 ;2660:		case K_ESCAPE:
@@ -19087,7 +19087,7 @@ line 2661
 ADDRGP4 g_waitingForKey
 INDIRI4
 CNSTI4 0
-NEI4 $1274
+NEI4 $1276
 ADDRFP4 0
 INDIRP4
 CNSTI4 220
@@ -19095,7 +19095,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1274
+EQU4 $1276
 line 2663
 ;2662:				itemDef_t it;
 ;2663:		    it.parent = menu;
@@ -19120,9 +19120,9 @@ line 2665
 ;2665:			}
 line 2666
 ;2666:			break;
-ADDRGP4 $1274
+ADDRGP4 $1276
 JUMPV
-LABELV $1288
+LABELV $1290
 line 2670
 ;2667:		case K_TAB:
 ;2668:		case K_KP_DOWNARROW:
@@ -19136,9 +19136,9 @@ CALLP4
 pop
 line 2671
 ;2671:			break;
-ADDRGP4 $1274
+ADDRGP4 $1276
 JUMPV
-LABELV $1289
+LABELV $1291
 line 2675
 ;2672:
 ;2673:		case K_MOUSE1:
@@ -19148,7 +19148,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1274
+EQU4 $1276
 line 2676
 ;2676:				if (item->type == ITEM_TYPE_TEXT) {
 ADDRLP4 4
@@ -19157,7 +19157,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $1292
+NEI4 $1294
 line 2677
 ;2677:					if (Rect_ContainsPoint(Item_CorrectedTextRect(item), DC->cursorx, DC->cursory)) {
 ADDRLP4 4
@@ -19195,7 +19195,7 @@ ASGNI4
 ADDRLP4 96
 INDIRI4
 CNSTI4 0
-EQI4 $1274
+EQI4 $1276
 line 2678
 ;2678:						Item_Action(item);
 ADDRLP4 4
@@ -19208,9 +19208,9 @@ line 2679
 ;2679:					}
 line 2680
 ;2680:				} else if (item->type == ITEM_TYPE_EDITFIELD || item->type == ITEM_TYPE_NUMERICFIELD) {
-ADDRGP4 $1274
+ADDRGP4 $1276
 JUMPV
-LABELV $1292
+LABELV $1294
 ADDRLP4 88
 ADDRLP4 4
 INDIRP4
@@ -19221,12 +19221,12 @@ ASGNI4
 ADDRLP4 88
 INDIRI4
 CNSTI4 4
-EQI4 $1298
+EQI4 $1300
 ADDRLP4 88
 INDIRI4
 CNSTI4 9
-NEI4 $1296
-LABELV $1298
+NEI4 $1298
+LABELV $1300
 line 2681
 ;2681:					if (Rect_ContainsPoint(&item->window.rect, DC->cursorx, DC->cursory)) {
 ADDRLP4 4
@@ -19257,7 +19257,7 @@ ASGNI4
 ADDRLP4 96
 INDIRI4
 CNSTI4 0
-EQI4 $1274
+EQI4 $1276
 line 2682
 ;2682:						item->cursorPos = 0;
 ADDRLP4 4
@@ -19292,9 +19292,9 @@ line 2686
 ;2686:					}
 line 2687
 ;2687:				} else {
-ADDRGP4 $1274
+ADDRGP4 $1276
 JUMPV
-LABELV $1296
+LABELV $1298
 line 2688
 ;2688:					if (Rect_ContainsPoint(&item->window.rect, DC->cursorx, DC->cursory)) {
 ADDRLP4 4
@@ -19325,7 +19325,7 @@ ASGNI4
 ADDRLP4 96
 INDIRI4
 CNSTI4 0
-EQI4 $1274
+EQI4 $1276
 line 2689
 ;2689:						Item_Action(item);
 ADDRLP4 4
@@ -19342,7 +19342,7 @@ line 2692
 ;2692:			}
 line 2693
 ;2693:			break;
-ADDRGP4 $1274
+ADDRGP4 $1276
 JUMPV
 line 2715
 ;2694:
@@ -19367,7 +19367,7 @@ line 2715
 ;2713:		case K_AUX15:
 ;2714:		case K_AUX16:
 ;2715:			break;
-LABELV $1304
+LABELV $1306
 line 2718
 ;2716:		case K_KP_ENTER:
 ;2717:		case K_ENTER:
@@ -19376,7 +19376,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1274
+EQU4 $1276
 line 2719
 ;2719:				if (item->type == ITEM_TYPE_EDITFIELD || item->type == ITEM_TYPE_NUMERICFIELD) {
 ADDRLP4 88
@@ -19389,12 +19389,12 @@ ASGNI4
 ADDRLP4 88
 INDIRI4
 CNSTI4 4
-EQI4 $1309
+EQI4 $1311
 ADDRLP4 88
 INDIRI4
 CNSTI4 9
-NEI4 $1307
-LABELV $1309
+NEI4 $1309
+LABELV $1311
 line 2720
 ;2720:					item->cursorPos = 0;
 ADDRLP4 4
@@ -19427,9 +19427,9 @@ CALLV
 pop
 line 2724
 ;2724:				} else {
-ADDRGP4 $1274
+ADDRGP4 $1276
 JUMPV
-LABELV $1307
+LABELV $1309
 line 2725
 ;2725:						Item_Action(item);
 ADDRLP4 4
@@ -19444,8 +19444,8 @@ line 2727
 ;2727:			}
 line 2728
 ;2728:			break;
-LABELV $1273
-LABELV $1274
+LABELV $1275
+LABELV $1276
 line 2730
 ;2729:	}
 ;2730:	inHandler = qfalse;
@@ -19454,7 +19454,7 @@ CNSTI4 0
 ASGNI4
 line 2731
 ;2731:}
-LABELV $1235
+LABELV $1237
 endproc Menu_HandleKey 628 12
 export ToWindowCoords
 proc ToWindowCoords 8 0
@@ -19469,7 +19469,7 @@ CNSTI4 52
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $1323
+EQI4 $1325
 line 2735
 ;2735:		*x += window->borderSize;
 ADDRLP4 0
@@ -19508,7 +19508,7 @@ ADDF4
 ASGNF4
 line 2737
 ;2737:	} 
-LABELV $1323
+LABELV $1325
 line 2738
 ;2738:	*x += window->rect.x;
 ADDRLP4 0
@@ -19545,7 +19545,7 @@ ADDF4
 ASGNF4
 line 2740
 ;2740:}
-LABELV $1322
+LABELV $1324
 endproc ToWindowCoords 8 0
 export Rect_ToWindowCoords
 proc Rect_ToWindowCoords 4 12
@@ -19574,7 +19574,7 @@ CALLV
 pop
 line 2744
 ;2744:}
-LABELV $1325
+LABELV $1327
 endproc Rect_ToWindowCoords 4 12
 export Item_SetTextExtents
 proc Item_SetTextExtents 296 12
@@ -19587,14 +19587,14 @@ ADDRFP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1328
+EQU4 $1330
 ADDRLP4 4
 ADDRFP4 12
 INDIRP4
 ASGNP4
-ADDRGP4 $1329
+ADDRGP4 $1331
 JUMPV
-LABELV $1328
+LABELV $1330
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -19602,7 +19602,7 @@ CNSTI4 224
 ADDP4
 INDIRP4
 ASGNP4
-LABELV $1329
+LABELV $1331
 ADDRLP4 0
 ADDRLP4 4
 INDIRP4
@@ -19614,12 +19614,12 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1330
+NEU4 $1332
 line 2750
 ;2750:		return;
-ADDRGP4 $1326
+ADDRGP4 $1328
 JUMPV
-LABELV $1330
+LABELV $1332
 line 2753
 ;2751:	}
 ;2752:
@@ -19652,7 +19652,7 @@ ADDRFP4 4
 INDIRP4
 INDIRI4
 CNSTI4 0
-EQI4 $1334
+EQI4 $1336
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -19663,15 +19663,15 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 8
-NEI4 $1332
+NEI4 $1334
 ADDRLP4 8
 INDIRP4
 CNSTI4 204
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $1332
-LABELV $1334
+NEI4 $1334
+LABELV $1336
 line 2758
 ;2758:		int originalWidth = DC->textWidth(item->text, item->textscale, 0);
 ADDRLP4 16
@@ -19717,7 +19717,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 8
-NEI4 $1335
+NEI4 $1337
 ADDRLP4 28
 ADDRLP4 24
 INDIRP4
@@ -19728,12 +19728,12 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 1
-EQI4 $1337
+EQI4 $1339
 ADDRLP4 28
 INDIRI4
 CNSTI4 2
-NEI4 $1335
-LABELV $1337
+NEI4 $1337
+LABELV $1339
 line 2761
 ;2761:			originalWidth += DC->ownerDrawWidth(item->window.ownerDraw, item->textscale);
 ADDRLP4 32
@@ -19769,9 +19769,9 @@ ADDI4
 ASGNI4
 line 2762
 ;2762:		} else if (item->type == ITEM_TYPE_EDITFIELD && item->textalignment == ITEM_ALIGN_CENTER && item->cvar) {
-ADDRGP4 $1336
+ADDRGP4 $1338
 JUMPV
-LABELV $1335
+LABELV $1337
 ADDRLP4 32
 ADDRFP4 0
 INDIRP4
@@ -19782,14 +19782,14 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 4
-NEI4 $1338
+NEI4 $1340
 ADDRLP4 32
 INDIRP4
 CNSTI4 204
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $1338
+NEI4 $1340
 ADDRLP4 32
 INDIRP4
 CNSTI4 264
@@ -19797,7 +19797,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1338
+EQU4 $1340
 line 2764
 ;2763:			char buff[256];
 ;2764:			DC->getCVarString(item->cvar, buff, 256);
@@ -19847,8 +19847,8 @@ ADDI4
 ASGNI4
 line 2766
 ;2766:		}
+LABELV $1340
 LABELV $1338
-LABELV $1336
 line 2768
 ;2767:
 ;2768:		*width = DC->textWidth(textPtr, item->textscale, 0);
@@ -19964,7 +19964,7 @@ CNSTI4 204
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $1340
+NEI4 $1342
 line 2775
 ;2775:			item->textRect.x = item->textalignx - originalWidth;
 ADDRLP4 52
@@ -19987,16 +19987,16 @@ SUBF4
 ASGNF4
 line 2776
 ;2776:		} else if (item->textalignment == ITEM_ALIGN_CENTER) {
-ADDRGP4 $1341
+ADDRGP4 $1343
 JUMPV
-LABELV $1340
+LABELV $1342
 ADDRFP4 0
 INDIRP4
 CNSTI4 204
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $1342
+NEI4 $1344
 line 2777
 ;2777:			item->textRect.x = item->textalignx - originalWidth / 2;
 ADDRLP4 52
@@ -20021,8 +20021,8 @@ SUBF4
 ASGNF4
 line 2778
 ;2778:		}
-LABELV $1342
-LABELV $1341
+LABELV $1344
+LABELV $1343
 line 2780
 ;2779:
 ;2780:		ToWindowCoords(&item->textRect.x, &item->textRect.y, &item->window);
@@ -20048,10 +20048,10 @@ CALLV
 pop
 line 2781
 ;2781:	}
-LABELV $1332
+LABELV $1334
 line 2782
 ;2782:}
-LABELV $1326
+LABELV $1328
 endproc Item_SetTextExtents 296 12
 export Item_TextColor
 proc Item_TextColor 60 28
@@ -20124,7 +20124,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $1345
+EQI4 $1347
 line 2791
 ;2791:		lowLight[0] = 0.8 * parent->focusColor[0]; 
 ADDRLP4 4
@@ -20206,9 +20206,9 @@ CALLV
 pop
 line 2796
 ;2796:	} else if (item->textStyle == ITEM_TEXTSTYLE_BLINK && !((DC->realTime/BLINK_DIVISOR) & 1)) {
-ADDRGP4 $1346
+ADDRGP4 $1348
 JUMPV
-LABELV $1345
+LABELV $1347
 ADDRLP4 28
 CNSTI4 1
 ASGNI4
@@ -20219,7 +20219,7 @@ ADDP4
 INDIRI4
 ADDRLP4 28
 INDIRI4
-NEI4 $1350
+NEI4 $1352
 ADDRGP4 DC
 INDIRP4
 CNSTI4 208
@@ -20231,7 +20231,7 @@ ADDRLP4 28
 INDIRI4
 BANDI4
 CNSTI4 0
-NEI4 $1350
+NEI4 $1352
 line 2797
 ;2797:		lowLight[0] = 0.8 * item->window.foreColor[0]; 
 ADDRLP4 4
@@ -20313,9 +20313,9 @@ CALLV
 pop
 line 2802
 ;2802:	} else {
-ADDRGP4 $1351
+ADDRGP4 $1353
 JUMPV
-LABELV $1350
+LABELV $1352
 line 2803
 ;2803:		memcpy(newColor, &item->window.foreColor, sizeof(vec4_t));
 ADDRFP4 4
@@ -20334,8 +20334,8 @@ pop
 line 2805
 ;2804:		// items can be enabled and disabled based on cvars
 ;2805:	}
-LABELV $1351
-LABELV $1346
+LABELV $1353
+LABELV $1348
 line 2807
 ;2806:
 ;2807:	if (item->enableCvar && *item->enableCvar && item->cvarTest && *item->cvarTest) {
@@ -20358,7 +20358,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 40
 INDIRU4
-EQU4 $1355
+EQU4 $1357
 ADDRLP4 44
 CNSTI4 0
 ASGNI4
@@ -20368,7 +20368,7 @@ INDIRI1
 CVII4 1
 ADDRLP4 44
 INDIRI4
-EQI4 $1355
+EQI4 $1357
 ADDRLP4 48
 ADDRLP4 32
 INDIRP4
@@ -20381,14 +20381,14 @@ INDIRP4
 CVPU4 4
 ADDRLP4 40
 INDIRU4
-EQU4 $1355
+EQU4 $1357
 ADDRLP4 48
 INDIRP4
 INDIRI1
 CVII4 1
 ADDRLP4 44
 INDIRI4
-EQI4 $1355
+EQI4 $1357
 line 2808
 ;2808:		if (item->cvarFlags & (CVAR_ENABLE | CVAR_DISABLE) && !Item_EnableShowViaCvar(item, CVAR_ENABLE)) {
 ADDRLP4 52
@@ -20403,7 +20403,7 @@ INDIRI4
 CNSTI4 3
 BANDI4
 CNSTI4 0
-EQI4 $1357
+EQI4 $1359
 ADDRLP4 52
 INDIRP4
 ARGP4
@@ -20416,7 +20416,7 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-NEI4 $1357
+NEI4 $1359
 line 2809
 ;2809:			memcpy(newColor, &parent->disableColor, sizeof(vec4_t));
 ADDRFP4 4
@@ -20434,13 +20434,13 @@ CALLP4
 pop
 line 2810
 ;2810:		}
-LABELV $1357
+LABELV $1359
 line 2811
 ;2811:	}
-LABELV $1355
+LABELV $1357
 line 2812
 ;2812:}
-LABELV $1344
+LABELV $1346
 endproc Item_TextColor 60 28
 export Item_Text_AutoWrapped_Paint
 proc Item_Text_AutoWrapped_Paint 2128 32
@@ -20474,7 +20474,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1360
+NEU4 $1362
 line 2826
 ;2826:		if (item->cvar == NULL) {
 ADDRFP4 0
@@ -20484,12 +20484,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1362
+NEU4 $1364
 line 2827
 ;2827:			return;
-ADDRGP4 $1359
+ADDRGP4 $1361
 JUMPV
-LABELV $1362
+LABELV $1364
 line 2829
 ;2828:		}
 ;2829:		else {
@@ -20521,9 +20521,9 @@ line 2832
 ;2832:		}
 line 2833
 ;2833:	}
-ADDRGP4 $1361
+ADDRGP4 $1363
 JUMPV
-LABELV $1360
+LABELV $1362
 line 2834
 ;2834:	else {
 line 2835
@@ -20537,7 +20537,7 @@ INDIRP4
 ASGNP4
 line 2836
 ;2836:	}
-LABELV $1361
+LABELV $1363
 line 2837
 ;2837:	if (*textPtr == '\0') {
 ADDRLP4 1056
@@ -20545,12 +20545,12 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $1364
+NEI4 $1366
 line 2838
 ;2838:		return;
-ADDRGP4 $1359
+ADDRGP4 $1361
 JUMPV
-LABELV $1364
+LABELV $1366
 line 2840
 ;2839:	}
 ;2840:	Item_TextColor(item, &color);
@@ -20613,9 +20613,9 @@ ADDRLP4 0
 ADDRLP4 1056
 INDIRP4
 ASGNP4
-ADDRGP4 $1367
+ADDRGP4 $1369
 JUMPV
-LABELV $1366
+LABELV $1368
 line 2849
 ;2849:	while (p) {
 line 2850
@@ -20629,20 +20629,20 @@ ASGNI4
 ADDRLP4 2104
 INDIRI4
 CNSTI4 32
-EQI4 $1373
+EQI4 $1375
 ADDRLP4 2104
 INDIRI4
 CNSTI4 9
-EQI4 $1373
+EQI4 $1375
 ADDRLP4 2104
 INDIRI4
 CNSTI4 10
-EQI4 $1373
+EQI4 $1375
 ADDRLP4 2104
 INDIRI4
 CNSTI4 0
-NEI4 $1369
-LABELV $1373
+NEI4 $1371
+LABELV $1375
 line 2851
 ;2851:			newLine = len;
 ADDRLP4 1036
@@ -20665,7 +20665,7 @@ INDIRI4
 ASGNI4
 line 2854
 ;2854:		}
-LABELV $1369
+LABELV $1371
 line 2855
 ;2855:		textWidth = DC->textWidth(buff, item->textscale, 0);
 ADDRLP4 4
@@ -20695,7 +20695,7 @@ line 2856
 ADDRLP4 1036
 INDIRI4
 CNSTI4 0
-EQI4 $1377
+EQI4 $1379
 ADDRLP4 1032
 INDIRI4
 CVIF4 4
@@ -20704,8 +20704,8 @@ INDIRP4
 CNSTI4 8
 ADDP4
 INDIRF4
-GTF4 $1378
-LABELV $1377
+GTF4 $1380
+LABELV $1379
 ADDRLP4 2112
 ADDRLP4 0
 INDIRP4
@@ -20715,18 +20715,18 @@ ASGNI4
 ADDRLP4 2112
 INDIRI4
 CNSTI4 10
-EQI4 $1378
+EQI4 $1380
 ADDRLP4 2112
 INDIRI4
 CNSTI4 0
-NEI4 $1374
-LABELV $1378
+NEI4 $1376
+LABELV $1380
 line 2857
 ;2857:			if (len) {
 ADDRLP4 1028
 INDIRI4
 CNSTI4 0
-EQI4 $1379
+EQI4 $1381
 line 2858
 ;2858:				if (item->textalignment == ITEM_ALIGN_LEFT) {
 ADDRFP4 0
@@ -20735,7 +20735,7 @@ CNSTI4 204
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $1381
+NEI4 $1383
 line 2859
 ;2859:					item->textRect.x = item->textalignx;
 ADDRLP4 2116
@@ -20754,16 +20754,16 @@ INDIRF4
 ASGNF4
 line 2860
 ;2860:				} else if (item->textalignment == ITEM_ALIGN_RIGHT) {
-ADDRGP4 $1382
+ADDRGP4 $1384
 JUMPV
-LABELV $1381
+LABELV $1383
 ADDRFP4 0
 INDIRP4
 CNSTI4 204
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $1383
+NEI4 $1385
 line 2861
 ;2861:					item->textRect.x = item->textalignx - newLineWidth;
 ADDRLP4 2116
@@ -20786,16 +20786,16 @@ SUBF4
 ASGNF4
 line 2862
 ;2862:				} else if (item->textalignment == ITEM_ALIGN_CENTER) {
-ADDRGP4 $1384
+ADDRGP4 $1386
 JUMPV
-LABELV $1383
+LABELV $1385
 ADDRFP4 0
 INDIRP4
 CNSTI4 204
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $1385
+NEI4 $1387
 line 2863
 ;2863:					item->textRect.x = item->textalignx - newLineWidth / 2;
 ADDRLP4 2116
@@ -20820,9 +20820,9 @@ SUBF4
 ASGNF4
 line 2864
 ;2864:				}
-LABELV $1385
+LABELV $1387
+LABELV $1386
 LABELV $1384
-LABELV $1382
 line 2865
 ;2865:				item->textRect.y = y;
 ADDRFP4 0
@@ -20910,7 +20910,7 @@ CALLV
 pop
 line 2870
 ;2870:			}
-LABELV $1379
+LABELV $1381
 line 2871
 ;2871:			if (*p == '\0') {
 ADDRLP4 0
@@ -20918,12 +20918,12 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $1387
+NEI4 $1389
 line 2872
 ;2872:				break;
-ADDRGP4 $1368
+ADDRGP4 $1370
 JUMPV
-LABELV $1387
+LABELV $1389
 line 2875
 ;2873:			}
 ;2874:			//
@@ -20961,9 +20961,9 @@ CNSTI4 0
 ASGNI4
 line 2880
 ;2880:			continue;
-ADDRGP4 $1367
+ADDRGP4 $1369
 JUMPV
-LABELV $1374
+LABELV $1376
 line 2882
 ;2881:		}
 ;2882:		buff[len++] = *p++;
@@ -21010,17 +21010,17 @@ CNSTI1 0
 ASGNI1
 line 2884
 ;2884:	}
-LABELV $1367
+LABELV $1369
 line 2849
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1366
-LABELV $1368
+NEU4 $1368
+LABELV $1370
 line 2885
 ;2885:}
-LABELV $1359
+LABELV $1361
 endproc Item_Text_AutoWrapped_Paint 2128 32
 export Item_Text_Wrapped_Paint
 proc Item_Text_Wrapped_Paint 2112 32
@@ -21046,7 +21046,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1390
+NEU4 $1392
 line 2899
 ;2899:		if (item->cvar == NULL) {
 ADDRFP4 0
@@ -21056,12 +21056,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1392
+NEU4 $1394
 line 2900
 ;2900:			return;
-ADDRGP4 $1389
+ADDRGP4 $1391
 JUMPV
-LABELV $1392
+LABELV $1394
 line 2902
 ;2901:		}
 ;2902:		else {
@@ -21093,9 +21093,9 @@ line 2905
 ;2905:		}
 line 2906
 ;2906:	}
-ADDRGP4 $1391
+ADDRGP4 $1393
 JUMPV
-LABELV $1390
+LABELV $1392
 line 2907
 ;2907:	else {
 line 2908
@@ -21109,7 +21109,7 @@ INDIRP4
 ASGNP4
 line 2909
 ;2909:	}
-LABELV $1391
+LABELV $1393
 line 2910
 ;2910:	if (*textPtr == '\0') {
 ADDRLP4 1060
@@ -21117,12 +21117,12 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $1394
+NEI4 $1396
 line 2911
 ;2911:		return;
-ADDRGP4 $1389
+ADDRGP4 $1391
 JUMPV
-LABELV $1394
+LABELV $1396
 line 2914
 ;2912:	}
 ;2913:
@@ -21190,9 +21190,9 @@ ADDRLP4 0
 ADDRLP4 2092
 INDIRP4
 ASGNP4
-ADDRGP4 $1397
+ADDRGP4 $1399
 JUMPV
-LABELV $1396
+LABELV $1398
 line 2921
 ;2921:	while (p && *p) {
 line 2922
@@ -21317,20 +21317,20 @@ INDIRP4
 ASGNP4
 line 2928
 ;2928:	}
-LABELV $1397
+LABELV $1399
 line 2921
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1399
+EQU4 $1401
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $1396
-LABELV $1399
+NEI4 $1398
+LABELV $1401
 line 2929
 ;2929:	DC->drawText(x, y, item->textscale, color, start, 0, 0, item->textStyle);
 ADDRLP4 1036
@@ -21373,7 +21373,7 @@ CALLV
 pop
 line 2930
 ;2930:}
-LABELV $1389
+LABELV $1391
 endproc Item_Text_Wrapped_Paint 2112 32
 export Item_Text_Paint
 proc Item_Text_Paint 1056 32
@@ -21395,7 +21395,7 @@ INDIRI4
 CNSTI4 262144
 BANDI4
 CNSTI4 0
-EQI4 $1401
+EQI4 $1403
 line 2939
 ;2939:		Item_Text_Wrapped_Paint(item);
 ADDRFP4 0
@@ -21406,9 +21406,9 @@ CALLV
 pop
 line 2940
 ;2940:		return;
-ADDRGP4 $1400
+ADDRGP4 $1402
 JUMPV
-LABELV $1401
+LABELV $1403
 line 2942
 ;2941:	}
 ;2942:	if (item->window.flags & WINDOW_AUTOWRAPPED) {
@@ -21420,7 +21420,7 @@ INDIRI4
 CNSTI4 524288
 BANDI4
 CNSTI4 0
-EQI4 $1403
+EQI4 $1405
 line 2943
 ;2943:		Item_Text_AutoWrapped_Paint(item);
 ADDRFP4 0
@@ -21431,9 +21431,9 @@ CALLV
 pop
 line 2944
 ;2944:		return;
-ADDRGP4 $1400
+ADDRGP4 $1402
 JUMPV
-LABELV $1403
+LABELV $1405
 line 2947
 ;2945:	}
 ;2946:
@@ -21445,7 +21445,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1405
+NEU4 $1407
 line 2948
 ;2948:		if (item->cvar == NULL) {
 ADDRFP4 0
@@ -21455,12 +21455,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1407
+NEU4 $1409
 line 2949
 ;2949:			return;
-ADDRGP4 $1400
+ADDRGP4 $1402
 JUMPV
-LABELV $1407
+LABELV $1409
 line 2951
 ;2950:		}
 ;2951:		else {
@@ -21492,9 +21492,9 @@ line 2954
 ;2954:		}
 line 2955
 ;2955:	}
-ADDRGP4 $1406
+ADDRGP4 $1408
 JUMPV
-LABELV $1405
+LABELV $1407
 line 2956
 ;2956:	else {
 line 2957
@@ -21508,7 +21508,7 @@ INDIRP4
 ASGNP4
 line 2958
 ;2958:	}
-LABELV $1406
+LABELV $1408
 line 2961
 ;2959:
 ;2960:	// this needs to go here as it sets extents for cvar types as well
@@ -21534,12 +21534,12 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $1409
+NEI4 $1411
 line 2964
 ;2964:		return;
-ADDRGP4 $1400
+ADDRGP4 $1402
 JUMPV
-LABELV $1409
+LABELV $1411
 line 2968
 ;2965:	}
 ;2966:
@@ -21631,7 +21631,7 @@ CALLV
 pop
 line 3000
 ;3000:}
-LABELV $1400
+LABELV $1402
 endproc Item_Text_Paint 1056 32
 export Item_TextField_Paint
 proc Item_TextField_Paint 1104 36
@@ -21689,7 +21689,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1412
+EQU4 $1414
 line 3019
 ;3019:		DC->getCVarString(item->cvar, buff, sizeof(buff));
 ADDRFP4 0
@@ -21711,7 +21711,7 @@ CALLV
 pop
 line 3020
 ;3020:	} 
-LABELV $1412
+LABELV $1414
 line 3022
 ;3021:
 ;3022:	parent = (menuDef_t*)item->parent;
@@ -21733,7 +21733,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $1414
+EQI4 $1416
 line 3025
 ;3025:		lowLight[0] = 0.8 * parent->focusColor[0]; 
 ADDRLP4 1032
@@ -21814,9 +21814,9 @@ CALLV
 pop
 line 3030
 ;3030:	} else {
-ADDRGP4 $1415
+ADDRGP4 $1417
 JUMPV
-LABELV $1414
+LABELV $1416
 line 3031
 ;3031:		memcpy(&newColor, &item->window.foreColor, sizeof(vec4_t));
 ADDRLP4 1048
@@ -21833,7 +21833,7 @@ CALLP4
 pop
 line 3032
 ;3032:	}
-LABELV $1415
+LABELV $1417
 line 3034
 ;3033:
 ;3034:	offset = (item->text && *item->text) ? 8 : 0;
@@ -21848,23 +21848,23 @@ ADDRLP4 1072
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1420
+EQU4 $1422
 ADDRLP4 1072
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $1420
+EQI4 $1422
 ADDRLP4 1068
 CNSTI4 8
 ASGNI4
-ADDRGP4 $1421
+ADDRGP4 $1423
 JUMPV
-LABELV $1420
+LABELV $1422
 ADDRLP4 1068
 CNSTI4 0
 ASGNI4
-LABELV $1421
+LABELV $1423
 ADDRLP4 1064
 ADDRLP4 1068
 INDIRI4
@@ -21883,12 +21883,12 @@ CNSTI4 2
 BANDI4
 ADDRLP4 1076
 INDIRI4
-EQI4 $1422
+EQI4 $1424
 ADDRGP4 g_editingField
 INDIRI4
 ADDRLP4 1076
 INDIRI4
-EQI4 $1422
+EQI4 $1424
 line 3036
 ;3036:		char cursor = DC->getOverstrikeMode() ? '_' : '|';
 ADDRLP4 1088
@@ -21902,17 +21902,17 @@ ASGNI4
 ADDRLP4 1088
 INDIRI4
 CNSTI4 0
-EQI4 $1425
+EQI4 $1427
 ADDRLP4 1084
 CNSTI4 95
 ASGNI4
-ADDRGP4 $1426
+ADDRGP4 $1428
 JUMPV
-LABELV $1425
+LABELV $1427
 ADDRLP4 1084
 CNSTI4 124
 ASGNI4
-LABELV $1426
+LABELV $1428
 ADDRLP4 1080
 ADDRLP4 1084
 INDIRI4
@@ -22000,9 +22000,9 @@ CALLV
 pop
 line 3038
 ;3038:	} else {
-ADDRGP4 $1423
+ADDRGP4 $1425
 JUMPV
-LABELV $1422
+LABELV $1424
 line 3039
 ;3039:		DC->drawText(item->textRect.x + item->textRect.w + offset, item->textRect.y, item->textscale, newColor, buff + editPtr->paintOffset, 0, editPtr->maxPaintChars, item->textStyle);
 ADDRLP4 1080
@@ -22070,11 +22070,11 @@ CALLV
 pop
 line 3040
 ;3040:	}
-LABELV $1423
+LABELV $1425
 line 3042
 ;3041:
 ;3042:}
-LABELV $1411
+LABELV $1413
 endproc Item_TextField_Paint 1104 36
 export Item_YesNo_Paint
 proc Item_YesNo_Paint 56 32
@@ -22102,7 +22102,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1429
+EQU4 $1431
 ADDRFP4 0
 INDIRP4
 CNSTI4 264
@@ -22121,13 +22121,13 @@ ADDRLP4 40
 ADDRLP4 44
 INDIRF4
 ASGNF4
-ADDRGP4 $1430
+ADDRGP4 $1432
 JUMPV
-LABELV $1429
+LABELV $1431
 ADDRLP4 40
 CNSTF4 0
 ASGNF4
-LABELV $1430
+LABELV $1432
 ADDRLP4 36
 ADDRLP4 40
 INDIRF4
@@ -22143,7 +22143,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $1431
+EQI4 $1433
 line 3052
 ;3052:		lowLight[0] = 0.8 * parent->focusColor[0]; 
 ADDRLP4 4
@@ -22224,9 +22224,9 @@ CALLV
 pop
 line 3057
 ;3057:	} else {
-ADDRGP4 $1432
+ADDRGP4 $1434
 JUMPV
-LABELV $1431
+LABELV $1433
 line 3058
 ;3058:		memcpy(&newColor, &item->window.foreColor, sizeof(vec4_t));
 ADDRLP4 20
@@ -22243,7 +22243,7 @@ CALLP4
 pop
 line 3059
 ;3059:	}
-LABELV $1432
+LABELV $1434
 line 3061
 ;3060:
 ;3061:	if (item->text) {
@@ -22254,7 +22254,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1436
+EQU4 $1438
 line 3062
 ;3062:		Item_Text_Paint(item);
 ADDRFP4 0
@@ -22300,17 +22300,17 @@ ARGP4
 ADDRLP4 36
 INDIRF4
 CNSTF4 0
-EQF4 $1441
+EQF4 $1443
 ADDRLP4 48
-ADDRGP4 $1438
+ADDRGP4 $1440
 ASGNP4
-ADDRGP4 $1442
+ADDRGP4 $1444
 JUMPV
-LABELV $1441
+LABELV $1443
 ADDRLP4 48
-ADDRGP4 $1439
+ADDRGP4 $1441
 ASGNP4
-LABELV $1442
+LABELV $1444
 ADDRLP4 48
 INDIRP4
 ARGP4
@@ -22333,9 +22333,9 @@ CALLV
 pop
 line 3064
 ;3064:	} else {
-ADDRGP4 $1437
+ADDRGP4 $1439
 JUMPV
-LABELV $1436
+LABELV $1438
 line 3065
 ;3065:		DC->drawText(item->textRect.x, item->textRect.y, item->textscale, newColor, (value != 0) ? "Yes" : "No", 0, 0, item->textStyle);
 ADDRLP4 52
@@ -22365,17 +22365,17 @@ ARGP4
 ADDRLP4 36
 INDIRF4
 CNSTF4 0
-EQF4 $1444
+EQF4 $1446
 ADDRLP4 48
-ADDRGP4 $1438
+ADDRGP4 $1440
 ASGNP4
-ADDRGP4 $1445
+ADDRGP4 $1447
 JUMPV
-LABELV $1444
+LABELV $1446
 ADDRLP4 48
-ADDRGP4 $1439
+ADDRGP4 $1441
 ASGNP4
-LABELV $1445
+LABELV $1447
 ADDRLP4 48
 INDIRP4
 ARGP4
@@ -22398,10 +22398,10 @@ CALLV
 pop
 line 3066
 ;3066:	}
-LABELV $1437
+LABELV $1439
 line 3067
 ;3067:}
-LABELV $1427
+LABELV $1429
 endproc Item_YesNo_Paint 56 32
 export Item_Multi_Paint
 proc Item_Multi_Paint 48 32
@@ -22412,7 +22412,7 @@ line 3071
 ;3070:	vec4_t newColor, lowLight;
 ;3071:	const char *text = "";
 ADDRLP4 4
-ADDRGP4 $54
+ADDRGP4 $56
 ASGNP4
 line 3072
 ;3072:	menuDef_t *parent = (menuDef_t*)item->parent;
@@ -22434,7 +22434,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $1447
+EQI4 $1449
 line 3075
 ;3075:		lowLight[0] = 0.8 * parent->focusColor[0]; 
 ADDRLP4 8
@@ -22515,9 +22515,9 @@ CALLV
 pop
 line 3080
 ;3080:	} else {
-ADDRGP4 $1448
+ADDRGP4 $1450
 JUMPV
-LABELV $1447
+LABELV $1449
 line 3081
 ;3081:		memcpy(&newColor, &item->window.foreColor, sizeof(vec4_t));
 ADDRLP4 24
@@ -22534,7 +22534,7 @@ CALLP4
 pop
 line 3082
 ;3082:	}
-LABELV $1448
+LABELV $1450
 line 3084
 ;3083:
 ;3084:	text = Item_Multi_Setting(item);
@@ -22559,7 +22559,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1452
+EQU4 $1454
 line 3087
 ;3087:		Item_Text_Paint(item);
 ADDRFP4 0
@@ -22624,9 +22624,9 @@ CALLV
 pop
 line 3089
 ;3089:	} else {
-ADDRGP4 $1453
+ADDRGP4 $1455
 JUMPV
-LABELV $1452
+LABELV $1454
 line 3090
 ;3090:		DC->drawText(item->textRect.x, item->textRect.y, item->textscale, newColor, text, 0, 0, item->textStyle);
 ADDRLP4 44
@@ -22675,184 +22675,172 @@ CALLV
 pop
 line 3091
 ;3091:	}
-LABELV $1453
+LABELV $1455
 line 3092
 ;3092:}
-LABELV $1446
+LABELV $1448
 endproc Item_Multi_Paint 48 32
 data
 align 4
 LABELV g_bindings
-address $1456
+address $1458
 byte 4 9
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1457
+address $1459
 byte 4 13
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1458
+address $1460
 byte 4 138
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1459
+address $1461
 byte 4 132
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1460
+address $1462
 byte 4 133
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1461
+address $1463
 byte 4 44
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1462
+address $1464
 byte 4 46
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1463
+address $1465
 byte 4 32
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1464
+address $1466
 byte 4 99
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1465
+address $1467
 byte 4 134
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1466
+address $1468
 byte 4 135
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1467
+address $1469
 byte 4 136
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1468
+address $1470
 byte 4 141
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1469
+address $1471
 byte 4 140
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1470
+address $1472
 byte 4 47
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1471
+address $1473
 byte 4 144
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
-address $1472
-byte 4 -1
-byte 4 -1
-byte 4 -1
-byte 4 -1
-skip 4
-address $1473
-byte 4 49
-byte 4 -1
-byte 4 -1
-byte 4 -1
-skip 4
 address $1474
-byte 4 50
+byte 4 -1
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1475
-byte 4 51
+byte 4 49
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1476
-byte 4 52
+byte 4 50
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1477
-byte 4 53
+byte 4 51
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1478
-byte 4 54
+byte 4 52
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1479
-byte 4 55
+byte 4 53
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1480
-byte 4 56
+byte 4 54
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1481
-byte 4 57
+byte 4 55
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1482
-byte 4 48
+byte 4 56
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1483
-byte 4 -1
+byte 4 57
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1484
-byte 4 -1
+byte 4 48
 byte 4 -1
 byte 4 -1
 byte 4 -1
@@ -22864,169 +22852,169 @@ byte 4 -1
 byte 4 -1
 skip 4
 address $1486
-byte 4 137
+byte 4 -1
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1487
-byte 4 91
+byte 4 -1
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1488
-byte 4 93
+byte 4 137
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1489
-byte 4 180
+byte 4 91
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1490
-byte 4 181
+byte 4 93
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1491
-byte 4 119
+byte 4 180
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1492
-byte 4 114
+byte 4 181
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1493
-byte 4 116
+byte 4 119
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1494
-byte 4 121
+byte 4 114
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1495
-byte 4 110
+byte 4 116
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1496
-byte 4 111
+byte 4 121
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1497
-byte 4 100
+byte 4 110
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1498
-byte 4 112
+byte 4 111
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1499
-byte 4 99
+byte 4 100
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1500
-byte 4 102
+byte 4 112
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1501
-byte 4 118
+byte 4 99
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1502
-byte 4 101
+byte 4 102
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1503
-byte 4 105
+byte 4 118
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1504
-byte 4 107
+byte 4 101
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1505
-byte 4 145
+byte 4 105
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1506
-byte 4 146
+byte 4 107
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1507
-byte 4 147
+byte 4 145
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1508
-byte 4 148
+byte 4 146
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1509
-byte 4 149
+byte 4 147
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1510
-byte 4 162
+byte 4 148
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1511
-byte 4 168
+byte 4 149
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1512
-byte 4 -1
+byte 4 162
 byte 4 -1
 byte 4 -1
 byte 4 -1
 skip 4
 address $1513
-byte 4 -1
+byte 4 168
 byte 4 -1
 byte 4 -1
 byte 4 -1
@@ -23038,6 +23026,18 @@ byte 4 -1
 byte 4 -1
 skip 4
 address $1515
+byte 4 -1
+byte 4 -1
+byte 4 -1
+byte 4 -1
+skip 4
+address $1516
+byte 4 -1
+byte 4 -1
+byte 4 -1
+byte 4 -1
+skip 4
+address $1517
 byte 4 -1
 byte 4 -1
 byte 4 -1
@@ -23195,7 +23195,7 @@ line 3209
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $1517
+LABELV $1519
 line 3210
 ;3210:	{
 line 3211
@@ -23220,12 +23220,12 @@ ADDRLP4 4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $1521
+NEI4 $1523
 line 3213
 ;3213:			continue;
-ADDRGP4 $1518
+ADDRGP4 $1520
 JUMPV
-LABELV $1521
+LABELV $1523
 line 3215
 ;3214:		}
 ;3215:		if ( !Q_stricmp( b, command ) ) {
@@ -23241,7 +23241,7 @@ ASGNI4
 ADDRLP4 272
 INDIRI4
 CNSTI4 0
-NEI4 $1523
+NEI4 $1525
 line 3216
 ;3216:			twokeys[count] = j;
 ADDRLP4 260
@@ -23267,19 +23267,19 @@ line 3218
 ADDRLP4 260
 INDIRI4
 CNSTI4 2
-NEI4 $1525
+NEI4 $1527
 line 3219
 ;3219:				break;
-ADDRGP4 $1519
+ADDRGP4 $1521
 JUMPV
-LABELV $1525
+LABELV $1527
 line 3221
 ;3220:			}
 ;3221:		}
-LABELV $1523
+LABELV $1525
 line 3222
 ;3222:	}
-LABELV $1518
+LABELV $1520
 line 3209
 ADDRLP4 0
 ADDRLP4 0
@@ -23290,11 +23290,11 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 256
-LTI4 $1517
-LABELV $1519
+LTI4 $1519
+LABELV $1521
 line 3223
 ;3223:}
-LABELV $1516
+LABELV $1518
 endproc Controls_GetKeyAssignment 276 12
 export Controls_GetConfig
 proc Controls_GetConfig 12 8
@@ -23316,9 +23316,9 @@ line 3236
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1531
+ADDRGP4 $1533
 JUMPV
-LABELV $1528
+LABELV $1530
 line 3237
 ;3237:	{
 line 3239
@@ -23362,7 +23362,7 @@ INDIRI4
 ASGNI4
 line 3243
 ;3243:	}
-LABELV $1529
+LABELV $1531
 line 3236
 ADDRLP4 0
 ADDRLP4 0
@@ -23370,12 +23370,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1531
+LABELV $1533
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_bindCount
 INDIRI4
-LTI4 $1528
+LTI4 $1530
 line 3253
 ;3244:
 ;3245:	//s_controls.invertmouse.curvalue  = DC->getCVarValue( "m_pitch" ) < 0;
@@ -23387,7 +23387,7 @@ line 3253
 ;3251:	//s_controls.joythreshold.curvalue = UI_ClampCvar( 0.05, 0.75, Controls_GetCvarValue( "joy_threshold" ) );
 ;3252:	//s_controls.freelook.curvalue     = UI_ClampCvar( 0, 1, Controls_GetCvarValue( "cl_freelook" ) );
 ;3253:}
-LABELV $1527
+LABELV $1529
 endproc Controls_GetConfig 12 8
 export Controls_SetConfig
 proc Controls_SetConfig 12 8
@@ -23408,9 +23408,9 @@ line 3265
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1539
+ADDRGP4 $1541
 JUMPV
-LABELV $1536
+LABELV $1538
 line 3266
 ;3266:	{
 line 3268
@@ -23424,7 +23424,7 @@ ADDRGP4 g_bindings+16
 ADDP4
 INDIRI4
 CNSTI4 -1
-EQI4 $1540
+EQI4 $1542
 line 3269
 ;3269:		{	
 line 3270
@@ -23465,7 +23465,7 @@ ADDRGP4 g_bindings+20
 ADDP4
 INDIRI4
 CNSTI4 -1
-EQI4 $1544
+EQI4 $1546
 line 3273
 ;3273:				DC->setBinding( g_bindings[i].bind2, g_bindings[i].command );
 ADDRLP4 8
@@ -23493,13 +23493,13 @@ ADDP4
 INDIRP4
 CALLV
 pop
-LABELV $1544
+LABELV $1546
 line 3274
 ;3274:		}
-LABELV $1540
+LABELV $1542
 line 3275
 ;3275:	}
-LABELV $1537
+LABELV $1539
 line 3265
 ADDRLP4 0
 ADDRLP4 0
@@ -23507,12 +23507,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1539
+LABELV $1541
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_bindCount
 INDIRI4
-LTI4 $1536
+LTI4 $1538
 line 3289
 ;3276:
 ;3277:	//if ( s_controls.invertmouse.curvalue )
@@ -23530,7 +23530,7 @@ line 3289
 ;3289:	DC->executeText(EXEC_APPEND, "in_restart\n");
 CNSTI4 2
 ARGI4
-ADDRGP4 $1548
+ADDRGP4 $1550
 ARGP4
 ADDRGP4 DC
 INDIRP4
@@ -23542,7 +23542,7 @@ pop
 line 3291
 ;3290:	//trap_Cmd_ExecuteText( EXEC_APPEND, "in_restart\n" );
 ;3291:}
-LABELV $1535
+LABELV $1537
 endproc Controls_SetConfig 12 8
 export Controls_SetDefaults
 proc Controls_SetDefaults 12 0
@@ -23563,9 +23563,9 @@ line 3303
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1553
+ADDRGP4 $1555
 JUMPV
-LABELV $1550
+LABELV $1552
 line 3304
 ;3304:	{
 line 3305
@@ -23606,7 +23606,7 @@ INDIRI4
 ASGNI4
 line 3307
 ;3307:	}
-LABELV $1551
+LABELV $1553
 line 3303
 ADDRLP4 0
 ADDRLP4 0
@@ -23614,12 +23614,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1553
+LABELV $1555
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_bindCount
 INDIRI4
-LTI4 $1550
+LTI4 $1552
 line 3317
 ;3308:
 ;3309:	//s_controls.invertmouse.curvalue  = Controls_GetCvarDefault( "m_pitch" ) < 0;
@@ -23631,7 +23631,7 @@ line 3317
 ;3315:	//s_controls.joythreshold.curvalue = Controls_GetCvarDefault( "joy_threshold" );
 ;3316:	//s_controls.freelook.curvalue     = Controls_GetCvarDefault( "cl_freelook" );
 ;3317:}
-LABELV $1549
+LABELV $1551
 endproc Controls_SetDefaults 12 0
 export BindingIDFromName
 proc BindingIDFromName 8 8
@@ -23644,9 +23644,9 @@ line 3321
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1562
+ADDRGP4 $1564
 JUMPV
-LABELV $1559
+LABELV $1561
 line 3322
 ;3322:	{
 line 3323
@@ -23669,19 +23669,19 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $1563
+NEI4 $1565
 line 3324
 ;3324:			return i;
 ADDRLP4 0
 INDIRI4
 RETI4
-ADDRGP4 $1558
+ADDRGP4 $1560
 JUMPV
-LABELV $1563
+LABELV $1565
 line 3326
 ;3325:		}
 ;3326:	}
-LABELV $1560
+LABELV $1562
 line 3321
 ADDRLP4 0
 ADDRLP4 0
@@ -23689,17 +23689,17 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1562
+LABELV $1564
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_bindCount
 INDIRI4
-LTI4 $1559
+LTI4 $1561
 line 3327
 ;3327:	return -1;
 CNSTI4 -1
 RETI4
-LABELV $1558
+LABELV $1560
 endproc BindingIDFromName 8 8
 export BindingFromName
 proc BindingFromName 16 12
@@ -23718,9 +23718,9 @@ line 3337
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1569
+ADDRGP4 $1571
 JUMPV
-LABELV $1566
+LABELV $1568
 line 3338
 ;3338:	{
 line 3339
@@ -23743,7 +23743,7 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $1570
+NEI4 $1572
 line 3340
 ;3340:			b1 = g_bindings[i].bind1;
 ADDRLP4 4
@@ -23760,12 +23760,12 @@ line 3341
 ADDRLP4 4
 INDIRI4
 CNSTI4 -1
-NEI4 $1573
+NEI4 $1575
 line 3342
 ;3342:				break;
-ADDRGP4 $1568
+ADDRGP4 $1570
 JUMPV
-LABELV $1573
+LABELV $1575
 line 3344
 ;3343:			}
 ;3344:				DC->keynumToStringBuf( b1, g_nameBind1, 32 );
@@ -23807,7 +23807,7 @@ line 3348
 ADDRLP4 8
 INDIRI4
 CNSTI4 -1
-EQI4 $1565
+EQI4 $1567
 line 3349
 ;3349:				{
 line 3350
@@ -23837,7 +23837,7 @@ line 3352
 ;3352:					strcat( g_nameBind1, " or " );
 ADDRGP4 g_nameBind1
 ARGP4
-ADDRGP4 $1578
+ADDRGP4 $1580
 ARGP4
 ADDRGP4 strcat
 CALLP4
@@ -23855,13 +23855,13 @@ line 3354
 ;3354:				}
 line 3355
 ;3355:			return;
-ADDRGP4 $1565
+ADDRGP4 $1567
 JUMPV
-LABELV $1570
+LABELV $1572
 line 3357
 ;3356:		}
 ;3357:	}
-LABELV $1567
+LABELV $1569
 line 3337
 ADDRLP4 0
 ADDRLP4 0
@@ -23869,25 +23869,25 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1569
+LABELV $1571
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_bindCount
 INDIRI4
-LTI4 $1566
-LABELV $1568
+LTI4 $1568
+LABELV $1570
 line 3358
 ;3358:	strcpy(g_nameBind1, "???");
 ADDRGP4 g_nameBind1
 ARGP4
-ADDRGP4 $1579
+ADDRGP4 $1581
 ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
 line 3359
 ;3359:}
-LABELV $1565
+LABELV $1567
 endproc BindingFromName 16 12
 export Item_Slider_Paint
 proc Item_Slider_Paint 68 20
@@ -23915,7 +23915,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1582
+EQU4 $1584
 ADDRFP4 0
 INDIRP4
 CNSTI4 264
@@ -23934,13 +23934,13 @@ ADDRLP4 48
 ADDRLP4 52
 INDIRF4
 ASGNF4
-ADDRGP4 $1583
+ADDRGP4 $1585
 JUMPV
-LABELV $1582
+LABELV $1584
 ADDRLP4 48
 CNSTF4 0
 ASGNF4
-LABELV $1583
+LABELV $1585
 ADDRLP4 44
 ADDRLP4 48
 INDIRF4
@@ -23956,7 +23956,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $1584
+EQI4 $1586
 line 3369
 ;3369:		lowLight[0] = 0.8 * parent->focusColor[0]; 
 ADDRLP4 12
@@ -24037,9 +24037,9 @@ CALLV
 pop
 line 3374
 ;3374:	} else {
-ADDRGP4 $1585
+ADDRGP4 $1587
 JUMPV
-LABELV $1584
+LABELV $1586
 line 3375
 ;3375:		memcpy(&newColor, &item->window.foreColor, sizeof(vec4_t));
 ADDRLP4 28
@@ -24056,7 +24056,7 @@ CALLP4
 pop
 line 3376
 ;3376:	}
-LABELV $1585
+LABELV $1587
 line 3378
 ;3377:
 ;3378:	y = item->window.rect.y;
@@ -24076,7 +24076,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1589
+EQU4 $1591
 line 3380
 ;3380:		Item_Text_Paint(item);
 ADDRFP4 0
@@ -24108,9 +24108,9 @@ ADDF4
 ASGNF4
 line 3382
 ;3382:	} else {
-ADDRGP4 $1590
+ADDRGP4 $1592
 JUMPV
-LABELV $1589
+LABELV $1591
 line 3383
 ;3383:		x = item->window.rect.x;
 ADDRLP4 0
@@ -24120,7 +24120,7 @@ INDIRF4
 ASGNF4
 line 3384
 ;3384:	}
-LABELV $1590
+LABELV $1592
 line 3385
 ;3385:	DC->setColor(newColor);
 ADDRLP4 28
@@ -24211,7 +24211,7 @@ pop
 line 3391
 ;3390:
 ;3391:}
-LABELV $1580
+LABELV $1582
 endproc Item_Slider_Paint 68 20
 export Item_Bind_Paint
 proc Item_Bind_Paint 64 32
@@ -24249,7 +24249,7 @@ ADDRLP4 24
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1592
+EQU4 $1594
 line 3400
 ;3400:		maxChars = editPtr->maxPaintChars;
 ADDRLP4 16
@@ -24261,7 +24261,7 @@ INDIRI4
 ASGNI4
 line 3401
 ;3401:	}
-LABELV $1592
+LABELV $1594
 line 3403
 ;3402:
 ;3403:	value = (item->cvar) ? DC->getCVarValue(item->cvar) : 0;
@@ -24272,7 +24272,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1595
+EQU4 $1597
 ADDRFP4 0
 INDIRP4
 CNSTI4 264
@@ -24291,13 +24291,13 @@ ADDRLP4 48
 ADDRLP4 52
 INDIRF4
 ASGNF4
-ADDRGP4 $1596
+ADDRGP4 $1598
 JUMPV
-LABELV $1595
+LABELV $1597
 ADDRLP4 48
 CNSTF4 0
 ASGNF4
-LABELV $1596
+LABELV $1598
 ADDRLP4 44
 ADDRLP4 48
 INDIRF4
@@ -24313,7 +24313,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $1597
+EQI4 $1599
 line 3406
 ;3406:		if (g_bindItem == item) {
 ADDRGP4 g_bindItem
@@ -24322,7 +24322,7 @@ CVPU4 4
 ADDRFP4 0
 INDIRP4
 CVPU4 4
-NEU4 $1599
+NEU4 $1601
 line 3407
 ;3407:			lowLight[0] = 0.8f * 1.0f;
 ADDRLP4 0
@@ -24345,9 +24345,9 @@ CNSTF4 1061997773
 ASGNF4
 line 3411
 ;3411:		} else {
-ADDRGP4 $1600
+ADDRGP4 $1602
 JUMPV
-LABELV $1599
+LABELV $1601
 line 3412
 ;3412:			lowLight[0] = 0.8f * parent->focusColor[0]; 
 ADDRLP4 0
@@ -24394,7 +24394,7 @@ MULF4
 ASGNF4
 line 3416
 ;3416:		}
-LABELV $1600
+LABELV $1602
 line 3417
 ;3417:		LerpColor(parent->focusColor,lowLight,newColor,0.5+0.5*sin(DC->realTime / PULSE_DIVISOR));
 ADDRGP4 DC
@@ -24431,9 +24431,9 @@ CALLV
 pop
 line 3418
 ;3418:	} else {
-ADDRGP4 $1598
+ADDRGP4 $1600
 JUMPV
-LABELV $1597
+LABELV $1599
 line 3419
 ;3419:		memcpy(&newColor, &item->window.foreColor, sizeof(vec4_t));
 ADDRLP4 28
@@ -24450,7 +24450,7 @@ CALLP4
 pop
 line 3420
 ;3420:	}
-LABELV $1598
+LABELV $1600
 line 3422
 ;3421:
 ;3422:	if (item->text) {
@@ -24461,7 +24461,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1607
+EQU4 $1609
 line 3423
 ;3423:		Item_Text_Paint(item);
 ADDRFP4 0
@@ -24537,9 +24537,9 @@ CALLV
 pop
 line 3426
 ;3426:	} else {
-ADDRGP4 $1608
+ADDRGP4 $1610
 JUMPV
-LABELV $1607
+LABELV $1609
 line 3427
 ;3427:		DC->drawText(item->textRect.x, item->textRect.y, item->textscale, newColor, (value != 0) ? "FIXME" : "FIXME", 0, maxChars, item->textStyle);
 ADDRLP4 60
@@ -24569,17 +24569,17 @@ ARGP4
 ADDRLP4 44
 INDIRF4
 CNSTF4 0
-EQF4 $1611
+EQF4 $1613
 ADDRLP4 56
-ADDRGP4 $1609
+ADDRGP4 $1611
 ASGNP4
-ADDRGP4 $1612
+ADDRGP4 $1614
 JUMPV
-LABELV $1611
+LABELV $1613
 ADDRLP4 56
-ADDRGP4 $1609
+ADDRGP4 $1611
 ASGNP4
-LABELV $1612
+LABELV $1614
 ADDRLP4 56
 INDIRP4
 ARGP4
@@ -24603,10 +24603,10 @@ CALLV
 pop
 line 3428
 ;3428:	}
-LABELV $1608
+LABELV $1610
 line 3429
 ;3429:}
-LABELV $1591
+LABELV $1593
 endproc Item_Bind_Paint 64 32
 export Display_KeyBindPending
 proc Display_KeyBindPending 0 0
@@ -24618,7 +24618,7 @@ line 3432
 ADDRGP4 g_waitingForKey
 INDIRI4
 RETI4
-LABELV $1613
+LABELV $1615
 endproc Display_KeyBindPending 0 0
 export Item_Bind_HandleKey
 proc Item_Bind_HandleKey 32 12
@@ -24663,12 +24663,12 @@ ADDRLP4 12
 INDIRI4
 ADDRLP4 16
 INDIRI4
-EQI4 $1615
+EQI4 $1617
 ADDRGP4 g_waitingForKey
 INDIRI4
 ADDRLP4 16
 INDIRI4
-NEI4 $1615
+NEI4 $1617
 line 3440
 ;3440:	{
 line 3441
@@ -24676,7 +24676,7 @@ line 3441
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $1617
+EQI4 $1619
 ADDRLP4 20
 ADDRFP4 4
 INDIRI4
@@ -24684,12 +24684,12 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 178
-EQI4 $1619
+EQI4 $1621
 ADDRLP4 20
 INDIRI4
 CNSTI4 13
-NEI4 $1617
-LABELV $1619
+NEI4 $1619
+LABELV $1621
 line 3442
 ;3442:			g_waitingForKey = qtrue;
 ADDRGP4 g_waitingForKey
@@ -24703,14 +24703,14 @@ INDIRP4
 ASGNP4
 line 3444
 ;3444:		}
-LABELV $1617
+LABELV $1619
 line 3445
 ;3445:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $1614
+ADDRGP4 $1616
 JUMPV
-LABELV $1615
+LABELV $1617
 line 3448
 ;3446:	}
 ;3447:	else
@@ -24720,20 +24720,20 @@ line 3449
 ADDRGP4 g_waitingForKey
 INDIRI4
 CNSTI4 0
-EQI4 $1622
+EQI4 $1624
 ADDRGP4 g_bindItem
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1620
-LABELV $1622
+NEU4 $1622
+LABELV $1624
 line 3450
 ;3450:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $1614
+ADDRGP4 $1616
 JUMPV
-LABELV $1620
+LABELV $1622
 line 3453
 ;3451:		}
 ;3452:
@@ -24743,14 +24743,14 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $1623
+EQI4 $1625
 line 3454
 ;3454:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $1614
+ADDRGP4 $1616
 JUMPV
-LABELV $1623
+LABELV $1625
 line 3457
 ;3455:		}
 ;3456:
@@ -24766,29 +24766,29 @@ ADDRLP4 20
 INDIRI4
 ADDRLP4 24
 INDIRI4
-EQI4 $1633
+EQI4 $1635
 ADDRLP4 20
 INDIRI4
 ADDRLP4 24
 INDIRI4
-GTI4 $1635
-LABELV $1634
+GTI4 $1637
+LABELV $1636
 ADDRFP4 4
 INDIRI4
 CNSTI4 27
-EQI4 $1627
-ADDRGP4 $1625
+EQI4 $1629
+ADDRGP4 $1627
 JUMPV
-LABELV $1635
+LABELV $1637
 ADDRFP4 4
 INDIRI4
 CNSTI4 127
-EQI4 $1628
-ADDRGP4 $1625
+EQI4 $1630
+ADDRGP4 $1627
 JUMPV
 line 3458
 ;3458:		{
-LABELV $1627
+LABELV $1629
 line 3460
 ;3459:			case K_ESCAPE:
 ;3460:				g_waitingForKey = qfalse;
@@ -24799,9 +24799,9 @@ line 3461
 ;3461:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $1614
+ADDRGP4 $1616
 JUMPV
-LABELV $1628
+LABELV $1630
 line 3464
 ;3462:	
 ;3463:			case K_BACKSPACE:
@@ -24825,7 +24825,7 @@ line 3465
 ADDRLP4 4
 INDIRI4
 CNSTI4 -1
-EQI4 $1629
+EQI4 $1631
 line 3466
 ;3466:					g_bindings[id].bind1 = -1;
 CNSTI4 24
@@ -24848,7 +24848,7 @@ CNSTI4 -1
 ASGNI4
 line 3468
 ;3468:				}
-LABELV $1629
+LABELV $1631
 line 3469
 ;3469:				Controls_SetConfig(qtrue);
 CNSTI4 1
@@ -24870,18 +24870,18 @@ line 3472
 ;3472:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $1614
+ADDRGP4 $1616
 JUMPV
-LABELV $1633
+LABELV $1635
 line 3475
 ;3473:
 ;3474:			case '`':
 ;3475:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $1614
+ADDRGP4 $1616
 JUMPV
-LABELV $1625
+LABELV $1627
 line 3477
 ;3476:		}
 ;3477:	}
@@ -24891,7 +24891,7 @@ line 3479
 ADDRFP4 4
 INDIRI4
 CNSTI4 -1
-EQI4 $1636
+EQI4 $1638
 line 3480
 ;3480:	{
 line 3482
@@ -24900,9 +24900,9 @@ line 3482
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1641
+ADDRGP4 $1643
 JUMPV
-LABELV $1638
+LABELV $1640
 line 3483
 ;3483:		{
 line 3485
@@ -24917,7 +24917,7 @@ ADDP4
 INDIRI4
 ADDRFP4 4
 INDIRI4
-NEI4 $1642
+NEI4 $1644
 line 3486
 ;3486:				g_bindings[i].bind2 = -1;
 CNSTI4 24
@@ -24930,7 +24930,7 @@ CNSTI4 -1
 ASGNI4
 line 3487
 ;3487:			}
-LABELV $1642
+LABELV $1644
 line 3489
 ;3488:
 ;3489:			if (g_bindings[i].bind1 == key)
@@ -24943,7 +24943,7 @@ ADDP4
 INDIRI4
 ADDRFP4 4
 INDIRI4
-NEI4 $1646
+NEI4 $1648
 line 3490
 ;3490:			{
 line 3491
@@ -24976,10 +24976,10 @@ CNSTI4 -1
 ASGNI4
 line 3493
 ;3493:			}
-LABELV $1646
+LABELV $1648
 line 3494
 ;3494:		}
-LABELV $1639
+LABELV $1641
 line 3482
 ADDRLP4 0
 ADDRLP4 0
@@ -24987,15 +24987,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1641
+LABELV $1643
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_bindCount
 INDIRI4
-LTI4 $1638
+LTI4 $1640
 line 3495
 ;3495:	}
-LABELV $1636
+LABELV $1638
 line 3498
 ;3496:
 ;3497:
@@ -25020,13 +25020,13 @@ line 3500
 ADDRLP4 4
 INDIRI4
 CNSTI4 -1
-EQI4 $1652
+EQI4 $1654
 line 3501
 ;3501:		if (key == -1) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 -1
-NEI4 $1654
+NEI4 $1656
 line 3502
 ;3502:			if( g_bindings[id].bind1 != -1 ) {
 CNSTI4 24
@@ -25037,7 +25037,7 @@ ADDRGP4 g_bindings+16
 ADDP4
 INDIRI4
 CNSTI4 -1
-EQI4 $1656
+EQI4 $1658
 line 3503
 ;3503:				DC->setBinding( g_bindings[id].bind1, "" );
 CNSTI4 24
@@ -25048,7 +25048,7 @@ ADDRGP4 g_bindings+16
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $54
+ADDRGP4 $56
 ARGP4
 ADDRGP4 DC
 INDIRP4
@@ -25069,7 +25069,7 @@ CNSTI4 -1
 ASGNI4
 line 3505
 ;3505:			}
-LABELV $1656
+LABELV $1658
 line 3506
 ;3506:			if( g_bindings[id].bind2 != -1 ) {
 CNSTI4 24
@@ -25080,7 +25080,7 @@ ADDRGP4 g_bindings+20
 ADDP4
 INDIRI4
 CNSTI4 -1
-EQI4 $1655
+EQI4 $1657
 line 3507
 ;3507:				DC->setBinding( g_bindings[id].bind2, "" );
 CNSTI4 24
@@ -25091,7 +25091,7 @@ ADDRGP4 g_bindings+20
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $54
+ADDRGP4 $56
 ARGP4
 ADDRGP4 DC
 INDIRP4
@@ -25114,9 +25114,9 @@ line 3509
 ;3509:			}
 line 3510
 ;3510:		}
-ADDRGP4 $1655
+ADDRGP4 $1657
 JUMPV
-LABELV $1654
+LABELV $1656
 line 3511
 ;3511:		else if (g_bindings[id].bind1 == -1) {
 CNSTI4 24
@@ -25127,7 +25127,7 @@ ADDRGP4 g_bindings+16
 ADDP4
 INDIRI4
 CNSTI4 -1
-NEI4 $1666
+NEI4 $1668
 line 3512
 ;3512:			g_bindings[id].bind1 = key;
 CNSTI4 24
@@ -25141,9 +25141,9 @@ INDIRI4
 ASGNI4
 line 3513
 ;3513:		}
-ADDRGP4 $1667
+ADDRGP4 $1669
 JUMPV
-LABELV $1666
+LABELV $1668
 line 3514
 ;3514:		else if (g_bindings[id].bind1 != key && g_bindings[id].bind2 == -1) {
 ADDRLP4 24
@@ -25159,14 +25159,14 @@ ADDP4
 INDIRI4
 ADDRFP4 4
 INDIRI4
-EQI4 $1670
+EQI4 $1672
 ADDRLP4 24
 INDIRI4
 ADDRGP4 g_bindings+20
 ADDP4
 INDIRI4
 CNSTI4 -1
-NEI4 $1670
+NEI4 $1672
 line 3515
 ;3515:			g_bindings[id].bind2 = key;
 CNSTI4 24
@@ -25180,9 +25180,9 @@ INDIRI4
 ASGNI4
 line 3516
 ;3516:		}
-ADDRGP4 $1671
+ADDRGP4 $1673
 JUMPV
-LABELV $1670
+LABELV $1672
 line 3517
 ;3517:		else {
 line 3518
@@ -25195,7 +25195,7 @@ ADDRGP4 g_bindings+16
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $54
+ADDRGP4 $56
 ARGP4
 ADDRGP4 DC
 INDIRP4
@@ -25214,7 +25214,7 @@ ADDRGP4 g_bindings+20
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $54
+ADDRGP4 $56
 ARGP4
 ADDRGP4 DC
 INDIRP4
@@ -25246,12 +25246,12 @@ CNSTI4 -1
 ASGNI4
 line 3522
 ;3522:		}						
-LABELV $1671
-LABELV $1667
-LABELV $1655
+LABELV $1673
+LABELV $1669
+LABELV $1657
 line 3523
 ;3523:	}
-LABELV $1652
+LABELV $1654
 line 3525
 ;3524:
 ;3525:	Controls_SetConfig(qtrue);	
@@ -25270,7 +25270,7 @@ line 3528
 ;3528:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $1614
+LABELV $1616
 endproc Item_Bind_HandleKey 32 12
 export AdjustFrom640
 proc AdjustFrom640 16 0
@@ -25355,7 +25355,7 @@ MULF4
 ASGNF4
 line 3539
 ;3539:}
-LABELV $1679
+LABELV $1681
 endproc AdjustFrom640 16 0
 export Item_Model_Paint
 proc Item_Model_Paint 588 16
@@ -25383,12 +25383,12 @@ ADDRLP4 508
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1681
+NEU4 $1683
 line 3550
 ;3550:		return;
-ADDRGP4 $1680
+ADDRGP4 $1682
 JUMPV
-LABELV $1681
+LABELV $1683
 line 3554
 ;3551:	}
 ;3552:
@@ -25569,9 +25569,9 @@ ASGNF4
 line 3579
 ;3578:		//origin[0] = len / tan(w/2);
 ;3579:	} else {
-ADDRGP4 $1695
+ADDRGP4 $1697
 JUMPV
-LABELV $1694
+LABELV $1696
 line 3580
 ;3580:		origin[0] = item->textscale;
 ADDRLP4 512
@@ -25583,7 +25583,7 @@ INDIRF4
 ASGNF4
 line 3581
 ;3581:	}
-LABELV $1695
+LABELV $1697
 line 3582
 ;3582:	refdef.fov_x = (modelPtr->fov_x) ? modelPtr->fov_x : w;
 ADDRLP4 508
@@ -25592,7 +25592,7 @@ CNSTI4 16
 ADDP4
 INDIRF4
 CNSTF4 0
-EQF4 $1700
+EQF4 $1702
 ADDRLP4 576
 ADDRLP4 508
 INDIRP4
@@ -25600,14 +25600,14 @@ CNSTI4 16
 ADDP4
 INDIRF4
 ASGNF4
-ADDRGP4 $1701
+ADDRGP4 $1703
 JUMPV
-LABELV $1700
+LABELV $1702
 ADDRLP4 576
 ADDRLP4 524
 INDIRF4
 ASGNF4
-LABELV $1701
+LABELV $1703
 ADDRLP4 0+16
 ADDRLP4 576
 INDIRF4
@@ -25620,7 +25620,7 @@ CNSTI4 20
 ADDP4
 INDIRF4
 CNSTF4 0
-EQF4 $1704
+EQF4 $1706
 ADDRLP4 580
 ADDRLP4 508
 INDIRP4
@@ -25628,14 +25628,14 @@ CNSTI4 20
 ADDP4
 INDIRF4
 ASGNF4
-ADDRGP4 $1705
+ADDRGP4 $1707
 JUMPV
-LABELV $1704
+LABELV $1706
 ADDRLP4 580
 ADDRLP4 528
 INDIRF4
 ASGNF4
-LABELV $1705
+LABELV $1707
 ADDRLP4 0+20
 ADDRLP4 580
 INDIRF4
@@ -25693,7 +25693,7 @@ CNSTI4 24
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $1707
+EQI4 $1709
 line 3604
 ;3604:		if (DC->realTime > item->window.nextTime) {
 ADDRGP4 DC
@@ -25706,7 +25706,7 @@ INDIRP4
 CNSTI4 108
 ADDP4
 INDIRI4
-LEI4 $1709
+LEI4 $1711
 line 3605
 ;3605:			item->window.nextTime = DC->realTime + modelPtr->rotationSpeed;
 ADDRFP4 0
@@ -25739,10 +25739,10 @@ MODI4
 ASGNI4
 line 3607
 ;3607:		}
-LABELV $1709
+LABELV $1711
 line 3608
 ;3608:	}
-LABELV $1707
+LABELV $1709
 line 3609
 ;3609:	VectorSet( angles, 0, modelPtr->angle, 0 );
 ADDRLP4 532
@@ -25825,7 +25825,7 @@ pop
 line 3621
 ;3620:
 ;3621:}
-LABELV $1680
+LABELV $1682
 endproc Item_Model_Paint 588 16
 export Item_Image_Paint
 proc Item_Image_Paint 16 20
@@ -25839,12 +25839,12 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1721
+NEU4 $1723
 line 3626
 ;3626:		return;
-ADDRGP4 $1720
+ADDRGP4 $1722
 JUMPV
-LABELV $1721
+LABELV $1723
 line 3628
 ;3627:	}
 ;3628:	DC->drawHandlePic(item->window.rect.x+1, item->window.rect.y+1, item->window.rect.w-2, item->window.rect.h-2, item->asset);
@@ -25912,7 +25912,7 @@ CALLV
 pop
 line 3629
 ;3629:}
-LABELV $1720
+LABELV $1722
 endproc Item_Image_Paint 16 20
 export Item_ListBox_Paint
 proc Item_ListBox_Paint 104 32
@@ -25968,7 +25968,7 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $1724
+EQI4 $1726
 line 3646
 ;3644:		// draw scrollbar in bottom of the window
 ;3645:		// bar
@@ -26158,7 +26158,7 @@ CNSTF4 1098907648
 SUBF4
 CNSTF4 1065353216
 SUBF4
-LEF4 $1726
+LEF4 $1728
 line 3657
 ;3657:			thumb = x - SCROLLBAR_SIZE - 1;
 ADDRLP4 32
@@ -26171,7 +26171,7 @@ SUBF4
 ASGNF4
 line 3658
 ;3658:		}
-LABELV $1726
+LABELV $1728
 line 3659
 ;3659:		DC->drawHandlePic(thumb, y, SCROLLBAR_SIZE, SCROLLBAR_SIZE, DC->Assets.scrollBarThumb);
 ADDRLP4 32
@@ -26238,7 +26238,7 @@ CNSTI4 24
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $1725
+NEI4 $1727
 line 3667
 ;3666:			// fit = 0;
 ;3667:			x = item->window.rect.x + 1;
@@ -26268,9 +26268,9 @@ INDIRP4
 INDIRI4
 CVIF4 4
 ASGNF4
-ADDRGP4 $1733
+ADDRGP4 $1735
 JUMPV
-LABELV $1730
+LABELV $1732
 line 3672
 ;3670:				// always draw at least one
 ;3671:				// which may overdraw the box if it is too small for the element
@@ -26302,7 +26302,7 @@ line 3673
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $1734
+EQI4 $1736
 line 3674
 ;3674:					DC->drawHandlePic(x+1, y+1, listPtr->elementWidth - 2, listPtr->elementHeight - 2, image);
 ADDRLP4 84
@@ -26353,7 +26353,7 @@ CALLV
 pop
 line 3675
 ;3675:				}
-LABELV $1734
+LABELV $1736
 line 3677
 ;3676:
 ;3677:				if (i == item->cursorPos) {
@@ -26365,7 +26365,7 @@ CNSTI4 532
 ADDP4
 INDIRI4
 CVIF4 4
-NEF4 $1736
+NEF4 $1738
 line 3678
 ;3678:					DC->drawRect(x, y, listPtr->elementWidth-1, listPtr->elementHeight-1, item->window.borderSize, item->window.borderColor);
 ADDRLP4 16
@@ -26419,7 +26419,7 @@ CALLV
 pop
 line 3679
 ;3679:				}
-LABELV $1736
+LABELV $1738
 line 3681
 ;3680:
 ;3681:				size -= listPtr->elementWidth;
@@ -26442,7 +26442,7 @@ INDIRP4
 CNSTI4 16
 ADDP4
 INDIRF4
-GEF4 $1738
+GEF4 $1740
 line 3683
 ;3683:					listPtr->drawPadding = size; //listPtr->elementWidth - size;
 ADDRLP4 0
@@ -26455,9 +26455,9 @@ CVFI4 4
 ASGNI4
 line 3684
 ;3684:					break;
-ADDRGP4 $1725
+ADDRGP4 $1727
 JUMPV
-LABELV $1738
+LABELV $1740
 line 3686
 ;3685:				}
 ;3686:				x += listPtr->elementWidth;
@@ -26490,7 +26490,7 @@ ASGNI4
 line 3689
 ;3688:				// fit++;
 ;3689:			}
-LABELV $1731
+LABELV $1733
 line 3669
 ADDRLP4 4
 ADDRLP4 4
@@ -26498,12 +26498,12 @@ INDIRF4
 CNSTF4 1065353216
 ADDF4
 ASGNF4
-LABELV $1733
+LABELV $1735
 ADDRLP4 4
 INDIRF4
 ADDRLP4 28
 INDIRF4
-LTF4 $1730
+LTF4 $1732
 line 3690
 ;3690:		} else {
 line 3692
@@ -26511,9 +26511,9 @@ line 3692
 ;3692:		}
 line 3693
 ;3693:	} else {
-ADDRGP4 $1725
+ADDRGP4 $1727
 JUMPV
-LABELV $1724
+LABELV $1726
 line 3695
 ;3694:		// draw scrollbar to right side of the window
 ;3695:		x = item->window.rect.x + item->window.rect.w - SCROLLBAR_SIZE - 1;
@@ -26713,7 +26713,7 @@ CNSTF4 1098907648
 SUBF4
 CNSTF4 1065353216
 SUBF4
-LEF4 $1740
+LEF4 $1742
 line 3708
 ;3708:			thumb = y - SCROLLBAR_SIZE - 1;
 ADDRLP4 32
@@ -26726,7 +26726,7 @@ SUBF4
 ASGNF4
 line 3709
 ;3709:		}
-LABELV $1740
+LABELV $1742
 line 3710
 ;3710:		DC->drawHandlePic(x, thumb, SCROLLBAR_SIZE, SCROLLBAR_SIZE, DC->Assets.scrollBarThumb);
 ADDRLP4 16
@@ -26782,7 +26782,7 @@ CNSTI4 24
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $1742
+NEI4 $1744
 line 3716
 ;3715:			// fit = 0;
 ;3716:			x = item->window.rect.x + 1;
@@ -26812,9 +26812,9 @@ INDIRP4
 INDIRI4
 CVIF4 4
 ASGNF4
-ADDRGP4 $1747
+ADDRGP4 $1749
 JUMPV
-LABELV $1744
+LABELV $1746
 line 3721
 ;3719:				// always draw at least one
 ;3720:				// which may overdraw the box if it is too small for the element
@@ -26846,7 +26846,7 @@ line 3722
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $1748
+EQI4 $1750
 line 3723
 ;3723:					DC->drawHandlePic(x+1, y+1, listPtr->elementWidth - 2, listPtr->elementHeight - 2, image);
 ADDRLP4 84
@@ -26897,7 +26897,7 @@ CALLV
 pop
 line 3724
 ;3724:				}
-LABELV $1748
+LABELV $1750
 line 3726
 ;3725:
 ;3726:				if (i == item->cursorPos) {
@@ -26909,7 +26909,7 @@ CNSTI4 532
 ADDP4
 INDIRI4
 CVIF4 4
-NEF4 $1750
+NEF4 $1752
 line 3727
 ;3727:					DC->drawRect(x, y, listPtr->elementWidth - 1, listPtr->elementHeight - 1, item->window.borderSize, item->window.borderColor);
 ADDRLP4 16
@@ -26963,7 +26963,7 @@ CALLV
 pop
 line 3728
 ;3728:				}
-LABELV $1750
+LABELV $1752
 line 3730
 ;3729:
 ;3730:				listPtr->endPos++;
@@ -27002,7 +27002,7 @@ INDIRP4
 CNSTI4 20
 ADDP4
 INDIRF4
-GEF4 $1752
+GEF4 $1754
 line 3733
 ;3733:					listPtr->drawPadding = listPtr->elementHeight - size;
 ADDRLP4 0
@@ -27021,9 +27021,9 @@ CVFI4 4
 ASGNI4
 line 3734
 ;3734:					break;
-ADDRGP4 $1743
+ADDRGP4 $1745
 JUMPV
-LABELV $1752
+LABELV $1754
 line 3736
 ;3735:				}
 ;3736:				y += listPtr->elementHeight;
@@ -27040,7 +27040,7 @@ ASGNF4
 line 3738
 ;3737:				// fit++;
 ;3738:			}
-LABELV $1745
+LABELV $1747
 line 3718
 ADDRLP4 4
 ADDRLP4 4
@@ -27048,17 +27048,17 @@ INDIRF4
 CNSTF4 1065353216
 ADDF4
 ASGNF4
-LABELV $1747
+LABELV $1749
 ADDRLP4 4
 INDIRF4
 ADDRLP4 28
 INDIRF4
-LTF4 $1744
+LTF4 $1746
 line 3739
 ;3739:		} else {
-ADDRGP4 $1743
+ADDRGP4 $1745
 JUMPV
-LABELV $1742
+LABELV $1744
 line 3740
 ;3740:			x = item->window.rect.x + 1;
 ADDRLP4 16
@@ -27087,9 +27087,9 @@ INDIRP4
 INDIRI4
 CVIF4 4
 ASGNF4
-ADDRGP4 $1757
+ADDRGP4 $1759
 JUMPV
-LABELV $1754
+LABELV $1756
 line 3747
 ;3743:				const char *text;
 ;3744:				// always draw at least one
@@ -27102,16 +27102,16 @@ CNSTI4 28
 ADDP4
 INDIRI4
 CNSTI4 0
-LEI4 $1758
+LEI4 $1760
 line 3749
 ;3748:					int j;
 ;3749:					for (j = 0; j < listPtr->numColumns; j++) {
 ADDRLP4 84
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1763
+ADDRGP4 $1765
 JUMPV
-LABELV $1760
+LABELV $1762
 line 3750
 ;3750:						text = DC->feederItemText(item->special, i, j, &optionalImage);
 ADDRFP4 0
@@ -27146,7 +27146,7 @@ line 3751
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-LTI4 $1764
+LTI4 $1766
 line 3752
 ;3752:							DC->drawHandlePic(x + 4 + listPtr->columnInfo[j].pos, y - 1 + listPtr->elementHeight / 2, listPtr->columnInfo[j].width, listPtr->columnInfo[j].width, optionalImage);
 ADDRLP4 96
@@ -27209,14 +27209,14 @@ CALLV
 pop
 line 3753
 ;3753:						} else if (text) {
-ADDRGP4 $1765
+ADDRGP4 $1767
 JUMPV
-LABELV $1764
+LABELV $1766
 ADDRLP4 80
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1766
+EQU4 $1768
 line 3754
 ;3754:							DC->drawText(x + 4 + listPtr->columnInfo[j].pos, y + listPtr->elementHeight, item->textscale, item->window.foreColor, text, 0, listPtr->columnInfo[j].maxChars, item->textStyle);
 ADDRLP4 96
@@ -27290,11 +27290,11 @@ CALLV
 pop
 line 3755
 ;3755:						}
-LABELV $1766
-LABELV $1765
+LABELV $1768
+LABELV $1767
 line 3756
 ;3756:					}
-LABELV $1761
+LABELV $1763
 line 3749
 ADDRLP4 84
 ADDRLP4 84
@@ -27302,7 +27302,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1763
+LABELV $1765
 ADDRLP4 84
 INDIRI4
 ADDRLP4 0
@@ -27310,12 +27310,12 @@ INDIRP4
 CNSTI4 28
 ADDP4
 INDIRI4
-LTI4 $1760
+LTI4 $1762
 line 3757
 ;3757:				} else {
-ADDRGP4 $1759
+ADDRGP4 $1761
 JUMPV
-LABELV $1758
+LABELV $1760
 line 3758
 ;3758:					text = DC->feederItemText(item->special, i, 0, &optionalImage);
 ADDRFP4 0
@@ -27349,18 +27349,18 @@ line 3759
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-LTI4 $1768
+LTI4 $1770
 line 3761
 ;3760:						//DC->drawHandlePic(x + 4 + listPtr->elementHeight, y, listPtr->columnInfo[j].width, listPtr->columnInfo[j].width, optionalImage);
 ;3761:					} else if (text) {
-ADDRGP4 $1769
+ADDRGP4 $1771
 JUMPV
-LABELV $1768
+LABELV $1770
 ADDRLP4 80
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1770
+EQU4 $1772
 line 3762
 ;3762:						DC->drawText(x + 4, y + listPtr->elementHeight, item->textscale, item->window.foreColor, text, 0, 0, item->textStyle);
 ADDRLP4 16
@@ -27414,11 +27414,11 @@ CALLV
 pop
 line 3763
 ;3763:					}
-LABELV $1770
-LABELV $1769
+LABELV $1772
+LABELV $1771
 line 3764
 ;3764:				}
-LABELV $1759
+LABELV $1761
 line 3766
 ;3765:
 ;3766:				if (i == item->cursorPos) {
@@ -27430,7 +27430,7 @@ CNSTI4 532
 ADDP4
 INDIRI4
 CVIF4 4
-NEF4 $1772
+NEF4 $1774
 line 3767
 ;3767:					DC->fillRect(x + 2, y + 2, item->window.rect.w - SCROLLBAR_SIZE - 4, listPtr->elementHeight, item->window.outlineColor);
 ADDRLP4 84
@@ -27482,7 +27482,7 @@ CALLV
 pop
 line 3768
 ;3768:				}
-LABELV $1772
+LABELV $1774
 line 3770
 ;3769:
 ;3770:				size -= listPtr->elementHeight;
@@ -27505,7 +27505,7 @@ INDIRP4
 CNSTI4 20
 ADDP4
 INDIRF4
-GEF4 $1774
+GEF4 $1776
 line 3772
 ;3772:					listPtr->drawPadding = listPtr->elementHeight - size;
 ADDRLP4 0
@@ -27524,9 +27524,9 @@ CVFI4 4
 ASGNI4
 line 3773
 ;3773:					break;
-ADDRGP4 $1756
+ADDRGP4 $1758
 JUMPV
-LABELV $1774
+LABELV $1776
 line 3775
 ;3774:				}
 ;3775:				listPtr->endPos++;
@@ -27559,7 +27559,7 @@ ASGNF4
 line 3778
 ;3777:				// fit++;
 ;3778:			}
-LABELV $1755
+LABELV $1757
 line 3742
 ADDRLP4 4
 ADDRLP4 4
@@ -27567,22 +27567,22 @@ INDIRF4
 CNSTF4 1065353216
 ADDF4
 ASGNF4
-LABELV $1757
+LABELV $1759
 ADDRLP4 4
 INDIRF4
 ADDRLP4 28
 INDIRF4
-LTF4 $1754
-LABELV $1756
+LTF4 $1756
+LABELV $1758
 line 3779
 ;3779:		}
-LABELV $1743
+LABELV $1745
 line 3780
 ;3780:	}
-LABELV $1725
+LABELV $1727
 line 3781
 ;3781:}
-LABELV $1723
+LABELV $1725
 endproc Item_ListBox_Paint 104 32
 export Item_OwnerDraw_Paint
 proc Item_OwnerDraw_Paint 68 56
@@ -27598,12 +27598,12 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1777
+NEU4 $1779
 line 3788
 ;3788:		return;
-ADDRGP4 $1776
+ADDRGP4 $1778
 JUMPV
-LABELV $1777
+LABELV $1779
 line 3790
 ;3789:	}
 ;3790:  parent = (menuDef_t*)item->parent;
@@ -27624,7 +27624,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1779
+EQU4 $1781
 line 3794
 ;3793:		vec4_t color, lowLight;
 ;3794:		menuDef_t *parent = (menuDef_t*)item->parent;
@@ -27701,7 +27701,7 @@ CNSTI4 284
 ADDP4
 INDIRI4
 CNSTI4 0
-LEI4 $1781
+LEI4 $1783
 ADDRGP4 DC
 INDIRP4
 CNSTI4 72
@@ -27709,7 +27709,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1781
+EQU4 $1783
 line 3800
 ;3798:			// if the value is within one of the ranges then set color to that, otherwise leave at default
 ;3799:			int i;
@@ -27737,9 +27737,9 @@ line 3801
 ADDRLP4 48
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1786
+ADDRGP4 $1788
 JUMPV
-LABELV $1783
+LABELV $1785
 line 3802
 ;3802:				if (f >= item->colorRanges[i].low && f <= item->colorRanges[i].high) {
 ADDRLP4 64
@@ -27760,7 +27760,7 @@ INDIRP4
 CNSTI4 16
 ADDP4
 INDIRF4
-LTF4 $1787
+LTF4 $1789
 ADDRLP4 52
 INDIRF4
 ADDRLP4 64
@@ -27768,7 +27768,7 @@ INDIRP4
 CNSTI4 20
 ADDP4
 INDIRF4
-GTF4 $1787
+GTF4 $1789
 line 3803
 ;3803:					memcpy(&color, &item->colorRanges[i].color, sizeof(color));
 ADDRLP4 4
@@ -27790,13 +27790,13 @@ CALLP4
 pop
 line 3804
 ;3804:					break;
-ADDRGP4 $1785
+ADDRGP4 $1787
 JUMPV
-LABELV $1787
+LABELV $1789
 line 3806
 ;3805:				}
 ;3806:			}
-LABELV $1784
+LABELV $1786
 line 3801
 ADDRLP4 48
 ADDRLP4 48
@@ -27804,7 +27804,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1786
+LABELV $1788
 ADDRLP4 48
 INDIRI4
 ADDRFP4 0
@@ -27812,11 +27812,11 @@ INDIRP4
 CNSTI4 284
 ADDP4
 INDIRI4
-LTI4 $1783
-LABELV $1785
+LTI4 $1785
+LABELV $1787
 line 3807
 ;3807:		}
-LABELV $1781
+LABELV $1783
 line 3809
 ;3808:
 ;3809:		if (item->window.flags & WINDOW_HASFOCUS) {
@@ -27828,7 +27828,7 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $1789
+EQI4 $1791
 line 3810
 ;3810:			lowLight[0] = 0.8 * parent->focusColor[0]; 
 ADDRLP4 24
@@ -27909,9 +27909,9 @@ CALLV
 pop
 line 3815
 ;3815:		} else if (item->textStyle == ITEM_TEXTSTYLE_BLINK && !((DC->realTime/BLINK_DIVISOR) & 1)) {
-ADDRGP4 $1790
+ADDRGP4 $1792
 JUMPV
-LABELV $1789
+LABELV $1791
 ADDRLP4 48
 CNSTI4 1
 ASGNI4
@@ -27922,7 +27922,7 @@ ADDP4
 INDIRI4
 ADDRLP4 48
 INDIRI4
-NEI4 $1794
+NEI4 $1796
 ADDRGP4 DC
 INDIRP4
 CNSTI4 208
@@ -27934,7 +27934,7 @@ ADDRLP4 48
 INDIRI4
 BANDI4
 CNSTI4 0
-NEI4 $1794
+NEI4 $1796
 line 3816
 ;3816:			lowLight[0] = 0.8 * item->window.foreColor[0]; 
 ADDRLP4 24
@@ -28015,8 +28015,8 @@ CALLV
 pop
 line 3821
 ;3821:		}
-LABELV $1794
-LABELV $1790
+LABELV $1796
+LABELV $1792
 line 3823
 ;3822:
 ;3823:		if (item->cvarFlags & (CVAR_ENABLE | CVAR_DISABLE) && !Item_EnableShowViaCvar(item, CVAR_ENABLE)) {
@@ -28032,7 +28032,7 @@ INDIRI4
 CNSTI4 3
 BANDI4
 CNSTI4 0
-EQI4 $1799
+EQI4 $1801
 ADDRLP4 52
 INDIRP4
 ARGP4
@@ -28045,7 +28045,7 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-NEI4 $1799
+NEI4 $1801
 line 3824
 ;3824:		  memcpy(color, parent->disableColor, sizeof(vec4_t)); // bk001207 - FIXME: Com_Memcpy
 ADDRLP4 4
@@ -28062,7 +28062,7 @@ CALLP4
 pop
 line 3825
 ;3825:		}
-LABELV $1799
+LABELV $1801
 line 3827
 ;3826:	
 ;3827:		if (item->text) {
@@ -28073,7 +28073,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1801
+EQU4 $1803
 line 3828
 ;3828:			Item_Text_Paint(item);
 ADDRFP4 0
@@ -28092,7 +28092,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $1803
+EQI4 $1805
 line 3831
 ;3830:					// +8 is an offset kludge to properly align owner draw items that have text combined with them
 ;3831:					DC->ownerDrawItem(item->textRect.x + item->textRect.w + 8, item->window.rect.y, item->window.rect.w, item->window.rect.h, 0, item->textaligny, item->window.ownerDraw, item->window.ownerDrawFlags, item->alignment, item->special, item->textscale, color, item->window.background, item->textStyle );
@@ -28193,9 +28193,9 @@ CALLV
 pop
 line 3832
 ;3832:				} else {
-ADDRGP4 $1802
+ADDRGP4 $1804
 JUMPV
-LABELV $1803
+LABELV $1805
 line 3833
 ;3833:					DC->ownerDrawItem(item->textRect.x + item->textRect.w, item->window.rect.y, item->window.rect.w, item->window.rect.h, 0, item->textaligny, item->window.ownerDraw, item->window.ownerDrawFlags, item->alignment, item->special, item->textscale, color, item->window.background, item->textStyle );
 ADDRLP4 60
@@ -28295,9 +28295,9 @@ line 3834
 ;3834:				}
 line 3835
 ;3835:			} else {
-ADDRGP4 $1802
+ADDRGP4 $1804
 JUMPV
-LABELV $1801
+LABELV $1803
 line 3836
 ;3836:			DC->ownerDrawItem(item->window.rect.x, item->window.rect.y, item->window.rect.w, item->window.rect.h, item->textalignx, item->textaligny, item->window.ownerDraw, item->window.ownerDrawFlags, item->alignment, item->special, item->textscale, color, item->window.background, item->textStyle );
 ADDRLP4 60
@@ -28391,13 +28391,13 @@ CALLV
 pop
 line 3837
 ;3837:		}
-LABELV $1802
+LABELV $1804
 line 3838
 ;3838:	}
-LABELV $1779
+LABELV $1781
 line 3839
 ;3839:}
-LABELV $1776
+LABELV $1778
 endproc Item_OwnerDraw_Paint 68 56
 export Item_Paint
 proc Item_Paint 84 24
@@ -28448,12 +28448,12 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1809
+NEU4 $1811
 line 3849
 ;3849:    return;
-ADDRGP4 $1805
+ADDRGP4 $1807
 JUMPV
-LABELV $1809
+LABELV $1811
 line 3852
 ;3850:  }
 ;3851:
@@ -28466,7 +28466,7 @@ INDIRI4
 CNSTI4 65536
 BANDI4
 CNSTI4 0
-EQI4 $1811
+EQI4 $1813
 line 3853
 ;3853:    if (DC->realTime > item->window.nextTime) {
 ADDRGP4 DC
@@ -28479,7 +28479,7 @@ INDIRP4
 CNSTI4 108
 ADDP4
 INDIRI4
-LEI4 $1813
+LEI4 $1815
 line 3856
 ;3854:      float rx, ry, a, c, s, w, h;
 ;3855:      
@@ -28675,10 +28675,10 @@ pop
 line 3869
 ;3868:
 ;3869:    }
-LABELV $1813
+LABELV $1815
 line 3870
 ;3870:  }
-LABELV $1811
+LABELV $1813
 line 3873
 ;3871:
 ;3872:
@@ -28691,7 +28691,7 @@ INDIRI4
 CNSTI4 256
 BANDI4
 CNSTI4 0
-EQI4 $1815
+EQI4 $1817
 line 3874
 ;3874:    if (DC->realTime > item->window.nextTime) {
 ADDRGP4 DC
@@ -28704,7 +28704,7 @@ INDIRP4
 CNSTI4 108
 ADDP4
 INDIRI4
-LEI4 $1817
+LEI4 $1819
 line 3875
 ;3875:      int done = 0;
 ADDRLP4 28
@@ -28749,7 +28749,7 @@ INDIRP4
 CNSTI4 72
 ADDP4
 INDIRF4
-NEF4 $1819
+NEF4 $1821
 line 3879
 ;3879:				done++;
 ADDRLP4 28
@@ -28760,9 +28760,9 @@ ADDI4
 ASGNI4
 line 3880
 ;3880:			} else {
-ADDRGP4 $1820
+ADDRGP4 $1822
 JUMPV
-LABELV $1819
+LABELV $1821
 line 3881
 ;3881:				if (item->window.rectClient.x < item->window.rectEffects.x) {
 ADDRLP4 40
@@ -28779,7 +28779,7 @@ INDIRP4
 CNSTI4 72
 ADDP4
 INDIRF4
-GEF4 $1821
+GEF4 $1823
 line 3882
 ;3882:					item->window.rectClient.x += item->window.rectEffects2.x;
 ADDRLP4 44
@@ -28820,7 +28820,7 @@ INDIRP4
 CNSTI4 72
 ADDP4
 INDIRF4
-LEF4 $1822
+LEF4 $1824
 line 3884
 ;3884:						item->window.rectClient.x = item->window.rectEffects.x;
 ADDRLP4 56
@@ -28849,9 +28849,9 @@ line 3886
 ;3886:					}
 line 3887
 ;3887:				} else {
-ADDRGP4 $1822
+ADDRGP4 $1824
 JUMPV
-LABELV $1821
+LABELV $1823
 line 3888
 ;3888:					item->window.rectClient.x -= item->window.rectEffects2.x;
 ADDRLP4 44
@@ -28892,7 +28892,7 @@ INDIRP4
 CNSTI4 72
 ADDP4
 INDIRF4
-GEF4 $1825
+GEF4 $1827
 line 3890
 ;3890:						item->window.rectClient.x = item->window.rectEffects.x;
 ADDRLP4 56
@@ -28919,13 +28919,13 @@ ADDI4
 ASGNI4
 line 3892
 ;3892:					}
-LABELV $1825
+LABELV $1827
 line 3893
 ;3893:				}
-LABELV $1822
+LABELV $1824
 line 3894
 ;3894:			}
-LABELV $1820
+LABELV $1822
 line 3895
 ;3895:			if (item->window.rectClient.y == item->window.rectEffects.y) {
 ADDRLP4 40
@@ -28942,7 +28942,7 @@ INDIRP4
 CNSTI4 76
 ADDP4
 INDIRF4
-NEF4 $1827
+NEF4 $1829
 line 3896
 ;3896:				done++;
 ADDRLP4 28
@@ -28953,9 +28953,9 @@ ADDI4
 ASGNI4
 line 3897
 ;3897:			} else {
-ADDRGP4 $1828
+ADDRGP4 $1830
 JUMPV
-LABELV $1827
+LABELV $1829
 line 3898
 ;3898:				if (item->window.rectClient.y < item->window.rectEffects.y) {
 ADDRLP4 44
@@ -28972,7 +28972,7 @@ INDIRP4
 CNSTI4 76
 ADDP4
 INDIRF4
-GEF4 $1829
+GEF4 $1831
 line 3899
 ;3899:					item->window.rectClient.y += item->window.rectEffects2.y;
 ADDRLP4 48
@@ -29013,7 +29013,7 @@ INDIRP4
 CNSTI4 76
 ADDP4
 INDIRF4
-LEF4 $1830
+LEF4 $1832
 line 3901
 ;3901:						item->window.rectClient.y = item->window.rectEffects.y;
 ADDRLP4 60
@@ -29042,9 +29042,9 @@ line 3903
 ;3903:					}
 line 3904
 ;3904:				} else {
-ADDRGP4 $1830
+ADDRGP4 $1832
 JUMPV
-LABELV $1829
+LABELV $1831
 line 3905
 ;3905:					item->window.rectClient.y -= item->window.rectEffects2.y;
 ADDRLP4 48
@@ -29085,7 +29085,7 @@ INDIRP4
 CNSTI4 76
 ADDP4
 INDIRF4
-GEF4 $1833
+GEF4 $1835
 line 3907
 ;3907:						item->window.rectClient.y = item->window.rectEffects.y;
 ADDRLP4 60
@@ -29112,13 +29112,13 @@ ADDI4
 ASGNI4
 line 3909
 ;3909:					}
-LABELV $1833
+LABELV $1835
 line 3910
 ;3910:				}
-LABELV $1830
+LABELV $1832
 line 3911
 ;3911:			}
-LABELV $1828
+LABELV $1830
 line 3912
 ;3912:			if (item->window.rectClient.w == item->window.rectEffects.w) {
 ADDRLP4 44
@@ -29135,7 +29135,7 @@ INDIRP4
 CNSTI4 80
 ADDP4
 INDIRF4
-NEF4 $1835
+NEF4 $1837
 line 3913
 ;3913:				done++;
 ADDRLP4 28
@@ -29146,9 +29146,9 @@ ADDI4
 ASGNI4
 line 3914
 ;3914:			} else {
-ADDRGP4 $1836
+ADDRGP4 $1838
 JUMPV
-LABELV $1835
+LABELV $1837
 line 3915
 ;3915:				if (item->window.rectClient.w < item->window.rectEffects.w) {
 ADDRLP4 48
@@ -29165,7 +29165,7 @@ INDIRP4
 CNSTI4 80
 ADDP4
 INDIRF4
-GEF4 $1837
+GEF4 $1839
 line 3916
 ;3916:					item->window.rectClient.w += item->window.rectEffects2.w;
 ADDRLP4 52
@@ -29206,7 +29206,7 @@ INDIRP4
 CNSTI4 80
 ADDP4
 INDIRF4
-LEF4 $1838
+LEF4 $1840
 line 3918
 ;3918:						item->window.rectClient.w = item->window.rectEffects.w;
 ADDRLP4 64
@@ -29235,9 +29235,9 @@ line 3920
 ;3920:					}
 line 3921
 ;3921:				} else {
-ADDRGP4 $1838
+ADDRGP4 $1840
 JUMPV
-LABELV $1837
+LABELV $1839
 line 3922
 ;3922:					item->window.rectClient.w -= item->window.rectEffects2.w;
 ADDRLP4 52
@@ -29278,7 +29278,7 @@ INDIRP4
 CNSTI4 80
 ADDP4
 INDIRF4
-GEF4 $1841
+GEF4 $1843
 line 3924
 ;3924:						item->window.rectClient.w = item->window.rectEffects.w;
 ADDRLP4 64
@@ -29305,13 +29305,13 @@ ADDI4
 ASGNI4
 line 3926
 ;3926:					}
-LABELV $1841
+LABELV $1843
 line 3927
 ;3927:				}
-LABELV $1838
+LABELV $1840
 line 3928
 ;3928:			}
-LABELV $1836
+LABELV $1838
 line 3929
 ;3929:			if (item->window.rectClient.h == item->window.rectEffects.h) {
 ADDRLP4 48
@@ -29328,7 +29328,7 @@ INDIRP4
 CNSTI4 84
 ADDP4
 INDIRF4
-NEF4 $1843
+NEF4 $1845
 line 3930
 ;3930:				done++;
 ADDRLP4 28
@@ -29339,9 +29339,9 @@ ADDI4
 ASGNI4
 line 3931
 ;3931:			} else {
-ADDRGP4 $1844
+ADDRGP4 $1846
 JUMPV
-LABELV $1843
+LABELV $1845
 line 3932
 ;3932:				if (item->window.rectClient.h < item->window.rectEffects.h) {
 ADDRLP4 52
@@ -29358,7 +29358,7 @@ INDIRP4
 CNSTI4 84
 ADDP4
 INDIRF4
-GEF4 $1845
+GEF4 $1847
 line 3933
 ;3933:					item->window.rectClient.h += item->window.rectEffects2.h;
 ADDRLP4 56
@@ -29399,7 +29399,7 @@ INDIRP4
 CNSTI4 84
 ADDP4
 INDIRF4
-LEF4 $1846
+LEF4 $1848
 line 3935
 ;3935:						item->window.rectClient.h = item->window.rectEffects.h;
 ADDRLP4 68
@@ -29428,9 +29428,9 @@ line 3937
 ;3937:					}
 line 3938
 ;3938:				} else {
-ADDRGP4 $1846
+ADDRGP4 $1848
 JUMPV
-LABELV $1845
+LABELV $1847
 line 3939
 ;3939:					item->window.rectClient.h -= item->window.rectEffects2.h;
 ADDRLP4 56
@@ -29471,7 +29471,7 @@ INDIRP4
 CNSTI4 84
 ADDP4
 INDIRF4
-GEF4 $1849
+GEF4 $1851
 line 3941
 ;3941:						item->window.rectClient.h = item->window.rectEffects.h;
 ADDRLP4 68
@@ -29498,13 +29498,13 @@ ADDI4
 ASGNI4
 line 3943
 ;3943:					}
-LABELV $1849
+LABELV $1851
 line 3944
 ;3944:				}
-LABELV $1846
+LABELV $1848
 line 3945
 ;3945:			}
-LABELV $1844
+LABELV $1846
 line 3947
 ;3946:
 ;3947:      Item_UpdatePosition(item);
@@ -29520,7 +29520,7 @@ line 3949
 ADDRLP4 28
 INDIRI4
 CNSTI4 4
-NEI4 $1851
+NEI4 $1853
 line 3950
 ;3950:        item->window.flags &= ~WINDOW_INTRANSITION;
 ADDRLP4 52
@@ -29539,14 +29539,14 @@ BANDI4
 ASGNI4
 line 3951
 ;3951:      }
-LABELV $1851
+LABELV $1853
 line 3953
 ;3952:
 ;3953:    }
-LABELV $1817
+LABELV $1819
 line 3954
 ;3954:  }
-LABELV $1815
+LABELV $1817
 line 3956
 ;3955:
 ;3956:	if (item->window.ownerDrawFlags && DC->ownerDrawVisible) {
@@ -29556,7 +29556,7 @@ CNSTI4 60
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $1853
+EQI4 $1855
 ADDRGP4 DC
 INDIRP4
 CNSTI4 76
@@ -29564,7 +29564,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1853
+EQU4 $1855
 line 3957
 ;3957:		if (!DC->ownerDrawVisible(item->window.ownerDrawFlags)) {
 ADDRFP4 0
@@ -29584,7 +29584,7 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-NEI4 $1855
+NEI4 $1857
 line 3958
 ;3958:			item->window.flags &= ~WINDOW_VISIBLE;
 ADDRLP4 32
@@ -29603,9 +29603,9 @@ BANDI4
 ASGNI4
 line 3959
 ;3959:		} else {
-ADDRGP4 $1856
+ADDRGP4 $1858
 JUMPV
-LABELV $1855
+LABELV $1857
 line 3960
 ;3960:			item->window.flags |= WINDOW_VISIBLE;
 ADDRLP4 32
@@ -29624,10 +29624,10 @@ BORI4
 ASGNI4
 line 3961
 ;3961:		}
-LABELV $1856
+LABELV $1858
 line 3962
 ;3962:	}
-LABELV $1853
+LABELV $1855
 line 3964
 ;3963:
 ;3964:	if (item->cvarFlags & (CVAR_SHOW | CVAR_HIDE)) {
@@ -29639,7 +29639,7 @@ INDIRI4
 CNSTI4 12
 BANDI4
 CNSTI4 0
-EQI4 $1857
+EQI4 $1859
 line 3965
 ;3965:		if (!Item_EnableShowViaCvar(item, CVAR_SHOW)) {
 ADDRFP4 0
@@ -29654,16 +29654,16 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-NEI4 $1859
+NEI4 $1861
 line 3966
 ;3966:			return;
-ADDRGP4 $1805
+ADDRGP4 $1807
 JUMPV
-LABELV $1859
+LABELV $1861
 line 3968
 ;3967:		}
 ;3968:	}
-LABELV $1857
+LABELV $1859
 line 3970
 ;3969:
 ;3970:  if (item->window.flags & WINDOW_TIMEDVISIBLE) {
@@ -29675,11 +29675,11 @@ INDIRI4
 CNSTI4 8388608
 BANDI4
 CNSTI4 0
-EQI4 $1861
+EQI4 $1863
 line 3972
 ;3971:
 ;3972:	}
-LABELV $1861
+LABELV $1863
 line 3974
 ;3973:
 ;3974:  if (!(item->window.flags & WINDOW_VISIBLE)) {
@@ -29691,12 +29691,12 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-NEI4 $1863
+NEI4 $1865
 line 3975
 ;3975:    return;
-ADDRGP4 $1805
+ADDRGP4 $1807
 JUMPV
-LABELV $1863
+LABELV $1865
 line 3979
 ;3976:  }
 ;3977:
@@ -29733,7 +29733,7 @@ line 3981
 ADDRGP4 debugMode
 INDIRI4
 CNSTI4 0
-EQI4 $1865
+EQI4 $1867
 line 3983
 ;3982:		vec4_t color;
 ;3983:		rectDef_t *r = Item_CorrectedTextRect(item);
@@ -29811,7 +29811,7 @@ CALLV
 pop
 line 3987
 ;3987:  }
-LABELV $1865
+LABELV $1867
 line 3991
 ;3988:
 ;3989:  //DC->drawRect(item->window.rect.x, item->window.rect.y, item->window.rect.w, item->window.rect.h, 1, red);
@@ -29827,38 +29827,38 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-LTI4 $1871
+LTI4 $1873
 ADDRLP4 32
 INDIRI4
 CNSTI4 13
-GTI4 $1871
+GTI4 $1873
 ADDRLP4 32
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $1885
+ADDRGP4 $1887
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $1885
-address $1874
-address $1874
-address $1871
-address $1871
-address $1877
-address $1871
-address $1879
-address $1880
+LABELV $1887
+address $1876
+address $1876
 address $1873
-address $1877
-address $1884
+address $1873
+address $1879
+address $1873
 address $1881
 address $1882
+address $1875
+address $1879
+address $1886
 address $1883
+address $1884
+address $1885
 code
-LABELV $1873
+LABELV $1875
 line 3993
 ;3992:    case ITEM_TYPE_OWNERDRAW:
 ;3993:      Item_OwnerDraw_Paint(item);
@@ -29870,9 +29870,9 @@ CALLV
 pop
 line 3994
 ;3994:      break;
-ADDRGP4 $1871
+ADDRGP4 $1873
 JUMPV
-LABELV $1874
+LABELV $1876
 line 3997
 ;3995:    case ITEM_TYPE_TEXT:
 ;3996:    case ITEM_TYPE_BUTTON:
@@ -29885,7 +29885,7 @@ CALLV
 pop
 line 3998
 ;3998:      break;
-ADDRGP4 $1871
+ADDRGP4 $1873
 JUMPV
 line 4000
 ;3999:    case ITEM_TYPE_RADIOBUTTON:
@@ -29893,7 +29893,7 @@ line 4000
 line 4002
 ;4001:    case ITEM_TYPE_CHECKBOX:
 ;4002:      break;
-LABELV $1877
+LABELV $1879
 line 4005
 ;4003:    case ITEM_TYPE_EDITFIELD:
 ;4004:    case ITEM_TYPE_NUMERICFIELD:
@@ -29906,12 +29906,12 @@ CALLV
 pop
 line 4006
 ;4006:      break;
-ADDRGP4 $1871
+ADDRGP4 $1873
 JUMPV
 line 4008
 ;4007:    case ITEM_TYPE_COMBO:
 ;4008:      break;
-LABELV $1879
+LABELV $1881
 line 4010
 ;4009:    case ITEM_TYPE_LISTBOX:
 ;4010:      Item_ListBox_Paint(item);
@@ -29923,9 +29923,9 @@ CALLV
 pop
 line 4011
 ;4011:      break;
-ADDRGP4 $1871
+ADDRGP4 $1873
 JUMPV
-LABELV $1880
+LABELV $1882
 line 4016
 ;4012:    //case ITEM_TYPE_IMAGE:
 ;4013:    //  Item_Image_Paint(item);
@@ -29940,9 +29940,9 @@ CALLV
 pop
 line 4017
 ;4017:      break;
-ADDRGP4 $1871
+ADDRGP4 $1873
 JUMPV
-LABELV $1881
+LABELV $1883
 line 4019
 ;4018:    case ITEM_TYPE_YESNO:
 ;4019:      Item_YesNo_Paint(item);
@@ -29954,9 +29954,9 @@ CALLV
 pop
 line 4020
 ;4020:      break;
-ADDRGP4 $1871
+ADDRGP4 $1873
 JUMPV
-LABELV $1882
+LABELV $1884
 line 4022
 ;4021:    case ITEM_TYPE_MULTI:
 ;4022:      Item_Multi_Paint(item);
@@ -29968,9 +29968,9 @@ CALLV
 pop
 line 4023
 ;4023:      break;
-ADDRGP4 $1871
+ADDRGP4 $1873
 JUMPV
-LABELV $1883
+LABELV $1885
 line 4025
 ;4024:    case ITEM_TYPE_BIND:
 ;4025:      Item_Bind_Paint(item);
@@ -29982,9 +29982,9 @@ CALLV
 pop
 line 4026
 ;4026:      break;
-ADDRGP4 $1871
+ADDRGP4 $1873
 JUMPV
-LABELV $1884
+LABELV $1886
 line 4028
 ;4027:    case ITEM_TYPE_SLIDER:
 ;4028:      Item_Slider_Paint(item);
@@ -29999,12 +29999,12 @@ line 4029
 line 4031
 ;4030:    default:
 ;4031:      break;
-LABELV $1871
+LABELV $1873
 line 4034
 ;4032:  }
 ;4033:
 ;4034:}
-LABELV $1805
+LABELV $1807
 endproc Item_Paint 84 24
 export Menu_Init
 proc Menu_Init 0 12
@@ -30077,7 +30077,7 @@ CALLV
 pop
 line 4043
 ;4043:}
-LABELV $1886
+LABELV $1888
 endproc Menu_Init 0 12
 export Menu_GetFocusedItem
 proc Menu_GetFocusedItem 8 0
@@ -30091,15 +30091,15 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1888
+EQU4 $1890
 line 4048
 ;4048:    for (i = 0; i < menu->itemCount; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1893
+ADDRGP4 $1895
 JUMPV
-LABELV $1890
+LABELV $1892
 line 4049
 ;4049:      if (menu->items[i]->window.flags & WINDOW_HASFOCUS) {
 ADDRLP4 4
@@ -30123,7 +30123,7 @@ ADDRLP4 4
 INDIRI4
 BANDI4
 CNSTI4 0
-EQI4 $1894
+EQI4 $1896
 line 4050
 ;4050:        return menu->items[i];
 ADDRLP4 0
@@ -30137,13 +30137,13 @@ ADDP4
 ADDP4
 INDIRP4
 RETP4
-ADDRGP4 $1887
+ADDRGP4 $1889
 JUMPV
-LABELV $1894
+LABELV $1896
 line 4052
 ;4051:      }
 ;4052:    }
-LABELV $1891
+LABELV $1893
 line 4048
 ADDRLP4 0
 ADDRLP4 0
@@ -30151,7 +30151,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1893
+LABELV $1895
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -30159,15 +30159,15 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $1890
+LTI4 $1892
 line 4053
 ;4053:  }
-LABELV $1888
+LABELV $1890
 line 4054
 ;4054:  return NULL;
 CNSTP4 0
 RETP4
-LABELV $1887
+LABELV $1889
 endproc Menu_GetFocusedItem 8 0
 export Menu_GetFocused
 proc Menu_GetFocused 12 0
@@ -30181,9 +30181,9 @@ line 4059
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1900
+ADDRGP4 $1902
 JUMPV
-LABELV $1897
+LABELV $1899
 line 4060
 ;4060:    if (Menus[i].window.flags & WINDOW_HASFOCUS && Menus[i].window.flags & WINDOW_VISIBLE) {
 ADDRLP4 4
@@ -30204,7 +30204,7 @@ CNSTI4 2
 BANDI4
 ADDRLP4 8
 INDIRI4
-EQI4 $1901
+EQI4 $1903
 ADDRLP4 4
 INDIRI4
 ADDRGP4 Menus+68
@@ -30214,7 +30214,7 @@ CNSTI4 4
 BANDI4
 ADDRLP4 8
 INDIRI4
-EQI4 $1901
+EQI4 $1903
 line 4061
 ;4061:      return &Menus[i];
 CNSTI4 644
@@ -30224,13 +30224,13 @@ MULI4
 ADDRGP4 Menus
 ADDP4
 RETP4
-ADDRGP4 $1896
+ADDRGP4 $1898
 JUMPV
-LABELV $1901
+LABELV $1903
 line 4063
 ;4062:    }
 ;4063:  }
-LABELV $1898
+LABELV $1900
 line 4059
 ADDRLP4 0
 ADDRLP4 0
@@ -30238,17 +30238,17 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1900
+LABELV $1902
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $1897
+LTI4 $1899
 line 4064
 ;4064:  return NULL;
 CNSTP4 0
 RETP4
-LABELV $1896
+LABELV $1898
 endproc Menu_GetFocused 12 0
 export Menu_ScrollFeeder
 proc Menu_ScrollFeeder 12 16
@@ -30262,16 +30262,16 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1906
+EQU4 $1908
 line 4070
 ;4069:		int i;
 ;4070:    for (i = 0; i < menu->itemCount; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1911
+ADDRGP4 $1913
 JUMPV
-LABELV $1908
+LABELV $1910
 line 4071
 ;4071:			if (menu->items[i]->special == feeder) {
 ADDRLP4 0
@@ -30290,7 +30290,7 @@ INDIRF4
 ADDRFP4 4
 INDIRI4
 CVIF4 4
-NEF4 $1912
+NEF4 $1914
 line 4072
 ;4072:				Item_ListBox_HandleKey(menu->items[i], (down) ? K_DOWNARROW : K_UPARROW, qtrue, qtrue);
 ADDRLP4 0
@@ -30307,17 +30307,17 @@ ARGP4
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $1915
+EQI4 $1917
 ADDRLP4 4
 CNSTI4 133
 ASGNI4
-ADDRGP4 $1916
+ADDRGP4 $1918
 JUMPV
-LABELV $1915
+LABELV $1917
 ADDRLP4 4
 CNSTI4 132
 ASGNI4
-LABELV $1916
+LABELV $1918
 ADDRLP4 4
 INDIRI4
 ARGI4
@@ -30335,13 +30335,13 @@ CALLI4
 pop
 line 4073
 ;4073:				return;
-ADDRGP4 $1905
+ADDRGP4 $1907
 JUMPV
-LABELV $1912
+LABELV $1914
 line 4075
 ;4074:			}
 ;4075:		}
-LABELV $1909
+LABELV $1911
 line 4070
 ADDRLP4 0
 ADDRLP4 0
@@ -30349,7 +30349,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1911
+LABELV $1913
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -30357,13 +30357,13 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $1908
+LTI4 $1910
 line 4076
 ;4076:	}
-LABELV $1906
+LABELV $1908
 line 4077
 ;4077:}
-LABELV $1905
+LABELV $1907
 endproc Menu_ScrollFeeder 12 16
 export Menu_SetFeederSelection
 proc Menu_SetFeederSelection 8 8
@@ -30378,14 +30378,14 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1918
+NEU4 $1920
 line 4083
 ;4083:		if (name == NULL) {
 ADDRFP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1920
+NEU4 $1922
 line 4084
 ;4084:			menu = Menu_GetFocused();
 ADDRLP4 0
@@ -30398,9 +30398,9 @@ INDIRP4
 ASGNP4
 line 4085
 ;4085:		} else {
-ADDRGP4 $1921
+ADDRGP4 $1923
 JUMPV
-LABELV $1920
+LABELV $1922
 line 4086
 ;4086:			menu = Menus_FindByName(name);
 ADDRFP4 12
@@ -30416,10 +30416,10 @@ INDIRP4
 ASGNP4
 line 4087
 ;4087:		}
-LABELV $1921
+LABELV $1923
 line 4088
 ;4088:	}
-LABELV $1918
+LABELV $1920
 line 4090
 ;4089:
 ;4090:	if (menu) {
@@ -30427,16 +30427,16 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1922
+EQU4 $1924
 line 4092
 ;4091:		int i;
 ;4092:    for (i = 0; i < menu->itemCount; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1927
+ADDRGP4 $1929
 JUMPV
-LABELV $1924
+LABELV $1926
 line 4093
 ;4093:			if (menu->items[i]->special == feeder) {
 ADDRLP4 0
@@ -30455,13 +30455,13 @@ INDIRF4
 ADDRFP4 4
 INDIRI4
 CVIF4 4
-NEF4 $1928
+NEF4 $1930
 line 4094
 ;4094:				if (index == 0) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $1930
+NEI4 $1932
 line 4095
 ;4095:					listBoxDef_t *listPtr = (listBoxDef_t*)menu->items[i]->typeData;
 ADDRLP4 4
@@ -30495,7 +30495,7 @@ CNSTI4 0
 ASGNI4
 line 4098
 ;4098:				}
-LABELV $1930
+LABELV $1932
 line 4099
 ;4099:				menu->items[i]->cursorPos = index;
 ADDRLP4 0
@@ -30548,13 +30548,13 @@ CALLV
 pop
 line 4101
 ;4101:				return;
-ADDRGP4 $1917
+ADDRGP4 $1919
 JUMPV
-LABELV $1928
+LABELV $1930
 line 4103
 ;4102:			}
 ;4103:		}
-LABELV $1925
+LABELV $1927
 line 4092
 ADDRLP4 0
 ADDRLP4 0
@@ -30562,7 +30562,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1927
+LABELV $1929
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -30570,13 +30570,13 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $1924
+LTI4 $1926
 line 4104
 ;4104:	}
-LABELV $1922
+LABELV $1924
 line 4105
 ;4105:}
-LABELV $1917
+LABELV $1919
 endproc Menu_SetFeederSelection 8 8
 export Menus_AnyFullScreenVisible
 proc Menus_AnyFullScreenVisible 12 0
@@ -30589,9 +30589,9 @@ line 4109
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1936
+ADDRGP4 $1938
 JUMPV
-LABELV $1933
+LABELV $1935
 line 4110
 ;4110:    if (Menus[i].window.flags & WINDOW_VISIBLE && Menus[i].fullScreen) {
 ADDRLP4 4
@@ -30612,7 +30612,7 @@ CNSTI4 4
 BANDI4
 ADDRLP4 8
 INDIRI4
-EQI4 $1937
+EQI4 $1939
 ADDRLP4 4
 INDIRI4
 ADDRGP4 Menus+184
@@ -30620,18 +30620,18 @@ ADDP4
 INDIRI4
 ADDRLP4 8
 INDIRI4
-EQI4 $1937
+EQI4 $1939
 line 4111
 ;4111:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $1932
+ADDRGP4 $1934
 JUMPV
-LABELV $1937
+LABELV $1939
 line 4113
 ;4112:    }
 ;4113:  }
-LABELV $1934
+LABELV $1936
 line 4109
 ADDRLP4 0
 ADDRLP4 0
@@ -30639,17 +30639,17 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1936
+LABELV $1938
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $1933
+LTI4 $1935
 line 4114
 ;4114:  return qfalse;
 CNSTI4 0
 RETI4
-LABELV $1932
+LABELV $1934
 endproc Menus_AnyFullScreenVisible 12 0
 export Menus_ActivateByName
 proc Menus_ActivateByName 28 8
@@ -30678,9 +30678,9 @@ line 4121
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1945
+ADDRGP4 $1947
 JUMPV
-LABELV $1942
+LABELV $1944
 line 4122
 ;4122:    if (Q_stricmp(Menus[i].window.name, p) == 0) {
 CNSTI4 644
@@ -30701,7 +30701,7 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-NEI4 $1946
+NEI4 $1948
 line 4123
 ;4123:	    m = &Menus[i];
 ADDRLP4 4
@@ -30725,12 +30725,12 @@ line 4125
 ADDRGP4 openMenuCount
 INDIRI4
 CNSTI4 16
-GEI4 $1947
+GEI4 $1949
 ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1947
+EQU4 $1949
 line 4126
 ;4126:				menuStack[openMenuCount++] = focus;
 ADDRLP4 24
@@ -30761,9 +30761,9 @@ line 4127
 ;4127:			}
 line 4128
 ;4128:    } else {
-ADDRGP4 $1947
+ADDRGP4 $1949
 JUMPV
-LABELV $1946
+LABELV $1948
 line 4129
 ;4129:      Menus[i].window.flags &= ~WINDOW_HASFOCUS;
 ADDRLP4 20
@@ -30784,10 +30784,10 @@ BANDI4
 ASGNI4
 line 4130
 ;4130:    }
-LABELV $1947
+LABELV $1949
 line 4131
 ;4131:  }
-LABELV $1943
+LABELV $1945
 line 4121
 ADDRLP4 0
 ADDRLP4 0
@@ -30795,12 +30795,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1945
+LABELV $1947
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $1942
+LTI4 $1944
 line 4132
 ;4132:	Display_CloseCinematics();
 ADDRGP4 Display_CloseCinematics
@@ -30811,7 +30811,7 @@ line 4133
 ADDRLP4 4
 INDIRP4
 RETP4
-LABELV $1941
+LABELV $1943
 endproc Menus_ActivateByName 28 8
 export Item_Init
 proc Item_Init 0 12
@@ -30850,7 +30850,7 @@ CALLV
 pop
 line 4141
 ;4141:}
-LABELV $1952
+LABELV $1954
 endproc Item_Init 0 12
 export Menu_HandleMouseMove
 proc Menu_HandleMouseMove 52 12
@@ -30871,12 +30871,12 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1954
+NEU4 $1956
 line 4149
 ;4149:    return;
-ADDRGP4 $1953
+ADDRGP4 $1955
 JUMPV
-LABELV $1954
+LABELV $1956
 line 4152
 ;4150:  }
 ;4151:
@@ -30889,12 +30889,12 @@ INDIRI4
 CNSTI4 1048580
 BANDI4
 CNSTI4 0
-NEI4 $1956
+NEI4 $1958
 line 4153
 ;4153:    return;
-ADDRGP4 $1953
+ADDRGP4 $1955
 JUMPV
-LABELV $1956
+LABELV $1958
 line 4156
 ;4154:  }
 ;4155:
@@ -30903,13 +30903,13 @@ ADDRGP4 itemCapture
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1958
+EQU4 $1960
 line 4158
 ;4157:		//Item_MouseMove(itemCapture, x, y);
 ;4158:		return;
-ADDRGP4 $1953
+ADDRGP4 $1955
 JUMPV
-LABELV $1958
+LABELV $1960
 line 4161
 ;4159:	}
 ;4160:
@@ -30921,18 +30921,18 @@ ADDRGP4 g_waitingForKey
 INDIRI4
 ADDRLP4 16
 INDIRI4
-NEI4 $1962
+NEI4 $1964
 ADDRGP4 g_editingField
 INDIRI4
 ADDRLP4 16
 INDIRI4
-EQI4 $1960
-LABELV $1962
+EQI4 $1962
+LABELV $1964
 line 4162
 ;4162:		return;
-ADDRGP4 $1953
+ADDRGP4 $1955
 JUMPV
-LABELV $1960
+LABELV $1962
 line 4167
 ;4163:	}
 ;4164:
@@ -30942,15 +30942,15 @@ line 4167
 ADDRLP4 8
 CNSTI4 0
 ASGNI4
-LABELV $1963
+LABELV $1965
 line 4168
 ;4168:    for (i = 0; i < menu->itemCount; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1970
+ADDRGP4 $1972
 JUMPV
-LABELV $1967
+LABELV $1969
 line 4172
 ;4169:      // turn off focus each item
 ;4170:      // menu->items[i].window.flags &= ~WINDOW_HASFOCUS;
@@ -30972,12 +30972,12 @@ INDIRI4
 CNSTI4 1048580
 BANDI4
 CNSTI4 0
-NEI4 $1971
+NEI4 $1973
 line 4173
 ;4173:        continue;
-ADDRGP4 $1968
+ADDRGP4 $1970
 JUMPV
-LABELV $1971
+LABELV $1973
 line 4177
 ;4174:      }
 ;4175:
@@ -31003,7 +31003,7 @@ INDIRI4
 CNSTI4 3
 BANDI4
 CNSTI4 0
-EQI4 $1973
+EQI4 $1975
 ADDRLP4 20
 INDIRP4
 ARGP4
@@ -31016,12 +31016,12 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-NEI4 $1973
+NEI4 $1975
 line 4178
 ;4178:				continue;
-ADDRGP4 $1968
+ADDRGP4 $1970
 JUMPV
-LABELV $1973
+LABELV $1975
 line 4181
 ;4179:			}
 ;4180:
@@ -31046,7 +31046,7 @@ INDIRI4
 CNSTI4 12
 BANDI4
 CNSTI4 0
-EQI4 $1975
+EQI4 $1977
 ADDRLP4 28
 INDIRP4
 ARGP4
@@ -31059,12 +31059,12 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-NEI4 $1975
+NEI4 $1977
 line 4182
 ;4182:				continue;
-ADDRGP4 $1968
+ADDRGP4 $1970
 JUMPV
-LABELV $1975
+LABELV $1977
 line 4187
 ;4183:			}
 ;4184:
@@ -31095,13 +31095,13 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $1977
+EQI4 $1979
 line 4188
 ;4188:				if (pass == 1) {
 ADDRLP4 8
 INDIRI4
 CNSTI4 1
-NEI4 $1978
+NEI4 $1980
 line 4189
 ;4189:					overItem = menu->items[i];
 ADDRLP4 4
@@ -31124,7 +31124,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $1981
+NEI4 $1983
 ADDRLP4 4
 INDIRP4
 CNSTI4 224
@@ -31132,7 +31132,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1981
+EQU4 $1983
 line 4191
 ;4191:						if (!Rect_ContainsPoint(Item_CorrectedTextRect(overItem), x, y)) {
 ADDRLP4 4
@@ -31158,16 +31158,16 @@ ASGNI4
 ADDRLP4 48
 INDIRI4
 CNSTI4 0
-NEI4 $1983
+NEI4 $1985
 line 4192
 ;4192:							continue;
-ADDRGP4 $1968
+ADDRGP4 $1970
 JUMPV
-LABELV $1983
+LABELV $1985
 line 4194
 ;4193:						}
 ;4194:					}
-LABELV $1981
+LABELV $1983
 line 4196
 ;4195:					// if we are over an item
 ;4196:					if (IsVisible(overItem->window.flags)) {
@@ -31184,7 +31184,7 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
-EQI4 $1978
+EQI4 $1980
 line 4198
 ;4197:						// different one
 ;4198:						Item_MouseEnter(overItem, x, y);
@@ -31208,7 +31208,7 @@ line 4202
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $1978
+NEI4 $1980
 line 4203
 ;4203:							focusSet = Item_SetFocus(overItem, x, y);
 ADDRLP4 4
@@ -31236,9 +31236,9 @@ line 4206
 ;4206:				}
 line 4207
 ;4207:      } else if (menu->items[i]->window.flags & WINDOW_MOUSEOVER) {
-ADDRGP4 $1978
+ADDRGP4 $1980
 JUMPV
-LABELV $1977
+LABELV $1979
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -31255,7 +31255,7 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $1989
+EQI4 $1991
 line 4208
 ;4208:          Item_MouseLeave(menu->items[i]);
 ADDRLP4 0
@@ -31292,11 +31292,11 @@ CALLV
 pop
 line 4210
 ;4210:      }
-LABELV $1989
-LABELV $1978
+LABELV $1991
+LABELV $1980
 line 4211
 ;4211:    }
-LABELV $1968
+LABELV $1970
 line 4168
 ADDRLP4 0
 ADDRLP4 0
@@ -31304,7 +31304,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1970
+LABELV $1972
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -31312,10 +31312,10 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $1967
+LTI4 $1969
 line 4212
 ;4212:  }
-LABELV $1964
+LABELV $1966
 line 4167
 ADDRLP4 8
 ADDRLP4 8
@@ -31326,11 +31326,11 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
-LTI4 $1963
+LTI4 $1965
 line 4214
 ;4213:
 ;4214:}
-LABELV $1953
+LABELV $1955
 endproc Menu_HandleMouseMove 52 12
 export Menu_Paint
 proc Menu_Paint 48 24
@@ -31345,12 +31345,12 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1992
+NEU4 $1994
 line 4220
 ;4220:		return;
-ADDRGP4 $1991
+ADDRGP4 $1993
 JUMPV
-LABELV $1992
+LABELV $1994
 line 4223
 ;4221:	}
 ;4222:
@@ -31367,17 +31367,17 @@ CNSTI4 4
 BANDI4
 ADDRLP4 4
 INDIRI4
-NEI4 $1994
+NEI4 $1996
 ADDRFP4 4
 INDIRI4
 ADDRLP4 4
 INDIRI4
-NEI4 $1994
+NEI4 $1996
 line 4224
 ;4224:		return;
-ADDRGP4 $1991
+ADDRGP4 $1993
 JUMPV
-LABELV $1994
+LABELV $1996
 line 4227
 ;4225:	}
 ;4226:
@@ -31392,7 +31392,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $1996
+EQI4 $1998
 ADDRLP4 12
 ADDRGP4 DC
 INDIRP4
@@ -31404,7 +31404,7 @@ ADDRLP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $1996
+EQU4 $1998
 ADDRLP4 8
 INDIRI4
 ARGI4
@@ -31416,12 +31416,12 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-NEI4 $1996
+NEI4 $1998
 line 4228
 ;4228:		return;
-ADDRGP4 $1991
+ADDRGP4 $1993
 JUMPV
-LABELV $1996
+LABELV $1998
 line 4231
 ;4229:	}
 ;4230:	
@@ -31429,7 +31429,7 @@ line 4231
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $1998
+EQI4 $2000
 line 4232
 ;4232:		menu->window.flags |= WINDOW_FORCED;
 ADDRLP4 20
@@ -31448,7 +31448,7 @@ BORI4
 ASGNI4
 line 4233
 ;4233:	}
-LABELV $1998
+LABELV $2000
 line 4236
 ;4234:
 ;4235:	// draw the background if necessary
@@ -31459,7 +31459,7 @@ CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $2000
+EQI4 $2002
 line 4239
 ;4237:		// implies a background shader
 ;4238:		// FIXME: make sure we have a default shader if fullscreen is set with no background
@@ -31492,22 +31492,22 @@ CALLV
 pop
 line 4240
 ;4240:	} else if (menu->window.background) {
-ADDRGP4 $2001
+ADDRGP4 $2003
 JUMPV
-LABELV $2000
+LABELV $2002
 ADDRFP4 0
 INDIRP4
 CNSTI4 176
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $2002
+EQI4 $2004
 line 4243
 ;4241:		// this allows a background shader without being full screen
 ;4242:		//UI_DrawHandlePic(menu->window.rect.x, menu->window.rect.y, menu->window.rect.w, menu->window.rect.h, menu->backgroundShader);
 ;4243:	}
-LABELV $2002
-LABELV $2001
+LABELV $2004
+LABELV $2003
 line 4246
 ;4244:
 ;4245:	// paint the background and or border
@@ -31547,9 +31547,9 @@ line 4248
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2007
+ADDRGP4 $2009
 JUMPV
-LABELV $2004
+LABELV $2006
 line 4249
 ;4249:		Item_Paint(menu->items[i]);
 ADDRLP4 0
@@ -31568,7 +31568,7 @@ CALLV
 pop
 line 4250
 ;4250:	}
-LABELV $2005
+LABELV $2007
 line 4248
 ADDRLP4 0
 ADDRLP4 0
@@ -31576,7 +31576,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2007
+LABELV $2009
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -31584,14 +31584,14 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $2004
+LTI4 $2006
 line 4252
 ;4251:
 ;4252:	if (debugMode) {
 ADDRGP4 debugMode
 INDIRI4
 CNSTI4 0
-EQI4 $2008
+EQI4 $2010
 line 4254
 ;4253:		vec4_t color;
 ;4254:		color[0] = color[2] = color[3] = 1;
@@ -31656,10 +31656,10 @@ CALLV
 pop
 line 4257
 ;4257:	}
-LABELV $2008
+LABELV $2010
 line 4258
 ;4258:}
-LABELV $1991
+LABELV $1993
 endproc Menu_Paint 48 24
 export Item_ValidateTypeData
 proc Item_ValidateTypeData 8 12
@@ -31680,12 +31680,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2014
+EQU4 $2016
 line 4267
 ;4267:		return;
-ADDRGP4 $2013
+ADDRGP4 $2015
 JUMPV
-LABELV $2014
+LABELV $2016
 line 4270
 ;4268:	}
 ;4269:
@@ -31696,7 +31696,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 6
-NEI4 $2016
+NEI4 $2018
 line 4271
 ;4271:		item->typeData = UI_Alloc(sizeof(listBoxDef_t));
 CNSTI4 232
@@ -31729,9 +31729,9 @@ CALLP4
 pop
 line 4273
 ;4273:	} else if (item->type == ITEM_TYPE_EDITFIELD || item->type == ITEM_TYPE_NUMERICFIELD || item->type == ITEM_TYPE_YESNO || item->type == ITEM_TYPE_BIND || item->type == ITEM_TYPE_SLIDER || item->type == ITEM_TYPE_TEXT) {
-ADDRGP4 $2017
+ADDRGP4 $2019
 JUMPV
-LABELV $2016
+LABELV $2018
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -31742,28 +31742,28 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-EQI4 $2024
+EQI4 $2026
 ADDRLP4 0
 INDIRI4
 CNSTI4 9
-EQI4 $2024
+EQI4 $2026
 ADDRLP4 0
 INDIRI4
 CNSTI4 11
-EQI4 $2024
+EQI4 $2026
 ADDRLP4 0
 INDIRI4
 CNSTI4 13
-EQI4 $2024
+EQI4 $2026
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-EQI4 $2024
+EQI4 $2026
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2018
-LABELV $2024
+NEI4 $2020
+LABELV $2026
 line 4274
 ;4274:		item->typeData = UI_Alloc(sizeof(editFieldDef_t));
 CNSTI4 28
@@ -31802,7 +31802,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 4
-NEI4 $2019
+NEI4 $2021
 line 4277
 ;4277:			if (!((editFieldDef_t *) item->typeData)->maxPaintChars) {
 ADDRFP4 0
@@ -31814,7 +31814,7 @@ CNSTI4 20
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $2019
+NEI4 $2021
 line 4278
 ;4278:				((editFieldDef_t *) item->typeData)->maxPaintChars = MAX_EDITFIELD;
 ADDRFP4 0
@@ -31832,16 +31832,16 @@ line 4280
 ;4280:		}
 line 4281
 ;4281:	} else if (item->type == ITEM_TYPE_MULTI) {
-ADDRGP4 $2019
+ADDRGP4 $2021
 JUMPV
-LABELV $2018
+LABELV $2020
 ADDRFP4 0
 INDIRP4
 CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 12
-NEI4 $2029
+NEI4 $2031
 line 4282
 ;4282:		item->typeData = UI_Alloc(sizeof(multiDef_t));
 CNSTI4 392
@@ -31859,16 +31859,16 @@ INDIRP4
 ASGNP4
 line 4283
 ;4283:	} else if (item->type == ITEM_TYPE_MODEL) {
-ADDRGP4 $2030
+ADDRGP4 $2032
 JUMPV
-LABELV $2029
+LABELV $2031
 ADDRFP4 0
 INDIRP4
 CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 7
-NEI4 $2031
+NEI4 $2033
 line 4284
 ;4284:		item->typeData = UI_Alloc(sizeof(modelDef_t));
 CNSTI4 28
@@ -31886,13 +31886,13 @@ INDIRP4
 ASGNP4
 line 4285
 ;4285:	}
-LABELV $2031
-LABELV $2030
+LABELV $2033
+LABELV $2032
+LABELV $2021
 LABELV $2019
-LABELV $2017
 line 4286
 ;4286:}
-LABELV $2013
+LABELV $2015
 endproc Item_ValidateTypeData 8 12
 export KeywordHash_Key
 proc KeywordHash_Key 20 0
@@ -31926,9 +31926,9 @@ line 4307
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2037
+ADDRGP4 $2039
 JUMPV
-LABELV $2034
+LABELV $2036
 line 4308
 ;4308:		if (keyword[i] >= 'A' && keyword[i] <= 'Z')
 ADDRLP4 8
@@ -31943,11 +31943,11 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 65
-LTI4 $2038
+LTI4 $2040
 ADDRLP4 8
 INDIRI4
 CNSTI4 90
-GTI4 $2038
+GTI4 $2040
 line 4309
 ;4309:			hash += (keyword[i] + ('a' - 'A')) * (119 + i);
 ADDRLP4 0
@@ -31969,9 +31969,9 @@ ADDI4
 MULI4
 ADDI4
 ASGNI4
-ADDRGP4 $2039
+ADDRGP4 $2041
 JUMPV
-LABELV $2038
+LABELV $2040
 line 4311
 ;4310:		else
 ;4311:			hash += keyword[i] * (119 + i);
@@ -31992,10 +31992,10 @@ ADDI4
 MULI4
 ADDI4
 ASGNI4
-LABELV $2039
+LABELV $2041
 line 4312
 ;4312:	}
-LABELV $2035
+LABELV $2037
 line 4307
 ADDRLP4 4
 ADDRLP4 4
@@ -32003,7 +32003,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2037
+LABELV $2039
 ADDRLP4 4
 INDIRI4
 ADDRFP4 0
@@ -32012,7 +32012,7 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $2034
+NEI4 $2036
 line 4313
 ;4313:	hash = (hash ^ (hash >> 10) ^ (hash >> 20)) & (KEYWORDHASH_SIZE-1);
 ADDRLP4 0
@@ -32036,7 +32036,7 @@ line 4314
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $2033
+LABELV $2035
 endproc KeywordHash_Key 20 0
 export KeywordHash_Add
 proc KeywordHash_Add 8 4
@@ -32094,7 +32094,7 @@ INDIRP4
 ASGNP4
 line 4328
 ;4328:}
-LABELV $2040
+LABELV $2042
 endproc KeywordHash_Add 8 4
 export KeywordHash_Find
 proc KeywordHash_Find 16 8
@@ -32130,9 +32130,9 @@ INDIRP4
 ADDP4
 INDIRP4
 ASGNP4
-ADDRGP4 $2045
+ADDRGP4 $2047
 JUMPV
-LABELV $2042
+LABELV $2044
 line 4337
 ;4337:		if (!Q_stricmp(key->keyword, keyword))
 ADDRLP4 0
@@ -32149,18 +32149,18 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $2046
+NEI4 $2048
 line 4338
 ;4338:			return key;
 ADDRLP4 0
 INDIRP4
 RETP4
-ADDRGP4 $2041
+ADDRGP4 $2043
 JUMPV
-LABELV $2046
+LABELV $2048
 line 4339
 ;4339:	}
-LABELV $2043
+LABELV $2045
 line 4336
 ADDRLP4 0
 ADDRLP4 0
@@ -32169,17 +32169,17 @@ CNSTI4 8
 ADDP4
 INDIRP4
 ASGNP4
-LABELV $2045
+LABELV $2047
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2042
+NEU4 $2044
 line 4340
 ;4340:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $2041
+LABELV $2043
 endproc KeywordHash_Find 16 8
 export ItemParse_name
 proc ItemParse_name 4 8
@@ -32211,20 +32211,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2049
+NEI4 $2051
 line 4352
 ;4352:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2048
+ADDRGP4 $2050
 JUMPV
-LABELV $2049
+LABELV $2051
 line 4354
 ;4353:	}
 ;4354:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2048
+LABELV $2050
 endproc ItemParse_name 4 8
 export ItemParse_focusSound
 proc ItemParse_focusSound 12 8
@@ -32248,14 +32248,14 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2052
+NEI4 $2054
 line 4361
 ;4361:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2051
+ADDRGP4 $2053
 JUMPV
-LABELV $2052
+LABELV $2054
 line 4363
 ;4362:	}
 ;4363:	item->focusSound = DC->registerSound(temp, qfalse);
@@ -32283,7 +32283,7 @@ line 4364
 ;4364:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2051
+LABELV $2053
 endproc ItemParse_focusSound 12 8
 export ItemParse_text
 proc ItemParse_text 4 8
@@ -32310,20 +32310,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2055
+NEI4 $2057
 line 4371
 ;4371:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2054
+ADDRGP4 $2056
 JUMPV
-LABELV $2055
+LABELV $2057
 line 4373
 ;4372:	}
 ;4373:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2054
+LABELV $2056
 endproc ItemParse_text 4 8
 export ItemParse_group
 proc ItemParse_group 4 8
@@ -32349,20 +32349,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2058
+NEI4 $2060
 line 4379
 ;4379:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2057
+ADDRGP4 $2059
 JUMPV
-LABELV $2058
+LABELV $2060
 line 4381
 ;4380:	}
 ;4381:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2057
+LABELV $2059
 endproc ItemParse_group 4 8
 export ItemParse_asset_model
 proc ItemParse_asset_model 20 8
@@ -32405,14 +32405,14 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $2061
+NEI4 $2063
 line 4392
 ;4392:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2060
+ADDRGP4 $2062
 JUMPV
-LABELV $2061
+LABELV $2063
 line 4394
 ;4393:	}
 ;4394:	item->asset = DC->registerModel(temp);
@@ -32451,7 +32451,7 @@ line 4396
 ;4396:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2060
+LABELV $2062
 endproc ItemParse_asset_model 20 8
 export ItemParse_asset_shader
 proc ItemParse_asset_shader 12 8
@@ -32476,14 +32476,14 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2064
+NEI4 $2066
 line 4404
 ;4404:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2063
+ADDRGP4 $2065
 JUMPV
-LABELV $2064
+LABELV $2066
 line 4406
 ;4405:	}
 ;4406:	item->asset = DC->registerShaderNoMip(temp);
@@ -32507,7 +32507,7 @@ line 4407
 ;4407:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2063
+LABELV $2065
 endproc ItemParse_asset_shader 12 8
 export ItemParse_model_origin
 proc ItemParse_model_origin 16 8
@@ -32552,7 +32552,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $2067
+EQI4 $2069
 line 4417
 ;4417:		if (PC_Float_Parse(handle, &modelPtr->origin[1])) {
 ADDRFP4 4
@@ -32570,7 +32570,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $2069
+EQI4 $2071
 line 4418
 ;4418:			if (PC_Float_Parse(handle, &modelPtr->origin[2])) {
 ADDRFP4 4
@@ -32588,26 +32588,26 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $2071
+EQI4 $2073
 line 4419
 ;4419:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2066
+ADDRGP4 $2068
 JUMPV
-LABELV $2071
+LABELV $2073
 line 4421
 ;4420:			}
 ;4421:		}
-LABELV $2069
+LABELV $2071
 line 4422
 ;4422:	}
-LABELV $2067
+LABELV $2069
 line 4423
 ;4423:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $2066
+LABELV $2068
 endproc ItemParse_model_origin 16 8
 export ItemParse_model_fovx
 proc ItemParse_model_fovx 8 8
@@ -32652,20 +32652,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2074
+NEI4 $2076
 line 4433
 ;4433:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2073
+ADDRGP4 $2075
 JUMPV
-LABELV $2074
+LABELV $2076
 line 4435
 ;4434:	}
 ;4435:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2073
+LABELV $2075
 endproc ItemParse_model_fovx 8 8
 export ItemParse_model_fovy
 proc ItemParse_model_fovy 8 8
@@ -32710,20 +32710,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2077
+NEI4 $2079
 line 4445
 ;4445:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2076
+ADDRGP4 $2078
 JUMPV
-LABELV $2077
+LABELV $2079
 line 4447
 ;4446:	}
 ;4447:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2076
+LABELV $2078
 endproc ItemParse_model_fovy 8 8
 export ItemParse_model_rotation
 proc ItemParse_model_rotation 8 8
@@ -32768,20 +32768,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2080
+NEI4 $2082
 line 4457
 ;4457:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2079
+ADDRGP4 $2081
 JUMPV
-LABELV $2080
+LABELV $2082
 line 4459
 ;4458:	}
 ;4459:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2079
+LABELV $2081
 endproc ItemParse_model_rotation 8 8
 export ItemParse_model_angle
 proc ItemParse_model_angle 8 8
@@ -32824,20 +32824,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2083
+NEI4 $2085
 line 4469
 ;4469:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2082
+ADDRGP4 $2084
 JUMPV
-LABELV $2083
+LABELV $2085
 line 4471
 ;4470:	}
 ;4471:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2082
+LABELV $2084
 endproc ItemParse_model_angle 8 8
 export ItemParse_rect
 proc ItemParse_rect 4 8
@@ -32863,20 +32863,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2086
+NEI4 $2088
 line 4477
 ;4477:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2085
+ADDRGP4 $2087
 JUMPV
-LABELV $2086
+LABELV $2088
 line 4479
 ;4478:	}
 ;4479:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2085
+LABELV $2087
 endproc ItemParse_rect 4 8
 export ItemParse_style
 proc ItemParse_style 4 8
@@ -32902,20 +32902,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2089
+NEI4 $2091
 line 4485
 ;4485:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2088
+ADDRGP4 $2090
 JUMPV
-LABELV $2089
+LABELV $2091
 line 4487
 ;4486:	}
 ;4487:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2088
+LABELV $2090
 endproc ItemParse_style 4 8
 export ItemParse_decoration
 proc ItemParse_decoration 4 0
@@ -32944,7 +32944,7 @@ line 4493
 ;4493:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2091
+LABELV $2093
 endproc ItemParse_decoration 4 0
 export ItemParse_notselectable
 proc ItemParse_notselectable 4 4
@@ -32979,12 +32979,12 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 6
-NEI4 $2093
+NEI4 $2095
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2093
+EQU4 $2095
 line 4502
 ;4502:		listPtr->notselectable = qtrue;
 ADDRLP4 0
@@ -32995,12 +32995,12 @@ CNSTI4 1
 ASGNI4
 line 4503
 ;4503:	}
-LABELV $2093
+LABELV $2095
 line 4504
 ;4504:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2092
+LABELV $2094
 endproc ItemParse_notselectable 4 4
 export ItemParse_wrapped
 proc ItemParse_wrapped 4 0
@@ -33029,7 +33029,7 @@ line 4510
 ;4510:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2095
+LABELV $2097
 endproc ItemParse_wrapped 4 0
 export ItemParse_autowrapped
 proc ItemParse_autowrapped 4 0
@@ -33058,7 +33058,7 @@ line 4516
 ;4516:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2096
+LABELV $2098
 endproc ItemParse_autowrapped 4 0
 export ItemParse_horizontalscroll
 proc ItemParse_horizontalscroll 4 0
@@ -33088,7 +33088,7 @@ line 4523
 ;4523:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2097
+LABELV $2099
 endproc ItemParse_horizontalscroll 4 0
 export ItemParse_type
 proc ItemParse_type 4 8
@@ -33114,14 +33114,14 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2099
+NEI4 $2101
 line 4529
 ;4529:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2098
+ADDRGP4 $2100
 JUMPV
-LABELV $2099
+LABELV $2101
 line 4531
 ;4530:	}
 ;4531:	Item_ValidateTypeData(item);
@@ -33135,7 +33135,7 @@ line 4532
 ;4532:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2098
+LABELV $2100
 endproc ItemParse_type 4 8
 export ItemParse_elementwidth
 proc ItemParse_elementwidth 8 8
@@ -33181,20 +33181,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2102
+NEI4 $2104
 line 4543
 ;4543:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2101
+ADDRGP4 $2103
 JUMPV
-LABELV $2102
+LABELV $2104
 line 4545
 ;4544:	}
 ;4545:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2101
+LABELV $2103
 endproc ItemParse_elementwidth 8 8
 export ItemParse_elementheight
 proc ItemParse_elementheight 8 8
@@ -33240,20 +33240,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2105
+NEI4 $2107
 line 4556
 ;4556:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2104
+ADDRGP4 $2106
 JUMPV
-LABELV $2105
+LABELV $2107
 line 4558
 ;4557:	}
 ;4558:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2104
+LABELV $2106
 endproc ItemParse_elementheight 8 8
 export ItemParse_feeder
 proc ItemParse_feeder 4 8
@@ -33279,20 +33279,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2108
+NEI4 $2110
 line 4564
 ;4564:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2107
+ADDRGP4 $2109
 JUMPV
-LABELV $2108
+LABELV $2110
 line 4566
 ;4565:	}
 ;4566:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2107
+LABELV $2109
 endproc ItemParse_feeder 4 8
 export ItemParse_elementtype
 proc ItemParse_elementtype 8 8
@@ -33321,14 +33321,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2111
+NEU4 $2113
 line 4576
 ;4576:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2110
+ADDRGP4 $2112
 JUMPV
-LABELV $2111
+LABELV $2113
 line 4577
 ;4577:	listPtr = (listBoxDef_t*)item->typeData;
 ADDRLP4 0
@@ -33355,20 +33355,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2113
+NEI4 $2115
 line 4579
 ;4579:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2110
+ADDRGP4 $2112
 JUMPV
-LABELV $2113
+LABELV $2115
 line 4581
 ;4580:	}
 ;4581:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2110
+LABELV $2112
 endproc ItemParse_elementtype 8 8
 export ItemParse_columns
 proc ItemParse_columns 40 8
@@ -33397,14 +33397,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2116
+NEU4 $2118
 line 4591
 ;4591:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2115
+ADDRGP4 $2117
 JUMPV
-LABELV $2116
+LABELV $2118
 line 4592
 ;4592:	listPtr = (listBoxDef_t*)item->typeData;
 ADDRLP4 4
@@ -33428,13 +33428,13 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $2118
+EQI4 $2120
 line 4594
 ;4594:		if (num > MAX_LB_COLUMNS) {
 ADDRLP4 8
 INDIRI4
 CNSTI4 16
-LEI4 $2120
+LEI4 $2122
 line 4595
 ;4595:			num = MAX_LB_COLUMNS;
 ADDRLP4 8
@@ -33442,7 +33442,7 @@ CNSTI4 16
 ASGNI4
 line 4596
 ;4596:		}
-LABELV $2120
+LABELV $2122
 line 4597
 ;4597:		listPtr->numColumns = num;
 ADDRLP4 4
@@ -33457,9 +33457,9 @@ line 4598
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2125
+ADDRGP4 $2127
 JUMPV
-LABELV $2122
+LABELV $2124
 line 4601
 ;4599:			int pos, width, maxChars;
 ;4600:
@@ -33476,7 +33476,7 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-EQI4 $2126
+EQI4 $2128
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -33489,7 +33489,7 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-EQI4 $2126
+EQI4 $2128
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -33502,7 +33502,7 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-EQI4 $2126
+EQI4 $2128
 line 4602
 ;4602:				listPtr->columnInfo[i].pos = pos;
 CNSTI4 12
@@ -33551,20 +33551,20 @@ INDIRI4
 ASGNI4
 line 4605
 ;4605:			} else {
-ADDRGP4 $2127
+ADDRGP4 $2129
 JUMPV
-LABELV $2126
+LABELV $2128
 line 4606
 ;4606:				return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2115
+ADDRGP4 $2117
 JUMPV
-LABELV $2127
+LABELV $2129
 line 4608
 ;4607:			}
 ;4608:		}
-LABELV $2123
+LABELV $2125
 line 4598
 ADDRLP4 0
 ADDRLP4 0
@@ -33572,30 +33572,30 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2125
+LABELV $2127
 ADDRLP4 0
 INDIRI4
 ADDRLP4 8
 INDIRI4
-LTI4 $2122
+LTI4 $2124
 line 4609
 ;4609:	} else {
-ADDRGP4 $2119
+ADDRGP4 $2121
 JUMPV
-LABELV $2118
+LABELV $2120
 line 4610
 ;4610:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2115
+ADDRGP4 $2117
 JUMPV
-LABELV $2119
+LABELV $2121
 line 4612
 ;4611:	}
 ;4612:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2115
+LABELV $2117
 endproc ItemParse_columns 40 8
 export ItemParse_border
 proc ItemParse_border 4 8
@@ -33620,20 +33620,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2129
+NEI4 $2131
 line 4617
 ;4617:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2128
+ADDRGP4 $2130
 JUMPV
-LABELV $2129
+LABELV $2131
 line 4619
 ;4618:	}
 ;4619:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2128
+LABELV $2130
 endproc ItemParse_border 4 8
 export ItemParse_bordersize
 proc ItemParse_bordersize 4 8
@@ -33658,20 +33658,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2132
+NEI4 $2134
 line 4624
 ;4624:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2131
+ADDRGP4 $2133
 JUMPV
-LABELV $2132
+LABELV $2134
 line 4626
 ;4625:	}
 ;4626:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2131
+LABELV $2133
 endproc ItemParse_bordersize 4 8
 export ItemParse_visible
 proc ItemParse_visible 12 8
@@ -33695,21 +33695,21 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2135
+NEI4 $2137
 line 4633
 ;4633:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2134
+ADDRGP4 $2136
 JUMPV
-LABELV $2135
+LABELV $2137
 line 4635
 ;4634:	}
 ;4635:	if (i) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $2137
+EQI4 $2139
 line 4636
 ;4636:		item->window.flags |= WINDOW_VISIBLE;
 ADDRLP4 8
@@ -33728,12 +33728,12 @@ BORI4
 ASGNI4
 line 4637
 ;4637:	}
-LABELV $2137
+LABELV $2139
 line 4638
 ;4638:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2134
+LABELV $2136
 endproc ItemParse_visible 12 8
 export ItemParse_ownerdraw
 proc ItemParse_ownerdraw 4 8
@@ -33758,14 +33758,14 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2140
+NEI4 $2142
 line 4643
 ;4643:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2139
+ADDRGP4 $2141
 JUMPV
-LABELV $2140
+LABELV $2142
 line 4645
 ;4644:	}
 ;4645:	item->type = ITEM_TYPE_OWNERDRAW;
@@ -33779,7 +33779,7 @@ line 4646
 ;4646:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2139
+LABELV $2141
 endproc ItemParse_ownerdraw 4 8
 export ItemParse_align
 proc ItemParse_align 4 8
@@ -33804,20 +33804,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2143
+NEI4 $2145
 line 4651
 ;4651:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2142
+ADDRGP4 $2144
 JUMPV
-LABELV $2143
+LABELV $2145
 line 4653
 ;4652:	}
 ;4653:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2142
+LABELV $2144
 endproc ItemParse_align 4 8
 export ItemParse_textalign
 proc ItemParse_textalign 4 8
@@ -33842,20 +33842,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2146
+NEI4 $2148
 line 4658
 ;4658:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2145
+ADDRGP4 $2147
 JUMPV
-LABELV $2146
+LABELV $2148
 line 4660
 ;4659:	}
 ;4660:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2145
+LABELV $2147
 endproc ItemParse_textalign 4 8
 export ItemParse_textalignx
 proc ItemParse_textalignx 4 8
@@ -33880,20 +33880,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2149
+NEI4 $2151
 line 4665
 ;4665:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2148
+ADDRGP4 $2150
 JUMPV
-LABELV $2149
+LABELV $2151
 line 4667
 ;4666:	}
 ;4667:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2148
+LABELV $2150
 endproc ItemParse_textalignx 4 8
 export ItemParse_textaligny
 proc ItemParse_textaligny 4 8
@@ -33918,20 +33918,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2152
+NEI4 $2154
 line 4672
 ;4672:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2151
+ADDRGP4 $2153
 JUMPV
-LABELV $2152
+LABELV $2154
 line 4674
 ;4673:	}
 ;4674:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2151
+LABELV $2153
 endproc ItemParse_textaligny 4 8
 export ItemParse_textscale
 proc ItemParse_textscale 4 8
@@ -33956,20 +33956,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2155
+NEI4 $2157
 line 4679
 ;4679:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2154
+ADDRGP4 $2156
 JUMPV
-LABELV $2155
+LABELV $2157
 line 4681
 ;4680:	}
 ;4681:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2154
+LABELV $2156
 endproc ItemParse_textscale 4 8
 export ItemParse_textstyle
 proc ItemParse_textstyle 4 8
@@ -33994,20 +33994,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2158
+NEI4 $2160
 line 4686
 ;4686:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2157
+ADDRGP4 $2159
 JUMPV
-LABELV $2158
+LABELV $2160
 line 4688
 ;4687:	}
 ;4688:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2157
+LABELV $2159
 endproc ItemParse_textstyle 4 8
 export ItemParse_backcolor
 proc ItemParse_backcolor 12 8
@@ -34023,7 +34023,7 @@ line 4695
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $2161
+LABELV $2163
 line 4696
 ;4696:		if (!PC_Float_Parse(handle, &f)) {
 ADDRFP4 4
@@ -34038,14 +34038,14 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $2165
+NEI4 $2167
 line 4697
 ;4697:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2160
+ADDRGP4 $2162
 JUMPV
-LABELV $2165
+LABELV $2167
 line 4699
 ;4698:		}
 ;4699:		item->window.backColor[i]  = f;
@@ -34063,7 +34063,7 @@ INDIRF4
 ASGNF4
 line 4700
 ;4700:	}
-LABELV $2162
+LABELV $2164
 line 4695
 ADDRLP4 0
 ADDRLP4 0
@@ -34074,12 +34074,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $2161
+LTI4 $2163
 line 4701
 ;4701:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2160
+LABELV $2162
 endproc ItemParse_backcolor 12 8
 export ItemParse_forecolor
 proc ItemParse_forecolor 16 8
@@ -34095,7 +34095,7 @@ line 4708
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $2168
+LABELV $2170
 line 4709
 ;4709:		if (!PC_Float_Parse(handle, &f)) {
 ADDRFP4 4
@@ -34110,14 +34110,14 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $2172
+NEI4 $2174
 line 4710
 ;4710:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2167
+ADDRGP4 $2169
 JUMPV
-LABELV $2172
+LABELV $2174
 line 4712
 ;4711:		}
 ;4712:		item->window.foreColor[i]  = f;
@@ -34151,7 +34151,7 @@ BORI4
 ASGNI4
 line 4714
 ;4714:	}
-LABELV $2169
+LABELV $2171
 line 4708
 ADDRLP4 0
 ADDRLP4 0
@@ -34162,12 +34162,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $2168
+LTI4 $2170
 line 4715
 ;4715:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2167
+LABELV $2169
 endproc ItemParse_forecolor 16 8
 export ItemParse_bordercolor
 proc ItemParse_bordercolor 12 8
@@ -34183,7 +34183,7 @@ line 4722
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $2175
+LABELV $2177
 line 4723
 ;4723:		if (!PC_Float_Parse(handle, &f)) {
 ADDRFP4 4
@@ -34198,14 +34198,14 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $2179
+NEI4 $2181
 line 4724
 ;4724:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2174
+ADDRGP4 $2176
 JUMPV
-LABELV $2179
+LABELV $2181
 line 4726
 ;4725:		}
 ;4726:		item->window.borderColor[i]  = f;
@@ -34223,7 +34223,7 @@ INDIRF4
 ASGNF4
 line 4727
 ;4727:	}
-LABELV $2176
+LABELV $2178
 line 4722
 ADDRLP4 0
 ADDRLP4 0
@@ -34234,12 +34234,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $2175
+LTI4 $2177
 line 4728
 ;4728:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2174
+LABELV $2176
 endproc ItemParse_bordercolor 12 8
 export ItemParse_outlinecolor
 proc ItemParse_outlinecolor 4 8
@@ -34264,20 +34264,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2182
+NEI4 $2184
 line 4733
 ;4733:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2181
+ADDRGP4 $2183
 JUMPV
-LABELV $2182
+LABELV $2184
 line 4735
 ;4734:	}
 ;4735:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2181
+LABELV $2183
 endproc ItemParse_outlinecolor 4 8
 export ItemParse_background
 proc ItemParse_background 12 8
@@ -34301,14 +34301,14 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2185
+NEI4 $2187
 line 4742
 ;4742:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2184
+ADDRGP4 $2186
 JUMPV
-LABELV $2185
+LABELV $2187
 line 4744
 ;4743:	}
 ;4744:	item->window.background = DC->registerShaderNoMip(temp);
@@ -34332,7 +34332,7 @@ line 4745
 ;4745:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2184
+LABELV $2186
 endproc ItemParse_background 12 8
 export ItemParse_cinematic
 proc ItemParse_cinematic 4 8
@@ -34357,20 +34357,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2188
+NEI4 $2190
 line 4750
 ;4750:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2187
+ADDRGP4 $2189
 JUMPV
-LABELV $2188
+LABELV $2190
 line 4752
 ;4751:	}
 ;4752:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2187
+LABELV $2189
 endproc ItemParse_cinematic 4 8
 export ItemParse_doubleClick
 proc ItemParse_doubleClick 8 8
@@ -34397,14 +34397,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2191
+NEU4 $2193
 line 4760
 ;4760:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2190
+ADDRGP4 $2192
 JUMPV
-LABELV $2191
+LABELV $2193
 line 4763
 ;4761:	}
 ;4762:
@@ -34434,20 +34434,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2193
+NEI4 $2195
 line 4766
 ;4766:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2190
+ADDRGP4 $2192
 JUMPV
-LABELV $2193
+LABELV $2195
 line 4768
 ;4767:	}
 ;4768:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2190
+LABELV $2192
 endproc ItemParse_doubleClick 8 8
 export ItemParse_onFocus
 proc ItemParse_onFocus 4 8
@@ -34472,20 +34472,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2196
+NEI4 $2198
 line 4773
 ;4773:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2195
+ADDRGP4 $2197
 JUMPV
-LABELV $2196
+LABELV $2198
 line 4775
 ;4774:	}
 ;4775:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2195
+LABELV $2197
 endproc ItemParse_onFocus 4 8
 export ItemParse_leaveFocus
 proc ItemParse_leaveFocus 4 8
@@ -34510,20 +34510,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2199
+NEI4 $2201
 line 4780
 ;4780:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2198
+ADDRGP4 $2200
 JUMPV
-LABELV $2199
+LABELV $2201
 line 4782
 ;4781:	}
 ;4782:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2198
+LABELV $2200
 endproc ItemParse_leaveFocus 4 8
 export ItemParse_mouseEnter
 proc ItemParse_mouseEnter 4 8
@@ -34548,20 +34548,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2202
+NEI4 $2204
 line 4787
 ;4787:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2201
+ADDRGP4 $2203
 JUMPV
-LABELV $2202
+LABELV $2204
 line 4789
 ;4788:	}
 ;4789:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2201
+LABELV $2203
 endproc ItemParse_mouseEnter 4 8
 export ItemParse_mouseExit
 proc ItemParse_mouseExit 4 8
@@ -34586,20 +34586,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2205
+NEI4 $2207
 line 4794
 ;4794:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2204
+ADDRGP4 $2206
 JUMPV
-LABELV $2205
+LABELV $2207
 line 4796
 ;4795:	}
 ;4796:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2204
+LABELV $2206
 endproc ItemParse_mouseExit 4 8
 export ItemParse_mouseEnterText
 proc ItemParse_mouseEnterText 4 8
@@ -34624,20 +34624,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2208
+NEI4 $2210
 line 4801
 ;4801:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2207
+ADDRGP4 $2209
 JUMPV
-LABELV $2208
+LABELV $2210
 line 4803
 ;4802:	}
 ;4803:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2207
+LABELV $2209
 endproc ItemParse_mouseEnterText 4 8
 export ItemParse_mouseExitText
 proc ItemParse_mouseExitText 4 8
@@ -34662,20 +34662,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2211
+NEI4 $2213
 line 4808
 ;4808:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2210
+ADDRGP4 $2212
 JUMPV
-LABELV $2211
+LABELV $2213
 line 4810
 ;4809:	}
 ;4810:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2210
+LABELV $2212
 endproc ItemParse_mouseExitText 4 8
 export ItemParse_action
 proc ItemParse_action 4 8
@@ -34700,20 +34700,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2214
+NEI4 $2216
 line 4815
 ;4815:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2213
+ADDRGP4 $2215
 JUMPV
-LABELV $2214
+LABELV $2216
 line 4817
 ;4816:	}
 ;4817:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2213
+LABELV $2215
 endproc ItemParse_action 4 8
 export ItemParse_special
 proc ItemParse_special 4 8
@@ -34738,20 +34738,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2217
+NEI4 $2219
 line 4822
 ;4822:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2216
+ADDRGP4 $2218
 JUMPV
-LABELV $2217
+LABELV $2219
 line 4824
 ;4823:	}
 ;4824:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2216
+LABELV $2218
 endproc ItemParse_special 4 8
 export ItemParse_cvarTest
 proc ItemParse_cvarTest 4 8
@@ -34776,20 +34776,20 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $2220
+NEI4 $2222
 line 4829
 ;4829:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2219
+ADDRGP4 $2221
 JUMPV
-LABELV $2220
+LABELV $2222
 line 4831
 ;4830:	}
 ;4831:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2219
+LABELV $2221
 endproc ItemParse_cvarTest 4 8
 export ItemParse_cvar
 proc ItemParse_cvar 8 8
@@ -34824,14 +34824,14 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2223
+NEI4 $2225
 line 4839
 ;4839:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2222
+ADDRGP4 $2224
 JUMPV
-LABELV $2223
+LABELV $2225
 line 4841
 ;4840:	}
 ;4841:	if (item->typeData) {
@@ -34842,7 +34842,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2225
+EQU4 $2227
 line 4842
 ;4842:		editPtr = (editFieldDef_t*)item->typeData;
 ADDRLP4 0
@@ -34876,12 +34876,12 @@ CNSTF4 3212836864
 ASGNF4
 line 4846
 ;4846:	}
-LABELV $2225
+LABELV $2227
 line 4847
 ;4847:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2222
+LABELV $2224
 endproc ItemParse_cvar 8 8
 export ItemParse_maxChars
 proc ItemParse_maxChars 12 8
@@ -34909,14 +34909,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2228
+NEU4 $2230
 line 4856
 ;4856:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2227
+ADDRGP4 $2229
 JUMPV
-LABELV $2228
+LABELV $2230
 line 4858
 ;4857:
 ;4858:	if (!PC_Int_Parse(handle, &maxChars)) {
@@ -34932,14 +34932,14 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $2230
+NEI4 $2232
 line 4859
 ;4859:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2227
+ADDRGP4 $2229
 JUMPV
-LABELV $2230
+LABELV $2232
 line 4861
 ;4860:	}
 ;4861:	editPtr = (editFieldDef_t*)item->typeData;
@@ -34963,7 +34963,7 @@ line 4863
 ;4863:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2227
+LABELV $2229
 endproc ItemParse_maxChars 12 8
 export ItemParse_maxPaintChars
 proc ItemParse_maxPaintChars 12 8
@@ -34991,14 +34991,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2233
+NEU4 $2235
 line 4872
 ;4872:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2232
+ADDRGP4 $2234
 JUMPV
-LABELV $2233
+LABELV $2235
 line 4874
 ;4873:
 ;4874:	if (!PC_Int_Parse(handle, &maxChars)) {
@@ -35014,14 +35014,14 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $2235
+NEI4 $2237
 line 4875
 ;4875:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2232
+ADDRGP4 $2234
 JUMPV
-LABELV $2235
+LABELV $2237
 line 4877
 ;4876:	}
 ;4877:	editPtr = (editFieldDef_t*)item->typeData;
@@ -35045,7 +35045,7 @@ line 4879
 ;4879:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2232
+LABELV $2234
 endproc ItemParse_maxPaintChars 12 8
 export ItemParse_cvarFloat
 proc ItemParse_cvarFloat 20 8
@@ -35074,14 +35074,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2238
+NEU4 $2240
 line 4889
 ;4889:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2237
+ADDRGP4 $2239
 JUMPV
-LABELV $2238
+LABELV $2240
 line 4890
 ;4890:	editPtr = (editFieldDef_t*)item->typeData;
 ADDRLP4 0
@@ -35108,7 +35108,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $2240
+EQI4 $2242
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -35124,7 +35124,7 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $2240
+EQI4 $2242
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -35138,7 +35138,7 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $2240
+EQI4 $2242
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -35154,7 +35154,7 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $2240
+EQI4 $2242
 line 4894
 ;4892:		PC_Float_Parse(handle, &editPtr->defVal) &&
 ;4893:		PC_Float_Parse(handle, &editPtr->minVal) &&
@@ -35163,15 +35163,15 @@ line 4895
 ;4895:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2237
+ADDRGP4 $2239
 JUMPV
-LABELV $2240
+LABELV $2242
 line 4897
 ;4896:	}
 ;4897:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $2237
+LABELV $2239
 endproc ItemParse_cvarFloat 20 8
 export ItemParse_cvarStrList
 proc ItemParse_cvarStrList 1068 8
@@ -35200,14 +35200,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2243
+NEU4 $2245
 line 4907
 ;4907:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2242
+ADDRGP4 $2244
 JUMPV
-LABELV $2243
+LABELV $2245
 line 4908
 ;4908:	multiPtr = (multiDef_t*)item->typeData;
 ADDRLP4 1040
@@ -35248,28 +35248,28 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-NEI4 $2245
+NEI4 $2247
 line 4913
 ;4913:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2242
+ADDRGP4 $2244
 JUMPV
-LABELV $2245
+LABELV $2247
 line 4914
 ;4914:	if (*token.string != '{') {
 ADDRLP4 0+16
 INDIRI1
 CVII4 1
 CNSTI4 123
-EQI4 $2247
+EQI4 $2249
 line 4915
 ;4915:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2242
+ADDRGP4 $2244
 JUMPV
-LABELV $2247
+LABELV $2249
 line 4918
 ;4916:	}
 ;4917:
@@ -35277,9 +35277,9 @@ line 4918
 ADDRLP4 1044
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2251
+ADDRGP4 $2253
 JUMPV
-LABELV $2250
+LABELV $2252
 line 4919
 ;4919:	while ( 1 ) {
 line 4920
@@ -35296,13 +35296,13 @@ ASGNI4
 ADDRLP4 1052
 INDIRI4
 CNSTI4 0
-NEI4 $2253
+NEI4 $2255
 line 4921
 ;4921:			PC_SourceError(handle, "end of file inside menu item\n");
 ADDRFP4 4
 INDIRI4
 ARGI4
-ADDRGP4 $2255
+ADDRGP4 $2257
 ARGP4
 ADDRGP4 PC_SourceError
 CALLV
@@ -35311,9 +35311,9 @@ line 4922
 ;4922:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2242
+ADDRGP4 $2244
 JUMPV
-LABELV $2253
+LABELV $2255
 line 4925
 ;4923:		}
 ;4924:
@@ -35322,14 +35322,14 @@ ADDRLP4 0+16
 INDIRI1
 CVII4 1
 CNSTI4 125
-NEI4 $2256
+NEI4 $2258
 line 4926
 ;4926:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2242
+ADDRGP4 $2244
 JUMPV
-LABELV $2256
+LABELV $2258
 line 4929
 ;4927:		}
 ;4928:
@@ -35338,18 +35338,18 @@ ADDRLP4 0+16
 INDIRI1
 CVII4 1
 CNSTI4 44
-EQI4 $2263
+EQI4 $2265
 ADDRLP4 0+16
 INDIRI1
 CVII4 1
 CNSTI4 59
-NEI4 $2259
-LABELV $2263
+NEI4 $2261
+LABELV $2265
 line 4930
 ;4930:			continue;
-ADDRGP4 $2251
+ADDRGP4 $2253
 JUMPV
-LABELV $2259
+LABELV $2261
 line 4933
 ;4931:		}
 ;4932:
@@ -35357,7 +35357,7 @@ line 4933
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-NEI4 $2264
+NEI4 $2266
 line 4934
 ;4934:			multiPtr->cvarList[multiPtr->count] = String_Alloc(token.string);
 ADDRLP4 0+16
@@ -35386,9 +35386,9 @@ CNSTI4 1
 ASGNI4
 line 4936
 ;4936:		} else {
-ADDRGP4 $2265
+ADDRGP4 $2267
 JUMPV
-LABELV $2264
+LABELV $2266
 line 4937
 ;4937:			multiPtr->cvarStr[multiPtr->count] = String_Alloc(token.string);
 ADDRLP4 0+16
@@ -35441,30 +35441,30 @@ CNSTI4 384
 ADDP4
 INDIRI4
 CNSTI4 32
-LTI4 $2268
+LTI4 $2270
 line 4941
 ;4941:				return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2242
+ADDRGP4 $2244
 JUMPV
-LABELV $2268
+LABELV $2270
 line 4943
 ;4942:			}
 ;4943:		}
-LABELV $2265
+LABELV $2267
 line 4945
 ;4944:
 ;4945:	}
-LABELV $2251
+LABELV $2253
 line 4919
-ADDRGP4 $2250
+ADDRGP4 $2252
 JUMPV
 line 4946
 ;4946:	return qfalse; 	// bk001205 - LCC missing return value
 CNSTI4 0
 RETI4
-LABELV $2242
+LABELV $2244
 endproc ItemParse_cvarStrList 1068 8
 export ItemParse_cvarFloatList
 proc ItemParse_cvarFloatList 1072 8
@@ -35492,14 +35492,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2271
+NEU4 $2273
 line 4955
 ;4955:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2270
+ADDRGP4 $2272
 JUMPV
-LABELV $2271
+LABELV $2273
 line 4956
 ;4956:	multiPtr = (multiDef_t*)item->typeData;
 ADDRLP4 0
@@ -35540,28 +35540,28 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-NEI4 $2273
+NEI4 $2275
 line 4961
 ;4961:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2270
+ADDRGP4 $2272
 JUMPV
-LABELV $2273
+LABELV $2275
 line 4962
 ;4962:	if (*token.string != '{') {
 ADDRLP4 4+16
 INDIRI1
 CVII4 1
 CNSTI4 123
-EQI4 $2279
+EQI4 $2281
 line 4963
 ;4963:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2270
+ADDRGP4 $2272
 JUMPV
-LABELV $2278
+LABELV $2280
 line 4966
 ;4964:	}
 ;4965:
@@ -35580,13 +35580,13 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-NEI4 $2281
+NEI4 $2283
 line 4968
 ;4968:			PC_SourceError(handle, "end of file inside menu item\n");
 ADDRFP4 4
 INDIRI4
 ARGI4
-ADDRGP4 $2255
+ADDRGP4 $2257
 ARGP4
 ADDRGP4 PC_SourceError
 CALLV
@@ -35595,9 +35595,9 @@ line 4969
 ;4969:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2270
+ADDRGP4 $2272
 JUMPV
-LABELV $2281
+LABELV $2283
 line 4972
 ;4970:		}
 ;4971:
@@ -35606,14 +35606,14 @@ ADDRLP4 4+16
 INDIRI1
 CVII4 1
 CNSTI4 125
-NEI4 $2283
+NEI4 $2285
 line 4973
 ;4973:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2270
+ADDRGP4 $2272
 JUMPV
-LABELV $2283
+LABELV $2285
 line 4976
 ;4974:		}
 ;4975:
@@ -35622,18 +35622,18 @@ ADDRLP4 4+16
 INDIRI1
 CVII4 1
 CNSTI4 44
-EQI4 $2290
+EQI4 $2292
 ADDRLP4 4+16
 INDIRI1
 CVII4 1
 CNSTI4 59
-NEI4 $2286
-LABELV $2290
+NEI4 $2288
+LABELV $2292
 line 4977
 ;4977:			continue;
-ADDRGP4 $2279
+ADDRGP4 $2281
 JUMPV
-LABELV $2286
+LABELV $2288
 line 4980
 ;4978:		}
 ;4979:
@@ -35682,14 +35682,14 @@ ASGNI4
 ADDRLP4 1064
 INDIRI4
 CNSTI4 0
-NEI4 $2292
+NEI4 $2294
 line 4982
 ;4982:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2270
+ADDRGP4 $2272
 JUMPV
-LABELV $2292
+LABELV $2294
 line 4985
 ;4983:		}
 ;4984:
@@ -35716,27 +35716,27 @@ CNSTI4 384
 ADDP4
 INDIRI4
 CNSTI4 32
-LTI4 $2294
+LTI4 $2296
 line 4987
 ;4987:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2270
+ADDRGP4 $2272
 JUMPV
-LABELV $2294
+LABELV $2296
 line 4990
 ;4988:		}
 ;4989:
 ;4990:	}
-LABELV $2279
+LABELV $2281
 line 4966
-ADDRGP4 $2278
+ADDRGP4 $2280
 JUMPV
 line 4991
 ;4991:	return qfalse; 	// bk001205 - LCC missing return value
 CNSTI4 0
 RETI4
-LABELV $2270
+LABELV $2272
 endproc ItemParse_cvarFloatList 1072 8
 export ItemParse_addColorRange
 proc ItemParse_addColorRange 48 12
@@ -35762,7 +35762,7 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $2297
+EQI4 $2299
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -35775,7 +35775,7 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-EQI4 $2297
+EQI4 $2299
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -35788,7 +35788,7 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 0
-EQI4 $2297
+EQI4 $2299
 line 5001
 ;5000:		PC_Float_Parse(handle, &color.high) &&
 ;5001:		PC_Color_Parse(handle, &color.color) ) {
@@ -35800,7 +35800,7 @@ CNSTI4 284
 ADDP4
 INDIRI4
 CNSTI4 10
-GEI4 $2301
+GEI4 $2303
 line 5003
 ;5003:			memcpy(&item->colorRanges[item->numColors], &color, sizeof(color));
 ADDRLP4 36
@@ -35850,20 +35850,20 @@ ADDI4
 ASGNI4
 line 5005
 ;5005:		}
-LABELV $2301
+LABELV $2303
 line 5006
 ;5006:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2296
+ADDRGP4 $2298
 JUMPV
-LABELV $2297
+LABELV $2299
 line 5008
 ;5007:	}
 ;5008:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $2296
+LABELV $2298
 endproc ItemParse_addColorRange 48 12
 export ItemParse_ownerdrawFlag
 proc ItemParse_ownerdrawFlag 12 8
@@ -35886,14 +35886,14 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2304
+NEI4 $2306
 line 5014
 ;5014:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2303
+ADDRGP4 $2305
 JUMPV
-LABELV $2304
+LABELV $2306
 line 5016
 ;5015:	}
 ;5016:	item->window.ownerDrawFlags |= i;
@@ -35916,7 +35916,7 @@ line 5017
 ;5017:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2303
+LABELV $2305
 endproc ItemParse_ownerdrawFlag 12 8
 export ItemParse_enableCvar
 proc ItemParse_enableCvar 4 8
@@ -35941,7 +35941,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $2307
+EQI4 $2309
 line 5022
 ;5022:		item->cvarFlags = CVAR_ENABLE;
 ADDRFP4 0
@@ -35954,15 +35954,15 @@ line 5023
 ;5023:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2306
+ADDRGP4 $2308
 JUMPV
-LABELV $2307
+LABELV $2309
 line 5025
 ;5024:	}
 ;5025:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $2306
+LABELV $2308
 endproc ItemParse_enableCvar 4 8
 export ItemParse_disableCvar
 proc ItemParse_disableCvar 4 8
@@ -35987,7 +35987,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $2310
+EQI4 $2312
 line 5030
 ;5030:		item->cvarFlags = CVAR_DISABLE;
 ADDRFP4 0
@@ -36000,15 +36000,15 @@ line 5031
 ;5031:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2309
+ADDRGP4 $2311
 JUMPV
-LABELV $2310
+LABELV $2312
 line 5033
 ;5032:	}
 ;5033:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $2309
+LABELV $2311
 endproc ItemParse_disableCvar 4 8
 export ItemParse_showCvar
 proc ItemParse_showCvar 4 8
@@ -36033,7 +36033,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $2313
+EQI4 $2315
 line 5038
 ;5038:		item->cvarFlags = CVAR_SHOW;
 ADDRFP4 0
@@ -36046,15 +36046,15 @@ line 5039
 ;5039:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2312
+ADDRGP4 $2314
 JUMPV
-LABELV $2313
+LABELV $2315
 line 5041
 ;5040:	}
 ;5041:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $2312
+LABELV $2314
 endproc ItemParse_showCvar 4 8
 export ItemParse_hideCvar
 proc ItemParse_hideCvar 4 8
@@ -36079,7 +36079,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $2316
+EQI4 $2318
 line 5046
 ;5046:		item->cvarFlags = CVAR_HIDE;
 ADDRFP4 0
@@ -36092,204 +36092,204 @@ line 5047
 ;5047:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2315
+ADDRGP4 $2317
 JUMPV
-LABELV $2316
+LABELV $2318
 line 5049
 ;5048:	}
 ;5049:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $2315
+LABELV $2317
 endproc ItemParse_hideCvar 4 8
 data
 export itemParseKeywords
 align 4
 LABELV itemParseKeywords
-address $2318
+address $2320
 address ItemParse_name
 byte 4 0
-address $2319
+address $2321
 address ItemParse_text
 byte 4 0
-address $2320
+address $2322
 address ItemParse_group
 byte 4 0
-address $2321
+address $2323
 address ItemParse_asset_model
 byte 4 0
-address $2322
+address $2324
 address ItemParse_asset_shader
 byte 4 0
-address $2323
+address $2325
 address ItemParse_model_origin
 byte 4 0
-address $2324
+address $2326
 address ItemParse_model_fovx
 byte 4 0
-address $2325
+address $2327
 address ItemParse_model_fovy
 byte 4 0
-address $2326
+address $2328
 address ItemParse_model_rotation
 byte 4 0
-address $2327
+address $2329
 address ItemParse_model_angle
 byte 4 0
-address $2328
+address $2330
 address ItemParse_rect
 byte 4 0
-address $2329
+address $2331
 address ItemParse_style
 byte 4 0
-address $2330
+address $2332
 address ItemParse_decoration
 byte 4 0
-address $2331
+address $2333
 address ItemParse_notselectable
 byte 4 0
-address $2332
+address $2334
 address ItemParse_wrapped
 byte 4 0
-address $2333
+address $2335
 address ItemParse_autowrapped
 byte 4 0
-address $2334
+address $2336
 address ItemParse_horizontalscroll
 byte 4 0
-address $2335
+address $2337
 address ItemParse_type
 byte 4 0
-address $2336
+address $2338
 address ItemParse_elementwidth
 byte 4 0
-address $2337
+address $2339
 address ItemParse_elementheight
 byte 4 0
-address $2338
+address $2340
 address ItemParse_feeder
 byte 4 0
-address $2339
+address $2341
 address ItemParse_elementtype
 byte 4 0
-address $2340
+address $2342
 address ItemParse_columns
 byte 4 0
-address $2341
+address $2343
 address ItemParse_border
 byte 4 0
-address $2342
+address $2344
 address ItemParse_bordersize
 byte 4 0
-address $2343
+address $2345
 address ItemParse_visible
 byte 4 0
-address $2344
+address $2346
 address ItemParse_ownerdraw
 byte 4 0
-address $2345
+address $2347
 address ItemParse_align
 byte 4 0
-address $2346
+address $2348
 address ItemParse_textalign
 byte 4 0
-address $2347
+address $2349
 address ItemParse_textalignx
 byte 4 0
-address $2348
+address $2350
 address ItemParse_textaligny
 byte 4 0
-address $2349
+address $2351
 address ItemParse_textscale
 byte 4 0
-address $2350
+address $2352
 address ItemParse_textstyle
 byte 4 0
-address $358
+address $360
 address ItemParse_backcolor
 byte 4 0
-address $361
+address $363
 address ItemParse_forecolor
 byte 4 0
-address $364
+address $366
 address ItemParse_bordercolor
 byte 4 0
-address $2351
+address $2353
 address ItemParse_outlinecolor
 byte 4 0
-address $2352
+address $2354
 address ItemParse_background
 byte 4 0
-address $2353
+address $2355
 address ItemParse_onFocus
 byte 4 0
-address $2354
+address $2356
 address ItemParse_leaveFocus
 byte 4 0
-address $2355
+address $2357
 address ItemParse_mouseEnter
 byte 4 0
-address $2356
+address $2358
 address ItemParse_mouseExit
 byte 4 0
-address $2357
+address $2359
 address ItemParse_mouseEnterText
 byte 4 0
-address $2358
+address $2360
 address ItemParse_mouseExitText
 byte 4 0
-address $2359
+address $2361
 address ItemParse_action
 byte 4 0
-address $2360
+address $2362
 address ItemParse_special
 byte 4 0
-address $2361
+address $2363
 address ItemParse_cvar
 byte 4 0
-address $2362
+address $2364
 address ItemParse_maxChars
 byte 4 0
-address $2363
+address $2365
 address ItemParse_maxPaintChars
 byte 4 0
-address $2364
+address $2366
 address ItemParse_focusSound
 byte 4 0
-address $2365
+address $2367
 address ItemParse_cvarFloat
 byte 4 0
-address $2366
+address $2368
 address ItemParse_cvarStrList
 byte 4 0
-address $2367
+address $2369
 address ItemParse_cvarFloatList
 byte 4 0
-address $2368
+address $2370
 address ItemParse_addColorRange
 byte 4 0
-address $2369
+address $2371
 address ItemParse_ownerdrawFlag
 byte 4 0
-address $2370
+address $2372
 address ItemParse_enableCvar
 byte 4 0
-address $2371
+address $2373
 address ItemParse_cvarTest
 byte 4 0
-address $2372
+address $2374
 address ItemParse_disableCvar
 byte 4 0
-address $2373
+address $2375
 address ItemParse_showCvar
 byte 4 0
-address $2374
+address $2376
 address ItemParse_hideCvar
 byte 4 0
-address $2375
+address $2377
 address ItemParse_cinematic
 byte 4 0
-address $2376
+address $2378
 address ItemParse_doubleClick
 byte 4 0
 byte 4 0
@@ -36394,9 +36394,9 @@ line 5130
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2381
+ADDRGP4 $2383
 JUMPV
-LABELV $2378
+LABELV $2380
 line 5131
 ;5131:		KeywordHash_Add(itemParseKeywordHash, &itemParseKeywords[i]);
 ADDRGP4 itemParseKeywordHash
@@ -36413,7 +36413,7 @@ CALLV
 pop
 line 5132
 ;5132:	}
-LABELV $2379
+LABELV $2381
 line 5130
 ADDRLP4 0
 ADDRLP4 0
@@ -36421,7 +36421,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2381
+LABELV $2383
 CNSTI4 12
 ADDRLP4 0
 INDIRI4
@@ -36431,10 +36431,10 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2378
+NEU4 $2380
 line 5133
 ;5133:}
-LABELV $2377
+LABELV $2379
 endproc Item_SetupKeywordHash 4 12
 export Item_Parse
 proc Item_Parse 1060 12
@@ -36464,28 +36464,28 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-NEI4 $2383
+NEI4 $2385
 line 5146
 ;5146:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2382
+ADDRGP4 $2384
 JUMPV
-LABELV $2383
+LABELV $2385
 line 5147
 ;5147:	if (*token.string != '{') {
 ADDRLP4 0+16
 INDIRI1
 CVII4 1
 CNSTI4 123
-EQI4 $2389
+EQI4 $2391
 line 5148
 ;5148:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2382
+ADDRGP4 $2384
 JUMPV
-LABELV $2388
+LABELV $2390
 line 5150
 ;5149:	}
 ;5150:	while ( 1 ) {
@@ -36503,13 +36503,13 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-NEI4 $2391
+NEI4 $2393
 line 5152
 ;5152:			PC_SourceError(handle, "end of file inside menu item\n");
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $2255
+ADDRGP4 $2257
 ARGP4
 ADDRGP4 PC_SourceError
 CALLV
@@ -36518,9 +36518,9 @@ line 5153
 ;5153:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2382
+ADDRGP4 $2384
 JUMPV
-LABELV $2391
+LABELV $2393
 line 5156
 ;5154:		}
 ;5155:
@@ -36529,14 +36529,14 @@ ADDRLP4 0+16
 INDIRI1
 CVII4 1
 CNSTI4 125
-NEI4 $2393
+NEI4 $2395
 line 5157
 ;5157:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2382
+ADDRGP4 $2384
 JUMPV
-LABELV $2393
+LABELV $2395
 line 5160
 ;5158:		}
 ;5159:
@@ -36559,13 +36559,13 @@ ADDRLP4 1040
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2397
+NEU4 $2399
 line 5162
 ;5162:			PC_SourceError(handle, "unknown menu item keyword %s", token.string);
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $2399
+ADDRGP4 $2401
 ARGP4
 ADDRLP4 0+16
 ARGP4
@@ -36574,9 +36574,9 @@ CALLV
 pop
 line 5163
 ;5163:			continue;
-ADDRGP4 $2389
+ADDRGP4 $2391
 JUMPV
-LABELV $2397
+LABELV $2399
 line 5165
 ;5164:		}
 ;5165:		if ( !key->func(item, handle) ) {
@@ -36597,13 +36597,13 @@ ASGNI4
 ADDRLP4 1056
 INDIRI4
 CNSTI4 0
-NEI4 $2401
+NEI4 $2403
 line 5166
 ;5166:			PC_SourceError(handle, "couldn't parse menu item keyword %s", token.string);
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $2403
+ADDRGP4 $2405
 ARGP4
 ADDRLP4 0+16
 ARGP4
@@ -36614,21 +36614,21 @@ line 5167
 ;5167:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2382
+ADDRGP4 $2384
 JUMPV
-LABELV $2401
+LABELV $2403
 line 5169
 ;5168:		}
 ;5169:	}
-LABELV $2389
+LABELV $2391
 line 5150
-ADDRGP4 $2388
+ADDRGP4 $2390
 JUMPV
 line 5170
 ;5170:	return qfalse; 	// bk001205 - LCC missing return value
 CNSTI4 0
 RETI4
-LABELV $2382
+LABELV $2384
 endproc Item_Parse 1060 12
 export Item_InitControls
 proc Item_InitControls 4 0
@@ -36645,12 +36645,12 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2406
+NEU4 $2408
 line 5178
 ;5178:		return;
-ADDRGP4 $2405
+ADDRGP4 $2407
 JUMPV
-LABELV $2406
+LABELV $2408
 line 5180
 ;5179:	}
 ;5180:	if (item->type == ITEM_TYPE_LISTBOX) {
@@ -36660,7 +36660,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 6
-NEI4 $2408
+NEI4 $2410
 line 5181
 ;5181:		listBoxDef_t *listPtr = (listBoxDef_t*)item->typeData;
 ADDRLP4 0
@@ -36684,7 +36684,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2410
+EQU4 $2412
 line 5184
 ;5184:			listPtr->cursorPos = 0;
 ADDRLP4 0
@@ -36717,13 +36717,13 @@ CNSTI4 0
 ASGNI4
 line 5188
 ;5188:		}
-LABELV $2410
+LABELV $2412
 line 5189
 ;5189:	}
-LABELV $2408
+LABELV $2410
 line 5190
 ;5190:}
-LABELV $2405
+LABELV $2407
 endproc Item_InitControls 4 0
 export MenuParse_font
 proc MenuParse_font 12 12
@@ -36759,14 +36759,14 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2413
+NEI4 $2415
 line 5201
 ;5201:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2412
+ADDRGP4 $2414
 JUMPV
-LABELV $2413
+LABELV $2415
 line 5203
 ;5202:	}
 ;5203:	if (!DC->Assets.fontRegistered) {
@@ -36776,7 +36776,7 @@ CNSTI4 61992
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $2415
+NEI4 $2417
 line 5204
 ;5204:		DC->registerFont(menu->font, 48, &DC->Assets.textFont);
 ADDRLP4 0
@@ -36813,12 +36813,12 @@ CNSTI4 1
 ASGNI4
 line 5206
 ;5206:	}
-LABELV $2415
+LABELV $2417
 line 5207
 ;5207:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2412
+LABELV $2414
 endproc MenuParse_font 12 12
 export MenuParse_name
 proc MenuParse_name 12 8
@@ -36849,14 +36849,14 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2418
+NEI4 $2420
 line 5213
 ;5213:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2417
+ADDRGP4 $2419
 JUMPV
-LABELV $2418
+LABELV $2420
 line 5215
 ;5214:	}
 ;5215:	if (Q_stricmp(menu->window.name, "main") == 0) {
@@ -36866,7 +36866,7 @@ CNSTI4 32
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $2422
+ADDRGP4 $2424
 ARGP4
 ADDRLP4 8
 ADDRGP4 Q_stricmp
@@ -36875,17 +36875,17 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $2420
+NEI4 $2422
 line 5218
 ;5216:		// default main as having focus
 ;5217:		//menu->window.flags |= WINDOW_HASFOCUS;
 ;5218:	}
-LABELV $2420
+LABELV $2422
 line 5219
 ;5219:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2417
+LABELV $2419
 endproc MenuParse_name 12 8
 export MenuParse_fullscreen
 proc MenuParse_fullscreen 8 8
@@ -36916,20 +36916,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2424
+NEI4 $2426
 line 5225
 ;5225:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2423
+ADDRGP4 $2425
 JUMPV
-LABELV $2424
+LABELV $2426
 line 5227
 ;5226:	}
 ;5227:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2423
+LABELV $2425
 endproc MenuParse_fullscreen 8 8
 export MenuParse_rect
 proc MenuParse_rect 8 8
@@ -36958,20 +36958,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2427
+NEI4 $2429
 line 5233
 ;5233:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2426
+ADDRGP4 $2428
 JUMPV
-LABELV $2427
+LABELV $2429
 line 5235
 ;5234:	}
 ;5235:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2426
+LABELV $2428
 endproc MenuParse_rect 8 8
 export MenuParse_style
 proc MenuParse_style 8 8
@@ -37002,20 +37002,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2430
+NEI4 $2432
 line 5241
 ;5241:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2429
+ADDRGP4 $2431
 JUMPV
-LABELV $2430
+LABELV $2432
 line 5243
 ;5242:	}
 ;5243:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2429
+LABELV $2431
 endproc MenuParse_style 8 8
 export MenuParse_visible
 proc MenuParse_visible 16 8
@@ -37045,21 +37045,21 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $2433
+NEI4 $2435
 line 5251
 ;5251:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2432
+ADDRGP4 $2434
 JUMPV
-LABELV $2433
+LABELV $2435
 line 5253
 ;5252:	}
 ;5253:	if (i) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $2435
+EQI4 $2437
 line 5254
 ;5254:		menu->window.flags |= WINDOW_VISIBLE;
 ADDRLP4 12
@@ -37078,12 +37078,12 @@ BORI4
 ASGNI4
 line 5255
 ;5255:	}
-LABELV $2435
+LABELV $2437
 line 5256
 ;5256:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2432
+LABELV $2434
 endproc MenuParse_visible 16 8
 export MenuParse_onOpen
 proc MenuParse_onOpen 8 8
@@ -37114,20 +37114,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2438
+NEI4 $2440
 line 5262
 ;5262:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2437
+ADDRGP4 $2439
 JUMPV
-LABELV $2438
+LABELV $2440
 line 5264
 ;5263:	}
 ;5264:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2437
+LABELV $2439
 endproc MenuParse_onOpen 8 8
 export MenuParse_onClose
 proc MenuParse_onClose 8 8
@@ -37158,20 +37158,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2441
+NEI4 $2443
 line 5270
 ;5270:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2440
+ADDRGP4 $2442
 JUMPV
-LABELV $2441
+LABELV $2443
 line 5272
 ;5271:	}
 ;5272:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2440
+LABELV $2442
 endproc MenuParse_onClose 8 8
 export MenuParse_onESC
 proc MenuParse_onESC 8 8
@@ -37202,20 +37202,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2444
+NEI4 $2446
 line 5278
 ;5278:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2443
+ADDRGP4 $2445
 JUMPV
-LABELV $2444
+LABELV $2446
 line 5280
 ;5279:	}
 ;5280:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2443
+LABELV $2445
 endproc MenuParse_onESC 8 8
 export MenuParse_border
 proc MenuParse_border 8 8
@@ -37248,20 +37248,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2447
+NEI4 $2449
 line 5288
 ;5288:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2446
+ADDRGP4 $2448
 JUMPV
-LABELV $2447
+LABELV $2449
 line 5290
 ;5289:	}
 ;5290:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2446
+LABELV $2448
 endproc MenuParse_border 8 8
 export MenuParse_borderSize
 proc MenuParse_borderSize 8 8
@@ -37292,20 +37292,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2450
+NEI4 $2452
 line 5296
 ;5296:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2449
+ADDRGP4 $2451
 JUMPV
-LABELV $2450
+LABELV $2452
 line 5298
 ;5297:	}
 ;5298:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2449
+LABELV $2451
 endproc MenuParse_borderSize 8 8
 export MenuParse_backcolor
 proc MenuParse_backcolor 16 8
@@ -37327,7 +37327,7 @@ line 5306
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $2453
+LABELV $2455
 line 5307
 ;5307:		if (!PC_Float_Parse(handle, &f)) {
 ADDRFP4 4
@@ -37342,14 +37342,14 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $2457
+NEI4 $2459
 line 5308
 ;5308:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2452
+ADDRGP4 $2454
 JUMPV
-LABELV $2457
+LABELV $2459
 line 5310
 ;5309:		}
 ;5310:		menu->window.backColor[i]  = f;
@@ -37367,7 +37367,7 @@ INDIRF4
 ASGNF4
 line 5311
 ;5311:	}
-LABELV $2454
+LABELV $2456
 line 5306
 ADDRLP4 0
 ADDRLP4 0
@@ -37378,12 +37378,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $2453
+LTI4 $2455
 line 5312
 ;5312:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2452
+LABELV $2454
 endproc MenuParse_backcolor 16 8
 export MenuParse_forecolor
 proc MenuParse_forecolor 20 8
@@ -37405,7 +37405,7 @@ line 5320
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $2460
+LABELV $2462
 line 5321
 ;5321:		if (!PC_Float_Parse(handle, &f)) {
 ADDRFP4 4
@@ -37420,14 +37420,14 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $2464
+NEI4 $2466
 line 5322
 ;5322:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2459
+ADDRGP4 $2461
 JUMPV
-LABELV $2464
+LABELV $2466
 line 5324
 ;5323:		}
 ;5324:		menu->window.foreColor[i]  = f;
@@ -37461,7 +37461,7 @@ BORI4
 ASGNI4
 line 5326
 ;5326:	}
-LABELV $2461
+LABELV $2463
 line 5320
 ADDRLP4 0
 ADDRLP4 0
@@ -37472,12 +37472,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $2460
+LTI4 $2462
 line 5327
 ;5327:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2459
+LABELV $2461
 endproc MenuParse_forecolor 20 8
 export MenuParse_bordercolor
 proc MenuParse_bordercolor 16 8
@@ -37499,7 +37499,7 @@ line 5335
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $2467
+LABELV $2469
 line 5336
 ;5336:		if (!PC_Float_Parse(handle, &f)) {
 ADDRFP4 4
@@ -37514,14 +37514,14 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $2471
+NEI4 $2473
 line 5337
 ;5337:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2466
+ADDRGP4 $2468
 JUMPV
-LABELV $2471
+LABELV $2473
 line 5339
 ;5338:		}
 ;5339:		menu->window.borderColor[i]  = f;
@@ -37539,7 +37539,7 @@ INDIRF4
 ASGNF4
 line 5340
 ;5340:	}
-LABELV $2468
+LABELV $2470
 line 5335
 ADDRLP4 0
 ADDRLP4 0
@@ -37550,12 +37550,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $2467
+LTI4 $2469
 line 5341
 ;5341:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2466
+LABELV $2468
 endproc MenuParse_bordercolor 16 8
 export MenuParse_focuscolor
 proc MenuParse_focuscolor 16 8
@@ -37577,7 +37577,7 @@ line 5349
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $2474
+LABELV $2476
 line 5350
 ;5350:		if (!PC_Float_Parse(handle, &f)) {
 ADDRFP4 4
@@ -37592,14 +37592,14 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $2478
+NEI4 $2480
 line 5351
 ;5351:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2473
+ADDRGP4 $2475
 JUMPV
-LABELV $2478
+LABELV $2480
 line 5353
 ;5352:		}
 ;5353:		menu->focusColor[i]  = f;
@@ -37617,7 +37617,7 @@ INDIRF4
 ASGNF4
 line 5354
 ;5354:	}
-LABELV $2475
+LABELV $2477
 line 5349
 ADDRLP4 0
 ADDRLP4 0
@@ -37628,12 +37628,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $2474
+LTI4 $2476
 line 5355
 ;5355:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2473
+LABELV $2475
 endproc MenuParse_focuscolor 16 8
 export MenuParse_disablecolor
 proc MenuParse_disablecolor 16 8
@@ -37654,7 +37654,7 @@ line 5362
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $2481
+LABELV $2483
 line 5363
 ;5363:		if (!PC_Float_Parse(handle, &f)) {
 ADDRFP4 4
@@ -37669,14 +37669,14 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $2485
+NEI4 $2487
 line 5364
 ;5364:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2480
+ADDRGP4 $2482
 JUMPV
-LABELV $2485
+LABELV $2487
 line 5366
 ;5365:		}
 ;5366:		menu->disableColor[i]  = f;
@@ -37694,7 +37694,7 @@ INDIRF4
 ASGNF4
 line 5367
 ;5367:	}
-LABELV $2482
+LABELV $2484
 line 5362
 ADDRLP4 0
 ADDRLP4 0
@@ -37705,12 +37705,12 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
-LTI4 $2481
+LTI4 $2483
 line 5368
 ;5368:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2480
+LABELV $2482
 endproc MenuParse_disablecolor 16 8
 export MenuParse_outlinecolor
 proc MenuParse_outlinecolor 8 8
@@ -37742,20 +37742,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2488
+NEI4 $2490
 line 5375
 ;5375:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2487
+ADDRGP4 $2489
 JUMPV
-LABELV $2488
+LABELV $2490
 line 5377
 ;5376:	}
 ;5377:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2487
+LABELV $2489
 endproc MenuParse_outlinecolor 8 8
 export MenuParse_background
 proc MenuParse_background 16 8
@@ -37785,14 +37785,14 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $2491
+NEI4 $2493
 line 5385
 ;5385:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2490
+ADDRGP4 $2492
 JUMPV
-LABELV $2491
+LABELV $2493
 line 5387
 ;5386:	}
 ;5387:	menu->window.background = DC->registerShaderNoMip(buff);
@@ -37816,7 +37816,7 @@ line 5388
 ;5388:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2490
+LABELV $2492
 endproc MenuParse_background 16 8
 export MenuParse_cinematic
 proc MenuParse_cinematic 8 8
@@ -37848,20 +37848,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2494
+NEI4 $2496
 line 5395
 ;5395:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2493
+ADDRGP4 $2495
 JUMPV
-LABELV $2494
+LABELV $2496
 line 5397
 ;5396:	}
 ;5397:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2493
+LABELV $2495
 endproc MenuParse_cinematic 8 8
 export MenuParse_ownerdrawFlag
 proc MenuParse_ownerdrawFlag 16 8
@@ -37891,14 +37891,14 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $2497
+NEI4 $2499
 line 5405
 ;5405:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2496
+ADDRGP4 $2498
 JUMPV
-LABELV $2497
+LABELV $2499
 line 5407
 ;5406:	}
 ;5407:	menu->window.ownerDrawFlags |= i;
@@ -37921,7 +37921,7 @@ line 5408
 ;5408:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2496
+LABELV $2498
 endproc MenuParse_ownerdrawFlag 16 8
 export MenuParse_ownerdraw
 proc MenuParse_ownerdraw 8 8
@@ -37953,20 +37953,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2500
+NEI4 $2502
 line 5415
 ;5415:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2499
+ADDRGP4 $2501
 JUMPV
-LABELV $2500
+LABELV $2502
 line 5417
 ;5416:	}
 ;5417:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2499
+LABELV $2501
 endproc MenuParse_ownerdraw 8 8
 export MenuParse_popup
 proc MenuParse_popup 8 0
@@ -38002,7 +38002,7 @@ line 5425
 ;5425:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2502
+LABELV $2504
 endproc MenuParse_popup 8 0
 export MenuParse_outOfBounds
 proc MenuParse_outOfBounds 8 0
@@ -38038,7 +38038,7 @@ line 5433
 ;5433:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2503
+LABELV $2505
 endproc MenuParse_outOfBounds 8 0
 export MenuParse_soundLoop
 proc MenuParse_soundLoop 8 8
@@ -38070,20 +38070,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2505
+NEI4 $2507
 line 5440
 ;5440:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2504
+ADDRGP4 $2506
 JUMPV
-LABELV $2505
+LABELV $2507
 line 5442
 ;5441:	}
 ;5442:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2504
+LABELV $2506
 endproc MenuParse_soundLoop 8 8
 export MenuParse_fadeClamp
 proc MenuParse_fadeClamp 8 8
@@ -38115,20 +38115,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2508
+NEI4 $2510
 line 5449
 ;5449:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2507
+ADDRGP4 $2509
 JUMPV
-LABELV $2508
+LABELV $2510
 line 5451
 ;5450:	}
 ;5451:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2507
+LABELV $2509
 endproc MenuParse_fadeClamp 8 8
 export MenuParse_fadeAmount
 proc MenuParse_fadeAmount 8 8
@@ -38160,20 +38160,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2511
+NEI4 $2513
 line 5458
 ;5458:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2510
+ADDRGP4 $2512
 JUMPV
-LABELV $2511
+LABELV $2513
 line 5460
 ;5459:	}
 ;5460:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2510
+LABELV $2512
 endproc MenuParse_fadeAmount 8 8
 export MenuParse_fadeCycle
 proc MenuParse_fadeCycle 8 8
@@ -38206,20 +38206,20 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $2514
+NEI4 $2516
 line 5468
 ;5468:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2513
+ADDRGP4 $2515
 JUMPV
-LABELV $2514
+LABELV $2516
 line 5470
 ;5469:	}
 ;5470:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2513
+LABELV $2515
 endproc MenuParse_fadeCycle 8 8
 export MenuParse_itemDef
 proc MenuParse_itemDef 40 8
@@ -38242,7 +38242,7 @@ CNSTI4 188
 ADDP4
 INDIRI4
 CNSTI4 96
-GEI4 $2517
+GEI4 $2519
 line 5477
 ;5477:		menu->items[menu->itemCount] = UI_Alloc(sizeof(itemDef_t));
 CNSTI4 540
@@ -38311,14 +38311,14 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-NEI4 $2519
+NEI4 $2521
 line 5480
 ;5480:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2516
+ADDRGP4 $2518
 JUMPV
-LABELV $2519
+LABELV $2521
 line 5482
 ;5481:		}
 ;5482:		Item_InitControls(menu->items[menu->itemCount]);
@@ -38376,99 +38376,99 @@ INDIRP4
 ASGNP4
 line 5484
 ;5484:	}
-LABELV $2517
+LABELV $2519
 line 5485
 ;5485:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2516
+LABELV $2518
 endproc MenuParse_itemDef 40 8
 data
 export menuParseKeywords
 align 4
 LABELV menuParseKeywords
-address $2521
+address $2523
 address MenuParse_font
 byte 4 0
-address $2318
+address $2320
 address MenuParse_name
 byte 4 0
-address $2522
+address $2524
 address MenuParse_fullscreen
 byte 4 0
-address $2328
+address $2330
 address MenuParse_rect
 byte 4 0
-address $2329
+address $2331
 address MenuParse_style
 byte 4 0
-address $2343
+address $2345
 address MenuParse_visible
 byte 4 0
-address $2523
+address $2525
 address MenuParse_onOpen
 byte 4 0
-address $2524
+address $2526
 address MenuParse_onClose
 byte 4 0
-address $2525
+address $2527
 address MenuParse_onESC
 byte 4 0
-address $2341
+address $2343
 address MenuParse_border
 byte 4 0
-address $2526
+address $2528
 address MenuParse_borderSize
 byte 4 0
-address $358
+address $360
 address MenuParse_backcolor
 byte 4 0
-address $361
+address $363
 address MenuParse_forecolor
 byte 4 0
-address $364
+address $366
 address MenuParse_bordercolor
 byte 4 0
-address $2527
+address $2529
 address MenuParse_focuscolor
 byte 4 0
-address $2528
+address $2530
 address MenuParse_disablecolor
 byte 4 0
-address $2351
+address $2353
 address MenuParse_outlinecolor
 byte 4 0
-address $2352
+address $2354
 address MenuParse_background
 byte 4 0
-address $2344
+address $2346
 address MenuParse_ownerdraw
 byte 4 0
-address $2369
+address $2371
 address MenuParse_ownerdrawFlag
 byte 4 0
-address $2529
+address $2531
 address MenuParse_outOfBounds
 byte 4 0
-address $2530
+address $2532
 address MenuParse_soundLoop
 byte 4 0
-address $2531
+address $2533
 address MenuParse_itemDef
 byte 4 0
-address $2375
+address $2377
 address MenuParse_cinematic
 byte 4 0
-address $2532
+address $2534
 address MenuParse_popup
 byte 4 0
-address $2533
+address $2535
 address MenuParse_fadeClamp
 byte 4 0
-address $2534
+address $2536
 address MenuParse_fadeCycle
 byte 4 0
-address $2535
+address $2537
 address MenuParse_fadeAmount
 byte 4 0
 byte 4 0
@@ -38538,9 +38538,9 @@ line 5531
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2540
+ADDRGP4 $2542
 JUMPV
-LABELV $2537
+LABELV $2539
 line 5532
 ;5532:		KeywordHash_Add(menuParseKeywordHash, &menuParseKeywords[i]);
 ADDRGP4 menuParseKeywordHash
@@ -38557,7 +38557,7 @@ CALLV
 pop
 line 5533
 ;5533:	}
-LABELV $2538
+LABELV $2540
 line 5531
 ADDRLP4 0
 ADDRLP4 0
@@ -38565,7 +38565,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2540
+LABELV $2542
 CNSTI4 12
 ADDRLP4 0
 INDIRI4
@@ -38575,10 +38575,10 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2537
+NEU4 $2539
 line 5534
 ;5534:}
-LABELV $2536
+LABELV $2538
 endproc Menu_SetupKeywordHash 4 12
 export Menu_Parse
 proc Menu_Parse 1060 12
@@ -38607,28 +38607,28 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-NEI4 $2542
+NEI4 $2544
 line 5546
 ;5546:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2541
+ADDRGP4 $2543
 JUMPV
-LABELV $2542
+LABELV $2544
 line 5547
 ;5547:	if (*token.string != '{') {
 ADDRLP4 0+16
 INDIRI1
 CVII4 1
 CNSTI4 123
-EQI4 $2548
+EQI4 $2550
 line 5548
 ;5548:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2541
+ADDRGP4 $2543
 JUMPV
-LABELV $2547
+LABELV $2549
 line 5551
 ;5549:	}
 ;5550:    
@@ -38659,13 +38659,13 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-NEI4 $2550
+NEI4 $2552
 line 5555
 ;5555:			PC_SourceError(handle, "end of file inside menu\n");
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $2552
+ADDRGP4 $2554
 ARGP4
 ADDRGP4 PC_SourceError
 CALLV
@@ -38674,9 +38674,9 @@ line 5556
 ;5556:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2541
+ADDRGP4 $2543
 JUMPV
-LABELV $2550
+LABELV $2552
 line 5559
 ;5557:		}
 ;5558:
@@ -38685,14 +38685,14 @@ ADDRLP4 0+16
 INDIRI1
 CVII4 1
 CNSTI4 125
-NEI4 $2553
+NEI4 $2555
 line 5560
 ;5560:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2541
+ADDRGP4 $2543
 JUMPV
-LABELV $2553
+LABELV $2555
 line 5563
 ;5561:		}
 ;5562:
@@ -38715,13 +38715,13 @@ ADDRLP4 1040
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2557
+NEU4 $2559
 line 5565
 ;5565:			PC_SourceError(handle, "unknown menu keyword %s", token.string);
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $2559
+ADDRGP4 $2561
 ARGP4
 ADDRLP4 0+16
 ARGP4
@@ -38730,9 +38730,9 @@ CALLV
 pop
 line 5566
 ;5566:			continue;
-ADDRGP4 $2548
+ADDRGP4 $2550
 JUMPV
-LABELV $2557
+LABELV $2559
 line 5568
 ;5567:		}
 ;5568:		if ( !key->func((itemDef_t*)menu, handle) ) {
@@ -38753,13 +38753,13 @@ ASGNI4
 ADDRLP4 1056
 INDIRI4
 CNSTI4 0
-NEI4 $2561
+NEI4 $2563
 line 5569
 ;5569:			PC_SourceError(handle, "couldn't parse menu keyword %s", token.string);
 ADDRFP4 0
 INDIRI4
 ARGI4
-ADDRGP4 $2563
+ADDRGP4 $2565
 ARGP4
 ADDRLP4 0+16
 ARGP4
@@ -38770,21 +38770,21 @@ line 5570
 ;5570:			return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $2541
+ADDRGP4 $2543
 JUMPV
-LABELV $2561
+LABELV $2563
 line 5572
 ;5571:		}
 ;5572:	}
-LABELV $2548
+LABELV $2550
 line 5551
-ADDRGP4 $2547
+ADDRGP4 $2549
 JUMPV
 line 5573
 ;5573:	return qfalse; 	// bk001205 - LCC missing return value
 CNSTI4 0
 RETI4
-LABELV $2541
+LABELV $2543
 endproc Menu_Parse 1060 12
 export Menu_New
 proc Menu_New 12 8
@@ -38813,7 +38813,7 @@ line 5584
 ADDRGP4 menuCount
 INDIRI4
 CNSTI4 64
-GEI4 $2566
+GEI4 $2568
 line 5585
 ;5585:		Menu_Init(menu);
 ADDRLP4 0
@@ -38837,7 +38837,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $2568
+EQI4 $2570
 line 5587
 ;5587:			Menu_PostParse(menu);
 ADDRLP4 0
@@ -38861,13 +38861,13 @@ ADDI4
 ASGNI4
 line 5589
 ;5589:		}
-LABELV $2568
+LABELV $2570
 line 5590
 ;5590:	}
-LABELV $2566
+LABELV $2568
 line 5591
 ;5591:}
-LABELV $2565
+LABELV $2567
 endproc Menu_New 12 8
 export Menu_Count
 proc Menu_Count 0 0
@@ -38879,11 +38879,11 @@ line 5594
 ADDRGP4 menuCount
 INDIRI4
 RETI4
-LABELV $2570
+LABELV $2572
 endproc Menu_Count 0 0
 lit
 align 4
-LABELV $2580
+LABELV $2582
 byte 4 1065353216
 byte 4 1065353216
 byte 4 1065353216
@@ -38902,7 +38902,7 @@ ADDRGP4 captureFunc
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2572
+EQU4 $2574
 line 5600
 ;5600:		captureFunc(captureData);
 ADDRGP4 captureData
@@ -38914,16 +38914,16 @@ CALLV
 pop
 line 5601
 ;5601:	}
-LABELV $2572
+LABELV $2574
 line 5603
 ;5602:
 ;5603:	for (i = 0; i < Menu_Count(); i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2577
+ADDRGP4 $2579
 JUMPV
-LABELV $2574
+LABELV $2576
 line 5604
 ;5604:		Menu_Paint(&Menus[i], qfalse);
 CNSTI4 644
@@ -38940,7 +38940,7 @@ CALLV
 pop
 line 5605
 ;5605:	}
-LABELV $2575
+LABELV $2577
 line 5603
 ADDRLP4 0
 ADDRLP4 0
@@ -38948,7 +38948,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2577
+LABELV $2579
 ADDRLP4 4
 ADDRGP4 Menu_Count
 CALLI4
@@ -38957,23 +38957,23 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-LTI4 $2574
+LTI4 $2576
 line 5607
 ;5606:
 ;5607:	if (debugMode) {
 ADDRGP4 debugMode
 INDIRI4
 CNSTI4 0
-EQI4 $2578
+EQI4 $2580
 line 5608
 ;5608:		vec4_t v = {1, 1, 1, 1};
 ADDRLP4 8
-ADDRGP4 $2580
+ADDRGP4 $2582
 INDIRB
 ASGNB 16
 line 5609
 ;5609:		DC->drawText(5, 25, .5, v, va("fps: %f", DC->FPS), 0, 0, 0);
-ADDRGP4 $2581
+ADDRGP4 $2583
 ARGP4
 ADDRGP4 DC
 INDIRP4
@@ -39016,10 +39016,10 @@ CALLV
 pop
 line 5610
 ;5610:	}
-LABELV $2578
+LABELV $2580
 line 5611
 ;5611:}
-LABELV $2571
+LABELV $2573
 endproc Menu_PaintAll 32 32
 export Menu_Reset
 proc Menu_Reset 0 0
@@ -39033,7 +39033,7 @@ CNSTI4 0
 ASGNI4
 line 5615
 ;5615:}
-LABELV $2582
+LABELV $2584
 endproc Menu_Reset 0 0
 export Display_GetContext
 proc Display_GetContext 0 0
@@ -39045,7 +39045,7 @@ line 5618
 ADDRGP4 DC
 INDIRP4
 RETP4
-LABELV $2583
+LABELV $2585
 endproc Display_GetContext 0 0
 export Display_CaptureItem
 proc Display_CaptureItem 8 12
@@ -39065,9 +39065,9 @@ line 5629
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2588
+ADDRGP4 $2590
 JUMPV
-LABELV $2585
+LABELV $2587
 line 5632
 ;5630:		// turn off focus each item
 ;5631:		// menu->items[i].window.flags &= ~WINDOW_HASFOCUS;
@@ -39094,7 +39094,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $2589
+EQI4 $2591
 line 5633
 ;5633:			return &Menus[i];
 CNSTI4 644
@@ -39104,13 +39104,13 @@ MULI4
 ADDRGP4 Menus
 ADDP4
 RETP4
-ADDRGP4 $2584
+ADDRGP4 $2586
 JUMPV
-LABELV $2589
+LABELV $2591
 line 5635
 ;5634:		}
 ;5635:	}
-LABELV $2586
+LABELV $2588
 line 5629
 ADDRLP4 0
 ADDRLP4 0
@@ -39118,17 +39118,17 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2588
+LABELV $2590
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $2585
+LTI4 $2587
 line 5636
 ;5636:	return NULL;
 CNSTP4 0
 RETP4
-LABELV $2584
+LABELV $2586
 endproc Display_CaptureItem 8 12
 export Display_MouseMove
 proc Display_MouseMove 16 12
@@ -39152,7 +39152,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2592
+NEU4 $2594
 line 5646
 ;5646:    menu = Menu_GetFocused();
 ADDRLP4 8
@@ -39169,7 +39169,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2594
+EQU4 $2596
 line 5648
 ;5648:			if (menu->window.flags & WINDOW_POPUP) {
 ADDRLP4 4
@@ -39180,7 +39180,7 @@ INDIRI4
 CNSTI4 2097152
 BANDI4
 CNSTI4 0
-EQI4 $2596
+EQI4 $2598
 line 5649
 ;5649:				Menu_HandleMouseMove(menu, x, y);
 ADDRLP4 4
@@ -39201,21 +39201,21 @@ line 5650
 ;5650:				return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2591
+ADDRGP4 $2593
 JUMPV
-LABELV $2596
+LABELV $2598
 line 5652
 ;5651:			}
 ;5652:		}
-LABELV $2594
+LABELV $2596
 line 5653
 ;5653:		for (i = 0; i < menuCount; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2601
+ADDRGP4 $2603
 JUMPV
-LABELV $2598
+LABELV $2600
 line 5654
 ;5654:			Menu_HandleMouseMove(&Menus[i], x, y);
 CNSTI4 644
@@ -39238,7 +39238,7 @@ CALLV
 pop
 line 5655
 ;5655:		}
-LABELV $2599
+LABELV $2601
 line 5653
 ADDRLP4 0
 ADDRLP4 0
@@ -39246,17 +39246,17 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2601
+LABELV $2603
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $2598
+LTI4 $2600
 line 5656
 ;5656:	} else {
-ADDRGP4 $2593
+ADDRGP4 $2595
 JUMPV
-LABELV $2592
+LABELV $2594
 line 5657
 ;5657:		menu->window.rect.x += x;
 ADDRLP4 4
@@ -39297,12 +39297,12 @@ CALLV
 pop
 line 5660
 ;5660:	}
-LABELV $2593
+LABELV $2595
 line 5661
 ;5661: 	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $2591
+LABELV $2593
 endproc Display_MouseMove 16 12
 export Display_CursorType
 proc Display_CursorType 28 12
@@ -39317,9 +39317,9 @@ line 5667
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2606
+ADDRGP4 $2608
 JUMPV
-LABELV $2603
+LABELV $2605
 line 5669
 ;5668:		rectDef_t r2;
 ;5669:		r2.x = Menus[i].window.rect.x - 3;
@@ -39379,18 +39379,18 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $2611
+EQI4 $2613
 line 5673
 ;5673:			return CURSOR_SIZER;
 CNSTI4 4
 RETI4
-ADDRGP4 $2602
+ADDRGP4 $2604
 JUMPV
-LABELV $2611
+LABELV $2613
 line 5675
 ;5674:		}
 ;5675:	}
-LABELV $2604
+LABELV $2606
 line 5667
 ADDRLP4 0
 ADDRLP4 0
@@ -39398,17 +39398,17 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2606
+LABELV $2608
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $2603
+LTI4 $2605
 line 5676
 ;5676:	return CURSOR_ARROW;
 CNSTI4 2
 RETI4
-LABELV $2602
+LABELV $2604
 endproc Display_CursorType 28 12
 export Display_HandleKey
 proc Display_HandleKey 12 12
@@ -39439,7 +39439,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $2614
+NEU4 $2616
 line 5683
 ;5683:		menu = Menu_GetFocused();
 ADDRLP4 8
@@ -39452,14 +39452,14 @@ INDIRP4
 ASGNP4
 line 5684
 ;5684:	}
-LABELV $2614
+LABELV $2616
 line 5685
 ;5685:	if (menu) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2616
+EQU4 $2618
 line 5686
 ;5686:		Menu_HandleKey(menu, key, down );
 ADDRLP4 0
@@ -39476,10 +39476,10 @@ CALLV
 pop
 line 5687
 ;5687:	}
-LABELV $2616
+LABELV $2618
 line 5688
 ;5688:}
-LABELV $2613
+LABELV $2615
 endproc Display_HandleKey 12 12
 proc Window_CacheContents 12 20
 line 5690
@@ -39491,7 +39491,7 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2619
+EQU4 $2621
 line 5692
 ;5692:		if (window->cinematicName) {
 ADDRFP4 0
@@ -39501,7 +39501,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2621
+EQU4 $2623
 line 5693
 ;5693:			int cin = DC->playCinematic(window->cinematicName, 0, 0, 0, 0);
 ADDRFP4 0
@@ -39551,13 +39551,13 @@ CALLV
 pop
 line 5695
 ;5695:		}
-LABELV $2621
+LABELV $2623
 line 5696
 ;5696:	}
-LABELV $2619
+LABELV $2621
 line 5697
 ;5697:}
-LABELV $2618
+LABELV $2620
 endproc Window_CacheContents 12 20
 proc Item_CacheContents 0 4
 line 5700
@@ -39570,7 +39570,7 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2624
+EQU4 $2626
 line 5702
 ;5702:		Window_CacheContents(&item->window);
 ADDRFP4 0
@@ -39581,11 +39581,11 @@ CALLV
 pop
 line 5703
 ;5703:	}
-LABELV $2624
+LABELV $2626
 line 5705
 ;5704:
 ;5705:}
-LABELV $2623
+LABELV $2625
 endproc Item_CacheContents 0 4
 proc Menu_CacheContents 8 8
 line 5707
@@ -39597,7 +39597,7 @@ ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2627
+EQU4 $2629
 line 5710
 ;5709:		int i;
 ;5710:		Window_CacheContents(&menu->window);
@@ -39612,9 +39612,9 @@ line 5711
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2632
+ADDRGP4 $2634
 JUMPV
-LABELV $2629
+LABELV $2631
 line 5712
 ;5712:			Item_CacheContents(menu->items[i]);
 ADDRLP4 0
@@ -39633,7 +39633,7 @@ CALLV
 pop
 line 5713
 ;5713:		}
-LABELV $2630
+LABELV $2632
 line 5711
 ADDRLP4 0
 ADDRLP4 0
@@ -39641,7 +39641,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2632
+LABELV $2634
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -39649,7 +39649,7 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $2629
+LTI4 $2631
 line 5715
 ;5714:
 ;5715:		if (menu->soundName && *menu->soundName) {
@@ -39664,13 +39664,13 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2633
+EQU4 $2635
 ADDRLP4 4
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
-EQI4 $2633
+EQI4 $2635
 line 5716
 ;5716:			DC->registerSound(menu->soundName, qfalse);
 ADDRFP4 0
@@ -39690,14 +39690,14 @@ CALLI4
 pop
 line 5717
 ;5717:		}
-LABELV $2633
+LABELV $2635
 line 5718
 ;5718:	}
-LABELV $2627
+LABELV $2629
 line 5720
 ;5719:
 ;5720:}
-LABELV $2626
+LABELV $2628
 endproc Menu_CacheContents 8 8
 export Display_CacheAll
 proc Display_CacheAll 4 4
@@ -39710,9 +39710,9 @@ line 5724
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2639
+ADDRGP4 $2641
 JUMPV
-LABELV $2636
+LABELV $2638
 line 5725
 ;5725:		Menu_CacheContents(&Menus[i]);
 CNSTI4 644
@@ -39727,7 +39727,7 @@ CALLV
 pop
 line 5726
 ;5726:	}
-LABELV $2637
+LABELV $2639
 line 5724
 ADDRLP4 0
 ADDRLP4 0
@@ -39735,15 +39735,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2639
+LABELV $2641
 ADDRLP4 0
 INDIRI4
 ADDRGP4 menuCount
 INDIRI4
-LTI4 $2636
+LTI4 $2638
 line 5727
 ;5727:}
-LABELV $2635
+LABELV $2637
 endproc Display_CacheAll 4 4
 proc Menu_OverActiveItem 32 12
 line 5730
@@ -39760,7 +39760,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2641
+EQU4 $2643
 ADDRLP4 0
 INDIRP4
 CNSTI4 68
@@ -39769,7 +39769,7 @@ INDIRI4
 CNSTI4 1048580
 BANDI4
 CNSTI4 0
-EQI4 $2641
+EQI4 $2643
 line 5732
 ;5732:		if (Rect_ContainsPoint(&menu->window.rect, x, y)) {
 ADDRFP4 0
@@ -39788,16 +39788,16 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $2643
+EQI4 $2645
 line 5734
 ;5733:			int i;
 ;5734:			for (i = 0; i < menu->itemCount; i++) {
 ADDRLP4 8
 CNSTI4 0
 ASGNI4
-ADDRGP4 $2648
+ADDRGP4 $2650
 JUMPV
-LABELV $2645
+LABELV $2647
 line 5738
 ;5735:				// turn off focus each item
 ;5736:				// menu->items[i].window.flags &= ~WINDOW_HASFOCUS;
@@ -39819,12 +39819,12 @@ INDIRI4
 CNSTI4 1048580
 BANDI4
 CNSTI4 0
-NEI4 $2649
+NEI4 $2651
 line 5739
 ;5739:					continue;
-ADDRGP4 $2646
+ADDRGP4 $2648
 JUMPV
-LABELV $2649
+LABELV $2651
 line 5742
 ;5740:				}
 ;5741:
@@ -39845,12 +39845,12 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $2651
+EQI4 $2653
 line 5743
 ;5743:					continue;
-ADDRGP4 $2646
+ADDRGP4 $2648
 JUMPV
-LABELV $2651
+LABELV $2653
 line 5746
 ;5744:				}
 ;5745:
@@ -39879,7 +39879,7 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $2653
+EQI4 $2655
 line 5747
 ;5747:					itemDef_t *overItem = menu->items[i];
 ADDRLP4 16
@@ -39902,7 +39902,7 @@ CNSTI4 196
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $2655
+NEI4 $2657
 ADDRLP4 16
 INDIRP4
 CNSTI4 224
@@ -39910,7 +39910,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $2655
+EQU4 $2657
 line 5749
 ;5749:						if (Rect_ContainsPoint(Item_CorrectedTextRect(overItem), x, y)) {
 ADDRLP4 16
@@ -39936,18 +39936,18 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-EQI4 $2646
+EQI4 $2648
 line 5750
 ;5750:							return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2640
+ADDRGP4 $2642
 JUMPV
 line 5751
 ;5751:						} else {
 line 5752
 ;5752:							continue;
-LABELV $2655
+LABELV $2657
 line 5754
 ;5753:						}
 ;5754:					} else {
@@ -39955,14 +39955,14 @@ line 5755
 ;5755:						return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $2640
+ADDRGP4 $2642
 JUMPV
-LABELV $2653
+LABELV $2655
 line 5758
 ;5756:					}
 ;5757:				}
 ;5758:			}
-LABELV $2646
+LABELV $2648
 line 5734
 ADDRLP4 8
 ADDRLP4 8
@@ -39970,7 +39970,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $2648
+LABELV $2650
 ADDRLP4 8
 INDIRI4
 ADDRFP4 0
@@ -39978,19 +39978,19 @@ INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-LTI4 $2645
+LTI4 $2647
 line 5760
 ;5759:
 ;5760:		}
-LABELV $2643
+LABELV $2645
 line 5761
 ;5761:	}
-LABELV $2641
+LABELV $2643
 line 5762
 ;5762:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $2640
+LABELV $2642
 endproc Menu_OverActiveItem 32 12
 bss
 export menuParseKeywordHash
@@ -40135,6 +40135,8 @@ import _VectorAdd
 import _VectorSubtract
 import _DotProduct
 import SnapVectorTowards
+import tonextint
+import init_tonextint
 import ByteToDir
 import DirToByte
 import ClampShort
@@ -40195,7 +40197,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $2581
+LABELV $2583
 byte 1 102
 byte 1 112
 byte 1 115
@@ -40205,7 +40207,7 @@ byte 1 37
 byte 1 102
 byte 1 0
 align 1
-LABELV $2563
+LABELV $2565
 byte 1 99
 byte 1 111
 byte 1 117
@@ -40238,7 +40240,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $2559
+LABELV $2561
 byte 1 117
 byte 1 110
 byte 1 107
@@ -40264,7 +40266,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $2552
+LABELV $2554
 byte 1 101
 byte 1 110
 byte 1 100
@@ -40291,7 +40293,7 @@ byte 1 117
 byte 1 10
 byte 1 0
 align 1
-LABELV $2535
+LABELV $2537
 byte 1 102
 byte 1 97
 byte 1 100
@@ -40304,7 +40306,7 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $2534
+LABELV $2536
 byte 1 102
 byte 1 97
 byte 1 100
@@ -40316,7 +40318,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $2533
+LABELV $2535
 byte 1 102
 byte 1 97
 byte 1 100
@@ -40328,7 +40330,7 @@ byte 1 109
 byte 1 112
 byte 1 0
 align 1
-LABELV $2532
+LABELV $2534
 byte 1 112
 byte 1 111
 byte 1 112
@@ -40336,7 +40338,7 @@ byte 1 117
 byte 1 112
 byte 1 0
 align 1
-LABELV $2531
+LABELV $2533
 byte 1 105
 byte 1 116
 byte 1 101
@@ -40346,7 +40348,7 @@ byte 1 101
 byte 1 102
 byte 1 0
 align 1
-LABELV $2530
+LABELV $2532
 byte 1 115
 byte 1 111
 byte 1 117
@@ -40358,7 +40360,7 @@ byte 1 111
 byte 1 112
 byte 1 0
 align 1
-LABELV $2529
+LABELV $2531
 byte 1 111
 byte 1 117
 byte 1 116
@@ -40377,7 +40379,7 @@ byte 1 99
 byte 1 107
 byte 1 0
 align 1
-LABELV $2528
+LABELV $2530
 byte 1 100
 byte 1 105
 byte 1 115
@@ -40392,7 +40394,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $2527
+LABELV $2529
 byte 1 102
 byte 1 111
 byte 1 99
@@ -40405,7 +40407,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $2526
+LABELV $2528
 byte 1 98
 byte 1 111
 byte 1 114
@@ -40418,7 +40420,7 @@ byte 1 122
 byte 1 101
 byte 1 0
 align 1
-LABELV $2525
+LABELV $2527
 byte 1 111
 byte 1 110
 byte 1 69
@@ -40426,7 +40428,7 @@ byte 1 83
 byte 1 67
 byte 1 0
 align 1
-LABELV $2524
+LABELV $2526
 byte 1 111
 byte 1 110
 byte 1 67
@@ -40436,7 +40438,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $2523
+LABELV $2525
 byte 1 111
 byte 1 110
 byte 1 79
@@ -40445,7 +40447,7 @@ byte 1 101
 byte 1 110
 byte 1 0
 align 1
-LABELV $2522
+LABELV $2524
 byte 1 102
 byte 1 117
 byte 1 108
@@ -40458,21 +40460,21 @@ byte 1 101
 byte 1 110
 byte 1 0
 align 1
-LABELV $2521
+LABELV $2523
 byte 1 102
 byte 1 111
 byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $2422
+LABELV $2424
 byte 1 109
 byte 1 97
 byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $2403
+LABELV $2405
 byte 1 99
 byte 1 111
 byte 1 117
@@ -40510,7 +40512,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $2399
+LABELV $2401
 byte 1 117
 byte 1 110
 byte 1 107
@@ -40541,7 +40543,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $2376
+LABELV $2378
 byte 1 100
 byte 1 111
 byte 1 117
@@ -40555,7 +40557,7 @@ byte 1 99
 byte 1 107
 byte 1 0
 align 1
-LABELV $2375
+LABELV $2377
 byte 1 99
 byte 1 105
 byte 1 110
@@ -40567,7 +40569,7 @@ byte 1 105
 byte 1 99
 byte 1 0
 align 1
-LABELV $2374
+LABELV $2376
 byte 1 104
 byte 1 105
 byte 1 100
@@ -40578,7 +40580,7 @@ byte 1 97
 byte 1 114
 byte 1 0
 align 1
-LABELV $2373
+LABELV $2375
 byte 1 115
 byte 1 104
 byte 1 111
@@ -40589,7 +40591,7 @@ byte 1 97
 byte 1 114
 byte 1 0
 align 1
-LABELV $2372
+LABELV $2374
 byte 1 100
 byte 1 105
 byte 1 115
@@ -40603,7 +40605,7 @@ byte 1 97
 byte 1 114
 byte 1 0
 align 1
-LABELV $2371
+LABELV $2373
 byte 1 99
 byte 1 118
 byte 1 97
@@ -40614,7 +40616,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $2370
+LABELV $2372
 byte 1 101
 byte 1 110
 byte 1 97
@@ -40627,7 +40629,7 @@ byte 1 97
 byte 1 114
 byte 1 0
 align 1
-LABELV $2369
+LABELV $2371
 byte 1 111
 byte 1 119
 byte 1 110
@@ -40643,7 +40645,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $2368
+LABELV $2370
 byte 1 97
 byte 1 100
 byte 1 100
@@ -40659,7 +40661,7 @@ byte 1 103
 byte 1 101
 byte 1 0
 align 1
-LABELV $2367
+LABELV $2369
 byte 1 99
 byte 1 118
 byte 1 97
@@ -40675,7 +40677,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $2366
+LABELV $2368
 byte 1 99
 byte 1 118
 byte 1 97
@@ -40689,7 +40691,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $2365
+LABELV $2367
 byte 1 99
 byte 1 118
 byte 1 97
@@ -40701,7 +40703,7 @@ byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $2364
+LABELV $2366
 byte 1 102
 byte 1 111
 byte 1 99
@@ -40714,7 +40716,7 @@ byte 1 110
 byte 1 100
 byte 1 0
 align 1
-LABELV $2363
+LABELV $2365
 byte 1 109
 byte 1 97
 byte 1 120
@@ -40730,7 +40732,7 @@ byte 1 114
 byte 1 115
 byte 1 0
 align 1
-LABELV $2362
+LABELV $2364
 byte 1 109
 byte 1 97
 byte 1 120
@@ -40741,14 +40743,14 @@ byte 1 114
 byte 1 115
 byte 1 0
 align 1
-LABELV $2361
+LABELV $2363
 byte 1 99
 byte 1 118
 byte 1 97
 byte 1 114
 byte 1 0
 align 1
-LABELV $2360
+LABELV $2362
 byte 1 115
 byte 1 112
 byte 1 101
@@ -40758,7 +40760,7 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $2359
+LABELV $2361
 byte 1 97
 byte 1 99
 byte 1 116
@@ -40767,7 +40769,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $2358
+LABELV $2360
 byte 1 109
 byte 1 111
 byte 1 117
@@ -40780,6 +40782,35 @@ byte 1 116
 byte 1 84
 byte 1 101
 byte 1 120
+byte 1 116
+byte 1 0
+align 1
+LABELV $2359
+byte 1 109
+byte 1 111
+byte 1 117
+byte 1 115
+byte 1 101
+byte 1 69
+byte 1 110
+byte 1 116
+byte 1 101
+byte 1 114
+byte 1 84
+byte 1 101
+byte 1 120
+byte 1 116
+byte 1 0
+align 1
+LABELV $2358
+byte 1 109
+byte 1 111
+byte 1 117
+byte 1 115
+byte 1 101
+byte 1 69
+byte 1 120
+byte 1 105
 byte 1 116
 byte 1 0
 align 1
@@ -40794,38 +40825,9 @@ byte 1 110
 byte 1 116
 byte 1 101
 byte 1 114
-byte 1 84
-byte 1 101
-byte 1 120
-byte 1 116
 byte 1 0
 align 1
 LABELV $2356
-byte 1 109
-byte 1 111
-byte 1 117
-byte 1 115
-byte 1 101
-byte 1 69
-byte 1 120
-byte 1 105
-byte 1 116
-byte 1 0
-align 1
-LABELV $2355
-byte 1 109
-byte 1 111
-byte 1 117
-byte 1 115
-byte 1 101
-byte 1 69
-byte 1 110
-byte 1 116
-byte 1 101
-byte 1 114
-byte 1 0
-align 1
-LABELV $2354
 byte 1 108
 byte 1 101
 byte 1 97
@@ -40838,7 +40840,7 @@ byte 1 117
 byte 1 115
 byte 1 0
 align 1
-LABELV $2353
+LABELV $2355
 byte 1 111
 byte 1 110
 byte 1 70
@@ -40848,7 +40850,7 @@ byte 1 117
 byte 1 115
 byte 1 0
 align 1
-LABELV $2352
+LABELV $2354
 byte 1 98
 byte 1 97
 byte 1 99
@@ -40861,7 +40863,7 @@ byte 1 110
 byte 1 100
 byte 1 0
 align 1
-LABELV $2351
+LABELV $2353
 byte 1 111
 byte 1 117
 byte 1 116
@@ -40876,7 +40878,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $2350
+LABELV $2352
 byte 1 116
 byte 1 101
 byte 1 120
@@ -40888,7 +40890,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $2349
+LABELV $2351
 byte 1 116
 byte 1 101
 byte 1 120
@@ -40898,6 +40900,32 @@ byte 1 99
 byte 1 97
 byte 1 108
 byte 1 101
+byte 1 0
+align 1
+LABELV $2350
+byte 1 116
+byte 1 101
+byte 1 120
+byte 1 116
+byte 1 97
+byte 1 108
+byte 1 105
+byte 1 103
+byte 1 110
+byte 1 121
+byte 1 0
+align 1
+LABELV $2349
+byte 1 116
+byte 1 101
+byte 1 120
+byte 1 116
+byte 1 97
+byte 1 108
+byte 1 105
+byte 1 103
+byte 1 110
+byte 1 120
 byte 1 0
 align 1
 LABELV $2348
@@ -40910,43 +40938,17 @@ byte 1 108
 byte 1 105
 byte 1 103
 byte 1 110
-byte 1 121
 byte 1 0
 align 1
 LABELV $2347
-byte 1 116
-byte 1 101
-byte 1 120
-byte 1 116
 byte 1 97
 byte 1 108
 byte 1 105
 byte 1 103
 byte 1 110
-byte 1 120
 byte 1 0
 align 1
 LABELV $2346
-byte 1 116
-byte 1 101
-byte 1 120
-byte 1 116
-byte 1 97
-byte 1 108
-byte 1 105
-byte 1 103
-byte 1 110
-byte 1 0
-align 1
-LABELV $2345
-byte 1 97
-byte 1 108
-byte 1 105
-byte 1 103
-byte 1 110
-byte 1 0
-align 1
-LABELV $2344
 byte 1 111
 byte 1 119
 byte 1 110
@@ -40958,7 +40960,7 @@ byte 1 97
 byte 1 119
 byte 1 0
 align 1
-LABELV $2343
+LABELV $2345
 byte 1 118
 byte 1 105
 byte 1 115
@@ -40968,7 +40970,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $2342
+LABELV $2344
 byte 1 98
 byte 1 111
 byte 1 114
@@ -40981,7 +40983,7 @@ byte 1 122
 byte 1 101
 byte 1 0
 align 1
-LABELV $2341
+LABELV $2343
 byte 1 98
 byte 1 111
 byte 1 114
@@ -40990,7 +40992,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $2340
+LABELV $2342
 byte 1 99
 byte 1 111
 byte 1 108
@@ -40998,6 +41000,29 @@ byte 1 117
 byte 1 109
 byte 1 110
 byte 1 115
+byte 1 0
+align 1
+LABELV $2341
+byte 1 101
+byte 1 108
+byte 1 101
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 116
+byte 1 116
+byte 1 121
+byte 1 112
+byte 1 101
+byte 1 0
+align 1
+LABELV $2340
+byte 1 102
+byte 1 101
+byte 1 101
+byte 1 100
+byte 1 101
+byte 1 114
 byte 1 0
 align 1
 LABELV $2339
@@ -41008,29 +41033,6 @@ byte 1 109
 byte 1 101
 byte 1 110
 byte 1 116
-byte 1 116
-byte 1 121
-byte 1 112
-byte 1 101
-byte 1 0
-align 1
-LABELV $2338
-byte 1 102
-byte 1 101
-byte 1 101
-byte 1 100
-byte 1 101
-byte 1 114
-byte 1 0
-align 1
-LABELV $2337
-byte 1 101
-byte 1 108
-byte 1 101
-byte 1 109
-byte 1 101
-byte 1 110
-byte 1 116
 byte 1 104
 byte 1 101
 byte 1 105
@@ -41039,7 +41041,7 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $2336
+LABELV $2338
 byte 1 101
 byte 1 108
 byte 1 101
@@ -41054,14 +41056,14 @@ byte 1 116
 byte 1 104
 byte 1 0
 align 1
-LABELV $2335
+LABELV $2337
 byte 1 116
 byte 1 121
 byte 1 112
 byte 1 101
 byte 1 0
 align 1
-LABELV $2334
+LABELV $2336
 byte 1 104
 byte 1 111
 byte 1 114
@@ -41080,7 +41082,7 @@ byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $2333
+LABELV $2335
 byte 1 97
 byte 1 117
 byte 1 116
@@ -41094,7 +41096,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $2332
+LABELV $2334
 byte 1 119
 byte 1 114
 byte 1 97
@@ -41104,7 +41106,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $2331
+LABELV $2333
 byte 1 110
 byte 1 111
 byte 1 116
@@ -41120,7 +41122,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $2330
+LABELV $2332
 byte 1 100
 byte 1 101
 byte 1 99
@@ -41133,7 +41135,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $2329
+LABELV $2331
 byte 1 115
 byte 1 116
 byte 1 121
@@ -41141,14 +41143,14 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $2328
+LABELV $2330
 byte 1 114
 byte 1 101
 byte 1 99
 byte 1 116
 byte 1 0
 align 1
-LABELV $2327
+LABELV $2329
 byte 1 109
 byte 1 111
 byte 1 100
@@ -41162,7 +41164,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $2326
+LABELV $2328
 byte 1 109
 byte 1 111
 byte 1 100
@@ -41179,7 +41181,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $2325
+LABELV $2327
 byte 1 109
 byte 1 111
 byte 1 100
@@ -41192,7 +41194,7 @@ byte 1 118
 byte 1 121
 byte 1 0
 align 1
-LABELV $2324
+LABELV $2326
 byte 1 109
 byte 1 111
 byte 1 100
@@ -41205,7 +41207,7 @@ byte 1 118
 byte 1 120
 byte 1 0
 align 1
-LABELV $2323
+LABELV $2325
 byte 1 109
 byte 1 111
 byte 1 100
@@ -41220,7 +41222,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $2322
+LABELV $2324
 byte 1 97
 byte 1 115
 byte 1 115
@@ -41235,7 +41237,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $2321
+LABELV $2323
 byte 1 97
 byte 1 115
 byte 1 115
@@ -41249,7 +41251,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $2320
+LABELV $2322
 byte 1 103
 byte 1 114
 byte 1 111
@@ -41257,21 +41259,21 @@ byte 1 117
 byte 1 112
 byte 1 0
 align 1
-LABELV $2319
+LABELV $2321
 byte 1 116
 byte 1 101
 byte 1 120
 byte 1 116
 byte 1 0
 align 1
-LABELV $2318
+LABELV $2320
 byte 1 110
 byte 1 97
 byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $2255
+LABELV $2257
 byte 1 101
 byte 1 110
 byte 1 100
@@ -41303,7 +41305,7 @@ byte 1 109
 byte 1 10
 byte 1 0
 align 1
-LABELV $1609
+LABELV $1611
 byte 1 70
 byte 1 73
 byte 1 88
@@ -41311,20 +41313,20 @@ byte 1 77
 byte 1 69
 byte 1 0
 align 1
-LABELV $1579
+LABELV $1581
 byte 1 63
 byte 1 63
 byte 1 63
 byte 1 0
 align 1
-LABELV $1578
+LABELV $1580
 byte 1 32
 byte 1 111
 byte 1 114
 byte 1 32
 byte 1 0
 align 1
-LABELV $1548
+LABELV $1550
 byte 1 105
 byte 1 110
 byte 1 95
@@ -41338,7 +41340,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $1515
+LABELV $1517
 byte 1 109
 byte 1 101
 byte 1 115
@@ -41353,7 +41355,7 @@ byte 1 101
 byte 1 52
 byte 1 0
 align 1
-LABELV $1514
+LABELV $1516
 byte 1 109
 byte 1 101
 byte 1 115
@@ -41368,7 +41370,7 @@ byte 1 101
 byte 1 51
 byte 1 0
 align 1
-LABELV $1513
+LABELV $1515
 byte 1 109
 byte 1 101
 byte 1 115
@@ -41383,7 +41385,7 @@ byte 1 101
 byte 1 50
 byte 1 0
 align 1
-LABELV $1512
+LABELV $1514
 byte 1 109
 byte 1 101
 byte 1 115
@@ -41397,7 +41399,7 @@ byte 1 100
 byte 1 101
 byte 1 0
 align 1
-LABELV $1511
+LABELV $1513
 byte 1 115
 byte 1 99
 byte 1 111
@@ -41410,7 +41412,7 @@ byte 1 119
 byte 1 110
 byte 1 0
 align 1
-LABELV $1510
+LABELV $1512
 byte 1 115
 byte 1 99
 byte 1 111
@@ -41421,7 +41423,7 @@ byte 1 85
 byte 1 112
 byte 1 0
 align 1
-LABELV $1509
+LABELV $1511
 byte 1 116
 byte 1 97
 byte 1 117
@@ -41437,7 +41439,7 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $1508
+LABELV $1510
 byte 1 116
 byte 1 97
 byte 1 117
@@ -41456,7 +41458,7 @@ byte 1 108
 byte 1 116
 byte 1 0
 align 1
-LABELV $1507
+LABELV $1509
 byte 1 116
 byte 1 97
 byte 1 117
@@ -41469,7 +41471,7 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $1506
+LABELV $1508
 byte 1 116
 byte 1 97
 byte 1 117
@@ -41483,7 +41485,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $1505
+LABELV $1507
 byte 1 116
 byte 1 97
 byte 1 117
@@ -41501,7 +41503,7 @@ byte 1 108
 byte 1 116
 byte 1 0
 align 1
-LABELV $1504
+LABELV $1506
 byte 1 116
 byte 1 97
 byte 1 115
@@ -41515,7 +41517,7 @@ byte 1 100
 byte 1 101
 byte 1 0
 align 1
-LABELV $1503
+LABELV $1505
 byte 1 116
 byte 1 97
 byte 1 115
@@ -41529,7 +41531,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $1502
+LABELV $1504
 byte 1 116
 byte 1 97
 byte 1 115
@@ -41542,7 +41544,7 @@ byte 1 114
 byte 1 116
 byte 1 0
 align 1
-LABELV $1501
+LABELV $1503
 byte 1 116
 byte 1 97
 byte 1 115
@@ -41557,7 +41559,7 @@ byte 1 118
 byte 1 101
 byte 1 0
 align 1
-LABELV $1500
+LABELV $1502
 byte 1 116
 byte 1 97
 byte 1 115
@@ -41570,7 +41572,7 @@ byte 1 111
 byte 1 119
 byte 1 0
 align 1
-LABELV $1499
+LABELV $1501
 byte 1 116
 byte 1 97
 byte 1 115
@@ -41581,7 +41583,7 @@ byte 1 109
 byte 1 112
 byte 1 0
 align 1
-LABELV $1498
+LABELV $1500
 byte 1 116
 byte 1 97
 byte 1 115
@@ -41594,7 +41596,7 @@ byte 1 111
 byte 1 108
 byte 1 0
 align 1
-LABELV $1497
+LABELV $1499
 byte 1 116
 byte 1 97
 byte 1 115
@@ -41608,7 +41610,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $1496
+LABELV $1498
 byte 1 116
 byte 1 97
 byte 1 115
@@ -41622,7 +41624,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $1495
+LABELV $1497
 byte 1 100
 byte 1 101
 byte 1 110
@@ -41634,7 +41636,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $1494
+LABELV $1496
 byte 1 99
 byte 1 111
 byte 1 110
@@ -41649,7 +41651,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $1493
+LABELV $1495
 byte 1 110
 byte 1 101
 byte 1 120
@@ -41661,7 +41663,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $1492
+LABELV $1494
 byte 1 110
 byte 1 101
 byte 1 120
@@ -41678,7 +41680,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $1491
+LABELV $1493
 byte 1 112
 byte 1 114
 byte 1 101
@@ -41695,7 +41697,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $1490
+LABELV $1492
 byte 1 43
 byte 1 98
 byte 1 117
@@ -41706,7 +41708,7 @@ byte 1 110
 byte 1 52
 byte 1 0
 align 1
-LABELV $1489
+LABELV $1491
 byte 1 43
 byte 1 98
 byte 1 117
@@ -41717,7 +41719,7 @@ byte 1 110
 byte 1 51
 byte 1 0
 align 1
-LABELV $1488
+LABELV $1490
 byte 1 119
 byte 1 101
 byte 1 97
@@ -41728,7 +41730,7 @@ byte 1 120
 byte 1 116
 byte 1 0
 align 1
-LABELV $1487
+LABELV $1489
 byte 1 119
 byte 1 101
 byte 1 97
@@ -41739,7 +41741,7 @@ byte 1 101
 byte 1 118
 byte 1 0
 align 1
-LABELV $1486
+LABELV $1488
 byte 1 43
 byte 1 97
 byte 1 116
@@ -41747,6 +41749,30 @@ byte 1 116
 byte 1 97
 byte 1 99
 byte 1 107
+byte 1 0
+align 1
+LABELV $1487
+byte 1 119
+byte 1 101
+byte 1 97
+byte 1 112
+byte 1 111
+byte 1 110
+byte 1 32
+byte 1 49
+byte 1 51
+byte 1 0
+align 1
+LABELV $1486
+byte 1 119
+byte 1 101
+byte 1 97
+byte 1 112
+byte 1 111
+byte 1 110
+byte 1 32
+byte 1 49
+byte 1 50
 byte 1 0
 align 1
 LABELV $1485
@@ -41758,7 +41784,7 @@ byte 1 111
 byte 1 110
 byte 1 32
 byte 1 49
-byte 1 51
+byte 1 49
 byte 1 0
 align 1
 LABELV $1484
@@ -41770,7 +41796,7 @@ byte 1 111
 byte 1 110
 byte 1 32
 byte 1 49
-byte 1 50
+byte 1 48
 byte 1 0
 align 1
 LABELV $1483
@@ -41781,8 +41807,7 @@ byte 1 112
 byte 1 111
 byte 1 110
 byte 1 32
-byte 1 49
-byte 1 49
+byte 1 57
 byte 1 0
 align 1
 LABELV $1482
@@ -41793,8 +41818,7 @@ byte 1 112
 byte 1 111
 byte 1 110
 byte 1 32
-byte 1 49
-byte 1 48
+byte 1 56
 byte 1 0
 align 1
 LABELV $1481
@@ -41805,7 +41829,7 @@ byte 1 112
 byte 1 111
 byte 1 110
 byte 1 32
-byte 1 57
+byte 1 55
 byte 1 0
 align 1
 LABELV $1480
@@ -41816,7 +41840,7 @@ byte 1 112
 byte 1 111
 byte 1 110
 byte 1 32
-byte 1 56
+byte 1 54
 byte 1 0
 align 1
 LABELV $1479
@@ -41827,7 +41851,7 @@ byte 1 112
 byte 1 111
 byte 1 110
 byte 1 32
-byte 1 55
+byte 1 53
 byte 1 0
 align 1
 LABELV $1478
@@ -41838,7 +41862,7 @@ byte 1 112
 byte 1 111
 byte 1 110
 byte 1 32
-byte 1 54
+byte 1 52
 byte 1 0
 align 1
 LABELV $1477
@@ -41849,7 +41873,7 @@ byte 1 112
 byte 1 111
 byte 1 110
 byte 1 32
-byte 1 53
+byte 1 51
 byte 1 0
 align 1
 LABELV $1476
@@ -41860,7 +41884,7 @@ byte 1 112
 byte 1 111
 byte 1 110
 byte 1 32
-byte 1 52
+byte 1 50
 byte 1 0
 align 1
 LABELV $1475
@@ -41871,32 +41895,10 @@ byte 1 112
 byte 1 111
 byte 1 110
 byte 1 32
-byte 1 51
-byte 1 0
-align 1
-LABELV $1474
-byte 1 119
-byte 1 101
-byte 1 97
-byte 1 112
-byte 1 111
-byte 1 110
-byte 1 32
-byte 1 50
-byte 1 0
-align 1
-LABELV $1473
-byte 1 119
-byte 1 101
-byte 1 97
-byte 1 112
-byte 1 111
-byte 1 110
-byte 1 32
 byte 1 49
 byte 1 0
 align 1
-LABELV $1472
+LABELV $1474
 byte 1 43
 byte 1 122
 byte 1 111
@@ -41904,7 +41906,7 @@ byte 1 111
 byte 1 109
 byte 1 0
 align 1
-LABELV $1471
+LABELV $1473
 byte 1 99
 byte 1 101
 byte 1 110
@@ -41917,7 +41919,7 @@ byte 1 101
 byte 1 119
 byte 1 0
 align 1
-LABELV $1470
+LABELV $1472
 byte 1 43
 byte 1 109
 byte 1 108
@@ -41926,7 +41928,7 @@ byte 1 111
 byte 1 107
 byte 1 0
 align 1
-LABELV $1469
+LABELV $1471
 byte 1 43
 byte 1 108
 byte 1 111
@@ -41938,7 +41940,7 @@ byte 1 119
 byte 1 110
 byte 1 0
 align 1
-LABELV $1468
+LABELV $1470
 byte 1 43
 byte 1 108
 byte 1 111
@@ -41948,7 +41950,7 @@ byte 1 117
 byte 1 112
 byte 1 0
 align 1
-LABELV $1467
+LABELV $1469
 byte 1 43
 byte 1 115
 byte 1 116
@@ -41958,7 +41960,7 @@ byte 1 102
 byte 1 101
 byte 1 0
 align 1
-LABELV $1466
+LABELV $1468
 byte 1 43
 byte 1 114
 byte 1 105
@@ -41967,12 +41969,34 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $1465
+LABELV $1467
 byte 1 43
 byte 1 108
 byte 1 101
 byte 1 102
 byte 1 116
+byte 1 0
+align 1
+LABELV $1466
+byte 1 43
+byte 1 109
+byte 1 111
+byte 1 118
+byte 1 101
+byte 1 100
+byte 1 111
+byte 1 119
+byte 1 110
+byte 1 0
+align 1
+LABELV $1465
+byte 1 43
+byte 1 109
+byte 1 111
+byte 1 118
+byte 1 101
+byte 1 117
+byte 1 112
 byte 1 0
 align 1
 LABELV $1464
@@ -41981,28 +42005,6 @@ byte 1 109
 byte 1 111
 byte 1 118
 byte 1 101
-byte 1 100
-byte 1 111
-byte 1 119
-byte 1 110
-byte 1 0
-align 1
-LABELV $1463
-byte 1 43
-byte 1 109
-byte 1 111
-byte 1 118
-byte 1 101
-byte 1 117
-byte 1 112
-byte 1 0
-align 1
-LABELV $1462
-byte 1 43
-byte 1 109
-byte 1 111
-byte 1 118
-byte 1 101
 byte 1 114
 byte 1 105
 byte 1 103
@@ -42010,7 +42012,7 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $1461
+LABELV $1463
 byte 1 43
 byte 1 109
 byte 1 111
@@ -42022,7 +42024,7 @@ byte 1 102
 byte 1 116
 byte 1 0
 align 1
-LABELV $1460
+LABELV $1462
 byte 1 43
 byte 1 98
 byte 1 97
@@ -42030,7 +42032,7 @@ byte 1 99
 byte 1 107
 byte 1 0
 align 1
-LABELV $1459
+LABELV $1461
 byte 1 43
 byte 1 102
 byte 1 111
@@ -42041,7 +42043,7 @@ byte 1 114
 byte 1 100
 byte 1 0
 align 1
-LABELV $1458
+LABELV $1460
 byte 1 43
 byte 1 115
 byte 1 112
@@ -42050,7 +42052,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $1457
+LABELV $1459
 byte 1 43
 byte 1 98
 byte 1 117
@@ -42061,7 +42063,7 @@ byte 1 110
 byte 1 50
 byte 1 0
 align 1
-LABELV $1456
+LABELV $1458
 byte 1 43
 byte 1 115
 byte 1 99
@@ -42071,18 +42073,18 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $1439
+LABELV $1441
 byte 1 78
 byte 1 111
 byte 1 0
 align 1
-LABELV $1438
+LABELV $1440
 byte 1 89
 byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $1282
+LABELV $1284
 byte 1 115
 byte 1 99
 byte 1 114
@@ -42096,7 +42098,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $1278
+LABELV $1280
 byte 1 100
 byte 1 101
 byte 1 118
@@ -42108,7 +42110,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $1131
+LABELV $1133
 byte 1 115
 byte 1 108
 byte 1 105
@@ -42134,17 +42136,17 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $955
+LABELV $957
 byte 1 37
 byte 1 102
 byte 1 0
 align 1
-LABELV $901
+LABELV $903
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $563
+LABELV $565
 byte 1 111
 byte 1 114
 byte 1 98
@@ -42152,7 +42154,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $562
+LABELV $564
 byte 1 112
 byte 1 108
 byte 1 97
@@ -42165,21 +42167,21 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $561
+LABELV $563
 byte 1 112
 byte 1 108
 byte 1 97
 byte 1 121
 byte 1 0
 align 1
-LABELV $560
+LABELV $562
 byte 1 101
 byte 1 120
 byte 1 101
 byte 1 99
 byte 1 0
 align 1
-LABELV $559
+LABELV $561
 byte 1 115
 byte 1 101
 byte 1 116
@@ -42189,7 +42191,7 @@ byte 1 97
 byte 1 114
 byte 1 0
 align 1
-LABELV $558
+LABELV $560
 byte 1 116
 byte 1 114
 byte 1 97
@@ -42202,7 +42204,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $557
+LABELV $559
 byte 1 115
 byte 1 101
 byte 1 116
@@ -42218,7 +42220,7 @@ byte 1 97
 byte 1 100
 byte 1 0
 align 1
-LABELV $556
+LABELV $558
 byte 1 115
 byte 1 101
 byte 1 116
@@ -42235,7 +42237,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $555
+LABELV $557
 byte 1 115
 byte 1 101
 byte 1 116
@@ -42246,7 +42248,7 @@ byte 1 117
 byte 1 115
 byte 1 0
 align 1
-LABELV $554
+LABELV $556
 byte 1 115
 byte 1 101
 byte 1 116
@@ -42261,7 +42263,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $553
+LABELV $555
 byte 1 115
 byte 1 101
 byte 1 116
@@ -42276,7 +42278,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $552
+LABELV $554
 byte 1 115
 byte 1 101
 byte 1 116
@@ -42292,7 +42294,7 @@ byte 1 110
 byte 1 100
 byte 1 0
 align 1
-LABELV $551
+LABELV $553
 byte 1 115
 byte 1 101
 byte 1 116
@@ -42303,7 +42305,7 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $550
+LABELV $552
 byte 1 99
 byte 1 108
 byte 1 111
@@ -42311,7 +42313,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $549
+LABELV $551
 byte 1 99
 byte 1 111
 byte 1 110
@@ -42329,14 +42331,14 @@ byte 1 101
 byte 1 110
 byte 1 0
 align 1
-LABELV $548
+LABELV $550
 byte 1 111
 byte 1 112
 byte 1 101
 byte 1 110
 byte 1 0
 align 1
-LABELV $547
+LABELV $549
 byte 1 115
 byte 1 101
 byte 1 116
@@ -42347,21 +42349,21 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $546
+LABELV $548
 byte 1 104
 byte 1 105
 byte 1 100
 byte 1 101
 byte 1 0
 align 1
-LABELV $545
+LABELV $547
 byte 1 115
 byte 1 104
 byte 1 111
 byte 1 119
 byte 1 0
 align 1
-LABELV $544
+LABELV $546
 byte 1 102
 byte 1 97
 byte 1 100
@@ -42371,7 +42373,7 @@ byte 1 117
 byte 1 116
 byte 1 0
 align 1
-LABELV $543
+LABELV $545
 byte 1 102
 byte 1 97
 byte 1 100
@@ -42380,7 +42382,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $536
+LABELV $538
 byte 1 37
 byte 1 115
 byte 1 32
@@ -42388,7 +42390,7 @@ byte 1 59
 byte 1 32
 byte 1 0
 align 1
-LABELV $529
+LABELV $531
 byte 1 116
 byte 1 101
 byte 1 97
@@ -42405,7 +42407,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $525
+LABELV $527
 byte 1 116
 byte 1 101
 byte 1 97
@@ -42418,7 +42420,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $364
+LABELV $366
 byte 1 98
 byte 1 111
 byte 1 114
@@ -42432,7 +42434,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $361
+LABELV $363
 byte 1 102
 byte 1 111
 byte 1 114
@@ -42444,7 +42446,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $358
+LABELV $360
 byte 1 98
 byte 1 97
 byte 1 99
@@ -42456,26 +42458,26 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $200
+LABELV $202
 byte 1 32
 byte 1 0
 align 1
-LABELV $197
+LABELV $199
 byte 1 34
 byte 1 37
 byte 1 115
 byte 1 34
 byte 1 0
 align 1
-LABELV $192
+LABELV $194
 byte 1 125
 byte 1 0
 align 1
-LABELV $183
+LABELV $185
 byte 1 123
 byte 1 0
 align 1
-LABELV $147
+LABELV $149
 byte 1 101
 byte 1 120
 byte 1 112
@@ -42508,7 +42510,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $114
+LABELV $116
 byte 1 101
 byte 1 120
 byte 1 112
@@ -42539,7 +42541,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $91
+LABELV $93
 byte 1 94
 byte 1 49
 byte 1 69
@@ -42567,7 +42569,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $87
+LABELV $89
 byte 1 94
 byte 1 51
 byte 1 87
@@ -42597,7 +42599,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $76
+LABELV $78
 byte 1 77
 byte 1 101
 byte 1 109
@@ -42653,7 +42655,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $75
+LABELV $77
 byte 1 83
 byte 1 116
 byte 1 114
@@ -42709,7 +42711,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $74
+LABELV $76
 byte 1 45
 byte 1 45
 byte 1 45
@@ -42729,7 +42731,7 @@ byte 1 45
 byte 1 10
 byte 1 0
 align 1
-LABELV $73
+LABELV $75
 byte 1 77
 byte 1 101
 byte 1 109
@@ -42756,10 +42758,10 @@ byte 1 111
 byte 1 10
 byte 1 0
 align 1
-LABELV $54
+LABELV $56
 byte 1 0
 align 1
-LABELV $45
+LABELV $47
 byte 1 85
 byte 1 73
 byte 1 95

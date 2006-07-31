@@ -1680,7 +1680,7 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRGP4 cgs+152852+268
+ADDRGP4 cgs+152852+300
 INDIRI4
 ARGI4
 ADDRGP4 CG_TileClearBox
@@ -1704,7 +1704,7 @@ ADDRLP4 4
 INDIRI4
 SUBI4
 ARGI4
-ADDRGP4 cgs+152852+268
+ADDRGP4 cgs+152852+300
 INDIRI4
 ARGI4
 ADDRGP4 CG_TileClearBox
@@ -1730,7 +1730,7 @@ SUBI4
 CNSTI4 1
 ADDI4
 ARGI4
-ADDRGP4 cgs+152852+268
+ADDRGP4 cgs+152852+300
 INDIRI4
 ARGI4
 ADDRGP4 CG_TileClearBox
@@ -1760,7 +1760,7 @@ SUBI4
 CNSTI4 1
 ADDI4
 ARGI4
-ADDRGP4 cgs+152852+268
+ADDRGP4 cgs+152852+300
 INDIRI4
 ARGI4
 ADDRGP4 CG_TileClearBox
@@ -2247,7 +2247,7 @@ INDIRI4
 ARGI4
 ADDRGP4 cg+36
 INDIRP4
-CNSTI4 240
+CNSTI4 244
 ADDP4
 INDIRI4
 ARGI4
@@ -4430,6 +4430,12 @@ import CG_BigExplode
 import CG_GibPlayerHeadshot
 import CG_GibPlayer
 import CG_ScorePlum
+import CG_LightningBoltBeam
+import CG_InvulnerabilityJuiced
+import CG_InvulnerabilityImpact
+import CG_ObeliskPain
+import CG_ObeliskExplode
+import CG_KamikazeEffect
 import CG_SpawnEffect
 import CG_BubbleTrail
 import CG_SmokePuff
@@ -4553,6 +4559,17 @@ import cg_cmdTimeNudge
 import cg_drawBBox
 import cg_debugDelag
 import cg_delag
+import cg_obeliskRespawnDelay
+import cg_recordSPDemoName
+import cg_recordSPDemo
+import cg_singlePlayerActive
+import cg_enableBreath
+import cg_enableDust
+import cg_singlePlayer
+import cg_currentSelectedPlayerName
+import cg_currentSelectedPlayer
+import cg_blueTeamName
+import cg_redTeamName
 import cg_trueLightning
 import cg_oldPlasma
 import cg_oldRocket

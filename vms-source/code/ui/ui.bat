@@ -27,7 +27,8 @@ set cc=lcc -DMISSIONPACK -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..
 @if errorlevel 1 goto quit
 %cc% ../ui_gameinfo.c
 @if errorlevel 1 goto quit
-
+pause
 q3asm -f ../ui
 :quit
+pause
 cd ..
