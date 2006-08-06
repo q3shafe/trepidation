@@ -576,7 +576,7 @@ gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->s.otherEntityNum = self->s.number;
 //unlagged - projectile nudge
 	bolt->parent = self;
-	bolt->damage = 30;
+	bolt->damage = 20;
 	bolt->splashDamage = 15;
 	bolt->splashRadius = 20;
 	bolt->methodOfDeath = MOD_PLASMA;

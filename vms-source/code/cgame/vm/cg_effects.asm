@@ -335,7 +335,7 @@ ADDRLP4 68
 INDIRP4
 CNSTI4 112
 ADDP4
-ADDRGP4 cgs+152852+332
+ADDRGP4 cgs+152852+300
 INDIRI4
 ASGNI4
 line 54
@@ -841,7 +841,7 @@ ADDRLP4 4
 INDIRP4
 CNSTI4 112
 ADDP4
-ADDRGP4 cgs+152852+312
+ADDRGP4 cgs+152852+280
 INDIRI4
 ASGNI4
 line 128
@@ -1208,17 +1208,25 @@ CVIF4 4
 CNSTF4 1148846080
 DIVF4
 ASGNF4
-line 173
+line 171
 ;169:
 ;170:#ifndef MISSIONPACK
 ;171:	re->customShader = cgs.media.teleportEffectShader;
+ADDRLP4 4
+INDIRP4
+CNSTI4 112
+ADDP4
+ADDRGP4 cgs+152852+496
+INDIRI4
+ASGNI4
+line 173
 ;172:#endif
 ;173:	re->hModel = cgs.media.teleportEffectModel;
 ADDRLP4 4
 INDIRP4
 CNSTI4 8
 ADDP4
-ADDRGP4 cgs+152852+532
+ADDRGP4 cgs+152852+492
 INDIRI4
 ASGNI4
 line 174
@@ -1242,9 +1250,11 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 178
+line 180
 ;177:#ifdef MISSIONPACK
 ;178:	re->origin[2] += 16;
+;179:#else
+;180:	re->origin[2] -= 24;
 ADDRLP4 24
 ADDRLP4 4
 INDIRP4
@@ -1256,19 +1266,22 @@ INDIRP4
 ADDRLP4 24
 INDIRP4
 INDIRF4
-CNSTF4 1098907648
-ADDF4
+CNSTF4 1103101952
+SUBF4
 ASGNF4
 line 182
-;179:#else
-;180:	re->origin[2] -= 24;
 ;181:#endif
 ;182:}
 LABELV $123
 endproc CG_SpawnEffect 28 4
-export CG_LightningBoltBeam
-proc CG_LightningBoltBeam 12 0
-line 191
+bss
+align 4
+LABELV $132
+skip 12
+export CG_ScorePlum
+code
+proc CG_ScorePlum 52 8
+line 367
 ;183:
 ;184:
 ;185:#ifdef MISSIONPACK
@@ -1278,109 +1291,24 @@ line 191
 ;189:===============
 ;190:*/
 ;191:void CG_LightningBoltBeam( vec3_t start, vec3_t end ) {
-line 195
 ;192:	localEntity_t	*le;
 ;193:	refEntity_t		*beam;
 ;194:
 ;195:	le = CG_AllocLocalEntity();
-ADDRLP4 8
-ADDRGP4 CG_AllocLocalEntity
-CALLP4
-ASGNP4
-ADDRLP4 0
-ADDRLP4 8
-INDIRP4
-ASGNP4
-line 196
 ;196:	le->leFlags = 0;
-ADDRLP4 0
-INDIRP4
-CNSTI4 12
-ADDP4
-CNSTI4 0
-ASGNI4
-line 197
 ;197:	le->leType = LE_SHOWREFENTITY;
-ADDRLP4 0
-INDIRP4
-CNSTI4 8
-ADDP4
-CNSTI4 12
-ASGNI4
-line 198
 ;198:	le->startTime = cg.time;
-ADDRLP4 0
-INDIRP4
-CNSTI4 16
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-ASGNI4
-line 199
 ;199:	le->endTime = cg.time + 50;
-ADDRLP4 0
-INDIRP4
-CNSTI4 20
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-CNSTI4 50
-ADDI4
-ASGNI4
-line 201
 ;200:
 ;201:	beam = &le->refEntity;
-ADDRLP4 4
-ADDRLP4 0
-INDIRP4
-CNSTI4 152
-ADDP4
-ASGNP4
-line 203
 ;202:
 ;203:	VectorCopy( start, beam->origin );
-ADDRLP4 4
-INDIRP4
-CNSTI4 68
-ADDP4
-ADDRFP4 0
-INDIRP4
-INDIRB
-ASGNB 12
-line 205
 ;204:	// this is the end point
 ;205:	VectorCopy( end, beam->oldorigin );
-ADDRLP4 4
-INDIRP4
-CNSTI4 84
-ADDP4
-ADDRFP4 4
-INDIRP4
-INDIRB
-ASGNB 12
-line 207
 ;206:
 ;207:	beam->reType = RT_LIGHTNING;
-ADDRLP4 4
-INDIRP4
-CNSTI4 6
-ASGNI4
-line 208
 ;208:	beam->customShader = cgs.media.lightningShader;
-ADDRLP4 4
-INDIRP4
-CNSTI4 112
-ADDP4
-ADDRGP4 cgs+152852+228
-INDIRI4
-ASGNI4
-line 209
 ;209:}
-LABELV $129
-endproc CG_LightningBoltBeam 12 0
-export CG_KamikazeEffect
-proc CG_KamikazeEffect 32 0
-line 216
 ;210:
 ;211:/*
 ;212:==================
@@ -1388,194 +1316,30 @@ line 216
 ;214:==================
 ;215:*/
 ;216:void CG_KamikazeEffect( vec3_t org ) {
-line 220
 ;217:	localEntity_t	*le;
 ;218:	refEntity_t		*re;
 ;219:
 ;220:	le = CG_AllocLocalEntity();
-ADDRLP4 8
-ADDRGP4 CG_AllocLocalEntity
-CALLP4
-ASGNP4
-ADDRLP4 0
-ADDRLP4 8
-INDIRP4
-ASGNP4
-line 221
 ;221:	le->leFlags = 0;
-ADDRLP4 0
-INDIRP4
-CNSTI4 12
-ADDP4
-CNSTI4 0
-ASGNI4
-line 222
 ;222:	le->leType = LE_KAMIKAZE;
-ADDRLP4 0
-INDIRP4
-CNSTI4 8
-ADDP4
-CNSTI4 9
-ASGNI4
-line 223
 ;223:	le->startTime = cg.time;
-ADDRLP4 0
-INDIRP4
-CNSTI4 16
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-ASGNI4
-line 224
 ;224:	le->endTime = cg.time + 3000;//2250;
-ADDRLP4 0
-INDIRP4
-CNSTI4 20
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-CNSTI4 3000
-ADDI4
-ASGNI4
-line 225
 ;225:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
-ADDRLP4 0
-INDIRP4
-CNSTI4 28
-ADDP4
-CNSTF4 1065353216
-ADDRLP4 0
-INDIRP4
-CNSTI4 20
-ADDP4
-INDIRI4
-ADDRLP4 0
-INDIRP4
-CNSTI4 16
-ADDP4
-INDIRI4
-SUBI4
-CVIF4 4
-DIVF4
-ASGNF4
-line 227
 ;226:
 ;227:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
-ADDRLP4 20
-CNSTF4 1065353216
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 120
-ADDP4
-ADDRLP4 20
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 116
-ADDP4
-ADDRLP4 20
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 112
-ADDP4
-ADDRLP4 20
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 108
-ADDP4
-ADDRLP4 20
-INDIRF4
-ASGNF4
-line 229
 ;228:
 ;229:	VectorClear(le->angles.trBase);
-ADDRLP4 28
-CNSTF4 0
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 88
-ADDP4
-ADDRLP4 28
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 84
-ADDP4
-ADDRLP4 28
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 80
-ADDP4
-ADDRLP4 28
-INDIRF4
-ASGNF4
-line 231
 ;230:
 ;231:	re = &le->refEntity;
-ADDRLP4 4
-ADDRLP4 0
-INDIRP4
-CNSTI4 152
-ADDP4
-ASGNP4
-line 233
 ;232:
 ;233:	re->reType = RT_MODEL;
-ADDRLP4 4
-INDIRP4
-CNSTI4 0
-ASGNI4
-line 234
 ;234:	re->shaderTime = cg.time / 1000.0f;
-ADDRLP4 4
-INDIRP4
-CNSTI4 128
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-CVIF4 4
-CNSTF4 1148846080
-DIVF4
-ASGNF4
-line 236
 ;235:
 ;236:	re->hModel = cgs.media.kamikazeEffectModel;
-ADDRLP4 4
-INDIRP4
-CNSTI4 8
-ADDP4
-ADDRGP4 cgs+152852+540
-INDIRI4
-ASGNI4
-line 238
 ;237:
 ;238:	VectorCopy( org, re->origin );
-ADDRLP4 4
-INDIRP4
-CNSTI4 68
-ADDP4
-ADDRFP4 0
-INDIRP4
-INDIRB
-ASGNB 12
-line 240
 ;239:
 ;240:}
-LABELV $134
-endproc CG_KamikazeEffect 32 0
-export CG_ObeliskExplode
-proc CG_ObeliskExplode 20 24
-line 247
 ;241:
 ;242:/*
 ;243:==================
@@ -1583,91 +1347,21 @@ line 247
 ;245:==================
 ;246:*/
 ;247:void CG_ObeliskExplode( vec3_t org, int entityNum ) {
-line 252
 ;248:	localEntity_t	*le;
 ;249:	vec3_t origin;
 ;250:
 ;251:	// create an explosion
 ;252:	VectorCopy( org, origin );
-ADDRLP4 4
-ADDRFP4 0
-INDIRP4
-INDIRB
-ASGNB 12
-line 253
 ;253:	origin[2] += 64;
-ADDRLP4 4+8
-ADDRLP4 4+8
-INDIRF4
-CNSTF4 1115684864
-ADDF4
-ASGNF4
-line 254
 ;254:	le = CG_MakeExplosion( origin, vec3_origin,
-ADDRLP4 4
-ARGP4
-ADDRGP4 vec3_origin
-ARGP4
-ADDRGP4 cgs+152852+488
-INDIRI4
-ARGI4
-ADDRGP4 cgs+152852+508
-INDIRI4
-ARGI4
-CNSTI4 600
-ARGI4
-CNSTI4 1
-ARGI4
-ADDRLP4 16
-ADDRGP4 CG_MakeExplosion
-CALLP4
-ASGNP4
-ADDRLP4 0
-ADDRLP4 16
-INDIRP4
-ASGNP4
-line 258
 ;255:						   cgs.media.dishFlashModel,
 ;256:						   cgs.media.rocketExplosionShader,
 ;257:						   600, qtrue );
 ;258:	le->light = 300;
-ADDRLP4 0
-INDIRP4
-CNSTI4 128
-ADDP4
-CNSTF4 1133903872
-ASGNF4
-line 259
 ;259:	le->lightColor[0] = 1;
-ADDRLP4 0
-INDIRP4
-CNSTI4 132
-ADDP4
-CNSTF4 1065353216
-ASGNF4
-line 260
 ;260:	le->lightColor[1] = 0.75;
-ADDRLP4 0
-INDIRP4
-CNSTI4 136
-ADDP4
-CNSTF4 1061158912
-ASGNF4
-line 261
 ;261:	le->lightColor[2] = 0.0;
-ADDRLP4 0
-INDIRP4
-CNSTI4 140
-ADDP4
-CNSTF4 0
-ASGNF4
-line 262
 ;262:}
-LABELV $140
-endproc CG_ObeliskExplode 20 24
-export CG_ObeliskPain
-proc CG_ObeliskPain 12 16
-line 269
 ;263:
 ;264:/*
 ;265:==================
@@ -1675,87 +1369,20 @@ line 269
 ;267:==================
 ;268:*/
 ;269:void CG_ObeliskPain( vec3_t org ) {
-line 274
 ;270:	float r;
 ;271:	sfxHandle_t sfx;
 ;272:
 ;273:	// hit sound
 ;274:	r = rand() & 3;
-ADDRLP4 8
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 0
-ADDRLP4 8
-INDIRI4
-CNSTI4 3
-BANDI4
-CVIF4 4
-ASGNF4
-line 275
 ;275:	if ( r < 2 ) {
-ADDRLP4 0
-INDIRF4
-CNSTF4 1073741824
-GEF4 $147
-line 276
 ;276:		sfx = cgs.media.obeliskHitSound1;
-ADDRLP4 4
-ADDRGP4 cgs+152852+872
-INDIRI4
-ASGNI4
-line 277
 ;277:	} else if ( r == 2 ) {
-ADDRGP4 $148
-JUMPV
-LABELV $147
-ADDRLP4 0
-INDIRF4
-CNSTF4 1073741824
-NEF4 $151
-line 278
 ;278:		sfx = cgs.media.obeliskHitSound2;
-ADDRLP4 4
-ADDRGP4 cgs+152852+876
-INDIRI4
-ASGNI4
-line 279
 ;279:	} else {
-ADDRGP4 $152
-JUMPV
-LABELV $151
-line 280
 ;280:		sfx = cgs.media.obeliskHitSound3;
-ADDRLP4 4
-ADDRGP4 cgs+152852+880
-INDIRI4
-ASGNI4
-line 281
 ;281:	}
-LABELV $152
-LABELV $148
-line 282
 ;282:	trap_S_StartSound ( org, ENTITYNUM_NONE, CHAN_BODY, sfx );
-ADDRFP4 0
-INDIRP4
-ARGP4
-CNSTI4 1023
-ARGI4
-CNSTI4 5
-ARGI4
-ADDRLP4 4
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 283
 ;283:}
-LABELV $146
-endproc CG_ObeliskPain 12 16
-export CG_InvulnerabilityImpact
-proc CG_InvulnerabilityImpact 36 16
-line 291
 ;284:
 ;285:
 ;286:/*
@@ -1764,251 +1391,40 @@ line 291
 ;289:==================
 ;290:*/
 ;291:void CG_InvulnerabilityImpact( vec3_t org, vec3_t angles ) {
-line 297
 ;292:	localEntity_t	*le;
 ;293:	refEntity_t		*re;
 ;294:	int				r;
 ;295:	sfxHandle_t		sfx;
 ;296:
 ;297:	le = CG_AllocLocalEntity();
-ADDRLP4 16
-ADDRGP4 CG_AllocLocalEntity
-CALLP4
-ASGNP4
-ADDRLP4 0
-ADDRLP4 16
-INDIRP4
-ASGNP4
-line 298
 ;298:	le->leFlags = 0;
-ADDRLP4 0
-INDIRP4
-CNSTI4 12
-ADDP4
-CNSTI4 0
-ASGNI4
-line 299
 ;299:	le->leType = LE_INVULIMPACT;
-ADDRLP4 0
-INDIRP4
-CNSTI4 8
-ADDP4
-CNSTI4 10
-ASGNI4
-line 300
 ;300:	le->startTime = cg.time;
-ADDRLP4 0
-INDIRP4
-CNSTI4 16
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-ASGNI4
-line 301
 ;301:	le->endTime = cg.time + 1000;
-ADDRLP4 0
-INDIRP4
-CNSTI4 20
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-CNSTI4 1000
-ADDI4
-ASGNI4
-line 302
 ;302:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
-ADDRLP4 0
-INDIRP4
-CNSTI4 28
-ADDP4
-CNSTF4 1065353216
-ADDRLP4 0
-INDIRP4
-CNSTI4 20
-ADDP4
-INDIRI4
-ADDRLP4 0
-INDIRP4
-CNSTI4 16
-ADDP4
-INDIRI4
-SUBI4
-CVIF4 4
-DIVF4
-ASGNF4
-line 304
 ;303:
 ;304:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
-ADDRLP4 28
-CNSTF4 1065353216
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 120
-ADDP4
-ADDRLP4 28
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 116
-ADDP4
-ADDRLP4 28
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 112
-ADDP4
-ADDRLP4 28
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 108
-ADDP4
-ADDRLP4 28
-INDIRF4
-ASGNF4
-line 306
 ;305:
 ;306:	re = &le->refEntity;
-ADDRLP4 4
-ADDRLP4 0
-INDIRP4
-CNSTI4 152
-ADDP4
-ASGNP4
-line 308
 ;307:
 ;308:	re->reType = RT_MODEL;
-ADDRLP4 4
-INDIRP4
-CNSTI4 0
-ASGNI4
-line 309
 ;309:	re->shaderTime = cg.time / 1000.0f;
-ADDRLP4 4
-INDIRP4
-CNSTI4 128
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-CVIF4 4
-CNSTF4 1148846080
-DIVF4
-ASGNF4
-line 311
 ;310:
 ;311:	re->hModel = cgs.media.invulnerabilityImpactModel;
-ADDRLP4 4
-INDIRP4
-CNSTI4 8
-ADDP4
-ADDRGP4 cgs+152852+572
-INDIRI4
-ASGNI4
-line 313
 ;312:
 ;313:	VectorCopy( org, re->origin );
-ADDRLP4 4
-INDIRP4
-CNSTI4 68
-ADDP4
-ADDRFP4 0
-INDIRP4
-INDIRB
-ASGNB 12
-line 314
 ;314:	AnglesToAxis( angles, re->axis );
-ADDRFP4 4
-INDIRP4
-ARGP4
-ADDRLP4 4
-INDIRP4
-CNSTI4 28
-ADDP4
-ARGP4
-ADDRGP4 AnglesToAxis
-CALLV
-pop
-line 316
 ;315:
 ;316:	r = rand() & 3;
-ADDRLP4 32
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 8
-ADDRLP4 32
-INDIRI4
-CNSTI4 3
-BANDI4
-ASGNI4
-line 317
 ;317:	if ( r < 2 ) {
-ADDRLP4 8
-INDIRI4
-CNSTI4 2
-GEI4 $163
-line 318
 ;318:		sfx = cgs.media.invulnerabilityImpactSound1;
-ADDRLP4 12
-ADDRGP4 cgs+152852+856
-INDIRI4
-ASGNI4
-line 319
 ;319:	} else if ( r == 2 ) {
-ADDRGP4 $164
-JUMPV
-LABELV $163
-ADDRLP4 8
-INDIRI4
-CNSTI4 2
-NEI4 $167
-line 320
 ;320:		sfx = cgs.media.invulnerabilityImpactSound2;
-ADDRLP4 12
-ADDRGP4 cgs+152852+860
-INDIRI4
-ASGNI4
-line 321
 ;321:	} else {
-ADDRGP4 $168
-JUMPV
-LABELV $167
-line 322
 ;322:		sfx = cgs.media.invulnerabilityImpactSound3;
-ADDRLP4 12
-ADDRGP4 cgs+152852+864
-INDIRI4
-ASGNI4
-line 323
 ;323:	}
-LABELV $168
-LABELV $164
-line 324
 ;324:	trap_S_StartSound (org, ENTITYNUM_NONE, CHAN_BODY, sfx );
-ADDRFP4 0
-INDIRP4
-ARGP4
-CNSTI4 1023
-ARGI4
-CNSTI4 5
-ARGI4
-ADDRLP4 12
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 325
 ;325:}
-LABELV $157
-endproc CG_InvulnerabilityImpact 36 16
-export CG_InvulnerabilityJuiced
-proc CG_InvulnerabilityJuiced 40 16
-line 332
 ;326:
 ;327:/*
 ;328:==================
@@ -2016,217 +1432,32 @@ line 332
 ;330:==================
 ;331:*/
 ;332:void CG_InvulnerabilityJuiced( vec3_t org ) {
-line 337
 ;333:	localEntity_t	*le;
 ;334:	refEntity_t		*re;
 ;335:	vec3_t			angles;
 ;336:
 ;337:	le = CG_AllocLocalEntity();
-ADDRLP4 20
-ADDRGP4 CG_AllocLocalEntity
-CALLP4
-ASGNP4
-ADDRLP4 0
-ADDRLP4 20
-INDIRP4
-ASGNP4
-line 338
 ;338:	le->leFlags = 0;
-ADDRLP4 0
-INDIRP4
-CNSTI4 12
-ADDP4
-CNSTI4 0
-ASGNI4
-line 339
 ;339:	le->leType = LE_INVULJUICED;
-ADDRLP4 0
-INDIRP4
-CNSTI4 8
-ADDP4
-CNSTI4 11
-ASGNI4
-line 340
 ;340:	le->startTime = cg.time;
-ADDRLP4 0
-INDIRP4
-CNSTI4 16
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-ASGNI4
-line 341
 ;341:	le->endTime = cg.time + 10000;
-ADDRLP4 0
-INDIRP4
-CNSTI4 20
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-CNSTI4 10000
-ADDI4
-ASGNI4
-line 342
 ;342:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
-ADDRLP4 0
-INDIRP4
-CNSTI4 28
-ADDP4
-CNSTF4 1065353216
-ADDRLP4 0
-INDIRP4
-CNSTI4 20
-ADDP4
-INDIRI4
-ADDRLP4 0
-INDIRP4
-CNSTI4 16
-ADDP4
-INDIRI4
-SUBI4
-CVIF4 4
-DIVF4
-ASGNF4
-line 344
 ;343:
 ;344:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
-ADDRLP4 32
-CNSTF4 1065353216
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 120
-ADDP4
-ADDRLP4 32
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 116
-ADDP4
-ADDRLP4 32
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 112
-ADDP4
-ADDRLP4 32
-INDIRF4
-ASGNF4
-ADDRLP4 0
-INDIRP4
-CNSTI4 108
-ADDP4
-ADDRLP4 32
-INDIRF4
-ASGNF4
-line 346
 ;345:
 ;346:	re = &le->refEntity;
-ADDRLP4 4
-ADDRLP4 0
-INDIRP4
-CNSTI4 152
-ADDP4
-ASGNP4
-line 348
 ;347:
 ;348:	re->reType = RT_MODEL;
-ADDRLP4 4
-INDIRP4
-CNSTI4 0
-ASGNI4
-line 349
 ;349:	re->shaderTime = cg.time / 1000.0f;
-ADDRLP4 4
-INDIRP4
-CNSTI4 128
-ADDP4
-ADDRGP4 cg+107604
-INDIRI4
-CVIF4 4
-CNSTF4 1148846080
-DIVF4
-ASGNF4
-line 351
 ;350:
 ;351:	re->hModel = cgs.media.invulnerabilityJuicedModel;
-ADDRLP4 4
-INDIRP4
-CNSTI4 8
-ADDP4
-ADDRGP4 cgs+152852+576
-INDIRI4
-ASGNI4
-line 353
 ;352:
 ;353:	VectorCopy( org, re->origin );
-ADDRLP4 4
-INDIRP4
-CNSTI4 68
-ADDP4
-ADDRFP4 0
-INDIRP4
-INDIRB
-ASGNB 12
-line 354
 ;354:	VectorClear(angles);
-ADDRLP4 36
-CNSTF4 0
-ASGNF4
-ADDRLP4 8+8
-ADDRLP4 36
-INDIRF4
-ASGNF4
-ADDRLP4 8+4
-ADDRLP4 36
-INDIRF4
-ASGNF4
-ADDRLP4 8
-ADDRLP4 36
-INDIRF4
-ASGNF4
-line 355
 ;355:	AnglesToAxis( angles, re->axis );
-ADDRLP4 8
-ARGP4
-ADDRLP4 4
-INDIRP4
-CNSTI4 28
-ADDP4
-ARGP4
-ADDRGP4 AnglesToAxis
-CALLV
-pop
-line 357
 ;356:
 ;357:	trap_S_StartSound (org, ENTITYNUM_NONE, CHAN_BODY, cgs.media.invulnerabilityJuicedSound );
-ADDRFP4 0
-INDIRP4
-ARGP4
-CNSTI4 1023
-ARGI4
-CNSTI4 5
-ARGI4
-ADDRGP4 cgs+152852+868
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 358
 ;358:}
-LABELV $173
-endproc CG_InvulnerabilityJuiced 40 16
-bss
-align 4
-LABELV $184
-skip 12
-export CG_ScorePlum
-code
-proc CG_ScorePlum 52 8
-line 367
 ;359:
 ;360:#endif
 ;361:
@@ -2248,17 +1479,17 @@ ADDRFP4 0
 INDIRI4
 ADDRGP4 cg+107636+140
 INDIRI4
-NEI4 $190
+NEI4 $138
 ADDRGP4 cg_scorePlum+12
 INDIRI4
 CNSTI4 0
-NEI4 $185
-LABELV $190
+NEI4 $133
+LABELV $138
 line 375
 ;375:		return;
-ADDRGP4 $183
+ADDRGP4 $131
 JUMPV
-LABELV $185
+LABELV $133
 line 378
 ;376:	}
 ;377:
@@ -2403,20 +1634,20 @@ CNSTF4 1101004800
 ASGNF4
 ADDRLP4 40
 INDIRF4
-ADDRGP4 $184+8
+ADDRGP4 $132+8
 INDIRF4
 ADDRLP4 44
 INDIRF4
 SUBF4
-LTF4 $193
+LTF4 $141
 ADDRLP4 40
 INDIRF4
-ADDRGP4 $184+8
+ADDRGP4 $132+8
 INDIRF4
 ADDRLP4 44
 INDIRF4
 ADDF4
-GTF4 $193
+GTF4 $141
 line 391
 ;391:		le->pos.trBase[2] -= 20;
 ADDRLP4 48
@@ -2435,12 +1666,12 @@ SUBF4
 ASGNF4
 line 392
 ;392:	}
-LABELV $193
+LABELV $141
 line 395
 ;393:
 ;394:	//CG_Printf( "Plum origin %i %i %i -- %i\n", (int)org[0], (int)org[1], (int)org[2], (int)Distance(org, lastPos));
 ;395:	VectorCopy(org, lastPos);
-ADDRGP4 $184
+ADDRGP4 $132
 ADDRFP4 4
 INDIRP4
 INDIRB
@@ -2502,7 +1733,7 @@ CALLV
 pop
 line 405
 ;405:}
-LABELV $183
+LABELV $131
 endproc CG_ScorePlum 52 8
 export CG_MakeExplosion
 proc CG_MakeExplosion 60 8
@@ -2527,10 +1758,10 @@ line 421
 ADDRFP4 16
 INDIRI4
 CNSTI4 0
-GTI4 $200
+GTI4 $148
 line 422
 ;422:		CG_Error( "CG_MakeExplosion: msec = %i", msec );
-ADDRGP4 $202
+ADDRGP4 $150
 ARGP4
 ADDRFP4 16
 INDIRI4
@@ -2540,7 +1771,7 @@ CALLV
 pop
 line 423
 ;423:	}
-LABELV $200
+LABELV $148
 line 426
 ;424:
 ;425:	// skew the time a bit so they aren't all in sync
@@ -2571,7 +1802,7 @@ line 429
 ADDRFP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $203
+EQI4 $151
 line 430
 ;430:		ex->leType = LE_SPRITE_EXPLOSION;
 ADDRLP4 0
@@ -2670,9 +1901,9 @@ ADDF4
 ASGNF4
 line 436
 ;436:	} else {
-ADDRGP4 $204
+ADDRGP4 $152
 JUMPV
-LABELV $203
+LABELV $151
 line 437
 ;437:		ex->leType = LE_EXPLOSION;
 ADDRLP4 0
@@ -2696,7 +1927,7 @@ ADDRFP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $211
+NEU4 $159
 line 442
 ;442:			AxisClear( ex->refEntity.axis );
 ADDRLP4 0
@@ -2709,9 +1940,9 @@ CALLV
 pop
 line 443
 ;443:		} else {
-ADDRGP4 $212
+ADDRGP4 $160
 JUMPV
-LABELV $211
+LABELV $159
 line 444
 ;444:			ang = rand() % 360;
 ADDRLP4 44
@@ -2750,10 +1981,10 @@ CALLV
 pop
 line 447
 ;447:		}
-LABELV $212
+LABELV $160
 line 448
 ;448:	}
-LABELV $204
+LABELV $152
 line 450
 ;449:
 ;450:	ex->startTime = cg.time - offset;
@@ -2871,7 +2102,7 @@ line 465
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $199
+LABELV $147
 endproc CG_MakeExplosion 60 8
 export CG_Bleed
 proc CG_Bleed 20 0
@@ -2894,12 +2125,12 @@ line 479
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $215
+NEI4 $163
 line 480
 ;480:		return;
-ADDRGP4 $214
+ADDRGP4 $162
 JUMPV
-LABELV $215
+LABELV $163
 line 483
 ;481:	}
 ;482:
@@ -2994,7 +2225,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 264
 ADDP4
-ADDRGP4 cgs+152852+520
+ADDRGP4 cgs+152852+480
 INDIRI4
 ASGNI4
 line 497
@@ -3008,7 +2239,7 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-NEI4 $221
+NEI4 $169
 line 498
 ;498:		ex->refEntity.renderfx |= RF_THIRD_PERSON;
 ADDRLP4 16
@@ -3027,10 +2258,10 @@ BORI4
 ASGNI4
 line 499
 ;499:	}
-LABELV $221
+LABELV $169
 line 500
 ;500:}
-LABELV $214
+LABELV $162
 endproc CG_Bleed 20 0
 export CG_LaunchGib
 proc CG_LaunchGib 20 8
@@ -3211,7 +2442,7 @@ CNSTI4 2
 ASGNI4
 line 533
 ;533:}
-LABELV $224
+LABELV $172
 endproc CG_LaunchGib 20 8
 export CG_GibPlayer
 proc CG_GibPlayer 148 12
@@ -3234,12 +2465,12 @@ line 547
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $228
+NEI4 $176
 line 548
 ;548:		return;
-ADDRGP4 $227
+ADDRGP4 $175
 JUMPV
-LABELV $228
+LABELV $176
 line 551
 ;549:	}
 ;550:
@@ -3325,14 +2556,14 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $233
+EQI4 $181
 line 556
 ;556:		CG_LaunchGib( origin, velocity, cgs.media.gibSkull );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+200
+ADDRGP4 cgs+152852+168
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -3340,16 +2571,16 @@ CALLV
 pop
 line 557
 ;557:	} else {
-ADDRGP4 $234
+ADDRGP4 $182
 JUMPV
-LABELV $233
+LABELV $181
 line 558
 ;558:		CG_LaunchGib( origin, velocity, cgs.media.gibBrain );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+204
+ADDRGP4 cgs+152852+172
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -3357,7 +2588,7 @@ CALLV
 pop
 line 559
 ;559:	}
-LABELV $234
+LABELV $182
 line 562
 ;560:
 ;561:	// allow gibs to be turned off for speed
@@ -3365,12 +2596,12 @@ line 562
 ADDRGP4 cg_gibs+12
 INDIRI4
 CNSTI4 0
-NEI4 $239
+NEI4 $187
 line 563
 ;563:		return;
-ADDRGP4 $227
+ADDRGP4 $175
 JUMPV
-LABELV $239
+LABELV $187
 line 566
 ;564:	}
 ;565:
@@ -3451,7 +2682,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+168
+ADDRGP4 cgs+152852+136
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -3536,7 +2767,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+172
+ADDRGP4 cgs+152852+140
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -3621,7 +2852,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+176
+ADDRGP4 cgs+152852+144
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -3706,7 +2937,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+180
+ADDRGP4 cgs+152852+148
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -3791,7 +3022,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+184
+ADDRGP4 cgs+152852+152
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -3876,7 +3107,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+188
+ADDRGP4 cgs+152852+156
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -3961,7 +3192,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+192
+ADDRGP4 cgs+152852+160
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -4046,7 +3277,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+196
+ADDRGP4 cgs+152852+164
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -4131,7 +3362,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+196
+ADDRGP4 cgs+152852+164
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -4139,7 +3370,7 @@ CALLV
 pop
 line 619
 ;619:}
-LABELV $227
+LABELV $175
 endproc CG_GibPlayer 148 12
 export CG_LaunchExplode
 proc CG_LaunchExplode 20 8
@@ -4318,7 +3549,7 @@ CNSTI4 0
 ASGNI4
 line 650
 ;650:}
-LABELV $278
+LABELV $226
 endproc CG_LaunchExplode 20 8
 export CG_BigExplode
 proc CG_BigExplode 92 12
@@ -4341,12 +3572,12 @@ line 664
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $282
+NEI4 $230
 line 665
 ;665:		return;
-ADDRGP4 $281
+ADDRGP4 $229
 JUMPV
-LABELV $282
+LABELV $230
 line 668
 ;666:	}
 ;667:
@@ -4427,7 +3658,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+208
+ADDRGP4 cgs+152852+176
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchExplode
@@ -4512,7 +3743,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+208
+ADDRGP4 cgs+152852+176
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchExplode
@@ -4601,7 +3832,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+208
+ADDRGP4 cgs+152852+176
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchExplode
@@ -4700,7 +3931,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+208
+ADDRGP4 cgs+152852+176
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchExplode
@@ -4789,7 +4020,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+208
+ADDRGP4 cgs+152852+176
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchExplode
@@ -4797,7 +4028,7 @@ CALLV
 pop
 line 697
 ;697:}
-LABELV $281
+LABELV $229
 endproc CG_BigExplode 92 12
 export CG_GibPlayerHeadshot
 proc CG_GibPlayerHeadshot 76 12
@@ -4812,12 +4043,12 @@ line 703
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $306
+NEI4 $254
 line 704
 ;704:		return;
-ADDRGP4 $305
+ADDRGP4 $253
 JUMPV
-LABELV $306
+LABELV $254
 line 707
 ;705:	}
 ;706:
@@ -4911,14 +4142,14 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $312
+EQI4 $260
 line 713
 ;713:		CG_LaunchGib( origin, velocity, cgs.media.gibSkull );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+200
+ADDRGP4 cgs+152852+168
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -4926,16 +4157,16 @@ CALLV
 pop
 line 714
 ;714:	} else {
-ADDRGP4 $313
+ADDRGP4 $261
 JUMPV
-LABELV $312
+LABELV $260
 line 715
 ;715:		CG_LaunchGib( origin, velocity, cgs.media.gibBrain );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+204
+ADDRGP4 cgs+152852+172
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -4943,7 +4174,7 @@ CALLV
 pop
 line 716
 ;716:	}
-LABELV $313
+LABELV $261
 line 719
 ;717:
 ;718:	//delete from here
@@ -5024,7 +4255,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+180
+ADDRGP4 cgs+152852+148
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -5110,7 +4341,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+184
+ADDRGP4 cgs+152852+152
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -5195,7 +4426,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+152852+188
+ADDRGP4 cgs+152852+156
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchGib
@@ -5207,7 +4438,7 @@ line 741
 ;739:	
 ;740:
 ;741:}
-LABELV $305
+LABELV $253
 endproc CG_GibPlayerHeadshot 76 12
 import CG_DrawScanner
 import CG_ScannerOff_f
@@ -5464,17 +4695,6 @@ import cg_cmdTimeNudge
 import cg_drawBBox
 import cg_debugDelag
 import cg_delag
-import cg_obeliskRespawnDelay
-import cg_recordSPDemoName
-import cg_recordSPDemo
-import cg_singlePlayerActive
-import cg_enableBreath
-import cg_enableDust
-import cg_singlePlayer
-import cg_currentSelectedPlayerName
-import cg_currentSelectedPlayer
-import cg_blueTeamName
-import cg_redTeamName
 import cg_trueLightning
 import cg_oldPlasma
 import cg_oldRocket
@@ -5742,7 +4962,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $202
+LABELV $150
 byte 1 67
 byte 1 71
 byte 1 95

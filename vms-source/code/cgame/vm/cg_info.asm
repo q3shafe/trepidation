@@ -1472,33 +1472,30 @@ CNSTI4 0
 LTI4 $153
 ADDRLP4 1116
 INDIRI4
-CNSTI4 7
+CNSTI4 4
 GTI4 $153
 ADDRLP4 1116
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $189
+ADDRGP4 $183
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $189
+LABELV $183
 address $157
 address $172
 address $170
 address $174
 address $180
-address $182
-address $184
-address $186
 code
 LABELV $157
 line 272
 ;271:	case GT_FFA:
 ;272:		if (cgs.g_GameMode == 0) 
-ADDRGP4 cgs+154176
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 0
 NEI4 $158
@@ -1514,7 +1511,7 @@ line 275
 LABELV $158
 line 276
 ;276:		if (cgs.g_GameMode == 1) 
-ADDRGP4 cgs+154176
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 1
 NEI4 $162
@@ -1530,7 +1527,7 @@ line 279
 LABELV $162
 line 280
 ;280:		if (cgs.g_GameMode == 2) 
-ADDRGP4 cgs+154176
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 2
 NEI4 $154
@@ -1573,7 +1570,7 @@ LABELV $174
 line 292
 ;291:	case GT_TEAM:
 ;292:		if (cgs.g_GameMode == 2) 
-ADDRGP4 cgs+154176
+ADDRGP4 cgs+153932
 INDIRI4
 CNSTI4 2
 NEI4 $175
@@ -1611,47 +1608,23 @@ line 301
 ;301:		break;
 ADDRGP4 $154
 JUMPV
-LABELV $182
-line 304
+LABELV $153
+line 314
 ;302:#ifdef MISSIONPACK
 ;303:	case GT_1FCTF:
 ;304:		s = "One Flag CTF";
-ADDRLP4 0
-ADDRGP4 $183
-ASGNP4
-line 305
 ;305:		break;
-ADDRGP4 $154
-JUMPV
-LABELV $184
-line 307
 ;306:	case GT_OBELISK:
 ;307:		s = "Overload";
-ADDRLP4 0
-ADDRGP4 $185
-ASGNP4
-line 308
 ;308:		break;
-ADDRGP4 $154
-JUMPV
-LABELV $186
-line 310
 ;309:	case GT_HARVESTER:
 ;310:		s = "Harvester";
-ADDRLP4 0
-ADDRGP4 $187
-ASGNP4
-line 311
 ;311:		break;
-ADDRGP4 $154
-JUMPV
-LABELV $153
-line 314
 ;312:#endif
 ;313:	default:
 ;314:		s = "Unknown Gametype";
 ADDRLP4 0
-ADDRGP4 $188
+ADDRGP4 $182
 ASGNP4
 line 315
 ;315:		break;
@@ -1689,7 +1662,7 @@ line 321
 ADDRLP4 12
 INDIRP4
 ARGP4
-ADDRGP4 $190
+ADDRGP4 $184
 ARGP4
 ADDRLP4 1124
 ADDRGP4 Info_ValueForKey
@@ -1711,10 +1684,10 @@ line 322
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $191
+EQI4 $185
 line 323
 ;323:		UI_DrawProportionalString( 320, y, va( "timelimit %i", value ),
-ADDRGP4 $193
+ADDRGP4 $187
 ARGP4
 ADDRLP4 8
 INDIRI4
@@ -1749,20 +1722,20 @@ ADDI4
 ASGNI4
 line 326
 ;326:	}
-LABELV $191
+LABELV $185
 line 328
 ;327:
 ;328:	if (cgs.gametype < GT_CTF ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
-GEI4 $194
+GEI4 $188
 line 329
 ;329:		value = atoi( Info_ValueForKey( info, "fraglimit" ) );
 ADDRLP4 12
 INDIRP4
 ARGP4
-ADDRGP4 $197
+ADDRGP4 $191
 ARGP4
 ADDRLP4 1132
 ADDRGP4 Info_ValueForKey
@@ -1784,10 +1757,10 @@ line 330
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $198
+EQI4 $192
 line 331
 ;331:			UI_DrawProportionalString( 320, y, va( "fraglimit %i", value ),
-ADDRGP4 $200
+ADDRGP4 $194
 ARGP4
 ADDRLP4 8
 INDIRI4
@@ -1822,23 +1795,23 @@ ADDI4
 ASGNI4
 line 334
 ;334:		}
-LABELV $198
+LABELV $192
 line 335
 ;335:	}
-LABELV $194
+LABELV $188
 line 337
 ;336:
 ;337:	if (cgs.gametype >= GT_CTF) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
-LTI4 $201
+LTI4 $195
 line 338
 ;338:		value = atoi( Info_ValueForKey( info, "capturelimit" ) );
 ADDRLP4 12
 INDIRP4
 ARGP4
-ADDRGP4 $204
+ADDRGP4 $198
 ARGP4
 ADDRLP4 1132
 ADDRGP4 Info_ValueForKey
@@ -1860,10 +1833,10 @@ line 339
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $205
+EQI4 $199
 line 340
 ;340:			UI_DrawProportionalString( 320, y, va( "capturelimit %i", value ),
-ADDRGP4 $207
+ADDRGP4 $201
 ARGP4
 ADDRLP4 8
 INDIRI4
@@ -1898,10 +1871,10 @@ ADDI4
 ASGNI4
 line 343
 ;343:		}
-LABELV $205
+LABELV $199
 line 344
 ;344:	}
-LABELV $201
+LABELV $195
 line 345
 ;345:}
 LABELV $118
@@ -2038,12 +2011,6 @@ import CG_BigExplode
 import CG_GibPlayerHeadshot
 import CG_GibPlayer
 import CG_ScorePlum
-import CG_LightningBoltBeam
-import CG_InvulnerabilityJuiced
-import CG_InvulnerabilityImpact
-import CG_ObeliskPain
-import CG_ObeliskExplode
-import CG_KamikazeEffect
 import CG_SpawnEffect
 import CG_BubbleTrail
 import CG_SmokePuff
@@ -2185,17 +2152,6 @@ import cg_cmdTimeNudge
 import cg_drawBBox
 import cg_debugDelag
 import cg_delag
-import cg_obeliskRespawnDelay
-import cg_recordSPDemoName
-import cg_recordSPDemo
-import cg_singlePlayerActive
-import cg_enableBreath
-import cg_enableDust
-import cg_singlePlayer
-import cg_currentSelectedPlayerName
-import cg_currentSelectedPlayer
-import cg_blueTeamName
-import cg_redTeamName
 import cg_trueLightning
 import cg_oldPlasma
 import cg_oldRocket
@@ -2463,7 +2419,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $207
+LABELV $201
 byte 1 99
 byte 1 97
 byte 1 112
@@ -2481,7 +2437,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $204
+LABELV $198
 byte 1 99
 byte 1 97
 byte 1 112
@@ -2496,7 +2452,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $200
+LABELV $194
 byte 1 102
 byte 1 114
 byte 1 97
@@ -2511,7 +2467,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $197
+LABELV $191
 byte 1 102
 byte 1 114
 byte 1 97
@@ -2523,7 +2479,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $193
+LABELV $187
 byte 1 116
 byte 1 105
 byte 1 109
@@ -2538,7 +2494,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $190
+LABELV $184
 byte 1 116
 byte 1 105
 byte 1 109
@@ -2550,7 +2506,7 @@ byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $188
+LABELV $182
 byte 1 85
 byte 1 110
 byte 1 107
@@ -2567,44 +2523,6 @@ byte 1 116
 byte 1 121
 byte 1 112
 byte 1 101
-byte 1 0
-align 1
-LABELV $187
-byte 1 72
-byte 1 97
-byte 1 114
-byte 1 118
-byte 1 101
-byte 1 115
-byte 1 116
-byte 1 101
-byte 1 114
-byte 1 0
-align 1
-LABELV $185
-byte 1 79
-byte 1 118
-byte 1 101
-byte 1 114
-byte 1 108
-byte 1 111
-byte 1 97
-byte 1 100
-byte 1 0
-align 1
-LABELV $183
-byte 1 79
-byte 1 110
-byte 1 101
-byte 1 32
-byte 1 70
-byte 1 108
-byte 1 97
-byte 1 103
-byte 1 32
-byte 1 67
-byte 1 84
-byte 1 70
 byte 1 0
 align 1
 LABELV $181

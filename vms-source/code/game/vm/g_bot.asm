@@ -1101,7 +1101,7 @@ LABELV $136
 line 228
 ;228:			cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1126,7 +1126,7 @@ LABELV $141
 line 232
 ;231:			}
 ;232:			if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 868
+CNSTI4 860
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -1305,7 +1305,7 @@ LABELV $158
 line 251
 ;251:			cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1330,7 +1330,7 @@ LABELV $163
 line 255
 ;254:			}
 ;255:			if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 868
+CNSTI4 860
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -1583,7 +1583,7 @@ LABELV $188
 line 293
 ;293:		cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1608,7 +1608,7 @@ LABELV $193
 line 297
 ;296:		}
 ;297:		if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 868
+CNSTI4 860
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -1746,7 +1746,7 @@ LABELV $203
 line 322
 ;322:		cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1771,7 +1771,7 @@ LABELV $208
 line 326
 ;325:		}
 ;326:		if ( g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT ) {
-CNSTI4 868
+CNSTI4 860
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -1876,7 +1876,7 @@ LABELV $217
 line 348
 ;348:		cl = level.clients + i;
 ADDRLP4 4
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -1901,7 +1901,7 @@ LABELV $222
 line 352
 ;351:		}
 ;352:		if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 868
+CNSTI4 860
 ADDRLP4 4
 INDIRP4
 CNSTI4 140
@@ -2124,7 +2124,7 @@ INDIRI4
 ADDRLP4 12
 INDIRI4
 NEI4 $253
-ADDRGP4 level+9232
+ADDRGP4 level+9228
 INDIRI4
 ADDRLP4 12
 INDIRI4
@@ -2144,7 +2144,7 @@ ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 2
 NEI4 $257
-ADDRGP4 level+9232
+ADDRGP4 level+9228
 INDIRI4
 CNSTI4 1
 NEI4 $257
@@ -3765,7 +3765,7 @@ line 673
 ;672:
 ;673:	bot = &g_entities[ clientNum ];
 ADDRLP4 1052
-CNSTI4 868
+CNSTI4 860
 ADDRLP4 1036
 INDIRI4
 MULI4
@@ -5881,7 +5881,6 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
-import G_StartKamikaze
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -5916,14 +5915,10 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
-import DropPortalDestination
-import DropPortalSource
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
-import fire_prox
-import fire_nail
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -5936,7 +5931,6 @@ import fire_plasma
 import fire_blaster
 import G_RunMissile
 import TossClientCubes
-import TossClientPersistantPowerups
 import TossClientItems
 import body_die
 import G_InvulnerabilityEffect

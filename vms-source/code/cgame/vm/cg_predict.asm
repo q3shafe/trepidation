@@ -1364,89 +1364,65 @@ MULI4
 ADDRGP4 bg_itemlist
 ADDP4
 ASGNP4
-line 265
+line 272
 ;261:
 ;262:	// Special case for flags.  
 ;263:	// We don't predict touching our own flag
 ;264:#ifdef MISSIONPACK
 ;265:	if( cgs.gametype == GT_1FCTF ) {
-ADDRGP4 cgs+31456
-INDIRI4
-CNSTI4 5
-NEI4 $168
-line 266
 ;266:		if( item->giTag != PW_NEUTRALFLAG ) {
-ADDRLP4 0
-INDIRP4
-CNSTI4 40
-ADDP4
-INDIRI4
-CNSTI4 9
-EQI4 $171
-line 267
 ;267:			return;
-ADDRGP4 $153
-JUMPV
-LABELV $171
-line 269
 ;268:		}
 ;269:	}
-LABELV $168
-line 270
 ;270:	if( cgs.gametype == GT_CTF || cgs.gametype == GT_HARVESTER ) {
+;271:#else
+;272:	if( cgs.gametype == GT_CTF ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
-EQI4 $177
-ADDRGP4 cgs+31456
-INDIRI4
-CNSTI4 7
-NEI4 $173
-LABELV $177
+NEI4 $168
 line 274
-;271:#else
-;272:	if( cgs.gametype == GT_CTF ) {
 ;273:#endif
 ;274:		if (cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_RED &&
 ADDRGP4 cg+107636+248+12
 INDIRI4
 CNSTI4 1
-NEI4 $178
+NEI4 $171
 ADDRLP4 0
 INDIRP4
 CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 7
-NEI4 $178
+NEI4 $171
 line 276
 ;275:			item->giTag == PW_REDFLAG)
 ;276:			return;
 ADDRGP4 $153
 JUMPV
-LABELV $178
+LABELV $171
 line 277
 ;277:		if (cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_BLUE &&
 ADDRGP4 cg+107636+248+12
 INDIRI4
 CNSTI4 2
-NEI4 $183
+NEI4 $176
 ADDRLP4 0
 INDIRP4
 CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 8
-NEI4 $183
+NEI4 $176
 line 279
 ;278:			item->giTag == PW_BLUEFLAG)
 ;279:			return;
 ADDRGP4 $153
 JUMPV
-LABELV $183
+LABELV $176
 line 280
 ;280:	}
-LABELV $173
+LABELV $168
 line 283
 ;281:
 ;282:	// grab it
@@ -1503,11 +1479,11 @@ CNSTI4 36
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $190
+NEI4 $183
 line 293
 ;293:		cg.predictedPlayerState.stats[ STAT_WEAPONS ] |= 1 << item->giTag;
 ADDRLP4 16
-ADDRGP4 cg+107636+184+12
+ADDRGP4 cg+107636+184+8
 ASGNP4
 ADDRLP4 16
 INDIRP4
@@ -1536,7 +1512,7 @@ ADDRGP4 cg+107636+376
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $195
+NEI4 $188
 line 295
 ;295:			cg.predictedPlayerState.ammo[ item->giTag ] = 1;
 ADDRLP4 0
@@ -1552,10 +1528,10 @@ CNSTI4 1
 ASGNI4
 line 296
 ;296:		}
-LABELV $195
+LABELV $188
 line 297
 ;297:	}
-LABELV $190
+LABELV $183
 line 298
 ;298:}
 LABELV $153
@@ -1585,12 +1561,12 @@ line 317
 ADDRGP4 cg+107636+184
 INDIRI4
 CNSTI4 0
-GTI4 $202
+GTI4 $195
 line 318
 ;318:		return;
-ADDRGP4 $201
+ADDRGP4 $194
 JUMPV
-LABELV $202
+LABELV $195
 line 321
 ;319:	}
 ;320:
@@ -1598,17 +1574,17 @@ line 321
 ADDRGP4 cg+107636+4
 INDIRI4
 CNSTI4 2
-NEI4 $209
+NEI4 $202
 ADDRLP4 76
 CNSTI4 1
 ASGNI4
-ADDRGP4 $210
+ADDRGP4 $203
 JUMPV
-LABELV $209
+LABELV $202
 ADDRLP4 76
 CNSTI4 0
 ASGNI4
-LABELV $210
+LABELV $203
 ADDRLP4 72
 ADDRLP4 76
 INDIRI4
@@ -1623,17 +1599,17 @@ ADDRGP4 cg+107636+4
 INDIRI4
 ADDRLP4 80
 INDIRI4
-EQI4 $211
+EQI4 $204
 ADDRLP4 72
 INDIRI4
 ADDRLP4 80
 INDIRI4
-NEI4 $211
+NEI4 $204
 line 324
 ;324:		return;
-ADDRGP4 $201
+ADDRGP4 $194
 JUMPV
-LABELV $211
+LABELV $204
 line 327
 ;325:	}
 ;326:
@@ -1641,9 +1617,9 @@ line 327
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $218
+ADDRGP4 $211
 JUMPV
-LABELV $215
+LABELV $208
 line 328
 ;328:		cent = cg_triggerEntities[ i ];
 ADDRLP4 12
@@ -1670,11 +1646,11 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $219
+NEI4 $212
 ADDRLP4 72
 INDIRI4
 CNSTI4 0
-NEI4 $219
+NEI4 $212
 line 332
 ;332:			CG_TouchItem( cent );
 ADDRLP4 12
@@ -1685,9 +1661,9 @@ CALLV
 pop
 line 333
 ;333:			continue;
-ADDRGP4 $216
+ADDRGP4 $209
 JUMPV
-LABELV $219
+LABELV $212
 line 336
 ;334:		}
 ;335:
@@ -1698,12 +1674,12 @@ CNSTI4 176
 ADDP4
 INDIRI4
 CNSTI4 16777215
-EQI4 $221
+EQI4 $214
 line 337
 ;337:			continue;
-ADDRGP4 $216
+ADDRGP4 $209
 JUMPV
-LABELV $221
+LABELV $214
 line 340
 ;338:		}
 ;339:
@@ -1727,12 +1703,12 @@ line 341
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $223
+NEI4 $216
 line 342
 ;342:			continue;
-ADDRGP4 $216
+ADDRGP4 $209
 JUMPV
-LABELV $223
+LABELV $216
 line 345
 ;343:		}
 ;344:
@@ -1762,12 +1738,12 @@ line 348
 ADDRLP4 16+4
 INDIRI4
 CNSTI4 0
-NEI4 $231
+NEI4 $224
 line 349
 ;349:			continue;
-ADDRGP4 $216
+ADDRGP4 $209
 JUMPV
-LABELV $231
+LABELV $224
 line 352
 ;350:		}
 ;351:
@@ -1778,7 +1754,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 9
-NEI4 $234
+NEI4 $227
 line 353
 ;353:			cg.hyperspace = qtrue;
 ADDRGP4 cg+107632
@@ -1786,16 +1762,16 @@ CNSTI4 1
 ASGNI4
 line 354
 ;354:		} else if ( ent->eType == ET_PUSH_TRIGGER ) {
-ADDRGP4 $235
+ADDRGP4 $228
 JUMPV
-LABELV $234
+LABELV $227
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 8
-NEI4 $237
+NEI4 $230
 line 355
 ;355:			BG_TouchJumpPad( &cg.predictedPlayerState, ent );
 ADDRGP4 cg+107636
@@ -1808,11 +1784,11 @@ CALLV
 pop
 line 356
 ;356:		}
-LABELV $237
-LABELV $235
+LABELV $230
+LABELV $228
 line 357
 ;357:	}
-LABELV $216
+LABELV $209
 line 327
 ADDRLP4 4
 ADDRLP4 4
@@ -1820,12 +1796,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $218
+LABELV $211
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cg_numTriggerEntities
 INDIRI4
-LTI4 $215
+LTI4 $208
 line 360
 ;358:
 ;359:	// if we didn't touch a jump pad this pmove frame
@@ -1834,7 +1810,7 @@ ADDRGP4 cg+107636+460
 INDIRI4
 ADDRGP4 cg+107636+456
 INDIRI4
-EQI4 $240
+EQI4 $233
 line 361
 ;361:		cg.predictedPlayerState.jumppad_frame = 0;
 ADDRGP4 cg+107636+460
@@ -1847,10 +1823,10 @@ CNSTI4 0
 ASGNI4
 line 363
 ;363:	}
-LABELV $240
+LABELV $233
 line 364
 ;364:}
-LABELV $201
+LABELV $194
 endproc CG_TouchTriggerPrediction 88 28
 proc IsUnacceptableError 316 8
 line 369
@@ -1887,7 +1863,7 @@ ADDRLP4 20
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $254
+NEI4 $247
 ADDRLP4 28
 CNSTI4 12
 ASGNI4
@@ -1903,7 +1879,7 @@ ADDRLP4 28
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $254
+NEI4 $247
 ADDRLP4 32
 CNSTI4 16
 ASGNI4
@@ -1919,8 +1895,8 @@ ADDRLP4 32
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $251
-LABELV $254
+EQI4 $244
+LABELV $247
 line 375
 ;374:			pps->pm_flags != ps->pm_flags ||
 ;375:			pps->pm_time != ps->pm_time ) {
@@ -1928,9 +1904,9 @@ line 376
 ;376:		return 1;
 CNSTI4 1
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $251
+LABELV $244
 line 379
 ;377:	}
 ;378:
@@ -2008,13 +1984,13 @@ ASGNF4
 ADDRLP4 56
 INDIRF4
 CNSTF4 1008981770
-LEF4 $257
+LEF4 $250
 line 381
 ;381:		if ( cg_showmiss.integer ) {
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $259
+EQI4 $252
 line 382
 ;382:			CG_Printf("delta: %.2f  ", VectorLength(delta) );
 ADDRLP4 4
@@ -2023,7 +1999,7 @@ ADDRLP4 60
 ADDRGP4 VectorLength
 CALLF4
 ASGNF4
-ADDRGP4 $262
+ADDRGP4 $255
 ARGP4
 ADDRLP4 60
 INDIRF4
@@ -2033,14 +2009,14 @@ CALLV
 pop
 line 383
 ;383:		}
-LABELV $259
+LABELV $252
 line 384
 ;384:		return 2;
 CNSTI4 2
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $257
+LABELV $250
 line 387
 ;385:	}
 ;386:
@@ -2118,13 +2094,13 @@ ASGNF4
 ADDRLP4 80
 INDIRF4
 CNSTF4 1008981770
-LEF4 $265
+LEF4 $258
 line 389
 ;389:		if ( cg_showmiss.integer ) {
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $267
+EQI4 $260
 line 390
 ;390:			CG_Printf("delta: %.2f  ", VectorLength(delta) );
 ADDRLP4 4
@@ -2133,7 +2109,7 @@ ADDRLP4 84
 ADDRGP4 VectorLength
 CALLF4
 ASGNF4
-ADDRGP4 $262
+ADDRGP4 $255
 ARGP4
 ADDRLP4 84
 INDIRF4
@@ -2143,14 +2119,14 @@ CALLV
 pop
 line 391
 ;391:		}
-LABELV $267
+LABELV $260
 line 392
 ;392:		return 3;
 CNSTI4 3
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $265
+LABELV $258
 line 395
 ;393:	}
 ;394:
@@ -2178,7 +2154,7 @@ ADDRLP4 88
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $277
+NEI4 $270
 ADDRLP4 96
 CNSTI4 48
 ASGNI4
@@ -2194,7 +2170,7 @@ ADDRLP4 96
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $277
+NEI4 $270
 ADDRLP4 100
 CNSTI4 52
 ASGNI4
@@ -2210,7 +2186,7 @@ ADDRLP4 100
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $277
+NEI4 $270
 ADDRLP4 104
 CNSTI4 56
 ASGNI4
@@ -2226,7 +2202,7 @@ ADDRLP4 104
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $277
+NEI4 $270
 ADDRLP4 108
 CNSTI4 60
 ASGNI4
@@ -2242,7 +2218,7 @@ ADDRLP4 108
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $277
+NEI4 $270
 ADDRLP4 112
 CNSTI4 64
 ASGNI4
@@ -2258,7 +2234,7 @@ ADDRLP4 112
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $277
+NEI4 $270
 ADDRLP4 116
 CNSTI4 68
 ASGNI4
@@ -2274,8 +2250,8 @@ ADDRLP4 116
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $270
-LABELV $277
+EQI4 $263
+LABELV $270
 line 401
 ;396:			pps->gravity != ps->gravity ||
 ;397:			pps->speed != ps->speed ||
@@ -2287,9 +2263,9 @@ line 402
 ;402:		return 4;
 CNSTI4 4
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $270
+LABELV $263
 line 405
 ;403:	}
 ;404:
@@ -2317,7 +2293,7 @@ ADDRLP4 124
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $283
+NEI4 $276
 ADDRLP4 132
 CNSTI4 76
 ASGNI4
@@ -2333,7 +2309,7 @@ ADDRLP4 132
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $283
+NEI4 $276
 ADDRLP4 136
 CNSTI4 80
 ASGNI4
@@ -2349,7 +2325,7 @@ ADDRLP4 136
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $283
+NEI4 $276
 ADDRLP4 140
 CNSTI4 84
 ASGNI4
@@ -2365,7 +2341,7 @@ ADDRLP4 140
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $283
+NEI4 $276
 ADDRLP4 144
 CNSTI4 88
 ASGNI4
@@ -2381,8 +2357,8 @@ ADDRLP4 144
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $278
-LABELV $283
+EQI4 $271
+LABELV $276
 line 409
 ;406:			pps->legsAnim != ps->legsAnim ||
 ;407:			pps->torsoTimer != ps->torsoTimer ||
@@ -2392,9 +2368,9 @@ line 410
 ;410:		return 5;
 CNSTI4 5
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $278
+LABELV $271
 line 413
 ;411:	}
 ;412:
@@ -2472,14 +2448,14 @@ ASGNF4
 ADDRLP4 168
 INDIRF4
 CNSTF4 1008981770
-LEF4 $286
+LEF4 $279
 line 415
 ;415:		return 6;
 CNSTI4 6
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $286
+LABELV $279
 line 418
 ;416:	}
 ;417:
@@ -2499,14 +2475,14 @@ ADDRLP4 172
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $288
+EQI4 $281
 line 419
 ;419:		return 7;
 CNSTI4 7
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $288
+LABELV $281
 line 422
 ;420:	}
 ;421:
@@ -2526,14 +2502,14 @@ ADDRLP4 176
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $290
+EQI4 $283
 line 423
 ;423:		return 8;
 CNSTI4 8
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $290
+LABELV $283
 line 426
 ;424:	}
 ;425:
@@ -2541,7 +2517,7 @@ line 426
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $292
+LABELV $285
 line 427
 ;427:		if ( pps->events[i] != ps->events[i] ||
 ADDRLP4 180
@@ -2579,7 +2555,7 @@ INDIRI4
 ADDP4
 ADDP4
 INDIRI4
-NEI4 $298
+NEI4 $291
 ADDRLP4 196
 CNSTI4 120
 ASGNI4
@@ -2601,21 +2577,21 @@ INDIRI4
 ADDP4
 ADDP4
 INDIRI4
-EQI4 $296
-LABELV $298
+EQI4 $289
+LABELV $291
 line 428
 ;428:				pps->eventParms[i] != ps->eventParms[i] ) {
 line 429
 ;429:			return 9;
 CNSTI4 9
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $296
+LABELV $289
 line 431
 ;430:		}
 ;431:	}
-LABELV $293
+LABELV $286
 line 426
 ADDRLP4 0
 ADDRLP4 0
@@ -2626,7 +2602,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
-LTI4 $292
+LTI4 $285
 line 433
 ;432:
 ;433:	if ( pps->externalEvent != ps->externalEvent ||
@@ -2653,7 +2629,7 @@ ADDRLP4 184
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $302
+NEI4 $295
 ADDRLP4 192
 CNSTI4 132
 ASGNI4
@@ -2669,7 +2645,7 @@ ADDRLP4 192
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $302
+NEI4 $295
 ADDRLP4 196
 CNSTI4 136
 ASGNI4
@@ -2685,8 +2661,8 @@ ADDRLP4 196
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $299
-LABELV $302
+EQI4 $292
+LABELV $295
 line 435
 ;434:			pps->externalEventParm != ps->externalEventParm ||
 ;435:			pps->externalEventTime != ps->externalEventTime ) {
@@ -2694,9 +2670,9 @@ line 436
 ;436:		return 10;
 CNSTI4 10
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $299
+LABELV $292
 line 439
 ;437:	}
 ;438:
@@ -2724,7 +2700,7 @@ ADDRLP4 204
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $306
+NEI4 $299
 ADDRLP4 212
 CNSTI4 144
 ASGNI4
@@ -2740,7 +2716,7 @@ ADDRLP4 212
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $306
+NEI4 $299
 ADDRLP4 216
 CNSTI4 148
 ASGNI4
@@ -2756,8 +2732,8 @@ ADDRLP4 216
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $303
-LABELV $306
+EQI4 $296
+LABELV $299
 line 441
 ;440:			pps->weapon != ps->weapon ||
 ;441:			pps->weaponstate != ps->weaponstate ) {
@@ -2765,9 +2741,9 @@ line 442
 ;442:		return 11;
 CNSTI4 11
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $303
+LABELV $296
 line 445
 ;443:	}
 ;444:
@@ -2789,7 +2765,7 @@ ADDP4
 INDIRF4
 SUBF4
 CNSTF4 0
-GEF4 $313
+GEF4 $306
 ADDRLP4 236
 CNSTI4 152
 ASGNI4
@@ -2809,9 +2785,9 @@ INDIRF4
 SUBF4
 NEGF4
 ASGNF4
-ADDRGP4 $314
+ADDRGP4 $307
 JUMPV
-LABELV $313
+LABELV $306
 ADDRLP4 240
 CNSTI4 152
 ASGNI4
@@ -2830,11 +2806,11 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-LABELV $314
+LABELV $307
 ADDRLP4 220
 INDIRF4
 CNSTF4 1065353216
-GTF4 $315
+GTF4 $308
 ADDRLP4 244
 CNSTI4 156
 ASGNI4
@@ -2852,7 +2828,7 @@ ADDP4
 INDIRF4
 SUBF4
 CNSTF4 0
-GEF4 $316
+GEF4 $309
 ADDRLP4 248
 CNSTI4 156
 ASGNI4
@@ -2872,9 +2848,9 @@ INDIRF4
 SUBF4
 NEGF4
 ASGNF4
-ADDRGP4 $317
+ADDRGP4 $310
 JUMPV
-LABELV $316
+LABELV $309
 ADDRLP4 252
 CNSTI4 156
 ASGNI4
@@ -2893,11 +2869,11 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-LABELV $317
+LABELV $310
 ADDRLP4 224
 INDIRF4
 CNSTF4 1065353216
-GTF4 $315
+GTF4 $308
 ADDRLP4 256
 CNSTI4 160
 ASGNI4
@@ -2915,7 +2891,7 @@ ADDP4
 INDIRF4
 SUBF4
 CNSTF4 0
-GEF4 $318
+GEF4 $311
 ADDRLP4 260
 CNSTI4 160
 ASGNI4
@@ -2935,9 +2911,9 @@ INDIRF4
 SUBF4
 NEGF4
 ASGNF4
-ADDRGP4 $319
+ADDRGP4 $312
 JUMPV
-LABELV $318
+LABELV $311
 ADDRLP4 264
 CNSTI4 160
 ASGNI4
@@ -2956,12 +2932,12 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-LABELV $319
+LABELV $312
 ADDRLP4 228
 INDIRF4
 CNSTF4 1065353216
-LEF4 $307
-LABELV $315
+LEF4 $300
+LABELV $308
 line 447
 ;446:			ABS(pps->viewangles[1] - ps->viewangles[1]) > 1.0f ||
 ;447:			ABS(pps->viewangles[2] - ps->viewangles[2]) > 1.0f ) {
@@ -2969,9 +2945,9 @@ line 448
 ;448:		return 12;
 CNSTI4 12
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $307
+LABELV $300
 line 451
 ;449:	}
 ;450:
@@ -2991,14 +2967,14 @@ ADDRLP4 268
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $320
+EQI4 $313
 line 452
 ;452:		return 13;
 CNSTI4 13
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $320
+LABELV $313
 line 455
 ;453:	}
 ;454:
@@ -3026,7 +3002,7 @@ ADDRLP4 276
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $326
+NEI4 $319
 ADDRLP4 284
 CNSTI4 172
 ASGNI4
@@ -3042,7 +3018,7 @@ ADDRLP4 284
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $326
+NEI4 $319
 ADDRLP4 288
 CNSTI4 176
 ASGNI4
@@ -3058,7 +3034,7 @@ ADDRLP4 288
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $326
+NEI4 $319
 ADDRLP4 292
 CNSTI4 180
 ASGNI4
@@ -3074,8 +3050,8 @@ ADDRLP4 292
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $322
-LABELV $326
+EQI4 $315
+LABELV $319
 line 458
 ;456:			pps->damageYaw != ps->damageYaw ||
 ;457:			pps->damagePitch != ps->damagePitch ||
@@ -3084,9 +3060,9 @@ line 459
 ;459:		return 14;
 CNSTI4 14
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $322
+LABELV $315
 line 462
 ;460:	}
 ;461:
@@ -3094,7 +3070,7 @@ line 462
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $327
+LABELV $320
 line 463
 ;463:		if ( pps->stats[i] != ps->stats[i] ) {
 ADDRLP4 296
@@ -3124,18 +3100,18 @@ INDIRI4
 ADDP4
 ADDP4
 INDIRI4
-EQI4 $331
+EQI4 $324
 line 464
 ;464:			return 15;
 CNSTI4 15
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $331
+LABELV $324
 line 466
 ;465:		}
 ;466:	}
-LABELV $328
+LABELV $321
 line 462
 ADDRLP4 0
 ADDRLP4 0
@@ -3146,14 +3122,14 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $327
+LTI4 $320
 line 468
 ;467:
 ;468:	for ( i = 0; i < MAX_PERSISTANT; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $333
+LABELV $326
 line 469
 ;469:		if ( pps->persistant[i] != ps->persistant[i] ) {
 ADDRLP4 296
@@ -3183,18 +3159,18 @@ INDIRI4
 ADDP4
 ADDP4
 INDIRI4
-EQI4 $337
+EQI4 $330
 line 470
 ;470:			return 16;
 CNSTI4 16
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $337
+LABELV $330
 line 472
 ;471:		}
 ;472:	}
-LABELV $334
+LABELV $327
 line 468
 ADDRLP4 0
 ADDRLP4 0
@@ -3205,14 +3181,14 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $333
+LTI4 $326
 line 474
 ;473:
 ;474:	for ( i = 0; i < MAX_POWERUPS; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $339
+LABELV $332
 line 475
 ;475:		if ( pps->powerups[i] != ps->powerups[i] ) {
 ADDRLP4 296
@@ -3242,18 +3218,18 @@ INDIRI4
 ADDP4
 ADDP4
 INDIRI4
-EQI4 $343
+EQI4 $336
 line 476
 ;476:			return 17;
 CNSTI4 17
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $343
+LABELV $336
 line 478
 ;477:		}
 ;478:	}
-LABELV $340
+LABELV $333
 line 474
 ADDRLP4 0
 ADDRLP4 0
@@ -3264,14 +3240,14 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $339
+LTI4 $332
 line 480
 ;479:
 ;480:	for ( i = 0; i < MAX_WEAPONS; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $345
+LABELV $338
 line 481
 ;481:		if ( pps->ammo[i] != ps->ammo[i] ) {
 ADDRLP4 296
@@ -3301,18 +3277,18 @@ INDIRI4
 ADDP4
 ADDP4
 INDIRI4
-EQI4 $349
+EQI4 $342
 line 482
 ;482:			return 18;
 CNSTI4 18
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $349
+LABELV $342
 line 484
 ;483:		}
 ;484:	}
-LABELV $346
+LABELV $339
 line 480
 ADDRLP4 0
 ADDRLP4 0
@@ -3323,7 +3299,7 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $345
+LTI4 $338
 line 486
 ;485:
 ;486:	if ( pps->generic1 != ps->generic1 ||
@@ -3350,7 +3326,7 @@ ADDRLP4 300
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $354
+NEI4 $347
 ADDRLP4 308
 CNSTI4 444
 ASGNI4
@@ -3366,7 +3342,7 @@ ADDRLP4 308
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $354
+NEI4 $347
 ADDRLP4 312
 CNSTI4 448
 ASGNI4
@@ -3382,8 +3358,8 @@ ADDRLP4 312
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $351
-LABELV $354
+EQI4 $344
+LABELV $347
 line 488
 ;487:			pps->loopSound != ps->loopSound ||
 ;488:			pps->jumppad_ent != ps->jumppad_ent ) {
@@ -3391,16 +3367,16 @@ line 489
 ;489:		return 19;
 CNSTI4 19
 RETI4
-ADDRGP4 $250
+ADDRGP4 $243
 JUMPV
-LABELV $351
+LABELV $344
 line 492
 ;490:	}
 ;491:
 ;492:	return 0;
 CNSTI4 0
 RETI4
-LABELV $250
+LABELV $243
 endproc IsUnacceptableError 316 8
 export CG_PredictPlayerState
 proc CG_PredictPlayerState 612 20
@@ -3466,7 +3442,7 @@ line 538
 ADDRGP4 cg+108836
 INDIRI4
 CNSTI4 0
-NEI4 $357
+NEI4 $350
 line 539
 ;539:		cg.validPPS = qtrue;
 ADDRGP4 cg+108836
@@ -3483,7 +3459,7 @@ INDIRB
 ASGNB 468
 line 541
 ;541:	}
-LABELV $357
+LABELV $350
 line 545
 ;542:
 ;543:
@@ -3496,7 +3472,7 @@ ADDRGP4 cg+8
 INDIRI4
 ADDRLP4 544
 INDIRI4
-NEI4 $367
+NEI4 $360
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 56
@@ -3506,8 +3482,8 @@ CNSTI4 4096
 BANDI4
 ADDRLP4 544
 INDIRI4
-EQI4 $363
-LABELV $367
+EQI4 $356
+LABELV $360
 line 546
 ;546:		CG_InterpolatePlayerState( qfalse );
 CNSTI4 0
@@ -3517,9 +3493,9 @@ CALLV
 pop
 line 547
 ;547:		return;
-ADDRGP4 $355
+ADDRGP4 $348
 JUMPV
-LABELV $363
+LABELV $356
 line 551
 ;548:	}
 ;549:
@@ -3532,13 +3508,13 @@ ADDRGP4 cg_nopredict+12
 INDIRI4
 ADDRLP4 548
 INDIRI4
-NEI4 $372
+NEI4 $365
 ADDRGP4 cg_synchronousClients+12
 INDIRI4
 ADDRLP4 548
 INDIRI4
-EQI4 $368
-LABELV $372
+EQI4 $361
+LABELV $365
 line 552
 ;552:		CG_InterpolatePlayerState( qtrue );
 CNSTI4 1
@@ -3548,9 +3524,9 @@ CALLV
 pop
 line 553
 ;553:		return;
-ADDRGP4 $355
+ADDRGP4 $348
 JUMPV
-LABELV $368
+LABELV $361
 line 557
 ;554:	}
 ;555:
@@ -3577,7 +3553,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $376
+NEI4 $369
 line 561
 ;561:		cg_pmove.tracemask = MASK_PLAYERSOLID & ~CONTENTS_BODY;
 ADDRGP4 cg_pmove+28
@@ -3585,9 +3561,9 @@ CNSTI4 65537
 ASGNI4
 line 562
 ;562:	}
-ADDRGP4 $377
+ADDRGP4 $370
 JUMPV
-LABELV $376
+LABELV $369
 line 563
 ;563:	else {
 line 564
@@ -3597,7 +3573,7 @@ CNSTI4 33619969
 ASGNI4
 line 565
 ;565:	}
-LABELV $377
+LABELV $370
 line 566
 ;566:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR ) {
 ADDRGP4 cg+36
@@ -3606,7 +3582,7 @@ CNSTI4 304
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $380
+NEI4 $373
 line 567
 ;567:		cg_pmove.tracemask &= ~CONTENTS_BODY;	// spectators can fly through bodies
 ADDRLP4 552
@@ -3622,7 +3598,7 @@ BANDI4
 ASGNI4
 line 568
 ;568:	}
-LABELV $380
+LABELV $373
 line 569
 ;569:	cg_pmove.noFootsteps = ( cgs.dmflags & DF_NO_FOOTSTEPS ) > 0;
 ADDRGP4 cgs+31460
@@ -3630,17 +3606,17 @@ INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-LEI4 $387
+LEI4 $380
 ADDRLP4 552
 CNSTI4 1
 ASGNI4
-ADDRGP4 $388
+ADDRGP4 $381
 JUMPV
-LABELV $387
+LABELV $380
 ADDRLP4 552
 CNSTI4 0
 ASGNI4
-LABELV $388
+LABELV $381
 ADDRGP4 cg_pmove+36
 ADDRLP4 552
 INDIRI4
@@ -3701,12 +3677,12 @@ INDIRP4
 CNSTI4 44
 ADDP4
 INDIRI4
-LEI4 $390
+LEI4 $383
 ADDRLP4 560
 INDIRI4
 ADDRGP4 cg+107604
 INDIRI4
-GEI4 $390
+GEI4 $383
 line 582
 ;582:		&& oldestCmd.serverTime < cg.time ) {	// special check for map_restart
 line 583
@@ -3714,10 +3690,10 @@ line 583
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $355
+EQI4 $348
 line 584
 ;584:			CG_Printf ("exceeded PACKET_BACKUP on commands\n");
-ADDRGP4 $397
+ADDRGP4 $390
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
@@ -3726,9 +3702,9 @@ line 585
 ;585:		}
 line 586
 ;586:		return;
-ADDRGP4 $355
+ADDRGP4 $348
 JUMPV
-LABELV $390
+LABELV $383
 line 590
 ;587:	}
 ;588:
@@ -3753,7 +3729,7 @@ ADDRGP4 cg+40
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $398
+EQU4 $391
 ADDRLP4 564
 CNSTI4 0
 ASGNI4
@@ -3761,12 +3737,12 @@ ADDRGP4 cg+107596
 INDIRI4
 ADDRLP4 564
 INDIRI4
-NEI4 $398
+NEI4 $391
 ADDRGP4 cg+107592
 INDIRI4
 ADDRLP4 564
 INDIRI4
-NEI4 $398
+NEI4 $391
 line 597
 ;597:		cg.predictedPlayerState = cg.nextSnap->ps;
 ADDRGP4 cg+107636
@@ -3787,9 +3763,9 @@ INDIRI4
 ASGNI4
 line 599
 ;599:	} else {
-ADDRGP4 $399
+ADDRGP4 $392
 JUMPV
-LABELV $398
+LABELV $391
 line 600
 ;600:		cg.predictedPlayerState = cg.snap->ps;
 ADDRGP4 cg+107636
@@ -3810,47 +3786,47 @@ INDIRI4
 ASGNI4
 line 602
 ;602:	}
-LABELV $399
+LABELV $392
 line 604
 ;603:
 ;604:	if ( pmove_msec.integer < 8 ) {
 ADDRGP4 pmove_msec+12
 INDIRI4
 CNSTI4 8
-GEI4 $411
+GEI4 $404
 line 605
 ;605:		trap_Cvar_Set("pmove_msec", "8");
-ADDRGP4 $414
+ADDRGP4 $407
 ARGP4
-ADDRGP4 $415
+ADDRGP4 $408
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 606
 ;606:	}
-ADDRGP4 $412
+ADDRGP4 $405
 JUMPV
-LABELV $411
+LABELV $404
 line 607
 ;607:	else if (pmove_msec.integer > 33) {
 ADDRGP4 pmove_msec+12
 INDIRI4
 CNSTI4 33
-LEI4 $416
+LEI4 $409
 line 608
 ;608:		trap_Cvar_Set("pmove_msec", "33");
-ADDRGP4 $414
+ADDRGP4 $407
 ARGP4
-ADDRGP4 $419
+ADDRGP4 $412
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 line 609
 ;609:	}
-LABELV $416
-LABELV $412
+LABELV $409
+LABELV $405
 line 611
 ;610:
 ;611:	cg_pmove.pmove_fixed = pmove_fixed.integer;// | cg_pmove_fixed.integer;
@@ -3896,12 +3872,12 @@ ADDRGP4 cg_optimizePrediction+12
 INDIRI4
 ADDRLP4 568
 INDIRI4
-EQI4 $424
+EQI4 $417
 ADDRGP4 cg_latentCmds+12
 INDIRI4
 ADDRLP4 568
 INDIRI4
-NEI4 $424
+NEI4 $417
 line 637
 ;637:		if ( cg.nextFrameTeleport || cg.thisFrameTeleport ) {
 ADDRLP4 572
@@ -3911,13 +3887,13 @@ ADDRGP4 cg+107596
 INDIRI4
 ADDRLP4 572
 INDIRI4
-NEI4 $432
+NEI4 $425
 ADDRGP4 cg+107592
 INDIRI4
 ADDRLP4 572
 INDIRI4
-EQI4 $428
-LABELV $432
+EQI4 $421
+LABELV $425
 line 639
 ;638:			// do a full predict
 ;639:			cg.lastPredictedCommand = 0;
@@ -3942,9 +3918,9 @@ ADDI4
 ASGNI4
 line 642
 ;642:		}
-ADDRGP4 $429
+ADDRGP4 $422
 JUMPV
-LABELV $428
+LABELV $421
 line 645
 ;643:		// cg.physicsTime is the current snapshot's serverTime
 ;644:		// if it's the same as the last one
@@ -3953,7 +3929,7 @@ ADDRGP4 cg+107612
 INDIRI4
 ADDRGP4 cg+125008
 INDIRI4
-NEI4 $436
+NEI4 $429
 line 647
 ;646:			// we have no new information, so do an incremental predict
 ;647:			predictCmd = cg.lastPredictedCommand + 1;
@@ -3965,9 +3941,9 @@ ADDI4
 ASGNI4
 line 648
 ;648:		}
-ADDRGP4 $437
+ADDRGP4 $430
 JUMPV
-LABELV $436
+LABELV $429
 line 649
 ;649:		else {
 line 653
@@ -3986,9 +3962,9 @@ ADDRLP4 576
 ADDRGP4 cg+155900
 INDIRI4
 ASGNI4
-ADDRGP4 $444
+ADDRGP4 $437
 JUMPV
-LABELV $441
+LABELV $434
 line 658
 ;657:				// if we find a predicted state whose commandTime matches the snapshot player state's commandTime
 ;658:				if ( cg.savedPmoveStates[i].commandTime == cg.predictedPlayerState.commandTime ) {
@@ -4001,7 +3977,7 @@ ADDP4
 INDIRI4
 ADDRGP4 cg+107636
 INDIRI4
-NEI4 $447
+NEI4 $440
 line 660
 ;659:					// make sure the state differences are acceptable
 ;660:					int errorcode = IsUnacceptableError( &cg.predictedPlayerState, &cg.savedPmoveStates[i] );
@@ -4029,16 +4005,16 @@ line 663
 ADDRLP4 584
 INDIRI4
 CNSTI4 0
-EQI4 $453
+EQI4 $446
 line 664
 ;664:						if ( cg_showmiss.integer ) {
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $443
+EQI4 $436
 line 665
 ;665:							CG_Printf("errorcode %d at %d\n", errorcode, cg.time);
-ADDRGP4 $458
+ADDRGP4 $451
 ARGP4
 ADDRLP4 584
 INDIRI4
@@ -4054,9 +4030,9 @@ line 666
 line 668
 ;667:						// yeah, so do a full predict
 ;668:						break;
-ADDRGP4 $443
+ADDRGP4 $436
 JUMPV
-LABELV $453
+LABELV $446
 line 672
 ;669:					}
 ;670:
@@ -4102,13 +4078,13 @@ CNSTI4 0
 ASGNI4
 line 681
 ;681:					break;
-ADDRGP4 $443
+ADDRGP4 $436
 JUMPV
-LABELV $447
+LABELV $440
 line 683
 ;682:				}
 ;683:			}
-LABELV $442
+LABELV $435
 line 656
 ADDRLP4 576
 ADDRLP4 576
@@ -4118,13 +4094,13 @@ ADDI4
 CNSTI4 66
 MODI4
 ASGNI4
-LABELV $444
+LABELV $437
 ADDRLP4 576
 INDIRI4
 ADDRGP4 cg+155904
 INDIRI4
-NEI4 $441
-LABELV $443
+NEI4 $434
+LABELV $436
 line 686
 ;684:
 ;685:			// if no saved states matched
@@ -4132,7 +4108,7 @@ line 686
 ADDRLP4 580
 INDIRI4
 CNSTI4 0
-EQI4 $463
+EQI4 $456
 line 688
 ;687:				// do a full predict
 ;688:				cg.lastPredictedCommand = 0;
@@ -4157,11 +4133,11 @@ ADDI4
 ASGNI4
 line 691
 ;691:			}
-LABELV $463
+LABELV $456
 line 692
 ;692:		}
-LABELV $437
-LABELV $429
+LABELV $430
+LABELV $422
 line 696
 ;693:
 ;694:		// keep track of the server time of the last snapshot so we
@@ -4179,7 +4155,7 @@ INDIRI4
 ASGNI4
 line 698
 ;698:	}
-LABELV $424
+LABELV $417
 line 702
 ;699://unlagged - optimized prediction
 ;700:
@@ -4198,9 +4174,9 @@ SUBI4
 CNSTI4 1
 ADDI4
 ASGNI4
-ADDRGP4 $474
+ADDRGP4 $467
 JUMPV
-LABELV $471
+LABELV $464
 line 705
 ;704:		// get the command
 ;705:		trap_GetUserCmd( cmdNum, &cg_pmove.cmd );
@@ -4218,7 +4194,7 @@ line 707
 ADDRGP4 cg_pmove+216
 INDIRI4
 CNSTI4 0
-EQI4 $476
+EQI4 $469
 line 708
 ;708:			PM_UpdateViewAngles( cg_pmove.ps, &cg_pmove.cmd );
 ADDRGP4 cg_pmove
@@ -4231,7 +4207,7 @@ CALLV
 pop
 line 709
 ;709:		}
-LABELV $476
+LABELV $469
 line 712
 ;710:
 ;711:		// don't do anything if the time is before the snapshot player time
@@ -4240,12 +4216,12 @@ ADDRGP4 cg_pmove+4
 INDIRI4
 ADDRGP4 cg+107636
 INDIRI4
-GTI4 $480
+GTI4 $473
 line 713
 ;713:			continue;
-ADDRGP4 $472
+ADDRGP4 $465
 JUMPV
-LABELV $480
+LABELV $473
 line 717
 ;714:		}
 ;715:
@@ -4255,12 +4231,12 @@ ADDRGP4 cg_pmove+4
 INDIRI4
 ADDRLP4 484
 INDIRI4
-LEI4 $484
+LEI4 $477
 line 718
 ;718:			continue;
-ADDRGP4 $472
+ADDRGP4 $465
 JUMPV
-LABELV $484
+LABELV $477
 line 726
 ;719:		}
 ;720:
@@ -4274,7 +4250,7 @@ ADDRGP4 cg+107636
 INDIRI4
 ADDRLP4 8
 INDIRI4
-NEI4 $487
+NEI4 $480
 line 730
 ;727:			vec3_t	delta;
 ;728:			float	len;
@@ -4283,7 +4259,7 @@ line 730
 ADDRGP4 cg+107592
 INDIRI4
 CNSTI4 0
-EQI4 $490
+EQI4 $483
 line 732
 ;731:				// a teleport will not cause an error decay
 ;732:				VectorClear( cg.predictedError );
@@ -4307,17 +4283,17 @@ line 733
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $498
+EQI4 $491
 line 734
 ;734:					CG_Printf( "PredictionTeleport\n" );
-ADDRGP4 $501
+ADDRGP4 $494
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
 line 735
 ;735:				}
-LABELV $498
+LABELV $491
 line 736
 ;736:				cg.thisFrameTeleport = qfalse;
 ADDRGP4 cg+107592
@@ -4325,9 +4301,9 @@ CNSTI4 0
 ASGNI4
 line 737
 ;737:			} else {
-ADDRGP4 $491
+ADDRGP4 $484
 JUMPV
-LABELV $490
+LABELV $483
 line 739
 ;738:				vec3_t	adjusted;
 ;739:				CG_AdjustPositionForMover( cg.predictedPlayerState.origin, 
@@ -4354,7 +4330,7 @@ line 742
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $509
+EQI4 $502
 line 743
 ;743:					if (!VectorCompare( oldPlayerState.origin, adjusted )) {
 ADDRLP4 8+20
@@ -4368,20 +4344,20 @@ ASGNI4
 ADDRLP4 600
 INDIRI4
 CNSTI4 0
-NEI4 $512
+NEI4 $505
 line 744
 ;744:						CG_Printf("prediction error\n");
-ADDRGP4 $515
+ADDRGP4 $508
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
 line 745
 ;745:					}
-LABELV $512
+LABELV $505
 line 746
 ;746:				}
-LABELV $509
+LABELV $502
 line 747
 ;747:				VectorSubtract( oldPlayerState.origin, adjusted, delta );
 ADDRLP4 572
@@ -4422,16 +4398,16 @@ line 749
 ADDRLP4 584
 INDIRF4
 CNSTF4 1036831949
-LEF4 $525
+LEF4 $518
 line 750
 ;750:					if ( cg_showmiss.integer ) {
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $527
+EQI4 $520
 line 751
 ;751:						CG_Printf("Prediction miss: %f\n", len);
-ADDRGP4 $530
+ADDRGP4 $523
 ARGP4
 ADDRLP4 584
 INDIRF4
@@ -4441,13 +4417,13 @@ CALLV
 pop
 line 752
 ;752:					}
-LABELV $527
+LABELV $520
 line 753
 ;753:					if ( cg_errorDecay.integer ) {
 ADDRGP4 cg_errorDecay+12
 INDIRI4
 CNSTI4 0
-EQI4 $531
+EQI4 $524
 line 757
 ;754:						int		t;
 ;755:						float	f;
@@ -4478,7 +4454,7 @@ line 759
 ADDRLP4 604
 INDIRF4
 CNSTF4 0
-GEF4 $538
+GEF4 $531
 line 760
 ;760:							f = 0;
 ADDRLP4 604
@@ -4486,20 +4462,20 @@ CNSTF4 0
 ASGNF4
 line 761
 ;761:						}
-LABELV $538
+LABELV $531
 line 762
 ;762:						if ( f > 0 && cg_showmiss.integer ) {
 ADDRLP4 604
 INDIRF4
 CNSTF4 0
-LEF4 $540
+LEF4 $533
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $540
+EQI4 $533
 line 763
 ;763:							CG_Printf("Double prediction decay: %f\n", f);
-ADDRGP4 $543
+ADDRGP4 $536
 ARGP4
 ADDRLP4 604
 INDIRF4
@@ -4509,7 +4485,7 @@ CALLV
 pop
 line 764
 ;764:						}
-LABELV $540
+LABELV $533
 line 765
 ;765:						VectorScale( cg.predictedError, f, cg.predictedError );
 ADDRGP4 cg+108844
@@ -4535,9 +4511,9 @@ MULF4
 ASGNF4
 line 766
 ;766:					} else {
-ADDRGP4 $532
+ADDRGP4 $525
 JUMPV
-LABELV $531
+LABELV $524
 line 767
 ;767:						VectorClear( cg.predictedError );
 ADDRLP4 604
@@ -4557,7 +4533,7 @@ INDIRF4
 ASGNF4
 line 768
 ;768:					}
-LABELV $532
+LABELV $525
 line 769
 ;769:					VectorAdd( delta, cg.predictedError, cg.predictedError );
 ADDRGP4 cg+108844
@@ -4589,13 +4565,13 @@ INDIRI4
 ASGNI4
 line 771
 ;771:				}
-LABELV $525
+LABELV $518
 line 772
 ;772:			}
-LABELV $491
+LABELV $484
 line 773
 ;773:		}
-LABELV $487
+LABELV $480
 line 777
 ;774:
 ;775:		// don't predict gauntlet firing, which is only supposed to happen
@@ -4610,7 +4586,7 @@ line 779
 ADDRGP4 cg_pmove+216
 INDIRI4
 CNSTI4 0
-EQI4 $574
+EQI4 $567
 line 780
 ;780:			cg_pmove.cmd.serverTime = ((cg_pmove.cmd.serverTime + pmove_msec.integer-1) / pmove_msec.integer) * pmove_msec.integer;
 ADDRGP4 cg_pmove+4
@@ -4630,7 +4606,7 @@ MULI4
 ASGNI4
 line 781
 ;781:		}
-LABELV $574
+LABELV $567
 line 785
 ;782:
 ;783://unlagged - optimized prediction
@@ -4643,12 +4619,12 @@ ADDRGP4 cg_optimizePrediction+12
 INDIRI4
 ADDRLP4 572
 INDIRI4
-EQI4 $582
+EQI4 $575
 ADDRGP4 cg_latentCmds+12
 INDIRI4
 ADDRLP4 572
 INDIRI4
-NEI4 $582
+NEI4 $575
 line 787
 ;786:			// if we need to predict this command, or we've run out of space in the saved states queue
 ;787:			if ( cmdNum >= predictCmd || (stateIndex + 1) % NUM_SAVED_STATES == cg.stateHead ) {
@@ -4656,7 +4632,7 @@ ADDRLP4 0
 INDIRI4
 ADDRLP4 512
 INDIRI4
-GEI4 $589
+GEI4 $582
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
@@ -4665,8 +4641,8 @@ CNSTI4 66
 MODI4
 ADDRGP4 cg+155900
 INDIRI4
-NEI4 $586
-LABELV $589
+NEI4 $579
+LABELV $582
 line 789
 ;788:				// run the Pmove
 ;789:				Pmove (&cg_pmove);
@@ -4704,7 +4680,7 @@ CNSTI4 66
 MODI4
 ADDRGP4 cg+155900
 INDIRI4
-EQI4 $583
+EQI4 $576
 line 800
 ;798:					// save the state for the false case (of cmdNum >= predictCmd)
 ;799:					// in later calls to this function
@@ -4739,9 +4715,9 @@ line 803
 ;803:				}
 line 804
 ;804:			}
-ADDRGP4 $583
+ADDRGP4 $576
 JUMPV
-LABELV $586
+LABELV $579
 line 805
 ;805:			else {
 line 806
@@ -4758,7 +4734,7 @@ line 808
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $596
+EQI4 $589
 CNSTI4 468
 ADDRLP4 4
 INDIRI4
@@ -4768,20 +4744,20 @@ ADDP4
 INDIRI4
 ADDRGP4 cg_pmove+4
 INDIRI4
-EQI4 $596
+EQI4 $589
 line 809
 ;809:						cg.savedPmoveStates[stateIndex].commandTime != cg_pmove.cmd.serverTime) {
 line 811
 ;810:					// this should ONLY happen just after changing the value of pmove_fixed
 ;811:					CG_Printf( "saved state miss\n" );
-ADDRGP4 $601
+ADDRGP4 $594
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
 line 812
 ;812:				}
-LABELV $596
+LABELV $589
 line 815
 ;813:
 ;814:				// play back the command from the saved states
@@ -4812,9 +4788,9 @@ line 819
 ;819:			}
 line 820
 ;820:		}
-ADDRGP4 $583
+ADDRGP4 $576
 JUMPV
-LABELV $582
+LABELV $575
 line 821
 ;821:		else {
 line 823
@@ -4836,7 +4812,7 @@ ADDI4
 ASGNI4
 line 826
 ;826:		}
-LABELV $583
+LABELV $576
 line 829
 ;827://unlagged - optimized prediction
 ;828:
@@ -4856,7 +4832,7 @@ line 836
 ;834:		// check for predictable events that changed from previous predictions
 ;835:		//CG_CheckChangedPredictableEvents(&cg.predictedPlayerState);
 ;836:	}
-LABELV $472
+LABELV $465
 line 703
 ADDRLP4 0
 ADDRLP4 0
@@ -4864,12 +4840,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $474
+LABELV $467
 ADDRLP4 0
 INDIRI4
 ADDRLP4 476
 INDIRI4
-LEI4 $471
+LEI4 $464
 line 847
 ;837:
 ;838://unlagged - optimized prediction
@@ -4885,10 +4861,10 @@ line 847
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 1
-LEI4 $603
+LEI4 $596
 line 848
 ;848:		CG_Printf( "[%i : %i] ", cg_pmove.cmd.serverTime, cg.time );
-ADDRGP4 $606
+ADDRGP4 $599
 ARGP4
 ADDRGP4 cg_pmove+4
 INDIRI4
@@ -4901,23 +4877,23 @@ CALLV
 pop
 line 849
 ;849:	}
-LABELV $603
+LABELV $596
 line 851
 ;850:
 ;851:	if ( !moved ) {
 ADDRLP4 480
 INDIRI4
 CNSTI4 0
-NEI4 $609
+NEI4 $602
 line 852
 ;852:		if ( cg_showmiss.integer ) {
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $355
+EQI4 $348
 line 853
 ;853:			CG_Printf( "not moved\n" );
-ADDRGP4 $614
+ADDRGP4 $607
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
@@ -4926,9 +4902,9 @@ line 854
 ;854:		}
 line 855
 ;855:		return;
-ADDRGP4 $355
+ADDRGP4 $348
 JUMPV
-LABELV $609
+LABELV $602
 line 859
 ;856:	}
 ;857:
@@ -4958,7 +4934,7 @@ line 863
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $623
+EQI4 $616
 line 864
 ;864:		if (cg.predictedPlayerState.eventSequence > oldPlayerState.eventSequence + MAX_PS_EVENTS) {
 ADDRGP4 cg+107636+108
@@ -4967,20 +4943,20 @@ ADDRLP4 8+108
 INDIRI4
 CNSTI4 2
 ADDI4
-LEI4 $626
+LEI4 $619
 line 865
 ;865:			CG_Printf("WARNING: dropped event\n");
-ADDRGP4 $631
+ADDRGP4 $624
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
 line 866
 ;866:		}
-LABELV $626
+LABELV $619
 line 867
 ;867:	}
-LABELV $623
+LABELV $616
 line 870
 ;868:
 ;869:	// fire events and other transition triggered things
@@ -4998,17 +4974,17 @@ line 872
 ADDRGP4 cg_showmiss+12
 INDIRI4
 CNSTI4 0
-EQI4 $633
+EQI4 $626
 line 873
 ;873:		if (cg.eventSequence > cg.predictedPlayerState.eventSequence) {
 ADDRGP4 cg+108856
 INDIRI4
 ADDRGP4 cg+107636+108
 INDIRI4
-LEI4 $636
+LEI4 $629
 line 874
 ;874:			CG_Printf("WARNING: double event\n");
-ADDRGP4 $641
+ADDRGP4 $634
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
@@ -5021,13 +4997,13 @@ INDIRI4
 ASGNI4
 line 876
 ;876:		}
-LABELV $636
+LABELV $629
 line 877
 ;877:	}
-LABELV $633
+LABELV $626
 line 878
 ;878:}
-LABELV $355
+LABELV $348
 endproc CG_PredictPlayerState 612 20
 bss
 align 4
@@ -5168,12 +5144,6 @@ import CG_BigExplode
 import CG_GibPlayerHeadshot
 import CG_GibPlayer
 import CG_ScorePlum
-import CG_LightningBoltBeam
-import CG_InvulnerabilityJuiced
-import CG_InvulnerabilityImpact
-import CG_ObeliskPain
-import CG_ObeliskExplode
-import CG_KamikazeEffect
 import CG_SpawnEffect
 import CG_BubbleTrail
 import CG_SmokePuff
@@ -5311,17 +5281,6 @@ import cg_cmdTimeNudge
 import cg_drawBBox
 import cg_debugDelag
 import cg_delag
-import cg_obeliskRespawnDelay
-import cg_recordSPDemoName
-import cg_recordSPDemo
-import cg_singlePlayerActive
-import cg_enableBreath
-import cg_enableDust
-import cg_singlePlayer
-import cg_currentSelectedPlayerName
-import cg_currentSelectedPlayer
-import cg_blueTeamName
-import cg_redTeamName
 import cg_trueLightning
 import cg_oldPlasma
 import cg_oldRocket
@@ -5589,7 +5548,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $641
+LABELV $634
 byte 1 87
 byte 1 65
 byte 1 82
@@ -5614,7 +5573,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $631
+LABELV $624
 byte 1 87
 byte 1 65
 byte 1 82
@@ -5640,7 +5599,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $614
+LABELV $607
 byte 1 110
 byte 1 111
 byte 1 116
@@ -5653,7 +5612,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $606
+LABELV $599
 byte 1 91
 byte 1 37
 byte 1 105
@@ -5666,7 +5625,7 @@ byte 1 93
 byte 1 32
 byte 1 0
 align 1
-LABELV $601
+LABELV $594
 byte 1 115
 byte 1 97
 byte 1 118
@@ -5686,7 +5645,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $543
+LABELV $536
 byte 1 68
 byte 1 111
 byte 1 117
@@ -5717,7 +5676,7 @@ byte 1 102
 byte 1 10
 byte 1 0
 align 1
-LABELV $530
+LABELV $523
 byte 1 80
 byte 1 114
 byte 1 101
@@ -5740,7 +5699,7 @@ byte 1 102
 byte 1 10
 byte 1 0
 align 1
-LABELV $515
+LABELV $508
 byte 1 112
 byte 1 114
 byte 1 101
@@ -5760,7 +5719,7 @@ byte 1 114
 byte 1 10
 byte 1 0
 align 1
-LABELV $501
+LABELV $494
 byte 1 80
 byte 1 114
 byte 1 101
@@ -5782,7 +5741,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $458
+LABELV $451
 byte 1 101
 byte 1 114
 byte 1 114
@@ -5804,16 +5763,16 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $419
+LABELV $412
 byte 1 51
 byte 1 51
 byte 1 0
 align 1
-LABELV $415
+LABELV $408
 byte 1 56
 byte 1 0
 align 1
-LABELV $414
+LABELV $407
 byte 1 112
 byte 1 109
 byte 1 111
@@ -5826,7 +5785,7 @@ byte 1 101
 byte 1 99
 byte 1 0
 align 1
-LABELV $397
+LABELV $390
 byte 1 101
 byte 1 120
 byte 1 99
@@ -5864,7 +5823,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $262
+LABELV $255
 byte 1 100
 byte 1 101
 byte 1 108

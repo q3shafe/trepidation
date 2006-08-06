@@ -49,7 +49,7 @@ line 29
 ;27:
 ;28:	// if it's not switched on server-side, forget it
 ;29:	if ( !cgs.delagHitscan ) {
-ADDRGP4 cgs+154168
+ADDRGP4 cgs+153924
 INDIRI4
 CNSTI4 0
 NEI4 $77
@@ -1024,7 +1024,7 @@ CNSTI4 0
 ARGI4
 CNSTI4 1
 ARGI4
-ADDRGP4 cgs+152852+324
+ADDRGP4 cgs+152852+292
 INDIRI4
 ARGI4
 ADDRGP4 CG_SmokePuff
@@ -2650,12 +2650,6 @@ import CG_BigExplode
 import CG_GibPlayerHeadshot
 import CG_GibPlayer
 import CG_ScorePlum
-import CG_LightningBoltBeam
-import CG_InvulnerabilityJuiced
-import CG_InvulnerabilityImpact
-import CG_ObeliskPain
-import CG_ObeliskExplode
-import CG_KamikazeEffect
 import CG_SpawnEffect
 import CG_BubbleTrail
 import CG_SmokePuff
@@ -2794,17 +2788,6 @@ import cg_cmdTimeNudge
 import cg_drawBBox
 import cg_debugDelag
 import cg_delag
-import cg_obeliskRespawnDelay
-import cg_recordSPDemoName
-import cg_recordSPDemo
-import cg_singlePlayerActive
-import cg_enableBreath
-import cg_enableDust
-import cg_singlePlayer
-import cg_currentSelectedPlayerName
-import cg_currentSelectedPlayer
-import cg_blueTeamName
-import cg_redTeamName
 import cg_trueLightning
 import cg_oldPlasma
 import cg_oldRocket

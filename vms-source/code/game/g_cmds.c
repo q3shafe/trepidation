@@ -8,6 +8,14 @@ extern void Team_ReturnFlagSound( gentity_t *ent, int team ); // Shafe
 extern void Team_ResetFlags( void ); // Shafe
 
 
+
+/*
+
+ This turret stuff is a real mess.. It Really needs cleaned up.. it's too late for me to worry about it now.
+
+
+*/
+
 /*
 =======================
 Turret code. for spawning and seting the spawn location of turrets
@@ -19,13 +27,11 @@ Turret code. for spawning and seting the spawn location of turrets
 #define DARC 10
 #define UARC 45
 
-
-
-
 qboolean checktarget(gentity_t *firer,gentity_t *target){
-vec3_t 		distance,forward;
-trace_t         trace;
-int		angle;
+
+	vec3_t		distance,forward;
+	trace_t		trace;
+	int			angle;
 
 /*
 returns qfalse if the target is not valid. returns qtrue if it is
@@ -64,14 +70,14 @@ this order is just better from a proccesing load perspective
 	angle=abs((int)distance[1]);
 	while (angle>=360)
 	{
-	angle-=360;
+		angle-=360;
 	}
 	if ((angle>=HARC) && (angle<=(360-HARC)))
 		return qfalse;
 	angle=abs((int)distance[0]);
 	while (angle>=360)
 	{
-	angle-=360;
+		angle-=360;
 	}
 	if ((angle>UARC) && (angle<(360-DARC)))
 		return qfalse;
@@ -116,13 +122,17 @@ trap_LinkEntity (ent);
 }
 
 void turret_fireonenemy( gentity_t *ent){
-fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
-G_AddEvent( ent, EV_FIRE_WEAPON, 0 );
-ent->count=level.time+200;
-// decloaks a cloaked turret when firing.
-if (ent->s.time2==2){
-	ent->s.time2=3;
-	ent->chain->s.time2=3;
+
+	fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+
+	G_AddEvent( ent, EV_FIRE_WEAPON, 0 );
+	ent->count=level.time+200;
+
+	// decloaks a cloaked turret when firing.
+	if (ent->s.time2==2)
+	{
+		ent->s.time2=3;
+		ent->chain->s.time2=3;
 	}
 }
 
@@ -162,12 +172,54 @@ if ((ent->s.time2==3)&(!ent->chain->enemy))
 
 }
 
+
+
+void MC_think(gentity_t *ent){
+
+	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
+	ent->r.contents = CONTENTS_SOLID;
+	if (ent->s.time2==1)
+	{
+		if (ent->health<350)
+		{
+			ent->s.time2=0;
+		}
+	}
+	
+	if ((ent->s.time2==1)&(ent->health<1000)){
+		ent->health+=1;
+		ent->nextthink=level.time+100;
+	}
+
+
+
+
+
+}
+
+void MC_prethink(gentity_t *ent){
+
+		ent->s.time2=1;
+		ent->think = MC_think;
+		ent->nextthink=level.time+100;
+}
+
+// Generators Are Never Shielded
+void gen_prethink(gentity_t *ent){
+
+		ent->s.time2=0;
+		ent->think = MC_think;
+		ent->nextthink=level.time+100;
+}
+
+// let's add weapon and turret type to this call
 void createturretgun(gentity_t *ent){
 	gentity_t *turret; 	// The object to hold the turrets details.
 	int			num;
 	int			touch[MAX_GENTITIES];
 
-// code to check there is noone within the base before making it solid
+
+	// code to check there is noone within the base before making it solid
 	vec3_t		mins, maxs;
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
@@ -175,8 +227,8 @@ void createturretgun(gentity_t *ent){
 	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
 	if (num>1)
 	{
-	ent->nextthink=level.time+1000;
-	return;
+		ent->nextthink=level.time+1000;
+		return;
 	}
 
 	ent->nextthink=level.time+100; // sets up the thinking for the cloaking or regeneration/
@@ -188,7 +240,8 @@ void createturretgun(gentity_t *ent){
 	turret->chain=ent;
 	ent->chain=turret;
 	turret->s.eType=ET_TURRET;
-	turret->s.time2=0;
+	
+	turret->s.time2=ent->s.time2;
 	turret->eventTime=200;
 	turret->s.number = turret - g_entities;
 	turret->s.weapon=WP_PLASMAGUN;;
@@ -210,14 +263,17 @@ if (self->chain)
 	self->chain->enemy=attacker;
 
 // this is here to casue the turret to unshield when its taken a certain amount of damage. (enough to reduce health to below 100)
-if (self->s.time2==1)
-{
-if (self->health<100){
-	self->s.time2=0;
-	if (self->chain)
-		self->chain->s.time2=0;
-}
-}
+	if (self->s.time2==1)
+	{
+		if (self->health<100)
+		{
+			self->s.time2=0;
+			if (self->chain)
+			{
+				self->chain->s.time2=0;
+			}
+		}
+	}
 }
 
 
@@ -237,7 +293,9 @@ self->freeAfterEvent = qtrue; // so the base goes away after the explosion
 
 
 
-void Cmd_SpawnTurret_f( gentity_t *ent ){
+void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
+
+	// We need to check the turret type and select the appropriate model
 
 
 	gentity_t	*base;
@@ -245,15 +303,38 @@ void Cmd_SpawnTurret_f( gentity_t *ent ){
 
 	base=G_Spawn();
 	base->parent=ent;
-	base->s.modelindex = G_ModelIndex("models/turrets/base.md3");
-	base->model = "models/turrets/base.md3";
-	base->s.modelindex2 = G_ModelIndex("models/turrets/base.md3");
+	
+	
+	base->r.contents = CONTENTS_FOG;
+	
+	if (type == 0)
+	{
+		base->s.modelindex = G_ModelIndex("models/turrets/base.md3");
+		base->model = "models/turrets/base.md3";
+		base->s.modelindex2 = G_ModelIndex("models/turrets/base.md3");
+	}else
+	{
+		base->s.modelindex = G_ModelIndex("models/turrets/base2.md3");
+		base->model = "models/turrets/base2.md3";
+		base->s.modelindex2 = G_ModelIndex("models/turrets/base2.md3");
+	}
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	base->think=createturretgun;
-	base->health=300; // change this to make the turrets tougher or weaker.
+	
+	if (type==0)
+	{
+		base->health=200; // change this to make the turrets tougher or weaker.
+	} else
+	{
+		base->health=300; // change this to make the turrets tougher or weaker.
+	}
+	
 	base->s.eType=ET_TURRET;
-	base->s.time2=0; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+
+	base->s.time2=type; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+	
+	
 	base->takedamage=qtrue; // so they can be destoryed
 	base->die=turret_explode; // so they actually explode when destroyed
 	base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
@@ -264,6 +345,65 @@ void Cmd_SpawnTurret_f( gentity_t *ent ){
 
 }
 
+
+
+void Cmd_SpawnGenerator_f( gentity_t *ent ){
+
+	gentity_t	*base;
+	vec3_t 		forward,up;
+
+	base=G_Spawn();
+	base->parent=ent;
+	base->s.modelindex = G_ModelIndex("models/turrets/generator.md3");
+	base->model = "models/turrets/generator.md3";
+	base->s.modelindex2 = G_ModelIndex("models/turrets/generator.md3");
+	G_SetOrigin(base,ent->r.currentOrigin);
+	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
+	base->think=gen_prethink;
+	base->health=300; // change this to make tougher or weaker.
+	base->s.eType=ET_TURRET;
+	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+	base->takedamage=qtrue; // so they can be destoryed
+	base->die=turret_explode; // so they actually explode when destroyed
+	//base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
+	base->nextthink=level.time+6000;
+	VectorSet( base->r.mins, -15, -15, -20 );
+	VectorSet( base->r.maxs, 35, 15, -5);
+	trap_LinkEntity (base);
+
+}
+
+void Cmd_SpawnMC_f( gentity_t *ent ){
+
+	// We need to check the turret type and select the appropriate model
+
+	gentity_t	*base;
+	vec3_t 		forward,up;
+
+	base=G_Spawn();
+	base->parent=ent;
+	
+	base->r.contents = CONTENTS_FOG;
+
+	base->s.modelindex = G_ModelIndex("models/turrets/mc.md3");
+	base->model = "models/turrets/mc.md3";
+	base->s.modelindex2 = G_ModelIndex("models/turrets/mc.md3");
+	G_SetOrigin(base,ent->r.currentOrigin);
+	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
+	base->think=MC_prethink;
+	base->health=1000; // change this to make the turrets tougher or weaker.
+	base->s.eType=ET_TURRET;
+	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+	base->takedamage=qtrue; // so they can be destoryed
+	base->die=turret_explode; // so they actually explode when destroyed
+	//base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
+	base->nextthink=level.time+5000;
+	VectorSet( base->r.mins, -15, -15, -20 );
+	VectorSet( base->r.maxs, 35, 15, -5);
+	trap_LinkEntity (base);
+	
+
+}
 
 /*
 ==================
@@ -2085,7 +2225,15 @@ void ClientCommand( int clientNum ) {
 	else if (Q_stricmp (cmd, "dropflag") == 0)
 		Cmd_DropFlag_f( ent );
 	else if (Q_stricmp (cmd, "spawnturret") == 0)
-		Cmd_SpawnTurret_f( ent );
+		Cmd_SpawnTurret_f( ent, 0 );
+	else if (Q_stricmp (cmd, "spawnturret2") == 0)
+		Cmd_SpawnTurret_f( ent, 1 );
+	else if (Q_stricmp (cmd, "spawnturret3") == 0)
+		Cmd_SpawnTurret_f( ent, 2 );
+	else if (Q_stricmp (cmd, "spawngen") == 0)
+		Cmd_SpawnGenerator_f( ent );
+	else if (Q_stricmp (cmd, "spawnmc") == 0)
+		Cmd_SpawnMC_f( ent );
 	else if (Q_stricmp (cmd, "test") == 0)
 		Cmd_Test_f( ent );
 	else

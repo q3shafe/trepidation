@@ -1968,9 +1968,11 @@ static void CG_ScanForCrosshairEntity( void ) {
 
 	CG_Trace( &trace, start, vec3_origin, vec3_origin, end, 
 		cg.snap->ps.clientNum, CONTENTS_SOLID|CONTENTS_BODY );
+	/*
 	if ( trace.entityNum >= MAX_CLIENTS ) {
 		return;
 	}
+	*/
 
 	// if the player is in fog, don't show it
 	content = trap_CM_PointContents( trace.endpos, 0 );
@@ -1997,6 +1999,8 @@ CG_DrawCrosshairNames
 static void CG_DrawCrosshairNames( void ) {
 	float		*color;
 	char		*name;
+	char		*s;
+	int			health;
 	float		w;
 
 	if ( !cg_drawCrosshair.integer ) {
@@ -2020,6 +2024,8 @@ static void CG_DrawCrosshairNames( void ) {
 	}
 
 	name = cgs.clientinfo[ cg.crosshairClientNum ].name;
+	health = cgs.clientinfo[ cg.crosshairClientNum ].health;
+
 #ifdef MISSIONPACK
 	color[3] *= 0.5f;
 	w = CG_Text_Width(name, 0.3f, 0);
@@ -2027,6 +2033,13 @@ static void CG_DrawCrosshairNames( void ) {
 #else
 	w = CG_DrawStrlen( name ) * BIGCHAR_WIDTH;
 	CG_DrawBigString( 320 - w / 2, 170, name, color[3] * 0.5f );
+	s = va( "%i", health);
+	if (health != 0) 
+	{
+		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
+		CG_DrawSmallString( 320 - w / 2, 190, s, color[3] * 0.5f );
+	}
+	
 #endif
 	trap_R_SetColor( NULL );
 }
