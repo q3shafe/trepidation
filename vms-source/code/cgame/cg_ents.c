@@ -40,6 +40,12 @@ static void CG_TURRET(centity_t *cent)
 	case 3:
 		trap_R_AddRefEntityToScene (&ent); // just add the model (uncloaked cloaking turret)
 		break;
+	case 9:
+		// Being Built
+		trap_R_AddRefEntityToScene (&ent); // make the model show up
+		ent.customShader=cgs.media.quadShader;
+		trap_R_AddRefEntityToScene (&ent); // make the shader show up
+		break;
 	default:
 		trap_R_AddRefEntityToScene (&ent); // if something else has happened
 	}

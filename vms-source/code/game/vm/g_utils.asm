@@ -306,7 +306,7 @@ line 62
 ADDRFP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 868
+CNSTI4 860
 ADDP4
 ASGNP4
 line 64
@@ -431,14 +431,14 @@ line 64
 ADDRFP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 868
+CNSTI4 860
 ADDP4
 ASGNP4
 LABELV $84
 ADDRFP4 0
 INDIRP4
 CVPU4 4
-CNSTI4 868
+CNSTI4 860
 ADDRGP4 level+12
 INDIRI4
 MULI4
@@ -793,7 +793,7 @@ JUMPV
 LABELV $118
 line 160
 ;160:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -807,7 +807,7 @@ CNSTI4 2
 NEI4 $123
 line 161
 ;161:			if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -908,7 +908,7 @@ line 188
 ADDRFP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 868
+CNSTI4 860
 ADDP4
 ASGNP4
 line 190
@@ -986,14 +986,14 @@ line 190
 ADDRFP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 868
+CNSTI4 860
 ADDP4
 ASGNP4
 LABELV $134
 ADDRFP4 0
 INDIRP4
 CVPU4 4
-CNSTI4 868
+CNSTI4 860
 ADDRGP4 level+12
 INDIRI4
 MULI4
@@ -1938,7 +1938,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 868
+CNSTI4 860
 DIVI4
 ASGNI4
 line 393
@@ -1997,7 +1997,7 @@ line 420
 ;419:		// override the normal minimum times before use
 ;420:		e = &g_entities[MAX_CLIENTS];
 ADDRLP4 0
-ADDRGP4 g_entities+55552
+ADDRGP4 g_entities+55040
 ASGNP4
 line 421
 ;421:		for ( i = MAX_CLIENTS ; i<level.num_entities ; i++, e++) {
@@ -2086,7 +2086,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 868
+CNSTI4 860
 ADDP4
 ASGNP4
 LABELV $211
@@ -2142,7 +2142,7 @@ ARGP4
 ADDRLP4 4
 INDIRI4
 ARGI4
-CNSTI4 868
+CNSTI4 860
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -2202,12 +2202,12 @@ ARGP4
 ADDRGP4 level+12
 INDIRI4
 ARGI4
-CNSTI4 868
+CNSTI4 860
 ARGI4
 ADDRGP4 level
 INDIRP4
 ARGP4
-CNSTI4 3460
+CNSTI4 3392
 ARGI4
 ADDRGP4 trap_LocateGameData
 CALLV
@@ -2246,7 +2246,7 @@ line 467
 ;466:
 ;467:	e = &g_entities[MAX_CLIENTS];
 ADDRLP4 4
-ADDRGP4 g_entities+55552
+ADDRGP4 g_entities+55040
 ASGNP4
 line 468
 ;468:	for ( i = MAX_CLIENTS; i < level.num_entities; i++, e++) {
@@ -2289,7 +2289,7 @@ ASGNI4
 ADDRLP4 4
 ADDRLP4 4
 INDIRP4
-CNSTI4 868
+CNSTI4 860
 ADDP4
 ASGNP4
 LABELV $238
@@ -2351,7 +2351,7 @@ INDIRP4
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 868
+CNSTI4 860
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -2699,7 +2699,7 @@ LABELV $259
 line 558
 ;558:		hit = &g_entities[touch[i]];
 ADDRLP4 4
-CNSTI4 868
+CNSTI4 860
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -3796,7 +3796,6 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
-import G_StartKamikaze
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -3831,14 +3830,10 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
-import DropPortalDestination
-import DropPortalSource
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
-import fire_prox
-import fire_nail
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -3851,7 +3846,6 @@ import fire_plasma
 import fire_blaster
 import G_RunMissile
 import TossClientCubes
-import TossClientPersistantPowerups
 import TossClientItems
 import body_die
 import G_InvulnerabilityEffect

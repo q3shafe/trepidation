@@ -498,6 +498,10 @@ typedef struct {
 	qboolean	OneSurvivor;			// Shafe - Trep
 	struct gclient_s	*lastClient;			// NULL if not a client// Shafe - Trep
 
+	int			redlevel;
+	int			bluelevel;
+
+
 } level_locals_t;
 
 

@@ -108,7 +108,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3460
+CNSTI4 3392
 DIVI4
 ARGI4
 ADDRLP4 16
@@ -167,7 +167,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3460
+CNSTI4 3392
 DIVI4
 ARGI4
 ADDRLP4 1040
@@ -658,7 +658,7 @@ JUMPV
 LABELV $98
 line 178
 ;178:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -672,7 +672,7 @@ CNSTI4 2
 NEI4 $103
 line 179
 ;179:			G_WriteClientSessionData( &level.clients[i] );
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -1017,7 +1017,6 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
-import G_StartKamikaze
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -1052,14 +1051,10 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
-import DropPortalDestination
-import DropPortalSource
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
-import fire_prox
-import fire_nail
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -1072,7 +1067,6 @@ import fire_plasma
 import fire_blaster
 import G_RunMissile
 import TossClientCubes
-import TossClientPersistantPowerups
 import TossClientItems
 import body_die
 import G_InvulnerabilityEffect

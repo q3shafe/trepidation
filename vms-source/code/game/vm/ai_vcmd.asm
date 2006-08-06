@@ -61,7 +61,7 @@ line 54
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
-NEI4 $57
+NEI4 $56
 line 55
 ;55:		if (!ctf_redflag.areanum || !ctf_blueflag.areanum)
 ADDRLP4 0
@@ -84,47 +84,16 @@ ADDRGP4 $56
 JUMPV
 line 57
 ;57:	}
-LABELV $57
-line 59
+line 64
 ;58:#ifdef MISSIONPACK
 ;59:	else if (gametype == GT_1FCTF) {
-ADDRGP4 gametype
-INDIRI4
-CNSTI4 5
-NEI4 $56
-line 60
 ;60:		if (!ctf_neutralflag.areanum || !ctf_redflag.areanum || !ctf_blueflag.areanum)
-ADDRLP4 0
-CNSTI4 0
-ASGNI4
-ADDRGP4 ctf_neutralflag+12
-INDIRI4
-ADDRLP4 0
-INDIRI4
-EQI4 $72
-ADDRGP4 ctf_redflag+12
-INDIRI4
-ADDRLP4 0
-INDIRI4
-EQI4 $72
-ADDRGP4 ctf_blueflag+12
-INDIRI4
-ADDRLP4 0
-INDIRI4
-NEI4 $65
-LABELV $72
-line 61
 ;61:			return;
-ADDRGP4 $56
-JUMPV
-line 62
 ;62:	}
-line 64
 ;63:#endif
 ;64:	else {
 line 65
 ;65:		return;
-LABELV $65
 LABELV $58
 line 68
 ;66:	}
@@ -205,7 +174,7 @@ line 78
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
-NEI4 $73
+NEI4 $64
 line 80
 ;79:		//get an alternative route goal towards the enemy base
 ;80:		BotGetAlternateRouteGoal(bs, BotOppositeTeam(bs));
@@ -227,7 +196,7 @@ CALLI4
 pop
 line 81
 ;81:	}
-LABELV $73
+LABELV $64
 line 83
 ;82:	//
 ;83:	BotSetTeamStatus(bs);
@@ -254,7 +223,7 @@ line 89
 LABELV $56
 endproc BotVoiceChat_GetFlag 8 8
 export BotVoiceChat_Offense
-proc BotVoiceChat_Offense 8 12
+proc BotVoiceChat_Offense 4 12
 line 96
 ;90:
 ;91:/*
@@ -265,19 +234,10 @@ line 96
 ;96:void BotVoiceChat_Offense(bot_state_t *bs, int client, int mode) {
 line 97
 ;97:	if ( gametype == GT_CTF
-ADDRLP4 0
 ADDRGP4 gametype
 INDIRI4
-ASGNI4
-ADDRLP4 0
-INDIRI4
 CNSTI4 4
-EQI4 $78
-ADDRLP4 0
-INDIRI4
-CNSTI4 5
-NEI4 $76
-LABELV $78
+NEI4 $67
 line 101
 ;98:#ifdef MISSIONPACK
 ;99:		|| gametype == GT_1FCTF
@@ -299,121 +259,29 @@ CALLV
 pop
 line 103
 ;103:		return;
-ADDRGP4 $75
+ADDRGP4 $66
 JUMPV
-LABELV $76
-line 106
+LABELV $67
+line 125
 ;104:	}
 ;105:#ifdef MISSIONPACK
 ;106:	if (gametype == GT_HARVESTER) {
-ADDRGP4 gametype
-INDIRI4
-CNSTI4 7
-NEI4 $79
-line 108
 ;107:		//
 ;108:		bs->decisionmaker = client;
-ADDRFP4 0
-INDIRP4
-CNSTI4 6608
-ADDP4
-ADDRFP4 4
-INDIRI4
-ASGNI4
-line 109
 ;109:		bs->ordered = qtrue;
-ADDRFP4 0
-INDIRP4
-CNSTI4 6612
-ADDP4
-CNSTI4 1
-ASGNI4
-line 110
 ;110:		bs->order_time = FloatTime();
-ADDRFP4 0
-INDIRP4
-CNSTI4 6616
-ADDP4
-ADDRGP4 floattime
-INDIRF4
-ASGNF4
-line 112
 ;111:		//set the time to send a message to the team mates
 ;112:		bs->teammessage_time = FloatTime() + 2 * random();
-ADDRLP4 4
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRFP4 0
-INDIRP4
-CNSTI4 6740
-ADDP4
-ADDRGP4 floattime
-INDIRF4
-CNSTF4 1073741824
-ADDRLP4 4
-INDIRI4
-CNSTI4 32767
-BANDI4
-CVIF4 4
-CNSTF4 1191181824
-DIVF4
-MULF4
-ADDF4
-ASGNF4
-line 114
 ;113:		//set the ltg type
 ;114:		bs->ltgtype = LTG_HARVEST;
-ADDRFP4 0
-INDIRP4
-CNSTI4 6600
-ADDP4
-CNSTI4 12
-ASGNI4
-line 116
 ;115:		//set the team goal time
 ;116:		bs->teamgoal_time = FloatTime() + TEAM_HARVEST_TIME;
-ADDRFP4 0
-INDIRP4
-CNSTI4 6744
-ADDP4
-ADDRGP4 floattime
-INDIRF4
-CNSTF4 1123024896
-ADDF4
-ASGNF4
-line 117
 ;117:		bs->harvestaway_time = 0;
-ADDRFP4 0
-INDIRP4
-CNSTI4 6160
-ADDP4
-CNSTF4 0
-ASGNF4
-line 119
 ;118:		//
 ;119:		BotSetTeamStatus(bs);
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 BotSetTeamStatus
-CALLV
-pop
-line 121
 ;120:		// remember last ordered task
 ;121:		BotRememberLastOrderedTask(bs);
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 BotRememberLastOrderedTask
-CALLV
-pop
-line 122
 ;122:	}
-ADDRGP4 $80
-JUMPV
-LABELV $79
-line 125
 ;123:	else
 ;124:#endif
 ;125:	{
@@ -447,7 +315,7 @@ ASGNF4
 line 131
 ;130:		//set the time to send a message to the team mates
 ;131:		bs->teammessage_time = FloatTime() + 2 * random();
-ADDRLP4 4
+ADDRLP4 0
 ADDRGP4 rand
 CALLI4
 ASGNI4
@@ -458,7 +326,7 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 CNSTF4 1073741824
-ADDRLP4 4
+ADDRLP4 0
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -517,16 +385,15 @@ CALLV
 pop
 line 141
 ;141:	}
-LABELV $80
 line 145
 ;142:#ifdef DEBUG
 ;143:	BotPrintTeamGoal(bs);
 ;144:#endif //DEBUG
 ;145:}
-LABELV $75
-endproc BotVoiceChat_Offense 8 12
+LABELV $66
+endproc BotVoiceChat_Offense 4 12
 export BotVoiceChat_Defend
-proc BotVoiceChat_Defend 20 12
+proc BotVoiceChat_Defend 12 12
 line 152
 ;146:
 ;147:/*
@@ -535,103 +402,23 @@ line 152
 ;150:==================
 ;151:*/
 ;152:void BotVoiceChat_Defend(bot_state_t *bs, int client, int mode) {
-line 154
+line 164
 ;153:#ifdef MISSIONPACK
 ;154:	if ( gametype == GT_OBELISK || gametype == GT_HARVESTER) {
-ADDRLP4 0
-ADDRGP4 gametype
-INDIRI4
-ASGNI4
-ADDRLP4 0
-INDIRI4
-CNSTI4 6
-EQI4 $84
-ADDRLP4 0
-INDIRI4
-CNSTI4 7
-NEI4 $82
-LABELV $84
-line 156
 ;155:		//
 ;156:		switch(BotTeam(bs)) {
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRLP4 8
-ADDRGP4 BotTeam
-CALLI4
-ASGNI4
-ADDRLP4 4
-ADDRLP4 8
-INDIRI4
-ASGNI4
-ADDRLP4 4
-INDIRI4
-CNSTI4 1
-EQI4 $88
-ADDRLP4 4
-INDIRI4
-CNSTI4 2
-EQI4 $89
-ADDRGP4 $81
-JUMPV
-LABELV $88
-line 157
 ;157:			case TEAM_RED: memcpy(&bs->teamgoal, &redobelisk, sizeof(bot_goal_t)); break;
-ADDRFP4 0
-INDIRP4
-CNSTI4 6624
-ADDP4
-ARGP4
-ADDRGP4 redobelisk
-ARGP4
-CNSTI4 56
-ARGI4
-ADDRGP4 memcpy
-CALLP4
-pop
-ADDRGP4 $83
-JUMPV
-LABELV $89
-line 158
 ;158:			case TEAM_BLUE: memcpy(&bs->teamgoal, &blueobelisk, sizeof(bot_goal_t)); break;
-ADDRFP4 0
-INDIRP4
-CNSTI4 6624
-ADDP4
-ARGP4
-ADDRGP4 blueobelisk
-ARGP4
-CNSTI4 56
-ARGI4
-ADDRGP4 memcpy
-CALLP4
-pop
-line 159
 ;159:			default: return;
-line 161
 ;160:		}
 ;161:	}
-ADDRGP4 $83
-JUMPV
-LABELV $82
-line 164
 ;162:	else
 ;163:#endif
 ;164:		if (gametype == GT_CTF
-ADDRLP4 4
 ADDRGP4 gametype
 INDIRI4
-ASGNI4
-ADDRLP4 4
-INDIRI4
 CNSTI4 4
-EQI4 $92
-ADDRLP4 4
-INDIRI4
-CNSTI4 5
-NEI4 $81
-LABELV $92
+NEI4 $69
 line 168
 ;165:#ifdef MISSIONPACK
 ;166:			|| gametype == GT_1FCTF
@@ -643,25 +430,25 @@ line 170
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRLP4 12
+ADDRLP4 4
 ADDRGP4 BotTeam
 CALLI4
 ASGNI4
-ADDRLP4 8
-ADDRLP4 12
+ADDRLP4 0
+ADDRLP4 4
 INDIRI4
 ASGNI4
-ADDRLP4 8
+ADDRLP4 0
 INDIRI4
 CNSTI4 1
-EQI4 $96
-ADDRLP4 8
+EQI4 $75
+ADDRLP4 0
 INDIRI4
 CNSTI4 2
-EQI4 $97
-ADDRGP4 $81
+EQI4 $76
+ADDRGP4 $69
 JUMPV
-LABELV $96
+LABELV $75
 line 171
 ;171:			case TEAM_RED: memcpy(&bs->teamgoal, &ctf_redflag, sizeof(bot_goal_t)); break;
 ADDRFP4 0
@@ -676,9 +463,9 @@ ARGI4
 ADDRGP4 memcpy
 CALLP4
 pop
-ADDRGP4 $91
+ADDRGP4 $71
 JUMPV
-LABELV $97
+LABELV $76
 line 172
 ;172:			case TEAM_BLUE: memcpy(&bs->teamgoal, &ctf_blueflag, sizeof(bot_goal_t)); break;
 ADDRFP4 0
@@ -702,8 +489,7 @@ line 176
 ;176:	else {
 line 177
 ;177:		return;
-LABELV $91
-LABELV $83
+LABELV $71
 line 180
 ;178:	}
 ;179:	//
@@ -735,7 +521,7 @@ ASGNF4
 line 184
 ;183:	//set the time to send a message to the team mates
 ;184:	bs->teammessage_time = FloatTime() + 2 * random();
-ADDRLP4 8
+ADDRLP4 0
 ADDRGP4 rand
 CALLI4
 ASGNI4
@@ -746,7 +532,7 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 CNSTF4 1073741824
-ADDRLP4 8
+ADDRLP4 0
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -809,8 +595,8 @@ line 198
 ;196:	BotPrintTeamGoal(bs);
 ;197:#endif //DEBUG
 ;198:}
-LABELV $81
-endproc BotVoiceChat_Defend 20 12
+LABELV $69
+endproc BotVoiceChat_Defend 12 12
 export BotVoiceChat_DefendFlag
 proc BotVoiceChat_DefendFlag 0 12
 line 205
@@ -837,7 +623,7 @@ CALLV
 pop
 line 207
 ;207:}
-LABELV $98
+LABELV $77
 endproc BotVoiceChat_DefendFlag 0 12
 export BotVoiceChat_Patrol
 proc BotVoiceChat_Patrol 0 12
@@ -890,7 +676,7 @@ line 222
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $100
+ADDRGP4 $79
 ARGP4
 CNSTP4 0
 ARGP4
@@ -920,7 +706,7 @@ INDIRP4
 ARGP4
 CNSTI4 -1
 ARGI4
-ADDRGP4 $101
+ADDRGP4 $80
 ARGP4
 ADDRGP4 BotVoiceChatOnly
 CALLV
@@ -939,7 +725,7 @@ line 230
 ;228:	BotPrintTeamGoal(bs);
 ;229:#endif //DEBUG
 ;230:}
-LABELV $99
+LABELV $78
 endproc BotVoiceChat_Patrol 0 12
 export BotVoiceChat_Camp
 proc BotVoiceChat_Camp 184 16
@@ -980,7 +766,7 @@ line 246
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $103
+EQI4 $82
 line 247
 ;247:		areanum = BotPointAreaNum(entinfo.origin);
 ADDRLP4 0+24
@@ -998,7 +784,7 @@ line 248
 ADDRLP4 140
 INDIRI4
 CNSTI4 0
-EQI4 $106
+EQI4 $85
 line 251
 ;249:			//NOTE: just assume the bot knows where the person is
 ;250:			//if (BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, client)) {
@@ -1071,10 +857,10 @@ ASGNF4
 line 257
 ;256:			//}
 ;257:		}
-LABELV $106
+LABELV $85
 line 258
 ;258:	}
-LABELV $103
+LABELV $82
 line 260
 ;259:	//if the other is not visible
 ;260:	if (bs->teamgoal.entitynum < 0) {
@@ -1084,7 +870,7 @@ CNSTI4 6664
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $109
+GEI4 $88
 line 261
 ;261:		BotAI_BotInitialChat(bs, "whereareyou", EasyClientName(client, netname, sizeof(netname)), NULL);
 ADDRFP4 4
@@ -1101,7 +887,7 @@ ASGNP4
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $111
+ADDRGP4 $90
 ARGP4
 ADDRLP4 180
 INDIRP4
@@ -1129,9 +915,9 @@ CALLV
 pop
 line 263
 ;263:		return;
-ADDRGP4 $102
+ADDRGP4 $81
 JUMPV
-LABELV $109
+LABELV $88
 line 266
 ;264:	}
 ;265:	//
@@ -1247,7 +1033,7 @@ line 286
 ;284:	BotPrintTeamGoal(bs);
 ;285:#endif //DEBUG
 ;286:}
-LABELV $102
+LABELV $81
 endproc BotVoiceChat_Camp 184 16
 export BotVoiceChat_FollowMe
 proc BotVoiceChat_FollowMe 184 16
@@ -1287,7 +1073,7 @@ line 301
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $113
+EQI4 $92
 line 302
 ;302:		areanum = BotPointAreaNum(entinfo.origin);
 ADDRLP4 0+24
@@ -1305,7 +1091,7 @@ line 303
 ADDRLP4 140
 INDIRI4
 CNSTI4 0
-EQI4 $116
+EQI4 $95
 line 304
 ;304:			bs->teamgoal.entitynum = client;
 ADDRFP4 0
@@ -1375,10 +1161,10 @@ CNSTF4 1090519040
 ASGNF4
 line 309
 ;309:		}
-LABELV $116
+LABELV $95
 line 310
 ;310:	}
-LABELV $113
+LABELV $92
 line 312
 ;311:	//if the other is not visible
 ;312:	if (bs->teamgoal.entitynum < 0) {
@@ -1388,7 +1174,7 @@ CNSTI4 6664
 ADDP4
 INDIRI4
 CNSTI4 0
-GEI4 $119
+GEI4 $98
 line 313
 ;313:		BotAI_BotInitialChat(bs, "whereareyou", EasyClientName(client, netname, sizeof(netname)), NULL);
 ADDRFP4 4
@@ -1405,7 +1191,7 @@ ASGNP4
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $111
+ADDRGP4 $90
 ARGP4
 ADDRLP4 180
 INDIRP4
@@ -1433,9 +1219,9 @@ CALLV
 pop
 line 315
 ;315:		return;
-ADDRGP4 $112
+ADDRGP4 $91
 JUMPV
-LABELV $119
+LABELV $98
 line 318
 ;316:	}
 ;317:	//
@@ -1568,7 +1354,7 @@ line 340
 ;338:	BotPrintTeamGoal(bs);
 ;339:#endif //DEBUG
 ;340:}
-LABELV $112
+LABELV $91
 endproc BotVoiceChat_FollowMe 184 16
 export BotVoiceChat_FollowFlagCarrier
 proc BotVoiceChat_FollowFlagCarrier 8 12
@@ -1600,7 +1386,7 @@ line 351
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LTI4 $122
+LTI4 $101
 line 352
 ;352:		BotVoiceChat_FollowMe(bs, carrier, mode);
 ADDRFP4 0
@@ -1615,16 +1401,16 @@ ARGI4
 ADDRGP4 BotVoiceChat_FollowMe
 CALLV
 pop
-LABELV $122
+LABELV $101
 line 356
 ;353:#ifdef DEBUG
 ;354:	BotPrintTeamGoal(bs);
 ;355:#endif //DEBUG
 ;356:}
-LABELV $121
+LABELV $100
 endproc BotVoiceChat_FollowFlagCarrier 8 12
 export BotVoiceChat_ReturnFlag
-proc BotVoiceChat_ReturnFlag 8 4
+proc BotVoiceChat_ReturnFlag 4 4
 line 363
 ;357:
 ;358:/*
@@ -1637,18 +1423,10 @@ line 366
 ;364:	//if not in CTF mode
 ;365:	if (
 ;366:		gametype != GT_CTF
-ADDRLP4 0
 ADDRGP4 gametype
 INDIRI4
-ASGNI4
-ADDRLP4 0
-INDIRI4
 CNSTI4 4
-EQI4 $125
-ADDRLP4 0
-INDIRI4
-CNSTI4 5
-EQI4 $125
+EQI4 $104
 line 370
 ;367:#ifdef MISSIONPACK
 ;368:		&& gametype != GT_1FCTF
@@ -1656,9 +1434,9 @@ line 370
 ;370:		) {
 line 371
 ;371:		return;
-ADDRGP4 $124
+ADDRGP4 $103
 JUMPV
-LABELV $125
+LABELV $104
 line 374
 ;372:	}
 ;373:	//
@@ -1690,7 +1468,7 @@ ASGNF4
 line 378
 ;377:	//set the time to send a message to the team mates
 ;378:	bs->teammessage_time = FloatTime() + 2 * random();
-ADDRLP4 4
+ADDRLP4 0
 ADDRGP4 rand
 CALLI4
 ASGNI4
@@ -1701,7 +1479,7 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 CNSTF4 1073741824
-ADDRLP4 4
+ADDRLP4 0
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -1753,8 +1531,8 @@ line 388
 ;386:	BotPrintTeamGoal(bs);
 ;387:#endif //DEBUG
 ;388:}
-LABELV $124
-endproc BotVoiceChat_ReturnFlag 8 4
+LABELV $103
+endproc BotVoiceChat_ReturnFlag 4 4
 export BotVoiceChat_StartLeader
 proc BotVoiceChat_StartLeader 0 12
 line 395
@@ -1782,7 +1560,7 @@ CALLP4
 pop
 line 397
 ;397:}
-LABELV $127
+LABELV $106
 endproc BotVoiceChat_StartLeader 0 12
 export BotVoiceChat_StopLeader
 proc BotVoiceChat_StopLeader 264 12
@@ -1824,7 +1602,7 @@ ASGNI4
 ADDRLP4 260
 INDIRI4
 CNSTI4 0
-NEI4 $129
+NEI4 $108
 line 408
 ;408:		bs->teamleader[0] = '\0';
 ADDRFP4 0
@@ -1845,10 +1623,10 @@ CNSTI4 1
 ASGNI4
 line 410
 ;410:	}
-LABELV $129
+LABELV $108
 line 411
 ;411:}
-LABELV $128
+LABELV $107
 endproc BotVoiceChat_StopLeader 264 12
 export BotVoiceChat_WhoIsLeader
 proc BotVoiceChat_WhoIsLeader 264 12
@@ -1871,10 +1649,10 @@ ASGNI4
 ADDRLP4 256
 INDIRI4
 CNSTI4 0
-NEI4 $132
-ADDRGP4 $131
+NEI4 $111
+ADDRGP4 $110
 JUMPV
-LABELV $132
+LABELV $111
 line 423
 ;422:
 ;423:	ClientName(bs->client, netname, sizeof(netname));
@@ -1908,13 +1686,13 @@ ASGNI4
 ADDRLP4 260
 INDIRI4
 CNSTI4 0
-NEI4 $134
+NEI4 $113
 line 426
 ;426:		BotAI_BotInitialChat(bs, "iamteamleader", NULL);
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $136
+ADDRGP4 $115
 ARGP4
 CNSTP4 0
 ARGP4
@@ -1943,17 +1721,17 @@ INDIRP4
 ARGP4
 CNSTI4 -1
 ARGI4
-ADDRGP4 $137
+ADDRGP4 $116
 ARGP4
 ADDRGP4 BotVoiceChatOnly
 CALLV
 pop
 line 429
 ;429:	}
-LABELV $134
+LABELV $113
 line 430
 ;430:}
-LABELV $131
+LABELV $110
 endproc BotVoiceChat_WhoIsLeader 264 12
 export BotVoiceChat_WantOnDefense
 proc BotVoiceChat_WantOnDefense 44 16
@@ -2032,7 +1810,7 @@ line 447
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $139
+ADDRGP4 $118
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -2065,7 +1843,7 @@ ARGP4
 ADDRFP4 4
 INDIRI4
 ARGI4
-ADDRGP4 $140
+ADDRGP4 $119
 ARGP4
 ADDRGP4 BotVoiceChatOnly
 CALLV
@@ -2085,7 +1863,7 @@ CALLV
 pop
 line 451
 ;451:}
-LABELV $138
+LABELV $117
 endproc BotVoiceChat_WantOnDefense 44 16
 export BotVoiceChat_WantOnOffense
 proc BotVoiceChat_WantOnOffense 44 16
@@ -2164,7 +1942,7 @@ line 468
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $139
+ADDRGP4 $118
 ARGP4
 ADDRLP4 4
 ARGP4
@@ -2197,7 +1975,7 @@ ARGP4
 ADDRFP4 4
 INDIRI4
 ARGI4
-ADDRGP4 $140
+ADDRGP4 $119
 ARGP4
 ADDRGP4 BotVoiceChatOnly
 CALLV
@@ -2217,7 +1995,7 @@ CALLV
 pop
 line 472
 ;472:}
-LABELV $141
+LABELV $120
 endproc BotVoiceChat_WantOnOffense 44 16
 export BotVoiceChat_Dummy
 proc BotVoiceChat_Dummy 0 0
@@ -2226,39 +2004,39 @@ line 474
 ;474:void BotVoiceChat_Dummy(bot_state_t *bs, int client, int mode) {
 line 475
 ;475:}
-LABELV $142
+LABELV $121
 endproc BotVoiceChat_Dummy 0 0
 data
 export voiceCommands
 align 4
 LABELV voiceCommands
-address $143
+address $122
 address BotVoiceChat_GetFlag
-address $144
+address $123
 address BotVoiceChat_Offense
-address $145
+address $124
 address BotVoiceChat_Defend
-address $146
+address $125
 address BotVoiceChat_DefendFlag
-address $147
+address $126
 address BotVoiceChat_Patrol
-address $148
+address $127
 address BotVoiceChat_Camp
-address $149
+address $128
 address BotVoiceChat_FollowMe
-address $150
+address $129
 address BotVoiceChat_FollowFlagCarrier
-address $151
+address $130
 address BotVoiceChat_ReturnFlag
-address $137
+address $116
 address BotVoiceChat_StartLeader
-address $152
+address $131
 address BotVoiceChat_StopLeader
-address $153
+address $132
 address BotVoiceChat_WhoIsLeader
-address $154
+address $133
 address BotVoiceChat_WantOnDefense
-address $155
+address $134
 address BotVoiceChat_WantOnOffense
 byte 4 0
 address BotVoiceChat_Dummy
@@ -2298,14 +2076,14 @@ ASGNI4
 ADDRLP4 280
 INDIRI4
 CNSTI4 0
-NEI4 $157
+NEI4 $136
 line 500
 ;500:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $156
+ADDRGP4 $135
 JUMPV
-LABELV $157
+LABELV $136
 line 503
 ;501:	}
 ;502:
@@ -2313,14 +2091,14 @@ line 503
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $159
+NEI4 $138
 line 504
 ;504:		return qfalse;	// don't do anything with voice chats to everyone
 CNSTI4 0
 RETI4
-ADDRGP4 $156
+ADDRGP4 $135
 JUMPV
-LABELV $159
+LABELV $138
 line 507
 ;505:	}
 ;506:
@@ -2346,17 +2124,17 @@ ADDRLP4 12
 ADDRLP4 0
 INDIRP4
 ASGNP4
-ADDRGP4 $164
+ADDRGP4 $143
 JUMPV
-LABELV $161
-LABELV $162
+LABELV $140
+LABELV $141
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-LABELV $164
+LABELV $143
 ADDRLP4 284
 ADDRLP4 0
 INDIRP4
@@ -2366,15 +2144,15 @@ ASGNI4
 ADDRLP4 284
 INDIRI4
 CNSTI4 0
-EQI4 $165
+EQI4 $144
 ADDRLP4 284
 INDIRI4
 CNSTI4 32
-GTI4 $161
-LABELV $165
-ADDRGP4 $167
+GTI4 $140
+LABELV $144
+ADDRGP4 $146
 JUMPV
-LABELV $166
+LABELV $145
 line 510
 ;510:	while (*cmd && *cmd <= ' ') *cmd++ = '\0';
 ADDRLP4 288
@@ -2391,7 +2169,7 @@ ADDRLP4 288
 INDIRP4
 CNSTI1 0
 ASGNI1
-LABELV $167
+LABELV $146
 ADDRLP4 292
 ADDRLP4 0
 INDIRP4
@@ -2401,12 +2179,12 @@ ASGNI4
 ADDRLP4 292
 INDIRI4
 CNSTI4 0
-EQI4 $169
+EQI4 $148
 ADDRLP4 292
 INDIRI4
 CNSTI4 32
-LEI4 $166
-LABELV $169
+LEI4 $145
+LABELV $148
 line 511
 ;511:	voiceOnly = atoi(ptr);
 ADDRLP4 12
@@ -2426,17 +2204,17 @@ ADDRLP4 12
 ADDRLP4 0
 INDIRP4
 ASGNP4
-ADDRGP4 $173
+ADDRGP4 $152
 JUMPV
-LABELV $170
-LABELV $171
+LABELV $149
+LABELV $150
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-LABELV $173
+LABELV $152
 ADDRLP4 300
 ADDRLP4 0
 INDIRP4
@@ -2446,15 +2224,15 @@ ASGNI4
 ADDRLP4 300
 INDIRI4
 CNSTI4 0
-EQI4 $174
+EQI4 $153
 ADDRLP4 300
 INDIRI4
 CNSTI4 32
-GTI4 $170
-LABELV $174
-ADDRGP4 $176
+GTI4 $149
+LABELV $153
+ADDRGP4 $155
 JUMPV
-LABELV $175
+LABELV $154
 line 513
 ;513:	while (*cmd && *cmd <= ' ') *cmd++ = '\0';
 ADDRLP4 304
@@ -2471,7 +2249,7 @@ ADDRLP4 304
 INDIRP4
 CNSTI1 0
 ASGNI1
-LABELV $176
+LABELV $155
 ADDRLP4 308
 ADDRLP4 0
 INDIRP4
@@ -2481,12 +2259,12 @@ ASGNI4
 ADDRLP4 308
 INDIRI4
 CNSTI4 0
-EQI4 $178
+EQI4 $157
 ADDRLP4 308
 INDIRI4
 CNSTI4 32
-LEI4 $175
-LABELV $178
+LEI4 $154
+LABELV $157
 line 514
 ;514:	clientNum = atoi(ptr);
 ADDRLP4 12
@@ -2506,17 +2284,17 @@ ADDRLP4 12
 ADDRLP4 0
 INDIRP4
 ASGNP4
-ADDRGP4 $182
+ADDRGP4 $161
 JUMPV
-LABELV $179
-LABELV $180
+LABELV $158
+LABELV $159
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-LABELV $182
+LABELV $161
 ADDRLP4 316
 ADDRLP4 0
 INDIRP4
@@ -2526,15 +2304,15 @@ ASGNI4
 ADDRLP4 316
 INDIRI4
 CNSTI4 0
-EQI4 $183
+EQI4 $162
 ADDRLP4 316
 INDIRI4
 CNSTI4 32
-GTI4 $179
-LABELV $183
-ADDRGP4 $185
+GTI4 $158
+LABELV $162
+ADDRGP4 $164
 JUMPV
-LABELV $184
+LABELV $163
 line 516
 ;516:	while (*cmd && *cmd <= ' ') *cmd++ = '\0';
 ADDRLP4 320
@@ -2551,7 +2329,7 @@ ADDRLP4 320
 INDIRP4
 CNSTI1 0
 ASGNI1
-LABELV $185
+LABELV $164
 ADDRLP4 324
 ADDRLP4 0
 INDIRP4
@@ -2561,12 +2339,12 @@ ASGNI4
 ADDRLP4 324
 INDIRI4
 CNSTI4 0
-EQI4 $187
+EQI4 $166
 ADDRLP4 324
 INDIRI4
 CNSTI4 32
-LEI4 $184
-LABELV $187
+LEI4 $163
+LABELV $166
 line 517
 ;517:	color = atoi(ptr);
 ADDRLP4 12
@@ -2596,14 +2374,14 @@ ASGNI4
 ADDRLP4 332
 INDIRI4
 CNSTI4 0
-NEI4 $188
+NEI4 $167
 line 520
 ;520:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $156
+ADDRGP4 $135
 JUMPV
-LABELV $188
+LABELV $167
 line 523
 ;521:	}
 ;522:
@@ -2611,9 +2389,9 @@ line 523
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $193
+ADDRGP4 $172
 JUMPV
-LABELV $190
+LABELV $169
 line 524
 ;524:		if (!Q_stricmp(cmd, voiceCommands[i].cmd)) {
 ADDRLP4 0
@@ -2634,7 +2412,7 @@ ASGNI4
 ADDRLP4 336
 INDIRI4
 CNSTI4 0
-NEI4 $194
+NEI4 $173
 line 525
 ;525:			voiceCommands[i].func(bs, clientNum, mode);
 ADDRFP4 0
@@ -2659,13 +2437,13 @@ line 526
 ;526:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $156
+ADDRGP4 $135
 JUMPV
-LABELV $194
+LABELV $173
 line 528
 ;527:		}
 ;528:	}
-LABELV $191
+LABELV $170
 line 523
 ADDRLP4 4
 ADDRLP4 4
@@ -2673,7 +2451,7 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $193
+LABELV $172
 ADDRLP4 4
 INDIRI4
 CNSTI4 3
@@ -2683,12 +2461,12 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $190
+NEU4 $169
 line 529
 ;529:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $156
+LABELV $135
 endproc BotVoiceChatCommand 340 12
 import BotVoiceChatOnly
 import BotVoiceChat
@@ -2737,10 +2515,6 @@ import BotChat_EndLevel
 import BotChat_StartLevel
 import BotChat_ExitGame
 import BotChat_EnterGame
-import neutralobelisk
-import blueobelisk
-import redobelisk
-import ctf_neutralflag
 import ctf_blueflag
 import ctf_redflag
 import bot_challenge
@@ -2760,17 +2534,6 @@ import BotFindWayPoint
 import BotCreateWayPoint
 import BotAlternateRoute
 import BotGetAlternateRouteGoal
-import BotEnemyCubeCarrierVisible
-import BotTeamCubeCarrierVisible
-import BotHarvesterRetreatGoals
-import BotHarvesterSeekGoals
-import BotGoHarvest
-import BotObeliskRetreatGoals
-import BotObeliskSeekGoals
-import Bot1FCTFRetreatGoals
-import Bot1FCTFSeekGoals
-import BotHarvesterCarryingCubes
-import Bot1FCTFCarryingFlag
 import BotCTFRetreatGoals
 import BotCTFSeekGoals
 import BotRememberLastOrderedTask
@@ -2811,7 +2574,6 @@ import EasyClientName
 import ClientName
 import BotSetTeamStatus
 import BotSetUserInfo
-import EntityHasKamikaze
 import EntityIsShooting
 import EntityIsInvisible
 import EntityIsDead
@@ -3267,7 +3029,6 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
-import G_StartKamikaze
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -3302,14 +3063,10 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
-import DropPortalDestination
-import DropPortalSource
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
-import fire_prox
-import fire_nail
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -3322,7 +3079,6 @@ import fire_plasma
 import fire_blaster
 import G_RunMissile
 import TossClientCubes
-import TossClientPersistantPowerups
 import TossClientItems
 import body_die
 import G_InvulnerabilityEffect
@@ -3554,7 +3310,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $155
+LABELV $134
 byte 1 119
 byte 1 97
 byte 1 110
@@ -3570,7 +3326,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $154
+LABELV $133
 byte 1 119
 byte 1 97
 byte 1 110
@@ -3586,7 +3342,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $153
+LABELV $132
 byte 1 119
 byte 1 104
 byte 1 111
@@ -3600,7 +3356,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $152
+LABELV $131
 byte 1 115
 byte 1 116
 byte 1 111
@@ -3613,7 +3369,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $151
+LABELV $130
 byte 1 114
 byte 1 101
 byte 1 116
@@ -3626,7 +3382,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $150
+LABELV $129
 byte 1 102
 byte 1 111
 byte 1 108
@@ -3646,7 +3402,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $149
+LABELV $128
 byte 1 102
 byte 1 111
 byte 1 108
@@ -3657,14 +3413,14 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $148
+LABELV $127
 byte 1 99
 byte 1 97
 byte 1 109
 byte 1 112
 byte 1 0
 align 1
-LABELV $147
+LABELV $126
 byte 1 112
 byte 1 97
 byte 1 116
@@ -3673,7 +3429,7 @@ byte 1 111
 byte 1 108
 byte 1 0
 align 1
-LABELV $146
+LABELV $125
 byte 1 100
 byte 1 101
 byte 1 102
@@ -3686,7 +3442,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $145
+LABELV $124
 byte 1 100
 byte 1 101
 byte 1 102
@@ -3695,7 +3451,7 @@ byte 1 110
 byte 1 100
 byte 1 0
 align 1
-LABELV $144
+LABELV $123
 byte 1 111
 byte 1 102
 byte 1 102
@@ -3705,7 +3461,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $143
+LABELV $122
 byte 1 103
 byte 1 101
 byte 1 116
@@ -3715,13 +3471,13 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $140
+LABELV $119
 byte 1 121
 byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $139
+LABELV $118
 byte 1 107
 byte 1 101
 byte 1 101
@@ -3734,7 +3490,7 @@ byte 1 110
 byte 1 100
 byte 1 0
 align 1
-LABELV $137
+LABELV $116
 byte 1 115
 byte 1 116
 byte 1 97
@@ -3748,7 +3504,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $136
+LABELV $115
 byte 1 105
 byte 1 97
 byte 1 109
@@ -3764,7 +3520,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $111
+LABELV $90
 byte 1 119
 byte 1 104
 byte 1 101
@@ -3778,7 +3534,7 @@ byte 1 111
 byte 1 117
 byte 1 0
 align 1
-LABELV $101
+LABELV $80
 byte 1 111
 byte 1 110
 byte 1 112
@@ -3789,7 +3545,7 @@ byte 1 111
 byte 1 108
 byte 1 0
 align 1
-LABELV $100
+LABELV $79
 byte 1 100
 byte 1 105
 byte 1 115

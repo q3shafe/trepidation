@@ -1,6 +1,6 @@
 export UpdateTournamentInfo
 code
-proc UpdateTournamentInfo 1116 68
+proc UpdateTournamentInfo 1104 44
 file "../g_arenas.c"
 line 20
 ;1:// Copyright (C) 1999-2000 Id Software, Inc.
@@ -52,7 +52,7 @@ LABELV $56
 line 36
 ;36:		player = &g_entities[i];
 ADDRLP4 40
-CNSTI4 868
+CNSTI4 860
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -143,7 +143,7 @@ pop
 line 52
 ;51:
 ;52:	if ( level.clients[playerClientNum].sess.sessionTeam == TEAM_SPECTATOR ) {
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 1076
 INDIRI4
 MULI4
@@ -155,14 +155,29 @@ ADDP4
 INDIRI4
 CNSTI4 3
 NEI4 $69
-line 54
+line 56
 ;53:#ifdef MISSIONPACK
 ;54:		Com_sprintf( msg, sizeof(msg), "postgame %i %i 0 0 0 0 0 0 0 0 0 0 0", level.numNonSpectatorClients, playerClientNum );
+;55:#else
+;56:		if (g_gametype.integer == GT_SINGLE_PLAYER || g_gametype.integer == GT_TOURNAMENT)
+ADDRGP4 g_gametype+12
+INDIRI4
+CNSTI4 2
+EQI4 $75
+ADDRGP4 g_gametype+12
+INDIRI4
+CNSTI4 1
+NEI4 $70
+LABELV $75
+line 57
+;57:		{
+line 58
+;58:			Com_sprintf( msg, sizeof(msg), "postgame %i %i 0 0 0 0 0 0", level.numNonSpectatorClients, playerClientNum );
 ADDRLP4 44
 ARGP4
 CNSTI4 1024
 ARGI4
-ADDRGP4 $71
+ADDRGP4 $76
 ARGP4
 ADDRGP4 level+80
 INDIRI4
@@ -173,12 +188,9 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 61
-;55:#else
-;56:		if (g_gametype.integer == GT_SINGLE_PLAYER || g_gametype.integer == GT_TOURNAMENT)
-;57:		{
-;58:			Com_sprintf( msg, sizeof(msg), "postgame %i %i 0 0 0 0 0 0", level.numNonSpectatorClients, playerClientNum );
+line 59
 ;59:		}
+line 61
 ;60:#endif
 ;61:	}
 ADDRGP4 $70
@@ -197,25 +209,25 @@ CNSTI4 2584
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $73
+EQI4 $78
 line 64
 ;64:			accuracy = player->client->accuracy_hits * 100 / player->client->accuracy_shots;
-ADDRLP4 1100
+ADDRLP4 1088
 ADDRLP4 40
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
 ASGNP4
-ADDRLP4 1084
+ADDRLP4 1080
 CNSTI4 100
-ADDRLP4 1100
+ADDRLP4 1088
 INDIRP4
 CNSTI4 2588
 ADDP4
 INDIRI4
 MULI4
-ADDRLP4 1100
+ADDRLP4 1088
 INDIRP4
 CNSTI4 2584
 ADDP4
@@ -224,221 +236,83 @@ DIVI4
 ASGNI4
 line 65
 ;65:		}
-ADDRGP4 $74
+ADDRGP4 $79
 JUMPV
-LABELV $73
+LABELV $78
 line 66
 ;66:		else {
 line 67
 ;67:			accuracy = 0;
-ADDRLP4 1084
+ADDRLP4 1080
 CNSTI4 0
 ASGNI4
 line 68
 ;68:		}
-LABELV $74
-line 70
+LABELV $79
+line 102
 ;69:#ifdef MISSIONPACK
 ;70:		won = qfalse;
-ADDRLP4 1080
-CNSTI4 0
-ASGNI4
-line 71
 ;71:		if (g_gametype.integer >= GT_CTF) {
+;72:			score1 = level.teamScores[TEAM_RED];
+;73:			score2 = level.teamScores[TEAM_BLUE];
+;74:			if (level.clients[playerClientNum].sess.sessionTeam	== TEAM_RED) {
+;75:				won = (level.teamScores[TEAM_RED] > level.teamScores[TEAM_BLUE]);
+;76:			} else {
+;77:				won = (level.teamScores[TEAM_BLUE] > level.teamScores[TEAM_RED]);
+;78:			}
+;79:		} else {
+;80:			if (&level.clients[playerClientNum] == &level.clients[ level.sortedClients[0] ]) {
+;81:				won = qtrue;
+;82:				score1 = level.clients[ level.sortedClients[0] ].ps.persistant[PERS_SCORE];
+;83:				score2 = level.clients[ level.sortedClients[1] ].ps.persistant[PERS_SCORE];
+;84:			} else {
+;85:				score2 = level.clients[ level.sortedClients[0] ].ps.persistant[PERS_SCORE];
+;86:				score1 = level.clients[ level.sortedClients[1] ].ps.persistant[PERS_SCORE];
+;87:			}
+;88:		}
+;89:		if (won && player->client->ps.persistant[PERS_KILLED] == 0) {
+;90:			perfect = 1;
+;91:		} else {
+;92:			perfect = 0;
+;93:		}
+;94:	
+;95:		
+;96:		Com_sprintf( msg, sizeof(msg), "postgame %i %i %i %i %i %i %i %i %i %i %i %i %i %i", level.numNonSpectatorClients, playerClientNum, accuracy,
+;97:			player->client->ps.persistant[PERS_IMPRESSIVE_COUNT], player->client->ps.persistant[PERS_EXCELLENT_COUNT],player->client->ps.persistant[PERS_DEFEND_COUNT],
+;98:			player->client->ps.persistant[PERS_ASSIST_COUNT], player->client->ps.persistant[PERS_GAUNTLET_FRAG_COUNT], player->client->ps.persistant[PERS_SCORE],
+;99:			perfect, score1, score2, level.time, player->client->ps.persistant[PERS_CAPTURES] );
+;100:
+;101:#else
+;102:		if (g_gametype.integer == GT_SINGLE_PLAYER || g_gametype.integer == GT_TOURNAMENT)
 ADDRGP4 g_gametype+12
 INDIRI4
-CNSTI4 4
-LTI4 $75
-line 72
-;72:			score1 = level.teamScores[TEAM_RED];
+CNSTI4 2
+EQI4 $84
+ADDRGP4 g_gametype+12
+INDIRI4
+CNSTI4 1
+NEI4 $80
+LABELV $84
+line 103
+;103:		{
+line 104
+;104:			perfect = ( level.clients[playerClientNum].ps.persistant[PERS_RANK] == 0 && player->client->ps.persistant[PERS_KILLED] == 0 ) ? 1 : 0;
 ADDRLP4 1092
-ADDRGP4 level+44+4
-INDIRI4
+CNSTI4 0
 ASGNI4
-line 73
-;73:			score2 = level.teamScores[TEAM_BLUE];
-ADDRLP4 1096
-ADDRGP4 level+44+8
-INDIRI4
-ASGNI4
-line 74
-;74:			if (level.clients[playerClientNum].sess.sessionTeam	== TEAM_RED) {
-CNSTI4 3460
+CNSTI4 3392
 ADDRLP4 1076
 INDIRI4
 MULI4
 ADDRGP4 level
 INDIRP4
 ADDP4
-CNSTI4 2492
+CNSTI4 256
 ADDP4
 INDIRI4
-CNSTI4 1
-NEI4 $82
-line 75
-;75:				won = (level.teamScores[TEAM_RED] > level.teamScores[TEAM_BLUE]);
-ADDRGP4 level+44+4
-INDIRI4
-ADDRGP4 level+44+8
-INDIRI4
-LEI4 $89
-ADDRLP4 1100
-CNSTI4 1
-ASGNI4
-ADDRGP4 $90
-JUMPV
-LABELV $89
-ADDRLP4 1100
-CNSTI4 0
-ASGNI4
-LABELV $90
-ADDRLP4 1080
-ADDRLP4 1100
-INDIRI4
-ASGNI4
-line 76
-;76:			} else {
-ADDRGP4 $76
-JUMPV
-LABELV $82
-line 77
-;77:				won = (level.teamScores[TEAM_BLUE] > level.teamScores[TEAM_RED]);
-ADDRGP4 level+44+8
-INDIRI4
-ADDRGP4 level+44+4
-INDIRI4
-LEI4 $96
-ADDRLP4 1100
-CNSTI4 1
-ASGNI4
-ADDRGP4 $97
-JUMPV
-LABELV $96
-ADDRLP4 1100
-CNSTI4 0
-ASGNI4
-LABELV $97
-ADDRLP4 1080
-ADDRLP4 1100
-INDIRI4
-ASGNI4
-line 78
-;78:			}
-line 79
-;79:		} else {
-ADDRGP4 $76
-JUMPV
-LABELV $75
-line 80
-;80:			if (&level.clients[playerClientNum] == &level.clients[ level.sortedClients[0] ]) {
-ADDRLP4 1100
-CNSTI4 3460
-ASGNI4
-ADDRLP4 1104
-ADDRGP4 level
-INDIRP4
-ASGNP4
-ADDRLP4 1100
-INDIRI4
-ADDRLP4 1076
-INDIRI4
-MULI4
-ADDRLP4 1104
-INDIRP4
-ADDP4
-CVPU4 4
-ADDRLP4 1100
-INDIRI4
-ADDRGP4 level+88
-INDIRI4
-MULI4
-ADDRLP4 1104
-INDIRP4
-ADDP4
-CVPU4 4
-NEU4 $98
-line 81
-;81:				won = qtrue;
-ADDRLP4 1080
-CNSTI4 1
-ASGNI4
-line 82
-;82:				score1 = level.clients[ level.sortedClients[0] ].ps.persistant[PERS_SCORE];
 ADDRLP4 1092
-CNSTI4 3460
-ADDRGP4 level+88
 INDIRI4
-MULI4
-ADDRGP4 level
-INDIRP4
-ADDP4
-CNSTI4 248
-ADDP4
-INDIRI4
-ASGNI4
-line 83
-;83:				score2 = level.clients[ level.sortedClients[1] ].ps.persistant[PERS_SCORE];
-ADDRLP4 1096
-CNSTI4 3460
-ADDRGP4 level+88+4
-INDIRI4
-MULI4
-ADDRGP4 level
-INDIRP4
-ADDP4
-CNSTI4 248
-ADDP4
-INDIRI4
-ASGNI4
-line 84
-;84:			} else {
-ADDRGP4 $99
-JUMPV
-LABELV $98
-line 85
-;85:				score2 = level.clients[ level.sortedClients[0] ].ps.persistant[PERS_SCORE];
-ADDRLP4 1096
-CNSTI4 3460
-ADDRGP4 level+88
-INDIRI4
-MULI4
-ADDRGP4 level
-INDIRP4
-ADDP4
-CNSTI4 248
-ADDP4
-INDIRI4
-ASGNI4
-line 86
-;86:				score1 = level.clients[ level.sortedClients[1] ].ps.persistant[PERS_SCORE];
-ADDRLP4 1092
-CNSTI4 3460
-ADDRGP4 level+88+4
-INDIRI4
-MULI4
-ADDRGP4 level
-INDIRP4
-ADDP4
-CNSTI4 248
-ADDP4
-INDIRI4
-ASGNI4
-line 87
-;87:			}
-LABELV $99
-line 88
-;88:		}
-LABELV $76
-line 89
-;89:		if (won && player->client->ps.persistant[PERS_KILLED] == 0) {
-ADDRLP4 1100
-CNSTI4 0
-ASGNI4
-ADDRLP4 1080
-INDIRI4
-ADDRLP4 1100
-INDIRI4
-EQI4 $107
+NEI4 $86
 ADDRLP4 40
 INDIRP4
 CNSTI4 516
@@ -447,36 +321,30 @@ INDIRP4
 CNSTI4 280
 ADDP4
 INDIRI4
-ADDRLP4 1100
+ADDRLP4 1092
 INDIRI4
-NEI4 $107
-line 90
-;90:			perfect = 1;
+NEI4 $86
 ADDRLP4 1088
 CNSTI4 1
 ASGNI4
-line 91
-;91:		} else {
-ADDRGP4 $108
+ADDRGP4 $87
 JUMPV
-LABELV $107
-line 92
-;92:			perfect = 0;
+LABELV $86
 ADDRLP4 1088
 CNSTI4 0
 ASGNI4
-line 93
-;93:		}
-LABELV $108
-line 96
-;94:	
-;95:		
-;96:		Com_sprintf( msg, sizeof(msg), "postgame %i %i %i %i %i %i %i %i %i %i %i %i %i %i", level.numNonSpectatorClients, playerClientNum, accuracy,
+LABELV $87
+ADDRLP4 1084
+ADDRLP4 1088
+INDIRI4
+ASGNI4
+line 105
+;105:			Com_sprintf( msg, sizeof(msg), "postgame %i %i %i %i %i %i %i %i", level.numNonSpectatorClients, playerClientNum, accuracy,
 ADDRLP4 44
 ARGP4
 CNSTI4 1024
 ARGI4
-ADDRGP4 $109
+ADDRGP4 $88
 ARGP4
 ADDRGP4 level+80
 INDIRI4
@@ -484,87 +352,53 @@ ARGI4
 ADDRLP4 1076
 INDIRI4
 ARGI4
-ADDRLP4 1084
+ADDRLP4 1080
 INDIRI4
 ARGI4
-ADDRLP4 1104
+ADDRLP4 1096
 ADDRLP4 40
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
 ASGNP4
-ADDRLP4 1104
+ADDRLP4 1096
 INDIRP4
 CNSTI4 284
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 1104
+ADDRLP4 1096
 INDIRP4
 CNSTI4 288
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 1104
-INDIRP4
-CNSTI4 292
-ADDP4
-INDIRI4
-ARGI4
-ADDRLP4 1104
-INDIRP4
-CNSTI4 296
-ADDP4
-INDIRI4
-ARGI4
-ADDRLP4 1104
+ADDRLP4 1096
 INDIRP4
 CNSTI4 300
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 1104
+ADDRLP4 1096
 INDIRP4
 CNSTI4 248
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 1088
-INDIRI4
-ARGI4
-ADDRLP4 1092
-INDIRI4
-ARGI4
-ADDRLP4 1096
-INDIRI4
-ARGI4
-ADDRGP4 level+32
-INDIRI4
-ARGI4
-ADDRLP4 1104
-INDIRP4
-CNSTI4 304
-ADDP4
+ADDRLP4 1084
 INDIRI4
 ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 111
-;97:			player->client->ps.persistant[PERS_IMPRESSIVE_COUNT], player->client->ps.persistant[PERS_EXCELLENT_COUNT],player->client->ps.persistant[PERS_DEFEND_COUNT],
-;98:			player->client->ps.persistant[PERS_ASSIST_COUNT], player->client->ps.persistant[PERS_GAUNTLET_FRAG_COUNT], player->client->ps.persistant[PERS_SCORE],
-;99:			perfect, score1, score2, level.time, player->client->ps.persistant[PERS_CAPTURES] );
-;100:
-;101:#else
-;102:		if (g_gametype.integer == GT_SINGLE_PLAYER || g_gametype.integer == GT_TOURNAMENT)
-;103:		{
-;104:			perfect = ( level.clients[playerClientNum].ps.persistant[PERS_RANK] == 0 && player->client->ps.persistant[PERS_KILLED] == 0 ) ? 1 : 0;
-;105:			Com_sprintf( msg, sizeof(msg), "postgame %i %i %i %i %i %i %i %i", level.numNonSpectatorClients, playerClientNum, accuracy,
+line 109
 ;106:				player->client->ps.persistant[PERS_IMPRESSIVE_COUNT], player->client->ps.persistant[PERS_EXCELLENT_COUNT],
 ;107:				player->client->ps.persistant[PERS_GAUNTLET_FRAG_COUNT], player->client->ps.persistant[PERS_SCORE],
 ;108:				perfect );
 ;109:		}
+LABELV $80
+line 111
 ;110:#endif
 ;111:	}
 LABELV $70
@@ -573,12 +407,12 @@ line 113
 ;113:	msglen = strlen( msg );
 ADDRLP4 44
 ARGP4
-ADDRLP4 1100
+ADDRLP4 1088
 ADDRGP4 strlen
 CALLI4
 ASGNI4
 ADDRLP4 1072
-ADDRLP4 1100
+ADDRLP4 1088
 INDIRI4
 ASGNI4
 line 114
@@ -586,9 +420,9 @@ line 114
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $115
+ADDRGP4 $93
 JUMPV
-LABELV $112
+LABELV $90
 line 115
 ;115:		n = level.sortedClients[i];
 ADDRLP4 4
@@ -606,13 +440,13 @@ ADDRLP4 8
 ARGP4
 CNSTI4 32
 ARGI4
-ADDRGP4 $118
+ADDRGP4 $96
 ARGP4
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRLP4 1108
-CNSTI4 3460
+ADDRLP4 1096
+CNSTI4 3392
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -620,13 +454,13 @@ ADDRGP4 level
 INDIRP4
 ADDP4
 ASGNP4
-ADDRLP4 1108
+ADDRLP4 1096
 INDIRP4
 CNSTI4 256
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 1108
+ADDRLP4 1096
 INDIRP4
 CNSTI4 248
 ADDP4
@@ -639,12 +473,12 @@ line 117
 ;117:		buflen = strlen( buf );
 ADDRLP4 8
 ARGP4
-ADDRLP4 1112
+ADDRLP4 1100
 ADDRGP4 strlen
 CALLI4
 ASGNI4
 ADDRLP4 1068
-ADDRLP4 1112
+ADDRLP4 1100
 INDIRI4
 ASGNI4
 line 118
@@ -658,12 +492,12 @@ CNSTI4 1
 ADDI4
 CVIU4 4
 CNSTU4 1024
-LTU4 $119
+LTU4 $97
 line 119
 ;119:			break;
-ADDRGP4 $114
+ADDRGP4 $92
 JUMPV
-LABELV $119
+LABELV $97
 line 121
 ;120:		}
 ;121:		strcat( msg, buf );
@@ -676,7 +510,7 @@ CALLP4
 pop
 line 122
 ;122:	}
-LABELV $113
+LABELV $91
 line 114
 ADDRLP4 0
 ADDRLP4 0
@@ -684,13 +518,13 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $115
+LABELV $93
 ADDRLP4 0
 INDIRI4
 ADDRGP4 level+80
 INDIRI4
-LTI4 $112
-LABELV $114
+LTI4 $90
+LABELV $92
 line 123
 ;123:	trap_SendConsoleCommand( EXEC_APPEND, msg );
 CNSTI4 2
@@ -703,7 +537,7 @@ pop
 line 124
 ;124:}
 LABELV $55
-endproc UpdateTournamentInfo 1116 68
+endproc UpdateTournamentInfo 1104 44
 proc SpawnModelOnVictoryPad 108 16
 line 127
 ;125:
@@ -729,10 +563,10 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $122
+NEU4 $100
 line 134
 ;134:		G_Printf( S_COLOR_RED "ERROR: out of gentities\n" );
-ADDRGP4 $124
+ADDRGP4 $102
 ARGP4
 ADDRGP4 G_Printf
 CALLV
@@ -741,9 +575,9 @@ line 135
 ;135:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $121
+ADDRGP4 $99
 JUMPV
-LABELV $122
+LABELV $100
 line 138
 ;136:	}
 ;137:
@@ -828,7 +662,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 868
+CNSTI4 860
 DIVI4
 ASGNI4
 line 146
@@ -904,7 +738,7 @@ CNSTI4 192
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $126
+NEI4 $104
 line 155
 ;155:		body->s.weapon = WP_MACHINEGUN;
 ADDRLP4 0
@@ -915,7 +749,7 @@ CNSTI4 2
 ASGNI4
 line 156
 ;156:	}
-LABELV $126
+LABELV $104
 line 157
 ;157:	if( body->s.weapon == WP_GAUNTLET) {
 ADDRLP4 0
@@ -924,7 +758,7 @@ CNSTI4 192
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $128
+NEI4 $106
 line 158
 ;158:		body->s.torsoAnim = TORSO_STAND2;
 ADDRLP4 0
@@ -935,7 +769,7 @@ CNSTI4 12
 ASGNI4
 line 159
 ;159:	}
-LABELV $128
+LABELV $106
 line 160
 ;160:	body->s.event = 0;
 ADDRLP4 0
@@ -1326,7 +1160,7 @@ line 187
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $121
+LABELV $99
 endproc SpawnModelOnVictoryPad 108 16
 proc CelebrateStop 12 0
 line 191
@@ -1344,7 +1178,7 @@ CNSTI4 192
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $154
+NEI4 $132
 line 195
 ;195:		anim = TORSO_STAND2;
 ADDRLP4 0
@@ -1352,9 +1186,9 @@ CNSTI4 12
 ASGNI4
 line 196
 ;196:	}
-ADDRGP4 $155
+ADDRGP4 $133
 JUMPV
-LABELV $154
+LABELV $132
 line 197
 ;197:	else {
 line 198
@@ -1364,7 +1198,7 @@ CNSTI4 11
 ASGNI4
 line 199
 ;199:	}
-LABELV $155
+LABELV $133
 line 200
 ;200:	player->s.torsoAnim = ( ( player->s.torsoAnim & ANIM_TOGGLEBIT ) ^ ANIM_TOGGLEBIT ) | anim;
 ADDRLP4 4
@@ -1393,7 +1227,7 @@ BORI4
 ASGNI4
 line 201
 ;201:}
-LABELV $153
+LABELV $131
 endproc CelebrateStop 12 0
 proc CelebrateStart 8 12
 line 205
@@ -1456,7 +1290,7 @@ line 215
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTI4 80
+CNSTI4 72
 ARGI4
 CNSTI4 0
 ARGI4
@@ -1465,7 +1299,7 @@ CALLV
 pop
 line 216
 ;216:}
-LABELV $156
+LABELV $134
 endproc CelebrateStart 8 12
 data
 align 4
@@ -1529,7 +1363,7 @@ CALLV
 pop
 line 231
 ;231:	VectorMA( level.intermission_origin, trap_Cvar_VariableIntegerValue( "g_podiumDist" ), vec, origin );
-ADDRGP4 $162
+ADDRGP4 $140
 ARGP4
 ADDRLP4 64
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -1546,7 +1380,7 @@ CVIF4 4
 MULF4
 ADDF4
 ASGNF4
-ADDRGP4 $162
+ADDRGP4 $140
 ARGP4
 ADDRLP4 68
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -1563,7 +1397,7 @@ CVIF4 4
 MULF4
 ADDF4
 ASGNF4
-ADDRGP4 $162
+ADDRGP4 $140
 ARGP4
 ADDRLP4 72
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -1582,7 +1416,7 @@ ADDF4
 ASGNF4
 line 232
 ;232:	origin[2] -= trap_Cvar_VariableIntegerValue( "g_podiumDrop" );
-ADDRGP4 $172
+ADDRGP4 $150
 ARGP4
 ADDRLP4 76
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -1613,7 +1447,7 @@ ADDRGP4 podium1
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $173
+EQU4 $151
 line 236
 ;236:		VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
 ADDRLP4 80
@@ -1821,7 +1655,7 @@ CALLV
 pop
 line 247
 ;247:	}
-LABELV $173
+LABELV $151
 line 249
 ;248:
 ;249:		if( podium2 ) {
@@ -1829,7 +1663,7 @@ ADDRGP4 podium2
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $204
+EQU4 $182
 line 250
 ;250:			VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
 ADDRLP4 80
@@ -2037,7 +1871,7 @@ CALLV
 pop
 line 261
 ;261:		}
-LABELV $204
+LABELV $182
 line 263
 ;262:
 ;263:		if( podium3 ) {
@@ -2045,7 +1879,7 @@ ADDRGP4 podium3
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $235
+EQU4 $213
 line 264
 ;264:			VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
 ADDRLP4 80
@@ -2253,11 +2087,11 @@ CALLV
 pop
 line 275
 ;275:		}
-LABELV $235
+LABELV $213
 line 277
 ;276:
 ;277:}
-LABELV $158
+LABELV $136
 endproc PodiumPlacementThink 92 16
 proc SpawnPodium 68 16
 line 280
@@ -2284,14 +2118,14 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $267
+NEU4 $245
 line 287
 ;287:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $266
+ADDRGP4 $244
 JUMPV
-LABELV $267
+LABELV $245
 line 290
 ;288:	}
 ;289:
@@ -2300,7 +2134,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 524
 ADDP4
-ADDRGP4 $269
+ADDRGP4 $247
 ASGNP4
 line 291
 ;291:	podium->s.eType = ET_GENERAL;
@@ -2321,7 +2155,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 868
+CNSTI4 860
 DIVI4
 ASGNI4
 line 293
@@ -2342,7 +2176,7 @@ CNSTI4 1
 ASGNI4
 line 295
 ;295:	podium->s.modelindex = G_ModelIndex( SP_PODIUM_MODEL );
-ADDRGP4 $270
+ADDRGP4 $248
 ARGP4
 ADDRLP4 36
 ADDRGP4 G_ModelIndex
@@ -2376,7 +2210,7 @@ CALLV
 pop
 line 298
 ;298:	VectorMA( level.intermission_origin, trap_Cvar_VariableIntegerValue( "g_podiumDist" ), vec, origin );
-ADDRGP4 $162
+ADDRGP4 $140
 ARGP4
 ADDRLP4 44
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -2393,7 +2227,7 @@ CVIF4 4
 MULF4
 ADDF4
 ASGNF4
-ADDRGP4 $162
+ADDRGP4 $140
 ARGP4
 ADDRLP4 48
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -2410,7 +2244,7 @@ CVIF4 4
 MULF4
 ADDF4
 ASGNF4
-ADDRGP4 $162
+ADDRGP4 $140
 ARGP4
 ADDRLP4 52
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -2429,7 +2263,7 @@ ADDF4
 ASGNF4
 line 299
 ;299:	origin[2] -= trap_Cvar_VariableIntegerValue( "g_podiumDrop" );
-ADDRGP4 $172
+ADDRGP4 $150
 ARGP4
 ADDRLP4 56
 ADDRGP4 trap_Cvar_VariableIntegerValue
@@ -2534,7 +2368,7 @@ line 308
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $266
+LABELV $244
 endproc SpawnPodium 68 16
 export SpawnModelsOnVictoryPads
 proc SpawnModelsOnVictoryPads 24 16
@@ -2585,14 +2419,14 @@ INDIRP4
 ARGP4
 ADDRGP4 offsetFirst
 ARGP4
-CNSTI4 868
+CNSTI4 860
 ADDRGP4 level+88
 INDIRI4
 MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3460
+CNSTI4 3392
 ADDRGP4 level+88
 INDIRI4
 MULI4
@@ -2620,7 +2454,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $293
+EQU4 $271
 line 330
 ;330:		player->nextthink = level.time + 2000;
 ADDRLP4 0
@@ -2648,7 +2482,7 @@ INDIRP4
 ASGNP4
 line 333
 ;333:	}
-LABELV $293
+LABELV $271
 line 335
 ;334:
 ;335:	player = SpawnModelOnVictoryPad( podium, offsetSecond, &g_entities[level.sortedClients[1]],
@@ -2657,14 +2491,14 @@ INDIRP4
 ARGP4
 ADDRGP4 offsetSecond
 ARGP4
-CNSTI4 868
+CNSTI4 860
 ADDRGP4 level+88+4
 INDIRI4
 MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3460
+CNSTI4 3392
 ADDRGP4 level+88+4
 INDIRI4
 MULI4
@@ -2692,7 +2526,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $300
+EQU4 $278
 line 338
 ;338:		podium2 = player;
 ADDRGP4 podium2
@@ -2701,14 +2535,14 @@ INDIRP4
 ASGNP4
 line 339
 ;339:	}
-LABELV $300
+LABELV $278
 line 341
 ;340:
 ;341:	if ( level.numNonSpectatorClients > 2 )  {
 ADDRGP4 level+80
 INDIRI4
 CNSTI4 2
-LEI4 $302
+LEI4 $280
 line 342
 ;342:		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
 ADDRLP4 4
@@ -2716,14 +2550,14 @@ INDIRP4
 ARGP4
 ADDRGP4 offsetThird
 ARGP4
-CNSTI4 868
+CNSTI4 860
 ADDRGP4 level+88+8
 INDIRI4
 MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3460
+CNSTI4 3392
 ADDRGP4 level+88+8
 INDIRI4
 MULI4
@@ -2751,7 +2585,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $303
+EQU4 $281
 line 345
 ;345:			podium3 = player;
 ADDRGP4 podium3
@@ -2762,17 +2596,17 @@ line 346
 ;346:		}
 line 347
 ;347:	} else if ((g_gametype.integer == GT_FFA) && (level.numConnectedClients > 2)) // Spawn the 3rd person in arsenal... The 3rd person will always be a spec
-ADDRGP4 $303
+ADDRGP4 $281
 JUMPV
-LABELV $302
+LABELV $280
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 0
-NEI4 $311
+NEI4 $289
 ADDRGP4 level+76
 INDIRI4
 CNSTI4 2
-LEI4 $311
+LEI4 $289
 line 348
 ;348:	{
 line 349
@@ -2782,14 +2616,14 @@ INDIRP4
 ARGP4
 ADDRGP4 offsetThird
 ARGP4
-CNSTI4 868
+CNSTI4 860
 ADDRGP4 level+88+8
 INDIRI4
 MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3460
+CNSTI4 3392
 ADDRGP4 level+88+8
 INDIRI4
 MULI4
@@ -2817,7 +2651,7 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $319
+EQU4 $297
 line 352
 ;352:		podium3 = player;
 ADDRGP4 podium3
@@ -2826,15 +2660,15 @@ INDIRP4
 ASGNP4
 line 353
 ;353:		}
-LABELV $319
+LABELV $297
 line 354
 ;354:	}
-LABELV $311
-LABELV $303
+LABELV $289
+LABELV $281
 line 356
 ;355:
 ;356:}
-LABELV $290
+LABELV $268
 endproc SpawnModelsOnVictoryPads 24 16
 export Svcmd_AbortPodium_f
 proc Svcmd_AbortPodium_f 0 0
@@ -2860,7 +2694,7 @@ ADDRGP4 podium1
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $322
+EQU4 $300
 line 373
 ;373:		podium1->nextthink = level.time;
 ADDRGP4 podium1
@@ -2880,10 +2714,10 @@ ADDRGP4 CelebrateStop
 ASGNP4
 line 375
 ;375:	}
-LABELV $322
+LABELV $300
 line 376
 ;376:}
-LABELV $321
+LABELV $299
 endproc Svcmd_AbortPodium_f 0 0
 bss
 export podium3
@@ -3210,7 +3044,6 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
-import G_StartKamikaze
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -3245,14 +3078,10 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
-import DropPortalDestination
-import DropPortalSource
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
-import fire_prox
-import fire_nail
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -3265,7 +3094,6 @@ import fire_plasma
 import fire_blaster
 import G_RunMissile
 import TossClientCubes
-import TossClientPersistantPowerups
 import TossClientItems
 import body_die
 import G_InvulnerabilityEffect
@@ -3497,7 +3325,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $270
+LABELV $248
 byte 1 109
 byte 1 111
 byte 1 100
@@ -3536,7 +3364,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $269
+LABELV $247
 byte 1 112
 byte 1 111
 byte 1 100
@@ -3545,7 +3373,7 @@ byte 1 117
 byte 1 109
 byte 1 0
 align 1
-LABELV $172
+LABELV $150
 byte 1 103
 byte 1 95
 byte 1 112
@@ -3560,7 +3388,7 @@ byte 1 111
 byte 1 112
 byte 1 0
 align 1
-LABELV $162
+LABELV $140
 byte 1 103
 byte 1 95
 byte 1 112
@@ -3575,7 +3403,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $124
+LABELV $102
 byte 1 94
 byte 1 49
 byte 1 69
@@ -3604,7 +3432,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $118
+LABELV $96
 byte 1 32
 byte 1 37
 byte 1 105
@@ -3616,7 +3444,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $109
+LABELV $88
 byte 1 112
 byte 1 111
 byte 1 115
@@ -3649,27 +3477,9 @@ byte 1 105
 byte 1 32
 byte 1 37
 byte 1 105
-byte 1 32
-byte 1 37
-byte 1 105
-byte 1 32
-byte 1 37
-byte 1 105
-byte 1 32
-byte 1 37
-byte 1 105
-byte 1 32
-byte 1 37
-byte 1 105
-byte 1 32
-byte 1 37
-byte 1 105
-byte 1 32
-byte 1 37
-byte 1 105
 byte 1 0
 align 1
-LABELV $71
+LABELV $76
 byte 1 112
 byte 1 111
 byte 1 115
@@ -3684,16 +3494,6 @@ byte 1 105
 byte 1 32
 byte 1 37
 byte 1 105
-byte 1 32
-byte 1 48
-byte 1 32
-byte 1 48
-byte 1 32
-byte 1 48
-byte 1 32
-byte 1 48
-byte 1 32
-byte 1 48
 byte 1 32
 byte 1 48
 byte 1 32
