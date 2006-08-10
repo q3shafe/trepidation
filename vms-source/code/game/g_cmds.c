@@ -180,15 +180,19 @@ void MC_think(gentity_t *ent){
 	ent->r.contents = CONTENTS_SOLID;
 	if (ent->s.time2==1)
 	{
-		if (ent->health<350)
+		if (ent->health<450)
 		{
 			ent->s.time2=0;
 		}
 	}
 	
-	if ((ent->s.time2==1)&(ent->health<1000)){
-		ent->health+=1;
-		ent->nextthink=level.time+100;
+	if (ent->s.time2==1) 
+	{
+		if (ent->health < 10000) 
+		{
+			ent->health+=1;
+			ent->nextthink=level.time+100;
+		}
 	}
 
 
@@ -397,7 +401,7 @@ void Cmd_SpawnMC_f( gentity_t *ent ){
 	base->takedamage=qtrue; // so they can be destoryed
 	base->die=turret_explode; // so they actually explode when destroyed
 	//base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
-	base->nextthink=level.time+5000;
+	base->nextthink=level.time+7000;
 	VectorSet( base->r.mins, -15, -15, -20 );
 	VectorSet( base->r.maxs, 35, 15, -5);
 	trap_LinkEntity (base);
@@ -492,10 +496,20 @@ void Cmd_TeleGren_f (gentity_t *ent) {
     if ( ent->istelepoint == 1 ) 
 	{
 		// Shafe The old way was just to drop it now we return flags to base if you try to teleport with one
-		//Team_ReturnFlagSound(Team_ResetFlag(ent->client->sess.sessionTeam), ent->client->sess.sessionTeam); // Maybe we should check to see if they have one before we try to drop it?
-		//Team_ResetFlag(ent->client->sess.sessionTeam)
-		Team_DropFlags( ent );  // Old Way
-		
+			
+		if (ent->client->ps.powerups[PW_REDFLAG]) 
+		{
+			Team_ReturnFlag( TEAM_RED );
+			ent->client->ps.powerups[PW_REDFLAG] = 0;
+		}
+
+		if (ent->client->ps.powerups[PW_BLUEFLAG]) 
+		{
+			Team_ReturnFlag( TEAM_BLUE );
+			ent->client->ps.powerups[PW_BLUEFLAG] = 0;
+		}
+
+
 		VectorCopy( ent->teleloc, ent->client->ps.origin );
 		ent->istelepoint = 0;
 		VectorClear( ent->teleloc );

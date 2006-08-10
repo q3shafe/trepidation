@@ -21,7 +21,25 @@ char	*cg_customSoundNames[MAX_CUSTOM_SOUNDS] = {
 	"*taunt2.wav",
 	"*taunt3.wav",
 	"*taunt4.wav",
-	"*taunt5.wav"
+	"*taunt5.wav"	
+	"*death1.mp3",
+	"*death2.mp3",
+	"*death3.mp3",
+	"*jump1.mp3",
+	"*pain25_1.mp3",
+	"*pain50_1.mp3",
+	"*pain75_1.mp3",
+	"*pain100_1.mp3",
+	"*falling1.mp3",
+	"*gasp.mp3",
+	"*drown.mp3",
+	"*fall1.mp3",
+	"*taunt.mp3",
+	"*taunt1.mp3",
+	"*taunt2.mp3",
+	"*taunt3.mp3",
+	"*taunt4.mp3",
+	"*taunt5.mp3"
 };
 
 
@@ -131,7 +149,8 @@ static qboolean	CG_ParseAnimationFile( const char *filename, clientInfo_t *ci ) 
 			} else if ( !Q_stricmp( token, "energy" ) ) {
 				ci->footsteps = FOOTSTEP_ENERGY;
 			} else {
-				CG_Printf( "Bad footsteps parm in %s: %s\n", filename, token );
+				CG_Printf( "Bad footsteps parm in %s: %s Reverting to Fallback\n", filename, token );
+				ci->footsteps = FOOTSTEP_NORMAL;
 			}
 			continue;
 		} else if ( !Q_stricmp( token, "headoffset" ) ) {
@@ -608,6 +627,7 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 	else {
 		headName = headModelName;
 	}
+
 	
 	Com_sprintf( filename, sizeof( filename ), "models/players/%s/lower.md3", modelName );
 	ci->legsModel = trap_R_RegisterModel( filename );
@@ -634,6 +654,7 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 		}
 	}
 
+	
 	Com_sprintf( filename, sizeof( filename ), "models/players/%s/upper.md3", modelName );
 	ci->torsoModel = trap_R_RegisterModel( filename );
 	if ( !ci->torsoModel ) {
@@ -718,7 +739,8 @@ if( headName[0] == '*' ) {
 	}
 
 	if ( !ci->modelIcon ) {
-		return qfalse;
+		Com_Printf( "CG_RegisterClientModelname: Failed to modelIcon %s\n", filename );
+		//return qfalse;
 	}
 
 	return qtrue;
@@ -769,6 +791,7 @@ static void CG_LoadClientInfo( clientInfo_t *ci ) {
 	char		*filename;
 	char		temp_string[200];
 	qboolean	noMoreTaunts, loadingTaunt;
+	int			y;
 
 	teamname[0] = 0;
 #ifdef MISSIONPACK
@@ -827,45 +850,20 @@ static void CG_LoadClientInfo( clientInfo_t *ci ) {
 			break;
 		}
 
-		/*
-		if ( strstr( s, "taunt" ) != NULL ) {
-			if ( noMoreTaunts )	{continue;}
-			loadingTaunt = qtrue;
-		} else {loadingTaunt=qfalse;}
-		*/
-
 		ci->sounds[i] = 0;
-		if (ci->efmodel == qtrue)
+		if (CG_FileExists(va("sound/player/%s/%s", dir, s + 1)))
 		{
-			ci->sounds[i] = trap_S_RegisterSound( va("sound/voice/%s/misc/%s", dir, s + 1), qfalse );
+			ci->sounds[i] = trap_S_RegisterSound( va("sound/player/%s/%s", dir, s + 1), qfalse );
 		} 
 		else
 		{
-			ci->sounds[i] = trap_S_RegisterSound( va("sound/player/%s/%s", dir, s + 1), qfalse );
+			ci->sounds[i] = trap_S_RegisterSound( va("sound/voice/%s/misc/%s", dir, s + 1), qtrue );
 		}
 				
 		
-		//if (modelloaded) {	
-		//		ci->sounds[i] = trap_S_RegisterSound( va("sound/voice/%s/misc/%s", dir, s + 1), qfalse );
-		//}
-
-		// if the model didn't load use the sounds of the default model
-
-		/*
-		if ( !ci->sounds[i] ) {
-			ci->sounds[i] = trap_S_RegisterSound( va("sound/player/%s/%s", fallback, s + 1), qfalse );
-		}
-		*/
-
-		/*
-		if ( loadingTaunt ) {//NOTE: this requires the taunts to not have any gaps
-			if ( ci->sounds[i] ) {ci->numTaunts++;}
-			else {noMoreTaunts=qtrue;}
-		}
-		*/
-		
-
+	y=i;
 	}
+
 
 	ci->deferred = qfalse;
 

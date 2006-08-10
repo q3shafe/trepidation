@@ -2039,7 +2039,7 @@ static void CG_DrawCrosshairNames( void ) {
 		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 		CG_DrawSmallString( 320 - w / 2, 190, s, color[3] * 0.5f );
 	}
-	
+
 #endif
 	trap_R_SetColor( NULL );
 }
