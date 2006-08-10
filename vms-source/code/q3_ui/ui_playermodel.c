@@ -104,7 +104,7 @@ static void PlayerModel_UpdateGrid( void )
 		{ 
 			// model/skin portrait
  			s_playermodel.pics[i].generic.name         = s_playermodel.iconnames[j];//s_playermodel.modelnames[j];
-			Com_Printf( "s_playermodel.pics[i].generic.name: %s  n", s_playermodel.iconnames[j] );	
+			//Com_Printf( "s_playermodel.pics[i].generic.name: %s  n", s_playermodel.iconnames[j] );	
 			s_playermodel.picbuttons[i].generic.flags &= ~QMF_INACTIVE;
 		}
 		else

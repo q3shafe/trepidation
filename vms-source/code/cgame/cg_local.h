@@ -295,7 +295,7 @@ typedef struct {
 // client model and other color coded effects
 // this is regenerated each time a client's configstring changes,
 // usually as a result of a userinfo (name, model, etc) change
-#define	MAX_CUSTOM_SOUNDS	32
+#define	MAX_CUSTOM_SOUNDS	36
 
 typedef struct {
 	qboolean		infoValid;

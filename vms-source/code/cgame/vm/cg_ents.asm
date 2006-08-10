@@ -152,7 +152,7 @@ pop
 line 33
 ;33:		ent.customShader=cgs.media.battleSuitShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+152852+420
+ADDRGP4 cgs+153876+420
 INDIRI4
 ASGNI4
 line 34
@@ -171,7 +171,7 @@ line 37
 ;36:	case 2:
 ;37:		ent.customShader=cgs.media.invisShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+152852+412
+ADDRGP4 cgs+153876+412
 INDIRI4
 ASGNI4
 line 38
@@ -211,7 +211,7 @@ pop
 line 46
 ;46:		ent.customShader=cgs.media.quadShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+152852+400
+ADDRGP4 cgs+153876+400
 INDIRI4
 ASGNI4
 line 47
@@ -2672,7 +2672,7 @@ ASGNF4
 line 504
 ;504:		ent.customShader = cgs.media.flameBallShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+152852+484
+ADDRGP4 cgs+153876+484
 INDIRI4
 ASGNI4
 line 505
@@ -4526,7 +4526,7 @@ NEI4 $557
 line 894
 ;894:			model.hModel = cgs.media.redFlagBaseModel;
 ADDRLP4 0+8
-ADDRGP4 cgs+152852+108
+ADDRGP4 cgs+153876+108
 INDIRI4
 ASGNI4
 line 895
@@ -4546,7 +4546,7 @@ NEI4 $562
 line 897
 ;897:			model.hModel = cgs.media.blueFlagBaseModel;
 ADDRLP4 0+8
-ADDRGP4 cgs+152852+112
+ADDRGP4 cgs+153876+112
 INDIRI4
 ASGNI4
 line 898
@@ -4559,7 +4559,7 @@ line 899
 line 900
 ;900:			model.hModel = cgs.media.neutralFlagBaseModel;
 ADDRLP4 0+8
-ADDRGP4 cgs+152852+116
+ADDRGP4 cgs+153876+116
 INDIRI4
 ASGNI4
 line 901
