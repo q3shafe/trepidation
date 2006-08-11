@@ -152,7 +152,7 @@ pop
 line 33
 ;33:		ent.customShader=cgs.media.battleSuitShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+153876+420
+ADDRGP4 cgs+153876+424
 INDIRI4
 ASGNI4
 line 34
@@ -171,7 +171,7 @@ line 37
 ;36:	case 2:
 ;37:		ent.customShader=cgs.media.invisShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+153876+412
+ADDRGP4 cgs+153876+416
 INDIRI4
 ASGNI4
 line 38
@@ -209,9 +209,9 @@ ADDRGP4 trap_R_AddRefEntityToScene
 CALLV
 pop
 line 46
-;46:		ent.customShader=cgs.media.quadShader;
+;46:		ent.customShader=cgs.media.buildShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+153876+400
+ADDRGP4 cgs+153876+408
 INDIRI4
 ASGNI4
 line 47
@@ -2672,7 +2672,7 @@ ASGNF4
 line 504
 ;504:		ent.customShader = cgs.media.flameBallShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+153876+484
+ADDRGP4 cgs+153876+488
 INDIRI4
 ASGNI4
 line 505

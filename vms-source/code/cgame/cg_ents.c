@@ -43,7 +43,7 @@ static void CG_TURRET(centity_t *cent)
 	case 9:
 		// Being Built
 		trap_R_AddRefEntityToScene (&ent); // make the model show up
-		ent.customShader=cgs.media.quadShader;
+		ent.customShader=cgs.media.buildShader;
 		trap_R_AddRefEntityToScene (&ent); // make the shader show up
 		break;
 	default:

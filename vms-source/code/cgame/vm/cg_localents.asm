@@ -733,7 +733,7 @@ NEI4 $114
 line 170
 ;170:				s = cgs.media.gibBounce1Sound;
 ADDRLP4 8
-ADDRGP4 cgs+153876+724
+ADDRGP4 cgs+153876+728
 INDIRI4
 ASGNI4
 line 171
@@ -748,7 +748,7 @@ NEI4 $118
 line 172
 ;172:				s = cgs.media.gibBounce2Sound;
 ADDRLP4 8
-ADDRGP4 cgs+153876+728
+ADDRGP4 cgs+153876+732
 INDIRI4
 ASGNI4
 line 173
@@ -759,7 +759,7 @@ LABELV $118
 line 174
 ;174:				s = cgs.media.gibBounce3Sound;
 ADDRLP4 8
-ADDRGP4 cgs+153876+732
+ADDRGP4 cgs+153876+736
 INDIRI4
 ASGNI4
 line 175
