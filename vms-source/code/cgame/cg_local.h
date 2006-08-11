@@ -773,6 +773,7 @@ typedef struct {
 	// powerup shaders
 	qhandle_t	quadShader;
 	qhandle_t	redQuadShader;
+	qhandle_t	buildShader; // Shafe
 	qhandle_t	quadWeaponShader;
 	qhandle_t	invisShader;
 	qhandle_t	regenShader;

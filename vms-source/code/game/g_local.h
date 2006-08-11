@@ -367,6 +367,7 @@ struct gclient_s {
 	int			timeResidual;
 	qboolean	noHead;				// Shafe - Trep - Headshot  Player has no head! Oh My!
 
+
 #ifdef MISSIONPACK
 	gentity_t	*persistantPowerup;
 	int			portalID;
@@ -500,6 +501,12 @@ typedef struct {
 
 	int			redlevel;
 	int			bluelevel;
+	int			redGenerators;		// All of these are for future gametypes
+	int			blueGenerators;
+	int			redTurrets;
+	int			blueTurrets;
+	int			redCredits;
+	int			blueCredits;
 
 
 } level_locals_t;
