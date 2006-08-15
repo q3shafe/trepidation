@@ -38,11 +38,11 @@ line 61
 ;25:
 ;26:
 ;27:static const char *rate_items[] = {
-;28:	"LAN/Cable/xDSL",
+;28:	"<= 28.8K",
 ;29:	"33.6K",
 ;30:	"56K",
 ;31:	"ISDN",
-;32:	"<= 28.8K",
+;32:	"LAN/Cable/xDSL",
 ;33:	0
 ;34:};
 ;35:
@@ -184,10 +184,10 @@ INDIRI4
 CNSTI4 0
 NEI4 $86
 line 87
-;87:			trap_Cvar_SetValue( "rate", 25000 );
+;87:			trap_Cvar_SetValue( "rate", 2500 );
 ADDRGP4 $90
 ARGP4
-CNSTF4 1187205120
+CNSTF4 1159479296
 ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
@@ -264,10 +264,10 @@ INDIRI4
 CNSTI4 4
 NEI4 $79
 line 99
-;99:			trap_Cvar_SetValue( "rate", 2500 );
+;99:			trap_Cvar_SetValue( "rate", 25000 );
 ADDRGP4 $90
 ARGP4
-CNSTF4 1159479296
+CNSTF4 1187205120
 ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
@@ -1615,14 +1615,20 @@ byte 1 101
 byte 1 0
 align 1
 LABELV $73
-byte 1 60
-byte 1 61
-byte 1 32
-byte 1 50
-byte 1 56
-byte 1 46
-byte 1 56
-byte 1 75
+byte 1 76
+byte 1 65
+byte 1 78
+byte 1 47
+byte 1 67
+byte 1 97
+byte 1 98
+byte 1 108
+byte 1 101
+byte 1 47
+byte 1 120
+byte 1 68
+byte 1 83
+byte 1 76
 byte 1 0
 align 1
 LABELV $72
@@ -1647,18 +1653,12 @@ byte 1 75
 byte 1 0
 align 1
 LABELV $69
-byte 1 76
-byte 1 65
-byte 1 78
-byte 1 47
-byte 1 67
-byte 1 97
-byte 1 98
-byte 1 108
-byte 1 101
-byte 1 47
-byte 1 120
-byte 1 68
-byte 1 83
-byte 1 76
+byte 1 60
+byte 1 61
+byte 1 32
+byte 1 50
+byte 1 56
+byte 1 46
+byte 1 56
+byte 1 75
 byte 1 0

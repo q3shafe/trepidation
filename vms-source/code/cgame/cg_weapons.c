@@ -1695,9 +1695,12 @@ void CG_PrevWeapon_f( void ) {
 		if ( cg.weaponSelect == -1 ) {
 			cg.weaponSelect = 15;
 		}
+		
+		/*
 		if ( cg.weaponSelect == WP_GAUNTLET ) {
 			continue;		// never cycle to gauntlet
 		}
+		*/
 		if ( CG_WeaponSelectable( cg.weaponSelect ) ) {
 			break;
 		}

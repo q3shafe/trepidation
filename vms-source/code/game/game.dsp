@@ -777,6 +777,25 @@ NODEP_CPP_G_MOV=\
 # End Source File
 # Begin Source File
 
+SOURCE=.\g_playerclass.c
+
+!IF  "$(CFG)" == "game - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "game - Win32 Debug"
+
+!ELSEIF  "$(CFG)" == "game - Win32 Debug Alpha"
+
+!ELSEIF  "$(CFG)" == "game - Win32 Release Alpha"
+
+!ELSEIF  "$(CFG)" == "game - Win32 Release TA"
+
+!ELSEIF  "$(CFG)" == "game - Win32 Debug TA"
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
 SOURCE=.\g_session.c
 
 !IF  "$(CFG)" == "game - Win32 Release"

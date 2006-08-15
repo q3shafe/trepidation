@@ -25,11 +25,11 @@ NETWORK OPTIONS MENU
 
 
 static const char *rate_items[] = {
-	"LAN/Cable/xDSL",
+	"<= 28.8K",
 	"33.6K",
 	"56K",
 	"ISDN",
-	"<= 28.8K",
+	"LAN/Cable/xDSL",
 	0
 };
 
@@ -84,7 +84,7 @@ static void UI_NetworkOptionsMenu_Event( void* ptr, int event ) {
 
 	case ID_RATE:   // Shafe - Trep - Rearranged This To Default To The Popular
 		if( networkOptionsInfo.rate.curvalue == 0 ) {
-			trap_Cvar_SetValue( "rate", 25000 );
+			trap_Cvar_SetValue( "rate", 2500 );
 		}
 		else if( networkOptionsInfo.rate.curvalue == 1 ) {
 			trap_Cvar_SetValue( "rate", 3000 );
@@ -96,7 +96,7 @@ static void UI_NetworkOptionsMenu_Event( void* ptr, int event ) {
 			trap_Cvar_SetValue( "rate", 5000 );
 		}
 		else if( networkOptionsInfo.rate.curvalue == 4 ) {
-			trap_Cvar_SetValue( "rate", 2500 );
+			trap_Cvar_SetValue( "rate", 25000 );
 		}
 		break;
 
