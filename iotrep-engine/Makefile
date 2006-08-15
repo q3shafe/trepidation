@@ -104,6 +104,10 @@ ifndef USE_CODEC_VORBIS
 USE_CODEC_VORBIS=0
 endif
 
+ifndef USE_CODEC_MP3
+USE_CODEC_MP3=0
+endif
+
 ifndef USE_LOCAL_HEADERS
 USE_LOCAL_HEADERS=1
 endif
@@ -186,6 +190,10 @@ ifeq ($(PLATFORM),linux)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
 
+  ifeq ($(USE_CODEC_MP3),1)
+    BASE_CFLAGS += -DUSE_CODEC_MP3=1
+  endif
+
   ifeq ($(USE_SDL),1)
     BASE_CFLAGS += -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 $(shell sdl-config --cflags)
     GL_CFLAGS =
@@ -194,6 +202,11 @@ ifeq ($(PLATFORM),linux)
   endif
 
   OPTIMIZE = -O3 -ffast-math -funroll-loops -fomit-frame-pointer
+
+  ifeq ($(USE_CODEC_MP3),1)
+    CLIENT_LDFLAGS += -lmad
+  endif
+
 
   ifeq ($(ARCH),x86_64)
     OPTIMIZE = -O3 -fomit-frame-pointer -ffast-math -funroll-loops \
@@ -283,6 +296,11 @@ ifeq ($(PLATFORM),darwin)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
 
+  ifeq ($(USE_CODEC_MP3),1)
+    BASE_CFLAGS += -DUSE_CODEC_MP3=1
+  endif
+
+
   ifeq ($(USE_SDL),1)
     BASE_CFLAGS += -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 -D_THREAD_SAFE=1 -I$(SDLHDIR)/include
     GL_CFLAGS =
@@ -343,6 +361,11 @@ ifeq ($(PLATFORM),darwin)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
   endif
 
+  ifeq ($(USE_CODEC_MP3),1)
+    CLIENT_LDFLAGS += -lmad
+  endif
+
+
 else # ifeq darwin
 
 
@@ -366,6 +389,11 @@ ifeq ($(PLATFORM),mingw32)
   ifeq ($(USE_CODEC_VORBIS),1)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
+
+  ifeq ($(USE_CODEC_MP3),1)
+    BASE_CFLAGS += -DUSE_CODEC_MP3=1
+  endif
+
 
   GL_CFLAGS =
   MINGW_CFLAGS = -DDONT_TYPEDEF_INT32
@@ -391,6 +419,11 @@ ifeq ($(PLATFORM),mingw32)
   ifeq ($(USE_CODEC_VORBIS),1)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
   endif
+
+  ifeq ($(USE_CODEC_MP3),1)
+    CLIENT_LDFLAGS += -lmad
+  endif
+
 
   ifeq ($(ARCH),x86)
     # build 32bit
@@ -432,6 +465,11 @@ ifeq ($(PLATFORM),freebsd)
   ifeq ($(USE_CODEC_VORBIS),1)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
+
+  ifeq ($(USE_CODEC_MP3),1)
+    BASE_CFLAGS += -DUSE_CODEC_MP3=1
+  endif
+
 
   ifeq ($(USE_SDL),1)
     BASE_CFLAGS += $(shell sdl-config --cflags) -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1
@@ -481,6 +519,9 @@ ifeq ($(PLATFORM),freebsd)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
   endif
 
+  ifeq ($(USE_CODEC_MP3),1)
+    CLIENT_LDFLAGS += -lmad
+  endif
 
 else # ifeq freebsd
 
@@ -797,6 +838,7 @@ Q3OBJ = \
   $(B)/client/snd_codec.o \
   $(B)/client/snd_codec_wav.o \
   $(B)/client/snd_codec_ogg.o \
+  $(B)/client/snd_codec_mp3.o \
   \
   $(B)/client/qal.o \
   $(B)/client/snd_openal.o \
@@ -1014,6 +1056,7 @@ $(B)/client/snd_main.o : $(CDIR)/snd_main.c; $(DO_CC)
 $(B)/client/snd_codec.o : $(CDIR)/snd_codec.c; $(DO_CC)
 $(B)/client/snd_codec_wav.o : $(CDIR)/snd_codec_wav.c; $(DO_CC)
 $(B)/client/snd_codec_ogg.o : $(CDIR)/snd_codec_ogg.c; $(DO_CC)
+$(B)/client/snd_codec_mp3.o : $(CDIR)/snd_codec_mp3.c; $(DO_CC)
 
 $(B)/client/qal.o : $(CDIR)/qal.c; $(DO_CC)
 $(B)/client/snd_openal.o : $(CDIR)/snd_openal.c; $(DO_CC)
@@ -1781,3 +1824,5 @@ ifneq ($(strip $(D_FILES)),)
 endif
 
 .PHONY: release debug clean distclean copyfiles installer dist
+
+
