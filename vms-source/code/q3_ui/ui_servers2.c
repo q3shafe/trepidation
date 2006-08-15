@@ -559,7 +559,6 @@ static void ArenaServers_UpdateMenu( void ) {
 			if( servernodeptr->g_GameMode != 1 ) {
 					continue;
 			}
-			if(g_GameMode == 0) { continue;	}
 			break;
 		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
 			if( servernodeptr->g_GameMode != 2) {
@@ -1657,6 +1656,7 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.lblname.errorpic				= ART_UNKNOWNMAP;
 
 
+	//g_arenaservers.master.curvalue = 2;
 	
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.banner );
 

@@ -711,6 +711,10 @@ qboolean	BG_PlayerTouchesItem( playerState_t *ps, entityState_t *item, int atTim
 #define MAX_ARENAS			1024
 #define	MAX_ARENAS_TEXT		8192
 
+#define CLASSES_PER_TIER		4
+#define MAX_CLASSES			1024
+#define	MAX_CLASSES_TEXT		8192
+
 #define MAX_BOTS			1024
 #define MAX_BOTS_TEXT		8192
 
