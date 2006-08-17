@@ -9,6 +9,31 @@
 
 // Shafe - Once everything works this file needs cleaned up
 
+
+
+void pdg_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod){
+
+	vec3_t dir; // needed by the event being added
+
+	dir[0] = dir[1] = 0;
+	dir[2] = 1;
+	if (self->chain)
+		G_FreeEntity(self->chain); // get rid of the gun. // the gun just vanishes
+		self->s.weapon=WP_ROCKET_LAUNCHER; // to tell it what kind of explosion to use
+		G_AddEvent( self, EV_MISSILE_MISS, DirToByte( dir ) ); // to tell it to spawn an explosion here	
+		self->freeAfterEvent = qtrue; // so it goes away after the explosion
+
+	if (self->parent->istelepoint != 0)
+	{
+		trap_SendServerCommand( self->r.ownerNum, va("cp \"^9%s Destroyed your PDG!\n\"", attacker->client->pers.netname) );
+	}
+	self->parent->istelepoint = 0; // client cannot teleport
+ 	VectorClear( self->parent->teleloc ); // clear the teleport location
+	//G_Printf( S_COLOR_GREEN "Particle Displacement Grenade Expired\n" );
+
+
+}
+
 /*
 ================
 G_Missile_Die
@@ -17,6 +42,7 @@ G_Missile_Die
 void G_Missile_Die( gentity_t *ent, gentity_t *inflictor, gentity_t *attacker, int damage, int mod ) {
 	ent->nextthink = level.time + 1;
 	ent->think = G_ExplodeMissile;
+
 }
 
 /*
@@ -96,6 +122,7 @@ void G_ExplodeMissile( gentity_t *ent ) {
 	}
 
 	trap_LinkEntity( ent );
+
 }
 
 
@@ -662,6 +689,11 @@ gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->die = G_ExplodePDGrenade;
 	//bolt-ignoresize = qtrue;
 	*/
+
+	// Health? Think it'll work?
+	bolt->takedamage=qtrue;
+	bolt->health = 35;
+	bolt->die = pdg_explode;
 
 	bolt->s.pos.trType = TR_GRAVITY;
 	 bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;
