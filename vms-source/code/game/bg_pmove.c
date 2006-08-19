@@ -1131,10 +1131,10 @@ static void PM_GroundTrace( void ) {
 		pml.groundPlane = qfalse;
 		pml.walking = qfalse;
 		
-		// Shafe - Holy Hell  How do I make this read g_multijump? ???
-		/*		
-		//if (g_MultiJump.integer != 0)
-		//{ 
+
+		/*
+		if (g_MultiJumps.integer != 0)
+		{ 
 			
 			// Ignore and reset multijumps and wall jump if they have the jetpack
 			if (pm->ps->powerups[PW_FLIGHT]) 
@@ -1145,13 +1145,14 @@ static void PM_GroundTrace( void ) {
 			{
 
 				// Go ahead and do the multijump
-				if (pm->ps->MultiJumps < g_MultiJump.integer)
+				if (pm->ps->MultiJumps < g_MultiJumps.integer)
 				{
 					PM_CheckJump ();
 				}
 			}
 		} 
 		*/
+
 		return;
 	}
 
@@ -1176,16 +1177,17 @@ static void PM_GroundTrace( void ) {
 	}
 	
 
+	
+	
 
 
 	// slopes that are too steep will not be considered onground
 	if ( trace.plane.normal[2] < MIN_WALK_NORMAL ) {  
 		
-		// Shafe - Wall Jumping 
-	
-		//if (pm->ps->MultiJumps < 4 ) {
-			PM_CheckJump(); // Shafe - Trep - Wall jumping?
-		//}
+			
+//		if (pm->ps->MultiJumps < 5 ) {
+			PM_CheckJump(); // Allows you to jump up slopes
+//		}
 	
 		
 		if ( pm->debugLevel ) {

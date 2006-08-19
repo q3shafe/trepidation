@@ -270,7 +270,6 @@ typedef struct {
 	int			samplehead;
 	// Shafe - Trep Specific Stuff
 	int			holdable;		// Shafe - Trep - Notes any holdable 1=medkit NOT USED 
-//	int			Multijumps;		// Shafe - Trep - Mulijumps
 	qboolean	h_gauntlet;
 	qboolean	h_mg;
 	qboolean	h_sg;
@@ -681,6 +680,12 @@ void G_PredictPlayerMove( gentity_t *ent, float frametime );
 //unlagged - g_unlagged.c
 
 //
+// g_buildables.c
+//
+void BuildTurret( gentity_t *ent , int type );
+void BuildGenerator( gentity_t *ent );
+void BuildMC( gentity_t *ent );
+//
 // g_client.c
 //
 team_t TeamCount( int ignoreClientNum, int team );
@@ -905,7 +910,7 @@ extern	vmCvar_t	g_instagib;
 extern	vmCvar_t	g_GameMode;
 
 // Arsenal
-extern	vmCvar_t	g_MultiJump;
+extern	vmCvar_t	g_MultiJumps;
 extern	vmCvar_t	g_StartGauntlet;
 extern	vmCvar_t	g_StartMG;
 extern	vmCvar_t	g_StartSG;

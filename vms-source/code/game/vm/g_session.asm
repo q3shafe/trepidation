@@ -39,18 +39,6 @@ INDIRP4
 ASGNP4
 ADDRLP4 8
 INDIRP4
-CNSTI4 2492
-ADDP4
-INDIRI4
-ARGI4
-ADDRLP4 8
-INDIRP4
-CNSTI4 2496
-ADDP4
-INDIRI4
-ARGI4
-ADDRLP4 8
-INDIRP4
 CNSTI4 2500
 ADDP4
 INDIRI4
@@ -76,6 +64,18 @@ ARGI4
 ADDRLP4 8
 INDIRP4
 CNSTI4 2516
+ADDP4
+INDIRI4
+ARGI4
+ADDRLP4 8
+INDIRP4
+CNSTI4 2520
+ADDP4
+INDIRI4
+ARGI4
+ADDRLP4 8
+INDIRP4
+CNSTI4 2524
 ADDP4
 INDIRI4
 ARGI4
@@ -108,7 +108,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3392
+CNSTI4 3400
 DIVI4
 ARGI4
 ADDRLP4 16
@@ -167,7 +167,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3392
+CNSTI4 3400
 DIVI4
 ARGI4
 ADDRLP4 1040
@@ -205,24 +205,24 @@ INDIRP4
 ASGNP4
 ADDRLP4 1044
 INDIRP4
-CNSTI4 2496
+CNSTI4 2504
 ADDP4
 ARGP4
 ADDRLP4 1032
 ARGP4
 ADDRLP4 1044
 INDIRP4
-CNSTI4 2504
-ADDP4
-ARGP4
-ADDRLP4 1044
-INDIRP4
-CNSTI4 2508
-ADDP4
-ARGP4
-ADDRLP4 1044
-INDIRP4
 CNSTI4 2512
+ADDP4
+ARGP4
+ADDRLP4 1044
+INDIRP4
+CNSTI4 2516
+ADDP4
+ARGP4
+ADDRLP4 1044
+INDIRP4
+CNSTI4 2520
 ADDP4
 ARGP4
 ADDRLP4 1028
@@ -244,7 +244,7 @@ line 72
 ;72:	client->sess.sessionTeam = (team_t)sessionTeam;
 ADDRFP4 0
 INDIRP4
-CNSTI4 2492
+CNSTI4 2500
 ADDP4
 ADDRLP4 1036
 INDIRI4
@@ -253,7 +253,7 @@ line 73
 ;73:	client->sess.spectatorState = (spectatorState_t)spectatorState;
 ADDRFP4 0
 INDIRP4
-CNSTI4 2500
+CNSTI4 2508
 ADDP4
 ADDRLP4 1032
 INDIRI4
@@ -262,7 +262,7 @@ line 74
 ;74:	client->sess.teamLeader = (qboolean)teamLeader;
 ADDRFP4 0
 INDIRP4
-CNSTI4 2516
+CNSTI4 2524
 ADDP4
 ADDRLP4 1028
 INDIRI4
@@ -292,7 +292,7 @@ line 89
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 2492
+CNSTI4 2500
 ADDP4
 ASGNP4
 line 93
@@ -658,21 +658,21 @@ JUMPV
 LABELV $98
 line 178
 ;178:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3392
+CNSTI4 3400
 ADDRLP4 0
 INDIRI4
 MULI4
 ADDRGP4 level
 INDIRP4
 ADDP4
-CNSTI4 468
+CNSTI4 472
 ADDP4
 INDIRI4
 CNSTI4 2
 NEI4 $103
 line 179
 ;179:			G_WriteClientSessionData( &level.clients[i] );
-CNSTI4 3392
+CNSTI4 3400
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -896,7 +896,6 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
-import g_MultiJump
 import g_GameMode
 import g_instagib
 import sv_fps
@@ -1038,6 +1037,9 @@ import SetClientViewAngle
 import PickTeam
 import TeamLeader
 import TeamCount
+import BuildMC
+import BuildGenerator
+import BuildTurret
 import G_PredictPlayerMove
 import G_UnTimeShiftClient
 import G_UndoTimeShiftFor
@@ -1133,6 +1135,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable

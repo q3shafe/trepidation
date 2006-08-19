@@ -506,6 +506,25 @@ SOURCE=.\g_bot.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\g_buildables.c
+
+!IF  "$(CFG)" == "game - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "game - Win32 Debug"
+
+!ELSEIF  "$(CFG)" == "game - Win32 Debug Alpha"
+
+!ELSEIF  "$(CFG)" == "game - Win32 Release Alpha"
+
+!ELSEIF  "$(CFG)" == "game - Win32 Release TA"
+
+!ELSEIF  "$(CFG)" == "game - Win32 Debug TA"
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
 SOURCE=.\g_client.c
 
 !IF  "$(CFG)" == "game - Win32 Release"

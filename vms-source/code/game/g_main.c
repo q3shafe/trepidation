@@ -89,7 +89,7 @@ vmCvar_t	sv_fps;
 vmCvar_t	g_instagib;
 vmCvar_t	g_GameMode;
 
-vmCvar_t	g_MultiJump;
+vmCvar_t	g_MultiJumps;
 
 // Arsenal
 vmCvar_t	g_StartGauntlet;
@@ -216,7 +216,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_StartBFG, "g_StartBFG", "0", CVAR_ARCHIVE, 0, qtrue  },
 
 
-	{ &g_MultiJump, "g_MultiJump", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue }
+	{ &g_MultiJumps, "g_MultiJumps", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue }
 
 	
 };

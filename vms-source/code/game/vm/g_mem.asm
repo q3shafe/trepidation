@@ -353,7 +353,6 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
-import g_MultiJump
 import g_GameMode
 import g_instagib
 import sv_fps
@@ -496,6 +495,9 @@ import SetClientViewAngle
 import PickTeam
 import TeamLeader
 import TeamCount
+import BuildMC
+import BuildGenerator
+import BuildTurret
 import G_PredictPlayerMove
 import G_UnTimeShiftClient
 import G_UndoTimeShiftFor
@@ -591,6 +593,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable

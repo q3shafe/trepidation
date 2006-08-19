@@ -114,15 +114,20 @@ line 28
 ;28:		trap_SendServerCommand( self->r.ownerNum, va("cp \"^9%s Destroyed your PDG!\n\"", attacker->client->pers.netname) );
 ADDRGP4 $62
 ARGP4
+ADDRLP4 20
+CNSTI4 516
+ASGNI4
 ADDRFP4 8
 INDIRP4
-CNSTI4 516
+ADDRLP4 20
+INDIRI4
 ADDP4
 INDIRP4
-CNSTI4 512
+ADDRLP4 20
+INDIRI4
 ADDP4
 ARGP4
-ADDRLP4 20
+ADDRLP4 24
 ADDRGP4 va
 CALLP4
 ASGNP4
@@ -132,7 +137,7 @@ CNSTI4 512
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 20
+ADDRLP4 24
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
@@ -850,7 +855,7 @@ MULI4
 ADDRGP4 g_entities+516
 ADDP4
 INDIRP4
-CNSTI4 2588
+CNSTI4 2596
 ADDP4
 ASGNP4
 ADDRLP4 40
@@ -1265,7 +1270,7 @@ MULI4
 ADDRGP4 g_entities+516
 ADDP4
 INDIRP4
-CNSTI4 2588
+CNSTI4 2596
 ADDP4
 ASGNP4
 ADDRLP4 28
@@ -2030,7 +2035,7 @@ MULI4
 ADDRGP4 g_entities+516
 ADDP4
 INDIRP4
-CNSTI4 2588
+CNSTI4 2596
 ADDP4
 ASGNP4
 ADDRLP4 28
@@ -2327,7 +2332,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2632
+CNSTI4 2640
 ADDP4
 INDIRP4
 CVPU4 4
@@ -2347,7 +2352,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2632
+CNSTI4 2640
 ADDP4
 CNSTP4 0
 ASGNP4
@@ -2361,7 +2366,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2636
+CNSTI4 2644
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -2375,7 +2380,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2628
+CNSTI4 2636
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -4053,7 +4058,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2492
+CNSTI4 2500
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -6439,7 +6444,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 472
+CNSTI4 476
 ADDP4
 INDIRI4
 CNSTI4 50
@@ -6619,7 +6624,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2632
+CNSTI4 2640
 ADDP4
 ADDRLP4 0
 INDIRP4
@@ -6822,7 +6827,6 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
-import g_MultiJump
 import g_GameMode
 import g_instagib
 import sv_fps
@@ -6968,6 +6972,9 @@ import SetClientViewAngle
 import PickTeam
 import TeamLeader
 import TeamCount
+import BuildMC
+import BuildGenerator
+import BuildTurret
 import G_PredictPlayerMove
 import G_UnTimeShiftClient
 import G_UndoTimeShiftFor
@@ -7052,6 +7059,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
