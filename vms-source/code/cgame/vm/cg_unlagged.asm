@@ -36,7 +36,7 @@ line 24
 ADDRFP4 0
 INDIRP4
 INDIRI4
-ADDRGP4 cg+107644+140
+ADDRGP4 cg+107636+140
 INDIRI4
 EQI4 $73
 line 25
@@ -64,7 +64,7 @@ line 34
 ;33:	// get the muzzle point
 ;34:	VectorCopy( cg.predictedPlayerState.origin, muzzlePoint );
 ADDRLP4 0
-ADDRGP4 cg+107644+20
+ADDRGP4 cg+107636+20
 INDIRB
 ASGNB 12
 line 35
@@ -72,7 +72,7 @@ line 35
 ADDRLP4 0+8
 ADDRLP4 0+8
 INDIRF4
-ADDRGP4 cg+107644+164
+ADDRGP4 cg+107636+164
 INDIRI4
 CVIF4 4
 ADDF4
@@ -81,7 +81,7 @@ line 38
 ;36:
 ;37:	// get forward, right, and up
 ;38:	AngleVectors( cg.predictedPlayerState.viewangles, forward, right, up );
-ADDRGP4 cg+107644+152
+ADDRGP4 cg+107636+152
 ARGP4
 ADDRLP4 12
 ARGP4
@@ -312,7 +312,7 @@ line 72
 ;72:						CG_Printf("^3Int: time: %d, j: %d, k: %d, origin: %0.2f %0.2f %0.2f\n",
 ADDRGP4 $119
 ARGP4
-ADDRGP4 cg+107616
+ADDRGP4 cg+107608
 INDIRI4
 ARGI4
 ADDRLP4 164
@@ -363,7 +363,7 @@ line 75
 ;75:						CG_Printf("^5frac: %0.4f, origin1: %0.2f %0.2f %0.2f, origin2: %0.2f %0.2f %0.2f\n",
 ADDRGP4 $123
 ARGP4
-ADDRGP4 cg+107596
+ADDRGP4 cg+107588
 INDIRF4
 ARGF4
 ADDRLP4 140
@@ -492,7 +492,7 @@ line 96
 ;96:						CG_Printf("^3Ext: time: %d, j: %d, k: %d, origin: %0.2f %0.2f %0.2f\n",
 ADDRGP4 $135
 ARGP4
-ADDRGP4 cg+107616
+ADDRGP4 cg+107608
 INDIRI4
 ARGI4
 ADDRLP4 164
@@ -543,7 +543,7 @@ line 99
 ;99:						CG_Printf("^5frac: %0.4f, origin1: %0.2f %0.2f %0.2f, origin2: %0.2f %0.2f %0.2f\n",
 ADDRGP4 $123
 ARGP4
-ADDRGP4 cg+107596
+ADDRGP4 cg+107588
 INDIRF4
 ARGF4
 ADDRLP4 140
@@ -596,7 +596,7 @@ INDIRP4
 ARGP4
 ADDRLP4 116
 ARGP4
-ADDRGP4 cg+107644+140
+ADDRGP4 cg+107636+140
 INDIRI4
 ARGI4
 CNSTI4 1
@@ -713,7 +713,7 @@ CNSTI4 192
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 cg+107644+140
+ADDRGP4 cg+107636+140
 INDIRI4
 ARGI4
 ADDRLP4 60+12
@@ -1017,7 +1017,7 @@ CNSTF4 1051260355
 ARGF4
 CNSTF4 1147207680
 ARGF4
-ADDRGP4 cg+107612
+ADDRGP4 cg+107604
 INDIRI4
 ARGI4
 CNSTI4 0
@@ -1044,12 +1044,12 @@ ADDRLP4 0
 ARGP4
 ADDRLP4 72
 ARGP4
-ADDRGP4 cg+107616
+ADDRGP4 cg+107608
 INDIRI4
 CNSTI4 256
 MODI4
 ARGI4
-ADDRGP4 cg+107644+140
+ADDRGP4 cg+107636+140
 INDIRI4
 ARGI4
 ADDRGP4 CG_ShotgunPattern
@@ -1098,7 +1098,7 @@ line 163
 ;162:			// the server will use this exact time (it'll be serverTime on that end)
 ;163:			int seed = cg.oldTime % 256;
 ADDRLP4 60
-ADDRGP4 cg+107616
+ADDRGP4 cg+107608
 INDIRI4
 CNSTI4 256
 MODI4
@@ -1304,7 +1304,7 @@ INDIRP4
 ARGP4
 ADDRLP4 64
 ARGP4
-ADDRGP4 cg+107644+140
+ADDRGP4 cg+107636+140
 INDIRI4
 ARGI4
 CNSTI4 100664321
@@ -1376,7 +1376,7 @@ line 198
 ;198:			CG_Bullet( tr.endpos, cg.predictedPlayerState.clientNum, tr.plane.normal, flesh, fleshEntityNum );
 ADDRLP4 80+12
 ARGP4
-ADDRGP4 cg+107644+140
+ADDRGP4 cg+107636+140
 INDIRI4
 ARGI4
 ADDRLP4 80+24
@@ -1465,10 +1465,10 @@ line 226
 ADDRFP4 0
 INDIRP4
 INDIRI4
-ADDRGP4 cg+107644+140
+ADDRGP4 cg+107636+140
 INDIRI4
 NEI4 $262
-ADDRGP4 cg+107636
+ADDRGP4 cg+107628
 INDIRI4
 CNSTI4 0
 NEI4 $262
@@ -1571,14 +1571,14 @@ line 249
 ADDRFP4 0
 INDIRP4
 INDIRI4
-ADDRGP4 cg+107644+140
+ADDRGP4 cg+107636+140
 INDIRI4
 NEI4 $275
 line 251
 ;250:		// use the view height
 ;251:		maxs[2] = cg.predictedPlayerState.viewheight + 6;
 ADDRLP4 200+8
-ADDRGP4 cg+107644+164
+ADDRGP4 cg+107636+164
 INDIRI4
 CNSTI4 6
 ADDI4
@@ -2890,7 +2890,6 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
-import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable

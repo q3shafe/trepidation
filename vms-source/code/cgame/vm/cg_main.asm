@@ -1503,9 +1503,9 @@ line 452
 ;452:int CG_CrosshairPlayer( void ) {
 line 453
 ;453:	if ( cg.time > ( cg.crosshairClientTime + 1000 ) ) {
-ADDRGP4 cg+107612
+ADDRGP4 cg+107604
 INDIRI4
-ADDRGP4 cg+124428
+ADDRGP4 cg+124416
 INDIRI4
 CNSTI4 1000
 ADDI4
@@ -1520,7 +1520,7 @@ LABELV $256
 line 456
 ;455:	}
 ;456:	return cg.crosshairClientNum;
-ADDRGP4 cg+124424
+ADDRGP4 cg+124412
 INDIRI4
 RETI4
 LABELV $255
@@ -1533,7 +1533,7 @@ line 459
 ;459:int CG_LastAttacker( void ) {
 line 460
 ;460:	if ( !cg.attackerTime ) {
-ADDRGP4 cg+124440
+ADDRGP4 cg+124428
 INDIRI4
 CNSTI4 0
 NEI4 $262
@@ -3769,7 +3769,7 @@ line 880
 ;878:
 ;879:	// clear any references to old media
 ;880:	memset( &cg.refdef, 0, sizeof( cg.refdef ) );
-ADDRGP4 cg+109060
+ADDRGP4 cg+109048
 ARGP4
 CNSTI4 0
 ARGI4
@@ -5502,7 +5502,7 @@ line 1187
 line 1189
 ;1188:	int i;
 ;1189:	cg.spectatorList[0] = 0;
-ADDRGP4 cg+114388
+ADDRGP4 cg+114376
 CNSTI1 0
 ASGNI1
 line 1190
@@ -5548,7 +5548,7 @@ ADDRLP4 8
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 cg+114388
+ADDRGP4 cg+114376
 ARGP4
 CNSTI4 1024
 ARGI4
@@ -5577,7 +5577,7 @@ CNSTI4 64
 LTI4 $941
 line 1195
 ;1195:	i = strlen(cg.spectatorList);
-ADDRGP4 cg+114388
+ADDRGP4 cg+114376
 ARGP4
 ADDRLP4 4
 ADDRGP4 strlen
@@ -5591,18 +5591,18 @@ line 1196
 ;1196:	if (i != cg.spectatorLen) {
 ADDRLP4 0
 INDIRI4
-ADDRGP4 cg+115412
+ADDRGP4 cg+115400
 INDIRI4
 EQI4 $956
 line 1197
 ;1197:		cg.spectatorLen = i;
-ADDRGP4 cg+115412
+ADDRGP4 cg+115400
 ADDRLP4 0
 INDIRI4
 ASGNI4
 line 1198
 ;1198:		cg.spectatorWidth = -1;
-ADDRGP4 cg+115416
+ADDRGP4 cg+115404
 CNSTF4 3212836864
 ASGNF4
 line 1199
@@ -6554,7 +6554,7 @@ ADDRGP4 cg
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 156196
+CNSTI4 155920
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -6689,7 +6689,7 @@ pop
 line 1955
 ;1954:
 ;1955:	cg.weaponSelect = WP_MACHINEGUN;
-ADDRGP4 cg+108960
+ADDRGP4 cg+108948
 CNSTI4 2
 ASGNI4
 line 1957
@@ -6921,7 +6921,7 @@ line 2016
 ;2014:
 ;2015:	// remove the last loading update
 ;2016:	cg.infoScreenText[0] = 0;
-ADDRGP4 cg+109460
+ADDRGP4 cg+109448
 CNSTI1 0
 ASGNI1
 line 2019
@@ -7693,7 +7693,7 @@ skip 749568
 export cg
 align 4
 LABELV cg
-skip 156196
+skip 155920
 export cgs
 align 4
 LABELV cgs
@@ -7705,7 +7705,6 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
-import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable

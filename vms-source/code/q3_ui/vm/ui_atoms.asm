@@ -5027,7 +5027,7 @@ line 1015
 ;1012:
 ;1013:	
 ;1014:	// Shafe - Trep  Call Dyanmic Menu (Example)
-;1015:	if ( Q_stricmp (cmd, "ui_dynamicmenu") == 0 ) {
+;1015:	if ( Q_stricmp (cmd, "build_menu") == 0 ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6932,16 +6932,12 @@ byte 1 115
 byte 1 0
 align 1
 LABELV $420
+byte 1 98
 byte 1 117
 byte 1 105
-byte 1 95
+byte 1 108
 byte 1 100
-byte 1 121
-byte 1 110
-byte 1 97
-byte 1 109
-byte 1 105
-byte 1 99
+byte 1 95
 byte 1 109
 byte 1 101
 byte 1 110

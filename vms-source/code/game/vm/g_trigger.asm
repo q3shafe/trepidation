@@ -168,7 +168,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2500
+CNSTI4 2492
 ADDP4
 INDIRI4
 ADDRLP4 0
@@ -202,7 +202,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2500
+CNSTI4 2492
 ADDP4
 INDIRI4
 ADDRLP4 4
@@ -1504,7 +1504,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 2500
+CNSTI4 2492
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -2553,6 +2553,7 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
+import g_MultiJumps
 import g_GameMode
 import g_instagib
 import sv_fps
@@ -2795,7 +2796,6 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
-import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable

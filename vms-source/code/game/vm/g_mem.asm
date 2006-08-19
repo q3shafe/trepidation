@@ -353,6 +353,7 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
+import g_MultiJumps
 import g_GameMode
 import g_instagib
 import sv_fps
@@ -593,7 +594,6 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
-import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable

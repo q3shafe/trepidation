@@ -96,16 +96,17 @@ typedef struct
 #define ID_SCANNER		35	// Shafe - Trep - Scanner
 #define ID_GRAPPLE		36	// Shafe - Trep - Grapple Offhand
 #define ID_PDG			37	// Shafe - Trep - PDG
+#define ID_BUILD_MENU	38	
 
 // all others
-#define ID_FREELOOK		38
-#define ID_INVERTMOUSE	39
-#define ID_ALWAYSRUN	40
-#define ID_AUTOSWITCH	41
-#define ID_MOUSESPEED	42
-#define ID_JOYENABLE	43
-#define ID_JOYTHRESHOLD	44
-#define ID_SMOOTHMOUSE	45
+#define ID_FREELOOK		39
+#define ID_INVERTMOUSE	40
+#define ID_ALWAYSRUN	41
+#define ID_AUTOSWITCH	42
+#define ID_MOUSESPEED	43
+#define ID_JOYENABLE	44
+#define ID_JOYTHRESHOLD	45
+#define ID_SMOOTHMOUSE	46
 
 
 
@@ -196,6 +197,7 @@ typedef struct
 	menuaction_s		scanner;  // Shafe - Scanner
 	menuaction_s		grapple;  // Shafe - Grapple
 	menuaction_s		pdg;  // Shafe - Grapple
+	menuaction_s		build_menu;  // Shafe 
 	menuradiobutton_s	joyenable;
 	menuslider_s		joythreshold;
 	menuaction_s		altattack;  // Shafe - Alt Fire
@@ -259,6 +261,7 @@ static bind_t g_bindings[] =
 	{"+scanner", 		"tracking device",	ID_SCANNER,		ANIM_CHAT,		'l',				-1,		-1, -1},
 	{"+button6", 		"energy grapple",	ID_GRAPPLE,		ANIM_ATTACK,	K_MOUSE3,			-1,		-1, -1},
 	{"pdg", 		"displacement grenade",	ID_PDG	,		ANIM_ATTACK,	'Q',			-1,		-1, -1},
+	{"build_menu", 		"built menu",	ID_BUILD_MENU	,		ANIM_ATTACK,	'E',			-1,		-1, -1},
 
 	{(char*)NULL,		(char*)NULL,		0,				0,				-1,				-1,		-1,	-1},
 };
@@ -338,6 +341,7 @@ static menucommon_s *g_misc_controls[] = {
 	(menucommon_s *)&s_controls.scanner,  // Shafe
 	(menucommon_s *)&s_controls.grapple,  // Shafe
 	(menucommon_s *)&s_controls.pdg,  // Shafe
+	(menucommon_s *)&s_controls.build_menu,  // Shafe
 	NULL,
 };
 
@@ -1572,6 +1576,13 @@ static void Controls_MenuInit( void )
 	s_controls.pdg.generic.ownerdraw = Controls_DrawKeyBinding;
 	s_controls.pdg.generic.id        = ID_PDG;
 
+	// Shafe - Build Menu
+	s_controls.build_menu.generic.type	    = MTYPE_ACTION;
+	s_controls.build_menu.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
+	s_controls.build_menu.generic.callback  = Controls_ActionEvent;
+	s_controls.build_menu.generic.ownerdraw = Controls_DrawKeyBinding;
+	s_controls.build_menu.generic.id        = ID_BUILD_MENU;
+
 	s_controls.joyenable.generic.type      = MTYPE_RADIOBUTTON;
 	s_controls.joyenable.generic.flags	   = QMF_SMALLFONT;
 	s_controls.joyenable.generic.x	       = SCREEN_WIDTH/2;
@@ -1658,6 +1669,7 @@ static void Controls_MenuInit( void )
 	Menu_AddItem( &s_controls.menu, &s_controls.scanner );	// Shafe - Radar
 	Menu_AddItem( &s_controls.menu, &s_controls.grapple );  // Shafe - Trep - Grapple
 	Menu_AddItem( &s_controls.menu, &s_controls.pdg );  // Shafe - Trep - pdg
+	Menu_AddItem( &s_controls.menu, &s_controls.build_menu );  // Shafe - Build Menu
 	Menu_AddItem( &s_controls.menu, &s_controls.gesture );
 	
 	Menu_AddItem( &s_controls.menu, &s_controls.chat );
