@@ -1771,7 +1771,7 @@ line 371
 ;370:
 ;371:		cl = &level.clients[idnum];
 ADDRLP4 0
-CNSTI4 3392
+CNSTI4 3400
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -1783,7 +1783,7 @@ line 372
 ;372:		if ( cl->pers.connected == CON_DISCONNECTED ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 468
+CNSTI4 472
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -1828,7 +1828,7 @@ LABELV $236
 line 381
 ;381:		cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3392
+CNSTI4 3400
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1840,7 +1840,7 @@ line 382
 ;382:		if ( cl->pers.connected == CON_DISCONNECTED ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 468
+CNSTI4 472
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -1855,7 +1855,7 @@ line 385
 ;385:		if ( !Q_stricmp( cl->pers.netname, s ) ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 512
+CNSTI4 516
 ADDP4
 ARGP4
 ADDRFP4 0
@@ -1989,7 +1989,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3392
+CNSTI4 3400
 DIVI4
 MULI4
 ADDRGP4 g_entities
@@ -2579,7 +2579,6 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
-import g_MultiJump
 import g_GameMode
 import g_instagib
 import sv_fps
@@ -2722,6 +2721,9 @@ import SetClientViewAngle
 import PickTeam
 import TeamLeader
 import TeamCount
+import BuildMC
+import BuildGenerator
+import BuildTurret
 import G_PredictPlayerMove
 import G_UnTimeShiftClient
 import G_UndoTimeShiftFor
@@ -2817,6 +2819,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable

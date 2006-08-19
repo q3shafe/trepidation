@@ -339,7 +339,7 @@ line 70
 ;70:void CG_LoadingString( const char *s ) {
 line 71
 ;71:	Q_strncpyz( cg.infoScreenText, s, sizeof( cg.infoScreenText ) );
-ADDRGP4 cg+109448
+ADDRGP4 cg+109460
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -1101,7 +1101,7 @@ line 205
 ;203:	// the first 150 rows are reserved for the client connection
 ;204:	// screen to write into
 ;205:	if ( cg.infoScreenText[0] ) {
-ADDRGP4 cg+109448
+ADDRGP4 cg+109460
 INDIRI1
 CVII4 1
 CNSTI4 0
@@ -1110,7 +1110,7 @@ line 206
 ;206:		UI_DrawProportionalString( 320, 350-32, va("Loading... %s", cg.infoScreenText),
 ADDRGP4 $134
 ARGP4
-ADDRGP4 cg+109448
+ADDRGP4 cg+109460
 ARGP4
 ADDRLP4 1104
 ADDRGP4 va
@@ -2254,6 +2254,7 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
+import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable
