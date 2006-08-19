@@ -418,12 +418,13 @@ void UI_InGameMenu( void ) {
 	uis.menusp = 0;  
 
 	// set menu cursor to a nice location
-	uis.cursorx = 319;
+	uis.cursorx = 275;
 	uis.cursory = 80;
 
 	InGame_MenuInit();
 	UI_PushMenu( &s_ingame.menu );
 }
+
 
 
 
@@ -826,7 +827,40 @@ break;
 }
 
 
+/*
+=================
+Build
+=================
+*/
+static void DM_BuildItem( int xitem ) {
+	UI_PopMenu();
+	
+	// Basic Turret
+	if (xitem == 0) {
+		trap_Cmd_ExecuteText( EXEC_APPEND, "spawnturret\n" );
+	}
 
+	// Shielded Turret
+	if (xitem == 1) {
+		trap_Cmd_ExecuteText( EXEC_APPEND, "spawnturret2\n" );
+	}
+
+	// Cloaked Turret
+	if (xitem == 2) {
+		trap_Cmd_ExecuteText( EXEC_APPEND, "spawnturret3\n" );
+	}
+
+	// Generator
+	if (xitem == 3) {
+		trap_Cmd_ExecuteText( EXEC_APPEND, "spawngen\n" );
+	}
+
+	// Master Controller
+	if (xitem == 4) {
+		trap_Cmd_ExecuteText( EXEC_APPEND, "spawnmc\n" );
+	}
+
+}
 
 
 /*
@@ -896,6 +930,20 @@ DynamicMenu_FinishSubMenuInit();
 
 
 
+static void DynamicMenu_BuildMenu( void )
+{
+DynamicMenu_SubMenuInit();
+
+DynamicMenu_AddItem("Turret", 0, NULL, DM_BuildItem);
+DynamicMenu_AddItem("Sheilded Turret", 0 , NULL, DM_BuildItem);
+DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
+DynamicMenu_AddItem("Shield Generator", 0, NULL, DM_BuildItem);
+DynamicMenu_AddItem("Master Controller", 0, NULL, DM_BuildItem);
+DynamicMenu_AddItem("Close", 0, NULL, DM_Close_Event);
+
+DynamicMenu_FinishSubMenuInit();
+}
+
 
 /*
 =================
@@ -931,7 +979,8 @@ s_dynamic.depth = 0;
 //Uncomment the next line if adding part II as well
 //DynamicMenu_InitMapItems();
 
-DynamicMenu_InitPrimaryMenu();
+//DynamicMenu_InitPrimaryMenu();
+DynamicMenu_BuildMenu();
 }
 
 
@@ -1006,3 +1055,4 @@ void UI_DynamicCommandMenu_f( void )
 {
 UI_DynamicMenu();
 }
+

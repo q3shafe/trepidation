@@ -5424,7 +5424,6 @@ line 1642
 LABELV $449
 endproc BG_PlayerStateToEntityStateExtraPolate 32 4
 import trap_Cvar_VariableStringBuffer
-import g_MultiJumps
 import Pmove
 import PM_UpdateViewAngles
 import Com_Printf

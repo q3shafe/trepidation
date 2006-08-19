@@ -793,28 +793,28 @@ JUMPV
 LABELV $118
 line 160
 ;160:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3400
+CNSTI4 3392
 ADDRLP4 0
 INDIRI4
 MULI4
 ADDRGP4 level
 INDIRP4
 ADDP4
-CNSTI4 472
+CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
 NEI4 $123
 line 161
 ;161:			if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3400
+CNSTI4 3392
 ADDRLP4 0
 INDIRI4
 MULI4
 ADDRGP4 level
 INDIRP4
 ADDP4
-CNSTI4 2500
+CNSTI4 2492
 ADDP4
 INDIRI4
 ADDRFP4 0
@@ -2207,7 +2207,7 @@ ARGI4
 ADDRGP4 level
 INDIRP4
 ARGP4
-CNSTI4 3400
+CNSTI4 3392
 ARGI4
 ADDRGP4 trap_LocateGameData
 CALLV
@@ -3671,6 +3671,7 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
+import g_MultiJumps
 import g_GameMode
 import g_instagib
 import sv_fps
@@ -3892,7 +3893,6 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
-import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable

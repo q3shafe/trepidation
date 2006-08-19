@@ -184,7 +184,7 @@ line 56
 ;55:
 ;56:		client = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3400
+CNSTI4 3392
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -214,7 +214,7 @@ line 60
 ;60:		if ( client->pers.connected == CON_DISCONNECTED ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 472
+CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -250,7 +250,7 @@ INDIRI4
 CNSTI4 3
 LTI4 $73
 ADDRLP4 100
-CNSTI4 2500
+CNSTI4 2492
 ASGNI4
 ADDRFP4 4
 INDIRP4
@@ -2127,7 +2127,7 @@ INDIRP4
 CNSTI4 516
 ADDP4
 INDIRP4
-CNSTI4 508
+CNSTI4 504
 ADDP4
 INDIRI4
 ASGNI4
@@ -5573,6 +5573,7 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
+import g_MultiJumps
 import g_GameMode
 import g_instagib
 import sv_fps
@@ -5804,7 +5805,6 @@ import BG_TouchJumpPad
 import BG_AddPredictableEventToPlayerstate
 import BG_EvaluateTrajectoryDelta
 import BG_EvaluateTrajectory
-import g_MultiJumps
 import Max_Ammo
 import BG_CanItemBeGrabbed
 import BG_FindItemForHoldable

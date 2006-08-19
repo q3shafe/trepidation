@@ -1012,7 +1012,7 @@ qboolean UI_ConsoleCommand( int realTime ) {
 
 	
 	// Shafe - Trep  Call Dyanmic Menu (Example)
-	if ( Q_stricmp (cmd, "ui_dynamicmenu") == 0 ) {
+	if ( Q_stricmp (cmd, "build_menu") == 0 ) {
 		UI_DynamicCommandMenu_f();
 	return qtrue;
 	}
