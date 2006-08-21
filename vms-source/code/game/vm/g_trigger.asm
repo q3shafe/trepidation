@@ -2715,6 +2715,7 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
+import G_BreakGlass
 import TeleportPlayer
 import Touch_DoorTrigger
 import G_RunMover

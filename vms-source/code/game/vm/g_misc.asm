@@ -1780,6 +1780,476 @@ line 322
 ;322:}
 LABELV $121
 endproc SP_shooter_grenade 0 8
+export SP_func_breakable
+proc SP_func_breakable 16 12
+line 329
+;323:
+;324:
+;325:
+;326:/*QUAKED func_breakable (1 0 0) (-16 -16 -16) (16 16 16)
+;327: Explodes glass
+;328:*/
+;329:void SP_func_breakable( gentity_t *ent ) {
+line 333
+;330:  int health;
+;331:  
+;332:  // Make it appear as the brush
+;333:  trap_SetBrushModel( ent, ent->model );
+ADDRLP4 4
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 4
+INDIRP4
+ARGP4
+ADDRLP4 4
+INDIRP4
+CNSTI4 540
+ADDP4
+INDIRP4
+ARGP4
+ADDRGP4 trap_SetBrushModel
+CALLV
+pop
+line 336
+;334:
+;335:  // Lets give it 5 health if the mapper did not set its health
+;336:  G_SpawnInt( "health", "0", &health );
+ADDRGP4 $123
+ARGP4
+ADDRGP4 $88
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 G_SpawnInt
+CALLI4
+pop
+line 337
+;337:  if( health <= 0 )
+ADDRLP4 0
+INDIRI4
+CNSTI4 0
+GTI4 $124
+line 338
+;338:   health = 5;
+ADDRLP4 0
+CNSTI4 5
+ASGNI4
+LABELV $124
+line 340
+;339: 
+;340:  ent->health = health;
+ADDRFP4 0
+INDIRP4
+CNSTI4 740
+ADDP4
+ADDRLP4 0
+INDIRI4
+ASGNI4
+line 343
+;341:  
+;342:  // Let it take damage
+;343:  ent->takedamage = qtrue;
+ADDRFP4 0
+INDIRP4
+CNSTI4 744
+ADDP4
+CNSTI4 1
+ASGNI4
+line 346
+;344:  
+;345:  // Let it know it is a breakable object
+;346:  ent->s.eType = ET_BREAKABLE;
+ADDRFP4 0
+INDIRP4
+CNSTI4 4
+ADDP4
+CNSTI4 15
+ASGNI4
+line 349
+;347:  
+;348:  // If the mapper gave it a model, use it
+;349:  if ( ent->model2 ) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 544
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $126
+line 350
+;350:      ent->s.modelindex2 = G_ModelIndex( ent->model2 );
+ADDRLP4 8
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 8
+INDIRP4
+CNSTI4 544
+ADDP4
+INDIRP4
+ARGP4
+ADDRLP4 12
+ADDRGP4 G_ModelIndex
+CALLI4
+ASGNI4
+ADDRLP4 8
+INDIRP4
+CNSTI4 164
+ADDP4
+ADDRLP4 12
+INDIRI4
+ASGNI4
+line 351
+;351:  }
+LABELV $126
+line 354
+;352:  
+;353:  // Link all ^this^ info into the ent
+;354:  trap_LinkEntity (ent);
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 trap_LinkEntity
+CALLV
+pop
+line 355
+;355: }
+LABELV $122
+endproc SP_func_breakable 16 12
+export G_BreakGlass
+proc G_BreakGlass 76 8
+line 362
+;356:
+;357:/*
+;358: =================
+;359: G_BreakGlass
+;360: =================
+;361: */
+;362: void G_BreakGlass(gentity_t *ent, vec3_t point, int mod) {
+line 369
+;363:     gentity_t   *tent;
+;364: 	vec3_t      size;
+;365:     vec3_t      center;
+;366: 	qboolean    splashdmg;
+;367: 	
+;368: 	// Get the center of the glass
+;369:     VectorSubtract(ent->r.maxs, ent->r.mins, size);
+ADDRLP4 32
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 32
+INDIRP4
+CNSTI4 448
+ADDP4
+INDIRF4
+ADDRLP4 32
+INDIRP4
+CNSTI4 436
+ADDP4
+INDIRF4
+SUBF4
+ASGNF4
+ADDRLP4 0+4
+ADDRLP4 32
+INDIRP4
+CNSTI4 452
+ADDP4
+INDIRF4
+ADDRLP4 32
+INDIRP4
+CNSTI4 440
+ADDP4
+INDIRF4
+SUBF4
+ASGNF4
+ADDRLP4 36
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 0+8
+ADDRLP4 36
+INDIRP4
+CNSTI4 456
+ADDP4
+INDIRF4
+ADDRLP4 36
+INDIRP4
+CNSTI4 444
+ADDP4
+INDIRF4
+SUBF4
+ASGNF4
+line 370
+;370:     VectorScale(size, 0.5, size);
+ADDRLP4 40
+CNSTF4 1056964608
+ASGNF4
+ADDRLP4 0
+ADDRLP4 40
+INDIRF4
+ADDRLP4 0
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 0+4
+ADDRLP4 40
+INDIRF4
+ADDRLP4 0+4
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 0+8
+CNSTF4 1056964608
+ADDRLP4 0+8
+INDIRF4
+MULF4
+ASGNF4
+line 371
+;371:     VectorAdd(ent->r.mins, size, center);
+ADDRLP4 44
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 12
+ADDRLP4 44
+INDIRP4
+CNSTI4 436
+ADDP4
+INDIRF4
+ADDRLP4 0
+INDIRF4
+ADDF4
+ASGNF4
+ADDRLP4 12+4
+ADDRLP4 44
+INDIRP4
+CNSTI4 440
+ADDP4
+INDIRF4
+ADDRLP4 0+4
+INDIRF4
+ADDF4
+ASGNF4
+ADDRLP4 12+8
+ADDRFP4 0
+INDIRP4
+CNSTI4 444
+ADDP4
+INDIRF4
+ADDRLP4 0+8
+INDIRF4
+ADDF4
+ASGNF4
+line 374
+;372: 
+;373: 	// If the glass has no more life, BREAK IT
+;374: 	if( ent->health <= 0 ) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 740
+ADDP4
+INDIRI4
+CNSTI4 0
+GTI4 $139
+line 375
+;375: 	G_FreeEntity( ent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 G_FreeEntity
+CALLV
+pop
+line 378
+;376:     // Tell the program based on the gun if it has no splash dmg, no reason to ad ones with
+;377: 	// splash dmg as qtrue as is that is the default
+;378: 	switch( mod ) {
+ADDRLP4 48
+ADDRFP4 8
+INDIRI4
+ASGNI4
+ADDRLP4 52
+CNSTI4 1
+ASGNI4
+ADDRLP4 48
+INDIRI4
+ADDRLP4 52
+INDIRI4
+EQI4 $144
+ADDRLP4 48
+INDIRI4
+CNSTI4 2
+EQI4 $143
+ADDRLP4 48
+INDIRI4
+CNSTI4 3
+EQI4 $145
+ADDRLP4 48
+INDIRI4
+ADDRLP4 52
+INDIRI4
+LTI4 $141
+LABELV $148
+ADDRLP4 56
+ADDRFP4 8
+INDIRI4
+ASGNI4
+ADDRLP4 56
+INDIRI4
+CNSTI4 10
+EQI4 $146
+ADDRLP4 56
+INDIRI4
+CNSTI4 11
+EQI4 $147
+ADDRGP4 $141
+JUMPV
+LABELV $143
+line 380
+;379: 		case MOD_GAUNTLET:
+;380: 		splashdmg = qfalse;
+ADDRLP4 24
+CNSTI4 0
+ASGNI4
+line 381
+;381: 		break;
+ADDRGP4 $142
+JUMPV
+LABELV $144
+line 383
+;382: 		case MOD_SHOTGUN:
+;383: 		splashdmg = qfalse;
+ADDRLP4 24
+CNSTI4 0
+ASGNI4
+line 384
+;384: 		break;
+ADDRGP4 $142
+JUMPV
+LABELV $145
+line 386
+;385: 		case MOD_MACHINEGUN:
+;386: 		splashdmg = qfalse;
+ADDRLP4 24
+CNSTI4 0
+ASGNI4
+line 387
+;387: 		break;
+ADDRGP4 $142
+JUMPV
+LABELV $146
+line 389
+;388: 		case MOD_RAILGUN:
+;389: 		splashdmg = qfalse;
+ADDRLP4 24
+CNSTI4 0
+ASGNI4
+line 390
+;390: 		break;
+ADDRGP4 $142
+JUMPV
+LABELV $147
+line 392
+;391: 		case MOD_LIGHTNING:
+;392: 		splashdmg = qfalse;
+ADDRLP4 24
+CNSTI4 0
+ASGNI4
+line 393
+;393: 		break;
+ADDRGP4 $142
+JUMPV
+LABELV $141
+line 395
+;394: 		default:
+;395: 		splashdmg = qtrue;
+ADDRLP4 24
+CNSTI4 1
+ASGNI4
+line 396
+;396: 		break;
+LABELV $142
+line 402
+;397: 	}
+;398: 	// Call the function to show the glass shards in cgame
+;399: 	// center can be changed to point which will spawn the
+;400: 	// where the killing bullet hit but wont work with Splash Damage weapons
+;401: 	// so I just use the center of the glass
+;402: 	switch( splashdmg ){
+ADDRLP4 60
+ADDRLP4 24
+INDIRI4
+ASGNI4
+ADDRLP4 60
+INDIRI4
+CNSTI4 0
+EQI4 $153
+ADDRLP4 60
+INDIRI4
+CNSTI4 1
+EQI4 $152
+ADDRGP4 $149
+JUMPV
+LABELV $152
+line 404
+;403: 	case qtrue:
+;404:     tent = G_TempEntity( center, EV_BREAK_GLASS );
+ADDRLP4 12
+ARGP4
+CNSTI4 70
+ARGI4
+ADDRLP4 68
+ADDRGP4 G_TempEntity
+CALLP4
+ASGNP4
+ADDRLP4 28
+ADDRLP4 68
+INDIRP4
+ASGNP4
+line 405
+;405: 	break;
+ADDRGP4 $150
+JUMPV
+LABELV $153
+line 407
+;406: 	case qfalse:
+;407:     tent = G_TempEntity( point, EV_BREAK_GLASS );
+ADDRFP4 4
+INDIRP4
+ARGP4
+CNSTI4 70
+ARGI4
+ADDRLP4 72
+ADDRGP4 G_TempEntity
+CALLP4
+ASGNP4
+ADDRLP4 28
+ADDRLP4 72
+INDIRP4
+ASGNP4
+line 408
+;408: 	break;
+LABELV $149
+LABELV $150
+line 410
+;409: 	}
+;410: 	tent->s.eventParm = 0;
+ADDRLP4 28
+INDIRP4
+CNSTI4 184
+ADDP4
+CNSTI4 0
+ASGNI4
+line 411
+;411: 	}
+LABELV $139
+line 412
+;412: }
+LABELV $128
+endproc G_BreakGlass 76 8
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible
@@ -2377,6 +2847,15 @@ import rand
 import srand
 import qsort
 lit
+align 1
+LABELV $123
+byte 1 104
+byte 1 101
+byte 1 97
+byte 1 108
+byte 1 116
+byte 1 104
+byte 1 0
 align 1
 LABELV $88
 byte 1 48

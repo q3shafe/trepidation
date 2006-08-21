@@ -1296,6 +1296,27 @@ static float CG_DrawPowerups( float y ) {
 	return y;
 }
 #endif // MISSIONPACK
+/*
+====================
+CG_DrawHudRight
+====================
+*/
+static float CG_DrawHudRight(float y){
+	
+	//x = 640 - 48;  this x/y is the lagometer position
+	//y = 480 - 48;
+	
+	CG_DrawPic( (640-159), (480-75), 159, 75, cgs.media.HudRight );
+}
+
+/*
+====================
+CG_DrawHudLeft
+====================
+*/
+static float CG_DrawHudLeft(float y){
+	CG_DrawPic( 1, (480-75), 159, 75, cgs.media.HudLeft );
+}
 
 /*
 =====================
@@ -1309,6 +1330,10 @@ static void CG_DrawLowerRight( void ) {
 
 	y = 480 - ICON_SIZE;
 
+
+	CG_DrawHudRight( y);
+	
+
 	if ( cgs.gametype >= GT_TEAM && cg_drawTeamOverlay.integer == 2 ) {
 		y = CG_DrawTeamOverlay( y, qtrue, qfalse );
 	} 
@@ -1317,6 +1342,7 @@ static void CG_DrawLowerRight( void ) {
 	y = CG_DrawPowerups( y );
 }
 #endif // MISSIONPACK
+
 
 /*
 ===================
@@ -1359,6 +1385,8 @@ CG_DrawLowerLeft
 #ifndef MISSIONPACK
 static void CG_DrawLowerLeft( void ) {
 	float	y;
+
+	CG_DrawHudLeft( y);
 
 	y = 480 - ICON_SIZE;
 
@@ -2389,10 +2417,14 @@ static void CG_DrawWarmup( void ) {
 		} else if ( cgs.g_GameMode == 2) {
 			s = "Survival";
 		} else if ( cgs.gametype == GT_TEAM ) {
-			if ( cgs.g_GameMode == 2) 
+			if ( cgs.g_GameMode == 3) 
+			{
+				s = "Trepidation";
+			} else if ( cgs.g_GameMode == 2) 
 			{
 				s = "Team Survival";
 			} else {
+				
 				s = "Team Deathmatch";
 			}
 		} else if ( cgs.gametype == GT_CTF ) {

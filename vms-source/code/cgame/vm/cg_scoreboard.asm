@@ -445,7 +445,7 @@ ADDP4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+153876+356-4
+ADDRGP4 cgs+153876+368-4
 ADDP4
 INDIRI4
 ARGI4
@@ -485,7 +485,7 @@ ADDP4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+153876+356-4
+ADDRGP4 cgs+153876+368-4
 ADDP4
 INDIRI4
 ARGI4
@@ -823,11 +823,11 @@ CNSTI4 3
 NEI4 $124
 line 156
 ;156:		if ((cgs.g_GameMode == 1) || (cgs.g_GameMode == 2)) 
-ADDRGP4 cgs+154960
+ADDRGP4 cgs+154980
 INDIRI4
 CNSTI4 1
 EQI4 $130
-ADDRGP4 cgs+154960
+ADDRGP4 cgs+154980
 INDIRI4
 CNSTI4 2
 NEI4 $126
@@ -3439,6 +3439,7 @@ import CG_MakeExplosion
 import CG_Bleed
 import CG_BigExplode
 import CG_GibPlayerHeadshot
+import CG_BreakGlass
 import CG_GibPlayer
 import CG_ScorePlum
 import CG_SpawnEffect

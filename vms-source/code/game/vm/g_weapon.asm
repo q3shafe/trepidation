@@ -5920,6 +5920,7 @@ import G_UnTimeShiftAllClients
 import G_TimeShiftAllClients
 import G_StoreHistory
 import G_ResetHistory
+import G_BreakGlass
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger

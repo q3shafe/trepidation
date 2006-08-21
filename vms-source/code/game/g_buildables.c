@@ -38,7 +38,7 @@ checktarget
 */
 qboolean checktarget(gentity_t *firer,gentity_t *target){
 
-	vec3_t		distance,forward;
+	vec3_t		distance;//,forward;
 	trace_t		trace;
 	int			angle;
 
@@ -307,7 +307,7 @@ void BuildTurret( gentity_t *ent , int type ){
 
 
 	gentity_t	*base;
-	vec3_t 		forward,up;
+//	vec3_t 		forward,up;
 
 	base=G_Spawn();
 	base->parent=ent;
@@ -423,7 +423,7 @@ BuildMC
 void BuildMC( gentity_t *ent ){
 
 	gentity_t	*base;
-	vec3_t 		forward,up;
+//	vec3_t 		forward,up;
 
 
 	base=G_Spawn();
@@ -490,7 +490,6 @@ BuildGenerator
 void BuildGenerator( gentity_t *ent ){
 
 	gentity_t	*base;
-	vec3_t 		forward,up;
 
 	base=G_Spawn();
 	base->parent=ent;

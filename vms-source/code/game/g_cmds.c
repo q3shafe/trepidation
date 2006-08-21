@@ -798,21 +798,7 @@ void Cmd_Team_f( gentity_t *ent ) {
 		return;
 	}
 
-	/* This is the old way that had issues
-	if ((g_Arsenal.integer != 0) && (!level.warmupTime))
-	{
-				
-		if ((ent->client->pers.Eliminated == qtrue) || (level.firstStrike == qtrue))
-		{
-			if (ent->client->sess.sessionTeam == TEAM_SPECTATOR)
-			{
-				trap_SendServerCommand( ent-g_entities, "cp \"You Must Wait Until Next Round To Join\"" );
-				return;
-			}
 
-		}
-	}
-	*/ 
 	if (!level.warmupTime)
 	{
 		if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))

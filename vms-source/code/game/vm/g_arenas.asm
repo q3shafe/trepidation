@@ -1290,7 +1290,7 @@ line 215
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTI4 72
+CNSTI4 73
 ARGI4
 CNSTI4 0
 ARGI4
@@ -3081,6 +3081,7 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
+import G_BreakGlass
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger

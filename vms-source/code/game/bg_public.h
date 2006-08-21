@@ -421,6 +421,7 @@ typedef enum {
 	EV_GIB_PLAYER_HEADSHOT,		// Shafe - Trep - Headshot
 	EV_BODY_NOHEAD,				// Shafe - Trep - Headshot
 	EV_SCOREPLUM,			// score plum
+	EV_BREAK_GLASS,
 
 #ifdef MISSIONPACK
 	EV_PROXIMITY_MINE_STICK,
@@ -688,9 +689,10 @@ typedef enum {
 	ET_TEAM,
 	ET_TURRET,				// New type of entity. turrets.
 
-	ET_EVENTS				// any of the EV_* events can be added freestanding
+	ET_EVENTS,				// any of the EV_* events can be added freestanding
 							// by setting eType to ET_EVENTS + eventNum
 							// this avoids having to set eFlags and eventNum
+	ET_BREAKABLE
 } entityType_t;
 
 

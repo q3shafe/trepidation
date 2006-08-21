@@ -98,6 +98,7 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define GAMES_CTF			4
 #define GAMES_ARSENAL		5	// Shafe - Trep - New Gametype
 #define GAMES_LASTMAN		6	// Shafe - Trep - New Gametype
+#define GAMES_TREPIDATION	7	// Shafe - Trep - New Gametype
 
 //Shafe - Trep - Mulimasters
 static const char *master_servers[] = {
@@ -125,6 +126,7 @@ static const char *servertype_items[] = {
 	"Capture the Flag",
 	"Arsenal",			// Shafe - Trep - New Gametype
 	"Survival",	// Shafe - Trep - New Gametype
+	"Trepidation",	// Shafe - Trep - New Gametype
 	0
 };
 
@@ -562,6 +564,11 @@ static void ArenaServers_UpdateMenu( void ) {
 			break;
 		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
 			if( servernodeptr->g_GameMode != 2) {
+				continue;
+			}
+			break;
+		case GAMES_TREPIDATION: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
+			if( servernodeptr->g_GameMode != 3) {
 				continue;
 			}
 			break;

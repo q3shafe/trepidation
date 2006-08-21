@@ -1577,6 +1577,7 @@ import CG_MakeExplosion
 import CG_Bleed
 import CG_BigExplode
 import CG_GibPlayerHeadshot
+import CG_BreakGlass
 import CG_GibPlayer
 import CG_ScorePlum
 import CG_SpawnEffect

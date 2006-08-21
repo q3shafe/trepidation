@@ -5065,7 +5065,7 @@ RETP4
 LABELV $232
 endproc fire_altgrenade 32 4
 export fire_bfg
-proc fire_bfg 36 4
+proc fire_bfg 32 4
 line 1027
 ;1017:}
 ;1018:
@@ -5080,7 +5080,7 @@ line 1027
 ;1027:gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 line 1030
 ;1028:	gentity_t	*bolt;
-;1029:	int			speed;
+;1029:	//int			speed;
 ;1030:	VectorNormalize (dir);
 ADDRFP4 8
 INDIRP4
@@ -5091,12 +5091,12 @@ pop
 line 1032
 ;1031:
 ;1032:	bolt = G_Spawn();
-ADDRLP4 8
+ADDRLP4 4
 ADDRGP4 G_Spawn
 CALLP4
 ASGNP4
 ADDRLP4 0
-ADDRLP4 8
+ADDRLP4 4
 INDIRP4
 ASGNP4
 line 1033
@@ -5434,61 +5434,61 @@ line 1107
 ;1105:
 ;1106:	
 ;1107:	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
-ADDRLP4 12
+ADDRLP4 8
 ADDRLP4 0
 INDIRP4
 CNSTI4 36
 ADDP4
 ASGNP4
-ADDRLP4 12
+ADDRLP4 8
 INDIRP4
 INDIRF4
 ARGF4
-ADDRLP4 16
+ADDRLP4 12
 ADDRGP4 tonextint
 CALLF4
 ASGNF4
-ADDRLP4 12
+ADDRLP4 8
 INDIRP4
-ADDRLP4 16
+ADDRLP4 12
 INDIRF4
 ASGNF4
-ADDRLP4 20
+ADDRLP4 16
 ADDRLP4 0
 INDIRP4
 CNSTI4 40
 ADDP4
 ASGNP4
-ADDRLP4 20
+ADDRLP4 16
 INDIRP4
 INDIRF4
 ARGF4
-ADDRLP4 24
+ADDRLP4 20
 ADDRGP4 tonextint
 CALLF4
 ASGNF4
-ADDRLP4 20
+ADDRLP4 16
 INDIRP4
-ADDRLP4 24
+ADDRLP4 20
 INDIRF4
 ASGNF4
-ADDRLP4 28
+ADDRLP4 24
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
 ADDP4
 ASGNP4
-ADDRLP4 28
+ADDRLP4 24
 INDIRP4
 INDIRF4
 ARGF4
-ADDRLP4 32
+ADDRLP4 28
 ADDRGP4 tonextint
 CALLF4
 ASGNF4
-ADDRLP4 28
+ADDRLP4 24
 INDIRP4
-ADDRLP4 32
+ADDRLP4 28
 INDIRF4
 ASGNF4
 line 1108
@@ -5508,7 +5508,7 @@ ADDRLP4 0
 INDIRP4
 RETP4
 LABELV $235
-endproc fire_bfg 36 4
+endproc fire_bfg 32 4
 export fire_rocket
 proc fire_rocket 32 4
 line 1123
@@ -6984,6 +6984,7 @@ import Weapon_HookFree
 import CheckGauntletAttack
 import CalcMuzzlePoint
 import LogAccuracyHit
+import G_BreakGlass
 import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger

@@ -1261,7 +1261,7 @@ ADDRLP4 88
 ADDRGP4 atoi
 CALLI4
 ASGNI4
-ADDRGP4 cgs+154956
+ADDRGP4 cgs+154976
 ADDRLP4 88
 INDIRI4
 ASGNI4
@@ -1283,7 +1283,7 @@ ADDRLP4 96
 ADDRGP4 atoi
 CALLI4
 ASGNI4
-ADDRGP4 cgs+154960
+ADDRGP4 cgs+154980
 ADDRLP4 96
 INDIRI4
 ASGNI4
@@ -1308,7 +1308,7 @@ ADDRLP4 104
 ADDRGP4 atoi
 CALLI4
 ASGNI4
-ADDRGP4 cgs+154952
+ADDRGP4 cgs+154972
 ADDRLP4 104
 INDIRI4
 ASGNI4
@@ -1316,7 +1316,7 @@ line 155
 ;155:	trap_Cvar_Set("g_delagHitscan", va("%i", cgs.delagHitscan));
 ADDRGP4 $160
 ARGP4
-ADDRGP4 cgs+154952
+ADDRGP4 cgs+154972
 INDIRI4
 ARGI4
 ADDRLP4 108
@@ -1423,7 +1423,7 @@ line 181
 ;181:		{
 line 182
 ;182:			trap_S_StartLocalSound( cgs.media.countPrepareSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+153876+1000
+ADDRGP4 cgs+153876+1020
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -3135,7 +3135,7 @@ CNSTI4 0
 NEI4 $357
 line 459
 ;459:		trap_S_StartLocalSound( cgs.media.countFightSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+153876+996
+ADDRGP4 cgs+153876+1016
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -5686,7 +5686,7 @@ CNSTI4 0
 NEI4 $534
 line 1015
 ;1015:			trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+153876+756
+ADDRGP4 cgs+153876+776
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -5754,7 +5754,7 @@ CNSTI4 0
 NEI4 $555
 line 1024
 ;1024:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+153876+756
+ADDRGP4 cgs+153876+776
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -6537,6 +6537,7 @@ import CG_MakeExplosion
 import CG_Bleed
 import CG_BigExplode
 import CG_GibPlayerHeadshot
+import CG_BreakGlass
 import CG_GibPlayer
 import CG_ScorePlum
 import CG_SpawnEffect

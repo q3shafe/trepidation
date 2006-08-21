@@ -335,7 +335,7 @@ ADDRLP4 68
 INDIRP4
 CNSTI4 112
 ADDP4
-ADDRGP4 cgs+153876+300
+ADDRGP4 cgs+153876+312
 INDIRI4
 ASGNI4
 line 54
@@ -841,7 +841,7 @@ ADDRLP4 4
 INDIRP4
 CNSTI4 112
 ADDP4
-ADDRGP4 cgs+153876+280
+ADDRGP4 cgs+153876+292
 INDIRI4
 ASGNI4
 line 128
@@ -1216,7 +1216,7 @@ ADDRLP4 4
 INDIRP4
 CNSTI4 112
 ADDP4
-ADDRGP4 cgs+153876+500
+ADDRGP4 cgs+153876+512
 INDIRI4
 ASGNI4
 line 173
@@ -1226,7 +1226,7 @@ ADDRLP4 4
 INDIRP4
 CNSTI4 8
 ADDP4
-ADDRGP4 cgs+153876+496
+ADDRGP4 cgs+153876+508
 INDIRI4
 ASGNI4
 line 174
@@ -2225,7 +2225,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 264
 ADDP4
-ADDRGP4 cgs+153876+484
+ADDRGP4 cgs+153876+496
 INDIRI4
 ASGNI4
 line 497
@@ -3658,7 +3658,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+153876+176
+ADDRGP4 cgs+153876+188
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchExplode
@@ -3743,7 +3743,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+153876+176
+ADDRGP4 cgs+153876+188
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchExplode
@@ -3832,7 +3832,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+153876+176
+ADDRGP4 cgs+153876+188
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchExplode
@@ -3931,7 +3931,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+153876+176
+ADDRGP4 cgs+153876+188
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchExplode
@@ -4020,7 +4020,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRGP4 cgs+153876+176
+ADDRGP4 cgs+153876+188
 INDIRI4
 ARGI4
 ADDRGP4 CG_LaunchExplode
@@ -4440,6 +4440,431 @@ line 741
 ;741:}
 LABELV $253
 endproc CG_GibPlayerHeadshot 76 12
+export CG_LaunchGlass
+proc CG_LaunchGlass 20 8
+line 749
+;742:
+;743:
+;744:/*
+;745: ==================
+;746: CG_LaunchGlass
+;747: ==================
+;748: */
+;749: void CG_LaunchGlass( vec3_t origin, vec3_t velocity, qhandle_t hModel ) {
+line 753
+;750: 	localEntity_t	*le;
+;751: 	refEntity_t		*re;
+;752: 
+;753: 	le = CG_AllocLocalEntity();
+ADDRLP4 8
+ADDRGP4 CG_AllocLocalEntity
+CALLP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 8
+INDIRP4
+ASGNP4
+line 754
+;754: 	re = &le->refEntity;
+ADDRLP4 4
+ADDRLP4 0
+INDIRP4
+CNSTI4 152
+ADDP4
+ASGNP4
+line 756
+;755: 
+;756: 	le->leType = LE_FRAGMENT;
+ADDRLP4 0
+INDIRP4
+CNSTI4 8
+ADDP4
+CNSTI4 3
+ASGNI4
+line 757
+;757: 	le->startTime = cg.time;
+ADDRLP4 0
+INDIRP4
+CNSTI4 16
+ADDP4
+ADDRGP4 cg+107604
+INDIRI4
+ASGNI4
+line 758
+;758: 	le->endTime = le->startTime + 30000 + random() * 3000;
+ADDRLP4 12
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0
+INDIRP4
+CNSTI4 20
+ADDP4
+ADDRLP4 0
+INDIRP4
+CNSTI4 16
+ADDP4
+INDIRI4
+CNSTI4 30000
+ADDI4
+CVIF4 4
+CNSTF4 1161527296
+ADDRLP4 12
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+MULF4
+ADDF4
+CVFI4 4
+ASGNI4
+line 760
+;759: 
+;760: 	VectorCopy( origin, re->origin );
+ADDRLP4 4
+INDIRP4
+CNSTI4 68
+ADDP4
+ADDRFP4 0
+INDIRP4
+INDIRB
+ASGNB 12
+line 761
+;761: 	AxisCopy( axisDefault, re->axis );
+ADDRGP4 axisDefault
+ARGP4
+ADDRLP4 4
+INDIRP4
+CNSTI4 28
+ADDP4
+ARGP4
+ADDRGP4 AxisCopy
+CALLV
+pop
+line 762
+;762: 	re->hModel = hModel;
+ADDRLP4 4
+INDIRP4
+CNSTI4 8
+ADDP4
+ADDRFP4 8
+INDIRI4
+ASGNI4
+line 764
+;763: 
+;764: 	le->pos.trType = TR_GRAVITY;
+ADDRLP4 0
+INDIRP4
+CNSTI4 32
+ADDP4
+CNSTI4 5
+ASGNI4
+line 765
+;765: 	VectorCopy( origin, le->pos.trBase );
+ADDRLP4 0
+INDIRP4
+CNSTI4 44
+ADDP4
+ADDRFP4 0
+INDIRP4
+INDIRB
+ASGNB 12
+line 766
+;766: 	VectorCopy( velocity, le->pos.trDelta );
+ADDRLP4 0
+INDIRP4
+CNSTI4 56
+ADDP4
+ADDRFP4 4
+INDIRP4
+INDIRB
+ASGNB 12
+line 767
+;767: 	le->pos.trTime = cg.time;
+ADDRLP4 0
+INDIRP4
+CNSTI4 36
+ADDP4
+ADDRGP4 cg+107604
+INDIRI4
+ASGNI4
+line 769
+;768: 
+;769: 	le->bounceFactor = 0.3;
+ADDRLP4 0
+INDIRP4
+CNSTI4 104
+ADDP4
+CNSTF4 1050253722
+ASGNF4
+line 771
+;770: 
+;771: 	le->leFlags = LEF_TUMBLE;
+ADDRLP4 0
+INDIRP4
+CNSTI4 12
+ADDP4
+CNSTI4 2
+ASGNI4
+line 772
+;772: 	le->leBounceSoundType = LEBS_BRASS;
+ADDRLP4 0
+INDIRP4
+CNSTI4 148
+ADDP4
+CNSTI4 2
+ASGNI4
+line 773
+;773: 	le->leMarkType = LEMT_NONE;
+ADDRLP4 0
+INDIRP4
+CNSTI4 144
+ADDP4
+CNSTI4 0
+ASGNI4
+line 774
+;774: }
+LABELV $278
+endproc CG_LaunchGlass 20 8
+lit
+align 4
+LABELV $282
+byte 4 1
+byte 4 2
+byte 4 3
+export CG_BreakGlass
+code
+proc CG_BreakGlass 68 12
+line 785
+;775: 
+;776: /*
+;777: ===================
+;778: CG_BreakGlass
+;779: 
+;780: Generated a bunch of glass shards launching out from the glass location
+;781: ===================
+;782: */
+;783: #define	GLASS_VELOCITY	175
+;784: #define	GLASS_JUMP		125
+;785: void CG_BreakGlass( vec3_t playerOrigin ) {
+line 789
+;786: 	vec3_t	origin, velocity;
+;787:     int     value;
+;788: 	// How many shards to generate
+;789: 	int     count = 50;
+ADDRLP4 40
+CNSTI4 50
+ASGNI4
+line 791
+;790: 	// The array of possible numbers
+;791: 	int     states[] = {1,2,3};
+ADDRLP4 28
+ADDRGP4 $282
+INDIRB
+ASGNB 12
+line 793
+;792: 	// Get the size of the array
+;793:     int     numstates = sizeof(states)/sizeof(states[0]);
+ADDRLP4 44
+CNSTI4 3
+ASGNI4
+ADDRGP4 $284
+JUMPV
+LABELV $283
+line 797
+;794: 
+;795: 	// Countdown "count" so this will subtract 1 from the "count"
+;796: 	// X many times. X being the "count" value
+;797: 	while ( count-- ) {
+line 801
+;798: 	// Generate the random number every count so every shard is a
+;799: 	// of the three. If this is placed above it only gets a random
+;800: 	// number every time a piece of glass is broken.
+;801: 	value = states[rand()%numstates];
+ADDRLP4 48
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 12
+ADDRLP4 48
+INDIRI4
+ADDRLP4 44
+INDIRI4
+MODI4
+CNSTI4 2
+LSHI4
+ADDRLP4 28
+ADDP4
+INDIRI4
+ASGNI4
+line 802
+;802: 	VectorCopy( playerOrigin, origin );
+ADDRLP4 16
+ADDRFP4 0
+INDIRP4
+INDIRB
+ASGNB 12
+line 803
+;803: 	velocity[0] = crandom()*GLASS_VELOCITY;
+ADDRLP4 52
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0
+CNSTF4 1127153664
+CNSTF4 1073741824
+ADDRLP4 52
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
+ASGNF4
+line 804
+;804: 	velocity[1] = crandom()*GLASS_VELOCITY;
+ADDRLP4 56
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0+4
+CNSTF4 1127153664
+CNSTF4 1073741824
+ADDRLP4 56
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
+ASGNF4
+line 805
+;805: 	velocity[2] = GLASS_JUMP + crandom()*GLASS_VELOCITY;
+ADDRLP4 60
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0+8
+CNSTF4 1127153664
+CNSTF4 1073741824
+ADDRLP4 60
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
+CNSTF4 1123680256
+ADDF4
+ASGNF4
+line 806
+;806: 	switch (value) {
+ADDRLP4 12
+INDIRI4
+CNSTI4 1
+EQI4 $290
+ADDRLP4 12
+INDIRI4
+CNSTI4 2
+EQI4 $293
+ADDRLP4 12
+INDIRI4
+CNSTI4 3
+EQI4 $296
+ADDRGP4 $288
+JUMPV
+LABELV $290
+line 809
+;807: 	case 1:
+;808: 	// If our random number was 1, generate the 1st shard piece
+;809:     CG_LaunchGlass( origin, velocity, cgs.media.glass01 );
+ADDRLP4 16
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 cgs+153876+176
+INDIRI4
+ARGI4
+ADDRGP4 CG_LaunchGlass
+CALLV
+pop
+line 810
+;810:     break;
+ADDRGP4 $289
+JUMPV
+LABELV $293
+line 812
+;811: 	case 2:
+;812: 	CG_LaunchGlass( origin, velocity, cgs.media.glass02 );
+ADDRLP4 16
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 cgs+153876+180
+INDIRI4
+ARGI4
+ADDRGP4 CG_LaunchGlass
+CALLV
+pop
+line 813
+;813:     break;
+ADDRGP4 $289
+JUMPV
+LABELV $296
+line 815
+;814: 	case 3:
+;815: 	CG_LaunchGlass( origin, velocity, cgs.media.glass03 );
+ADDRLP4 16
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 cgs+153876+184
+INDIRI4
+ARGI4
+ADDRGP4 CG_LaunchGlass
+CALLV
+pop
+line 816
+;816: 	break;
+LABELV $288
+LABELV $289
+line 818
+;817: 	}
+;818: 	}
+LABELV $284
+line 797
+ADDRLP4 48
+ADDRLP4 40
+INDIRI4
+ASGNI4
+ADDRLP4 40
+ADDRLP4 48
+INDIRI4
+CNSTI4 1
+SUBI4
+ASGNI4
+ADDRLP4 48
+INDIRI4
+CNSTI4 0
+NEI4 $283
+line 819
+;819: }
+LABELV $281
+endproc CG_BreakGlass 68 12
 import CG_DrawScanner
 import CG_ScannerOff_f
 import CG_ScannerOn_f

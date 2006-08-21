@@ -741,4 +741,85 @@ void CG_GibPlayerHeadshot( vec3_t playerOrigin ) {
 }
 
 
+/*
+ ==================
+ CG_LaunchGlass
+ ==================
+ */
+ void CG_LaunchGlass( vec3_t origin, vec3_t velocity, qhandle_t hModel ) {
+ 	localEntity_t	*le;
+ 	refEntity_t		*re;
+ 
+ 	le = CG_AllocLocalEntity();
+ 	re = &le->refEntity;
+ 
+ 	le->leType = LE_FRAGMENT;
+ 	le->startTime = cg.time;
+ 	le->endTime = le->startTime + 30000 + random() * 3000;
+ 
+ 	VectorCopy( origin, re->origin );
+ 	AxisCopy( axisDefault, re->axis );
+ 	re->hModel = hModel;
+ 
+ 	le->pos.trType = TR_GRAVITY;
+ 	VectorCopy( origin, le->pos.trBase );
+ 	VectorCopy( velocity, le->pos.trDelta );
+ 	le->pos.trTime = cg.time;
+ 
+ 	le->bounceFactor = 0.3;
+ 
+ 	le->leFlags = LEF_TUMBLE;
+ 	le->leBounceSoundType = LEBS_BRASS;
+ 	le->leMarkType = LEMT_NONE;
+ }
+ 
+ /*
+ ===================
+ CG_BreakGlass
+ 
+ Generated a bunch of glass shards launching out from the glass location
+ ===================
+ */
+ #define	GLASS_VELOCITY	175
+ #define	GLASS_JUMP		125
+ void CG_BreakGlass( vec3_t playerOrigin ) {
+ 	vec3_t	origin, velocity;
+     int     value;
+ 	// How many shards to generate
+ 	int     count = 50;
+ 	// The array of possible numbers
+ 	int     states[] = {1,2,3};
+ 	// Get the size of the array
+     int     numstates = sizeof(states)/sizeof(states[0]);
+ 
+ 	// Countdown "count" so this will subtract 1 from the "count"
+ 	// X many times. X being the "count" value
+ 	while ( count-- ) {
+ 	// Generate the random number every count so every shard is a
+ 	// of the three. If this is placed above it only gets a random
+ 	// number every time a piece of glass is broken.
+ 	value = states[rand()%numstates];
+ 	VectorCopy( playerOrigin, origin );
+ 	velocity[0] = crandom()*GLASS_VELOCITY;
+ 	velocity[1] = crandom()*GLASS_VELOCITY;
+ 	velocity[2] = GLASS_JUMP + crandom()*GLASS_VELOCITY;
+ 	switch (value) {
+ 	case 1:
+ 	// If our random number was 1, generate the 1st shard piece
+     CG_LaunchGlass( origin, velocity, cgs.media.glass01 );
+     break;
+ 	case 2:
+ 	CG_LaunchGlass( origin, velocity, cgs.media.glass02 );
+     break;
+ 	case 3:
+ 	CG_LaunchGlass( origin, velocity, cgs.media.glass03 );
+ 	break;
+ 	}
+ 	}
+ }
+
+
+
+
+
 
