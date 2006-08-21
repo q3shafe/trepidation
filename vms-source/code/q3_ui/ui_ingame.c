@@ -225,7 +225,7 @@ void InGame_MenuInit( void ) {
 	s_ingame.team.generic.y				= y;
 	s_ingame.team.generic.id			= ID_TEAM;
 	s_ingame.team.generic.callback		= InGame_Event; 
-	s_ingame.team.string				= "JOIN / CHOOSE TEAM";
+	s_ingame.team.string				= "JOIN GAME";
 	s_ingame.team.color					= color_red;
 	s_ingame.team.style					= UI_CENTER|UI_SMALLFONT;
 
@@ -378,6 +378,7 @@ void InGame_MenuInit( void ) {
 
 	Menu_AddItem( &s_ingame.menu, &s_ingame.frame );
 	Menu_AddItem( &s_ingame.menu, &s_ingame.team );
+
 	if( !trap_Cvar_VariableValue( "sv_running" ) ) {
 		Menu_AddItem( &s_ingame.menu, &s_ingame.addbots );
 		Menu_AddItem( &s_ingame.menu, &s_ingame.removebots );

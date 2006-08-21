@@ -1062,6 +1062,9 @@ static void CG_AddCEntity( centity_t *cent ) {
 	case ET_MOVER:
 		CG_Mover( cent );
 		break;
+	case ET_BREAKABLE:
+ 		CG_Mover( cent );
+ 		break;
 	case ET_BEAM:
 		CG_Beam( cent );
 		break;

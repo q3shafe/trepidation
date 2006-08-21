@@ -1026,7 +1026,7 @@ fire_bfg
 */
 gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 	gentity_t	*bolt;
-	int			speed;
+	//int			speed;
 	VectorNormalize (dir);
 
 	bolt = G_Spawn();

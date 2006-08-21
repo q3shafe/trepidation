@@ -907,6 +907,10 @@ static void CG_RegisterGraphics( void ) {
 	cgs.media.scoreboardTime = trap_R_RegisterShaderNoMip( "menu/tab/time.tga" );
 	cgs.media.scoreboardTrep = trap_R_RegisterShaderNoMip( "menu/tab/scoreboard.tga" ); // Shafe
 
+	// Trepidation hud
+	cgs.media.HudLeft = trap_R_RegisterShaderNoMip( "gfx/2d/hud/hud_left.tga" );
+	cgs.media.HudRight = trap_R_RegisterShaderNoMip( "gfx/2d/hud/hud_right.tga" );
+
 	cgs.media.smokePuffShader = trap_R_RegisterShader( "smokePuff" );
 	cgs.media.smokePuffRageProShader = trap_R_RegisterShader( "smokePuffRagePro" );
 
@@ -1039,6 +1043,12 @@ static void CG_RegisterGraphics( void ) {
 	cgs.media.gibLeg = trap_R_RegisterModel( "models/gibs/leg.md3" );
 	cgs.media.gibSkull = trap_R_RegisterModel( "models/gibs/skull.md3" );
 	cgs.media.gibBrain = trap_R_RegisterModel( "models/gibs/brain.md3" );
+	
+	// Shafe - Need To Make Models For These
+	cgs.media.glass01 = trap_R_RegisterModel( "models/breakables/glass01.md3" );
+ 	cgs.media.glass02 = trap_R_RegisterModel( "models/breakables/glass02.md3" );
+ 	cgs.media.glass03 = trap_R_RegisterModel( "models/breakables/glass03.md3" );
+
 
 	cgs.media.smoke2 = trap_R_RegisterModel( "models/weapons2/shells/s_shell.md3" );
 

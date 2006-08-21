@@ -431,6 +431,12 @@ extern int altAmmoUsage[];
 void G_InitModRules( void )
 {
 	
+	// We only allow team_ffa in trepidation gametype
+	if (g_GameMode.integer == 3)
+	{
+		g_gametype.integer = 3;
+	}
+
 	// Dont Use up Ammo in Arsenal
 	if (( g_GameMode.integer == 1 ) || (g_GameMode.integer == 2)) 
 	{
@@ -455,6 +461,7 @@ void G_InitModRules( void )
 		}
 
 		
+
 
 	}
 

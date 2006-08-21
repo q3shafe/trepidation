@@ -1247,6 +1247,13 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 		cent->pe.noHead = qtrue;
 		break;
 	// Shafe - Trep - End Headshot Stuff
+	case EV_BREAK_GLASS:
+ 		DEBUGNAME("EV_BREAK_GLASS");
+ 		// Change cgs.media.gibSound to whatever sound you want it to use
+ 		// I think the gib sound sounds pretty good
+ 		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.gibSound );
+ 		CG_BreakGlass( cent->lerpOrigin );
+ 		break;
 
 	case EV_STOPLOOPINGSOUND:
 		DEBUGNAME("EV_STOPLOOPINGSOUND");

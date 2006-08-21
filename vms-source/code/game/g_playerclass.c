@@ -1,7 +1,9 @@
-// Trepidation
-// Player Classes
-
-// g_playerclass.c
+//
+// Trepidation Player Classes
+// (C)2006 Trepidation
+// General Public License
+//
+// g_buildables.c
 
 #include "g_local.h"
 

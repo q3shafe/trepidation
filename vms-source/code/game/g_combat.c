@@ -1048,6 +1048,13 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		}
 		return;
 	}
+
+	// If we shot a breakable item subtract the damage from its health and try to break it
+ 	if ( targ->s.eType == ET_BREAKABLE ) {
+         targ->health -= damage;
+ 		G_BreakGlass( targ, point, mod );
+ 		return;
+ 	}
 #ifdef MISSIONPACK
 	if( g_gametype.integer == GT_OBELISK && CheckObeliskAttack( targ, attacker ) ) {
 		return;

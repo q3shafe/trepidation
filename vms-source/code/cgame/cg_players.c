@@ -788,9 +788,9 @@ static void CG_LoadClientInfo( clientInfo_t *ci ) {
 	const char	*s;
 	int			clientNum;
 	char		teamname[MAX_QPATH];
-	char		*filename;
-	char		temp_string[200];
-	qboolean	noMoreTaunts, loadingTaunt;
+//	char		*filename;
+//	char		temp_string[200];
+//	qboolean	noMoreTaunts; //, loadingTaunt;
 	int			y;
 
 	teamname[0] = 0;

@@ -3007,7 +3007,7 @@ ASGNF4
 line 631
 ;631:	ent.customShader = cgs.media.viewBloodShader;
 ADDRLP4 0+112
-ADDRGP4 cgs+153876+216
+ADDRGP4 cgs+153876+228
 INDIRI4
 ASGNI4
 line 632
@@ -3600,7 +3600,7 @@ INDIRI4
 ARGI4
 CNSTI4 4
 ARGI4
-ADDRGP4 cgs+153876+568
+ADDRGP4 cgs+153876+588
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
@@ -4451,6 +4451,7 @@ import CG_MakeExplosion
 import CG_Bleed
 import CG_BigExplode
 import CG_GibPlayerHeadshot
+import CG_BreakGlass
 import CG_GibPlayer
 import CG_ScorePlum
 import CG_SpawnEffect

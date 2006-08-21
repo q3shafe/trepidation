@@ -164,7 +164,7 @@ void CG_DrawInformation( void ) {
 	qhandle_t	nullbar;
 	qhandle_t	detail;
 	char		buf[1024];
-	int			xr;
+//	int			xr;
 
 	info = CG_ConfigString( CS_SERVERINFO );
 	sysInfo = CG_ConfigString( CS_SYSTEMINFO );
@@ -292,9 +292,13 @@ void CG_DrawInformation( void ) {
 		if (cgs.g_GameMode == 2) 
 		{
 			s = "Team Survival";
+		} else if (cgs.g_GameMode == 3) 
+		{
+			s = "Trepidation";
 		} else {
 			s = "Team Deathmatch";
 		}
+		
 		break;
 	case GT_CTF:
 		s = "Capture The Flag";

@@ -718,7 +718,9 @@ typedef struct {
 	qhandle_t	gibLeg;
 	qhandle_t	gibSkull;
 	qhandle_t	gibBrain;
-
+	qhandle_t	glass01;
+ 	qhandle_t	glass02;
+ 	qhandle_t	glass03;
 	qhandle_t	smoke2;
 
 	qhandle_t	machinegunBrassModel;
@@ -827,6 +829,10 @@ typedef struct {
 	qhandle_t	scoreboardScore;
 	qhandle_t	scoreboardTrep;
 	qhandle_t	scoreboardTime;
+
+	// Hud Components
+	qhandle_t	HudLeft;		
+	qhandle_t	HudRight;		
 
 	// medals shown during gameplay
 	qhandle_t	medalImpressive;
@@ -1475,6 +1481,7 @@ void CG_LightningBoltBeam( vec3_t start, vec3_t end );
 void CG_ScorePlum( int client, vec3_t org, int score );
 
 void CG_GibPlayer( vec3_t playerOrigin );
+void CG_BreakGlass( vec3_t playerOrigin );
 void CG_GibPlayerHeadshot( vec3_t playerOrigin );		// Shafe - Trep - Headshot
 void CG_BigExplode( vec3_t playerOrigin );
 

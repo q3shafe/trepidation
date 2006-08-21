@@ -49,7 +49,7 @@ line 29
 ;27:
 ;28:	// if it's not switched on server-side, forget it
 ;29:	if ( !cgs.delagHitscan ) {
-ADDRGP4 cgs+154952
+ADDRGP4 cgs+154972
 INDIRI4
 CNSTI4 0
 NEI4 $77
@@ -1024,7 +1024,7 @@ CNSTI4 0
 ARGI4
 CNSTI4 1
 ARGI4
-ADDRGP4 cgs+153876+292
+ADDRGP4 cgs+153876+304
 INDIRI4
 ARGI4
 ADDRGP4 CG_SmokePuff
@@ -2648,6 +2648,7 @@ import CG_MakeExplosion
 import CG_Bleed
 import CG_BigExplode
 import CG_GibPlayerHeadshot
+import CG_BreakGlass
 import CG_GibPlayer
 import CG_ScorePlum
 import CG_SpawnEffect

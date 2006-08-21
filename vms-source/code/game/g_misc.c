@@ -322,6 +322,97 @@ void SP_shooter_grenade( gentity_t *ent ) {
 }
 
 
+
+/*QUAKED func_breakable (1 0 0) (-16 -16 -16) (16 16 16)
+ Explodes glass
+*/
+void SP_func_breakable( gentity_t *ent ) {
+  int health;
+  
+  // Make it appear as the brush
+  trap_SetBrushModel( ent, ent->model );
+
+  // Lets give it 5 health if the mapper did not set its health
+  G_SpawnInt( "health", "0", &health );
+  if( health <= 0 )
+   health = 5;
+ 
+  ent->health = health;
+  
+  // Let it take damage
+  ent->takedamage = qtrue;
+  
+  // Let it know it is a breakable object
+  ent->s.eType = ET_BREAKABLE;
+  
+  // If the mapper gave it a model, use it
+  if ( ent->model2 ) {
+      ent->s.modelindex2 = G_ModelIndex( ent->model2 );
+  }
+  
+  // Link all ^this^ info into the ent
+  trap_LinkEntity (ent);
+ }
+
+/*
+ =================
+ G_BreakGlass
+ =================
+ */
+ void G_BreakGlass(gentity_t *ent, vec3_t point, int mod) {
+     gentity_t   *tent;
+ 	vec3_t      size;
+     vec3_t      center;
+ 	qboolean    splashdmg;
+ 	
+ 	// Get the center of the glass
+     VectorSubtract(ent->r.maxs, ent->r.mins, size);
+     VectorScale(size, 0.5, size);
+     VectorAdd(ent->r.mins, size, center);
+ 
+ 	// If the glass has no more life, BREAK IT
+ 	if( ent->health <= 0 ) {
+ 	G_FreeEntity( ent );
+     // Tell the program based on the gun if it has no splash dmg, no reason to ad ones with
+ 	// splash dmg as qtrue as is that is the default
+ 	switch( mod ) {
+ 		case MOD_GAUNTLET:
+ 		splashdmg = qfalse;
+ 		break;
+ 		case MOD_SHOTGUN:
+ 		splashdmg = qfalse;
+ 		break;
+ 		case MOD_MACHINEGUN:
+ 		splashdmg = qfalse;
+ 		break;
+ 		case MOD_RAILGUN:
+ 		splashdmg = qfalse;
+ 		break;
+ 		case MOD_LIGHTNING:
+ 		splashdmg = qfalse;
+ 		break;
+ 		default:
+ 		splashdmg = qtrue;
+ 		break;
+ 	}
+ 	// Call the function to show the glass shards in cgame
+ 	// center can be changed to point which will spawn the
+ 	// where the killing bullet hit but wont work with Splash Damage weapons
+ 	// so I just use the center of the glass
+ 	switch( splashdmg ){
+ 	case qtrue:
+     tent = G_TempEntity( center, EV_BREAK_GLASS );
+ 	break;
+ 	case qfalse:
+     tent = G_TempEntity( point, EV_BREAK_GLASS );
+ 	break;
+ 	}
+ 	tent->s.eventParm = 0;
+ 	}
+ }
+  
+
+
 #ifdef MISSIONPACK
 static void PortalDie (gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod) {
 	G_FreeEntity( self );
