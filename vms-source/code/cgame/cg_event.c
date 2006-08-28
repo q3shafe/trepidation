@@ -1250,8 +1250,13 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 	case EV_BREAK_GLASS:
  		DEBUGNAME("EV_BREAK_GLASS");
  		// Change cgs.media.gibSound to whatever sound you want it to use
- 		// I think the gib sound sounds pretty good
- 		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.gibSound );
+  		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.glassSound );
+ 		CG_BreakGlass( cent->lerpOrigin );
+ 		break;
+	case EV_BREAK_WALL:
+ 		DEBUGNAME("EV_BREAK_GLASS");
+ 		// Change cgs.media.gibSound to whatever sound you want it to use
+  		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.glassSound );
  		CG_BreakGlass( cent->lerpOrigin );
  		break;
 

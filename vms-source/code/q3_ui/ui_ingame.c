@@ -899,6 +899,7 @@ static void DynamicMenu_VoteMenu( void )
 {
 	DynamicMenu_SubMenuInit();
 	// The Menu Items
+
 	DynamicMenu_AddItem("Kick", 0 , NULL, DM_Close_Event);
 	DynamicMenu_AddItem("Next Map", 0 , NULL, DM_Close_Event);
 	DynamicMenu_AddItem("Restart Map", 0 , NULL, DM_Close_Event);
@@ -933,16 +934,21 @@ DynamicMenu_FinishSubMenuInit();
 
 static void DynamicMenu_BuildMenu( void )
 {
-DynamicMenu_SubMenuInit();
+	DynamicMenu_SubMenuInit();
 
-DynamicMenu_AddItem("Turret", 0, NULL, DM_BuildItem);
-DynamicMenu_AddItem("Sheilded Turret", 0 , NULL, DM_BuildItem);
-DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
-DynamicMenu_AddItem("Shield Generator", 0, NULL, DM_BuildItem);
-DynamicMenu_AddItem("Master Controller", 0, NULL, DM_BuildItem);
-DynamicMenu_AddItem("Close", 0, NULL, DM_Close_Event);
+	
 
-DynamicMenu_FinishSubMenuInit();
+	DynamicMenu_AddItem("Turret", 0, NULL, DM_BuildItem);
+	DynamicMenu_AddItem("Sheilded Turret", 0 , NULL, DM_BuildItem);
+	DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
+//	if( !(trap_Cvar_VariableValue( "g_GameMode" ) == 3) ) 
+//	{
+		DynamicMenu_AddItem("Shield Generator", 0, NULL, DM_BuildItem);
+		DynamicMenu_AddItem("Master Controller", 0, NULL, DM_BuildItem);
+//	}
+	DynamicMenu_AddItem("Close", 0, NULL, DM_Close_Event);
+
+	DynamicMenu_FinishSubMenuInit();
 }
 
 

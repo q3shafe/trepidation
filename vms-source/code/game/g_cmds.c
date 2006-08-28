@@ -16,15 +16,146 @@ The command.
 =================================================
 */
 void Cmd_SpawnMC_f( gentity_t *ent ){
-	BuildMC(ent);	
+	
+	int	iserror; 
+	iserror = 1;
+
+	// You can only Build MC's in GameMode 3
+	if (g_GameMode.integer == 3) 
+	{
+		// Make Sure We Dont Already Have One
+		if(ent->client->sess.sessionTeam == TEAM_RED)
+		{
+			if (level.redMC == 0) { 
+				BuildMC(ent); 
+				iserror = 0;
+			} else {
+				iserror = 2;
+			}
+		}
+		if(ent->client->sess.sessionTeam == TEAM_BLUE)
+		{
+			if (level.blueMC == 0) { 
+				BuildMC(ent); 
+				iserror = 0;
+			} else {
+				iserror = 2;
+			}
+		}	
+	}
+
+	// If it couldn't be built tell them why
+	if (iserror != 0)
+	{
+		// FIXME: Play Error Sound
+		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, va("print \"^9You already have a Master Controller.\n\"")); 	 }
+		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, va("print \"^9No Master Controllers In This GameType!.\n\"")); 	 }
+
+	}
+	
 }
 
 void Cmd_SpawnGenerator_f( gentity_t *ent ){
-	BuildGenerator(ent);
+
+	int	iserror; 
+	iserror = 1;
+
+	// You can only Build Generators in GameMode 3
+	if (g_GameMode.integer == 3) 
+	{
+		// Make sure there's not more than 2
+		if(ent->client->sess.sessionTeam == TEAM_RED) 
+		{
+			if (level.redGen > 1)
+			{
+				iserror = 2;
+			} else {
+				BuildGenerator(ent);
+				iserror = 0;
+			}
+		}
+		if(ent->client->sess.sessionTeam == TEAM_BLUE) 
+		{
+			if (level.blueGen > 1)
+			{
+				iserror = 2;
+			} else {
+				BuildGenerator(ent);
+				iserror = 0;
+			}
+		}
+	}
+
+	// If it couldn't be built tell them why
+	if (iserror != 0)
+	{
+		// FIXME: Play Error Sound
+		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, va("print \"^9You already have the maximum number of shield generators.\n\"")); 	 }
+		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, va("print \"^9You cannot build shield generators in this gametype!.\n\"")); 	 }
+	}
+
 }
 
 void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
-	BuildTurret(ent, type);
+
+	int		iserror; 
+	iserror = 1;
+
+
+	// If Playing GM 3 Check the rules
+	if (g_GameMode.integer == 3) {
+		if(ent->client->sess.sessionTeam == TEAM_BLUE) 
+		{
+			if (level.blueTurrets > 5)
+			{
+				iserror = 2;
+			} else {
+				BuildTurret(ent, type);	
+				iserror = 0;
+			}			
+		if(ent->client->sess.sessionTeam == TEAM_RED) 
+		{
+			if (level.redTurrets > 5)
+			{
+				iserror = 2;
+			} else {
+				BuildTurret(ent, type);	
+				iserror = 0;
+			}			
+	}
+
+	// If playing CTF Make sure that we dont have too many 
+	// Turrets on our team.
+	if (g_gametype.integer == GT_CTF) 
+	{
+		if(ent->client->sess.sessionTeam == TEAM_BLUE) 
+		{
+			if (level.blueTurrets > 5)
+			{
+				iserror = 2;
+			} else {
+				BuildTurret(ent, type);	
+				iserror = 0;
+			}			
+		if(ent->client->sess.sessionTeam == TEAM_RED) 
+		{
+			if (level.redTurrets > 5)
+			{
+				iserror = 2;
+			} else {
+				BuildTurret(ent, type);	
+				iserror = 0;
+			}			
+	}
+	
+	// If it couldn't be built tell them why
+	if (iserror != 0)
+	{
+		// FIXME Play Error Sound
+		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, va("print \"^9You already have the maximum number of turrets!.\n\"")); 	 }
+		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, va("print \"^9You cannot build turrets in this gametype!.\n\"")); 	 }
+	}
+
 }
 /*
 =================================================
@@ -176,16 +307,15 @@ void Cmd_Score_f( gentity_t *ent ) {
 
 void Cmd_Test_f (gentity_t *ent) {
 	
-	if (level.firstStrike == qtrue)
-	{
-		trap_SendServerCommand( ent-g_entities, va("print \"level.firstStrike = qtrue\n\"" ));		
-	} else if (level.firstStrike == qfalse)
-	{
-		trap_SendServerCommand( ent-g_entities, va("print \"level.firstStrike = qfalse\n\"" ));		
-	} else
-	{
-		trap_SendServerCommand( ent-g_entities, va("print \"level.firstStrike is not set!\n\"" ));		
-	}
+	
+	
+		trap_SendServerCommand( ent-g_entities, va("print \" level.bluegenerators %i\n\"", level.blueGen ));		
+		trap_SendServerCommand( ent-g_entities, va("print \" level.redgenerators %i\n\"", level.redGen ));		
+		trap_SendServerCommand( ent-g_entities, va("print \" level.blueturrets %i\n\"", level.blueTurrets ));		
+		trap_SendServerCommand( ent-g_entities, va("print \" level.redturrets %i\n\"", level.redTurrets ));		
+		trap_SendServerCommand( ent-g_entities, va("print \" level.redmc %i\n\"", level.redMC ));		
+		trap_SendServerCommand( ent-g_entities, va("print \" level.blumc %i\n\"", level.blueMC ));		
+	
 
 }
 

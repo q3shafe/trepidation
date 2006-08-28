@@ -31,6 +31,51 @@
 #define UARC 45
 
 
+
+
+/*
+===========================
+turret_explode
+We use this to blow up lots of
+stuff.. So it's at top
+===========================
+*/
+void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod){
+
+	vec3_t dir; // needed by the event being adde
+
+	dir[0] = dir[1] = 0;
+	dir[2] = 1;
+
+	// Take item away from master level stats
+	
+	if (self->parent->client->sess.sessionTeam == TEAM_BLUE)
+	{
+		if (self->classname == "generator") { level.blueGen--; }
+		if (self->classname == "turret") { level.blueTurrets--; }		
+		if (self->classname == "mc") { level.blueMC--; }		
+	}
+	if (self->parent->client->sess.sessionTeam == TEAM_RED)
+	{
+		if (self->classname == "generator") { level.redGen--; }
+		if (self->classname == "turret") { level.redTurrets--; }
+		if (self->classname == "mc") { level.redMC--; }		
+
+	}
+	
+	
+
+	if (self->chain) {
+		G_FreeEntity(self->chain); // get rid of the gun. // the gun just vanishes
+	}
+	
+self->s.weapon=WP_ROCKET_LAUNCHER; // to tell it what kind of explosion to use
+G_AddEvent( self, EV_MISSILE_MISS, DirToByte( dir ) ); // to tell it to spawn an explosion here
+self->freeAfterEvent = qtrue; // so the base goes away after the explosion
+
+}
+
+
 /*
 ===========================
 checktarget
@@ -165,6 +210,30 @@ Base_Think
 */
 void Base_think(gentity_t *ent){
 
+	// If the mc is gone blow up the turret... Meaning
+	// you need an mc before you can build turrets.
+	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
+	{
+		if (level.blueMC == 0) 
+		{	
+			ent->health = 1; 
+			ent->s.time2 = 0;
+			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+		}
+	}
+	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
+	{
+		if (level.redMC == 0) 
+		{ 
+			ent->health = 1; 
+			ent->s.time2 = 0;
+			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+		}
+	}
+
+	ent->think = Base_think;
+	ent->nextthink=level.time+100;
+
 // for shielded turrets. regenerates health to 400 at 10 health a second
 if ((ent->s.time2==1)&(ent->health<400)){
 	ent->health+=1;
@@ -176,7 +245,7 @@ if ((ent->s.time2==3)&(!ent->chain->enemy))
 	{
 	ent->s.time2=2;
 	ent->chain->s.time2=2;
-	ent->nextthink=level.time+1000;
+	ent->nextthink=level.time+100;
 	}
 
 
@@ -191,6 +260,7 @@ turret_think
 void turret_think( gentity_t *ent){
 
 	ent->nextthink=level.time+10;
+
 
 	if (!checktarget(ent,ent->enemy))
 		turret_findenemy(ent);
@@ -240,7 +310,7 @@ void createturretgun(gentity_t *ent){
 	turret->eventTime=200;
 	turret->s.number = turret - g_entities;
 	turret->s.weapon=WP_PLASMAGUN;;
-	turret->classname="turret";	
+	turret->classname="turretgun";	
 	turret->s.modelindex = G_ModelIndex("models/turrets/gun1.md3");
 	turret->model = "models/turrets/gun1.md3";
 	turret->s.modelindex2 = G_ModelIndex("models/turrets/gun1.md3");
@@ -274,25 +344,6 @@ if (self->chain)
 			}
 		}
 	}
-}
-
-
-/*
-===========================
-turret_explode
-===========================
-*/
-void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod){
-/* This just blows up the base when its destroyed. took me some time to work it out */
-	vec3_t dir; // needed by the event being added
-
-	dir[0] = dir[1] = 0;
-	dir[2] = 1;
-if (self->chain)
-	G_FreeEntity(self->chain); // get rid of the gun. // the gun just vanishes
-self->s.weapon=WP_ROCKET_LAUNCHER; // to tell it what kind of explosion to use
-G_AddEvent( self, EV_MISSILE_MISS, DirToByte( dir ) ); // to tell it to spawn an explosion here
-self->freeAfterEvent = qtrue; // so the base goes away after the explosion
 }
 
 
@@ -340,15 +391,27 @@ void BuildTurret( gentity_t *ent , int type ){
 	
 	base->s.eType=ET_TURRET;
 
+	base->classname = "turret";
+
+	if (ent->client->sess.sessionTeam == TEAM_BLUE)
+	{
+		level.blueTurrets++;
+	}
+	if (ent->client->sess.sessionTeam == TEAM_RED)
+	{
+		level.redTurrets++;
+	}
+	
+
 	base->s.time2=type; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	
-	
+	base->classname = "turret";
 	base->takedamage=qtrue; // so they can be destoryed
 	base->die=turret_explode; // so they actually explode when destroyed
 	base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
 	base->nextthink=level.time+5000;
 	VectorSet( base->r.mins, -15, -15, -20 );
-	VectorSet( base->r.maxs, 35, 15, -5);
+	VectorSet( base->r.maxs, 35, 15, -5); 
 	trap_LinkEntity (base);
 
 }
@@ -374,8 +437,36 @@ MC_think
 */
 void MC_think(gentity_t *ent){
 
+	int shieldMultiplier;
+
+	shieldMultiplier = 1;
+
 	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
 	ent->r.contents = CONTENTS_SOLID;
+
+	// Determine The Sheilding By Counting Shield Generators
+	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
+	{
+		// If there's at least one shield generator and the MC's health is above 450 it'll be shielded
+		//if (level.blueGen != 0) { ent->s.time2=1; } else { ent->s.time2=0; }
+		shieldMultiplier = level.blueGen;
+
+	}
+	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
+	{
+		//if (level.redGen != 0) { ent->s.time2=1; } else { ent->s.time2=0; }
+		shieldMultiplier = level.redGen;
+
+	}
+
+	shieldMultiplier++;
+
+	if (shieldMultiplier > 1) { ent->s.time2 = 1; } else { ent->s.time2 = 0; }
+
+	 // 9 is being built -- 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+	
+	// It's shielded but health is too low.. 
+	// This turns shielding off and regeneration stops.
 	if (ent->s.time2==1)
 	{
 		if (ent->health<450)
@@ -384,20 +475,18 @@ void MC_think(gentity_t *ent){
 		}
 	}
 	
-	if (ent->s.time2==1) 
+	if ((ent->s.time2==1) && (shieldMultiplier > 1)) 
 	{
-		if (ent->health < 10000) 
+		if (ent->health < (2000 * shieldMultiplier) ) 
 		{
 			ent->health+=1;
 			ent->nextthink=level.time+100;
 		}
 	}
 
-
-
-
-
+	ent->nextthink=level.time+100;
 }
+
 
 /*
 ===========================
@@ -426,6 +515,16 @@ void BuildMC( gentity_t *ent ){
 //	vec3_t 		forward,up;
 
 
+	if (ent->client->sess.sessionTeam == TEAM_BLUE)
+	{
+		level.blueMC++;
+	}
+	if (ent->client->sess.sessionTeam == TEAM_RED)
+	{
+		level.redMC++;
+	}
+
+
 	base=G_Spawn();
 	base->parent=ent;
 	
@@ -436,17 +535,17 @@ void BuildMC( gentity_t *ent ){
 	
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	base->think=MC_prethink;
-	base->health=1000; // change this to make the turrets tougher or weaker.
+	base->health=1300; // change this to make the turrets tougher or weaker.
 	base->s.eType=ET_TURRET;
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	base->takedamage=qtrue; // so they can be destoryed
 	base->die=turret_explode; // so they actually explode when destroyed
 	//base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
-	base->nextthink=level.time+7000;
-
+	base->nextthink=level.time+3000;  // MC Need not take long to build
+	base->classname = "mc";
 
 	VectorSet( base->r.mins, -15, -15, -20 );
-	VectorSet( base->r.maxs, 35, 15, -5);
+	VectorSet( base->r.maxs, 35, 15, 15); // Was -5
 
 
 
@@ -464,6 +563,39 @@ void BuildMC( gentity_t *ent ){
 ==================================== 
 */
 
+void GEN_think(gentity_t *ent){
+
+ 	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
+	ent->r.contents = CONTENTS_SOLID;
+
+	// If the mc is gone blow up the generator... Meaning
+	// you need an mc before you can build generators.
+	// Otherwise you just sit there looking good.
+	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
+	{
+		if (level.blueMC == 0) 
+		{	
+			ent->health = 1; 
+			ent->s.time2 = 0;
+			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+		}
+	}
+	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
+	{
+		if (level.redMC == 0) 
+		{ 
+			ent->health = 1; 
+			ent->s.time2 = 0;
+			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+		}
+	}
+
+	ent->think = GEN_think;
+	ent->nextthink=level.time+100;
+
+
+}
+
 /*
 ===========================
 gen_prethink
@@ -476,7 +608,7 @@ built' state
 void gen_prethink(gentity_t *ent){
 
 		ent->s.time2=0;
-		ent->think = MC_think;
+		ent->think = GEN_think;
 		ent->nextthink=level.time+100;
 }
 
@@ -491,6 +623,16 @@ void BuildGenerator( gentity_t *ent ){
 
 	gentity_t	*base;
 
+	if (ent->client->sess.sessionTeam == TEAM_BLUE)
+	{
+		level.blueGen++;
+	}
+	if (ent->client->sess.sessionTeam == TEAM_RED)
+	{
+		level.redGen++;
+	}
+
+
 	base=G_Spawn();
 	base->parent=ent;
 	base->s.modelindex = G_ModelIndex("models/turrets/generator.md3");
@@ -499,15 +641,20 @@ void BuildGenerator( gentity_t *ent ){
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	base->think=gen_prethink;
-	base->health=300; // change this to make tougher or weaker.
+	base->health=400; // change this to make tougher or weaker.
 	base->s.eType=ET_TURRET;
+
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	base->takedamage=qtrue; // so they can be destoryed
 	base->die=turret_explode; // so they actually explode when destroyed
 	//base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
-	base->nextthink=level.time+6000;
+	
+	base->classname = "generator";
+	
+		
+	base->nextthink=level.time+8000;
 	VectorSet( base->r.mins, -15, -15, -20 );
-	VectorSet( base->r.maxs, 35, 15, -5);
+	VectorSet( base->r.maxs, 35, 15, 0);
 	trap_LinkEntity (base);
 
 }

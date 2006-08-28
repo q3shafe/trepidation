@@ -2185,7 +2185,7 @@ ADDRGP4 level
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 9272
+CNSTI4 9280
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -11256,7 +11256,7 @@ skip 880640
 export level
 align 4
 LABELV level
-skip 9272
+skip 9280
 import Pickup_Team
 import CheckTeamStatus
 import TeamplayInfoMessage
@@ -14426,7 +14426,7 @@ byte 1 117
 byte 1 103
 byte 1 32
 byte 1 50
-byte 1 48
+byte 1 55
 byte 1 32
 byte 1 50
 byte 1 48

@@ -422,6 +422,7 @@ typedef enum {
 	EV_BODY_NOHEAD,				// Shafe - Trep - Headshot
 	EV_SCOREPLUM,			// score plum
 	EV_BREAK_GLASS,
+	EV_BREAK_WALL,
 
 #ifdef MISSIONPACK
 	EV_PROXIMITY_MINE_STICK,

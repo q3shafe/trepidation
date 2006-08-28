@@ -688,7 +688,7 @@ line 361
 ;261:	{"+scanner", 		"tracking device",	ID_SCANNER,		ANIM_CHAT,		'l',				-1,		-1, -1},
 ;262:	{"+button6", 		"energy grapple",	ID_GRAPPLE,		ANIM_ATTACK,	K_MOUSE3,			-1,		-1, -1},
 ;263:	{"pdg", 		"displacement grenade",	ID_PDG	,		ANIM_ATTACK,	'Q',			-1,		-1, -1},
-;264:	{"build_menu", 		"built menu",	ID_BUILD_MENU	,		ANIM_ATTACK,	'E',			-1,		-1, -1},
+;264:	{"build_menu", 		"build menu",	ID_BUILD_MENU	,		ANIM_ATTACK,	'E',			-1,		-1, -1},
 ;265:
 ;266:	{(char*)NULL,		(char*)NULL,		0,				0,				-1,				-1,		-1,	-1},
 ;267:};
@@ -8738,7 +8738,7 @@ byte 1 98
 byte 1 117
 byte 1 105
 byte 1 108
-byte 1 116
+byte 1 100
 byte 1 32
 byte 1 109
 byte 1 101

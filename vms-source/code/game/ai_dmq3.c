@@ -4189,6 +4189,7 @@ int BotGetActivateGoal(bot_state_t *bs, int entitynum, bot_activategoal_t *activ
  	if (!strcmp(classname, "func_breakable")) {
  		return ent;
  	}
+	
 		//
 		trap_AAS_IntForBSPEpairKey(ent, "spawnflags", &spawnflags);
 		// if the door starts open then just wait for the door to return
