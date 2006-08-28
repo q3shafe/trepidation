@@ -261,7 +261,7 @@ static bind_t g_bindings[] =
 	{"+scanner", 		"tracking device",	ID_SCANNER,		ANIM_CHAT,		'l',				-1,		-1, -1},
 	{"+button6", 		"energy grapple",	ID_GRAPPLE,		ANIM_ATTACK,	K_MOUSE3,			-1,		-1, -1},
 	{"pdg", 		"displacement grenade",	ID_PDG	,		ANIM_ATTACK,	'Q',			-1,		-1, -1},
-	{"build_menu", 		"built menu",	ID_BUILD_MENU	,		ANIM_ATTACK,	'E',			-1,		-1, -1},
+	{"build_menu", 		"build menu",	ID_BUILD_MENU	,		ANIM_ATTACK,	'E',			-1,		-1, -1},
 
 	{(char*)NULL,		(char*)NULL,		0,				0,				-1,				-1,		-1,	-1},
 };

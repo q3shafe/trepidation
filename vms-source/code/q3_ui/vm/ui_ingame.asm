@@ -3557,9 +3557,10 @@ line 900
 ADDRGP4 DynamicMenu_SubMenuInit
 CALLI4
 pop
-line 902
+line 903
 ;901:	// The Menu Items
-;902:	DynamicMenu_AddItem("Kick", 0 , NULL, DM_Close_Event);
+;902:
+;903:	DynamicMenu_AddItem("Kick", 0 , NULL, DM_Close_Event);
 ADDRGP4 $571
 ARGP4
 CNSTI4 0
@@ -3571,8 +3572,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 903
-;903:	DynamicMenu_AddItem("Next Map", 0 , NULL, DM_Close_Event);
+line 904
+;904:	DynamicMenu_AddItem("Next Map", 0 , NULL, DM_Close_Event);
 ADDRGP4 $572
 ARGP4
 CNSTI4 0
@@ -3584,8 +3585,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 904
-;904:	DynamicMenu_AddItem("Restart Map", 0 , NULL, DM_Close_Event);
+line 905
+;905:	DynamicMenu_AddItem("Restart Map", 0 , NULL, DM_Close_Event);
 ADDRGP4 $573
 ARGP4
 CNSTI4 0
@@ -3597,8 +3598,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 905
-;905:	DynamicMenu_AddItem("Balance Teams", 0 , NULL, DM_Close_Event);
+line 906
+;906:	DynamicMenu_AddItem("Balance Teams", 0 , NULL, DM_Close_Event);
 ADDRGP4 $574
 ARGP4
 CNSTI4 0
@@ -3610,8 +3611,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 906
-;906:	DynamicMenu_AddItem("Close!", 0, NULL, DM_Close_Event);
+line 907
+;907:	DynamicMenu_AddItem("Close!", 0, NULL, DM_Close_Event);
 ADDRGP4 $575
 ARGP4
 CNSTI4 0
@@ -3623,37 +3624,37 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 907
-;907:	DynamicMenu_FinishSubMenuInit();
+line 908
+;908:	DynamicMenu_FinishSubMenuInit();
 ADDRGP4 DynamicMenu_FinishSubMenuInit
 CALLV
 pop
-line 908
-;908:}
+line 909
+;909:}
 LABELV $570
 endproc DynamicMenu_VoteMenu 0 16
 proc DynamicMenu_InitPrimaryMenu 0 16
-line 920
-;909:
+line 921
 ;910:
 ;911:
 ;912:
-;913:// Shafe - Trep - Top Level Menu Last
-;914:/*
-;915:=================
-;916:DynamicMenu_InitPrimaryMenu
-;917:=================
-;918:*/
-;919:static void DynamicMenu_InitPrimaryMenu( void )
-;920:{
-line 921
-;921:DynamicMenu_SubMenuInit();
+;913:
+;914:// Shafe - Trep - Top Level Menu Last
+;915:/*
+;916:=================
+;917:DynamicMenu_InitPrimaryMenu
+;918:=================
+;919:*/
+;920:static void DynamicMenu_InitPrimaryMenu( void )
+;921:{
+line 922
+;922:DynamicMenu_SubMenuInit();
 ADDRGP4 DynamicMenu_SubMenuInit
 CALLI4
 pop
-line 923
-;922:
-;923:DynamicMenu_AddItem("Call Vote", 0, DynamicMenu_VoteMenu, NULL);
+line 924
+;923:
+;924:DynamicMenu_AddItem("Call Vote", 0, DynamicMenu_VoteMenu, NULL);
 ADDRGP4 $577
 ARGP4
 CNSTI4 0
@@ -3665,8 +3666,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 924
-;924:DynamicMenu_AddItem("Buy Equipment", 0 , NULL, DM_Close_Event);
+line 925
+;925:DynamicMenu_AddItem("Buy Equipment", 0 , NULL, DM_Close_Event);
 ADDRGP4 $578
 ARGP4
 CNSTI4 0
@@ -3678,8 +3679,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 925
-;925:DynamicMenu_AddItem("Crap!", 0, NULL, DM_Close_Event);
+line 926
+;926:DynamicMenu_AddItem("Crap!", 0, NULL, DM_Close_Event);
 ADDRGP4 $579
 ARGP4
 CNSTI4 0
@@ -3691,8 +3692,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 926
-;926:DynamicMenu_AddItem("Shit And Stuff!", 0, NULL, DM_Close_Event);
+line 927
+;927:DynamicMenu_AddItem("Shit And Stuff!", 0, NULL, DM_Close_Event);
 ADDRGP4 $580
 ARGP4
 CNSTI4 0
@@ -3704,8 +3705,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 927
-;927:DynamicMenu_AddItem("Close!", 0, NULL, DM_Close_Event);
+line 928
+;928:DynamicMenu_AddItem("Close!", 0, NULL, DM_Close_Event);
 ADDRGP4 $575
 ARGP4
 CNSTI4 0
@@ -3717,31 +3718,33 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 929
-;928:
-;929:DynamicMenu_FinishSubMenuInit();
+line 930
+;929:
+;930:DynamicMenu_FinishSubMenuInit();
 ADDRGP4 DynamicMenu_FinishSubMenuInit
 CALLV
 pop
-line 930
-;930:}
+line 931
+;931:}
 LABELV $576
 endproc DynamicMenu_InitPrimaryMenu 0 16
 proc DynamicMenu_BuildMenu 0 16
-line 935
-;931:
+line 936
 ;932:
 ;933:
-;934:static void DynamicMenu_BuildMenu( void )
-;935:{
-line 936
-;936:DynamicMenu_SubMenuInit();
+;934:
+;935:static void DynamicMenu_BuildMenu( void )
+;936:{
+line 937
+;937:	DynamicMenu_SubMenuInit();
 ADDRGP4 DynamicMenu_SubMenuInit
 CALLI4
 pop
-line 938
-;937:
-;938:DynamicMenu_AddItem("Turret", 0, NULL, DM_BuildItem);
+line 941
+;938:
+;939:	
+;940:
+;941:	DynamicMenu_AddItem("Turret", 0, NULL, DM_BuildItem);
 ADDRGP4 $582
 ARGP4
 CNSTI4 0
@@ -3753,8 +3756,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 939
-;939:DynamicMenu_AddItem("Sheilded Turret", 0 , NULL, DM_BuildItem);
+line 942
+;942:	DynamicMenu_AddItem("Sheilded Turret", 0 , NULL, DM_BuildItem);
 ADDRGP4 $583
 ARGP4
 CNSTI4 0
@@ -3766,8 +3769,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 940
-;940:DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
+line 943
+;943:	DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
 ADDRGP4 $584
 ARGP4
 CNSTI4 0
@@ -3779,8 +3782,10 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 941
-;941:DynamicMenu_AddItem("Shield Generator", 0, NULL, DM_BuildItem);
+line 946
+;944://	if( !(trap_Cvar_VariableValue( "g_GameMode" ) == 3) ) 
+;945://	{
+;946:		DynamicMenu_AddItem("Shield Generator", 0, NULL, DM_BuildItem);
 ADDRGP4 $585
 ARGP4
 CNSTI4 0
@@ -3792,8 +3797,8 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 942
-;942:DynamicMenu_AddItem("Master Controller", 0, NULL, DM_BuildItem);
+line 947
+;947:		DynamicMenu_AddItem("Master Controller", 0, NULL, DM_BuildItem);
 ADDRGP4 $586
 ARGP4
 CNSTI4 0
@@ -3805,8 +3810,9 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 943
-;943:DynamicMenu_AddItem("Close", 0, NULL, DM_Close_Event);
+line 949
+;948://	}
+;949:	DynamicMenu_AddItem("Close", 0, NULL, DM_Close_Event);
 ADDRGP4 $587
 ARGP4
 CNSTI4 0
@@ -3818,55 +3824,55 @@ ARGP4
 ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
-line 945
-;944:
-;945:DynamicMenu_FinishSubMenuInit();
+line 951
+;950:
+;951:	DynamicMenu_FinishSubMenuInit();
 ADDRGP4 DynamicMenu_FinishSubMenuInit
 CALLV
 pop
-line 946
-;946:}
+line 952
+;952:}
 LABELV $581
 endproc DynamicMenu_BuildMenu 0 16
 proc DynamicMenu_MenuInit 12 8
-line 955
-;947:
-;948:
-;949:/*
-;950:=================
-;951:DynamicMenu_MenuInit
-;952:=================
-;953:*/
-;954:static void DynamicMenu_MenuInit( void )
-;955:{
-line 958
-;956:int i;
-;957:
-;958:s_dynamic.menu.draw = DynamicMenu_MenuDraw;
+line 961
+;953:
+;954:
+;955:/*
+;956:=================
+;957:DynamicMenu_MenuInit
+;958:=================
+;959:*/
+;960:static void DynamicMenu_MenuInit( void )
+;961:{
+line 964
+;962:int i;
+;963:
+;964:s_dynamic.menu.draw = DynamicMenu_MenuDraw;
 ADDRGP4 s_dynamic+268
 ADDRGP4 DynamicMenu_MenuDraw
 ASGNP4
-line 959
-;959:s_dynamic.menu.fullscreen = qfalse;
+line 965
+;965:s_dynamic.menu.fullscreen = qfalse;
 ADDRGP4 s_dynamic+280
 CNSTI4 0
 ASGNI4
-line 960
-;960:s_dynamic.menu.wrapAround = qfalse;
+line 966
+;966:s_dynamic.menu.wrapAround = qfalse;
 ADDRGP4 s_dynamic+276
 CNSTI4 0
 ASGNI4
-line 962
-;961:
-;962:for (i = 0; i < MAX_MENUITEMS; i++)
+line 968
+;967:
+;968:for (i = 0; i < MAX_MENUITEMS; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $592
-line 963
-;963:{
-line 964
-;964:s_dynamic.item[i].generic.type = MTYPE_PTEXT;
+line 969
+;969:{
+line 970
+;970:s_dynamic.item[i].generic.type = MTYPE_PTEXT;
 CNSTI4 72
 ADDRLP4 0
 INDIRI4
@@ -3875,8 +3881,8 @@ ADDRGP4 s_dynamic+288
 ADDP4
 CNSTI4 9
 ASGNI4
-line 965
-;965:s_dynamic.item[i].generic.flags = QMF_INACTIVE
+line 971
+;971:s_dynamic.item[i].generic.flags = QMF_INACTIVE
 CNSTI4 72
 ADDRLP4 0
 INDIRI4
@@ -3885,9 +3891,9 @@ ADDRGP4 s_dynamic+288+44
 ADDP4
 CNSTU4 53504
 ASGNU4
-line 967
-;966:|QMF_HIDDEN|QMF_NODEFAULTINIT|QMF_PULSEIFFOCUS;
-;967:s_dynamic.item[i].generic.ownerdraw = DynamicMenu_MenuItemDraw ;
+line 973
+;972:|QMF_HIDDEN|QMF_NODEFAULTINIT|QMF_PULSEIFFOCUS;
+;973:s_dynamic.item[i].generic.ownerdraw = DynamicMenu_MenuItemDraw ;
 CNSTI4 72
 ADDRLP4 0
 INDIRI4
@@ -3896,8 +3902,8 @@ ADDRGP4 s_dynamic+288+56
 ADDP4
 ADDRGP4 DynamicMenu_MenuItemDraw
 ASGNP4
-line 968
-;968:s_dynamic.item[i].generic.callback = DynamicMenu_MenuEvent ;
+line 974
+;974:s_dynamic.item[i].generic.callback = DynamicMenu_MenuEvent ;
 CNSTI4 72
 ADDRLP4 0
 INDIRI4
@@ -3906,8 +3912,8 @@ ADDRGP4 s_dynamic+288+48
 ADDP4
 ADDRGP4 DynamicMenu_MenuEvent
 ASGNP4
-line 969
-;969:s_dynamic.item[i].generic.id = i;
+line 975
+;975:s_dynamic.item[i].generic.id = i;
 CNSTI4 72
 ADDRLP4 0
 INDIRI4
@@ -3917,8 +3923,8 @@ ADDP4
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 970
-;970:s_dynamic.item[i].string = s_dynamic.data[i].text;
+line 976
+;976:s_dynamic.item[i].string = s_dynamic.data[i].text;
 CNSTI4 72
 ADDRLP4 0
 INDIRI4
@@ -3932,8 +3938,8 @@ LSHI4
 ADDRGP4 s_dynamic+4896
 ADDP4
 ASGNP4
-line 971
-;971:s_dynamic.item[i].style = UI_SMALLFONT|UI_DROPSHADOW;
+line 977
+;977:s_dynamic.item[i].style = UI_SMALLFONT|UI_DROPSHADOW;
 CNSTI4 72
 ADDRLP4 0
 INDIRI4
@@ -3942,8 +3948,8 @@ ADDRGP4 s_dynamic+288+64
 ADDP4
 CNSTI4 2064
 ASGNI4
-line 972
-;972:s_dynamic.item[i].color = color_red;
+line 978
+;978:s_dynamic.item[i].color = color_red;
 CNSTI4 72
 ADDRLP4 0
 INDIRI4
@@ -3952,9 +3958,9 @@ ADDRGP4 s_dynamic+288+68
 ADDP4
 ADDRGP4 color_red
 ASGNP4
-line 974
-;973:
-;974:Menu_AddItem(&s_dynamic.menu, &s_dynamic.item[i]);
+line 980
+;979:
+;980:Menu_AddItem(&s_dynamic.menu, &s_dynamic.item[i]);
 ADDRGP4 s_dynamic
 ARGP4
 CNSTI4 72
@@ -3967,10 +3973,10 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 975
-;975:}
+line 981
+;981:}
 LABELV $593
-line 962
+line 968
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -3981,74 +3987,74 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 64
 LTI4 $592
-line 978
-;976:
-;977:// start up the menu system
-;978:s_dynamic.depth = 0;
+line 984
+;982:
+;983:// start up the menu system
+;984:s_dynamic.depth = 0;
 ADDRGP4 s_dynamic+7020
 CNSTI4 0
 ASGNI4
-line 984
-;979:
-;980://Uncomment the next line if adding part II as well
-;981://DynamicMenu_InitMapItems();
-;982:
-;983://DynamicMenu_InitPrimaryMenu();
-;984:DynamicMenu_BuildMenu();
+line 990
+;985:
+;986://Uncomment the next line if adding part II as well
+;987://DynamicMenu_InitMapItems();
+;988:
+;989://DynamicMenu_InitPrimaryMenu();
+;990:DynamicMenu_BuildMenu();
 ADDRGP4 DynamicMenu_BuildMenu
 CALLV
 pop
-line 985
-;985:}
+line 991
+;991:}
 LABELV $588
 endproc DynamicMenu_MenuInit 12 8
 export UI_DynamicMenuCache
 proc UI_DynamicMenuCache 0 0
-line 998
-;986:
-;987:
-;988:
-;989:
-;990:
-;991:
-;992:/*
-;993:=================
-;994:UI_DynamicMenuCache
-;995:=================
-;996:*/
-;997:void UI_DynamicMenuCache( void )
-;998:{
-line 999
-;999:}
+line 1004
+;992:
+;993:
+;994:
+;995:
+;996:
+;997:
+;998:/*
+;999:=================
+;1000:UI_DynamicMenuCache
+;1001:=================
+;1002:*/
+;1003:void UI_DynamicMenuCache( void )
+;1004:{
+line 1005
+;1005:}
 LABELV $614
 endproc UI_DynamicMenuCache 0 0
 export UI_DynamicMenu
 proc UI_DynamicMenu 4124 12
-line 1010
-;1000:
-;1001:
-;1002:
-;1003:
-;1004:/*
-;1005:=================
-;1006:UI_DynamicMenu
-;1007:=================
-;1008:*/
-;1009:void UI_DynamicMenu( void )
-;1010:{
-line 1015
-;1011:	uiClientState_t	cs;
-;1012:	char			info[MAX_INFO_STRING];
-;1013:	int				playerTeam;
-;1014:
-;1015:trap_GetClientState( &cs );
+line 1016
+;1006:
+;1007:
+;1008:
+;1009:
+;1010:/*
+;1011:=================
+;1012:UI_DynamicMenu
+;1013:=================
+;1014:*/
+;1015:void UI_DynamicMenu( void )
+;1016:{
+line 1021
+;1017:	uiClientState_t	cs;
+;1018:	char			info[MAX_INFO_STRING];
+;1019:	int				playerTeam;
+;1020:
+;1021:trap_GetClientState( &cs );
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_GetClientState
 CALLV
 pop
-line 1016
-;1016:trap_GetConfigString( CS_PLAYERS 
+line 1022
+;1022:trap_GetConfigString( CS_PLAYERS 
 ADDRLP4 0+8
 INDIRI4
 CNSTI4 544
@@ -4061,9 +4067,9 @@ ARGI4
 ADDRGP4 trap_GetConfigString
 CALLI4
 pop
-line 1018
-;1017:+ cs.clientNum, info, MAX_INFO_STRING );
-;1018:playerTeam = atoi(Info_ValueForKey(info, "t"));
+line 1024
+;1023:+ cs.clientNum, info, MAX_INFO_STRING );
+;1024:playerTeam = atoi(Info_ValueForKey(info, "t"));
 ADDRLP4 3084
 ARGP4
 ADDRGP4 $213
@@ -4083,14 +4089,14 @@ ADDRLP4 4108
 ADDRLP4 4116
 INDIRI4
 ASGNI4
-line 1025
-;1019:
-;1020://Uncomment the next two code lines if adding part II 
-;1021://as well, or specs can't use the menu either
-;1022://if (playerTeam == TEAM_SPECTATOR)
-;1023://return;
-;1024:
-;1025:memset(&s_dynamic.menu, 0, sizeof(dynamicmenu_t));
+line 1031
+;1025:
+;1026://Uncomment the next two code lines if adding part II 
+;1027://as well, or specs can't use the menu either
+;1028://if (playerTeam == TEAM_SPECTATOR)
+;1029://return;
+;1030:
+;1031:memset(&s_dynamic.menu, 0, sizeof(dynamicmenu_t));
 ADDRGP4 s_dynamic
 ARGP4
 CNSTI4 0
@@ -4100,9 +4106,9 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1027
-;1026:
-;1027:s_dynamic.gametype = (int)trap_Cvar_VariableValue("g_gametype");
+line 1033
+;1032:
+;1033:s_dynamic.gametype = (int)trap_Cvar_VariableValue("g_gametype");
 ADDRGP4 $161
 ARGP4
 ADDRLP4 4120
@@ -4114,74 +4120,74 @@ ADDRLP4 4120
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1034
-;1028:
-;1029://Uncomment the next three lines if adding part II as well
-;1030://if (s_dynamic.gametype != GT_TEAM && 
-;1031://s_dynamic.gametype != GT_CTF)
-;1032://return;
-;1033:
-;1034:UI_DynamicMenuCache();
+line 1040
+;1034:
+;1035://Uncomment the next three lines if adding part II as well
+;1036://if (s_dynamic.gametype != GT_TEAM && 
+;1037://s_dynamic.gametype != GT_CTF)
+;1038://return;
+;1039:
+;1040:UI_DynamicMenuCache();
 ADDRGP4 UI_DynamicMenuCache
 CALLV
 pop
-line 1037
-;1035:
-;1036:// force as top level menu
-;1037:uis.menusp = 0;
+line 1043
+;1041:
+;1042:// force as top level menu
+;1043:uis.menusp = 0;
 ADDRGP4 uis+16
 CNSTI4 0
 ASGNI4
-line 1040
-;1038:
-;1039:// set menu cursor to a nice location
-;1040:uis.cursorx = 50;
+line 1046
+;1044:
+;1045:// set menu cursor to a nice location
+;1046:uis.cursorx = 50;
 ADDRGP4 uis+8
 CNSTI4 50
 ASGNI4
-line 1041
-;1041:uis.cursory = 240;
+line 1047
+;1047:uis.cursory = 240;
 ADDRGP4 uis+12
 CNSTI4 240
 ASGNI4
-line 1043
-;1042:
-;1043:DynamicMenu_MenuInit();
+line 1049
+;1048:
+;1049:DynamicMenu_MenuInit();
 ADDRGP4 DynamicMenu_MenuInit
 CALLV
 pop
-line 1045
-;1044:
-;1045:UI_PushMenu( &s_dynamic.menu );
+line 1051
+;1050:
+;1051:UI_PushMenu( &s_dynamic.menu );
 ADDRGP4 s_dynamic
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 1046
-;1046:}
+line 1052
+;1052:}
 LABELV $615
 endproc UI_DynamicMenu 4124 12
 export UI_DynamicCommandMenu_f
 proc UI_DynamicCommandMenu_f 0 0
-line 1056
-;1047:
-;1048:
-;1049:
-;1050:/*
-;1051:=================
-;1052:UI_DynamicCommandMenu_f
-;1053:=================
-;1054:*/
-;1055:void UI_DynamicCommandMenu_f( void )
-;1056:{
-line 1057
-;1057:UI_DynamicMenu();
+line 1062
+;1053:
+;1054:
+;1055:
+;1056:/*
+;1057:=================
+;1058:UI_DynamicCommandMenu_f
+;1059:=================
+;1060:*/
+;1061:void UI_DynamicCommandMenu_f( void )
+;1062:{
+line 1063
+;1063:UI_DynamicMenu();
 ADDRGP4 UI_DynamicMenu
 CALLV
 pop
-line 1058
-;1058:}
+line 1064
+;1064:}
 LABELV $621
 endproc UI_DynamicCommandMenu_f 0 0
 bss

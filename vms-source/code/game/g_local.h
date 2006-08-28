@@ -500,12 +500,14 @@ typedef struct {
 
 	int			redlevel;
 	int			bluelevel;
-	int			redGenerators;		// All of these are for future gametypes
-	int			blueGenerators;
+	int			redGen;		// All of these are for future gametypes
+	int			blueGen;
 	int			redTurrets;
 	int			blueTurrets;
 	int			redCredits;
 	int			blueCredits;
+	int			redMC;
+	int			blueMC;
 
 
 } level_locals_t;
