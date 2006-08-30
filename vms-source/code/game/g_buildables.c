@@ -447,23 +447,19 @@ void MC_think(gentity_t *ent){
 	// Determine The Sheilding By Counting Shield Generators
 	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
 	{
-		// If there's at least one shield generator and the MC's health is above 450 it'll be shielded
-		//if (level.blueGen != 0) { ent->s.time2=1; } else { ent->s.time2=0; }
 		shieldMultiplier = level.blueGen;
-
 	}
 	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
 	{
-		//if (level.redGen != 0) { ent->s.time2=1; } else { ent->s.time2=0; }
 		shieldMultiplier = level.redGen;
-
 	}
 
 	shieldMultiplier++;
 
+	// If there's at least one shield generator and the MC's health is above 450 it'll be shielded
 	if (shieldMultiplier > 1) { ent->s.time2 = 1; } else { ent->s.time2 = 0; }
 
-	 // 9 is being built -- 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+	 
 	
 	// It's shielded but health is too low.. 
 	// This turns shielding off and regeneration stops.

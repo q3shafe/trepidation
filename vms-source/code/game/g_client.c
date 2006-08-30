@@ -1243,6 +1243,22 @@ void ClientSpawn(gentity_t *ent) {
 			client->ps.ammo[WP_GRAPPLING_HOOK] = -1;
 
 	} 
+
+	// Trepidation Gametype
+	// This is all gonna change once we introduce classes
+	if (g_instagib.integer == 0 && g_GameMode.integer == 3)  // Shafe - Trep Instagib
+	{
+		client->ps.stats[STAT_WEAPONS] = ( 1 << WP_MACHINEGUN );
+		if ( g_gametype.integer == GT_TEAM ) {
+			client->ps.ammo[WP_MACHINEGUN] = 50;
+		} else {
+			client->ps.ammo[WP_MACHINEGUN] = 100;
+		} 
+			
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GAUNTLET );
+			client->ps.ammo[WP_GAUNTLET] = -1;
+			client->ps.ammo[WP_GRAPPLING_HOOK] = -1;
+	}
 	
 	// Instagib
 	if (g_instagib.integer == 1)

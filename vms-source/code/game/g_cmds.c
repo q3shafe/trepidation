@@ -48,8 +48,8 @@ void Cmd_SpawnMC_f( gentity_t *ent ){
 	if (iserror != 0)
 	{
 		// FIXME: Play Error Sound
-		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, va("print \"^9You already have a Master Controller.\n\"")); 	 }
-		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, va("print \"^9No Master Controllers In This GameType!.\n\"")); 	 }
+		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"There is Already A Master Controller.\"" ); }
+		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Master Controller Not Allowed.\"" ); }
 
 	}
 	
@@ -90,9 +90,9 @@ void Cmd_SpawnGenerator_f( gentity_t *ent ){
 	if (iserror != 0)
 	{
 		// FIXME: Play Error Sound
-		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, va("print \"^9You already have the maximum number of shield generators.\n\"")); 	 }
-		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, va("print \"^9You cannot build shield generators in this gametype!.\n\"")); 	 }
-	}
+		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Too Many Shield Generators..\"" );}
+		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Sheild Generators Not Allowed.\"" );}
+	}						
 
 }
 
@@ -104,6 +104,10 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 
 	// If Playing GM 3 Check the rules
 	if (g_GameMode.integer == 3) {
+		// What types of turrets are you allowed to build?
+		
+
+		// Be sure there arent too many
 		if(ent->client->sess.sessionTeam == TEAM_BLUE) 
 		{
 			if (level.blueTurrets > 5)
@@ -112,7 +116,8 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 			} else {
 				BuildTurret(ent, type);	
 				iserror = 0;
-			}			
+			}	
+		}
 		if(ent->client->sess.sessionTeam == TEAM_RED) 
 		{
 			if (level.redTurrets > 5)
@@ -122,6 +127,7 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 				BuildTurret(ent, type);	
 				iserror = 0;
 			}			
+		}
 	}
 
 	// If playing CTF Make sure that we dont have too many 
@@ -134,26 +140,30 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 			{
 				iserror = 2;
 			} else {
+				level.blueMC = 1; // Do this so that the turrets dont instantly blow up
 				BuildTurret(ent, type);	
 				iserror = 0;
 			}			
+		}
 		if(ent->client->sess.sessionTeam == TEAM_RED) 
 		{
 			if (level.redTurrets > 5)
 			{
 				iserror = 2;
 			} else {
+				level.redMC = 1; // Do this so that the turrets dont instantly blow up
 				BuildTurret(ent, type);	
 				iserror = 0;
 			}			
+		}
 	}
 	
 	// If it couldn't be built tell them why
 	if (iserror != 0)
 	{
 		// FIXME Play Error Sound
-		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, va("print \"^9You already have the maximum number of turrets!.\n\"")); 	 }
-		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, va("print \"^9You cannot build turrets in this gametype!.\n\"")); 	 }
+		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Too Many Turrets On Your Team.\"" ); }
+		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Turrets Not Allowed Here.\"" ); }
 	}
 
 }
@@ -162,6 +172,8 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 // End Buildables
 =================================================
 /*
+
+
 /*
 ==================
 DeathmatchScoreboardMessage
