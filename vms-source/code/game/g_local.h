@@ -40,7 +40,12 @@ typedef enum {
 	MOVER_POS1,
 	MOVER_POS2,
 	MOVER_1TO2,
-	MOVER_2TO1
+	MOVER_2TO1,
+
+	ROTATOR_POS1,
+	ROTATOR_POS2,
+	ROTATOR_1TO2,
+	ROTATOR_2TO1
 } moverState_t;
 
 #define SP_PODIUM_MODEL		"models/mapobjects/podium/podium4.md3"
@@ -166,6 +171,7 @@ struct gentity_s {
 	// end shafe
 
 	gitem_t		*item;			// for bonus items
+	float		distance;	
 	int			constantSpeed;	// used for homing missiles to avoid floating point error
 								// in speed calculations
 	vec3_t		turloc;			// Used for turrets

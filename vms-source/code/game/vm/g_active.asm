@@ -1069,7 +1069,7 @@ line 202
 ;201:		}
 ;202:		other = &g_entities[ pm->touchents[i] ];
 ADDRLP4 8
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -1494,7 +1494,7 @@ LABELV $148
 line 252
 ;252:		hit = &g_entities[touch[i]];
 ADDRLP4 0
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -5478,7 +5478,7 @@ line 1172
 ;1171:
 ;1172:	ent = g_entities + clientNum;
 ADDRLP4 0
-CNSTI4 860
+CNSTI4 864
 ADDRFP4 0
 INDIRI4
 MULI4

@@ -152,7 +152,7 @@ line 49
 ;49:	{
 line 51
 ;50:		// FIXME: Play Error Sound
-;51:		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Your Team Already Has A Master Controller.\"" ); }
+;51:		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"There is Already A Master Controller.\"" ); }
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -164,7 +164,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $73
@@ -174,7 +174,7 @@ CALLV
 pop
 LABELV $71
 line 52
-;52:		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"You cannot build a master controller in this game type.\"" ); }
+;52:		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Master Controller Not Allowed.\"" ); }
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
@@ -186,7 +186,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $76
@@ -344,7 +344,7 @@ line 91
 ;91:	{
 line 93
 ;92:		// FIXME: Play Error Sound
-;93:		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"You already have the maximum number of shield generators..\"" );}
+;93:		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Too Many Shield Generators..\"" );}
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -356,7 +356,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $95
@@ -366,7 +366,7 @@ CALLV
 pop
 LABELV $93
 line 94
-;94:		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"You cannot build shield generators in this gametype.\"" );}
+;94:		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Sheild Generators Not Allowed.\"" );}
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
@@ -378,7 +378,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $98
@@ -675,7 +675,7 @@ line 163
 ;163:	{
 line 165
 ;164:		// FIXME Play Error Sound
-;165:		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Your Team Already Has The Maximum Number Of Turrets.\"" ); }
+;165:		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Too Many Turrets On Your Team.\"" ); }
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -687,7 +687,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $132
@@ -697,7 +697,7 @@ CALLV
 pop
 LABELV $130
 line 166
-;166:		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"You Cannot Built Turrets In This Gametype.\"" ); }
+;166:		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Turrets Not Allowed Here.\"" ); }
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
@@ -709,7 +709,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $135
@@ -977,7 +977,7 @@ ARGI4
 ADDRLP4 2452
 INDIRI4
 ARGI4
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 2472
 INDIRI4
 ADDRGP4 level+88
@@ -1137,7 +1137,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 2456
@@ -1416,7 +1416,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 0
@@ -1443,7 +1443,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 4
@@ -1470,7 +1470,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 8
@@ -1497,7 +1497,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 12
@@ -1524,7 +1524,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 16
@@ -1551,7 +1551,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 20
@@ -1598,7 +1598,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 0
@@ -1643,7 +1643,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 0
@@ -1684,7 +1684,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 0
@@ -2080,7 +2080,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 2068
@@ -2136,7 +2136,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 2068
@@ -2277,7 +2277,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 2060
@@ -3040,7 +3040,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 12
@@ -3151,7 +3151,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 12
@@ -3279,7 +3279,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 16
@@ -3344,7 +3344,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $323
@@ -3374,7 +3374,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $324
@@ -4620,7 +4620,7 @@ INDIRI4
 CNSTI4 -1
 EQI4 $430
 ADDRLP4 68
-CNSTI4 860
+CNSTI4 864
 ASGNI4
 ADDRLP4 72
 CNSTI4 8
@@ -4833,7 +4833,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ASGNI4
 line 906
@@ -4916,7 +4916,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $441
@@ -4939,7 +4939,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $443
@@ -4962,7 +4962,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $445
@@ -4985,7 +4985,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $447
@@ -5032,7 +5032,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $453
@@ -5108,7 +5108,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $466
@@ -5139,7 +5139,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $470
@@ -5942,7 +5942,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 20
@@ -6436,7 +6436,7 @@ LABELV $564
 line 1187
 ;1187:		other = &g_entities[j];
 ADDRLP4 4
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -6657,7 +6657,7 @@ line 1238
 ;1237:
 ;1238:	target = &g_entities[targetNum];
 ADDRLP4 0
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -6997,7 +6997,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 12
@@ -7112,7 +7112,7 @@ LABELV $618
 line 1312
 ;1312:		other = &g_entities[j];
 ADDRLP4 4
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7334,7 +7334,7 @@ line 1362
 ;1361:
 ;1362:	target = &g_entities[targetNum];
 ADDRLP4 0
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7694,7 +7694,7 @@ EQI4 $652
 line 1406
 ;1406:		who = g_entities + ent->client->lastkilled_client;
 ADDRLP4 0
-CNSTI4 860
+CNSTI4 864
 ADDRFP4 0
 INDIRP4
 CNSTI4 516
@@ -7906,7 +7906,7 @@ LABELV $671
 line 1432
 ;1432:			who = g_entities + i;
 ADDRLP4 0
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -8212,7 +8212,7 @@ line 1479
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 1028
 INDIRI4
 MULI4
@@ -8308,7 +8308,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 4
@@ -8373,7 +8373,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $714
@@ -8403,7 +8403,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $718
@@ -8438,7 +8438,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $721
@@ -8473,7 +8473,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $724
@@ -8550,7 +8550,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $728
@@ -8729,7 +8729,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $728
@@ -8746,7 +8746,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $756
@@ -8854,7 +8854,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $769
@@ -9044,7 +9044,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $793
@@ -9326,7 +9326,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $825
@@ -9363,7 +9363,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $828
@@ -9398,7 +9398,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $831
@@ -9422,7 +9422,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $832
@@ -9632,7 +9632,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $714
@@ -9667,7 +9667,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $854
@@ -9702,7 +9702,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $857
@@ -9737,7 +9737,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $724
@@ -9884,7 +9884,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $728
@@ -10048,7 +10048,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 2160
@@ -10066,7 +10066,7 @@ line 1724
 ;1722:				}
 ;1723:
 ;1724:				if ( !g_entities[i].inuse ) {
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10093,7 +10093,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 2160
@@ -10264,7 +10264,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 2152
@@ -10313,7 +10313,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $728
@@ -10330,7 +10330,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $908
@@ -10743,7 +10743,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $944
@@ -10780,7 +10780,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $947
@@ -10815,7 +10815,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $831
@@ -10839,7 +10839,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 $950
@@ -11039,7 +11039,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 1052
@@ -11079,7 +11079,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRLP4 1056
@@ -11250,7 +11250,7 @@ line 1895
 ;1894:
 ;1895:	ent = g_entities + clientNum;
 ADDRLP4 1024
-CNSTI4 860
+CNSTI4 864
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -12468,7 +12468,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRFP4 4
@@ -16688,46 +16688,29 @@ byte 1 99
 byte 1 112
 byte 1 32
 byte 1 34
-byte 1 89
-byte 1 111
+byte 1 84
 byte 1 117
+byte 1 114
+byte 1 114
+byte 1 101
+byte 1 116
+byte 1 115
 byte 1 32
-byte 1 67
-byte 1 97
-byte 1 110
-byte 1 110
+byte 1 78
 byte 1 111
 byte 1 116
 byte 1 32
-byte 1 66
-byte 1 117
-byte 1 105
+byte 1 65
 byte 1 108
-byte 1 116
-byte 1 32
-byte 1 84
-byte 1 117
-byte 1 114
-byte 1 114
+byte 1 108
+byte 1 111
+byte 1 119
 byte 1 101
-byte 1 116
-byte 1 115
+byte 1 100
 byte 1 32
-byte 1 73
-byte 1 110
-byte 1 32
-byte 1 84
-byte 1 104
-byte 1 105
-byte 1 115
-byte 1 32
-byte 1 71
-byte 1 97
-byte 1 109
+byte 1 72
 byte 1 101
-byte 1 116
-byte 1 121
-byte 1 112
+byte 1 114
 byte 1 101
 byte 1 46
 byte 1 34
@@ -16738,6 +16721,26 @@ byte 1 99
 byte 1 112
 byte 1 32
 byte 1 34
+byte 1 84
+byte 1 111
+byte 1 111
+byte 1 32
+byte 1 77
+byte 1 97
+byte 1 110
+byte 1 121
+byte 1 32
+byte 1 84
+byte 1 117
+byte 1 114
+byte 1 114
+byte 1 101
+byte 1 116
+byte 1 115
+byte 1 32
+byte 1 79
+byte 1 110
+byte 1 32
 byte 1 89
 byte 1 111
 byte 1 117
@@ -16747,48 +16750,6 @@ byte 1 84
 byte 1 101
 byte 1 97
 byte 1 109
-byte 1 32
-byte 1 65
-byte 1 108
-byte 1 114
-byte 1 101
-byte 1 97
-byte 1 100
-byte 1 121
-byte 1 32
-byte 1 72
-byte 1 97
-byte 1 115
-byte 1 32
-byte 1 84
-byte 1 104
-byte 1 101
-byte 1 32
-byte 1 77
-byte 1 97
-byte 1 120
-byte 1 105
-byte 1 109
-byte 1 117
-byte 1 109
-byte 1 32
-byte 1 78
-byte 1 117
-byte 1 109
-byte 1 98
-byte 1 101
-byte 1 114
-byte 1 32
-byte 1 79
-byte 1 102
-byte 1 32
-byte 1 84
-byte 1 117
-byte 1 114
-byte 1 114
-byte 1 101
-byte 1 116
-byte 1 115
 byte 1 46
 byte 1 34
 byte 1 0
@@ -16798,31 +16759,14 @@ byte 1 99
 byte 1 112
 byte 1 32
 byte 1 34
-byte 1 89
-byte 1 111
-byte 1 117
-byte 1 32
-byte 1 99
-byte 1 97
-byte 1 110
-byte 1 110
-byte 1 111
-byte 1 116
-byte 1 32
-byte 1 98
-byte 1 117
-byte 1 105
-byte 1 108
-byte 1 100
-byte 1 32
-byte 1 115
+byte 1 83
 byte 1 104
-byte 1 105
 byte 1 101
+byte 1 105
 byte 1 108
 byte 1 100
 byte 1 32
-byte 1 103
+byte 1 71
 byte 1 101
 byte 1 110
 byte 1 101
@@ -16833,22 +16777,17 @@ byte 1 111
 byte 1 114
 byte 1 115
 byte 1 32
-byte 1 105
-byte 1 110
-byte 1 32
+byte 1 78
+byte 1 111
 byte 1 116
-byte 1 104
-byte 1 105
-byte 1 115
 byte 1 32
-byte 1 103
-byte 1 97
-byte 1 109
+byte 1 65
+byte 1 108
+byte 1 108
+byte 1 111
+byte 1 119
 byte 1 101
-byte 1 116
-byte 1 121
-byte 1 112
-byte 1 101
+byte 1 100
 byte 1 46
 byte 1 34
 byte 1 0
@@ -16858,53 +16797,23 @@ byte 1 99
 byte 1 112
 byte 1 32
 byte 1 34
-byte 1 89
+byte 1 84
 byte 1 111
-byte 1 117
+byte 1 111
 byte 1 32
+byte 1 77
 byte 1 97
-byte 1 108
-byte 1 114
-byte 1 101
-byte 1 97
-byte 1 100
+byte 1 110
 byte 1 121
 byte 1 32
-byte 1 104
-byte 1 97
-byte 1 118
-byte 1 101
-byte 1 32
-byte 1 116
-byte 1 104
-byte 1 101
-byte 1 32
-byte 1 109
-byte 1 97
-byte 1 120
-byte 1 105
-byte 1 109
-byte 1 117
-byte 1 109
-byte 1 32
-byte 1 110
-byte 1 117
-byte 1 109
-byte 1 98
-byte 1 101
-byte 1 114
-byte 1 32
-byte 1 111
-byte 1 102
-byte 1 32
-byte 1 115
+byte 1 83
 byte 1 104
 byte 1 105
 byte 1 101
 byte 1 108
 byte 1 100
 byte 1 32
-byte 1 103
+byte 1 71
 byte 1 101
 byte 1 110
 byte 1 101
@@ -16924,60 +16833,35 @@ byte 1 99
 byte 1 112
 byte 1 32
 byte 1 34
-byte 1 89
-byte 1 111
-byte 1 117
-byte 1 32
-byte 1 99
+byte 1 77
 byte 1 97
+byte 1 115
+byte 1 116
+byte 1 101
+byte 1 114
+byte 1 32
+byte 1 67
+byte 1 111
 byte 1 110
-byte 1 110
+byte 1 116
+byte 1 114
+byte 1 111
+byte 1 108
+byte 1 108
+byte 1 101
+byte 1 114
+byte 1 32
+byte 1 78
 byte 1 111
 byte 1 116
 byte 1 32
-byte 1 98
-byte 1 117
-byte 1 105
+byte 1 65
 byte 1 108
+byte 1 108
+byte 1 111
+byte 1 119
+byte 1 101
 byte 1 100
-byte 1 32
-byte 1 97
-byte 1 32
-byte 1 109
-byte 1 97
-byte 1 115
-byte 1 116
-byte 1 101
-byte 1 114
-byte 1 32
-byte 1 99
-byte 1 111
-byte 1 110
-byte 1 116
-byte 1 114
-byte 1 111
-byte 1 108
-byte 1 108
-byte 1 101
-byte 1 114
-byte 1 32
-byte 1 105
-byte 1 110
-byte 1 32
-byte 1 116
-byte 1 104
-byte 1 105
-byte 1 115
-byte 1 32
-byte 1 103
-byte 1 97
-byte 1 109
-byte 1 101
-byte 1 32
-byte 1 116
-byte 1 121
-byte 1 112
-byte 1 101
 byte 1 46
 byte 1 34
 byte 1 0
@@ -16987,15 +16871,14 @@ byte 1 99
 byte 1 112
 byte 1 32
 byte 1 34
-byte 1 89
-byte 1 111
-byte 1 117
-byte 1 114
-byte 1 32
 byte 1 84
+byte 1 104
 byte 1 101
-byte 1 97
-byte 1 109
+byte 1 114
+byte 1 101
+byte 1 32
+byte 1 105
+byte 1 115
 byte 1 32
 byte 1 65
 byte 1 108
@@ -17004,10 +16887,6 @@ byte 1 101
 byte 1 97
 byte 1 100
 byte 1 121
-byte 1 32
-byte 1 72
-byte 1 97
-byte 1 115
 byte 1 32
 byte 1 65
 byte 1 32

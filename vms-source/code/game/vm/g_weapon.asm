@@ -382,7 +382,7 @@ line 68
 ;67:
 ;68:	traceEnt = &g_entities[ tr.entityNum ];
 ADDRLP4 0
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 4+52
 INDIRI4
 MULI4
@@ -1006,7 +1006,7 @@ line 212
 ;211:
 ;212:		traceEnt = &g_entities[ tr.entityNum ];
 ADDRLP4 56
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 0+52
 INDIRI4
 MULI4
@@ -1483,7 +1483,7 @@ pop
 line 321
 ;321:		traceEnt = &g_entities[ tr.entityNum ];
 ADDRLP4 56
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 0+52
 INDIRI4
 MULI4
@@ -2960,7 +2960,7 @@ line 610
 ;609:		}
 ;610:		traceEnt = &g_entities[ trace.entityNum ];
 ADDRLP4 0
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 4+52
 INDIRI4
 MULI4
@@ -4058,7 +4058,7 @@ line 811
 ;810:
 ;811:		traceEnt = &g_entities[ tr.entityNum ];
 ADDRLP4 56
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 0+52
 INDIRI4
 MULI4
