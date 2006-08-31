@@ -278,7 +278,7 @@ LABELV $75
 line 72
 ;72:		hit = &g_entities[touch[i]];
 ADDRLP4 4
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -1710,7 +1710,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ASGNI4
 line 394
@@ -3105,7 +3105,7 @@ line 698
 ;697:
 ;698:	ent = g_entities + clientNum;
 ADDRLP4 1032
-CNSTI4 860
+CNSTI4 864
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -3831,7 +3831,7 @@ ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
 LTI4 $293
-CNSTI4 860
+CNSTI4 864
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -4394,7 +4394,7 @@ line 929
 ;928:
 ;929:	ent = &g_entities[ clientNum ];
 ADDRLP4 4
-CNSTI4 860
+CNSTI4 864
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -4841,7 +4841,7 @@ line 1023
 ;1022:
 ;1023:	ent = g_entities + clientNum;
 ADDRLP4 4
-CNSTI4 860
+CNSTI4 864
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -5271,7 +5271,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ASGNI4
 line 1112
@@ -7153,7 +7153,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 860
+CNSTI4 864
 DIVI4
 ARGI4
 ADDRGP4 ClientThink
@@ -7298,7 +7298,7 @@ line 1481
 ;1480:
 ;1481:	ent = g_entities + clientNum;
 ADDRLP4 4
-CNSTI4 860
+CNSTI4 864
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -7369,7 +7369,7 @@ line 1490
 ;1490:			&& level.clients[i].sess.spectatorClient == clientNum ) {
 line 1491
 ;1491:			StopFollowing( &g_entities[i] );
-CNSTI4 860
+CNSTI4 864
 ADDRLP4 0
 INDIRI4
 MULI4
