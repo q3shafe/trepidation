@@ -55,12 +55,12 @@ EQU4 $73
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
-ADDRGP4 cg+107596
+ADDRGP4 cg+109644
 INDIRI4
 ADDRLP4 16
 INDIRI4
 NEI4 $73
-ADDRGP4 cg+107592
+ADDRGP4 cg+109640
 INDIRI4
 ADDRLP4 16
 INDIRI4
@@ -97,8 +97,8 @@ LABELV $80
 line 42
 ;42:		cent = &cg_entities[ snap->entities[ i ].number ];
 ADDRLP4 0
-CNSTI4 732
-CNSTI4 208
+CNSTI4 740
+CNSTI4 212
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -176,7 +176,7 @@ line 51
 ;51:		if ( cent->nextState.solid ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 384
+CNSTI4 388
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -323,7 +323,7 @@ line 86
 ADDRLP4 108
 ADDRLP4 60
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 INDIRB
 ASGNB 12
@@ -334,7 +334,7 @@ INDIRP4
 CNSTI4 12
 ADDP4
 ARGP4
-ADDRGP4 cg+107612
+ADDRGP4 cg+109660
 INDIRI4
 ARGI4
 ADDRLP4 96
@@ -460,7 +460,7 @@ line 101
 ADDRLP4 96
 ADDRLP4 60
 INDIRP4
-CNSTI4 708
+CNSTI4 716
 ADDP4
 INDIRB
 ASGNB 12
@@ -872,7 +872,7 @@ line 190
 ;189:
 ;190:	out = &cg.predictedPlayerState;
 ADDRLP4 12
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ASGNP4
 line 191
 ;191:	prev = cg.snap;
@@ -946,7 +946,7 @@ line 208
 ;206:
 ;207:	// if the next frame is a teleport, we can't lerp to it
 ;208:	if ( cg.nextFrameTeleport ) {
-ADDRGP4 cg+107596
+ADDRGP4 cg+109644
 INDIRI4
 CNSTI4 0
 EQI4 $138
@@ -1002,7 +1002,7 @@ ADDP4
 INDIRI4
 ASGNI4
 ADDRLP4 16
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 ADDRLP4 32
 INDIRI4
@@ -1285,12 +1285,12 @@ LABELV $154
 line 247
 ;246:	}
 ;247:	if ( !BG_PlayerTouchesItem( &cg.predictedPlayerState, &cent->currentState, cg.time ) ) {
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ARGP4
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 ARGI4
 ADDRLP4 4
@@ -1313,10 +1313,10 @@ line 252
 ;252:	if ( cent->miscTime == cg.time ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 444
+CNSTI4 452
 ADDP4
 INDIRI4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 NEI4 $161
 line 253
@@ -1334,7 +1334,7 @@ ARGI4
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ARGP4
 ADDRLP4 8
 ADDRGP4 BG_CanItemBeGrabbed
@@ -1384,7 +1384,7 @@ NEI4 $168
 line 274
 ;273:#endif
 ;274:		if (cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_RED &&
-ADDRGP4 cg+107636+248+12
+ADDRGP4 cg+109684+248+12
 INDIRI4
 CNSTI4 1
 NEI4 $171
@@ -1403,7 +1403,7 @@ JUMPV
 LABELV $171
 line 277
 ;277:		if (cg.predictedPlayerState.persistant[PERS_TEAM] == TEAM_BLUE &&
-ADDRGP4 cg+107636+248+12
+ADDRGP4 cg+109684+248+12
 INDIRI4
 CNSTI4 2
 NEI4 $176
@@ -1435,7 +1435,7 @@ CNSTI4 160
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ARGP4
 ADDRGP4 BG_AddPredictableEventToPlayerstate
 CALLV
@@ -1464,9 +1464,9 @@ line 289
 ;289:	cent->miscTime = cg.time;
 ADDRFP4 0
 INDIRP4
-CNSTI4 444
+CNSTI4 452
 ADDP4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
 line 292
@@ -1483,7 +1483,7 @@ NEI4 $183
 line 293
 ;293:		cg.predictedPlayerState.stats[ STAT_WEAPONS ] |= 1 << item->giTag;
 ADDRLP4 16
-ADDRGP4 cg+107636+184+8
+ADDRGP4 cg+109684+184+8
 ASGNP4
 ADDRLP4 16
 INDIRP4
@@ -1508,7 +1508,7 @@ ADDP4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cg+107636+376
+ADDRGP4 cg+109684+376
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -1522,7 +1522,7 @@ ADDP4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cg+107636+376
+ADDRGP4 cg+109684+376
 ADDP4
 CNSTI4 1
 ASGNI4
@@ -1558,7 +1558,7 @@ line 317
 ;315:
 ;316:	// dead clients don't activate triggers
 ;317:	if ( cg.predictedPlayerState.stats[STAT_HEALTH] <= 0 ) {
-ADDRGP4 cg+107636+184
+ADDRGP4 cg+109684+184
 INDIRI4
 CNSTI4 0
 GTI4 $195
@@ -1571,7 +1571,7 @@ line 321
 ;319:	}
 ;320:
 ;321:	spectator = ( cg.predictedPlayerState.pm_type == PM_SPECTATOR );
-ADDRGP4 cg+107636+4
+ADDRGP4 cg+109684+4
 INDIRI4
 CNSTI4 2
 NEI4 $202
@@ -1595,7 +1595,7 @@ line 323
 ADDRLP4 80
 CNSTI4 0
 ASGNI4
-ADDRGP4 cg+107636+4
+ADDRGP4 cg+109684+4
 INDIRI4
 ADDRLP4 80
 INDIRI4
@@ -1715,9 +1715,9 @@ line 345
 ;345:		trap_CM_BoxTrace( &trace, cg.predictedPlayerState.origin, cg.predictedPlayerState.origin, 
 ADDRLP4 16
 ARGP4
-ADDRGP4 cg+107636+20
+ADDRGP4 cg+109684+20
 ARGP4
-ADDRGP4 cg+107636+20
+ADDRGP4 cg+109684+20
 ARGP4
 ADDRGP4 cg_pmove+180
 ARGP4
@@ -1757,7 +1757,7 @@ CNSTI4 9
 NEI4 $227
 line 353
 ;353:			cg.hyperspace = qtrue;
-ADDRGP4 cg+107632
+ADDRGP4 cg+109680
 CNSTI4 1
 ASGNI4
 line 354
@@ -1774,7 +1774,7 @@ CNSTI4 8
 NEI4 $230
 line 355
 ;355:			BG_TouchJumpPad( &cg.predictedPlayerState, ent );
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -1806,19 +1806,19 @@ line 360
 ;358:
 ;359:	// if we didn't touch a jump pad this pmove frame
 ;360:	if ( cg.predictedPlayerState.jumppad_frame != cg.predictedPlayerState.pmove_framecount ) {
-ADDRGP4 cg+107636+460
+ADDRGP4 cg+109684+460
 INDIRI4
-ADDRGP4 cg+107636+456
+ADDRGP4 cg+109684+456
 INDIRI4
 EQI4 $233
 line 361
 ;361:		cg.predictedPlayerState.jumppad_frame = 0;
-ADDRGP4 cg+107636+460
+ADDRGP4 cg+109684+460
 CNSTI4 0
 ASGNI4
 line 362
 ;362:		cg.predictedPlayerState.jumppad_ent = 0;
-ADDRGP4 cg+107636+448
+ADDRGP4 cg+109684+448
 CNSTI4 0
 ASGNI4
 line 363
@@ -3430,7 +3430,7 @@ line 533
 ;531://unlagged - optimized prediction
 ;532:
 ;533:	cg.hyperspace = qfalse;	// will be set if touching a trigger_teleport
-ADDRGP4 cg+107632
+ADDRGP4 cg+109680
 CNSTI4 0
 ASGNI4
 line 538
@@ -3439,18 +3439,18 @@ line 538
 ;536:	// predictedPlayerState is valid even if there is some
 ;537:	// other error condition
 ;538:	if ( !cg.validPPS ) {
-ADDRGP4 cg+108836
+ADDRGP4 cg+110892
 INDIRI4
 CNSTI4 0
 NEI4 $350
 line 539
 ;539:		cg.validPPS = qtrue;
-ADDRGP4 cg+108836
+ADDRGP4 cg+110892
 CNSTI4 1
 ASGNI4
 line 540
 ;540:		cg.predictedPlayerState = cg.snap->ps;
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 44
@@ -3533,7 +3533,7 @@ line 557
 ;556:	// prepare for pmove
 ;557:	cg_pmove.ps = &cg.predictedPlayerState;
 ADDRGP4 cg_pmove
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ASGNP4
 line 558
 ;558:	cg_pmove.trace = CG_Trace;
@@ -3626,7 +3626,7 @@ line 572
 ;571:	// save the state before the pmove so we can detect transitions
 ;572:	oldPlayerState = cg.predictedPlayerState;
 ADDRLP4 8
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 INDIRB
 ASGNB 468
 line 574
@@ -3680,7 +3680,7 @@ INDIRI4
 LEI4 $383
 ADDRLP4 560
 INDIRI4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 GEI4 $383
 line 582
@@ -3733,19 +3733,19 @@ EQU4 $391
 ADDRLP4 564
 CNSTI4 0
 ASGNI4
-ADDRGP4 cg+107596
+ADDRGP4 cg+109644
 INDIRI4
 ADDRLP4 564
 INDIRI4
 NEI4 $391
-ADDRGP4 cg+107592
+ADDRGP4 cg+109640
 INDIRI4
 ADDRLP4 564
 INDIRI4
 NEI4 $391
 line 597
 ;597:		cg.predictedPlayerState = cg.nextSnap->ps;
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ADDRGP4 cg+40
 INDIRP4
 CNSTI4 44
@@ -3754,7 +3754,7 @@ INDIRB
 ASGNB 468
 line 598
 ;598:		cg.physicsTime = cg.nextSnap->serverTime;
-ADDRGP4 cg+107612
+ADDRGP4 cg+109660
 ADDRGP4 cg+40
 INDIRP4
 CNSTI4 8
@@ -3768,7 +3768,7 @@ JUMPV
 LABELV $391
 line 600
 ;600:		cg.predictedPlayerState = cg.snap->ps;
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 44
@@ -3777,7 +3777,7 @@ INDIRB
 ASGNB 468
 line 601
 ;601:		cg.physicsTime = cg.snap->serverTime;
-ADDRGP4 cg+107612
+ADDRGP4 cg+109660
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 8
@@ -3883,12 +3883,12 @@ line 637
 ADDRLP4 572
 CNSTI4 0
 ASGNI4
-ADDRGP4 cg+107596
+ADDRGP4 cg+109644
 INDIRI4
 ADDRLP4 572
 INDIRI4
 NEI4 $425
-ADDRGP4 cg+107592
+ADDRGP4 cg+109640
 INDIRI4
 ADDRLP4 572
 INDIRI4
@@ -3897,13 +3897,13 @@ LABELV $425
 line 639
 ;638:			// do a full predict
 ;639:			cg.lastPredictedCommand = 0;
-ADDRGP4 cg+125004
+ADDRGP4 cg+127060
 CNSTI4 0
 ASGNI4
 line 640
 ;640:			cg.stateTail = cg.stateHead;
-ADDRGP4 cg+155904
-ADDRGP4 cg+155900
+ADDRGP4 cg+157960
+ADDRGP4 cg+157956
 INDIRI4
 ASGNI4
 line 641
@@ -3925,16 +3925,16 @@ line 645
 ;643:		// cg.physicsTime is the current snapshot's serverTime
 ;644:		// if it's the same as the last one
 ;645:		else if ( cg.physicsTime == cg.lastServerTime ) {
-ADDRGP4 cg+107612
+ADDRGP4 cg+109660
 INDIRI4
-ADDRGP4 cg+125008
+ADDRGP4 cg+127064
 INDIRI4
 NEI4 $429
 line 647
 ;646:			// we have no new information, so do an incremental predict
 ;647:			predictCmd = cg.lastPredictedCommand + 1;
 ADDRLP4 512
-ADDRGP4 cg+125004
+ADDRGP4 cg+127060
 INDIRI4
 CNSTI4 1
 ADDI4
@@ -3959,7 +3959,7 @@ line 656
 ;655:			// loop through the saved states queue
 ;656:			for ( i = cg.stateHead; i != cg.stateTail; i = (i + 1) % NUM_SAVED_STATES ) {
 ADDRLP4 576
-ADDRGP4 cg+155900
+ADDRGP4 cg+157956
 INDIRI4
 ASGNI4
 ADDRGP4 $437
@@ -3972,22 +3972,22 @@ CNSTI4 468
 ADDRLP4 576
 INDIRI4
 MULI4
-ADDRGP4 cg+125012
+ADDRGP4 cg+127068
 ADDP4
 INDIRI4
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 INDIRI4
 NEI4 $440
 line 660
 ;659:					// make sure the state differences are acceptable
 ;660:					int errorcode = IsUnacceptableError( &cg.predictedPlayerState, &cg.savedPmoveStates[i] );
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ARGP4
 CNSTI4 468
 ADDRLP4 576
 INDIRI4
 MULI4
-ADDRGP4 cg+125012
+ADDRGP4 cg+127068
 ADDP4
 ARGP4
 ADDRLP4 588
@@ -4019,7 +4019,7 @@ ARGP4
 ADDRLP4 584
 INDIRI4
 ARGI4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 ARGI4
 ADDRGP4 CG_Printf
@@ -4044,14 +4044,14 @@ CNSTI4 468
 ADDRLP4 576
 INDIRI4
 MULI4
-ADDRGP4 cg+125012
+ADDRGP4 cg+127068
 ADDP4
 INDIRB
 ASGNB 468
 line 674
 ;673:					// advance the head
 ;674:					cg.stateHead = (i + 1) % NUM_SAVED_STATES;
-ADDRGP4 cg+155900
+ADDRGP4 cg+157956
 ADDRLP4 576
 INDIRI4
 CNSTI4 1
@@ -4064,7 +4064,7 @@ line 677
 ;676:					// set the next command to predict
 ;677:					predictCmd = cg.lastPredictedCommand + 1;
 ADDRLP4 512
-ADDRGP4 cg+125004
+ADDRGP4 cg+127060
 INDIRI4
 CNSTI4 1
 ADDI4
@@ -4097,7 +4097,7 @@ ASGNI4
 LABELV $437
 ADDRLP4 576
 INDIRI4
-ADDRGP4 cg+155904
+ADDRGP4 cg+157960
 INDIRI4
 NEI4 $434
 LABELV $436
@@ -4112,13 +4112,13 @@ EQI4 $456
 line 688
 ;687:				// do a full predict
 ;688:				cg.lastPredictedCommand = 0;
-ADDRGP4 cg+125004
+ADDRGP4 cg+127060
 CNSTI4 0
 ASGNI4
 line 689
 ;689:				cg.stateTail = cg.stateHead;
-ADDRGP4 cg+155904
-ADDRGP4 cg+155900
+ADDRGP4 cg+157960
+ADDRGP4 cg+157956
 INDIRI4
 ASGNI4
 line 690
@@ -4143,14 +4143,14 @@ line 696
 ;694:		// keep track of the server time of the last snapshot so we
 ;695:		// know when we're starting from a new one in future calls
 ;696:		cg.lastServerTime = cg.physicsTime;
-ADDRGP4 cg+125008
-ADDRGP4 cg+107612
+ADDRGP4 cg+127064
+ADDRGP4 cg+109660
 INDIRI4
 ASGNI4
 line 697
 ;697:		stateIndex = cg.stateHead;
 ADDRLP4 4
-ADDRGP4 cg+155900
+ADDRGP4 cg+157956
 INDIRI4
 ASGNI4
 line 698
@@ -4214,7 +4214,7 @@ line 712
 ;712:		if ( cg_pmove.cmd.serverTime <= cg.predictedPlayerState.commandTime ) {
 ADDRGP4 cg_pmove+4
 INDIRI4
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 INDIRI4
 GTI4 $473
 line 713
@@ -4246,7 +4246,7 @@ line 726
 ;724:		// to predict several commands to get to the point
 ;725:		// we want to compare
 ;726:		if ( cg.predictedPlayerState.commandTime == oldPlayerState.commandTime ) {
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 INDIRI4
 ADDRLP4 8
 INDIRI4
@@ -4256,7 +4256,7 @@ line 730
 ;728:			float	len;
 ;729:
 ;730:			if ( cg.thisFrameTeleport ) {
-ADDRGP4 cg+107592
+ADDRGP4 cg+109640
 INDIRI4
 CNSTI4 0
 EQI4 $483
@@ -4266,15 +4266,15 @@ line 732
 ADDRLP4 588
 CNSTF4 0
 ASGNF4
-ADDRGP4 cg+108844+8
+ADDRGP4 cg+110900+8
 ADDRLP4 588
 INDIRF4
 ASGNF4
-ADDRGP4 cg+108844+4
+ADDRGP4 cg+110900+4
 ADDRLP4 588
 INDIRF4
 ASGNF4
-ADDRGP4 cg+108844
+ADDRGP4 cg+110900
 ADDRLP4 588
 INDIRF4
 ASGNF4
@@ -4296,7 +4296,7 @@ line 735
 LABELV $491
 line 736
 ;736:				cg.thisFrameTeleport = qfalse;
-ADDRGP4 cg+107592
+ADDRGP4 cg+109640
 CNSTI4 0
 ASGNI4
 line 737
@@ -4307,15 +4307,15 @@ LABELV $483
 line 739
 ;738:				vec3_t	adjusted;
 ;739:				CG_AdjustPositionForMover( cg.predictedPlayerState.origin, 
-ADDRGP4 cg+107636+20
+ADDRGP4 cg+109684+20
 ARGP4
-ADDRGP4 cg+107636+68
+ADDRGP4 cg+109684+68
 INDIRI4
 ARGI4
-ADDRGP4 cg+107612
+ADDRGP4 cg+109660
 INDIRI4
 ARGI4
-ADDRGP4 cg+107608
+ADDRGP4 cg+109656
 INDIRI4
 ARGI4
 ADDRLP4 588
@@ -4430,9 +4430,9 @@ line 757
 ;756:
 ;757:						t = cg.time - cg.predictedErrorTime;
 ADDRLP4 608
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
-ADDRGP4 cg+108840
+ADDRGP4 cg+110896
 INDIRI4
 SUBI4
 ASGNI4
@@ -4488,22 +4488,22 @@ line 764
 LABELV $533
 line 765
 ;765:						VectorScale( cg.predictedError, f, cg.predictedError );
-ADDRGP4 cg+108844
-ADDRGP4 cg+108844
+ADDRGP4 cg+110900
+ADDRGP4 cg+110900
 INDIRF4
 ADDRLP4 604
 INDIRF4
 MULF4
 ASGNF4
-ADDRGP4 cg+108844+4
-ADDRGP4 cg+108844+4
+ADDRGP4 cg+110900+4
+ADDRGP4 cg+110900+4
 INDIRF4
 ADDRLP4 604
 INDIRF4
 MULF4
 ASGNF4
-ADDRGP4 cg+108844+8
-ADDRGP4 cg+108844+8
+ADDRGP4 cg+110900+8
+ADDRGP4 cg+110900+8
 INDIRF4
 ADDRLP4 604
 INDIRF4
@@ -4519,15 +4519,15 @@ line 767
 ADDRLP4 604
 CNSTF4 0
 ASGNF4
-ADDRGP4 cg+108844+8
+ADDRGP4 cg+110900+8
 ADDRLP4 604
 INDIRF4
 ASGNF4
-ADDRGP4 cg+108844+4
+ADDRGP4 cg+110900+4
 ADDRLP4 604
 INDIRF4
 ASGNF4
-ADDRGP4 cg+108844
+ADDRGP4 cg+110900
 ADDRLP4 604
 INDIRF4
 ASGNF4
@@ -4536,31 +4536,31 @@ line 768
 LABELV $525
 line 769
 ;769:					VectorAdd( delta, cg.predictedError, cg.predictedError );
-ADDRGP4 cg+108844
+ADDRGP4 cg+110900
 ADDRLP4 572
 INDIRF4
-ADDRGP4 cg+108844
+ADDRGP4 cg+110900
 INDIRF4
 ADDF4
 ASGNF4
-ADDRGP4 cg+108844+4
+ADDRGP4 cg+110900+4
 ADDRLP4 572+4
 INDIRF4
-ADDRGP4 cg+108844+4
+ADDRGP4 cg+110900+4
 INDIRF4
 ADDF4
 ASGNF4
-ADDRGP4 cg+108844+8
+ADDRGP4 cg+110900+8
 ADDRLP4 572+8
 INDIRF4
-ADDRGP4 cg+108844+8
+ADDRGP4 cg+110900+8
 INDIRF4
 ADDF4
 ASGNF4
 line 770
 ;770:					cg.predictedErrorTime = cg.oldTime;
-ADDRGP4 cg+108840
-ADDRGP4 cg+107608
+ADDRGP4 cg+110896
+ADDRGP4 cg+109656
 INDIRI4
 ASGNI4
 line 771
@@ -4639,7 +4639,7 @@ CNSTI4 1
 ADDI4
 CNSTI4 66
 MODI4
-ADDRGP4 cg+155900
+ADDRGP4 cg+157956
 INDIRI4
 NEI4 $579
 LABELV $582
@@ -4664,7 +4664,7 @@ line 794
 ;792:
 ;793:				// record the last predicted command
 ;794:				cg.lastPredictedCommand = cmdNum;
-ADDRGP4 cg+125004
+ADDRGP4 cg+127060
 ADDRLP4 0
 INDIRI4
 ASGNI4
@@ -4678,7 +4678,7 @@ CNSTI4 1
 ADDI4
 CNSTI4 66
 MODI4
-ADDRGP4 cg+155900
+ADDRGP4 cg+157956
 INDIRI4
 EQI4 $576
 line 800
@@ -4689,7 +4689,7 @@ CNSTI4 468
 ADDRLP4 4
 INDIRI4
 MULI4
-ADDRGP4 cg+125012
+ADDRGP4 cg+127068
 ADDP4
 ADDRGP4 cg_pmove
 INDIRP4
@@ -4707,7 +4707,7 @@ MODI4
 ASGNI4
 line 802
 ;802:					cg.stateTail = stateIndex;
-ADDRGP4 cg+155904
+ADDRGP4 cg+157960
 ADDRLP4 4
 INDIRI4
 ASGNI4
@@ -4739,7 +4739,7 @@ CNSTI4 468
 ADDRLP4 4
 INDIRI4
 MULI4
-ADDRGP4 cg+125012
+ADDRGP4 cg+127068
 ADDP4
 INDIRI4
 ADDRGP4 cg_pmove+4
@@ -4768,7 +4768,7 @@ CNSTI4 468
 ADDRLP4 4
 INDIRI4
 MULI4
-ADDRGP4 cg+125012
+ADDRGP4 cg+127068
 ADDP4
 INDIRB
 ASGNB 468
@@ -4869,7 +4869,7 @@ ARGP4
 ADDRGP4 cg_pmove+4
 INDIRI4
 ARGI4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 ARGI4
 ADDRGP4 CG_Printf
@@ -4910,18 +4910,18 @@ line 859
 ;857:
 ;858:	// adjust for the movement of the groundentity
 ;859:	CG_AdjustPositionForMover( cg.predictedPlayerState.origin, 
-ADDRGP4 cg+107636+20
+ADDRGP4 cg+109684+20
 ARGP4
-ADDRGP4 cg+107636+68
+ADDRGP4 cg+109684+68
 INDIRI4
 ARGI4
-ADDRGP4 cg+107612
+ADDRGP4 cg+109660
 INDIRI4
 ARGI4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 ARGI4
-ADDRGP4 cg+107636+20
+ADDRGP4 cg+109684+20
 ARGP4
 ADDRGP4 CG_AdjustPositionForMover
 CALLV
@@ -4937,7 +4937,7 @@ CNSTI4 0
 EQI4 $616
 line 864
 ;864:		if (cg.predictedPlayerState.eventSequence > oldPlayerState.eventSequence + MAX_PS_EVENTS) {
-ADDRGP4 cg+107636+108
+ADDRGP4 cg+109684+108
 INDIRI4
 ADDRLP4 8+108
 INDIRI4
@@ -4961,7 +4961,7 @@ line 870
 ;868:
 ;869:	// fire events and other transition triggered things
 ;870:	CG_TransitionPlayerState( &cg.predictedPlayerState, &oldPlayerState );
-ADDRGP4 cg+107636
+ADDRGP4 cg+109684
 ARGP4
 ADDRLP4 8
 ARGP4
@@ -4977,9 +4977,9 @@ CNSTI4 0
 EQI4 $626
 line 873
 ;873:		if (cg.eventSequence > cg.predictedPlayerState.eventSequence) {
-ADDRGP4 cg+108856
+ADDRGP4 cg+110912
 INDIRI4
-ADDRGP4 cg+107636+108
+ADDRGP4 cg+109684+108
 INDIRI4
 LEI4 $629
 line 874
@@ -4991,8 +4991,8 @@ CALLV
 pop
 line 875
 ;875:			cg.eventSequence = cg.predictedPlayerState.eventSequence;
-ADDRGP4 cg+108856
-ADDRGP4 cg+107636+108
+ADDRGP4 cg+110912
+ADDRGP4 cg+109684+108
 INDIRI4
 ASGNI4
 line 876
@@ -5118,6 +5118,7 @@ import trap_Cvar_Register
 import trap_Milliseconds
 import trap_Error
 import trap_Print
+import CG_PlayerSprites
 import CG_CheckChangedPredictableEvents
 import CG_TransitionPlayerState
 import CG_Respawn

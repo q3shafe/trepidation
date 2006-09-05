@@ -13,7 +13,7 @@ line 9
 ;7:	int		i;
 ;8:
 ;9:	if ( !level.spawning ) {
-ADDRGP4 level+4508
+ADDRGP4 level+4512
 INDIRI4
 CNSTI4 0
 NEI4 $56
@@ -46,7 +46,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 3
 LSHI4
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 ADDP4
 INDIRP4
 ARGP4
@@ -66,7 +66,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 3
 LSHI4
-ADDRGP4 level+4516+4
+ADDRGP4 level+4520+4
 ADDP4
 INDIRP4
 ASGNP4
@@ -91,7 +91,7 @@ ASGNI4
 LABELV $62
 ADDRLP4 0
 INDIRI4
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 INDIRI4
 LTI4 $59
 line 21
@@ -270,7 +270,7 @@ export fields
 align 4
 LABELV fields
 address $75
-byte 4 524
+byte 4 532
 byte 4 2
 skip 4
 address $76
@@ -278,51 +278,51 @@ byte 4 92
 byte 4 4
 skip 4
 address $77
-byte 4 540
+byte 4 548
 byte 4 2
 skip 4
 address $78
-byte 4 544
+byte 4 552
 byte 4 2
 skip 4
 address $79
-byte 4 528
+byte 4 536
 byte 4 0
 skip 4
 address $80
-byte 4 672
+byte 4 680
 byte 4 1
 skip 4
 address $81
-byte 4 648
-byte 4 2
-skip 4
-address $82
-byte 4 652
-byte 4 2
-skip 4
-address $83
-byte 4 636
-byte 4 2
-skip 4
-address $84
 byte 4 656
 byte 4 2
 skip 4
+address $82
+byte 4 660
+byte 4 2
+skip 4
+address $83
+byte 4 644
+byte 4 2
+skip 4
+address $84
+byte 4 664
+byte 4 2
+skip 4
 address $85
-byte 4 804
+byte 4 812
 byte 4 1
 skip 4
 address $86
-byte 4 808
+byte 4 816
 byte 4 1
 skip 4
 address $87
-byte 4 768
+byte 4 776
 byte 4 0
 skip 4
 address $88
-byte 4 740
+byte 4 748
 byte 4 0
 skip 4
 address $89
@@ -330,7 +330,7 @@ byte 4 0
 byte 4 9
 skip 4
 address $90
-byte 4 748
+byte 4 756
 byte 4 0
 skip 4
 address $91
@@ -342,15 +342,15 @@ byte 4 116
 byte 4 5
 skip 4
 address $93
-byte 4 660
+byte 4 668
 byte 4 2
 skip 4
 address $94
-byte 4 664
+byte 4 672
 byte 4 2
 skip 4
 address $95
-byte 4 832
+byte 4 840
 byte 4 1
 skip 4
 byte 4 0
@@ -695,7 +695,7 @@ line 270
 ;270:	if ( !ent->classname ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 524
+CNSTI4 532
 ADDP4
 INDIRP4
 CVPU4 4
@@ -734,7 +734,7 @@ INDIRP4
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 524
+CNSTI4 532
 ADDP4
 INDIRP4
 ARGP4
@@ -800,7 +800,7 @@ INDIRP4
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 524
+CNSTI4 532
 ADDP4
 INDIRP4
 ARGP4
@@ -856,7 +856,7 @@ ADDRGP4 $164
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 524
+CNSTI4 532
 ADDP4
 INDIRP4
 ARGP4
@@ -1462,13 +1462,13 @@ LSHI4
 ASGNI4
 ADDRLP4 24
 INDIRI4
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 ADDP4
 INDIRP4
 ARGP4
 ADDRLP4 24
 INDIRI4
-ADDRGP4 level+4516+4
+ADDRGP4 level+4520+4
 ADDP4
 INDIRP4
 ARGP4
@@ -1491,7 +1491,7 @@ ASGNI4
 LABELV $208
 ADDRLP4 0
 INDIRI4
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 INDIRI4
 LTI4 $205
 line 408
@@ -1750,7 +1750,7 @@ line 458
 ;458:	VectorCopy( ent->s.origin, ent->r.currentOrigin );
 ADDRLP4 4
 INDIRP4
-CNSTI4 488
+CNSTI4 496
 ADDP4
 ADDRLP4 4
 INDIRP4
@@ -1818,7 +1818,7 @@ INDIRI4
 ASGNI4
 line 478
 ;478:	if ( level.numSpawnVarChars + l + 1 > MAX_SPAWN_VARS_CHARS ) {
-ADDRGP4 level+5028
+ADDRGP4 level+5032
 INDIRI4
 ADDRLP4 0
 INDIRI4
@@ -1841,9 +1841,9 @@ line 482
 ;481:
 ;482:	dest = level.spawnVarChars + level.numSpawnVarChars;
 ADDRLP4 4
-ADDRGP4 level+5028
-INDIRI4
 ADDRGP4 level+5032
+INDIRI4
+ADDRGP4 level+5036
 ADDP4
 ASGNP4
 line 483
@@ -1866,7 +1866,7 @@ line 485
 ;484:
 ;485:	level.numSpawnVarChars += l + 1;
 ADDRLP4 12
-ADDRGP4 level+5028
+ADDRGP4 level+5032
 ASGNP4
 ADDRLP4 12
 INDIRP4
@@ -1908,12 +1908,12 @@ line 504
 ;502:	char		com_token[MAX_TOKEN_CHARS];
 ;503:
 ;504:	level.numSpawnVars = 0;
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 CNSTI4 0
 ASGNI4
 line 505
 ;505:	level.numSpawnVarChars = 0;
-ADDRGP4 level+5028
+ADDRGP4 level+5032
 CNSTI4 0
 ASGNI4
 line 508
@@ -2051,7 +2051,7 @@ line 534
 LABELV $270
 line 535
 ;535:		if ( level.numSpawnVars == MAX_SPAWN_VARS ) {
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 INDIRI4
 CNSTI4 64
 NEI4 $273
@@ -2073,11 +2073,11 @@ ADDRLP4 2060
 ADDRGP4 G_AddSpawnVarToken
 CALLP4
 ASGNP4
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 INDIRI4
 CNSTI4 3
 LSHI4
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 ADDP4
 ADDRLP4 2060
 INDIRP4
@@ -2090,11 +2090,11 @@ ADDRLP4 2064
 ADDRGP4 G_AddSpawnVarToken
 CALLP4
 ASGNP4
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 INDIRI4
 CNSTI4 3
 LSHI4
-ADDRGP4 level+4516+4
+ADDRGP4 level+4520+4
 ADDP4
 ADDRLP4 2064
 INDIRP4
@@ -2102,7 +2102,7 @@ ASGNP4
 line 540
 ;540:		level.numSpawnVars++;
 ADDRLP4 2068
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 ASGNP4
 ADDRLP4 2068
 INDIRP4
@@ -2333,12 +2333,12 @@ pop
 line 585
 ;584:
 ;585:	g_entities[ENTITYNUM_WORLD].s.number = ENTITYNUM_WORLD;
-ADDRGP4 g_entities+883008
+ADDRGP4 g_entities+891184
 CNSTI4 1022
 ASGNI4
 line 586
 ;586:	g_entities[ENTITYNUM_WORLD].classname = "worldspawn";
-ADDRGP4 g_entities+883008+524
+ADDRGP4 g_entities+891184+532
 ADDRGP4 $287
 ASGNP4
 line 589
@@ -2374,7 +2374,7 @@ CNSTI4 0
 ASGNI4
 line 593
 ;593:		level.firstStrike = qfalse;
-ADDRGP4 level+9228
+ADDRGP4 level+9232
 CNSTI4 0
 ASGNI4
 line 596
@@ -2395,7 +2395,7 @@ CNSTI4 -1
 ASGNI4
 line 598
 ;598:		level.firstStrike = qfalse;
-ADDRGP4 level+9228
+ADDRGP4 level+9232
 CNSTI4 0
 ASGNI4
 line 599
@@ -2451,12 +2451,12 @@ line 615
 line 617
 ;616:	// allow calls to G_Spawn*()
 ;617:	level.spawning = qtrue;
-ADDRGP4 level+4508
+ADDRGP4 level+4512
 CNSTI4 1
 ASGNI4
 line 618
 ;618:	level.numSpawnVars = 0;
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 CNSTI4 0
 ASGNI4
 line 623
@@ -2515,7 +2515,7 @@ NEI4 $323
 line 633
 ;632:
 ;633:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
-ADDRGP4 level+4508
+ADDRGP4 level+4512
 CNSTI4 0
 ASGNI4
 line 634
@@ -2879,6 +2879,7 @@ import ClientBegin
 import ClientDisconnect
 import ClientUserinfoChanged
 import ClientConnect
+import Team_Point
 import G_Error
 import G_Printf
 import SendScoreboardMessageToAllClients
@@ -2895,6 +2896,7 @@ import FireWeapon
 import G_FilterPacket
 import G_ProcessIPBans
 import ConsoleCommand
+import PlaceMC
 import SpotWouldTelefrag
 import CalculateRanks
 import AddScore

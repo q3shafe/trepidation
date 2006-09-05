@@ -3018,6 +3018,7 @@ import ClientBegin
 import ClientDisconnect
 import ClientUserinfoChanged
 import ClientConnect
+import Team_Point
 import G_Error
 import G_Printf
 import SendScoreboardMessageToAllClients
@@ -3034,6 +3035,7 @@ import FireWeapon
 import G_FilterPacket
 import G_ProcessIPBans
 import ConsoleCommand
+import PlaceMC
 import SpotWouldTelefrag
 import CalculateRanks
 import AddScore

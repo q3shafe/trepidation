@@ -3785,7 +3785,7 @@ pop
 line 946
 ;944://	if( !(trap_Cvar_VariableValue( "g_GameMode" ) == 3) ) 
 ;945://	{
-;946:		DynamicMenu_AddItem("Shield Generator", 0, NULL, DM_BuildItem);
+;946:		DynamicMenu_AddItem("Generator", 0, NULL, DM_BuildItem);
 ADDRGP4 $585
 ARGP4
 CNSTI4 0
@@ -3798,7 +3798,7 @@ ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
 line 947
-;947:		DynamicMenu_AddItem("Master Controller", 0, NULL, DM_BuildItem);
+;947:		DynamicMenu_AddItem("MC Reactor", 0, NULL, DM_BuildItem);
 ADDRGP4 $586
 ARGP4
 CNSTI4 0
@@ -4684,32 +4684,18 @@ byte 1 0
 align 1
 LABELV $586
 byte 1 77
-byte 1 97
-byte 1 115
-byte 1 116
-byte 1 101
-byte 1 114
-byte 1 32
 byte 1 67
-byte 1 111
-byte 1 110
-byte 1 116
-byte 1 114
-byte 1 111
-byte 1 108
-byte 1 108
+byte 1 32
+byte 1 82
 byte 1 101
+byte 1 97
+byte 1 99
+byte 1 116
+byte 1 111
 byte 1 114
 byte 1 0
 align 1
 LABELV $585
-byte 1 83
-byte 1 104
-byte 1 105
-byte 1 101
-byte 1 108
-byte 1 100
-byte 1 32
 byte 1 71
 byte 1 101
 byte 1 110

@@ -7173,11 +7173,11 @@ ASGNI4
 LABELV $432
 line 1883
 ;1883:		if ( g_entities[i].inuse ) {
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 0
 INDIRI4
 MULI4
-ADDRGP4 g_entities+520
+ADDRGP4 g_entities+528
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -7185,11 +7185,11 @@ EQI4 $436
 line 1885
 ;1884:			// if this player is not a bot
 ;1885:			if ( !(g_entities[i].r.svFlags & SVF_BOT) ) {
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 0
 INDIRI4
 MULI4
-ADDRGP4 g_entities+208+216
+ADDRGP4 g_entities+212+220
 ADDP4
 INDIRI4
 CNSTI4 8
@@ -8652,6 +8652,7 @@ import ClientBegin
 import ClientDisconnect
 import ClientUserinfoChanged
 import ClientConnect
+import Team_Point
 import G_Error
 import G_Printf
 import SendScoreboardMessageToAllClients
@@ -8668,6 +8669,7 @@ import FireWeapon
 import G_FilterPacket
 import G_ProcessIPBans
 import ConsoleCommand
+import PlaceMC
 import SpotWouldTelefrag
 import CalculateRanks
 import AddScore

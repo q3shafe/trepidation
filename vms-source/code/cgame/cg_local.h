@@ -776,6 +776,7 @@ typedef struct {
 	qhandle_t	quadShader;
 	qhandle_t	redQuadShader;
 	qhandle_t	buildShader; // Shafe
+	qhandle_t	reditemShader; // Shafe
 	qhandle_t	quadWeaponShader;
 	qhandle_t	invisShader;
 	qhandle_t	regenShader;
@@ -1537,7 +1538,7 @@ void CG_PlayBufferedVoiceChats( void );
 void CG_Respawn( void );
 void CG_TransitionPlayerState( playerState_t *ps, playerState_t *ops );
 void CG_CheckChangedPredictableEvents( playerState_t *ps );
-
+void CG_PlayerSprites( centity_t *cent );
 
 //===============================================
 

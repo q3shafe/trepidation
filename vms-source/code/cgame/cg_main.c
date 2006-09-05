@@ -946,6 +946,7 @@ static void CG_RegisterGraphics( void ) {
 
 	// powerup shaders
 	cgs.media.buildShader = trap_R_RegisterShader("powerups/build" );
+	cgs.media.reditemShader = trap_R_RegisterShader("powerups/reditem" );
 	cgs.media.quadShader = trap_R_RegisterShader("powerups/quad" );
 	cgs.media.quadWeaponShader = trap_R_RegisterShader("powerups/quadWeapon" );
 	cgs.media.battleSuitShader = trap_R_RegisterShader("powerups/battleSuit" );

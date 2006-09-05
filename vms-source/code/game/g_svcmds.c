@@ -291,6 +291,39 @@ void Svcmd_RemoveIP_f (void)
 	G_Printf ( "Didn't find %s.\n", str );
 }
 
+
+/*
+===================
+svcmd_BalanceTeams
+
+BalanceTeams
+===================
+*/
+void	Svcmd_BalanceTeams ( void ) {
+
+	// Blue Team Is Bigger Than Red 
+	if ( TeamCount( -1, TEAM_BLUE ) > TeamCount( -1, TEAM_RED ) )  {
+		// Is The Difference More Than 2 Players?
+		if ( (TeamCount(-1, TEAM_BLUE) - TeamCount( -1,TEAM_RED)) > 1) {
+			BalanceTeams(TEAM_BLUE);
+		}
+
+	} 
+	else
+	{
+
+		// Red Team Is Bigger Than Blue
+		if ( TeamCount( -1, TEAM_RED ) > TeamCount( -1, TEAM_BLUE ) )  {
+			// Is The Difference More Than 2 Players?
+			if ( (TeamCount(-1, TEAM_RED) - TeamCount( -1,TEAM_BLUE)) > 1) {
+				
+				BalanceTeams(TEAM_RED);
+			}
+		}
+	} // End Else
+
+}
+
 /*
 ===================
 Svcmd_EntityList_f
@@ -470,6 +503,14 @@ qboolean	ConsoleCommand( void ) {
 
 	if (Q_stricmp (cmd, "listip") == 0) {
 		trap_SendConsoleCommand( EXEC_NOW, "g_banIPs\n" );
+		return qtrue;
+	}
+
+	
+	if (Q_stricmp (cmd, "balanceteams") == 0) {
+		//FixME Later - Do it twice in case it's way off
+		Svcmd_BalanceTeams();
+		Svcmd_BalanceTeams();
 		return qtrue;
 	}
 

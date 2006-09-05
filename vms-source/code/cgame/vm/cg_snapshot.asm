@@ -23,10 +23,10 @@ line 18
 ;18:	if ( cent->snapShotTime < cg.time - EVENT_VALID_MSEC ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 448
+CNSTI4 456
 ADDP4
 INDIRI4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 CNSTI4 300
 SUBI4
@@ -35,7 +35,7 @@ line 19
 ;19:		cent->previousEvent = 0;
 ADDRFP4 0
 INDIRP4
-CNSTI4 428
+CNSTI4 436
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -47,7 +47,7 @@ line 22
 ;22:	cent->trailTime = cg.snap->serverTime;
 ADDRFP4 0
 INDIRP4
-CNSTI4 436
+CNSTI4 444
 ADDP4
 ADDRGP4 cg+36
 INDIRP4
@@ -64,7 +64,7 @@ INDIRP4
 ASGNP4
 ADDRLP4 0
 INDIRP4
-CNSTI4 708
+CNSTI4 716
 ADDP4
 ADDRLP4 0
 INDIRP4
@@ -80,7 +80,7 @@ INDIRP4
 ASGNP4
 ADDRLP4 4
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 ADDRLP4 4
 INDIRP4
@@ -136,15 +136,15 @@ ADDRLP4 0
 INDIRP4
 ADDRLP4 0
 INDIRP4
-CNSTI4 208
+CNSTI4 212
 ADDP4
 INDIRB
-ASGNB 208
+ASGNB 212
 line 42
 ;42:	cent->currentValid = qtrue;
 ADDRFP4 0
 INDIRP4
-CNSTI4 420
+CNSTI4 428
 ADDP4
 CNSTI4 1
 ASGNI4
@@ -154,7 +154,7 @@ line 45
 ;45:	if ( !cent->interpolate ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 416
+CNSTI4 424
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -176,7 +176,7 @@ line 50
 ;50:	cent->interpolate = qfalse;
 ADDRFP4 0
 INDIRP4
-CNSTI4 416
+CNSTI4 424
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -233,7 +233,7 @@ INDIRP4
 CNSTI4 44
 ADDP4
 ARGP4
-CNSTI4 732
+CNSTI4 740
 ADDRLP4 12
 INDIRP4
 CNSTI4 184
@@ -260,7 +260,7 @@ line 80
 ;80:	CG_ExecuteNewServerCommands( snap->serverCommandSequence );
 ADDRFP4 0
 INDIRP4
-CNSTI4 53768
+CNSTI4 54792
 ADDP4
 INDIRI4
 ARGI4
@@ -287,7 +287,7 @@ LABELV $84
 line 87
 ;87:		state = &cg.snap->entities[ i ];
 ADDRLP4 8
-CNSTI4 208
+CNSTI4 212
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -300,7 +300,7 @@ ASGNP4
 line 88
 ;88:		cent = &cg_entities[ state->number ];
 ADDRLP4 0
-CNSTI4 732
+CNSTI4 740
 ADDRLP4 8
 INDIRP4
 INDIRI4
@@ -317,7 +317,7 @@ ARGP4
 ADDRLP4 8
 INDIRP4
 ARGP4
-CNSTI4 208
+CNSTI4 212
 ARGI4
 ADDRGP4 memcpy
 CALLP4
@@ -327,7 +327,7 @@ line 92
 ;92:		cent->interpolate = qfalse;
 ADDRLP4 0
 INDIRP4
-CNSTI4 416
+CNSTI4 424
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -335,7 +335,7 @@ line 93
 ;93:		cent->currentValid = qtrue;
 ADDRLP4 0
 INDIRP4
-CNSTI4 420
+CNSTI4 428
 ADDP4
 CNSTI4 1
 ASGNI4
@@ -437,7 +437,7 @@ line 123
 ;123:	CG_ExecuteNewServerCommands( cg.nextSnap->serverCommandSequence );
 ADDRGP4 cg+40
 INDIRP4
-CNSTI4 53768
+CNSTI4 54792
 ADDP4
 INDIRI4
 ARGI4
@@ -469,8 +469,8 @@ LABELV $103
 line 131
 ;131:		cent = &cg_entities[ cg.snap->entities[ i ].number ];
 ADDRLP4 4
-CNSTI4 732
-CNSTI4 208
+CNSTI4 740
+CNSTI4 212
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -488,7 +488,7 @@ line 132
 ;132:		cent->currentValid = qfalse;
 ADDRLP4 4
 INDIRP4
-CNSTI4 420
+CNSTI4 428
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -533,7 +533,7 @@ INDIRP4
 CNSTI4 44
 ADDP4
 ARGP4
-CNSTI4 732
+CNSTI4 740
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 184
@@ -550,14 +550,14 @@ CALLV
 pop
 line 140
 ;140:	cg_entities[ cg.snap->ps.clientNum ].interpolate = qfalse;
-CNSTI4 732
+CNSTI4 740
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 cg_entities+416
+ADDRGP4 cg_entities+424
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -573,8 +573,8 @@ LABELV $116
 line 143
 ;143:		cent = &cg_entities[ cg.snap->entities[ i ].number ];
 ADDRLP4 4
-CNSTI4 732
-CNSTI4 208
+CNSTI4 740
+CNSTI4 212
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -602,7 +602,7 @@ line 147
 ;147:		cent->snapShotTime = cg.snap->serverTime;
 ADDRLP4 4
 INDIRP4
-CNSTI4 448
+CNSTI4 456
 ADDP4
 ADDRGP4 cg+36
 INDIRP4
@@ -687,7 +687,7 @@ CNSTI4 0
 EQI4 $127
 line 160
 ;160:			cg.thisFrameTeleport = qtrue;	// will be cleared by prediction code
-ADDRGP4 cg+107592
+ADDRGP4 cg+109640
 CNSTI4 1
 ASGNI4
 line 161
@@ -784,14 +784,14 @@ INDIRP4
 CNSTI4 44
 ADDP4
 ARGP4
-CNSTI4 732
+CNSTI4 740
 ADDRLP4 12
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 cg_entities+208
+ADDRGP4 cg_entities+212
 ADDP4
 ARGP4
 CNSTI4 0
@@ -801,14 +801,14 @@ CALLV
 pop
 line 188
 ;188:	cg_entities[ cg.snap->ps.clientNum ].interpolate = qtrue;
-CNSTI4 732
+CNSTI4 740
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 cg_entities+416
+ADDRGP4 cg_entities+424
 ADDP4
 CNSTI4 1
 ASGNI4
@@ -825,7 +825,7 @@ LABELV $144
 line 192
 ;192:		es = &snap->entities[num];
 ADDRLP4 4
-CNSTI4 208
+CNSTI4 212
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -838,7 +838,7 @@ ASGNP4
 line 193
 ;193:		cent = &cg_entities[ es->number ];
 ADDRLP4 0
-CNSTI4 732
+CNSTI4 740
 ADDRLP4 4
 INDIRP4
 INDIRI4
@@ -850,7 +850,7 @@ line 195
 ;194:
 ;195:		memcpy(&cent->nextState, es, sizeof(entityState_t));
 ADDRLP4 16
-CNSTI4 208
+CNSTI4 212
 ASGNI4
 ADDRLP4 0
 INDIRP4
@@ -878,7 +878,7 @@ CNSTI4 0
 ASGNI4
 ADDRLP4 0
 INDIRP4
-CNSTI4 420
+CNSTI4 428
 ADDP4
 INDIRI4
 ADDRLP4 24
@@ -910,7 +910,7 @@ line 201
 ;201:			cent->interpolate = qfalse;
 ADDRLP4 0
 INDIRP4
-CNSTI4 416
+CNSTI4 424
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -923,7 +923,7 @@ line 203
 ;203:			cent->interpolate = qtrue;
 ADDRLP4 0
 INDIRP4
-CNSTI4 416
+CNSTI4 424
 ADDP4
 CNSTI4 1
 ASGNI4
@@ -981,7 +981,7 @@ CNSTI4 0
 EQI4 $151
 line 210
 ;210:		cg.nextFrameTeleport = qtrue;
-ADDRGP4 cg+107596
+ADDRGP4 cg+109644
 CNSTI4 1
 ASGNI4
 line 211
@@ -991,7 +991,7 @@ JUMPV
 LABELV $151
 line 212
 ;212:		cg.nextFrameTeleport = qfalse;
-ADDRGP4 cg+107596
+ADDRGP4 cg+109644
 CNSTI4 0
 ASGNI4
 line 213
@@ -1019,7 +1019,7 @@ INDIRI4
 EQI4 $157
 line 217
 ;217:		cg.nextFrameTeleport = qtrue;
-ADDRGP4 cg+107596
+ADDRGP4 cg+109644
 CNSTI4 1
 ASGNI4
 line 218
@@ -1042,7 +1042,7 @@ CNSTI4 0
 EQI4 $162
 line 222
 ;222:		cg.nextFrameTeleport = qtrue;
-ADDRGP4 cg+107596
+ADDRGP4 cg+109644
 CNSTI4 1
 ASGNI4
 line 223
@@ -1120,7 +1120,7 @@ NEU4 $180
 line 252
 ;252:			dest = &cg.activeSnapshots[1];
 ADDRLP4 0
-ADDRGP4 cg+44+53772
+ADDRGP4 cg+44+54796
 ASGNP4
 line 253
 ;253:		} else {
@@ -1640,7 +1640,7 @@ line 397
 ADDRLP4 8
 CNSTI4 8
 ASGNI4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 ADDRGP4 cg+36
 INDIRP4
@@ -1649,7 +1649,7 @@ INDIRI4
 ADDP4
 INDIRI4
 LTI4 $245
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 ADDRGP4 cg+40
 INDIRP4
@@ -1698,7 +1698,7 @@ line 408
 LABELV $251
 line 409
 ;409:	if ( cg.time < cg.snap->serverTime ) {
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 ADDRGP4 cg+36
 INDIRP4
@@ -1709,7 +1709,7 @@ GEI4 $255
 line 411
 ;410:		// this can happen right after a vid_restart
 ;411:		cg.time = cg.snap->serverTime;
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 8
@@ -1731,7 +1731,7 @@ INDIRP4
 CNSTI4 8
 ADDP4
 INDIRI4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 GTI4 $261
 line 414
@@ -1846,6 +1846,7 @@ import trap_Cvar_Register
 import trap_Milliseconds
 import trap_Error
 import trap_Print
+import CG_PlayerSprites
 import CG_CheckChangedPredictableEvents
 import CG_TransitionPlayerState
 import CG_Respawn

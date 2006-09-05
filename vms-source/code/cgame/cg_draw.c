@@ -986,6 +986,22 @@ static float CG_DrawTeamOverlay( float y, qboolean right, qboolean upper ) {
 		}
 	}
 
+		
+	if (cgs.g_GameMode == 3) {
+		/*
+			Com_sprintf (st, sizeof(st), "%3i %3i", ci->health,	ci->armor);
+
+			xx = x + TINYCHAR_WIDTH * 3 + 
+				TINYCHAR_WIDTH * pwidth + TINYCHAR_WIDTH * lwidth;
+
+			CG_DrawStringExt( xx, y,
+				st, hcolor, qfalse, qfalse,
+				TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 0 );
+
+			y += TINYCHAR_HEIGHT;
+			*/
+	}
+
 	return ret_y;
 //#endif
 }
@@ -1117,6 +1133,8 @@ static float CG_DrawScores( float y ) {
 			}
 		}
 #endif
+		
+		// Shafe - This draws the status thingy
 		if ( cgs.gametype >= GT_CTF ) {
 			v = cgs.capturelimit;
 		} else {
@@ -1331,7 +1349,7 @@ static void CG_DrawLowerRight( void ) {
 	y = 480 - ICON_SIZE;
 
 
-	CG_DrawHudRight( y);
+//	CG_DrawHudRight( y);
 	
 
 	if ( cgs.gametype >= GT_TEAM && cg_drawTeamOverlay.integer == 2 ) {
@@ -1386,7 +1404,7 @@ CG_DrawLowerLeft
 static void CG_DrawLowerLeft( void ) {
 	float	y;
 
-	CG_DrawHudLeft( y);
+//	CG_DrawHudLeft( y);
 
 	y = 480 - ICON_SIZE;
 
