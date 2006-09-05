@@ -339,7 +339,7 @@ line 70
 ;70:void CG_LoadingString( const char *s ) {
 line 71
 ;71:	Q_strncpyz( cg.infoScreenText, s, sizeof( cg.infoScreenText ) );
-ADDRGP4 cg+109448
+ADDRGP4 cg+111504
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -1101,7 +1101,7 @@ line 205
 ;203:	// the first 150 rows are reserved for the client connection
 ;204:	// screen to write into
 ;205:	if ( cg.infoScreenText[0] ) {
-ADDRGP4 cg+109448
+ADDRGP4 cg+111504
 INDIRI1
 CVII4 1
 CNSTI4 0
@@ -1110,7 +1110,7 @@ line 206
 ;206:		UI_DrawProportionalString( 320, 350-32, va("Loading... %s", cg.infoScreenText),
 ADDRGP4 $134
 ARGP4
-ADDRGP4 cg+109448
+ADDRGP4 cg+111504
 ARGP4
 ADDRLP4 1100
 ADDRGP4 va
@@ -1495,7 +1495,7 @@ LABELV $157
 line 272
 ;271:	case GT_FFA:
 ;272:		if (cgs.g_GameMode == 0) 
-ADDRGP4 cgs+154984
+ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 0
 NEI4 $158
@@ -1511,7 +1511,7 @@ line 275
 LABELV $158
 line 276
 ;276:		if (cgs.g_GameMode == 1) 
-ADDRGP4 cgs+154984
+ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 1
 NEI4 $162
@@ -1527,7 +1527,7 @@ line 279
 LABELV $162
 line 280
 ;280:		if (cgs.g_GameMode == 2) 
-ADDRGP4 cgs+154984
+ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 2
 NEI4 $154
@@ -1570,7 +1570,7 @@ LABELV $174
 line 292
 ;291:	case GT_TEAM:
 ;292:		if (cgs.g_GameMode == 2) 
-ADDRGP4 cgs+154984
+ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 2
 NEI4 $175
@@ -1586,7 +1586,7 @@ line 295
 ADDRGP4 $154
 JUMPV
 LABELV $175
-ADDRGP4 cgs+154984
+ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 3
 NEI4 $179
@@ -2006,6 +2006,7 @@ import trap_Cvar_Register
 import trap_Milliseconds
 import trap_Error
 import trap_Print
+import CG_PlayerSprites
 import CG_CheckChangedPredictableEvents
 import CG_TransitionPlayerState
 import CG_Respawn

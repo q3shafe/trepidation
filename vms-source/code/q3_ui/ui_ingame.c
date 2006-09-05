@@ -943,8 +943,8 @@ static void DynamicMenu_BuildMenu( void )
 	DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
 //	if( !(trap_Cvar_VariableValue( "g_GameMode" ) == 3) ) 
 //	{
-		DynamicMenu_AddItem("Shield Generator", 0, NULL, DM_BuildItem);
-		DynamicMenu_AddItem("Master Controller", 0, NULL, DM_BuildItem);
+		DynamicMenu_AddItem("Generator", 0, NULL, DM_BuildItem);
+		DynamicMenu_AddItem("MC Reactor", 0, NULL, DM_BuildItem);
 //	}
 	DynamicMenu_AddItem("Close", 0, NULL, DM_Close_Event);
 

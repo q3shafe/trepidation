@@ -5,17 +5,8 @@
 //
 // Most of the build rules are checked before any of the stuff in here is executed. 
 
-
-
 #include "g_local.h"
 
-
-/*
-
- This turret stuff is a real mess.. It Really needs cleaned up.. it's too late for me to worry about it now.
-
-
-*/
 
 /* 
 ====================================
@@ -30,6 +21,9 @@
 #define DARC 10
 #define UARC 45
 
+#define TURRET_MG_SPREAD	100
+#define	TURRET_MG_DAMAGE	15
+#define	TURRET_MG_DAMAGE2	40
 
 
 
@@ -49,17 +43,28 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 
 	// Take item away from master level stats
 	
-	if (self->parent->client->sess.sessionTeam == TEAM_BLUE)
+	if (self->s.team == TEAM_BLUE)
 	{
 		if (self->classname == "generator") { level.blueGen--; }
 		if (self->classname == "turret") { level.blueTurrets--; }		
-		if (self->classname == "mc") { level.blueMC--; }		
+		if (self->classname == "mc") 
+		{ 
+			level.blueMC--; 
+			level.redScoreLatched = 1;
+			level.blueScoreLatched = -1;
+		}		
 	}
-	if (self->parent->client->sess.sessionTeam == TEAM_RED)
+	if (self->s.team == TEAM_RED)
 	{
 		if (self->classname == "generator") { level.redGen--; }
 		if (self->classname == "turret") { level.redTurrets--; }
-		if (self->classname == "mc") { level.redMC--; }		
+		if (self->classname == "mc") 
+		{ 
+			level.redMC--; 
+			level.blueScoreLatched = 1;
+			level.redScoreLatched = -1;
+		
+		}		
 
 	}
 	
@@ -93,15 +98,30 @@ returns qfalse if the target is not valid. returns qtrue if it is
 
 if (!target) // Do we have a target?
 	return qfalse;
+
 if (!target->inuse) // Does the target still exist?
 	return qfalse;
+
 if (target==firer) // is the target us?
 	return qfalse;
+
 if(!target->client) // is the target a bot or player?
 	return qfalse;
+
 if (target==firer->parent) // is the target the person that created the turret?
-	return qfalse;
-if (OnSameTeam(firer->parent, target)) // is the target one of us?
+{
+	// If so are they still on the same team?
+	if (target->client->sess.sessionTeam == firer->s.team)
+	{
+		return qfalse;
+	}
+
+}
+
+//if (target==firer->parent) // is the target the person that created the turret?
+//  103 	return qfalse;
+
+if (firer->s.team == target->client->sess.sessionTeam) // is the target one of us?
 	return qfalse;
 
 if (target->health<0) // is the target still alive?
@@ -190,8 +210,30 @@ turret_fireonenemy
 
 void turret_fireonenemy( gentity_t *ent){
 
-	fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
 
+	if (ent->s.time2 > 1)
+	{
+		fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+	} else
+	{
+		
+		if (ent->s.time2 == 0)
+		{
+			Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE );
+			//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qfalse);
+		} else
+		{
+			Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE2 );
+			//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qtrue);
+		}
+		
+		
+	}
+	
+	
+	
+
+	
 	G_AddEvent( ent, EV_FIRE_WEAPON, 0 );
 	ent->count=level.time+200;
 
@@ -212,7 +254,7 @@ void Base_think(gentity_t *ent){
 
 	// If the mc is gone blow up the turret... Meaning
 	// you need an mc before you can build turrets.
-	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
+	if (ent->s.team == TEAM_BLUE)
 	{
 		if (level.blueMC == 0) 
 		{	
@@ -221,7 +263,7 @@ void Base_think(gentity_t *ent){
 			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
 		}
 	}
-	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
+	if (ent->s.team == TEAM_RED)
 	{
 		if (level.redMC == 0) 
 		{ 
@@ -309,11 +351,42 @@ void createturretgun(gentity_t *ent){
 	turret->s.time2=ent->s.time2;
 	turret->eventTime=200;
 	turret->s.number = turret - g_entities;
-	turret->s.weapon=WP_PLASMAGUN;;
+	
+	
+	//turret->s.weapon=WP_MACHINEGUN;
+	// 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+	// Regular Turret
+	
+	if (ent->s.time2 == 0)
+	{
+		turret->s.weapon=WP_MACHINEGUN;
+		turret->s.modelindex = G_ModelIndex("models/turrets/gun1.md3");
+		turret->model = "models/turrets/gun1.md3";
+		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun1.md3");
+	} else {
+		turret->s.modelindex = G_ModelIndex("models/turrets/gun2.md3");
+		turret->model = "models/turrets/gun1.md3";
+		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun2.md3");
+	}
+	
+	// Sheilded Turret
+	if (ent->s.time2 == 1)
+	{
+		turret->s.weapon=WP_MACHINEGUN;
+	}
+	// Cloaked Turret
+	if (ent->s.time2 > 1)
+	{
+		turret->s.weapon=WP_PLASMAGUN;
+	}
+	
+	
+	
 	turret->classname="turretgun";	
-	turret->s.modelindex = G_ModelIndex("models/turrets/gun1.md3");
-	turret->model = "models/turrets/gun1.md3";
-	turret->s.modelindex2 = G_ModelIndex("models/turrets/gun1.md3");
+	
+	turret->s.team =  ent->s.team;	
+
+	
 	turret->think=turret_think;
 	turret->nextthink=level.time+100;
 	G_SetOrigin( turret, ent->r.currentOrigin );
@@ -356,9 +429,10 @@ void BuildTurret( gentity_t *ent , int type ){
 
 	// We need to check the turret type and select the appropriate model
 
-
 	gentity_t	*base;
-//	vec3_t 		forward,up;
+	trace_t		tr;
+	vec3_t		dest;
+
 
 	base=G_Spawn();
 	base->parent=ent;
@@ -378,12 +452,14 @@ void BuildTurret( gentity_t *ent , int type ){
 		base->s.modelindex2 = G_ModelIndex("models/turrets/base2.md3");
 	}
 	G_SetOrigin(base,ent->r.currentOrigin);
+	//VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
+	
 	base->think=createturretgun;
 	
 	if (type==0)
 	{
-		base->health=150; // change this to make the turrets tougher or weaker.
+		base->health=100; // change this to make the turrets tougher or weaker.
 	} else
 	{
 		base->health=300; // change this to make the turrets tougher or weaker.
@@ -391,8 +467,7 @@ void BuildTurret( gentity_t *ent , int type ){
 	
 	base->s.eType=ET_TURRET;
 
-	base->classname = "turret";
-
+	
 	if (ent->client->sess.sessionTeam == TEAM_BLUE)
 	{
 		level.blueTurrets++;
@@ -406,6 +481,8 @@ void BuildTurret( gentity_t *ent , int type ){
 	base->s.time2=type; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	
 	base->classname = "turret";
+	base->s.team =  ent->client->sess.sessionTeam;	
+
 	base->takedamage=qtrue; // so they can be destoryed
 	base->die=turret_explode; // so they actually explode when destroyed
 	base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
@@ -445,18 +522,18 @@ void MC_think(gentity_t *ent){
 	ent->r.contents = CONTENTS_SOLID;
 
 	// Determine The Sheilding By Counting Shield Generators
-	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
+	if (ent->s.team == TEAM_BLUE)
 	{
 		shieldMultiplier = level.blueGen;
 	}
-	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
+	if (ent->s.team == TEAM_RED)
 	{
 		shieldMultiplier = level.redGen;
 	}
 
 	shieldMultiplier++;
 
-	// If there's at least one shield generator and the MC's health is above 450 it'll be shielded
+	// If there's at least one shield generator and the MC's health is above 350 it'll be shielded
 	if (shieldMultiplier > 1) { ent->s.time2 = 1; } else { ent->s.time2 = 0; }
 
 	 
@@ -465,7 +542,7 @@ void MC_think(gentity_t *ent){
 	// This turns shielding off and regeneration stops.
 	if (ent->s.time2==1)
 	{
-		if (ent->health<450)
+		if (ent->health<350)
 		{
 			ent->s.time2=0;
 		}
@@ -473,7 +550,7 @@ void MC_think(gentity_t *ent){
 	
 	if ((ent->s.time2==1) && (shieldMultiplier > 1)) 
 	{
-		if (ent->health < (2000 * shieldMultiplier) ) 
+		if (ent->health < (1000 * shieldMultiplier) ) 
 		{
 			ent->health+=1;
 			ent->nextthink=level.time+100;
@@ -494,6 +571,12 @@ The MC as it is in the
 */
 void MC_prethink(gentity_t *ent){
 
+		if (ent->s.team == TEAM_BLUE)
+		{
+			level.blueScoreLatched = 0;
+		} else {
+			level.redScoreLatched = 0;
+		}
 		ent->s.time2=1;
 		ent->think = MC_think;
 		ent->nextthink=level.time+100;
@@ -521,6 +604,8 @@ void BuildMC( gentity_t *ent ){
 	}
 
 
+
+
 	base=G_Spawn();
 	base->parent=ent;
 	
@@ -539,6 +624,8 @@ void BuildMC( gentity_t *ent ){
 	//base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
 	base->nextthink=level.time+3000;  // MC Need not take long to build
 	base->classname = "mc";
+	base->s.team =  ent->client->sess.sessionTeam;	
+
 
 	VectorSet( base->r.mins, -15, -15, -20 );
 	VectorSet( base->r.maxs, 35, 15, 15); // Was -5
@@ -567,18 +654,19 @@ void GEN_think(gentity_t *ent){
 	// If the mc is gone blow up the generator... Meaning
 	// you need an mc before you can build generators.
 	// Otherwise you just sit there looking good.
-	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
+	if (ent->s.team == TEAM_BLUE)
 	{
-		if (level.blueMC == 0) 
+		// If there is no MC or too many sheild generators blow it up.
+		if (level.blueMC == 0 || level.blueGen > 2)  
 		{	
 			ent->health = 1; 
 			ent->s.time2 = 0;
 			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
 		}
 	}
-	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
+	if (ent->s.team == TEAM_RED)
 	{
-		if (level.redMC == 0) 
+		if (level.redMC == 0 || level.redGen > 2) 
 		{ 
 			ent->health = 1; 
 			ent->s.time2 = 0;
@@ -603,6 +691,17 @@ built' state
 // Generators Are Never Shielded
 void gen_prethink(gentity_t *ent){
 
+	// Dont count them until they have been built
+	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
+	{
+		level.blueGen++;
+	}
+	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
+	{
+		level.redGen++;
+	}
+
+
 		ent->s.time2=0;
 		ent->think = GEN_think;
 		ent->nextthink=level.time+100;
@@ -619,15 +718,6 @@ void BuildGenerator( gentity_t *ent ){
 
 	gentity_t	*base;
 
-	if (ent->client->sess.sessionTeam == TEAM_BLUE)
-	{
-		level.blueGen++;
-	}
-	if (ent->client->sess.sessionTeam == TEAM_RED)
-	{
-		level.redGen++;
-	}
-
 
 	base=G_Spawn();
 	base->parent=ent;
@@ -639,16 +729,15 @@ void BuildGenerator( gentity_t *ent ){
 	base->think=gen_prethink;
 	base->health=400; // change this to make tougher or weaker.
 	base->s.eType=ET_TURRET;
-
+	
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	base->takedamage=qtrue; // so they can be destoryed
 	base->die=turret_explode; // so they actually explode when destroyed
-	//base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
-	
+
 	base->classname = "generator";
-	
+	base->s.team =  ent->client->sess.sessionTeam;	
 		
-	base->nextthink=level.time+8000;
+	base->nextthink=level.time+9000;   // 9 Seconds before a sheildgen is operational.
 	VectorSet( base->r.mins, -15, -15, -20 );
 	VectorSet( base->r.maxs, 35, 15, 0);
 	trap_LinkEntity (base);

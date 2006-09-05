@@ -2071,9 +2071,25 @@ CG_PlayerSprites
 Float sprites over the player's head
 ===============
 */
-static void CG_PlayerSprites( centity_t *cent ) {
+void CG_PlayerSprites( centity_t *cent ) {
 	int		team;
 
+
+	// if (cgs.g_GameMode == 3) 
+	//{
+	if (cent->currentState.eType == ET_TURRET)
+	{
+		
+			team = cent->currentState.team;
+			if ( cg.snap->ps.persistant[PERS_TEAM] == team) 
+			{
+				CG_PlayerFloatSprite( cent, cgs.media.friendShader );
+			}
+			return;
+	}
+		
+	//}
+	
 	if ( cent->currentState.eFlags & EF_CONNECTION ) {
 		CG_PlayerFloatSprite( cent, cgs.media.connectionShader );
 		return;
@@ -2115,6 +2131,7 @@ static void CG_PlayerSprites( centity_t *cent ) {
 	}
 
 	team = cgs.clientinfo[ cent->currentState.clientNum ].team;
+
 	if ( !(cent->currentState.eFlags & EF_DEAD) && 
 		cg.snap->ps.persistant[PERS_TEAM] == team &&
 		cgs.gametype >= GT_TEAM) {

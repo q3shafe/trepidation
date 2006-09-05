@@ -429,6 +429,7 @@ void UI_MainMenu( void ) {
 
 	trap_Key_SetCatcher( KEYCATCH_UI );
 	uis.menusp = 0;
+	trap_Cmd_ExecuteText( EXEC_APPEND, "music sound/music/credits\n" );
 	UI_PushMenu ( &s_main.menu );
 		
 }

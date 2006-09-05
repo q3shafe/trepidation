@@ -199,9 +199,8 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_rankings, "g_rankings", "0", 0, 0, qfalse},
 // Shafe - Trep - Cvars
 	// Mods
-	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_USERINFO | CVAR_SYSTEMINFO, 0, qtrue  },
-	{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_USERINFO | CVAR_SYSTEMINFO, 0, qtrue  },
-	
+	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH, 0, qfalse  },	
 	
 
 	// Arsenal Stuff
@@ -220,6 +219,8 @@ static cvarTable_t		gameCvarTable[] = {
 
 	
 };
+
+
 
 // bk001129 - made static to avoid aliasing
 static int gameCvarTableSize = sizeof( gameCvarTable ) / sizeof( gameCvarTable[0] );
@@ -432,6 +433,7 @@ void G_InitModRules( void )
 {
 	
 	// We only allow team_ffa in trepidation gametype
+	
 	if (g_GameMode.integer == 3)
 	{
 		g_gametype.integer = 3;
@@ -563,6 +565,9 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	memset( &level, 0, sizeof( level ) );
 	level.time = levelTime;
 	level.startTime = levelTime;
+	level.scoreTime = levelTime;
+	level.blueScoreLatched = -1;
+	level.redScoreLatched = -1;
 	level.firstStrike = qfalse; // Shafe - Trep
 	//level.lastClient = -1;
 	
@@ -1146,7 +1151,7 @@ void BeginIntermission( void ) {
 	// Shafe - Podium
 	if (g_gametype.integer != GT_CTF || g_gametype.integer != GT_TEAM || g_gametype.integer != GT_SINGLE_PLAYER)
 	{
-	UpdateTournamentInfo();
+	//UpdateTournamentInfo(); // SHAFEFIXME
 	SpawnModelsOnVictoryPads();
 	}
 #endif
@@ -1490,6 +1495,7 @@ void CheckExitRules( void ) {
 		return;
 	}
 	
+	
 
 	if ( level.intermissionQueued ) {
 #ifdef MISSIONPACK
@@ -1507,12 +1513,100 @@ void CheckExitRules( void ) {
 		return;
 	}
 	
-	// check for sudden death
-	if ( ScoreIsTied() ) {
-		// always wait for sudden death
-		return;
+		
+	// This works.. but scoring doesnt.. automatically places the thing as soon as you destroy it.
+	if (g_GameMode.integer == 3)
+	{
+
+		
+
+		// If both teams have an mc it's time to rumble
+		// Do we have a score?
+		if (level.redScoreLatched == 1)
+		{
+			Team_Point(TEAM_RED);
+			trap_SendServerCommand( -1, "print \"DEBUG: Red Scores.\n\"" );
+			level.scoreTime = level.time;
+			level.blueScoreLatched = -1;
+			level.redScoreLatched = 0;
+			return;
+		}
+
+		if (level.blueScoreLatched == 1)
+		{
+			Team_Point(TEAM_BLUE);
+			trap_SendServerCommand( -1, "print \"DEBUG: Blue Scores.\n\"" );
+			level.scoreTime = level.time;
+			level.redScoreLatched = -1;
+			level.blueScoreLatched = 0;
+			return;
+		}
+		
+		if ((level.time-level.scoreTime) > 35000) 
+		{
+
+			 if ((level.blueMC == 0) && (level.blueScoreLatched == -1))
+				{
+					trap_SendServerCommand( -1, "print \"Automatically Placing Blue MC.\n\"" );
+					level.blueScoreLatched = 0;
+					PlaceMC(TEAM_BLUE);
+					return;
+				}
+		
+				if ((level.redMC == 0) && (level.redScoreLatched == -1))
+				{
+					trap_SendServerCommand( -1, "print \"Automatically Placing Red MC.\n\"" );
+					level.redScoreLatched = 0;
+					PlaceMC(TEAM_RED);
+					return;
+				}
+			
+
+		}
+
+		/*
+		// Something is screwy let's try again  - This is just bad code 
+		if ((level.time-level.scoreTime) > 40000) 
+		{
+
+			 if ((level.blueMC == 0) && (level.blueScoreLatched == 0))
+				{
+					trap_SendServerCommand( -1, "print \"Automatically Placing Blue MC.\n\"" );
+					level.blueScoreLatched = 0;
+					PlaceMC(TEAM_BLUE);
+					return;
+				}
+		
+				if ((level.redMC == 0) && (level.redScoreLatched == 0))
+				{
+					trap_SendServerCommand( -1, "print \"Automatically Placing Red MC.\n\"" );
+					level.redScoreLatched = 0;
+					PlaceMC(TEAM_RED);
+					return;
+				}
+			
+
+		}
+		*/
+
 	}
 
+	if ( g_GameMode.integer == 3 && g_capturelimit.integer ) {
+
+		if ( level.teamScores[TEAM_RED] >= g_capturelimit.integer ) {
+			trap_SendServerCommand( -1, "print \"Red hit the point limit.\n\"" );
+			LogExit( "Capturelimit hit." );
+			return;
+		}
+
+		if ( level.teamScores[TEAM_BLUE] >= g_capturelimit.integer ) {
+			trap_SendServerCommand( -1, "print \"Blue hit the point limit.\n\"" );
+			LogExit( "Capturelimit hit." );
+			return;
+		}
+	}
+	// End Trep GT
+	
 	if ( g_timelimit.integer && !level.warmupTime ) {
 		if ( level.time - level.startTime >= g_timelimit.integer*60000 ) {
 			trap_SendServerCommand( -1, "print \"Timelimit hit.\n\"");
@@ -1520,6 +1614,16 @@ void CheckExitRules( void ) {
 			return;
 		}
 	}
+
+
+
+
+	// check for sudden death
+	if ( ScoreIsTied() ) {
+		// always wait for sudden death
+		return;
+	}
+
 
 	// Arsenal And Last Man Standing
 	// We dont do a showdown or find a winner for at least 10 seconds into the game.
@@ -1529,6 +1633,7 @@ void CheckExitRules( void ) {
 		{
 			gclient_t		*survivor = NULL;		
 			int				tmpCnt;
+			
 			
 			// Dont end it just because there is only one person on the server
 			if (level.warmupTime) { return; }

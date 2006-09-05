@@ -5,11 +5,13 @@
 #include "cg_local.h"
 
 
+
+
 static void CG_TURRET(centity_t *cent)
 {
 	refEntity_t			ent;
 	entityState_t		*s1;
-	
+	int					team;
 
 	s1 = &cent->currentState;
 
@@ -32,23 +34,33 @@ static void CG_TURRET(centity_t *cent)
 		trap_R_AddRefEntityToScene (&ent); // make the model show up
 		ent.customShader=cgs.media.battleSuitShader;
 		trap_R_AddRefEntityToScene (&ent); // make the shader show up
+		CG_PlayerSprites(cent); // This needs some work
 		break;	
 	case 2:
 		ent.customShader=cgs.media.invisShader;
 		trap_R_AddRefEntityToScene (&ent); // make the shader show up. no model
+		CG_PlayerSprites(cent);
 		break;
 	case 3:
 		trap_R_AddRefEntityToScene (&ent); // just add the model (uncloaked cloaking turret)
+		CG_PlayerSprites(cent);
+		
 		break;
 	case 9:
 		// Being Built
 		trap_R_AddRefEntityToScene (&ent); // make the model show up
 		ent.customShader=cgs.media.buildShader;
 		trap_R_AddRefEntityToScene (&ent); // make the shader show up
+		CG_PlayerSprites(cent);
 		break;
 	default:
 		trap_R_AddRefEntityToScene (&ent); // if something else has happened
+		CG_PlayerSprites(cent);
 	}
+
+	
+		
+		
 }
 
 /*

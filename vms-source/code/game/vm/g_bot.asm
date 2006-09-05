@@ -1126,14 +1126,14 @@ LABELV $141
 line 232
 ;231:			}
 ;232:			if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+208+216
+ADDRGP4 g_entities+212+220
 ADDP4
 INDIRI4
 CNSTI4 8
@@ -1330,14 +1330,14 @@ LABELV $163
 line 255
 ;254:			}
 ;255:			if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+208+216
+ADDRGP4 g_entities+212+220
 ADDP4
 INDIRI4
 CNSTI4 8
@@ -1608,14 +1608,14 @@ LABELV $193
 line 297
 ;296:		}
 ;297:		if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+208+216
+ADDRGP4 g_entities+212+220
 ADDP4
 INDIRI4
 CNSTI4 8
@@ -1771,14 +1771,14 @@ LABELV $208
 line 326
 ;325:		}
 ;326:		if ( g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT ) {
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+208+216
+ADDRGP4 g_entities+212+220
 ADDP4
 INDIRI4
 CNSTI4 8
@@ -1901,14 +1901,14 @@ LABELV $222
 line 352
 ;351:		}
 ;352:		if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 4
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+208+216
+ADDRGP4 g_entities+212+220
 ADDP4
 INDIRI4
 CNSTI4 8
@@ -2061,7 +2061,7 @@ line 382
 ;380:	static int checkminimumplayers_time;
 ;381:
 ;382:	if (level.intermissiontime) return;
-ADDRGP4 level+9132
+ADDRGP4 level+9136
 INDIRI4
 CNSTI4 0
 EQI4 $243
@@ -2124,7 +2124,7 @@ INDIRI4
 ADDRLP4 12
 INDIRI4
 NEI4 $253
-ADDRGP4 level+9228
+ADDRGP4 level+9232
 INDIRI4
 ADDRLP4 12
 INDIRI4
@@ -2144,7 +2144,7 @@ ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 2
 NEI4 $257
-ADDRGP4 level+9228
+ADDRGP4 level+9232
 INDIRI4
 CNSTI4 1
 NEI4 $257
@@ -3765,7 +3765,7 @@ line 673
 ;672:
 ;673:	bot = &g_entities[ clientNum ];
 ADDRLP4 1052
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 1036
 INDIRI4
 MULI4
@@ -3777,7 +3777,7 @@ line 674
 ADDRLP4 1124
 ADDRLP4 1052
 INDIRP4
-CNSTI4 424
+CNSTI4 432
 ADDP4
 ASGNP4
 ADDRLP4 1124
@@ -3792,7 +3792,7 @@ line 675
 ;675:	bot->inuse = qtrue;
 ADDRLP4 1052
 INDIRP4
-CNSTI4 520
+CNSTI4 528
 ADDP4
 CNSTI4 1
 ASGNI4
@@ -5870,6 +5870,7 @@ import ClientBegin
 import ClientDisconnect
 import ClientUserinfoChanged
 import ClientConnect
+import Team_Point
 import G_Error
 import G_Printf
 import SendScoreboardMessageToAllClients
@@ -5886,6 +5887,7 @@ import FireWeapon
 import G_FilterPacket
 import G_ProcessIPBans
 import ConsoleCommand
+import PlaceMC
 import SpotWouldTelefrag
 import CalculateRanks
 import AddScore

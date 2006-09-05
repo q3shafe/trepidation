@@ -993,7 +993,7 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 
 //unlagged - backward reconciliation #5
 	// announce it
-	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 07-27-06!\n\"" );
+	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 09-05-06\n\"" );
 	if ( g_delagHitscan.integer ) {
 //		trap_SendServerCommand( clientNum, "print \"This server is Unlagged: full lag compensation is ON!\n\"" );
 	}
@@ -1455,6 +1455,116 @@ void ClientSpawn(gentity_t *ent) {
 	// clear entity state values
 	BG_PlayerStateToEntityState( &client->ps, &ent->s, qtrue );
 }
+
+
+
+team_t BalanceTeams(int team ) {
+
+int		i;
+int		c;	
+int		b;	
+int		t;	
+
+	c = 999;	
+	for ( i = 0 ; i < level.maxclients ; i++ ) {
+	
+		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
+			continue;
+		}
+		if ( level.clients[i].sess.sessionTeam == team ) {
+			
+			if (level.clients[i].ps.persistant[PERS_SCORE] == 0) 
+			{
+				c = i;
+			} 
+			else 
+			{ 
+				b = i; 
+			}
+
+		}
+	}
+
+	if (c == 999) 
+	{ 
+		c = b; 
+	}
+
+	if (team == TEAM_BLUE) 
+	{	
+		t = level.clients[c].ps.persistant[PERS_SCORE];
+		SetTeam(&g_entities[c], "red"); 
+		level.clients[c].ps.persistant[PERS_SCORE] = t;
+		//level.clients[c].sess.sessionTeam = TEAM_BLUE;
+	}
+	
+	if (team == TEAM_RED) 
+	{		
+		t = level.clients[c].ps.persistant[PERS_SCORE];	
+		SetTeam(&g_entities[c], "blue"); 
+		level.clients[c].ps.persistant[PERS_SCORE] = t;
+		//level.clients[c].sess.sessionTeam = TEAM_RED;
+	}
+	
+	return c;
+	
+}
+
+/*
+ When someone doesnt build an MC it builds one somewhere for em
+ This is a called it picks a player and puts it in their spot..
+ hopefully they'll move out of the way.
+ Quite a hack.. 
+*/
+team_t PlaceMC(int team ) {
+
+int		i;
+int		c;	
+int		b;	
+
+
+	c = 999;	
+	for ( i = 0 ; i < level.maxclients ; i++ ) {
+	
+		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
+			continue;
+		}
+		if ( level.clients[i].sess.sessionTeam == team ) {
+			
+			if (level.clients[i].ps.persistant[PERS_SCORE] == 0) 
+			{
+				c = i;
+			} 
+			else 
+			{ 
+				b = i; 
+			}
+
+		}
+	}
+
+	if (c == 999) 
+	{ 
+		c = b; 
+	}
+
+	if (team == TEAM_BLUE) 
+	{	
+		// Set it down for the blue team
+		BuildMC(&g_entities[c]);
+	}
+	
+	if (team == TEAM_RED) 
+	{	
+		// set it down for the red team
+		BuildMC(&g_entities[c]);
+	}
+	
+	return c;
+	
+}
+
+
 
 
 /*

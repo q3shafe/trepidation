@@ -1309,6 +1309,7 @@ typedef struct entityState_s {
 	int		torsoAnim;		// mask off ANIM_TOGGLEBIT
 
 	int		generic1;
+	int		team;
 
 } entityState_t;
 

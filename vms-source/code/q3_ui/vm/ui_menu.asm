@@ -1713,15 +1713,24 @@ ADDRGP4 uis+16
 CNSTI4 0
 ASGNI4
 line 432
-;432:	UI_PushMenu ( &s_main.menu );
+;432:	trap_Cmd_ExecuteText( EXEC_APPEND, "music sound/music/credits\n" );
+CNSTI4 2
+ARGI4
+ADDRGP4 $350
+ARGP4
+ADDRGP4 trap_Cmd_ExecuteText
+CALLV
+pop
+line 433
+;433:	UI_PushMenu ( &s_main.menu );
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 434
-;433:		
-;434:}
+line 435
+;434:		
+;435:}
 LABELV $141
 endproc UI_MainMenu 40 12
 bss
@@ -2209,6 +2218,35 @@ import rand
 import srand
 import qsort
 lit
+align 1
+LABELV $350
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 32
+byte 1 115
+byte 1 111
+byte 1 117
+byte 1 110
+byte 1 100
+byte 1 47
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 47
+byte 1 99
+byte 1 114
+byte 1 101
+byte 1 100
+byte 1 105
+byte 1 116
+byte 1 115
+byte 1 10
+byte 1 0
 align 1
 LABELV $334
 byte 1 69

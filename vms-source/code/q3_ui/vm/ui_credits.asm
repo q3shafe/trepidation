@@ -1,7 +1,190 @@
+data
+export color_background
+align 4
+LABELV color_background
+byte 4 0
+byte 4 1051931443
+byte 4 1060152279
+byte 4 1065353216
+export color_headertext
+align 4
+LABELV color_headertext
+byte 4 1057467924
+byte 4 1061494456
+byte 4 1065353216
+byte 4 1065353216
+export color_maintext
+align 4
+LABELV color_maintext
+byte 4 1065353216
+byte 4 1065353216
+byte 4 1065353216
+byte 4 1065353216
+export credits
+align 4
+LABELV credits
+address $71
+byte 4 16417
+address color_headertext
+address $72
+byte 4 17
+address color_headertext
+address $73
+byte 4 17
+address color_blue
+address $74
+byte 4 16417
+address color_headertext
+address $73
+byte 4 17
+address color_blue
+address $75
+byte 4 17
+address color_headertext
+address $76
+byte 4 17
+address color_maintext
+address $73
+byte 4 17
+address color_blue
+address $77
+byte 4 17
+address color_headertext
+address $78
+byte 4 17
+address color_maintext
+address $79
+byte 4 17
+address color_maintext
+address $80
+byte 4 17
+address color_maintext
+address $73
+byte 4 17
+address color_blue
+address $81
+byte 4 17
+address color_headertext
+address $82
+byte 4 17
+address color_maintext
+address $73
+byte 4 17
+address color_blue
+address $83
+byte 4 17
+address color_headertext
+address $84
+byte 4 17
+address color_maintext
+address $73
+byte 4 17
+address color_blue
+address $85
+byte 4 17
+address color_headertext
+address $86
+byte 4 17
+address color_maintext
+address $87
+byte 4 17
+address color_maintext
+address $73
+byte 4 17
+address color_blue
+address $88
+byte 4 17
+address color_headertext
+address $86
+byte 4 17
+address color_maintext
+address $79
+byte 4 17
+address color_maintext
+address $73
+byte 4 17
+address color_blue
+address $89
+byte 4 16417
+address color_headertext
+address $73
+byte 4 17
+address color_blue
+address $90
+byte 4 17
+address color_maintext
+address $91
+byte 4 17
+address color_maintext
+address $73
+byte 4 17
+address color_blue
+address $92
+byte 4 17
+address color_headertext
+address $93
+byte 4 17
+address color_maintext
+address $94
+byte 4 17
+address color_maintext
+address $95
+byte 4 17
+address color_maintext
+address $96
+byte 4 17
+address color_maintext
+address $97
+byte 4 17
+address color_maintext
+address $98
+byte 4 17
+address color_maintext
+address $99
+byte 4 17
+address color_maintext
+address $73
+byte 4 17
+address color_blue
+address $73
+byte 4 17
+address color_blue
+address $73
+byte 4 17
+address color_blue
+address $100
+byte 4 17
+address color_headertext
+address $72
+byte 4 17
+address color_maintext
+address $73
+byte 4 17
+address color_blue
+address $73
+byte 4 17
+address color_blue
+address $73
+byte 4 17
+address color_blue
+address $73
+byte 4 17
+address color_blue
+address $73
+byte 4 17
+address color_blue
+address $101
+byte 4 17
+address color_maintext
+address $102
+byte 4 17
+address color_maintext
+byte 4 0
+skip 8
 code
-proc UI_CreditMenu_Key 0 8
+proc UI_CreditMenu_Key 4 8
 file "../ui_credits.c"
-line 29
+line 127
 ;1:// Copyright (C) 1999-2000 Id Software, Inc.
 ;2://
 ;3:/*
@@ -12,704 +195,756 @@ line 29
 ;8:=======================================================================
 ;9:*/
 ;10:
-;11:
+;11:// INCLUDE FILES
 ;12:#include "ui_local.h"
-;13:#define ART_FRAMER				"menu/art/moons"
-;14:
+;13:
+;14:// CONSTANT DEFINITIONS
 ;15:
-;16:typedef struct {
-;17:	menuframework_s	menu;
-;18:	menubitmap_s	framer;
-;19:} creditsmenu_t;
-;20:
-;21:static creditsmenu_t	s_credits;
-;22:
+;16:#define SCROLLSPEED	2.00 // The scrolling speed in pixels per second.
+;17:                          // modify as appropriate for our credits
+;18:#define BACKGROUND_SHADER			"menu/art/frame1_r"
+;19:// uncomment this to use a background shader, otherwise a solid color
+;20:// defined in the vec4_t "color_background" is filled to the screen
+;21:                            
+;22:// STRUCTURES
 ;23:
-;24:/*
-;25:=================
-;26:UI_CreditMenu_Key
-;27:=================
-;28:*/
-;29:static sfxHandle_t UI_CreditMenu_Key( int key ) {
-line 30
-;30:	if( key & K_CHAR_FLAG ) {
+;24:typedef struct {
+;25:	menuframework_s	menu;
+;26:} creditsmenu_t;
+;27:
+;28:static creditsmenu_t	s_credits;
+;29:
+;30:int starttime; // game time at which credits are started
+;31:float mvolume; // records the original music volume level, as we will
+;32:               // modify it for the credits
+;33:
+;34:// change this to change the background colour on credits
+;35:vec4_t color_background	        = {0.00, 0.35, 0.69, 1.00};
+;36:// these are just example colours that are used in credits[] 
+;37:vec4_t color_headertext			= {0.53, 0.77, 1.00, 1.00};
+;38:vec4_t color_maintext			= {1.00, 1.00, 1.00, 1.00};
+;39:
+;40:qhandle_t	BackgroundShader; // definition of the background shader pointer
+;41:
+;42:typedef struct
+;43:{
+;44:	char *string;
+;45:	int style;
+;46:	vec4_t *colour;
+;47:} cr_line;
+;48:
+;49:cr_line credits[] = { // edit this as necessary for your credits
+;50:	
+;51:{ "Trepidation", UI_CENTER|UI_BIGFONT|UI_PULSE, &color_headertext },
+;52:{ "www.PlanetTrepidation.com", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;53:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;54:
+;55:{ "Development Team:", UI_CENTER|UI_BIGFONT|UI_PULSE, &color_headertext },
+;56:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;57:{ "Programming:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;58:{ "Brian Shaffer", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;59:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;60:
+;61:{ "Art:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;62:{ "Scott Hanke, Ryan McNeill, Petee,", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;63:{ "Gigabyte123, Laz, Dr. Preston", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;64:{ "[FC]Pope John Paul III", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;65:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;66:
+;67:{ "Voice and Sounds:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;68:{ "Dave Cunningham", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;69:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;70:
+;71:{ "Sound Design & Music:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;72:{ "Chris Begg", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;73:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;74:
+;75:
+;76:{ "Models:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;77:{ "Petee, DrAkOn, Gigon", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;78:{ "Gigabyte123", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;79:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;80:
+;81:{ "Mapping:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;82:{ "Petee, DrAkOn, Gigon", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;83:{ "Gigabyte123, Laz, Dr. Preston", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;84:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;85:
+;86:{ "Test Team:", UI_CENTER|UI_BIGFONT|UI_PULSE, &color_headertext },
+;87:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;88:{ "Blue, Prodie, Unknown, Tuvok", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;89:{ "Dredge, Camper, Frago", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;90:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;91:
+;92:
+;93:{ "Special Thanks To:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;94:{ "SourceForge.net", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;95:{ "Open Arena", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;96:{ "Code 3 Arena", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;97:{ "Icculus.org IOQ3 Project", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;98:{ "Thilo Schultz", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;99:{ "Mathieu Olivier (dpmaster)", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;100:{ "ID Software", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;101:
+;102:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;103:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;104:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;105:
+;106:{ "Visit Us On The Web @", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;107:{ "www.PlanetTrepidation.com", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;108:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;109:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;110:
+;111:
+;112:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;113:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;114:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+;115:{ "(c)2006 Trepidation Development Team", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;116:{ "General Public License", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;117:
+;118:  {NULL}
+;119:};
+;120:
+;121:
+;122:/*
+;123:=================
+;124:UI_CreditMenu_Key
+;125:=================
+;126:*/
+;127:static sfxHandle_t UI_CreditMenu_Key( int key ) {
+line 128
+;128:	if( key & K_CHAR_FLAG ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $71
-line 31
-;31:		return 0;
+EQI4 $104
+line 129
+;129:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $70
+ADDRGP4 $103
 JUMPV
-LABELV $71
-line 34
-;32:	}
-;33:
-;34:	trap_Cmd_ExecuteText( EXEC_APPEND, "quit\n" );
+LABELV $104
+line 135
+;130:	}
+;131:
+;132:	// pressing the escape key or clicking the mouse will exit
+;133:	// we also reset the music volume to the user's original
+;134:	// choice here,  by setting s_musicvolume to the stored var
+;135:	trap_Cmd_ExecuteText( EXEC_APPEND, 
+ADDRGP4 $106
+ARGP4
+ADDRGP4 mvolume
+INDIRF4
+ARGF4
+ADDRLP4 0
+ADDRGP4 va
+CALLP4
+ASGNP4
 CNSTI4 2
 ARGI4
-ADDRGP4 $73
+ADDRLP4 0
+INDIRP4
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 35
-;35:	return 0;
+line 137
+;136:                         va("s_musicvolume %f; quit\n", mvolume));
+;137:	return 0;
 CNSTI4 0
 RETI4
-LABELV $70
-endproc UI_CreditMenu_Key 0 8
-proc UI_CreditMenu_Draw 4 20
-line 46
-;36:}
-;37:
-;38:
-;39:
-;40:
-;41:/*
-;42:===============
-;43:UI_CreditMenu_Draw
-;44:===============
-;45:*/
-;46:static void UI_CreditMenu_Draw( void ) {
-line 49
-;47:	int		y;
-;48:
-;49:	Menu_Draw( &s_credits.menu );
-ADDRGP4 s_credits
-ARGP4
-ADDRGP4 Menu_Draw
-CALLV
-pop
-line 51
-;50:
-;51:	y = 12;
+LABELV $103
+endproc UI_CreditMenu_Key 4 8
+lit
+align 4
+LABELV $108
+byte 4 0
+byte 4 0
+byte 4 0
+byte 4 0
+code
+proc ScrollingCredits_Draw 48 20
+line 148
+;138:}
+;139:
+;140:/*
+;141:=================
+;142:ScrollingCredits_Draw
+;143:This is the main drawing function for the credits. 
+;144:Most of the code is self-explanatory.
+;145:=================
+;146:*/
+;147:static void ScrollingCredits_Draw(void)
+;148:{
+line 149
+;149:  int x = 320, y, n, ysize = 0, fadetime = 0;
+ADDRLP4 12
+CNSTI4 320
+ASGNI4
+ADDRLP4 8
+CNSTI4 0
+ASGNI4
+ADDRLP4 16
+CNSTI4 0
+ASGNI4
+line 150
+;150:  vec4_t fadecolour = { 0.00, 0.00, 0.00, 0.00 };
+ADDRLP4 20
+ADDRGP4 $108
+INDIRB
+ASGNB 16
+line 155
+;151:
+;152:  // ysize is used to determine the entire length 
+;153:  // of the credits in pixels. 
+;154:  // We can then use this in further calculations
+;155:  if(!ysize) // ysize not calculated, so calculate it dammit!
+ADDRLP4 8
+INDIRI4
+CNSTI4 0
+NEI4 $109
+line 156
+;156:  {
+line 158
+;157:    // loop through entire credits array
+;158:    for(n = 0; n <= sizeof(credits) - 1; n++) 
 ADDRLP4 0
+CNSTI4 0
+ASGNI4
+ADDRGP4 $114
+JUMPV
+LABELV $111
+line 159
+;159:    {
+line 161
+;160:      // it is a small character
+;161:      if(credits[n].style & UI_SMALLFONT) 
 CNSTI4 12
-ASGNI4
-line 52
-;52:	UI_DrawProportionalString( 320, y, "The Trepidation Team is:", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
 ADDRLP4 0
 INDIRI4
-ARGI4
-ADDRGP4 $75
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 54
-;53:
-;54:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1105594941
-ADDF4
-CVFI4 4
-ASGNI4
-line 55
-;55:	UI_DrawProportionalString( 320, y, "Programming", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $76
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 56
-;56:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1101135872
-ADDF4
-CVFI4 4
-ASGNI4
-line 57
-;57:	UI_DrawProportionalString( 320, y, "Shafe, XcyTng", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $77
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 59
-;58:
-;59:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1105594941
-ADDF4
-CVFI4 4
-ASGNI4
-line 60
-;60:	UI_DrawProportionalString( 320, y, "Mapping And Art:", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $78
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 62
-;61:	
-;62:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1101135872
-ADDF4
-CVFI4 4
-ASGNI4
-line 63
-;63:	UI_DrawProportionalString( 320, y, "Scott Hanke, Ryan McNeill, Petee", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $79
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 65
-;64:	
-;65:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1101135872
-ADDF4
-CVFI4 4
-ASGNI4
-line 66
-;66:	UI_DrawProportionalString( 320, y, "Gigon, Gigabyte123", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $80
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 68
-;67:
-;68:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1105594941
-ADDF4
-CVFI4 4
-ASGNI4
-line 69
-;69:	UI_DrawProportionalString( 320, y, "Models", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $81
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 70
-;70:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1101135872
-ADDF4
-CVFI4 4
-ASGNI4
-line 71
-;71:	UI_DrawProportionalString( 320, y, "Petee, DrAkOn, Gigon", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $82
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 73
-;72:
-;73:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1105594941
-ADDF4
-CVFI4 4
-ASGNI4
-line 74
-;74:	UI_DrawProportionalString( 320, y, "Sound Engineer:", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $83
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 75
-;75:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1101135872
-ADDF4
-CVFI4 4
-ASGNI4
-line 76
-;76:	UI_DrawProportionalString( 320, y, "Dave Cunningham", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $84
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 78
-;77:
-;78:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1105594941
-ADDF4
-CVFI4 4
-ASGNI4
-line 79
-;79:	UI_DrawProportionalString( 320, y, "Special Thanks To", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $85
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 80
-;80:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1101135872
-ADDF4
-CVFI4 4
-ASGNI4
-line 81
-;81:	UI_DrawProportionalString( 320, y, "The Open Arena Project", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $86
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 83
-;82:
-;83:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1105594941
-ADDF4
-CVFI4 4
-ASGNI4
-line 84
-;84:	UI_DrawProportionalString( 320, y, "Testing And Support", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $87
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 85
-;85:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1101135872
-ADDF4
-CVFI4 4
-ASGNI4
-line 86
-;86:	UI_DrawProportionalString( 320, y, "Blue, Dredge, Prodie, Unknown", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $88
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 94
-;87:
-;88:	/*
-;89:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-;90:	UI_DrawProportionalString( 320, y, "Favorite Foods", UI_CENTER|UI_SMALLFONT, color_white );
-;91:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-;92:	UI_DrawProportionalString( 320, y, "Pizza and M & M's", UI_CENTER|UI_SMALLFONT, color_white );
-;93:	*/
-;94:	y += 1.42 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1105594941
-ADDF4
-CVFI4 4
-ASGNI4
-line 95
-;95:	UI_DrawProportionalString( 320, y, "Website", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $89
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 96
-;96:	y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1101135872
-ADDF4
-CVFI4 4
-ASGNI4
-line 97
-;97:	UI_DrawProportionalString( 320, y, "trepidation.sourceforge.net", UI_CENTER|UI_SMALLFONT, color_white );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $90
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_white
-ARGP4
-ADDRGP4 UI_DrawProportionalString
-CALLV
-pop
-line 99
-;98:
-;99:	y += 1.35 * PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CVIF4 4
-CNSTF4 1104851763
-ADDF4
-CVFI4 4
-ASGNI4
-line 100
-;100:	UI_DrawString( 320, y, "Trepidation     trepidation.soourceforge.net     Support Open Source!", UI_CENTER|UI_SMALLFONT, color_red );
-CNSTI4 320
-ARGI4
-ADDRLP4 0
-INDIRI4
-ARGI4
-ADDRGP4 $91
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_red
-ARGP4
-ADDRGP4 UI_DrawString
-CALLV
-pop
-line 101
-;101:	y += SMALLCHAR_HEIGHT;
-ADDRLP4 0
-ADDRLP4 0
+MULI4
+ADDRGP4 credits+4
+ADDP4
 INDIRI4
 CNSTI4 16
-ADDI4
+BANDI4
+CNSTI4 0
+EQI4 $115
+line 162
+;162:      {
+line 164
+;163:        // add small character height
+;164:        ysize += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+ADDRLP4 8
+ADDRLP4 8
+INDIRI4
+CVIF4 4
+CNSTF4 1101135872
+ADDF4
+CVFI4 4
 ASGNI4
-line 102
-;102:	UI_DrawString( 320, y, "Trepidation 2006 General Public License.", UI_CENTER|UI_SMALLFONT, color_red );
-CNSTI4 320
-ARGI4
+line 167
+;165:        
+;166:      // it is a big character
+;167:      }else if(credits[n].style & UI_BIGFONT) 
+ADDRGP4 $116
+JUMPV
+LABELV $115
+CNSTI4 12
 ADDRLP4 0
 INDIRI4
+MULI4
+ADDRGP4 credits+4
+ADDP4
+INDIRI4
+CNSTI4 32
+BANDI4
+CNSTI4 0
+EQI4 $118
+line 168
+;168:      {
+line 170
+;169:        // add big character size
+;170:        ysize += PROP_HEIGHT;
+ADDRLP4 8
+ADDRLP4 8
+INDIRI4
+CNSTI4 27
+ADDI4
+ASGNI4
+line 173
+;171:        
+;172:      // it is a huge character
+;173:      }else if(credits[n].style & UI_GIANTFONT) 
+ADDRGP4 $119
+JUMPV
+LABELV $118
+CNSTI4 12
+ADDRLP4 0
+INDIRI4
+MULI4
+ADDRGP4 credits+4
+ADDP4
+INDIRI4
+CNSTI4 64
+BANDI4
+CNSTI4 0
+EQI4 $121
+line 174
+;174:      {
+line 176
+;175:        // add giant character size.
+;176:        ysize += PROP_HEIGHT * (1 / PROP_SMALL_SIZE_SCALE); 
+ADDRLP4 8
+ADDRLP4 8
+INDIRI4
+CVIF4 4
+CNSTF4 1108344832
+ADDF4
+CVFI4 4
+ASGNI4
+line 177
+;177:      }
+LABELV $121
+LABELV $119
+LABELV $116
+line 178
+;178:    }
+LABELV $112
+line 158
+ADDRLP4 0
+ADDRLP4 0
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+LABELV $114
+ADDRLP4 0
+INDIRI4
+CVIU4 4
+CNSTU4 635
+LEU4 $111
+line 179
+;179:  }
+LABELV $109
+line 184
+;180:
+;181:  // first, fill the background with the specified colour/shader
+;182:  // we are drawing a shader
+;183:#ifdef BACKGROUND_SHADER 
+;184:    UI_DrawHandlePic(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BackgroundShader);
+ADDRLP4 36
+CNSTF4 0
+ASGNF4
+ADDRLP4 36
+INDIRF4
+ARGF4
+ADDRLP4 36
+INDIRF4
+ARGF4
+CNSTF4 1142947840
+ARGF4
+CNSTF4 1139802112
+ARGF4
+ADDRGP4 BackgroundShader
+INDIRI4
 ARGI4
-ADDRGP4 $92
-ARGP4
-CNSTI4 17
-ARGI4
-ADDRGP4 color_red
-ARGP4
-ADDRGP4 UI_DrawString
+ADDRGP4 UI_DrawHandlePic
 CALLV
 pop
-line 103
-;103:}
-LABELV $74
-endproc UI_CreditMenu_Draw 4 20
+line 193
+;185:  
+;186:  // we are just filling a color
+;187:#else 
+;188:    UI_FillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, color_background);
+;189:#endif
+;190:
+;191:  // let's draw the stuff
+;192:  // set initial y location
+;193:  y = 480 - SCROLLSPEED * (float)(uis.realtime - starttime) / 100;
+ADDRLP4 4
+CNSTF4 1139802112
+CNSTF4 1073741824
+ADDRGP4 uis+4
+INDIRI4
+ADDRGP4 starttime
+INDIRI4
+SUBI4
+CVIF4 4
+MULF4
+CNSTF4 1120403456
+DIVF4
+SUBF4
+CVFI4 4
+ASGNI4
+line 196
+;194:  
+;195:  // loop through the entire credits sequence
+;196:  for(n = 0; n <= sizeof(credits) - 1; n++)
+ADDRLP4 0
+CNSTI4 0
+ASGNI4
+ADDRGP4 $128
+JUMPV
+LABELV $125
+line 197
+;197:  {
+line 199
+;198:    // this NULL string marks the end of the credits struct
+;199:    if(credits[n].string == NULL) 
+CNSTI4 12
+ADDRLP4 0
+INDIRI4
+MULI4
+ADDRGP4 credits
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+NEU4 $129
+line 200
+;200:    {
+line 201
+;201:      if(y < -16) // credits sequence is completely off screen
+ADDRLP4 4
+INDIRI4
+CNSTI4 -16
+GEI4 $127
+line 202
+;202:      {
+line 203
+;203:        trap_Cmd_ExecuteText( EXEC_APPEND, 
+ADDRGP4 $106
+ARGP4
+ADDRGP4 mvolume
+INDIRF4
+ARGF4
+ADDRLP4 40
+ADDRGP4 va
+CALLP4
+ASGNP4
+CNSTI4 2
+ARGI4
+ADDRLP4 40
+INDIRP4
+ARGP4
+ADDRGP4 trap_Cmd_ExecuteText
+CALLV
+pop
+line 205
+;204:                         va("s_musicvolume %f; quit\n", mvolume));
+;205:        break; // end of credits
+ADDRGP4 $127
+JUMPV
+line 207
+;206:      }
+;207:      break;
+LABELV $129
+line 210
+;208:    }
+;209:		
+;210:    if( strlen(credits[n].string) == 1) // spacer string, no need to draw
+CNSTI4 12
+ADDRLP4 0
+INDIRI4
+MULI4
+ADDRGP4 credits
+ADDP4
+INDIRP4
+ARGP4
+ADDRLP4 40
+ADDRGP4 strlen
+CALLI4
+ASGNI4
+ADDRLP4 40
+INDIRI4
+CNSTI4 1
+NEI4 $133
+line 211
+;211:      continue;
+ADDRGP4 $126
+JUMPV
+LABELV $133
+line 213
+;212:
+;213:    if( y > -(PROP_HEIGHT * (1 / PROP_SMALL_SIZE_SCALE))) 
+ADDRLP4 4
+INDIRI4
+CVIF4 4
+CNSTF4 3255828480
+LEF4 $135
+line 215
+;214:      // the line is within the visible range of the screen
+;215:      UI_DrawProportionalString(x, y, credits[n].string, 
+ADDRLP4 12
+INDIRI4
+ARGI4
+ADDRLP4 4
+INDIRI4
+ARGI4
+ADDRLP4 44
+CNSTI4 12
+ADDRLP4 0
+INDIRI4
+MULI4
+ASGNI4
+ADDRLP4 44
+INDIRI4
+ADDRGP4 credits
+ADDP4
+INDIRP4
+ARGP4
+ADDRLP4 44
+INDIRI4
+ADDRGP4 credits+4
+ADDP4
+INDIRI4
+ARGI4
+ADDRLP4 44
+INDIRI4
+ADDRGP4 credits+8
+ADDP4
+INDIRP4
+ARGP4
+ADDRGP4 UI_DrawProportionalString
+CALLV
+pop
+LABELV $135
+line 219
+;216:                                credits[n].style, *credits[n].colour );
+;217:		
+;218:    // re-adjust y for next line
+;219:    if(credits[n].style & UI_SMALLFONT)
+CNSTI4 12
+ADDRLP4 0
+INDIRI4
+MULI4
+ADDRGP4 credits+4
+ADDP4
+INDIRI4
+CNSTI4 16
+BANDI4
+CNSTI4 0
+EQI4 $139
+line 220
+;220:    {
+line 221
+;221:      y += PROP_HEIGHT * PROP_SMALL_SIZE_SCALE;
+ADDRLP4 4
+ADDRLP4 4
+INDIRI4
+CVIF4 4
+CNSTF4 1101135872
+ADDF4
+CVFI4 4
+ASGNI4
+line 222
+;222:    }else if(credits[n].style & UI_BIGFONT)
+ADDRGP4 $140
+JUMPV
+LABELV $139
+CNSTI4 12
+ADDRLP4 0
+INDIRI4
+MULI4
+ADDRGP4 credits+4
+ADDP4
+INDIRI4
+CNSTI4 32
+BANDI4
+CNSTI4 0
+EQI4 $142
+line 223
+;223:    {
+line 224
+;224:      y += PROP_HEIGHT;
+ADDRLP4 4
+ADDRLP4 4
+INDIRI4
+CNSTI4 27
+ADDI4
+ASGNI4
+line 225
+;225:    }else if(credits[n].style & UI_GIANTFONT)
+ADDRGP4 $143
+JUMPV
+LABELV $142
+CNSTI4 12
+ADDRLP4 0
+INDIRI4
+MULI4
+ADDRGP4 credits+4
+ADDP4
+INDIRI4
+CNSTI4 64
+BANDI4
+CNSTI4 0
+EQI4 $145
+line 226
+;226:    {
+line 227
+;227:      y += PROP_HEIGHT * (1 / PROP_SMALL_SIZE_SCALE);
+ADDRLP4 4
+ADDRLP4 4
+INDIRI4
+CVIF4 4
+CNSTF4 1108344832
+ADDF4
+CVFI4 4
+ASGNI4
+line 228
+;228:    }
+LABELV $145
+LABELV $143
+LABELV $140
+line 231
+;229:
+;230:    // if y is off the screen, break out of loop
+;231:    if (y > 480)
+ADDRLP4 4
+INDIRI4
+CNSTI4 480
+LEI4 $148
+line 232
+;232:    break;
+ADDRGP4 $127
+JUMPV
+LABELV $148
+line 233
+;233:  }
+LABELV $126
+line 196
+ADDRLP4 0
+ADDRLP4 0
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+LABELV $128
+ADDRLP4 0
+INDIRI4
+CVIU4 4
+CNSTU4 635
+LEU4 $125
+LABELV $127
+line 234
+;234:}
+LABELV $107
+endproc ScrollingCredits_Draw 48 20
 export UI_CreditMenu
-proc UI_CreditMenu 0 12
-line 111
-;104:
-;105:
-;106:/*
-;107:===============
-;108:UI_CreditMenu
-;109:===============
-;110:*/
-;111:void UI_CreditMenu( void ) {
-line 112
-;112:	memset( &s_credits, 0 ,sizeof(s_credits) );
+proc UI_CreditMenu 8 12
+line 241
+;235:
+;236:/*
+;237:===============
+;238:UI_CreditMenu
+;239:===============
+;240:*/
+;241:void UI_CreditMenu( void ) {
+line 242
+;242:	memset( &s_credits, 0 ,sizeof(s_credits) );
 ADDRGP4 s_credits
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 376
+CNSTI4 288
 ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 114
-;113:
-;114:	s_credits.menu.draw = UI_CreditMenu_Draw;
+line 244
+;243:
+;244:	s_credits.menu.draw = ScrollingCredits_Draw;
 ADDRGP4 s_credits+268
-ADDRGP4 UI_CreditMenu_Draw
+ADDRGP4 ScrollingCredits_Draw
 ASGNP4
-line 115
-;115:	s_credits.menu.key = UI_CreditMenu_Key;
+line 245
+;245:	s_credits.menu.key = UI_CreditMenu_Key;
 ADDRGP4 s_credits+272
 ADDRGP4 UI_CreditMenu_Key
 ASGNP4
-line 116
-;116:	s_credits.menu.fullscreen = qtrue;
+line 246
+;246:	s_credits.menu.fullscreen = qtrue;
 ADDRGP4 s_credits+280
 CNSTI4 1
 ASGNI4
-line 119
-;117:
-;118:
-;119:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $97
-ARGP4
-ADDRGP4 trap_R_RegisterShaderNoMip
-CALLI4
-pop
-line 122
-;120:	
-;121:
-;122:	s_credits.menu.draw = UI_CreditMenu_Draw;
-ADDRGP4 s_credits+268
-ADDRGP4 UI_CreditMenu_Draw
-ASGNP4
-line 123
-;123:	s_credits.menu.fullscreen = qtrue;
-ADDRGP4 s_credits+280
-CNSTI4 1
-ASGNI4
-line 124
-;124:	s_credits.menu.wrapAround = qtrue;
-ADDRGP4 s_credits+276
-CNSTI4 1
-ASGNI4
-line 125
-;125:	s_credits.menu.showlogo = qfalse; // Shafe - Trep - Temporarily qfalse
-ADDRGP4 s_credits+284
-CNSTI4 0
-ASGNI4
-line 127
-;126:
-;127:	s_credits.framer.generic.type		= MTYPE_BITMAP;
-ADDRGP4 s_credits+288
-CNSTI4 6
-ASGNI4
-line 128
-;128:	s_credits.framer.generic.name		= ART_FRAMER;
-ADDRGP4 s_credits+288+4
-ADDRGP4 $97
-ASGNP4
-line 129
-;129:	s_credits.framer.generic.flags		= QMF_INACTIVE;
-ADDRGP4 s_credits+288+44
-CNSTU4 16384
-ASGNU4
-line 130
-;130:	s_credits.framer.generic.x			= 0;  
-ADDRGP4 s_credits+288+12
-CNSTI4 0
-ASGNI4
-line 131
-;131:	s_credits.framer.generic.y			= 0;
-ADDRGP4 s_credits+288+16
-CNSTI4 0
-ASGNI4
-line 132
-;132:	s_credits.framer.width				= 800;
-ADDRGP4 s_credits+288+76
-CNSTI4 800
-ASGNI4
-line 133
-;133:	s_credits.framer.height			= 600;
-ADDRGP4 s_credits+288+80
-CNSTI4 600
-ASGNI4
-line 135
-;134:
-;135:	Menu_AddItem( &s_credits.menu, ( void * ) &s_credits.framer );
-ADDRGP4 s_credits
-ARGP4
-ADDRGP4 s_credits+288
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
-line 137
-;136:
-;137:	trap_Key_SetCatcher( KEYCATCH_UI );
-CNSTI4 2
-ARGI4
-ADDRGP4 trap_Key_SetCatcher
-CALLV
-pop
-line 138
-;138:	uis.menusp = 0;
-ADDRGP4 uis+16
-CNSTI4 0
-ASGNI4
-line 139
-;139:	UI_PushMenu ( &s_credits.menu );
+line 247
+;247:	UI_PushMenu ( &s_credits.menu );
 ADDRGP4 s_credits
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 140
-;140:}
-LABELV $93
-endproc UI_CreditMenu 0 12
+line 249
+;248:
+;249:	starttime = uis.realtime; // record start time for credits to scroll properly
+ADDRGP4 starttime
+ADDRGP4 uis+4
+INDIRI4
+ASGNI4
+line 250
+;250:	mvolume = trap_Cvar_VariableValue( "s_musicvolume" );
+ADDRGP4 $155
+ARGP4
+ADDRLP4 0
+ADDRGP4 trap_Cvar_VariableValue
+CALLF4
+ASGNF4
+ADDRGP4 mvolume
+ADDRLP4 0
+INDIRF4
+ASGNF4
+line 253
+;251:	//if(mvolume < 0.5)
+;252:	//	trap_Cmd_ExecuteText( EXEC_APPEND, "s_musicvolume 0.5\n" );
+;253:	trap_Cmd_ExecuteText( EXEC_APPEND, "music sound/music/credits\n" );
+CNSTI4 2
+ARGI4
+ADDRGP4 $156
+ARGP4
+ADDRGP4 trap_Cmd_ExecuteText
+CALLV
+pop
+line 257
+;254:
+;255:	// load the background shader
+;256:#ifdef BACKGROUND_SHADER
+;257:	BackgroundShader = 
+ADDRGP4 $157
+ARGP4
+ADDRLP4 4
+ADDRGP4 trap_R_RegisterShaderNoMip
+CALLI4
+ASGNI4
+ADDRGP4 BackgroundShader
+ADDRLP4 4
+INDIRI4
+ASGNI4
+line 260
+;258:	  trap_R_RegisterShaderNoMip(BACKGROUND_SHADER);
+;259:#endif
+;260:}อออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
+LABELV $150
+endproc UI_CreditMenu 8 12
 bss
+export BackgroundShader
+align 4
+LABELV BackgroundShader
+skip 4
+export mvolume
+align 4
+LABELV mvolume
+skip 4
+export starttime
+align 4
+LABELV starttime
+skip 4
 align 4
 LABELV s_credits
-skip 376
+skip 288
 import UI_RankStatusMenu
 import RankStatus_Cache
 import UI_SignupMenu
@@ -1190,7 +1425,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $97
+LABELV $157
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1200,31 +1435,88 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
+byte 1 102
+byte 1 114
+byte 1 97
 byte 1 109
-byte 1 111
-byte 1 111
-byte 1 110
-byte 1 115
+byte 1 101
+byte 1 49
+byte 1 95
+byte 1 114
 byte 1 0
 align 1
-LABELV $92
-byte 1 84
+LABELV $156
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 32
+byte 1 115
+byte 1 111
+byte 1 117
+byte 1 110
+byte 1 100
+byte 1 47
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 47
+byte 1 99
 byte 1 114
 byte 1 101
-byte 1 112
-byte 1 105
 byte 1 100
-byte 1 97
-byte 1 116
 byte 1 105
+byte 1 116
+byte 1 115
+byte 1 10
+byte 1 0
+align 1
+LABELV $155
+byte 1 115
+byte 1 95
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 118
 byte 1 111
-byte 1 110
+byte 1 108
+byte 1 117
+byte 1 109
+byte 1 101
+byte 1 0
+align 1
+LABELV $106
+byte 1 115
+byte 1 95
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 118
+byte 1 111
+byte 1 108
+byte 1 117
+byte 1 109
+byte 1 101
 byte 1 32
-byte 1 50
-byte 1 48
-byte 1 48
-byte 1 54
+byte 1 37
+byte 1 102
+byte 1 59
 byte 1 32
+byte 1 113
+byte 1 117
+byte 1 105
+byte 1 116
+byte 1 10
+byte 1 0
+align 1
+LABELV $102
 byte 1 71
 byte 1 101
 byte 1 110
@@ -1247,10 +1539,17 @@ byte 1 101
 byte 1 110
 byte 1 115
 byte 1 101
-byte 1 46
 byte 1 0
 align 1
-LABELV $91
+LABELV $101
+byte 1 40
+byte 1 99
+byte 1 41
+byte 1 50
+byte 1 48
+byte 1 48
+byte 1 54
+byte 1 32
 byte 1 84
 byte 1 114
 byte 1 101
@@ -1263,85 +1562,170 @@ byte 1 105
 byte 1 111
 byte 1 110
 byte 1 32
-byte 1 32
-byte 1 32
-byte 1 32
-byte 1 32
+byte 1 68
+byte 1 101
+byte 1 118
+byte 1 101
+byte 1 108
+byte 1 111
+byte 1 112
+byte 1 109
+byte 1 101
+byte 1 110
 byte 1 116
+byte 1 32
+byte 1 84
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 0
+align 1
+LABELV $100
+byte 1 86
+byte 1 105
+byte 1 115
+byte 1 105
+byte 1 116
+byte 1 32
+byte 1 85
+byte 1 115
+byte 1 32
+byte 1 79
+byte 1 110
+byte 1 32
+byte 1 84
+byte 1 104
+byte 1 101
+byte 1 32
+byte 1 87
+byte 1 101
+byte 1 98
+byte 1 32
+byte 1 64
+byte 1 0
+align 1
+LABELV $99
+byte 1 73
+byte 1 68
+byte 1 32
+byte 1 83
+byte 1 111
+byte 1 102
+byte 1 116
+byte 1 119
+byte 1 97
 byte 1 114
 byte 1 101
-byte 1 112
-byte 1 105
-byte 1 100
+byte 1 0
+align 1
+LABELV $98
+byte 1 77
 byte 1 97
 byte 1 116
+byte 1 104
 byte 1 105
-byte 1 111
-byte 1 110
-byte 1 46
-byte 1 115
-byte 1 111
-byte 1 111
-byte 1 117
-byte 1 114
-byte 1 99
 byte 1 101
-byte 1 102
+byte 1 117
+byte 1 32
+byte 1 79
+byte 1 108
+byte 1 105
+byte 1 118
+byte 1 105
+byte 1 101
+byte 1 114
+byte 1 32
+byte 1 40
+byte 1 100
+byte 1 112
+byte 1 109
+byte 1 97
+byte 1 115
+byte 1 116
+byte 1 101
+byte 1 114
+byte 1 41
+byte 1 0
+align 1
+LABELV $97
+byte 1 84
+byte 1 104
+byte 1 105
+byte 1 108
+byte 1 111
+byte 1 32
+byte 1 83
+byte 1 99
+byte 1 104
+byte 1 117
+byte 1 108
+byte 1 116
+byte 1 122
+byte 1 0
+align 1
+LABELV $96
+byte 1 73
+byte 1 99
+byte 1 99
+byte 1 117
+byte 1 108
+byte 1 117
+byte 1 115
+byte 1 46
 byte 1 111
 byte 1 114
 byte 1 103
-byte 1 101
-byte 1 46
-byte 1 110
-byte 1 101
-byte 1 116
 byte 1 32
+byte 1 73
+byte 1 79
+byte 1 81
+byte 1 51
 byte 1 32
-byte 1 32
-byte 1 32
-byte 1 32
-byte 1 83
-byte 1 117
-byte 1 112
-byte 1 112
-byte 1 111
+byte 1 80
 byte 1 114
+byte 1 111
+byte 1 106
+byte 1 101
+byte 1 99
 byte 1 116
+byte 1 0
+align 1
+LABELV $95
+byte 1 67
+byte 1 111
+byte 1 100
+byte 1 101
 byte 1 32
+byte 1 51
+byte 1 32
+byte 1 65
+byte 1 114
+byte 1 101
+byte 1 110
+byte 1 97
+byte 1 0
+align 1
+LABELV $94
 byte 1 79
 byte 1 112
 byte 1 101
 byte 1 110
 byte 1 32
+byte 1 65
+byte 1 114
+byte 1 101
+byte 1 110
+byte 1 97
+byte 1 0
+align 1
+LABELV $93
 byte 1 83
 byte 1 111
 byte 1 117
 byte 1 114
 byte 1 99
 byte 1 101
-byte 1 33
-byte 1 0
-align 1
-LABELV $90
-byte 1 116
-byte 1 114
-byte 1 101
-byte 1 112
-byte 1 105
-byte 1 100
-byte 1 97
-byte 1 116
-byte 1 105
-byte 1 111
-byte 1 110
-byte 1 46
-byte 1 115
-byte 1 111
-byte 1 117
-byte 1 114
-byte 1 99
-byte 1 101
-byte 1 102
+byte 1 70
 byte 1 111
 byte 1 114
 byte 1 103
@@ -1352,28 +1736,55 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $89
-byte 1 87
+LABELV $92
+byte 1 83
+byte 1 112
 byte 1 101
-byte 1 98
-byte 1 115
+byte 1 99
 byte 1 105
-byte 1 116
-byte 1 101
+byte 1 97
+byte 1 108
+byte 1 32
+byte 1 84
+byte 1 104
+byte 1 97
+byte 1 110
+byte 1 107
+byte 1 115
+byte 1 32
+byte 1 84
+byte 1 111
+byte 1 58
 byte 1 0
 align 1
-LABELV $88
-byte 1 66
-byte 1 108
-byte 1 117
-byte 1 101
-byte 1 44
-byte 1 32
+LABELV $91
 byte 1 68
 byte 1 114
 byte 1 101
 byte 1 100
 byte 1 103
+byte 1 101
+byte 1 44
+byte 1 32
+byte 1 67
+byte 1 97
+byte 1 109
+byte 1 112
+byte 1 101
+byte 1 114
+byte 1 44
+byte 1 32
+byte 1 70
+byte 1 114
+byte 1 97
+byte 1 103
+byte 1 111
+byte 1 0
+align 1
+LABELV $90
+byte 1 66
+byte 1 108
+byte 1 117
 byte 1 101
 byte 1 44
 byte 1 32
@@ -1392,76 +1803,124 @@ byte 1 110
 byte 1 111
 byte 1 119
 byte 1 110
+byte 1 44
+byte 1 32
+byte 1 84
+byte 1 117
+byte 1 118
+byte 1 111
+byte 1 107
 byte 1 0
 align 1
-LABELV $87
+LABELV $89
 byte 1 84
 byte 1 101
 byte 1 115
 byte 1 116
+byte 1 32
+byte 1 84
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 58
+byte 1 0
+align 1
+LABELV $88
+byte 1 77
+byte 1 97
+byte 1 112
+byte 1 112
 byte 1 105
 byte 1 110
 byte 1 103
-byte 1 32
-byte 1 65
-byte 1 110
-byte 1 100
-byte 1 32
-byte 1 83
-byte 1 117
-byte 1 112
-byte 1 112
-byte 1 111
-byte 1 114
+byte 1 58
+byte 1 0
+align 1
+LABELV $87
+byte 1 71
+byte 1 105
+byte 1 103
+byte 1 97
+byte 1 98
+byte 1 121
 byte 1 116
+byte 1 101
+byte 1 49
+byte 1 50
+byte 1 51
 byte 1 0
 align 1
 LABELV $86
-byte 1 84
-byte 1 104
-byte 1 101
-byte 1 32
-byte 1 79
-byte 1 112
-byte 1 101
-byte 1 110
-byte 1 32
-byte 1 65
-byte 1 114
-byte 1 101
-byte 1 110
-byte 1 97
-byte 1 32
 byte 1 80
-byte 1 114
-byte 1 111
-byte 1 106
 byte 1 101
-byte 1 99
 byte 1 116
+byte 1 101
+byte 1 101
+byte 1 44
+byte 1 32
+byte 1 68
+byte 1 114
+byte 1 65
+byte 1 107
+byte 1 79
+byte 1 110
+byte 1 44
+byte 1 32
+byte 1 71
+byte 1 105
+byte 1 103
+byte 1 111
+byte 1 110
 byte 1 0
 align 1
 LABELV $85
-byte 1 83
-byte 1 112
-byte 1 101
-byte 1 99
-byte 1 105
-byte 1 97
-byte 1 108
-byte 1 32
-byte 1 84
-byte 1 104
-byte 1 97
-byte 1 110
-byte 1 107
-byte 1 115
-byte 1 32
-byte 1 84
+byte 1 77
 byte 1 111
+byte 1 100
+byte 1 101
+byte 1 108
+byte 1 115
+byte 1 58
 byte 1 0
 align 1
 LABELV $84
+byte 1 67
+byte 1 104
+byte 1 114
+byte 1 105
+byte 1 115
+byte 1 32
+byte 1 66
+byte 1 101
+byte 1 103
+byte 1 103
+byte 1 0
+align 1
+LABELV $83
+byte 1 83
+byte 1 111
+byte 1 117
+byte 1 110
+byte 1 100
+byte 1 32
+byte 1 68
+byte 1 101
+byte 1 115
+byte 1 105
+byte 1 103
+byte 1 110
+byte 1 32
+byte 1 38
+byte 1 32
+byte 1 77
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 58
+byte 1 0
+align 1
+LABELV $82
 byte 1 68
 byte 1 97
 byte 1 118
@@ -1479,64 +1938,52 @@ byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $83
+LABELV $81
+byte 1 86
+byte 1 111
+byte 1 105
+byte 1 99
+byte 1 101
+byte 1 32
+byte 1 97
+byte 1 110
+byte 1 100
+byte 1 32
 byte 1 83
 byte 1 111
 byte 1 117
 byte 1 110
 byte 1 100
-byte 1 32
-byte 1 69
-byte 1 110
-byte 1 103
-byte 1 105
-byte 1 110
-byte 1 101
-byte 1 101
-byte 1 114
+byte 1 115
 byte 1 58
 byte 1 0
 align 1
-LABELV $82
-byte 1 80
-byte 1 101
-byte 1 116
-byte 1 101
-byte 1 101
-byte 1 44
-byte 1 32
-byte 1 68
-byte 1 114
-byte 1 65
-byte 1 107
-byte 1 79
-byte 1 110
-byte 1 44
-byte 1 32
-byte 1 71
-byte 1 105
-byte 1 103
-byte 1 111
-byte 1 110
-byte 1 0
-align 1
-LABELV $81
-byte 1 77
-byte 1 111
-byte 1 100
-byte 1 101
-byte 1 108
-byte 1 115
-byte 1 0
-align 1
 LABELV $80
-byte 1 71
-byte 1 105
-byte 1 103
+byte 1 91
+byte 1 70
+byte 1 67
+byte 1 93
+byte 1 80
 byte 1 111
-byte 1 110
-byte 1 44
+byte 1 112
+byte 1 101
 byte 1 32
+byte 1 74
+byte 1 111
+byte 1 104
+byte 1 110
+byte 1 32
+byte 1 80
+byte 1 97
+byte 1 117
+byte 1 108
+byte 1 32
+byte 1 73
+byte 1 73
+byte 1 73
+byte 1 0
+align 1
+LABELV $79
 byte 1 71
 byte 1 105
 byte 1 103
@@ -1548,9 +1995,27 @@ byte 1 101
 byte 1 49
 byte 1 50
 byte 1 51
+byte 1 44
+byte 1 32
+byte 1 76
+byte 1 97
+byte 1 122
+byte 1 44
+byte 1 32
+byte 1 68
+byte 1 114
+byte 1 46
+byte 1 32
+byte 1 80
+byte 1 114
+byte 1 101
+byte 1 115
+byte 1 116
+byte 1 111
+byte 1 110
 byte 1 0
 align 1
-LABELV $79
+LABELV $78
 byte 1 83
 byte 1 99
 byte 1 111
@@ -1583,44 +2048,33 @@ byte 1 101
 byte 1 116
 byte 1 101
 byte 1 101
+byte 1 44
 byte 1 0
 align 1
-LABELV $78
-byte 1 77
-byte 1 97
-byte 1 112
-byte 1 112
-byte 1 105
-byte 1 110
-byte 1 103
-byte 1 32
-byte 1 65
-byte 1 110
-byte 1 100
-byte 1 32
+LABELV $77
 byte 1 65
 byte 1 114
 byte 1 116
 byte 1 58
 byte 1 0
 align 1
-LABELV $77
+LABELV $76
+byte 1 66
+byte 1 114
+byte 1 105
+byte 1 97
+byte 1 110
+byte 1 32
 byte 1 83
 byte 1 104
 byte 1 97
 byte 1 102
+byte 1 102
 byte 1 101
-byte 1 44
-byte 1 32
-byte 1 88
-byte 1 99
-byte 1 121
-byte 1 84
-byte 1 110
-byte 1 103
+byte 1 114
 byte 1 0
 align 1
-LABELV $76
+LABELV $75
 byte 1 80
 byte 1 114
 byte 1 111
@@ -1632,13 +2086,43 @@ byte 1 109
 byte 1 105
 byte 1 110
 byte 1 103
+byte 1 58
 byte 1 0
 align 1
-LABELV $75
-byte 1 84
-byte 1 104
+LABELV $74
+byte 1 68
 byte 1 101
+byte 1 118
+byte 1 101
+byte 1 108
+byte 1 111
+byte 1 112
+byte 1 109
+byte 1 101
+byte 1 110
+byte 1 116
 byte 1 32
+byte 1 84
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 58
+byte 1 0
+align 1
+LABELV $73
+byte 1 0
+align 1
+LABELV $72
+byte 1 119
+byte 1 119
+byte 1 119
+byte 1 46
+byte 1 80
+byte 1 108
+byte 1 97
+byte 1 110
+byte 1 101
+byte 1 116
 byte 1 84
 byte 1 114
 byte 1 101
@@ -1650,21 +2134,22 @@ byte 1 116
 byte 1 105
 byte 1 111
 byte 1 110
-byte 1 32
-byte 1 84
-byte 1 101
-byte 1 97
+byte 1 46
+byte 1 99
+byte 1 111
 byte 1 109
-byte 1 32
-byte 1 105
-byte 1 115
-byte 1 58
 byte 1 0
 align 1
-LABELV $73
-byte 1 113
-byte 1 117
+LABELV $71
+byte 1 84
+byte 1 114
+byte 1 101
+byte 1 112
 byte 1 105
+byte 1 100
+byte 1 97
 byte 1 116
-byte 1 10
+byte 1 105
+byte 1 111
+byte 1 110
 byte 1 0

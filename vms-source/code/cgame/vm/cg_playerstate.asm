@@ -154,7 +154,7 @@ CNSTI4 5000
 LTI4 $87
 line 45
 ;45:			cg.lowAmmoWarning = 0;
-ADDRGP4 cg+124404
+ADDRGP4 cg+126460
 CNSTI4 0
 ASGNI4
 line 46
@@ -181,7 +181,7 @@ line 50
 ;49:
 ;50:	previous = cg.lowAmmoWarning;
 ADDRLP4 12
-ADDRGP4 cg+124404
+ADDRGP4 cg+126460
 INDIRI4
 ASGNI4
 line 52
@@ -193,7 +193,7 @@ CNSTI4 0
 NEI4 $91
 line 53
 ;53:		cg.lowAmmoWarning = 2;
-ADDRGP4 cg+124404
+ADDRGP4 cg+126460
 CNSTI4 2
 ASGNI4
 line 54
@@ -203,7 +203,7 @@ JUMPV
 LABELV $91
 line 55
 ;55:		cg.lowAmmoWarning = 1;
-ADDRGP4 cg+124404
+ADDRGP4 cg+126460
 CNSTI4 1
 ASGNI4
 line 56
@@ -213,14 +213,14 @@ line 59
 ;57:
 ;58:	// play a sound on transitions
 ;59:	if ( cg.lowAmmoWarning != previous ) {
-ADDRGP4 cg+124404
+ADDRGP4 cg+126460
 INDIRI4
 ADDRLP4 12
 INDIRI4
 EQI4 $95
 line 60
 ;60:		trap_S_StartLocalSound( cgs.media.noAmmoSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+153876+772
+ADDRGP4 cgs+153876+776
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -257,8 +257,8 @@ line 80
 ;78:
 ;79:	// show the attacking player's head and name in corner
 ;80:	cg.attackerTime = cg.time;
-ADDRGP4 cg+124428
-ADDRGP4 cg+107604
+ADDRGP4 cg+126484
+ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
 line 83
@@ -354,22 +354,22 @@ INDIRI4
 NEI4 $110
 line 98
 ;98:		cg.damageX = 0;
-ADDRGP4 cg+124704
+ADDRGP4 cg+126760
 CNSTF4 0
 ASGNF4
 line 99
 ;99:		cg.damageY = 0;
-ADDRGP4 cg+124708
+ADDRGP4 cg+126764
 CNSTF4 0
 ASGNF4
 line 100
 ;100:		cg.v_dmg_roll = 0;
-ADDRGP4 cg+124752
+ADDRGP4 cg+126808
 CNSTF4 0
 ASGNF4
 line 101
 ;101:		cg.v_dmg_pitch = -kick;
-ADDRGP4 cg+124748
+ADDRGP4 cg+126804
 ADDRLP4 12
 INDIRF4
 NEGF4
@@ -468,18 +468,18 @@ line 114
 ADDRLP4 16
 ADDRLP4 0
 INDIRF4
-ADDRGP4 cg+109048+36
+ADDRGP4 cg+111104+36
 INDIRF4
 MULF4
 ADDRLP4 0+4
 INDIRF4
-ADDRGP4 cg+109048+36+4
+ADDRGP4 cg+111104+36+4
 INDIRF4
 MULF4
 ADDF4
 ADDRLP4 0+8
 INDIRF4
-ADDRGP4 cg+109048+36+8
+ADDRGP4 cg+111104+36+8
 INDIRF4
 MULF4
 ADDF4
@@ -489,18 +489,18 @@ line 115
 ADDRLP4 24
 ADDRLP4 0
 INDIRF4
-ADDRGP4 cg+109048+36+12
+ADDRGP4 cg+111104+36+12
 INDIRF4
 MULF4
 ADDRLP4 0+4
 INDIRF4
-ADDRGP4 cg+109048+36+12+4
+ADDRGP4 cg+111104+36+12+4
 INDIRF4
 MULF4
 ADDF4
 ADDRLP4 0+8
 INDIRF4
-ADDRGP4 cg+109048+36+12+8
+ADDRGP4 cg+111104+36+12+8
 INDIRF4
 MULF4
 ADDF4
@@ -510,18 +510,18 @@ line 116
 ADDRLP4 48
 ADDRLP4 0
 INDIRF4
-ADDRGP4 cg+109048+36+24
+ADDRGP4 cg+111104+36+24
 INDIRF4
 MULF4
 ADDRLP4 0+4
 INDIRF4
-ADDRGP4 cg+109048+36+24+4
+ADDRGP4 cg+111104+36+24+4
 INDIRF4
 MULF4
 ADDF4
 ADDRLP4 0+8
 INDIRF4
-ADDRGP4 cg+109048+36+24+8
+ADDRGP4 cg+111104+36+24+8
 INDIRF4
 MULF4
 ADDF4
@@ -573,7 +573,7 @@ LABELV $162
 line 126
 ;125:
 ;126:		cg.v_dmg_roll = kick * left;
-ADDRGP4 cg+124752
+ADDRGP4 cg+126808
 ADDRLP4 12
 INDIRF4
 ADDRLP4 24
@@ -583,7 +583,7 @@ ASGNF4
 line 128
 ;127:		
 ;128:		cg.v_dmg_pitch = -kick * front;
-ADDRGP4 cg+124748
+ADDRGP4 cg+126804
 ADDRLP4 12
 INDIRF4
 NEGF4
@@ -608,7 +608,7 @@ line 132
 LABELV $166
 line 133
 ;133:		cg.damageX = -left / front;
-ADDRGP4 cg+124704
+ADDRGP4 cg+126760
 ADDRLP4 24
 INDIRF4
 NEGF4
@@ -618,7 +618,7 @@ DIVF4
 ASGNF4
 line 134
 ;134:		cg.damageY = up / dist;
-ADDRGP4 cg+124708
+ADDRGP4 cg+126764
 ADDRLP4 48
 INDIRF4
 ADDRLP4 44
@@ -632,13 +632,13 @@ line 138
 ;136:
 ;137:	// clamp the position
 ;138:	if ( cg.damageX > 1.0 ) {
-ADDRGP4 cg+124704
+ADDRGP4 cg+126760
 INDIRF4
 CNSTF4 1065353216
 LEF4 $170
 line 139
 ;139:		cg.damageX = 1.0;
-ADDRGP4 cg+124704
+ADDRGP4 cg+126760
 CNSTF4 1065353216
 ASGNF4
 line 140
@@ -646,13 +646,13 @@ line 140
 LABELV $170
 line 141
 ;141:	if ( cg.damageX < - 1.0 ) {
-ADDRGP4 cg+124704
+ADDRGP4 cg+126760
 INDIRF4
 CNSTF4 3212836864
 GEF4 $174
 line 142
 ;142:		cg.damageX = -1.0;
-ADDRGP4 cg+124704
+ADDRGP4 cg+126760
 CNSTF4 3212836864
 ASGNF4
 line 143
@@ -661,13 +661,13 @@ LABELV $174
 line 145
 ;144:
 ;145:	if ( cg.damageY > 1.0 ) {
-ADDRGP4 cg+124708
+ADDRGP4 cg+126764
 INDIRF4
 CNSTF4 1065353216
 LEF4 $178
 line 146
 ;146:		cg.damageY = 1.0;
-ADDRGP4 cg+124708
+ADDRGP4 cg+126764
 CNSTF4 1065353216
 ASGNF4
 line 147
@@ -675,13 +675,13 @@ line 147
 LABELV $178
 line 148
 ;148:	if ( cg.damageY < - 1.0 ) {
-ADDRGP4 cg+124708
+ADDRGP4 cg+126764
 INDIRF4
 CNSTF4 3212836864
 GEF4 $182
 line 149
 ;149:		cg.damageY = -1.0;
-ADDRGP4 cg+124708
+ADDRGP4 cg+126764
 CNSTF4 3212836864
 ASGNF4
 line 150
@@ -705,14 +705,14 @@ line 155
 LABELV $186
 line 156
 ;156:	cg.damageValue = kick;
-ADDRGP4 cg+124712
+ADDRGP4 cg+126768
 ADDRLP4 12
 INDIRF4
 ASGNF4
 line 157
 ;157:	cg.v_dmg_time = cg.time + DAMAGE_TIME;
-ADDRGP4 cg+124744
-ADDRGP4 cg+107604
+ADDRGP4 cg+126800
+ADDRGP4 cg+109652
 INDIRI4
 CNSTI4 500
 ADDI4
@@ -720,7 +720,7 @@ CVIF4 4
 ASGNF4
 line 158
 ;158:	cg.damageTime = cg.snap->serverTime;
-ADDRGP4 cg+124700
+ADDRGP4 cg+126756
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 8
@@ -750,22 +750,22 @@ line 171
 line 173
 ;172:	// no error decay on player movement
 ;173:	cg.thisFrameTeleport = qtrue;
-ADDRGP4 cg+107592
+ADDRGP4 cg+109640
 CNSTI4 1
 ASGNI4
 line 176
 ;174:
 ;175:	// display weapons available
 ;176:	cg.weaponSelectTime = cg.time;
-ADDRGP4 cg+124688
-ADDRGP4 cg+107604
+ADDRGP4 cg+126744
+ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
 line 179
 ;177:
 ;178:	// select the weapon the server says we are using
 ;179:	cg.weaponSelect = cg.snap->ps.weapon;
-ADDRGP4 cg+108948
+ADDRGP4 cg+111004
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 188
@@ -821,7 +821,7 @@ EQI4 $200
 line 195
 ;195:		cent = &cg_entities[ ps->clientNum ];
 ADDRLP4 4
-CNSTI4 732
+CNSTI4 740
 ADDRFP4 0
 INDIRP4
 CNSTI4 140
@@ -862,7 +862,7 @@ INDIRP4
 ARGP4
 ADDRLP4 4
 INDIRP4
-CNSTI4 708
+CNSTI4 716
 ADDP4
 ARGP4
 ADDRGP4 CG_EntityEvent
@@ -875,7 +875,7 @@ line 201
 ;200:
 ;201:	cent = &cg.predictedPlayerEntity; // cg_entities[ ps->clientNum ];
 ADDRLP4 4
-ADDRGP4 cg+108104
+ADDRGP4 cg+110152
 ASGNP4
 line 203
 ;202:	// go through the predictable events buffer
@@ -1010,7 +1010,7 @@ INDIRP4
 ARGP4
 ADDRLP4 4
 INDIRP4
-CNSTI4 708
+CNSTI4 716
 ADDP4
 ARGP4
 ADDRGP4 CG_EntityEvent
@@ -1025,7 +1025,7 @@ CNSTI4 15
 BANDI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cg+108860
+ADDRGP4 cg+110916
 ADDP4
 ADDRLP4 8
 INDIRI4
@@ -1034,7 +1034,7 @@ line 217
 ;216:
 ;217:			cg.eventSequence++;
 ADDRLP4 48
-ADDRGP4 cg+108856
+ADDRGP4 cg+110912
 ASGNP4
 ADDRLP4 48
 INDIRP4
@@ -1087,7 +1087,7 @@ line 232
 ;231:
 ;232:	cent = &cg.predictedPlayerEntity;
 ADDRLP4 4
-ADDRGP4 cg+108104
+ADDRGP4 cg+110152
 ASGNP4
 line 233
 ;233:	for ( i = ps->eventSequence - MAX_PS_EVENTS ; i < ps->eventSequence ; i++ ) {
@@ -1108,7 +1108,7 @@ line 235
 ;235:		if (i >= cg.eventSequence) {
 ADDRLP4 0
 INDIRI4
-ADDRGP4 cg+108856
+ADDRGP4 cg+110912
 INDIRI4
 LTI4 $218
 line 236
@@ -1122,7 +1122,7 @@ line 239
 ;239:		if (i > cg.eventSequence - MAX_PREDICTED_EVENTS) {
 ADDRLP4 0
 INDIRI4
-ADDRGP4 cg+108856
+ADDRGP4 cg+110912
 INDIRI4
 CNSTI4 16
 SUBI4
@@ -1153,7 +1153,7 @@ BANDI4
 ADDRLP4 16
 INDIRI4
 LSHI4
-ADDRGP4 cg+108860
+ADDRGP4 cg+110916
 ADDP4
 INDIRI4
 EQI4 $224
@@ -1209,7 +1209,7 @@ INDIRP4
 ARGP4
 ADDRLP4 4
 INDIRP4
-CNSTI4 708
+CNSTI4 716
 ADDP4
 ARGP4
 ADDRGP4 CG_EntityEvent
@@ -1224,7 +1224,7 @@ CNSTI4 15
 BANDI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cg+108860
+ADDRGP4 cg+110916
 ADDP4
 ADDRLP4 8
 INDIRI4
@@ -1286,14 +1286,14 @@ line 263
 ;263:static void pushReward(sfxHandle_t sfx, qhandle_t shader, int rewardCount) {
 line 264
 ;264:	if (cg.rewardStack < (MAX_REWARDSTACK-1)) {
-ADDRGP4 cg+124436
+ADDRGP4 cg+126492
 INDIRI4
 CNSTI4 9
 GEI4 $233
 line 265
 ;265:		cg.rewardStack++;
 ADDRLP4 0
-ADDRGP4 cg+124436
+ADDRGP4 cg+126492
 ASGNP4
 ADDRLP4 0
 INDIRP4
@@ -1305,33 +1305,33 @@ ADDI4
 ASGNI4
 line 266
 ;266:		cg.rewardSound[cg.rewardStack] = sfx;
-ADDRGP4 cg+124436
+ADDRGP4 cg+126492
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cg+124524
+ADDRGP4 cg+126580
 ADDP4
 ADDRFP4 0
 INDIRI4
 ASGNI4
 line 267
 ;267:		cg.rewardShader[cg.rewardStack] = shader;
-ADDRGP4 cg+124436
+ADDRGP4 cg+126492
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cg+124484
+ADDRGP4 cg+126540
 ADDP4
 ADDRFP4 4
 INDIRI4
 ASGNI4
 line 268
 ;268:		cg.rewardCount[cg.rewardStack] = rewardCount;
-ADDRGP4 cg+124436
+ADDRGP4 cg+126492
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cg+124444
+ADDRGP4 cg+126500
 ADDP4
 ADDRFP4 8
 INDIRI4
@@ -1434,7 +1434,7 @@ line 299
 ;297:		}
 ;298:#else
 ;299:		trap_S_StartLocalSound( cgs.media.hitSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+153876+820
+ADDRGP4 cgs+153876+824
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -1466,7 +1466,7 @@ INDIRI4
 GEI4 $250
 line 302
 ;302:		trap_S_StartLocalSound( cgs.media.hitTeamSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+153876+832
+ADDRGP4 cgs+153876+836
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -1511,7 +1511,7 @@ CNSTI4 0
 LEI4 $256
 line 308
 ;308:			CG_PainEvent( &cg.predictedPlayerEntity, ps->stats[STAT_HEALTH] );
-ADDRGP4 cg+108104
+ADDRGP4 cg+110152
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -1570,10 +1570,10 @@ INDIRI4
 EQI4 $262
 line 321
 ;321:		pushReward(cgs.media.captureAwardSound, cgs.media.medalCapture, ps->persistant[PERS_CAPTURES]);
-ADDRGP4 cgs+153876+920
+ADDRGP4 cgs+153876+924
 INDIRI4
 ARGI4
-ADDRGP4 cgs+153876+568
+ADDRGP4 cgs+153876+572
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1622,7 +1622,7 @@ line 333
 ;332:#else
 ;333:		sfx = cgs.media.impressiveSound;
 ADDRLP4 4
-ADDRGP4 cgs+153876+836
+ADDRGP4 cgs+153876+840
 INDIRI4
 ASGNI4
 line 335
@@ -1631,7 +1631,7 @@ line 335
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRGP4 cgs+153876+548
+ADDRGP4 cgs+153876+552
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1680,7 +1680,7 @@ line 347
 ;346:#else
 ;347:		sfx = cgs.media.excellentSound;
 ADDRLP4 4
-ADDRGP4 cgs+153876+840
+ADDRGP4 cgs+153876+844
 INDIRI4
 ASGNI4
 line 349
@@ -1689,7 +1689,7 @@ line 349
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRGP4 cgs+153876+552
+ADDRGP4 cgs+153876+556
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1738,7 +1738,7 @@ line 361
 ;360:#else
 ;361:		sfx = cgs.media.humiliationSound;
 ADDRLP4 4
-ADDRGP4 cgs+153876+848
+ADDRGP4 cgs+153876+852
 INDIRI4
 ASGNI4
 line 363
@@ -1747,7 +1747,7 @@ line 363
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRGP4 cgs+153876+556
+ADDRGP4 cgs+153876+560
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1788,10 +1788,10 @@ INDIRI4
 EQI4 $286
 line 368
 ;368:		pushReward(cgs.media.defendSound, cgs.media.medalDefend, ps->persistant[PERS_DEFEND_COUNT]);
-ADDRGP4 cgs+153876+856
+ADDRGP4 cgs+153876+860
 INDIRI4
 ARGI4
-ADDRGP4 cgs+153876+560
+ADDRGP4 cgs+153876+564
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1832,10 +1832,10 @@ INDIRI4
 EQI4 $292
 line 373
 ;373:		pushReward(cgs.media.assistSound, cgs.media.medalAssist, ps->persistant[PERS_ASSIST_COUNT]);
-ADDRGP4 cgs+153876+852
+ADDRGP4 cgs+153876+856
 INDIRI4
 ARGI4
-ADDRGP4 cgs+153876+564
+ADDRGP4 cgs+153876+568
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1906,7 +1906,7 @@ line 380
 ;380:				(ops->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_DENIEDREWARD)) {
 line 381
 ;381:			trap_S_StartLocalSound( cgs.media.deniedSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+153876+844
+ADDRGP4 cgs+153876+848
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -1950,7 +1950,7 @@ line 384
 ;384:				(ops->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_GAUNTLETREWARD)) {
 line 385
 ;385:			trap_S_StartLocalSound( cgs.media.humiliationSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+153876+848
+ADDRGP4 cgs+153876+852
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -1994,7 +1994,7 @@ line 388
 ;388:				(ops->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_HOLYSHIT)) {
 line 389
 ;389:			trap_S_StartLocalSound( cgs.media.holyShitSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+153876+1004
+ADDRGP4 cgs+153876+1008
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2106,7 +2106,7 @@ line 399
 ;399:		{
 line 400
 ;400:			trap_S_StartLocalSound( cgs.media.youHaveFlagSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+153876+996
+ADDRGP4 cgs+153876+1000
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2131,7 +2131,7 @@ NEI4 $323
 line 407
 ;406:		//
 ;407:		if ( !cg.warmup ) {
-ADDRGP4 cg+124668
+ADDRGP4 cg+126724
 INDIRI4
 CNSTI4 0
 NEI4 $325
@@ -2171,7 +2171,7 @@ CNSTI4 0
 NEI4 $333
 line 412
 ;412:						CG_AddBufferedSound(cgs.media.takenLeadSound);
-ADDRGP4 cgs+153876+872
+ADDRGP4 cgs+153876+876
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2191,7 +2191,7 @@ CNSTI4 16384
 NEI4 $337
 line 414
 ;414:						CG_AddBufferedSound(cgs.media.tiedLeadSound);
-ADDRGP4 cgs+153876+876
+ADDRGP4 cgs+153876+880
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2213,7 +2213,7 @@ CNSTI4 0
 NEI4 $341
 line 416
 ;416:						CG_AddBufferedSound(cgs.media.lostLeadSound);
-ADDRGP4 cgs+153876+880
+ADDRGP4 cgs+153876+884
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2249,7 +2249,7 @@ line 427
 ;426:
 ;427:		msec = cg.time - cgs.levelStartTime;
 ADDRLP4 64
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 ADDRGP4 cgs+34796
 INDIRI4
@@ -2257,7 +2257,7 @@ SUBI4
 ASGNI4
 line 428
 ;428:		if ( !( cg.timelimitWarnings & 4 ) && msec > ( cgs.timelimit * 60 + 2 ) * 1000 ) {
-ADDRGP4 cg+107616
+ADDRGP4 cg+109664
 INDIRI4
 CNSTI4 4
 BANDI4
@@ -2277,7 +2277,7 @@ LEI4 $350
 line 429
 ;429:			cg.timelimitWarnings |= 1 | 2 | 4;
 ADDRLP4 68
-ADDRGP4 cg+107616
+ADDRGP4 cg+109664
 ASGNP4
 ADDRLP4 68
 INDIRP4
@@ -2289,7 +2289,7 @@ BORI4
 ASGNI4
 line 430
 ;430:			trap_S_StartLocalSound( cgs.media.suddenDeathSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+153876+804
+ADDRGP4 cgs+153876+808
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2304,7 +2304,7 @@ JUMPV
 LABELV $350
 line 432
 ;432:		else if ( !( cg.timelimitWarnings & 2 ) && msec > (cgs.timelimit - 1) * 60 * 1000 ) {
-ADDRGP4 cg+107616
+ADDRGP4 cg+109664
 INDIRI4
 CNSTI4 2
 BANDI4
@@ -2324,7 +2324,7 @@ LEI4 $357
 line 433
 ;433:			cg.timelimitWarnings |= 1 | 2;
 ADDRLP4 68
-ADDRGP4 cg+107616
+ADDRGP4 cg+109664
 ASGNP4
 ADDRLP4 68
 INDIRP4
@@ -2336,7 +2336,7 @@ BORI4
 ASGNI4
 line 434
 ;434:			trap_S_StartLocalSound( cgs.media.oneMinuteSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+153876+796
+ADDRGP4 cgs+153876+800
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2355,7 +2355,7 @@ ADDRGP4 cgs+31476
 INDIRI4
 CNSTI4 5
 LEI4 $364
-ADDRGP4 cg+107616
+ADDRGP4 cg+109664
 INDIRI4
 CNSTI4 1
 BANDI4
@@ -2375,7 +2375,7 @@ LEI4 $364
 line 437
 ;437:			cg.timelimitWarnings |= 1;
 ADDRLP4 68
-ADDRGP4 cg+107616
+ADDRGP4 cg+109664
 ASGNP4
 ADDRLP4 68
 INDIRP4
@@ -2387,7 +2387,7 @@ BORI4
 ASGNI4
 line 438
 ;438:			trap_S_StartLocalSound( cgs.media.fiveMinuteSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+153876+800
+ADDRGP4 cgs+153876+804
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2423,7 +2423,7 @@ INDIRI4
 ASGNI4
 line 445
 ;445:		if ( !( cg.fraglimitWarnings & 4 ) && highScore == (cgs.fraglimit - 1) ) {
-ADDRGP4 cg+107620
+ADDRGP4 cg+109668
 INDIRI4
 CNSTI4 4
 BANDI4
@@ -2439,7 +2439,7 @@ NEI4 $377
 line 446
 ;446:			cg.fraglimitWarnings |= 1 | 2 | 4;
 ADDRLP4 64
-ADDRGP4 cg+107620
+ADDRGP4 cg+109668
 ASGNP4
 ADDRLP4 64
 INDIRP4
@@ -2451,7 +2451,7 @@ BORI4
 ASGNI4
 line 447
 ;447:			CG_AddBufferedSound(cgs.media.oneFragSound);
-ADDRGP4 cgs+153876+816
+ADDRGP4 cgs+153876+820
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2472,7 +2472,7 @@ INDIRI4
 ADDRLP4 64
 INDIRI4
 LEI4 $384
-ADDRGP4 cg+107620
+ADDRGP4 cg+109668
 INDIRI4
 ADDRLP4 64
 INDIRI4
@@ -2490,7 +2490,7 @@ NEI4 $384
 line 450
 ;450:			cg.fraglimitWarnings |= 1 | 2;
 ADDRLP4 68
-ADDRGP4 cg+107620
+ADDRGP4 cg+109668
 ASGNP4
 ADDRLP4 68
 INDIRP4
@@ -2502,7 +2502,7 @@ BORI4
 ASGNI4
 line 451
 ;451:			CG_AddBufferedSound(cgs.media.twoFragSound);
-ADDRGP4 cgs+153876+812
+ADDRGP4 cgs+153876+816
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2523,7 +2523,7 @@ INDIRI4
 ADDRLP4 68
 INDIRI4
 LEI4 $392
-ADDRGP4 cg+107620
+ADDRGP4 cg+109668
 INDIRI4
 CNSTI4 1
 BANDI4
@@ -2540,7 +2540,7 @@ NEI4 $392
 line 454
 ;454:			cg.fraglimitWarnings |= 1;
 ADDRLP4 72
-ADDRGP4 cg+107620
+ADDRGP4 cg+109668
 ASGNP4
 ADDRLP4 72
 INDIRP4
@@ -2552,7 +2552,7 @@ BORI4
 ASGNI4
 line 455
 ;455:			CG_AddBufferedSound(cgs.media.threeFragSound);
-ADDRGP4 cgs+153876+808
+ADDRGP4 cgs+153876+812
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2602,7 +2602,7 @@ INDIRI4
 EQI4 $401
 line 469
 ;469:		cg.thisFrameTeleport = qtrue;
-ADDRGP4 cg+107592
+ADDRGP4 cg+109640
 CNSTI4 1
 ASGNI4
 line 471
@@ -2709,7 +2709,7 @@ LABELV $406
 line 484
 ;483:
 ;484:	if ( cg.mapRestart ) {
-ADDRGP4 cg+107624
+ADDRGP4 cg+109672
 INDIRI4
 CNSTI4 0
 EQI4 $408
@@ -2720,7 +2720,7 @@ CALLV
 pop
 line 486
 ;486:		cg.mapRestart = qfalse;
-ADDRGP4 cg+107624
+ADDRGP4 cg+109672
 CNSTI4 0
 ASGNI4
 line 487
@@ -2804,7 +2804,7 @@ line 502
 ADDRLP4 20
 CNSTI4 164
 ASGNI4
-ADDRGP4 cg+108932
+ADDRGP4 cg+110988
 ADDRFP4 0
 INDIRP4
 ADDRLP4 20
@@ -2822,8 +2822,8 @@ CVIF4 4
 ASGNF4
 line 503
 ;503:		cg.duckTime = cg.time;
-ADDRGP4 cg+108936
-ADDRGP4 cg+107604
+ADDRGP4 cg+110992
+ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
 line 504
@@ -2931,6 +2931,7 @@ import trap_Cvar_Register
 import trap_Milliseconds
 import trap_Error
 import trap_Print
+import CG_PlayerSprites
 import CG_PlayBufferedVoiceChats
 import CG_VoiceChatLocal
 import CG_ShaderStateChanged

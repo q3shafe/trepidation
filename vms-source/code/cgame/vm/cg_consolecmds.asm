@@ -175,19 +175,19 @@ line 61
 ;61:	CG_Printf ("(%i %i %i) : %i\n", (int)cg.refdef.vieworg[0],
 ADDRGP4 $92
 ARGP4
-ADDRGP4 cg+109048+24
+ADDRGP4 cg+111104+24
 INDIRF4
 CVFI4 4
 ARGI4
-ADDRGP4 cg+109048+24+4
+ADDRGP4 cg+111104+24+4
 INDIRF4
 CVFI4 4
 ARGI4
-ADDRGP4 cg+109048+24+8
+ADDRGP4 cg+111104+24+8
 INDIRF4
 CVFI4 4
 ARGI4
-ADDRGP4 cg+109416+4
+ADDRGP4 cg+111472+4
 INDIRF4
 CVFI4 4
 ARGI4
@@ -210,19 +210,19 @@ line 71
 ;69:		CG_BuildSpectatorString();
 ;70:#endif
 ;71:	if ( cg.scoresRequestTime + 2000 < cg.time ) {
-ADDRGP4 cg+110472
+ADDRGP4 cg+112528
 INDIRI4
 CNSTI4 2000
 ADDI4
-ADDRGP4 cg+107604
+ADDRGP4 cg+109652
 INDIRI4
 GEI4 $104
 line 74
 ;72:		// the scores are more than two seconds out of data,
 ;73:		// so request new ones
 ;74:		cg.scoresRequestTime = cg.time;
-ADDRGP4 cg+110472
-ADDRGP4 cg+107604
+ADDRGP4 cg+112528
+ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
 line 75
@@ -237,18 +237,18 @@ line 79
 ;77:		// leave the current scores up if they were already
 ;78:		// displayed, but if this is the first hit, clear them out
 ;79:		if ( !cg.showScores ) {
-ADDRGP4 cg+114332
+ADDRGP4 cg+116388
 INDIRI4
 CNSTI4 0
 NEI4 $105
 line 80
 ;80:			cg.showScores = qtrue;
-ADDRGP4 cg+114332
+ADDRGP4 cg+116388
 CNSTI4 1
 ASGNI4
 line 81
 ;81:			cg.numScores = 0;
-ADDRGP4 cg+110476
+ADDRGP4 cg+112532
 CNSTI4 0
 ASGNI4
 line 82
@@ -262,7 +262,7 @@ line 86
 ;84:		// show the cached contents even if they just pressed if it
 ;85:		// is within two seconds
 ;86:		cg.showScores = qtrue;
-ADDRGP4 cg+114332
+ADDRGP4 cg+116388
 CNSTI4 1
 ASGNI4
 line 87
@@ -278,19 +278,19 @@ line 90
 ;90:static void CG_ScoresUp_f( void ) {
 line 91
 ;91:	if ( cg.showScores ) {
-ADDRGP4 cg+114332
+ADDRGP4 cg+116388
 INDIRI4
 CNSTI4 0
 EQI4 $118
 line 92
 ;92:		cg.showScores = qfalse;
-ADDRGP4 cg+114332
+ADDRGP4 cg+116388
 CNSTI4 0
 ASGNI4
 line 93
 ;93:		cg.scoreFadeTime = cg.time;
-ADDRGP4 cg+114340
-ADDRGP4 cg+107604
+ADDRGP4 cg+116396
+ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
 line 94
@@ -1555,6 +1555,7 @@ import trap_Cvar_Register
 import trap_Milliseconds
 import trap_Error
 import trap_Print
+import CG_PlayerSprites
 import CG_CheckChangedPredictableEvents
 import CG_TransitionPlayerState
 import CG_Respawn

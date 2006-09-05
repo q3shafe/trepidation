@@ -429,6 +429,7 @@ typedef struct {
 	int			previousTime;			// so movers can back up when blocked
 
 	int			startTime;				// level.time the map was started
+	int			scoreTime;				// Last Score Was Made
 
 	int			teamScores[TEAM_NUM_TEAMS];
 	int			lastTeamLocationTime;		// last time of client team location update
@@ -514,6 +515,8 @@ typedef struct {
 	int			blueCredits;
 	int			redMC;
 	int			blueMC;
+	int			redScoreLatched;
+	int			blueScoreLatched;
 
 
 } level_locals_t;
@@ -713,6 +716,7 @@ void player_die (gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 void AddScore( gentity_t *ent, vec3_t origin, int score );
 void CalculateRanks( void );
 qboolean SpotWouldTelefrag( gentity_t *spot );
+team_t PlaceMC(int team );
 
 //
 // g_svcmds.c
@@ -758,6 +762,7 @@ void QDECL G_LogPrintf( const char *fmt, ... );
 void SendScoreboardMessageToAllClients( void );
 void QDECL G_Printf( const char *fmt, ... );
 void QDECL G_Error( const char *fmt, ... );
+int Team_Point( int team );
 
 //
 // g_client.c

@@ -410,7 +410,7 @@ line 145
 ;144:
 ;145:	ent = &g_entities[clientNum];
 ADDRLP4 0
-CNSTI4 864
+CNSTI4 872
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -421,7 +421,7 @@ line 146
 ;146:	if ( !ent->inuse ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 520
+CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -438,7 +438,7 @@ line 149
 ;149:	if ( !ent->client ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 516
+CNSTI4 524
 ADDP4
 INDIRP4
 CVPU4 4
@@ -460,7 +460,7 @@ INDIRP4
 ARGP4
 ADDRLP4 0
 INDIRP4
-CNSTI4 516
+CNSTI4 524
 ADDP4
 INDIRP4
 ARGP4
@@ -491,7 +491,7 @@ line 165
 ;164:
 ;165:	ent = &g_entities[entityNum];
 ADDRLP4 0
-CNSTI4 864
+CNSTI4 872
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -505,7 +505,7 @@ INDIRP4
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 208
+CNSTI4 212
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -514,7 +514,7 @@ line 167
 ;167:	if (!ent->inuse) return qfalse;
 ADDRLP4 0
 INDIRP4
-CNSTI4 520
+CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -528,7 +528,7 @@ line 168
 ;168:	if (!ent->r.linked) return qfalse;
 ADDRLP4 0
 INDIRP4
-CNSTI4 416
+CNSTI4 424
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -542,7 +542,7 @@ line 169
 ;169:	if (ent->r.svFlags & SVF_NOCLIENT) return qfalse;
 ADDRLP4 0
 INDIRP4
-CNSTI4 424
+CNSTI4 432
 ADDP4
 INDIRI4
 CNSTI4 1
@@ -562,7 +562,7 @@ ARGP4
 ADDRLP4 0
 INDIRP4
 ARGP4
-CNSTI4 208
+CNSTI4 212
 ARGI4
 ADDRGP4 memcpy
 CALLP4
@@ -615,7 +615,7 @@ INDIRP4
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 208
+CNSTI4 212
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -8594,11 +8594,11 @@ LABELV $591
 line 1394
 ;1393:			}
 ;1394:			if( g_entities[i].client->pers.connected != CON_CONNECTED ) {
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 0
 INDIRI4
 MULI4
-ADDRGP4 g_entities+516
+ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
 CNSTI4 468
@@ -8942,7 +8942,7 @@ LABELV $625
 line 1445
 ;1445:			ent = &g_entities[i];
 ADDRLP4 4
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -8953,7 +8953,7 @@ line 1446
 ;1446:			if (!ent->inuse) {
 ADDRLP4 4
 INDIRP4
-CNSTI4 520
+CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -8978,7 +8978,7 @@ line 1450
 ;1450:			if (!ent->r.linked) {
 ADDRLP4 4
 INDIRP4
-CNSTI4 416
+CNSTI4 424
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -9003,7 +9003,7 @@ line 1454
 ;1454:			if (ent->r.svFlags & SVF_NOCLIENT) {
 ADDRLP4 4
 INDIRP4
-CNSTI4 424
+CNSTI4 432
 ADDP4
 INDIRI4
 CNSTI4 1
@@ -9112,7 +9112,7 @@ line 1480
 ADDRLP4 8+8
 ADDRLP4 4
 INDIRP4
-CNSTI4 488
+CNSTI4 496
 ADDP4
 INDIRB
 ASGNB 12
@@ -9141,7 +9141,7 @@ line 1484
 ADDRLP4 8+20
 ADDRLP4 4
 INDIRP4
-CNSTI4 500
+CNSTI4 508
 ADDP4
 INDIRB
 ASGNB 12
@@ -9162,7 +9162,7 @@ line 1487
 ADDRLP4 8+44
 ADDRLP4 4
 INDIRP4
-CNSTI4 436
+CNSTI4 444
 ADDP4
 INDIRB
 ASGNB 12
@@ -9171,7 +9171,7 @@ line 1488
 ADDRLP4 8+56
 ADDRLP4 4
 INDIRP4
-CNSTI4 448
+CNSTI4 456
 ADDP4
 INDIRB
 ASGNB 12
@@ -9197,7 +9197,7 @@ line 1491
 ;1491:			if (ent->r.bmodel) state.solid = SOLID_BSP;
 ADDRLP4 4
 INDIRP4
-CNSTI4 432
+CNSTI4 440
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -9465,11 +9465,11 @@ LABELV $671
 line 1525
 ;1524:
 ;1525:			if (g_entities[i].client->pers.connected == CON_CONNECTED) {
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 0
 INDIRI4
 MULI4
-ADDRGP4 g_entities+516
+ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
 CNSTI4 468
@@ -9550,11 +9550,11 @@ LABELV $680
 line 1537
 ;1536:		}
 ;1537:		if( g_entities[i].client->pers.connected != CON_CONNECTED ) {
-CNSTI4 864
+CNSTI4 872
 ADDRLP4 0
 INDIRI4
 MULI4
-ADDRGP4 g_entities+516
+ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
 CNSTI4 468
@@ -11178,6 +11178,7 @@ import ClientBegin
 import ClientDisconnect
 import ClientUserinfoChanged
 import ClientConnect
+import Team_Point
 import G_Error
 import G_Printf
 import SendScoreboardMessageToAllClients
@@ -11194,6 +11195,7 @@ import FireWeapon
 import G_FilterPacket
 import G_ProcessIPBans
 import ConsoleCommand
+import PlaceMC
 import SpotWouldTelefrag
 import CalculateRanks
 import AddScore
