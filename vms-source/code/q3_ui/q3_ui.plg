@@ -6,7 +6,7 @@
 --------------------Configuration: cgame - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C0.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP231.tmp" with contents
 [
 /nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"Release/cgame.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
 "G:\games\trepidation\source\vms-source\code\game\bg_misc.c"
@@ -37,8 +37,8 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C0.tmp" with
 "G:\games\trepidation\source\vms-source\code\game\q_shared.c"
 "G:\games\trepidation\source\vms-source\code\ui\ui_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C0.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C1.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP231.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP232.tmp" with contents
 [
 /nologo /base:"0x30000000" /subsystem:windows /dll /incremental:no /pdb:"Release/cgamex86.pdb" /map:"Release/cgamex86.map" /machine:I386 /def:".\cgame.def" /out:"../Release/cgamex86.dll" /implib:"Release/cgamex86.lib" 
 ".\Release\bg_misc.obj"
@@ -69,7 +69,7 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C1.tmp" with
 ".\Release\q_shared.obj"
 ".\Release\ui_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C1.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP232.tmp"
 <h3>Output Window</h3>
 Compiling...
 bg_misc.c
@@ -78,10 +78,10 @@ bg_slidemove.c
 G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1859) : warning C4701: local variable 'addTime' may be used without having been initialized
 cg_consolecmds.c
 cg_draw.c
-G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(2727) : warning C4505: 'CG_DrawHudRight' : unreferenced local function has been removed
-        G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1322) : see declaration of 'CG_DrawHudRight'
-G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(2727) : warning C4505: 'CG_DrawHudLeft' : unreferenced local function has been removed
-        G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1335) : see declaration of 'CG_DrawHudLeft'
+G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(2729) : warning C4505: 'CG_DrawHudRight' : unreferenced local function has been removed
+        G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1324) : see declaration of 'CG_DrawHudRight'
+G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(2729) : warning C4505: 'CG_DrawHudLeft' : unreferenced local function has been removed
+        G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1337) : see declaration of 'CG_DrawHudLeft'
 cg_drawtools.c
 cg_effects.c
 G:\games\trepidation\source\vms-source\code\cgame\cg_effects.c(769) : warning C4305: '=' : truncation from 'const double ' to 'float '
@@ -122,7 +122,7 @@ Linking...
 --------------------Configuration: game - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C5.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP236.tmp" with contents
 [
 /nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "GLOBALRANK" /Fp".\Release/game.pch" /YX /Fo".\Release/" /Fd".\Release/" /FD /c 
 "G:\games\trepidation\source\vms-source\code\game\ai_chat.c"
@@ -162,8 +162,8 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C5.tmp" with
 "G:\games\trepidation\source\vms-source\code\game\q_math.c"
 "G:\games\trepidation\source\vms-source\code\game\q_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C5.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C6.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP236.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP237.tmp" with contents
 [
 kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows /dll /incremental:no /pdb:".\Release/qagamex86.pdb" /map:".\Release/qagamex86.map" /machine:I386 /def:".\game.def" /out:"../Release/qagamex86.dll" /implib:".\Release/qagamex86.lib" 
 ".\Release\ai_chat.obj"
@@ -203,7 +203,7 @@ kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows 
 ".\Release\q_math.obj"
 ".\Release\q_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9C6.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP237.tmp"
 <h3>Output Window</h3>
 Compiling...
 ai_chat.c
@@ -231,9 +231,8 @@ G:\games\trepidation\source\vms-source\code\game\g_buildables.c(50) : warning C4
 G:\games\trepidation\source\vms-source\code\game\g_buildables.c(59) : warning C4130: '==' : logical operation on address of string constant
 G:\games\trepidation\source\vms-source\code\game\g_buildables.c(60) : warning C4130: '==' : logical operation on address of string constant
 G:\games\trepidation\source\vms-source\code\game\g_buildables.c(61) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(222) : warning C4013: 'Bullet_Fire' undefined; assuming extern returning int
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(434) : warning C4101: 'dest' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(433) : warning C4101: 'tr' : unreferenced local variable
+G:\games\trepidation\source\vms-source\code\game\g_buildables.c(436) : warning C4101: 'dest' : unreferenced local variable
+G:\games\trepidation\source\vms-source\code\game\g_buildables.c(435) : warning C4101: 'tr' : unreferenced local variable
 g_client.c
 G:\games\trepidation\source\vms-source\code\game\g_client.c(1318) : warning C4013: 'irandom' undefined; assuming extern returning int
 G:\games\trepidation\source\vms-source\code\game\g_client.c(1453) : warning C4553: '==' : operator has no effect; did you intend '='?
@@ -245,9 +244,9 @@ G:\games\trepidation\source\vms-source\code\game\g_combat.c(662) : warning C4553
 G:\games\trepidation\source\vms-source\code\game\g_combat.c(709) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_items.c
 g_main.c
-G:\games\trepidation\source\vms-source\code\game\g_main.c(1725) : warning C4553: '==' : operator has no effect; did you intend '='?
+G:\games\trepidation\source\vms-source\code\game\g_main.c(1737) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_mem.c
-G:\games\trepidation\source\vms-source\code\game\g_main.c(2435) : warning C4701: local variable 'valid_count' may be used without having been initialized
+G:\games\trepidation\source\vms-source\code\game\g_main.c(2447) : warning C4701: local variable 'valid_count' may be used without having been initialized
 g_misc.c
 g_missile.c
 G:\games\trepidation\source\vms-source\code\game\g_misc.c(410) : warning C4701: local variable 'tent' may be used without having been initialized
@@ -283,7 +282,7 @@ Linking...
 --------------------Configuration: q3_ui - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9CA.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP23B.tmp" with contents
 [
 /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "Q3_UI_EXPORTS" /FR"Release/" /Fp"Release/q3_ui.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
 "G:\games\trepidation\source\vms-source\code\game\bg_misc.c"
@@ -329,8 +328,8 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9CA.tmp" with
 "G:\games\trepidation\source\vms-source\code\q3_ui\ui_teamorders.c"
 "G:\games\trepidation\source\vms-source\code\q3_ui\ui_video.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9CA.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9CB.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP23B.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP23C.tmp" with contents
 [
 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"Release/uix86.pdb" /machine:I386 /def:".\ui.def" /out:"../Release/uix86.dll" /implib:"Release/uix86.lib" 
 ".\Release\bg_misc.obj"
@@ -378,7 +377,7 @@ kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32
 "\games\trepidation\source\vms-source\code\cgame\Release\cgamex86.lib"
 "\games\trepidation\source\vms-source\code\game\Release\qagamex86.lib"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP9CB.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP23C.tmp"
 <h3>Output Window</h3>
 Compiling...
 bg_misc.c
@@ -402,8 +401,9 @@ ui_demo2.c
 ui_display.c
 ui_gameinfo.c
 ui_ingame.c
-G:\games\trepidation\source\vms-source\code\q3_ui\ui_ingame.c(637) : warning C4305: '=' : truncation from 'const double ' to 'float '
-G:\games\trepidation\source\vms-source\code\q3_ui\ui_ingame.c(641) : warning C4305: '=' : truncation from 'const double ' to 'float '
+G:\games\trepidation\source\vms-source\code\q3_ui\ui_ingame.c(638) : warning C4305: '=' : truncation from 'const double ' to 'float '
+G:\games\trepidation\source\vms-source\code\q3_ui\ui_ingame.c(642) : warning C4305: '=' : truncation from 'const double ' to 'float '
+G:\games\trepidation\source\vms-source\code\q3_ui\ui_ingame.c(938) : warning C4101: 'cts' : unreferenced local variable
 ui_main.c
 ui_menu.c
 ui_mfield.c

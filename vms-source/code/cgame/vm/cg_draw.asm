@@ -2364,9 +2364,10 @@ CVIF4 4
 CNSTF4 1157627904
 DIVF4
 ASGNF4
-line 561
-;560:		// Shafe was ICON_SIZE instead of 32
-;561:		CG_Draw3DModel( 370 + CHAR_WIDTH*3 + TEXT_ICON_SPACE, 432, 32, 32,
+line 562
+;560:		
+;561:		// Shafe was ICON_SIZE instead of 32
+;562:		CG_Draw3DModel( 370 + CHAR_WIDTH*3 + TEXT_ICON_SPACE, 432, 32, 32,
 CNSTF4 1139474432
 ARGF4
 CNSTF4 1138229248
@@ -2392,29 +2393,29 @@ ARGP4
 ADDRGP4 CG_Draw3DModel
 CALLV
 pop
-line 563
-;562:					   cgs.media.armorModel, 0, origin, angles );
-;563:	}
+line 564
+;563:					   cgs.media.armorModel, 0, origin, angles );
+;564:	}
 LABELV $305
-line 581
-;564:#ifdef MISSIONPACK
-;565:	if( cgs.gametype == GT_HARVESTER ) {
-;566:		origin[0] = 90;
-;567:		origin[1] = 0;
-;568:		origin[2] = -10;
-;569:		angles[YAW] = ( cg.time & 2047 ) * 360 / 2048.0;
-;570:		if( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE ) {
-;571:			handle = cgs.media.redCubeModel;
-;572:		} else {
-;573:			handle = cgs.media.blueCubeModel;
-;574:		}
-;575:		CG_Draw3DModel( 640 - (TEXT_ICON_SPACE + ICON_SIZE), 416, ICON_SIZE, ICON_SIZE, handle, 0, origin, angles );
-;576:	}
-;577:#endif
-;578:	//
-;579:	// ammo
-;580:	//
-;581:	if ( cent->currentState.weapon ) {
+line 582
+;565:#ifdef MISSIONPACK
+;566:	if( cgs.gametype == GT_HARVESTER ) {
+;567:		origin[0] = 90;
+;568:		origin[1] = 0;
+;569:		origin[2] = -10;
+;570:		angles[YAW] = ( cg.time & 2047 ) * 360 / 2048.0;
+;571:		if( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE ) {
+;572:			handle = cgs.media.redCubeModel;
+;573:		} else {
+;574:			handle = cgs.media.blueCubeModel;
+;575:		}
+;576:		CG_Draw3DModel( 640 - (TEXT_ICON_SPACE + ICON_SIZE), 416, ICON_SIZE, ICON_SIZE, handle, 0, origin, angles );
+;577:	}
+;578:#endif
+;579:	//
+;580:	// ammo
+;581:	//
+;582:	if ( cent->currentState.weapon ) {
 ADDRLP4 4
 INDIRP4
 CNSTI4 192
@@ -2422,8 +2423,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $313
-line 582
-;582:		value = ps->ammo[cent->currentState.weapon];
+line 583
+;583:		value = ps->ammo[cent->currentState.weapon];
 ADDRLP4 0
 ADDRLP4 4
 INDIRP4
@@ -2439,14 +2440,14 @@ ADDP4
 ADDP4
 INDIRI4
 ASGNI4
-line 583
-;583:		if ( value > -1 ) {
+line 584
+;584:		if ( value > -1 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 -1
 LEI4 $315
-line 584
-;584:			if ( cg.predictedPlayerState.weaponstate == WEAPON_FIRING
+line 585
+;585:			if ( cg.predictedPlayerState.weaponstate == WEAPON_FIRING
 ADDRGP4 cg+109684+148
 INDIRI4
 CNSTI4 3
@@ -2455,48 +2456,48 @@ ADDRGP4 cg+109684+44
 INDIRI4
 CNSTI4 100
 LEI4 $317
-line 585
-;585:				&& cg.predictedPlayerState.weaponTime > 100 ) {
-line 587
-;586:				// draw as dark grey when reloading
-;587:				color = 2;	// dark grey
+line 586
+;586:				&& cg.predictedPlayerState.weaponTime > 100 ) {
+line 588
+;587:				// draw as dark grey when reloading
+;588:				color = 2;	// dark grey
 ADDRLP4 52
 CNSTI4 2
 ASGNI4
-line 588
-;588:			} else {
+line 589
+;589:			} else {
 ADDRGP4 $318
 JUMPV
 LABELV $317
-line 589
-;589:				if ( value >= 0 ) {
+line 590
+;590:				if ( value >= 0 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 LTI4 $323
-line 590
-;590:					color = 0;	// green
+line 591
+;591:					color = 0;	// green
 ADDRLP4 52
 CNSTI4 0
 ASGNI4
-line 591
-;591:				} else {
+line 592
+;592:				} else {
 ADDRGP4 $324
 JUMPV
 LABELV $323
-line 592
-;592:					color = 1;	// red
+line 593
+;593:					color = 1;	// red
 ADDRLP4 52
 CNSTI4 1
 ASGNI4
-line 593
-;593:				}
-LABELV $324
 line 594
-;594:			}
-LABELV $318
+;594:				}
+LABELV $324
 line 595
-;595:			trap_R_SetColor( colors[color] );
+;595:			}
+LABELV $318
+line 596
+;596:			trap_R_SetColor( colors[color] );
 ADDRLP4 52
 INDIRI4
 CNSTI4 4
@@ -2507,9 +2508,9 @@ ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 597
-;596:			
-;597:			CG_DrawField (0, 432, 3, value);
+line 598
+;597:			
+;598:			CG_DrawField (0, 432, 3, value);
 CNSTI4 0
 ARGI4
 CNSTI4 432
@@ -2522,17 +2523,17 @@ ARGI4
 ADDRGP4 CG_DrawField
 CALLV
 pop
-line 598
-;598:			trap_R_SetColor( NULL );
+line 599
+;599:			trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 601
-;599:
-;600:			// if we didn't draw a 3D icon, draw a 2D icon for ammo
-;601:			if ( !cg_draw3dIcons.integer && cg_drawIcons.integer ) {
+line 602
+;600:
+;601:			// if we didn't draw a 3D icon, draw a 2D icon for ammo
+;602:			if ( !cg_draw3dIcons.integer && cg_drawIcons.integer ) {
 ADDRLP4 68
 CNSTI4 0
 ASGNI4
@@ -2546,10 +2547,10 @@ INDIRI4
 ADDRLP4 68
 INDIRI4
 EQI4 $325
-line 604
-;602:				qhandle_t	icon;
-;603:
-;604:				icon = cg_weapons[ cg.predictedPlayerState.weapon ].ammoIcon;
+line 605
+;603:				qhandle_t	icon;
+;604:
+;605:				icon = cg_weapons[ cg.predictedPlayerState.weapon ].ammoIcon;
 ADDRLP4 72
 CNSTI4 136
 ADDRGP4 cg+109684+144
@@ -2559,14 +2560,14 @@ ADDRGP4 cg_weapons+72
 ADDP4
 INDIRI4
 ASGNI4
-line 605
-;605:				if ( icon ) {
+line 606
+;606:				if ( icon ) {
 ADDRLP4 72
 INDIRI4
 CNSTI4 0
 EQI4 $332
-line 606
-;606:					CG_DrawPic( CHAR_WIDTH*3 + TEXT_ICON_SPACE, 432, 32, 32, icon );
+line 607
+;607:					CG_DrawPic( CHAR_WIDTH*3 + TEXT_ICON_SPACE, 432, 32, 32, icon );
 CNSTF4 1120403456
 ARGF4
 CNSTF4 1138229248
@@ -2586,24 +2587,24 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 607
-;607:				}
-LABELV $332
 line 608
-;608:			}
-LABELV $325
+;608:				}
+LABELV $332
 line 609
-;609:		}
-LABELV $315
+;609:			}
+LABELV $325
 line 610
-;610:	}
+;610:		}
+LABELV $315
+line 611
+;611:	}
 LABELV $313
-line 615
-;611:
-;612:	//
-;613:	// health
-;614:	//
-;615:	value = ps->stats[STAT_HEALTH];
+line 616
+;612:
+;613:	//
+;614:	// health
+;615:	//
+;616:	value = ps->stats[STAT_HEALTH];
 ADDRLP4 0
 ADDRLP4 20
 INDIRP4
@@ -2611,21 +2612,21 @@ CNSTI4 184
 ADDP4
 INDIRI4
 ASGNI4
-line 616
-;616:	if ( value > 100 ) {
+line 617
+;617:	if ( value > 100 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 100
 LEI4 $334
-line 617
-;617:		trap_R_SetColor( colors[3] );		// white
+line 618
+;618:		trap_R_SetColor( colors[3] );		// white
 ADDRGP4 $273+48
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 618
-;618:	} else if (value > 25) {
+line 619
+;619:	} else if (value > 25) {
 ADDRGP4 $335
 JUMPV
 LABELV $334
@@ -2633,15 +2634,15 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 25
 LEI4 $337
-line 619
-;619:		trap_R_SetColor( colors[0] );	// green
+line 620
+;620:		trap_R_SetColor( colors[0] );	// green
 ADDRGP4 $273
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 620
-;620:	} else if (value > 0) {
+line 621
+;621:	} else if (value > 0) {
 ADDRGP4 $338
 JUMPV
 LABELV $337
@@ -2649,8 +2650,8 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 0
 LEI4 $339
-line 621
-;621:		color = (cg.time >> 8) & 1;	// flash
+line 622
+;622:		color = (cg.time >> 8) & 1;	// flash
 ADDRLP4 52
 ADDRGP4 cg+109652
 INDIRI4
@@ -2659,8 +2660,8 @@ RSHI4
 CNSTI4 1
 BANDI4
 ASGNI4
-line 622
-;622:		trap_R_SetColor( colors[color] );
+line 623
+;623:		trap_R_SetColor( colors[color] );
 ADDRLP4 52
 INDIRI4
 CNSTI4 4
@@ -2671,27 +2672,27 @@ ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 623
-;623:	} else {
+line 624
+;624:	} else {
 ADDRGP4 $340
 JUMPV
 LABELV $339
-line 624
-;624:		trap_R_SetColor( colors[1] );	// red
+line 625
+;625:		trap_R_SetColor( colors[1] );	// red
 ADDRGP4 $273+16
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 625
-;625:	}
+line 626
+;626:	}
 LABELV $340
 LABELV $338
 LABELV $335
-line 628
-;626:
-;627:	// stretch the health up when taking damage
-;628:	CG_DrawField ( 185, 432, 3, value);
+line 629
+;627:
+;628:	// stretch the health up when taking damage
+;629:	CG_DrawField ( 185, 432, 3, value);
 CNSTI4 185
 ARGI4
 CNSTI4 432
@@ -2704,27 +2705,27 @@ ARGI4
 ADDRGP4 CG_DrawField
 CALLV
 pop
-line 629
-;629:	CG_ColorForHealth( hcolor );
+line 630
+;630:	CG_ColorForHealth( hcolor );
 ADDRLP4 36
 ARGP4
 ADDRGP4 CG_ColorForHealth
 CALLV
 pop
-line 630
-;630:	trap_R_SetColor( hcolor );
+line 631
+;631:	trap_R_SetColor( hcolor );
 ADDRLP4 36
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 636
-;631:
+line 637
 ;632:
-;633:	//
-;634:	// armor
-;635:	//
-;636:	value = ps->stats[STAT_ARMOR];
+;633:
+;634:	//
+;635:	// armor
+;636:	//
+;637:	value = ps->stats[STAT_ARMOR];
 ADDRLP4 0
 ADDRLP4 20
 INDIRP4
@@ -2732,21 +2733,21 @@ CNSTI4 196
 ADDP4
 INDIRI4
 ASGNI4
-line 637
-;637:	if (value > 0 ) {
+line 638
+;638:	if (value > 0 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 LEI4 $343
-line 638
-;638:		trap_R_SetColor( colors[0] );
+line 639
+;639:		trap_R_SetColor( colors[0] );
 ADDRGP4 $273
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 639
-;639:		CG_DrawField (370, 432, 3, value);
+line 640
+;640:		CG_DrawField (370, 432, 3, value);
 CNSTI4 370
 ARGI4
 CNSTI4 432
@@ -2759,16 +2760,16 @@ ARGI4
 ADDRGP4 CG_DrawField
 CALLV
 pop
-line 640
-;640:		trap_R_SetColor( NULL );
+line 641
+;641:		trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 642
-;641:		// if we didn't draw a 3D icon, draw a 2D icon for armor
-;642:		if ( !cg_draw3dIcons.integer && cg_drawIcons.integer ) {
+line 643
+;642:		// if we didn't draw a 3D icon, draw a 2D icon for armor
+;643:		if ( !cg_draw3dIcons.integer && cg_drawIcons.integer ) {
 ADDRLP4 68
 CNSTI4 0
 ASGNI4
@@ -2782,8 +2783,8 @@ INDIRI4
 ADDRLP4 68
 INDIRI4
 EQI4 $345
-line 643
-;643:			CG_DrawPic( 370 + CHAR_WIDTH*3 + TEXT_ICON_SPACE, 432, 32, 32, cgs.media.armorIcon );
+line 644
+;644:			CG_DrawPic( 370 + CHAR_WIDTH*3 + TEXT_ICON_SPACE, 432, 32, 32, cgs.media.armorIcon );
 CNSTF4 1139474432
 ARGF4
 CNSTF4 1138229248
@@ -2803,106 +2804,106 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 644
-;644:		}
+line 645
+;645:		}
 LABELV $345
-line 646
-;645:
-;646:	}
+line 647
+;646:
+;647:	}
 LABELV $343
-line 670
-;647:#ifdef MISSIONPACK
-;648:	//
-;649:	// cubes
-;650:	//
-;651:	if( cgs.gametype == GT_HARVESTER ) {
-;652:		value = ps->generic1;
-;653:		if( value > 99 ) {
-;654:			value = 99;
-;655:		}
-;656:		trap_R_SetColor( colors[0] );
-;657:		CG_DrawField (640 - (CHAR_WIDTH*2 + TEXT_ICON_SPACE + ICON_SIZE), 432, 2, value);
-;658:		trap_R_SetColor( NULL );
-;659:		// if we didn't draw a 3D icon, draw a 2D icon for armor
-;660:		if ( !cg_draw3dIcons.integer && cg_drawIcons.integer ) {
-;661:			if( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE ) {
-;662:				handle = cgs.media.redCubeIcon;
-;663:			} else {
-;664:				handle = cgs.media.blueCubeIcon;
-;665:			}
-;666:			CG_DrawPic( 640 - (TEXT_ICON_SPACE + ICON_SIZE), 432, ICON_SIZE, ICON_SIZE, handle );
-;667:		}
-;668:	}
-;669:#endif
-;670:}
+line 671
+;648:#ifdef MISSIONPACK
+;649:	//
+;650:	// cubes
+;651:	//
+;652:	if( cgs.gametype == GT_HARVESTER ) {
+;653:		value = ps->generic1;
+;654:		if( value > 99 ) {
+;655:			value = 99;
+;656:		}
+;657:		trap_R_SetColor( colors[0] );
+;658:		CG_DrawField (640 - (CHAR_WIDTH*2 + TEXT_ICON_SPACE + ICON_SIZE), 432, 2, value);
+;659:		trap_R_SetColor( NULL );
+;660:		// if we didn't draw a 3D icon, draw a 2D icon for armor
+;661:		if ( !cg_draw3dIcons.integer && cg_drawIcons.integer ) {
+;662:			if( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE ) {
+;663:				handle = cgs.media.redCubeIcon;
+;664:			} else {
+;665:				handle = cgs.media.blueCubeIcon;
+;666:			}
+;667:			CG_DrawPic( 640 - (TEXT_ICON_SPACE + ICON_SIZE), 432, ICON_SIZE, ICON_SIZE, handle );
+;668:		}
+;669:	}
+;670:#endif
+;671:}
 LABELV $272
 endproc CG_DrawStatusBar 80 32
 proc CG_DrawAttacker 52 24
-line 687
-;671:#endif
-;672:
-;673:/*
-;674:===========================================================================================
-;675:
-;676:  UPPER RIGHT CORNER
-;677:
-;678:===========================================================================================
-;679:*/
-;680:
-;681:/*
-;682:================
-;683:CG_DrawAttacker
-;684:
-;685:================
-;686:*/
-;687:static float CG_DrawAttacker( float y ) {
-line 695
-;688:	int			t;
-;689:	float		size;
-;690:	vec3_t		angles;
-;691:	const char	*info;
-;692:	const char	*name;
-;693:	int			clientNum;
-;694:
-;695:	if ( cg.predictedPlayerState.stats[STAT_HEALTH] <= 0 ) {
+line 688
+;672:#endif
+;673:
+;674:/*
+;675:===========================================================================================
+;676:
+;677:  UPPER RIGHT CORNER
+;678:
+;679:===========================================================================================
+;680:*/
+;681:
+;682:/*
+;683:================
+;684:CG_DrawAttacker
+;685:
+;686:================
+;687:*/
+;688:static float CG_DrawAttacker( float y ) {
+line 696
+;689:	int			t;
+;690:	float		size;
+;691:	vec3_t		angles;
+;692:	const char	*info;
+;693:	const char	*name;
+;694:	int			clientNum;
+;695:
+;696:	if ( cg.predictedPlayerState.stats[STAT_HEALTH] <= 0 ) {
 ADDRGP4 cg+109684+184
 INDIRI4
 CNSTI4 0
 GTI4 $352
-line 696
-;696:		return y;
+line 697
+;697:		return y;
 ADDRFP4 0
 INDIRF4
 RETF4
 ADDRGP4 $351
 JUMPV
 LABELV $352
-line 699
-;697:	}
-;698:
-;699:	if ( !cg.attackerTime ) {
+line 700
+;698:	}
+;699:
+;700:	if ( !cg.attackerTime ) {
 ADDRGP4 cg+126484
 INDIRI4
 CNSTI4 0
 NEI4 $356
-line 700
-;700:		return y;
+line 701
+;701:		return y;
 ADDRFP4 0
 INDIRF4
 RETF4
 ADDRGP4 $351
 JUMPV
 LABELV $356
-line 703
-;701:	}
-;702:
-;703:	clientNum = cg.predictedPlayerState.persistant[PERS_ATTACKER];
+line 704
+;702:	}
+;703:
+;704:	clientNum = cg.predictedPlayerState.persistant[PERS_ATTACKER];
 ADDRLP4 0
 ADDRGP4 cg+109684+248+24
 INDIRI4
 ASGNI4
-line 704
-;704:	if ( clientNum < 0 || clientNum >= MAX_CLIENTS || clientNum == cg.snap->ps.clientNum ) {
+line 705
+;705:	if ( clientNum < 0 || clientNum >= MAX_CLIENTS || clientNum == cg.snap->ps.clientNum ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
@@ -2920,18 +2921,18 @@ ADDP4
 INDIRI4
 NEI4 $362
 LABELV $366
-line 705
-;705:		return y;
+line 706
+;706:		return y;
 ADDRFP4 0
 INDIRF4
 RETF4
 ADDRGP4 $351
 JUMPV
 LABELV $362
-line 708
-;706:	}
-;707:
-;708:	t = cg.time - cg.attackerTime;
+line 709
+;707:	}
+;708:
+;709:	t = cg.time - cg.attackerTime;
 ADDRLP4 24
 ADDRGP4 cg+109652
 INDIRI4
@@ -2939,50 +2940,50 @@ ADDRGP4 cg+126484
 INDIRI4
 SUBI4
 ASGNI4
-line 709
-;709:	if ( t > ATTACKER_HEAD_TIME ) {
+line 710
+;710:	if ( t > ATTACKER_HEAD_TIME ) {
 ADDRLP4 24
 INDIRI4
 CNSTI4 10000
 LEI4 $369
-line 710
-;710:		cg.attackerTime = 0;
+line 711
+;711:		cg.attackerTime = 0;
 ADDRGP4 cg+126484
 CNSTI4 0
 ASGNI4
-line 711
-;711:		return y;
+line 712
+;712:		return y;
 ADDRFP4 0
 INDIRF4
 RETF4
 ADDRGP4 $351
 JUMPV
 LABELV $369
-line 714
-;712:	}
-;713:
-;714:	size = ICON_SIZE * 1.25;
+line 715
+;713:	}
+;714:
+;715:	size = ICON_SIZE * 1.25;
 ADDRLP4 4
 CNSTF4 1114636288
 ASGNF4
-line 716
-;715:
-;716:	angles[PITCH] = 0;
+line 717
+;716:
+;717:	angles[PITCH] = 0;
 ADDRLP4 8
 CNSTF4 0
 ASGNF4
-line 717
-;717:	angles[YAW] = 180;
+line 718
+;718:	angles[YAW] = 180;
 ADDRLP4 8+4
 CNSTF4 1127481344
 ASGNF4
-line 718
-;718:	angles[ROLL] = 0;
+line 719
+;719:	angles[ROLL] = 0;
 ADDRLP4 8+8
 CNSTF4 0
 ASGNF4
-line 719
-;719:	CG_DrawHead( 640 - size, y, size, size, clientNum, angles );
+line 720
+;720:	CG_DrawHead( 640 - size, y, size, size, clientNum, angles );
 CNSTF4 1142947840
 ADDRLP4 4
 INDIRF4
@@ -3005,9 +3006,9 @@ ARGP4
 ADDRGP4 CG_DrawHead
 CALLV
 pop
-line 721
-;720:
-;721:	info = CG_ConfigString( CS_PLAYERS + clientNum );
+line 722
+;721:
+;722:	info = CG_ConfigString( CS_PLAYERS + clientNum );
 ADDRLP4 0
 INDIRI4
 CNSTI4 544
@@ -3021,8 +3022,8 @@ ADDRLP4 28
 ADDRLP4 40
 INDIRP4
 ASGNP4
-line 722
-;722:	name = Info_ValueForKey(  info, "n" );
+line 723
+;723:	name = Info_ValueForKey(  info, "n" );
 ADDRLP4 28
 INDIRP4
 ARGP4
@@ -3036,8 +3037,8 @@ ADDRLP4 20
 ADDRLP4 44
 INDIRP4
 ASGNP4
-line 723
-;723:	y += size;
+line 724
+;724:	y += size;
 ADDRFP4 0
 ADDRFP4 0
 INDIRF4
@@ -3045,8 +3046,8 @@ ADDRLP4 4
 INDIRF4
 ADDF4
 ASGNF4
-line 724
-;724:	CG_DrawBigString( 640 - ( Q_PrintStrlen( name ) * BIGCHAR_WIDTH), y, name, 0.5 );
+line 725
+;725:	CG_DrawBigString( 640 - ( Q_PrintStrlen( name ) * BIGCHAR_WIDTH), y, name, 0.5 );
 ADDRLP4 20
 INDIRP4
 ARGP4
@@ -3073,9 +3074,9 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 726
-;725:
-;726:	return y + BIGCHAR_HEIGHT + 2;
+line 727
+;726:
+;727:	return y + BIGCHAR_HEIGHT + 2;
 ADDRFP4 0
 INDIRF4
 CNSTF4 1098907648
@@ -3086,20 +3087,20 @@ RETF4
 LABELV $351
 endproc CG_DrawAttacker 52 24
 proc CG_DrawSnapshot 16 16
-line 734
-;727:}
-;728:
-;729:/*
-;730:==================
-;731:CG_DrawSnapshot
-;732:==================
-;733:*/
-;734:static float CG_DrawSnapshot( float y ) {
-line 738
-;735:	char		*s;
-;736:	int			w;
-;737:
-;738:	s = va( "time:%i snap:%i cmd:%i", cg.snap->serverTime, 
+line 735
+;728:}
+;729:
+;730:/*
+;731:==================
+;732:CG_DrawSnapshot
+;733:==================
+;734:*/
+;735:static float CG_DrawSnapshot( float y ) {
+line 739
+;736:	char		*s;
+;737:	int			w;
+;738:
+;739:	s = va( "time:%i snap:%i cmd:%i", cg.snap->serverTime, 
 ADDRGP4 $376
 ARGP4
 ADDRGP4 cg+36
@@ -3122,9 +3123,9 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 740
-;739:		cg.latestSnapshotNum, cgs.serverCommandSequence );
-;740:	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
+line 741
+;740:		cg.latestSnapshotNum, cgs.serverCommandSequence );
+;741:	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -3138,9 +3139,9 @@ INDIRI4
 CNSTI4 4
 LSHI4
 ASGNI4
-line 742
-;741:
-;742:	CG_DrawBigString( 635 - w, y + 2, s, 1.0F);
+line 743
+;742:
+;743:	CG_DrawBigString( 635 - w, y + 2, s, 1.0F);
 CNSTI4 635
 ADDRLP4 4
 INDIRI4
@@ -3160,9 +3161,9 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 744
-;743:
-;744:	return y + BIGCHAR_HEIGHT + 4;
+line 745
+;744:
+;745:	return y + BIGCHAR_HEIGHT + 4;
 ADDRFP4 0
 INDIRF4
 CNSTF4 1098907648
@@ -3184,29 +3185,29 @@ LABELV $383
 skip 4
 code
 proc CG_DrawFPS 44 16
-line 753
-;745:}
-;746:
-;747:/*
-;748:==================
-;749:CG_DrawFPS
-;750:==================
-;751:*/
-;752:#define	FPS_FRAMES	4
-;753:static float CG_DrawFPS( float y ) {
-line 765
-;754:	char		*s;
-;755:	int			w;
-;756:	static int	previousTimes[FPS_FRAMES];
-;757:	static int	index;
-;758:	int		i, total;
-;759:	int		fps;
-;760:	static	int	previous;
-;761:	int		t, frameTime;
-;762:
-;763:	// don't use serverTime, because that will be drifting to
-;764:	// correct for internet lag changes, timescales, timedemos, etc
-;765:	t = trap_Milliseconds();
+line 754
+;746:}
+;747:
+;748:/*
+;749:==================
+;750:CG_DrawFPS
+;751:==================
+;752:*/
+;753:#define	FPS_FRAMES	4
+;754:static float CG_DrawFPS( float y ) {
+line 766
+;755:	char		*s;
+;756:	int			w;
+;757:	static int	previousTimes[FPS_FRAMES];
+;758:	static int	index;
+;759:	int		i, total;
+;760:	int		fps;
+;761:	static	int	previous;
+;762:	int		t, frameTime;
+;763:
+;764:	// don't use serverTime, because that will be drifting to
+;765:	// correct for internet lag changes, timescales, timedemos, etc
+;766:	t = trap_Milliseconds();
 ADDRLP4 28
 ADDRGP4 trap_Milliseconds
 CALLI4
@@ -3215,8 +3216,8 @@ ADDRLP4 8
 ADDRLP4 28
 INDIRI4
 ASGNI4
-line 766
-;766:	frameTime = t - previous;
+line 767
+;767:	frameTime = t - previous;
 ADDRLP4 12
 ADDRLP4 8
 INDIRI4
@@ -3224,15 +3225,15 @@ ADDRGP4 $383
 INDIRI4
 SUBI4
 ASGNI4
-line 767
-;767:	previous = t;
+line 768
+;768:	previous = t;
 ADDRGP4 $383
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 769
-;768:
-;769:	previousTimes[index % FPS_FRAMES] = frameTime;
+line 770
+;769:
+;770:	previousTimes[index % FPS_FRAMES] = frameTime;
 ADDRGP4 $382
 INDIRI4
 CNSTI4 4
@@ -3244,8 +3245,8 @@ ADDP4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 770
-;770:	index++;
+line 771
+;771:	index++;
 ADDRLP4 32
 ADDRGP4 $382
 ASGNP4
@@ -3257,26 +3258,26 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 771
-;771:	if ( index > FPS_FRAMES ) {
+line 772
+;772:	if ( index > FPS_FRAMES ) {
 ADDRGP4 $382
 INDIRI4
 CNSTI4 4
 LEI4 $384
-line 773
-;772:		// average multiple frames together to smooth changes out a bit
-;773:		total = 0;
+line 774
+;773:		// average multiple frames together to smooth changes out a bit
+;774:		total = 0;
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-line 774
-;774:		for ( i = 0 ; i < FPS_FRAMES ; i++ ) {
+line 775
+;775:		for ( i = 0 ; i < FPS_FRAMES ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $386
-line 775
-;775:			total += previousTimes[i];
+line 776
+;776:			total += previousTimes[i];
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -3289,10 +3290,10 @@ ADDP4
 INDIRI4
 ADDI4
 ASGNI4
-line 776
-;776:		}
+line 777
+;777:		}
 LABELV $387
-line 774
+line 775
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -3303,31 +3304,31 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 4
 LTI4 $386
-line 777
-;777:		if ( !total ) {
+line 778
+;778:		if ( !total ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $390
-line 778
-;778:			total = 1;
+line 779
+;779:			total = 1;
 ADDRLP4 4
 CNSTI4 1
 ASGNI4
-line 779
-;779:		}
-LABELV $390
 line 780
-;780:		fps = 1000 * FPS_FRAMES / total;
+;780:		}
+LABELV $390
+line 781
+;781:		fps = 1000 * FPS_FRAMES / total;
 ADDRLP4 24
 CNSTI4 4000
 ADDRLP4 4
 INDIRI4
 DIVI4
 ASGNI4
-line 782
-;781:
-;782:		s = va( "%ifps", fps );
+line 783
+;782:
+;783:		s = va( "%ifps", fps );
 ADDRGP4 $392
 ARGP4
 ADDRLP4 24
@@ -3341,8 +3342,8 @@ ADDRLP4 16
 ADDRLP4 36
 INDIRP4
 ASGNP4
-line 783
-;783:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
+line 784
+;784:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 ADDRLP4 16
 INDIRP4
 ARGP4
@@ -3356,10 +3357,10 @@ INDIRI4
 CNSTI4 4
 LSHI4
 ASGNI4
-line 786
-;784:
-;785:		//CG_DrawBigString( 50 - w, y + 2, s, 1.0F); // Shafe -  Drawfps 635
-;786:		CG_DrawSmallString( 635 - w, y + 2, s, 1.0F);
+line 787
+;785:
+;786:		//CG_DrawBigString( 50 - w, y + 2, s, 1.0F); // Shafe -  Drawfps 635
+;787:		CG_DrawSmallString( 635 - w, y + 2, s, 1.0F);
 CNSTI4 635
 ADDRLP4 20
 INDIRI4
@@ -3379,12 +3380,12 @@ ARGF4
 ADDRGP4 CG_DrawSmallString
 CALLV
 pop
-line 787
-;787:	}
+line 788
+;788:	}
 LABELV $384
-line 789
-;788:
-;789:	return y + BIGCHAR_HEIGHT + 4;
+line 790
+;789:
+;790:	return y + BIGCHAR_HEIGHT + 4;
 ADDRFP4 0
 INDIRF4
 CNSTF4 1098907648
@@ -3395,22 +3396,22 @@ RETF4
 LABELV $380
 endproc CG_DrawFPS 44 16
 proc CG_DrawTimer 32 16
-line 797
-;790:}
-;791:
-;792:/*
-;793:=================
-;794:CG_DrawTimer
-;795:=================
-;796:*/
-;797:static float CG_DrawTimer( float y ) {
-line 803
-;798:	char		*s;
-;799:	int			w;
-;800:	int			mins, seconds, tens;
-;801:	int			msec;
-;802:
-;803:	msec = cg.time - cgs.levelStartTime;
+line 798
+;791:}
+;792:
+;793:/*
+;794:=================
+;795:CG_DrawTimer
+;796:=================
+;797:*/
+;798:static float CG_DrawTimer( float y ) {
+line 804
+;799:	char		*s;
+;800:	int			w;
+;801:	int			mins, seconds, tens;
+;802:	int			msec;
+;803:
+;804:	msec = cg.time - cgs.levelStartTime;
 ADDRLP4 20
 ADDRGP4 cg+109652
 INDIRI4
@@ -3418,44 +3419,44 @@ ADDRGP4 cgs+34796
 INDIRI4
 SUBI4
 ASGNI4
-line 805
-;804:
-;805:	seconds = msec / 1000;
+line 806
+;805:
+;806:	seconds = msec / 1000;
 ADDRLP4 0
 ADDRLP4 20
 INDIRI4
 CNSTI4 1000
 DIVI4
 ASGNI4
-line 806
-;806:	mins = seconds / 60;
+line 807
+;807:	mins = seconds / 60;
 ADDRLP4 8
 ADDRLP4 0
 INDIRI4
 CNSTI4 60
 DIVI4
-ASGNI4
-line 807
-;807:	seconds -= mins * 60;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CNSTI4 60
-ADDRLP4 8
-INDIRI4
-MULI4
-SUBI4
 ASGNI4
 line 808
-;808:	tens = seconds / 10;
+;808:	seconds -= mins * 60;
+ADDRLP4 0
+ADDRLP4 0
+INDIRI4
+CNSTI4 60
+ADDRLP4 8
+INDIRI4
+MULI4
+SUBI4
+ASGNI4
+line 809
+;809:	tens = seconds / 10;
 ADDRLP4 12
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
 DIVI4
 ASGNI4
-line 809
-;809:	seconds -= tens * 10;
+line 810
+;810:	seconds -= tens * 10;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -3465,9 +3466,9 @@ INDIRI4
 MULI4
 SUBI4
 ASGNI4
-line 811
-;810:
-;811:	s = va( "%i:%i%i", mins, tens, seconds );
+line 812
+;811:
+;812:	s = va( "%i:%i%i", mins, tens, seconds );
 ADDRGP4 $396
 ARGP4
 ADDRLP4 8
@@ -3487,8 +3488,8 @@ ADDRLP4 4
 ADDRLP4 24
 INDIRP4
 ASGNP4
-line 812
-;812:	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
+line 813
+;813:	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -3502,9 +3503,9 @@ INDIRI4
 CNSTI4 4
 LSHI4
 ASGNI4
-line 814
-;813:
-;814:	CG_DrawBigString( 635 - w, y + 2, s, 1.0F);
+line 815
+;814:
+;815:	CG_DrawBigString( 635 - w, y + 2, s, 1.0F);
 CNSTI4 635
 ADDRLP4 16
 INDIRI4
@@ -3524,9 +3525,9 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 816
-;815:
-;816:	return y + BIGCHAR_HEIGHT + 4;
+line 817
+;816:
+;817:	return y + BIGCHAR_HEIGHT + 4;
 ADDRFP4 0
 INDIRF4
 CNSTF4 1098907648
@@ -3537,46 +3538,46 @@ RETF4
 LABELV $393
 endproc CG_DrawTimer 32 16
 proc CG_DrawTeamOverlay 148 36
-line 826
-;817:}
-;818:
+line 827
+;818:}
 ;819:
-;820:/*
-;821:=================
-;822:CG_DrawTeamOverlay
-;823:=================
-;824:*/
-;825:
-;826:static float CG_DrawTeamOverlay( float y, qboolean right, qboolean upper ) {
-line 838
-;827:	int x, w, h, xx;
-;828:	int i, j, len;
-;829:	const char *p;
-;830:	vec4_t		hcolor;
-;831:	int pwidth, lwidth;
-;832:	int plyrs;
-;833:	char st[16];
-;834:	clientInfo_t *ci;
-;835:	gitem_t	*item;
-;836:	int ret_y, count;
-;837:
-;838:	if ( !cg_drawTeamOverlay.integer ) {
+;820:
+;821:/*
+;822:=================
+;823:CG_DrawTeamOverlay
+;824:=================
+;825:*/
+;826:
+;827:static float CG_DrawTeamOverlay( float y, qboolean right, qboolean upper ) {
+line 839
+;828:	int x, w, h, xx;
+;829:	int i, j, len;
+;830:	const char *p;
+;831:	vec4_t		hcolor;
+;832:	int pwidth, lwidth;
+;833:	int plyrs;
+;834:	char st[16];
+;835:	clientInfo_t *ci;
+;836:	gitem_t	*item;
+;837:	int ret_y, count;
+;838:
+;839:	if ( !cg_drawTeamOverlay.integer ) {
 ADDRGP4 cg_drawTeamOverlay+12
 INDIRI4
 CNSTI4 0
 NEI4 $398
-line 839
-;839:		return y;
+line 840
+;840:		return y;
 ADDRFP4 0
 INDIRF4
 RETF4
 ADDRGP4 $397
 JUMPV
 LABELV $398
-line 842
-;840:	}
-;841:
-;842:	if ( cg.snap->ps.persistant[PERS_TEAM] != TEAM_RED && cg.snap->ps.persistant[PERS_TEAM] != TEAM_BLUE ) {
+line 843
+;841:	}
+;842:
+;843:	if ( cg.snap->ps.persistant[PERS_TEAM] != TEAM_RED && cg.snap->ps.persistant[PERS_TEAM] != TEAM_BLUE ) {
 ADDRLP4 92
 CNSTI4 304
 ASGNI4
@@ -3596,30 +3597,30 @@ ADDP4
 INDIRI4
 CNSTI4 2
 EQI4 $401
-line 843
-;843:		return y; // Not on any team
+line 844
+;844:		return y; // Not on any team
 ADDRFP4 0
 INDIRF4
 RETF4
 ADDRGP4 $397
 JUMPV
 LABELV $401
-line 846
-;844:	}
-;845:
-;846:	plyrs = 0;
+line 847
+;845:	}
+;846:
+;847:	plyrs = 0;
 ADDRLP4 76
 CNSTI4 0
 ASGNI4
-line 849
-;847:
-;848:	// max player name width
-;849:	pwidth = 0;
+line 850
+;848:
+;849:	// max player name width
+;850:	pwidth = 0;
 ADDRLP4 56
 CNSTI4 0
 ASGNI4
-line 850
-;850:	count = (numSortedTeamPlayers > 8) ? 8 : numSortedTeamPlayers;
+line 851
+;851:	count = (numSortedTeamPlayers > 8) ? 8 : numSortedTeamPlayers;
 ADDRGP4 numSortedTeamPlayers
 INDIRI4
 CNSTI4 8
@@ -3639,16 +3640,16 @@ ADDRLP4 48
 ADDRLP4 96
 INDIRI4
 ASGNI4
-line 851
-;851:	for (i = 0; i < count; i++) {
+line 852
+;852:	for (i = 0; i < count; i++) {
 ADDRLP4 8
 CNSTI4 0
 ASGNI4
 ADDRGP4 $411
 JUMPV
 LABELV $408
-line 852
-;852:		ci = cgs.clientinfo + sortedTeamPlayers[i];
+line 853
+;853:		ci = cgs.clientinfo + sortedTeamPlayers[i];
 ADDRLP4 4
 CNSTI4 1732
 ADDRLP4 8
@@ -3662,8 +3663,8 @@ MULI4
 ADDRGP4 cgs+40972
 ADDP4
 ASGNP4
-line 853
-;853:		if ( ci->infoValid && ci->team == cg.snap->ps.persistant[PERS_TEAM]) {
+line 854
+;854:		if ( ci->infoValid && ci->team == cg.snap->ps.persistant[PERS_TEAM]) {
 ADDRLP4 4
 INDIRP4
 INDIRI4
@@ -3680,16 +3681,16 @@ CNSTI4 304
 ADDP4
 INDIRI4
 NEI4 $413
-line 854
-;854:			plyrs++;
+line 855
+;855:			plyrs++;
 ADDRLP4 76
 ADDRLP4 76
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 855
-;855:			len = CG_DrawStrlen(ci->name);
+line 856
+;856:			len = CG_DrawStrlen(ci->name);
 ADDRLP4 4
 INDIRP4
 CNSTI4 4
@@ -3703,27 +3704,27 @@ ADDRLP4 40
 ADDRLP4 104
 INDIRI4
 ASGNI4
-line 856
-;856:			if (len > pwidth)
+line 857
+;857:			if (len > pwidth)
 ADDRLP4 40
 INDIRI4
 ADDRLP4 56
 INDIRI4
 LEI4 $416
-line 857
-;857:				pwidth = len;
+line 858
+;858:				pwidth = len;
 ADDRLP4 56
 ADDRLP4 40
 INDIRI4
 ASGNI4
 LABELV $416
-line 858
-;858:		}
-LABELV $413
 line 859
-;859:	}
+;859:		}
+LABELV $413
+line 860
+;860:	}
 LABELV $409
-line 851
+line 852
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
@@ -3736,49 +3737,49 @@ INDIRI4
 ADDRLP4 48
 INDIRI4
 LTI4 $408
-line 861
-;860:
-;861:	if (!plyrs)
+line 862
+;861:
+;862:	if (!plyrs)
 ADDRLP4 76
 INDIRI4
 CNSTI4 0
 NEI4 $418
-line 862
-;862:		return y;
+line 863
+;863:		return y;
 ADDRFP4 0
 INDIRF4
 RETF4
 ADDRGP4 $397
 JUMPV
 LABELV $418
-line 864
-;863:
-;864:	if (pwidth > TEAM_OVERLAY_MAXNAME_WIDTH)
+line 865
+;864:
+;865:	if (pwidth > TEAM_OVERLAY_MAXNAME_WIDTH)
 ADDRLP4 56
 INDIRI4
 CNSTI4 12
 LEI4 $420
-line 865
-;865:		pwidth = TEAM_OVERLAY_MAXNAME_WIDTH;
+line 866
+;866:		pwidth = TEAM_OVERLAY_MAXNAME_WIDTH;
 ADDRLP4 56
 CNSTI4 12
 ASGNI4
 LABELV $420
-line 868
-;866:
-;867:	// max location name width
-;868:	lwidth = 0;
+line 869
+;867:
+;868:	// max location name width
+;869:	lwidth = 0;
 ADDRLP4 44
 CNSTI4 0
 ASGNI4
-line 869
-;869:	for (i = 1; i < MAX_LOCATIONS; i++) {
+line 870
+;870:	for (i = 1; i < MAX_LOCATIONS; i++) {
 ADDRLP4 8
 CNSTI4 1
 ASGNI4
 LABELV $422
-line 870
-;870:		p = CG_ConfigString(CS_LOCATIONS + i);
+line 871
+;871:		p = CG_ConfigString(CS_LOCATIONS + i);
 ADDRLP4 8
 INDIRI4
 CNSTI4 608
@@ -3792,8 +3793,8 @@ ADDRLP4 20
 ADDRLP4 100
 INDIRP4
 ASGNP4
-line 871
-;871:		if (p && *p) {
+line 872
+;872:		if (p && *p) {
 ADDRLP4 20
 INDIRP4
 CVPU4 4
@@ -3805,8 +3806,8 @@ INDIRI1
 CVII4 1
 CNSTI4 0
 EQI4 $426
-line 872
-;872:			len = CG_DrawStrlen(p);
+line 873
+;873:			len = CG_DrawStrlen(p);
 ADDRLP4 20
 INDIRP4
 ARGP4
@@ -3818,27 +3819,27 @@ ADDRLP4 40
 ADDRLP4 108
 INDIRI4
 ASGNI4
-line 873
-;873:			if (len > lwidth)
+line 874
+;874:			if (len > lwidth)
 ADDRLP4 40
 INDIRI4
 ADDRLP4 44
 INDIRI4
 LEI4 $428
-line 874
-;874:				lwidth = len;
+line 875
+;875:				lwidth = len;
 ADDRLP4 44
 ADDRLP4 40
 INDIRI4
 ASGNI4
 LABELV $428
-line 875
-;875:		}
-LABELV $426
 line 876
-;876:	}
+;876:		}
+LABELV $426
+line 877
+;877:	}
 LABELV $423
-line 869
+line 870
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
@@ -3849,22 +3850,22 @@ ADDRLP4 8
 INDIRI4
 CNSTI4 64
 LTI4 $422
-line 878
-;877:
-;878:	if (lwidth > TEAM_OVERLAY_MAXLOCATION_WIDTH)
+line 879
+;878:
+;879:	if (lwidth > TEAM_OVERLAY_MAXLOCATION_WIDTH)
 ADDRLP4 44
 INDIRI4
 CNSTI4 16
 LEI4 $430
-line 879
-;879:		lwidth = TEAM_OVERLAY_MAXLOCATION_WIDTH;
+line 880
+;880:		lwidth = TEAM_OVERLAY_MAXLOCATION_WIDTH;
 ADDRLP4 44
 CNSTI4 16
 ASGNI4
 LABELV $430
-line 881
-;880:
-;881:	w = (pwidth + lwidth + 4 + 7) * TINYCHAR_WIDTH;
+line 882
+;881:
+;882:	w = (pwidth + lwidth + 4 + 7) * TINYCHAR_WIDTH;
 ADDRLP4 80
 ADDRLP4 56
 INDIRI4
@@ -3878,15 +3879,15 @@ ADDI4
 CNSTI4 56
 ADDI4
 ASGNI4
-line 883
-;882:
-;883:	if ( right )
+line 884
+;883:
+;884:	if ( right )
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
 EQI4 $432
-line 884
-;884:		x = 640 - w;
+line 885
+;885:		x = 640 - w;
 ADDRLP4 52
 CNSTI4 640
 ADDRLP4 80
@@ -3896,31 +3897,31 @@ ASGNI4
 ADDRGP4 $433
 JUMPV
 LABELV $432
-line 886
-;885:	else
-;886:		x = 0;
+line 887
+;886:	else
+;887:		x = 0;
 ADDRLP4 52
 CNSTI4 0
 ASGNI4
 LABELV $433
-line 888
-;887:
-;888:	h = plyrs * TINYCHAR_HEIGHT;
+line 889
+;888:
+;889:	h = plyrs * TINYCHAR_HEIGHT;
 ADDRLP4 84
 ADDRLP4 76
 INDIRI4
 CNSTI4 3
 LSHI4
 ASGNI4
-line 890
-;889:
-;890:	if ( upper ) {
+line 891
+;890:
+;891:	if ( upper ) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
 EQI4 $434
-line 891
-;891:		ret_y = y + h;
+line 892
+;892:		ret_y = y + h;
 ADDRLP4 88
 ADDRFP4 0
 INDIRF4
@@ -3930,13 +3931,13 @@ CVIF4 4
 ADDF4
 CVFI4 4
 ASGNI4
-line 892
-;892:	} else {
+line 893
+;893:	} else {
 ADDRGP4 $435
 JUMPV
 LABELV $434
-line 893
-;893:		y -= h;
+line 894
+;894:		y -= h;
 ADDRFP4 0
 ADDRFP4 0
 INDIRF4
@@ -3945,19 +3946,19 @@ INDIRI4
 CVIF4 4
 SUBF4
 ASGNF4
-line 894
-;894:		ret_y = y;
+line 895
+;895:		ret_y = y;
 ADDRLP4 88
 ADDRFP4 0
 INDIRF4
 CVFI4 4
 ASGNI4
-line 895
-;895:	}
+line 896
+;896:	}
 LABELV $435
-line 897
-;896:
-;897:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_RED ) {
+line 898
+;897:
+;898:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_RED ) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 304
@@ -3965,63 +3966,63 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $436
-line 898
-;898:		hcolor[0] = 1.0f;
+line 899
+;899:		hcolor[0] = 1.0f;
 ADDRLP4 24
 CNSTF4 1065353216
 ASGNF4
-line 899
-;899:		hcolor[1] = 0.0f;
-ADDRLP4 24+4
-CNSTF4 0
-ASGNF4
 line 900
-;900:		hcolor[2] = 0.0f;
-ADDRLP4 24+8
+;900:		hcolor[1] = 0.0f;
+ADDRLP4 24+4
 CNSTF4 0
 ASGNF4
 line 901
-;901:		hcolor[3] = 0.33f;
+;901:		hcolor[2] = 0.0f;
+ADDRLP4 24+8
+CNSTF4 0
+ASGNF4
+line 902
+;902:		hcolor[3] = 0.33f;
 ADDRLP4 24+12
 CNSTF4 1051260355
 ASGNF4
-line 902
-;902:	} else { // if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE )
+line 903
+;903:	} else { // if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE )
 ADDRGP4 $437
 JUMPV
 LABELV $436
-line 903
-;903:		hcolor[0] = 0.0f;
+line 904
+;904:		hcolor[0] = 0.0f;
 ADDRLP4 24
 CNSTF4 0
 ASGNF4
-line 904
-;904:		hcolor[1] = 0.0f;
+line 905
+;905:		hcolor[1] = 0.0f;
 ADDRLP4 24+4
 CNSTF4 0
 ASGNF4
-line 905
-;905:		hcolor[2] = 1.0f;
+line 906
+;906:		hcolor[2] = 1.0f;
 ADDRLP4 24+8
 CNSTF4 1065353216
 ASGNF4
-line 906
-;906:		hcolor[3] = 0.33f;
+line 907
+;907:		hcolor[3] = 0.33f;
 ADDRLP4 24+12
 CNSTF4 1051260355
 ASGNF4
-line 907
-;907:	}
-LABELV $437
 line 908
-;908:	trap_R_SetColor( hcolor );
+;908:	}
+LABELV $437
+line 909
+;909:	trap_R_SetColor( hcolor );
 ADDRLP4 24
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 909
-;909:	CG_DrawPic( x, y, w, h, cgs.media.teamStatusBar );
+line 910
+;910:	CG_DrawPic( x, y, w, h, cgs.media.teamStatusBar );
 ADDRLP4 52
 INDIRI4
 CVIF4 4
@@ -4043,24 +4044,24 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 910
-;910:	trap_R_SetColor( NULL );
+line 911
+;911:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 912
-;911:
-;912:	for (i = 0; i < count; i++) {
+line 913
+;912:
+;913:	for (i = 0; i < count; i++) {
 ADDRLP4 8
 CNSTI4 0
 ASGNI4
 ADDRGP4 $450
 JUMPV
 LABELV $447
-line 913
-;913:		ci = cgs.clientinfo + sortedTeamPlayers[i];
+line 914
+;914:		ci = cgs.clientinfo + sortedTeamPlayers[i];
 ADDRLP4 4
 CNSTI4 1732
 ADDRLP4 8
@@ -4074,8 +4075,8 @@ MULI4
 ADDRGP4 cgs+40972
 ADDP4
 ASGNP4
-line 914
-;914:		if ( ci->infoValid && ci->team == cg.snap->ps.persistant[PERS_TEAM]) {
+line 915
+;915:		if ( ci->infoValid && ci->team == cg.snap->ps.persistant[PERS_TEAM]) {
 ADDRLP4 4
 INDIRP4
 INDIRI4
@@ -4092,9 +4093,9 @@ CNSTI4 304
 ADDP4
 INDIRI4
 NEI4 $452
-line 916
-;915:
-;916:			hcolor[0] = hcolor[1] = hcolor[2] = hcolor[3] = 1.0;
+line 917
+;916:
+;917:			hcolor[0] = hcolor[1] = hcolor[2] = hcolor[3] = 1.0;
 ADDRLP4 104
 CNSTF4 1065353216
 ASGNF4
@@ -4114,18 +4115,18 @@ ADDRLP4 24
 ADDRLP4 104
 INDIRF4
 ASGNF4
-line 918
-;917:
-;918:			xx = x + TINYCHAR_WIDTH;
+line 919
+;918:
+;919:			xx = x + TINYCHAR_WIDTH;
 ADDRLP4 12
 ADDRLP4 52
 INDIRI4
 CNSTI4 8
 ADDI4
 ASGNI4
-line 920
-;919:
-;920:			CG_DrawStringExt( xx, y,
+line 921
+;920:
+;921:			CG_DrawStringExt( xx, y,
 ADDRLP4 12
 INDIRI4
 ARGI4
@@ -4163,17 +4164,17 @@ ARGI4
 ADDRGP4 CG_DrawStringExt
 CALLV
 pop
-line 924
-;921:				ci->name, hcolor, qfalse, qfalse,
-;922:				TINYCHAR_WIDTH, TINYCHAR_HEIGHT, TEAM_OVERLAY_MAXNAME_WIDTH);
-;923:
-;924:			if (lwidth) {
+line 925
+;922:				ci->name, hcolor, qfalse, qfalse,
+;923:				TINYCHAR_WIDTH, TINYCHAR_HEIGHT, TEAM_OVERLAY_MAXNAME_WIDTH);
+;924:
+;925:			if (lwidth) {
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
 EQI4 $458
-line 925
-;925:				p = CG_ConfigString(CS_LOCATIONS + ci->location);
+line 926
+;926:				p = CG_ConfigString(CS_LOCATIONS + ci->location);
 ADDRLP4 4
 INDIRP4
 CNSTI4 104
@@ -4190,8 +4191,8 @@ ADDRLP4 20
 ADDRLP4 116
 INDIRP4
 ASGNP4
-line 926
-;926:				if (!p || !*p)
+line 927
+;927:				if (!p || !*p)
 ADDRLP4 20
 INDIRP4
 CVPU4 4
@@ -4204,14 +4205,14 @@ CVII4 1
 CNSTI4 0
 NEI4 $460
 LABELV $462
-line 927
-;927:					p = "unknown";
+line 928
+;928:					p = "unknown";
 ADDRLP4 20
 ADDRGP4 $463
 ASGNP4
 LABELV $460
-line 928
-;928:				len = CG_DrawStrlen(p);
+line 929
+;929:				len = CG_DrawStrlen(p);
 ADDRLP4 20
 INDIRP4
 ARGP4
@@ -4223,25 +4224,25 @@ ADDRLP4 40
 ADDRLP4 124
 INDIRI4
 ASGNI4
-line 929
-;929:				if (len > lwidth)
+line 930
+;930:				if (len > lwidth)
 ADDRLP4 40
 INDIRI4
 ADDRLP4 44
 INDIRI4
 LEI4 $464
-line 930
-;930:					len = lwidth;
+line 931
+;931:					len = lwidth;
 ADDRLP4 40
 ADDRLP4 44
 INDIRI4
 ASGNI4
 LABELV $464
-line 934
-;931:
-;932://				xx = x + TINYCHAR_WIDTH * 2 + TINYCHAR_WIDTH * pwidth + 
-;933://					((lwidth/2 - len/2) * TINYCHAR_WIDTH);
-;934:				xx = x + TINYCHAR_WIDTH * 2 + TINYCHAR_WIDTH * pwidth;
+line 935
+;932:
+;933://				xx = x + TINYCHAR_WIDTH * 2 + TINYCHAR_WIDTH * pwidth + 
+;934://					((lwidth/2 - len/2) * TINYCHAR_WIDTH);
+;935:				xx = x + TINYCHAR_WIDTH * 2 + TINYCHAR_WIDTH * pwidth;
 ADDRLP4 12
 ADDRLP4 52
 INDIRI4
@@ -4253,8 +4254,8 @@ CNSTI4 3
 LSHI4
 ADDI4
 ASGNI4
-line 935
-;935:				CG_DrawStringExt( xx, y,
+line 936
+;936:				CG_DrawStringExt( xx, y,
 ADDRLP4 12
 INDIRI4
 ARGI4
@@ -4290,14 +4291,14 @@ ARGI4
 ADDRGP4 CG_DrawStringExt
 CALLV
 pop
-line 938
-;936:					p, hcolor, qfalse, qfalse, TINYCHAR_WIDTH, TINYCHAR_HEIGHT,
-;937:					TEAM_OVERLAY_MAXLOCATION_WIDTH);
-;938:			}
+line 939
+;937:					p, hcolor, qfalse, qfalse, TINYCHAR_WIDTH, TINYCHAR_HEIGHT,
+;938:					TEAM_OVERLAY_MAXLOCATION_WIDTH);
+;939:			}
 LABELV $458
-line 940
-;939:
-;940:			CG_GetColorForHealth( ci->health, ci->armor, hcolor );
+line 941
+;940:
+;941:			CG_GetColorForHealth( ci->health, ci->armor, hcolor );
 ADDRLP4 4
 INDIRP4
 CNSTI4 108
@@ -4315,9 +4316,9 @@ ARGP4
 ADDRGP4 CG_GetColorForHealth
 CALLV
 pop
-line 942
-;941:
-;942:			Com_sprintf (st, sizeof(st), "%3i %3i", ci->health,	ci->armor);
+line 943
+;942:
+;943:			Com_sprintf (st, sizeof(st), "%3i %3i", ci->health,	ci->armor);
 ADDRLP4 60
 ARGP4
 CNSTI4 16
@@ -4339,9 +4340,9 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 944
-;943:
-;944:			xx = x + TINYCHAR_WIDTH * 3 + 
+line 945
+;944:
+;945:			xx = x + TINYCHAR_WIDTH * 3 + 
 ADDRLP4 124
 CNSTI4 3
 ASGNI4
@@ -4363,10 +4364,10 @@ INDIRI4
 LSHI4
 ADDI4
 ASGNI4
-line 947
-;945:				TINYCHAR_WIDTH * pwidth + TINYCHAR_WIDTH * lwidth;
-;946:
-;947:			CG_DrawStringExt( xx, y,
+line 948
+;946:				TINYCHAR_WIDTH * pwidth + TINYCHAR_WIDTH * lwidth;
+;947:
+;948:			CG_DrawStringExt( xx, y,
 ADDRLP4 12
 INDIRI4
 ARGI4
@@ -4402,21 +4403,21 @@ ARGI4
 ADDRGP4 CG_DrawStringExt
 CALLV
 pop
-line 952
-;948:				st, hcolor, qfalse, qfalse,
-;949:				TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 0 );
-;950:
-;951:			// draw weapon icon
-;952:			xx += TINYCHAR_WIDTH * 3;
+line 953
+;949:				st, hcolor, qfalse, qfalse,
+;950:				TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 0 );
+;951:
+;952:			// draw weapon icon
+;953:			xx += TINYCHAR_WIDTH * 3;
 ADDRLP4 12
 ADDRLP4 12
 INDIRI4
 CNSTI4 24
 ADDI4
 ASGNI4
-line 954
-;953:
-;954:			if ( cg_weapons[ci->curWeapon].weaponIcon ) {
+line 955
+;954:
+;955:			if ( cg_weapons[ci->curWeapon].weaponIcon ) {
 CNSTI4 136
 ADDRLP4 4
 INDIRP4
@@ -4429,8 +4430,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $467
-line 955
-;955:				CG_DrawPic( xx, y, TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 
+line 956
+;956:				CG_DrawPic( xx, y, TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 
 ADDRLP4 12
 INDIRI4
 CVIF4 4
@@ -4461,14 +4462,14 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 957
-;956:					cg_weapons[ci->curWeapon].weaponIcon );
-;957:			} else {
+line 958
+;957:					cg_weapons[ci->curWeapon].weaponIcon );
+;958:			} else {
 ADDRGP4 $468
 JUMPV
 LABELV $467
-line 958
-;958:				CG_DrawPic( xx, y, TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 
+line 959
+;959:				CG_DrawPic( xx, y, TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 
 ADDRLP4 12
 INDIRI4
 CVIF4 4
@@ -4491,31 +4492,31 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 960
-;959:					cgs.media.deferShader );
-;960:			}
+line 961
+;960:					cgs.media.deferShader );
+;961:			}
 LABELV $468
-line 963
-;961:
-;962:			// Draw powerup icons
-;963:			if (right) {
+line 964
+;962:
+;963:			// Draw powerup icons
+;964:			if (right) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
 EQI4 $473
-line 964
-;964:				xx = x;
+line 965
+;965:				xx = x;
 ADDRLP4 12
 ADDRLP4 52
 INDIRI4
 ASGNI4
-line 965
-;965:			} else {
+line 966
+;966:			} else {
 ADDRGP4 $474
 JUMPV
 LABELV $473
-line 966
-;966:				xx = x + w - TINYCHAR_WIDTH;
+line 967
+;967:				xx = x + w - TINYCHAR_WIDTH;
 ADDRLP4 12
 ADDRLP4 52
 INDIRI4
@@ -4525,17 +4526,17 @@ ADDI4
 CNSTI4 8
 SUBI4
 ASGNI4
-line 967
-;967:			}
-LABELV $474
 line 968
-;968:			for (j = 0; j <= PW_NUM_POWERUPS; j++) {
+;968:			}
+LABELV $474
+line 969
+;969:			for (j = 0; j <= PW_NUM_POWERUPS; j++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $475
-line 969
-;969:				if (ci->powerups & (1 << j)) {
+line 970
+;970:				if (ci->powerups & (1 << j)) {
 ADDRLP4 4
 INDIRP4
 CNSTI4 140
@@ -4548,9 +4549,9 @@ LSHI4
 BANDI4
 CNSTI4 0
 EQI4 $479
-line 971
-;970:
-;971:					item = BG_FindItemForPowerup( j );
+line 972
+;971:
+;972:					item = BG_FindItemForPowerup( j );
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -4562,16 +4563,16 @@ ADDRLP4 16
 ADDRLP4 136
 INDIRP4
 ASGNP4
-line 973
-;972:
-;973:					if (item) {
+line 974
+;973:
+;974:					if (item) {
 ADDRLP4 16
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $481
-line 974
-;974:						CG_DrawPic( xx, y, TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 
+line 975
+;975:						CG_DrawPic( xx, y, TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 
 ADDRLP4 16
 INDIRP4
 CNSTI4 24
@@ -4604,47 +4605,47 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 976
-;975:						trap_R_RegisterShader( item->icon ) );
-;976:						if (right) {
+line 977
+;976:						trap_R_RegisterShader( item->icon ) );
+;977:						if (right) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
 EQI4 $483
-line 977
-;977:							xx -= TINYCHAR_WIDTH;
+line 978
+;978:							xx -= TINYCHAR_WIDTH;
 ADDRLP4 12
 ADDRLP4 12
 INDIRI4
 CNSTI4 8
 SUBI4
 ASGNI4
-line 978
-;978:						} else {
+line 979
+;979:						} else {
 ADDRGP4 $484
 JUMPV
 LABELV $483
-line 979
-;979:							xx += TINYCHAR_WIDTH;
+line 980
+;980:							xx += TINYCHAR_WIDTH;
 ADDRLP4 12
 ADDRLP4 12
 INDIRI4
 CNSTI4 8
 ADDI4
 ASGNI4
-line 980
-;980:						}
-LABELV $484
 line 981
-;981:					}
-LABELV $481
+;981:						}
+LABELV $484
 line 982
-;982:				}
-LABELV $479
+;982:					}
+LABELV $481
 line 983
-;983:			}
+;983:				}
+LABELV $479
+line 984
+;984:			}
 LABELV $476
-line 968
+line 969
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4655,22 +4656,22 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 15
 LEI4 $475
-line 985
-;984:
-;985:			y += TINYCHAR_HEIGHT;
+line 986
+;985:
+;986:			y += TINYCHAR_HEIGHT;
 ADDRFP4 0
 ADDRFP4 0
 INDIRF4
 CNSTF4 1090519040
 ADDF4
 ASGNF4
-line 986
-;986:		}
-LABELV $452
 line 987
-;987:	}
+;987:		}
+LABELV $452
+line 988
+;988:	}
 LABELV $448
-line 912
+line 913
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
@@ -4683,32 +4684,32 @@ INDIRI4
 ADDRLP4 48
 INDIRI4
 LTI4 $447
-line 990
-;988:
-;989:		
-;990:	if (cgs.g_GameMode == 3) {
+line 991
+;989:
+;990:		
+;991:	if (cgs.g_GameMode == 3) {
 ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 3
 NEI4 $485
-line 1003
-;991:		/*
-;992:			Com_sprintf (st, sizeof(st), "%3i %3i", ci->health,	ci->armor);
-;993:
-;994:			xx = x + TINYCHAR_WIDTH * 3 + 
-;995:				TINYCHAR_WIDTH * pwidth + TINYCHAR_WIDTH * lwidth;
-;996:
-;997:			CG_DrawStringExt( xx, y,
-;998:				st, hcolor, qfalse, qfalse,
-;999:				TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 0 );
-;1000:
-;1001:			y += TINYCHAR_HEIGHT;
-;1002:			*/
-;1003:	}
+line 1004
+;992:		/*
+;993:			Com_sprintf (st, sizeof(st), "%3i %3i", ci->health,	ci->armor);
+;994:
+;995:			xx = x + TINYCHAR_WIDTH * 3 + 
+;996:				TINYCHAR_WIDTH * pwidth + TINYCHAR_WIDTH * lwidth;
+;997:
+;998:			CG_DrawStringExt( xx, y,
+;999:				st, hcolor, qfalse, qfalse,
+;1000:				TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 0 );
+;1001:
+;1002:			y += TINYCHAR_HEIGHT;
+;1003:			*/
+;1004:	}
 LABELV $485
-line 1005
-;1004:
-;1005:	return ret_y;
+line 1006
+;1005:
+;1006:	return ret_y;
 ADDRLP4 88
 INDIRI4
 CVIF4 4
@@ -4716,28 +4717,28 @@ RETF4
 LABELV $397
 endproc CG_DrawTeamOverlay 148 36
 proc CG_DrawUpperRight 12 12
-line 1016
-;1006://#endif
-;1007:}
-;1008:
+line 1017
+;1007://#endif
+;1008:}
 ;1009:
-;1010:/*
-;1011:=====================
-;1012:CG_DrawUpperRight
-;1013:
-;1014:=====================
-;1015:*/
-;1016:static void CG_DrawUpperRight( void ) {
-line 1019
-;1017:	float	y;
-;1018:
-;1019:	y = 0;
+;1010:
+;1011:/*
+;1012:=====================
+;1013:CG_DrawUpperRight
+;1014:
+;1015:=====================
+;1016:*/
+;1017:static void CG_DrawUpperRight( void ) {
+line 1020
+;1018:	float	y;
+;1019:
+;1020:	y = 0;
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-line 1021
-;1020:
-;1021:	if ( cgs.gametype >= GT_TEAM && cg_drawTeamOverlay.integer == 1 ) {
+line 1022
+;1021:
+;1022:	if ( cgs.gametype >= GT_TEAM && cg_drawTeamOverlay.integer == 1 ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
@@ -4746,8 +4747,8 @@ ADDRGP4 cg_drawTeamOverlay+12
 INDIRI4
 CNSTI4 1
 NEI4 $489
-line 1022
-;1022:		y = CG_DrawTeamOverlay( y, qtrue, qtrue );
+line 1023
+;1023:		y = CG_DrawTeamOverlay( y, qtrue, qtrue );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -4768,17 +4769,17 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRF4
 ASGNF4
-line 1023
-;1023:	} 
-LABELV $489
 line 1024
-;1024:	if ( cg_drawSnapshot.integer ) {
+;1024:	} 
+LABELV $489
+line 1025
+;1025:	if ( cg_drawSnapshot.integer ) {
 ADDRGP4 cg_drawSnapshot+12
 INDIRI4
 CNSTI4 0
 EQI4 $493
-line 1025
-;1025:		y = CG_DrawSnapshot( y );
+line 1026
+;1026:		y = CG_DrawSnapshot( y );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -4790,17 +4791,17 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRF4
 ASGNF4
-line 1026
-;1026:	}
-LABELV $493
 line 1027
-;1027:	if ( cg_drawFPS.integer ) {
+;1027:	}
+LABELV $493
+line 1028
+;1028:	if ( cg_drawFPS.integer ) {
 ADDRGP4 cg_drawFPS+12
 INDIRI4
 CNSTI4 0
 EQI4 $496
-line 1028
-;1028:		y = CG_DrawFPS( y );
+line 1029
+;1029:		y = CG_DrawFPS( y );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -4812,17 +4813,17 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRF4
 ASGNF4
-line 1029
-;1029:	}
-LABELV $496
 line 1030
-;1030:	if ( cg_drawTimer.integer ) {
+;1030:	}
+LABELV $496
+line 1031
+;1031:	if ( cg_drawTimer.integer ) {
 ADDRGP4 cg_drawTimer+12
 INDIRI4
 CNSTI4 0
 EQI4 $499
-line 1031
-;1031:		y = CG_DrawTimer( y );
+line 1032
+;1032:		y = CG_DrawTimer( y );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -4834,17 +4835,17 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRF4
 ASGNF4
-line 1032
-;1032:	}
-LABELV $499
 line 1033
-;1033:	if ( cg_drawAttacker.integer ) {
+;1033:	}
+LABELV $499
+line 1034
+;1034:	if ( cg_drawAttacker.integer ) {
 ADDRGP4 cg_drawAttacker+12
 INDIRI4
 CNSTI4 0
 EQI4 $502
-line 1034
-;1034:		y = CG_DrawAttacker( y );
+line 1035
+;1035:		y = CG_DrawAttacker( y );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -4856,105 +4857,105 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRF4
 ASGNF4
-line 1035
-;1035:	}
+line 1036
+;1036:	}
 LABELV $502
-line 1037
-;1036:
-;1037:}
+line 1038
+;1037:
+;1038:}
 LABELV $488
 endproc CG_DrawUpperRight 12 12
 proc CG_DrawScores 76 20
-line 1055
-;1038:
-;1039:/*
-;1040:===========================================================================================
-;1041:
-;1042:  LOWER RIGHT CORNER
-;1043:
-;1044:===========================================================================================
-;1045:*/
-;1046:
-;1047:/*
-;1048:=================
-;1049:CG_DrawScores
-;1050:
-;1051:Draw the small two score display
-;1052:=================
-;1053:*/
-;1054:#ifndef MISSIONPACK
-;1055:static float CG_DrawScores( float y ) {
-line 1064
-;1056:	const char	*s;
-;1057:	int			s1, s2, score;
-;1058:	int			x, w;
-;1059:	int			v;
-;1060:	vec4_t		color;
-;1061:	float		y1;
-;1062:	gitem_t		*item;
-;1063:
-;1064:	s1 = cgs.scores1;
+line 1056
+;1039:
+;1040:/*
+;1041:===========================================================================================
+;1042:
+;1043:  LOWER RIGHT CORNER
+;1044:
+;1045:===========================================================================================
+;1046:*/
+;1047:
+;1048:/*
+;1049:=================
+;1050:CG_DrawScores
+;1051:
+;1052:Draw the small two score display
+;1053:=================
+;1054:*/
+;1055:#ifndef MISSIONPACK
+;1056:static float CG_DrawScores( float y ) {
+line 1065
+;1057:	const char	*s;
+;1058:	int			s1, s2, score;
+;1059:	int			x, w;
+;1060:	int			v;
+;1061:	vec4_t		color;
+;1062:	float		y1;
+;1063:	gitem_t		*item;
+;1064:
+;1065:	s1 = cgs.scores1;
 ADDRLP4 28
 ADDRGP4 cgs+34800
 INDIRI4
 ASGNI4
-line 1065
-;1065:	s2 = cgs.scores2;
+line 1066
+;1066:	s2 = cgs.scores2;
 ADDRLP4 32
 ADDRGP4 cgs+34804
 INDIRI4
 ASGNI4
-line 1067
-;1066:
-;1067:	y -=  BIGCHAR_HEIGHT + 8;
+line 1068
+;1067:
+;1068:	y -=  BIGCHAR_HEIGHT + 8;
 ADDRFP4 0
 ADDRFP4 0
 INDIRF4
 CNSTF4 1103101952
 SUBF4
 ASGNF4
-line 1069
-;1068:
-;1069:	y1 = y;
+line 1070
+;1069:
+;1070:	y1 = y;
 ADDRLP4 36
 ADDRFP4 0
 INDIRF4
 ASGNF4
-line 1072
-;1070:
-;1071:	// draw from the right side to left
-;1072:	if ( cgs.gametype >= GT_TEAM ) {
+line 1073
+;1071:	
+;1072:	// draw from the right side to left
+;1073:	if ( cgs.gametype >= GT_TEAM ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
 LTI4 $508
-line 1073
-;1073:		x = 640;
+line 1074
+;1074:		x = 640;
 ADDRLP4 16
 CNSTI4 640
 ASGNI4
-line 1074
-;1074:		color[0] = 0.0f;
+line 1075
+;1075:		color[0] = 0.0f;
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-line 1075
-;1075:		color[1] = 0.0f;
+line 1076
+;1076:		color[1] = 0.0f;
 ADDRLP4 0+4
 CNSTF4 0
 ASGNF4
-line 1076
-;1076:		color[2] = 1.0f;
+line 1077
+;1077:		color[2] = 1.0f;
 ADDRLP4 0+8
 CNSTF4 1065353216
 ASGNF4
-line 1077
-;1077:		color[3] = 0.33f;
+line 1078
+;1078:		color[3] = 0.33f;
 ADDRLP4 0+12
 CNSTF4 1051260355
 ASGNF4
-line 1078
-;1078:		s = va( "%2i", s2 );
+line 1079
+;1079:		s = va( "%2i", s2 );
 ADDRGP4 $514
 ARGP4
 ADDRLP4 32
@@ -4968,8 +4969,8 @@ ADDRLP4 24
 ADDRLP4 52
 INDIRP4
 ASGNP4
-line 1079
-;1079:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
+line 1080
+;1080:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
 ADDRLP4 24
 INDIRP4
 ARGP4
@@ -4985,8 +4986,8 @@ LSHI4
 CNSTI4 8
 ADDI4
 ASGNI4
-line 1080
-;1080:		x -= w;
+line 1081
+;1081:		x -= w;
 ADDRLP4 16
 ADDRLP4 16
 INDIRI4
@@ -4994,8 +4995,8 @@ ADDRLP4 20
 INDIRI4
 SUBI4
 ASGNI4
-line 1081
-;1081:		CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
+line 1082
+;1082:		CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5016,8 +5017,8 @@ ARGP4
 ADDRGP4 CG_FillRect
 CALLV
 pop
-line 1082
-;1082:		if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE ) {
+line 1083
+;1083:		if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE ) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 304
@@ -5025,8 +5026,8 @@ ADDP4
 INDIRI4
 CNSTI4 2
 NEI4 $515
-line 1083
-;1083:			CG_DrawPic( x, y-4, w, BIGCHAR_HEIGHT+8, cgs.media.selectShader );
+line 1084
+;1084:			CG_DrawPic( x, y-4, w, BIGCHAR_HEIGHT+8, cgs.media.selectShader );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5048,11 +5049,11 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1084
-;1084:		}
-LABELV $515
 line 1085
-;1085:		CG_DrawBigString( x + 4, y, s, 1.0F);
+;1085:		}
+LABELV $515
+line 1086
+;1086:		CG_DrawBigString( x + 4, y, s, 1.0F);
 ADDRLP4 16
 INDIRI4
 CNSTI4 4
@@ -5070,16 +5071,16 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 1087
-;1086:
-;1087:		if ( cgs.gametype == GT_CTF ) {
+line 1088
+;1087:
+;1088:		if ( cgs.gametype == GT_CTF ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
 NEI4 $520
-line 1089
-;1088:			// Display flag status
-;1089:			item = BG_FindItemForPowerup( PW_BLUEFLAG );
+line 1090
+;1089:			// Display flag status
+;1090:			item = BG_FindItemForPowerup( PW_BLUEFLAG );
 CNSTI4 8
 ARGI4
 ADDRLP4 60
@@ -5090,16 +5091,16 @@ ADDRLP4 48
 ADDRLP4 60
 INDIRP4
 ASGNP4
-line 1091
-;1090:
-;1091:			if (item) {
+line 1092
+;1091:
+;1092:			if (item) {
 ADDRLP4 48
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $523
-line 1092
-;1092:				y1 = y - BIGCHAR_HEIGHT - 8;
+line 1093
+;1093:				y1 = y - BIGCHAR_HEIGHT - 8;
 ADDRLP4 36
 ADDRFP4 0
 INDIRF4
@@ -5108,8 +5109,8 @@ SUBF4
 CNSTF4 1090519040
 SUBF4
 ASGNF4
-line 1093
-;1093:				if( cgs.blueflag >= 0 && cgs.blueflag <= 2 ) {
+line 1094
+;1094:				if( cgs.blueflag >= 0 && cgs.blueflag <= 2 ) {
 ADDRGP4 cgs+34812
 INDIRI4
 CNSTI4 0
@@ -5118,8 +5119,8 @@ ADDRGP4 cgs+34812
 INDIRI4
 CNSTI4 2
 GTI4 $525
-line 1094
-;1094:					CG_DrawPic( x, y1-4, w, BIGCHAR_HEIGHT+8, cgs.media.blueFlagShader[cgs.blueflag] );
+line 1095
+;1095:					CG_DrawPic( x, y1-4, w, BIGCHAR_HEIGHT+8, cgs.media.blueFlagShader[cgs.blueflag] );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5146,37 +5147,37 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1095
-;1095:				}
-LABELV $525
 line 1096
-;1096:			}
-LABELV $523
+;1096:				}
+LABELV $525
 line 1097
-;1097:		}
-LABELV $520
+;1097:			}
+LABELV $523
 line 1098
-;1098:		color[0] = 1.0f;
+;1098:		}
+LABELV $520
+line 1099
+;1099:		color[0] = 1.0f;
 ADDRLP4 0
 CNSTF4 1065353216
 ASGNF4
-line 1099
-;1099:		color[1] = 0.0f;
+line 1100
+;1100:		color[1] = 0.0f;
 ADDRLP4 0+4
 CNSTF4 0
 ASGNF4
-line 1100
-;1100:		color[2] = 0.0f;
+line 1101
+;1101:		color[2] = 0.0f;
 ADDRLP4 0+8
 CNSTF4 0
 ASGNF4
-line 1101
-;1101:		color[3] = 0.33f;
+line 1102
+;1102:		color[3] = 0.33f;
 ADDRLP4 0+12
 CNSTF4 1051260355
 ASGNF4
-line 1102
-;1102:		s = va( "%2i", s1 );
+line 1103
+;1103:		s = va( "%2i", s1 );
 ADDRGP4 $514
 ARGP4
 ADDRLP4 28
@@ -5190,8 +5191,8 @@ ADDRLP4 24
 ADDRLP4 60
 INDIRP4
 ASGNP4
-line 1103
-;1103:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
+line 1104
+;1104:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
 ADDRLP4 24
 INDIRP4
 ARGP4
@@ -5207,8 +5208,8 @@ LSHI4
 CNSTI4 8
 ADDI4
 ASGNI4
-line 1104
-;1104:		x -= w;
+line 1105
+;1105:		x -= w;
 ADDRLP4 16
 ADDRLP4 16
 INDIRI4
@@ -5216,8 +5217,8 @@ ADDRLP4 20
 INDIRI4
 SUBI4
 ASGNI4
-line 1105
-;1105:		CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
+line 1106
+;1106:		CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5238,8 +5239,8 @@ ARGP4
 ADDRGP4 CG_FillRect
 CALLV
 pop
-line 1106
-;1106:		if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_RED ) {
+line 1107
+;1107:		if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_RED ) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 304
@@ -5247,8 +5248,8 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $535
-line 1107
-;1107:			CG_DrawPic( x, y-4, w, BIGCHAR_HEIGHT+8, cgs.media.selectShader );
+line 1108
+;1108:			CG_DrawPic( x, y-4, w, BIGCHAR_HEIGHT+8, cgs.media.selectShader );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5270,11 +5271,11 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1108
-;1108:		}
-LABELV $535
 line 1109
-;1109:		CG_DrawBigString( x + 4, y, s, 1.0F);
+;1109:		}
+LABELV $535
+line 1110
+;1110:		CG_DrawBigString( x + 4, y, s, 1.0F);
 ADDRLP4 16
 INDIRI4
 CNSTI4 4
@@ -5292,16 +5293,16 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 1111
-;1110:
-;1111:		if ( cgs.gametype == GT_CTF ) {
+line 1112
+;1111:
+;1112:		if ( cgs.gametype == GT_CTF ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
 NEI4 $540
-line 1113
-;1112:			// Display flag status
-;1113:			item = BG_FindItemForPowerup( PW_REDFLAG );
+line 1114
+;1113:			// Display flag status
+;1114:			item = BG_FindItemForPowerup( PW_REDFLAG );
 CNSTI4 7
 ARGI4
 ADDRLP4 68
@@ -5312,16 +5313,16 @@ ADDRLP4 48
 ADDRLP4 68
 INDIRP4
 ASGNP4
-line 1115
-;1114:
-;1115:			if (item) {
+line 1116
+;1115:
+;1116:			if (item) {
 ADDRLP4 48
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $543
-line 1116
-;1116:				y1 = y - BIGCHAR_HEIGHT - 8;
+line 1117
+;1117:				y1 = y - BIGCHAR_HEIGHT - 8;
 ADDRLP4 36
 ADDRFP4 0
 INDIRF4
@@ -5330,8 +5331,8 @@ SUBF4
 CNSTF4 1090519040
 SUBF4
 ASGNF4
-line 1117
-;1117:				if( cgs.redflag >= 0 && cgs.redflag <= 2 ) {
+line 1118
+;1118:				if( cgs.redflag >= 0 && cgs.redflag <= 2 ) {
 ADDRGP4 cgs+34808
 INDIRI4
 CNSTI4 0
@@ -5340,8 +5341,8 @@ ADDRGP4 cgs+34808
 INDIRI4
 CNSTI4 2
 GTI4 $545
-line 1118
-;1118:					CG_DrawPic( x, y1-4, w, BIGCHAR_HEIGHT+8, cgs.media.redFlagShader[cgs.redflag] );
+line 1119
+;1119:					CG_DrawPic( x, y1-4, w, BIGCHAR_HEIGHT+8, cgs.media.redFlagShader[cgs.redflag] );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5368,65 +5369,66 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1119
-;1119:				}
-LABELV $545
 line 1120
-;1120:			}
-LABELV $543
+;1120:				}
+LABELV $545
 line 1121
-;1121:		}
+;1121:			}
+LABELV $543
+line 1122
+;1122:		}
 LABELV $540
-line 1138
-;1122:
-;1123:#ifdef MISSIONPACK
-;1124:		if ( cgs.gametype == GT_1FCTF ) {
-;1125:			// Display flag status
-;1126:			item = BG_FindItemForPowerup( PW_NEUTRALFLAG );
-;1127:
-;1128:			if (item) {
-;1129:				y1 = y - BIGCHAR_HEIGHT - 8;
-;1130:				if( cgs.flagStatus >= 0 && cgs.flagStatus <= 3 ) {
-;1131:					CG_DrawPic( x, y1-4, w, BIGCHAR_HEIGHT+8, cgs.media.flagShader[cgs.flagStatus] );
-;1132:				}
-;1133:			}
-;1134:		}
-;1135:#endif
-;1136:		
-;1137:		// Shafe - This draws the status thingy
-;1138:		if ( cgs.gametype >= GT_CTF ) {
+line 1139
+;1123:
+;1124:#ifdef MISSIONPACK
+;1125:		if ( cgs.gametype == GT_1FCTF ) {
+;1126:			// Display flag status
+;1127:			item = BG_FindItemForPowerup( PW_NEUTRALFLAG );
+;1128:
+;1129:			if (item) {
+;1130:				y1 = y - BIGCHAR_HEIGHT - 8;
+;1131:				if( cgs.flagStatus >= 0 && cgs.flagStatus <= 3 ) {
+;1132:					CG_DrawPic( x, y1-4, w, BIGCHAR_HEIGHT+8, cgs.media.flagShader[cgs.flagStatus] );
+;1133:				}
+;1134:			}
+;1135:		}
+;1136:#endif
+;1137:		
+;1138:		// Shafe - This draws the status thingy
+;1139:		if ( cgs.gametype >= GT_CTF ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
 LTI4 $552
-line 1139
-;1139:			v = cgs.capturelimit;
+line 1140
+;1140:			v = cgs.capturelimit;
 ADDRLP4 44
 ADDRGP4 cgs+31472
 INDIRI4
 ASGNI4
-line 1140
-;1140:		} else {
+line 1141
+;1141:		} else {
 ADDRGP4 $553
 JUMPV
 LABELV $552
-line 1141
-;1141:			v = cgs.fraglimit;
+line 1142
+;1142:			v = cgs.fraglimit;
 ADDRLP4 44
 ADDRGP4 cgs+31468
 INDIRI4
 ASGNI4
-line 1142
-;1142:		}
-LABELV $553
 line 1143
-;1143:		if ( v ) {
+;1143:		}
+LABELV $553
+line 1145
+;1144:		
+;1145:		if ( v ) {
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
 EQI4 $509
-line 1144
-;1144:			s = va( "%2i", v );
+line 1146
+;1146:			s = va( "%2i", v );
 ADDRGP4 $514
 ARGP4
 ADDRLP4 44
@@ -5440,8 +5442,8 @@ ADDRLP4 24
 ADDRLP4 68
 INDIRP4
 ASGNP4
-line 1145
-;1145:			w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
+line 1147
+;1147:			w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
 ADDRLP4 24
 INDIRP4
 ARGP4
@@ -5457,8 +5459,8 @@ LSHI4
 CNSTI4 8
 ADDI4
 ASGNI4
-line 1146
-;1146:			x -= w;
+line 1148
+;1148:			x -= w;
 ADDRLP4 16
 ADDRLP4 16
 INDIRI4
@@ -5466,8 +5468,8 @@ ADDRLP4 20
 INDIRI4
 SUBI4
 ASGNI4
-line 1147
-;1147:			CG_DrawBigString( x + 4, y, s, 1.0F);
+line 1149
+;1149:			CG_DrawBigString( x + 4, y, s, 1.0F);
 ADDRLP4 16
 INDIRI4
 CNSTI4 4
@@ -5485,23 +5487,23 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 1148
-;1148:		}
 line 1150
-;1149:
-;1150:	} else {
+;1150:		}
+line 1152
+;1151:
+;1152:	} else {
 ADDRGP4 $509
 JUMPV
 LABELV $508
-line 1153
-;1151:		qboolean	spectator;
-;1152:
-;1153:		x = 640;
+line 1155
+;1153:		qboolean	spectator;
+;1154:
+;1155:		x = 640;
 ADDRLP4 16
 CNSTI4 640
 ASGNI4
-line 1154
-;1154:		score = cg.snap->ps.persistant[PERS_SCORE];
+line 1156
+;1156:		score = cg.snap->ps.persistant[PERS_SCORE];
 ADDRLP4 40
 ADDRGP4 cg+36
 INDIRP4
@@ -5509,8 +5511,8 @@ CNSTI4 292
 ADDP4
 INDIRI4
 ASGNI4
-line 1155
-;1155:		spectator = ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR );
+line 1157
+;1157:		spectator = ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR );
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 304
@@ -5532,32 +5534,32 @@ ADDRLP4 52
 ADDRLP4 56
 INDIRI4
 ASGNI4
-line 1158
-;1156:
-;1157:		// always show your score in the second box if not in first place
-;1158:		if ( s1 != score ) {
+line 1160
+;1158:
+;1159:		// always show your score in the second box if not in first place
+;1160:		if ( s1 != score ) {
 ADDRLP4 28
 INDIRI4
 ADDRLP4 40
 INDIRI4
 EQI4 $564
-line 1159
-;1159:			s2 = score;
+line 1161
+;1161:			s2 = score;
 ADDRLP4 32
 ADDRLP4 40
 INDIRI4
 ASGNI4
-line 1160
-;1160:		}
+line 1162
+;1162:		}
 LABELV $564
-line 1161
-;1161:		if ( s2 != SCORE_NOT_PRESENT ) {
+line 1163
+;1163:		if ( s2 != SCORE_NOT_PRESENT ) {
 ADDRLP4 32
 INDIRI4
 CNSTI4 -9999
 EQI4 $566
-line 1162
-;1162:			s = va( "%2i", s2 );
+line 1164
+;1164:			s = va( "%2i", s2 );
 ADDRGP4 $514
 ARGP4
 ADDRLP4 32
@@ -5571,8 +5573,8 @@ ADDRLP4 24
 ADDRLP4 60
 INDIRP4
 ASGNP4
-line 1163
-;1163:			w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
+line 1165
+;1165:			w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
 ADDRLP4 24
 INDIRP4
 ARGP4
@@ -5588,8 +5590,8 @@ LSHI4
 CNSTI4 8
 ADDI4
 ASGNI4
-line 1164
-;1164:			x -= w;
+line 1166
+;1166:			x -= w;
 ADDRLP4 16
 ADDRLP4 16
 INDIRI4
@@ -5597,8 +5599,8 @@ ADDRLP4 20
 INDIRI4
 SUBI4
 ASGNI4
-line 1165
-;1165:			if ( !spectator && score == s2 && score != s1 ) {
+line 1167
+;1167:			if ( !spectator && score == s2 && score != s1 ) {
 ADDRLP4 52
 INDIRI4
 CNSTI4 0
@@ -5617,28 +5619,28 @@ INDIRI4
 ADDRLP4 28
 INDIRI4
 EQI4 $568
-line 1166
-;1166:				color[0] = 1.0f;
+line 1168
+;1168:				color[0] = 1.0f;
 ADDRLP4 0
 CNSTF4 1065353216
 ASGNF4
-line 1167
-;1167:				color[1] = 0.0f;
+line 1169
+;1169:				color[1] = 0.0f;
 ADDRLP4 0+4
 CNSTF4 0
 ASGNF4
-line 1168
-;1168:				color[2] = 0.0f;
+line 1170
+;1170:				color[2] = 0.0f;
 ADDRLP4 0+8
 CNSTF4 0
 ASGNF4
-line 1169
-;1169:				color[3] = 0.33f;
+line 1171
+;1171:				color[3] = 0.33f;
 ADDRLP4 0+12
 CNSTF4 1051260355
 ASGNF4
-line 1170
-;1170:				CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
+line 1172
+;1172:				CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5659,8 +5661,8 @@ ARGP4
 ADDRGP4 CG_FillRect
 CALLV
 pop
-line 1171
-;1171:				CG_DrawPic( x, y-4, w, BIGCHAR_HEIGHT+8, cgs.media.selectShader );
+line 1173
+;1173:				CG_DrawPic( x, y-4, w, BIGCHAR_HEIGHT+8, cgs.media.selectShader );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5682,33 +5684,33 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1172
-;1172:			} else {
+line 1174
+;1174:			} else {
 ADDRGP4 $569
 JUMPV
 LABELV $568
-line 1173
-;1173:				color[0] = 0.5f;
+line 1175
+;1175:				color[0] = 0.5f;
 ADDRLP4 0
 CNSTF4 1056964608
 ASGNF4
-line 1174
-;1174:				color[1] = 0.5f;
+line 1176
+;1176:				color[1] = 0.5f;
 ADDRLP4 0+4
 CNSTF4 1056964608
 ASGNF4
-line 1175
-;1175:				color[2] = 0.5f;
+line 1177
+;1177:				color[2] = 0.5f;
 ADDRLP4 0+8
 CNSTF4 1056964608
 ASGNF4
-line 1176
-;1176:				color[3] = 0.33f;
+line 1178
+;1178:				color[3] = 0.33f;
 ADDRLP4 0+12
 CNSTF4 1051260355
 ASGNF4
-line 1177
-;1177:				CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
+line 1179
+;1179:				CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5729,11 +5731,11 @@ ARGP4
 ADDRGP4 CG_FillRect
 CALLV
 pop
-line 1178
-;1178:			}	
+line 1180
+;1180:			}	
 LABELV $569
-line 1179
-;1179:			CG_DrawBigString( x + 4, y, s, 1.0F);
+line 1181
+;1181:			CG_DrawBigString( x + 4, y, s, 1.0F);
 ADDRLP4 16
 INDIRI4
 CNSTI4 4
@@ -5751,19 +5753,19 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 1180
-;1180:		}
+line 1182
+;1182:		}
 LABELV $566
-line 1183
-;1181:
-;1182:		// first place
-;1183:		if ( s1 != SCORE_NOT_PRESENT ) {
+line 1185
+;1183:
+;1184:		// first place
+;1185:		if ( s1 != SCORE_NOT_PRESENT ) {
 ADDRLP4 28
 INDIRI4
 CNSTI4 -9999
 EQI4 $578
-line 1184
-;1184:			s = va( "%2i", s1 );
+line 1186
+;1186:			s = va( "%2i", s1 );
 ADDRGP4 $514
 ARGP4
 ADDRLP4 28
@@ -5777,8 +5779,8 @@ ADDRLP4 24
 ADDRLP4 60
 INDIRP4
 ASGNP4
-line 1185
-;1185:			w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
+line 1187
+;1187:			w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
 ADDRLP4 24
 INDIRP4
 ARGP4
@@ -5794,8 +5796,8 @@ LSHI4
 CNSTI4 8
 ADDI4
 ASGNI4
-line 1186
-;1186:			x -= w;
+line 1188
+;1188:			x -= w;
 ADDRLP4 16
 ADDRLP4 16
 INDIRI4
@@ -5803,8 +5805,8 @@ ADDRLP4 20
 INDIRI4
 SUBI4
 ASGNI4
-line 1187
-;1187:			if ( !spectator && score == s1 ) {
+line 1189
+;1189:			if ( !spectator && score == s1 ) {
 ADDRLP4 52
 INDIRI4
 CNSTI4 0
@@ -5814,28 +5816,28 @@ INDIRI4
 ADDRLP4 28
 INDIRI4
 NEI4 $580
-line 1188
-;1188:				color[0] = 0.0f;
+line 1190
+;1190:				color[0] = 0.0f;
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-line 1189
-;1189:				color[1] = 0.0f;
+line 1191
+;1191:				color[1] = 0.0f;
 ADDRLP4 0+4
 CNSTF4 0
 ASGNF4
-line 1190
-;1190:				color[2] = 1.0f;
+line 1192
+;1192:				color[2] = 1.0f;
 ADDRLP4 0+8
 CNSTF4 1065353216
 ASGNF4
-line 1191
-;1191:				color[3] = 0.33f;
+line 1193
+;1193:				color[3] = 0.33f;
 ADDRLP4 0+12
 CNSTF4 1051260355
 ASGNF4
-line 1192
-;1192:				CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
+line 1194
+;1194:				CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5856,8 +5858,8 @@ ARGP4
 ADDRGP4 CG_FillRect
 CALLV
 pop
-line 1193
-;1193:				CG_DrawPic( x, y-4, w, BIGCHAR_HEIGHT+8, cgs.media.selectShader );
+line 1195
+;1195:				CG_DrawPic( x, y-4, w, BIGCHAR_HEIGHT+8, cgs.media.selectShader );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5879,33 +5881,33 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1194
-;1194:			} else {
+line 1196
+;1196:			} else {
 ADDRGP4 $581
 JUMPV
 LABELV $580
-line 1195
-;1195:				color[0] = 0.5f;
+line 1197
+;1197:				color[0] = 0.5f;
 ADDRLP4 0
 CNSTF4 1056964608
 ASGNF4
-line 1196
-;1196:				color[1] = 0.5f;
+line 1198
+;1198:				color[1] = 0.5f;
 ADDRLP4 0+4
 CNSTF4 1056964608
 ASGNF4
-line 1197
-;1197:				color[2] = 0.5f;
+line 1199
+;1199:				color[2] = 0.5f;
 ADDRLP4 0+8
 CNSTF4 1056964608
 ASGNF4
-line 1198
-;1198:				color[3] = 0.33f;
+line 1200
+;1200:				color[3] = 0.33f;
 ADDRLP4 0+12
 CNSTF4 1051260355
 ASGNF4
-line 1199
-;1199:				CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
+line 1201
+;1201:				CG_FillRect( x, y-4,  w, BIGCHAR_HEIGHT+8, color );
 ADDRLP4 16
 INDIRI4
 CVIF4 4
@@ -5926,11 +5928,11 @@ ARGP4
 ADDRGP4 CG_FillRect
 CALLV
 pop
-line 1200
-;1200:			}	
+line 1202
+;1202:			}	
 LABELV $581
-line 1201
-;1201:			CG_DrawBigString( x + 4, y, s, 1.0F);
+line 1203
+;1203:			CG_DrawBigString( x + 4, y, s, 1.0F);
 ADDRLP4 16
 INDIRI4
 CNSTI4 4
@@ -5948,18 +5950,18 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 1202
-;1202:		}
-LABELV $578
 line 1204
-;1203:
-;1204:		if ( cgs.fraglimit ) {
+;1204:		}
+LABELV $578
+line 1206
+;1205:
+;1206:		if ( cgs.fraglimit ) {
 ADDRGP4 cgs+31468
 INDIRI4
 CNSTI4 0
 EQI4 $590
-line 1205
-;1205:			s = va( "%2i", cgs.fraglimit );
+line 1207
+;1207:			s = va( "%2i", cgs.fraglimit );
 ADDRGP4 $514
 ARGP4
 ADDRGP4 cgs+31468
@@ -5973,8 +5975,8 @@ ADDRLP4 24
 ADDRLP4 60
 INDIRP4
 ASGNP4
-line 1206
-;1206:			w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
+line 1208
+;1208:			w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
 ADDRLP4 24
 INDIRP4
 ARGP4
@@ -5990,8 +5992,8 @@ LSHI4
 CNSTI4 8
 ADDI4
 ASGNI4
-line 1207
-;1207:			x -= w;
+line 1209
+;1209:			x -= w;
 ADDRLP4 16
 ADDRLP4 16
 INDIRI4
@@ -5999,8 +6001,8 @@ ADDRLP4 20
 INDIRI4
 SUBI4
 ASGNI4
-line 1208
-;1208:			CG_DrawBigString( x + 4, y, s, 1.0F);
+line 1210
+;1210:			CG_DrawBigString( x + 4, y, s, 1.0F);
 ADDRLP4 16
 INDIRI4
 CNSTI4 4
@@ -6018,16 +6020,16 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 1209
-;1209:		}
-LABELV $590
 line 1211
-;1210:
-;1211:	}
-LABELV $509
+;1211:		}
+LABELV $590
 line 1213
 ;1212:
-;1213:	return y1 - 8;
+;1213:	}
+LABELV $509
+line 1215
+;1214:
+;1215:	return y1 - 8;
 ADDRLP4 36
 INDIRF4
 CNSTF4 1090519040
@@ -6048,44 +6050,44 @@ byte 4 1045220557
 byte 4 1065353216
 code
 proc CG_DrawPowerups 208 20
-line 1223
-;1214:}
-;1215:#endif // MISSIONPACK
-;1216:
-;1217:/*
-;1218:================
-;1219:CG_DrawPowerups
+line 1225
+;1216:}
+;1217:#endif // MISSIONPACK
+;1218:
+;1219:/*
 ;1220:================
-;1221:*/
-;1222:#ifndef MISSIONPACK
-;1223:static float CG_DrawPowerups( float y ) {
-line 1240
-;1224:	int		sorted[MAX_POWERUPS];
-;1225:	int		sortedTime[MAX_POWERUPS];
-;1226:	int		i, j, k;
-;1227:	int		active;
-;1228:	playerState_t	*ps;
-;1229:	int		t;
-;1230:	gitem_t	*item;
-;1231:	int		x;
-;1232:	int		color;
-;1233:	float	size;
-;1234:	float	f;
-;1235:	static float colors[2][4] = { 
-;1236:    { 0.2f, 1.0f, 0.2f, 1.0f } , 
-;1237:    { 1.0f, 0.2f, 0.2f, 1.0f } 
-;1238:  };
-;1239:
-;1240:	ps = &cg.snap->ps;
+;1221:CG_DrawPowerups
+;1222:================
+;1223:*/
+;1224:#ifndef MISSIONPACK
+;1225:static float CG_DrawPowerups( float y ) {
+line 1242
+;1226:	int		sorted[MAX_POWERUPS];
+;1227:	int		sortedTime[MAX_POWERUPS];
+;1228:	int		i, j, k;
+;1229:	int		active;
+;1230:	playerState_t	*ps;
+;1231:	int		t;
+;1232:	gitem_t	*item;
+;1233:	int		x;
+;1234:	int		color;
+;1235:	float	size;
+;1236:	float	f;
+;1237:	static float colors[2][4] = { 
+;1238:    { 0.2f, 1.0f, 0.2f, 1.0f } , 
+;1239:    { 1.0f, 0.2f, 0.2f, 1.0f } 
+;1240:  };
+;1241:
+;1242:	ps = &cg.snap->ps;
 ADDRLP4 148
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 44
 ADDP4
 ASGNP4
-line 1242
-;1241:
-;1242:	if ( ps->stats[STAT_HEALTH] <= 0 ) {
+line 1244
+;1243:
+;1244:	if ( ps->stats[STAT_HEALTH] <= 0 ) {
 ADDRLP4 148
 INDIRP4
 CNSTI4 184
@@ -6093,30 +6095,30 @@ ADDP4
 INDIRI4
 CNSTI4 0
 GTI4 $597
-line 1243
-;1243:		return y;
+line 1245
+;1245:		return y;
 ADDRFP4 0
 INDIRF4
 RETF4
 ADDRGP4 $594
 JUMPV
 LABELV $597
-line 1247
-;1244:	}
-;1245:
-;1246:	// sort the list by time remaining
-;1247:	active = 0;
+line 1249
+;1246:	}
+;1247:
+;1248:	// sort the list by time remaining
+;1249:	active = 0;
 ADDRLP4 136
 CNSTI4 0
 ASGNI4
-line 1248
-;1248:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
+line 1250
+;1250:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
 ADDRLP4 144
 CNSTI4 0
 ASGNI4
 LABELV $599
-line 1249
-;1249:		if ( !ps->powerups[ i ] ) {
+line 1251
+;1251:		if ( !ps->powerups[ i ] ) {
 ADDRLP4 144
 INDIRI4
 CNSTI4 2
@@ -6129,14 +6131,14 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $603
-line 1250
-;1250:			continue;
+line 1252
+;1252:			continue;
 ADDRGP4 $600
 JUMPV
 LABELV $603
-line 1252
-;1251:		}
-;1252:		t = ps->powerups[ i ] - cg.time;
+line 1254
+;1253:		}
+;1254:		t = ps->powerups[ i ] - cg.time;
 ADDRLP4 140
 ADDRLP4 144
 INDIRI4
@@ -6152,10 +6154,10 @@ ADDRGP4 cg+109652
 INDIRI4
 SUBI4
 ASGNI4
-line 1255
-;1253:		// ZOID--don't draw if the power up has unlimited time (999 seconds)
-;1254:		// This is true of the CTF flags
-;1255:		if ( t < 0 || t > 999000) {
+line 1257
+;1255:		// ZOID--don't draw if the power up has unlimited time (999 seconds)
+;1256:		// This is true of the CTF flags
+;1257:		if ( t < 0 || t > 999000) {
 ADDRLP4 140
 INDIRI4
 CNSTI4 0
@@ -6165,24 +6167,24 @@ INDIRI4
 CNSTI4 999000
 LEI4 $606
 LABELV $608
-line 1256
-;1256:			continue;
+line 1258
+;1258:			continue;
 ADDRGP4 $600
 JUMPV
 LABELV $606
-line 1260
-;1257:		}
-;1258:
-;1259:		// insert into the list
-;1260:		for ( j = 0 ; j < active ; j++ ) {
+line 1262
+;1259:		}
+;1260:
+;1261:		// insert into the list
+;1262:		for ( j = 0 ; j < active ; j++ ) {
 ADDRLP4 132
 CNSTI4 0
 ASGNI4
 ADDRGP4 $612
 JUMPV
 LABELV $609
-line 1261
-;1261:			if ( sortedTime[j] >= t ) {
+line 1263
+;1263:			if ( sortedTime[j] >= t ) {
 ADDRLP4 132
 INDIRI4
 CNSTI4 2
@@ -6193,8 +6195,8 @@ INDIRI4
 ADDRLP4 140
 INDIRI4
 LTI4 $613
-line 1262
-;1262:				for ( k = active - 1 ; k >= j ; k-- ) {
+line 1264
+;1264:				for ( k = active - 1 ; k >= j ; k-- ) {
 ADDRLP4 0
 ADDRLP4 136
 INDIRI4
@@ -6204,8 +6206,8 @@ ASGNI4
 ADDRGP4 $618
 JUMPV
 LABELV $615
-line 1263
-;1263:					sorted[k+1] = sorted[k];
+line 1265
+;1265:					sorted[k+1] = sorted[k];
 ADDRLP4 176
 ADDRLP4 0
 INDIRI4
@@ -6222,8 +6224,8 @@ ADDRLP4 68
 ADDP4
 INDIRI4
 ASGNI4
-line 1264
-;1264:					sortedTime[k+1] = sortedTime[k];
+line 1266
+;1266:					sortedTime[k+1] = sortedTime[k];
 ADDRLP4 180
 ADDRLP4 0
 INDIRI4
@@ -6240,10 +6242,10 @@ ADDRLP4 4
 ADDP4
 INDIRI4
 ASGNI4
-line 1265
-;1265:				}
+line 1267
+;1267:				}
 LABELV $616
-line 1262
+line 1264
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -6256,16 +6258,16 @@ INDIRI4
 ADDRLP4 132
 INDIRI4
 GEI4 $615
-line 1266
-;1266:				break;
+line 1268
+;1268:				break;
 ADDRGP4 $611
 JUMPV
 LABELV $613
-line 1268
-;1267:			}
-;1268:		}
+line 1270
+;1269:			}
+;1270:		}
 LABELV $610
-line 1260
+line 1262
 ADDRLP4 132
 ADDRLP4 132
 INDIRI4
@@ -6279,8 +6281,8 @@ ADDRLP4 136
 INDIRI4
 LTI4 $609
 LABELV $611
-line 1269
-;1269:		sorted[j] = i;
+line 1271
+;1271:		sorted[j] = i;
 ADDRLP4 132
 INDIRI4
 CNSTI4 2
@@ -6290,8 +6292,8 @@ ADDP4
 ADDRLP4 144
 INDIRI4
 ASGNI4
-line 1270
-;1270:		sortedTime[j] = t;
+line 1272
+;1272:		sortedTime[j] = t;
 ADDRLP4 132
 INDIRI4
 CNSTI4 2
@@ -6301,18 +6303,18 @@ ADDP4
 ADDRLP4 140
 INDIRI4
 ASGNI4
-line 1271
-;1271:		active++;
+line 1273
+;1273:		active++;
 ADDRLP4 136
 ADDRLP4 136
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1272
-;1272:	}
+line 1274
+;1274:	}
 LABELV $600
-line 1248
+line 1250
 ADDRLP4 144
 ADDRLP4 144
 INDIRI4
@@ -6323,23 +6325,23 @@ ADDRLP4 144
 INDIRI4
 CNSTI4 16
 LTI4 $599
-line 1275
-;1273:
-;1274:	// draw the icons and timers
-;1275:	x = 640 - ICON_SIZE - CHAR_WIDTH * 2;
+line 1277
+;1275:
+;1276:	// draw the icons and timers
+;1277:	x = 640 - ICON_SIZE - CHAR_WIDTH * 2;
 ADDRLP4 168
 CNSTI4 528
 ASGNI4
-line 1276
-;1276:	for ( i = 0 ; i < active ; i++ ) {
+line 1278
+;1278:	for ( i = 0 ; i < active ; i++ ) {
 ADDRLP4 144
 CNSTI4 0
 ASGNI4
 ADDRGP4 $624
 JUMPV
 LABELV $621
-line 1277
-;1277:		item = BG_FindItemForPowerup( sorted[i] );
+line 1279
+;1279:		item = BG_FindItemForPowerup( sorted[i] );
 ADDRLP4 144
 INDIRI4
 CNSTI4 2
@@ -6356,32 +6358,32 @@ ADDRLP4 152
 ADDRLP4 172
 INDIRP4
 ASGNP4
-line 1279
-;1278:
-;1279:    if (item) {
+line 1281
+;1280:
+;1281:    if (item) {
 ADDRLP4 152
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $625
-line 1281
-;1280:
-;1281:		  color = 1;
+line 1283
+;1282:
+;1283:		  color = 1;
 ADDRLP4 164
 CNSTI4 1
 ASGNI4
-line 1283
-;1282:
-;1283:		  y -= ICON_SIZE;
+line 1285
+;1284:
+;1285:		  y -= ICON_SIZE;
 ADDRFP4 0
 ADDRFP4 0
 INDIRF4
 CNSTF4 1111490560
 SUBF4
 ASGNF4
-line 1285
-;1284:
-;1285:		  trap_R_SetColor( colors[color] );
+line 1287
+;1286:
+;1287:		  trap_R_SetColor( colors[color] );
 ADDRLP4 164
 INDIRI4
 CNSTI4 4
@@ -6392,8 +6394,8 @@ ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1286
-;1286:		  CG_DrawField( x, y, 2, sortedTime[ i ] / 1000 );
+line 1288
+;1288:		  CG_DrawField( x, y, 2, sortedTime[ i ] / 1000 );
 ADDRLP4 168
 INDIRI4
 ARGI4
@@ -6421,9 +6423,9 @@ ARGI4
 ADDRGP4 CG_DrawField
 CALLV
 pop
-line 1288
-;1287:
-;1288:		  t = ps->powerups[ sorted[i] ];
+line 1290
+;1289:
+;1290:		  t = ps->powerups[ sorted[i] ];
 ADDRLP4 180
 CNSTI4 2
 ASGNI4
@@ -6446,8 +6448,8 @@ ADDP4
 ADDP4
 INDIRI4
 ASGNI4
-line 1289
-;1289:		  if ( t - cg.time >= POWERUP_BLINKS * POWERUP_BLINK_TIME ) {
+line 1291
+;1291:		  if ( t - cg.time >= POWERUP_BLINKS * POWERUP_BLINK_TIME ) {
 ADDRLP4 140
 INDIRI4
 ADDRGP4 cg+109652
@@ -6455,22 +6457,22 @@ INDIRI4
 SUBI4
 CNSTI4 5000
 LTI4 $627
-line 1290
-;1290:			  trap_R_SetColor( NULL );
+line 1292
+;1292:			  trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1291
-;1291:		  } else {
+line 1293
+;1293:		  } else {
 ADDRGP4 $628
 JUMPV
 LABELV $627
-line 1294
-;1292:			  vec4_t	modulate;
-;1293:
-;1294:			  f = (float)( t - cg.time ) / POWERUP_BLINK_TIME;
+line 1296
+;1294:			  vec4_t	modulate;
+;1295:
+;1296:			  f = (float)( t - cg.time ) / POWERUP_BLINK_TIME;
 ADDRLP4 160
 ADDRLP4 140
 INDIRI4
@@ -6481,8 +6483,8 @@ CVIF4 4
 CNSTF4 1148846080
 DIVF4
 ASGNF4
-line 1295
-;1295:			  f -= (int)f;
+line 1297
+;1297:			  f -= (int)f;
 ADDRLP4 160
 ADDRLP4 160
 INDIRF4
@@ -6492,8 +6494,8 @@ CVFI4 4
 CVIF4 4
 SUBF4
 ASGNF4
-line 1296
-;1296:			  modulate[0] = modulate[1] = modulate[2] = modulate[3] = f;
+line 1298
+;1298:			  modulate[0] = modulate[1] = modulate[2] = modulate[3] = f;
 ADDRLP4 184+12
 ADDRLP4 160
 INDIRF4
@@ -6510,19 +6512,19 @@ ADDRLP4 184
 ADDRLP4 160
 INDIRF4
 ASGNF4
-line 1297
-;1297:			  trap_R_SetColor( modulate );
+line 1299
+;1299:			  trap_R_SetColor( modulate );
 ADDRLP4 184
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1298
-;1298:		  }
-LABELV $628
 line 1300
-;1299:
-;1300:		  if ( cg.powerupActive == sorted[i] && 
+;1300:		  }
+LABELV $628
+line 1302
+;1301:
+;1302:		  if ( cg.powerupActive == sorted[i] && 
 ADDRGP4 cg+126476
 INDIRI4
 ADDRLP4 144
@@ -6540,10 +6542,10 @@ INDIRI4
 SUBI4
 CNSTI4 200
 GEI4 $634
-line 1301
-;1301:			  cg.time - cg.powerupTime < PULSE_TIME ) {
-line 1302
-;1302:			  f = 1.0 - ( ( (float)cg.time - cg.powerupTime ) / PULSE_TIME );
+line 1303
+;1303:			  cg.time - cg.powerupTime < PULSE_TIME ) {
+line 1304
+;1304:			  f = 1.0 - ( ( (float)cg.time - cg.powerupTime ) / PULSE_TIME );
 ADDRLP4 160
 CNSTF4 1065353216
 ADDRGP4 cg+109652
@@ -6557,8 +6559,8 @@ CNSTF4 1128792064
 DIVF4
 SUBF4
 ASGNF4
-line 1303
-;1303:			  size = ICON_SIZE * ( 1.0 + ( PULSE_SCALE - 1.0 ) * f );
+line 1305
+;1305:			  size = ICON_SIZE * ( 1.0 + ( PULSE_SCALE - 1.0 ) * f );
 ADDRLP4 156
 CNSTF4 1111490560
 CNSTF4 1056964608
@@ -6569,22 +6571,22 @@ CNSTF4 1065353216
 ADDF4
 MULF4
 ASGNF4
-line 1304
-;1304:		  } else {
+line 1306
+;1306:		  } else {
 ADDRGP4 $635
 JUMPV
 LABELV $634
-line 1305
-;1305:			  size = ICON_SIZE;
+line 1307
+;1307:			  size = ICON_SIZE;
 ADDRLP4 156
 CNSTF4 1111490560
 ASGNF4
-line 1306
-;1306:		  }
-LABELV $635
 line 1308
-;1307:
-;1308:		  CG_DrawPic( 640 - size, y + ICON_SIZE / 2 - size / 2, 
+;1308:		  }
+LABELV $635
+line 1310
+;1309:
+;1310:		  CG_DrawPic( 640 - size, y + ICON_SIZE / 2 - size / 2, 
 ADDRLP4 152
 INDIRP4
 CNSTI4 24
@@ -6622,14 +6624,14 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1310
-;1309:			  size, size, trap_R_RegisterShader( item->icon ) );
-;1310:    }
+line 1312
+;1311:			  size, size, trap_R_RegisterShader( item->icon ) );
+;1312:    }
 LABELV $625
-line 1311
-;1311:	}
+line 1313
+;1313:	}
 LABELV $622
-line 1276
+line 1278
 ADDRLP4 144
 ADDRLP4 144
 INDIRI4
@@ -6642,37 +6644,37 @@ INDIRI4
 ADDRLP4 136
 INDIRI4
 LTI4 $621
-line 1312
-;1312:	trap_R_SetColor( NULL );
+line 1314
+;1314:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1314
-;1313:
-;1314:	return y;
+line 1316
+;1315:
+;1316:	return y;
 ADDRFP4 0
 INDIRF4
 RETF4
 LABELV $594
 endproc CG_DrawPowerups 208 20
 proc CG_DrawHudRight 0 20
-line 1322
-;1315:}
-;1316:#endif // MISSIONPACK
-;1317:/*
-;1318:====================
-;1319:CG_DrawHudRight
+line 1324
+;1317:}
+;1318:#endif // MISSIONPACK
+;1319:/*
 ;1320:====================
-;1321:*/
-;1322:static float CG_DrawHudRight(float y){
-line 1327
-;1323:	
-;1324:	//x = 640 - 48;  this x/y is the lagometer position
-;1325:	//y = 480 - 48;
-;1326:	
-;1327:	CG_DrawPic( (640-159), (480-75), 159, 75, cgs.media.HudRight );
+;1321:CG_DrawHudRight
+;1322:====================
+;1323:*/
+;1324:static float CG_DrawHudRight(float y){
+line 1329
+;1325:	
+;1326:	//x = 640 - 48;  this x/y is the lagometer position
+;1327:	//y = 480 - 48;
+;1328:	
+;1329:	CG_DrawPic( (640-159), (480-75), 159, 75, cgs.media.HudRight );
 CNSTF4 1139834880
 ARGF4
 CNSTF4 1137344512
@@ -6687,23 +6689,23 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1328
-;1328:}
+line 1330
+;1330:}
 CNSTF4 0
 RETF4
 LABELV $641
 endproc CG_DrawHudRight 0 20
 proc CG_DrawHudLeft 0 20
-line 1335
-;1329:
-;1330:/*
-;1331:====================
-;1332:CG_DrawHudLeft
+line 1337
+;1331:
+;1332:/*
 ;1333:====================
-;1334:*/
-;1335:static float CG_DrawHudLeft(float y){
-line 1336
-;1336:	CG_DrawPic( 1, (480-75), 159, 75, cgs.media.HudLeft );
+;1334:CG_DrawHudLeft
+;1335:====================
+;1336:*/
+;1337:static float CG_DrawHudLeft(float y){
+line 1338
+;1338:	CG_DrawPic( 1, (480-75), 159, 75, cgs.media.HudLeft );
 CNSTF4 1065353216
 ARGF4
 CNSTF4 1137344512
@@ -6718,37 +6720,37 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1337
-;1337:}
+line 1339
+;1339:}
 CNSTF4 0
 RETF4
 LABELV $644
 endproc CG_DrawHudLeft 0 20
 proc CG_DrawLowerRight 12 12
-line 1346
-;1338:
-;1339:/*
-;1340:=====================
-;1341:CG_DrawLowerRight
-;1342:
-;1343:=====================
-;1344:*/
-;1345:#ifndef MISSIONPACK
-;1346:static void CG_DrawLowerRight( void ) {
-line 1349
-;1347:	float	y;
-;1348:
-;1349:	y = 480 - ICON_SIZE;
+line 1348
+;1340:
+;1341:/*
+;1342:=====================
+;1343:CG_DrawLowerRight
+;1344:
+;1345:=====================
+;1346:*/
+;1347:#ifndef MISSIONPACK
+;1348:static void CG_DrawLowerRight( void ) {
+line 1351
+;1349:	float	y;
+;1350:
+;1351:	y = 480 - ICON_SIZE;
 ADDRLP4 0
 CNSTF4 1138229248
 ASGNF4
-line 1355
-;1350:
-;1351:
-;1352://	CG_DrawHudRight( y);
-;1353:	
-;1354:
-;1355:	if ( cgs.gametype >= GT_TEAM && cg_drawTeamOverlay.integer == 2 ) {
+line 1357
+;1352:
+;1353:
+;1354://	CG_DrawHudRight( y);
+;1355:	
+;1356:
+;1357:	if ( cgs.gametype >= GT_TEAM && cg_drawTeamOverlay.integer == 2 ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
@@ -6757,8 +6759,8 @@ ADDRGP4 cg_drawTeamOverlay+12
 INDIRI4
 CNSTI4 2
 NEI4 $648
-line 1356
-;1356:		y = CG_DrawTeamOverlay( y, qtrue, qfalse );
+line 1358
+;1358:		y = CG_DrawTeamOverlay( y, qtrue, qfalse );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -6774,12 +6776,12 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRF4
 ASGNF4
-line 1357
-;1357:	} 
-LABELV $648
 line 1359
-;1358:
-;1359:	y = CG_DrawScores( y );
+;1359:	} 
+LABELV $648
+line 1361
+;1360:
+;1361:	y = CG_DrawScores( y );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -6791,8 +6793,8 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRF4
 ASGNF4
-line 1360
-;1360:	y = CG_DrawPowerups( y );
+line 1362
+;1362:	y = CG_DrawPowerups( y );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -6804,27 +6806,27 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRF4
 ASGNF4
-line 1361
-;1361:}
+line 1363
+;1363:}
 LABELV $647
 endproc CG_DrawLowerRight 12 12
 proc CG_DrawPickupItem 16 20
-line 1371
-;1362:#endif // MISSIONPACK
-;1363:
-;1364:
-;1365:/*
-;1366:===================
-;1367:CG_DrawPickupItem
+line 1373
+;1364:#endif // MISSIONPACK
+;1365:
+;1366:
+;1367:/*
 ;1368:===================
-;1369:*/
-;1370:#ifndef MISSIONPACK
-;1371:static int CG_DrawPickupItem( int y ) {
-line 1375
-;1372:	int		value;
-;1373:	float	*fadeColor;
-;1374:
-;1375:	if ( cg.snap->ps.stats[STAT_HEALTH] <= 0 ) {
+;1369:CG_DrawPickupItem
+;1370:===================
+;1371:*/
+;1372:#ifndef MISSIONPACK
+;1373:static int CG_DrawPickupItem( int y ) {
+line 1377
+;1374:	int		value;
+;1375:	float	*fadeColor;
+;1376:
+;1377:	if ( cg.snap->ps.stats[STAT_HEALTH] <= 0 ) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 228
@@ -6832,39 +6834,39 @@ ADDP4
 INDIRI4
 CNSTI4 0
 GTI4 $653
-line 1376
-;1376:		return y;
+line 1378
+;1378:		return y;
 ADDRFP4 0
 INDIRI4
 RETI4
 ADDRGP4 $652
 JUMPV
 LABELV $653
-line 1379
-;1377:	}
-;1378:
-;1379:	y -= ICON_SIZE;
+line 1381
+;1379:	}
+;1380:
+;1381:	y -= ICON_SIZE;
 ADDRFP4 0
 ADDRFP4 0
 INDIRI4
 CNSTI4 48
 SUBI4
 ASGNI4
-line 1381
-;1380:
-;1381:	value = cg.itemPickup;
+line 1383
+;1382:
+;1383:	value = cg.itemPickup;
 ADDRLP4 0
 ADDRGP4 cg+126732
 INDIRI4
 ASGNI4
-line 1382
-;1382:	if ( value ) {
+line 1384
+;1384:	if ( value ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 EQI4 $657
-line 1383
-;1383:		fadeColor = CG_FadeColor( cg.itemPickupTime, 3000 );
+line 1385
+;1385:		fadeColor = CG_FadeColor( cg.itemPickupTime, 3000 );
 ADDRGP4 cg+126736
 INDIRI4
 ARGI4
@@ -6878,31 +6880,31 @@ ADDRLP4 4
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 1384
-;1384:		if ( fadeColor ) {
+line 1386
+;1386:		if ( fadeColor ) {
 ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $660
-line 1385
-;1385:			CG_RegisterItemVisuals( value );
+line 1387
+;1387:			CG_RegisterItemVisuals( value );
 ADDRLP4 0
 INDIRI4
 ARGI4
 ADDRGP4 CG_RegisterItemVisuals
 CALLV
 pop
-line 1386
-;1386:			trap_R_SetColor( fadeColor );
+line 1388
+;1388:			trap_R_SetColor( fadeColor );
 ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1387
-;1387:			CG_DrawPic( 8, y, ICON_SIZE, ICON_SIZE, cg_items[ value ].icon );
+line 1389
+;1389:			CG_DrawPic( 8, y, ICON_SIZE, ICON_SIZE, cg_items[ value ].icon );
 CNSTF4 1090519040
 ARGF4
 ADDRFP4 0
@@ -6929,8 +6931,8 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1388
-;1388:			CG_DrawBigString( ICON_SIZE + 16, y + (ICON_SIZE/2 - BIGCHAR_HEIGHT/2), bg_itemlist[ value ].pickup_name, fadeColor[0] );
+line 1390
+;1390:			CG_DrawBigString( ICON_SIZE + 16, y + (ICON_SIZE/2 - BIGCHAR_HEIGHT/2), bg_itemlist[ value ].pickup_name, fadeColor[0] );
 CNSTI4 64
 ARGI4
 ADDRFP4 0
@@ -6953,52 +6955,52 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 1389
-;1389:			trap_R_SetColor( NULL );
+line 1391
+;1391:			trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1390
-;1390:		}
+line 1392
+;1392:		}
 LABELV $660
-line 1391
-;1391:	}
-LABELV $657
 line 1393
-;1392:	
-;1393:	return y;
+;1393:	}
+LABELV $657
+line 1395
+;1394:	
+;1395:	return y;
 ADDRFP4 0
 INDIRI4
 RETI4
 LABELV $652
 endproc CG_DrawPickupItem 16 20
 proc CG_DrawLowerLeft 16 12
-line 1404
-;1394:}
-;1395:#endif // MISSIONPACK
-;1396:
-;1397:/*
-;1398:=====================
-;1399:CG_DrawLowerLeft
-;1400:
-;1401:=====================
-;1402:*/
-;1403:#ifndef MISSIONPACK
-;1404:static void CG_DrawLowerLeft( void ) {
-line 1409
-;1405:	float	y;
-;1406:
-;1407://	CG_DrawHudLeft( y);
+line 1406
+;1396:}
+;1397:#endif // MISSIONPACK
+;1398:
+;1399:/*
+;1400:=====================
+;1401:CG_DrawLowerLeft
+;1402:
+;1403:=====================
+;1404:*/
+;1405:#ifndef MISSIONPACK
+;1406:static void CG_DrawLowerLeft( void ) {
+line 1411
+;1407:	float	y;
 ;1408:
-;1409:	y = 480 - ICON_SIZE;
+;1409://	CG_DrawHudLeft( y);
+;1410:
+;1411:	y = 480 - ICON_SIZE;
 ADDRLP4 0
 CNSTF4 1138229248
 ASGNF4
-line 1411
-;1410:
-;1411:	if ( cgs.gametype >= GT_TEAM && cg_drawTeamOverlay.integer == 3 ) {
+line 1413
+;1412:
+;1413:	if ( cgs.gametype >= GT_TEAM && cg_drawTeamOverlay.integer == 3 ) {
 ADDRLP4 4
 CNSTI4 3
 ASGNI4
@@ -7012,8 +7014,8 @@ INDIRI4
 ADDRLP4 4
 INDIRI4
 NEI4 $665
-line 1412
-;1412:		y = CG_DrawTeamOverlay( y, qfalse, qfalse );
+line 1414
+;1414:		y = CG_DrawTeamOverlay( y, qfalse, qfalse );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -7034,13 +7036,13 @@ ADDRLP4 0
 ADDRLP4 12
 INDIRF4
 ASGNF4
-line 1413
-;1413:	} 
+line 1415
+;1415:	} 
 LABELV $665
-line 1416
-;1414:
-;1415:
-;1416:	y = CG_DrawPickupItem( y );
+line 1418
+;1416:
+;1417:
+;1418:	y = CG_DrawPickupItem( y );
 ADDRLP4 0
 INDIRF4
 CVFI4 4
@@ -7054,40 +7056,40 @@ ADDRLP4 8
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1417
-;1417:}
+line 1419
+;1419:}
 LABELV $664
 endproc CG_DrawLowerLeft 16 12
 proc CG_DrawTeamInfo 56 36
-line 1429
-;1418:#endif // MISSIONPACK
-;1419:
-;1420:
-;1421://===========================================================================================
+line 1431
+;1420:#endif // MISSIONPACK
+;1421:
 ;1422:
-;1423:/*
-;1424:=================
-;1425:CG_DrawTeamInfo
+;1423://===========================================================================================
+;1424:
+;1425:/*
 ;1426:=================
-;1427:*/
-;1428:#ifndef MISSIONPACK
-;1429:static void CG_DrawTeamInfo( void ) {
-line 1438
-;1430:	int w, h;
-;1431:	int i, len;
-;1432:	vec4_t		hcolor;
-;1433:	int		chatHeight;
-;1434:
-;1435:#define CHATLOC_Y 420 // bottom end
-;1436:#define CHATLOC_X 0
-;1437:
-;1438:	if (cg_teamChatHeight.integer < TEAMCHAT_HEIGHT)
+;1427:CG_DrawTeamInfo
+;1428:=================
+;1429:*/
+;1430:#ifndef MISSIONPACK
+;1431:static void CG_DrawTeamInfo( void ) {
+line 1440
+;1432:	int w, h;
+;1433:	int i, len;
+;1434:	vec4_t		hcolor;
+;1435:	int		chatHeight;
+;1436:
+;1437:#define CHATLOC_Y 420 // bottom end
+;1438:#define CHATLOC_X 0
+;1439:
+;1440:	if (cg_teamChatHeight.integer < TEAMCHAT_HEIGHT)
 ADDRGP4 cg_teamChatHeight+12
 INDIRI4
 CNSTI4 8
 GEI4 $670
-line 1439
-;1439:		chatHeight = cg_teamChatHeight.integer;
+line 1441
+;1441:		chatHeight = cg_teamChatHeight.integer;
 ADDRLP4 8
 ADDRGP4 cg_teamChatHeight+12
 INDIRI4
@@ -7095,34 +7097,34 @@ ASGNI4
 ADDRGP4 $671
 JUMPV
 LABELV $670
-line 1441
-;1440:	else
-;1441:		chatHeight = TEAMCHAT_HEIGHT;
+line 1443
+;1442:	else
+;1443:		chatHeight = TEAMCHAT_HEIGHT;
 ADDRLP4 8
 CNSTI4 8
 ASGNI4
 LABELV $671
-line 1442
-;1442:	if (chatHeight <= 0)
+line 1444
+;1444:	if (chatHeight <= 0)
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
 GTI4 $674
-line 1443
-;1443:		return; // disabled
+line 1445
+;1445:		return; // disabled
 ADDRGP4 $669
 JUMPV
 LABELV $674
-line 1445
-;1444:
-;1445:	if (cgs.teamLastChatPos != cgs.teamChatPos) {
+line 1447
+;1446:
+;1447:	if (cgs.teamLastChatPos != cgs.teamChatPos) {
 ADDRGP4 cgs+153784
 INDIRI4
 ADDRGP4 cgs+153780
 INDIRI4
 EQI4 $676
-line 1446
-;1446:		if (cg.time - cgs.teamChatMsgTimes[cgs.teamLastChatPos % chatHeight] > cg_teamChatTime.integer) {
+line 1448
+;1448:		if (cg.time - cgs.teamChatMsgTimes[cgs.teamLastChatPos % chatHeight] > cg_teamChatTime.integer) {
 ADDRGP4 cg+109652
 INDIRI4
 ADDRGP4 cgs+153784
@@ -7139,8 +7141,8 @@ SUBI4
 ADDRGP4 cg_teamChatTime+12
 INDIRI4
 LEI4 $680
-line 1447
-;1447:			cgs.teamLastChatPos++;
+line 1449
+;1449:			cgs.teamLastChatPos++;
 ADDRLP4 36
 ADDRGP4 cgs+153784
 ASGNP4
@@ -7152,12 +7154,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1448
-;1448:		}
-LABELV $680
 line 1450
-;1449:
-;1450:		h = (cgs.teamChatPos - cgs.teamLastChatPos) * TINYCHAR_HEIGHT;
+;1450:		}
+LABELV $680
+line 1452
+;1451:
+;1452:		h = (cgs.teamChatPos - cgs.teamLastChatPos) * TINYCHAR_HEIGHT;
 ADDRLP4 32
 ADDRGP4 cgs+153780
 INDIRI4
@@ -7167,15 +7169,15 @@ SUBI4
 CNSTI4 3
 LSHI4
 ASGNI4
-line 1452
-;1451:
-;1452:		w = 0;
+line 1454
+;1453:
+;1454:		w = 0;
 ADDRLP4 28
 CNSTI4 0
 ASGNI4
-line 1454
-;1453:
-;1454:		for (i = cgs.teamLastChatPos; i < cgs.teamChatPos; i++) {
+line 1456
+;1455:
+;1456:		for (i = cgs.teamLastChatPos; i < cgs.teamChatPos; i++) {
 ADDRLP4 0
 ADDRGP4 cgs+153784
 INDIRI4
@@ -7183,8 +7185,8 @@ ASGNI4
 ADDRGP4 $692
 JUMPV
 LABELV $689
-line 1455
-;1455:			len = CG_DrawStrlen(cgs.teamChatMsgs[i % chatHeight]);
+line 1457
+;1457:			len = CG_DrawStrlen(cgs.teamChatMsgs[i % chatHeight]);
 CNSTI4 241
 ADDRLP4 0
 INDIRI4
@@ -7203,24 +7205,24 @@ ADDRLP4 4
 ADDRLP4 36
 INDIRI4
 ASGNI4
-line 1456
-;1456:			if (len > w)
+line 1458
+;1458:			if (len > w)
 ADDRLP4 4
 INDIRI4
 ADDRLP4 28
 INDIRI4
 LEI4 $696
-line 1457
-;1457:				w = len;
+line 1459
+;1459:				w = len;
 ADDRLP4 28
 ADDRLP4 4
 INDIRI4
 ASGNI4
 LABELV $696
-line 1458
-;1458:		}
+line 1460
+;1460:		}
 LABELV $690
-line 1454
+line 1456
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -7233,25 +7235,25 @@ INDIRI4
 ADDRGP4 cgs+153780
 INDIRI4
 LTI4 $689
-line 1459
-;1459:		w *= TINYCHAR_WIDTH;
+line 1461
+;1461:		w *= TINYCHAR_WIDTH;
 ADDRLP4 28
 ADDRLP4 28
 INDIRI4
 CNSTI4 3
 LSHI4
 ASGNI4
-line 1460
-;1460:		w += TINYCHAR_WIDTH * 2;
+line 1462
+;1462:		w += TINYCHAR_WIDTH * 2;
 ADDRLP4 28
 ADDRLP4 28
 INDIRI4
 CNSTI4 16
 ADDI4
 ASGNI4
-line 1462
-;1461:
-;1462:		if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_RED ) {
+line 1464
+;1463:
+;1464:		if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_RED ) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 304
@@ -7259,28 +7261,28 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $698
-line 1463
-;1463:			hcolor[0] = 1.0f;
+line 1465
+;1465:			hcolor[0] = 1.0f;
 ADDRLP4 12
 CNSTF4 1065353216
 ASGNF4
-line 1464
-;1464:			hcolor[1] = 0.0f;
+line 1466
+;1466:			hcolor[1] = 0.0f;
 ADDRLP4 12+4
 CNSTF4 0
 ASGNF4
-line 1465
-;1465:			hcolor[2] = 0.0f;
+line 1467
+;1467:			hcolor[2] = 0.0f;
 ADDRLP4 12+8
 CNSTF4 0
 ASGNF4
-line 1466
-;1466:			hcolor[3] = 0.33f;
+line 1468
+;1468:			hcolor[3] = 0.33f;
 ADDRLP4 12+12
 CNSTF4 1051260355
 ASGNF4
-line 1467
-;1467:		} else if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE ) {
+line 1469
+;1469:		} else if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE ) {
 ADDRGP4 $699
 JUMPV
 LABELV $698
@@ -7291,65 +7293,65 @@ ADDP4
 INDIRI4
 CNSTI4 2
 NEI4 $704
-line 1468
-;1468:			hcolor[0] = 0.0f;
+line 1470
+;1470:			hcolor[0] = 0.0f;
 ADDRLP4 12
 CNSTF4 0
 ASGNF4
-line 1469
-;1469:			hcolor[1] = 0.0f;
+line 1471
+;1471:			hcolor[1] = 0.0f;
 ADDRLP4 12+4
 CNSTF4 0
 ASGNF4
-line 1470
-;1470:			hcolor[2] = 1.0f;
+line 1472
+;1472:			hcolor[2] = 1.0f;
 ADDRLP4 12+8
 CNSTF4 1065353216
 ASGNF4
-line 1471
-;1471:			hcolor[3] = 0.33f;
+line 1473
+;1473:			hcolor[3] = 0.33f;
 ADDRLP4 12+12
 CNSTF4 1051260355
 ASGNF4
-line 1472
-;1472:		} else {
+line 1474
+;1474:		} else {
 ADDRGP4 $705
 JUMPV
 LABELV $704
-line 1473
-;1473:			hcolor[0] = 0.0f;
+line 1475
+;1475:			hcolor[0] = 0.0f;
 ADDRLP4 12
 CNSTF4 0
 ASGNF4
-line 1474
-;1474:			hcolor[1] = 1.0f;
+line 1476
+;1476:			hcolor[1] = 1.0f;
 ADDRLP4 12+4
 CNSTF4 1065353216
 ASGNF4
-line 1475
-;1475:			hcolor[2] = 0.0f;
+line 1477
+;1477:			hcolor[2] = 0.0f;
 ADDRLP4 12+8
 CNSTF4 0
 ASGNF4
-line 1476
-;1476:			hcolor[3] = 0.33f;
+line 1478
+;1478:			hcolor[3] = 0.33f;
 ADDRLP4 12+12
 CNSTF4 1051260355
 ASGNF4
-line 1477
-;1477:		}
+line 1479
+;1479:		}
 LABELV $705
 LABELV $699
-line 1479
-;1478:
-;1479:		trap_R_SetColor( hcolor );
+line 1481
+;1480:
+;1481:		trap_R_SetColor( hcolor );
 ADDRLP4 12
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1480
-;1480:		CG_DrawPic( CHATLOC_X, CHATLOC_Y - h, 640, h, cgs.media.teamStatusBar );
+line 1482
+;1482:		CG_DrawPic( CHATLOC_X, CHATLOC_Y - h, 640, h, cgs.media.teamStatusBar );
 CNSTF4 0
 ARGF4
 ADDRLP4 36
@@ -7374,16 +7376,16 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1481
-;1481:		trap_R_SetColor( NULL );
+line 1483
+;1483:		trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1483
-;1482:
-;1483:		hcolor[0] = hcolor[1] = hcolor[2] = 1.0f;
+line 1485
+;1484:
+;1485:		hcolor[0] = hcolor[1] = hcolor[2] = 1.0f;
 ADDRLP4 40
 CNSTF4 1065353216
 ASGNF4
@@ -7399,14 +7401,14 @@ ADDRLP4 12
 ADDRLP4 40
 INDIRF4
 ASGNF4
-line 1484
-;1484:		hcolor[3] = 1.0f;
+line 1486
+;1486:		hcolor[3] = 1.0f;
 ADDRLP4 12+12
 CNSTF4 1065353216
 ASGNF4
-line 1486
-;1485:
-;1486:		for (i = cgs.teamChatPos - 1; i >= cgs.teamLastChatPos; i--) {
+line 1488
+;1487:
+;1488:		for (i = cgs.teamChatPos - 1; i >= cgs.teamLastChatPos; i--) {
 ADDRLP4 0
 ADDRGP4 cgs+153780
 INDIRI4
@@ -7416,8 +7418,8 @@ ASGNI4
 ADDRGP4 $721
 JUMPV
 LABELV $718
-line 1487
-;1487:			CG_DrawStringExt( CHATLOC_X + TINYCHAR_WIDTH, 
+line 1489
+;1489:			CG_DrawStringExt( CHATLOC_X + TINYCHAR_WIDTH, 
 ADDRLP4 44
 CNSTI4 8
 ASGNI4
@@ -7467,13 +7469,13 @@ ARGI4
 ADDRGP4 CG_DrawStringExt
 CALLV
 pop
-line 1491
-;1488:				CHATLOC_Y - (cgs.teamChatPos - i)*TINYCHAR_HEIGHT, 
-;1489:				cgs.teamChatMsgs[i % chatHeight], hcolor, qfalse, qfalse,
-;1490:				TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 0 );
-;1491:		}
+line 1493
+;1490:				CHATLOC_Y - (cgs.teamChatPos - i)*TINYCHAR_HEIGHT, 
+;1491:				cgs.teamChatMsgs[i % chatHeight], hcolor, qfalse, qfalse,
+;1492:				TINYCHAR_WIDTH, TINYCHAR_HEIGHT, 0 );
+;1493:		}
 LABELV $719
-line 1486
+line 1488
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -7486,28 +7488,28 @@ INDIRI4
 ADDRGP4 cgs+153784
 INDIRI4
 GEI4 $718
-line 1492
-;1492:	}
+line 1494
+;1494:	}
 LABELV $676
-line 1493
-;1493:}
+line 1495
+;1495:}
 LABELV $669
 endproc CG_DrawTeamInfo 56 36
 proc CG_DrawHoldableItem 8 20
-line 1502
-;1494:#endif // MISSIONPACK
-;1495:
-;1496:/*
-;1497:===================
-;1498:CG_DrawHoldableItem
+line 1504
+;1496:#endif // MISSIONPACK
+;1497:
+;1498:/*
 ;1499:===================
-;1500:*/
-;1501:#ifndef MISSIONPACK
-;1502:static void CG_DrawHoldableItem( void ) { 
-line 1505
-;1503:	int		value;
-;1504:
-;1505:	value = cg.snap->ps.stats[STAT_HOLDABLE_ITEM];
+;1500:CG_DrawHoldableItem
+;1501:===================
+;1502:*/
+;1503:#ifndef MISSIONPACK
+;1504:static void CG_DrawHoldableItem( void ) { 
+line 1507
+;1505:	int		value;
+;1506:
+;1507:	value = cg.snap->ps.stats[STAT_HOLDABLE_ITEM];
 ADDRLP4 0
 ADDRGP4 cg+36
 INDIRP4
@@ -7515,22 +7517,22 @@ CNSTI4 232
 ADDP4
 INDIRI4
 ASGNI4
-line 1506
-;1506:	if ( value ) {
+line 1508
+;1508:	if ( value ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 EQI4 $728
-line 1507
-;1507:		CG_RegisterItemVisuals( value );
+line 1509
+;1509:		CG_RegisterItemVisuals( value );
 ADDRLP4 0
 INDIRI4
 ARGI4
 ADDRGP4 CG_RegisterItemVisuals
 CALLV
 pop
-line 1508
-;1508:		CG_DrawPic( 640-ICON_SIZE, (SCREEN_HEIGHT-ICON_SIZE)/2, ICON_SIZE, ICON_SIZE, cg_items[ value ].icon );
+line 1510
+;1510:		CG_DrawPic( 640-ICON_SIZE, (SCREEN_HEIGHT-ICON_SIZE)/2, ICON_SIZE, ICON_SIZE, cg_items[ value ].icon );
 CNSTF4 1142161408
 ARGF4
 CNSTF4 1129840640
@@ -7555,64 +7557,64 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1509
-;1509:	}
-LABELV $728
 line 1511
-;1510:
-;1511:}
+;1511:	}
+LABELV $728
+line 1513
+;1512:
+;1513:}
 LABELV $726
 endproc CG_DrawHoldableItem 8 20
 proc CG_DrawReward 68 36
-line 1539
-;1512:#endif // MISSIONPACK
-;1513:
-;1514:#ifdef MISSIONPACK
-;1515:/*
-;1516:===================
-;1517:CG_DrawPersistantPowerup
+line 1541
+;1514:#endif // MISSIONPACK
+;1515:
+;1516:#ifdef MISSIONPACK
+;1517:/*
 ;1518:===================
-;1519:*/
-;1520:#if 0 // sos001208 - DEAD
-;1521:static void CG_DrawPersistantPowerup( void ) { 
-;1522:	int		value;
-;1523:
-;1524:	value = cg.snap->ps.stats[STAT_PERSISTANT_POWERUP];
-;1525:	if ( value ) {
-;1526:		CG_RegisterItemVisuals( value );
-;1527:		CG_DrawPic( 640-ICON_SIZE, (SCREEN_HEIGHT-ICON_SIZE)/2 - ICON_SIZE, ICON_SIZE, ICON_SIZE, cg_items[ value ].icon );
-;1528:	}
-;1529:}
-;1530:#endif
-;1531:#endif // MISSIONPACK
-;1532:
-;1533:
-;1534:/*
-;1535:===================
-;1536:CG_DrawReward
+;1519:CG_DrawPersistantPowerup
+;1520:===================
+;1521:*/
+;1522:#if 0 // sos001208 - DEAD
+;1523:static void CG_DrawPersistantPowerup( void ) { 
+;1524:	int		value;
+;1525:
+;1526:	value = cg.snap->ps.stats[STAT_PERSISTANT_POWERUP];
+;1527:	if ( value ) {
+;1528:		CG_RegisterItemVisuals( value );
+;1529:		CG_DrawPic( 640-ICON_SIZE, (SCREEN_HEIGHT-ICON_SIZE)/2 - ICON_SIZE, ICON_SIZE, ICON_SIZE, cg_items[ value ].icon );
+;1530:	}
+;1531:}
+;1532:#endif
+;1533:#endif // MISSIONPACK
+;1534:
+;1535:
+;1536:/*
 ;1537:===================
-;1538:*/
-;1539:static void CG_DrawReward( void ) { 
-line 1545
-;1540:	float	*color;
-;1541:	int		i, count;
-;1542:	float	x, y;
-;1543:	char	buf[32];
-;1544:
-;1545:	if ( !cg_drawRewards.integer ) {
+;1538:CG_DrawReward
+;1539:===================
+;1540:*/
+;1541:static void CG_DrawReward( void ) { 
+line 1547
+;1542:	float	*color;
+;1543:	int		i, count;
+;1544:	float	x, y;
+;1545:	char	buf[32];
+;1546:
+;1547:	if ( !cg_drawRewards.integer ) {
 ADDRGP4 cg_drawRewards+12
 INDIRI4
 CNSTI4 0
 NEI4 $732
-line 1546
-;1546:		return;
+line 1548
+;1548:		return;
 ADDRGP4 $731
 JUMPV
 LABELV $732
-line 1549
-;1547:	}
-;1548:
-;1549:	color = CG_FadeColor( cg.rewardTime, REWARD_TIME );
+line 1551
+;1549:	}
+;1550:
+;1551:	color = CG_FadeColor( cg.rewardTime, REWARD_TIME );
 ADDRGP4 cg+126496
 INDIRI4
 ARGI4
@@ -7626,29 +7628,29 @@ ADDRLP4 16
 ADDRLP4 52
 INDIRP4
 ASGNP4
-line 1550
-;1550:	if ( !color ) {
+line 1552
+;1552:	if ( !color ) {
 ADDRLP4 16
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $736
-line 1551
-;1551:		if (cg.rewardStack > 0) {
+line 1553
+;1553:		if (cg.rewardStack > 0) {
 ADDRGP4 cg+126492
 INDIRI4
 CNSTI4 0
 LEI4 $731
-line 1552
-;1552:			for(i = 0; i < cg.rewardStack; i++) {
+line 1554
+;1554:			for(i = 0; i < cg.rewardStack; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $744
 JUMPV
 LABELV $741
-line 1553
-;1553:				cg.rewardSound[i] = cg.rewardSound[i+1];
+line 1555
+;1555:				cg.rewardSound[i] = cg.rewardSound[i+1];
 ADDRLP4 56
 ADDRLP4 0
 INDIRI4
@@ -7665,8 +7667,8 @@ ADDRGP4 cg+126580+4
 ADDP4
 INDIRI4
 ASGNI4
-line 1554
-;1554:				cg.rewardShader[i] = cg.rewardShader[i+1];
+line 1556
+;1556:				cg.rewardShader[i] = cg.rewardShader[i+1];
 ADDRLP4 60
 ADDRLP4 0
 INDIRI4
@@ -7683,8 +7685,8 @@ ADDRGP4 cg+126540+4
 ADDP4
 INDIRI4
 ASGNI4
-line 1555
-;1555:				cg.rewardCount[i] = cg.rewardCount[i+1];
+line 1557
+;1557:				cg.rewardCount[i] = cg.rewardCount[i+1];
 ADDRLP4 64
 ADDRLP4 0
 INDIRI4
@@ -7701,10 +7703,10 @@ ADDRGP4 cg+126500+4
 ADDP4
 INDIRI4
 ASGNI4
-line 1556
-;1556:			}
+line 1558
+;1558:			}
 LABELV $742
-line 1552
+line 1554
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -7717,14 +7719,14 @@ INDIRI4
 ADDRGP4 cg+126492
 INDIRI4
 LTI4 $741
-line 1557
-;1557:			cg.rewardTime = cg.time;
+line 1559
+;1559:			cg.rewardTime = cg.time;
 ADDRGP4 cg+126496
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 1558
-;1558:			cg.rewardStack--;
+line 1560
+;1560:			cg.rewardStack--;
 ADDRLP4 56
 ADDRGP4 cg+126492
 ASGNP4
@@ -7736,8 +7738,8 @@ INDIRI4
 CNSTI4 1
 SUBI4
 ASGNI4
-line 1559
-;1559:			color = CG_FadeColor( cg.rewardTime, REWARD_TIME );
+line 1561
+;1561:			color = CG_FadeColor( cg.rewardTime, REWARD_TIME );
 ADDRGP4 cg+126496
 INDIRI4
 ARGI4
@@ -7751,8 +7753,8 @@ ADDRLP4 16
 ADDRLP4 60
 INDIRP4
 ASGNP4
-line 1560
-;1560:			trap_S_StartLocalSound(cg.rewardSound[0], CHAN_ANNOUNCER);
+line 1562
+;1562:			trap_S_StartLocalSound(cg.rewardSound[0], CHAN_ANNOUNCER);
 ADDRGP4 cg+126580
 INDIRI4
 ARGI4
@@ -7761,58 +7763,58 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 1561
-;1561:		} else {
-line 1562
-;1562:			return;
-LABELV $739
+line 1563
+;1563:		} else {
 line 1564
-;1563:		}
-;1564:	}
-LABELV $736
+;1564:			return;
+LABELV $739
 line 1566
-;1565:
-;1566:	trap_R_SetColor( color );
+;1565:		}
+;1566:	}
+LABELV $736
+line 1568
+;1567:
+;1568:	trap_R_SetColor( color );
 ADDRLP4 16
 INDIRP4
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1583
-;1567:
-;1568:	/*
-;1569:	count = cg.rewardCount[0]/10;				// number of big rewards to draw
-;1570:
-;1571:	if (count) {
-;1572:		y = 4;
-;1573:		x = 320 - count * ICON_SIZE;
-;1574:		for ( i = 0 ; i < count ; i++ ) {
-;1575:			CG_DrawPic( x, y, (ICON_SIZE*2)-4, (ICON_SIZE*2)-4, cg.rewardShader[0] );
-;1576:			x += (ICON_SIZE*2);
-;1577:		}
-;1578:	}
-;1579:
-;1580:	count = cg.rewardCount[0] - count*10;		// number of small rewards to draw
-;1581:	*/
-;1582:
-;1583:	if ( cg.rewardCount[0] >= 10 ) {
+line 1585
+;1569:
+;1570:	/*
+;1571:	count = cg.rewardCount[0]/10;				// number of big rewards to draw
+;1572:
+;1573:	if (count) {
+;1574:		y = 4;
+;1575:		x = 320 - count * ICON_SIZE;
+;1576:		for ( i = 0 ; i < count ; i++ ) {
+;1577:			CG_DrawPic( x, y, (ICON_SIZE*2)-4, (ICON_SIZE*2)-4, cg.rewardShader[0] );
+;1578:			x += (ICON_SIZE*2);
+;1579:		}
+;1580:	}
+;1581:
+;1582:	count = cg.rewardCount[0] - count*10;		// number of small rewards to draw
+;1583:	*/
+;1584:
+;1585:	if ( cg.rewardCount[0] >= 10 ) {
 ADDRGP4 cg+126500
 INDIRI4
 CNSTI4 10
 LTI4 $760
-line 1584
-;1584:		y = 56;
+line 1586
+;1586:		y = 56;
 ADDRLP4 8
 CNSTF4 1113587712
 ASGNF4
-line 1585
-;1585:		x = 320 - ICON_SIZE/2;
+line 1587
+;1587:		x = 320 - ICON_SIZE/2;
 ADDRLP4 4
 CNSTF4 1133772800
 ASGNF4
-line 1586
-;1586:		CG_DrawPic( x, y, ICON_SIZE-4, ICON_SIZE-4, cg.rewardShader[0] );
+line 1588
+;1588:		CG_DrawPic( x, y, ICON_SIZE-4, ICON_SIZE-4, cg.rewardShader[0] );
 ADDRLP4 4
 INDIRF4
 ARGF4
@@ -7834,8 +7836,8 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1587
-;1587:		Com_sprintf(buf, sizeof(buf), "%d", cg.rewardCount[0]);
+line 1589
+;1589:		Com_sprintf(buf, sizeof(buf), "%d", cg.rewardCount[0]);
 ADDRLP4 20
 ARGP4
 CNSTI4 32
@@ -7848,8 +7850,8 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 1588
-;1588:		x = ( SCREEN_WIDTH - SMALLCHAR_WIDTH * CG_DrawStrlen( buf ) ) / 2;
+line 1590
+;1590:		x = ( SCREEN_WIDTH - SMALLCHAR_WIDTH * CG_DrawStrlen( buf ) ) / 2;
 ADDRLP4 20
 ARGP4
 ADDRLP4 60
@@ -7867,8 +7869,8 @@ CNSTI4 2
 DIVI4
 CVIF4 4
 ASGNF4
-line 1589
-;1589:		CG_DrawStringExt( x, y+ICON_SIZE, buf, color, qfalse, qtrue,
+line 1591
+;1591:		CG_DrawStringExt( x, y+ICON_SIZE, buf, color, qfalse, qtrue,
 ADDRLP4 4
 INDIRF4
 CVFI4 4
@@ -7902,29 +7904,29 @@ ARGI4
 ADDRGP4 CG_DrawStringExt
 CALLV
 pop
-line 1591
-;1590:								SMALLCHAR_WIDTH, SMALLCHAR_HEIGHT, 0 );
-;1591:	}
+line 1593
+;1592:								SMALLCHAR_WIDTH, SMALLCHAR_HEIGHT, 0 );
+;1593:	}
 ADDRGP4 $761
 JUMPV
 LABELV $760
-line 1592
-;1592:	else {
 line 1594
-;1593:
-;1594:		count = cg.rewardCount[0];
+;1594:	else {
+line 1596
+;1595:
+;1596:		count = cg.rewardCount[0];
 ADDRLP4 12
 ADDRGP4 cg+126500
 INDIRI4
 ASGNI4
-line 1596
-;1595:
-;1596:		y = 56;
+line 1598
+;1597:
+;1598:		y = 56;
 ADDRLP4 8
 CNSTF4 1113587712
 ASGNF4
-line 1597
-;1597:		x = 320 - count * ICON_SIZE/2;
+line 1599
+;1599:		x = 320 - count * ICON_SIZE/2;
 ADDRLP4 4
 CNSTI4 320
 CNSTI4 48
@@ -7936,16 +7938,16 @@ DIVI4
 SUBI4
 CVIF4 4
 ASGNF4
-line 1598
-;1598:		for ( i = 0 ; i < count ; i++ ) {
+line 1600
+;1600:		for ( i = 0 ; i < count ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $770
 JUMPV
 LABELV $767
-line 1599
-;1599:			CG_DrawPic( x, y, ICON_SIZE-4, ICON_SIZE-4, cg.rewardShader[0] );
+line 1601
+;1601:			CG_DrawPic( x, y, ICON_SIZE-4, ICON_SIZE-4, cg.rewardShader[0] );
 ADDRLP4 4
 INDIRF4
 ARGF4
@@ -7967,18 +7969,18 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1600
-;1600:			x += ICON_SIZE;
+line 1602
+;1602:			x += ICON_SIZE;
 ADDRLP4 4
 ADDRLP4 4
 INDIRF4
 CNSTF4 1111490560
 ADDF4
 ASGNF4
-line 1601
-;1601:		}
+line 1603
+;1603:		}
 LABELV $768
-line 1598
+line 1600
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -7991,58 +7993,58 @@ INDIRI4
 ADDRLP4 12
 INDIRI4
 LTI4 $767
-line 1602
-;1602:	}
+line 1604
+;1604:	}
 LABELV $761
-line 1603
-;1603:	trap_R_SetColor( NULL );
+line 1605
+;1605:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1604
-;1604:}
+line 1606
+;1606:}
 LABELV $731
 endproc CG_DrawReward 68 36
 export CG_AddLagometerFrameInfo
 proc CG_AddLagometerFrameInfo 8 0
-line 1635
-;1605:
-;1606:
-;1607:/*
-;1608:===============================================================================
-;1609:
-;1610:LAGOMETER
+line 1637
+;1607:
+;1608:
+;1609:/*
+;1610:===============================================================================
 ;1611:
-;1612:===============================================================================
-;1613:*/
-;1614:
-;1615:#define	LAG_SAMPLES		128
+;1612:LAGOMETER
+;1613:
+;1614:===============================================================================
+;1615:*/
 ;1616:
-;1617:
-;1618:typedef struct {
-;1619:	int		frameSamples[LAG_SAMPLES];
-;1620:	int		frameCount;
-;1621:	int		snapshotFlags[LAG_SAMPLES];
-;1622:	int		snapshotSamples[LAG_SAMPLES];
-;1623:	int		snapshotCount;
-;1624:} lagometer_t;
-;1625:
-;1626:lagometer_t		lagometer;
+;1617:#define	LAG_SAMPLES		128
+;1618:
+;1619:
+;1620:typedef struct {
+;1621:	int		frameSamples[LAG_SAMPLES];
+;1622:	int		frameCount;
+;1623:	int		snapshotFlags[LAG_SAMPLES];
+;1624:	int		snapshotSamples[LAG_SAMPLES];
+;1625:	int		snapshotCount;
+;1626:} lagometer_t;
 ;1627:
-;1628:/*
-;1629:==============
-;1630:CG_AddLagometerFrameInfo
-;1631:
-;1632:Adds the current interpolate / extrapolate bar for this frame
-;1633:==============
-;1634:*/
-;1635:void CG_AddLagometerFrameInfo( void ) {
-line 1638
-;1636:	int			offset;
-;1637:
-;1638:	offset = cg.time - cg.latestSnapshotTime;
+;1628:lagometer_t		lagometer;
+;1629:
+;1630:/*
+;1631:==============
+;1632:CG_AddLagometerFrameInfo
+;1633:
+;1634:Adds the current interpolate / extrapolate bar for this frame
+;1635:==============
+;1636:*/
+;1637:void CG_AddLagometerFrameInfo( void ) {
+line 1640
+;1638:	int			offset;
+;1639:
+;1640:	offset = cg.time - cg.latestSnapshotTime;
 ADDRLP4 0
 ADDRGP4 cg+109652
 INDIRI4
@@ -8050,8 +8052,8 @@ ADDRGP4 cg+32
 INDIRI4
 SUBI4
 ASGNI4
-line 1639
-;1639:	lagometer.frameSamples[ lagometer.frameCount & ( LAG_SAMPLES - 1) ] = offset;
+line 1641
+;1641:	lagometer.frameSamples[ lagometer.frameCount & ( LAG_SAMPLES - 1) ] = offset;
 ADDRGP4 lagometer+512
 INDIRI4
 CNSTI4 127
@@ -8063,8 +8065,8 @@ ADDP4
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 1640
-;1640:	lagometer.frameCount++;
+line 1642
+;1642:	lagometer.frameCount++;
 ADDRLP4 4
 ADDRGP4 lagometer+512
 ASGNP4
@@ -8076,35 +8078,35 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1641
-;1641:}
+line 1643
+;1643:}
 LABELV $773
 endproc CG_AddLagometerFrameInfo 8 0
 export CG_AddLagometerSnapshotInfo
 proc CG_AddLagometerSnapshotInfo 4 0
-line 1653
-;1642:
-;1643:/*
-;1644:==============
-;1645:CG_AddLagometerSnapshotInfo
-;1646:
-;1647:Each time a snapshot is received, log its ping time and
-;1648:the number of snapshots that were dropped before it.
-;1649:
-;1650:Pass NULL for a dropped packet.
-;1651:==============
-;1652:*/
-;1653:void CG_AddLagometerSnapshotInfo( snapshot_t *snap ) {
 line 1655
-;1654:	// dropped packet
-;1655:	if ( !snap ) {
+;1644:
+;1645:/*
+;1646:==============
+;1647:CG_AddLagometerSnapshotInfo
+;1648:
+;1649:Each time a snapshot is received, log its ping time and
+;1650:the number of snapshots that were dropped before it.
+;1651:
+;1652:Pass NULL for a dropped packet.
+;1653:==============
+;1654:*/
+;1655:void CG_AddLagometerSnapshotInfo( snapshot_t *snap ) {
+line 1657
+;1656:	// dropped packet
+;1657:	if ( !snap ) {
 ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $779
-line 1656
-;1656:		lagometer.snapshotSamples[ lagometer.snapshotCount & ( LAG_SAMPLES - 1) ] = -1;
+line 1658
+;1658:		lagometer.snapshotSamples[ lagometer.snapshotCount & ( LAG_SAMPLES - 1) ] = -1;
 ADDRGP4 lagometer+1540
 INDIRI4
 CNSTI4 127
@@ -8115,8 +8117,8 @@ ADDRGP4 lagometer+1028
 ADDP4
 CNSTI4 -1
 ASGNI4
-line 1657
-;1657:		lagometer.snapshotCount++;
+line 1659
+;1659:		lagometer.snapshotCount++;
 ADDRLP4 0
 ADDRGP4 lagometer+1540
 ASGNP4
@@ -8128,16 +8130,16 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1658
-;1658:		return;
+line 1660
+;1660:		return;
 ADDRGP4 $778
 JUMPV
 LABELV $779
-line 1662
-;1659:	}
-;1660:
-;1661:	// add this snapshot's info
-;1662:	lagometer.snapshotSamples[ lagometer.snapshotCount & ( LAG_SAMPLES - 1) ] = snap->ping;
+line 1664
+;1661:	}
+;1662:
+;1663:	// add this snapshot's info
+;1664:	lagometer.snapshotSamples[ lagometer.snapshotCount & ( LAG_SAMPLES - 1) ] = snap->ping;
 ADDRGP4 lagometer+1540
 INDIRI4
 CNSTI4 127
@@ -8152,8 +8154,8 @@ CNSTI4 4
 ADDP4
 INDIRI4
 ASGNI4
-line 1663
-;1663:	lagometer.snapshotFlags[ lagometer.snapshotCount & ( LAG_SAMPLES - 1) ] = snap->snapFlags;
+line 1665
+;1665:	lagometer.snapshotFlags[ lagometer.snapshotCount & ( LAG_SAMPLES - 1) ] = snap->snapFlags;
 ADDRGP4 lagometer+1540
 INDIRI4
 CNSTI4 127
@@ -8166,8 +8168,8 @@ ADDRFP4 0
 INDIRP4
 INDIRI4
 ASGNI4
-line 1664
-;1664:	lagometer.snapshotCount++;
+line 1666
+;1666:	lagometer.snapshotCount++;
 ADDRLP4 0
 ADDRGP4 lagometer+1540
 ASGNP4
@@ -8179,30 +8181,30 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1665
-;1665:}
+line 1667
+;1667:}
 LABELV $778
 endproc CG_AddLagometerSnapshotInfo 4 0
 proc CG_DrawDisconnect 64 20
-line 1674
-;1666:
-;1667:/*
-;1668:==============
-;1669:CG_DrawDisconnect
-;1670:
-;1671:Should we draw something differnet for long lag vs no packets?
-;1672:==============
-;1673:*/
-;1674:static void CG_DrawDisconnect( void ) {
-line 1682
-;1675:	float		x, y;
-;1676:	int			cmdNum;
-;1677:	usercmd_t	cmd;
-;1678:	const char		*s;
-;1679:	int			w;  // bk010215 - FIXME char message[1024];
-;1680:
-;1681:	// draw the phone jack if we are completely past our buffers
-;1682:	cmdNum = trap_GetCurrentCmdNumber() - CMD_BACKUP + 1;
+line 1676
+;1668:
+;1669:/*
+;1670:==============
+;1671:CG_DrawDisconnect
+;1672:
+;1673:Should we draw something differnet for long lag vs no packets?
+;1674:==============
+;1675:*/
+;1676:static void CG_DrawDisconnect( void ) {
+line 1684
+;1677:	float		x, y;
+;1678:	int			cmdNum;
+;1679:	usercmd_t	cmd;
+;1680:	const char		*s;
+;1681:	int			w;  // bk010215 - FIXME char message[1024];
+;1682:
+;1683:	// draw the phone jack if we are completely past our buffers
+;1684:	cmdNum = trap_GetCurrentCmdNumber() - CMD_BACKUP + 1;
 ADDRLP4 44
 ADDRGP4 trap_GetCurrentCmdNumber
 CALLI4
@@ -8215,8 +8217,8 @@ SUBI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1683
-;1683:	trap_GetUserCmd( cmdNum, &cmd );
+line 1685
+;1685:	trap_GetUserCmd( cmdNum, &cmd );
 ADDRLP4 36
 INDIRI4
 ARGI4
@@ -8225,8 +8227,8 @@ ARGP4
 ADDRGP4 trap_GetUserCmd
 CALLI4
 pop
-line 1684
-;1684:	if ( cmd.serverTime <= cg.snap->ps.commandTime
+line 1686
+;1686:	if ( cmd.serverTime <= cg.snap->ps.commandTime
 ADDRLP4 48
 ADDRLP4 0
 INDIRI4
@@ -8245,23 +8247,23 @@ ADDRGP4 cg+109652
 INDIRI4
 LEI4 $790
 LABELV $794
-line 1685
-;1685:		|| cmd.serverTime > cg.time ) {	// special check for map_restart // bk 0102165 - FIXME
-line 1686
-;1686:		return;
+line 1687
+;1687:		|| cmd.serverTime > cg.time ) {	// special check for map_restart // bk 0102165 - FIXME
+line 1688
+;1688:		return;
 ADDRGP4 $789
 JUMPV
 LABELV $790
-line 1690
-;1687:	}
-;1688:
-;1689:	// also add text in center of screen
-;1690:	s = "Connection Interrupted"; // bk 010215 - FIXME
+line 1692
+;1689:	}
+;1690:
+;1691:	// also add text in center of screen
+;1692:	s = "Connection Interrupted"; // bk 010215 - FIXME
 ADDRLP4 24
 ADDRGP4 $795
 ASGNP4
-line 1691
-;1691:	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
+line 1693
+;1693:	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 ADDRLP4 24
 INDIRP4
 ARGP4
@@ -8275,8 +8277,8 @@ INDIRI4
 CNSTI4 4
 LSHI4
 ASGNI4
-line 1692
-;1692:	CG_DrawBigString( 320 - w/2, 100, s, 1.0F);
+line 1694
+;1694:	CG_DrawBigString( 320 - w/2, 100, s, 1.0F);
 CNSTI4 320
 ADDRLP4 40
 INDIRI4
@@ -8294,10 +8296,10 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 1695
-;1693:
-;1694:	// blink the icon
-;1695:	if ( ( cg.time >> 9 ) & 1 ) {
+line 1697
+;1695:
+;1696:	// blink the icon
+;1697:	if ( ( cg.time >> 9 ) & 1 ) {
 ADDRGP4 cg+109652
 INDIRI4
 CNSTI4 9
@@ -8306,26 +8308,26 @@ CNSTI4 1
 BANDI4
 CNSTI4 0
 EQI4 $796
-line 1696
-;1696:		return;
+line 1698
+;1698:		return;
 ADDRGP4 $789
 JUMPV
 LABELV $796
-line 1699
-;1697:	}
-;1698:
-;1699:	x = 640 - 48;
+line 1701
+;1699:	}
+;1700:
+;1701:	x = 640 - 48;
 ADDRLP4 28
 CNSTF4 1142161408
 ASGNF4
-line 1700
-;1700:	y = 480 - 48;
+line 1702
+;1702:	y = 480 - 48;
 ADDRLP4 32
 CNSTF4 1138229248
 ASGNF4
-line 1702
-;1701:
-;1702:	CG_DrawPic( x, y, 48, 48, trap_R_RegisterShader("gfx/2d/net.tga" ) );
+line 1704
+;1703:
+;1704:	CG_DrawPic( x, y, 48, 48, trap_R_RegisterShader("gfx/2d/net.tga" ) );
 ADDRGP4 $799
 ARGP4
 ADDRLP4 56
@@ -8353,77 +8355,77 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1703
-;1703:}
+line 1705
+;1705:}
 LABELV $789
 endproc CG_DrawDisconnect 64 20
 proc CG_DrawLagometer 64 36
-line 1714
-;1704:
-;1705:
-;1706:#define	MAX_LAGOMETER_PING	900
-;1707:#define	MAX_LAGOMETER_RANGE	300
-;1708:
-;1709:/*
-;1710:==============
-;1711:CG_DrawLagometer
+line 1716
+;1706:
+;1707:
+;1708:#define	MAX_LAGOMETER_PING	900
+;1709:#define	MAX_LAGOMETER_RANGE	300
+;1710:
+;1711:/*
 ;1712:==============
-;1713:*/
-;1714:static void CG_DrawLagometer( void ) {
-line 1722
-;1715:	int		a, x, y, i;
-;1716:	float	v;
-;1717:	float	ax, ay, aw, ah, mid, range;
-;1718:	int		color;
-;1719:	float	vscale;
-;1720:
-;1721://unlagged - misc
-;1722:	if ( !cg_lagometer.integer /* || cgs.localServer */) {
+;1713:CG_DrawLagometer
+;1714:==============
+;1715:*/
+;1716:static void CG_DrawLagometer( void ) {
+line 1724
+;1717:	int		a, x, y, i;
+;1718:	float	v;
+;1719:	float	ax, ay, aw, ah, mid, range;
+;1720:	int		color;
+;1721:	float	vscale;
+;1722:
+;1723://unlagged - misc
+;1724:	if ( !cg_lagometer.integer /* || cgs.localServer */) {
 ADDRGP4 cg_lagometer+12
 INDIRI4
 CNSTI4 0
 NEI4 $801
-line 1724
-;1723://unlagged - misc
-;1724:		CG_DrawDisconnect();
+line 1726
+;1725://unlagged - misc
+;1726:		CG_DrawDisconnect();
 ADDRGP4 CG_DrawDisconnect
 CALLV
 pop
-line 1725
-;1725:		return;
+line 1727
+;1727:		return;
 ADDRGP4 $800
 JUMPV
 LABELV $801
-line 1735
-;1726:	}
-;1727:
-;1728:	//
-;1729:	// draw the graph
+line 1737
+;1728:	}
+;1729:
 ;1730:	//
-;1731:#ifdef MISSIONPACK
-;1732:	x = 640 - 48;
-;1733:	y = 480 - 144;
-;1734:#else
-;1735:	x = 640 - 48;
+;1731:	// draw the graph
+;1732:	//
+;1733:#ifdef MISSIONPACK
+;1734:	x = 640 - 48;
+;1735:	y = 480 - 144;
+;1736:#else
+;1737:	x = 640 - 48;
 ADDRLP4 44
 CNSTI4 592
 ASGNI4
-line 1736
-;1736:	y = 48;//480 - 48; // Shafe - Changed
+line 1738
+;1738:	y = 48;//480 - 48; // Shafe - Changed
 ADDRLP4 48
 CNSTI4 48
 ASGNI4
-line 1739
-;1737:#endif
-;1738:
-;1739:	trap_R_SetColor( NULL );
+line 1741
+;1739:#endif
+;1740:
+;1741:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1740
-;1740:	CG_DrawPic( x, y, 48, 48, cgs.media.lagometerShader );
+line 1742
+;1742:	CG_DrawPic( x, y, 48, 48, cgs.media.lagometerShader );
 ADDRLP4 44
 INDIRI4
 CVIF4 4
@@ -8447,33 +8449,33 @@ ARGI4
 ADDRGP4 CG_DrawPic
 CALLV
 pop
-line 1742
-;1741:
-;1742:	ax = x;
+line 1744
+;1743:
+;1744:	ax = x;
 ADDRLP4 24
 ADDRLP4 44
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1743
-;1743:	ay = y;
+line 1745
+;1745:	ay = y;
 ADDRLP4 36
 ADDRLP4 48
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1744
-;1744:	aw = 48;
+line 1746
+;1746:	aw = 48;
 ADDRLP4 12
 CNSTF4 1111490560
 ASGNF4
-line 1745
-;1745:	ah = 48;
+line 1747
+;1747:	ah = 48;
 ADDRLP4 32
 CNSTF4 1111490560
 ASGNF4
-line 1746
-;1746:	CG_AdjustFrom640( &ax, &ay, &aw, &ah );
+line 1748
+;1748:	CG_AdjustFrom640( &ax, &ay, &aw, &ah );
 ADDRLP4 24
 ARGP4
 ADDRLP4 36
@@ -8485,22 +8487,22 @@ ARGP4
 ADDRGP4 CG_AdjustFrom640
 CALLV
 pop
-line 1748
-;1747:
-;1748:	color = -1;
+line 1750
+;1749:
+;1750:	color = -1;
 ADDRLP4 20
 CNSTI4 -1
 ASGNI4
-line 1749
-;1749:	range = ah / 3;
+line 1751
+;1751:	range = ah / 3;
 ADDRLP4 16
 ADDRLP4 32
 INDIRF4
 CNSTF4 1077936128
 DIVF4
 ASGNF4
-line 1750
-;1750:	mid = ay + range;
+line 1752
+;1752:	mid = ay + range;
 ADDRLP4 40
 ADDRLP4 36
 INDIRF4
@@ -8508,27 +8510,27 @@ ADDRLP4 16
 INDIRF4
 ADDF4
 ASGNF4
-line 1752
-;1751:
-;1752:	vscale = range / MAX_LAGOMETER_RANGE;
+line 1754
+;1753:
+;1754:	vscale = range / MAX_LAGOMETER_RANGE;
 ADDRLP4 28
 ADDRLP4 16
 INDIRF4
 CNSTF4 1133903872
 DIVF4
 ASGNF4
-line 1755
-;1753:
-;1754:	// draw the frame interpoalte / extrapolate graph
-;1755:	for ( a = 0 ; a < aw ; a++ ) {
+line 1757
+;1755:
+;1756:	// draw the frame interpoalte / extrapolate graph
+;1757:	for ( a = 0 ; a < aw ; a++ ) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
 ADDRGP4 $809
 JUMPV
 LABELV $806
-line 1756
-;1756:		i = ( lagometer.frameCount - 1 - a ) & (LAG_SAMPLES - 1);
+line 1758
+;1758:		i = ( lagometer.frameCount - 1 - a ) & (LAG_SAMPLES - 1);
 ADDRLP4 8
 ADDRGP4 lagometer+512
 INDIRI4
@@ -8540,8 +8542,8 @@ SUBI4
 CNSTI4 127
 BANDI4
 ASGNI4
-line 1757
-;1757:		v = lagometer.frameSamples[i];
+line 1759
+;1759:		v = lagometer.frameSamples[i];
 ADDRLP4 0
 ADDRLP4 8
 INDIRI4
@@ -8552,8 +8554,8 @@ ADDP4
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1758
-;1758:		v *= vscale;
+line 1760
+;1760:		v *= vscale;
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -8561,51 +8563,51 @@ ADDRLP4 28
 INDIRF4
 MULF4
 ASGNF4
-line 1759
-;1759:		if ( v > 0 ) {
+line 1761
+;1761:		if ( v > 0 ) {
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
 LEF4 $811
-line 1760
-;1760:			if ( color != 1 ) {
+line 1762
+;1762:			if ( color != 1 ) {
 ADDRLP4 20
 INDIRI4
 CNSTI4 1
 EQI4 $813
-line 1761
-;1761:				color = 1;
+line 1763
+;1763:				color = 1;
 ADDRLP4 20
 CNSTI4 1
 ASGNI4
-line 1762
-;1762:				trap_R_SetColor( g_color_table[ColorIndex(COLOR_YELLOW)] );
+line 1764
+;1764:				trap_R_SetColor( g_color_table[ColorIndex(COLOR_YELLOW)] );
 ADDRGP4 g_color_table+48
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1763
-;1763:			}
+line 1765
+;1765:			}
 LABELV $813
-line 1764
-;1764:			if ( v > range ) {
+line 1766
+;1766:			if ( v > range ) {
 ADDRLP4 0
 INDIRF4
 ADDRLP4 16
 INDIRF4
 LEF4 $816
-line 1765
-;1765:				v = range;
+line 1767
+;1767:				v = range;
 ADDRLP4 0
 ADDRLP4 16
 INDIRF4
 ASGNF4
-line 1766
-;1766:			}
+line 1768
+;1768:			}
 LABELV $816
-line 1767
-;1767:			trap_R_DrawStretchPic ( ax + aw - a, mid - v, 1, v, 0, 0, 0, 0, cgs.media.whiteShader );
+line 1769
+;1769:			trap_R_DrawStretchPic ( ax + aw - a, mid - v, 1, v, 0, 0, 0, 0, cgs.media.whiteShader );
 ADDRLP4 24
 INDIRF4
 ADDRLP4 12
@@ -8648,8 +8650,8 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 1768
-;1768:		} else if ( v < 0 ) {
+line 1770
+;1770:		} else if ( v < 0 ) {
 ADDRGP4 $812
 JUMPV
 LABELV $811
@@ -8657,52 +8659,52 @@ ADDRLP4 0
 INDIRF4
 CNSTF4 0
 GEF4 $820
-line 1769
-;1769:			if ( color != 2 ) {
+line 1771
+;1771:			if ( color != 2 ) {
 ADDRLP4 20
 INDIRI4
 CNSTI4 2
 EQI4 $822
-line 1770
-;1770:				color = 2;
+line 1772
+;1772:				color = 2;
 ADDRLP4 20
 CNSTI4 2
 ASGNI4
-line 1771
-;1771:				trap_R_SetColor( g_color_table[ColorIndex(COLOR_BLUE)] );
+line 1773
+;1773:				trap_R_SetColor( g_color_table[ColorIndex(COLOR_BLUE)] );
 ADDRGP4 g_color_table+64
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1772
-;1772:			}
+line 1774
+;1774:			}
 LABELV $822
-line 1773
-;1773:			v = -v;
+line 1775
+;1775:			v = -v;
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
 NEGF4
 ASGNF4
-line 1774
-;1774:			if ( v > range ) {
+line 1776
+;1776:			if ( v > range ) {
 ADDRLP4 0
 INDIRF4
 ADDRLP4 16
 INDIRF4
 LEF4 $825
-line 1775
-;1775:				v = range;
+line 1777
+;1777:				v = range;
 ADDRLP4 0
 ADDRLP4 16
 INDIRF4
 ASGNF4
-line 1776
-;1776:			}
+line 1778
+;1778:			}
 LABELV $825
-line 1777
-;1777:			trap_R_DrawStretchPic( ax + aw - a, mid, 1, v, 0, 0, 0, 0, cgs.media.whiteShader );
+line 1779
+;1779:			trap_R_DrawStretchPic( ax + aw - a, mid, 1, v, 0, 0, 0, 0, cgs.media.whiteShader );
 ADDRLP4 24
 INDIRF4
 ADDRLP4 12
@@ -8742,14 +8744,14 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 1778
-;1778:		}
+line 1780
+;1780:		}
 LABELV $820
 LABELV $812
-line 1779
-;1779:	}
+line 1781
+;1781:	}
 LABELV $807
-line 1755
+line 1757
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -8763,35 +8765,35 @@ CVIF4 4
 ADDRLP4 12
 INDIRF4
 LTF4 $806
-line 1782
-;1780:
-;1781:	// draw the snapshot latency / drop graph
-;1782:	range = ah / 2;
+line 1784
+;1782:
+;1783:	// draw the snapshot latency / drop graph
+;1784:	range = ah / 2;
 ADDRLP4 16
 ADDRLP4 32
 INDIRF4
 CNSTF4 1073741824
 DIVF4
 ASGNF4
-line 1783
-;1783:	vscale = range / MAX_LAGOMETER_PING;
+line 1785
+;1785:	vscale = range / MAX_LAGOMETER_PING;
 ADDRLP4 28
 ADDRLP4 16
 INDIRF4
 CNSTF4 1147207680
 DIVF4
 ASGNF4
-line 1785
-;1784:
-;1785:	for ( a = 0 ; a < aw ; a++ ) {
+line 1787
+;1786:
+;1787:	for ( a = 0 ; a < aw ; a++ ) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
 ADDRGP4 $832
 JUMPV
 LABELV $829
-line 1786
-;1786:		i = ( lagometer.snapshotCount - 1 - a ) & (LAG_SAMPLES - 1);
+line 1788
+;1788:		i = ( lagometer.snapshotCount - 1 - a ) & (LAG_SAMPLES - 1);
 ADDRLP4 8
 ADDRGP4 lagometer+1540
 INDIRI4
@@ -8803,8 +8805,8 @@ SUBI4
 CNSTI4 127
 BANDI4
 ASGNI4
-line 1787
-;1787:		v = lagometer.snapshotSamples[i];
+line 1789
+;1789:		v = lagometer.snapshotSamples[i];
 ADDRLP4 0
 ADDRLP4 8
 INDIRI4
@@ -8815,14 +8817,14 @@ ADDP4
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1788
-;1788:		if ( v > 0 ) {
+line 1790
+;1790:		if ( v > 0 ) {
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
 LEF4 $835
-line 1789
-;1789:			if ( lagometer.snapshotFlags[i] & SNAPFLAG_RATE_DELAYED ) {
+line 1791
+;1791:			if ( lagometer.snapshotFlags[i] & SNAPFLAG_RATE_DELAYED ) {
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
@@ -8834,57 +8836,57 @@ CNSTI4 1
 BANDI4
 CNSTI4 0
 EQI4 $837
-line 1790
-;1790:				if ( color != 5 ) {
+line 1792
+;1792:				if ( color != 5 ) {
 ADDRLP4 20
 INDIRI4
 CNSTI4 5
 EQI4 $838
-line 1791
-;1791:					color = 5;	// YELLOW for rate delay
+line 1793
+;1793:					color = 5;	// YELLOW for rate delay
 ADDRLP4 20
 CNSTI4 5
 ASGNI4
-line 1792
-;1792:					trap_R_SetColor( g_color_table[ColorIndex(COLOR_YELLOW)] );
+line 1794
+;1794:					trap_R_SetColor( g_color_table[ColorIndex(COLOR_YELLOW)] );
 ADDRGP4 g_color_table+48
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1793
-;1793:				}
-line 1794
-;1794:			} else {
+line 1795
+;1795:				}
+line 1796
+;1796:			} else {
 ADDRGP4 $838
 JUMPV
 LABELV $837
-line 1795
-;1795:				if ( color != 3 ) {
+line 1797
+;1797:				if ( color != 3 ) {
 ADDRLP4 20
 INDIRI4
 CNSTI4 3
 EQI4 $843
-line 1796
-;1796:					color = 3;
+line 1798
+;1798:					color = 3;
 ADDRLP4 20
 CNSTI4 3
 ASGNI4
-line 1797
-;1797:					trap_R_SetColor( g_color_table[ColorIndex(COLOR_GREEN)] );
+line 1799
+;1799:					trap_R_SetColor( g_color_table[ColorIndex(COLOR_GREEN)] );
 ADDRGP4 g_color_table+32
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1798
-;1798:				}
-LABELV $843
-line 1799
-;1799:			}
-LABELV $838
 line 1800
-;1800:			v = v * vscale;
+;1800:				}
+LABELV $843
+line 1801
+;1801:			}
+LABELV $838
+line 1802
+;1802:			v = v * vscale;
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -8892,24 +8894,24 @@ ADDRLP4 28
 INDIRF4
 MULF4
 ASGNF4
-line 1801
-;1801:			if ( v > range ) {
+line 1803
+;1803:			if ( v > range ) {
 ADDRLP4 0
 INDIRF4
 ADDRLP4 16
 INDIRF4
 LEF4 $846
-line 1802
-;1802:				v = range;
+line 1804
+;1804:				v = range;
 ADDRLP4 0
 ADDRLP4 16
 INDIRF4
 ASGNF4
-line 1803
-;1803:			}
+line 1805
+;1805:			}
 LABELV $846
-line 1804
-;1804:			trap_R_DrawStretchPic( ax + aw - a, ay + ah - v, 1, v, 0, 0, 0, 0, cgs.media.whiteShader );
+line 1806
+;1806:			trap_R_DrawStretchPic( ax + aw - a, ay + ah - v, 1, v, 0, 0, 0, 0, cgs.media.whiteShader );
 ADDRLP4 24
 INDIRF4
 ADDRLP4 12
@@ -8955,8 +8957,8 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 1805
-;1805:		} else if ( v < 0 ) {
+line 1807
+;1807:		} else if ( v < 0 ) {
 ADDRGP4 $836
 JUMPV
 LABELV $835
@@ -8964,29 +8966,29 @@ ADDRLP4 0
 INDIRF4
 CNSTF4 0
 GEF4 $850
-line 1806
-;1806:			if ( color != 4 ) {
+line 1808
+;1808:			if ( color != 4 ) {
 ADDRLP4 20
 INDIRI4
 CNSTI4 4
 EQI4 $852
-line 1807
-;1807:				color = 4;		// RED for dropped snapshots
+line 1809
+;1809:				color = 4;		// RED for dropped snapshots
 ADDRLP4 20
 CNSTI4 4
 ASGNI4
-line 1808
-;1808:				trap_R_SetColor( g_color_table[ColorIndex(COLOR_RED)] );
+line 1810
+;1810:				trap_R_SetColor( g_color_table[ColorIndex(COLOR_RED)] );
 ADDRGP4 g_color_table+16
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1809
-;1809:			}
+line 1811
+;1811:			}
 LABELV $852
-line 1810
-;1810:			trap_R_DrawStretchPic( ax + aw - a, ay + ah - range, 1, range, 0, 0, 0, 0, cgs.media.whiteShader );
+line 1812
+;1812:			trap_R_DrawStretchPic( ax + aw - a, ay + ah - range, 1, range, 0, 0, 0, 0, cgs.media.whiteShader );
 ADDRLP4 24
 INDIRF4
 ADDRLP4 12
@@ -9032,14 +9034,14 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 1811
-;1811:		}
+line 1813
+;1813:		}
 LABELV $850
 LABELV $836
-line 1812
-;1812:	}
+line 1814
+;1814:	}
 LABELV $830
-line 1785
+line 1787
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -9053,17 +9055,17 @@ CVIF4 4
 ADDRLP4 12
 INDIRF4
 LTF4 $829
-line 1814
-;1813:
-;1814:	trap_R_SetColor( NULL );
+line 1816
+;1815:
+;1816:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1816
-;1815:
-;1816:	if ( cg_nopredict.integer || cg_synchronousClients.integer ) {
+line 1818
+;1817:
+;1818:	if ( cg_nopredict.integer || cg_synchronousClients.integer ) {
 ADDRLP4 56
 CNSTI4 0
 ASGNI4
@@ -9078,8 +9080,8 @@ ADDRLP4 56
 INDIRI4
 EQI4 $857
 LABELV $861
-line 1817
-;1817:		CG_DrawBigString( ax, ay, "snc", 1.0 );
+line 1819
+;1819:		CG_DrawBigString( ax, ay, "snc", 1.0 );
 ADDRLP4 24
 INDIRF4
 CVFI4 4
@@ -9095,47 +9097,47 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 1818
-;1818:	}
-LABELV $857
 line 1820
-;1819:
-;1820:	CG_DrawDisconnect();
+;1820:	}
+LABELV $857
+line 1822
+;1821:
+;1822:	CG_DrawDisconnect();
 ADDRGP4 CG_DrawDisconnect
 CALLV
 pop
-line 1821
-;1821:}
+line 1823
+;1823:}
 LABELV $800
 endproc CG_DrawLagometer 64 36
 export CG_CenterPrint
 proc CG_CenterPrint 8 12
-line 1842
-;1822:
-;1823:
+line 1844
 ;1824:
-;1825:/*
-;1826:===============================================================================
-;1827:
-;1828:CENTER PRINTING
+;1825:
+;1826:
+;1827:/*
+;1828:===============================================================================
 ;1829:
-;1830:===============================================================================
-;1831:*/
-;1832:
-;1833:
-;1834:/*
-;1835:==============
-;1836:CG_CenterPrint
-;1837:
-;1838:Called for important messages that should stay in the center of the screen
-;1839:for a few moments
-;1840:==============
-;1841:*/
-;1842:void CG_CenterPrint( const char *str, int y, int charWidth ) {
-line 1845
-;1843:	char	*s;
-;1844:
-;1845:	Q_strncpyz( cg.centerPrint, str, sizeof(cg.centerPrint) );
+;1830:CENTER PRINTING
+;1831:
+;1832:===============================================================================
+;1833:*/
+;1834:
+;1835:
+;1836:/*
+;1837:==============
+;1838:CG_CenterPrint
+;1839:
+;1840:Called for important messages that should stay in the center of the screen
+;1841:for a few moments
+;1842:==============
+;1843:*/
+;1844:void CG_CenterPrint( const char *str, int y, int charWidth ) {
+line 1847
+;1845:	char	*s;
+;1846:
+;1847:	Q_strncpyz( cg.centerPrint, str, sizeof(cg.centerPrint) );
 ADDRGP4 cg+125432
 ARGP4
 ADDRFP4 0
@@ -9146,52 +9148,52 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 1847
-;1846:
-;1847:	cg.centerPrintTime = cg.time;
+line 1849
+;1848:
+;1849:	cg.centerPrintTime = cg.time;
 ADDRGP4 cg+125420
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 1848
-;1848:	cg.centerPrintY = y;
+line 1850
+;1850:	cg.centerPrintY = y;
 ADDRGP4 cg+125428
 ADDRFP4 4
 INDIRI4
 ASGNI4
-line 1849
-;1849:	cg.centerPrintCharWidth = charWidth;
+line 1851
+;1851:	cg.centerPrintCharWidth = charWidth;
 ADDRGP4 cg+125424
 ADDRFP4 8
 INDIRI4
 ASGNI4
-line 1852
-;1850:
-;1851:	// count the number of lines for centering
-;1852:	cg.centerPrintLines = 1;
+line 1854
+;1852:
+;1853:	// count the number of lines for centering
+;1854:	cg.centerPrintLines = 1;
 ADDRGP4 cg+126456
 CNSTI4 1
 ASGNI4
-line 1853
-;1853:	s = cg.centerPrint;
+line 1855
+;1855:	s = cg.centerPrint;
 ADDRLP4 0
 ADDRGP4 cg+125432
 ASGNP4
 ADDRGP4 $873
 JUMPV
 LABELV $872
-line 1854
-;1854:	while( *s ) {
-line 1855
-;1855:		if (*s == '\n')
+line 1856
+;1856:	while( *s ) {
+line 1857
+;1857:		if (*s == '\n')
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 10
 NEI4 $875
-line 1856
-;1856:			cg.centerPrintLines++;
+line 1858
+;1858:			cg.centerPrintLines++;
 ADDRLP4 4
 ADDRGP4 cg+126456
 ASGNP4
@@ -9204,61 +9206,61 @@ CNSTI4 1
 ADDI4
 ASGNI4
 LABELV $875
-line 1857
-;1857:		s++;
+line 1859
+;1859:		s++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 1858
-;1858:	}
+line 1860
+;1860:	}
 LABELV $873
-line 1854
+line 1856
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $872
-line 1859
-;1859:}
+line 1861
+;1861:}
 LABELV $863
 endproc CG_CenterPrint 8 12
 proc CG_DrawCenterString 1064 36
-line 1867
-;1860:
-;1861:
-;1862:/*
-;1863:===================
-;1864:CG_DrawCenterString
+line 1869
+;1862:
+;1863:
+;1864:/*
 ;1865:===================
-;1866:*/
-;1867:static void CG_DrawCenterString( void ) {
-line 1876
-;1868:	char	*start;
-;1869:	int		l;
-;1870:	int		x, y, w;
-;1871:#ifdef MISSIONPACK // bk010221 - unused else
-;1872:  int h;
-;1873:#endif
-;1874:	float	*color;
-;1875:
-;1876:	if ( !cg.centerPrintTime ) {
+;1866:CG_DrawCenterString
+;1867:===================
+;1868:*/
+;1869:static void CG_DrawCenterString( void ) {
+line 1878
+;1870:	char	*start;
+;1871:	int		l;
+;1872:	int		x, y, w;
+;1873:#ifdef MISSIONPACK // bk010221 - unused else
+;1874:  int h;
+;1875:#endif
+;1876:	float	*color;
+;1877:
+;1878:	if ( !cg.centerPrintTime ) {
 ADDRGP4 cg+125420
 INDIRI4
 CNSTI4 0
 NEI4 $879
-line 1877
-;1877:		return;
+line 1879
+;1879:		return;
 ADDRGP4 $878
 JUMPV
 LABELV $879
-line 1880
-;1878:	}
-;1879:
-;1880:	color = CG_FadeColor( cg.centerPrintTime, 1000 * cg_centertime.value );
+line 1882
+;1880:	}
+;1881:
+;1882:	color = CG_FadeColor( cg.centerPrintTime, 1000 * cg_centertime.value );
 ADDRGP4 cg+125420
 INDIRI4
 ARGI4
@@ -9276,37 +9278,37 @@ ADDRLP4 20
 ADDRLP4 24
 INDIRP4
 ASGNP4
-line 1881
-;1881:	if ( !color ) {
+line 1883
+;1883:	if ( !color ) {
 ADDRLP4 20
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $884
-line 1882
-;1882:		return;
+line 1884
+;1884:		return;
 ADDRGP4 $878
 JUMPV
 LABELV $884
-line 1885
-;1883:	}
-;1884:
-;1885:	trap_R_SetColor( color );
+line 1887
+;1885:	}
+;1886:
+;1887:	trap_R_SetColor( color );
 ADDRLP4 20
 INDIRP4
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1887
-;1886:
-;1887:	start = cg.centerPrint;
+line 1889
+;1888:
+;1889:	start = cg.centerPrint;
 ADDRLP4 0
 ADDRGP4 cg+125432
 ASGNP4
-line 1889
-;1888:
-;1889:	y = cg.centerPrintY - cg.centerPrintLines * BIGCHAR_HEIGHT / 2;
+line 1891
+;1890:
+;1891:	y = cg.centerPrintY - cg.centerPrintLines * BIGCHAR_HEIGHT / 2;
 ADDRLP4 8
 ADDRGP4 cg+125428
 INDIRI4
@@ -9321,19 +9323,19 @@ ASGNI4
 ADDRGP4 $890
 JUMPV
 LABELV $889
-line 1891
-;1890:
-;1891:	while ( 1 ) {
-line 1894
-;1892:		char linebuffer[1024];
-;1893:
-;1894:		for ( l = 0; l < 50; l++ ) {
+line 1893
+;1892:
+;1893:	while ( 1 ) {
+line 1896
+;1894:		char linebuffer[1024];
+;1895:
+;1896:		for ( l = 0; l < 50; l++ ) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
 LABELV $892
-line 1895
-;1895:			if ( !start[l] || start[l] == '\n' ) {
+line 1897
+;1897:			if ( !start[l] || start[l] == '\n' ) {
 ADDRLP4 1052
 ADDRLP4 4
 INDIRI4
@@ -9352,14 +9354,14 @@ INDIRI4
 CNSTI4 10
 NEI4 $896
 LABELV $898
-line 1896
-;1896:				break;
+line 1898
+;1898:				break;
 ADDRGP4 $894
 JUMPV
 LABELV $896
-line 1898
-;1897:			}
-;1898:			linebuffer[l] = start[l];
+line 1900
+;1899:			}
+;1900:			linebuffer[l] = start[l];
 ADDRLP4 4
 INDIRI4
 ADDRLP4 28
@@ -9371,10 +9373,10 @@ INDIRP4
 ADDP4
 INDIRI1
 ASGNI1
-line 1899
-;1899:		}
+line 1901
+;1901:		}
 LABELV $893
-line 1894
+line 1896
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -9386,24 +9388,24 @@ INDIRI4
 CNSTI4 50
 LTI4 $892
 LABELV $894
-line 1900
-;1900:		linebuffer[l] = 0;
+line 1902
+;1902:		linebuffer[l] = 0;
 ADDRLP4 4
 INDIRI4
 ADDRLP4 28
 ADDP4
 CNSTI1 0
 ASGNI1
-line 1909
-;1901:
-;1902:#ifdef MISSIONPACK
-;1903:		w = CG_Text_Width(linebuffer, 0.5, 0);
-;1904:		h = CG_Text_Height(linebuffer, 0.5, 0);
-;1905:		x = (SCREEN_WIDTH - w) / 2;
-;1906:		CG_Text_Paint(x, y + h, 0.5, color, linebuffer, 0, 0, ITEM_TEXTSTYLE_SHADOWEDMORE);
-;1907:		y += h + 6;
-;1908:#else
-;1909:		w = cg.centerPrintCharWidth * CG_DrawStrlen( linebuffer );
+line 1911
+;1903:
+;1904:#ifdef MISSIONPACK
+;1905:		w = CG_Text_Width(linebuffer, 0.5, 0);
+;1906:		h = CG_Text_Height(linebuffer, 0.5, 0);
+;1907:		x = (SCREEN_WIDTH - w) / 2;
+;1908:		CG_Text_Paint(x, y + h, 0.5, color, linebuffer, 0, 0, ITEM_TEXTSTYLE_SHADOWEDMORE);
+;1909:		y += h + 6;
+;1910:#else
+;1911:		w = cg.centerPrintCharWidth * CG_DrawStrlen( linebuffer );
 ADDRLP4 28
 ARGP4
 ADDRLP4 1052
@@ -9417,9 +9419,9 @@ ADDRLP4 1052
 INDIRI4
 MULI4
 ASGNI4
-line 1911
-;1910:
-;1911:		x = ( SCREEN_WIDTH - w ) / 2;
+line 1913
+;1912:
+;1913:		x = ( SCREEN_WIDTH - w ) / 2;
 ADDRLP4 12
 CNSTI4 640
 ADDRLP4 16
@@ -9428,9 +9430,9 @@ SUBI4
 CNSTI4 2
 DIVI4
 ASGNI4
-line 1913
-;1912:
-;1913:		CG_DrawStringExt( x, y, linebuffer, color, qfalse, qtrue,
+line 1915
+;1914:
+;1915:		CG_DrawStringExt( x, y, linebuffer, color, qfalse, qtrue,
 ADDRLP4 12
 INDIRI4
 ARGI4
@@ -9466,10 +9468,10 @@ ARGI4
 ADDRGP4 CG_DrawStringExt
 CALLV
 pop
-line 1916
-;1914:			cg.centerPrintCharWidth, (int)(cg.centerPrintCharWidth * 1.5), 0 );
-;1915:
-;1916:		y += cg.centerPrintCharWidth * 1.5;
+line 1918
+;1916:			cg.centerPrintCharWidth, (int)(cg.centerPrintCharWidth * 1.5), 0 );
+;1917:
+;1918:		y += cg.centerPrintCharWidth * 1.5;
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
@@ -9485,21 +9487,21 @@ ASGNI4
 ADDRGP4 $904
 JUMPV
 LABELV $903
-line 1918
-;1917:#endif
-;1918:		while ( *start && ( *start != '\n' ) ) {
-line 1919
-;1919:			start++;
+line 1920
+;1919:#endif
+;1920:		while ( *start && ( *start != '\n' ) ) {
+line 1921
+;1921:			start++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 1920
-;1920:		}
+line 1922
+;1922:		}
 LABELV $904
-line 1918
+line 1920
 ADDRLP4 1060
 ADDRLP4 0
 INDIRP4
@@ -9515,88 +9517,88 @@ INDIRI4
 CNSTI4 10
 NEI4 $903
 LABELV $906
-line 1921
-;1921:		if ( !*start ) {
+line 1923
+;1923:		if ( !*start ) {
 ADDRLP4 0
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $907
-line 1922
-;1922:			break;
+line 1924
+;1924:			break;
 ADDRGP4 $891
 JUMPV
 LABELV $907
-line 1924
-;1923:		}
-;1924:		start++;
+line 1926
+;1925:		}
+;1926:		start++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 1
 ADDP4
 ASGNP4
-line 1925
-;1925:	}
+line 1927
+;1927:	}
 LABELV $890
-line 1891
+line 1893
 ADDRGP4 $889
 JUMPV
 LABELV $891
-line 1927
-;1926:
-;1927:	trap_R_SetColor( NULL );
+line 1929
+;1928:
+;1929:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1928
-;1928:}
+line 1930
+;1930:}
 LABELV $878
 endproc CG_DrawCenterString 1064 36
 proc CG_DrawCrosshair 56 36
-line 1946
-;1929:
-;1930:
+line 1948
 ;1931:
-;1932:/*
-;1933:================================================================================
-;1934:
-;1935:CROSSHAIR
+;1932:
+;1933:
+;1934:/*
+;1935:================================================================================
 ;1936:
-;1937:================================================================================
-;1938:*/
-;1939:
-;1940:
-;1941:/*
-;1942:=================
-;1943:CG_DrawCrosshair
+;1937:CROSSHAIR
+;1938:
+;1939:================================================================================
+;1940:*/
+;1941:
+;1942:
+;1943:/*
 ;1944:=================
-;1945:*/
-;1946:static void CG_DrawCrosshair(void) {
-line 1953
-;1947:	float		w, h;
-;1948:	qhandle_t	hShader;
-;1949:	float		f;
-;1950:	float		x, y;
-;1951:	int			ca;
-;1952:
-;1953:	if ( !cg_drawCrosshair.integer ) {
+;1945:CG_DrawCrosshair
+;1946:=================
+;1947:*/
+;1948:static void CG_DrawCrosshair(void) {
+line 1955
+;1949:	float		w, h;
+;1950:	qhandle_t	hShader;
+;1951:	float		f;
+;1952:	float		x, y;
+;1953:	int			ca;
+;1954:
+;1955:	if ( !cg_drawCrosshair.integer ) {
 ADDRGP4 cg_drawCrosshair+12
 INDIRI4
 CNSTI4 0
 NEI4 $910
-line 1954
-;1954:		return;
+line 1956
+;1956:		return;
 ADDRGP4 $909
 JUMPV
 LABELV $910
-line 1957
-;1955:	}
-;1956:
-;1957:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR) {
+line 1959
+;1957:	}
+;1958:
+;1959:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 304
@@ -9604,67 +9606,67 @@ ADDP4
 INDIRI4
 CNSTI4 3
 NEI4 $913
-line 1958
-;1958:		return;
+line 1960
+;1960:		return;
 ADDRGP4 $909
 JUMPV
 LABELV $913
-line 1961
-;1959:	}
-;1960:
-;1961:	if ( cg.renderingThirdPerson ) {
+line 1963
+;1961:	}
+;1962:
+;1963:	if ( cg.renderingThirdPerson ) {
 ADDRGP4 cg+109676
 INDIRI4
 CNSTI4 0
 EQI4 $916
-line 1962
-;1962:		return;
+line 1964
+;1964:		return;
 ADDRGP4 $909
 JUMPV
 LABELV $916
-line 1966
-;1963:	}
-;1964:
-;1965:	// set color based on health
-;1966:	if ( cg_crosshairHealth.integer ) {
+line 1968
+;1965:	}
+;1966:
+;1967:	// set color based on health
+;1968:	if ( cg_crosshairHealth.integer ) {
 ADDRGP4 cg_crosshairHealth+12
 INDIRI4
 CNSTI4 0
 EQI4 $919
-line 1969
-;1967:		vec4_t		hcolor;
-;1968:
-;1969:		CG_ColorForHealth( hcolor );
+line 1971
+;1969:		vec4_t		hcolor;
+;1970:
+;1971:		CG_ColorForHealth( hcolor );
 ADDRLP4 28
 ARGP4
 ADDRGP4 CG_ColorForHealth
 CALLV
 pop
-line 1970
-;1970:		trap_R_SetColor( hcolor );
+line 1972
+;1972:		trap_R_SetColor( hcolor );
 ADDRLP4 28
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1971
-;1971:	} else {
+line 1973
+;1973:	} else {
 ADDRGP4 $920
 JUMPV
 LABELV $919
-line 1972
-;1972:		trap_R_SetColor( NULL );
+line 1974
+;1974:		trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 1973
-;1973:	}
-LABELV $920
 line 1975
-;1974:
-;1975:	w = h = cg_crosshairSize.value;
+;1975:	}
+LABELV $920
+line 1977
+;1976:
+;1977:	w = h = cg_crosshairSize.value;
 ADDRLP4 28
 ADDRGP4 cg_crosshairSize+8
 INDIRF4
@@ -9677,10 +9679,10 @@ ADDRLP4 0
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1978
-;1976:
-;1977:	// pulse the size of the crosshair when picking up items
-;1978:	f = cg.time - cg.itemPickupBlendTime;
+line 1980
+;1978:
+;1979:	// pulse the size of the crosshair when picking up items
+;1980:	f = cg.time - cg.itemPickupBlendTime;
 ADDRLP4 8
 ADDRGP4 cg+109652
 INDIRI4
@@ -9689,8 +9691,8 @@ INDIRI4
 SUBI4
 CVIF4 4
 ASGNF4
-line 1979
-;1979:	if ( f > 0 && f < ITEM_BLOB_TIME ) {
+line 1981
+;1981:	if ( f > 0 && f < ITEM_BLOB_TIME ) {
 ADDRLP4 8
 INDIRF4
 CNSTF4 0
@@ -9699,56 +9701,56 @@ ADDRLP4 8
 INDIRF4
 CNSTF4 1128792064
 GEF4 $925
-line 1980
-;1980:		f /= ITEM_BLOB_TIME;
+line 1982
+;1982:		f /= ITEM_BLOB_TIME;
 ADDRLP4 8
 ADDRLP4 8
 INDIRF4
 CNSTF4 1128792064
 DIVF4
 ASGNF4
-line 1981
-;1981:		w *= ( 1 + f );
-ADDRLP4 0
-ADDRLP4 0
-INDIRF4
-ADDRLP4 8
-INDIRF4
-CNSTF4 1065353216
-ADDF4
-MULF4
-ASGNF4
-line 1982
-;1982:		h *= ( 1 + f );
-ADDRLP4 4
-ADDRLP4 4
-INDIRF4
-ADDRLP4 8
-INDIRF4
-CNSTF4 1065353216
-ADDF4
-MULF4
-ASGNF4
 line 1983
-;1983:	}
-LABELV $925
+;1983:		w *= ( 1 + f );
+ADDRLP4 0
+ADDRLP4 0
+INDIRF4
+ADDRLP4 8
+INDIRF4
+CNSTF4 1065353216
+ADDF4
+MULF4
+ASGNF4
+line 1984
+;1984:		h *= ( 1 + f );
+ADDRLP4 4
+ADDRLP4 4
+INDIRF4
+ADDRLP4 8
+INDIRF4
+CNSTF4 1065353216
+ADDF4
+MULF4
+ASGNF4
 line 1985
-;1984:
-;1985:	x = cg_crosshairX.integer;
+;1985:	}
+LABELV $925
+line 1987
+;1986:
+;1987:	x = cg_crosshairX.integer;
 ADDRLP4 16
 ADDRGP4 cg_crosshairX+12
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1986
-;1986:	y = cg_crosshairY.integer;
+line 1988
+;1988:	y = cg_crosshairY.integer;
 ADDRLP4 20
 ADDRGP4 cg_crosshairY+12
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1987
-;1987:	CG_AdjustFrom640( &x, &y, &w, &h );
+line 1989
+;1989:	CG_AdjustFrom640( &x, &y, &w, &h );
 ADDRLP4 16
 ARGP4
 ADDRLP4 20
@@ -9760,29 +9762,29 @@ ARGP4
 ADDRGP4 CG_AdjustFrom640
 CALLV
 pop
-line 1989
-;1988:
-;1989:	ca = cg_drawCrosshair.integer;
+line 1991
+;1990:
+;1991:	ca = cg_drawCrosshair.integer;
 ADDRLP4 12
 ADDRGP4 cg_drawCrosshair+12
 INDIRI4
 ASGNI4
-line 1990
-;1990:	if (ca < 0) {
+line 1992
+;1992:	if (ca < 0) {
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
 GEI4 $930
-line 1991
-;1991:		ca = 0;
+line 1993
+;1993:		ca = 0;
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-line 1992
-;1992:	}
+line 1994
+;1994:	}
 LABELV $930
-line 1993
-;1993:	hShader = cgs.media.crosshairShader[ ca % NUM_CROSSHAIRS ];
+line 1995
+;1995:	hShader = cgs.media.crosshairShader[ ca % NUM_CROSSHAIRS ];
 ADDRLP4 24
 ADDRLP4 12
 INDIRI4
@@ -9794,9 +9796,9 @@ ADDRGP4 cgs+153876+236
 ADDP4
 INDIRI4
 ASGNI4
-line 1995
-;1994:
-;1995:	trap_R_DrawStretchPic( x + cg.refdef.x + 0.5 * (cg.refdef.width - w), 
+line 1997
+;1996:
+;1997:	trap_R_DrawStretchPic( x + cg.refdef.x + 0.5 * (cg.refdef.width - w), 
 ADDRLP4 36
 CNSTF4 1056964608
 ASGNF4
@@ -9872,35 +9874,35 @@ ARGI4
 ADDRGP4 trap_R_DrawStretchPic
 CALLV
 pop
-line 1998
-;1996:		y + cg.refdef.y + 0.5 * (cg.refdef.height - h), 
-;1997:		w, h, 0, 0, 1, 1, hShader );
-;1998:}
+line 2000
+;1998:		y + cg.refdef.y + 0.5 * (cg.refdef.height - h), 
+;1999:		w, h, 0, 0, 1, 1, hShader );
+;2000:}
 LABELV $909
 endproc CG_DrawCrosshair 56 36
 proc CG_ScanForCrosshairEntity 96 28
-line 2007
-;1999:
-;2000:
+line 2009
 ;2001:
-;2002:/*
-;2003:=================
-;2004:CG_ScanForCrosshairEntity
+;2002:
+;2003:
+;2004:/*
 ;2005:=================
-;2006:*/
-;2007:static void CG_ScanForCrosshairEntity( void ) {
-line 2012
-;2008:	trace_t		trace;
-;2009:	vec3_t		start, end;
-;2010:	int			content;
-;2011:
-;2012:	VectorCopy( cg.refdef.vieworg, start );
+;2006:CG_ScanForCrosshairEntity
+;2007:=================
+;2008:*/
+;2009:static void CG_ScanForCrosshairEntity( void ) {
+line 2014
+;2010:	trace_t		trace;
+;2011:	vec3_t		start, end;
+;2012:	int			content;
+;2013:
+;2014:	VectorCopy( cg.refdef.vieworg, start );
 ADDRLP4 0
 ADDRGP4 cg+111104+24
 INDIRB
 ASGNB 12
-line 2013
-;2013:	VectorMA( start, 131072, cg.refdef.viewaxis[0], end );
+line 2015
+;2015:	VectorMA( start, 131072, cg.refdef.viewaxis[0], end );
 ADDRLP4 84
 CNSTF4 1207959552
 ASGNF4
@@ -9933,9 +9935,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 2015
-;2014:
-;2015:	CG_Trace( &trace, start, vec3_origin, vec3_origin, end, 
+line 2017
+;2016:
+;2017:	CG_Trace( &trace, start, vec3_origin, vec3_origin, end, 
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -9962,16 +9964,16 @@ ARGI4
 ADDRGP4 CG_Trace
 CALLV
 pop
-line 2024
-;2016:		cg.snap->ps.clientNum, CONTENTS_SOLID|CONTENTS_BODY );
-;2017:	/*
-;2018:	if ( trace.entityNum >= MAX_CLIENTS ) {
-;2019:		return;
-;2020:	}
-;2021:	*/
-;2022:
-;2023:	// if the player is in fog, don't show it
-;2024:	content = trap_CM_PointContents( trace.endpos, 0 );
+line 2026
+;2018:		cg.snap->ps.clientNum, CONTENTS_SOLID|CONTENTS_BODY );
+;2019:	/*
+;2020:	if ( trace.entityNum >= MAX_CLIENTS ) {
+;2021:		return;
+;2022:	}
+;2023:	*/
+;2024:
+;2025:	// if the player is in fog, don't show it
+;2026:	content = trap_CM_PointContents( trace.endpos, 0 );
 ADDRLP4 12+12
 ARGP4
 CNSTI4 0
@@ -9984,24 +9986,24 @@ ADDRLP4 80
 ADDRLP4 92
 INDIRI4
 ASGNI4
-line 2025
-;2025:	if ( content & CONTENTS_FOG ) {
+line 2027
+;2027:	if ( content & CONTENTS_FOG ) {
 ADDRLP4 80
 INDIRI4
 CNSTI4 64
 BANDI4
 CNSTI4 0
 EQI4 $958
-line 2026
-;2026:		return;
+line 2028
+;2028:		return;
 ADDRGP4 $941
 JUMPV
 LABELV $958
-line 2030
-;2027:	}
-;2028:
-;2029:	// if the player is invisible, don't show it
-;2030:	if ( cg_entities[ trace.entityNum ].currentState.powerups & ( 1 << PW_INVIS ) ) {
+line 2032
+;2029:	}
+;2030:
+;2031:	// if the player is invisible, don't show it
+;2032:	if ( cg_entities[ trace.entityNum ].currentState.powerups & ( 1 << PW_INVIS ) ) {
 CNSTI4 740
 ADDRLP4 12+52
 INDIRI4
@@ -10013,93 +10015,93 @@ CNSTI4 16
 BANDI4
 CNSTI4 0
 EQI4 $960
-line 2031
-;2031:		return;
+line 2033
+;2033:		return;
 ADDRGP4 $941
 JUMPV
 LABELV $960
-line 2035
-;2032:	}
-;2033:
-;2034:	// update the fade timer
-;2035:	cg.crosshairClientNum = trace.entityNum;
+line 2037
+;2034:	}
+;2035:
+;2036:	// update the fade timer
+;2037:	cg.crosshairClientNum = trace.entityNum;
 ADDRGP4 cg+126468
 ADDRLP4 12+52
 INDIRI4
 ASGNI4
-line 2036
-;2036:	cg.crosshairClientTime = cg.time;
+line 2038
+;2038:	cg.crosshairClientTime = cg.time;
 ADDRGP4 cg+126472
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 2037
-;2037:}
+line 2039
+;2039:}
 LABELV $941
 endproc CG_ScanForCrosshairEntity 96 28
 proc CG_DrawCrosshairNames 36 16
-line 2045
-;2038:
-;2039:
-;2040:/*
-;2041:=====================
-;2042:CG_DrawCrosshairNames
+line 2047
+;2040:
+;2041:
+;2042:/*
 ;2043:=====================
-;2044:*/
-;2045:static void CG_DrawCrosshairNames( void ) {
-line 2052
-;2046:	float		*color;
-;2047:	char		*name;
-;2048:	char		*s;
-;2049:	int			health;
-;2050:	float		w;
-;2051:
-;2052:	if ( !cg_drawCrosshair.integer ) {
+;2044:CG_DrawCrosshairNames
+;2045:=====================
+;2046:*/
+;2047:static void CG_DrawCrosshairNames( void ) {
+line 2054
+;2048:	float		*color;
+;2049:	char		*name;
+;2050:	char		*s;
+;2051:	int			health;
+;2052:	float		w;
+;2053:
+;2054:	if ( !cg_drawCrosshair.integer ) {
 ADDRGP4 cg_drawCrosshair+12
 INDIRI4
 CNSTI4 0
 NEI4 $969
-line 2053
-;2053:		return;
+line 2055
+;2055:		return;
 ADDRGP4 $968
 JUMPV
 LABELV $969
-line 2055
-;2054:	}
-;2055:	if ( !cg_drawCrosshairNames.integer ) {
+line 2057
+;2056:	}
+;2057:	if ( !cg_drawCrosshairNames.integer ) {
 ADDRGP4 cg_drawCrosshairNames+12
 INDIRI4
 CNSTI4 0
 NEI4 $972
-line 2056
-;2056:		return;
+line 2058
+;2058:		return;
 ADDRGP4 $968
 JUMPV
 LABELV $972
-line 2058
-;2057:	}
-;2058:	if ( cg.renderingThirdPerson ) {
+line 2060
+;2059:	}
+;2060:	if ( cg.renderingThirdPerson ) {
 ADDRGP4 cg+109676
 INDIRI4
 CNSTI4 0
 EQI4 $975
-line 2059
-;2059:		return;
+line 2061
+;2061:		return;
 ADDRGP4 $968
 JUMPV
 LABELV $975
-line 2063
-;2060:	}
-;2061:
-;2062:	// scan the known entities to see if the crosshair is sighted on one
-;2063:	CG_ScanForCrosshairEntity();
+line 2065
+;2062:	}
+;2063:
+;2064:	// scan the known entities to see if the crosshair is sighted on one
+;2065:	CG_ScanForCrosshairEntity();
 ADDRGP4 CG_ScanForCrosshairEntity
 CALLV
 pop
-line 2066
-;2064:
-;2065:	// draw the name of the player being looked at
-;2066:	color = CG_FadeColor( cg.crosshairClientTime, 1000 );
+line 2068
+;2066:
+;2067:	// draw the name of the player being looked at
+;2068:	color = CG_FadeColor( cg.crosshairClientTime, 1000 );
 ADDRGP4 cg+126472
 INDIRI4
 ARGI4
@@ -10113,29 +10115,29 @@ ADDRLP4 0
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 2067
-;2067:	if ( !color ) {
+line 2069
+;2069:	if ( !color ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $979
-line 2068
-;2068:		trap_R_SetColor( NULL );
+line 2070
+;2070:		trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 2069
-;2069:		return;
+line 2071
+;2071:		return;
 ADDRGP4 $968
 JUMPV
 LABELV $979
-line 2072
-;2070:	}
-;2071:
-;2072:	name = cgs.clientinfo[ cg.crosshairClientNum ].name;
+line 2074
+;2072:	}
+;2073:
+;2074:	name = cgs.clientinfo[ cg.crosshairClientNum ].name;
 ADDRLP4 4
 CNSTI4 1732
 ADDRGP4 cg+126468
@@ -10144,8 +10146,8 @@ MULI4
 ADDRGP4 cgs+40972+4
 ADDP4
 ASGNP4
-line 2073
-;2073:	health = cgs.clientinfo[ cg.crosshairClientNum ].health;
+line 2075
+;2075:	health = cgs.clientinfo[ cg.crosshairClientNum ].health;
 ADDRLP4 8
 CNSTI4 1732
 ADDRGP4 cg+126468
@@ -10155,14 +10157,14 @@ ADDRGP4 cgs+40972+108
 ADDP4
 INDIRI4
 ASGNI4
-line 2080
-;2074:
-;2075:#ifdef MISSIONPACK
-;2076:	color[3] *= 0.5f;
-;2077:	w = CG_Text_Width(name, 0.3f, 0);
-;2078:	CG_Text_Paint( 320 - w / 2, 190, 0.3f, color, name, 0, 0, ITEM_TEXTSTYLE_SHADOWED);
-;2079:#else
-;2080:	w = CG_DrawStrlen( name ) * BIGCHAR_WIDTH;
+line 2082
+;2076:
+;2077:#ifdef MISSIONPACK
+;2078:	color[3] *= 0.5f;
+;2079:	w = CG_Text_Width(name, 0.3f, 0);
+;2080:	CG_Text_Paint( 320 - w / 2, 190, 0.3f, color, name, 0, 0, ITEM_TEXTSTYLE_SHADOWED);
+;2081:#else
+;2082:	w = CG_DrawStrlen( name ) * BIGCHAR_WIDTH;
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -10177,8 +10179,8 @@ CNSTI4 4
 LSHI4
 CVIF4 4
 ASGNF4
-line 2081
-;2081:	CG_DrawBigString( 320 - w / 2, 170, name, color[3] * 0.5f );
+line 2083
+;2083:	CG_DrawBigString( 320 - w / 2, 170, name, color[3] * 0.5f );
 CNSTF4 1134559232
 ADDRLP4 12
 INDIRF4
@@ -10203,8 +10205,8 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 2082
-;2082:	s = va( "%i", health);
+line 2084
+;2084:	s = va( "%i", health);
 ADDRGP4 $109
 ARGP4
 ADDRLP4 8
@@ -10218,16 +10220,16 @@ ADDRLP4 16
 ADDRLP4 28
 INDIRP4
 ASGNP4
-line 2083
-;2083:	if (health != 0) 
+line 2085
+;2085:	if (health != 0) 
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
 EQI4 $987
-line 2084
-;2084:	{
-line 2085
-;2085:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
+line 2086
+;2086:	{
+line 2087
+;2087:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 ADDRLP4 16
 INDIRP4
 ARGP4
@@ -10242,8 +10244,8 @@ CNSTI4 4
 LSHI4
 CVIF4 4
 ASGNF4
-line 2086
-;2086:		CG_DrawSmallString( 320 - w / 2, 190, s, color[3] * 0.5f );
+line 2088
+;2088:		CG_DrawSmallString( 320 - w / 2, 190, s, color[3] * 0.5f );
 CNSTF4 1134559232
 ADDRLP4 12
 INDIRF4
@@ -10268,36 +10270,36 @@ ARGF4
 ADDRGP4 CG_DrawSmallString
 CALLV
 pop
-line 2087
-;2087:	}
+line 2089
+;2089:	}
 LABELV $987
-line 2090
-;2088:
-;2089:#endif
-;2090:	trap_R_SetColor( NULL );
+line 2092
+;2090:
+;2091:#endif
+;2092:	trap_R_SetColor( NULL );
 CNSTP4 0
 ARGP4
 ADDRGP4 trap_R_SetColor
 CALLV
 pop
-line 2091
-;2091:}
+line 2093
+;2093:}
 LABELV $968
 endproc CG_DrawCrosshairNames 36 16
 proc CG_DrawSpectator 0 16
-line 2101
-;2092:
-;2093:
-;2094://==============================================================================
+line 2103
+;2094:
 ;2095:
-;2096:/*
-;2097:=================
-;2098:CG_DrawSpectator
+;2096://==============================================================================
+;2097:
+;2098:/*
 ;2099:=================
-;2100:*/
-;2101:static void CG_DrawSpectator(void) {
-line 2102
-;2102:	CG_DrawBigString(320 - 9 * 8, 440, "SPECTATOR", 1.0F);
+;2100:CG_DrawSpectator
+;2101:=================
+;2102:*/
+;2103:static void CG_DrawSpectator(void) {
+line 2104
+;2104:	CG_DrawBigString(320 - 9 * 8, 440, "SPECTATOR", 1.0F);
 CNSTI4 248
 ARGI4
 CNSTI4 440
@@ -10309,14 +10311,14 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 2103
-;2103:	if ( cgs.gametype == GT_TOURNAMENT ) {
+line 2105
+;2105:	if ( cgs.gametype == GT_TOURNAMENT ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 1
 NEI4 $991
-line 2104
-;2104:		CG_DrawBigString(320 - 15 * 8, 460, "waiting to play", 1.0F);
+line 2106
+;2106:		CG_DrawBigString(320 - 15 * 8, 460, "waiting to play", 1.0F);
 CNSTI4 200
 ARGI4
 CNSTI4 460
@@ -10328,19 +10330,19 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 2105
-;2105:	}
+line 2107
+;2107:	}
 ADDRGP4 $992
 JUMPV
 LABELV $991
-line 2106
-;2106:	else if ( cgs.gametype >= GT_TEAM ) {
+line 2108
+;2108:	else if ( cgs.gametype >= GT_TEAM ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
 LTI4 $995
-line 2107
-;2107:		CG_DrawBigString(320 - 39 * 8, 460, "press ESC and use the JOIN menu to play", 1.0F);
+line 2109
+;2109:		CG_DrawBigString(320 - 39 * 8, 460, "press ESC and use the JOIN menu to play", 1.0F);
 CNSTI4 8
 ARGI4
 CNSTI4 460
@@ -10352,53 +10354,53 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 2108
-;2108:	}
+line 2110
+;2110:	}
 LABELV $995
 LABELV $992
-line 2109
-;2109:}
+line 2111
+;2111:}
 LABELV $989
 endproc CG_DrawSpectator 0 16
 proc CG_DrawVote 12 20
-line 2116
-;2110:
-;2111:/*
-;2112:=================
-;2113:CG_DrawVote
+line 2118
+;2112:
+;2113:/*
 ;2114:=================
-;2115:*/
-;2116:static void CG_DrawVote(void) {
-line 2120
-;2117:	char	*s;
-;2118:	int		sec;
-;2119:
-;2120:	if ( !cgs.voteTime ) {
+;2115:CG_DrawVote
+;2116:=================
+;2117:*/
+;2118:static void CG_DrawVote(void) {
+line 2122
+;2119:	char	*s;
+;2120:	int		sec;
+;2121:
+;2122:	if ( !cgs.voteTime ) {
 ADDRGP4 cgs+31676
 INDIRI4
 CNSTI4 0
 NEI4 $1000
-line 2121
-;2121:		return;
+line 2123
+;2123:		return;
 ADDRGP4 $999
 JUMPV
 LABELV $1000
-line 2125
-;2122:	}
-;2123:
-;2124:	// play a talk beep whenever it is modified
-;2125:	if ( cgs.voteModified ) {
+line 2127
+;2124:	}
+;2125:
+;2126:	// play a talk beep whenever it is modified
+;2127:	if ( cgs.voteModified ) {
 ADDRGP4 cgs+31688
 INDIRI4
 CNSTI4 0
 EQI4 $1003
-line 2126
-;2126:		cgs.voteModified = qfalse;
+line 2128
+;2128:		cgs.voteModified = qfalse;
 ADDRGP4 cgs+31688
 CNSTI4 0
 ASGNI4
-line 2127
-;2127:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
+line 2129
+;2129:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
 ADDRGP4 cgs+153876+784
 INDIRI4
 ARGI4
@@ -10407,12 +10409,12 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 2128
-;2128:	}
-LABELV $1003
 line 2130
-;2129:
-;2130:	sec = ( VOTE_TIME - ( cg.time - cgs.voteTime ) ) / 1000;
+;2130:	}
+LABELV $1003
+line 2132
+;2131:
+;2132:	sec = ( VOTE_TIME - ( cg.time - cgs.voteTime ) ) / 1000;
 ADDRLP4 0
 CNSTI4 30000
 ADDRGP4 cg+109652
@@ -10424,28 +10426,28 @@ SUBI4
 CNSTI4 1000
 DIVI4
 ASGNI4
-line 2131
-;2131:	if ( sec < 0 ) {
+line 2133
+;2133:	if ( sec < 0 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 GEI4 $1011
-line 2132
-;2132:		sec = 0;
+line 2134
+;2134:		sec = 0;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-line 2133
-;2133:	}
+line 2135
+;2135:	}
 LABELV $1011
-line 2140
-;2134:#ifdef MISSIONPACK
-;2135:	s = va("VOTE(%i):%s yes:%i no:%i", sec, cgs.voteString, cgs.voteYes, cgs.voteNo);
-;2136:	CG_DrawSmallString( 0, 58, s, 1.0F );
-;2137:	s = "or press ESC then click Vote";
-;2138:	CG_DrawSmallString( 0, 58 + SMALLCHAR_HEIGHT + 2, s, 1.0F );
-;2139:#else
-;2140:	s = va("VOTE(%i):%s yes:%i no:%i", sec, cgs.voteString, cgs.voteYes, cgs.voteNo );
+line 2142
+;2136:#ifdef MISSIONPACK
+;2137:	s = va("VOTE(%i):%s yes:%i no:%i", sec, cgs.voteString, cgs.voteYes, cgs.voteNo);
+;2138:	CG_DrawSmallString( 0, 58, s, 1.0F );
+;2139:	s = "or press ESC then click Vote";
+;2140:	CG_DrawSmallString( 0, 58 + SMALLCHAR_HEIGHT + 2, s, 1.0F );
+;2141:#else
+;2142:	s = va("VOTE(%i):%s yes:%i no:%i", sec, cgs.voteString, cgs.voteYes, cgs.voteNo );
 ADDRGP4 $1013
 ARGP4
 ADDRLP4 0
@@ -10467,8 +10469,8 @@ ADDRLP4 4
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 2141
-;2141:	CG_DrawSmallString( 0, 58, s, 1.0F );
+line 2143
+;2143:	CG_DrawSmallString( 0, 58, s, 1.0F );
 CNSTI4 0
 ARGI4
 CNSTI4 58
@@ -10481,56 +10483,56 @@ ARGF4
 ADDRGP4 CG_DrawSmallString
 CALLV
 pop
-line 2143
-;2142:#endif
-;2143:}
+line 2145
+;2144:#endif
+;2145:}
 LABELV $999
 endproc CG_DrawVote 12 20
 proc CG_DrawTeamVote 24 20
-line 2150
-;2144:
-;2145:/*
-;2146:=================
-;2147:CG_DrawTeamVote
+line 2152
+;2146:
+;2147:/*
 ;2148:=================
-;2149:*/
-;2150:static void CG_DrawTeamVote(void) {
-line 2154
-;2151:	char	*s;
-;2152:	int		sec, cs_offset;
-;2153:
-;2154:	if ( cgs.clientinfo->team == TEAM_RED )
+;2149:CG_DrawTeamVote
+;2150:=================
+;2151:*/
+;2152:static void CG_DrawTeamVote(void) {
+line 2156
+;2153:	char	*s;
+;2154:	int		sec, cs_offset;
+;2155:
+;2156:	if ( cgs.clientinfo->team == TEAM_RED )
 ADDRGP4 cgs+40972+68
 INDIRI4
 CNSTI4 1
 NEI4 $1018
-line 2155
-;2155:		cs_offset = 0;
+line 2157
+;2157:		cs_offset = 0;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1019
 JUMPV
 LABELV $1018
-line 2156
-;2156:	else if ( cgs.clientinfo->team == TEAM_BLUE )
+line 2158
+;2158:	else if ( cgs.clientinfo->team == TEAM_BLUE )
 ADDRGP4 cgs+40972+68
 INDIRI4
 CNSTI4 2
 NEI4 $1017
-line 2157
-;2157:		cs_offset = 1;
+line 2159
+;2159:		cs_offset = 1;
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-line 2159
-;2158:	else
-;2159:		return;
+line 2161
+;2160:	else
+;2161:		return;
 LABELV $1023
 LABELV $1019
-line 2161
-;2160:
-;2161:	if ( !cgs.teamVoteTime[cs_offset] ) {
+line 2163
+;2162:
+;2163:	if ( !cgs.teamVoteTime[cs_offset] ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -10540,16 +10542,16 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $1026
-line 2162
-;2162:		return;
+line 2164
+;2164:		return;
 ADDRGP4 $1017
 JUMPV
 LABELV $1026
-line 2166
-;2163:	}
-;2164:
-;2165:	// play a talk beep whenever it is modified
-;2166:	if ( cgs.teamVoteModified[cs_offset] ) {
+line 2168
+;2165:	}
+;2166:
+;2167:	// play a talk beep whenever it is modified
+;2168:	if ( cgs.teamVoteModified[cs_offset] ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -10559,8 +10561,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $1029
-line 2167
-;2167:		cgs.teamVoteModified[cs_offset] = qfalse;
+line 2169
+;2169:		cgs.teamVoteModified[cs_offset] = qfalse;
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -10569,8 +10571,8 @@ ADDRGP4 cgs+32740
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2168
-;2168:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
+line 2170
+;2170:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
 ADDRGP4 cgs+153876+784
 INDIRI4
 ARGI4
@@ -10579,12 +10581,12 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 2169
-;2169:	}
-LABELV $1029
 line 2171
-;2170:
-;2171:	sec = ( VOTE_TIME - ( cg.time - cgs.teamVoteTime[cs_offset] ) ) / 1000;
+;2171:	}
+LABELV $1029
+line 2173
+;2172:
+;2173:	sec = ( VOTE_TIME - ( cg.time - cgs.teamVoteTime[cs_offset] ) ) / 1000;
 ADDRLP4 4
 CNSTI4 30000
 ADDRGP4 cg+109652
@@ -10601,22 +10603,22 @@ SUBI4
 CNSTI4 1000
 DIVI4
 ASGNI4
-line 2172
-;2172:	if ( sec < 0 ) {
+line 2174
+;2174:	if ( sec < 0 ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 GEI4 $1037
-line 2173
-;2173:		sec = 0;
+line 2175
+;2175:		sec = 0;
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-line 2174
-;2174:	}
+line 2176
+;2176:	}
 LABELV $1037
-line 2175
-;2175:	s = va("TEAMVOTE(%i):%s yes:%i no:%i", sec, cgs.teamVoteString[cs_offset],
+line 2177
+;2177:	s = va("TEAMVOTE(%i):%s yes:%i no:%i", sec, cgs.teamVoteString[cs_offset],
 ADDRGP4 $1039
 ARGP4
 ADDRLP4 4
@@ -10655,9 +10657,9 @@ ADDRLP4 8
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 2177
-;2176:							cgs.teamVoteYes[cs_offset], cgs.teamVoteNo[cs_offset] );
-;2177:	CG_DrawSmallString( 0, 90, s, 1.0F );
+line 2179
+;2178:							cgs.teamVoteYes[cs_offset], cgs.teamVoteNo[cs_offset] );
+;2179:	CG_DrawSmallString( 0, 90, s, 1.0F );
 CNSTI4 0
 ARGI4
 CNSTI4 90
@@ -10670,81 +10672,81 @@ ARGF4
 ADDRGP4 CG_DrawSmallString
 CALLV
 pop
-line 2178
-;2178:}
+line 2180
+;2180:}
 LABELV $1017
 endproc CG_DrawTeamVote 24 20
 proc CG_DrawScoreboard 4 0
-line 2181
-;2179:
-;2180:
-;2181:static qboolean CG_DrawScoreboard() {
-line 2246
-;2182:#ifdef MISSIONPACK
-;2183:	static qboolean firstTime = qtrue;
-;2184:	float fade, *fadeColor;
-;2185:
-;2186:	if (menuScoreboard) {
-;2187:		menuScoreboard->window.flags &= ~WINDOW_FORCED;
-;2188:	}
-;2189:	if (cg_paused.integer) {
-;2190:		cg.deferredPlayerLoading = 0;
-;2191:		firstTime = qtrue;
-;2192:		return qfalse;
-;2193:	}
-;2194:
-;2195:	// should never happen in Team Arena
-;2196:	if (cgs.gametype == GT_SINGLE_PLAYER && cg.predictedPlayerState.pm_type == PM_INTERMISSION ) {
-;2197:		cg.deferredPlayerLoading = 0;
-;2198:		firstTime = qtrue;
-;2199:		return qfalse;
-;2200:	}
-;2201:
-;2202:	// don't draw scoreboard during death while warmup up
-;2203:	if ( cg.warmup && !cg.showScores ) {
-;2204:		return qfalse;
-;2205:	}
-;2206:
-;2207:	if ( cg.showScores || cg.predictedPlayerState.pm_type == PM_DEAD || cg.predictedPlayerState.pm_type == PM_INTERMISSION ) {
-;2208:		fade = 1.0;
-;2209:		fadeColor = colorWhite;
-;2210:	} else {
-;2211:		fadeColor = CG_FadeColor( cg.scoreFadeTime, FADE_TIME );
-;2212:		if ( !fadeColor ) {
-;2213:			// next time scoreboard comes up, don't print killer
-;2214:			cg.deferredPlayerLoading = 0;
-;2215:			cg.killerName[0] = 0;
-;2216:			firstTime = qtrue;
-;2217:			return qfalse;
-;2218:		}
-;2219:		fade = *fadeColor;
-;2220:	}																					  
-;2221:
-;2222:
-;2223:	if (menuScoreboard == NULL) {
-;2224:		if ( cgs.gametype >= GT_TEAM ) {
-;2225:			menuScoreboard = Menus_FindByName("teamscore_menu");
-;2226:		} else {
-;2227:			menuScoreboard = Menus_FindByName("score_menu");
-;2228:		}
-;2229:	}
-;2230:
-;2231:	if (menuScoreboard) {
-;2232:		if (firstTime) {
-;2233:			CG_SetScoreSelection(menuScoreboard);
-;2234:			firstTime = qfalse;
-;2235:		}
-;2236:		Menu_Paint(menuScoreboard, qtrue);
-;2237:	}
-;2238:
-;2239:	// load any models that have been deferred
-;2240:	if ( ++cg.deferredPlayerLoading > 10 ) {
-;2241:		CG_LoadDeferredPlayers();
-;2242:	}
-;2243:
-;2244:	return qtrue;
-;2245:#else
-;2246:	return CG_DrawOldScoreboard();
+line 2183
+;2181:
+;2182:
+;2183:static qboolean CG_DrawScoreboard() {
+line 2248
+;2184:#ifdef MISSIONPACK
+;2185:	static qboolean firstTime = qtrue;
+;2186:	float fade, *fadeColor;
+;2187:
+;2188:	if (menuScoreboard) {
+;2189:		menuScoreboard->window.flags &= ~WINDOW_FORCED;
+;2190:	}
+;2191:	if (cg_paused.integer) {
+;2192:		cg.deferredPlayerLoading = 0;
+;2193:		firstTime = qtrue;
+;2194:		return qfalse;
+;2195:	}
+;2196:
+;2197:	// should never happen in Team Arena
+;2198:	if (cgs.gametype == GT_SINGLE_PLAYER && cg.predictedPlayerState.pm_type == PM_INTERMISSION ) {
+;2199:		cg.deferredPlayerLoading = 0;
+;2200:		firstTime = qtrue;
+;2201:		return qfalse;
+;2202:	}
+;2203:
+;2204:	// don't draw scoreboard during death while warmup up
+;2205:	if ( cg.warmup && !cg.showScores ) {
+;2206:		return qfalse;
+;2207:	}
+;2208:
+;2209:	if ( cg.showScores || cg.predictedPlayerState.pm_type == PM_DEAD || cg.predictedPlayerState.pm_type == PM_INTERMISSION ) {
+;2210:		fade = 1.0;
+;2211:		fadeColor = colorWhite;
+;2212:	} else {
+;2213:		fadeColor = CG_FadeColor( cg.scoreFadeTime, FADE_TIME );
+;2214:		if ( !fadeColor ) {
+;2215:			// next time scoreboard comes up, don't print killer
+;2216:			cg.deferredPlayerLoading = 0;
+;2217:			cg.killerName[0] = 0;
+;2218:			firstTime = qtrue;
+;2219:			return qfalse;
+;2220:		}
+;2221:		fade = *fadeColor;
+;2222:	}																					  
+;2223:
+;2224:
+;2225:	if (menuScoreboard == NULL) {
+;2226:		if ( cgs.gametype >= GT_TEAM ) {
+;2227:			menuScoreboard = Menus_FindByName("teamscore_menu");
+;2228:		} else {
+;2229:			menuScoreboard = Menus_FindByName("score_menu");
+;2230:		}
+;2231:	}
+;2232:
+;2233:	if (menuScoreboard) {
+;2234:		if (firstTime) {
+;2235:			CG_SetScoreSelection(menuScoreboard);
+;2236:			firstTime = qfalse;
+;2237:		}
+;2238:		Menu_Paint(menuScoreboard, qtrue);
+;2239:	}
+;2240:
+;2241:	// load any models that have been deferred
+;2242:	if ( ++cg.deferredPlayerLoading > 10 ) {
+;2243:		CG_LoadDeferredPlayers();
+;2244:	}
+;2245:
+;2246:	return qtrue;
+;2247:#else
+;2248:	return CG_DrawOldScoreboard();
 ADDRLP4 0
 ADDRGP4 CG_DrawOldScoreboard
 CALLI4
@@ -10755,49 +10757,49 @@ RETI4
 LABELV $1043
 endproc CG_DrawScoreboard 4 0
 proc CG_DrawIntermission 4 0
-line 2255
-;2247:#endif
-;2248:}
-;2249:
-;2250:/*
-;2251:=================
-;2252:CG_DrawIntermission
+line 2257
+;2249:#endif
+;2250:}
+;2251:
+;2252:/*
 ;2253:=================
-;2254:*/
-;2255:static void CG_DrawIntermission( void ) {
-line 2263
-;2256://	int key;
-;2257:#ifdef MISSIONPACK
-;2258:	//if (cg_singlePlayer.integer) {
-;2259:	//	CG_DrawCenterString();
-;2260:	//	return;
-;2261:	//}
-;2262:#else
-;2263:	if ( cgs.gametype == GT_SINGLE_PLAYER ) {
+;2254:CG_DrawIntermission
+;2255:=================
+;2256:*/
+;2257:static void CG_DrawIntermission( void ) {
+line 2265
+;2258://	int key;
+;2259:#ifdef MISSIONPACK
+;2260:	//if (cg_singlePlayer.integer) {
+;2261:	//	CG_DrawCenterString();
+;2262:	//	return;
+;2263:	//}
+;2264:#else
+;2265:	if ( cgs.gametype == GT_SINGLE_PLAYER ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 2
 NEI4 $1045
-line 2264
-;2264:		CG_DrawCenterString();
+line 2266
+;2266:		CG_DrawCenterString();
 ADDRGP4 CG_DrawCenterString
 CALLV
 pop
-line 2265
-;2265:		return;
+line 2267
+;2267:		return;
 ADDRGP4 $1044
 JUMPV
 LABELV $1045
-line 2268
-;2266:	}
-;2267:#endif
-;2268:	cg.scoreFadeTime = cg.time;
+line 2270
+;2268:	}
+;2269:#endif
+;2270:	cg.scoreFadeTime = cg.time;
 ADDRGP4 cg+116396
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 2269
-;2269:	cg.scoreBoardShowing = CG_DrawScoreboard();
+line 2271
+;2271:	cg.scoreBoardShowing = CG_DrawScoreboard();
 ADDRLP4 0
 ADDRGP4 CG_DrawScoreboard
 CALLI4
@@ -10806,25 +10808,25 @@ ADDRGP4 cg+116392
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 2270
-;2270:}
+line 2272
+;2272:}
 LABELV $1044
 endproc CG_DrawIntermission 4 0
 proc CG_DrawFollow 32 36
-line 2277
-;2271:
-;2272:/*
-;2273:=================
-;2274:CG_DrawFollow
+line 2279
+;2273:
+;2274:/*
 ;2275:=================
-;2276:*/
-;2277:static qboolean CG_DrawFollow( void ) {
-line 2282
-;2278:	float		x;
-;2279:	vec4_t		color;
-;2280:	const char	*name;
-;2281:
-;2282:	if ( !(cg.snap->ps.pm_flags & PMF_FOLLOW) ) {
+;2276:CG_DrawFollow
+;2277:=================
+;2278:*/
+;2279:static qboolean CG_DrawFollow( void ) {
+line 2284
+;2280:	float		x;
+;2281:	vec4_t		color;
+;2282:	const char	*name;
+;2283:
+;2284:	if ( !(cg.snap->ps.pm_flags & PMF_FOLLOW) ) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 56
@@ -10834,38 +10836,38 @@ CNSTI4 4096
 BANDI4
 CNSTI4 0
 NEI4 $1052
-line 2283
-;2283:		return qfalse;
+line 2285
+;2285:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $1051
 JUMPV
 LABELV $1052
-line 2285
-;2284:	}
-;2285:	color[0] = 1;
+line 2287
+;2286:	}
+;2287:	color[0] = 1;
 ADDRLP4 0
 CNSTF4 1065353216
 ASGNF4
-line 2286
-;2286:	color[1] = 1;
+line 2288
+;2288:	color[1] = 1;
 ADDRLP4 0+4
 CNSTF4 1065353216
 ASGNF4
-line 2287
-;2287:	color[2] = 1;
+line 2289
+;2289:	color[2] = 1;
 ADDRLP4 0+8
 CNSTF4 1065353216
 ASGNF4
-line 2288
-;2288:	color[3] = 1;
+line 2290
+;2290:	color[3] = 1;
 ADDRLP4 0+12
 CNSTF4 1065353216
 ASGNF4
-line 2291
-;2289:
-;2290:
-;2291:	CG_DrawBigString( 320 - 9 * 8, 24, "following", 1.0F );
+line 2293
+;2291:
+;2292:
+;2293:	CG_DrawBigString( 320 - 9 * 8, 24, "following", 1.0F );
 CNSTI4 248
 ARGI4
 CNSTI4 24
@@ -10877,9 +10879,9 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 2293
-;2292:
-;2293:	name = cgs.clientinfo[ cg.snap->ps.clientNum ].name;
+line 2295
+;2294:
+;2295:	name = cgs.clientinfo[ cg.snap->ps.clientNum ].name;
 ADDRLP4 16
 CNSTI4 1732
 ADDRGP4 cg+36
@@ -10891,9 +10893,9 @@ MULI4
 ADDRGP4 cgs+40972+4
 ADDP4
 ASGNP4
-line 2295
-;2294:
-;2295:	x = 0.5 * ( 640 - GIANT_WIDTH * CG_DrawStrlen( name ) );
+line 2297
+;2296:
+;2297:	x = 0.5 * ( 640 - GIANT_WIDTH * CG_DrawStrlen( name ) );
 ADDRLP4 16
 INDIRP4
 ARGP4
@@ -10912,9 +10914,9 @@ SUBI4
 CVIF4 4
 MULF4
 ASGNF4
-line 2297
-;2296:
-;2297:	CG_DrawStringExt( x, 40, name, color, qtrue, qtrue, GIANT_WIDTH, GIANT_HEIGHT, 0 );
+line 2299
+;2298:
+;2299:	CG_DrawStringExt( x, 40, name, color, qtrue, qtrue, GIANT_WIDTH, GIANT_HEIGHT, 0 );
 ADDRLP4 20
 INDIRF4
 CVFI4 4
@@ -10944,80 +10946,80 @@ ARGI4
 ADDRGP4 CG_DrawStringExt
 CALLV
 pop
-line 2299
-;2298:
-;2299:	return qtrue;
+line 2301
+;2300:
+;2301:	return qtrue;
 CNSTI4 1
 RETI4
 LABELV $1051
 endproc CG_DrawFollow 32 36
 proc CG_DrawAmmoWarning 12 16
-line 2309
-;2300:}
-;2301:
-;2302:
+line 2311
+;2302:}
 ;2303:
-;2304:/*
-;2305:=================
-;2306:CG_DrawAmmoWarning
+;2304:
+;2305:
+;2306:/*
 ;2307:=================
-;2308:*/
-;2309:static void CG_DrawAmmoWarning( void ) {
-line 2313
-;2310:	const char	*s;
-;2311:	int			w;
-;2312:
-;2313:	if ( cg_drawAmmoWarning.integer == 0 ) {
+;2308:CG_DrawAmmoWarning
+;2309:=================
+;2310:*/
+;2311:static void CG_DrawAmmoWarning( void ) {
+line 2315
+;2312:	const char	*s;
+;2313:	int			w;
+;2314:
+;2315:	if ( cg_drawAmmoWarning.integer == 0 ) {
 ADDRGP4 cg_drawAmmoWarning+12
 INDIRI4
 CNSTI4 0
 NEI4 $1063
-line 2314
-;2314:		return;
+line 2316
+;2316:		return;
 ADDRGP4 $1062
 JUMPV
 LABELV $1063
-line 2317
-;2315:	}
-;2316:
-;2317:	if ( !cg.lowAmmoWarning ) {
+line 2319
+;2317:	}
+;2318:
+;2319:	if ( !cg.lowAmmoWarning ) {
 ADDRGP4 cg+126460
 INDIRI4
 CNSTI4 0
 NEI4 $1066
-line 2318
-;2318:		return;
+line 2320
+;2320:		return;
 ADDRGP4 $1062
 JUMPV
 LABELV $1066
-line 2321
-;2319:	}
-;2320:
-;2321:	if ( cg.lowAmmoWarning == 2 ) {
+line 2323
+;2321:	}
+;2322:
+;2323:	if ( cg.lowAmmoWarning == 2 ) {
 ADDRGP4 cg+126460
 INDIRI4
 CNSTI4 2
 NEI4 $1069
-line 2322
-;2322:		s = "OUT OF AMMO";
+line 2324
+;2324:		s = "OUT OF AMMO";
 ADDRLP4 0
 ADDRGP4 $1072
 ASGNP4
-line 2323
-;2323:	} else {
+line 2325
+;2325:	} else {
 ADDRGP4 $1070
 JUMPV
 LABELV $1069
-line 2324
-;2324:		s = "LOW AMMO WARNING";
+line 2326
+;2326:		s = "LOW AMMO WARNING";
 ADDRLP4 0
 ADDRGP4 $1073
 ASGNP4
-line 2325
-;2325:	}
+line 2327
+;2327:	}
 LABELV $1070
-line 2326
-;2326:	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
+line 2328
+;2328:	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -11031,8 +11033,8 @@ INDIRI4
 CNSTI4 4
 LSHI4
 ASGNI4
-line 2327
-;2327:	CG_DrawSmallString(320 - w / 2, 64, s, 1.0F);
+line 2329
+;2329:	CG_DrawSmallString(320 - w / 2, 64, s, 1.0F);
 CNSTI4 320
 ADDRLP4 4
 INDIRI4
@@ -11050,101 +11052,101 @@ ARGF4
 ADDRGP4 CG_DrawSmallString
 CALLV
 pop
-line 2328
-;2328:}
+line 2330
+;2330:}
 LABELV $1062
 endproc CG_DrawAmmoWarning 12 16
 proc CG_DrawWarmup 56 36
-line 2377
-;2329:
-;2330:
-;2331:#ifdef MISSIONPACK
-;2332:/*
-;2333:=================
-;2334:CG_DrawProxWarning
+line 2379
+;2331:
+;2332:
+;2333:#ifdef MISSIONPACK
+;2334:/*
 ;2335:=================
-;2336:*/
-;2337:static void CG_DrawProxWarning( void ) {
-;2338:	char s [32];
-;2339:	int			w;
-;2340:  static int proxTime;
-;2341:  static int proxCounter;
-;2342:  static int proxTick;
-;2343:
-;2344:	if( !(cg.snap->ps.eFlags & EF_TICKING ) ) {
-;2345:    proxTime = 0;
-;2346:		return;
-;2347:	}
-;2348:
-;2349:  if (proxTime == 0) {
-;2350:    proxTime = cg.time + 5000;
-;2351:    proxCounter = 5;
-;2352:    proxTick = 0;
-;2353:  }
-;2354:
-;2355:  if (cg.time > proxTime) {
-;2356:    proxTick = proxCounter--;
-;2357:    proxTime = cg.time + 1000;
-;2358:  }
-;2359:
-;2360:  if (proxTick != 0) {
-;2361:    Com_sprintf(s, sizeof(s), "INTERNAL COMBUSTION IN: %i", proxTick);
-;2362:  } else {
-;2363:    Com_sprintf(s, sizeof(s), "YOU HAVE BEEN MINED");
-;2364:  }
-;2365:
-;2366:	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
-;2367:	CG_DrawBigStringColor( 320 - w / 2, 64 + BIGCHAR_HEIGHT, s, g_color_table[ColorIndex(COLOR_RED)] );
-;2368:}
-;2369:#endif
-;2370:
-;2371:
-;2372:/*
-;2373:=================
-;2374:CG_DrawWarmup
+;2336:CG_DrawProxWarning
+;2337:=================
+;2338:*/
+;2339:static void CG_DrawProxWarning( void ) {
+;2340:	char s [32];
+;2341:	int			w;
+;2342:  static int proxTime;
+;2343:  static int proxCounter;
+;2344:  static int proxTick;
+;2345:
+;2346:	if( !(cg.snap->ps.eFlags & EF_TICKING ) ) {
+;2347:    proxTime = 0;
+;2348:		return;
+;2349:	}
+;2350:
+;2351:  if (proxTime == 0) {
+;2352:    proxTime = cg.time + 5000;
+;2353:    proxCounter = 5;
+;2354:    proxTick = 0;
+;2355:  }
+;2356:
+;2357:  if (cg.time > proxTime) {
+;2358:    proxTick = proxCounter--;
+;2359:    proxTime = cg.time + 1000;
+;2360:  }
+;2361:
+;2362:  if (proxTick != 0) {
+;2363:    Com_sprintf(s, sizeof(s), "INTERNAL COMBUSTION IN: %i", proxTick);
+;2364:  } else {
+;2365:    Com_sprintf(s, sizeof(s), "YOU HAVE BEEN MINED");
+;2366:  }
+;2367:
+;2368:	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
+;2369:	CG_DrawBigStringColor( 320 - w / 2, 64 + BIGCHAR_HEIGHT, s, g_color_table[ColorIndex(COLOR_RED)] );
+;2370:}
+;2371:#endif
+;2372:
+;2373:
+;2374:/*
 ;2375:=================
-;2376:*/
-;2377:static void CG_DrawWarmup( void ) {
-line 2386
-;2378:	int			w;
-;2379:	int			sec;
-;2380:	int			i;
-;2381:	float scale;
-;2382:	clientInfo_t	*ci1, *ci2;
-;2383:	int			cw;
-;2384:	const char	*s;
-;2385:
-;2386:	sec = cg.warmup;
+;2376:CG_DrawWarmup
+;2377:=================
+;2378:*/
+;2379:static void CG_DrawWarmup( void ) {
+line 2388
+;2380:	int			w;
+;2381:	int			sec;
+;2382:	int			i;
+;2383:	float scale;
+;2384:	clientInfo_t	*ci1, *ci2;
+;2385:	int			cw;
+;2386:	const char	*s;
+;2387:
+;2388:	sec = cg.warmup;
 ADDRLP4 4
 ADDRGP4 cg+126724
 INDIRI4
 ASGNI4
-line 2387
-;2387:	if ( !sec ) {
+line 2389
+;2389:	if ( !sec ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $1076
-line 2388
-;2388:		return;
+line 2390
+;2390:		return;
 ADDRGP4 $1074
 JUMPV
 LABELV $1076
-line 2391
-;2389:	}
-;2390:
-;2391:	if ( sec < 0 ) {
+line 2393
+;2391:	}
+;2392:
+;2393:	if ( sec < 0 ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 GEI4 $1078
-line 2392
-;2392:		s = "Waiting for players";		
+line 2394
+;2394:		s = "Waiting for players";		
 ADDRLP4 8
 ADDRGP4 $1080
 ASGNP4
-line 2393
-;2393:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
+line 2395
+;2395:		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 ADDRLP4 8
 INDIRP4
 ARGP4
@@ -11158,8 +11160,8 @@ INDIRI4
 CNSTI4 4
 LSHI4
 ASGNI4
-line 2394
-;2394:		CG_DrawBigString(320 - w / 2, 24, s, 1.0F);
+line 2396
+;2396:		CG_DrawBigString(320 - w / 2, 24, s, 1.0F);
 CNSTI4 320
 ADDRLP4 16
 INDIRI4
@@ -11177,45 +11179,45 @@ ARGF4
 ADDRGP4 CG_DrawBigString
 CALLV
 pop
-line 2395
-;2395:		cg.warmupCount = 0;
+line 2397
+;2397:		cg.warmupCount = 0;
 ADDRGP4 cg+126728
 CNSTI4 0
 ASGNI4
-line 2396
-;2396:		return;
+line 2398
+;2398:		return;
 ADDRGP4 $1074
 JUMPV
 LABELV $1078
-line 2399
-;2397:	}
-;2398:
-;2399:	if (cgs.gametype == GT_TOURNAMENT) {
+line 2401
+;2399:	}
+;2400:
+;2401:	if (cgs.gametype == GT_TOURNAMENT) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 1
 NEI4 $1082
-line 2401
-;2400:		// find the two active players
-;2401:		ci1 = NULL;
+line 2403
+;2402:		// find the two active players
+;2403:		ci1 = NULL;
 ADDRLP4 20
 CNSTP4 0
 ASGNP4
-line 2402
-;2402:		ci2 = NULL;
+line 2404
+;2404:		ci2 = NULL;
 ADDRLP4 24
 CNSTP4 0
 ASGNP4
-line 2403
-;2403:		for ( i = 0 ; i < cgs.maxclients ; i++ ) {
+line 2405
+;2405:		for ( i = 0 ; i < cgs.maxclients ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1088
 JUMPV
 LABELV $1085
-line 2404
-;2404:			if ( cgs.clientinfo[i].infoValid && cgs.clientinfo[i].team == TEAM_FREE ) {
+line 2406
+;2406:			if ( cgs.clientinfo[i].infoValid && cgs.clientinfo[i].team == TEAM_FREE ) {
 ADDRLP4 32
 CNSTI4 1732
 ADDRLP4 0
@@ -11241,31 +11243,16 @@ INDIRI4
 ADDRLP4 36
 INDIRI4
 NEI4 $1090
-line 2405
-;2405:				if ( !ci1 ) {
+line 2407
+;2407:				if ( !ci1 ) {
 ADDRLP4 20
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $1095
-line 2406
-;2406:					ci1 = &cgs.clientinfo[i];
-ADDRLP4 20
-CNSTI4 1732
-ADDRLP4 0
-INDIRI4
-MULI4
-ADDRGP4 cgs+40972
-ADDP4
-ASGNP4
-line 2407
-;2407:				} else {
-ADDRGP4 $1096
-JUMPV
-LABELV $1095
 line 2408
-;2408:					ci2 = &cgs.clientinfo[i];
-ADDRLP4 24
+;2408:					ci1 = &cgs.clientinfo[i];
+ADDRLP4 20
 CNSTI4 1732
 ADDRLP4 0
 INDIRI4
@@ -11274,15 +11261,30 @@ ADDRGP4 cgs+40972
 ADDP4
 ASGNP4
 line 2409
-;2409:				}
-LABELV $1096
+;2409:				} else {
+ADDRGP4 $1096
+JUMPV
+LABELV $1095
 line 2410
-;2410:			}
-LABELV $1090
+;2410:					ci2 = &cgs.clientinfo[i];
+ADDRLP4 24
+CNSTI4 1732
+ADDRLP4 0
+INDIRI4
+MULI4
+ADDRGP4 cgs+40972
+ADDP4
+ASGNP4
 line 2411
-;2411:		}
+;2411:				}
+LABELV $1096
+line 2412
+;2412:			}
+LABELV $1090
+line 2413
+;2413:		}
 LABELV $1086
-line 2403
+line 2405
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -11295,9 +11297,9 @@ INDIRI4
 ADDRGP4 cgs+31480
 INDIRI4
 LTI4 $1085
-line 2413
-;2412:
-;2413:		if ( ci1 && ci2 ) {
+line 2415
+;2414:
+;2415:		if ( ci1 && ci2 ) {
 ADDRLP4 32
 CNSTU4 0
 ASGNU4
@@ -11313,8 +11315,8 @@ CVPU4 4
 ADDRLP4 32
 INDIRU4
 EQU4 $1083
-line 2414
-;2414:			s = va( "%s vs %s", ci1->name, ci2->name );
+line 2416
+;2416:			s = va( "%s vs %s", ci1->name, ci2->name );
 ADDRGP4 $1101
 ARGP4
 ADDRLP4 36
@@ -11340,12 +11342,12 @@ ADDRLP4 8
 ADDRLP4 40
 INDIRP4
 ASGNP4
-line 2419
-;2415:#ifdef MISSIONPACK
-;2416:			w = CG_Text_Width(s, 0.6f, 0);
-;2417:			CG_Text_Paint(320 - w / 2, 60, 0.6f, colorWhite, s, 0, 0, ITEM_TEXTSTYLE_SHADOWEDMORE);
-;2418:#else
-;2419:			w = CG_DrawStrlen( s );
+line 2421
+;2417:#ifdef MISSIONPACK
+;2418:			w = CG_Text_Width(s, 0.6f, 0);
+;2419:			CG_Text_Paint(320 - w / 2, 60, 0.6f, colorWhite, s, 0, 0, ITEM_TEXTSTYLE_SHADOWEDMORE);
+;2420:#else
+;2421:			w = CG_DrawStrlen( s );
 ADDRLP4 8
 INDIRP4
 ARGP4
@@ -11357,35 +11359,35 @@ ADDRLP4 16
 ADDRLP4 44
 INDIRI4
 ASGNI4
-line 2420
-;2420:			if ( w > 640 / GIANT_WIDTH ) {
+line 2422
+;2422:			if ( w > 640 / GIANT_WIDTH ) {
 ADDRLP4 16
 INDIRI4
 CNSTI4 20
 LEI4 $1102
-line 2421
-;2421:				cw = 640 / w;
+line 2423
+;2423:				cw = 640 / w;
 ADDRLP4 12
 CNSTI4 640
 ADDRLP4 16
 INDIRI4
 DIVI4
 ASGNI4
-line 2422
-;2422:			} else {
+line 2424
+;2424:			} else {
 ADDRGP4 $1103
 JUMPV
 LABELV $1102
-line 2423
-;2423:				cw = GIANT_WIDTH;
+line 2425
+;2425:				cw = GIANT_WIDTH;
 ADDRLP4 12
 CNSTI4 32
 ASGNI4
-line 2424
-;2424:			}
+line 2426
+;2426:			}
 LABELV $1103
-line 2425
-;2425:			CG_DrawStringExt( 320 - w * cw/2, 20,s, colorWhite, 
+line 2427
+;2427:			CG_DrawStringExt( 320 - w * cw/2, 20,s, colorWhite, 
 CNSTI4 320
 ADDRLP4 16
 INDIRI4
@@ -11427,29 +11429,29 @@ ARGI4
 ADDRGP4 CG_DrawStringExt
 CALLV
 pop
-line 2429
-;2426:					qfalse, qtrue, cw, (int)(cw * 1.5f), 0 );
-;2427:			
-;2428:#endif
-;2429:		}
-line 2430
-;2430:	} else {
+line 2431
+;2428:					qfalse, qtrue, cw, (int)(cw * 1.5f), 0 );
+;2429:			
+;2430:#endif
+;2431:		}
+line 2432
+;2432:	} else {
 ADDRGP4 $1083
 JUMPV
 LABELV $1082
-line 2431
-;2431:		if ( cgs.g_GameMode == 1) {
+line 2433
+;2433:		if ( cgs.g_GameMode == 1) {
 ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 1
 NEI4 $1104
-line 2432
-;2432:			s = "Arsenal";
+line 2434
+;2434:			s = "Arsenal";
 ADDRLP4 8
 ADDRGP4 $1107
 ASGNP4
-line 2433
-;2433:		} else if ( cgs.gametype == GT_FFA && cgs.g_GameMode == 0) {
+line 2435
+;2435:		} else if ( cgs.gametype == GT_FFA && cgs.g_GameMode == 0) {
 ADDRGP4 $1105
 JUMPV
 LABELV $1104
@@ -11466,13 +11468,13 @@ INDIRI4
 ADDRLP4 32
 INDIRI4
 NEI4 $1108
-line 2434
-;2434:			s = "Free For All";
+line 2436
+;2436:			s = "Free For All";
 ADDRLP4 8
 ADDRGP4 $1112
 ASGNP4
-line 2435
-;2435:		} else if ( cgs.g_GameMode == 2) {
+line 2437
+;2437:		} else if ( cgs.g_GameMode == 2) {
 ADDRGP4 $1109
 JUMPV
 LABELV $1108
@@ -11480,13 +11482,13 @@ ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 2
 NEI4 $1113
-line 2436
-;2436:			s = "Survival";
+line 2438
+;2438:			s = "Survival";
 ADDRLP4 8
 ADDRGP4 $1116
 ASGNP4
-line 2437
-;2437:		} else if ( cgs.gametype == GT_TEAM ) {
+line 2439
+;2439:		} else if ( cgs.gametype == GT_TEAM ) {
 ADDRGP4 $1114
 JUMPV
 LABELV $1113
@@ -11494,21 +11496,21 @@ ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
 NEI4 $1117
-line 2438
-;2438:			if ( cgs.g_GameMode == 3) 
+line 2440
+;2440:			if ( cgs.g_GameMode == 3) 
 ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 3
 NEI4 $1120
-line 2439
-;2439:			{
-line 2440
-;2440:				s = "Trepidation";
+line 2441
+;2441:			{
+line 2442
+;2442:				s = "Trepidation";
 ADDRLP4 8
 ADDRGP4 $1123
 ASGNP4
-line 2441
-;2441:			} else if ( cgs.g_GameMode == 2) 
+line 2443
+;2443:			} else if ( cgs.g_GameMode == 2) 
 ADDRGP4 $1118
 JUMPV
 LABELV $1120
@@ -11516,28 +11518,28 @@ ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 2
 NEI4 $1124
-line 2442
-;2442:			{
-line 2443
-;2443:				s = "Team Survival";
+line 2444
+;2444:			{
+line 2445
+;2445:				s = "Team Survival";
 ADDRLP4 8
 ADDRGP4 $1127
 ASGNP4
-line 2444
-;2444:			} else {
+line 2446
+;2446:			} else {
 ADDRGP4 $1118
 JUMPV
 LABELV $1124
-line 2446
-;2445:				
-;2446:				s = "Team Deathmatch";
+line 2448
+;2447:				
+;2448:				s = "Team Deathmatch";
 ADDRLP4 8
 ADDRGP4 $1128
 ASGNP4
-line 2447
-;2447:			}
-line 2448
-;2448:		} else if ( cgs.gametype == GT_CTF ) {
+line 2449
+;2449:			}
+line 2450
+;2450:		} else if ( cgs.gametype == GT_CTF ) {
 ADDRGP4 $1118
 JUMPV
 LABELV $1117
@@ -11545,42 +11547,42 @@ ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 4
 NEI4 $1129
-line 2449
-;2449:			s = "Capture the Flag";
+line 2451
+;2451:			s = "Capture the Flag";
 ADDRLP4 8
 ADDRGP4 $1132
 ASGNP4
-line 2458
-;2450:#ifdef MISSIONPACK
-;2451:		} else if ( cgs.gametype == GT_1FCTF ) {
-;2452:			s = "One Flag CTF";
-;2453:		} else if ( cgs.gametype == GT_OBELISK ) {
-;2454:			s = "Overload";
-;2455:		} else if ( cgs.gametype == GT_HARVESTER ) {
-;2456:			s = "Harvester";
-;2457:#endif
-;2458:		} else {
+line 2460
+;2452:#ifdef MISSIONPACK
+;2453:		} else if ( cgs.gametype == GT_1FCTF ) {
+;2454:			s = "One Flag CTF";
+;2455:		} else if ( cgs.gametype == GT_OBELISK ) {
+;2456:			s = "Overload";
+;2457:		} else if ( cgs.gametype == GT_HARVESTER ) {
+;2458:			s = "Harvester";
+;2459:#endif
+;2460:		} else {
 ADDRGP4 $1130
 JUMPV
 LABELV $1129
-line 2459
-;2459:			s = "";
+line 2461
+;2461:			s = "";
 ADDRLP4 8
 ADDRGP4 $1133
 ASGNP4
-line 2460
-;2460:		}
+line 2462
+;2462:		}
 LABELV $1130
 LABELV $1118
 LABELV $1114
 LABELV $1109
 LABELV $1105
-line 2465
-;2461:#ifdef MISSIONPACK
-;2462:		w = CG_Text_Width(s, 0.6f, 0);
-;2463:		CG_Text_Paint(320 - w / 2, 90, 0.6f, colorWhite, s, 0, 0, ITEM_TEXTSTYLE_SHADOWEDMORE);
-;2464:#else
-;2465:		w = CG_DrawStrlen( s );
+line 2467
+;2463:#ifdef MISSIONPACK
+;2464:		w = CG_Text_Width(s, 0.6f, 0);
+;2465:		CG_Text_Paint(320 - w / 2, 90, 0.6f, colorWhite, s, 0, 0, ITEM_TEXTSTYLE_SHADOWEDMORE);
+;2466:#else
+;2467:		w = CG_DrawStrlen( s );
 ADDRLP4 8
 INDIRP4
 ARGP4
@@ -11592,35 +11594,35 @@ ADDRLP4 16
 ADDRLP4 36
 INDIRI4
 ASGNI4
-line 2466
-;2466:		if ( w > 640 / GIANT_WIDTH ) {
+line 2468
+;2468:		if ( w > 640 / GIANT_WIDTH ) {
 ADDRLP4 16
 INDIRI4
 CNSTI4 20
 LEI4 $1134
-line 2467
-;2467:			cw = 640 / w;
+line 2469
+;2469:			cw = 640 / w;
 ADDRLP4 12
 CNSTI4 640
 ADDRLP4 16
 INDIRI4
 DIVI4
 ASGNI4
-line 2468
-;2468:		} else {
+line 2470
+;2470:		} else {
 ADDRGP4 $1135
 JUMPV
 LABELV $1134
-line 2469
-;2469:			cw = GIANT_WIDTH;
+line 2471
+;2471:			cw = GIANT_WIDTH;
 ADDRLP4 12
 CNSTI4 32
 ASGNI4
-line 2470
-;2470:		}
+line 2472
+;2472:		}
 LABELV $1135
-line 2471
-;2471:		CG_DrawStringExt( 320 - w * cw/2, 25,s, colorWhite, 
+line 2473
+;2473:		CG_DrawStringExt( 320 - w * cw/2, 25,s, colorWhite, 
 CNSTI4 320
 ADDRLP4 16
 INDIRI4
@@ -11662,14 +11664,14 @@ ARGI4
 ADDRGP4 CG_DrawStringExt
 CALLV
 pop
-line 2474
-;2472:				qfalse, qtrue, cw, (int)(cw * 1.1f), 0 );
-;2473:#endif
-;2474:	}
-LABELV $1083
 line 2476
-;2475:
-;2476:	sec = ( sec - cg.time ) / 1000;
+;2474:				qfalse, qtrue, cw, (int)(cw * 1.1f), 0 );
+;2475:#endif
+;2476:	}
+LABELV $1083
+line 2478
+;2477:
+;2478:	sec = ( sec - cg.time ) / 1000;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -11679,36 +11681,36 @@ SUBI4
 CNSTI4 1000
 DIVI4
 ASGNI4
-line 2477
-;2477:	if ( sec < 0 ) {
+line 2479
+;2479:	if ( sec < 0 ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 GEI4 $1137
-line 2478
-;2478:		cg.warmup = 0;
+line 2480
+;2480:		cg.warmup = 0;
 ADDRGP4 cg+126724
 CNSTI4 0
 ASGNI4
-line 2479
-;2479:		sec = 0;
+line 2481
+;2481:		sec = 0;
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-line 2480
-;2480:	}
-LABELV $1137
 line 2482
-;2481:	
-;2482:	if(cgs.g_GameMode == 1)
+;2482:	}
+LABELV $1137
+line 2484
+;2483:	
+;2484:	if(cgs.g_GameMode == 1)
 ADDRGP4 cgs+154988
 INDIRI4
 CNSTI4 1
 NEI4 $1140
-line 2483
-;2483:	{
-line 2484
-;2484:		s = va( "You Have %i Seconds To Join This Round", sec + 1 );
+line 2485
+;2485:	{
+line 2486
+;2486:		s = va( "You Have %i Seconds To Join This Round", sec + 1 );
 ADDRGP4 $1143
 ARGP4
 ADDRLP4 4
@@ -11724,15 +11726,15 @@ ADDRLP4 8
 ADDRLP4 32
 INDIRP4
 ASGNP4
-line 2485
-;2485:	} else
+line 2487
+;2487:	} else
 ADDRGP4 $1141
 JUMPV
 LABELV $1140
-line 2486
-;2486:	{
-line 2487
-;2487:		s = va( "Starts in: %i", sec + 1 );
+line 2488
+;2488:	{
+line 2489
+;2489:		s = va( "Starts in: %i", sec + 1 );
 ADDRGP4 $1144
 ARGP4
 ADDRLP4 4
@@ -11748,26 +11750,26 @@ ADDRLP4 8
 ADDRLP4 32
 INDIRP4
 ASGNP4
-line 2488
-;2488:	}
+line 2490
+;2490:	}
 LABELV $1141
-line 2491
-;2489:	
-;2490:
-;2491:	if ( sec != cg.warmupCount ) {
+line 2493
+;2491:	
+;2492:
+;2493:	if ( sec != cg.warmupCount ) {
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cg+126728
 INDIRI4
 EQI4 $1145
-line 2492
-;2492:		cg.warmupCount = sec;
+line 2494
+;2494:		cg.warmupCount = sec;
 ADDRGP4 cg+126728
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 2493
-;2493:		switch ( sec ) {
+line 2495
+;2495:		switch ( sec ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
@@ -11783,9 +11785,9 @@ EQI4 $1157
 ADDRGP4 $1150
 JUMPV
 LABELV $1151
-line 2495
-;2494:		case 0:
-;2495:			trap_S_StartLocalSound( cgs.media.count1Sound, CHAN_ANNOUNCER );
+line 2497
+;2496:		case 0:
+;2497:			trap_S_StartLocalSound( cgs.media.count1Sound, CHAN_ANNOUNCER );
 ADDRGP4 cgs+153876+1020
 INDIRI4
 ARGI4
@@ -11794,14 +11796,14 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 2496
-;2496:			break;
+line 2498
+;2498:			break;
 ADDRGP4 $1150
 JUMPV
 LABELV $1154
-line 2498
-;2497:		case 1:
-;2498:			trap_S_StartLocalSound( cgs.media.count2Sound, CHAN_ANNOUNCER );
+line 2500
+;2499:		case 1:
+;2500:			trap_S_StartLocalSound( cgs.media.count2Sound, CHAN_ANNOUNCER );
 ADDRGP4 cgs+153876+1016
 INDIRI4
 ARGI4
@@ -11810,14 +11812,14 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 2499
-;2499:			break;
+line 2501
+;2501:			break;
 ADDRGP4 $1150
 JUMPV
 LABELV $1157
-line 2501
-;2500:		case 2:
-;2501:			trap_S_StartLocalSound( cgs.media.count3Sound, CHAN_ANNOUNCER );
+line 2503
+;2502:		case 2:
+;2503:			trap_S_StartLocalSound( cgs.media.count3Sound, CHAN_ANNOUNCER );
 ADDRGP4 cgs+153876+1012
 INDIRI4
 ARGI4
@@ -11826,23 +11828,23 @@ ARGI4
 ADDRGP4 trap_S_StartLocalSound
 CALLV
 pop
-line 2502
-;2502:			break;
 line 2504
-;2503:		default:
 ;2504:			break;
-LABELV $1150
 line 2506
-;2505:		}
-;2506:	}
+;2505:		default:
+;2506:			break;
+LABELV $1150
+line 2508
+;2507:		}
+;2508:	}
 LABELV $1145
-line 2507
-;2507:	scale = 0.45f;
+line 2509
+;2509:	scale = 0.45f;
 ADDRLP4 28
 CNSTF4 1055286886
 ASGNF4
-line 2508
-;2508:	switch ( cg.warmupCount ) {
+line 2510
+;2510:	switch ( cg.warmupCount ) {
 ADDRLP4 32
 ADDRGP4 cg+126728
 INDIRI4
@@ -11862,76 +11864,76 @@ EQI4 $1165
 ADDRGP4 $1160
 JUMPV
 LABELV $1163
-line 2510
-;2509:	case 0:
-;2510:		cw = 28;
+line 2512
+;2511:	case 0:
+;2512:		cw = 28;
 ADDRLP4 12
 CNSTI4 28
 ASGNI4
-line 2511
-;2511:		scale = 0.54f;
+line 2513
+;2513:		scale = 0.54f;
 ADDRLP4 28
 CNSTF4 1057635697
 ASGNF4
-line 2512
-;2512:		break;
+line 2514
+;2514:		break;
 ADDRGP4 $1161
 JUMPV
 LABELV $1164
-line 2514
-;2513:	case 1:
-;2514:		cw = 24;
+line 2516
+;2515:	case 1:
+;2516:		cw = 24;
 ADDRLP4 12
 CNSTI4 24
 ASGNI4
-line 2515
-;2515:		scale = 0.51f;
+line 2517
+;2517:		scale = 0.51f;
 ADDRLP4 28
 CNSTF4 1057132380
 ASGNF4
-line 2516
-;2516:		break;
+line 2518
+;2518:		break;
 ADDRGP4 $1161
 JUMPV
 LABELV $1165
-line 2518
-;2517:	case 2:
-;2518:		cw = 20;
+line 2520
+;2519:	case 2:
+;2520:		cw = 20;
 ADDRLP4 12
 CNSTI4 20
 ASGNI4
-line 2519
-;2519:		scale = 0.48f;
+line 2521
+;2521:		scale = 0.48f;
 ADDRLP4 28
 CNSTF4 1056293519
 ASGNF4
-line 2520
-;2520:		break;
+line 2522
+;2522:		break;
 ADDRGP4 $1161
 JUMPV
 LABELV $1160
-line 2522
-;2521:	default:
-;2522:		cw = 16;
+line 2524
+;2523:	default:
+;2524:		cw = 16;
 ADDRLP4 12
 CNSTI4 16
 ASGNI4
-line 2523
-;2523:		scale = 0.45f;
+line 2525
+;2525:		scale = 0.45f;
 ADDRLP4 28
 CNSTF4 1055286886
 ASGNF4
-line 2524
-;2524:		break;
+line 2526
+;2526:		break;
 LABELV $1161
-line 2531
-;2525:	}
-;2526:
-;2527:#ifdef MISSIONPACK
-;2528:		w = CG_Text_Width(s, scale, 0);
-;2529:		CG_Text_Paint(320 - w / 2, 125, scale, colorWhite, s, 0, 0, ITEM_TEXTSTYLE_SHADOWEDMORE);
-;2530:#else
-;2531:	w = CG_DrawStrlen( s );
+line 2533
+;2527:	}
+;2528:
+;2529:#ifdef MISSIONPACK
+;2530:		w = CG_Text_Width(s, scale, 0);
+;2531:		CG_Text_Paint(320 - w / 2, 125, scale, colorWhite, s, 0, 0, ITEM_TEXTSTYLE_SHADOWEDMORE);
+;2532:#else
+;2533:	w = CG_DrawStrlen( s );
 ADDRLP4 8
 INDIRP4
 ARGP4
@@ -11943,8 +11945,8 @@ ADDRLP4 16
 ADDRLP4 36
 INDIRI4
 ASGNI4
-line 2532
-;2532:	CG_DrawStringExt( 320 - w * cw/2, 70, s, colorWhite, 
+line 2534
+;2534:	CG_DrawStringExt( 320 - w * cw/2, 70, s, colorWhite, 
 CNSTI4 320
 ADDRLP4 16
 INDIRI4
@@ -11986,73 +11988,73 @@ ARGI4
 ADDRGP4 CG_DrawStringExt
 CALLV
 pop
-line 2535
-;2533:			qfalse, qtrue, cw, (int)(cw * 1.5), 0 );
-;2534:#endif
-;2535:}
+line 2537
+;2535:			qfalse, qtrue, cw, (int)(cw * 1.5), 0 );
+;2536:#endif
+;2537:}
 LABELV $1074
 endproc CG_DrawWarmup 56 36
 proc CG_Draw2D 8 0
-line 2560
-;2536:
-;2537://==================================================================================
-;2538:#ifdef MISSIONPACK
-;2539:/* 
-;2540:=================
-;2541:CG_DrawTimedMenus
+line 2562
+;2538:
+;2539://==================================================================================
+;2540:#ifdef MISSIONPACK
+;2541:/* 
 ;2542:=================
-;2543:*/
-;2544:void CG_DrawTimedMenus() {
-;2545:	if (cg.voiceTime) {
-;2546:		int t = cg.time - cg.voiceTime;
-;2547:		if ( t > 2500 ) {
-;2548:			Menus_CloseByName("voiceMenu");
-;2549:			trap_Cvar_Set("cl_conXOffset", "0");
-;2550:			cg.voiceTime = 0;
-;2551:		}
-;2552:	}
-;2553:}
-;2554:#endif
-;2555:/*
-;2556:=================
-;2557:CG_Draw2D
+;2543:CG_DrawTimedMenus
+;2544:=================
+;2545:*/
+;2546:void CG_DrawTimedMenus() {
+;2547:	if (cg.voiceTime) {
+;2548:		int t = cg.time - cg.voiceTime;
+;2549:		if ( t > 2500 ) {
+;2550:			Menus_CloseByName("voiceMenu");
+;2551:			trap_Cvar_Set("cl_conXOffset", "0");
+;2552:			cg.voiceTime = 0;
+;2553:		}
+;2554:	}
+;2555:}
+;2556:#endif
+;2557:/*
 ;2558:=================
-;2559:*/
-;2560:static void CG_Draw2D( void ) {
-line 2567
-;2561:#ifdef MISSIONPACK
-;2562:	if (cgs.orderPending && cg.time > cgs.orderTime) {
-;2563:		CG_CheckOrderPending();
-;2564:	}
-;2565:#endif
-;2566:	// if we are taking a levelshot for the menu, don't draw anything
-;2567:	if ( cg.levelShot ) {
+;2559:CG_Draw2D
+;2560:=================
+;2561:*/
+;2562:static void CG_Draw2D( void ) {
+line 2569
+;2563:#ifdef MISSIONPACK
+;2564:	if (cgs.orderPending && cg.time > cgs.orderTime) {
+;2565:		CG_CheckOrderPending();
+;2566:	}
+;2567:#endif
+;2568:	// if we are taking a levelshot for the menu, don't draw anything
+;2569:	if ( cg.levelShot ) {
 ADDRGP4 cg+12
 INDIRI4
 CNSTI4 0
 EQI4 $1167
-line 2568
-;2568:		return;
+line 2570
+;2570:		return;
 ADDRGP4 $1166
 JUMPV
 LABELV $1167
-line 2571
-;2569:	}
-;2570:
-;2571:	if ( cg_draw2D.integer == 0 ) {
+line 2573
+;2571:	}
+;2572:
+;2573:	if ( cg_draw2D.integer == 0 ) {
 ADDRGP4 cg_draw2D+12
 INDIRI4
 CNSTI4 0
 NEI4 $1170
-line 2572
-;2572:		return;
+line 2574
+;2574:		return;
 ADDRGP4 $1166
 JUMPV
 LABELV $1170
-line 2575
-;2573:	}
-;2574:
-;2575:	if ( cg.snap->ps.pm_type == PM_INTERMISSION ) {
+line 2577
+;2575:	}
+;2576:
+;2577:	if ( cg.snap->ps.pm_type == PM_INTERMISSION ) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 48
@@ -12060,25 +12062,25 @@ ADDP4
 INDIRI4
 CNSTI4 5
 NEI4 $1173
-line 2576
-;2576:		CG_DrawIntermission();
+line 2578
+;2578:		CG_DrawIntermission();
 ADDRGP4 CG_DrawIntermission
 CALLV
 pop
-line 2577
-;2577:		return;
+line 2579
+;2579:		return;
 ADDRGP4 $1166
 JUMPV
 LABELV $1173
-line 2585
-;2578:	}
-;2579:
-;2580:/*
-;2581:	if (cg.cameraMode) {
-;2582:		return;
-;2583:	}
-;2584:*/
-;2585:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR ) {
+line 2587
+;2580:	}
+;2581:
+;2582:/*
+;2583:	if (cg.cameraMode) {
+;2584:		return;
+;2585:	}
+;2586:*/
+;2587:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR ) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 304
@@ -12086,29 +12088,29 @@ ADDP4
 INDIRI4
 CNSTI4 3
 NEI4 $1176
-line 2586
-;2586:		CG_DrawSpectator();
+line 2588
+;2588:		CG_DrawSpectator();
 ADDRGP4 CG_DrawSpectator
 CALLV
 pop
-line 2587
-;2587:		CG_DrawCrosshair();
+line 2589
+;2589:		CG_DrawCrosshair();
 ADDRGP4 CG_DrawCrosshair
 CALLV
 pop
-line 2588
-;2588:		CG_DrawCrosshairNames();
+line 2590
+;2590:		CG_DrawCrosshairNames();
 ADDRGP4 CG_DrawCrosshairNames
 CALLV
 pop
-line 2589
-;2589:	} else {
+line 2591
+;2591:	} else {
 ADDRGP4 $1177
 JUMPV
 LABELV $1176
-line 2591
-;2590:		// don't draw any status if dead or the scoreboard is being explicitly shown
-;2591:		if ( !cg.showScores && cg.snap->ps.stats[STAT_HEALTH] > 0 ) {
+line 2593
+;2592:		// don't draw any status if dead or the scoreboard is being explicitly shown
+;2593:		if ( !cg.showScores && cg.snap->ps.stats[STAT_HEALTH] > 0 ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
@@ -12125,132 +12127,132 @@ INDIRI4
 ADDRLP4 0
 INDIRI4
 LEI4 $1179
-line 2599
-;2592:
-;2593:#ifdef MISSIONPACK
-;2594:			if ( cg_drawStatus.integer ) {
-;2595:				Menu_PaintAll();
-;2596:				CG_DrawTimedMenus();
-;2597:			}
-;2598:#else
-;2599:			CG_DrawStatusBar();
+line 2601
+;2594:
+;2595:#ifdef MISSIONPACK
+;2596:			if ( cg_drawStatus.integer ) {
+;2597:				Menu_PaintAll();
+;2598:				CG_DrawTimedMenus();
+;2599:			}
+;2600:#else
+;2601:			CG_DrawStatusBar();
 ADDRGP4 CG_DrawStatusBar
 CALLV
 pop
-line 2602
-;2600:#endif
-;2601:      
-;2602:			CG_DrawAmmoWarning();
+line 2604
+;2602:#endif
+;2603:      
+;2604:			CG_DrawAmmoWarning();
 ADDRGP4 CG_DrawAmmoWarning
 CALLV
 pop
-line 2607
-;2603:
-;2604:#ifdef MISSIONPACK
-;2605:			CG_DrawProxWarning();
-;2606:#endif      
-;2607:			CG_DrawCrosshair();
+line 2609
+;2605:
+;2606:#ifdef MISSIONPACK
+;2607:			CG_DrawProxWarning();
+;2608:#endif      
+;2609:			CG_DrawCrosshair();
 ADDRGP4 CG_DrawCrosshair
 CALLV
 pop
-line 2608
-;2608:			CG_DrawCrosshairNames();
+line 2610
+;2610:			CG_DrawCrosshairNames();
 ADDRGP4 CG_DrawCrosshairNames
 CALLV
 pop
-line 2609
-;2609:			CG_DrawWeaponSelect();
+line 2611
+;2611:			CG_DrawWeaponSelect();
 ADDRGP4 CG_DrawWeaponSelect
 CALLV
 pop
-line 2612
-;2610:
-;2611:#ifndef MISSIONPACK
-;2612:			CG_DrawHoldableItem();
+line 2614
+;2612:
+;2613:#ifndef MISSIONPACK
+;2614:			CG_DrawHoldableItem();
 ADDRGP4 CG_DrawHoldableItem
 CALLV
 pop
-line 2616
-;2613:#else
-;2614:			//CG_DrawPersistantPowerup();
-;2615:#endif
-;2616:			CG_DrawReward();
+line 2618
+;2615:#else
+;2616:			//CG_DrawPersistantPowerup();
+;2617:#endif
+;2618:			CG_DrawReward();
 ADDRGP4 CG_DrawReward
 CALLV
 pop
-line 2617
-;2617:			CG_DrawScanner();  // Shafe - Trep - Radar
+line 2619
+;2619:			CG_DrawScanner();  // Shafe - Trep - Radar
 ADDRGP4 CG_DrawScanner
 CALLV
 pop
-line 2618
-;2618:		}
-LABELV $1179
 line 2620
-;2619:    
-;2620:		if ( cgs.gametype >= GT_TEAM ) {
+;2620:		}
+LABELV $1179
+line 2622
+;2621:    
+;2622:		if ( cgs.gametype >= GT_TEAM ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
 LTI4 $1183
-line 2622
-;2621:#ifndef MISSIONPACK
-;2622:			CG_DrawTeamInfo();
+line 2624
+;2623:#ifndef MISSIONPACK
+;2624:			CG_DrawTeamInfo();
 ADDRGP4 CG_DrawTeamInfo
 CALLV
 pop
-line 2624
-;2623:#endif
-;2624:		}
+line 2626
+;2625:#endif
+;2626:		}
 LABELV $1183
-line 2625
-;2625:	}
-LABELV $1177
 line 2627
-;2626:
-;2627:	CG_DrawVote();
+;2627:	}
+LABELV $1177
+line 2629
+;2628:
+;2629:	CG_DrawVote();
 ADDRGP4 CG_DrawVote
 CALLV
 pop
-line 2628
-;2628:	CG_DrawTeamVote();
+line 2630
+;2630:	CG_DrawTeamVote();
 ADDRGP4 CG_DrawTeamVote
 CALLV
 pop
-line 2630
-;2629:
-;2630:	CG_DrawLagometer();
+line 2632
+;2631:
+;2632:	CG_DrawLagometer();
 ADDRGP4 CG_DrawLagometer
 CALLV
 pop
-line 2637
-;2631:
-;2632:#ifdef MISSIONPACK
-;2633:	if (!cg_paused.integer) {
-;2634:		CG_DrawUpperRight();
-;2635:	}
-;2636:#else
-;2637:	CG_DrawUpperRight();
+line 2639
+;2633:
+;2634:#ifdef MISSIONPACK
+;2635:	if (!cg_paused.integer) {
+;2636:		CG_DrawUpperRight();
+;2637:	}
+;2638:#else
+;2639:	CG_DrawUpperRight();
 ADDRGP4 CG_DrawUpperRight
 CALLV
 pop
-line 2641
-;2638:#endif
-;2639:
-;2640:#ifndef MISSIONPACK
-;2641:	CG_DrawLowerRight();
+line 2643
+;2640:#endif
+;2641:
+;2642:#ifndef MISSIONPACK
+;2643:	CG_DrawLowerRight();
 ADDRGP4 CG_DrawLowerRight
 CALLV
 pop
-line 2642
-;2642:	CG_DrawLowerLeft();
+line 2644
+;2644:	CG_DrawLowerLeft();
 ADDRGP4 CG_DrawLowerLeft
 CALLV
 pop
-line 2645
-;2643:#endif
-;2644:
-;2645:	if ( !CG_DrawFollow() ) {
+line 2647
+;2645:#endif
+;2646:
+;2647:	if ( !CG_DrawFollow() ) {
 ADDRLP4 0
 ADDRGP4 CG_DrawFollow
 CALLI4
@@ -12259,18 +12261,18 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 0
 NEI4 $1186
-line 2646
-;2646:		CG_DrawWarmup();
+line 2648
+;2648:		CG_DrawWarmup();
 ADDRGP4 CG_DrawWarmup
 CALLV
 pop
-line 2647
-;2647:	}
+line 2649
+;2649:	}
 LABELV $1186
-line 2650
-;2648:
-;2649:	// don't draw center string if scoreboard is up
-;2650:	cg.scoreBoardShowing = CG_DrawScoreboard();
+line 2652
+;2650:
+;2651:	// don't draw center string if scoreboard is up
+;2652:	cg.scoreBoardShowing = CG_DrawScoreboard();
 ADDRLP4 4
 ADDRGP4 CG_DrawScoreboard
 CALLI4
@@ -12279,79 +12281,79 @@ ADDRGP4 cg+116392
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 2651
-;2651:	if ( !cg.scoreBoardShowing) {
+line 2653
+;2653:	if ( !cg.scoreBoardShowing) {
 ADDRGP4 cg+116392
 INDIRI4
 CNSTI4 0
 NEI4 $1189
-line 2652
-;2652:		CG_DrawCenterString();
+line 2654
+;2654:		CG_DrawCenterString();
 ADDRGP4 CG_DrawCenterString
 CALLV
 pop
-line 2653
-;2653:	}
+line 2655
+;2655:	}
 LABELV $1189
-line 2654
-;2654:}
+line 2656
+;2656:}
 LABELV $1166
 endproc CG_Draw2D 8 0
 proc CG_DrawTourneyScoreboard 0 0
-line 2657
-;2655:
-;2656:
-;2657:static void CG_DrawTourneyScoreboard() {
-line 2660
-;2658:#ifdef MISSIONPACK
-;2659:#else
-;2660:	CG_DrawOldTourneyScoreboard();
+line 2659
+;2657:
+;2658:
+;2659:static void CG_DrawTourneyScoreboard() {
+line 2662
+;2660:#ifdef MISSIONPACK
+;2661:#else
+;2662:	CG_DrawOldTourneyScoreboard();
 ADDRGP4 CG_DrawOldTourneyScoreboard
 CALLV
 pop
-line 2662
-;2661:#endif
-;2662:}
+line 2664
+;2663:#endif
+;2664:}
 LABELV $1192
 endproc CG_DrawTourneyScoreboard 0 0
 export CG_DrawActive
 proc CG_DrawActive 24 4
-line 2671
-;2663:
-;2664:/*
-;2665:=====================
-;2666:CG_DrawActive
-;2667:
-;2668:Perform all drawing needed to completely fill the screen
-;2669:=====================
-;2670:*/
-;2671:void CG_DrawActive( stereoFrame_t stereoView ) {
-line 2676
-;2672:	float		separation;
-;2673:	vec3_t		baseOrg;
-;2674:
-;2675:	// optionally draw the info screen instead
-;2676:	if ( !cg.snap ) {
+line 2673
+;2665:
+;2666:/*
+;2667:=====================
+;2668:CG_DrawActive
+;2669:
+;2670:Perform all drawing needed to completely fill the screen
+;2671:=====================
+;2672:*/
+;2673:void CG_DrawActive( stereoFrame_t stereoView ) {
+line 2678
+;2674:	float		separation;
+;2675:	vec3_t		baseOrg;
+;2676:
+;2677:	// optionally draw the info screen instead
+;2678:	if ( !cg.snap ) {
 ADDRGP4 cg+36
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $1194
-line 2677
-;2677:		CG_DrawInformation();
+line 2679
+;2679:		CG_DrawInformation();
 ADDRGP4 CG_DrawInformation
 CALLV
 pop
-line 2678
-;2678:		return;
+line 2680
+;2680:		return;
 ADDRGP4 $1193
 JUMPV
 LABELV $1194
-line 2682
-;2679:	}
-;2680:
-;2681:	// optionally draw the tournement scoreboard instead
-;2682:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR &&
+line 2684
+;2681:	}
+;2682:
+;2683:	// optionally draw the tournement scoreboard instead
+;2684:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR &&
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 304
@@ -12368,22 +12370,22 @@ CNSTI4 8192
 BANDI4
 CNSTI4 0
 EQI4 $1197
-line 2683
-;2683:		( cg.snap->ps.pm_flags & PMF_SCOREBOARD ) ) {
-line 2684
-;2684:		CG_DrawTourneyScoreboard();
+line 2685
+;2685:		( cg.snap->ps.pm_flags & PMF_SCOREBOARD ) ) {
+line 2686
+;2686:		CG_DrawTourneyScoreboard();
 ADDRGP4 CG_DrawTourneyScoreboard
 CALLV
 pop
-line 2685
-;2685:		return;
+line 2687
+;2687:		return;
 ADDRGP4 $1193
 JUMPV
 LABELV $1197
-line 2688
-;2686:	}
-;2687:
-;2688:	switch ( stereoView ) {
+line 2690
+;2688:	}
+;2689:
+;2690:	switch ( stereoView ) {
 ADDRLP4 16
 ADDRFP4 0
 INDIRI4
@@ -12403,20 +12405,20 @@ EQI4 $1207
 ADDRGP4 $1201
 JUMPV
 LABELV $1204
-line 2690
-;2689:	case STEREO_CENTER:
-;2690:		separation = 0;
+line 2692
+;2691:	case STEREO_CENTER:
+;2692:		separation = 0;
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-line 2691
-;2691:		break;
+line 2693
+;2693:		break;
 ADDRGP4 $1202
 JUMPV
 LABELV $1205
-line 2693
-;2692:	case STEREO_LEFT:
-;2693:		separation = -cg_stereoSeparation.value / 2;
+line 2695
+;2694:	case STEREO_LEFT:
+;2695:		separation = -cg_stereoSeparation.value / 2;
 ADDRLP4 0
 ADDRGP4 cg_stereoSeparation+8
 INDIRF4
@@ -12424,65 +12426,65 @@ NEGF4
 CNSTF4 1073741824
 DIVF4
 ASGNF4
-line 2694
-;2694:		break;
+line 2696
+;2696:		break;
 ADDRGP4 $1202
 JUMPV
 LABELV $1207
-line 2696
-;2695:	case STEREO_RIGHT:
-;2696:		separation = cg_stereoSeparation.value / 2;
+line 2698
+;2697:	case STEREO_RIGHT:
+;2698:		separation = cg_stereoSeparation.value / 2;
 ADDRLP4 0
 ADDRGP4 cg_stereoSeparation+8
 INDIRF4
 CNSTF4 1073741824
 DIVF4
 ASGNF4
-line 2697
-;2697:		break;
+line 2699
+;2699:		break;
 ADDRGP4 $1202
 JUMPV
 LABELV $1201
-line 2699
-;2698:	default:
-;2699:		separation = 0;
+line 2701
+;2700:	default:
+;2701:		separation = 0;
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-line 2700
-;2700:		CG_Error( "CG_DrawActive: Undefined stereoView" );
+line 2702
+;2702:		CG_Error( "CG_DrawActive: Undefined stereoView" );
 ADDRGP4 $1209
 ARGP4
 ADDRGP4 CG_Error
 CALLV
 pop
-line 2701
-;2701:	}
+line 2703
+;2703:	}
 LABELV $1202
-line 2705
-;2702:
-;2703:
-;2704:	// clear around the rendered view if sized down
-;2705:	CG_TileClear();
+line 2707
+;2704:
+;2705:
+;2706:	// clear around the rendered view if sized down
+;2707:	CG_TileClear();
 ADDRGP4 CG_TileClear
 CALLV
 pop
-line 2708
-;2706:
-;2707:	// offset vieworg appropriately if we're doing stereo separation
-;2708:	VectorCopy( cg.refdef.vieworg, baseOrg );
+line 2710
+;2708:
+;2709:	// offset vieworg appropriately if we're doing stereo separation
+;2710:	VectorCopy( cg.refdef.vieworg, baseOrg );
 ADDRLP4 4
 ADDRGP4 cg+111104+24
 INDIRB
 ASGNB 12
-line 2709
-;2709:	if ( separation != 0 ) {
+line 2711
+;2711:	if ( separation != 0 ) {
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
 EQF4 $1212
-line 2710
-;2710:		VectorMA( cg.refdef.vieworg, -separation, cg.refdef.viewaxis[1], cg.refdef.vieworg );
+line 2712
+;2712:		VectorMA( cg.refdef.vieworg, -separation, cg.refdef.viewaxis[1], cg.refdef.vieworg );
 ADDRGP4 cg+111104+24
 ADDRGP4 cg+111104+24
 INDIRF4
@@ -12516,44 +12518,44 @@ NEGF4
 MULF4
 ADDF4
 ASGNF4
-line 2711
-;2711:	}
+line 2713
+;2713:	}
 LABELV $1212
-line 2714
-;2712:
-;2713:	// draw 3D view
-;2714:	trap_R_RenderScene( &cg.refdef );
+line 2716
+;2714:
+;2715:	// draw 3D view
+;2716:	trap_R_RenderScene( &cg.refdef );
 ADDRGP4 cg+111104
 ARGP4
 ADDRGP4 trap_R_RenderScene
 CALLV
 pop
-line 2717
-;2715:
-;2716:	// restore original viewpoint if running stereo
-;2717:	if ( separation != 0 ) {
+line 2719
+;2717:
+;2718:	// restore original viewpoint if running stereo
+;2719:	if ( separation != 0 ) {
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
 EQF4 $1242
-line 2718
-;2718:		VectorCopy( baseOrg, cg.refdef.vieworg );
+line 2720
+;2720:		VectorCopy( baseOrg, cg.refdef.vieworg );
 ADDRGP4 cg+111104+24
 ADDRLP4 4
 INDIRB
 ASGNB 12
-line 2719
-;2719:	}
+line 2721
+;2721:	}
 LABELV $1242
-line 2722
-;2720:
-;2721:	// draw status bar and other floating elements
-;2722: 	CG_Draw2D();
+line 2724
+;2722:
+;2723:	// draw status bar and other floating elements
+;2724: 	CG_Draw2D();
 ADDRGP4 CG_Draw2D
 CALLV
 pop
-line 2723
-;2723:}
+line 2725
+;2725:}
 LABELV $1193
 endproc CG_DrawActive 24 4
 bss

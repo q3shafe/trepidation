@@ -428,41 +428,26 @@ line 109
 ;106:==========================
 ;107:*/
 ;108:
-;109:int Team_Point( int team ) {
+;109:void Team_Point( int team ) {
 line 113
 ;110:
 ;111:	char	*teamstr;
 ;112:
-;113:	if (level.warmupTime) { return 0; }
-ADDRGP4 level+16
-INDIRI4
-CNSTI4 0
-EQI4 $109
-CNSTI4 0
-RETI4
-ADDRGP4 $108
-JUMPV
-LABELV $109
-line 117
-;114:
-;115:
-;116:
-;117:	if ( team == TEAM_RED ) 
+;113:	if ( team == TEAM_RED ) 
 ADDRFP4 0
 INDIRI4
 CNSTI4 1
-NEI4 $112
-line 118
-;118:	{
-line 119
-;119:		teamstr = "Red";
+NEI4 $109
+line 114
+;114:	{
+line 115
+;115:		teamstr = "Red";
 ADDRLP4 0
-ADDRGP4 $114
+ADDRGP4 $111
 ASGNP4
-line 121
-;120:		//trap_SendServerCommand( -1, va( "cp \"" S_COLOR_RED "%s" S_COLOR_WHITE " team scores\n\"", teamstr ) );
-;121:		trap_SendServerCommand( -1, va("cp \"^7%s Team Scores\n\"", teamstr ) );
-ADDRGP4 $115
+line 116
+;116:		trap_SendServerCommand( -1, va("cp \"^7%s Team Scores\n\"", teamstr ) );
+ADDRGP4 $112
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -479,9 +464,9 @@ ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 122
-;122:		trap_SendServerCommand( -1, va( "print \"" S_COLOR_RED "%s" S_COLOR_WHITE " team scores\n\"", teamstr ) );
-ADDRGP4 $116
+line 117
+;117:		trap_SendServerCommand( -1, va( "print \"%s team scores\n\"", teamstr ) );
+ADDRGP4 $113
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -493,69 +478,68 @@ ASGNP4
 CNSTI4 -1
 ARGI4
 ADDRLP4 8
+INDIRP4
+ARGP4
+ADDRGP4 trap_SendServerCommand
+CALLV
+pop
+line 118
+;118:	} 
+ADDRGP4 $110
+JUMPV
+LABELV $109
+line 120
+;119:	else 
+;120:	{
+line 121
+;121:			teamstr = "Blue";
+ADDRLP4 0
+ADDRGP4 $114
+ASGNP4
+line 122
+;122:			trap_SendServerCommand( -1, va("cp \"^7%s Team Scores\n\"", teamstr ) );
+ADDRGP4 $112
+ARGP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 4
+ADDRGP4 va
+CALLP4
+ASGNP4
+CNSTI4 -1
+ARGI4
+ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
 line 123
-;123:	} 
+;123:			trap_SendServerCommand( -1, va( "print \"%s team scores\n\"", teamstr ) );
 ADDRGP4 $113
-JUMPV
-LABELV $112
-line 125
-;124:	else 
-;125:	{
+ARGP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 8
+ADDRGP4 va
+CALLP4
+ASGNP4
+CNSTI4 -1
+ARGI4
+ADDRLP4 8
+INDIRP4
+ARGP4
+ADDRGP4 trap_SendServerCommand
+CALLV
+pop
+line 124
+;124:	}
+LABELV $110
 line 126
-;126:			teamstr = "Blue";
-ADDRLP4 0
-ADDRGP4 $117
-ASGNP4
-line 127
-;127:			trap_SendServerCommand( -1, va("cp \"^7%s Team Scores\n\"", teamstr ) );
-ADDRGP4 $115
-ARGP4
-ADDRLP4 0
-INDIRP4
-ARGP4
-ADDRLP4 4
-ADDRGP4 va
-CALLP4
-ASGNP4
-CNSTI4 -1
-ARGI4
-ADDRLP4 4
-INDIRP4
-ARGP4
-ADDRGP4 trap_SendServerCommand
-CALLV
-pop
-line 129
-;128:			//trap_SendServerCommand( -1, va( "cp \"" S_COLOR_BLUE "%s" S_COLOR_WHITE " team scores\n\"", teamstr ) );
-;129:			trap_SendServerCommand( -1, va( "print \"" S_COLOR_BLUE "%s" S_COLOR_WHITE " team scores\n\"", teamstr ) );
-ADDRGP4 $118
-ARGP4
-ADDRLP4 0
-INDIRP4
-ARGP4
-ADDRLP4 8
-ADDRGP4 va
-CALLP4
-ASGNP4
-CNSTI4 -1
-ARGI4
-ADDRLP4 8
-INDIRP4
-ARGP4
-ADDRGP4 trap_SendServerCommand
-CALLV
-pop
-line 130
-;130:	}
-LABELV $113
-line 132
-;131:	
-;132:	level.teamScores[ team ]++;
+;125:
+;126:	level.teamScores[ team ]++;
 ADDRLP4 4
 ADDRFP4 0
 INDIRI4
@@ -572,37 +556,35 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 134
-;133:
-;134:	CalculateRanks();
+line 128
+;127:
+;128:	CalculateRanks();
 ADDRGP4 CalculateRanks
 CALLV
 pop
-line 136
-;135:
-;136:	return 0; // Do not respawn this automatically
-CNSTI4 0
-RETI4
+line 131
+;129:
+;130:	//return 0; // Do not respawn this automatically
+;131:}
 LABELV $108
 endproc Team_Point 12 8
 export AddTeamScore
 proc AddTeamScore 16 8
-line 147
-;137:}
-;138:
-;139:/*
-;140:==============
-;141:AddTeamScore
-;142:
-;143: used for gametype > GT_TEAM
-;144: for gametype GT_TEAM the level.teamScores is updated in AddScore in g_combat.c
-;145:==============
-;146:*/
-;147:void AddTeamScore(vec3_t origin, int team, int score) {
-line 150
-;148:	gentity_t	*te;
-;149:
-;150:	te = G_TempEntity(origin, EV_GLOBAL_TEAM_SOUND );
+line 141
+;132:
+;133:/*
+;134:==============
+;135:AddTeamScore
+;136:
+;137: used for gametype > GT_TEAM
+;138: for gametype GT_TEAM the level.teamScores is updated in AddScore in g_combat.c
+;139:==============
+;140:*/
+;141:void AddTeamScore(vec3_t origin, int team, int score) {
+line 144
+;142:	gentity_t	*te;
+;143:
+;144:	te = G_TempEntity(origin, EV_GLOBAL_TEAM_SOUND );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -616,8 +598,8 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 151
-;151:	te->r.svFlags |= SVF_BROADCAST;
+line 145
+;145:	te->r.svFlags |= SVF_BROADCAST;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -632,15 +614,15 @@ INDIRI4
 CNSTI4 32
 BORI4
 ASGNI4
-line 153
-;152:
-;153:	if ( team == TEAM_RED ) {
+line 147
+;146:
+;147:	if ( team == TEAM_RED ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 1
-NEI4 $121
-line 154
-;154:		if ( level.teamScores[ TEAM_RED ] + score == level.teamScores[ TEAM_BLUE ] ) {
+NEI4 $117
+line 148
+;148:		if ( level.teamScores[ TEAM_RED ] + score == level.teamScores[ TEAM_BLUE ] ) {
 ADDRGP4 level+48+4
 INDIRI4
 ADDRFP4 8
@@ -648,28 +630,28 @@ INDIRI4
 ADDI4
 ADDRGP4 level+48+8
 INDIRI4
-NEI4 $123
-line 156
-;155:			//teams are tied sound
-;156:			te->s.eventParm = GTS_TEAMS_ARE_TIED;
+NEI4 $119
+line 150
+;149:			//teams are tied sound
+;150:			te->s.eventParm = GTS_TEAMS_ARE_TIED;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 12
 ASGNI4
-line 157
-;157:		}
-ADDRGP4 $122
+line 151
+;151:		}
+ADDRGP4 $118
 JUMPV
-LABELV $123
-line 158
-;158:		else if ( level.teamScores[ TEAM_RED ] <= level.teamScores[ TEAM_BLUE ] &&
+LABELV $119
+line 152
+;152:		else if ( level.teamScores[ TEAM_RED ] <= level.teamScores[ TEAM_BLUE ] &&
 ADDRGP4 level+48+4
 INDIRI4
 ADDRGP4 level+48+8
 INDIRI4
-GTI4 $129
+GTI4 $125
 ADDRGP4 level+48+4
 INDIRI4
 ADDRFP4 8
@@ -677,45 +659,45 @@ INDIRI4
 ADDI4
 ADDRGP4 level+48+8
 INDIRI4
-LEI4 $129
-line 159
-;159:					level.teamScores[ TEAM_RED ] + score > level.teamScores[ TEAM_BLUE ]) {
-line 161
-;160:			// red took the lead sound
-;161:			te->s.eventParm = GTS_REDTEAM_TOOK_LEAD;
+LEI4 $125
+line 153
+;153:					level.teamScores[ TEAM_RED ] + score > level.teamScores[ TEAM_BLUE ]) {
+line 155
+;154:			// red took the lead sound
+;155:			te->s.eventParm = GTS_REDTEAM_TOOK_LEAD;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 10
 ASGNI4
-line 162
-;162:		}
-ADDRGP4 $122
+line 156
+;156:		}
+ADDRGP4 $118
 JUMPV
-LABELV $129
-line 163
-;163:		else {
-line 165
-;164:			// red scored sound
-;165:			te->s.eventParm = GTS_REDTEAM_SCORED;
+LABELV $125
+line 157
+;157:		else {
+line 159
+;158:			// red scored sound
+;159:			te->s.eventParm = GTS_REDTEAM_SCORED;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 8
 ASGNI4
-line 166
-;166:		}
-line 167
-;167:	}
-ADDRGP4 $122
+line 160
+;160:		}
+line 161
+;161:	}
+ADDRGP4 $118
 JUMPV
-LABELV $121
-line 168
-;168:	else {
-line 169
-;169:		if ( level.teamScores[ TEAM_BLUE ] + score == level.teamScores[ TEAM_RED ] ) {
+LABELV $117
+line 162
+;162:	else {
+line 163
+;163:		if ( level.teamScores[ TEAM_BLUE ] + score == level.teamScores[ TEAM_RED ] ) {
 ADDRGP4 level+48+8
 INDIRI4
 ADDRFP4 8
@@ -723,28 +705,28 @@ INDIRI4
 ADDI4
 ADDRGP4 level+48+4
 INDIRI4
-NEI4 $139
-line 171
-;170:			//teams are tied sound
-;171:			te->s.eventParm = GTS_TEAMS_ARE_TIED;
+NEI4 $135
+line 165
+;164:			//teams are tied sound
+;165:			te->s.eventParm = GTS_TEAMS_ARE_TIED;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 12
 ASGNI4
-line 172
-;172:		}
-ADDRGP4 $140
+line 166
+;166:		}
+ADDRGP4 $136
 JUMPV
-LABELV $139
-line 173
-;173:		else if ( level.teamScores[ TEAM_BLUE ] <= level.teamScores[ TEAM_RED ] &&
+LABELV $135
+line 167
+;167:		else if ( level.teamScores[ TEAM_BLUE ] <= level.teamScores[ TEAM_RED ] &&
 ADDRGP4 level+48+8
 INDIRI4
 ADDRGP4 level+48+4
 INDIRI4
-GTI4 $145
+GTI4 $141
 ADDRGP4 level+48+8
 INDIRI4
 ADDRFP4 8
@@ -752,43 +734,43 @@ INDIRI4
 ADDI4
 ADDRGP4 level+48+4
 INDIRI4
-LEI4 $145
-line 174
-;174:					level.teamScores[ TEAM_BLUE ] + score > level.teamScores[ TEAM_RED ]) {
-line 176
-;175:			// blue took the lead sound
-;176:			te->s.eventParm = GTS_BLUETEAM_TOOK_LEAD;
+LEI4 $141
+line 168
+;168:					level.teamScores[ TEAM_BLUE ] + score > level.teamScores[ TEAM_RED ]) {
+line 170
+;169:			// blue took the lead sound
+;170:			te->s.eventParm = GTS_BLUETEAM_TOOK_LEAD;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 11
 ASGNI4
-line 177
-;177:		}
-ADDRGP4 $146
+line 171
+;171:		}
+ADDRGP4 $142
 JUMPV
-LABELV $145
-line 178
-;178:		else {
-line 180
-;179:			// blue scored sound
-;180:			te->s.eventParm = GTS_BLUETEAM_SCORED;
+LABELV $141
+line 172
+;172:		else {
+line 174
+;173:			// blue scored sound
+;174:			te->s.eventParm = GTS_BLUETEAM_SCORED;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 9
 ASGNI4
-line 181
-;181:		}
-LABELV $146
-LABELV $140
-line 182
-;182:	}
-LABELV $122
-line 183
-;183:	level.teamScores[ team ] += score;
+line 175
+;175:		}
+LABELV $142
+LABELV $136
+line 176
+;176:	}
+LABELV $118
+line 177
+;177:	level.teamScores[ team ] += score;
 ADDRLP4 12
 ADDRFP4 4
 INDIRI4
@@ -806,24 +788,24 @@ ADDRFP4 8
 INDIRI4
 ADDI4
 ASGNI4
-line 184
-;184:}
-LABELV $120
+line 178
+;178:}
+LABELV $116
 endproc AddTeamScore 16 8
 export OnSameTeam
 proc OnSameTeam 16 0
-line 193
-;185:
-;186:
-;187:
-;188:/*
-;189:==============
-;190:OnSameTeam
-;191:==============
-;192:*/
-;193:qboolean OnSameTeam( gentity_t *ent1, gentity_t *ent2 ) {
-line 194
-;194:	if ( !ent1->client || !ent2->client ) {
+line 187
+;179:
+;180:
+;181:
+;182:/*
+;183:==============
+;184:OnSameTeam
+;185:==============
+;186:*/
+;187:qboolean OnSameTeam( gentity_t *ent1, gentity_t *ent2 ) {
+line 188
+;188:	if ( !ent1->client || !ent2->client ) {
 ADDRLP4 0
 CNSTI4 524
 ASGNI4
@@ -839,7 +821,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 4
 INDIRU4
-EQU4 $159
+EQU4 $155
 ADDRFP4 4
 INDIRP4
 ADDRLP4 0
@@ -849,34 +831,34 @@ INDIRP4
 CVPU4 4
 ADDRLP4 4
 INDIRU4
-NEU4 $157
-LABELV $159
-line 195
-;195:		return qfalse;
+NEU4 $153
+LABELV $155
+line 189
+;189:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $156
+ADDRGP4 $152
 JUMPV
-LABELV $157
-line 198
-;196:	}
-;197:
-;198:	if ( g_gametype.integer < GT_TEAM ) {
+LABELV $153
+line 192
+;190:	}
+;191:
+;192:	if ( g_gametype.integer < GT_TEAM ) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
-GEI4 $160
-line 199
-;199:		return qfalse;
+GEI4 $156
+line 193
+;193:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $156
+ADDRGP4 $152
 JUMPV
-LABELV $160
-line 202
-;200:	}
-;201:
-;202:	if ( ent1->client->sess.sessionTeam == ent2->client->sess.sessionTeam ) {
+LABELV $156
+line 196
+;194:	}
+;195:
+;196:	if ( ent1->client->sess.sessionTeam == ent2->client->sess.sessionTeam ) {
 ADDRLP4 8
 CNSTI4 524
 ASGNI4
@@ -903,21 +885,21 @@ ADDRLP4 12
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $163
-line 203
-;203:		return qtrue;
+NEI4 $159
+line 197
+;197:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $156
+ADDRGP4 $152
 JUMPV
-LABELV $163
-line 206
-;204:	}
-;205:
-;206:	return qfalse;
+LABELV $159
+line 200
+;198:	}
+;199:
+;200:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $156
+LABELV $152
 endproc OnSameTeam 16 0
 data
 align 1
@@ -937,22 +919,22 @@ byte 1 52
 export Team_SetFlagStatus
 code
 proc Team_SetFlagStatus 12 8
-line 213
-;207:}
-;208:
-;209:
-;210:static char ctfFlagStatusRemap[] = { '0', '1', '*', '*', '2' };
-;211:static char oneFlagStatusRemap[] = { '0', '1', '2', '3', '4' };
-;212:
-;213:void Team_SetFlagStatus( int team, flagStatus_t status ) {
-line 214
-;214:	qboolean modified = qfalse;
+line 207
+;201:}
+;202:
+;203:
+;204:static char ctfFlagStatusRemap[] = { '0', '1', '*', '*', '2' };
+;205:static char oneFlagStatusRemap[] = { '0', '1', '2', '3', '4' };
+;206:
+;207:void Team_SetFlagStatus( int team, flagStatus_t status ) {
+line 208
+;208:	qboolean modified = qfalse;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-line 216
-;215:
-;216:	switch( team ) {
+line 210
+;209:
+;210:	switch( team ) {
 ADDRLP4 4
 ADDRFP4 0
 INDIRI4
@@ -960,115 +942,115 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $178
+EQI4 $174
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
-EQI4 $168
+EQI4 $164
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
-EQI4 $173
-ADDRGP4 $166
+EQI4 $169
+ADDRGP4 $162
 JUMPV
-LABELV $168
-line 218
-;217:	case TEAM_RED:	// CTF
-;218:		if( teamgame.redStatus != status ) {
+LABELV $164
+line 212
+;211:	case TEAM_RED:	// CTF
+;212:		if( teamgame.redStatus != status ) {
 ADDRGP4 teamgame+8
 INDIRI4
 ADDRFP4 4
 INDIRI4
-EQI4 $167
-line 219
-;219:			teamgame.redStatus = status;
+EQI4 $163
+line 213
+;213:			teamgame.redStatus = status;
 ADDRGP4 teamgame+8
 ADDRFP4 4
 INDIRI4
 ASGNI4
-line 220
-;220:			modified = qtrue;
+line 214
+;214:			modified = qtrue;
 ADDRLP4 0
 CNSTI4 1
+ASGNI4
+line 215
+;215:		}
+line 216
+;216:		break;
+ADDRGP4 $163
+JUMPV
+LABELV $169
+line 219
+;217:
+;218:	case TEAM_BLUE:	// CTF
+;219:		if( teamgame.blueStatus != status ) {
+ADDRGP4 teamgame+12
+INDIRI4
+ADDRFP4 4
+INDIRI4
+EQI4 $163
+line 220
+;220:			teamgame.blueStatus = status;
+ADDRGP4 teamgame+12
+ADDRFP4 4
+INDIRI4
 ASGNI4
 line 221
-;221:		}
-line 222
-;222:		break;
-ADDRGP4 $167
-JUMPV
-LABELV $173
-line 225
-;223:
-;224:	case TEAM_BLUE:	// CTF
-;225:		if( teamgame.blueStatus != status ) {
-ADDRGP4 teamgame+12
-INDIRI4
-ADDRFP4 4
-INDIRI4
-EQI4 $167
-line 226
-;226:			teamgame.blueStatus = status;
-ADDRGP4 teamgame+12
-ADDRFP4 4
-INDIRI4
-ASGNI4
-line 227
-;227:			modified = qtrue;
+;221:			modified = qtrue;
 ADDRLP4 0
 CNSTI4 1
+ASGNI4
+line 222
+;222:		}
+line 223
+;223:		break;
+ADDRGP4 $163
+JUMPV
+LABELV $174
+line 226
+;224:
+;225:	case TEAM_FREE:	// One Flag CTF
+;226:		if( teamgame.flagStatus != status ) {
+ADDRGP4 teamgame+16
+INDIRI4
+ADDRFP4 4
+INDIRI4
+EQI4 $163
+line 227
+;227:			teamgame.flagStatus = status;
+ADDRGP4 teamgame+16
+ADDRFP4 4
+INDIRI4
 ASGNI4
 line 228
-;228:		}
-line 229
-;229:		break;
-ADDRGP4 $167
-JUMPV
-LABELV $178
-line 232
-;230:
-;231:	case TEAM_FREE:	// One Flag CTF
-;232:		if( teamgame.flagStatus != status ) {
-ADDRGP4 teamgame+16
-INDIRI4
-ADDRFP4 4
-INDIRI4
-EQI4 $167
-line 233
-;233:			teamgame.flagStatus = status;
-ADDRGP4 teamgame+16
-ADDRFP4 4
-INDIRI4
-ASGNI4
-line 234
-;234:			modified = qtrue;
+;228:			modified = qtrue;
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-line 235
-;235:		}
-line 236
-;236:		break;
-LABELV $166
-LABELV $167
-line 239
-;237:	}
-;238:
-;239:	if( modified ) {
+line 229
+;229:		}
+line 230
+;230:		break;
+LABELV $162
+LABELV $163
+line 233
+;231:	}
+;232:
+;233:	if( modified ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $183
-line 242
-;240:		char st[4];
-;241:
-;242:		if( g_gametype.integer == GT_CTF ) {
+EQI4 $179
+line 236
+;234:		char st[4];
+;235:
+;236:		if( g_gametype.integer == GT_CTF ) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 4
-NEI4 $185
-line 243
-;243:			st[0] = ctfFlagStatusRemap[teamgame.redStatus];
+NEI4 $181
+line 237
+;237:			st[0] = ctfFlagStatusRemap[teamgame.redStatus];
 ADDRLP4 8
 ADDRGP4 teamgame+8
 INDIRI4
@@ -1076,8 +1058,8 @@ ADDRGP4 ctfFlagStatusRemap
 ADDP4
 INDIRI1
 ASGNI1
-line 244
-;244:			st[1] = ctfFlagStatusRemap[teamgame.blueStatus];
+line 238
+;238:			st[1] = ctfFlagStatusRemap[teamgame.blueStatus];
 ADDRLP4 8+1
 ADDRGP4 teamgame+12
 INDIRI4
@@ -1085,20 +1067,20 @@ ADDRGP4 ctfFlagStatusRemap
 ADDP4
 INDIRI1
 ASGNI1
-line 245
-;245:			st[2] = 0;
+line 239
+;239:			st[2] = 0;
 ADDRLP4 8+2
 CNSTI1 0
 ASGNI1
-line 246
-;246:		}
-ADDRGP4 $186
+line 240
+;240:		}
+ADDRGP4 $182
 JUMPV
-LABELV $185
-line 247
-;247:		else {		// GT_1FCTF
-line 248
-;248:			st[0] = oneFlagStatusRemap[teamgame.flagStatus];
+LABELV $181
+line 241
+;241:		else {		// GT_1FCTF
+line 242
+;242:			st[0] = oneFlagStatusRemap[teamgame.flagStatus];
 ADDRLP4 8
 ADDRGP4 teamgame+16
 INDIRI4
@@ -1106,17 +1088,17 @@ ADDRGP4 oneFlagStatusRemap
 ADDP4
 INDIRI1
 ASGNI1
-line 249
-;249:			st[1] = 0;
+line 243
+;243:			st[1] = 0;
 ADDRLP4 8+1
 CNSTI1 0
 ASGNI1
-line 250
-;250:		}
-LABELV $186
-line 252
-;251:
-;252:		trap_SetConfigstring( CS_FLAGSTATUS, st );
+line 244
+;244:		}
+LABELV $182
+line 246
+;245:
+;246:		trap_SetConfigstring( CS_FLAGSTATUS, st );
 CNSTI4 23
 ARGI4
 ADDRLP4 8
@@ -1124,20 +1106,20 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 253
-;253:	}
-LABELV $183
-line 254
-;254:}
-LABELV $165
+line 247
+;247:	}
+LABELV $179
+line 248
+;248:}
+LABELV $161
 endproc Team_SetFlagStatus 12 8
 export Team_CheckDroppedItem
 proc Team_CheckDroppedItem 0 8
-line 256
-;255:
-;256:void Team_CheckDroppedItem( gentity_t *dropped ) {
-line 257
-;257:	if( dropped->item->giTag == PW_REDFLAG ) {
+line 250
+;249:
+;250:void Team_CheckDroppedItem( gentity_t *dropped ) {
+line 251
+;251:	if( dropped->item->giTag == PW_REDFLAG ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 836
@@ -1147,9 +1129,9 @@ CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 7
-NEI4 $195
-line 258
-;258:		Team_SetFlagStatus( TEAM_RED, FLAG_DROPPED );
+NEI4 $191
+line 252
+;252:		Team_SetFlagStatus( TEAM_RED, FLAG_DROPPED );
 CNSTI4 1
 ARGI4
 CNSTI4 4
@@ -1157,13 +1139,13 @@ ARGI4
 ADDRGP4 Team_SetFlagStatus
 CALLV
 pop
-line 259
-;259:	}
-ADDRGP4 $196
+line 253
+;253:	}
+ADDRGP4 $192
 JUMPV
-LABELV $195
-line 260
-;260:	else if( dropped->item->giTag == PW_BLUEFLAG ) {
+LABELV $191
+line 254
+;254:	else if( dropped->item->giTag == PW_BLUEFLAG ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 836
@@ -1173,9 +1155,9 @@ CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 8
-NEI4 $197
-line 261
-;261:		Team_SetFlagStatus( TEAM_BLUE, FLAG_DROPPED );
+NEI4 $193
+line 255
+;255:		Team_SetFlagStatus( TEAM_BLUE, FLAG_DROPPED );
 CNSTI4 2
 ARGI4
 CNSTI4 4
@@ -1183,13 +1165,13 @@ ARGI4
 ADDRGP4 Team_SetFlagStatus
 CALLV
 pop
-line 262
-;262:	}
-ADDRGP4 $198
+line 256
+;256:	}
+ADDRGP4 $194
 JUMPV
-LABELV $197
-line 263
-;263:	else if( dropped->item->giTag == PW_NEUTRALFLAG ) {
+LABELV $193
+line 257
+;257:	else if( dropped->item->giTag == PW_NEUTRALFLAG ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 836
@@ -1199,9 +1181,9 @@ CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 9
-NEI4 $199
-line 264
-;264:		Team_SetFlagStatus( TEAM_FREE, FLAG_DROPPED );
+NEI4 $195
+line 258
+;258:		Team_SetFlagStatus( TEAM_FREE, FLAG_DROPPED );
 CNSTI4 0
 ARGI4
 CNSTI4 4
@@ -1209,36 +1191,36 @@ ARGI4
 ADDRGP4 Team_SetFlagStatus
 CALLV
 pop
-line 265
-;265:	}
-LABELV $199
-LABELV $198
-LABELV $196
-line 266
-;266:}
+line 259
+;259:	}
+LABELV $195
 LABELV $194
+LABELV $192
+line 260
+;260:}
+LABELV $190
 endproc Team_CheckDroppedItem 0 8
 export Team_ForceGesture
 proc Team_ForceGesture 12 0
-line 273
-;267:
-;268:/*
-;269:================
-;270:Team_ForceGesture
-;271:================
-;272:*/
-;273:void Team_ForceGesture(int team) {
-line 277
-;274:	int i;
-;275:	gentity_t *ent;
-;276:
-;277:	for (i = 0; i < MAX_CLIENTS; i++) {
+line 267
+;261:
+;262:/*
+;263:================
+;264:Team_ForceGesture
+;265:================
+;266:*/
+;267:void Team_ForceGesture(int team) {
+line 271
+;268:	int i;
+;269:	gentity_t *ent;
+;270:
+;271:	for (i = 0; i < MAX_CLIENTS; i++) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-LABELV $202
-line 278
-;278:		ent = &g_entities[i];
+LABELV $198
+line 272
+;272:		ent = &g_entities[i];
 ADDRLP4 0
 CNSTI4 872
 ADDRLP4 4
@@ -1247,22 +1229,22 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 279
-;279:		if (!ent->inuse)
+line 273
+;273:		if (!ent->inuse)
 ADDRLP4 0
 INDIRP4
 CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $206
-line 280
-;280:			continue;
-ADDRGP4 $203
+NEI4 $202
+line 274
+;274:			continue;
+ADDRGP4 $199
 JUMPV
-LABELV $206
-line 281
-;281:		if (!ent->client)
+LABELV $202
+line 275
+;275:		if (!ent->client)
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -1270,14 +1252,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $208
-line 282
-;282:			continue;
-ADDRGP4 $203
+NEU4 $204
+line 276
+;276:			continue;
+ADDRGP4 $199
 JUMPV
-LABELV $208
-line 283
-;283:		if (ent->client->sess.sessionTeam != team)
+LABELV $204
+line 277
+;277:		if (ent->client->sess.sessionTeam != team)
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -1288,15 +1270,15 @@ ADDP4
 INDIRI4
 ADDRFP4 0
 INDIRI4
-EQI4 $210
-line 284
-;284:			continue;
-ADDRGP4 $203
+EQI4 $206
+line 278
+;278:			continue;
+ADDRGP4 $199
 JUMPV
-LABELV $210
-line 286
-;285:		//
-;286:		ent->flags |= FL_FORCE_GESTURE;
+LABELV $206
+line 280
+;279:		//
+;280:		ent->flags |= FL_FORCE_GESTURE;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -1311,10 +1293,10 @@ INDIRI4
 CNSTI4 32768
 BORI4
 ASGNI4
-line 287
-;287:	}
-LABELV $203
-line 277
+line 281
+;281:	}
+LABELV $199
+line 271
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -1324,43 +1306,43 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 64
-LTI4 $202
-line 288
-;288:}
-LABELV $201
+LTI4 $198
+line 282
+;282:}
+LABELV $197
 endproc Team_ForceGesture 12 0
 export Team_FragBonuses
 proc Team_FragBonuses 276 16
-line 300
-;289:
-;290:/*
+line 294
+;283:
+;284:/*
+;285:================
+;286:Team_FragBonuses
+;287:
+;288:Calculate the bonuses for flag defense, flag carrier defense, etc.
+;289:Note that bonuses are not cumulative.  You get one, they are in importance
+;290:order.
 ;291:================
-;292:Team_FragBonuses
-;293:
-;294:Calculate the bonuses for flag defense, flag carrier defense, etc.
-;295:Note that bonuses are not cumulative.  You get one, they are in importance
-;296:order.
-;297:================
-;298:*/
-;299:void Team_FragBonuses(gentity_t *targ, gentity_t *inflictor, gentity_t *attacker)
-;300:{
-line 306
-;301:	int i;
-;302:	gentity_t *ent;
-;303:	int flag_pw, enemy_flag_pw;
-;304:	int otherteam;
-;305:	int tokens;
-;306:	gentity_t *flag, *carrier = NULL;
+;292:*/
+;293:void Team_FragBonuses(gentity_t *targ, gentity_t *inflictor, gentity_t *attacker)
+;294:{
+line 300
+;295:	int i;
+;296:	gentity_t *ent;
+;297:	int flag_pw, enemy_flag_pw;
+;298:	int otherteam;
+;299:	int tokens;
+;300:	gentity_t *flag, *carrier = NULL;
 ADDRLP4 4
 CNSTP4 0
 ASGNP4
-line 312
-;307:	char *c;
-;308:	vec3_t v1, v2;
-;309:	int team;
-;310:
-;311:	// no bonus for fragging yourself or team mates
-;312:	if (!targ->client || !attacker->client || targ == attacker || OnSameTeam(targ, attacker))
+line 306
+;301:	char *c;
+;302:	vec3_t v1, v2;
+;303:	int team;
+;304:
+;305:	// no bonus for fragging yourself or team mates
+;306:	if (!targ->client || !attacker->client || targ == attacker || OnSameTeam(targ, attacker))
 ADDRLP4 64
 ADDRFP4 0
 INDIRP4
@@ -1380,7 +1362,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 72
 INDIRU4
-EQU4 $217
+EQU4 $213
 ADDRLP4 76
 ADDRFP4 8
 INDIRP4
@@ -1394,14 +1376,14 @@ INDIRP4
 CVPU4 4
 ADDRLP4 72
 INDIRU4
-EQU4 $217
+EQU4 $213
 ADDRLP4 64
 INDIRP4
 CVPU4 4
 ADDRLP4 76
 INDIRP4
 CVPU4 4
-EQU4 $217
+EQU4 $213
 ADDRLP4 64
 INDIRP4
 ARGP4
@@ -1415,16 +1397,16 @@ ASGNI4
 ADDRLP4 80
 INDIRI4
 CNSTI4 0
-EQI4 $213
-LABELV $217
-line 313
-;313:		return;
-ADDRGP4 $212
-JUMPV
+EQI4 $209
 LABELV $213
-line 315
-;314:
-;315:	team = targ->client->sess.sessionTeam;
+line 307
+;307:		return;
+ADDRGP4 $208
+JUMPV
+LABELV $209
+line 309
+;308:
+;309:	team = targ->client->sess.sessionTeam;
 ADDRLP4 52
 ADDRFP4 0
 INDIRP4
@@ -1435,8 +1417,8 @@ CNSTI4 2492
 ADDP4
 INDIRI4
 ASGNI4
-line 316
-;316:	otherteam = OtherTeam(targ->client->sess.sessionTeam);
+line 310
+;310:	otherteam = OtherTeam(targ->client->sess.sessionTeam);
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -1454,82 +1436,82 @@ ADDRLP4 20
 ADDRLP4 84
 INDIRI4
 ASGNI4
-line 317
-;317:	if (otherteam < 0)
+line 311
+;311:	if (otherteam < 0)
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-GEI4 $218
-line 318
-;318:		return; // whoever died isn't on a team
-ADDRGP4 $212
+GEI4 $214
+line 312
+;312:		return; // whoever died isn't on a team
+ADDRGP4 $208
 JUMPV
-LABELV $218
-line 321
-;319:
-;320:	// same team, if the flag at base, check to he has the enemy flag
-;321:	if (team == TEAM_RED) {
+LABELV $214
+line 315
+;313:
+;314:	// same team, if the flag at base, check to he has the enemy flag
+;315:	if (team == TEAM_RED) {
 ADDRLP4 52
 INDIRI4
 CNSTI4 1
-NEI4 $220
-line 322
-;322:		flag_pw = PW_REDFLAG;
+NEI4 $216
+line 316
+;316:		flag_pw = PW_REDFLAG;
 ADDRLP4 16
 CNSTI4 7
 ASGNI4
-line 323
-;323:		enemy_flag_pw = PW_BLUEFLAG;
+line 317
+;317:		enemy_flag_pw = PW_BLUEFLAG;
 ADDRLP4 60
 CNSTI4 8
 ASGNI4
-line 324
-;324:	} else {
-ADDRGP4 $221
+line 318
+;318:	} else {
+ADDRGP4 $217
 JUMPV
-LABELV $220
-line 325
-;325:		flag_pw = PW_BLUEFLAG;
+LABELV $216
+line 319
+;319:		flag_pw = PW_BLUEFLAG;
 ADDRLP4 16
 CNSTI4 8
 ASGNI4
-line 326
-;326:		enemy_flag_pw = PW_REDFLAG;
+line 320
+;320:		enemy_flag_pw = PW_REDFLAG;
 ADDRLP4 60
 CNSTI4 7
 ASGNI4
-line 327
-;327:	}
-LABELV $221
-line 329
-;328:
-;329:	if (g_gametype.integer == GT_1FCTF) {
+line 321
+;321:	}
+LABELV $217
+line 323
+;322:
+;323:	if (g_gametype.integer == GT_1FCTF) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 5
-NEI4 $222
-line 330
-;330:		enemy_flag_pw = PW_NEUTRALFLAG;
+NEI4 $218
+line 324
+;324:		enemy_flag_pw = PW_NEUTRALFLAG;
 ADDRLP4 60
 CNSTI4 9
 ASGNI4
-line 331
-;331:	} 
-LABELV $222
-line 334
-;332:
-;333:	// did the attacker frag the flag carrier?
-;334:	tokens = 0;
+line 325
+;325:	} 
+LABELV $218
+line 328
+;326:
+;327:	// did the attacker frag the flag carrier?
+;328:	tokens = 0;
 ADDRLP4 56
 CNSTI4 0
 ASGNI4
-line 340
-;335:#ifdef MISSIONPACK
-;336:	if( g_gametype.integer == GT_HARVESTER ) {
-;337:		tokens = targ->client->ps.generic1;
-;338:	}
-;339:#endif
-;340:	if (targ->client->ps.powerups[enemy_flag_pw]) {
+line 334
+;329:#ifdef MISSIONPACK
+;330:	if( g_gametype.integer == GT_HARVESTER ) {
+;331:		tokens = targ->client->ps.generic1;
+;332:	}
+;333:#endif
+;334:	if (targ->client->ps.powerups[enemy_flag_pw]) {
 ADDRLP4 60
 INDIRI4
 CNSTI4 2
@@ -1544,9 +1526,9 @@ ADDP4
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $225
-line 341
-;341:		attacker->client->pers.teamState.lastfraggedcarrier = level.time;
+EQI4 $221
+line 335
+;335:		attacker->client->pers.teamState.lastfraggedcarrier = level.time;
 ADDRFP4 8
 INDIRP4
 CNSTI4 524
@@ -1558,8 +1540,8 @@ ADDRGP4 level+32
 INDIRI4
 CVIF4 4
 ASGNF4
-line 342
-;342:		AddScore(attacker, targ->r.currentOrigin, CTF_FRAG_CARRIER_BONUS);
+line 336
+;336:		AddScore(attacker, targ->r.currentOrigin, CTF_FRAG_CARRIER_BONUS);
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -1573,8 +1555,8 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-line 343
-;343:		attacker->client->pers.teamState.fragcarrier++;
+line 337
+;337:		attacker->client->pers.teamState.fragcarrier++;
 ADDRLP4 88
 ADDRFP4 8
 INDIRP4
@@ -1592,8 +1574,8 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 344
-;344:		PrintMsg(NULL, "%s" S_COLOR_WHITE " fragged %s's flag carrier!\n",
+line 338
+;338:		PrintMsg(NULL, "%s" S_COLOR_WHITE " fragged %s's flag carrier!\n",
 ADDRLP4 52
 INDIRI4
 ARGI4
@@ -1603,7 +1585,7 @@ CALLP4
 ASGNP4
 CNSTP4 0
 ARGP4
-ADDRGP4 $228
+ADDRGP4 $224
 ARGP4
 ADDRFP4 8
 INDIRP4
@@ -1619,20 +1601,20 @@ ARGP4
 ADDRGP4 PrintMsg
 CALLV
 pop
-line 349
-;345:			attacker->client->pers.netname, TeamName(team));
-;346:
-;347:		// the target had the flag, clear the hurt carrier
-;348:		// field on the other team
-;349:		for (i = 0; i < g_maxclients.integer; i++) {
+line 343
+;339:			attacker->client->pers.netname, TeamName(team));
+;340:
+;341:		// the target had the flag, clear the hurt carrier
+;342:		// field on the other team
+;343:		for (i = 0; i < g_maxclients.integer; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $232
+ADDRGP4 $228
 JUMPV
-LABELV $229
-line 350
-;350:			ent = g_entities + i;
+LABELV $225
+line 344
+;344:			ent = g_entities + i;
 ADDRLP4 12
 CNSTI4 872
 ADDRLP4 0
@@ -1641,15 +1623,15 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 351
-;351:			if (ent->inuse && ent->client->sess.sessionTeam == otherteam)
+line 345
+;345:			if (ent->inuse && ent->client->sess.sessionTeam == otherteam)
 ADDRLP4 12
 INDIRP4
 CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $234
+EQI4 $230
 ADDRLP4 12
 INDIRP4
 CNSTI4 524
@@ -1660,9 +1642,9 @@ ADDP4
 INDIRI4
 ADDRLP4 20
 INDIRI4
-NEI4 $234
-line 352
-;352:				ent->client->pers.teamState.lasthurtcarrier = 0;
+NEI4 $230
+line 346
+;346:				ent->client->pers.teamState.lasthurtcarrier = 0;
 ADDRLP4 12
 INDIRP4
 CNSTI4 524
@@ -1672,39 +1654,39 @@ CNSTI4 588
 ADDP4
 CNSTF4 0
 ASGNF4
-LABELV $234
-line 353
-;353:		}
 LABELV $230
-line 349
+line 347
+;347:		}
+LABELV $226
+line 343
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $232
+LABELV $228
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_maxclients+12
 INDIRI4
-LTI4 $229
-line 354
-;354:		return;
-ADDRGP4 $212
+LTI4 $225
+line 348
+;348:		return;
+ADDRGP4 $208
 JUMPV
-LABELV $225
-line 358
-;355:	}
-;356:
-;357:	// did the attacker frag a head carrier? other->client->ps.generic1
-;358:	if (tokens) {
+LABELV $221
+line 352
+;349:	}
+;350:
+;351:	// did the attacker frag a head carrier? other->client->ps.generic1
+;352:	if (tokens) {
 ADDRLP4 56
 INDIRI4
 CNSTI4 0
-EQI4 $236
-line 359
-;359:		attacker->client->pers.teamState.lastfraggedcarrier = level.time;
+EQI4 $232
+line 353
+;353:		attacker->client->pers.teamState.lastfraggedcarrier = level.time;
 ADDRFP4 8
 INDIRP4
 CNSTI4 524
@@ -1716,8 +1698,8 @@ ADDRGP4 level+32
 INDIRI4
 CVIF4 4
 ASGNF4
-line 360
-;360:		AddScore(attacker, targ->r.currentOrigin, CTF_FRAG_CARRIER_BONUS * tokens * tokens);
+line 354
+;354:		AddScore(attacker, targ->r.currentOrigin, CTF_FRAG_CARRIER_BONUS * tokens * tokens);
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -1737,8 +1719,8 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-line 361
-;361:		attacker->client->pers.teamState.fragcarrier++;
+line 355
+;355:		attacker->client->pers.teamState.fragcarrier++;
 ADDRLP4 92
 ADDRFP4 8
 INDIRP4
@@ -1756,8 +1738,8 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 362
-;362:		PrintMsg(NULL, "%s" S_COLOR_WHITE " fragged %s's skull carrier!\n",
+line 356
+;356:		PrintMsg(NULL, "%s" S_COLOR_WHITE " fragged %s's skull carrier!\n",
 ADDRLP4 52
 INDIRI4
 ARGI4
@@ -1767,7 +1749,7 @@ CALLP4
 ASGNP4
 CNSTP4 0
 ARGP4
-ADDRGP4 $239
+ADDRGP4 $235
 ARGP4
 ADDRFP4 8
 INDIRP4
@@ -1783,20 +1765,20 @@ ARGP4
 ADDRGP4 PrintMsg
 CALLV
 pop
-line 367
-;363:			attacker->client->pers.netname, TeamName(team));
-;364:
-;365:		// the target had the flag, clear the hurt carrier
-;366:		// field on the other team
-;367:		for (i = 0; i < g_maxclients.integer; i++) {
+line 361
+;357:			attacker->client->pers.netname, TeamName(team));
+;358:
+;359:		// the target had the flag, clear the hurt carrier
+;360:		// field on the other team
+;361:		for (i = 0; i < g_maxclients.integer; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $243
+ADDRGP4 $239
 JUMPV
-LABELV $240
-line 368
-;368:			ent = g_entities + i;
+LABELV $236
+line 362
+;362:			ent = g_entities + i;
 ADDRLP4 12
 CNSTI4 872
 ADDRLP4 0
@@ -1805,15 +1787,15 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 369
-;369:			if (ent->inuse && ent->client->sess.sessionTeam == otherteam)
+line 363
+;363:			if (ent->inuse && ent->client->sess.sessionTeam == otherteam)
 ADDRLP4 12
 INDIRP4
 CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $245
+EQI4 $241
 ADDRLP4 12
 INDIRP4
 CNSTI4 524
@@ -1824,9 +1806,9 @@ ADDP4
 INDIRI4
 ADDRLP4 20
 INDIRI4
-NEI4 $245
-line 370
-;370:				ent->client->pers.teamState.lasthurtcarrier = 0;
+NEI4 $241
+line 364
+;364:				ent->client->pers.teamState.lasthurtcarrier = 0;
 ADDRLP4 12
 INDIRP4
 CNSTI4 524
@@ -1836,32 +1818,32 @@ CNSTI4 588
 ADDP4
 CNSTF4 0
 ASGNF4
-LABELV $245
-line 371
-;371:		}
 LABELV $241
-line 367
+line 365
+;365:		}
+LABELV $237
+line 361
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $243
+LABELV $239
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_maxclients+12
 INDIRI4
-LTI4 $240
-line 372
-;372:		return;
-ADDRGP4 $212
+LTI4 $236
+line 366
+;366:		return;
+ADDRGP4 $208
 JUMPV
-LABELV $236
-line 375
-;373:	}
-;374:
-;375:	if (targ->client->pers.teamState.lasthurtcarrier &&
+LABELV $232
+line 369
+;367:	}
+;368:
+;369:	if (targ->client->pers.teamState.lasthurtcarrier &&
 ADDRLP4 88
 CNSTI4 524
 ASGNI4
@@ -1877,40 +1859,206 @@ ADDP4
 INDIRF4
 ASGNF4
 ADDRLP4 92
+INDIRF4
+CNSTF4 0
+EQF4 $243
+ADDRGP4 level+32
+INDIRI4
+CVIF4 4
+ADDRLP4 92
+INDIRF4
+SUBF4
+CNSTF4 1174011904
+GEF4 $243
+ADDRLP4 16
+INDIRI4
+CNSTI4 2
+LSHI4
+ADDRFP4 8
+INDIRP4
+ADDRLP4 88
+INDIRI4
+ADDP4
+INDIRP4
+CNSTI4 312
+ADDP4
+ADDP4
+INDIRI4
+CNSTI4 0
+NEI4 $243
+line 371
+;370:		level.time - targ->client->pers.teamState.lasthurtcarrier < CTF_CARRIER_DANGER_PROTECT_TIMEOUT &&
+;371:		!attacker->client->ps.powerups[flag_pw]) {
+line 374
+;372:		// attacker is on the same team as the flag carrier and
+;373:		// fragged a guy who hurt our flag carrier
+;374:		AddScore(attacker, targ->r.currentOrigin, CTF_CARRIER_DANGER_PROTECT_BONUS);
+ADDRFP4 8
+INDIRP4
+ARGP4
+ADDRFP4 0
+INDIRP4
+CNSTI4 496
+ADDP4
+ARGP4
+CNSTI4 2
+ARGI4
+ADDRGP4 AddScore
+CALLV
+pop
+line 376
+;375:
+;376:		attacker->client->pers.teamState.carrierdefense++;
+ADDRLP4 96
+ADDRFP4 8
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 572
+ADDP4
+ASGNP4
+ADDRLP4 96
+INDIRP4
+ADDRLP4 96
+INDIRP4
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+line 377
+;377:		targ->client->pers.teamState.lasthurtcarrier = 0;
+ADDRFP4 0
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 588
+ADDP4
+CNSTF4 0
+ASGNF4
+line 379
+;378:
+;379:		attacker->client->ps.persistant[PERS_DEFEND_COUNT]++;
+ADDRLP4 100
+ADDRFP4 8
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 292
+ADDP4
+ASGNP4
+ADDRLP4 100
+INDIRP4
+ADDRLP4 100
+INDIRP4
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+line 380
+;380:		team = attacker->client->sess.sessionTeam;
+ADDRLP4 52
+ADDRFP4 8
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 2492
+ADDP4
+INDIRI4
+ASGNI4
+line 382
+;381:		// add the sprite over the player's head
+;382:		attacker->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
+ADDRLP4 104
+ADDRFP4 8
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 104
+ADDP4
+ASGNP4
+ADDRLP4 104
+INDIRP4
+ADDRLP4 104
+INDIRP4
+INDIRI4
+CNSTI4 -231497
+BANDI4
+ASGNI4
+line 383
+;383:		attacker->client->ps.eFlags |= EF_AWARD_DEFEND;
+ADDRLP4 108
+ADDRFP4 8
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 104
+ADDP4
+ASGNP4
+ADDRLP4 108
+INDIRP4
+ADDRLP4 108
+INDIRP4
+INDIRI4
+CNSTI4 65536
+BORI4
+ASGNI4
+line 384
+;384:		attacker->client->rewardTime = level.time + REWARD_SPRITE_TIME;
+ADDRFP4 8
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 2616
+ADDP4
+ADDRGP4 level+32
+INDIRI4
+CNSTI4 2000
+ADDI4
+ASGNI4
+line 386
+;385:
+;386:		return;
+ADDRGP4 $208
+JUMPV
+LABELV $243
+line 389
+;387:	}
+;388:
+;389:	if (targ->client->pers.teamState.lasthurtcarrier &&
+ADDRLP4 96
+ADDRFP4 0
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 588
+ADDP4
+INDIRF4
+ASGNF4
+ADDRLP4 96
 INDIRF4
 CNSTF4 0
 EQF4 $247
 ADDRGP4 level+32
 INDIRI4
 CVIF4 4
-ADDRLP4 92
+ADDRLP4 96
 INDIRF4
 SUBF4
 CNSTF4 1174011904
 GEF4 $247
-ADDRLP4 16
-INDIRI4
-CNSTI4 2
-LSHI4
-ADDRFP4 8
-INDIRP4
-ADDRLP4 88
-INDIRI4
-ADDP4
-INDIRP4
-CNSTI4 312
-ADDP4
-ADDP4
-INDIRI4
-CNSTI4 0
-NEI4 $247
-line 377
-;376:		level.time - targ->client->pers.teamState.lasthurtcarrier < CTF_CARRIER_DANGER_PROTECT_TIMEOUT &&
-;377:		!attacker->client->ps.powerups[flag_pw]) {
-line 380
-;378:		// attacker is on the same team as the flag carrier and
-;379:		// fragged a guy who hurt our flag carrier
-;380:		AddScore(attacker, targ->r.currentOrigin, CTF_CARRIER_DANGER_PROTECT_BONUS);
+line 390
+;390:		level.time - targ->client->pers.teamState.lasthurtcarrier < CTF_CARRIER_DANGER_PROTECT_TIMEOUT) {
+line 392
+;391:		// attacker is on the same team as the skull carrier and
+;392:		AddScore(attacker, targ->r.currentOrigin, CTF_CARRIER_DANGER_PROTECT_BONUS);
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -1924,10 +2072,10 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-line 382
-;381:
-;382:		attacker->client->pers.teamState.carrierdefense++;
-ADDRLP4 96
+line 394
+;393:
+;394:		attacker->client->pers.teamState.carrierdefense++;
+ADDRLP4 100
 ADDRFP4 8
 INDIRP4
 CNSTI4 524
@@ -1936,16 +2084,16 @@ INDIRP4
 CNSTI4 572
 ADDP4
 ASGNP4
-ADDRLP4 96
+ADDRLP4 100
 INDIRP4
-ADDRLP4 96
+ADDRLP4 100
 INDIRP4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 383
-;383:		targ->client->pers.teamState.lasthurtcarrier = 0;
+line 395
+;395:		targ->client->pers.teamState.lasthurtcarrier = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -1955,10 +2103,10 @@ CNSTI4 588
 ADDP4
 CNSTF4 0
 ASGNF4
-line 385
-;384:
-;385:		attacker->client->ps.persistant[PERS_DEFEND_COUNT]++;
-ADDRLP4 100
+line 397
+;396:
+;397:		attacker->client->ps.persistant[PERS_DEFEND_COUNT]++;
+ADDRLP4 104
 ADDRFP4 8
 INDIRP4
 CNSTI4 524
@@ -1967,16 +2115,16 @@ INDIRP4
 CNSTI4 292
 ADDP4
 ASGNP4
-ADDRLP4 100
+ADDRLP4 104
 INDIRP4
-ADDRLP4 100
+ADDRLP4 104
 INDIRP4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 386
-;386:		team = attacker->client->sess.sessionTeam;
+line 398
+;398:		team = attacker->client->sess.sessionTeam;
 ADDRLP4 52
 ADDRFP4 8
 INDIRP4
@@ -1987,10 +2135,10 @@ CNSTI4 2492
 ADDP4
 INDIRI4
 ASGNI4
-line 388
-;387:		// add the sprite over the player's head
-;388:		attacker->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
-ADDRLP4 104
+line 400
+;399:		// add the sprite over the player's head
+;400:		attacker->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
+ADDRLP4 108
 ADDRFP4 8
 INDIRP4
 CNSTI4 524
@@ -1999,17 +2147,17 @@ INDIRP4
 CNSTI4 104
 ADDP4
 ASGNP4
-ADDRLP4 104
+ADDRLP4 108
 INDIRP4
-ADDRLP4 104
+ADDRLP4 108
 INDIRP4
 INDIRI4
 CNSTI4 -231497
 BANDI4
 ASGNI4
-line 389
-;389:		attacker->client->ps.eFlags |= EF_AWARD_DEFEND;
-ADDRLP4 108
+line 401
+;401:		attacker->client->ps.eFlags |= EF_AWARD_DEFEND;
+ADDRLP4 112
 ADDRFP4 8
 INDIRP4
 CNSTI4 524
@@ -2018,16 +2166,16 @@ INDIRP4
 CNSTI4 104
 ADDP4
 ASGNP4
-ADDRLP4 108
+ADDRLP4 112
 INDIRP4
-ADDRLP4 108
+ADDRLP4 112
 INDIRP4
 INDIRI4
 CNSTI4 65536
 BORI4
 ASGNI4
-line 390
-;390:		attacker->client->rewardTime = level.time + REWARD_SPRITE_TIME;
+line 402
+;402:		attacker->client->rewardTime = level.time + REWARD_SPRITE_TIME;
 ADDRFP4 8
 INDIRP4
 CNSTI4 524
@@ -2038,208 +2186,42 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 CNSTI4 2000
-ADDI4
-ASGNI4
-line 392
-;391:
-;392:		return;
-ADDRGP4 $212
-JUMPV
-LABELV $247
-line 395
-;393:	}
-;394:
-;395:	if (targ->client->pers.teamState.lasthurtcarrier &&
-ADDRLP4 96
-ADDRFP4 0
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 588
-ADDP4
-INDIRF4
-ASGNF4
-ADDRLP4 96
-INDIRF4
-CNSTF4 0
-EQF4 $251
-ADDRGP4 level+32
-INDIRI4
-CVIF4 4
-ADDRLP4 96
-INDIRF4
-SUBF4
-CNSTF4 1174011904
-GEF4 $251
-line 396
-;396:		level.time - targ->client->pers.teamState.lasthurtcarrier < CTF_CARRIER_DANGER_PROTECT_TIMEOUT) {
-line 398
-;397:		// attacker is on the same team as the skull carrier and
-;398:		AddScore(attacker, targ->r.currentOrigin, CTF_CARRIER_DANGER_PROTECT_BONUS);
-ADDRFP4 8
-INDIRP4
-ARGP4
-ADDRFP4 0
-INDIRP4
-CNSTI4 496
-ADDP4
-ARGP4
-CNSTI4 2
-ARGI4
-ADDRGP4 AddScore
-CALLV
-pop
-line 400
-;399:
-;400:		attacker->client->pers.teamState.carrierdefense++;
-ADDRLP4 100
-ADDRFP4 8
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 572
-ADDP4
-ASGNP4
-ADDRLP4 100
-INDIRP4
-ADDRLP4 100
-INDIRP4
-INDIRI4
-CNSTI4 1
-ADDI4
-ASGNI4
-line 401
-;401:		targ->client->pers.teamState.lasthurtcarrier = 0;
-ADDRFP4 0
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 588
-ADDP4
-CNSTF4 0
-ASGNF4
-line 403
-;402:
-;403:		attacker->client->ps.persistant[PERS_DEFEND_COUNT]++;
-ADDRLP4 104
-ADDRFP4 8
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 292
-ADDP4
-ASGNP4
-ADDRLP4 104
-INDIRP4
-ADDRLP4 104
-INDIRP4
-INDIRI4
-CNSTI4 1
 ADDI4
 ASGNI4
 line 404
-;404:		team = attacker->client->sess.sessionTeam;
-ADDRLP4 52
-ADDRFP4 8
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 2492
-ADDP4
-INDIRI4
-ASGNI4
-line 406
-;405:		// add the sprite over the player's head
-;406:		attacker->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
-ADDRLP4 108
-ADDRFP4 8
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 104
-ADDP4
-ASGNP4
-ADDRLP4 108
-INDIRP4
-ADDRLP4 108
-INDIRP4
-INDIRI4
-CNSTI4 -231497
-BANDI4
-ASGNI4
-line 407
-;407:		attacker->client->ps.eFlags |= EF_AWARD_DEFEND;
-ADDRLP4 112
-ADDRFP4 8
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 104
-ADDP4
-ASGNP4
-ADDRLP4 112
-INDIRP4
-ADDRLP4 112
-INDIRP4
-INDIRI4
-CNSTI4 65536
-BORI4
-ASGNI4
-line 408
-;408:		attacker->client->rewardTime = level.time + REWARD_SPRITE_TIME;
-ADDRFP4 8
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 2616
-ADDP4
-ADDRGP4 level+32
-INDIRI4
-CNSTI4 2000
-ADDI4
-ASGNI4
-line 410
-;409:
-;410:		return;
-ADDRGP4 $212
+;403:
+;404:		return;
+ADDRGP4 $208
 JUMPV
-LABELV $251
-line 437
-;411:	}
-;412:
-;413:	// flag and flag carrier area defense bonuses
-;414:
-;415:	// we have to find the flag and carrier entities
-;416:
-;417:#ifdef MISSIONPACK	
-;418:	if( g_gametype.integer == GT_OBELISK ) {
-;419:		// find the team obelisk
-;420:		switch (attacker->client->sess.sessionTeam) {
-;421:		case TEAM_RED:
-;422:			c = "team_redobelisk";
-;423:			break;
-;424:		case TEAM_BLUE:
-;425:			c = "team_blueobelisk";
-;426:			break;		
-;427:		default:
-;428:			return;
-;429:		}
-;430:		
-;431:	} else if (g_gametype.integer == GT_HARVESTER ) {
-;432:		// find the center obelisk
-;433:		c = "team_neutralobelisk";
-;434:	} else {
-;435:#endif
-;436:	// find the flag
-;437:	switch (attacker->client->sess.sessionTeam) {
+LABELV $247
+line 431
+;405:	}
+;406:
+;407:	// flag and flag carrier area defense bonuses
+;408:
+;409:	// we have to find the flag and carrier entities
+;410:
+;411:#ifdef MISSIONPACK	
+;412:	if( g_gametype.integer == GT_OBELISK ) {
+;413:		// find the team obelisk
+;414:		switch (attacker->client->sess.sessionTeam) {
+;415:		case TEAM_RED:
+;416:			c = "team_redobelisk";
+;417:			break;
+;418:		case TEAM_BLUE:
+;419:			c = "team_blueobelisk";
+;420:			break;		
+;421:		default:
+;422:			return;
+;423:		}
+;424:		
+;425:	} else if (g_gametype.integer == GT_HARVESTER ) {
+;426:		// find the center obelisk
+;427:		c = "team_neutralobelisk";
+;428:	} else {
+;429:#endif
+;430:	// find the flag
+;431:	switch (attacker->client->sess.sessionTeam) {
 ADDRLP4 100
 ADDRFP4 8
 INDIRP4
@@ -2253,49 +2235,49 @@ ASGNI4
 ADDRLP4 100
 INDIRI4
 CNSTI4 1
-EQI4 $258
+EQI4 $254
 ADDRLP4 100
 INDIRI4
 CNSTI4 2
-EQI4 $260
-ADDRGP4 $212
+EQI4 $256
+ADDRGP4 $208
 JUMPV
-LABELV $258
-line 439
-;438:	case TEAM_RED:
-;439:		c = "team_CTF_redflag";
+LABELV $254
+line 433
+;432:	case TEAM_RED:
+;433:		c = "team_CTF_redflag";
 ADDRLP4 24
-ADDRGP4 $259
+ADDRGP4 $255
 ASGNP4
-line 440
-;440:		break;
-ADDRGP4 $256
+line 434
+;434:		break;
+ADDRGP4 $252
 JUMPV
-LABELV $260
-line 442
-;441:	case TEAM_BLUE:
-;442:		c = "team_CTF_blueflag";
-ADDRLP4 24
-ADDRGP4 $261
-ASGNP4
-line 443
-;443:		break;		
-line 445
-;444:	default:
-;445:		return;
 LABELV $256
-line 448
-;446:	}
-;447:	// find attacker's team's flag carrier
-;448:	for (i = 0; i < g_maxclients.integer; i++) {
+line 436
+;435:	case TEAM_BLUE:
+;436:		c = "team_CTF_blueflag";
+ADDRLP4 24
+ADDRGP4 $257
+ASGNP4
+line 437
+;437:		break;		
+line 439
+;438:	default:
+;439:		return;
+LABELV $252
+line 442
+;440:	}
+;441:	// find attacker's team's flag carrier
+;442:	for (i = 0; i < g_maxclients.integer; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $265
+ADDRGP4 $261
 JUMPV
-LABELV $262
-line 449
-;449:		carrier = g_entities + i;
+LABELV $258
+line 443
+;443:		carrier = g_entities + i;
 ADDRLP4 4
 CNSTI4 872
 ADDRLP4 0
@@ -2304,8 +2286,8 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 450
-;450:		if (carrier->inuse && carrier->client->ps.powerups[flag_pw])
+line 444
+;444:		if (carrier->inuse && carrier->client->ps.powerups[flag_pw])
 ADDRLP4 112
 CNSTI4 0
 ASGNI4
@@ -2316,7 +2298,7 @@ ADDP4
 INDIRI4
 ADDRLP4 112
 INDIRI4
-EQI4 $267
+EQI4 $263
 ADDRLP4 16
 INDIRI4
 CNSTI4 2
@@ -2332,49 +2314,49 @@ ADDP4
 INDIRI4
 ADDRLP4 112
 INDIRI4
-EQI4 $267
-line 451
-;451:			break;
-ADDRGP4 $264
+EQI4 $263
+line 445
+;445:			break;
+ADDRGP4 $260
 JUMPV
-LABELV $267
-line 452
-;452:		carrier = NULL;
+LABELV $263
+line 446
+;446:		carrier = NULL;
 ADDRLP4 4
 CNSTP4 0
 ASGNP4
-line 453
-;453:	}
-LABELV $263
-line 448
+line 447
+;447:	}
+LABELV $259
+line 442
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $265
+LABELV $261
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_maxclients+12
 INDIRI4
-LTI4 $262
-LABELV $264
-line 457
-;454:#ifdef MISSIONPACK
-;455:	}
-;456:#endif
-;457:	flag = NULL;
+LTI4 $258
+LABELV $260
+line 451
+;448:#ifdef MISSIONPACK
+;449:	}
+;450:#endif
+;451:	flag = NULL;
 ADDRLP4 8
 CNSTP4 0
 ASGNP4
-ADDRGP4 $270
+ADDRGP4 $266
 JUMPV
-LABELV $269
-line 458
-;458:	while ((flag = G_Find (flag, FOFS(classname), c)) != NULL) {
-line 459
-;459:		if (!(flag->flags & FL_DROPPED_ITEM))
+LABELV $265
+line 452
+;452:	while ((flag = G_Find (flag, FOFS(classname), c)) != NULL) {
+line 453
+;453:		if (!(flag->flags & FL_DROPPED_ITEM))
 ADDRLP4 8
 INDIRP4
 CNSTI4 544
@@ -2383,16 +2365,16 @@ INDIRI4
 CNSTI4 4096
 BANDI4
 CNSTI4 0
-NEI4 $272
-line 460
-;460:			break;
-ADDRGP4 $271
+NEI4 $268
+line 454
+;454:			break;
+ADDRGP4 $267
 JUMPV
-LABELV $272
-line 461
-;461:	}
-LABELV $270
-line 458
+LABELV $268
+line 455
+;455:	}
+LABELV $266
+line 452
 ADDRLP4 8
 INDIRP4
 ARGP4
@@ -2413,27 +2395,27 @@ ADDRLP4 108
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $269
-LABELV $271
-line 463
-;462:
-;463:	if (!flag)
+NEU4 $265
+LABELV $267
+line 457
+;456:
+;457:	if (!flag)
 ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $274
-line 464
-;464:		return; // can't find attacker's flag
-ADDRGP4 $212
+NEU4 $270
+line 458
+;458:		return; // can't find attacker's flag
+ADDRGP4 $208
 JUMPV
-LABELV $274
-line 469
-;465:
-;466:	// ok we have the attackers flag and a pointer to the carrier
-;467:
-;468:	// check to see if we are defending the base's flag
-;469:	VectorSubtract(targ->r.currentOrigin, flag->r.currentOrigin, v1);
+LABELV $270
+line 463
+;459:
+;460:	// ok we have the attackers flag and a pointer to the carrier
+;461:
+;462:	// check to see if we are defending the base's flag
+;463:	VectorSubtract(targ->r.currentOrigin, flag->r.currentOrigin, v1);
 ADDRLP4 112
 ADDRFP4 0
 INDIRP4
@@ -2492,8 +2474,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 470
-;470:	VectorSubtract(attacker->r.currentOrigin, flag->r.currentOrigin, v2);
+line 464
+;464:	VectorSubtract(attacker->r.currentOrigin, flag->r.currentOrigin, v2);
 ADDRLP4 132
 ADDRFP4 8
 INDIRP4
@@ -2552,9 +2534,9 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 472
-;471:
-;472:	if ( ( ( VectorLength(v1) < CTF_TARGET_PROTECT_RADIUS &&
+line 466
+;465:
+;466:	if ( ( ( VectorLength(v1) < CTF_TARGET_PROTECT_RADIUS &&
 ADDRLP4 28
 ARGP4
 ADDRLP4 152
@@ -2564,7 +2546,7 @@ ASGNF4
 ADDRLP4 152
 INDIRF4
 CNSTF4 1148846080
-GEF4 $283
+GEF4 $279
 ADDRLP4 156
 CNSTI4 496
 ASGNI4
@@ -2587,8 +2569,8 @@ ASGNI4
 ADDRLP4 160
 INDIRI4
 CNSTI4 0
-NEI4 $282
-LABELV $283
+NEI4 $278
+LABELV $279
 ADDRLP4 40
 ARGP4
 ADDRLP4 164
@@ -2598,7 +2580,7 @@ ASGNF4
 ADDRLP4 164
 INDIRF4
 CNSTF4 1148846080
-GEF4 $280
+GEF4 $276
 ADDRLP4 168
 CNSTI4 496
 ASGNI4
@@ -2621,8 +2603,8 @@ ASGNI4
 ADDRLP4 172
 INDIRI4
 CNSTI4 0
-EQI4 $280
-LABELV $282
+EQI4 $276
+LABELV $278
 ADDRLP4 176
 CNSTI4 524
 ASGNI4
@@ -2649,16 +2631,16 @@ ADDRLP4 180
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $280
-line 476
-;473:		trap_InPVS(flag->r.currentOrigin, targ->r.currentOrigin ) ) ||
-;474:		( VectorLength(v2) < CTF_TARGET_PROTECT_RADIUS &&
-;475:		trap_InPVS(flag->r.currentOrigin, attacker->r.currentOrigin ) ) ) &&
-;476:		attacker->client->sess.sessionTeam != targ->client->sess.sessionTeam) {
-line 479
-;477:
-;478:		// we defended the base flag
-;479:		AddScore(attacker, targ->r.currentOrigin, CTF_FLAG_DEFENSE_BONUS);
+EQI4 $276
+line 470
+;467:		trap_InPVS(flag->r.currentOrigin, targ->r.currentOrigin ) ) ||
+;468:		( VectorLength(v2) < CTF_TARGET_PROTECT_RADIUS &&
+;469:		trap_InPVS(flag->r.currentOrigin, attacker->r.currentOrigin ) ) ) &&
+;470:		attacker->client->sess.sessionTeam != targ->client->sess.sessionTeam) {
+line 473
+;471:
+;472:		// we defended the base flag
+;473:		AddScore(attacker, targ->r.currentOrigin, CTF_FLAG_DEFENSE_BONUS);
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -2672,8 +2654,8 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-line 480
-;480:		attacker->client->pers.teamState.basedefense++;
+line 474
+;474:		attacker->client->pers.teamState.basedefense++;
 ADDRLP4 184
 ADDRFP4 8
 INDIRP4
@@ -2691,9 +2673,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 482
-;481:
-;482:		attacker->client->ps.persistant[PERS_DEFEND_COUNT]++;
+line 476
+;475:
+;476:		attacker->client->ps.persistant[PERS_DEFEND_COUNT]++;
 ADDRLP4 188
 ADDRFP4 8
 INDIRP4
@@ -2711,9 +2693,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 484
-;483:		// add the sprite over the player's head
-;484:		attacker->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
+line 478
+;477:		// add the sprite over the player's head
+;478:		attacker->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
 ADDRLP4 192
 ADDRFP4 8
 INDIRP4
@@ -2731,8 +2713,8 @@ INDIRI4
 CNSTI4 -231497
 BANDI4
 ASGNI4
-line 485
-;485:		attacker->client->ps.eFlags |= EF_AWARD_DEFEND;
+line 479
+;479:		attacker->client->ps.eFlags |= EF_AWARD_DEFEND;
 ADDRLP4 196
 ADDRFP4 8
 INDIRP4
@@ -2750,8 +2732,8 @@ INDIRI4
 CNSTI4 65536
 BORI4
 ASGNI4
-line 486
-;486:		attacker->client->rewardTime = level.time + REWARD_SPRITE_TIME;
+line 480
+;480:		attacker->client->rewardTime = level.time + REWARD_SPRITE_TIME;
 ADDRFP4 8
 INDIRP4
 CNSTI4 524
@@ -2764,16 +2746,16 @@ INDIRI4
 CNSTI4 2000
 ADDI4
 ASGNI4
-line 488
-;487:
-;488:		return;
-ADDRGP4 $212
+line 482
+;481:
+;482:		return;
+ADDRGP4 $208
 JUMPV
-LABELV $280
-line 491
-;489:	}
-;490:
-;491:	if (carrier && carrier != attacker) {
+LABELV $276
+line 485
+;483:	}
+;484:
+;485:	if (carrier && carrier != attacker) {
 ADDRLP4 184
 ADDRLP4 4
 INDIRP4
@@ -2782,15 +2764,15 @@ ASGNU4
 ADDRLP4 184
 INDIRU4
 CNSTU4 0
-EQU4 $285
+EQU4 $281
 ADDRLP4 184
 INDIRU4
 ADDRFP4 8
 INDIRP4
 CVPU4 4
-EQU4 $285
-line 492
-;492:		VectorSubtract(targ->r.currentOrigin, carrier->r.currentOrigin, v1);
+EQU4 $281
+line 486
+;486:		VectorSubtract(targ->r.currentOrigin, carrier->r.currentOrigin, v1);
 ADDRLP4 188
 ADDRFP4 0
 INDIRP4
@@ -2849,8 +2831,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 493
-;493:		VectorSubtract(attacker->r.currentOrigin, carrier->r.currentOrigin, v1);
+line 487
+;487:		VectorSubtract(attacker->r.currentOrigin, carrier->r.currentOrigin, v1);
 ADDRLP4 208
 ADDRFP4 8
 INDIRP4
@@ -2909,9 +2891,9 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 495
-;494:
-;495:		if ( ( ( VectorLength(v1) < CTF_ATTACKER_PROTECT_RADIUS &&
+line 489
+;488:
+;489:		if ( ( ( VectorLength(v1) < CTF_ATTACKER_PROTECT_RADIUS &&
 ADDRLP4 28
 ARGP4
 ADDRLP4 228
@@ -2921,7 +2903,7 @@ ASGNF4
 ADDRLP4 228
 INDIRF4
 CNSTF4 1148846080
-GEF4 $294
+GEF4 $290
 ADDRLP4 232
 CNSTI4 496
 ASGNI4
@@ -2944,8 +2926,8 @@ ASGNI4
 ADDRLP4 236
 INDIRI4
 CNSTI4 0
-NEI4 $293
-LABELV $294
+NEI4 $289
+LABELV $290
 ADDRLP4 40
 ARGP4
 ADDRLP4 240
@@ -2955,7 +2937,7 @@ ASGNF4
 ADDRLP4 240
 INDIRF4
 CNSTF4 1148846080
-GEF4 $291
+GEF4 $287
 ADDRLP4 244
 CNSTI4 496
 ASGNI4
@@ -2978,8 +2960,8 @@ ASGNI4
 ADDRLP4 248
 INDIRI4
 CNSTI4 0
-EQI4 $291
-LABELV $293
+EQI4 $287
+LABELV $289
 ADDRLP4 252
 CNSTI4 524
 ASGNI4
@@ -3006,14 +2988,14 @@ ADDRLP4 256
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $291
-line 499
-;496:			trap_InPVS(carrier->r.currentOrigin, targ->r.currentOrigin ) ) ||
-;497:			( VectorLength(v2) < CTF_ATTACKER_PROTECT_RADIUS &&
-;498:				trap_InPVS(carrier->r.currentOrigin, attacker->r.currentOrigin ) ) ) &&
-;499:			attacker->client->sess.sessionTeam != targ->client->sess.sessionTeam) {
-line 500
-;500:			AddScore(attacker, targ->r.currentOrigin, CTF_CARRIER_PROTECT_BONUS);
+EQI4 $287
+line 493
+;490:			trap_InPVS(carrier->r.currentOrigin, targ->r.currentOrigin ) ) ||
+;491:			( VectorLength(v2) < CTF_ATTACKER_PROTECT_RADIUS &&
+;492:				trap_InPVS(carrier->r.currentOrigin, attacker->r.currentOrigin ) ) ) &&
+;493:			attacker->client->sess.sessionTeam != targ->client->sess.sessionTeam) {
+line 494
+;494:			AddScore(attacker, targ->r.currentOrigin, CTF_CARRIER_PROTECT_BONUS);
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -3027,8 +3009,8 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-line 501
-;501:			attacker->client->pers.teamState.carrierdefense++;
+line 495
+;495:			attacker->client->pers.teamState.carrierdefense++;
 ADDRLP4 260
 ADDRFP4 8
 INDIRP4
@@ -3046,9 +3028,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 503
-;502:
-;503:			attacker->client->ps.persistant[PERS_DEFEND_COUNT]++;
+line 497
+;496:
+;497:			attacker->client->ps.persistant[PERS_DEFEND_COUNT]++;
 ADDRLP4 264
 ADDRFP4 8
 INDIRP4
@@ -3066,9 +3048,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 505
-;504:			// add the sprite over the player's head
-;505:			attacker->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
+line 499
+;498:			// add the sprite over the player's head
+;499:			attacker->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
 ADDRLP4 268
 ADDRFP4 8
 INDIRP4
@@ -3086,8 +3068,8 @@ INDIRI4
 CNSTI4 -231497
 BANDI4
 ASGNI4
-line 506
-;506:			attacker->client->ps.eFlags |= EF_AWARD_DEFEND;
+line 500
+;500:			attacker->client->ps.eFlags |= EF_AWARD_DEFEND;
 ADDRLP4 272
 ADDRFP4 8
 INDIRP4
@@ -3105,8 +3087,8 @@ INDIRI4
 CNSTI4 65536
 BORI4
 ASGNI4
-line 507
-;507:			attacker->client->rewardTime = level.time + REWARD_SPRITE_TIME;
+line 501
+;501:			attacker->client->rewardTime = level.time + REWARD_SPRITE_TIME;
 ADDRFP4 8
 INDIRP4
 CNSTI4 524
@@ -3119,36 +3101,36 @@ INDIRI4
 CNSTI4 2000
 ADDI4
 ASGNI4
-line 509
-;508:
-;509:			return;
-LABELV $291
-line 511
-;510:		}
-;511:	}
-LABELV $285
-line 512
-;512:}
-LABELV $212
+line 503
+;502:
+;503:			return;
+LABELV $287
+line 505
+;504:		}
+;505:	}
+LABELV $281
+line 506
+;506:}
+LABELV $208
 endproc Team_FragBonuses 276 16
 export Team_CheckHurtCarrier
 proc Team_CheckHurtCarrier 36 0
-line 523
-;513:
-;514:/*
-;515:================
-;516:Team_CheckHurtCarrier
-;517:
-;518:Check to see if attacker hurt the flag carrier.  Needed when handing out bonuses for assistance to flag
-;519:carrier defense.
-;520:================
-;521:*/
-;522:void Team_CheckHurtCarrier(gentity_t *targ, gentity_t *attacker)
-;523:{
-line 526
-;524:	int flag_pw;
-;525:
-;526:	if (!targ->client || !attacker->client)
+line 517
+;507:
+;508:/*
+;509:================
+;510:Team_CheckHurtCarrier
+;511:
+;512:Check to see if attacker hurt the flag carrier.  Needed when handing out bonuses for assistance to flag
+;513:carrier defense.
+;514:================
+;515:*/
+;516:void Team_CheckHurtCarrier(gentity_t *targ, gentity_t *attacker)
+;517:{
+line 520
+;518:	int flag_pw;
+;519:
+;520:	if (!targ->client || !attacker->client)
 ADDRLP4 4
 CNSTI4 524
 ASGNI4
@@ -3164,7 +3146,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 8
 INDIRU4
-EQU4 $299
+EQU4 $295
 ADDRFP4 4
 INDIRP4
 ADDRLP4 4
@@ -3174,16 +3156,16 @@ INDIRP4
 CVPU4 4
 ADDRLP4 8
 INDIRU4
-NEU4 $297
-LABELV $299
-line 527
-;527:		return;
-ADDRGP4 $296
+NEU4 $293
+LABELV $295
+line 521
+;521:		return;
+ADDRGP4 $292
 JUMPV
-LABELV $297
-line 529
-;528:
-;529:	if (targ->client->sess.sessionTeam == TEAM_RED)
+LABELV $293
+line 523
+;522:
+;523:	if (targ->client->sess.sessionTeam == TEAM_RED)
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -3193,26 +3175,26 @@ CNSTI4 2492
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $300
-line 530
-;530:		flag_pw = PW_BLUEFLAG;
+NEI4 $296
+line 524
+;524:		flag_pw = PW_BLUEFLAG;
 ADDRLP4 0
 CNSTI4 8
 ASGNI4
-ADDRGP4 $301
+ADDRGP4 $297
 JUMPV
-LABELV $300
-line 532
-;531:	else
-;532:		flag_pw = PW_REDFLAG;
+LABELV $296
+line 526
+;525:	else
+;526:		flag_pw = PW_REDFLAG;
 ADDRLP4 0
 CNSTI4 7
 ASGNI4
-LABELV $301
-line 535
-;533:
-;534:	// flags
-;535:	if (targ->client->ps.powerups[flag_pw] &&
+LABELV $297
+line 529
+;527:
+;528:	// flags
+;529:	if (targ->client->ps.powerups[flag_pw] &&
 ADDRLP4 12
 CNSTI4 524
 ASGNI4
@@ -3235,7 +3217,7 @@ ADDP4
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $302
+EQI4 $298
 ADDRLP4 20
 CNSTI4 2492
 ASGNI4
@@ -3255,10 +3237,10 @@ ADDRLP4 20
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $302
-line 537
-;536:		targ->client->sess.sessionTeam != attacker->client->sess.sessionTeam)
-;537:		attacker->client->pers.teamState.lasthurtcarrier = level.time;
+EQI4 $298
+line 531
+;530:		targ->client->sess.sessionTeam != attacker->client->sess.sessionTeam)
+;531:		attacker->client->pers.teamState.lasthurtcarrier = level.time;
 ADDRFP4 4
 INDIRP4
 CNSTI4 524
@@ -3270,11 +3252,11 @@ ADDRGP4 level+32
 INDIRI4
 CVIF4 4
 ASGNF4
-LABELV $302
-line 540
-;538:
-;539:	// skulls
-;540:	if (targ->client->ps.generic1 &&
+LABELV $298
+line 534
+;532:
+;533:	// skulls
+;534:	if (targ->client->ps.generic1 &&
 ADDRLP4 24
 CNSTI4 524
 ASGNI4
@@ -3292,7 +3274,7 @@ CNSTI4 440
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $305
+EQI4 $301
 ADDRLP4 32
 CNSTI4 2492
 ASGNI4
@@ -3312,10 +3294,10 @@ ADDRLP4 32
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $305
-line 542
-;541:		targ->client->sess.sessionTeam != attacker->client->sess.sessionTeam)
-;542:		attacker->client->pers.teamState.lasthurtcarrier = level.time;
+EQI4 $301
+line 536
+;535:		targ->client->sess.sessionTeam != attacker->client->sess.sessionTeam)
+;536:		attacker->client->pers.teamState.lasthurtcarrier = level.time;
 ADDRFP4 4
 INDIRP4
 CNSTI4 524
@@ -3327,35 +3309,35 @@ ADDRGP4 level+32
 INDIRI4
 CVIF4 4
 ASGNF4
-LABELV $305
-line 543
-;543:}
-LABELV $296
+LABELV $301
+line 537
+;537:}
+LABELV $292
 endproc Team_CheckHurtCarrier 36 0
 export Team_DropFlags
 proc Team_DropFlags 20 12
-line 547
-;544:
+line 541
+;538:
+;539:
+;540:// Shafe - Trep - Moved From g_active.c - drop flags
+;541:void Team_DropFlags(gentity_t *ent) {
+line 546
+;542:	gitem_t		*item;
+;543:	gentity_t	*drop;
+;544:	float		angle;
 ;545:
-;546:// Shafe - Trep - Moved From g_active.c - drop flags
-;547:void Team_DropFlags(gentity_t *ent) {
-line 552
-;548:	gitem_t		*item;
-;549:	gentity_t	*drop;
-;550:	float		angle;
-;551:
-;552:	angle = 45;
+;546:	angle = 45;
 ADDRLP4 4
 CNSTF4 1110704128
 ASGNF4
-line 554
-;553:
-;554:	item = NULL;
+line 548
+;547:
+;548:	item = NULL;
 ADDRLP4 0
 CNSTP4 0
 ASGNP4
-line 555
-;555:	if ( ent->client->ps.powerups[ PW_REDFLAG ] ) {
+line 549
+;549:	if ( ent->client->ps.powerups[ PW_REDFLAG ] ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -3365,9 +3347,9 @@ CNSTI4 340
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $309
-line 556
-;556:		item = BG_FindItemForPowerup( PW_REDFLAG );
+EQI4 $305
+line 550
+;550:		item = BG_FindItemForPowerup( PW_REDFLAG );
 CNSTI4 7
 ARGI4
 ADDRLP4 12
@@ -3378,15 +3360,15 @@ ADDRLP4 0
 ADDRLP4 12
 INDIRP4
 ASGNP4
-line 557
-;557:		if ( item ) {
+line 551
+;551:		if ( item ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $311
-line 558
-;558:			drop = Drop_Item( ent, item, angle );
+EQU4 $307
+line 552
+;552:			drop = Drop_Item( ent, item, angle );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3404,9 +3386,9 @@ ADDRLP4 8
 ADDRLP4 16
 INDIRP4
 ASGNP4
-line 560
-;559:			// decide how many seconds it has left
-;560:			drop->count = ( ent->client->ps.powerups[ PW_REDFLAG ] - level.time ) / 1000;
+line 554
+;553:			// decide how many seconds it has left
+;554:			drop->count = ( ent->client->ps.powerups[ PW_REDFLAG ] - level.time ) / 1000;
 ADDRLP4 8
 INDIRP4
 CNSTI4 776
@@ -3425,28 +3407,28 @@ SUBI4
 CNSTI4 1000
 DIVI4
 ASGNI4
-line 561
-;561:			if ( drop->count < 1 ) {
+line 555
+;555:			if ( drop->count < 1 ) {
 ADDRLP4 8
 INDIRP4
 CNSTI4 776
 ADDP4
 INDIRI4
 CNSTI4 1
-GEI4 $314
-line 562
-;562:				drop->count = 1;
+GEI4 $310
+line 556
+;556:				drop->count = 1;
 ADDRLP4 8
 INDIRP4
 CNSTI4 776
 ADDP4
 CNSTI4 1
 ASGNI4
-line 563
-;563:			}
-LABELV $314
-line 564
-;564:			ent->client->ps.powerups[ PW_REDFLAG ] = 0;
+line 557
+;557:			}
+LABELV $310
+line 558
+;558:			ent->client->ps.powerups[ PW_REDFLAG ] = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -3456,29 +3438,29 @@ CNSTI4 340
 ADDP4
 CNSTI4 0
 ASGNI4
-line 565
-;565:			angle += 45;
+line 559
+;559:			angle += 45;
 ADDRLP4 4
 ADDRLP4 4
 INDIRF4
 CNSTF4 1110704128
 ADDF4
 ASGNF4
-line 567
-;566://			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Red Flag\n", angle); // Shafe - Debug
-;567:		}
-LABELV $311
-line 568
-;568:	}
-LABELV $309
-line 570
-;569:	
-;570:	item = NULL;
+line 561
+;560://			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Red Flag\n", angle); // Shafe - Debug
+;561:		}
+LABELV $307
+line 562
+;562:	}
+LABELV $305
+line 564
+;563:	
+;564:	item = NULL;
 ADDRLP4 0
 CNSTP4 0
 ASGNP4
-line 571
-;571:	if ( ent->client->ps.powerups[ PW_BLUEFLAG ] ) {
+line 565
+;565:	if ( ent->client->ps.powerups[ PW_BLUEFLAG ] ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -3488,9 +3470,9 @@ CNSTI4 344
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $316
-line 572
-;572:		item = BG_FindItemForPowerup( PW_BLUEFLAG );
+EQI4 $312
+line 566
+;566:		item = BG_FindItemForPowerup( PW_BLUEFLAG );
 CNSTI4 8
 ARGI4
 ADDRLP4 12
@@ -3501,15 +3483,15 @@ ADDRLP4 0
 ADDRLP4 12
 INDIRP4
 ASGNP4
-line 573
-;573:		if ( item ) {
+line 567
+;567:		if ( item ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $318
-line 574
-;574:			drop = Drop_Item( ent, item, angle );
+EQU4 $314
+line 568
+;568:			drop = Drop_Item( ent, item, angle );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3527,9 +3509,9 @@ ADDRLP4 8
 ADDRLP4 16
 INDIRP4
 ASGNP4
-line 576
-;575:			// decide how many seconds it has left
-;576:			drop->count = ( ent->client->ps.powerups[ PW_BLUEFLAG ] - level.time ) / 1000;
+line 570
+;569:			// decide how many seconds it has left
+;570:			drop->count = ( ent->client->ps.powerups[ PW_BLUEFLAG ] - level.time ) / 1000;
 ADDRLP4 8
 INDIRP4
 CNSTI4 776
@@ -3548,28 +3530,28 @@ SUBI4
 CNSTI4 1000
 DIVI4
 ASGNI4
-line 577
-;577:			if ( drop->count < 1 ) {
+line 571
+;571:			if ( drop->count < 1 ) {
 ADDRLP4 8
 INDIRP4
 CNSTI4 776
 ADDP4
 INDIRI4
 CNSTI4 1
-GEI4 $321
-line 578
-;578:				drop->count = 1;
+GEI4 $317
+line 572
+;572:				drop->count = 1;
 ADDRLP4 8
 INDIRP4
 CNSTI4 776
 ADDP4
 CNSTI4 1
 ASGNI4
-line 579
-;579:			}
-LABELV $321
-line 580
-;580:			ent->client->ps.powerups[ PW_BLUEFLAG ] = 0;
+line 573
+;573:			}
+LABELV $317
+line 574
+;574:			ent->client->ps.powerups[ PW_BLUEFLAG ] = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -3579,57 +3561,57 @@ CNSTI4 344
 ADDP4
 CNSTI4 0
 ASGNI4
-line 581
-;581:			angle += 45;
+line 575
+;575:			angle += 45;
 ADDRLP4 4
 ADDRLP4 4
 INDIRF4
 CNSTF4 1110704128
 ADDF4
 ASGNF4
-line 583
-;582://			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Blue Flag\n", angle); // Shafe - Debug
-;583:		}
-LABELV $318
-line 584
-;584:	}
-LABELV $316
-line 601
-;585:	
-;586:	/*  we're not doing nueureal flags yet. 
-;587:	item = NULL;
-;588:	if ( ent->client->ps.powerups[ PW_NEUTRALFLAG ] ) {
-;589:		item = BG_FindItemForPowerup( PW_NEUTRALFLAG );
-;590:		if ( item ) {
-;591:			drop = Drop_Item( ent, item, angle );
-;592:			// decide how many seconds it has left
-;593:			drop->count = ( ent->client->ps.powerups[ PW_NEUTRALFLAG ] - level.time ) / 1000;
-;594:			if ( drop->count < 1 ) {
-;595:				drop->count = 1;
-;596:			}
-;597:			ent->client->ps.powerups[ PW_NEUTRALFLAG ] = 0;
-;598:		}
-;599:	}
-;600:	*/ 
-;601:}
-LABELV $308
+line 577
+;576://			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Blue Flag\n", angle); // Shafe - Debug
+;577:		}
+LABELV $314
+line 578
+;578:	}
+LABELV $312
+line 595
+;579:	
+;580:	/*  we're not doing nueureal flags yet. 
+;581:	item = NULL;
+;582:	if ( ent->client->ps.powerups[ PW_NEUTRALFLAG ] ) {
+;583:		item = BG_FindItemForPowerup( PW_NEUTRALFLAG );
+;584:		if ( item ) {
+;585:			drop = Drop_Item( ent, item, angle );
+;586:			// decide how many seconds it has left
+;587:			drop->count = ( ent->client->ps.powerups[ PW_NEUTRALFLAG ] - level.time ) / 1000;
+;588:			if ( drop->count < 1 ) {
+;589:				drop->count = 1;
+;590:			}
+;591:			ent->client->ps.powerups[ PW_NEUTRALFLAG ] = 0;
+;592:		}
+;593:	}
+;594:	*/ 
+;595:}
+LABELV $304
 endproc Team_DropFlags 20 12
 export Team_ResetFlag
 proc Team_ResetFlag 20 12
-line 605
-;602:// End Shafe - Trep - Drop Flags
-;603:
-;604:
-;605:gentity_t *Team_ResetFlag( int team ) {
-line 607
-;606:	char *c;
-;607:	gentity_t *ent, *rent = NULL;
+line 599
+;596:// End Shafe - Trep - Drop Flags
+;597:
+;598:
+;599:gentity_t *Team_ResetFlag( int team ) {
+line 601
+;600:	char *c;
+;601:	gentity_t *ent, *rent = NULL;
 ADDRLP4 8
 CNSTP4 0
 ASGNP4
-line 609
-;608:
-;609:	switch (team) {
+line 603
+;602:
+;603:	switch (team) {
 ADDRLP4 12
 ADDRFP4 0
 INDIRI4
@@ -3637,73 +3619,73 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $328
+EQI4 $324
 ADDRLP4 12
 INDIRI4
 CNSTI4 1
-EQI4 $326
+EQI4 $322
 ADDRLP4 12
 INDIRI4
 CNSTI4 2
-EQI4 $327
-ADDRGP4 $324
+EQI4 $323
+ADDRGP4 $320
 JUMPV
-LABELV $326
-line 611
-;610:	case TEAM_RED:
-;611:		c = "team_CTF_redflag";
+LABELV $322
+line 605
+;604:	case TEAM_RED:
+;605:		c = "team_CTF_redflag";
 ADDRLP4 4
-ADDRGP4 $259
+ADDRGP4 $255
+ASGNP4
+line 606
+;606:		break;
+ADDRGP4 $321
+JUMPV
+LABELV $323
+line 608
+;607:	case TEAM_BLUE:
+;608:		c = "team_CTF_blueflag";
+ADDRLP4 4
+ADDRGP4 $257
+ASGNP4
+line 609
+;609:		break;
+ADDRGP4 $321
+JUMPV
+LABELV $324
+line 611
+;610:	case TEAM_FREE:
+;611:		c = "team_CTF_neutralflag";
+ADDRLP4 4
+ADDRGP4 $325
 ASGNP4
 line 612
 ;612:		break;
-ADDRGP4 $325
+ADDRGP4 $321
 JUMPV
-LABELV $327
+LABELV $320
 line 614
-;613:	case TEAM_BLUE:
-;614:		c = "team_CTF_blueflag";
-ADDRLP4 4
-ADDRGP4 $261
-ASGNP4
-line 615
-;615:		break;
-ADDRGP4 $325
-JUMPV
-LABELV $328
-line 617
-;616:	case TEAM_FREE:
-;617:		c = "team_CTF_neutralflag";
-ADDRLP4 4
-ADDRGP4 $329
-ASGNP4
-line 618
-;618:		break;
-ADDRGP4 $325
-JUMPV
-LABELV $324
-line 620
-;619:	default:
-;620:		return NULL;
+;613:	default:
+;614:		return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $323
+ADDRGP4 $319
 JUMPV
-LABELV $325
-line 623
-;621:	}
-;622:
-;623:	ent = NULL;
+LABELV $321
+line 617
+;615:	}
+;616:
+;617:	ent = NULL;
 ADDRLP4 0
 CNSTP4 0
 ASGNP4
-ADDRGP4 $331
+ADDRGP4 $327
 JUMPV
-LABELV $330
-line 624
-;624:	while ((ent = G_Find (ent, FOFS(classname), c)) != NULL) {
-line 625
-;625:		if (ent->flags & FL_DROPPED_ITEM)
+LABELV $326
+line 618
+;618:	while ((ent = G_Find (ent, FOFS(classname), c)) != NULL) {
+line 619
+;619:		if (ent->flags & FL_DROPPED_ITEM)
 ADDRLP4 0
 INDIRP4
 CNSTI4 544
@@ -3712,41 +3694,41 @@ INDIRI4
 CNSTI4 4096
 BANDI4
 CNSTI4 0
-EQI4 $333
-line 626
-;626:			G_FreeEntity(ent);
+EQI4 $329
+line 620
+;620:			G_FreeEntity(ent);
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-ADDRGP4 $334
+ADDRGP4 $330
 JUMPV
-LABELV $333
-line 627
-;627:		else {
-line 628
-;628:			rent = ent;
+LABELV $329
+line 621
+;621:		else {
+line 622
+;622:			rent = ent;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 629
-;629:			RespawnItem(ent);
+line 623
+;623:			RespawnItem(ent);
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 RespawnItem
 CALLV
 pop
-line 630
-;630:		}
-LABELV $334
-line 631
-;631:	}
-LABELV $331
 line 624
+;624:		}
+LABELV $330
+line 625
+;625:	}
+LABELV $327
+line 618
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -3767,10 +3749,10 @@ ADDRLP4 16
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $330
-line 633
-;632:
-;633:	Team_SetFlagStatus( team, FLAG_ATBASE );
+NEU4 $326
+line 627
+;626:
+;627:	Team_SetFlagStatus( team, FLAG_ATBASE );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -3779,82 +3761,82 @@ ARGI4
 ADDRGP4 Team_SetFlagStatus
 CALLV
 pop
-line 635
-;634:
-;635:	return rent;
+line 629
+;628:
+;629:	return rent;
 ADDRLP4 8
 INDIRP4
 RETP4
-LABELV $323
+LABELV $319
 endproc Team_ResetFlag 20 12
 export Team_ResetFlags
 proc Team_ResetFlags 0 4
-line 638
-;636:}
-;637:
-;638:void Team_ResetFlags( void ) {
-line 639
-;639:	if( g_gametype.integer == GT_CTF ) {
+line 632
+;630:}
+;631:
+;632:void Team_ResetFlags( void ) {
+line 633
+;633:	if( g_gametype.integer == GT_CTF ) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 4
-NEI4 $336
-line 640
-;640:		Team_ResetFlag( TEAM_RED );
+NEI4 $332
+line 634
+;634:		Team_ResetFlag( TEAM_RED );
 CNSTI4 1
 ARGI4
 ADDRGP4 Team_ResetFlag
 CALLP4
 pop
-line 641
-;641:		Team_ResetFlag( TEAM_BLUE );
+line 635
+;635:		Team_ResetFlag( TEAM_BLUE );
 CNSTI4 2
 ARGI4
 ADDRGP4 Team_ResetFlag
 CALLP4
 pop
+line 636
+;636:	}
+LABELV $332
 line 642
-;642:	}
-LABELV $336
-line 648
-;643:#ifdef MISSIONPACK
-;644:	else if( g_gametype.integer == GT_1FCTF ) {
-;645:		Team_ResetFlag( TEAM_FREE );
-;646:	}
-;647:#endif
-;648:}
-LABELV $335
+;637:#ifdef MISSIONPACK
+;638:	else if( g_gametype.integer == GT_1FCTF ) {
+;639:		Team_ResetFlag( TEAM_FREE );
+;640:	}
+;641:#endif
+;642:}
+LABELV $331
 endproc Team_ResetFlags 0 4
 export Team_ReturnFlagSound
 proc Team_ReturnFlagSound 12 8
-line 650
-;649:
-;650:void Team_ReturnFlagSound( gentity_t *ent, int team ) {
-line 653
-;651:	gentity_t	*te;
-;652:
-;653:	if (ent == NULL) {
+line 644
+;643:
+;644:void Team_ReturnFlagSound( gentity_t *ent, int team ) {
+line 647
+;645:	gentity_t	*te;
+;646:
+;647:	if (ent == NULL) {
 ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $340
-line 654
-;654:		G_Printf ("Warning:  NULL passed to Team_ReturnFlagSound\n");
-ADDRGP4 $342
+NEU4 $336
+line 648
+;648:		G_Printf ("Warning:  NULL passed to Team_ReturnFlagSound\n");
+ADDRGP4 $338
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 655
-;655:		return;
-ADDRGP4 $339
+line 649
+;649:		return;
+ADDRGP4 $335
 JUMPV
-LABELV $340
-line 658
-;656:	}
-;657:
-;658:	te = G_TempEntity( ent->s.pos.trBase, EV_GLOBAL_TEAM_SOUND );
+LABELV $336
+line 652
+;650:	}
+;651:
+;652:	te = G_TempEntity( ent->s.pos.trBase, EV_GLOBAL_TEAM_SOUND );
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -3870,40 +3852,40 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 659
-;659:	if( team == TEAM_BLUE ) {
+line 653
+;653:	if( team == TEAM_BLUE ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 2
-NEI4 $343
-line 660
-;660:		te->s.eventParm = GTS_RED_RETURN;
+NEI4 $339
+line 654
+;654:		te->s.eventParm = GTS_RED_RETURN;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 2
 ASGNI4
-line 661
-;661:	}
-ADDRGP4 $344
+line 655
+;655:	}
+ADDRGP4 $340
 JUMPV
-LABELV $343
-line 662
-;662:	else {
-line 663
-;663:		te->s.eventParm = GTS_BLUE_RETURN;
+LABELV $339
+line 656
+;656:	else {
+line 657
+;657:		te->s.eventParm = GTS_BLUE_RETURN;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 3
 ASGNI4
-line 664
-;664:	}
-LABELV $344
-line 665
-;665:	te->r.svFlags |= SVF_BROADCAST;
+line 658
+;658:	}
+LABELV $340
+line 659
+;659:	te->r.svFlags |= SVF_BROADCAST;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -3918,42 +3900,42 @@ INDIRI4
 CNSTI4 32
 BORI4
 ASGNI4
-line 666
-;666:}
-LABELV $339
+line 660
+;660:}
+LABELV $335
 endproc Team_ReturnFlagSound 12 8
 export Team_TakeFlagSound
 proc Team_TakeFlagSound 16 8
-line 668
-;667:
-;668:void Team_TakeFlagSound( gentity_t *ent, int team ) {
-line 671
-;669:	gentity_t	*te;
-;670:
-;671:	if (ent == NULL) {
+line 662
+;661:
+;662:void Team_TakeFlagSound( gentity_t *ent, int team ) {
+line 665
+;663:	gentity_t	*te;
+;664:
+;665:	if (ent == NULL) {
 ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $346
-line 672
-;672:		G_Printf ("Warning:  NULL passed to Team_TakeFlagSound\n");
-ADDRGP4 $348
+NEU4 $342
+line 666
+;666:		G_Printf ("Warning:  NULL passed to Team_TakeFlagSound\n");
+ADDRGP4 $344
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 673
-;673:		return;
-ADDRGP4 $345
+line 667
+;667:		return;
+ADDRGP4 $341
 JUMPV
-LABELV $346
-line 678
-;674:	}
-;675:
-;676:	// only play sound when the flag was at the base
-;677:	// or not picked up the last 10 seconds
-;678:	switch(team) {
+LABELV $342
+line 672
+;668:	}
+;669:
+;670:	// only play sound when the flag was at the base
+;671:	// or not picked up the last 10 seconds
+;672:	switch(team) {
 ADDRLP4 4
 ADDRFP4 4
 INDIRI4
@@ -3961,88 +3943,88 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
-EQI4 $351
+EQI4 $347
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
-EQI4 $361
-ADDRGP4 $349
+EQI4 $357
+ADDRGP4 $345
 JUMPV
-LABELV $351
-line 680
-;679:		case TEAM_RED:
-;680:			if( teamgame.blueStatus != FLAG_ATBASE ) {
+LABELV $347
+line 674
+;673:		case TEAM_RED:
+;674:			if( teamgame.blueStatus != FLAG_ATBASE ) {
 ADDRGP4 teamgame+12
 INDIRI4
 CNSTI4 0
-EQI4 $352
-line 681
-;681:				if (teamgame.blueTakenTime > level.time - 10000)
+EQI4 $348
+line 675
+;675:				if (teamgame.blueTakenTime > level.time - 10000)
 ADDRGP4 teamgame+24
 INDIRI4
 ADDRGP4 level+32
 INDIRI4
 CNSTI4 10000
 SUBI4
-LEI4 $355
-line 682
-;682:					return;
-ADDRGP4 $345
+LEI4 $351
+line 676
+;676:					return;
+ADDRGP4 $341
 JUMPV
-LABELV $355
-line 683
-;683:			}
-LABELV $352
-line 684
-;684:			teamgame.blueTakenTime = level.time;
+LABELV $351
+line 677
+;677:			}
+LABELV $348
+line 678
+;678:			teamgame.blueTakenTime = level.time;
 ADDRGP4 teamgame+24
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 685
-;685:			break;
-ADDRGP4 $350
+line 679
+;679:			break;
+ADDRGP4 $346
 JUMPV
-LABELV $361
-line 688
-;686:
-;687:		case TEAM_BLUE:	// CTF
-;688:			if( teamgame.redStatus != FLAG_ATBASE ) {
+LABELV $357
+line 682
+;680:
+;681:		case TEAM_BLUE:	// CTF
+;682:			if( teamgame.redStatus != FLAG_ATBASE ) {
 ADDRGP4 teamgame+8
 INDIRI4
 CNSTI4 0
-EQI4 $362
-line 689
-;689:				if (teamgame.redTakenTime > level.time - 10000)
+EQI4 $358
+line 683
+;683:				if (teamgame.redTakenTime > level.time - 10000)
 ADDRGP4 teamgame+20
 INDIRI4
 ADDRGP4 level+32
 INDIRI4
 CNSTI4 10000
 SUBI4
-LEI4 $365
-line 690
-;690:					return;
-ADDRGP4 $345
+LEI4 $361
+line 684
+;684:					return;
+ADDRGP4 $341
 JUMPV
-LABELV $365
-line 691
-;691:			}
-LABELV $362
-line 692
-;692:			teamgame.redTakenTime = level.time;
+LABELV $361
+line 685
+;685:			}
+LABELV $358
+line 686
+;686:			teamgame.redTakenTime = level.time;
 ADDRGP4 teamgame+20
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 693
-;693:			break;
-LABELV $349
-LABELV $350
-line 696
-;694:	}
-;695:
-;696:	te = G_TempEntity( ent->s.pos.trBase, EV_GLOBAL_TEAM_SOUND );
+line 687
+;687:			break;
+LABELV $345
+LABELV $346
+line 690
+;688:	}
+;689:
+;690:	te = G_TempEntity( ent->s.pos.trBase, EV_GLOBAL_TEAM_SOUND );
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -4058,40 +4040,40 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 697
-;697:	if( team == TEAM_BLUE ) {
+line 691
+;691:	if( team == TEAM_BLUE ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 2
-NEI4 $371
-line 698
-;698:		te->s.eventParm = GTS_RED_TAKEN;
+NEI4 $367
+line 692
+;692:		te->s.eventParm = GTS_RED_TAKEN;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 4
 ASGNI4
-line 699
-;699:	}
-ADDRGP4 $372
+line 693
+;693:	}
+ADDRGP4 $368
 JUMPV
-LABELV $371
-line 700
-;700:	else {
-line 701
-;701:		te->s.eventParm = GTS_BLUE_TAKEN;
+LABELV $367
+line 694
+;694:	else {
+line 695
+;695:		te->s.eventParm = GTS_BLUE_TAKEN;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 5
 ASGNI4
-line 702
-;702:	}
-LABELV $372
-line 703
-;703:	te->r.svFlags |= SVF_BROADCAST;
+line 696
+;696:	}
+LABELV $368
+line 697
+;697:	te->r.svFlags |= SVF_BROADCAST;
 ADDRLP4 12
 ADDRLP4 0
 INDIRP4
@@ -4106,40 +4088,40 @@ INDIRI4
 CNSTI4 32
 BORI4
 ASGNI4
-line 704
-;704:}
-LABELV $345
+line 698
+;698:}
+LABELV $341
 endproc Team_TakeFlagSound 16 8
 export Team_CaptureFlagSound
 proc Team_CaptureFlagSound 12 8
-line 706
-;705:
-;706:void Team_CaptureFlagSound( gentity_t *ent, int team ) {
-line 709
-;707:	gentity_t	*te;
-;708:
-;709:	if (ent == NULL) {
+line 700
+;699:
+;700:void Team_CaptureFlagSound( gentity_t *ent, int team ) {
+line 703
+;701:	gentity_t	*te;
+;702:
+;703:	if (ent == NULL) {
 ADDRFP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $374
-line 710
-;710:		G_Printf ("Warning:  NULL passed to Team_CaptureFlagSound\n");
-ADDRGP4 $376
+NEU4 $370
+line 704
+;704:		G_Printf ("Warning:  NULL passed to Team_CaptureFlagSound\n");
+ADDRGP4 $372
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 711
-;711:		return;
-ADDRGP4 $373
+line 705
+;705:		return;
+ADDRGP4 $369
 JUMPV
-LABELV $374
-line 714
-;712:	}
-;713:
-;714:	te = G_TempEntity( ent->s.pos.trBase, EV_GLOBAL_TEAM_SOUND );
+LABELV $370
+line 708
+;706:	}
+;707:
+;708:	te = G_TempEntity( ent->s.pos.trBase, EV_GLOBAL_TEAM_SOUND );
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -4155,40 +4137,40 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 715
-;715:	if( team == TEAM_BLUE ) {
+line 709
+;709:	if( team == TEAM_BLUE ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 2
-NEI4 $377
-line 716
-;716:		te->s.eventParm = GTS_BLUE_CAPTURE;
+NEI4 $373
+line 710
+;710:		te->s.eventParm = GTS_BLUE_CAPTURE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 1
 ASGNI4
-line 717
-;717:	}
-ADDRGP4 $378
+line 711
+;711:	}
+ADDRGP4 $374
 JUMPV
-LABELV $377
-line 718
-;718:	else {
-line 719
-;719:		te->s.eventParm = GTS_RED_CAPTURE;
+LABELV $373
+line 712
+;712:	else {
+line 713
+;713:		te->s.eventParm = GTS_RED_CAPTURE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 0
 ASGNI4
-line 720
-;720:	}
-LABELV $378
-line 721
-;721:	te->r.svFlags |= SVF_BROADCAST;
+line 714
+;714:	}
+LABELV $374
+line 715
+;715:	te->r.svFlags |= SVF_BROADCAST;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -4203,17 +4185,17 @@ INDIRI4
 CNSTI4 32
 BORI4
 ASGNI4
-line 722
-;722:}
-LABELV $373
+line 716
+;716:}
+LABELV $369
 endproc Team_CaptureFlagSound 12 8
 export Team_ReturnFlag
 proc Team_ReturnFlag 8 12
-line 724
-;723:
-;724:void Team_ReturnFlag( int team ) {
-line 725
-;725:	Team_ReturnFlagSound(Team_ResetFlag(team), team);
+line 718
+;717:
+;718:void Team_ReturnFlag( int team ) {
+line 719
+;719:	Team_ReturnFlagSound(Team_ResetFlag(team), team);
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -4230,30 +4212,30 @@ ARGI4
 ADDRGP4 Team_ReturnFlagSound
 CALLV
 pop
-line 726
-;726:	if( team == TEAM_FREE ) {
+line 720
+;720:	if( team == TEAM_FREE ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $380
-line 727
-;727:		PrintMsg(NULL, "The flag has returned!\n" );
+NEI4 $376
+line 721
+;721:		PrintMsg(NULL, "The flag has returned!\n" );
 CNSTP4 0
 ARGP4
-ADDRGP4 $382
+ADDRGP4 $378
 ARGP4
 ADDRGP4 PrintMsg
 CALLV
 pop
-line 728
-;728:	}
-ADDRGP4 $381
+line 722
+;722:	}
+ADDRGP4 $377
 JUMPV
-LABELV $380
-line 729
-;729:	else {
-line 730
-;730:		PrintMsg(NULL, "The %s flag has returned!\n", TeamName(team));
+LABELV $376
+line 723
+;723:	else {
+line 724
+;724:		PrintMsg(NULL, "The %s flag has returned!\n", TeamName(team));
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -4263,7 +4245,7 @@ CALLP4
 ASGNP4
 CNSTP4 0
 ARGP4
-ADDRGP4 $383
+ADDRGP4 $379
 ARGP4
 ADDRLP4 4
 INDIRP4
@@ -4271,20 +4253,20 @@ ARGP4
 ADDRGP4 PrintMsg
 CALLV
 pop
-line 731
-;731:	}
-LABELV $381
-line 732
-;732:}
-LABELV $379
+line 725
+;725:	}
+LABELV $377
+line 726
+;726:}
+LABELV $375
 endproc Team_ReturnFlag 8 12
 export Team_FreeEntity
 proc Team_FreeEntity 0 4
-line 734
-;733:
-;734:void Team_FreeEntity( gentity_t *ent ) {
-line 735
-;735:	if( ent->item->giTag == PW_REDFLAG ) {
+line 728
+;727:
+;728:void Team_FreeEntity( gentity_t *ent ) {
+line 729
+;729:	if( ent->item->giTag == PW_REDFLAG ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 836
@@ -4294,93 +4276,93 @@ CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 7
+NEI4 $381
+line 730
+;730:		Team_ReturnFlag( TEAM_RED );
+CNSTI4 1
+ARGI4
+ADDRGP4 Team_ReturnFlag
+CALLV
+pop
+line 731
+;731:	}
+ADDRGP4 $382
+JUMPV
+LABELV $381
+line 732
+;732:	else if( ent->item->giTag == PW_BLUEFLAG ) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 836
+ADDP4
+INDIRP4
+CNSTI4 40
+ADDP4
+INDIRI4
+CNSTI4 8
+NEI4 $383
+line 733
+;733:		Team_ReturnFlag( TEAM_BLUE );
+CNSTI4 2
+ARGI4
+ADDRGP4 Team_ReturnFlag
+CALLV
+pop
+line 734
+;734:	}
+ADDRGP4 $384
+JUMPV
+LABELV $383
+line 735
+;735:	else if( ent->item->giTag == PW_NEUTRALFLAG ) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 836
+ADDP4
+INDIRP4
+CNSTI4 40
+ADDP4
+INDIRI4
+CNSTI4 9
 NEI4 $385
 line 736
-;736:		Team_ReturnFlag( TEAM_RED );
-CNSTI4 1
+;736:		Team_ReturnFlag( TEAM_FREE );
+CNSTI4 0
 ARGI4
 ADDRGP4 Team_ReturnFlag
 CALLV
 pop
 line 737
 ;737:	}
-ADDRGP4 $386
-JUMPV
 LABELV $385
-line 738
-;738:	else if( ent->item->giTag == PW_BLUEFLAG ) {
-ADDRFP4 0
-INDIRP4
-CNSTI4 836
-ADDP4
-INDIRP4
-CNSTI4 40
-ADDP4
-INDIRI4
-CNSTI4 8
-NEI4 $387
-line 739
-;739:		Team_ReturnFlag( TEAM_BLUE );
-CNSTI4 2
-ARGI4
-ADDRGP4 Team_ReturnFlag
-CALLV
-pop
-line 740
-;740:	}
-ADDRGP4 $388
-JUMPV
-LABELV $387
-line 741
-;741:	else if( ent->item->giTag == PW_NEUTRALFLAG ) {
-ADDRFP4 0
-INDIRP4
-CNSTI4 836
-ADDP4
-INDIRP4
-CNSTI4 40
-ADDP4
-INDIRI4
-CNSTI4 9
-NEI4 $389
-line 742
-;742:		Team_ReturnFlag( TEAM_FREE );
-CNSTI4 0
-ARGI4
-ADDRGP4 Team_ReturnFlag
-CALLV
-pop
-line 743
-;743:	}
-LABELV $389
-LABELV $388
-LABELV $386
-line 744
-;744:}
 LABELV $384
+LABELV $382
+line 738
+;738:}
+LABELV $380
 endproc Team_FreeEntity 0 4
 export Team_DroppedFlagThink
 proc Team_DroppedFlagThink 8 8
-line 755
+line 749
+;739:
+;740:/*
+;741:==============
+;742:Team_DroppedFlagThink
+;743:
+;744:Automatically set in Launch_Item if the item is one of the flags
 ;745:
-;746:/*
+;746:Flags are unique in that if they are dropped, the base flag must be respawned when they time out
 ;747:==============
-;748:Team_DroppedFlagThink
-;749:
-;750:Automatically set in Launch_Item if the item is one of the flags
-;751:
-;752:Flags are unique in that if they are dropped, the base flag must be respawned when they time out
-;753:==============
-;754:*/
-;755:void Team_DroppedFlagThink(gentity_t *ent) {
-line 756
-;756:	int		team = TEAM_FREE;
+;748:*/
+;749:void Team_DroppedFlagThink(gentity_t *ent) {
+line 750
+;750:	int		team = TEAM_FREE;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-line 758
-;757:
-;758:	if( ent->item->giTag == PW_REDFLAG ) {
+line 752
+;751:
+;752:	if( ent->item->giTag == PW_REDFLAG ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 836
@@ -4390,19 +4372,19 @@ CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 7
-NEI4 $392
-line 759
-;759:		team = TEAM_RED;
+NEI4 $388
+line 753
+;753:		team = TEAM_RED;
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-line 760
-;760:	}
-ADDRGP4 $393
+line 754
+;754:	}
+ADDRGP4 $389
 JUMPV
-LABELV $392
-line 761
-;761:	else if( ent->item->giTag == PW_BLUEFLAG ) {
+LABELV $388
+line 755
+;755:	else if( ent->item->giTag == PW_BLUEFLAG ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 836
@@ -4412,19 +4394,19 @@ CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 8
-NEI4 $394
-line 762
-;762:		team = TEAM_BLUE;
+NEI4 $390
+line 756
+;756:		team = TEAM_BLUE;
 ADDRLP4 0
 CNSTI4 2
 ASGNI4
-line 763
-;763:	}
-ADDRGP4 $395
+line 757
+;757:	}
+ADDRGP4 $391
 JUMPV
-LABELV $394
-line 764
-;764:	else if( ent->item->giTag == PW_NEUTRALFLAG ) {
+LABELV $390
+line 758
+;758:	else if( ent->item->giTag == PW_NEUTRALFLAG ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 836
@@ -4434,20 +4416,20 @@ CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 9
-NEI4 $396
-line 765
-;765:		team = TEAM_FREE;
+NEI4 $392
+line 759
+;759:		team = TEAM_FREE;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-line 766
-;766:	}
-LABELV $396
-LABELV $395
-LABELV $393
-line 768
-;767:
-;768:	Team_ReturnFlagSound( Team_ResetFlag( team ), team );
+line 760
+;760:	}
+LABELV $392
+LABELV $391
+LABELV $389
+line 762
+;761:
+;762:	Team_ReturnFlagSound( Team_ResetFlag( team ), team );
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -4464,27 +4446,27 @@ ARGI4
 ADDRGP4 Team_ReturnFlagSound
 CALLV
 pop
-line 770
-;769:	// Reset Flag will delete this entity
-;770:}
-LABELV $391
+line 764
+;763:	// Reset Flag will delete this entity
+;764:}
+LABELV $387
 endproc Team_DroppedFlagThink 8 8
 export Team_TouchOurFlag
 proc Team_TouchOurFlag 64 16
-line 779
-;771:
+line 773
+;765:
+;766:
+;767:/*
+;768:==============
+;769:Team_DroppedFlagThink
+;770:==============
+;771:*/
 ;772:
-;773:/*
-;774:==============
-;775:Team_DroppedFlagThink
-;776:==============
-;777:*/
-;778:
-;779:int Team_TouchOurFlag( gentity_t *ent, gentity_t *other, int team ) {
-line 782
-;780:	int			i;
-;781:	gentity_t	*player;
-;782:	gclient_t	*cl = other->client;
+;773:int Team_TouchOurFlag( gentity_t *ent, gentity_t *other, int team ) {
+line 776
+;774:	int			i;
+;775:	gentity_t	*player;
+;776:	gclient_t	*cl = other->client;
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4492,44 +4474,44 @@ CNSTI4 524
 ADDP4
 INDIRP4
 ASGNP4
-line 791
-;783:	int			enemy_flag;
-;784:
-;785:#ifdef MISSIONPACK
-;786:	if( g_gametype.integer == GT_1FCTF ) {
-;787:		enemy_flag = PW_NEUTRALFLAG;
-;788:	}
-;789:	else {
-;790:#endif
-;791:	if (cl->sess.sessionTeam == TEAM_RED) {
+line 785
+;777:	int			enemy_flag;
+;778:
+;779:#ifdef MISSIONPACK
+;780:	if( g_gametype.integer == GT_1FCTF ) {
+;781:		enemy_flag = PW_NEUTRALFLAG;
+;782:	}
+;783:	else {
+;784:#endif
+;785:	if (cl->sess.sessionTeam == TEAM_RED) {
 ADDRLP4 8
 INDIRP4
 CNSTI4 2492
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $399
-line 792
-;792:		enemy_flag = PW_BLUEFLAG;
+NEI4 $395
+line 786
+;786:		enemy_flag = PW_BLUEFLAG;
 ADDRLP4 12
 CNSTI4 8
 ASGNI4
-line 793
-;793:	} else {
-ADDRGP4 $400
+line 787
+;787:	} else {
+ADDRGP4 $396
 JUMPV
-LABELV $399
-line 794
-;794:		enemy_flag = PW_REDFLAG;
+LABELV $395
+line 788
+;788:		enemy_flag = PW_REDFLAG;
 ADDRLP4 12
 CNSTI4 7
 ASGNI4
-line 795
-;795:	}
-LABELV $400
-line 797
-;796:
-;797:	if ( ent->flags & FL_DROPPED_ITEM ) {
+line 789
+;789:	}
+LABELV $396
+line 791
+;790:
+;791:	if ( ent->flags & FL_DROPPED_ITEM ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 544
@@ -4538,10 +4520,10 @@ INDIRI4
 CNSTI4 4096
 BANDI4
 CNSTI4 0
-EQI4 $401
-line 799
-;798:		// hey, its not home.  return it by teleporting it back
-;799:		PrintMsg( NULL, "%s" S_COLOR_WHITE " returned the %s flag!\n", 
+EQI4 $397
+line 793
+;792:		// hey, its not home.  return it by teleporting it back
+;793:		PrintMsg( NULL, "%s" S_COLOR_WHITE " returned the %s flag!\n", 
 ADDRFP4 8
 INDIRI4
 ARGI4
@@ -4551,7 +4533,7 @@ CALLP4
 ASGNP4
 CNSTP4 0
 ARGP4
-ADDRGP4 $403
+ADDRGP4 $399
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -4564,9 +4546,9 @@ ARGP4
 ADDRGP4 PrintMsg
 CALLV
 pop
-line 801
-;800:			cl->pers.netname, TeamName(team));
-;801:		AddScore(other, ent->r.currentOrigin, CTF_RECOVERY_BONUS);
+line 795
+;794:			cl->pers.netname, TeamName(team));
+;795:		AddScore(other, ent->r.currentOrigin, CTF_RECOVERY_BONUS);
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -4580,8 +4562,8 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-line 802
-;802:		other->client->pers.teamState.flagrecovery++;
+line 796
+;796:		other->client->pers.teamState.flagrecovery++;
 ADDRLP4 20
 ADDRFP4 4
 INDIRP4
@@ -4599,8 +4581,8 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 803
-;803:		other->client->pers.teamState.lastreturnedflag = level.time;
+line 797
+;797:		other->client->pers.teamState.lastreturnedflag = level.time;
 ADDRFP4 4
 INDIRP4
 CNSTI4 524
@@ -4612,9 +4594,9 @@ ADDRGP4 level+32
 INDIRI4
 CVIF4 4
 ASGNF4
-line 805
-;804:		//ResetFlag will remove this entity!  We must return zero
-;805:		Team_ReturnFlagSound(Team_ResetFlag(team), team);
+line 799
+;798:		//ResetFlag will remove this entity!  We must return zero
+;799:		Team_ReturnFlagSound(Team_ResetFlag(team), team);
 ADDRFP4 8
 INDIRI4
 ARGI4
@@ -4631,22 +4613,22 @@ ARGI4
 ADDRGP4 Team_ReturnFlagSound
 CALLV
 pop
-line 806
-;806:		return 0;
+line 800
+;800:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $398
+ADDRGP4 $394
 JUMPV
-LABELV $401
-line 814
-;807:	}
-;808:#ifdef MISSIONPACK
-;809:	}
-;810:#endif
-;811:
-;812:	// the flag is at home base.  if the player has the enemy
-;813:	// flag, he's just won!
-;814:	if (!cl->ps.powerups[enemy_flag])
+LABELV $397
+line 808
+;801:	}
+;802:#ifdef MISSIONPACK
+;803:	}
+;804:#endif
+;805:
+;806:	// the flag is at home base.  if the player has the enemy
+;807:	// flag, he's just won!
+;808:	if (!cl->ps.powerups[enemy_flag])
 ADDRLP4 12
 INDIRI4
 CNSTI4 2
@@ -4658,22 +4640,22 @@ ADDP4
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $405
-line 815
-;815:		return 0; // We don't have the flag
+NEI4 $401
+line 809
+;809:		return 0; // We don't have the flag
 CNSTI4 0
 RETI4
-ADDRGP4 $398
+ADDRGP4 $394
 JUMPV
-LABELV $405
-line 822
-;816:#ifdef MISSIONPACK
-;817:	if( g_gametype.integer == GT_1FCTF ) {
-;818:		PrintMsg( NULL, "%s" S_COLOR_WHITE " captured the flag!\n", cl->pers.netname );
-;819:	}
-;820:	else {
-;821:#endif
-;822:	PrintMsg( NULL, "%s" S_COLOR_WHITE " captured the %s flag!\n", cl->pers.netname, TeamName(OtherTeam(team)));
+LABELV $401
+line 816
+;810:#ifdef MISSIONPACK
+;811:	if( g_gametype.integer == GT_1FCTF ) {
+;812:		PrintMsg( NULL, "%s" S_COLOR_WHITE " captured the flag!\n", cl->pers.netname );
+;813:	}
+;814:	else {
+;815:#endif
+;816:	PrintMsg( NULL, "%s" S_COLOR_WHITE " captured the %s flag!\n", cl->pers.netname, TeamName(OtherTeam(team)));
 ADDRFP4 8
 INDIRI4
 ARGI4
@@ -4690,7 +4672,7 @@ CALLP4
 ASGNP4
 CNSTP4 0
 ARGP4
-ADDRGP4 $407
+ADDRGP4 $403
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -4703,12 +4685,12 @@ ARGP4
 ADDRGP4 PrintMsg
 CALLV
 pop
-line 827
-;823:#ifdef MISSIONPACK
-;824:	}
-;825:#endif
-;826:
-;827:	cl->ps.powerups[enemy_flag] = 0;
+line 821
+;817:#ifdef MISSIONPACK
+;818:	}
+;819:#endif
+;820:
+;821:	cl->ps.powerups[enemy_flag] = 0;
 ADDRLP4 12
 INDIRI4
 CNSTI4 2
@@ -4720,24 +4702,24 @@ ADDP4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 829
-;828:
-;829:	teamgame.last_flag_capture = level.time;
+line 823
+;822:
+;823:	teamgame.last_flag_capture = level.time;
 ADDRGP4 teamgame
 ADDRGP4 level+32
 INDIRI4
 CVIF4 4
 ASGNF4
-line 830
-;830:	teamgame.last_capture_team = team;
+line 824
+;824:	teamgame.last_capture_team = team;
 ADDRGP4 teamgame+4
 ADDRFP4 8
 INDIRI4
 ASGNI4
-line 833
-;831:
-;832:	// Increase the team's score
-;833:	AddTeamScore(ent->s.pos.trBase, other->client->sess.sessionTeam, 1);
+line 827
+;825:
+;826:	// Increase the team's score
+;827:	AddTeamScore(ent->s.pos.trBase, other->client->sess.sessionTeam, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -4757,8 +4739,8 @@ ARGI4
 ADDRGP4 AddTeamScore
 CALLV
 pop
-line 834
-;834:	Team_ForceGesture(other->client->sess.sessionTeam);
+line 828
+;828:	Team_ForceGesture(other->client->sess.sessionTeam);
 ADDRFP4 4
 INDIRP4
 CNSTI4 524
@@ -4771,9 +4753,9 @@ ARGI4
 ADDRGP4 Team_ForceGesture
 CALLV
 pop
-line 836
-;835:
-;836:	other->client->pers.teamState.captures++;
+line 830
+;829:
+;830:	other->client->pers.teamState.captures++;
 ADDRLP4 24
 ADDRFP4 4
 INDIRP4
@@ -4791,9 +4773,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 838
-;837:	// add the sprite over the player's head
-;838:	other->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
+line 832
+;831:	// add the sprite over the player's head
+;832:	other->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
 ADDRLP4 28
 ADDRFP4 4
 INDIRP4
@@ -4811,8 +4793,8 @@ INDIRI4
 CNSTI4 -231497
 BANDI4
 ASGNI4
-line 839
-;839:	other->client->ps.eFlags |= EF_AWARD_CAP;
+line 833
+;833:	other->client->ps.eFlags |= EF_AWARD_CAP;
 ADDRLP4 32
 ADDRFP4 4
 INDIRP4
@@ -4830,8 +4812,8 @@ INDIRI4
 CNSTI4 2048
 BORI4
 ASGNI4
-line 840
-;840:	other->client->rewardTime = level.time + REWARD_SPRITE_TIME;
+line 834
+;834:	other->client->rewardTime = level.time + REWARD_SPRITE_TIME;
 ADDRFP4 4
 INDIRP4
 CNSTI4 524
@@ -4844,8 +4826,8 @@ INDIRI4
 CNSTI4 2000
 ADDI4
 ASGNI4
-line 841
-;841:	other->client->ps.persistant[PERS_CAPTURES]++;
+line 835
+;835:	other->client->ps.persistant[PERS_CAPTURES]++;
 ADDRLP4 36
 ADDRFP4 4
 INDIRP4
@@ -4863,10 +4845,10 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 844
-;842:
-;843:	// other gets another 10 frag bonus
-;844:	AddScore(other, ent->r.currentOrigin, CTF_CAPTURE_BONUS);
+line 838
+;836:
+;837:	// other gets another 10 frag bonus
+;838:	AddScore(other, ent->r.currentOrigin, CTF_CAPTURE_BONUS);
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -4880,9 +4862,9 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-line 846
-;845:
-;846:	Team_CaptureFlagSound( ent, team );
+line 840
+;839:
+;840:	Team_CaptureFlagSound( ent, team );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -4892,18 +4874,18 @@ ARGI4
 ADDRGP4 Team_CaptureFlagSound
 CALLV
 pop
-line 849
-;847:
-;848:	// Ok, let's do the player loop, hand out the bonuses
-;849:	for (i = 0; i < g_maxclients.integer; i++) {
+line 843
+;841:
+;842:	// Ok, let's do the player loop, hand out the bonuses
+;843:	for (i = 0; i < g_maxclients.integer; i++) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $414
+ADDRGP4 $410
 JUMPV
-LABELV $411
-line 850
-;850:		player = &g_entities[i];
+LABELV $407
+line 844
+;844:		player = &g_entities[i];
 ADDRLP4 0
 CNSTI4 872
 ADDRLP4 4
@@ -4912,23 +4894,23 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 851
-;851:		if (!player->inuse)
+line 845
+;845:		if (!player->inuse)
 ADDRLP4 0
 INDIRP4
 CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $416
-line 852
-;852:			continue;
-ADDRGP4 $412
+NEI4 $412
+line 846
+;846:			continue;
+ADDRGP4 $408
 JUMPV
-LABELV $416
-line 854
-;853:
-;854:		if (player->client->sess.sessionTeam !=
+LABELV $412
+line 848
+;847:
+;848:		if (player->client->sess.sessionTeam !=
 ADDRLP4 40
 CNSTI4 2492
 ASGNI4
@@ -4947,11 +4929,11 @@ ADDRLP4 40
 INDIRI4
 ADDP4
 INDIRI4
-EQI4 $418
-line 855
-;855:			cl->sess.sessionTeam) {
-line 856
-;856:			player->client->pers.teamState.lasthurtcarrier = -5;
+EQI4 $414
+line 849
+;849:			cl->sess.sessionTeam) {
+line 850
+;850:			player->client->pers.teamState.lasthurtcarrier = -5;
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -4961,11 +4943,11 @@ CNSTI4 588
 ADDP4
 CNSTF4 3231711232
 ASGNF4
-line 857
-;857:		} else if (player->client->sess.sessionTeam ==
-ADDRGP4 $419
+line 851
+;851:		} else if (player->client->sess.sessionTeam ==
+ADDRGP4 $415
 JUMPV
-LABELV $418
+LABELV $414
 ADDRLP4 44
 CNSTI4 2492
 ASGNI4
@@ -4984,20 +4966,20 @@ ADDRLP4 44
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $420
-line 858
-;858:			cl->sess.sessionTeam) {
-line 859
-;859:			if (player != other)
+NEI4 $416
+line 852
+;852:			cl->sess.sessionTeam) {
+line 853
+;853:			if (player != other)
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 ADDRFP4 4
 INDIRP4
 CVPU4 4
-EQU4 $422
-line 860
-;860:				AddScore(player, ent->r.currentOrigin, CTF_TEAM_BONUS);
+EQU4 $418
+line 854
+;854:				AddScore(player, ent->r.currentOrigin, CTF_TEAM_BONUS);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5011,10 +4993,10 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-LABELV $422
-line 862
-;861:			// award extra points for capture assists
-;862:			if (player->client->pers.teamState.lastreturnedflag + 
+LABELV $418
+line 856
+;855:			// award extra points for capture assists
+;856:			if (player->client->pers.teamState.lastreturnedflag + 
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -5028,11 +5010,11 @@ ADDF4
 ADDRGP4 level+32
 INDIRI4
 CVIF4 4
-LEF4 $424
-line 863
-;863:				CTF_RETURN_FLAG_ASSIST_TIMEOUT > level.time) {
-line 864
-;864:				AddScore (player, ent->r.currentOrigin, CTF_RETURN_FLAG_ASSIST_BONUS);
+LEF4 $420
+line 857
+;857:				CTF_RETURN_FLAG_ASSIST_TIMEOUT > level.time) {
+line 858
+;858:				AddScore (player, ent->r.currentOrigin, CTF_RETURN_FLAG_ASSIST_BONUS);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5046,8 +5028,8 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-line 865
-;865:				other->client->pers.teamState.assists++;
+line 859
+;859:				other->client->pers.teamState.assists++;
 ADDRLP4 48
 ADDRFP4 4
 INDIRP4
@@ -5065,9 +5047,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 867
-;866:
-;867:				player->client->ps.persistant[PERS_ASSIST_COUNT]++;
+line 861
+;860:
+;861:				player->client->ps.persistant[PERS_ASSIST_COUNT]++;
 ADDRLP4 52
 ADDRLP4 0
 INDIRP4
@@ -5085,9 +5067,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 869
-;868:				// add the sprite over the player's head
-;869:				player->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
+line 863
+;862:				// add the sprite over the player's head
+;863:				player->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
 ADDRLP4 56
 ADDRLP4 0
 INDIRP4
@@ -5105,8 +5087,8 @@ INDIRI4
 CNSTI4 -231497
 BANDI4
 ASGNI4
-line 870
-;870:				player->client->ps.eFlags |= EF_AWARD_ASSIST;
+line 864
+;864:				player->client->ps.eFlags |= EF_AWARD_ASSIST;
 ADDRLP4 60
 ADDRLP4 0
 INDIRP4
@@ -5124,8 +5106,8 @@ INDIRI4
 CNSTI4 131072
 BORI4
 ASGNI4
-line 871
-;871:				player->client->rewardTime = level.time + REWARD_SPRITE_TIME;
+line 865
+;865:				player->client->rewardTime = level.time + REWARD_SPRITE_TIME;
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -5138,12 +5120,12 @@ INDIRI4
 CNSTI4 2000
 ADDI4
 ASGNI4
-line 873
-;872:
-;873:			} else if (player->client->pers.teamState.lastfraggedcarrier + 
-ADDRGP4 $425
+line 867
+;866:
+;867:			} else if (player->client->pers.teamState.lastfraggedcarrier + 
+ADDRGP4 $421
 JUMPV
-LABELV $424
+LABELV $420
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -5157,11 +5139,11 @@ ADDF4
 ADDRGP4 level+32
 INDIRI4
 CVIF4 4
-LEF4 $428
-line 874
-;874:				CTF_FRAG_CARRIER_ASSIST_TIMEOUT > level.time) {
-line 875
-;875:				AddScore(player, ent->r.currentOrigin, CTF_FRAG_CARRIER_ASSIST_BONUS);
+LEF4 $424
+line 868
+;868:				CTF_FRAG_CARRIER_ASSIST_TIMEOUT > level.time) {
+line 869
+;869:				AddScore(player, ent->r.currentOrigin, CTF_FRAG_CARRIER_ASSIST_BONUS);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5175,8 +5157,8 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-line 876
-;876:				other->client->pers.teamState.assists++;
+line 870
+;870:				other->client->pers.teamState.assists++;
 ADDRLP4 48
 ADDRFP4 4
 INDIRP4
@@ -5194,8 +5176,8 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 877
-;877:				player->client->ps.persistant[PERS_ASSIST_COUNT]++;
+line 871
+;871:				player->client->ps.persistant[PERS_ASSIST_COUNT]++;
 ADDRLP4 52
 ADDRLP4 0
 INDIRP4
@@ -5213,9 +5195,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 879
-;878:				// add the sprite over the player's head
-;879:				player->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
+line 873
+;872:				// add the sprite over the player's head
+;873:				player->client->ps.eFlags &= ~(EF_AWARD_IMPRESSIVE | EF_AWARD_EXCELLENT | EF_AWARD_GAUNTLET | EF_AWARD_ASSIST | EF_AWARD_DEFEND | EF_AWARD_CAP );
 ADDRLP4 56
 ADDRLP4 0
 INDIRP4
@@ -5233,8 +5215,8 @@ INDIRI4
 CNSTI4 -231497
 BANDI4
 ASGNI4
-line 880
-;880:				player->client->ps.eFlags |= EF_AWARD_ASSIST;
+line 874
+;874:				player->client->ps.eFlags |= EF_AWARD_ASSIST;
 ADDRLP4 60
 ADDRLP4 0
 INDIRP4
@@ -5252,8 +5234,8 @@ INDIRI4
 CNSTI4 131072
 BORI4
 ASGNI4
-line 881
-;881:				player->client->rewardTime = level.time + REWARD_SPRITE_TIME;
+line 875
+;875:				player->client->rewardTime = level.time + REWARD_SPRITE_TIME;
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -5266,56 +5248,56 @@ INDIRI4
 CNSTI4 2000
 ADDI4
 ASGNI4
-line 882
-;882:			}
-LABELV $428
-LABELV $425
-line 883
-;883:		}
-LABELV $420
-LABELV $419
-line 884
-;884:	}
-LABELV $412
-line 849
+line 876
+;876:			}
+LABELV $424
+LABELV $421
+line 877
+;877:		}
+LABELV $416
+LABELV $415
+line 878
+;878:	}
+LABELV $408
+line 843
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $414
+LABELV $410
 ADDRLP4 4
 INDIRI4
 ADDRGP4 g_maxclients+12
 INDIRI4
-LTI4 $411
-line 885
-;885:	Team_ResetFlags();
+LTI4 $407
+line 879
+;879:	Team_ResetFlags();
 ADDRGP4 Team_ResetFlags
 CALLV
 pop
-line 887
-;886:
-;887:	CalculateRanks();
+line 881
+;880:
+;881:	CalculateRanks();
 ADDRGP4 CalculateRanks
 CALLV
 pop
-line 889
-;888:
-;889:	return 0; // Do not respawn this automatically
+line 883
+;882:
+;883:	return 0; // Do not respawn this automatically
 CNSTI4 0
 RETI4
-LABELV $398
+LABELV $394
 endproc Team_TouchOurFlag 64 16
 export Team_TouchEnemyFlag
 proc Team_TouchEnemyFlag 8 16
-line 892
-;890:}
-;891:
-;892:int Team_TouchEnemyFlag( gentity_t *ent, gentity_t *other, int team ) {
-line 893
-;893:	gclient_t *cl = other->client;
+line 886
+;884:}
+;885:
+;886:int Team_TouchEnemyFlag( gentity_t *ent, gentity_t *other, int team ) {
+line 887
+;887:	gclient_t *cl = other->client;
 ADDRLP4 0
 ADDRFP4 4
 INDIRP4
@@ -5323,24 +5305,24 @@ CNSTI4 524
 ADDP4
 INDIRP4
 ASGNP4
-line 910
+line 904
+;888:
+;889:#ifdef MISSIONPACK
+;890:	if( g_gametype.integer == GT_1FCTF ) {
+;891:		PrintMsg (NULL, "%s" S_COLOR_WHITE " got the flag!\n", other->client->pers.netname );
+;892:
+;893:		cl->ps.powerups[PW_NEUTRALFLAG] = INT_MAX; // flags never expire
 ;894:
-;895:#ifdef MISSIONPACK
-;896:	if( g_gametype.integer == GT_1FCTF ) {
-;897:		PrintMsg (NULL, "%s" S_COLOR_WHITE " got the flag!\n", other->client->pers.netname );
-;898:
-;899:		cl->ps.powerups[PW_NEUTRALFLAG] = INT_MAX; // flags never expire
-;900:
-;901:		if( team == TEAM_RED ) {
-;902:			Team_SetFlagStatus( TEAM_FREE, FLAG_TAKEN_RED );
-;903:		}
-;904:		else {
-;905:			Team_SetFlagStatus( TEAM_FREE, FLAG_TAKEN_BLUE );
-;906:		}
-;907:	}
-;908:	else{
-;909:#endif
-;910:		PrintMsg (NULL, "%s" S_COLOR_WHITE " got the %s flag!\n",
+;895:		if( team == TEAM_RED ) {
+;896:			Team_SetFlagStatus( TEAM_FREE, FLAG_TAKEN_RED );
+;897:		}
+;898:		else {
+;899:			Team_SetFlagStatus( TEAM_FREE, FLAG_TAKEN_BLUE );
+;900:		}
+;901:	}
+;902:	else{
+;903:#endif
+;904:		PrintMsg (NULL, "%s" S_COLOR_WHITE " got the %s flag!\n",
 ADDRFP4 8
 INDIRI4
 ARGI4
@@ -5350,7 +5332,7 @@ CALLP4
 ASGNP4
 CNSTP4 0
 ARGP4
-ADDRGP4 $433
+ADDRGP4 $429
 ARGP4
 ADDRFP4 4
 INDIRP4
@@ -5366,38 +5348,38 @@ ARGP4
 ADDRGP4 PrintMsg
 CALLV
 pop
-line 913
-;911:			other->client->pers.netname, TeamName(team));
-;912:
-;913:		if (team == TEAM_RED)
+line 907
+;905:			other->client->pers.netname, TeamName(team));
+;906:
+;907:		if (team == TEAM_RED)
 ADDRFP4 8
 INDIRI4
 CNSTI4 1
-NEI4 $434
-line 914
-;914:			cl->ps.powerups[PW_REDFLAG] = INT_MAX; // flags never expire
+NEI4 $430
+line 908
+;908:			cl->ps.powerups[PW_REDFLAG] = INT_MAX; // flags never expire
 ADDRLP4 0
 INDIRP4
 CNSTI4 340
 ADDP4
 CNSTI4 2147483647
 ASGNI4
-ADDRGP4 $435
+ADDRGP4 $431
 JUMPV
-LABELV $434
-line 916
-;915:		else
-;916:			cl->ps.powerups[PW_BLUEFLAG] = INT_MAX; // flags never expire
+LABELV $430
+line 910
+;909:		else
+;910:			cl->ps.powerups[PW_BLUEFLAG] = INT_MAX; // flags never expire
 ADDRLP4 0
 INDIRP4
 CNSTI4 344
 ADDP4
 CNSTI4 2147483647
 ASGNI4
-LABELV $435
-line 918
-;917:
-;918:		Team_SetFlagStatus( team, FLAG_TAKEN );
+LABELV $431
+line 912
+;911:
+;912:		Team_SetFlagStatus( team, FLAG_TAKEN );
 ADDRFP4 8
 INDIRI4
 ARGI4
@@ -5406,12 +5388,12 @@ ARGI4
 ADDRGP4 Team_SetFlagStatus
 CALLV
 pop
-line 923
-;919:#ifdef MISSIONPACK
-;920:	}
-;921:#endif
-;922:
-;923:	AddScore(other, ent->r.currentOrigin, CTF_FLAG_BONUS);
+line 917
+;913:#ifdef MISSIONPACK
+;914:	}
+;915:#endif
+;916:
+;917:	AddScore(other, ent->r.currentOrigin, CTF_FLAG_BONUS);
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -5425,8 +5407,8 @@ ARGI4
 ADDRGP4 AddScore
 CALLV
 pop
-line 924
-;924:	cl->pers.teamState.flagsince = level.time;
+line 918
+;918:	cl->pers.teamState.flagsince = level.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 596
@@ -5435,8 +5417,8 @@ ADDRGP4 level+32
 INDIRI4
 CVIF4 4
 ASGNF4
-line 925
-;925:	Team_TakeFlagSound( ent, team );
+line 919
+;919:	Team_TakeFlagSound( ent, team );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5446,22 +5428,22 @@ ARGI4
 ADDRGP4 Team_TakeFlagSound
 CALLV
 pop
-line 927
-;926:
-;927:	return -1; // Do not respawn this automatically, but do delete it if it was FL_DROPPED
+line 921
+;920:
+;921:	return -1; // Do not respawn this automatically, but do delete it if it was FL_DROPPED
 CNSTI4 -1
 RETI4
-LABELV $432
+LABELV $428
 endproc Team_TouchEnemyFlag 8 16
 export Pickup_Team
 proc Pickup_Team 20 12
-line 930
-;928:}
-;929:
-;930:int Pickup_Team( gentity_t *ent, gentity_t *other ) {
-line 932
-;931:	int team;
-;932:	gclient_t *cl = other->client;
+line 924
+;922:}
+;923:
+;924:int Pickup_Team( gentity_t *ent, gentity_t *other ) {
+line 926
+;925:	int team;
+;926:	gclient_t *cl = other->client;
 ADDRLP4 4
 ADDRFP4 4
 INDIRP4
@@ -5469,33 +5451,33 @@ CNSTI4 524
 ADDP4
 INDIRP4
 ASGNP4
-line 951
-;933:
-;934:#ifdef MISSIONPACK
-;935:	if( g_gametype.integer == GT_OBELISK ) {
-;936:		// there are no team items that can be picked up in obelisk
-;937:		G_FreeEntity( ent );
-;938:		return 0;
-;939:	}
-;940:
-;941:	if( g_gametype.integer == GT_HARVESTER ) {
-;942:		// the only team items that can be picked up in harvester are the cubes
-;943:		if( ent->spawnflags != cl->sess.sessionTeam ) {
-;944:			cl->ps.generic1 += 1;
-;945:		}
-;946:		G_FreeEntity( ent );
-;947:		return 0;
-;948:	}
-;949:#endif
-;950:	// figure out what team this flag is
-;951:	if( strcmp(ent->classname, "team_CTF_redflag") == 0 ) {
+line 945
+;927:
+;928:#ifdef MISSIONPACK
+;929:	if( g_gametype.integer == GT_OBELISK ) {
+;930:		// there are no team items that can be picked up in obelisk
+;931:		G_FreeEntity( ent );
+;932:		return 0;
+;933:	}
+;934:
+;935:	if( g_gametype.integer == GT_HARVESTER ) {
+;936:		// the only team items that can be picked up in harvester are the cubes
+;937:		if( ent->spawnflags != cl->sess.sessionTeam ) {
+;938:			cl->ps.generic1 += 1;
+;939:		}
+;940:		G_FreeEntity( ent );
+;941:		return 0;
+;942:	}
+;943:#endif
+;944:	// figure out what team this flag is
+;945:	if( strcmp(ent->classname, "team_CTF_redflag") == 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $259
+ADDRGP4 $255
 ARGP4
 ADDRLP4 8
 ADDRGP4 strcmp
@@ -5504,26 +5486,26 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $438
-line 952
-;952:		team = TEAM_RED;
+NEI4 $434
+line 946
+;946:		team = TEAM_RED;
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-line 953
-;953:	}
-ADDRGP4 $439
+line 947
+;947:	}
+ADDRGP4 $435
 JUMPV
-LABELV $438
-line 954
-;954:	else if( strcmp(ent->classname, "team_CTF_blueflag") == 0 ) {
+LABELV $434
+line 948
+;948:	else if( strcmp(ent->classname, "team_CTF_blueflag") == 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $261
+ADDRGP4 $257
 ARGP4
 ADDRLP4 12
 ADDRGP4 strcmp
@@ -5532,57 +5514,57 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $440
-line 955
-;955:		team = TEAM_BLUE;
+NEI4 $436
+line 949
+;949:		team = TEAM_BLUE;
 ADDRLP4 0
 CNSTI4 2
 ASGNI4
-line 956
-;956:	}
-ADDRGP4 $441
+line 950
+;950:	}
+ADDRGP4 $437
 JUMPV
-LABELV $440
-line 962
-;957:#ifdef MISSIONPACK
-;958:	else if( strcmp(ent->classname, "team_CTF_neutralflag") == 0  ) {
-;959:		team = TEAM_FREE;
-;960:	}
-;961:#endif
-;962:	else {
-line 963
-;963:		PrintMsg ( other, "Don't know what team the flag is on.\n");
+LABELV $436
+line 956
+;951:#ifdef MISSIONPACK
+;952:	else if( strcmp(ent->classname, "team_CTF_neutralflag") == 0  ) {
+;953:		team = TEAM_FREE;
+;954:	}
+;955:#endif
+;956:	else {
+line 957
+;957:		PrintMsg ( other, "Don't know what team the flag is on.\n");
 ADDRFP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $442
+ADDRGP4 $438
 ARGP4
 ADDRGP4 PrintMsg
 CALLV
 pop
-line 964
-;964:		return 0;
+line 958
+;958:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $437
+ADDRGP4 $433
 JUMPV
-LABELV $441
-LABELV $439
-line 978
-;965:	}
-;966:#ifdef MISSIONPACK
-;967:	if( g_gametype.integer == GT_1FCTF ) {
-;968:		if( team == TEAM_FREE ) {
-;969:			return Team_TouchEnemyFlag( ent, other, cl->sess.sessionTeam );
-;970:		}
-;971:		if( team != cl->sess.sessionTeam) {
-;972:			return Team_TouchOurFlag( ent, other, cl->sess.sessionTeam );
-;973:		}
-;974:		return 0;
-;975:	}
-;976:#endif
-;977:	// GT_CTF
-;978:	if( team == cl->sess.sessionTeam) {
+LABELV $437
+LABELV $435
+line 972
+;959:	}
+;960:#ifdef MISSIONPACK
+;961:	if( g_gametype.integer == GT_1FCTF ) {
+;962:		if( team == TEAM_FREE ) {
+;963:			return Team_TouchEnemyFlag( ent, other, cl->sess.sessionTeam );
+;964:		}
+;965:		if( team != cl->sess.sessionTeam) {
+;966:			return Team_TouchOurFlag( ent, other, cl->sess.sessionTeam );
+;967:		}
+;968:		return 0;
+;969:	}
+;970:#endif
+;971:	// GT_CTF
+;972:	if( team == cl->sess.sessionTeam) {
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
@@ -5590,9 +5572,9 @@ INDIRP4
 CNSTI4 2492
 ADDP4
 INDIRI4
-NEI4 $443
-line 979
-;979:		return Team_TouchOurFlag( ent, other, team );
+NEI4 $439
+line 973
+;973:		return Team_TouchOurFlag( ent, other, team );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5609,12 +5591,12 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 RETI4
-ADDRGP4 $437
+ADDRGP4 $433
 JUMPV
-LABELV $443
-line 981
-;980:	}
-;981:	return Team_TouchEnemyFlag( ent, other, team );
+LABELV $439
+line 975
+;974:	}
+;975:	return Team_TouchEnemyFlag( ent, other, team );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5631,39 +5613,39 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 RETI4
-LABELV $437
+LABELV $433
 endproc Pickup_Team 20 12
 export Team_GetLocation
 proc Team_GetLocation 48 8
-line 992
-;982:}
-;983:
-;984:/*
-;985:===========
-;986:Team_GetLocation
-;987:
-;988:Report a location for the player. Uses placed nearby target_location entities
-;989:============
-;990:*/
-;991:gentity_t *Team_GetLocation(gentity_t *ent)
-;992:{
-line 997
-;993:	gentity_t		*eloc, *best;
-;994:	float			bestlen, len;
-;995:	vec3_t			origin;
-;996:
-;997:	best = NULL;
+line 986
+;976:}
+;977:
+;978:/*
+;979:===========
+;980:Team_GetLocation
+;981:
+;982:Report a location for the player. Uses placed nearby target_location entities
+;983:============
+;984:*/
+;985:gentity_t *Team_GetLocation(gentity_t *ent)
+;986:{
+line 991
+;987:	gentity_t		*eloc, *best;
+;988:	float			bestlen, len;
+;989:	vec3_t			origin;
+;990:
+;991:	best = NULL;
 ADDRLP4 24
 CNSTP4 0
 ASGNP4
-line 998
-;998:	bestlen = 3*8192.0*8192.0;
+line 992
+;992:	bestlen = 3*8192.0*8192.0;
 ADDRLP4 20
 CNSTF4 1296039936
 ASGNF4
-line 1000
-;999:
-;1000:	VectorCopy( ent->r.currentOrigin, origin );
+line 994
+;993:
+;994:	VectorCopy( ent->r.currentOrigin, origin );
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -5671,18 +5653,18 @@ CNSTI4 496
 ADDP4
 INDIRB
 ASGNB 12
-line 1002
-;1001:
-;1002:	for (eloc = level.locationHead; eloc; eloc = eloc->nextTrain) {
+line 996
+;995:
+;996:	for (eloc = level.locationHead; eloc; eloc = eloc->nextTrain) {
 ADDRLP4 0
 ADDRGP4 level+9180
 INDIRP4
 ASGNP4
-ADDRGP4 $449
+ADDRGP4 $445
 JUMPV
-LABELV $446
-line 1003
-;1003:		len = ( origin[0] - eloc->r.currentOrigin[0] ) * ( origin[0] - eloc->r.currentOrigin[0] )
+LABELV $442
+line 997
+;997:		len = ( origin[0] - eloc->r.currentOrigin[0] ) * ( origin[0] - eloc->r.currentOrigin[0] )
 ADDRLP4 32
 ADDRLP4 4
 INDIRF4
@@ -5738,25 +5720,25 @@ SUBF4
 MULF4
 ADDF4
 ASGNF4
-line 1007
-;1004:			+ ( origin[1] - eloc->r.currentOrigin[1] ) * ( origin[1] - eloc->r.currentOrigin[1] )
-;1005:			+ ( origin[2] - eloc->r.currentOrigin[2] ) * ( origin[2] - eloc->r.currentOrigin[2] );
-;1006:
-;1007:		if ( len > bestlen ) {
+line 1001
+;998:			+ ( origin[1] - eloc->r.currentOrigin[1] ) * ( origin[1] - eloc->r.currentOrigin[1] )
+;999:			+ ( origin[2] - eloc->r.currentOrigin[2] ) * ( origin[2] - eloc->r.currentOrigin[2] );
+;1000:
+;1001:		if ( len > bestlen ) {
 ADDRLP4 16
 INDIRF4
 ADDRLP4 20
 INDIRF4
-LEF4 $455
-line 1008
-;1008:			continue;
-ADDRGP4 $447
+LEF4 $451
+line 1002
+;1002:			continue;
+ADDRGP4 $443
 JUMPV
-LABELV $455
-line 1011
-;1009:		}
-;1010:
-;1011:		if ( !trap_InPVS( origin, eloc->r.currentOrigin ) ) {
+LABELV $451
+line 1005
+;1003:		}
+;1004:
+;1005:		if ( !trap_InPVS( origin, eloc->r.currentOrigin ) ) {
 ADDRLP4 4
 ARGP4
 ADDRLP4 0
@@ -5771,30 +5753,30 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
-NEI4 $457
-line 1012
-;1012:			continue;
-ADDRGP4 $447
+NEI4 $453
+line 1006
+;1006:			continue;
+ADDRGP4 $443
 JUMPV
-LABELV $457
-line 1015
-;1013:		}
-;1014:
-;1015:		bestlen = len;
+LABELV $453
+line 1009
+;1007:		}
+;1008:
+;1009:		bestlen = len;
 ADDRLP4 20
 ADDRLP4 16
 INDIRF4
 ASGNF4
-line 1016
-;1016:		best = eloc;
+line 1010
+;1010:		best = eloc;
 ADDRLP4 24
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 1017
-;1017:	}
-LABELV $447
-line 1002
+line 1011
+;1011:	}
+LABELV $443
+line 996
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
@@ -5802,39 +5784,39 @@ CNSTI4 612
 ADDP4
 INDIRP4
 ASGNP4
-LABELV $449
+LABELV $445
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $446
-line 1019
-;1018:
-;1019:	return best;
+NEU4 $442
+line 1013
+;1012:
+;1013:	return best;
 ADDRLP4 24
 INDIRP4
 RETP4
-LABELV $445
+LABELV $441
 endproc Team_GetLocation 48 8
 export Team_GetLocationMsg
 proc Team_GetLocationMsg 12 24
-line 1031
-;1020:}
-;1021:
-;1022:
-;1023:/*
-;1024:===========
-;1025:Team_GetLocation
-;1026:
-;1027:Report a location for the player. Uses placed nearby target_location entities
-;1028:============
-;1029:*/
-;1030:qboolean Team_GetLocationMsg(gentity_t *ent, char *loc, int loclen)
-;1031:{
-line 1034
-;1032:	gentity_t *best;
-;1033:
-;1034:	best = Team_GetLocation( ent );
+line 1025
+;1014:}
+;1015:
+;1016:
+;1017:/*
+;1018:===========
+;1019:Team_GetLocation
+;1020:
+;1021:Report a location for the player. Uses placed nearby target_location entities
+;1022:============
+;1023:*/
+;1024:qboolean Team_GetLocationMsg(gentity_t *ent, char *loc, int loclen)
+;1025:{
+line 1028
+;1026:	gentity_t *best;
+;1027:
+;1028:	best = Team_GetLocation( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5846,76 +5828,76 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 1036
-;1035:	
-;1036:	if (!best)
+line 1030
+;1029:	
+;1030:	if (!best)
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $460
-line 1037
-;1037:		return qfalse;
+NEU4 $456
+line 1031
+;1031:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $459
+ADDRGP4 $455
 JUMPV
+LABELV $456
+line 1033
+;1032:
+;1033:	if (best->count) {
+ADDRLP4 0
+INDIRP4
+CNSTI4 776
+ADDP4
+INDIRI4
+CNSTI4 0
+EQI4 $458
+line 1034
+;1034:		if (best->count < 0)
+ADDRLP4 0
+INDIRP4
+CNSTI4 776
+ADDP4
+INDIRI4
+CNSTI4 0
+GEI4 $460
+line 1035
+;1035:			best->count = 0;
+ADDRLP4 0
+INDIRP4
+CNSTI4 776
+ADDP4
+CNSTI4 0
+ASGNI4
 LABELV $460
-line 1039
-;1038:
-;1039:	if (best->count) {
-ADDRLP4 0
-INDIRP4
-CNSTI4 776
-ADDP4
-INDIRI4
-CNSTI4 0
-EQI4 $462
-line 1040
-;1040:		if (best->count < 0)
-ADDRLP4 0
-INDIRP4
-CNSTI4 776
-ADDP4
-INDIRI4
-CNSTI4 0
-GEI4 $464
-line 1041
-;1041:			best->count = 0;
-ADDRLP4 0
-INDIRP4
-CNSTI4 776
-ADDP4
-CNSTI4 0
-ASGNI4
-LABELV $464
-line 1042
-;1042:		if (best->count > 7)
+line 1036
+;1036:		if (best->count > 7)
 ADDRLP4 0
 INDIRP4
 CNSTI4 776
 ADDP4
 INDIRI4
 CNSTI4 7
-LEI4 $466
-line 1043
-;1043:			best->count = 7;
+LEI4 $462
+line 1037
+;1037:			best->count = 7;
 ADDRLP4 0
 INDIRP4
 CNSTI4 776
 ADDP4
 CNSTI4 7
 ASGNI4
-LABELV $466
-line 1044
-;1044:		Com_sprintf(loc, loclen, "%c%c%s" S_COLOR_WHITE, Q_COLOR_ESCAPE, best->count + '0', best->message );
+LABELV $462
+line 1038
+;1038:		Com_sprintf(loc, loclen, "%c%c%s" S_COLOR_WHITE, Q_COLOR_ESCAPE, best->count + '0', best->message );
 ADDRFP4 4
 INDIRP4
 ARGP4
 ADDRFP4 8
 INDIRI4
 ARGI4
-ADDRGP4 $468
+ADDRGP4 $464
 ARGP4
 CNSTI4 94
 ARGI4
@@ -5936,20 +5918,20 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 1045
-;1045:	} else
-ADDRGP4 $463
+line 1039
+;1039:	} else
+ADDRGP4 $459
 JUMPV
-LABELV $462
-line 1046
-;1046:		Com_sprintf(loc, loclen, "%s", best->message);
+LABELV $458
+line 1040
+;1040:		Com_sprintf(loc, loclen, "%s", best->message);
 ADDRFP4 4
 INDIRP4
 ARGP4
 ADDRFP4 8
 INDIRI4
 ARGI4
-ADDRGP4 $469
+ADDRGP4 $465
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -5960,140 +5942,140 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-LABELV $463
-line 1048
-;1047:
-;1048:	return qtrue;
+LABELV $459
+line 1042
+;1041:
+;1042:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $459
+LABELV $455
 endproc Team_GetLocationMsg 12 24
 export SelectRandomTeamSpawnPoint
 proc SelectRandomTeamSpawnPoint 152 12
-line 1062
-;1049:}
-;1050:
+line 1056
+;1043:}
+;1044:
+;1045:
+;1046:/*---------------------------------------------------------------------------*/
+;1047:
+;1048:/*
+;1049:================
+;1050:SelectRandomDeathmatchSpawnPoint
 ;1051:
-;1052:/*---------------------------------------------------------------------------*/
-;1053:
-;1054:/*
-;1055:================
-;1056:SelectRandomDeathmatchSpawnPoint
-;1057:
-;1058:go to a random point that doesn't telefrag
-;1059:================
-;1060:*/
-;1061:#define	MAX_TEAM_SPAWN_POINTS	32
-;1062:gentity_t *SelectRandomTeamSpawnPoint( int teamstate, team_t team ) {
-line 1069
-;1063:	gentity_t	*spot;
-;1064:	int			count;
-;1065:	int			selection;
-;1066:	gentity_t	*spots[MAX_TEAM_SPAWN_POINTS];
-;1067:	char		*classname;
-;1068:
-;1069:	if (teamstate == TEAM_BEGIN) {
+;1052:go to a random point that doesn't telefrag
+;1053:================
+;1054:*/
+;1055:#define	MAX_TEAM_SPAWN_POINTS	32
+;1056:gentity_t *SelectRandomTeamSpawnPoint( int teamstate, team_t team ) {
+line 1063
+;1057:	gentity_t	*spot;
+;1058:	int			count;
+;1059:	int			selection;
+;1060:	gentity_t	*spots[MAX_TEAM_SPAWN_POINTS];
+;1061:	char		*classname;
+;1062:
+;1063:	if (teamstate == TEAM_BEGIN) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $471
-line 1070
-;1070:		if (team == TEAM_RED)
+NEI4 $467
+line 1064
+;1064:		if (team == TEAM_RED)
 ADDRFP4 4
 INDIRI4
 CNSTI4 1
-NEI4 $473
-line 1071
-;1071:			classname = "team_CTF_redplayer";
+NEI4 $469
+line 1065
+;1065:			classname = "team_CTF_redplayer";
 ADDRLP4 8
-ADDRGP4 $475
+ADDRGP4 $471
 ASGNP4
-ADDRGP4 $472
+ADDRGP4 $468
 JUMPV
-LABELV $473
-line 1072
-;1072:		else if (team == TEAM_BLUE)
+LABELV $469
+line 1066
+;1066:		else if (team == TEAM_BLUE)
 ADDRFP4 4
 INDIRI4
 CNSTI4 2
-NEI4 $476
-line 1073
-;1073:			classname = "team_CTF_blueplayer";
+NEI4 $472
+line 1067
+;1067:			classname = "team_CTF_blueplayer";
 ADDRLP4 8
-ADDRGP4 $478
+ADDRGP4 $474
 ASGNP4
-ADDRGP4 $472
+ADDRGP4 $468
 JUMPV
-LABELV $476
-line 1075
-;1074:		else
-;1075:			return NULL;
+LABELV $472
+line 1069
+;1068:		else
+;1069:			return NULL;
 CNSTP4 0
 RETP4
-ADDRGP4 $470
+ADDRGP4 $466
 JUMPV
-line 1076
-;1076:	} else {
-LABELV $471
-line 1077
-;1077:		if (team == TEAM_RED)
+line 1070
+;1070:	} else {
+LABELV $467
+line 1071
+;1071:		if (team == TEAM_RED)
 ADDRFP4 4
 INDIRI4
 CNSTI4 1
-NEI4 $479
-line 1078
-;1078:			classname = "team_CTF_redspawn";
+NEI4 $475
+line 1072
+;1072:			classname = "team_CTF_redspawn";
 ADDRLP4 8
-ADDRGP4 $481
+ADDRGP4 $477
 ASGNP4
+ADDRGP4 $476
+JUMPV
+LABELV $475
+line 1073
+;1073:		else if (team == TEAM_BLUE)
+ADDRFP4 4
+INDIRI4
+CNSTI4 2
+NEI4 $478
+line 1074
+;1074:			classname = "team_CTF_bluespawn";
+ADDRLP4 8
 ADDRGP4 $480
+ASGNP4
+ADDRGP4 $479
+JUMPV
+LABELV $478
+line 1076
+;1075:		else
+;1076:			return NULL;
+CNSTP4 0
+RETP4
+ADDRGP4 $466
 JUMPV
 LABELV $479
-line 1079
-;1079:		else if (team == TEAM_BLUE)
-ADDRFP4 4
-INDIRI4
-CNSTI4 2
-NEI4 $482
-line 1080
-;1080:			classname = "team_CTF_bluespawn";
-ADDRLP4 8
-ADDRGP4 $484
-ASGNP4
-ADDRGP4 $483
-JUMPV
-LABELV $482
-line 1082
-;1081:		else
-;1082:			return NULL;
-CNSTP4 0
-RETP4
-ADDRGP4 $470
-JUMPV
-LABELV $483
-LABELV $480
-line 1083
-;1083:	}
-LABELV $472
-line 1084
-;1084:	count = 0;
+LABELV $476
+line 1077
+;1077:	}
+LABELV $468
+line 1078
+;1078:	count = 0;
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-line 1086
-;1085:
-;1086:	spot = NULL;
+line 1080
+;1079:
+;1080:	spot = NULL;
 ADDRLP4 0
 CNSTP4 0
 ASGNP4
-ADDRGP4 $486
+ADDRGP4 $482
 JUMPV
-LABELV $485
-line 1088
-;1087:
-;1088:	while ((spot = G_Find (spot, FOFS(classname), classname)) != NULL) {
-line 1089
-;1089:		if ( SpotWouldTelefrag( spot ) ) {
+LABELV $481
+line 1082
+;1081:
+;1082:	while ((spot = G_Find (spot, FOFS(classname), classname)) != NULL) {
+line 1083
+;1083:		if ( SpotWouldTelefrag( spot ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6104,15 +6086,15 @@ ASGNI4
 ADDRLP4 144
 INDIRI4
 CNSTI4 0
-EQI4 $488
-line 1090
-;1090:			continue;
-ADDRGP4 $486
+EQI4 $484
+line 1084
+;1084:			continue;
+ADDRGP4 $482
 JUMPV
-LABELV $488
-line 1092
-;1091:		}
-;1092:		spots[ count ] = spot;
+LABELV $484
+line 1086
+;1085:		}
+;1086:		spots[ count ] = spot;
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -6122,8 +6104,8 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 1093
-;1093:		if (++count == MAX_TEAM_SPAWN_POINTS)
+line 1087
+;1087:		if (++count == MAX_TEAM_SPAWN_POINTS)
 ADDRLP4 148
 ADDRLP4 4
 INDIRI4
@@ -6137,16 +6119,16 @@ ASGNI4
 ADDRLP4 148
 INDIRI4
 CNSTI4 32
-NEI4 $490
-line 1094
-;1094:			break;
-ADDRGP4 $487
-JUMPV
-LABELV $490
-line 1095
-;1095:	}
-LABELV $486
+NEI4 $486
 line 1088
+;1088:			break;
+ADDRGP4 $483
+JUMPV
+LABELV $486
+line 1089
+;1089:	}
+LABELV $482
+line 1082
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6167,17 +6149,17 @@ ADDRLP4 144
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $485
-LABELV $487
-line 1097
-;1096:
-;1097:	if ( !count ) {	// no spots that won't telefrag
+NEU4 $481
+LABELV $483
+line 1091
+;1090:
+;1091:	if ( !count ) {	// no spots that won't telefrag
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $492
-line 1098
-;1098:		return G_Find( NULL, FOFS(classname), classname);
+NEI4 $488
+line 1092
+;1092:		return G_Find( NULL, FOFS(classname), classname);
 CNSTP4 0
 ARGP4
 CNSTI4 532
@@ -6192,13 +6174,13 @@ ASGNP4
 ADDRLP4 148
 INDIRP4
 RETP4
-ADDRGP4 $470
+ADDRGP4 $466
 JUMPV
-LABELV $492
-line 1101
-;1099:	}
-;1100:
-;1101:	selection = rand() % count;
+LABELV $488
+line 1095
+;1093:	}
+;1094:
+;1095:	selection = rand() % count;
 ADDRLP4 148
 ADDRGP4 rand
 CALLI4
@@ -6210,8 +6192,8 @@ ADDRLP4 4
 INDIRI4
 MODI4
 ASGNI4
-line 1102
-;1102:	return spots[ selection ];
+line 1096
+;1096:	return spots[ selection ];
 ADDRLP4 140
 INDIRI4
 CNSTI4 2
@@ -6220,25 +6202,25 @@ ADDRLP4 12
 ADDP4
 INDIRP4
 RETP4
-LABELV $470
+LABELV $466
 endproc SelectRandomTeamSpawnPoint 152 12
 export SelectCTFSpawnPoint
 proc SelectCTFSpawnPoint 12 12
-line 1112
-;1103:}
-;1104:
-;1105:
-;1106:/*
-;1107:===========
-;1108:SelectCTFSpawnPoint
-;1109:
-;1110:============
-;1111:*/
-;1112:gentity_t *SelectCTFSpawnPoint ( team_t team, int teamstate, vec3_t origin, vec3_t angles ) {
-line 1115
-;1113:	gentity_t	*spot;
-;1114:
-;1115:	spot = SelectRandomTeamSpawnPoint ( teamstate, team );
+line 1106
+;1097:}
+;1098:
+;1099:
+;1100:/*
+;1101:===========
+;1102:SelectCTFSpawnPoint
+;1103:
+;1104:============
+;1105:*/
+;1106:gentity_t *SelectCTFSpawnPoint ( team_t team, int teamstate, vec3_t origin, vec3_t angles ) {
+line 1109
+;1107:	gentity_t	*spot;
+;1108:
+;1109:	spot = SelectRandomTeamSpawnPoint ( teamstate, team );
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -6253,16 +6235,16 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 1117
-;1116:
-;1117:	if (!spot) {
+line 1111
+;1110:
+;1111:	if (!spot) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $495
-line 1118
-;1118:		return SelectSpawnPoint( vec3_origin, origin, angles );
+NEU4 $491
+line 1112
+;1112:		return SelectSpawnPoint( vec3_origin, origin, angles );
 ADDRGP4 vec3_origin
 ARGP4
 ADDRFP4 8
@@ -6278,13 +6260,13 @@ ASGNP4
 ADDRLP4 8
 INDIRP4
 RETP4
-ADDRGP4 $494
+ADDRGP4 $490
 JUMPV
-LABELV $495
-line 1121
-;1119:	}
-;1120:
-;1121:	VectorCopy (spot->s.origin, origin);
+LABELV $491
+line 1115
+;1113:	}
+;1114:
+;1115:	VectorCopy (spot->s.origin, origin);
 ADDRFP4 8
 INDIRP4
 ADDRLP4 0
@@ -6293,8 +6275,8 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1122
-;1122:	origin[2] += 9;
+line 1116
+;1116:	origin[2] += 9;
 ADDRLP4 8
 ADDRFP4 8
 INDIRP4
@@ -6309,8 +6291,8 @@ INDIRF4
 CNSTF4 1091567616
 ADDF4
 ASGNF4
-line 1123
-;1123:	VectorCopy (spot->s.angles, angles);
+line 1117
+;1117:	VectorCopy (spot->s.angles, angles);
 ADDRFP4 12
 INDIRP4
 ADDRLP4 0
@@ -6319,23 +6301,23 @@ CNSTI4 116
 ADDP4
 INDIRB
 ASGNB 12
-line 1125
-;1124:
-;1125:	return spot;
+line 1119
+;1118:
+;1119:	return spot;
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $494
+LABELV $490
 endproc SelectCTFSpawnPoint 12 12
 proc SortClients 0 0
-line 1130
-;1126:}
-;1127:
-;1128:/*---------------------------------------------------------------------------*/
-;1129:
-;1130:static int QDECL SortClients( const void *a, const void *b ) {
-line 1131
-;1131:	return *(int *)a - *(int *)b;
+line 1124
+;1120:}
+;1121:
+;1122:/*---------------------------------------------------------------------------*/
+;1123:
+;1124:static int QDECL SortClients( const void *a, const void *b ) {
+line 1125
+;1125:	return *(int *)a - *(int *)b;
 ADDRFP4 0
 INDIRP4
 INDIRI4
@@ -6344,35 +6326,35 @@ INDIRP4
 INDIRI4
 SUBI4
 RETI4
-LABELV $497
+LABELV $493
 endproc SortClients 0 0
 export TeamplayInfoMessage
 proc TeamplayInfoMessage 9404 36
-line 1144
-;1132:}
-;1133:
-;1134:
-;1135:/*
+line 1138
+;1126:}
+;1127:
+;1128:
+;1129:/*
+;1130:==================
+;1131:TeamplayLocationsMessage
+;1132:
+;1133:Format:
+;1134:	clientNum location health armor weapon powerups
+;1135:
 ;1136:==================
-;1137:TeamplayLocationsMessage
-;1138:
-;1139:Format:
-;1140:	clientNum location health armor weapon powerups
-;1141:
-;1142:==================
-;1143:*/
-;1144:void TeamplayInfoMessage( gentity_t *ent ) {
-line 1154
-;1145:	char		entry[1024];
-;1146:	char		string[8192];
-;1147:	int			stringlength;
-;1148:	int			i, j;
-;1149:	gentity_t	*player;
-;1150:	int			cnt;
-;1151:	int			h, a;
-;1152:	int			clients[TEAM_MAXOVERLAY];
-;1153:
-;1154:	if ( ! ent->client->pers.teamInfo )
+;1137:*/
+;1138:void TeamplayInfoMessage( gentity_t *ent ) {
+line 1148
+;1139:	char		entry[1024];
+;1140:	char		string[8192];
+;1141:	int			stringlength;
+;1142:	int			i, j;
+;1143:	gentity_t	*player;
+;1144:	int			cnt;
+;1145:	int			h, a;
+;1146:	int			clients[TEAM_MAXOVERLAY];
+;1147:
+;1148:	if ( ! ent->client->pers.teamInfo )
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6382,18 +6364,18 @@ CNSTI4 612
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $499
-line 1155
-;1155:		return;
-ADDRGP4 $498
+NEI4 $495
+line 1149
+;1149:		return;
+ADDRGP4 $494
 JUMPV
-LABELV $499
-line 1160
-;1156:
-;1157:	// figure out what client should be on the display
-;1158:	// we are limited to 8, but we want to use the top eight players
-;1159:	// but in client order (so they don't keep changing position on the overlay)
-;1160:	for (i = 0, cnt = 0; i < g_maxclients.integer && cnt < TEAM_MAXOVERLAY; i++) {
+LABELV $495
+line 1154
+;1150:
+;1151:	// figure out what client should be on the display
+;1152:	// we are limited to 8, but we want to use the top eight players
+;1153:	// but in client order (so they don't keep changing position on the overlay)
+;1154:	for (i = 0, cnt = 0; i < g_maxclients.integer && cnt < TEAM_MAXOVERLAY; i++) {
 ADDRLP4 9372
 CNSTI4 0
 ASGNI4
@@ -6405,11 +6387,11 @@ ADDRLP4 8
 ADDRLP4 9372
 INDIRI4
 ASGNI4
-ADDRGP4 $504
+ADDRGP4 $500
 JUMPV
-LABELV $501
-line 1161
-;1161:		player = g_entities + level.sortedClients[i];
+LABELV $497
+line 1155
+;1155:		player = g_entities + level.sortedClients[i];
 ADDRLP4 0
 CNSTI4 872
 ADDRLP4 4
@@ -6423,15 +6405,15 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 1162
-;1162:		if (player->inuse && player->client->sess.sessionTeam == 
+line 1156
+;1156:		if (player->inuse && player->client->sess.sessionTeam == 
 ADDRLP4 0
 INDIRP4
 CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $507
+EQI4 $503
 ADDRLP4 9380
 CNSTI4 524
 ASGNI4
@@ -6458,11 +6440,11 @@ ADDRLP4 9384
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $507
-line 1163
-;1163:			ent->client->sess.sessionTeam ) {
-line 1164
-;1164:			clients[cnt++] = level.sortedClients[i];
+NEI4 $503
+line 1157
+;1157:			ent->client->sess.sessionTeam ) {
+line 1158
+;1158:			clients[cnt++] = level.sortedClients[i];
 ADDRLP4 9388
 ADDRLP4 8
 INDIRI4
@@ -6492,34 +6474,34 @@ ADDRGP4 level+92
 ADDP4
 INDIRI4
 ASGNI4
-line 1165
-;1165:		}
-LABELV $507
-line 1166
-;1166:	}
-LABELV $502
+line 1159
+;1159:		}
+LABELV $503
 line 1160
+;1160:	}
+LABELV $498
+line 1154
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $504
+LABELV $500
 ADDRLP4 4
 INDIRI4
 ADDRGP4 g_maxclients+12
 INDIRI4
-GEI4 $510
+GEI4 $506
 ADDRLP4 8
 INDIRI4
 CNSTI4 32
-LTI4 $501
-LABELV $510
-line 1169
-;1167:
-;1168:	// We have the top eight players, sort them by clientNum
-;1169:	qsort( clients, cnt, sizeof( clients[0] ), SortClients );
+LTI4 $497
+LABELV $506
+line 1163
+;1161:
+;1162:	// We have the top eight players, sort them by clientNum
+;1163:	qsort( clients, cnt, sizeof( clients[0] ), SortClients );
 ADDRLP4 9244
 ARGP4
 ADDRLP4 8
@@ -6532,21 +6514,21 @@ ARGP4
 ADDRGP4 qsort
 CALLV
 pop
-line 1172
-;1170:
-;1171:	// send the latest information on all clients
-;1172:	string[0] = 0;
+line 1166
+;1164:
+;1165:	// send the latest information on all clients
+;1166:	string[0] = 0;
 ADDRLP4 1052
 CNSTI1 0
 ASGNI1
-line 1173
-;1173:	stringlength = 0;
+line 1167
+;1167:	stringlength = 0;
 ADDRLP4 1044
 CNSTI4 0
 ASGNI4
-line 1175
-;1174:
-;1175:	for (i = 0, cnt = 0; i < g_maxclients.integer && cnt < TEAM_MAXOVERLAY; i++) {
+line 1169
+;1168:
+;1169:	for (i = 0, cnt = 0; i < g_maxclients.integer && cnt < TEAM_MAXOVERLAY; i++) {
 ADDRLP4 9376
 CNSTI4 0
 ASGNI4
@@ -6558,11 +6540,11 @@ ADDRLP4 8
 ADDRLP4 9376
 INDIRI4
 ASGNI4
-ADDRGP4 $514
+ADDRGP4 $510
 JUMPV
-LABELV $511
-line 1176
-;1176:		player = g_entities + i;
+LABELV $507
+line 1170
+;1170:		player = g_entities + i;
 ADDRLP4 0
 CNSTI4 872
 ADDRLP4 4
@@ -6571,15 +6553,15 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 1177
-;1177:		if (player->inuse && player->client->sess.sessionTeam == 
+line 1171
+;1171:		if (player->inuse && player->client->sess.sessionTeam == 
 ADDRLP4 0
 INDIRP4
 CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $516
+EQI4 $512
 ADDRLP4 9384
 CNSTI4 524
 ASGNI4
@@ -6606,12 +6588,12 @@ ADDRLP4 9388
 INDIRI4
 ADDP4
 INDIRI4
-NEI4 $516
-line 1178
-;1178:			ent->client->sess.sessionTeam ) {
-line 1180
-;1179:
-;1180:			h = player->client->ps.stats[STAT_HEALTH];
+NEI4 $512
+line 1172
+;1172:			ent->client->sess.sessionTeam ) {
+line 1174
+;1173:
+;1174:			h = player->client->ps.stats[STAT_HEALTH];
 ADDRLP4 1036
 ADDRLP4 0
 INDIRP4
@@ -6622,8 +6604,8 @@ CNSTI4 184
 ADDP4
 INDIRI4
 ASGNI4
-line 1181
-;1181:			a = player->client->ps.stats[STAT_ARMOR];
+line 1175
+;1175:			a = player->client->ps.stats[STAT_ARMOR];
 ADDRLP4 1040
 ADDRLP4 0
 INDIRP4
@@ -6634,34 +6616,34 @@ CNSTI4 196
 ADDP4
 INDIRI4
 ASGNI4
-line 1182
-;1182:			if (h < 0) h = 0;
+line 1176
+;1176:			if (h < 0) h = 0;
 ADDRLP4 1036
 INDIRI4
 CNSTI4 0
-GEI4 $518
+GEI4 $514
 ADDRLP4 1036
 CNSTI4 0
 ASGNI4
-LABELV $518
-line 1183
-;1183:			if (a < 0) a = 0;
+LABELV $514
+line 1177
+;1177:			if (a < 0) a = 0;
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-GEI4 $520
+GEI4 $516
 ADDRLP4 1040
 CNSTI4 0
 ASGNI4
-LABELV $520
-line 1185
-;1184:
-;1185:			Com_sprintf (entry, sizeof(entry),
+LABELV $516
+line 1179
+;1178:
+;1179:			Com_sprintf (entry, sizeof(entry),
 ADDRLP4 12
 ARGP4
 CNSTI4 1024
 ARGI4
-ADDRGP4 $522
+ADDRGP4 $518
 ARGP4
 ADDRLP4 4
 INDIRI4
@@ -6700,12 +6682,12 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 1190
-;1186:				" %i %i %i %i %i %i", 
-;1187://				level.sortedClients[i], player->client->pers.teamState.location, h, a, 
-;1188:				i, player->client->pers.teamState.location, h, a, 
-;1189:				player->client->ps.weapon, player->s.powerups);
-;1190:			j = strlen(entry);
+line 1184
+;1180:				" %i %i %i %i %i %i", 
+;1181://				level.sortedClients[i], player->client->pers.teamState.location, h, a, 
+;1182:				i, player->client->pers.teamState.location, h, a, 
+;1183:				player->client->ps.weapon, player->s.powerups);
+;1184:			j = strlen(entry);
 ADDRLP4 12
 ARGP4
 ADDRLP4 9400
@@ -6716,8 +6698,8 @@ ADDRLP4 1048
 ADDRLP4 9400
 INDIRI4
 ASGNI4
-line 1191
-;1191:			if (stringlength + j > sizeof(string))
+line 1185
+;1185:			if (stringlength + j > sizeof(string))
 ADDRLP4 1044
 INDIRI4
 ADDRLP4 1048
@@ -6725,14 +6707,14 @@ INDIRI4
 ADDI4
 CVIU4 4
 CNSTU4 8192
-LEU4 $523
-line 1192
-;1192:				break;
-ADDRGP4 $513
+LEU4 $519
+line 1186
+;1186:				break;
+ADDRGP4 $509
 JUMPV
-LABELV $523
-line 1193
-;1193:			strcpy (string + stringlength, entry);
+LABELV $519
+line 1187
+;1187:			strcpy (string + stringlength, entry);
 ADDRLP4 1044
 INDIRI4
 ADDRLP4 1052
@@ -6743,8 +6725,8 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 1194
-;1194:			stringlength += j;
+line 1188
+;1188:			stringlength += j;
 ADDRLP4 1044
 ADDRLP4 1044
 INDIRI4
@@ -6752,43 +6734,43 @@ ADDRLP4 1048
 INDIRI4
 ADDI4
 ASGNI4
-line 1195
-;1195:			cnt++;
+line 1189
+;1189:			cnt++;
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1196
-;1196:		}
-LABELV $516
-line 1197
-;1197:	}
+line 1190
+;1190:		}
 LABELV $512
-line 1175
+line 1191
+;1191:	}
+LABELV $508
+line 1169
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $514
+LABELV $510
 ADDRLP4 4
 INDIRI4
 ADDRGP4 g_maxclients+12
 INDIRI4
-GEI4 $525
+GEI4 $521
 ADDRLP4 8
 INDIRI4
 CNSTI4 32
-LTI4 $511
-LABELV $525
-LABELV $513
-line 1199
-;1198:
-;1199:	trap_SendServerCommand( ent-g_entities, va("tinfo %i %s", cnt, string) );
-ADDRGP4 $526
+LTI4 $507
+LABELV $521
+LABELV $509
+line 1193
+;1192:
+;1193:	trap_SendServerCommand( ent-g_entities, va("tinfo %i %s", cnt, string) );
+ADDRGP4 $522
 ARGP4
 ADDRLP4 8
 INDIRI4
@@ -6815,45 +6797,45 @@ ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 1200
-;1200:}
-LABELV $498
+line 1194
+;1194:}
+LABELV $494
 endproc TeamplayInfoMessage 9404 36
 export CheckTeamStatus
 proc CheckTeamStatus 24 4
-line 1202
-;1201:
-;1202:void CheckTeamStatus(void) {
-line 1206
-;1203:	int i;
-;1204:	gentity_t *loc, *ent;
-;1205:
-;1206:	if (level.time - level.lastTeamLocationTime > TEAM_LOCATION_UPDATE_TIME) {
+line 1196
+;1195:
+;1196:void CheckTeamStatus(void) {
+line 1200
+;1197:	int i;
+;1198:	gentity_t *loc, *ent;
+;1199:
+;1200:	if (level.time - level.lastTeamLocationTime > TEAM_LOCATION_UPDATE_TIME) {
 ADDRGP4 level+32
 INDIRI4
 ADDRGP4 level+64
 INDIRI4
 SUBI4
 CNSTI4 1000
-LEI4 $528
-line 1208
-;1207:
-;1208:		level.lastTeamLocationTime = level.time;
+LEI4 $524
+line 1202
+;1201:
+;1202:		level.lastTeamLocationTime = level.time;
 ADDRGP4 level+64
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1210
-;1209:
-;1210:		for (i = 0; i < g_maxclients.integer; i++) {
+line 1204
+;1203:
+;1204:		for (i = 0; i < g_maxclients.integer; i++) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $537
+ADDRGP4 $533
 JUMPV
-LABELV $534
-line 1211
-;1211:			ent = g_entities + i;
+LABELV $530
+line 1205
+;1205:			ent = g_entities + i;
 ADDRLP4 0
 CNSTI4 872
 ADDRLP4 4
@@ -6862,9 +6844,9 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 1213
-;1212:
-;1213:			if ( ent->client->pers.connected != CON_CONNECTED ) {
+line 1207
+;1206:
+;1207:			if ( ent->client->pers.connected != CON_CONNECTED ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -6874,23 +6856,23 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-EQI4 $539
-line 1214
-;1214:				continue;
-ADDRGP4 $535
+EQI4 $535
+line 1208
+;1208:				continue;
+ADDRGP4 $531
 JUMPV
-LABELV $539
-line 1217
-;1215:			}
-;1216:
-;1217:			if (ent->inuse && (ent->client->sess.sessionTeam == TEAM_RED ||	ent->client->sess.sessionTeam == TEAM_BLUE)) {
+LABELV $535
+line 1211
+;1209:			}
+;1210:
+;1211:			if (ent->inuse && (ent->client->sess.sessionTeam == TEAM_RED ||	ent->client->sess.sessionTeam == TEAM_BLUE)) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $541
+EQI4 $537
 ADDRLP4 16
 ADDRLP4 0
 INDIRP4
@@ -6904,14 +6886,14 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 1
-EQI4 $543
+EQI4 $539
 ADDRLP4 16
 INDIRI4
 CNSTI4 2
-NEI4 $541
-LABELV $543
-line 1218
-;1218:				loc = Team_GetLocation( ent );
+NEI4 $537
+LABELV $539
+line 1212
+;1212:				loc = Team_GetLocation( ent );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6923,15 +6905,15 @@ ADDRLP4 8
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 1219
-;1219:				if (loc)
+line 1213
+;1213:				if (loc)
 ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $544
-line 1220
-;1220:					ent->client->pers.teamState.location = loc->health;
+EQU4 $540
+line 1214
+;1214:					ent->client->pers.teamState.location = loc->health;
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -6945,12 +6927,12 @@ CNSTI4 748
 ADDP4
 INDIRI4
 ASGNI4
-ADDRGP4 $545
+ADDRGP4 $541
 JUMPV
-LABELV $544
-line 1222
-;1221:				else
-;1222:					ent->client->pers.teamState.location = 0;
+LABELV $540
+line 1216
+;1215:				else
+;1216:					ent->client->pers.teamState.location = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -6960,37 +6942,37 @@ CNSTI4 560
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $545
-line 1223
-;1223:			}
 LABELV $541
-line 1224
-;1224:		}
-LABELV $535
-line 1210
+line 1217
+;1217:			}
+LABELV $537
+line 1218
+;1218:		}
+LABELV $531
+line 1204
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $537
+LABELV $533
 ADDRLP4 4
 INDIRI4
 ADDRGP4 g_maxclients+12
 INDIRI4
-LTI4 $534
-line 1226
-;1225:
-;1226:		for (i = 0; i < g_maxclients.integer; i++) {
+LTI4 $530
+line 1220
+;1219:
+;1220:		for (i = 0; i < g_maxclients.integer; i++) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $549
+ADDRGP4 $545
 JUMPV
-LABELV $546
-line 1227
-;1227:			ent = g_entities + i;
+LABELV $542
+line 1221
+;1221:			ent = g_entities + i;
 ADDRLP4 0
 CNSTI4 872
 ADDRLP4 4
@@ -6999,9 +6981,9 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 1229
-;1228:
-;1229:			if ( ent->client->pers.connected != CON_CONNECTED ) {
+line 1223
+;1222:
+;1223:			if ( ent->client->pers.connected != CON_CONNECTED ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 524
@@ -7011,23 +6993,23 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-EQI4 $551
-line 1230
-;1230:				continue;
-ADDRGP4 $547
+EQI4 $547
+line 1224
+;1224:				continue;
+ADDRGP4 $543
 JUMPV
-LABELV $551
-line 1233
-;1231:			}
-;1232:
-;1233:			if (ent->inuse && (ent->client->sess.sessionTeam == TEAM_RED ||	ent->client->sess.sessionTeam == TEAM_BLUE)) {
+LABELV $547
+line 1227
+;1225:			}
+;1226:
+;1227:			if (ent->inuse && (ent->client->sess.sessionTeam == TEAM_RED ||	ent->client->sess.sessionTeam == TEAM_BLUE)) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 528
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $553
+EQI4 $549
 ADDRLP4 16
 ADDRLP4 0
 INDIRP4
@@ -7041,99 +7023,99 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 1
-EQI4 $555
+EQI4 $551
 ADDRLP4 16
 INDIRI4
 CNSTI4 2
-NEI4 $553
-LABELV $555
-line 1234
-;1234:				TeamplayInfoMessage( ent );
+NEI4 $549
+LABELV $551
+line 1228
+;1228:				TeamplayInfoMessage( ent );
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 TeamplayInfoMessage
 CALLV
 pop
-line 1235
-;1235:			}
-LABELV $553
-line 1236
-;1236:		}
-LABELV $547
-line 1226
+line 1229
+;1229:			}
+LABELV $549
+line 1230
+;1230:		}
+LABELV $543
+line 1220
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $549
+LABELV $545
 ADDRLP4 4
 INDIRI4
 ADDRGP4 g_maxclients+12
 INDIRI4
-LTI4 $546
-line 1237
-;1237:	}
-LABELV $528
-line 1238
-;1238:}
-LABELV $527
+LTI4 $542
+line 1231
+;1231:	}
+LABELV $524
+line 1232
+;1232:}
+LABELV $523
 endproc CheckTeamStatus 24 4
 export SP_team_CTF_redplayer
 proc SP_team_CTF_redplayer 0 0
-line 1245
-;1239:
-;1240:/*-----------------------------------------------------------------*/
-;1241:
-;1242:/*QUAKED team_CTF_redplayer (1 0 0) (-16 -16 -16) (16 16 32)
-;1243:Only in CTF games.  Red players spawn here at game start.
-;1244:*/
-;1245:void SP_team_CTF_redplayer( gentity_t *ent ) {
-line 1246
-;1246:}
-LABELV $556
+line 1239
+;1233:
+;1234:/*-----------------------------------------------------------------*/
+;1235:
+;1236:/*QUAKED team_CTF_redplayer (1 0 0) (-16 -16 -16) (16 16 32)
+;1237:Only in CTF games.  Red players spawn here at game start.
+;1238:*/
+;1239:void SP_team_CTF_redplayer( gentity_t *ent ) {
+line 1240
+;1240:}
+LABELV $552
 endproc SP_team_CTF_redplayer 0 0
 export SP_team_CTF_blueplayer
 proc SP_team_CTF_blueplayer 0 0
-line 1252
-;1247:
-;1248:
-;1249:/*QUAKED team_CTF_blueplayer (0 0 1) (-16 -16 -16) (16 16 32)
-;1250:Only in CTF games.  Blue players spawn here at game start.
-;1251:*/
-;1252:void SP_team_CTF_blueplayer( gentity_t *ent ) {
-line 1253
-;1253:}
-LABELV $557
+line 1246
+;1241:
+;1242:
+;1243:/*QUAKED team_CTF_blueplayer (0 0 1) (-16 -16 -16) (16 16 32)
+;1244:Only in CTF games.  Blue players spawn here at game start.
+;1245:*/
+;1246:void SP_team_CTF_blueplayer( gentity_t *ent ) {
+line 1247
+;1247:}
+LABELV $553
 endproc SP_team_CTF_blueplayer 0 0
 export SP_team_CTF_redspawn
 proc SP_team_CTF_redspawn 0 0
-line 1260
-;1254:
-;1255:
-;1256:/*QUAKED team_CTF_redspawn (1 0 0) (-16 -16 -24) (16 16 32)
-;1257:potential spawning position for red team in CTF games.
-;1258:Targets will be fired when someone spawns in on them.
-;1259:*/
-;1260:void SP_team_CTF_redspawn(gentity_t *ent) {
-line 1261
-;1261:}
-LABELV $558
+line 1254
+;1248:
+;1249:
+;1250:/*QUAKED team_CTF_redspawn (1 0 0) (-16 -16 -24) (16 16 32)
+;1251:potential spawning position for red team in CTF games.
+;1252:Targets will be fired when someone spawns in on them.
+;1253:*/
+;1254:void SP_team_CTF_redspawn(gentity_t *ent) {
+line 1255
+;1255:}
+LABELV $554
 endproc SP_team_CTF_redspawn 0 0
 export SP_team_CTF_bluespawn
 proc SP_team_CTF_bluespawn 0 0
-line 1267
-;1262:
-;1263:/*QUAKED team_CTF_bluespawn (0 0 1) (-16 -16 -24) (16 16 32)
-;1264:potential spawning position for blue team in CTF games.
-;1265:Targets will be fired when someone spawns in on them.
-;1266:*/
-;1267:void SP_team_CTF_bluespawn(gentity_t *ent) {
-line 1268
-;1268:}
-LABELV $559
+line 1261
+;1256:
+;1257:/*QUAKED team_CTF_bluespawn (0 0 1) (-16 -16 -24) (16 16 32)
+;1258:potential spawning position for blue team in CTF games.
+;1259:Targets will be fired when someone spawns in on them.
+;1260:*/
+;1261:void SP_team_CTF_bluespawn(gentity_t *ent) {
+line 1262
+;1262:}
+LABELV $555
 endproc SP_team_CTF_bluespawn 0 0
 bss
 export neutralObelisk
@@ -7725,7 +7707,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $526
+LABELV $522
 byte 1 116
 byte 1 105
 byte 1 110
@@ -7739,7 +7721,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $522
+LABELV $518
 byte 1 32
 byte 1 37
 byte 1 105
@@ -7760,7 +7742,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $484
+LABELV $480
 byte 1 116
 byte 1 101
 byte 1 97
@@ -7781,7 +7763,7 @@ byte 1 119
 byte 1 110
 byte 1 0
 align 1
-LABELV $481
+LABELV $477
 byte 1 116
 byte 1 101
 byte 1 97
@@ -7801,7 +7783,7 @@ byte 1 119
 byte 1 110
 byte 1 0
 align 1
-LABELV $478
+LABELV $474
 byte 1 116
 byte 1 101
 byte 1 97
@@ -7823,7 +7805,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $475
+LABELV $471
 byte 1 116
 byte 1 101
 byte 1 97
@@ -7844,12 +7826,12 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $469
+LABELV $465
 byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $468
+LABELV $464
 byte 1 37
 byte 1 99
 byte 1 37
@@ -7860,7 +7842,7 @@ byte 1 94
 byte 1 55
 byte 1 0
 align 1
-LABELV $442
+LABELV $438
 byte 1 68
 byte 1 111
 byte 1 110
@@ -7900,7 +7882,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $433
+LABELV $429
 byte 1 37
 byte 1 115
 byte 1 94
@@ -7925,7 +7907,7 @@ byte 1 33
 byte 1 10
 byte 1 0
 align 1
-LABELV $407
+LABELV $403
 byte 1 37
 byte 1 115
 byte 1 94
@@ -7955,7 +7937,7 @@ byte 1 33
 byte 1 10
 byte 1 0
 align 1
-LABELV $403
+LABELV $399
 byte 1 37
 byte 1 115
 byte 1 94
@@ -7985,7 +7967,7 @@ byte 1 33
 byte 1 10
 byte 1 0
 align 1
-LABELV $383
+LABELV $379
 byte 1 84
 byte 1 104
 byte 1 101
@@ -8014,7 +7996,7 @@ byte 1 33
 byte 1 10
 byte 1 0
 align 1
-LABELV $382
+LABELV $378
 byte 1 84
 byte 1 104
 byte 1 101
@@ -8040,7 +8022,7 @@ byte 1 33
 byte 1 10
 byte 1 0
 align 1
-LABELV $376
+LABELV $372
 byte 1 87
 byte 1 97
 byte 1 114
@@ -8090,7 +8072,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $348
+LABELV $344
 byte 1 87
 byte 1 97
 byte 1 114
@@ -8137,7 +8119,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $342
+LABELV $338
 byte 1 87
 byte 1 97
 byte 1 114
@@ -8186,7 +8168,7 @@ byte 1 100
 byte 1 10
 byte 1 0
 align 1
-LABELV $329
+LABELV $325
 byte 1 116
 byte 1 101
 byte 1 97
@@ -8209,7 +8191,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $261
+LABELV $257
 byte 1 116
 byte 1 101
 byte 1 97
@@ -8229,7 +8211,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $259
+LABELV $255
 byte 1 116
 byte 1 101
 byte 1 97
@@ -8248,7 +8230,7 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $239
+LABELV $235
 byte 1 37
 byte 1 115
 byte 1 94
@@ -8284,7 +8266,7 @@ byte 1 33
 byte 1 10
 byte 1 0
 align 1
-LABELV $228
+LABELV $224
 byte 1 37
 byte 1 115
 byte 1 94
@@ -8319,44 +8301,14 @@ byte 1 33
 byte 1 10
 byte 1 0
 align 1
-LABELV $118
-byte 1 112
-byte 1 114
-byte 1 105
-byte 1 110
-byte 1 116
-byte 1 32
-byte 1 34
-byte 1 94
-byte 1 52
-byte 1 37
-byte 1 115
-byte 1 94
-byte 1 55
-byte 1 32
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
-byte 1 32
-byte 1 115
-byte 1 99
-byte 1 111
-byte 1 114
-byte 1 101
-byte 1 115
-byte 1 10
-byte 1 34
-byte 1 0
-align 1
-LABELV $117
+LABELV $114
 byte 1 66
 byte 1 108
 byte 1 117
 byte 1 101
 byte 1 0
 align 1
-LABELV $116
+LABELV $113
 byte 1 112
 byte 1 114
 byte 1 105
@@ -8364,12 +8316,8 @@ byte 1 110
 byte 1 116
 byte 1 32
 byte 1 34
-byte 1 94
-byte 1 49
 byte 1 37
 byte 1 115
-byte 1 94
-byte 1 55
 byte 1 32
 byte 1 116
 byte 1 101
@@ -8386,7 +8334,7 @@ byte 1 10
 byte 1 34
 byte 1 0
 align 1
-LABELV $115
+LABELV $112
 byte 1 99
 byte 1 112
 byte 1 32
@@ -8411,7 +8359,7 @@ byte 1 10
 byte 1 34
 byte 1 0
 align 1
-LABELV $114
+LABELV $111
 byte 1 82
 byte 1 101
 byte 1 100

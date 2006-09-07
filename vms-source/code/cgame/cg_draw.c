@@ -557,6 +557,7 @@ static void CG_DrawStatusBar( void ) {
 		origin[1] = 0;
 		origin[2] = -10;
 		angles[YAW] = ( cg.time & 2047 ) * 360 / 2048.0;
+		
 		// Shafe was ICON_SIZE instead of 32
 		CG_Draw3DModel( 370 + CHAR_WIDTH*3 + TEXT_ICON_SPACE, 432, 32, 32,
 					   cgs.media.armorModel, 0, origin, angles );
@@ -1067,7 +1068,7 @@ static float CG_DrawScores( float y ) {
 	y -=  BIGCHAR_HEIGHT + 8;
 
 	y1 = y;
-
+	
 	// draw from the right side to left
 	if ( cgs.gametype >= GT_TEAM ) {
 		x = 640;
@@ -1140,6 +1141,7 @@ static float CG_DrawScores( float y ) {
 		} else {
 			v = cgs.fraglimit;
 		}
+		
 		if ( v ) {
 			s = va( "%2i", v );
 			w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH + 8;
