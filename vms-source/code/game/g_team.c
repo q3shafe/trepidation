@@ -106,34 +106,28 @@ For Trepidation Gametype
 ==========================
 */
 
-int Team_Point( int team ) {
+void Team_Point( int team ) {
 
 	char	*teamstr;
-
-	if (level.warmupTime) { return 0; }
-
-
 
 	if ( team == TEAM_RED ) 
 	{
 		teamstr = "Red";
-		//trap_SendServerCommand( -1, va( "cp \"" S_COLOR_RED "%s" S_COLOR_WHITE " team scores\n\"", teamstr ) );
 		trap_SendServerCommand( -1, va("cp \"^7%s Team Scores\n\"", teamstr ) );
-		trap_SendServerCommand( -1, va( "print \"" S_COLOR_RED "%s" S_COLOR_WHITE " team scores\n\"", teamstr ) );
+		trap_SendServerCommand( -1, va( "print \"%s team scores\n\"", teamstr ) );
 	} 
 	else 
 	{
 			teamstr = "Blue";
 			trap_SendServerCommand( -1, va("cp \"^7%s Team Scores\n\"", teamstr ) );
-			//trap_SendServerCommand( -1, va( "cp \"" S_COLOR_BLUE "%s" S_COLOR_WHITE " team scores\n\"", teamstr ) );
-			trap_SendServerCommand( -1, va( "print \"" S_COLOR_BLUE "%s" S_COLOR_WHITE " team scores\n\"", teamstr ) );
+			trap_SendServerCommand( -1, va( "print \"%s team scores\n\"", teamstr ) );
 	}
-	
+
 	level.teamScores[ team ]++;
 
 	CalculateRanks();
 
-	return 0; // Do not respawn this automatically
+	//return 0; // Do not respawn this automatically
 }
 
 /*

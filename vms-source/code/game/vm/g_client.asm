@@ -4785,7 +4785,7 @@ line 996
 ;993:
 ;994://unlagged - backward reconciliation #5
 ;995:	// announce it
-;996:	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 09-05-06\n\"" );
+;996:	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 09-07-06\n\"" );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -8928,7 +8928,7 @@ byte 1 48
 byte 1 57
 byte 1 45
 byte 1 48
-byte 1 53
+byte 1 55
 byte 1 45
 byte 1 48
 byte 1 54

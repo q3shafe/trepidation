@@ -99,34 +99,42 @@ void Cmd_SpawnGenerator_f( gentity_t *ent ){
 void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 
 	int		iserror; 
+	int		cts;
 	iserror = 1;
-
+	
 
 	// If Playing GM 3 Check the rules
 	if (g_GameMode.integer == 3) {
 		// What types of turrets are you allowed to build?
+		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
 		
+		// If the rules change This needs to be change in ui_ingame.c as well
+		if ((cts < 3) && (type == 1)) { iserror = 3; }  
+		if ((cts < 6) && (type == 2)) { iserror = 3; }  
 
-		// Be sure there arent too many
-		if(ent->client->sess.sessionTeam == TEAM_BLUE) 
+		if (iserror == 1)
 		{
-			if (level.blueTurrets > 5)
+			// Be sure there arent too many
+			if(ent->client->sess.sessionTeam == TEAM_BLUE) 
 			{
-				iserror = 2;
-			} else {
-				BuildTurret(ent, type);	
-				iserror = 0;
-			}	
-		}
-		if(ent->client->sess.sessionTeam == TEAM_RED) 
-		{
-			if (level.redTurrets > 5)
+				if (level.blueTurrets > 5)
+				{
+					iserror = 2;
+				} else {
+					BuildTurret(ent, type);	
+					iserror = 0;
+				}	
+			}
+			if(ent->client->sess.sessionTeam == TEAM_RED) 
 			{
-				iserror = 2;
-			} else {
-				BuildTurret(ent, type);	
-				iserror = 0;
-			}			
+				if (level.redTurrets > 5)
+				{
+					iserror = 2;
+				} else {
+					BuildTurret(ent, type);	
+					iserror = 0;
+				}			
+			}
 		}
 	}
 
@@ -134,27 +142,30 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 	// Turrets on our team.
 	if (g_gametype.integer == GT_CTF) 
 	{
-		if(ent->client->sess.sessionTeam == TEAM_BLUE) 
+		if (iserror == 1)
 		{
-			if (level.blueTurrets > 5)
+			if(ent->client->sess.sessionTeam == TEAM_BLUE) 
 			{
-				iserror = 2;
-			} else {
-				level.blueMC = 1; // Do this so that the turrets dont instantly blow up
-				BuildTurret(ent, type);	
-				iserror = 0;
-			}			
-		}
-		if(ent->client->sess.sessionTeam == TEAM_RED) 
-		{
-			if (level.redTurrets > 5)
+				if (level.blueTurrets > 5)
+				{
+					iserror = 2;
+				} else {
+					level.blueMC = 1; // Do this so that the turrets dont instantly blow up
+					BuildTurret(ent, type);	
+					iserror = 0;
+				}			
+			}
+			if(ent->client->sess.sessionTeam == TEAM_RED) 
 			{
-				iserror = 2;
-			} else {
-				level.redMC = 1; // Do this so that the turrets dont instantly blow up
-				BuildTurret(ent, type);	
-				iserror = 0;
-			}			
+				if (level.redTurrets > 5)
+				{
+					iserror = 2;
+				} else {
+					level.redMC = 1; // Do this so that the turrets dont instantly blow up
+					BuildTurret(ent, type);	
+					iserror = 0;
+				}			
+			}
 		}
 	}
 	
@@ -162,6 +173,7 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 	if (iserror != 0)
 	{
 		// FIXME Play Error Sound
+		if (iserror == 3) { trap_SendServerCommand( ent-g_entities, "cp \"Turret Type Not Available Yet.\"" ); }
 		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Too Many Turrets On Your Team.\"" ); }
 		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Turrets Not Allowed Here.\"" ); }
 	}

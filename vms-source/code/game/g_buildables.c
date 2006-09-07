@@ -219,12 +219,14 @@ void turret_fireonenemy( gentity_t *ent){
 		
 		if (ent->s.time2 == 0)
 		{
-			Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE );
-			//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qfalse);
+			//Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE );
+			fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qfalse);
+			//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
 		} else
 		{
-			Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE2 );
+			//Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE2 );
 			//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qtrue);
+			fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
 		}
 		
 		
@@ -359,7 +361,7 @@ void createturretgun(gentity_t *ent){
 	
 	if (ent->s.time2 == 0)
 	{
-		turret->s.weapon=WP_MACHINEGUN;
+		turret->s.weapon=WP_LIGHTNING;
 		turret->s.modelindex = G_ModelIndex("models/turrets/gun1.md3");
 		turret->model = "models/turrets/gun1.md3";
 		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun1.md3");
@@ -372,7 +374,7 @@ void createturretgun(gentity_t *ent){
 	// Sheilded Turret
 	if (ent->s.time2 == 1)
 	{
-		turret->s.weapon=WP_MACHINEGUN;
+		turret->s.weapon=WP_PLASMAGUN;
 	}
 	// Cloaked Turret
 	if (ent->s.time2 > 1)

@@ -1524,8 +1524,14 @@ void CheckExitRules( void ) {
 		// Do we have a score?
 		if (level.redScoreLatched == 1)
 		{
-			Team_Point(TEAM_RED);
-			trap_SendServerCommand( -1, "print \"DEBUG: Red Scores.\n\"" );
+			//Team_Point(TEAM_RED);
+			//trap_SendServerCommand( -1, "print \"DEBUG: Red Scores.\n\"" );
+			
+			trap_SendServerCommand( -1, va("cp \"^7Red Team Scores\n\"") );
+			trap_SendServerCommand( -1, va( "print \"Red team scores\n\"") );
+			level.teamScores[ TEAM_RED ]++;
+			//CalculateRanks(); // This is causing crashes
+			
 			level.scoreTime = level.time;
 			level.blueScoreLatched = -1;
 			level.redScoreLatched = 0;
@@ -1534,8 +1540,14 @@ void CheckExitRules( void ) {
 
 		if (level.blueScoreLatched == 1)
 		{
-			Team_Point(TEAM_BLUE);
-			trap_SendServerCommand( -1, "print \"DEBUG: Blue Scores.\n\"" );
+			//Team_Point(TEAM_BLUE);
+			//trap_SendServerCommand( -1, "print \"DEBUG: Blue Scores.\n\"" );
+
+			trap_SendServerCommand( -1, va("cp \"^7Blue Team Scores\n\"") );
+			trap_SendServerCommand( -1, va( "print \"Blue team scores\n\"") );
+			level.teamScores[ TEAM_BLUE ]++;
+			//CalculateRanks();  // This is causing crashes
+
 			level.scoreTime = level.time;
 			level.redScoreLatched = -1;
 			level.blueScoreLatched = 0;
