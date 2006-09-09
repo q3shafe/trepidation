@@ -1351,7 +1351,7 @@ line 329
 ;327:		
 ;328:	// Arsenal - In arsenal things respawn really slowly when it's down to 2 people
 ;329:	if (level.StopItemRespawn) 
-ADDRGP4 level+9228
+ADDRGP4 level+9232
 INDIRI4
 CNSTI4 0
 EQI4 $125
@@ -1507,7 +1507,7 @@ line 375
 ;373:
 ;374:	// Arsenal - In arsenal things respawn really slowly when it's down to 2 people
 ;375:	if (level.StopItemRespawn) 
-ADDRGP4 level+9228
+ADDRGP4 level+9232
 INDIRI4
 CNSTI4 0
 EQI4 $133

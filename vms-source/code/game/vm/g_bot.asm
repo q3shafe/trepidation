@@ -2061,7 +2061,7 @@ line 382
 ;380:	static int checkminimumplayers_time;
 ;381:
 ;382:	if (level.intermissiontime) return;
-ADDRGP4 level+9136
+ADDRGP4 level+9140
 INDIRI4
 CNSTI4 0
 EQI4 $243
@@ -2124,7 +2124,7 @@ INDIRI4
 ADDRLP4 12
 INDIRI4
 NEI4 $253
-ADDRGP4 level+9232
+ADDRGP4 level+9236
 INDIRI4
 ADDRLP4 12
 INDIRI4
@@ -2144,7 +2144,7 @@ ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 2
 NEI4 $257
-ADDRGP4 level+9232
+ADDRGP4 level+9236
 INDIRI4
 CNSTI4 1
 NEI4 $257

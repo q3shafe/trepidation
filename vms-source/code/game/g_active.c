@@ -483,6 +483,34 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
     }
 	}
 #endif
+
+	if (g_GameMode.integer == 3)
+	{
+		// Give Warnings That An MC Is Needed
+		// Clean this up !
+		if ((client->sess.sessionTeam == TEAM_RED) && ( level.redScoreLatched == -1))
+		{
+			if(level.time-level.blueScoreTime == 30000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 5 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 25000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 10 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 20000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 15 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 15000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 20 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 10000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 25 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 5000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 30 Sec To Place MC!\n\"" ); }	
+
+		}
+		if ((client->sess.sessionTeam == TEAM_BLUE) && ( level.blueScoreLatched == -1))
+		{
+			if(level.time-level.blueScoreTime == 30000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 5 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 25000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 10 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 20000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 15 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 15000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 20 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 10000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 25 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 5000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 30 Sec To Place MC!\n\"" ); }
+		}
+
+	}
+
+
 }
 
 /*

@@ -1526,7 +1526,7 @@ int		b;
 	c = 999;	
 	for ( i = 0 ; i < level.maxclients ; i++ ) {
 	
-		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
+		if (( level.clients[i].pers.connected == CON_DISCONNECTED ) && ( level.clients[i].ps.pm_type == PM_DEAD )) {
 			continue;
 		}
 		if ( level.clients[i].sess.sessionTeam == team ) {

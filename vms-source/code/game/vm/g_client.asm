@@ -1371,14 +1371,14 @@ line 291
 ;291:	VectorCopy( level.intermission_origin, origin );
 ADDRFP4 0
 INDIRP4
-ADDRGP4 level+9152
+ADDRGP4 level+9156
 INDIRB
 ASGNB 12
 line 292
 ;292:	VectorCopy( level.intermission_angle, angles );
 ADDRFP4 4
 INDIRP4
-ADDRGP4 level+9164
+ADDRGP4 level+9168
 INDIRB
 ASGNB 12
 line 294
@@ -1412,7 +1412,7 @@ line 314
 ;312:	gentity_t	*ent;
 ;313:
 ;314:	level.bodyQueIndex = 0;
-ADDRGP4 level+9184
+ADDRGP4 level+9188
 CNSTI4 0
 ASGNI4
 line 315
@@ -1453,7 +1453,7 @@ ADDRLP4 4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 level+9188
+ADDRGP4 level+9192
 ADDP4
 ADDRLP4 0
 INDIRP4
@@ -1621,18 +1621,18 @@ line 366
 ;365:	// grab a body que and cycle to the next one
 ;366:	body = level.bodyQue[ level.bodyQueIndex ];
 ADDRLP4 0
-ADDRGP4 level+9184
+ADDRGP4 level+9188
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 level+9188
+ADDRGP4 level+9192
 ADDP4
 INDIRP4
 ASGNP4
 line 367
 ;367:	level.bodyQueIndex = (level.bodyQueIndex + 1) % BODY_QUEUE_SIZE;
-ADDRGP4 level+9184
-ADDRGP4 level+9184
+ADDRGP4 level+9188
+ADDRGP4 level+9188
 INDIRI4
 CNSTI4 1
 ADDI4
@@ -2646,9 +2646,9 @@ line 564
 ;562:	}
 ;563:	// equal team count, so join the team with the lowest score
 ;564:	if ( level.teamScores[TEAM_BLUE] > level.teamScores[TEAM_RED] ) {
-ADDRGP4 level+48+8
+ADDRGP4 level+52+8
 INDIRI4
-ADDRGP4 level+48+4
+ADDRGP4 level+52+4
 INDIRI4
 LEI4 $218
 line 565
@@ -4584,7 +4584,7 @@ INDIRI4
 ADDRLP4 1044
 INDIRI4
 NEI4 $341
-ADDRGP4 level+72
+ADDRGP4 level+76
 INDIRI4
 ADDRLP4 1044
 INDIRI4
@@ -7027,7 +7027,7 @@ ASGNI4
 line 1416
 ;1415:
 ;1416:	if ( level.intermissiontime ) {
-ADDRGP4 level+9136
+ADDRGP4 level+9140
 INDIRI4
 CNSTI4 0
 EQI4 $492
@@ -7521,7 +7521,7 @@ RETI4
 LABELV $505
 endproc BalanceTeams 16 8
 export PlaceMC
-proc PlaceMC 12 4
+proc PlaceMC 16 4
 line 1519
 ;1510:	
 ;1511:}
@@ -7554,7 +7554,8 @@ JUMPV
 LABELV $524
 line 1529
 ;1528:	
-;1529:		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
+;1529:		if (( level.clients[i].pers.connected == CON_DISCONNECTED ) && ( level.clients[i].ps.pm_type == PM_DEAD )) {
+ADDRLP4 12
 CNSTI4 3392
 ADDRLP4 0
 INDIRI4
@@ -7562,10 +7563,20 @@ MULI4
 ADDRGP4 level
 INDIRP4
 ADDP4
+ASGNP4
+ADDRLP4 12
+INDIRP4
 CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 0
+NEI4 $529
+ADDRLP4 12
+INDIRP4
+CNSTI4 4
+ADDP4
+INDIRI4
+CNSTI4 3
 NEI4 $529
 line 1530
 ;1530:			continue;
@@ -7723,7 +7734,7 @@ ADDRLP4 4
 INDIRI4
 RETI4
 LABELV $523
-endproc PlaceMC 12 4
+endproc PlaceMC 16 4
 export ClientDisconnect
 proc ClientDisconnect 24 8
 line 1582
@@ -7971,7 +7982,7 @@ NEI4 $554
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
-ADDRGP4 level+9136
+ADDRGP4 level+9140
 INDIRI4
 ADDRLP4 16
 INDIRI4
@@ -7981,7 +7992,7 @@ INDIRI4
 ADDRLP4 16
 INDIRI4
 NEI4 $554
-ADDRGP4 level+92+4
+ADDRGP4 level+96+4
 INDIRI4
 ADDRFP4 0
 INDIRI4
@@ -7993,7 +8004,7 @@ line 1629
 ;1629:		level.clients[ level.sortedClients[0] ].sess.wins++;
 ADDRLP4 20
 CNSTI4 3392
-ADDRGP4 level+92
+ADDRGP4 level+96
 INDIRI4
 MULI4
 ADDRGP4 level
@@ -8012,7 +8023,7 @@ ADDI4
 ASGNI4
 line 1630
 ;1630:		ClientUserinfoChanged( level.sortedClients[0] );
-ADDRGP4 level+92
+ADDRGP4 level+96
 INDIRI4
 ARGI4
 ADDRGP4 ClientUserinfoChanged

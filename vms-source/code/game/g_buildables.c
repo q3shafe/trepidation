@@ -395,6 +395,7 @@ void createturretgun(gentity_t *ent){
 	VectorCopy(ent->s.apos.trBase,turret->s.apos.trBase);
 	VectorCopy(turret->s.apos.trBase,turret->centerpoint);
 	trap_LinkEntity (turret);
+	BroadCastSound("sound/items/electro.wav");
 }
 
 /*
@@ -703,7 +704,7 @@ void gen_prethink(gentity_t *ent){
 		level.redGen++;
 	}
 
-
+		BroadCastSound("sound/items/protect.wav");
 		ent->s.time2=0;
 		ent->think = GEN_think;
 		ent->nextthink=level.time+100;

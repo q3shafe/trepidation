@@ -565,7 +565,8 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	memset( &level, 0, sizeof( level ) );
 	level.time = levelTime;
 	level.startTime = levelTime;
-	level.scoreTime = levelTime;
+	level.blueScoreTime = levelTime;
+	level.redScoreTime = levelTime;
 	level.blueScoreLatched = -1;
 	level.redScoreLatched = -1;
 	level.firstStrike = qfalse; // Shafe - Trep
@@ -1531,8 +1532,8 @@ void CheckExitRules( void ) {
 			trap_SendServerCommand( -1, va( "print \"Red team scores\n\"") );
 			level.teamScores[ TEAM_RED ]++;
 			//CalculateRanks(); // This is causing crashes
-			
-			level.scoreTime = level.time;
+			BroadCastSound("sound/teamplay/voc_red_scores.wav");
+			level.redScoreTime = level.time;
 			level.blueScoreLatched = -1;
 			level.redScoreLatched = 0;
 			return;
@@ -1547,14 +1548,14 @@ void CheckExitRules( void ) {
 			trap_SendServerCommand( -1, va( "print \"Blue team scores\n\"") );
 			level.teamScores[ TEAM_BLUE ]++;
 			//CalculateRanks();  // This is causing crashes
-
-			level.scoreTime = level.time;
+			BroadCastSound("sound/teamplay/voc_blue_scores.wav");
+			level.blueScoreTime = level.time;
 			level.redScoreLatched = -1;
 			level.blueScoreLatched = 0;
 			return;
 		}
 		
-		if ((level.time-level.scoreTime) > 35000) 
+		if ((level.time-level.redScoreTime) > 35000) 
 		{
 
 			 if ((level.blueMC == 0) && (level.blueScoreLatched == -1))
@@ -1564,6 +1565,10 @@ void CheckExitRules( void ) {
 					PlaceMC(TEAM_BLUE);
 					return;
 				}
+		}
+		
+		if ((level.time-level.blueScoreTime) > 35000) 
+		{
 		
 				if ((level.redMC == 0) && (level.redScoreLatched == -1))
 				{
@@ -1572,10 +1577,7 @@ void CheckExitRules( void ) {
 					PlaceMC(TEAM_RED);
 					return;
 				}
-			
-
 		}
-
 		/*
 		// Something is screwy let's try again  - This is just bad code 
 		if ((level.time-level.scoreTime) > 40000) 

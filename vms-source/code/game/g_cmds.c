@@ -50,6 +50,7 @@ void Cmd_SpawnMC_f( gentity_t *ent ){
 		// FIXME: Play Error Sound
 		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"There is Already A Master Controller.\"" ); }
 		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Master Controller Not Allowed.\"" ); }
+		//G_AddEvent( ent, EV_ERROR, 0 );
 
 	}
 	
@@ -92,6 +93,7 @@ void Cmd_SpawnGenerator_f( gentity_t *ent ){
 		// FIXME: Play Error Sound
 		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Too Many Shield Generators..\"" );}
 		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Sheild Generators Not Allowed.\"" );}
+		//G_AddEvent( ent, EV_ERROR, 0 );
 	}						
 
 }
@@ -176,6 +178,7 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 		if (iserror == 3) { trap_SendServerCommand( ent-g_entities, "cp \"Turret Type Not Available Yet.\"" ); }
 		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Too Many Turrets On Your Team.\"" ); }
 		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Turrets Not Allowed Here.\"" ); }
+		//G_AddEvent( ent, EV_ERROR, 0 );
 	}
 
 }
@@ -341,7 +344,7 @@ void Cmd_Test_f (gentity_t *ent) {
 		trap_SendServerCommand( ent-g_entities, va("print \" level.blumc %i\n\"", level.blueMC ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redscorelatched %i\n\"", level.redScoreLatched ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.bluescorelatched %i\n\"", level.blueScoreLatched ));		
-		trap_SendServerCommand( ent-g_entities, va("print \" level.scoreTime %i\n\"", (level.time-level.scoreTime) ));		
+		//trap_SendServerCommand( ent-g_entities, va("print \" level.scoreTime %i\n\"", (level.time-level.scoreTime) ));		
 	
 
 }
