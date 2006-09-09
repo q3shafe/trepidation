@@ -1253,13 +1253,10 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
   		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.glassSound );
  		CG_BreakGlass( cent->lerpOrigin );
  		break;
-	case EV_BREAK_WALL:
- 		DEBUGNAME("EV_BREAK_GLASS");
- 		// Change cgs.media.gibSound to whatever sound you want it to use
-  		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.glassSound );
- 		CG_BreakGlass( cent->lerpOrigin );
+	case EV_ERROR:
+ 		DEBUGNAME("EV_ERROR");
+ 		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.errorSound );
  		break;
-
 	case EV_STOPLOOPINGSOUND:
 		DEBUGNAME("EV_STOPLOOPINGSOUND");
 		trap_S_StopLoopingSound( es->number );

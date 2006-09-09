@@ -446,7 +446,7 @@ ADDRGP4 g_maxGameClients+12
 INDIRI4
 CNSTI4 0
 LEI4 $78
-ADDRGP4 level+84
+ADDRGP4 level+88
 INDIRI4
 ADDRGP4 g_maxGameClients+12
 INDIRI4
@@ -481,7 +481,7 @@ line 127
 ;125:				case GT_TOURNAMENT:
 ;126:					// if the game is full, go into a waiting mode
 ;127:					if ( level.numNonSpectatorClients >= 2 ) {
-ADDRGP4 level+84
+ADDRGP4 level+88
 INDIRI4
 CNSTI4 2
 LTI4 $84
@@ -598,7 +598,7 @@ INDIRI4
 EQI4 $90
 line 161
 ;161:		level.newSession = qtrue;
-ADDRGP4 level+72
+ADDRGP4 level+76
 CNSTI4 1
 ASGNI4
 line 162

@@ -545,7 +545,7 @@ ADDRFP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 level+48
+ADDRGP4 level+52
 ADDP4
 ASGNP4
 ADDRLP4 4
@@ -623,12 +623,12 @@ CNSTI4 1
 NEI4 $117
 line 148
 ;148:		if ( level.teamScores[ TEAM_RED ] + score == level.teamScores[ TEAM_BLUE ] ) {
-ADDRGP4 level+48+4
+ADDRGP4 level+52+4
 INDIRI4
 ADDRFP4 8
 INDIRI4
 ADDI4
-ADDRGP4 level+48+8
+ADDRGP4 level+52+8
 INDIRI4
 NEI4 $119
 line 150
@@ -647,17 +647,17 @@ JUMPV
 LABELV $119
 line 152
 ;152:		else if ( level.teamScores[ TEAM_RED ] <= level.teamScores[ TEAM_BLUE ] &&
-ADDRGP4 level+48+4
+ADDRGP4 level+52+4
 INDIRI4
-ADDRGP4 level+48+8
+ADDRGP4 level+52+8
 INDIRI4
 GTI4 $125
-ADDRGP4 level+48+4
+ADDRGP4 level+52+4
 INDIRI4
 ADDRFP4 8
 INDIRI4
 ADDI4
-ADDRGP4 level+48+8
+ADDRGP4 level+52+8
 INDIRI4
 LEI4 $125
 line 153
@@ -698,12 +698,12 @@ line 162
 ;162:	else {
 line 163
 ;163:		if ( level.teamScores[ TEAM_BLUE ] + score == level.teamScores[ TEAM_RED ] ) {
-ADDRGP4 level+48+8
+ADDRGP4 level+52+8
 INDIRI4
 ADDRFP4 8
 INDIRI4
 ADDI4
-ADDRGP4 level+48+4
+ADDRGP4 level+52+4
 INDIRI4
 NEI4 $135
 line 165
@@ -722,17 +722,17 @@ JUMPV
 LABELV $135
 line 167
 ;167:		else if ( level.teamScores[ TEAM_BLUE ] <= level.teamScores[ TEAM_RED ] &&
-ADDRGP4 level+48+8
+ADDRGP4 level+52+8
 INDIRI4
-ADDRGP4 level+48+4
+ADDRGP4 level+52+4
 INDIRI4
 GTI4 $141
-ADDRGP4 level+48+8
+ADDRGP4 level+52+8
 INDIRI4
 ADDRFP4 8
 INDIRI4
 ADDI4
-ADDRGP4 level+48+4
+ADDRGP4 level+52+4
 INDIRI4
 LEI4 $141
 line 168
@@ -776,7 +776,7 @@ ADDRFP4 4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 level+48
+ADDRGP4 level+52
 ADDP4
 ASGNP4
 ADDRLP4 12
@@ -5657,7 +5657,7 @@ line 996
 ;995:
 ;996:	for (eloc = level.locationHead; eloc; eloc = eloc->nextTrain) {
 ADDRLP4 0
-ADDRGP4 level+9180
+ADDRGP4 level+9184
 INDIRP4
 ASGNP4
 ADDRGP4 $445
@@ -6398,7 +6398,7 @@ ADDRLP4 4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 level+92
+ADDRGP4 level+96
 ADDP4
 INDIRI4
 MULI4
@@ -6470,7 +6470,7 @@ INDIRI4
 ADDRLP4 9392
 INDIRI4
 LSHI4
-ADDRGP4 level+92
+ADDRGP4 level+96
 ADDP4
 INDIRI4
 ASGNI4
@@ -6813,7 +6813,7 @@ line 1200
 ;1200:	if (level.time - level.lastTeamLocationTime > TEAM_LOCATION_UPDATE_TIME) {
 ADDRGP4 level+32
 INDIRI4
-ADDRGP4 level+64
+ADDRGP4 level+68
 INDIRI4
 SUBI4
 CNSTI4 1000
@@ -6821,7 +6821,7 @@ LEI4 $524
 line 1202
 ;1201:
 ;1202:		level.lastTeamLocationTime = level.time;
-ADDRGP4 level+64
+ADDRGP4 level+68
 ADDRGP4 level+32
 INDIRI4
 ASGNI4

@@ -1411,7 +1411,6 @@ char *eventnames[] = {
 	"EV_STOPLOOPINGSOUND",
 	"EV_TAUNT",
 
-	
 
 };
 

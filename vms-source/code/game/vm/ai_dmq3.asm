@@ -7389,7 +7389,7 @@ line 2082
 line 2084
 ;2083:	//NOTE: we shouldn't be looking at the game code...
 ;2084:	if (level.intermissiontime) return qtrue;
-ADDRGP4 level+9136
+ADDRGP4 level+9140
 INDIRI4
 CNSTI4 0
 EQI4 $487
@@ -25761,7 +25761,7 @@ CNSTI4 1
 LTI4 $2135
 ADDRLP4 140
 INDIRI4
-CNSTI4 74
+CNSTI4 75
 GTI4 $2135
 ADDRLP4 140
 INDIRI4
@@ -25836,6 +25836,7 @@ address $2135
 address $2135
 address $2135
 address $2137
+address $2135
 address $2135
 address $2135
 address $2135

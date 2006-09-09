@@ -3658,7 +3658,7 @@ address $414
 export BG_AddPredictableEventToPlayerstate
 code
 proc BG_AddPredictableEventToPlayerstate 12 0
-line 1428
+line 1427
 ;1314:
 ;1315:char *eventnames[] = {
 ;1316:	"EV_NONE",
@@ -3759,37 +3759,36 @@ line 1428
 ;1411:	"EV_STOPLOOPINGSOUND",
 ;1412:	"EV_TAUNT",
 ;1413:
-;1414:	
-;1415:
-;1416:};
-;1417:
-;1418:/*
-;1419:===============
-;1420:BG_AddPredictableEventToPlayerstate
-;1421:
-;1422:Handles the sequence numbers
-;1423:===============
-;1424:*/
-;1425:
-;1426:void	trap_Cvar_VariableStringBuffer( const char *var_name, char *buffer, int bufsize );
-;1427:
-;1428:void BG_AddPredictableEventToPlayerstate( int newEvent, int eventParm, playerState_t *ps ) {
-line 1443
-;1429:
-;1430:#ifdef _DEBUG
-;1431:	{
-;1432:		char buf[256];
-;1433:		trap_Cvar_VariableStringBuffer("showevents", buf, sizeof(buf));
-;1434:		if ( atof(buf) != 0 ) {
-;1435:#ifdef QAGAME
-;1436:			Com_Printf(" game event svt %5d -> %5d: num = %20s parm %d\n", ps->pmove_framecount/*ps->commandTime*/, ps->eventSequence, eventnames[newEvent], eventParm);
-;1437:#else
-;1438:			Com_Printf("Cgame event svt %5d -> %5d: num = %20s parm %d\n", ps->pmove_framecount/*ps->commandTime*/, ps->eventSequence, eventnames[newEvent], eventParm);
-;1439:#endif
-;1440:		}
-;1441:	}
-;1442:#endif
-;1443:	ps->events[ps->eventSequence & (MAX_PS_EVENTS-1)] = newEvent;
+;1414:
+;1415:};
+;1416:
+;1417:/*
+;1418:===============
+;1419:BG_AddPredictableEventToPlayerstate
+;1420:
+;1421:Handles the sequence numbers
+;1422:===============
+;1423:*/
+;1424:
+;1425:void	trap_Cvar_VariableStringBuffer( const char *var_name, char *buffer, int bufsize );
+;1426:
+;1427:void BG_AddPredictableEventToPlayerstate( int newEvent, int eventParm, playerState_t *ps ) {
+line 1442
+;1428:
+;1429:#ifdef _DEBUG
+;1430:	{
+;1431:		char buf[256];
+;1432:		trap_Cvar_VariableStringBuffer("showevents", buf, sizeof(buf));
+;1433:		if ( atof(buf) != 0 ) {
+;1434:#ifdef QAGAME
+;1435:			Com_Printf(" game event svt %5d -> %5d: num = %20s parm %d\n", ps->pmove_framecount/*ps->commandTime*/, ps->eventSequence, eventnames[newEvent], eventParm);
+;1436:#else
+;1437:			Com_Printf("Cgame event svt %5d -> %5d: num = %20s parm %d\n", ps->pmove_framecount/*ps->commandTime*/, ps->eventSequence, eventnames[newEvent], eventParm);
+;1438:#endif
+;1439:		}
+;1440:	}
+;1441:#endif
+;1442:	ps->events[ps->eventSequence & (MAX_PS_EVENTS-1)] = newEvent;
 ADDRLP4 0
 ADDRFP4 8
 INDIRP4
@@ -3811,8 +3810,8 @@ ADDP4
 ADDRFP4 0
 INDIRI4
 ASGNI4
-line 1444
-;1444:	ps->eventParms[ps->eventSequence & (MAX_PS_EVENTS-1)] = eventParm;
+line 1443
+;1443:	ps->eventParms[ps->eventSequence & (MAX_PS_EVENTS-1)] = eventParm;
 ADDRLP4 4
 ADDRFP4 8
 INDIRP4
@@ -3834,8 +3833,8 @@ ADDP4
 ADDRFP4 4
 INDIRI4
 ASGNI4
-line 1445
-;1445:	ps->eventSequence++;
+line 1444
+;1444:	ps->eventSequence++;
 ADDRLP4 8
 ADDRFP4 8
 INDIRP4
@@ -3850,27 +3849,27 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1446
-;1446:}
+line 1445
+;1445:}
 LABELV $415
 endproc BG_AddPredictableEventToPlayerstate 12 0
 export BG_TouchJumpPad
 proc BG_TouchJumpPad 28 12
-line 1453
-;1447:
-;1448:/*
-;1449:========================
-;1450:BG_TouchJumpPad
-;1451:========================
-;1452:*/
-;1453:void BG_TouchJumpPad( playerState_t *ps, entityState_t *jumppad ) {
-line 1459
-;1454:	vec3_t	angles;
-;1455:	float p;
-;1456:	int effectNum;
-;1457:
-;1458:	// spectators don't use jump pads
-;1459:	if ( ps->pm_type != PM_NORMAL ) {
+line 1452
+;1446:
+;1447:/*
+;1448:========================
+;1449:BG_TouchJumpPad
+;1450:========================
+;1451:*/
+;1452:void BG_TouchJumpPad( playerState_t *ps, entityState_t *jumppad ) {
+line 1458
+;1453:	vec3_t	angles;
+;1454:	float p;
+;1455:	int effectNum;
+;1456:
+;1457:	// spectators don't use jump pads
+;1458:	if ( ps->pm_type != PM_NORMAL ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 4
@@ -3878,16 +3877,16 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $417
-line 1460
-;1460:		return;
+line 1459
+;1459:		return;
 ADDRGP4 $416
 JUMPV
 LABELV $417
-line 1464
-;1461:	}
-;1462:
-;1463:	// flying characters don't hit bounce pads
-;1464:	if ( ps->powerups[PW_FLIGHT] ) {
+line 1463
+;1460:	}
+;1461:
+;1462:	// flying characters don't hit bounce pads
+;1463:	if ( ps->powerups[PW_FLIGHT] ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 336
@@ -3895,17 +3894,17 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $419
-line 1465
-;1465:		return;
+line 1464
+;1464:		return;
 ADDRGP4 $416
 JUMPV
 LABELV $419
-line 1470
-;1466:	}
-;1467:
-;1468:	// if we didn't hit this same jumppad the previous frame
-;1469:	// then don't play the event sound again if we are in a fat trigger
-;1470:	if ( ps->jumppad_ent != jumppad->number ) {
+line 1469
+;1465:	}
+;1466:
+;1467:	// if we didn't hit this same jumppad the previous frame
+;1468:	// then don't play the event sound again if we are in a fat trigger
+;1469:	if ( ps->jumppad_ent != jumppad->number ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 448
@@ -3915,9 +3914,9 @@ ADDRFP4 4
 INDIRP4
 INDIRI4
 EQI4 $421
-line 1472
-;1471:
-;1472:		vectoangles( jumppad->origin2, angles);
+line 1471
+;1470:
+;1471:		vectoangles( jumppad->origin2, angles);
 ADDRFP4 4
 INDIRP4
 CNSTI4 104
@@ -3928,8 +3927,8 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 1473
-;1473:		p = fabs( AngleNormalize180( angles[PITCH] ) );
+line 1472
+;1472:		p = fabs( AngleNormalize180( angles[PITCH] ) );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -3948,32 +3947,32 @@ ADDRLP4 12
 ADDRLP4 24
 INDIRF4
 ASGNF4
-line 1474
-;1474:		if( p < 45 ) {
+line 1473
+;1473:		if( p < 45 ) {
 ADDRLP4 12
 INDIRF4
 CNSTF4 1110704128
 GEF4 $423
-line 1475
-;1475:			effectNum = 0;
+line 1474
+;1474:			effectNum = 0;
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
-line 1476
-;1476:		} else {
+line 1475
+;1475:		} else {
 ADDRGP4 $424
 JUMPV
 LABELV $423
-line 1477
-;1477:			effectNum = 1;
+line 1476
+;1476:			effectNum = 1;
 ADDRLP4 16
 CNSTI4 1
 ASGNI4
-line 1478
-;1478:		}
+line 1477
+;1477:		}
 LABELV $424
-line 1479
-;1479:		BG_AddPredictableEventToPlayerstate( EV_JUMP_PAD, effectNum, ps );
+line 1478
+;1478:		BG_AddPredictableEventToPlayerstate( EV_JUMP_PAD, effectNum, ps );
 CNSTI4 13
 ARGI4
 ADDRLP4 16
@@ -3985,12 +3984,12 @@ ARGP4
 ADDRGP4 BG_AddPredictableEventToPlayerstate
 CALLV
 pop
-line 1480
-;1480:	}
+line 1479
+;1479:	}
 LABELV $421
-line 1482
-;1481:	// remember hitting this jumppad this frame
-;1482:	ps->jumppad_ent = jumppad->number;
+line 1481
+;1480:	// remember hitting this jumppad this frame
+;1481:	ps->jumppad_ent = jumppad->number;
 ADDRFP4 0
 INDIRP4
 CNSTI4 448
@@ -3999,8 +3998,8 @@ ADDRFP4 4
 INDIRP4
 INDIRI4
 ASGNI4
-line 1483
-;1483:	ps->jumppad_frame = ps->pmove_framecount;
+line 1482
+;1482:	ps->jumppad_frame = ps->pmove_framecount;
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -4015,9 +4014,9 @@ CNSTI4 456
 ADDP4
 INDIRI4
 ASGNI4
-line 1485
-;1484:	// give the player the velocity from the jumppad
-;1485:	VectorCopy( jumppad->origin2, ps->velocity );
+line 1484
+;1483:	// give the player the velocity from the jumppad
+;1484:	VectorCopy( jumppad->origin2, ps->velocity );
 ADDRFP4 0
 INDIRP4
 CNSTI4 32
@@ -4028,27 +4027,27 @@ CNSTI4 104
 ADDP4
 INDIRB
 ASGNB 12
-line 1486
-;1486:}
+line 1485
+;1485:}
 LABELV $416
 endproc BG_TouchJumpPad 28 12
 export BG_PlayerStateToEntityState
 proc BG_PlayerStateToEntityState 32 4
-line 1496
-;1487:
-;1488:/*
-;1489:========================
-;1490:BG_PlayerStateToEntityState
-;1491:
-;1492:This is done after each set of usercmd_t on the server,
-;1493:and after local prediction on the client
-;1494:========================
-;1495:*/
-;1496:void BG_PlayerStateToEntityState( playerState_t *ps, entityState_t *s, qboolean snap ) {
-line 1499
-;1497:	int		i;
-;1498:
-;1499:	if ( ps->pm_type == PM_INTERMISSION || ps->pm_type == PM_SPECTATOR ) {
+line 1495
+;1486:
+;1487:/*
+;1488:========================
+;1489:BG_PlayerStateToEntityState
+;1490:
+;1491:This is done after each set of usercmd_t on the server,
+;1492:and after local prediction on the client
+;1493:========================
+;1494:*/
+;1495:void BG_PlayerStateToEntityState( playerState_t *ps, entityState_t *s, qboolean snap ) {
+line 1498
+;1496:	int		i;
+;1497:
+;1498:	if ( ps->pm_type == PM_INTERMISSION || ps->pm_type == PM_SPECTATOR ) {
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -4065,16 +4064,16 @@ INDIRI4
 CNSTI4 2
 NEI4 $426
 LABELV $428
-line 1500
-;1500:		s->eType = ET_INVISIBLE;
+line 1499
+;1499:		s->eType = ET_INVISIBLE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 10
 ASGNI4
-line 1501
-;1501:	} else if ( ps->stats[STAT_HEALTH] <= GIB_HEALTH ) {
+line 1500
+;1500:	} else if ( ps->stats[STAT_HEALTH] <= GIB_HEALTH ) {
 ADDRGP4 $427
 JUMPV
 LABELV $426
@@ -4085,34 +4084,34 @@ ADDP4
 INDIRI4
 CNSTI4 -40
 GTI4 $429
-line 1502
-;1502:		s->eType = ET_INVISIBLE;
+line 1501
+;1501:		s->eType = ET_INVISIBLE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 10
 ASGNI4
-line 1503
-;1503:	} else {
+line 1502
+;1502:	} else {
 ADDRGP4 $430
 JUMPV
 LABELV $429
-line 1504
-;1504:		s->eType = ET_PLAYER;
+line 1503
+;1503:		s->eType = ET_PLAYER;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1505
-;1505:	}
+line 1504
+;1504:	}
 LABELV $430
 LABELV $427
-line 1507
-;1506:
-;1507:	s->number = ps->clientNum;
+line 1506
+;1505:
+;1506:	s->number = ps->clientNum;
 ADDRFP4 4
 INDIRP4
 ADDRFP4 0
@@ -4121,17 +4120,17 @@ CNSTI4 140
 ADDP4
 INDIRI4
 ASGNI4
-line 1509
-;1508:
-;1509:	s->pos.trType = TR_INTERPOLATE;
+line 1508
+;1507:
+;1508:	s->pos.trType = TR_INTERPOLATE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1510
-;1510:	VectorCopy( ps->origin, s->pos.trBase );
+line 1509
+;1509:	VectorCopy( ps->origin, s->pos.trBase );
 ADDRFP4 4
 INDIRP4
 CNSTI4 24
@@ -4142,14 +4141,14 @@ CNSTI4 20
 ADDP4
 INDIRB
 ASGNB 12
-line 1511
-;1511:	if ( snap ) {
+line 1510
+;1510:	if ( snap ) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
 EQI4 $431
-line 1512
-;1512:		SnapVector( s->pos.trBase );
+line 1511
+;1511:		SnapVector( s->pos.trBase );
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4207,12 +4206,12 @@ INDIRP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1513
-;1513:	}
+line 1512
+;1512:	}
 LABELV $431
-line 1515
-;1514:	// set the trDelta for flag direction
-;1515:	VectorCopy( ps->velocity, s->pos.trDelta );
+line 1514
+;1513:	// set the trDelta for flag direction
+;1514:	VectorCopy( ps->velocity, s->pos.trDelta );
 ADDRFP4 4
 INDIRP4
 CNSTI4 36
@@ -4223,17 +4222,17 @@ CNSTI4 32
 ADDP4
 INDIRB
 ASGNB 12
-line 1517
-;1516:
-;1517:	s->apos.trType = TR_INTERPOLATE;
+line 1516
+;1515:
+;1516:	s->apos.trType = TR_INTERPOLATE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1518
-;1518:	VectorCopy( ps->viewangles, s->apos.trBase );
+line 1517
+;1517:	VectorCopy( ps->viewangles, s->apos.trBase );
 ADDRFP4 4
 INDIRP4
 CNSTI4 60
@@ -4244,14 +4243,14 @@ CNSTI4 152
 ADDP4
 INDIRB
 ASGNB 12
-line 1519
-;1519:	if ( snap ) {
+line 1518
+;1518:	if ( snap ) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
 EQI4 $433
-line 1520
-;1520:		SnapVector( s->apos.trBase );
+line 1519
+;1519:		SnapVector( s->apos.trBase );
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4309,12 +4308,12 @@ INDIRP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1521
-;1521:	}
+line 1520
+;1520:	}
 LABELV $433
-line 1523
-;1522:
-;1523:	s->angles2[YAW] = ps->movementDir;
+line 1522
+;1521:
+;1522:	s->angles2[YAW] = ps->movementDir;
 ADDRFP4 4
 INDIRP4
 CNSTI4 132
@@ -4326,8 +4325,8 @@ ADDP4
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1524
-;1524:	s->legsAnim = ps->legsAnim;
+line 1523
+;1523:	s->legsAnim = ps->legsAnim;
 ADDRFP4 4
 INDIRP4
 CNSTI4 196
@@ -4338,8 +4337,8 @@ CNSTI4 76
 ADDP4
 INDIRI4
 ASGNI4
-line 1525
-;1525:	s->torsoAnim = ps->torsoAnim;
+line 1524
+;1524:	s->torsoAnim = ps->torsoAnim;
 ADDRFP4 4
 INDIRP4
 CNSTI4 200
@@ -4350,8 +4349,8 @@ CNSTI4 84
 ADDP4
 INDIRI4
 ASGNI4
-line 1526
-;1526:	s->clientNum = ps->clientNum;		// ET_PLAYER looks here instead of at number
+line 1525
+;1525:	s->clientNum = ps->clientNum;		// ET_PLAYER looks here instead of at number
 ADDRFP4 4
 INDIRP4
 CNSTI4 168
@@ -4362,9 +4361,9 @@ CNSTI4 140
 ADDP4
 INDIRI4
 ASGNI4
-line 1528
-;1527:										// so corpses can also reference the proper config
-;1528:	s->eFlags = ps->eFlags;
+line 1527
+;1526:										// so corpses can also reference the proper config
+;1527:	s->eFlags = ps->eFlags;
 ADDRFP4 4
 INDIRP4
 CNSTI4 8
@@ -4375,8 +4374,8 @@ CNSTI4 104
 ADDP4
 INDIRI4
 ASGNI4
-line 1529
-;1529:	if ( ps->stats[STAT_HEALTH] <= 0 ) {
+line 1528
+;1528:	if ( ps->stats[STAT_HEALTH] <= 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 184
@@ -4384,8 +4383,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 GTI4 $435
-line 1530
-;1530:		s->eFlags |= EF_DEAD;
+line 1529
+;1529:		s->eFlags |= EF_DEAD;
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4400,13 +4399,13 @@ INDIRI4
 CNSTI4 1
 BORI4
 ASGNI4
-line 1531
-;1531:	} else {
+line 1530
+;1530:	} else {
 ADDRGP4 $436
 JUMPV
 LABELV $435
-line 1532
-;1532:		s->eFlags &= ~EF_DEAD;
+line 1531
+;1531:		s->eFlags &= ~EF_DEAD;
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4421,12 +4420,12 @@ INDIRI4
 CNSTI4 -2
 BANDI4
 ASGNI4
-line 1533
-;1533:	}
+line 1532
+;1532:	}
 LABELV $436
-line 1535
-;1534:
-;1535:	if ( ps->externalEvent ) {
+line 1534
+;1533:
+;1534:	if ( ps->externalEvent ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 128
@@ -4434,8 +4433,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $437
-line 1536
-;1536:		s->event = ps->externalEvent;
+line 1535
+;1535:		s->event = ps->externalEvent;
 ADDRFP4 4
 INDIRP4
 CNSTI4 180
@@ -4446,8 +4445,8 @@ CNSTI4 128
 ADDP4
 INDIRI4
 ASGNI4
-line 1537
-;1537:		s->eventParm = ps->externalEventParm;
+line 1536
+;1536:		s->eventParm = ps->externalEventParm;
 ADDRFP4 4
 INDIRP4
 CNSTI4 184
@@ -4458,8 +4457,8 @@ CNSTI4 132
 ADDP4
 INDIRI4
 ASGNI4
-line 1538
-;1538:	} else if ( ps->entityEventSequence < ps->eventSequence ) {
+line 1537
+;1537:	} else if ( ps->entityEventSequence < ps->eventSequence ) {
 ADDRGP4 $438
 JUMPV
 LABELV $437
@@ -4478,10 +4477,10 @@ CNSTI4 108
 ADDP4
 INDIRI4
 GEI4 $439
-line 1541
-;1539:		int		seq;
-;1540:
-;1541:		if ( ps->entityEventSequence < ps->eventSequence - MAX_PS_EVENTS) {
+line 1540
+;1538:		int		seq;
+;1539:
+;1540:		if ( ps->entityEventSequence < ps->eventSequence - MAX_PS_EVENTS) {
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -4499,8 +4498,8 @@ INDIRI4
 CNSTI4 2
 SUBI4
 GEI4 $441
-line 1542
-;1542:			ps->entityEventSequence = ps->eventSequence - MAX_PS_EVENTS;
+line 1541
+;1541:			ps->entityEventSequence = ps->eventSequence - MAX_PS_EVENTS;
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -4517,11 +4516,11 @@ INDIRI4
 CNSTI4 2
 SUBI4
 ASGNI4
-line 1543
-;1543:		}
+line 1542
+;1542:		}
 LABELV $441
-line 1544
-;1544:		seq = ps->entityEventSequence & (MAX_PS_EVENTS-1);
+line 1543
+;1543:		seq = ps->entityEventSequence & (MAX_PS_EVENTS-1);
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -4531,8 +4530,8 @@ INDIRI4
 CNSTI4 1
 BANDI4
 ASGNI4
-line 1545
-;1545:		s->event = ps->events[ seq ] | ( ( ps->entityEventSequence & 3 ) << 8 );
+line 1544
+;1544:		s->event = ps->events[ seq ] | ( ( ps->entityEventSequence & 3 ) << 8 );
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -4562,8 +4561,8 @@ CNSTI4 8
 LSHI4
 BORI4
 ASGNI4
-line 1546
-;1546:		s->eventParm = ps->eventParms[ seq ];
+line 1545
+;1545:		s->eventParm = ps->eventParms[ seq ];
 ADDRFP4 4
 INDIRP4
 CNSTI4 184
@@ -4579,8 +4578,8 @@ ADDP4
 ADDP4
 INDIRI4
 ASGNI4
-line 1547
-;1547:		ps->entityEventSequence++;
+line 1546
+;1546:		ps->entityEventSequence++;
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -4595,13 +4594,13 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1548
-;1548:	}
+line 1547
+;1547:	}
 LABELV $439
 LABELV $438
-line 1550
-;1549:
-;1550:	s->weapon = ps->weapon;
+line 1549
+;1548:
+;1549:	s->weapon = ps->weapon;
 ADDRFP4 4
 INDIRP4
 CNSTI4 192
@@ -4612,8 +4611,8 @@ CNSTI4 144
 ADDP4
 INDIRI4
 ASGNI4
-line 1551
-;1551:	s->groundEntityNum = ps->groundEntityNum;
+line 1550
+;1550:	s->groundEntityNum = ps->groundEntityNum;
 ADDRFP4 4
 INDIRP4
 CNSTI4 148
@@ -4624,23 +4623,23 @@ CNSTI4 68
 ADDP4
 INDIRI4
 ASGNI4
-line 1553
-;1552:
-;1553:	s->powerups = 0;
+line 1552
+;1551:
+;1552:	s->powerups = 0;
 ADDRFP4 4
 INDIRP4
 CNSTI4 188
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1554
-;1554:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
+line 1553
+;1553:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $443
-line 1555
-;1555:		if ( ps->powerups[ i ] ) {
+line 1554
+;1554:		if ( ps->powerups[ i ] ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4653,8 +4652,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $447
-line 1556
-;1556:			s->powerups |= 1 << i;
+line 1555
+;1555:			s->powerups |= 1 << i;
 ADDRLP4 12
 ADDRFP4 4
 INDIRP4
@@ -4672,13 +4671,13 @@ INDIRI4
 LSHI4
 BORI4
 ASGNI4
-line 1557
-;1557:		}
+line 1556
+;1556:		}
 LABELV $447
-line 1558
-;1558:	}
+line 1557
+;1557:	}
 LABELV $444
-line 1554
+line 1553
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4689,9 +4688,9 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 16
 LTI4 $443
-line 1560
-;1559:
-;1560:	s->loopSound = ps->loopSound;
+line 1559
+;1558:
+;1559:	s->loopSound = ps->loopSound;
 ADDRFP4 4
 INDIRP4
 CNSTI4 156
@@ -4702,8 +4701,8 @@ CNSTI4 444
 ADDP4
 INDIRI4
 ASGNI4
-line 1561
-;1561:	s->generic1 = ps->generic1;
+line 1560
+;1560:	s->generic1 = ps->generic1;
 ADDRFP4 4
 INDIRP4
 CNSTI4 204
@@ -4714,27 +4713,27 @@ CNSTI4 440
 ADDP4
 INDIRI4
 ASGNI4
-line 1562
-;1562:}
+line 1561
+;1561:}
 LABELV $425
 endproc BG_PlayerStateToEntityState 32 4
 export BG_PlayerStateToEntityStateExtraPolate
 proc BG_PlayerStateToEntityStateExtraPolate 32 4
-line 1572
-;1563:
-;1564:/*
-;1565:========================
-;1566:BG_PlayerStateToEntityStateExtraPolate
-;1567:
-;1568:This is done after each set of usercmd_t on the server,
-;1569:and after local prediction on the client
-;1570:========================
-;1571:*/
-;1572:void BG_PlayerStateToEntityStateExtraPolate( playerState_t *ps, entityState_t *s, int time, qboolean snap ) {
-line 1575
-;1573:	int		i;
-;1574:
-;1575:	if ( ps->pm_type == PM_INTERMISSION || ps->pm_type == PM_SPECTATOR ) {
+line 1571
+;1562:
+;1563:/*
+;1564:========================
+;1565:BG_PlayerStateToEntityStateExtraPolate
+;1566:
+;1567:This is done after each set of usercmd_t on the server,
+;1568:and after local prediction on the client
+;1569:========================
+;1570:*/
+;1571:void BG_PlayerStateToEntityStateExtraPolate( playerState_t *ps, entityState_t *s, int time, qboolean snap ) {
+line 1574
+;1572:	int		i;
+;1573:
+;1574:	if ( ps->pm_type == PM_INTERMISSION || ps->pm_type == PM_SPECTATOR ) {
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -4751,16 +4750,16 @@ INDIRI4
 CNSTI4 2
 NEI4 $450
 LABELV $452
-line 1576
-;1576:		s->eType = ET_INVISIBLE;
+line 1575
+;1575:		s->eType = ET_INVISIBLE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 10
 ASGNI4
-line 1577
-;1577:	} else if ( ps->stats[STAT_HEALTH] <= GIB_HEALTH ) {
+line 1576
+;1576:	} else if ( ps->stats[STAT_HEALTH] <= GIB_HEALTH ) {
 ADDRGP4 $451
 JUMPV
 LABELV $450
@@ -4771,34 +4770,34 @@ ADDP4
 INDIRI4
 CNSTI4 -40
 GTI4 $453
-line 1578
-;1578:		s->eType = ET_INVISIBLE;
+line 1577
+;1577:		s->eType = ET_INVISIBLE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 10
 ASGNI4
-line 1579
-;1579:	} else {
+line 1578
+;1578:	} else {
 ADDRGP4 $454
 JUMPV
 LABELV $453
-line 1580
-;1580:		s->eType = ET_PLAYER;
+line 1579
+;1579:		s->eType = ET_PLAYER;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1581
-;1581:	}
+line 1580
+;1580:	}
 LABELV $454
 LABELV $451
-line 1583
-;1582:
-;1583:	s->number = ps->clientNum;
+line 1582
+;1581:
+;1582:	s->number = ps->clientNum;
 ADDRFP4 4
 INDIRP4
 ADDRFP4 0
@@ -4807,17 +4806,17 @@ CNSTI4 140
 ADDP4
 INDIRI4
 ASGNI4
-line 1585
-;1584:
-;1585:	s->pos.trType = TR_LINEAR_STOP;
+line 1584
+;1583:
+;1584:	s->pos.trType = TR_LINEAR_STOP;
 ADDRFP4 4
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 3
 ASGNI4
-line 1586
-;1586:	VectorCopy( ps->origin, s->pos.trBase );
+line 1585
+;1585:	VectorCopy( ps->origin, s->pos.trBase );
 ADDRFP4 4
 INDIRP4
 CNSTI4 24
@@ -4828,14 +4827,14 @@ CNSTI4 20
 ADDP4
 INDIRB
 ASGNB 12
-line 1587
-;1587:	if ( snap ) {
+line 1586
+;1586:	if ( snap ) {
 ADDRFP4 12
 INDIRI4
 CNSTI4 0
 EQI4 $455
-line 1588
-;1588:		SnapVector( s->pos.trBase );
+line 1587
+;1587:		SnapVector( s->pos.trBase );
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4893,12 +4892,12 @@ INDIRP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1589
-;1589:	}
+line 1588
+;1588:	}
 LABELV $455
-line 1591
-;1590:	// set the trDelta for flag direction and linear prediction
-;1591:	VectorCopy( ps->velocity, s->pos.trDelta );
+line 1590
+;1589:	// set the trDelta for flag direction and linear prediction
+;1590:	VectorCopy( ps->velocity, s->pos.trDelta );
 ADDRFP4 4
 INDIRP4
 CNSTI4 36
@@ -4909,9 +4908,9 @@ CNSTI4 32
 ADDP4
 INDIRB
 ASGNB 12
-line 1593
-;1592:	// set the time for linear prediction
-;1593:	s->pos.trTime = time;
+line 1592
+;1591:	// set the time for linear prediction
+;1592:	s->pos.trTime = time;
 ADDRFP4 4
 INDIRP4
 CNSTI4 16
@@ -4919,26 +4918,26 @@ ADDP4
 ADDRFP4 8
 INDIRI4
 ASGNI4
-line 1595
-;1594:	// set maximum extra polation time
-;1595:	s->pos.trDuration = 50; // 1000 / sv_fps (default = 20)
+line 1594
+;1593:	// set maximum extra polation time
+;1594:	s->pos.trDuration = 50; // 1000 / sv_fps (default = 20)
 ADDRFP4 4
 INDIRP4
 CNSTI4 20
 ADDP4
 CNSTI4 50
 ASGNI4
-line 1597
-;1596:
-;1597:	s->apos.trType = TR_INTERPOLATE;
+line 1596
+;1595:
+;1596:	s->apos.trType = TR_INTERPOLATE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1598
-;1598:	VectorCopy( ps->viewangles, s->apos.trBase );
+line 1597
+;1597:	VectorCopy( ps->viewangles, s->apos.trBase );
 ADDRFP4 4
 INDIRP4
 CNSTI4 60
@@ -4949,14 +4948,14 @@ CNSTI4 152
 ADDP4
 INDIRB
 ASGNB 12
-line 1599
-;1599:	if ( snap ) {
+line 1598
+;1598:	if ( snap ) {
 ADDRFP4 12
 INDIRI4
 CNSTI4 0
 EQI4 $457
-line 1600
-;1600:		SnapVector( s->apos.trBase );
+line 1599
+;1599:		SnapVector( s->apos.trBase );
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -5014,12 +5013,12 @@ INDIRP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1601
-;1601:	}
+line 1600
+;1600:	}
 LABELV $457
-line 1603
-;1602:
-;1603:	s->angles2[YAW] = ps->movementDir;
+line 1602
+;1601:
+;1602:	s->angles2[YAW] = ps->movementDir;
 ADDRFP4 4
 INDIRP4
 CNSTI4 132
@@ -5031,8 +5030,8 @@ ADDP4
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1604
-;1604:	s->legsAnim = ps->legsAnim;
+line 1603
+;1603:	s->legsAnim = ps->legsAnim;
 ADDRFP4 4
 INDIRP4
 CNSTI4 196
@@ -5043,8 +5042,8 @@ CNSTI4 76
 ADDP4
 INDIRI4
 ASGNI4
-line 1605
-;1605:	s->torsoAnim = ps->torsoAnim;
+line 1604
+;1604:	s->torsoAnim = ps->torsoAnim;
 ADDRFP4 4
 INDIRP4
 CNSTI4 200
@@ -5055,8 +5054,8 @@ CNSTI4 84
 ADDP4
 INDIRI4
 ASGNI4
-line 1606
-;1606:	s->clientNum = ps->clientNum;		// ET_PLAYER looks here instead of at number
+line 1605
+;1605:	s->clientNum = ps->clientNum;		// ET_PLAYER looks here instead of at number
 ADDRFP4 4
 INDIRP4
 CNSTI4 168
@@ -5067,9 +5066,9 @@ CNSTI4 140
 ADDP4
 INDIRI4
 ASGNI4
-line 1608
-;1607:										// so corpses can also reference the proper config
-;1608:	s->eFlags = ps->eFlags;
+line 1607
+;1606:										// so corpses can also reference the proper config
+;1607:	s->eFlags = ps->eFlags;
 ADDRFP4 4
 INDIRP4
 CNSTI4 8
@@ -5080,8 +5079,8 @@ CNSTI4 104
 ADDP4
 INDIRI4
 ASGNI4
-line 1609
-;1609:	if ( ps->stats[STAT_HEALTH] <= 0 ) {
+line 1608
+;1608:	if ( ps->stats[STAT_HEALTH] <= 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 184
@@ -5089,8 +5088,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 GTI4 $459
-line 1610
-;1610:		s->eFlags |= EF_DEAD;
+line 1609
+;1609:		s->eFlags |= EF_DEAD;
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -5105,13 +5104,13 @@ INDIRI4
 CNSTI4 1
 BORI4
 ASGNI4
-line 1611
-;1611:	} else {
+line 1610
+;1610:	} else {
 ADDRGP4 $460
 JUMPV
 LABELV $459
-line 1612
-;1612:		s->eFlags &= ~EF_DEAD;
+line 1611
+;1611:		s->eFlags &= ~EF_DEAD;
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -5126,12 +5125,12 @@ INDIRI4
 CNSTI4 -2
 BANDI4
 ASGNI4
-line 1613
-;1613:	}
+line 1612
+;1612:	}
 LABELV $460
-line 1615
-;1614:
-;1615:	if ( ps->externalEvent ) {
+line 1614
+;1613:
+;1614:	if ( ps->externalEvent ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 128
@@ -5139,8 +5138,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $461
-line 1616
-;1616:		s->event = ps->externalEvent;
+line 1615
+;1615:		s->event = ps->externalEvent;
 ADDRFP4 4
 INDIRP4
 CNSTI4 180
@@ -5151,8 +5150,8 @@ CNSTI4 128
 ADDP4
 INDIRI4
 ASGNI4
-line 1617
-;1617:		s->eventParm = ps->externalEventParm;
+line 1616
+;1616:		s->eventParm = ps->externalEventParm;
 ADDRFP4 4
 INDIRP4
 CNSTI4 184
@@ -5163,8 +5162,8 @@ CNSTI4 132
 ADDP4
 INDIRI4
 ASGNI4
-line 1618
-;1618:	} else if ( ps->entityEventSequence < ps->eventSequence ) {
+line 1617
+;1617:	} else if ( ps->entityEventSequence < ps->eventSequence ) {
 ADDRGP4 $462
 JUMPV
 LABELV $461
@@ -5183,10 +5182,10 @@ CNSTI4 108
 ADDP4
 INDIRI4
 GEI4 $463
-line 1621
-;1619:		int		seq;
-;1620:
-;1621:		if ( ps->entityEventSequence < ps->eventSequence - MAX_PS_EVENTS) {
+line 1620
+;1618:		int		seq;
+;1619:
+;1620:		if ( ps->entityEventSequence < ps->eventSequence - MAX_PS_EVENTS) {
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -5204,8 +5203,8 @@ INDIRI4
 CNSTI4 2
 SUBI4
 GEI4 $465
-line 1622
-;1622:			ps->entityEventSequence = ps->eventSequence - MAX_PS_EVENTS;
+line 1621
+;1621:			ps->entityEventSequence = ps->eventSequence - MAX_PS_EVENTS;
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -5222,11 +5221,11 @@ INDIRI4
 CNSTI4 2
 SUBI4
 ASGNI4
-line 1623
-;1623:		}
+line 1622
+;1622:		}
 LABELV $465
-line 1624
-;1624:		seq = ps->entityEventSequence & (MAX_PS_EVENTS-1);
+line 1623
+;1623:		seq = ps->entityEventSequence & (MAX_PS_EVENTS-1);
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -5236,8 +5235,8 @@ INDIRI4
 CNSTI4 1
 BANDI4
 ASGNI4
-line 1625
-;1625:		s->event = ps->events[ seq ] | ( ( ps->entityEventSequence & 3 ) << 8 );
+line 1624
+;1624:		s->event = ps->events[ seq ] | ( ( ps->entityEventSequence & 3 ) << 8 );
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -5267,8 +5266,8 @@ CNSTI4 8
 LSHI4
 BORI4
 ASGNI4
-line 1626
-;1626:		s->eventParm = ps->eventParms[ seq ];
+line 1625
+;1625:		s->eventParm = ps->eventParms[ seq ];
 ADDRFP4 4
 INDIRP4
 CNSTI4 184
@@ -5284,8 +5283,8 @@ ADDP4
 ADDP4
 INDIRI4
 ASGNI4
-line 1627
-;1627:		ps->entityEventSequence++;
+line 1626
+;1626:		ps->entityEventSequence++;
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -5300,13 +5299,13 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1628
-;1628:	}
+line 1627
+;1627:	}
 LABELV $463
 LABELV $462
-line 1630
-;1629:
-;1630:	s->weapon = ps->weapon;
+line 1629
+;1628:
+;1629:	s->weapon = ps->weapon;
 ADDRFP4 4
 INDIRP4
 CNSTI4 192
@@ -5317,8 +5316,8 @@ CNSTI4 144
 ADDP4
 INDIRI4
 ASGNI4
-line 1631
-;1631:	s->groundEntityNum = ps->groundEntityNum;
+line 1630
+;1630:	s->groundEntityNum = ps->groundEntityNum;
 ADDRFP4 4
 INDIRP4
 CNSTI4 148
@@ -5329,23 +5328,23 @@ CNSTI4 68
 ADDP4
 INDIRI4
 ASGNI4
-line 1633
-;1632:
-;1633:	s->powerups = 0;
+line 1632
+;1631:
+;1632:	s->powerups = 0;
 ADDRFP4 4
 INDIRP4
 CNSTI4 188
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1634
-;1634:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
+line 1633
+;1633:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $467
-line 1635
-;1635:		if ( ps->powerups[ i ] ) {
+line 1634
+;1634:		if ( ps->powerups[ i ] ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -5358,8 +5357,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $471
-line 1636
-;1636:			s->powerups |= 1 << i;
+line 1635
+;1635:			s->powerups |= 1 << i;
 ADDRLP4 12
 ADDRFP4 4
 INDIRP4
@@ -5377,13 +5376,13 @@ INDIRI4
 LSHI4
 BORI4
 ASGNI4
-line 1637
-;1637:		}
+line 1636
+;1636:		}
 LABELV $471
-line 1638
-;1638:	}
+line 1637
+;1637:	}
 LABELV $468
-line 1634
+line 1633
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -5394,9 +5393,9 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 16
 LTI4 $467
-line 1640
-;1639:
-;1640:	s->loopSound = ps->loopSound;
+line 1639
+;1638:
+;1639:	s->loopSound = ps->loopSound;
 ADDRFP4 4
 INDIRP4
 CNSTI4 156
@@ -5407,8 +5406,8 @@ CNSTI4 444
 ADDP4
 INDIRI4
 ASGNI4
-line 1641
-;1641:	s->generic1 = ps->generic1;
+line 1640
+;1640:	s->generic1 = ps->generic1;
 ADDRFP4 4
 INDIRP4
 CNSTI4 204
@@ -5419,8 +5418,8 @@ CNSTI4 440
 ADDP4
 INDIRI4
 ASGNI4
-line 1642
-;1642:}
+line 1641
+;1641:}
 LABELV $449
 endproc BG_PlayerStateToEntityStateExtraPolate 32 4
 import trap_Cvar_VariableStringBuffer

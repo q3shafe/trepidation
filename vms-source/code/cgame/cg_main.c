@@ -671,6 +671,7 @@ static void CG_RegisterSounds( void ) {
 	cgs.media.gibBounce2Sound = trap_S_RegisterSound( "sound/player/gibimp2.wav", qfalse );
 	cgs.media.gibBounce3Sound = trap_S_RegisterSound( "sound/player/gibimp3.wav", qfalse );
 	cgs.media.glassSound = trap_S_RegisterSound( "sound/world/glassbreak.wav", qfalse );
+	cgs.media.errorSound = trap_S_RegisterSound( "sound/misc/error.wav", qfalse );
 
 #ifdef MISSIONPACK
 	cgs.media.useInvulnerabilitySound = trap_S_RegisterSound( "sound/items/invul_activate.wav", qfalse );

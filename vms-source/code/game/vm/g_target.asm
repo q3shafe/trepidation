@@ -2485,7 +2485,7 @@ line 408
 ;406:	int n;
 ;407:
 ;408:	if (level.locationLinked) 
-ADDRGP4 level+9176
+ADDRGP4 level+9180
 INDIRI4
 CNSTI4 0
 EQI4 $192
@@ -2497,13 +2497,13 @@ LABELV $192
 line 411
 ;410:
 ;411:	level.locationLinked = qtrue;
-ADDRGP4 level+9176
+ADDRGP4 level+9180
 CNSTI4 1
 ASGNI4
 line 413
 ;412:
 ;413:	level.locationHead = NULL;
-ADDRGP4 level+9180
+ADDRGP4 level+9184
 CNSTP4 0
 ASGNP4
 line 415
@@ -2601,12 +2601,12 @@ ADDRFP4 0
 INDIRP4
 CNSTI4 612
 ADDP4
-ADDRGP4 level+9180
+ADDRGP4 level+9184
 INDIRP4
 ASGNP4
 line 426
 ;426:			level.locationHead = ent;
-ADDRGP4 level+9180
+ADDRGP4 level+9184
 ADDRFP4 0
 INDIRP4
 ASGNP4

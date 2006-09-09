@@ -303,7 +303,7 @@ ADDP4
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 level+48
+ADDRGP4 level+52
 ADDP4
 ASGNP4
 ADDRLP4 8
@@ -2145,7 +2145,7 @@ line 493
 ;491:	}
 ;492:
 ;493:	if ( level.intermissiontime ) {
-ADDRGP4 level+9136
+ADDRGP4 level+9140
 INDIRI4
 CNSTI4 0
 EQI4 $226
@@ -3167,7 +3167,7 @@ line 650
 ADDRLP4 84
 CNSTI4 0
 ASGNI4
-ADDRGP4 level+9232
+ADDRGP4 level+9236
 INDIRI4
 ADDRLP4 84
 INDIRI4
@@ -3192,7 +3192,7 @@ line 653
 ;653:		{
 line 654
 ;654:			level.firstStrike = qtrue;
-ADDRGP4 level+9232
+ADDRGP4 level+9236
 CNSTI4 1
 ASGNI4
 line 655
@@ -3643,7 +3643,7 @@ line 714
 ;714:				if (tmpCnt != level.levelSurvivors)
 ADDRLP4 28
 INDIRI4
-ADDRGP4 level+9224
+ADDRGP4 level+9228
 INDIRI4
 EQI4 $328
 line 715
@@ -3651,7 +3651,7 @@ line 715
 line 717
 ;716:
 ;717:					level.levelSurvivors = tmpCnt;
-ADDRGP4 level+9224
+ADDRGP4 level+9228
 ADDRLP4 28
 INDIRI4
 ASGNI4
@@ -5071,7 +5071,7 @@ line 1028
 ;1026:	// the intermission has allready been qualified for, so don't
 ;1027:	// allow any extra scoring
 ;1028:	if ( level.intermissionQueued ) {
-ADDRGP4 level+9132
+ADDRGP4 level+9136
 INDIRI4
 CNSTI4 0
 EQI4 $398

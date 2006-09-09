@@ -13,7 +13,7 @@ line 9
 ;7:	int		i;
 ;8:
 ;9:	if ( !level.spawning ) {
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 INDIRI4
 CNSTI4 0
 NEI4 $56
@@ -46,7 +46,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 3
 LSHI4
-ADDRGP4 level+4520
+ADDRGP4 level+4524
 ADDP4
 INDIRP4
 ARGP4
@@ -66,7 +66,7 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 3
 LSHI4
-ADDRGP4 level+4520+4
+ADDRGP4 level+4524+4
 ADDP4
 INDIRP4
 ASGNP4
@@ -91,7 +91,7 @@ ASGNI4
 LABELV $62
 ADDRLP4 0
 INDIRI4
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 INDIRI4
 LTI4 $59
 line 21
@@ -1462,13 +1462,13 @@ LSHI4
 ASGNI4
 ADDRLP4 24
 INDIRI4
-ADDRGP4 level+4520
+ADDRGP4 level+4524
 ADDP4
 INDIRP4
 ARGP4
 ADDRLP4 24
 INDIRI4
-ADDRGP4 level+4520+4
+ADDRGP4 level+4524+4
 ADDP4
 INDIRP4
 ARGP4
@@ -1491,7 +1491,7 @@ ASGNI4
 LABELV $208
 ADDRLP4 0
 INDIRI4
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 INDIRI4
 LTI4 $205
 line 408
@@ -1818,7 +1818,7 @@ INDIRI4
 ASGNI4
 line 478
 ;478:	if ( level.numSpawnVarChars + l + 1 > MAX_SPAWN_VARS_CHARS ) {
-ADDRGP4 level+5032
+ADDRGP4 level+5036
 INDIRI4
 ADDRLP4 0
 INDIRI4
@@ -1841,9 +1841,9 @@ line 482
 ;481:
 ;482:	dest = level.spawnVarChars + level.numSpawnVarChars;
 ADDRLP4 4
-ADDRGP4 level+5032
-INDIRI4
 ADDRGP4 level+5036
+INDIRI4
+ADDRGP4 level+5040
 ADDP4
 ASGNP4
 line 483
@@ -1866,7 +1866,7 @@ line 485
 ;484:
 ;485:	level.numSpawnVarChars += l + 1;
 ADDRLP4 12
-ADDRGP4 level+5032
+ADDRGP4 level+5036
 ASGNP4
 ADDRLP4 12
 INDIRP4
@@ -1908,12 +1908,12 @@ line 504
 ;502:	char		com_token[MAX_TOKEN_CHARS];
 ;503:
 ;504:	level.numSpawnVars = 0;
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 CNSTI4 0
 ASGNI4
 line 505
 ;505:	level.numSpawnVarChars = 0;
-ADDRGP4 level+5032
+ADDRGP4 level+5036
 CNSTI4 0
 ASGNI4
 line 508
@@ -2051,7 +2051,7 @@ line 534
 LABELV $270
 line 535
 ;535:		if ( level.numSpawnVars == MAX_SPAWN_VARS ) {
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 INDIRI4
 CNSTI4 64
 NEI4 $273
@@ -2073,11 +2073,11 @@ ADDRLP4 2060
 ADDRGP4 G_AddSpawnVarToken
 CALLP4
 ASGNP4
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 INDIRI4
 CNSTI4 3
 LSHI4
-ADDRGP4 level+4520
+ADDRGP4 level+4524
 ADDP4
 ADDRLP4 2060
 INDIRP4
@@ -2090,11 +2090,11 @@ ADDRLP4 2064
 ADDRGP4 G_AddSpawnVarToken
 CALLP4
 ASGNP4
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 INDIRI4
 CNSTI4 3
 LSHI4
-ADDRGP4 level+4520+4
+ADDRGP4 level+4524+4
 ADDP4
 ADDRLP4 2064
 INDIRP4
@@ -2102,7 +2102,7 @@ ASGNP4
 line 540
 ;540:		level.numSpawnVars++;
 ADDRLP4 2068
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 ASGNP4
 ADDRLP4 2068
 INDIRP4
@@ -2374,7 +2374,7 @@ CNSTI4 0
 ASGNI4
 line 593
 ;593:		level.firstStrike = qfalse;
-ADDRGP4 level+9232
+ADDRGP4 level+9236
 CNSTI4 0
 ASGNI4
 line 596
@@ -2395,7 +2395,7 @@ CNSTI4 -1
 ASGNI4
 line 598
 ;598:		level.firstStrike = qfalse;
-ADDRGP4 level+9232
+ADDRGP4 level+9236
 CNSTI4 0
 ASGNI4
 line 599
@@ -2451,12 +2451,12 @@ line 615
 line 617
 ;616:	// allow calls to G_Spawn*()
 ;617:	level.spawning = qtrue;
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 CNSTI4 1
 ASGNI4
 line 618
 ;618:	level.numSpawnVars = 0;
-ADDRGP4 level+4516
+ADDRGP4 level+4520
 CNSTI4 0
 ASGNI4
 line 623
@@ -2515,7 +2515,7 @@ NEI4 $323
 line 633
 ;632:
 ;633:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
-ADDRGP4 level+4512
+ADDRGP4 level+4516
 CNSTI4 0
 ASGNI4
 line 634
