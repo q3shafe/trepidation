@@ -327,13 +327,6 @@ void G_MissileImpact( gentity_t *ent, trace_t *trace ) {
 		return;
 	}
 
-	// Shafe - trep - pdg - Only if not ET_MISSILE
-	/*
-	ent->parent->istelepoint = 1;
-	VectorCopy(ent->r.currentOrigin, ent->parent->teleloc);
-	ent->parent->teleloc[2] += 8;
-	*/
-	// End Shafe
 
 #ifdef MISSIONPACK
 	if ( other->takedamage ) {

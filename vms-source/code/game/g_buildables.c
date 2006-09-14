@@ -8,6 +8,8 @@
 #include "g_local.h"
 
 
+
+
 /* 
 ====================================
 
@@ -24,7 +26,6 @@
 #define TURRET_MG_SPREAD	100
 #define	TURRET_MG_DAMAGE	15
 #define	TURRET_MG_DAMAGE2	40
-
 
 
 /*
@@ -493,6 +494,7 @@ void BuildTurret( gentity_t *ent , int type ){
 	VectorSet( base->r.mins, -15, -15, -20 );
 	VectorSet( base->r.maxs, 35, 15, -5); 
 	trap_LinkEntity (base);
+	//Drop_Item(ent,base,45);
 
 }
 
@@ -636,6 +638,7 @@ void BuildMC( gentity_t *ent ){
 
 
 	trap_LinkEntity (base);
+	//Drop_Item(ent,base,45);
 }
 
 
@@ -720,6 +723,7 @@ BuildGenerator
 void BuildGenerator( gentity_t *ent ){
 
 	gentity_t	*base;
+	vec3_t		velocity;
 
 
 	base=G_Spawn();
@@ -743,6 +747,21 @@ void BuildGenerator( gentity_t *ent ){
 	base->nextthink=level.time+9000;   // 9 Seconds before a sheildgen is operational.
 	VectorSet( base->r.mins, -15, -15, -20 );
 	VectorSet( base->r.maxs, 35, 15, 0);
+	
+	
+	// Drop To Ground
+	// This makes it fall.. but it doesnt stop! eeek lol
+	/*
+	G_SetOrigin( base, ent->s.pos.trBase );
+	base->s.pos.trType = TR_GRAVITY;
+	base->s.pos.trTime = level.time;
+	VectorCopy( velocity, base->s.pos.trDelta );
+	base->s.eFlags |= EF_BOUNCE_HALF;
+	base->flags = FL_DROPPED_ITEM;
+	*/
+
+
+
 	trap_LinkEntity (base);
 
 }
