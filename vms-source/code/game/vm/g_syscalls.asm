@@ -4876,6 +4876,7 @@ import visible
 import findradius
 import trap_Cvar_VariableValue
 import trap_Args
+import g_Turrets
 import g_StartBFG
 import g_StartPlasma
 import g_StartGauss

@@ -695,6 +695,7 @@ void G_PredictPlayerMove( gentity_t *ent, float frametime );
 //
 // g_buildables.c
 //
+
 void BuildTurret( gentity_t *ent , int type );
 void BuildGenerator( gentity_t *ent );
 void BuildMC( gentity_t *ent );
@@ -935,6 +936,9 @@ extern	vmCvar_t	g_StartFlame;
 extern	vmCvar_t	g_StartGauss;
 extern	vmCvar_t	g_StartPlasma;
 extern	vmCvar_t	g_StartBFG;
+
+// Other Options
+extern	vmCvar_t	g_Turrets;
 
 
 //extern	vmCvar_t	g_CTFGrapple; // Decided not to make this an option

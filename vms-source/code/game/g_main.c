@@ -102,6 +102,9 @@ vmCvar_t	g_StartGauss;
 vmCvar_t	g_StartPlasma;
 vmCvar_t	g_StartBFG;
 
+// Other Options
+vmCvar_t	g_Turrets;
+
 //vmCvar_t	g_CTFGrapple; // Decided not to make this an option
 
 // bk001129 - made static to avoid aliasing
@@ -201,7 +204,9 @@ static cvarTable_t		gameCvarTable[] = {
 	// Mods
 	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
 	{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH, 0, qfalse  },	
-	
+
+	// New Stuff
+	{ &g_Turrets, "g_Turrets", "1", CVAR_ARCHIVE, 0, qtrue },	
 
 	// Arsenal Stuff
 	{ &g_StartGauntlet, "g_StartGauntlet", "1", CVAR_ARCHIVE, 0, qtrue  },
@@ -2336,6 +2341,8 @@ int start, end;
 		if ( ent->s.eType == ET_MISSILE ) {
 			G_RunMissile( ent );
 		}
+
+
 	}
 
 	G_UnTimeShiftAllClients( NULL );

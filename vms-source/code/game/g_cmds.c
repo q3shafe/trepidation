@@ -5,7 +5,7 @@
 #include "../../ui/menudef.h"			// for the voice chats
 
 extern void Team_ReturnFlagSound( gentity_t *ent, int team ); // Shafe
-extern void Team_ResetFlags( void ); // Shafe
+//extern void Team_ResetFlags( void ); // Shafe
 
 /*
 =================================================
@@ -86,7 +86,7 @@ void Cmd_SpawnGenerator_f( gentity_t *ent ){
 			}
 		}
 	}
-
+	
 	// If it couldn't be built tell them why
 	if (iserror != 0)
 	{
@@ -144,7 +144,8 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 	// Turrets on our team.
 	if (g_gametype.integer == GT_CTF) 
 	{
-		if (iserror == 1)
+		
+		if ((iserror == 1) && (g_Turrets.integer == 1))
 		{
 			if(ent->client->sess.sessionTeam == TEAM_BLUE) 
 			{
