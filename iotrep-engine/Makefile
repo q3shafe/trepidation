@@ -104,9 +104,9 @@ ifndef USE_CODEC_VORBIS
 USE_CODEC_VORBIS=0
 endif
 
-ifndef USE_CODEC_MP3
-USE_CODEC_MP3=0
-endif
+#ifndef USE_CODEC_MP3
+#USE_CODEC_MP3=0
+#endif
 
 ifndef USE_LOCAL_HEADERS
 USE_LOCAL_HEADERS=1
@@ -190,9 +190,9 @@ ifeq ($(PLATFORM),linux)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
 
-  ifeq ($(USE_CODEC_MP3),1)
+#  ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
-  endif
+#  endif
 
   ifeq ($(USE_SDL),1)
     BASE_CFLAGS += -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 $(shell sdl-config --cflags)
@@ -203,9 +203,9 @@ ifeq ($(PLATFORM),linux)
 
   OPTIMIZE = -O3 -ffast-math -funroll-loops -fomit-frame-pointer
 
-  ifeq ($(USE_CODEC_MP3),1)
+#  ifeq ($(USE_CODEC_MP3),1)
     CLIENT_LDFLAGS += -lmad
-  endif
+#  endif
 
 
   ifeq ($(ARCH),x86_64)
@@ -296,9 +296,9 @@ ifeq ($(PLATFORM),darwin)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
 
-  ifeq ($(USE_CODEC_MP3),1)
+#  ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
-  endif
+#  endif
 
 
   ifeq ($(USE_SDL),1)
@@ -361,9 +361,9 @@ ifeq ($(PLATFORM),darwin)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
   endif
 
-  ifeq ($(USE_CODEC_MP3),1)
+#  ifeq ($(USE_CODEC_MP3),1)
     CLIENT_LDFLAGS += -lmad
-  endif
+#  endif
 
 
 else # ifeq darwin
@@ -390,9 +390,9 @@ ifeq ($(PLATFORM),mingw32)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
 
-  ifeq ($(USE_CODEC_MP3),1)
+#  ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
-  endif
+#  endif
 
 
   GL_CFLAGS =
@@ -420,9 +420,9 @@ ifeq ($(PLATFORM),mingw32)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
   endif
 
-  ifeq ($(USE_CODEC_MP3),1)
+#  ifeq ($(USE_CODEC_MP3),1)
     CLIENT_LDFLAGS += -lmad
-  endif
+#  endif
 
 
   ifeq ($(ARCH),x86)
@@ -466,9 +466,9 @@ ifeq ($(PLATFORM),freebsd)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
 
-  ifeq ($(USE_CODEC_MP3),1)
+#  ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
-  endif
+#  endif
 
 
   ifeq ($(USE_SDL),1)
@@ -519,9 +519,9 @@ ifeq ($(PLATFORM),freebsd)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
   endif
 
-  ifeq ($(USE_CODEC_MP3),1)
+#  ifeq ($(USE_CODEC_MP3),1)
     CLIENT_LDFLAGS += -lmad
-  endif
+#  endif
 
 else # ifeq freebsd
 
@@ -1824,5 +1824,6 @@ ifneq ($(strip $(D_FILES)),)
 endif
 
 .PHONY: release debug clean distclean copyfiles installer dist
+
 
 
