@@ -587,10 +587,14 @@ line 145
 ;142:
 ;143:	// If playing CTF Make sure that we dont have too many 
 ;144:	// Turrets on our team.
-;145:	if (g_gametype.integer == GT_CTF) 
+;145:	if (g_gametype.integer == GT_CTF && iserror == 1) 
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 4
+NEI4 $123
+ADDRLP4 0
+INDIRI4
+CNSTI4 1
 NEI4 $123
 line 146
 ;146:	{
@@ -12845,6 +12849,8 @@ import g_StartSG
 import g_StartMG
 import g_StartGauntlet
 import g_MultiJumps
+import g_RedMC
+import g_BlueMC
 import g_GameMode
 import g_instagib
 import sv_fps

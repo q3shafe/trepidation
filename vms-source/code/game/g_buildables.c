@@ -52,7 +52,9 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		{ 
 			level.blueMC--; 
 			level.redScoreLatched = 1;
-			level.blueScoreLatched = -1;
+			level.blueNeedMC = 1;
+			trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", 0) );
+			level.blueCredits = 0;
 		}		
 	}
 	if (self->s.team == TEAM_RED)
@@ -63,8 +65,10 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		{ 
 			level.redMC--; 
 			level.blueScoreLatched = 1;
-			level.redScoreLatched = -1;
-		
+			level.redNeedMC = 1;
+			trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", 0) );
+			level.redCredits = 0;
+			
 		}		
 
 	}
@@ -211,40 +215,39 @@ turret_fireonenemy
 
 void turret_fireonenemy( gentity_t *ent){
 
-
-	if (ent->s.time2 > 1)
+	if (!level.intermissiontime) 
 	{
-		fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
-	} else
-	{
-		
-		if (ent->s.time2 == 0)
+	
+		if (ent->s.time2 > 1)
 		{
-			//Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE );
-			fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qfalse);
-			//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+			fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
 		} else
 		{
-			//Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE2 );
-			//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qtrue);
-			fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+			
+			if (ent->s.time2 == 0)
+			{
+				//Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE );
+				fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qfalse);
+				//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+			} else
+			{
+				//Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE2 );
+				//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qtrue);
+				fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+			}
+			
+			
 		}
 		
-		
-	}
-	
-	
-	
+		G_AddEvent( ent, EV_FIRE_WEAPON, 0 );
+		ent->count=level.time+200;
 
-	
-	G_AddEvent( ent, EV_FIRE_WEAPON, 0 );
-	ent->count=level.time+200;
-
-	// decloaks a cloaked turret when firing.
-	if (ent->s.time2==2)
-	{
-		ent->s.time2=3;
-		ent->chain->s.time2=3;
+		// decloaks a cloaked turret when firing.
+		if (ent->s.time2==2)
+		{
+			ent->s.time2=3;
+			ent->chain->s.time2=3;
+		}
 	}
 }
 
@@ -530,10 +533,14 @@ void MC_think(gentity_t *ent){
 	if (ent->s.team == TEAM_BLUE)
 	{
 		shieldMultiplier = level.blueGen;
+		level.blueCredits = ent->health;
+
 	}
 	if (ent->s.team == TEAM_RED)
 	{
 		shieldMultiplier = level.redGen;
+		level.redCredits = ent->health;
+		
 	}
 
 	shieldMultiplier++;
@@ -555,7 +562,7 @@ void MC_think(gentity_t *ent){
 	
 	if ((ent->s.time2==1) && (shieldMultiplier > 1)) 
 	{
-		if (ent->health < (1000 * shieldMultiplier) ) 
+		if (ent->health < (800 * shieldMultiplier) ) 
 		{
 			ent->health+=1;
 			ent->nextthink=level.time+100;
@@ -602,10 +609,12 @@ void BuildMC( gentity_t *ent ){
 	if (ent->client->sess.sessionTeam == TEAM_BLUE)
 	{
 		level.blueMC++;
+		level.blueNeedMC = 0;
 	}
 	if (ent->client->sess.sessionTeam == TEAM_RED)
 	{
 		level.redMC++;
+		level.redNeedMC = 0;
 	}
 
 
@@ -621,7 +630,7 @@ void BuildMC( gentity_t *ent ){
 	
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	base->think=MC_prethink;
-	base->health=1300; // change this to make the turrets tougher or weaker.
+	base->health=1000; // change this to make the turrets tougher or weaker.
 	base->s.eType=ET_TURRET;
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	base->takedamage=qtrue; // so they can be destoryed
@@ -724,6 +733,9 @@ void BuildGenerator( gentity_t *ent ){
 
 	gentity_t	*base;
 	vec3_t		velocity;
+	trace_t		tr;
+	vec3_t		dest;
+	vec3_t		origin;
 
 
 	base=G_Spawn();
@@ -745,10 +757,12 @@ void BuildGenerator( gentity_t *ent ){
 	base->s.team =  ent->client->sess.sessionTeam;	
 		
 	base->nextthink=level.time+9000;   // 9 Seconds before a sheildgen is operational.
+	
+	
 	VectorSet( base->r.mins, -15, -15, -20 );
 	VectorSet( base->r.maxs, 35, 15, 0);
 	
-	
+		
 	// Drop To Ground
 	// This makes it fall.. but it doesnt stop! eeek lol
 	/*

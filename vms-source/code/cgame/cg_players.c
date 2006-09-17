@@ -2075,11 +2075,9 @@ void CG_PlayerSprites( centity_t *cent ) {
 	int		team;
 
 
-	// if (cgs.g_GameMode == 3) 
-	//{
+	// Any Buildable Object That is your team needs a cute little sprite too
 	if (cent->currentState.eType == ET_TURRET)
 	{
-		
 			team = cent->currentState.team;
 			if ( cg.snap->ps.persistant[PERS_TEAM] == team) 
 			{
@@ -2088,7 +2086,6 @@ void CG_PlayerSprites( centity_t *cent ) {
 			return;
 	}
 		
-	//}
 	
 	if ( cent->currentState.eFlags & EF_CONNECTION ) {
 		CG_PlayerFloatSprite( cent, cgs.media.connectionShader );

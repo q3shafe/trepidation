@@ -1061,6 +1061,8 @@ static float CG_DrawScores( float y ) {
 	vec4_t		color;
 	float		y1;
 	gitem_t		*item;
+	char		bluemc[MAX_QPATH];
+	char		redmc[MAX_QPATH];
 
 	s1 = cgs.scores1;
 	s2 = cgs.scores2;
@@ -1140,6 +1142,14 @@ static float CG_DrawScores( float y ) {
 			v = cgs.capturelimit;
 		} else {
 			v = cgs.fraglimit;
+		}
+		if ( cgs.g_GameMode == 3)
+		{
+			if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_BLUE ) { v = cgs.g_BlueMC; }
+			if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_RED ) { v = cgs.g_RedMC; }
+			
+
+			
 		}
 		
 		if ( v ) {
@@ -2023,15 +2033,24 @@ static void CG_ScanForCrosshairEntity( void ) {
 	*/
 
 	// if the player is in fog, don't show it
+	/*
 	content = trap_CM_PointContents( trace.endpos, 0 );
 	if ( content & CONTENTS_FOG ) {
 		return;
 	}
+	*/
 
 	// if the player is invisible, don't show it
 	if ( cg_entities[ trace.entityNum ].currentState.powerups & ( 1 << PW_INVIS ) ) {
 		return;
 	}
+
+	// Shafe - Trep Crosshairhealth Fix
+	if ( cg_entities[ trace.entityNum ].currentState.eType != ET_PLAYER ) {
+		return;
+	}
+
+
 
 	// update the fade timer
 	cg.crosshairClientNum = trace.entityNum;
@@ -2062,7 +2081,8 @@ static void CG_DrawCrosshairNames( void ) {
 	}
 
 	// scan the known entities to see if the crosshair is sighted on one
-	CG_ScanForCrosshairEntity();
+
+		CG_ScanForCrosshairEntity();
 
 	// draw the name of the player being looked at
 	color = CG_FadeColor( cg.crosshairClientTime, 1000 );
@@ -2071,6 +2091,7 @@ static void CG_DrawCrosshairNames( void ) {
 		return;
 	}
 
+	
 	name = cgs.clientinfo[ cg.crosshairClientNum ].name;
 	health = cgs.clientinfo[ cg.crosshairClientNum ].health;
 
@@ -2082,11 +2103,17 @@ static void CG_DrawCrosshairNames( void ) {
 	w = CG_DrawStrlen( name ) * BIGCHAR_WIDTH;
 	CG_DrawBigString( 320 - w / 2, 170, name, color[3] * 0.5f );
 	s = va( "%i", health);
+
+
+	// Shafe - Trep - Draw Players Health
+
+
 	if (health != 0) 
 	{
 		w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 		CG_DrawSmallString( 320 - w / 2, 190, s, color[3] * 0.5f );
 	}
+
 
 #endif
 	trap_R_SetColor( NULL );

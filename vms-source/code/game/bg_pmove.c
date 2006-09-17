@@ -23,6 +23,7 @@ float	pm_airaccelerate = 1.0f;
 float	pm_ladderAccelerate = 3000; 	// Shafe - Trep - Ladder Support
 float	pm_wateraccelerate = 4.0f;
 float	pm_flyaccelerate = 8.0f;
+float   pm_jetpackaccelerate = 8.0f;
 
 float	pm_ladderfriction = 3000; // Shafe - Trep - Ladder Support
 float	pm_friction = 6.0f;
@@ -590,7 +591,41 @@ static void PM_FlyMove( void ) {
 	PM_Accelerate (wishdir, wishspeed, pm_flyaccelerate);
 
 	PM_StepSlideMove( qfalse );
+
 }
+
+
+		/*
+        int             i;
+        vec3_t  wishvel;
+        float   wishspeed;
+        vec3_t  wishdir;
+        float   scale;
+
+        // normal slowdown
+        PM_Friction ();
+
+        scale = PM_CmdScale( &pm->cmd );
+        //
+        // user intentions
+        //
+        if ( !scale ) {
+                wishvel[0] = 0;
+                wishvel[1] = 0;
+                wishvel[2] = 355;       //< this is upward thrust (bigger number, more thrust)
+        } else {
+                for (i=0 ; i<3 ; i++) {
+                        wishvel[i] = scale * pml.forward[i]*pm->cmd.forwardmove + scale * pml.right[i]*pm->cmd.rightmove;
+                }
+        }
+
+        VectorCopy (wishvel, wishdir);
+        wishspeed = VectorNormalize(wishdir);
+
+        PM_Accelerate (wishdir, wishspeed, pm_jetpackaccelerate);       //< use the jetpack acceleration factor
+
+        PM_StepSlideMove( qtrue );      //< make this true to make gravity affect you
+	*/
 
 
 /*

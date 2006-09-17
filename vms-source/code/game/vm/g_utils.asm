@@ -3673,6 +3673,8 @@ import g_StartSG
 import g_StartMG
 import g_StartGauntlet
 import g_MultiJumps
+import g_RedMC
+import g_BlueMC
 import g_GameMode
 import g_instagib
 import sv_fps
