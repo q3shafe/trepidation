@@ -4785,7 +4785,7 @@ line 996
 ;993:
 ;994://unlagged - backward reconciliation #5
 ;995:	// announce it
-;996:	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 09-07-06\n\"" );
+;996:	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 09-16-06 b Serverside Patch\n\"" );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -8339,6 +8339,8 @@ import g_StartSG
 import g_StartMG
 import g_StartGauntlet
 import g_MultiJumps
+import g_RedMC
+import g_BlueMC
 import g_GameMode
 import g_instagib
 import sv_fps
@@ -8939,11 +8941,30 @@ byte 1 32
 byte 1 48
 byte 1 57
 byte 1 45
-byte 1 48
-byte 1 55
+byte 1 49
+byte 1 54
 byte 1 45
 byte 1 48
 byte 1 54
+byte 1 32
+byte 1 98
+byte 1 32
+byte 1 83
+byte 1 101
+byte 1 114
+byte 1 118
+byte 1 101
+byte 1 114
+byte 1 115
+byte 1 105
+byte 1 100
+byte 1 101
+byte 1 32
+byte 1 80
+byte 1 97
+byte 1 116
+byte 1 99
+byte 1 104
 byte 1 10
 byte 1 34
 byte 1 0

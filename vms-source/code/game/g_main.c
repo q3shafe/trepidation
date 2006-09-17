@@ -88,6 +88,8 @@ vmCvar_t	sv_fps;
 // Mods
 vmCvar_t	g_instagib;
 vmCvar_t	g_GameMode;
+vmCvar_t	g_BlueMC;
+vmCvar_t	g_RedMC;
 
 vmCvar_t	g_MultiJumps;
 
@@ -202,8 +204,11 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_rankings, "g_rankings", "0", 0, 0, qfalse},
 // Shafe - Trep - Cvars
 	// Mods
-	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH, 0, qtrue  },
 	{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH, 0, qfalse  },	
+	{ &g_BlueMC, "g_BlueMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
+	{ &g_RedMC, "g_RedMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
+
 
 	// New Stuff
 	{ &g_Turrets, "g_Turrets", "1", CVAR_ARCHIVE, 0, qtrue },	
@@ -572,8 +577,8 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	level.startTime = levelTime;
 	level.blueScoreTime = levelTime;
 	level.redScoreTime = levelTime;
-	level.blueScoreLatched = -1;
-	level.redScoreLatched = -1;
+	level.blueNeedMC = 1;
+	level.redNeedMC= 1;
 	level.firstStrike = qfalse; // Shafe - Trep
 	//level.lastClient = -1;
 	
@@ -1530,24 +1535,22 @@ void CheckExitRules( void ) {
 		// Do we have a score?
 		if (level.redScoreLatched == 1)
 		{
-			//Team_Point(TEAM_RED);
-			//trap_SendServerCommand( -1, "print \"DEBUG: Red Scores.\n\"" );
-			
+			level.redScoreLatched = 0;
+
 			trap_SendServerCommand( -1, va("cp \"^7Red Team Scores\n\"") );
 			trap_SendServerCommand( -1, va( "print \"Red team scores\n\"") );
 			level.teamScores[ TEAM_RED ]++;
 			//CalculateRanks(); // This is causing crashes
 			BroadCastSound("sound/teamplay/voc_red_scores.wav");
 			level.redScoreTime = level.time;
-			level.blueScoreLatched = -1;
-			level.redScoreLatched = 0;
-			return;
+
+			//return;
 		}
 
 		if (level.blueScoreLatched == 1)
 		{
 			//Team_Point(TEAM_BLUE);
-			//trap_SendServerCommand( -1, "print \"DEBUG: Blue Scores.\n\"" );
+			level.blueScoreLatched = 0;
 
 			trap_SendServerCommand( -1, va("cp \"^7Blue Team Scores\n\"") );
 			trap_SendServerCommand( -1, va( "print \"Blue team scores\n\"") );
@@ -1555,34 +1558,40 @@ void CheckExitRules( void ) {
 			//CalculateRanks();  // This is causing crashes
 			BroadCastSound("sound/teamplay/voc_blue_scores.wav");
 			level.blueScoreTime = level.time;
-			level.redScoreLatched = -1;
-			level.blueScoreLatched = 0;
-			return;
+
+			//return;
 		}
 		
-		if ((level.time-level.redScoreTime) > 35000) 
+
+		if ((level.time-level.redScoreTime) > 55000) 
 		{
 
-			 if ((level.blueMC == 0) && (level.blueScoreLatched == -1))
+			 if ((level.blueMC == 0) && (level.blueNeedMC == 1))
 				{
 					trap_SendServerCommand( -1, "print \"Automatically Placing Blue MC.\n\"" );
-					level.blueScoreLatched = 0;
+					level.blueNeedMC = 0;
 					PlaceMC(TEAM_BLUE);
 					return;
 				}
 		}
 		
-		if ((level.time-level.blueScoreTime) > 35000) 
+		if ((level.time-level.blueScoreTime) > 55000) 
 		{
 		
-				if ((level.redMC == 0) && (level.redScoreLatched == -1))
+				if ((level.redMC == 0) && (level.redNeedMC == 1))
 				{
 					trap_SendServerCommand( -1, "print \"Automatically Placing Red MC.\n\"" );
-					level.redScoreLatched = 0;
+					level.redNeedMC = 0;
 					PlaceMC(TEAM_RED);
 					return;
 				}
 		}
+
+		// This should never happen but it does...
+		// It's a fluke... Force build of the MC and no one scores.
+		//if ((level.redMC == 0) && (level.redScoreLatched == 0)) { level.redScoreLatched = -1; }
+		//if ((level.blueMC == 0) && (level.blueScoreLatched == 0)) { level.blueScoreLatched = -1; }
+
 		/*
 		// Something is screwy let's try again  - This is just bad code 
 		if ((level.time-level.scoreTime) > 40000) 

@@ -2374,18 +2374,31 @@ int BotCanAndWantsToRocketJump(bot_state_t *bs) {
 
 	//if rocket jumping is disabled
 	if (!bot_rocketjump.integer) return qfalse;
+	
 	//if no rocket launcher
-	if (bs->inventory[INVENTORY_ROCKETLAUNCHER] <= 0) return qfalse;
-	//if low on rockets
-	if (bs->inventory[INVENTORY_ROCKETS] < 3) return qfalse;
+	if (bs->inventory[INVENTORY_ROCKETLAUNCHER] <= 0) 
+	{
+		// Try Grenade here
+		if (bs->inventory[INVENTORY_GRENADELAUNCHER] <= 0) 
+		{
+			return qfalse;
+		}
+	} 
+	else 
+	{
+		//if low on rockets
+		if (bs->inventory[INVENTORY_ROCKETS] < 2) return qfalse;
+	}
+	
+	
 	//never rocket jump with the Quad
 	if (bs->inventory[INVENTORY_QUAD]) return qfalse;
 	//if low on health
 	if (bs->inventory[INVENTORY_HEALTH] < 60) return qfalse;
 	//if not full health
-	if (bs->inventory[INVENTORY_HEALTH] < 90) {
+	if (bs->inventory[INVENTORY_HEALTH] < 70) {
 		//if the bot has insufficient armor
-		if (bs->inventory[INVENTORY_ARMOR] < 40) return qfalse;
+		if (bs->inventory[INVENTORY_ARMOR] < 10) return qfalse;
 	}
 	rocketjumper = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_WEAPONJUMPING, 0, 1);
 	if (rocketjumper < 0.5) return qfalse;

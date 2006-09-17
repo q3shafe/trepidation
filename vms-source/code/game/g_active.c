@@ -392,6 +392,21 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 	while ( client->timeResidual >= 1000 ) {
 		client->timeResidual -= 1000;
 
+
+	if (g_GameMode.integer == 3)
+	{
+		if (client->sess.sessionTeam == TEAM_RED) 
+		{
+			trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", level.redCredits) );	
+		}
+		else
+		{
+			trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", level.blueCredits) );
+		}
+	}
+
+
+
 		// regenerate
 #ifdef MISSIONPACK
 		if( bg_itemlist[client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_GUARD ) {
@@ -486,26 +501,27 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 
 	if (g_GameMode.integer == 3)
 	{
+
 		// Give Warnings That An MC Is Needed
 		// Clean this up !
-		if ((client->sess.sessionTeam == TEAM_RED) && ( level.redScoreLatched == -1))
+		if ((client->sess.sessionTeam == TEAM_RED) && ( level.redNeedMC == 1))
 		{
-			if(level.time-level.blueScoreTime == 30000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 5 Sec To Place MC!\n\"" ); }
-			if(level.time-level.blueScoreTime == 25000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 10 Sec To Place MC!\n\"" ); }
-			if(level.time-level.blueScoreTime == 20000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 15 Sec To Place MC!\n\"" ); }
-			if(level.time-level.blueScoreTime == 15000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 20 Sec To Place MC!\n\"" ); }
-			if(level.time-level.blueScoreTime == 10000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 25 Sec To Place MC!\n\"" ); }
-			if(level.time-level.blueScoreTime == 5000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 30 Sec To Place MC!\n\"" ); }	
+			if(level.time-level.blueScoreTime == 50000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 5 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 45000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 10 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 40000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 15 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 35000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 20 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 30000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 25 Sec To Place MC!\n\"" ); }
+			if(level.time-level.blueScoreTime == 25000)	{ trap_SendServerCommand( client - level.clients, "cp \"Red Team Has 30 Sec To Place MC!\n\"" ); }	
 
 		}
-		if ((client->sess.sessionTeam == TEAM_BLUE) && ( level.blueScoreLatched == -1))
+		if ((client->sess.sessionTeam == TEAM_BLUE) && ( level.blueNeedMC == 1))
 		{
-			if(level.time-level.blueScoreTime == 30000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 5 Sec To Place MC!\n\"" ); }
-			if(level.time-level.blueScoreTime == 25000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 10 Sec To Place MC!\n\"" ); }
-			if(level.time-level.blueScoreTime == 20000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 15 Sec To Place MC!\n\"" ); }
-			if(level.time-level.blueScoreTime == 15000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 20 Sec To Place MC!\n\"" ); }
-			if(level.time-level.blueScoreTime == 10000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 25 Sec To Place MC!\n\"" ); }
-			if(level.time-level.blueScoreTime == 5000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 30 Sec To Place MC!\n\"" ); }
+			if(level.time-level.redScoreTime == 50000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 5 Sec To Place MC!\n\"" ); }
+			if(level.time-level.redScoreTime == 45000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 10 Sec To Place MC!\n\"" ); }
+			if(level.time-level.redScoreTime == 40000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 15 Sec To Place MC!\n\"" ); }
+			if(level.time-level.redScoreTime == 35000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 20 Sec To Place MC!\n\"" ); }
+			if(level.time-level.redScoreTime == 30000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 25 Sec To Place MC!\n\"" ); }
+			if(level.time-level.redScoreTime == 25000)	{ trap_SendServerCommand( client - level.clients, "cp \"Blue Team Has 30 Sec To Place MC!\n\"" ); }
 		}
 
 	}

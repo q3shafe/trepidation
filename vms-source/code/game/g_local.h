@@ -518,6 +518,8 @@ typedef struct {
 	int			blueMC;
 	int			redScoreLatched;
 	int			blueScoreLatched;
+	int			blueNeedMC;
+	int			redNeedMC;
 
 
 } level_locals_t;
@@ -924,6 +926,8 @@ extern	vmCvar_t	sv_fps;
 //Mods
 extern	vmCvar_t	g_instagib;
 extern	vmCvar_t	g_GameMode;
+extern	vmCvar_t	g_BlueMC;
+extern	vmCvar_t	g_RedMC;
 
 // Arsenal
 extern	vmCvar_t	g_MultiJumps;

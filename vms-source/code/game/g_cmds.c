@@ -142,7 +142,7 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 
 	// If playing CTF Make sure that we dont have too many 
 	// Turrets on our team.
-	if (g_gametype.integer == GT_CTF) 
+	if (g_gametype.integer == GT_CTF && iserror == 1) 
 	{
 		
 		if ((iserror == 1) && (g_Turrets.integer == 1))

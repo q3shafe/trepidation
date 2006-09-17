@@ -1111,6 +1111,8 @@ typedef struct {
 	// Shafe - Trep
 	int	g_instagib;
 	int g_GameMode;
+	int g_RedMC;
+	int g_BlueMC;
 	
 } cgs_t;
 
@@ -1246,9 +1248,14 @@ extern	vmCvar_t		cg_latentSnaps;
 extern	vmCvar_t		cg_latentCmds;
 extern	vmCvar_t		cg_plOut;
 //unlagged - client options
+extern	vmCvar_t		cg_GameMode;
+extern	vmCvar_t		cg_BlueMC;
+extern	vmCvar_t		cg_RedMC;
 
 // Shafe - Trep - Radar
 extern playerpos_t		cg_playerOrigins[MAX_CLIENTS];
+
+
 
 
 //unlagged - cg_unlagged.c
