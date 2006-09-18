@@ -42,6 +42,9 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 	dir[0] = dir[1] = 0;
 	dir[2] = 1;
 
+	
+	self->nextthink=level.time+2000; 
+	
 	// Take item away from master level stats
 	
 	if (self->s.team == TEAM_BLUE)
@@ -50,11 +53,14 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		if (self->classname == "turret") { level.blueTurrets--; }		
 		if (self->classname == "mc") 
 		{ 
-			level.blueMC--; 
-			level.redScoreLatched = 1;
-			level.blueNeedMC = 1;
-			trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", 0) );
-			level.blueCredits = 0;
+			if (level.blueNeedMC == 0)
+			{
+				level.blueMC = 0; 
+				level.redScoreLatched = 1;
+				level.blueNeedMC = 1;
+				trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", 0) );
+				level.blueCredits = 0;
+			}
 		}		
 	}
 	if (self->s.team == TEAM_RED)
@@ -63,25 +69,32 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		if (self->classname == "turret") { level.redTurrets--; }
 		if (self->classname == "mc") 
 		{ 
-			level.redMC--; 
-			level.blueScoreLatched = 1;
-			level.redNeedMC = 1;
-			trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", 0) );
-			level.redCredits = 0;
+			if (level.redNeedMC == 0)
+			{
+				level.redMC= 0; 
+				level.blueScoreLatched = 1;
+				level.redNeedMC = 1;
+				trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", 0) );
+				level.redCredits = 0;
+			}
 			
 		}		
 
 	}
 	
-	
+	// This is an extra check .. Mostly likely redundant now
+	if (level.redTurrets < 0) { level.redTurrets = 0; }
+	if (level.blueTurrets < 0) { level.blueTurrets = 0; }
+	if (level.redGen < 0) { level.redGen = 0; }
+	if (level.blueGen < 0) { level.blueGen = 0; }
 
 	if (self->chain) {
 		G_FreeEntity(self->chain); // get rid of the gun. // the gun just vanishes
 	}
 	
-self->s.weapon=WP_ROCKET_LAUNCHER; // to tell it what kind of explosion to use
-G_AddEvent( self, EV_MISSILE_MISS, DirToByte( dir ) ); // to tell it to spawn an explosion here
-self->freeAfterEvent = qtrue; // so the base goes away after the explosion
+	self->s.weapon=WP_ROCKET_LAUNCHER; // to tell it what kind of explosion to use
+	G_AddEvent( self, EV_MISSILE_MISS, DirToByte( dir ) ); // to tell it to spawn an explosion here
+	self->freeAfterEvent = qtrue; // so the base goes away after the explosion
 
 }
 
@@ -240,7 +253,7 @@ void turret_fireonenemy( gentity_t *ent){
 		}
 		
 		G_AddEvent( ent, EV_FIRE_WEAPON, 0 );
-		ent->count=level.time+200;
+		ent->count=level.time+300;
 
 		// decloaks a cloaked turret when firing.
 		if (ent->s.time2==2)
