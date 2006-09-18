@@ -1529,35 +1529,40 @@ void CheckExitRules( void ) {
 	if (g_GameMode.integer == 3)
 	{
 
+
+		if ((level.time-level.redScoreTime) < 5000) { return; }
+		if ((level.time-level.blueScoreTime) < 5000) { return; }
 		
 
 		// If both teams have an mc it's time to rumble
 		// Do we have a score?
-		if (level.redScoreLatched == 1)
+		if ((level.redScoreLatched == 1) && ((level.time-level.redScoreTime) > 5000))
 		{
 			level.redScoreLatched = 0;
+			level.redScoreTime = level.time;
 
 			trap_SendServerCommand( -1, va("cp \"^7Red Team Scores\n\"") );
 			trap_SendServerCommand( -1, va( "print \"Red team scores\n\"") );
 			level.teamScores[ TEAM_RED ]++;
 			//CalculateRanks(); // This is causing crashes
 			BroadCastSound("sound/teamplay/voc_red_scores.wav");
-			level.redScoreTime = level.time;
+			
 
 			//return;
 		}
 
-		if (level.blueScoreLatched == 1)
+		if ((level.blueScoreLatched == 1) && ((level.time-level.blueScoreTime) > 5000))
 		{
 			//Team_Point(TEAM_BLUE);
 			level.blueScoreLatched = 0;
+			level.blueScoreTime = level.time;
 
 			trap_SendServerCommand( -1, va("cp \"^7Blue Team Scores\n\"") );
 			trap_SendServerCommand( -1, va( "print \"Blue team scores\n\"") );
 			level.teamScores[ TEAM_BLUE ]++;
 			//CalculateRanks();  // This is causing crashes
 			BroadCastSound("sound/teamplay/voc_blue_scores.wav");
-			level.blueScoreTime = level.time;
+
 
 			//return;
 		}
@@ -1589,8 +1594,9 @@ void CheckExitRules( void ) {
 
 		// This should never happen but it does...
 		// It's a fluke... Force build of the MC and no one scores.
-		//if ((level.redMC == 0) && (level.redScoreLatched == 0)) { level.redScoreLatched = -1; }
-		//if ((level.blueMC == 0) && (level.blueScoreLatched == 0)) { level.blueScoreLatched = -1; }
+		if ((level.redMC <= 0) && (level.redNeedMC == 0)) { level.redNeedMC= 1; }
+		if ((level.blueMC <= 0) && (level.blueNeedMC == 0)) { level.blueNeedMC= 1; }
+		
 
 		/*
 		// Something is screwy let's try again  - This is just bad code 
