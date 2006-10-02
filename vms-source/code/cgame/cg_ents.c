@@ -518,6 +518,16 @@ static void CG_Missile( centity_t *cent ) {
 		return;
 	} // End Shafe
 
+	// Shafe - Trep - Flame Thrower
+	if (cent->currentState.weapon == WP_BFG ) {
+		ent.reType = RT_SPRITE;
+		ent.radius = 18;
+		ent.rotation = 0;
+		ent.customShader = cgs.media.bfgBallShader;
+		trap_R_AddRefEntityToScene( &ent );
+		return;
+	} // End Shafe
+
 	// flicker between two skins
 	ent.skinNum = cg.clientFrame & 1;
 	ent.hModel = weapon->missileModel;
