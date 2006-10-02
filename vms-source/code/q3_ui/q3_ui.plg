@@ -6,39 +6,39 @@
 --------------------Configuration: cgame - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP12F6.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP933.tmp" with contents
 [
 /nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"Release/cgame.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
-"G:\games\trepidation\source\vms-source\code\game\bg_misc.c"
-"G:\games\trepidation\source\vms-source\code\game\bg_pmove.c"
-"G:\games\trepidation\source\vms-source\code\game\bg_slidemove.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_consolecmds.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_drawtools.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_effects.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_ents.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_event.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_info.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_localents.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_main.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_marks.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_players.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_playerstate.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_predict.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_scanner.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_scoreboard.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_servercmds.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_snapshot.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_syscalls.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_unlagged.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_view.c"
-"G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c"
-"G:\games\trepidation\source\vms-source\code\game\q_math.c"
-"G:\games\trepidation\source\vms-source\code\game\q_shared.c"
-"G:\games\trepidation\source\vms-source\code\ui\ui_shared.c"
+"E:\games\trepidation\source\vms-source\code\game\bg_misc.c"
+"E:\games\trepidation\source\vms-source\code\game\bg_pmove.c"
+"E:\games\trepidation\source\vms-source\code\game\bg_slidemove.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_consolecmds.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_draw.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_drawtools.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_effects.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_ents.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_event.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_info.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_localents.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_main.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_marks.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_players.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_playerstate.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_predict.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_scanner.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_scoreboard.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_servercmds.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_snapshot.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_syscalls.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_unlagged.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_view.c"
+"E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c"
+"E:\games\trepidation\source\vms-source\code\game\q_math.c"
+"E:\games\trepidation\source\vms-source\code\game\q_shared.c"
+"E:\games\trepidation\source\vms-source\code\ui\ui_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP12F6.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP12F7.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP933.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP934.tmp" with contents
 [
 /nologo /base:"0x30000000" /subsystem:windows /dll /incremental:no /pdb:"Release/cgamex86.pdb" /map:"Release/cgamex86.map" /machine:I386 /def:".\cgame.def" /out:"../Release/cgamex86.dll" /implib:"Release/cgamex86.lib" 
 ".\Release\bg_misc.obj"
@@ -69,29 +69,29 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP12F7.tmp" wit
 ".\Release\q_shared.obj"
 ".\Release\ui_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP12F7.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP934.tmp"
 <h3>Output Window</h3>
 Compiling...
 bg_misc.c
 bg_pmove.c
 bg_slidemove.c
-G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1894) : warning C4701: local variable 'addTime' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1894) : warning C4701: local variable 'addTime' may be used without having been initialized
 cg_consolecmds.c
 cg_draw.c
-G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1065) : warning C4101: 'redmc' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1064) : warning C4101: 'bluemc' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(2022) : warning C4101: 'content' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(2756) : warning C4505: 'CG_DrawHudRight' : unreferenced local function has been removed
-        G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1334) : see declaration of 'CG_DrawHudRight'
-G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(2756) : warning C4505: 'CG_DrawHudLeft' : unreferenced local function has been removed
-        G:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1347) : see declaration of 'CG_DrawHudLeft'
+E:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1065) : warning C4101: 'redmc' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1064) : warning C4101: 'bluemc' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(2022) : warning C4101: 'content' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(2756) : warning C4505: 'CG_DrawHudRight' : unreferenced local function has been removed
+        E:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1334) : see declaration of 'CG_DrawHudRight'
+E:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(2756) : warning C4505: 'CG_DrawHudLeft' : unreferenced local function has been removed
+        E:\games\trepidation\source\vms-source\code\cgame\cg_draw.c(1347) : see declaration of 'CG_DrawHudLeft'
 cg_drawtools.c
 cg_effects.c
-G:\games\trepidation\source\vms-source\code\cgame\cg_effects.c(769) : warning C4305: '=' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\cgame\cg_effects.c(769) : warning C4305: '=' : truncation from 'const double ' to 'float '
 cg_ents.c
-G:\games\trepidation\source\vms-source\code\cgame\cg_ents.c(14) : warning C4101: 'team' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\cgame\cg_ents.c(14) : warning C4101: 'team' : unreferenced local variable
 cg_event.c
-G:\games\trepidation\source\vms-source\code\cgame\cg_event.c(652) : warning C4013: 'irandom' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\cgame\cg_event.c(652) : warning C4013: 'irandom' undefined; assuming extern returning int
 cg_info.c
 cg_localents.c
 cg_main.c
@@ -100,23 +100,23 @@ cg_players.c
 cg_playerstate.c
 cg_predict.c
 cg_scanner.c
-G:\games\trepidation\source\vms-source\code\cgame\cg_predict.c(787) : warning C4701: local variable 'predictCmd' may be used without having been initialized
-G:\games\trepidation\source\vms-source\code\cgame\cg_predict.c(797) : warning C4701: local variable 'stateIndex' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\cgame\cg_predict.c(787) : warning C4701: local variable 'predictCmd' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\cgame\cg_predict.c(797) : warning C4701: local variable 'stateIndex' may be used without having been initialized
 cg_scoreboard.c
 cg_servercmds.c
 cg_snapshot.c
 cg_syscalls.c
-G:\games\trepidation\source\vms-source\code\cgame\cg_snapshot.c(268) : warning C4706: assignment within conditional expression
+E:\games\trepidation\source\vms-source\code\cgame\cg_snapshot.c(268) : warning C4706: assignment within conditional expression
 cg_unlagged.c
 cg_view.c
-G:\games\trepidation\source\vms-source\code\cgame\cg_unlagged.c(198) : warning C4701: local variable 'fleshEntityNum' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\cgame\cg_unlagged.c(198) : warning C4701: local variable 'fleshEntityNum' may be used without having been initialized
 cg_weapons.c
-G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(730) : warning C4305: '=' : truncation from 'const double ' to 'float '
-G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(730) : warning C4305: '=' : truncation from 'const double ' to 'float '
-G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(2501) : warning C4505: 'CG_LightningBolt' : unreferenced local function has been removed
-        G:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(1036) : see declaration of 'CG_LightningBolt'
+E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(730) : warning C4305: '=' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(730) : warning C4305: '=' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(2501) : warning C4505: 'CG_LightningBolt' : unreferenced local function has been removed
+        E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(1036) : see declaration of 'CG_LightningBolt'
 q_math.c
-G:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
 q_shared.c
 ui_shared.c
 Linking...
@@ -125,48 +125,48 @@ Linking...
 --------------------Configuration: game - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP12FB.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP938.tmp" with contents
 [
 /nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "GLOBALRANK" /Fp".\Release/game.pch" /YX /Fo".\Release/" /Fd".\Release/" /FD /c 
-"G:\games\trepidation\source\vms-source\code\game\ai_chat.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_cmd.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_dmnet.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_dmq3.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_main.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_team.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_vcmd.c"
-"G:\games\trepidation\source\vms-source\code\game\bg_misc.c"
-"G:\games\trepidation\source\vms-source\code\game\bg_pmove.c"
-"G:\games\trepidation\source\vms-source\code\game\bg_slidemove.c"
-"G:\games\trepidation\source\vms-source\code\game\g_active.c"
-"G:\games\trepidation\source\vms-source\code\game\g_arenas.c"
-"G:\games\trepidation\source\vms-source\code\game\g_bot.c"
-"G:\games\trepidation\source\vms-source\code\game\g_buildables.c"
-"G:\games\trepidation\source\vms-source\code\game\g_client.c"
-"G:\games\trepidation\source\vms-source\code\game\g_cmds.c"
-"G:\games\trepidation\source\vms-source\code\game\g_combat.c"
-"G:\games\trepidation\source\vms-source\code\game\g_items.c"
-"G:\games\trepidation\source\vms-source\code\game\g_main.c"
-"G:\games\trepidation\source\vms-source\code\game\g_mem.c"
-"G:\games\trepidation\source\vms-source\code\game\g_misc.c"
-"G:\games\trepidation\source\vms-source\code\game\g_missile.c"
-"G:\games\trepidation\source\vms-source\code\game\g_mover.c"
-"G:\games\trepidation\source\vms-source\code\game\g_playerclass.c"
-"G:\games\trepidation\source\vms-source\code\game\g_session.c"
-"G:\games\trepidation\source\vms-source\code\game\g_spawn.c"
-"G:\games\trepidation\source\vms-source\code\game\g_svcmds.c"
-"G:\games\trepidation\source\vms-source\code\game\g_syscalls.c"
-"G:\games\trepidation\source\vms-source\code\game\g_target.c"
-"G:\games\trepidation\source\vms-source\code\game\g_team.c"
-"G:\games\trepidation\source\vms-source\code\game\g_trigger.c"
-"G:\games\trepidation\source\vms-source\code\game\g_unlagged.c"
-"G:\games\trepidation\source\vms-source\code\game\g_utils.c"
-"G:\games\trepidation\source\vms-source\code\game\g_weapon.c"
-"G:\games\trepidation\source\vms-source\code\game\q_math.c"
-"G:\games\trepidation\source\vms-source\code\game\q_shared.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_chat.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_cmd.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_dmnet.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_dmq3.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_main.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_team.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_vcmd.c"
+"E:\games\trepidation\source\vms-source\code\game\bg_misc.c"
+"E:\games\trepidation\source\vms-source\code\game\bg_pmove.c"
+"E:\games\trepidation\source\vms-source\code\game\bg_slidemove.c"
+"E:\games\trepidation\source\vms-source\code\game\g_active.c"
+"E:\games\trepidation\source\vms-source\code\game\g_arenas.c"
+"E:\games\trepidation\source\vms-source\code\game\g_bot.c"
+"E:\games\trepidation\source\vms-source\code\game\g_buildables.c"
+"E:\games\trepidation\source\vms-source\code\game\g_client.c"
+"E:\games\trepidation\source\vms-source\code\game\g_cmds.c"
+"E:\games\trepidation\source\vms-source\code\game\g_combat.c"
+"E:\games\trepidation\source\vms-source\code\game\g_items.c"
+"E:\games\trepidation\source\vms-source\code\game\g_main.c"
+"E:\games\trepidation\source\vms-source\code\game\g_mem.c"
+"E:\games\trepidation\source\vms-source\code\game\g_misc.c"
+"E:\games\trepidation\source\vms-source\code\game\g_missile.c"
+"E:\games\trepidation\source\vms-source\code\game\g_mover.c"
+"E:\games\trepidation\source\vms-source\code\game\g_playerclass.c"
+"E:\games\trepidation\source\vms-source\code\game\g_session.c"
+"E:\games\trepidation\source\vms-source\code\game\g_spawn.c"
+"E:\games\trepidation\source\vms-source\code\game\g_svcmds.c"
+"E:\games\trepidation\source\vms-source\code\game\g_syscalls.c"
+"E:\games\trepidation\source\vms-source\code\game\g_target.c"
+"E:\games\trepidation\source\vms-source\code\game\g_team.c"
+"E:\games\trepidation\source\vms-source\code\game\g_trigger.c"
+"E:\games\trepidation\source\vms-source\code\game\g_unlagged.c"
+"E:\games\trepidation\source\vms-source\code\game\g_utils.c"
+"E:\games\trepidation\source\vms-source\code\game\g_weapon.c"
+"E:\games\trepidation\source\vms-source\code\game\q_math.c"
+"E:\games\trepidation\source\vms-source\code\game\q_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP12FB.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP12FC.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP938.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP939.tmp" with contents
 [
 kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows /dll /incremental:no /pdb:".\Release/qagamex86.pdb" /map:".\Release/qagamex86.map" /machine:I386 /def:".\game.def" /out:"../Release/qagamex86.dll" /implib:".\Release/qagamex86.lib" 
 ".\Release\ai_chat.obj"
@@ -206,7 +206,7 @@ kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows 
 ".\Release\q_math.obj"
 ".\Release\q_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP12FC.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP939.tmp"
 <h3>Output Window</h3>
 Compiling...
 ai_chat.c
@@ -219,78 +219,233 @@ ai_vcmd.c
 bg_misc.c
 bg_pmove.c
 bg_slidemove.c
-G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1894) : warning C4701: local variable 'addTime' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1894) : warning C4701: local variable 'addTime' may be used without having been initialized
 g_active.c
-G:\games\trepidation\source\vms-source\code\game\g_active.c(569) : warning C4101: 'item' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_active.c(570) : warning C4101: 'drop' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_active.c(568) : warning C4101: 'fired' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_active.c(562) : warning C4101: 'j' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(569) : warning C4101: 'item' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(570) : warning C4101: 'drop' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(568) : warning C4101: 'fired' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(562) : warning C4101: 'j' : unreferenced local variable
 g_arenas.c
 g_bot.c
 g_buildables.c
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(49) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(50) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(51) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(62) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(63) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(64) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(402) : warning C4013: 'BroadCastSound' undefined; assuming extern returning int
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(441) : warning C4101: 'dest' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(440) : warning C4101: 'tr' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(738) : warning C4101: 'origin' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(737) : warning C4101: 'dest' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(736) : warning C4101: 'tr' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(735) : warning C4101: 'velocity' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(52) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(53) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(54) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(68) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(69) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(70) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(415) : warning C4013: 'BroadCastSound' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(454) : warning C4101: 'dest' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(453) : warning C4101: 'tr' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(751) : warning C4101: 'origin' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(750) : warning C4101: 'dest' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(749) : warning C4101: 'tr' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(748) : warning C4101: 'velocity' : unreferenced local variable
 g_client.c
-G:\games\trepidation\source\vms-source\code\game\g_client.c(1318) : warning C4013: 'irandom' undefined; assuming extern returning int
-G:\games\trepidation\source\vms-source\code\game\g_client.c(1453) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_client.c(1318) : warning C4013: 'irandom' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_client.c(1453) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_cmds.c
-G:\games\trepidation\source\vms-source\code\game\g_client.c(1490) : warning C4701: local variable 'b' may be used without having been initialized
-G:\games\trepidation\source\vms-source\code\game\g_client.c(1548) : warning C4701: local variable 'b' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_client.c(1490) : warning C4701: local variable 'b' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_client.c(1548) : warning C4701: local variable 'b' may be used without having been initialized
 g_combat.c
-G:\games\trepidation\source\vms-source\code\game\g_combat.c(662) : warning C4553: '==' : operator has no effect; did you intend '='?
-G:\games\trepidation\source\vms-source\code\game\g_combat.c(709) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_combat.c(681) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_combat.c(728) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_items.c
 g_main.c
-G:\games\trepidation\source\vms-source\code\game\g_main.c(1533) : error C2059: syntax error : ')'
-G:\games\trepidation\source\vms-source\code\game\g_main.c(1534) : error C2059: syntax error : ')'
-G:\games\trepidation\source\vms-source\code\game\g_main.c(1759) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_main.c(1759) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_mem.c
+E:\games\trepidation\source\vms-source\code\game\g_main.c(2471) : warning C4701: local variable 'valid_count' may be used without having been initialized
 g_misc.c
 g_missile.c
-G:\games\trepidation\source\vms-source\code\game\g_misc.c(410) : warning C4701: local variable 'tent' may be used without having been initialized
-G:\games\trepidation\source\vms-source\code\game\g_missile.c(72) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_missile.c(317) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_missile.c(810) : warning C4189: 'ignorechaff' : local variable is initialized but not referenced
-G:\games\trepidation\source\vms-source\code\game\g_missile.c(1160) : warning C4189: 'mins' : local variable is initialized but not referenced
-G:\games\trepidation\source\vms-source\code\game\g_missile.c(1160) : warning C4189: 'maxs' : local variable is initialized but not referenced
+E:\games\trepidation\source\vms-source\code\game\g_misc.c(410) : warning C4701: local variable 'tent' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(72) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(317) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(810) : warning C4189: 'ignorechaff' : local variable is initialized but not referenced
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(1160) : warning C4189: 'mins' : local variable is initialized but not referenced
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(1160) : warning C4189: 'maxs' : local variable is initialized but not referenced
 g_mover.c
 g_playerclass.c
-G:\games\trepidation\source\vms-source\code\game\g_playerclass.c(148) : warning C4505: 'G_LoadClasses' : unreferenced local function has been removed
-        G:\games\trepidation\source\vms-source\code\game\g_playerclass.c(113) : see declaration of 'G_LoadClasses'
+E:\games\trepidation\source\vms-source\code\game\g_playerclass.c(148) : warning C4505: 'G_LoadClasses' : unreferenced local function has been removed
+        E:\games\trepidation\source\vms-source\code\game\g_playerclass.c(113) : see declaration of 'G_LoadClasses'
 g_session.c
 g_spawn.c
 g_svcmds.c
-G:\games\trepidation\source\vms-source\code\game\g_svcmds.c(308) : warning C4013: 'BalanceTeams' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_svcmds.c(308) : warning C4013: 'BalanceTeams' undefined; assuming extern returning int
 g_syscalls.c
 g_target.c
 g_team.c
 g_trigger.c
 g_unlagged.c
-G:\games\trepidation\source\vms-source\code\game\g_unlagged.c(394) : warning C4189: 'worldUp' : local variable is initialized but not referenced
+E:\games\trepidation\source\vms-source\code\game\g_unlagged.c(394) : warning C4189: 'worldUp' : local variable is initialized but not referenced
 g_utils.c
 g_weapon.c
-G:\games\trepidation\source\vms-source\code\game\g_weapon.c(452) : warning C4305: '+=' : truncation from 'const double ' to 'float '
-G:\games\trepidation\source\vms-source\code\game\g_weapon.c(541) : warning C4013: 'irandom' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_weapon.c(452) : warning C4305: '+=' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\game\g_weapon.c(541) : warning C4013: 'irandom' undefined; assuming extern returning int
 q_math.c
-G:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
 q_shared.c
-Error executing cl.exe.
+Linking...
+   Creating library .\Release/qagamex86.lib and object .\Release/qagamex86.exp
+<h3>
+--------------------Configuration: q3_ui - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP941.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "Q3_UI_EXPORTS" /FR"Release/" /Fp"Release/q3_ui.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\games\trepidation\source\vms-source\code\game\bg_misc.c"
+"E:\games\trepidation\source\vms-source\code\game\q_math.c"
+"E:\games\trepidation\source\vms-source\code\game\q_shared.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_addbots.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_atoms.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_cdkey.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_cinematics.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_confirm.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_connect.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_controls2.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_credits.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_demo2.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_display.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_gameinfo.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_ingame.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_main.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_menu.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_mfield.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_mods.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_network.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_options.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_playermodel.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_players.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_playersettings.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_preferences.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_qmenu.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_removebots.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_serverinfo.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_servers2.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_setup.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_sound.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_sparena.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_specifyserver.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_splevel.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_sppostgame.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_spreset.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_spskill.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_startserver.c"
+"E:\games\trepidation\source\vms-source\code\ui\ui_syscalls.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_team.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_teamorders.c"
+"E:\games\trepidation\source\vms-source\code\q3_ui\ui_video.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP941.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP942.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"Release/uix86.pdb" /machine:I386 /def:".\ui.def" /out:"../Release/uix86.dll" /implib:"Release/uix86.lib" 
+".\Release\bg_misc.obj"
+".\Release\q_math.obj"
+".\Release\q_shared.obj"
+".\Release\ui_addbots.obj"
+".\Release\ui_atoms.obj"
+".\Release\ui_cdkey.obj"
+".\Release\ui_cinematics.obj"
+".\Release\ui_confirm.obj"
+".\Release\ui_connect.obj"
+".\Release\ui_controls2.obj"
+".\Release\ui_credits.obj"
+".\Release\ui_demo2.obj"
+".\Release\ui_display.obj"
+".\Release\ui_gameinfo.obj"
+".\Release\ui_ingame.obj"
+".\Release\ui_main.obj"
+".\Release\ui_menu.obj"
+".\Release\ui_mfield.obj"
+".\Release\ui_mods.obj"
+".\Release\ui_network.obj"
+".\Release\ui_options.obj"
+".\Release\ui_playermodel.obj"
+".\Release\ui_players.obj"
+".\Release\ui_playersettings.obj"
+".\Release\ui_preferences.obj"
+".\Release\ui_qmenu.obj"
+".\Release\ui_removebots.obj"
+".\Release\ui_serverinfo.obj"
+".\Release\ui_servers2.obj"
+".\Release\ui_setup.obj"
+".\Release\ui_sound.obj"
+".\Release\ui_sparena.obj"
+".\Release\ui_specifyserver.obj"
+".\Release\ui_splevel.obj"
+".\Release\ui_sppostgame.obj"
+".\Release\ui_spreset.obj"
+".\Release\ui_spskill.obj"
+".\Release\ui_startserver.obj"
+".\Release\ui_syscalls.obj"
+".\Release\ui_team.obj"
+".\Release\ui_teamorders.obj"
+".\Release\ui_video.obj"
+"\games\trepidation\source\vms-source\code\cgame\Release\cgamex86.lib"
+"\games\trepidation\source\vms-source\code\game\Release\qagamex86.lib"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP942.tmp"
+<h3>Output Window</h3>
+Compiling...
+bg_misc.c
+q_math.c
+E:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
+q_shared.c
+ui_addbots.c
+ui_atoms.c
+E:\games\trepidation\source\vms-source\code\q3_ui\ui_atoms.c(1016) : warning C4013: 'UI_DynamicCommandMenu_f' undefined; assuming extern returning int
+ui_cdkey.c
+ui_cinematics.c
+ui_confirm.c
+ui_connect.c
+ui_controls2.c
+ui_credits.c
+E:\games\trepidation\source\vms-source\code\q3_ui\ui_credits.c(35) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\q3_ui\ui_credits.c(35) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\q3_ui\ui_credits.c(37) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\q3_ui\ui_credits.c(37) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
+ui_demo2.c
+ui_display.c
+ui_gameinfo.c
+ui_ingame.c
+E:\games\trepidation\source\vms-source\code\q3_ui\ui_ingame.c(638) : warning C4305: '=' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\q3_ui\ui_ingame.c(642) : warning C4305: '=' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\q3_ui\ui_ingame.c(938) : warning C4101: 'cts' : unreferenced local variable
+ui_main.c
+ui_menu.c
+ui_mfield.c
+ui_mods.c
+ui_network.c
+ui_options.c
+ui_playermodel.c
+ui_players.c
+ui_playersettings.c
+ui_preferences.c
+ui_qmenu.c
+ui_removebots.c
+ui_serverinfo.c
+ui_servers2.c
+ui_setup.c
+ui_sound.c
+ui_sparena.c
+ui_specifyserver.c
+ui_splevel.c
+ui_sppostgame.c
+ui_spreset.c
+ui_spskill.c
+ui_startserver.c
+ui_syscalls.c
+ui_team.c
+ui_teamorders.c
+ui_video.c
+Linking...
+   Creating library Release/uix86.lib and object Release/uix86.exp
 
 
 
 <h3>Results</h3>
-uix86.dll - 2 error(s), 54 warning(s)
+uix86.dll - 0 error(s), 64 warning(s)
 </pre>
 </body>
 </html>

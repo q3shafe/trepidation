@@ -87,30 +87,49 @@ void TossClientItems( gentity_t *self ) {
 	// weapon that isn't the mg or gauntlet.  Without this, a client
 	// can pick up a weapon, be killed, and not drop the weapon because
 	// their weapon change hasn't completed yet and they are still holding the MG.
-	if ( weapon == WP_MACHINEGUN || weapon == WP_GRAPPLING_HOOK ) {
-		if ( self->client->ps.weaponstate == WEAPON_DROPPING ) {
-			weapon = self->client->pers.cmd.weapon;
-		}
-		if ( !( self->client->ps.stats[STAT_WEAPONS] & ( 1 << weapon ) ) ) {
-			weapon = WP_NONE;
-		}
-	}
+	
 
-	// Shafe - Trep - Dont drop weapons In Instagib
+		if ( weapon == WP_MACHINEGUN || weapon == WP_GRAPPLING_HOOK ) 
+		{
+			if ( self->client->ps.weaponstate == WEAPON_DROPPING ) {
+				weapon = self->client->pers.cmd.weapon;
+			}
+			if ( !( self->client->ps.stats[STAT_WEAPONS] & ( 1 << weapon ) ) ) {
+				weapon = WP_NONE;
+			}
+		}
+
+	// Shafe - Trep - Dont drop weapons In Instagib -- 
 	if (g_instagib.integer == 0)
 	{
-		if ( weapon > WP_MACHINEGUN && weapon != WP_GRAPPLING_HOOK && 
-			self->client->ps.ammo[ weapon ] ) {
+		
+		if ( weapon > WP_MACHINEGUN && weapon != WP_GRAPPLING_HOOK && self->client->ps.ammo[ weapon ] ) 
+		{
 			// find the item type for this weapon
 			item = BG_FindItemForWeapon( weapon );
 	
 			// spawn the item
 			Drop_Item( self, item, 0 );
+		} else 
+		{
+			// Else if it's arsenal or survival drop it anyway.
+			if (g_GameMode.integer == 2 || g_GameMode.integer == 1)
+			{
+				// find the item type for this weapon
+				item = BG_FindItemForWeapon( weapon );
+	
+				// spawn the item
+				Drop_Item( self, item, 0 );
+
+			}
 		}
 	} // End Shafe - Trep instagib
 
+
+	
+
 	// drop all the powerups if not in teamplay
-	if ( g_gametype.integer != GT_TEAM ) {
+	if ( g_gametype.integer != GT_TEAM && g_GameMode.integer != 3 ) {
 		angle = 45;
 		for ( i = 1 ; i < PW_NUM_POWERUPS ; i++ ) {
 			if ( self->client->ps.powerups[ i ] > level.time ) {

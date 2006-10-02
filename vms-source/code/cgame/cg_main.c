@@ -795,6 +795,7 @@ static void CG_RegisterSounds( void ) {
 	cgs.media.sfx_devexp = trap_S_RegisterSound ("sound/weapons/bfg/devhit.wav", qfalse);
 	cgs.media.sfx_plasmaexp = trap_S_RegisterSound ("sound/weapons/plasma/plasmx1a.wav", qfalse);
 	cgs.media.flameBallShader = trap_R_RegisterShader( "sprites/flameball" );
+	cgs.media.bfgBallShader = trap_R_RegisterShader( "sprites/bfgball" );
 #ifdef MISSIONPACK
 	cgs.media.sfx_proxexp = trap_S_RegisterSound( "sound/weapons/proxmine/wstbexpl.wav" , qfalse);
 	cgs.media.sfx_nghit = trap_S_RegisterSound( "sound/weapons/nailgun/wnalimpd.wav" , qfalse);

@@ -803,6 +803,7 @@ typedef struct {
 	// Shafe - Trep - Flame Thrower Shaders
 	qhandle_t	flameBallShader;
 	qhandle_t	flameExplosionShader;
+	qhandle_t	bfgBallShader;
 
 	// special effects models
 	qhandle_t	teleportEffectModel;
