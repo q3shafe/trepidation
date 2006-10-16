@@ -3,7 +3,7 @@
 /*
 =======================================================================
 
-CREDITS
+CREDITS  - Used from code3arena
 
 =======================================================================
 */
@@ -95,6 +95,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "SourceForge.net", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Open Arena", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Code 3 Arena", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Tremulous / Dark Legion Development", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Icculus.org IOQ3 Project", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Thilo Schultz", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Mathieu Olivier (dpmaster)", UI_CENTER|UI_SMALLFONT, &color_maintext },

@@ -11,7 +11,7 @@ byte 4 30
 byte 4 400
 byte 4 50
 byte 4 120
-byte 4 15
+byte 4 25
 byte 4 200
 export bg_itemlist
 align 4
@@ -349,7 +349,7 @@ byte 4 0
 byte 4 0
 address $154
 address $119
-byte 4 5
+byte 4 7
 byte 4 2
 byte 4 9
 address $42
@@ -514,7 +514,7 @@ line 930
 ;17:	400,				// Flame Thrower / Lignting,
 ;18:	50,					// Rail Gun/Guass Rifle,
 ;19:	120,				// Plasma,	
-;20:	15,					// BFG,		
+;20:	25,					// BFG,		
 ;21:	200					// Dunno,
 ;22:
 ;23:};
@@ -968,7 +968,7 @@ line 930
 ;471:		0, 0, 0},
 ;472:/* icon */		"icons/icona_bfg",
 ;473:/* pickup */	"Devastator",
-;474:		5,
+;474:		7,
 ;475:		IT_AMMO,
 ;476:		WP_BFG,
 ;477:/* precache */ "",

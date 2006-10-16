@@ -1817,6 +1817,9 @@ if (pm->cmd.buttons & 1) {
 	case WP_GRAPPLING_HOOK: 
 		addTime = 400; 
 		break; 
+	case WP_TURRET:
+		addTime = 100;
+		break;
 	} 
 
  // New Alt Fire Button 
@@ -1838,7 +1841,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 1000; 
 		break; 
 	case WP_MACHINEGUN: 
-		addTime = 1000; 
+		addTime = 100; 
 		break; 
 	case WP_GRENADE_LAUNCHER: 
 		addTime = 800; 
@@ -1854,11 +1857,14 @@ if (pm->cmd.buttons & 1) {
 		break; 
 	case WP_BFG: 
 		//  addTime = 100; 
-		addTime = 3000; 
+		addTime = 2000; 
 		break; 
 	case WP_GRAPPLING_HOOK: 
 		addTime = 400; 
 		break; 
+	case WP_TURRET:
+		addTime = 100;
+		break;
 	}
  }
 

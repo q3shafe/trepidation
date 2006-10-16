@@ -323,7 +323,7 @@ INDIRI4
 ASGNI4
 line 79
 ;79:	mod = ent->eventParm;
-ADDRLP4 40
+ADDRLP4 44
 ADDRFP4 0
 INDIRP4
 CNSTI4 184
@@ -477,15 +477,15 @@ line 104
 ;102:	// check for single client messages
 ;103:
 ;104:	switch( mod ) {
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 CNSTI4 14
 LTI4 $120
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 CNSTI4 22
 GTI4 $120
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 CNSTI4 2
 LSHI4
@@ -510,7 +510,7 @@ LABELV $122
 line 106
 ;105:	case MOD_SUICIDE:
 ;106:		message = "suicides";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $123
 ASGNP4
 line 107
@@ -521,7 +521,7 @@ LABELV $124
 line 109
 ;108:	case MOD_FALLING:
 ;109:		message = "cratered";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $125
 ASGNP4
 line 110
@@ -532,7 +532,7 @@ LABELV $126
 line 112
 ;111:	case MOD_CRUSH:
 ;112:		message = "was squished";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $127
 ASGNP4
 line 113
@@ -543,7 +543,7 @@ LABELV $128
 line 115
 ;114:	case MOD_WATER:
 ;115:		message = "sank like a rock";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $129
 ASGNP4
 line 116
@@ -554,7 +554,7 @@ LABELV $130
 line 118
 ;117:	case MOD_SLIME:
 ;118:		message = "melted";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $131
 ASGNP4
 line 119
@@ -565,7 +565,7 @@ LABELV $132
 line 121
 ;120:	case MOD_LAVA:
 ;121:		message = "does a back flip into the lava";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $133
 ASGNP4
 line 122
@@ -576,7 +576,7 @@ LABELV $134
 line 124
 ;123:	case MOD_TARGET_LASER:
 ;124:		message = "saw the light";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $135
 ASGNP4
 line 125
@@ -587,7 +587,7 @@ LABELV $136
 line 127
 ;126:	case MOD_TRIGGER_HURT:
 ;127:		message = "was in the wrong place";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $137
 ASGNP4
 line 128
@@ -598,7 +598,7 @@ LABELV $120
 line 130
 ;129:	default:
 ;130:		message = NULL;
-ADDRLP4 44
+ADDRLP4 40
 CNSTP4 0
 ASGNP4
 line 131
@@ -627,33 +627,33 @@ line 136
 ADDRLP4 124
 CNSTI4 13
 ASGNI4
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 ADDRLP4 124
 INDIRI4
 EQI4 $168
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 ADDRLP4 124
 INDIRI4
 GTI4 $186
 LABELV $185
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 CNSTI4 5
 EQI4 $144
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 CNSTI4 7
 EQI4 $152
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 CNSTI4 9
 EQI4 $160
 ADDRGP4 $142
 JUMPV
 LABELV $186
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 CNSTI4 23
 EQI4 $170
@@ -674,7 +674,7 @@ CNSTI4 1
 NEI4 $145
 line 144
 ;144:				message = "tripped on her own grenade";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $147
 ASGNP4
 ADDRGP4 $143
@@ -688,7 +688,7 @@ CNSTI4 2
 NEI4 $148
 line 146
 ;146:				message = "tripped on its own grenade";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $150
 ASGNP4
 ADDRGP4 $143
@@ -697,7 +697,7 @@ LABELV $148
 line 148
 ;147:			else
 ;148:				message = "tripped on his own grenade";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $151
 ASGNP4
 line 149
@@ -714,7 +714,7 @@ CNSTI4 1
 NEI4 $153
 line 152
 ;152:				message = "blew herself up";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $155
 ASGNP4
 ADDRGP4 $143
@@ -728,7 +728,7 @@ CNSTI4 2
 NEI4 $156
 line 154
 ;154:				message = "blew itself up";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $158
 ASGNP4
 ADDRGP4 $143
@@ -737,7 +737,7 @@ LABELV $156
 line 156
 ;155:			else
 ;156:				message = "blew himself up";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $159
 ASGNP4
 line 157
@@ -754,7 +754,7 @@ CNSTI4 1
 NEI4 $161
 line 160
 ;160:				message = "melted herself";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $163
 ASGNP4
 ADDRGP4 $143
@@ -768,7 +768,7 @@ CNSTI4 2
 NEI4 $164
 line 162
 ;162:				message = "melted itself";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $166
 ASGNP4
 ADDRGP4 $143
@@ -777,7 +777,7 @@ LABELV $164
 line 164
 ;163:			else
 ;164:				message = "melted himself";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $167
 ASGNP4
 line 165
@@ -788,7 +788,7 @@ LABELV $168
 line 167
 ;166:		case MOD_BFG_SPLASH:
 ;167:			message = "should have used a smaller gun";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $169
 ASGNP4
 line 168
@@ -816,7 +816,7 @@ line 172
 ;172:			{
 line 173
 ;173:				message = "got her head blown off by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $173
 ASGNP4
 line 174
@@ -835,7 +835,7 @@ CNSTI4 2
 NEI4 $174
 line 178
 ;178:					message = "got its head blown off by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $176
 ASGNP4
 ADDRGP4 $143
@@ -844,7 +844,7 @@ LABELV $174
 line 180
 ;179:				else
 ;180:					message = "got his head blown off by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $177
 ASGNP4
 line 181
@@ -874,7 +874,7 @@ CNSTI4 1
 NEI4 $178
 line 196
 ;196:				message = "killed herself";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $180
 ASGNP4
 ADDRGP4 $143
@@ -888,7 +888,7 @@ CNSTI4 2
 NEI4 $181
 line 198
 ;198:				message = "killed itself";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $183
 ASGNP4
 ADDRGP4 $143
@@ -897,7 +897,7 @@ LABELV $181
 line 200
 ;199:			else
 ;200:				message = "killed himself";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $184
 ASGNP4
 line 201
@@ -910,7 +910,7 @@ LABELV $140
 line 205
 ;204:
 ;205:	if (message) {
-ADDRLP4 44
+ADDRLP4 40
 INDIRP4
 CVPU4 4
 CNSTU4 0
@@ -921,7 +921,7 @@ ADDRGP4 $189
 ARGP4
 ADDRLP4 8
 ARGP4
-ADDRLP4 44
+ADDRLP4 40
 INDIRP4
 ARGP4
 ADDRGP4 CG_Printf
@@ -949,7 +949,7 @@ line 214
 ;212:		char	*s;
 ;213:
 ;214:		if(mod != MOD_HEADSHOT) // Shafe - Trep - only for headshots
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 CNSTI4 23
 EQI4 $193
@@ -1218,25 +1218,25 @@ CNSTI4 1022
 EQI4 $217
 line 263
 ;263:		switch (mod) {
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 CNSTI4 1
 LTI4 $219
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
-CNSTI4 25
+CNSTI4 26
 GTI4 $219
-ADDRLP4 40
+ADDRLP4 44
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $260-4
+ADDRGP4 $263-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $260
+LABELV $263
 address $227
 address $223
 address $225
@@ -1260,6 +1260,7 @@ address $219
 address $219
 address $219
 address $219
+address $259
 address $221
 address $256
 code
@@ -1267,7 +1268,7 @@ LABELV $221
 line 265
 ;264:		case MOD_GRAPPLE:
 ;265:			message = "was caught by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $222
 ASGNP4
 line 266
@@ -1278,7 +1279,7 @@ LABELV $223
 line 268
 ;267:		case MOD_GAUNTLET:
 ;268:			message = "was pummeled by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $224
 ASGNP4
 line 269
@@ -1289,7 +1290,7 @@ LABELV $225
 line 271
 ;270:		case MOD_MACHINEGUN:
 ;271:			message = "was assaulted by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $226
 ASGNP4
 line 272
@@ -1300,7 +1301,7 @@ LABELV $227
 line 274
 ;273:		case MOD_SHOTGUN:
 ;274:			message = "was gunned down by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $228
 ASGNP4
 line 275
@@ -1311,7 +1312,7 @@ LABELV $229
 line 277
 ;276:		case MOD_GRENADE:
 ;277:			message = "ate";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $230
 ASGNP4
 line 278
@@ -1327,7 +1328,7 @@ LABELV $232
 line 281
 ;280:		case MOD_GRENADE_SPLASH:
 ;281:			message = "was shredded by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $233
 ASGNP4
 line 282
@@ -1343,7 +1344,7 @@ LABELV $235
 line 285
 ;284:		case MOD_ROCKET:
 ;285:			message = "was crushed by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $236
 ASGNP4
 line 286
@@ -1359,7 +1360,7 @@ LABELV $238
 line 289
 ;288:		case MOD_ROCKET_SPLASH:
 ;289:			message = "almost dodged";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $239
 ASGNP4
 line 290
@@ -1375,7 +1376,7 @@ LABELV $240
 line 293
 ;292:		case MOD_PLASMA:
 ;293:			message = "was sliced to shreds by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $241
 ASGNP4
 line 294
@@ -1391,7 +1392,7 @@ LABELV $243
 line 297
 ;296:		case MOD_PLASMA_SPLASH:
 ;297:			message = "was shreded by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $244
 ASGNP4
 line 298
@@ -1407,7 +1408,7 @@ LABELV $246
 line 301
 ;300:		case MOD_RAILGUN:
 ;301:			message = "was degaussed by"; // Shafe - Trep - Reworded
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $247
 ASGNP4
 line 302
@@ -1418,7 +1419,7 @@ LABELV $248
 line 304
 ;303:		case MOD_LIGHTNING:
 ;304:			message = "was burnt by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $249
 ASGNP4
 line 305
@@ -1430,7 +1431,7 @@ line 308
 ;306:		case MOD_BFG:
 ;307:		case MOD_BFG_SPLASH:
 ;308:			message = "was annialated by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $251
 ASGNP4
 line 309
@@ -1466,7 +1467,7 @@ line 332
 ;330:#endif
 ;331:		case MOD_TELEFRAG:
 ;332:			message = "tried to invade";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $254
 ASGNP4
 line 333
@@ -1482,7 +1483,7 @@ LABELV $256
 line 336
 ;335:		case MOD_ALTFLAMER:		// Shafe - Trep - Flame Thrower Alt
 ;336:			message = "was toasted by";
-ADDRLP4 44
+ADDRLP4 40
 ADDRGP4 $257
 ASGNP4
 line 337
@@ -1494,32 +1495,48 @@ line 338
 ;338:			break;
 ADDRGP4 $220
 JUMPV
-LABELV $219
+LABELV $259
 line 340
-;339:		default:
-;340:			message = "was killed by";
-ADDRLP4 44
-ADDRGP4 $259
+;339:		case MOD_TURRET:
+;340:			message = "was shot down by ";
+ADDRLP4 40
+ADDRGP4 $260
 ASGNP4
 line 341
-;341:			break;
-LABELV $220
+;341:			message2 = "'s turret.";
+ADDRLP4 88
+ADDRGP4 $261
+ASGNP4
+line 342
+;342:			break;
+ADDRGP4 $220
+JUMPV
+LABELV $219
 line 344
-;342:		}
-;343:
-;344:		if (message) {
-ADDRLP4 44
+;343:		default:
+;344:			message = "was killed by";
+ADDRLP4 40
+ADDRGP4 $262
+ASGNP4
+line 345
+;345:			break;
+LABELV $220
+line 348
+;346:		}
+;347:
+;348:		if (message) {
+ADDRLP4 40
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $262
-line 345
-;345:			CG_Printf( "%s %s %s%s\n", 
-ADDRGP4 $264
+EQU4 $265
+line 349
+;349:			CG_Printf( "%s %s %s%s\n", 
+ADDRGP4 $267
 ARGP4
 ADDRLP4 8
 ARGP4
-ADDRLP4 44
+ADDRLP4 40
 INDIRP4
 ARGP4
 ADDRLP4 56
@@ -1530,56 +1547,56 @@ ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 347
-;346:				targetName, message, attackerName, message2);
-;347:			return;
+line 351
+;350:				targetName, message, attackerName, message2);
+;351:			return;
 ADDRGP4 $107
 JUMPV
-LABELV $262
-line 349
-;348:		}
-;349:	}
+LABELV $265
+line 353
+;352:		}
+;353:	}
 LABELV $217
-line 352
-;350:
-;351:	// we don't know what it was
-;352:	CG_Printf( "%s died.\n", targetName );
-ADDRGP4 $265
+line 356
+;354:
+;355:	// we don't know what it was
+;356:	CG_Printf( "%s died.\n", targetName );
+ADDRGP4 $268
 ARGP4
 ADDRLP4 8
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 353
-;353:}
+line 357
+;357:}
 LABELV $107
 endproc CG_Obituary 132 20
 proc CG_UseItem 32 16
-line 362
-;354:
-;355://==========================================================================
-;356:
-;357:/*
-;358:===============
-;359:CG_UseItem
-;360:===============
-;361:*/
-;362:static void CG_UseItem( centity_t *cent ) {
-line 368
-;363:	clientInfo_t *ci;
-;364:	int			itemNum, clientNum;
-;365:	gitem_t		*item;
-;366:	entityState_t *es;
-;367:
-;368:	es = &cent->currentState;
+line 366
+;358:
+;359://==========================================================================
+;360:
+;361:/*
+;362:===============
+;363:CG_UseItem
+;364:===============
+;365:*/
+;366:static void CG_UseItem( centity_t *cent ) {
+line 372
+;367:	clientInfo_t *ci;
+;368:	int			itemNum, clientNum;
+;369:	gitem_t		*item;
+;370:	entityState_t *es;
+;371:
+;372:	es = &cent->currentState;
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 370
-;369:	
-;370:	itemNum = (es->event & ~EV_EVENT_BITS) - EV_USE_ITEM0;
+line 374
+;373:	
+;374:	itemNum = (es->event & ~EV_EVENT_BITS) - EV_USE_ITEM0;
 ADDRLP4 0
 ADDRLP4 4
 INDIRP4
@@ -1591,29 +1608,29 @@ BANDI4
 CNSTI4 25
 SUBI4
 ASGNI4
-line 371
-;371:	if ( itemNum < 0 || itemNum > HI_NUM_HOLDABLE ) {
+line 375
+;375:	if ( itemNum < 0 || itemNum > HI_NUM_HOLDABLE ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-LTI4 $269
+LTI4 $272
 ADDRLP4 0
 INDIRI4
 CNSTI4 6
-LEI4 $267
-LABELV $269
-line 372
-;372:		itemNum = 0;
+LEI4 $270
+LABELV $272
+line 376
+;376:		itemNum = 0;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-line 373
-;373:	}
-LABELV $267
-line 376
-;374:
-;375:	// print a message if the local player
-;376:	if ( es->number == cg.snap->ps.clientNum ) {
+line 377
+;377:	}
+LABELV $270
+line 380
+;378:
+;379:	// print a message if the local player
+;380:	if ( es->number == cg.snap->ps.clientNum ) {
 ADDRLP4 4
 INDIRP4
 INDIRI4
@@ -1622,16 +1639,16 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-NEI4 $270
-line 377
-;377:		if ( !itemNum ) {
+NEI4 $273
+line 381
+;381:		if ( !itemNum ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $273
-line 378
-;378:			CG_CenterPrint( "No item to use", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
-ADDRGP4 $275
+NEI4 $276
+line 382
+;382:			CG_CenterPrint( "No item to use", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
+ADDRGP4 $278
 ARGP4
 CNSTI4 144
 ARGI4
@@ -1640,13 +1657,13 @@ ARGI4
 ADDRGP4 CG_CenterPrint
 CALLV
 pop
-line 379
-;379:		} else {
-ADDRGP4 $274
+line 383
+;383:		} else {
+ADDRGP4 $277
 JUMPV
-LABELV $273
-line 380
-;380:			item = BG_FindItemForHoldable( itemNum );
+LABELV $276
+line 384
+;384:			item = BG_FindItemForHoldable( itemNum );
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -1658,9 +1675,9 @@ ADDRLP4 8
 ADDRLP4 24
 INDIRP4
 ASGNP4
-line 381
-;381:			CG_CenterPrint( va("Use %s", item->pickup_name), SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
-ADDRGP4 $276
+line 385
+;385:			CG_CenterPrint( va("Use %s", item->pickup_name), SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
+ADDRGP4 $279
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -1682,35 +1699,35 @@ ARGI4
 ADDRGP4 CG_CenterPrint
 CALLV
 pop
-line 382
-;382:		}
-LABELV $274
-line 383
-;383:	}
-LABELV $270
-line 385
-;384:
-;385:	switch ( itemNum ) {
+line 386
+;386:		}
+LABELV $277
+line 387
+;387:	}
+LABELV $273
+line 389
+;388:
+;389:	switch ( itemNum ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $279
+EQI4 $282
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
-EQI4 $278
+EQI4 $281
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
-EQI4 $283
-ADDRGP4 $277
+EQI4 $286
+ADDRGP4 $280
 JUMPV
-LABELV $277
-LABELV $279
-line 388
-;386:	default:
-;387:	case HI_NONE:
-;388:		trap_S_StartSound (NULL, es->number, CHAN_BODY, cgs.media.useNothingSound );
+LABELV $280
+LABELV $282
+line 392
+;390:	default:
+;391:	case HI_NONE:
+;392:		trap_S_StartSound (NULL, es->number, CHAN_BODY, cgs.media.useNothingSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 4
@@ -1719,25 +1736,25 @@ INDIRI4
 ARGI4
 CNSTI4 5
 ARGI4
-ADDRGP4 cgs+153876+592
+ADDRGP4 cgs+153876+596
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 389
-;389:		break;
-ADDRGP4 $278
+line 393
+;393:		break;
+ADDRGP4 $281
 JUMPV
-line 392
-;390:
-;391:	case HI_TELEPORTER:
-;392:		break;
-LABELV $283
-line 395
-;393:
-;394:	case HI_MEDKIT:
-;395:		clientNum = cent->currentState.clientNum;
+line 396
+;394:
+;395:	case HI_TELEPORTER:
+;396:		break;
+LABELV $286
+line 399
+;397:
+;398:	case HI_MEDKIT:
+;399:		clientNum = cent->currentState.clientNum;
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -1745,8 +1762,8 @@ CNSTI4 168
 ADDP4
 INDIRI4
 ASGNI4
-line 396
-;396:		if ( clientNum >= 0 && clientNum < MAX_CLIENTS ) {
+line 400
+;400:		if ( clientNum >= 0 && clientNum < MAX_CLIENTS ) {
 ADDRLP4 28
 ADDRLP4 12
 INDIRI4
@@ -1754,13 +1771,13 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-LTI4 $284
+LTI4 $287
 ADDRLP4 28
 INDIRI4
 CNSTI4 64
-GEI4 $284
-line 397
-;397:			ci = &cgs.clientinfo[ clientNum ];
+GEI4 $287
+line 401
+;401:			ci = &cgs.clientinfo[ clientNum ];
 ADDRLP4 16
 CNSTI4 1732
 ADDRLP4 12
@@ -1769,8 +1786,8 @@ MULI4
 ADDRGP4 cgs+40972
 ADDP4
 ASGNP4
-line 398
-;398:			ci->medkitUsageTime = cg.time;
+line 402
+;402:			ci->medkitUsageTime = cg.time;
 ADDRLP4 16
 INDIRP4
 CNSTI4 144
@@ -1778,11 +1795,11 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 399
-;399:		}
-LABELV $284
-line 400
-;400:		trap_S_StartSound (NULL, es->number, CHAN_BODY, cgs.media.medkitSound );
+line 403
+;403:		}
+LABELV $287
+line 404
+;404:		trap_S_StartSound (NULL, es->number, CHAN_BODY, cgs.media.medkitSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 4
@@ -1791,63 +1808,63 @@ INDIRI4
 ARGI4
 CNSTI4 5
 ARGI4
-ADDRGP4 cgs+153876+924
+ADDRGP4 cgs+153876+928
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 401
-;401:		break;
-LABELV $278
-line 414
-;402:
-;403:#ifdef MISSIONPACK
-;404:	case HI_KAMIKAZE:
+line 405
 ;405:		break;
-;406:	case HI_PORTAL:
-;407:		break;
-;408:	case HI_INVULNERABILITY:
-;409:		trap_S_StartSound (NULL, es->number, CHAN_BODY, cgs.media.useInvulnerabilitySound );
-;410:		break;
-;411:#endif
-;412:	}
-;413:
-;414:}
-LABELV $266
+LABELV $281
+line 418
+;406:
+;407:#ifdef MISSIONPACK
+;408:	case HI_KAMIKAZE:
+;409:		break;
+;410:	case HI_PORTAL:
+;411:		break;
+;412:	case HI_INVULNERABILITY:
+;413:		trap_S_StartSound (NULL, es->number, CHAN_BODY, cgs.media.useInvulnerabilitySound );
+;414:		break;
+;415:#endif
+;416:	}
+;417:
+;418:}
+LABELV $269
 endproc CG_UseItem 32 16
 proc CG_ItemPickup 0 0
-line 423
-;415:
-;416:/*
-;417:================
-;418:CG_ItemPickup
+line 427
 ;419:
-;420:A new item was picked up this frame
+;420:/*
 ;421:================
-;422:*/
-;423:static void CG_ItemPickup( int itemNum ) {
-line 424
-;424:	cg.itemPickup = itemNum;
+;422:CG_ItemPickup
+;423:
+;424:A new item was picked up this frame
+;425:================
+;426:*/
+;427:static void CG_ItemPickup( int itemNum ) {
+line 428
+;428:	cg.itemPickup = itemNum;
 ADDRGP4 cg+126732
 ADDRFP4 0
 INDIRI4
 ASGNI4
-line 425
-;425:	cg.itemPickupTime = cg.time;
+line 429
+;429:	cg.itemPickupTime = cg.time;
 ADDRGP4 cg+126736
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 426
-;426:	cg.itemPickupBlendTime = cg.time;
+line 430
+;430:	cg.itemPickupBlendTime = cg.time;
 ADDRGP4 cg+126740
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 428
-;427:	// see if it should be the grabbed weapon
-;428:	if ( bg_itemlist[itemNum].giType == IT_WEAPON ) {
+line 432
+;431:	// see if it should be the grabbed weapon
+;432:	if ( bg_itemlist[itemNum].giType == IT_WEAPON ) {
 CNSTI4 52
 ADDRFP4 0
 INDIRI4
@@ -1856,14 +1873,14 @@ ADDRGP4 bg_itemlist+36
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $296
-line 430
-;429:		// select it immediately
-;430:		if ( cg_autoswitch.integer && bg_itemlist[itemNum].giTag != WP_MACHINEGUN ) {
+NEI4 $299
+line 434
+;433:		// select it immediately
+;434:		if ( cg_autoswitch.integer && bg_itemlist[itemNum].giTag != WP_MACHINEGUN ) {
 ADDRGP4 cg_autoswitch+12
 INDIRI4
 CNSTI4 0
-EQI4 $299
+EQI4 $302
 CNSTI4 52
 ADDRFP4 0
 INDIRI4
@@ -1872,15 +1889,15 @@ ADDRGP4 bg_itemlist+40
 ADDP4
 INDIRI4
 CNSTI4 2
-EQI4 $299
-line 431
-;431:			cg.weaponSelectTime = cg.time;
+EQI4 $302
+line 435
+;435:			cg.weaponSelectTime = cg.time;
 ADDRGP4 cg+126744
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 432
-;432:			cg.weaponSelect = bg_itemlist[itemNum].giTag;
+line 436
+;436:			cg.weaponSelect = bg_itemlist[itemNum].giTag;
 ADDRGP4 cg+111004
 CNSTI4 52
 ADDRFP4 0
@@ -1890,35 +1907,35 @@ ADDRGP4 bg_itemlist+40
 ADDP4
 INDIRI4
 ASGNI4
-line 433
-;433:		}
+line 437
+;437:		}
+LABELV $302
+line 438
+;438:	}
 LABELV $299
-line 434
-;434:	}
-LABELV $296
-line 436
-;435:
-;436:}
-LABELV $290
+line 440
+;439:
+;440:}
+LABELV $293
 endproc CG_ItemPickup 0 0
 export CG_PainEvent
 proc CG_PainEvent 12 16
-line 446
-;437:
-;438:
-;439:/*
-;440:================
-;441:CG_PainEvent
-;442:
-;443:Also called by playerstate transition
-;444:================
-;445:*/
-;446:void CG_PainEvent( centity_t *cent, int health ) {
 line 450
-;447:	char	*snd;
-;448:
-;449:	// don't do more than two pain sounds a second
-;450:	if ( cg.time - cent->pe.painTime < 500 ) {
+;441:
+;442:
+;443:/*
+;444:================
+;445:CG_PainEvent
+;446:
+;447:Also called by playerstate transition
+;448:================
+;449:*/
+;450:void CG_PainEvent( centity_t *cent, int health ) {
+line 454
+;451:	char	*snd;
+;452:
+;453:	// don't do more than two pain sounds a second
+;454:	if ( cg.time - cent->pe.painTime < 500 ) {
 ADDRGP4 cg+109652
 INDIRI4
 ADDRFP4 0
@@ -1928,70 +1945,70 @@ ADDP4
 INDIRI4
 SUBI4
 CNSTI4 500
-GEI4 $308
-line 451
-;451:		return;
-ADDRGP4 $307
+GEI4 $311
+line 455
+;455:		return;
+ADDRGP4 $310
 JUMPV
-LABELV $308
-line 454
-;452:	}
-;453:
-;454:	if ( health < 25 ) {
+LABELV $311
+line 458
+;456:	}
+;457:
+;458:	if ( health < 25 ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 25
-GEI4 $311
-line 455
-;455:		snd = "*pain25_1.wav";
-ADDRLP4 0
-ADDRGP4 $313
-ASGNP4
-line 456
-;456:	} else if ( health < 50 ) {
-ADDRGP4 $312
-JUMPV
-LABELV $311
-ADDRFP4 4
-INDIRI4
-CNSTI4 50
 GEI4 $314
-line 457
-;457:		snd = "*pain50_1.wav";
+line 459
+;459:		snd = "*pain25_1.wav";
 ADDRLP4 0
 ADDRGP4 $316
 ASGNP4
-line 458
-;458:	} else if ( health < 75 ) {
+line 460
+;460:	} else if ( health < 50 ) {
 ADDRGP4 $315
 JUMPV
 LABELV $314
 ADDRFP4 4
 INDIRI4
-CNSTI4 75
+CNSTI4 50
 GEI4 $317
-line 459
-;459:		snd = "*pain75_1.wav";
+line 461
+;461:		snd = "*pain50_1.wav";
 ADDRLP4 0
 ADDRGP4 $319
 ASGNP4
-line 460
-;460:	} else {
+line 462
+;462:	} else if ( health < 75 ) {
 ADDRGP4 $318
 JUMPV
 LABELV $317
-line 461
-;461:		snd = "*pain100_1.wav";
+ADDRFP4 4
+INDIRI4
+CNSTI4 75
+GEI4 $320
+line 463
+;463:		snd = "*pain75_1.wav";
 ADDRLP4 0
-ADDRGP4 $320
+ADDRGP4 $322
 ASGNP4
-line 462
-;462:	}
+line 464
+;464:	} else {
+ADDRGP4 $321
+JUMPV
+LABELV $320
+line 465
+;465:		snd = "*pain100_1.wav";
+ADDRLP4 0
+ADDRGP4 $323
+ASGNP4
+line 466
+;466:	}
+LABELV $321
 LABELV $318
 LABELV $315
-LABELV $312
-line 463
-;463:	trap_S_StartSound( NULL, cent->currentState.number, CHAN_VOICE, 
+line 467
+;467:	trap_S_StartSound( NULL, cent->currentState.number, CHAN_VOICE, 
 ADDRFP4 0
 INDIRP4
 INDIRI4
@@ -2017,11 +2034,11 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 467
-;464:		CG_CustomSound( cent->currentState.number, snd ) );
-;465:
-;466:	// save pain time for programitic twitch animation
-;467:	cent->pe.painTime = cg.time;
+line 471
+;468:		CG_CustomSound( cent->currentState.number, snd ) );
+;469:
+;470:	// save pain time for programitic twitch animation
+;471:	cent->pe.painTime = cg.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 604
@@ -2029,8 +2046,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 468
-;468:	cent->pe.painDirection ^= 1;
+line 472
+;472:	cent->pe.painDirection ^= 1;
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -2045,49 +2062,49 @@ INDIRI4
 CNSTI4 1
 BXORI4
 ASGNI4
-line 469
-;469:}
-LABELV $307
+line 473
+;473:}
+LABELV $310
 endproc CG_PainEvent 12 16
 lit
 align 4
-LABELV $468
+LABELV $471
 byte 4 0
 byte 4 0
 byte 4 1065353216
 export CG_EntityEvent
 code
 proc CG_EntityEvent 112 48
-line 482
-;470:
-;471:
-;472:
-;473:/*
-;474:==============
-;475:CG_EntityEvent
+line 486
+;474:
+;475:
 ;476:
-;477:An entity has an event value
-;478:also called by CG_CheckPlayerstateEvents
-;479:==============
-;480:*/
-;481:#define	DEBUGNAME(x) if(cg_debugEvents.integer){CG_Printf(x"\n");}
-;482:void CG_EntityEvent( centity_t *cent, vec3_t position ) {
-line 491
-;483:	entityState_t	*es;
-;484:	int				event;
-;485:	vec3_t			dir;
-;486:	const char		*s;
-;487:	int				clientNum;
-;488:	clientInfo_t	*ci;
-;489:
-;490:	
-;491:	es = &cent->currentState;
+;477:/*
+;478:==============
+;479:CG_EntityEvent
+;480:
+;481:An entity has an event value
+;482:also called by CG_CheckPlayerstateEvents
+;483:==============
+;484:*/
+;485:#define	DEBUGNAME(x) if(cg_debugEvents.integer){CG_Printf(x"\n");}
+;486:void CG_EntityEvent( centity_t *cent, vec3_t position ) {
+line 495
+;487:	entityState_t	*es;
+;488:	int				event;
+;489:	vec3_t			dir;
+;490:	const char		*s;
+;491:	int				clientNum;
+;492:	clientInfo_t	*ci;
+;493:
+;494:	
+;495:	es = &cent->currentState;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 492
-;492:	event = es->event & ~EV_EVENT_BITS;
+line 496
+;496:	event = es->event & ~EV_EVENT_BITS;
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -2097,16 +2114,16 @@ INDIRI4
 CNSTI4 -769
 BANDI4
 ASGNI4
-line 494
-;493:
-;494:	if ( cg_debugEvents.integer ) {
+line 498
+;497:
+;498:	if ( cg_debugEvents.integer ) {
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $323
-line 495
-;495:		CG_Printf( "ent:%3i  event:%3i ", es->number, event );
-ADDRGP4 $326
+EQI4 $326
+line 499
+;499:		CG_Printf( "ent:%3i  event:%3i ", es->number, event );
+ADDRGP4 $329
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -2118,36 +2135,36 @@ ARGI4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 496
-;496:	}
-LABELV $323
-line 498
-;497:
-;498:	if ( !event ) {
+line 500
+;500:	}
+LABELV $326
+line 502
+;501:
+;502:	if ( !event ) {
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $327
-line 499
-;499:		DEBUGNAME("ZEROEVENT");
+NEI4 $330
+line 503
+;503:		DEBUGNAME("ZEROEVENT");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $322
-ADDRGP4 $332
+EQI4 $325
+ADDRGP4 $335
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 500
-;500:		return;
-ADDRGP4 $322
+line 504
+;504:		return;
+ADDRGP4 $325
 JUMPV
-LABELV $327
-line 503
-;501:	}
-;502:
-;503:	clientNum = es->clientNum;
+LABELV $330
+line 507
+;505:	}
+;506:
+;507:	clientNum = es->clientNum;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
@@ -2155,27 +2172,27 @@ CNSTI4 168
 ADDP4
 INDIRI4
 ASGNI4
-line 504
-;504:	if ( clientNum < 0 || clientNum >= MAX_CLIENTS ) {
+line 508
+;508:	if ( clientNum < 0 || clientNum >= MAX_CLIENTS ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-LTI4 $335
+LTI4 $338
 ADDRLP4 4
 INDIRI4
 CNSTI4 64
-LTI4 $333
-LABELV $335
-line 505
-;505:		clientNum = 0;
+LTI4 $336
+LABELV $338
+line 509
+;509:		clientNum = 0;
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-line 506
-;506:	}
-LABELV $333
-line 507
-;507:	ci = &cgs.clientinfo[ clientNum ];
+line 510
+;510:	}
+LABELV $336
+line 511
+;511:	ci = &cgs.clientinfo[ clientNum ];
 ADDRLP4 12
 CNSTI4 1732
 ADDRLP4 4
@@ -2184,129 +2201,129 @@ MULI4
 ADDRGP4 cgs+40972
 ADDP4
 ASGNP4
-line 509
-;508:
-;509:	switch ( event ) {
+line 513
+;512:
+;513:	switch ( event ) {
 ADDRLP4 8
 INDIRI4
 CNSTI4 1
-LTI4 $337
+LTI4 $340
 ADDRLP4 8
 INDIRI4
 CNSTI4 75
-GTI4 $337
+GTI4 $340
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $1026-4
+ADDRGP4 $1029-4
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $1026
-address $339
-address $349
-address $360
-address $371
-address $382
-address $433
-address $433
-address $433
-address $433
-address $393
-address $407
-address $419
-address $463
-address $475
-address $489
-address $496
-address $503
-address $510
-address $516
-address $534
-address $548
-address $556
-address $563
-address $568
-address $573
-address $578
-address $583
-address $588
-address $593
-address $598
-address $603
-address $608
-address $613
-address $618
-address $623
-address $628
-address $633
-address $638
-address $643
-address $337
-address $669
-address $662
-address $648
-address $655
-address $677
-address $688
-address $773
-address $782
-address $793
-address $747
-address $734
-address $704
-address $709
-address $714
-address $719
-address $760
-address $337
-address $918
-address $926
-address $926
-address $926
-address $932
-address $937
-address $950
-address $963
-address $976
-address $985
-address $992
-address $699
-address $997
-address $337
-address $1004
-address $1016
-address $1011
-address $480
+LABELV $1029
+address $342
+address $352
+address $363
+address $374
+address $385
+address $436
+address $436
+address $436
+address $436
+address $396
+address $410
+address $422
+address $466
+address $478
+address $492
+address $499
+address $506
+address $513
+address $519
+address $537
+address $551
+address $559
+address $566
+address $571
+address $576
+address $581
+address $586
+address $591
+address $596
+address $601
+address $606
+address $611
+address $616
+address $621
+address $626
+address $631
+address $636
+address $641
+address $646
+address $340
+address $672
+address $665
+address $651
+address $658
+address $680
+address $691
+address $776
+address $785
+address $796
+address $750
+address $737
+address $707
+address $712
+address $717
+address $722
+address $763
+address $340
+address $921
+address $929
+address $929
+address $929
+address $935
+address $940
+address $953
+address $966
+address $979
+address $988
+address $995
+address $702
+address $1000
+address $340
+address $1007
+address $1019
+address $1014
+address $483
 code
-LABELV $339
-line 514
-;510:	//
-;511:	// movement generated events
-;512:	//
-;513:	case EV_FOOTSTEP:
-;514:		DEBUGNAME("EV_FOOTSTEP");
+LABELV $342
+line 518
+;514:	//
+;515:	// movement generated events
+;516:	//
+;517:	case EV_FOOTSTEP:
+;518:		DEBUGNAME("EV_FOOTSTEP");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $340
-ADDRGP4 $343
+EQI4 $343
+ADDRGP4 $346
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $340
-line 515
-;515:		if (cg_footsteps.integer) {
+LABELV $343
+line 519
+;519:		if (cg_footsteps.integer) {
 ADDRGP4 cg_footsteps+12
 INDIRI4
 CNSTI4 0
-EQI4 $338
-line 516
-;516:			trap_S_StartSound (NULL, es->number, CHAN_BODY, 
+EQI4 $341
+line 520
+;520:			trap_S_StartSound (NULL, es->number, CHAN_BODY, 
 ADDRLP4 40
 ADDRGP4 rand
 CALLI4
@@ -2332,7 +2349,7 @@ ADDP4
 INDIRI4
 CNSTI4 4
 LSHI4
-ADDRGP4 cgs+153876+600
+ADDRGP4 cgs+153876+604
 ADDP4
 ADDP4
 INDIRI4
@@ -2340,197 +2357,143 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 518
-;517:				cgs.media.footsteps[ ci->footsteps ][rand()&3] );
-;518:		}
-line 519
-;519:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $349
-line 521
-;520:	case EV_FOOTSTEP_METAL:
-;521:		DEBUGNAME("EV_FOOTSTEP_METAL");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $350
-ADDRGP4 $353
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $350
 line 522
-;522:		if (cg_footsteps.integer) {
-ADDRGP4 cg_footsteps+12
-INDIRI4
-CNSTI4 0
-EQI4 $338
+;521:				cgs.media.footsteps[ ci->footsteps ][rand()&3] );
+;522:		}
 line 523
-;523:			trap_S_StartSound (NULL, es->number, CHAN_BODY, 
-ADDRLP4 40
-ADDRGP4 rand
-CALLI4
-ASGNI4
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 5
-ARGI4
-ADDRLP4 40
-INDIRI4
-CNSTI4 3
-BANDI4
-CNSTI4 2
-LSHI4
-ADDRGP4 cgs+153876+600+80
-ADDP4
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
+;523:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $352
 line 525
-;524:				cgs.media.footsteps[ FOOTSTEP_METAL ][rand()&3] );
-;525:		}
+;524:	case EV_FOOTSTEP_METAL:
+;525:		DEBUGNAME("EV_FOOTSTEP_METAL");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $353
+ADDRGP4 $356
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $353
 line 526
-;526:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $360
-line 528
-;527:	case EV_FOOTSPLASH:
-;528:		DEBUGNAME("EV_FOOTSPLASH");
-ADDRGP4 cg_debugEvents+12
+;526:		if (cg_footsteps.integer) {
+ADDRGP4 cg_footsteps+12
 INDIRI4
 CNSTI4 0
-EQI4 $361
-ADDRGP4 $364
+EQI4 $341
+line 527
+;527:			trap_S_StartSound (NULL, es->number, CHAN_BODY, 
+ADDRLP4 40
+ADDRGP4 rand
+CALLI4
+ASGNI4
+CNSTP4 0
 ARGP4
-ADDRGP4 CG_Printf
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 5
+ARGI4
+ADDRLP4 40
+INDIRI4
+CNSTI4 3
+BANDI4
+CNSTI4 2
+LSHI4
+ADDRGP4 cgs+153876+604+80
+ADDP4
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
 CALLV
 pop
-LABELV $361
 line 529
-;529:		if (cg_footsteps.integer) {
-ADDRGP4 cg_footsteps+12
-INDIRI4
-CNSTI4 0
-EQI4 $338
+;528:				cgs.media.footsteps[ FOOTSTEP_METAL ][rand()&3] );
+;529:		}
 line 530
-;530:			trap_S_StartSound (NULL, es->number, CHAN_BODY, 
-ADDRLP4 40
-ADDRGP4 rand
-CALLI4
-ASGNI4
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 5
-ARGI4
-ADDRLP4 40
-INDIRI4
-CNSTI4 3
-BANDI4
-CNSTI4 2
-LSHI4
-ADDRGP4 cgs+153876+600+96
-ADDP4
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
+;530:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $363
 line 532
-;531:				cgs.media.footsteps[ FOOTSTEP_SPLASH ][rand()&3] );
-;532:		}
+;531:	case EV_FOOTSPLASH:
+;532:		DEBUGNAME("EV_FOOTSPLASH");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $364
+ADDRGP4 $367
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $364
 line 533
-;533:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $371
-line 535
-;534:	case EV_FOOTWADE:
-;535:		DEBUGNAME("EV_FOOTWADE");
-ADDRGP4 cg_debugEvents+12
+;533:		if (cg_footsteps.integer) {
+ADDRGP4 cg_footsteps+12
 INDIRI4
 CNSTI4 0
-EQI4 $372
-ADDRGP4 $375
+EQI4 $341
+line 534
+;534:			trap_S_StartSound (NULL, es->number, CHAN_BODY, 
+ADDRLP4 40
+ADDRGP4 rand
+CALLI4
+ASGNI4
+CNSTP4 0
 ARGP4
-ADDRGP4 CG_Printf
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 5
+ARGI4
+ADDRLP4 40
+INDIRI4
+CNSTI4 3
+BANDI4
+CNSTI4 2
+LSHI4
+ADDRGP4 cgs+153876+604+96
+ADDP4
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
 CALLV
 pop
-LABELV $372
 line 536
-;536:		if (cg_footsteps.integer) {
-ADDRGP4 cg_footsteps+12
-INDIRI4
-CNSTI4 0
-EQI4 $338
+;535:				cgs.media.footsteps[ FOOTSTEP_SPLASH ][rand()&3] );
+;536:		}
 line 537
-;537:			trap_S_StartSound (NULL, es->number, CHAN_BODY, 
-ADDRLP4 40
-ADDRGP4 rand
-CALLI4
-ASGNI4
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 5
-ARGI4
-ADDRLP4 40
-INDIRI4
-CNSTI4 3
-BANDI4
-CNSTI4 2
-LSHI4
-ADDRGP4 cgs+153876+600+96
-ADDP4
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 539
-;538:				cgs.media.footsteps[ FOOTSTEP_SPLASH ][rand()&3] );
-;539:		}
-line 540
-;540:		break;
-ADDRGP4 $338
+;537:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $382
-line 542
-;541:	case EV_SWIM:
-;542:		DEBUGNAME("EV_SWIM");
+LABELV $374
+line 539
+;538:	case EV_FOOTWADE:
+;539:		DEBUGNAME("EV_FOOTWADE");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $383
-ADDRGP4 $386
+EQI4 $375
+ADDRGP4 $378
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $383
-line 543
-;543:		if (cg_footsteps.integer) {
+LABELV $375
+line 540
+;540:		if (cg_footsteps.integer) {
 ADDRGP4 cg_footsteps+12
 INDIRI4
 CNSTI4 0
-EQI4 $338
-line 544
-;544:			trap_S_StartSound (NULL, es->number, CHAN_BODY, 
+EQI4 $341
+line 541
+;541:			trap_S_StartSound (NULL, es->number, CHAN_BODY, 
 ADDRLP4 40
 ADDRGP4 rand
 CALLI4
@@ -2549,38 +2512,92 @@ CNSTI4 3
 BANDI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+153876+600+96
+ADDRGP4 cgs+153876+604+96
 ADDP4
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 546
-;545:				cgs.media.footsteps[ FOOTSTEP_SPLASH ][rand()&3] );
-;546:		}
-line 547
-;547:		break;
-ADDRGP4 $338
+line 543
+;542:				cgs.media.footsteps[ FOOTSTEP_SPLASH ][rand()&3] );
+;543:		}
+line 544
+;544:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $393
-line 551
-;548:
-;549:
-;550:	case EV_FALL_SHORT:
-;551:		DEBUGNAME("EV_FALL_SHORT");
+LABELV $385
+line 546
+;545:	case EV_SWIM:
+;546:		DEBUGNAME("EV_SWIM");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $394
-ADDRGP4 $397
+EQI4 $386
+ADDRGP4 $389
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $394
-line 552
-;552:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.landSound );
+LABELV $386
+line 547
+;547:		if (cg_footsteps.integer) {
+ADDRGP4 cg_footsteps+12
+INDIRI4
+CNSTI4 0
+EQI4 $341
+line 548
+;548:			trap_S_StartSound (NULL, es->number, CHAN_BODY, 
+ADDRLP4 40
+ADDRGP4 rand
+CALLI4
+ASGNI4
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 5
+ARGI4
+ADDRLP4 40
+INDIRI4
+CNSTI4 3
+BANDI4
+CNSTI4 2
+LSHI4
+ADDRGP4 cgs+153876+604+96
+ADDP4
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 550
+;549:				cgs.media.footsteps[ FOOTSTEP_SPLASH ][rand()&3] );
+;550:		}
+line 551
+;551:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $396
+line 555
+;552:
+;553:
+;554:	case EV_FALL_SHORT:
+;555:		DEBUGNAME("EV_FALL_SHORT");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $397
+ADDRGP4 $400
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $397
+line 556
+;556:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.landSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -2589,59 +2606,59 @@ INDIRI4
 ARGI4
 CNSTI4 0
 ARGI4
-ADDRGP4 cgs+153876+796
+ADDRGP4 cgs+153876+800
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 553
-;553:		if ( clientNum == cg.predictedPlayerState.clientNum ) {
+line 557
+;557:		if ( clientNum == cg.predictedPlayerState.clientNum ) {
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cg+109684+140
 INDIRI4
-NEI4 $338
-line 555
-;554:			// smooth landing z changes
-;555:			cg.landChange = -8;
+NEI4 $341
+line 559
+;558:			// smooth landing z changes
+;559:			cg.landChange = -8;
 ADDRGP4 cg+110996
 CNSTF4 3238002688
 ASGNF4
-line 556
-;556:			cg.landTime = cg.time;
+line 560
+;560:			cg.landTime = cg.time;
 ADDRGP4 cg+111000
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 557
-;557:		}
-line 558
-;558:		break;
-ADDRGP4 $338
+line 561
+;561:		}
+line 562
+;562:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $407
-line 560
-;559:	case EV_FALL_MEDIUM:
-;560:		DEBUGNAME("EV_FALL_MEDIUM");
+LABELV $410
+line 564
+;563:	case EV_FALL_MEDIUM:
+;564:		DEBUGNAME("EV_FALL_MEDIUM");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $408
-ADDRGP4 $411
+EQI4 $411
+ADDRGP4 $414
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $408
-line 562
-;561:		// use normal pain sound
-;562:		trap_S_StartSound( NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, "*pain100_1.wav" ) );
+LABELV $411
+line 566
+;565:		// use normal pain sound
+;566:		trap_S_StartSound( NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, "*pain100_1.wav" ) );
 ADDRLP4 0
 INDIRP4
 INDIRI4
 ARGI4
-ADDRGP4 $320
+ADDRGP4 $323
 ARGP4
 ADDRLP4 40
 ADDRGP4 CG_CustomSound
@@ -2661,52 +2678,52 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 563
-;563:		if ( clientNum == cg.predictedPlayerState.clientNum ) {
+line 567
+;567:		if ( clientNum == cg.predictedPlayerState.clientNum ) {
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cg+109684+140
 INDIRI4
-NEI4 $338
-line 565
-;564:			// smooth landing z changes
-;565:			cg.landChange = -16;
+NEI4 $341
+line 569
+;568:			// smooth landing z changes
+;569:			cg.landChange = -16;
 ADDRGP4 cg+110996
 CNSTF4 3246391296
 ASGNF4
-line 566
-;566:			cg.landTime = cg.time;
+line 570
+;570:			cg.landTime = cg.time;
 ADDRGP4 cg+111000
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 567
-;567:		}
-line 568
-;568:		break;
-ADDRGP4 $338
+line 571
+;571:		}
+line 572
+;572:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $419
-line 570
-;569:	case EV_FALL_FAR:
-;570:		DEBUGNAME("EV_FALL_FAR");
+LABELV $422
+line 574
+;573:	case EV_FALL_FAR:
+;574:		DEBUGNAME("EV_FALL_FAR");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $420
-ADDRGP4 $423
+EQI4 $423
+ADDRGP4 $426
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $420
-line 571
-;571:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, CG_CustomSound( es->number, "*fall1.wav" ) );
+LABELV $423
+line 575
+;575:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, CG_CustomSound( es->number, "*fall1.wav" ) );
 ADDRLP4 0
 INDIRP4
 INDIRI4
 ARGI4
-ADDRGP4 $424
+ADDRGP4 $427
 ARGP4
 ADDRLP4 44
 ADDRGP4 CG_CustomSound
@@ -2726,8 +2743,8 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 572
-;572:		cent->pe.painTime = cg.time;	// don't play a pain sound right after this
+line 576
+;576:		cent->pe.painTime = cg.time;	// don't play a pain sound right after this
 ADDRFP4 0
 INDIRP4
 CNSTI4 604
@@ -2735,71 +2752,71 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 573
-;573:		if ( clientNum == cg.predictedPlayerState.clientNum ) {
+line 577
+;577:		if ( clientNum == cg.predictedPlayerState.clientNum ) {
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cg+109684+140
 INDIRI4
-NEI4 $338
-line 575
-;574:			// smooth landing z changes
-;575:			cg.landChange = -24;
+NEI4 $341
+line 579
+;578:			// smooth landing z changes
+;579:			cg.landChange = -24;
 ADDRGP4 cg+110996
 CNSTF4 3250585600
 ASGNF4
-line 576
-;576:			cg.landTime = cg.time;
+line 580
+;580:			cg.landTime = cg.time;
 ADDRGP4 cg+111000
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 577
-;577:		}
-line 578
-;578:		break;
-ADDRGP4 $338
+line 581
+;581:		}
+line 582
+;582:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $433
-line 584
-;579:
-;580:	case EV_STEP_4:
-;581:	case EV_STEP_8:
-;582:	case EV_STEP_12:
-;583:	case EV_STEP_16:		// smooth out step up transitions
-;584:		DEBUGNAME("EV_STEP");
+LABELV $436
+line 588
+;583:
+;584:	case EV_STEP_4:
+;585:	case EV_STEP_8:
+;586:	case EV_STEP_12:
+;587:	case EV_STEP_16:		// smooth out step up transitions
+;588:		DEBUGNAME("EV_STEP");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $434
-ADDRGP4 $437
+EQI4 $437
+ADDRGP4 $440
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $434
-line 585
-;585:	{
-line 590
-;586:		float	oldStep;
-;587:		int		delta;
-;588:		int		step;
-;589:
-;590:		if ( clientNum != cg.predictedPlayerState.clientNum ) {
+LABELV $437
+line 589
+;589:	{
+line 594
+;590:		float	oldStep;
+;591:		int		delta;
+;592:		int		step;
+;593:
+;594:		if ( clientNum != cg.predictedPlayerState.clientNum ) {
 ADDRLP4 4
 INDIRI4
 ADDRGP4 cg+109684+140
 INDIRI4
-EQI4 $438
-line 591
-;591:			break;
-ADDRGP4 $338
+EQI4 $441
+line 595
+;595:			break;
+ADDRGP4 $341
 JUMPV
-LABELV $438
-line 594
-;592:		}
-;593:		// if we are interpolating, we don't need to smooth steps
-;594:		if ( cg.demoPlayback || (cg.snap->ps.pm_flags & PMF_FOLLOW) ||
+LABELV $441
+line 598
+;596:		}
+;597:		// if we are interpolating, we don't need to smooth steps
+;598:		if ( cg.demoPlayback || (cg.snap->ps.pm_flags & PMF_FOLLOW) ||
 ADDRLP4 60
 CNSTI4 0
 ASGNI4
@@ -2807,7 +2824,7 @@ ADDRGP4 cg+8
 INDIRI4
 ADDRLP4 60
 INDIRI4
-NEI4 $450
+NEI4 $453
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 56
@@ -2817,29 +2834,29 @@ CNSTI4 4096
 BANDI4
 ADDRLP4 60
 INDIRI4
-NEI4 $450
+NEI4 $453
 ADDRGP4 cg_nopredict+12
 INDIRI4
 ADDRLP4 60
 INDIRI4
-NEI4 $450
+NEI4 $453
 ADDRGP4 cg_synchronousClients+12
 INDIRI4
 ADDRLP4 60
 INDIRI4
-EQI4 $442
-LABELV $450
-line 595
-;595:			cg_nopredict.integer || cg_synchronousClients.integer ) {
-line 596
-;596:			break;
-ADDRGP4 $338
-JUMPV
-LABELV $442
+EQI4 $445
+LABELV $453
 line 599
-;597:		}
-;598:		// check for stepping up before a previous step is completed
-;599:		delta = cg.time - cg.stepTime;
+;599:			cg_nopredict.integer || cg_synchronousClients.integer ) {
+line 600
+;600:			break;
+ADDRGP4 $341
+JUMPV
+LABELV $445
+line 603
+;601:		}
+;602:		// check for stepping up before a previous step is completed
+;603:		delta = cg.time - cg.stepTime;
 ADDRLP4 48
 ADDRGP4 cg+109652
 INDIRI4
@@ -2847,14 +2864,14 @@ ADDRGP4 cg+110984
 INDIRI4
 SUBI4
 ASGNI4
-line 600
-;600:		if (delta < STEP_TIME) {
+line 604
+;604:		if (delta < STEP_TIME) {
 ADDRLP4 48
 INDIRI4
 CNSTI4 200
-GEI4 $453
-line 601
-;601:			oldStep = cg.stepChange * (STEP_TIME - delta) / STEP_TIME;
+GEI4 $456
+line 605
+;605:			oldStep = cg.stepChange * (STEP_TIME - delta) / STEP_TIME;
 ADDRLP4 52
 ADDRGP4 cg+110980
 INDIRF4
@@ -2867,23 +2884,23 @@ MULF4
 CNSTF4 1128792064
 DIVF4
 ASGNF4
-line 602
-;602:		} else {
-ADDRGP4 $454
+line 606
+;606:		} else {
+ADDRGP4 $457
 JUMPV
-LABELV $453
-line 603
-;603:			oldStep = 0;
+LABELV $456
+line 607
+;607:			oldStep = 0;
 ADDRLP4 52
 CNSTF4 0
 ASGNF4
-line 604
-;604:		}
-LABELV $454
-line 607
-;605:
-;606:		// add this amount
-;607:		step = 4 * (event - EV_STEP_4 + 1 );
+line 608
+;608:		}
+LABELV $457
+line 611
+;609:
+;610:		// add this amount
+;611:		step = 4 * (event - EV_STEP_4 + 1 );
 ADDRLP4 56
 ADDRLP4 8
 INDIRI4
@@ -2894,8 +2911,8 @@ SUBI4
 CNSTI4 4
 ADDI4
 ASGNI4
-line 608
-;608:		cg.stepChange = oldStep + step;
+line 612
+;612:		cg.stepChange = oldStep + step;
 ADDRGP4 cg+110980
 ADDRLP4 52
 INDIRF4
@@ -2904,60 +2921,60 @@ INDIRI4
 CVIF4 4
 ADDF4
 ASGNF4
-line 609
-;609:		if ( cg.stepChange > MAX_STEP_CHANGE ) {
+line 613
+;613:		if ( cg.stepChange > MAX_STEP_CHANGE ) {
 ADDRGP4 cg+110980
 INDIRF4
 CNSTF4 1107296256
-LEF4 $457
-line 610
-;610:			cg.stepChange = MAX_STEP_CHANGE;
+LEF4 $460
+line 614
+;614:			cg.stepChange = MAX_STEP_CHANGE;
 ADDRGP4 cg+110980
 CNSTF4 1107296256
 ASGNF4
-line 611
-;611:		}
-LABELV $457
-line 612
-;612:		cg.stepTime = cg.time;
+line 615
+;615:		}
+LABELV $460
+line 616
+;616:		cg.stepTime = cg.time;
 ADDRGP4 cg+110984
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 613
-;613:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $463
 line 617
-;614:	}
-;615:
-;616:	case EV_JUMP_PAD:
-;617:		DEBUGNAME("EV_JUMP_PAD");
+;617:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $466
+line 621
+;618:	}
+;619:
+;620:	case EV_JUMP_PAD:
+;621:		DEBUGNAME("EV_JUMP_PAD");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $464
-ADDRGP4 $467
+EQI4 $467
+ADDRGP4 $470
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $464
-line 619
-;618://		CG_Printf( "EV_JUMP_PAD w/effect #%i\n", es->eventParm );
-;619:		{
-line 621
-;620:			localEntity_t	*smoke;
-;621:			vec3_t			up = {0, 0, 1};
+LABELV $467
+line 623
+;622://		CG_Printf( "EV_JUMP_PAD w/effect #%i\n", es->eventParm );
+;623:		{
+line 625
+;624:			localEntity_t	*smoke;
+;625:			vec3_t			up = {0, 0, 1};
 ADDRLP4 48
-ADDRGP4 $468
+ADDRGP4 $471
 INDIRB
 ASGNB 12
-line 624
-;622:
-;623:
-;624:			smoke = CG_SmokePuff( cent->lerpOrigin, up, 
+line 628
+;626:
+;627:
+;628:			smoke = CG_SmokePuff( cent->lerpOrigin, up, 
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
@@ -3001,18 +3018,18 @@ ADDRLP4 60
 ADDRLP4 68
 INDIRP4
 ASGNP4
-line 631
-;625:						  32, 
-;626:						  1, 1, 1, 0.33f,
-;627:						  1000, 
-;628:						  cg.time, 0,
-;629:						  LEF_PUFF_DONT_SCALE, 
-;630:						  cgs.media.smokePuffShader );
-;631:		}
-line 634
-;632:
-;633:		// boing sound at origin, jump sound on player
-;634:		trap_S_StartSound ( cent->lerpOrigin, -1, CHAN_VOICE, cgs.media.jumpPadSound );
+line 635
+;629:						  32, 
+;630:						  1, 1, 1, 0.33f,
+;631:						  1000, 
+;632:						  cg.time, 0,
+;633:						  LEF_PUFF_DONT_SCALE, 
+;634:						  cgs.media.smokePuffShader );
+;635:		}
+line 638
+;636:
+;637:		// boing sound at origin, jump sound on player
+;638:		trap_S_StartSound ( cent->lerpOrigin, -1, CHAN_VOICE, cgs.media.jumpPadSound );
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
@@ -3022,64 +3039,64 @@ CNSTI4 -1
 ARGI4
 CNSTI4 3
 ARGI4
-ADDRGP4 cgs+153876+804
+ADDRGP4 cgs+153876+808
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 635
-;635:		trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, "*jump1.wav" ) );
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-ADDRGP4 $474
-ARGP4
-ADDRLP4 48
-ADDRGP4 CG_CustomSound
-CALLI4
-ASGNI4
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 3
-ARGI4
-ADDRLP4 48
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 636
-;636:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $475
 line 639
-;637:
-;638:	case EV_JUMP:
-;639:		DEBUGNAME("EV_JUMP");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $476
-ADDRGP4 $479
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $476
-line 640
-;640:		trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, "*jump1.wav" ) );
+;639:		trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, "*jump1.wav" ) );
 ADDRLP4 0
 INDIRP4
 INDIRI4
 ARGI4
-ADDRGP4 $474
+ADDRGP4 $477
+ARGP4
+ADDRLP4 48
+ADDRGP4 CG_CustomSound
+CALLI4
+ASGNI4
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 3
+ARGI4
+ADDRLP4 48
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 640
+;640:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $478
+line 643
+;641:
+;642:	case EV_JUMP:
+;643:		DEBUGNAME("EV_JUMP");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $479
+ADDRGP4 $482
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $479
+line 644
+;644:		trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, "*jump1.wav" ) );
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+ADDRGP4 $477
 ARGP4
 ADDRLP4 52
 ADDRGP4 CG_CustomSound
@@ -3099,43 +3116,43 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 641
-;641:		break;
-ADDRGP4 $338
+line 645
+;645:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $480
-line 643
-;642:	case EV_TAUNT:
-;643:		DEBUGNAME("EV_TAUNT");
+LABELV $483
+line 647
+;646:	case EV_TAUNT:
+;647:		DEBUGNAME("EV_TAUNT");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $481
-ADDRGP4 $484
+EQI4 $484
+ADDRGP4 $487
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $481
-line 644
-;644:		if (ci->efmodel == qfalse) 
+LABELV $484
+line 648
+;648:		if (ci->efmodel == qfalse) 
 ADDRLP4 12
 INDIRP4
 CNSTI4 516
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $485
-line 645
-;645:		{
-line 647
-;646:			//CG_CenterPrint( "QUAKE 3 MODEL TAUNT", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );// Shafe - Debug
-;647:			trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, "*taunt.wav" ) );
+NEI4 $488
+line 649
+;649:		{
+line 651
+;650:			//CG_CenterPrint( "QUAKE 3 MODEL TAUNT", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );// Shafe - Debug
+;651:			trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, "*taunt.wav" ) );
 ADDRLP4 0
 INDIRP4
 INDIRI4
 ARGI4
-ADDRGP4 $487
+ADDRGP4 $490
 ARGP4
 ADDRLP4 56
 ADDRGP4 CG_CustomSound
@@ -3155,17 +3172,17 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 648
-;648:		}
-ADDRGP4 $338
-JUMPV
-LABELV $485
-line 650
-;649:		else
-;650:		{
 line 652
-;651:			//CG_CenterPrint( "Elite Force MODEL TAUNT", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );// Shafe - Debug
-;652:			trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, va("*taunt%d.wav", irandom(1, ci->numTaunts) ) ) );
+;652:		}
+ADDRGP4 $341
+JUMPV
+LABELV $488
+line 654
+;653:		else
+;654:		{
+line 656
+;655:			//CG_CenterPrint( "Elite Force MODEL TAUNT", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );// Shafe - Debug
+;656:			trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, va("*taunt%d.wav", irandom(1, ci->numTaunts) ) ) );
 CNSTI4 1
 ARGI4
 ADDRLP4 12
@@ -3178,7 +3195,7 @@ ADDRLP4 56
 ADDRGP4 irandom
 CALLI4
 ASGNI4
-ADDRGP4 $488
+ADDRGP4 $491
 ARGP4
 ADDRLP4 56
 INDIRI4
@@ -3212,88 +3229,54 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 653
-;653:		}
-line 654
-;654:		break;
-ADDRGP4 $338
+line 657
+;657:		}
+line 658
+;658:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $489
-line 682
-;655:#ifdef MISSIONPACK
-;656:	case EV_TAUNT_YES:
-;657:		DEBUGNAME("EV_TAUNT_YES");
-;658:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_YES);
-;659:		break;
-;660:	case EV_TAUNT_NO:
-;661:		DEBUGNAME("EV_TAUNT_NO");
-;662:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_NO);
-;663:		break;
-;664:	case EV_TAUNT_FOLLOWME:
-;665:		DEBUGNAME("EV_TAUNT_FOLLOWME");
-;666:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_FOLLOWME);
-;667:		break;
-;668:	case EV_TAUNT_GETFLAG:
-;669:		DEBUGNAME("EV_TAUNT_GETFLAG");
-;670:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_ONGETFLAG);
-;671:		break;
-;672:	case EV_TAUNT_GUARDBASE:
-;673:		DEBUGNAME("EV_TAUNT_GUARDBASE");
-;674:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_ONDEFENSE);
-;675:		break;
-;676:	case EV_TAUNT_PATROL:
-;677:		DEBUGNAME("EV_TAUNT_PATROL");
-;678:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_ONPATROL);
-;679:		break;
-;680:#endif
-;681:	case EV_WATER_TOUCH:
-;682:		DEBUGNAME("EV_WATER_TOUCH");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $490
-ADDRGP4 $493
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $490
-line 683
-;683:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.watrInSound );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 0
-ARGI4
-ADDRGP4 cgs+153876+908
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 684
-;684:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $496
+LABELV $492
 line 686
-;685:	case EV_WATER_LEAVE:
-;686:		DEBUGNAME("EV_WATER_LEAVE");
+;659:#ifdef MISSIONPACK
+;660:	case EV_TAUNT_YES:
+;661:		DEBUGNAME("EV_TAUNT_YES");
+;662:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_YES);
+;663:		break;
+;664:	case EV_TAUNT_NO:
+;665:		DEBUGNAME("EV_TAUNT_NO");
+;666:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_NO);
+;667:		break;
+;668:	case EV_TAUNT_FOLLOWME:
+;669:		DEBUGNAME("EV_TAUNT_FOLLOWME");
+;670:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_FOLLOWME);
+;671:		break;
+;672:	case EV_TAUNT_GETFLAG:
+;673:		DEBUGNAME("EV_TAUNT_GETFLAG");
+;674:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_ONGETFLAG);
+;675:		break;
+;676:	case EV_TAUNT_GUARDBASE:
+;677:		DEBUGNAME("EV_TAUNT_GUARDBASE");
+;678:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_ONDEFENSE);
+;679:		break;
+;680:	case EV_TAUNT_PATROL:
+;681:		DEBUGNAME("EV_TAUNT_PATROL");
+;682:		CG_VoiceChatLocal(SAY_TEAM, qfalse, es->number, COLOR_CYAN, VOICECHAT_ONPATROL);
+;683:		break;
+;684:#endif
+;685:	case EV_WATER_TOUCH:
+;686:		DEBUGNAME("EV_WATER_TOUCH");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $497
-ADDRGP4 $500
+EQI4 $493
+ADDRGP4 $496
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $497
+LABELV $493
 line 687
-;687:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.watrOutSound );
+;687:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.watrInSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -3310,24 +3293,24 @@ CALLV
 pop
 line 688
 ;688:		break;
-ADDRGP4 $338
+ADDRGP4 $341
 JUMPV
-LABELV $503
+LABELV $499
 line 690
-;689:	case EV_WATER_UNDER:
-;690:		DEBUGNAME("EV_WATER_UNDER");
+;689:	case EV_WATER_LEAVE:
+;690:		DEBUGNAME("EV_WATER_LEAVE");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $504
-ADDRGP4 $507
+EQI4 $500
+ADDRGP4 $503
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $504
+LABELV $500
 line 691
-;691:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.watrUnSound );
+;691:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.watrOutSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -3344,29 +3327,63 @@ CALLV
 pop
 line 692
 ;692:		break;
-ADDRGP4 $338
+ADDRGP4 $341
 JUMPV
-LABELV $510
+LABELV $506
 line 694
-;693:	case EV_WATER_CLEAR:
-;694:		DEBUGNAME("EV_WATER_CLEAR");
+;693:	case EV_WATER_UNDER:
+;694:		DEBUGNAME("EV_WATER_UNDER");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $511
-ADDRGP4 $514
+EQI4 $507
+ADDRGP4 $510
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $511
+LABELV $507
 line 695
-;695:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, CG_CustomSound( es->number, "*gasp.wav" ) );
+;695:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.watrUnSound );
+CNSTP4 0
+ARGP4
 ADDRLP4 0
 INDIRP4
 INDIRI4
 ARGI4
-ADDRGP4 $515
+CNSTI4 0
+ARGI4
+ADDRGP4 cgs+153876+920
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 696
+;696:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $513
+line 698
+;697:	case EV_WATER_CLEAR:
+;698:		DEBUGNAME("EV_WATER_CLEAR");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $514
+ADDRGP4 $517
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $514
+line 699
+;699:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, CG_CustomSound( es->number, "*gasp.wav" ) );
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+ADDRGP4 $518
 ARGP4
 ADDRLP4 56
 ADDRGP4 CG_CustomSound
@@ -3386,32 +3403,32 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 696
-;696:		break;
-ADDRGP4 $338
+line 700
+;700:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $516
-line 699
-;697:
-;698:	case EV_ITEM_PICKUP:
-;699:		DEBUGNAME("EV_ITEM_PICKUP");
+LABELV $519
+line 703
+;701:
+;702:	case EV_ITEM_PICKUP:
+;703:		DEBUGNAME("EV_ITEM_PICKUP");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $517
-ADDRGP4 $520
+EQI4 $520
+ADDRGP4 $523
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $517
-line 700
-;700:		{
+LABELV $520
 line 704
-;701:			gitem_t	*item;
-;702:			int		index;
-;703:
-;704:			index = es->eventParm;		// player predicted
+;704:		{
+line 708
+;705:			gitem_t	*item;
+;706:			int		index;
+;707:
+;708:			index = es->eventParm;		// player predicted
 ADDRLP4 60
 ADDRLP4 0
 INDIRP4
@@ -3419,9 +3436,9 @@ CNSTI4 184
 ADDP4
 INDIRI4
 ASGNI4
-line 706
-;705:
-;706:			if ( index < 1 || index >= bg_numItems ) {
+line 710
+;709:
+;710:			if ( index < 1 || index >= bg_numItems ) {
 ADDRLP4 68
 ADDRLP4 60
 INDIRI4
@@ -3429,21 +3446,21 @@ ASGNI4
 ADDRLP4 68
 INDIRI4
 CNSTI4 1
-LTI4 $523
+LTI4 $526
 ADDRLP4 68
 INDIRI4
 ADDRGP4 bg_numItems
 INDIRI4
-LTI4 $521
-LABELV $523
-line 707
-;707:				break;
-ADDRGP4 $338
+LTI4 $524
+LABELV $526
+line 711
+;711:				break;
+ADDRGP4 $341
 JUMPV
-LABELV $521
-line 709
-;708:			}
-;709:			item = &bg_itemlist[ index ];
+LABELV $524
+line 713
+;712:			}
+;713:			item = &bg_itemlist[ index ];
 ADDRLP4 64
 CNSTI4 52
 ADDRLP4 60
@@ -3452,11 +3469,11 @@ MULI4
 ADDRGP4 bg_itemlist
 ADDP4
 ASGNP4
-line 713
-;710:
-;711:			// powerups and team items will have a separate global sound, this one
-;712:			// will be played at prediction time
-;713:			if ( item->giType == IT_POWERUP || item->giType == IT_TEAM) {
+line 717
+;714:
+;715:			// powerups and team items will have a separate global sound, this one
+;716:			// will be played at prediction time
+;717:			if ( item->giType == IT_POWERUP || item->giType == IT_TEAM) {
 ADDRLP4 72
 ADDRLP4 64
 INDIRP4
@@ -3467,974 +3484,14 @@ ASGNI4
 ADDRLP4 72
 INDIRI4
 CNSTI4 5
-EQI4 $526
+EQI4 $529
 ADDRLP4 72
 INDIRI4
 CNSTI4 8
-NEI4 $524
-LABELV $526
-line 714
-;714:				trap_S_StartSound (NULL, es->number, CHAN_AUTO,	cgs.media.n_healthSound );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 0
-ARGI4
-ADDRGP4 cgs+153876+1060
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 715
-;715:			} else if (item->giType == IT_PERSISTANT_POWERUP) {
-ADDRGP4 $525
-JUMPV
-LABELV $524
-ADDRLP4 64
-INDIRP4
-CNSTI4 36
-ADDP4
-INDIRI4
-CNSTI4 7
-NEI4 $529
-line 732
-;716:#ifdef MISSIONPACK
-;717:				switch (item->giTag ) {
-;718:					case PW_SCOUT:
-;719:						trap_S_StartSound (NULL, es->number, CHAN_AUTO,	cgs.media.scoutSound );
-;720:					break;
-;721:					case PW_GUARD:
-;722:						trap_S_StartSound (NULL, es->number, CHAN_AUTO,	cgs.media.guardSound );
-;723:					break;
-;724:					case PW_DOUBLER:
-;725:						trap_S_StartSound (NULL, es->number, CHAN_AUTO,	cgs.media.doublerSound );
-;726:					break;
-;727:					case PW_AMMOREGEN:
-;728:						trap_S_StartSound (NULL, es->number, CHAN_AUTO,	cgs.media.ammoregenSound );
-;729:					break;
-;730:				}
-;731:#endif
-;732:			} else {
-ADDRGP4 $530
-JUMPV
+NEI4 $527
 LABELV $529
-line 733
-;733:				trap_S_StartSound (NULL, es->number, CHAN_AUTO,	trap_S_RegisterSound( item->pickup_sound, qfalse ) );
-ADDRLP4 64
-INDIRP4
-CNSTI4 4
-ADDP4
-INDIRP4
-ARGP4
-CNSTI4 0
-ARGI4
-ADDRLP4 76
-ADDRGP4 trap_S_RegisterSound
-CALLI4
-ASGNI4
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 0
-ARGI4
-ADDRLP4 76
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 734
-;734:			}
-LABELV $530
-LABELV $525
-line 737
-;735:
-;736:			// show icon and name on status bar
-;737:			if ( es->number == cg.snap->ps.clientNum ) {
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ADDRGP4 cg+36
-INDIRP4
-CNSTI4 184
-ADDP4
-INDIRI4
-NEI4 $338
-line 738
-;738:				CG_ItemPickup( index );
-ADDRLP4 60
-INDIRI4
-ARGI4
-ADDRGP4 CG_ItemPickup
-CALLV
-pop
-line 739
-;739:			}
-line 740
-;740:		}
-line 741
-;741:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $534
-line 744
-;742:
-;743:	case EV_GLOBAL_ITEM_PICKUP:
-;744:		DEBUGNAME("EV_GLOBAL_ITEM_PICKUP");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $535
-ADDRGP4 $538
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $535
-line 745
-;745:		{
-line 749
-;746:			gitem_t	*item;
-;747:			int		index;
-;748:
-;749:			index = es->eventParm;		// player predicted
-ADDRLP4 60
-ADDRLP4 0
-INDIRP4
-CNSTI4 184
-ADDP4
-INDIRI4
-ASGNI4
-line 751
-;750:
-;751:			if ( index < 1 || index >= bg_numItems ) {
-ADDRLP4 68
-ADDRLP4 60
-INDIRI4
-ASGNI4
-ADDRLP4 68
-INDIRI4
-CNSTI4 1
-LTI4 $541
-ADDRLP4 68
-INDIRI4
-ADDRGP4 bg_numItems
-INDIRI4
-LTI4 $539
-LABELV $541
-line 752
-;752:				break;
-ADDRGP4 $338
-JUMPV
-LABELV $539
-line 754
-;753:			}
-;754:			item = &bg_itemlist[ index ];
-ADDRLP4 64
-CNSTI4 52
-ADDRLP4 60
-INDIRI4
-MULI4
-ADDRGP4 bg_itemlist
-ADDP4
-ASGNP4
-line 756
-;755:			// powerup pickups are global
-;756:			if( item->pickup_sound ) {
-ADDRLP4 64
-INDIRP4
-CNSTI4 4
-ADDP4
-INDIRP4
-CVPU4 4
-CNSTU4 0
-EQU4 $542
-line 757
-;757:				trap_S_StartSound (NULL, cg.snap->ps.clientNum, CHAN_AUTO, trap_S_RegisterSound( item->pickup_sound, qfalse ) );
-ADDRLP4 64
-INDIRP4
-CNSTI4 4
-ADDP4
-INDIRP4
-ARGP4
-CNSTI4 0
-ARGI4
-ADDRLP4 72
-ADDRGP4 trap_S_RegisterSound
-CALLI4
-ASGNI4
-CNSTP4 0
-ARGP4
-ADDRGP4 cg+36
-INDIRP4
-CNSTI4 184
-ADDP4
-INDIRI4
-ARGI4
-CNSTI4 0
-ARGI4
-ADDRLP4 72
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 758
-;758:			}
-LABELV $542
-line 761
-;759:
-;760:			// show icon and name on status bar
-;761:			if ( es->number == cg.snap->ps.clientNum ) {
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ADDRGP4 cg+36
-INDIRP4
-CNSTI4 184
-ADDP4
-INDIRI4
-NEI4 $338
-line 762
-;762:				CG_ItemPickup( index );
-ADDRLP4 60
-INDIRI4
-ARGI4
-ADDRGP4 CG_ItemPickup
-CALLV
-pop
-line 763
-;763:			}
-line 764
-;764:		}
-line 765
-;765:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $548
-line 771
-;766:
-;767:	//
-;768:	// weapon events
-;769:	//
-;770:	case EV_NOAMMO:
-;771:		DEBUGNAME("EV_NOAMMO");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $549
-ADDRGP4 $552
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $549
-line 773
-;772://		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.noAmmoSound );
-;773:		if ( es->number == cg.snap->ps.clientNum ) {
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ADDRGP4 cg+36
-INDIRP4
-CNSTI4 184
-ADDP4
-INDIRI4
-NEI4 $338
-line 774
-;774:			CG_OutOfAmmoChange();
-ADDRGP4 CG_OutOfAmmoChange
-CALLV
-pop
-line 775
-;775:		}
-line 776
-;776:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $556
-line 778
-;777:	case EV_CHANGE_WEAPON:
-;778:		DEBUGNAME("EV_CHANGE_WEAPON");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $557
-ADDRGP4 $560
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $557
-line 779
-;779:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.selectSound );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 0
-ARGI4
-ADDRGP4 cgs+153876+588
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 780
-;780:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $563
-line 782
-;781:	case EV_FIRE_WEAPON:
-;782:		DEBUGNAME("EV_FIRE_WEAPON");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $564
-ADDRGP4 $567
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $564
-line 783
-;783:		CG_FireWeapon( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_FireWeapon
-CALLV
-pop
-line 784
-;784:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $568
-line 787
-;785:
-;786:	case EV_FIRE_WEAPON2: 
-;787:		 DEBUGNAME("EV_FIRE_WEAPON2"); // Shafe - Trep Alt Fire
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $569
-ADDRGP4 $572
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $569
-line 788
-;788:		 CG_FireWeapon2( cent ); 
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_FireWeapon2
-CALLV
-pop
-line 789
-;789:		 break;
-ADDRGP4 $338
-JUMPV
-LABELV $573
-line 792
-;790:
-;791:	case EV_USE_ITEM0:
-;792:		DEBUGNAME("EV_USE_ITEM0");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $574
-ADDRGP4 $577
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $574
-line 793
-;793:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 794
-;794:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $578
-line 796
-;795:	case EV_USE_ITEM1:
-;796:		DEBUGNAME("EV_USE_ITEM1");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $579
-ADDRGP4 $582
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $579
-line 797
-;797:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 798
-;798:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $583
-line 800
-;799:	case EV_USE_ITEM2:
-;800:		DEBUGNAME("EV_USE_ITEM2");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $584
-ADDRGP4 $587
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $584
-line 801
-;801:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 802
-;802:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $588
-line 804
-;803:	case EV_USE_ITEM3:
-;804:		DEBUGNAME("EV_USE_ITEM3");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $589
-ADDRGP4 $592
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $589
-line 805
-;805:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 806
-;806:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $593
-line 808
-;807:	case EV_USE_ITEM4:
-;808:		DEBUGNAME("EV_USE_ITEM4");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $594
-ADDRGP4 $597
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $594
-line 809
-;809:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 810
-;810:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $598
-line 812
-;811:	case EV_USE_ITEM5:
-;812:		DEBUGNAME("EV_USE_ITEM5");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $599
-ADDRGP4 $602
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $599
-line 813
-;813:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 814
-;814:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $603
-line 816
-;815:	case EV_USE_ITEM6:
-;816:		DEBUGNAME("EV_USE_ITEM6");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $604
-ADDRGP4 $607
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $604
-line 817
-;817:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 818
-;818:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $608
-line 820
-;819:	case EV_USE_ITEM7:
-;820:		DEBUGNAME("EV_USE_ITEM7");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $609
-ADDRGP4 $612
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $609
-line 821
-;821:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 822
-;822:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $613
-line 824
-;823:	case EV_USE_ITEM8:
-;824:		DEBUGNAME("EV_USE_ITEM8");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $614
-ADDRGP4 $617
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $614
-line 825
-;825:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 826
-;826:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $618
-line 828
-;827:	case EV_USE_ITEM9:
-;828:		DEBUGNAME("EV_USE_ITEM9");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $619
-ADDRGP4 $622
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $619
-line 829
-;829:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 830
-;830:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $623
-line 832
-;831:	case EV_USE_ITEM10:
-;832:		DEBUGNAME("EV_USE_ITEM10");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $624
-ADDRGP4 $627
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $624
-line 833
-;833:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 834
-;834:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $628
-line 836
-;835:	case EV_USE_ITEM11:
-;836:		DEBUGNAME("EV_USE_ITEM11");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $629
-ADDRGP4 $632
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $629
-line 837
-;837:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 838
-;838:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $633
-line 840
-;839:	case EV_USE_ITEM12:
-;840:		DEBUGNAME("EV_USE_ITEM12");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $634
-ADDRGP4 $637
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $634
-line 841
-;841:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 842
-;842:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $638
-line 844
-;843:	case EV_USE_ITEM13:
-;844:		DEBUGNAME("EV_USE_ITEM13");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $639
-ADDRGP4 $642
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $639
-line 845
-;845:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 846
-;846:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $643
-line 848
-;847:	case EV_USE_ITEM14:
-;848:		DEBUGNAME("EV_USE_ITEM14");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $644
-ADDRGP4 $647
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $644
-line 849
-;849:		CG_UseItem( cent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 CG_UseItem
-CALLV
-pop
-line 850
-;850:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $648
-line 858
-;851:
-;852:	//=================================================================
-;853:
-;854:	//
-;855:	// other events
-;856:	//
-;857:	case EV_PLAYER_TELEPORT_IN:
-;858:		DEBUGNAME("EV_PLAYER_TELEPORT_IN");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $649
-ADDRGP4 $652
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $649
-line 859
-;859:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.teleInSound );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 0
-ARGI4
-ADDRGP4 cgs+153876+776
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 860
-;860:		CG_SpawnEffect( position);
-ADDRFP4 4
-INDIRP4
-ARGP4
-ADDRGP4 CG_SpawnEffect
-CALLV
-pop
-line 861
-;861:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $655
-line 864
-;862:
-;863:	case EV_PLAYER_TELEPORT_OUT:
-;864:		DEBUGNAME("EV_PLAYER_TELEPORT_OUT");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $656
-ADDRGP4 $659
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $656
-line 865
-;865:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.teleOutSound );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 0
-ARGI4
-ADDRGP4 cgs+153876+780
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 866
-;866:		CG_SpawnEffect(  position);
-ADDRFP4 4
-INDIRP4
-ARGP4
-ADDRGP4 CG_SpawnEffect
-CALLV
-pop
-line 867
-;867:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $662
-line 870
-;868:
-;869:	case EV_ITEM_POP:
-;870:		DEBUGNAME("EV_ITEM_POP");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $663
-ADDRGP4 $666
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $663
-line 871
-;871:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.respawnSound );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 0
-ARGI4
-ADDRGP4 cgs+153876+788
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 872
-;872:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $669
-line 874
-;873:	case EV_ITEM_RESPAWN:
-;874:		DEBUGNAME("EV_ITEM_RESPAWN");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $670
-ADDRGP4 $673
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $670
-line 875
-;875:		cent->miscTime = cg.time;	// scale up from this
-ADDRFP4 0
-INDIRP4
-CNSTI4 452
-ADDP4
-ADDRGP4 cg+109652
-INDIRI4
-ASGNI4
-line 876
-;876:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.respawnSound );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 0
-ARGI4
-ADDRGP4 cgs+153876+788
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 877
-;877:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $677
-line 880
-;878:
-;879:	case EV_GRENADE_BOUNCE:
-;880:		DEBUGNAME("EV_GRENADE_BOUNCE");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $678
-ADDRGP4 $681
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $678
-line 881
-;881:		if ( rand() & 1 ) {
-ADDRLP4 60
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 60
-INDIRI4
-CNSTI4 1
-BANDI4
-CNSTI4 0
-EQI4 $682
-line 882
-;882:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hgrenb1aSound );
+line 718
+;718:				trap_S_StartSound (NULL, es->number, CHAN_AUTO,	cgs.media.n_healthSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -4449,13 +3506,952 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 883
-;883:		} else {
-ADDRGP4 $338
+line 719
+;719:			} else if (item->giType == IT_PERSISTANT_POWERUP) {
+ADDRGP4 $528
 JUMPV
-LABELV $682
+LABELV $527
+ADDRLP4 64
+INDIRP4
+CNSTI4 36
+ADDP4
+INDIRI4
+CNSTI4 7
+NEI4 $532
+line 736
+;720:#ifdef MISSIONPACK
+;721:				switch (item->giTag ) {
+;722:					case PW_SCOUT:
+;723:						trap_S_StartSound (NULL, es->number, CHAN_AUTO,	cgs.media.scoutSound );
+;724:					break;
+;725:					case PW_GUARD:
+;726:						trap_S_StartSound (NULL, es->number, CHAN_AUTO,	cgs.media.guardSound );
+;727:					break;
+;728:					case PW_DOUBLER:
+;729:						trap_S_StartSound (NULL, es->number, CHAN_AUTO,	cgs.media.doublerSound );
+;730:					break;
+;731:					case PW_AMMOREGEN:
+;732:						trap_S_StartSound (NULL, es->number, CHAN_AUTO,	cgs.media.ammoregenSound );
+;733:					break;
+;734:				}
+;735:#endif
+;736:			} else {
+ADDRGP4 $533
+JUMPV
+LABELV $532
+line 737
+;737:				trap_S_StartSound (NULL, es->number, CHAN_AUTO,	trap_S_RegisterSound( item->pickup_sound, qfalse ) );
+ADDRLP4 64
+INDIRP4
+CNSTI4 4
+ADDP4
+INDIRP4
+ARGP4
+CNSTI4 0
+ARGI4
+ADDRLP4 76
+ADDRGP4 trap_S_RegisterSound
+CALLI4
+ASGNI4
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 0
+ARGI4
+ADDRLP4 76
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 738
+;738:			}
+LABELV $533
+LABELV $528
+line 741
+;739:
+;740:			// show icon and name on status bar
+;741:			if ( es->number == cg.snap->ps.clientNum ) {
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ADDRGP4 cg+36
+INDIRP4
+CNSTI4 184
+ADDP4
+INDIRI4
+NEI4 $341
+line 742
+;742:				CG_ItemPickup( index );
+ADDRLP4 60
+INDIRI4
+ARGI4
+ADDRGP4 CG_ItemPickup
+CALLV
+pop
+line 743
+;743:			}
+line 744
+;744:		}
+line 745
+;745:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $537
+line 748
+;746:
+;747:	case EV_GLOBAL_ITEM_PICKUP:
+;748:		DEBUGNAME("EV_GLOBAL_ITEM_PICKUP");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $538
+ADDRGP4 $541
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $538
+line 749
+;749:		{
+line 753
+;750:			gitem_t	*item;
+;751:			int		index;
+;752:
+;753:			index = es->eventParm;		// player predicted
+ADDRLP4 60
+ADDRLP4 0
+INDIRP4
+CNSTI4 184
+ADDP4
+INDIRI4
+ASGNI4
+line 755
+;754:
+;755:			if ( index < 1 || index >= bg_numItems ) {
+ADDRLP4 68
+ADDRLP4 60
+INDIRI4
+ASGNI4
+ADDRLP4 68
+INDIRI4
+CNSTI4 1
+LTI4 $544
+ADDRLP4 68
+INDIRI4
+ADDRGP4 bg_numItems
+INDIRI4
+LTI4 $542
+LABELV $544
+line 756
+;756:				break;
+ADDRGP4 $341
+JUMPV
+LABELV $542
+line 758
+;757:			}
+;758:			item = &bg_itemlist[ index ];
+ADDRLP4 64
+CNSTI4 52
+ADDRLP4 60
+INDIRI4
+MULI4
+ADDRGP4 bg_itemlist
+ADDP4
+ASGNP4
+line 760
+;759:			// powerup pickups are global
+;760:			if( item->pickup_sound ) {
+ADDRLP4 64
+INDIRP4
+CNSTI4 4
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $545
+line 761
+;761:				trap_S_StartSound (NULL, cg.snap->ps.clientNum, CHAN_AUTO, trap_S_RegisterSound( item->pickup_sound, qfalse ) );
+ADDRLP4 64
+INDIRP4
+CNSTI4 4
+ADDP4
+INDIRP4
+ARGP4
+CNSTI4 0
+ARGI4
+ADDRLP4 72
+ADDRGP4 trap_S_RegisterSound
+CALLI4
+ASGNI4
+CNSTP4 0
+ARGP4
+ADDRGP4 cg+36
+INDIRP4
+CNSTI4 184
+ADDP4
+INDIRI4
+ARGI4
+CNSTI4 0
+ARGI4
+ADDRLP4 72
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 762
+;762:			}
+LABELV $545
+line 765
+;763:
+;764:			// show icon and name on status bar
+;765:			if ( es->number == cg.snap->ps.clientNum ) {
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ADDRGP4 cg+36
+INDIRP4
+CNSTI4 184
+ADDP4
+INDIRI4
+NEI4 $341
+line 766
+;766:				CG_ItemPickup( index );
+ADDRLP4 60
+INDIRI4
+ARGI4
+ADDRGP4 CG_ItemPickup
+CALLV
+pop
+line 767
+;767:			}
+line 768
+;768:		}
+line 769
+;769:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $551
+line 775
+;770:
+;771:	//
+;772:	// weapon events
+;773:	//
+;774:	case EV_NOAMMO:
+;775:		DEBUGNAME("EV_NOAMMO");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $552
+ADDRGP4 $555
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $552
+line 777
+;776://		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.noAmmoSound );
+;777:		if ( es->number == cg.snap->ps.clientNum ) {
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ADDRGP4 cg+36
+INDIRP4
+CNSTI4 184
+ADDP4
+INDIRI4
+NEI4 $341
+line 778
+;778:			CG_OutOfAmmoChange();
+ADDRGP4 CG_OutOfAmmoChange
+CALLV
+pop
+line 779
+;779:		}
+line 780
+;780:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $559
+line 782
+;781:	case EV_CHANGE_WEAPON:
+;782:		DEBUGNAME("EV_CHANGE_WEAPON");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $560
+ADDRGP4 $563
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $560
+line 783
+;783:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.selectSound );
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 0
+ARGI4
+ADDRGP4 cgs+153876+592
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 784
+;784:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $566
+line 786
+;785:	case EV_FIRE_WEAPON:
+;786:		DEBUGNAME("EV_FIRE_WEAPON");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $567
+ADDRGP4 $570
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $567
+line 787
+;787:		CG_FireWeapon( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_FireWeapon
+CALLV
+pop
+line 788
+;788:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $571
+line 791
+;789:
+;790:	case EV_FIRE_WEAPON2: 
+;791:		 DEBUGNAME("EV_FIRE_WEAPON2"); // Shafe - Trep Alt Fire
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $572
+ADDRGP4 $575
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $572
+line 792
+;792:		 CG_FireWeapon2( cent ); 
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_FireWeapon2
+CALLV
+pop
+line 793
+;793:		 break;
+ADDRGP4 $341
+JUMPV
+LABELV $576
+line 796
+;794:
+;795:	case EV_USE_ITEM0:
+;796:		DEBUGNAME("EV_USE_ITEM0");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $577
+ADDRGP4 $580
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $577
+line 797
+;797:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 798
+;798:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $581
+line 800
+;799:	case EV_USE_ITEM1:
+;800:		DEBUGNAME("EV_USE_ITEM1");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $582
+ADDRGP4 $585
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $582
+line 801
+;801:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 802
+;802:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $586
+line 804
+;803:	case EV_USE_ITEM2:
+;804:		DEBUGNAME("EV_USE_ITEM2");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $587
+ADDRGP4 $590
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $587
+line 805
+;805:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 806
+;806:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $591
+line 808
+;807:	case EV_USE_ITEM3:
+;808:		DEBUGNAME("EV_USE_ITEM3");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $592
+ADDRGP4 $595
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $592
+line 809
+;809:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 810
+;810:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $596
+line 812
+;811:	case EV_USE_ITEM4:
+;812:		DEBUGNAME("EV_USE_ITEM4");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $597
+ADDRGP4 $600
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $597
+line 813
+;813:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 814
+;814:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $601
+line 816
+;815:	case EV_USE_ITEM5:
+;816:		DEBUGNAME("EV_USE_ITEM5");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $602
+ADDRGP4 $605
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $602
+line 817
+;817:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 818
+;818:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $606
+line 820
+;819:	case EV_USE_ITEM6:
+;820:		DEBUGNAME("EV_USE_ITEM6");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $607
+ADDRGP4 $610
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $607
+line 821
+;821:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 822
+;822:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $611
+line 824
+;823:	case EV_USE_ITEM7:
+;824:		DEBUGNAME("EV_USE_ITEM7");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $612
+ADDRGP4 $615
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $612
+line 825
+;825:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 826
+;826:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $616
+line 828
+;827:	case EV_USE_ITEM8:
+;828:		DEBUGNAME("EV_USE_ITEM8");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $617
+ADDRGP4 $620
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $617
+line 829
+;829:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 830
+;830:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $621
+line 832
+;831:	case EV_USE_ITEM9:
+;832:		DEBUGNAME("EV_USE_ITEM9");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $622
+ADDRGP4 $625
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $622
+line 833
+;833:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 834
+;834:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $626
+line 836
+;835:	case EV_USE_ITEM10:
+;836:		DEBUGNAME("EV_USE_ITEM10");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $627
+ADDRGP4 $630
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $627
+line 837
+;837:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 838
+;838:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $631
+line 840
+;839:	case EV_USE_ITEM11:
+;840:		DEBUGNAME("EV_USE_ITEM11");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $632
+ADDRGP4 $635
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $632
+line 841
+;841:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 842
+;842:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $636
+line 844
+;843:	case EV_USE_ITEM12:
+;844:		DEBUGNAME("EV_USE_ITEM12");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $637
+ADDRGP4 $640
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $637
+line 845
+;845:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 846
+;846:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $641
+line 848
+;847:	case EV_USE_ITEM13:
+;848:		DEBUGNAME("EV_USE_ITEM13");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $642
+ADDRGP4 $645
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $642
+line 849
+;849:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 850
+;850:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $646
+line 852
+;851:	case EV_USE_ITEM14:
+;852:		DEBUGNAME("EV_USE_ITEM14");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $647
+ADDRGP4 $650
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $647
+line 853
+;853:		CG_UseItem( cent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 CG_UseItem
+CALLV
+pop
+line 854
+;854:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $651
+line 862
+;855:
+;856:	//=================================================================
+;857:
+;858:	//
+;859:	// other events
+;860:	//
+;861:	case EV_PLAYER_TELEPORT_IN:
+;862:		DEBUGNAME("EV_PLAYER_TELEPORT_IN");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $652
+ADDRGP4 $655
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $652
+line 863
+;863:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.teleInSound );
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 0
+ARGI4
+ADDRGP4 cgs+153876+780
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 864
+;864:		CG_SpawnEffect( position);
+ADDRFP4 4
+INDIRP4
+ARGP4
+ADDRGP4 CG_SpawnEffect
+CALLV
+pop
+line 865
+;865:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $658
+line 868
+;866:
+;867:	case EV_PLAYER_TELEPORT_OUT:
+;868:		DEBUGNAME("EV_PLAYER_TELEPORT_OUT");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $659
+ADDRGP4 $662
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $659
+line 869
+;869:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.teleOutSound );
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 0
+ARGI4
+ADDRGP4 cgs+153876+784
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 870
+;870:		CG_SpawnEffect(  position);
+ADDRFP4 4
+INDIRP4
+ARGP4
+ADDRGP4 CG_SpawnEffect
+CALLV
+pop
+line 871
+;871:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $665
+line 874
+;872:
+;873:	case EV_ITEM_POP:
+;874:		DEBUGNAME("EV_ITEM_POP");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $666
+ADDRGP4 $669
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $666
+line 875
+;875:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.respawnSound );
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 0
+ARGI4
+ADDRGP4 cgs+153876+792
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 876
+;876:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $672
+line 878
+;877:	case EV_ITEM_RESPAWN:
+;878:		DEBUGNAME("EV_ITEM_RESPAWN");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $673
+ADDRGP4 $676
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $673
+line 879
+;879:		cent->miscTime = cg.time;	// scale up from this
+ADDRFP4 0
+INDIRP4
+CNSTI4 452
+ADDP4
+ADDRGP4 cg+109652
+INDIRI4
+ASGNI4
+line 880
+;880:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.respawnSound );
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 0
+ARGI4
+ADDRGP4 cgs+153876+792
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 881
+;881:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $680
 line 884
-;884:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hgrenb2aSound );
+;882:
+;883:	case EV_GRENADE_BOUNCE:
+;884:		DEBUGNAME("EV_GRENADE_BOUNCE");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $681
+ADDRGP4 $684
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $681
+line 885
+;885:		if ( rand() & 1 ) {
+ADDRLP4 60
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 60
+INDIRI4
+CNSTI4 1
+BANDI4
+CNSTI4 0
+EQI4 $685
+line 886
+;886:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hgrenb1aSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -4470,29 +4466,50 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 885
-;885:		}
-line 886
-;886:		break;
-ADDRGP4 $338
+line 887
+;887:		} else {
+ADDRGP4 $341
 JUMPV
-LABELV $688
+LABELV $685
+line 888
+;888:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hgrenb2aSound );
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 0
+ARGI4
+ADDRGP4 cgs+153876+1072
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
 line 889
-;887:
-;888:	case EV_PL_BOUNCE:
-;889:		DEBUGNAME("EV_PL_BOUNCE");
+;889:		}
+line 890
+;890:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $691
+line 893
+;891:
+;892:	case EV_PL_BOUNCE:
+;893:		DEBUGNAME("EV_PL_BOUNCE");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $689
-ADDRGP4 $692
+EQI4 $692
+ADDRGP4 $695
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $689
-line 890
-;890:		if ( rand() & 1 ) {
+LABELV $692
+line 894
+;894:		if ( rand() & 1 ) {
 ADDRLP4 64
 ADDRGP4 rand
 CALLI4
@@ -4502,30 +4519,9 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $693
-line 891
-;891:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hplb1aSound );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 0
-ARGI4
-ADDRGP4 cgs+153876+1104
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 892
-;892:		} else {
-ADDRGP4 $338
-JUMPV
-LABELV $693
-line 893
-;893:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hplb2aSound );
+EQI4 $696
+line 895
+;895:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hplb1aSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -4540,70 +4536,91 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 894
-;894:		}
-line 895
-;895:		break;
-ADDRGP4 $338
+line 896
+;896:		} else {
+ADDRGP4 $341
 JUMPV
-LABELV $699
-line 939
-;896:
-;897:#ifdef MISSIONPACK
-;898:	case EV_PROXIMITY_MINE_STICK:
-;899:		DEBUGNAME("EV_PROXIMITY_MINE_STICK");
-;900:		if( es->eventParm & SURF_FLESH ) {
-;901:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.wstbimplSound );
-;902:		} else 	if( es->eventParm & SURF_METALSTEPS ) {
-;903:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.wstbimpmSound );
-;904:		} else {
-;905:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.wstbimpdSound );
-;906:		}
-;907:		break;
-;908:
-;909:	case EV_PROXIMITY_MINE_TRIGGER:
-;910:		DEBUGNAME("EV_PROXIMITY_MINE_TRIGGER");
-;911:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.wstbactvSound );
-;912:		break;
-;913:	case EV_KAMIKAZE:
-;914:		DEBUGNAME("EV_KAMIKAZE");
-;915:		CG_KamikazeEffect( cent->lerpOrigin );
+LABELV $696
+line 897
+;897:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.hplb2aSound );
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 0
+ARGI4
+ADDRGP4 cgs+153876+1112
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 898
+;898:		}
+line 899
+;899:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $702
+line 943
+;900:
+;901:#ifdef MISSIONPACK
+;902:	case EV_PROXIMITY_MINE_STICK:
+;903:		DEBUGNAME("EV_PROXIMITY_MINE_STICK");
+;904:		if( es->eventParm & SURF_FLESH ) {
+;905:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.wstbimplSound );
+;906:		} else 	if( es->eventParm & SURF_METALSTEPS ) {
+;907:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.wstbimpmSound );
+;908:		} else {
+;909:			trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.wstbimpdSound );
+;910:		}
+;911:		break;
+;912:
+;913:	case EV_PROXIMITY_MINE_TRIGGER:
+;914:		DEBUGNAME("EV_PROXIMITY_MINE_TRIGGER");
+;915:		trap_S_StartSound (NULL, es->number, CHAN_AUTO, cgs.media.wstbactvSound );
 ;916:		break;
-;917:	case EV_OBELISKEXPLODE:
-;918:		DEBUGNAME("EV_OBELISKEXPLODE");
-;919:		CG_ObeliskExplode( cent->lerpOrigin, es->eventParm );
+;917:	case EV_KAMIKAZE:
+;918:		DEBUGNAME("EV_KAMIKAZE");
+;919:		CG_KamikazeEffect( cent->lerpOrigin );
 ;920:		break;
-;921:	case EV_OBELISKPAIN:
-;922:		DEBUGNAME("EV_OBELISKPAIN");
-;923:		CG_ObeliskPain( cent->lerpOrigin );
+;921:	case EV_OBELISKEXPLODE:
+;922:		DEBUGNAME("EV_OBELISKEXPLODE");
+;923:		CG_ObeliskExplode( cent->lerpOrigin, es->eventParm );
 ;924:		break;
-;925:	case EV_INVUL_IMPACT:
-;926:		DEBUGNAME("EV_INVUL_IMPACT");
-;927:		CG_InvulnerabilityImpact( cent->lerpOrigin, cent->currentState.angles );
+;925:	case EV_OBELISKPAIN:
+;926:		DEBUGNAME("EV_OBELISKPAIN");
+;927:		CG_ObeliskPain( cent->lerpOrigin );
 ;928:		break;
-;929:	case EV_JUICED:
-;930:		DEBUGNAME("EV_JUICED");
-;931:		CG_InvulnerabilityJuiced( cent->lerpOrigin );
+;929:	case EV_INVUL_IMPACT:
+;930:		DEBUGNAME("EV_INVUL_IMPACT");
+;931:		CG_InvulnerabilityImpact( cent->lerpOrigin, cent->currentState.angles );
 ;932:		break;
-;933:	case EV_LIGHTNINGBOLT:
-;934:		DEBUGNAME("EV_LIGHTNINGBOLT");
-;935:		CG_LightningBoltBeam(es->origin2, es->pos.trBase);
+;933:	case EV_JUICED:
+;934:		DEBUGNAME("EV_JUICED");
+;935:		CG_InvulnerabilityJuiced( cent->lerpOrigin );
 ;936:		break;
-;937:#endif
-;938:	case EV_SCOREPLUM:
-;939:		DEBUGNAME("EV_SCOREPLUM");
+;937:	case EV_LIGHTNINGBOLT:
+;938:		DEBUGNAME("EV_LIGHTNINGBOLT");
+;939:		CG_LightningBoltBeam(es->origin2, es->pos.trBase);
+;940:		break;
+;941:#endif
+;942:	case EV_SCOREPLUM:
+;943:		DEBUGNAME("EV_SCOREPLUM");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $700
-ADDRGP4 $703
+EQI4 $703
+ADDRGP4 $706
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $700
-line 940
-;940:		CG_ScorePlum( cent->currentState.otherEntityNum, cent->lerpOrigin, cent->currentState.time );
+LABELV $703
+line 944
+;944:		CG_ScorePlum( cent->currentState.otherEntityNum, cent->lerpOrigin, cent->currentState.time );
 ADDRLP4 68
 ADDRFP4 0
 INDIRP4
@@ -4628,30 +4645,30 @@ ARGI4
 ADDRGP4 CG_ScorePlum
 CALLV
 pop
-line 941
-;941:		break;
-ADDRGP4 $338
+line 945
+;945:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $704
-line 947
-;942:
-;943:	//
-;944:	// missile impacts
-;945:	//
-;946:	case EV_MISSILE_HIT:
-;947:		DEBUGNAME("EV_MISSILE_HIT");
+LABELV $707
+line 951
+;946:
+;947:	//
+;948:	// missile impacts
+;949:	//
+;950:	case EV_MISSILE_HIT:
+;951:		DEBUGNAME("EV_MISSILE_HIT");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $705
-ADDRGP4 $708
+EQI4 $708
+ADDRGP4 $711
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $705
-line 948
-;948:		ByteToDir( es->eventParm, dir );
+LABELV $708
+line 952
+;952:		ByteToDir( es->eventParm, dir );
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
@@ -4663,8 +4680,8 @@ ARGP4
 ADDRGP4 ByteToDir
 CALLV
 pop
-line 949
-;949:		CG_MissileHitPlayer( es->weapon, position, dir, es->otherEntityNum );
+line 953
+;953:		CG_MissileHitPlayer( es->weapon, position, dir, es->otherEntityNum );
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
@@ -4685,27 +4702,27 @@ ARGI4
 ADDRGP4 CG_MissileHitPlayer
 CALLV
 pop
-line 950
-;950:		break;
-ADDRGP4 $338
+line 954
+;954:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $709
-line 953
-;951:
-;952:	case EV_MISSILE_MISS:
-;953:		DEBUGNAME("EV_MISSILE_MISS");
+LABELV $712
+line 957
+;955:
+;956:	case EV_MISSILE_MISS:
+;957:		DEBUGNAME("EV_MISSILE_MISS");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $710
-ADDRGP4 $713
+EQI4 $713
+ADDRGP4 $716
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $710
-line 954
-;954:		ByteToDir( es->eventParm, dir );
+LABELV $713
+line 958
+;958:		ByteToDir( es->eventParm, dir );
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
@@ -4717,8 +4734,8 @@ ARGP4
 ADDRGP4 ByteToDir
 CALLV
 pop
-line 955
-;955:		CG_MissileHitWall( es->weapon, 0, position, dir, IMPACTSOUND_DEFAULT );
+line 959
+;959:		CG_MissileHitWall( es->weapon, 0, position, dir, IMPACTSOUND_DEFAULT );
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
@@ -4742,27 +4759,27 @@ ARGI4
 ADDRGP4 CG_MissileHitWall
 CALLV
 pop
-line 956
-;956:		break;
-ADDRGP4 $338
+line 960
+;960:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $714
-line 959
-;957:
-;958:	case EV_MISSILE_MISS_METAL:
-;959:		DEBUGNAME("EV_MISSILE_MISS_METAL");
+LABELV $717
+line 963
+;961:
+;962:	case EV_MISSILE_MISS_METAL:
+;963:		DEBUGNAME("EV_MISSILE_MISS_METAL");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $715
-ADDRGP4 $718
+EQI4 $718
+ADDRGP4 $721
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $715
-line 960
-;960:		ByteToDir( es->eventParm, dir );
+LABELV $718
+line 964
+;964:		ByteToDir( es->eventParm, dir );
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
@@ -4774,8 +4791,8 @@ ARGP4
 ADDRGP4 ByteToDir
 CALLV
 pop
-line 961
-;961:		CG_MissileHitWall( es->weapon, 0, position, dir, IMPACTSOUND_METAL );
+line 965
+;965:		CG_MissileHitWall( es->weapon, 0, position, dir, IMPACTSOUND_METAL );
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
@@ -4794,37 +4811,37 @@ ARGI4
 ADDRGP4 CG_MissileHitWall
 CALLV
 pop
-line 962
-;962:		break;
-ADDRGP4 $338
+line 966
+;966:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $719
-line 965
-;963:
-;964:	case EV_RAILTRAIL:
-;965:		DEBUGNAME("EV_RAILTRAIL");
+LABELV $722
+line 969
+;967:
+;968:	case EV_RAILTRAIL:
+;969:		DEBUGNAME("EV_RAILTRAIL");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $720
-ADDRGP4 $723
+EQI4 $723
+ADDRGP4 $726
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $720
-line 966
-;966:		cent->currentState.weapon = WP_RAILGUN;
+LABELV $723
+line 970
+;970:		cent->currentState.weapon = WP_RAILGUN;
 ADDRFP4 0
 INDIRP4
 CNSTI4 192
 ADDP4
 CNSTI4 7
 ASGNI4
-line 969
-;967://unlagged - attack prediction #2
-;968:		// if the client is us, unlagged is on server-side, and we've got it client-side
-;969:		if ( es->clientNum == cg.predictedPlayerState.clientNum && 
+line 973
+;971://unlagged - attack prediction #2
+;972:		// if the client is us, unlagged is on server-side, and we've got it client-side
+;973:		if ( es->clientNum == cg.predictedPlayerState.clientNum && 
 ADDRLP4 0
 INDIRP4
 CNSTI4 168
@@ -4832,44 +4849,44 @@ ADDP4
 INDIRI4
 ADDRGP4 cg+109684+140
 INDIRI4
-NEI4 $724
+NEI4 $727
 ADDRLP4 80
 CNSTI4 0
 ASGNI4
-ADDRGP4 cgs+154988
+ADDRGP4 cgs+154992
 INDIRI4
 ADDRLP4 80
 INDIRI4
-EQI4 $724
+EQI4 $727
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 1
 BANDI4
 ADDRLP4 80
 INDIRI4
-NEI4 $731
+NEI4 $734
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 16
 BANDI4
 ADDRLP4 80
 INDIRI4
-EQI4 $724
-LABELV $731
-line 970
-;970:				cgs.delagHitscan && (cg_delag.integer & 1 || cg_delag.integer & 16) ) {
-line 973
-;971:			// do nothing, because it was already predicted
-;972:			//Com_Printf("Ignoring rail trail event\n");
-;973:		}
-ADDRGP4 $338
-JUMPV
-LABELV $724
+EQI4 $727
+LABELV $734
 line 974
-;974:		else {
-line 976
-;975:			// draw a rail trail, because it wasn't predicted
-;976:			CG_RailTrail( ci, es->origin2, es->pos.trBase );
+;974:				cgs.delagHitscan && (cg_delag.integer & 1 || cg_delag.integer & 16) ) {
+line 977
+;975:			// do nothing, because it was already predicted
+;976:			//Com_Printf("Ignoring rail trail event\n");
+;977:		}
+ADDRGP4 $341
+JUMPV
+LABELV $727
+line 978
+;978:		else {
+line 980
+;979:			// draw a rail trail, because it wasn't predicted
+;980:			CG_RailTrail( ci, es->origin2, es->pos.trBase );
 ADDRLP4 12
 INDIRP4
 ARGP4
@@ -4886,19 +4903,19 @@ ARGP4
 ADDRGP4 CG_RailTrail
 CALLV
 pop
-line 979
-;977:
-;978:			// if the end was on a nomark surface, don't make an explosion
-;979:			if ( es->eventParm != 255 ) {
+line 983
+;981:
+;982:			// if the end was on a nomark surface, don't make an explosion
+;983:			if ( es->eventParm != 255 ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 255
-EQI4 $338
-line 980
-;980:				ByteToDir( es->eventParm, dir );
+EQI4 $341
+line 984
+;984:				ByteToDir( es->eventParm, dir );
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
@@ -4910,8 +4927,8 @@ ARGP4
 ADDRGP4 ByteToDir
 CALLV
 pop
-line 981
-;981:				CG_MissileHitWall( es->weapon, es->clientNum, position, dir, IMPACTSOUND_DEFAULT );
+line 985
+;985:				CG_MissileHitWall( es->weapon, es->clientNum, position, dir, IMPACTSOUND_DEFAULT );
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
@@ -4934,35 +4951,35 @@ ARGI4
 ADDRGP4 CG_MissileHitWall
 CALLV
 pop
-line 982
-;982:			}
-line 984
-;983:			//Com_Printf("Non-predicted rail trail\n");
-;984:		}
 line 986
-;985://unlagged - attack prediction #2
-;986:		break;
-ADDRGP4 $338
+;986:			}
+line 988
+;987:			//Com_Printf("Non-predicted rail trail\n");
+;988:		}
+line 990
+;989://unlagged - attack prediction #2
+;990:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $734
-line 989
-;987:
-;988:	case EV_BULLET_HIT_WALL:
-;989:		DEBUGNAME("EV_BULLET_HIT_WALL");
+LABELV $737
+line 993
+;991:
+;992:	case EV_BULLET_HIT_WALL:
+;993:		DEBUGNAME("EV_BULLET_HIT_WALL");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $735
-ADDRGP4 $738
+EQI4 $738
+ADDRGP4 $741
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $735
-line 992
-;990://unlagged - attack prediction #2
-;991:		// if the client is us, unlagged is on server-side, and we've got it client-side
-;992:		if ( es->clientNum == cg.predictedPlayerState.clientNum && 
+LABELV $738
+line 996
+;994://unlagged - attack prediction #2
+;995:		// if the client is us, unlagged is on server-side, and we've got it client-side
+;996:		if ( es->clientNum == cg.predictedPlayerState.clientNum && 
 ADDRLP4 0
 INDIRP4
 CNSTI4 168
@@ -4970,44 +4987,44 @@ ADDP4
 INDIRI4
 ADDRGP4 cg+109684+140
 INDIRI4
-NEI4 $739
+NEI4 $742
 ADDRLP4 84
 CNSTI4 0
 ASGNI4
-ADDRGP4 cgs+154988
+ADDRGP4 cgs+154992
 INDIRI4
 ADDRLP4 84
 INDIRI4
-EQI4 $739
+EQI4 $742
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 1
 BANDI4
 ADDRLP4 84
 INDIRI4
-NEI4 $746
+NEI4 $749
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 2
 BANDI4
 ADDRLP4 84
 INDIRI4
-EQI4 $739
-LABELV $746
-line 993
-;993:				cgs.delagHitscan && (cg_delag.integer & 1 || cg_delag.integer & 2) ) {
-line 996
-;994:			// do nothing, because it was already predicted
-;995:			//Com_Printf("Ignoring bullet event\n");
-;996:		}
-ADDRGP4 $338
-JUMPV
-LABELV $739
+EQI4 $742
+LABELV $749
 line 997
-;997:		else {
-line 999
-;998:			// do the bullet, because it wasn't predicted
-;999:			ByteToDir( es->eventParm, dir );
+;997:				cgs.delagHitscan && (cg_delag.integer & 1 || cg_delag.integer & 2) ) {
+line 1000
+;998:			// do nothing, because it was already predicted
+;999:			//Com_Printf("Ignoring bullet event\n");
+;1000:		}
+ADDRGP4 $341
+JUMPV
+LABELV $742
+line 1001
+;1001:		else {
+line 1003
+;1002:			// do the bullet, because it wasn't predicted
+;1003:			ByteToDir( es->eventParm, dir );
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
@@ -5019,8 +5036,8 @@ ARGP4
 ADDRGP4 ByteToDir
 CALLV
 pop
-line 1000
-;1000:			CG_Bullet( es->pos.trBase, es->otherEntityNum, dir, qfalse, ENTITYNUM_WORLD );
+line 1004
+;1004:			CG_Bullet( es->pos.trBase, es->otherEntityNum, dir, qfalse, ENTITYNUM_WORLD );
 ADDRLP4 0
 INDIRP4
 CNSTI4 24
@@ -5041,33 +5058,33 @@ ARGI4
 ADDRGP4 CG_Bullet
 CALLV
 pop
-line 1002
-;1001:			//Com_Printf("Non-predicted bullet\n");
-;1002:		}
-line 1004
-;1003://unlagged - attack prediction #2
-;1004:		break;
-ADDRGP4 $338
+line 1006
+;1005:			//Com_Printf("Non-predicted bullet\n");
+;1006:		}
+line 1008
+;1007://unlagged - attack prediction #2
+;1008:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $747
-line 1007
-;1005:
-;1006:	case EV_BULLET_HIT_FLESH:
-;1007:		DEBUGNAME("EV_BULLET_HIT_FLESH");
+LABELV $750
+line 1011
+;1009:
+;1010:	case EV_BULLET_HIT_FLESH:
+;1011:		DEBUGNAME("EV_BULLET_HIT_FLESH");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $748
-ADDRGP4 $751
+EQI4 $751
+ADDRGP4 $754
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $748
-line 1010
-;1008://unlagged - attack prediction #2
-;1009:		// if the client is us, unlagged is on server-side, and we've got it client-side
-;1010:		if ( es->clientNum == cg.predictedPlayerState.clientNum && 
+LABELV $751
+line 1014
+;1012://unlagged - attack prediction #2
+;1013:		// if the client is us, unlagged is on server-side, and we've got it client-side
+;1014:		if ( es->clientNum == cg.predictedPlayerState.clientNum && 
 ADDRLP4 0
 INDIRP4
 CNSTI4 168
@@ -5075,44 +5092,44 @@ ADDP4
 INDIRI4
 ADDRGP4 cg+109684+140
 INDIRI4
-NEI4 $752
+NEI4 $755
 ADDRLP4 88
 CNSTI4 0
 ASGNI4
-ADDRGP4 cgs+154988
+ADDRGP4 cgs+154992
 INDIRI4
 ADDRLP4 88
 INDIRI4
-EQI4 $752
+EQI4 $755
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 1
 BANDI4
 ADDRLP4 88
 INDIRI4
-NEI4 $759
+NEI4 $762
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 2
 BANDI4
 ADDRLP4 88
 INDIRI4
-EQI4 $752
-LABELV $759
-line 1011
-;1011:				cgs.delagHitscan && (cg_delag.integer & 1 || cg_delag.integer & 2) ) {
-line 1014
-;1012:			// do nothing, because it was already predicted
-;1013:			//Com_Printf("Ignoring bullet event\n");
-;1014:		}
-ADDRGP4 $338
-JUMPV
-LABELV $752
+EQI4 $755
+LABELV $762
 line 1015
-;1015:		else {
-line 1017
-;1016:			// do the bullet, because it wasn't predicted
-;1017:			CG_Bullet( es->pos.trBase, es->otherEntityNum, dir, qtrue, es->eventParm );
+;1015:				cgs.delagHitscan && (cg_delag.integer & 1 || cg_delag.integer & 2) ) {
+line 1018
+;1016:			// do nothing, because it was already predicted
+;1017:			//Com_Printf("Ignoring bullet event\n");
+;1018:		}
+ADDRGP4 $341
+JUMPV
+LABELV $755
+line 1019
+;1019:		else {
+line 1021
+;1020:			// do the bullet, because it wasn't predicted
+;1021:			CG_Bullet( es->pos.trBase, es->otherEntityNum, dir, qtrue, es->eventParm );
 ADDRLP4 0
 INDIRP4
 CNSTI4 24
@@ -5137,33 +5154,33 @@ ARGI4
 ADDRGP4 CG_Bullet
 CALLV
 pop
-line 1019
-;1018:			//Com_Printf("Non-predicted bullet\n");
-;1019:		}
-line 1021
-;1020://unlagged - attack prediction #2
-;1021:		break;
-ADDRGP4 $338
+line 1023
+;1022:			//Com_Printf("Non-predicted bullet\n");
+;1023:		}
+line 1025
+;1024://unlagged - attack prediction #2
+;1025:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $760
-line 1024
-;1022:
-;1023:	case EV_SHOTGUN:
-;1024:		DEBUGNAME("EV_SHOTGUN");
+LABELV $763
+line 1028
+;1026:
+;1027:	case EV_SHOTGUN:
+;1028:		DEBUGNAME("EV_SHOTGUN");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $761
-ADDRGP4 $764
+EQI4 $764
+ADDRGP4 $767
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $761
-line 1027
-;1025://unlagged - attack prediction #2
-;1026:		// if the client is us, unlagged is on server-side, and we've got it client-side
-;1027:		if ( es->otherEntityNum == cg.predictedPlayerState.clientNum && 
+LABELV $764
+line 1031
+;1029://unlagged - attack prediction #2
+;1030:		// if the client is us, unlagged is on server-side, and we've got it client-side
+;1031:		if ( es->otherEntityNum == cg.predictedPlayerState.clientNum && 
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -5171,118 +5188,118 @@ ADDP4
 INDIRI4
 ADDRGP4 cg+109684+140
 INDIRI4
-NEI4 $765
+NEI4 $768
 ADDRLP4 92
 CNSTI4 0
 ASGNI4
-ADDRGP4 cgs+154988
+ADDRGP4 cgs+154992
 INDIRI4
 ADDRLP4 92
 INDIRI4
-EQI4 $765
+EQI4 $768
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 1
 BANDI4
 ADDRLP4 92
 INDIRI4
-NEI4 $772
+NEI4 $775
 ADDRGP4 cg_delag+12
 INDIRI4
 CNSTI4 4
 BANDI4
 ADDRLP4 92
 INDIRI4
-EQI4 $765
-LABELV $772
-line 1028
-;1028:				cgs.delagHitscan && (cg_delag.integer & 1 || cg_delag.integer & 4) ) {
-line 1031
-;1029:			// do nothing, because it was already predicted
-;1030:			//Com_Printf("Ignoring shotgun event\n");
-;1031:		}
-ADDRGP4 $338
-JUMPV
-LABELV $765
+EQI4 $768
+LABELV $775
 line 1032
-;1032:		else {
-line 1034
-;1033:			// do the shotgun pattern, because it wasn't predicted
-;1034:			CG_ShotgunFire( es );
+;1032:				cgs.delagHitscan && (cg_delag.integer & 1 || cg_delag.integer & 4) ) {
+line 1035
+;1033:			// do nothing, because it was already predicted
+;1034:			//Com_Printf("Ignoring shotgun event\n");
+;1035:		}
+ADDRGP4 $341
+JUMPV
+LABELV $768
+line 1036
+;1036:		else {
+line 1038
+;1037:			// do the shotgun pattern, because it wasn't predicted
+;1038:			CG_ShotgunFire( es );
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 CG_ShotgunFire
 CALLV
 pop
-line 1036
-;1035:			//Com_Printf("Non-predicted shotgun pattern\n");
-;1036:		}
-line 1038
-;1037://unlagged - attack prediction #2
-;1038:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $773
-line 1041
-;1039:
-;1040:	case EV_GENERAL_SOUND:
-;1041:		DEBUGNAME("EV_GENERAL_SOUND");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $774
-ADDRGP4 $777
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $774
+line 1040
+;1039:			//Com_Printf("Non-predicted shotgun pattern\n");
+;1040:		}
 line 1042
-;1042:		if ( cgs.gameSounds[ es->eventParm ] ) {
-ADDRLP4 0
-INDIRP4
-CNSTI4 184
-ADDP4
-INDIRI4
-CNSTI4 2
-LSHI4
-ADDRGP4 cgs+35848
-ADDP4
-INDIRI4
-CNSTI4 0
-EQI4 $778
-line 1043
-;1043:			trap_S_StartSound (NULL, es->number, CHAN_VOICE, cgs.gameSounds[ es->eventParm ] );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 3
-ARGI4
-ADDRLP4 0
-INDIRP4
-CNSTI4 184
-ADDP4
-INDIRI4
-CNSTI4 2
-LSHI4
-ADDRGP4 cgs+35848
-ADDP4
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 1044
-;1044:		} else {
-ADDRGP4 $338
+;1041://unlagged - attack prediction #2
+;1042:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $778
+LABELV $776
 line 1045
-;1045:			s = CG_ConfigString( CS_SOUNDS + es->eventParm );
+;1043:
+;1044:	case EV_GENERAL_SOUND:
+;1045:		DEBUGNAME("EV_GENERAL_SOUND");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $777
+ADDRGP4 $780
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $777
+line 1046
+;1046:		if ( cgs.gameSounds[ es->eventParm ] ) {
+ADDRLP4 0
+INDIRP4
+CNSTI4 184
+ADDP4
+INDIRI4
+CNSTI4 2
+LSHI4
+ADDRGP4 cgs+35848
+ADDP4
+INDIRI4
+CNSTI4 0
+EQI4 $781
+line 1047
+;1047:			trap_S_StartSound (NULL, es->number, CHAN_VOICE, cgs.gameSounds[ es->eventParm ] );
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 3
+ARGI4
+ADDRLP4 0
+INDIRP4
+CNSTI4 184
+ADDP4
+INDIRI4
+CNSTI4 2
+LSHI4
+ADDRGP4 cgs+35848
+ADDP4
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 1048
+;1048:		} else {
+ADDRGP4 $341
+JUMPV
+LABELV $781
+line 1049
+;1049:			s = CG_ConfigString( CS_SOUNDS + es->eventParm );
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
@@ -5299,8 +5316,8 @@ ADDRLP4 28
 ADDRLP4 96
 INDIRP4
 ASGNP4
-line 1046
-;1046:			trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, s ) );
+line 1050
+;1050:			trap_S_StartSound (NULL, es->number, CHAN_VOICE, CG_CustomSound( es->number, s ) );
 ADDRLP4 0
 INDIRP4
 INDIRI4
@@ -5326,29 +5343,29 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 1047
-;1047:		}
-line 1048
-;1048:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $782
 line 1051
-;1049:
-;1050:	case EV_GLOBAL_SOUND:	// play from the player's head so it never diminishes
-;1051:		DEBUGNAME("EV_GLOBAL_SOUND");
+;1051:		}
+line 1052
+;1052:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $785
+line 1055
+;1053:
+;1054:	case EV_GLOBAL_SOUND:	// play from the player's head so it never diminishes
+;1055:		DEBUGNAME("EV_GLOBAL_SOUND");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $783
-ADDRGP4 $786
+EQI4 $786
+ADDRGP4 $789
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $783
-line 1052
-;1052:		if ( cgs.gameSounds[ es->eventParm ] ) {
+LABELV $786
+line 1056
+;1056:		if ( cgs.gameSounds[ es->eventParm ] ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
@@ -5360,9 +5377,9 @@ ADDRGP4 cgs+35848
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $787
-line 1053
-;1053:			trap_S_StartSound (NULL, cg.snap->ps.clientNum, CHAN_AUTO, cgs.gameSounds[ es->eventParm ] );
+EQI4 $790
+line 1057
+;1057:			trap_S_StartSound (NULL, cg.snap->ps.clientNum, CHAN_AUTO, cgs.gameSounds[ es->eventParm ] );
 CNSTP4 0
 ARGP4
 ADDRLP4 96
@@ -5392,13 +5409,13 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 1054
-;1054:		} else {
-ADDRGP4 $338
+line 1058
+;1058:		} else {
+ADDRGP4 $341
 JUMPV
-LABELV $787
-line 1055
-;1055:			s = CG_ConfigString( CS_SOUNDS + es->eventParm );
+LABELV $790
+line 1059
+;1059:			s = CG_ConfigString( CS_SOUNDS + es->eventParm );
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
@@ -5415,8 +5432,8 @@ ADDRLP4 28
 ADDRLP4 96
 INDIRP4
 ASGNP4
-line 1056
-;1056:			trap_S_StartSound (NULL, cg.snap->ps.clientNum, CHAN_AUTO, CG_CustomSound( es->number, s ) );
+line 1060
+;1060:			trap_S_StartSound (NULL, cg.snap->ps.clientNum, CHAN_AUTO, CG_CustomSound( es->number, s ) );
 ADDRLP4 0
 INDIRP4
 INDIRI4
@@ -5444,31 +5461,31 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 1057
-;1057:		}
-line 1058
-;1058:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $793
 line 1061
-;1059:
-;1060:	case EV_GLOBAL_TEAM_SOUND:	// play from the player's head so it never diminishes
-;1061:		{
+;1061:		}
 line 1062
-;1062:			DEBUGNAME("EV_GLOBAL_TEAM_SOUND");
+;1062:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $796
+line 1065
+;1063:
+;1064:	case EV_GLOBAL_TEAM_SOUND:	// play from the player's head so it never diminishes
+;1065:		{
+line 1066
+;1066:			DEBUGNAME("EV_GLOBAL_TEAM_SOUND");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $794
-ADDRGP4 $797
+EQI4 $797
+ADDRGP4 $800
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $794
-line 1063
-;1063:			switch( es->eventParm ) {
+LABELV $797
+line 1067
+;1067:			switch( es->eventParm ) {
 ADDRLP4 96
 ADDRLP4 0
 INDIRP4
@@ -5479,115 +5496,41 @@ ASGNI4
 ADDRLP4 96
 INDIRI4
 CNSTI4 0
-LTI4 $338
+LTI4 $341
 ADDRLP4 96
 INDIRI4
 CNSTI4 13
-GTI4 $338
+GTI4 $341
 ADDRLP4 96
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $917
+ADDRGP4 $920
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $917
-address $801
-address $811
-address $821
-address $833
-address $845
-address $865
-address $885
-address $893
-address $901
+LABELV $920
+address $804
+address $814
+address $824
+address $836
+address $848
+address $868
+address $888
+address $896
 address $904
 address $907
 address $910
 address $913
-address $338
+address $916
+address $341
 code
-LABELV $801
-line 1065
-;1064:				case GTS_RED_CAPTURE: // CTF: red team captured the blue flag, 1FCTF: red team captured the neutral flag
-;1065:					if ( cgs.clientinfo[cg.clientNum].team == TEAM_RED )
-CNSTI4 1732
-ADDRGP4 cg+4
-INDIRI4
-MULI4
-ADDRGP4 cgs+40972+68
-ADDP4
-INDIRI4
-CNSTI4 1
-NEI4 $802
-line 1066
-;1066:						CG_AddBufferedSound( cgs.media.captureYourTeamSound );
-ADDRGP4 cgs+153876+956
-INDIRI4
-ARGI4
-ADDRGP4 CG_AddBufferedSound
-CALLV
-pop
-ADDRGP4 $338
-JUMPV
-LABELV $802
-line 1068
-;1067:					else
-;1068:						CG_AddBufferedSound( cgs.media.captureOpponentSound );
-ADDRGP4 cgs+153876+960
-INDIRI4
-ARGI4
-ADDRGP4 CG_AddBufferedSound
-CALLV
-pop
+LABELV $804
 line 1069
-;1069:					break;
-ADDRGP4 $338
-JUMPV
-LABELV $811
-line 1071
-;1070:				case GTS_BLUE_CAPTURE: // CTF: blue team captured the red flag, 1FCTF: blue team captured the neutral flag
-;1071:					if ( cgs.clientinfo[cg.clientNum].team == TEAM_BLUE )
-CNSTI4 1732
-ADDRGP4 cg+4
-INDIRI4
-MULI4
-ADDRGP4 cgs+40972+68
-ADDP4
-INDIRI4
-CNSTI4 2
-NEI4 $812
-line 1072
-;1072:						CG_AddBufferedSound( cgs.media.captureYourTeamSound );
-ADDRGP4 cgs+153876+956
-INDIRI4
-ARGI4
-ADDRGP4 CG_AddBufferedSound
-CALLV
-pop
-ADDRGP4 $338
-JUMPV
-LABELV $812
-line 1074
-;1073:					else
-;1074:						CG_AddBufferedSound( cgs.media.captureOpponentSound );
-ADDRGP4 cgs+153876+960
-INDIRI4
-ARGI4
-ADDRGP4 CG_AddBufferedSound
-CALLV
-pop
-line 1075
-;1075:					break;
-ADDRGP4 $338
-JUMPV
-LABELV $821
-line 1077
-;1076:				case GTS_RED_RETURN: // CTF: blue flag returned, 1FCTF: never used
-;1077:					if ( cgs.clientinfo[cg.clientNum].team == TEAM_RED )
+;1068:				case GTS_RED_CAPTURE: // CTF: red team captured the blue flag, 1FCTF: red team captured the neutral flag
+;1069:					if ( cgs.clientinfo[cg.clientNum].team == TEAM_RED )
 CNSTI4 1732
 ADDRGP4 cg+4
 INDIRI4
@@ -5596,94 +5539,168 @@ ADDRGP4 cgs+40972+68
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $822
-line 1078
-;1078:						CG_AddBufferedSound( cgs.media.returnYourTeamSound );
+NEI4 $805
+line 1070
+;1070:						CG_AddBufferedSound( cgs.media.captureYourTeamSound );
+ADDRGP4 cgs+153876+960
+INDIRI4
+ARGI4
+ADDRGP4 CG_AddBufferedSound
+CALLV
+pop
+ADDRGP4 $341
+JUMPV
+LABELV $805
+line 1072
+;1071:					else
+;1072:						CG_AddBufferedSound( cgs.media.captureOpponentSound );
 ADDRGP4 cgs+153876+964
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-ADDRGP4 $823
+line 1073
+;1073:					break;
+ADDRGP4 $341
 JUMPV
-LABELV $822
-line 1080
-;1079:					else
-;1080:						CG_AddBufferedSound( cgs.media.returnOpponentSound );
+LABELV $814
+line 1075
+;1074:				case GTS_BLUE_CAPTURE: // CTF: blue team captured the red flag, 1FCTF: blue team captured the neutral flag
+;1075:					if ( cgs.clientinfo[cg.clientNum].team == TEAM_BLUE )
+CNSTI4 1732
+ADDRGP4 cg+4
+INDIRI4
+MULI4
+ADDRGP4 cgs+40972+68
+ADDP4
+INDIRI4
+CNSTI4 2
+NEI4 $815
+line 1076
+;1076:						CG_AddBufferedSound( cgs.media.captureYourTeamSound );
+ADDRGP4 cgs+153876+960
+INDIRI4
+ARGI4
+ADDRGP4 CG_AddBufferedSound
+CALLV
+pop
+ADDRGP4 $341
+JUMPV
+LABELV $815
+line 1078
+;1077:					else
+;1078:						CG_AddBufferedSound( cgs.media.captureOpponentSound );
+ADDRGP4 cgs+153876+964
+INDIRI4
+ARGI4
+ADDRGP4 CG_AddBufferedSound
+CALLV
+pop
+line 1079
+;1079:					break;
+ADDRGP4 $341
+JUMPV
+LABELV $824
+line 1081
+;1080:				case GTS_RED_RETURN: // CTF: blue flag returned, 1FCTF: never used
+;1081:					if ( cgs.clientinfo[cg.clientNum].team == TEAM_RED )
+CNSTI4 1732
+ADDRGP4 cg+4
+INDIRI4
+MULI4
+ADDRGP4 cgs+40972+68
+ADDP4
+INDIRI4
+CNSTI4 1
+NEI4 $825
+line 1082
+;1082:						CG_AddBufferedSound( cgs.media.returnYourTeamSound );
 ADDRGP4 cgs+153876+968
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-LABELV $823
-line 1082
-;1081:					//
-;1082:					CG_AddBufferedSound( cgs.media.blueFlagReturnedSound );
+ADDRGP4 $826
+JUMPV
+LABELV $825
+line 1084
+;1083:					else
+;1084:						CG_AddBufferedSound( cgs.media.returnOpponentSound );
+ADDRGP4 cgs+153876+972
+INDIRI4
+ARGI4
+ADDRGP4 CG_AddBufferedSound
+CALLV
+pop
+LABELV $826
+line 1086
+;1085:					//
+;1086:					CG_AddBufferedSound( cgs.media.blueFlagReturnedSound );
+ADDRGP4 cgs+153876+988
+INDIRI4
+ARGI4
+ADDRGP4 CG_AddBufferedSound
+CALLV
+pop
+line 1087
+;1087:					break;
+ADDRGP4 $341
+JUMPV
+LABELV $836
+line 1089
+;1088:				case GTS_BLUE_RETURN: // CTF red flag returned, 1FCTF: neutral flag returned
+;1089:					if ( cgs.clientinfo[cg.clientNum].team == TEAM_BLUE )
+CNSTI4 1732
+ADDRGP4 cg+4
+INDIRI4
+MULI4
+ADDRGP4 cgs+40972+68
+ADDP4
+INDIRI4
+CNSTI4 2
+NEI4 $837
+line 1090
+;1090:						CG_AddBufferedSound( cgs.media.returnYourTeamSound );
+ADDRGP4 cgs+153876+968
+INDIRI4
+ARGI4
+ADDRGP4 CG_AddBufferedSound
+CALLV
+pop
+ADDRGP4 $838
+JUMPV
+LABELV $837
+line 1092
+;1091:					else
+;1092:						CG_AddBufferedSound( cgs.media.returnOpponentSound );
+ADDRGP4 cgs+153876+972
+INDIRI4
+ARGI4
+ADDRGP4 CG_AddBufferedSound
+CALLV
+pop
+LABELV $838
+line 1094
+;1093:					//
+;1094:					CG_AddBufferedSound( cgs.media.redFlagReturnedSound );
 ADDRGP4 cgs+153876+984
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1083
-;1083:					break;
-ADDRGP4 $338
-JUMPV
-LABELV $833
-line 1085
-;1084:				case GTS_BLUE_RETURN: // CTF red flag returned, 1FCTF: neutral flag returned
-;1085:					if ( cgs.clientinfo[cg.clientNum].team == TEAM_BLUE )
-CNSTI4 1732
-ADDRGP4 cg+4
-INDIRI4
-MULI4
-ADDRGP4 cgs+40972+68
-ADDP4
-INDIRI4
-CNSTI4 2
-NEI4 $834
-line 1086
-;1086:						CG_AddBufferedSound( cgs.media.returnYourTeamSound );
-ADDRGP4 cgs+153876+964
-INDIRI4
-ARGI4
-ADDRGP4 CG_AddBufferedSound
-CALLV
-pop
-ADDRGP4 $835
-JUMPV
-LABELV $834
-line 1088
-;1087:					else
-;1088:						CG_AddBufferedSound( cgs.media.returnOpponentSound );
-ADDRGP4 cgs+153876+968
-INDIRI4
-ARGI4
-ADDRGP4 CG_AddBufferedSound
-CALLV
-pop
-LABELV $835
-line 1090
-;1089:					//
-;1090:					CG_AddBufferedSound( cgs.media.redFlagReturnedSound );
-ADDRGP4 cgs+153876+980
-INDIRI4
-ARGI4
-ADDRGP4 CG_AddBufferedSound
-CALLV
-pop
-line 1091
-;1091:					break;
-ADDRGP4 $338
-JUMPV
-LABELV $845
 line 1095
-;1092:
-;1093:				case GTS_RED_TAKEN: // CTF: red team took blue flag, 1FCTF: blue team took the neutral flag
-;1094:					// if this player picked up the flag then a sound is played in CG_CheckLocalSounds
-;1095:					if (cg.snap->ps.powerups[PW_BLUEFLAG] || cg.snap->ps.powerups[PW_NEUTRALFLAG]) {
+;1095:					break;
+ADDRGP4 $341
+JUMPV
+LABELV $848
+line 1099
+;1096:
+;1097:				case GTS_RED_TAKEN: // CTF: red team took blue flag, 1FCTF: blue team took the neutral flag
+;1098:					// if this player picked up the flag then a sound is played in CG_CheckLocalSounds
+;1099:					if (cg.snap->ps.powerups[PW_BLUEFLAG] || cg.snap->ps.powerups[PW_NEUTRALFLAG]) {
 ADDRLP4 104
 CNSTI4 0
 ASGNI4
@@ -5694,7 +5711,7 @@ ADDP4
 INDIRI4
 ADDRLP4 104
 INDIRI4
-NEI4 $850
+NEI4 $853
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 392
@@ -5702,17 +5719,17 @@ ADDP4
 INDIRI4
 ADDRLP4 104
 INDIRI4
-EQI4 $846
-LABELV $850
-line 1096
-;1096:					}
-ADDRGP4 $338
+EQI4 $849
+LABELV $853
+line 1100
+;1100:					}
+ADDRGP4 $341
 JUMPV
-LABELV $846
-line 1097
-;1097:					else {
-line 1098
-;1098:					if (cgs.clientinfo[cg.clientNum].team == TEAM_BLUE) {
+LABELV $849
+line 1101
+;1101:					else {
+line 1102
+;1102:					if (cgs.clientinfo[cg.clientNum].team == TEAM_BLUE) {
 CNSTI4 1732
 ADDRGP4 cg+4
 INDIRI4
@@ -5721,27 +5738,27 @@ ADDRGP4 cgs+40972+68
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $851
-line 1104
-;1099:#ifdef MISSIONPACK
-;1100:							if (cgs.gametype == GT_1FCTF) 
-;1101:								CG_AddBufferedSound( cgs.media.yourTeamTookTheFlagSound );
-;1102:							else
-;1103:#endif
-;1104:						 	CG_AddBufferedSound( cgs.media.enemyTookYourFlagSound );
-ADDRGP4 cgs+153876+992
+NEI4 $854
+line 1108
+;1103:#ifdef MISSIONPACK
+;1104:							if (cgs.gametype == GT_1FCTF) 
+;1105:								CG_AddBufferedSound( cgs.media.yourTeamTookTheFlagSound );
+;1106:							else
+;1107:#endif
+;1108:						 	CG_AddBufferedSound( cgs.media.enemyTookYourFlagSound );
+ADDRGP4 cgs+153876+996
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1105
-;1105:						}
-ADDRGP4 $338
+line 1109
+;1109:						}
+ADDRGP4 $341
 JUMPV
-LABELV $851
-line 1106
-;1106:						else if (cgs.clientinfo[cg.clientNum].team == TEAM_RED) {
+LABELV $854
+line 1110
+;1110:						else if (cgs.clientinfo[cg.clientNum].team == TEAM_RED) {
 CNSTI4 1732
 ADDRGP4 cg+4
 INDIRI4
@@ -5750,33 +5767,33 @@ ADDRGP4 cgs+40972+68
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $338
-line 1112
-;1107:#ifdef MISSIONPACK
-;1108:							if (cgs.gametype == GT_1FCTF)
-;1109:								CG_AddBufferedSound( cgs.media.enemyTookTheFlagSound );
-;1110:							else
-;1111:#endif
-;1112: 							CG_AddBufferedSound( cgs.media.yourTeamTookEnemyFlagSound );
-ADDRGP4 cgs+153876+1000
+NEI4 $341
+line 1116
+;1111:#ifdef MISSIONPACK
+;1112:							if (cgs.gametype == GT_1FCTF)
+;1113:								CG_AddBufferedSound( cgs.media.enemyTookTheFlagSound );
+;1114:							else
+;1115:#endif
+;1116: 							CG_AddBufferedSound( cgs.media.yourTeamTookEnemyFlagSound );
+ADDRGP4 cgs+153876+1004
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1113
-;1113:						}
-line 1114
-;1114:					}
-line 1115
-;1115:					break;
-ADDRGP4 $338
-JUMPV
-LABELV $865
+line 1117
+;1117:						}
 line 1118
-;1116:				case GTS_BLUE_TAKEN: // CTF: blue team took the red flag, 1FCTF red team took the neutral flag
-;1117:					// if this player picked up the flag then a sound is played in CG_CheckLocalSounds
-;1118:					if (cg.snap->ps.powerups[PW_REDFLAG] || cg.snap->ps.powerups[PW_NEUTRALFLAG]) {
+;1118:					}
+line 1119
+;1119:					break;
+ADDRGP4 $341
+JUMPV
+LABELV $868
+line 1122
+;1120:				case GTS_BLUE_TAKEN: // CTF: blue team took the red flag, 1FCTF red team took the neutral flag
+;1121:					// if this player picked up the flag then a sound is played in CG_CheckLocalSounds
+;1122:					if (cg.snap->ps.powerups[PW_REDFLAG] || cg.snap->ps.powerups[PW_NEUTRALFLAG]) {
 ADDRLP4 108
 CNSTI4 0
 ASGNI4
@@ -5787,7 +5804,7 @@ ADDP4
 INDIRI4
 ADDRLP4 108
 INDIRI4
-NEI4 $870
+NEI4 $873
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 392
@@ -5795,17 +5812,17 @@ ADDP4
 INDIRI4
 ADDRLP4 108
 INDIRI4
-EQI4 $866
-LABELV $870
-line 1119
-;1119:					}
-ADDRGP4 $338
+EQI4 $869
+LABELV $873
+line 1123
+;1123:					}
+ADDRGP4 $341
 JUMPV
-LABELV $866
-line 1120
-;1120:					else {
-line 1121
-;1121:						if (cgs.clientinfo[cg.clientNum].team == TEAM_RED) {
+LABELV $869
+line 1124
+;1124:					else {
+line 1125
+;1125:						if (cgs.clientinfo[cg.clientNum].team == TEAM_RED) {
 CNSTI4 1732
 ADDRGP4 cg+4
 INDIRI4
@@ -5814,27 +5831,27 @@ ADDRGP4 cgs+40972+68
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $871
-line 1127
-;1122:#ifdef MISSIONPACK
-;1123:							if (cgs.gametype == GT_1FCTF)
-;1124:								CG_AddBufferedSound( cgs.media.yourTeamTookTheFlagSound );
-;1125:							else
-;1126:#endif
-;1127:							CG_AddBufferedSound( cgs.media.enemyTookYourFlagSound );
-ADDRGP4 cgs+153876+992
+NEI4 $874
+line 1131
+;1126:#ifdef MISSIONPACK
+;1127:							if (cgs.gametype == GT_1FCTF)
+;1128:								CG_AddBufferedSound( cgs.media.yourTeamTookTheFlagSound );
+;1129:							else
+;1130:#endif
+;1131:							CG_AddBufferedSound( cgs.media.enemyTookYourFlagSound );
+ADDRGP4 cgs+153876+996
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1128
-;1128:						}
-ADDRGP4 $338
+line 1132
+;1132:						}
+ADDRGP4 $341
 JUMPV
-LABELV $871
-line 1129
-;1129:						else if (cgs.clientinfo[cg.clientNum].team == TEAM_BLUE) {
+LABELV $874
+line 1133
+;1133:						else if (cgs.clientinfo[cg.clientNum].team == TEAM_BLUE) {
 CNSTI4 1732
 ADDRGP4 cg+4
 INDIRI4
@@ -5843,32 +5860,32 @@ ADDRGP4 cgs+40972+68
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $338
-line 1135
-;1130:#ifdef MISSIONPACK
-;1131:							if (cgs.gametype == GT_1FCTF)
-;1132:								CG_AddBufferedSound( cgs.media.enemyTookTheFlagSound );
-;1133:							else
-;1134:#endif
-;1135:							CG_AddBufferedSound( cgs.media.yourTeamTookEnemyFlagSound );
-ADDRGP4 cgs+153876+1000
+NEI4 $341
+line 1139
+;1134:#ifdef MISSIONPACK
+;1135:							if (cgs.gametype == GT_1FCTF)
+;1136:								CG_AddBufferedSound( cgs.media.enemyTookTheFlagSound );
+;1137:							else
+;1138:#endif
+;1139:							CG_AddBufferedSound( cgs.media.yourTeamTookEnemyFlagSound );
+ADDRGP4 cgs+153876+1004
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1136
-;1136:						}
-line 1137
-;1137:					}
-line 1138
-;1138:					break;
-ADDRGP4 $338
-JUMPV
-LABELV $885
 line 1140
-;1139:				case GTS_REDOBELISK_ATTACKED: // Overload: red obelisk is being attacked
-;1140:					if (cgs.clientinfo[cg.clientNum].team == TEAM_RED) {
+;1140:						}
+line 1141
+;1141:					}
+line 1142
+;1142:					break;
+ADDRGP4 $341
+JUMPV
+LABELV $888
+line 1144
+;1143:				case GTS_REDOBELISK_ATTACKED: // Overload: red obelisk is being attacked
+;1144:					if (cgs.clientinfo[cg.clientNum].team == TEAM_RED) {
 CNSTI4 1732
 ADDRGP4 cg+4
 INDIRI4
@@ -5877,25 +5894,25 @@ ADDRGP4 cgs+40972+68
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $338
-line 1141
-;1141:						CG_AddBufferedSound( cgs.media.yourBaseIsUnderAttackSound );
-ADDRGP4 cgs+153876+1012
+NEI4 $341
+line 1145
+;1145:						CG_AddBufferedSound( cgs.media.yourBaseIsUnderAttackSound );
+ADDRGP4 cgs+153876+1016
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1142
-;1142:					}
-line 1143
-;1143:					break;
-ADDRGP4 $338
+line 1146
+;1146:					}
+line 1147
+;1147:					break;
+ADDRGP4 $341
 JUMPV
-LABELV $893
-line 1145
-;1144:				case GTS_BLUEOBELISK_ATTACKED: // Overload: blue obelisk is being attacked
-;1145:					if (cgs.clientinfo[cg.clientNum].team == TEAM_BLUE) {
+LABELV $896
+line 1149
+;1148:				case GTS_BLUEOBELISK_ATTACKED: // Overload: blue obelisk is being attacked
+;1149:					if (cgs.clientinfo[cg.clientNum].team == TEAM_BLUE) {
 CNSTI4 1732
 ADDRGP4 cg+4
 INDIRI4
@@ -5904,123 +5921,123 @@ ADDRGP4 cgs+40972+68
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $338
-line 1146
-;1146:						CG_AddBufferedSound( cgs.media.yourBaseIsUnderAttackSound );
-ADDRGP4 cgs+153876+1012
+NEI4 $341
+line 1150
+;1150:						CG_AddBufferedSound( cgs.media.yourBaseIsUnderAttackSound );
+ADDRGP4 cgs+153876+1016
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1147
-;1147:					}
-line 1148
-;1148:					break;
-ADDRGP4 $338
-JUMPV
-LABELV $901
 line 1151
-;1149:
-;1150:				case GTS_REDTEAM_SCORED:
-;1151:					CG_AddBufferedSound(cgs.media.redScoredSound);
-ADDRGP4 cgs+153876+936
-INDIRI4
-ARGI4
-ADDRGP4 CG_AddBufferedSound
-CALLV
-pop
+;1151:					}
 line 1152
 ;1152:					break;
-ADDRGP4 $338
+ADDRGP4 $341
 JUMPV
 LABELV $904
-line 1154
-;1153:				case GTS_BLUETEAM_SCORED:
-;1154:					CG_AddBufferedSound(cgs.media.blueScoredSound);
+line 1155
+;1153:
+;1154:				case GTS_REDTEAM_SCORED:
+;1155:					CG_AddBufferedSound(cgs.media.redScoredSound);
 ADDRGP4 cgs+153876+940
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1155
-;1155:					break;
-ADDRGP4 $338
+line 1156
+;1156:					break;
+ADDRGP4 $341
 JUMPV
 LABELV $907
-line 1157
-;1156:				case GTS_REDTEAM_TOOK_LEAD:
-;1157:					CG_AddBufferedSound(cgs.media.redLeadsSound);
+line 1158
+;1157:				case GTS_BLUETEAM_SCORED:
+;1158:					CG_AddBufferedSound(cgs.media.blueScoredSound);
 ADDRGP4 cgs+153876+944
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1158
-;1158:					break;
-ADDRGP4 $338
+line 1159
+;1159:					break;
+ADDRGP4 $341
 JUMPV
 LABELV $910
-line 1160
-;1159:				case GTS_BLUETEAM_TOOK_LEAD:
-;1160:					CG_AddBufferedSound(cgs.media.blueLeadsSound);
+line 1161
+;1160:				case GTS_REDTEAM_TOOK_LEAD:
+;1161:					CG_AddBufferedSound(cgs.media.redLeadsSound);
 ADDRGP4 cgs+153876+948
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1161
-;1161:					break;
-ADDRGP4 $338
+line 1162
+;1162:					break;
+ADDRGP4 $341
 JUMPV
 LABELV $913
-line 1163
-;1162:				case GTS_TEAMS_ARE_TIED:
-;1163:					CG_AddBufferedSound( cgs.media.teamsTiedSound );
+line 1164
+;1163:				case GTS_BLUETEAM_TOOK_LEAD:
+;1164:					CG_AddBufferedSound(cgs.media.blueLeadsSound);
 ADDRGP4 cgs+153876+952
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
 CALLV
 pop
-line 1164
-;1164:					break;
-line 1167
-;1165:				case GTS_KAMIKAZE:
-;1166:					//trap_S_StartLocalSound(cgs.media.kamikazeFarSound, CHAN_ANNOUNCER);
-;1167:					break;
-line 1170
-;1168:
-;1169:				default:
-;1170:					break;
-line 1172
-;1171:			}
-;1172:			break;
-ADDRGP4 $338
+line 1165
+;1165:					break;
+ADDRGP4 $341
 JUMPV
-LABELV $918
-line 1178
-;1173:		}
-;1174:
-;1175:	case EV_PAIN:
-;1176:		// local player sounds are triggered in CG_CheckLocalSounds,
-;1177:		// so ignore events on the player
-;1178:		DEBUGNAME("EV_PAIN");
+LABELV $916
+line 1167
+;1166:				case GTS_TEAMS_ARE_TIED:
+;1167:					CG_AddBufferedSound( cgs.media.teamsTiedSound );
+ADDRGP4 cgs+153876+956
+INDIRI4
+ARGI4
+ADDRGP4 CG_AddBufferedSound
+CALLV
+pop
+line 1168
+;1168:					break;
+line 1171
+;1169:				case GTS_KAMIKAZE:
+;1170:					//trap_S_StartLocalSound(cgs.media.kamikazeFarSound, CHAN_ANNOUNCER);
+;1171:					break;
+line 1174
+;1172:
+;1173:				default:
+;1174:					break;
+line 1176
+;1175:			}
+;1176:			break;
+ADDRGP4 $341
+JUMPV
+LABELV $921
+line 1182
+;1177:		}
+;1178:
+;1179:	case EV_PAIN:
+;1180:		// local player sounds are triggered in CG_CheckLocalSounds,
+;1181:		// so ignore events on the player
+;1182:		DEBUGNAME("EV_PAIN");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $919
-ADDRGP4 $922
+EQI4 $922
+ADDRGP4 $925
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $919
-line 1179
-;1179:		if ( cent->currentState.number != cg.snap->ps.clientNum ) {
+LABELV $922
+line 1183
+;1183:		if ( cent->currentState.number != cg.snap->ps.clientNum ) {
 ADDRFP4 0
 INDIRP4
 INDIRI4
@@ -6029,9 +6046,9 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-EQI4 $338
-line 1180
-;1180:			CG_PainEvent( cent, es->eventParm );
+EQI4 $341
+line 1184
+;1184:			CG_PainEvent( cent, es->eventParm );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6044,32 +6061,32 @@ ARGI4
 ADDRGP4 CG_PainEvent
 CALLV
 pop
-line 1181
-;1181:		}
-line 1182
-;1182:		break;
-ADDRGP4 $338
+line 1185
+;1185:		}
+line 1186
+;1186:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $926
-line 1187
-;1183:
-;1184:	case EV_DEATH1:
-;1185:	case EV_DEATH2:
-;1186:	case EV_DEATH3:
-;1187:		DEBUGNAME("EV_DEATHx");
+LABELV $929
+line 1191
+;1187:
+;1188:	case EV_DEATH1:
+;1189:	case EV_DEATH2:
+;1190:	case EV_DEATH3:
+;1191:		DEBUGNAME("EV_DEATHx");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $927
-ADDRGP4 $930
+EQI4 $930
+ADDRGP4 $933
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $927
-line 1188
-;1188:		trap_S_StartSound( NULL, es->number, CHAN_VOICE, 
-ADDRGP4 $931
+LABELV $930
+line 1192
+;1192:		trap_S_StartSound( NULL, es->number, CHAN_VOICE, 
+ADDRGP4 $934
 ARGP4
 ADDRLP4 8
 INDIRI4
@@ -6107,59 +6124,59 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 1190
-;1189:				CG_CustomSound( es->number, va("*death%i.wav", event - EV_DEATH1 + 1) ) );
-;1190:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $932
 line 1194
-;1191:
-;1192:
-;1193:	case EV_OBITUARY:
-;1194:		DEBUGNAME("EV_OBITUARY");
+;1193:				CG_CustomSound( es->number, va("*death%i.wav", event - EV_DEATH1 + 1) ) );
+;1194:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $935
+line 1198
+;1195:
+;1196:
+;1197:	case EV_OBITUARY:
+;1198:		DEBUGNAME("EV_OBITUARY");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $933
-ADDRGP4 $936
+EQI4 $936
+ADDRGP4 $939
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $933
-line 1195
-;1195:		CG_Obituary( es );
+LABELV $936
+line 1199
+;1199:		CG_Obituary( es );
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 CG_Obituary
 CALLV
 pop
-line 1196
-;1196:		break;
-ADDRGP4 $338
+line 1200
+;1200:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $937
-line 1202
-;1197:
-;1198:	//
-;1199:	// powerup events
-;1200:	//
-;1201:	case EV_POWERUP_QUAD:
-;1202:		DEBUGNAME("EV_POWERUP_QUAD");
+LABELV $940
+line 1206
+;1201:
+;1202:	//
+;1203:	// powerup events
+;1204:	//
+;1205:	case EV_POWERUP_QUAD:
+;1206:		DEBUGNAME("EV_POWERUP_QUAD");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $938
-ADDRGP4 $941
+EQI4 $941
+ADDRGP4 $944
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $938
-line 1203
-;1203:		if ( es->number == cg.snap->ps.clientNum ) {
+LABELV $941
+line 1207
+;1207:		if ( es->number == cg.snap->ps.clientNum ) {
 ADDRLP4 0
 INDIRP4
 INDIRI4
@@ -6168,23 +6185,23 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-NEI4 $942
-line 1204
-;1204:			cg.powerupActive = PW_QUAD;
+NEI4 $945
+line 1208
+;1208:			cg.powerupActive = PW_QUAD;
 ADDRGP4 cg+126476
 CNSTI4 1
 ASGNI4
-line 1205
-;1205:			cg.powerupTime = cg.time;
+line 1209
+;1209:			cg.powerupTime = cg.time;
 ADDRGP4 cg+126480
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 1206
-;1206:		}
-LABELV $942
-line 1207
-;1207:		trap_S_StartSound (NULL, es->number, CHAN_ITEM, cgs.media.quadSound );
+line 1210
+;1210:		}
+LABELV $945
+line 1211
+;1211:		trap_S_StartSound (NULL, es->number, CHAN_ITEM, cgs.media.quadSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -6193,32 +6210,32 @@ INDIRI4
 ARGI4
 CNSTI4 4
 ARGI4
-ADDRGP4 cgs+153876+580
+ADDRGP4 cgs+153876+584
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 1208
-;1208:		break;
-ADDRGP4 $338
+line 1212
+;1212:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $950
-line 1210
-;1209:	case EV_POWERUP_BATTLESUIT:
-;1210:		DEBUGNAME("EV_POWERUP_BATTLESUIT");
+LABELV $953
+line 1214
+;1213:	case EV_POWERUP_BATTLESUIT:
+;1214:		DEBUGNAME("EV_POWERUP_BATTLESUIT");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $951
-ADDRGP4 $954
+EQI4 $954
+ADDRGP4 $957
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $951
-line 1211
-;1211:		if ( es->number == cg.snap->ps.clientNum ) {
+LABELV $954
+line 1215
+;1215:		if ( es->number == cg.snap->ps.clientNum ) {
 ADDRLP4 0
 INDIRP4
 INDIRI4
@@ -6227,23 +6244,82 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-NEI4 $955
-line 1212
-;1212:			cg.powerupActive = PW_BATTLESUIT;
+NEI4 $958
+line 1216
+;1216:			cg.powerupActive = PW_BATTLESUIT;
 ADDRGP4 cg+126476
 CNSTI4 2
 ASGNI4
-line 1213
-;1213:			cg.powerupTime = cg.time;
+line 1217
+;1217:			cg.powerupTime = cg.time;
 ADDRGP4 cg+126480
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 1214
-;1214:		}
-LABELV $955
-line 1215
-;1215:		trap_S_StartSound (NULL, es->number, CHAN_ITEM, cgs.media.protectSound );
+line 1218
+;1218:		}
+LABELV $958
+line 1219
+;1219:		trap_S_StartSound (NULL, es->number, CHAN_ITEM, cgs.media.protectSound );
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 4
+ARGI4
+ADDRGP4 cgs+153876+1060
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 1220
+;1220:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $966
+line 1222
+;1221:	case EV_POWERUP_REGEN:
+;1222:		DEBUGNAME("EV_POWERUP_REGEN");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $967
+ADDRGP4 $970
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $967
+line 1223
+;1223:		if ( es->number == cg.snap->ps.clientNum ) {
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ADDRGP4 cg+36
+INDIRP4
+CNSTI4 184
+ADDP4
+INDIRI4
+NEI4 $971
+line 1224
+;1224:			cg.powerupActive = PW_REGEN;
+ADDRGP4 cg+126476
+CNSTI4 5
+ASGNI4
+line 1225
+;1225:			cg.powerupTime = cg.time;
+ADDRGP4 cg+126480
+ADDRGP4 cg+109652
+INDIRI4
+ASGNI4
+line 1226
+;1226:		}
+LABELV $971
+line 1227
+;1227:		trap_S_StartSound (NULL, es->number, CHAN_ITEM, cgs.media.regenSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -6258,89 +6334,30 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 1216
-;1216:		break;
-ADDRGP4 $338
+line 1228
+;1228:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $963
-line 1218
-;1217:	case EV_POWERUP_REGEN:
-;1218:		DEBUGNAME("EV_POWERUP_REGEN");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $964
-ADDRGP4 $967
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $964
-line 1219
-;1219:		if ( es->number == cg.snap->ps.clientNum ) {
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ADDRGP4 cg+36
-INDIRP4
-CNSTI4 184
-ADDP4
-INDIRI4
-NEI4 $968
-line 1220
-;1220:			cg.powerupActive = PW_REGEN;
-ADDRGP4 cg+126476
-CNSTI4 5
-ASGNI4
-line 1221
-;1221:			cg.powerupTime = cg.time;
-ADDRGP4 cg+126480
-ADDRGP4 cg+109652
-INDIRI4
-ASGNI4
-line 1222
-;1222:		}
-LABELV $968
-line 1223
-;1223:		trap_S_StartSound (NULL, es->number, CHAN_ITEM, cgs.media.regenSound );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 4
-ARGI4
-ADDRGP4 cgs+153876+1052
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 1224
-;1224:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $976
-line 1227
-;1225:
-;1226:	case EV_GIB_PLAYER:
-;1227:		DEBUGNAME("EV_GIB_PLAYER");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $977
-ADDRGP4 $980
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $977
+LABELV $979
 line 1231
-;1228:		// don't play gib sound when using the kamikaze because it interferes
-;1229:		// with the kamikaze sound, downside is that the gib sound will also
-;1230:		// not be played when someone is gibbed while just carrying the kamikaze
-;1231:		if ( !(es->eFlags & EF_KAMIKAZE) ) {
+;1229:
+;1230:	case EV_GIB_PLAYER:
+;1231:		DEBUGNAME("EV_GIB_PLAYER");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $980
+ADDRGP4 $983
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $980
+line 1235
+;1232:		// don't play gib sound when using the kamikaze because it interferes
+;1233:		// with the kamikaze sound, downside is that the gib sound will also
+;1234:		// not be played when someone is gibbed while just carrying the kamikaze
+;1235:		if ( !(es->eFlags & EF_KAMIKAZE) ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
@@ -6349,9 +6366,9 @@ INDIRI4
 CNSTI4 512
 BANDI4
 CNSTI4 0
-NEI4 $981
-line 1232
-;1232:			trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.gibSound );
+NEI4 $984
+line 1236
+;1236:			trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.gibSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -6360,17 +6377,17 @@ INDIRI4
 ARGI4
 CNSTI4 5
 ARGI4
-ADDRGP4 cgs+153876+752
+ADDRGP4 cgs+153876+756
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 1233
-;1233:		}
-LABELV $981
-line 1234
-;1234:		CG_GibPlayer( cent->lerpOrigin );
+line 1237
+;1237:		}
+LABELV $984
+line 1238
+;1238:		CG_GibPlayer( cent->lerpOrigin );
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
@@ -6379,28 +6396,28 @@ ARGP4
 ADDRGP4 CG_GibPlayer
 CALLV
 pop
-line 1235
-;1235:		break;
-ADDRGP4 $338
-JUMPV
-LABELV $985
 line 1239
-;1236:
-;1237:	// Shafe - Trep - Headshot stuff
-;1238:	case EV_GIB_PLAYER_HEADSHOT:
-;1239:		DEBUGNAME("EV_GIB_PLAYER_HEADSHOT");
+;1239:		break;
+ADDRGP4 $341
+JUMPV
+LABELV $988
+line 1243
+;1240:
+;1241:	// Shafe - Trep - Headshot stuff
+;1242:	case EV_GIB_PLAYER_HEADSHOT:
+;1243:		DEBUGNAME("EV_GIB_PLAYER_HEADSHOT");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $986
-ADDRGP4 $989
+EQI4 $989
+ADDRGP4 $992
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $986
-line 1240
-;1240:		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.gibSound );
+LABELV $989
+line 1244
+;1244:		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.gibSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -6409,22 +6426,22 @@ INDIRI4
 ARGI4
 CNSTI4 5
 ARGI4
-ADDRGP4 cgs+153876+752
+ADDRGP4 cgs+153876+756
 INDIRI4
 ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 1241
-;1241:		cent->pe.noHead = qtrue;
+line 1245
+;1245:		cent->pe.noHead = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 644
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1242
-;1242:		CG_GibPlayerHeadshot( cent->lerpOrigin );
+line 1246
+;1246:		CG_GibPlayerHeadshot( cent->lerpOrigin );
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
@@ -6433,99 +6450,55 @@ ARGP4
 ADDRGP4 CG_GibPlayerHeadshot
 CALLV
 pop
-line 1243
-;1243:		break;
-ADDRGP4 $338
+line 1247
+;1247:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $992
-line 1246
-;1244:
-;1245:	case EV_BODY_NOHEAD:
-;1246:		DEBUGNAME("EV_BODY_NOHEAD");
+LABELV $995
+line 1250
+;1248:
+;1249:	case EV_BODY_NOHEAD:
+;1250:		DEBUGNAME("EV_BODY_NOHEAD");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $993
-ADDRGP4 $996
+EQI4 $996
+ADDRGP4 $999
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $993
-line 1247
-;1247:		cent->pe.noHead = qtrue;
+LABELV $996
+line 1251
+;1251:		cent->pe.noHead = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 644
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1248
-;1248:		break;
-ADDRGP4 $338
+line 1252
+;1252:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $997
-line 1251
-;1249:	// Shafe - Trep - End Headshot Stuff
-;1250:	case EV_BREAK_GLASS:
-;1251: 		DEBUGNAME("EV_BREAK_GLASS");
-ADDRGP4 cg_debugEvents+12
-INDIRI4
-CNSTI4 0
-EQI4 $998
-ADDRGP4 $1001
-ARGP4
-ADDRGP4 CG_Printf
-CALLV
-pop
-LABELV $998
-line 1253
-;1252: 		// Change cgs.media.gibSound to whatever sound you want it to use
-;1253:  		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.glassSound );
-CNSTP4 0
-ARGP4
-ADDRLP4 0
-INDIRP4
-INDIRI4
-ARGI4
-CNSTI4 5
-ARGI4
-ADDRGP4 cgs+153876+768
-INDIRI4
-ARGI4
-ADDRGP4 trap_S_StartSound
-CALLV
-pop
-line 1254
-;1254: 		CG_BreakGlass( cent->lerpOrigin );
-ADDRFP4 0
-INDIRP4
-CNSTI4 716
-ADDP4
-ARGP4
-ADDRGP4 CG_BreakGlass
-CALLV
-pop
+LABELV $1000
 line 1255
-;1255: 		break;
-ADDRGP4 $338
-JUMPV
-LABELV $1004
-line 1257
-;1256:	case EV_ERROR:
-;1257: 		DEBUGNAME("EV_ERROR");
+;1253:	// Shafe - Trep - End Headshot Stuff
+;1254:	case EV_BREAK_GLASS:
+;1255: 		DEBUGNAME("EV_BREAK_GLASS");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $1005
-ADDRGP4 $1008
+EQI4 $1001
+ADDRGP4 $1004
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $1005
-line 1258
-;1258: 		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.errorSound );
+LABELV $1001
+line 1257
+;1256: 		// Change cgs.media.gibSound to whatever sound you want it to use
+;1257:  		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.glassSound );
 CNSTP4 0
 ARGP4
 ADDRLP4 0
@@ -6540,26 +6513,70 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
+line 1258
+;1258: 		CG_BreakGlass( cent->lerpOrigin );
+ADDRFP4 0
+INDIRP4
+CNSTI4 716
+ADDP4
+ARGP4
+ADDRGP4 CG_BreakGlass
+CALLV
+pop
 line 1259
 ;1259: 		break;
-ADDRGP4 $338
+ADDRGP4 $341
 JUMPV
-LABELV $1011
+LABELV $1007
 line 1261
-;1260:	case EV_STOPLOOPINGSOUND:
-;1261:		DEBUGNAME("EV_STOPLOOPINGSOUND");
+;1260:	case EV_ERROR:
+;1261: 		DEBUGNAME("EV_ERROR");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $1012
-ADDRGP4 $1015
+EQI4 $1008
+ADDRGP4 $1011
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $1012
+LABELV $1008
 line 1262
-;1262:		trap_S_StopLoopingSound( es->number );
+;1262: 		trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.errorSound );
+CNSTP4 0
+ARGP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 5
+ARGI4
+ADDRGP4 cgs+153876+776
+INDIRI4
+ARGI4
+ADDRGP4 trap_S_StartSound
+CALLV
+pop
+line 1263
+;1263: 		break;
+ADDRGP4 $341
+JUMPV
+LABELV $1014
+line 1265
+;1264:	case EV_STOPLOOPINGSOUND:
+;1265:		DEBUGNAME("EV_STOPLOOPINGSOUND");
+ADDRGP4 cg_debugEvents+12
+INDIRI4
+CNSTI4 0
+EQI4 $1015
+ADDRGP4 $1018
+ARGP4
+ADDRGP4 CG_Printf
+CALLV
+pop
+LABELV $1015
+line 1266
+;1266:		trap_S_StopLoopingSound( es->number );
 ADDRLP4 0
 INDIRP4
 INDIRI4
@@ -6567,63 +6584,63 @@ ARGI4
 ADDRGP4 trap_S_StopLoopingSound
 CALLV
 pop
-line 1263
-;1263:		es->loopSound = 0;
+line 1267
+;1267:		es->loopSound = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 156
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1264
-;1264:		break;
-ADDRGP4 $338
+line 1268
+;1268:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $1016
-line 1267
-;1265:
-;1266:	case EV_DEBUG_LINE:
-;1267:		DEBUGNAME("EV_DEBUG_LINE");
+LABELV $1019
+line 1271
+;1269:
+;1270:	case EV_DEBUG_LINE:
+;1271:		DEBUGNAME("EV_DEBUG_LINE");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $1017
-ADDRGP4 $1020
+EQI4 $1020
+ADDRGP4 $1023
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $1017
-line 1268
-;1268:		CG_Beam( cent );
+LABELV $1020
+line 1272
+;1272:		CG_Beam( cent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 CG_Beam
 CALLV
 pop
-line 1269
-;1269:		break;
-ADDRGP4 $338
+line 1273
+;1273:		break;
+ADDRGP4 $341
 JUMPV
-LABELV $337
-line 1272
-;1270:
-;1271:	default:
-;1272:		DEBUGNAME("UNKNOWN");
+LABELV $340
+line 1276
+;1274:
+;1275:	default:
+;1276:		DEBUGNAME("UNKNOWN");
 ADDRGP4 cg_debugEvents+12
 INDIRI4
 CNSTI4 0
-EQI4 $1021
-ADDRGP4 $1024
+EQI4 $1024
+ADDRGP4 $1027
 ARGP4
 ADDRGP4 CG_Printf
 CALLV
 pop
-LABELV $1021
-line 1273
-;1273:		CG_Error( "Unknown event: %i", event );
-ADDRGP4 $1025
+LABELV $1024
+line 1277
+;1277:		CG_Error( "Unknown event: %i", event );
+ADDRGP4 $1028
 ARGP4
 ADDRLP4 8
 INDIRI4
@@ -6631,55 +6648,55 @@ ARGI4
 ADDRGP4 CG_Error
 CALLV
 pop
-line 1274
-;1274:		break;
-LABELV $338
-line 1277
-;1275:	}
-;1276:
-;1277:}
-LABELV $322
+line 1278
+;1278:		break;
+LABELV $341
+line 1281
+;1279:	}
+;1280:
+;1281:}
+LABELV $325
 endproc CG_EntityEvent 112 48
 export CG_CheckEvents
 proc CG_CheckEvents 8 12
-line 1286
-;1278:
-;1279:
-;1280:/*
-;1281:==============
-;1282:CG_CheckEvents
+line 1290
+;1282:
 ;1283:
-;1284:==============
-;1285:*/
-;1286:void CG_CheckEvents( centity_t *cent ) {
-line 1288
-;1287:	// check for event-only entities
-;1288:	if ( cent->currentState.eType > ET_EVENTS ) {
+;1284:/*
+;1285:==============
+;1286:CG_CheckEvents
+;1287:
+;1288:==============
+;1289:*/
+;1290:void CG_CheckEvents( centity_t *cent ) {
+line 1292
+;1291:	// check for event-only entities
+;1292:	if ( cent->currentState.eType > ET_EVENTS ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 14
-LEI4 $1029
-line 1289
-;1289:		if ( cent->previousEvent ) {
+LEI4 $1032
+line 1293
+;1293:		if ( cent->previousEvent ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 436
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $1031
-line 1290
-;1290:			return;	// already fired
-ADDRGP4 $1028
+EQI4 $1034
+line 1294
+;1294:			return;	// already fired
+ADDRGP4 $1031
 JUMPV
-LABELV $1031
-line 1293
-;1291:		}
-;1292:		// if this is a player event set the entity number of the client entity number
-;1293:		if ( cent->currentState.eFlags & EF_PLAYER_EVENT ) {
+LABELV $1034
+line 1297
+;1295:		}
+;1296:		// if this is a player event set the entity number of the client entity number
+;1297:		if ( cent->currentState.eFlags & EF_PLAYER_EVENT ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -6688,9 +6705,9 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $1033
-line 1294
-;1294:			cent->currentState.number = cent->currentState.otherEntityNum;
+EQI4 $1036
+line 1298
+;1298:			cent->currentState.number = cent->currentState.otherEntityNum;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -6703,21 +6720,21 @@ CNSTI4 140
 ADDP4
 INDIRI4
 ASGNI4
-line 1295
-;1295:		}
-LABELV $1033
-line 1297
-;1296:
-;1297:		cent->previousEvent = 1;
+line 1299
+;1299:		}
+LABELV $1036
+line 1301
+;1300:
+;1301:		cent->previousEvent = 1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 436
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1299
-;1298:
-;1299:		cent->currentState.event = cent->currentState.eType - ET_EVENTS;
+line 1303
+;1302:
+;1303:		cent->currentState.event = cent->currentState.eType - ET_EVENTS;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -6734,14 +6751,14 @@ INDIRI4
 CNSTI4 14
 SUBI4
 ASGNI4
-line 1300
-;1300:	} else {
-ADDRGP4 $1030
+line 1304
+;1304:	} else {
+ADDRGP4 $1033
 JUMPV
-LABELV $1029
-line 1302
-;1301:		// check for events riding with another entity
-;1302:		if ( cent->currentState.event == cent->previousEvent ) {
+LABELV $1032
+line 1306
+;1305:		// check for events riding with another entity
+;1306:		if ( cent->currentState.event == cent->previousEvent ) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -6756,15 +6773,15 @@ INDIRP4
 CNSTI4 436
 ADDP4
 INDIRI4
-NEI4 $1035
-line 1303
-;1303:			return;
-ADDRGP4 $1028
+NEI4 $1038
+line 1307
+;1307:			return;
+ADDRGP4 $1031
 JUMPV
-LABELV $1035
-line 1305
-;1304:		}
-;1305:		cent->previousEvent = cent->currentState.event;
+LABELV $1038
+line 1309
+;1308:		}
+;1309:		cent->previousEvent = cent->currentState.event;
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -6779,8 +6796,8 @@ CNSTI4 180
 ADDP4
 INDIRI4
 ASGNI4
-line 1306
-;1306:		if ( ( cent->currentState.event & ~EV_EVENT_BITS ) == 0 ) {
+line 1310
+;1310:		if ( ( cent->currentState.event & ~EV_EVENT_BITS ) == 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 180
@@ -6789,20 +6806,20 @@ INDIRI4
 CNSTI4 -769
 BANDI4
 CNSTI4 0
-NEI4 $1037
-line 1307
-;1307:			return;
-ADDRGP4 $1028
+NEI4 $1040
+line 1311
+;1311:			return;
+ADDRGP4 $1031
 JUMPV
-LABELV $1037
-line 1309
-;1308:		}
-;1309:	}
-LABELV $1030
-line 1312
-;1310:
-;1311:	// calculate the position at exactly the frame time
-;1312:	BG_EvaluateTrajectory( &cent->currentState.pos, cg.snap->serverTime, cent->lerpOrigin );
+LABELV $1040
+line 1313
+;1312:		}
+;1313:	}
+LABELV $1033
+line 1316
+;1314:
+;1315:	// calculate the position at exactly the frame time
+;1316:	BG_EvaluateTrajectory( &cent->currentState.pos, cg.snap->serverTime, cent->lerpOrigin );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -6826,17 +6843,17 @@ ARGP4
 ADDRGP4 BG_EvaluateTrajectory
 CALLV
 pop
-line 1313
-;1313:	CG_SetEntitySoundPosition( cent );
+line 1317
+;1317:	CG_SetEntitySoundPosition( cent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 CG_SetEntitySoundPosition
 CALLV
 pop
-line 1315
-;1314:
-;1315:	CG_EntityEvent( cent, cent->lerpOrigin );
+line 1319
+;1318:
+;1319:	CG_EntityEvent( cent, cent->lerpOrigin );
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -6852,9 +6869,9 @@ ARGP4
 ADDRGP4 CG_EntityEvent
 CALLV
 pop
-line 1316
-;1316:}
-LABELV $1028
+line 1320
+;1320:}
+LABELV $1031
 endproc CG_CheckEvents 8 12
 import irandom
 import CG_DrawScanner
@@ -7389,7 +7406,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $1025
+LABELV $1028
 byte 1 85
 byte 1 110
 byte 1 107
@@ -7409,7 +7426,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $1024
+LABELV $1027
 byte 1 85
 byte 1 78
 byte 1 75
@@ -7420,7 +7437,7 @@ byte 1 78
 byte 1 10
 byte 1 0
 align 1
-LABELV $1020
+LABELV $1023
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7437,7 +7454,7 @@ byte 1 69
 byte 1 10
 byte 1 0
 align 1
-LABELV $1015
+LABELV $1018
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7460,7 +7477,7 @@ byte 1 68
 byte 1 10
 byte 1 0
 align 1
-LABELV $1008
+LABELV $1011
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7472,7 +7489,7 @@ byte 1 82
 byte 1 10
 byte 1 0
 align 1
-LABELV $1001
+LABELV $1004
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7490,7 +7507,7 @@ byte 1 83
 byte 1 10
 byte 1 0
 align 1
-LABELV $996
+LABELV $999
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7508,7 +7525,7 @@ byte 1 68
 byte 1 10
 byte 1 0
 align 1
-LABELV $989
+LABELV $992
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7534,7 +7551,7 @@ byte 1 84
 byte 1 10
 byte 1 0
 align 1
-LABELV $980
+LABELV $983
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7551,7 +7568,7 @@ byte 1 82
 byte 1 10
 byte 1 0
 align 1
-LABELV $967
+LABELV $970
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7571,7 +7588,7 @@ byte 1 78
 byte 1 10
 byte 1 0
 align 1
-LABELV $954
+LABELV $957
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7596,7 +7613,7 @@ byte 1 84
 byte 1 10
 byte 1 0
 align 1
-LABELV $941
+LABELV $944
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7615,7 +7632,7 @@ byte 1 68
 byte 1 10
 byte 1 0
 align 1
-LABELV $936
+LABELV $939
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7630,7 +7647,7 @@ byte 1 89
 byte 1 10
 byte 1 0
 align 1
-LABELV $931
+LABELV $934
 byte 1 42
 byte 1 100
 byte 1 101
@@ -7645,7 +7662,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $930
+LABELV $933
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7658,7 +7675,7 @@ byte 1 120
 byte 1 10
 byte 1 0
 align 1
-LABELV $922
+LABELV $925
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7669,7 +7686,7 @@ byte 1 78
 byte 1 10
 byte 1 0
 align 1
-LABELV $797
+LABELV $800
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7693,7 +7710,7 @@ byte 1 68
 byte 1 10
 byte 1 0
 align 1
-LABELV $786
+LABELV $789
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7712,7 +7729,7 @@ byte 1 68
 byte 1 10
 byte 1 0
 align 1
-LABELV $777
+LABELV $780
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7732,7 +7749,7 @@ byte 1 68
 byte 1 10
 byte 1 0
 align 1
-LABELV $764
+LABELV $767
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7746,7 +7763,7 @@ byte 1 78
 byte 1 10
 byte 1 0
 align 1
-LABELV $751
+LABELV $754
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7769,7 +7786,7 @@ byte 1 72
 byte 1 10
 byte 1 0
 align 1
-LABELV $738
+LABELV $741
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7791,7 +7808,7 @@ byte 1 76
 byte 1 10
 byte 1 0
 align 1
-LABELV $723
+LABELV $726
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7807,7 +7824,7 @@ byte 1 76
 byte 1 10
 byte 1 0
 align 1
-LABELV $718
+LABELV $721
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7832,7 +7849,7 @@ byte 1 76
 byte 1 10
 byte 1 0
 align 1
-LABELV $713
+LABELV $716
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7851,7 +7868,7 @@ byte 1 83
 byte 1 10
 byte 1 0
 align 1
-LABELV $708
+LABELV $711
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7869,7 +7886,7 @@ byte 1 84
 byte 1 10
 byte 1 0
 align 1
-LABELV $703
+LABELV $706
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7885,7 +7902,7 @@ byte 1 77
 byte 1 10
 byte 1 0
 align 1
-LABELV $692
+LABELV $695
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7901,7 +7918,7 @@ byte 1 69
 byte 1 10
 byte 1 0
 align 1
-LABELV $681
+LABELV $684
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7922,7 +7939,7 @@ byte 1 69
 byte 1 10
 byte 1 0
 align 1
-LABELV $673
+LABELV $676
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7941,7 +7958,7 @@ byte 1 78
 byte 1 10
 byte 1 0
 align 1
-LABELV $666
+LABELV $669
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7956,7 +7973,7 @@ byte 1 80
 byte 1 10
 byte 1 0
 align 1
-LABELV $659
+LABELV $662
 byte 1 69
 byte 1 86
 byte 1 95
@@ -7982,7 +7999,7 @@ byte 1 84
 byte 1 10
 byte 1 0
 align 1
-LABELV $652
+LABELV $655
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8007,7 +8024,7 @@ byte 1 78
 byte 1 10
 byte 1 0
 align 1
-LABELV $647
+LABELV $650
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8024,7 +8041,7 @@ byte 1 52
 byte 1 10
 byte 1 0
 align 1
-LABELV $642
+LABELV $645
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8041,7 +8058,7 @@ byte 1 51
 byte 1 10
 byte 1 0
 align 1
-LABELV $637
+LABELV $640
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8058,7 +8075,7 @@ byte 1 50
 byte 1 10
 byte 1 0
 align 1
-LABELV $632
+LABELV $635
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8075,7 +8092,7 @@ byte 1 49
 byte 1 10
 byte 1 0
 align 1
-LABELV $627
+LABELV $630
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8092,7 +8109,7 @@ byte 1 48
 byte 1 10
 byte 1 0
 align 1
-LABELV $622
+LABELV $625
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8108,7 +8125,7 @@ byte 1 57
 byte 1 10
 byte 1 0
 align 1
-LABELV $617
+LABELV $620
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8124,7 +8141,7 @@ byte 1 56
 byte 1 10
 byte 1 0
 align 1
-LABELV $612
+LABELV $615
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8140,7 +8157,7 @@ byte 1 55
 byte 1 10
 byte 1 0
 align 1
-LABELV $607
+LABELV $610
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8156,7 +8173,7 @@ byte 1 54
 byte 1 10
 byte 1 0
 align 1
-LABELV $602
+LABELV $605
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8172,7 +8189,7 @@ byte 1 53
 byte 1 10
 byte 1 0
 align 1
-LABELV $597
+LABELV $600
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8188,7 +8205,7 @@ byte 1 52
 byte 1 10
 byte 1 0
 align 1
-LABELV $592
+LABELV $595
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8204,7 +8221,7 @@ byte 1 51
 byte 1 10
 byte 1 0
 align 1
-LABELV $587
+LABELV $590
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8220,7 +8237,7 @@ byte 1 50
 byte 1 10
 byte 1 0
 align 1
-LABELV $582
+LABELV $585
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8236,7 +8253,7 @@ byte 1 49
 byte 1 10
 byte 1 0
 align 1
-LABELV $577
+LABELV $580
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8252,7 +8269,7 @@ byte 1 48
 byte 1 10
 byte 1 0
 align 1
-LABELV $572
+LABELV $575
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8271,7 +8288,7 @@ byte 1 50
 byte 1 10
 byte 1 0
 align 1
-LABELV $567
+LABELV $570
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8289,7 +8306,7 @@ byte 1 78
 byte 1 10
 byte 1 0
 align 1
-LABELV $560
+LABELV $563
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8309,7 +8326,7 @@ byte 1 78
 byte 1 10
 byte 1 0
 align 1
-LABELV $552
+LABELV $555
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8322,7 +8339,7 @@ byte 1 79
 byte 1 10
 byte 1 0
 align 1
-LABELV $538
+LABELV $541
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8347,7 +8364,7 @@ byte 1 80
 byte 1 10
 byte 1 0
 align 1
-LABELV $520
+LABELV $523
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8365,7 +8382,7 @@ byte 1 80
 byte 1 10
 byte 1 0
 align 1
-LABELV $515
+LABELV $518
 byte 1 42
 byte 1 103
 byte 1 97
@@ -8377,7 +8394,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $514
+LABELV $517
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8395,7 +8412,7 @@ byte 1 82
 byte 1 10
 byte 1 0
 align 1
-LABELV $507
+LABELV $510
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8413,7 +8430,7 @@ byte 1 82
 byte 1 10
 byte 1 0
 align 1
-LABELV $500
+LABELV $503
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8431,7 +8448,7 @@ byte 1 69
 byte 1 10
 byte 1 0
 align 1
-LABELV $493
+LABELV $496
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8449,7 +8466,7 @@ byte 1 72
 byte 1 10
 byte 1 0
 align 1
-LABELV $488
+LABELV $491
 byte 1 42
 byte 1 116
 byte 1 97
@@ -8464,7 +8481,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $487
+LABELV $490
 byte 1 42
 byte 1 116
 byte 1 97
@@ -8477,7 +8494,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $484
+LABELV $487
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8489,7 +8506,7 @@ byte 1 84
 byte 1 10
 byte 1 0
 align 1
-LABELV $479
+LABELV $482
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8500,7 +8517,7 @@ byte 1 80
 byte 1 10
 byte 1 0
 align 1
-LABELV $474
+LABELV $477
 byte 1 42
 byte 1 106
 byte 1 117
@@ -8513,7 +8530,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $467
+LABELV $470
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8528,7 +8545,7 @@ byte 1 68
 byte 1 10
 byte 1 0
 align 1
-LABELV $437
+LABELV $440
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8539,7 +8556,7 @@ byte 1 80
 byte 1 10
 byte 1 0
 align 1
-LABELV $424
+LABELV $427
 byte 1 42
 byte 1 102
 byte 1 97
@@ -8552,7 +8569,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $423
+LABELV $426
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8567,7 +8584,7 @@ byte 1 82
 byte 1 10
 byte 1 0
 align 1
-LABELV $411
+LABELV $414
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8585,7 +8602,7 @@ byte 1 77
 byte 1 10
 byte 1 0
 align 1
-LABELV $397
+LABELV $400
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8602,7 +8619,7 @@ byte 1 84
 byte 1 10
 byte 1 0
 align 1
-LABELV $386
+LABELV $389
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8613,7 +8630,7 @@ byte 1 77
 byte 1 10
 byte 1 0
 align 1
-LABELV $375
+LABELV $378
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8628,7 +8645,7 @@ byte 1 69
 byte 1 10
 byte 1 0
 align 1
-LABELV $364
+LABELV $367
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8645,7 +8662,7 @@ byte 1 72
 byte 1 10
 byte 1 0
 align 1
-LABELV $353
+LABELV $356
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8666,7 +8683,7 @@ byte 1 76
 byte 1 10
 byte 1 0
 align 1
-LABELV $343
+LABELV $346
 byte 1 69
 byte 1 86
 byte 1 95
@@ -8681,7 +8698,7 @@ byte 1 80
 byte 1 10
 byte 1 0
 align 1
-LABELV $332
+LABELV $335
 byte 1 90
 byte 1 69
 byte 1 82
@@ -8694,7 +8711,7 @@ byte 1 84
 byte 1 10
 byte 1 0
 align 1
-LABELV $326
+LABELV $329
 byte 1 101
 byte 1 110
 byte 1 116
@@ -8716,7 +8733,7 @@ byte 1 105
 byte 1 32
 byte 1 0
 align 1
-LABELV $320
+LABELV $323
 byte 1 42
 byte 1 112
 byte 1 97
@@ -8733,7 +8750,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $319
+LABELV $322
 byte 1 42
 byte 1 112
 byte 1 97
@@ -8749,7 +8766,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $316
+LABELV $319
 byte 1 42
 byte 1 112
 byte 1 97
@@ -8765,7 +8782,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $313
+LABELV $316
 byte 1 42
 byte 1 112
 byte 1 97
@@ -8781,7 +8798,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $276
+LABELV $279
 byte 1 85
 byte 1 115
 byte 1 101
@@ -8790,7 +8807,7 @@ byte 1 37
 byte 1 115
 byte 1 0
 align 1
-LABELV $275
+LABELV $278
 byte 1 78
 byte 1 111
 byte 1 32
@@ -8807,7 +8824,7 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $265
+LABELV $268
 byte 1 37
 byte 1 115
 byte 1 32
@@ -8819,7 +8836,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $264
+LABELV $267
 byte 1 37
 byte 1 115
 byte 1 32
@@ -8833,7 +8850,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $259
+LABELV $262
 byte 1 119
 byte 1 97
 byte 1 115
@@ -8847,6 +8864,39 @@ byte 1 100
 byte 1 32
 byte 1 98
 byte 1 121
+byte 1 0
+align 1
+LABELV $261
+byte 1 39
+byte 1 115
+byte 1 32
+byte 1 116
+byte 1 117
+byte 1 114
+byte 1 114
+byte 1 101
+byte 1 116
+byte 1 46
+byte 1 0
+align 1
+LABELV $260
+byte 1 119
+byte 1 97
+byte 1 115
+byte 1 32
+byte 1 115
+byte 1 104
+byte 1 111
+byte 1 116
+byte 1 32
+byte 1 100
+byte 1 111
+byte 1 119
+byte 1 110
+byte 1 32
+byte 1 98
+byte 1 121
+byte 1 32
 byte 1 0
 align 1
 LABELV $258

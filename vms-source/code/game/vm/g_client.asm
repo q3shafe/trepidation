@@ -7070,7 +7070,7 @@ ASGNI4
 line 1425
 ;1425:		for ( i = WP_NUM_WEAPONS - 1 ; i > 0 ; i-- ) {
 ADDRLP4 0
-CNSTI4 10
+CNSTI4 11
 ASGNI4
 LABELV $495
 line 1426
@@ -8494,6 +8494,7 @@ import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
+import fire_turret
 import fire_grapple
 import fire_bfg
 import fire_rocket

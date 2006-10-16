@@ -297,6 +297,74 @@ void CG_RailTrail (clientInfo_t *ci, vec3_t start, vec3_t end) {
 	}
 }
 
+
+/*
+==========================
+CG_ShotgunTrail
+==========================
+*/
+static void CG_ShotgunTrail( centity_t *ent, const weaponInfo_t *wi ) {
+	int		step;
+	vec3_t	origin, lastPos;
+	int		t;
+	int		startTime, contents;
+	int		lastContents;
+	entityState_t	*es;
+	vec3_t	up;
+	localEntity_t	*smoke;
+
+	if ( cg_noProjectileTrail.integer ) {
+		return;
+	}
+
+	up[0] = 0;
+	up[1] = 0;
+	up[2] = 0;
+
+	step = 50;
+
+	es = &ent->currentState;
+	startTime = ent->trailTime;
+	t = step * ( (startTime + step) / step );
+
+	BG_EvaluateTrajectory( &es->pos, cg.time, origin );
+	contents = CG_PointContents( origin, -1 );
+
+	// if object (e.g. grenade) is stationary, don't toss up smoke
+	if ( es->pos.trType == TR_STATIONARY ) {
+		ent->trailTime = cg.time;
+		return;
+	}
+
+	BG_EvaluateTrajectory( &es->pos, ent->trailTime, lastPos );
+	lastContents = CG_PointContents( lastPos, -1 );
+
+	ent->trailTime = cg.time;
+
+	if ( contents & ( CONTENTS_WATER | CONTENTS_SLIME | CONTENTS_LAVA ) ) {
+		if ( contents & lastContents & CONTENTS_WATER ) {
+			CG_BubbleTrail( lastPos, origin, 8 );
+		}
+		return;
+	}
+
+	for ( ; t <= ent->trailTime ; t += step ) {
+		BG_EvaluateTrajectory( &es->pos, t, lastPos );
+
+		smoke = CG_SmokePuff( lastPos, up, 
+					  wi->trailRadius, 
+					  1, 1, 1, 0.33f,
+					  wi->wiTrailTime, 
+					  t,
+					  0,
+					  0, 
+					  cgs.media.smokePuffShader2 ); // Shafe set this to 2
+		// use the optimized local entity add
+		smoke->leType = LE_SCALE_FADE;
+	}
+
+}
+
 /*
 ==========================
 CG_RocketTrail
@@ -657,6 +725,7 @@ void CG_RegisterWeapon( int weaponNum ) {
 		return;
 	}
 
+	
 	if ( weaponInfo->registered ) {
 		return;
 	}
@@ -782,6 +851,16 @@ void CG_RegisterWeapon( int weaponNum ) {
 		cgs.media.bulletExplosionShader = trap_R_RegisterShader( "bulletExplosion" );
 		break;
 
+	case WP_TURRET:
+		weaponInfo->missileTrailFunc = CG_PlasmaTrail;
+		weaponInfo->missileSound = trap_S_RegisterSound( "sound/weapons/plasma/lasfly.wav", qfalse );
+		MAKERGB( weaponInfo->flashDlightColor, 0.6f, 0.6f, 1.0f );
+		weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/plasma/hyprbf1a.wav", qfalse );
+		cgs.media.plasmaExplosionShader = trap_R_RegisterShader( "plasmaExplosion" );
+		cgs.media.railRingsShader = trap_R_RegisterShader( "railDisc" );
+		break; 
+
+
 	case WP_SHOTGUN:
 		MAKERGB( weaponInfo->flashDlightColor, 1, 1, 0 );
 		weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/shotgun/sshotf1b.wav", qfalse );
@@ -839,6 +918,7 @@ void CG_RegisterWeapon( int weaponNum ) {
 #endif
 
 	case WP_PLASMAGUN:
+		
 //		weaponInfo->missileModel = cgs.media.invulnerabilityPowerupModel;
 		weaponInfo->missileModel = trap_R_RegisterModel( "models/weaphits/disc.md3" );
 		weaponInfo->missileTrailFunc = CG_PlasmaTrail;
@@ -2028,6 +2108,13 @@ void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, im
 		sfx = cgs.media.sfx_plasmaexp;
 		mark = cgs.media.energyMarkShader;
 		radius = 16;
+		break;
+	case WP_TURRET:
+		mod = cgs.media.ringFlashModel;
+		shader = cgs.media.plasmaExplosionShader;
+		sfx = cgs.media.sfx_plasmaexp;
+		mark = cgs.media.energyMarkShader;
+		radius = 5;
 		break;
 	case WP_BFG:
 		mod = cgs.media.dishFlashModel;

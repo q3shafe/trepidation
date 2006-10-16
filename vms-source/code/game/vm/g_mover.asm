@@ -12614,6 +12614,7 @@ import LogAccuracyHit
 import G_BreakGlass
 import TeleportPlayer
 import trigger_teleporter_touch
+import fire_turret
 import fire_grapple
 import fire_bfg
 import fire_rocket

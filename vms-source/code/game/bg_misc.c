@@ -10,14 +10,14 @@ int Max_Ammo[WP_NUM_WEAPONS] =
 {
 	0,					// WP_NONE,
 	50,					// Gauntlet
-	200,				// Machine Gun,
+	500,				// Machine Gun,
 	60,					// Shotgun,			
 	40,					// Grenades,	
 	30,					// Rocket,			
 	400,				// Flame Thrower / Lignting,
 	50,					// Rail Gun/Guass Rifle,
 	120,				// Plasma,	
-	15,					// BFG,		
+	25,					// BFG,		
 	200					// Dunno,
 
 };
@@ -225,7 +225,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/iconw_machinegun",
 /* pickup */	"Assualt Rifle",
-		40,
+		100,
 		IT_WEAPON,
 		WP_MACHINEGUN,
 /* precache */ "",
@@ -323,7 +323,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/iconw_bfg",
 /* pickup */	"Devastator",
-		5,
+		10,
 		IT_WEAPON,
 		WP_BFG,
 /* precache */ "",
@@ -471,7 +471,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/icona_bfg",
 /* pickup */	"Devastator",
-		5,
+		7,
 		IT_AMMO,
 		WP_BFG,
 /* precache */ "",
@@ -914,6 +914,38 @@ Only in One Flag CTF games
 /* sounds */ "sound/weapons/vulcan/wvulwind.wav"
 	},
 #endif
+
+/*QUAKED weapon_turret (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+{
+	"weapon_turret",
+	"sound/misc/w_pkup.wav",
+	{ "models/turrets/gun2.md3",
+	0, 0, 0},
+/* icon */	"icons/iconw_turret",
+/* pickup */	"Turret",
+	999,
+	IT_WEAPON,
+	WP_TURRET,
+/* precache */ "",
+/* sounds */ ""
+},
+
+/*QUAKED ammo_flame (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+{
+	"ammo_turret",
+	"sound/misc/am_pkup.wav",
+	{ "models/powerups/ammo/bfgam.md3", 
+	0, 0, 0},
+/* icon */"	icons/icona_bfg",
+/* pickup */	"Turret Ammo",
+	500,
+	IT_AMMO,
+	WP_TURRET,
+/* precache */ "",
+/* sounds */ ""
+},
 
 	// end of list marker
 	{NULL}

@@ -357,6 +357,7 @@ char	*modNames[] = {
 	"MOD_TARGET_LASER",
 	"MOD_TRIGGER_HURT",
 	"MOD_HEADSHOT",		// Shafe - Trep - Headshot
+	"MOD_TURRET",
 #ifdef MISSIONPACK
 	"MOD_NAIL",
 	"MOD_CHAINGUN",
