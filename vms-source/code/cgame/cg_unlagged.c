@@ -116,7 +116,7 @@ void CG_PredictWeaponEffects( centity_t *cent ) {
 			// explosion at end if not SURF_NOIMPACT
 			if ( !(trace.surfaceFlags & SURF_NOIMPACT) ) {
 				// predict an explosion
-				CG_MissileHitWall( ent->weapon, cg.predictedPlayerState.clientNum, trace.endpos, trace.plane.normal, IMPACTSOUND_DEFAULT );
+				CG_MissileHitWall( cent, ent->weapon, cg.predictedPlayerState.clientNum, trace.endpos, trace.plane.normal, IMPACTSOUND_DEFAULT );
 			}
 		}
 	}

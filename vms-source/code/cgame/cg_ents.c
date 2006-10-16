@@ -508,10 +508,36 @@ static void CG_Missile( centity_t *cent ) {
 	}
 	*/
 
-	// Shafe - Trep - turret
+		// Shafe - Trep - turret // Machine Gun
+	if (cent->currentState.weapon == WP_MACHINEGUN ) {
+		ent.reType = RT_SPRITE;
+		if (cent->currentState.eFlags & EF_ALT_FIRING)
+		{
+			ent.radius = 10;
+		} 
+		else
+		{
+			ent.radius = 3;
+		}
+
+		ent.rotation = 0;
+		ent.customShader = cgs.media.turretFireShader;
+		trap_R_AddRefEntityToScene( &ent );
+		return;
+	} // End Shafe
+
+	// Shafe - Trep - turret // Machine Gun
 	if (cent->currentState.weapon == WP_TURRET ) {
 		ent.reType = RT_SPRITE;
-		ent.radius = 3;
+		if (cent->currentState.eFlags & EF_ALT_FIRING)
+		{
+			ent.radius = 10;
+		} 
+		else
+		{
+			ent.radius = 3;
+		}
+
 		ent.rotation = 0;
 		ent.customShader = cgs.media.turretFireShader;
 		trap_R_AddRefEntityToScene( &ent );

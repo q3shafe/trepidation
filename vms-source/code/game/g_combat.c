@@ -267,6 +267,7 @@ void GibEntity( gentity_t *self, int killer ) {
 	int i;
 
 	//if this entity still has kamikaze
+	/*
 	if (self->s.eFlags & EF_KAMIKAZE) {
 		// check if there is a kamikaze timer around for this owner
 		for (i = 0; i < MAX_GENTITIES; i++) {
@@ -281,6 +282,7 @@ void GibEntity( gentity_t *self, int killer ) {
 			break;
 		}
 	}
+	*/
 	G_AddEvent( self, EV_GIB_PLAYER, killer );
 	self->takedamage = qfalse;
 	self->s.eType = ET_INVISIBLE;
@@ -1048,6 +1050,13 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	if ( level.intermissionQueued ) {
 		return;
 	}
+
+	// Grapple hook cannot be used to damage a buildable
+	if (targ->s.eType ==ET_TURRET && mod == MOD_GRAPPLE)
+	{
+		return;
+	}
+
 #ifdef MISSIONPACK
 	if ( targ->client && mod != MOD_JUICED) {
 		if ( targ->client->invulnerabilityTime > level.time) {
@@ -1064,6 +1073,8 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	if ( !attacker ) {
 		attacker = &g_entities[ENTITYNUM_WORLD];
 	}
+
+	
 
 	// shootable doors / buttons don't actually have any health
 	if ( targ->s.eType == ET_MOVER ) {

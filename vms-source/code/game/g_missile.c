@@ -862,7 +862,7 @@ gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 	// we'll need this for nudging projectiles later
 	bolt->s.otherEntityNum = self->s.number;
 	//unlagged - projectile nudge
-	
+	bolt->s.eFlags |= EF_ALT_FIRING;
 	bolt->parent = self;
 	bolt->damage = 1;
 	bolt->splashDamage = 0;
@@ -971,6 +971,7 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) 
 		bolt->damage = 30;
 		bolt->splashDamage = 25;
 		bolt->splashRadius = 45;
+		bolt->s.eFlags |= EF_ALT_FIRING;
 	}
 
 	bolt->splashMethodOfDeath = MOD_ALTFLAMER;
@@ -1016,6 +1017,7 @@ gentity_t *fire_altgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 	// we'll need this for nudging projectiles later
 	bolt->s.otherEntityNum = self->s.number;
 //unlagged - projectile nudge
+	bolt->s.eFlags |= EF_ALT_FIRING;
 	bolt->parent = self;
 	bolt->damage = 100;
 	bolt->splashDamage = 100;
@@ -1063,7 +1065,7 @@ gentity_t *fire_devparticle (gentity_t *self, vec3_t start, vec3_t dir, qboolean
 	}
 	
 
-
+	bolt->s.eFlags |= EF_ALT_FIRING;
 	bolt->s.eType = ET_MISSILE;
 	//bolt->s.eFlags = EF_BOUNCE_HALF;
 	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
@@ -1135,6 +1137,7 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 		bolt->damage = 500;
 		bolt->splashDamage = 300;
 		bolt->splashRadius = 420;
+		bolt->s.eFlags |= EF_ALT_FIRING;
 		bolt->think = G_ExplodeDevastatorFire;		
 		VectorCopy( start, bolt->s.pos.trBase );
 		VectorScale( dir, 325, bolt->s.pos.trDelta );
@@ -1233,6 +1236,7 @@ gentity_t *fire_alt_rocket (gentity_t *self, vec3_t start, vec3_t dir) {
 	// we'll need this for nudging projectiles later
 	bolt->s.otherEntityNum = self->s.number;
 	//unlagged - projectile nudge
+	bolt->s.eFlags |= EF_ALT_FIRING;
 	bolt->parent = self;
 	bolt->clipmask = MASK_SHOT;
 	bolt->damage = 100;
@@ -1258,6 +1262,62 @@ gentity_t *fire_alt_rocket (gentity_t *self, vec3_t start, vec3_t dir) {
 	return bolt;
 }
 
+
+/*
+=================
+fire_mg
+
+=================
+*/
+gentity_t *fire_mg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
+	gentity_t	*bolt;
+
+	VectorNormalize (dir);
+
+	bolt = G_Spawn();
+	bolt->classname = "machinegun";
+	bolt->nextthink = level.time + 10000;
+	bolt->think = G_ExplodeMissile;
+	bolt->s.eType = ET_MISSILE;
+	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+	bolt->s.weapon = WP_TURRET;
+	bolt->r.ownerNum = self->s.number;
+	//unlagged - projectile nudge
+	// we'll need this for nudging projectiles later
+	bolt->s.otherEntityNum = self->s.number;
+	//unlagged - projectile nudge
+	bolt->parent = self;
+	
+	if (alt == qtrue)
+	{
+		bolt->damage = 30;
+		bolt->splashDamage = 15;
+		bolt->splashRadius = 20;
+		//bolt->s.time2 = 555; // 555 is alt fire?
+		bolt->s.eFlags |= EF_ALT_FIRING;
+
+	} 
+	else
+	{
+		bolt->damage = 10;
+		bolt->splashDamage = 5;
+		bolt->splashRadius = 10;
+	}
+	bolt->methodOfDeath = MOD_MACHINEGUN;
+	bolt->splashMethodOfDeath = MOD_MACHINEGUN;
+	bolt->clipmask = MASK_SHOT;
+	bolt->target_ent = NULL;
+
+	bolt->s.pos.trType = TR_LINEAR;
+	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+	VectorCopy( start, bolt->s.pos.trBase );
+   	VectorScale( dir, 2000, bolt->s.pos.trDelta );
+   	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
+   
+   	VectorCopy (start, bolt->r.currentOrigin);
+   
+	return bolt;
+}
 
 /*
 =================

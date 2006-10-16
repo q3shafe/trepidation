@@ -149,6 +149,22 @@ void SnapVectorTowards( vec3_t v, vec3_t to ) {
 */
 //unlagged - attack prediction #3
 
+
+/*
+=======================================================================
+MACHINE GUN
+=======================================================================
+*/
+void Weapon_fire_mg (gentity_t *ent, qboolean alt ) {
+	gentity_t *m;
+
+	m = fire_mg(ent, muzzle, forward, alt);
+	m->damage *= s_quadFactor;
+	m->splashDamage *= s_quadFactor;
+}
+
+
+
 #ifdef MISSIONPACK
 #define CHAINGUN_SPREAD		600
 #endif
@@ -1031,11 +1047,14 @@ void FireWeapon( gentity_t *ent ) {
 		weapon_supershotgun_fire( ent );
 		break;
 	case WP_MACHINEGUN:
+		Weapon_fire_mg( ent, qfalse);
+		/*
 		if ( g_gametype.integer != GT_TEAM ) {
 			Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE );
 		} else {
 			Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE );
 		}
+		*/
 		break;
 	case WP_GRENADE_LAUNCHER:
 		weapon_grenadelauncher_fire( ent );
@@ -1115,7 +1134,8 @@ void FireWeapon2( gentity_t *ent ) {
 	break; 
  case WP_MACHINEGUN: 
   //Weapon_RocketLauncher_Fire( ent );
- 	Weapon_fire_turret( ent );
+ 	//Weapon_fire_turret( ent );
+	 Weapon_fire_mg( ent, qfalse);
 	/* 
 	if ( g_gametype.integer != GT_TEAM ) { 
 		Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 
