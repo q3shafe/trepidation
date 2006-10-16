@@ -508,6 +508,16 @@ static void CG_Missile( centity_t *cent ) {
 	}
 	*/
 
+	// Shafe - Trep - turret
+	if (cent->currentState.weapon == WP_TURRET ) {
+		ent.reType = RT_SPRITE;
+		ent.radius = 3;
+		ent.rotation = 0;
+		ent.customShader = cgs.media.turretFireShader;
+		trap_R_AddRefEntityToScene( &ent );
+		return;
+	} // End Shafe
+
 	// Shafe - Trep - Flame Thrower
 	if (cent->currentState.weapon == WP_LIGHTNING ) {
 		ent.reType = RT_SPRITE;
@@ -518,10 +528,10 @@ static void CG_Missile( centity_t *cent ) {
 		return;
 	} // End Shafe
 
-	// Shafe - Trep - Flame Thrower
+	// Shafe - Trep - Devastator
 	if (cent->currentState.weapon == WP_BFG ) {
 		ent.reType = RT_SPRITE;
-		ent.radius = 18;
+		ent.radius = 10;
 		ent.rotation = 0;
 		ent.customShader = cgs.media.bfgBallShader;
 		trap_R_AddRefEntityToScene( &ent );

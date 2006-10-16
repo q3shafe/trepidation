@@ -1728,9 +1728,10 @@ byte 4 16
 byte 4 0
 byte 4 0
 byte 4 0
+skip 4
 export G_DoTimeShiftFor
 code
-proc G_DoTimeShiftFor 72 8
+proc G_DoTimeShiftFor 76 8
 line 253
 ;244:
 ;245:
@@ -1748,13 +1749,13 @@ line 255
 ADDRLP4 0
 ADDRGP4 $111
 INDIRB
-ASGNB 44
+ASGNB 48
 line 259
 ;256:#else
 ;257:	int wpflags[WP_NUM_WEAPONS] = { 0, 0, 2, 4, 0, 0, 8, 16, 0, 0, 0, 32, 0, 64 };
 ;258:#endif
 ;259:	int wpflag = wpflags[ent->client->ps.weapon];
-ADDRLP4 44
+ADDRLP4 48
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -1774,22 +1775,22 @@ line 263
 ;261:
 ;262:	// don't time shift for mistakes or bots
 ;263:	if ( !ent->inuse || !ent->client || (ent->r.svFlags & SVF_BOT) ) {
-ADDRLP4 52
+ADDRLP4 56
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 56
+ADDRLP4 60
 CNSTI4 0
 ASGNI4
-ADDRLP4 52
+ADDRLP4 56
 INDIRP4
 CNSTI4 528
 ADDP4
 INDIRI4
-ADDRLP4 56
+ADDRLP4 60
 INDIRI4
 EQI4 $115
-ADDRLP4 52
+ADDRLP4 56
 INDIRP4
 CNSTI4 524
 ADDP4
@@ -1797,14 +1798,14 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $115
-ADDRLP4 52
+ADDRLP4 56
 INDIRP4
 CNSTI4 432
 ADDP4
 INDIRI4
 CNSTI4 8
 BANDI4
-ADDRLP4 56
+ADDRLP4 60
 INDIRI4
 EQI4 $112
 LABELV $115
@@ -1818,15 +1819,15 @@ line 268
 ;266:
 ;267:	// if it's enabled server-side and the client wants it or wants it for this weapon
 ;268:	if ( g_delagHitscan.integer && ( ent->client->pers.delag & 1 || ent->client->pers.delag & wpflag ) ) {
-ADDRLP4 60
+ADDRLP4 64
 CNSTI4 0
 ASGNI4
 ADDRGP4 g_delagHitscan+12
 INDIRI4
-ADDRLP4 60
+ADDRLP4 64
 INDIRI4
 EQI4 $116
-ADDRLP4 64
+ADDRLP4 68
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -1836,39 +1837,39 @@ CNSTI4 616
 ADDP4
 INDIRI4
 ASGNI4
-ADDRLP4 64
+ADDRLP4 68
 INDIRI4
 CNSTI4 1
 BANDI4
-ADDRLP4 60
-INDIRI4
-NEI4 $119
 ADDRLP4 64
 INDIRI4
-ADDRLP4 44
+NEI4 $119
+ADDRLP4 68
+INDIRI4
+ADDRLP4 48
 INDIRI4
 BANDI4
-ADDRLP4 60
+ADDRLP4 64
 INDIRI4
 EQI4 $116
 LABELV $119
 line 270
 ;269:		// do the full lag compensation, except what the client nudges
 ;270:		time = ent->client->attackTime + ent->client->pers.cmdTimeNudge;
-ADDRLP4 68
+ADDRLP4 72
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
 ASGNP4
-ADDRLP4 48
-ADDRLP4 68
+ADDRLP4 52
+ADDRLP4 72
 INDIRP4
 CNSTI4 2656
 ADDP4
 INDIRI4
-ADDRLP4 68
+ADDRLP4 72
 INDIRP4
 CNSTI4 624
 ADDP4
@@ -1885,7 +1886,7 @@ line 272
 line 274
 ;273:		// do just 50ms
 ;274:		time = level.previousTime + ent->client->frameOffset;
-ADDRLP4 48
+ADDRLP4 52
 ADDRGP4 level+36
 INDIRI4
 ADDRFP4 0
@@ -1904,7 +1905,7 @@ LABELV $117
 line 277
 ;276:
 ;277:	G_TimeShiftAllClients( time, ent );
-ADDRLP4 48
+ADDRLP4 52
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1916,7 +1917,7 @@ pop
 line 278
 ;278:}
 LABELV $110
-endproc G_DoTimeShiftFor 72 8
+endproc G_DoTimeShiftFor 76 8
 export G_UnTimeShiftClient
 proc G_UnTimeShiftClient 12 4
 line 288
@@ -4111,6 +4112,7 @@ import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
+import fire_turret
 import fire_grapple
 import fire_bfg
 import fire_rocket

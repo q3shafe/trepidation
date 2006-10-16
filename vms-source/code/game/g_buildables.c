@@ -233,27 +233,28 @@ void turret_fireonenemy( gentity_t *ent){
 	
 		if (ent->s.time2 > 1)
 		{
-			fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+			//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+			fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc );
 		} else
 		{
 			
 			if (ent->s.time2 == 0)
 			{
 				//Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE );
-				fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qfalse);
-				//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+				//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qfalse);
+				fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc );
+				
 			} else
 			{
-				//Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE2 );
 				//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qtrue);
-				fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+				fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc );
 			}
 			
 			
 		}
 		
 		G_AddEvent( ent, EV_FIRE_WEAPON, 0 );
-		ent->count=level.time+300;
+		ent->count=level.time+100;
 
 		// decloaks a cloaked turret when firing.
 		if (ent->s.time2==2)
@@ -378,7 +379,7 @@ void createturretgun(gentity_t *ent){
 	
 	if (ent->s.time2 == 0)
 	{
-		turret->s.weapon=WP_LIGHTNING;
+		turret->s.weapon=WP_TURRET;
 		turret->s.modelindex = G_ModelIndex("models/turrets/gun1.md3");
 		turret->model = "models/turrets/gun1.md3";
 		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun1.md3");
@@ -391,12 +392,12 @@ void createturretgun(gentity_t *ent){
 	// Sheilded Turret
 	if (ent->s.time2 == 1)
 	{
-		turret->s.weapon=WP_PLASMAGUN;
+		turret->s.weapon=WP_TURRET;
 	}
 	// Cloaked Turret
 	if (ent->s.time2 > 1)
 	{
-		turret->s.weapon=WP_PLASMAGUN;
+		turret->s.weapon=WP_TURRET;
 	}
 	
 	

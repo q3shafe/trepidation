@@ -7,6 +7,11 @@
 #define HOMING_THINK			60
 #define HOMING_MISSILE_SPEED	800
 
+
+
+void G_ExplodeDevastatorFire( gentity_t *ent );
+gentity_t *fire_devparticle (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt);
+
 // Shafe - Once everything works this file needs cleaned up
 
 
@@ -88,6 +93,200 @@ void G_BounceMissile( gentity_t *ent, trace_t *trace ) {
 	ent->s.pos.trTime = level.time;
 }
 
+
+
+void G_HomingMissile( gentity_t *ent ) {
+	gentity_t	*target = NULL;
+	gentity_t	*blip = NULL;
+	vec3_t		dir, blipdir;
+	vec_t		dot, cs;
+	qboolean	chaff;
+	qboolean	ignorechaff = qfalse;
+
+	if (ent->parent->health <= 0)
+	{
+		ent->nextthink = level.time + 4000;
+		ent->think = G_ExplodeMissile;
+		return;
+	}
+
+
+	while ((blip = findradius(blip, ent->r.currentOrigin, 2000 * 2000)) != NULL)	{
+			chaff = qfalse;
+
+			if (blip->client==NULL)			continue;
+			if (blip==ent->parent)			continue;
+			if (blip->health<=0)			continue;
+			if (blip->client->sess.sessionTeam >= TEAM_SPECTATOR)
+				continue;
+
+			if ((g_gametype.integer == GT_TEAM || g_gametype.integer == GT_CTF) &&
+				OnSameTeam( blip, ent->parent ) )
+				continue;
+		
+
+		if (!visible (ent, blip))
+			continue;
+
+		VectorSubtract(blip->r.currentOrigin, ent->r.currentOrigin, blipdir);
+
+		//NT - give chaff a higher weight
+		if (chaff)
+		{
+			VectorScale(blipdir, 0.5, blipdir);
+		}
+
+		if ((target == NULL) || (VectorLength(blipdir) < VectorLength(dir)))
+		{
+			if (chaff)
+			{
+				VectorScale(blipdir, 2, blipdir);
+			}
+
+			// E.B = |E||B|cos(theta)
+			dot = _DotProduct(ent->r.currentAngles, blipdir);
+
+			// Divide E.B by |E||B| to get cos(theta)
+			cs = dot / (VectorLength(ent->r.currentAngles) * VectorLength(blipdir));
+
+			// If angle is less than 120 degrees
+			if (cs > cos(120.0f * M_PI / 180.0f))
+			{
+				// We add it as our target
+				target = blip;
+				VectorCopy(blipdir, dir);
+			}
+		}
+	}
+
+	if (target == NULL)	{
+		ent->nextthink = level.time + HOMING_THINK; // + 10000;
+		ent->think = G_HomingMissile;
+	} else {
+		// for exact trajectory calculation, set current point to base.
+		VectorCopy(ent->r.currentOrigin, ent->s.pos.trBase );
+
+		VectorNormalize(dir);
+		// 0.5 is swing rate.
+		VectorScale(dir, 0.5, dir);
+		VectorAdd(dir,ent->r.currentAngles,dir);
+
+		// turn nozzle to target angle
+		VectorNormalize(dir);
+		VectorCopy(dir, ent->r.currentAngles);
+
+		// scale direction, put into trDelta
+		VectorScale(dir, ent->constantSpeed, dir);
+		VectorCopy(dir, ent->s.pos.trDelta);
+
+		ent->s.pos.trTime = level.time;
+
+		SnapVector (ent->s.pos.trDelta);                      // save net bandwidth
+		ent->nextthink = level.time + HOMING_THINK;	// decrease this value also makes fast swing
+		ent->think = G_HomingMissile;
+	}
+}
+
+
+/*
+========================
+G_ExplodeDevastatorFire
+
+========================
+*/
+void G_ExplodeDevastatorFire2( gentity_t *ent ) {
+	vec3_t		dir;
+	vec3_t		origin;
+
+	//Gerbil!
+	vec3_t		dev1;
+	vec3_t		dev2;
+	vec3_t		dev3;
+	vec3_t		dev4;
+
+
+	BG_EvaluateTrajectory( &ent->s.pos, level.time, origin );
+	SnapVector( origin );
+	G_SetOrigin( ent, origin );
+
+	// we don't have a valid direction, so just point straight up
+	dir[0] = dir[1] = 0;
+	dir[2] = 10;
+
+	ent->s.eType = ET_GENERAL;
+	G_AddEvent( ent, EV_MISSILE_MISS, DirToByte( dir ) );
+
+	ent->s.time2++;
+	
+	ent->freeAfterEvent = qtrue;
+
+	// splash damage
+	if ( ent->splashDamage ) {
+		if( G_RadiusDamage( ent->r.currentOrigin, ent->parent, ent->splashDamage, ent->splashRadius, NULL
+			, ent->splashMethodOfDeath ) ) {
+			//g_entities[ent->r.ownerNum].client->ps.persistant[PERS_ACCURACY_HITS]++;
+		}
+	}
+
+
+		VectorSet(dev1, 25, 25, (30+ irandom(10,35)));
+		VectorSet(dev2, -25, 25, (30+ irandom(10,35)));
+		fire_devparticle (ent, origin, dev1, qtrue);
+		fire_devparticle (ent, origin, dev2, qtrue);
+
+
+		trap_LinkEntity( ent );
+	
+}
+
+
+void G_ExplodeDevastatorFire( gentity_t *ent ) {
+	vec3_t		dir;
+	vec3_t		origin;
+	vec3_t		dev1;
+	vec3_t		dev2;
+	vec3_t		dev3;
+	vec3_t		dev4;
+
+
+	BG_EvaluateTrajectory( &ent->s.pos, level.time, origin );
+	SnapVector( origin );
+	G_SetOrigin( ent, origin );
+
+	// we don't have a valid direction, so just point straight up
+	dir[0] = dir[1] = 0;
+	dir[2] = 10;
+
+	ent->s.eType = ET_GENERAL;
+	G_AddEvent( ent, EV_MISSILE_MISS, DirToByte( dir ) );
+
+	ent->s.time2++;
+	
+	ent->freeAfterEvent = qtrue;
+
+	// splash damage
+	if ( ent->splashDamage ) {
+		if( G_RadiusDamage( ent->r.currentOrigin, ent->parent, ent->splashDamage, ent->splashRadius, NULL
+			, ent->splashMethodOfDeath ) ) {
+			//g_entities[ent->r.ownerNum].client->ps.persistant[PERS_ACCURACY_HITS]++;
+		}
+	}
+
+
+		VectorSet(dev1, (25+ irandom(1,35)), (25+ irandom(10,35)), 30);
+		VectorSet(dev2, (-25 - irandom(1,35)), (25+ irandom(10,35)), 30);
+		VectorSet(dev3, (25 + irandom(1,35)), (-25+ irandom(10,35)), 30);
+		VectorSet(dev4, (-25 - + irandom(1,35)), (-25+ irandom(10,35)), 30);
+		
+		fire_devparticle (ent, origin, dev1, qfalse);
+		fire_devparticle (ent, origin, dev2, qfalse);
+		fire_devparticle (ent, origin, dev3, qfalse);
+		fire_devparticle (ent, origin, dev4, qfalse);
+
+		trap_LinkEntity( ent );
+	
+}
+ 
 
 /*
 ================
@@ -672,17 +871,6 @@ gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->splashMethodOfDeath = MOD_GRENADE_SPLASH;
 	bolt->clipmask = MASK_SHOT;
  
-	// Make Em Shootable
-	/*
-	bolt->r.contents = CONTENTS_SHOOTABLE;
-	VectorCopy(mins, bolt->r.mins);
-	VectorCopy(maxs, bolt->r.maxs);
-	bolt->takedamage = qtrue;
-	bolt->health = 70;
-	bolt->die = G_ExplodePDGrenade;
-	//bolt-ignoresize = qtrue;
-	*/
-
 	// Health? Think it'll work?
 	bolt->takedamage=qtrue;
 	bolt->health = 35;
@@ -801,167 +989,6 @@ return bolt;
 
 
 
-void G_HomingMissile( gentity_t *ent ) {
-	gentity_t	*target = NULL;
-	gentity_t	*blip = NULL;
-	vec3_t		dir, blipdir;
-	vec_t		dot, cs;
-	qboolean	chaff;
-	qboolean	ignorechaff = qfalse;
-
-	if (ent->parent->health <= 0)
-	{
-		ent->nextthink = level.time + 4000;
-		ent->think = G_ExplodeMissile;
-		return;
-	}
-
-
-	while ((blip = findradius(blip, ent->r.currentOrigin, 2000 * 2000)) != NULL)	{
-			chaff = qfalse;
-
-			if (blip->client==NULL)			continue;
-			if (blip==ent->parent)			continue;
-			if (blip->health<=0)			continue;
-			if (blip->client->sess.sessionTeam >= TEAM_SPECTATOR)
-				continue;
-
-			if ((g_gametype.integer == GT_TEAM || g_gametype.integer == GT_CTF) &&
-				OnSameTeam( blip, ent->parent ) )
-				continue;
-		
-
-		if (!visible (ent, blip))
-			continue;
-
-		VectorSubtract(blip->r.currentOrigin, ent->r.currentOrigin, blipdir);
-
-		//NT - give chaff a higher weight
-		if (chaff)
-		{
-			VectorScale(blipdir, 0.5, blipdir);
-		}
-
-		if ((target == NULL) || (VectorLength(blipdir) < VectorLength(dir)))
-		{
-			if (chaff)
-			{
-				VectorScale(blipdir, 2, blipdir);
-			}
-
-			// E.B = |E||B|cos(theta)
-			dot = _DotProduct(ent->r.currentAngles, blipdir);
-
-			// Divide E.B by |E||B| to get cos(theta)
-			cs = dot / (VectorLength(ent->r.currentAngles) * VectorLength(blipdir));
-
-			// If angle is less than 120 degrees
-			if (cs > cos(120.0f * M_PI / 180.0f))
-			{
-				// We add it as our target
-				target = blip;
-				VectorCopy(blipdir, dir);
-			}
-		}
-	}
-
-	if (target == NULL)	{
-		ent->nextthink = level.time + HOMING_THINK; // + 10000;
-		ent->think = G_HomingMissile;
-	} else {
-		// for exact trajectory calculation, set current point to base.
-		VectorCopy(ent->r.currentOrigin, ent->s.pos.trBase );
-
-		VectorNormalize(dir);
-		// 0.5 is swing rate.
-		VectorScale(dir, 0.5, dir);
-		VectorAdd(dir,ent->r.currentAngles,dir);
-
-		// turn nozzle to target angle
-		VectorNormalize(dir);
-		VectorCopy(dir, ent->r.currentAngles);
-
-		// scale direction, put into trDelta
-		VectorScale(dir, ent->constantSpeed, dir);
-		VectorCopy(dir, ent->s.pos.trDelta);
-
-		ent->s.pos.trTime = level.time;
-
-		SnapVector (ent->s.pos.trDelta);                      // save net bandwidth
-		ent->nextthink = level.time + HOMING_THINK;	// decrease this value also makes fast swing
-		ent->think = G_HomingMissile;
-	}
-}
-
-
-/*
-void G_HomingMissile( gentity_t *ent )
-{
-	gentity_t	*target = NULL;
-	gentity_t	*blip = NULL;
-	vec3_t  dir, blipdir, temp_dir;
-
-	while ((blip = findradius(blip, ent->r.currentOrigin, 2000)) != NULL)	{
-		if (blip->client==NULL)			continue;
-		if (blip==ent->parent)			continue;
-		if (blip->health<=0)			continue;
-		if (blip->client->sess.sessionTeam == TEAM_SPECTATOR)
-			continue;
-
-		if ((g_gametype.integer == GT_TEAM || g_gametype.integer == GT_CTF) &&
-			blip->client->sess.sessionTeam == ent->parent->client->sess.sessionTeam)
-			continue;
-		//in old code,this ent->parent->cliend-> was blip->parent->client->,
-		//so didn't work in CTF and team deathmatch.Now it will work.
-
-		if (!visible (ent, blip))
-			continue;
-
-		VectorSubtract(blip->r.currentOrigin, ent->r.currentOrigin, blipdir);
-		blipdir[2] += 16;
-		if ((target == NULL) || (VectorLength(blipdir) < VectorLength(dir)))
-		{
-			//if new target is the nearest
-			VectorCopy(blipdir,temp_dir);
-			VectorNormalize(temp_dir);
-			VectorAdd(temp_dir,ent->r.currentAngles,temp_dir);	
-			//now the longer temp_dir length is the more straight path for the rocket.
-			if(VectorLength(temp_dir)>1.2)
-			{	
-				//if this 1.6 were smaller,the rocket also get to target the enemy on his back.
-				target = blip;
-				VectorCopy(blipdir, dir);
-			}
-		}
-	}
-
-	if (target == NULL)	{	
-		ent->nextthink = level.time + 10000;
-		// if once the rocket lose target,it will not search new enemy any more,and go away.
-	} else {
-		ent->s.pos.trTime=level.time;
-		VectorCopy(ent->r.currentOrigin, ent->s.pos.trBase );
-		//for exact trajectory calculation,set current point to base.
-			
-		VectorNormalize(dir);
-		VectorScale(dir, 0.2,dir);
-		VectorAdd(dir,ent->r.currentAngles,dir);
-		// this 0.3 is swing rate.this value is cheap,I think.try 0.8 or 1.5.
-		// if you want fastest swing,comment out these 3 lines.
-
-		VectorNormalize(dir);
-		VectorCopy(dir,ent->r.currentAngles);
-		//locate nozzle to target
-
-		VectorScale (dir,VectorLength(ent->s.pos.trDelta)*1.1,ent->s.pos.trDelta);
-		//trDelta is actual vector for movement.Because the rockets slow down
-		// when swing large angle,so accelalate them.
-
-		SnapVector (ent->s.pos.trDelta);                      // save net bandwidth
-		ent->nextthink = level.time + 100;	//decrease this value also makes fast swing. -- // Shafe was 100
-	}
-}
-*/
 
 
 
@@ -1012,6 +1039,64 @@ gentity_t *fire_altgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 //=============================================================================
 
 
+
+/*
+=================
+fire_devparticle
+=================
+*/
+gentity_t *fire_devparticle (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
+	gentity_t	*bolt;
+	//int			speed;
+	VectorNormalize (dir);
+
+	bolt = G_Spawn();
+	bolt->classname = "bfg";
+
+	if (alt == qfalse)
+	{
+	bolt->think = G_ExplodeDevastatorFire2;	
+	bolt->nextthink = level.time + 1500;
+	} else {
+	bolt->think = G_ExplodeMissile;
+	bolt->nextthink = level.time + 9000;
+	}
+	
+
+
+	bolt->s.eType = ET_MISSILE;
+	//bolt->s.eFlags = EF_BOUNCE_HALF;
+	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+	bolt->s.weapon = WP_BFG;
+	bolt->r.ownerNum = self->s.number;
+//unlagged - projectile nudge
+	// we'll need this for nudging projectiles later
+	bolt->s.otherEntityNum = self->s.number;
+//unlagged - projectile nudge
+	bolt->parent = self;
+	
+	bolt->methodOfDeath = MOD_BFG;
+	bolt->splashMethodOfDeath = MOD_BFG_SPLASH;
+	bolt->clipmask = MASK_SHOT;
+	bolt->target_ent = NULL;
+	bolt->s.pos.trType = TR_ORBITAL;
+	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+
+	bolt->damage = 500;
+	bolt->splashDamage = 300;
+	bolt->splashRadius = 420;
+	VectorCopy( start, bolt->s.pos.trBase );
+	VectorScale( dir, 60, bolt->s.pos.trDelta );
+
+	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
+	VectorCopy (start, bolt->r.currentOrigin);
+
+	return bolt;
+
+
+}
+
+
 /*
 =================
 fire_bfg
@@ -1024,41 +1109,9 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 
 	bolt = G_Spawn();
 	bolt->classname = "bfg";
-
-	// All of this stuff from the original BFG Is Just For Reference
-	// CLEANME - later
-		/*
-	bolt->nextthink = level.time + 1000; 
-	bolt->think = G_ExplodeMissile;
-	bolt->s.eType = ET_MISSILE;
-	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
-	bolt->s.weapon = WP_BFG;
-	bolt->r.ownerNum = self->s.number;
-//unlagged - projectile nudge
-	// we'll need this for nudging projectiles later
-	bolt->s.otherEntityNum = self->s.number;
-//unlagged - projectile nudge
-	bolt->parent = self;
-	bolt->damage = 100;
-	bolt->splashDamage = 100;
-	bolt->splashRadius = 120;
-	bolt->methodOfDeath = MOD_BFG;
-	bolt->splashMethodOfDeath = MOD_BFG_SPLASH;
-	bolt->clipmask = MASK_SHOT;
-	bolt->target_ent = NULL;
-
-	//bolt->s.pos.trType = TR_GRAVITY;
-	bolt->s.pos.trType = TR_LINEAR;
-	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
-	VectorCopy( start, bolt->s.pos.trBase );
-	VectorScale( dir, 2000, bolt->s.pos.trDelta ); //		was 2000
-	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
-	VectorCopy (start, bolt->r.currentOrigin);
-	return bolt;
-	*/
-
-	bolt->nextthink = level.time + 20;
-	bolt->think = G_HomingMissile;
+	bolt->s.time2 = 0;
+	bolt->nextthink = level.time + 3000;
+	
 	bolt->s.eType = ET_MISSILE;
 	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
 	bolt->s.weapon = WP_BFG;
@@ -1082,17 +1135,22 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 		bolt->damage = 500;
 		bolt->splashDamage = 300;
 		bolt->splashRadius = 420;
+		bolt->think = G_ExplodeDevastatorFire;		
 		VectorCopy( start, bolt->s.pos.trBase );
 		VectorScale( dir, 325, bolt->s.pos.trDelta );
+		
+	
 	} 
 	else
 	{
 		// Regular Fire
+
 		bolt->damage = 100;
-		bolt->splashDamage = 100;
-		bolt->splashRadius = 100;
+		bolt->splashDamage = 200;
+		bolt->splashRadius = 220;
+		bolt->think = G_HomingMissile;
 		VectorCopy( start, bolt->s.pos.trBase );
-		VectorScale( dir, 1300, bolt->s.pos.trDelta );
+		VectorScale( dir, 325, bolt->s.pos.trDelta );
 
 	}
 
@@ -1198,46 +1256,50 @@ gentity_t *fire_alt_rocket (gentity_t *self, vec3_t start, vec3_t dir) {
 	VectorCopy (dir, bolt->r.currentAngles);		// this is new line.
 
 	return bolt;
+}
 
-	/*
+
+/*
+=================
+fire_turret
+
+=================
+*/
+gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t dir) {
 	gentity_t	*bolt;
 
 	VectorNormalize (dir);
 
 	bolt = G_Spawn();
-	bolt->classname = "rocket";
-	
-	bolt->think = G_HomingMissile;
-	bolt->nextthink = level.time + 60;
-	
+	bolt->classname = "plasma";
+	bolt->nextthink = level.time + 10000;
+	bolt->think = G_ExplodeMissile;
 	bolt->s.eType = ET_MISSILE;
 	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
-	bolt->s.weapon = WP_ROCKET_LAUNCHER;
+	bolt->s.weapon = WP_TURRET;
 	bolt->r.ownerNum = self->s.number;
-//unlagged - projectile nudge
+	//unlagged - projectile nudge
 	// we'll need this for nudging projectiles later
 	bolt->s.otherEntityNum = self->s.number;
-//unlagged - projectile nudge
+	//unlagged - projectile nudge
 	bolt->parent = self;
-	bolt->damage = 100;
-	bolt->splashDamage = 100;
-	bolt->splashRadius = 120;
-	bolt->methodOfDeath = MOD_ROCKET;
-	bolt->splashMethodOfDeath = MOD_ROCKET_SPLASH;
+	bolt->damage = 20;
+	bolt->splashDamage = 15;
+	bolt->splashRadius = 20;
+	bolt->methodOfDeath = MOD_TURRET;
+	bolt->splashMethodOfDeath = MOD_TURRET;
 	bolt->clipmask = MASK_SHOT;
 	bolt->target_ent = NULL;
 
 	bolt->s.pos.trType = TR_LINEAR;
 	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
 	VectorCopy( start, bolt->s.pos.trBase );
-	VectorScale( dir, 900, bolt->s.pos.trDelta );
-	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
-	VectorCopy (start, bolt->r.currentOrigin);
-
-	VectorCopy (dir, bolt->r.currentAngles);// this is new line. - Shafe -Trep
-
+   	VectorScale( dir, 2000, bolt->s.pos.trDelta );
+   	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
+   
+   	VectorCopy (start, bolt->r.currentOrigin);
+   
 	return bolt;
-	*/
 }
 
 /*
@@ -1265,6 +1327,9 @@ gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir) {
 	hook->clipmask = MASK_SHOT;
 	hook->parent = self;
 	hook->target_ent = NULL;
+	hook->damage = 999;
+	hook->splashDamage = 50;
+	hook->splashRadius = 10;
 
 //unlagged - grapple
 	// we might want this later

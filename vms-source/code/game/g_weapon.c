@@ -277,11 +277,11 @@ void BFG_Fire ( gentity_t *ent, qboolean alt ) {
 	gentity_t	*m;
 
 	// Alt Fire Shoots Upward Just A Bit MOre
-	if (alt == qtrue)
-	{
+	//if (alt == qtrue)
+	//{
 		forward[2] += 0.2f;
 		forward[2] += 0.2f;
-	}
+	//}
 	
 	VectorNormalize( forward );
 	m = fire_bfg (ent, muzzle, forward, alt);
@@ -754,6 +754,19 @@ void Weapon_HookThink (gentity_t *ent)
 }
 
 /*
+=======================================================================
+TURRET
+=======================================================================
+*/
+void Weapon_fire_turret (gentity_t *ent ) {
+	gentity_t *m;
+
+	m = fire_turret(ent, muzzle, forward);
+	m->damage *= s_quadFactor;
+	m->splashDamage *= s_quadFactor;
+}
+
+/*
 ======================================================================
 
 LIGHTNING GUN
@@ -1042,6 +1055,9 @@ void FireWeapon( gentity_t *ent ) {
 	case WP_GRAPPLING_HOOK:
 		Weapon_GrapplingHook_Fire( ent );
 		break;
+	case WP_TURRET:
+		Weapon_fire_turret( ent );
+		break;	
 #ifdef MISSIONPACK
 	case WP_NAILGUN:
 		Weapon_Nailgun_Fire( ent );
@@ -1099,12 +1115,14 @@ void FireWeapon2( gentity_t *ent ) {
 	break; 
  case WP_MACHINEGUN: 
   //Weapon_RocketLauncher_Fire( ent );
- 
-	 if ( g_gametype.integer != GT_TEAM ) { 
-   Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 
-  } else { 
-   Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE ); 
-  } 
+ 	Weapon_fire_turret( ent );
+	/* 
+	if ( g_gametype.integer != GT_TEAM ) { 
+		Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 
+	} else { 
+		Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE ); 
+	} 
+	*/
   break; 
  case WP_GRENADE_LAUNCHER: 
 	weapon_altgrenadelauncher_fire( ent ); 
@@ -1123,7 +1141,10 @@ void FireWeapon2( gentity_t *ent ) {
 	break; 
  case WP_GRAPPLING_HOOK: 
 	Weapon_GrapplingHook_Fire( ent ); 
-	break; 
+	break;
+ case WP_TURRET:
+	Weapon_fire_turret( ent );
+	break;	
  default: 
 // FIXME  G_Error( "Bad ent->s.weapon" ); 
   break; 

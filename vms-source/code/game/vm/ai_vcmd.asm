@@ -3076,6 +3076,7 @@ import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
+import fire_turret
 import fire_grapple
 import fire_bfg
 import fire_rocket

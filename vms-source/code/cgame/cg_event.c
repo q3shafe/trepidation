@@ -336,6 +336,10 @@ static void CG_Obituary( entityState_t *ent ) {
 			message = "was toasted by";
 			message2 = "'s flame thrower";
 			break;
+		case MOD_TURRET:
+			message = "was shot down by ";
+			message2 = "'s turret.";
+			break;
 		default:
 			message = "was killed by";
 			break;

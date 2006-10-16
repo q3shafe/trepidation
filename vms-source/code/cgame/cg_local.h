@@ -804,6 +804,7 @@ typedef struct {
 	qhandle_t	flameBallShader;
 	qhandle_t	flameExplosionShader;
 	qhandle_t	bfgBallShader;
+	qhandle_t	turretFireShader;
 
 	// special effects models
 	qhandle_t	teleportEffectModel;

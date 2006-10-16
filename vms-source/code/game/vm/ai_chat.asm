@@ -1391,7 +1391,7 @@ CNSTI4 1
 LTI4 $175
 ADDRLP4 0
 INDIRI4
-CNSTI4 24
+CNSTI4 25
 GTI4 $175
 ADDRLP4 0
 INDIRI4
@@ -1417,6 +1417,7 @@ address $189
 address $191
 address $193
 address $193
+address $175
 address $175
 address $175
 address $175
@@ -9694,6 +9695,7 @@ import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
+import fire_turret
 import fire_grapple
 import fire_bfg
 import fire_rocket

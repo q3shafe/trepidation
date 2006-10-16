@@ -6,48 +6,48 @@
 --------------------Configuration: game - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP146A.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPEAA.tmp" with contents
 [
 /nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "GLOBALRANK" /Fp".\Release/game.pch" /YX /Fo".\Release/" /Fd".\Release/" /FD /c 
-"G:\games\trepidation\source\vms-source\code\game\ai_chat.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_cmd.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_dmnet.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_dmq3.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_main.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_team.c"
-"G:\games\trepidation\source\vms-source\code\game\ai_vcmd.c"
-"G:\games\trepidation\source\vms-source\code\game\bg_misc.c"
-"G:\games\trepidation\source\vms-source\code\game\bg_pmove.c"
-"G:\games\trepidation\source\vms-source\code\game\bg_slidemove.c"
-"G:\games\trepidation\source\vms-source\code\game\g_active.c"
-"G:\games\trepidation\source\vms-source\code\game\g_arenas.c"
-"G:\games\trepidation\source\vms-source\code\game\g_bot.c"
-"G:\games\trepidation\source\vms-source\code\game\g_buildables.c"
-"G:\games\trepidation\source\vms-source\code\game\g_client.c"
-"G:\games\trepidation\source\vms-source\code\game\g_cmds.c"
-"G:\games\trepidation\source\vms-source\code\game\g_combat.c"
-"G:\games\trepidation\source\vms-source\code\game\g_items.c"
-"G:\games\trepidation\source\vms-source\code\game\g_main.c"
-"G:\games\trepidation\source\vms-source\code\game\g_mem.c"
-"G:\games\trepidation\source\vms-source\code\game\g_misc.c"
-"G:\games\trepidation\source\vms-source\code\game\g_missile.c"
-"G:\games\trepidation\source\vms-source\code\game\g_mover.c"
-"G:\games\trepidation\source\vms-source\code\game\g_playerclass.c"
-"G:\games\trepidation\source\vms-source\code\game\g_session.c"
-"G:\games\trepidation\source\vms-source\code\game\g_spawn.c"
-"G:\games\trepidation\source\vms-source\code\game\g_svcmds.c"
-"G:\games\trepidation\source\vms-source\code\game\g_syscalls.c"
-"G:\games\trepidation\source\vms-source\code\game\g_target.c"
-"G:\games\trepidation\source\vms-source\code\game\g_team.c"
-"G:\games\trepidation\source\vms-source\code\game\g_trigger.c"
-"G:\games\trepidation\source\vms-source\code\game\g_unlagged.c"
-"G:\games\trepidation\source\vms-source\code\game\g_utils.c"
-"G:\games\trepidation\source\vms-source\code\game\g_weapon.c"
-"G:\games\trepidation\source\vms-source\code\game\q_math.c"
-"G:\games\trepidation\source\vms-source\code\game\q_shared.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_chat.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_cmd.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_dmnet.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_dmq3.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_main.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_team.c"
+"E:\games\trepidation\source\vms-source\code\game\ai_vcmd.c"
+"E:\games\trepidation\source\vms-source\code\game\bg_misc.c"
+"E:\games\trepidation\source\vms-source\code\game\bg_pmove.c"
+"E:\games\trepidation\source\vms-source\code\game\bg_slidemove.c"
+"E:\games\trepidation\source\vms-source\code\game\g_active.c"
+"E:\games\trepidation\source\vms-source\code\game\g_arenas.c"
+"E:\games\trepidation\source\vms-source\code\game\g_bot.c"
+"E:\games\trepidation\source\vms-source\code\game\g_buildables.c"
+"E:\games\trepidation\source\vms-source\code\game\g_client.c"
+"E:\games\trepidation\source\vms-source\code\game\g_cmds.c"
+"E:\games\trepidation\source\vms-source\code\game\g_combat.c"
+"E:\games\trepidation\source\vms-source\code\game\g_items.c"
+"E:\games\trepidation\source\vms-source\code\game\g_main.c"
+"E:\games\trepidation\source\vms-source\code\game\g_mem.c"
+"E:\games\trepidation\source\vms-source\code\game\g_misc.c"
+"E:\games\trepidation\source\vms-source\code\game\g_missile.c"
+"E:\games\trepidation\source\vms-source\code\game\g_mover.c"
+"E:\games\trepidation\source\vms-source\code\game\g_playerclass.c"
+"E:\games\trepidation\source\vms-source\code\game\g_session.c"
+"E:\games\trepidation\source\vms-source\code\game\g_spawn.c"
+"E:\games\trepidation\source\vms-source\code\game\g_svcmds.c"
+"E:\games\trepidation\source\vms-source\code\game\g_syscalls.c"
+"E:\games\trepidation\source\vms-source\code\game\g_target.c"
+"E:\games\trepidation\source\vms-source\code\game\g_team.c"
+"E:\games\trepidation\source\vms-source\code\game\g_trigger.c"
+"E:\games\trepidation\source\vms-source\code\game\g_unlagged.c"
+"E:\games\trepidation\source\vms-source\code\game\g_utils.c"
+"E:\games\trepidation\source\vms-source\code\game\g_weapon.c"
+"E:\games\trepidation\source\vms-source\code\game\q_math.c"
+"E:\games\trepidation\source\vms-source\code\game\q_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP146A.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP146B.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPEAA.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPEAB.tmp" with contents
 [
 kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows /dll /incremental:no /pdb:".\Release/qagamex86.pdb" /map:".\Release/qagamex86.map" /machine:I386 /def:".\game.def" /out:"../Release/qagamex86.dll" /implib:".\Release/qagamex86.lib" 
 ".\Release\ai_chat.obj"
@@ -87,7 +87,7 @@ kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows 
 ".\Release\q_math.obj"
 ".\Release\q_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP146B.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPEAB.tmp"
 <h3>Output Window</h3>
 Compiling...
 ai_chat.c
@@ -100,70 +100,73 @@ ai_vcmd.c
 bg_misc.c
 bg_pmove.c
 bg_slidemove.c
-G:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1894) : warning C4701: local variable 'addTime' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1894) : warning C4701: local variable 'addTime' may be used without having been initialized
 g_active.c
-G:\games\trepidation\source\vms-source\code\game\g_active.c(569) : warning C4101: 'item' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_active.c(570) : warning C4101: 'drop' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_active.c(568) : warning C4101: 'fired' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_active.c(562) : warning C4101: 'j' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(569) : warning C4101: 'item' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(570) : warning C4101: 'drop' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(568) : warning C4101: 'fired' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(562) : warning C4101: 'j' : unreferenced local variable
 g_arenas.c
 g_bot.c
 g_buildables.c
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(52) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(53) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(54) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(68) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(69) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(70) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(415) : warning C4013: 'BroadCastSound' undefined; assuming extern returning int
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(454) : warning C4101: 'dest' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(453) : warning C4101: 'tr' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(751) : warning C4101: 'origin' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(750) : warning C4101: 'dest' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(749) : warning C4101: 'tr' : unreferenced local variable
-G:\games\trepidation\source\vms-source\code\game\g_buildables.c(748) : warning C4101: 'velocity' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(52) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(53) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(54) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(68) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(69) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(70) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(415) : warning C4013: 'BroadCastSound' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(454) : warning C4101: 'dest' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(453) : warning C4101: 'tr' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(751) : warning C4101: 'origin' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(750) : warning C4101: 'dest' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(749) : warning C4101: 'tr' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(748) : warning C4101: 'velocity' : unreferenced local variable
 g_client.c
-G:\games\trepidation\source\vms-source\code\game\g_client.c(1318) : warning C4013: 'irandom' undefined; assuming extern returning int
-G:\games\trepidation\source\vms-source\code\game\g_client.c(1453) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_client.c(1318) : warning C4013: 'irandom' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_client.c(1453) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_cmds.c
-G:\games\trepidation\source\vms-source\code\game\g_client.c(1490) : warning C4701: local variable 'b' may be used without having been initialized
-G:\games\trepidation\source\vms-source\code\game\g_client.c(1548) : warning C4701: local variable 'b' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_client.c(1490) : warning C4701: local variable 'b' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_client.c(1548) : warning C4701: local variable 'b' may be used without having been initialized
 g_combat.c
-G:\games\trepidation\source\vms-source\code\game\g_combat.c(662) : warning C4553: '==' : operator has no effect; did you intend '='?
-G:\games\trepidation\source\vms-source\code\game\g_combat.c(709) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_combat.c(681) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_combat.c(728) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_items.c
 g_main.c
-G:\games\trepidation\source\vms-source\code\game\g_main.c(1759) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_main.c(1759) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_mem.c
-G:\games\trepidation\source\vms-source\code\game\g_main.c(2471) : warning C4701: local variable 'valid_count' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_main.c(2471) : warning C4701: local variable 'valid_count' may be used without having been initialized
 g_misc.c
 g_missile.c
-G:\games\trepidation\source\vms-source\code\game\g_misc.c(410) : warning C4701: local variable 'tent' may be used without having been initialized
-G:\games\trepidation\source\vms-source\code\game\g_missile.c(72) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_missile.c(317) : warning C4130: '==' : logical operation on address of string constant
-G:\games\trepidation\source\vms-source\code\game\g_missile.c(810) : warning C4189: 'ignorechaff' : local variable is initialized but not referenced
-G:\games\trepidation\source\vms-source\code\game\g_missile.c(1160) : warning C4189: 'mins' : local variable is initialized but not referenced
-G:\games\trepidation\source\vms-source\code\game\g_missile.c(1160) : warning C4189: 'maxs' : local variable is initialized but not referenced
+E:\games\trepidation\source\vms-source\code\game\g_misc.c(410) : warning C4701: local variable 'tent' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(77) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(104) : warning C4189: 'ignorechaff' : local variable is initialized but not referenced
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(302) : warning C4013: 'irandom' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(275) : warning C4101: 'dev4' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(274) : warning C4101: 'dev3' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(588) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(1301) : warning C4189: 'mins' : local variable is initialized but not referenced
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(1301) : warning C4189: 'maxs' : local variable is initialized but not referenced
 g_mover.c
 g_playerclass.c
-G:\games\trepidation\source\vms-source\code\game\g_playerclass.c(148) : warning C4505: 'G_LoadClasses' : unreferenced local function has been removed
-        G:\games\trepidation\source\vms-source\code\game\g_playerclass.c(113) : see declaration of 'G_LoadClasses'
+E:\games\trepidation\source\vms-source\code\game\g_playerclass.c(148) : warning C4505: 'G_LoadClasses' : unreferenced local function has been removed
+        E:\games\trepidation\source\vms-source\code\game\g_playerclass.c(113) : see declaration of 'G_LoadClasses'
 g_session.c
 g_spawn.c
 g_svcmds.c
-G:\games\trepidation\source\vms-source\code\game\g_svcmds.c(308) : warning C4013: 'BalanceTeams' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_svcmds.c(308) : warning C4013: 'BalanceTeams' undefined; assuming extern returning int
 g_syscalls.c
 g_target.c
 g_team.c
 g_trigger.c
 g_unlagged.c
-G:\games\trepidation\source\vms-source\code\game\g_unlagged.c(394) : warning C4189: 'worldUp' : local variable is initialized but not referenced
+E:\games\trepidation\source\vms-source\code\game\g_unlagged.c(394) : warning C4189: 'worldUp' : local variable is initialized but not referenced
 g_utils.c
 g_weapon.c
-G:\games\trepidation\source\vms-source\code\game\g_weapon.c(452) : warning C4305: '+=' : truncation from 'const double ' to 'float '
-G:\games\trepidation\source\vms-source\code\game\g_weapon.c(541) : warning C4013: 'irandom' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_weapon.c(452) : warning C4305: '+=' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\game\g_weapon.c(541) : warning C4013: 'irandom' undefined; assuming extern returning int
 q_math.c
-G:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
 q_shared.c
 Linking...
    Creating library .\Release/qagamex86.lib and object .\Release/qagamex86.exp
@@ -171,7 +174,7 @@ Linking...
 
 
 <h3>Results</h3>
-qagamex86.dll - 0 error(s), 38 warning(s)
+qagamex86.dll - 0 error(s), 41 warning(s)
 </pre>
 </body>
 </html>
