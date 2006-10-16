@@ -11899,6 +11899,7 @@ import TeleportPlayer
 import trigger_teleporter_touch
 import Touch_DoorTrigger
 import G_RunMover
+import fire_mg
 import fire_turret
 import fire_grapple
 import fire_bfg
@@ -15342,7 +15343,7 @@ byte 1 99
 byte 1 116
 byte 1 32
 byte 1 49
-byte 1 53
+byte 1 54
 byte 1 32
 byte 1 50
 byte 1 48

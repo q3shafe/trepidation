@@ -1989,7 +1989,7 @@ CG_MissileHitWall
 Caused by an EV_MISSILE_MISS event, or directly by local bullet tracing
 =================
 */
-void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, impactSound_t soundType ) {
+void CG_MissileHitWall( centity_t *cent, int weapon, int clientNum, vec3_t origin, vec3_t dir, impactSound_t soundType ) {
 	qhandle_t		mod;
 	qhandle_t		mark;
 	qhandle_t		shader;
@@ -2114,7 +2114,15 @@ void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, im
 		shader = cgs.media.plasmaExplosionShader;
 		sfx = cgs.media.sfx_plasmaexp;
 		mark = cgs.media.energyMarkShader;
-		radius = 5;
+		if (cent->currentState.eFlags & EF_ALT_FIRING)
+		{
+			radius = 15;
+		} 
+		else
+		{
+			radius = 5;
+		}
+
 		break;
 	case WP_BFG:
 		mod = cgs.media.dishFlashModel;
@@ -2185,7 +2193,16 @@ void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, im
 			sfx = cgs.media.sfx_ric3;
 		}
 
-		radius = 8;
+		//radius = 8;
+		if (cent->currentState.eFlags & EF_ALT_FIRING)
+		{
+			radius = 15;
+		} 
+		else
+		{
+			radius = 5;
+		}
+
 		break;
 	}
 
@@ -2252,7 +2269,7 @@ void CG_MissileHitPlayer( int weapon, vec3_t origin, vec3_t dir, int entityNum )
 	case WP_CHAINGUN:
 	case WP_PROX_LAUNCHER:
 #endif
-		CG_MissileHitWall( weapon, 0, origin, dir, IMPACTSOUND_FLESH );
+		CG_MissileHitWall( NULL, weapon, 0, origin, dir, IMPACTSOUND_FLESH );
 		break;
 	default:
 		break;
@@ -2312,9 +2329,9 @@ static void CG_ShotgunPellet( vec3_t start, vec3_t end, int skipNum ) {
 			return;
 		}
 		if ( tr.surfaceFlags & SURF_METALSTEPS ) {
-			CG_MissileHitWall( WP_SHOTGUN, 0, tr.endpos, tr.plane.normal, IMPACTSOUND_METAL );
+			CG_MissileHitWall( NULL, WP_SHOTGUN, 0, tr.endpos, tr.plane.normal, IMPACTSOUND_METAL );
 		} else {
-			CG_MissileHitWall( WP_SHOTGUN, 0, tr.endpos, tr.plane.normal, IMPACTSOUND_DEFAULT );
+			CG_MissileHitWall( NULL, WP_SHOTGUN, 0, tr.endpos, tr.plane.normal, IMPACTSOUND_DEFAULT );
 		}
 	}
 }
@@ -2552,7 +2569,7 @@ void CG_Bullet( vec3_t end, int sourceEntityNum, vec3_t normal, qboolean flesh, 
 	if ( flesh ) {
 		CG_Bleed( end, fleshEntityNum );
 	} else {
-		CG_MissileHitWall( WP_MACHINEGUN, 0, end, normal, IMPACTSOUND_DEFAULT );
+		CG_MissileHitWall( NULL, WP_MACHINEGUN, 0, end, normal, IMPACTSOUND_DEFAULT );
 	}
 
 }

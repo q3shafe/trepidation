@@ -4,7 +4,7 @@ align 4
 LABELV Max_Ammo
 byte 4 0
 byte 4 50
-byte 4 200
+byte 4 500
 byte 4 60
 byte 4 40
 byte 4 30
@@ -155,7 +155,7 @@ byte 4 0
 byte 4 0
 address $93
 address $94
-byte 4 40
+byte 4 100
 byte 4 1
 byte 4 2
 address $42
@@ -534,7 +534,7 @@ line 962
 ;10:{
 ;11:	0,					// WP_NONE,
 ;12:	50,					// Gauntlet
-;13:	200,				// Machine Gun,
+;13:	500,				// Machine Gun,
 ;14:	60,					// Shotgun,			
 ;15:	40,					// Grenades,	
 ;16:	30,					// Rocket,			
@@ -749,7 +749,7 @@ line 962
 ;225:		0, 0, 0},
 ;226:/* icon */		"icons/iconw_machinegun",
 ;227:/* pickup */	"Assualt Rifle",
-;228:		40,
+;228:		100,
 ;229:		IT_WEAPON,
 ;230:		WP_MACHINEGUN,
 ;231:/* precache */ "",

@@ -176,9 +176,11 @@ int Pickup_Holdable( gentity_t *ent, gentity_t *other ) {
 
 	other->client->ps.stats[STAT_HOLDABLE_ITEM] = ent->item - bg_itemlist;
 
+	/*
 	if( ent->item->giTag == HI_KAMIKAZE ) {
 		other->client->ps.eFlags |= EF_KAMIKAZE;
 	}
+	*/
 	
 	// Shafe - Trep -- Test
 	/*

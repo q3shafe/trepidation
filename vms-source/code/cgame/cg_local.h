@@ -1436,7 +1436,7 @@ void CG_RegisterItemVisuals( int itemNum );
 
 void CG_FireWeapon( centity_t *cent );
 void CG_FireWeapon2( centity_t *cent );  // Shafe - Trep - Alt Fire
-void CG_MissileHitWall( int weapon, int clientNum, vec3_t origin, vec3_t dir, impactSound_t soundType );
+void CG_MissileHitWall( centity_t *cent, int weapon, int clientNum, vec3_t origin, vec3_t dir, impactSound_t soundType );
 void CG_MissileHitPlayer( int weapon, vec3_t origin, vec3_t dir, int entityNum );
 void CG_ShotgunFire( entityState_t *es );
 void CG_Bullet( vec3_t origin, int sourceEntityNum, vec3_t normal, qboolean flesh, int fleshEntityNum );

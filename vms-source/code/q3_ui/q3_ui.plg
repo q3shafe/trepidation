@@ -6,7 +6,7 @@
 --------------------Configuration: cgame - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP215.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3FF.tmp" with contents
 [
 /nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"Release/cgame.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
 "E:\games\trepidation\source\vms-source\code\game\bg_misc.c"
@@ -37,8 +37,8 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP215.tmp" with con
 "E:\games\trepidation\source\vms-source\code\game\q_shared.c"
 "E:\games\trepidation\source\vms-source\code\ui\ui_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP215.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP216.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3FF.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP400.tmp" with contents
 [
 /nologo /base:"0x30000000" /subsystem:windows /dll /incremental:no /pdb:"Release/cgamex86.pdb" /map:"Release/cgamex86.map" /machine:I386 /def:".\cgame.def" /out:"../Release/cgamex86.dll" /implib:"Release/cgamex86.lib" 
 ".\Release\bg_misc.obj"
@@ -69,7 +69,7 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP216.tmp" with con
 ".\Release\q_shared.obj"
 ".\Release\ui_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP216.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP400.tmp"
 <h3>Output Window</h3>
 Compiling...
 bg_misc.c
@@ -113,9 +113,9 @@ E:\games\trepidation\source\vms-source\code\cgame\cg_unlagged.c(198) : warning C
 cg_weapons.c
 E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(799) : warning C4305: '=' : truncation from 'const double ' to 'float '
 E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(799) : warning C4305: '=' : truncation from 'const double ' to 'float '
-E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(2588) : warning C4505: 'CG_ShotgunTrail' : unreferenced local function has been removed
+E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(2605) : warning C4505: 'CG_ShotgunTrail' : unreferenced local function has been removed
         E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(306) : see declaration of 'CG_ShotgunTrail'
-E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(2588) : warning C4505: 'CG_LightningBolt' : unreferenced local function has been removed
+E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(2605) : warning C4505: 'CG_LightningBolt' : unreferenced local function has been removed
         E:\games\trepidation\source\vms-source\code\cgame\cg_weapons.c(1116) : see declaration of 'CG_LightningBolt'
 q_math.c
 E:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
@@ -127,7 +127,7 @@ Linking...
 --------------------Configuration: game - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP21A.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP404.tmp" with contents
 [
 /nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "GLOBALRANK" /Fp".\Release/game.pch" /YX /Fo".\Release/" /Fd".\Release/" /FD /c 
 "E:\games\trepidation\source\vms-source\code\game\ai_chat.c"
@@ -167,8 +167,8 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP21A.tmp" with con
 "E:\games\trepidation\source\vms-source\code\game\q_math.c"
 "E:\games\trepidation\source\vms-source\code\game\q_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP21A.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP21B.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP404.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP405.tmp" with contents
 [
 kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows /dll /incremental:no /pdb:".\Release/qagamex86.pdb" /map:".\Release/qagamex86.map" /machine:I386 /def:".\game.def" /out:"../Release/qagamex86.dll" /implib:".\Release/qagamex86.lib" 
 ".\Release\ai_chat.obj"
@@ -208,7 +208,7 @@ kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows 
 ".\Release\q_math.obj"
 ".\Release\q_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP21B.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP405.tmp"
 <h3>Output Window</h3>
 Compiling...
 ai_chat.c
@@ -250,8 +250,10 @@ g_cmds.c
 E:\games\trepidation\source\vms-source\code\game\g_client.c(1490) : warning C4701: local variable 'b' may be used without having been initialized
 E:\games\trepidation\source\vms-source\code\game\g_client.c(1548) : warning C4701: local variable 'b' may be used without having been initialized
 g_combat.c
-E:\games\trepidation\source\vms-source\code\game\g_combat.c(682) : warning C4553: '==' : operator has no effect; did you intend '='?
-E:\games\trepidation\source\vms-source\code\game\g_combat.c(729) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_combat.c(266) : warning C4101: 'ent' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_combat.c(267) : warning C4101: 'i' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_combat.c(684) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_combat.c(731) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_items.c
 g_main.c
 E:\games\trepidation\source\vms-source\code\game\g_main.c(1759) : warning C4553: '==' : operator has no effect; did you intend '='?
@@ -266,8 +268,8 @@ E:\games\trepidation\source\vms-source\code\game\g_missile.c(232) : warning C401
 E:\games\trepidation\source\vms-source\code\game\g_missile.c(205) : warning C4101: 'dev4' : unreferenced local variable
 E:\games\trepidation\source\vms-source\code\game\g_missile.c(204) : warning C4101: 'dev3' : unreferenced local variable
 E:\games\trepidation\source\vms-source\code\game\g_missile.c(516) : warning C4130: '==' : logical operation on address of string constant
-E:\games\trepidation\source\vms-source\code\game\g_missile.c(1218) : warning C4189: 'mins' : local variable is initialized but not referenced
-E:\games\trepidation\source\vms-source\code\game\g_missile.c(1218) : warning C4189: 'maxs' : local variable is initialized but not referenced
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(1221) : warning C4189: 'mins' : local variable is initialized but not referenced
+E:\games\trepidation\source\vms-source\code\game\g_missile.c(1221) : warning C4189: 'maxs' : local variable is initialized but not referenced
 g_mover.c
 g_playerclass.c
 E:\games\trepidation\source\vms-source\code\game\g_playerclass.c(148) : warning C4505: 'G_LoadClasses' : unreferenced local function has been removed
@@ -284,8 +286,8 @@ g_unlagged.c
 E:\games\trepidation\source\vms-source\code\game\g_unlagged.c(394) : warning C4189: 'worldUp' : local variable is initialized but not referenced
 g_utils.c
 g_weapon.c
-E:\games\trepidation\source\vms-source\code\game\g_weapon.c(452) : warning C4305: '+=' : truncation from 'const double ' to 'float '
-E:\games\trepidation\source\vms-source\code\game\g_weapon.c(541) : warning C4013: 'irandom' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_weapon.c(468) : warning C4305: '+=' : truncation from 'const double ' to 'float '
+E:\games\trepidation\source\vms-source\code\game\g_weapon.c(557) : warning C4013: 'irandom' undefined; assuming extern returning int
 q_math.c
 E:\games\trepidation\source\vms-source\code\game\q_math.c(298) : warning C4305: 'initializing' : truncation from 'const double ' to 'float '
 q_shared.c
@@ -295,7 +297,7 @@ Linking...
 --------------------Configuration: q3_ui - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP21F.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP409.tmp" with contents
 [
 /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "Q3_UI_EXPORTS" /FR"Release/" /Fp"Release/q3_ui.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
 "E:\games\trepidation\source\vms-source\code\game\bg_misc.c"
@@ -341,8 +343,8 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP21F.tmp" with con
 "E:\games\trepidation\source\vms-source\code\q3_ui\ui_teamorders.c"
 "E:\games\trepidation\source\vms-source\code\q3_ui\ui_video.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP21F.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP220.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP409.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP40A.tmp" with contents
 [
 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"Release/uix86.pdb" /machine:I386 /def:".\ui.def" /out:"../Release/uix86.dll" /implib:"Release/uix86.lib" 
 ".\Release\bg_misc.obj"
@@ -390,7 +392,7 @@ kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32
 "\games\trepidation\source\vms-source\code\cgame\Release\cgamex86.lib"
 "\games\trepidation\source\vms-source\code\game\Release\qagamex86.lib"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP220.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP40A.tmp"
 <h3>Output Window</h3>
 Compiling...
 bg_misc.c
@@ -450,7 +452,7 @@ Linking...
 
 
 <h3>Results</h3>
-uix86.dll - 0 error(s), 68 warning(s)
+uix86.dll - 0 error(s), 70 warning(s)
 </pre>
 </body>
 </html>

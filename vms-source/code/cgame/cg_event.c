@@ -956,13 +956,13 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 	case EV_MISSILE_MISS:
 		DEBUGNAME("EV_MISSILE_MISS");
 		ByteToDir( es->eventParm, dir );
-		CG_MissileHitWall( es->weapon, 0, position, dir, IMPACTSOUND_DEFAULT );
+		CG_MissileHitWall( cent, es->weapon, 0, position, dir, IMPACTSOUND_DEFAULT );
 		break;
 
 	case EV_MISSILE_MISS_METAL:
 		DEBUGNAME("EV_MISSILE_MISS_METAL");
 		ByteToDir( es->eventParm, dir );
-		CG_MissileHitWall( es->weapon, 0, position, dir, IMPACTSOUND_METAL );
+		CG_MissileHitWall( cent, es->weapon, 0, position, dir, IMPACTSOUND_METAL );
 		break;
 
 	case EV_RAILTRAIL:
@@ -982,7 +982,7 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 			// if the end was on a nomark surface, don't make an explosion
 			if ( es->eventParm != 255 ) {
 				ByteToDir( es->eventParm, dir );
-				CG_MissileHitWall( es->weapon, es->clientNum, position, dir, IMPACTSOUND_DEFAULT );
+				CG_MissileHitWall( cent, es->weapon, es->clientNum, position, dir, IMPACTSOUND_DEFAULT );
 			}
 			//Com_Printf("Non-predicted rail trail\n");
 		}
@@ -1232,9 +1232,12 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 		// don't play gib sound when using the kamikaze because it interferes
 		// with the kamikaze sound, downside is that the gib sound will also
 		// not be played when someone is gibbed while just carrying the kamikaze
-		if ( !(es->eFlags & EF_KAMIKAZE) ) {
+		
+		// We've used this bit
+		//if ( !(es->eFlags & EF_KAMIKAZE) ) {
 			trap_S_StartSound( NULL, es->number, CHAN_BODY, cgs.media.gibSound );
-		}
+		//}
+		
 		CG_GibPlayer( cent->lerpOrigin );
 		break;
 

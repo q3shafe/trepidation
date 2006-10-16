@@ -706,7 +706,10 @@ CNSTI4 0
 NEI4 $94
 line 119
 ;118:				// predict an explosion
-;119:				CG_MissileHitWall( ent->weapon, cg.predictedPlayerState.clientNum, trace.endpos, trace.plane.normal, IMPACTSOUND_DEFAULT );
+;119:				CG_MissileHitWall( cent, ent->weapon, cg.predictedPlayerState.clientNum, trace.endpos, trace.plane.normal, IMPACTSOUND_DEFAULT );
+ADDRFP4 0
+INDIRP4
+ARGP4
 ADDRLP4 24
 INDIRP4
 CNSTI4 192
