@@ -197,13 +197,12 @@ G_ExplodeDevastatorFire
 void G_ExplodeDevastatorFire2( gentity_t *ent ) {
 	vec3_t		dir;
 	vec3_t		origin;
-
-	//Gerbil!
 	vec3_t		dev1;
 	vec3_t		dev2;
+	/*
 	vec3_t		dev3;
 	vec3_t		dev4;
-
+	*/
 
 	BG_EvaluateTrajectory( &ent->s.pos, level.time, origin );
 	SnapVector( origin );

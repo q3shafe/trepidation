@@ -925,10 +925,18 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 	gclient_t	*client;
 	char		userinfo[MAX_INFO_STRING];
 	gentity_t	*ent;
+	char      guid[ 33 ];
+	char      ip[ 16 ] = {""};
+	char      reason[ MAX_STRING_CHARS ] = {""};
+	int       i;
 
 	ent = &g_entities[ clientNum ];
 
 	trap_GetUserinfo( clientNum, userinfo, sizeof( userinfo ) );
+
+	// Admin System
+	value = Info_ValueForKey( userinfo, "cl_guid" );
+	Q_strncpyz( guid, value, sizeof( guid ) );
 
 	// check to see if they are on the banned IP list
 	value = Info_ValueForKey (userinfo, "ip");
@@ -952,6 +960,24 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 //	areabits = client->areabits;
 
 	memset( client, 0, sizeof(*client) );
+
+
+
+  // add guid to session so we don't have to keep parsing userinfo everywhere
+  if( !guid[0] )
+  {
+    Q_strncpyz( client->pers.guid, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      sizeof( client->pers.guid ) );
+  }
+  else
+  {
+    Q_strncpyz( client->pers.guid, guid, sizeof( client->pers.guid ) );
+  }
+	/* Admin System TJW
+	Q_strncpyz( client->pers.ip, ip, sizeof( client->pers.ip ) );
+	client->pers.adminLevel = G_admin_level( ent );
+	*/
+  
 
 	client->pers.connected = CON_CONNECTING;
 
@@ -993,7 +1019,7 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 
 //unlagged - backward reconciliation #5
 	// announce it
-	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 09-16-06 (Rev D - Serverside Patch)\n\"" );
+	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build *UNRELEASED*\n\"" );
 	if ( g_delagHitscan.integer ) {
 //		trap_SendServerCommand( clientNum, "print \"This server is Unlagged: full lag compensation is ON!\n\"" );
 	}
