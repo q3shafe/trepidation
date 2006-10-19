@@ -43,45 +43,118 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 	dir[2] = 1;
 
 	
-	self->nextthink=level.time+2000; 
-	
+
 	// Take item away from master level stats
 	
-	if (self->s.team == TEAM_BLUE)
+	if (self->s.time2 != 666)
 	{
-		if (self->classname == "generator") { level.blueGen--; }
-		if (self->classname == "turret") { level.blueTurrets--; }		
-		if (self->classname == "mc") 
-		{ 
-			if (level.blueNeedMC == 0)
+		self->s.time2 = 666;
+		if (self->s.team == TEAM_BLUE)
+		{
+			if (self->classname == "generator") 
+			{ 
+				level.blueGen--; 			
+				G_LogPrintf("Kill: %i %i %i: Blue Generator was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
+				G_Printf("Blue GENERATOR was destroyed by %s\n", attacker->client->pers.netname);
+				if (attacker->client->sess.sessionTeam == TEAM_RED) 
+				{ 	
+					AddScore(attacker, self->r.currentOrigin, 2); 
+				} else
+				{
+					AddScore(attacker, self->r.currentOrigin, -2); 
+				}
+				self->nextthink = 30000;
+			}	
+			if (self->classname == "turret") 
 			{
-				level.blueMC = 0; 
-				level.redScoreLatched = 1;
-				level.blueNeedMC = 1;
-				trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", 0) );
-				level.blueCredits = 0;
+				level.blueTurrets--; 
+				G_LogPrintf("Kill: %i %i %i: Blue Turret was shot down by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
+				G_Printf("Blue TURRET was shot down by %s\n", attacker->client->pers.netname);
+				if (attacker->client->sess.sessionTeam == TEAM_RED) 
+				{ 	
+					AddScore(attacker, self->r.currentOrigin, 1); 
+				} else
+				{
+					AddScore(attacker, self->r.currentOrigin, -1); 
+				}
+				self->nextthink = 30000;
+			}		
+			if (self->classname == "mc") 
+			{ 
+				if (level.blueNeedMC == 0)
+				{
+					level.blueMC = 0; 
+					level.redScoreLatched = 1;
+					level.blueNeedMC = 1;
+					trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", 0) );
+					level.blueCredits = 0;
+					G_LogPrintf("Kill: %i %i %i: Blue Power Core was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
+					G_Printf("Blue POWER CORE was shot down by %s\n", attacker->client->pers.netname);
+					if (attacker->client->sess.sessionTeam == TEAM_RED) 
+					{ 	
+						AddScore(attacker, self->r.currentOrigin, 10); 
+					} else
+					{
+						AddScore(attacker, self->r.currentOrigin, -10); 
+					}
+				}
+			}		
+		}
+		if (self->s.team == TEAM_RED)
+		{
+			if (self->classname == "generator") 
+			{ 
+				level.redGen--;
+				G_LogPrintf("Kill: %i %i %i: Red Generator was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
+				G_Printf("Red GENERATOR was destroyed by %s\n", attacker->client->pers.netname);
+				if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
+				{ 	
+					AddScore(attacker, self->r.currentOrigin, 2); 
+				} else
+				{
+					AddScore(attacker, self->r.currentOrigin, -2); 
+				}
+				self->nextthink = 30000;
+						
 			}
-		}		
-	}
-	if (self->s.team == TEAM_RED)
-	{
-		if (self->classname == "generator") { level.redGen--; }
-		if (self->classname == "turret") { level.redTurrets--; }
-		if (self->classname == "mc") 
-		{ 
-			if (level.redNeedMC == 0)
-			{
-				level.redMC= 0; 
-				level.blueScoreLatched = 1;
-				level.redNeedMC = 1;
-				trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", 0) );
-				level.redCredits = 0;
+			if (self->classname == "turret") 
+			{ 
+				level.redTurrets--;
+				G_LogPrintf("Kill: %i %i %i: Red Turret was shot down by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
+				G_Printf("Red TURRET was shot down by %s\n", attacker->client->pers.netname);
+				if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
+				{ 	
+					AddScore(attacker, self->r.currentOrigin, 1); 
+				} else
+				{
+					AddScore(attacker, self->r.currentOrigin, -1); 
+				}
+				self->nextthink = 30000;
 			}
+			if (self->classname == "mc") 
+			{ 
+				if (level.redNeedMC == 0)
+				{
+					level.redMC= 0; 
+					level.blueScoreLatched = 1;
+					level.redNeedMC = 1;
+					trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", 0) );
+					level.redCredits = 0;
+					G_LogPrintf("Kill: %i %i %i: Red Generator was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
+					G_Printf("Red POWER CORE was shot down by %s\n", attacker->client->pers.netname);
+					if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
+					{ 	
+						AddScore(attacker, self->r.currentOrigin, 10); 
+					} else
+					{
+						AddScore(attacker, self->r.currentOrigin, -10); 
+					}
+				}
 			
-		}		
+			}		
 
+		}
 	}
-	
 	// This is an extra check .. Mostly likely redundant now
 	if (level.redTurrets < 0) { level.redTurrets = 0; }
 	if (level.blueTurrets < 0) { level.blueTurrets = 0; }
@@ -92,9 +165,11 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		G_FreeEntity(self->chain); // get rid of the gun. // the gun just vanishes
 	}
 	
+	
 	self->s.weapon=WP_ROCKET_LAUNCHER; // to tell it what kind of explosion to use
 	G_AddEvent( self, EV_MISSILE_MISS, DirToByte( dir ) ); // to tell it to spawn an explosion here
 	self->freeAfterEvent = qtrue; // so the base goes away after the explosion
+	self->think = G_FreeEntity;
 
 }
 
@@ -452,7 +527,7 @@ void BuildTurret( gentity_t *ent , int type ){
 
 	gentity_t	*base;
 	trace_t		tr;
-	vec3_t		dest;
+	//vec3_t		dest;
 
 
 	base=G_Spawn();
@@ -746,10 +821,10 @@ BuildGenerator
 void BuildGenerator( gentity_t *ent ){
 
 	gentity_t	*base;
-	vec3_t		velocity;
-	trace_t		tr;
-	vec3_t		dest;
-	vec3_t		origin;
+	//vec3_t		velocity;
+	//trace_t		tr;
+	//vec3_t		dest;
+	//vec3_t		origin;
 
 
 	base=G_Spawn();

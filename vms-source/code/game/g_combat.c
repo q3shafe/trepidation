@@ -681,7 +681,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 	if (level.warmupTime != 0)
 	{
-		level.firstStrike == qfalse;
+		level.firstStrike = qfalse;
 		//trap_SendServerCommand( -1, va("print \"%s FS Is FALSE!!\n\"",attacker->client->pers.netname));	
 	} 
 		

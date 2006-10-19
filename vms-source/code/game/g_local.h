@@ -5,6 +5,7 @@
 #include "q_shared.h"
 #include "bg_public.h"
 #include "g_public.h"
+//#include "g_admin.h"
 
 //==================================================================
 
@@ -287,7 +288,12 @@ typedef struct {
 	qboolean	h_bfg;
 	qboolean	Eliminated;		// For Arsenal and LMS
 	int			TrueScore;		// For Arsenal and LMS
-	
+	// Admin System Stuff
+	char                guid[ 33 ];
+	char                ip[ 16 ];
+	qboolean            muted;
+	int                 adminLevel;	
+
 //unlagged - true ping
 } clientPersistant_t;
 

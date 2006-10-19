@@ -1818,7 +1818,7 @@ void CheckExitRules( void ) {
 						if (survivor->pers.h_mg) 
 						{ 
 							survivor->ps.persistant[PERS_SCORE]+=6; 
-							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: Machine Gun: ^3+6\n\"");	
+							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: LFO Rifle: ^3+6\n\"");	
 						}
 				}
 				
