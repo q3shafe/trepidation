@@ -594,7 +594,7 @@ void BuildTurret( gentity_t *ent , int type ){
 /* 
 ====================================
 
-   MASTER CONTROLLER
+   MASTER CONTROLLER // POWER CORE
 
 ==================================== 
 */
@@ -604,7 +604,7 @@ void BuildTurret( gentity_t *ent , int type ){
 ===========================
 MC_think
 
- Master Controller Think.
+ Power Core//Master Controller Think.
  This controls the shielding 
  as well.
 ===========================

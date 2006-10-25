@@ -1289,9 +1289,9 @@ gentity_t *fire_mg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 	
 	if (alt == qtrue)
 	{
-		bolt->damage = 30;
-		bolt->splashDamage = 15;
-		bolt->splashRadius = 20;
+		bolt->damage = 20;
+		bolt->splashDamage = 10;
+		bolt->splashRadius = 10;
 		//bolt->s.time2 = 555; // 555 is alt fire?
 		bolt->s.eFlags |= EF_ALT_FIRING;
 
@@ -1300,7 +1300,7 @@ gentity_t *fire_mg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 	{
 		bolt->damage = 10;
 		bolt->splashDamage = 5;
-		bolt->splashRadius = 10;
+		bolt->splashRadius = 5;
 	}
 	bolt->methodOfDeath = MOD_MACHINEGUN;
 	bolt->splashMethodOfDeath = MOD_MACHINEGUN;

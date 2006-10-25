@@ -1544,7 +1544,7 @@ int		altAmmoUsage[WP_NUM_WEAPONS] =
 {
 	0,				//WP_NONE,
 	1,				//GAUNTLET,				
-	1,				//machine gun
+	2,				//machine gun
 	1,				//shotgun
 	2,				//grenade launcher
 	3,				//rocket launcher/singularity cannon

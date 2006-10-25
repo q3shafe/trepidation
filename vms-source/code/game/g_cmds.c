@@ -48,8 +48,8 @@ void Cmd_SpawnMC_f( gentity_t *ent ){
 	if (iserror != 0)
 	{
 		// FIXME: Play Error Sound
-		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"There is Already A Master Controller.\"" ); }
-		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Master Controller Not Allowed.\"" ); }
+		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"There is Already A Power Core.\"" ); }
+		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Power Core Not Allowed.\"" ); }
 		//G_AddEvent( ent, EV_ERROR, 0 );
 
 	}

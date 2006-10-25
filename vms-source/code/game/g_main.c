@@ -1573,7 +1573,7 @@ void CheckExitRules( void ) {
 
 			 if ((level.blueMC == 0) && (level.blueNeedMC == 1))
 				{
-					trap_SendServerCommand( -1, "print \"Automatically Placing Blue MC.\n\"" );
+					trap_SendServerCommand( -1, "print \"Automatically Placing Blue Power Core.\n\"" );
 					level.blueNeedMC = 0;
 					PlaceMC(TEAM_BLUE);
 					return;
@@ -1585,7 +1585,7 @@ void CheckExitRules( void ) {
 		
 				if ((level.redMC == 0) && (level.redNeedMC == 1))
 				{
-					trap_SendServerCommand( -1, "print \"Automatically Placing Red MC.\n\"" );
+					trap_SendServerCommand( -1, "print \"Automatically Placing Red Power Core.\n\"" );
 					level.redNeedMC = 0;
 					PlaceMC(TEAM_RED);
 					return;

@@ -1135,7 +1135,7 @@ void FireWeapon2( gentity_t *ent ) {
  case WP_MACHINEGUN: 
   //Weapon_RocketLauncher_Fire( ent );
  	//Weapon_fire_turret( ent );
-	 Weapon_fire_mg( ent, qfalse);
+	 Weapon_fire_mg( ent, qtrue);
 	/* 
 	if ( g_gametype.integer != GT_TEAM ) { 
 		Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 

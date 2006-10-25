@@ -5560,11 +5560,11 @@ line 1138
 ;1135: case WP_MACHINEGUN: 
 ;1136:  //Weapon_RocketLauncher_Fire( ent );
 ;1137: 	//Weapon_fire_turret( ent );
-;1138:	 Weapon_fire_mg( ent, qfalse);
+;1138:	 Weapon_fire_mg( ent, qtrue);
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTI4 0
+CNSTI4 1
 ARGI4
 ADDRGP4 Weapon_fire_mg
 CALLV

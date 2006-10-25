@@ -10,7 +10,7 @@ int Max_Ammo[WP_NUM_WEAPONS] =
 {
 	0,					// WP_NONE,
 	50,					// Gauntlet
-	75,					// Machine Gun,
+	150,				// Machine Gun,
 	60,					// Shotgun,			
 	40,					// Grenades,	
 	30,					// Rocket,			
@@ -225,7 +225,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/iconw_machinegun",
 /* pickup */	"LFO Rifle",
-		75,
+		100,
 		IT_WEAPON,
 		WP_MACHINEGUN,
 /* precache */ "",
@@ -375,7 +375,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/icona_machinegun",
 /* pickup */	"LFO Cell",
-		15,
+		20,
 		IT_AMMO,
 		WP_MACHINEGUN,
 /* precache */ "",
