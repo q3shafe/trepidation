@@ -513,7 +513,7 @@ static void CG_Missile( centity_t *cent ) {
 		ent.reType = RT_SPRITE;
 		if (cent->currentState.eFlags & EF_ALT_FIRING)
 		{
-			ent.radius = 10;
+			ent.radius = 6;
 		} 
 		else
 		{
@@ -531,7 +531,7 @@ static void CG_Missile( centity_t *cent ) {
 		ent.reType = RT_SPRITE;
 		if (cent->currentState.eFlags & EF_ALT_FIRING)
 		{
-			ent.radius = 10;
+			ent.radius = 5;
 		} 
 		else
 		{

@@ -2201,14 +2201,16 @@ void CG_MissileHitWall( centity_t *cent, int weapon, int clientNum, vec3_t origi
 			sfx = cgs.media.sfx_ric3;
 		}
 
+		
 		//radius = 8;
 		if (cent->currentState.eFlags & EF_ALT_FIRING)
 		{
-			radius = 15;
+			radius = 10;
 		} 
 		else
 		{
 			radius = 5;
+
 		}
 
 		break;
@@ -2256,6 +2258,9 @@ void CG_MissileHitWall( centity_t *cent, int weapon, int clientNum, vec3_t origi
 	} else {
 		CG_ImpactMark( mark, origin, dir, random()*360, 1,1,1,1, alphaFade, radius, qfalse );
 	}
+
+
+
 }
 
 

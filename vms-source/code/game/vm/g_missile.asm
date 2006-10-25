@@ -7469,28 +7469,28 @@ NEI4 $296
 line 1291
 ;1291:	{
 line 1292
-;1292:		bolt->damage = 30;
+;1292:		bolt->damage = 20;
 ADDRLP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
-CNSTI4 30
+CNSTI4 20
 ASGNI4
 line 1293
-;1293:		bolt->splashDamage = 15;
+;1293:		bolt->splashDamage = 10;
 ADDRLP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
-CNSTI4 15
+CNSTI4 10
 ASGNI4
 line 1294
-;1294:		bolt->splashRadius = 20;
+;1294:		bolt->splashRadius = 10;
 ADDRLP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
-CNSTI4 20
+CNSTI4 10
 ASGNI4
 line 1296
 ;1295:		//bolt->s.time2 = 555; // 555 is alt fire?
@@ -7535,12 +7535,12 @@ ADDP4
 CNSTI4 5
 ASGNI4
 line 1303
-;1303:		bolt->splashRadius = 10;
+;1303:		bolt->splashRadius = 5;
 ADDRLP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
-CNSTI4 10
+CNSTI4 5
 ASGNI4
 line 1304
 ;1304:	}

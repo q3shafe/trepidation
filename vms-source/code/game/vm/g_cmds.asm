@@ -152,7 +152,7 @@ line 49
 ;49:	{
 line 51
 ;50:		// FIXME: Play Error Sound
-;51:		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"There is Already A Master Controller.\"" ); }
+;51:		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"There is Already A Power Core.\"" ); }
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -174,7 +174,7 @@ CALLV
 pop
 LABELV $71
 line 52
-;52:		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Master Controller Not Allowed.\"" ); }
+;52:		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Power Core Not Allowed.\"" ); }
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
@@ -17140,23 +17140,16 @@ byte 1 99
 byte 1 112
 byte 1 32
 byte 1 34
-byte 1 77
-byte 1 97
-byte 1 115
-byte 1 116
+byte 1 80
+byte 1 111
+byte 1 119
 byte 1 101
 byte 1 114
 byte 1 32
 byte 1 67
 byte 1 111
-byte 1 110
-byte 1 116
 byte 1 114
-byte 1 111
-byte 1 108
-byte 1 108
 byte 1 101
-byte 1 114
 byte 1 32
 byte 1 78
 byte 1 111
@@ -17197,23 +17190,16 @@ byte 1 121
 byte 1 32
 byte 1 65
 byte 1 32
-byte 1 77
-byte 1 97
-byte 1 115
-byte 1 116
+byte 1 80
+byte 1 111
+byte 1 119
 byte 1 101
 byte 1 114
 byte 1 32
 byte 1 67
 byte 1 111
-byte 1 110
-byte 1 116
 byte 1 114
-byte 1 111
-byte 1 108
-byte 1 108
 byte 1 101
-byte 1 114
 byte 1 46
 byte 1 34
 byte 1 0

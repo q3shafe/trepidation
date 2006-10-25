@@ -6770,7 +6770,7 @@ NEI4 $792
 line 1575
 ;1575:				{
 line 1576
-;1576:					trap_SendServerCommand( -1, "print \"Automatically Placing Blue MC.\n\"" );
+;1576:					trap_SendServerCommand( -1, "print \"Automatically Placing Blue Power Core.\n\"" );
 CNSTI4 -1
 ARGI4
 ADDRGP4 $796
@@ -6825,7 +6825,7 @@ NEI4 $802
 line 1587
 ;1587:				{
 line 1588
-;1588:					trap_SendServerCommand( -1, "print \"Automatically Placing Red MC.\n\"" );
+;1588:					trap_SendServerCommand( -1, "print \"Automatically Placing Red Power Core.\n\"" );
 CNSTI4 -1
 ARGI4
 ADDRGP4 $806
@@ -13413,8 +13413,16 @@ byte 1 82
 byte 1 101
 byte 1 100
 byte 1 32
-byte 1 77
+byte 1 80
+byte 1 111
+byte 1 119
+byte 1 101
+byte 1 114
+byte 1 32
 byte 1 67
+byte 1 111
+byte 1 114
+byte 1 101
 byte 1 46
 byte 1 10
 byte 1 34
@@ -13455,8 +13463,16 @@ byte 1 108
 byte 1 117
 byte 1 101
 byte 1 32
-byte 1 77
+byte 1 80
+byte 1 111
+byte 1 119
+byte 1 101
+byte 1 114
+byte 1 32
 byte 1 67
+byte 1 111
+byte 1 114
+byte 1 101
 byte 1 46
 byte 1 10
 byte 1 34
@@ -15340,8 +15356,8 @@ byte 1 79
 byte 1 99
 byte 1 116
 byte 1 32
-byte 1 49
-byte 1 57
+byte 1 50
+byte 1 52
 byte 1 32
 byte 1 50
 byte 1 48

@@ -3812,7 +3812,7 @@ ADDRGP4 DynamicMenu_AddItem
 CALLI4
 pop
 line 961
-;961:		DynamicMenu_AddItem("MC Reactor", 0, NULL, DM_BuildItem);
+;961:		DynamicMenu_AddItem("Power Core", 0, NULL, DM_BuildItem);
 ADDRGP4 $586
 ARGP4
 CNSTI4 0
@@ -4697,16 +4697,16 @@ byte 1 101
 byte 1 0
 align 1
 LABELV $586
-byte 1 77
-byte 1 67
-byte 1 32
-byte 1 82
+byte 1 80
+byte 1 111
+byte 1 119
 byte 1 101
-byte 1 97
-byte 1 99
-byte 1 116
+byte 1 114
+byte 1 32
+byte 1 67
 byte 1 111
 byte 1 114
+byte 1 101
 byte 1 0
 align 1
 LABELV $585
