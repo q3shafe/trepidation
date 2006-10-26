@@ -293,11 +293,14 @@ void BFG_Fire ( gentity_t *ent, qboolean alt ) {
 	gentity_t	*m;
 
 	// Alt Fire Shoots Upward Just A Bit MOre
-	//if (alt == qtrue)
-	//{
+	if (alt == qtrue)
+	{
 		forward[2] += 0.2f;
-		forward[2] += 0.2f;
-	//}
+	}
+	
+	forward[2] += 0.2f;
+
+
 	
 	VectorNormalize( forward );
 	m = fire_bfg (ent, muzzle, forward, alt);
@@ -774,12 +777,61 @@ void Weapon_HookThink (gentity_t *ent)
 TURRET
 =======================================================================
 */
-void Weapon_fire_turret (gentity_t *ent ) {
+void Weapon_fire_turret (gentity_t *ent, qboolean alt ) {
 	gentity_t *m;
+	float newforward[] = {0,0,0};
+	gentity_t *client;
 
-	m = fire_turret(ent, muzzle, forward);
+
+	m = fire_turret(ent, muzzle, forward, alt);
 	m->damage *= s_quadFactor;
 	m->splashDamage *= s_quadFactor;
+
+	if (alt == qtrue) {
+		//Second bullet goes to the right
+		AngleVectors( ent->client->ps.viewangles, forward, right, up );
+		VectorCopy( forward, newforward );
+		if ( forward[0] >= 0.5 && forward[0] <= 1 ) 
+		{
+			newforward[1] += .35;
+		} 
+		else if ( forward[0] <= -0.5 && forward[0] >= -1 ) 
+		{
+			newforward[1] += .35;
+		} else {
+			newforward[0] += .35;
+		}
+	
+		VectorNormalize( newforward );
+		VectorAdd( newforward, forward, forward );
+		CalcMuzzlePoint( ent, forward, right, up, muzzle );
+	
+
+		m = fire_turret(ent, muzzle, forward, alt);
+		m->damage *= s_quadFactor;
+		m->splashDamage *= s_quadFactor;
+
+
+
+		//Third bullet goes to the left
+		AngleVectors (ent->client->ps.viewangles, forward, right, up);
+		VectorCopy( forward, newforward );
+		if ( forward[0] >= 0.5 && forward[0] <= 1 ) {
+		newforward[1] -= .35;
+		} else if ( forward[0] <= -0.5 && forward[0] >= -1 ) {
+		newforward[1] -= .35;
+		} else {
+		newforward[0] -= .35;
+		}
+		VectorNormalize( newforward );
+		VectorAdd( newforward, forward, forward );
+		CalcMuzzlePoint ( ent, forward, right, up, muzzle );
+
+		m = fire_turret(ent, muzzle, forward, alt);
+		m->damage *= s_quadFactor;
+		m->splashDamage *= s_quadFactor;
+	}
+
 }
 
 /*
@@ -1075,7 +1127,7 @@ void FireWeapon( gentity_t *ent ) {
 		Weapon_GrapplingHook_Fire( ent );
 		break;
 	case WP_TURRET:
-		Weapon_fire_turret( ent );
+		Weapon_fire_turret( ent, qfalse );
 		break;	
 #ifdef MISSIONPACK
 	case WP_NAILGUN:
@@ -1163,7 +1215,7 @@ void FireWeapon2( gentity_t *ent ) {
 	Weapon_GrapplingHook_Fire( ent ); 
 	break;
  case WP_TURRET:
-	Weapon_fire_turret( ent );
+	Weapon_fire_turret( ent, qtrue );
 	break;	
  default: 
 // FIXME  G_Error( "Bad ent->s.weapon" ); 

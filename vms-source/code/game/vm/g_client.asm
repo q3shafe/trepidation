@@ -278,7 +278,7 @@ LABELV $75
 line 72
 ;72:		hit = &g_entities[touch[i]];
 ADDRLP4 4
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -1710,7 +1710,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 872
+CNSTI4 876
 DIVI4
 ASGNI4
 line 394
@@ -3105,7 +3105,7 @@ line 698
 ;697:
 ;698:	ent = g_entities + clientNum;
 ADDRLP4 1032
-CNSTI4 872
+CNSTI4 876
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -3831,7 +3831,7 @@ ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
 LTI4 $293
-CNSTI4 872
+CNSTI4 876
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -4418,7 +4418,7 @@ line 933
 ;932:
 ;933:	ent = &g_entities[ clientNum ];
 ADDRLP4 1032
-CNSTI4 872
+CNSTI4 876
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -4951,7 +4951,7 @@ line 1049
 ;1048:
 ;1049:	ent = g_entities + clientNum;
 ADDRLP4 4
-CNSTI4 872
+CNSTI4 876
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -5381,7 +5381,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 872
+CNSTI4 876
 DIVI4
 ASGNI4
 line 1138
@@ -7248,7 +7248,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 872
+CNSTI4 876
 DIVI4
 ARGI4
 ADDRGP4 ClientThink
@@ -7522,7 +7522,7 @@ INDIRI4
 ASGNI4
 line 1522
 ;1522:		SetTeam(&g_entities[c], "red"); 
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7577,7 +7577,7 @@ INDIRI4
 ASGNI4
 line 1530
 ;1530:		SetTeam(&g_entities[c], "blue"); 
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7784,7 +7784,7 @@ line 1578
 line 1580
 ;1579:		// Set it down for the blue team
 ;1580:		BuildMC(&g_entities[c]);
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7809,7 +7809,7 @@ line 1584
 line 1586
 ;1585:		// set it down for the red team
 ;1586:		BuildMC(&g_entities[c]);
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7870,7 +7870,7 @@ line 1617
 ;1616:
 ;1617:	ent = g_entities + clientNum;
 ADDRLP4 4
-CNSTI4 872
+CNSTI4 876
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -7941,7 +7941,7 @@ line 1626
 ;1626:			&& level.clients[i].sess.spectatorClient == clientNum ) {
 line 1627
 ;1627:			StopFollowing( &g_entities[i] );
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -8423,6 +8423,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma

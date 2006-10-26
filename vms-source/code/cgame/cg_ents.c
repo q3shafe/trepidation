@@ -557,9 +557,17 @@ static void CG_Missile( centity_t *cent ) {
 	// Shafe - Trep - Devastator
 	if (cent->currentState.weapon == WP_BFG ) {
 		ent.reType = RT_SPRITE;
-		ent.radius = 10;
+		//ent.radius = 10;
 		ent.rotation = 0;
 		ent.customShader = cgs.media.bfgBallShader;
+		if (cent->currentState.eFlags & EF_ALT_FIRING)
+		{
+			ent.radius = 10;
+		} 
+		else
+		{
+			ent.radius = 5;
+		}
 		trap_R_AddRefEntityToScene( &ent );
 		return;
 	} // End Shafe
@@ -567,7 +575,7 @@ static void CG_Missile( centity_t *cent ) {
 	// flicker between two skins
 	ent.skinNum = cg.clientFrame & 1;
 	ent.hModel = weapon->missileModel;
-	ent.renderfx = weapon->missileRenderfx | RF_NOSHADOW;
+	ent.renderfx = weapon->missileRenderfx; // | RF_NOSHADOW;
 
 #ifdef MISSIONPACK
 	if ( cent->currentState.weapon == WP_PROX_LAUNCHER ) {

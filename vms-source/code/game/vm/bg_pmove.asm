@@ -8016,7 +8016,7 @@ align 4
 LABELV altAmmoUsage
 byte 4 0
 byte 4 1
-byte 4 3
+byte 4 2
 byte 4 1
 byte 4 2
 byte 4 3
@@ -8038,7 +8038,7 @@ line 1565
 ;1544:{
 ;1545:	0,				//WP_NONE,
 ;1546:	1,				//GAUNTLET,				
-;1547:	3,				//machine gun
+;1547:	2,				//machine gun
 ;1548:	1,				//shotgun
 ;1549:	2,				//grenade launcher
 ;1550:	3,				//rocket launcher/singularity cannon

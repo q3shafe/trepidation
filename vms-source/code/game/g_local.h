@@ -177,6 +177,7 @@ struct gentity_s {
 								// in speed calculations
 	vec3_t		turloc;			// Used for turrets
 	vec3_t		centerpoint;	// USed for Turrets
+	qboolean	immobilized;
 };
 
 
@@ -647,7 +648,7 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t aimdir, qboolean al
 gentity_t *fire_rocket (gentity_t *self, vec3_t start, vec3_t dir);
 gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt);
 gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir);
-gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t aimdir);
+gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t aimdir, qboolean alt);
 gentity_t *fire_mg (gentity_t *self, vec3_t start, vec3_t aimdir, qboolean alt);
 #ifdef MISSIONPACK
 gentity_t *fire_nail( gentity_t *self, vec3_t start, vec3_t forward, vec3_t right, vec3_t up );
@@ -951,7 +952,7 @@ extern	vmCvar_t	g_StartBFG;
 
 // Other Options
 extern	vmCvar_t	g_Turrets;
-
+extern	vmCvar_t	g_GrappleMode;
 
 //extern	vmCvar_t	g_CTFGrapple; // Decided not to make this an option
 

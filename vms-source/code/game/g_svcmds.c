@@ -425,6 +425,40 @@ gclient_t	*ClientForString( const char *s ) {
 	return NULL;
 }
 
+
+
+/*
+===================
+Svcmd_Punish_f
+
+forceteam <player> <team>
+===================
+*/
+void	Svcmd_Punish_f( void ) {
+	gclient_t	*cl;
+	char		str[MAX_TOKEN_CHARS];
+
+	// find the player
+	trap_Argv( 1, str, sizeof( str ) );
+	cl = ClientForString( str );
+	if ( !cl ) {
+		return;
+	}
+
+	// set the team
+	trap_Argv( 2, str, sizeof( str ) );
+
+	if (g_entities[cl - level.clients].immobilized == qtrue)
+	{
+		g_entities[cl - level.clients].immobilized = qfalse;
+	} 
+	else
+	{
+		g_entities[cl - level.clients].immobilized = qtrue;
+	}
+
+}
+
 /*
 ===================
 Svcmd_ForceTeam_f
@@ -506,6 +540,10 @@ qboolean	ConsoleCommand( void ) {
 		return qtrue;
 	}
 
+	if (Q_stricmp (cmd, "punish") == 0) {
+		Svcmd_Punish_f();
+		return qtrue;
+	}
 	
 	if (Q_stricmp (cmd, "balanceteams") == 0) {
 		//FixME Later - Do it twice in case it's way off

@@ -13234,31 +13234,62 @@ line 2332
 ;2332:		}
 LABELV $1154
 line 2333
-;2333:	}
-LABELV $1136
+;2333:		if ( state->powerups & ( 1 << PW_INVULNERABILITY ) ) {
+ADDRFP4 4
+INDIRP4
+CNSTI4 188
+ADDP4
+INDIRI4
+CNSTI4 16384
+BANDI4
+CNSTI4 0
+EQI4 $1158
 line 2334
-;2334:}
+;2334:			ent->customShader = cgs.media.buildShader;
+ADDRFP4 0
+INDIRP4
+CNSTI4 112
+ADDP4
+ADDRGP4 cgs+153876+420
+INDIRI4
+ASGNI4
+line 2335
+;2335:			trap_R_AddRefEntityToScene( ent );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 trap_R_AddRefEntityToScene
+CALLV
+pop
+line 2336
+;2336:		}
+LABELV $1158
+line 2337
+;2337:	}
+LABELV $1136
+line 2338
+;2338:}
 LABELV $1134
 endproc CG_AddRefEntityWithPowerups 0 4
 export CG_LightVerts
 proc CG_LightVerts 88 16
-line 2342
-;2335:
-;2336:/*
-;2337:=================
-;2338:CG_LightVerts
-;2339:=================
-;2340:*/
-;2341:int CG_LightVerts( vec3_t normal, int numVerts, polyVert_t *verts )
-;2342:{
-line 2349
-;2343:	int				i, j;
-;2344:	float			incoming;
-;2345:	vec3_t			ambientLight;
-;2346:	vec3_t			lightDir;
-;2347:	vec3_t			directedLight;
-;2348:
-;2349:	trap_R_LightForPoint( verts[0].xyz, ambientLight, directedLight, lightDir );
+line 2346
+;2339:
+;2340:/*
+;2341:=================
+;2342:CG_LightVerts
+;2343:=================
+;2344:*/
+;2345:int CG_LightVerts( vec3_t normal, int numVerts, polyVert_t *verts )
+;2346:{
+line 2353
+;2347:	int				i, j;
+;2348:	float			incoming;
+;2349:	vec3_t			ambientLight;
+;2350:	vec3_t			lightDir;
+;2351:	vec3_t			directedLight;
+;2352:
+;2353:	trap_R_LightForPoint( verts[0].xyz, ambientLight, directedLight, lightDir );
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -13271,17 +13302,17 @@ ARGP4
 ADDRGP4 trap_R_LightForPoint
 CALLI4
 pop
-line 2351
-;2350:
-;2351:	for (i = 0; i < numVerts; i++) {
+line 2355
+;2354:
+;2355:	for (i = 0; i < numVerts; i++) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-ADDRGP4 $1162
+ADDRGP4 $1166
 JUMPV
-LABELV $1159
-line 2352
-;2352:		incoming = DotProduct (normal, lightDir);
+LABELV $1163
+line 2356
+;2356:		incoming = DotProduct (normal, lightDir);
 ADDRLP4 48
 ADDRFP4 0
 INDIRP4
@@ -13312,14 +13343,14 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 2353
-;2353:		if ( incoming <= 0 ) {
+line 2357
+;2357:		if ( incoming <= 0 ) {
 ADDRLP4 8
 INDIRF4
 CNSTF4 0
-GTF4 $1165
-line 2354
-;2354:			verts[i].modulate[0] = ambientLight[0];
+GTF4 $1169
+line 2358
+;2358:			verts[i].modulate[0] = ambientLight[0];
 ADDRLP4 56
 ADDRLP4 12
 INDIRF4
@@ -13331,7 +13362,7 @@ ADDRLP4 56
 INDIRF4
 ADDRLP4 60
 INDIRF4
-LTF4 $1168
+LTF4 $1172
 ADDRLP4 52
 ADDRLP4 56
 INDIRF4
@@ -13343,59 +13374,11 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $1169
-JUMPV
-LABELV $1168
-ADDRLP4 52
-ADDRLP4 56
-INDIRF4
-CVFI4 4
-CVIU4 4
-ASGNU4
-LABELV $1169
-CNSTI4 24
-ADDRLP4 4
-INDIRI4
-MULI4
-ADDRFP4 8
-INDIRP4
-ADDP4
-CNSTI4 20
-ADDP4
-ADDRLP4 52
-INDIRU4
-CVUU1 4
-ASGNU1
-line 2355
-;2355:			verts[i].modulate[1] = ambientLight[1];
-ADDRLP4 68
-ADDRLP4 12+4
-INDIRF4
-ASGNF4
-ADDRLP4 72
-CNSTF4 1325400064
-ASGNF4
-ADDRLP4 68
-INDIRF4
-ADDRLP4 72
-INDIRF4
-LTF4 $1172
-ADDRLP4 64
-ADDRLP4 68
-INDIRF4
-ADDRLP4 72
-INDIRF4
-SUBF4
-CVFI4 4
-CVIU4 4
-CNSTU4 2147483648
-ADDU4
-ASGNU4
 ADDRGP4 $1173
 JUMPV
 LABELV $1172
-ADDRLP4 64
-ADDRLP4 68
+ADDRLP4 52
+ADDRLP4 56
 INDIRF4
 CVFI4 4
 CVIU4 4
@@ -13408,14 +13391,62 @@ MULI4
 ADDRFP4 8
 INDIRP4
 ADDP4
+CNSTI4 20
+ADDP4
+ADDRLP4 52
+INDIRU4
+CVUU1 4
+ASGNU1
+line 2359
+;2359:			verts[i].modulate[1] = ambientLight[1];
+ADDRLP4 68
+ADDRLP4 12+4
+INDIRF4
+ASGNF4
+ADDRLP4 72
+CNSTF4 1325400064
+ASGNF4
+ADDRLP4 68
+INDIRF4
+ADDRLP4 72
+INDIRF4
+LTF4 $1176
+ADDRLP4 64
+ADDRLP4 68
+INDIRF4
+ADDRLP4 72
+INDIRF4
+SUBF4
+CVFI4 4
+CVIU4 4
+CNSTU4 2147483648
+ADDU4
+ASGNU4
+ADDRGP4 $1177
+JUMPV
+LABELV $1176
+ADDRLP4 64
+ADDRLP4 68
+INDIRF4
+CVFI4 4
+CVIU4 4
+ASGNU4
+LABELV $1177
+CNSTI4 24
+ADDRLP4 4
+INDIRI4
+MULI4
+ADDRFP4 8
+INDIRP4
+ADDP4
 CNSTI4 21
 ADDP4
 ADDRLP4 64
 INDIRU4
 CVUU1 4
 ASGNU1
-line 2356
-;2356:			verts[i].modulate[2] = ambientLight[2];
+line 2360
+;2360:			verts[i].modulate[2] = ambientLight[2];
 ADDRLP4 80
 ADDRLP4 12+8
 INDIRF4
@@ -13427,7 +13458,7 @@ ADDRLP4 80
 INDIRF4
 ADDRLP4 84
 INDIRF4
-LTF4 $1176
+LTF4 $1180
 ADDRLP4 76
 ADDRLP4 80
 INDIRF4
@@ -13439,16 +13470,16 @@ CVIU4 4
 CNSTU4 2147483648
 ADDU4
 ASGNU4
-ADDRGP4 $1177
+ADDRGP4 $1181
 JUMPV
-LABELV $1176
+LABELV $1180
 ADDRLP4 76
 ADDRLP4 80
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
-LABELV $1177
+LABELV $1181
 CNSTI4 24
 ADDRLP4 4
 INDIRI4
@@ -13462,8 +13493,8 @@ ADDRLP4 76
 INDIRU4
 CVUU1 4
 ASGNU1
-line 2357
-;2357:			verts[i].modulate[3] = 255;
+line 2361
+;2361:			verts[i].modulate[3] = 255;
 CNSTI4 24
 ADDRLP4 4
 INDIRI4
@@ -13475,14 +13506,14 @@ CNSTI4 23
 ADDP4
 CNSTU1 255
 ASGNU1
-line 2358
-;2358:			continue;
-ADDRGP4 $1160
+line 2362
+;2362:			continue;
+ADDRGP4 $1164
 JUMPV
-LABELV $1165
-line 2360
-;2359:		} 
-;2360:		j = ( ambientLight[0] + incoming * directedLight[0] );
+LABELV $1169
+line 2364
+;2363:		} 
+;2364:		j = ( ambientLight[0] + incoming * directedLight[0] );
 ADDRLP4 0
 ADDRLP4 12
 INDIRF4
@@ -13494,22 +13525,22 @@ MULF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 2361
-;2361:		if ( j > 255 ) {
+line 2365
+;2365:		if ( j > 255 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 255
-LEI4 $1178
-line 2362
-;2362:			j = 255;
+LEI4 $1182
+line 2366
+;2366:			j = 255;
 ADDRLP4 0
 CNSTI4 255
 ASGNI4
-line 2363
-;2363:		}
-LABELV $1178
-line 2364
-;2364:		verts[i].modulate[0] = j;
+line 2367
+;2367:		}
+LABELV $1182
+line 2368
+;2368:		verts[i].modulate[0] = j;
 CNSTI4 24
 ADDRLP4 4
 INDIRI4
@@ -13524,9 +13555,9 @@ INDIRI4
 CVIU4 4
 CVUU1 4
 ASGNU1
-line 2366
-;2365:
-;2366:		j = ( ambientLight[1] + incoming * directedLight[1] );
+line 2370
+;2369:
+;2370:		j = ( ambientLight[1] + incoming * directedLight[1] );
 ADDRLP4 0
 ADDRLP4 12+4
 INDIRF4
@@ -13538,22 +13569,22 @@ MULF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 2367
-;2367:		if ( j > 255 ) {
+line 2371
+;2371:		if ( j > 255 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 255
-LEI4 $1182
-line 2368
-;2368:			j = 255;
+LEI4 $1186
+line 2372
+;2372:			j = 255;
 ADDRLP4 0
 CNSTI4 255
 ASGNI4
-line 2369
-;2369:		}
-LABELV $1182
-line 2370
-;2370:		verts[i].modulate[1] = j;
+line 2373
+;2373:		}
+LABELV $1186
+line 2374
+;2374:		verts[i].modulate[1] = j;
 CNSTI4 24
 ADDRLP4 4
 INDIRI4
@@ -13568,9 +13599,9 @@ INDIRI4
 CVIU4 4
 CVUU1 4
 ASGNU1
-line 2372
-;2371:
-;2372:		j = ( ambientLight[2] + incoming * directedLight[2] );
+line 2376
+;2375:
+;2376:		j = ( ambientLight[2] + incoming * directedLight[2] );
 ADDRLP4 0
 ADDRLP4 12+8
 INDIRF4
@@ -13582,22 +13613,22 @@ MULF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 2373
-;2373:		if ( j > 255 ) {
+line 2377
+;2377:		if ( j > 255 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 255
-LEI4 $1186
-line 2374
-;2374:			j = 255;
+LEI4 $1190
+line 2378
+;2378:			j = 255;
 ADDRLP4 0
 CNSTI4 255
 ASGNI4
-line 2375
-;2375:		}
-LABELV $1186
-line 2376
-;2376:		verts[i].modulate[2] = j;
+line 2379
+;2379:		}
+LABELV $1190
+line 2380
+;2380:		verts[i].modulate[2] = j;
 CNSTI4 24
 ADDRLP4 4
 INDIRI4
@@ -13612,9 +13643,9 @@ INDIRI4
 CVIU4 4
 CVUU1 4
 ASGNU1
-line 2378
-;2377:
-;2378:		verts[i].modulate[3] = 255;
+line 2382
+;2381:
+;2382:		verts[i].modulate[3] = 255;
 CNSTI4 24
 ADDRLP4 4
 INDIRI4
@@ -13626,61 +13657,61 @@ CNSTI4 23
 ADDP4
 CNSTU1 255
 ASGNU1
-line 2379
-;2379:	}
-LABELV $1160
-line 2351
+line 2383
+;2383:	}
+LABELV $1164
+line 2355
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $1162
+LABELV $1166
 ADDRLP4 4
 INDIRI4
 ADDRFP4 4
 INDIRI4
-LTI4 $1159
-line 2380
-;2380:	return qtrue;
+LTI4 $1163
+line 2384
+;2384:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $1158
+LABELV $1162
 endproc CG_LightVerts 88 16
 export CG_Player
 proc CG_Player 448 28
-line 2388
-;2381:}
-;2382:
-;2383:/*
-;2384:===============
-;2385:CG_Player
-;2386:===============
-;2387:*/
-;2388:void CG_Player( centity_t *cent ) {
-line 2409
-;2389:	clientInfo_t	*ci;
-;2390:	refEntity_t		legs;
-;2391:	refEntity_t		torso;
-;2392:	refEntity_t		head;
-;2393:	int				clientNum;
-;2394:	int				renderfx;
-;2395:	qboolean		shadow;
-;2396:	float			shadowPlane;
-;2397:#ifdef MISSIONPACK
-;2398:	refEntity_t		skull;
-;2399:	refEntity_t		powerup;
-;2400:	int				t;
-;2401:	float			c;
-;2402:	float			angle;
-;2403:	vec3_t			dir, angles;
-;2404:#endif
-;2405:
-;2406:	// the client number is stored in clientNum.  It can't be derived
-;2407:	// from the entity number, because a single client may have
-;2408:	// multiple corpses on the level using the same clientinfo
-;2409:	clientNum = cent->currentState.clientNum;
+line 2392
+;2385:}
+;2386:
+;2387:/*
+;2388:===============
+;2389:CG_Player
+;2390:===============
+;2391:*/
+;2392:void CG_Player( centity_t *cent ) {
+line 2413
+;2393:	clientInfo_t	*ci;
+;2394:	refEntity_t		legs;
+;2395:	refEntity_t		torso;
+;2396:	refEntity_t		head;
+;2397:	int				clientNum;
+;2398:	int				renderfx;
+;2399:	qboolean		shadow;
+;2400:	float			shadowPlane;
+;2401:#ifdef MISSIONPACK
+;2402:	refEntity_t		skull;
+;2403:	refEntity_t		powerup;
+;2404:	int				t;
+;2405:	float			c;
+;2406:	float			angle;
+;2407:	vec3_t			dir, angles;
+;2408:#endif
+;2409:
+;2410:	// the client number is stored in clientNum.  It can't be derived
+;2411:	// from the entity number, because a single client may have
+;2412:	// multiple corpses on the level using the same clientinfo
+;2413:	clientNum = cent->currentState.clientNum;
 ADDRLP4 428
 ADDRFP4 0
 INDIRP4
@@ -13688,29 +13719,29 @@ CNSTI4 168
 ADDP4
 INDIRI4
 ASGNI4
-line 2410
-;2410:	if ( clientNum < 0 || clientNum >= MAX_CLIENTS ) {
+line 2414
+;2414:	if ( clientNum < 0 || clientNum >= MAX_CLIENTS ) {
 ADDRLP4 428
 INDIRI4
 CNSTI4 0
-LTI4 $1191
+LTI4 $1195
 ADDRLP4 428
 INDIRI4
 CNSTI4 64
-LTI4 $1189
-LABELV $1191
-line 2411
-;2411:		CG_Error( "Bad clientNum on player entity");
-ADDRGP4 $1192
+LTI4 $1193
+LABELV $1195
+line 2415
+;2415:		CG_Error( "Bad clientNum on player entity");
+ADDRGP4 $1196
 ARGP4
 ADDRGP4 CG_Error
 CALLV
 pop
-line 2412
-;2412:	}
-LABELV $1189
-line 2413
-;2413:	ci = &cgs.clientinfo[ clientNum ];
+line 2416
+;2416:	}
+LABELV $1193
+line 2417
+;2417:	ci = &cgs.clientinfo[ clientNum ];
 ADDRLP4 280
 CNSTI4 1732
 ADDRLP4 428
@@ -13719,31 +13750,31 @@ MULI4
 ADDRGP4 cgs+40972
 ADDP4
 ASGNP4
-line 2417
-;2414:
-;2415:	// it is possible to see corpses from disconnected players that may
-;2416:	// not have valid clientinfo
-;2417:	if ( !ci->infoValid ) {
+line 2421
+;2418:
+;2419:	// it is possible to see corpses from disconnected players that may
+;2420:	// not have valid clientinfo
+;2421:	if ( !ci->infoValid ) {
 ADDRLP4 280
 INDIRP4
 INDIRI4
 CNSTI4 0
-NEI4 $1194
-line 2418
-;2418:		return;
-ADDRGP4 $1188
-JUMPV
-LABELV $1194
+NEI4 $1198
 line 2422
-;2419:	}
-;2420:
-;2421:	// get the player model information
-;2422:	renderfx = 0;
+;2422:		return;
+ADDRGP4 $1192
+JUMPV
+LABELV $1198
+line 2426
+;2423:	}
+;2424:
+;2425:	// get the player model information
+;2426:	renderfx = 0;
 ADDRLP4 424
 CNSTI4 0
 ASGNI4
-line 2423
-;2423:	if ( cent->currentState.number == cg.snap->ps.clientNum) {
+line 2427
+;2427:	if ( cent->currentState.number == cg.snap->ps.clientNum) {
 ADDRFP4 0
 INDIRP4
 INDIRI4
@@ -13752,45 +13783,45 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-NEI4 $1196
-line 2424
-;2424:		if (!cg.renderingThirdPerson) {
+NEI4 $1200
+line 2428
+;2428:		if (!cg.renderingThirdPerson) {
 ADDRGP4 cg+109676
 INDIRI4
 CNSTI4 0
-NEI4 $1199
-line 2425
-;2425:			renderfx = RF_THIRD_PERSON;			// only draw in mirrors
+NEI4 $1203
+line 2429
+;2429:			renderfx = RF_THIRD_PERSON;			// only draw in mirrors
 ADDRLP4 424
 CNSTI4 2
 ASGNI4
-line 2426
-;2426:		} else {
-ADDRGP4 $1200
+line 2430
+;2430:		} else {
+ADDRGP4 $1204
 JUMPV
-LABELV $1199
-line 2427
-;2427:			if (cg_cameraMode.integer) {
+LABELV $1203
+line 2431
+;2431:			if (cg_cameraMode.integer) {
 ADDRGP4 cg_cameraMode+12
 INDIRI4
 CNSTI4 0
-EQI4 $1202
-line 2428
-;2428:				return;
-ADDRGP4 $1188
+EQI4 $1206
+line 2432
+;2432:				return;
+ADDRGP4 $1192
 JUMPV
-LABELV $1202
-line 2430
-;2429:			}
-;2430:		}
-LABELV $1200
-line 2431
-;2431:	}
-LABELV $1196
+LABELV $1206
 line 2434
-;2432:
-;2433:
-;2434:	memset( &legs, 0, sizeof(legs) );
+;2433:			}
+;2434:		}
+LABELV $1204
+line 2435
+;2435:	}
+LABELV $1200
+line 2438
+;2436:
+;2437:
+;2438:	memset( &legs, 0, sizeof(legs) );
 ADDRLP4 0
 ARGP4
 CNSTI4 0
@@ -13800,8 +13831,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 2435
-;2435:	memset( &torso, 0, sizeof(torso) );
+line 2439
+;2439:	memset( &torso, 0, sizeof(torso) );
 ADDRLP4 140
 ARGP4
 CNSTI4 0
@@ -13811,8 +13842,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 2436
-;2436:	memset( &head, 0, sizeof(head) );
+line 2440
+;2440:	memset( &head, 0, sizeof(head) );
 ADDRLP4 284
 ARGP4
 CNSTI4 0
@@ -13822,10 +13853,10 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 2439
-;2437:
-;2438:	// get the rotation information
-;2439:	CG_PlayerAngles( cent, legs.axis, torso.axis, head.axis );
+line 2443
+;2441:
+;2442:	// get the rotation information
+;2443:	CG_PlayerAngles( cent, legs.axis, torso.axis, head.axis );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -13838,10 +13869,10 @@ ARGP4
 ADDRGP4 CG_PlayerAngles
 CALLV
 pop
-line 2442
-;2440:	
-;2441:	// get the animation state (after rotation, to allow feet shuffle)
-;2442:	CG_PlayerAnimation( cent, &legs.oldframe, &legs.frame, &legs.backlerp,
+line 2446
+;2444:	
+;2445:	// get the animation state (after rotation, to allow feet shuffle)
+;2446:	CG_PlayerAnimation( cent, &legs.oldframe, &legs.frame, &legs.backlerp,
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -13860,21 +13891,21 @@ ARGP4
 ADDRGP4 CG_PlayerAnimation
 CALLV
 pop
-line 2446
-;2443:		 &torso.oldframe, &torso.frame, &torso.backlerp );
-;2444:
-;2445:	// add the talk baloon or disconnect icon
-;2446:	CG_PlayerSprites( cent );
+line 2450
+;2447:		 &torso.oldframe, &torso.frame, &torso.backlerp );
+;2448:
+;2449:	// add the talk baloon or disconnect icon
+;2450:	CG_PlayerSprites( cent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 CG_PlayerSprites
 CALLV
 pop
-line 2449
-;2447:
-;2448:	// add the shadow
-;2449:	shadow = CG_PlayerShadow( cent, &shadowPlane );
+line 2453
+;2451:
+;2452:	// add the shadow
+;2453:	shadow = CG_PlayerShadow( cent, &shadowPlane );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -13888,56 +13919,56 @@ ADDRLP4 436
 ADDRLP4 444
 INDIRI4
 ASGNI4
-line 2452
-;2450:
-;2451:	// add a water splash if partially in and out of water
-;2452:	CG_PlayerSplash( cent );
+line 2456
+;2454:
+;2455:	// add a water splash if partially in and out of water
+;2456:	CG_PlayerSplash( cent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 CG_PlayerSplash
 CALLV
 pop
-line 2454
-;2453:
-;2454:	if ( cg_shadows.integer == 3 && shadow ) {
+line 2458
+;2457:
+;2458:	if ( cg_shadows.integer == 3 && shadow ) {
 ADDRGP4 cg_shadows+12
 INDIRI4
 CNSTI4 3
-NEI4 $1214
+NEI4 $1218
 ADDRLP4 436
 INDIRI4
 CNSTI4 0
-EQI4 $1214
-line 2455
-;2455:		renderfx |= RF_SHADOW_PLANE;
+EQI4 $1218
+line 2459
+;2459:		renderfx |= RF_SHADOW_PLANE;
 ADDRLP4 424
 ADDRLP4 424
 INDIRI4
 CNSTI4 256
 BORI4
 ASGNI4
-line 2456
-;2456:	}
-LABELV $1214
-line 2457
-;2457:	renderfx |= RF_LIGHTING_ORIGIN;			// use the same origin for all
+line 2460
+;2460:	}
+LABELV $1218
+line 2461
+;2461:	renderfx |= RF_LIGHTING_ORIGIN;			// use the same origin for all
 ADDRLP4 424
 ADDRLP4 424
 INDIRI4
 CNSTI4 128
 BORI4
 ASGNI4
-line 2466
-;2458:#ifdef MISSIONPACK
-;2459:	if( cgs.gametype == GT_HARVESTER ) {
-;2460:		CG_PlayerTokens( cent, renderfx );
-;2461:	}
-;2462:#endif
-;2463:	//
-;2464:	// add the legs
-;2465:	//
-;2466:	legs.hModel = ci->legsModel;
+line 2470
+;2462:#ifdef MISSIONPACK
+;2463:	if( cgs.gametype == GT_HARVESTER ) {
+;2464:		CG_PlayerTokens( cent, renderfx );
+;2465:	}
+;2466:#endif
+;2467:	//
+;2468:	// add the legs
+;2469:	//
+;2470:	legs.hModel = ci->legsModel;
 ADDRLP4 0+8
 ADDRLP4 280
 INDIRP4
@@ -13945,8 +13976,8 @@ CNSTI4 520
 ADDP4
 INDIRI4
 ASGNI4
-line 2467
-;2467:	legs.customSkin = ci->legsSkin;
+line 2471
+;2471:	legs.customSkin = ci->legsSkin;
 ADDRLP4 0+108
 ADDRLP4 280
 INDIRP4
@@ -13954,9 +13985,9 @@ CNSTI4 524
 ADDP4
 INDIRI4
 ASGNI4
-line 2469
-;2468:
-;2469:	VectorCopy( cent->lerpOrigin, legs.origin );
+line 2473
+;2472:
+;2473:	VectorCopy( cent->lerpOrigin, legs.origin );
 ADDRLP4 0+68
 ADDRFP4 0
 INDIRP4
@@ -13964,9 +13995,9 @@ CNSTI4 716
 ADDP4
 INDIRB
 ASGNB 12
-line 2471
-;2470:
-;2471:	VectorCopy( cent->lerpOrigin, legs.lightingOrigin );
+line 2475
+;2474:
+;2475:	VectorCopy( cent->lerpOrigin, legs.lightingOrigin );
 ADDRLP4 0+12
 ADDRFP4 0
 INDIRP4
@@ -13974,27 +14005,27 @@ CNSTI4 716
 ADDP4
 INDIRB
 ASGNB 12
-line 2472
-;2472:	legs.shadowPlane = shadowPlane;
+line 2476
+;2476:	legs.shadowPlane = shadowPlane;
 ADDRLP4 0+24
 ADDRLP4 432
 INDIRF4
 ASGNF4
-line 2473
-;2473:	legs.renderfx = renderfx;
+line 2477
+;2477:	legs.renderfx = renderfx;
 ADDRLP4 0+4
 ADDRLP4 424
 INDIRI4
 ASGNI4
-line 2474
-;2474:	VectorCopy (legs.origin, legs.oldorigin);	// don't positionally lerp at all
+line 2478
+;2478:	VectorCopy (legs.origin, legs.oldorigin);	// don't positionally lerp at all
 ADDRLP4 0+84
 ADDRLP4 0+68
 INDIRB
 ASGNB 12
-line 2476
-;2475:
-;2476:	CG_AddRefEntityWithPowerups( &legs, &cent->currentState, ci->team );
+line 2480
+;2479:
+;2480:	CG_AddRefEntityWithPowerups( &legs, &cent->currentState, ci->team );
 ADDRLP4 0
 ARGP4
 ADDRFP4 0
@@ -14009,26 +14040,26 @@ ARGI4
 ADDRGP4 CG_AddRefEntityWithPowerups
 CALLV
 pop
-line 2479
-;2477:
-;2478:	// if the model failed, allow the default nullmodel to be displayed
-;2479:	if (!legs.hModel) {
+line 2483
+;2481:
+;2482:	// if the model failed, allow the default nullmodel to be displayed
+;2483:	if (!legs.hModel) {
 ADDRLP4 0+8
 INDIRI4
 CNSTI4 0
-NEI4 $1225
-line 2480
-;2480:		return;
-ADDRGP4 $1188
+NEI4 $1229
+line 2484
+;2484:		return;
+ADDRGP4 $1192
 JUMPV
-LABELV $1225
-line 2486
-;2481:	}
-;2482:
-;2483:	//
-;2484:	// add the torso
-;2485:	//
-;2486:	torso.hModel = ci->torsoModel;
+LABELV $1229
+line 2490
+;2485:	}
+;2486:
+;2487:	//
+;2488:	// add the torso
+;2489:	//
+;2490:	torso.hModel = ci->torsoModel;
 ADDRLP4 140+8
 ADDRLP4 280
 INDIRP4
@@ -14036,21 +14067,21 @@ CNSTI4 528
 ADDP4
 INDIRI4
 ASGNI4
-line 2487
-;2487:	if (!torso.hModel) {
+line 2491
+;2491:	if (!torso.hModel) {
 ADDRLP4 140+8
 INDIRI4
 CNSTI4 0
-NEI4 $1229
-line 2488
-;2488:		return;
-ADDRGP4 $1188
+NEI4 $1233
+line 2492
+;2492:		return;
+ADDRGP4 $1192
 JUMPV
-LABELV $1229
-line 2491
-;2489:	}
-;2490:
-;2491:	torso.customSkin = ci->torsoSkin;
+LABELV $1233
+line 2495
+;2493:	}
+;2494:
+;2495:	torso.customSkin = ci->torsoSkin;
 ADDRLP4 140+108
 ADDRLP4 280
 INDIRP4
@@ -14058,9 +14089,9 @@ CNSTI4 532
 ADDP4
 INDIRI4
 ASGNI4
-line 2493
-;2492:
-;2493:	VectorCopy( cent->lerpOrigin, torso.lightingOrigin );
+line 2497
+;2496:
+;2497:	VectorCopy( cent->lerpOrigin, torso.lightingOrigin );
 ADDRLP4 140+12
 ADDRFP4 0
 INDIRP4
@@ -14068,9 +14099,9 @@ CNSTI4 716
 ADDP4
 INDIRB
 ASGNB 12
-line 2495
-;2494:
-;2495:	CG_PositionRotatedEntityOnTag( &torso, &legs, ci->legsModel, "tag_torso");
+line 2499
+;2498:
+;2499:	CG_PositionRotatedEntityOnTag( &torso, &legs, ci->legsModel, "tag_torso");
 ADDRLP4 140
 ARGP4
 ADDRLP4 0
@@ -14081,27 +14112,27 @@ CNSTI4 520
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $1234
+ADDRGP4 $1238
 ARGP4
 ADDRGP4 CG_PositionRotatedEntityOnTag
 CALLV
 pop
-line 2497
-;2496:
-;2497:	torso.shadowPlane = shadowPlane;
+line 2501
+;2500:
+;2501:	torso.shadowPlane = shadowPlane;
 ADDRLP4 140+24
 ADDRLP4 432
 INDIRF4
 ASGNF4
-line 2498
-;2498:	torso.renderfx = renderfx;
+line 2502
+;2502:	torso.renderfx = renderfx;
 ADDRLP4 140+4
 ADDRLP4 424
 INDIRI4
 ASGNI4
-line 2500
-;2499:
-;2500:	CG_AddRefEntityWithPowerups( &torso, &cent->currentState, ci->team );
+line 2504
+;2503:
+;2504:	CG_AddRefEntityWithPowerups( &torso, &cent->currentState, ci->team );
 ADDRLP4 140
 ARGP4
 ADDRFP4 0
@@ -14116,228 +14147,228 @@ ARGI4
 ADDRGP4 CG_AddRefEntityWithPowerups
 CALLV
 pop
-line 2710
-;2501:
-;2502:#ifdef MISSIONPACK
-;2503:	if ( cent->currentState.eFlags & EF_KAMIKAZE ) {
-;2504:
-;2505:		memset( &skull, 0, sizeof(skull) );
-;2506:
-;2507:		VectorCopy( cent->lerpOrigin, skull.lightingOrigin );
-;2508:		skull.shadowPlane = shadowPlane;
-;2509:		skull.renderfx = renderfx;
+line 2714
+;2505:
+;2506:#ifdef MISSIONPACK
+;2507:	if ( cent->currentState.eFlags & EF_KAMIKAZE ) {
+;2508:
+;2509:		memset( &skull, 0, sizeof(skull) );
 ;2510:
-;2511:		if ( cent->currentState.eFlags & EF_DEAD ) {
-;2512:			// one skull bobbing above the dead body
-;2513:			angle = ((cg.time / 7) & 255) * (M_PI * 2) / 255;
-;2514:			if (angle > M_PI * 2)
-;2515:				angle -= (float)M_PI * 2;
-;2516:			dir[0] = sin(angle) * 20;
-;2517:			dir[1] = cos(angle) * 20;
-;2518:			angle = ((cg.time / 4) & 255) * (M_PI * 2) / 255;
-;2519:			dir[2] = 15 + sin(angle) * 8;
-;2520:			VectorAdd(torso.origin, dir, skull.origin);
-;2521:			
-;2522:			dir[2] = 0;
-;2523:			VectorCopy(dir, skull.axis[1]);
-;2524:			VectorNormalize(skull.axis[1]);
-;2525:			VectorSet(skull.axis[2], 0, 0, 1);
-;2526:			CrossProduct(skull.axis[1], skull.axis[2], skull.axis[0]);
-;2527:
-;2528:			skull.hModel = cgs.media.kamikazeHeadModel;
-;2529:			trap_R_AddRefEntityToScene( &skull );
-;2530:			skull.hModel = cgs.media.kamikazeHeadTrail;
-;2531:			trap_R_AddRefEntityToScene( &skull );
-;2532:		}
-;2533:		else {
-;2534:			// three skulls spinning around the player
-;2535:			angle = ((cg.time / 4) & 255) * (M_PI * 2) / 255;
-;2536:			dir[0] = cos(angle) * 20;
-;2537:			dir[1] = sin(angle) * 20;
-;2538:			dir[2] = cos(angle) * 20;
-;2539:			VectorAdd(torso.origin, dir, skull.origin);
-;2540:
-;2541:			angles[0] = sin(angle) * 30;
-;2542:			angles[1] = (angle * 180 / M_PI) + 90;
-;2543:			if (angles[1] > 360)
-;2544:				angles[1] -= 360;
-;2545:			angles[2] = 0;
-;2546:			AnglesToAxis( angles, skull.axis );
-;2547:
-;2548:			/*
-;2549:			dir[2] = 0;
-;2550:			VectorInverse(dir);
-;2551:			VectorCopy(dir, skull.axis[1]);
-;2552:			VectorNormalize(skull.axis[1]);
-;2553:			VectorSet(skull.axis[2], 0, 0, 1);
-;2554:			CrossProduct(skull.axis[1], skull.axis[2], skull.axis[0]);
-;2555:			*/
-;2556:
-;2557:			skull.hModel = cgs.media.kamikazeHeadModel;
-;2558:			trap_R_AddRefEntityToScene( &skull );
-;2559:			// flip the trail because this skull is spinning in the other direction
-;2560:			VectorInverse(skull.axis[1]);
-;2561:			skull.hModel = cgs.media.kamikazeHeadTrail;
+;2511:		VectorCopy( cent->lerpOrigin, skull.lightingOrigin );
+;2512:		skull.shadowPlane = shadowPlane;
+;2513:		skull.renderfx = renderfx;
+;2514:
+;2515:		if ( cent->currentState.eFlags & EF_DEAD ) {
+;2516:			// one skull bobbing above the dead body
+;2517:			angle = ((cg.time / 7) & 255) * (M_PI * 2) / 255;
+;2518:			if (angle > M_PI * 2)
+;2519:				angle -= (float)M_PI * 2;
+;2520:			dir[0] = sin(angle) * 20;
+;2521:			dir[1] = cos(angle) * 20;
+;2522:			angle = ((cg.time / 4) & 255) * (M_PI * 2) / 255;
+;2523:			dir[2] = 15 + sin(angle) * 8;
+;2524:			VectorAdd(torso.origin, dir, skull.origin);
+;2525:			
+;2526:			dir[2] = 0;
+;2527:			VectorCopy(dir, skull.axis[1]);
+;2528:			VectorNormalize(skull.axis[1]);
+;2529:			VectorSet(skull.axis[2], 0, 0, 1);
+;2530:			CrossProduct(skull.axis[1], skull.axis[2], skull.axis[0]);
+;2531:
+;2532:			skull.hModel = cgs.media.kamikazeHeadModel;
+;2533:			trap_R_AddRefEntityToScene( &skull );
+;2534:			skull.hModel = cgs.media.kamikazeHeadTrail;
+;2535:			trap_R_AddRefEntityToScene( &skull );
+;2536:		}
+;2537:		else {
+;2538:			// three skulls spinning around the player
+;2539:			angle = ((cg.time / 4) & 255) * (M_PI * 2) / 255;
+;2540:			dir[0] = cos(angle) * 20;
+;2541:			dir[1] = sin(angle) * 20;
+;2542:			dir[2] = cos(angle) * 20;
+;2543:			VectorAdd(torso.origin, dir, skull.origin);
+;2544:
+;2545:			angles[0] = sin(angle) * 30;
+;2546:			angles[1] = (angle * 180 / M_PI) + 90;
+;2547:			if (angles[1] > 360)
+;2548:				angles[1] -= 360;
+;2549:			angles[2] = 0;
+;2550:			AnglesToAxis( angles, skull.axis );
+;2551:
+;2552:			/*
+;2553:			dir[2] = 0;
+;2554:			VectorInverse(dir);
+;2555:			VectorCopy(dir, skull.axis[1]);
+;2556:			VectorNormalize(skull.axis[1]);
+;2557:			VectorSet(skull.axis[2], 0, 0, 1);
+;2558:			CrossProduct(skull.axis[1], skull.axis[2], skull.axis[0]);
+;2559:			*/
+;2560:
+;2561:			skull.hModel = cgs.media.kamikazeHeadModel;
 ;2562:			trap_R_AddRefEntityToScene( &skull );
-;2563:
-;2564:			angle = ((cg.time / 4) & 255) * (M_PI * 2) / 255 + M_PI;
-;2565:			if (angle > M_PI * 2)
-;2566:				angle -= (float)M_PI * 2;
-;2567:			dir[0] = sin(angle) * 20;
-;2568:			dir[1] = cos(angle) * 20;
-;2569:			dir[2] = cos(angle) * 20;
-;2570:			VectorAdd(torso.origin, dir, skull.origin);
-;2571:
-;2572:			angles[0] = cos(angle - 0.5 * M_PI) * 30;
-;2573:			angles[1] = 360 - (angle * 180 / M_PI);
-;2574:			if (angles[1] > 360)
-;2575:				angles[1] -= 360;
-;2576:			angles[2] = 0;
-;2577:			AnglesToAxis( angles, skull.axis );
-;2578:
-;2579:			/*
-;2580:			dir[2] = 0;
-;2581:			VectorCopy(dir, skull.axis[1]);
-;2582:			VectorNormalize(skull.axis[1]);
-;2583:			VectorSet(skull.axis[2], 0, 0, 1);
-;2584:			CrossProduct(skull.axis[1], skull.axis[2], skull.axis[0]);
-;2585:			*/
-;2586:
-;2587:			skull.hModel = cgs.media.kamikazeHeadModel;
-;2588:			trap_R_AddRefEntityToScene( &skull );
-;2589:			skull.hModel = cgs.media.kamikazeHeadTrail;
-;2590:			trap_R_AddRefEntityToScene( &skull );
-;2591:
-;2592:			angle = ((cg.time / 3) & 255) * (M_PI * 2) / 255 + 0.5 * M_PI;
-;2593:			if (angle > M_PI * 2)
-;2594:				angle -= (float)M_PI * 2;
-;2595:			dir[0] = sin(angle) * 20;
-;2596:			dir[1] = cos(angle) * 20;
-;2597:			dir[2] = 0;
-;2598:			VectorAdd(torso.origin, dir, skull.origin);
-;2599:			
-;2600:			VectorCopy(dir, skull.axis[1]);
-;2601:			VectorNormalize(skull.axis[1]);
-;2602:			VectorSet(skull.axis[2], 0, 0, 1);
-;2603:			CrossProduct(skull.axis[1], skull.axis[2], skull.axis[0]);
-;2604:
-;2605:			skull.hModel = cgs.media.kamikazeHeadModel;
-;2606:			trap_R_AddRefEntityToScene( &skull );
-;2607:			skull.hModel = cgs.media.kamikazeHeadTrail;
-;2608:			trap_R_AddRefEntityToScene( &skull );
-;2609:		}
-;2610:	}
-;2611:
-;2612:	if ( cent->currentState.powerups & ( 1 << PW_GUARD ) ) {
-;2613:		memcpy(&powerup, &torso, sizeof(torso));
-;2614:		powerup.hModel = cgs.media.guardPowerupModel;
-;2615:		powerup.frame = 0;
-;2616:		powerup.oldframe = 0;
-;2617:		powerup.customSkin = 0;
-;2618:		trap_R_AddRefEntityToScene( &powerup );
-;2619:	}
-;2620:	if ( cent->currentState.powerups & ( 1 << PW_SCOUT ) ) {
-;2621:		memcpy(&powerup, &torso, sizeof(torso));
-;2622:		powerup.hModel = cgs.media.scoutPowerupModel;
-;2623:		powerup.frame = 0;
-;2624:		powerup.oldframe = 0;
-;2625:		powerup.customSkin = 0;
-;2626:		trap_R_AddRefEntityToScene( &powerup );
-;2627:	}
-;2628:	if ( cent->currentState.powerups & ( 1 << PW_DOUBLER ) ) {
-;2629:		memcpy(&powerup, &torso, sizeof(torso));
-;2630:		powerup.hModel = cgs.media.doublerPowerupModel;
-;2631:		powerup.frame = 0;
-;2632:		powerup.oldframe = 0;
-;2633:		powerup.customSkin = 0;
-;2634:		trap_R_AddRefEntityToScene( &powerup );
-;2635:	}
-;2636:	if ( cent->currentState.powerups & ( 1 << PW_AMMOREGEN ) ) {
-;2637:		memcpy(&powerup, &torso, sizeof(torso));
-;2638:		powerup.hModel = cgs.media.ammoRegenPowerupModel;
-;2639:		powerup.frame = 0;
-;2640:		powerup.oldframe = 0;
-;2641:		powerup.customSkin = 0;
-;2642:		trap_R_AddRefEntityToScene( &powerup );
-;2643:	}
-;2644:	if ( cent->currentState.powerups & ( 1 << PW_INVULNERABILITY ) ) {
-;2645:		if ( !ci->invulnerabilityStartTime ) {
-;2646:			ci->invulnerabilityStartTime = cg.time;
-;2647:		}
-;2648:		ci->invulnerabilityStopTime = cg.time;
-;2649:	}
-;2650:	else {
-;2651:		ci->invulnerabilityStartTime = 0;
-;2652:	}
-;2653:	if ( (cent->currentState.powerups & ( 1 << PW_INVULNERABILITY ) ) ||
-;2654:		cg.time - ci->invulnerabilityStopTime < 250 ) {
-;2655:
-;2656:		memcpy(&powerup, &torso, sizeof(torso));
-;2657:		powerup.hModel = cgs.media.invulnerabilityPowerupModel;
-;2658:		powerup.customSkin = 0;
-;2659:		// always draw
-;2660:		powerup.renderfx &= ~RF_THIRD_PERSON;
-;2661:		VectorCopy(cent->lerpOrigin, powerup.origin);
-;2662:
-;2663:		if ( cg.time - ci->invulnerabilityStartTime < 250 ) {
-;2664:			c = (float) (cg.time - ci->invulnerabilityStartTime) / 250;
-;2665:		}
-;2666:		else if (cg.time - ci->invulnerabilityStopTime < 250 ) {
-;2667:			c = (float) (250 - (cg.time - ci->invulnerabilityStopTime)) / 250;
-;2668:		}
-;2669:		else {
-;2670:			c = 1;
-;2671:		}
-;2672:		VectorSet( powerup.axis[0], c, 0, 0 );
-;2673:		VectorSet( powerup.axis[1], 0, c, 0 );
-;2674:		VectorSet( powerup.axis[2], 0, 0, c );
-;2675:		trap_R_AddRefEntityToScene( &powerup );
-;2676:	}
-;2677:
-;2678:	t = cg.time - ci->medkitUsageTime;
-;2679:	if ( ci->medkitUsageTime && t < 500 ) {
-;2680:		memcpy(&powerup, &torso, sizeof(torso));
-;2681:		powerup.hModel = cgs.media.medkitUsageModel;
-;2682:		powerup.customSkin = 0;
-;2683:		// always draw
-;2684:		powerup.renderfx &= ~RF_THIRD_PERSON;
-;2685:		VectorClear(angles);
-;2686:		AnglesToAxis(angles, powerup.axis);
-;2687:		VectorCopy(cent->lerpOrigin, powerup.origin);
-;2688:		powerup.origin[2] += -24 + (float) t * 80 / 500;
-;2689:		if ( t > 400 ) {
-;2690:			c = (float) (t - 1000) * 0xff / 100;
-;2691:			powerup.shaderRGBA[0] = 0xff - c;
-;2692:			powerup.shaderRGBA[1] = 0xff - c;
-;2693:			powerup.shaderRGBA[2] = 0xff - c;
-;2694:			powerup.shaderRGBA[3] = 0xff - c;
-;2695:		}
-;2696:		else {
-;2697:			powerup.shaderRGBA[0] = 0xff;
-;2698:			powerup.shaderRGBA[1] = 0xff;
-;2699:			powerup.shaderRGBA[2] = 0xff;
-;2700:			powerup.shaderRGBA[3] = 0xff;
-;2701:		}
-;2702:		trap_R_AddRefEntityToScene( &powerup );
-;2703:	}
-;2704:#endif // MISSIONPACK
-;2705:
-;2706:	//
-;2707:	// add the head
-;2708:	//
-;2709:	// Shafe - Trep - This is all new code for headshots
-;2710:	if(!cent->pe.noHead)
+;2563:			// flip the trail because this skull is spinning in the other direction
+;2564:			VectorInverse(skull.axis[1]);
+;2565:			skull.hModel = cgs.media.kamikazeHeadTrail;
+;2566:			trap_R_AddRefEntityToScene( &skull );
+;2567:
+;2568:			angle = ((cg.time / 4) & 255) * (M_PI * 2) / 255 + M_PI;
+;2569:			if (angle > M_PI * 2)
+;2570:				angle -= (float)M_PI * 2;
+;2571:			dir[0] = sin(angle) * 20;
+;2572:			dir[1] = cos(angle) * 20;
+;2573:			dir[2] = cos(angle) * 20;
+;2574:			VectorAdd(torso.origin, dir, skull.origin);
+;2575:
+;2576:			angles[0] = cos(angle - 0.5 * M_PI) * 30;
+;2577:			angles[1] = 360 - (angle * 180 / M_PI);
+;2578:			if (angles[1] > 360)
+;2579:				angles[1] -= 360;
+;2580:			angles[2] = 0;
+;2581:			AnglesToAxis( angles, skull.axis );
+;2582:
+;2583:			/*
+;2584:			dir[2] = 0;
+;2585:			VectorCopy(dir, skull.axis[1]);
+;2586:			VectorNormalize(skull.axis[1]);
+;2587:			VectorSet(skull.axis[2], 0, 0, 1);
+;2588:			CrossProduct(skull.axis[1], skull.axis[2], skull.axis[0]);
+;2589:			*/
+;2590:
+;2591:			skull.hModel = cgs.media.kamikazeHeadModel;
+;2592:			trap_R_AddRefEntityToScene( &skull );
+;2593:			skull.hModel = cgs.media.kamikazeHeadTrail;
+;2594:			trap_R_AddRefEntityToScene( &skull );
+;2595:
+;2596:			angle = ((cg.time / 3) & 255) * (M_PI * 2) / 255 + 0.5 * M_PI;
+;2597:			if (angle > M_PI * 2)
+;2598:				angle -= (float)M_PI * 2;
+;2599:			dir[0] = sin(angle) * 20;
+;2600:			dir[1] = cos(angle) * 20;
+;2601:			dir[2] = 0;
+;2602:			VectorAdd(torso.origin, dir, skull.origin);
+;2603:			
+;2604:			VectorCopy(dir, skull.axis[1]);
+;2605:			VectorNormalize(skull.axis[1]);
+;2606:			VectorSet(skull.axis[2], 0, 0, 1);
+;2607:			CrossProduct(skull.axis[1], skull.axis[2], skull.axis[0]);
+;2608:
+;2609:			skull.hModel = cgs.media.kamikazeHeadModel;
+;2610:			trap_R_AddRefEntityToScene( &skull );
+;2611:			skull.hModel = cgs.media.kamikazeHeadTrail;
+;2612:			trap_R_AddRefEntityToScene( &skull );
+;2613:		}
+;2614:	}
+;2615:
+;2616:	if ( cent->currentState.powerups & ( 1 << PW_GUARD ) ) {
+;2617:		memcpy(&powerup, &torso, sizeof(torso));
+;2618:		powerup.hModel = cgs.media.guardPowerupModel;
+;2619:		powerup.frame = 0;
+;2620:		powerup.oldframe = 0;
+;2621:		powerup.customSkin = 0;
+;2622:		trap_R_AddRefEntityToScene( &powerup );
+;2623:	}
+;2624:	if ( cent->currentState.powerups & ( 1 << PW_SCOUT ) ) {
+;2625:		memcpy(&powerup, &torso, sizeof(torso));
+;2626:		powerup.hModel = cgs.media.scoutPowerupModel;
+;2627:		powerup.frame = 0;
+;2628:		powerup.oldframe = 0;
+;2629:		powerup.customSkin = 0;
+;2630:		trap_R_AddRefEntityToScene( &powerup );
+;2631:	}
+;2632:	if ( cent->currentState.powerups & ( 1 << PW_DOUBLER ) ) {
+;2633:		memcpy(&powerup, &torso, sizeof(torso));
+;2634:		powerup.hModel = cgs.media.doublerPowerupModel;
+;2635:		powerup.frame = 0;
+;2636:		powerup.oldframe = 0;
+;2637:		powerup.customSkin = 0;
+;2638:		trap_R_AddRefEntityToScene( &powerup );
+;2639:	}
+;2640:	if ( cent->currentState.powerups & ( 1 << PW_AMMOREGEN ) ) {
+;2641:		memcpy(&powerup, &torso, sizeof(torso));
+;2642:		powerup.hModel = cgs.media.ammoRegenPowerupModel;
+;2643:		powerup.frame = 0;
+;2644:		powerup.oldframe = 0;
+;2645:		powerup.customSkin = 0;
+;2646:		trap_R_AddRefEntityToScene( &powerup );
+;2647:	}
+;2648:	if ( cent->currentState.powerups & ( 1 << PW_INVULNERABILITY ) ) {
+;2649:		if ( !ci->invulnerabilityStartTime ) {
+;2650:			ci->invulnerabilityStartTime = cg.time;
+;2651:		}
+;2652:		ci->invulnerabilityStopTime = cg.time;
+;2653:	}
+;2654:	else {
+;2655:		ci->invulnerabilityStartTime = 0;
+;2656:	}
+;2657:	if ( (cent->currentState.powerups & ( 1 << PW_INVULNERABILITY ) ) ||
+;2658:		cg.time - ci->invulnerabilityStopTime < 250 ) {
+;2659:
+;2660:		memcpy(&powerup, &torso, sizeof(torso));
+;2661:		powerup.hModel = cgs.media.invulnerabilityPowerupModel;
+;2662:		powerup.customSkin = 0;
+;2663:		// always draw
+;2664:		powerup.renderfx &= ~RF_THIRD_PERSON;
+;2665:		VectorCopy(cent->lerpOrigin, powerup.origin);
+;2666:
+;2667:		if ( cg.time - ci->invulnerabilityStartTime < 250 ) {
+;2668:			c = (float) (cg.time - ci->invulnerabilityStartTime) / 250;
+;2669:		}
+;2670:		else if (cg.time - ci->invulnerabilityStopTime < 250 ) {
+;2671:			c = (float) (250 - (cg.time - ci->invulnerabilityStopTime)) / 250;
+;2672:		}
+;2673:		else {
+;2674:			c = 1;
+;2675:		}
+;2676:		VectorSet( powerup.axis[0], c, 0, 0 );
+;2677:		VectorSet( powerup.axis[1], 0, c, 0 );
+;2678:		VectorSet( powerup.axis[2], 0, 0, c );
+;2679:		trap_R_AddRefEntityToScene( &powerup );
+;2680:	}
+;2681:
+;2682:	t = cg.time - ci->medkitUsageTime;
+;2683:	if ( ci->medkitUsageTime && t < 500 ) {
+;2684:		memcpy(&powerup, &torso, sizeof(torso));
+;2685:		powerup.hModel = cgs.media.medkitUsageModel;
+;2686:		powerup.customSkin = 0;
+;2687:		// always draw
+;2688:		powerup.renderfx &= ~RF_THIRD_PERSON;
+;2689:		VectorClear(angles);
+;2690:		AnglesToAxis(angles, powerup.axis);
+;2691:		VectorCopy(cent->lerpOrigin, powerup.origin);
+;2692:		powerup.origin[2] += -24 + (float) t * 80 / 500;
+;2693:		if ( t > 400 ) {
+;2694:			c = (float) (t - 1000) * 0xff / 100;
+;2695:			powerup.shaderRGBA[0] = 0xff - c;
+;2696:			powerup.shaderRGBA[1] = 0xff - c;
+;2697:			powerup.shaderRGBA[2] = 0xff - c;
+;2698:			powerup.shaderRGBA[3] = 0xff - c;
+;2699:		}
+;2700:		else {
+;2701:			powerup.shaderRGBA[0] = 0xff;
+;2702:			powerup.shaderRGBA[1] = 0xff;
+;2703:			powerup.shaderRGBA[2] = 0xff;
+;2704:			powerup.shaderRGBA[3] = 0xff;
+;2705:		}
+;2706:		trap_R_AddRefEntityToScene( &powerup );
+;2707:	}
+;2708:#endif // MISSIONPACK
+;2709:
+;2710:	//
+;2711:	// add the head
+;2712:	//
+;2713:	// Shafe - Trep - This is all new code for headshots
+;2714:	if(!cent->pe.noHead)
 ADDRFP4 0
 INDIRP4
 CNSTI4 644
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $1237
-line 2711
-;2711:	{
-line 2712
-;2712:		head.hModel = ci->headModel;
+NEI4 $1241
+line 2715
+;2715:	{
+line 2716
+;2716:		head.hModel = ci->headModel;
 ADDRLP4 284+8
 ADDRLP4 280
 INDIRP4
@@ -14345,22 +14376,22 @@ CNSTI4 536
 ADDP4
 INDIRI4
 ASGNI4
-line 2713
-;2713:		if (!head.hModel) 
+line 2717
+;2717:		if (!head.hModel) 
 ADDRLP4 284+8
 INDIRI4
 CNSTI4 0
-NEI4 $1240
-line 2714
-;2714:		{
-line 2715
-;2715:			return;
-ADDRGP4 $1188
+NEI4 $1244
+line 2718
+;2718:		{
+line 2719
+;2719:			return;
+ADDRGP4 $1192
 JUMPV
-LABELV $1240
-line 2717
-;2716:		}
-;2717:		head.customSkin = ci->headSkin;
+LABELV $1244
+line 2721
+;2720:		}
+;2721:		head.customSkin = ci->headSkin;
 ADDRLP4 284+108
 ADDRLP4 280
 INDIRP4
@@ -14368,9 +14399,9 @@ CNSTI4 540
 ADDP4
 INDIRI4
 ASGNI4
-line 2719
-;2718:
-;2719:		VectorCopy( cent->lerpOrigin, head.lightingOrigin );
+line 2723
+;2722:
+;2723:		VectorCopy( cent->lerpOrigin, head.lightingOrigin );
 ADDRLP4 284+12
 ADDRFP4 0
 INDIRP4
@@ -14378,9 +14409,9 @@ CNSTI4 716
 ADDP4
 INDIRB
 ASGNB 12
-line 2721
-;2720:
-;2721:		CG_PositionRotatedEntityOnTag( &head, &torso, ci->torsoModel, "tag_head");
+line 2725
+;2724:
+;2725:		CG_PositionRotatedEntityOnTag( &head, &torso, ci->torsoModel, "tag_head");
 ADDRLP4 284
 ARGP4
 ADDRLP4 140
@@ -14391,27 +14422,27 @@ CNSTI4 528
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $1245
+ADDRGP4 $1249
 ARGP4
 ADDRGP4 CG_PositionRotatedEntityOnTag
 CALLV
 pop
-line 2723
-;2722:
-;2723:		head.shadowPlane = shadowPlane;
+line 2727
+;2726:
+;2727:		head.shadowPlane = shadowPlane;
 ADDRLP4 284+24
 ADDRLP4 432
 INDIRF4
 ASGNF4
-line 2724
-;2724:		head.renderfx = renderfx;
+line 2728
+;2728:		head.renderfx = renderfx;
 ADDRLP4 284+4
 ADDRLP4 424
 INDIRI4
 ASGNI4
-line 2726
-;2725:
-;2726:		CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team );
+line 2730
+;2729:
+;2730:		CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team );
 ADDRLP4 284
 ARGP4
 ADDRFP4 0
@@ -14426,39 +14457,39 @@ ARGI4
 ADDRGP4 CG_AddRefEntityWithPowerups
 CALLV
 pop
-line 2727
-;2727:	}
-LABELV $1237
-line 2756
-;2728:
-;2729:	/*  Shafe - Trep - This is the original code -- Fuck.. Lets hope we dont end up compiling with MISSIONPACK!
-;2730:	head.hModel = ci->headModel;
-;2731:	if (!head.hModel) {
-;2732:		return;
-;2733:	}
-;2734:	head.customSkin = ci->headSkin;
-;2735:
-;2736:	VectorCopy( cent->lerpOrigin, head.lightingOrigin );
-;2737:
-;2738:	CG_PositionRotatedEntityOnTag( &head, &torso, ci->torsoModel, "tag_head");
+line 2731
+;2731:	}
+LABELV $1241
+line 2760
+;2732:
+;2733:	/*  Shafe - Trep - This is the original code -- Fuck.. Lets hope we dont end up compiling with MISSIONPACK!
+;2734:	head.hModel = ci->headModel;
+;2735:	if (!head.hModel) {
+;2736:		return;
+;2737:	}
+;2738:	head.customSkin = ci->headSkin;
 ;2739:
-;2740:	head.shadowPlane = shadowPlane;
-;2741:	head.renderfx = renderfx;
-;2742:
-;2743:	CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team );
-;2744:	*/
-;2745:
+;2740:	VectorCopy( cent->lerpOrigin, head.lightingOrigin );
+;2741:
+;2742:	CG_PositionRotatedEntityOnTag( &head, &torso, ci->torsoModel, "tag_head");
+;2743:
+;2744:	head.shadowPlane = shadowPlane;
+;2745:	head.renderfx = renderfx;
 ;2746:
-;2747:#ifdef MISSIONPACK
-;2748:	CG_BreathPuffs(cent, &head);
+;2747:	CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team );
+;2748:	*/
 ;2749:
-;2750:	CG_DustTrail(cent);
-;2751:#endif
-;2752:
-;2753:	//
-;2754:	// add the gun / barrel / flash
-;2755:	//
-;2756:	CG_AddPlayerWeapon( &torso, NULL, cent, ci->team );
+;2750:
+;2751:#ifdef MISSIONPACK
+;2752:	CG_BreathPuffs(cent, &head);
+;2753:
+;2754:	CG_DustTrail(cent);
+;2755:#endif
+;2756:
+;2757:	//
+;2758:	// add the gun / barrel / flash
+;2759:	//
+;2760:	CG_AddPlayerWeapon( &torso, NULL, cent, ci->team );
 ADDRLP4 140
 ARGP4
 CNSTP4 0
@@ -14475,10 +14506,10 @@ ARGI4
 ADDRGP4 CG_AddPlayerWeapon
 CALLV
 pop
-line 2759
-;2757:
-;2758:	// add powerups floating behind the player
-;2759:	CG_PlayerPowerups( cent, &torso );
+line 2763
+;2761:
+;2762:	// add powerups floating behind the player
+;2763:	CG_PlayerPowerups( cent, &torso );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -14487,56 +14518,56 @@ ARGP4
 ADDRGP4 CG_PlayerPowerups
 CALLV
 pop
-line 2763
-;2760:
-;2761://unlagged - client options
-;2762:	// add the bounding box (if cg_drawBBox is 1)
-;2763:	CG_AddBoundingBox( cent );
+line 2767
+;2764:
+;2765://unlagged - client options
+;2766:	// add the bounding box (if cg_drawBBox is 1)
+;2767:	CG_AddBoundingBox( cent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 CG_AddBoundingBox
 CALLV
 pop
-line 2765
-;2764://unlagged - client options
-;2765:}
-LABELV $1188
+line 2769
+;2768://unlagged - client options
+;2769:}
+LABELV $1192
 endproc CG_Player 448 28
 export CG_ResetPlayerEntity
 proc CG_ResetPlayerEntity 40 12
-line 2777
-;2766:
-;2767:
-;2768://=====================================================================
-;2769:
-;2770:/*
-;2771:===============
-;2772:CG_ResetPlayerEntity
+line 2781
+;2770:
+;2771:
+;2772://=====================================================================
 ;2773:
-;2774:A player just came into view or teleported, so reset all animation info
+;2774:/*
 ;2775:===============
-;2776:*/
-;2777:void CG_ResetPlayerEntity( centity_t *cent ) {
-line 2778
-;2778:	cent->errorTime = -99999;		// guarantee no error decay added
+;2776:CG_ResetPlayerEntity
+;2777:
+;2778:A player just came into view or teleported, so reset all animation info
+;2779:===============
+;2780:*/
+;2781:void CG_ResetPlayerEntity( centity_t *cent ) {
+line 2782
+;2782:	cent->errorTime = -99999;		// guarantee no error decay added
 ADDRFP4 0
 INDIRP4
 CNSTI4 648
 ADDP4
 CNSTI4 -99999
 ASGNI4
-line 2779
-;2779:	cent->extrapolated = qfalse;	
+line 2783
+;2783:	cent->extrapolated = qfalse;	
 ADDRFP4 0
 INDIRP4
 CNSTI4 676
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2781
-;2780:
-;2781:	CG_ClearLerpFrame( &cgs.clientinfo[ cent->currentState.clientNum ], &cent->pe.legs, cent->currentState.legsAnim );
+line 2785
+;2784:
+;2785:	CG_ClearLerpFrame( &cgs.clientinfo[ cent->currentState.clientNum ], &cent->pe.legs, cent->currentState.legsAnim );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -14565,8 +14596,8 @@ ARGI4
 ADDRGP4 CG_ClearLerpFrame
 CALLV
 pop
-line 2782
-;2782:	CG_ClearLerpFrame( &cgs.clientinfo[ cent->currentState.clientNum ], &cent->pe.torso, cent->currentState.torsoAnim );
+line 2786
+;2786:	CG_ClearLerpFrame( &cgs.clientinfo[ cent->currentState.clientNum ], &cent->pe.torso, cent->currentState.torsoAnim );
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -14595,9 +14626,9 @@ ARGI4
 ADDRGP4 CG_ClearLerpFrame
 CALLV
 pop
-line 2784
-;2783:
-;2784:	BG_EvaluateTrajectory( &cent->currentState.pos, cg.time, cent->lerpOrigin );
+line 2788
+;2787:
+;2788:	BG_EvaluateTrajectory( &cent->currentState.pos, cg.time, cent->lerpOrigin );
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -14618,8 +14649,8 @@ ARGP4
 ADDRGP4 BG_EvaluateTrajectory
 CALLV
 pop
-line 2785
-;2785:	BG_EvaluateTrajectory( &cent->currentState.apos, cg.time, cent->lerpAngles );
+line 2789
+;2789:	BG_EvaluateTrajectory( &cent->currentState.apos, cg.time, cent->lerpAngles );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -14640,9 +14671,9 @@ ARGP4
 ADDRGP4 BG_EvaluateTrajectory
 CALLV
 pop
-line 2787
-;2786:
-;2787:	VectorCopy( cent->lerpOrigin, cent->rawOrigin );
+line 2791
+;2790:
+;2791:	VectorCopy( cent->lerpOrigin, cent->rawOrigin );
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -14657,8 +14688,8 @@ CNSTI4 716
 ADDP4
 INDIRB
 ASGNB 12
-line 2788
-;2788:	VectorCopy( cent->lerpAngles, cent->rawAngles );
+line 2792
+;2792:	VectorCopy( cent->lerpAngles, cent->rawAngles );
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -14673,9 +14704,9 @@ CNSTI4 728
 ADDP4
 INDIRB
 ASGNB 12
-line 2790
-;2789:
-;2790:	memset( &cent->pe.legs, 0, sizeof( cent->pe.legs ) );
+line 2794
+;2793:
+;2794:	memset( &cent->pe.legs, 0, sizeof( cent->pe.legs ) );
 ADDRFP4 0
 INDIRP4
 CNSTI4 460
@@ -14688,8 +14719,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 2791
-;2791:	cent->pe.legs.yawAngle = cent->rawAngles[YAW];
+line 2795
+;2795:	cent->pe.legs.yawAngle = cent->rawAngles[YAW];
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -14704,33 +14735,33 @@ CNSTI4 696
 ADDP4
 INDIRF4
 ASGNF4
-line 2792
-;2792:	cent->pe.legs.yawing = qfalse;
+line 2796
+;2796:	cent->pe.legs.yawing = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 484
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2793
-;2793:	cent->pe.legs.pitchAngle = 0;
+line 2797
+;2797:	cent->pe.legs.pitchAngle = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 488
 ADDP4
 CNSTF4 0
 ASGNF4
-line 2794
-;2794:	cent->pe.legs.pitching = qfalse;
+line 2798
+;2798:	cent->pe.legs.pitching = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 492
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2796
-;2795:
-;2796:	memset( &cent->pe.torso, 0, sizeof( cent->pe.legs ) );
+line 2800
+;2799:
+;2800:	memset( &cent->pe.torso, 0, sizeof( cent->pe.legs ) );
 ADDRFP4 0
 INDIRP4
 CNSTI4 508
@@ -14743,8 +14774,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 2797
-;2797:	cent->pe.torso.yawAngle = cent->rawAngles[YAW];
+line 2801
+;2801:	cent->pe.torso.yawAngle = cent->rawAngles[YAW];
 ADDRLP4 28
 ADDRFP4 0
 INDIRP4
@@ -14759,16 +14790,16 @@ CNSTI4 696
 ADDP4
 INDIRF4
 ASGNF4
-line 2798
-;2798:	cent->pe.torso.yawing = qfalse;
+line 2802
+;2802:	cent->pe.torso.yawing = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2799
-;2799:	cent->pe.torso.pitchAngle = cent->rawAngles[PITCH];
+line 2803
+;2803:	cent->pe.torso.pitchAngle = cent->rawAngles[PITCH];
 ADDRLP4 32
 ADDRFP4 0
 INDIRP4
@@ -14783,33 +14814,33 @@ CNSTI4 692
 ADDP4
 INDIRF4
 ASGNF4
-line 2800
-;2800:	cent->pe.torso.pitching = qfalse;
+line 2804
+;2804:	cent->pe.torso.pitching = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 540
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2802
-;2801:
-;2802:	cent->pe.noHead = qfalse; // Shafe - Trep - Part of the headshot code
+line 2806
+;2805:
+;2806:	cent->pe.noHead = qfalse; // Shafe - Trep - Part of the headshot code
 ADDRFP4 0
 INDIRP4
 CNSTI4 644
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2804
-;2803:
-;2804:	if ( cg_debugPosition.integer ) {
+line 2808
+;2807:
+;2808:	if ( cg_debugPosition.integer ) {
 ADDRGP4 cg_debugPosition+12
 INDIRI4
 CNSTI4 0
-EQI4 $1253
-line 2805
-;2805:		CG_Printf("%i ResetPlayerEntity yaw=%i\n", cent->currentState.number, cent->pe.torso.yawAngle );
-ADDRGP4 $1256
+EQI4 $1257
+line 2809
+;2809:		CG_Printf("%i ResetPlayerEntity yaw=%i\n", cent->currentState.number, cent->pe.torso.yawAngle );
+ADDRGP4 $1260
 ARGP4
 ADDRLP4 36
 ADDRFP4 0
@@ -14828,12 +14859,12 @@ ARGF4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 2806
-;2806:	}
-LABELV $1253
-line 2807
-;2807:}
-LABELV $1248
+line 2810
+;2810:	}
+LABELV $1257
+line 2811
+;2811:}
+LABELV $1252
 endproc CG_ResetPlayerEntity 40 12
 import CG_DrawScanner
 import CG_ScannerOff_f
@@ -15364,7 +15395,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $1256
+LABELV $1260
 byte 1 37
 byte 1 105
 byte 1 32
@@ -15395,7 +15426,7 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $1245
+LABELV $1249
 byte 1 116
 byte 1 97
 byte 1 103
@@ -15406,7 +15437,7 @@ byte 1 97
 byte 1 100
 byte 1 0
 align 1
-LABELV $1234
+LABELV $1238
 byte 1 116
 byte 1 97
 byte 1 103
@@ -15418,7 +15449,7 @@ byte 1 115
 byte 1 111
 byte 1 0
 align 1
-LABELV $1192
+LABELV $1196
 byte 1 66
 byte 1 97
 byte 1 100

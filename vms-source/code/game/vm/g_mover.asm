@@ -180,7 +180,7 @@ CNSTI4 0
 EQI4 $61
 line 49
 ;49:		return &g_entities[ tr.entityNum ];
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 0+52
 INDIRI4
 MULI4
@@ -2464,7 +2464,7 @@ LABELV $182
 line 300
 ;300:		check = &g_entities[ entityList[ e ] ];
 ADDRLP4 8
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 12
 INDIRI4
 CNSTI4 2
@@ -12435,6 +12435,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma

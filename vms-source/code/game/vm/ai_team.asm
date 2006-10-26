@@ -7173,7 +7173,7 @@ ASGNI4
 LABELV $432
 line 1883
 ;1883:		if ( g_entities[i].inuse ) {
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7185,7 +7185,7 @@ EQI4 $436
 line 1885
 ;1884:			// if this player is not a bot
 ;1885:			if ( !(g_entities[i].r.svFlags & SVF_BOT) ) {
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -8529,6 +8529,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma

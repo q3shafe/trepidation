@@ -229,6 +229,7 @@ static void CG_Obituary( entityState_t *ent ) {
 				s = va("Headshot!\n\nYou fragged %s\n%s place with %i", targetName, 
 				CG_PlaceString( cg.snap->ps.persistant[PERS_RANK] + 1 ),
 				cg.snap->ps.persistant[PERS_SCORE] );
+				s = va("Headshot!\n\nYou fragged %s", targetName );
 			} else {
 				s = va("Headshot!\n\nYou fragged %s", targetName );
 			}	
@@ -304,8 +305,11 @@ static void CG_Obituary( entityState_t *ent ) {
 			message = "was burnt by";
 			break;
 		case MOD_BFG:
-		case MOD_BFG_SPLASH:
 			message = "was annialated by";
+			message2 = "'s Devastator";
+			break;
+		case MOD_BFG_SPLASH:
+			message = "was annialated by the fallout of";
 			message2 = "'s Devastator";
 			break;
 #ifdef MISSIONPACK

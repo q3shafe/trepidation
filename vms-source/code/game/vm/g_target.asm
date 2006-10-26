@@ -612,7 +612,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 872
+CNSTI4 876
 DIVI4
 ARGI4
 ADDRLP4 0
@@ -1599,7 +1599,7 @@ EQI4 $142
 line 254
 ;253:		// hurt it if we can
 ;254:		G_Damage ( &g_entities[tr.entityNum], self, self->activator, self->movedir, 
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 24+52
 INDIRI4
 MULI4
@@ -2626,7 +2626,7 @@ ASGNI4
 ADDRFP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 872
+CNSTI4 876
 ADDP4
 ASGNP4
 LABELV $201
@@ -2877,6 +2877,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma

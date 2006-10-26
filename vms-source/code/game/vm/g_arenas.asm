@@ -52,7 +52,7 @@ LABELV $56
 line 36
 ;36:		player = &g_entities[i];
 ADDRLP4 40
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -662,7 +662,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 872
+CNSTI4 876
 DIVI4
 ASGNI4
 line 146
@@ -2155,7 +2155,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 872
+CNSTI4 876
 DIVI4
 ASGNI4
 line 293
@@ -2400,9 +2400,10 @@ line 323
 ADDRGP4 podium3
 CNSTP4 0
 ASGNP4
-line 325
+line 326
 ;324:
-;325:	podium = SpawnPodium();
+;325:	
+;326:	podium = SpawnPodium();
 ADDRLP4 8
 ADDRGP4 SpawnPodium
 CALLP4
@@ -2411,15 +2412,15 @@ ADDRLP4 4
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 327
-;326:
-;327:	player = SpawnModelOnVictoryPad( podium, offsetFirst, &g_entities[level.sortedClients[0]],
+line 328
+;327:
+;328:	player = SpawnModelOnVictoryPad( podium, offsetFirst, &g_entities[level.sortedClients[0]],
 ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 offsetFirst
 ARGP4
-CNSTI4 872
+CNSTI4 876
 ADDRGP4 level+96
 INDIRI4
 MULI4
@@ -2447,16 +2448,16 @@ ADDRLP4 0
 ADDRLP4 12
 INDIRP4
 ASGNP4
-line 329
-;328:				level.clients[ level.sortedClients[0] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
-;329:	if ( player ) {
+line 330
+;329:				level.clients[ level.sortedClients[0] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
+;330:	if ( player ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $271
-line 330
-;330:		player->nextthink = level.time + 2000;
+line 331
+;331:		player->nextthink = level.time + 2000;
 ADDRLP4 0
 INDIRP4
 CNSTI4 696
@@ -2466,32 +2467,32 @@ INDIRI4
 CNSTI4 2000
 ADDI4
 ASGNI4
-line 331
-;331:		player->think = CelebrateStart;
+line 332
+;332:		player->think = CelebrateStart;
 ADDRLP4 0
 INDIRP4
 CNSTI4 708
 ADDP4
 ADDRGP4 CelebrateStart
 ASGNP4
-line 332
-;332:		podium1 = player;
+line 333
+;333:		podium1 = player;
 ADDRGP4 podium1
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 333
-;333:	}
+line 334
+;334:	}
 LABELV $271
-line 335
-;334:
-;335:	player = SpawnModelOnVictoryPad( podium, offsetSecond, &g_entities[level.sortedClients[1]],
+line 336
+;335:
+;336:	player = SpawnModelOnVictoryPad( podium, offsetSecond, &g_entities[level.sortedClients[1]],
 ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 offsetSecond
 ARGP4
-CNSTI4 872
+CNSTI4 876
 ADDRGP4 level+96+4
 INDIRI4
 MULI4
@@ -2519,38 +2520,38 @@ ADDRLP4 0
 ADDRLP4 16
 INDIRP4
 ASGNP4
-line 337
-;336:				level.clients[ level.sortedClients[1] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
-;337:	if ( player ) {
+line 338
+;337:				level.clients[ level.sortedClients[1] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
+;338:	if ( player ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $278
-line 338
-;338:		podium2 = player;
+line 339
+;339:		podium2 = player;
 ADDRGP4 podium2
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 339
-;339:	}
+line 340
+;340:	}
 LABELV $278
-line 341
-;340:
-;341:	if ( level.numNonSpectatorClients > 2 )  {
+line 342
+;341:
+;342:	if ( level.numNonSpectatorClients > 2 )  {
 ADDRGP4 level+88
 INDIRI4
 CNSTI4 2
 LEI4 $280
-line 342
-;342:		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
+line 343
+;343:		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
 ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 offsetThird
 ARGP4
-CNSTI4 872
+CNSTI4 876
 ADDRGP4 level+96+8
 INDIRI4
 MULI4
@@ -2578,24 +2579,24 @@ ADDRLP4 0
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 344
-;343:				level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
-;344:		if ( player ) {
+line 345
+;344:				level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
+;345:		if ( player ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $281
-line 345
-;345:			podium3 = player;
+line 346
+;346:			podium3 = player;
 ADDRGP4 podium3
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 346
-;346:		}
 line 347
-;347:	} else if ((g_gametype.integer == GT_FFA) && (level.numConnectedClients > 2)) // Spawn the 3rd person in arsenal... The 3rd person will always be a spec
+;347:		}
+line 348
+;348:	} else if ((g_gametype.integer == GT_FFA) && (level.numConnectedClients > 2)) // Spawn the 3rd person in arsenal... The 3rd person will always be a spec
 ADDRGP4 $281
 JUMPV
 LABELV $280
@@ -2607,16 +2608,16 @@ ADDRGP4 level+84
 INDIRI4
 CNSTI4 2
 LEI4 $289
-line 348
-;348:	{
 line 349
-;349:		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
+;349:	{
+line 350
+;350:		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
 ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 offsetThird
 ARGP4
-CNSTI4 872
+CNSTI4 876
 ADDRGP4 level+96+8
 INDIRI4
 MULI4
@@ -2644,59 +2645,59 @@ ADDRLP4 0
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 351
-;350:		level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
-;351:		if ( player ) {
+line 352
+;351:		level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
+;352:		if ( player ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $297
-line 352
-;352:		podium3 = player;
+line 353
+;353:		podium3 = player;
 ADDRGP4 podium3
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 353
-;353:		}
-LABELV $297
 line 354
-;354:	}
+;354:		}
+LABELV $297
+line 355
+;355:	}
 LABELV $289
 LABELV $281
-line 356
-;355:
-;356:}
+line 357
+;356:
+;357:}
 LABELV $268
 endproc SpawnModelsOnVictoryPads 24 16
 export Svcmd_AbortPodium_f
 proc Svcmd_AbortPodium_f 0 0
-line 364
-;357:
+line 365
 ;358:
-;359:/*
-;360:===============
-;361:Svcmd_AbortPodium_f
-;362:===============
-;363:*/
-;364:void Svcmd_AbortPodium_f( void ) {
-line 372
-;365:
-;366:	/* Shafe podium
-;367:	if( g_gametype.integer != GT_SINGLE_PLAYER ) {
-;368:		return;
-;369:	}
-;370:	*/
-;371:
-;372:	if( podium1 ) {
+;359:
+;360:/*
+;361:===============
+;362:Svcmd_AbortPodium_f
+;363:===============
+;364:*/
+;365:void Svcmd_AbortPodium_f( void ) {
+line 373
+;366:
+;367:	/* Shafe podium
+;368:	if( g_gametype.integer != GT_SINGLE_PLAYER ) {
+;369:		return;
+;370:	}
+;371:	*/
+;372:
+;373:	if( podium1 ) {
 ADDRGP4 podium1
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $300
-line 373
-;373:		podium1->nextthink = level.time;
+line 374
+;374:		podium1->nextthink = level.time;
 ADDRGP4 podium1
 INDIRP4
 CNSTI4 696
@@ -2704,19 +2705,19 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 374
-;374:		podium1->think = CelebrateStop;
+line 375
+;375:		podium1->think = CelebrateStop;
 ADDRGP4 podium1
 INDIRP4
 CNSTI4 708
 ADDP4
 ADDRGP4 CelebrateStop
 ASGNP4
-line 375
-;375:	}
-LABELV $300
 line 376
-;376:}
+;376:	}
+LABELV $300
+line 377
+;377:}
 LABELV $299
 endproc Svcmd_AbortPodium_f 0 0
 bss
@@ -2913,6 +2914,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma

@@ -2333,12 +2333,12 @@ pop
 line 585
 ;584:
 ;585:	g_entities[ENTITYNUM_WORLD].s.number = ENTITYNUM_WORLD;
-ADDRGP4 g_entities+891184
+ADDRGP4 g_entities+895272
 CNSTI4 1022
 ASGNI4
 line 586
 ;586:	g_entities[ENTITYNUM_WORLD].classname = "worldspawn";
-ADDRGP4 g_entities+891184+532
+ADDRGP4 g_entities+895272+532
 ADDRGP4 $287
 ASGNP4
 line 589
@@ -2756,6 +2756,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma

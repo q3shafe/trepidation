@@ -106,6 +106,7 @@ vmCvar_t	g_StartBFG;
 
 // Other Options
 vmCvar_t	g_Turrets;
+vmCvar_t	g_GrappleMode;
 
 //vmCvar_t	g_CTFGrapple; // Decided not to make this an option
 
@@ -223,6 +224,8 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_StartGauss, "g_StartGauss", "1", CVAR_ARCHIVE, 0, qtrue  },
 	{ &g_StartPlasma, "g_StartPlasma", "0", CVAR_ARCHIVE, 0, qtrue  },
 	{ &g_StartBFG, "g_StartBFG", "0", CVAR_ARCHIVE, 0, qtrue  },
+
+	{ &g_GrappleMode, "g_GrappleMode", "1", CVAR_ARCHIVE, 0, qtrue  },
 
 
 	{ &g_MultiJumps, "g_MultiJumps", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue }
@@ -1163,7 +1166,15 @@ void BeginIntermission( void ) {
 	if (g_gametype.integer != GT_CTF || g_gametype.integer != GT_TEAM || g_gametype.integer != GT_SINGLE_PLAYER)
 	{
 	//UpdateTournamentInfo(); // SHAFEFIXME
+	
+	char *s;
+	
+	trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 1.0\n" );
+	G_SpawnString( "music", "sound/music/intermission.wav", &s );
+	trap_SetConfigstring( CS_MUSIC, s );
+	
 	SpawnModelsOnVictoryPads();
+					
 	}
 #endif
 
@@ -1488,6 +1499,11 @@ can see the last frag.
 */
 
 
+/*
+
+SHAFE - This is a mess.. Clean this up
+
+*/
 	
 void CheckExitRules( void ) {
  	int			i;
@@ -1498,6 +1514,7 @@ void CheckExitRules( void ) {
 	gitem_t	*flight = BG_FindItemForPowerup( PW_FLIGHT );
 	gitem_t	*battles = BG_FindItemForPowerup( PW_BATTLESUIT );
 	gitem_t	*regen = BG_FindItemForPowerup( PW_REGEN );
+	char *s;
 
 	// if at the intermission, wait for all non-bots to
 	// signal ready, then go to next level
@@ -1675,6 +1692,15 @@ void CheckExitRules( void ) {
 			tmpCnt = 0;
 			tmpCnt = CountSurvivors();
 			
+
+			// Three People - Start The Music  // Maybe do this on 2 instead
+			if (tmpCnt == 3)
+			{
+				trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 5.0\n" );
+				G_SpawnString( "music", "sound/music/battle.wav", &s );
+				trap_SetConfigstring( CS_MUSIC, s );
+
+			}
 
 				// Two People - Showdown
 				if (tmpCnt == 2)
