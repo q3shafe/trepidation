@@ -1260,7 +1260,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 872
+CNSTI4 876
 DIVI4
 ARGI4
 ADDRLP4 8
@@ -1531,7 +1531,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 872
+CNSTI4 876
 DIVI4
 ARGI4
 ADDRLP4 8
@@ -1703,7 +1703,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 872
+CNSTI4 876
 ADDP4
 ASGNP4
 ADDRLP4 4
@@ -2118,7 +2118,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 872
+CNSTI4 876
 ADDP4
 ASGNP4
 ADDRLP4 4
@@ -3939,6 +3939,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma

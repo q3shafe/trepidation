@@ -1324,7 +1324,7 @@ fire_turret
 
 =================
 */
-gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t dir) {
+gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 	gentity_t	*bolt;
 
 	VectorNormalize (dir);
@@ -1342,9 +1342,20 @@ gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->s.otherEntityNum = self->s.number;
 	//unlagged - projectile nudge
 	bolt->parent = self;
-	bolt->damage = 20;
-	bolt->splashDamage = 15;
-	bolt->splashRadius = 20;
+	if (alt == qtrue)
+	{
+		bolt->damage = 20;
+		bolt->splashDamage = 10;
+		bolt->splashRadius = 10;
+		bolt->s.eFlags |= EF_ALT_FIRING;
+
+	} 
+	else
+	{
+		bolt->damage = 10;
+		bolt->splashDamage = 5;
+		bolt->splashRadius = 5;
+	}
 	bolt->methodOfDeath = MOD_TURRET;
 	bolt->splashMethodOfDeath = MOD_TURRET;
 	bolt->clipmask = MASK_SHOT;
@@ -1386,9 +1397,13 @@ gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir) {
 	hook->clipmask = MASK_SHOT;
 	hook->parent = self;
 	hook->target_ent = NULL;
-	hook->damage = 999;
-	hook->splashDamage = 50;
-	hook->splashRadius = 10;
+	
+	if (g_GrappleMode.integer == 1) // 0 - Normal, 1 - Instagib, 2 - Holds People
+	{
+		hook->damage = 999;
+		hook->splashDamage = 50;
+		hook->splashRadius = 10;
+	}
 
 //unlagged - grapple
 	// we might want this later

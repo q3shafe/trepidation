@@ -459,7 +459,18 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 		// Pulse Rifle // Machine Gun Ammo Regenerates
 		if (client->ps.ammo[WP_MACHINEGUN] < Max_Ammo[WP_MACHINEGUN]) 
 		{
-				client->ps.ammo[WP_MACHINEGUN]++;
+				client->ps.ammo[WP_MACHINEGUN]+=2;
+		}
+
+
+
+		// Immobilized
+		if ( g_entities[client->ps.clientNum].immobilized == qtrue)
+		{
+			client->ps.speed = 50;
+			g_entities[client->ps.clientNum].health=-3;
+			// Let them go when they are about dead.
+			if (g_entities[client->ps.clientNum].health < 8) { g_entities[client->ps.clientNum].immobilized = qfalse; }
 		}
 
 		// count down armor when over max
@@ -614,7 +625,7 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 
 		case EV_USE_ITEM1:		// teleporter
 			// drop flags in CTF
-			Team_DropFlags( ent );
+			//Team_DropFlags( ent );
 			/* Shafe - Trep - This is now in g_team.c - Keeping it here only for reference
 			item = NULL;
 			j = 0;
@@ -665,6 +676,8 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 //			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Teleporter\n", ent->item->giTag ); // Shafe - Debug
 			SelectSpawnPoint( ent->client->ps.origin, origin, angles );
 			TeleportPlayer( ent, origin, angles );
+
+
 			break;
 
 		case EV_USE_ITEM2:		// medkit
@@ -1006,6 +1019,16 @@ void ClientThink_real( gentity_t *ent ) {
 	if ( client->ps.powerups[PW_HASTE] ) {
 		client->ps.speed *= 1.3;
 	}
+
+	if ( g_entities[client->ps.clientNum].immobilized == qtrue)
+	{
+		client->ps.speed = 50;
+		if (g_entities[client->ps.clientNum].health < 8) { g_entities[client->ps.clientNum].immobilized = qfalse; }
+	}
+
+
+
+
 
 	// Let go of the hook if we aren't firing
 	/*  - Shafe - Trep - Commented out for offhand grapple

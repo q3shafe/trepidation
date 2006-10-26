@@ -322,6 +322,7 @@ void SpawnModelsOnVictoryPads( void ) {
 	podium2 = NULL;
 	podium3 = NULL;
 
+	
 	podium = SpawnPodium();
 
 	player = SpawnModelOnVictoryPad( podium, offsetFirst, &g_entities[level.sortedClients[0]],

@@ -887,6 +887,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma

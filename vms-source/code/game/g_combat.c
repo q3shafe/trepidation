@@ -1052,8 +1052,15 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	}
 
 	// Grapple hook cannot be used to damage a buildable
-	if (targ->s.eType ==ET_TURRET && mod == MOD_GRAPPLE)
+	if (targ->s.eType ==ET_TURRET && mod == MOD_GRAPPLE && g_GrappleMode.integer == 1)
 	{
+		return;
+	}
+
+	if (targ->s.eType ==ET_TURRET && mod == MOD_GRAPPLE && g_GrappleMode.integer == 2)
+	{
+		//targ->client->ps.speed = 0;
+		targ->immobilized == qtrue;
 		return;
 	}
 

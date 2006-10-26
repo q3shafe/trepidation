@@ -2138,7 +2138,18 @@ void CG_MissileHitWall( centity_t *cent, int weapon, int clientNum, vec3_t origi
 		shader = cgs.media.grenadeExplosionShader;
 		sfx = cgs.media.sfx_devexp;
 		mark = cgs.media.burnMarkShader;
-		radius = 350;
+
+		//radius = 8;
+		if (cent->currentState.eFlags & EF_ALT_FIRING)
+		{
+			radius = 350;
+		} 
+		else
+		{
+			radius = 150;
+
+		}
+		
 		light = 300;
 		isSprite = qtrue;
 		duration = 1500;
@@ -2218,10 +2229,18 @@ void CG_MissileHitWall( centity_t *cent, int weapon, int clientNum, vec3_t origi
 
 	if ( sfx ) {
 		
+		// This is a hack.. Move the devastator stuff where everything else is.
 		if (sfx == cgs.media.sfx_devexp)
 		{
-			
-			trap_S_StartLocalSound(sfx, CHAN_AUTO);
+			if (cent->currentState.eFlags & EF_ALT_FIRING)
+			{
+				trap_S_StartLocalSound(sfx, CHAN_AUTO);
+			} 
+			else
+			{
+				trap_S_StartSound( origin, ENTITYNUM_WORLD, CHAN_AUTO, sfx );
+			}
+		
 		} 
 		else 
 		{

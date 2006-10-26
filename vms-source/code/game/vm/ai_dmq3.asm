@@ -12841,7 +12841,7 @@ line 3001
 ;2999://unlagged - misc
 ;3000:		// this has nothing to do with lag compensation, but it's great for testing
 ;3001:		if ( g_entities[i].flags & FL_NOTARGET ) continue;
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 140
 INDIRI4
 MULI4
@@ -18782,7 +18782,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 872
+CNSTI4 876
 ADDP4
 ASGNP4
 LABELV $1596
@@ -25694,7 +25694,7 @@ CNSTI4 512
 ADDP4
 ADDP4
 INDIRI4
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 132
 INDIRI4
 MULI4
@@ -25724,7 +25724,7 @@ INDIRP4
 CNSTI4 512
 ADDP4
 ADDP4
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 136
 INDIRI4
 MULI4
@@ -28219,7 +28219,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 872
+CNSTI4 876
 ADDP4
 ASGNP4
 LABELV $2257
@@ -28382,7 +28382,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 872
+CNSTI4 876
 ADDP4
 ASGNP4
 LABELV $2273
@@ -29414,6 +29414,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma

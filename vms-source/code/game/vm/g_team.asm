@@ -400,7 +400,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 872
+CNSTI4 876
 DIVI4
 ASGNI4
 LABELV $107
@@ -1222,7 +1222,7 @@ LABELV $198
 line 272
 ;272:		ent = &g_entities[i];
 ADDRLP4 0
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1616,7 +1616,7 @@ LABELV $225
 line 344
 ;344:			ent = g_entities + i;
 ADDRLP4 12
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -1780,7 +1780,7 @@ LABELV $236
 line 362
 ;362:			ent = g_entities + i;
 ADDRLP4 12
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2279,7 +2279,7 @@ LABELV $258
 line 443
 ;443:		carrier = g_entities + i;
 ADDRLP4 4
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4887,7 +4887,7 @@ LABELV $407
 line 844
 ;844:		player = &g_entities[i];
 ADDRLP4 0
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -6393,7 +6393,7 @@ LABELV $497
 line 1155
 ;1155:		player = g_entities + level.sortedClients[i];
 ADDRLP4 0
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -6546,7 +6546,7 @@ LABELV $507
 line 1170
 ;1170:		player = g_entities + i;
 ADDRLP4 0
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -6788,7 +6788,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 872
+CNSTI4 876
 DIVI4
 ARGI4
 ADDRLP4 9380
@@ -6837,7 +6837,7 @@ LABELV $530
 line 1205
 ;1205:			ent = g_entities + i;
 ADDRLP4 0
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -6974,7 +6974,7 @@ LABELV $542
 line 1221
 ;1221:			ent = g_entities + i;
 ADDRLP4 0
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7307,6 +7307,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma

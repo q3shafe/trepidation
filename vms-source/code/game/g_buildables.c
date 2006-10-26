@@ -174,6 +174,8 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 }
 
 
+
+
 /*
 ===========================
 checktarget
@@ -306,23 +308,29 @@ void turret_fireonenemy( gentity_t *ent){
 	if (!level.intermissiontime) 
 	{
 	
+		// 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 		if (ent->s.time2 > 1)
 		{
 			//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
-			fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc );
+			//This is the best turret
+			fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc, qtrue );
+			//Weapon_fire_turret(ent->activator, qtrue);
 		} else
 		{
 			
 			if (ent->s.time2 == 0)
 			{
-				//Bullet_Fire( ent, TURRET_MG_SPREAD, TURRET_MG_DAMAGE );
+				// This is the weakest
 				//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qfalse);
-				fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc );
+				fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc, qfalse );
+				
 				
 			} else
 			{
+				// Middle Power
 				//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qtrue);
-				fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc );
+				fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc, qtrue );
+				//Weapon_fire_turret(ent->activator, qfalse);
 			}
 			
 			

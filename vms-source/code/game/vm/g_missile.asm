@@ -2336,7 +2336,7 @@ line 317
 line 318
 ;318:			g_entities[ent->r.ownerNum].client->accuracy_hits++;
 ADDRLP4 40
-CNSTI4 872
+CNSTI4 876
 ADDRFP4 0
 INDIRP4
 CNSTI4 520
@@ -2570,7 +2570,7 @@ line 508
 ;507:#endif
 ;508:	other = &g_entities[trace->entityNum];
 ADDRLP4 0
-CNSTI4 872
+CNSTI4 876
 ADDRFP4 4
 INDIRP4
 CNSTI4 52
@@ -2723,7 +2723,7 @@ line 555
 ADDRLP4 0
 INDIRP4
 ARGP4
-CNSTI4 872
+CNSTI4 876
 ADDRFP4 0
 INDIRP4
 CNSTI4 520
@@ -2744,7 +2744,7 @@ EQI4 $199
 line 556
 ;556:				g_entities[ent->r.ownerNum].client->accuracy_hits++;
 ADDRLP4 28
-CNSTI4 872
+CNSTI4 876
 ADDRFP4 0
 INDIRP4
 CNSTI4 520
@@ -2820,7 +2820,7 @@ ASGNP4
 ADDRLP4 32
 INDIRP4
 ARGP4
-CNSTI4 872
+CNSTI4 876
 ADDRLP4 32
 INDIRP4
 CNSTI4 520
@@ -3509,7 +3509,7 @@ NEI4 $222
 line 677
 ;677:				g_entities[ent->r.ownerNum].client->accuracy_hits++;
 ADDRLP4 28
-CNSTI4 872
+CNSTI4 876
 ADDRFP4 0
 INDIRP4
 CNSTI4 520
@@ -7732,7 +7732,7 @@ line 1327
 ;1324:
 ;1325:=================
 ;1326:*/
-;1327:gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t dir) {
+;1327:gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 line 1330
 ;1328:	gentity_t	*bolt;
 ;1329:
@@ -7838,72 +7838,132 @@ ADDRFP4 0
 INDIRP4
 ASGNP4
 line 1345
-;1345:	bolt->damage = 20;
+;1345:	if (alt == qtrue)
+ADDRFP4 12
+INDIRI4
+CNSTI4 1
+NEI4 $301
+line 1346
+;1346:	{
+line 1347
+;1347:		bolt->damage = 20;
 ADDRLP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 20
 ASGNI4
-line 1346
-;1346:	bolt->splashDamage = 15;
+line 1348
+;1348:		bolt->splashDamage = 10;
 ADDRLP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
-CNSTI4 15
+CNSTI4 10
 ASGNI4
-line 1347
-;1347:	bolt->splashRadius = 20;
+line 1349
+;1349:		bolt->splashRadius = 10;
 ADDRLP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
-CNSTI4 20
+CNSTI4 10
 ASGNI4
-line 1348
-;1348:	bolt->methodOfDeath = MOD_TURRET;
+line 1350
+;1350:		bolt->s.eFlags |= EF_ALT_FIRING;
+ADDRLP4 8
+ADDRLP4 0
+INDIRP4
+CNSTI4 8
+ADDP4
+ASGNP4
+ADDRLP4 8
+INDIRP4
+ADDRLP4 8
+INDIRP4
+INDIRI4
+CNSTI4 512
+BORI4
+ASGNI4
+line 1352
+;1351:
+;1352:	} 
+ADDRGP4 $302
+JUMPV
+LABELV $301
+line 1354
+;1353:	else
+;1354:	{
+line 1355
+;1355:		bolt->damage = 10;
+ADDRLP4 0
+INDIRP4
+CNSTI4 756
+ADDP4
+CNSTI4 10
+ASGNI4
+line 1356
+;1356:		bolt->splashDamage = 5;
+ADDRLP4 0
+INDIRP4
+CNSTI4 760
+ADDP4
+CNSTI4 5
+ASGNI4
+line 1357
+;1357:		bolt->splashRadius = 5;
+ADDRLP4 0
+INDIRP4
+CNSTI4 764
+ADDP4
+CNSTI4 5
+ASGNI4
+line 1358
+;1358:	}
+LABELV $302
+line 1359
+;1359:	bolt->methodOfDeath = MOD_TURRET;
 ADDRLP4 0
 INDIRP4
 CNSTI4 768
 ADDP4
 CNSTI4 24
 ASGNI4
-line 1349
-;1349:	bolt->splashMethodOfDeath = MOD_TURRET;
+line 1360
+;1360:	bolt->splashMethodOfDeath = MOD_TURRET;
 ADDRLP4 0
 INDIRP4
 CNSTI4 772
 ADDP4
 CNSTI4 24
 ASGNI4
-line 1350
-;1350:	bolt->clipmask = MASK_SHOT;
+line 1361
+;1361:	bolt->clipmask = MASK_SHOT;
 ADDRLP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 100664321
 ASGNI4
-line 1351
-;1351:	bolt->target_ent = NULL;
+line 1362
+;1362:	bolt->target_ent = NULL;
 ADDRLP4 0
 INDIRP4
 CNSTI4 676
 ADDP4
 CNSTP4 0
 ASGNP4
-line 1353
-;1352:
-;1353:	bolt->s.pos.trType = TR_LINEAR;
+line 1364
+;1363:
+;1364:	bolt->s.pos.trType = TR_LINEAR;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 2
 ASGNI4
-line 1354
-;1354:	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+line 1365
+;1365:	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -7913,8 +7973,8 @@ INDIRI4
 CNSTI4 50
 SUBI4
 ASGNI4
-line 1355
-;1355:	VectorCopy( start, bolt->s.pos.trBase );
+line 1366
+;1366:	VectorCopy( start, bolt->s.pos.trBase );
 ADDRLP4 0
 INDIRP4
 CNSTI4 24
@@ -7923,8 +7983,8 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 1356
-;1356:   	VectorScale( dir, 2000, bolt->s.pos.trDelta );
+line 1367
+;1367:   	VectorScale( dir, 2000, bolt->s.pos.trDelta );
 ADDRLP4 0
 INDIRP4
 CNSTI4 36
@@ -7959,8 +8019,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 1357
-;1357:   	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
+line 1368
+;1368:   	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -8018,9 +8078,9 @@ INDIRP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1359
-;1358:   
-;1359:   	VectorCopy (start, bolt->r.currentOrigin);
+line 1370
+;1369:   
+;1370:   	VectorCopy (start, bolt->r.currentOrigin);
 ADDRLP4 0
 INDIRP4
 CNSTI4 496
@@ -8029,9 +8089,9 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 1361
-;1360:   
-;1361:	return bolt;
+line 1372
+;1371:   
+;1372:	return bolt;
 ADDRLP4 0
 INDIRP4
 RETP4
@@ -8039,31 +8099,31 @@ LABELV $299
 endproc fire_turret 32 4
 export fire_grapple
 proc fire_grapple 36 4
-line 1369
-;1362:}
-;1363:
-;1364:/*
-;1365:=================
-;1366:fire_grapple
-;1367:=================
-;1368:*/
-;1369:gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir) {
-line 1375
-;1370:	gentity_t	*hook;
-;1371://unlagged - grapple
-;1372:	int hooktime;
-;1373://unlagged - grapple
+line 1380
+;1373:}
 ;1374:
-;1375:	VectorNormalize (dir);
+;1375:/*
+;1376:=================
+;1377:fire_grapple
+;1378:=================
+;1379:*/
+;1380:gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir) {
+line 1386
+;1381:	gentity_t	*hook;
+;1382://unlagged - grapple
+;1383:	int hooktime;
+;1384://unlagged - grapple
+;1385:
+;1386:	VectorNormalize (dir);
 ADDRFP4 8
 INDIRP4
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 1377
-;1376:
-;1377:	hook = G_Spawn();
+line 1388
+;1387:
+;1388:	hook = G_Spawn();
 ADDRLP4 8
 ADDRGP4 G_Spawn
 CALLP4
@@ -8072,16 +8132,16 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 1378
-;1378:	hook->classname = "hook";
+line 1389
+;1389:	hook->classname = "hook";
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
 ADDRGP4 $208
 ASGNP4
-line 1379
-;1379:	hook->nextthink = level.time + 10000;
+line 1390
+;1390:	hook->nextthink = level.time + 10000;
 ADDRLP4 0
 INDIRP4
 CNSTI4 696
@@ -8091,40 +8151,40 @@ INDIRI4
 CNSTI4 10000
 ADDI4
 ASGNI4
-line 1380
-;1380:	hook->think = Weapon_HookFree;
+line 1391
+;1391:	hook->think = Weapon_HookFree;
 ADDRLP4 0
 INDIRP4
 CNSTI4 708
 ADDP4
 ADDRGP4 Weapon_HookFree
 ASGNP4
-line 1381
-;1381:	hook->s.eType = ET_MISSILE;
+line 1392
+;1392:	hook->s.eType = ET_MISSILE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 3
 ASGNI4
-line 1382
-;1382:	hook->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+line 1393
+;1393:	hook->r.svFlags = SVF_USE_CURRENT_ORIGIN;
 ADDRLP4 0
 INDIRP4
 CNSTI4 432
 ADDP4
 CNSTI4 128
 ASGNI4
-line 1383
-;1383:	hook->s.weapon = WP_GRAPPLING_HOOK;
+line 1394
+;1394:	hook->s.weapon = WP_GRAPPLING_HOOK;
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
 ADDP4
 CNSTI4 10
 ASGNI4
-line 1384
-;1384:	hook->r.ownerNum = self->s.number;
+line 1395
+;1395:	hook->r.ownerNum = self->s.number;
 ADDRLP4 0
 INDIRP4
 CNSTI4 520
@@ -8133,24 +8193,24 @@ ADDRFP4 0
 INDIRP4
 INDIRI4
 ASGNI4
-line 1385
-;1385:	hook->methodOfDeath = MOD_GRAPPLE;
+line 1396
+;1396:	hook->methodOfDeath = MOD_GRAPPLE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 768
 ADDP4
 CNSTI4 25
 ASGNI4
-line 1386
-;1386:	hook->clipmask = MASK_SHOT;
+line 1397
+;1397:	hook->clipmask = MASK_SHOT;
 ADDRLP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 100664321
 ASGNI4
-line 1387
-;1387:	hook->parent = self;
+line 1398
+;1398:	hook->parent = self;
 ADDRLP4 0
 INDIRP4
 CNSTI4 608
@@ -8158,43 +8218,55 @@ ADDP4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 1388
-;1388:	hook->target_ent = NULL;
+line 1399
+;1399:	hook->target_ent = NULL;
 ADDRLP4 0
 INDIRP4
 CNSTI4 676
 ADDP4
 CNSTP4 0
 ASGNP4
-line 1389
-;1389:	hook->damage = 999;
+line 1401
+;1400:	
+;1401:	if (g_GrappleMode.integer == 1) // 0 - Normal, 1 - Instagib, 2 - Holds People
+ADDRGP4 g_GrappleMode+12
+INDIRI4
+CNSTI4 1
+NEI4 $306
+line 1402
+;1402:	{
+line 1403
+;1403:		hook->damage = 999;
 ADDRLP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 999
 ASGNI4
-line 1390
-;1390:	hook->splashDamage = 50;
+line 1404
+;1404:		hook->splashDamage = 50;
 ADDRLP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 50
 ASGNI4
-line 1391
-;1391:	hook->splashRadius = 10;
+line 1405
+;1405:		hook->splashRadius = 10;
 ADDRLP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
 CNSTI4 10
 ASGNI4
-line 1395
-;1392:
-;1393://unlagged - grapple
-;1394:	// we might want this later
-;1395:	hook->s.otherEntityNum = self->s.number;
+line 1406
+;1406:	}
+LABELV $306
+line 1410
+;1407:
+;1408://unlagged - grapple
+;1409:	// we might want this later
+;1410:	hook->s.otherEntityNum = self->s.number;
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -8203,12 +8275,12 @@ ADDRFP4 0
 INDIRP4
 INDIRI4
 ASGNI4
-line 1400
-;1396:
-;1397:	// setting the projectile base time back makes the hook's first
-;1398:	// step larger
-;1399:
-;1400:	if ( self->client ) {
+line 1415
+;1411:
+;1412:	// setting the projectile base time back makes the hook's first
+;1413:	// step larger
+;1414:
+;1415:	if ( self->client ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -8216,9 +8288,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $304
-line 1401
-;1401:		hooktime = self->client->pers.cmd.serverTime + 50;
+EQU4 $309
+line 1416
+;1416:		hooktime = self->client->pers.cmd.serverTime + 50;
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -8231,27 +8303,27 @@ INDIRI4
 CNSTI4 50
 ADDI4
 ASGNI4
-line 1402
-;1402:	}
-ADDRGP4 $305
+line 1417
+;1417:	}
+ADDRGP4 $310
 JUMPV
-LABELV $304
-line 1403
-;1403:	else {
-line 1404
-;1404:		hooktime = level.time - MISSILE_PRESTEP_TIME;
+LABELV $309
+line 1418
+;1418:	else {
+line 1419
+;1419:		hooktime = level.time - MISSILE_PRESTEP_TIME;
 ADDRLP4 4
 ADDRGP4 level+32
 INDIRI4
 CNSTI4 50
 SUBI4
 ASGNI4
-line 1405
-;1405:	}
-LABELV $305
-line 1407
-;1406:
-;1407:	hook->s.pos.trTime = hooktime;
+line 1420
+;1420:	}
+LABELV $310
+line 1422
+;1421:
+;1422:	hook->s.pos.trTime = hooktime;
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -8259,21 +8331,21 @@ ADDP4
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1410
-;1408://unlagged - grapple
-;1409:
-;1410:	hook->s.pos.trType = TR_LINEAR;
+line 1425
+;1423://unlagged - grapple
+;1424:
+;1425:	hook->s.pos.trType = TR_LINEAR;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 2
 ASGNI4
-line 1414
-;1411://unlagged - grapple
-;1412:	//hook->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
-;1413://unlagged - grapple
-;1414:	hook->s.otherEntityNum = self->s.number; // use to match beam in client
+line 1429
+;1426://unlagged - grapple
+;1427:	//hook->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+;1428://unlagged - grapple
+;1429:	hook->s.otherEntityNum = self->s.number; // use to match beam in client
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -8282,8 +8354,8 @@ ADDRFP4 0
 INDIRP4
 INDIRI4
 ASGNI4
-line 1415
-;1415:	VectorCopy( start, hook->s.pos.trBase );
+line 1430
+;1430:	VectorCopy( start, hook->s.pos.trBase );
 ADDRLP4 0
 INDIRP4
 CNSTI4 24
@@ -8292,8 +8364,8 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 1416
-;1416:	VectorScale( dir, 800, hook->s.pos.trDelta );
+line 1431
+;1431:	VectorScale( dir, 800, hook->s.pos.trDelta );
 ADDRLP4 0
 INDIRP4
 CNSTI4 36
@@ -8328,8 +8400,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 1417
-;1417:	SnapVector( hook->s.pos.trDelta );			// save net bandwidth
+line 1432
+;1432:	SnapVector( hook->s.pos.trDelta );			// save net bandwidth
 ADDRLP4 12
 ADDRLP4 0
 INDIRP4
@@ -8387,8 +8459,8 @@ INDIRP4
 ADDRLP4 32
 INDIRF4
 ASGNF4
-line 1418
-;1418:	VectorCopy (start, hook->r.currentOrigin);
+line 1433
+;1433:	VectorCopy (start, hook->r.currentOrigin);
 ADDRLP4 0
 INDIRP4
 CNSTI4 496
@@ -8397,9 +8469,9 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 1420
-;1419:
-;1420:	self->client->hook = hook;
+line 1435
+;1434:
+;1435:	self->client->hook = hook;
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -8410,13 +8482,13 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 1422
-;1421:
-;1422:	return hook;
+line 1437
+;1436:
+;1437:	return hook;
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $302
+LABELV $304
 endproc fire_grapple 36 4
 import irandom
 import CheckPlayerPostions
@@ -8600,6 +8672,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_GrappleMode
 import g_Turrets
 import g_StartBFG
 import g_StartPlasma
