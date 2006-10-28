@@ -1377,6 +1377,9 @@ static void CG_AddWeaponWithPowerups( refEntity_t *gun, int powerups ) {
 			trap_R_AddRefEntityToScene( gun );
 		}
 	}
+
+	
+
 }
 
 
@@ -1447,7 +1450,7 @@ void CG_AddPlayerWeapon( refEntity_t *parent, playerState_t *ps, centity_t *cent
 
 	CG_PositionEntityOnTag( &gun, parent, parent->hModel, "tag_weapon");
 
-	CG_AddWeaponWithPowerups( &gun, cent->currentState.powerups );
+	CG_AddWeaponWithPowerups( &gun, cent->currentState.powerups);
 
 	// add the spinning barrel
 	if ( weapon->barrelModel ) {
@@ -1464,7 +1467,7 @@ void CG_AddPlayerWeapon( refEntity_t *parent, playerState_t *ps, centity_t *cent
 
 		CG_PositionRotatedEntityOnTag( &barrel, &gun, weapon->weaponModel, "tag_barrel" );
 
-		CG_AddWeaponWithPowerups( &barrel, cent->currentState.powerups );
+		CG_AddWeaponWithPowerups( &barrel, cent->currentState.powerups);
 	}
 
 	// make sure we aren't looking at cg.predictedPlayerEntity for LG

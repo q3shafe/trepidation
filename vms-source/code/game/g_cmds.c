@@ -98,6 +98,86 @@ void Cmd_SpawnGenerator_f( gentity_t *ent ){
 
 }
 
+
+
+
+//BuildDisplacer
+void Cmd_SpawnDisplacer_f( gentity_t *ent ){
+
+	int	iserror; 
+	iserror = 1;
+
+	// You can only Build Displacers in GameMode 3
+	if (g_GameMode.integer == 3) 
+	{
+		// Make sure there's not more than 2
+		if(ent->client->sess.sessionTeam == TEAM_RED) 
+		{
+			if (level.redTD > 1)
+			{
+				iserror = 2;
+			} else {
+				BuildDisplacer(ent);
+				iserror = 0;
+			}
+		}
+		if(ent->client->sess.sessionTeam == TEAM_BLUE) 
+		{
+			if (level.blueTD > 1)
+			{
+				iserror = 2;
+			} else {
+				BuildDisplacer(ent);
+				iserror = 0;
+			}
+		}
+	}
+	
+	if (g_gametype.integer == GT_CTF && iserror == 1) 
+	{
+		if ((iserror == 1) && (g_Turrets.integer == 1))
+		{
+			// Make sure there's not more than 2
+			if(ent->client->sess.sessionTeam == TEAM_RED) 
+			{
+				if (level.redTD > 1)
+				{
+					iserror = 2;
+				} else {
+					BuildDisplacer(ent);
+					level.redMC = 1; // Do this so it doesnt instantly blow up
+					iserror = 0;
+				}
+			}
+			if(ent->client->sess.sessionTeam == TEAM_BLUE) 
+			{
+				if (level.blueTD > 1)
+				{
+					iserror = 2;
+				} else {
+					level.blueMC = 1; // Do this so it doesnt instantly blow up
+					BuildDisplacer(ent);
+					iserror = 0;
+				}
+			}
+		}
+
+
+	}
+		
+
+	// If it couldn't be built tell them why
+	if (iserror != 0)
+	{
+		// FIXME: Play Error Sound
+		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Too Many Immobilizers..\"" );}
+		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Immobilizers Not Allowed.\"" );}
+		//G_AddEvent( ent, EV_ERROR, 0 );
+	}						
+
+}
+
+
 void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
 
 	int		iserror; 
@@ -336,7 +416,7 @@ void Cmd_Score_f( gentity_t *ent ) {
 void Cmd_Test_f (gentity_t *ent) {
 	
 	
-	
+		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.bluegenerators %i\n\"", level.blueGen ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redgenerators %i\n\"", level.redGen ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.blueturrets %i\n\"", level.blueTurrets ));		
@@ -2023,6 +2103,8 @@ void ClientCommand( int clientNum ) {
 		Cmd_SpawnGenerator_f( ent );
 	else if (Q_stricmp (cmd, "spawnmc") == 0)
 		Cmd_SpawnMC_f( ent );
+	else if (Q_stricmp (cmd, "spawntd") == 0)
+		Cmd_SpawnDisplacer_f( ent);
 	else if (Q_stricmp (cmd, "test") == 0)
 		Cmd_Test_f( ent );
 	else

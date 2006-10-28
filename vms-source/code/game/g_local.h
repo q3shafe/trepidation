@@ -527,7 +527,8 @@ typedef struct {
 	int			blueScoreLatched;
 	int			blueNeedMC;
 	int			redNeedMC;
-
+	int			blueTD;
+	int			redTD;
 
 } level_locals_t;
 
@@ -710,6 +711,7 @@ void G_PredictPlayerMove( gentity_t *ent, float frametime );
 void BuildTurret( gentity_t *ent , int type );
 void BuildGenerator( gentity_t *ent );
 void BuildMC( gentity_t *ent );
+void BuildDisplacer( gentity_t *ent );
 //
 // g_client.c
 //
@@ -953,6 +955,7 @@ extern	vmCvar_t	g_StartBFG;
 // Other Options
 extern	vmCvar_t	g_Turrets;
 extern	vmCvar_t	g_GrappleMode;
+extern	vmCvar_t	g_PCTeamkills;
 
 //extern	vmCvar_t	g_CTFGrapple; // Decided not to make this an option
 

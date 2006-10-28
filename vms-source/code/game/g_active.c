@@ -467,11 +467,26 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 		// Immobilized
 		if ( g_entities[client->ps.clientNum].immobilized == qtrue)
 		{
-			client->ps.speed = 50;
-			g_entities[client->ps.clientNum].health=-3;
+			
+			client->ps.speed = 100;
+			client->ps.gravity = 1;
+			g_entities[client->ps.clientNum].s.time2 = 9;
+			g_entities[client->ps.clientNum].health--;
+			//G_Damage (g_entities[client->ps.clientNum], NULL, NULL, NULL, NULL, 1, 0, MOD_IMMOBILIZED);
+			//g_entities[client->ps.clientNum].s.team == TEAM_RED; // Where using this for a timer now - Typically used for buildables
 			// Let them go when they are about dead.
-			if (g_entities[client->ps.clientNum].health < 8) { g_entities[client->ps.clientNum].immobilized = qfalse; }
+			if (g_entities[client->ps.clientNum].health < 75) { g_entities[client->ps.clientNum].immobilized = qfalse; }
+		}	else
+		{
+			// Free them
+			//g_entities[client->ps.clientNum].s.team = TEAM_BLUE;
+			client->ps.speed = g_speed.integer;
+			client->ps.gravity = g_gravity.integer;
+			g_entities[client->ps.clientNum].s.time2 = 0;
+			g_entities[client->ps.clientNum].immobilized == qfalse;
 		}
+
+
 
 		// count down armor when over max
 		if ( client->ps.stats[STAT_ARMOR] > client->ps.stats[STAT_MAX_HEALTH] ) {
@@ -543,6 +558,8 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 		}
 
 	}
+
+
 
 
 }

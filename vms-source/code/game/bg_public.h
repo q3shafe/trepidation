@@ -606,7 +606,8 @@ typedef enum {
 	MOD_JUICED,
 #endif
 	MOD_GRAPPLE,
-	MOD_ALTFLAMER
+	MOD_ALTFLAMER,
+	MOD_IMMOBILIZED
 } meansOfDeath_t;
 
 
