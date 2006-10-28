@@ -7,7 +7,9 @@
 
 #include "g_local.h"
 
-
+//static	float	s_quadFactor;
+//static	vec3_t	forward, right, up;
+//static	vec3_t	muzzle;
 
 
 /* 
@@ -22,6 +24,10 @@
 #define HARC 90
 #define DARC 10
 #define UARC 45
+
+#define IHARC 180 
+#define IDARC 10
+#define IUARC 45
 
 #define TURRET_MG_SPREAD	100
 #define	TURRET_MG_DAMAGE	15
@@ -51,6 +57,23 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		self->s.time2 = 666;
 		if (self->s.team == TEAM_BLUE)
 		{
+			
+			
+			if (self->classname == "timedisplacer") 
+			{ 
+				level.blueTD--; 			
+				G_LogPrintf("Kill: %i %i %i: Blue IMMOBILIZER was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
+				G_Printf("Blue IMMOBILIZER was destroyed by %s\n", attacker->client->pers.netname);
+				if (attacker->client->sess.sessionTeam == TEAM_RED) 
+				{ 	
+					AddScore(attacker, self->r.currentOrigin, 1); 
+				} else
+				{
+					AddScore(attacker, self->r.currentOrigin, -1); 
+				}
+				self->nextthink = 30000;
+			}
+			
 			if (self->classname == "generator") 
 			{ 
 				level.blueGen--; 			
@@ -102,6 +125,22 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		}
 		if (self->s.team == TEAM_RED)
 		{
+			if (self->classname == "timedisplacer") 
+			{ 
+				level.redTD--;
+				G_LogPrintf("Kill: %i %i %i: Red IMMOBILIZER was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
+				G_Printf("Red IMOBILIZER was destroyed by %s\n", attacker->client->pers.netname);
+				if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
+				{ 	
+					AddScore(attacker, self->r.currentOrigin, 1); 
+				} else
+				{
+					AddScore(attacker, self->r.currentOrigin, -1); 
+				}
+				self->nextthink = 30000;
+						
+			}
+			
 			if (self->classname == "generator") 
 			{ 
 				level.redGen--;
@@ -234,22 +273,50 @@ The last two checks are done last as they require more processing power than the
 this order is just better from a proccesing load perspective
 */
 
-	vectoangles (distance,distance);
-	VectorSubtract(firer->centerpoint,distance,distance);
-	angle=abs((int)distance[1]);
-	while (angle>=360)
+	if (!strcmp(firer->classname, "timedisplacer"))
 	{
-		angle-=360;
+
+		vectoangles (distance,distance);
+		VectorSubtract(firer->centerpoint,distance,distance);
+		angle=abs((int)distance[1]);
+		while (angle>=360)
+		{
+			angle-=360;
+		}
+		if ((angle>=IHARC) && (angle<=(360-IHARC)))
+			return qfalse;
+		angle=abs((int)distance[0]);
+		while (angle>=360)
+		{
+			angle-=360;
+		}
+		if ((angle>IUARC) && (angle<(360-IDARC)))
+			return qfalse;
+
+		
 	}
-	if ((angle>=HARC) && (angle<=(360-HARC)))
-		return qfalse;
-	angle=abs((int)distance[0]);
-	while (angle>=360)
+	else
 	{
-		angle-=360;
+
+		vectoangles (distance,distance);
+		VectorSubtract(firer->centerpoint,distance,distance);
+		angle=abs((int)distance[1]);
+		while (angle>=360)
+		{
+			angle-=360;
+		}
+		if ((angle>=HARC) && (angle<=(360-HARC)))
+			return qfalse;
+		angle=abs((int)distance[0]);
+		while (angle>=360)
+		{
+			angle-=360;
+		}
+		if ((angle>UARC) && (angle<(360-DARC)))
+			return qfalse;
+	
+	
 	}
-	if ((angle>UARC) && (angle<(360-DARC)))
-		return qfalse;
 
 return qtrue;
 }
@@ -297,6 +364,9 @@ void turret_trackenemy( gentity_t *ent){
 
 }
 
+
+
+
 /*
 ===========================
 turret_fireonenemy
@@ -311,26 +381,21 @@ void turret_fireonenemy( gentity_t *ent){
 		// 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 		if (ent->s.time2 > 1)
 		{
-			//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
 			//This is the best turret
 			fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc, qtrue );
-			//Weapon_fire_turret(ent->activator, qtrue);
+		
 		} else
 		{
 			
 			if (ent->s.time2 == 0)
 			{
 				// This is the weakest
-				//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qfalse);
 				fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc, qfalse );
-				
 				
 			} else
 			{
 				// Middle Power
-				//fire_flame(ent->activator, ent->r.currentOrigin, ent->turloc, qtrue);
 				fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc, qtrue );
-				//Weapon_fire_turret(ent->activator, qfalse);
 			}
 			
 			
@@ -879,5 +944,147 @@ void BuildGenerator( gentity_t *ent ){
 
 
 
+
+/* 
+====================================
+
+   TIME DISPLACERS
+
+  // Need Some Models
+
+==================================== 
+*/
+
+void TD_think(gentity_t *ent){
+
+	gentity_t *target;
+
+	target = g_entities;
+
+
+ 	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
+	ent->r.contents = CONTENTS_SOLID;
+
+	// If the mc is gone blow up the time displacer... Meaning
+	// you need an mc before you can build anything.
+	// Otherwise you just sit there looking good.
+	if (ent->s.team == TEAM_BLUE)
+	{
+		// If there is no MC or too many sheild generators blow it up.
+		if (level.blueMC == 0 || level.blueTD> 2)  
+		{	
+			ent->health = 1; 
+			ent->s.time2 = 0;
+			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+		}
+	}
+	if (ent->s.team == TEAM_RED)
+	{
+		if (level.redMC == 0 || level.redTD > 2) 
+		{ 
+			ent->health = 1; 
+			ent->s.time2 = 0;
+			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+		}
+	}
+
+	
+	ent->nextthink=level.time+10;
+	ent->think = TD_think;
+
+	if (!checktarget(ent,ent->enemy))
+	{
+		turret_findenemy(ent);
+	}
+
+	if(!ent->enemy) { 	return; }
+	
+	target = ent->enemy;
+
+	
+	if (ent->count<level.time)
+	{	
+		target->immobilized = qtrue;
+		//target->s.time2 = 9;
+	} 
+
+		
+	//turret_fireonenemy(ent);
+	
+
+	
+	//ent->nextthink=level.time+100;
+
+
+}
+
+/*
+===========================
+TD_prethink
+
+The Time Displacer in 'being
+built' state
+===========================
+*/
+
+void td_prethink(gentity_t *ent){
+
+	// Dont count them until they have been built
+	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
+	{
+		level.blueTD++;
+	}
+	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
+	{
+		level.redTD++;
+	}
+
+		BroadCastSound("sound/items/protect.wav");
+		ent->s.time2=0;
+		ent->think = TD_think;
+		ent->nextthink=level.time+100;
+}
+
+
+/*
+===========================
+BuildDisplacer
+===========================
+*/
+
+void BuildDisplacer( gentity_t *ent ){
+
+	gentity_t	*base;
+
+
+	base=G_Spawn();
+	base->parent=ent;
+	base->s.modelindex = G_ModelIndex("models/turrets/immobilizer.md3");
+	base->model = "models/turrets/immobilizer.md3";
+	base->s.modelindex2 = G_ModelIndex("models/turrets/immobilizer.md3");
+	G_SetOrigin(base,ent->r.currentOrigin);
+	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
+	base->think=td_prethink;
+	base->health=150; // change this to make tougher or weaker.
+	base->s.eType=ET_TURRET;
+	
+	base->s.time2=9; 
+	base->takedamage=qtrue; // so they can be destoryed
+	base->die=turret_explode; // so they actually explode when destroyed
+
+	base->classname = "timedisplacer";
+	base->s.team =  ent->client->sess.sessionTeam;	
+		
+	base->nextthink=level.time+5000;   // 5 Seconds before a time displacer is operational.
+	
+	
+	VectorSet( base->r.mins, -15, -15, -20 );
+	VectorSet( base->r.maxs, 35, 15, 0);
+	
+
+
+	trap_LinkEntity (base);
+
+}
 
 

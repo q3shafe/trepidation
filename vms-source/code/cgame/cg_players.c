@@ -2330,6 +2330,13 @@ void CG_AddRefEntityWithPowerups( refEntity_t *ent, entityState_t *state, int te
 			ent->customShader = cgs.media.battleSuitShader;
 			trap_R_AddRefEntityToScene( ent );
 		}
+		
+		//if ( state->team == TEAM_RED) {
+		if (state->time2 == 9) {
+			ent->customShader = cgs.media.buildShader;
+			trap_R_AddRefEntityToScene( ent );
+		}
+
 		if ( state->powerups & ( 1 << PW_INVULNERABILITY ) ) {
 			ent->customShader = cgs.media.buildShader;
 			trap_R_AddRefEntityToScene( ent );

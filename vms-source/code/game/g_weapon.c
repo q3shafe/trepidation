@@ -774,7 +774,7 @@ void Weapon_HookThink (gentity_t *ent)
 
 /*
 =======================================================================
-TURRET
+TURRET - Not Used but this would be good for a vehichle
 =======================================================================
 */
 void Weapon_fire_turret (gentity_t *ent, qboolean alt ) {
@@ -783,11 +783,15 @@ void Weapon_fire_turret (gentity_t *ent, qboolean alt ) {
 	gentity_t *client;
 
 
+	// All of this is useless.. for the turrets, but lets tweak it for use as a shotgun variant
+
 	m = fire_turret(ent, muzzle, forward, alt);
 	m->damage *= s_quadFactor;
 	m->splashDamage *= s_quadFactor;
 
 	if (alt == qtrue) {
+		
+		
 		//Second bullet goes to the right
 		AngleVectors( ent->client->ps.viewangles, forward, right, up );
 		VectorCopy( forward, newforward );

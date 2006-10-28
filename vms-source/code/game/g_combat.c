@@ -18,6 +18,33 @@ void BroadCastSound(char *path) {
 }
 
 
+void TeamCP(char *msg, int team)
+{
+	int			i;
+	gentity_t	*ent;
+
+	for ( i = 0 ; i < level.maxclients ; i++ ) 
+	{
+		if ( level.clients[i].pers.connected == CON_CONNECTED ) 
+		{
+			if (g_entities[i].client->sess.sessionTeam == team ) 
+			{
+				//ent = g_entities[i].client;
+				trap_SendServerCommand( i, va("cp \"^9%s\n\"", msg) );
+				
+			}
+		}
+	}
+}
+
+/*====================================================
+
+		MOVE THE STUFF ABOVE TO SOME UTILITY AREA
+
+*/
+
+
+
 /*
 ============
 ScorePlum
@@ -1057,12 +1084,8 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		return;
 	}
 
-	if (targ->s.eType ==ET_TURRET && mod == MOD_GRAPPLE && g_GrappleMode.integer == 2)
-	{
-		//targ->client->ps.speed = 0;
-		targ->immobilized == qtrue;
-		return;
-	}
+
+	
 
 #ifdef MISSIONPACK
 	if ( targ->client && mod != MOD_JUICED) {
@@ -1180,6 +1203,36 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 				return;
 			}
 		}
+
+
+	if (targ->s.eType ==ET_TURRET && mod == MOD_GRAPPLE && g_GrappleMode.integer == 2)
+	{
+		//targ->client->ps.speed = 0;
+		targ->immobilized == qtrue;
+		return;
+	}
+
+	
+	// No Team Killing Of MC -  Make this a cvar
+	if ((targ->s.eType ==ET_TURRET) && (targ->s.team == attacker->client->sess.sessionTeam))
+	{
+		if ((!strcmp(targ->classname, "mc")) && (g_PCTeamkills.integer == 0))
+		{
+			return;
+		}
+	}
+
+	
+	if ((targ->s.eType ==ET_TURRET) && (targ->health < 750))
+	{
+		if (!strcmp(targ->classname, "mc"))
+		{	
+				TeamCP("^9Power Core is Under Attack!",targ->s.team);
+		}
+	}
+	
+
+
 #ifdef MISSIONPACK
 		if (mod == MOD_PROXIMITY_MINE) {
 			if (inflictor && inflictor->parent && OnSameTeam(targ, inflictor->parent)) {

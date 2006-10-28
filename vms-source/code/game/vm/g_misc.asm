@@ -2431,6 +2431,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import g_PCTeamkills
 import g_GrappleMode
 import g_Turrets
 import g_StartBFG
@@ -2592,6 +2593,7 @@ import SetClientViewAngle
 import PickTeam
 import TeamLeader
 import TeamCount
+import BuildDisplacer
 import BuildMC
 import BuildGenerator
 import BuildTurret

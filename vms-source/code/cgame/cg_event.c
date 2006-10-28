@@ -120,6 +120,9 @@ static void CG_Obituary( entityState_t *ent ) {
 	case MOD_LAVA:
 		message = "does a back flip into the lava";
 		break;
+	case MOD_IMMOBILIZED:
+		message = "was immobilized";
+		break;
 	case MOD_TARGET_LASER:
 		message = "saw the light";
 		break;

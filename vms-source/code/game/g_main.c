@@ -107,6 +107,7 @@ vmCvar_t	g_StartBFG;
 // Other Options
 vmCvar_t	g_Turrets;
 vmCvar_t	g_GrappleMode;
+vmCvar_t	g_PCTeamkills;
 
 //vmCvar_t	g_CTFGrapple; // Decided not to make this an option
 
@@ -226,6 +227,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_StartBFG, "g_StartBFG", "0", CVAR_ARCHIVE, 0, qtrue  },
 
 	{ &g_GrappleMode, "g_GrappleMode", "1", CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_PCTeamkills, "g_PCTeamkills", "1", CVAR_ARCHIVE, 0, qtrue  },
 
 
 	{ &g_MultiJumps, "g_MultiJumps", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue }

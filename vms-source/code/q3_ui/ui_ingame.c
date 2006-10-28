@@ -852,13 +852,18 @@ static void DM_BuildItem( int xitem ) {
 		trap_Cmd_ExecuteText( EXEC_APPEND, "spawnturret3\n" );
 	}
 
-	// Generator
+	// Immobilizer
 	if (xitem == 3) {
+		trap_Cmd_ExecuteText( EXEC_APPEND, "spawntd\n" );
+	}
+
+	// Generator
+	if (xitem == 4) {
 		trap_Cmd_ExecuteText( EXEC_APPEND, "spawngen\n" );
 	}
 
 	// Master Controller
-	if (xitem == 4) {
+	if (xitem == 5) {
 		trap_Cmd_ExecuteText( EXEC_APPEND, "spawnmc\n" );
 	}
 
@@ -955,12 +960,14 @@ static void DynamicMenu_BuildMenu( void )
 	DynamicMenu_AddItem("Turret", 0, NULL, DM_BuildItem);
 	DynamicMenu_AddItem("Sheilded Turret", 0 , NULL, DM_BuildItem);
 	DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
+	DynamicMenu_AddItem("Immobilizer", 0, NULL, DM_BuildItem);
 //	if( s_dynamic.gamemode == 3) 
 //	{
 		DynamicMenu_AddItem("Generator", 0, NULL, DM_BuildItem);
 		DynamicMenu_AddItem("Power Core", 0, NULL, DM_BuildItem);
 //	}
-	DynamicMenu_AddItem("Close", 0, NULL, DM_Close_Event);
+	
+	//DynamicMenu_AddItem("Close", 0, NULL, DM_Close_Event);
 
 	DynamicMenu_FinishSubMenuInit();
 }
