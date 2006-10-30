@@ -477,6 +477,7 @@ typedef struct {
 	int			voteYes;
 	int			voteNo;
 	int			numVotingClients;		// set by CalculateRanks
+	
 
 	// team voting state
 	char		teamVoteString[2][MAX_STRING_CHARS];

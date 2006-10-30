@@ -1879,6 +1879,59 @@ void Cmd_CallTeamVote_f( gentity_t *ent ) {
 	trap_SetConfigstring( CS_TEAMVOTE_NO + cs_offset, va("%i", level.teamVoteNo[cs_offset] ) );
 }
 
+
+
+/*
+======================================
+  ListPlayers
+
+  Please clean this up
+======================================
+*/
+void Cmd_ListPlayers_f ( gentity_t *ent ) {
+
+int		i;
+int		j;
+int		l;
+int		h;
+int		clientNum;
+int		ping;
+int		score;
+char	userinfo[MAX_INFO_STRING];
+char	*value;
+char		n2[MAX_STRING_CHARS];
+		
+		trap_SendServerCommand( ent-g_entities, va("print \"CLIENT LIST\""));
+		trap_SendServerCommand( ent-g_entities, va("print \"Client  -  Name                   - Ping   -  Score - GUID\""));
+		trap_SendServerCommand( ent-g_entities, va("print \"---------------------------------------------------------------------------------------\""));
+
+		for ( i = 0 ; i < level.maxclients ; i++ ) {
+	
+			if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
+				continue;
+			}
+				
+			clientNum = level.clients[i].ps.clientNum;
+			
+			ping = level.clients[i].ps.ping;
+			score = level.clients[i].ps.persistant[PERS_SCORE];
+			
+			trap_SendServerCommand( ent-g_entities, va("print \"%i  - %s\"", clientNum, level.clients[i].pers.netname ));
+			
+			SanitizeString( level.clients[i].pers.netname, n2 );
+			Q_CleanStr(n2);
+			l = strlen(n2);
+			h = 20 - l;
+				for ( j = 0 ; j < h ; j++ ) {
+					G_Printf(" ");
+				}
+			trap_GetUserinfo( clientNum, userinfo, sizeof( userinfo ) );
+			value = Info_ValueForKey (userinfo, "cl_guid");
+			trap_SendServerCommand( ent-g_entities, va("print \"  -  %i  -  %i  -  %s\n\"", ping, score, value ));
+		
+		}
+}
+
 /*
 ==================
 Cmd_TeamVote_f
@@ -2104,7 +2157,9 @@ void ClientCommand( int clientNum ) {
 	else if (Q_stricmp (cmd, "spawnmc") == 0)
 		Cmd_SpawnMC_f( ent );
 	else if (Q_stricmp (cmd, "spawntd") == 0)
-		Cmd_SpawnDisplacer_f( ent);
+		Cmd_SpawnDisplacer_f( ent );
+	else if (Q_stricmp (cmd, "listplayers") == 0)
+		Cmd_ListPlayers_f( ent ); 
 	else if (Q_stricmp (cmd, "test") == 0)
 		Cmd_Test_f( ent );
 	else
