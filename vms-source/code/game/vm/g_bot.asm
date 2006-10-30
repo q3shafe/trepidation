@@ -1126,7 +1126,7 @@ LABELV $141
 line 232
 ;231:			}
 ;232:			if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -1330,7 +1330,7 @@ LABELV $163
 line 255
 ;254:			}
 ;255:			if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -1608,7 +1608,7 @@ LABELV $193
 line 297
 ;296:		}
 ;297:		if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -1771,7 +1771,7 @@ LABELV $208
 line 326
 ;325:		}
 ;326:		if ( g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT ) {
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -1901,7 +1901,7 @@ LABELV $222
 line 352
 ;351:		}
 ;352:		if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 4
 INDIRP4
 CNSTI4 140
@@ -3765,7 +3765,7 @@ line 673
 ;672:
 ;673:	bot = &g_entities[ clientNum ];
 ADDRLP4 1052
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 1036
 INDIRI4
 MULI4

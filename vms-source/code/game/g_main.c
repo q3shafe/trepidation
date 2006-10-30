@@ -555,6 +555,147 @@ void G_UpdateCvars( void ) {
 	}
 }
 
+
+
+/*
+============
+G_ShowTopStats
+
+============
+*/
+void G_ShowTopStats( void ) {
+
+int		tt;	
+int		td;	
+int		ttd;	
+int		tc;	
+int		ttc;	
+int		ttt;	
+int		tks;
+int		tds;
+int		tknd;
+int		i;
+gentity_t	*ent;
+gentity_t	*topthaw;
+gentity_t	*topdeath;
+gentity_t	*topcaps;
+gentity_t	*topkillspree;
+gentity_t	*topdeathspree;
+gentity_t	*topkillsnodie;
+
+
+	tt=0;
+	td=0;
+	ttt=0;
+	ttd=0;
+	tc=0;
+	ttc=0;
+	tds=0;
+	tks=0;
+	tknd=0;
+
+	for ( i = 0 ; i < level.maxclients ; i++ ) 
+	{
+	
+		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
+			continue;
+		}
+
+		ent = &g_entities[i];
+		
+		if (ent->InstaCaps > tt) 
+		{	
+			tt = ent->InstaCaps; 
+			topcaps = ent;
+		}
+		if (ent->InstaDeaths > td) 
+		{ 
+			td = ent->InstaDeaths; 
+			topdeath = ent;
+		
+		}
+
+		// This used to be captures now it's chat frags 
+		if (ent->InstaChatFrags > tc) 
+		{ 
+			tc = ent->InstaChatFrags; 
+			topcaps = ent;
+		
+		}
+
+
+		// Top death Spree
+		if (ent->InstaMostDeathSpree > tds) 
+		{ 
+			tds = ent->InstaMostDeathSpree;
+			topdeathspree = ent;
+		
+		}
+
+		// Top Killing Spree
+		if (ent->InstaMostKillSpree > tks) 
+		{ 
+			tks = ent->InstaMostKillSpree; 
+			topkillspree = ent;
+		
+		}
+
+		// Most Kills Without Dying
+		
+		// First Make Sure That They Wern't on a better spree when the map ended...
+		// If they are force the value over so their best run is registered
+
+		if (ent->InstaKillsInRowTemp > ent->InstaKillsInRow) 
+		{
+				ent->InstaKillsInRow = ent->InstaKillsInRowTemp;
+		}
+
+		// No figure out who had the best run
+		if (ent->InstaKillsInRow > tknd)
+		{ 
+			tknd = ent->InstaKillsInRow; 
+			topkillsnodie = ent;
+		
+		}
+
+	}
+		
+		trap_SendServerCommand( -1, va("print \"^9----^3**^9--- ^2RANKINGS ^9---^3**^9---\n\""));
+		if (tknd>0) 
+		{
+			trap_SendServerCommand( -1, va("print \"^9Most Kills w/o Dying..: ^3%s ^9%i\n\"", topkillsnodie->client->pers.netname, tknd));
+		}
+		
+		
+		if (tt>0) 
+		{
+			trap_SendServerCommand( -1, va("print \"^9Most Captures.........: ^3%s ^9%i\n\"", topcaps->client->pers.netname, tt));
+		}
+
+		if (td>0)
+		{
+			trap_SendServerCommand( -1, va("print \"^9Most Deaths...........: ^3%s ^9%i\n\"", topdeath->client->pers.netname, td));
+		}
+
+		if (tks>0)
+		{
+			trap_SendServerCommand( -1, va("print \"^9Most Killing Sprees...: ^3%s ^9%i\n\"", topkillspree->client->pers.netname, tks));
+		}
+		
+		if (tds>0)	
+		{
+			trap_SendServerCommand( -1, va("print \"^9Most Dying Sprees.....: ^3%s ^9%i\n\"", topdeathspree->client->pers.netname, tds));
+		}
+		
+		if (tc>0)
+		{
+			trap_SendServerCommand( -1, va("print \"^9Most ChatFrags........: ^3%s ^9%i\n\"", topcaps->client->pers.netname, tc));
+		}
+	
+}
+
+
+
 /*
 ============
 G_InitGame
@@ -1587,6 +1728,11 @@ void CheckExitRules( void ) {
 		}
 		
 
+		// 
+		// Addme: Dont allow while waiting for players -- Also put in the notifications
+		if ( level.numPlayingClients < 2 ) {
+			return;
+		}
 		if ((level.time-level.redScoreTime) > 55000) 
 		{
 
@@ -1617,30 +1763,6 @@ void CheckExitRules( void ) {
 		if ((level.blueMC <= 0) && (level.blueNeedMC == 0)) { level.blueNeedMC= 1; }
 		
 
-		/*
-		// Something is screwy let's try again  - This is just bad code 
-		if ((level.time-level.scoreTime) > 40000) 
-		{
-
-			 if ((level.blueMC == 0) && (level.blueScoreLatched == 0))
-				{
-					trap_SendServerCommand( -1, "print \"Automatically Placing Blue MC.\n\"" );
-					level.blueScoreLatched = 0;
-					PlaceMC(TEAM_BLUE);
-					return;
-				}
-		
-				if ((level.redMC == 0) && (level.redScoreLatched == 0))
-				{
-					trap_SendServerCommand( -1, "print \"Automatically Placing Red MC.\n\"" );
-					level.redScoreLatched = 0;
-					PlaceMC(TEAM_RED);
-					return;
-				}
-			
-
-		}
-		*/
 
 	}
 
@@ -1649,12 +1771,14 @@ void CheckExitRules( void ) {
 		if ( level.teamScores[TEAM_RED] >= g_capturelimit.integer ) {
 			trap_SendServerCommand( -1, "print \"Red hit the point limit.\n\"" );
 			LogExit( "Capturelimit hit." );
+			G_ShowTopStats();
 			return;
 		}
 
 		if ( level.teamScores[TEAM_BLUE] >= g_capturelimit.integer ) {
 			trap_SendServerCommand( -1, "print \"Blue hit the point limit.\n\"" );
 			LogExit( "Capturelimit hit." );
+			G_ShowTopStats();
 			return;
 		}
 	}
@@ -1664,6 +1788,7 @@ void CheckExitRules( void ) {
 		if ( level.time - level.startTime >= g_timelimit.integer*60000 ) {
 			trap_SendServerCommand( -1, "print \"Timelimit hit.\n\"");
 			LogExit( "Timelimit hit." );
+			G_ShowTopStats();
 			return;
 		}
 	}
@@ -1887,12 +2012,14 @@ void CheckExitRules( void ) {
 		if ( level.teamScores[TEAM_RED] >= g_fraglimit.integer ) {
 			trap_SendServerCommand( -1, "print \"Red hit the fraglimit.\n\"" );
 			LogExit( "Fraglimit hit." );
+			G_ShowTopStats();
 			return;
 		}
 
 		if ( level.teamScores[TEAM_BLUE] >= g_fraglimit.integer ) {
 			trap_SendServerCommand( -1, "print \"Blue hit the fraglimit.\n\"" );
 			LogExit( "Fraglimit hit." );
+			G_ShowTopStats();
 			return;
 		}
 	
@@ -1909,6 +2036,7 @@ void CheckExitRules( void ) {
 				LogExit( "Fraglimit hit." );
 				trap_SendServerCommand( -1, va("print \"%s" S_COLOR_WHITE " hit the fraglimit.\n\"",
 					cl->pers.netname ) );
+				G_ShowTopStats();
 				return;
 			}
 		}
@@ -1920,12 +2048,14 @@ void CheckExitRules( void ) {
 		if ( level.teamScores[TEAM_RED] >= g_capturelimit.integer ) {
 			trap_SendServerCommand( -1, "print \"Red hit the capturelimit.\n\"" );
 			LogExit( "Capturelimit hit." );
+			G_ShowTopStats();
 			return;
 		}
 
 		if ( level.teamScores[TEAM_BLUE] >= g_capturelimit.integer ) {
 			trap_SendServerCommand( -1, "print \"Blue hit the capturelimit.\n\"" );
 			LogExit( "Capturelimit hit." );
+			G_ShowTopStats();
 			return;
 		}
 	}

@@ -169,7 +169,18 @@ struct gentity_s {
 	// Shafe - trep - pdg
 	vec3_t      teleloc;
 	int         istelepoint;
-	// end shafe
+	
+	int			InstaThaws;
+	int			InstaStreak;
+	int			InstaDeaths;
+	int			InstaDeathStreak;
+	int			InstaCaps;
+	int			InstaChatFrags;
+	int			InstaMostKillSpree;
+	int			InstaMostDeathSpree;
+	int			InstaKillsInRow;
+	int			InstaKillsInRowTemp;
+
 
 	gitem_t		*item;			// for bonus items
 	float		distance;	

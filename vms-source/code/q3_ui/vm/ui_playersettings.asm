@@ -48,7 +48,7 @@ line 87
 ;2://
 ;3:#include "ui_local.h"
 ;4:
-;5:#define ART_FRAMEL			"menu/art/frame2_l"
+;5:#define ART_FRAMEL			"menu/art/menu_back1"
 ;6:#define ART_FRAMER			"menu/art/frame1_r"
 ;7:#define ART_MODEL0			"menu/art/model_0"
 ;8:#define ART_MODEL1			"menu/art/model_1"
@@ -1578,14 +1578,14 @@ ADDRGP4 s_playersettings+360+16
 CNSTI4 0
 ASGNI4
 line 356
-;356:	s_playersettings.framel.width         = 800;
+;356:	s_playersettings.framel.width         = 1024;
 ADDRGP4 s_playersettings+360+76
-CNSTI4 800
+CNSTI4 1024
 ASGNI4
 line 357
-;357:	s_playersettings.framel.height        = 600;
+;357:	s_playersettings.framel.height        = 768;
 ADDRGP4 s_playersettings+360+80
-CNSTI4 600
+CNSTI4 768
 ASGNI4
 line 359
 ;358:
@@ -3016,14 +3016,16 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 102
-byte 1 114
-byte 1 97
 byte 1 109
 byte 1 101
-byte 1 50
+byte 1 110
+byte 1 117
 byte 1 95
-byte 1 108
+byte 1 98
+byte 1 97
+byte 1 99
+byte 1 107
+byte 1 49
 byte 1 0
 align 1
 LABELV $194

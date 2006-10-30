@@ -410,7 +410,7 @@ line 145
 ;144:
 ;145:	ent = &g_entities[clientNum];
 ADDRLP4 0
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -491,7 +491,7 @@ line 165
 ;164:
 ;165:	ent = &g_entities[entityNum];
 ADDRLP4 0
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -8594,7 +8594,7 @@ LABELV $591
 line 1394
 ;1393:			}
 ;1394:			if( g_entities[i].client->pers.connected != CON_CONNECTED ) {
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -8942,7 +8942,7 @@ LABELV $625
 line 1445
 ;1445:			ent = &g_entities[i];
 ADDRLP4 4
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -9465,7 +9465,7 @@ LABELV $671
 line 1525
 ;1524:
 ;1525:			if (g_entities[i].client->pers.connected == CON_CONNECTED) {
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -9550,7 +9550,7 @@ LABELV $680
 line 1537
 ;1536:		}
 ;1537:		if( g_entities[i].client->pers.connected != CON_CONNECTED ) {
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0
 INDIRI4
 MULI4

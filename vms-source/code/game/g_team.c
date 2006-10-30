@@ -810,10 +810,12 @@ int Team_TouchOurFlag( gentity_t *ent, gentity_t *other, int team ) {
 #ifdef MISSIONPACK
 	if( g_gametype.integer == GT_1FCTF ) {
 		PrintMsg( NULL, "%s" S_COLOR_WHITE " captured the flag!\n", cl->pers.netname );
+		other->InstaCaps++;
 	}
 	else {
 #endif
 	PrintMsg( NULL, "%s" S_COLOR_WHITE " captured the %s flag!\n", cl->pers.netname, TeamName(OtherTeam(team)));
+	other->InstaCaps++;
 #ifdef MISSIONPACK
 	}
 #endif
