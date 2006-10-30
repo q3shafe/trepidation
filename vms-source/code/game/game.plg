@@ -6,7 +6,7 @@
 --------------------Configuration: game - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3AC.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP133.tmp" with contents
 [
 /nologo /G6 /ML /W4 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "GLOBALRANK" /Fp".\Release/game.pch" /YX /Fo".\Release/" /Fd".\Release/" /FD /c 
 "E:\games\trepidation\source\vms-source\code\game\ai_chat.c"
@@ -46,8 +46,8 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3AC.tmp" with con
 "E:\games\trepidation\source\vms-source\code\game\q_math.c"
 "E:\games\trepidation\source\vms-source\code\game\q_shared.c"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3AC.tmp" 
-Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3AD.tmp" with contents
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP133.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP134.tmp" with contents
 [
 kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows /dll /incremental:no /pdb:".\Release/qagamex86.pdb" /map:".\Release/qagamex86.map" /machine:I386 /def:".\game.def" /out:"../Release/qagamex86.dll" /implib:".\Release/qagamex86.lib" 
 ".\Release\ai_chat.obj"
@@ -87,7 +87,7 @@ kernel32.lib user32.lib winmm.lib /nologo /base:"0x20000000" /subsystem:windows 
 ".\Release\q_math.obj"
 ".\Release\q_shared.obj"
 ]
-Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP3AD.tmp"
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP134.tmp"
 <h3>Output Window</h3>
 Compiling...
 ai_chat.c
@@ -102,22 +102,24 @@ bg_pmove.c
 bg_slidemove.c
 E:\games\trepidation\source\vms-source\code\game\bg_pmove.c(1900) : warning C4701: local variable 'addTime' may be used without having been initialized
 g_active.c
-E:\games\trepidation\source\vms-source\code\game\g_active.c(485) : warning C4553: '==' : operator has no effect; did you intend '='?
-E:\games\trepidation\source\vms-source\code\game\g_active.c(603) : warning C4101: 'item' : unreferenced local variable
-E:\games\trepidation\source\vms-source\code\game\g_active.c(604) : warning C4101: 'drop' : unreferenced local variable
-E:\games\trepidation\source\vms-source\code\game\g_active.c(602) : warning C4101: 'fired' : unreferenced local variable
-E:\games\trepidation\source\vms-source\code\game\g_active.c(596) : warning C4101: 'j' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(486) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_active.c(604) : warning C4101: 'item' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(605) : warning C4101: 'drop' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(603) : warning C4101: 'fired' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_active.c(597) : warning C4101: 'j' : unreferenced local variable
 g_arenas.c
 g_bot.c
 g_buildables.c
-E:\games\trepidation\source\vms-source\code\game\g_buildables.c(56) : warning C4130: '==' : logical operation on address of string constant
-E:\games\trepidation\source\vms-source\code\game\g_buildables.c(70) : warning C4130: '==' : logical operation on address of string constant
-E:\games\trepidation\source\vms-source\code\game\g_buildables.c(84) : warning C4130: '==' : logical operation on address of string constant
-E:\games\trepidation\source\vms-source\code\game\g_buildables.c(107) : warning C4130: '==' : logical operation on address of string constant
-E:\games\trepidation\source\vms-source\code\game\g_buildables.c(122) : warning C4130: '==' : logical operation on address of string constant
-E:\games\trepidation\source\vms-source\code\game\g_buildables.c(136) : warning C4130: '==' : logical operation on address of string constant
-E:\games\trepidation\source\vms-source\code\game\g_buildables.c(499) : warning C4013: 'BroadCastSound' undefined; assuming extern returning int
-E:\games\trepidation\source\vms-source\code\game\g_buildables.c(537) : warning C4101: 'tr' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(62) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(77) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(91) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(105) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(128) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(144) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(159) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(173) : warning C4130: '==' : logical operation on address of string constant
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(564) : warning C4013: 'BroadCastSound' undefined; assuming extern returning int
+E:\games\trepidation\source\vms-source\code\game\g_buildables.c(602) : warning C4101: 'tr' : unreferenced local variable
 g_client.c
 E:\games\trepidation\source\vms-source\code\game\g_client.c(930) : warning C4189: 'reason' : local variable is initialized but not referenced
 E:\games\trepidation\source\vms-source\code\game\g_client.c(931) : warning C4101: 'i' : unreferenced local variable
@@ -131,13 +133,18 @@ g_combat.c
 E:\games\trepidation\source\vms-source\code\game\g_combat.c(24) : warning C4101: 'ent' : unreferenced local variable
 E:\games\trepidation\source\vms-source\code\game\g_combat.c(293) : warning C4101: 'ent' : unreferenced local variable
 E:\games\trepidation\source\vms-source\code\game\g_combat.c(294) : warning C4101: 'i' : unreferenced local variable
-E:\games\trepidation\source\vms-source\code\game\g_combat.c(758) : warning C4553: '==' : operator has no effect; did you intend '='?
-E:\games\trepidation\source\vms-source\code\game\g_combat.c(1211) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_combat.c(814) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_items.c
 g_main.c
-E:\games\trepidation\source\vms-source\code\game\g_main.c(1787) : warning C4553: '==' : operator has no effect; did you intend '='?
+E:\games\trepidation\source\vms-source\code\game\g_main.c(579) : warning C4101: 'topthaw' : unreferenced local variable
+E:\games\trepidation\source\vms-source\code\game\g_main.c(1912) : warning C4553: '==' : operator has no effect; did you intend '='?
 g_mem.c
-E:\games\trepidation\source\vms-source\code\game\g_main.c(2499) : warning C4701: local variable 'valid_count' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_main.c(692) : warning C4701: local variable 'topcaps' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_main.c(677) : warning C4701: local variable 'topdeath' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_main.c(687) : warning C4701: local variable 'topdeathspree' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_main.c(682) : warning C4701: local variable 'topkillspree' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_main.c(666) : warning C4701: local variable 'topkillsnodie' may be used without having been initialized
+E:\games\trepidation\source\vms-source\code\game\g_main.c(2629) : warning C4701: local variable 'valid_count' may be used without having been initialized
 g_misc.c
 g_missile.c
 E:\games\trepidation\source\vms-source\code\game\g_misc.c(410) : warning C4701: local variable 'tent' may be used without having been initialized
@@ -181,7 +188,7 @@ Linking...
 
 
 <h3>Results</h3>
-qagamex86.dll - 0 error(s), 48 warning(s)
+qagamex86.dll - 0 error(s), 55 warning(s)
 </pre>
 </body>
 </html>
