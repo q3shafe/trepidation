@@ -2,7 +2,7 @@
 //
 #include "ui_local.h"
 
-#define ART_FRAMEL			"menu/art/frame2_l"
+#define ART_FRAMEL			"menu/art/menu_back1"
 #define ART_FRAMER			"menu/art/frame1_r"
 #define ART_MODEL0			"menu/art/model_0"
 #define ART_MODEL1			"menu/art/model_1"
@@ -353,8 +353,8 @@ static void PlayerSettings_MenuInit( void ) {
 	s_playersettings.framel.generic.flags = QMF_LEFT_JUSTIFY|QMF_INACTIVE;
 	s_playersettings.framel.generic.x     = 0;
 	s_playersettings.framel.generic.y     = 0;
-	s_playersettings.framel.width         = 800;
-	s_playersettings.framel.height        = 600;
+	s_playersettings.framel.width         = 1024;
+	s_playersettings.framel.height        = 768;
 
 	s_playersettings.framer.generic.type  = MTYPE_BITMAP;
 	s_playersettings.framer.generic.name  = ART_FRAMER;

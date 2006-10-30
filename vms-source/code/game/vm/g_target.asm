@@ -75,7 +75,7 @@ line 25
 ;25:		if ( !t->item ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 836
+CNSTI4 876
 ADDP4
 INDIRP4
 CVPU4 4
@@ -612,7 +612,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 876
+CNSTI4 916
 DIVI4
 ARGI4
 ADDRLP4 0
@@ -1599,7 +1599,7 @@ EQI4 $142
 line 254
 ;253:		// hurt it if we can
 ;254:		G_Damage ( &g_entities[tr.entityNum], self, self->activator, self->movedir, 
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 24+52
 INDIRI4
 MULI4
@@ -2626,7 +2626,7 @@ ASGNI4
 ADDRFP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 876
+CNSTI4 916
 ADDP4
 ASGNP4
 LABELV $201

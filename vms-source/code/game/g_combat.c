@@ -130,7 +130,7 @@ void TossClientItems( gentity_t *self ) {
 	if (g_instagib.integer == 0)
 	{
 		
-		if ( weapon > WP_MACHINEGUN && weapon != WP_GRAPPLING_HOOK && self->client->ps.ammo[ weapon ] ) 
+		if ( weapon > WP_GAUNTLET && weapon != WP_GRAPPLING_HOOK && self->client->ps.ammo[ weapon ] ) 
 		{
 			// find the item type for this weapon
 			item = BG_FindItemForWeapon( weapon );
@@ -544,6 +544,10 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	}
 
 
+	if ((self->client->ps.eFlags & EF_TALK) && (meansOfDeath != MOD_SUICIDE) && (attacker != &g_entities[ENTITYNUM_WORLD]))
+	{
+		attacker->InstaChatFrags++;
+	} 
 
 
 
@@ -610,6 +614,58 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	self->enemy = attacker;
 
 	self->client->ps.persistant[PERS_KILLED]++;
+
+	if (meansOfDeath != MOD_SUICIDE)
+	{
+		
+		if (attacker->client != self->client) 
+		{
+
+			if (self->client->pers.connected == CON_CONNECTED && attacker->client->pers.connected == CON_CONNECTED)
+			{
+
+				self->InstaStreak = 0;
+				attacker->InstaStreak++;
+				self->InstaDeaths++;
+				self->InstaDeathStreak++;
+				attacker->InstaDeathStreak=0;
+				
+				// Calculating The Most Kills Without Dying
+				attacker->InstaKillsInRowTemp++;
+				if (self->InstaKillsInRowTemp > self->InstaKillsInRow)
+				{
+					self->InstaKillsInRow = self->InstaKillsInRowTemp;
+				}
+				self->InstaKillsInRowTemp = 0;
+
+
+				// Streak Of 7 Gives them a spree msg :)
+				if (attacker->InstaStreak == 7)
+				{
+						trap_SendServerCommand( -1, va( "print \"" S_COLOR_YELLOW "%s ^7IS ON A KILLING SPREE!\n\"", attacker->client->pers.netname ) );
+						trap_SendServerCommand( -1, va("cp \"^7%s IS ON A KILLING SPREE!!\n\"", attacker->client->pers.netname ) );
+						//attacker->client->ps.persistant[PERS_SCORE]+=1;
+						attacker->InstaMostKillSpree++;
+						attacker->InstaStreak = 0;
+
+				
+				}
+
+				// 4 Deaths without scoring makes a Dying spree dieing
+				if (self->InstaDeathStreak == 4) 
+				{
+						trap_SendServerCommand( -1, va( "print \"" S_COLOR_YELLOW "%s ^7IS ON A DYING SPREE!\n\"", self->client->pers.netname ) );
+						trap_SendServerCommand( -1, va("cp \"^7%s IS ON A DYING SPREE!!\n\"", self->client->pers.netname ) );
+						self->InstaMostDeathSpree++;
+						self->InstaDeathStreak = 0;
+
+				}
+				
+				
+			}
+		}
+	}
+
 
 	if (attacker && attacker->client) {
 		attacker->client->lastkilled_client = self->s.number;
@@ -1205,12 +1261,14 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		}
 
 
-	if (targ->s.eType ==ET_TURRET && mod == MOD_GRAPPLE && g_GrappleMode.integer == 2)
+	/*
+	if (mod == MOD_GRAPPLE && g_GrappleMode.integer == 2)
 	{
 		//targ->client->ps.speed = 0;
 		targ->immobilized == qtrue;
 		return;
 	}
+	*/
 
 	
 	// No Team Killing Of MC -  Make this a cvar

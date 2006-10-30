@@ -56,7 +56,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Art:", UI_CENTER|UI_SMALLFONT, &color_headertext },
-{ "Scott Hanke, Ryan McNeill, Petee, Gigon", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Scott Hanke, Petee, Gigon", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Gigabyte123, Laz, Dr. Preston", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "[FC]Pope John Paul III", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
@@ -99,7 +99,9 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "Icculus.org IOQ3 Project", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Thilo Schultz", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Mathieu Olivier (dpmaster)", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Neil Toronto", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "ID Software", UI_CENTER|UI_SMALLFONT, &color_maintext },
+
 
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },

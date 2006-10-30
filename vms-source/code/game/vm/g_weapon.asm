@@ -382,7 +382,7 @@ line 68
 ;67:
 ;68:	traceEnt = &g_entities[ tr.entityNum ];
 ADDRLP4 0
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 4+52
 INDIRI4
 MULI4
@@ -1083,7 +1083,7 @@ line 228
 ;227:
 ;228:		traceEnt = &g_entities[ tr.entityNum ];
 ADDRLP4 56
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0+52
 INDIRI4
 MULI4
@@ -1563,7 +1563,7 @@ pop
 line 340
 ;340:		traceEnt = &g_entities[ tr.entityNum ];
 ADDRLP4 56
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0+52
 INDIRI4
 MULI4
@@ -3040,7 +3040,7 @@ line 629
 ;628:		}
 ;629:		traceEnt = &g_entities[ trace.entityNum ];
 ADDRLP4 0
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 4+52
 INDIRI4
 MULI4
@@ -4653,7 +4653,7 @@ line 896
 ;895:
 ;896:		traceEnt = &g_entities[ tr.entityNum ];
 ADDRLP4 56
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0+52
 INDIRI4
 MULI4
@@ -6089,14 +6089,16 @@ ARGP4
 ADDRGP4 Weapon_RocketLauncher_Fire
 CALLV
 pop
-line 1214
-;1214:	break; 
+line 1216
+;1214:	// Zoom?
+;1215:	//trap_SendConsoleCommand( EXEC_APPEND, "+zoom\n" );
+;1216:	break; 
 ADDRGP4 $347
 JUMPV
 LABELV $357
-line 1216
-;1215: case WP_BFG: 
-;1216:	BFG_Fire( ent, qtrue); 
+line 1218
+;1217: case WP_BFG: 
+;1218:	BFG_Fire( ent, qtrue); 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6105,28 +6107,28 @@ ARGI4
 ADDRGP4 BFG_Fire
 CALLV
 pop
-line 1217
-;1217:	break; 
+line 1219
+;1219:	break; 
 ADDRGP4 $347
 JUMPV
 LABELV $358
-line 1219
-;1218: case WP_GRAPPLING_HOOK: 
-;1219:	Weapon_GrapplingHook_Fire( ent ); 
+line 1221
+;1220: case WP_GRAPPLING_HOOK: 
+;1221:	Weapon_GrapplingHook_Fire( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_GrapplingHook_Fire
 CALLV
 pop
-line 1220
-;1220:	break;
+line 1222
+;1222:	break;
 ADDRGP4 $347
 JUMPV
 LABELV $359
-line 1222
-;1221: case WP_TURRET:
-;1222:	Weapon_fire_turret( ent, qtrue );
+line 1224
+;1223: case WP_TURRET:
+;1224:	Weapon_fire_turret( ent, qtrue );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6135,16 +6137,16 @@ ARGI4
 ADDRGP4 Weapon_fire_turret
 CALLV
 pop
-line 1223
-;1223:	break;	
-line 1226
-;1224: default: 
-;1225:// FIXME  G_Error( "Bad ent->s.weapon" ); 
-;1226:  break; 
-LABELV $347
+line 1225
+;1225:	break;	
 line 1228
-;1227: } 
-;1228:}
+;1226: default: 
+;1227:// FIXME  G_Error( "Bad ent->s.weapon" ); 
+;1228:  break; 
+LABELV $347
+line 1230
+;1229: } 
+;1230:}
 LABELV $340
 endproc FireWeapon2 12 20
 import irandom

@@ -1853,7 +1853,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 1500; 
 		break; 
 	case WP_RAILGUN: 
-		addTime = 1500; 
+		addTime = 1200; 
 		break; 
 	case WP_BFG: 
 		//  addTime = 100; 

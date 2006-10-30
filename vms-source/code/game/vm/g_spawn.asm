@@ -350,7 +350,7 @@ byte 4 672
 byte 4 2
 skip 4
 address $95
-byte 4 840
+byte 4 880
 byte 4 1
 skip 4
 byte 4 0
@@ -2333,12 +2333,12 @@ pop
 line 585
 ;584:
 ;585:	g_entities[ENTITYNUM_WORLD].s.number = ENTITYNUM_WORLD;
-ADDRGP4 g_entities+895272
+ADDRGP4 g_entities+936152
 CNSTI4 1022
 ASGNI4
 line 586
 ;586:	g_entities[ENTITYNUM_WORLD].classname = "worldspawn";
-ADDRGP4 g_entities+895272+532
+ADDRGP4 g_entities+936152+532
 ADDRGP4 $287
 ASGNP4
 line 589

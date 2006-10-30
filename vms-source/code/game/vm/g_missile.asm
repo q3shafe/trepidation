@@ -1256,7 +1256,7 @@ line 179
 ADDRLP4 64
 ADDRFP4 0
 INDIRP4
-CNSTI4 844
+CNSTI4 884
 ADDP4
 ASGNP4
 ADDRLP4 20
@@ -1282,7 +1282,7 @@ ADDRLP4 20+8
 INDIRF4
 ADDRFP4 0
 INDIRP4
-CNSTI4 844
+CNSTI4 884
 ADDP4
 INDIRI4
 CVIF4 4
@@ -2336,7 +2336,7 @@ line 317
 line 318
 ;318:			g_entities[ent->r.ownerNum].client->accuracy_hits++;
 ADDRLP4 40
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 520
@@ -2570,7 +2570,7 @@ line 508
 ;507:#endif
 ;508:	other = &g_entities[trace->entityNum];
 ADDRLP4 0
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 4
 INDIRP4
 CNSTI4 52
@@ -2723,7 +2723,7 @@ line 555
 ADDRLP4 0
 INDIRP4
 ARGP4
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 520
@@ -2744,7 +2744,7 @@ EQI4 $199
 line 556
 ;556:				g_entities[ent->r.ownerNum].client->accuracy_hits++;
 ADDRLP4 28
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 520
@@ -2820,7 +2820,7 @@ ASGNP4
 ADDRLP4 32
 INDIRP4
 ARGP4
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 32
 INDIRP4
 CNSTI4 520
@@ -3509,7 +3509,7 @@ NEI4 $222
 line 677
 ;677:				g_entities[ent->r.ownerNum].client->accuracy_hits++;
 ADDRLP4 28
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 520
@@ -7190,7 +7190,7 @@ line 1254
 ;1254:	bolt->constantSpeed = HOMING_MISSILE_SPEED;
 ADDRLP4 0
 INDIRP4
-CNSTI4 844
+CNSTI4 884
 ADDP4
 CNSTI4 800
 ASGNI4
@@ -7215,7 +7215,7 @@ INDIRP4
 INDIRF4
 ADDRLP4 0
 INDIRP4
-CNSTI4 844
+CNSTI4 884
 ADDP4
 INDIRI4
 CVIF4 4
@@ -7232,7 +7232,7 @@ ADDP4
 INDIRF4
 ADDRLP4 0
 INDIRP4
-CNSTI4 844
+CNSTI4 884
 ADDP4
 INDIRI4
 CVIF4 4
@@ -7249,7 +7249,7 @@ ADDP4
 INDIRF4
 ADDRLP4 0
 INDIRP4
-CNSTI4 844
+CNSTI4 884
 ADDP4
 INDIRI4
 CVIF4 4
@@ -8262,11 +8262,47 @@ ASGNI4
 line 1406
 ;1406:	}
 LABELV $306
-line 1410
+line 1408
 ;1407:
-;1408://unlagged - grapple
-;1409:	// we might want this later
-;1410:	hook->s.otherEntityNum = self->s.number;
+;1408:	if (g_GrappleMode.integer == 2) // 0 - Normal, 1 - Instagib, 2 - Holds People
+ADDRGP4 g_GrappleMode+12
+INDIRI4
+CNSTI4 2
+NEI4 $309
+line 1409
+;1409:	{
+line 1410
+;1410:		hook->damage = 0.01;
+ADDRLP4 0
+INDIRP4
+CNSTI4 756
+ADDP4
+CNSTI4 0
+ASGNI4
+line 1411
+;1411:		hook->splashDamage = 1;
+ADDRLP4 0
+INDIRP4
+CNSTI4 760
+ADDP4
+CNSTI4 1
+ASGNI4
+line 1412
+;1412:		hook->splashRadius = 1;
+ADDRLP4 0
+INDIRP4
+CNSTI4 764
+ADDP4
+CNSTI4 1
+ASGNI4
+line 1413
+;1413:	}
+LABELV $309
+line 1417
+;1414:
+;1415://unlagged - grapple
+;1416:	// we might want this later
+;1417:	hook->s.otherEntityNum = self->s.number;
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -8275,12 +8311,12 @@ ADDRFP4 0
 INDIRP4
 INDIRI4
 ASGNI4
-line 1415
-;1411:
-;1412:	// setting the projectile base time back makes the hook's first
-;1413:	// step larger
-;1414:
-;1415:	if ( self->client ) {
+line 1422
+;1418:
+;1419:	// setting the projectile base time back makes the hook's first
+;1420:	// step larger
+;1421:
+;1422:	if ( self->client ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -8288,9 +8324,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $309
-line 1416
-;1416:		hooktime = self->client->pers.cmd.serverTime + 50;
+EQU4 $312
+line 1423
+;1423:		hooktime = self->client->pers.cmd.serverTime + 50;
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -8303,27 +8339,27 @@ INDIRI4
 CNSTI4 50
 ADDI4
 ASGNI4
-line 1417
-;1417:	}
-ADDRGP4 $310
+line 1424
+;1424:	}
+ADDRGP4 $313
 JUMPV
-LABELV $309
-line 1418
-;1418:	else {
-line 1419
-;1419:		hooktime = level.time - MISSILE_PRESTEP_TIME;
+LABELV $312
+line 1425
+;1425:	else {
+line 1426
+;1426:		hooktime = level.time - MISSILE_PRESTEP_TIME;
 ADDRLP4 4
 ADDRGP4 level+32
 INDIRI4
 CNSTI4 50
 SUBI4
 ASGNI4
-line 1420
-;1420:	}
-LABELV $310
-line 1422
-;1421:
-;1422:	hook->s.pos.trTime = hooktime;
+line 1427
+;1427:	}
+LABELV $313
+line 1429
+;1428:
+;1429:	hook->s.pos.trTime = hooktime;
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -8331,21 +8367,21 @@ ADDP4
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1425
-;1423://unlagged - grapple
-;1424:
-;1425:	hook->s.pos.trType = TR_LINEAR;
+line 1432
+;1430://unlagged - grapple
+;1431:
+;1432:	hook->s.pos.trType = TR_LINEAR;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 2
 ASGNI4
-line 1429
-;1426://unlagged - grapple
-;1427:	//hook->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
-;1428://unlagged - grapple
-;1429:	hook->s.otherEntityNum = self->s.number; // use to match beam in client
+line 1436
+;1433://unlagged - grapple
+;1434:	//hook->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+;1435://unlagged - grapple
+;1436:	hook->s.otherEntityNum = self->s.number; // use to match beam in client
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -8354,8 +8390,8 @@ ADDRFP4 0
 INDIRP4
 INDIRI4
 ASGNI4
-line 1430
-;1430:	VectorCopy( start, hook->s.pos.trBase );
+line 1437
+;1437:	VectorCopy( start, hook->s.pos.trBase );
 ADDRLP4 0
 INDIRP4
 CNSTI4 24
@@ -8364,8 +8400,8 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 1431
-;1431:	VectorScale( dir, 800, hook->s.pos.trDelta );
+line 1438
+;1438:	VectorScale( dir, 800, hook->s.pos.trDelta );
 ADDRLP4 0
 INDIRP4
 CNSTI4 36
@@ -8400,8 +8436,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 1432
-;1432:	SnapVector( hook->s.pos.trDelta );			// save net bandwidth
+line 1439
+;1439:	SnapVector( hook->s.pos.trDelta );			// save net bandwidth
 ADDRLP4 12
 ADDRLP4 0
 INDIRP4
@@ -8459,8 +8495,8 @@ INDIRP4
 ADDRLP4 32
 INDIRF4
 ASGNF4
-line 1433
-;1433:	VectorCopy (start, hook->r.currentOrigin);
+line 1440
+;1440:	VectorCopy (start, hook->r.currentOrigin);
 ADDRLP4 0
 INDIRP4
 CNSTI4 496
@@ -8469,9 +8505,9 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 1435
-;1434:
-;1435:	self->client->hook = hook;
+line 1442
+;1441:
+;1442:	self->client->hook = hook;
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -8482,9 +8518,9 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 1437
-;1436:
-;1437:	return hook;
+line 1444
+;1443:
+;1444:	return hook;
 ADDRLP4 0
 INDIRP4
 RETP4

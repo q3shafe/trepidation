@@ -858,7 +858,10 @@ void ClearRegisteredItems( void ) {
 
 	// players always start with the base weapon
 	RegisterItem( BG_FindItemForWeapon( WP_MACHINEGUN ) );
+	// We're using some effects from the plasma gun.. so yeah..
+	RegisterItem( BG_FindItemForWeapon( WP_PLASMAGUN ) );
 	RegisterItem( BG_FindItemForWeapon( WP_GAUNTLET ) );
+
 	// Let's Always Register The Rocket Launcher  - Shafe - Trep 
 	RegisterItem( BG_FindItemForWeapon( WP_ROCKET_LAUNCHER ) );
 	// Shafe - Trep Preregister Lighning and the Grapple For the offhand grapple

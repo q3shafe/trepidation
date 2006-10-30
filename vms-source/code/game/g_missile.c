@@ -1405,6 +1405,13 @@ gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir) {
 		hook->splashRadius = 10;
 	}
 
+	if (g_GrappleMode.integer == 2) // 0 - Normal, 1 - Instagib, 2 - Holds People
+	{
+		hook->damage = 0.01;
+		hook->splashDamage = 1;
+		hook->splashRadius = 1;
+	}
+
 //unlagged - grapple
 	// we might want this later
 	hook->s.otherEntityNum = self->s.number;

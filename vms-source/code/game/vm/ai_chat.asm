@@ -4874,7 +4874,7 @@ LABELV $473
 line 760
 ;760:	lasthurt_client = g_entities[bs->client].client->lasthurt_client;
 ADDRLP4 0
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -5036,7 +5036,7 @@ LABELV $492
 line 777
 ;776:	//
 ;777:	ClientName(g_entities[bs->client].client->lasthurt_client, name, sizeof(name));
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -5059,7 +5059,7 @@ CALLP4
 pop
 line 778
 ;778:	weap = BotWeaponNameForMeansOfDeath(g_entities[bs->client].client->lasthurt_client);
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -5141,7 +5141,7 @@ line 797
 ;796:
 ;797:	lasthurt_client = g_entities[bs->client].client->lasthurt_client;
 ADDRLP4 0
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -5408,7 +5408,7 @@ CALLP4
 pop
 line 823
 ;823:	weap = BotWeaponNameForMeansOfDeath(g_entities[bs->client].client->lasthurt_mod);
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -5698,7 +5698,7 @@ CALLP4
 pop
 line 861
 ;861:	weap = BotWeaponNameForMeansOfDeath(g_entities[bs->enemy].client->lasthurt_mod);
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 6540
@@ -8516,7 +8516,7 @@ INDIRI4
 LTI4 $682
 line 1151
 ;1151:	ClientName(g_entities[bs->client].client->lasthurt_client, name, sizeof(name));
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -8539,7 +8539,7 @@ CALLP4
 pop
 line 1152
 ;1152:	weap = BotWeaponNameForMeansOfDeath(g_entities[bs->client].client->lasthurt_client);
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRP4
 CNSTI4 8

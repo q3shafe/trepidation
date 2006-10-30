@@ -278,7 +278,7 @@ LABELV $75
 line 72
 ;72:		hit = &g_entities[touch[i]];
 ADDRLP4 4
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -1710,7 +1710,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 876
+CNSTI4 916
 DIVI4
 ASGNI4
 line 394
@@ -3105,7 +3105,7 @@ line 698
 ;697:
 ;698:	ent = g_entities + clientNum;
 ADDRLP4 1032
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -3831,7 +3831,7 @@ ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
 LTI4 $293
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -4418,7 +4418,7 @@ line 933
 ;932:
 ;933:	ent = &g_entities[ clientNum ];
 ADDRLP4 1032
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -4895,7 +4895,7 @@ line 1022
 ;1019:
 ;1020://unlagged - backward reconciliation #5
 ;1021:	// announce it
-;1022:	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build *UNRELEASED*\n\"" );
+;1022:	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 10-29-06 Rev A\n\"" );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -4951,7 +4951,7 @@ line 1049
 ;1048:
 ;1049:	ent = g_entities + clientNum;
 ADDRLP4 4
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -5381,7 +5381,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 876
+CNSTI4 916
 DIVI4
 ASGNI4
 line 1138
@@ -7248,7 +7248,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 876
+CNSTI4 916
 DIVI4
 ARGI4
 ADDRGP4 ClientThink
@@ -7522,7 +7522,7 @@ INDIRI4
 ASGNI4
 line 1522
 ;1522:		SetTeam(&g_entities[c], "red"); 
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7577,7 +7577,7 @@ INDIRI4
 ASGNI4
 line 1530
 ;1530:		SetTeam(&g_entities[c], "blue"); 
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7784,7 +7784,7 @@ line 1578
 line 1580
 ;1579:		// Set it down for the blue team
 ;1580:		BuildMC(&g_entities[c]);
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7809,7 +7809,7 @@ line 1584
 line 1586
 ;1585:		// set it down for the red team
 ;1586:		BuildMC(&g_entities[c]);
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7831,7 +7831,7 @@ RETI4
 LABELV $529
 endproc PlaceMC 16 4
 export ClientDisconnect
-proc ClientDisconnect 24 8
+proc ClientDisconnect 28 20
 line 1608
 ;1590:	
 ;1591:}
@@ -7870,7 +7870,7 @@ line 1617
 ;1616:
 ;1617:	ent = g_entities + clientNum;
 ADDRLP4 4
-CNSTI4 876
+CNSTI4 916
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -7941,7 +7941,7 @@ line 1626
 ;1626:			&& level.clients[i].sess.spectatorClient == clientNum ) {
 line 1627
 ;1627:			StopFollowing( &g_entities[i] );
-CNSTI4 876
+CNSTI4 916
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -8057,12 +8057,34 @@ line 1647
 LABELV $557
 line 1649
 ;1648:
-;1649:	G_LogPrintf( "ClientDisconnect: %i\n", clientNum );
+;1649:	 G_LogPrintf( "ClientDisconnect: %i [%s] (%s) \"%s\"\n", clientNum, ent->client->pers.ip, ent->client->pers.guid, ent->client->pers.netname );
 ADDRGP4 $559
 ARGP4
 ADDRFP4 0
 INDIRI4
 ARGI4
+ADDRLP4 16
+ADDRLP4 4
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+ASGNP4
+ADDRLP4 16
+INDIRP4
+CNSTI4 2525
+ADDP4
+ARGP4
+ADDRLP4 16
+INDIRP4
+CNSTI4 2492
+ADDP4
+ARGP4
+ADDRLP4 16
+INDIRP4
+CNSTI4 512
+ADDP4
+ARGP4
 ADDRGP4 G_LogPrintf
 CALLV
 pop
@@ -8074,17 +8096,17 @@ ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 1
 NEI4 $560
-ADDRLP4 16
+ADDRLP4 20
 CNSTI4 0
 ASGNI4
 ADDRGP4 level+9140
 INDIRI4
-ADDRLP4 16
+ADDRLP4 20
 INDIRI4
 NEI4 $560
 ADDRGP4 level+16
 INDIRI4
-ADDRLP4 16
+ADDRLP4 20
 INDIRI4
 NEI4 $560
 ADDRGP4 level+96+4
@@ -8097,7 +8119,7 @@ line 1654
 ;1654:		&& !level.warmupTime && level.sortedClients[1] == clientNum ) {
 line 1655
 ;1655:		level.clients[ level.sortedClients[0] ].sess.wins++;
-ADDRLP4 20
+ADDRLP4 24
 CNSTI4 3452
 ADDRGP4 level+96
 INDIRI4
@@ -8108,9 +8130,9 @@ ADDP4
 CNSTI4 2568
 ADDP4
 ASGNP4
-ADDRLP4 20
+ADDRLP4 24
 INDIRP4
-ADDRLP4 20
+ADDRLP4 24
 INDIRP4
 INDIRI4
 CNSTI4 1
@@ -8240,7 +8262,7 @@ LABELV $571
 line 1674
 ;1674:}
 LABELV $547
-endproc ClientDisconnect 24 8
+endproc ClientDisconnect 28 20
 import irandom
 import CheckPlayerPostions
 import G_SendCommandToClient
@@ -8876,6 +8898,21 @@ byte 1 58
 byte 1 32
 byte 1 37
 byte 1 105
+byte 1 32
+byte 1 91
+byte 1 37
+byte 1 115
+byte 1 93
+byte 1 32
+byte 1 40
+byte 1 37
+byte 1 115
+byte 1 41
+byte 1 32
+byte 1 34
+byte 1 37
+byte 1 115
+byte 1 34
 byte 1 10
 byte 1 0
 align 1
@@ -9038,18 +9075,20 @@ byte 1 105
 byte 1 108
 byte 1 100
 byte 1 32
-byte 1 42
-byte 1 85
-byte 1 78
+byte 1 49
+byte 1 48
+byte 1 45
+byte 1 50
+byte 1 57
+byte 1 45
+byte 1 48
+byte 1 54
+byte 1 32
 byte 1 82
-byte 1 69
-byte 1 76
-byte 1 69
+byte 1 101
+byte 1 118
+byte 1 32
 byte 1 65
-byte 1 83
-byte 1 69
-byte 1 68
-byte 1 42
 byte 1 10
 byte 1 34
 byte 1 0
