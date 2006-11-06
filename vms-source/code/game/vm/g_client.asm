@@ -4619,7 +4619,7 @@ line 967
 ;963:
 ;964:
 ;965:
-;966:  // add guid to session so we don't have to keep parsing userinfo everywhere
+;966:  // add guid to session so we don't have to keep parsing userinfo everywhere /*
 ;967:  if( !guid[0] )
 ADDRLP4 1036
 INDIRI1
@@ -4895,7 +4895,7 @@ line 1022
 ;1019:
 ;1020://unlagged - backward reconciliation #5
 ;1021:	// announce it
-;1022:	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 10-29-06 Rev A\n\"" );
+;1022:	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 10-29-06 Rev C (11/05)\n\"" );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -8089,7 +8089,7 @@ ADDRGP4 G_LogPrintf
 CALLV
 pop
 line 1652
-;1650:
+;1650:	 //G_LogPrintf( "ClientDisconnect: %i \"%s\"\n", clientNum, ent->client->pers.netname );
 ;1651:	// if we are playing in tourney mode and losing, give a win to the other player
 ;1652:	if ( (g_gametype.integer == GT_TOURNAMENT )
 ADDRGP4 g_gametype+12
@@ -9088,7 +9088,15 @@ byte 1 82
 byte 1 101
 byte 1 118
 byte 1 32
-byte 1 65
+byte 1 67
+byte 1 32
+byte 1 40
+byte 1 49
+byte 1 49
+byte 1 47
+byte 1 48
+byte 1 53
+byte 1 41
 byte 1 10
 byte 1 34
 byte 1 0

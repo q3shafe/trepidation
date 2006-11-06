@@ -2817,7 +2817,7 @@ line 487
 ;487:		}
 LABELV $233
 line 492
-;488:
+;488:		
 ;489:
 ;490:
 ;491:		// count down armor when over max

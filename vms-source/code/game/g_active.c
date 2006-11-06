@@ -485,7 +485,7 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 			g_entities[client->ps.clientNum].s.time2 = 0;
 			g_entities[client->ps.clientNum].immobilized == qfalse;
 		}
-
+		
 
 
 		// count down armor when over max

@@ -1279,7 +1279,7 @@ gentity_t *fire_mg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 	bolt->think = G_ExplodeMissile;
 	bolt->s.eType = ET_MISSILE;
 	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
-	bolt->s.weapon = WP_TURRET;
+	bolt->s.weapon = WP_MACHINEGUN;
 	bolt->r.ownerNum = self->s.number;
 	//unlagged - projectile nudge
 	// we'll need this for nudging projectiles later
@@ -1335,13 +1335,15 @@ gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt)
 	bolt->think = G_ExplodeMissile;
 	bolt->s.eType = ET_MISSILE;
 	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
-	bolt->s.weapon = WP_TURRET;
+	bolt->s.weapon = WP_MACHINEGUN;
 	bolt->r.ownerNum = self->s.number;
 	//unlagged - projectile nudge
 	// we'll need this for nudging projectiles later
 	bolt->s.otherEntityNum = self->s.number;
 	//unlagged - projectile nudge
 	bolt->parent = self;
+	
+	
 	if (alt == qtrue)
 	{
 		bolt->damage = 20;
