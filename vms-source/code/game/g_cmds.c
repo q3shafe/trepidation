@@ -1930,6 +1930,7 @@ char		n2[MAX_STRING_CHARS];
 			trap_SendServerCommand( ent-g_entities, va("print \"  -  %i  -  %i  -  %s\n\"", ping, score, value ));
 		
 		}
+
 }
 
 /*

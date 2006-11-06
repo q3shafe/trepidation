@@ -306,6 +306,7 @@ typedef struct {
 	qboolean            muted;
 	int                 adminLevel;	
 
+
 //unlagged - true ping
 } clientPersistant_t;
 
