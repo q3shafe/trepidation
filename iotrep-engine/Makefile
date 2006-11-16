@@ -190,9 +190,9 @@ ifeq ($(PLATFORM),linux)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
 
-#  ifeq ($(USE_CODEC_MP3),1)
+  ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
-#  endif
+  endif
 
   ifeq ($(USE_SDL),1)
     BASE_CFLAGS += -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 $(shell sdl-config --cflags)
@@ -203,9 +203,9 @@ ifeq ($(PLATFORM),linux)
 
   OPTIMIZE = -O3 -ffast-math -funroll-loops -fomit-frame-pointer
 
-#  ifeq ($(USE_CODEC_MP3),1)
+  ifeq ($(USE_CODEC_MP3),1)
     CLIENT_LDFLAGS += -lmad
-#  endif
+  endif
 
 
   ifeq ($(ARCH),x86_64)
