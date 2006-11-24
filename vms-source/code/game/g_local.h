@@ -1053,6 +1053,7 @@ int		trap_AAS_FloatForBSPEpairKey(int ent, char *key, float *value);
 int		trap_AAS_IntForBSPEpairKey(int ent, char *key, int *value);
 
 int		trap_AAS_AreaReachability(int areanum);
+int		trap_AAS_AreaLadder(int areanum);	//AreaLadder add -Vincent
 
 int		trap_AAS_AreaTravelTimeToGoalArea(int areanum, vec3_t origin, int goalareanum, int travelflags);
 int		trap_AAS_EnableRoutingArea( int areanum, int enable );

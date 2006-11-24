@@ -108,6 +108,26 @@ void BotSetUserInfo(bot_state_t *bs, char *key, char *value) {
 
 /*
 ==================
+BotFirstLadder
+==================
+*/
+
+// Ladder support (part 2) -Vincent
+int BotFirstLadder( int *areas, int numareas )
+{
+	int i;
+	for (i=0; i<numareas; i++) 
+	{
+		if (trap_AAS_AreaLadder( areas[i] )) 
+		{
+		return areas[i];
+		}
+	}
+	return 0;
+}
+
+/*
+==================
 BotCTFCarryingFlag
 ==================
 */
@@ -1352,17 +1372,66 @@ void BotTeamGoals(bot_state_t *bs, int retreat) {
 BotPointAreaNum
 ==================
 */
-int BotPointAreaNum(vec3_t origin) {
+int BotPointAreaNum(vec3_t origin) 
+{
 	int areanum, numareas, areas[10];
-	vec3_t end;
+	vec3_t end, mins, maxs;
+	gentity_t *ent=NULL;
 
-	areanum = trap_AAS_PointAreaNum(origin);
-	if (areanum) return areanum;
-	VectorCopy(origin, end);
-	end[2] += 10;
-	numareas = trap_AAS_TraceAreas(origin, end, areas, NULL, 10);
-	if (numareas > 0) return areas[0];
-	return 0;
+	// Ladder support (part 1) -Vincent
+	if (ent && ent->client && ent->client->ps.pm_flags & PMF_LADDER)
+	{
+		areanum = trap_AAS_PointAreaNum(origin);
+		if (areanum && !trap_AAS_AreaLadder(areanum)) 
+		{
+		areanum = 0;
+		}
+		if (areanum)
+		{
+		return areanum;
+		}
+
+		maxs[0] = 8;
+		maxs[1] = 8;
+		maxs[2] = 4;
+		VectorSubtract( origin, maxs, mins );
+		VectorAdd( origin, maxs, maxs );
+		numareas = trap_AAS_BBoxAreas(mins, maxs, areas, 50);
+		if (numareas > 0) 
+		{
+		BotFirstLadder(areas, numareas);
+		}
+
+		areanum = trap_AAS_PointAreaNum(origin);
+		if (areanum && !trap_AAS_AreaReachability(areanum)) 
+		{
+		areanum = 0;
+		}
+		if (areanum) 
+		{
+		return areanum;
+		}
+		return 0;
+	}
+	else
+	{
+		areanum = trap_AAS_PointAreaNum(origin);
+	
+		if (areanum)
+		{
+		return areanum;
+		}
+	
+		VectorCopy(origin, end);
+		end[2] += 10;
+		numareas = trap_AAS_TraceAreas(origin, end, areas, NULL, 10);
+
+		if (numareas > 0)
+		{
+		return areas[0];
+		}
+		return 0;
+	}
 }
 
 /*
@@ -1475,9 +1544,11 @@ char *EasyClientName(int client, char *buf, int size) {
 	strcpy(name, ClientName(client, name, sizeof(name)));
 	for (i = 0; name[i]; i++) name[i] &= 127;
 	//remove all spaces
-	for (ptr = strstr(name, " "); ptr; ptr = strstr(name, " ")) {
+	for (ptr = strstr(name, " "); ptr; ptr = strstr(name, " ")) 
+	{
 		memmove(ptr, ptr+1, strlen(ptr+1)+1);
 	}
+	
 	//check for [x] and ]x[ clan names
 	str1 = strstr(name, "[");
 	str2 = strstr(name, "]");
@@ -1485,25 +1556,38 @@ char *EasyClientName(int client, char *buf, int size) {
 		if (str2 > str1) memmove(str1, str2+1, strlen(str2+1)+1);
 		else memmove(str2, str1+1, strlen(str1+1)+1);
 	}
-	//remove Mr prefix
+
+	//remove Mr or Ms (not really frequently used but important too...) prefix -Vincent
 	if ((name[0] == 'm' || name[0] == 'M') &&
-			(name[1] == 'r' || name[1] == 'R')) {
+			(name[1] == 'r' || name[1] == 'R' || name[1] == 's' || name[1] == 'S')) 
+	{
 		memmove(name, name+2, strlen(name+2)+1);
 	}
-	//only allow lower case alphabet characters
+
+
 	ptr = name;
-	while(*ptr) {
+	
+	if (*ptr >= 'A' && *ptr <= 'Z')
+	{ //Leave first capital in name untouched, now done correctly -Vincent
+	ptr++;
+	}
+
+	while(*ptr) 
+	{
 		c = *ptr;
 		if ((c >= 'a' && c <= 'z') ||
-				(c >= '0' && c <= '9') || c == '_') {
-			ptr++;
+				(c >= '0' && c <= '9') || c == '_') 
+		{
+		ptr++;
 		}
-		else if (c >= 'A' && c <= 'Z') {
-			*ptr += 'a' - 'A';
-			ptr++;
+		else if (c >= 'A' && c <= 'Z') 
+		{
+		*ptr += 'a' - 'A';
+		ptr++;
 		}
-		else {
-			memmove(ptr, ptr+1, strlen(ptr + 1)+1);
+		else 
+		{
+		memmove(ptr, ptr+1, strlen(ptr + 1)+1);
 		}
 	}
 	strncpy(buf, name, size-1);
@@ -3588,7 +3672,7 @@ void BotCheckAttack(bot_state_t *bs) {
 		}
 #endif
 	}
-	//
+
 	reactiontime = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_REACTIONTIME, 0, 1);
 	if (bs->enemysight_time > FloatTime() - reactiontime) return;
 	if (bs->teleport_time > FloatTime() - reactiontime) return;

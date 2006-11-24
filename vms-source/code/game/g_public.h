@@ -223,6 +223,7 @@ typedef enum {
 	BOTLIB_GET_CONSOLE_MESSAGE,		// ( int client, char *message, int size );
 	BOTLIB_USER_COMMAND,			// ( int client, usercmd_t *ucmd );
 
+	BOTLIB_AAS_AREA_LADDER, // AreaLadder add -Vincent
 	BOTLIB_AAS_ENABLE_ROUTING_AREA = 300,
 	BOTLIB_AAS_BBOX_AREAS,
 	BOTLIB_AAS_AREA_INFO,
