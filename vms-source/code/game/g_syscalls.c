@@ -272,6 +272,11 @@ int trap_AAS_Initialized(void) {
 	return syscall( BOTLIB_AAS_INITIALIZED );
 }
 
+int trap_AAS_AreaLadder(int areanum) 
+{ //AreaLadder add -Vincent
+	return syscall( BOTLIB_AAS_AREA_LADDER, areanum );
+}
+
 void trap_AAS_PresenceTypeBoundingBox(int presencetype, vec3_t mins, vec3_t maxs) {
 	syscall( BOTLIB_AAS_PRESENCE_TYPE_BOUNDING_BOX, presencetype, mins, maxs );
 }

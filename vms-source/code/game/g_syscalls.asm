@@ -102,6 +102,7 @@ equ trap_AAS_AreaTravelTimeToGoalArea	-317
 
 equ trap_AAS_Swimming					-318
 equ trap_AAS_PredictClientMovement		-319
+equ trap_AAS_AreaLadder					-320
 
 
 

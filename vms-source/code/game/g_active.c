@@ -334,8 +334,17 @@ void SpectatorThink( gentity_t *ent, usercmd_t *ucmd ) {
 	client->buttons = ucmd->buttons;
 
 	// attack button cycles through spectators
-	if ( ( client->buttons & BUTTON_ATTACK ) && ! ( client->oldbuttons & BUTTON_ATTACK ) ) {
+	if ( ( client->buttons & BUTTON_ATTACK ) && ! ( client->oldbuttons & BUTTON_ATTACK ) ) 
+	{
 		Cmd_FollowCycle_f( ent, 1 );
+	}
+	else if ( ( client->buttons & BUTTON_AFFIRMATIVE ) && ! ( client->oldbuttons & BUTTON_AFFIRMATIVE ) )
+	{
+		// Stop following when alt-fire is triggerd -Vincent
+		if ( ent->client->sess.spectatorState == SPECTATOR_FOLLOW ) 
+		{
+			StopFollowing( ent );
+		}
 	}
 }
 

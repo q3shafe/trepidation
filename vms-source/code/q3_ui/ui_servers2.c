@@ -71,9 +71,10 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define GR_LOGO				30
 #define GR_LETTERS			31
 
-#define AS_LOCAL			0
-#define AS_MPLAYER			1
-#define AS_GLOBAL			2
+//Set AS_GLOBAL as first -Vincent
+#define AS_GLOBAL			0
+#define AS_LOCAL			1
+#define AS_MPLAYER			2
 #define AS_FAVORITES		3
 
 #define SORT_HOST			0
@@ -1193,20 +1194,21 @@ void ArenaServers_SetType( int type )
 
 	g_servertype = type;
 
-	switch( type ) {
+	switch( type )
+	{
 	default:
+	case AS_GLOBAL: // AS_Global is now set as default -Vincent
+		g_arenaservers.remove.generic.flags |= (QMF_INACTIVE|QMF_HIDDEN);
+		g_arenaservers.serverlist = g_globalserverlist;
+		g_arenaservers.numservers = &g_numglobalservers;
+		g_arenaservers.maxservers = MAX_GLOBALSERVERS;
+		break;
+
 	case AS_LOCAL:
 		g_arenaservers.remove.generic.flags |= (QMF_INACTIVE|QMF_HIDDEN);
 		g_arenaservers.serverlist = g_localserverlist;
 		g_arenaservers.numservers = &g_numlocalservers;
 		g_arenaservers.maxservers = MAX_LOCALSERVERS;
-		break;
-
-	case AS_GLOBAL:
-		g_arenaservers.remove.generic.flags |= (QMF_INACTIVE|QMF_HIDDEN);
-		g_arenaservers.serverlist = g_globalserverlist;
-		g_arenaservers.numservers = &g_numglobalservers;
-		g_arenaservers.maxservers = MAX_GLOBALSERVERS;
 		break;
 
 	case AS_FAVORITES:
@@ -1225,10 +1227,12 @@ void ArenaServers_SetType( int type )
 		
 	}
 
-	if( !*g_arenaservers.numservers ) {
+	if( !*g_arenaservers.numservers )
+	{
 		ArenaServers_StartRefresh();
 	}
-	else {
+	else 
+	{
 		// avoid slow operation, use existing results
 		g_arenaservers.currentping       = *g_arenaservers.numservers;
 		g_arenaservers.numqueriedservers = *g_arenaservers.numservers; 

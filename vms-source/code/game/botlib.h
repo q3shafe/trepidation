@@ -217,6 +217,7 @@ typedef struct aas_export_s
 	// be_aas_reach.c
 	//--------------------------------------------
 	int			(*AAS_AreaReachability)(int areanum);
+	int			(*AAS_AreaLadder)(int areanum);	//AreaLadder add -Vincent
 	//--------------------------------------------
 	// be_aas_route.c
 	//--------------------------------------------

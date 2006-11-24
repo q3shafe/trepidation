@@ -500,27 +500,28 @@ createturretgun
 ===========================
 */
 // let's add weapon and turret type to this call
-void createturretgun(gentity_t *ent){
+void createturretgun(gentity_t *ent)
+{
 	gentity_t *turret; 	// The object to hold the turrets details.
+	
 	int			num;
 	int			touch[MAX_GENTITIES];
 
-
 	// code to check there is noone within the base before making it solid
-	/* This code sucks and causes other problems 
-	*/
+	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
+
 	vec3_t		mins, maxs;
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
 	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
 	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
-	/*
+	
 	if (num>1)
 	{
 		ent->nextthink=level.time+1000;
 		return;
 	}
-	*/
+
 
 	ent->nextthink=level.time+100; // sets up the thinking for the cloaking or regeneration/
 	ent->think=Base_think; // handles cloaking or regeneration
@@ -547,7 +548,9 @@ void createturretgun(gentity_t *ent){
 		turret->s.modelindex = G_ModelIndex("models/turrets/gun1.md3");
 		turret->model = "models/turrets/gun1.md3";
 		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun1.md3");
-	} else {
+	} 
+	else 
+	{
 		turret->s.modelindex = G_ModelIndex("models/turrets/gun2.md3");
 		turret->model = "models/turrets/gun1.md3";
 		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun2.md3");
@@ -585,7 +588,8 @@ void createturretgun(gentity_t *ent){
 turret_retaliate
 ===========================
 */
-void turret_retaliate(gentity_t *self, gentity_t *attacker, int damage){
+void turret_retaliate(gentity_t *self, gentity_t *attacker, int damage)
+{
 // set the guns enemy to the person that shot it. (does not override targeting rules)
 if (self->chain)
 	self->chain->enemy=attacker;
@@ -610,19 +614,15 @@ if (self->chain)
 BuildTurret
 ===========================
 */
-void BuildTurret( gentity_t *ent , int type ){
-
+void BuildTurret( gentity_t *ent , int type )
+{
 	// We need to check the turret type and select the appropriate model
-
-	gentity_t	*base;
-	trace_t		tr;
-	//vec3_t		dest;
-
+	gentity_t	*base;	
+	trace_t		tr;	
+	vec3_t		dest;
 
 	base=G_Spawn();
-	base->parent=ent;
-	
-	
+	base->parent=ent;		
 	base->r.contents = CONTENTS_FOG;
 	
 	if (type == 0)
@@ -630,28 +630,29 @@ void BuildTurret( gentity_t *ent , int type ){
 		base->s.modelindex = G_ModelIndex("models/turrets/base.md3");
 		base->model = "models/turrets/base.md3";
 		base->s.modelindex2 = G_ModelIndex("models/turrets/base.md3");
-	}else
+	}
+	else
 	{
 		base->s.modelindex = G_ModelIndex("models/turrets/base2.md3");
 		base->model = "models/turrets/base2.md3";
 		base->s.modelindex2 = G_ModelIndex("models/turrets/base2.md3");
 	}
-	G_SetOrigin(base,ent->r.currentOrigin);
-	//VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
-	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	
+	G_SetOrigin(base,ent->r.currentOrigin);
+	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
+
 	base->think=createturretgun;
 	
 	if (type==0)
 	{
 		base->health=100; // change this to make the turrets tougher or weaker.
-	} else
+	} 
+	else
 	{
 		base->health=300; // change this to make the turrets tougher or weaker.
 	}
 	
 	base->s.eType=ET_TURRET;
-
 	
 	if (ent->client->sess.sessionTeam == TEAM_BLUE)
 	{
@@ -660,20 +661,22 @@ void BuildTurret( gentity_t *ent , int type ){
 	if (ent->client->sess.sessionTeam == TEAM_RED)
 	{
 		level.redTurrets++;
-	}
-	
+	}	
 
 	base->s.time2=type; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	
 	base->classname = "turret";
 	base->s.team =  ent->client->sess.sessionTeam;	
 
-	base->takedamage=qtrue; // so they can be destoryed
+	base->takedamage=qtrue; // so they can be destroyed
 	base->die=turret_explode; // so they actually explode when destroyed
 	base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
 	base->nextthink=level.time+5000;
-	VectorSet( base->r.mins, -15, -15, -20 );
-	VectorSet( base->r.maxs, 35, 15, -5); 
+	
+	// Correction to default numbers -Vincent
+	VectorSet( base->r.mins, -16, -16, -16 );
+	VectorSet( base->r.maxs, 16, 16, 16);
+
 	trap_LinkEntity (base);
 	//Drop_Item(ent,base,45);
 
@@ -698,8 +701,8 @@ MC_think
  as well.
 ===========================
 */
-void MC_think(gentity_t *ent){
-
+void MC_think(gentity_t *ent)
+{
 	int shieldMultiplier;
 
 	shieldMultiplier = 1;
@@ -759,17 +762,38 @@ The MC as it is in the
 'being built' state
 ===========================
 */
-void MC_prethink(gentity_t *ent){
+void MC_prethink(gentity_t *ent)
+{
+	int			num;
+	int			touch[MAX_GENTITIES];
 
-		if (ent->s.team == TEAM_BLUE)
-		{
-			level.blueScoreLatched = 0;
-		} else {
-			level.redScoreLatched = 0;
-		}
-		ent->s.time2=1;
-		ent->think = MC_think;
-		ent->nextthink=level.time+100;
+	// code to check there is noone within the base before making it solid
+	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
+
+	vec3_t		mins, maxs;
+
+	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
+	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
+	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
+	
+	if (num>1)
+	{
+		ent->nextthink=level.time+1000;
+		return;
+	}
+
+
+	if (ent->s.team == TEAM_BLUE)
+	{
+		level.blueScoreLatched = 0;
+	} 
+	else 
+	{
+		level.redScoreLatched = 0;
+	}
+	ent->s.time2=1;
+	ent->think = MC_think;
+	ent->nextthink=level.time+100;
 }
 
 
@@ -778,7 +802,8 @@ void MC_prethink(gentity_t *ent){
 BuildMC
 ===========================
 */
-void BuildMC( gentity_t *ent ){
+void BuildMC( gentity_t *ent )
+{
 
 	gentity_t	*base;
 //	vec3_t 		forward,up;
@@ -795,9 +820,6 @@ void BuildMC( gentity_t *ent ){
 		level.redNeedMC = 0;
 	}
 
-
-
-
 	base=G_Spawn();
 	base->parent=ent;
 	
@@ -811,18 +833,16 @@ void BuildMC( gentity_t *ent ){
 	base->health=1000; // change this to make the turrets tougher or weaker.
 	base->s.eType=ET_TURRET;
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
-	base->takedamage=qtrue; // so they can be destoryed
+	base->takedamage=qtrue; // so they can be destroyed
 	base->die=turret_explode; // so they actually explode when destroyed
 	//base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
 	base->nextthink=level.time+3000;  // MC Need not take long to build
 	base->classname = "mc";
 	base->s.team =  ent->client->sess.sessionTeam;	
 
-
-	VectorSet( base->r.mins, -15, -15, -20 );
-	VectorSet( base->r.maxs, 35, 15, 15); // Was -5
-
-
+	// Correction to default numbers -Vincent
+	VectorSet( base->r.mins, -16, -16, -16 );
+	VectorSet( base->r.maxs, 16, 16, 16);
 
 	trap_LinkEntity (base);
 	//Drop_Item(ent,base,45);
@@ -839,7 +859,8 @@ void BuildMC( gentity_t *ent ){
 ==================================== 
 */
 
-void GEN_think(gentity_t *ent){
+void GEN_think(gentity_t *ent)
+{
 
  	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
 	ent->r.contents = CONTENTS_SOLID;
@@ -870,7 +891,6 @@ void GEN_think(gentity_t *ent){
 	ent->think = GEN_think;
 	ent->nextthink=level.time+100;
 
-
 }
 
 /*
@@ -882,8 +902,27 @@ built' state
 ===========================
 */
 // Generators Are Never Shielded
-void gen_prethink(gentity_t *ent){
+void gen_prethink(gentity_t *ent)
+{
+	int			num;
+	int			touch[MAX_GENTITIES];
 
+	// code to check there is noone within the base before making it solid
+	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
+
+	vec3_t		mins, maxs;
+
+	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
+	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
+	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
+	
+	if (num>1)
+	{
+		ent->nextthink=level.time+1000;
+		return;
+	}
+
+	
 	// Dont count them until they have been built
 	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
 	{
@@ -907,7 +946,8 @@ BuildGenerator
 ===========================
 */
 
-void BuildGenerator( gentity_t *ent ){
+void BuildGenerator( gentity_t *ent )
+{
 
 	gentity_t	*base;
 	//vec3_t		velocity;
@@ -928,7 +968,7 @@ void BuildGenerator( gentity_t *ent ){
 	base->s.eType=ET_TURRET;
 	
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
-	base->takedamage=qtrue; // so they can be destoryed
+	base->takedamage=qtrue; // so they can be destroyed
 	base->die=turret_explode; // so they actually explode when destroyed
 
 	base->classname = "generator";
@@ -937,8 +977,9 @@ void BuildGenerator( gentity_t *ent ){
 	base->nextthink=level.time+9000;   // 9 Seconds before a sheildgen is operational.
 	
 	
-	VectorSet( base->r.mins, -15, -15, -20 );
-	VectorSet( base->r.maxs, 35, 15, 0);
+	// Correction to default numbers -Vincent
+	VectorSet( base->r.mins, -16, -16, -16 );
+	VectorSet( base->r.maxs, 16, 16, 16);
 	
 		
 	// Drop To Ground
@@ -952,10 +993,7 @@ void BuildGenerator( gentity_t *ent ){
 	base->flags = FL_DROPPED_ITEM;
 	*/
 
-
-
 	trap_LinkEntity (base);
-
 }
 
 
@@ -971,12 +1009,12 @@ void BuildGenerator( gentity_t *ent ){
 ==================================== 
 */
 
-void TD_think(gentity_t *ent){
+void TD_think(gentity_t *ent)
+{
 
 	gentity_t *target;
 
 	target = g_entities;
-
 
  	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
 	ent->r.contents = CONTENTS_SOLID;
@@ -1023,11 +1061,8 @@ void TD_think(gentity_t *ent){
 		target->immobilized = qtrue;
 		//target->s.time2 = 9;
 	} 
-
 		
 	//turret_fireonenemy(ent);
-	
-
 	
 	//ent->nextthink=level.time+100;
 
@@ -1043,7 +1078,26 @@ built' state
 ===========================
 */
 
-void td_prethink(gentity_t *ent){
+void td_prethink(gentity_t *ent)
+{
+	int			num;
+	int			touch[MAX_GENTITIES];
+
+	// code to check there is noone within the base before making it solid
+	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
+
+	vec3_t		mins, maxs;
+
+	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
+	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
+	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
+	
+	if (num>1)
+	{
+		ent->nextthink=level.time+1000;
+		return;
+	}
+
 
 	// Dont count them until they have been built
 	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
@@ -1068,10 +1122,9 @@ BuildDisplacer
 ===========================
 */
 
-void BuildDisplacer( gentity_t *ent ){
-
+void BuildDisplacer( gentity_t *ent )
+{
 	gentity_t	*base;
-
 
 	base=G_Spawn();
 	base->parent=ent;
@@ -1085,19 +1138,17 @@ void BuildDisplacer( gentity_t *ent ){
 	base->s.eType=ET_TURRET;
 	
 	base->s.time2=9; 
-	base->takedamage=qtrue; // so they can be destoryed
+	base->takedamage=qtrue; // so they can be destroyed
 	base->die=turret_explode; // so they actually explode when destroyed
 
 	base->classname = "timedisplacer";
 	base->s.team =  ent->client->sess.sessionTeam;	
 		
 	base->nextthink=level.time+5000;   // 5 Seconds before a time displacer is operational.
-	
-	
-	VectorSet( base->r.mins, -15, -15, -20 );
-	VectorSet( base->r.maxs, 35, 15, 0);
-	
-
+		
+	// Correction to default numbers -Vincent
+	VectorSet( base->r.mins, -16, -16, -16 );
+	VectorSet( base->r.maxs, 16, 16, 16);
 
 	trap_LinkEntity (base);
 
