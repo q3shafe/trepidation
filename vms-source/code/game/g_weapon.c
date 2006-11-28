@@ -168,7 +168,7 @@ void Weapon_fire_mg (gentity_t *ent, qboolean alt ) {
 #ifdef MISSIONPACK
 #define CHAINGUN_SPREAD		600
 #endif
-#define MACHINEGUN_SPREAD	100
+#define MACHINEGUN_SPREAD	64
 #define	MACHINEGUN_DAMAGE	7
 #define	MACHINEGUN_TEAM_DAMAGE	5		// wimpier MG in teamplay
 

@@ -113,8 +113,8 @@ static const char *master_servers[] = {
 // End Shafe
 
 static const char *master_items[] = {
-	"Local",
 	"Internet",
+	"Local",
 	"Favorites",
 	0
 };
@@ -164,7 +164,7 @@ static char* netnames[] = {
 	NULL
 };
 
-static char quake3worldMessage[] = "Visit treipidation.sourceforge.net - News, Community, Events, Files";
+static char quake3worldMessage[] = "Visit www.planettrepidation.com - News, Community, Events, Files";
 
 
 const char* punkbuster_items[] = {
