@@ -81,7 +81,6 @@ int G_ParseClassInfos( char *buf, int max, char *infos[] ) {
 ===============
 G_LoadClassesFromFile
 ===============
-*/
 static void G_LoadClassesFromFile( char *filename ) {
 	int				len;
 	fileHandle_t	f;
@@ -104,44 +103,6 @@ static void G_LoadClassesFromFile( char *filename ) {
 
 	g_numClasses += G_ParseClassInfos( buf, MAX_CLASSES - g_numClasses, &g_classInfos[g_numClasses] );
 }
-
-/*
-===============
-G_LoadClasses
-===============
 */
-static void G_LoadClasses( void ) {
-	int			numdirs;
-	vmCvar_t	classesFile;
-	char		filename[128];
-	char		dirlist[1024];
-	char*		dirptr;
-	int			i, n;
-	int			dirlen;
 
-	g_numClasses = 0;
-
-	trap_Cvar_Register( &classesFile, "g_classesFile", "", CVAR_INIT|CVAR_ROM );
-	if( *classesFile.string ) {
-		G_LoadClassesFromFile(classesFile.string);
-	}
-	else {
-		G_LoadClassesFromFile("scripts/classes.pc");
-	}
-
-	// get all arenas from .arena files
-	numdirs = trap_FS_GetFileList("scripts", ".pc", dirlist, 1024 );
-	dirptr  = dirlist;
-	for (i = 0; i < numdirs; i++, dirptr += dirlen+1) {
-		dirlen = strlen(dirptr);
-		strcpy(filename, "scripts/");
-		strcat(filename, dirptr);
-		G_LoadClassesFromFile(filename);
-	}
-	trap_Printf( va( "%i player classes parsed\n", g_numClasses ) );
-	
-	for( n = 0; n < g_numClasses; n++ ) {
-		Info_SetValueForKey( g_classInfos[n], "num", va( "%i", n ) );
-	}
-}
 

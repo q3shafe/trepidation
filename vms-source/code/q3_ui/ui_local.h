@@ -314,6 +314,7 @@ extern void UI_InGameMenu(void);
 //	I'd really like to make these menus scriptable
 extern void UI_DynamicMenuCache(void);
 extern void UI_DynamicMenu( void );
+extern void	UI_DynamicCommandMenu( void );
 extern void UI_BotCommandMenu_f( void );
 
 
@@ -688,6 +689,7 @@ void UI_RemoveBotsMenu( void );
 extern void UI_TeamOrdersMenu( void );
 extern void UI_TeamOrdersMenu_f( void );
 extern void UI_TeamOrdersMenu_Cache( void );
+extern void UI_DynamicCommandMenu_f ( void ); //-Vincent
 
 //
 // ui_loadconfig.c

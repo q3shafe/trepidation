@@ -111,7 +111,7 @@ void Main_MenuEvent (void* ptr, int event) {
 		break;
 
 	case ID_EXIT:
-		UI_ConfirmMenu( "EXIT GAME?", NULL, MainMenu_ExitAction );
+		UI_ConfirmMenu( "EXIT GAME?", (voidfunc_f)NULL, MainMenu_ExitAction );
 		break;
 	}
 }

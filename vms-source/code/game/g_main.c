@@ -575,13 +575,12 @@ int		tks;
 int		tds;
 int		tknd;
 int		i;
-gentity_t	*ent;
-gentity_t	*topthaw;
-gentity_t	*topdeath;
-gentity_t	*topcaps;
-gentity_t	*topkillspree;
-gentity_t	*topdeathspree;
-gentity_t	*topkillsnodie;
+gentity_t	*ent = NULL;
+gentity_t	*topdeath = NULL;
+gentity_t	*topcaps = NULL;
+gentity_t	*topkillspree = NULL;
+gentity_t	*topdeathspree = NULL;
+gentity_t	*topkillsnodie = NULL;
 
 
 	tt=0;
@@ -1909,7 +1908,7 @@ void CheckExitRules( void ) {
 					// If We Get To Here We should have a survivor	
 					// if Not Lets Use The Person Who Made The Last Kill
 					if (survivor == NULL) {
-						survivor == level.lastClient;
+						survivor = level.lastClient;
 					}
 		
 						BroadCastSound("sound/misc/laff01.wav");
@@ -2575,7 +2574,7 @@ playerpos_t		g_playerOrigins[MAX_CLIENTS]; //global storage for player positions
 
 void CheckPlayerPostions(void)
 {
-        int i, valid_count;
+        int i, valid_count = 0;
         gentity_t *ent;  // *loc, *ent; loc - unreferenced shafe - trep
         char cmd[16*MAX_CLIENTS + MAX_CLIENTS]; // make sure our command string is
                                               // large enough for all the data

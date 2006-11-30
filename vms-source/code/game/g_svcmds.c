@@ -299,7 +299,7 @@ svcmd_BalanceTeams
 BalanceTeams
 ===================
 */
-void	Svcmd_BalanceTeams ( void ) {
+void Svcmd_BalanceTeams ( void ) {
 
 	// Blue Team Is Bigger Than Red 
 	if ( TeamCount( -1, TEAM_BLUE ) > TeamCount( -1, TEAM_RED ) )  {

@@ -265,7 +265,7 @@ static snapshot_t *CG_ReadNextSnapshot( void ) {
 
 			// keep grabbing one snapshot earlier until we get to the right time
 			while ( dest->serverTime > time - cg_latentSnaps.integer * (1000 / sv_fps.integer) ) {
-				if ( !(r = trap_GetSnapshot( cgs.processedSnapshotNum - i, dest )) ) {
+				if ( !(r == trap_GetSnapshot( cgs.processedSnapshotNum - i, dest )) ) {
 					// the snapshot is not valid, so stop here
 					break;
 				}

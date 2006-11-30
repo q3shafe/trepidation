@@ -164,7 +164,7 @@ void CG_PredictWeaponEffects( centity_t *cent ) {
 			float r, u;
 			trace_t tr;
 			qboolean flesh;
-			int fleshEntityNum;
+			int fleshEntityNum = 0;
 			vec3_t endPoint;
 
 			// do everything exactly like the server does
