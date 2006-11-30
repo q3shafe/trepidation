@@ -295,7 +295,7 @@ float NormalizeColor( const vec3_t in, vec3_t out ) {
 // This causes a warning on compile.. but it was a 'bug' remember
 void init_tonextint(qboolean verbose)
 {
-	float decimal = 0.9;
+	float decimal = 0.9f;
 
 	nonansicast = (int) decimal;
 

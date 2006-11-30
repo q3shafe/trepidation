@@ -384,6 +384,8 @@ struct gclient_s {
 	gentity_t	*hook;				// grapple hook if out
 	qboolean	hookhasbeenfired;	// Shafe - Trep - Offhand Grapple
 
+	qboolean	pdgfired;			// -Vincent
+
 	int			switchTeamTime;		// time the player switched teams
 
 	// timeResidual is used to handle events that happen every second
@@ -729,6 +731,7 @@ void BuildDisplacer( gentity_t *ent );
 // g_client.c
 //
 team_t TeamCount( int ignoreClientNum, int team );
+team_t BalanceTeams( int team ); //-Vincent
 int TeamLeader( int team );
 team_t PickTeam( int ignoreClientNum );
 void SetClientViewAngle( gentity_t *ent, vec3_t angle );

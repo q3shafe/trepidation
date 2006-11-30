@@ -766,7 +766,7 @@ void CG_GibPlayerHeadshot( vec3_t playerOrigin ) {
  	VectorCopy( velocity, le->pos.trDelta );
  	le->pos.trTime = cg.time;
  
- 	le->bounceFactor = 0.3;
+ 	le->bounceFactor = 0.3f;
  
  	le->leFlags = LEF_TUMBLE;
  	le->leBounceSoundType = LEBS_BRASS;

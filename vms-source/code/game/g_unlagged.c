@@ -391,7 +391,6 @@ qboolean G_PredictPlayerSlideMove( gentity_t *ent, float frametime ) {
 	float		into;
 	vec3_t		endVelocity;
 	vec3_t		endClipVelocity;
-	vec3_t		worldUp = { 0.0f, 0.0f, 1.0f };
 	
 	numbumps = 4;
 

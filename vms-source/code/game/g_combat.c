@@ -21,8 +21,6 @@ void BroadCastSound(char *path) {
 void TeamCP(char *msg, int team)
 {
 	int			i;
-	gentity_t	*ent;
-
 	for ( i = 0 ; i < level.maxclients ; i++ ) 
 	{
 		if ( level.clients[i].pers.connected == CON_CONNECTED ) 
@@ -289,9 +287,8 @@ void LookAtKiller( gentity_t *self, gentity_t *inflictor, gentity_t *attacker ) 
 GibEntity
 ==================
 */
-void GibEntity( gentity_t *self, int killer ) {
-	gentity_t *ent;
-	int i;
+void GibEntity( gentity_t *self, int killer ) 
+{
 
 	//if this entity still has kamikaze
 	/*
@@ -530,9 +527,8 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	int			tmpCnt;
 	static		int deathNum;
 	//gentity_t	*xte;
-
-
-
+	
+	gentity_t	*grenades = NULL; // -Vincent
 
 
 	if ( self->client->ps.pm_type == PM_DEAD ) {
@@ -576,7 +572,20 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	// Shafe - Trep - Clear out the PDG
 	self->istelepoint = 0;
 	VectorClear( self->teleloc ); 
-
+	 
+ while ((grenades = G_Find (grenades, FOFS(classname), "pdgrenade")) != NULL)
+ {
+	if ( self->client->pdgfired == qtrue )
+	{ // When a grenade has been fired, let it explode -Vincent
+		if(grenades->r.ownerNum == self->s.clientNum)
+		{ // Confirm owner
+		grenades->nextthink = level.time;
+		grenades->think = G_ExplodeMissile;
+		}
+	self->client->pdgfired = qfalse;
+	}
+ }
+	
 	if ( attacker ) {
 		killer = attacker->s.number;
 		if ( attacker->client ) {
@@ -811,7 +820,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				self->client->pers.Eliminated = qtrue;
 				SetTeam(self, "s");
 				// Set The Last Attacker In Case The Winner Blows Themself up on the winning shot
-				level.lastClient == attacker->client;
+				level.lastClient = attacker->client;
 
 				tmpCnt = (CountSurvivors());
 

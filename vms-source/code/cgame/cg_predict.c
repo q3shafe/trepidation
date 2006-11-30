@@ -526,7 +526,7 @@ void CG_PredictPlayerState( void ) {
 	usercmd_t	oldestCmd;
 	usercmd_t	latestCmd;
 //unlagged - optimized prediction
-	int stateIndex, predictCmd;
+	int stateIndex = 0, predictCmd = 0;
 	int numPredicted = 0, numPlayedBack = 0; // debug code
 //unlagged - optimized prediction
 

@@ -635,11 +635,11 @@ back_color[1] = 1.0;
 back_color[2] = 1.0;
 if (DynamicMenu_OnActiveList(t->generic.id))
 {
-		back_color[3] = 0.33;
+		back_color[3] = 0.33f;
 	}
 	else
 	{
-		back_color[3] = 0.1;
+		back_color[3] = 0.1f;
 	}
 
 UI_FillRect(x, y, w, h, back_color);
@@ -940,8 +940,6 @@ DynamicMenu_FinishSubMenuInit();
 
 static void DynamicMenu_BuildMenu( void )
 {
-	int cts;
-	
 	DynamicMenu_SubMenuInit();
 	
 	

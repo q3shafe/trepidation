@@ -32,10 +32,10 @@ float mvolume; // records the original music volume level, as we will
                // modify it for the credits
 
 // change this to change the background colour on credits
-vec4_t color_background	        = {0.00, 0.35, 0.69, 1.00};
+vec4_t color_background	        = {0.00f, 0.35f, 0.69f, 1.00f};
 // these are just example colours that are used in credits[] 
-vec4_t color_headertext			= {0.53, 0.77, 1.00, 1.00};
-vec4_t color_maintext			= {1.00, 1.00, 1.00, 1.00};
+vec4_t color_headertext			= {0.53f, 0.77f, 1.00f, 1.00f};
+vec4_t color_maintext			= {1.00f, 1.00f, 1.00f, 1.00f};
 
 qhandle_t	BackgroundShader; // definition of the background shader pointer
 
@@ -260,3 +260,5 @@ void UI_CreditMenu( void ) {
 	  trap_R_RegisterShaderNoMip(BACKGROUND_SHADER);
 #endif
 }
+
+

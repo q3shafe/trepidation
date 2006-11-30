@@ -468,12 +468,13 @@ void weapon_pdlauncher_fire (gentity_t	*ent) {
 	}
  }
  // extra vertical velocity
- forward[2] += 0.2;
+ forward[2] += 0.2f;
  VectorNormalize( forward );
  
  m = fire_pdgrenade (ent, muzzle, forward);
  m->damage *= s_quadFactor;
  m->splashDamage *= s_quadFactor;
+ ent->client->pdgfired = qtrue;
 } 
 
 void weapon_grenadelauncher_fire (gentity_t *ent) {
@@ -780,7 +781,6 @@ TURRET - Not Used but this would be good for a vehichle
 void Weapon_fire_turret (gentity_t *ent, qboolean alt ) {
 	gentity_t *m;
 	float newforward[] = {0,0,0};
-	gentity_t *client;
 
 
 	// All of this is useless.. for the turrets, but lets tweak it for use as a shotgun variant
@@ -797,13 +797,13 @@ void Weapon_fire_turret (gentity_t *ent, qboolean alt ) {
 		VectorCopy( forward, newforward );
 		if ( forward[0] >= 0.5 && forward[0] <= 1 ) 
 		{
-			newforward[1] += .35;
+			newforward[1] += .35f;
 		} 
 		else if ( forward[0] <= -0.5 && forward[0] >= -1 ) 
 		{
-			newforward[1] += .35;
+			newforward[1] += .35f;
 		} else {
-			newforward[0] += .35;
+			newforward[0] += .35f;
 		}
 	
 		VectorNormalize( newforward );
@@ -821,11 +821,11 @@ void Weapon_fire_turret (gentity_t *ent, qboolean alt ) {
 		AngleVectors (ent->client->ps.viewangles, forward, right, up);
 		VectorCopy( forward, newforward );
 		if ( forward[0] >= 0.5 && forward[0] <= 1 ) {
-		newforward[1] -= .35;
+		newforward[1] -= .35f;
 		} else if ( forward[0] <= -0.5 && forward[0] >= -1 ) {
-		newforward[1] -= .35;
+		newforward[1] -= .35f;
 		} else {
-		newforward[0] -= .35;
+		newforward[0] -= .35f;
 		}
 		VectorNormalize( newforward );
 		VectorAdd( newforward, forward, forward );

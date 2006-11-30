@@ -67,23 +67,34 @@ void G_BounceMissile( gentity_t *ent, trace_t *trace ) {
 	dot = DotProduct( velocity, trace->plane.normal );
 	VectorMA( velocity, -2*dot, trace->plane.normal, ent->s.pos.trDelta );
 
-	if ( ent->s.eFlags & EF_BOUNCE_HALF ) {
+	if ( ent->s.eFlags & EF_BOUNCE_HALF ) 
+	{
 		VectorScale( ent->s.pos.trDelta, 0.65, ent->s.pos.trDelta );
 		// check for stop
-		if ( trace->plane.normal[2] > 0.2 && VectorLength( ent->s.pos.trDelta ) < 40 ) {
-			G_SetOrigin( ent, trace->endpos );
-				
+		if ( trace->plane.normal[2] > 0.2 && VectorLength( ent->s.pos.trDelta ) < 40 )
+		{
+			G_SetOrigin( ent, trace->endpos );				
+			
 			// Shafe - trep - pdg
-			if (ent->classname == "pdgrenade") {
-			    ent->parent->istelepoint = 1;
+			if ( !Q_stricmp( ent->classname, "pdgrenade") )
+			{
+				if ( ent->client->ps.stats[STAT_HEALTH] <= 0 ) 
+				{ // Don't do anything when you are dead -Vincent
+ 					if ( ent->parent->istelepoint != 0 )
+					{ // Failsafe
+					ent->parent->istelepoint = 0;
+					VectorClear( ent->parent->teleloc );
+					}
+					return;
+				}
+				ent->parent->istelepoint = 1;
 				VectorCopy(ent->r.currentOrigin, ent->parent->teleloc);
 				ent->parent->teleloc[2] += 20;
-			
-				
+							
 				trap_SendServerCommand( ent->r.ownerNum, va("cp \"^9Particle Displacement Grenade Lock!\n\"") );
 				//G_Printf( S_COLOR_RED "Particle Displacement Grenade Lock!\n" );
 			} // end shafe
-
+			
 			return;
 		}
 	}
@@ -101,7 +112,6 @@ void G_HomingMissile( gentity_t *ent ) {
 	vec3_t		dir, blipdir;
 	vec_t		dot, cs;
 	qboolean	chaff;
-	qboolean	ignorechaff = qfalse;
 
 	if (ent->parent->health <= 0)
 	{
@@ -294,7 +304,8 @@ G_ExplodeMissile
 Explode a missile without an impact
 ================
 */
-void G_ExplodeMissile( gentity_t *ent ) {
+void G_ExplodeMissile( gentity_t *ent )
+{
 	vec3_t		dir;
 	vec3_t		origin;
 
@@ -320,7 +331,6 @@ void G_ExplodeMissile( gentity_t *ent ) {
 	}
 
 	trap_LinkEntity( ent );
-
 }
 
 
@@ -512,7 +522,7 @@ void G_MissileImpact( gentity_t *ent, trace_t *trace ) {
 		( ent->s.eFlags & ( EF_BOUNCE | EF_BOUNCE_HALF ) ) ) {
 		G_BounceMissile( ent, trace );
 		
-		if (ent->classname == "plasma")
+			if ( !Q_stricmp( ent->classname, "plasma") )
 		{
 			G_AddEvent( ent, EV_PL_BOUNCE, 0 );
 		} 
@@ -831,6 +841,11 @@ void G_ExplodePDGrenade( gentity_t *ent ) {
  	VectorClear( ent->parent->teleloc ); // clear the teleport location
 	//G_Printf( S_COLOR_GREEN "Particle Displacement Grenade Expired\n" );
 	
+	if ( ent->client->pdgfired == qtrue )
+	{ // -Vincent
+	ent->client->pdgfired = qfalse;
+	}
+
 	G_ExplodeMissile( ent );
 }
 /*
@@ -876,7 +891,7 @@ gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->die = pdg_explode;
 
 	bolt->s.pos.trType = TR_GRAVITY;
-	 bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;
+	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;
 	VectorCopy( start, bolt->s.pos.trBase );
 	VectorScale( dir, 700, bolt->s.pos.trDelta );
 	SnapVector( bolt->s.pos.trDelta );// save net bandwidth
@@ -1217,7 +1232,6 @@ fire_alt_rocket
 */
 gentity_t *fire_alt_rocket (gentity_t *self, vec3_t start, vec3_t dir) {
 	gentity_t	*bolt;
-	vec3_t		mins = { -8, -8, -8 }, maxs = { 8, 8, 8 };
 
 	VectorNormalize (dir);
 

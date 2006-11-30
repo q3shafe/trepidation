@@ -1061,8 +1061,6 @@ static float CG_DrawScores( float y ) {
 	vec4_t		color;
 	float		y1;
 	gitem_t		*item;
-	char		bluemc[MAX_QPATH];
-	char		redmc[MAX_QPATH];
 
 	s1 = cgs.scores1;
 	s2 = cgs.scores2;
@@ -1330,7 +1328,7 @@ static float CG_DrawPowerups( float y ) {
 ====================
 CG_DrawHudRight
 ====================
-*/
+
 static float CG_DrawHudRight(float y){
 	
 	//x = 640 - 48;  this x/y is the lagometer position
@@ -1339,11 +1337,11 @@ static float CG_DrawHudRight(float y){
 	CG_DrawPic( (640-159), (480-75), 159, 75, cgs.media.HudRight );
 }
 
-/*
+
 ====================
 CG_DrawHudLeft
 ====================
-*/
+
 static float CG_DrawHudLeft(float y){
 	CG_DrawPic( 1, (480-75), 159, 75, cgs.media.HudLeft );
 }
@@ -2019,7 +2017,6 @@ CG_ScanForCrosshairEntity
 static void CG_ScanForCrosshairEntity( void ) {
 	trace_t		trace;
 	vec3_t		start, end;
-	int			content;
 
 	VectorCopy( cg.refdef.vieworg, start );
 	VectorMA( start, 131072, cg.refdef.viewaxis[0], end );
@@ -2750,6 +2747,5 @@ void CG_DrawActive( stereoFrame_t stereoView ) {
 	// draw status bar and other floating elements
  	CG_Draw2D();
 }
-
 
 

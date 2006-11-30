@@ -925,11 +925,7 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 	gclient_t	*client;
 	char		userinfo[MAX_INFO_STRING];
 	gentity_t	*ent;
-	char      guid[ 33 ];
-	char      ip[ 16 ] = {""};
-	char      reason[ MAX_STRING_CHARS ] = {""};
-	int       i;
-
+	char		guid[ 33 ];
 	ent = &g_entities[ clientNum ];
 
 	trap_GetUserinfo( clientNum, userinfo, sizeof( userinfo ) );
@@ -1476,7 +1472,7 @@ void ClientSpawn(gentity_t *ent) {
 	ent->client->noHead=qfalse;
 
 	// This is probably going to screw everything up.
-	ent->client->pers.Eliminated == qfalse;
+	ent->client->pers.Eliminated = qfalse;
 
 	// clear entity state values
 	BG_PlayerStateToEntityState( &client->ps, &ent->s, qtrue );
@@ -1488,7 +1484,7 @@ team_t BalanceTeams(int team ) {
 
 int		i;
 int		c;	
-int		b;	
+int		b = 0;	
 int		t;	
 
 	c = 999;	
@@ -1546,7 +1542,7 @@ team_t PlaceMC(int team ) {
 
 int		i;
 int		c;	
-int		b;	
+int		b = 0;	
 
 
 	c = 999;	

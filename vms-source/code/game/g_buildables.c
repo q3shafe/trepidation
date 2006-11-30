@@ -6,6 +6,7 @@
 // Most of the build rules are checked before any of the stuff in here is executed. 
 
 #include "g_local.h"
+extern void BroadCastSound(char *path); // De-warning -Vincent
 
 //static	float	s_quadFactor;
 //static	vec3_t	forward, right, up;
@@ -59,7 +60,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		{
 			
 			
-			if (self->classname == "timedisplacer") 
+			if ( !Q_stricmp( self->classname, "timedisplacer") )
 			{ 
 				level.blueTD--; 			
 				G_LogPrintf("Kill: %i %i %i: Blue IMMOBILIZER was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
@@ -76,7 +77,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 				self->nextthink = 30000;
 			}
 			
-			if (self->classname == "generator") 
+			if ( !Q_stricmp( self->classname, "generator") )
 			{ 
 				level.blueGen--; 			
 				G_LogPrintf("Kill: %i %i %i: Blue Generator was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
@@ -91,7 +92,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 				}
 				self->nextthink = 30000;
 			}	
-			if (self->classname == "turret") 
+			if ( !Q_stricmp( self->classname, "turret") ) 
 			{
 				level.blueTurrets--; 
 				G_LogPrintf("Kill: %i %i %i: Blue Turret was shot down by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
@@ -106,7 +107,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 				}
 				self->nextthink = 30000;
 			}		
-			if (self->classname == "mc") 
+			if ( !Q_stricmp( self->classname, "mc") )
 			{ 
 				if (level.blueNeedMC == 0)
 				{
@@ -130,7 +131,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		}
 		if (self->s.team == TEAM_RED)
 		{
-			if (self->classname == "timedisplacer") 
+			if ( !Q_stricmp( self->classname, "timedisplacer") )
 			{ 
 				level.redTD--;
 				G_LogPrintf("Kill: %i %i %i: Red IMMOBILIZER was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
@@ -147,7 +148,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 						
 			}
 			
-			if (self->classname == "generator") 
+			if ( !Q_stricmp( self->classname, "generator") )
 			{ 
 				level.redGen--;
 				G_LogPrintf("Kill: %i %i %i: Red Generator was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
@@ -163,7 +164,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 				self->nextthink = 30000;
 						
 			}
-			if (self->classname == "turret") 
+			if ( !Q_stricmp( self->classname, "turret") )
 			{ 
 				level.redTurrets--;
 				G_LogPrintf("Kill: %i %i %i: Red Turret was shot down by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
@@ -178,7 +179,8 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 				}
 				self->nextthink = 30000;
 			}
-			if (self->classname == "mc") 
+		
+			if ( !Q_stricmp( self->classname, "mc") )
 			{ 
 				if (level.redNeedMC == 0)
 				{
@@ -618,8 +620,6 @@ void BuildTurret( gentity_t *ent , int type )
 {
 	// We need to check the turret type and select the appropriate model
 	gentity_t	*base;	
-	trace_t		tr;	
-	vec3_t		dest;
 
 	base=G_Spawn();
 	base->parent=ent;		

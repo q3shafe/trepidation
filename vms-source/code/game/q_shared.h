@@ -732,6 +732,11 @@ float	Q_crandom( int *seed );
 #define random()	((rand () & 0x7fff) / ((float)0x7fff))
 #define crandom()	(2.0 * (random() - 0.5))
 
+// De-warning the randoms -Vincent
+float	flrandom(float min, float max);
+int		irandom(int min, int max);
+
+
 void vectoangles( const vec3_t value1, vec3_t angles);
 void AnglesToAxis( const vec3_t angles, vec3_t axis[3] );
 

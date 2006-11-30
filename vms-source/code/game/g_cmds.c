@@ -15,10 +15,15 @@ Do All The Gametype Checks Here Before Sending
 The command.
 =================================================
 */
-void Cmd_SpawnMC_f( gentity_t *ent ){
-	
+void Cmd_SpawnMC_f( gentity_t *ent )
+{
 	int	iserror; 
 	iserror = 1;
+	
+	if ( ent->client->ps.stats[STAT_HEALTH] <= 0 ) 
+	{ // Don't do anything when you are dead -Vincent
+	return;
+	}
 
 	// You can only Build MC's in GameMode 3
 	if (g_GameMode.integer == 3) 
@@ -56,10 +61,15 @@ void Cmd_SpawnMC_f( gentity_t *ent ){
 	
 }
 
-void Cmd_SpawnGenerator_f( gentity_t *ent ){
-
+void Cmd_SpawnGenerator_f( gentity_t *ent )
+{
 	int	iserror; 
 	iserror = 1;
+	
+	if ( ent->client->ps.stats[STAT_HEALTH] <= 0 ) 
+	{ // Don't do anything when you are dead -Vincent
+	return;
+	}
 
 	// You can only Build Generators in GameMode 3
 	if (g_GameMode.integer == 3) 
@@ -98,14 +108,16 @@ void Cmd_SpawnGenerator_f( gentity_t *ent ){
 
 }
 
-
-
-
 //BuildDisplacer
-void Cmd_SpawnDisplacer_f( gentity_t *ent ){
-
+void Cmd_SpawnDisplacer_f( gentity_t *ent )
+{
 	int	iserror; 
 	iserror = 1;
+	
+	if ( ent->client->ps.stats[STAT_HEALTH] <= 0 ) 
+	{ // Don't do anything when you are dead -Vincent
+	return;
+	}
 
 	// You can only Build Displacers in GameMode 3
 	if (g_GameMode.integer == 3) 
@@ -163,8 +175,7 @@ void Cmd_SpawnDisplacer_f( gentity_t *ent ){
 		}
 
 
-	}
-		
+	}		
 
 	// If it couldn't be built tell them why
 	if (iserror != 0)
@@ -177,13 +188,16 @@ void Cmd_SpawnDisplacer_f( gentity_t *ent ){
 
 }
 
-
-void Cmd_SpawnTurret_f( gentity_t *ent , int type ){
-
+void Cmd_SpawnTurret_f( gentity_t *ent , int type )
+{
 	int		iserror; 
 	int		cts;
 	iserror = 1;
 	
+	if ( ent->client->ps.stats[STAT_HEALTH] <= 0 ) 
+	{ // Don't do anything when you are dead -Vincent
+	return;
+	}
 
 	// If Playing GM 3 Check the rules
 	if (g_GameMode.integer == 3) {
@@ -276,7 +290,8 @@ DeathmatchScoreboardMessage
 
 ==================
 */
-void DeathmatchScoreboardMessage( gentity_t *ent ) {
+void DeathmatchScoreboardMessage( gentity_t *ent ) 
+{
 	char		entry[1024];
 	char		string[1400];
 	int			stringlength;
@@ -352,34 +367,40 @@ Shafe - Trep - PDG
 =================
 */
 
-void Cmd_TeleGren_f (gentity_t *ent) {
+void Cmd_TeleGren_f (gentity_t *ent) 
+{
+	if ( ent->client->ps.stats[STAT_HEALTH] <= 0 ) 
+	{ // Don't do anything when you are dead -Vincent
+ 		if ( ent->istelepoint != 0 )
+		{ // Failsafe
+		ent->istelepoint = 0;
+		VectorClear( ent->teleloc );
+		}
+	return;
+	}
 
-    if ( ent->istelepoint == 1 ) 
+	if ( ent->istelepoint == 1 ) 
 	{
 		// Shafe The old way was just to drop it now we return flags to base if you try to teleport with one
-			
 		if (ent->client->ps.powerups[PW_REDFLAG]) 
 		{
 			Team_ReturnFlag( TEAM_RED );
 			ent->client->ps.powerups[PW_REDFLAG] = 0;
 		}
-
 		if (ent->client->ps.powerups[PW_BLUEFLAG]) 
 		{
 			Team_ReturnFlag( TEAM_BLUE );
 			ent->client->ps.powerups[PW_BLUEFLAG] = 0;
 		}
 
-
 		VectorCopy( ent->teleloc, ent->client->ps.origin );
 		ent->istelepoint = 0;
 		VectorClear( ent->teleloc );
-
-	} else {
+	} 
+	else 
+	{
         G_Printf( S_COLOR_GREEN "PDG Lock Not Established\n" );
-
 	}
-
 }
 
 /*
@@ -391,10 +412,9 @@ Shafe - Trep - PDG
 =================
 */
 
-void Cmd_DropFlag_f (gentity_t *ent) {
-
-	Team_DropFlags( ent );
-
+void Cmd_DropFlag_f (gentity_t *ent) 
+{
+Team_DropFlags( ent );
 }
 
 
@@ -405,18 +425,13 @@ Cmd_Score_f
 Request current scoreboard information
 ==================
 */
-void Cmd_Score_f( gentity_t *ent ) {
+void Cmd_Score_f( gentity_t *ent )
+{
 	DeathmatchScoreboardMessage( ent );
 }
 
-
-
-
-
-void Cmd_Test_f (gentity_t *ent) {
-	
-	
-		
+void Cmd_Test_f (gentity_t *ent) 
+{
 		trap_SendServerCommand( ent-g_entities, va("print \" level.bluegenerators %i\n\"", level.blueGen ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redgenerators %i\n\"", level.redGen ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.blueturrets %i\n\"", level.blueTurrets ));		
@@ -426,8 +441,6 @@ void Cmd_Test_f (gentity_t *ent) {
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redscorelatched %i\n\"", level.redScoreLatched ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.bluescorelatched %i\n\"", level.blueScoreLatched ));		
 		//trap_SendServerCommand( ent-g_entities, va("print \" level.scoreTime %i\n\"", (level.time-level.scoreTime) ));		
-	
-
 }
 
 
@@ -436,7 +449,8 @@ void Cmd_Test_f (gentity_t *ent) {
 CheatsOk
 ==================
 */
-qboolean	CheatsOk( gentity_t *ent ) {
+qboolean	CheatsOk( gentity_t *ent ) 
+{
 	if ( !g_cheats.integer ) {
 		trap_SendServerCommand( ent-g_entities, va("print \"Cheats are not enabled on this server.\n\""));
 		return qfalse;

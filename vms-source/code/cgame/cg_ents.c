@@ -11,7 +11,6 @@ static void CG_TURRET(centity_t *cent)
 {
 	refEntity_t			ent;
 	entityState_t		*s1;
-	int					team;
 
 	s1 = &cent->currentState;
 

@@ -1633,7 +1633,7 @@ Generates weapon events and modifes the weapon counter
 */
 
 static void PM_Weapon( void ) {
-	int		addTime;
+	int		addTime = 0;
 	qboolean	altfired = qfalse;
 
 

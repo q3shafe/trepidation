@@ -360,7 +360,7 @@ void SP_func_breakable( gentity_t *ent ) {
  =================
  */
  void G_BreakGlass(gentity_t *ent, vec3_t point, int mod) {
-     gentity_t   *tent;
+     gentity_t   *tent = NULL;
  	vec3_t      size;
      vec3_t      center;
  	qboolean    splashdmg;
