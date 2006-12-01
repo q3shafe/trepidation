@@ -490,10 +490,10 @@ turret_think
 
 void turret_think( gentity_t *ent){
 
-	//ent->nextthink=level.time+10;
-	ent->nextthink=level.time+300; // 300 for debug
+	ent->nextthink=level.time+10;
+	//ent->nextthink=level.time+300; // 300 for debug
 
-	trap_SendServerCommand( -1, va("print \"^7Turret Health =  %i \n\"", ent->health ) );
+	
 
 	if (!checktarget(ent,ent->enemy))
 		turret_findenemy(ent);

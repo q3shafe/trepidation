@@ -1311,7 +1311,7 @@ void BeginIntermission( void ) {
 	
 	char *s;
 	
-	trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 1.0\n" );
+	//trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 1.0\n" );
 	G_SpawnString( "music", "sound/music/intermission.wav", &s );
 	trap_SetConfigstring( CS_MUSIC, s );
 	
@@ -1822,7 +1822,7 @@ void CheckExitRules( void ) {
 			// Three People - Start The Music  // Maybe do this on 2 instead
 			if (tmpCnt == 3)
 			{
-				trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 5.0\n" );
+				//trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 5.0\n" );
 				G_SpawnString( "music", "sound/music/battle.wav", &s );
 				trap_SetConfigstring( CS_MUSIC, s );
 
