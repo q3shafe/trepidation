@@ -1641,8 +1641,15 @@ void BotChooseWeapon(bot_state_t *bs) {
 		}
 		else {
 			newweaponnum = trap_BotChooseBestFightWeapon(bs->ws, bs->inventory);
+			
+			// Bad hack? Shafe
+			//if ((newweaponnum == 1) && (bs->inventory[INVENTORY_BULLETS] > 50)) { newweaponnum = 2; }
+			if (newweaponnum == 1)  { newweaponnum = 2; }
+			///////////////////////////
+
 			if (bs->weaponnum != newweaponnum) bs->weaponchange_time = FloatTime();
 			bs->weaponnum = newweaponnum;
+
 			//BotAI_Print(PRT_MESSAGE, "bs->weaponnum = %d\n", bs->weaponnum);
 			trap_EA_SelectWeapon(bs->client, bs->weaponnum);
 		}

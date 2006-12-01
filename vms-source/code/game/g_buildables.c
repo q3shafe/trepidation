@@ -436,6 +436,9 @@ void Base_think(gentity_t *ent){
 
 	// If the mc is gone blow up the turret... Meaning
 	// you need an mc before you can build turrets.
+	// 
+	// This also destroys all turrets when a point is made.
+	
 	if (ent->s.team == TEAM_BLUE)
 	{
 		if (level.blueMC == 0) 
@@ -443,6 +446,8 @@ void Base_think(gentity_t *ent){
 			ent->health = 1; 
 			ent->s.time2 = 0;
 			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+			trap_SendServerCommand( -1, va("print \"^7BLueMC read as 0 =  %i \n\"", level.blueMC ) );
+	
 		}
 	}
 	if (ent->s.team == TEAM_RED)
@@ -452,9 +457,11 @@ void Base_think(gentity_t *ent){
 			ent->health = 1; 
 			ent->s.time2 = 0;
 			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+			trap_SendServerCommand( -1, va("print \"^7BLueMC read as 0 =  %i \n\"", level.redMC ) );
+	
 		}
 	}
-
+	
 	ent->think = Base_think;
 	ent->nextthink=level.time+100;
 
@@ -483,8 +490,10 @@ turret_think
 
 void turret_think( gentity_t *ent){
 
-	ent->nextthink=level.time+10;
+	//ent->nextthink=level.time+10;
+	ent->nextthink=level.time+300; // 300 for debug
 
+	trap_SendServerCommand( -1, va("print \"^7Turret Health =  %i \n\"", ent->health ) );
 
 	if (!checktarget(ent,ent->enemy))
 		turret_findenemy(ent);
@@ -558,6 +567,7 @@ void createturretgun(gentity_t *ent)
 		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun2.md3");
 	}
 	
+	// These two are for later in case we want to define them differently
 	// Sheilded Turret
 	if (ent->s.time2 == 1)
 	{
@@ -645,7 +655,7 @@ void BuildTurret( gentity_t *ent , int type )
 	
 	if (type==0)
 	{
-		base->health=100; // change this to make the turrets tougher or weaker.
+		base->health=200; // change this to make the turrets tougher or weaker.
 	} 
 	else
 	{
