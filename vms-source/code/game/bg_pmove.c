@@ -1749,7 +1749,8 @@ static void PM_Weapon( void ) {
 		return;
 	}
 
-		// check for out of ammo for alt fire - Shafe - Trep 
+	// check for out of ammo for alt fire - Shafe - Trep 
+	// There is some sort of issue with this I think.
 	if ( pm->cmd.buttons & 32)
 	{
 		if ( (pm->ps->ammo[ pm->ps->weapon ]-altAmmoUsage[pm->ps->weapon]) <= 0) 
