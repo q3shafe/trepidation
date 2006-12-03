@@ -3038,20 +3038,20 @@ void CL_GlobalServers_f( void ) {
 		cls.pingUpdateSource = AS_GLOBAL;
 	}
 	if( cls.masterNum == 2 ) {
-		Com_Printf( "Requesting servers from the master at master2.planettrepidation.com\n" );
+		Com_Printf( "Requesting servers from the master at master.beer-garden.org\n" );
 		NET_StringToAdr( ALT_MASTER1, &to );
 		cls.numglobalservers = -1;
 		cls.pingUpdateSource = AS_GLOBAL;
 	}
 
 	if( cls.masterNum == 3 ) {
-		Com_Printf( "Requesting servers from the master at master2.tnlsoft.com\n" );
+		Com_Printf( "Requesting servers from the master at master2.planettrepidation.com\n" );
 		NET_StringToAdr( ALT_MASTER2, &to );
 		cls.numglobalservers = -1;
 		cls.pingUpdateSource = AS_GLOBAL;
 	}
 	if( cls.masterNum == 4 ) {
-		Com_Printf( "Requesting servers from the master at Shafe's Special Place :)\n" );
+		Com_Printf( "Requesting servers from the master at master2.tnlsoft.com\n" );
 		NET_StringToAdr( ALT_MASTER3, &to );
 		cls.numglobalservers = -1;
 		cls.pingUpdateSource = AS_GLOBAL;
