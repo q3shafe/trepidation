@@ -531,6 +531,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	gentity_t	*grenades = NULL; // -Vincent
 
 
+
 	if ( self->client->ps.pm_type == PM_DEAD ) {
 		return;
 	}
@@ -544,19 +545,18 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	{
 		attacker->InstaChatFrags++;
 	} 
-
-
-
+	
 //unlagged - backward reconciliation #2
 	// make sure the body shows up in the client's current position
 	G_UnTimeShiftClient( self );
 //unlagged - backward reconciliation #2
 
+	// Check if you have to reset the zoom in cgame -Vincent
+	trap_SendConsoleCommand( EXEC_APPEND, "resetzoom\n" );
 	// check for an almost capture
 	CheckAlmostCapture( self, attacker );
 	// check for a player that almost brought in cubes
 	CheckAlmostScored( self, attacker );
-
 
 	if (self->client && self->client->hook)
 		Weapon_HookFree(self->client->hook);
@@ -573,18 +573,18 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	self->istelepoint = 0;
 	VectorClear( self->teleloc ); 
 	 
- while ((grenades = G_Find (grenades, FOFS(classname), "pdgrenade")) != NULL)
- {
-	if ( self->client->pdgfired == qtrue )
-	{ // When a grenade has been fired, let it explode -Vincent
-		if(grenades->r.ownerNum == self->s.clientNum)
-		{ // Confirm owner
-		grenades->nextthink = level.time;
-		grenades->think = G_ExplodeMissile;
+	while ((grenades = G_Find (grenades, FOFS(classname), "pdgrenade")) != NULL)
+	{
+		if ( self->client->pdgfired == qtrue )
+		{ // When a grenade has been fired, let it explode -Vincent
+			if(grenades->r.ownerNum == self->s.clientNum)
+			{ // Confirm owner
+			grenades->nextthink = level.time;
+			grenades->think = G_ExplodeMissile;
+			}
+		self->client->pdgfired = qfalse;
 		}
-	self->client->pdgfired = qfalse;
 	}
- }
 	
 	if ( attacker ) {
 		killer = attacker->s.number;
