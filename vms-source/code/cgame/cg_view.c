@@ -425,6 +425,11 @@ static void CG_OffsetFirstPersonView( void ) {
 // Shafe - Trep - Improved Zoom 
 void CG_ZoomDown_f( void ) 
 { 
+	if ( cg.predictedPlayerState.stats[STAT_HEALTH] <= 0 ) 
+	{// Don't do anything when you are dead -Vincent
+	return;
+	}
+
 	if ( cg.zoomed && !cg.zooming ) 
 	{
 		cg.zoomed = qfalse;
@@ -445,6 +450,22 @@ void CG_ZoomUp_f( void )
 	{
 		cg.zoomTime=0;
 		cg.zooming=qfalse;
+	}
+}
+
+void CG_ResetZoom( void ) 
+{ // This one can be used when dead, used for resetting the zoom at player_die -Vincent
+	if ( cg.zoomed && !cg.zooming ) 
+	{
+		cg.zoomed = qfalse;
+		cg.zoomTime = cg.time;
+	} else {
+		if(cg.zoomed)
+			return;
+
+		cg.zoomed = qtrue;
+		cg.zooming = qtrue;
+		cg.zoomTime = cg.time;
 	}
 }
 
@@ -587,6 +608,20 @@ static int CG_CalcFov( void ) {
 }
 
 
+/*
+===============
+CG_ResetZoom_f
+Function called from the game side at respawn
+Checks if the zoom needs to be resetted and will do so if needed
+===============
+*/
+void CG_ResetZoom_f( void ) 
+{ // -Vincent
+if ( cg.zoomed == qtrue || cg.zooming == qtrue )
+	{
+	CG_ResetZoom();
+	}
+}
 
 /*
 ===============
