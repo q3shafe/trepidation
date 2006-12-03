@@ -1349,7 +1349,7 @@ gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt)
 	bolt->think = G_ExplodeMissile;
 	bolt->s.eType = ET_MISSILE;
 	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
-	bolt->s.weapon = WP_MACHINEGUN;
+	bolt->s.weapon = WP_MACHINEGUN;  // Shafe FIXME: Maybe this should be WP_TURRET?
 	bolt->r.ownerNum = self->s.number;
 	//unlagged - projectile nudge
 	// we'll need this for nudging projectiles later

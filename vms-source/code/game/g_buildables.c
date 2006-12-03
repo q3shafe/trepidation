@@ -20,7 +20,8 @@ extern void BroadCastSound(char *path); // De-warning -Vincent
 
 ==================================== 
 */
-#define RANGE 500
+#define RANGE 500	// Turret Range
+#define IMRANGE 300 // Immobilizer range
 
 #define HARC 90
 #define DARC 10
@@ -272,9 +273,22 @@ if (firer->s.team == target->client->sess.sessionTeam) // is the target one of u
 if (target->health<0) // is the target still alive?
 	return qfalse;
 
-VectorSubtract(target->r.currentOrigin,firer->r.currentOrigin,distance);
-if (VectorLength(distance)>RANGE) // is the target within range?
-	return qfalse;
+
+if (!strcmp(firer->classname, "timedisplacer"))
+{
+	// Immobilizer has less of a range
+	VectorSubtract(target->r.currentOrigin,firer->r.currentOrigin,distance);
+	if (VectorLength(distance)>IMRANGE) // is the target within range?
+		return qfalse;
+} 
+else
+{
+	VectorSubtract(target->r.currentOrigin,firer->r.currentOrigin,distance);
+	if (VectorLength(distance)>RANGE) // is the target within range?
+		return qfalse;
+}
+
+
 
 trap_Trace (&trace, firer->s.pos.trBase, NULL, NULL, target->s.pos.trBase, firer->s.number, MASK_SHOT );
 if ( trace.contents & CONTENTS_SOLID ) // can we see the target?
@@ -446,7 +460,7 @@ void Base_think(gentity_t *ent){
 			ent->health = 1; 
 			ent->s.time2 = 0;
 			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
-			trap_SendServerCommand( -1, va("print \"^7BLueMC read as 0 =  %i \n\"", level.blueMC ) );
+			
 	
 		}
 	}
@@ -457,7 +471,6 @@ void Base_think(gentity_t *ent){
 			ent->health = 1; 
 			ent->s.time2 = 0;
 			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
-			trap_SendServerCommand( -1, va("print \"^7BLueMC read as 0 =  %i \n\"", level.redMC ) );
 	
 		}
 	}
@@ -606,7 +619,7 @@ void turret_retaliate(gentity_t *self, gentity_t *attacker, int damage)
 if (self->chain)
 	self->chain->enemy=attacker;
 
-// this is here to casue the turret to unshield when its taken a certain amount of damage. (enough to reduce health to below 100)
+// this is here to cause the turret to unshield when its taken a certain amount of damage. (enough to reduce health to below 100)
 	if (self->s.time2==1)
 	{
 		if (self->health<100)
@@ -745,7 +758,7 @@ void MC_think(gentity_t *ent)
 	// This turns shielding off and regeneration stops.
 	if (ent->s.time2==1)
 	{
-		if (ent->health<350)
+		if (ent->health<100) // Was 350
 		{
 			ent->s.time2=0;
 		}
@@ -1012,9 +1025,11 @@ void BuildGenerator( gentity_t *ent )
 /* 
 ====================================
 
-   TIME DISPLACERS
+   TIME DISPLACERS Now Called 
+   IMMOBILIZERS
 
   // Need Some Models
+  
 
 ==================================== 
 */
@@ -1085,6 +1100,7 @@ TD_prethink
 
 The Time Displacer in 'being
 built' state
+
 ===========================
 */
 
