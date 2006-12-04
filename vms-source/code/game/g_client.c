@@ -1473,7 +1473,7 @@ void ClientSpawn(gentity_t *ent) {
 
 	// This is probably going to screw everything up.
 	ent->client->pers.Eliminated = qfalse;
-
+	
 	// clear entity state values
 	BG_PlayerStateToEntityState( &client->ps, &ent->s, qtrue );
 }

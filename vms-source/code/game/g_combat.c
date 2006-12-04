@@ -551,8 +551,6 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	G_UnTimeShiftClient( self );
 //unlagged - backward reconciliation #2
 
-	// Check if you have to reset the zoom in cgame -Vincent
-	trap_SendConsoleCommand( EXEC_APPEND, "resetzoom\n" );
 	// check for an almost capture
 	CheckAlmostCapture( self, attacker );
 	// check for a player that almost brought in cubes
