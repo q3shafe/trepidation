@@ -214,7 +214,8 @@ static void CG_OffsetThirdPersonView( void ) {
 	VectorCopy( cg.refdefViewAngles, focusAngles );
 
 	// if dead, look at killer
-	if ( cg.predictedPlayerState.stats[STAT_HEALTH] <= 0 ) {
+	if ( cg.predictedPlayerState.stats[STAT_HEALTH] <= 0 ) 
+	{
 		focusAngles[YAW] = cg.predictedPlayerState.stats[STAT_DEAD_YAW];
 		cg.refdefViewAngles[YAW] = cg.predictedPlayerState.stats[STAT_DEAD_YAW];
 	}
@@ -425,7 +426,7 @@ static void CG_OffsetFirstPersonView( void ) {
 // Shafe - Trep - Improved Zoom 
 void CG_ZoomDown_f( void ) 
 { 
-	if ( cg.predictedPlayerState.stats[STAT_HEALTH] <= 0 ) 
+	if ( cg.snap->ps.stats[STAT_HEALTH] <= 0 )
 	{// Don't do anything when you are dead -Vincent
 	return;
 	}
@@ -454,18 +455,24 @@ void CG_ZoomUp_f( void )
 }
 
 void CG_ResetZoom( void ) 
-{ // This one can be used when dead, used for resetting the zoom at player_die -Vincent
-	if ( cg.zoomed && !cg.zooming ) 
+{ // This one can be used when dead, used for resetting the zoom at death and respawn -Vincent
+	if ( cg.zoomed == qtrue || cg.zooming == qtrue )
 	{
-		cg.zoomed = qfalse;
-		cg.zoomTime = cg.time;
-	} else {
+		if ( cg.zoomed && !cg.zooming ) 
+		{
+			cg.zoomed = qfalse;
+			cg.zoomTime = cg.time;
+		} 
+		else 
+		{
 		if(cg.zoomed)
+		{
 			return;
-
-		cg.zoomed = qtrue;
-		cg.zooming = qtrue;
-		cg.zoomTime = cg.time;
+		}
+			cg.zoomed = qtrue;
+			cg.zooming = qtrue;
+			cg.zoomTime = cg.time;
+		}
 	}
 }
 
@@ -607,21 +614,6 @@ static int CG_CalcFov( void ) {
 	return inwater;
 }
 
-
-/*
-===============
-CG_ResetZoom_f
-Function called from the game side at respawn
-Checks if the zoom needs to be resetted and will do so if needed
-===============
-*/
-void CG_ResetZoom_f( void ) 
-{ // -Vincent
-if ( cg.zoomed == qtrue || cg.zooming == qtrue )
-	{
-	CG_ResetZoom();
-	}
-}
 
 /*
 ===============
@@ -878,6 +870,10 @@ void CG_DrawActiveFrame( int serverTime, stereoFrame_t stereoView, qboolean demo
 	// decide on third person view
 	cg.renderingThirdPerson = cg_thirdPerson.integer || (cg.snap->ps.stats[STAT_HEALTH] <= 0);
 
+	if ( cg.snap->ps.stats[STAT_HEALTH] <= 0 )
+	{ // Reset the zoom at death when necessary -Vincent
+		CG_ResetZoom();
+	}
 	// build cg.refdef
 	inwater = CG_CalcViewValues();
 

@@ -168,7 +168,11 @@ CG_Respawn
 A respawn happened this snapshot
 ================
 */
-void CG_Respawn( void ) {
+void CG_Respawn( void ) 
+{
+	// Check if the zoom needs to be resetted -Vincent
+	CG_ResetZoom();
+
 	// no error decay on player movement
 	cg.thisFrameTeleport = qtrue;
 
