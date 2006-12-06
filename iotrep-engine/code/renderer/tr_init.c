@@ -132,7 +132,7 @@ cvar_t	*r_fullscreen;
 
 cvar_t	*r_customwidth;
 cvar_t	*r_customheight;
-cvar_t	*r_customaspect;
+cvar_t	*r_customPixelAspect;
 
 cvar_t	*r_overBrightBits;
 cvar_t	*r_mapOverBrightBits;
@@ -307,6 +307,7 @@ static int	s_numVidModes = ( sizeof( r_vidModes ) / sizeof( r_vidModes[0] ) );
 
 qboolean R_GetModeInfo( int *width, int *height, float *windowAspect, int mode ) {
 	vidmode_t	*vm;
+	float			pixelAspect;
 
     if ( mode < -1 ) {
         return qfalse;
@@ -318,17 +319,18 @@ qboolean R_GetModeInfo( int *width, int *height, float *windowAspect, int mode )
 	if ( mode == -1 ) {
 		*width = r_customwidth->integer;
 		*height = r_customheight->integer;
-		*windowAspect = r_customaspect->value;
-		return qtrue;
+		pixelAspect = r_customPixelAspect->value;
+	}	else {
+		vm = &r_vidModes[mode];
+
+		*width  = vm->width;
+		*height = vm->height;
+		pixelAspect = vm->pixelAspect;
 	}
 
-	vm = &r_vidModes[mode];
+	*windowAspect = (float)*width / ( *height * pixelAspect );
 
-    *width  = vm->width;
-    *height = vm->height;
-    *windowAspect = (float)vm->width / ( vm->height * vm->pixelAspect );
-
-    return qtrue;
+	return qtrue;
 }
 
 /*
@@ -423,7 +425,7 @@ void RB_TakeScreenshotJPEG( int x, int y, int width, int height, char *fileName 
 	}
 
 	ri.FS_WriteFile( fileName, buffer, 1 );		// create path
-	SaveJPG( fileName, 95, glConfig.vidWidth, glConfig.vidHeight, buffer);
+	SaveJPG( fileName, 90, glConfig.vidWidth, glConfig.vidHeight, buffer);
 
 	ri.Hunk_FreeTempMemory( buffer );
 }
@@ -727,23 +729,23 @@ const void *RB_TakeVideoFrameCmd( const void *data )
 
 	if( cmd->motionJpeg )
 	{
-		frameSize = SaveJPGToBuffer( cmd->encodeBuffer, 95,
+		frameSize = SaveJPGToBuffer( cmd->encodeBuffer, 90,
 				cmd->width, cmd->height, cmd->captureBuffer );
+		ri.CL_WriteAVIVideoFrame( cmd->encodeBuffer, frameSize );
 	}
 	else
 	{
-		frameSize = cmd->width * cmd->height * 4;
+		frameSize = cmd->width * cmd->height;
 
-		// Vertically flip the image
-		for( i = 0; i < cmd->height; i++ )
+		for( i = 0; i < frameSize; i++)    // Pack to 24bpp and swap R and B
 		{
-			Com_Memcpy( &cmd->encodeBuffer[ i * ( cmd->width * 4 ) ],
-					&cmd->captureBuffer[ ( cmd->height - i - 1 ) * ( cmd->width * 4 ) ],
-					cmd->width * 4 );
+			cmd->encodeBuffer[ i*3 ]     = cmd->captureBuffer[ i*4 + 2 ];
+			cmd->encodeBuffer[ i*3 + 1 ] = cmd->captureBuffer[ i*4 + 1 ];
+			cmd->encodeBuffer[ i*3 + 2 ] = cmd->captureBuffer[ i*4 ];
 		}
-	}
 
-	ri.CL_WriteAVIVideoFrame( cmd->encodeBuffer, frameSize );
+		ri.CL_WriteAVIVideoFrame( cmd->encodeBuffer, frameSize * 3 );
+	}
 
 	return (const void *)(cmd + 1);	
 }
@@ -943,7 +945,7 @@ void R_Register( void )
 #endif
 	r_customwidth = ri.Cvar_Get( "r_customwidth", "1600", CVAR_ARCHIVE | CVAR_LATCH );
 	r_customheight = ri.Cvar_Get( "r_customheight", "1024", CVAR_ARCHIVE | CVAR_LATCH );
-	r_customaspect = ri.Cvar_Get( "r_customaspect", "1", CVAR_ARCHIVE | CVAR_LATCH );
+	r_customPixelAspect = ri.Cvar_Get( "r_customPixelAspect", "1", CVAR_ARCHIVE | CVAR_LATCH );
 	r_simpleMipMaps = ri.Cvar_Get( "r_simpleMipMaps", "1", CVAR_ARCHIVE | CVAR_LATCH );
 	r_vertexLight = ri.Cvar_Get( "r_vertexLight", "0", CVAR_ARCHIVE | CVAR_LATCH );
 	r_uiFullScreen = ri.Cvar_Get( "r_uifullscreen", "0", 0);

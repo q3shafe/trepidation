@@ -21,8 +21,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
-// Shafe - This file is a fucking mess now
-
 #include "client.h"
 #include "snd_codec.h"
 
@@ -138,120 +136,22 @@ void S_CodecRegister(snd_codec_t *codec)
 S_CodecLoad
 =================
 */
-
-
-qboolean S_EFCheckExtension(char *filename)
-{
-	fileHandle_t hnd;
-	char fn[MAX_QPATH];
-	int stringlen = strlen(filename);
-	char *extptr;
-	
-	strncpy(fn, filename, stringlen+1);
-	extptr = strrchr(fn, '.');
-
-	if(!extptr)
-	{
-		extptr = &fn[stringlen];
-		
-		extptr[0] = '.';
-		extptr[1] = 'w';
-		extptr[2] = 'a';
-		extptr[3] = 'v';
-		extptr[4] = '\0';
-		
-		stringlen += 4;
-	}
-	
-	FS_FOpenFileRead(fn, &hnd, qtrue);
-
-	if(!hnd)
-	{
-		if(!strcmp(++extptr, "wav"))
-		{
-			extptr[0] = 'm';
-			extptr[1] = 'p';
-			extptr[2] = '3';
-
-			FS_FOpenFileRead(fn, &hnd, qtrue);
-			
-			if(!hnd)
-				return qfalse;
-			
-		}
-		else
-			return qfalse;
-	}
-	
-	FS_FCloseFile(hnd);
-	strcpy(filename, fn);
-	return qtrue;
-}
-
-qboolean S_EFGetFileName(char *filename)
-{
-	char fn[MAX_QPATH];
-	qboolean dschoermen = qfalse;
-
-	if(!strcmp(Cvar_VariableString("s_language"), "DEUTSCH"))
-		dschoermen = qtrue;
-
-	strncpy(fn, filename, sizeof(fn) - 10);
-
-	if(dschoermen && strstr(filename, "sound/voice") == filename)
-	{
-		fn[8] = 'x';
-		fn[9] = '_';
-		fn[10] = 'd';
-	
-		if(S_EFCheckExtension(fn))
-		{
-			strcpy(filename, fn);
-			return qtrue;
-		}
-	}
-
-	if(S_EFCheckExtension(filename))
-		return qtrue;
-	
-
-	
-	
-	return qfalse;
-}
-//#endif
-
 void *S_CodecLoad(const char *filename, snd_info_t *info)
 {
-        snd_codec_t *codec;
-        char fn[MAX_QPATH];
+	snd_codec_t *codec;
+	char fn[MAX_QPATH];
 
+	codec = S_FindCodecForFile(filename);
+	if(!codec)
+	{
+		Com_Printf("Unknown extension for %s\n", filename);
+		return NULL;
+	}
 
 	strncpy(fn, filename, sizeof(fn));
-	if(!S_EFGetFileName(fn))
-		return NULL;
-		
-        codec = S_FindCodecForFile(fn);
-  		
-		if (!codec)
-		{
-			codec = S_FindCodecForFile(filename);
-		}
+	COM_DefaultExtension(fn, sizeof(fn), codec->ext);
 
-		if(!codec)
-        {
-			Com_Printf("S_CodecLoad: Unknown extension for %s\n", filename);
-                return NULL;
-        }
-
-
-/*
-#ifndef ELITEFORCE
-        strncpy(fn, filename, sizeof(fn));
-        COM_DefaultExtension(fn, sizeof(fn), codec->ext);
-#endif
-*/
-        return codec->load(fn, info);
+	return codec->load(fn, info);
 }
 
 /*
@@ -264,22 +164,15 @@ snd_stream_t *S_CodecOpenStream(const char *filename)
 	snd_codec_t *codec;
 	char fn[MAX_QPATH];
 
-//	codec = S_FindCodecForFile(filename);
-	strncpy(fn, filename, sizeof(fn));
-	if(!S_EFGetFileName(fn))
-		return NULL;
-        codec = S_FindCodecForFile(fn);
-
+	codec = S_FindCodecForFile(filename);
 	if(!codec)
 	{
-		Com_Printf("S_CodecOpenStrem Unknown extension for %s\n", filename);
+		Com_Printf("Unknown extension for %s\n", filename);
 		return NULL;
 	}
 
-	/*
 	strncpy(fn, filename, sizeof(fn));
 	COM_DefaultExtension(fn, sizeof(fn), codec->ext);
-	*/
 
 	return codec->open(fn);
 }

@@ -30,11 +30,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "../cgame/cg_public.h"
 #include "../game/bg_public.h"
 
+#if USE_CURL
+#include "cl_curl.h"
+#endif /* USE_CURL */
+
 // tjw: file full of random crap that gets used to create cl_guid
 #define QKEY_FILE "qkey"
 
 #define	RETRANSMIT_TIMEOUT	3000	// time between connection packet retransmits
-
 
 // snapshots are a view of the server at a given time
 typedef struct {
@@ -186,6 +189,16 @@ typedef struct {
 	fileHandle_t download;
 	char		downloadTempName[MAX_OSPATH];
 	char		downloadName[MAX_OSPATH];
+#ifdef USE_CURL
+	qboolean	cURLEnabled;
+	qboolean	cURLUsed;
+	qboolean	cURLDisconnected;
+	char		downloadURL[MAX_OSPATH];
+	CURL		*downloadCURL;
+	CURLM		*downloadCURLM;
+#endif /* USE_CURL */
+	int		sv_allowDownload;
+	char		sv_dlURL[MAX_CVAR_VALUE_STRING];
 	int			downloadNumber;
 	int			downloadBlock;	// block we are waiting for
 	int			downloadCount;	// how many bytes we got
@@ -352,8 +365,12 @@ extern	cvar_t	*cl_aviMotionJpeg;
 extern	cvar_t	*cl_activeAction;
 
 extern	cvar_t	*cl_allowDownload;
+extern  cvar_t  *cl_downloadMethod;
 extern	cvar_t	*cl_conXOffset;
 extern	cvar_t	*cl_inGameVideo;
+
+extern	cvar_t	*cl_lanForcePackets;
+extern	cvar_t	*cl_autoRecordDemo;
 
 //=================================================
 
@@ -375,6 +392,7 @@ void CL_Snd_Restart_f (void);
 void CL_StartDemoLoop( void );
 void CL_NextDemo( void );
 void CL_ReadDemoMessage( void );
+void CL_StopRecord_f(void);
 
 void CL_InitDownloads(void);
 void CL_NextDownload(void);
@@ -389,6 +407,7 @@ void CL_InitRef( void );
 qboolean CL_CDKeyValidate( const char *key, const char *checksum );
 int CL_ServerStatus( char *serverAddress, char *serverStatusString, int maxLen );
 
+qboolean CL_CheckPaused(void);
 
 //
 // cl_input

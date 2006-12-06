@@ -26,11 +26,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // q_shared.h -- included first by ALL program modules.
 // A user mod should never modify this file
 
-#define Q3_VERSION            "Trepidation 1.00"
-#define CLIENT_WINDOW_TITLE   "Trepidation"
+#define Q3_VERSION            "Trepidation 12-06 Dev Build"
+#ifndef SVN_VERSION
+  #define SVN_VERSION Q3_VERSION
+#endif
+#define CLIENT_WINDOW_TITLE   "Trepidation Dev Build"
 #define CLIENT_WINDOW_ICON    "Trepidation"
-#define CONSOLE_WINDOW_TITLE  "Trepidation Alpha console"
-#define CONSOLE_WINDOW_ICON   "Trepidation Console"
+#define CONSOLE_WINDOW_TITLE  "Trepidation console"
+#define CONSOLE_WINDOW_ICON   "Trepidation console"
 // 1.32 released 7-10-2002
 
 #define BASEGAME              "base"
@@ -756,6 +759,9 @@ default values.
 #define CVAR_CHEAT			512	// can not be changed if cheats are disabled
 #define CVAR_NORESTART		1024	// do not clear when a cvar_restart is issued
 
+#define CVAR_SERVER_CREATED	2048	// cvar was created by a server the client connected to.
+#define CVAR_NONEXISTENT	0xFFFFFFFF	// Cvar doesn't exist.
+
 // nothing outside the Cvar_*() functions should modify these fields!
 typedef struct cvar_s {
 	char		*name;
@@ -1130,7 +1136,7 @@ typedef struct entityState_s {
 	int		torsoAnim;		// mask off ANIM_TOGGLEBIT
 
 	int		generic1;
-	int		team;
+	int		team;  // Shafe
 } entityState_t;
 
 typedef enum {

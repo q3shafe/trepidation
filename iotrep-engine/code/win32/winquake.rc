@@ -1,7 +1,6 @@
 //Microsoft Developer Studio generated resource script.
 //
 #include "resource.h"
-#include "winnt.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -22,8 +21,7 @@
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 #ifdef _WIN32
-//LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
-LANGUAGE 0x00, 0x01
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
 #endif //_WIN32
 
@@ -59,11 +57,11 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-//#ifndef __MINGW32__
+#ifndef __MINGW32__
 IDI_ICON1               ICON    DISCARDABLE     "qe3.ico"
-//#else
-//IDI_ICON1               ICON    DISCARDABLE     "code/win32/qe3.ico"
-//#endif
+#else
+IDI_ICON1               ICON    DISCARDABLE     "code/win32/qe3.ico"
+#endif
 
 /////////////////////////////////////////////////////////////////////////////
 //

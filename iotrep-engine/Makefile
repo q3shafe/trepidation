@@ -100,6 +100,18 @@ ifndef USE_OPENAL_DLOPEN
 USE_OPENAL_DLOPEN=0
 endif
 
+ifndef USE_CURL
+USE_CURL=1
+endif
+
+ifndef USE_CURL_DLOPEN
+  ifeq ($(PLATFORM),mingw32)
+    USE_CURL_DLOPEN=0
+  else
+    USE_CURL_DLOPEN=1
+  endif
+endif
+
 ifndef USE_CODEC_VORBIS
 USE_CODEC_VORBIS=0
 endif
@@ -135,13 +147,19 @@ SDLHDIR=$(MOUNT_DIR)/SDL12
 LIBSDIR=$(MOUNT_DIR)/libs
 
 # extract version info
-VERSION=$(shell grep Q3_VERSION $(CMDIR)/q_shared.h | \
+VERSION=$(shell grep "\#define Q3_VERSION" $(CMDIR)/q_shared.h | \
   sed -e 's/.*".* \([^ ]*\)"/\1/')
 
+USE_SVN=
 ifeq ($(wildcard .svn),.svn)
-  SVN_VERSION=$(VERSION)_SVN$(shell LANG=C svnversion .)
-else
-  SVN_VERSION=$(VERSION)
+  SVN_REV=$(shell LANG=C svnversion .)
+  ifneq ($(SVN_REV),)
+    SVN_VERSION=$(VERSION)_SVN$(SVN_REV)
+    USE_SVN=1
+  endif
+endif
+ifneq ($(USE_SVN),1)
+    SVN_VERSION=$(VERSION)
 endif
 
 
@@ -185,6 +203,13 @@ ifeq ($(PLATFORM),linux)
       BASE_CFLAGS += -DUSE_OPENAL_DLOPEN=1
     endif
   endif
+  
+  ifeq ($(USE_CURL),1)
+    BASE_CFLAGS += -DUSE_CURL=1
+    ifeq ($(USE_CURL_DLOPEN),1)
+      BASE_CFLAGS += -DUSE_CURL_DLOPEN=1
+    endif
+  endif
 
   ifeq ($(USE_CODEC_VORBIS),1)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
@@ -202,11 +227,6 @@ ifeq ($(PLATFORM),linux)
   endif
 
   OPTIMIZE = -O3 -ffast-math -funroll-loops -fomit-frame-pointer
-
-  ifeq ($(USE_CODEC_MP3),1)
-    CLIENT_LDFLAGS += -lmad
-  endif
-
 
   ifeq ($(ARCH),x86_64)
     OPTIMIZE = -O3 -fomit-frame-pointer -ffast-math -funroll-loops \
@@ -244,6 +264,7 @@ ifeq ($(PLATFORM),linux)
 
   THREAD_LDFLAGS=-lpthread
   LDFLAGS=-ldl -lm
+  LDFLAGS += -L/emul/linux/x86/usr/lib
 
   ifeq ($(USE_SDL),1)
     CLIENT_LDFLAGS=$(shell sdl-config --libs)
@@ -256,9 +277,19 @@ ifeq ($(PLATFORM),linux)
       CLIENT_LDFLAGS += -lopenal
     endif
   endif
+  
+  ifeq ($(USE_CURL),1)
+    ifneq ($(USE_CURL_DLOPEN),1)
+      CLIENT_LDFLAGS += -lcurl
+    endif
+  endif
 
   ifeq ($(USE_CODEC_VORBIS),1)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
+  endif
+
+  ifeq ($(USE_CODEC_MP3),1)
+    CLIENT_LDFLAGS += -lmad
   endif
 
   ifeq ($(ARCH),i386)
@@ -275,49 +306,122 @@ else # ifeq Linux
 
 ifeq ($(PLATFORM),darwin)
   CC=gcc
-
-  # !!! FIXME: calling conventions are still broken! See Bugzilla #2519
   VM_PPC=vm_ppc_new
+  HAVE_VM_COMPILED=true
+  BASE_CFLAGS=
+  CLIENT_LDFLAGS=
+  LDFLAGS=
+  OPTIMIZE=
+  ifeq ($(BUILD_MACOSX_UB),ppc)
+    CC=gcc-3.3
+    BASE_CFLAGS += -arch ppc -DSMP \
+      -DMAC_OS_X_VERSION_MIN_REQUIRED=1020 -nostdinc \
+      -F/Developer/SDKs/MacOSX10.2.8.sdk/System/Library/Frameworks \
+      -I/Developer/SDKs/MacOSX10.2.8.sdk/usr/include/gcc/darwin/3.3 \
+      -isystem /Developer/SDKs/MacOSX10.2.8.sdk/usr/include
+    # when using the 10.2 SDK we are not allowed the two-level namespace so
+    # in order to get the OpenAL dlopen() stuff to work without major
+    # modifications, the controversial -m linker flag must be used.  this
+    # throws a ton of multiply defined errors which cannot be suppressed.
+    LDFLAGS += -arch ppc \
+      -L/Developer/SDKs/MacOSX10.2.8.sdk/usr/lib/gcc/darwin/3.3 \
+      -F/Developer/SDKs/MacOSX10.2.8.sdk/System/Library/Frameworks \
+      -Wl,-syslibroot,/Developer/SDKs/MacOSX10.2.8.sdk,-m 
+    ARCH=ppc
 
-  BASE_CFLAGS = -Wall -fno-strict-aliasing -Wimplicit -Wstrict-prototypes
-  BASE_CFLAGS += -DMACOS_X -fno-common -pipe
+    # OS X 10.2 sdk lacks dlopen() so ded would need libSDL anyway
+    BUILD_SERVER=0
+
+    # because of a problem with linking on 10.2 this will generate multiply
+    # defined symbol errors.  The errors can be turned into warnings with
+    # the -m linker flag, but you can't shut up the warnings 
+    USE_OPENAL_DLOPEN=1
+  else
+  ifeq ($(BUILD_MACOSX_UB),i386)
+    CC=gcc-4.0
+    BASE_CFLAGS += -arch i386 -DSMP \
+      -mmacosx-version-min=10.4 \
+      -DMAC_OS_X_VERSION_MIN_REQUIRED=1040 -nostdinc \
+      -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks \
+      -I/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin8/4.0.1/include \
+      -isystem /Developer/SDKs/MacOSX10.4u.sdk/usr/include
+    LDFLAGS = -arch i386 -mmacosx-version-min=10.4 \
+      -L/Developer/SDKs/MacOSX10.4u.sdk/usr/lib/gcc/i686-apple-darwin8/4.0.1 \
+      -F/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks \
+      -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
+    ARCH=i386
+    BUILD_SERVER=0
+  else
+    # for whatever reason using the headers in the MacOSX SDKs tend to throw 
+    # errors even though they are identical to the system ones which don't
+    # therefore we shut up warning flags when running the universal build
+    # script as much as possible.
+    BASE_CFLAGS += -Wall -Wimplicit -Wstrict-prototypes
+  endif
+  endif
+
+  ifeq ($(ARCH),ppc)
+    OPTIMIZE += -faltivec -O3
+    # Carbon is required on PPC only to make a call to MakeDataExecutable
+    # in the PPC vm (should be a better non-Carbon way).
+    LDFLAGS += -framework Carbon
+  endif
+  ifeq ($(ARCH),i386)
+    OPTIMIZE += -march=prescott -mfpmath=sse
+    # x86 vm will crash without -mstackrealign since MMX instructions will be
+    # used no matter what and they corrupt the frame pointer in VM calls
+    BASE_CFLAGS += -mstackrealign
+  endif
+
+  BASE_CFLAGS += -fno-strict-aliasing -DMACOS_X -fno-common -pipe
 
   # Always include debug symbols...you can strip the binary later...
   BASE_CFLAGS += -gfull
 
   ifeq ($(USE_OPENAL),1)
     BASE_CFLAGS += -DUSE_OPENAL=1
-    ifeq ($(USE_OPENAL_DLOPEN),1)
+    ifneq ($(USE_OPENAL_DLOPEN),1)
+      CLIENT_LDFLAGS += -framework OpenAL
+    else
       BASE_CFLAGS += -DUSE_OPENAL_DLOPEN=1
+    endif
+  endif
+  
+  ifeq ($(USE_CURL),1)
+    BASE_CFLAGS += -DUSE_CURL=1
+    ifneq ($(USE_CURL_DLOPEN),1)
+      CLIENT_LDFLAGS += -lcurl
+    else
+      BASE_CFLAGS += -DUSE_CURL_DLOPEN=1
     endif
   endif
 
   ifeq ($(USE_CODEC_VORBIS),1)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
+    CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
   endif
 
-#  ifeq ($(USE_CODEC_MP3),1)
+  ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
-#  endif
-
+    CLIENT_LDFLAGS += -lmad
+  endif
 
   ifeq ($(USE_SDL),1)
-    BASE_CFLAGS += -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 -D_THREAD_SAFE=1 -I$(SDLHDIR)/include
+    BASE_CFLAGS += -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 -D_THREAD_SAFE=1 \
+      -I$(SDLHDIR)/include
     GL_CFLAGS =
+    # We copy sdlmain before ranlib'ing it so that subversion doesn't think
+    #  the file has been modified by each build.
+    LIBSDLMAIN=$(B)/libSDLmain.a
+    LIBSDLMAINSRC=$(LIBSDIR)/macosx/libSDLmain.a
+    CLIENT_LDFLAGS += -framework Cocoa -framework OpenGL \
+      $(LIBSDIR)/macosx/libSDL-1.2.0.dylib
+  else
+    # !!! FIXME: frameworks: OpenGL, Carbon, etc...
+    #CLIENT_LDFLAGS += -L/usr/X11R6/$(LIB) -lX11 -lXext -lXxf86dga -lXxf86vm
   endif
 
-  OPTIMIZE = -O3 -ffast-math -falign-loops=16
-
-  ifeq ($(ARCH),ppc)
-  BASE_CFLAGS += -faltivec
-    ifneq ($(VM_PPC),)
-      HAVE_VM_COMPILED=true
-    endif
-  endif
-
-  ifeq ($(ARCH),i386)
-    # !!! FIXME: x86-specific flags here...
-  endif
+  OPTIMIZE += -ffast-math -falign-loops=16
 
   ifneq ($(HAVE_VM_COMPILED),true)
     BASE_CFLAGS += -DNO_VM_COMPILED
@@ -332,39 +436,6 @@ ifeq ($(PLATFORM),darwin)
   SHLIBLDFLAGS=-dynamiclib $(LDFLAGS)
 
   NOTSHLIBCFLAGS=-mdynamic-no-pic
-
-  #THREAD_LDFLAGS=-lpthread
-  #LDFLAGS=-ldl -lm
-  LDFLAGS += -framework Carbon
-
-  ifeq ($(USE_SDL),1)
-    # We copy sdlmain before ranlib'ing it so that subversion doesn't think
-    #  the file has been modified by each build.
-    LIBSDLMAIN=$(B)/libSDLmain.a
-    LIBSDLMAINSRC=$(LIBSDIR)/macosx/libSDLmain.a
-    CLIENT_LDFLAGS=-framework Cocoa -framework OpenGL $(LIBSDIR)/macosx/libSDL-1.2.0.dylib
-  else
-    # !!! FIXME: frameworks: OpenGL, Carbon, etc...
-    #CLIENT_LDFLAGS=-L/usr/X11R6/$(LIB) -lX11 -lXext -lXxf86dga -lXxf86vm
-  endif
-
-  # -framework OpenAL requires 10.4 or later...for builds shipping to the
-  #  public, you'll want to use USE_OPENAL_DLOPEN and ship your own OpenAL
-  #  library (http://openal.org/ or http://icculus.org/al_osx/)
-  ifeq ($(USE_OPENAL),1)
-    ifneq ($(USE_OPENAL_DLOPEN),1)
-      CLIENT_LDFLAGS += -framework OpenAL
-    endif
-  endif
-
-  ifeq ($(USE_CODEC_VORBIS),1)
-    CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
-  endif
-
-#  ifeq ($(USE_CODEC_MP3),1)
-    CLIENT_LDFLAGS += -lmad
-#  endif
-
 
 else # ifeq darwin
 
@@ -385,15 +456,21 @@ ifeq ($(PLATFORM),mingw32)
   ifeq ($(USE_OPENAL),1)
     BASE_CFLAGS += -DUSE_OPENAL=1 -DUSE_OPENAL_DLOPEN=1
   endif
+  
+  ifeq ($(USE_CURL),1)
+    BASE_CFLAGS += -DUSE_CURL=1
+    ifneq ($(USE_CURL_DLOPEN),1)
+      BASE_CFLAGS += -DCURL_STATICLIB
+    endif
+  endif
 
   ifeq ($(USE_CODEC_VORBIS),1)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
 
-#  ifeq ($(USE_CODEC_MP3),1)
+# ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
 #  endif
-
 
   GL_CFLAGS =
   MINGW_CFLAGS = -DDONT_TYPEDEF_INT32
@@ -416,6 +493,12 @@ ifeq ($(PLATFORM),mingw32)
   LDFLAGS= -mwindows -lwsock32 -lgdi32 -lwinmm -lole32
   CLIENT_LDFLAGS=
 
+  ifeq ($(USE_CURL),1)
+    ifneq ($(USE_CURL_DLOPEN),1)
+      CLIENT_LDFLAGS += $(LIBSDIR)/win32/libcurl.a
+    endif
+  endif
+
   ifeq ($(USE_CODEC_VORBIS),1)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
   endif
@@ -423,7 +506,6 @@ ifeq ($(PLATFORM),mingw32)
 #  ifeq ($(USE_CODEC_MP3),1)
     CLIENT_LDFLAGS += -lmad
 #  endif
-
 
   ifeq ($(ARCH),x86)
     # build 32bit
@@ -466,10 +548,9 @@ ifeq ($(PLATFORM),freebsd)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
   endif
 
-#  ifeq ($(USE_CODEC_MP3),1)
+  ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
-#  endif
-
+  endif
 
   ifeq ($(USE_SDL),1)
     BASE_CFLAGS += $(shell sdl-config --cflags) -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1
@@ -519,9 +600,9 @@ ifeq ($(PLATFORM),freebsd)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
   endif
 
-#  ifeq ($(USE_CODEC_MP3),1)
+  ifeq ($(USE_CODEC_MP3),1)
     CLIENT_LDFLAGS += -lmad
-#  endif
+  endif
 
 else # ifeq freebsd
 
@@ -617,13 +698,20 @@ ifeq ($(PLATFORM),sunos)
       -falign-jumps=2 -falign-functions=2 -fstrength-reduce \
       -mtune=ultrasparc -mv8plus -mno-faster-structs \
       -funroll-loops
-    BASE_CFLAGS += -DNO_VM_COMPILED
   else
   ifeq ($(ARCH),i386)
-    OPTIMIZE = -O3 -march=i586  -ffast-math \
-      -falign-loops=2 -falign-jumps=2 -falign-functions=2 \
-      -funroll-loops -fstrength-reduce
+    OPTIMIZE = -O3 -march=i586 -fomit-frame-pointer -ffast-math \
+      -funroll-loops -falign-loops=2 -falign-jumps=2 \
+      -falign-functions=2 -fstrength-reduce
+    HAVE_VM_COMPILED=true
+    BASE_CFLAGS += -m32
+    LDFLAGS+=-m32
+    GL_CFLAGS+= -I/usr/X11/include/NVIDIA
   endif
+  endif
+
+  ifneq ($(HAVE_VM_COMPILED),true)
+    BASE_CFLAGS += -DNO_VM_COMPILED
   endif
 
   DEBUG_CFLAGS = $(BASE_CFLAGS) -ggdb -O0
@@ -643,12 +731,6 @@ ifeq ($(PLATFORM),sunos)
     CLIENT_LDFLAGS=$(shell sdl-config --libs) -L/usr/X11/lib -lGLU -lX11 -lXext
   else
     CLIENT_LDFLAGS=-L/usr/openwin/$(LIB) -L/usr/X11/lib -lGLU -lX11 -lXext
-  endif
-
-  ifeq ($(ARCH),i386)
-    # Solarix x86 make ...
-    BASE_CFLAGS += -m32
-    LDFLAGS+=-m32
   endif
 
 else # ifeq sunos
@@ -725,6 +807,10 @@ ifeq ($(GENERATE_DEPENDENCIES),1)
   ifeq ($(CC),gcc)
     DEPEND_CFLAGS=-MMD
   endif
+endif
+
+ifeq ($(USE_SVN),1)
+  BASE_CFLAGS += -DSVN_VERSION=\\\"$(SVN_VERSION)\\\"
 endif
 
 DO_CC=$(CC) $(NOTSHLIBCFLAGS) $(CFLAGS) -o $@ -c $<
@@ -842,6 +928,8 @@ Q3OBJ = \
   \
   $(B)/client/qal.o \
   $(B)/client/snd_openal.o \
+  \
+  $(B)/client/cl_curl.o \
   \
   $(B)/client/sv_bot.o \
   $(B)/client/sv_ccmds.o \
@@ -1038,6 +1126,9 @@ endif
 $(B)/client/cl_cgame.o : $(CDIR)/cl_cgame.c; $(DO_CC)
 $(B)/client/cl_cin.o : $(CDIR)/cl_cin.c; $(DO_CC)
 $(B)/client/cl_console.o : $(CDIR)/cl_console.c; $(DO_CC)
+ifeq ($(USE_SVN),1)
+  $(B)/client/cl_console.o : .svn/entries
+endif
 $(B)/client/cl_input.o : $(CDIR)/cl_input.c; $(DO_CC)
 $(B)/client/cl_keys.o : $(CDIR)/cl_keys.c; $(DO_CC)
 $(B)/client/cl_main.o : $(CDIR)/cl_main.c; $(DO_CC)
@@ -1061,6 +1152,8 @@ $(B)/client/snd_codec_mp3.o : $(CDIR)/snd_codec_mp3.c; $(DO_CC)
 $(B)/client/qal.o : $(CDIR)/qal.c; $(DO_CC)
 $(B)/client/snd_openal.o : $(CDIR)/snd_openal.c; $(DO_CC)
 
+$(B)/client/cl_curl.o : $(CDIR)/cl_curl.c; $(DO_CC)
+
 $(B)/client/sv_bot.o : $(SDIR)/sv_bot.c; $(DO_CC)
 $(B)/client/sv_client.o : $(SDIR)/sv_client.c; $(DO_CC)
 $(B)/client/sv_ccmds.o : $(SDIR)/sv_ccmds.c; $(DO_CC)
@@ -1077,6 +1170,9 @@ $(B)/client/cm_patch.o : $(CMDIR)/cm_patch.c; $(DO_CC)
 $(B)/client/cm_polylib.o : $(CMDIR)/cm_polylib.c; $(DO_CC)
 $(B)/client/cmd.o : $(CMDIR)/cmd.c; $(DO_CC)
 $(B)/client/common.o : $(CMDIR)/common.c; $(DO_CC)
+ifeq ($(USE_SVN),1)
+  $(B)/client/common.o : .svn/entries
+endif
 $(B)/client/cvar.o : $(CMDIR)/cvar.c; $(DO_CC)
 $(B)/client/files.o : $(CMDIR)/files.c; $(DO_CC)
 $(B)/client/md4.o : $(CMDIR)/md4.c; $(DO_CC)
@@ -1304,6 +1400,12 @@ ifeq ($(ARCH),i386)
       $(B)/ded/snapvectora.o \
       $(B)/ded/matha.o
 endif
+ifeq ($(ARCH),x86)
+  Q3DOBJ += \
+      $(B)/ded/ftola.o \
+      $(B)/ded/snapvectora.o \
+      $(B)/ded/matha.o
+endif
 
 ifeq ($(HAVE_VM_COMPILED),true)
   ifeq ($(ARCH),i386)
@@ -1339,6 +1441,9 @@ $(B)/ded/cm_trace.o : $(CMDIR)/cm_trace.c; $(DO_DED_CC)
 $(B)/ded/cm_patch.o : $(CMDIR)/cm_patch.c; $(DO_DED_CC)
 $(B)/ded/cmd.o : $(CMDIR)/cmd.c; $(DO_DED_CC)
 $(B)/ded/common.o : $(CMDIR)/common.c; $(DO_DED_CC)
+ifeq ($(USE_SVN),1)
+  $(B)/ded/common.o : .svn/entries
+endif
 $(B)/ded/cvar.o : $(CMDIR)/cvar.c; $(DO_DED_CC)
 $(B)/ded/files.o : $(CMDIR)/files.c; $(DO_DED_CC)
 $(B)/ded/md4.o : $(CMDIR)/md4.c; $(DO_DED_CC)
@@ -1762,17 +1867,6 @@ ifneq ($(BUILD_GAME_SO),0)
 					$(COPYDIR)/missionpack/.
 endif
 
-ifneq ($(BUILD_GAME_QVM),0)
-	-$(MKDIR) -p -m 0755 $(COPYDIR)/baseq3/vm
-	$(INSTALL) -m 0755 $(BR)/baseq3/vm/qagame.qvm $(COPYDIR)/baseq3/vm/qagame.qvm
-	$(INSTALL) -m 0755 $(BR)/baseq3/vm/cgame.qvm $(COPYDIR)/baseq3/vm/cgame.qvm
-	$(INSTALL) -m 0755 $(BR)/baseq3/vm/ui.qvm $(COPYDIR)/baseq3/vm/ui.qvm
-	-$(MKDIR) -p -m 0755 $(COPYDIR)/missionpack/vm
-	$(INSTALL) -m 0755 $(BR)/missionpack/vm/qagame.qvm $(COPYDIR)/missionpack/vm/qagame.qvm
-	$(INSTALL) -m 0755 $(BR)/missionpack/vm/cgame.qvm $(COPYDIR)/missionpack/vm/cgame.qvm
-	$(INSTALL) -m 0755 $(BR)/missionpack/vm/ui.qvm $(COPYDIR)/missionpack/vm/ui.qvm
-endif
-
 clean: clean-debug clean-release
 	$(MAKE) -C $(LOKISETUPDIR) clean
 
@@ -1824,6 +1918,5 @@ ifneq ($(strip $(D_FILES)),)
 endif
 
 .PHONY: release debug clean distclean copyfiles installer dist
-
 
 

@@ -2570,6 +2570,23 @@ qboolean FS_idPak( char *pak, char *base ) {
 
 /*
 ================
+FS_idPak
+
+Check whether the string contains stuff like "../" to prevent directory traversal bugs
+and return qtrue if it does.
+================
+*/
+
+qboolean FS_CheckDirTraversal(const char *checkdir)
+{
+	if(strstr(checkdir, "../") || strstr(checkdir, "..\\"))
+		return qtrue;
+	
+	return qfalse;
+}
+
+/*
+================
 FS_ComparePaks
 
 ----------------
@@ -2617,7 +2634,7 @@ qboolean FS_ComparePaks( char *neededpaks, int len, qboolean dlstring ) {
 		}
 
 		// Make sure the server cannot make us write to non-quake3 directories.
-		if(strstr(fs_serverReferencedPakNames[i], "../") || strstr(fs_serverReferencedPakNames[i], "..\\"))
+		if(FS_CheckDirTraversal(fs_serverReferencedPakNames[i]))
                 {
 			Com_Printf("WARNING: Invalid download name %s\n", fs_serverReferencedPakNames[i]);
                         continue;
@@ -2695,7 +2712,7 @@ qboolean FS_ComparePaks( char *neededpaks, int len, qboolean dlstring ) {
 ================
 FS_Shutdown
 
-Frees all resources and closes all files
+Frees all resources.
 ================
 */
 void FS_Shutdown( qboolean closemfp ) {
@@ -2893,6 +2910,8 @@ static void FS_CheckPak0( void )
 	foundPak0 = qtrue;
 
 	/*
+		
+		
 	for( path = fs_searchpaths; path; path = path->next ) {
 		if( path->pack &&
 				!Q_stricmpn( path->pack->pakBasename, "pak0", MAX_OSPATH ) &&
@@ -3362,7 +3381,7 @@ void FS_Restart( int checksumFeed ) {
 	if ( Q_stricmp(fs_gamedirvar->string, lastValidGame) ) {
 		// skip the q3config.cfg if "safe" is on the command line
 		if ( !Com_SafeMode() ) {
-			Cbuf_AddText ("exec trepconfig.cfg\n");
+			Cbuf_AddText ("exec q3config.cfg\n");
 		}
 	}
 

@@ -356,7 +356,7 @@ static void SV_Kick_f( void ) {
 	}
 
 	if ( Cmd_Argc() != 2 ) {
-		Com_Printf ("Usage: kick <player name>\nkick allbots = kick all bots\n");
+		Com_Printf ("Usage: kick <player name>\nkick all = kick everyone\nkick allbots = kick all bots\n");
 		return;
 	}
 
@@ -364,8 +364,7 @@ static void SV_Kick_f( void ) {
 	if ( !cl ) {
 		if ( !Q_stricmp(Cmd_Argv(1), "all") ) {
 			/* this is a dumb thing only to be exploited
-			for ( i=0, cl=svs.clients ; i < sv_maxclients->integer ; i++,cl++ ) 
-			{
+			for ( i=0, cl=svs.clients ; i < sv_maxclients->integer ; i++,cl++ ) {
 				if ( !cl->state ) {
 					continue;
 				}

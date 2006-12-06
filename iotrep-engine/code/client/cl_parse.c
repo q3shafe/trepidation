@@ -219,6 +219,10 @@ void CL_ParseSnapshot( msg_t *msg ) {
 
 	newSnap.serverTime = MSG_ReadLong( msg );
 
+	// if we were just unpaused, we can only *now* really let the
+	// change come into effect or the client hangs.
+	cl_paused->modified = 0;
+
 	newSnap.messageNum = clc.serverMessageSequence;
 
 	deltaNum = MSG_ReadByte( msg );
@@ -368,22 +372,63 @@ void CL_SystemInfoChanged( void ) {
 	// scan through all the variables in the systeminfo and locally set cvars to match
 	s = systemInfo;
 	while ( s ) {
+		int cvar_flags;
+		
 		Info_NextPair( &s, key, value );
 		if ( !key[0] ) {
 			break;
 		}
+		
 		// ehw!
-		if ( !Q_stricmp( key, "fs_game" ) ) {
+		if (!Q_stricmp(key, "fs_game"))
+		{
+			if(FS_CheckDirTraversal(value))
+			{
+				Com_Printf(S_COLOR_YELLOW "WARNING: Server sent invalid fs_game value %s\n", value);
+				continue;
+			}
+				
 			gameSet = qtrue;
 		}
 
-		Cvar_Set( key, value );
+		if((cvar_flags = Cvar_Flags(key)) == CVAR_NONEXISTENT)
+			Cvar_Get(key, value, CVAR_SERVER_CREATED | CVAR_ROM);
+		else
+		{
+			// If this cvar may not be modified by a server discard the value.
+			if(!(cvar_flags & (CVAR_SYSTEMINFO | CVAR_SERVER_CREATED)))
+			{
+				Com_Printf(S_COLOR_YELLOW "WARNING: server is not allowed to set %s=%s\n", key, value);
+				continue;
+			}
+
+			Cvar_Set(key, value);
+		}
 	}
 	// if game folder should not be set and it is set at the client side
 	if ( !gameSet && *Cvar_VariableString("fs_game") ) {
 		Cvar_Set( "fs_game", "" );
 	}
 	cl_connectedToPureServer = Cvar_VariableValue( "sv_pure" );
+}
+
+/*
+==================
+CL_ParseServerInfo
+==================
+*/
+static void CL_ParseServerInfo(void)
+{
+	const char *serverInfo;
+
+	serverInfo = cl.gameState.stringData
+		+ cl.gameState.stringOffsets[ CS_SERVERINFO ];
+
+	clc.sv_allowDownload = atoi(Info_ValueForKey(serverInfo,
+		"sv_allowDownload"));
+	Q_strncpyz(clc.sv_dlURL,
+		Info_ValueForKey(serverInfo, "sv_dlURL"),
+		sizeof(clc.sv_dlURL));
 }
 
 /*
@@ -453,11 +498,18 @@ void CL_ParseGamestate( msg_t *msg ) {
 	// read the checksum feed
 	clc.checksumFeed = MSG_ReadLong( msg );
 
+	// parse useful values out of CS_SERVERINFO
+	CL_ParseServerInfo();
+
 	// parse serverId and other cvars
 	CL_SystemInfoChanged();
 
+	// stop recording now so the demo won't have an unnecessary level load at the end.
+	if(cl_autoRecordDemo->integer && clc.demorecording)
+		CL_StopRecord_f();
+	
 	// reinitialize the filesystem if the game directory has changed
-  FS_ConditionalRestart( clc.checksumFeed );
+	FS_ConditionalRestart( clc.checksumFeed );
 
 	// This used to call CL_StartHunkUsers, but now we enter the download state before loading the
 	// cgame

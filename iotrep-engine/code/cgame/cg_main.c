@@ -391,8 +391,6 @@ void CG_UpdateCvars( void ) {
 		} else {
 			trap_Cvar_Set( "teamoverlay", "0" );
 		}
-		// FIXME E3 HACK
-		trap_Cvar_Set( "teamoverlay", "1" );
 	}
 
 	// if force model changed
@@ -703,7 +701,7 @@ static void CG_RegisterSounds( void ) {
 	}
 
 	// only register the items that the server says we need
-	strcpy( items, CG_ConfigString( CS_ITEMS ) );
+	Q_strncpyz(items, CG_ConfigString(CS_ITEMS), sizeof(items));
 
 	for ( i = 1 ; i < bg_numItems ; i++ ) {
 //		if ( items[ i ] == '1' || cg_buildScript.integer ) {
@@ -1016,7 +1014,7 @@ static void CG_RegisterGraphics( void ) {
 	memset( cg_weapons, 0, sizeof( cg_weapons ) );
 
 	// only register the items that the server says we need
-	strcpy( items, CG_ConfigString( CS_ITEMS) );
+	Q_strncpyz(items, CG_ConfigString(CS_ITEMS), sizeof(items));
 
 	for ( i = 1 ; i < bg_numItems ; i++ ) {
 		if ( items[ i ] == '1' || cg_buildScript.integer ) {
