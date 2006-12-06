@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define	CD_BASEDIR	"trepidation"
 #define	CD_EXE		"trepidation.exe"
 #define	CD_BASEDIR_LINUX	"bin\\x86\\glibc-2.1"
-#define	CD_EXE_LINUX "quake3"
+#define	CD_EXE_LINUX "trepidation"
 #define MEM_THRESHOLD 96*1024*1024
 
 static char		sys_cmdline[MAX_STRING_CHARS];

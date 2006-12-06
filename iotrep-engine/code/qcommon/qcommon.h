@@ -243,8 +243,6 @@ extern int demo_protocols[];
 #define ALT_MASTER1	"master.beer-garden.org" // Shafe - Trep
 #define ALT_MASTER2	"master2.planettrepidation.com" // Shafe - Trep
 #define ALT_MASTER3	"master2.tnlsoft.com" // Shafe - Trep -
-
-
 #endif
 #ifndef AUTHORIZE_SERVER_NAME
 #define	AUTHORIZE_SERVER_NAME	""
@@ -488,10 +486,14 @@ char	*Cvar_VariableString( const char *var_name );
 void	Cvar_VariableStringBuffer( const char *var_name, char *buffer, int bufsize );
 // returns an empty string if not defined
 
+int	Cvar_Flags(const char *var_name);
+// returns CVAR_NONEXISTENT if cvar doesn't exist or the flags of that particular CVAR.
+
 void	Cvar_CommandCompletion( void(*callback)(const char *s) );
 // callback with each valid string
 
 void 	Cvar_Reset( const char *var_name );
+void 	Cvar_ForceReset(const char *var_name);
 
 void	Cvar_SetCheatState( void );
 // reset all testing vars to a safe value
@@ -656,6 +658,7 @@ void FS_PureServerSetLoadedPaks( const char *pakSums, const char *pakNames );
 // separated checksums will be checked for files, with the
 // sole exception of .cfg files.
 
+qboolean FS_CheckDirTraversal(const char *checkdir);
 qboolean FS_idPak( char *pak, char *base );
 qboolean FS_ComparePaks( char *neededpaks, int len, qboolean dlstring );
 
@@ -1102,5 +1105,11 @@ extern huffman_t clientHuffTables;
 #define SV_DECODE_START		12
 #define	CL_ENCODE_START		12
 #define CL_DECODE_START		4
+
+// flags for sv_allowDownload and cl_allowDownload
+#define DLF_ENABLE 1
+#define DLF_NO_REDIRECT 2
+#define DLF_NO_UDP 4
+#define DLF_NO_DISCONNECT 8
 
 #endif // _QCOMMON_H_

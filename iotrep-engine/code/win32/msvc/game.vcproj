@@ -1,595 +1,415 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="7.10"
 	Name="game"
-	ProjectGUID="{F9EE10DA-2404-4154-B904-F93C936C040A}"
-	>
+	ProjectGUID="{F9EE10DA-2404-4154-B904-F93C936C040A}">
 	<Platforms>
 		<Platform
-			Name="Win32"
-		/>
+			Name="Win32"/>
 	</Platforms>
-	<ToolFiles>
-	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug TA|Win32"
 			OutputDirectory=".\build\game_debug_ta"
 			IntermediateDirectory=".\build\game_debug_ta"
 			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="true"
-				SuppressStartupBanner="true"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug_TA/game.tlb"
-				HeaderFileName=""
-			/>
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				OptimizeForProcessor="1"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME"
 				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				PrecompiledHeaderFile="$(IntDir)\game.pch"
 				AssemblerListingLocation="$(IntDir)\"
 				ObjectFile="$(IntDir)\"
 				ProgramDataBaseFileName="$(IntDir)\"
 				BrowseInformation="1"
 				WarningLevel="3"
-				SuppressStartupBanner="true"
-				DebugInformationFormat="4"
-			/>
+				SuppressStartupBanner="TRUE"
+				DebugInformationFormat="4"/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
+				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="winmm.lib"
 				OutputFile="$(OutDir)\qagamex86.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="true"
+				SuppressStartupBanner="TRUE"
 				ModuleDefinitionFile=".\game.def"
-				GenerateDebugInformation="true"
+				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(IntDir)\qagamex86.pdb"
-				GenerateMapFile="true"
+				GenerateMapFile="TRUE"
 				MapFileName="$(IntDir)\qagamex86.map"
 				SubSystem="2"
 				BaseAddress="0x20000000"
 				ImportLibrary="$(IntDir)\qagamex86.lib"
-				TargetMachine="1"
-			/>
+				TargetMachine="1"/>
 			<Tool
-				Name="VCALinkTool"
-			/>
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug_TA/game.tlb"
+				HeaderFileName=""/>
 			<Tool
-				Name="VCManifestTool"
-			/>
+				Name="VCPostBuildEventTool"/>
 			<Tool
-				Name="VCXDCMakeTool"
-			/>
+				Name="VCPreBuildEventTool"/>
 			<Tool
-				Name="VCBscMakeTool"
-			/>
+				Name="VCPreLinkEventTool"/>
 			<Tool
-				Name="VCFxCopTool"
-			/>
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
+				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
+				Name="VCXMLDataGeneratorTool"/>
 			<Tool
-				Name="VCPostBuildEventTool"
-			/>
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory=".\build\game_debug"
 			IntermediateDirectory=".\build\game_debug"
 			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="true"
-				SuppressStartupBanner="true"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/game.tlb"
-				HeaderFileName=""
-			/>
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				OptimizeForProcessor="1"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK"
 				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				PrecompiledHeaderFile="$(IntDir)\game.pch"
 				AssemblerListingLocation="$(IntDir)\"
 				ObjectFile="$(IntDir)\"
 				ProgramDataBaseFileName="$(IntDir)\"
 				BrowseInformation="1"
 				WarningLevel="3"
-				SuppressStartupBanner="true"
-				DebugInformationFormat="4"
-			/>
+				SuppressStartupBanner="TRUE"
+				DebugInformationFormat="4"/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
+				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="winmm.lib"
 				OutputFile="$(OutDir)\qagamex86.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="true"
+				SuppressStartupBanner="TRUE"
 				ModuleDefinitionFile=".\game.def"
-				GenerateDebugInformation="true"
+				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(IntDir)\qagamex86.pdb"
-				GenerateMapFile="true"
+				GenerateMapFile="TRUE"
 				MapFileName="$(IntDir)\qagamex86.map"
 				SubSystem="2"
 				BaseAddress="0x20000000"
 				ImportLibrary="$(IntDir)\qagamex86.lib"
-				TargetMachine="1"
-			/>
+				TargetMachine="1"/>
 			<Tool
-				Name="VCALinkTool"
-			/>
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/game.tlb"
+				HeaderFileName=""/>
 			<Tool
-				Name="VCManifestTool"
-			/>
+				Name="VCPostBuildEventTool"/>
 			<Tool
-				Name="VCXDCMakeTool"
-			/>
+				Name="VCPreBuildEventTool"/>
 			<Tool
-				Name="VCBscMakeTool"
-			/>
+				Name="VCPreLinkEventTool"/>
 			<Tool
-				Name="VCFxCopTool"
-			/>
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
+				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
+				Name="VCXMLDataGeneratorTool"/>
 			<Tool
-				Name="VCPostBuildEventTool"
-			/>
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
 			Name="Release Alpha|Win32"
 			OutputDirectory=".\build\game_release_alpha"
 			IntermediateDirectory=".\build\game_release_alpha"
 			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="true"
-				SuppressStartupBanner="true"
-				TargetEnvironment="1"
-				TypeLibraryName=".\..\ReleaseAXP/game.tlb"
-				HeaderFileName=""
-			/>
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/QA21164 "
 				Optimization="2"
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY"
-				StringPooling="true"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
+				StringPooling="TRUE"
+				RuntimeLibrary="4"
+				EnableFunctionLevelLinking="TRUE"
+				UsePrecompiledHeader="2"
 				PrecompiledHeaderFile="$(IntDir)\game.pch"
 				AssemblerListingLocation="$(IntDir)\"
 				ObjectFile="$(IntDir)\"
 				ProgramDataBaseFileName="$(IntDir)\"
 				WarningLevel="3"
-				SuppressStartupBanner="true"
-				DebugInformationFormat="1"
-			/>
+				SuppressStartupBanner="TRUE"
+				DebugInformationFormat="2"/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
+				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="winmm.lib"
 				OutputFile="$(OutDir)\qagameaxp.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="true"
+				SuppressStartupBanner="TRUE"
 				ModuleDefinitionFile=".\game.def"
 				ProgramDatabaseFile="$(IntDir)\qagameaxp.pdb"
 				SubSystem="2"
 				BaseAddress="0x20000000"
-				ImportLibrary="$(IntDir)\qagameaxp.lib"
-			/>
+				ImportLibrary="$(IntDir)\qagameaxp.lib"/>
 			<Tool
-				Name="VCALinkTool"
-			/>
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\..\ReleaseAXP/game.tlb"
+				HeaderFileName=""/>
 			<Tool
-				Name="VCManifestTool"
-			/>
+				Name="VCPostBuildEventTool"/>
 			<Tool
-				Name="VCXDCMakeTool"
-			/>
+				Name="VCPreBuildEventTool"/>
 			<Tool
-				Name="VCBscMakeTool"
-			/>
+				Name="VCPreLinkEventTool"/>
 			<Tool
-				Name="VCFxCopTool"
-			/>
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
+				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
+				Name="VCXMLDataGeneratorTool"/>
 			<Tool
-				Name="VCPostBuildEventTool"
-			/>
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
 			Name="Debug Alpha|Win32"
 			OutputDirectory=".\build\game_debug_alpha"
 			IntermediateDirectory=".\build\game_debug_alpha"
 			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="true"
-				SuppressStartupBanner="true"
-				TargetEnvironment="1"
-				TypeLibraryName=".\..\DebugAxp/game.tlb"
-				HeaderFileName=""
-			/>
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/QA21164 /MTd "
 				Optimization="0"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
+				RuntimeLibrary="5"
+				UsePrecompiledHeader="2"
 				PrecompiledHeaderFile="$(IntDir)\game.pch"
 				AssemblerListingLocation="$(IntDir)\"
 				ObjectFile="$(IntDir)\"
 				ProgramDataBaseFileName="$(IntDir)\"
 				WarningLevel="3"
-				SuppressStartupBanner="true"
-				DebugInformationFormat="3"
-			/>
+				SuppressStartupBanner="TRUE"
+				DebugInformationFormat="3"/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
+				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="winmm.lib"
 				OutputFile="$(OutDir)\qagameaxp.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="true"
+				SuppressStartupBanner="TRUE"
 				ModuleDefinitionFile=".\game.def"
-				GenerateDebugInformation="true"
+				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile="$(IntDir)\qagameaxp.pdb"
 				SubSystem="2"
 				BaseAddress="0x20000000"
-				ImportLibrary="$(IntDir)\qagameaxp.lib"
-			/>
+				ImportLibrary="$(IntDir)\qagameaxp.lib"/>
 			<Tool
-				Name="VCALinkTool"
-			/>
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\..\DebugAxp/game.tlb"
+				HeaderFileName=""/>
 			<Tool
-				Name="VCManifestTool"
-			/>
+				Name="VCPostBuildEventTool"/>
 			<Tool
-				Name="VCXDCMakeTool"
-			/>
+				Name="VCPreBuildEventTool"/>
 			<Tool
-				Name="VCBscMakeTool"
-			/>
+				Name="VCPreLinkEventTool"/>
 			<Tool
-				Name="VCFxCopTool"
-			/>
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
+				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
+				Name="VCXMLDataGeneratorTool"/>
 			<Tool
-				Name="VCPostBuildEventTool"
-			/>
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory=".\build\game_release"
 			IntermediateDirectory=".\build\game_release"
 			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="true"
-				SuppressStartupBanner="true"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Release/game.tlb"
-				HeaderFileName=""
-			/>
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
+				OptimizeForProcessor="2"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK"
-				StringPooling="true"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
+				StringPooling="TRUE"
+				RuntimeLibrary="4"
+				EnableFunctionLevelLinking="TRUE"
+				UsePrecompiledHeader="2"
 				PrecompiledHeaderFile="$(IntDir)\game.pch"
 				AssemblerListingLocation="$(IntDir)\"
 				ObjectFile="$(IntDir)\"
 				ProgramDataBaseFileName="$(IntDir)\"
 				WarningLevel="4"
-				SuppressStartupBanner="true"
-			/>
+				SuppressStartupBanner="TRUE"/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
+				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="winmm.lib"
 				OutputFile="$(OutDir)\qagamex86.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="true"
+				SuppressStartupBanner="TRUE"
 				ModuleDefinitionFile=".\game.def"
 				ProgramDatabaseFile="$(IntDir)\qagamex86.pdb"
-				GenerateMapFile="true"
+				GenerateMapFile="TRUE"
 				MapFileName="$(IntDir)\qagamex86.map"
 				SubSystem="2"
 				BaseAddress="0x20000000"
 				ImportLibrary="$(IntDir)\qagamex86.lib"
-				TargetMachine="1"
-			/>
+				TargetMachine="1"/>
 			<Tool
-				Name="VCALinkTool"
-			/>
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Release/game.tlb"
+				HeaderFileName=""/>
 			<Tool
-				Name="VCManifestTool"
-			/>
+				Name="VCPostBuildEventTool"/>
 			<Tool
-				Name="VCXDCMakeTool"
-			/>
+				Name="VCPreBuildEventTool"/>
 			<Tool
-				Name="VCBscMakeTool"
-			/>
+				Name="VCPreLinkEventTool"/>
 			<Tool
-				Name="VCFxCopTool"
-			/>
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
+				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
+				Name="VCXMLDataGeneratorTool"/>
 			<Tool
-				Name="VCPostBuildEventTool"
-			/>
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 		<Configuration
 			Name="Release TA|Win32"
 			OutputDirectory=".\build\game_release_ta"
 			IntermediateDirectory=".\build\game_release_ta"
 			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="true"
-				SuppressStartupBanner="true"
-				TargetEnvironment="1"
-				TypeLibraryName=".\Release_TA/game.tlb"
-				HeaderFileName=""
-			/>
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
+				OptimizeForProcessor="2"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK"
-				StringPooling="true"
-				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
+				StringPooling="TRUE"
+				RuntimeLibrary="4"
+				EnableFunctionLevelLinking="TRUE"
+				UsePrecompiledHeader="2"
 				PrecompiledHeaderFile="$(IntDir)\game.pch"
 				AssemblerListingLocation="$(IntDir)\"
 				ObjectFile="$(IntDir)\"
 				ProgramDataBaseFileName="$(IntDir)\"
 				WarningLevel="4"
-				SuppressStartupBanner="true"
-			/>
+				SuppressStartupBanner="TRUE"/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="1033"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
+				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="winmm.lib"
 				OutputFile="$(IntDir)\qagamex86.dll"
 				LinkIncremental="1"
-				SuppressStartupBanner="true"
+				SuppressStartupBanner="TRUE"
 				ModuleDefinitionFile=".\game.def"
 				ProgramDatabaseFile="$(IntDir)\qagamex86.pdb"
-				GenerateMapFile="true"
+				GenerateMapFile="TRUE"
 				MapFileName="$(IntDir)\qagamex86.map"
 				SubSystem="2"
 				BaseAddress="0x20000000"
 				ImportLibrary="$(IntDir)\qagamex86.lib"
-				TargetMachine="1"
-			/>
+				TargetMachine="1"/>
 			<Tool
-				Name="VCALinkTool"
-			/>
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				SuppressStartupBanner="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Release_TA/game.tlb"
+				HeaderFileName=""/>
 			<Tool
-				Name="VCManifestTool"
-			/>
+				Name="VCPostBuildEventTool"/>
 			<Tool
-				Name="VCXDCMakeTool"
-			/>
+				Name="VCPreBuildEventTool"/>
 			<Tool
-				Name="VCBscMakeTool"
-			/>
+				Name="VCPreLinkEventTool"/>
 			<Tool
-				Name="VCFxCopTool"
-			/>
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
+				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
+				Name="VCXMLDataGeneratorTool"/>
 			<Tool
-				Name="VCPostBuildEventTool"
-			/>
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -597,2078 +417,1625 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90"
-			>
+			Filter="cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90">
 			<File
-				RelativePath="..\..\game\ai_chat.c"
-				>
+				RelativePath="..\..\game\ai_chat.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\ai_cmd.c"
-				>
+				RelativePath="..\..\game\ai_cmd.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\ai_dmnet.c"
-				>
+				RelativePath="..\..\game\ai_dmnet.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\ai_dmq3.c"
-				>
+				RelativePath="..\..\game\ai_dmq3.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\ai_main.c"
-				>
+				RelativePath="..\..\game\ai_main.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\ai_team.c"
-				>
+				RelativePath="..\..\game\ai_team.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\ai_vcmd.c"
-				>
+				RelativePath="..\..\game\ai_vcmd.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\bg_lib.c"
-				>
+				RelativePath="..\..\game\bg_lib.c">
 				<FileConfiguration
 					Name="Debug TA|Win32"
-					ExcludedFromBuild="true"
-					>
+					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Debug|Win32"
-					ExcludedFromBuild="true"
-					>
+					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
-					ExcludedFromBuild="true"
-					>
+					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release TA|Win32"
-					ExcludedFromBuild="true"
-					>
+					ExcludedFromBuild="TRUE">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\bg_misc.c"
-				>
+				RelativePath="..\..\game\bg_misc.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\bg_pmove.c"
-				>
+				RelativePath="..\..\game\bg_pmove.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\bg_slidemove.c"
-				>
+				RelativePath="..\..\game\bg_slidemove.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_active.c"
-				>
+				RelativePath="..\..\game\g_active.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_arenas.c"
-				>
+				RelativePath="..\..\game\g_arenas.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_bot.c"
-				>
+				RelativePath="..\..\game\g_bot.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_client.c"
-				>
+				RelativePath="..\..\game\g_client.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_cmds.c"
-				>
+				RelativePath="..\..\game\g_cmds.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_combat.c"
-				>
+				RelativePath="..\..\game\g_combat.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_items.c"
-				>
+				RelativePath="..\..\game\g_items.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_main.c"
-				>
+				RelativePath="..\..\game\g_main.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_mem.c"
-				>
+				RelativePath="..\..\game\g_mem.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_misc.c"
-				>
+				RelativePath="..\..\game\g_misc.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_missile.c"
-				>
+				RelativePath="..\..\game\g_missile.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_mover.c"
-				>
+				RelativePath="..\..\game\g_mover.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_session.c"
-				>
+				RelativePath="..\..\game\g_session.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_spawn.c"
-				>
+				RelativePath="..\..\game\g_spawn.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_svcmds.c"
-				>
+				RelativePath="..\..\game\g_svcmds.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_syscalls.c"
-				>
+				RelativePath="..\..\game\g_syscalls.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_target.c"
-				>
+				RelativePath="..\..\game\g_target.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_team.c"
-				>
+				RelativePath="..\..\game\g_team.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_trigger.c"
-				>
+				RelativePath="..\..\game\g_trigger.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_utils.c"
-				>
+				RelativePath="..\..\game\g_utils.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\g_weapon.c"
-				>
+				RelativePath="..\..\game\g_weapon.c">
 				<FileConfiguration
-					Name="Debug TA|Win32"
-					>
+					Name="Debug TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;MISSIONPACK;QAGAME;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|Win32"
-					>
+					Name="Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
 						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILDING_REF_GL;DEBUG;GLOBALRANK;$(NoInherit)"
-						BrowseInformation="1"
-					/>
+						BrowseInformation="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release Alpha|Win32"
-					>
+					Name="Release Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug Alpha|Win32"
-					>
+					Name="Debug Alpha|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="0"
-						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;C_ONLY;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32"
-					>
+					Name="Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;GLOBALRANK;$(NoInherit)"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release TA|Win32"
-					>
+					Name="Release TA|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"
-					/>
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;MISSIONPACK;$(NoInherit)"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\game\game.def"
-				>
+				RelativePath="..\..\game\game.def">
 				<FileConfiguration
 					Name="Debug TA|Win32"
-					ExcludedFromBuild="true"
-					>
+					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"
-					/>
+						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release TA|Win32"
-					ExcludedFromBuild="true"
-					>
+					ExcludedFromBuild="TRUE">
 					<Tool
-						Name="VCCustomBuildTool"
-					/>
+						Name="VCCustomBuildTool"/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\qcommon\q_math.c"
-				>
+				RelativePath="..\..\qcommon\q_math.c">
 			</File>
 			<File
-				RelativePath="..\..\qcommon\q_shared.c"
-				>
+				RelativePath="..\..\qcommon\q_shared.c">
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl;fi;fd"
-			>
+			Filter="h;hpp;hxx;hm;inl;fi;fd">
 			<File
-				RelativePath="..\..\game\ai_chat.h"
-				>
+				RelativePath="..\..\game\ai_chat.h">
 			</File>
 			<File
-				RelativePath="..\..\game\ai_cmd.h"
-				>
+				RelativePath="..\..\game\ai_cmd.h">
 			</File>
 			<File
-				RelativePath="..\..\game\ai_dmnet.h"
-				>
+				RelativePath="..\..\game\ai_dmnet.h">
 			</File>
 			<File
-				RelativePath="..\..\game\ai_dmq3.h"
-				>
+				RelativePath="..\..\game\ai_dmq3.h">
 			</File>
 			<File
-				RelativePath="..\..\game\ai_main.h"
-				>
+				RelativePath="..\..\game\ai_main.h">
 			</File>
 			<File
-				RelativePath="..\..\game\ai_team.h"
-				>
+				RelativePath="..\..\game\ai_team.h">
 			</File>
 			<File
-				RelativePath="..\..\game\ai_vcmd.h"
-				>
+				RelativePath="..\..\game\ai_vcmd.h">
 			</File>
 			<File
-				RelativePath="..\..\game\be_aas.h"
-				>
+				RelativePath="..\..\game\be_aas.h">
 			</File>
 			<File
-				RelativePath="..\..\game\be_ai_char.h"
-				>
+				RelativePath="..\..\game\be_ai_char.h">
 			</File>
 			<File
-				RelativePath="..\..\game\be_ai_chat.h"
-				>
+				RelativePath="..\..\game\be_ai_chat.h">
 			</File>
 			<File
-				RelativePath="..\..\game\be_ai_gen.h"
-				>
+				RelativePath="..\..\game\be_ai_gen.h">
 			</File>
 			<File
-				RelativePath="..\..\game\be_ai_goal.h"
-				>
+				RelativePath="..\..\game\be_ai_goal.h">
 			</File>
 			<File
-				RelativePath="..\..\game\be_ai_move.h"
-				>
+				RelativePath="..\..\game\be_ai_move.h">
 			</File>
 			<File
-				RelativePath="..\..\game\be_ai_weap.h"
-				>
+				RelativePath="..\..\game\be_ai_weap.h">
 			</File>
 			<File
-				RelativePath="..\..\game\be_ea.h"
-				>
+				RelativePath="..\..\game\be_ea.h">
 			</File>
 			<File
-				RelativePath="..\..\game\bg_local.h"
-				>
+				RelativePath="..\..\game\bg_local.h">
 			</File>
 			<File
-				RelativePath="..\..\game\bg_public.h"
-				>
+				RelativePath="..\..\game\bg_public.h">
 			</File>
 			<File
-				RelativePath="..\..\game\botlib.h"
-				>
+				RelativePath="..\..\game\botlib.h">
 			</File>
 			<File
-				RelativePath="..\..\game\chars.h"
-				>
+				RelativePath="..\..\game\chars.h">
 			</File>
 			<File
-				RelativePath="..\..\game\g_local.h"
-				>
+				RelativePath="..\..\game\g_local.h">
 			</File>
 			<File
-				RelativePath="..\..\game\g_public.h"
-				>
+				RelativePath="..\..\game\g_public.h">
 			</File>
 			<File
-				RelativePath="..\..\game\g_team.h"
-				>
+				RelativePath="..\..\game\g_team.h">
 			</File>
 			<File
-				RelativePath="..\..\game\inv.h"
-				>
+				RelativePath="..\..\game\inv.h">
 			</File>
 			<File
-				RelativePath="..\..\game\match.h"
-				>
+				RelativePath="..\..\game\match.h">
 			</File>
 			<File
-				RelativePath="..\..\qcommon\q_shared.h"
-				>
+				RelativePath="..\..\qcommon\q_shared.h">
 			</File>
 			<File
-				RelativePath="..\..\qcommon\surfaceflags.h"
-				>
+				RelativePath="..\..\qcommon\surfaceflags.h">
 			</File>
 			<File
-				RelativePath="..\..\game\syn.h"
-				>
+				RelativePath="..\..\game\syn.h">
 			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
-			Filter="ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe"
-			>
+			Filter="ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe">
 		</Filter>
 	</Files>
 	<Globals>
