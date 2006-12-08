@@ -311,7 +311,7 @@ char	*Sys_DefaultHomePath(void) {
 		return NULL;
 	}
 	Q_strncpyz( path, szPath, sizeof(path) );
-	Q_strcat( path, sizeof(path), "\\Quake3" );
+	Q_strcat( path, sizeof(path), "\\Trepidation" );
 	FreeLibrary(shfolder);
 	if( !CreateDirectory( path, NULL ) )
 	{
