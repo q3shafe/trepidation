@@ -2590,7 +2590,7 @@ void CheckPlayerPostions(void)
             //for each possible client
             valid_count = 0;
 
-            for (i = 0; i < g_maxclients.integer; i++) 
+            for (i = 0; i < MAX_CLIENTS; i++) 
             {
                 //get a pointer to the entity
                 ent = g_entities + i;
@@ -2626,7 +2626,7 @@ void CheckPlayerPostions(void)
 
         //build the command string to send
         Com_sprintf(cmd, sizeof(cmd), "playerpos %i ", valid_count);
-        for(i=0; i<g_maxclients.integer; i++)
+        for(i=0; i<MAX_CLIENTS; i++)
         {
             //if weve got a valid entry then add the position to the command string
             if(g_playerOrigins[i].valid == kENTRY_VALID)
@@ -2643,21 +2643,22 @@ void CheckPlayerPostions(void)
 		// Enable it and the game freezes when loading a map... 
 		// Driving me insane VVVVVVV
 	
-		/*
-		for (i = 0; i < g_maxclients.integer; i++) 
+		for (i = 0; i < MAX_CLIENTS; i++) 
         {
 			//get a pointer to the entity
 			ent = g_entities + i;
+
+			if ( !ent )
+			{// Maybe this will fix it? -Vincent
+			continue;
+			}
+
 			if ( ent->client->pers.connected == CON_CONNECTED && ent->client->pers.Eliminated == qfalse && ent->client->sess.sessionTeam != TEAM_SPECTATOR)
 			{
-				//G_SendCommandToClient(ent, cmd);
+			G_SendCommandToClient(ent, cmd);
 			}
 				
-		}
-		*/
-
-        
-		 
+		}  
 }
 // Shafe - Trep - End Radar
 

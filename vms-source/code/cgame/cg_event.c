@@ -497,7 +497,6 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 	const char		*s;
 	int				clientNum;
 	clientInfo_t	*ci;
-
 	
 	es = &cent->currentState;
 	event = es->event & ~EV_EVENT_BITS;
@@ -1232,6 +1231,22 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 			cg.powerupTime = cg.time;
 		}
 		trap_S_StartSound (NULL, es->number, CHAN_ITEM, cgs.media.regenSound );
+		break;
+
+	case EV_IMMOBILIZED:
+		DEBUGNAME("EV_IMMOBILIZED");
+		if ( es->number == cg.snap->ps.clientNum ) 
+		{ //-Vincent
+		ci->cgimmobilized = qtrue;
+		}
+		break;
+
+	case EV_IMMOBILIZED_FREE:
+		DEBUGNAME("EV_IMMOBILIZED_FREE");
+		if ( es->number == cg.snap->ps.clientNum ) 
+		{ //-Vincent
+		ci->cgimmobilized = qfalse;
+		}
 		break;
 
 	case EV_GIB_PLAYER:

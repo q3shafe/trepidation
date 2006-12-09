@@ -343,7 +343,7 @@ void SpectatorThink( gentity_t *ent, usercmd_t *ucmd ) {
 		// Stop following when alt-fire is triggerd -Vincent
 		if ( ent->client->sess.spectatorState == SPECTATOR_FOLLOW ) 
 		{
-			StopFollowing( ent );
+		StopFollowing( ent );
 		}
 	}
 }
@@ -476,7 +476,6 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 		// Immobilized
 		if ( g_entities[client->ps.clientNum].immobilized == qtrue)
 		{
-			
 			client->ps.speed = 100;
 			client->ps.gravity = 1;
 			g_entities[client->ps.clientNum].s.time2 = 9;
@@ -1045,12 +1044,24 @@ void ClientThink_real( gentity_t *ent ) {
 
 	if ( g_entities[client->ps.clientNum].immobilized == qtrue)
 	{
+		// Client only immobilized effects -Vincent
+		if (g_entities[client->ps.clientNum].health > 8)
+		{ // Don't do anything when your health is above 8, because you are free then
+		trap_SendServerCommand( client->ps.clientNum, va("cp \"^1You have been immobilized!!!\n\"") ); // Message
+		G_AddEvent( ent, EV_IMMOBILIZED, 0 ); // Visualise
+		}
+		else
+		{ // Failsafe
+		G_AddEvent( ent, EV_IMMOBILIZED_FREE, 0 );
+		}
+
 		client->ps.speed = 50;
 		if (g_entities[client->ps.clientNum].health < 8) { g_entities[client->ps.clientNum].immobilized = qfalse; }
 	}
-
-
-
+	else
+	{ // Free the effect if it exists (and isn't supposed to exist anymore)
+	G_AddEvent( ent, EV_IMMOBILIZED_FREE, 0 );
+	}
 
 
 	// Let go of the hook if we aren't firing

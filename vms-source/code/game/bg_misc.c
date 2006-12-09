@@ -1426,6 +1426,9 @@ char *eventnames[] = {
 	"EV_POWERUP_BATTLESUIT",
 	"EV_POWERUP_REGEN",
 
+	"EV_IMMOBILIZED", //-Vincent
+	"EV_IMMOBILIZED_FREE", //-Vincent
+
 	"EV_GIB_PLAYER",			// gib a previously living player
 	"EV_SCOREPLUM",			// score plum
 
