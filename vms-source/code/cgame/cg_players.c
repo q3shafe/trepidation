@@ -1975,22 +1975,15 @@ static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso )
 {
 	int		powerups;
 	clientInfo_t	*ci;
-	int		cl;
-	int		i, r, g, b;
 	entityState_t	*state;
 
 	powerups = cent->currentState.powerups;
 	ci		 = &cgs.clientinfo[ cent->currentState.clientNum ];
-	cl		 = cent->currentState.constantLight;
 	state	 = &cent->currentState;
-	i		 = ( ( cl >> 24 ) & 255 ) * 4;
-	r		 = cl & 255;
-	g		 = ( cl >> 8 ) & 255;
-	b		 = ( cl >> 16 ) & 255;
 		
 	if ( state->time2 == 9 || ci->cgimmobilized == qtrue ) 
-	{ // Immobilized also gives a special dlight :P -Vincent
-	trap_R_AddLightToScene( cent->lerpOrigin, i, r, g, b );
+	{ // Immobilized also gives a dlight -Vincent
+	trap_R_AddLightToScene( torso->origin, 250 + (rand()&31), 1.0, 0.8f, 1.0 );
 	}
 	
 	if ( !powerups ) {
@@ -1998,7 +1991,7 @@ static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso )
 	}
 	// quad gives a dlight
 	if ( powerups & ( 1 << PW_QUAD ) ) {
-		trap_R_AddLightToScene( cent->lerpOrigin, 200 + (rand()&31), 0.2f, 0.2f, 1 );
+		trap_R_AddLightToScene( cent->lerpOrigin, 250 + (rand()&31), 0.2f, 0.2f, 1 );
 	}
 
 	// flight plays a looped sound
@@ -2014,7 +2007,7 @@ static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso )
 		else {
 			CG_TrailItem( cent, cgs.media.redFlagModel );
 		}
-		trap_R_AddLightToScene( cent->lerpOrigin, 200 + (rand()&31), 1.0, 0.2f, 0.2f );
+		trap_R_AddLightToScene( cent->lerpOrigin, 250 + (rand()&31), 1.0, 0.2f, 0.2f );
 	}
 
 	// blueflag
@@ -2025,7 +2018,7 @@ static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso )
 		else {
 			CG_TrailItem( cent, cgs.media.blueFlagModel );
 		}
-		trap_R_AddLightToScene( cent->lerpOrigin, 200 + (rand()&31), 0.2f, 0.2f, 1.0 );
+		trap_R_AddLightToScene( cent->lerpOrigin, 250 + (rand()&31), 0.2f, 0.2f, 1.0 );
 	}
 
 	// neutralflag
@@ -2036,7 +2029,7 @@ static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso )
 		else {
 			CG_TrailItem( cent, cgs.media.neutralFlagModel );
 		}
-		trap_R_AddLightToScene( cent->lerpOrigin, 200 + (rand()&31), 1.0, 1.0, 1.0 );
+		trap_R_AddLightToScene( cent->lerpOrigin, 250 + (rand()&31), 1.0, 1.0, 1.0 );
 	}
 
 	// haste leaves smoke trails
