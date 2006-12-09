@@ -1971,11 +1971,28 @@ static void CG_PlayerTokens( centity_t *cent, int renderfx ) {
 CG_PlayerPowerups
 ===============
 */
-static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso ) {
+static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso ) 
+{
 	int		powerups;
 	clientInfo_t	*ci;
-	ci			=	&cgs.clientinfo[ cent->currentState.clientNum ];
+	int		cl;
+	int		i, r, g, b;
+	entityState_t	*state;
 
+	powerups = cent->currentState.powerups;
+	ci		 = &cgs.clientinfo[ cent->currentState.clientNum ];
+	cl		 = cent->currentState.constantLight;
+	state	 = &cent->currentState;
+	i		 = ( ( cl >> 24 ) & 255 ) * 4;
+	r		 = cl & 255;
+	g		 = ( cl >> 8 ) & 255;
+	b		 = ( cl >> 16 ) & 255;
+		
+	if ( state->time2 == 9 || ci->cgimmobilized == qtrue ) 
+	{ // Immobilized also gives a special dlight :P -Vincent
+	trap_R_AddLightToScene( cent->lerpOrigin, i, r, g, b );
+	}
+	
 	if ( !powerups ) {
 		return;
 	}
