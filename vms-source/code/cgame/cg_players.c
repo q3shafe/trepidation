@@ -1974,12 +1974,11 @@ CG_PlayerPowerups
 static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso ) {
 	int		powerups;
 	clientInfo_t	*ci;
+	ci			=	&cgs.clientinfo[ cent->currentState.clientNum ];
 
-	powerups = cent->currentState.powerups;
 	if ( !powerups ) {
 		return;
 	}
-
 	// quad gives a dlight
 	if ( powerups & ( 1 << PW_QUAD ) ) {
 		trap_R_AddLightToScene( cent->lerpOrigin, 200 + (rand()&31), 0.2f, 0.2f, 1 );
@@ -1990,7 +1989,6 @@ static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso ) {
 		trap_S_AddLoopingSound( cent->currentState.number, cent->lerpOrigin, vec3_origin, cgs.media.flightSound );
 	}
 
-	ci = &cgs.clientinfo[ cent->currentState.clientNum ];
 	// redflag
 	if ( powerups & ( 1 << PW_REDFLAG ) ) {
 		if (ci->newAnims) {
@@ -2294,7 +2292,12 @@ Adds a piece with modifications or duplications for powerups
 Also called by CG_Missile for quad rockets, but nobody can tell...
 ===============
 */
-void CG_AddRefEntityWithPowerups( refEntity_t *ent, entityState_t *state, int team ) {
+void CG_AddRefEntityWithPowerups( refEntity_t *ent, entityState_t *state, int team, centity_t *cent ) 
+{
+	clientInfo_t	*ci;
+	int				clientNum;
+	clientNum =		cent->currentState.clientNum;
+	ci		  =		&cgs.clientinfo[ clientNum ];
 
 	if ( state->powerups & ( 1 << PW_INVIS ) ) {
 		ent->customShader = cgs.media.invisShader;
@@ -2331,10 +2334,10 @@ void CG_AddRefEntityWithPowerups( refEntity_t *ent, entityState_t *state, int te
 			trap_R_AddRefEntityToScene( ent );
 		}
 		
-		//if ( state->team == TEAM_RED) {
-		if (state->time2 == 9) {
-			ent->customShader = cgs.media.buildShader;
-			trap_R_AddRefEntityToScene( ent );
+		if ( state->time2 == 9 || ci->cgimmobilized == qtrue ) 
+		{ //-Vincent
+		ent->customShader = cgs.media.immobilizedShader;
+		trap_R_AddRefEntityToScene( ent );
 		}
 
 		if ( state->powerups & ( 1 << PW_INVULNERABILITY ) ) {
@@ -2484,7 +2487,7 @@ void CG_Player( centity_t *cent ) {
 	legs.renderfx = renderfx;
 	VectorCopy (legs.origin, legs.oldorigin);	// don't positionally lerp at all
 
-	CG_AddRefEntityWithPowerups( &legs, &cent->currentState, ci->team );
+	CG_AddRefEntityWithPowerups( &legs, &cent->currentState, ci->team, cent );
 
 	// if the model failed, allow the default nullmodel to be displayed
 	if (!legs.hModel) {
@@ -2508,7 +2511,7 @@ void CG_Player( centity_t *cent ) {
 	torso.shadowPlane = shadowPlane;
 	torso.renderfx = renderfx;
 
-	CG_AddRefEntityWithPowerups( &torso, &cent->currentState, ci->team );
+	CG_AddRefEntityWithPowerups( &torso, &cent->currentState, ci->team, cent );
 
 #ifdef MISSIONPACK
 	if ( cent->currentState.eFlags & EF_KAMIKAZE ) {
@@ -2734,7 +2737,7 @@ void CG_Player( centity_t *cent ) {
 		head.shadowPlane = shadowPlane;
 		head.renderfx = renderfx;
 
-		CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team );
+		CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team, cent );
 	}
 
 	/*  Shafe - Trep - This is the original code -- Fuck.. Lets hope we dont end up compiling with MISSIONPACK!
@@ -2751,7 +2754,7 @@ void CG_Player( centity_t *cent ) {
 	head.shadowPlane = shadowPlane;
 	head.renderfx = renderfx;
 
-	CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team );
+	CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team, cent );
 	*/
 
 

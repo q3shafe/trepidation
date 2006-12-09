@@ -322,6 +322,8 @@ typedef struct {
 
 	int				powerups;		// so can display quad/flag status
 
+	qboolean		cgimmobilized;	//-Vincent
+
 	int				medkitUsageTime;
 	int				invulnerabilityStartTime;
 	int				invulnerabilityStopTime;
@@ -785,6 +787,9 @@ typedef struct {
 	qhandle_t	hastePuffShader;
 	qhandle_t	redKamikazeShader;
 	qhandle_t	blueKamikazeShader;
+	// -Vincent
+	qhandle_t	immobilizedShader;
+	qhandle_t	immobilizedWepShader;
 
 	// weapon effect models
 	qhandle_t	bulletFlashModel;
@@ -1386,7 +1391,7 @@ qhandle_t CG_StatusHandle(int task);
 //
 void CG_Player( centity_t *cent );
 void CG_ResetPlayerEntity( centity_t *cent );
-void CG_AddRefEntityWithPowerups( refEntity_t *ent, entityState_t *state, int team );
+void CG_AddRefEntityWithPowerups( refEntity_t *ent, entityState_t *state, int team, centity_t *cent );
 void CG_NewClientInfo( int clientNum );
 sfxHandle_t	CG_CustomSound( int clientNum, const char *soundName );
 
