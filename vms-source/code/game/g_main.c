@@ -2536,7 +2536,7 @@ end = trap_Milliseconds();
 	CheckTournament();
 
 	// Shafe - Trep - Radar Functions
-	CheckPlayerPostions();
+	// CheckPlayerPostions();  // Commented out looking for a bug
 	
 	// see if it is time to end the level
 	CheckExitRules();
@@ -2655,7 +2655,8 @@ void CheckPlayerPostions(void)
 
 			if ( ent->client->pers.connected == CON_CONNECTED && ent->client->pers.Eliminated == qfalse && ent->client->sess.sessionTeam != TEAM_SPECTATOR)
 			{
-			G_SendCommandToClient(ent, cmd);
+			// Still Issues with this .. :( -- Shafe
+			//G_SendCommandToClient(ent, cmd);
 			}
 				
 		}  

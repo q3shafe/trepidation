@@ -408,7 +408,8 @@ void turret_fireonenemy( gentity_t *ent){
 		{
 			//This is the best turret
 			fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qtrue );
-		
+			
+			
 		} else
 		{
 			
@@ -417,7 +418,7 @@ void turret_fireonenemy( gentity_t *ent){
 				// This is the weakest
 				//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
 				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
-				//fire_turret( ent->activator, ent->r.currentOrigin, ent->turloc, qfalse );
+				
 				
 			} else
 			{
@@ -534,6 +535,7 @@ void createturretgun(gentity_t *ent)
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
 
+	
 	vec3_t		mins, maxs;
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
@@ -545,7 +547,7 @@ void createturretgun(gentity_t *ent)
 		ent->nextthink=level.time+1000;
 		return;
 	}
-
+	
 
 	ent->nextthink=level.time+100; // sets up the thinking for the cloaking or regeneration/
 	ent->think=Base_think; // handles cloaking or regeneration
@@ -1071,6 +1073,8 @@ void TD_think(gentity_t *ent)
 	ent->nextthink=level.time+10;
 	ent->think = TD_think;
 
+
+
 	if (!checktarget(ent,ent->enemy))
 	{
 		turret_findenemy(ent);
@@ -1080,9 +1084,12 @@ void TD_think(gentity_t *ent)
 	
 	target = ent->enemy;
 
-	
+
+	if (target->s.eType == ET_TURRET) { return; } // Can't immobilize other buildables - Mantis #0000048 Shafe
+
 	if (ent->count<level.time)
 	{	
+		
 		target->immobilized = qtrue;
 		//target->s.time2 = 9;
 	} 
