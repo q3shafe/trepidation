@@ -97,6 +97,7 @@ typedef enum {
 	IMPACTSOUND_FLESH
 } impactSound_t;
 
+
 //=================================================
 
 // player entities need to track more information
@@ -324,6 +325,8 @@ typedef struct {
 
 	qboolean		cgimmobilized;	//-Vincent
 
+	int				immobi;			//-Vincent
+
 	int				medkitUsageTime;
 	int				invulnerabilityStartTime;
 	int				invulnerabilityStopTime;
@@ -522,6 +525,9 @@ typedef struct {
 	qboolean	zoomed;
 	int			zoomTime;
 	float		zoomSensitivity;
+	
+	//-Vincent
+	qboolean		immobili;
 	
 	// Shafe - Trep - Improved Zooming
 	qboolean	zooming;
@@ -1762,6 +1768,5 @@ int CG_NewParticleArea ( int num );
 void	CG_ScannerOn_f( void ); // Shafe - Trep - Radar
 void	CG_ScannerOff_f( void ); // Shafe - Trep - Radar
 void	CG_DrawScanner( void ); // Shafe - Trep - Radar
-
 
 

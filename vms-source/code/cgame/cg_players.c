@@ -1976,19 +1976,63 @@ static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso )
 	int		powerups;
 	clientInfo_t	*ci;
 	entityState_t	*state;
-
+	float	r1, r2, r3;
+	
 	powerups = cent->currentState.powerups;
 	ci		 = &cgs.clientinfo[ cent->currentState.clientNum ];
 	state	 = &cent->currentState;
 		
 	if ( state->time2 == 9 || ci->cgimmobilized == qtrue ) 
-	{ // Immobilized also gives a dlight -Vincent
-	trap_R_AddLightToScene( torso->origin, 250 + (rand()&31), 1.0, 0.8f, 1.0 );
+	{ // Special immobilized dlight :P -Vincent
+		if ( cg.immobili = qtrue )
+		{
+		CG_CenterPrint( "You have been immobilized!", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
+		}
+		if ( ci->immobi >= 0 && ci->immobi <= 74 )
+		{
+		r1 = 0.6f;
+		r2 = 0.2f;
+		r3 = 0.6f;
+		}
+		else if ( ci->immobi >= 75 && ci->immobi <= 149 )
+		{
+		r1 = 0.2f;
+		r2 = 0.2f;
+		r3 = 1;
+		}
+		else if ( ci->immobi >= 150 &&ci->immobi <= 224 )
+		{
+		r1 = 0.2f;
+		r2 = 0.6f;
+		r3 = 0.6f;
+		}
+		else if ( ci->immobi >= 225 && ci->immobi <= 299 )		
+		{
+		r1 = 0.2f;
+		r2 = 1;
+		r3 = 0.2f;
+		}
+		else if ( ci->immobi >= 300 && ci->immobi <= 374 )
+		{
+		r1 = 0.6f;
+		r2 = 0.6f;
+		r3 = 0.2f;
+		}
+		else if ( ci->immobi >= 375 && ci->immobi <= 448 )
+		{
+		r1 = 1;
+		r2 = 0.2f;
+		r3 = 0.2f;
+		}
+		else
+		{ // Reset
+		ci->immobi = 1;
+		}
+	ci->immobi++;
+	trap_R_AddLightToScene( torso->origin, 250 + (rand()&31), r1, r2, r3 );
 	}
+
 	
-	if ( !powerups ) {
-		return;
-	}
 	// quad gives a dlight
 	if ( powerups & ( 1 << PW_QUAD ) ) {
 		trap_R_AddLightToScene( cent->lerpOrigin, 250 + (rand()&31), 0.2f, 0.2f, 1 );
