@@ -1042,13 +1042,16 @@ void ClientThink_real( gentity_t *ent ) {
 		client->ps.speed *= 1.3;
 	}
 
-	if ( g_entities[client->ps.clientNum].immobilized == qtrue)
+	if (( g_entities[client->ps.clientNum].immobilized == qtrue) && (g_entities[client->ps.clientNum].s.eType != ET_TURRET)) 
 	{
 		// Client only immobilized effects -Vincent
 		if (g_entities[client->ps.clientNum].health > 8)
 		{ // Don't do anything when your health is above 8, because you are free then
-		trap_SendServerCommand( client->ps.clientNum, va("cp \"^1You have been immobilized!!!\n\"") ); // Message
-		G_AddEvent( ent, EV_IMMOBILIZED, 0 ); // Visualise
+
+			// Shafe - I think this was lagging the game out.
+			//trap_SendServerCommand( client->ps.clientNum, va("cp \"^1You have been immobilized!!!\n\"") ); // Message
+		
+			G_AddEvent( ent, EV_IMMOBILIZED, 0 ); // Visualise
 		}
 		else
 		{ // Failsafe
