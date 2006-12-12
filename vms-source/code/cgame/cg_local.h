@@ -526,9 +526,6 @@ typedef struct {
 	int			zoomTime;
 	float		zoomSensitivity;
 	
-	//-Vincent
-	qboolean		immobili;
-	
 	// Shafe - Trep - Improved Zooming
 	qboolean	zooming;
 	int			setZoomFov;
