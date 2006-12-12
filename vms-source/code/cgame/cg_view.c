@@ -871,9 +871,8 @@ void CG_DrawActiveFrame( int serverTime, stereoFrame_t stereoView, qboolean demo
 	cg.renderingThirdPerson = cg_thirdPerson.integer || (cg.snap->ps.stats[STAT_HEALTH] <= 0);
 
 	if ( cg.snap->ps.stats[STAT_HEALTH] <= 0 )
-	{ // Reset the zoom and immobilized-message-display at death when necessary -Vincent
+	{ // Reset the zoom at death when necessary -Vincent
 	CG_ResetZoom();
-	cg.immobili = qfalse;
 	}
 	// build cg.refdef
 	inwater = CG_CalcViewValues();

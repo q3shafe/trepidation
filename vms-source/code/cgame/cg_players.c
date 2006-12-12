@@ -1984,10 +1984,7 @@ static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso )
 		
 	if ( state->time2 == 9 || ci->cgimmobilized == qtrue ) 
 	{ // Special immobilized dlight :P -Vincent
-		if ( cg.immobili = qtrue )
-		{
 		CG_CenterPrint( "You have been immobilized!", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
-		}
 		if ( ci->immobi >= 0 && ci->immobi <= 74 )
 		{
 		r1 = 0.6f;
@@ -2026,7 +2023,7 @@ static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso )
 		}
 		else
 		{ // Reset
-		ci->immobi = 1;
+		ci->immobi = 0;
 		}
 	ci->immobi++;
 	trap_R_AddLightToScene( torso->origin, 250 + (rand()&31), r1, r2, r3 );
