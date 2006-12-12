@@ -1984,7 +1984,11 @@ static void CG_PlayerPowerups( centity_t *cent, refEntity_t *torso )
 		
 	if ( state->time2 == 9 || ci->cgimmobilized == qtrue ) 
 	{ // Special immobilized dlight :P -Vincent
-		CG_CenterPrint( "You have been immobilized!", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
+		// Display only to the actual immobilized player -Vincent
+		if ( state->number == cg.snap->ps.clientNum )
+		{
+		CG_CenterPrint( "^3You have been immobilized!", SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
+		}
 		if ( ci->immobi >= 0 && ci->immobi <= 74 )
 		{
 		r1 = 0.6f;
