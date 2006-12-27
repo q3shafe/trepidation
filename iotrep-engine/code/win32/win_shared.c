@@ -292,9 +292,9 @@ char	*Sys_DefaultHomePath(void) {
 	
 	// Shafe - Only use the new app-data folder on windows if cl_multiuser is 1.
 	cvar_t	*cv;
-	cv = Cvar_Get( "cl_multiuser", "0", CVAR_ARCHIVE|CVAR_ROM );
+	cv = Cvar_Get( "cl_multiuser", "0", CVAR_ARCHIVE );
 
-	if (cv == 0)
+	if (!cv->integer)
 	{
 		return NULL;
 	}
