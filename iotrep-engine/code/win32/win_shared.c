@@ -290,6 +290,15 @@ char	*Sys_DefaultHomePath(void) {
 	FARPROC qSHGetFolderPath;
 	HMODULE shfolder = LoadLibrary("shfolder.dll");
 	
+	// Shafe - Only use the new app-data folder on windows if cl_multiuser is 1.
+	cvar_t	*cv;
+	cv = Cvar_Get( "cl_multiuser", "0", CVAR_ARCHIVE|CVAR_ROM );
+
+	if (cv == 0)
+	{
+		return NULL;
+	}
+
 	if(shfolder == NULL) {
 		Com_Printf("Unable to load SHFolder.dll\n");
 		return NULL;
@@ -310,6 +319,7 @@ char	*Sys_DefaultHomePath(void) {
 		FreeLibrary(shfolder);
 		return NULL;
 	}
+	
 	Q_strncpyz( path, szPath, sizeof(path) );
 	Q_strcat( path, sizeof(path), "\\Trepidation" );
 	FreeLibrary(shfolder);
