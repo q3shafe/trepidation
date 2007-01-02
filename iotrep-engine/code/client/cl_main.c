@@ -1809,7 +1809,7 @@ void CL_ServersResponsePacket( netadr_t from, msg_t *msg ) {
 	}
 
 	// if getting the global list
-	if (cls.masterNum == 0) {
+	//if (cls.masterNum == 0) {
 		if ( cls.numGlobalServerAddresses < MAX_GLOBAL_SERVERS ) {
 			// if we couldn't store the servers in the main list anymore
 			for (; i < numservers && count >= max; i++) {
@@ -1823,16 +1823,17 @@ void CL_ServersResponsePacket( netadr_t from, msg_t *msg ) {
 				addr->port  = addresses[i].port;
 			}
 		}
-	}
+	//}
 
-	if (cls.masterNum == 0) {
+	//if (cls.masterNum == 0) {
 		cls.numglobalservers = count;
 		total = count + cls.numGlobalServerAddresses;
+	/*
 	} else {
 		cls.nummplayerservers = count;
 		total = count;
 	}
-
+	*/
 	Com_Printf("%d servers parsed (total %d)\n", numservers, total);
 }
 
