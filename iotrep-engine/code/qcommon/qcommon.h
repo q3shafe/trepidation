@@ -238,7 +238,7 @@ extern int demo_protocols[];
 #ifndef MASTER_SERVER_NAME
 
 // That's right.. 5 of em :)
-#define MASTER_SERVER_NAME	"master.planettrepidation.com:27950" // Shafe - Trep 
+#define MASTER_SERVER_NAME	"master.planettrepidation.com" // Shafe - Trep 
 #define ALT_MASTER0	"master.tnlsoft.com" // Shafe - Trep
 #define ALT_MASTER1	"master.beer-garden.org" // Shafe - Trep
 #define ALT_MASTER2	"master2.planettrepidation.com" // Shafe - Trep
