@@ -113,8 +113,8 @@ static const char *master_servers[] = {
 // End Shafe
 
 static const char *master_items[] = {
-	"Internet",
 	"Local",
+	"Internet",
 	"Favorites",
 	0
 };

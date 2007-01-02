@@ -62,10 +62,19 @@ byte 1 115
 byte 1 105
 byte 1 116
 byte 1 32
+byte 1 119
+byte 1 119
+byte 1 119
+byte 1 46
+byte 1 112
+byte 1 108
+byte 1 97
+byte 1 110
+byte 1 101
+byte 1 116
 byte 1 116
 byte 1 114
 byte 1 101
-byte 1 105
 byte 1 112
 byte 1 105
 byte 1 100
@@ -75,21 +84,9 @@ byte 1 105
 byte 1 111
 byte 1 110
 byte 1 46
-byte 1 115
-byte 1 111
-byte 1 117
-byte 1 114
 byte 1 99
-byte 1 101
-byte 1 102
 byte 1 111
-byte 1 114
-byte 1 103
-byte 1 101
-byte 1 46
-byte 1 110
-byte 1 101
-byte 1 116
+byte 1 109
 byte 1 32
 byte 1 45
 byte 1 32
@@ -141,7 +138,7 @@ byte 4 0
 code
 proc ArenaServers_MaxPing 8 4
 file "../ui_servers2.c"
-line 296
+line 297
 ;1:// Copyright (C) 1999-2000 Id Software, Inc.
 ;2://
 ;3:/*
@@ -215,233 +212,234 @@ line 296
 ;71:#define GR_LOGO				30
 ;72:#define GR_LETTERS			31
 ;73:
-;74:#define AS_LOCAL			0
-;75:#define AS_MPLAYER			1
-;76:#define AS_GLOBAL			2
-;77:#define AS_FAVORITES		3
-;78:
-;79:#define SORT_HOST			0
-;80:#define SORT_MAP			1
-;81:#define SORT_CLIENTS		2
-;82:#define SORT_GAME			3
-;83:#define SORT_PING			4
-;84:
-;85:// Shafe - Trep Multi Master Support
-;86:#define MASTER0				0
-;87:#define MASTER1				1
-;88:#define MASTER2				2
-;89:#define MASTER3				3
-;90:#define MASTER4				4
-;91:// End Shafe
-;92:
+;74://Set AS_GLOBAL as first -Vincent
+;75:#define AS_GLOBAL			0
+;76:#define AS_LOCAL			1
+;77:#define AS_MPLAYER			2
+;78:#define AS_FAVORITES		3
+;79:
+;80:#define SORT_HOST			0
+;81:#define SORT_MAP			1
+;82:#define SORT_CLIENTS		2
+;83:#define SORT_GAME			3
+;84:#define SORT_PING			4
+;85:
+;86:// Shafe - Trep Multi Master Support
+;87:#define MASTER0				0
+;88:#define MASTER1				1
+;89:#define MASTER2				2
+;90:#define MASTER3				3
+;91:#define MASTER4				4
+;92:// End Shafe
 ;93:
-;94:#define GAMES_ALL			0
-;95:#define GAMES_FFA			1
-;96:#define GAMES_TEAMPLAY		2
-;97:#define GAMES_TOURNEY		3
-;98:#define GAMES_CTF			4
-;99:#define GAMES_ARSENAL		5	// Shafe - Trep - New Gametype
-;100:#define GAMES_LASTMAN		6	// Shafe - Trep - New Gametype
-;101:#define GAMES_TREPIDATION	7	// Shafe - Trep - New Gametype
-;102:
-;103://Shafe - Trep - Mulimasters
-;104:static const char *master_servers[] = {
-;105:	"Primary",
-;106:	"Alternate 1",
-;107:	"Alternate 2",
-;108:	"Alternate 3",
-;109:	"Alternate 4 (Not Used)",
-;110:	0
-;111:};
-;112:// End Shafe
-;113:
-;114:static const char *master_items[] = {
-;115:	"Local",
-;116:	"Internet",
-;117:	"Favorites",
-;118:	0
-;119:};
-;120:
-;121:static const char *servertype_items[] = {
-;122:	"All",
-;123:	"Free For All",
-;124:	"Team Deathmatch",
-;125:	"Tournament",
-;126:	"Capture the Flag",
-;127:	"Arsenal",			// Shafe - Trep - New Gametype
-;128:	"Survival",	// Shafe - Trep - New Gametype
-;129:	"Trepidation",	// Shafe - Trep - New Gametype
-;130:	0
-;131:};
-;132:
-;133:static const char *sortkey_items[] = {
-;134:	"Server Name",
-;135:	"Map Name",
-;136:	"Open Player Spots",
-;137:	"Game Type",
-;138:	"Ping Time",
-;139:	0
-;140:};
-;141:
-;142:static char* gamenames[] = {
-;143:	"DM ",	// deathmatch
-;144:	"1v1",	// tournament
-;145:	"SP ",	// single player
-;146:	"Team DM",	// team deathmatch
-;147:	"CTF",	// capture the flag
-;148:	"One Flag CTF",		// one flag ctf
-;149:	"OverLoad",				// Overload
-;150:	"Harvester",			// Harvester
-;151:	"Rocket Arena 3",	// Rocket Arena 3
-;152:	"Q3F",						// Q3F
-;153:	"Urban Terror",		// Urban Terror
-;154:	"OSP",						// Orange Smoothie Productions
-;155:	"???",			// unknown
-;156:	0
-;157:};
-;158:
-;159:static char* netnames[] = {
-;160:	"???",
-;161:	"UDP",
-;162:	"IPX",
-;163:	NULL
-;164:};
-;165:
-;166:static char quake3worldMessage[] = "Visit treipidation.sourceforge.net - News, Community, Events, Files";
-;167:
+;94:
+;95:#define GAMES_ALL			0
+;96:#define GAMES_FFA			1
+;97:#define GAMES_TEAMPLAY		2
+;98:#define GAMES_TOURNEY		3
+;99:#define GAMES_CTF			4
+;100:#define GAMES_ARSENAL		5	// Shafe - Trep - New Gametype
+;101:#define GAMES_LASTMAN		6	// Shafe - Trep - New Gametype
+;102:#define GAMES_TREPIDATION	7	// Shafe - Trep - New Gametype
+;103:
+;104://Shafe - Trep - Mulimasters
+;105:static const char *master_servers[] = {
+;106:	"Primary",
+;107:	"Alternate 1",
+;108:	"Alternate 2",
+;109:	"Alternate 3",
+;110:	"Alternate 4 (Not Used)",
+;111:	0
+;112:};
+;113:// End Shafe
+;114:
+;115:static const char *master_items[] = {
+;116:	"Local",
+;117:	"Internet",
+;118:	"Favorites",
+;119:	0
+;120:};
+;121:
+;122:static const char *servertype_items[] = {
+;123:	"All",
+;124:	"Free For All",
+;125:	"Team Deathmatch",
+;126:	"Tournament",
+;127:	"Capture the Flag",
+;128:	"Arsenal",			// Shafe - Trep - New Gametype
+;129:	"Survival",	// Shafe - Trep - New Gametype
+;130:	"Trepidation",	// Shafe - Trep - New Gametype
+;131:	0
+;132:};
+;133:
+;134:static const char *sortkey_items[] = {
+;135:	"Server Name",
+;136:	"Map Name",
+;137:	"Open Player Spots",
+;138:	"Game Type",
+;139:	"Ping Time",
+;140:	0
+;141:};
+;142:
+;143:static char* gamenames[] = {
+;144:	"DM ",	// deathmatch
+;145:	"1v1",	// tournament
+;146:	"SP ",	// single player
+;147:	"Team DM",	// team deathmatch
+;148:	"CTF",	// capture the flag
+;149:	"One Flag CTF",		// one flag ctf
+;150:	"OverLoad",				// Overload
+;151:	"Harvester",			// Harvester
+;152:	"Rocket Arena 3",	// Rocket Arena 3
+;153:	"Q3F",						// Q3F
+;154:	"Urban Terror",		// Urban Terror
+;155:	"OSP",						// Orange Smoothie Productions
+;156:	"???",			// unknown
+;157:	0
+;158:};
+;159:
+;160:static char* netnames[] = {
+;161:	"???",
+;162:	"UDP",
+;163:	"IPX",
+;164:	NULL
+;165:};
+;166:
+;167:static char quake3worldMessage[] = "Visit www.planettrepidation.com - News, Community, Events, Files";
 ;168:
-;169:const char* punkbuster_items[] = {
-;170:	"Disabled",
-;171:	"Enabled",
-;172:	NULL
-;173:};
-;174:
-;175:const char* punkbuster_msg[] = {
-;176:	"PunkBuster will be",
-;177:	"disabled the next time",
-;178:	"Quake III Arena",
-;179:	"is started.",
-;180:	NULL
-;181:};
-;182:
-;183:typedef struct {
-;184:	char	adrstr[MAX_ADDRESSLENGTH];
-;185:	int		start;
-;186:} pinglist_t;
-;187:
-;188:typedef struct servernode_s {
-;189:	char	adrstr[MAX_ADDRESSLENGTH];
-;190:	char	hostname[MAX_HOSTNAMELENGTH+3];
-;191:	char	mapname[MAX_MAPNAMELENGTH];
-;192:	int		numclients;
-;193:	int		maxclients;
-;194:	int		pingtime;
-;195:	int		gametype;
-;196:	char	gamename[12];
-;197:	int		nettype;
-;198:	int		minPing;
-;199:	int		maxPing;
-;200:	/*
-;201:	// Shafe - Not quite sure how I want to display the gametypes yet.. 
-;202:	// I'm thinking that Instagib should replace the yes/no in pb field of browser
-;203:	*/
-;204:	int		g_instagib; 
-;205:	int		g_GameMode; 
-;206:	
-;207:	qboolean bPB;
-;208:
-;209:} servernode_t; 
-;210:
-;211:typedef struct {
-;212:	char			buff[MAX_LISTBOXWIDTH];
-;213:	servernode_t*	servernode;
-;214:} table_t;
-;215:
-;216:typedef struct {
-;217:	menuframework_s		menu;
-;218:
-;219:	menutext_s			banner;
-;220:
-;221:	menulist_s			master;
-;222:	menulist_s			mserver;
-;223:	menulist_s			gametype;
-;224:	menulist_s			sortkey;
-;225:	menuradiobutton_s	showfull;
-;226:	menuradiobutton_s	showempty;
-;227:
-;228:	menulist_s			list;
-;229:	menubitmap_s		mappic;
-;230:	menubitmap_s		arrows;
-;231:	menubitmap_s		up;
-;232:	menubitmap_s		down;
-;233:	menutext_s			status;
-;234:	menutext_s			statusbar;
-;235:
-;236:	menubitmap_s		remove;
-;237:	menubitmap_s		back;
-;238:	menubitmap_s		refresh;
-;239:	menubitmap_s		specify;
-;240:	menubitmap_s		create;
-;241:	menubitmap_s		go;
-;242:
-;243:	pinglist_t			pinglist[MAX_PINGREQUESTS];
-;244:	table_t				table[MAX_LISTBOXITEMS];
-;245:	char*				items[MAX_LISTBOXITEMS];
-;246:	int					numqueriedservers;
-;247:	int					*numservers;
-;248:	servernode_t		*serverlist;	
-;249:	int					currentping;
-;250:	qboolean			refreshservers;
-;251:	int					nextpingtime;
-;252:	int					maxservers;
-;253:	int					refreshtime;
-;254:	char				favoriteaddresses[MAX_FAVORITESERVERS][MAX_ADDRESSLENGTH];
-;255:	int					numfavoriteaddresses;
-;256:
-;257:	menulist_s		punkbuster;
-;258:	menubitmap_s	lblname;
-;259:	menubitmap_s	lblmap;
-;260:	menubitmap_s	lblplayers;
-;261:	menubitmap_s	lblgtype;
-;262:	menubitmap_s	lblnet;
-;263:	menubitmap_s	lblping;
-;264:	menubitmap_s	lblinstagib;
-;265:	menubitmap_s	pblogo;
-;266:
-;267:} arenaservers_t;
-;268:
-;269:static arenaservers_t	g_arenaservers;
-;270:
+;169:
+;170:const char* punkbuster_items[] = {
+;171:	"Disabled",
+;172:	"Enabled",
+;173:	NULL
+;174:};
+;175:
+;176:const char* punkbuster_msg[] = {
+;177:	"PunkBuster will be",
+;178:	"disabled the next time",
+;179:	"Quake III Arena",
+;180:	"is started.",
+;181:	NULL
+;182:};
+;183:
+;184:typedef struct {
+;185:	char	adrstr[MAX_ADDRESSLENGTH];
+;186:	int		start;
+;187:} pinglist_t;
+;188:
+;189:typedef struct servernode_s {
+;190:	char	adrstr[MAX_ADDRESSLENGTH];
+;191:	char	hostname[MAX_HOSTNAMELENGTH+3];
+;192:	char	mapname[MAX_MAPNAMELENGTH];
+;193:	int		numclients;
+;194:	int		maxclients;
+;195:	int		pingtime;
+;196:	int		gametype;
+;197:	char	gamename[12];
+;198:	int		nettype;
+;199:	int		minPing;
+;200:	int		maxPing;
+;201:	/*
+;202:	// Shafe - Not quite sure how I want to display the gametypes yet.. 
+;203:	// I'm thinking that Instagib should replace the yes/no in pb field of browser
+;204:	*/
+;205:	int		g_instagib; 
+;206:	int		g_GameMode; 
+;207:	
+;208:	qboolean bPB;
+;209:
+;210:} servernode_t; 
+;211:
+;212:typedef struct {
+;213:	char			buff[MAX_LISTBOXWIDTH];
+;214:	servernode_t*	servernode;
+;215:} table_t;
+;216:
+;217:typedef struct {
+;218:	menuframework_s		menu;
+;219:
+;220:	menutext_s			banner;
+;221:
+;222:	menulist_s			master;
+;223:	menulist_s			mserver;
+;224:	menulist_s			gametype;
+;225:	menulist_s			sortkey;
+;226:	menuradiobutton_s	showfull;
+;227:	menuradiobutton_s	showempty;
+;228:
+;229:	menulist_s			list;
+;230:	menubitmap_s		mappic;
+;231:	menubitmap_s		arrows;
+;232:	menubitmap_s		up;
+;233:	menubitmap_s		down;
+;234:	menutext_s			status;
+;235:	menutext_s			statusbar;
+;236:
+;237:	menubitmap_s		remove;
+;238:	menubitmap_s		back;
+;239:	menubitmap_s		refresh;
+;240:	menubitmap_s		specify;
+;241:	menubitmap_s		create;
+;242:	menubitmap_s		go;
+;243:
+;244:	pinglist_t			pinglist[MAX_PINGREQUESTS];
+;245:	table_t				table[MAX_LISTBOXITEMS];
+;246:	char*				items[MAX_LISTBOXITEMS];
+;247:	int					numqueriedservers;
+;248:	int					*numservers;
+;249:	servernode_t		*serverlist;	
+;250:	int					currentping;
+;251:	qboolean			refreshservers;
+;252:	int					nextpingtime;
+;253:	int					maxservers;
+;254:	int					refreshtime;
+;255:	char				favoriteaddresses[MAX_FAVORITESERVERS][MAX_ADDRESSLENGTH];
+;256:	int					numfavoriteaddresses;
+;257:
+;258:	menulist_s		punkbuster;
+;259:	menubitmap_s	lblname;
+;260:	menubitmap_s	lblmap;
+;261:	menubitmap_s	lblplayers;
+;262:	menubitmap_s	lblgtype;
+;263:	menubitmap_s	lblnet;
+;264:	menubitmap_s	lblping;
+;265:	menubitmap_s	lblinstagib;
+;266:	menubitmap_s	pblogo;
+;267:
+;268:} arenaservers_t;
+;269:
+;270:static arenaservers_t	g_arenaservers;
 ;271:
-;272:static servernode_t		g_globalserverlist[MAX_GLOBALSERVERS];
-;273:static int				g_numglobalservers;
-;274:static servernode_t		g_localserverlist[MAX_LOCALSERVERS];
-;275:static int				g_numlocalservers;
-;276:static servernode_t		g_favoriteserverlist[MAX_FAVORITESERVERS];
-;277:static int				g_numfavoriteservers;
-;278:static servernode_t		g_mplayerserverlist[MAX_GLOBALSERVERS];
-;279:static int				g_nummplayerservers;
-;280:static int				g_servertype;
-;281:static int				g_gametype;
-;282:static int				g_sortkey;
-;283:static int				g_emptyservers;
-;284:static int				g_fullservers;
-;285:static int				g_masteruse; // Shafe - Trep - Multimaster
-;286:static int				g_GameMode;
-;287:static int				g_instagib;
-;288:
+;272:
+;273:static servernode_t		g_globalserverlist[MAX_GLOBALSERVERS];
+;274:static int				g_numglobalservers;
+;275:static servernode_t		g_localserverlist[MAX_LOCALSERVERS];
+;276:static int				g_numlocalservers;
+;277:static servernode_t		g_favoriteserverlist[MAX_FAVORITESERVERS];
+;278:static int				g_numfavoriteservers;
+;279:static servernode_t		g_mplayerserverlist[MAX_GLOBALSERVERS];
+;280:static int				g_nummplayerservers;
+;281:static int				g_servertype;
+;282:static int				g_gametype;
+;283:static int				g_sortkey;
+;284:static int				g_emptyservers;
+;285:static int				g_fullservers;
+;286:static int				g_masteruse; // Shafe - Trep - Multimaster
+;287:static int				g_GameMode;
+;288:static int				g_instagib;
 ;289:
 ;290:
-;291:/*
-;292:=================
-;293:ArenaServers_MaxPing
-;294:=================
-;295:*/
-;296:static int ArenaServers_MaxPing( void ) {
-line 299
-;297:	int		maxPing;
-;298:
-;299:	maxPing = (int)trap_Cvar_VariableValue( "cl_maxPing" );
+;291:
+;292:/*
+;293:=================
+;294:ArenaServers_MaxPing
+;295:=================
+;296:*/
+;297:static int ArenaServers_MaxPing( void ) {
+line 300
+;298:	int		maxPing;
+;299:
+;300:	maxPing = (int)trap_Cvar_VariableValue( "cl_maxPing" );
 ADDRGP4 $115
 ARGP4
 ADDRLP4 4
@@ -453,58 +451,58 @@ ADDRLP4 4
 INDIRF4
 CVFI4 4
 ASGNI4
-line 300
-;300:	if( maxPing < 100 ) {
+line 301
+;301:	if( maxPing < 100 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 100
 GEI4 $116
-line 301
-;301:		maxPing = 100;
+line 302
+;302:		maxPing = 100;
 ADDRLP4 0
 CNSTI4 100
 ASGNI4
-line 302
-;302:	}
-LABELV $116
 line 303
-;303:	return maxPing;
+;303:	}
+LABELV $116
+line 304
+;304:	return maxPing;
 ADDRLP4 0
 INDIRI4
 RETI4
 LABELV $114
 endproc ArenaServers_MaxPing 8 4
 proc ArenaServers_Compare 68 8
-line 312
-;304:}
-;305:
+line 313
+;305:}
 ;306:
-;307:/*
-;308:=================
-;309:ArenaServers_Compare
-;310:=================
-;311:*/
-;312:static int QDECL ArenaServers_Compare( const void *arg1, const void *arg2 ) {
-line 318
-;313:	float			f1;
-;314:	float			f2;
-;315:	servernode_t*	t1;
-;316:	servernode_t*	t2;
-;317:
-;318:	t1 = (servernode_t *)arg1;
+;307:
+;308:/*
+;309:=================
+;310:ArenaServers_Compare
+;311:=================
+;312:*/
+;313:static int QDECL ArenaServers_Compare( const void *arg1, const void *arg2 ) {
+line 319
+;314:	float			f1;
+;315:	float			f2;
+;316:	servernode_t*	t1;
+;317:	servernode_t*	t2;
+;318:
+;319:	t1 = (servernode_t *)arg1;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 319
-;319:	t2 = (servernode_t *)arg2;
+line 320
+;320:	t2 = (servernode_t *)arg2;
 ADDRLP4 4
 ADDRFP4 4
 INDIRP4
 ASGNP4
-line 321
-;320:
-;321:	switch( g_sortkey ) {
+line 322
+;321:
+;322:	switch( g_sortkey ) {
 ADDRLP4 16
 ADDRGP4 g_sortkey
 INDIRI4
@@ -535,9 +533,9 @@ address $132
 address $137
 code
 LABELV $121
-line 323
-;322:	case SORT_HOST:
-;323:		return Q_stricmp( t1->hostname, t2->hostname );
+line 324
+;323:	case SORT_HOST:
+;324:		return Q_stricmp( t1->hostname, t2->hostname );
 ADDRLP4 20
 CNSTI4 64
 ASGNI4
@@ -563,10 +561,10 @@ RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $122
-line 326
-;324:
-;325:	case SORT_MAP:
-;326:		return Q_stricmp( t1->mapname, t2->mapname );
+line 327
+;325:
+;326:	case SORT_MAP:
+;327:		return Q_stricmp( t1->mapname, t2->mapname );
 ADDRLP4 28
 CNSTI4 89
 ASGNI4
@@ -592,10 +590,10 @@ RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $123
-line 329
-;327:
-;328:	case SORT_CLIENTS:
-;329:		f1 = t1->maxclients - t1->numclients;
+line 330
+;328:
+;329:	case SORT_CLIENTS:
+;330:		f1 = t1->maxclients - t1->numclients;
 ADDRLP4 36
 ADDRLP4 0
 INDIRP4
@@ -614,23 +612,23 @@ INDIRI4
 SUBI4
 CVIF4 4
 ASGNF4
-line 330
-;330:		if( f1 < 0 ) {
+line 331
+;331:		if( f1 < 0 ) {
 ADDRLP4 8
 INDIRF4
 CNSTF4 0
 GEF4 $124
-line 331
-;331:			f1 = 0;
+line 332
+;332:			f1 = 0;
 ADDRLP4 8
 CNSTF4 0
 ASGNF4
-line 332
-;332:		}
+line 333
+;333:		}
 LABELV $124
-line 334
-;333:
-;334:		f2 = t2->maxclients - t2->numclients;
+line 335
+;334:
+;335:		f2 = t2->maxclients - t2->numclients;
 ADDRLP4 40
 ADDRLP4 4
 INDIRP4
@@ -649,62 +647,62 @@ INDIRI4
 SUBI4
 CVIF4 4
 ASGNF4
-line 335
-;335:		if( f2 < 0 ) {
+line 336
+;336:		if( f2 < 0 ) {
 ADDRLP4 12
 INDIRF4
 CNSTF4 0
 GEF4 $126
-line 336
-;336:			f2 = 0;
+line 337
+;337:			f2 = 0;
 ADDRLP4 12
 CNSTF4 0
 ASGNF4
-line 337
-;337:		}
+line 338
+;338:		}
 LABELV $126
-line 339
-;338:
-;339:		if( f1 < f2 ) {
+line 340
+;339:
+;340:		if( f1 < f2 ) {
 ADDRLP4 8
 INDIRF4
 ADDRLP4 12
 INDIRF4
 GEF4 $128
-line 340
-;340:			return 1;
+line 341
+;341:			return 1;
 CNSTI4 1
 RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $128
-line 342
-;341:		}
-;342:		if( f1 == f2 ) {
+line 343
+;342:		}
+;343:		if( f1 == f2 ) {
 ADDRLP4 8
 INDIRF4
 ADDRLP4 12
 INDIRF4
 NEF4 $130
-line 343
-;343:			return 0;
+line 344
+;344:			return 0;
 CNSTI4 0
 RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $130
-line 345
-;344:		}
-;345:		return -1;
+line 346
+;345:		}
+;346:		return -1;
 CNSTI4 -1
 RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $132
-line 348
-;346:
-;347:	case SORT_GAME:
-;348:		if( t1->gametype < t2->gametype ) {
+line 349
+;347:
+;348:	case SORT_GAME:
+;349:		if( t1->gametype < t2->gametype ) {
 ADDRLP4 44
 CNSTI4 232
 ASGNI4
@@ -721,16 +719,16 @@ INDIRI4
 ADDP4
 INDIRI4
 GEI4 $133
-line 349
-;349:			return -1;
+line 350
+;350:			return -1;
 CNSTI4 -1
 RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $133
-line 351
-;350:		}
-;351:		if( t1->gametype == t2->gametype ) {
+line 352
+;351:		}
+;352:		if( t1->gametype == t2->gametype ) {
 ADDRLP4 48
 CNSTI4 232
 ASGNI4
@@ -747,25 +745,25 @@ INDIRI4
 ADDP4
 INDIRI4
 NEI4 $135
-line 352
-;352:			return 0;
+line 353
+;353:			return 0;
 CNSTI4 0
 RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $135
-line 354
-;353:		}
-;354:		return 1;
+line 355
+;354:		}
+;355:		return 1;
 CNSTI4 1
 RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $137
-line 357
-;355:
-;356:	case SORT_PING:
-;357:		if( t1->pingtime < t2->pingtime ) {
+line 358
+;356:
+;357:	case SORT_PING:
+;358:		if( t1->pingtime < t2->pingtime ) {
 ADDRLP4 52
 CNSTI4 228
 ASGNI4
@@ -782,16 +780,16 @@ INDIRI4
 ADDP4
 INDIRI4
 GEI4 $138
-line 358
-;358:			return -1;
+line 359
+;359:			return -1;
 CNSTI4 -1
 RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $138
-line 360
-;359:		}
-;360:		if( t1->pingtime > t2->pingtime ) {
+line 361
+;360:		}
+;361:		if( t1->pingtime > t2->pingtime ) {
 ADDRLP4 56
 CNSTI4 228
 ASGNI4
@@ -808,16 +806,16 @@ INDIRI4
 ADDP4
 INDIRI4
 LEI4 $140
-line 361
-;361:			return 1;
+line 362
+;362:			return 1;
 CNSTI4 1
 RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $140
-line 363
-;362:		}
-;363:		return Q_stricmp( t1->hostname, t2->hostname );
+line 364
+;363:		}
+;364:		return Q_stricmp( t1->hostname, t2->hostname );
 ADDRLP4 60
 CNSTI4 64
 ASGNI4
@@ -843,29 +841,29 @@ RETI4
 ADDRGP4 $118
 JUMPV
 LABELV $119
-line 366
-;364:	}
-;365:
-;366:	return 0;
+line 367
+;365:	}
+;366:
+;367:	return 0;
 CNSTI4 0
 RETI4
 LABELV $118
 endproc ArenaServers_Compare 68 8
 proc ArenaServers_Go 8 8
-line 375
-;367:}
-;368:
+line 376
+;368:}
 ;369:
-;370:/*
-;371:=================
-;372:ArenaServers_Go
-;373:=================
-;374:*/
-;375:static void ArenaServers_Go( void ) {
-line 378
-;376:	servernode_t*	servernode;
-;377:
-;378:	servernode = g_arenaservers.table[g_arenaservers.list.curvalue].servernode;
+;370:
+;371:/*
+;372:=================
+;373:ArenaServers_Go
+;374:=================
+;375:*/
+;376:static void ArenaServers_Go( void ) {
+line 379
+;377:	servernode_t*	servernode;
+;378:
+;379:	servernode = g_arenaservers.table[g_arenaservers.list.curvalue].servernode;
 ADDRLP4 0
 CNSTI4 72
 ADDRGP4 g_arenaservers+872+64
@@ -875,15 +873,15 @@ ADDRGP4 g_arenaservers+4168+68
 ADDP4
 INDIRP4
 ASGNP4
-line 379
-;379:	if( servernode ) {
+line 380
+;380:	if( servernode ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $148
-line 380
-;380:		trap_Cmd_ExecuteText( EXEC_APPEND, va( "connect %s\n", servernode->adrstr ) );
+line 381
+;381:		trap_Cmd_ExecuteText( EXEC_APPEND, va( "connect %s\n", servernode->adrstr ) );
 ADDRGP4 $150
 ARGP4
 ADDRLP4 0
@@ -901,11 +899,11 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 381
-;381:	}
-LABELV $148
 line 382
-;382:}
+;382:	}
+LABELV $148
+line 383
+;383:}
 LABELV $143
 endproc ArenaServers_Go 8 8
 bss
@@ -914,38 +912,38 @@ LABELV $152
 skip 64
 code
 proc ArenaServers_UpdatePicture 4 16
-line 390
-;383:
+line 391
 ;384:
-;385:/*
-;386:=================
-;387:ArenaServers_UpdatePicture
-;388:=================
-;389:*/
-;390:static void ArenaServers_UpdatePicture( void ) {
-line 394
-;391:	static char		picname[64];
-;392:	servernode_t*	servernodeptr;
-;393:
-;394:	if( !g_arenaservers.list.numitems ) {
+;385:
+;386:/*
+;387:=================
+;388:ArenaServers_UpdatePicture
+;389:=================
+;390:*/
+;391:static void ArenaServers_UpdatePicture( void ) {
+line 395
+;392:	static char		picname[64];
+;393:	servernode_t*	servernodeptr;
+;394:
+;395:	if( !g_arenaservers.list.numitems ) {
 ADDRGP4 g_arenaservers+872+68
 INDIRI4
 CNSTI4 0
 NEI4 $153
-line 395
-;395:		g_arenaservers.mappic.generic.name = NULL;
+line 396
+;396:		g_arenaservers.mappic.generic.name = NULL;
 ADDRGP4 g_arenaservers+968+4
 CNSTP4 0
 ASGNP4
-line 396
-;396:	}
+line 397
+;397:	}
 ADDRGP4 $154
 JUMPV
 LABELV $153
-line 397
-;397:	else {
 line 398
-;398:		servernodeptr = g_arenaservers.table[g_arenaservers.list.curvalue].servernode;
+;398:	else {
+line 399
+;399:		servernodeptr = g_arenaservers.table[g_arenaservers.list.curvalue].servernode;
 ADDRLP4 0
 CNSTI4 72
 ADDRGP4 g_arenaservers+872+64
@@ -955,8 +953,8 @@ ADDRGP4 g_arenaservers+4168+68
 ADDP4
 INDIRP4
 ASGNP4
-line 399
-;399:		Com_sprintf( picname, sizeof(picname), "levelshots/%s.tga", servernodeptr->mapname );
+line 400
+;400:		Com_sprintf( picname, sizeof(picname), "levelshots/%s.tga", servernodeptr->mapname );
 ADDRGP4 $152
 ARGP4
 CNSTI4 64
@@ -971,53 +969,53 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 400
-;400:		g_arenaservers.mappic.generic.name = picname;
+line 401
+;401:		g_arenaservers.mappic.generic.name = picname;
 ADDRGP4 g_arenaservers+968+4
 ADDRGP4 $152
 ASGNP4
-line 402
-;401:	
-;402:	}
+line 403
+;402:	
+;403:	}
 LABELV $154
-line 405
-;403:
-;404:	// force shader update during draw
-;405:	g_arenaservers.mappic.shader = 0;
+line 406
+;404:
+;405:	// force shader update during draw
+;406:	g_arenaservers.mappic.shader = 0;
 ADDRGP4 g_arenaservers+968+68
 CNSTI4 0
 ASGNI4
-line 406
-;406:}
+line 407
+;407:}
 LABELV $151
 endproc ArenaServers_UpdatePicture 4 16
 proc ArenaServers_UpdateMenu 72 48
-line 414
-;407:
+line 415
 ;408:
-;409:/*
-;410:=================
-;411:ArenaServers_UpdateMenu
-;412:=================
-;413:*/
-;414:static void ArenaServers_UpdateMenu( void ) {
-line 423
-;415:	int				i;
-;416:	int				j;
-;417:	int				count;
-;418:	char*			buff;
-;419:	servernode_t*	servernodeptr;
-;420:	table_t*		tableptr;
-;421:	char			*pingColor;
-;422:
-;423:	if( g_arenaservers.numqueriedservers > 0 ) {
+;409:
+;410:/*
+;411:=================
+;412:ArenaServers_UpdateMenu
+;413:=================
+;414:*/
+;415:static void ArenaServers_UpdateMenu( void ) {
+line 424
+;416:	int				i;
+;417:	int				j;
+;418:	int				count;
+;419:	char*			buff;
+;420:	servernode_t*	servernodeptr;
+;421:	table_t*		tableptr;
+;422:	char			*pingColor;
+;423:
+;424:	if( g_arenaservers.numqueriedservers > 0 ) {
 ADDRGP4 g_arenaservers+13896
 INDIRI4
 CNSTI4 0
 LEI4 $169
-line 425
-;424:		// servers found
-;425:		if( g_arenaservers.refreshservers && ( g_arenaservers.currentping <= g_arenaservers.numqueriedservers ) ) {
+line 426
+;425:		// servers found
+;426:		if( g_arenaservers.refreshservers && ( g_arenaservers.currentping <= g_arenaservers.numqueriedservers ) ) {
 ADDRGP4 g_arenaservers+13912
 INDIRI4
 CNSTI4 0
@@ -1027,9 +1025,9 @@ INDIRI4
 ADDRGP4 g_arenaservers+13896
 INDIRI4
 GTI4 $172
-line 427
-;426:			// show progress
-;427:			Com_sprintf( g_arenaservers.status.string, MAX_STATUSLENGTH, "%d of %d Trepidation Servers.", g_arenaservers.currentping, g_arenaservers.numqueriedservers);
+line 428
+;427:			// show progress
+;428:			Com_sprintf( g_arenaservers.status.string, MAX_STATUSLENGTH, "%d of %d Trepidation Servers.", g_arenaservers.currentping, g_arenaservers.numqueriedservers);
 ADDRGP4 g_arenaservers+1320+60
 INDIRP4
 ARGP4
@@ -1046,13 +1044,13 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 428
-;428:			g_arenaservers.statusbar.string  = "Press SPACE to stop";
+line 429
+;429:			g_arenaservers.statusbar.string  = "Press SPACE to stop";
 ADDRGP4 g_arenaservers+1392+60
 ADDRGP4 $184
 ASGNP4
-line 429
-;429:			qsort( g_arenaservers.serverlist, *g_arenaservers.numservers, sizeof( servernode_t ), ArenaServers_Compare);
+line 430
+;430:			qsort( g_arenaservers.serverlist, *g_arenaservers.numservers, sizeof( servernode_t ), ArenaServers_Compare);
 ADDRGP4 g_arenaservers+13904
 INDIRP4
 ARGP4
@@ -1067,16 +1065,16 @@ ARGP4
 ADDRGP4 qsort
 CALLV
 pop
-line 430
-;430:		}
+line 431
+;431:		}
 ADDRGP4 $170
 JUMPV
 LABELV $172
-line 431
-;431:		else {
-line 433
-;432:			// all servers pinged - enable controls
-;433:			g_arenaservers.master.generic.flags		&= ~QMF_GRAYED;
+line 432
+;432:		else {
+line 434
+;433:			// all servers pinged - enable controls
+;434:			g_arenaservers.master.generic.flags		&= ~QMF_GRAYED;
 ADDRLP4 28
 ADDRGP4 g_arenaservers+360+44
 ASGNP4
@@ -1088,8 +1086,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 434
-;434:			g_arenaservers.mserver.generic.flags		&= ~QMF_GRAYED;
+line 435
+;435:			g_arenaservers.mserver.generic.flags		&= ~QMF_GRAYED;
 ADDRLP4 32
 ADDRGP4 g_arenaservers+456+44
 ASGNP4
@@ -1101,8 +1099,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 435
-;435:			g_arenaservers.gametype.generic.flags	&= ~QMF_GRAYED;
+line 436
+;436:			g_arenaservers.gametype.generic.flags	&= ~QMF_GRAYED;
 ADDRLP4 36
 ADDRGP4 g_arenaservers+552+44
 ASGNP4
@@ -1114,8 +1112,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 436
-;436:			g_arenaservers.sortkey.generic.flags	&= ~QMF_GRAYED;
+line 437
+;437:			g_arenaservers.sortkey.generic.flags	&= ~QMF_GRAYED;
 ADDRLP4 40
 ADDRGP4 g_arenaservers+648+44
 ASGNP4
@@ -1127,8 +1125,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 437
-;437:			g_arenaservers.showempty.generic.flags	&= ~QMF_GRAYED;
+line 438
+;438:			g_arenaservers.showempty.generic.flags	&= ~QMF_GRAYED;
 ADDRLP4 44
 ADDRGP4 g_arenaservers+808+44
 ASGNP4
@@ -1140,8 +1138,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 438
-;438:			g_arenaservers.showfull.generic.flags	&= ~QMF_GRAYED;
+line 439
+;439:			g_arenaservers.showfull.generic.flags	&= ~QMF_GRAYED;
 ADDRLP4 48
 ADDRGP4 g_arenaservers+744+44
 ASGNP4
@@ -1153,8 +1151,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 439
-;439:			g_arenaservers.list.generic.flags		&= ~QMF_GRAYED;
+line 440
+;440:			g_arenaservers.list.generic.flags		&= ~QMF_GRAYED;
 ADDRLP4 52
 ADDRGP4 g_arenaservers+872+44
 ASGNP4
@@ -1166,8 +1164,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 440
-;440:			g_arenaservers.refresh.generic.flags	&= ~QMF_GRAYED;
+line 441
+;441:			g_arenaservers.refresh.generic.flags	&= ~QMF_GRAYED;
 ADDRLP4 56
 ADDRGP4 g_arenaservers+1640+44
 ASGNP4
@@ -1179,8 +1177,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 441
-;441:			g_arenaservers.go.generic.flags			&= ~QMF_GRAYED;
+line 442
+;442:			g_arenaservers.go.generic.flags			&= ~QMF_GRAYED;
 ADDRLP4 60
 ADDRGP4 g_arenaservers+1904+44
 ASGNP4
@@ -1192,8 +1190,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 442
-;442:			g_arenaservers.punkbuster.generic.flags &= ~QMF_GRAYED;
+line 443
+;443:			g_arenaservers.punkbuster.generic.flags &= ~QMF_GRAYED;
 ADDRLP4 64
 ADDRGP4 g_arenaservers+14956+44
 ASGNP4
@@ -1205,61 +1203,61 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 445
-;443:
-;444:			// update status bar
-;445:			if( g_servertype == AS_GLOBAL || g_servertype == AS_MPLAYER ) {
+line 446
+;444:
+;445:			// update status bar
+;446:			if( g_servertype == AS_GLOBAL || g_servertype == AS_MPLAYER ) {
 ADDRLP4 68
 ADDRGP4 g_servertype
 INDIRI4
 ASGNI4
 ADDRLP4 68
 INDIRI4
-CNSTI4 2
+CNSTI4 0
 EQI4 $209
 ADDRLP4 68
 INDIRI4
-CNSTI4 1
+CNSTI4 2
 NEI4 $207
 LABELV $209
-line 446
-;446:				g_arenaservers.statusbar.string = quake3worldMessage;
+line 447
+;447:				g_arenaservers.statusbar.string = quake3worldMessage;
 ADDRGP4 g_arenaservers+1392+60
 ADDRGP4 quake3worldMessage
 ASGNP4
-line 447
-;447:			}
+line 448
+;448:			}
 ADDRGP4 $170
 JUMPV
 LABELV $207
-line 448
-;448:			else {
 line 449
-;449:				g_arenaservers.statusbar.string = "";
+;449:			else {
+line 450
+;450:				g_arenaservers.statusbar.string = "";
 ADDRGP4 g_arenaservers+1392+60
 ADDRGP4 $214
 ASGNP4
-line 450
-;450:			}
-line 452
-;451:
-;452:		}
+line 451
+;451:			}
 line 453
-;453:	}
+;452:
+;453:		}
+line 454
+;454:	}
 ADDRGP4 $170
 JUMPV
 LABELV $169
-line 454
-;454:	else {
-line 456
-;455:		// no servers found
-;456:		if( g_arenaservers.refreshservers ) {
+line 455
+;455:	else {
+line 457
+;456:		// no servers found
+;457:		if( g_arenaservers.refreshservers ) {
 ADDRGP4 g_arenaservers+13912
 INDIRI4
 CNSTI4 0
 EQI4 $215
-line 457
-;457:			strcpy( g_arenaservers.status.string,"Scanning The Trepidation Universe." );
+line 458
+;458:			strcpy( g_arenaservers.status.string,"Scanning The Trepidation Universe." );
 ADDRGP4 g_arenaservers+1320+60
 INDIRP4
 ARGP4
@@ -1268,15 +1266,15 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 458
-;458:			g_arenaservers.statusbar.string = "Press SPACE to stop";
+line 459
+;459:			g_arenaservers.statusbar.string = "Press SPACE to stop";
 ADDRGP4 g_arenaservers+1392+60
 ADDRGP4 $184
 ASGNP4
-line 461
-;459:
-;460:			// disable controls during refresh
-;461:			g_arenaservers.master.generic.flags		|= QMF_GRAYED;
+line 462
+;460:
+;461:			// disable controls during refresh
+;462:			g_arenaservers.master.generic.flags		|= QMF_GRAYED;
 ADDRLP4 28
 ADDRGP4 g_arenaservers+360+44
 ASGNP4
@@ -1288,8 +1286,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 462
-;462:			g_arenaservers.mserver.generic.flags		|= QMF_GRAYED;
+line 463
+;463:			g_arenaservers.mserver.generic.flags		|= QMF_GRAYED;
 ADDRLP4 32
 ADDRGP4 g_arenaservers+456+44
 ASGNP4
@@ -1301,8 +1299,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 463
-;463:			g_arenaservers.gametype.generic.flags	|= QMF_GRAYED;
+line 464
+;464:			g_arenaservers.gametype.generic.flags	|= QMF_GRAYED;
 ADDRLP4 36
 ADDRGP4 g_arenaservers+552+44
 ASGNP4
@@ -1314,8 +1312,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 464
-;464:			g_arenaservers.sortkey.generic.flags	|= QMF_GRAYED;
+line 465
+;465:			g_arenaservers.sortkey.generic.flags	|= QMF_GRAYED;
 ADDRLP4 40
 ADDRGP4 g_arenaservers+648+44
 ASGNP4
@@ -1327,8 +1325,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 465
-;465:			g_arenaservers.showempty.generic.flags	|= QMF_GRAYED;
+line 466
+;466:			g_arenaservers.showempty.generic.flags	|= QMF_GRAYED;
 ADDRLP4 44
 ADDRGP4 g_arenaservers+808+44
 ASGNP4
@@ -1340,8 +1338,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 466
-;466:			g_arenaservers.showfull.generic.flags	|= QMF_GRAYED;
+line 467
+;467:			g_arenaservers.showfull.generic.flags	|= QMF_GRAYED;
 ADDRLP4 48
 ADDRGP4 g_arenaservers+744+44
 ASGNP4
@@ -1353,8 +1351,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 467
-;467:			g_arenaservers.list.generic.flags		|= QMF_GRAYED;
+line 468
+;468:			g_arenaservers.list.generic.flags		|= QMF_GRAYED;
 ADDRLP4 52
 ADDRGP4 g_arenaservers+872+44
 ASGNP4
@@ -1366,8 +1364,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 468
-;468:			g_arenaservers.refresh.generic.flags	|= QMF_GRAYED;
+line 469
+;469:			g_arenaservers.refresh.generic.flags	|= QMF_GRAYED;
 ADDRLP4 56
 ADDRGP4 g_arenaservers+1640+44
 ASGNP4
@@ -1379,8 +1377,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 469
-;469:			g_arenaservers.go.generic.flags			|= QMF_GRAYED;
+line 470
+;470:			g_arenaservers.go.generic.flags			|= QMF_GRAYED;
 ADDRLP4 60
 ADDRGP4 g_arenaservers+1904+44
 ASGNP4
@@ -1392,8 +1390,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 470
-;470:			g_arenaservers.punkbuster.generic.flags |= QMF_GRAYED;
+line 471
+;471:			g_arenaservers.punkbuster.generic.flags |= QMF_GRAYED;
 ADDRLP4 64
 ADDRGP4 g_arenaservers+14956+44
 ASGNP4
@@ -1405,21 +1403,21 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 471
-;471:		}
+line 472
+;472:		}
 ADDRGP4 $216
 JUMPV
 LABELV $215
-line 472
-;472:		else {
 line 473
-;473:			if( g_arenaservers.numqueriedservers < 0 ) {
+;473:		else {
+line 474
+;474:			if( g_arenaservers.numqueriedservers < 0 ) {
 ADDRGP4 g_arenaservers+13896
 INDIRI4
 CNSTI4 0
 GEI4 $243
-line 474
-;474:				strcpy(g_arenaservers.status.string,"No Response From Master Server." );
+line 475
+;475:				strcpy(g_arenaservers.status.string,"No Response From Master Server." );
 ADDRGP4 g_arenaservers+1320+60
 INDIRP4
 ARGP4
@@ -1428,15 +1426,15 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 475
-;475:			}
+line 476
+;476:			}
 ADDRGP4 $244
 JUMPV
 LABELV $243
-line 476
-;476:			else {
 line 477
-;477:				strcpy(g_arenaservers.status.string,"No Servers Found." );
+;477:			else {
+line 478
+;478:				strcpy(g_arenaservers.status.string,"No Servers Found." );
 ADDRGP4 g_arenaservers+1320+60
 INDIRP4
 ARGP4
@@ -1445,50 +1443,50 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 478
-;478:			}
+line 479
+;479:			}
 LABELV $244
-line 481
-;479:
-;480:			// update status bar
-;481:			if( g_servertype == AS_GLOBAL || g_servertype == AS_MPLAYER ) {
+line 482
+;480:
+;481:			// update status bar
+;482:			if( g_servertype == AS_GLOBAL || g_servertype == AS_MPLAYER ) {
 ADDRLP4 28
 ADDRGP4 g_servertype
 INDIRI4
 ASGNI4
 ADDRLP4 28
 INDIRI4
-CNSTI4 2
+CNSTI4 0
 EQI4 $254
 ADDRLP4 28
 INDIRI4
-CNSTI4 1
+CNSTI4 2
 NEI4 $252
 LABELV $254
-line 482
-;482:				g_arenaservers.statusbar.string = quake3worldMessage;
+line 483
+;483:				g_arenaservers.statusbar.string = quake3worldMessage;
 ADDRGP4 g_arenaservers+1392+60
 ADDRGP4 quake3worldMessage
 ASGNP4
-line 483
-;483:			}
+line 484
+;484:			}
 ADDRGP4 $253
 JUMPV
 LABELV $252
-line 484
-;484:			else {
 line 485
-;485:				g_arenaservers.statusbar.string = "";
+;485:			else {
+line 486
+;486:				g_arenaservers.statusbar.string = "";
 ADDRGP4 g_arenaservers+1392+60
 ADDRGP4 $214
 ASGNP4
-line 486
-;486:			}
+line 487
+;487:			}
 LABELV $253
-line 489
-;487:
-;488:			// end of refresh - set control state
-;489:			g_arenaservers.master.generic.flags		&= ~QMF_GRAYED;
+line 490
+;488:
+;489:			// end of refresh - set control state
+;490:			g_arenaservers.master.generic.flags		&= ~QMF_GRAYED;
 ADDRLP4 32
 ADDRGP4 g_arenaservers+360+44
 ASGNP4
@@ -1500,8 +1498,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 490
-;490:			g_arenaservers.mserver.generic.flags		&= ~QMF_GRAYED;
+line 491
+;491:			g_arenaservers.mserver.generic.flags		&= ~QMF_GRAYED;
 ADDRLP4 36
 ADDRGP4 g_arenaservers+456+44
 ASGNP4
@@ -1513,8 +1511,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 491
-;491:			g_arenaservers.gametype.generic.flags	&= ~QMF_GRAYED;
+line 492
+;492:			g_arenaservers.gametype.generic.flags	&= ~QMF_GRAYED;
 ADDRLP4 40
 ADDRGP4 g_arenaservers+552+44
 ASGNP4
@@ -1526,8 +1524,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 492
-;492:			g_arenaservers.sortkey.generic.flags	&= ~QMF_GRAYED;
+line 493
+;493:			g_arenaservers.sortkey.generic.flags	&= ~QMF_GRAYED;
 ADDRLP4 44
 ADDRGP4 g_arenaservers+648+44
 ASGNP4
@@ -1539,8 +1537,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 493
-;493:			g_arenaservers.showempty.generic.flags	&= ~QMF_GRAYED;
+line 494
+;494:			g_arenaservers.showempty.generic.flags	&= ~QMF_GRAYED;
 ADDRLP4 48
 ADDRGP4 g_arenaservers+808+44
 ASGNP4
@@ -1552,8 +1550,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 494
-;494:			g_arenaservers.showfull.generic.flags	&= ~QMF_GRAYED;
+line 495
+;495:			g_arenaservers.showfull.generic.flags	&= ~QMF_GRAYED;
 ADDRLP4 52
 ADDRGP4 g_arenaservers+744+44
 ASGNP4
@@ -1565,8 +1563,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 495
-;495:			g_arenaservers.list.generic.flags		|= QMF_GRAYED;
+line 496
+;496:			g_arenaservers.list.generic.flags		|= QMF_GRAYED;
 ADDRLP4 56
 ADDRGP4 g_arenaservers+872+44
 ASGNP4
@@ -1578,8 +1576,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 496
-;496:			g_arenaservers.refresh.generic.flags	&= ~QMF_GRAYED;
+line 497
+;497:			g_arenaservers.refresh.generic.flags	&= ~QMF_GRAYED;
 ADDRLP4 60
 ADDRGP4 g_arenaservers+1640+44
 ASGNP4
@@ -1591,8 +1589,8 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 497
-;497:			g_arenaservers.go.generic.flags			|= QMF_GRAYED;
+line 498
+;498:			g_arenaservers.go.generic.flags			|= QMF_GRAYED;
 ADDRLP4 64
 ADDRGP4 g_arenaservers+1904+44
 ASGNP4
@@ -1604,8 +1602,8 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 498
-;498:			g_arenaservers.punkbuster.generic.flags &= ~QMF_GRAYED;
+line 499
+;499:			g_arenaservers.punkbuster.generic.flags &= ~QMF_GRAYED;
 ADDRLP4 68
 ADDRGP4 g_arenaservers+14956+44
 ASGNP4
@@ -1617,60 +1615,60 @@ INDIRU4
 CNSTU4 4294959103
 BANDU4
 ASGNU4
-line 499
-;499:		}
+line 500
+;500:		}
 LABELV $216
-line 502
-;500:
-;501:		// zero out list box
-;502:		g_arenaservers.list.numitems = 0;
+line 503
+;501:
+;502:		// zero out list box
+;503:		g_arenaservers.list.numitems = 0;
 ADDRGP4 g_arenaservers+872+68
 CNSTI4 0
 ASGNI4
-line 503
-;503:		g_arenaservers.list.curvalue = 0;
+line 504
+;504:		g_arenaservers.list.curvalue = 0;
 ADDRGP4 g_arenaservers+872+64
 CNSTI4 0
 ASGNI4
-line 504
-;504:		g_arenaservers.list.top      = 0;
+line 505
+;505:		g_arenaservers.list.top      = 0;
 ADDRGP4 g_arenaservers+872+72
 CNSTI4 0
 ASGNI4
-line 507
-;505:
-;506:		// update picture
-;507:		ArenaServers_UpdatePicture();
+line 508
+;506:
+;507:		// update picture
+;508:		ArenaServers_UpdatePicture();
 ADDRGP4 ArenaServers_UpdatePicture
 CALLV
 pop
-line 508
-;508:		return;
+line 509
+;509:		return;
 ADDRGP4 $168
 JUMPV
 LABELV $170
-line 516
-;509:	}
-;510:	
+line 517
+;510:	}
 ;511:	
 ;512:	
 ;513:	
-;514:
-;515:	// build list box strings - apply culling filters
-;516:	servernodeptr = g_arenaservers.serverlist;
+;514:	
+;515:
+;516:	// build list box strings - apply culling filters
+;517:	servernodeptr = g_arenaservers.serverlist;
 ADDRLP4 0
 ADDRGP4 g_arenaservers+13904
 INDIRP4
 ASGNP4
-line 517
-;517:	count         = *g_arenaservers.numservers;
+line 518
+;518:	count         = *g_arenaservers.numservers;
 ADDRLP4 24
 ADDRGP4 g_arenaservers+13900
 INDIRP4
 INDIRI4
 ASGNI4
-line 518
-;518:	for( i = 0, j = 0; i < count; i++, servernodeptr++ ) {
+line 519
+;519:	for( i = 0, j = 0; i < count; i++, servernodeptr++ ) {
 ADDRLP4 28
 CNSTI4 0
 ASGNI4
@@ -1685,8 +1683,8 @@ ASGNI4
 ADDRGP4 $290
 JUMPV
 LABELV $287
-line 519
-;519:		tableptr = &g_arenaservers.table[j];
+line 520
+;520:		tableptr = &g_arenaservers.table[j];
 ADDRLP4 4
 CNSTI4 72
 ADDRLP4 8
@@ -1695,8 +1693,8 @@ MULI4
 ADDRGP4 g_arenaservers+4168
 ADDP4
 ASGNP4
-line 520
-;520:		tableptr->servernode = servernodeptr;
+line 521
+;521:		tableptr->servernode = servernodeptr;
 ADDRLP4 4
 INDIRP4
 CNSTI4 68
@@ -1704,16 +1702,16 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 521
-;521:		buff = tableptr->buff;
+line 522
+;522:		buff = tableptr->buff;
 ADDRLP4 16
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 524
-;522:
-;523:		// can only cull valid results
-;524:		if( !g_emptyservers && !servernodeptr->numclients ) {
+line 525
+;523:
+;524:		// can only cull valid results
+;525:		if( !g_emptyservers && !servernodeptr->numclients ) {
 ADDRLP4 32
 CNSTI4 0
 ASGNI4
@@ -1730,15 +1728,15 @@ INDIRI4
 ADDRLP4 32
 INDIRI4
 NEI4 $292
-line 525
-;525:			continue;
+line 526
+;526:			continue;
 ADDRGP4 $288
 JUMPV
 LABELV $292
-line 528
-;526:		}
-;527:
-;528:		if( !g_fullservers && ( servernodeptr->numclients == servernodeptr->maxclients ) ) {
+line 529
+;527:		}
+;528:
+;529:		if( !g_fullservers && ( servernodeptr->numclients == servernodeptr->maxclients ) ) {
 ADDRGP4 g_fullservers
 INDIRI4
 CNSTI4 0
@@ -1754,15 +1752,15 @@ CNSTI4 224
 ADDP4
 INDIRI4
 NEI4 $294
-line 529
-;529:			continue;
+line 530
+;530:			continue;
 ADDRGP4 $288
 JUMPV
 LABELV $294
-line 532
-;530:		}
-;531:
-;532:		switch( g_gametype ) {
+line 533
+;531:		}
+;532:
+;533:		switch( g_gametype ) {
 ADDRLP4 40
 ADDRGP4 g_gametype
 INDIRI4
@@ -1795,14 +1793,14 @@ address $311
 address $314
 address $317
 code
-line 534
-;533:		case GAMES_ALL:
-;534:			break;
+line 535
+;534:		case GAMES_ALL:
+;535:			break;
 LABELV $299
-line 537
-;535:
-;536:		case GAMES_FFA:
-;537:			if( servernodeptr->gametype != GT_FFA ) {
+line 538
+;536:
+;537:		case GAMES_FFA:
+;538:			if( servernodeptr->gametype != GT_FFA ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 232
@@ -1810,18 +1808,18 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $297
-line 538
-;538:				continue;
+line 539
+;539:				continue;
 ADDRGP4 $288
 JUMPV
-line 540
-;539:			}
-;540:			break;
+line 541
+;540:			}
+;541:			break;
 LABELV $302
-line 543
-;541:
-;542:		case GAMES_TEAMPLAY:
-;543:			if( servernodeptr->gametype != GT_TEAM ) {
+line 544
+;542:
+;543:		case GAMES_TEAMPLAY:
+;544:			if( servernodeptr->gametype != GT_TEAM ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 232
@@ -1829,18 +1827,18 @@ ADDP4
 INDIRI4
 CNSTI4 3
 EQI4 $297
-line 544
-;544:				continue;
+line 545
+;545:				continue;
 ADDRGP4 $288
 JUMPV
-line 546
-;545:			}
-;546:			break;
+line 547
+;546:			}
+;547:			break;
 LABELV $305
-line 549
-;547:
-;548:		case GAMES_TOURNEY:
-;549:			if( servernodeptr->gametype != GT_TOURNAMENT ) {
+line 550
+;548:
+;549:		case GAMES_TOURNEY:
+;550:			if( servernodeptr->gametype != GT_TOURNAMENT ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 232
@@ -1848,18 +1846,18 @@ ADDP4
 INDIRI4
 CNSTI4 1
 EQI4 $297
-line 550
-;550:				continue;
+line 551
+;551:				continue;
 ADDRGP4 $288
 JUMPV
-line 552
-;551:			}
-;552:			break;
+line 553
+;552:			}
+;553:			break;
 LABELV $308
-line 555
-;553:
-;554:		case GAMES_CTF:
-;555:			if( servernodeptr->gametype != GT_CTF ) {
+line 556
+;554:
+;555:		case GAMES_CTF:
+;556:			if( servernodeptr->gametype != GT_CTF ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 232
@@ -1867,18 +1865,18 @@ ADDP4
 INDIRI4
 CNSTI4 4
 EQI4 $297
-line 556
-;556:				continue;
+line 557
+;557:				continue;
 ADDRGP4 $288
 JUMPV
-line 558
-;557:			}
-;558:			break;
+line 559
+;558:			}
+;559:			break;
 LABELV $311
-line 561
-;559:		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
-;560:			 //strcmp(servernodeptr->gamename,"eternal") != 0
-;561:			if( servernodeptr->g_GameMode != 1 ) {
+line 562
+;560:		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
+;561:			 //strcmp(servernodeptr->gamename,"eternal") != 0
+;562:			if( servernodeptr->g_GameMode != 1 ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 264
@@ -1886,17 +1884,17 @@ ADDP4
 INDIRI4
 CNSTI4 1
 EQI4 $297
-line 562
-;562:					continue;
+line 563
+;563:					continue;
 ADDRGP4 $288
 JUMPV
-line 564
-;563:			}
-;564:			break;
+line 565
+;564:			}
+;565:			break;
 LABELV $314
-line 566
-;565:		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
-;566:			if( servernodeptr->g_GameMode != 2) {
+line 567
+;566:		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
+;567:			if( servernodeptr->g_GameMode != 2) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 264
@@ -1904,17 +1902,17 @@ ADDP4
 INDIRI4
 CNSTI4 2
 EQI4 $297
-line 567
-;567:				continue;
+line 568
+;568:				continue;
 ADDRGP4 $288
 JUMPV
-line 569
-;568:			}
-;569:			break;
+line 570
+;569:			}
+;570:			break;
 LABELV $317
-line 571
-;570:		case GAMES_TREPIDATION: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
-;571:			if( servernodeptr->g_GameMode != 3) {
+line 572
+;571:		case GAMES_TREPIDATION: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
+;572:			if( servernodeptr->g_GameMode != 3) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 264
@@ -1922,19 +1920,19 @@ ADDP4
 INDIRI4
 CNSTI4 3
 EQI4 $297
-line 572
-;572:				continue;
+line 573
+;573:				continue;
 ADDRGP4 $288
 JUMPV
-line 574
-;573:			}
-;574:			break;
+line 575
+;574:			}
+;575:			break;
 LABELV $296
 LABELV $297
-line 577
-;575:		}
-;576:
-;577:		if( servernodeptr->pingtime < servernodeptr->minPing ) {
+line 578
+;576:		}
+;577:
+;578:		if( servernodeptr->pingtime < servernodeptr->minPing ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 228
@@ -1946,18 +1944,18 @@ CNSTI4 252
 ADDP4
 INDIRI4
 GEI4 $321
-line 578
-;578:			pingColor = S_COLOR_BLUE;
+line 579
+;579:			pingColor = S_COLOR_BLUE;
 ADDRLP4 20
 ADDRGP4 $323
 ASGNP4
-line 579
-;579:		}
+line 580
+;580:		}
 ADDRGP4 $322
 JUMPV
 LABELV $321
-line 580
-;580:		else if( servernodeptr->maxPing && servernodeptr->pingtime > servernodeptr->maxPing ) {
+line 581
+;581:		else if( servernodeptr->maxPing && servernodeptr->pingtime > servernodeptr->maxPing ) {
 ADDRLP4 52
 ADDRLP4 0
 INDIRP4
@@ -1977,18 +1975,18 @@ INDIRI4
 ADDRLP4 52
 INDIRI4
 LEI4 $324
-line 581
-;581:			pingColor = S_COLOR_BLUE;
+line 582
+;582:			pingColor = S_COLOR_BLUE;
 ADDRLP4 20
 ADDRGP4 $323
 ASGNP4
-line 582
-;582:		}
+line 583
+;583:		}
 ADDRGP4 $325
 JUMPV
 LABELV $324
-line 583
-;583:		else if( servernodeptr->pingtime < 200 ) {
+line 584
+;584:		else if( servernodeptr->pingtime < 200 ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 228
@@ -1996,18 +1994,18 @@ ADDP4
 INDIRI4
 CNSTI4 200
 GEI4 $326
-line 584
-;584:			pingColor = S_COLOR_GREEN;
+line 585
+;585:			pingColor = S_COLOR_GREEN;
 ADDRLP4 20
 ADDRGP4 $328
 ASGNP4
-line 585
-;585:		}
+line 586
+;586:		}
 ADDRGP4 $327
 JUMPV
 LABELV $326
-line 586
-;586:		else if( servernodeptr->pingtime < 400 ) {
+line 587
+;587:		else if( servernodeptr->pingtime < 400 ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 228
@@ -2015,32 +2013,32 @@ ADDP4
 INDIRI4
 CNSTI4 400
 GEI4 $329
-line 587
-;587:			pingColor = S_COLOR_YELLOW;
+line 588
+;588:			pingColor = S_COLOR_YELLOW;
 ADDRLP4 20
 ADDRGP4 $331
 ASGNP4
-line 588
-;588:		}
+line 589
+;589:		}
 ADDRGP4 $330
 JUMPV
 LABELV $329
-line 589
-;589:		else {
 line 590
-;590:			pingColor = S_COLOR_RED;
+;590:		else {
+line 591
+;591:			pingColor = S_COLOR_RED;
 ADDRLP4 20
 ADDRGP4 $332
 ASGNP4
-line 591
-;591:		}
+line 592
+;592:		}
 LABELV $330
 LABELV $327
 LABELV $325
 LABELV $322
-line 593
-;592:
-;593:		if (servernodeptr->g_instagib == 1) 
+line 594
+;593:
+;594:		if (servernodeptr->g_instagib == 1) 
 ADDRLP4 0
 INDIRP4
 CNSTI4 260
@@ -2048,36 +2046,36 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $333
-line 594
-;594:		{	
 line 595
-;595:			servernodeptr->bPB = qtrue; 
+;595:		{	
+line 596
+;596:			servernodeptr->bPB = qtrue; 
 ADDRLP4 0
 INDIRP4
 CNSTI4 268
 ADDP4
 CNSTI4 1
 ASGNI4
-line 596
-;596:		} else {
+line 597
+;597:		} else {
 ADDRGP4 $334
 JUMPV
 LABELV $333
-line 597
-;597:			servernodeptr->bPB = qfalse;
+line 598
+;598:			servernodeptr->bPB = qfalse;
 ADDRLP4 0
 INDIRP4
 CNSTI4 268
 ADDP4
 CNSTI4 0
 ASGNI4
-line 598
-;598:		}
+line 599
+;599:		}
 LABELV $334
-line 601
-;599:
+line 602
 ;600:
-;601:		if ( servernodeptr->g_GameMode == 1) 
+;601:
+;602:		if ( servernodeptr->g_GameMode == 1) 
 ADDRLP4 0
 INDIRP4
 CNSTI4 264
@@ -2085,10 +2083,10 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $335
-line 602
-;602:		{
 line 603
-;603:			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
+;603:		{
+line 604
+;604:			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
 ADDRLP4 16
 INDIRP4
 ARGP4
@@ -2163,18 +2161,18 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 607
-;604:			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,
-;605: 			servernodeptr->maxclients, "arsenal",
-;606:			netnames[servernodeptr->nettype], pingColor, servernodeptr->pingtime, servernodeptr->bPB ? "Yes" : "No" );
-;607:		} else
+line 608
+;605:			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,
+;606: 			servernodeptr->maxclients, "arsenal",
+;607:			netnames[servernodeptr->nettype], pingColor, servernodeptr->pingtime, servernodeptr->bPB ? "Yes" : "No" );
+;608:		} else
 ADDRGP4 $336
 JUMPV
 LABELV $335
-line 608
-;608:		{
 line 609
-;609:			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
+;609:		{
+line 610
+;610:			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
 ADDRLP4 16
 INDIRP4
 ARGP4
@@ -2252,25 +2250,25 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 613
-;610:			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,
-;611: 			servernodeptr->maxclients, servernodeptr->gamename,
-;612:			netnames[servernodeptr->nettype], pingColor, servernodeptr->pingtime, servernodeptr->bPB ? "Yes" : "No" );
-;613:		}
+line 614
+;611:			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,
+;612: 			servernodeptr->maxclients, servernodeptr->gamename,
+;613:			netnames[servernodeptr->nettype], pingColor, servernodeptr->pingtime, servernodeptr->bPB ? "Yes" : "No" );
+;614:		}
 LABELV $336
-line 615
-;614:		
-;615:		j++;
+line 616
+;615:		
+;616:		j++;
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 616
-;616:	}
+line 617
+;617:	}
 LABELV $288
-line 518
+line 519
 ADDRLP4 12
 ADDRLP4 12
 INDIRI4
@@ -2289,67 +2287,67 @@ INDIRI4
 ADDRLP4 24
 INDIRI4
 LTI4 $287
-line 618
-;617:
-;618:	g_arenaservers.list.numitems = j;
+line 619
+;618:
+;619:	g_arenaservers.list.numitems = j;
 ADDRGP4 g_arenaservers+872+68
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 619
-;619:	g_arenaservers.list.curvalue = 0;
+line 620
+;620:	g_arenaservers.list.curvalue = 0;
 ADDRGP4 g_arenaservers+872+64
 CNSTI4 0
 ASGNI4
-line 620
-;620:	g_arenaservers.list.top      = 0;
+line 621
+;621:	g_arenaservers.list.top      = 0;
 ADDRGP4 g_arenaservers+872+72
 CNSTI4 0
 ASGNI4
-line 623
-;621:
-;622:	// update picture
-;623:	ArenaServers_UpdatePicture();
+line 624
+;622:
+;623:	// update picture
+;624:	ArenaServers_UpdatePicture();
 ADDRGP4 ArenaServers_UpdatePicture
 CALLV
 pop
-line 624
-;624:}
+line 625
+;625:}
 LABELV $168
 endproc ArenaServers_UpdateMenu 72 48
 proc ArenaServers_Remove 24 12
-line 633
-;625:
+line 634
 ;626:
-;627:/*
-;628:=================
-;629:ArenaServers_Remove
-;630:=================
-;631:*/
-;632:static void ArenaServers_Remove( void )
-;633:{
-line 638
-;634:	int				i;
-;635:	servernode_t*	servernodeptr;
-;636:	table_t*		tableptr;
-;637:
-;638:	if (!g_arenaservers.list.numitems)
+;627:
+;628:/*
+;629:=================
+;630:ArenaServers_Remove
+;631:=================
+;632:*/
+;633:static void ArenaServers_Remove( void )
+;634:{
+line 639
+;635:	int				i;
+;636:	servernode_t*	servernodeptr;
+;637:	table_t*		tableptr;
+;638:
+;639:	if (!g_arenaservers.list.numitems)
 ADDRGP4 g_arenaservers+872+68
 INDIRI4
 CNSTI4 0
 NEI4 $354
-line 639
-;639:		return;
+line 640
+;640:		return;
 ADDRGP4 $353
 JUMPV
 LABELV $354
-line 645
-;640:
-;641:	// remove selected item from display list
-;642:	// items are in scattered order due to sort and cull
-;643:	// perform delete on list box contents, resync all lists
-;644:
-;645:	tableptr      = &g_arenaservers.table[g_arenaservers.list.curvalue];
+line 646
+;641:
+;642:	// remove selected item from display list
+;643:	// items are in scattered order due to sort and cull
+;644:	// perform delete on list box contents, resync all lists
+;645:
+;646:	tableptr      = &g_arenaservers.table[g_arenaservers.list.curvalue];
 ADDRLP4 8
 CNSTI4 72
 ADDRGP4 g_arenaservers+872+64
@@ -2358,8 +2356,8 @@ MULI4
 ADDRGP4 g_arenaservers+4168
 ADDP4
 ASGNP4
-line 646
-;646:	servernodeptr = tableptr->servernode;
+line 647
+;647:	servernodeptr = tableptr->servernode;
 ADDRLP4 4
 ADDRLP4 8
 INDIRP4
@@ -2367,18 +2365,18 @@ CNSTI4 68
 ADDP4
 INDIRP4
 ASGNP4
-line 649
-;647:
-;648:	// find address in master list
-;649:	for (i=0; i<g_arenaservers.numfavoriteaddresses; i++)
+line 650
+;648:
+;649:	// find address in master list
+;650:	for (i=0; i<g_arenaservers.numfavoriteaddresses; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $364
 JUMPV
 LABELV $361
-line 650
-;650:		if (!Q_stricmp(g_arenaservers.favoriteaddresses[i],servernodeptr->adrstr))
+line 651
+;651:		if (!Q_stricmp(g_arenaservers.favoriteaddresses[i],servernodeptr->adrstr))
 ADDRLP4 0
 INDIRI4
 CNSTI4 6
@@ -2397,13 +2395,13 @@ ADDRLP4 12
 INDIRI4
 CNSTI4 0
 NEI4 $366
-line 651
-;651:				break;
+line 652
+;652:				break;
 ADDRGP4 $363
 JUMPV
 LABELV $366
 LABELV $362
-line 649
+line 650
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -2417,10 +2415,10 @@ ADDRGP4 g_arenaservers+14952
 INDIRI4
 LTI4 $361
 LABELV $363
-line 654
-;652:
-;653:	// delete address from master list
-;654:	if (i <= g_arenaservers.numfavoriteaddresses-1)
+line 655
+;653:
+;654:	// delete address from master list
+;655:	if (i <= g_arenaservers.numfavoriteaddresses-1)
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_arenaservers+14952
@@ -2428,10 +2426,10 @@ INDIRI4
 CNSTI4 1
 SUBI4
 GTI4 $369
-line 655
-;655:	{
 line 656
-;656:		if (i < g_arenaservers.numfavoriteaddresses-1)
+;656:	{
+line 657
+;657:		if (i < g_arenaservers.numfavoriteaddresses-1)
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_arenaservers+14952
@@ -2439,11 +2437,11 @@ INDIRI4
 CNSTI4 1
 SUBI4
 GEI4 $372
-line 657
-;657:		{
-line 659
-;658:			// shift items up
-;659:			memcpy( &g_arenaservers.favoriteaddresses[i], &g_arenaservers.favoriteaddresses[i+1], (g_arenaservers.numfavoriteaddresses - i - 1)*sizeof(MAX_ADDRESSLENGTH));
+line 658
+;658:		{
+line 660
+;659:			// shift items up
+;660:			memcpy( &g_arenaservers.favoriteaddresses[i], &g_arenaservers.favoriteaddresses[i+1], (g_arenaservers.numfavoriteaddresses - i - 1)*sizeof(MAX_ADDRESSLENGTH));
 ADDRLP4 20
 ADDRLP4 0
 INDIRI4
@@ -2475,11 +2473,11 @@ ARGI4
 ADDRGP4 memcpy
 CALLP4
 pop
-line 660
-;660:		}
-LABELV $372
 line 661
-;661:		g_arenaservers.numfavoriteaddresses--;
+;661:		}
+LABELV $372
+line 662
+;662:		g_arenaservers.numfavoriteaddresses--;
 ADDRLP4 16
 ADDRGP4 g_arenaservers+14952
 ASGNP4
@@ -2491,21 +2489,21 @@ INDIRI4
 CNSTI4 1
 SUBI4
 ASGNI4
-line 662
-;662:	}	
+line 663
+;663:	}	
 LABELV $369
-line 665
-;663:
-;664:	// find address in server list
-;665:	for (i=0; i<g_numfavoriteservers; i++)
+line 666
+;664:
+;665:	// find address in server list
+;666:	for (i=0; i<g_numfavoriteservers; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $383
 JUMPV
 LABELV $380
-line 666
-;666:		if (&g_favoriteserverlist[i] == servernodeptr)
+line 667
+;667:		if (&g_favoriteserverlist[i] == servernodeptr)
 CNSTI4 272
 ADDRLP4 0
 INDIRI4
@@ -2517,13 +2515,13 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 NEU4 $384
-line 667
-;667:				break;
+line 668
+;668:				break;
 ADDRGP4 $382
 JUMPV
 LABELV $384
 LABELV $381
-line 665
+line 666
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -2537,10 +2535,10 @@ ADDRGP4 g_numfavoriteservers
 INDIRI4
 LTI4 $380
 LABELV $382
-line 670
-;668:
-;669:	// delete address from server list
-;670:	if (i <= g_numfavoriteservers-1)
+line 671
+;669:
+;670:	// delete address from server list
+;671:	if (i <= g_numfavoriteservers-1)
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_numfavoriteservers
@@ -2548,10 +2546,10 @@ INDIRI4
 CNSTI4 1
 SUBI4
 GTI4 $386
-line 671
-;671:	{
 line 672
-;672:		if (i < g_numfavoriteservers-1)
+;672:	{
+line 673
+;673:		if (i < g_numfavoriteservers-1)
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_numfavoriteservers
@@ -2559,11 +2557,11 @@ INDIRI4
 CNSTI4 1
 SUBI4
 GEI4 $388
-line 673
-;673:		{
-line 675
-;674:			// shift items up
-;675:			memcpy( &g_favoriteserverlist[i], &g_favoriteserverlist[i+1], (g_numfavoriteservers - i - 1)*sizeof(servernode_t));
+line 674
+;674:		{
+line 676
+;675:			// shift items up
+;676:			memcpy( &g_favoriteserverlist[i], &g_favoriteserverlist[i+1], (g_numfavoriteservers - i - 1)*sizeof(servernode_t));
 ADDRLP4 20
 CNSTI4 272
 ADDRLP4 0
@@ -2595,11 +2593,11 @@ ARGI4
 ADDRGP4 memcpy
 CALLP4
 pop
-line 676
-;676:		}
-LABELV $388
 line 677
-;677:		g_numfavoriteservers--;
+;677:		}
+LABELV $388
+line 678
+;678:		g_numfavoriteservers--;
 ADDRLP4 16
 ADDRGP4 g_numfavoriteservers
 ASGNP4
@@ -2611,44 +2609,44 @@ INDIRI4
 CNSTI4 1
 SUBI4
 ASGNI4
-line 678
-;678:	}	
+line 679
+;679:	}	
 LABELV $386
-line 680
-;679:
-;680:	g_arenaservers.numqueriedservers = g_arenaservers.numfavoriteaddresses;
+line 681
+;680:
+;681:	g_arenaservers.numqueriedservers = g_arenaservers.numfavoriteaddresses;
 ADDRGP4 g_arenaservers+13896
 ADDRGP4 g_arenaservers+14952
 INDIRI4
 ASGNI4
-line 681
-;681:	g_arenaservers.currentping       = g_arenaservers.numfavoriteaddresses;
+line 682
+;682:	g_arenaservers.currentping       = g_arenaservers.numfavoriteaddresses;
 ADDRGP4 g_arenaservers+13908
 ADDRGP4 g_arenaservers+14952
 INDIRI4
 ASGNI4
-line 682
-;682:}
+line 683
+;683:}
 LABELV $353
 endproc ArenaServers_Remove 24 12
 proc ArenaServers_Insert 100 12
-line 691
-;683:
+line 692
 ;684:
-;685:/*
-;686:=================
-;687:ArenaServers_Insert
-;688:=================
-;689:*/
-;690:static void ArenaServers_Insert( char* adrstr, char* info, int pingtime )
-;691:{
-line 697
-;692:	servernode_t*	servernodeptr;
-;693:	char*			s;
-;694:	int				i;
-;695:
+;685:
+;686:/*
+;687:=================
+;688:ArenaServers_Insert
+;689:=================
+;690:*/
+;691:static void ArenaServers_Insert( char* adrstr, char* info, int pingtime )
+;692:{
+line 698
+;693:	servernode_t*	servernodeptr;
+;694:	char*			s;
+;695:	int				i;
 ;696:
-;697:	if ((pingtime >= ArenaServers_MaxPing()) && (g_servertype != AS_FAVORITES))
+;697:
+;698:	if ((pingtime >= ArenaServers_MaxPing()) && (g_servertype != AS_FAVORITES))
 ADDRLP4 12
 ADDRGP4 ArenaServers_MaxPing
 CALLI4
@@ -2662,27 +2660,27 @@ ADDRGP4 g_servertype
 INDIRI4
 CNSTI4 3
 EQI4 $396
-line 698
-;698:	{
-line 700
-;699:		// slow global or local servers do not get entered
-;700:		return;
+line 699
+;699:	{
+line 701
+;700:		// slow global or local servers do not get entered
+;701:		return;
 ADDRGP4 $395
 JUMPV
 LABELV $396
-line 703
-;701:	}
-;702:
-;703:	if (*g_arenaservers.numservers >= g_arenaservers.maxservers) {
+line 704
+;702:	}
+;703:
+;704:	if (*g_arenaservers.numservers >= g_arenaservers.maxservers) {
 ADDRGP4 g_arenaservers+13900
 INDIRP4
 INDIRI4
 ADDRGP4 g_arenaservers+13920
 INDIRI4
 LTI4 $398
-line 705
-;704:		// list full;
-;705:		servernodeptr = g_arenaservers.serverlist+(*g_arenaservers.numservers)-1;
+line 706
+;705:		// list full;
+;706:		servernodeptr = g_arenaservers.serverlist+(*g_arenaservers.numservers)-1;
 ADDRLP4 0
 CNSTI4 272
 ADDRGP4 g_arenaservers+13900
@@ -2695,14 +2693,14 @@ ADDP4
 CNSTI4 -272
 ADDP4
 ASGNP4
-line 706
-;706:	} else {
+line 707
+;707:	} else {
 ADDRGP4 $399
 JUMPV
 LABELV $398
-line 708
-;707:		// next slot
-;708:		servernodeptr = g_arenaservers.serverlist+(*g_arenaservers.numservers);
+line 709
+;708:		// next slot
+;709:		servernodeptr = g_arenaservers.serverlist+(*g_arenaservers.numservers);
 ADDRLP4 0
 CNSTI4 272
 ADDRGP4 g_arenaservers+13900
@@ -2713,8 +2711,8 @@ ADDRGP4 g_arenaservers+13904
 INDIRP4
 ADDP4
 ASGNP4
-line 709
-;709:		(*g_arenaservers.numservers)++;
+line 710
+;710:		(*g_arenaservers.numservers)++;
 ADDRLP4 16
 ADDRGP4 g_arenaservers+13900
 INDIRP4
@@ -2727,12 +2725,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 710
-;710:	}
+line 711
+;711:	}
 LABELV $399
-line 712
-;711:
-;712:	Q_strncpyz( servernodeptr->adrstr, adrstr, MAX_ADDRESSLENGTH );
+line 713
+;712:
+;713:	Q_strncpyz( servernodeptr->adrstr, adrstr, MAX_ADDRESSLENGTH );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -2744,9 +2742,9 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 714
-;713:
-;714:	Q_strncpyz( servernodeptr->hostname, Info_ValueForKey( info, "hostname"), MAX_HOSTNAMELENGTH );
+line 715
+;714:
+;715:	Q_strncpyz( servernodeptr->hostname, Info_ValueForKey( info, "hostname"), MAX_HOSTNAMELENGTH );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -2769,8 +2767,8 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 715
-;715:	Q_CleanStr( servernodeptr->hostname );
+line 716
+;716:	Q_CleanStr( servernodeptr->hostname );
 ADDRLP4 0
 INDIRP4
 CNSTI4 64
@@ -2779,8 +2777,8 @@ ARGP4
 ADDRGP4 Q_CleanStr
 CALLP4
 pop
-line 716
-;716:	Q_strupr( servernodeptr->hostname );
+line 717
+;717:	Q_strupr( servernodeptr->hostname );
 ADDRLP4 0
 INDIRP4
 CNSTI4 64
@@ -2789,9 +2787,9 @@ ARGP4
 ADDRGP4 Q_strupr
 CALLP4
 pop
-line 718
-;717:
-;718:	Q_strncpyz( servernodeptr->mapname, Info_ValueForKey( info, "mapname"), MAX_MAPNAMELENGTH );
+line 719
+;718:
+;719:	Q_strncpyz( servernodeptr->mapname, Info_ValueForKey( info, "mapname"), MAX_MAPNAMELENGTH );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -2814,8 +2812,8 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 719
-;719:	Q_CleanStr( servernodeptr->mapname );
+line 720
+;720:	Q_CleanStr( servernodeptr->mapname );
 ADDRLP4 0
 INDIRP4
 CNSTI4 89
@@ -2824,8 +2822,8 @@ ARGP4
 ADDRGP4 Q_CleanStr
 CALLP4
 pop
-line 720
-;720:	Q_strupr( servernodeptr->mapname );
+line 721
+;721:	Q_strupr( servernodeptr->mapname );
 ADDRLP4 0
 INDIRP4
 CNSTI4 89
@@ -2834,9 +2832,9 @@ ARGP4
 ADDRGP4 Q_strupr
 CALLP4
 pop
-line 722
-;721:
-;722:	servernodeptr->numclients = atoi( Info_ValueForKey( info, "clients") );
+line 723
+;722:
+;723:	servernodeptr->numclients = atoi( Info_ValueForKey( info, "clients") );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -2860,8 +2858,8 @@ ADDP4
 ADDRLP4 28
 INDIRI4
 ASGNI4
-line 723
-;723:	servernodeptr->maxclients = atoi( Info_ValueForKey( info, "sv_maxclients") );
+line 724
+;724:	servernodeptr->maxclients = atoi( Info_ValueForKey( info, "sv_maxclients") );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -2885,8 +2883,8 @@ ADDP4
 ADDRLP4 36
 INDIRI4
 ASGNI4
-line 724
-;724:	servernodeptr->pingtime   = pingtime;
+line 725
+;725:	servernodeptr->pingtime   = pingtime;
 ADDRLP4 0
 INDIRP4
 CNSTI4 228
@@ -2894,8 +2892,8 @@ ADDP4
 ADDRFP4 8
 INDIRI4
 ASGNI4
-line 725
-;725:	servernodeptr->minPing    = atoi( Info_ValueForKey( info, "minPing") );
+line 726
+;726:	servernodeptr->minPing    = atoi( Info_ValueForKey( info, "minPing") );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -2919,8 +2917,8 @@ ADDP4
 ADDRLP4 44
 INDIRI4
 ASGNI4
-line 726
-;726:	servernodeptr->maxPing    = atoi( Info_ValueForKey( info, "maxPing") );
+line 727
+;727:	servernodeptr->maxPing    = atoi( Info_ValueForKey( info, "maxPing") );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -2944,8 +2942,8 @@ ADDP4
 ADDRLP4 52
 INDIRI4
 ASGNI4
-line 727
-;727:	servernodeptr->bPB = atoi( Info_ValueForKey( info, "g_instagib") );
+line 728
+;728:	servernodeptr->bPB = atoi( Info_ValueForKey( info, "g_instagib") );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -2969,8 +2967,8 @@ ADDP4
 ADDRLP4 60
 INDIRI4
 ASGNI4
-line 728
-;728:	servernodeptr->g_GameMode = atoi( Info_ValueForKey( info, "g_GameMode") );
+line 729
+;729:	servernodeptr->g_GameMode = atoi( Info_ValueForKey( info, "g_GameMode") );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -2994,8 +2992,8 @@ ADDP4
 ADDRLP4 68
 INDIRI4
 ASGNI4
-line 729
-;729:	servernodeptr->g_instagib = atoi( Info_ValueForKey( info, "g_instagib") );
+line 730
+;730:	servernodeptr->g_instagib = atoi( Info_ValueForKey( info, "g_instagib") );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -3019,25 +3017,25 @@ ADDP4
 ADDRLP4 76
 INDIRI4
 ASGNI4
-line 747
-;730:
-;731:	/*
-;732:	s = Info_ValueForKey( info, "nettype" );
-;733:	for (i=0; ;i++)
-;734:	{
-;735:		if (!netnames[i])
-;736:		{
-;737:			servernodeptr->nettype = 0;
-;738:			break;
-;739:		}
-;740:		else if (!Q_stricmp( netnames[i], s ))
-;741:		{
-;742:			servernodeptr->nettype = i;
-;743:			break;
-;744:		}
-;745:	}
-;746:	*/
-;747:	servernodeptr->nettype = atoi(Info_ValueForKey(info, "nettype"));
+line 748
+;731:
+;732:	/*
+;733:	s = Info_ValueForKey( info, "nettype" );
+;734:	for (i=0; ;i++)
+;735:	{
+;736:		if (!netnames[i])
+;737:		{
+;738:			servernodeptr->nettype = 0;
+;739:			break;
+;740:		}
+;741:		else if (!Q_stricmp( netnames[i], s ))
+;742:		{
+;743:			servernodeptr->nettype = i;
+;744:			break;
+;745:		}
+;746:	}
+;747:	*/
+;748:	servernodeptr->nettype = atoi(Info_ValueForKey(info, "nettype"));
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -3061,9 +3059,9 @@ ADDP4
 ADDRLP4 84
 INDIRI4
 ASGNI4
-line 749
-;748:
-;749:	s = Info_ValueForKey( info, "game");
+line 750
+;749:
+;750:	s = Info_ValueForKey( info, "game");
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -3077,8 +3075,8 @@ ADDRLP4 8
 ADDRLP4 88
 INDIRP4
 ASGNP4
-line 750
-;750:	i = atoi( Info_ValueForKey( info, "gametype") );
+line 751
+;751:	i = atoi( Info_ValueForKey( info, "gametype") );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -3099,47 +3097,47 @@ ADDRLP4 4
 ADDRLP4 96
 INDIRI4
 ASGNI4
-line 751
-;751:	if( i < 0 ) {
+line 752
+;752:	if( i < 0 ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 GEI4 $418
-line 752
-;752:		i = 0;
+line 753
+;753:		i = 0;
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
-line 753
-;753:	}
+line 754
+;754:	}
 ADDRGP4 $419
 JUMPV
 LABELV $418
-line 754
-;754:	else if( i > 11 ) {
+line 755
+;755:	else if( i > 11 ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 11
 LEI4 $420
-line 755
-;755:		i = 12;
+line 756
+;756:		i = 12;
 ADDRLP4 4
 CNSTI4 12
 ASGNI4
-line 756
-;756:	}
+line 757
+;757:	}
 LABELV $420
 LABELV $419
-line 757
-;757:	if( *s ) {
+line 758
+;758:	if( *s ) {
 ADDRLP4 8
 INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 0
 EQI4 $422
-line 758
-;758:		servernodeptr->gametype = i;//-1;
+line 759
+;759:		servernodeptr->gametype = i;//-1;
 ADDRLP4 0
 INDIRP4
 CNSTI4 232
@@ -3147,8 +3145,8 @@ ADDP4
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 759
-;759:		Q_strncpyz( servernodeptr->gamename, s, sizeof(servernodeptr->gamename) );
+line 760
+;760:		Q_strncpyz( servernodeptr->gamename, s, sizeof(servernodeptr->gamename) );
 ADDRLP4 0
 INDIRP4
 CNSTI4 236
@@ -3162,15 +3160,15 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 760
-;760:	}
+line 761
+;761:	}
 ADDRGP4 $423
 JUMPV
 LABELV $422
-line 761
-;761:	else {
 line 762
-;762:		servernodeptr->gametype = i;
+;762:	else {
+line 763
+;763:		servernodeptr->gametype = i;
 ADDRLP4 0
 INDIRP4
 CNSTI4 232
@@ -3178,8 +3176,8 @@ ADDP4
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 763
-;763:		Q_strncpyz( servernodeptr->gamename, gamenames[i], sizeof(servernodeptr->gamename) );
+line 764
+;764:		Q_strncpyz( servernodeptr->gamename, gamenames[i], sizeof(servernodeptr->gamename) );
 ADDRLP4 0
 INDIRP4
 CNSTI4 236
@@ -3198,39 +3196,39 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 764
-;764:	}
-LABELV $423
 line 765
-;765:}
+;765:	}
+LABELV $423
+line 766
+;766:}
 LABELV $395
 endproc ArenaServers_Insert 100 12
 export ArenaServers_InsertFavorites
 proc ArenaServers_InsertFavorites 1040 12
-line 776
-;766:
+line 777
 ;767:
-;768:/*
-;769:=================
-;770:ArenaServers_InsertFavorites
-;771:
-;772:Insert nonresponsive address book entries into display lists.
-;773:=================
-;774:*/
-;775:void ArenaServers_InsertFavorites( void )
-;776:{
-line 782
-;777:	int		i;
-;778:	int		j;
-;779:	char	info[MAX_INFO_STRING];
-;780:
-;781:	// resync existing results with new or deleted cvars
-;782:	info[0] = '\0';
+;768:
+;769:/*
+;770:=================
+;771:ArenaServers_InsertFavorites
+;772:
+;773:Insert nonresponsive address book entries into display lists.
+;774:=================
+;775:*/
+;776:void ArenaServers_InsertFavorites( void )
+;777:{
+line 783
+;778:	int		i;
+;779:	int		j;
+;780:	char	info[MAX_INFO_STRING];
+;781:
+;782:	// resync existing results with new or deleted cvars
+;783:	info[0] = '\0';
 ADDRLP4 8
 CNSTI1 0
 ASGNI1
-line 783
-;783:	Info_SetValueForKey( info, "hostname", "No Response" );
+line 784
+;784:	Info_SetValueForKey( info, "hostname", "No Response" );
 ADDRLP4 8
 ARGP4
 ADDRGP4 $407
@@ -3240,27 +3238,27 @@ ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 784
-;784:	for (i=0; i<g_arenaservers.numfavoriteaddresses; i++)
+line 785
+;785:	for (i=0; i<g_arenaservers.numfavoriteaddresses; i++)
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
 ADDRGP4 $429
 JUMPV
 LABELV $426
-line 785
-;785:	{
-line 787
-;786:		// find favorite address in refresh list
-;787:		for (j=0; j<g_numfavoriteservers; j++)
+line 786
+;786:	{
+line 788
+;787:		// find favorite address in refresh list
+;788:		for (j=0; j<g_numfavoriteservers; j++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $434
 JUMPV
 LABELV $431
-line 788
-;788:			if (!Q_stricmp(g_arenaservers.favoriteaddresses[i],g_favoriteserverlist[j].adrstr))
+line 789
+;789:			if (!Q_stricmp(g_arenaservers.favoriteaddresses[i],g_favoriteserverlist[j].adrstr))
 ADDRLP4 4
 INDIRI4
 CNSTI4 6
@@ -3283,13 +3281,13 @@ ADDRLP4 1032
 INDIRI4
 CNSTI4 0
 NEI4 $435
-line 789
-;789:				break;
+line 790
+;790:				break;
 ADDRGP4 $433
 JUMPV
 LABELV $435
 LABELV $432
-line 787
+line 788
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -3303,19 +3301,19 @@ ADDRGP4 g_numfavoriteservers
 INDIRI4
 LTI4 $431
 LABELV $433
-line 791
-;790:
-;791:		if ( j >= g_numfavoriteservers)
+line 792
+;791:
+;792:		if ( j >= g_numfavoriteservers)
 ADDRLP4 0
 INDIRI4
 ADDRGP4 g_numfavoriteservers
 INDIRI4
 LTI4 $438
-line 792
-;792:		{
-line 794
-;793:			// not in list, add it
-;794:			ArenaServers_Insert( g_arenaservers.favoriteaddresses[i], info, ArenaServers_MaxPing() );
+line 793
+;793:		{
+line 795
+;794:			// not in list, add it
+;795:			ArenaServers_Insert( g_arenaservers.favoriteaddresses[i], info, ArenaServers_MaxPing() );
 ADDRLP4 1036
 ADDRGP4 ArenaServers_MaxPing
 CALLI4
@@ -3335,13 +3333,13 @@ ARGI4
 ADDRGP4 ArenaServers_Insert
 CALLV
 pop
-line 795
-;795:		}
-LABELV $438
 line 796
-;796:	}
+;796:		}
+LABELV $438
+line 797
+;797:	}
 LABELV $427
-line 784
+line 785
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -3354,46 +3352,46 @@ INDIRI4
 ADDRGP4 g_arenaservers+14952
 INDIRI4
 LTI4 $426
-line 797
-;797:}
+line 798
+;798:}
 LABELV $424
 endproc ArenaServers_InsertFavorites 1040 12
 export ArenaServers_LoadFavorites
 proc ArenaServers_LoadFavorites 5472 12
-line 808
-;798:
+line 809
 ;799:
-;800:/*
-;801:=================
-;802:ArenaServers_LoadFavorites
-;803:
-;804:Load cvar address book entries into local lists.
-;805:=================
-;806:*/
-;807:void ArenaServers_LoadFavorites( void )
-;808:{
-line 817
-;809:	int				i;
-;810:	int				j;
-;811:	int				numtempitems;
-;812:	char			emptyinfo[MAX_INFO_STRING];
-;813:	char			adrstr[MAX_ADDRESSLENGTH];
-;814:	servernode_t	templist[MAX_FAVORITESERVERS];
-;815:	qboolean		found;
-;816:
-;817:	found        = qfalse;
+;800:
+;801:/*
+;802:=================
+;803:ArenaServers_LoadFavorites
+;804:
+;805:Load cvar address book entries into local lists.
+;806:=================
+;807:*/
+;808:void ArenaServers_LoadFavorites( void )
+;809:{
+line 818
+;810:	int				i;
+;811:	int				j;
+;812:	int				numtempitems;
+;813:	char			emptyinfo[MAX_INFO_STRING];
+;814:	char			adrstr[MAX_ADDRESSLENGTH];
+;815:	servernode_t	templist[MAX_FAVORITESERVERS];
+;816:	qboolean		found;
+;817:
+;818:	found        = qfalse;
 ADDRLP4 4428
 CNSTI4 0
 ASGNI4
-line 818
-;818:	emptyinfo[0] = '\0';
+line 819
+;819:	emptyinfo[0] = '\0';
 ADDRLP4 4432
 CNSTI1 0
 ASGNI1
-line 821
-;819:
-;820:	// copy the old
-;821:	memcpy( templist, g_favoriteserverlist, sizeof(servernode_t)*MAX_FAVORITESERVERS );
+line 822
+;820:
+;821:	// copy the old
+;822:	memcpy( templist, g_favoriteserverlist, sizeof(servernode_t)*MAX_FAVORITESERVERS );
 ADDRLP4 72
 ARGP4
 ADDRGP4 g_favoriteserverlist
@@ -3403,16 +3401,16 @@ ARGI4
 ADDRGP4 memcpy
 CALLP4
 pop
-line 822
-;822:	numtempitems = g_numfavoriteservers;
+line 823
+;823:	numtempitems = g_numfavoriteservers;
 ADDRLP4 68
 ADDRGP4 g_numfavoriteservers
 INDIRI4
 ASGNI4
-line 825
-;823:
-;824:	// clear the current for sync
-;825:	memset( g_favoriteserverlist, 0, sizeof(servernode_t)*MAX_FAVORITESERVERS );
+line 826
+;824:
+;825:	// clear the current for sync
+;826:	memset( g_favoriteserverlist, 0, sizeof(servernode_t)*MAX_FAVORITESERVERS );
 ADDRGP4 g_favoriteserverlist
 ARGP4
 CNSTI4 0
@@ -3422,23 +3420,23 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 826
-;826:	g_numfavoriteservers = 0;
+line 827
+;827:	g_numfavoriteservers = 0;
 ADDRGP4 g_numfavoriteservers
 CNSTI4 0
 ASGNI4
-line 829
-;827:
-;828:	// resync existing results with new or deleted cvars
-;829:	for (i=0; i<MAX_FAVORITESERVERS; i++)
+line 830
+;828:
+;829:	// resync existing results with new or deleted cvars
+;830:	for (i=0; i<MAX_FAVORITESERVERS; i++)
 ADDRLP4 4424
 CNSTI4 0
 ASGNI4
 LABELV $442
-line 830
-;830:	{
 line 831
-;831:		trap_Cvar_VariableStringBuffer( va("server%d",i+1), adrstr, MAX_ADDRESSLENGTH );
+;831:	{
+line 832
+;832:		trap_Cvar_VariableStringBuffer( va("server%d",i+1), adrstr, MAX_ADDRESSLENGTH );
 ADDRGP4 $446
 ARGP4
 ADDRLP4 4424
@@ -3460,23 +3458,23 @@ ARGI4
 ADDRGP4 trap_Cvar_VariableStringBuffer
 CALLV
 pop
-line 832
-;832:		if (!adrstr[0])
+line 833
+;833:		if (!adrstr[0])
 ADDRLP4 4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $447
-line 833
-;833:			continue;
+line 834
+;834:			continue;
 ADDRGP4 $443
 JUMPV
 LABELV $447
-line 837
-;834:
-;835:		// quick sanity check to avoid slow domain name resolving
-;836:		// first character must be numeric
-;837:		if (adrstr[0] < '0' || adrstr[0] > '9')
+line 838
+;835:
+;836:		// quick sanity check to avoid slow domain name resolving
+;837:		// first character must be numeric
+;838:		if (adrstr[0] < '0' || adrstr[0] > '9')
 ADDRLP4 5460
 ADDRLP4 4
 INDIRI1
@@ -3491,17 +3489,17 @@ INDIRI4
 CNSTI4 57
 LEI4 $449
 LABELV $451
-line 838
-;838:			continue;
+line 839
+;839:			continue;
 ADDRGP4 $443
 JUMPV
 LABELV $449
-line 843
-;839:
-;840:		// favorite server addresses must be maintained outside refresh list
-;841:		// this mimics local and global netadr's stored in client
-;842:		// these can be fetched to fill ping list
-;843:		strcpy( g_arenaservers.favoriteaddresses[g_numfavoriteservers], adrstr );
+line 844
+;840:
+;841:		// favorite server addresses must be maintained outside refresh list
+;842:		// this mimics local and global netadr's stored in client
+;843:		// these can be fetched to fill ping list
+;844:		strcpy( g_arenaservers.favoriteaddresses[g_numfavoriteservers], adrstr );
 ADDRGP4 g_numfavoriteservers
 INDIRI4
 CNSTI4 6
@@ -3514,18 +3512,18 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 846
-;844:
-;845:		// find this server in the old list
-;846:		for (j=0; j<numtempitems; j++)
+line 847
+;845:
+;846:		// find this server in the old list
+;847:		for (j=0; j<numtempitems; j++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $456
 JUMPV
 LABELV $453
-line 847
-;847:			if (!Q_stricmp( templist[j].adrstr, adrstr ))
+line 848
+;848:			if (!Q_stricmp( templist[j].adrstr, adrstr ))
 CNSTI4 272
 ADDRLP4 0
 INDIRI4
@@ -3543,13 +3541,13 @@ ADDRLP4 5464
 INDIRI4
 CNSTI4 0
 NEI4 $457
-line 848
-;848:				break;
+line 849
+;849:				break;
 ADDRGP4 $455
 JUMPV
 LABELV $457
 LABELV $454
-line 846
+line 847
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -3563,19 +3561,19 @@ ADDRLP4 68
 INDIRI4
 LTI4 $453
 LABELV $455
-line 850
-;849:
-;850:		if (j < numtempitems)
+line 851
+;850:
+;851:		if (j < numtempitems)
 ADDRLP4 0
 INDIRI4
 ADDRLP4 68
 INDIRI4
 GEI4 $459
-line 851
-;851:		{
-line 853
-;852:			// found server - add exisiting results
-;853:			memcpy( &g_favoriteserverlist[g_numfavoriteservers], &templist[j], sizeof(servernode_t) );
+line 852
+;852:		{
+line 854
+;853:			// found server - add exisiting results
+;854:			memcpy( &g_favoriteserverlist[g_numfavoriteservers], &templist[j], sizeof(servernode_t) );
 ADDRLP4 5468
 CNSTI4 272
 ASGNI4
@@ -3601,22 +3599,22 @@ ARGI4
 ADDRGP4 memcpy
 CALLP4
 pop
-line 854
-;854:			found = qtrue;
+line 855
+;855:			found = qtrue;
 ADDRLP4 4428
 CNSTI4 1
 ASGNI4
-line 855
-;855:		}
+line 856
+;856:		}
 ADDRGP4 $460
 JUMPV
 LABELV $459
-line 857
-;856:		else
-;857:		{
-line 859
-;858:			// add new server
-;859:			Q_strncpyz( g_favoriteserverlist[g_numfavoriteservers].adrstr, adrstr, MAX_ADDRESSLENGTH );
+line 858
+;857:		else
+;858:		{
+line 860
+;859:			// add new server
+;860:			Q_strncpyz( g_favoriteserverlist[g_numfavoriteservers].adrstr, adrstr, MAX_ADDRESSLENGTH );
 CNSTI4 272
 ADDRGP4 g_numfavoriteservers
 INDIRI4
@@ -3631,8 +3629,8 @@ ARGI4
 ADDRGP4 Q_strncpyz
 CALLV
 pop
-line 860
-;860:			g_favoriteserverlist[g_numfavoriteservers].pingtime = ArenaServers_MaxPing();
+line 861
+;861:			g_favoriteserverlist[g_numfavoriteservers].pingtime = ArenaServers_MaxPing();
 ADDRLP4 5468
 ADDRGP4 ArenaServers_MaxPing
 CALLI4
@@ -3646,12 +3644,12 @@ ADDP4
 ADDRLP4 5468
 INDIRI4
 ASGNI4
-line 861
-;861:		}
+line 862
+;862:		}
 LABELV $460
-line 863
-;862:
-;863:		g_numfavoriteservers++;
+line 864
+;863:
+;864:		g_numfavoriteservers++;
 ADDRLP4 5468
 ADDRGP4 g_numfavoriteservers
 ASGNP4
@@ -3663,10 +3661,10 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 864
-;864:	}
+line 865
+;865:	}
 LABELV $443
-line 829
+line 830
 ADDRLP4 4424
 ADDRLP4 4424
 INDIRI4
@@ -3677,114 +3675,114 @@ ADDRLP4 4424
 INDIRI4
 CNSTI4 16
 LTI4 $442
-line 866
-;865:
-;866:	g_arenaservers.numfavoriteaddresses = g_numfavoriteservers;
+line 867
+;866:
+;867:	g_arenaservers.numfavoriteaddresses = g_numfavoriteservers;
 ADDRGP4 g_arenaservers+14952
 ADDRGP4 g_numfavoriteservers
 INDIRI4
 ASGNI4
-line 868
-;867:
-;868:	if (!found)
+line 869
+;868:
+;869:	if (!found)
 ADDRLP4 4428
 INDIRI4
 CNSTI4 0
 NEI4 $463
-line 869
-;869:	{
-line 872
-;870:		// no results were found, reset server list
-;871:		// list will be automatically refreshed when selected
-;872:		g_numfavoriteservers = 0;
+line 870
+;870:	{
+line 873
+;871:		// no results were found, reset server list
+;872:		// list will be automatically refreshed when selected
+;873:		g_numfavoriteservers = 0;
 ADDRGP4 g_numfavoriteservers
 CNSTI4 0
 ASGNI4
-line 873
-;873:	}
-LABELV $463
 line 874
-;874:}
+;874:	}
+LABELV $463
+line 875
+;875:}
 LABELV $441
 endproc ArenaServers_LoadFavorites 5472 12
 proc ArenaServers_StopRefresh 0 16
-line 883
-;875:
-;876:
-;877:/*
-;878:=================
-;879:ArenaServers_StopRefresh
-;880:=================
-;881:*/
-;882:static void ArenaServers_StopRefresh( void )
-;883:{
 line 884
-;884:	if (!g_arenaservers.refreshservers)
+;876:
+;877:
+;878:/*
+;879:=================
+;880:ArenaServers_StopRefresh
+;881:=================
+;882:*/
+;883:static void ArenaServers_StopRefresh( void )
+;884:{
+line 885
+;885:	if (!g_arenaservers.refreshservers)
 ADDRGP4 g_arenaservers+13912
 INDIRI4
 CNSTI4 0
 NEI4 $466
-line 886
-;885:		// not currently refreshing
-;886:		return;
+line 887
+;886:		// not currently refreshing
+;887:		return;
 ADDRGP4 $465
 JUMPV
 LABELV $466
-line 888
-;887:
-;888:	g_arenaservers.refreshservers = qfalse;
+line 889
+;888:
+;889:	g_arenaservers.refreshservers = qfalse;
 ADDRGP4 g_arenaservers+13912
 CNSTI4 0
 ASGNI4
-line 890
-;889:
-;890:	if (g_servertype == AS_FAVORITES)
+line 891
+;890:
+;891:	if (g_servertype == AS_FAVORITES)
 ADDRGP4 g_servertype
 INDIRI4
 CNSTI4 3
 NEI4 $470
-line 891
-;891:	{
-line 893
-;892:		// nonresponsive favorites must be shown
-;893:		ArenaServers_InsertFavorites();
+line 892
+;892:	{
+line 894
+;893:		// nonresponsive favorites must be shown
+;894:		ArenaServers_InsertFavorites();
 ADDRGP4 ArenaServers_InsertFavorites
 CALLV
 pop
-line 894
-;894:	}
+line 895
+;895:	}
 LABELV $470
-line 897
-;895:
-;896:	// final tally
-;897:	if (g_arenaservers.numqueriedservers >= 0)
+line 898
+;896:
+;897:	// final tally
+;898:	if (g_arenaservers.numqueriedservers >= 0)
 ADDRGP4 g_arenaservers+13896
 INDIRI4
 CNSTI4 0
 LTI4 $472
-line 898
-;898:	{
 line 899
-;899:		g_arenaservers.currentping       = *g_arenaservers.numservers;
+;899:	{
+line 900
+;900:		g_arenaservers.currentping       = *g_arenaservers.numservers;
 ADDRGP4 g_arenaservers+13908
 ADDRGP4 g_arenaservers+13900
 INDIRP4
 INDIRI4
 ASGNI4
-line 900
-;900:		g_arenaservers.numqueriedservers = *g_arenaservers.numservers; 
+line 901
+;901:		g_arenaservers.numqueriedservers = *g_arenaservers.numservers; 
 ADDRGP4 g_arenaservers+13896
 ADDRGP4 g_arenaservers+13900
 INDIRP4
 INDIRI4
 ASGNI4
-line 901
-;901:	}
+line 902
+;902:	}
 LABELV $472
-line 904
-;902:	
-;903:	// sort
-;904:	qsort( g_arenaservers.serverlist, *g_arenaservers.numservers, sizeof( servernode_t ), ArenaServers_Compare);
+line 905
+;903:	
+;904:	// sort
+;905:	qsort( g_arenaservers.serverlist, *g_arenaservers.numservers, sizeof( servernode_t ), ArenaServers_Compare);
 ADDRGP4 g_arenaservers+13904
 INDIRP4
 ARGP4
@@ -3799,57 +3797,57 @@ ARGP4
 ADDRGP4 qsort
 CALLV
 pop
-line 906
-;905:
-;906:	ArenaServers_UpdateMenu();
+line 907
+;906:
+;907:	ArenaServers_UpdateMenu();
 ADDRGP4 ArenaServers_UpdateMenu
 CALLV
 pop
-line 907
-;907:}
+line 908
+;908:}
 LABELV $465
 endproc ArenaServers_StopRefresh 0 16
 proc ArenaServers_DoRefresh 1120 16
-line 916
-;908:
+line 917
 ;909:
-;910:/*
-;911:=================
-;912:ArenaServers_DoRefresh
-;913:=================
-;914:*/
-;915:static void ArenaServers_DoRefresh( void )
-;916:{
-line 924
-;917:	int		i;
-;918:	int		j;
-;919:	int		time;
-;920:	int		maxPing;
-;921:	char	adrstr[MAX_ADDRESSLENGTH];
-;922:	char	info[MAX_INFO_STRING];
-;923:
-;924:	if (uis.realtime < g_arenaservers.refreshtime)
+;910:
+;911:/*
+;912:=================
+;913:ArenaServers_DoRefresh
+;914:=================
+;915:*/
+;916:static void ArenaServers_DoRefresh( void )
+;917:{
+line 925
+;918:	int		i;
+;919:	int		j;
+;920:	int		time;
+;921:	int		maxPing;
+;922:	char	adrstr[MAX_ADDRESSLENGTH];
+;923:	char	info[MAX_INFO_STRING];
+;924:
+;925:	if (uis.realtime < g_arenaservers.refreshtime)
 ADDRGP4 uis+4
 INDIRI4
 ADDRGP4 g_arenaservers+13924
 INDIRI4
 GEI4 $482
-line 925
-;925:	{
 line 926
-;926:	  if (g_servertype != AS_FAVORITES) {
+;926:	{
+line 927
+;927:	  if (g_servertype != AS_FAVORITES) {
 ADDRGP4 g_servertype
 INDIRI4
 CNSTI4 3
 EQI4 $486
-line 927
-;927:			if (g_servertype == AS_LOCAL) {
+line 928
+;928:			if (g_servertype == AS_LOCAL) {
 ADDRGP4 g_servertype
 INDIRI4
-CNSTI4 0
+CNSTI4 1
 NEI4 $488
-line 928
-;928:				if (!trap_LAN_GetServerCount(g_servertype)) {
+line 929
+;929:				if (!trap_LAN_GetServerCount(g_servertype)) {
 ADDRGP4 g_servertype
 INDIRI4
 ARGI4
@@ -3861,17 +3859,17 @@ ADDRLP4 1104
 INDIRI4
 CNSTI4 0
 NEI4 $490
-line 929
-;929:					return;
+line 930
+;930:					return;
 ADDRGP4 $481
 JUMPV
 LABELV $490
-line 931
-;930:				}
-;931:			}
-LABELV $488
 line 932
-;932:			if (trap_LAN_GetServerCount(g_servertype) < 0) {
+;931:				}
+;932:			}
+LABELV $488
+line 933
+;933:			if (trap_LAN_GetServerCount(g_servertype) < 0) {
 ADDRGP4 g_servertype
 INDIRI4
 ARGI4
@@ -3883,50 +3881,50 @@ ADDRLP4 1104
 INDIRI4
 CNSTI4 0
 GEI4 $492
-line 934
-;933:			  // still waiting for response
-;934:			  return;
+line 935
+;934:			  // still waiting for response
+;935:			  return;
 ADDRGP4 $481
 JUMPV
 LABELV $492
-line 936
-;935:			}
-;936:	  }
-LABELV $486
 line 937
-;937:	}
+;936:			}
+;937:	  }
+LABELV $486
+line 938
+;938:	}
 LABELV $482
-line 939
-;938:
-;939:	if (uis.realtime < g_arenaservers.nextpingtime)
+line 940
+;939:
+;940:	if (uis.realtime < g_arenaservers.nextpingtime)
 ADDRGP4 uis+4
 INDIRI4
 ADDRGP4 g_arenaservers+13916
 INDIRI4
 GEI4 $494
-line 940
-;940:	{
-line 942
-;941:		// wait for time trigger
-;942:		return;
+line 941
+;941:	{
+line 943
+;942:		// wait for time trigger
+;943:		return;
 ADDRGP4 $481
 JUMPV
 LABELV $494
-line 946
-;943:	}
-;944:
-;945:	// trigger at 10Hz intervals
-;946:	g_arenaservers.nextpingtime = uis.realtime + 10;
+line 947
+;944:	}
+;945:
+;946:	// trigger at 10Hz intervals
+;947:	g_arenaservers.nextpingtime = uis.realtime + 10;
 ADDRGP4 g_arenaservers+13916
 ADDRGP4 uis+4
 INDIRI4
 CNSTI4 10
 ADDI4
 ASGNI4
-line 949
-;947:
-;948:	// process ping results
-;949:	maxPing = ArenaServers_MaxPing();
+line 950
+;948:
+;949:	// process ping results
+;950:	maxPing = ArenaServers_MaxPing();
 ADDRLP4 1104
 ADDRGP4 ArenaServers_MaxPing
 CALLI4
@@ -3935,16 +3933,16 @@ ADDRLP4 76
 ADDRLP4 1104
 INDIRI4
 ASGNI4
-line 950
-;950:	for (i=0; i<MAX_PINGREQUESTS; i++)
+line 951
+;951:	for (i=0; i<MAX_PINGREQUESTS; i++)
 ADDRLP4 68
 CNSTI4 0
 ASGNI4
 LABELV $500
-line 951
-;951:	{
 line 952
-;952:		trap_LAN_GetPing( i, adrstr, MAX_ADDRESSLENGTH, &time );
+;952:	{
+line 953
+;953:		trap_LAN_GetPing( i, adrstr, MAX_ADDRESSLENGTH, &time );
 ADDRLP4 68
 INDIRI4
 ARGI4
@@ -3957,32 +3955,32 @@ ARGP4
 ADDRGP4 trap_LAN_GetPing
 CALLV
 pop
-line 953
-;953:		if (!adrstr[0])
+line 954
+;954:		if (!adrstr[0])
 ADDRLP4 4
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $504
-line 954
-;954:		{
-line 956
-;955:			// ignore empty or pending pings
-;956:			continue;
+line 955
+;955:		{
+line 957
+;956:			// ignore empty or pending pings
+;957:			continue;
 ADDRGP4 $501
 JUMPV
 LABELV $504
-line 960
-;957:		}
-;958:
-;959:		// find ping result in our local list
-;960:		for (j=0; j<MAX_PINGREQUESTS; j++)
+line 961
+;958:		}
+;959:
+;960:		// find ping result in our local list
+;961:		for (j=0; j<MAX_PINGREQUESTS; j++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $506
-line 961
-;961:			if (!Q_stricmp( adrstr, g_arenaservers.pinglist[j].adrstr ))
+line 962
+;962:			if (!Q_stricmp( adrstr, g_arenaservers.pinglist[j].adrstr ))
 ADDRLP4 4
 ARGP4
 CNSTI4 68
@@ -4000,13 +3998,13 @@ ADDRLP4 1108
 INDIRI4
 CNSTI4 0
 NEI4 $510
-line 962
-;962:				break;
+line 963
+;963:				break;
 ADDRGP4 $508
 JUMPV
 LABELV $510
 LABELV $507
-line 960
+line 961
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4018,26 +4016,26 @@ INDIRI4
 CNSTI4 32
 LTI4 $506
 LABELV $508
-line 964
-;963:
-;964:		if (j < MAX_PINGREQUESTS)
+line 965
+;964:
+;965:		if (j < MAX_PINGREQUESTS)
 ADDRLP4 0
 INDIRI4
 CNSTI4 32
 GEI4 $513
-line 965
-;965:		{
-line 967
-;966:			// found it
-;967:			if (!time)
+line 966
+;966:		{
+line 968
+;967:			// found it
+;968:			if (!time)
 ADDRLP4 72
 INDIRI4
 CNSTI4 0
 NEI4 $515
-line 968
-;968:			{
 line 969
-;969:				time = uis.realtime - g_arenaservers.pinglist[j].start;
+;969:			{
+line 970
+;970:				time = uis.realtime - g_arenaservers.pinglist[j].start;
 ADDRLP4 72
 ADDRGP4 uis+4
 INDIRI4
@@ -4050,57 +4048,57 @@ ADDP4
 INDIRI4
 SUBI4
 ASGNI4
-line 970
-;970:				if (time < maxPing)
+line 971
+;971:				if (time < maxPing)
 ADDRLP4 72
 INDIRI4
 ADDRLP4 76
 INDIRI4
 GEI4 $520
-line 971
-;971:				{
-line 973
-;972:					// still waiting
-;973:					continue;
+line 972
+;972:				{
+line 974
+;973:					// still waiting
+;974:					continue;
 ADDRGP4 $501
 JUMPV
 LABELV $520
-line 975
-;974:				}
-;975:			}
+line 976
+;975:				}
+;976:			}
 LABELV $515
-line 977
-;976:
-;977:			if (time > maxPing)
+line 978
+;977:
+;978:			if (time > maxPing)
 ADDRLP4 72
 INDIRI4
 ADDRLP4 76
 INDIRI4
 LEI4 $522
-line 978
-;978:			{
-line 980
-;979:				// stale it out
-;980:				info[0] = '\0';
+line 979
+;979:			{
+line 981
+;980:				// stale it out
+;981:				info[0] = '\0';
 ADDRLP4 80
 CNSTI1 0
 ASGNI1
-line 981
-;981:				time    = maxPing;
+line 982
+;982:				time    = maxPing;
 ADDRLP4 72
 ADDRLP4 76
 INDIRI4
 ASGNI4
-line 982
-;982:			}
+line 983
+;983:			}
 ADDRGP4 $523
 JUMPV
 LABELV $522
-line 984
-;983:			else
-;984:			{
 line 985
-;985:				trap_LAN_GetPingInfo( i, info, MAX_INFO_STRING );
+;984:			else
+;985:			{
+line 986
+;986:				trap_LAN_GetPingInfo( i, info, MAX_INFO_STRING );
 ADDRLP4 68
 INDIRI4
 ARGI4
@@ -4111,13 +4109,13 @@ ARGI4
 ADDRGP4 trap_LAN_GetPingInfo
 CALLV
 pop
-line 986
-;986:			}
+line 987
+;987:			}
 LABELV $523
-line 989
-;987:
-;988:			// insert ping results
-;989:			ArenaServers_Insert( adrstr, info, time );
+line 990
+;988:
+;989:			// insert ping results
+;990:			ArenaServers_Insert( adrstr, info, time );
 ADDRLP4 4
 ARGP4
 ADDRLP4 80
@@ -4128,10 +4126,10 @@ ARGI4
 ADDRGP4 ArenaServers_Insert
 CALLV
 pop
-line 992
-;990:
-;991:			// clear this query from internal list
-;992:			g_arenaservers.pinglist[j].adrstr[0] = '\0';
+line 993
+;991:
+;992:			// clear this query from internal list
+;993:			g_arenaservers.pinglist[j].adrstr[0] = '\0';
 CNSTI4 68
 ADDRLP4 0
 INDIRI4
@@ -4140,23 +4138,23 @@ ADDRGP4 g_arenaservers+1992
 ADDP4
 CNSTI1 0
 ASGNI1
-line 993
-;993:   		}
+line 994
+;994:   		}
 LABELV $513
-line 996
-;994:
-;995:		// clear this query from external list
-;996:		trap_LAN_ClearPing( i );
+line 997
+;995:
+;996:		// clear this query from external list
+;997:		trap_LAN_ClearPing( i );
 ADDRLP4 68
 INDIRI4
 ARGI4
 ADDRGP4 trap_LAN_ClearPing
 CALLV
 pop
-line 997
-;997:	}
+line 998
+;998:	}
 LABELV $501
-line 950
+line 951
 ADDRLP4 68
 ADDRLP4 68
 INDIRI4
@@ -4167,28 +4165,28 @@ ADDRLP4 68
 INDIRI4
 CNSTI4 32
 LTI4 $500
-line 1001
-;998:
-;999:	// get results of servers query
-;1000:	// counts can increase as servers respond
-;1001:	if (g_servertype == AS_FAVORITES) {
+line 1002
+;999:
+;1000:	// get results of servers query
+;1001:	// counts can increase as servers respond
+;1002:	if (g_servertype == AS_FAVORITES) {
 ADDRGP4 g_servertype
 INDIRI4
 CNSTI4 3
 NEI4 $525
-line 1002
-;1002:	  g_arenaservers.numqueriedservers = g_arenaservers.numfavoriteaddresses;
+line 1003
+;1003:	  g_arenaservers.numqueriedservers = g_arenaservers.numfavoriteaddresses;
 ADDRGP4 g_arenaservers+13896
 ADDRGP4 g_arenaservers+14952
 INDIRI4
 ASGNI4
-line 1003
-;1003:	} else {
+line 1004
+;1004:	} else {
 ADDRGP4 $526
 JUMPV
 LABELV $525
-line 1004
-;1004:	  g_arenaservers.numqueriedservers = trap_LAN_GetServerCount(g_servertype);
+line 1005
+;1005:	  g_arenaservers.numqueriedservers = trap_LAN_GetServerCount(g_servertype);
 ADDRGP4 g_servertype
 INDIRI4
 ARGI4
@@ -4200,27 +4198,27 @@ ADDRGP4 g_arenaservers+13896
 ADDRLP4 1108
 INDIRI4
 ASGNI4
-line 1005
-;1005:	}
+line 1006
+;1006:	}
 LABELV $526
-line 1012
-;1006:
-;1007://	if (g_arenaservers.numqueriedservers > g_arenaservers.maxservers)
-;1008://		g_arenaservers.numqueriedservers = g_arenaservers.maxservers;
-;1009:
-;1010:	// send ping requests in reasonable bursts
-;1011:	// iterate ping through all found servers
-;1012:	for (i=0; i<MAX_PINGREQUESTS && g_arenaservers.currentping < g_arenaservers.numqueriedservers; i++)
+line 1013
+;1007:
+;1008://	if (g_arenaservers.numqueriedservers > g_arenaservers.maxservers)
+;1009://		g_arenaservers.numqueriedservers = g_arenaservers.maxservers;
+;1010:
+;1011:	// send ping requests in reasonable bursts
+;1012:	// iterate ping through all found servers
+;1013:	for (i=0; i<MAX_PINGREQUESTS && g_arenaservers.currentping < g_arenaservers.numqueriedservers; i++)
 ADDRLP4 68
 CNSTI4 0
 ASGNI4
 ADDRGP4 $533
 JUMPV
 LABELV $530
-line 1013
-;1013:	{
 line 1014
-;1014:		if (trap_LAN_GetPingQueueCount() >= MAX_PINGREQUESTS)
+;1014:	{
+line 1015
+;1015:		if (trap_LAN_GetPingQueueCount() >= MAX_PINGREQUESTS)
 ADDRLP4 1108
 ADDRGP4 trap_LAN_GetPingQueueCount
 CALLI4
@@ -4229,25 +4227,25 @@ ADDRLP4 1108
 INDIRI4
 CNSTI4 32
 LTI4 $536
-line 1015
-;1015:		{
-line 1017
-;1016:			// ping queue is full
-;1017:			break;
+line 1016
+;1016:		{
+line 1018
+;1017:			// ping queue is full
+;1018:			break;
 ADDRGP4 $532
 JUMPV
 LABELV $536
-line 1021
-;1018:		}
-;1019:
-;1020:		// find empty slot
-;1021:		for (j=0; j<MAX_PINGREQUESTS; j++)
+line 1022
+;1019:		}
+;1020:
+;1021:		// find empty slot
+;1022:		for (j=0; j<MAX_PINGREQUESTS; j++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $538
-line 1022
-;1022:			if (!g_arenaservers.pinglist[j].adrstr[0])
+line 1023
+;1023:			if (!g_arenaservers.pinglist[j].adrstr[0])
 CNSTI4 68
 ADDRLP4 0
 INDIRI4
@@ -4258,13 +4256,13 @@ INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $542
-line 1023
-;1023:				break;
+line 1024
+;1024:				break;
 ADDRGP4 $540
 JUMPV
 LABELV $542
 LABELV $539
-line 1021
+line 1022
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4276,30 +4274,30 @@ INDIRI4
 CNSTI4 32
 LTI4 $538
 LABELV $540
-line 1025
-;1024:
-;1025:		if (j >= MAX_PINGREQUESTS)
+line 1026
+;1025:
+;1026:		if (j >= MAX_PINGREQUESTS)
 ADDRLP4 0
 INDIRI4
 CNSTI4 32
 LTI4 $545
-line 1027
-;1026:			// no empty slots available yet - wait for timeout
-;1027:			break;
+line 1028
+;1027:			// no empty slots available yet - wait for timeout
+;1028:			break;
 ADDRGP4 $532
 JUMPV
 LABELV $545
-line 1031
-;1028:
-;1029:		// get an address to ping
-;1030:
-;1031:		if (g_servertype == AS_FAVORITES) {
+line 1032
+;1029:
+;1030:		// get an address to ping
+;1031:
+;1032:		if (g_servertype == AS_FAVORITES) {
 ADDRGP4 g_servertype
 INDIRI4
 CNSTI4 3
 NEI4 $547
-line 1032
-;1032:		  strcpy( adrstr, g_arenaservers.favoriteaddresses[g_arenaservers.currentping] ); 		
+line 1033
+;1033:		  strcpy( adrstr, g_arenaservers.favoriteaddresses[g_arenaservers.currentping] ); 		
 ADDRLP4 4
 ARGP4
 ADDRGP4 g_arenaservers+13908
@@ -4312,13 +4310,13 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 1033
-;1033:		} else {
+line 1034
+;1034:		} else {
 ADDRGP4 $548
 JUMPV
 LABELV $547
-line 1034
-;1034:		  trap_LAN_GetServerAddressString(g_servertype, g_arenaservers.currentping, adrstr, MAX_ADDRESSLENGTH );
+line 1035
+;1035:		  trap_LAN_GetServerAddressString(g_servertype, g_arenaservers.currentping, adrstr, MAX_ADDRESSLENGTH );
 ADDRGP4 g_servertype
 INDIRI4
 ARGI4
@@ -4332,12 +4330,12 @@ ARGI4
 ADDRGP4 trap_LAN_GetServerAddressString
 CALLV
 pop
-line 1035
-;1035:		}
+line 1036
+;1036:		}
 LABELV $548
-line 1037
-;1036:
-;1037:		strcpy( g_arenaservers.pinglist[j].adrstr, adrstr );
+line 1038
+;1037:
+;1038:		strcpy( g_arenaservers.pinglist[j].adrstr, adrstr );
 CNSTI4 68
 ADDRLP4 0
 INDIRI4
@@ -4350,8 +4348,8 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 1038
-;1038:		g_arenaservers.pinglist[j].start = uis.realtime;
+line 1039
+;1039:		g_arenaservers.pinglist[j].start = uis.realtime;
 CNSTI4 68
 ADDRLP4 0
 INDIRI4
@@ -4361,9 +4359,9 @@ ADDP4
 ADDRGP4 uis+4
 INDIRI4
 ASGNI4
-line 1040
-;1039:
-;1040:		trap_Cmd_ExecuteText( EXEC_NOW, va( "ping %s\n", adrstr )  );
+line 1041
+;1040:
+;1041:		trap_Cmd_ExecuteText( EXEC_NOW, va( "ping %s\n", adrstr )  );
 ADDRGP4 $556
 ARGP4
 ADDRLP4 4
@@ -4380,10 +4378,10 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 1043
-;1041:		
-;1042:		// advance to next server
-;1043:		g_arenaservers.currentping++;
+line 1044
+;1042:		
+;1043:		// advance to next server
+;1044:		g_arenaservers.currentping++;
 ADDRLP4 1116
 ADDRGP4 g_arenaservers+13908
 ASGNP4
@@ -4395,10 +4393,10 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1044
-;1044:	}
+line 1045
+;1045:	}
 LABELV $531
-line 1012
+line 1013
 ADDRLP4 68
 ADDRLP4 68
 INDIRI4
@@ -4417,9 +4415,9 @@ INDIRI4
 LTI4 $530
 LABELV $558
 LABELV $532
-line 1046
-;1045:
-;1046:	if (!trap_LAN_GetPingQueueCount())
+line 1047
+;1046:
+;1047:	if (!trap_LAN_GetPingQueueCount())
 ADDRLP4 1108
 ADDRGP4 trap_LAN_GetPingQueueCount
 CALLI4
@@ -4428,47 +4426,47 @@ ADDRLP4 1108
 INDIRI4
 CNSTI4 0
 NEI4 $559
-line 1047
-;1047:	{
-line 1049
-;1048:		// all pings completed
-;1049:		ArenaServers_StopRefresh();
+line 1048
+;1048:	{
+line 1050
+;1049:		// all pings completed
+;1050:		ArenaServers_StopRefresh();
 ADDRGP4 ArenaServers_StopRefresh
 CALLV
 pop
-line 1050
-;1050:		return;
+line 1051
+;1051:		return;
 ADDRGP4 $481
 JUMPV
 LABELV $559
-line 1054
-;1051:	}
-;1052:
-;1053:	// update the user interface with ping status
-;1054:	ArenaServers_UpdateMenu();
+line 1055
+;1052:	}
+;1053:
+;1054:	// update the user interface with ping status
+;1055:	ArenaServers_UpdateMenu();
 ADDRGP4 ArenaServers_UpdateMenu
 CALLV
 pop
-line 1055
-;1055:}
+line 1056
+;1056:}
 LABELV $481
 endproc ArenaServers_DoRefresh 1120 16
 proc ArenaServers_StartRefresh 88 16
-line 1064
-;1056:
+line 1065
 ;1057:
-;1058:/*
-;1059:=================
-;1060:ArenaServers_StartRefresh
-;1061:=================
-;1062:*/
-;1063:static void ArenaServers_StartRefresh( void )
-;1064:{
-line 1068
-;1065:	int		i;
-;1066:	char	myargs[32], protocol[32];
-;1067:
-;1068:	memset( g_arenaservers.serverlist, 0, g_arenaservers.maxservers*sizeof(table_t) );
+;1058:
+;1059:/*
+;1060:=================
+;1061:ArenaServers_StartRefresh
+;1062:=================
+;1063:*/
+;1064:static void ArenaServers_StartRefresh( void )
+;1065:{
+line 1069
+;1066:	int		i;
+;1067:	char	myargs[32], protocol[32];
+;1068:
+;1069:	memset( g_arenaservers.serverlist, 0, g_arenaservers.maxservers*sizeof(table_t) );
 ADDRGP4 g_arenaservers+13904
 INDIRP4
 ARGP4
@@ -4484,17 +4482,17 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1070
-;1069:
-;1070:	for (i=0; i<MAX_PINGREQUESTS; i++)
+line 1071
+;1070:
+;1071:	for (i=0; i<MAX_PINGREQUESTS; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $564
-line 1071
-;1071:	{
 line 1072
-;1072:		g_arenaservers.pinglist[i].adrstr[0] = '\0';
+;1072:	{
+line 1073
+;1073:		g_arenaservers.pinglist[i].adrstr[0] = '\0';
 CNSTI4 68
 ADDRLP4 0
 INDIRI4
@@ -4503,18 +4501,18 @@ ADDRGP4 g_arenaservers+1992
 ADDP4
 CNSTI1 0
 ASGNI1
-line 1073
-;1073:		trap_LAN_ClearPing( i );
+line 1074
+;1074:		trap_LAN_ClearPing( i );
 ADDRLP4 0
 INDIRI4
 ARGI4
 ADDRGP4 trap_LAN_ClearPing
 CALLV
 pop
-line 1074
-;1074:	}
+line 1075
+;1075:	}
 LABELV $565
-line 1070
+line 1071
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4525,59 +4523,59 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 32
 LTI4 $564
-line 1076
-;1075:
-;1076:	g_arenaservers.refreshservers    = qtrue;
+line 1077
+;1076:
+;1077:	g_arenaservers.refreshservers    = qtrue;
 ADDRGP4 g_arenaservers+13912
 CNSTI4 1
 ASGNI4
-line 1077
-;1077:	g_arenaservers.currentping       = 0;
+line 1078
+;1078:	g_arenaservers.currentping       = 0;
 ADDRGP4 g_arenaservers+13908
 CNSTI4 0
 ASGNI4
-line 1078
-;1078:	g_arenaservers.nextpingtime      = 0;
+line 1079
+;1079:	g_arenaservers.nextpingtime      = 0;
 ADDRGP4 g_arenaservers+13916
 CNSTI4 0
 ASGNI4
-line 1079
-;1079:	*g_arenaservers.numservers       = 0;
+line 1080
+;1080:	*g_arenaservers.numservers       = 0;
 ADDRGP4 g_arenaservers+13900
 INDIRP4
 CNSTI4 0
 ASGNI4
-line 1080
-;1080:	g_arenaservers.numqueriedservers = 0;
+line 1081
+;1081:	g_arenaservers.numqueriedservers = 0;
 ADDRGP4 g_arenaservers+13896
 CNSTI4 0
 ASGNI4
-line 1083
-;1081:
-;1082:	// allow max 5 seconds for responses
-;1083:	g_arenaservers.refreshtime = uis.realtime + 5000;
+line 1084
+;1082:
+;1083:	// allow max 5 seconds for responses
+;1084:	g_arenaservers.refreshtime = uis.realtime + 5000;
 ADDRGP4 g_arenaservers+13924
 ADDRGP4 uis+4
 INDIRI4
 CNSTI4 5000
 ADDI4
 ASGNI4
-line 1086
-;1084:
-;1085:	// place menu in zeroed state
-;1086:	ArenaServers_UpdateMenu();
+line 1087
+;1085:
+;1086:	// place menu in zeroed state
+;1087:	ArenaServers_UpdateMenu();
 ADDRGP4 ArenaServers_UpdateMenu
 CALLV
 pop
-line 1088
-;1087:
-;1088:	if( g_servertype == AS_LOCAL ) {
+line 1089
+;1088:
+;1089:	if( g_servertype == AS_LOCAL ) {
 ADDRGP4 g_servertype
 INDIRI4
-CNSTI4 0
+CNSTI4 1
 NEI4 $576
-line 1089
-;1089:		trap_Cmd_ExecuteText( EXEC_APPEND, "localservers\n" );
+line 1090
+;1090:		trap_Cmd_ExecuteText( EXEC_APPEND, "localservers\n" );
 CNSTI4 2
 ARGI4
 ADDRGP4 $578
@@ -4585,57 +4583,57 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 1090
-;1090:		return;
+line 1091
+;1091:		return;
 ADDRGP4 $561
 JUMPV
 LABELV $576
-line 1093
-;1091:	}
-;1092:
-;1093:	if( g_servertype == AS_GLOBAL || g_servertype == AS_MPLAYER ) {
+line 1094
+;1092:	}
+;1093:
+;1094:	if( g_servertype == AS_GLOBAL || g_servertype == AS_MPLAYER ) {
 ADDRLP4 68
 ADDRGP4 g_servertype
 INDIRI4
 ASGNI4
 ADDRLP4 68
 INDIRI4
-CNSTI4 2
+CNSTI4 0
 EQI4 $581
 ADDRLP4 68
 INDIRI4
-CNSTI4 1
+CNSTI4 2
 NEI4 $579
 LABELV $581
-line 1094
-;1094:		if( g_servertype == AS_GLOBAL ) {
+line 1095
+;1095:		if( g_servertype == AS_GLOBAL ) {
 ADDRGP4 g_servertype
 INDIRI4
-CNSTI4 2
+CNSTI4 0
 NEI4 $582
-line 1095
-;1095:			i = 0;
+line 1096
+;1096:			i = 0;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-line 1096
-;1096:		}
+line 1097
+;1097:		}
 ADDRGP4 $583
 JUMPV
 LABELV $582
-line 1097
-;1097:		else {
 line 1098
-;1098:			i = 1;
+;1098:		else {
+line 1099
+;1099:			i = 1;
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-line 1099
-;1099:		}
+line 1100
+;1100:		}
 LABELV $583
-line 1101
-;1100:
-;1101:		switch( g_arenaservers.gametype.curvalue ) {
+line 1102
+;1101:
+;1102:		switch( g_arenaservers.gametype.curvalue ) {
 ADDRLP4 72
 ADDRGP4 g_arenaservers+552+64
 INDIRI4
@@ -4667,22 +4665,22 @@ address $595
 code
 LABELV $584
 LABELV $588
-line 1104
-;1102:		default:
-;1103:		case GAMES_ALL:
-;1104:			myargs[0] = 0;
+line 1105
+;1103:		default:
+;1104:		case GAMES_ALL:
+;1105:			myargs[0] = 0;
 ADDRLP4 36
 CNSTI1 0
 ASGNI1
-line 1105
-;1105:			break;
+line 1106
+;1106:			break;
 ADDRGP4 $585
 JUMPV
 LABELV $589
-line 1108
-;1106:
-;1107:		case GAMES_FFA:
-;1108:			strcpy( myargs, " ffa" );
+line 1109
+;1107:
+;1108:		case GAMES_FFA:
+;1109:			strcpy( myargs, " ffa" );
 ADDRLP4 36
 ARGP4
 ADDRGP4 $590
@@ -4690,15 +4688,15 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 1109
-;1109:			break;
+line 1110
+;1110:			break;
 ADDRGP4 $585
 JUMPV
 LABELV $591
-line 1112
-;1110:
-;1111:		case GAMES_TEAMPLAY:
-;1112:			strcpy( myargs, " team" );
+line 1113
+;1111:
+;1112:		case GAMES_TEAMPLAY:
+;1113:			strcpy( myargs, " team" );
 ADDRLP4 36
 ARGP4
 ADDRGP4 $592
@@ -4706,15 +4704,15 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 1113
-;1113:			break;
+line 1114
+;1114:			break;
 ADDRGP4 $585
 JUMPV
 LABELV $593
-line 1116
-;1114:
-;1115:		case GAMES_TOURNEY:
-;1116:			strcpy( myargs, " tourney" );
+line 1117
+;1115:
+;1116:		case GAMES_TOURNEY:
+;1117:			strcpy( myargs, " tourney" );
 ADDRLP4 36
 ARGP4
 ADDRGP4 $594
@@ -4722,15 +4720,15 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 1117
-;1117:			break;
+line 1118
+;1118:			break;
 ADDRGP4 $585
 JUMPV
 LABELV $595
-line 1120
-;1118:
-;1119:		case GAMES_CTF:
-;1120:			strcpy( myargs, " ctf" );
+line 1121
+;1119:
+;1120:		case GAMES_CTF:
+;1121:			strcpy( myargs, " ctf" );
 ADDRLP4 36
 ARGP4
 ADDRGP4 $596
@@ -4738,20 +4736,20 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 1121
-;1121:			break;
+line 1122
+;1122:			break;
 LABELV $585
-line 1125
-;1122:		}
-;1123:
+line 1126
+;1123:		}
 ;1124:
-;1125:		if (g_emptyservers) {
+;1125:
+;1126:		if (g_emptyservers) {
 ADDRGP4 g_emptyservers
 INDIRI4
 CNSTI4 0
 EQI4 $598
-line 1126
-;1126:			strcat(myargs, " empty");
+line 1127
+;1127:			strcat(myargs, " empty");
 ADDRLP4 36
 ARGP4
 ADDRGP4 $600
@@ -4759,18 +4757,18 @@ ARGP4
 ADDRGP4 strcat
 CALLP4
 pop
-line 1127
-;1127:		}
+line 1128
+;1128:		}
 LABELV $598
-line 1129
-;1128:
-;1129:		if (g_fullservers) {
+line 1130
+;1129:
+;1130:		if (g_fullservers) {
 ADDRGP4 g_fullservers
 INDIRI4
 CNSTI4 0
 EQI4 $601
-line 1130
-;1130:			strcat(myargs, " full");
+line 1131
+;1131:			strcat(myargs, " full");
 ADDRLP4 36
 ARGP4
 ADDRGP4 $603
@@ -4778,17 +4776,17 @@ ARGP4
 ADDRGP4 strcat
 CALLP4
 pop
-line 1131
-;1131:		}
+line 1132
+;1132:		}
 LABELV $601
-line 1133
-;1132:
-;1133:		protocol[0] = '\0';
+line 1134
+;1133:
+;1134:		protocol[0] = '\0';
 ADDRLP4 4
 CNSTI1 0
 ASGNI1
-line 1134
-;1134:		trap_Cvar_VariableStringBuffer( "debug_protocol", protocol, sizeof(protocol) );
+line 1135
+;1135:		trap_Cvar_VariableStringBuffer( "debug_protocol", protocol, sizeof(protocol) );
 ADDRGP4 $604
 ARGP4
 ADDRLP4 4
@@ -4798,19 +4796,19 @@ ARGI4
 ADDRGP4 trap_Cvar_VariableStringBuffer
 CALLV
 pop
-line 1139
-;1135:		
-;1136:
-;1137:		// Shafe - Trep Here is where we ditch the whole AS_MPLAYER Thing and replace it with multimaster support
-;1138:		// i will define which hardcoded master to use 0 is default or sv_master1
-;1139:		i = ui_browserMasterNum.integer;
+line 1140
+;1136:		
+;1137:
+;1138:		// Shafe - Trep Here is where we ditch the whole AS_MPLAYER Thing and replace it with multimaster support
+;1139:		// i will define which hardcoded master to use 0 is default or sv_master1
+;1140:		i = ui_browserMasterNum.integer;
 ADDRLP4 0
 ADDRGP4 ui_browserMasterNum+12
 INDIRI4
 ASGNI4
-line 1141
-;1140:		// End Shafe
-;1141:		Com_Printf("Sending to master number %d \n", i);
+line 1142
+;1141:		// End Shafe
+;1142:		Com_Printf("Sending to master number %d \n", i);
 ADDRGP4 $606
 ARGP4
 ADDRLP4 0
@@ -4819,8 +4817,8 @@ ARGI4
 ADDRGP4 Com_Printf
 CALLV
 pop
-line 1142
-;1142:		if (strlen(protocol)) {
+line 1143
+;1143:		if (strlen(protocol)) {
 ADDRLP4 4
 ARGP4
 ADDRLP4 76
@@ -4831,8 +4829,8 @@ ADDRLP4 76
 INDIRI4
 CNSTI4 0
 EQI4 $607
-line 1143
-;1143:			trap_Cmd_ExecuteText( EXEC_APPEND, va( "globalservers %d %s%s\n", i, protocol, myargs ));
+line 1144
+;1144:			trap_Cmd_ExecuteText( EXEC_APPEND, va( "globalservers %d %s%s\n", i, protocol, myargs ));
 ADDRGP4 $609
 ARGP4
 ADDRLP4 0
@@ -4854,15 +4852,15 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 1144
-;1144:		}
+line 1145
+;1145:		}
 ADDRGP4 $608
 JUMPV
 LABELV $607
-line 1145
-;1145:		else {
 line 1146
-;1146:			trap_Cmd_ExecuteText( EXEC_APPEND, va( "globalservers %d %d%s\n", i, (int)trap_Cvar_VariableValue( "protocol" ), myargs ) );
+;1146:		else {
+line 1147
+;1147:			trap_Cmd_ExecuteText( EXEC_APPEND, va( "globalservers %d %d%s\n", i, (int)trap_Cvar_VariableValue( "protocol" ), myargs ) );
 ADDRGP4 $611
 ARGP4
 ADDRLP4 80
@@ -4892,40 +4890,40 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 1147
-;1147:		}
-LABELV $608
 line 1148
-;1148:	}
-LABELV $579
+;1148:		}
+LABELV $608
 line 1149
-;1149:}
+;1149:	}
+LABELV $579
+line 1150
+;1150:}
 LABELV $561
 endproc ArenaServers_StartRefresh 88 16
 export ArenaServers_SaveChanges
 proc ArenaServers_SaveChanges 12 8
-line 1158
-;1150:
+line 1159
 ;1151:
-;1152:/*
-;1153:=================
-;1154:ArenaServers_SaveChanges
-;1155:=================
-;1156:*/
-;1157:void ArenaServers_SaveChanges( void )
-;1158:{
-line 1161
-;1159:	int	i;
-;1160:
-;1161:	for (i=0; i<g_arenaservers.numfavoriteaddresses; i++)
+;1152:
+;1153:/*
+;1154:=================
+;1155:ArenaServers_SaveChanges
+;1156:=================
+;1157:*/
+;1158:void ArenaServers_SaveChanges( void )
+;1159:{
+line 1162
+;1160:	int	i;
+;1161:
+;1162:	for (i=0; i<g_arenaservers.numfavoriteaddresses; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $616
 JUMPV
 LABELV $613
-line 1162
-;1162:		trap_Cvar_Set( va("server%d",i+1), g_arenaservers.favoriteaddresses[i] );
+line 1163
+;1163:		trap_Cvar_Set( va("server%d",i+1), g_arenaservers.favoriteaddresses[i] );
 ADDRGP4 $446
 ARGP4
 ADDRLP4 0
@@ -4951,7 +4949,7 @@ ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 LABELV $614
-line 1161
+line 1162
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4964,14 +4962,14 @@ INDIRI4
 ADDRGP4 g_arenaservers+14952
 INDIRI4
 LTI4 $613
-line 1164
-;1163:
-;1164:	for (; i<MAX_FAVORITESERVERS; i++)
+line 1165
+;1164:
+;1165:	for (; i<MAX_FAVORITESERVERS; i++)
 ADDRGP4 $622
 JUMPV
 LABELV $619
-line 1165
-;1165:		trap_Cvar_Set( va("server%d",i+1), "" );
+line 1166
+;1166:		trap_Cvar_Set( va("server%d",i+1), "" );
 ADDRGP4 $446
 ARGP4
 ADDRLP4 0
@@ -4992,7 +4990,7 @@ ADDRGP4 trap_Cvar_Set
 CALLV
 pop
 LABELV $620
-line 1164
+line 1165
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -5004,43 +5002,43 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 16
 LTI4 $619
-line 1166
-;1166:}
+line 1167
+;1167:}
 LABELV $612
 endproc ArenaServers_SaveChanges 12 8
 export ArenaServers_Sort
 proc ArenaServers_Sort 0 16
-line 1174
-;1167:
-;1168:
-;1169:/*
-;1170:=================
-;1171:ArenaServers_Sort
-;1172:=================
-;1173:*/
-;1174:void ArenaServers_Sort( int type ) {
 line 1175
-;1175:	if( g_sortkey == type ) {
+;1168:
+;1169:
+;1170:/*
+;1171:=================
+;1172:ArenaServers_Sort
+;1173:=================
+;1174:*/
+;1175:void ArenaServers_Sort( int type ) {
+line 1176
+;1176:	if( g_sortkey == type ) {
 ADDRGP4 g_sortkey
 INDIRI4
 ADDRFP4 0
 INDIRI4
 NEI4 $624
-line 1176
-;1176:		return;
+line 1177
+;1177:		return;
 ADDRGP4 $623
 JUMPV
 LABELV $624
-line 1179
-;1177:	}
-;1178:
-;1179:	g_sortkey = type;
+line 1180
+;1178:	}
+;1179:
+;1180:	g_sortkey = type;
 ADDRGP4 g_sortkey
 ADDRFP4 0
 INDIRI4
 ASGNI4
-line 1180
-;1180:	qsort( g_arenaservers.serverlist, *g_arenaservers.numservers, sizeof( servernode_t ), ArenaServers_Compare);
+line 1181
+;1181:	qsort( g_arenaservers.serverlist, *g_arenaservers.numservers, sizeof( servernode_t ), ArenaServers_Compare);
 ADDRGP4 g_arenaservers+13904
 INDIRP4
 ARGP4
@@ -5055,44 +5053,44 @@ ARGP4
 ADDRGP4 qsort
 CALLV
 pop
-line 1181
-;1181:}
+line 1182
+;1182:}
 LABELV $623
 endproc ArenaServers_Sort 0 16
 export ArenaServers_SetType
 proc ArenaServers_SetType 20 8
-line 1190
-;1182:
-;1183:
-;1184:/*
-;1185:=================
-;1186:ArenaServers_SetType
-;1187:=================
-;1188:*/
-;1189:void ArenaServers_SetType( int type )
-;1190:{
 line 1191
-;1191:	if (g_servertype == type)
+;1183:
+;1184:
+;1185:/*
+;1186:=================
+;1187:ArenaServers_SetType
+;1188:=================
+;1189:*/
+;1190:void ArenaServers_SetType( int type )
+;1191:{
+line 1192
+;1192:	if (g_servertype == type)
 ADDRGP4 g_servertype
 INDIRI4
 ADDRFP4 0
 INDIRI4
 NEI4 $629
-line 1192
-;1192:		return;
+line 1193
+;1193:		return;
 ADDRGP4 $628
 JUMPV
 LABELV $629
-line 1194
-;1193:
-;1194:	g_servertype = type;
+line 1195
+;1194:
+;1195:	g_servertype = type;
 ADDRGP4 g_servertype
 ADDRFP4 0
 INDIRI4
 ASGNI4
-line 1196
-;1195:
-;1196:	switch( type ) {
+line 1197
+;1196:
+;1197:	switch( type )
 ADDRLP4 0
 ADDRFP4 0
 INDIRI4
@@ -5117,86 +5115,88 @@ lit
 align 4
 LABELV $657
 address $633
-address $651
 address $639
+address $651
 address $645
 code
+line 1198
+;1198:	{
 LABELV $631
 LABELV $633
-line 1199
-;1197:	default:
-;1198:	case AS_LOCAL:
-;1199:		g_arenaservers.remove.generic.flags |= (QMF_INACTIVE|QMF_HIDDEN);
-ADDRLP4 4
-ADDRGP4 g_arenaservers+1464+44
-ASGNP4
-ADDRLP4 4
-INDIRP4
-ADDRLP4 4
-INDIRP4
-INDIRU4
-CNSTU4 20480
-BORU4
-ASGNU4
-line 1200
-;1200:		g_arenaservers.serverlist = g_localserverlist;
-ADDRGP4 g_arenaservers+13904
-ADDRGP4 g_localserverlist
-ASGNP4
 line 1201
-;1201:		g_arenaservers.numservers = &g_numlocalservers;
-ADDRGP4 g_arenaservers+13900
-ADDRGP4 g_numlocalservers
-ASGNP4
-line 1202
-;1202:		g_arenaservers.maxservers = MAX_LOCALSERVERS;
-ADDRGP4 g_arenaservers+13920
-CNSTI4 128
-ASGNI4
-line 1203
-;1203:		break;
-ADDRGP4 $632
-JUMPV
-LABELV $639
-line 1206
-;1204:
-;1205:	case AS_GLOBAL:
-;1206:		g_arenaservers.remove.generic.flags |= (QMF_INACTIVE|QMF_HIDDEN);
-ADDRLP4 8
+;1199:	default:
+;1200:	case AS_GLOBAL: // AS_Global is now set as default -Vincent
+;1201:		g_arenaservers.remove.generic.flags |= (QMF_INACTIVE|QMF_HIDDEN);
+ADDRLP4 4
 ADDRGP4 g_arenaservers+1464+44
 ASGNP4
-ADDRLP4 8
+ADDRLP4 4
 INDIRP4
-ADDRLP4 8
+ADDRLP4 4
 INDIRP4
 INDIRU4
 CNSTU4 20480
 BORU4
 ASGNU4
-line 1207
-;1207:		g_arenaservers.serverlist = g_globalserverlist;
+line 1202
+;1202:		g_arenaservers.serverlist = g_globalserverlist;
 ADDRGP4 g_arenaservers+13904
 ADDRGP4 g_globalserverlist
 ASGNP4
-line 1208
-;1208:		g_arenaservers.numservers = &g_numglobalservers;
+line 1203
+;1203:		g_arenaservers.numservers = &g_numglobalservers;
 ADDRGP4 g_arenaservers+13900
 ADDRGP4 g_numglobalservers
 ASGNP4
-line 1209
-;1209:		g_arenaservers.maxservers = MAX_GLOBALSERVERS;
+line 1204
+;1204:		g_arenaservers.maxservers = MAX_GLOBALSERVERS;
 ADDRGP4 g_arenaservers+13920
 CNSTI4 128
 ASGNI4
+line 1205
+;1205:		break;
+ADDRGP4 $632
+JUMPV
+LABELV $639
+line 1208
+;1206:
+;1207:	case AS_LOCAL:
+;1208:		g_arenaservers.remove.generic.flags |= (QMF_INACTIVE|QMF_HIDDEN);
+ADDRLP4 8
+ADDRGP4 g_arenaservers+1464+44
+ASGNP4
+ADDRLP4 8
+INDIRP4
+ADDRLP4 8
+INDIRP4
+INDIRU4
+CNSTU4 20480
+BORU4
+ASGNU4
+line 1209
+;1209:		g_arenaservers.serverlist = g_localserverlist;
+ADDRGP4 g_arenaservers+13904
+ADDRGP4 g_localserverlist
+ASGNP4
 line 1210
-;1210:		break;
+;1210:		g_arenaservers.numservers = &g_numlocalservers;
+ADDRGP4 g_arenaservers+13900
+ADDRGP4 g_numlocalservers
+ASGNP4
+line 1211
+;1211:		g_arenaservers.maxservers = MAX_LOCALSERVERS;
+ADDRGP4 g_arenaservers+13920
+CNSTI4 128
+ASGNI4
+line 1212
+;1212:		break;
 ADDRGP4 $632
 JUMPV
 LABELV $645
-line 1213
-;1211:
-;1212:	case AS_FAVORITES:
-;1213:		g_arenaservers.remove.generic.flags &= ~(QMF_INACTIVE|QMF_HIDDEN);
+line 1215
+;1213:
+;1214:	case AS_FAVORITES:
+;1215:		g_arenaservers.remove.generic.flags &= ~(QMF_INACTIVE|QMF_HIDDEN);
 ADDRLP4 12
 ADDRGP4 g_arenaservers+1464+44
 ASGNP4
@@ -5208,30 +5208,30 @@ INDIRU4
 CNSTU4 4294946815
 BANDU4
 ASGNU4
-line 1214
-;1214:		g_arenaservers.serverlist = g_favoriteserverlist;
+line 1216
+;1216:		g_arenaservers.serverlist = g_favoriteserverlist;
 ADDRGP4 g_arenaservers+13904
 ADDRGP4 g_favoriteserverlist
 ASGNP4
-line 1215
-;1215:		g_arenaservers.numservers = &g_numfavoriteservers;
+line 1217
+;1217:		g_arenaservers.numservers = &g_numfavoriteservers;
 ADDRGP4 g_arenaservers+13900
 ADDRGP4 g_numfavoriteservers
 ASGNP4
-line 1216
-;1216:		g_arenaservers.maxservers = MAX_FAVORITESERVERS;
+line 1218
+;1218:		g_arenaservers.maxservers = MAX_FAVORITESERVERS;
 ADDRGP4 g_arenaservers+13920
 CNSTI4 16
 ASGNI4
-line 1217
-;1217:		break;
+line 1219
+;1219:		break;
 ADDRGP4 $632
 JUMPV
 LABELV $651
-line 1220
-;1218:
-;1219:	case AS_MPLAYER:
-;1220:		g_arenaservers.remove.generic.flags |= (QMF_INACTIVE|QMF_HIDDEN);
+line 1222
+;1220:
+;1221:	case AS_MPLAYER:
+;1222:		g_arenaservers.remove.generic.flags |= (QMF_INACTIVE|QMF_HIDDEN);
 ADDRLP4 16
 ADDRGP4 g_arenaservers+1464+44
 ASGNP4
@@ -5243,71 +5243,74 @@ INDIRU4
 CNSTU4 20480
 BORU4
 ASGNU4
-line 1221
-;1221:		g_arenaservers.serverlist = g_mplayerserverlist;
+line 1223
+;1223:		g_arenaservers.serverlist = g_mplayerserverlist;
 ADDRGP4 g_arenaservers+13904
 ADDRGP4 g_mplayerserverlist
 ASGNP4
-line 1222
-;1222:		g_arenaservers.numservers = &g_nummplayerservers;
+line 1224
+;1224:		g_arenaservers.numservers = &g_nummplayerservers;
 ADDRGP4 g_arenaservers+13900
 ADDRGP4 g_nummplayerservers
 ASGNP4
-line 1223
-;1223:		g_arenaservers.maxservers = MAX_GLOBALSERVERS;
+line 1225
+;1225:		g_arenaservers.maxservers = MAX_GLOBALSERVERS;
 ADDRGP4 g_arenaservers+13920
 CNSTI4 128
 ASGNI4
-line 1224
-;1224:		break;
+line 1226
+;1226:		break;
 LABELV $632
-line 1228
-;1225:		
-;1226:	}
-;1227:
-;1228:	if( !*g_arenaservers.numservers ) {
+line 1230
+;1227:		
+;1228:	}
+;1229:
+;1230:	if( !*g_arenaservers.numservers )
 ADDRGP4 g_arenaservers+13900
 INDIRP4
 INDIRI4
 CNSTI4 0
 NEI4 $658
-line 1229
-;1229:		ArenaServers_StartRefresh();
+line 1231
+;1231:	{
+line 1232
+;1232:		ArenaServers_StartRefresh();
 ADDRGP4 ArenaServers_StartRefresh
 CALLV
 pop
-line 1230
-;1230:	}
+line 1233
+;1233:	}
 ADDRGP4 $659
 JUMPV
 LABELV $658
-line 1231
-;1231:	else {
-line 1233
-;1232:		// avoid slow operation, use existing results
-;1233:		g_arenaservers.currentping       = *g_arenaservers.numservers;
+line 1235
+;1234:	else 
+;1235:	{
+line 1237
+;1236:		// avoid slow operation, use existing results
+;1237:		g_arenaservers.currentping       = *g_arenaservers.numservers;
 ADDRGP4 g_arenaservers+13908
 ADDRGP4 g_arenaservers+13900
 INDIRP4
 INDIRI4
 ASGNI4
-line 1234
-;1234:		g_arenaservers.numqueriedservers = *g_arenaservers.numservers; 
+line 1238
+;1238:		g_arenaservers.numqueriedservers = *g_arenaservers.numservers; 
 ADDRGP4 g_arenaservers+13896
 ADDRGP4 g_arenaservers+13900
 INDIRP4
 INDIRI4
 ASGNI4
-line 1235
-;1235:		ArenaServers_UpdateMenu();
+line 1239
+;1239:		ArenaServers_UpdateMenu();
 ADDRGP4 ArenaServers_UpdateMenu
 CALLV
 pop
-line 1236
-;1236:	}
+line 1240
+;1240:	}
 LABELV $659
-line 1237
-;1237:	strcpy(g_arenaservers.status.string,"hit refresh to update");
+line 1241
+;1241:	strcpy(g_arenaservers.status.string,"hit refresh to update");
 ADDRGP4 g_arenaservers+1320+60
 INDIRP4
 ARGP4
@@ -5316,39 +5319,39 @@ ARGP4
 ADDRGP4 strcpy
 CALLP4
 pop
-line 1238
-;1238:}
+line 1242
+;1242:}
 LABELV $628
 endproc ArenaServers_SetType 20 8
 proc Punkbuster_ConfirmEnable 8 12
-line 1245
-;1239:
-;1240:/*
-;1241:=================
-;1242:PunkBuster_Confirm
-;1243:=================
-;1244:*/
-;1245:static void Punkbuster_ConfirmEnable( qboolean result ) {
-line 1246
-;1246:	if (result)
+line 1249
+;1243:
+;1244:/*
+;1245:=================
+;1246:PunkBuster_Confirm
+;1247:=================
+;1248:*/
+;1249:static void Punkbuster_ConfirmEnable( qboolean result ) {
+line 1250
+;1250:	if (result)
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
 EQI4 $669
-line 1247
-;1247:	{		
-line 1248
-;1248:		trap_SetPbClStatus(1);
+line 1251
+;1251:	{		
+line 1252
+;1252:		trap_SetPbClStatus(1);
 CNSTI4 1
 ARGI4
 ADDRGP4 trap_SetPbClStatus
 CALLV
 pop
-line 1249
-;1249:	}
+line 1253
+;1253:	}
 LABELV $669
-line 1250
-;1250:	g_arenaservers.punkbuster.curvalue = Com_Clamp( 0, 1, trap_Cvar_VariableValue( "cl_punkbuster" ) );
+line 1254
+;1254:	g_arenaservers.punkbuster.curvalue = Com_Clamp( 0, 1, trap_Cvar_VariableValue( "cl_punkbuster" ) );
 ADDRGP4 $673
 ARGP4
 ADDRLP4 0
@@ -5371,41 +5374,41 @@ ADDRLP4 4
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1251
-;1251:}
+line 1255
+;1255:}
 LABELV $668
 endproc Punkbuster_ConfirmEnable 8 12
 proc Punkbuster_ConfirmDisable 8 12
-line 1253
-;1252:
-;1253:static void Punkbuster_ConfirmDisable( qboolean result ) {
-line 1254
-;1254:	if (result)
+line 1257
+;1256:
+;1257:static void Punkbuster_ConfirmDisable( qboolean result ) {
+line 1258
+;1258:	if (result)
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
 EQI4 $675
-line 1255
-;1255:	{
-line 1256
-;1256:		trap_SetPbClStatus(0);
+line 1259
+;1259:	{
+line 1260
+;1260:		trap_SetPbClStatus(0);
 CNSTI4 0
 ARGI4
 ADDRGP4 trap_SetPbClStatus
 CALLV
 pop
-line 1257
-;1257:		UI_Message( punkbuster_msg );
+line 1261
+;1261:		UI_Message( punkbuster_msg );
 ADDRGP4 punkbuster_msg
 ARGP4
 ADDRGP4 UI_Message
 CALLV
 pop
-line 1258
-;1258:	}
+line 1262
+;1262:	}
 LABELV $675
-line 1259
-;1259:	g_arenaservers.punkbuster.curvalue = Com_Clamp( 0, 1, trap_Cvar_VariableValue( "cl_punkbuster" ) );
+line 1263
+;1263:	g_arenaservers.punkbuster.curvalue = Com_Clamp( 0, 1, trap_Cvar_VariableValue( "cl_punkbuster" ) );
 ADDRGP4 $673
 ARGP4
 ADDRLP4 0
@@ -5428,24 +5431,24 @@ ADDRLP4 4
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1260
-;1260:}
+line 1264
+;1264:}
 LABELV $674
 endproc Punkbuster_ConfirmDisable 8 12
 proc ArenaServers_Event 12 16
-line 1267
-;1261:
-;1262:/*
-;1263:=================
-;1264:ArenaServers_Event
-;1265:=================
-;1266:*/
-;1267:static void ArenaServers_Event( void* ptr, int event ) {
 line 1271
-;1268:	int		id;
-;1269:	int value;
-;1270:
-;1271:	id = ((menucommon_s*)ptr)->id;
+;1265:
+;1266:/*
+;1267:=================
+;1268:ArenaServers_Event
+;1269:=================
+;1270:*/
+;1271:static void ArenaServers_Event( void* ptr, int event ) {
+line 1275
+;1272:	int		id;
+;1273:	int value;
+;1274:
+;1275:	id = ((menucommon_s*)ptr)->id;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -5453,9 +5456,9 @@ CNSTI4 8
 ADDP4
 INDIRI4
 ASGNI4
-line 1273
-;1272:
-;1273:	if( event != QM_ACTIVATED && id != ID_LIST ) {
+line 1277
+;1276:
+;1277:	if( event != QM_ACTIVATED && id != ID_LIST ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
@@ -5464,15 +5467,15 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 15
 EQI4 $680
-line 1274
-;1274:		return;
+line 1278
+;1278:		return;
 ADDRGP4 $679
 JUMPV
 LABELV $680
-line 1277
-;1275:	}
-;1276:
-;1277:	switch( id ) {
+line 1281
+;1279:	}
+;1280:
+;1281:	switch( id ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
@@ -5510,34 +5513,34 @@ address $731
 address $690
 code
 LABELV $684
-line 1279
-;1278:	case ID_MASTER:
-;1279:		value = g_arenaservers.master.curvalue;
+line 1283
+;1282:	case ID_MASTER:
+;1283:		value = g_arenaservers.master.curvalue;
 ADDRLP4 4
 ADDRGP4 g_arenaservers+360+64
 INDIRI4
 ASGNI4
-line 1280
-;1280:		if (value >= 1)
+line 1284
+;1284:		if (value >= 1)
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 LTI4 $687
-line 1281
-;1281:		{
-line 1282
-;1282:			value++;
+line 1285
+;1285:		{
+line 1286
+;1286:			value++;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1283
-;1283:		}
+line 1287
+;1287:		}
 LABELV $687
-line 1284
-;1284:		trap_Cvar_SetValue( "ui_browserMaster", value );
+line 1288
+;1288:		trap_Cvar_SetValue( "ui_browserMaster", value );
 ADDRGP4 $689
 ARGP4
 ADDRLP4 4
@@ -5547,23 +5550,23 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 1285
-;1285:		ArenaServers_SetType( value );
+line 1289
+;1289:		ArenaServers_SetType( value );
 ADDRLP4 4
 INDIRI4
 ARGI4
 ADDRGP4 ArenaServers_SetType
 CALLV
 pop
-line 1286
-;1286:		break;
+line 1290
+;1290:		break;
 ADDRGP4 $683
 JUMPV
 LABELV $690
-line 1289
-;1287:
-;1288:	case ID_MSERVER:  // Shafe
-;1289:		trap_Cvar_SetValue( "ui_browserMasterNum", g_arenaservers.mserver.curvalue );	
+line 1293
+;1291:
+;1292:	case ID_MSERVER:  // Shafe
+;1293:		trap_Cvar_SetValue( "ui_browserMasterNum", g_arenaservers.mserver.curvalue );	
 ADDRGP4 $691
 ARGP4
 ADDRGP4 g_arenaservers+456+64
@@ -5573,15 +5576,15 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 1290
-;1290:		break;
+line 1294
+;1294:		break;
 ADDRGP4 $683
 JUMPV
 LABELV $694
-line 1293
-;1291:		
-;1292:	case ID_GAMETYPE:
-;1293:		trap_Cvar_SetValue( "ui_browserGameType", g_arenaservers.gametype.curvalue );
+line 1297
+;1295:		
+;1296:	case ID_GAMETYPE:
+;1297:		trap_Cvar_SetValue( "ui_browserGameType", g_arenaservers.gametype.curvalue );
 ADDRGP4 $695
 ARGP4
 ADDRGP4 g_arenaservers+552+64
@@ -5591,26 +5594,26 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 1294
-;1294:		g_gametype = g_arenaservers.gametype.curvalue;
+line 1298
+;1298:		g_gametype = g_arenaservers.gametype.curvalue;
 ADDRGP4 g_gametype
 ADDRGP4 g_arenaservers+552+64
 INDIRI4
 ASGNI4
-line 1295
-;1295:		ArenaServers_UpdateMenu();
+line 1299
+;1299:		ArenaServers_UpdateMenu();
 ADDRGP4 ArenaServers_UpdateMenu
 CALLV
 pop
-line 1296
-;1296:		break;
+line 1300
+;1300:		break;
 ADDRGP4 $683
 JUMPV
 LABELV $700
-line 1299
-;1297:
-;1298:	case ID_SORTKEY:
-;1299:		trap_Cvar_SetValue( "ui_browserSortKey", g_arenaservers.sortkey.curvalue );
+line 1303
+;1301:
+;1302:	case ID_SORTKEY:
+;1303:		trap_Cvar_SetValue( "ui_browserSortKey", g_arenaservers.sortkey.curvalue );
 ADDRGP4 $701
 ARGP4
 ADDRGP4 g_arenaservers+648+64
@@ -5620,28 +5623,28 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 1300
-;1300:		ArenaServers_Sort( g_arenaservers.sortkey.curvalue );
+line 1304
+;1304:		ArenaServers_Sort( g_arenaservers.sortkey.curvalue );
 ADDRGP4 g_arenaservers+648+64
 INDIRI4
 ARGI4
 ADDRGP4 ArenaServers_Sort
 CALLV
 pop
-line 1301
-;1301:		ArenaServers_UpdateMenu();
+line 1305
+;1305:		ArenaServers_UpdateMenu();
 ADDRGP4 ArenaServers_UpdateMenu
 CALLV
 pop
-line 1302
-;1302:		break;
+line 1306
+;1306:		break;
 ADDRGP4 $683
 JUMPV
 LABELV $706
-line 1305
-;1303:
-;1304:	case ID_SHOW_FULL:
-;1305:		trap_Cvar_SetValue( "ui_browserShowFull", g_arenaservers.showfull.curvalue );
+line 1309
+;1307:
+;1308:	case ID_SHOW_FULL:
+;1309:		trap_Cvar_SetValue( "ui_browserShowFull", g_arenaservers.showfull.curvalue );
 ADDRGP4 $707
 ARGP4
 ADDRGP4 g_arenaservers+744+60
@@ -5651,26 +5654,26 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 1306
-;1306:		g_fullservers = g_arenaservers.showfull.curvalue;
+line 1310
+;1310:		g_fullservers = g_arenaservers.showfull.curvalue;
 ADDRGP4 g_fullservers
 ADDRGP4 g_arenaservers+744+60
 INDIRI4
 ASGNI4
-line 1307
-;1307:		ArenaServers_UpdateMenu();
+line 1311
+;1311:		ArenaServers_UpdateMenu();
 ADDRGP4 ArenaServers_UpdateMenu
 CALLV
 pop
-line 1308
-;1308:		break;
+line 1312
+;1312:		break;
 ADDRGP4 $683
 JUMPV
 LABELV $712
-line 1311
-;1309:
-;1310:	case ID_SHOW_EMPTY:
-;1311:		trap_Cvar_SetValue( "ui_browserShowEmpty", g_arenaservers.showempty.curvalue );
+line 1315
+;1313:
+;1314:	case ID_SHOW_EMPTY:
+;1315:		trap_Cvar_SetValue( "ui_browserShowEmpty", g_arenaservers.showempty.curvalue );
 ADDRGP4 $713
 ARGP4
 ADDRGP4 g_arenaservers+808+60
@@ -5680,65 +5683,49 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 1312
-;1312:		g_emptyservers = g_arenaservers.showempty.curvalue;
+line 1316
+;1316:		g_emptyservers = g_arenaservers.showempty.curvalue;
 ADDRGP4 g_emptyservers
 ADDRGP4 g_arenaservers+808+60
 INDIRI4
 ASGNI4
-line 1313
-;1313:		ArenaServers_UpdateMenu();
+line 1317
+;1317:		ArenaServers_UpdateMenu();
 ADDRGP4 ArenaServers_UpdateMenu
 CALLV
 pop
-line 1314
-;1314:		break;
+line 1318
+;1318:		break;
 ADDRGP4 $683
 JUMPV
 LABELV $718
-line 1317
-;1315:
-;1316:	case ID_LIST:
-;1317:		if( event == QM_GOTFOCUS ) {
+line 1321
+;1319:
+;1320:	case ID_LIST:
+;1321:		if( event == QM_GOTFOCUS ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 1
 NEI4 $683
-line 1318
-;1318:			ArenaServers_UpdatePicture();
+line 1322
+;1322:			ArenaServers_UpdatePicture();
 ADDRGP4 ArenaServers_UpdatePicture
 CALLV
 pop
-line 1319
-;1319:		}
-line 1320
-;1320:		break;
-ADDRGP4 $683
-JUMPV
-LABELV $721
 line 1323
-;1321:
-;1322:	case ID_SCROLL_UP:
-;1323:		ScrollList_Key( &g_arenaservers.list, K_UPARROW );
-ADDRGP4 g_arenaservers+872
-ARGP4
-CNSTI4 132
-ARGI4
-ADDRGP4 ScrollList_Key
-CALLI4
-pop
+;1323:		}
 line 1324
 ;1324:		break;
 ADDRGP4 $683
 JUMPV
-LABELV $723
+LABELV $721
 line 1327
 ;1325:
-;1326:	case ID_SCROLL_DOWN:
-;1327:		ScrollList_Key( &g_arenaservers.list, K_DOWNARROW );
+;1326:	case ID_SCROLL_UP:
+;1327:		ScrollList_Key( &g_arenaservers.list, K_UPARROW );
 ADDRGP4 g_arenaservers+872
 ARGP4
-CNSTI4 133
+CNSTI4 132
 ARGI4
 ADDRGP4 ScrollList_Key
 CALLI4
@@ -5747,108 +5734,124 @@ line 1328
 ;1328:		break;
 ADDRGP4 $683
 JUMPV
-LABELV $725
+LABELV $723
 line 1331
 ;1329:
-;1330:	case ID_BACK:
-;1331:		ArenaServers_StopRefresh();
+;1330:	case ID_SCROLL_DOWN:
+;1331:		ScrollList_Key( &g_arenaservers.list, K_DOWNARROW );
+ADDRGP4 g_arenaservers+872
+ARGP4
+CNSTI4 133
+ARGI4
+ADDRGP4 ScrollList_Key
+CALLI4
+pop
+line 1332
+;1332:		break;
+ADDRGP4 $683
+JUMPV
+LABELV $725
+line 1335
+;1333:
+;1334:	case ID_BACK:
+;1335:		ArenaServers_StopRefresh();
 ADDRGP4 ArenaServers_StopRefresh
 CALLV
 pop
-line 1332
-;1332:		ArenaServers_SaveChanges();
+line 1336
+;1336:		ArenaServers_SaveChanges();
 ADDRGP4 ArenaServers_SaveChanges
 CALLV
 pop
-line 1333
-;1333:		UI_PopMenu();
-ADDRGP4 UI_PopMenu
-CALLV
-pop
-line 1334
-;1334:		break;
-ADDRGP4 $683
-JUMPV
-LABELV $726
 line 1337
-;1335:
-;1336:	case ID_REFRESH:
-;1337:		ArenaServers_StartRefresh();
-ADDRGP4 ArenaServers_StartRefresh
+;1337:		UI_PopMenu();
+ADDRGP4 UI_PopMenu
 CALLV
 pop
 line 1338
 ;1338:		break;
 ADDRGP4 $683
 JUMPV
-LABELV $727
+LABELV $726
 line 1341
 ;1339:
-;1340:	case ID_SPECIFY:
-;1341:		UI_SpecifyServerMenu();
-ADDRGP4 UI_SpecifyServerMenu
+;1340:	case ID_REFRESH:
+;1341:		ArenaServers_StartRefresh();
+ADDRGP4 ArenaServers_StartRefresh
 CALLV
 pop
 line 1342
 ;1342:		break;
 ADDRGP4 $683
 JUMPV
-LABELV $728
+LABELV $727
 line 1345
 ;1343:
-;1344:	case ID_CREATE:
-;1345:		UI_StartServerMenu( qtrue );
-CNSTI4 1
-ARGI4
-ADDRGP4 UI_StartServerMenu
+;1344:	case ID_SPECIFY:
+;1345:		UI_SpecifyServerMenu();
+ADDRGP4 UI_SpecifyServerMenu
 CALLV
 pop
 line 1346
 ;1346:		break;
 ADDRGP4 $683
 JUMPV
-LABELV $729
+LABELV $728
 line 1349
 ;1347:
-;1348:	case ID_CONNECT:
-;1349:		ArenaServers_Go();
-ADDRGP4 ArenaServers_Go
+;1348:	case ID_CREATE:
+;1349:		UI_StartServerMenu( qtrue );
+CNSTI4 1
+ARGI4
+ADDRGP4 UI_StartServerMenu
 CALLV
 pop
 line 1350
 ;1350:		break;
 ADDRGP4 $683
 JUMPV
-LABELV $730
+LABELV $729
 line 1353
 ;1351:
-;1352:	case ID_REMOVE:
-;1353:		ArenaServers_Remove();
-ADDRGP4 ArenaServers_Remove
+;1352:	case ID_CONNECT:
+;1353:		ArenaServers_Go();
+ADDRGP4 ArenaServers_Go
 CALLV
 pop
 line 1354
-;1354:		ArenaServers_UpdateMenu();
+;1354:		break;
+ADDRGP4 $683
+JUMPV
+LABELV $730
+line 1357
+;1355:
+;1356:	case ID_REMOVE:
+;1357:		ArenaServers_Remove();
+ADDRGP4 ArenaServers_Remove
+CALLV
+pop
+line 1358
+;1358:		ArenaServers_UpdateMenu();
 ADDRGP4 ArenaServers_UpdateMenu
 CALLV
 pop
-line 1355
-;1355:		break;
+line 1359
+;1359:		break;
 ADDRGP4 $683
 JUMPV
 LABELV $731
-line 1358
-;1356:	
-;1357:	case ID_PUNKBUSTER:
-;1358:		if (g_arenaservers.punkbuster.curvalue)			
+line 1362
+;1360:	
+;1361:	case ID_PUNKBUSTER:
+;1362:		if (g_arenaservers.punkbuster.curvalue)			
 ADDRGP4 g_arenaservers+14956+64
 INDIRI4
 CNSTI4 0
 EQI4 $732
-line 1359
-;1359:		{
-line 1360
-;1360:			UI_ConfirmMenu_Style( "Enable Punkbuster?",  UI_CENTER|UI_INVERSE|UI_SMALLFONT, (voidfunc_f)NULL, Punkbuster_ConfirmEnable );
+line 1363
+;1363:		{
+line 1364
+;1364:			UI_ConfirmMenu_Style( "Enable Punkbuster?",  UI_CENTER|UI_INVERSE|UI_SMALLFONT, (voidfunc_f)NULL, Punkbuster_ConfirmEnable );
 ADDRGP4 $736
 ARGP4
 CNSTI4 8209
@@ -5860,16 +5863,16 @@ ARGP4
 ADDRGP4 UI_ConfirmMenu_Style
 CALLV
 pop
-line 1361
-;1361:		}
+line 1365
+;1365:		}
 ADDRGP4 $683
 JUMPV
 LABELV $732
-line 1363
-;1362:		else
-;1363:		{
-line 1364
-;1364:			UI_ConfirmMenu_Style( "Disable Punkbuster?", UI_CENTER|UI_INVERSE|UI_SMALLFONT, (voidfunc_f)NULL, Punkbuster_ConfirmDisable );
+line 1367
+;1366:		else
+;1367:		{
+line 1368
+;1368:			UI_ConfirmMenu_Style( "Disable Punkbuster?", UI_CENTER|UI_INVERSE|UI_SMALLFONT, (voidfunc_f)NULL, Punkbuster_ConfirmDisable );
 ADDRGP4 $737
 ARGP4
 CNSTI4 8209
@@ -5881,64 +5884,64 @@ ARGP4
 ADDRGP4 UI_ConfirmMenu_Style
 CALLV
 pop
-line 1365
-;1365:		}
-line 1366
-;1366:		break;
+line 1369
+;1369:		}
+line 1370
+;1370:		break;
 LABELV $682
 LABELV $683
-line 1368
-;1367:	}
-;1368:}
+line 1372
+;1371:	}
+;1372:}
 LABELV $679
 endproc ArenaServers_Event 12 16
 proc ArenaServers_MenuDraw 0 4
-line 1377
-;1369:
-;1370:
-;1371:/*
-;1372:=================
-;1373:ArenaServers_MenuDraw
-;1374:=================
-;1375:*/
-;1376:static void ArenaServers_MenuDraw( void )
-;1377:{
-line 1378
-;1378:	if (g_arenaservers.refreshservers)
+line 1381
+;1373:
+;1374:
+;1375:/*
+;1376:=================
+;1377:ArenaServers_MenuDraw
+;1378:=================
+;1379:*/
+;1380:static void ArenaServers_MenuDraw( void )
+;1381:{
+line 1382
+;1382:	if (g_arenaservers.refreshservers)
 ADDRGP4 g_arenaservers+13912
 INDIRI4
 CNSTI4 0
 EQI4 $741
-line 1379
-;1379:		ArenaServers_DoRefresh();
+line 1383
+;1383:		ArenaServers_DoRefresh();
 ADDRGP4 ArenaServers_DoRefresh
 CALLV
 pop
 LABELV $741
-line 1381
-;1380:
-;1381:	Menu_Draw( &g_arenaservers.menu );
+line 1385
+;1384:
+;1385:	Menu_Draw( &g_arenaservers.menu );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 Menu_Draw
 CALLV
 pop
-line 1382
-;1382:}
+line 1386
+;1386:}
 LABELV $740
 endproc ArenaServers_MenuDraw 0 4
 proc ArenaServers_MenuKey 16 8
-line 1390
-;1383:
-;1384:
-;1385:/*
-;1386:=================
-;1387:ArenaServers_MenuKey
-;1388:=================
-;1389:*/
-;1390:static sfxHandle_t ArenaServers_MenuKey( int key ) {
-line 1391
-;1391:	if( key == K_SPACE  && g_arenaservers.refreshservers ) {
+line 1394
+;1387:
+;1388:
+;1389:/*
+;1390:=================
+;1391:ArenaServers_MenuKey
+;1392:=================
+;1393:*/
+;1394:static sfxHandle_t ArenaServers_MenuKey( int key ) {
+line 1395
+;1395:	if( key == K_SPACE  && g_arenaservers.refreshservers ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 32
@@ -5947,23 +5950,23 @@ ADDRGP4 g_arenaservers+13912
 INDIRI4
 CNSTI4 0
 EQI4 $745
-line 1392
-;1392:		ArenaServers_StopRefresh();	
+line 1396
+;1396:		ArenaServers_StopRefresh();	
 ADDRGP4 ArenaServers_StopRefresh
 CALLV
 pop
-line 1393
-;1393:		return menu_move_sound;
+line 1397
+;1397:		return menu_move_sound;
 ADDRGP4 menu_move_sound
 INDIRI4
 RETI4
 ADDRGP4 $744
 JUMPV
 LABELV $745
-line 1396
-;1394:	}
-;1395:
-;1396:	if( ( key == K_DEL || key == K_KP_DEL ) && ( g_servertype == AS_FAVORITES ) &&
+line 1400
+;1398:	}
+;1399:
+;1400:	if( ( key == K_DEL || key == K_KP_DEL ) && ( g_servertype == AS_FAVORITES ) &&
 ADDRLP4 0
 ADDRFP4 0
 INDIRI4
@@ -5993,30 +5996,30 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 NEU4 $748
-line 1397
-;1397:		( Menu_ItemAtCursor( &g_arenaservers.menu) == &g_arenaservers.list ) ) {
-line 1398
-;1398:		ArenaServers_Remove();
+line 1401
+;1401:		( Menu_ItemAtCursor( &g_arenaservers.menu) == &g_arenaservers.list ) ) {
+line 1402
+;1402:		ArenaServers_Remove();
 ADDRGP4 ArenaServers_Remove
 CALLV
 pop
-line 1399
-;1399:		ArenaServers_UpdateMenu();
+line 1403
+;1403:		ArenaServers_UpdateMenu();
 ADDRGP4 ArenaServers_UpdateMenu
 CALLV
 pop
-line 1400
-;1400:		return menu_move_sound;
+line 1404
+;1404:		return menu_move_sound;
 ADDRGP4 menu_move_sound
 INDIRI4
 RETI4
 ADDRGP4 $744
 JUMPV
 LABELV $748
-line 1403
-;1401:	}
-;1402:
-;1403:	if( key == K_MOUSE2 || key == K_ESCAPE ) {
+line 1407
+;1405:	}
+;1406:
+;1407:	if( key == K_MOUSE2 || key == K_ESCAPE ) {
 ADDRLP4 8
 ADDRFP4 0
 INDIRI4
@@ -6030,23 +6033,23 @@ INDIRI4
 CNSTI4 27
 NEI4 $752
 LABELV $754
-line 1404
-;1404:		ArenaServers_StopRefresh();
+line 1408
+;1408:		ArenaServers_StopRefresh();
 ADDRGP4 ArenaServers_StopRefresh
 CALLV
 pop
-line 1405
-;1405:		ArenaServers_SaveChanges();
+line 1409
+;1409:		ArenaServers_SaveChanges();
 ADDRGP4 ArenaServers_SaveChanges
 CALLV
 pop
-line 1406
-;1406:	}
+line 1410
+;1410:	}
 LABELV $752
-line 1409
-;1407:
-;1408:
-;1409:	return Menu_DefaultKey( &g_arenaservers.menu, key );
+line 1413
+;1411:
+;1412:
+;1413:	return Menu_DefaultKey( &g_arenaservers.menu, key );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRFP4 0
@@ -6067,25 +6070,25 @@ LABELV $756
 skip 64
 code
 proc ArenaServers_MenuInit 48 16
-line 1418
-;1410:}
-;1411:
-;1412:
-;1413:/*
-;1414:=================
-;1415:ArenaServers_MenuInit
-;1416:=================
-;1417:*/
-;1418:static void ArenaServers_MenuInit( void ) {
-line 1426
-;1419:	int			i;
-;1420:	int			type;
-;1421:	int			y;
-;1422:	int			value;
-;1423:	static char	statusbuffer[MAX_STATUSLENGTH];
-;1424:
-;1425:	// zero set all our globals
-;1426:	memset( &g_arenaservers, 0 ,sizeof(arenaservers_t) );
+line 1422
+;1414:}
+;1415:
+;1416:
+;1417:/*
+;1418:=================
+;1419:ArenaServers_MenuInit
+;1420:=================
+;1421:*/
+;1422:static void ArenaServers_MenuInit( void ) {
+line 1430
+;1423:	int			i;
+;1424:	int			type;
+;1425:	int			y;
+;1426:	int			value;
+;1427:	static char	statusbuffer[MAX_STATUSLENGTH];
+;1428:
+;1429:	// zero set all our globals
+;1430:	memset( &g_arenaservers, 0 ,sizeof(arenaservers_t) );
 ADDRGP4 g_arenaservers
 ARGP4
 CNSTI4 0
@@ -6095,422 +6098,422 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1428
-;1427:
-;1428:	ArenaServers_Cache();
+line 1432
+;1431:
+;1432:	ArenaServers_Cache();
 ADDRGP4 ArenaServers_Cache
 CALLV
 pop
-line 1430
-;1429:
-;1430:	g_arenaservers.menu.fullscreen = qtrue;
+line 1434
+;1433:
+;1434:	g_arenaservers.menu.fullscreen = qtrue;
 ADDRGP4 g_arenaservers+280
 CNSTI4 1
 ASGNI4
-line 1431
-;1431:	g_arenaservers.menu.wrapAround = qtrue;
+line 1435
+;1435:	g_arenaservers.menu.wrapAround = qtrue;
 ADDRGP4 g_arenaservers+276
 CNSTI4 1
 ASGNI4
-line 1432
-;1432:	g_arenaservers.menu.draw       = ArenaServers_MenuDraw;
+line 1436
+;1436:	g_arenaservers.menu.draw       = ArenaServers_MenuDraw;
 ADDRGP4 g_arenaservers+268
 ADDRGP4 ArenaServers_MenuDraw
 ASGNP4
-line 1433
-;1433:	g_arenaservers.menu.key        = ArenaServers_MenuKey;
+line 1437
+;1437:	g_arenaservers.menu.key        = ArenaServers_MenuKey;
 ADDRGP4 g_arenaservers+272
 ADDRGP4 ArenaServers_MenuKey
 ASGNP4
-line 1435
-;1434:
-;1435:	g_arenaservers.banner.generic.type  = MTYPE_BTEXT;
+line 1439
+;1438:
+;1439:	g_arenaservers.banner.generic.type  = MTYPE_BTEXT;
 ADDRGP4 g_arenaservers+288
 CNSTI4 10
 ASGNI4
-line 1436
-;1436:	g_arenaservers.banner.generic.flags = QMF_CENTER_JUSTIFY;
+line 1440
+;1440:	g_arenaservers.banner.generic.flags = QMF_CENTER_JUSTIFY;
 ADDRGP4 g_arenaservers+288+44
 CNSTU4 8
 ASGNU4
-line 1437
-;1437:	g_arenaservers.banner.generic.x	    = 320;
+line 1441
+;1441:	g_arenaservers.banner.generic.x	    = 320;
 ADDRGP4 g_arenaservers+288+12
 CNSTI4 320
 ASGNI4
-line 1438
-;1438:	g_arenaservers.banner.generic.y	    = 16;
+line 1442
+;1442:	g_arenaservers.banner.generic.y	    = 16;
 ADDRGP4 g_arenaservers+288+16
 CNSTI4 16
 ASGNI4
-line 1439
-;1439:	g_arenaservers.banner.string  		= "TREPIDATION SERVERS";
+line 1443
+;1443:	g_arenaservers.banner.string  		= "TREPIDATION SERVERS";
 ADDRGP4 g_arenaservers+288+60
 ADDRGP4 $770
 ASGNP4
-line 1440
-;1440:	g_arenaservers.banner.style  	    = UI_CENTER;
+line 1444
+;1444:	g_arenaservers.banner.style  	    = UI_CENTER;
 ADDRGP4 g_arenaservers+288+64
 CNSTI4 1
 ASGNI4
-line 1441
-;1441:	g_arenaservers.banner.color  	    = color_white;
+line 1445
+;1445:	g_arenaservers.banner.color  	    = color_white;
 ADDRGP4 g_arenaservers+288+68
 ADDRGP4 color_white
 ASGNP4
-line 1445
-;1442:
-;1443:
-;1444:
-;1445:	y = 80;
+line 1449
+;1446:
+;1447:
+;1448:
+;1449:	y = 80;
 ADDRLP4 4
 CNSTI4 80
 ASGNI4
-line 1446
-;1446:	g_arenaservers.master.generic.type			= MTYPE_SPINCONTROL;
+line 1450
+;1450:	g_arenaservers.master.generic.type			= MTYPE_SPINCONTROL;
 ADDRGP4 g_arenaservers+360
 CNSTI4 3
 ASGNI4
-line 1447
-;1447:	g_arenaservers.master.generic.name			= "Servers:";
+line 1451
+;1451:	g_arenaservers.master.generic.name			= "Servers:";
 ADDRGP4 g_arenaservers+360+4
 ADDRGP4 $778
 ASGNP4
-line 1448
-;1448:	g_arenaservers.master.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT|QMF_LEFT_JUSTIFY;
+line 1452
+;1452:	g_arenaservers.master.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT|QMF_LEFT_JUSTIFY;
 ADDRGP4 g_arenaservers+360+44
 CNSTU4 262
 ASGNU4
-line 1449
-;1449:	g_arenaservers.master.generic.callback		= ArenaServers_Event;
+line 1453
+;1453:	g_arenaservers.master.generic.callback		= ArenaServers_Event;
 ADDRGP4 g_arenaservers+360+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1450
-;1450:	g_arenaservers.master.generic.id			= ID_MASTER;
+line 1454
+;1454:	g_arenaservers.master.generic.id			= ID_MASTER;
 ADDRGP4 g_arenaservers+360+8
 CNSTI4 10
 ASGNI4
-line 1451
-;1451:	g_arenaservers.master.generic.x				= 275;  // 320 -- Bleh Shafe
+line 1455
+;1455:	g_arenaservers.master.generic.x				= 275;  // 320 -- Bleh Shafe
 ADDRGP4 g_arenaservers+360+12
 CNSTI4 275
 ASGNI4
-line 1452
-;1452:	g_arenaservers.master.generic.y				= y;
+line 1456
+;1456:	g_arenaservers.master.generic.y				= y;
 ADDRGP4 g_arenaservers+360+16
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1453
-;1453:	g_arenaservers.master.itemnames				= master_items;
+line 1457
+;1457:	g_arenaservers.master.itemnames				= master_items;
 ADDRGP4 g_arenaservers+360+76
 ADDRGP4 master_items
 ASGNP4
-line 1456
-;1454:
-;1455:	// Shafe - Multi Masters
-;1456:	y += SMALLCHAR_HEIGHT;	
+line 1460
+;1458:
+;1459:	// Shafe - Multi Masters
+;1460:	y += SMALLCHAR_HEIGHT;	
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 16
 ADDI4
 ASGNI4
-line 1457
-;1457:	g_arenaservers.mserver.generic.type			= MTYPE_SPINCONTROL;
+line 1461
+;1461:	g_arenaservers.mserver.generic.type			= MTYPE_SPINCONTROL;
 ADDRGP4 g_arenaservers+456
 CNSTI4 3
 ASGNI4
-line 1458
-;1458:	g_arenaservers.mserver.generic.name			= "Master Server:";
+line 1462
+;1462:	g_arenaservers.mserver.generic.name			= "Master Server:";
 ADDRGP4 g_arenaservers+456+4
 ADDRGP4 $794
 ASGNP4
-line 1459
-;1459:	g_arenaservers.mserver.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT|QMF_LEFT_JUSTIFY;
+line 1463
+;1463:	g_arenaservers.mserver.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT|QMF_LEFT_JUSTIFY;
 ADDRGP4 g_arenaservers+456+44
 CNSTU4 262
 ASGNU4
-line 1460
-;1460:	g_arenaservers.mserver.generic.callback		= ArenaServers_Event;
+line 1464
+;1464:	g_arenaservers.mserver.generic.callback		= ArenaServers_Event;
 ADDRGP4 g_arenaservers+456+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1461
-;1461:	g_arenaservers.mserver.generic.id			= ID_MSERVER;
+line 1465
+;1465:	g_arenaservers.mserver.generic.id			= ID_MSERVER;
 ADDRGP4 g_arenaservers+456+8
 CNSTI4 25
 ASGNI4
-line 1462
-;1462:	g_arenaservers.mserver.generic.x				= 275;  // 320 -- Bleh Shafe
+line 1466
+;1466:	g_arenaservers.mserver.generic.x				= 275;  // 320 -- Bleh Shafe
 ADDRGP4 g_arenaservers+456+12
 CNSTI4 275
 ASGNI4
-line 1463
-;1463:	g_arenaservers.mserver.generic.y				= y;
+line 1467
+;1467:	g_arenaservers.mserver.generic.y				= y;
 ADDRGP4 g_arenaservers+456+16
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1464
-;1464:	g_arenaservers.mserver.itemnames				= master_servers;
+line 1468
+;1468:	g_arenaservers.mserver.itemnames				= master_servers;
 ADDRGP4 g_arenaservers+456+76
 ADDRGP4 master_servers
 ASGNP4
-line 1466
-;1465:
-;1466:	y += SMALLCHAR_HEIGHT;
+line 1470
+;1469:
+;1470:	y += SMALLCHAR_HEIGHT;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 16
 ADDI4
 ASGNI4
-line 1467
-;1467:	g_arenaservers.gametype.generic.type		= MTYPE_SPINCONTROL;
+line 1471
+;1471:	g_arenaservers.gametype.generic.type		= MTYPE_SPINCONTROL;
 ADDRGP4 g_arenaservers+552
 CNSTI4 3
 ASGNI4
-line 1468
-;1468:	g_arenaservers.gametype.generic.name		= "Game Type:";
+line 1472
+;1472:	g_arenaservers.gametype.generic.name		= "Game Type:";
 ADDRGP4 g_arenaservers+552+4
 ADDRGP4 $810
 ASGNP4
-line 1469
-;1469:	g_arenaservers.gametype.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+line 1473
+;1473:	g_arenaservers.gametype.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
 ADDRGP4 g_arenaservers+552+44
 CNSTU4 258
 ASGNU4
-line 1470
-;1470:	g_arenaservers.gametype.generic.callback	= ArenaServers_Event;
+line 1474
+;1474:	g_arenaservers.gametype.generic.callback	= ArenaServers_Event;
 ADDRGP4 g_arenaservers+552+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1471
-;1471:	g_arenaservers.gametype.generic.id			= ID_GAMETYPE;
+line 1475
+;1475:	g_arenaservers.gametype.generic.id			= ID_GAMETYPE;
 ADDRGP4 g_arenaservers+552+8
 CNSTI4 11
 ASGNI4
-line 1472
-;1472:	g_arenaservers.gametype.generic.x			= 275;
+line 1476
+;1476:	g_arenaservers.gametype.generic.x			= 275;
 ADDRGP4 g_arenaservers+552+12
 CNSTI4 275
 ASGNI4
-line 1473
-;1473:	g_arenaservers.gametype.generic.y			= y;
+line 1477
+;1477:	g_arenaservers.gametype.generic.y			= y;
 ADDRGP4 g_arenaservers+552+16
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1474
-;1474:	g_arenaservers.gametype.itemnames			= servertype_items;
+line 1478
+;1478:	g_arenaservers.gametype.itemnames			= servertype_items;
 ADDRGP4 g_arenaservers+552+76
 ADDRGP4 servertype_items
 ASGNP4
-line 1476
-;1475:
-;1476:	y += SMALLCHAR_HEIGHT;
+line 1480
+;1479:
+;1480:	y += SMALLCHAR_HEIGHT;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 16
 ADDI4
 ASGNI4
-line 1477
-;1477:	g_arenaservers.sortkey.generic.type			= MTYPE_SPINCONTROL;
+line 1481
+;1481:	g_arenaservers.sortkey.generic.type			= MTYPE_SPINCONTROL;
 ADDRGP4 g_arenaservers+648
 CNSTI4 3
 ASGNI4
-line 1478
-;1478:	g_arenaservers.sortkey.generic.name			= "Sort By:";
+line 1482
+;1482:	g_arenaservers.sortkey.generic.name			= "Sort By:";
 ADDRGP4 g_arenaservers+648+4
 ADDRGP4 $826
 ASGNP4
-line 1479
-;1479:	g_arenaservers.sortkey.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+line 1483
+;1483:	g_arenaservers.sortkey.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
 ADDRGP4 g_arenaservers+648+44
 CNSTU4 258
 ASGNU4
-line 1480
-;1480:	g_arenaservers.sortkey.generic.callback		= ArenaServers_Event;
+line 1484
+;1484:	g_arenaservers.sortkey.generic.callback		= ArenaServers_Event;
 ADDRGP4 g_arenaservers+648+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1481
-;1481:	g_arenaservers.sortkey.generic.id			= ID_SORTKEY;
+line 1485
+;1485:	g_arenaservers.sortkey.generic.id			= ID_SORTKEY;
 ADDRGP4 g_arenaservers+648+8
 CNSTI4 12
 ASGNI4
-line 1482
-;1482:	g_arenaservers.sortkey.generic.x			= 275;
+line 1486
+;1486:	g_arenaservers.sortkey.generic.x			= 275;
 ADDRGP4 g_arenaservers+648+12
 CNSTI4 275
 ASGNI4
-line 1483
-;1483:	g_arenaservers.sortkey.generic.y			= y;
+line 1487
+;1487:	g_arenaservers.sortkey.generic.y			= y;
 ADDRGP4 g_arenaservers+648+16
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1484
-;1484:	g_arenaservers.sortkey.itemnames			= sortkey_items;
+line 1488
+;1488:	g_arenaservers.sortkey.itemnames			= sortkey_items;
 ADDRGP4 g_arenaservers+648+76
 ADDRGP4 sortkey_items
 ASGNP4
-line 1486
-;1485:
-;1486:	y += SMALLCHAR_HEIGHT;
+line 1490
+;1489:
+;1490:	y += SMALLCHAR_HEIGHT;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 16
 ADDI4
 ASGNI4
-line 1487
-;1487:	g_arenaservers.showfull.generic.type		= MTYPE_RADIOBUTTON;
+line 1491
+;1491:	g_arenaservers.showfull.generic.type		= MTYPE_RADIOBUTTON;
 ADDRGP4 g_arenaservers+744
 CNSTI4 5
 ASGNI4
-line 1488
-;1488:	g_arenaservers.showfull.generic.name		= "Show Full:";
+line 1492
+;1492:	g_arenaservers.showfull.generic.name		= "Show Full:";
 ADDRGP4 g_arenaservers+744+4
 ADDRGP4 $842
 ASGNP4
-line 1489
-;1489:	g_arenaservers.showfull.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+line 1493
+;1493:	g_arenaservers.showfull.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
 ADDRGP4 g_arenaservers+744+44
 CNSTU4 258
 ASGNU4
-line 1490
-;1490:	g_arenaservers.showfull.generic.callback	= ArenaServers_Event;
+line 1494
+;1494:	g_arenaservers.showfull.generic.callback	= ArenaServers_Event;
 ADDRGP4 g_arenaservers+744+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1491
-;1491:	g_arenaservers.showfull.generic.id			= ID_SHOW_FULL;
+line 1495
+;1495:	g_arenaservers.showfull.generic.id			= ID_SHOW_FULL;
 ADDRGP4 g_arenaservers+744+8
 CNSTI4 13
 ASGNI4
-line 1492
-;1492:	g_arenaservers.showfull.generic.x			= 275;
+line 1496
+;1496:	g_arenaservers.showfull.generic.x			= 275;
 ADDRGP4 g_arenaservers+744+12
 CNSTI4 275
 ASGNI4
-line 1493
-;1493:	g_arenaservers.showfull.generic.y			= y;
+line 1497
+;1497:	g_arenaservers.showfull.generic.y			= y;
 ADDRGP4 g_arenaservers+744+16
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1495
-;1494:
-;1495:	y += SMALLCHAR_HEIGHT;
+line 1499
+;1498:
+;1499:	y += SMALLCHAR_HEIGHT;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 16
 ADDI4
 ASGNI4
-line 1496
-;1496:	g_arenaservers.showempty.generic.type		= MTYPE_RADIOBUTTON;
+line 1500
+;1500:	g_arenaservers.showempty.generic.type		= MTYPE_RADIOBUTTON;
 ADDRGP4 g_arenaservers+808
 CNSTI4 5
 ASGNI4
-line 1497
-;1497:	g_arenaservers.showempty.generic.name		= "Show Empty:";
+line 1501
+;1501:	g_arenaservers.showempty.generic.name		= "Show Empty:";
 ADDRGP4 g_arenaservers+808+4
 ADDRGP4 $856
 ASGNP4
-line 1498
-;1498:	g_arenaservers.showempty.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+line 1502
+;1502:	g_arenaservers.showempty.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
 ADDRGP4 g_arenaservers+808+44
 CNSTU4 258
 ASGNU4
-line 1499
-;1499:	g_arenaservers.showempty.generic.callback	= ArenaServers_Event;
+line 1503
+;1503:	g_arenaservers.showempty.generic.callback	= ArenaServers_Event;
 ADDRGP4 g_arenaservers+808+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1500
-;1500:	g_arenaservers.showempty.generic.id			= ID_SHOW_EMPTY;
+line 1504
+;1504:	g_arenaservers.showempty.generic.id			= ID_SHOW_EMPTY;
 ADDRGP4 g_arenaservers+808+8
 CNSTI4 14
 ASGNI4
-line 1501
-;1501:	g_arenaservers.showempty.generic.x			= 275;
+line 1505
+;1505:	g_arenaservers.showempty.generic.x			= 275;
 ADDRGP4 g_arenaservers+808+12
 CNSTI4 275
 ASGNI4
-line 1502
-;1502:	g_arenaservers.showempty.generic.y			= y;
+line 1506
+;1506:	g_arenaservers.showempty.generic.y			= y;
 ADDRGP4 g_arenaservers+808+16
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1504
-;1503:
-;1504:	y += 3 * SMALLCHAR_HEIGHT;
+line 1508
+;1507:
+;1508:	y += 3 * SMALLCHAR_HEIGHT;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 48
 ADDI4
 ASGNI4
-line 1505
-;1505:	g_arenaservers.list.generic.type			= MTYPE_SCROLLLIST;
+line 1509
+;1509:	g_arenaservers.list.generic.type			= MTYPE_SCROLLLIST;
 ADDRGP4 g_arenaservers+872
 CNSTI4 8
 ASGNI4
-line 1506
-;1506:	g_arenaservers.list.generic.flags			= QMF_HIGHLIGHT_IF_FOCUS;
+line 1510
+;1510:	g_arenaservers.list.generic.flags			= QMF_HIGHLIGHT_IF_FOCUS;
 ADDRGP4 g_arenaservers+872+44
 CNSTU4 128
 ASGNU4
-line 1507
-;1507:	g_arenaservers.list.generic.id				= ID_LIST;
+line 1511
+;1511:	g_arenaservers.list.generic.id				= ID_LIST;
 ADDRGP4 g_arenaservers+872+8
 CNSTI4 15
 ASGNI4
-line 1508
-;1508:	g_arenaservers.list.generic.callback		= ArenaServers_Event;
+line 1512
+;1512:	g_arenaservers.list.generic.callback		= ArenaServers_Event;
 ADDRGP4 g_arenaservers+872+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1509
-;1509:	g_arenaservers.list.generic.x				= 10; //72;
+line 1513
+;1513:	g_arenaservers.list.generic.x				= 10; //72;
 ADDRGP4 g_arenaservers+872+12
 CNSTI4 10
 ASGNI4
-line 1510
-;1510:	g_arenaservers.list.generic.y				= y;
+line 1514
+;1514:	g_arenaservers.list.generic.y				= y;
 ADDRGP4 g_arenaservers+872+16
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1511
-;1511:	g_arenaservers.list.width					= MAX_LISTBOXWIDTH;
+line 1515
+;1515:	g_arenaservers.list.width					= MAX_LISTBOXWIDTH;
 ADDRGP4 g_arenaservers+872+80
 CNSTI4 68
 ASGNI4
-line 1512
-;1512:	g_arenaservers.list.height					= 11;
+line 1516
+;1516:	g_arenaservers.list.height					= 11;
 ADDRGP4 g_arenaservers+872+84
 CNSTI4 11
 ASGNI4
-line 1513
-;1513:	g_arenaservers.list.itemnames				= (const char **)g_arenaservers.items;
+line 1517
+;1517:	g_arenaservers.list.itemnames				= (const char **)g_arenaservers.items;
 ADDRGP4 g_arenaservers+872+76
 ADDRGP4 g_arenaservers+13384
 ASGNP4
-line 1514
-;1514:	for( i = 0; i < MAX_LISTBOXITEMS; i++ ) {
+line 1518
+;1518:	for( i = 0; i < MAX_LISTBOXITEMS; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $885
-line 1515
-;1515:		g_arenaservers.items[i] = g_arenaservers.table[i].buff;
+line 1519
+;1519:		g_arenaservers.items[i] = g_arenaservers.table[i].buff;
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -6524,10 +6527,10 @@ MULI4
 ADDRGP4 g_arenaservers+4168
 ADDP4
 ASGNP4
-line 1516
-;1516:	}
+line 1520
+;1520:	}
 LABELV $886
-line 1514
+line 1518
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -6538,688 +6541,688 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 128
 LTI4 $885
-line 1518
-;1517:
-;1518:	g_arenaservers.mappic.generic.type			= MTYPE_BITMAP;
+line 1522
+;1521:
+;1522:	g_arenaservers.mappic.generic.type			= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+968
 CNSTI4 6
 ASGNI4
-line 1519
-;1519:	g_arenaservers.mappic.generic.flags			= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
+line 1523
+;1523:	g_arenaservers.mappic.generic.flags			= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
 ADDRGP4 g_arenaservers+968+44
 CNSTU4 16388
 ASGNU4
-line 1520
-;1520:	g_arenaservers.mappic.generic.x				= 10; //72;
+line 1524
+;1524:	g_arenaservers.mappic.generic.x				= 10; //72;
 ADDRGP4 g_arenaservers+968+12
 CNSTI4 10
 ASGNI4
-line 1521
-;1521:	g_arenaservers.mappic.generic.y				= 80;
+line 1525
+;1525:	g_arenaservers.mappic.generic.y				= 80;
 ADDRGP4 g_arenaservers+968+16
 CNSTI4 80
 ASGNI4
-line 1522
-;1522:	g_arenaservers.mappic.width					= 128;
+line 1526
+;1526:	g_arenaservers.mappic.width					= 128;
 ADDRGP4 g_arenaservers+968+76
 CNSTI4 128
 ASGNI4
-line 1523
-;1523:	g_arenaservers.mappic.height				= 96;
+line 1527
+;1527:	g_arenaservers.mappic.height				= 96;
 ADDRGP4 g_arenaservers+968+80
 CNSTI4 96
 ASGNI4
-line 1524
-;1524:	g_arenaservers.mappic.errorpic				= ART_UNKNOWNMAP;
+line 1528
+;1528:	g_arenaservers.mappic.errorpic				= ART_UNKNOWNMAP;
 ADDRGP4 g_arenaservers+968+64
 ADDRGP4 $904
 ASGNP4
-line 1526
-;1525:
-;1526:	g_arenaservers.arrows.generic.type			= MTYPE_BITMAP;
+line 1530
+;1529:
+;1530:	g_arenaservers.arrows.generic.type			= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+1056
 CNSTI4 6
 ASGNI4
-line 1527
-;1527:	g_arenaservers.arrows.generic.name			= ART_ARROWS0;
+line 1531
+;1531:	g_arenaservers.arrows.generic.name			= ART_ARROWS0;
 ADDRGP4 g_arenaservers+1056+4
 ADDRGP4 $908
 ASGNP4
-line 1528
-;1528:	g_arenaservers.arrows.generic.flags			= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
+line 1532
+;1532:	g_arenaservers.arrows.generic.flags			= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
 ADDRGP4 g_arenaservers+1056+44
 CNSTU4 16388
 ASGNU4
-line 1529
-;1529:	g_arenaservers.arrows.generic.callback		= ArenaServers_Event;
+line 1533
+;1533:	g_arenaservers.arrows.generic.callback		= ArenaServers_Event;
 ADDRGP4 g_arenaservers+1056+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1530
-;1530:	g_arenaservers.arrows.generic.x				= 512+48;
+line 1534
+;1534:	g_arenaservers.arrows.generic.x				= 512+48;
 ADDRGP4 g_arenaservers+1056+12
 CNSTI4 560
 ASGNI4
-line 1531
-;1531:	g_arenaservers.arrows.generic.y				= 240-64+16;
+line 1535
+;1535:	g_arenaservers.arrows.generic.y				= 240-64+16;
 ADDRGP4 g_arenaservers+1056+16
 CNSTI4 192
 ASGNI4
-line 1532
-;1532:	g_arenaservers.arrows.width					= 64;
+line 1536
+;1536:	g_arenaservers.arrows.width					= 64;
 ADDRGP4 g_arenaservers+1056+76
 CNSTI4 64
 ASGNI4
-line 1533
-;1533:	g_arenaservers.arrows.height				= 128;
+line 1537
+;1537:	g_arenaservers.arrows.height				= 128;
 ADDRGP4 g_arenaservers+1056+80
 CNSTI4 128
 ASGNI4
-line 1535
-;1534:
-;1535:	g_arenaservers.up.generic.type				= MTYPE_BITMAP;
+line 1539
+;1538:
+;1539:	g_arenaservers.up.generic.type				= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+1144
 CNSTI4 6
 ASGNI4
-line 1536
-;1536:	g_arenaservers.up.generic.flags				= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_MOUSEONLY;
+line 1540
+;1540:	g_arenaservers.up.generic.flags				= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_MOUSEONLY;
 ADDRGP4 g_arenaservers+1144+44
 CNSTU4 2308
 ASGNU4
-line 1537
-;1537:	g_arenaservers.up.generic.callback			= ArenaServers_Event;
+line 1541
+;1541:	g_arenaservers.up.generic.callback			= ArenaServers_Event;
 ADDRGP4 g_arenaservers+1144+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1538
-;1538:	g_arenaservers.up.generic.id				= ID_SCROLL_UP;
+line 1542
+;1542:	g_arenaservers.up.generic.id				= ID_SCROLL_UP;
 ADDRGP4 g_arenaservers+1144+8
 CNSTI4 16
 ASGNI4
-line 1539
-;1539:	g_arenaservers.up.generic.x					= 512+48;
+line 1543
+;1543:	g_arenaservers.up.generic.x					= 512+48;
 ADDRGP4 g_arenaservers+1144+12
 CNSTI4 560
 ASGNI4
-line 1540
-;1540:	g_arenaservers.up.generic.y					= 240-64+16;
+line 1544
+;1544:	g_arenaservers.up.generic.y					= 240-64+16;
 ADDRGP4 g_arenaservers+1144+16
 CNSTI4 192
 ASGNI4
-line 1541
-;1541:	g_arenaservers.up.width						= 64;
+line 1545
+;1545:	g_arenaservers.up.width						= 64;
 ADDRGP4 g_arenaservers+1144+76
 CNSTI4 64
 ASGNI4
-line 1542
-;1542:	g_arenaservers.up.height					= 64;
+line 1546
+;1546:	g_arenaservers.up.height					= 64;
 ADDRGP4 g_arenaservers+1144+80
 CNSTI4 64
 ASGNI4
-line 1543
-;1543:	g_arenaservers.up.focuspic					= ART_ARROWS_UP;
+line 1547
+;1547:	g_arenaservers.up.focuspic					= ART_ARROWS_UP;
 ADDRGP4 g_arenaservers+1144+60
 ADDRGP4 $938
 ASGNP4
-line 1545
-;1544:
-;1545:	g_arenaservers.down.generic.type			= MTYPE_BITMAP;
+line 1549
+;1548:
+;1549:	g_arenaservers.down.generic.type			= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+1232
 CNSTI4 6
 ASGNI4
-line 1546
-;1546:	g_arenaservers.down.generic.flags			= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_MOUSEONLY;
+line 1550
+;1550:	g_arenaservers.down.generic.flags			= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_MOUSEONLY;
 ADDRGP4 g_arenaservers+1232+44
 CNSTU4 2308
 ASGNU4
-line 1547
-;1547:	g_arenaservers.down.generic.callback		= ArenaServers_Event;
+line 1551
+;1551:	g_arenaservers.down.generic.callback		= ArenaServers_Event;
 ADDRGP4 g_arenaservers+1232+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1548
-;1548:	g_arenaservers.down.generic.id				= ID_SCROLL_DOWN;
+line 1552
+;1552:	g_arenaservers.down.generic.id				= ID_SCROLL_DOWN;
 ADDRGP4 g_arenaservers+1232+8
 CNSTI4 17
 ASGNI4
-line 1549
-;1549:	g_arenaservers.down.generic.x				= 512+48;
+line 1553
+;1553:	g_arenaservers.down.generic.x				= 512+48;
 ADDRGP4 g_arenaservers+1232+12
 CNSTI4 560
 ASGNI4
-line 1550
-;1550:	g_arenaservers.down.generic.y				= 240+16;
+line 1554
+;1554:	g_arenaservers.down.generic.y				= 240+16;
 ADDRGP4 g_arenaservers+1232+16
 CNSTI4 256
 ASGNI4
-line 1551
-;1551:	g_arenaservers.down.width					= 64;
+line 1555
+;1555:	g_arenaservers.down.width					= 64;
 ADDRGP4 g_arenaservers+1232+76
 CNSTI4 64
 ASGNI4
-line 1552
-;1552:	g_arenaservers.down.height					= 64;
+line 1556
+;1556:	g_arenaservers.down.height					= 64;
 ADDRGP4 g_arenaservers+1232+80
 CNSTI4 64
 ASGNI4
-line 1553
-;1553:	g_arenaservers.down.focuspic				= ART_ARROWS_DOWN;
+line 1557
+;1557:	g_arenaservers.down.focuspic				= ART_ARROWS_DOWN;
 ADDRGP4 g_arenaservers+1232+60
 ADDRGP4 $956
 ASGNP4
-line 1555
-;1554:
-;1555:	y = 376;
+line 1559
+;1558:
+;1559:	y = 376;
 ADDRLP4 4
 CNSTI4 376
 ASGNI4
-line 1556
-;1556:	g_arenaservers.status.generic.type		= MTYPE_TEXT;
+line 1560
+;1560:	g_arenaservers.status.generic.type		= MTYPE_TEXT;
 ADDRGP4 g_arenaservers+1320
 CNSTI4 7
 ASGNI4
-line 1557
-;1557:	g_arenaservers.status.generic.x			= 320;
+line 1561
+;1561:	g_arenaservers.status.generic.x			= 320;
 ADDRGP4 g_arenaservers+1320+12
 CNSTI4 320
 ASGNI4
-line 1558
-;1558:	g_arenaservers.status.generic.y			= y;
+line 1562
+;1562:	g_arenaservers.status.generic.y			= y;
 ADDRGP4 g_arenaservers+1320+16
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1559
-;1559:	g_arenaservers.status.string			= statusbuffer;
+line 1563
+;1563:	g_arenaservers.status.string			= statusbuffer;
 ADDRGP4 g_arenaservers+1320+60
 ADDRGP4 $756
 ASGNP4
-line 1560
-;1560:	g_arenaservers.status.style				= UI_CENTER|UI_SMALLFONT;
+line 1564
+;1564:	g_arenaservers.status.style				= UI_CENTER|UI_SMALLFONT;
 ADDRGP4 g_arenaservers+1320+64
 CNSTI4 17
 ASGNI4
-line 1561
-;1561:	g_arenaservers.status.color				= menu_text_color;
+line 1565
+;1565:	g_arenaservers.status.color				= menu_text_color;
 ADDRGP4 g_arenaservers+1320+68
 ADDRGP4 menu_text_color
 ASGNP4
-line 1563
-;1562:
-;1563:	y += SMALLCHAR_HEIGHT;
+line 1567
+;1566:
+;1567:	y += SMALLCHAR_HEIGHT;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 16
 ADDI4
 ASGNI4
-line 1564
-;1564:	g_arenaservers.statusbar.generic.type   = MTYPE_TEXT;
+line 1568
+;1568:	g_arenaservers.statusbar.generic.type   = MTYPE_TEXT;
 ADDRGP4 g_arenaservers+1392
 CNSTI4 7
 ASGNI4
-line 1565
-;1565:	g_arenaservers.statusbar.generic.x	    = 320;
+line 1569
+;1569:	g_arenaservers.statusbar.generic.x	    = 320;
 ADDRGP4 g_arenaservers+1392+12
 CNSTI4 320
 ASGNI4
-line 1566
-;1566:	g_arenaservers.statusbar.generic.y	    = y;
+line 1570
+;1570:	g_arenaservers.statusbar.generic.y	    = y;
 ADDRGP4 g_arenaservers+1392+16
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1567
-;1567:	g_arenaservers.statusbar.string	        = "";
+line 1571
+;1571:	g_arenaservers.statusbar.string	        = "";
 ADDRGP4 g_arenaservers+1392+60
 ADDRGP4 $214
 ASGNP4
-line 1568
-;1568:	g_arenaservers.statusbar.style	        = UI_CENTER|UI_SMALLFONT;
+line 1572
+;1572:	g_arenaservers.statusbar.style	        = UI_CENTER|UI_SMALLFONT;
 ADDRGP4 g_arenaservers+1392+64
 CNSTI4 17
 ASGNI4
-line 1569
-;1569:	g_arenaservers.statusbar.color	        = text_color_normal;
+line 1573
+;1573:	g_arenaservers.statusbar.color	        = text_color_normal;
 ADDRGP4 g_arenaservers+1392+68
 ADDRGP4 text_color_normal
 ASGNP4
-line 1571
-;1570:
-;1571:	g_arenaservers.remove.generic.type		= MTYPE_BITMAP;
+line 1575
+;1574:
+;1575:	g_arenaservers.remove.generic.type		= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+1464
 CNSTI4 6
 ASGNI4
-line 1572
-;1572:	g_arenaservers.remove.generic.name		= ART_REMOVE0;
+line 1576
+;1576:	g_arenaservers.remove.generic.name		= ART_REMOVE0;
 ADDRGP4 g_arenaservers+1464+4
 ADDRGP4 $982
 ASGNP4
-line 1573
-;1573:	g_arenaservers.remove.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 1577
+;1577:	g_arenaservers.remove.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 g_arenaservers+1464+44
 CNSTU4 260
 ASGNU4
-line 1574
-;1574:	g_arenaservers.remove.generic.callback	= ArenaServers_Event;
+line 1578
+;1578:	g_arenaservers.remove.generic.callback	= ArenaServers_Event;
 ADDRGP4 g_arenaservers+1464+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1575
-;1575:	g_arenaservers.remove.generic.id		= ID_REMOVE;
+line 1579
+;1579:	g_arenaservers.remove.generic.id		= ID_REMOVE;
 ADDRGP4 g_arenaservers+1464+8
 CNSTI4 23
 ASGNI4
-line 1576
-;1576:	g_arenaservers.remove.generic.x			= 450;
+line 1580
+;1580:	g_arenaservers.remove.generic.x			= 450;
 ADDRGP4 g_arenaservers+1464+12
 CNSTI4 450
 ASGNI4
-line 1577
-;1577:	g_arenaservers.remove.generic.y			= 86;
+line 1581
+;1581:	g_arenaservers.remove.generic.y			= 86;
 ADDRGP4 g_arenaservers+1464+16
 CNSTI4 86
 ASGNI4
-line 1578
-;1578:	g_arenaservers.remove.width				= 96;
+line 1582
+;1582:	g_arenaservers.remove.width				= 96;
 ADDRGP4 g_arenaservers+1464+76
 CNSTI4 96
 ASGNI4
-line 1579
-;1579:	g_arenaservers.remove.height			= 48;
+line 1583
+;1583:	g_arenaservers.remove.height			= 48;
 ADDRGP4 g_arenaservers+1464+80
 CNSTI4 48
 ASGNI4
-line 1580
-;1580:	g_arenaservers.remove.focuspic			= ART_REMOVE1;
+line 1584
+;1584:	g_arenaservers.remove.focuspic			= ART_REMOVE1;
 ADDRGP4 g_arenaservers+1464+60
 ADDRGP4 $999
 ASGNP4
-line 1582
-;1581:
-;1582:	g_arenaservers.back.generic.type		= MTYPE_BITMAP;
+line 1586
+;1585:
+;1586:	g_arenaservers.back.generic.type		= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+1552
 CNSTI4 6
 ASGNI4
-line 1583
-;1583:	g_arenaservers.back.generic.name		= ART_BACK0;
+line 1587
+;1587:	g_arenaservers.back.generic.name		= ART_BACK0;
 ADDRGP4 g_arenaservers+1552+4
 ADDRGP4 $1003
 ASGNP4
-line 1584
-;1584:	g_arenaservers.back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 1588
+;1588:	g_arenaservers.back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 g_arenaservers+1552+44
 CNSTU4 260
 ASGNU4
-line 1585
-;1585:	g_arenaservers.back.generic.callback	= ArenaServers_Event;
+line 1589
+;1589:	g_arenaservers.back.generic.callback	= ArenaServers_Event;
 ADDRGP4 g_arenaservers+1552+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1586
-;1586:	g_arenaservers.back.generic.id			= ID_BACK;
+line 1590
+;1590:	g_arenaservers.back.generic.id			= ID_BACK;
 ADDRGP4 g_arenaservers+1552+8
 CNSTI4 18
 ASGNI4
-line 1587
-;1587:	g_arenaservers.back.generic.x			= 0;
+line 1591
+;1591:	g_arenaservers.back.generic.x			= 0;
 ADDRGP4 g_arenaservers+1552+12
 CNSTI4 0
 ASGNI4
-line 1588
-;1588:	g_arenaservers.back.generic.y			= 480-64;
+line 1592
+;1592:	g_arenaservers.back.generic.y			= 480-64;
 ADDRGP4 g_arenaservers+1552+16
 CNSTI4 416
 ASGNI4
-line 1589
-;1589:	g_arenaservers.back.width				= 128;
+line 1593
+;1593:	g_arenaservers.back.width				= 128;
 ADDRGP4 g_arenaservers+1552+76
 CNSTI4 128
 ASGNI4
-line 1590
-;1590:	g_arenaservers.back.height				= 64;
+line 1594
+;1594:	g_arenaservers.back.height				= 64;
 ADDRGP4 g_arenaservers+1552+80
 CNSTI4 64
 ASGNI4
-line 1591
-;1591:	g_arenaservers.back.focuspic			= ART_BACK1;
+line 1595
+;1595:	g_arenaservers.back.focuspic			= ART_BACK1;
 ADDRGP4 g_arenaservers+1552+60
 ADDRGP4 $1020
 ASGNP4
-line 1593
-;1592:
-;1593:	g_arenaservers.specify.generic.type	    = MTYPE_BITMAP;
+line 1597
+;1596:
+;1597:	g_arenaservers.specify.generic.type	    = MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+1728
 CNSTI4 6
 ASGNI4
-line 1594
-;1594:	g_arenaservers.specify.generic.name		= ART_SPECIFY0;
+line 1598
+;1598:	g_arenaservers.specify.generic.name		= ART_SPECIFY0;
 ADDRGP4 g_arenaservers+1728+4
 ADDRGP4 $1024
 ASGNP4
-line 1595
-;1595:	g_arenaservers.specify.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 1599
+;1599:	g_arenaservers.specify.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 g_arenaservers+1728+44
 CNSTU4 260
 ASGNU4
-line 1596
-;1596:	g_arenaservers.specify.generic.callback = ArenaServers_Event;
+line 1600
+;1600:	g_arenaservers.specify.generic.callback = ArenaServers_Event;
 ADDRGP4 g_arenaservers+1728+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1597
-;1597:	g_arenaservers.specify.generic.id	    = ID_SPECIFY;
+line 1601
+;1601:	g_arenaservers.specify.generic.id	    = ID_SPECIFY;
 ADDRGP4 g_arenaservers+1728+8
 CNSTI4 20
 ASGNI4
-line 1598
-;1598:	g_arenaservers.specify.generic.x		= 128;
+line 1602
+;1602:	g_arenaservers.specify.generic.x		= 128;
 ADDRGP4 g_arenaservers+1728+12
 CNSTI4 128
 ASGNI4
-line 1599
-;1599:	g_arenaservers.specify.generic.y		= 480-64;
+line 1603
+;1603:	g_arenaservers.specify.generic.y		= 480-64;
 ADDRGP4 g_arenaservers+1728+16
 CNSTI4 416
 ASGNI4
-line 1600
-;1600:	g_arenaservers.specify.width  		    = 128;
+line 1604
+;1604:	g_arenaservers.specify.width  		    = 128;
 ADDRGP4 g_arenaservers+1728+76
 CNSTI4 128
 ASGNI4
-line 1601
-;1601:	g_arenaservers.specify.height  		    = 64;
+line 1605
+;1605:	g_arenaservers.specify.height  		    = 64;
 ADDRGP4 g_arenaservers+1728+80
 CNSTI4 64
 ASGNI4
-line 1602
-;1602:	g_arenaservers.specify.focuspic         = ART_SPECIFY1;
+line 1606
+;1606:	g_arenaservers.specify.focuspic         = ART_SPECIFY1;
 ADDRGP4 g_arenaservers+1728+60
 ADDRGP4 $1041
 ASGNP4
-line 1604
-;1603:
-;1604:	g_arenaservers.refresh.generic.type		= MTYPE_BITMAP;
+line 1608
+;1607:
+;1608:	g_arenaservers.refresh.generic.type		= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+1640
 CNSTI4 6
 ASGNI4
-line 1605
-;1605:	g_arenaservers.refresh.generic.name		= ART_REFRESH0;
+line 1609
+;1609:	g_arenaservers.refresh.generic.name		= ART_REFRESH0;
 ADDRGP4 g_arenaservers+1640+4
 ADDRGP4 $1045
 ASGNP4
-line 1606
-;1606:	g_arenaservers.refresh.generic.flags	= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 1610
+;1610:	g_arenaservers.refresh.generic.flags	= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 g_arenaservers+1640+44
 CNSTU4 260
 ASGNU4
-line 1607
-;1607:	g_arenaservers.refresh.generic.callback	= ArenaServers_Event;
+line 1611
+;1611:	g_arenaservers.refresh.generic.callback	= ArenaServers_Event;
 ADDRGP4 g_arenaservers+1640+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1608
-;1608:	g_arenaservers.refresh.generic.id		= ID_REFRESH;
+line 1612
+;1612:	g_arenaservers.refresh.generic.id		= ID_REFRESH;
 ADDRGP4 g_arenaservers+1640+8
 CNSTI4 19
 ASGNI4
-line 1609
-;1609:	g_arenaservers.refresh.generic.x		= 256;
+line 1613
+;1613:	g_arenaservers.refresh.generic.x		= 256;
 ADDRGP4 g_arenaservers+1640+12
 CNSTI4 256
 ASGNI4
-line 1610
-;1610:	g_arenaservers.refresh.generic.y		= 480-64;
+line 1614
+;1614:	g_arenaservers.refresh.generic.y		= 480-64;
 ADDRGP4 g_arenaservers+1640+16
 CNSTI4 416
 ASGNI4
-line 1611
-;1611:	g_arenaservers.refresh.width			= 128;
+line 1615
+;1615:	g_arenaservers.refresh.width			= 128;
 ADDRGP4 g_arenaservers+1640+76
 CNSTI4 128
 ASGNI4
-line 1612
-;1612:	g_arenaservers.refresh.height			= 64;
+line 1616
+;1616:	g_arenaservers.refresh.height			= 64;
 ADDRGP4 g_arenaservers+1640+80
 CNSTI4 64
 ASGNI4
-line 1613
-;1613:	g_arenaservers.refresh.focuspic			= ART_REFRESH1;
+line 1617
+;1617:	g_arenaservers.refresh.focuspic			= ART_REFRESH1;
 ADDRGP4 g_arenaservers+1640+60
 ADDRGP4 $1062
 ASGNP4
-line 1615
-;1614:
-;1615:	g_arenaservers.create.generic.type		= MTYPE_BITMAP;
+line 1619
+;1618:
+;1619:	g_arenaservers.create.generic.type		= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+1816
 CNSTI4 6
 ASGNI4
-line 1616
-;1616:	g_arenaservers.create.generic.name		= ART_CREATE0;
+line 1620
+;1620:	g_arenaservers.create.generic.name		= ART_CREATE0;
 ADDRGP4 g_arenaservers+1816+4
 ADDRGP4 $1066
 ASGNP4
-line 1617
-;1617:	g_arenaservers.create.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 1621
+;1621:	g_arenaservers.create.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 g_arenaservers+1816+44
 CNSTU4 260
 ASGNU4
-line 1618
-;1618:	g_arenaservers.create.generic.callback	= ArenaServers_Event;
+line 1622
+;1622:	g_arenaservers.create.generic.callback	= ArenaServers_Event;
 ADDRGP4 g_arenaservers+1816+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1619
-;1619:	g_arenaservers.create.generic.id		= ID_CREATE;
+line 1623
+;1623:	g_arenaservers.create.generic.id		= ID_CREATE;
 ADDRGP4 g_arenaservers+1816+8
 CNSTI4 21
 ASGNI4
-line 1620
-;1620:	g_arenaservers.create.generic.x			= 384;
+line 1624
+;1624:	g_arenaservers.create.generic.x			= 384;
 ADDRGP4 g_arenaservers+1816+12
 CNSTI4 384
 ASGNI4
-line 1621
-;1621:	g_arenaservers.create.generic.y			= 480-64;
+line 1625
+;1625:	g_arenaservers.create.generic.y			= 480-64;
 ADDRGP4 g_arenaservers+1816+16
 CNSTI4 416
 ASGNI4
-line 1622
-;1622:	g_arenaservers.create.width				= 128;
+line 1626
+;1626:	g_arenaservers.create.width				= 128;
 ADDRGP4 g_arenaservers+1816+76
 CNSTI4 128
 ASGNI4
-line 1623
-;1623:	g_arenaservers.create.height			= 64;
+line 1627
+;1627:	g_arenaservers.create.height			= 64;
 ADDRGP4 g_arenaservers+1816+80
 CNSTI4 64
 ASGNI4
-line 1624
-;1624:	g_arenaservers.create.focuspic			= ART_CREATE1;
+line 1628
+;1628:	g_arenaservers.create.focuspic			= ART_CREATE1;
 ADDRGP4 g_arenaservers+1816+60
 ADDRGP4 $1083
 ASGNP4
-line 1626
-;1625:
-;1626:	g_arenaservers.go.generic.type			= MTYPE_BITMAP;
+line 1630
+;1629:
+;1630:	g_arenaservers.go.generic.type			= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+1904
 CNSTI4 6
 ASGNI4
-line 1627
-;1627:	g_arenaservers.go.generic.name			= ART_CONNECT0;
+line 1631
+;1631:	g_arenaservers.go.generic.name			= ART_CONNECT0;
 ADDRGP4 g_arenaservers+1904+4
 ADDRGP4 $1087
 ASGNP4
-line 1628
-;1628:	g_arenaservers.go.generic.flags			= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 1632
+;1632:	g_arenaservers.go.generic.flags			= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 g_arenaservers+1904+44
 CNSTU4 272
 ASGNU4
-line 1629
-;1629:	g_arenaservers.go.generic.callback		= ArenaServers_Event;
+line 1633
+;1633:	g_arenaservers.go.generic.callback		= ArenaServers_Event;
 ADDRGP4 g_arenaservers+1904+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1630
-;1630:	g_arenaservers.go.generic.id			= ID_CONNECT;
+line 1634
+;1634:	g_arenaservers.go.generic.id			= ID_CONNECT;
 ADDRGP4 g_arenaservers+1904+8
 CNSTI4 22
 ASGNI4
-line 1631
-;1631:	g_arenaservers.go.generic.x				= 640;
+line 1635
+;1635:	g_arenaservers.go.generic.x				= 640;
 ADDRGP4 g_arenaservers+1904+12
 CNSTI4 640
 ASGNI4
-line 1632
-;1632:	g_arenaservers.go.generic.y				= 480-64;
+line 1636
+;1636:	g_arenaservers.go.generic.y				= 480-64;
 ADDRGP4 g_arenaservers+1904+16
 CNSTI4 416
 ASGNI4
-line 1633
-;1633:	g_arenaservers.go.width					= 128;
+line 1637
+;1637:	g_arenaservers.go.width					= 128;
 ADDRGP4 g_arenaservers+1904+76
 CNSTI4 128
 ASGNI4
-line 1634
-;1634:	g_arenaservers.go.height				= 64;
+line 1638
+;1638:	g_arenaservers.go.height				= 64;
 ADDRGP4 g_arenaservers+1904+80
 CNSTI4 64
 ASGNI4
-line 1635
-;1635:	g_arenaservers.go.focuspic				= ART_CONNECT1;
+line 1639
+;1639:	g_arenaservers.go.focuspic				= ART_CONNECT1;
 ADDRGP4 g_arenaservers+1904+60
 ADDRGP4 $1104
 ASGNP4
-line 1637
-;1636:
-;1637:	g_arenaservers.punkbuster.generic.type			= MTYPE_SPINCONTROL;
+line 1641
+;1640:
+;1641:	g_arenaservers.punkbuster.generic.type			= MTYPE_SPINCONTROL;
 ADDRGP4 g_arenaservers+14956
 CNSTI4 3
 ASGNI4
-line 1638
-;1638:	g_arenaservers.punkbuster.generic.name			= "Punkbuster:";
+line 1642
+;1642:	g_arenaservers.punkbuster.generic.name			= "Punkbuster:";
 ADDRGP4 g_arenaservers+14956+4
 ADDRGP4 $1108
 ASGNP4
-line 1639
-;1639:	g_arenaservers.punkbuster.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+line 1643
+;1643:	g_arenaservers.punkbuster.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
 ADDRGP4 g_arenaservers+14956+44
 CNSTU4 258
 ASGNU4
-line 1640
-;1640:	g_arenaservers.punkbuster.generic.callback		= ArenaServers_Event;
+line 1644
+;1644:	g_arenaservers.punkbuster.generic.callback		= ArenaServers_Event;
 ADDRGP4 g_arenaservers+14956+48
 ADDRGP4 ArenaServers_Event
 ASGNP4
-line 1641
-;1641:	g_arenaservers.punkbuster.generic.id			= ID_PUNKBUSTER;
+line 1645
+;1645:	g_arenaservers.punkbuster.generic.id			= ID_PUNKBUSTER;
 ADDRGP4 g_arenaservers+14956+8
 CNSTI4 24
 ASGNI4
-line 1642
-;1642:	g_arenaservers.punkbuster.generic.x				= 480+32;
+line 1646
+;1646:	g_arenaservers.punkbuster.generic.x				= 480+32;
 ADDRGP4 g_arenaservers+14956+12
 CNSTI4 512
 ASGNI4
-line 1643
-;1643:	g_arenaservers.punkbuster.generic.y				= 144;
+line 1647
+;1647:	g_arenaservers.punkbuster.generic.y				= 144;
 ADDRGP4 g_arenaservers+14956+16
 CNSTI4 144
 ASGNI4
-line 1644
-;1644:	g_arenaservers.punkbuster.itemnames				= punkbuster_items;
+line 1648
+;1648:	g_arenaservers.punkbuster.itemnames				= punkbuster_items;
 ADDRGP4 g_arenaservers+14956+76
 ADDRGP4 punkbuster_items
 ASGNP4
-line 1646
-;1645:	
-;1646:	g_arenaservers.pblogo.generic.type			= MTYPE_BITMAP;
+line 1650
+;1649:	
+;1650:	g_arenaservers.pblogo.generic.type			= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+15668
 CNSTI4 6
 ASGNI4
-line 1647
-;1647:	g_arenaservers.pblogo.generic.name			= ART_PUNKBUSTER;
+line 1651
+;1651:	g_arenaservers.pblogo.generic.name			= ART_PUNKBUSTER;
 ADDRGP4 g_arenaservers+15668+4
 ADDRGP4 $1124
 ASGNP4
-line 1648
-;1648:	g_arenaservers.pblogo.generic.flags			= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
+line 1652
+;1652:	g_arenaservers.pblogo.generic.flags			= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
 ADDRGP4 g_arenaservers+15668+44
 CNSTU4 16388
 ASGNU4
-line 1649
-;1649:	g_arenaservers.pblogo.generic.x				= 526;
+line 1653
+;1653:	g_arenaservers.pblogo.generic.x				= 526;
 ADDRGP4 g_arenaservers+15668+12
 CNSTI4 526
 ASGNI4
-line 1650
-;1650:	g_arenaservers.pblogo.generic.y				= 176;
+line 1654
+;1654:	g_arenaservers.pblogo.generic.y				= 176;
 ADDRGP4 g_arenaservers+15668+16
 CNSTI4 176
 ASGNI4
-line 1651
-;1651:	g_arenaservers.pblogo.width					= 32;
+line 1655
+;1655:	g_arenaservers.pblogo.width					= 32;
 ADDRGP4 g_arenaservers+15668+76
 CNSTI4 32
 ASGNI4
-line 1652
-;1652:	g_arenaservers.pblogo.height				= 16;
+line 1656
+;1656:	g_arenaservers.pblogo.height				= 16;
 ADDRGP4 g_arenaservers+15668+80
 CNSTI4 16
 ASGNI4
-line 1653
-;1653:	g_arenaservers.pblogo.errorpic				= ART_UNKNOWNMAP;
+line 1657
+;1657:	g_arenaservers.pblogo.errorpic				= ART_UNKNOWNMAP;
 ADDRGP4 g_arenaservers+15668+64
 ADDRGP4 $904
 ASGNP4
-line 1656
-;1654:
-;1655:	// Shafe
-;1656:	g_arenaservers.lblname.generic.type			= MTYPE_BITMAP;
+line 1660
+;1658:
+;1659:	// Shafe
+;1660:	g_arenaservers.lblname.generic.type			= MTYPE_BITMAP;
 ADDRGP4 g_arenaservers+15052
 CNSTI4 6
 ASGNI4
-line 1657
-;1657:	g_arenaservers.lblname.generic.name			= ART_LBLNAME;
+line 1661
+;1661:	g_arenaservers.lblname.generic.name			= ART_LBLNAME;
 ADDRGP4 g_arenaservers+15052+4
 ADDRGP4 $1140
 ASGNP4
-line 1658
-;1658:	g_arenaservers.lblname.generic.flags		= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
+line 1662
+;1662:	g_arenaservers.lblname.generic.flags		= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
 ADDRGP4 g_arenaservers+15052+44
 CNSTU4 16388
 ASGNU4
-line 1659
-;1659:	g_arenaservers.lblname.generic.x			= 10;
+line 1663
+;1663:	g_arenaservers.lblname.generic.x			= 10;
 ADDRGP4 g_arenaservers+15052+12
 CNSTI4 10
 ASGNI4
-line 1660
-;1660:	g_arenaservers.lblname.generic.y			= 176;
+line 1664
+;1664:	g_arenaservers.lblname.generic.y			= 176;
 ADDRGP4 g_arenaservers+15052+16
 CNSTI4 176
 ASGNI4
-line 1661
-;1661:	g_arenaservers.lblname.width				= 800;
+line 1665
+;1665:	g_arenaservers.lblname.width				= 800;
 ADDRGP4 g_arenaservers+15052+76
 CNSTI4 800
 ASGNI4
-line 1662
-;1662:	g_arenaservers.lblname.height				= 16;
+line 1666
+;1666:	g_arenaservers.lblname.height				= 16;
 ADDRGP4 g_arenaservers+15052+80
 CNSTI4 16
 ASGNI4
-line 1663
-;1663:	g_arenaservers.lblname.errorpic				= ART_UNKNOWNMAP;
+line 1667
+;1667:	g_arenaservers.lblname.errorpic				= ART_UNKNOWNMAP;
 ADDRGP4 g_arenaservers+15052+64
 ADDRGP4 $904
 ASGNP4
-line 1668
-;1664:
-;1665:
-;1666:	//g_arenaservers.master.curvalue = 2;
-;1667:	
-;1668:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.banner );
+line 1672
+;1668:
+;1669:
+;1670:	//g_arenaservers.master.curvalue = 2;
+;1671:	
+;1672:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.banner );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+288
@@ -7227,9 +7230,9 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1670
-;1669:
-;1670:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.master );
+line 1674
+;1673:
+;1674:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.master );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+360
@@ -7237,8 +7240,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1671
-;1671:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.mserver ); // Shafe - Multimaster
+line 1675
+;1675:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.mserver ); // Shafe - Multimaster
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+456
@@ -7246,8 +7249,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1672
-;1672:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.gametype );
+line 1676
+;1676:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.gametype );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+552
@@ -7255,8 +7258,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1673
-;1673:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.sortkey );
+line 1677
+;1677:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.sortkey );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+648
@@ -7264,8 +7267,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1674
-;1674:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.showfull);
+line 1678
+;1678:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.showfull);
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+744
@@ -7273,8 +7276,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1675
-;1675:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.showempty );
+line 1679
+;1679:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.showempty );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+808
@@ -7282,9 +7285,9 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1677
-;1676:
-;1677:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.mappic );
+line 1681
+;1680:
+;1681:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.mappic );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+968
@@ -7292,8 +7295,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1678
-;1678:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.list );
+line 1682
+;1682:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.list );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+872
@@ -7301,8 +7304,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1679
-;1679:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.status );
+line 1683
+;1683:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.status );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1320
@@ -7310,8 +7313,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1680
-;1680:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.statusbar );
+line 1684
+;1684:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.statusbar );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1392
@@ -7319,8 +7322,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1681
-;1681:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.arrows );
+line 1685
+;1685:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.arrows );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1056
@@ -7328,8 +7331,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1682
-;1682:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.up );
+line 1686
+;1686:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.up );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1144
@@ -7337,8 +7340,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1683
-;1683:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.down );
+line 1687
+;1687:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.down );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1232
@@ -7346,9 +7349,9 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1685
-;1684:
-;1685:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.remove );
+line 1689
+;1688:
+;1689:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.remove );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1464
@@ -7356,8 +7359,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1686
-;1686:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.back );
+line 1690
+;1690:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.back );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1552
@@ -7365,8 +7368,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1687
-;1687:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.specify );
+line 1691
+;1691:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.specify );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1728
@@ -7374,8 +7377,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1688
-;1688:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.refresh );
+line 1692
+;1692:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.refresh );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1640
@@ -7383,8 +7386,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1689
-;1689:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.create );
+line 1693
+;1693:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.create );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1816
@@ -7392,8 +7395,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1690
-;1690:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.go );
+line 1694
+;1694:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.go );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+1904
@@ -7401,14 +7404,14 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1697
-;1691:
-;1692://	Shafe - Trep - No Punkbuster Garbage
-;1693://	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.punkbuster );
-;1694://	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.pblogo );
-;1695:	
-;1696:	// Shafe - Trep Menu Headers
-;1697:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.lblname);
+line 1701
+;1695:
+;1696://	Shafe - Trep - No Punkbuster Garbage
+;1697://	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.punkbuster );
+;1698://	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.pblogo );
+;1699:	
+;1700:	// Shafe - Trep Menu Headers
+;1701:	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.lblname);
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 g_arenaservers+15052
@@ -7416,15 +7419,15 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1699
-;1698:
-;1699:	ArenaServers_LoadFavorites();
+line 1703
+;1702:
+;1703:	ArenaServers_LoadFavorites();
 ADDRGP4 ArenaServers_LoadFavorites
 CALLV
 pop
-line 1701
-;1700:
-;1701:	g_servertype = Com_Clamp( 0, 3, ui_browserMaster.integer );
+line 1705
+;1704:
+;1705:	g_servertype = Com_Clamp( 0, 3, ui_browserMaster.integer );
 CNSTF4 0
 ARGF4
 CNSTF4 1077936128
@@ -7442,21 +7445,21 @@ ADDRLP4 16
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1703
-;1702:	// hack to get rid of MPlayer stuff
-;1703:	value = g_servertype;
+line 1707
+;1706:	// hack to get rid of MPlayer stuff
+;1707:	value = g_servertype;
 ADDRLP4 8
 ADDRGP4 g_servertype
 INDIRI4
 ASGNI4
-line 1704
-;1704:	if (value >= 1)
+line 1708
+;1708:	if (value >= 1)
 ADDRLP4 8
 INDIRI4
 CNSTI4 1
 LTI4 $1175
-line 1705
-;1705:		value--;
+line 1709
+;1709:		value--;
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
@@ -7464,16 +7467,16 @@ CNSTI4 1
 SUBI4
 ASGNI4
 LABELV $1175
-line 1707
-;1706:	
-;1707:	g_arenaservers.master.curvalue = value;
+line 1711
+;1710:	
+;1711:	g_arenaservers.master.curvalue = value;
 ADDRGP4 g_arenaservers+360+64
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 1709
-;1708:
-;1709:	g_gametype = Com_Clamp( 0, 4, ui_browserGameType.integer );
+line 1713
+;1712:
+;1713:	g_gametype = Com_Clamp( 0, 4, ui_browserGameType.integer );
 CNSTF4 0
 ARGF4
 CNSTF4 1082130432
@@ -7491,16 +7494,16 @@ ADDRLP4 20
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1710
-;1710:	g_arenaservers.gametype.curvalue = g_gametype;
+line 1714
+;1714:	g_arenaservers.gametype.curvalue = g_gametype;
 ADDRGP4 g_arenaservers+552+64
 ADDRGP4 g_gametype
 INDIRI4
 ASGNI4
-line 1713
-;1711:
-;1712:	// Shafe - Multi Master 
-;1713:	g_masteruse = Com_Clamp( 0, 4, ui_browserMasterNum.integer );
+line 1717
+;1715:
+;1716:	// Shafe - Multi Master 
+;1717:	g_masteruse = Com_Clamp( 0, 4, ui_browserMasterNum.integer );
 CNSTF4 0
 ARGF4
 CNSTF4 1082130432
@@ -7518,17 +7521,17 @@ ADDRLP4 24
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1714
-;1714:	g_arenaservers.mserver.curvalue = g_masteruse;
+line 1718
+;1718:	g_arenaservers.mserver.curvalue = g_masteruse;
 ADDRGP4 g_arenaservers+456+64
 ADDRGP4 g_masteruse
 INDIRI4
 ASGNI4
-line 1718
-;1715:
-;1716:
-;1717:
-;1718:	g_sortkey = Com_Clamp( 0, 4, ui_browserSortKey.integer );
+line 1722
+;1719:
+;1720:
+;1721:
+;1722:	g_sortkey = Com_Clamp( 0, 4, ui_browserSortKey.integer );
 CNSTF4 0
 ARGF4
 CNSTF4 1082130432
@@ -7546,15 +7549,15 @@ ADDRLP4 28
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1719
-;1719:	g_arenaservers.sortkey.curvalue = g_sortkey;
+line 1723
+;1723:	g_arenaservers.sortkey.curvalue = g_sortkey;
 ADDRGP4 g_arenaservers+648+64
 ADDRGP4 g_sortkey
 INDIRI4
 ASGNI4
-line 1721
-;1720:
-;1721:	g_fullservers = Com_Clamp( 0, 1, ui_browserShowFull.integer );
+line 1725
+;1724:
+;1725:	g_fullservers = Com_Clamp( 0, 1, ui_browserShowFull.integer );
 CNSTF4 0
 ARGF4
 CNSTF4 1065353216
@@ -7572,15 +7575,15 @@ ADDRLP4 32
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1722
-;1722:	g_arenaservers.showfull.curvalue = g_fullservers;
+line 1726
+;1726:	g_arenaservers.showfull.curvalue = g_fullservers;
 ADDRGP4 g_arenaservers+744+60
 ADDRGP4 g_fullservers
 INDIRI4
 ASGNI4
-line 1724
-;1723:
-;1724:	g_emptyservers = Com_Clamp( 0, 1, ui_browserShowEmpty.integer );
+line 1728
+;1727:
+;1728:	g_emptyservers = Com_Clamp( 0, 1, ui_browserShowEmpty.integer );
 CNSTF4 0
 ARGF4
 CNSTF4 1065353216
@@ -7598,15 +7601,15 @@ ADDRLP4 36
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1725
-;1725:	g_arenaservers.showempty.curvalue = g_emptyservers;
+line 1729
+;1729:	g_arenaservers.showempty.curvalue = g_emptyservers;
 ADDRGP4 g_arenaservers+808+60
 ADDRGP4 g_emptyservers
 INDIRI4
 ASGNI4
-line 1727
-;1726:	
-;1727:	g_arenaservers.punkbuster.curvalue = Com_Clamp( 0, 1, trap_Cvar_VariableValue( "cl_punkbuster" ) );
+line 1731
+;1730:	
+;1731:	g_arenaservers.punkbuster.curvalue = Com_Clamp( 0, 1, trap_Cvar_VariableValue( "cl_punkbuster" ) );
 ADDRGP4 $673
 ARGP4
 ADDRLP4 40
@@ -7629,30 +7632,30 @@ ADDRLP4 44
 INDIRF4
 CVFI4 4
 ASGNI4
-line 1730
-;1728:
-;1729:	// force to initial state and refresh
-;1730:	type = g_servertype;
+line 1734
+;1732:
+;1733:	// force to initial state and refresh
+;1734:	type = g_servertype;
 ADDRLP4 12
 ADDRGP4 g_servertype
 INDIRI4
 ASGNI4
-line 1731
-;1731:	g_servertype = -1;
+line 1735
+;1735:	g_servertype = -1;
 ADDRGP4 g_servertype
 CNSTI4 -1
 ASGNI4
-line 1732
-;1732:	ArenaServers_SetType( type );
+line 1736
+;1736:	ArenaServers_SetType( type );
 ADDRLP4 12
 INDIRI4
 ARGI4
 ADDRGP4 ArenaServers_SetType
 CALLV
 pop
-line 1734
-;1733:
-;1734:	trap_Cvar_Register(NULL, "debug_protocol", "", 0 );
+line 1738
+;1737:
+;1738:	trap_Cvar_Register(NULL, "debug_protocol", "", 0 );
 CNSTP4 0
 ARGP4
 ADDRGP4 $604
@@ -7664,155 +7667,155 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 1735
-;1735:}
+line 1739
+;1739:}
 LABELV $755
 endproc ArenaServers_MenuInit 48 16
 export ArenaServers_Cache
 proc ArenaServers_Cache 0 4
-line 1743
-;1736:
-;1737:
-;1738:/*
-;1739:=================
-;1740:ArenaServers_Cache
-;1741:=================
-;1742:*/
-;1743:void ArenaServers_Cache( void ) {
-line 1744
-;1744:	trap_R_RegisterShaderNoMip( ART_BACK0 );
+line 1747
+;1740:
+;1741:
+;1742:/*
+;1743:=================
+;1744:ArenaServers_Cache
+;1745:=================
+;1746:*/
+;1747:void ArenaServers_Cache( void ) {
+line 1748
+;1748:	trap_R_RegisterShaderNoMip( ART_BACK0 );
 ADDRGP4 $1003
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1745
-;1745:	trap_R_RegisterShaderNoMip( ART_BACK1 );
+line 1749
+;1749:	trap_R_RegisterShaderNoMip( ART_BACK1 );
 ADDRGP4 $1020
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1746
-;1746:	trap_R_RegisterShaderNoMip( ART_CREATE0 );
+line 1750
+;1750:	trap_R_RegisterShaderNoMip( ART_CREATE0 );
 ADDRGP4 $1066
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1747
-;1747:	trap_R_RegisterShaderNoMip( ART_CREATE1 );
+line 1751
+;1751:	trap_R_RegisterShaderNoMip( ART_CREATE1 );
 ADDRGP4 $1083
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1748
-;1748:	trap_R_RegisterShaderNoMip( ART_SPECIFY0 );
+line 1752
+;1752:	trap_R_RegisterShaderNoMip( ART_SPECIFY0 );
 ADDRGP4 $1024
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1749
-;1749:	trap_R_RegisterShaderNoMip( ART_SPECIFY1 );
+line 1753
+;1753:	trap_R_RegisterShaderNoMip( ART_SPECIFY1 );
 ADDRGP4 $1041
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1750
-;1750:	trap_R_RegisterShaderNoMip( ART_REFRESH0 );
+line 1754
+;1754:	trap_R_RegisterShaderNoMip( ART_REFRESH0 );
 ADDRGP4 $1045
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1751
-;1751:	trap_R_RegisterShaderNoMip( ART_REFRESH1 );
+line 1755
+;1755:	trap_R_RegisterShaderNoMip( ART_REFRESH1 );
 ADDRGP4 $1062
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1752
-;1752:	trap_R_RegisterShaderNoMip( ART_CONNECT0 );
+line 1756
+;1756:	trap_R_RegisterShaderNoMip( ART_CONNECT0 );
 ADDRGP4 $1087
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1753
-;1753:	trap_R_RegisterShaderNoMip( ART_CONNECT1 );
+line 1757
+;1757:	trap_R_RegisterShaderNoMip( ART_CONNECT1 );
 ADDRGP4 $1104
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1754
-;1754:	trap_R_RegisterShaderNoMip( ART_ARROWS0  );
+line 1758
+;1758:	trap_R_RegisterShaderNoMip( ART_ARROWS0  );
 ADDRGP4 $908
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1755
-;1755:	trap_R_RegisterShaderNoMip( ART_ARROWS_UP );
+line 1759
+;1759:	trap_R_RegisterShaderNoMip( ART_ARROWS_UP );
 ADDRGP4 $938
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1756
-;1756:	trap_R_RegisterShaderNoMip( ART_ARROWS_DOWN );
+line 1760
+;1760:	trap_R_RegisterShaderNoMip( ART_ARROWS_DOWN );
 ADDRGP4 $956
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1757
-;1757:	trap_R_RegisterShaderNoMip( ART_UNKNOWNMAP );
+line 1761
+;1761:	trap_R_RegisterShaderNoMip( ART_UNKNOWNMAP );
 ADDRGP4 $904
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1758
-;1758:	trap_R_RegisterShaderNoMip( ART_PUNKBUSTER );
+line 1762
+;1762:	trap_R_RegisterShaderNoMip( ART_PUNKBUSTER );
 ADDRGP4 $1124
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1759
-;1759:}
+line 1763
+;1763:}
 LABELV $1196
 endproc ArenaServers_Cache 0 4
 export UI_ArenaServersMenu
 proc UI_ArenaServersMenu 0 4
-line 1767
-;1760:
-;1761:
-;1762:/*
-;1763:=================
-;1764:UI_ArenaServersMenu
-;1765:=================
-;1766:*/
-;1767:void UI_ArenaServersMenu( void ) {
-line 1768
-;1768:	ArenaServers_MenuInit();
+line 1771
+;1764:
+;1765:
+;1766:/*
+;1767:=================
+;1768:UI_ArenaServersMenu
+;1769:=================
+;1770:*/
+;1771:void UI_ArenaServersMenu( void ) {
+line 1772
+;1772:	ArenaServers_MenuInit();
 ADDRGP4 ArenaServers_MenuInit
 CALLV
 pop
-line 1769
-;1769:	UI_PushMenu( &g_arenaservers.menu );
+line 1773
+;1773:	UI_PushMenu( &g_arenaservers.menu );
 ADDRGP4 g_arenaservers
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 1770
-;1770:}						  
+line 1774
+;1774:}						  
 LABELV $1197
 endproc UI_ArenaServersMenu 0 4
 bss
@@ -7909,6 +7912,7 @@ import UI_SaveConfigMenu
 import UI_SaveConfigMenu_Cache
 import UI_LoadConfigMenu
 import UI_LoadConfig_Cache
+import UI_DynamicCommandMenu_f
 import UI_TeamOrdersMenu_Cache
 import UI_TeamOrdersMenu_f
 import UI_TeamOrdersMenu
@@ -8066,6 +8070,7 @@ import UI_ConfirmMenu_Style
 import UI_ConfirmMenu
 import ConfirmMenu_Cache
 import UI_BotCommandMenu_f
+import UI_DynamicCommandMenu
 import UI_DynamicMenu
 import UI_DynamicMenuCache
 import UI_InGameMenu
@@ -8254,6 +8259,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

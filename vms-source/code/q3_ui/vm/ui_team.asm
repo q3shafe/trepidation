@@ -754,6 +754,7 @@ import UI_SaveConfigMenu
 import UI_SaveConfigMenu_Cache
 import UI_LoadConfigMenu
 import UI_LoadConfig_Cache
+import UI_DynamicCommandMenu_f
 import UI_TeamOrdersMenu_Cache
 import UI_TeamOrdersMenu_f
 import UI_TeamOrdersMenu
@@ -911,6 +912,7 @@ import UI_ConfirmMenu_Style
 import UI_ConfirmMenu
 import ConfirmMenu_Cache
 import UI_BotCommandMenu_f
+import UI_DynamicCommandMenu
 import UI_DynamicMenu
 import UI_DynamicMenuCache
 import UI_InGameMenu
@@ -1099,6 +1101,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

@@ -2245,7 +2245,7 @@ line 297
 ;296:void init_tonextint(qboolean verbose)
 ;297:{
 line 298
-;298:	float decimal = 0.9;
+;298:	float decimal = 0.9f;
 ADDRLP4 0
 CNSTF4 1063675494
 ASGNF4

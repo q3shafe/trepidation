@@ -1495,7 +1495,7 @@ LABELV $157
 line 272
 ;271:	case GT_FFA:
 ;272:		if (cgs.g_GameMode == 0) 
-ADDRGP4 cgs+155000
+ADDRGP4 cgs+155520
 INDIRI4
 CNSTI4 0
 NEI4 $158
@@ -1511,7 +1511,7 @@ line 275
 LABELV $158
 line 276
 ;276:		if (cgs.g_GameMode == 1) 
-ADDRGP4 cgs+155000
+ADDRGP4 cgs+155520
 INDIRI4
 CNSTI4 1
 NEI4 $162
@@ -1527,7 +1527,7 @@ line 279
 LABELV $162
 line 280
 ;280:		if (cgs.g_GameMode == 2) 
-ADDRGP4 cgs+155000
+ADDRGP4 cgs+155520
 INDIRI4
 CNSTI4 2
 NEI4 $154
@@ -1570,7 +1570,7 @@ LABELV $174
 line 292
 ;291:	case GT_TEAM:
 ;292:		if (cgs.g_GameMode == 2) 
-ADDRGP4 cgs+155000
+ADDRGP4 cgs+155520
 INDIRI4
 CNSTI4 2
 NEI4 $175
@@ -1586,7 +1586,7 @@ line 295
 ADDRGP4 $154
 JUMPV
 LABELV $175
-ADDRGP4 cgs+155000
+ADDRGP4 cgs+155520
 INDIRI4
 CNSTI4 3
 NEI4 $179
@@ -2132,6 +2132,7 @@ import CG_FillRect
 import CG_AdjustFrom640
 import CG_DrawActiveFrame
 import CG_AddBufferedSound
+import CG_ResetZoom
 import CG_ZoomUp_f
 import CG_ZoomDown_f
 import CG_TestModelPrevSkin_f
@@ -2349,6 +2350,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

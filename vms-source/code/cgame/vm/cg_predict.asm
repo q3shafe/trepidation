@@ -3411,14 +3411,21 @@ line 522
 ;520:=================
 ;521:*/
 ;522:void CG_PredictPlayerState( void ) {
-line 530
+line 529
 ;523:	int			cmdNum, current;
 ;524:	playerState_t	oldPlayerState;
 ;525:	qboolean	moved;
 ;526:	usercmd_t	oldestCmd;
 ;527:	usercmd_t	latestCmd;
 ;528://unlagged - optimized prediction
-;529:	int stateIndex, predictCmd;
+;529:	int stateIndex = 0, predictCmd = 0;
+ADDRLP4 4
+CNSTI4 0
+ASGNI4
+ADDRLP4 512
+CNSTI4 0
+ASGNI4
+line 530
 ;530:	int numPredicted = 0, numPlayedBack = 0; // debug code
 ADDRLP4 508
 CNSTI4 0
@@ -5244,6 +5251,7 @@ import CG_FillRect
 import CG_AdjustFrom640
 import CG_DrawActiveFrame
 import CG_AddBufferedSound
+import CG_ResetZoom
 import CG_ZoomUp_f
 import CG_ZoomDown_f
 import CG_TestModelPrevSkin_f
@@ -5461,6 +5469,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

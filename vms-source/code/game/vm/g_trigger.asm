@@ -2473,6 +2473,7 @@ import trap_AAS_AlternativeRouteGoals
 import trap_AAS_PredictRoute
 import trap_AAS_EnableRoutingArea
 import trap_AAS_AreaTravelTimeToGoalArea
+import trap_AAS_AreaLadder
 import trap_AAS_AreaReachability
 import trap_AAS_IntForBSPEpairKey
 import trap_AAS_FloatForBSPEpairKey
@@ -2705,6 +2706,7 @@ import SelectSpawnPoint
 import SetClientViewAngle
 import PickTeam
 import TeamLeader
+import BalanceTeams
 import TeamCount
 import BuildDisplacer
 import BuildMC
@@ -2880,6 +2882,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

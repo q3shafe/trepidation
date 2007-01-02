@@ -417,7 +417,7 @@ ARGI4
 ADDRLP4 40
 INDIRI4
 ARGI4
-ADDRGP4 cgs+153876+316
+ADDRGP4 cgs+154388+316
 INDIRI4
 ARGI4
 ADDRLP4 44
@@ -517,7 +517,7 @@ ADDRLP4 8
 ADDRGP4 rand
 CALLI4
 ASGNI4
-ADDRGP4 cgs+153876+392
+ADDRGP4 cgs+154388+392
 INDIRI4
 ARGI4
 ADDRLP4 12
@@ -604,7 +604,7 @@ ADDRLP4 8
 ADDRGP4 rand
 CALLI4
 ASGNI4
-ADDRGP4 cgs+153876+400
+ADDRGP4 cgs+154388+400
 INDIRI4
 ARGI4
 ADDRLP4 12
@@ -733,7 +733,7 @@ NEI4 $114
 line 170
 ;170:				s = cgs.media.gibBounce1Sound;
 ADDRLP4 8
-ADDRGP4 cgs+153876+760
+ADDRGP4 cgs+154388+768
 INDIRI4
 ASGNI4
 line 171
@@ -748,7 +748,7 @@ NEI4 $118
 line 172
 ;172:				s = cgs.media.gibBounce2Sound;
 ADDRLP4 8
-ADDRGP4 cgs+153876+764
+ADDRGP4 cgs+154388+772
 INDIRI4
 ASGNI4
 line 173
@@ -759,7 +759,7 @@ LABELV $118
 line 174
 ;174:				s = cgs.media.gibBounce3Sound;
 ADDRLP4 8
-ADDRGP4 cgs+153876+768
+ADDRGP4 cgs+154388+776
 INDIRI4
 ASGNI4
 line 175
@@ -3853,7 +3853,7 @@ INDIRI4
 ADDRLP4 164
 INDIRI4
 LSHI4
-ADDRGP4 cgs+153876+320
+ADDRGP4 cgs+154388+320
 ADDP4
 INDIRI4
 ASGNI4
@@ -4402,6 +4402,7 @@ import CG_FillRect
 import CG_AdjustFrom640
 import CG_DrawActiveFrame
 import CG_AddBufferedSound
+import CG_ResetZoom
 import CG_ZoomUp_f
 import CG_ZoomDown_f
 import CG_TestModelPrevSkin_f
@@ -4619,6 +4620,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand
