@@ -2129,7 +2129,7 @@ void CG_PlayerSprites( centity_t *cent ) {
 
 
 	// Any Buildable Object That is your team needs a cute little sprite too
-	if (cent->currentState.eType == ET_TURRET)
+	if (cent->currentState.eType == ET_BUILDABLE)
 	{
 			team = cent->currentState.team;
 			if ( cg.snap->ps.persistant[PERS_TEAM] == team) 
