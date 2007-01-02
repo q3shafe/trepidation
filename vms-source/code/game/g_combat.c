@@ -1142,7 +1142,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	}
 
 	// Grapple hook cannot be used to damage a buildable
-	if (targ->s.eType ==ET_TURRET && mod == MOD_GRAPPLE && g_GrappleMode.integer == 1)
+	if (targ->s.eType ==ET_BUILDABLE && mod == MOD_GRAPPLE && g_GrappleMode.integer == 1)
 	{
 		return;
 	}
@@ -1279,7 +1279,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 
 	
 	// No Team Killing Of MC -  Make this a cvar
-	if ((targ->s.eType ==ET_TURRET) && (targ->s.team == attacker->client->sess.sessionTeam))
+	if ((targ->s.eType ==ET_BUILDABLE) && (targ->s.team == attacker->client->sess.sessionTeam))
 	{
 		if ((!strcmp(targ->classname, "mc")) && (g_PCTeamkills.integer == 0))
 		{
@@ -1288,7 +1288,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	}
 
 	
-	if ((targ->s.eType ==ET_TURRET) && (targ->health < 750))
+	if ((targ->s.eType ==ET_BUILDABLE) && (targ->health < 750))
 	{
 		if (!strcmp(targ->classname, "mc"))
 		{	

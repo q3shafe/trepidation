@@ -3044,6 +3044,14 @@ int BotFindEnemy(bot_state_t *bs, int curenemy) {
 	else {
 		cursquaredist = 0;
 	}
+
+	// Trepidation Gametype
+	if (g_GameMode.integer == 3)
+	{
+
+
+	}
+
 #ifdef MISSIONPACK
 	if (gametype == GT_OBELISK) {
 		vec3_t target;

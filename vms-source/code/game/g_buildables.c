@@ -557,7 +557,7 @@ void createturretgun(gentity_t *ent)
 	turret->parent=ent->parent;
 	turret->chain=ent;
 	ent->chain=turret;
-	turret->s.eType=ET_TURRET;
+	turret->s.eType=ET_BUILDABLE;
 	
 	turret->s.time2=ent->s.time2;
 	turret->eventTime=200;
@@ -677,7 +677,7 @@ void BuildTurret( gentity_t *ent , int type )
 		base->health=300; // change this to make the turrets tougher or weaker.
 	}
 	
-	base->s.eType=ET_TURRET;
+	base->s.eType=ET_BUILDABLE;
 	
 	if (ent->client->sess.sessionTeam == TEAM_BLUE)
 	{
@@ -856,7 +856,7 @@ void BuildMC( gentity_t *ent )
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	base->think=MC_prethink;
 	base->health=1000; // change this to make the turrets tougher or weaker.
-	base->s.eType=ET_TURRET;
+	base->s.eType=ET_BUILDABLE;
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	base->takedamage=qtrue; // so they can be destroyed
 	base->die=turret_explode; // so they actually explode when destroyed
@@ -990,7 +990,7 @@ void BuildGenerator( gentity_t *ent )
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	base->think=gen_prethink;
 	base->health=400; // change this to make tougher or weaker.
-	base->s.eType=ET_TURRET;
+	base->s.eType=ET_BUILDABLE;
 	
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	base->takedamage=qtrue; // so they can be destroyed
@@ -1085,7 +1085,7 @@ void TD_think(gentity_t *ent)
 	target = ent->enemy;
 
 
-	if (target->s.eType == ET_TURRET) { return; } // Can't immobilize other buildables - Mantis #0000048 Shafe
+	if (target->s.eType == ET_BUILDABLE) { return; } // Can't immobilize other buildables - Mantis #0000048 Shafe
 
 	if (ent->count<level.time)
 	{	
@@ -1168,7 +1168,7 @@ void BuildDisplacer( gentity_t *ent )
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	base->think=td_prethink;
 	base->health=150; // change this to make tougher or weaker.
-	base->s.eType=ET_TURRET;
+	base->s.eType=ET_BUILDABLE;
 	
 	base->s.time2=9; 
 	base->takedamage=qtrue; // so they can be destroyed
