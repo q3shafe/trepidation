@@ -1379,7 +1379,7 @@ line 302
 ;299:BalanceTeams
 ;300:===================
 ;301:*/
-;302:void	Svcmd_BalanceTeams ( void ) {
+;302:void Svcmd_BalanceTeams ( void ) {
 line 305
 ;303:
 ;304:	// Blue Team Is Bigger Than Red 
@@ -1926,7 +1926,7 @@ line 404
 ;403:
 ;404:		cl = &level.clients[idnum];
 ADDRLP4 0
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -1983,7 +1983,7 @@ LABELV $245
 line 414
 ;414:		cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -2147,7 +2147,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3452
+CNSTI4 3456
 DIVI4
 MULI4
 ADDRGP4 g_entities+912
@@ -2168,7 +2168,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3452
+CNSTI4 3456
 DIVI4
 MULI4
 ADDRGP4 g_entities+912
@@ -2194,7 +2194,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3452
+CNSTI4 3456
 DIVI4
 MULI4
 ADDRGP4 g_entities+912
@@ -2285,7 +2285,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3452
+CNSTI4 3456
 DIVI4
 MULI4
 ADDRGP4 g_entities
@@ -2739,7 +2739,6 @@ CNSTI4 0
 RETI4
 LABELV $266
 endproc ConsoleCommand 1080 12
-import BalanceTeams
 import ConcatArgs
 bss
 align 4
@@ -2858,6 +2857,7 @@ import trap_AAS_AlternativeRouteGoals
 import trap_AAS_PredictRoute
 import trap_AAS_EnableRoutingArea
 import trap_AAS_AreaTravelTimeToGoalArea
+import trap_AAS_AreaLadder
 import trap_AAS_AreaReachability
 import trap_AAS_IntForBSPEpairKey
 import trap_AAS_FloatForBSPEpairKey
@@ -3087,6 +3087,7 @@ import SelectSpawnPoint
 import SetClientViewAngle
 import PickTeam
 import TeamLeader
+import BalanceTeams
 import TeamCount
 import BuildDisplacer
 import BuildMC
@@ -3263,6 +3264,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

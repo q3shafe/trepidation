@@ -5061,6 +5061,7 @@ import SelectSpawnPoint
 import SetClientViewAngle
 import PickTeam
 import TeamLeader
+import BalanceTeams
 import TeamCount
 import BuildDisplacer
 import BuildMC
@@ -5237,6 +5238,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

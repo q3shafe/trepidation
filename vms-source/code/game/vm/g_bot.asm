@@ -1101,7 +1101,7 @@ LABELV $136
 line 228
 ;228:			cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1305,7 +1305,7 @@ LABELV $158
 line 251
 ;251:			cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1583,7 +1583,7 @@ LABELV $188
 line 293
 ;293:		cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1746,7 +1746,7 @@ LABELV $203
 line 322
 ;322:		cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1876,7 +1876,7 @@ LABELV $217
 line 348
 ;348:		cl = level.clients + i;
 ADDRLP4 4
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -5685,6 +5685,7 @@ import trap_AAS_AlternativeRouteGoals
 import trap_AAS_PredictRoute
 import trap_AAS_EnableRoutingArea
 import trap_AAS_AreaTravelTimeToGoalArea
+import trap_AAS_AreaLadder
 import trap_AAS_AreaReachability
 import trap_AAS_IntForBSPEpairKey
 import trap_AAS_FloatForBSPEpairKey
@@ -5908,6 +5909,7 @@ import SelectSpawnPoint
 import SetClientViewAngle
 import PickTeam
 import TeamLeader
+import BalanceTeams
 import TeamCount
 import BuildDisplacer
 import BuildMC
@@ -6084,6 +6086,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

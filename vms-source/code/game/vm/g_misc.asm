@@ -1928,8 +1928,12 @@ line 362
 ;360: =================
 ;361: */
 ;362: void G_BreakGlass(gentity_t *ent, vec3_t point, int mod) {
+line 363
+;363:     gentity_t   *tent = NULL;
+ADDRLP4 24
+CNSTP4 0
+ASGNP4
 line 369
-;363:     gentity_t   *tent;
 ;364: 	vec3_t      size;
 ;365:     vec3_t      center;
 ;366: 	qboolean    splashdmg;
@@ -2111,7 +2115,7 @@ LABELV $143
 line 380
 ;379: 		case MOD_GAUNTLET:
 ;380: 		splashdmg = qfalse;
-ADDRLP4 24
+ADDRLP4 28
 CNSTI4 0
 ASGNI4
 line 381
@@ -2122,7 +2126,7 @@ LABELV $144
 line 383
 ;382: 		case MOD_SHOTGUN:
 ;383: 		splashdmg = qfalse;
-ADDRLP4 24
+ADDRLP4 28
 CNSTI4 0
 ASGNI4
 line 384
@@ -2133,7 +2137,7 @@ LABELV $145
 line 386
 ;385: 		case MOD_MACHINEGUN:
 ;386: 		splashdmg = qfalse;
-ADDRLP4 24
+ADDRLP4 28
 CNSTI4 0
 ASGNI4
 line 387
@@ -2144,7 +2148,7 @@ LABELV $146
 line 389
 ;388: 		case MOD_RAILGUN:
 ;389: 		splashdmg = qfalse;
-ADDRLP4 24
+ADDRLP4 28
 CNSTI4 0
 ASGNI4
 line 390
@@ -2155,7 +2159,7 @@ LABELV $147
 line 392
 ;391: 		case MOD_LIGHTNING:
 ;392: 		splashdmg = qfalse;
-ADDRLP4 24
+ADDRLP4 28
 CNSTI4 0
 ASGNI4
 line 393
@@ -2166,7 +2170,7 @@ LABELV $141
 line 395
 ;394: 		default:
 ;395: 		splashdmg = qtrue;
-ADDRLP4 24
+ADDRLP4 28
 CNSTI4 1
 ASGNI4
 line 396
@@ -2180,7 +2184,7 @@ line 402
 ;401: 	// so I just use the center of the glass
 ;402: 	switch( splashdmg ){
 ADDRLP4 60
-ADDRLP4 24
+ADDRLP4 28
 INDIRI4
 ASGNI4
 ADDRLP4 60
@@ -2199,13 +2203,13 @@ line 404
 ;404:     tent = G_TempEntity( center, EV_BREAK_GLASS );
 ADDRLP4 12
 ARGP4
-CNSTI4 70
+CNSTI4 72
 ARGI4
 ADDRLP4 68
 ADDRGP4 G_TempEntity
 CALLP4
 ASGNP4
-ADDRLP4 28
+ADDRLP4 24
 ADDRLP4 68
 INDIRP4
 ASGNP4
@@ -2220,13 +2224,13 @@ line 407
 ADDRFP4 4
 INDIRP4
 ARGP4
-CNSTI4 70
+CNSTI4 72
 ARGI4
 ADDRLP4 72
 ADDRGP4 G_TempEntity
 CALLP4
 ASGNP4
-ADDRLP4 28
+ADDRLP4 24
 ADDRLP4 72
 INDIRP4
 ASGNP4
@@ -2237,7 +2241,7 @@ LABELV $150
 line 410
 ;409: 	}
 ;410: 	tent->s.eventParm = 0;
-ADDRLP4 28
+ADDRLP4 24
 INDIRP4
 CNSTI4 184
 ADDP4
@@ -2360,6 +2364,7 @@ import trap_AAS_AlternativeRouteGoals
 import trap_AAS_PredictRoute
 import trap_AAS_EnableRoutingArea
 import trap_AAS_AreaTravelTimeToGoalArea
+import trap_AAS_AreaLadder
 import trap_AAS_AreaReachability
 import trap_AAS_IntForBSPEpairKey
 import trap_AAS_FloatForBSPEpairKey
@@ -2592,6 +2597,7 @@ import SelectSpawnPoint
 import SetClientViewAngle
 import PickTeam
 import TeamLeader
+import BalanceTeams
 import TeamCount
 import BuildDisplacer
 import BuildMC
@@ -2766,6 +2772,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

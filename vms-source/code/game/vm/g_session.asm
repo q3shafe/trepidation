@@ -108,7 +108,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3452
+CNSTI4 3456
 DIVI4
 ARGI4
 ADDRLP4 16
@@ -167,7 +167,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3452
+CNSTI4 3456
 DIVI4
 ARGI4
 ADDRLP4 1040
@@ -658,7 +658,7 @@ JUMPV
 LABELV $98
 line 178
 ;178:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -672,7 +672,7 @@ CNSTI4 2
 NEI4 $103
 line 179
 ;179:			G_WriteClientSessionData( &level.clients[i] );
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -816,6 +816,7 @@ import trap_AAS_AlternativeRouteGoals
 import trap_AAS_PredictRoute
 import trap_AAS_EnableRoutingArea
 import trap_AAS_AreaTravelTimeToGoalArea
+import trap_AAS_AreaLadder
 import trap_AAS_AreaReachability
 import trap_AAS_IntForBSPEpairKey
 import trap_AAS_FloatForBSPEpairKey
@@ -1044,6 +1045,7 @@ import SelectSpawnPoint
 import SetClientViewAngle
 import PickTeam
 import TeamLeader
+import BalanceTeams
 import TeamCount
 import BuildDisplacer
 import BuildMC
@@ -1220,6 +1222,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

@@ -23,7 +23,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2720
+CNSTI4 2724
 ADDP4
 CNSTI4 16
 ASGNI4
@@ -35,7 +35,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2720
+CNSTI4 2724
 ADDP4
 INDIRI4
 ASGNI4
@@ -61,7 +61,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 ADDRLP4 8
@@ -85,7 +85,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 12
@@ -111,7 +111,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 24
@@ -133,7 +133,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 36
@@ -199,7 +199,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2720
+CNSTI4 2724
 ADDP4
 ASGNP4
 ADDRLP4 8
@@ -217,7 +217,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2720
+CNSTI4 2724
 ADDP4
 INDIRI4
 CNSTI4 17
@@ -229,7 +229,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2720
+CNSTI4 2724
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -245,7 +245,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2720
+CNSTI4 2724
 ADDP4
 INDIRI4
 ASGNI4
@@ -266,7 +266,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 ADDRLP4 12
@@ -290,7 +290,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 12
@@ -319,7 +319,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 ADDRLP4 24
@@ -344,7 +344,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 24
@@ -373,7 +373,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 28
@@ -402,7 +402,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 32
@@ -432,7 +432,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 36
@@ -614,7 +614,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2720
+CNSTI4 2724
 ADDP4
 INDIRI4
 ASGNI4
@@ -640,7 +640,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 36
@@ -695,7 +695,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2720
+CNSTI4 2724
 ADDP4
 INDIRI4
 NEI4 $69
@@ -717,7 +717,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3440
+CNSTI4 3444
 ADDP4
 INDIRI4
 ADDRGP4 level+32
@@ -735,7 +735,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3404
+CNSTI4 3408
 ADDP4
 ADDRLP4 2060
 INDIRP4
@@ -754,7 +754,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3416
+CNSTI4 3420
 ADDP4
 ADDRLP4 2064
 INDIRP4
@@ -773,7 +773,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3428
+CNSTI4 3432
 ADDP4
 ADDRLP4 2068
 INDIRP4
@@ -788,7 +788,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3440
+CNSTI4 3444
 ADDP4
 ADDRGP4 level+32
 INDIRI4
@@ -808,7 +808,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2720
+CNSTI4 2724
 ADDP4
 INDIRI4
 EQI4 $82
@@ -823,7 +823,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ASGNP4
 ADDRLP4 2072
@@ -889,7 +889,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ASGNP4
 ADDRLP4 2092
@@ -949,7 +949,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ASGNP4
 ADDRLP4 2096
@@ -999,7 +999,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ASGNP4
 ADDRLP4 2120
@@ -1086,7 +1086,7 @@ ADDRLP4 2136
 INDIRI4
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ASGNP4
 ADDRLP4 2144
@@ -1208,7 +1208,7 @@ ADDRLP4 2136
 INDIRI4
 ADDP4
 INDIRP4
-CNSTI4 3444
+CNSTI4 3448
 ADDP4
 INDIRI4
 ASGNI4
@@ -1306,7 +1306,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 24
@@ -1332,7 +1332,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 INDIRB
@@ -1356,7 +1356,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDP4
 CNSTI4 12
@@ -1483,7 +1483,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3444
+CNSTI4 3448
 ADDP4
 INDIRI4
 ASGNI4
@@ -1866,7 +1866,7 @@ ASGNP4
 ADDRLP4 52
 ADDRLP4 72
 INDIRP4
-CNSTI4 2716
+CNSTI4 2720
 ADDP4
 INDIRI4
 ADDRLP4 72
@@ -1894,7 +1894,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3444
+CNSTI4 3448
 ADDP4
 INDIRI4
 ADDI4
@@ -1939,7 +1939,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3440
+CNSTI4 3444
 ADDP4
 INDIRI4
 ADDRGP4 level+32
@@ -1961,7 +1961,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3404
+CNSTI4 3408
 ADDP4
 INDIRB
 ASGNB 12
@@ -1980,7 +1980,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3416
+CNSTI4 3420
 ADDP4
 INDIRB
 ASGNB 12
@@ -1999,7 +1999,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3428
+CNSTI4 3432
 ADDP4
 INDIRB
 ASGNB 12
@@ -2010,7 +2010,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3440
+CNSTI4 3444
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -2377,15 +2377,8 @@ line 367
 ;367:}
 LABELV $137
 endproc G_PredictPlayerClipVelocity 28 0
-lit
-align 4
-LABELV $141
-byte 4 0
-byte 4 0
-byte 4 1065353216
 export G_PredictPlayerSlideMove
-code
-proc G_PredictPlayerSlideMove 312 28
+proc G_PredictPlayerSlideMove 300 28
 line 379
 ;368:
 ;369:
@@ -2399,7 +2392,7 @@ line 379
 ;377:#define	MAX_CLIP_PLANES	5
 ;378:
 ;379:qboolean G_PredictPlayerSlideMove( gentity_t *ent, float frametime ) {
-line 394
+line 395
 ;380:	int			bumpcount, numbumps;
 ;381:	vec3_t		dir;
 ;382:	float		d;
@@ -2414,20 +2407,14 @@ line 394
 ;391:	float		into;
 ;392:	vec3_t		endVelocity;
 ;393:	vec3_t		endClipVelocity;
-;394:	vec3_t		worldUp = { 0.0f, 0.0f, 1.0f };
-ADDRLP4 248
-ADDRGP4 $141
-INDIRB
-ASGNB 12
-line 396
-;395:	
-;396:	numbumps = 4;
+;394:	
+;395:	numbumps = 4;
 ADDRLP4 232
 CNSTI4 4
 ASGNI4
-line 398
-;397:
-;398:	VectorCopy( ent->s.pos.trDelta, primal_velocity );
+line 397
+;396:
+;397:	VectorCopy( ent->s.pos.trDelta, primal_velocity );
 ADDRLP4 236
 ADDRFP4 0
 INDIRP4
@@ -2435,14 +2422,14 @@ CNSTI4 36
 ADDP4
 INDIRB
 ASGNB 12
-line 399
-;399:	VectorCopy( primal_velocity, velocity );
+line 398
+;398:	VectorCopy( primal_velocity, velocity );
 ADDRLP4 76
 ADDRLP4 236
 INDIRB
 ASGNB 12
-line 400
-;400:	VectorCopy( ent->s.pos.trBase, origin );
+line 399
+;399:	VectorCopy( ent->s.pos.trBase, origin );
 ADDRLP4 112
 ADDRFP4 0
 INDIRP4
@@ -2450,39 +2437,39 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 402
-;401:
-;402:	VectorCopy( velocity, endVelocity );
+line 401
+;400:
+;401:	VectorCopy( velocity, endVelocity );
 ADDRLP4 140
 ADDRLP4 76
 INDIRB
 ASGNB 12
-line 404
-;403:
-;404:	time_left = frametime;
+line 403
+;402:
+;403:	time_left = frametime;
 ADDRLP4 212
 ADDRFP4 4
 INDIRF4
 ASGNF4
-line 406
-;405:
-;406:	numplanes = 0;
+line 405
+;404:
+;405:	numplanes = 0;
 ADDRLP4 108
 CNSTI4 0
 ASGNI4
-line 408
-;407:
-;408:	for ( bumpcount = 0; bumpcount < numbumps; bumpcount++ ) {
+line 407
+;406:
+;407:	for ( bumpcount = 0; bumpcount < numbumps; bumpcount++ ) {
 ADDRLP4 228
 CNSTI4 0
 ASGNI4
-ADDRGP4 $145
+ADDRGP4 $144
 JUMPV
-LABELV $142
-line 411
-;409:
-;410:		// calculate position we are trying to move to
-;411:		VectorMA( origin, time_left, velocity, end );
+LABELV $141
+line 410
+;408:
+;409:		// calculate position we are trying to move to
+;410:		VectorMA( origin, time_left, velocity, end );
 ADDRLP4 216
 ADDRLP4 112
 INDIRF4
@@ -2513,35 +2500,35 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 414
-;412:
-;413:		// see if we can make it there
-;414:		trap_Trace( &trace, origin, ent->r.mins, ent->r.maxs, end, ent->s.number, ent->clipmask );
+line 413
+;411:
+;412:		// see if we can make it there
+;413:		trap_Trace( &trace, origin, ent->r.mins, ent->r.maxs, end, ent->s.number, ent->clipmask );
 ADDRLP4 152
 ARGP4
 ADDRLP4 112
 ARGP4
-ADDRLP4 264
+ADDRLP4 252
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 264
+ADDRLP4 252
 INDIRP4
 CNSTI4 444
 ADDP4
 ARGP4
-ADDRLP4 264
+ADDRLP4 252
 INDIRP4
 CNSTI4 456
 ADDP4
 ARGP4
 ADDRLP4 216
 ARGP4
-ADDRLP4 264
+ADDRLP4 252
 INDIRP4
 INDIRI4
 ARGI4
-ADDRLP4 264
+ADDRLP4 252
 INDIRP4
 CNSTI4 580
 ADDP4
@@ -2550,33 +2537,33 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 416
-;415:
-;416:		if (trace.allsolid) {
+line 415
+;414:
+;415:		if (trace.allsolid) {
 ADDRLP4 152
 INDIRI4
 CNSTI4 0
-EQI4 $152
-line 418
-;417:			// entity is completely trapped in another solid
-;418:			VectorClear( velocity );
-ADDRLP4 268
+EQI4 $151
+line 417
+;416:			// entity is completely trapped in another solid
+;417:			VectorClear( velocity );
+ADDRLP4 256
 CNSTF4 0
 ASGNF4
 ADDRLP4 76+8
-ADDRLP4 268
+ADDRLP4 256
 INDIRF4
 ASGNF4
 ADDRLP4 76+4
-ADDRLP4 268
+ADDRLP4 256
 INDIRF4
 ASGNF4
 ADDRLP4 76
-ADDRLP4 268
+ADDRLP4 256
 INDIRF4
 ASGNF4
-line 419
-;419:			VectorCopy( origin, ent->s.pos.trBase );
+line 418
+;418:			VectorCopy( origin, ent->s.pos.trBase );
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -2584,47 +2571,47 @@ ADDP4
 ADDRLP4 112
 INDIRB
 ASGNB 12
-line 420
-;420:			return qtrue;
+line 419
+;419:			return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $140
 JUMPV
-LABELV $152
-line 423
-;421:		}
-;422:
-;423:		if (trace.fraction > 0) {
+LABELV $151
+line 422
+;420:		}
+;421:
+;422:		if (trace.fraction > 0) {
 ADDRLP4 152+8
 INDIRF4
 CNSTF4 0
-LEF4 $156
-line 425
-;424:			// actually covered some distance
-;425:			VectorCopy( trace.endpos, origin );
+LEF4 $155
+line 424
+;423:			// actually covered some distance
+;424:			VectorCopy( trace.endpos, origin );
 ADDRLP4 112
 ADDRLP4 152+12
 INDIRB
 ASGNB 12
-line 426
-;426:		}
-LABELV $156
-line 428
-;427:
-;428:		if (trace.fraction == 1) {
+line 425
+;425:		}
+LABELV $155
+line 427
+;426:
+;427:		if (trace.fraction == 1) {
 ADDRLP4 152+8
 INDIRF4
 CNSTF4 1065353216
-NEF4 $160
-line 429
-;429:			break;		// moved the entire distance
-ADDRGP4 $144
+NEF4 $159
+line 428
+;428:			break;		// moved the entire distance
+ADDRGP4 $143
 JUMPV
-LABELV $160
-line 432
-;430:		}
-;431:
-;432:		time_left -= time_left * trace.fraction;
+LABELV $159
+line 431
+;429:		}
+;430:
+;431:		time_left -= time_left * trace.fraction;
 ADDRLP4 212
 ADDRLP4 212
 INDIRF4
@@ -2635,33 +2622,33 @@ INDIRF4
 MULF4
 SUBF4
 ASGNF4
-line 434
-;433:
-;434:		if ( numplanes >= MAX_CLIP_PLANES ) {
+line 433
+;432:
+;433:		if ( numplanes >= MAX_CLIP_PLANES ) {
 ADDRLP4 108
 INDIRI4
 CNSTI4 5
-LTI4 $164
-line 436
-;435:			// this shouldn't really happen
-;436:			VectorClear( velocity );
-ADDRLP4 272
+LTI4 $163
+line 435
+;434:			// this shouldn't really happen
+;435:			VectorClear( velocity );
+ADDRLP4 260
 CNSTF4 0
 ASGNF4
 ADDRLP4 76+8
-ADDRLP4 272
+ADDRLP4 260
 INDIRF4
 ASGNF4
 ADDRLP4 76+4
-ADDRLP4 272
+ADDRLP4 260
 INDIRF4
 ASGNF4
 ADDRLP4 76
-ADDRLP4 272
+ADDRLP4 260
 INDIRF4
 ASGNF4
-line 437
-;437:			VectorCopy( origin, ent->s.pos.trBase );
+line 436
+;436:			VectorCopy( origin, ent->s.pos.trBase );
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -2669,31 +2656,31 @@ ADDP4
 ADDRLP4 112
 INDIRB
 ASGNB 12
-line 438
-;438:			return qtrue;
+line 437
+;437:			return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $140
 JUMPV
-LABELV $164
-line 446
-;439:		}
-;440:
-;441:		//
-;442:		// if this is the same plane we hit before, nudge velocity
-;443:		// out along it, which fixes some epsilon issues with
-;444:		// non-axial planes
-;445:		//
-;446:		for ( i = 0; i < numplanes; i++ ) {
+LABELV $163
+line 445
+;438:		}
+;439:
+;440:		//
+;441:		// if this is the same plane we hit before, nudge velocity
+;442:		// out along it, which fixes some epsilon issues with
+;443:		// non-axial planes
+;444:		//
+;445:		for ( i = 0; i < numplanes; i++ ) {
 ADDRLP4 92
 CNSTI4 0
 ASGNI4
-ADDRGP4 $171
+ADDRGP4 $170
 JUMPV
-LABELV $168
-line 447
-;447:			if ( DotProduct( trace.plane.normal, planes[i] ) > 0.99 ) {
-ADDRLP4 272
+LABELV $167
+line 446
+;446:			if ( DotProduct( trace.plane.normal, planes[i] ) > 0.99 ) {
+ADDRLP4 260
 CNSTI4 12
 ADDRLP4 92
 INDIRI4
@@ -2701,7 +2688,7 @@ MULI4
 ASGNI4
 ADDRLP4 152+24
 INDIRF4
-ADDRLP4 272
+ADDRLP4 260
 INDIRI4
 ADDRLP4 4
 ADDP4
@@ -2709,7 +2696,7 @@ INDIRF4
 MULF4
 ADDRLP4 152+24+4
 INDIRF4
-ADDRLP4 272
+ADDRLP4 260
 INDIRI4
 ADDRLP4 4+4
 ADDP4
@@ -2718,7 +2705,7 @@ MULF4
 ADDF4
 ADDRLP4 152+24+8
 INDIRF4
-ADDRLP4 272
+ADDRLP4 260
 INDIRI4
 ADDRLP4 4+8
 ADDP4
@@ -2726,9 +2713,9 @@ INDIRF4
 MULF4
 ADDF4
 CNSTF4 1065185444
-LEF4 $172
-line 448
-;448:				VectorAdd( trace.plane.normal, velocity, velocity );
+LEF4 $171
+line 447
+;447:				VectorAdd( trace.plane.normal, velocity, velocity );
 ADDRLP4 76
 ADDRLP4 152+24
 INDIRF4
@@ -2750,46 +2737,46 @@ ADDRLP4 76+8
 INDIRF4
 ADDF4
 ASGNF4
-line 449
-;449:				break;
-ADDRGP4 $170
+line 448
+;448:				break;
+ADDRGP4 $169
 JUMPV
-LABELV $172
-line 451
-;450:			}
-;451:		}
-LABELV $169
-line 446
+LABELV $171
+line 450
+;449:			}
+;450:		}
+LABELV $168
+line 445
 ADDRLP4 92
 ADDRLP4 92
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $171
-ADDRLP4 92
-INDIRI4
-ADDRLP4 108
-INDIRI4
-LTI4 $168
 LABELV $170
-line 453
-;452:
-;453:		if ( i < numplanes ) {
 ADDRLP4 92
 INDIRI4
 ADDRLP4 108
 INDIRI4
-GEI4 $190
-line 454
-;454:			continue;
-ADDRGP4 $143
+LTI4 $167
+LABELV $169
+line 452
+;451:
+;452:		if ( i < numplanes ) {
+ADDRLP4 92
+INDIRI4
+ADDRLP4 108
+INDIRI4
+GEI4 $189
+line 453
+;453:			continue;
+ADDRGP4 $142
 JUMPV
-LABELV $190
-line 457
-;455:		}
-;456:
-;457:		VectorCopy( trace.plane.normal, planes[numplanes] );
+LABELV $189
+line 456
+;454:		}
+;455:
+;456:		VectorCopy( trace.plane.normal, planes[numplanes] );
 CNSTI4 12
 ADDRLP4 108
 INDIRI4
@@ -2799,31 +2786,31 @@ ADDP4
 ADDRLP4 152+24
 INDIRB
 ASGNB 12
-line 458
-;458:		numplanes++;
+line 457
+;457:		numplanes++;
 ADDRLP4 108
 ADDRLP4 108
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 465
-;459:
-;460:		//
-;461:		// modify velocity so it parallels all of the clip planes
-;462:		//
-;463:
-;464:		// find a plane that it enters
-;465:		for ( i = 0; i < numplanes; i++ ) {
+line 464
+;458:
+;459:		//
+;460:		// modify velocity so it parallels all of the clip planes
+;461:		//
+;462:
+;463:		// find a plane that it enters
+;464:		for ( i = 0; i < numplanes; i++ ) {
 ADDRLP4 92
 CNSTI4 0
 ASGNI4
-ADDRGP4 $196
+ADDRGP4 $195
 JUMPV
-LABELV $193
-line 466
-;466:			into = DotProduct( velocity, planes[i] );
-ADDRLP4 272
+LABELV $192
+line 465
+;465:			into = DotProduct( velocity, planes[i] );
+ADDRLP4 260
 CNSTI4 12
 ADDRLP4 92
 INDIRI4
@@ -2832,7 +2819,7 @@ ASGNI4
 ADDRLP4 208
 ADDRLP4 76
 INDIRF4
-ADDRLP4 272
+ADDRLP4 260
 INDIRI4
 ADDRLP4 4
 ADDP4
@@ -2840,7 +2827,7 @@ INDIRF4
 MULF4
 ADDRLP4 76+4
 INDIRF4
-ADDRLP4 272
+ADDRLP4 260
 INDIRI4
 ADDRLP4 4+4
 ADDP4
@@ -2849,7 +2836,7 @@ MULF4
 ADDF4
 ADDRLP4 76+8
 INDIRF4
-ADDRLP4 272
+ADDRLP4 260
 INDIRI4
 ADDRLP4 4+8
 ADDP4
@@ -2857,22 +2844,22 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 467
-;467:			if ( into >= 0.1 ) {
+line 466
+;466:			if ( into >= 0.1 ) {
 ADDRLP4 208
 INDIRF4
 CNSTF4 1036831949
-LTF4 $201
-line 468
-;468:				continue;		// move doesn't interact with the plane
-ADDRGP4 $194
+LTF4 $200
+line 467
+;467:				continue;		// move doesn't interact with the plane
+ADDRGP4 $193
 JUMPV
-LABELV $201
-line 472
-;469:			}
-;470:
-;471:			// slide along the plane
-;472:			G_PredictPlayerClipVelocity( velocity, planes[i], clipVelocity );
+LABELV $200
+line 471
+;468:			}
+;469:
+;470:			// slide along the plane
+;471:			G_PredictPlayerClipVelocity( velocity, planes[i], clipVelocity );
 ADDRLP4 76
 ARGP4
 CNSTI4 12
@@ -2887,10 +2874,10 @@ ARGP4
 ADDRGP4 G_PredictPlayerClipVelocity
 CALLV
 pop
-line 475
-;473:
-;474:			// slide along the plane
-;475:			G_PredictPlayerClipVelocity( endVelocity, planes[i], endClipVelocity );
+line 474
+;472:
+;473:			// slide along the plane
+;474:			G_PredictPlayerClipVelocity( endVelocity, planes[i], endClipVelocity );
 ADDRLP4 140
 ARGP4
 CNSTI4 12
@@ -2905,33 +2892,33 @@ ARGP4
 ADDRGP4 G_PredictPlayerClipVelocity
 CALLV
 pop
-line 478
-;476:
-;477:			// see if there is a second plane that the new move enters
-;478:			for ( j = 0; j < numplanes; j++ ) {
+line 477
+;475:
+;476:			// see if there is a second plane that the new move enters
+;477:			for ( j = 0; j < numplanes; j++ ) {
 ADDRLP4 88
 CNSTI4 0
 ASGNI4
-ADDRGP4 $206
+ADDRGP4 $205
 JUMPV
-LABELV $203
-line 479
-;479:				if ( j == i ) {
+LABELV $202
+line 478
+;478:				if ( j == i ) {
 ADDRLP4 88
 INDIRI4
 ADDRLP4 92
 INDIRI4
-NEI4 $207
-line 480
-;480:					continue;
-ADDRGP4 $204
+NEI4 $206
+line 479
+;479:					continue;
+ADDRGP4 $203
 JUMPV
-LABELV $207
-line 483
-;481:				}
-;482:
-;483:				if ( DotProduct( clipVelocity, planes[j] ) >= 0.1 ) {
-ADDRLP4 276
+LABELV $206
+line 482
+;480:				}
+;481:
+;482:				if ( DotProduct( clipVelocity, planes[j] ) >= 0.1 ) {
+ADDRLP4 264
 CNSTI4 12
 ADDRLP4 88
 INDIRI4
@@ -2939,7 +2926,7 @@ MULI4
 ASGNI4
 ADDRLP4 64
 INDIRF4
-ADDRLP4 276
+ADDRLP4 264
 INDIRI4
 ADDRLP4 4
 ADDP4
@@ -2947,7 +2934,7 @@ INDIRF4
 MULF4
 ADDRLP4 64+4
 INDIRF4
-ADDRLP4 276
+ADDRLP4 264
 INDIRI4
 ADDRLP4 4+4
 ADDP4
@@ -2956,7 +2943,7 @@ MULF4
 ADDF4
 ADDRLP4 64+8
 INDIRF4
-ADDRLP4 276
+ADDRLP4 264
 INDIRI4
 ADDRLP4 4+8
 ADDP4
@@ -2964,33 +2951,33 @@ INDIRF4
 MULF4
 ADDF4
 CNSTF4 1036831949
-LTF4 $209
-line 484
-;484:					continue;		// move doesn't interact with the plane
-ADDRGP4 $204
+LTF4 $208
+line 483
+;483:					continue;		// move doesn't interact with the plane
+ADDRGP4 $203
 JUMPV
-LABELV $209
+LABELV $208
+line 487
+;484:				}
+;485:
+;486:				// try clipping the move to the plane
+;487:				G_PredictPlayerClipVelocity( clipVelocity, planes[j], clipVelocity );
+ADDRLP4 64
+ARGP4
+CNSTI4 12
+ADDRLP4 88
+INDIRI4
+MULI4
+ADDRLP4 4
+ADDP4
+ARGP4
+ADDRLP4 64
+ARGP4
+ADDRGP4 G_PredictPlayerClipVelocity
+CALLV
+pop
 line 488
-;485:				}
-;486:
-;487:				// try clipping the move to the plane
-;488:				G_PredictPlayerClipVelocity( clipVelocity, planes[j], clipVelocity );
-ADDRLP4 64
-ARGP4
-CNSTI4 12
-ADDRLP4 88
-INDIRI4
-MULI4
-ADDRLP4 4
-ADDP4
-ARGP4
-ADDRLP4 64
-ARGP4
-ADDRGP4 G_PredictPlayerClipVelocity
-CALLV
-pop
-line 489
-;489:				G_PredictPlayerClipVelocity( endClipVelocity, planes[j], endClipVelocity );
+;488:				G_PredictPlayerClipVelocity( endClipVelocity, planes[j], endClipVelocity );
 ADDRLP4 128
 ARGP4
 CNSTI4 12
@@ -3005,11 +2992,11 @@ ARGP4
 ADDRGP4 G_PredictPlayerClipVelocity
 CALLV
 pop
-line 492
-;490:
-;491:				// see if it goes back into the first clip plane
-;492:				if ( DotProduct( clipVelocity, planes[i] ) >= 0 ) {
-ADDRLP4 280
+line 491
+;489:
+;490:				// see if it goes back into the first clip plane
+;491:				if ( DotProduct( clipVelocity, planes[i] ) >= 0 ) {
+ADDRLP4 268
 CNSTI4 12
 ADDRLP4 92
 INDIRI4
@@ -3017,7 +3004,7 @@ MULI4
 ASGNI4
 ADDRLP4 64
 INDIRF4
-ADDRLP4 280
+ADDRLP4 268
 INDIRI4
 ADDRLP4 4
 ADDP4
@@ -3025,7 +3012,7 @@ INDIRF4
 MULF4
 ADDRLP4 64+4
 INDIRF4
-ADDRLP4 280
+ADDRLP4 268
 INDIRI4
 ADDRLP4 4+4
 ADDP4
@@ -3034,7 +3021,7 @@ MULF4
 ADDF4
 ADDRLP4 64+8
 INDIRF4
-ADDRLP4 280
+ADDRLP4 268
 INDIRI4
 ADDRLP4 4+8
 ADDP4
@@ -3042,21 +3029,21 @@ INDIRF4
 MULF4
 ADDF4
 CNSTF4 0
-LTF4 $215
-line 493
-;493:					continue;
-ADDRGP4 $204
+LTF4 $214
+line 492
+;492:					continue;
+ADDRGP4 $203
 JUMPV
-LABELV $215
-line 497
-;494:				}
-;495:
-;496:				// slide the original velocity along the crease
-;497:				CrossProduct( planes[i], planes[j], dir );
-ADDRLP4 284
+LABELV $214
+line 496
+;493:				}
+;494:
+;495:				// slide the original velocity along the crease
+;496:				CrossProduct( planes[i], planes[j], dir );
+ADDRLP4 272
 CNSTI4 12
 ASGNI4
-ADDRLP4 284
+ADDRLP4 272
 INDIRI4
 ADDRLP4 92
 INDIRI4
@@ -3064,7 +3051,7 @@ MULI4
 ADDRLP4 4
 ADDP4
 ARGP4
-ADDRLP4 284
+ADDRLP4 272
 INDIRI4
 ADDRLP4 88
 INDIRI4
@@ -3077,15 +3064,15 @@ ARGP4
 ADDRGP4 CrossProduct
 CALLV
 pop
-line 498
-;498:				VectorNormalize( dir );
+line 497
+;497:				VectorNormalize( dir );
 ADDRLP4 96
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 499
-;499:				d = DotProduct( dir, velocity );
+line 498
+;498:				d = DotProduct( dir, velocity );
 ADDRLP4 124
 ADDRLP4 96
 INDIRF4
@@ -3105,8 +3092,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 500
-;500:				VectorScale( dir, d, clipVelocity );
+line 499
+;499:				VectorScale( dir, d, clipVelocity );
 ADDRLP4 64
 ADDRLP4 96
 INDIRF4
@@ -3128,13 +3115,13 @@ ADDRLP4 124
 INDIRF4
 MULF4
 ASGNF4
-line 502
-;501:
-;502:				CrossProduct( planes[i], planes[j], dir );
-ADDRLP4 292
+line 501
+;500:
+;501:				CrossProduct( planes[i], planes[j], dir );
+ADDRLP4 280
 CNSTI4 12
 ASGNI4
-ADDRLP4 292
+ADDRLP4 280
 INDIRI4
 ADDRLP4 92
 INDIRI4
@@ -3142,7 +3129,7 @@ MULI4
 ADDRLP4 4
 ADDP4
 ARGP4
-ADDRLP4 292
+ADDRLP4 280
 INDIRI4
 ADDRLP4 88
 INDIRI4
@@ -3155,15 +3142,15 @@ ARGP4
 ADDRGP4 CrossProduct
 CALLV
 pop
-line 503
-;503:				VectorNormalize( dir );
+line 502
+;502:				VectorNormalize( dir );
 ADDRLP4 96
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 504
-;504:				d = DotProduct( dir, endVelocity );
+line 503
+;503:				d = DotProduct( dir, endVelocity );
 ADDRLP4 124
 ADDRLP4 96
 INDIRF4
@@ -3183,8 +3170,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 505
-;505:				VectorScale( dir, d, endClipVelocity );
+line 504
+;504:				VectorScale( dir, d, endClipVelocity );
 ADDRLP4 128
 ADDRLP4 96
 INDIRF4
@@ -3206,39 +3193,39 @@ ADDRLP4 124
 INDIRF4
 MULF4
 ASGNF4
-line 508
-;506:
-;507:				// see if there is a third plane the the new move enters
-;508:				for ( k = 0; k < numplanes; k++ ) {
+line 507
+;505:
+;506:				// see if there is a third plane the the new move enters
+;507:				for ( k = 0; k < numplanes; k++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $240
+ADDRGP4 $239
 JUMPV
-LABELV $237
-line 509
-;509:					if ( k == i || k == j ) {
+LABELV $236
+line 508
+;508:					if ( k == i || k == j ) {
 ADDRLP4 0
 INDIRI4
 ADDRLP4 92
 INDIRI4
-EQI4 $243
+EQI4 $242
 ADDRLP4 0
 INDIRI4
 ADDRLP4 88
 INDIRI4
-NEI4 $241
-LABELV $243
-line 510
-;510:						continue;
-ADDRGP4 $238
+NEI4 $240
+LABELV $242
+line 509
+;509:						continue;
+ADDRGP4 $237
 JUMPV
-LABELV $241
-line 513
-;511:					}
-;512:
-;513:					if ( DotProduct( clipVelocity, planes[k] ) >= 0.1 ) {
-ADDRLP4 304
+LABELV $240
+line 512
+;510:					}
+;511:
+;512:					if ( DotProduct( clipVelocity, planes[k] ) >= 0.1 ) {
+ADDRLP4 292
 CNSTI4 12
 ADDRLP4 0
 INDIRI4
@@ -3246,7 +3233,7 @@ MULI4
 ASGNI4
 ADDRLP4 64
 INDIRF4
-ADDRLP4 304
+ADDRLP4 292
 INDIRI4
 ADDRLP4 4
 ADDP4
@@ -3254,7 +3241,7 @@ INDIRF4
 MULF4
 ADDRLP4 64+4
 INDIRF4
-ADDRLP4 304
+ADDRLP4 292
 INDIRI4
 ADDRLP4 4+4
 ADDP4
@@ -3263,7 +3250,7 @@ MULF4
 ADDF4
 ADDRLP4 64+8
 INDIRF4
-ADDRLP4 304
+ADDRLP4 292
 INDIRI4
 ADDRLP4 4+8
 ADDP4
@@ -3271,34 +3258,34 @@ INDIRF4
 MULF4
 ADDF4
 CNSTF4 1036831949
-LTF4 $244
-line 514
-;514:						continue;		// move doesn't interact with the plane
-ADDRGP4 $238
+LTF4 $243
+line 513
+;513:						continue;		// move doesn't interact with the plane
+ADDRGP4 $237
 JUMPV
-LABELV $244
-line 518
-;515:					}
-;516:
-;517:					// stop dead at a tripple plane interaction
-;518:					VectorClear( velocity );
-ADDRLP4 308
+LABELV $243
+line 517
+;514:					}
+;515:
+;516:					// stop dead at a tripple plane interaction
+;517:					VectorClear( velocity );
+ADDRLP4 296
 CNSTF4 0
 ASGNF4
 ADDRLP4 76+8
-ADDRLP4 308
+ADDRLP4 296
 INDIRF4
 ASGNF4
 ADDRLP4 76+4
-ADDRLP4 308
+ADDRLP4 296
 INDIRF4
 ASGNF4
 ADDRLP4 76
-ADDRLP4 308
+ADDRLP4 296
 INDIRF4
 ASGNF4
-line 519
-;519:					VectorCopy( origin, ent->s.pos.trBase );
+line 518
+;518:					VectorCopy( origin, ent->s.pos.trBase );
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -3306,103 +3293,103 @@ ADDP4
 ADDRLP4 112
 INDIRB
 ASGNB 12
-line 520
-;520:					return qtrue;
+line 519
+;519:					return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $140
 JUMPV
-LABELV $238
-line 508
+LABELV $237
+line 507
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $240
+LABELV $239
 ADDRLP4 0
 INDIRI4
 ADDRLP4 108
 INDIRI4
-LTI4 $237
-line 522
-;521:				}
-;522:			}
-LABELV $204
-line 478
+LTI4 $236
+line 521
+;520:				}
+;521:			}
+LABELV $203
+line 477
 ADDRLP4 88
 ADDRLP4 88
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $206
+LABELV $205
 ADDRLP4 88
 INDIRI4
 ADDRLP4 108
 INDIRI4
-LTI4 $203
-line 525
-;523:
-;524:			// if we have fixed all interactions, try another move
-;525:			VectorCopy( clipVelocity, velocity );
+LTI4 $202
+line 524
+;522:
+;523:			// if we have fixed all interactions, try another move
+;524:			VectorCopy( clipVelocity, velocity );
 ADDRLP4 76
 ADDRLP4 64
 INDIRB
 ASGNB 12
-line 526
-;526:			VectorCopy( endClipVelocity, endVelocity );
+line 525
+;525:			VectorCopy( endClipVelocity, endVelocity );
 ADDRLP4 140
 ADDRLP4 128
 INDIRB
 ASGNB 12
-line 527
-;527:			break;
-ADDRGP4 $195
+line 526
+;526:			break;
+ADDRGP4 $194
 JUMPV
-LABELV $194
-line 465
+LABELV $193
+line 464
 ADDRLP4 92
 ADDRLP4 92
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $196
+LABELV $195
 ADDRLP4 92
 INDIRI4
 ADDRLP4 108
 INDIRI4
-LTI4 $193
-LABELV $195
-line 529
-;528:		}
-;529:	}
-LABELV $143
-line 408
+LTI4 $192
+LABELV $194
+line 528
+;527:		}
+;528:	}
+LABELV $142
+line 407
 ADDRLP4 228
 ADDRLP4 228
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $145
+LABELV $144
 ADDRLP4 228
 INDIRI4
 ADDRLP4 232
 INDIRI4
-LTI4 $142
-LABELV $144
-line 531
-;530:
-;531:	VectorCopy( endVelocity, velocity );
+LTI4 $141
+LABELV $143
+line 530
+;529:
+;530:	VectorCopy( endVelocity, velocity );
 ADDRLP4 76
 ADDRLP4 140
 INDIRB
 ASGNB 12
-line 532
-;532:	VectorCopy( origin, ent->s.pos.trBase );
+line 531
+;531:	VectorCopy( origin, ent->s.pos.trBase );
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -3410,51 +3397,51 @@ ADDP4
 ADDRLP4 112
 INDIRB
 ASGNB 12
-line 534
-;533:
-;534:	return (bumpcount != 0);
+line 533
+;532:
+;533:	return (bumpcount != 0);
 ADDRLP4 228
 INDIRI4
 CNSTI4 0
-EQI4 $253
-ADDRLP4 260
+EQI4 $252
+ADDRLP4 248
 CNSTI4 1
 ASGNI4
-ADDRGP4 $254
+ADDRGP4 $253
 JUMPV
-LABELV $253
-ADDRLP4 260
+LABELV $252
+ADDRLP4 248
 CNSTI4 0
 ASGNI4
-LABELV $254
-ADDRLP4 260
+LABELV $253
+ADDRLP4 248
 INDIRI4
 RETI4
 LABELV $140
-endproc G_PredictPlayerSlideMove 312 28
+endproc G_PredictPlayerSlideMove 300 28
 export G_PredictPlayerStepSlideMove
 proc G_PredictPlayerStepSlideMove 148 28
-line 547
-;535:}
+line 546
+;534:}
+;535:
 ;536:
-;537:
-;538:/*
-;539:============================
-;540:G_PredictPlayerStepSlideMove
-;541:
-;542:Advance the given entity frametime seconds, stepping and sliding as appropriate
-;543:============================
-;544:*/
-;545:#define	STEPSIZE 18
-;546:
-;547:void G_PredictPlayerStepSlideMove( gentity_t *ent, float frametime ) {
-line 553
-;548:	vec3_t start_o, start_v, down_o, down_v;
-;549:	vec3_t down, up;
-;550:	trace_t trace;
-;551:	float stepSize;
-;552:
-;553:	VectorCopy (ent->s.pos.trBase, start_o);
+;537:/*
+;538:============================
+;539:G_PredictPlayerStepSlideMove
+;540:
+;541:Advance the given entity frametime seconds, stepping and sliding as appropriate
+;542:============================
+;543:*/
+;544:#define	STEPSIZE 18
+;545:
+;546:void G_PredictPlayerStepSlideMove( gentity_t *ent, float frametime ) {
+line 552
+;547:	vec3_t start_o, start_v, down_o, down_v;
+;548:	vec3_t down, up;
+;549:	trace_t trace;
+;550:	float stepSize;
+;551:
+;552:	VectorCopy (ent->s.pos.trBase, start_o);
 ADDRLP4 56
 ADDRFP4 0
 INDIRP4
@@ -3462,8 +3449,8 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 554
-;554:	VectorCopy (ent->s.pos.trDelta, start_v);
+line 553
+;553:	VectorCopy (ent->s.pos.trDelta, start_v);
 ADDRLP4 92
 ADDRFP4 0
 INDIRP4
@@ -3471,9 +3458,9 @@ CNSTI4 36
 ADDP4
 INDIRB
 ASGNB 12
-line 556
-;555:
-;556:	if ( !G_PredictPlayerSlideMove( ent, frametime ) ) {
+line 555
+;554:
+;555:	if ( !G_PredictPlayerSlideMove( ent, frametime ) ) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3487,17 +3474,17 @@ ASGNI4
 ADDRLP4 132
 INDIRI4
 CNSTI4 0
-NEI4 $256
-line 558
-;557:		// not clipped, so forget stepping
-;558:		return;
-ADDRGP4 $255
+NEI4 $255
+line 557
+;556:		// not clipped, so forget stepping
+;557:		return;
+ADDRGP4 $254
 JUMPV
-LABELV $256
-line 561
-;559:	}
-;560:
-;561:	VectorCopy( ent->s.pos.trBase, down_o);
+LABELV $255
+line 560
+;558:	}
+;559:
+;560:	VectorCopy( ent->s.pos.trBase, down_o);
 ADDRLP4 108
 ADDRFP4 0
 INDIRP4
@@ -3505,8 +3492,8 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 562
-;562:	VectorCopy( ent->s.pos.trDelta, down_v);
+line 561
+;561:	VectorCopy( ent->s.pos.trDelta, down_v);
 ADDRLP4 120
 ADDRFP4 0
 INDIRP4
@@ -3514,25 +3501,25 @@ CNSTI4 36
 ADDP4
 INDIRB
 ASGNB 12
-line 564
-;563:
-;564:	VectorCopy (start_o, up);
+line 563
+;562:
+;563:	VectorCopy (start_o, up);
 ADDRLP4 80
 ADDRLP4 56
 INDIRB
 ASGNB 12
-line 565
-;565:	up[2] += STEPSIZE;
+line 564
+;564:	up[2] += STEPSIZE;
 ADDRLP4 80+8
 ADDRLP4 80+8
 INDIRF4
 CNSTF4 1099956224
 ADDF4
 ASGNF4
-line 568
-;566:
-;567:	// test the player position if they were a stepheight higher
-;568:	trap_Trace( &trace, start_o, ent->r.mins, ent->r.maxs, up, ent->s.number, ent->clipmask );
+line 567
+;565:
+;566:	// test the player position if they were a stepheight higher
+;567:	trap_Trace( &trace, start_o, ent->r.mins, ent->r.maxs, up, ent->s.number, ent->clipmask );
 ADDRLP4 0
 ARGP4
 ADDRLP4 56
@@ -3566,21 +3553,21 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 569
-;569:	if ( trace.allsolid ) {
+line 568
+;568:	if ( trace.allsolid ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $259
-line 570
-;570:		return;		// can't step up
-ADDRGP4 $255
+EQI4 $258
+line 569
+;569:		return;		// can't step up
+ADDRGP4 $254
 JUMPV
-LABELV $259
-line 573
-;571:	}
-;572:
-;573:	stepSize = trace.endpos[2] - start_o[2];
+LABELV $258
+line 572
+;570:	}
+;571:
+;572:	stepSize = trace.endpos[2] - start_o[2];
 ADDRLP4 104
 ADDRLP4 0+12+8
 INDIRF4
@@ -3588,10 +3575,10 @@ ADDRLP4 56+8
 INDIRF4
 SUBF4
 ASGNF4
-line 576
-;574:
-;575:	// try slidemove from this position
-;576:	VectorCopy( trace.endpos, ent->s.pos.trBase );
+line 575
+;573:
+;574:	// try slidemove from this position
+;575:	VectorCopy( trace.endpos, ent->s.pos.trBase );
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -3599,8 +3586,8 @@ ADDP4
 ADDRLP4 0+12
 INDIRB
 ASGNB 12
-line 577
-;577:	VectorCopy( start_v, ent->s.pos.trDelta );
+line 576
+;576:	VectorCopy( start_v, ent->s.pos.trDelta );
 ADDRFP4 0
 INDIRP4
 CNSTI4 36
@@ -3608,9 +3595,9 @@ ADDP4
 ADDRLP4 92
 INDIRB
 ASGNB 12
-line 579
-;578:
-;579:	G_PredictPlayerSlideMove( ent, frametime );
+line 578
+;577:
+;578:	G_PredictPlayerSlideMove( ent, frametime );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3620,10 +3607,10 @@ ARGF4
 ADDRGP4 G_PredictPlayerSlideMove
 CALLI4
 pop
-line 582
-;580:
-;581:	// push down the final amount
-;582:	VectorCopy( ent->s.pos.trBase, down );
+line 581
+;579:
+;580:	// push down the final amount
+;581:	VectorCopy( ent->s.pos.trBase, down );
 ADDRLP4 68
 ADDRFP4 0
 INDIRP4
@@ -3631,8 +3618,8 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 583
-;583:	down[2] -= stepSize;
+line 582
+;582:	down[2] -= stepSize;
 ADDRLP4 68+8
 ADDRLP4 68+8
 INDIRF4
@@ -3640,8 +3627,8 @@ ADDRLP4 104
 INDIRF4
 SUBF4
 ASGNF4
-line 584
-;584:	trap_Trace( &trace, ent->s.pos.trBase, ent->r.mins, ent->r.maxs, down, ent->s.number, ent->clipmask );
+line 583
+;583:	trap_Trace( &trace, ent->s.pos.trBase, ent->r.mins, ent->r.maxs, down, ent->s.number, ent->clipmask );
 ADDRLP4 0
 ARGP4
 ADDRLP4 140
@@ -3678,14 +3665,14 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 585
-;585:	if ( !trace.allsolid ) {
+line 584
+;584:	if ( !trace.allsolid ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $266
-line 586
-;586:		VectorCopy( trace.endpos, ent->s.pos.trBase );
+NEI4 $265
+line 585
+;585:		VectorCopy( trace.endpos, ent->s.pos.trBase );
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -3693,17 +3680,17 @@ ADDP4
 ADDRLP4 0+12
 INDIRB
 ASGNB 12
+line 586
+;586:	}
+LABELV $265
 line 587
-;587:	}
-LABELV $266
-line 588
-;588:	if ( trace.fraction < 1.0 ) {
+;587:	if ( trace.fraction < 1.0 ) {
 ADDRLP4 0+8
 INDIRF4
 CNSTF4 1065353216
-GEF4 $269
-line 589
-;589:		G_PredictPlayerClipVelocity( ent->s.pos.trDelta, trace.plane.normal, ent->s.pos.trDelta );
+GEF4 $268
+line 588
+;588:		G_PredictPlayerClipVelocity( ent->s.pos.trDelta, trace.plane.normal, ent->s.pos.trDelta );
 ADDRLP4 144
 ADDRFP4 0
 INDIRP4
@@ -3721,30 +3708,30 @@ ARGP4
 ADDRGP4 G_PredictPlayerClipVelocity
 CALLV
 pop
+line 589
+;589:	}
+LABELV $268
 line 590
-;590:	}
-LABELV $269
-line 591
-;591:}
-LABELV $255
+;590:}
+LABELV $254
 endproc G_PredictPlayerStepSlideMove 148 28
 export G_PredictPlayerMove
 proc G_PredictPlayerMove 0 8
-line 603
+line 602
+;591:
 ;592:
-;593:
-;594:/*
-;595:===================
-;596:G_PredictPlayerMove
-;597:
-;598:Advance the given entity frametime seconds, stepping and sliding as appropriate
-;599:
-;600:This is the entry point to the server-side-only prediction code
-;601:===================
-;602:*/
-;603:void G_PredictPlayerMove( gentity_t *ent, float frametime ) {
-line 604
-;604:	G_PredictPlayerStepSlideMove( ent, frametime );
+;593:/*
+;594:===================
+;595:G_PredictPlayerMove
+;596:
+;597:Advance the given entity frametime seconds, stepping and sliding as appropriate
+;598:
+;599:This is the entry point to the server-side-only prediction code
+;600:===================
+;601:*/
+;602:void G_PredictPlayerMove( gentity_t *ent, float frametime ) {
+line 603
+;603:	G_PredictPlayerStepSlideMove( ent, frametime );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3754,9 +3741,9 @@ ARGF4
 ADDRGP4 G_PredictPlayerStepSlideMove
 CALLV
 pop
-line 605
-;605:}
-LABELV $273
+line 604
+;604:}
+LABELV $272
 endproc G_PredictPlayerMove 0 8
 import CheckPlayerPostions
 import G_SendCommandToClient
@@ -3868,6 +3855,7 @@ import trap_AAS_AlternativeRouteGoals
 import trap_AAS_PredictRoute
 import trap_AAS_EnableRoutingArea
 import trap_AAS_AreaTravelTimeToGoalArea
+import trap_AAS_AreaLadder
 import trap_AAS_AreaReachability
 import trap_AAS_IntForBSPEpairKey
 import trap_AAS_FloatForBSPEpairKey
@@ -4100,6 +4088,7 @@ import SelectSpawnPoint
 import SetClientViewAngle
 import PickTeam
 import TeamLeader
+import BalanceTeams
 import TeamCount
 import BuildDisplacer
 import BuildMC
@@ -4268,6 +4257,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

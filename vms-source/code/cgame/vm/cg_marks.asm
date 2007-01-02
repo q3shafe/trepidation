@@ -1358,7 +1358,7 @@ INDIRP4
 CNSTI4 12
 ADDP4
 INDIRI4
-ADDRGP4 cgs+153876+408
+ADDRGP4 cgs+154388+408
 INDIRI4
 NEI4 $179
 line 238
@@ -12738,7 +12738,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 68
 ADDP4
-ADDRGP4 cgs+153876+232
+ADDRGP4 cgs+154388+232
 INDIRI4
 ASGNI4
 line 1460
@@ -13643,7 +13643,7 @@ CNSTI4 4
 LTI4 $1480
 line 1603
 ;1603:			CG_ParticleBubble (cgs.media.waterBubbleShader, origin, origin2, turb, range, snum);
-ADDRGP4 cgs+153876+312
+ADDRGP4 cgs+154388+312
 INDIRI4
 ARGI4
 ADDRLP4 12
@@ -13668,7 +13668,7 @@ LABELV $1480
 line 1605
 ;1604:		else
 ;1605:			CG_ParticleSnow (cgs.media.waterBubbleShader, origin, origin2, turb, range, snum);
-ADDRGP4 cgs+153876+312
+ADDRGP4 cgs+154388+312
 INDIRI4
 ARGI4
 ADDRLP4 12
@@ -16311,7 +16311,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 68
 ADDP4
-ADDRGP4 cgs+153876+288
+ADDRGP4 cgs+154388+288
 INDIRI4
 ASGNI4
 line 2038
@@ -16678,7 +16678,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 68
 ADDP4
-ADDRGP4 cgs+153876+232
+ADDRGP4 cgs+154388+232
 INDIRI4
 ASGNI4
 line 2096
@@ -17255,7 +17255,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 68
 ADDP4
-ADDRGP4 cgs+153876+288
+ADDRGP4 cgs+154388+288
 INDIRI4
 ASGNI4
 line 2165
@@ -18172,6 +18172,7 @@ import CG_FillRect
 import CG_AdjustFrom640
 import CG_DrawActiveFrame
 import CG_AddBufferedSound
+import CG_ResetZoom
 import CG_ZoomUp_f
 import CG_ZoomDown_f
 import CG_TestModelPrevSkin_f
@@ -18392,6 +18393,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

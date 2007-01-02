@@ -1204,7 +1204,7 @@ line 267
 ;266:			// keep grabbing one snapshot earlier until we get to the right time
 ;267:			while ( dest->serverTime > time - cg_latentSnaps.integer * (1000 / sv_fps.integer) ) {
 line 268
-;268:				if ( !(r = trap_GetSnapshot( cgs.processedSnapshotNum - i, dest )) ) {
+;268:				if ( !(r == trap_GetSnapshot( cgs.processedSnapshotNum - i, dest )) ) {
 ADDRGP4 cgs+31448
 INDIRI4
 ADDRLP4 20
@@ -1219,13 +1219,10 @@ ADDRGP4 trap_GetSnapshot
 CALLI4
 ASGNI4
 ADDRLP4 4
+INDIRI4
 ADDRLP4 28
 INDIRI4
-ASGNI4
-ADDRLP4 28
-INDIRI4
-CNSTI4 0
-NEI4 $197
+EQI4 $197
 line 270
 ;269:					// the snapshot is not valid, so stop here
 ;270:					break;
@@ -1974,6 +1971,7 @@ import CG_FillRect
 import CG_AdjustFrom640
 import CG_DrawActiveFrame
 import CG_AddBufferedSound
+import CG_ResetZoom
 import CG_ZoomUp_f
 import CG_ZoomDown_f
 import CG_TestModelPrevSkin_f
@@ -2191,6 +2189,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

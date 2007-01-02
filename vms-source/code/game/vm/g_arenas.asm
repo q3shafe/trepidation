@@ -143,7 +143,7 @@ pop
 line 52
 ;51:
 ;52:	if ( level.clients[playerClientNum].sess.sessionTeam == TEAM_SPECTATOR ) {
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 1076
 INDIRI4
 MULI4
@@ -300,7 +300,7 @@ line 104
 ADDRLP4 1092
 CNSTI4 0
 ASGNI4
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 1076
 INDIRI4
 MULI4
@@ -446,7 +446,7 @@ ADDRLP4 4
 INDIRI4
 ARGI4
 ADDRLP4 1096
-CNSTI4 3452
+CNSTI4 3456
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1290,7 +1290,7 @@ line 215
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTI4 75
+CNSTI4 77
 ARGI4
 CNSTI4 0
 ARGI4
@@ -2427,7 +2427,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3452
+CNSTI4 3456
 ADDRGP4 level+96
 INDIRI4
 MULI4
@@ -2499,7 +2499,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3452
+CNSTI4 3456
 ADDRGP4 level+96+4
 INDIRI4
 MULI4
@@ -2558,7 +2558,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3452
+CNSTI4 3456
 ADDRGP4 level+96+8
 INDIRI4
 MULI4
@@ -2624,7 +2624,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3452
+CNSTI4 3456
 ADDRGP4 level+96+8
 INDIRI4
 MULI4
@@ -2843,6 +2843,7 @@ import trap_AAS_AlternativeRouteGoals
 import trap_AAS_PredictRoute
 import trap_AAS_EnableRoutingArea
 import trap_AAS_AreaTravelTimeToGoalArea
+import trap_AAS_AreaLadder
 import trap_AAS_AreaReachability
 import trap_AAS_IntForBSPEpairKey
 import trap_AAS_FloatForBSPEpairKey
@@ -3072,6 +3073,7 @@ import SelectSpawnPoint
 import SetClientViewAngle
 import PickTeam
 import TeamLeader
+import BalanceTeams
 import TeamCount
 import BuildDisplacer
 import BuildMC
@@ -3248,6 +3250,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand

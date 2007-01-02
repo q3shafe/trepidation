@@ -253,7 +253,7 @@ LABELV $90
 line 114
 ;112:
 ;113:	case ID_EXIT:
-;114:		UI_ConfirmMenu( "EXIT GAME?", NULL, MainMenu_ExitAction );
+;114:		UI_ConfirmMenu( "EXIT GAME?", (voidfunc_f)NULL, MainMenu_ExitAction );
 ADDRGP4 $91
 ARGP4
 CNSTP4 0
@@ -676,7 +676,7 @@ ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
 line 211
-;211:		UI_DrawString( 320, 400, "Tredpidation(c)2006, GPLed by The Trepidation Project", UI_CENTER|UI_SMALLFONT, color );
+;211:		UI_DrawString( 320, 400, "Tredpidation (c)2006, Human Complex", UI_CENTER|UI_SMALLFONT, color );
 CNSTI4 320
 ARGI4
 CNSTI4 400
@@ -696,7 +696,7 @@ ADDRGP4 $129
 JUMPV
 LABELV $128
 line 213
-;213:		UI_DrawString( 320, 450, "Tredpidation(c)2006, GPLed by The Trepidation Project", UI_CENTER|UI_SMALLFONT, color );
+;213:		UI_DrawString( 320, 450, "Tredpidation (c)2006, Human Complex", UI_CENTER|UI_SMALLFONT, color );
 CNSTI4 320
 ARGI4
 CNSTI4 450
@@ -1782,6 +1782,7 @@ import UI_SaveConfigMenu
 import UI_SaveConfigMenu_Cache
 import UI_LoadConfigMenu
 import UI_LoadConfig_Cache
+import UI_DynamicCommandMenu_f
 import UI_TeamOrdersMenu_Cache
 import UI_TeamOrdersMenu_f
 import UI_TeamOrdersMenu
@@ -1941,6 +1942,7 @@ import UI_ConfirmMenu_Style
 import UI_ConfirmMenu
 import ConfirmMenu_Cache
 import UI_BotCommandMenu_f
+import UI_DynamicCommandMenu
 import UI_DynamicMenu
 import UI_DynamicMenuCache
 import UI_InGameMenu
@@ -2127,6 +2129,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand
@@ -2430,6 +2434,7 @@ byte 1 116
 byte 1 105
 byte 1 111
 byte 1 110
+byte 1 32
 byte 1 40
 byte 1 99
 byte 1 41
@@ -2439,38 +2444,19 @@ byte 1 48
 byte 1 54
 byte 1 44
 byte 1 32
-byte 1 71
-byte 1 80
-byte 1 76
-byte 1 101
-byte 1 100
-byte 1 32
-byte 1 98
-byte 1 121
-byte 1 32
-byte 1 84
-byte 1 104
-byte 1 101
-byte 1 32
-byte 1 84
-byte 1 114
-byte 1 101
-byte 1 112
-byte 1 105
-byte 1 100
+byte 1 72
+byte 1 117
+byte 1 109
 byte 1 97
-byte 1 116
-byte 1 105
-byte 1 111
 byte 1 110
 byte 1 32
-byte 1 80
-byte 1 114
+byte 1 67
 byte 1 111
-byte 1 106
+byte 1 109
+byte 1 112
+byte 1 108
 byte 1 101
-byte 1 99
-byte 1 116
+byte 1 120
 byte 1 0
 align 1
 LABELV $131
