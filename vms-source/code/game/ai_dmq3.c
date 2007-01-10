@@ -3027,6 +3027,10 @@ int BotFindEnemy(bot_state_t *bs, int curenemy) {
 	float squaredist, cursquaredist;
 	aas_entityinfo_t entinfo, curenemyinfo;
 	vec3_t dir, angles;
+	// Trep
+//	int ent;
+//	entityState_t state;
+	
 
 	alertness = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_ALERTNESS, 0, 1);
 	easyfragger = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_EASY_FRAGGER, 0, 1);
@@ -3045,12 +3049,34 @@ int BotFindEnemy(bot_state_t *bs, int curenemy) {
 		cursquaredist = 0;
 	}
 
+	/*
 	// Trepidation Gametype
-	if (g_GameMode.integer == 3)
+	// This didnt work at all
+	if (g_GameMode.integer == 3 && curenemy == 0)
 	{
+		
+		ent = 0;
+		i=0;
+		while( ( ent = BotAI_GetSnapshotEntity( bs->client, ent, &state ) ) != -1 ) {
+		
+			if (state.eType == ET_BUILDABLE)
+			{
+				entinfo.number = ent;
+				//BotEntityInfo(i, &entinfo);
+				bs->enemy = entinfo.number;
+				if (curenemy >= 0) bs->enemysight_time = FloatTime() - 2;
+				else bs->enemysight_time = FloatTime();
+				bs->enemysuicide = qfalse;
+				bs->enemydeath_time = 0;
+				bs->enemyvisible_time = FloatTime();
+				return qtrue;
+			}
 
+
+		}
 
 	}
+	*/
 
 #ifdef MISSIONPACK
 	if (gametype == GT_OBELISK) {
