@@ -973,6 +973,8 @@ extern	vmCvar_t	g_Turrets;
 extern	vmCvar_t	g_GrappleMode;
 extern	vmCvar_t	g_PCTeamkills;
 
+extern	vmCvar_t	trep_debug;
+
 //extern	vmCvar_t	g_CTFGrapple; // Decided not to make this an option
 
 

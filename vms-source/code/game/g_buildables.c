@@ -408,6 +408,7 @@ void turret_fireonenemy( gentity_t *ent){
 		{
 			//This is the best turret
 			fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qtrue );
+			if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 			
 			
 		} else
@@ -418,12 +419,13 @@ void turret_fireonenemy( gentity_t *ent){
 				// This is the weakest
 				//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
 				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
-				
+				if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 				
 			} else
 			{
 				// Middle Power
 				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qtrue );
+				if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 				
 			}
 			
@@ -461,6 +463,7 @@ void Base_think(gentity_t *ent){
 			ent->health = 1; 
 			ent->s.time2 = 0;
 			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+			if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
 			
 	
 		}
@@ -472,6 +475,7 @@ void Base_think(gentity_t *ent){
 			ent->health = 1; 
 			ent->s.time2 = 0;
 			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+			if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
 	
 		}
 	}
@@ -554,7 +558,8 @@ void createturretgun(gentity_t *ent)
 	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
 	ent->r.contents = CONTENTS_SOLID;
 	turret=G_Spawn();
-	turret->parent=ent->parent;
+	turret->parent=ent;
+	if (trep_debug.integer) { G_Printf("%s Turret Gun Built - Owner: %s\n", turret->parent->client->pers.netname ); }
 	turret->chain=ent;
 	ent->chain=turret;
 	turret->s.eType=ET_BUILDABLE;
@@ -647,7 +652,8 @@ void BuildTurret( gentity_t *ent , int type )
 	gentity_t	*base;	
 
 	base=G_Spawn();
-	base->parent=ent;		
+	base->parent=ent;	
+	if (trep_debug.integer) { G_Printf("%s Turret Built - Owner: %s\n", base->parent->client->pers.netname ); }
 	base->r.contents = CONTENTS_FOG;
 	
 	if (type == 0)

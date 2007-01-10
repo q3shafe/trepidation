@@ -1296,7 +1296,9 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		}
 	}
 	
-
+	// Debug
+	if (trep_debug.integer) { G_Printf("Class : %s Taking Damage\n", targ->classname ); }
+	
 
 #ifdef MISSIONPACK
 		if (mod == MOD_PROXIMITY_MINE) {
