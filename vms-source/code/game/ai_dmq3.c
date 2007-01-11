@@ -3049,6 +3049,7 @@ int BotFindEnemy(bot_state_t *bs, int curenemy) {
 		cursquaredist = 0;
 	}
 
+	
 	/*
 	// Trepidation Gametype
 	// This didnt work at all
@@ -3059,6 +3060,7 @@ int BotFindEnemy(bot_state_t *bs, int curenemy) {
 		i=0;
 		while( ( ent = BotAI_GetSnapshotEntity( bs->client, ent, &state ) ) != -1 ) {
 		
+			
 			if (state.eType == ET_BUILDABLE)
 			{
 				entinfo.number = ent;
@@ -4283,6 +4285,8 @@ BotGetActivateGoal
 
   returns the number of the bsp entity to activate
   goal->entitynum will be set to the game entity to activate
+
+  // FIXME: This needs cleaned up - Shafe
 ==================
 */
 //#define OBSTACLEDEBUG
@@ -4322,12 +4326,87 @@ int BotGetActivateGoal(bot_state_t *bs, int entitynum, bot_activategoal_t *activ
 				return ent;
 			}
 		}
+	}
 
+	/* This doesnt go here
+
+
+	// Trepidation - Bot shoots at buildabled
+
+	//if it is a Turret
+	if (!strcmp(classname, "turret")) {
+		if (trap_AAS_FloatForBSPEpairKey(ent, "health", &health)) {
+			//if the door has health then the door must be shot to open
+			if (health) {
+				BotFuncDoorActivateGoal(bs, ent, activategoal);
+				return ent;
+			}
+		}
+	}
+
+	//if it is a generator
+	if (!strcmp(classname, "turret")) {
+		if (trap_AAS_FloatForBSPEpairKey(ent, "health", &health)) {
+			//if the door has health then the door must be shot to open
+			if (health) {
+				BotFuncDoorActivateGoal(bs, ent, activategoal);
+				return ent;
+			}
+		}
+	}
+
+	//if it is an immobilizer
+	if (!strcmp(classname, "timedisplacer")) {
+		if (trap_AAS_FloatForBSPEpairKey(ent, "health", &health)) {
+			//if the door has health then the door must be shot to open
+			if (health) {
+				BotFuncDoorActivateGoal(bs, ent, activategoal);
+				return ent;
+			}
+		}
+
+	//if it is a buildable
+	if (!strcmp(classname, "mc")) {
+		if (trap_AAS_FloatForBSPEpairKey(ent, "health", &health)) {
+			//if the door has health then the door must be shot to open
+			if (health) {
+				BotFuncDoorActivateGoal(bs, ent, activategoal);
+				return ent;
+			}
+		}
+	}
+
+	// Someone's PDG Grenade
+	//if it is a buildable
+	if (!strcmp(classname, "pdg")) {
+		if (trap_AAS_FloatForBSPEpairKey(ent, "health", &health)) {
+			//if the door has health then the door must be shot to open
+			if (health) {
+				BotFuncDoorActivateGoal(bs, ent, activategoal);
+				return ent;
+			}
+		}
+	}
+
+   */
+
+	//if it is a door
+	if (!strcmp(classname, "func_breakable")) {
+		if (trap_AAS_FloatForBSPEpairKey(ent, "health", &health)) {
+			//if the door has health then the door must be shot to open
+			if (health) {
+				BotFuncDoorActivateGoal(bs, ent, activategoal);
+				return ent;
+			}
+		}
+	}
+
+	/*
 	//if it is some glass
  	if (!strcmp(classname, "func_breakable")) {
  		return ent;
  	}
-	
+	*/
 		//
 		trap_AAS_IntForBSPEpairKey(ent, "spawnflags", &spawnflags);
 		// if the door starts open then just wait for the door to return
