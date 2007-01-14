@@ -532,7 +532,8 @@ createturretgun
 void createturretgun(gentity_t *ent)
 {
 	gentity_t *turret; 	// The object to hold the turrets details.
-	
+	gentity_t *tmpent; // Used to for checking if it's ok to build
+
 	int			num;
 	int			touch[MAX_GENTITIES];
 
@@ -544,12 +545,18 @@ void createturretgun(gentity_t *ent)
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
 	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
+
+	// Add a check to make sure the entity is a player
 	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
-	
+
 	if (num>1)
 	{
-		ent->nextthink=level.time+1000;
-		return;
+		tmpent = &g_entities[num];
+		if (tmpent->s.eType == ET_PLAYER)
+		{
+			ent->nextthink=level.time+1000;
+			return;
+		}
 	}
 	
 
@@ -797,21 +804,31 @@ void MC_prethink(gentity_t *ent)
 {
 	int			num;
 	int			touch[MAX_GENTITIES];
+	gentity_t	*tmpent;
 
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
 
+	
 	vec3_t		mins, maxs;
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
 	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
+
+	// Add a check to make sure the entity is a player
 	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
-	
+
 	if (num>1)
 	{
-		ent->nextthink=level.time+1000;
-		return;
+		tmpent = &g_entities[num];
+		if (tmpent->s.eType == ET_PLAYER)
+		{
+			ent->nextthink=level.time+1000;
+			return;
+		}
 	}
+
+
 
 
 	if (ent->s.team == TEAM_BLUE)
@@ -937,22 +954,29 @@ void gen_prethink(gentity_t *ent)
 {
 	int			num;
 	int			touch[MAX_GENTITIES];
+	gentity_t	*tmpent;
 
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
 
+	
 	vec3_t		mins, maxs;
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
 	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
+
+	// Add a check to make sure the entity is a player
 	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
-	
+
 	if (num>1)
 	{
-		ent->nextthink=level.time+1000;
-		return;
+		tmpent = &g_entities[num];
+		if (tmpent->s.eType == ET_PLAYER)
+		{
+			ent->nextthink=level.time+1000;
+			return;
+		}
 	}
-
 	
 	// Dont count them until they have been built
 	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
@@ -1121,22 +1145,29 @@ void td_prethink(gentity_t *ent)
 {
 	int			num;
 	int			touch[MAX_GENTITIES];
+gentity_t	*tmpent;
 
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
 
+	
 	vec3_t		mins, maxs;
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
 	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
+
+	// Add a check to make sure the entity is a player
 	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
-	
+
 	if (num>1)
 	{
-		ent->nextthink=level.time+1000;
-		return;
+		tmpent = &g_entities[num];
+		if (tmpent->s.eType == ET_PLAYER)
+		{
+			ent->nextthink=level.time+1000;
+			return;
+		}
 	}
-
 
 	// Dont count them until they have been built
 	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
