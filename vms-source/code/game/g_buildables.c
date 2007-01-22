@@ -226,6 +226,46 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 
 
 
+/*
+=================
+AnnoundBuildables
+
+This will put a message up when a new buildable is available
+=================
+*/
+void AnnounceBuildables( void) {
+
+int cts;
+
+	cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
+
+	if (cts == 2) 
+	{
+		BroadCastSound("sound/world/tim_pump.wav");
+		trap_SendServerCommand( -1, va("cp \"^7Immobilizer Now Available\n\"") );
+		trap_SendServerCommand( -1, va( "print \"^9Immobilizer Now Available\n\"") );
+	}
+
+
+	if (cts == 3) 
+	{
+		BroadCastSound("sound/world/tim_pump.wav");
+		trap_SendServerCommand( -1, va("cp \"^7Shielded Turrets Now Available\n\"") );
+		trap_SendServerCommand( -1, va( "print \"^9Shielded Turrets Now Available\n\"") );
+	}
+
+	if (cts == 6) 
+	{
+		BroadCastSound("sound/world/tim_pump.wav");
+		trap_SendServerCommand( -1, va("cp \"^7Cloaking Turrets Now Available\n\"") );
+		trap_SendServerCommand( -1, va( "print \"Cloaking Turrets Now Available\n\"") );
+	}
+
+
+
+
+}
+
 
 /*
 ===========================
@@ -539,8 +579,9 @@ void createturretgun(gentity_t *ent)
 
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
+	// Now we're just gonna kill the player if they dont get out of the way - Shafe
 
-	
+	/*
 	vec3_t		mins, maxs;
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
@@ -551,13 +592,11 @@ void createturretgun(gentity_t *ent)
 
 	if (num>1)
 	{
-		tmpent = &g_entities[num];
-		if (tmpent->s.eType == ET_PLAYER)
-		{
-			ent->nextthink=level.time+1000;
-			return;
-		}
+		ent->nextthink=level.time+1000;
+		return;
+
 	}
+	*/
 	
 
 	ent->nextthink=level.time+100; // sets up the thinking for the cloaking or regeneration/
@@ -773,7 +812,7 @@ void MC_think(gentity_t *ent)
 	// This turns shielding off and regeneration stops.
 	if (ent->s.time2==1)
 	{
-		if (ent->health<100) // Was 350
+		if (ent->health<35) // Was 350
 		{
 			ent->s.time2=0;
 		}
@@ -783,7 +822,7 @@ void MC_think(gentity_t *ent)
 	{
 		if (ent->health < (800 * shieldMultiplier) ) 
 		{
-			ent->health+=1;
+			ent->health+=shieldMultiplier;
 			ent->nextthink=level.time+100;
 		}
 	}
@@ -809,8 +848,11 @@ void MC_prethink(gentity_t *ent)
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
 
-	
+
+	// Still Broken :(
+	/*
 	vec3_t		mins, maxs;
+
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
 	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
@@ -820,14 +862,11 @@ void MC_prethink(gentity_t *ent)
 
 	if (num>1)
 	{
-		tmpent = &g_entities[num];
-		if (tmpent->s.eType == ET_PLAYER)
-		{
-			ent->nextthink=level.time+1000;
-			return;
-		}
+	
+		ent->nextthink=level.time+1000;
+		return;
 	}
-
+	*/
 
 
 
@@ -839,9 +878,18 @@ void MC_prethink(gentity_t *ent)
 	{
 		level.redScoreLatched = 0;
 	}
+
+	ent->takedamage=qtrue; // so they can be destroyed
+	// - We'll start it high, so that it cant be destroyed easily right away.
+	ent->health=3500; // change this to make the turrets tougher or weaker.
+	ent->die=turret_explode; // so they actually explode when destroyed
+	
 	ent->s.time2=1;
 	ent->think = MC_think;
 	ent->nextthink=level.time+100;
+
+	// Announce any new buildables available
+	AnnounceBuildables();
 }
 
 
@@ -854,8 +902,6 @@ void BuildMC( gentity_t *ent )
 {
 
 	gentity_t	*base;
-//	vec3_t 		forward,up;
-
 
 	if (ent->client->sess.sessionTeam == TEAM_BLUE)
 	{
@@ -878,12 +924,11 @@ void BuildMC( gentity_t *ent )
 	
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	base->think=MC_prethink;
-	base->health=1000; // change this to make the turrets tougher or weaker.
+
 	base->s.eType=ET_BUILDABLE;
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
-	base->takedamage=qtrue; // so they can be destroyed
-	base->die=turret_explode; // so they actually explode when destroyed
-	//base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
+	base->takedamage=qfalse; // so they can be destroyed
+	//base->die=turret_explode; // so they actually explode when destroyed
 	base->nextthink=level.time+3000;  // MC Need not take long to build
 	base->classname = "mc";
 	base->s.team =  ent->client->sess.sessionTeam;	
@@ -959,7 +1004,7 @@ void gen_prethink(gentity_t *ent)
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
 
-	
+	/*
 	vec3_t		mins, maxs;
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
@@ -970,13 +1015,11 @@ void gen_prethink(gentity_t *ent)
 
 	if (num>1)
 	{
-		tmpent = &g_entities[num];
-		if (tmpent->s.eType == ET_PLAYER)
-		{
-			ent->nextthink=level.time+1000;
-			return;
-		}
+		ent->nextthink=level.time+1000;
+		return;
+
 	}
+	*/
 	
 	// Dont count them until they have been built
 	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
@@ -1150,7 +1193,7 @@ gentity_t	*tmpent;
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
 
-	
+	/*	
 	vec3_t		mins, maxs;
 
 	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
@@ -1161,13 +1204,11 @@ gentity_t	*tmpent;
 
 	if (num>1)
 	{
-		tmpent = &g_entities[num];
-		if (tmpent->s.eType == ET_PLAYER)
-		{
 			ent->nextthink=level.time+1000;
-			return;
-		}
+			return;		
 	}
+	*/
+
 
 	// Dont count them until they have been built
 	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
@@ -1183,6 +1224,9 @@ gentity_t	*tmpent;
 		ent->s.time2=0;
 		ent->think = TD_think;
 		ent->nextthink=level.time+100;
+
+
+
 }
 
 
