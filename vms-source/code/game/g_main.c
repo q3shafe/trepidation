@@ -1636,6 +1636,7 @@ qboolean ScoreIsTied( void ) {
 	return a == b;
 }
 
+
 /*
 =================
 CheckExitRules
@@ -1647,12 +1648,6 @@ can see the last frag.
 */
 
 
-/*
-
-SHAFE - This is a mess.. Clean this up
-
-*/
-	
 void CheckExitRules( void ) {
  	int			i;
 	gclient_t	*cl;
@@ -1708,10 +1703,11 @@ void CheckExitRules( void ) {
 
 			trap_SendServerCommand( -1, va("cp \"^7Red Team Scores\n\"") );
 			trap_SendServerCommand( -1, va( "print \"Red team scores\n\"") );
-			level.teamScores[ TEAM_RED ]++;
+			level.teamScores[ TEAM_RED ]++; 
 			//CalculateRanks(); // This is causing crashes
 			BroadCastSound("sound/teamplay/voc_red_scores.wav");
 			
+
 
 			//return;
 		}

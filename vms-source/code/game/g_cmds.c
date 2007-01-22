@@ -111,17 +111,31 @@ void Cmd_SpawnGenerator_f( gentity_t *ent )
 //BuildDisplacer
 void Cmd_SpawnDisplacer_f( gentity_t *ent )
 {
-	int	iserror; 
+	int	iserror, cts; 
 	iserror = 1;
-	
+
+
+
 	if ( ent->client->ps.stats[STAT_HEALTH] <= 0 ) 
 	{ // Don't do anything when you are dead -Vincent
 	return;
 	}
+  
 
 	// You can only Build Displacers in GameMode 3
 	if (g_GameMode.integer == 3) 
 	{
+		
+		// What types of turrets are you allowed to build?
+		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
+		
+		// If the rules change This needs to be change in ui_ingame.c as well
+		if (cts < 2) { 
+			iserror = 3; 
+			trap_SendServerCommand( ent-g_entities, "cp \"Immobilizer Not Available Yet.\"" );
+			return;
+		}
+
 		// Make sure there's not more than 2
 		if(ent->client->sess.sessionTeam == TEAM_RED) 
 		{
@@ -183,6 +197,7 @@ void Cmd_SpawnDisplacer_f( gentity_t *ent )
 		// FIXME: Play Error Sound
 		if (iserror == 2) { trap_SendServerCommand( ent-g_entities, "cp \"Too Many Immobilizers..\"" );}
 		if (iserror == 1) { trap_SendServerCommand( ent-g_entities, "cp \"Immobilizers Not Allowed.\"" );}
+		if (iserror == 3) { trap_SendServerCommand( ent-g_entities, "cp \"Immobilizer Not Available Yet.\"" );} // Redundant now?
 		//G_AddEvent( ent, EV_ERROR, 0 );
 	}						
 

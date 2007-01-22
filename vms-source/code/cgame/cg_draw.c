@@ -2347,7 +2347,7 @@ static void CG_DrawAmmoWarning( void ) {
 	if ( cg.lowAmmoWarning == 2 ) {
 		s = "OUT OF AMMO";
 	} else {
-		s = "LOW AMMO WARNING";
+		s = "YOU NEED AMMO!";
 	}
 	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
 	CG_DrawSmallString(320 - w / 2, 64, s, 1.0F);
