@@ -571,6 +571,7 @@ static void CG_Missile( centity_t *cent ) {
 		return;
 	} // End Shafe
 
+
 	// flicker between two skins
 	ent.skinNum = cg.clientFrame & 1;
 	ent.hModel = weapon->missileModel;

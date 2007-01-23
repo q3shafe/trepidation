@@ -424,6 +424,7 @@ typedef enum {
 	EV_IMMOBILIZED, //-Vincent
 	EV_IMMOBILIZED_FREE, //-Vincent
 
+
 	EV_GIB_PLAYER,			// gib a previously living player
 	EV_GIB_PLAYER_HEADSHOT,		// Shafe - Trep - Headshot
 	EV_BODY_NOHEAD,				// Shafe - Trep - Headshot

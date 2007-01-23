@@ -881,7 +881,7 @@ void MC_prethink(gentity_t *ent)
 
 	ent->takedamage=qtrue; // so they can be destroyed
 	// - We'll start it high, so that it cant be destroyed easily right away.
-	ent->health=3500; // change this to make the turrets tougher or weaker.
+	ent->health=2400; // change this to make the turrets tougher or weaker.
 	ent->die=turret_explode; // so they actually explode when destroyed
 	
 	ent->s.time2=1;

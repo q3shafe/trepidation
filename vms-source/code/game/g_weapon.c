@@ -1210,9 +1210,7 @@ void FireWeapon2( gentity_t *ent ) {
 	weapon_pdlauncher_fire( ent); 
 	break; 
  case WP_RAILGUN: 
-	Weapon_RocketLauncher_Fire( ent );
-	// Zoom?
-	//trap_SendConsoleCommand( EXEC_APPEND, "+zoom\n" );
+	// This is just zoom
 	break; 
  case WP_BFG: 
 	BFG_Fire( ent, qtrue); 

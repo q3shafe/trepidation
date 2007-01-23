@@ -302,7 +302,7 @@ void CG_RailTrail (clientInfo_t *ci, vec3_t start, vec3_t end) {
 ==========================
 CG_ShotgunTrail
 ==========================
-
+*/
 static void CG_ShotgunTrail( centity_t *ent, const weaponInfo_t *wi ) {
 	int		step;
 	vec3_t	origin, lastPos;
@@ -870,9 +870,10 @@ void CG_RegisterWeapon( int weaponNum ) {
 
 
 	case WP_SHOTGUN:
-		MAKERGB( weaponInfo->flashDlightColor, 1, 1, 0 );
+
 		weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/shotgun/sshotf1b.wav", qfalse );
-		weaponInfo->ejectBrassFunc = CG_ShotgunEjectBrass;
+		weaponInfo->ejectBrassFunc = CG_ShotgunEjectBrass;		
+		MAKERGB( weaponInfo->flashDlightColor, 1, 1, 0 );
 		break;
 
 	case WP_ROCKET_LAUNCHER:
@@ -2285,16 +2286,23 @@ static void CG_ShotgunPellet( vec3_t start, vec3_t end, int skipNum ) {
 	sourceContentType = trap_CM_PointContents( start, 0 );
 	destContentType = trap_CM_PointContents( tr.endpos, 0 );
 
+	
+
+	/*
 	// FIXME: should probably move this cruft into CG_BubbleTrail
 	if ( sourceContentType == destContentType ) {
 		if ( sourceContentType & CONTENTS_WATER ) {
+	*/
 			CG_BubbleTrail( start, tr.endpos, 32 );
+	/*
 		}
 	} else if ( sourceContentType & CONTENTS_WATER ) {
 		trace_t trace;
 
 		trap_CM_BoxTrace( &trace, end, start, NULL, NULL, 0, CONTENTS_WATER );
+		
 		CG_BubbleTrail( start, trace.endpos, 32 );
+		
 	} else if ( destContentType & CONTENTS_WATER ) {
 		trace_t trace;
 
@@ -2302,6 +2310,7 @@ static void CG_ShotgunPellet( vec3_t start, vec3_t end, int skipNum ) {
 		CG_BubbleTrail( tr.endpos, trace.endpos, 32 );
 	}
 
+	*/
 	if (  tr.surfaceFlags & SURF_NOIMPACT ) {
 		return;
 	}
