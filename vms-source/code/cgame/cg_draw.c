@@ -2578,6 +2578,14 @@ void CG_DrawTimedMenus() {
 	}
 }
 #endif
+
+ 
+static void CG_DrawZoomOvrly( void ) {
+
+	CG_DrawPic( 0, 0, 640, 480, cgs.media.ZoomOverlay );
+}
+
+
 /*
 =================
 CG_Draw2D
@@ -2608,6 +2616,13 @@ static void CG_Draw2D( void ) {
 		return;
 	}
 */
+
+	// Draw the Zoom Overlay
+	if ( cg.zooming || cg.zoomed)
+	{
+		CG_DrawZoomOvrly();
+	}
+	
 	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR ) {
 		CG_DrawSpectator();
 		CG_DrawCrosshair();

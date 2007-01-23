@@ -424,13 +424,25 @@ static void CG_OffsetFirstPersonView( void ) {
 //======================================================================
 
 // Shafe - Trep - Improved Zoom 
+
 void CG_ZoomDown_f( void ) 
 { 
 	if ( cg.snap->ps.stats[STAT_HEALTH] <= 0 )
 	{// Don't do anything when you are dead -Vincent
-	return;
+		return;
 	}
 
+	// Only The Guass Rifle Can Zoom
+	if (cg.snap->ps.weapon != 7)
+	{
+		if(cg.zoomed || !cg.zooming)
+		{
+			cg.zoomTime=0;
+			cg.zooming=qfalse;
+		}
+		return;
+	}
+	
 	if ( cg.zoomed && !cg.zooming ) 
 	{
 		cg.zoomed = qfalse;
@@ -442,8 +454,10 @@ void CG_ZoomDown_f( void )
 		cg.zoomed = qtrue;
 		cg.zooming = qtrue;
 		cg.zoomTime = cg.time;
+		trap_S_StartSound( cg.refdef.vieworg, ENTITYNUM_WORLD, CHAN_AUTO, cgs.media.zoomStart );
 	}
 }
+
 
 void CG_ZoomUp_f( void ) 
 {
@@ -476,6 +490,21 @@ void CG_ResetZoom( void )
 	}
 }
 
+void CG_DoZoom_f( void ) 
+{
+
+
+	if ( !cg.zoomed ) 
+	{
+		CG_ZoomDown_f();
+	} else
+	{
+		CG_ZoomUp_f();
+	}
+
+
+
+}
 
 /*  Original Zoom Functions
 void CG_ZoomDown_f( void ) { 

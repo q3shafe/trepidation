@@ -457,8 +457,10 @@ void G_InitModRules( void )
 	
 	if (g_GameMode.integer == 3)
 	{
+		trap_SendConsoleCommand( EXEC_APPEND, "g_gametype 3\n" );
 		g_gametype.integer = 3;
 	}
+
 
 	// Dont Use up Ammo in Arsenal
 	if (( g_GameMode.integer == 1 ) || (g_GameMode.integer == 2)) 
@@ -481,6 +483,7 @@ void G_InitModRules( void )
 		if (g_GameMode.integer == 1)
 		{
 			g_gametype.integer = 0;
+			trap_SendConsoleCommand( EXEC_APPEND, "g_gametype 0\n" );
 		}
 
 		

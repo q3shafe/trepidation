@@ -845,6 +845,8 @@ typedef struct {
 	qhandle_t	HudLeft;		
 	qhandle_t	HudRight;		
 
+	qhandle_t	ZoomOverlay;		
+
 	// medals shown during gameplay
 	qhandle_t	medalImpressive;
 	qhandle_t	medalExcellent;
@@ -980,6 +982,11 @@ typedef struct {
 	sfxHandle_t	count1Sound;
 	sfxHandle_t	countFightSound;
 	sfxHandle_t	countPrepareSound;
+
+	sfxHandle_t	zoomStart;
+	sfxHandle_t	zoomEnd;
+
+
 
 #ifdef MISSIONPACK
 	// new stuff

@@ -614,8 +614,12 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 	if ( oldEventSequence < client->ps.eventSequence - MAX_PS_EVENTS ) {
 		oldEventSequence = client->ps.eventSequence - MAX_PS_EVENTS;
 	}
+
+
+
 	for ( i = oldEventSequence ; i < client->ps.eventSequence ; i++ ) {
 		event = client->ps.events[ i & (MAX_PS_EVENTS-1) ];
+
 
 		switch ( event ) {
 		case EV_FALL_MEDIUM:
@@ -733,7 +737,7 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 			break;
 
 		default:
-			break;
+		break;
 		}
 	}
 

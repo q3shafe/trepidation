@@ -1429,6 +1429,9 @@ char *eventnames[] = {
 	"EV_IMMOBILIZED", //-Vincent
 	"EV_IMMOBILIZED_FREE", //-Vincent
 
+	"EV_ZOOMIN", 
+	"EV_ZOOMOUT", 
+
 	"EV_GIB_PLAYER",			// gib a previously living player
 	"EV_SCOREPLUM",			// score plum
 

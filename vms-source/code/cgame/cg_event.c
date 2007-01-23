@@ -795,7 +795,14 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 
 	case EV_FIRE_WEAPON2: 
 		 DEBUGNAME("EV_FIRE_WEAPON2"); // Shafe - Trep Alt Fire
-		 CG_FireWeapon2( cent ); 
+		 if (es->weapon == WP_RAILGUN)
+		 {
+			//CG_DoZoom_f();  // Zoom goes here.  Not quite sure how to do this?
+		 } 		
+		 else
+		 {
+			CG_FireWeapon2( cent ); 
+		 }
 		 break;
 
 	case EV_USE_ITEM0:

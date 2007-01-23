@@ -152,9 +152,9 @@ void TossClientItems( gentity_t *self ) {
 
 
 	
-
+	// Shafe - Always drop everything
 	// drop all the powerups if not in teamplay
-	if ( g_gametype.integer != GT_TEAM && g_GameMode.integer != 3 ) {
+	//if ( g_gametype.integer != GT_TEAM && g_GameMode.integer != 3 ) {
 		angle = 45;
 		for ( i = 1 ; i < PW_NUM_POWERUPS ; i++ ) {
 			if ( self->client->ps.powerups[ i ] > level.time ) {
@@ -171,7 +171,7 @@ void TossClientItems( gentity_t *self ) {
 				angle += 45;
 			}
 		}
-	}
+	//}
 }
 
 #ifdef MISSIONPACK

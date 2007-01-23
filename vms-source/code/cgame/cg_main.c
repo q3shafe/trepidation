@@ -613,6 +613,11 @@ static void CG_RegisterSounds( void ) {
 	cgs.media.count1Sound = trap_S_RegisterSound( "sound/feedback/one.wav", qtrue );
 	cgs.media.countFightSound = trap_S_RegisterSound( "sound/feedback/fight.wav", qtrue );
 	cgs.media.countPrepareSound = trap_S_RegisterSound( "sound/feedback/prepare.wav", qtrue );
+	cgs.media.zoomStart = trap_S_RegisterSound( "sound/world/electro.wav", qtrue );
+	cgs.media.zoomEnd = trap_S_RegisterSound( "sound/world/electro.wav", qtrue );
+	
+
+
 #ifdef MISSIONPACK
 	cgs.media.countPrepareTeamSound = trap_S_RegisterSound( "sound/feedback/prepare_team.wav", qtrue );
 #endif
@@ -925,6 +930,9 @@ static void CG_RegisterGraphics( void ) {
 
 	cgs.media.smokePuffShader = trap_R_RegisterShader( "smokePuff" );
 	cgs.media.smokePuffRageProShader = trap_R_RegisterShader( "smokePuffRagePro" );
+
+	// Zoom Overlay
+	cgs.media.ZoomOverlay = trap_R_RegisterShaderNoMip( "gfx/2d/scope.tga" );
 
 	// Shafe - Singularity Cannon Shaders
 	cgs.media.smokePuffShader2 = trap_R_RegisterShader( "smokePuff2" );
