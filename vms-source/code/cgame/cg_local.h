@@ -758,6 +758,7 @@ typedef struct {
 	qhandle_t	plasmaBallShader;
 	qhandle_t	waterBubbleShader;
 	qhandle_t	bloodTrailShader;
+	qhandle_t	sgTrailShader;
 #ifdef MISSIONPACK
 	qhandle_t	nailPuffShader;
 	qhandle_t	blueProxMine;
@@ -1497,6 +1498,7 @@ localEntity_t *CG_SmokePuff( const vec3_t p,
 				   int leFlags,
 				   qhandle_t hShader );
 void CG_BubbleTrail( vec3_t start, vec3_t end, float spacing );
+void CG_ShotgunTrail( vec3_t start, vec3_t end, float spacing );
 void CG_SpawnEffect( vec3_t org );
 #ifdef MISSIONPACK
 void CG_KamikazeEffect( vec3_t org );

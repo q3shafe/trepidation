@@ -8,6 +8,68 @@
 
 /*
 ==================
+CG_ShotgunTrail
+==================
+*/
+void CG_ShotgunTrail( vec3_t start, vec3_t end, float spacing ) {
+	vec3_t		move;
+	vec3_t		vec;
+	float		len;
+	int			i;
+
+	if ( cg_noProjectileTrail.integer ) {
+		return;
+	}
+
+	VectorCopy (start, move);
+	VectorSubtract (end, start, vec);
+	len = VectorNormalize (vec);
+
+	// advance a random amount first
+	i = rand() % (int)spacing;
+	VectorMA( move, i, vec, move );
+
+	VectorScale (vec, spacing, vec);
+
+	for ( ; i < len; i += spacing ) {
+		localEntity_t	*le;
+		refEntity_t		*re;
+
+		le = CG_AllocLocalEntity();
+		le->leFlags = LEF_PUFF_DONT_SCALE;
+		le->leType = LE_MOVE_SCALE_FADE;
+		le->startTime = cg.time;
+		le->endTime = cg.time + 400 + random() * 250;
+		le->lifeRate = 1.0 / ( le->endTime - le->startTime );
+
+		re = &le->refEntity;
+		re->shaderTime = cg.time / 1000.0f;
+
+		re->reType = RT_SPRITE;
+		re->rotation = 0;
+		re->radius = .5;
+		re->customShader = cgs.media.sgTrailShader;
+		re->shaderRGBA[0] = 0xff;
+		re->shaderRGBA[1] = 0xff;
+		re->shaderRGBA[2] = 0xff;
+		re->shaderRGBA[3] = 0xff;
+
+		le->color[3] = 1.0;
+
+		le->pos.trType = TR_LINEAR;
+		le->pos.trTime = cg.time;
+		VectorCopy( move, le->pos.trBase );
+		le->pos.trDelta[0] = crandom()*5;
+		le->pos.trDelta[1] = crandom()*5;
+		le->pos.trDelta[2] = crandom()*5 + 6;
+
+		VectorAdd (move, vec, move);
+	}
+}
+
+
+/*
+==================
 CG_BubbleTrail
 
 Bullets shot underwater

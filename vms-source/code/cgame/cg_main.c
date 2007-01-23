@@ -952,6 +952,7 @@ static void CG_RegisterGraphics( void ) {
 	cgs.media.connectionShader = trap_R_RegisterShader( "disconnected" );
 
 	cgs.media.waterBubbleShader = trap_R_RegisterShader( "waterBubble" );
+	cgs.media.sgTrailShader = trap_R_RegisterShader( "sgTrail" );
 
 	cgs.media.tracerShader = trap_R_RegisterShader( "gfx/misc/tracer" );
 	cgs.media.selectShader = trap_R_RegisterShader( "gfx/2d/select" );
