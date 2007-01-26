@@ -76,6 +76,10 @@ vmCvar_t	g_enableDust;
 vmCvar_t	g_enableBreath;
 vmCvar_t	g_proxMineTimeout;
 #endif
+
+vmCvar_t	g_grappleMaxLength; //-Vincent
+vmCvar_t	g_grappleSpeedDrop; //-Vincent
+
 //unlagged - server options
 vmCvar_t	g_delagHitscan;
 vmCvar_t	g_unlaggedVersion;
@@ -195,6 +199,9 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_smoothClients, "g_smoothClients", "1", 0, 0, qfalse},
 	{ &pmove_fixed, "pmove_fixed", "0", CVAR_SYSTEMINFO, 0, qfalse},
 	{ &pmove_msec, "pmove_msec", "8", CVAR_SYSTEMINFO, 0, qfalse},
+
+	{ &g_grappleMaxLength, "g_grappleMaxLength", "1000", CVAR_ARCHIVE | CVAR_SERVERINFO, 0, qfalse }, // FIXME!!! -Vincent
+	{ &g_grappleSpeedDrop, "g_grappleSpeedDrop", "0", CVAR_ARCHIVE | CVAR_SERVERINFO, 0, qfalse }, // Standard drop??? -Vincent
 
 //unlagged - server options
 	{ &g_delagHitscan, "g_delagHitscan", "1", CVAR_ARCHIVE | CVAR_SERVERINFO, 0, qtrue },
