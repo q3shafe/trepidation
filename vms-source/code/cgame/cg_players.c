@@ -2375,7 +2375,7 @@ void CG_AddRefEntityWithPowerups( refEntity_t *ent, entityState_t *state, int te
 			if (team == TEAM_RED)
 				ent->customShader = cgs.media.redQuadShader;
 			else
-				ent->customShader = cgs.media.quadShader;
+				ent->customShader = cgs.media.redQuadShader;
 			trap_R_AddRefEntityToScene( ent );
 		}
 		if ( state->powerups & ( 1 << PW_REGEN ) ) {

@@ -941,25 +941,27 @@ DynamicMenu_FinishSubMenuInit();
 static void DynamicMenu_BuildMenu( void )
 {
 	DynamicMenu_SubMenuInit();
+
+	//int	cts;
+	//cts = cgs.scores1 + cgs.scores2;
+	
+	//s_dynamic.gamemode = (int)trap_Cvar_VariableValue("g_GameMode");
 	
 	
-	
-	/*
-	cts = cgs.scores1 + cgs.scores2;
-	s_dynamic.gamemode = (int)trap_Cvar_VariableValue("g_GameMode");
-		
 		/* Rules just for reference from g_cmds
 		if ((cts < 3) && (type == 1)) { iserror = 3; }  
 		if ((cts < 6) && (type == 2)) { iserror = 3; }  
 
 		*/
 
-
+	
+	
 	DynamicMenu_AddItem("Turret", 0, NULL, DM_BuildItem);
+
 	DynamicMenu_AddItem("Sheilded Turret", 0 , NULL, DM_BuildItem);
 	DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
 	DynamicMenu_AddItem("Immobilizer", 0, NULL, DM_BuildItem);
-//	if( s_dynamic.gamemode == 3) 
+//	if( cgs.g_GameMode == 3) 
 //	{
 		DynamicMenu_AddItem("Generator", 0, NULL, DM_BuildItem);
 		DynamicMenu_AddItem("Power Core", 0, NULL, DM_BuildItem);
