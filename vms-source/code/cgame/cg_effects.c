@@ -37,9 +37,10 @@ void CG_ShotgunTrail( vec3_t start, vec3_t end, float spacing ) {
 
 		le = CG_AllocLocalEntity();
 		le->leFlags = LEF_PUFF_DONT_SCALE;
-		le->leType = LE_MOVE_SCALE_FADE;
+		//le->leType = LE_MOVE_SCALE_FADE;
+		le->leType =LE_FRAGMENT;
 		le->startTime = cg.time;
-		le->endTime = cg.time + 400 + random() * 250;
+		le->endTime = cg.time + 300 + random() * 250;
 		le->lifeRate = 1.0 / ( le->endTime - le->startTime );
 
 		re = &le->refEntity;
@@ -59,9 +60,9 @@ void CG_ShotgunTrail( vec3_t start, vec3_t end, float spacing ) {
 		le->pos.trType = TR_LINEAR;
 		le->pos.trTime = cg.time;
 		VectorCopy( move, le->pos.trBase );
-		le->pos.trDelta[0] = crandom()*5;
-		le->pos.trDelta[1] = crandom()*5;
-		le->pos.trDelta[2] = crandom()*5 + 6;
+		//le->pos.trDelta[0] = crandom()*5;
+		//le->pos.trDelta[1] = crandom()*5;
+		//le->pos.trDelta[2] = crandom()*5 + 6;
 
 		VectorAdd (move, vec, move);
 	}
