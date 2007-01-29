@@ -5971,7 +5971,7 @@ address $351
 address $353
 address $354
 address $350
-address $356
+address $347
 address $355
 address $357
 address $358
@@ -6089,26 +6089,14 @@ line 1211
 ;1211:	break; 
 ADDRGP4 $347
 JUMPV
-LABELV $356
-line 1213
+line 1214
 ;1212: case WP_RAILGUN: 
-;1213:	Weapon_RocketLauncher_Fire( ent );
-ADDRFP4 0
-INDIRP4
-ARGP4
-ADDRGP4 Weapon_RocketLauncher_Fire
-CALLV
-pop
-line 1216
-;1214:	// Zoom?
-;1215:	//trap_SendConsoleCommand( EXEC_APPEND, "+zoom\n" );
-;1216:	break; 
-ADDRGP4 $347
-JUMPV
+;1213:	// This is just zoom
+;1214:	break; 
 LABELV $357
-line 1218
-;1217: case WP_BFG: 
-;1218:	BFG_Fire( ent, qtrue); 
+line 1216
+;1215: case WP_BFG: 
+;1216:	BFG_Fire( ent, qtrue); 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6117,28 +6105,28 @@ ARGI4
 ADDRGP4 BFG_Fire
 CALLV
 pop
-line 1219
-;1219:	break; 
+line 1217
+;1217:	break; 
 ADDRGP4 $347
 JUMPV
 LABELV $358
-line 1221
-;1220: case WP_GRAPPLING_HOOK: 
-;1221:	Weapon_GrapplingHook_Fire( ent ); 
+line 1219
+;1218: case WP_GRAPPLING_HOOK: 
+;1219:	Weapon_GrapplingHook_Fire( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_GrapplingHook_Fire
 CALLV
 pop
-line 1222
-;1222:	break;
+line 1220
+;1220:	break;
 ADDRGP4 $347
 JUMPV
 LABELV $359
-line 1224
-;1223: case WP_TURRET:
-;1224:	Weapon_fire_turret( ent, qtrue );
+line 1222
+;1221: case WP_TURRET:
+;1222:	Weapon_fire_turret( ent, qtrue );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6147,16 +6135,16 @@ ARGI4
 ADDRGP4 Weapon_fire_turret
 CALLV
 pop
-line 1225
-;1225:	break;	
-line 1228
-;1226: default: 
-;1227:// FIXME  G_Error( "Bad ent->s.weapon" ); 
-;1228:  break; 
+line 1223
+;1223:	break;	
+line 1226
+;1224: default: 
+;1225:// FIXME  G_Error( "Bad ent->s.weapon" ); 
+;1226:  break; 
 LABELV $347
-line 1230
-;1229: } 
-;1230:}
+line 1228
+;1227: } 
+;1228:}
 LABELV $340
 endproc FireWeapon2 12 20
 bss
@@ -6357,6 +6345,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import trep_debug
 import g_PCTeamkills
 import g_GrappleMode
 import g_Turrets

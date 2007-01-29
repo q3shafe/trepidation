@@ -12,7 +12,7 @@ INGAME MENU
 #include "ui_local.h"
 
 
-#define INGAME_FRAME					"menu/art/addbotframe"
+#define INGAME_FRAME					"menu/art/xaddbotframe"
 //#define INGAME_FRAME					"menu/art/cut_frame"
 #define INGAME_MENU_VERTICAL_SPACING	28
 
@@ -210,6 +210,7 @@ void InGame_MenuInit( void ) {
 	s_ingame.menu.wrapAround = qtrue;
 	s_ingame.menu.fullscreen = qfalse;
 
+	
 	s_ingame.frame.generic.type			= MTYPE_BITMAP;
 	s_ingame.frame.generic.flags		= QMF_INACTIVE;
 	s_ingame.frame.generic.name			= INGAME_FRAME;
@@ -217,7 +218,7 @@ void InGame_MenuInit( void ) {
 	s_ingame.frame.generic.y			= 240-166;//118;
 	s_ingame.frame.width				= 466;//359;
 	s_ingame.frame.height				= 332;//256;
-
+	
 	//y = 96;
 	y = 88;
 	s_ingame.team.generic.type			= MTYPE_PTEXT;

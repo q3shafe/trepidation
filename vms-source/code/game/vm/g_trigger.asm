@@ -2545,6 +2545,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import trep_debug
 import g_PCTeamkills
 import g_GrappleMode
 import g_Turrets

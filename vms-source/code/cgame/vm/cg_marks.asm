@@ -1358,7 +1358,7 @@ INDIRP4
 CNSTI4 12
 ADDP4
 INDIRI4
-ADDRGP4 cgs+154388+408
+ADDRGP4 cgs+154388+412
 INDIRI4
 NEI4 $179
 line 238
@@ -18074,6 +18074,7 @@ import CG_BreakGlass
 import CG_GibPlayer
 import CG_ScorePlum
 import CG_SpawnEffect
+import CG_ShotgunTrail
 import CG_BubbleTrail
 import CG_SmokePuff
 import CG_AddLocalEntities
