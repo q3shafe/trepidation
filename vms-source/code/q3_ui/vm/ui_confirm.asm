@@ -16,7 +16,7 @@ line 45
 ;12:#include "ui_local.h"
 ;13:
 ;14:
-;15:#define ART_CONFIRM_FRAME	"menu/art/cut_frame"
+;15:#define ART_CONFIRM_FRAME	"menu/art/cut_frame" // No artwork yet.. just show the console error
 ;16:
 ;17:#define ID_CONFIRM_NO		10
 ;18:#define ID_CONFIRM_YES		11

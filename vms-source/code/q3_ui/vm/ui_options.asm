@@ -178,10 +178,28 @@ ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
+line 83
+;83:	trap_R_RegisterShaderNoMip( ART_FRAMER );
+ADDRGP4 $85
+ARGP4
+ADDRGP4 trap_R_RegisterShaderNoMip
+CALLI4
+pop
+line 84
+;84:	trap_R_RegisterShaderNoMip( ART_BACK0 );
+ADDRGP4 $86
+ARGP4
+ADDRGP4 trap_R_RegisterShaderNoMip
+CALLI4
+pop
+line 85
+;85:	trap_R_RegisterShaderNoMip( ART_BACK1 );
+ADDRGP4 $87
+ARGP4
+ADDRGP4 trap_R_RegisterShaderNoMip
+CALLI4
+pop
 line 86
-;83:	//trap_R_RegisterShaderNoMip( ART_FRAMER );
-;84:	//trap_R_RegisterShaderNoMip( ART_BACK0 );
-;85:	//trap_R_RegisterShaderNoMip( ART_BACK1 );
 ;86:}
 LABELV $83
 endproc SystemConfig_Cache 0 4
@@ -233,7 +251,7 @@ line 103
 ADDRLP4 4
 INDIRI4
 CNSTI4 5
-LTI4 $87
+LTI4 $90
 line 104
 ;104:		s_options.menu.fullscreen = qfalse;
 ADDRGP4 s_options+280
@@ -241,9 +259,9 @@ CNSTI4 0
 ASGNI4
 line 105
 ;105:	}
-ADDRGP4 $88
+ADDRGP4 $91
 JUMPV
-LABELV $87
+LABELV $90
 line 106
 ;106:	else {
 line 107
@@ -253,7 +271,7 @@ CNSTI4 1
 ASGNI4
 line 108
 ;108:	}
-LABELV $88
+LABELV $91
 line 110
 ;109:
 ;110:	s_options.banner.generic.type	= MTYPE_BTEXT;
@@ -278,7 +296,7 @@ ASGNI4
 line 114
 ;114:	s_options.banner.string		    = "SYSTEM SETUP";
 ADDRGP4 s_options+288+60
-ADDRGP4 $100
+ADDRGP4 $103
 ASGNP4
 line 115
 ;115:	s_options.banner.color			= color_white;
@@ -335,7 +353,7 @@ ASGNI4
 line 127
 ;127:	s_options.framer.generic.name  = ART_FRAMER;
 ADDRGP4 s_options+448+4
-ADDRGP4 $121
+ADDRGP4 $85
 ASGNP4
 line 128
 ;128:	s_options.framer.generic.flags = QMF_INACTIVE;
@@ -402,7 +420,7 @@ ASGNI4
 line 141
 ;141:	s_options.graphics.string			= "GRAPHICS";
 ADDRGP4 s_options+536+60
-ADDRGP4 $145
+ADDRGP4 $147
 ASGNP4
 line 142
 ;142:	s_options.graphics.color			= color_red;
@@ -457,7 +475,7 @@ ASGNI4
 line 152
 ;152:	s_options.display.string			= "DISPLAY";
 ADDRGP4 s_options+608+60
-ADDRGP4 $163
+ADDRGP4 $165
 ASGNP4
 line 153
 ;153:	s_options.display.color				= color_red;
@@ -512,7 +530,7 @@ ASGNI4
 line 163
 ;163:	s_options.sound.string				= "SOUND";
 ADDRGP4 s_options+680+60
-ADDRGP4 $181
+ADDRGP4 $183
 ASGNP4
 line 164
 ;164:	s_options.sound.color				= color_red;
@@ -567,7 +585,7 @@ ASGNI4
 line 174
 ;174:	s_options.network.string			= "NETWORK";
 ADDRGP4 s_options+752+60
-ADDRGP4 $199
+ADDRGP4 $201
 ASGNP4
 line 175
 ;175:	s_options.network.color				= color_red;
@@ -588,7 +606,7 @@ ASGNI4
 line 179
 ;179:	s_options.back.generic.name     = ART_BACK0;
 ADDRGP4 s_options+824+4
-ADDRGP4 $207
+ADDRGP4 $86
 ASGNP4
 line 180
 ;180:	s_options.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -628,20 +646,11 @@ ASGNI4
 line 187
 ;187:	s_options.back.focuspic         = ART_BACK1;
 ADDRGP4 s_options+824+60
-ADDRGP4 $224
+ADDRGP4 $87
 ASGNP4
 line 189
 ;188:
-;189:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.banner );
-ADDRGP4 s_options
-ARGP4
-ADDRGP4 s_options+288
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
-line 190
-;190:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.framel );
+;189:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.framel );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+360
@@ -649,9 +658,20 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 192
-;191:	//Menu_AddItem( &s_options.menu, ( void * ) &s_options.framer );
-;192:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.graphics );
+line 191
+;190:	
+;191:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.banner );
+ADDRGP4 s_options
+ARGP4
+ADDRGP4 s_options+288
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 194
+;192:	//Menu_AddItem( &s_options.menu, ( void * ) &s_options.framer );
+;193:	
+;194:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.graphics );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+536
@@ -659,8 +679,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 193
-;193:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.display );
+line 195
+;195:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.display );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+608
@@ -668,8 +688,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 194
-;194:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.sound );
+line 196
+;196:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.sound );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+680
@@ -677,8 +697,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 195
-;195:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.network );
+line 197
+;197:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.network );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+752
@@ -686,8 +706,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 196
-;196:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.back );
+line 198
+;198:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.back );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+824
@@ -695,35 +715,35 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 197
-;197:}
-LABELV $85
+line 199
+;199:}
+LABELV $88
 endproc Options_MenuInit 3088 12
 export UI_SystemConfigMenu
 proc UI_SystemConfigMenu 0 4
-line 205
-;198:
-;199:
-;200:/*
-;201:===============
-;202:UI_SystemConfigMenu
+line 207
+;200:
+;201:
+;202:/*
 ;203:===============
-;204:*/
-;205:void UI_SystemConfigMenu( void ) {
-line 206
-;206:	Options_MenuInit();
+;204:UI_SystemConfigMenu
+;205:===============
+;206:*/
+;207:void UI_SystemConfigMenu( void ) {
+line 208
+;208:	Options_MenuInit();
 ADDRGP4 Options_MenuInit
 CALLV
 pop
-line 207
-;207:	UI_PushMenu ( &s_options.menu );
+line 209
+;209:	UI_PushMenu ( &s_options.menu );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 208
-;208:}
+line 210
+;210:}
 LABELV $232
 endproc UI_SystemConfigMenu 0 4
 bss
@@ -1215,7 +1235,61 @@ import srand
 import qsort
 lit
 align 1
-LABELV $224
+LABELV $201
+byte 1 78
+byte 1 69
+byte 1 84
+byte 1 87
+byte 1 79
+byte 1 82
+byte 1 75
+byte 1 0
+align 1
+LABELV $183
+byte 1 83
+byte 1 79
+byte 1 85
+byte 1 78
+byte 1 68
+byte 1 0
+align 1
+LABELV $165
+byte 1 68
+byte 1 73
+byte 1 83
+byte 1 80
+byte 1 76
+byte 1 65
+byte 1 89
+byte 1 0
+align 1
+LABELV $147
+byte 1 71
+byte 1 82
+byte 1 65
+byte 1 80
+byte 1 72
+byte 1 73
+byte 1 67
+byte 1 83
+byte 1 0
+align 1
+LABELV $103
+byte 1 83
+byte 1 89
+byte 1 83
+byte 1 84
+byte 1 69
+byte 1 77
+byte 1 32
+byte 1 83
+byte 1 69
+byte 1 84
+byte 1 85
+byte 1 80
+byte 1 0
+align 1
+LABELV $87
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1233,7 +1307,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $207
+LABELV $86
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1251,46 +1325,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $199
-byte 1 78
-byte 1 69
-byte 1 84
-byte 1 87
-byte 1 79
-byte 1 82
-byte 1 75
-byte 1 0
-align 1
-LABELV $181
-byte 1 83
-byte 1 79
-byte 1 85
-byte 1 78
-byte 1 68
-byte 1 0
-align 1
-LABELV $163
-byte 1 68
-byte 1 73
-byte 1 83
-byte 1 80
-byte 1 76
-byte 1 65
-byte 1 89
-byte 1 0
-align 1
-LABELV $145
-byte 1 71
-byte 1 82
-byte 1 65
-byte 1 80
-byte 1 72
-byte 1 73
-byte 1 67
-byte 1 83
-byte 1 0
-align 1
-LABELV $121
+LABELV $85
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1308,21 +1343,6 @@ byte 1 101
 byte 1 49
 byte 1 95
 byte 1 114
-byte 1 0
-align 1
-LABELV $100
-byte 1 83
-byte 1 89
-byte 1 83
-byte 1 84
-byte 1 69
-byte 1 77
-byte 1 32
-byte 1 83
-byte 1 69
-byte 1 84
-byte 1 85
-byte 1 80
 byte 1 0
 align 1
 LABELV $84

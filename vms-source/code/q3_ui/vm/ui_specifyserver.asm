@@ -325,24 +325,24 @@ ADDRGP4 s_specifyserver+448+44
 CNSTU4 16384
 ASGNU4
 line 111
-;111:	s_specifyserver.framer.generic.x	 = 376;
+;111:	s_specifyserver.framer.generic.x	 = 0;
 ADDRGP4 s_specifyserver+448+12
-CNSTI4 376
+CNSTI4 0
 ASGNI4
 line 112
-;112:	s_specifyserver.framer.generic.y	 = 76;
+;112:	s_specifyserver.framer.generic.y	 = 0;
 ADDRGP4 s_specifyserver+448+16
-CNSTI4 76
+CNSTI4 0
 ASGNI4
 line 113
-;113:	s_specifyserver.framer.width  	     = 256;
+;113:	s_specifyserver.framer.width  	     = 1024;
 ADDRGP4 s_specifyserver+448+76
-CNSTI4 256
+CNSTI4 1024
 ASGNI4
 line 114
-;114:	s_specifyserver.framer.height  	     = 334;
+;114:	s_specifyserver.framer.height  	     = 768;
 ADDRGP4 s_specifyserver+448+80
-CNSTI4 334
+CNSTI4 768
 ASGNI4
 line 116
 ;115:
@@ -528,16 +528,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 155
-;155:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.framel );
-ADDRGP4 s_specifyserver
-ARGP4
-ADDRGP4 s_specifyserver+360
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
 line 156
+;155:	//Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.framel );
 ;156:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.framer );
 ADDRGP4 s_specifyserver
 ARGP4
@@ -547,7 +539,16 @@ ADDRGP4 Menu_AddItem
 CALLV
 pop
 line 157
-;157:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.domain );
+;157:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.banner );
+ADDRGP4 s_specifyserver
+ARGP4
+ADDRGP4 s_specifyserver+288
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 158
+;158:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.domain );
 ADDRGP4 s_specifyserver
 ARGP4
 ADDRGP4 s_specifyserver+536
@@ -555,8 +556,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 158
-;158:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.port );
+line 159
+;159:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.port );
 ADDRGP4 s_specifyserver
 ARGP4
 ADDRGP4 s_specifyserver+868
@@ -564,8 +565,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 159
-;159:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.go );
+line 160
+;160:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.go );
 ADDRGP4 s_specifyserver
 ARGP4
 ADDRGP4 s_specifyserver+1200
@@ -573,8 +574,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 160
-;160:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.back );
+line 161
+;161:	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.back );
 ADDRGP4 s_specifyserver
 ARGP4
 ADDRGP4 s_specifyserver+1288
@@ -582,9 +583,9 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 162
-;161:
-;162:	Com_sprintf( s_specifyserver.port.field.buffer, 6, "%i", 27960 );
+line 163
+;162:
+;163:	Com_sprintf( s_specifyserver.port.field.buffer, 6, "%i", 27960 );
 ADDRGP4 s_specifyserver+868+60+12
 ARGP4
 CNSTI4 6
@@ -596,34 +597,34 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 163
-;163:}
+line 164
+;164:}
 LABELV $104
 endproc SpecifyServer_MenuInit 0 16
 export SpecifyServer_Cache
 proc SpecifyServer_Cache 4 4
-line 171
-;164:
-;165:/*
-;166:=================
-;167:SpecifyServer_Cache
-;168:=================
-;169:*/
-;170:void SpecifyServer_Cache( void )
-;171:{
-line 175
-;172:	int	i;
-;173:
-;174:	// touch all our pics
-;175:	for (i=0; ;i++)
+line 172
+;165:
+;166:/*
+;167:=================
+;168:SpecifyServer_Cache
+;169:=================
+;170:*/
+;171:void SpecifyServer_Cache( void )
+;172:{
+line 176
+;173:	int	i;
+;174:
+;175:	// touch all our pics
+;176:	for (i=0; ;i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $227
-line 176
-;176:	{
 line 177
-;177:		if (!specifyserver_artlist[i])
+;177:	{
+line 178
+;178:		if (!specifyserver_artlist[i])
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -634,13 +635,13 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $231
-line 178
-;178:			break;
+line 179
+;179:			break;
 ADDRGP4 $229
 JUMPV
 LABELV $231
-line 179
-;179:		trap_R_RegisterShaderNoMip(specifyserver_artlist[i]);
+line 180
+;180:		trap_R_RegisterShaderNoMip(specifyserver_artlist[i]);
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -652,10 +653,10 @@ ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 180
-;180:	}
+line 181
+;181:	}
 LABELV $228
-line 175
+line 176
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -665,35 +666,35 @@ ASGNI4
 ADDRGP4 $227
 JUMPV
 LABELV $229
-line 181
-;181:}
+line 182
+;182:}
 LABELV $226
 endproc SpecifyServer_Cache 4 4
 export UI_SpecifyServerMenu
 proc UI_SpecifyServerMenu 0 4
-line 189
-;182:
-;183:/*
-;184:=================
-;185:UI_SpecifyServerMenu
-;186:=================
-;187:*/
-;188:void UI_SpecifyServerMenu( void )
-;189:{
 line 190
-;190:	SpecifyServer_MenuInit();
+;183:
+;184:/*
+;185:=================
+;186:UI_SpecifyServerMenu
+;187:=================
+;188:*/
+;189:void UI_SpecifyServerMenu( void )
+;190:{
+line 191
+;191:	SpecifyServer_MenuInit();
 ADDRGP4 SpecifyServer_MenuInit
 CALLV
 pop
-line 191
-;191:	UI_PushMenu( &s_specifyserver.menu );
+line 192
+;192:	UI_PushMenu( &s_specifyserver.menu );
 ADDRGP4 s_specifyserver
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 192
-;192:}
+line 193
+;193:}
 LABELV $233
 endproc UI_SpecifyServerMenu 0 4
 bss

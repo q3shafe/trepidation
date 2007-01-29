@@ -6446,7 +6446,7 @@ LABELV $484
 line 1291
 ;1289:
 ;1290:	
-;1291:	if ((targ->s.eType ==ET_BUILDABLE) && (targ->health < 750))
+;1291:	if ((targ->s.eType ==ET_BUILDABLE) && (targ->health < 1000))
 ADDRLP4 64
 ADDRFP4 0
 INDIRP4
@@ -6463,7 +6463,7 @@ INDIRP4
 CNSTI4 748
 ADDP4
 INDIRI4
-CNSTI4 750
+CNSTI4 1000
 GEI4 $490
 line 1292
 ;1292:	{
