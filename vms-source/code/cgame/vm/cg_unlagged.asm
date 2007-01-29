@@ -49,7 +49,7 @@ line 29
 ;27:
 ;28:	// if it's not switched on server-side, forget it
 ;29:	if ( !cgs.delagHitscan ) {
-ADDRGP4 cgs+155512
+ADDRGP4 cgs+155528
 INDIRI4
 CNSTI4 0
 NEI4 $77
@@ -2660,6 +2660,7 @@ import CG_BreakGlass
 import CG_GibPlayer
 import CG_ScorePlum
 import CG_SpawnEffect
+import CG_ShotgunTrail
 import CG_BubbleTrail
 import CG_SmokePuff
 import CG_AddLocalEntities

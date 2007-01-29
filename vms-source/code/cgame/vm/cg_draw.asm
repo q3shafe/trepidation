@@ -571,7 +571,7 @@ ADDRLP4 8
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 cgs+154388+320
+ADDRGP4 cgs+154388+324
 ADDP4
 INDIRI4
 ARGI4
@@ -4688,7 +4688,7 @@ line 991
 ;989:
 ;990:		
 ;991:	if (cgs.g_GameMode == 3) {
-ADDRGP4 cgs+155520
+ADDRGP4 cgs+155536
 INDIRI4
 CNSTI4 3
 NEI4 $485
@@ -5422,7 +5422,7 @@ line 1143
 LABELV $553
 line 1144
 ;1144:		if ( cgs.g_GameMode == 3)
-ADDRGP4 cgs+155520
+ADDRGP4 cgs+155536
 INDIRI4
 CNSTI4 3
 NEI4 $557
@@ -5438,7 +5438,7 @@ INDIRI4
 CNSTI4 2
 NEI4 $560
 ADDRLP4 44
-ADDRGP4 cgs+155528
+ADDRGP4 cgs+155544
 INDIRI4
 ASGNI4
 LABELV $560
@@ -5452,7 +5452,7 @@ INDIRI4
 CNSTI4 1
 NEI4 $564
 ADDRLP4 44
-ADDRGP4 cgs+155524
+ADDRGP4 cgs+155540
 INDIRI4
 ASGNI4
 LABELV $564
@@ -10405,7 +10405,7 @@ CNSTI4 0
 ASGNI4
 line 2153
 ;2153:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+154388+804
+ADDRGP4 cgs+154388+812
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -10577,7 +10577,7 @@ CNSTI4 0
 ASGNI4
 line 2194
 ;2194:		trap_S_StartLocalSound( cgs.media.talkSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+154388+804
+ADDRGP4 cgs+154388+812
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -11015,7 +11015,7 @@ ADDRGP4 $1076
 JUMPV
 LABELV $1075
 line 2350
-;2350:		s = "LOW AMMO WARNING";
+;2350:		s = "YOU NEED AMMO!";
 ADDRLP4 0
 ADDRGP4 $1079
 ASGNP4
@@ -11445,7 +11445,7 @@ JUMPV
 LABELV $1088
 line 2457
 ;2457:		if ( cgs.g_GameMode == 1) {
-ADDRGP4 cgs+155520
+ADDRGP4 cgs+155536
 INDIRI4
 CNSTI4 1
 NEI4 $1110
@@ -11467,7 +11467,7 @@ INDIRI4
 ADDRLP4 32
 INDIRI4
 NEI4 $1114
-ADDRGP4 cgs+155520
+ADDRGP4 cgs+155536
 INDIRI4
 ADDRLP4 32
 INDIRI4
@@ -11482,7 +11482,7 @@ line 2461
 ADDRGP4 $1115
 JUMPV
 LABELV $1114
-ADDRGP4 cgs+155520
+ADDRGP4 cgs+155536
 INDIRI4
 CNSTI4 2
 NEI4 $1119
@@ -11502,7 +11502,7 @@ CNSTI4 3
 NEI4 $1123
 line 2464
 ;2464:			if ( cgs.g_GameMode == 3) 
-ADDRGP4 cgs+155520
+ADDRGP4 cgs+155536
 INDIRI4
 CNSTI4 3
 NEI4 $1126
@@ -11518,7 +11518,7 @@ line 2467
 ADDRGP4 $1124
 JUMPV
 LABELV $1126
-ADDRGP4 cgs+155520
+ADDRGP4 cgs+155536
 INDIRI4
 CNSTI4 2
 NEI4 $1130
@@ -11707,7 +11707,7 @@ LABELV $1143
 line 2508
 ;2507:	
 ;2508:	if(cgs.g_GameMode == 1)
-ADDRGP4 cgs+155520
+ADDRGP4 cgs+155536
 INDIRI4
 CNSTI4 1
 NEI4 $1146
@@ -11792,7 +11792,7 @@ LABELV $1157
 line 2521
 ;2520:		case 0:
 ;2521:			trap_S_StartLocalSound( cgs.media.count1Sound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+154388+1040
+ADDRGP4 cgs+154388+1048
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -11808,7 +11808,7 @@ LABELV $1160
 line 2524
 ;2523:		case 1:
 ;2524:			trap_S_StartLocalSound( cgs.media.count2Sound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+154388+1036
+ADDRGP4 cgs+154388+1044
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -11824,7 +11824,7 @@ LABELV $1163
 line 2527
 ;2526:		case 2:
 ;2527:			trap_S_StartLocalSound( cgs.media.count3Sound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+154388+1032
+ADDRGP4 cgs+154388+1040
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -11998,8 +11998,8 @@ line 2561
 ;2561:}
 LABELV $1080
 endproc CG_DrawWarmup 56 36
-proc CG_Draw2D 8 0
-line 2586
+proc CG_DrawZoomOvrly 4 20
+line 2583
 ;2562:
 ;2563://==================================================================================
 ;2564:#ifdef MISSIONPACK
@@ -12019,352 +12019,414 @@ line 2586
 ;2578:	}
 ;2579:}
 ;2580:#endif
-;2581:/*
-;2582:=================
-;2583:CG_Draw2D
-;2584:=================
-;2585:*/
-;2586:static void CG_Draw2D( void ) {
-line 2593
-;2587:#ifdef MISSIONPACK
-;2588:	if (cgs.orderPending && cg.time > cgs.orderTime) {
-;2589:		CG_CheckOrderPending();
-;2590:	}
-;2591:#endif
-;2592:	// if we are taking a levelshot for the menu, don't draw anything
-;2593:	if ( cg.levelShot ) {
+;2581:
+;2582: 
+;2583:static void CG_DrawZoomOvrly( void ) {
+line 2585
+;2584:
+;2585:	CG_DrawPic( 0, 0, 640, 480, cgs.media.ZoomOverlay );
+ADDRLP4 0
+CNSTF4 0
+ASGNF4
+ADDRLP4 0
+INDIRF4
+ARGF4
+ADDRLP4 0
+INDIRF4
+ARGF4
+CNSTF4 1142947840
+ARGF4
+CNSTF4 1139802112
+ARGF4
+ADDRGP4 cgs+154388+572
+INDIRI4
+ARGI4
+ADDRGP4 CG_DrawPic
+CALLV
+pop
+line 2586
+;2586:}
+LABELV $1172
+endproc CG_DrawZoomOvrly 4 20
+proc CG_Draw2D 12 0
+line 2594
+;2587:
+;2588:
+;2589:/*
+;2590:=================
+;2591:CG_Draw2D
+;2592:=================
+;2593:*/
+;2594:static void CG_Draw2D( void ) {
+line 2601
+;2595:#ifdef MISSIONPACK
+;2596:	if (cgs.orderPending && cg.time > cgs.orderTime) {
+;2597:		CG_CheckOrderPending();
+;2598:	}
+;2599:#endif
+;2600:	// if we are taking a levelshot for the menu, don't draw anything
+;2601:	if ( cg.levelShot ) {
 ADDRGP4 cg+12
 INDIRI4
 CNSTI4 0
-EQI4 $1173
-line 2594
-;2594:		return;
-ADDRGP4 $1172
+EQI4 $1176
+line 2602
+;2602:		return;
+ADDRGP4 $1175
 JUMPV
-LABELV $1173
-line 2597
-;2595:	}
-;2596:
-;2597:	if ( cg_draw2D.integer == 0 ) {
+LABELV $1176
+line 2605
+;2603:	}
+;2604:
+;2605:	if ( cg_draw2D.integer == 0 ) {
 ADDRGP4 cg_draw2D+12
 INDIRI4
 CNSTI4 0
-NEI4 $1176
-line 2598
-;2598:		return;
-ADDRGP4 $1172
+NEI4 $1179
+line 2606
+;2606:		return;
+ADDRGP4 $1175
 JUMPV
-LABELV $1176
-line 2601
-;2599:	}
-;2600:
-;2601:	if ( cg.snap->ps.pm_type == PM_INTERMISSION ) {
+LABELV $1179
+line 2609
+;2607:	}
+;2608:
+;2609:	if ( cg.snap->ps.pm_type == PM_INTERMISSION ) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 48
 ADDP4
 INDIRI4
 CNSTI4 5
-NEI4 $1179
-line 2602
-;2602:		CG_DrawIntermission();
+NEI4 $1182
+line 2610
+;2610:		CG_DrawIntermission();
 ADDRGP4 CG_DrawIntermission
 CALLV
 pop
-line 2603
-;2603:		return;
-ADDRGP4 $1172
-JUMPV
-LABELV $1179
 line 2611
-;2604:	}
-;2605:
-;2606:/*
-;2607:	if (cg.cameraMode) {
-;2608:		return;
-;2609:	}
-;2610:*/
-;2611:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR ) {
+;2611:		return;
+ADDRGP4 $1175
+JUMPV
+LABELV $1182
+line 2621
+;2612:	}
+;2613:
+;2614:/*
+;2615:	if (cg.cameraMode) {
+;2616:		return;
+;2617:	}
+;2618:*/
+;2619:
+;2620:	// Draw the Zoom Overlay
+;2621:	if ( cg.zooming || cg.zoomed)
+ADDRLP4 0
+CNSTI4 0
+ASGNI4
+ADDRGP4 cg+111496
+INDIRI4
+ADDRLP4 0
+INDIRI4
+NEI4 $1189
+ADDRGP4 cg+111484
+INDIRI4
+ADDRLP4 0
+INDIRI4
+EQI4 $1185
+LABELV $1189
+line 2622
+;2622:	{
+line 2623
+;2623:		CG_DrawZoomOvrly();
+ADDRGP4 CG_DrawZoomOvrly
+CALLV
+pop
+line 2624
+;2624:	}
+LABELV $1185
+line 2626
+;2625:	
+;2626:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR ) {
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 304
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $1182
-line 2612
-;2612:		CG_DrawSpectator();
+NEI4 $1190
+line 2627
+;2627:		CG_DrawSpectator();
 ADDRGP4 CG_DrawSpectator
 CALLV
 pop
-line 2613
-;2613:		CG_DrawCrosshair();
+line 2628
+;2628:		CG_DrawCrosshair();
 ADDRGP4 CG_DrawCrosshair
 CALLV
 pop
-line 2614
-;2614:		CG_DrawCrosshairNames();
+line 2629
+;2629:		CG_DrawCrosshairNames();
 ADDRGP4 CG_DrawCrosshairNames
 CALLV
 pop
-line 2615
-;2615:	} else {
-ADDRGP4 $1183
+line 2630
+;2630:	} else {
+ADDRGP4 $1191
 JUMPV
-LABELV $1182
-line 2617
-;2616:		// don't draw any status if dead or the scoreboard is being explicitly shown
-;2617:		if ( !cg.showScores && cg.snap->ps.stats[STAT_HEALTH] > 0 ) {
-ADDRLP4 0
+LABELV $1190
+line 2632
+;2631:		// don't draw any status if dead or the scoreboard is being explicitly shown
+;2632:		if ( !cg.showScores && cg.snap->ps.stats[STAT_HEALTH] > 0 ) {
+ADDRLP4 4
 CNSTI4 0
 ASGNI4
 ADDRGP4 cg+116388
 INDIRI4
-ADDRLP4 0
+ADDRLP4 4
 INDIRI4
-NEI4 $1185
+NEI4 $1193
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 228
 ADDP4
 INDIRI4
-ADDRLP4 0
+ADDRLP4 4
 INDIRI4
-LEI4 $1185
-line 2625
-;2618:
-;2619:#ifdef MISSIONPACK
-;2620:			if ( cg_drawStatus.integer ) {
-;2621:				Menu_PaintAll();
-;2622:				CG_DrawTimedMenus();
-;2623:			}
-;2624:#else
-;2625:			CG_DrawStatusBar();
+LEI4 $1193
+line 2640
+;2633:
+;2634:#ifdef MISSIONPACK
+;2635:			if ( cg_drawStatus.integer ) {
+;2636:				Menu_PaintAll();
+;2637:				CG_DrawTimedMenus();
+;2638:			}
+;2639:#else
+;2640:			CG_DrawStatusBar();
 ADDRGP4 CG_DrawStatusBar
 CALLV
 pop
-line 2628
-;2626:#endif
-;2627:      
-;2628:			CG_DrawAmmoWarning();
+line 2643
+;2641:#endif
+;2642:      
+;2643:			CG_DrawAmmoWarning();
 ADDRGP4 CG_DrawAmmoWarning
 CALLV
 pop
-line 2633
-;2629:
-;2630:#ifdef MISSIONPACK
-;2631:			CG_DrawProxWarning();
-;2632:#endif      
-;2633:			CG_DrawCrosshair();
+line 2648
+;2644:
+;2645:#ifdef MISSIONPACK
+;2646:			CG_DrawProxWarning();
+;2647:#endif      
+;2648:			CG_DrawCrosshair();
 ADDRGP4 CG_DrawCrosshair
 CALLV
 pop
-line 2634
-;2634:			CG_DrawCrosshairNames();
+line 2649
+;2649:			CG_DrawCrosshairNames();
 ADDRGP4 CG_DrawCrosshairNames
 CALLV
 pop
-line 2635
-;2635:			CG_DrawWeaponSelect();
+line 2650
+;2650:			CG_DrawWeaponSelect();
 ADDRGP4 CG_DrawWeaponSelect
 CALLV
 pop
-line 2638
-;2636:
-;2637:#ifndef MISSIONPACK
-;2638:			CG_DrawHoldableItem();
+line 2653
+;2651:
+;2652:#ifndef MISSIONPACK
+;2653:			CG_DrawHoldableItem();
 ADDRGP4 CG_DrawHoldableItem
 CALLV
 pop
-line 2642
-;2639:#else
-;2640:			//CG_DrawPersistantPowerup();
-;2641:#endif
-;2642:			CG_DrawReward();
+line 2657
+;2654:#else
+;2655:			//CG_DrawPersistantPowerup();
+;2656:#endif
+;2657:			CG_DrawReward();
 ADDRGP4 CG_DrawReward
 CALLV
 pop
-line 2643
-;2643:			CG_DrawScanner();  // Shafe - Trep - Radar
+line 2658
+;2658:			CG_DrawScanner();  // Shafe - Trep - Radar
 ADDRGP4 CG_DrawScanner
 CALLV
 pop
-line 2644
-;2644:		}
-LABELV $1185
-line 2646
-;2645:    
-;2646:		if ( cgs.gametype >= GT_TEAM ) {
+line 2659
+;2659:		}
+LABELV $1193
+line 2661
+;2660:    
+;2661:		if ( cgs.gametype >= GT_TEAM ) {
 ADDRGP4 cgs+31456
 INDIRI4
 CNSTI4 3
-LTI4 $1189
-line 2648
-;2647:#ifndef MISSIONPACK
-;2648:			CG_DrawTeamInfo();
+LTI4 $1197
+line 2663
+;2662:#ifndef MISSIONPACK
+;2663:			CG_DrawTeamInfo();
 ADDRGP4 CG_DrawTeamInfo
 CALLV
 pop
-line 2650
-;2649:#endif
-;2650:		}
-LABELV $1189
-line 2651
-;2651:	}
-LABELV $1183
-line 2653
-;2652:
-;2653:	CG_DrawVote();
+line 2665
+;2664:#endif
+;2665:		}
+LABELV $1197
+line 2666
+;2666:	}
+LABELV $1191
+line 2668
+;2667:
+;2668:	CG_DrawVote();
 ADDRGP4 CG_DrawVote
 CALLV
 pop
-line 2654
-;2654:	CG_DrawTeamVote();
+line 2669
+;2669:	CG_DrawTeamVote();
 ADDRGP4 CG_DrawTeamVote
 CALLV
 pop
-line 2656
-;2655:
-;2656:	CG_DrawLagometer();
+line 2671
+;2670:
+;2671:	CG_DrawLagometer();
 ADDRGP4 CG_DrawLagometer
 CALLV
 pop
-line 2663
-;2657:
-;2658:#ifdef MISSIONPACK
-;2659:	if (!cg_paused.integer) {
-;2660:		CG_DrawUpperRight();
-;2661:	}
-;2662:#else
-;2663:	CG_DrawUpperRight();
+line 2678
+;2672:
+;2673:#ifdef MISSIONPACK
+;2674:	if (!cg_paused.integer) {
+;2675:		CG_DrawUpperRight();
+;2676:	}
+;2677:#else
+;2678:	CG_DrawUpperRight();
 ADDRGP4 CG_DrawUpperRight
 CALLV
 pop
-line 2667
-;2664:#endif
-;2665:
-;2666:#ifndef MISSIONPACK
-;2667:	CG_DrawLowerRight();
+line 2682
+;2679:#endif
+;2680:
+;2681:#ifndef MISSIONPACK
+;2682:	CG_DrawLowerRight();
 ADDRGP4 CG_DrawLowerRight
 CALLV
 pop
-line 2668
-;2668:	CG_DrawLowerLeft();
+line 2683
+;2683:	CG_DrawLowerLeft();
 ADDRGP4 CG_DrawLowerLeft
 CALLV
 pop
-line 2671
-;2669:#endif
-;2670:
-;2671:	if ( !CG_DrawFollow() ) {
-ADDRLP4 0
+line 2686
+;2684:#endif
+;2685:
+;2686:	if ( !CG_DrawFollow() ) {
+ADDRLP4 4
 ADDRGP4 CG_DrawFollow
 CALLI4
 ASGNI4
-ADDRLP4 0
+ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $1192
-line 2672
-;2672:		CG_DrawWarmup();
+NEI4 $1200
+line 2687
+;2687:		CG_DrawWarmup();
 ADDRGP4 CG_DrawWarmup
 CALLV
 pop
-line 2673
-;2673:	}
-LABELV $1192
-line 2676
-;2674:
-;2675:	// don't draw center string if scoreboard is up
-;2676:	cg.scoreBoardShowing = CG_DrawScoreboard();
-ADDRLP4 4
+line 2688
+;2688:	}
+LABELV $1200
+line 2691
+;2689:
+;2690:	// don't draw center string if scoreboard is up
+;2691:	cg.scoreBoardShowing = CG_DrawScoreboard();
+ADDRLP4 8
 ADDRGP4 CG_DrawScoreboard
 CALLI4
 ASGNI4
 ADDRGP4 cg+116392
-ADDRLP4 4
+ADDRLP4 8
 INDIRI4
 ASGNI4
-line 2677
-;2677:	if ( !cg.scoreBoardShowing) {
+line 2692
+;2692:	if ( !cg.scoreBoardShowing) {
 ADDRGP4 cg+116392
 INDIRI4
 CNSTI4 0
-NEI4 $1195
-line 2678
-;2678:		CG_DrawCenterString();
+NEI4 $1203
+line 2693
+;2693:		CG_DrawCenterString();
 ADDRGP4 CG_DrawCenterString
 CALLV
 pop
-line 2679
-;2679:	}
-LABELV $1195
-line 2680
-;2680:}
-LABELV $1172
-endproc CG_Draw2D 8 0
+line 2694
+;2694:	}
+LABELV $1203
+line 2695
+;2695:}
+LABELV $1175
+endproc CG_Draw2D 12 0
 proc CG_DrawTourneyScoreboard 0 0
-line 2683
-;2681:
-;2682:
-;2683:static void CG_DrawTourneyScoreboard() {
-line 2686
-;2684:#ifdef MISSIONPACK
-;2685:#else
-;2686:	CG_DrawOldTourneyScoreboard();
+line 2698
+;2696:
+;2697:
+;2698:static void CG_DrawTourneyScoreboard() {
+line 2701
+;2699:#ifdef MISSIONPACK
+;2700:#else
+;2701:	CG_DrawOldTourneyScoreboard();
 ADDRGP4 CG_DrawOldTourneyScoreboard
 CALLV
 pop
-line 2688
-;2687:#endif
-;2688:}
-LABELV $1198
+line 2703
+;2702:#endif
+;2703:}
+LABELV $1206
 endproc CG_DrawTourneyScoreboard 0 0
 export CG_DrawActive
 proc CG_DrawActive 24 4
-line 2697
-;2689:
-;2690:/*
-;2691:=====================
-;2692:CG_DrawActive
-;2693:
-;2694:Perform all drawing needed to completely fill the screen
-;2695:=====================
-;2696:*/
-;2697:void CG_DrawActive( stereoFrame_t stereoView ) {
-line 2702
-;2698:	float		separation;
-;2699:	vec3_t		baseOrg;
-;2700:
-;2701:	// optionally draw the info screen instead
-;2702:	if ( !cg.snap ) {
+line 2712
+;2704:
+;2705:/*
+;2706:=====================
+;2707:CG_DrawActive
+;2708:
+;2709:Perform all drawing needed to completely fill the screen
+;2710:=====================
+;2711:*/
+;2712:void CG_DrawActive( stereoFrame_t stereoView ) {
+line 2717
+;2713:	float		separation;
+;2714:	vec3_t		baseOrg;
+;2715:
+;2716:	// optionally draw the info screen instead
+;2717:	if ( !cg.snap ) {
 ADDRGP4 cg+36
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1200
-line 2703
-;2703:		CG_DrawInformation();
+NEU4 $1208
+line 2718
+;2718:		CG_DrawInformation();
 ADDRGP4 CG_DrawInformation
 CALLV
 pop
-line 2704
-;2704:		return;
-ADDRGP4 $1199
+line 2719
+;2719:		return;
+ADDRGP4 $1207
 JUMPV
-LABELV $1200
-line 2708
-;2705:	}
-;2706:
-;2707:	// optionally draw the tournement scoreboard instead
-;2708:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR &&
+LABELV $1208
+line 2723
+;2720:	}
+;2721:
+;2722:	// optionally draw the tournement scoreboard instead
+;2723:	if ( cg.snap->ps.persistant[PERS_TEAM] == TEAM_SPECTATOR &&
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 304
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $1203
+NEI4 $1211
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 56
@@ -12373,23 +12435,23 @@ INDIRI4
 CNSTI4 8192
 BANDI4
 CNSTI4 0
-EQI4 $1203
-line 2709
-;2709:		( cg.snap->ps.pm_flags & PMF_SCOREBOARD ) ) {
-line 2710
-;2710:		CG_DrawTourneyScoreboard();
+EQI4 $1211
+line 2724
+;2724:		( cg.snap->ps.pm_flags & PMF_SCOREBOARD ) ) {
+line 2725
+;2725:		CG_DrawTourneyScoreboard();
 ADDRGP4 CG_DrawTourneyScoreboard
 CALLV
 pop
-line 2711
-;2711:		return;
-ADDRGP4 $1199
+line 2726
+;2726:		return;
+ADDRGP4 $1207
 JUMPV
-LABELV $1203
-line 2714
-;2712:	}
-;2713:
-;2714:	switch ( stereoView ) {
+LABELV $1211
+line 2729
+;2727:	}
+;2728:
+;2729:	switch ( stereoView ) {
 ADDRLP4 16
 ADDRFP4 0
 INDIRI4
@@ -12397,32 +12459,32 @@ ASGNI4
 ADDRLP4 16
 INDIRI4
 CNSTI4 0
-EQI4 $1210
+EQI4 $1218
 ADDRLP4 16
 INDIRI4
 CNSTI4 1
-EQI4 $1211
+EQI4 $1219
 ADDRLP4 16
 INDIRI4
 CNSTI4 2
-EQI4 $1213
-ADDRGP4 $1207
+EQI4 $1221
+ADDRGP4 $1215
 JUMPV
-LABELV $1210
-line 2716
-;2715:	case STEREO_CENTER:
-;2716:		separation = 0;
+LABELV $1218
+line 2731
+;2730:	case STEREO_CENTER:
+;2731:		separation = 0;
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-line 2717
-;2717:		break;
-ADDRGP4 $1208
+line 2732
+;2732:		break;
+ADDRGP4 $1216
 JUMPV
-LABELV $1211
-line 2719
-;2718:	case STEREO_LEFT:
-;2719:		separation = -cg_stereoSeparation.value / 2;
+LABELV $1219
+line 2734
+;2733:	case STEREO_LEFT:
+;2734:		separation = -cg_stereoSeparation.value / 2;
 ADDRLP4 0
 ADDRGP4 cg_stereoSeparation+8
 INDIRF4
@@ -12430,65 +12492,65 @@ NEGF4
 CNSTF4 1073741824
 DIVF4
 ASGNF4
-line 2720
-;2720:		break;
-ADDRGP4 $1208
+line 2735
+;2735:		break;
+ADDRGP4 $1216
 JUMPV
-LABELV $1213
-line 2722
-;2721:	case STEREO_RIGHT:
-;2722:		separation = cg_stereoSeparation.value / 2;
+LABELV $1221
+line 2737
+;2736:	case STEREO_RIGHT:
+;2737:		separation = cg_stereoSeparation.value / 2;
 ADDRLP4 0
 ADDRGP4 cg_stereoSeparation+8
 INDIRF4
 CNSTF4 1073741824
 DIVF4
 ASGNF4
-line 2723
-;2723:		break;
-ADDRGP4 $1208
+line 2738
+;2738:		break;
+ADDRGP4 $1216
 JUMPV
-LABELV $1207
-line 2725
-;2724:	default:
-;2725:		separation = 0;
+LABELV $1215
+line 2740
+;2739:	default:
+;2740:		separation = 0;
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-line 2726
-;2726:		CG_Error( "CG_DrawActive: Undefined stereoView" );
-ADDRGP4 $1215
+line 2741
+;2741:		CG_Error( "CG_DrawActive: Undefined stereoView" );
+ADDRGP4 $1223
 ARGP4
 ADDRGP4 CG_Error
 CALLV
 pop
-line 2727
-;2727:	}
-LABELV $1208
-line 2731
-;2728:
-;2729:
-;2730:	// clear around the rendered view if sized down
-;2731:	CG_TileClear();
+line 2742
+;2742:	}
+LABELV $1216
+line 2746
+;2743:
+;2744:
+;2745:	// clear around the rendered view if sized down
+;2746:	CG_TileClear();
 ADDRGP4 CG_TileClear
 CALLV
 pop
-line 2734
-;2732:
-;2733:	// offset vieworg appropriately if we're doing stereo separation
-;2734:	VectorCopy( cg.refdef.vieworg, baseOrg );
+line 2749
+;2747:
+;2748:	// offset vieworg appropriately if we're doing stereo separation
+;2749:	VectorCopy( cg.refdef.vieworg, baseOrg );
 ADDRLP4 4
 ADDRGP4 cg+111104+24
 INDIRB
 ASGNB 12
-line 2735
-;2735:	if ( separation != 0 ) {
+line 2750
+;2750:	if ( separation != 0 ) {
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
-EQF4 $1218
-line 2736
-;2736:		VectorMA( cg.refdef.vieworg, -separation, cg.refdef.viewaxis[1], cg.refdef.vieworg );
+EQF4 $1226
+line 2751
+;2751:		VectorMA( cg.refdef.vieworg, -separation, cg.refdef.viewaxis[1], cg.refdef.vieworg );
 ADDRGP4 cg+111104+24
 ADDRGP4 cg+111104+24
 INDIRF4
@@ -12522,45 +12584,45 @@ NEGF4
 MULF4
 ADDF4
 ASGNF4
-line 2737
-;2737:	}
-LABELV $1218
-line 2740
-;2738:
-;2739:	// draw 3D view
-;2740:	trap_R_RenderScene( &cg.refdef );
+line 2752
+;2752:	}
+LABELV $1226
+line 2755
+;2753:
+;2754:	// draw 3D view
+;2755:	trap_R_RenderScene( &cg.refdef );
 ADDRGP4 cg+111104
 ARGP4
 ADDRGP4 trap_R_RenderScene
 CALLV
 pop
-line 2743
-;2741:
-;2742:	// restore original viewpoint if running stereo
-;2743:	if ( separation != 0 ) {
+line 2758
+;2756:
+;2757:	// restore original viewpoint if running stereo
+;2758:	if ( separation != 0 ) {
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
-EQF4 $1248
-line 2744
-;2744:		VectorCopy( baseOrg, cg.refdef.vieworg );
+EQF4 $1256
+line 2759
+;2759:		VectorCopy( baseOrg, cg.refdef.vieworg );
 ADDRGP4 cg+111104+24
 ADDRLP4 4
 INDIRB
 ASGNB 12
-line 2745
-;2745:	}
-LABELV $1248
-line 2748
-;2746:
-;2747:	// draw status bar and other floating elements
-;2748: 	CG_Draw2D();
+line 2760
+;2760:	}
+LABELV $1256
+line 2763
+;2761:
+;2762:	// draw status bar and other floating elements
+;2763: 	CG_Draw2D();
 ADDRGP4 CG_Draw2D
 CALLV
 pop
-line 2749
-;2749:}
-LABELV $1199
+line 2764
+;2764:}
+LABELV $1207
 endproc CG_DrawActive 24 4
 bss
 export lagometer
@@ -12693,6 +12755,7 @@ import CG_BreakGlass
 import CG_GibPlayer
 import CG_ScorePlum
 import CG_SpawnEffect
+import CG_ShotgunTrail
 import CG_BubbleTrail
 import CG_SmokePuff
 import CG_AddLocalEntities
@@ -13112,7 +13175,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $1215
+LABELV $1223
 byte 1 67
 byte 1 71
 byte 1 95
@@ -13347,22 +13410,20 @@ byte 1 115
 byte 1 0
 align 1
 LABELV $1079
-byte 1 76
+byte 1 89
 byte 1 79
-byte 1 87
+byte 1 85
+byte 1 32
+byte 1 78
+byte 1 69
+byte 1 69
+byte 1 68
 byte 1 32
 byte 1 65
 byte 1 77
 byte 1 77
 byte 1 79
-byte 1 32
-byte 1 87
-byte 1 65
-byte 1 82
-byte 1 78
-byte 1 73
-byte 1 78
-byte 1 71
+byte 1 33
 byte 1 0
 align 1
 LABELV $1078

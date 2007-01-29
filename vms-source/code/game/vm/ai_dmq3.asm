@@ -12960,14 +12960,18 @@ line 3024
 ;3022:==================
 ;3023:*/
 ;3024:int BotFindEnemy(bot_state_t *bs, int curenemy) {
-line 3031
+line 3035
 ;3025:	int i, healthdecrease;
 ;3026:	float f, alertness, easyfragger, vis;
 ;3027:	float squaredist, cursquaredist;
 ;3028:	aas_entityinfo_t entinfo, curenemyinfo;
 ;3029:	vec3_t dir, angles;
-;3030:
-;3031:	alertness = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_ALERTNESS, 0, 1);
+;3030:	// Trep
+;3031://	int ent;
+;3032://	entityState_t state;
+;3033:	
+;3034:
+;3035:	alertness = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_ALERTNESS, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -12988,8 +12992,8 @@ ADDRLP4 164
 ADDRLP4 336
 INDIRF4
 ASGNF4
-line 3032
-;3032:	easyfragger = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_EASY_FRAGGER, 0, 1);
+line 3036
+;3036:	easyfragger = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_EASY_FRAGGER, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -13010,9 +13014,9 @@ ADDRLP4 176
 ADDRLP4 340
 INDIRF4
 ASGNF4
-line 3034
-;3033:	//check if the health decreased
-;3034:	healthdecrease = bs->lasthealth > bs->inventory[INVENTORY_HEALTH];
+line 3038
+;3037:	//check if the health decreased
+;3038:	healthdecrease = bs->lasthealth > bs->inventory[INVENTORY_HEALTH];
 ADDRLP4 348
 ADDRFP4 0
 INDIRP4
@@ -13042,9 +13046,9 @@ ADDRLP4 160
 ADDRLP4 344
 INDIRI4
 ASGNI4
-line 3036
-;3035:	//remember the current health value
-;3036:	bs->lasthealth = bs->inventory[INVENTORY_HEALTH];
+line 3040
+;3039:	//remember the current health value
+;3040:	bs->lasthealth = bs->inventory[INVENTORY_HEALTH];
 ADDRLP4 352
 ADDRFP4 0
 INDIRP4
@@ -13059,15 +13063,15 @@ CNSTI4 5068
 ADDP4
 INDIRI4
 ASGNI4
-line 3038
-;3037:	//
-;3038:	if (curenemy >= 0) {
+line 3042
+;3041:	//
+;3042:	if (curenemy >= 0) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
 LTI4 $998
-line 3039
-;3039:		BotEntityInfo(curenemy, &curenemyinfo);
+line 3043
+;3043:		BotEntityInfo(curenemy, &curenemyinfo);
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -13076,8 +13080,8 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 3040
-;3040:		if (EntityCarriesFlag(&curenemyinfo)) return qfalse;
+line 3044
+;3044:		if (EntityCarriesFlag(&curenemyinfo)) return qfalse;
 ADDRLP4 196
 ARGP4
 ADDRLP4 356
@@ -13093,8 +13097,8 @@ RETI4
 ADDRGP4 $994
 JUMPV
 LABELV $1000
-line 3041
-;3041:		VectorSubtract(curenemyinfo.origin, bs->origin, dir);
+line 3045
+;3045:		VectorSubtract(curenemyinfo.origin, bs->origin, dir);
 ADDRLP4 360
 ADDRFP4 0
 INDIRP4
@@ -13129,8 +13133,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3042
-;3042:		cursquaredist = VectorLengthSquared(dir);
+line 3046
+;3046:		cursquaredist = VectorLengthSquared(dir);
 ADDRLP4 144
 ARGP4
 ADDRLP4 364
@@ -13141,60 +13145,90 @@ ADDRLP4 192
 ADDRLP4 364
 INDIRF4
 ASGNF4
-line 3043
-;3043:	}
+line 3047
+;3047:	}
 ADDRGP4 $999
 JUMPV
 LABELV $998
-line 3044
-;3044:	else {
-line 3045
-;3045:		cursquaredist = 0;
+line 3048
+;3048:	else {
+line 3049
+;3049:		cursquaredist = 0;
 ADDRLP4 192
 CNSTF4 0
 ASGNF4
-line 3046
-;3046:	}
+line 3050
+;3050:	}
 LABELV $999
-line 3075
-;3047:#ifdef MISSIONPACK
-;3048:	if (gametype == GT_OBELISK) {
-;3049:		vec3_t target;
-;3050:		bot_goal_t *goal;
-;3051:		bsp_trace_t trace;
-;3052:
-;3053:		if (BotTeam(bs) == TEAM_RED)
-;3054:			goal = &blueobelisk;
-;3055:		else
-;3056:			goal = &redobelisk;
-;3057:		//if the obelisk is visible
-;3058:		VectorCopy(goal->origin, target);
-;3059:		target[2] += 1;
-;3060:		BotAI_Trace(&trace, bs->eye, NULL, NULL, target, bs->client, CONTENTS_SOLID);
-;3061:		if (trace.fraction >= 1 || trace.ent == goal->entitynum) {
-;3062:			if (goal->entitynum == bs->enemy) {
-;3063:				return qfalse;
-;3064:			}
-;3065:			bs->enemy = goal->entitynum;
-;3066:			bs->enemysight_time = FloatTime();
-;3067:			bs->enemysuicide = qfalse;
-;3068:			bs->enemydeath_time = 0;
-;3069:			bs->enemyvisible_time = FloatTime();
-;3070:			return qtrue;
-;3071:		}
-;3072:	}
-;3073:#endif
-;3074:	//
-;3075:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
+line 3109
+;3051:
+;3052:	/*
+;3053:	// Trepidation Gametype
+;3054:	// This didnt work at all
+;3055:	if (g_GameMode.integer == 3 && curenemy == 0)
+;3056:	{
+;3057:		
+;3058:		ent = 0;
+;3059:		i=0;
+;3060:		while( ( ent = BotAI_GetSnapshotEntity( bs->client, ent, &state ) ) != -1 ) {
+;3061:		
+;3062:			if (state.eType == ET_BUILDABLE)
+;3063:			{
+;3064:				entinfo.number = ent;
+;3065:				//BotEntityInfo(i, &entinfo);
+;3066:				bs->enemy = entinfo.number;
+;3067:				if (curenemy >= 0) bs->enemysight_time = FloatTime() - 2;
+;3068:				else bs->enemysight_time = FloatTime();
+;3069:				bs->enemysuicide = qfalse;
+;3070:				bs->enemydeath_time = 0;
+;3071:				bs->enemyvisible_time = FloatTime();
+;3072:				return qtrue;
+;3073:			}
+;3074:
+;3075:
+;3076:		}
+;3077:
+;3078:	}
+;3079:	*/
+;3080:
+;3081:#ifdef MISSIONPACK
+;3082:	if (gametype == GT_OBELISK) {
+;3083:		vec3_t target;
+;3084:		bot_goal_t *goal;
+;3085:		bsp_trace_t trace;
+;3086:
+;3087:		if (BotTeam(bs) == TEAM_RED)
+;3088:			goal = &blueobelisk;
+;3089:		else
+;3090:			goal = &redobelisk;
+;3091:		//if the obelisk is visible
+;3092:		VectorCopy(goal->origin, target);
+;3093:		target[2] += 1;
+;3094:		BotAI_Trace(&trace, bs->eye, NULL, NULL, target, bs->client, CONTENTS_SOLID);
+;3095:		if (trace.fraction >= 1 || trace.ent == goal->entitynum) {
+;3096:			if (goal->entitynum == bs->enemy) {
+;3097:				return qfalse;
+;3098:			}
+;3099:			bs->enemy = goal->entitynum;
+;3100:			bs->enemysight_time = FloatTime();
+;3101:			bs->enemysuicide = qfalse;
+;3102:			bs->enemydeath_time = 0;
+;3103:			bs->enemyvisible_time = FloatTime();
+;3104:			return qtrue;
+;3105:		}
+;3106:	}
+;3107:#endif
+;3108:	//
+;3109:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
 ADDRLP4 140
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1012
 JUMPV
 LABELV $1009
-line 3077
-;3076:
-;3077:		if (i == bs->client) continue;
+line 3111
+;3110:
+;3111:		if (i == bs->client) continue;
 ADDRLP4 140
 INDIRI4
 ADDRFP4 0
@@ -13206,9 +13240,9 @@ NEI4 $1013
 ADDRGP4 $1010
 JUMPV
 LABELV $1013
-line 3079
-;3078:		//if it's the current enemy
-;3079:		if (i == curenemy) continue;
+line 3113
+;3112:		//if it's the current enemy
+;3113:		if (i == curenemy) continue;
 ADDRLP4 140
 INDIRI4
 ADDRFP4 4
@@ -13217,9 +13251,9 @@ NEI4 $1015
 ADDRGP4 $1010
 JUMPV
 LABELV $1015
-line 3081
-;3080:		//
-;3081:		BotEntityInfo(i, &entinfo);
+line 3115
+;3114:		//
+;3115:		BotEntityInfo(i, &entinfo);
 ADDRLP4 140
 INDIRI4
 ARGI4
@@ -13228,9 +13262,9 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 3083
-;3082:		//
-;3083:		if (!entinfo.valid) continue;
+line 3117
+;3116:		//
+;3117:		if (!entinfo.valid) continue;
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
@@ -13238,9 +13272,9 @@ NEI4 $1017
 ADDRGP4 $1010
 JUMPV
 LABELV $1017
-line 3085
-;3084:		//if the enemy isn't dead and the enemy isn't the bot self
-;3085:		if (EntityIsDead(&entinfo) || entinfo.number == bs->entitynum) continue;
+line 3119
+;3118:		//if the enemy isn't dead and the enemy isn't the bot self
+;3119:		if (EntityIsDead(&entinfo) || entinfo.number == bs->entitynum) continue;
 ADDRLP4 0
 ARGP4
 ADDRLP4 356
@@ -13263,9 +13297,9 @@ LABELV $1022
 ADDRGP4 $1010
 JUMPV
 LABELV $1019
-line 3087
-;3086:		//if the enemy is invisible and not shooting
-;3087:		if (EntityIsInvisible(&entinfo) && !EntityIsShooting(&entinfo)) {
+line 3121
+;3120:		//if the enemy is invisible and not shooting
+;3121:		if (EntityIsInvisible(&entinfo) && !EntityIsShooting(&entinfo)) {
 ADDRLP4 0
 ARGP4
 ADDRLP4 360
@@ -13286,16 +13320,16 @@ ADDRLP4 364
 INDIRI4
 CNSTI4 0
 NEI4 $1023
-line 3088
-;3088:			continue;
+line 3122
+;3122:			continue;
 ADDRGP4 $1010
 JUMPV
 LABELV $1023
-line 3092
-;3089:		}
-;3090://unlagged - misc
-;3091:		// this has nothing to do with lag compensation, but it's great for testing
-;3092:		if ( g_entities[i].flags & FL_NOTARGET ) continue;
+line 3126
+;3123:		}
+;3124://unlagged - misc
+;3125:		// this has nothing to do with lag compensation, but it's great for testing
+;3126:		if ( g_entities[i].flags & FL_NOTARGET ) continue;
 CNSTI4 916
 ADDRLP4 140
 INDIRI4
@@ -13310,10 +13344,10 @@ EQI4 $1025
 ADDRGP4 $1010
 JUMPV
 LABELV $1025
-line 3095
-;3093://unlagged - misc
-;3094:		//if not an easy fragger don't shoot at chatting players
-;3095:		if (easyfragger < 0.5 && EntityIsChatting(&entinfo)) continue;
+line 3129
+;3127://unlagged - misc
+;3128:		//if not an easy fragger don't shoot at chatting players
+;3129:		if (easyfragger < 0.5 && EntityIsChatting(&entinfo)) continue;
 ADDRLP4 176
 INDIRF4
 CNSTF4 1056964608
@@ -13331,9 +13365,9 @@ EQI4 $1028
 ADDRGP4 $1010
 JUMPV
 LABELV $1028
-line 3097
-;3096:		//
-;3097:		if (lastteleport_time > FloatTime() - 3) {
+line 3131
+;3130:		//
+;3131:		if (lastteleport_time > FloatTime() - 3) {
 ADDRGP4 lastteleport_time
 INDIRF4
 ADDRGP4 floattime
@@ -13341,8 +13375,8 @@ INDIRF4
 CNSTF4 1077936128
 SUBF4
 LEF4 $1030
-line 3098
-;3098:			VectorSubtract(entinfo.origin, lastteleport_origin, dir);
+line 3132
+;3132:			VectorSubtract(entinfo.origin, lastteleport_origin, dir);
 ADDRLP4 144
 ADDRLP4 0+24
 INDIRF4
@@ -13364,8 +13398,8 @@ ADDRGP4 lastteleport_origin+8
 INDIRF4
 SUBF4
 ASGNF4
-line 3099
-;3099:			if (VectorLengthSquared(dir) < Square(70)) continue;
+line 3133
+;3133:			if (VectorLengthSquared(dir) < Square(70)) continue;
 ADDRLP4 144
 ARGP4
 ADDRLP4 372
@@ -13379,12 +13413,12 @@ GEF4 $1041
 ADDRGP4 $1010
 JUMPV
 LABELV $1041
-line 3100
-;3100:		}
+line 3134
+;3134:		}
 LABELV $1030
-line 3102
-;3101:		//calculate the distance towards the enemy
-;3102:		VectorSubtract(entinfo.origin, bs->origin, dir);
+line 3136
+;3135:		//calculate the distance towards the enemy
+;3136:		VectorSubtract(entinfo.origin, bs->origin, dir);
 ADDRLP4 372
 ADDRFP4 0
 INDIRP4
@@ -13419,8 +13453,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3103
-;3103:		squaredist = VectorLengthSquared(dir);
+line 3137
+;3137:		squaredist = VectorLengthSquared(dir);
 ADDRLP4 144
 ARGP4
 ADDRLP4 376
@@ -13431,9 +13465,9 @@ ADDRLP4 156
 ADDRLP4 376
 INDIRF4
 ASGNF4
-line 3105
-;3104:		//if this entity is not carrying a flag
-;3105:		if (!EntityCarriesFlag(&entinfo))
+line 3139
+;3138:		//if this entity is not carrying a flag
+;3139:		if (!EntityCarriesFlag(&entinfo))
 ADDRLP4 0
 ARGP4
 ADDRLP4 380
@@ -13444,11 +13478,11 @@ ADDRLP4 380
 INDIRI4
 CNSTI4 0
 NEI4 $1050
-line 3106
-;3106:		{
-line 3108
-;3107:			//if this enemy is further away than the current one
-;3108:			if (curenemy >= 0 && squaredist > cursquaredist) continue;
+line 3140
+;3140:		{
+line 3142
+;3141:			//if this enemy is further away than the current one
+;3142:			if (curenemy >= 0 && squaredist > cursquaredist) continue;
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
@@ -13461,12 +13495,12 @@ LEF4 $1052
 ADDRGP4 $1010
 JUMPV
 LABELV $1052
-line 3109
-;3109:		} //end if
+line 3143
+;3143:		} //end if
 LABELV $1050
-line 3111
-;3110:		//if the bot has no
-;3111:		if (squaredist > Square(900.0 + alertness * 4000.0)) continue;
+line 3145
+;3144:		//if the bot has no
+;3145:		if (squaredist > Square(900.0 + alertness * 4000.0)) continue;
 ADDRLP4 384
 CNSTF4 1165623296
 ADDRLP4 164
@@ -13486,9 +13520,9 @@ LEF4 $1054
 ADDRGP4 $1010
 JUMPV
 LABELV $1054
-line 3113
-;3112:		//if on the same team
-;3113:		if (BotSameTeam(bs, i)) continue;
+line 3147
+;3146:		//if on the same team
+;3147:		if (BotSameTeam(bs, i)) continue;
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -13506,9 +13540,9 @@ EQI4 $1056
 ADDRGP4 $1010
 JUMPV
 LABELV $1056
-line 3115
-;3114:		//if the bot's health decreased or the enemy is shooting
-;3115:		if (curenemy < 0 && (healthdecrease || EntityIsShooting(&entinfo)))
+line 3149
+;3148:		//if the bot's health decreased or the enemy is shooting
+;3149:		if (curenemy < 0 && (healthdecrease || EntityIsShooting(&entinfo)))
 ADDRLP4 392
 CNSTI4 0
 ASGNI4
@@ -13533,17 +13567,17 @@ INDIRI4
 CNSTI4 0
 EQI4 $1058
 LABELV $1060
-line 3116
-;3116:			f = 360;
+line 3150
+;3150:			f = 360;
 ADDRLP4 168
 CNSTF4 1135869952
 ASGNF4
 ADDRGP4 $1059
 JUMPV
 LABELV $1058
-line 3118
-;3117:		else
-;3118:			f = 90 + 90 - (90 - (squaredist > Square(810) ? Square(810) : squaredist) / (810 * 9));
+line 3152
+;3151:		else
+;3152:			f = 90 + 90 - (90 - (squaredist > Square(810) ? Square(810) : squaredist) / (810 * 9));
 ADDRLP4 156
 INDIRF4
 CNSTF4 1226845760
@@ -13570,9 +13604,9 @@ SUBF4
 SUBF4
 ASGNF4
 LABELV $1059
-line 3120
-;3119:		//check if the enemy is visible
-;3120:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, f, i);
+line 3154
+;3153:		//check if the enemy is visible
+;3154:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, f, i);
 ADDRLP4 404
 ADDRFP4 0
 INDIRP4
@@ -13607,8 +13641,8 @@ ADDRLP4 172
 ADDRLP4 408
 INDIRF4
 ASGNF4
-line 3121
-;3121:		if (vis <= 0) continue;
+line 3155
+;3155:		if (vis <= 0) continue;
 ADDRLP4 172
 INDIRF4
 CNSTF4 0
@@ -13616,9 +13650,9 @@ GTF4 $1064
 ADDRGP4 $1010
 JUMPV
 LABELV $1064
-line 3123
-;3122:		//if the enemy is quite far away, not shooting and the bot is not damaged
-;3123:		if (curenemy < 0 && squaredist > Square(100) && !healthdecrease && !EntityIsShooting(&entinfo))
+line 3157
+;3156:		//if the enemy is quite far away, not shooting and the bot is not damaged
+;3157:		if (curenemy < 0 && squaredist > Square(100) && !healthdecrease && !EntityIsShooting(&entinfo))
 ADDRLP4 412
 CNSTI4 0
 ASGNI4
@@ -13646,11 +13680,11 @@ ADDRLP4 416
 INDIRI4
 CNSTI4 0
 NEI4 $1066
-line 3124
-;3124:		{
-line 3126
-;3125:			//check if we can avoid this enemy
-;3126:			VectorSubtract(bs->origin, entinfo.origin, dir);
+line 3158
+;3158:		{
+line 3160
+;3159:			//check if we can avoid this enemy
+;3160:			VectorSubtract(bs->origin, entinfo.origin, dir);
 ADDRLP4 420
 ADDRFP4 0
 INDIRP4
@@ -13685,8 +13719,8 @@ ADDRLP4 0+24+8
 INDIRF4
 SUBF4
 ASGNF4
-line 3127
-;3127:			vectoangles(dir, angles);
+line 3161
+;3161:			vectoangles(dir, angles);
 ADDRLP4 144
 ARGP4
 ADDRLP4 180
@@ -13694,9 +13728,9 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 3129
-;3128:			//if the bot isn't in the fov of the enemy
-;3129:			if (!InFieldOfVision(entinfo.angles, 90, angles)) {
+line 3163
+;3162:			//if the bot isn't in the fov of the enemy
+;3163:			if (!InFieldOfVision(entinfo.angles, 90, angles)) {
 ADDRLP4 0+36
 ARGP4
 CNSTF4 1119092736
@@ -13711,9 +13745,9 @@ ADDRLP4 424
 INDIRI4
 CNSTI4 0
 NEI4 $1075
-line 3131
-;3130:				//update some stuff for this enemy
-;3131:				BotUpdateBattleInventory(bs, i);
+line 3165
+;3164:				//update some stuff for this enemy
+;3165:				BotUpdateBattleInventory(bs, i);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -13723,9 +13757,9 @@ ARGI4
 ADDRGP4 BotUpdateBattleInventory
 CALLV
 pop
-line 3133
-;3132:				//if the bot doesn't really want to fight
-;3133:				if (BotWantsToRetreat(bs)) continue;
+line 3167
+;3166:				//if the bot doesn't really want to fight
+;3167:				if (BotWantsToRetreat(bs)) continue;
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -13740,15 +13774,15 @@ EQI4 $1078
 ADDRGP4 $1010
 JUMPV
 LABELV $1078
-line 3134
-;3134:			}
+line 3168
+;3168:			}
 LABELV $1075
-line 3135
-;3135:		}
+line 3169
+;3169:		}
 LABELV $1066
-line 3137
-;3136:		//found an enemy
-;3137:		bs->enemy = entinfo.number;
+line 3171
+;3170:		//found an enemy
+;3171:		bs->enemy = entinfo.number;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6540
@@ -13756,8 +13790,8 @@ ADDP4
 ADDRLP4 0+20
 INDIRI4
 ASGNI4
-line 3138
-;3138:		if (curenemy >= 0) bs->enemysight_time = FloatTime() - 2;
+line 3172
+;3172:		if (curenemy >= 0) bs->enemysight_time = FloatTime() - 2;
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
@@ -13774,8 +13808,8 @@ ASGNF4
 ADDRGP4 $1082
 JUMPV
 LABELV $1081
-line 3139
-;3139:		else bs->enemysight_time = FloatTime();
+line 3173
+;3173:		else bs->enemysight_time = FloatTime();
 ADDRFP4 0
 INDIRP4
 CNSTI4 6132
@@ -13784,24 +13818,24 @@ ADDRGP4 floattime
 INDIRF4
 ASGNF4
 LABELV $1082
-line 3140
-;3140:		bs->enemysuicide = qfalse;
+line 3174
+;3174:		bs->enemysuicide = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6012
 ADDP4
 CNSTI4 0
 ASGNI4
-line 3141
-;3141:		bs->enemydeath_time = 0;
+line 3175
+;3175:		bs->enemydeath_time = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6136
 ADDP4
 CNSTF4 0
 ASGNF4
-line 3142
-;3142:		bs->enemyvisible_time = FloatTime();
+line 3176
+;3176:		bs->enemyvisible_time = FloatTime();
 ADDRFP4 0
 INDIRP4
 CNSTI4 6088
@@ -13809,14 +13843,14 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 ASGNF4
-line 3143
-;3143:		return qtrue;
+line 3177
+;3177:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $994
 JUMPV
 LABELV $1010
-line 3075
+line 3109
 ADDRLP4 140
 ADDRLP4 140
 INDIRI4
@@ -13834,38 +13868,38 @@ INDIRI4
 CNSTI4 64
 LTI4 $1009
 LABELV $1083
-line 3145
-;3144:	}
-;3145:	return qfalse;
+line 3179
+;3178:	}
+;3179:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $994
 endproc BotFindEnemy 432 20
 export BotTeamFlagCarrierVisible
 proc BotTeamFlagCarrierVisible 164 20
-line 3153
-;3146:}
-;3147:
-;3148:/*
-;3149:==================
-;3150:BotTeamFlagCarrierVisible
-;3151:==================
-;3152:*/
-;3153:int BotTeamFlagCarrierVisible(bot_state_t *bs) {
-line 3158
-;3154:	int i;
-;3155:	float vis;
-;3156:	aas_entityinfo_t entinfo;
-;3157:
-;3158:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
+line 3187
+;3180:}
+;3181:
+;3182:/*
+;3183:==================
+;3184:BotTeamFlagCarrierVisible
+;3185:==================
+;3186:*/
+;3187:int BotTeamFlagCarrierVisible(bot_state_t *bs) {
+line 3192
+;3188:	int i;
+;3189:	float vis;
+;3190:	aas_entityinfo_t entinfo;
+;3191:
+;3192:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1088
 JUMPV
 LABELV $1085
-line 3159
-;3159:		if (i == bs->client)
+line 3193
+;3193:		if (i == bs->client)
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -13874,14 +13908,14 @@ CNSTI4 8
 ADDP4
 INDIRI4
 NEI4 $1089
-line 3160
-;3160:			continue;
+line 3194
+;3194:			continue;
 ADDRGP4 $1086
 JUMPV
 LABELV $1089
-line 3162
-;3161:		//
-;3162:		BotEntityInfo(i, &entinfo);
+line 3196
+;3195:		//
+;3196:		BotEntityInfo(i, &entinfo);
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -13890,21 +13924,21 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 3164
-;3163:		//if this player is active
-;3164:		if (!entinfo.valid)
+line 3198
+;3197:		//if this player is active
+;3198:		if (!entinfo.valid)
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $1091
-line 3165
-;3165:			continue;
+line 3199
+;3199:			continue;
 ADDRGP4 $1086
 JUMPV
 LABELV $1091
-line 3167
-;3166:		//if this player is carrying a flag
-;3167:		if (!EntityCarriesFlag(&entinfo))
+line 3201
+;3200:		//if this player is carrying a flag
+;3201:		if (!EntityCarriesFlag(&entinfo))
 ADDRLP4 4
 ARGP4
 ADDRLP4 148
@@ -13915,14 +13949,14 @@ ADDRLP4 148
 INDIRI4
 CNSTI4 0
 NEI4 $1093
-line 3168
-;3168:			continue;
+line 3202
+;3202:			continue;
 ADDRGP4 $1086
 JUMPV
 LABELV $1093
-line 3170
-;3169:		//if the flag carrier is not on the same team
-;3170:		if (!BotSameTeam(bs, i))
+line 3204
+;3203:		//if the flag carrier is not on the same team
+;3204:		if (!BotSameTeam(bs, i))
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -13937,14 +13971,14 @@ ADDRLP4 152
 INDIRI4
 CNSTI4 0
 NEI4 $1095
-line 3171
-;3171:			continue;
+line 3205
+;3205:			continue;
 ADDRGP4 $1086
 JUMPV
 LABELV $1095
-line 3173
-;3172:		//if the flag carrier is not visible
-;3173:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, i);
+line 3207
+;3206:		//if the flag carrier is not visible
+;3207:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, i);
 ADDRLP4 156
 ADDRFP4 0
 INDIRP4
@@ -13978,27 +14012,27 @@ ADDRLP4 144
 ADDRLP4 160
 INDIRF4
 ASGNF4
-line 3174
-;3174:		if (vis <= 0)
+line 3208
+;3208:		if (vis <= 0)
 ADDRLP4 144
 INDIRF4
 CNSTF4 0
 GTF4 $1097
-line 3175
-;3175:			continue;
+line 3209
+;3209:			continue;
 ADDRGP4 $1086
 JUMPV
 LABELV $1097
-line 3177
-;3176:		//
-;3177:		return i;
+line 3211
+;3210:		//
+;3211:		return i;
 ADDRLP4 0
 INDIRI4
 RETI4
 ADDRGP4 $1084
 JUMPV
 LABELV $1086
-line 3158
+line 3192
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -14016,37 +14050,37 @@ INDIRI4
 CNSTI4 64
 LTI4 $1085
 LABELV $1099
-line 3179
-;3178:	}
-;3179:	return -1;
+line 3213
+;3212:	}
+;3213:	return -1;
 CNSTI4 -1
 RETI4
 LABELV $1084
 endproc BotTeamFlagCarrierVisible 164 20
 export BotTeamFlagCarrier
 proc BotTeamFlagCarrier 152 8
-line 3187
-;3180:}
-;3181:
-;3182:/*
-;3183:==================
-;3184:BotTeamFlagCarrier
-;3185:==================
-;3186:*/
-;3187:int BotTeamFlagCarrier(bot_state_t *bs) {
-line 3191
-;3188:	int i;
-;3189:	aas_entityinfo_t entinfo;
-;3190:
-;3191:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
+line 3221
+;3214:}
+;3215:
+;3216:/*
+;3217:==================
+;3218:BotTeamFlagCarrier
+;3219:==================
+;3220:*/
+;3221:int BotTeamFlagCarrier(bot_state_t *bs) {
+line 3225
+;3222:	int i;
+;3223:	aas_entityinfo_t entinfo;
+;3224:
+;3225:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1104
 JUMPV
 LABELV $1101
-line 3192
-;3192:		if (i == bs->client)
+line 3226
+;3226:		if (i == bs->client)
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -14055,14 +14089,14 @@ CNSTI4 8
 ADDP4
 INDIRI4
 NEI4 $1105
-line 3193
-;3193:			continue;
+line 3227
+;3227:			continue;
 ADDRGP4 $1102
 JUMPV
 LABELV $1105
-line 3195
-;3194:		//
-;3195:		BotEntityInfo(i, &entinfo);
+line 3229
+;3228:		//
+;3229:		BotEntityInfo(i, &entinfo);
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -14071,21 +14105,21 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 3197
-;3196:		//if this player is active
-;3197:		if (!entinfo.valid)
+line 3231
+;3230:		//if this player is active
+;3231:		if (!entinfo.valid)
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $1107
-line 3198
-;3198:			continue;
+line 3232
+;3232:			continue;
 ADDRGP4 $1102
 JUMPV
 LABELV $1107
-line 3200
-;3199:		//if this player is carrying a flag
-;3200:		if (!EntityCarriesFlag(&entinfo))
+line 3234
+;3233:		//if this player is carrying a flag
+;3234:		if (!EntityCarriesFlag(&entinfo))
 ADDRLP4 4
 ARGP4
 ADDRLP4 144
@@ -14096,14 +14130,14 @@ ADDRLP4 144
 INDIRI4
 CNSTI4 0
 NEI4 $1109
-line 3201
-;3201:			continue;
+line 3235
+;3235:			continue;
 ADDRGP4 $1102
 JUMPV
 LABELV $1109
-line 3203
-;3202:		//if the flag carrier is not on the same team
-;3203:		if (!BotSameTeam(bs, i))
+line 3237
+;3236:		//if the flag carrier is not on the same team
+;3237:		if (!BotSameTeam(bs, i))
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -14118,21 +14152,21 @@ ADDRLP4 148
 INDIRI4
 CNSTI4 0
 NEI4 $1111
-line 3204
-;3204:			continue;
+line 3238
+;3238:			continue;
 ADDRGP4 $1102
 JUMPV
 LABELV $1111
-line 3206
-;3205:		//
-;3206:		return i;
+line 3240
+;3239:		//
+;3240:		return i;
 ADDRLP4 0
 INDIRI4
 RETI4
 ADDRGP4 $1100
 JUMPV
 LABELV $1102
-line 3191
+line 3225
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -14150,38 +14184,38 @@ INDIRI4
 CNSTI4 64
 LTI4 $1101
 LABELV $1113
-line 3208
-;3207:	}
-;3208:	return -1;
+line 3242
+;3241:	}
+;3242:	return -1;
 CNSTI4 -1
 RETI4
 LABELV $1100
 endproc BotTeamFlagCarrier 152 8
 export BotEnemyFlagCarrierVisible
 proc BotEnemyFlagCarrierVisible 164 20
-line 3216
-;3209:}
-;3210:
-;3211:/*
-;3212:==================
-;3213:BotEnemyFlagCarrierVisible
-;3214:==================
-;3215:*/
-;3216:int BotEnemyFlagCarrierVisible(bot_state_t *bs) {
-line 3221
-;3217:	int i;
-;3218:	float vis;
-;3219:	aas_entityinfo_t entinfo;
-;3220:
-;3221:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
+line 3250
+;3243:}
+;3244:
+;3245:/*
+;3246:==================
+;3247:BotEnemyFlagCarrierVisible
+;3248:==================
+;3249:*/
+;3250:int BotEnemyFlagCarrierVisible(bot_state_t *bs) {
+line 3255
+;3251:	int i;
+;3252:	float vis;
+;3253:	aas_entityinfo_t entinfo;
+;3254:
+;3255:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1118
 JUMPV
 LABELV $1115
-line 3222
-;3222:		if (i == bs->client)
+line 3256
+;3256:		if (i == bs->client)
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -14190,14 +14224,14 @@ CNSTI4 8
 ADDP4
 INDIRI4
 NEI4 $1119
-line 3223
-;3223:			continue;
+line 3257
+;3257:			continue;
 ADDRGP4 $1116
 JUMPV
 LABELV $1119
-line 3225
-;3224:		//
-;3225:		BotEntityInfo(i, &entinfo);
+line 3259
+;3258:		//
+;3259:		BotEntityInfo(i, &entinfo);
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -14206,21 +14240,21 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 3227
-;3226:		//if this player is active
-;3227:		if (!entinfo.valid)
+line 3261
+;3260:		//if this player is active
+;3261:		if (!entinfo.valid)
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $1121
-line 3228
-;3228:			continue;
+line 3262
+;3262:			continue;
 ADDRGP4 $1116
 JUMPV
 LABELV $1121
-line 3230
-;3229:		//if this player is carrying a flag
-;3230:		if (!EntityCarriesFlag(&entinfo))
+line 3264
+;3263:		//if this player is carrying a flag
+;3264:		if (!EntityCarriesFlag(&entinfo))
 ADDRLP4 4
 ARGP4
 ADDRLP4 148
@@ -14231,14 +14265,14 @@ ADDRLP4 148
 INDIRI4
 CNSTI4 0
 NEI4 $1123
-line 3231
-;3231:			continue;
+line 3265
+;3265:			continue;
 ADDRGP4 $1116
 JUMPV
 LABELV $1123
-line 3233
-;3232:		//if the flag carrier is on the same team
-;3233:		if (BotSameTeam(bs, i))
+line 3267
+;3266:		//if the flag carrier is on the same team
+;3267:		if (BotSameTeam(bs, i))
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -14253,14 +14287,14 @@ ADDRLP4 152
 INDIRI4
 CNSTI4 0
 EQI4 $1125
-line 3234
-;3234:			continue;
+line 3268
+;3268:			continue;
 ADDRGP4 $1116
 JUMPV
 LABELV $1125
-line 3236
-;3235:		//if the flag carrier is not visible
-;3236:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, i);
+line 3270
+;3269:		//if the flag carrier is not visible
+;3270:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, i);
 ADDRLP4 156
 ADDRFP4 0
 INDIRP4
@@ -14294,27 +14328,27 @@ ADDRLP4 144
 ADDRLP4 160
 INDIRF4
 ASGNF4
-line 3237
-;3237:		if (vis <= 0)
+line 3271
+;3271:		if (vis <= 0)
 ADDRLP4 144
 INDIRF4
 CNSTF4 0
 GTF4 $1127
-line 3238
-;3238:			continue;
+line 3272
+;3272:			continue;
 ADDRGP4 $1116
 JUMPV
 LABELV $1127
-line 3240
-;3239:		//
-;3240:		return i;
+line 3274
+;3273:		//
+;3274:		return i;
 ADDRLP4 0
 INDIRI4
 RETI4
 ADDRGP4 $1114
 JUMPV
 LABELV $1116
-line 3221
+line 3255
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -14332,67 +14366,67 @@ INDIRI4
 CNSTI4 64
 LTI4 $1115
 LABELV $1129
-line 3242
-;3241:	}
-;3242:	return -1;
+line 3276
+;3275:	}
+;3276:	return -1;
 CNSTI4 -1
 RETI4
 LABELV $1114
 endproc BotEnemyFlagCarrierVisible 164 20
 export BotVisibleTeamMatesAndEnemies
 proc BotVisibleTeamMatesAndEnemies 192 20
-line 3250
-;3243:}
-;3244:
-;3245:/*
-;3246:==================
-;3247:BotVisibleTeamMatesAndEnemies
-;3248:==================
-;3249:*/
-;3250:void BotVisibleTeamMatesAndEnemies(bot_state_t *bs, int *teammates, int *enemies, float range) {
-line 3256
-;3251:	int i;
-;3252:	float vis;
-;3253:	aas_entityinfo_t entinfo;
-;3254:	vec3_t dir;
-;3255:
-;3256:	if (teammates)
+line 3284
+;3277:}
+;3278:
+;3279:/*
+;3280:==================
+;3281:BotVisibleTeamMatesAndEnemies
+;3282:==================
+;3283:*/
+;3284:void BotVisibleTeamMatesAndEnemies(bot_state_t *bs, int *teammates, int *enemies, float range) {
+line 3290
+;3285:	int i;
+;3286:	float vis;
+;3287:	aas_entityinfo_t entinfo;
+;3288:	vec3_t dir;
+;3289:
+;3290:	if (teammates)
 ADDRFP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $1131
-line 3257
-;3257:		*teammates = 0;
+line 3291
+;3291:		*teammates = 0;
 ADDRFP4 4
 INDIRP4
 CNSTI4 0
 ASGNI4
 LABELV $1131
-line 3258
-;3258:	if (enemies)
+line 3292
+;3292:	if (enemies)
 ADDRFP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $1133
-line 3259
-;3259:		*enemies = 0;
+line 3293
+;3293:		*enemies = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 0
 ASGNI4
 LABELV $1133
-line 3260
-;3260:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
+line 3294
+;3294:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1138
 JUMPV
 LABELV $1135
-line 3261
-;3261:		if (i == bs->client)
+line 3295
+;3295:		if (i == bs->client)
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -14401,14 +14435,14 @@ CNSTI4 8
 ADDP4
 INDIRI4
 NEI4 $1139
-line 3262
-;3262:			continue;
+line 3296
+;3296:			continue;
 ADDRGP4 $1136
 JUMPV
 LABELV $1139
-line 3264
-;3263:		//
-;3264:		BotEntityInfo(i, &entinfo);
+line 3298
+;3297:		//
+;3298:		BotEntityInfo(i, &entinfo);
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -14417,21 +14451,21 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 3266
-;3265:		//if this player is active
-;3266:		if (!entinfo.valid)
+line 3300
+;3299:		//if this player is active
+;3300:		if (!entinfo.valid)
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $1141
-line 3267
-;3267:			continue;
+line 3301
+;3301:			continue;
 ADDRGP4 $1136
 JUMPV
 LABELV $1141
-line 3269
-;3268:		//if this player is carrying a flag
-;3269:		if (!EntityCarriesFlag(&entinfo))
+line 3303
+;3302:		//if this player is carrying a flag
+;3303:		if (!EntityCarriesFlag(&entinfo))
 ADDRLP4 4
 ARGP4
 ADDRLP4 160
@@ -14442,14 +14476,14 @@ ADDRLP4 160
 INDIRI4
 CNSTI4 0
 NEI4 $1143
-line 3270
-;3270:			continue;
+line 3304
+;3304:			continue;
 ADDRGP4 $1136
 JUMPV
 LABELV $1143
-line 3272
-;3271:		//if not within range
-;3272:		VectorSubtract(entinfo.origin, bs->origin, dir);
+line 3306
+;3305:		//if not within range
+;3306:		VectorSubtract(entinfo.origin, bs->origin, dir);
 ADDRLP4 164
 ADDRFP4 0
 INDIRP4
@@ -14484,8 +14518,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3273
-;3273:		if (VectorLengthSquared(dir) > Square(range))
+line 3307
+;3307:		if (VectorLengthSquared(dir) > Square(range))
 ADDRLP4 144
 ARGP4
 ADDRLP4 168
@@ -14504,14 +14538,14 @@ ADDRLP4 172
 INDIRF4
 MULF4
 LEF4 $1152
-line 3274
-;3274:			continue;
+line 3308
+;3308:			continue;
 ADDRGP4 $1136
 JUMPV
 LABELV $1152
-line 3276
-;3275:		//if the flag carrier is not visible
-;3276:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, i);
+line 3310
+;3309:		//if the flag carrier is not visible
+;3310:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, i);
 ADDRLP4 176
 ADDRFP4 0
 INDIRP4
@@ -14545,20 +14579,20 @@ ADDRLP4 156
 ADDRLP4 180
 INDIRF4
 ASGNF4
-line 3277
-;3277:		if (vis <= 0)
+line 3311
+;3311:		if (vis <= 0)
 ADDRLP4 156
 INDIRF4
 CNSTF4 0
 GTF4 $1154
-line 3278
-;3278:			continue;
+line 3312
+;3312:			continue;
 ADDRGP4 $1136
 JUMPV
 LABELV $1154
-line 3280
-;3279:		//if the flag carrier is on the same team
-;3280:		if (BotSameTeam(bs, i)) {
+line 3314
+;3313:		//if the flag carrier is on the same team
+;3314:		if (BotSameTeam(bs, i)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -14573,15 +14607,15 @@ ADDRLP4 184
 INDIRI4
 CNSTI4 0
 EQI4 $1156
-line 3281
-;3281:			if (teammates)
+line 3315
+;3315:			if (teammates)
 ADDRFP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $1157
-line 3282
-;3282:				(*teammates)++;
+line 3316
+;3316:				(*teammates)++;
 ADDRLP4 188
 ADDRFP4 4
 INDIRP4
@@ -14594,22 +14628,22 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 3283
-;3283:		}
+line 3317
+;3317:		}
 ADDRGP4 $1157
 JUMPV
 LABELV $1156
-line 3284
-;3284:		else {
-line 3285
-;3285:			if (enemies)
+line 3318
+;3318:		else {
+line 3319
+;3319:			if (enemies)
 ADDRFP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $1160
-line 3286
-;3286:				(*enemies)++;
+line 3320
+;3320:				(*enemies)++;
 ADDRLP4 188
 ADDRFP4 8
 INDIRP4
@@ -14623,13 +14657,13 @@ CNSTI4 1
 ADDI4
 ASGNI4
 LABELV $1160
-line 3287
-;3287:		}
+line 3321
+;3321:		}
 LABELV $1157
-line 3288
-;3288:	}
+line 3322
+;3322:	}
 LABELV $1136
-line 3260
+line 3294
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -14647,8 +14681,8 @@ INDIRI4
 CNSTI4 64
 LTI4 $1135
 LABELV $1162
-line 3289
-;3289:}
+line 3323
+;3323:}
 LABELV $1130
 endproc BotVisibleTeamMatesAndEnemies 192 20
 lit
@@ -14665,83 +14699,83 @@ byte 4 1082130432
 export BotAimAtEnemy
 code
 proc BotAimAtEnemy 1144 52
-line 3360
-;3290:
-;3291:#ifdef MISSIONPACK
-;3292:/*
-;3293:==================
-;3294:BotTeamCubeCarrierVisible
-;3295:==================
-;3296:*/
-;3297:int BotTeamCubeCarrierVisible(bot_state_t *bs) {
-;3298:	int i;
-;3299:	float vis;
-;3300:	aas_entityinfo_t entinfo;
-;3301:
-;3302:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
-;3303:		if (i == bs->client) continue;
-;3304:		//
-;3305:		BotEntityInfo(i, &entinfo);
-;3306:		//if this player is active
-;3307:		if (!entinfo.valid) continue;
-;3308:		//if this player is carrying a flag
-;3309:		if (!EntityCarriesCubes(&entinfo)) continue;
-;3310:		//if the flag carrier is not on the same team
-;3311:		if (!BotSameTeam(bs, i)) continue;
-;3312:		//if the flag carrier is not visible
-;3313:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, i);
-;3314:		if (vis <= 0) continue;
-;3315:		//
-;3316:		return i;
-;3317:	}
-;3318:	return -1;
-;3319:}
-;3320:
-;3321:/*
-;3322:==================
-;3323:BotEnemyCubeCarrierVisible
-;3324:==================
-;3325:*/
-;3326:int BotEnemyCubeCarrierVisible(bot_state_t *bs) {
-;3327:	int i;
-;3328:	float vis;
-;3329:	aas_entityinfo_t entinfo;
-;3330:
-;3331:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
-;3332:		if (i == bs->client)
-;3333:			continue;
-;3334:		//
-;3335:		BotEntityInfo(i, &entinfo);
-;3336:		//if this player is active
-;3337:		if (!entinfo.valid)
-;3338:			continue;
-;3339:		//if this player is carrying a flag
-;3340:		if (!EntityCarriesCubes(&entinfo)) continue;
-;3341:		//if the flag carrier is on the same team
-;3342:		if (BotSameTeam(bs, i))
-;3343:			continue;
-;3344:		//if the flag carrier is not visible
-;3345:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, i);
-;3346:		if (vis <= 0)
-;3347:			continue;
-;3348:		//
-;3349:		return i;
-;3350:	}
-;3351:	return -1;
-;3352:}
-;3353:#endif
+line 3394
+;3324:
+;3325:#ifdef MISSIONPACK
+;3326:/*
+;3327:==================
+;3328:BotTeamCubeCarrierVisible
+;3329:==================
+;3330:*/
+;3331:int BotTeamCubeCarrierVisible(bot_state_t *bs) {
+;3332:	int i;
+;3333:	float vis;
+;3334:	aas_entityinfo_t entinfo;
+;3335:
+;3336:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
+;3337:		if (i == bs->client) continue;
+;3338:		//
+;3339:		BotEntityInfo(i, &entinfo);
+;3340:		//if this player is active
+;3341:		if (!entinfo.valid) continue;
+;3342:		//if this player is carrying a flag
+;3343:		if (!EntityCarriesCubes(&entinfo)) continue;
+;3344:		//if the flag carrier is not on the same team
+;3345:		if (!BotSameTeam(bs, i)) continue;
+;3346:		//if the flag carrier is not visible
+;3347:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, i);
+;3348:		if (vis <= 0) continue;
+;3349:		//
+;3350:		return i;
+;3351:	}
+;3352:	return -1;
+;3353:}
 ;3354:
 ;3355:/*
 ;3356:==================
-;3357:BotAimAtEnemy
+;3357:BotEnemyCubeCarrierVisible
 ;3358:==================
 ;3359:*/
-;3360:void BotAimAtEnemy(bot_state_t *bs) {
-line 3364
-;3361:	int i, enemyvisible;
-;3362:	float dist, f, aim_skill, aim_accuracy, speed, reactiontime;
-;3363:	vec3_t dir, bestorigin, end, start, groundtarget, cmdmove, enemyvelocity;
-;3364:	vec3_t mins = {-4,-4,-4}, maxs = {4, 4, 4};
+;3360:int BotEnemyCubeCarrierVisible(bot_state_t *bs) {
+;3361:	int i;
+;3362:	float vis;
+;3363:	aas_entityinfo_t entinfo;
+;3364:
+;3365:	for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
+;3366:		if (i == bs->client)
+;3367:			continue;
+;3368:		//
+;3369:		BotEntityInfo(i, &entinfo);
+;3370:		//if this player is active
+;3371:		if (!entinfo.valid)
+;3372:			continue;
+;3373:		//if this player is carrying a flag
+;3374:		if (!EntityCarriesCubes(&entinfo)) continue;
+;3375:		//if the flag carrier is on the same team
+;3376:		if (BotSameTeam(bs, i))
+;3377:			continue;
+;3378:		//if the flag carrier is not visible
+;3379:		vis = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, i);
+;3380:		if (vis <= 0)
+;3381:			continue;
+;3382:		//
+;3383:		return i;
+;3384:	}
+;3385:	return -1;
+;3386:}
+;3387:#endif
+;3388:
+;3389:/*
+;3390:==================
+;3391:BotAimAtEnemy
+;3392:==================
+;3393:*/
+;3394:void BotAimAtEnemy(bot_state_t *bs) {
+line 3398
+;3395:	int i, enemyvisible;
+;3396:	float dist, f, aim_skill, aim_accuracy, speed, reactiontime;
+;3397:	vec3_t dir, bestorigin, end, start, groundtarget, cmdmove, enemyvelocity;
+;3398:	vec3_t mins = {-4,-4,-4}, maxs = {4, 4, 4};
 ADDRLP4 860
 ADDRGP4 $1164
 INDIRB
@@ -14750,15 +14784,15 @@ ADDRLP4 872
 ADDRGP4 $1165
 INDIRB
 ASGNB 12
-line 3372
-;3365:	weaponinfo_t wi;
-;3366:	aas_entityinfo_t entinfo;
-;3367:	bot_goal_t goal;
-;3368:	bsp_trace_t trace;
-;3369:	vec3_t target;
-;3370:
-;3371:	//if the bot has no enemy
-;3372:	if (bs->enemy < 0) {
+line 3406
+;3399:	weaponinfo_t wi;
+;3400:	aas_entityinfo_t entinfo;
+;3401:	bot_goal_t goal;
+;3402:	bsp_trace_t trace;
+;3403:	vec3_t target;
+;3404:
+;3405:	//if the bot has no enemy
+;3406:	if (bs->enemy < 0) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6540
@@ -14766,15 +14800,15 @@ ADDP4
 INDIRI4
 CNSTI4 0
 GEI4 $1166
-line 3373
-;3373:		return;
+line 3407
+;3407:		return;
 ADDRGP4 $1163
 JUMPV
 LABELV $1166
-line 3376
-;3374:	}
-;3375:	//get the enemy entity information
-;3376:	BotEntityInfo(bs->enemy, &entinfo);
+line 3410
+;3408:	}
+;3409:	//get the enemy entity information
+;3410:	BotEntityInfo(bs->enemy, &entinfo);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6540
@@ -14786,9 +14820,9 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 3378
-;3377:	//if this is not a player (should be an obelisk)
-;3378:	if (bs->enemy >= MAX_CLIENTS) {
+line 3412
+;3411:	//if this is not a player (should be an obelisk)
+;3412:	if (bs->enemy >= MAX_CLIENTS) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6540
@@ -14796,23 +14830,23 @@ ADDP4
 INDIRI4
 CNSTI4 64
 LTI4 $1168
-line 3380
-;3379:		//if the obelisk is visible
-;3380:		VectorCopy(entinfo.origin, target);
+line 3414
+;3413:		//if the obelisk is visible
+;3414:		VectorCopy(entinfo.origin, target);
 ADDRLP4 828
 ADDRLP4 0+24
 INDIRB
 ASGNB 12
-line 3389
-;3381:#ifdef MISSIONPACK
-;3382:		// if attacking an obelisk
-;3383:		if ( bs->enemy == redobelisk.entitynum ||
-;3384:			bs->enemy == blueobelisk.entitynum ) {
-;3385:			target[2] += 32;
-;3386:		}
-;3387:#endif
-;3388:		//aim at the obelisk
-;3389:		VectorSubtract(target, bs->eye, dir);
+line 3423
+;3415:#ifdef MISSIONPACK
+;3416:		// if attacking an obelisk
+;3417:		if ( bs->enemy == redobelisk.entitynum ||
+;3418:			bs->enemy == blueobelisk.entitynum ) {
+;3419:			target[2] += 32;
+;3420:		}
+;3421:#endif
+;3422:		//aim at the obelisk
+;3423:		VectorSubtract(target, bs->eye, dir);
 ADDRLP4 984
 ADDRFP4 0
 INDIRP4
@@ -14847,8 +14881,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3390
-;3390:		vectoangles(dir, bs->ideal_viewangles);
+line 3424
+;3424:		vectoangles(dir, bs->ideal_viewangles);
 ADDRLP4 140
 ARGP4
 ADDRFP4 0
@@ -14859,9 +14893,9 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 3392
-;3391:		//set the aim target before trying to attack
-;3392:		VectorCopy(target, bs->aimtarget);
+line 3426
+;3425:		//set the aim target before trying to attack
+;3426:		VectorCopy(target, bs->aimtarget);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6220
@@ -14869,17 +14903,17 @@ ADDP4
 ADDRLP4 828
 INDIRB
 ASGNB 12
-line 3393
-;3393:		return;
+line 3427
+;3427:		return;
 ADDRGP4 $1163
 JUMPV
 LABELV $1168
-line 3398
-;3394:	}
-;3395:	//
-;3396:	//BotAI_Print(PRT_MESSAGE, "client %d: aiming at client %d\n", bs->entitynum, bs->enemy);
-;3397:	//
-;3398:	aim_skill = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_SKILL, 0, 1);
+line 3432
+;3428:	}
+;3429:	//
+;3430:	//BotAI_Print(PRT_MESSAGE, "client %d: aiming at client %d\n", bs->entitynum, bs->enemy);
+;3431:	//
+;3432:	aim_skill = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_SKILL, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -14900,8 +14934,8 @@ ADDRLP4 736
 ADDRLP4 984
 INDIRF4
 ASGNF4
-line 3399
-;3399:	aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY, 0, 1);
+line 3433
+;3433:	aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -14922,16 +14956,16 @@ ADDRLP4 156
 ADDRLP4 988
 INDIRF4
 ASGNF4
-line 3401
-;3400:	//
-;3401:	if (aim_skill > 0.95) {
+line 3435
+;3434:	//
+;3435:	if (aim_skill > 0.95) {
 ADDRLP4 736
 INDIRF4
 CNSTF4 1064514355
 LEF4 $1175
-line 3403
-;3402:		//don't aim too early
-;3403:		reactiontime = 0.5 * trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_REACTIONTIME, 0, 1);
+line 3437
+;3436:		//don't aim too early
+;3437:		reactiontime = 0.5 * trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_REACTIONTIME, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -14954,8 +14988,8 @@ ADDRLP4 992
 INDIRF4
 MULF4
 ASGNF4
-line 3404
-;3404:		if (bs->enemysight_time > FloatTime() - reactiontime) return;
+line 3438
+;3438:		if (bs->enemysight_time > FloatTime() - reactiontime) return;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6132
@@ -14970,8 +15004,8 @@ LEF4 $1177
 ADDRGP4 $1163
 JUMPV
 LABELV $1177
-line 3405
-;3405:		if (bs->teleport_time > FloatTime() - reactiontime) return;
+line 3439
+;3439:		if (bs->teleport_time > FloatTime() - reactiontime) return;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6180
@@ -14986,13 +15020,13 @@ LEF4 $1179
 ADDRGP4 $1163
 JUMPV
 LABELV $1179
-line 3406
-;3406:	}
+line 3440
+;3440:	}
 LABELV $1175
-line 3409
-;3407:
-;3408:	//get the weapon information
-;3409:	trap_BotGetWeaponInfo(bs->ws, bs->weaponnum, &wi);
+line 3443
+;3441:
+;3442:	//get the weapon information
+;3443:	trap_BotGetWeaponInfo(bs->ws, bs->weaponnum, &wi);
 ADDRLP4 992
 ADDRFP4 0
 INDIRP4
@@ -15014,15 +15048,15 @@ ARGP4
 ADDRGP4 trap_BotGetWeaponInfo
 CALLV
 pop
-line 3411
-;3410:	//get the weapon specific aim accuracy and or aim skill
-;3411:	if (wi.number == WP_MACHINEGUN) {
+line 3445
+;3444:	//get the weapon specific aim accuracy and or aim skill
+;3445:	if (wi.number == WP_MACHINEGUN) {
 ADDRLP4 160+4
 INDIRI4
 CNSTI4 2
 NEI4 $1181
-line 3412
-;3412:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_MACHINEGUN, 0, 1);
+line 3446
+;3446:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_MACHINEGUN, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15043,19 +15077,19 @@ ADDRLP4 156
 ADDRLP4 996
 INDIRF4
 ASGNF4
-line 3413
-;3413:	}
+line 3447
+;3447:	}
 ADDRGP4 $1182
 JUMPV
 LABELV $1181
-line 3414
-;3414:	else if (wi.number == WP_SHOTGUN) {
+line 3448
+;3448:	else if (wi.number == WP_SHOTGUN) {
 ADDRLP4 160+4
 INDIRI4
 CNSTI4 3
 NEI4 $1184
-line 3415
-;3415:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_SHOTGUN, 0, 1);
+line 3449
+;3449:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_SHOTGUN, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15076,19 +15110,19 @@ ADDRLP4 156
 ADDRLP4 996
 INDIRF4
 ASGNF4
-line 3416
-;3416:	}
+line 3450
+;3450:	}
 ADDRGP4 $1185
 JUMPV
 LABELV $1184
-line 3417
-;3417:	else if (wi.number == WP_GRENADE_LAUNCHER) {
+line 3451
+;3451:	else if (wi.number == WP_GRENADE_LAUNCHER) {
 ADDRLP4 160+4
 INDIRI4
 CNSTI4 4
 NEI4 $1187
-line 3418
-;3418:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_GRENADELAUNCHER, 0, 1);
+line 3452
+;3452:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_GRENADELAUNCHER, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15109,8 +15143,8 @@ ADDRLP4 156
 ADDRLP4 996
 INDIRF4
 ASGNF4
-line 3419
-;3419:		aim_skill = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_SKILL_GRENADELAUNCHER, 0, 1);
+line 3453
+;3453:		aim_skill = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_SKILL_GRENADELAUNCHER, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15131,19 +15165,19 @@ ADDRLP4 736
 ADDRLP4 1000
 INDIRF4
 ASGNF4
-line 3420
-;3420:	}
+line 3454
+;3454:	}
 ADDRGP4 $1188
 JUMPV
 LABELV $1187
-line 3421
-;3421:	else if (wi.number == WP_ROCKET_LAUNCHER) {
+line 3455
+;3455:	else if (wi.number == WP_ROCKET_LAUNCHER) {
 ADDRLP4 160+4
 INDIRI4
 CNSTI4 5
 NEI4 $1190
-line 3422
-;3422:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_ROCKETLAUNCHER, 0, 1);
+line 3456
+;3456:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_ROCKETLAUNCHER, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15164,8 +15198,8 @@ ADDRLP4 156
 ADDRLP4 996
 INDIRF4
 ASGNF4
-line 3423
-;3423:		aim_skill = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_SKILL_ROCKETLAUNCHER, 0, 1);
+line 3457
+;3457:		aim_skill = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_SKILL_ROCKETLAUNCHER, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15186,19 +15220,19 @@ ADDRLP4 736
 ADDRLP4 1000
 INDIRF4
 ASGNF4
-line 3424
-;3424:	}
+line 3458
+;3458:	}
 ADDRGP4 $1191
 JUMPV
 LABELV $1190
-line 3425
-;3425:	else if (wi.number == WP_LIGHTNING) {
+line 3459
+;3459:	else if (wi.number == WP_LIGHTNING) {
 ADDRLP4 160+4
 INDIRI4
 CNSTI4 6
 NEI4 $1193
-line 3426
-;3426:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_LIGHTNING, 0, 1);
+line 3460
+;3460:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_LIGHTNING, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15219,19 +15253,19 @@ ADDRLP4 156
 ADDRLP4 996
 INDIRF4
 ASGNF4
-line 3427
-;3427:	}
+line 3461
+;3461:	}
 ADDRGP4 $1194
 JUMPV
 LABELV $1193
-line 3428
-;3428:	else if (wi.number == WP_RAILGUN) {
+line 3462
+;3462:	else if (wi.number == WP_RAILGUN) {
 ADDRLP4 160+4
 INDIRI4
 CNSTI4 7
 NEI4 $1196
-line 3429
-;3429:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_RAILGUN, 0, 1);
+line 3463
+;3463:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_RAILGUN, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15252,19 +15286,19 @@ ADDRLP4 156
 ADDRLP4 996
 INDIRF4
 ASGNF4
-line 3430
-;3430:	}
+line 3464
+;3464:	}
 ADDRGP4 $1197
 JUMPV
 LABELV $1196
-line 3431
-;3431:	else if (wi.number == WP_PLASMAGUN) {
+line 3465
+;3465:	else if (wi.number == WP_PLASMAGUN) {
 ADDRLP4 160+4
 INDIRI4
 CNSTI4 8
 NEI4 $1199
-line 3432
-;3432:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_PLASMAGUN, 0, 1);
+line 3466
+;3466:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_PLASMAGUN, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15285,8 +15319,8 @@ ADDRLP4 156
 ADDRLP4 996
 INDIRF4
 ASGNF4
-line 3433
-;3433:		aim_skill = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_SKILL_PLASMAGUN, 0, 1);
+line 3467
+;3467:		aim_skill = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_SKILL_PLASMAGUN, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15307,19 +15341,19 @@ ADDRLP4 736
 ADDRLP4 1000
 INDIRF4
 ASGNF4
-line 3434
-;3434:	}
+line 3468
+;3468:	}
 ADDRGP4 $1200
 JUMPV
 LABELV $1199
-line 3435
-;3435:	else if (wi.number == WP_BFG) {
+line 3469
+;3469:	else if (wi.number == WP_BFG) {
 ADDRLP4 160+4
 INDIRI4
 CNSTI4 9
 NEI4 $1202
-line 3436
-;3436:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_BFG10K, 0, 1);
+line 3470
+;3470:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_BFG10K, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15340,8 +15374,8 @@ ADDRLP4 156
 ADDRLP4 996
 INDIRF4
 ASGNF4
-line 3437
-;3437:		aim_skill = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_SKILL_BFG10K, 0, 1);
+line 3471
+;3471:		aim_skill = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_SKILL_BFG10K, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -15362,8 +15396,8 @@ ADDRLP4 736
 ADDRLP4 1000
 INDIRF4
 ASGNF4
-line 3438
-;3438:	}
+line 3472
+;3472:	}
 LABELV $1202
 LABELV $1200
 LABELV $1197
@@ -15372,9 +15406,9 @@ LABELV $1191
 LABELV $1188
 LABELV $1185
 LABELV $1182
-line 3440
-;3439:	//
-;3440:	if (aim_accuracy <= 0) aim_accuracy = 0.0001f;
+line 3474
+;3473:	//
+;3474:	if (aim_accuracy <= 0) aim_accuracy = 0.0001f;
 ADDRLP4 156
 INDIRF4
 CNSTF4 0
@@ -15383,9 +15417,9 @@ ADDRLP4 156
 CNSTF4 953267991
 ASGNF4
 LABELV $1205
-line 3442
-;3441:	//get the enemy entity information
-;3442:	BotEntityInfo(bs->enemy, &entinfo);
+line 3476
+;3475:	//get the enemy entity information
+;3476:	BotEntityInfo(bs->enemy, &entinfo);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6540
@@ -15397,9 +15431,9 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 3444
-;3443:	//if the enemy is invisible then shoot crappy most of the time
-;3444:	if (EntityIsInvisible(&entinfo)) {
+line 3478
+;3477:	//if the enemy is invisible then shoot crappy most of the time
+;3478:	if (EntityIsInvisible(&entinfo)) {
 ADDRLP4 0
 ARGP4
 ADDRLP4 996
@@ -15410,8 +15444,8 @@ ADDRLP4 996
 INDIRI4
 CNSTI4 0
 EQI4 $1207
-line 3445
-;3445:		if (random() > 0.1) aim_accuracy *= 0.4f;
+line 3479
+;3479:		if (random() > 0.1) aim_accuracy *= 0.4f;
 ADDRLP4 1000
 ADDRGP4 rand
 CALLI4
@@ -15432,12 +15466,12 @@ INDIRF4
 MULF4
 ASGNF4
 LABELV $1209
-line 3446
-;3446:	}
+line 3480
+;3480:	}
 LABELV $1207
-line 3448
-;3447:	//
-;3448:	VectorSubtract(entinfo.origin, entinfo.lastvisorigin, enemyvelocity);
+line 3482
+;3481:	//
+;3482:	VectorSubtract(entinfo.origin, entinfo.lastvisorigin, enemyvelocity);
 ADDRLP4 712
 ADDRLP4 0+24
 INDIRF4
@@ -15459,8 +15493,8 @@ ADDRLP4 0+60+8
 INDIRF4
 SUBF4
 ASGNF4
-line 3449
-;3449:	VectorScale(enemyvelocity, 1 / entinfo.update_time, enemyvelocity);
+line 3483
+;3483:	VectorScale(enemyvelocity, 1 / entinfo.update_time, enemyvelocity);
 ADDRLP4 1000
 CNSTF4 1065353216
 ASGNF4
@@ -15493,9 +15527,9 @@ INDIRF4
 DIVF4
 MULF4
 ASGNF4
-line 3451
-;3450:	//enemy origin and velocity is remembered every 0.5 seconds
-;3451:	if (bs->enemyposition_time < FloatTime()) {
+line 3485
+;3484:	//enemy origin and velocity is remembered every 0.5 seconds
+;3485:	if (bs->enemyposition_time < FloatTime()) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6140
@@ -15504,9 +15538,9 @@ INDIRF4
 ADDRGP4 floattime
 INDIRF4
 GEF4 $1230
-line 3453
-;3452:		//
-;3453:		bs->enemyposition_time = FloatTime() + 0.5;
+line 3487
+;3486:		//
+;3487:		bs->enemyposition_time = FloatTime() + 0.5;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6140
@@ -15516,8 +15550,8 @@ INDIRF4
 CNSTF4 1056964608
 ADDF4
 ASGNF4
-line 3454
-;3454:		VectorCopy(enemyvelocity, bs->enemyvelocity);
+line 3488
+;3488:		VectorCopy(enemyvelocity, bs->enemyvelocity);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6232
@@ -15525,8 +15559,8 @@ ADDP4
 ADDRLP4 712
 INDIRB
 ASGNB 12
-line 3455
-;3455:		VectorCopy(entinfo.origin, bs->enemyorigin);
+line 3489
+;3489:		VectorCopy(entinfo.origin, bs->enemyorigin);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6244
@@ -15534,18 +15568,18 @@ ADDP4
 ADDRLP4 0+24
 INDIRB
 ASGNB 12
-line 3456
-;3456:	}
+line 3490
+;3490:	}
 LABELV $1230
-line 3458
-;3457:	//if not extremely skilled
-;3458:	if (aim_skill < 0.9) {
+line 3492
+;3491:	//if not extremely skilled
+;3492:	if (aim_skill < 0.9) {
 ADDRLP4 736
 INDIRF4
 CNSTF4 1063675494
 GEF4 $1233
-line 3459
-;3459:		VectorSubtract(entinfo.origin, bs->enemyorigin, dir);
+line 3493
+;3493:		VectorSubtract(entinfo.origin, bs->enemyorigin, dir);
 ADDRLP4 1004
 ADDRFP4 0
 INDIRP4
@@ -15580,9 +15614,9 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3461
-;3460:		//if the enemy moved a bit
-;3461:		if (VectorLengthSquared(dir) > Square(48)) {
+line 3495
+;3494:		//if the enemy moved a bit
+;3495:		if (VectorLengthSquared(dir) > Square(48)) {
 ADDRLP4 140
 ARGP4
 ADDRLP4 1008
@@ -15593,9 +15627,9 @@ ADDRLP4 1008
 INDIRF4
 CNSTF4 1158676480
 LEF4 $1242
-line 3463
-;3462:			//if the enemy changed direction
-;3463:			if (DotProduct(bs->enemyvelocity, enemyvelocity) < 0) {
+line 3497
+;3496:			//if the enemy changed direction
+;3497:			if (DotProduct(bs->enemyvelocity, enemyvelocity) < 0) {
 ADDRLP4 1012
 ADDRFP4 0
 INDIRP4
@@ -15628,27 +15662,27 @@ MULF4
 ADDF4
 CNSTF4 0
 GEF4 $1244
-line 3465
-;3464:				//aim accuracy should be worse now
-;3465:				aim_accuracy *= 0.7f;
+line 3499
+;3498:				//aim accuracy should be worse now
+;3499:				aim_accuracy *= 0.7f;
 ADDRLP4 156
 CNSTF4 1060320051
 ADDRLP4 156
 INDIRF4
 MULF4
 ASGNF4
-line 3466
-;3466:			}
+line 3500
+;3500:			}
 LABELV $1244
-line 3467
-;3467:		}
+line 3501
+;3501:		}
 LABELV $1242
-line 3468
-;3468:	}
+line 3502
+;3502:	}
 LABELV $1233
-line 3470
-;3469:	//check visibility of enemy
-;3470:	enemyvisible = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, bs->enemy);
+line 3504
+;3503:	//check visibility of enemy
+;3504:	enemyvisible = BotEntityVisible(bs->entitynum, bs->eye, bs->viewangles, 360, bs->enemy);
 ADDRLP4 1004
 ADDRFP4 0
 INDIRP4
@@ -15686,32 +15720,32 @@ ADDRLP4 1008
 INDIRF4
 CVFI4 4
 ASGNI4
-line 3472
-;3471:	//if the enemy is visible
-;3472:	if (enemyvisible) {
+line 3506
+;3505:	//if the enemy is visible
+;3506:	if (enemyvisible) {
 ADDRLP4 824
 INDIRI4
 CNSTI4 0
 EQI4 $1248
-line 3474
-;3473:		//
-;3474:		VectorCopy(entinfo.origin, bestorigin);
+line 3508
+;3507:		//
+;3508:		VectorCopy(entinfo.origin, bestorigin);
 ADDRLP4 724
 ADDRLP4 0+24
 INDIRB
 ASGNB 12
-line 3475
-;3475:		bestorigin[2] += 8;
+line 3509
+;3509:		bestorigin[2] += 8;
 ADDRLP4 724+8
 ADDRLP4 724+8
 INDIRF4
 CNSTF4 1090519040
 ADDF4
 ASGNF4
-line 3478
-;3476:		//get the start point shooting from
-;3477:		//NOTE: the x and y projectile start offsets are ignored
-;3478:		VectorCopy(bs->origin, start);
+line 3512
+;3510:		//get the start point shooting from
+;3511:		//NOTE: the x and y projectile start offsets are ignored
+;3512:		VectorCopy(bs->origin, start);
 ADDRLP4 844
 ADDRFP4 0
 INDIRP4
@@ -15719,8 +15753,8 @@ CNSTI4 4908
 ADDP4
 INDIRB
 ASGNB 12
-line 3479
-;3479:		start[2] += bs->cur_ps.viewheight;
+line 3513
+;3513:		start[2] += bs->cur_ps.viewheight;
 ADDRLP4 844+8
 ADDRLP4 844+8
 INDIRF4
@@ -15732,8 +15766,8 @@ INDIRI4
 CVIF4 4
 ADDF4
 ASGNF4
-line 3480
-;3480:		start[2] += wi.offset[2];
+line 3514
+;3514:		start[2] += wi.offset[2];
 ADDRLP4 844+8
 ADDRLP4 844+8
 INDIRF4
@@ -15741,9 +15775,9 @@ ADDRLP4 160+292+8
 INDIRF4
 ADDF4
 ASGNF4
-line 3482
-;3481:		//
-;3482:		BotAI_Trace(&trace, start, mins, maxs, bestorigin, bs->entitynum, MASK_SHOT);
+line 3516
+;3515:		//
+;3516:		BotAI_Trace(&trace, start, mins, maxs, bestorigin, bs->entitynum, MASK_SHOT);
 ADDRLP4 740
 ARGP4
 ADDRLP4 844
@@ -15765,9 +15799,9 @@ ARGI4
 ADDRGP4 BotAI_Trace
 CALLV
 pop
-line 3484
-;3483:		//if the enemy is NOT hit
-;3484:		if (trace.fraction <= 1 && trace.ent != entinfo.number) {
+line 3518
+;3517:		//if the enemy is NOT hit
+;3518:		if (trace.fraction <= 1 && trace.ent != entinfo.number) {
 ADDRLP4 740+8
 INDIRF4
 CNSTF4 1065353216
@@ -15777,27 +15811,27 @@ INDIRI4
 ADDRLP4 0+20
 INDIRI4
 EQI4 $1256
-line 3485
-;3485:			bestorigin[2] += 16;
+line 3519
+;3519:			bestorigin[2] += 16;
 ADDRLP4 724+8
 ADDRLP4 724+8
 INDIRF4
 CNSTF4 1098907648
 ADDF4
 ASGNF4
-line 3486
-;3486:		}
+line 3520
+;3520:		}
 LABELV $1256
-line 3488
-;3487:		//if it is not an instant hit weapon the bot might want to predict the enemy
-;3488:		if (wi.speed) {
+line 3522
+;3521:		//if it is not an instant hit weapon the bot might want to predict the enemy
+;3522:		if (wi.speed) {
 ADDRLP4 160+272
 INDIRF4
 CNSTF4 0
 EQF4 $1262
-line 3490
-;3489:			//
-;3490:			VectorSubtract(bestorigin, bs->origin, dir);
+line 3524
+;3523:			//
+;3524:			VectorSubtract(bestorigin, bs->origin, dir);
 ADDRLP4 1012
 ADDRFP4 0
 INDIRP4
@@ -15832,8 +15866,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3491
-;3491:			dist = VectorLength(dir);
+line 3525
+;3525:			dist = VectorLength(dir);
 ADDRLP4 140
 ARGP4
 ADDRLP4 1016
@@ -15844,8 +15878,8 @@ ADDRLP4 840
 ADDRLP4 1016
 INDIRF4
 ASGNF4
-line 3492
-;3492:			VectorSubtract(entinfo.origin, bs->enemyorigin, dir);
+line 3526
+;3526:			VectorSubtract(entinfo.origin, bs->enemyorigin, dir);
 ADDRLP4 1020
 ADDRFP4 0
 INDIRP4
@@ -15880,9 +15914,9 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3494
-;3493:			//if the enemy is NOT pretty far away and strafing just small steps left and right
-;3494:			if (!(dist > 100 && VectorLengthSquared(dir) < Square(32))) {
+line 3528
+;3527:			//if the enemy is NOT pretty far away and strafing just small steps left and right
+;3528:			if (!(dist > 100 && VectorLengthSquared(dir) < Square(32))) {
 ADDRLP4 840
 INDIRF4
 CNSTF4 1120403456
@@ -15898,9 +15932,9 @@ INDIRF4
 CNSTF4 1149239296
 LTF4 $1276
 LABELV $1278
-line 3496
-;3495:				//if skilled anough do exact prediction
-;3496:				if (aim_skill > 0.8 &&
+line 3530
+;3529:				//if skilled anough do exact prediction
+;3530:				if (aim_skill > 0.8 &&
 ADDRLP4 736
 INDIRF4
 CNSTF4 1061997773
@@ -15912,14 +15946,14 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $1279
-line 3498
-;3497:						//if the weapon is ready to fire
-;3498:						bs->cur_ps.weaponstate == WEAPON_READY) {
-line 3502
-;3499:					aas_clientmove_t move;
-;3500:					vec3_t origin;
-;3501:
-;3502:					VectorSubtract(entinfo.origin, bs->origin, dir);
+line 3532
+;3531:						//if the weapon is ready to fire
+;3532:						bs->cur_ps.weaponstate == WEAPON_READY) {
+line 3536
+;3533:					aas_clientmove_t move;
+;3534:					vec3_t origin;
+;3535:
+;3536:					VectorSubtract(entinfo.origin, bs->origin, dir);
 ADDRLP4 1124
 ADDRFP4 0
 INDIRP4
@@ -15954,9 +15988,9 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3504
-;3503:					//distance towards the enemy
-;3504:					dist = VectorLength(dir);
+line 3538
+;3537:					//distance towards the enemy
+;3538:					dist = VectorLength(dir);
 ADDRLP4 140
 ARGP4
 ADDRLP4 1128
@@ -15967,9 +16001,9 @@ ADDRLP4 840
 ADDRLP4 1128
 INDIRF4
 ASGNF4
-line 3506
-;3505:					//direction the enemy is moving in
-;3506:					VectorSubtract(entinfo.origin, entinfo.lastvisorigin, dir);
+line 3540
+;3539:					//direction the enemy is moving in
+;3540:					VectorSubtract(entinfo.origin, entinfo.lastvisorigin, dir);
 ADDRLP4 140
 ADDRLP4 0+24
 INDIRF4
@@ -15991,9 +16025,9 @@ ADDRLP4 0+60+8
 INDIRF4
 SUBF4
 ASGNF4
-line 3508
-;3507:					//
-;3508:					VectorScale(dir, 1 / entinfo.update_time, dir);
+line 3542
+;3541:					//
+;3542:					VectorScale(dir, 1 / entinfo.update_time, dir);
 ADDRLP4 1132
 CNSTF4 1065353216
 ASGNF4
@@ -16026,24 +16060,24 @@ INDIRF4
 DIVF4
 MULF4
 ASGNF4
-line 3510
-;3509:					//
-;3510:					VectorCopy(entinfo.origin, origin);
+line 3544
+;3543:					//
+;3544:					VectorCopy(entinfo.origin, origin);
 ADDRLP4 1028
 ADDRLP4 0+24
 INDIRB
 ASGNB 12
-line 3511
-;3511:					origin[2] += 1;
+line 3545
+;3545:					origin[2] += 1;
 ADDRLP4 1028+8
 ADDRLP4 1028+8
 INDIRF4
 CNSTF4 1065353216
 ADDF4
 ASGNF4
-line 3513
-;3512:					//
-;3513:					VectorClear(cmdmove);
+line 3547
+;3546:					//
+;3547:					VectorClear(cmdmove);
 ADDRLP4 1136
 CNSTF4 0
 ASGNF4
@@ -16059,9 +16093,9 @@ ADDRLP4 968
 ADDRLP4 1136
 INDIRF4
 ASGNF4
-line 3515
-;3514:					//AAS_ClearShownDebugLines();
-;3515:					trap_AAS_PredictClientMovement(&move, bs->enemy, origin,
+line 3549
+;3548:					//AAS_ClearShownDebugLines();
+;3549:					trap_AAS_PredictClientMovement(&move, bs->enemy, origin,
 ADDRLP4 1040
 ARGP4
 ADDRFP4 0
@@ -16110,30 +16144,30 @@ ARGI4
 ADDRGP4 trap_AAS_PredictClientMovement
 CALLI4
 pop
-line 3519
-;3516:														PRESENCE_CROUCH, qfalse,
-;3517:														dir, cmdmove, 0,
-;3518:														dist * 10 / wi.speed, 0.1f, 0, 0, qfalse);
-;3519:					VectorCopy(move.endpos, bestorigin);
+line 3553
+;3550:														PRESENCE_CROUCH, qfalse,
+;3551:														dir, cmdmove, 0,
+;3552:														dist * 10 / wi.speed, 0.1f, 0, 0, qfalse);
+;3553:					VectorCopy(move.endpos, bestorigin);
 ADDRLP4 724
 ADDRLP4 1040
 INDIRB
 ASGNB 12
-line 3521
-;3520:					//BotAI_Print(PRT_MESSAGE, "%1.1f predicted speed = %f, frames = %f\n", FloatTime(), VectorLength(dir), dist * 10 / wi.speed);
-;3521:				}
+line 3555
+;3554:					//BotAI_Print(PRT_MESSAGE, "%1.1f predicted speed = %f, frames = %f\n", FloatTime(), VectorLength(dir), dist * 10 / wi.speed);
+;3555:				}
 ADDRGP4 $1280
 JUMPV
 LABELV $1279
-line 3523
-;3522:				//if not that skilled do linear prediction
-;3523:				else if (aim_skill > 0.4) {
+line 3557
+;3556:				//if not that skilled do linear prediction
+;3557:				else if (aim_skill > 0.4) {
 ADDRLP4 736
 INDIRF4
 CNSTF4 1053609165
 LEF4 $1312
-line 3524
-;3524:					VectorSubtract(entinfo.origin, bs->origin, dir);
+line 3558
+;3558:					VectorSubtract(entinfo.origin, bs->origin, dir);
 ADDRLP4 1028
 ADDRFP4 0
 INDIRP4
@@ -16168,9 +16202,9 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3526
-;3525:					//distance towards the enemy
-;3526:					dist = VectorLength(dir);
+line 3560
+;3559:					//distance towards the enemy
+;3560:					dist = VectorLength(dir);
 ADDRLP4 140
 ARGP4
 ADDRLP4 1032
@@ -16181,9 +16215,9 @@ ADDRLP4 840
 ADDRLP4 1032
 INDIRF4
 ASGNF4
-line 3528
-;3527:					//direction the enemy is moving in
-;3528:					VectorSubtract(entinfo.origin, entinfo.lastvisorigin, dir);
+line 3562
+;3561:					//direction the enemy is moving in
+;3562:					VectorSubtract(entinfo.origin, entinfo.lastvisorigin, dir);
 ADDRLP4 140
 ADDRLP4 0+24
 INDIRF4
@@ -16205,14 +16239,14 @@ ADDRLP4 0+60+8
 INDIRF4
 SUBF4
 ASGNF4
-line 3529
-;3529:					dir[2] = 0;
+line 3563
+;3563:					dir[2] = 0;
 ADDRLP4 140+8
 CNSTF4 0
 ASGNF4
-line 3531
-;3530:					//
-;3531:					speed = VectorNormalize(dir) / entinfo.update_time;
+line 3565
+;3564:					//
+;3565:					speed = VectorNormalize(dir) / entinfo.update_time;
 ADDRLP4 140
 ARGP4
 ADDRLP4 1036
@@ -16226,10 +16260,10 @@ ADDRLP4 0+16
 INDIRF4
 DIVF4
 ASGNF4
-line 3534
-;3532:					//botimport.Print(PRT_MESSAGE, "speed = %f, wi->speed = %f\n", speed, wi->speed);
-;3533:					//best spot to aim at
-;3534:					VectorMA(entinfo.origin, (dist / wi.speed) * speed, dir, bestorigin);
+line 3568
+;3566:					//botimport.Print(PRT_MESSAGE, "speed = %f, wi->speed = %f\n", speed, wi->speed);
+;3567:					//best spot to aim at
+;3568:					VectorMA(entinfo.origin, (dist / wi.speed) * speed, dir, bestorigin);
 ADDRLP4 1040
 ADDRLP4 840
 INDIRF4
@@ -16286,19 +16320,19 @@ MULF4
 MULF4
 ADDF4
 ASGNF4
-line 3535
-;3535:				}
+line 3569
+;3569:				}
 LABELV $1312
 LABELV $1280
-line 3536
-;3536:			}
+line 3570
+;3570:			}
 LABELV $1276
-line 3537
-;3537:		}
+line 3571
+;3571:		}
 LABELV $1262
-line 3539
-;3538:		//if the projectile does radial damage
-;3539:		if (aim_skill > 0.6 && wi.proj.damagetype & DAMAGETYPE_RADIAL) {
+line 3573
+;3572:		//if the projectile does radial damage
+;3573:		if (aim_skill > 0.6 && wi.proj.damagetype & DAMAGETYPE_RADIAL) {
 ADDRLP4 736
 INDIRF4
 CNSTF4 1058642330
@@ -16309,9 +16343,9 @@ CNSTI4 2
 BANDI4
 CNSTI4 0
 EQI4 $1347
-line 3541
-;3540:			//if the enemy isn't standing significantly higher than the bot
-;3541:			if (entinfo.origin[2] < bs->origin[2] + 16) {
+line 3575
+;3574:			//if the enemy isn't standing significantly higher than the bot
+;3575:			if (entinfo.origin[2] < bs->origin[2] + 16) {
 ADDRLP4 0+24+8
 INDIRF4
 ADDRFP4 0
@@ -16322,23 +16356,23 @@ INDIRF4
 CNSTF4 1098907648
 ADDF4
 GEF4 $1351
-line 3543
-;3542:				//try to aim at the ground in front of the enemy
-;3543:				VectorCopy(entinfo.origin, end);
+line 3577
+;3576:				//try to aim at the ground in front of the enemy
+;3577:				VectorCopy(entinfo.origin, end);
 ADDRLP4 956
 ADDRLP4 0+24
 INDIRB
 ASGNB 12
-line 3544
-;3544:				end[2] -= 64;
+line 3578
+;3578:				end[2] -= 64;
 ADDRLP4 956+8
 ADDRLP4 956+8
 INDIRF4
 CNSTF4 1115684864
 SUBF4
 ASGNF4
-line 3545
-;3545:				BotAI_Trace(&trace, entinfo.origin, NULL, NULL, end, entinfo.number, MASK_SHOT);
+line 3579
+;3579:				BotAI_Trace(&trace, entinfo.origin, NULL, NULL, end, entinfo.number, MASK_SHOT);
 ADDRLP4 740
 ARGP4
 ADDRLP4 0+24
@@ -16362,15 +16396,15 @@ ARGI4
 ADDRGP4 BotAI_Trace
 CALLV
 pop
-line 3547
-;3546:				//
-;3547:				VectorCopy(bestorigin, groundtarget);
+line 3581
+;3580:				//
+;3581:				VectorCopy(bestorigin, groundtarget);
 ADDRLP4 944
 ADDRLP4 724
 INDIRB
 ASGNB 12
-line 3548
-;3548:				if (trace.startsolid) groundtarget[2] = entinfo.origin[2] - 16;
+line 3582
+;3582:				if (trace.startsolid) groundtarget[2] = entinfo.origin[2] - 16;
 ADDRLP4 740+4
 INDIRI4
 CNSTI4 0
@@ -16384,8 +16418,8 @@ ASGNF4
 ADDRGP4 $1360
 JUMPV
 LABELV $1359
-line 3549
-;3549:				else groundtarget[2] = trace.endpos[2] - 8;
+line 3583
+;3583:				else groundtarget[2] = trace.endpos[2] - 8;
 ADDRLP4 944+8
 ADDRLP4 740+12+8
 INDIRF4
@@ -16393,9 +16427,9 @@ CNSTF4 1090519040
 SUBF4
 ASGNF4
 LABELV $1360
-line 3551
-;3550:				//trace a line from projectile start to ground target
-;3551:				BotAI_Trace(&trace, start, NULL, NULL, groundtarget, bs->entitynum, MASK_SHOT);
+line 3585
+;3584:				//trace a line from projectile start to ground target
+;3585:				BotAI_Trace(&trace, start, NULL, NULL, groundtarget, bs->entitynum, MASK_SHOT);
 ADDRLP4 740
 ARGP4
 ADDRLP4 844
@@ -16422,9 +16456,9 @@ ARGI4
 ADDRGP4 BotAI_Trace
 CALLV
 pop
-line 3553
-;3552:				//if hitpoint is not vertically too far from the ground target
-;3553:				if (fabs(trace.endpos[2] - groundtarget[2]) < 50) {
+line 3587
+;3586:				//if hitpoint is not vertically too far from the ground target
+;3587:				if (fabs(trace.endpos[2] - groundtarget[2]) < 50) {
 ADDRLP4 740+12+8
 INDIRF4
 ADDRLP4 944+8
@@ -16439,8 +16473,8 @@ ADDRLP4 1020
 INDIRF4
 CNSTF4 1112014848
 GEF4 $1368
-line 3554
-;3554:					VectorSubtract(trace.endpos, groundtarget, dir);
+line 3588
+;3588:					VectorSubtract(trace.endpos, groundtarget, dir);
 ADDRLP4 140
 ADDRLP4 740+12
 INDIRF4
@@ -16462,9 +16496,9 @@ ADDRLP4 944+8
 INDIRF4
 SUBF4
 ASGNF4
-line 3556
-;3555:					//if the hitpoint is near anough the ground target
-;3556:					if (VectorLengthSquared(dir) < Square(60)) {
+line 3590
+;3589:					//if the hitpoint is near anough the ground target
+;3590:					if (VectorLengthSquared(dir) < Square(60)) {
 ADDRLP4 140
 ARGP4
 ADDRLP4 1024
@@ -16475,8 +16509,8 @@ ADDRLP4 1024
 INDIRF4
 CNSTF4 1163984896
 GEF4 $1382
-line 3557
-;3557:						VectorSubtract(trace.endpos, start, dir);
+line 3591
+;3591:						VectorSubtract(trace.endpos, start, dir);
 ADDRLP4 140
 ADDRLP4 740+12
 INDIRF4
@@ -16498,9 +16532,9 @@ ADDRLP4 844+8
 INDIRF4
 SUBF4
 ASGNF4
-line 3559
-;3558:						//if the hitpoint is far anough from the bot
-;3559:						if (VectorLengthSquared(dir) > Square(100)) {
+line 3593
+;3592:						//if the hitpoint is far anough from the bot
+;3593:						if (VectorLengthSquared(dir) > Square(100)) {
 ADDRLP4 140
 ARGP4
 ADDRLP4 1028
@@ -16511,17 +16545,17 @@ ADDRLP4 1028
 INDIRF4
 CNSTF4 1176256512
 LEF4 $1393
-line 3561
-;3560:							//check if the bot is visible from the ground target
-;3561:							trace.endpos[2] += 1;
+line 3595
+;3594:							//check if the bot is visible from the ground target
+;3595:							trace.endpos[2] += 1;
 ADDRLP4 740+12+8
 ADDRLP4 740+12+8
 INDIRF4
 CNSTF4 1065353216
 ADDF4
 ASGNF4
-line 3562
-;3562:							BotAI_Trace(&trace, trace.endpos, NULL, NULL, entinfo.origin, entinfo.number, MASK_SHOT);
+line 3596
+;3596:							BotAI_Trace(&trace, trace.endpos, NULL, NULL, entinfo.origin, entinfo.number, MASK_SHOT);
 ADDRLP4 740
 ARGP4
 ADDRLP4 740+12
@@ -16545,39 +16579,39 @@ ARGI4
 ADDRGP4 BotAI_Trace
 CALLV
 pop
-line 3563
-;3563:							if (trace.fraction >= 1) {
+line 3597
+;3597:							if (trace.fraction >= 1) {
 ADDRLP4 740+8
 INDIRF4
 CNSTF4 1065353216
 LTF4 $1400
-line 3565
-;3564:								//botimport.Print(PRT_MESSAGE, "%1.1f aiming at ground\n", AAS_Time());
-;3565:								VectorCopy(groundtarget, bestorigin);
+line 3599
+;3598:								//botimport.Print(PRT_MESSAGE, "%1.1f aiming at ground\n", AAS_Time());
+;3599:								VectorCopy(groundtarget, bestorigin);
 ADDRLP4 724
 ADDRLP4 944
 INDIRB
 ASGNB 12
-line 3566
-;3566:							}
+line 3600
+;3600:							}
 LABELV $1400
-line 3567
-;3567:						}
+line 3601
+;3601:						}
 LABELV $1393
-line 3568
-;3568:					}
+line 3602
+;3602:					}
 LABELV $1382
-line 3569
-;3569:				}
+line 3603
+;3603:				}
 LABELV $1368
-line 3570
-;3570:			}
+line 3604
+;3604:			}
 LABELV $1351
-line 3571
-;3571:		}
+line 3605
+;3605:		}
 LABELV $1347
-line 3572
-;3572:		bestorigin[0] += 20 * crandom() * (1 - aim_accuracy);
+line 3606
+;3606:		bestorigin[0] += 20 * crandom() * (1 - aim_accuracy);
 ADDRLP4 1012
 ADDRGP4 rand
 CALLI4
@@ -16605,8 +16639,8 @@ SUBF4
 MULF4
 ADDF4
 ASGNF4
-line 3573
-;3573:		bestorigin[1] += 20 * crandom() * (1 - aim_accuracy);
+line 3607
+;3607:		bestorigin[1] += 20 * crandom() * (1 - aim_accuracy);
 ADDRLP4 1016
 ADDRGP4 rand
 CALLI4
@@ -16634,8 +16668,8 @@ SUBF4
 MULF4
 ADDF4
 ASGNF4
-line 3574
-;3574:		bestorigin[2] += 10 * crandom() * (1 - aim_accuracy);
+line 3608
+;3608:		bestorigin[2] += 10 * crandom() * (1 - aim_accuracy);
 ADDRLP4 1020
 ADDRGP4 rand
 CALLI4
@@ -16663,16 +16697,16 @@ SUBF4
 MULF4
 ADDF4
 ASGNF4
-line 3575
-;3575:	}
+line 3609
+;3609:	}
 ADDRGP4 $1249
 JUMPV
 LABELV $1248
-line 3576
-;3576:	else {
-line 3578
-;3577:		//
-;3578:		VectorCopy(bs->lastenemyorigin, bestorigin);
+line 3610
+;3610:	else {
+line 3612
+;3611:		//
+;3612:		VectorCopy(bs->lastenemyorigin, bestorigin);
 ADDRLP4 724
 ADDRFP4 0
 INDIRP4
@@ -16680,24 +16714,24 @@ CNSTI4 6548
 ADDP4
 INDIRB
 ASGNB 12
-line 3579
-;3579:		bestorigin[2] += 8;
+line 3613
+;3613:		bestorigin[2] += 8;
 ADDRLP4 724+8
 ADDRLP4 724+8
 INDIRF4
 CNSTF4 1090519040
 ADDF4
 ASGNF4
-line 3581
-;3580:		//if the bot is skilled anough
-;3581:		if (aim_skill > 0.5) {
+line 3615
+;3614:		//if the bot is skilled anough
+;3615:		if (aim_skill > 0.5) {
 ADDRLP4 736
 INDIRF4
 CNSTF4 1056964608
 LEF4 $1406
-line 3583
-;3582:			//do prediction shots around corners
-;3583:			if (wi.number == WP_BFG ||
+line 3617
+;3616:			//do prediction shots around corners
+;3617:			if (wi.number == WP_BFG ||
 ADDRLP4 160+4
 INDIRI4
 CNSTI4 9
@@ -16711,12 +16745,12 @@ INDIRI4
 CNSTI4 4
 NEI4 $1408
 LABELV $1414
-line 3585
-;3584:				wi.number == WP_ROCKET_LAUNCHER ||
-;3585:				wi.number == WP_GRENADE_LAUNCHER) {
-line 3587
-;3586:				//create the chase goal
-;3587:				goal.entitynum = bs->client;
+line 3619
+;3618:				wi.number == WP_ROCKET_LAUNCHER ||
+;3619:				wi.number == WP_GRENADE_LAUNCHER) {
+line 3621
+;3620:				//create the chase goal
+;3621:				goal.entitynum = bs->client;
 ADDRLP4 884+40
 ADDRFP4 0
 INDIRP4
@@ -16724,8 +16758,8 @@ CNSTI4 8
 ADDP4
 INDIRI4
 ASGNI4
-line 3588
-;3588:				goal.areanum = bs->areanum;
+line 3622
+;3622:				goal.areanum = bs->areanum;
 ADDRLP4 884+12
 ADDRFP4 0
 INDIRP4
@@ -16733,8 +16767,8 @@ CNSTI4 4948
 ADDP4
 INDIRI4
 ASGNI4
-line 3589
-;3589:				VectorCopy(bs->eye, goal.origin);
+line 3623
+;3623:				VectorCopy(bs->eye, goal.origin);
 ADDRLP4 884
 ADDRFP4 0
 INDIRP4
@@ -16742,8 +16776,8 @@ CNSTI4 4936
 ADDP4
 INDIRB
 ASGNB 12
-line 3590
-;3590:				VectorSet(goal.mins, -8, -8, -8);
+line 3624
+;3624:				VectorSet(goal.mins, -8, -8, -8);
 ADDRLP4 884+16
 CNSTF4 3238002688
 ASGNF4
@@ -16753,8 +16787,8 @@ ASGNF4
 ADDRLP4 884+16+8
 CNSTF4 3238002688
 ASGNF4
-line 3591
-;3591:				VectorSet(goal.maxs, 8, 8, 8);
+line 3625
+;3625:				VectorSet(goal.maxs, 8, 8, 8);
 ADDRLP4 884+28
 CNSTF4 1090519040
 ASGNF4
@@ -16764,9 +16798,9 @@ ASGNF4
 ADDRLP4 884+28+8
 CNSTF4 1090519040
 ASGNF4
-line 3593
-;3592:				//
-;3593:				if (trap_BotPredictVisiblePosition(bs->lastenemyorigin, bs->lastenemyareanum, &goal, TFL_DEFAULT, target)) {
+line 3627
+;3626:				//
+;3627:				if (trap_BotPredictVisiblePosition(bs->lastenemyorigin, bs->lastenemyareanum, &goal, TFL_DEFAULT, target)) {
 ADDRLP4 1012
 ADDRFP4 0
 INDIRP4
@@ -16796,8 +16830,8 @@ ADDRLP4 1016
 INDIRI4
 CNSTI4 0
 EQI4 $1427
-line 3594
-;3594:					VectorSubtract(target, bs->eye, dir);
+line 3628
+;3628:					VectorSubtract(target, bs->eye, dir);
 ADDRLP4 1020
 ADDRFP4 0
 INDIRP4
@@ -16832,8 +16866,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3595
-;3595:					if (VectorLengthSquared(dir) > Square(80)) {
+line 3629
+;3629:					if (VectorLengthSquared(dir) > Square(80)) {
 ADDRLP4 140
 ARGP4
 ADDRLP4 1024
@@ -16844,49 +16878,49 @@ ADDRLP4 1024
 INDIRF4
 CNSTF4 1170735104
 LEF4 $1433
-line 3596
-;3596:						VectorCopy(target, bestorigin);
+line 3630
+;3630:						VectorCopy(target, bestorigin);
 ADDRLP4 724
 ADDRLP4 828
 INDIRB
 ASGNB 12
-line 3597
-;3597:						bestorigin[2] -= 20;
+line 3631
+;3631:						bestorigin[2] -= 20;
 ADDRLP4 724+8
 ADDRLP4 724+8
 INDIRF4
 CNSTF4 1101004800
 SUBF4
 ASGNF4
-line 3598
-;3598:					}
+line 3632
+;3632:					}
 LABELV $1433
-line 3599
-;3599:				}
+line 3633
+;3633:				}
 LABELV $1427
-line 3600
-;3600:				aim_accuracy = 1;
+line 3634
+;3634:				aim_accuracy = 1;
 ADDRLP4 156
 CNSTF4 1065353216
 ASGNF4
-line 3601
-;3601:			}
+line 3635
+;3635:			}
 LABELV $1408
-line 3602
-;3602:		}
+line 3636
+;3636:		}
 LABELV $1406
-line 3603
-;3603:	}
+line 3637
+;3637:	}
 LABELV $1249
-line 3605
-;3604:	//
-;3605:	if (enemyvisible) {
+line 3639
+;3638:	//
+;3639:	if (enemyvisible) {
 ADDRLP4 824
 INDIRI4
 CNSTI4 0
 EQI4 $1436
-line 3606
-;3606:		BotAI_Trace(&trace, bs->eye, NULL, NULL, bestorigin, bs->entitynum, MASK_SHOT);
+line 3640
+;3640:		BotAI_Trace(&trace, bs->eye, NULL, NULL, bestorigin, bs->entitynum, MASK_SHOT);
 ADDRLP4 740
 ARGP4
 ADDRLP4 1012
@@ -16920,8 +16954,8 @@ ARGI4
 ADDRGP4 BotAI_Trace
 CALLV
 pop
-line 3607
-;3607:		VectorCopy(trace.endpos, bs->aimtarget);
+line 3641
+;3641:		VectorCopy(trace.endpos, bs->aimtarget);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6220
@@ -16929,15 +16963,15 @@ ADDP4
 ADDRLP4 740+12
 INDIRB
 ASGNB 12
-line 3608
-;3608:	}
+line 3642
+;3642:	}
 ADDRGP4 $1437
 JUMPV
 LABELV $1436
-line 3609
-;3609:	else {
-line 3610
-;3610:		VectorCopy(bestorigin, bs->aimtarget);
+line 3643
+;3643:	else {
+line 3644
+;3644:		VectorCopy(bestorigin, bs->aimtarget);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6220
@@ -16945,12 +16979,12 @@ ADDP4
 ADDRLP4 724
 INDIRB
 ASGNB 12
-line 3611
-;3611:	}
+line 3645
+;3645:	}
 LABELV $1437
-line 3613
-;3612:	//get aim direction
-;3613:	VectorSubtract(bestorigin, bs->eye, dir);
+line 3647
+;3646:	//get aim direction
+;3647:	VectorSubtract(bestorigin, bs->eye, dir);
 ADDRLP4 1012
 ADDRFP4 0
 INDIRP4
@@ -16985,9 +17019,9 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3615
-;3614:	//
-;3615:	if (wi.number == WP_MACHINEGUN ||
+line 3649
+;3648:	//
+;3649:	if (wi.number == WP_MACHINEGUN ||
 ADDRLP4 160+4
 INDIRI4
 CNSTI4 2
@@ -17005,13 +17039,13 @@ INDIRI4
 CNSTI4 7
 NEI4 $1443
 LABELV $1451
-line 3618
-;3616:		wi.number == WP_SHOTGUN ||
-;3617:		wi.number == WP_LIGHTNING ||
-;3618:		wi.number == WP_RAILGUN) {
-line 3620
-;3619:		//distance towards the enemy
-;3620:		dist = VectorLength(dir);
+line 3652
+;3650:		wi.number == WP_SHOTGUN ||
+;3651:		wi.number == WP_LIGHTNING ||
+;3652:		wi.number == WP_RAILGUN) {
+line 3654
+;3653:		//distance towards the enemy
+;3654:		dist = VectorLength(dir);
 ADDRLP4 140
 ARGP4
 ADDRLP4 1016
@@ -17022,8 +17056,8 @@ ADDRLP4 840
 ADDRLP4 1016
 INDIRF4
 ASGNF4
-line 3621
-;3621:		if (dist > 150) dist = 150;
+line 3655
+;3655:		if (dist > 150) dist = 150;
 ADDRLP4 840
 INDIRF4
 CNSTF4 1125515264
@@ -17032,8 +17066,8 @@ ADDRLP4 840
 CNSTF4 1125515264
 ASGNF4
 LABELV $1452
-line 3622
-;3622:		f = 0.6 + dist / 150 * 0.4;
+line 3656
+;3656:		f = 0.6 + dist / 150 * 0.4;
 ADDRLP4 940
 CNSTF4 1053609165
 ADDRLP4 840
@@ -17044,8 +17078,8 @@ MULF4
 CNSTF4 1058642330
 ADDF4
 ASGNF4
-line 3623
-;3623:		aim_accuracy *= f;
+line 3657
+;3657:		aim_accuracy *= f;
 ADDRLP4 156
 ADDRLP4 156
 INDIRF4
@@ -17053,25 +17087,25 @@ ADDRLP4 940
 INDIRF4
 MULF4
 ASGNF4
-line 3624
-;3624:	}
+line 3658
+;3658:	}
 LABELV $1443
-line 3626
-;3625:	//add some random stuff to the aim direction depending on the aim accuracy
-;3626:	if (aim_accuracy < 0.8) {
+line 3660
+;3659:	//add some random stuff to the aim direction depending on the aim accuracy
+;3660:	if (aim_accuracy < 0.8) {
 ADDRLP4 156
 INDIRF4
 CNSTF4 1061997773
 GEF4 $1454
-line 3627
-;3627:		VectorNormalize(dir);
+line 3661
+;3661:		VectorNormalize(dir);
 ADDRLP4 140
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 3628
-;3628:		for (i = 0; i < 3; i++) dir[i] += 0.3 * crandom() * (1 - aim_accuracy);
+line 3662
+;3662:		for (i = 0; i < 3; i++) dir[i] += 0.3 * crandom() * (1 - aim_accuracy);
 ADDRLP4 152
 CNSTI4 0
 ASGNI4
@@ -17124,12 +17158,12 @@ ADDRLP4 152
 INDIRI4
 CNSTI4 3
 LTI4 $1456
-line 3629
-;3629:	}
+line 3663
+;3663:	}
 LABELV $1454
-line 3631
-;3630:	//set the ideal view angles
-;3631:	vectoangles(dir, bs->ideal_viewangles);
+line 3665
+;3664:	//set the ideal view angles
+;3665:	vectoangles(dir, bs->ideal_viewangles);
 ADDRLP4 140
 ARGP4
 ADDRFP4 0
@@ -17140,9 +17174,9 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 3633
-;3632:	//take the weapon spread into account for lower skilled bots
-;3633:	bs->ideal_viewangles[PITCH] += 6 * wi.vspread * crandom() * (1 - aim_accuracy);
+line 3667
+;3666:	//take the weapon spread into account for lower skilled bots
+;3667:	bs->ideal_viewangles[PITCH] += 6 * wi.vspread * crandom() * (1 - aim_accuracy);
 ADDRLP4 1016
 ADDRGP4 rand
 CALLI4
@@ -17181,8 +17215,8 @@ SUBF4
 MULF4
 ADDF4
 ASGNF4
-line 3634
-;3634:	bs->ideal_viewangles[PITCH] = AngleMod(bs->ideal_viewangles[PITCH]);
+line 3668
+;3668:	bs->ideal_viewangles[PITCH] = AngleMod(bs->ideal_viewangles[PITCH]);
 ADDRLP4 1024
 ADDRFP4 0
 INDIRP4
@@ -17202,8 +17236,8 @@ INDIRP4
 ADDRLP4 1028
 INDIRF4
 ASGNF4
-line 3635
-;3635:	bs->ideal_viewangles[YAW] += 6 * wi.hspread * crandom() * (1 - aim_accuracy);
+line 3669
+;3669:	bs->ideal_viewangles[YAW] += 6 * wi.hspread * crandom() * (1 - aim_accuracy);
 ADDRLP4 1032
 ADDRGP4 rand
 CALLI4
@@ -17242,8 +17276,8 @@ SUBF4
 MULF4
 ADDF4
 ASGNF4
-line 3636
-;3636:	bs->ideal_viewangles[YAW] = AngleMod(bs->ideal_viewangles[YAW]);
+line 3670
+;3670:	bs->ideal_viewangles[YAW] = AngleMod(bs->ideal_viewangles[YAW]);
 ADDRLP4 1040
 ADDRFP4 0
 INDIRP4
@@ -17263,16 +17297,16 @@ INDIRP4
 ADDRLP4 1044
 INDIRF4
 ASGNF4
-line 3638
-;3637:	//if the bots should be really challenging
-;3638:	if (bot_challenge.integer) {
+line 3672
+;3671:	//if the bots should be really challenging
+;3672:	if (bot_challenge.integer) {
 ADDRGP4 bot_challenge+12
 INDIRI4
 CNSTI4 0
 EQI4 $1462
-line 3640
-;3639:		//if the bot is really accurate and has the enemy in view for some time
-;3640:		if (aim_accuracy > 0.9 && bs->enemysight_time < FloatTime() - 1) {
+line 3674
+;3673:		//if the bot is really accurate and has the enemy in view for some time
+;3674:		if (aim_accuracy > 0.9 && bs->enemysight_time < FloatTime() - 1) {
 ADDRLP4 156
 INDIRF4
 CNSTF4 1063675494
@@ -17287,9 +17321,9 @@ INDIRF4
 CNSTF4 1065353216
 SUBF4
 GEF4 $1465
-line 3642
-;3641:			//set the view angles directly
-;3642:			if (bs->ideal_viewangles[PITCH] > 180) bs->ideal_viewangles[PITCH] -= 360;
+line 3676
+;3675:			//set the view angles directly
+;3676:			if (bs->ideal_viewangles[PITCH] > 180) bs->ideal_viewangles[PITCH] -= 360;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6576
@@ -17312,8 +17346,8 @@ CNSTF4 1135869952
 SUBF4
 ASGNF4
 LABELV $1467
-line 3643
-;3643:			VectorCopy(bs->ideal_viewangles, bs->viewangles);
+line 3677
+;3677:			VectorCopy(bs->ideal_viewangles, bs->viewangles);
 ADDRLP4 1052
 ADDRFP4 0
 INDIRP4
@@ -17328,8 +17362,8 @@ CNSTI4 6576
 ADDP4
 INDIRB
 ASGNB 12
-line 3644
-;3644:			trap_EA_View(bs->client, bs->viewangles);
+line 3678
+;3678:			trap_EA_View(bs->client, bs->viewangles);
 ADDRLP4 1056
 ADDRFP4 0
 INDIRP4
@@ -17348,14 +17382,14 @@ ARGP4
 ADDRGP4 trap_EA_View
 CALLV
 pop
-line 3645
-;3645:		}
+line 3679
+;3679:		}
 LABELV $1465
-line 3646
-;3646:	}
+line 3680
+;3680:	}
 LABELV $1462
-line 3647
-;3647:}
+line 3681
+;3681:}
 LABELV $1163
 endproc BotAimAtEnemy 1144 52
 lit
@@ -17372,24 +17406,24 @@ byte 4 1090519040
 export BotCheckAttack
 code
 proc BotCheckAttack 1028 28
-line 3654
-;3648:
-;3649:/*
-;3650:==================
-;3651:BotCheckAttack
-;3652:==================
-;3653:*/
-;3654:void BotCheckAttack(bot_state_t *bs) {
-line 3663
-;3655:	float points, reactiontime, fov, firethrottle;
-;3656:	int attackentity;
-;3657:	bsp_trace_t bsptrace;
-;3658:	//float selfpreservation;
-;3659:	vec3_t forward, right, start, end, dir, angles;
-;3660:	weaponinfo_t wi;
-;3661:	bsp_trace_t trace;
-;3662:	aas_entityinfo_t entinfo;
-;3663:	vec3_t mins = {-8, -8, -8}, maxs = {8, 8, 8};
+line 3688
+;3682:
+;3683:/*
+;3684:==================
+;3685:BotCheckAttack
+;3686:==================
+;3687:*/
+;3688:void BotCheckAttack(bot_state_t *bs) {
+line 3697
+;3689:	float points, reactiontime, fov, firethrottle;
+;3690:	int attackentity;
+;3691:	bsp_trace_t bsptrace;
+;3692:	//float selfpreservation;
+;3693:	vec3_t forward, right, start, end, dir, angles;
+;3694:	weaponinfo_t wi;
+;3695:	bsp_trace_t trace;
+;3696:	aas_entityinfo_t entinfo;
+;3697:	vec3_t mins = {-8, -8, -8}, maxs = {8, 8, 8};
 ADDRLP4 808
 ADDRGP4 $1470
 INDIRB
@@ -17398,9 +17432,9 @@ ADDRLP4 820
 ADDRGP4 $1471
 INDIRB
 ASGNB 12
-line 3665
-;3664:
-;3665:	attackentity = bs->enemy;
+line 3699
+;3698:
+;3699:	attackentity = bs->enemy;
 ADDRLP4 576
 ADDRFP4 0
 INDIRP4
@@ -17408,9 +17442,9 @@ CNSTI4 6540
 ADDP4
 INDIRI4
 ASGNI4
-line 3667
-;3666:	//
-;3667:	BotEntityInfo(attackentity, &entinfo);
+line 3701
+;3700:	//
+;3701:	BotEntityInfo(attackentity, &entinfo);
 ADDRLP4 576
 INDIRI4
 ARGI4
@@ -17419,30 +17453,30 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 3669
-;3668:	// if not attacking a player
-;3669:	if (attackentity >= MAX_CLIENTS) {
+line 3703
+;3702:	// if not attacking a player
+;3703:	if (attackentity >= MAX_CLIENTS) {
 ADDRLP4 576
 INDIRI4
 CNSTI4 64
 LTI4 $1472
-line 3681
-;3670:#ifdef MISSIONPACK
-;3671:		// if attacking an obelisk
-;3672:		if ( entinfo.number == redobelisk.entitynum ||
-;3673:			entinfo.number == blueobelisk.entitynum ) {
-;3674:			// if obelisk is respawning return
-;3675:			if ( g_entities[entinfo.number].activator &&
-;3676:				g_entities[entinfo.number].activator->s.frame == 2 ) {
-;3677:				return;
-;3678:			}
-;3679:		}
-;3680:#endif
-;3681:	}
+line 3715
+;3704:#ifdef MISSIONPACK
+;3705:		// if attacking an obelisk
+;3706:		if ( entinfo.number == redobelisk.entitynum ||
+;3707:			entinfo.number == blueobelisk.entitynum ) {
+;3708:			// if obelisk is respawning return
+;3709:			if ( g_entities[entinfo.number].activator &&
+;3710:				g_entities[entinfo.number].activator->s.frame == 2 ) {
+;3711:				return;
+;3712:			}
+;3713:		}
+;3714:#endif
+;3715:	}
 LABELV $1472
-line 3683
-;3682:
-;3683:	reactiontime = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_REACTIONTIME, 0, 1);
+line 3717
+;3716:
+;3717:	reactiontime = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_REACTIONTIME, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -17463,8 +17497,8 @@ ADDRLP4 700
 ADDRLP4 976
 INDIRF4
 ASGNF4
-line 3684
-;3684:	if (bs->enemysight_time > FloatTime() - reactiontime) return;
+line 3718
+;3718:	if (bs->enemysight_time > FloatTime() - reactiontime) return;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6132
@@ -17479,8 +17513,8 @@ LEF4 $1474
 ADDRGP4 $1469
 JUMPV
 LABELV $1474
-line 3685
-;3685:	if (bs->teleport_time > FloatTime() - reactiontime) return;
+line 3719
+;3719:	if (bs->teleport_time > FloatTime() - reactiontime) return;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6180
@@ -17495,9 +17529,9 @@ LEF4 $1476
 ADDRGP4 $1469
 JUMPV
 LABELV $1476
-line 3687
-;3686:	//if changing weapons
-;3687:	if (bs->weaponchange_time > FloatTime() - 0.1) return;
+line 3721
+;3720:	//if changing weapons
+;3721:	if (bs->weaponchange_time > FloatTime() - 0.1) return;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6192
@@ -17511,9 +17545,9 @@ LEF4 $1478
 ADDRGP4 $1469
 JUMPV
 LABELV $1478
-line 3689
-;3688:	//check fire throttle characteristic
-;3689:	if (bs->firethrottlewait_time > FloatTime()) return;
+line 3723
+;3722:	//check fire throttle characteristic
+;3723:	if (bs->firethrottlewait_time > FloatTime()) return;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6196
@@ -17525,8 +17559,8 @@ LEF4 $1480
 ADDRGP4 $1469
 JUMPV
 LABELV $1480
-line 3690
-;3690:	firethrottle = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_FIRETHROTTLE, 0, 1);
+line 3724
+;3724:	firethrottle = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_FIRETHROTTLE, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -17547,8 +17581,8 @@ ADDRLP4 792
 ADDRLP4 980
 INDIRF4
 ASGNF4
-line 3691
-;3691:	if (bs->firethrottleshoot_time < FloatTime()) {
+line 3725
+;3725:	if (bs->firethrottleshoot_time < FloatTime()) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6200
@@ -17557,8 +17591,8 @@ INDIRF4
 ADDRGP4 floattime
 INDIRF4
 GEF4 $1482
-line 3692
-;3692:		if (random() > firethrottle) {
+line 3726
+;3726:		if (random() > firethrottle) {
 ADDRLP4 984
 ADDRGP4 rand
 CALLI4
@@ -17573,8 +17607,8 @@ DIVF4
 ADDRLP4 792
 INDIRF4
 LEF4 $1484
-line 3693
-;3693:			bs->firethrottlewait_time = FloatTime() + firethrottle;
+line 3727
+;3727:			bs->firethrottlewait_time = FloatTime() + firethrottle;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6196
@@ -17585,23 +17619,23 @@ ADDRLP4 792
 INDIRF4
 ADDF4
 ASGNF4
-line 3694
-;3694:			bs->firethrottleshoot_time = 0;
+line 3728
+;3728:			bs->firethrottleshoot_time = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6200
 ADDP4
 CNSTF4 0
 ASGNF4
-line 3695
-;3695:		}
+line 3729
+;3729:		}
 ADDRGP4 $1485
 JUMPV
 LABELV $1484
-line 3696
-;3696:		else {
-line 3697
-;3697:			bs->firethrottleshoot_time = FloatTime() + 1 - firethrottle;
+line 3730
+;3730:		else {
+line 3731
+;3731:			bs->firethrottleshoot_time = FloatTime() + 1 - firethrottle;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6200
@@ -17614,24 +17648,24 @@ ADDRLP4 792
 INDIRF4
 SUBF4
 ASGNF4
-line 3698
-;3698:			bs->firethrottlewait_time = 0;
+line 3732
+;3732:			bs->firethrottlewait_time = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6196
 ADDP4
 CNSTF4 0
 ASGNF4
-line 3699
-;3699:		}
+line 3733
+;3733:		}
 LABELV $1485
-line 3700
-;3700:	}
+line 3734
+;3734:	}
 LABELV $1482
-line 3703
-;3701:	//
-;3702:	//
-;3703:	VectorSubtract(bs->aimtarget, bs->eye, dir);
+line 3737
+;3735:	//
+;3736:	//
+;3737:	VectorSubtract(bs->aimtarget, bs->eye, dir);
 ADDRLP4 984
 ADDRFP4 0
 INDIRP4
@@ -17679,9 +17713,9 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3705
-;3704:	//
-;3705:	if (bs->weaponnum == WP_GAUNTLET) {
+line 3739
+;3738:	//
+;3739:	if (bs->weaponnum == WP_GAUNTLET) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6560
@@ -17689,8 +17723,8 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $1488
-line 3706
-;3706:		if (VectorLengthSquared(dir) > Square(60)) {
+line 3740
+;3740:		if (VectorLengthSquared(dir) > Square(60)) {
 ADDRLP4 580
 ARGP4
 ADDRLP4 992
@@ -17701,17 +17735,17 @@ ADDRLP4 992
 INDIRF4
 CNSTF4 1163984896
 LEF4 $1490
-line 3707
-;3707:			return;
+line 3741
+;3741:			return;
 ADDRGP4 $1469
 JUMPV
 LABELV $1490
-line 3709
-;3708:		}
-;3709:	}
+line 3743
+;3742:		}
+;3743:	}
 LABELV $1488
-line 3710
-;3710:	if (VectorLengthSquared(dir) < Square(100))
+line 3744
+;3744:	if (VectorLengthSquared(dir) < Square(100))
 ADDRLP4 580
 ARGP4
 ADDRLP4 992
@@ -17722,24 +17756,24 @@ ADDRLP4 992
 INDIRF4
 CNSTF4 1176256512
 GEF4 $1492
-line 3711
-;3711:		fov = 120;
+line 3745
+;3745:		fov = 120;
 ADDRLP4 788
 CNSTF4 1123024896
 ASGNF4
 ADDRGP4 $1493
 JUMPV
 LABELV $1492
-line 3713
-;3712:	else
-;3713:		fov = 50;
+line 3747
+;3746:	else
+;3747:		fov = 50;
 ADDRLP4 788
 CNSTF4 1112014848
 ASGNF4
 LABELV $1493
-line 3715
-;3714:	//
-;3715:	vectoangles(dir, angles);
+line 3749
+;3748:	//
+;3749:	vectoangles(dir, angles);
 ADDRLP4 580
 ARGP4
 ADDRLP4 796
@@ -17747,8 +17781,8 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 3716
-;3716:	if (!InFieldOfVision(bs->viewangles, fov, angles))
+line 3750
+;3750:	if (!InFieldOfVision(bs->viewangles, fov, angles))
 ADDRFP4 0
 INDIRP4
 CNSTI4 6564
@@ -17767,13 +17801,13 @@ ADDRLP4 996
 INDIRI4
 CNSTI4 0
 NEI4 $1494
-line 3717
-;3717:		return;
+line 3751
+;3751:		return;
 ADDRGP4 $1469
 JUMPV
 LABELV $1494
-line 3718
-;3718:	BotAI_Trace(&bsptrace, bs->eye, NULL, NULL, bs->aimtarget, bs->client, CONTENTS_SOLID|CONTENTS_PLAYERCLIP);
+line 3752
+;3752:	BotAI_Trace(&bsptrace, bs->eye, NULL, NULL, bs->aimtarget, bs->client, CONTENTS_SOLID|CONTENTS_PLAYERCLIP);
 ADDRLP4 704
 ARGP4
 ADDRLP4 1000
@@ -17810,8 +17844,8 @@ ARGI4
 ADDRGP4 BotAI_Trace
 CALLV
 pop
-line 3719
-;3719:	if (bsptrace.fraction < 1 && bsptrace.ent != attackentity)
+line 3753
+;3753:	if (bsptrace.fraction < 1 && bsptrace.ent != attackentity)
 ADDRLP4 704+8
 INDIRF4
 CNSTF4 1065353216
@@ -17821,15 +17855,15 @@ INDIRI4
 ADDRLP4 576
 INDIRI4
 EQI4 $1496
-line 3720
-;3720:		return;
+line 3754
+;3754:		return;
 ADDRGP4 $1469
 JUMPV
 LABELV $1496
-line 3723
-;3721:
-;3722:	//get the weapon info
-;3723:	trap_BotGetWeaponInfo(bs->ws, bs->weaponnum, &wi);
+line 3757
+;3755:
+;3756:	//get the weapon info
+;3757:	trap_BotGetWeaponInfo(bs->ws, bs->weaponnum, &wi);
 ADDRLP4 1008
 ADDRFP4 0
 INDIRP4
@@ -17851,9 +17885,9 @@ ARGP4
 ADDRGP4 trap_BotGetWeaponInfo
 CALLV
 pop
-line 3725
-;3724:	//get the start point shooting from
-;3725:	VectorCopy(bs->origin, start);
+line 3759
+;3758:	//get the start point shooting from
+;3759:	VectorCopy(bs->origin, start);
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -17861,8 +17895,8 @@ CNSTI4 4908
 ADDP4
 INDIRB
 ASGNB 12
-line 3726
-;3726:	start[2] += bs->cur_ps.viewheight;
+line 3760
+;3760:	start[2] += bs->cur_ps.viewheight;
 ADDRLP4 0+8
 ADDRLP4 0+8
 INDIRF4
@@ -17874,8 +17908,8 @@ INDIRI4
 CVIF4 4
 ADDF4
 ASGNF4
-line 3727
-;3727:	AngleVectors(bs->viewangles, forward, right, NULL);
+line 3761
+;3761:	AngleVectors(bs->viewangles, forward, right, NULL);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6564
@@ -17890,8 +17924,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 3728
-;3728:	start[0] += forward[0] * wi.offset[0] + right[0] * wi.offset[1];
+line 3762
+;3762:	start[0] += forward[0] * wi.offset[0] + right[0] * wi.offset[1];
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -17908,8 +17942,8 @@ MULF4
 ADDF4
 ADDF4
 ASGNF4
-line 3729
-;3729:	start[1] += forward[1] * wi.offset[0] + right[1] * wi.offset[1];
+line 3763
+;3763:	start[1] += forward[1] * wi.offset[0] + right[1] * wi.offset[1];
 ADDRLP4 0+4
 ADDRLP4 0+4
 INDIRF4
@@ -17926,8 +17960,8 @@ MULF4
 ADDF4
 ADDF4
 ASGNF4
-line 3730
-;3730:	start[2] += forward[2] * wi.offset[0] + right[2] * wi.offset[1] + wi.offset[2];
+line 3764
+;3764:	start[2] += forward[2] * wi.offset[0] + right[2] * wi.offset[1] + wi.offset[2];
 ADDRLP4 0+8
 ADDRLP4 0+8
 INDIRF4
@@ -17947,9 +17981,9 @@ INDIRF4
 ADDF4
 ADDF4
 ASGNF4
-line 3732
-;3731:	//end point aiming at
-;3732:	VectorMA(start, 1000, forward, end);
+line 3766
+;3765:	//end point aiming at
+;3766:	VectorMA(start, 1000, forward, end);
 ADDRLP4 1012
 CNSTF4 1148846080
 ASGNF4
@@ -17982,9 +18016,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 3734
-;3733:	//a little back to make sure not inside a very close enemy
-;3734:	VectorMA(start, -12, forward, start);
+line 3768
+;3767:	//a little back to make sure not inside a very close enemy
+;3768:	VectorMA(start, -12, forward, start);
 ADDRLP4 1016
 CNSTF4 3242196992
 ASGNF4
@@ -18017,8 +18051,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 3735
-;3735:	BotAI_Trace(&trace, start, mins, maxs, end, bs->entitynum, MASK_SHOT);
+line 3769
+;3769:	BotAI_Trace(&trace, start, mins, maxs, end, bs->entitynum, MASK_SHOT);
 ADDRLP4 592
 ARGP4
 ADDRLP4 0
@@ -18040,9 +18074,9 @@ ARGI4
 ADDRGP4 BotAI_Trace
 CALLV
 pop
-line 3737
-;3736:	//if the entity is a client
-;3737:	if (trace.ent > 0 && trace.ent <= MAX_CLIENTS) {
+line 3771
+;3770:	//if the entity is a client
+;3771:	if (trace.ent > 0 && trace.ent <= MAX_CLIENTS) {
 ADDRLP4 592+80
 INDIRI4
 CNSTI4 0
@@ -18051,16 +18085,16 @@ ADDRLP4 592+80
 INDIRI4
 CNSTI4 64
 GTI4 $1530
-line 3738
-;3738:		if (trace.ent != attackentity) {
+line 3772
+;3772:		if (trace.ent != attackentity) {
 ADDRLP4 592+80
 INDIRI4
 ADDRLP4 576
 INDIRI4
 EQI4 $1534
-line 3740
-;3739:			//if a teammate is hit
-;3740:			if (BotSameTeam(bs, trace.ent))
+line 3774
+;3773:			//if a teammate is hit
+;3774:			if (BotSameTeam(bs, trace.ent))
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -18075,20 +18109,20 @@ ADDRLP4 1020
 INDIRI4
 CNSTI4 0
 EQI4 $1537
-line 3741
-;3741:				return;
+line 3775
+;3775:				return;
 ADDRGP4 $1469
 JUMPV
 LABELV $1537
-line 3742
-;3742:		}
+line 3776
+;3776:		}
 LABELV $1534
-line 3743
-;3743:	}
+line 3777
+;3777:	}
 LABELV $1530
-line 3745
-;3744:	//if won't hit the enemy or not attacking a player (obelisk)
-;3745:	if (trace.ent != attackentity || attackentity >= MAX_CLIENTS) {
+line 3779
+;3778:	//if won't hit the enemy or not attacking a player (obelisk)
+;3779:	if (trace.ent != attackentity || attackentity >= MAX_CLIENTS) {
 ADDRLP4 592+80
 INDIRI4
 ADDRLP4 576
@@ -18099,17 +18133,17 @@ INDIRI4
 CNSTI4 64
 LTI4 $1540
 LABELV $1543
-line 3747
-;3746:		//if the projectile does radial damage
-;3747:		if (wi.proj.damagetype & DAMAGETYPE_RADIAL) {
+line 3781
+;3780:		//if the projectile does radial damage
+;3781:		if (wi.proj.damagetype & DAMAGETYPE_RADIAL) {
 ADDRLP4 24+344+180
 INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
 EQI4 $1544
-line 3748
-;3748:			if (trace.fraction * 1000 < wi.proj.radius) {
+line 3782
+;3782:			if (trace.fraction * 1000 < wi.proj.radius) {
 CNSTF4 1148846080
 ADDRLP4 592+8
 INDIRF4
@@ -18117,8 +18151,8 @@ MULF4
 ADDRLP4 24+344+172
 INDIRF4
 GEF4 $1548
-line 3749
-;3749:				points = (wi.proj.damage - 0.5 * trace.fraction * 1000) * 0.5;
+line 3783
+;3783:				points = (wi.proj.damage - 0.5 * trace.fraction * 1000) * 0.5;
 ADDRLP4 1024
 CNSTF4 1056964608
 ASGNF4
@@ -18138,39 +18172,39 @@ MULF4
 SUBF4
 MULF4
 ASGNF4
-line 3750
-;3750:				if (points > 0) {
+line 3784
+;3784:				if (points > 0) {
 ADDRLP4 972
 INDIRF4
 CNSTF4 0
 LEF4 $1556
-line 3751
-;3751:					return;
+line 3785
+;3785:					return;
 ADDRGP4 $1469
 JUMPV
 LABELV $1556
-line 3753
-;3752:				}
-;3753:			}
+line 3787
+;3786:				}
+;3787:			}
 LABELV $1548
-line 3755
-;3754:			//FIXME: check if a teammate gets radial damage
-;3755:		}
+line 3789
+;3788:			//FIXME: check if a teammate gets radial damage
+;3789:		}
 LABELV $1544
-line 3756
-;3756:	}
+line 3790
+;3790:	}
 LABELV $1540
-line 3758
-;3757:	//if fire has to be release to activate weapon
-;3758:	if (wi.flags & WFL_FIRERELEASED) {
+line 3792
+;3791:	//if fire has to be release to activate weapon
+;3792:	if (wi.flags & WFL_FIRERELEASED) {
 ADDRLP4 24+176
 INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
 EQI4 $1558
-line 3759
-;3759:		if (bs->flags & BFL_ATTACKED) {
+line 3793
+;3793:		if (bs->flags & BFL_ATTACKED) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 5980
@@ -18180,8 +18214,8 @@ CNSTI4 2
 BANDI4
 CNSTI4 0
 EQI4 $1559
-line 3760
-;3760:			trap_EA_Attack(bs->client);
+line 3794
+;3794:			trap_EA_Attack(bs->client);
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -18191,17 +18225,17 @@ ARGI4
 ADDRGP4 trap_EA_Attack
 CALLV
 pop
-line 3761
-;3761:		}
-line 3762
-;3762:	}
+line 3795
+;3795:		}
+line 3796
+;3796:	}
 ADDRGP4 $1559
 JUMPV
 LABELV $1558
-line 3763
-;3763:	else {
-line 3764
-;3764:		trap_EA_Attack(bs->client);
+line 3797
+;3797:	else {
+line 3798
+;3798:		trap_EA_Attack(bs->client);
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -18211,11 +18245,11 @@ ARGI4
 ADDRGP4 trap_EA_Attack
 CALLV
 pop
-line 3765
-;3765:	}
+line 3799
+;3799:	}
 LABELV $1559
-line 3766
-;3766:	bs->flags ^= BFL_ATTACKED;
+line 3800
+;3800:	bs->flags ^= BFL_ATTACKED;
 ADDRLP4 1024
 ADDRFP4 0
 INDIRP4
@@ -18230,8 +18264,8 @@ INDIRI4
 CNSTI4 2
 BXORI4
 ASGNI4
-line 3767
-;3767:}
+line 3801
+;3801:}
 LABELV $1469
 endproc BotCheckAttack 1028 28
 lit
@@ -18253,23 +18287,23 @@ byte 4 1147535360
 export BotMapScripts
 code
 proc BotMapScripts 1424 16
-line 3774
-;3768:
-;3769:/*
-;3770:==================
-;3771:BotMapScripts
-;3772:==================
-;3773:*/
-;3774:void BotMapScripts(bot_state_t *bs) {
-line 3782
-;3775:	char info[1024];
-;3776:	char mapname[128];
-;3777:	int i, shootbutton;
-;3778:	float aim_accuracy;
-;3779:	aas_entityinfo_t entinfo;
-;3780:	vec3_t dir;
-;3781:
-;3782:	trap_GetServerinfo(info, sizeof(info));
+line 3808
+;3802:
+;3803:/*
+;3804:==================
+;3805:BotMapScripts
+;3806:==================
+;3807:*/
+;3808:void BotMapScripts(bot_state_t *bs) {
+line 3816
+;3809:	char info[1024];
+;3810:	char mapname[128];
+;3811:	int i, shootbutton;
+;3812:	float aim_accuracy;
+;3813:	aas_entityinfo_t entinfo;
+;3814:	vec3_t dir;
+;3815:
+;3816:	trap_GetServerinfo(info, sizeof(info));
 ADDRLP4 272
 ARGP4
 CNSTI4 1024
@@ -18277,9 +18311,9 @@ ARGI4
 ADDRGP4 trap_GetServerinfo
 CALLV
 pop
-line 3784
-;3783:
-;3784:	strncpy(mapname, Info_ValueForKey( info, "mapname" ), sizeof(mapname)-1);
+line 3818
+;3817:
+;3818:	strncpy(mapname, Info_ValueForKey( info, "mapname" ), sizeof(mapname)-1);
 ADDRLP4 272
 ARGP4
 ADDRGP4 $1564
@@ -18298,14 +18332,14 @@ ARGI4
 ADDRGP4 strncpy
 CALLP4
 pop
-line 3785
-;3785:	mapname[sizeof(mapname)-1] = '\0';
+line 3819
+;3819:	mapname[sizeof(mapname)-1] = '\0';
 ADDRLP4 144+127
 CNSTI1 0
 ASGNI1
-line 3787
-;3786:
-;3787:	if (!Q_stricmp(mapname, "q3tourney6")) {
+line 3821
+;3820:
+;3821:	if (!Q_stricmp(mapname, "q3tourney6")) {
 ADDRLP4 144
 ARGP4
 ADDRGP4 $1568
@@ -18318,8 +18352,8 @@ ADDRLP4 1320
 INDIRI4
 CNSTI4 0
 NEI4 $1566
-line 3788
-;3788:		vec3_t mins = {700, 204, 672}, maxs = {964, 468, 680};
+line 3822
+;3822:		vec3_t mins = {700, 204, 672}, maxs = {964, 468, 680};
 ADDRLP4 1324
 ADDRGP4 $1569
 INDIRB
@@ -18328,15 +18362,15 @@ ADDRLP4 1336
 ADDRGP4 $1570
 INDIRB
 ASGNB 12
-line 3789
-;3789:		vec3_t buttonorg = {304, 352, 920};
+line 3823
+;3823:		vec3_t buttonorg = {304, 352, 920};
 ADDRLP4 1348
 ADDRGP4 $1571
 INDIRB
 ASGNB 12
-line 3791
-;3790:		//NOTE: NEVER use the func_bobbing in q3tourney6
-;3791:		bs->tfl &= ~TFL_FUNCBOB;
+line 3825
+;3824:		//NOTE: NEVER use the func_bobbing in q3tourney6
+;3825:		bs->tfl &= ~TFL_FUNCBOB;
 ADDRLP4 1360
 ADDRFP4 0
 INDIRP4
@@ -18351,9 +18385,9 @@ INDIRI4
 CNSTI4 -16777217
 BANDI4
 ASGNI4
-line 3793
-;3792:		//if the bot is below the bounding box
-;3793:		if (bs->origin[0] > mins[0] && bs->origin[0] < maxs[0]) {
+line 3827
+;3826:		//if the bot is below the bounding box
+;3827:		if (bs->origin[0] > mins[0] && bs->origin[0] < maxs[0]) {
 ADDRLP4 1364
 ADDRFP4 0
 INDIRP4
@@ -18371,8 +18405,8 @@ INDIRF4
 ADDRLP4 1336
 INDIRF4
 GEF4 $1572
-line 3794
-;3794:			if (bs->origin[1] > mins[1] && bs->origin[1] < maxs[1]) {
+line 3828
+;3828:			if (bs->origin[1] > mins[1] && bs->origin[1] < maxs[1]) {
 ADDRLP4 1368
 ADDRFP4 0
 INDIRP4
@@ -18390,8 +18424,8 @@ INDIRF4
 ADDRLP4 1336+4
 INDIRF4
 GEF4 $1574
-line 3795
-;3795:				if (bs->origin[2] < mins[2]) {
+line 3829
+;3829:				if (bs->origin[2] < mins[2]) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 4916
@@ -18400,35 +18434,35 @@ INDIRF4
 ADDRLP4 1324+8
 INDIRF4
 GEF4 $1578
-line 3796
-;3796:					return;
+line 3830
+;3830:					return;
 ADDRGP4 $1563
 JUMPV
 LABELV $1578
-line 3798
-;3797:				}
-;3798:			}
+line 3832
+;3831:				}
+;3832:			}
 LABELV $1574
-line 3799
-;3799:		}
+line 3833
+;3833:		}
 LABELV $1572
-line 3800
-;3800:		shootbutton = qfalse;
+line 3834
+;3834:		shootbutton = qfalse;
 ADDRLP4 1296
 CNSTI4 0
 ASGNI4
-line 3802
-;3801:		//if an enemy is below this bounding box then shoot the button
-;3802:		for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
+line 3836
+;3835:		//if an enemy is below this bounding box then shoot the button
+;3836:		for (i = 0; i < maxclients && i < MAX_CLIENTS; i++) {
 ADDRLP4 140
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1584
 JUMPV
 LABELV $1581
-line 3804
-;3803:
-;3804:			if (i == bs->client) continue;
+line 3838
+;3837:
+;3838:			if (i == bs->client) continue;
 ADDRLP4 140
 INDIRI4
 ADDRFP4 0
@@ -18440,9 +18474,9 @@ NEI4 $1585
 ADDRGP4 $1582
 JUMPV
 LABELV $1585
-line 3806
-;3805:			//
-;3806:			BotEntityInfo(i, &entinfo);
+line 3840
+;3839:			//
+;3840:			BotEntityInfo(i, &entinfo);
 ADDRLP4 140
 INDIRI4
 ARGI4
@@ -18451,9 +18485,9 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 3808
-;3807:			//
-;3808:			if (!entinfo.valid) continue;
+line 3842
+;3841:			//
+;3842:			if (!entinfo.valid) continue;
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
@@ -18461,9 +18495,9 @@ NEI4 $1587
 ADDRGP4 $1582
 JUMPV
 LABELV $1587
-line 3810
-;3809:			//if the enemy isn't dead and the enemy isn't the bot self
-;3810:			if (EntityIsDead(&entinfo) || entinfo.number == bs->entitynum) continue;
+line 3844
+;3843:			//if the enemy isn't dead and the enemy isn't the bot self
+;3844:			if (EntityIsDead(&entinfo) || entinfo.number == bs->entitynum) continue;
 ADDRLP4 0
 ARGP4
 ADDRLP4 1368
@@ -18486,9 +18520,9 @@ LABELV $1592
 ADDRGP4 $1582
 JUMPV
 LABELV $1589
-line 3812
-;3811:			//
-;3812:			if (entinfo.origin[0] > mins[0] && entinfo.origin[0] < maxs[0]) {
+line 3846
+;3845:			//
+;3846:			if (entinfo.origin[0] > mins[0] && entinfo.origin[0] < maxs[0]) {
 ADDRLP4 0+24
 INDIRF4
 ADDRLP4 1324
@@ -18499,8 +18533,8 @@ INDIRF4
 ADDRLP4 1336
 INDIRF4
 GEF4 $1593
-line 3813
-;3813:				if (entinfo.origin[1] > mins[1] && entinfo.origin[1] < maxs[1]) {
+line 3847
+;3847:				if (entinfo.origin[1] > mins[1] && entinfo.origin[1] < maxs[1]) {
 ADDRLP4 0+24+4
 INDIRF4
 ADDRLP4 1324+4
@@ -18511,16 +18545,16 @@ INDIRF4
 ADDRLP4 1336+4
 INDIRF4
 GEF4 $1597
-line 3814
-;3814:					if (entinfo.origin[2] < mins[2]) {
+line 3848
+;3848:					if (entinfo.origin[2] < mins[2]) {
 ADDRLP4 0+24+8
 INDIRF4
 ADDRLP4 1324+8
 INDIRF4
 GEF4 $1605
-line 3816
-;3815:						//if there's a team mate below the crusher
-;3816:						if (BotSameTeam(bs, i)) {
+line 3850
+;3849:						//if there's a team mate below the crusher
+;3850:						if (BotSameTeam(bs, i)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -18535,39 +18569,39 @@ ADDRLP4 1372
 INDIRI4
 CNSTI4 0
 EQI4 $1610
-line 3817
-;3817:							shootbutton = qfalse;
+line 3851
+;3851:							shootbutton = qfalse;
 ADDRLP4 1296
 CNSTI4 0
 ASGNI4
-line 3818
-;3818:							break;
+line 3852
+;3852:							break;
 ADDRGP4 $1583
 JUMPV
 LABELV $1610
-line 3820
-;3819:						}
-;3820:						else {
-line 3821
-;3821:							shootbutton = qtrue;
+line 3854
+;3853:						}
+;3854:						else {
+line 3855
+;3855:							shootbutton = qtrue;
 ADDRLP4 1296
 CNSTI4 1
 ASGNI4
-line 3822
-;3822:						}
-line 3823
-;3823:					}
+line 3856
+;3856:						}
+line 3857
+;3857:					}
 LABELV $1605
-line 3824
-;3824:				}
+line 3858
+;3858:				}
 LABELV $1597
-line 3825
-;3825:			}
+line 3859
+;3859:			}
 LABELV $1593
-line 3826
-;3826:		}
+line 3860
+;3860:		}
 LABELV $1582
-line 3802
+line 3836
 ADDRLP4 140
 ADDRLP4 140
 INDIRI4
@@ -18586,14 +18620,14 @@ CNSTI4 64
 LTI4 $1581
 LABELV $1612
 LABELV $1583
-line 3827
-;3827:		if (shootbutton) {
+line 3861
+;3861:		if (shootbutton) {
 ADDRLP4 1296
 INDIRI4
 CNSTI4 0
 EQI4 $1567
-line 3828
-;3828:			bs->flags |= BFL_IDEALVIEWSET;
+line 3862
+;3862:			bs->flags |= BFL_IDEALVIEWSET;
 ADDRLP4 1372
 ADDRFP4 0
 INDIRP4
@@ -18608,8 +18642,8 @@ INDIRI4
 CNSTI4 32
 BORI4
 ASGNI4
-line 3829
-;3829:			VectorSubtract(buttonorg, bs->eye, dir);
+line 3863
+;3863:			VectorSubtract(buttonorg, bs->eye, dir);
 ADDRLP4 1376
 ADDRFP4 0
 INDIRP4
@@ -18644,8 +18678,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 3830
-;3830:			vectoangles(dir, bs->ideal_viewangles);
+line 3864
+;3864:			vectoangles(dir, bs->ideal_viewangles);
 ADDRLP4 1300
 ARGP4
 ADDRFP4 0
@@ -18656,8 +18690,8 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 3831
-;3831:			aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY, 0, 1);
+line 3865
+;3865:			aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -18678,8 +18712,8 @@ ADDRLP4 1312
 ADDRLP4 1380
 INDIRF4
 ASGNF4
-line 3832
-;3832:			bs->ideal_viewangles[PITCH] += 8 * crandom() * (1 - aim_accuracy);
+line 3866
+;3866:			bs->ideal_viewangles[PITCH] += 8 * crandom() * (1 - aim_accuracy);
 ADDRLP4 1384
 ADDRGP4 rand
 CALLI4
@@ -18715,8 +18749,8 @@ SUBF4
 MULF4
 ADDF4
 ASGNF4
-line 3833
-;3833:			bs->ideal_viewangles[PITCH] = AngleMod(bs->ideal_viewangles[PITCH]);
+line 3867
+;3867:			bs->ideal_viewangles[PITCH] = AngleMod(bs->ideal_viewangles[PITCH]);
 ADDRLP4 1392
 ADDRFP4 0
 INDIRP4
@@ -18736,8 +18770,8 @@ INDIRP4
 ADDRLP4 1396
 INDIRF4
 ASGNF4
-line 3834
-;3834:			bs->ideal_viewangles[YAW] += 8 * crandom() * (1 - aim_accuracy);
+line 3868
+;3868:			bs->ideal_viewangles[YAW] += 8 * crandom() * (1 - aim_accuracy);
 ADDRLP4 1400
 ADDRGP4 rand
 CALLI4
@@ -18773,8 +18807,8 @@ SUBF4
 MULF4
 ADDF4
 ASGNF4
-line 3835
-;3835:			bs->ideal_viewangles[YAW] = AngleMod(bs->ideal_viewangles[YAW]);
+line 3869
+;3869:			bs->ideal_viewangles[YAW] = AngleMod(bs->ideal_viewangles[YAW]);
 ADDRLP4 1408
 ADDRFP4 0
 INDIRP4
@@ -18794,9 +18828,9 @@ INDIRP4
 ADDRLP4 1412
 INDIRF4
 ASGNF4
-line 3837
-;3836:			//
-;3837:			if (InFieldOfVision(bs->viewangles, 20, bs->ideal_viewangles)) {
+line 3871
+;3870:			//
+;3871:			if (InFieldOfVision(bs->viewangles, 20, bs->ideal_viewangles)) {
 ADDRLP4 1416
 ADDRFP4 0
 INDIRP4
@@ -18821,8 +18855,8 @@ ADDRLP4 1420
 INDIRI4
 CNSTI4 0
 EQI4 $1567
-line 3838
-;3838:				trap_EA_Attack(bs->client);
+line 3872
+;3872:				trap_EA_Attack(bs->client);
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -18832,17 +18866,17 @@ ARGI4
 ADDRGP4 trap_EA_Attack
 CALLV
 pop
-line 3839
-;3839:			}
-line 3840
-;3840:		}
-line 3841
-;3841:	}
+line 3873
+;3873:			}
+line 3874
+;3874:		}
+line 3875
+;3875:	}
 ADDRGP4 $1567
 JUMPV
 LABELV $1566
-line 3842
-;3842:	else if (!Q_stricmp(mapname, "mpq3tourney6")) {
+line 3876
+;3876:	else if (!Q_stricmp(mapname, "mpq3tourney6")) {
 ADDRLP4 144
 ARGP4
 ADDRGP4 $1623
@@ -18855,9 +18889,9 @@ ADDRLP4 1324
 INDIRI4
 CNSTI4 0
 NEI4 $1621
-line 3844
-;3843:		//NOTE: NEVER use the func_bobbing in mpq3tourney6
-;3844:		bs->tfl &= ~TFL_FUNCBOB;
+line 3878
+;3877:		//NOTE: NEVER use the func_bobbing in mpq3tourney6
+;3878:		bs->tfl &= ~TFL_FUNCBOB;
 ADDRLP4 1328
 ADDRFP4 0
 INDIRP4
@@ -18872,12 +18906,12 @@ INDIRI4
 CNSTI4 -16777217
 BANDI4
 ASGNI4
-line 3845
-;3845:	}
+line 3879
+;3879:	}
 LABELV $1621
 LABELV $1567
-line 3846
-;3846:}
+line 3880
+;3880:}
 LABELV $1563
 endproc BotMapScripts 1424 16
 data
@@ -18904,22 +18938,22 @@ byte 4 3212836864
 export BotSetMovedir
 code
 proc BotSetMovedir 12 16
-line 3859
-;3847:
-;3848:/*
-;3849:==================
-;3850:BotSetMovedir
-;3851:==================
-;3852:*/
-;3853:// bk001205 - made these static
-;3854:static vec3_t VEC_UP		= {0, -1,  0};
-;3855:static vec3_t MOVEDIR_UP	= {0,  0,  1};
-;3856:static vec3_t VEC_DOWN		= {0, -2,  0};
-;3857:static vec3_t MOVEDIR_DOWN	= {0,  0, -1};
-;3858:
-;3859:void BotSetMovedir(vec3_t angles, vec3_t movedir) {
-line 3860
-;3860:	if (VectorCompare(angles, VEC_UP)) {
+line 3893
+;3881:
+;3882:/*
+;3883:==================
+;3884:BotSetMovedir
+;3885:==================
+;3886:*/
+;3887:// bk001205 - made these static
+;3888:static vec3_t VEC_UP		= {0, -1,  0};
+;3889:static vec3_t MOVEDIR_UP	= {0,  0,  1};
+;3890:static vec3_t VEC_DOWN		= {0, -2,  0};
+;3891:static vec3_t MOVEDIR_DOWN	= {0,  0, -1};
+;3892:
+;3893:void BotSetMovedir(vec3_t angles, vec3_t movedir) {
+line 3894
+;3894:	if (VectorCompare(angles, VEC_UP)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -18933,20 +18967,20 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 0
 EQI4 $1625
-line 3861
-;3861:		VectorCopy(MOVEDIR_UP, movedir);
+line 3895
+;3895:		VectorCopy(MOVEDIR_UP, movedir);
 ADDRFP4 4
 INDIRP4
 ADDRGP4 MOVEDIR_UP
 INDIRB
 ASGNB 12
-line 3862
-;3862:	}
+line 3896
+;3896:	}
 ADDRGP4 $1626
 JUMPV
 LABELV $1625
-line 3863
-;3863:	else if (VectorCompare(angles, VEC_DOWN)) {
+line 3897
+;3897:	else if (VectorCompare(angles, VEC_DOWN)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -18960,22 +18994,22 @@ ADDRLP4 4
 INDIRI4
 CNSTI4 0
 EQI4 $1627
-line 3864
-;3864:		VectorCopy(MOVEDIR_DOWN, movedir);
+line 3898
+;3898:		VectorCopy(MOVEDIR_DOWN, movedir);
 ADDRFP4 4
 INDIRP4
 ADDRGP4 MOVEDIR_DOWN
 INDIRB
 ASGNB 12
-line 3865
-;3865:	}
+line 3899
+;3899:	}
 ADDRGP4 $1628
 JUMPV
 LABELV $1627
-line 3866
-;3866:	else {
-line 3867
-;3867:		AngleVectors(angles, movedir, NULL, NULL);
+line 3900
+;3900:	else {
+line 3901
+;3901:		AngleVectors(angles, movedir, NULL, NULL);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -18994,44 +19028,44 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 3868
-;3868:	}
+line 3902
+;3902:	}
 LABELV $1628
 LABELV $1626
-line 3869
-;3869:}
+line 3903
+;3903:}
 LABELV $1624
 endproc BotSetMovedir 12 16
 export BotModelMinsMaxs
 proc BotModelMinsMaxs 40 0
-line 3878
-;3870:
-;3871:/*
-;3872:==================
-;3873:BotModelMinsMaxs
-;3874:
-;3875:this is ugly
-;3876:==================
-;3877:*/
-;3878:int BotModelMinsMaxs(int modelindex, int eType, int contents, vec3_t mins, vec3_t maxs) {
-line 3882
-;3879:	gentity_t *ent;
-;3880:	int i;
-;3881:
-;3882:	ent = &g_entities[0];
+line 3912
+;3904:
+;3905:/*
+;3906:==================
+;3907:BotModelMinsMaxs
+;3908:
+;3909:this is ugly
+;3910:==================
+;3911:*/
+;3912:int BotModelMinsMaxs(int modelindex, int eType, int contents, vec3_t mins, vec3_t maxs) {
+line 3916
+;3913:	gentity_t *ent;
+;3914:	int i;
+;3915:
+;3916:	ent = &g_entities[0];
 ADDRLP4 0
 ADDRGP4 g_entities
 ASGNP4
-line 3883
-;3883:	for (i = 0; i < level.num_entities; i++, ent++) {
+line 3917
+;3917:	for (i = 0; i < level.num_entities; i++, ent++) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1633
 JUMPV
 LABELV $1630
-line 3884
-;3884:		if ( !ent->inuse ) {
+line 3918
+;3918:		if ( !ent->inuse ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 528
@@ -19039,14 +19073,14 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $1635
-line 3885
-;3885:			continue;
+line 3919
+;3919:			continue;
 ADDRGP4 $1631
 JUMPV
 LABELV $1635
-line 3887
-;3886:		}
-;3887:		if ( eType && ent->s.eType != eType) {
+line 3921
+;3920:		}
+;3921:		if ( eType && ent->s.eType != eType) {
 ADDRLP4 8
 ADDRFP4 4
 INDIRI4
@@ -19063,14 +19097,14 @@ INDIRI4
 ADDRLP4 8
 INDIRI4
 EQI4 $1637
-line 3888
-;3888:			continue;
+line 3922
+;3922:			continue;
 ADDRGP4 $1631
 JUMPV
 LABELV $1637
-line 3890
-;3889:		}
-;3890:		if ( contents && ent->r.contents != contents) {
+line 3924
+;3923:		}
+;3924:		if ( contents && ent->r.contents != contents) {
 ADDRLP4 12
 ADDRFP4 8
 INDIRI4
@@ -19087,14 +19121,14 @@ INDIRI4
 ADDRLP4 12
 INDIRI4
 EQI4 $1639
-line 3891
-;3891:			continue;
+line 3925
+;3925:			continue;
 ADDRGP4 $1631
 JUMPV
 LABELV $1639
-line 3893
-;3892:		}
-;3893:		if (ent->s.modelindex == modelindex) {
+line 3927
+;3926:		}
+;3927:		if (ent->s.modelindex == modelindex) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 160
@@ -19103,15 +19137,15 @@ INDIRI4
 ADDRFP4 0
 INDIRI4
 NEI4 $1641
-line 3894
-;3894:			if (mins)
+line 3928
+;3928:			if (mins)
 ADDRFP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $1643
-line 3895
-;3895:				VectorAdd(ent->r.currentOrigin, ent->r.mins, mins);
+line 3929
+;3929:				VectorAdd(ent->r.currentOrigin, ent->r.mins, mins);
 ADDRFP4 12
 INDIRP4
 ADDRLP4 0
@@ -19159,15 +19193,15 @@ INDIRF4
 ADDF4
 ASGNF4
 LABELV $1643
-line 3896
-;3896:			if (maxs)
+line 3930
+;3930:			if (maxs)
 ADDRFP4 16
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $1645
-line 3897
-;3897:				VectorAdd(ent->r.currentOrigin, ent->r.maxs, maxs);
+line 3931
+;3931:				VectorAdd(ent->r.currentOrigin, ent->r.maxs, maxs);
 ADDRFP4 16
 INDIRP4
 ADDRLP4 0
@@ -19215,19 +19249,19 @@ INDIRF4
 ADDF4
 ASGNF4
 LABELV $1645
-line 3898
-;3898:			return i;
+line 3932
+;3932:			return i;
 ADDRLP4 4
 INDIRI4
 RETI4
 ADDRGP4 $1629
 JUMPV
 LABELV $1641
-line 3900
-;3899:		}
-;3900:	}
+line 3934
+;3933:		}
+;3934:	}
 LABELV $1631
-line 3883
+line 3917
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -19246,15 +19280,15 @@ INDIRI4
 ADDRGP4 level+12
 INDIRI4
 LTI4 $1630
-line 3901
-;3901:	if (mins)
+line 3935
+;3935:	if (mins)
 ADDRFP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $1647
-line 3902
-;3902:		VectorClear(mins);
+line 3936
+;3936:		VectorClear(mins);
 ADDRLP4 8
 ADDRFP4 12
 INDIRP4
@@ -19282,15 +19316,15 @@ ADDRLP4 12
 INDIRF4
 ASGNF4
 LABELV $1647
-line 3903
-;3903:	if (maxs)
+line 3937
+;3937:	if (maxs)
 ADDRFP4 16
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $1649
-line 3904
-;3904:		VectorClear(maxs);
+line 3938
+;3938:		VectorClear(maxs);
 ADDRLP4 16
 ADDRFP4 16
 INDIRP4
@@ -19318,8 +19352,8 @@ ADDRLP4 20
 INDIRF4
 ASGNF4
 LABELV $1649
-line 3905
-;3905:	return 0;
+line 3939
+;3939:	return 0;
 CNSTI4 0
 RETI4
 LABELV $1629
@@ -19338,22 +19372,22 @@ byte 4 3212836864
 export BotFuncButtonActivateGoal
 code
 proc BotFuncButtonActivateGoal 648 28
-line 3913
-;3906:}
-;3907:
-;3908:/*
-;3909:==================
-;3910:BotFuncButtonGoal
-;3911:==================
-;3912:*/
-;3913:int BotFuncButtonActivateGoal(bot_state_t *bs, int bspent, bot_activategoal_t *activategoal) {
-line 3919
-;3914:	int i, areas[10], numareas, modelindex, entitynum;
-;3915:	char model[128];
-;3916:	float lip, dist, health, angle;
-;3917:	vec3_t size, start, end, mins, maxs, angles, points[10];
-;3918:	vec3_t movedir, origin, goalorigin, bboxmins, bboxmaxs;
-;3919:	vec3_t extramins = {1, 1, 1}, extramaxs = {-1, -1, -1};
+line 3947
+;3940:}
+;3941:
+;3942:/*
+;3943:==================
+;3944:BotFuncButtonGoal
+;3945:==================
+;3946:*/
+;3947:int BotFuncButtonActivateGoal(bot_state_t *bs, int bspent, bot_activategoal_t *activategoal) {
+line 3953
+;3948:	int i, areas[10], numareas, modelindex, entitynum;
+;3949:	char model[128];
+;3950:	float lip, dist, health, angle;
+;3951:	vec3_t size, start, end, mins, maxs, angles, points[10];
+;3952:	vec3_t movedir, origin, goalorigin, bboxmins, bboxmaxs;
+;3953:	vec3_t extramins = {1, 1, 1}, extramaxs = {-1, -1, -1};
 ADDRLP4 304
 ADDRGP4 $1652
 INDIRB
@@ -19362,18 +19396,18 @@ ADDRLP4 316
 ADDRGP4 $1653
 INDIRB
 ASGNB 12
-line 3922
-;3920:	bsp_trace_t bsptrace;
-;3921:
-;3922:	activategoal->shoot = qfalse;
+line 3956
+;3954:	bsp_trace_t bsptrace;
+;3955:
+;3956:	activategoal->shoot = qfalse;
 ADDRFP4 8
 INDIRP4
 CNSTI4 72
 ADDP4
 CNSTI4 0
 ASGNI4
-line 3923
-;3923:	VectorClear(activategoal->target);
+line 3957
+;3957:	VectorClear(activategoal->target);
 ADDRLP4 560
 ADDRFP4 8
 INDIRP4
@@ -19402,9 +19436,9 @@ ADDP4
 ADDRLP4 564
 INDIRF4
 ASGNF4
-line 3925
-;3924:	//create a bot goal towards the button
-;3925:	trap_AAS_ValueForBSPEpairKey(bspent, "model", model, sizeof(model));
+line 3959
+;3958:	//create a bot goal towards the button
+;3959:	trap_AAS_ValueForBSPEpairKey(bspent, "model", model, sizeof(model));
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -19417,22 +19451,22 @@ ARGI4
 ADDRGP4 trap_AAS_ValueForBSPEpairKey
 CALLI4
 pop
-line 3926
-;3926:	if (!*model)
+line 3960
+;3960:	if (!*model)
 ADDRLP4 160
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $1654
-line 3927
-;3927:		return qfalse;
+line 3961
+;3961:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $1651
 JUMPV
 LABELV $1654
-line 3928
-;3928:	modelindex = atoi(model+1);
+line 3962
+;3962:	modelindex = atoi(model+1);
 ADDRLP4 160+1
 ARGP4
 ADDRLP4 568
@@ -19443,21 +19477,21 @@ ADDRLP4 288
 ADDRLP4 568
 INDIRI4
 ASGNI4
-line 3929
-;3929:	if (!modelindex)
+line 3963
+;3963:	if (!modelindex)
 ADDRLP4 288
 INDIRI4
 CNSTI4 0
 NEI4 $1657
-line 3930
-;3930:		return qfalse;
+line 3964
+;3964:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $1651
 JUMPV
 LABELV $1657
-line 3931
-;3931:	VectorClear(angles);
+line 3965
+;3965:	VectorClear(angles);
 ADDRLP4 572
 CNSTF4 0
 ASGNF4
@@ -19473,8 +19507,8 @@ ADDRLP4 96
 ADDRLP4 572
 INDIRF4
 ASGNF4
-line 3932
-;3932:	entitynum = BotModelMinsMaxs(modelindex, ET_MOVER, 0, mins, maxs);
+line 3966
+;3966:	entitynum = BotModelMinsMaxs(modelindex, ET_MOVER, 0, mins, maxs);
 ADDRLP4 288
 INDIRI4
 ARGI4
@@ -19494,9 +19528,9 @@ ADDRLP4 344
 ADDRLP4 576
 INDIRI4
 ASGNI4
-line 3934
-;3933:	//get the lip of the button
-;3934:	trap_AAS_FloatForBSPEpairKey(bspent, "lip", &lip);
+line 3968
+;3967:	//get the lip of the button
+;3968:	trap_AAS_FloatForBSPEpairKey(bspent, "lip", &lip);
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -19507,8 +19541,8 @@ ARGP4
 ADDRGP4 trap_AAS_FloatForBSPEpairKey
 CALLI4
 pop
-line 3935
-;3935:	if (!lip) lip = 4;
+line 3969
+;3969:	if (!lip) lip = 4;
 ADDRLP4 328
 INDIRF4
 CNSTF4 0
@@ -19517,9 +19551,9 @@ ADDRLP4 328
 CNSTF4 1082130432
 ASGNF4
 LABELV $1662
-line 3937
-;3936:	//get the move direction from the angle
-;3937:	trap_AAS_FloatForBSPEpairKey(bspent, "angle", &angle);
+line 3971
+;3970:	//get the move direction from the angle
+;3971:	trap_AAS_FloatForBSPEpairKey(bspent, "angle", &angle);
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -19530,8 +19564,8 @@ ARGP4
 ADDRGP4 trap_AAS_FloatForBSPEpairKey
 CALLI4
 pop
-line 3938
-;3938:	VectorSet(angles, 0, angle, 0);
+line 3972
+;3972:	VectorSet(angles, 0, angle, 0);
 ADDRLP4 96
 CNSTF4 0
 ASGNF4
@@ -19542,8 +19576,8 @@ ASGNF4
 ADDRLP4 96+8
 CNSTF4 0
 ASGNF4
-line 3939
-;3939:	BotSetMovedir(angles, movedir);
+line 3973
+;3973:	BotSetMovedir(angles, movedir);
 ADDRLP4 96
 ARGP4
 ADDRLP4 4
@@ -19551,9 +19585,9 @@ ARGP4
 ADDRGP4 BotSetMovedir
 CALLV
 pop
-line 3941
-;3940:	//button size
-;3941:	VectorSubtract(maxs, mins, size);
+line 3975
+;3974:	//button size
+;3975:	VectorSubtract(maxs, mins, size);
 ADDRLP4 112
 ADDRLP4 84
 INDIRF4
@@ -19575,9 +19609,9 @@ ADDRLP4 72+8
 INDIRF4
 SUBF4
 ASGNF4
-line 3943
-;3942:	//button origin
-;3943:	VectorAdd(mins, maxs, origin);
+line 3977
+;3976:	//button origin
+;3977:	VectorAdd(mins, maxs, origin);
 ADDRLP4 16
 ADDRLP4 72
 INDIRF4
@@ -19599,8 +19633,8 @@ ADDRLP4 84+8
 INDIRF4
 ADDF4
 ASGNF4
-line 3944
-;3944:	VectorScale(origin, 0.5, origin);
+line 3978
+;3978:	VectorScale(origin, 0.5, origin);
 ADDRLP4 580
 CNSTF4 1056964608
 ASGNF4
@@ -19624,9 +19658,9 @@ ADDRLP4 16+8
 INDIRF4
 MULF4
 ASGNF4
-line 3946
-;3945:	//touch distance of the button
-;3946:	dist = fabs(movedir[0]) * size[0] + fabs(movedir[1]) * size[1] + fabs(movedir[2]) * size[2];
+line 3980
+;3979:	//touch distance of the button
+;3980:	dist = fabs(movedir[0]) * size[0] + fabs(movedir[1]) * size[1] + fabs(movedir[2]) * size[2];
 ADDRLP4 4
 INDIRF4
 ARGF4
@@ -19667,17 +19701,17 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 3947
-;3947:	dist *= 0.5;
+line 3981
+;3981:	dist *= 0.5;
 ADDRLP4 28
 CNSTF4 1056964608
 ADDRLP4 28
 INDIRF4
 MULF4
 ASGNF4
-line 3949
-;3948:	//
-;3949:	trap_AAS_FloatForBSPEpairKey(bspent, "health", &health);
+line 3983
+;3982:	//
+;3983:	trap_AAS_FloatForBSPEpairKey(bspent, "health", &health);
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -19688,16 +19722,16 @@ ARGP4
 ADDRGP4 trap_AAS_FloatForBSPEpairKey
 CALLI4
 pop
-line 3951
-;3950:	//if the button is shootable
-;3951:	if (health) {
+line 3985
+;3984:	//if the button is shootable
+;3985:	if (health) {
 ADDRLP4 348
 INDIRF4
 CNSTF4 0
 EQF4 $1688
-line 3953
-;3952:		//calculate the shoot target
-;3953:		VectorMA(origin, -dist, movedir, goalorigin);
+line 3987
+;3986:		//calculate the shoot target
+;3987:		VectorMA(origin, -dist, movedir, goalorigin);
 ADDRLP4 596
 ADDRLP4 28
 INDIRF4
@@ -19734,9 +19768,9 @@ NEGF4
 MULF4
 ADDF4
 ASGNF4
-line 3955
-;3954:		//
-;3955:		VectorCopy(goalorigin, activategoal->target);
+line 3989
+;3988:		//
+;3989:		VectorCopy(goalorigin, activategoal->target);
 ADDRFP4 8
 INDIRP4
 CNSTI4 80
@@ -19744,17 +19778,17 @@ ADDP4
 ADDRLP4 124
 INDIRB
 ASGNB 12
-line 3956
-;3956:		activategoal->shoot = qtrue;
+line 3990
+;3990:		activategoal->shoot = qtrue;
 ADDRFP4 8
 INDIRP4
 CNSTI4 72
 ADDP4
 CNSTI4 1
 ASGNI4
-line 3958
-;3957:		//
-;3958:		BotAI_Trace(&bsptrace, bs->eye, NULL, NULL, goalorigin, bs->entitynum, MASK_SHOT);
+line 3992
+;3991:		//
+;3992:		BotAI_Trace(&bsptrace, bs->eye, NULL, NULL, goalorigin, bs->entitynum, MASK_SHOT);
 ADDRLP4 356
 ARGP4
 ADDRLP4 600
@@ -19788,9 +19822,9 @@ ARGI4
 ADDRGP4 BotAI_Trace
 CALLV
 pop
-line 3960
-;3959:		// if the button is visible from the current position
-;3960:		if (bsptrace.fraction >= 1.0 || bsptrace.ent == entitynum) {
+line 3994
+;3993:		// if the button is visible from the current position
+;3994:		if (bsptrace.fraction >= 1.0 || bsptrace.ent == entitynum) {
 ADDRLP4 356+8
 INDIRF4
 CNSTF4 1065353216
@@ -19801,9 +19835,9 @@ ADDRLP4 344
 INDIRI4
 NEI4 $1696
 LABELV $1700
-line 3962
-;3961:			//
-;3962:			activategoal->goal.entitynum = entitynum; //NOTE: this is the entity number of the shootable button
+line 3996
+;3995:			//
+;3996:			activategoal->goal.entitynum = entitynum; //NOTE: this is the entity number of the shootable button
 ADDRFP4 8
 INDIRP4
 CNSTI4 44
@@ -19811,24 +19845,24 @@ ADDP4
 ADDRLP4 344
 INDIRI4
 ASGNI4
-line 3963
-;3963:			activategoal->goal.number = 0;
+line 3997
+;3997:			activategoal->goal.number = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 0
 ASGNI4
-line 3964
-;3964:			activategoal->goal.flags = 0;
+line 3998
+;3998:			activategoal->goal.flags = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 52
 ADDP4
 CNSTI4 0
 ASGNI4
-line 3965
-;3965:			VectorCopy(bs->origin, activategoal->goal.origin);
+line 3999
+;3999:			VectorCopy(bs->origin, activategoal->goal.origin);
 ADDRFP4 8
 INDIRP4
 CNSTI4 4
@@ -19839,8 +19873,8 @@ CNSTI4 4908
 ADDP4
 INDIRB
 ASGNB 12
-line 3966
-;3966:			activategoal->goal.areanum = bs->areanum;
+line 4000
+;4000:			activategoal->goal.areanum = bs->areanum;
 ADDRFP4 8
 INDIRP4
 CNSTI4 16
@@ -19851,8 +19885,8 @@ CNSTI4 4948
 ADDP4
 INDIRI4
 ASGNI4
-line 3967
-;3967:			VectorSet(activategoal->goal.mins, -8, -8, -8);
+line 4001
+;4001:			VectorSet(activategoal->goal.mins, -8, -8, -8);
 ADDRFP4 8
 INDIRP4
 CNSTI4 20
@@ -19871,8 +19905,8 @@ CNSTI4 28
 ADDP4
 CNSTF4 3238002688
 ASGNF4
-line 3968
-;3968:			VectorSet(activategoal->goal.maxs, 8, 8, 8);
+line 4002
+;4002:			VectorSet(activategoal->goal.maxs, 8, 8, 8);
 ADDRFP4 8
 INDIRP4
 CNSTI4 32
@@ -19891,21 +19925,21 @@ CNSTI4 40
 ADDP4
 CNSTF4 1090519040
 ASGNF4
-line 3970
-;3969:			//
-;3970:			return qtrue;
+line 4004
+;4003:			//
+;4004:			return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $1651
 JUMPV
 LABELV $1696
-line 3972
-;3971:		}
-;3972:		else {
-line 3975
-;3973:			//create a goal from where the button is visible and shoot at the button from there
-;3974:			//add bounding box size to the dist
-;3975:			trap_AAS_PresenceTypeBoundingBox(PRESENCE_CROUCH, bboxmins, bboxmaxs);
+line 4006
+;4005:		}
+;4006:		else {
+line 4009
+;4007:			//create a goal from where the button is visible and shoot at the button from there
+;4008:			//add bounding box size to the dist
+;4009:			trap_AAS_PresenceTypeBoundingBox(PRESENCE_CROUCH, bboxmins, bboxmaxs);
 CNSTI4 4
 ARGI4
 ADDRLP4 136
@@ -19915,14 +19949,14 @@ ARGP4
 ADDRGP4 trap_AAS_PresenceTypeBoundingBox
 CALLV
 pop
-line 3976
-;3976:			for (i = 0; i < 3; i++) {
+line 4010
+;4010:			for (i = 0; i < 3; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $1701
-line 3977
-;3977:				if (movedir[i] < 0) dist += fabs(movedir[i]) * fabs(bboxmaxs[i]);
+line 4011
+;4011:				if (movedir[i] < 0) dist += fabs(movedir[i]) * fabs(bboxmaxs[i]);
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -19969,8 +20003,8 @@ ASGNF4
 ADDRGP4 $1706
 JUMPV
 LABELV $1705
-line 3978
-;3978:				else dist += fabs(movedir[i]) * fabs(bboxmins[i]);
+line 4012
+;4012:				else dist += fabs(movedir[i]) * fabs(bboxmins[i]);
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -20006,10 +20040,10 @@ MULF4
 ADDF4
 ASGNF4
 LABELV $1706
-line 3979
-;3979:			}
+line 4013
+;4013:			}
 LABELV $1702
-line 3976
+line 4010
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -20020,9 +20054,9 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 3
 LTI4 $1701
-line 3981
-;3980:			//calculate the goal origin
-;3981:			VectorMA(origin, -dist, movedir, goalorigin);
+line 4015
+;4014:			//calculate the goal origin
+;4015:			VectorMA(origin, -dist, movedir, goalorigin);
 ADDRLP4 608
 ADDRLP4 28
 INDIRF4
@@ -20059,37 +20093,37 @@ NEGF4
 MULF4
 ADDF4
 ASGNF4
-line 3983
-;3982:			//
-;3983:			VectorCopy(goalorigin, start);
+line 4017
+;4016:			//
+;4017:			VectorCopy(goalorigin, start);
 ADDRLP4 292
 ADDRLP4 124
 INDIRB
 ASGNB 12
-line 3984
-;3984:			start[2] += 24;
+line 4018
+;4018:			start[2] += 24;
 ADDRLP4 292+8
 ADDRLP4 292+8
 INDIRF4
 CNSTF4 1103101952
 ADDF4
 ASGNF4
-line 3985
-;3985:			VectorCopy(start, end);
+line 4019
+;4019:			VectorCopy(start, end);
 ADDRLP4 332
 ADDRLP4 292
 INDIRB
 ASGNB 12
-line 3986
-;3986:			end[2] -= 512;
+line 4020
+;4020:			end[2] -= 512;
 ADDRLP4 332+8
 ADDRLP4 332+8
 INDIRF4
 CNSTF4 1140850688
 SUBF4
 ASGNF4
-line 3987
-;3987:			numareas = trap_AAS_TraceAreas(start, end, areas, points, 10);
+line 4021
+;4021:			numareas = trap_AAS_TraceAreas(start, end, areas, points, 10);
 ADDRLP4 292
 ARGP4
 ADDRLP4 332
@@ -20108,9 +20142,9 @@ ADDRLP4 108
 ADDRLP4 612
 INDIRI4
 ASGNI4
-line 3989
-;3988:			//
-;3989:			for (i = numareas-1; i >= 0; i--) {
+line 4023
+;4022:			//
+;4023:			for (i = numareas-1; i >= 0; i--) {
 ADDRLP4 0
 ADDRLP4 108
 INDIRI4
@@ -20120,8 +20154,8 @@ ASGNI4
 ADDRGP4 $1718
 JUMPV
 LABELV $1715
-line 3990
-;3990:				if (trap_AAS_AreaReachability(areas[i])) {
+line 4024
+;4024:				if (trap_AAS_AreaReachability(areas[i])) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -20138,16 +20172,16 @@ ADDRLP4 616
 INDIRI4
 CNSTI4 0
 EQI4 $1719
-line 3991
-;3991:					break;
+line 4025
+;4025:					break;
 ADDRGP4 $1717
 JUMPV
 LABELV $1719
-line 3993
-;3992:				}
-;3993:			}
+line 4027
+;4026:				}
+;4027:			}
 LABELV $1716
-line 3989
+line 4023
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -20160,25 +20194,25 @@ INDIRI4
 CNSTI4 0
 GEI4 $1715
 LABELV $1717
-line 3994
-;3994:			if (i < 0) {
+line 4028
+;4028:			if (i < 0) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 GEI4 $1721
-line 3996
-;3995:				// FIXME: trace forward and maybe in other directions to find a valid area
-;3996:			}
+line 4030
+;4029:				// FIXME: trace forward and maybe in other directions to find a valid area
+;4030:			}
 LABELV $1721
-line 3997
-;3997:			if (i >= 0) {
+line 4031
+;4031:			if (i >= 0) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 LTI4 $1723
-line 3999
-;3998:				//
-;3999:				VectorCopy(points[i], activategoal->goal.origin);
+line 4033
+;4032:				//
+;4033:				VectorCopy(points[i], activategoal->goal.origin);
 ADDRFP4 8
 INDIRP4
 CNSTI4 4
@@ -20191,8 +20225,8 @@ ADDRLP4 440
 ADDP4
 INDIRB
 ASGNB 12
-line 4000
-;4000:				activategoal->goal.areanum = areas[i];
+line 4034
+;4034:				activategoal->goal.areanum = areas[i];
 ADDRFP4 8
 INDIRP4
 CNSTI4 16
@@ -20205,8 +20239,8 @@ ADDRLP4 32
 ADDP4
 INDIRI4
 ASGNI4
-line 4001
-;4001:				VectorSet(activategoal->goal.mins, 8, 8, 8);
+line 4035
+;4035:				VectorSet(activategoal->goal.mins, 8, 8, 8);
 ADDRFP4 8
 INDIRP4
 CNSTI4 20
@@ -20225,8 +20259,8 @@ CNSTI4 28
 ADDP4
 CNSTF4 1090519040
 ASGNF4
-line 4002
-;4002:				VectorSet(activategoal->goal.maxs, -8, -8, -8);
+line 4036
+;4036:				VectorSet(activategoal->goal.maxs, -8, -8, -8);
 ADDRFP4 8
 INDIRP4
 CNSTI4 32
@@ -20245,17 +20279,17 @@ CNSTI4 40
 ADDP4
 CNSTF4 3238002688
 ASGNF4
-line 4004
-;4003:				//
-;4004:				for (i = 0; i < 3; i++)
+line 4038
+;4037:				//
+;4038:				for (i = 0; i < 3; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $1725
-line 4005
-;4005:				{
-line 4006
-;4006:					if (movedir[i] < 0) activategoal->goal.maxs[i] += fabs(movedir[i]) * fabs(extramaxs[i]);
+line 4039
+;4039:				{
+line 4040
+;4040:					if (movedir[i] < 0) activategoal->goal.maxs[i] += fabs(movedir[i]) * fabs(extramaxs[i]);
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -20317,8 +20351,8 @@ ASGNF4
 ADDRGP4 $1730
 JUMPV
 LABELV $1729
-line 4007
-;4007:					else activategoal->goal.mins[i] += fabs(movedir[i]) * fabs(extramins[i]);
+line 4041
+;4041:					else activategoal->goal.mins[i] += fabs(movedir[i]) * fabs(extramins[i]);
 ADDRLP4 632
 ADDRLP4 0
 INDIRI4
@@ -20369,10 +20403,10 @@ MULF4
 ADDF4
 ASGNF4
 LABELV $1730
-line 4008
-;4008:				} //end for
+line 4042
+;4042:				} //end for
 LABELV $1726
-line 4004
+line 4038
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -20383,9 +20417,9 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 3
 LTI4 $1725
-line 4010
-;4009:				//
-;4010:				activategoal->goal.entitynum = entitynum;
+line 4044
+;4043:				//
+;4044:				activategoal->goal.entitynum = entitynum;
 ADDRFP4 8
 INDIRP4
 CNSTI4 44
@@ -20393,45 +20427,45 @@ ADDP4
 ADDRLP4 344
 INDIRI4
 ASGNI4
-line 4011
-;4011:				activategoal->goal.number = 0;
+line 4045
+;4045:				activategoal->goal.number = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4012
-;4012:				activategoal->goal.flags = 0;
+line 4046
+;4046:				activategoal->goal.flags = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 52
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4013
-;4013:				return qtrue;
+line 4047
+;4047:				return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $1651
 JUMPV
 LABELV $1723
-line 4015
-;4014:			}
-;4015:		}
-line 4016
-;4016:		return qfalse;
+line 4049
+;4048:			}
+;4049:		}
+line 4050
+;4050:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $1651
 JUMPV
 LABELV $1688
-line 4018
-;4017:	}
-;4018:	else {
-line 4020
-;4019:		//add bounding box size to the dist
-;4020:		trap_AAS_PresenceTypeBoundingBox(PRESENCE_CROUCH, bboxmins, bboxmaxs);
+line 4052
+;4051:	}
+;4052:	else {
+line 4054
+;4053:		//add bounding box size to the dist
+;4054:		trap_AAS_PresenceTypeBoundingBox(PRESENCE_CROUCH, bboxmins, bboxmaxs);
 CNSTI4 4
 ARGI4
 ADDRLP4 136
@@ -20441,14 +20475,14 @@ ARGP4
 ADDRGP4 trap_AAS_PresenceTypeBoundingBox
 CALLV
 pop
-line 4021
-;4021:		for (i = 0; i < 3; i++) {
+line 4055
+;4055:		for (i = 0; i < 3; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $1731
-line 4022
-;4022:			if (movedir[i] < 0) dist += fabs(movedir[i]) * fabs(bboxmaxs[i]);
+line 4056
+;4056:			if (movedir[i] < 0) dist += fabs(movedir[i]) * fabs(bboxmaxs[i]);
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -20495,8 +20529,8 @@ ASGNF4
 ADDRGP4 $1736
 JUMPV
 LABELV $1735
-line 4023
-;4023:			else dist += fabs(movedir[i]) * fabs(bboxmins[i]);
+line 4057
+;4057:			else dist += fabs(movedir[i]) * fabs(bboxmins[i]);
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -20532,10 +20566,10 @@ MULF4
 ADDF4
 ASGNF4
 LABELV $1736
-line 4024
-;4024:		}
+line 4058
+;4058:		}
 LABELV $1732
-line 4021
+line 4055
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -20546,9 +20580,9 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 3
 LTI4 $1731
-line 4026
-;4025:		//calculate the goal origin
-;4026:		VectorMA(origin, -dist, movedir, goalorigin);
+line 4060
+;4059:		//calculate the goal origin
+;4060:		VectorMA(origin, -dist, movedir, goalorigin);
 ADDRLP4 596
 ADDRLP4 28
 INDIRF4
@@ -20585,37 +20619,37 @@ NEGF4
 MULF4
 ADDF4
 ASGNF4
-line 4028
-;4027:		//
-;4028:		VectorCopy(goalorigin, start);
+line 4062
+;4061:		//
+;4062:		VectorCopy(goalorigin, start);
 ADDRLP4 292
 ADDRLP4 124
 INDIRB
 ASGNB 12
-line 4029
-;4029:		start[2] += 24;
+line 4063
+;4063:		start[2] += 24;
 ADDRLP4 292+8
 ADDRLP4 292+8
 INDIRF4
 CNSTF4 1103101952
 ADDF4
 ASGNF4
-line 4030
-;4030:		VectorCopy(start, end);
+line 4064
+;4064:		VectorCopy(start, end);
 ADDRLP4 332
 ADDRLP4 292
 INDIRB
 ASGNB 12
-line 4031
-;4031:		end[2] -= 100;
+line 4065
+;4065:		end[2] -= 100;
 ADDRLP4 332+8
 ADDRLP4 332+8
 INDIRF4
 CNSTF4 1120403456
 SUBF4
 ASGNF4
-line 4032
-;4032:		numareas = trap_AAS_TraceAreas(start, end, areas, NULL, 10);
+line 4066
+;4066:		numareas = trap_AAS_TraceAreas(start, end, areas, NULL, 10);
 ADDRLP4 292
 ARGP4
 ADDRLP4 332
@@ -20634,17 +20668,17 @@ ADDRLP4 108
 ADDRLP4 600
 INDIRI4
 ASGNI4
-line 4034
-;4033:		//
-;4034:		for (i = 0; i < numareas; i++) {
+line 4068
+;4067:		//
+;4068:		for (i = 0; i < numareas; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1748
 JUMPV
 LABELV $1745
-line 4035
-;4035:			if (trap_AAS_AreaReachability(areas[i])) {
+line 4069
+;4069:			if (trap_AAS_AreaReachability(areas[i])) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -20661,16 +20695,16 @@ ADDRLP4 604
 INDIRI4
 CNSTI4 0
 EQI4 $1749
-line 4036
-;4036:				break;
+line 4070
+;4070:				break;
 ADDRGP4 $1747
 JUMPV
 LABELV $1749
-line 4038
-;4037:			}
-;4038:		}
+line 4072
+;4071:			}
+;4072:		}
 LABELV $1746
-line 4034
+line 4068
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -20684,16 +20718,16 @@ ADDRLP4 108
 INDIRI4
 LTI4 $1745
 LABELV $1747
-line 4039
-;4039:		if (i < numareas) {
+line 4073
+;4073:		if (i < numareas) {
 ADDRLP4 0
 INDIRI4
 ADDRLP4 108
 INDIRI4
 GEI4 $1751
-line 4041
-;4040:			//
-;4041:			VectorCopy(origin, activategoal->goal.origin);
+line 4075
+;4074:			//
+;4075:			VectorCopy(origin, activategoal->goal.origin);
 ADDRFP4 8
 INDIRP4
 CNSTI4 4
@@ -20701,8 +20735,8 @@ ADDP4
 ADDRLP4 16
 INDIRB
 ASGNB 12
-line 4042
-;4042:			activategoal->goal.areanum = areas[i];
+line 4076
+;4076:			activategoal->goal.areanum = areas[i];
 ADDRFP4 8
 INDIRP4
 CNSTI4 16
@@ -20715,8 +20749,8 @@ ADDRLP4 32
 ADDP4
 INDIRI4
 ASGNI4
-line 4043
-;4043:			VectorSubtract(mins, origin, activategoal->goal.mins);
+line 4077
+;4077:			VectorSubtract(mins, origin, activategoal->goal.mins);
 ADDRFP4 8
 INDIRP4
 CNSTI4 20
@@ -20747,8 +20781,8 @@ ADDRLP4 16+8
 INDIRF4
 SUBF4
 ASGNF4
-line 4044
-;4044:			VectorSubtract(maxs, origin, activategoal->goal.maxs);
+line 4078
+;4078:			VectorSubtract(maxs, origin, activategoal->goal.maxs);
 ADDRFP4 8
 INDIRP4
 CNSTI4 32
@@ -20779,17 +20813,17 @@ ADDRLP4 16+8
 INDIRF4
 SUBF4
 ASGNF4
-line 4046
-;4045:			//
-;4046:			for (i = 0; i < 3; i++)
+line 4080
+;4079:			//
+;4080:			for (i = 0; i < 3; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $1761
-line 4047
-;4047:			{
-line 4048
-;4048:				if (movedir[i] < 0) activategoal->goal.maxs[i] += fabs(movedir[i]) * fabs(extramaxs[i]);
+line 4081
+;4081:			{
+line 4082
+;4082:				if (movedir[i] < 0) activategoal->goal.maxs[i] += fabs(movedir[i]) * fabs(extramaxs[i]);
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -20851,8 +20885,8 @@ ASGNF4
 ADDRGP4 $1766
 JUMPV
 LABELV $1765
-line 4049
-;4049:				else activategoal->goal.mins[i] += fabs(movedir[i]) * fabs(extramins[i]);
+line 4083
+;4083:				else activategoal->goal.mins[i] += fabs(movedir[i]) * fabs(extramins[i]);
 ADDRLP4 620
 ADDRLP4 0
 INDIRI4
@@ -20903,10 +20937,10 @@ MULF4
 ADDF4
 ASGNF4
 LABELV $1766
-line 4050
-;4050:			} //end for
+line 4084
+;4084:			} //end for
 LABELV $1762
-line 4046
+line 4080
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -20917,9 +20951,9 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 3
 LTI4 $1761
-line 4052
-;4051:			//
-;4052:			activategoal->goal.entitynum = entitynum;
+line 4086
+;4085:			//
+;4086:			activategoal->goal.entitynum = entitynum;
 ADDRFP4 8
 INDIRP4
 CNSTI4 44
@@ -20927,56 +20961,56 @@ ADDP4
 ADDRLP4 344
 INDIRI4
 ASGNI4
-line 4053
-;4053:			activategoal->goal.number = 0;
+line 4087
+;4087:			activategoal->goal.number = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4054
-;4054:			activategoal->goal.flags = 0;
+line 4088
+;4088:			activategoal->goal.flags = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 52
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4055
-;4055:			return qtrue;
+line 4089
+;4089:			return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $1651
 JUMPV
 LABELV $1751
-line 4057
-;4056:		}
-;4057:	}
-line 4058
-;4058:	return qfalse;
+line 4091
+;4090:		}
+;4091:	}
+line 4092
+;4092:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $1651
 endproc BotFuncButtonActivateGoal 648 28
 export BotFuncDoorActivateGoal
 proc BotFuncDoorActivateGoal 1096 20
-line 4066
-;4059:}
-;4060:
-;4061:/*
-;4062:==================
-;4063:BotFuncDoorGoal
-;4064:==================
-;4065:*/
-;4066:int BotFuncDoorActivateGoal(bot_state_t *bs, int bspent, bot_activategoal_t *activategoal) {
-line 4072
-;4067:	int modelindex, entitynum;
-;4068:	char model[MAX_INFO_STRING];
-;4069:	vec3_t mins, maxs, origin, angles;
-;4070:
-;4071:	//shoot at the shootable door
-;4072:	trap_AAS_ValueForBSPEpairKey(bspent, "model", model, sizeof(model));
+line 4100
+;4093:}
+;4094:
+;4095:/*
+;4096:==================
+;4097:BotFuncDoorGoal
+;4098:==================
+;4099:*/
+;4100:int BotFuncDoorActivateGoal(bot_state_t *bs, int bspent, bot_activategoal_t *activategoal) {
+line 4106
+;4101:	int modelindex, entitynum;
+;4102:	char model[MAX_INFO_STRING];
+;4103:	vec3_t mins, maxs, origin, angles;
+;4104:
+;4105:	//shoot at the shootable door
+;4106:	trap_AAS_ValueForBSPEpairKey(bspent, "model", model, sizeof(model));
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -20989,22 +21023,22 @@ ARGI4
 ADDRGP4 trap_AAS_ValueForBSPEpairKey
 CALLI4
 pop
-line 4073
-;4073:	if (!*model)
+line 4107
+;4107:	if (!*model)
 ADDRLP4 12
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $1768
-line 4074
-;4074:		return qfalse;
+line 4108
+;4108:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $1767
 JUMPV
 LABELV $1768
-line 4075
-;4075:	modelindex = atoi(model+1);
+line 4109
+;4109:	modelindex = atoi(model+1);
 ADDRLP4 12+1
 ARGP4
 ADDRLP4 1080
@@ -21015,21 +21049,21 @@ ADDRLP4 1060
 ADDRLP4 1080
 INDIRI4
 ASGNI4
-line 4076
-;4076:	if (!modelindex)
+line 4110
+;4110:	if (!modelindex)
 ADDRLP4 1060
 INDIRI4
 CNSTI4 0
 NEI4 $1771
-line 4077
-;4077:		return qfalse;
+line 4111
+;4111:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $1767
 JUMPV
 LABELV $1771
-line 4078
-;4078:	VectorClear(angles);
+line 4112
+;4112:	VectorClear(angles);
 ADDRLP4 1084
 CNSTF4 0
 ASGNF4
@@ -21045,8 +21079,8 @@ ADDRLP4 1064
 ADDRLP4 1084
 INDIRF4
 ASGNF4
-line 4079
-;4079:	entitynum = BotModelMinsMaxs(modelindex, ET_MOVER, 0, mins, maxs);
+line 4113
+;4113:	entitynum = BotModelMinsMaxs(modelindex, ET_MOVER, 0, mins, maxs);
 ADDRLP4 1060
 INDIRI4
 ARGI4
@@ -21066,9 +21100,9 @@ ADDRLP4 1076
 ADDRLP4 1088
 INDIRI4
 ASGNI4
-line 4081
-;4080:	//door origin
-;4081:	VectorAdd(mins, maxs, origin);
+line 4115
+;4114:	//door origin
+;4115:	VectorAdd(mins, maxs, origin);
 ADDRLP4 0
 ADDRLP4 1036
 INDIRF4
@@ -21090,8 +21124,8 @@ ADDRLP4 1048+8
 INDIRF4
 ADDF4
 ASGNF4
-line 4082
-;4082:	VectorScale(origin, 0.5, origin);
+line 4116
+;4116:	VectorScale(origin, 0.5, origin);
 ADDRLP4 1092
 CNSTF4 1056964608
 ASGNF4
@@ -21115,8 +21149,8 @@ ADDRLP4 0+8
 INDIRF4
 MULF4
 ASGNF4
-line 4083
-;4083:	VectorCopy(origin, activategoal->target);
+line 4117
+;4117:	VectorCopy(origin, activategoal->target);
 ADDRFP4 8
 INDIRP4
 CNSTI4 80
@@ -21124,17 +21158,17 @@ ADDP4
 ADDRLP4 0
 INDIRB
 ASGNB 12
-line 4084
-;4084:	activategoal->shoot = qtrue;
+line 4118
+;4118:	activategoal->shoot = qtrue;
 ADDRFP4 8
 INDIRP4
 CNSTI4 72
 ADDP4
 CNSTI4 1
 ASGNI4
-line 4086
-;4085:	//
-;4086:	activategoal->goal.entitynum = entitynum; //NOTE: this is the entity number of the shootable door
+line 4120
+;4119:	//
+;4120:	activategoal->goal.entitynum = entitynum; //NOTE: this is the entity number of the shootable door
 ADDRFP4 8
 INDIRP4
 CNSTI4 44
@@ -21142,24 +21176,24 @@ ADDP4
 ADDRLP4 1076
 INDIRI4
 ASGNI4
-line 4087
-;4087:	activategoal->goal.number = 0;
+line 4121
+;4121:	activategoal->goal.number = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4088
-;4088:	activategoal->goal.flags = 0;
+line 4122
+;4122:	activategoal->goal.flags = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 52
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4089
-;4089:	VectorCopy(bs->origin, activategoal->goal.origin);
+line 4123
+;4123:	VectorCopy(bs->origin, activategoal->goal.origin);
 ADDRFP4 8
 INDIRP4
 CNSTI4 4
@@ -21170,8 +21204,8 @@ CNSTI4 4908
 ADDP4
 INDIRB
 ASGNB 12
-line 4090
-;4090:	activategoal->goal.areanum = bs->areanum;
+line 4124
+;4124:	activategoal->goal.areanum = bs->areanum;
 ADDRFP4 8
 INDIRP4
 CNSTI4 16
@@ -21182,8 +21216,8 @@ CNSTI4 4948
 ADDP4
 INDIRI4
 ASGNI4
-line 4091
-;4091:	VectorSet(activategoal->goal.mins, -8, -8, -8);
+line 4125
+;4125:	VectorSet(activategoal->goal.mins, -8, -8, -8);
 ADDRFP4 8
 INDIRP4
 CNSTI4 20
@@ -21202,8 +21236,8 @@ CNSTI4 28
 ADDP4
 CNSTF4 3238002688
 ASGNF4
-line 4092
-;4092:	VectorSet(activategoal->goal.maxs, 8, 8, 8);
+line 4126
+;4126:	VectorSet(activategoal->goal.maxs, 8, 8, 8);
 ADDRFP4 8
 INDIRP4
 CNSTI4 32
@@ -21222,38 +21256,38 @@ CNSTI4 40
 ADDP4
 CNSTF4 1090519040
 ASGNF4
-line 4093
-;4093:	return qtrue;
+line 4127
+;4127:	return qtrue;
 CNSTI4 1
 RETI4
 LABELV $1767
 endproc BotFuncDoorActivateGoal 1096 20
 export BotTriggerMultipleActivateGoal
 proc BotTriggerMultipleActivateGoal 300 20
-line 4101
-;4094:	} 
-;4095:
-;4096:/*
-;4097:==================
-;4098:BotTriggerMultipleGoal
-;4099:==================
-;4100:*/
-;4101:int BotTriggerMultipleActivateGoal(bot_state_t *bs, int bspent, bot_activategoal_t *activategoal) {
-line 4107
-;4102:	int i, areas[10], numareas, modelindex, entitynum;
-;4103:	char model[128];
-;4104:	vec3_t start, end, mins, maxs, angles;
-;4105:	vec3_t origin, goalorigin;
-;4106:
-;4107:	activategoal->shoot = qfalse;
+line 4135
+;4128:	} 
+;4129:
+;4130:/*
+;4131:==================
+;4132:BotTriggerMultipleGoal
+;4133:==================
+;4134:*/
+;4135:int BotTriggerMultipleActivateGoal(bot_state_t *bs, int bspent, bot_activategoal_t *activategoal) {
+line 4141
+;4136:	int i, areas[10], numareas, modelindex, entitynum;
+;4137:	char model[128];
+;4138:	vec3_t start, end, mins, maxs, angles;
+;4139:	vec3_t origin, goalorigin;
+;4140:
+;4141:	activategoal->shoot = qfalse;
 ADDRFP4 8
 INDIRP4
 CNSTI4 72
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4108
-;4108:	VectorClear(activategoal->target);
+line 4142
+;4142:	VectorClear(activategoal->target);
 ADDRLP4 268
 ADDRFP4 8
 INDIRP4
@@ -21282,9 +21316,9 @@ ADDP4
 ADDRLP4 272
 INDIRF4
 ASGNF4
-line 4110
-;4109:	//create a bot goal towards the trigger
-;4110:	trap_AAS_ValueForBSPEpairKey(bspent, "model", model, sizeof(model));
+line 4144
+;4143:	//create a bot goal towards the trigger
+;4144:	trap_AAS_ValueForBSPEpairKey(bspent, "model", model, sizeof(model));
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -21297,22 +21331,22 @@ ARGI4
 ADDRGP4 trap_AAS_ValueForBSPEpairKey
 CALLI4
 pop
-line 4111
-;4111:	if (!*model)
+line 4145
+;4145:	if (!*model)
 ADDRLP4 84
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $1786
-line 4112
-;4112:		return qfalse;
+line 4146
+;4146:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $1785
 JUMPV
 LABELV $1786
-line 4113
-;4113:	modelindex = atoi(model+1);
+line 4147
+;4147:	modelindex = atoi(model+1);
 ADDRLP4 84+1
 ARGP4
 ADDRLP4 276
@@ -21323,21 +21357,21 @@ ADDRLP4 224
 ADDRLP4 276
 INDIRI4
 ASGNI4
-line 4114
-;4114:	if (!modelindex)
+line 4148
+;4148:	if (!modelindex)
 ADDRLP4 224
 INDIRI4
 CNSTI4 0
 NEI4 $1789
-line 4115
-;4115:		return qfalse;
+line 4149
+;4149:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $1785
 JUMPV
 LABELV $1789
-line 4116
-;4116:	VectorClear(angles);
+line 4150
+;4150:	VectorClear(angles);
 ADDRLP4 280
 CNSTF4 0
 ASGNF4
@@ -21353,8 +21387,8 @@ ADDRLP4 240
 ADDRLP4 280
 INDIRF4
 ASGNF4
-line 4117
-;4117:	entitynum = BotModelMinsMaxs(modelindex, 0, CONTENTS_TRIGGER, mins, maxs);
+line 4151
+;4151:	entitynum = BotModelMinsMaxs(modelindex, 0, CONTENTS_TRIGGER, mins, maxs);
 ADDRLP4 224
 INDIRI4
 ARGI4
@@ -21374,9 +21408,9 @@ ADDRLP4 264
 ADDRLP4 284
 INDIRI4
 ASGNI4
-line 4119
-;4118:	//trigger origin
-;4119:	VectorAdd(mins, maxs, origin);
+line 4153
+;4152:	//trigger origin
+;4153:	VectorAdd(mins, maxs, origin);
 ADDRLP4 4
 ADDRLP4 60
 INDIRF4
@@ -21398,8 +21432,8 @@ ADDRLP4 72+8
 INDIRF4
 ADDF4
 ASGNF4
-line 4120
-;4120:	VectorScale(origin, 0.5, origin);
+line 4154
+;4154:	VectorScale(origin, 0.5, origin);
 ADDRLP4 288
 CNSTF4 1056964608
 ASGNF4
@@ -21423,43 +21457,43 @@ ADDRLP4 4+8
 INDIRF4
 MULF4
 ASGNF4
-line 4121
-;4121:	VectorCopy(origin, goalorigin);
+line 4155
+;4155:	VectorCopy(origin, goalorigin);
 ADDRLP4 252
 ADDRLP4 4
 INDIRB
 ASGNB 12
-line 4123
-;4122:	//
-;4123:	VectorCopy(goalorigin, start);
+line 4157
+;4156:	//
+;4157:	VectorCopy(goalorigin, start);
 ADDRLP4 212
 ADDRLP4 252
 INDIRB
 ASGNB 12
-line 4124
-;4124:	start[2] += 24;
+line 4158
+;4158:	start[2] += 24;
 ADDRLP4 212+8
 ADDRLP4 212+8
 INDIRF4
 CNSTF4 1103101952
 ADDF4
 ASGNF4
-line 4125
-;4125:	VectorCopy(start, end);
+line 4159
+;4159:	VectorCopy(start, end);
 ADDRLP4 228
 ADDRLP4 212
 INDIRB
 ASGNB 12
-line 4126
-;4126:	end[2] -= 100;
+line 4160
+;4160:	end[2] -= 100;
 ADDRLP4 228+8
 ADDRLP4 228+8
 INDIRF4
 CNSTF4 1120403456
 SUBF4
 ASGNF4
-line 4127
-;4127:	numareas = trap_AAS_TraceAreas(start, end, areas, NULL, 10);
+line 4161
+;4161:	numareas = trap_AAS_TraceAreas(start, end, areas, NULL, 10);
 ADDRLP4 212
 ARGP4
 ADDRLP4 228
@@ -21478,17 +21512,17 @@ ADDRLP4 16
 ADDRLP4 292
 INDIRI4
 ASGNI4
-line 4129
-;4128:	//
-;4129:	for (i = 0; i < numareas; i++) {
+line 4163
+;4162:	//
+;4163:	for (i = 0; i < numareas; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1808
 JUMPV
 LABELV $1805
-line 4130
-;4130:		if (trap_AAS_AreaReachability(areas[i])) {
+line 4164
+;4164:		if (trap_AAS_AreaReachability(areas[i])) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -21505,16 +21539,16 @@ ADDRLP4 296
 INDIRI4
 CNSTI4 0
 EQI4 $1809
-line 4131
-;4131:			break;
+line 4165
+;4165:			break;
 ADDRGP4 $1807
 JUMPV
 LABELV $1809
-line 4133
-;4132:		}
-;4133:	}
+line 4167
+;4166:		}
+;4167:	}
 LABELV $1806
-line 4129
+line 4163
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -21528,15 +21562,15 @@ ADDRLP4 16
 INDIRI4
 LTI4 $1805
 LABELV $1807
-line 4134
-;4134:	if (i < numareas) {
+line 4168
+;4168:	if (i < numareas) {
 ADDRLP4 0
 INDIRI4
 ADDRLP4 16
 INDIRI4
 GEI4 $1811
-line 4135
-;4135:		VectorCopy(origin, activategoal->goal.origin);
+line 4169
+;4169:		VectorCopy(origin, activategoal->goal.origin);
 ADDRFP4 8
 INDIRP4
 CNSTI4 4
@@ -21544,8 +21578,8 @@ ADDP4
 ADDRLP4 4
 INDIRB
 ASGNB 12
-line 4136
-;4136:		activategoal->goal.areanum = areas[i];
+line 4170
+;4170:		activategoal->goal.areanum = areas[i];
 ADDRFP4 8
 INDIRP4
 CNSTI4 16
@@ -21558,8 +21592,8 @@ ADDRLP4 20
 ADDP4
 INDIRI4
 ASGNI4
-line 4137
-;4137:		VectorSubtract(mins, origin, activategoal->goal.mins);
+line 4171
+;4171:		VectorSubtract(mins, origin, activategoal->goal.mins);
 ADDRFP4 8
 INDIRP4
 CNSTI4 20
@@ -21590,8 +21624,8 @@ ADDRLP4 4+8
 INDIRF4
 SUBF4
 ASGNF4
-line 4138
-;4138:		VectorSubtract(maxs, origin, activategoal->goal.maxs);
+line 4172
+;4172:		VectorSubtract(maxs, origin, activategoal->goal.maxs);
 ADDRFP4 8
 INDIRP4
 CNSTI4 32
@@ -21622,9 +21656,9 @@ ADDRLP4 4+8
 INDIRF4
 SUBF4
 ASGNF4
-line 4140
-;4139:		//
-;4140:		activategoal->goal.entitynum = entitynum;
+line 4174
+;4173:		//
+;4174:		activategoal->goal.entitynum = entitynum;
 ADDRFP4 8
 INDIRP4
 CNSTI4 44
@@ -21632,49 +21666,49 @@ ADDP4
 ADDRLP4 264
 INDIRI4
 ASGNI4
-line 4141
-;4141:		activategoal->goal.number = 0;
+line 4175
+;4175:		activategoal->goal.number = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4142
-;4142:		activategoal->goal.flags = 0;
+line 4176
+;4176:		activategoal->goal.flags = 0;
 ADDRFP4 8
 INDIRP4
 CNSTI4 52
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4143
-;4143:		return qtrue;
+line 4177
+;4177:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $1785
 JUMPV
 LABELV $1811
-line 4145
-;4144:	}
-;4145:	return qfalse;
+line 4179
+;4178:	}
+;4179:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $1785
 endproc BotTriggerMultipleActivateGoal 300 20
 export BotPopFromActivateGoalStack
 proc BotPopFromActivateGoalStack 4 8
-line 4153
-;4146:}
-;4147:
-;4148:/*
-;4149:==================
-;4150:BotPopFromActivateGoalStack
-;4151:==================
-;4152:*/
-;4153:int BotPopFromActivateGoalStack(bot_state_t *bs) {
-line 4154
-;4154:	if (!bs->activatestack)
+line 4187
+;4180:}
+;4181:
+;4182:/*
+;4183:==================
+;4184:BotPopFromActivateGoalStack
+;4185:==================
+;4186:*/
+;4187:int BotPopFromActivateGoalStack(bot_state_t *bs) {
+line 4188
+;4188:	if (!bs->activatestack)
 ADDRFP4 0
 INDIRP4
 CNSTI4 7116
@@ -21683,15 +21717,15 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $1822
-line 4155
-;4155:		return qfalse;
+line 4189
+;4189:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $1821
 JUMPV
 LABELV $1822
-line 4156
-;4156:	BotEnableActivateGoalAreas(bs->activatestack, qtrue);
+line 4190
+;4190:	BotEnableActivateGoalAreas(bs->activatestack, qtrue);
 ADDRFP4 0
 INDIRP4
 CNSTI4 7116
@@ -21703,8 +21737,8 @@ ARGI4
 ADDRGP4 BotEnableActivateGoalAreas
 CALLV
 pop
-line 4157
-;4157:	bs->activatestack->inuse = qfalse;
+line 4191
+;4191:	bs->activatestack->inuse = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 7116
@@ -21712,8 +21746,8 @@ ADDP4
 INDIRP4
 CNSTI4 0
 ASGNI4
-line 4158
-;4158:	bs->activatestack->justused_time = FloatTime();
+line 4192
+;4192:	bs->activatestack->justused_time = FloatTime();
 ADDRFP4 0
 INDIRP4
 CNSTI4 7116
@@ -21724,8 +21758,8 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 ASGNF4
-line 4159
-;4159:	bs->activatestack = bs->activatestack->next;
+line 4193
+;4193:	bs->activatestack = bs->activatestack->next;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -21741,48 +21775,48 @@ CNSTI4 240
 ADDP4
 INDIRP4
 ASGNP4
-line 4160
-;4160:	return qtrue;
+line 4194
+;4194:	return qtrue;
 CNSTI4 1
 RETI4
 LABELV $1821
 endproc BotPopFromActivateGoalStack 4 8
 export BotPushOntoActivateGoalStack
 proc BotPushOntoActivateGoalStack 24 12
-line 4168
-;4161:}
-;4162:
-;4163:/*
-;4164:==================
-;4165:BotPushOntoActivateGoalStack
-;4166:==================
-;4167:*/
-;4168:int BotPushOntoActivateGoalStack(bot_state_t *bs, bot_activategoal_t *activategoal) {
-line 4172
-;4169:	int i, best;
-;4170:	float besttime;
-;4171:
-;4172:	best = -1;
+line 4202
+;4195:}
+;4196:
+;4197:/*
+;4198:==================
+;4199:BotPushOntoActivateGoalStack
+;4200:==================
+;4201:*/
+;4202:int BotPushOntoActivateGoalStack(bot_state_t *bs, bot_activategoal_t *activategoal) {
+line 4206
+;4203:	int i, best;
+;4204:	float besttime;
+;4205:
+;4206:	best = -1;
 ADDRLP4 8
 CNSTI4 -1
 ASGNI4
-line 4173
-;4173:	besttime = FloatTime() + 9999;
+line 4207
+;4207:	besttime = FloatTime() + 9999;
 ADDRLP4 4
 ADDRGP4 floattime
 INDIRF4
 CNSTF4 1176255488
 ADDF4
 ASGNF4
-line 4175
-;4174:	//
-;4175:	for (i = 0; i < MAX_ACTIVATESTACK; i++) {
+line 4209
+;4208:	//
+;4209:	for (i = 0; i < MAX_ACTIVATESTACK; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $1825
-line 4176
-;4176:		if (!bs->activategoalheap[i].inuse) {
+line 4210
+;4210:		if (!bs->activategoalheap[i].inuse) {
 CNSTI4 244
 ADDRLP4 0
 INDIRI4
@@ -21795,8 +21829,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $1829
-line 4177
-;4177:			if (bs->activategoalheap[i].justused_time < besttime) {
+line 4211
+;4211:			if (bs->activategoalheap[i].justused_time < besttime) {
 CNSTI4 244
 ADDRLP4 0
 INDIRI4
@@ -21812,8 +21846,8 @@ INDIRF4
 ADDRLP4 4
 INDIRF4
 GEF4 $1831
-line 4178
-;4178:				besttime = bs->activategoalheap[i].justused_time;
+line 4212
+;4212:				besttime = bs->activategoalheap[i].justused_time;
 ADDRLP4 4
 CNSTI4 244
 ADDRLP4 0
@@ -21828,22 +21862,22 @@ CNSTI4 68
 ADDP4
 INDIRF4
 ASGNF4
-line 4179
-;4179:				best = i;
+line 4213
+;4213:				best = i;
 ADDRLP4 8
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 4180
-;4180:			}
+line 4214
+;4214:			}
 LABELV $1831
-line 4181
-;4181:		}
+line 4215
+;4215:		}
 LABELV $1829
-line 4182
-;4182:	}
+line 4216
+;4216:	}
 LABELV $1826
-line 4175
+line 4209
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -21854,14 +21888,14 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 8
 LTI4 $1825
-line 4183
-;4183:	if (best != -1) {
+line 4217
+;4217:	if (best != -1) {
 ADDRLP4 8
 INDIRI4
 CNSTI4 -1
 EQI4 $1833
-line 4184
-;4184:		memcpy(&bs->activategoalheap[best], activategoal, sizeof(bot_activategoal_t));
+line 4218
+;4218:		memcpy(&bs->activategoalheap[best], activategoal, sizeof(bot_activategoal_t));
 ADDRLP4 12
 CNSTI4 244
 ASGNI4
@@ -21885,8 +21919,8 @@ ARGI4
 ADDRGP4 memcpy
 CALLP4
 pop
-line 4185
-;4185:		bs->activategoalheap[best].inuse = qtrue;
+line 4219
+;4219:		bs->activategoalheap[best].inuse = qtrue;
 CNSTI4 244
 ADDRLP4 8
 INDIRI4
@@ -21898,8 +21932,8 @@ ADDP4
 ADDP4
 CNSTI4 1
 ASGNI4
-line 4186
-;4186:		bs->activategoalheap[best].next = bs->activatestack;
+line 4220
+;4220:		bs->activategoalheap[best].next = bs->activatestack;
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -21921,8 +21955,8 @@ CNSTI4 7116
 ADDP4
 INDIRP4
 ASGNP4
-line 4187
-;4187:		bs->activatestack = &bs->activategoalheap[best];
+line 4221
+;4221:		bs->activatestack = &bs->activategoalheap[best];
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -21941,37 +21975,37 @@ CNSTI4 7120
 ADDP4
 ADDP4
 ASGNP4
-line 4188
-;4188:		return qtrue;
+line 4222
+;4222:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $1824
 JUMPV
 LABELV $1833
-line 4190
-;4189:	}
-;4190:	return qfalse;
+line 4224
+;4223:	}
+;4224:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $1824
 endproc BotPushOntoActivateGoalStack 24 12
 export BotClearActivateGoalStack
 proc BotClearActivateGoalStack 0 4
-line 4198
-;4191:}
-;4192:
-;4193:/*
-;4194:==================
-;4195:BotClearActivateGoalStack
-;4196:==================
-;4197:*/
-;4198:void BotClearActivateGoalStack(bot_state_t *bs) {
+line 4232
+;4225:}
+;4226:
+;4227:/*
+;4228:==================
+;4229:BotClearActivateGoalStack
+;4230:==================
+;4231:*/
+;4232:void BotClearActivateGoalStack(bot_state_t *bs) {
 ADDRGP4 $1837
 JUMPV
 LABELV $1836
-line 4200
-;4199:	while(bs->activatestack)
-;4200:		BotPopFromActivateGoalStack(bs);
+line 4234
+;4233:	while(bs->activatestack)
+;4234:		BotPopFromActivateGoalStack(bs);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -21979,7 +22013,7 @@ ADDRGP4 BotPopFromActivateGoalStack
 CALLI4
 pop
 LABELV $1837
-line 4199
+line 4233
 ADDRFP4 0
 INDIRP4
 CNSTI4 7116
@@ -21988,24 +22022,24 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $1836
-line 4201
-;4201:}
+line 4235
+;4235:}
 LABELV $1835
 endproc BotClearActivateGoalStack 0 4
 export BotEnableActivateGoalAreas
 proc BotEnableActivateGoalAreas 12 8
-line 4208
-;4202:
-;4203:/*
-;4204:==================
-;4205:BotEnableActivateGoalAreas
-;4206:==================
-;4207:*/
-;4208:void BotEnableActivateGoalAreas(bot_activategoal_t *activategoal, int enable) {
-line 4211
-;4209:	int i;
-;4210:
-;4211:	if (activategoal->areasdisabled == !enable)
+line 4242
+;4236:
+;4237:/*
+;4238:==================
+;4239:BotEnableActivateGoalAreas
+;4240:==================
+;4241:*/
+;4242:void BotEnableActivateGoalAreas(bot_activategoal_t *activategoal, int enable) {
+line 4245
+;4243:	int i;
+;4244:
+;4245:	if (activategoal->areasdisabled == !enable)
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
@@ -22028,21 +22062,21 @@ INDIRI4
 ADDRLP4 4
 INDIRI4
 NEI4 $1840
-line 4212
-;4212:		return;
+line 4246
+;4246:		return;
 ADDRGP4 $1839
 JUMPV
 LABELV $1840
-line 4213
-;4213:	for (i = 0; i < activategoal->numareas; i++)
+line 4247
+;4247:	for (i = 0; i < activategoal->numareas; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1848
 JUMPV
 LABELV $1845
-line 4214
-;4214:		trap_AAS_EnableRoutingArea( activategoal->areas[i], enable );
+line 4248
+;4248:		trap_AAS_EnableRoutingArea( activategoal->areas[i], enable );
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -22061,7 +22095,7 @@ ADDRGP4 trap_AAS_EnableRoutingArea
 CALLI4
 pop
 LABELV $1846
-line 4213
+line 4247
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -22077,8 +22111,8 @@ CNSTI4 232
 ADDP4
 INDIRI4
 LTI4 $1845
-line 4215
-;4215:	activategoal->areasdisabled = !enable;
+line 4249
+;4249:	activategoal->areasdisabled = !enable;
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
@@ -22100,25 +22134,25 @@ ADDP4
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 4216
-;4216:}
+line 4250
+;4250:}
 LABELV $1839
 endproc BotEnableActivateGoalAreas 12 8
 export BotIsGoingToActivateEntity
 proc BotIsGoingToActivateEntity 8 0
-line 4223
-;4217:
-;4218:/*
-;4219:==================
-;4220:BotIsGoingToActivateEntity
-;4221:==================
-;4222:*/
-;4223:int BotIsGoingToActivateEntity(bot_state_t *bs, int entitynum) {
-line 4227
-;4224:	bot_activategoal_t *a;
-;4225:	int i;
-;4226:
-;4227:	for (a = bs->activatestack; a; a = a->next) {
+line 4257
+;4251:
+;4252:/*
+;4253:==================
+;4254:BotIsGoingToActivateEntity
+;4255:==================
+;4256:*/
+;4257:int BotIsGoingToActivateEntity(bot_state_t *bs, int entitynum) {
+line 4261
+;4258:	bot_activategoal_t *a;
+;4259:	int i;
+;4260:
+;4261:	for (a = bs->activatestack; a; a = a->next) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -22129,8 +22163,8 @@ ASGNP4
 ADDRGP4 $1856
 JUMPV
 LABELV $1853
-line 4228
-;4228:		if (a->time < FloatTime())
+line 4262
+;4262:		if (a->time < FloatTime())
 ADDRLP4 0
 INDIRP4
 CNSTI4 60
@@ -22139,13 +22173,13 @@ INDIRF4
 ADDRGP4 floattime
 INDIRF4
 GEF4 $1857
-line 4229
-;4229:			continue;
+line 4263
+;4263:			continue;
 ADDRGP4 $1854
 JUMPV
 LABELV $1857
-line 4230
-;4230:		if (a->goal.entitynum == entitynum)
+line 4264
+;4264:		if (a->goal.entitynum == entitynum)
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
@@ -22154,17 +22188,17 @@ INDIRI4
 ADDRFP4 4
 INDIRI4
 NEI4 $1859
-line 4231
-;4231:			return qtrue;
+line 4265
+;4265:			return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $1852
 JUMPV
 LABELV $1859
-line 4232
-;4232:	}
+line 4266
+;4266:	}
 LABELV $1854
-line 4227
+line 4261
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
@@ -22178,14 +22212,14 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $1853
-line 4233
-;4233:	for (i = 0; i < MAX_ACTIVATESTACK; i++) {
+line 4267
+;4267:	for (i = 0; i < MAX_ACTIVATESTACK; i++) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
 LABELV $1861
-line 4234
-;4234:		if (bs->activategoalheap[i].inuse)
+line 4268
+;4268:		if (bs->activategoalheap[i].inuse)
 CNSTI4 244
 ADDRLP4 4
 INDIRI4
@@ -22198,14 +22232,14 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $1865
-line 4235
-;4235:			continue;
+line 4269
+;4269:			continue;
 ADDRGP4 $1862
 JUMPV
 LABELV $1865
-line 4237
-;4236:		//
-;4237:		if (bs->activategoalheap[i].goal.entitynum == entitynum) {
+line 4271
+;4270:		//
+;4271:		if (bs->activategoalheap[i].goal.entitynum == entitynum) {
 CNSTI4 244
 ADDRLP4 4
 INDIRI4
@@ -22221,9 +22255,9 @@ INDIRI4
 ADDRFP4 4
 INDIRI4
 NEI4 $1867
-line 4239
-;4238:			// if the bot went for this goal less than 2 seconds ago
-;4239:			if (bs->activategoalheap[i].justused_time > FloatTime() - 2)
+line 4273
+;4272:			// if the bot went for this goal less than 2 seconds ago
+;4273:			if (bs->activategoalheap[i].justused_time > FloatTime() - 2)
 CNSTI4 244
 ADDRLP4 4
 INDIRI4
@@ -22241,20 +22275,20 @@ INDIRF4
 CNSTF4 1073741824
 SUBF4
 LEF4 $1869
-line 4240
-;4240:				return qtrue;
+line 4274
+;4274:				return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $1852
 JUMPV
 LABELV $1869
-line 4241
-;4241:		}
+line 4275
+;4275:		}
 LABELV $1867
-line 4242
-;4242:	}
+line 4276
+;4276:	}
 LABELV $1862
-line 4233
+line 4267
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -22265,39 +22299,39 @@ ADDRLP4 4
 INDIRI4
 CNSTI4 8
 LTI4 $1861
-line 4243
-;4243:	return qfalse;
+line 4277
+;4277:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $1852
 endproc BotIsGoingToActivateEntity 8 0
 export BotGetActivateGoal
 proc BotGetActivateGoal 3320 20
-line 4256
-;4244:}
-;4245:
-;4246:/*
-;4247:==================
-;4248:BotGetActivateGoal
-;4249:
-;4250:  returns the number of the bsp entity to activate
-;4251:  goal->entitynum will be set to the game entity to activate
-;4252:==================
-;4253:*/
-;4254://#define OBSTACLEDEBUG
-;4255:
-;4256:int BotGetActivateGoal(bot_state_t *bs, int entitynum, bot_activategoal_t *activategoal) {
-line 4266
-;4257:	int i, ent, cur_entities[10], spawnflags, modelindex, areas[MAX_ACTIVATEAREAS*2], numareas, t;
-;4258:	char model[MAX_INFO_STRING], tmpmodel[128];
-;4259:	char target[128], classname[128];
-;4260:	float health;
-;4261:	char targetname[10][128];
-;4262:	aas_entityinfo_t entinfo;
-;4263:	aas_areainfo_t areainfo;
-;4264:	vec3_t origin, angles, absmins, absmaxs;
-;4265:
-;4266:	memset(activategoal, 0, sizeof(bot_activategoal_t));
+line 4290
+;4278:}
+;4279:
+;4280:/*
+;4281:==================
+;4282:BotGetActivateGoal
+;4283:
+;4284:  returns the number of the bsp entity to activate
+;4285:  goal->entitynum will be set to the game entity to activate
+;4286:==================
+;4287:*/
+;4288://#define OBSTACLEDEBUG
+;4289:
+;4290:int BotGetActivateGoal(bot_state_t *bs, int entitynum, bot_activategoal_t *activategoal) {
+line 4300
+;4291:	int i, ent, cur_entities[10], spawnflags, modelindex, areas[MAX_ACTIVATEAREAS*2], numareas, t;
+;4292:	char model[MAX_INFO_STRING], tmpmodel[128];
+;4293:	char target[128], classname[128];
+;4294:	float health;
+;4295:	char targetname[10][128];
+;4296:	aas_entityinfo_t entinfo;
+;4297:	aas_areainfo_t areainfo;
+;4298:	vec3_t origin, angles, absmins, absmaxs;
+;4299:
+;4300:	memset(activategoal, 0, sizeof(bot_activategoal_t));
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -22308,8 +22342,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 4267
-;4267:	BotEntityInfo(entitynum, &entinfo);
+line 4301
+;4301:	BotEntityInfo(entitynum, &entinfo);
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -22318,8 +22352,8 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 4268
-;4268:	Com_sprintf(model, sizeof( model ), "*%d", entinfo.modelindex);
+line 4302
+;4302:	Com_sprintf(model, sizeof( model ), "*%d", entinfo.modelindex);
 ADDRLP4 1712
 ARGP4
 CNSTI4 1024
@@ -22332,8 +22366,8 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 4269
-;4269:	for (ent = trap_AAS_NextBSPEntity(0); ent; ent = trap_AAS_NextBSPEntity(ent)) {
+line 4303
+;4303:	for (ent = trap_AAS_NextBSPEntity(0); ent; ent = trap_AAS_NextBSPEntity(ent)) {
 CNSTI4 0
 ARGI4
 ADDRLP4 3252
@@ -22347,8 +22381,8 @@ ASGNI4
 ADDRGP4 $1877
 JUMPV
 LABELV $1874
-line 4270
-;4270:		if (!trap_AAS_ValueForBSPEpairKey(ent, "model", tmpmodel, sizeof(tmpmodel))) continue;
+line 4304
+;4304:		if (!trap_AAS_ValueForBSPEpairKey(ent, "model", tmpmodel, sizeof(tmpmodel))) continue;
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -22369,8 +22403,8 @@ NEI4 $1878
 ADDRGP4 $1875
 JUMPV
 LABELV $1878
-line 4271
-;4271:		if (!strcmp(model, tmpmodel)) break;
+line 4305
+;4305:		if (!strcmp(model, tmpmodel)) break;
 ADDRLP4 1712
 ARGP4
 ADDRLP4 1584
@@ -22386,10 +22420,10 @@ NEI4 $1880
 ADDRGP4 $1876
 JUMPV
 LABELV $1880
-line 4272
-;4272:	}
+line 4306
+;4306:	}
 LABELV $1875
-line 4269
+line 4303
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -22407,14 +22441,14 @@ INDIRI4
 CNSTI4 0
 NEI4 $1874
 LABELV $1876
-line 4273
-;4273:	if (!ent) {
+line 4307
+;4307:	if (!ent) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 NEI4 $1882
-line 4274
-;4274:		BotAI_Print(PRT_ERROR, "BotGetActivateGoal: no entity found with model %s\n", model);
+line 4308
+;4308:		BotAI_Print(PRT_ERROR, "BotGetActivateGoal: no entity found with model %s\n", model);
 CNSTI4 3
 ARGI4
 ADDRGP4 $1884
@@ -22424,16 +22458,16 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 4275
-;4275:		return 0;
+line 4309
+;4309:		return 0;
 CNSTI4 0
 RETI4
 ADDRGP4 $1871
 JUMPV
 LABELV $1882
-line 4277
-;4276:	}
-;4277:	trap_AAS_ValueForBSPEpairKey(ent, "classname", classname, sizeof(classname));
+line 4311
+;4310:	}
+;4311:	trap_AAS_ValueForBSPEpairKey(ent, "classname", classname, sizeof(classname));
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -22446,14 +22480,14 @@ ARGI4
 ADDRGP4 trap_AAS_ValueForBSPEpairKey
 CALLI4
 pop
-line 4278
-;4278:	if (!classname) {
+line 4312
+;4312:	if (!classname) {
 ADDRLP4 1456
 CVPU4 4
 CNSTU4 0
 NEU4 $1886
-line 4279
-;4279:		BotAI_Print(PRT_ERROR, "BotGetActivateGoal: entity with model %s has no classname\n", model);
+line 4313
+;4313:		BotAI_Print(PRT_ERROR, "BotGetActivateGoal: entity with model %s has no classname\n", model);
 CNSTI4 3
 ARGI4
 ADDRGP4 $1888
@@ -22463,17 +22497,17 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 4280
-;4280:		return 0;
+line 4314
+;4314:		return 0;
 CNSTI4 0
 RETI4
 ADDRGP4 $1871
 JUMPV
 LABELV $1886
-line 4283
-;4281:	}
-;4282:	//if it is a door
-;4283:	if (!strcmp(classname, "func_door")) {
+line 4317
+;4315:	}
+;4316:	//if it is a door
+;4317:	if (!strcmp(classname, "func_door")) {
 ADDRLP4 1456
 ARGP4
 ADDRGP4 $1891
@@ -22486,8 +22520,8 @@ ADDRLP4 3260
 INDIRI4
 CNSTI4 0
 NEI4 $1889
-line 4284
-;4284:		if (trap_AAS_FloatForBSPEpairKey(ent, "health", &health)) {
+line 4318
+;4318:		if (trap_AAS_FloatForBSPEpairKey(ent, "health", &health)) {
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -22503,15 +22537,15 @@ ADDRLP4 3264
 INDIRI4
 CNSTI4 0
 EQI4 $1892
-line 4286
-;4285:			//if the door has health then the door must be shot to open
-;4286:			if (health) {
+line 4320
+;4319:			//if the door has health then the door must be shot to open
+;4320:			if (health) {
 ADDRLP4 3208
 INDIRF4
 CNSTF4 0
 EQF4 $1894
-line 4287
-;4287:				BotFuncDoorActivateGoal(bs, ent, activategoal);
+line 4321
+;4321:				BotFuncDoorActivateGoal(bs, ent, activategoal);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -22524,22 +22558,22 @@ ARGP4
 ADDRGP4 BotFuncDoorActivateGoal
 CALLI4
 pop
-line 4288
-;4288:				return ent;
+line 4322
+;4322:				return ent;
 ADDRLP4 0
 INDIRI4
 RETI4
 ADDRGP4 $1871
 JUMPV
 LABELV $1894
-line 4290
-;4289:			}
-;4290:		}
+line 4324
+;4323:			}
+;4324:		}
 LABELV $1892
-line 4293
-;4291:
-;4292:	//if it is some glass
-;4293: 	if (!strcmp(classname, "func_breakable")) {
+line 4327
+;4325:
+;4326:	//if it is some glass
+;4327: 	if (!strcmp(classname, "func_breakable")) {
 ADDRLP4 1456
 ARGP4
 ADDRGP4 $1898
@@ -22552,19 +22586,19 @@ ADDRLP4 3268
 INDIRI4
 CNSTI4 0
 NEI4 $1896
-line 4294
-;4294: 		return ent;
+line 4328
+;4328: 		return ent;
 ADDRLP4 0
 INDIRI4
 RETI4
 ADDRGP4 $1871
 JUMPV
 LABELV $1896
-line 4298
-;4295: 	}
-;4296:	
-;4297:		//
-;4298:		trap_AAS_IntForBSPEpairKey(ent, "spawnflags", &spawnflags);
+line 4332
+;4329: 	}
+;4330:	
+;4331:		//
+;4332:		trap_AAS_IntForBSPEpairKey(ent, "spawnflags", &spawnflags);
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -22575,25 +22609,25 @@ ARGP4
 ADDRGP4 trap_AAS_IntForBSPEpairKey
 CALLI4
 pop
-line 4300
-;4299:		// if the door starts open then just wait for the door to return
-;4300:		if ( spawnflags & 1 )
+line 4334
+;4333:		// if the door starts open then just wait for the door to return
+;4334:		if ( spawnflags & 1 )
 ADDRLP4 3204
 INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
 EQI4 $1900
-line 4301
-;4301:			return 0;
+line 4335
+;4335:			return 0;
 CNSTI4 0
 RETI4
 ADDRGP4 $1871
 JUMPV
 LABELV $1900
-line 4303
-;4302:		//get the door origin
-;4303:		if (!trap_AAS_VectorForBSPEpairKey(ent, "origin", origin)) {
+line 4337
+;4336:		//get the door origin
+;4337:		if (!trap_AAS_VectorForBSPEpairKey(ent, "origin", origin)) {
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -22609,8 +22643,8 @@ ADDRLP4 3272
 INDIRI4
 CNSTI4 0
 NEI4 $1902
-line 4304
-;4304:			VectorClear(origin);
+line 4338
+;4338:			VectorClear(origin);
 ADDRLP4 3276
 CNSTF4 0
 ASGNF4
@@ -22626,12 +22660,12 @@ ADDRLP4 3192
 ADDRLP4 3276
 INDIRF4
 ASGNF4
-line 4305
-;4305:		}
+line 4339
+;4339:		}
 LABELV $1902
-line 4307
-;4306:		//if the door is open or opening already
-;4307:		if (!VectorCompare(origin, entinfo.origin))
+line 4341
+;4340:		//if the door is open or opening already
+;4341:		if (!VectorCompare(origin, entinfo.origin))
 ADDRLP4 3192
 ARGP4
 ADDRLP4 3052+24
@@ -22644,16 +22678,16 @@ ADDRLP4 3276
 INDIRI4
 CNSTI4 0
 NEI4 $1907
-line 4308
-;4308:			return 0;
+line 4342
+;4342:			return 0;
 CNSTI4 0
 RETI4
 ADDRGP4 $1871
 JUMPV
 LABELV $1907
-line 4310
-;4309:		// store all the areas the door is in
-;4310:		trap_AAS_ValueForBSPEpairKey(ent, "model", model, sizeof(model));
+line 4344
+;4343:		// store all the areas the door is in
+;4344:		trap_AAS_ValueForBSPEpairKey(ent, "model", model, sizeof(model));
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -22666,15 +22700,15 @@ ARGI4
 ADDRGP4 trap_AAS_ValueForBSPEpairKey
 CALLI4
 pop
-line 4311
-;4311:		if (*model) {
+line 4345
+;4345:		if (*model) {
 ADDRLP4 1712
 INDIRI1
 CVII4 1
 CNSTI4 0
 EQI4 $1910
-line 4312
-;4312:			modelindex = atoi(model+1);
+line 4346
+;4346:			modelindex = atoi(model+1);
 ADDRLP4 1712+1
 ARGP4
 ADDRLP4 3280
@@ -22685,14 +22719,14 @@ ADDRLP4 3212
 ADDRLP4 3280
 INDIRI4
 ASGNI4
-line 4313
-;4313:			if (modelindex) {
+line 4347
+;4347:			if (modelindex) {
 ADDRLP4 3212
 INDIRI4
 CNSTI4 0
 EQI4 $1913
-line 4314
-;4314:				VectorClear(angles);
+line 4348
+;4348:				VectorClear(angles);
 ADDRLP4 3284
 CNSTF4 0
 ASGNF4
@@ -22708,8 +22742,8 @@ ADDRLP4 3216
 ADDRLP4 3284
 INDIRF4
 ASGNF4
-line 4315
-;4315:				BotModelMinsMaxs(modelindex, ET_MOVER, 0, absmins, absmaxs);
+line 4349
+;4349:				BotModelMinsMaxs(modelindex, ET_MOVER, 0, absmins, absmaxs);
 ADDRLP4 3212
 INDIRI4
 ARGI4
@@ -22724,9 +22758,9 @@ ARGP4
 ADDRGP4 BotModelMinsMaxs
 CALLI4
 pop
-line 4317
-;4316:				//
-;4317:				numareas = trap_AAS_BBoxAreas(absmins, absmaxs, areas, MAX_ACTIVATEAREAS*2);
+line 4351
+;4350:				//
+;4351:				numareas = trap_AAS_BBoxAreas(absmins, absmaxs, areas, MAX_ACTIVATEAREAS*2);
 ADDRLP4 3228
 ARGP4
 ADDRLP4 3240
@@ -22743,17 +22777,17 @@ ADDRLP4 3048
 ADDRLP4 3288
 INDIRI4
 ASGNI4
-line 4319
-;4318:				// store the areas with reachabilities first
-;4319:				for (i = 0; i < numareas; i++) {
+line 4353
+;4352:				// store the areas with reachabilities first
+;4353:				for (i = 0; i < numareas; i++) {
 ADDRLP4 132
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1920
 JUMPV
 LABELV $1917
-line 4320
-;4320:					if (activategoal->numareas >= MAX_ACTIVATEAREAS)
+line 4354
+;4354:					if (activategoal->numareas >= MAX_ACTIVATEAREAS)
 ADDRFP4 8
 INDIRP4
 CNSTI4 232
@@ -22761,13 +22795,13 @@ ADDP4
 INDIRI4
 CNSTI4 32
 LTI4 $1921
-line 4321
-;4321:						break;
+line 4355
+;4355:						break;
 ADDRGP4 $1919
 JUMPV
 LABELV $1921
-line 4322
-;4322:					if ( !trap_AAS_AreaReachability(areas[i]) ) {
+line 4356
+;4356:					if ( !trap_AAS_AreaReachability(areas[i]) ) {
 ADDRLP4 132
 INDIRI4
 CNSTI4 2
@@ -22784,14 +22818,14 @@ ADDRLP4 3292
 INDIRI4
 CNSTI4 0
 NEI4 $1923
-line 4323
-;4323:						continue;
+line 4357
+;4357:						continue;
 ADDRGP4 $1918
 JUMPV
 LABELV $1923
-line 4325
-;4324:					}
-;4325:					trap_AAS_AreaInfo(areas[i], &areainfo);
+line 4359
+;4358:					}
+;4359:					trap_AAS_AreaInfo(areas[i], &areainfo);
 ADDRLP4 132
 INDIRI4
 CNSTI4 2
@@ -22805,16 +22839,16 @@ ARGP4
 ADDRGP4 trap_AAS_AreaInfo
 CALLI4
 pop
-line 4326
-;4326:					if (areainfo.contents & AREACONTENTS_MOVER) {
+line 4360
+;4360:					if (areainfo.contents & AREACONTENTS_MOVER) {
 ADDRLP4 2996
 INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
 EQI4 $1925
-line 4327
-;4327:						activategoal->areas[activategoal->numareas++] = areas[i];
+line 4361
+;4361:						activategoal->areas[activategoal->numareas++] = areas[i];
 ADDRLP4 3300
 ADDRFP4 8
 INDIRP4
@@ -22855,13 +22889,13 @@ ADDRLP4 2740
 ADDP4
 INDIRI4
 ASGNI4
-line 4328
-;4328:					}
+line 4362
+;4362:					}
 LABELV $1925
-line 4329
-;4329:				}
+line 4363
+;4363:				}
 LABELV $1918
-line 4319
+line 4353
 ADDRLP4 132
 ADDRLP4 132
 INDIRI4
@@ -22875,17 +22909,17 @@ ADDRLP4 3048
 INDIRI4
 LTI4 $1917
 LABELV $1919
-line 4331
-;4330:				// store any remaining areas
-;4331:				for (i = 0; i < numareas; i++) {
+line 4365
+;4364:				// store any remaining areas
+;4365:				for (i = 0; i < numareas; i++) {
 ADDRLP4 132
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1930
 JUMPV
 LABELV $1927
-line 4332
-;4332:					if (activategoal->numareas >= MAX_ACTIVATEAREAS)
+line 4366
+;4366:					if (activategoal->numareas >= MAX_ACTIVATEAREAS)
 ADDRFP4 8
 INDIRP4
 CNSTI4 232
@@ -22893,13 +22927,13 @@ ADDP4
 INDIRI4
 CNSTI4 32
 LTI4 $1931
-line 4333
-;4333:						break;
+line 4367
+;4367:						break;
 ADDRGP4 $1929
 JUMPV
 LABELV $1931
-line 4334
-;4334:					if ( trap_AAS_AreaReachability(areas[i]) ) {
+line 4368
+;4368:					if ( trap_AAS_AreaReachability(areas[i]) ) {
 ADDRLP4 132
 INDIRI4
 CNSTI4 2
@@ -22916,14 +22950,14 @@ ADDRLP4 3292
 INDIRI4
 CNSTI4 0
 EQI4 $1933
-line 4335
-;4335:						continue;
+line 4369
+;4369:						continue;
 ADDRGP4 $1928
 JUMPV
 LABELV $1933
-line 4337
-;4336:					}
-;4337:					trap_AAS_AreaInfo(areas[i], &areainfo);
+line 4371
+;4370:					}
+;4371:					trap_AAS_AreaInfo(areas[i], &areainfo);
 ADDRLP4 132
 INDIRI4
 CNSTI4 2
@@ -22937,16 +22971,16 @@ ARGP4
 ADDRGP4 trap_AAS_AreaInfo
 CALLI4
 pop
-line 4338
-;4338:					if (areainfo.contents & AREACONTENTS_MOVER) {
+line 4372
+;4372:					if (areainfo.contents & AREACONTENTS_MOVER) {
 ADDRLP4 2996
 INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
 EQI4 $1935
-line 4339
-;4339:						activategoal->areas[activategoal->numareas++] = areas[i];
+line 4373
+;4373:						activategoal->areas[activategoal->numareas++] = areas[i];
 ADDRLP4 3300
 ADDRFP4 8
 INDIRP4
@@ -22987,13 +23021,13 @@ ADDRLP4 2740
 ADDP4
 INDIRI4
 ASGNI4
-line 4340
-;4340:					}
+line 4374
+;4374:					}
 LABELV $1935
-line 4341
-;4341:				}
+line 4375
+;4375:				}
 LABELV $1928
-line 4331
+line 4365
 ADDRLP4 132
 ADDRLP4 132
 INDIRI4
@@ -23007,18 +23041,18 @@ ADDRLP4 3048
 INDIRI4
 LTI4 $1927
 LABELV $1929
-line 4342
-;4342:			}
+line 4376
+;4376:			}
 LABELV $1913
-line 4343
-;4343:		}
+line 4377
+;4377:		}
 LABELV $1910
-line 4344
-;4344:	}
+line 4378
+;4378:	}
 LABELV $1889
-line 4346
-;4345:	// if the bot is blocked by or standing on top of a button
-;4346:	if (!strcmp(classname, "func_button")) {
+line 4380
+;4379:	// if the bot is blocked by or standing on top of a button
+;4380:	if (!strcmp(classname, "func_button")) {
 ADDRLP4 1456
 ARGP4
 ADDRGP4 $1939
@@ -23031,17 +23065,17 @@ ADDRLP4 3264
 INDIRI4
 CNSTI4 0
 NEI4 $1937
-line 4347
-;4347:		return 0;
+line 4381
+;4381:		return 0;
 CNSTI4 0
 RETI4
 ADDRGP4 $1871
 JUMPV
 LABELV $1937
-line 4350
-;4348:	}
-;4349:	// get the targetname so we can find an entity with a matching target
-;4350:	if (!trap_AAS_ValueForBSPEpairKey(ent, "targetname", targetname[0], sizeof(targetname[0]))) {
+line 4384
+;4382:	}
+;4383:	// get the targetname so we can find an entity with a matching target
+;4384:	if (!trap_AAS_ValueForBSPEpairKey(ent, "targetname", targetname[0], sizeof(targetname[0]))) {
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -23059,14 +23093,14 @@ ADDRLP4 3268
 INDIRI4
 CNSTI4 0
 NEI4 $1940
-line 4351
-;4351:		if (bot_developer.integer) {
+line 4385
+;4385:		if (bot_developer.integer) {
 ADDRGP4 bot_developer+12
 INDIRI4
 CNSTI4 0
 EQI4 $1943
-line 4352
-;4352:			BotAI_Print(PRT_ERROR, "BotGetActivateGoal: entity with model \"%s\" has no targetname\n", model);
+line 4386
+;4386:			BotAI_Print(PRT_ERROR, "BotGetActivateGoal: entity with model \"%s\" has no targetname\n", model);
 CNSTI4 3
 ARGI4
 ADDRGP4 $1946
@@ -23076,20 +23110,20 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 4353
-;4353:		}
+line 4387
+;4387:		}
 LABELV $1943
-line 4354
-;4354:		return 0;
+line 4388
+;4388:		return 0;
 CNSTI4 0
 RETI4
 ADDRGP4 $1871
 JUMPV
 LABELV $1940
-line 4357
-;4355:	}
-;4356:	// allow tree-like activation
-;4357:	cur_entities[0] = trap_AAS_NextBSPEntity(0);
+line 4391
+;4389:	}
+;4390:	// allow tree-like activation
+;4391:	cur_entities[0] = trap_AAS_NextBSPEntity(0);
 CNSTI4 0
 ARGI4
 ADDRLP4 3272
@@ -23100,16 +23134,16 @@ ADDRLP4 1416
 ADDRLP4 3272
 INDIRI4
 ASGNI4
-line 4358
-;4358:	for (i = 0; i >= 0 && i < 10;) {
+line 4392
+;4392:	for (i = 0; i >= 0 && i < 10;) {
 ADDRLP4 132
 CNSTI4 0
 ASGNI4
 ADDRGP4 $1950
 JUMPV
 LABELV $1947
-line 4359
-;4359:		for (ent = cur_entities[i]; ent; ent = trap_AAS_NextBSPEntity(ent)) {
+line 4393
+;4393:		for (ent = cur_entities[i]; ent; ent = trap_AAS_NextBSPEntity(ent)) {
 ADDRLP4 0
 ADDRLP4 132
 INDIRI4
@@ -23122,8 +23156,8 @@ ASGNI4
 ADDRGP4 $1954
 JUMPV
 LABELV $1951
-line 4360
-;4360:			if (!trap_AAS_ValueForBSPEpairKey(ent, "target", target, sizeof(target))) continue;
+line 4394
+;4394:			if (!trap_AAS_ValueForBSPEpairKey(ent, "target", target, sizeof(target))) continue;
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -23144,8 +23178,8 @@ NEI4 $1955
 ADDRGP4 $1952
 JUMPV
 LABELV $1955
-line 4361
-;4361:			if (!strcmp(targetname[i], target)) {
+line 4395
+;4395:			if (!strcmp(targetname[i], target)) {
 ADDRLP4 132
 INDIRI4
 CNSTI4 7
@@ -23163,8 +23197,8 @@ ADDRLP4 3280
 INDIRI4
 CNSTI4 0
 NEI4 $1958
-line 4362
-;4362:				cur_entities[i] = trap_AAS_NextBSPEntity(ent);
+line 4396
+;4396:				cur_entities[i] = trap_AAS_NextBSPEntity(ent);
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -23181,16 +23215,16 @@ ADDP4
 ADDRLP4 3284
 INDIRI4
 ASGNI4
-line 4363
-;4363:				break;
+line 4397
+;4397:				break;
 ADDRGP4 $1953
 JUMPV
 LABELV $1958
-line 4365
-;4364:			}
-;4365:		}
+line 4399
+;4398:			}
+;4399:		}
 LABELV $1952
-line 4359
+line 4393
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -23208,20 +23242,20 @@ INDIRI4
 CNSTI4 0
 NEI4 $1951
 LABELV $1953
-line 4366
-;4366:		if (!ent) {
+line 4400
+;4400:		if (!ent) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 NEI4 $1960
-line 4367
-;4367:			if (bot_developer.integer) {
+line 4401
+;4401:			if (bot_developer.integer) {
 ADDRGP4 bot_developer+12
 INDIRI4
 CNSTI4 0
 EQI4 $1962
-line 4368
-;4368:				BotAI_Print(PRT_ERROR, "BotGetActivateGoal: no entity with target \"%s\"\n", targetname[i]);
+line 4402
+;4402:				BotAI_Print(PRT_ERROR, "BotGetActivateGoal: no entity with target \"%s\"\n", targetname[i]);
 CNSTI4 3
 ARGI4
 ADDRGP4 $1965
@@ -23236,25 +23270,25 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 4369
-;4369:			}
+line 4403
+;4403:			}
 LABELV $1962
-line 4370
-;4370:			i--;
+line 4404
+;4404:			i--;
 ADDRLP4 132
 ADDRLP4 132
 INDIRI4
 CNSTI4 1
 SUBI4
 ASGNI4
-line 4371
-;4371:			continue;
+line 4405
+;4405:			continue;
 ADDRGP4 $1948
 JUMPV
 LABELV $1960
-line 4373
-;4372:		}
-;4373:		if (!trap_AAS_ValueForBSPEpairKey(ent, "classname", classname, sizeof(classname))) {
+line 4407
+;4406:		}
+;4407:		if (!trap_AAS_ValueForBSPEpairKey(ent, "classname", classname, sizeof(classname))) {
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -23272,14 +23306,14 @@ ADDRLP4 3280
 INDIRI4
 CNSTI4 0
 NEI4 $1966
-line 4374
-;4374:			if (bot_developer.integer) {
+line 4408
+;4408:			if (bot_developer.integer) {
 ADDRGP4 bot_developer+12
 INDIRI4
 CNSTI4 0
 EQI4 $1948
-line 4375
-;4375:				BotAI_Print(PRT_ERROR, "BotGetActivateGoal: entity with target \"%s\" has no classname\n", targetname[i]);
+line 4409
+;4409:				BotAI_Print(PRT_ERROR, "BotGetActivateGoal: entity with target \"%s\" has no classname\n", targetname[i]);
 CNSTI4 3
 ARGI4
 ADDRGP4 $1971
@@ -23294,17 +23328,17 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 4376
-;4376:			}
-line 4377
-;4377:			continue;
+line 4410
+;4410:			}
+line 4411
+;4411:			continue;
 ADDRGP4 $1948
 JUMPV
 LABELV $1966
-line 4380
-;4378:		}
-;4379:		// BSP button model
-;4380:		if (!strcmp(classname, "func_button")) {
+line 4414
+;4412:		}
+;4413:		// BSP button model
+;4414:		if (!strcmp(classname, "func_button")) {
 ADDRLP4 1456
 ARGP4
 ADDRGP4 $1939
@@ -23317,9 +23351,9 @@ ADDRLP4 3284
 INDIRI4
 CNSTI4 0
 NEI4 $1972
-line 4382
-;4381:			//
-;4382:			if (!BotFuncButtonActivateGoal(bs, ent, activategoal))
+line 4416
+;4415:			//
+;4416:			if (!BotFuncButtonActivateGoal(bs, ent, activategoal))
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -23337,14 +23371,14 @@ ADDRLP4 3288
 INDIRI4
 CNSTI4 0
 NEI4 $1974
-line 4383
-;4383:				continue;
+line 4417
+;4417:				continue;
 ADDRGP4 $1948
 JUMPV
 LABELV $1974
-line 4385
-;4384:			// if the bot tries to activate this button already
-;4385:			if ( bs->activatestack && bs->activatestack->inuse &&
+line 4419
+;4418:			// if the bot tries to activate this button already
+;4419:			if ( bs->activatestack && bs->activatestack->inuse &&
 ADDRLP4 3292
 ADDRFP4 0
 INDIRP4
@@ -23400,17 +23434,17 @@ INDIRF4
 CNSTF4 1073741824
 SUBF4
 GEF4 $1976
-line 4389
-;4386:				 bs->activatestack->goal.entitynum == activategoal->goal.entitynum &&
-;4387:				 bs->activatestack->time > FloatTime() &&
-;4388:				 bs->activatestack->start_time < FloatTime() - 2)
-;4389:				continue;
+line 4423
+;4420:				 bs->activatestack->goal.entitynum == activategoal->goal.entitynum &&
+;4421:				 bs->activatestack->time > FloatTime() &&
+;4422:				 bs->activatestack->start_time < FloatTime() - 2)
+;4423:				continue;
 ADDRGP4 $1948
 JUMPV
 LABELV $1976
-line 4391
-;4390:			// if the bot is in a reachability area
-;4391:			if ( trap_AAS_AreaReachability(bs->areanum) ) {
+line 4425
+;4424:			// if the bot is in a reachability area
+;4425:			if ( trap_AAS_AreaReachability(bs->areanum) ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 4948
@@ -23425,9 +23459,9 @@ ADDRLP4 3304
 INDIRI4
 CNSTI4 0
 EQI4 $1978
-line 4393
-;4392:				// disable all areas the blocking entity is in
-;4393:				BotEnableActivateGoalAreas( activategoal, qfalse );
+line 4427
+;4426:				// disable all areas the blocking entity is in
+;4427:				BotEnableActivateGoalAreas( activategoal, qfalse );
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -23436,9 +23470,9 @@ ARGI4
 ADDRGP4 BotEnableActivateGoalAreas
 CALLV
 pop
-line 4395
-;4394:				//
-;4395:				t = trap_AAS_AreaTravelTimeToGoalArea(bs->areanum, bs->origin, activategoal->goal.areanum, bs->tfl);
+line 4429
+;4428:				//
+;4429:				t = trap_AAS_AreaTravelTimeToGoalArea(bs->areanum, bs->origin, activategoal->goal.areanum, bs->tfl);
 ADDRLP4 3308
 ADDRFP4 0
 INDIRP4
@@ -23474,21 +23508,21 @@ ADDRLP4 2736
 ADDRLP4 3312
 INDIRI4
 ASGNI4
-line 4397
-;4396:				// if the button is not reachable
-;4397:				if (!t) {
+line 4431
+;4430:				// if the button is not reachable
+;4431:				if (!t) {
 ADDRLP4 2736
 INDIRI4
 CNSTI4 0
 NEI4 $1980
-line 4398
-;4398:					continue;
+line 4432
+;4432:					continue;
 ADDRGP4 $1948
 JUMPV
 LABELV $1980
-line 4400
-;4399:				}
-;4400:				activategoal->time = FloatTime() + t * 0.01 + 5;
+line 4434
+;4433:				}
+;4434:				activategoal->time = FloatTime() + t * 0.01 + 5;
 ADDRFP4 8
 INDIRP4
 CNSTI4 60
@@ -23504,21 +23538,21 @@ ADDF4
 CNSTF4 1084227584
 ADDF4
 ASGNF4
-line 4401
-;4401:			}
+line 4435
+;4435:			}
 LABELV $1978
-line 4402
-;4402:			return ent;
+line 4436
+;4436:			return ent;
 ADDRLP4 0
 INDIRI4
 RETI4
 ADDRGP4 $1871
 JUMPV
 LABELV $1972
-line 4405
-;4403:		}
-;4404:		// invisible trigger multiple box
-;4405:		else if (!strcmp(classname, "trigger_multiple")) {
+line 4439
+;4437:		}
+;4438:		// invisible trigger multiple box
+;4439:		else if (!strcmp(classname, "trigger_multiple")) {
 ADDRLP4 1456
 ARGP4
 ADDRGP4 $1984
@@ -23531,9 +23565,9 @@ ADDRLP4 3288
 INDIRI4
 CNSTI4 0
 NEI4 $1982
-line 4407
-;4406:			//
-;4407:			if (!BotTriggerMultipleActivateGoal(bs, ent, activategoal))
+line 4441
+;4440:			//
+;4441:			if (!BotTriggerMultipleActivateGoal(bs, ent, activategoal))
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -23551,14 +23585,14 @@ ADDRLP4 3292
 INDIRI4
 CNSTI4 0
 NEI4 $1985
-line 4408
-;4408:				continue;
+line 4442
+;4442:				continue;
 ADDRGP4 $1948
 JUMPV
 LABELV $1985
-line 4410
-;4409:			// if the bot tries to activate this trigger already
-;4410:			if ( bs->activatestack && bs->activatestack->inuse &&
+line 4444
+;4443:			// if the bot tries to activate this trigger already
+;4444:			if ( bs->activatestack && bs->activatestack->inuse &&
 ADDRLP4 3296
 ADDRFP4 0
 INDIRP4
@@ -23614,17 +23648,17 @@ INDIRF4
 CNSTF4 1073741824
 SUBF4
 GEF4 $1987
-line 4414
-;4411:				 bs->activatestack->goal.entitynum == activategoal->goal.entitynum &&
-;4412:				 bs->activatestack->time > FloatTime() &&
-;4413:				 bs->activatestack->start_time < FloatTime() - 2)
-;4414:				continue;
+line 4448
+;4445:				 bs->activatestack->goal.entitynum == activategoal->goal.entitynum &&
+;4446:				 bs->activatestack->time > FloatTime() &&
+;4447:				 bs->activatestack->start_time < FloatTime() - 2)
+;4448:				continue;
 ADDRGP4 $1948
 JUMPV
 LABELV $1987
-line 4416
-;4415:			// if the bot is in a reachability area
-;4416:			if ( trap_AAS_AreaReachability(bs->areanum) ) {
+line 4450
+;4449:			// if the bot is in a reachability area
+;4450:			if ( trap_AAS_AreaReachability(bs->areanum) ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 4948
@@ -23639,9 +23673,9 @@ ADDRLP4 3308
 INDIRI4
 CNSTI4 0
 EQI4 $1989
-line 4418
-;4417:				// disable all areas the blocking entity is in
-;4418:				BotEnableActivateGoalAreas( activategoal, qfalse );
+line 4452
+;4451:				// disable all areas the blocking entity is in
+;4452:				BotEnableActivateGoalAreas( activategoal, qfalse );
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -23650,9 +23684,9 @@ ARGI4
 ADDRGP4 BotEnableActivateGoalAreas
 CALLV
 pop
-line 4420
-;4419:				//
-;4420:				t = trap_AAS_AreaTravelTimeToGoalArea(bs->areanum, bs->origin, activategoal->goal.areanum, bs->tfl);
+line 4454
+;4453:				//
+;4454:				t = trap_AAS_AreaTravelTimeToGoalArea(bs->areanum, bs->origin, activategoal->goal.areanum, bs->tfl);
 ADDRLP4 3312
 ADDRFP4 0
 INDIRP4
@@ -23688,21 +23722,21 @@ ADDRLP4 2736
 ADDRLP4 3316
 INDIRI4
 ASGNI4
-line 4422
-;4421:				// if the trigger is not reachable
-;4422:				if (!t) {
+line 4456
+;4455:				// if the trigger is not reachable
+;4456:				if (!t) {
 ADDRLP4 2736
 INDIRI4
 CNSTI4 0
 NEI4 $1991
-line 4423
-;4423:					continue;
+line 4457
+;4457:					continue;
 ADDRGP4 $1948
 JUMPV
 LABELV $1991
-line 4425
-;4424:				}
-;4425:				activategoal->time = FloatTime() + t * 0.01 + 5;
+line 4459
+;4458:				}
+;4459:				activategoal->time = FloatTime() + t * 0.01 + 5;
 ADDRFP4 8
 INDIRP4
 CNSTI4 60
@@ -23718,20 +23752,20 @@ ADDF4
 CNSTF4 1084227584
 ADDF4
 ASGNF4
-line 4426
-;4426:			}
+line 4460
+;4460:			}
 LABELV $1989
-line 4427
-;4427:			return ent;
+line 4461
+;4461:			return ent;
 ADDRLP4 0
 INDIRI4
 RETI4
 ADDRGP4 $1871
 JUMPV
 LABELV $1982
-line 4429
-;4428:		}
-;4429:		else if (!strcmp(classname, "func_timer")) {
+line 4463
+;4462:		}
+;4463:		else if (!strcmp(classname, "func_timer")) {
 ADDRLP4 1456
 ARGP4
 ADDRGP4 $1995
@@ -23744,16 +23778,16 @@ ADDRLP4 3292
 INDIRI4
 CNSTI4 0
 NEI4 $1993
-line 4431
-;4430:			// just skip the func_timer
-;4431:			continue;
+line 4465
+;4464:			// just skip the func_timer
+;4465:			continue;
 ADDRGP4 $1948
 JUMPV
 LABELV $1993
-line 4434
-;4432:		}
-;4433:		// the actual button or trigger might be linked through a target_relay or target_delay
-;4434:		else if (!strcmp(classname, "target_relay") || !strcmp(classname, "target_delay")) {
+line 4468
+;4466:		}
+;4467:		// the actual button or trigger might be linked through a target_relay or target_delay
+;4468:		else if (!strcmp(classname, "target_relay") || !strcmp(classname, "target_delay")) {
 ADDRLP4 1456
 ARGP4
 ADDRGP4 $1998
@@ -23779,8 +23813,8 @@ INDIRI4
 CNSTI4 0
 NEI4 $1996
 LABELV $2000
-line 4435
-;4435:			if (trap_AAS_ValueForBSPEpairKey(ent, "targetname", targetname[i+1], sizeof(targetname[0]))) {
+line 4469
+;4469:			if (trap_AAS_ValueForBSPEpairKey(ent, "targetname", targetname[i+1], sizeof(targetname[0]))) {
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -23803,16 +23837,16 @@ ADDRLP4 3304
 INDIRI4
 CNSTI4 0
 EQI4 $2001
-line 4436
-;4436:				i++;
+line 4470
+;4470:				i++;
 ADDRLP4 132
 ADDRLP4 132
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 4437
-;4437:				cur_entities[i] = trap_AAS_NextBSPEntity(0);
+line 4471
+;4471:				cur_entities[i] = trap_AAS_NextBSPEntity(0);
 CNSTI4 0
 ARGI4
 ADDRLP4 3308
@@ -23828,16 +23862,16 @@ ADDP4
 ADDRLP4 3308
 INDIRI4
 ASGNI4
-line 4438
-;4438:			}
+line 4472
+;4472:			}
 LABELV $2001
-line 4439
-;4439:		}
+line 4473
+;4473:		}
 LABELV $1996
-line 4440
-;4440:	}
+line 4474
+;4474:	}
 LABELV $1948
-line 4358
+line 4392
 LABELV $1950
 ADDRLP4 132
 INDIRI4
@@ -23848,36 +23882,36 @@ INDIRI4
 CNSTI4 10
 LTI4 $1947
 LABELV $2004
-line 4444
-;4441:#ifdef OBSTACLEDEBUG
-;4442:	BotAI_Print(PRT_ERROR, "BotGetActivateGoal: no valid activator for entity with target \"%s\"\n", targetname[0]);
-;4443:#endif
-;4444:	return 0;
+line 4478
+;4475:#ifdef OBSTACLEDEBUG
+;4476:	BotAI_Print(PRT_ERROR, "BotGetActivateGoal: no valid activator for entity with target \"%s\"\n", targetname[0]);
+;4477:#endif
+;4478:	return 0;
 CNSTI4 0
 RETI4
 LABELV $1871
 endproc BotGetActivateGoal 3320 20
 export BotGoForActivateGoal
 proc BotGoForActivateGoal 144 8
-line 4452
-;4445:}
-;4446:
-;4447:/*
-;4448:==================
-;4449:BotGoForActivateGoal
-;4450:==================
-;4451:*/
-;4452:int BotGoForActivateGoal(bot_state_t *bs, bot_activategoal_t *activategoal) {
-line 4455
-;4453:	aas_entityinfo_t activateinfo;
-;4454:
-;4455:	activategoal->inuse = qtrue;
+line 4486
+;4479:}
+;4480:
+;4481:/*
+;4482:==================
+;4483:BotGoForActivateGoal
+;4484:==================
+;4485:*/
+;4486:int BotGoForActivateGoal(bot_state_t *bs, bot_activategoal_t *activategoal) {
+line 4489
+;4487:	aas_entityinfo_t activateinfo;
+;4488:
+;4489:	activategoal->inuse = qtrue;
 ADDRFP4 4
 INDIRP4
 CNSTI4 1
 ASGNI4
-line 4456
-;4456:	if (!activategoal->time)
+line 4490
+;4490:	if (!activategoal->time)
 ADDRFP4 4
 INDIRP4
 CNSTI4 60
@@ -23885,8 +23919,8 @@ ADDP4
 INDIRF4
 CNSTF4 0
 NEF4 $2006
-line 4457
-;4457:		activategoal->time = FloatTime() + 10;
+line 4491
+;4491:		activategoal->time = FloatTime() + 10;
 ADDRFP4 4
 INDIRP4
 CNSTI4 60
@@ -23897,8 +23931,8 @@ CNSTF4 1092616192
 ADDF4
 ASGNF4
 LABELV $2006
-line 4458
-;4458:	activategoal->start_time = FloatTime();
+line 4492
+;4492:	activategoal->start_time = FloatTime();
 ADDRFP4 4
 INDIRP4
 CNSTI4 64
@@ -23906,8 +23940,8 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 ASGNF4
-line 4459
-;4459:	BotEntityInfo(activategoal->goal.entitynum, &activateinfo);
+line 4493
+;4493:	BotEntityInfo(activategoal->goal.entitynum, &activateinfo);
 ADDRFP4 4
 INDIRP4
 CNSTI4 44
@@ -23919,8 +23953,8 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 4460
-;4460:	VectorCopy(activateinfo.origin, activategoal->origin);
+line 4494
+;4494:	VectorCopy(activateinfo.origin, activategoal->origin);
 ADDRFP4 4
 INDIRP4
 CNSTI4 92
@@ -23928,9 +23962,9 @@ ADDP4
 ADDRLP4 0+24
 INDIRB
 ASGNB 12
-line 4462
-;4461:	//
-;4462:	if (BotPushOntoActivateGoalStack(bs, activategoal)) {
+line 4496
+;4495:	//
+;4496:	if (BotPushOntoActivateGoalStack(bs, activategoal)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -23945,9 +23979,9 @@ ADDRLP4 140
 INDIRI4
 CNSTI4 0
 EQI4 $2009
-line 4464
-;4463:		// enter the activate entity AI node
-;4464:		AIEnter_Seek_ActivateEntity(bs, "BotGoForActivateGoal");
+line 4498
+;4497:		// enter the activate entity AI node
+;4498:		AIEnter_Seek_ActivateEntity(bs, "BotGoForActivateGoal");
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -23956,19 +23990,19 @@ ARGP4
 ADDRGP4 AIEnter_Seek_ActivateEntity
 CALLV
 pop
-line 4465
-;4465:		return qtrue;
+line 4499
+;4499:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $2005
 JUMPV
 LABELV $2009
-line 4467
-;4466:	}
-;4467:	else {
-line 4469
-;4468:		// enable any routing areas that were disabled
-;4469:		BotEnableActivateGoalAreas(activategoal, qtrue);
+line 4501
+;4500:	}
+;4501:	else {
+line 4503
+;4502:		// enable any routing areas that were disabled
+;4503:		BotEnableActivateGoalAreas(activategoal, qtrue);
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -23977,30 +24011,30 @@ ARGI4
 ADDRGP4 BotEnableActivateGoalAreas
 CALLV
 pop
-line 4470
-;4470:		return qfalse;
+line 4504
+;4504:		return qfalse;
 CNSTI4 0
 RETI4
 LABELV $2005
 endproc BotGoForActivateGoal 144 8
 export BotPrintActivateGoalInfo
 proc BotPrintActivateGoalInfo 296 36
-line 4479
-;4471:	}
-;4472:}
-;4473:
-;4474:/*
-;4475:==================
-;4476:BotPrintActivateGoalInfo
-;4477:==================
-;4478:*/
-;4479:void BotPrintActivateGoalInfo(bot_state_t *bs, bot_activategoal_t *activategoal, int bspent) {
-line 4484
-;4480:	char netname[MAX_NETNAME];
-;4481:	char classname[128];
-;4482:	char buf[128];
-;4483:
-;4484:	ClientName(bs->client, netname, sizeof(netname));
+line 4513
+;4505:	}
+;4506:}
+;4507:
+;4508:/*
+;4509:==================
+;4510:BotPrintActivateGoalInfo
+;4511:==================
+;4512:*/
+;4513:void BotPrintActivateGoalInfo(bot_state_t *bs, bot_activategoal_t *activategoal, int bspent) {
+line 4518
+;4514:	char netname[MAX_NETNAME];
+;4515:	char classname[128];
+;4516:	char buf[128];
+;4517:
+;4518:	ClientName(bs->client, netname, sizeof(netname));
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -24014,8 +24048,8 @@ ARGI4
 ADDRGP4 ClientName
 CALLP4
 pop
-line 4485
-;4485:	trap_AAS_ValueForBSPEpairKey(bspent, "classname", classname, sizeof(classname));
+line 4519
+;4519:	trap_AAS_ValueForBSPEpairKey(bspent, "classname", classname, sizeof(classname));
 ADDRFP4 8
 INDIRI4
 ARGI4
@@ -24028,8 +24062,8 @@ ARGI4
 ADDRGP4 trap_AAS_ValueForBSPEpairKey
 CALLI4
 pop
-line 4486
-;4486:	if (activategoal->shoot) {
+line 4520
+;4520:	if (activategoal->shoot) {
 ADDRFP4 4
 INDIRP4
 CNSTI4 72
@@ -24037,8 +24071,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $2013
-line 4487
-;4487:		Com_sprintf(buf, sizeof(buf), "%s: I have to shoot at a %s from %1.1f %1.1f %1.1f in area %d\n",
+line 4521
+;4521:		Com_sprintf(buf, sizeof(buf), "%s: I have to shoot at a %s from %1.1f %1.1f %1.1f in area %d\n",
 ADDRLP4 164
 ARGP4
 CNSTI4 128
@@ -24080,20 +24114,20 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 4493
-;4488:						netname, classname,
-;4489:						activategoal->goal.origin[0],
-;4490:						activategoal->goal.origin[1],
-;4491:						activategoal->goal.origin[2],
-;4492:						activategoal->goal.areanum);
-;4493:	}
+line 4527
+;4522:						netname, classname,
+;4523:						activategoal->goal.origin[0],
+;4524:						activategoal->goal.origin[1],
+;4525:						activategoal->goal.origin[2],
+;4526:						activategoal->goal.areanum);
+;4527:	}
 ADDRGP4 $2014
 JUMPV
 LABELV $2013
-line 4494
-;4494:	else {
-line 4495
-;4495:		Com_sprintf(buf, sizeof(buf), "%s: I have to activate a %s at %1.1f %1.1f %1.1f in area %d\n",
+line 4528
+;4528:	else {
+line 4529
+;4529:		Com_sprintf(buf, sizeof(buf), "%s: I have to activate a %s at %1.1f %1.1f %1.1f in area %d\n",
 ADDRLP4 164
 ARGP4
 CNSTI4 128
@@ -24135,16 +24169,16 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 4501
-;4496:						netname, classname,
-;4497:						activategoal->goal.origin[0],
-;4498:						activategoal->goal.origin[1],
-;4499:						activategoal->goal.origin[2],
-;4500:						activategoal->goal.areanum);
-;4501:	}
+line 4535
+;4530:						netname, classname,
+;4531:						activategoal->goal.origin[0],
+;4532:						activategoal->goal.origin[1],
+;4533:						activategoal->goal.origin[2],
+;4534:						activategoal->goal.areanum);
+;4535:	}
 LABELV $2014
-line 4502
-;4502:	trap_EA_Say(bs->client, buf);
+line 4536
+;4536:	trap_EA_Say(bs->client, buf);
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -24156,29 +24190,29 @@ ARGP4
 ADDRGP4 trap_EA_Say
 CALLV
 pop
-line 4503
-;4503:}
+line 4537
+;4537:}
 LABELV $2012
 endproc BotPrintActivateGoalInfo 296 36
 export BotRandomMove
 proc BotRandomMove 32 16
-line 4510
-;4504:
-;4505:/*
-;4506:==================
-;4507:BotRandomMove
-;4508:==================
-;4509:*/
-;4510:void BotRandomMove(bot_state_t *bs, bot_moveresult_t *moveresult) {
-line 4513
-;4511:	vec3_t dir, angles;
-;4512:
-;4513:	angles[0] = 0;
+line 4544
+;4538:
+;4539:/*
+;4540:==================
+;4541:BotRandomMove
+;4542:==================
+;4543:*/
+;4544:void BotRandomMove(bot_state_t *bs, bot_moveresult_t *moveresult) {
+line 4547
+;4545:	vec3_t dir, angles;
+;4546:
+;4547:	angles[0] = 0;
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-line 4514
-;4514:	angles[1] = random() * 360;
+line 4548
+;4548:	angles[1] = random() * 360;
 ADDRLP4 24
 ADDRGP4 rand
 CALLI4
@@ -24194,13 +24228,13 @@ CNSTF4 1191181824
 DIVF4
 MULF4
 ASGNF4
-line 4515
-;4515:	angles[2] = 0;
+line 4549
+;4549:	angles[2] = 0;
 ADDRLP4 0+8
 CNSTF4 0
 ASGNF4
-line 4516
-;4516:	AngleVectors(angles, dir, NULL, NULL);
+line 4550
+;4550:	AngleVectors(angles, dir, NULL, NULL);
 ADDRLP4 0
 ARGP4
 ADDRLP4 12
@@ -24217,9 +24251,9 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 4518
-;4517:
-;4518:	trap_BotMoveInDirection(bs->ms, dir, 400, MOVE_WALK);
+line 4552
+;4551:
+;4552:	trap_BotMoveInDirection(bs->ms, dir, 400, MOVE_WALK);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6524
@@ -24235,15 +24269,15 @@ ARGI4
 ADDRGP4 trap_BotMoveInDirection
 CALLI4
 pop
-line 4520
-;4519:
-;4520:	moveresult->failure = qfalse;
+line 4554
+;4553:
+;4554:	moveresult->failure = qfalse;
 ADDRFP4 4
 INDIRP4
 CNSTI4 0
 ASGNI4
-line 4521
-;4521:	VectorCopy(dir, moveresult->movedir);
+line 4555
+;4555:	VectorCopy(dir, moveresult->movedir);
 ADDRFP4 4
 INDIRP4
 CNSTI4 28
@@ -24251,8 +24285,8 @@ ADDP4
 ADDRLP4 12
 INDIRB
 ASGNB 12
-line 4522
-;4522:}
+line 4556
+;4556:}
 LABELV $2017
 endproc BotRandomMove 32 16
 lit
@@ -24264,33 +24298,33 @@ byte 4 1065353216
 export BotAIBlocked
 code
 proc BotAIBlocked 528 16
-line 4535
-;4523:
-;4524:/*
-;4525:==================
-;4526:BotAIBlocked
-;4527:
-;4528:Very basic handling of bots being blocked by other entities.
-;4529:Check what kind of entity is blocking the bot and try to activate
-;4530:it. If that's not an option then try to walk around or over the entity.
-;4531:Before the bot ends in this part of the AI it should predict which doors to
-;4532:open, which buttons to activate etc.
-;4533:==================
-;4534:*/
-;4535:void BotAIBlocked(bot_state_t *bs, bot_moveresult_t *moveresult, int activate) {
-line 4537
-;4536:	int movetype, bspent;
-;4537:	vec3_t hordir, start, end, mins, maxs, sideward, angles, up = {0, 0, 1};
+line 4569
+;4557:
+;4558:/*
+;4559:==================
+;4560:BotAIBlocked
+;4561:
+;4562:Very basic handling of bots being blocked by other entities.
+;4563:Check what kind of entity is blocking the bot and try to activate
+;4564:it. If that's not an option then try to walk around or over the entity.
+;4565:Before the bot ends in this part of the AI it should predict which doors to
+;4566:open, which buttons to activate etc.
+;4567:==================
+;4568:*/
+;4569:void BotAIBlocked(bot_state_t *bs, bot_moveresult_t *moveresult, int activate) {
+line 4571
+;4570:	int movetype, bspent;
+;4571:	vec3_t hordir, start, end, mins, maxs, sideward, angles, up = {0, 0, 1};
 ADDRLP4 228
 ADDRGP4 $2021
 INDIRB
 ASGNB 12
-line 4542
-;4538:	aas_entityinfo_t entinfo;
-;4539:	bot_activategoal_t activategoal;
-;4540:
-;4541:	// if the bot is not blocked by anything
-;4542:	if (!moveresult->blocked) {
+line 4576
+;4572:	aas_entityinfo_t entinfo;
+;4573:	bot_activategoal_t activategoal;
+;4574:
+;4575:	// if the bot is not blocked by anything
+;4576:	if (!moveresult->blocked) {
 ADDRFP4 4
 INDIRP4
 CNSTI4 8
@@ -24298,8 +24332,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $2022
-line 4543
-;4543:		bs->notblocked_time = FloatTime();
+line 4577
+;4577:		bs->notblocked_time = FloatTime();
 ADDRFP4 0
 INDIRP4
 CNSTI4 6204
@@ -24307,15 +24341,15 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 ASGNF4
-line 4544
-;4544:		return;
+line 4578
+;4578:		return;
 ADDRGP4 $2020
 JUMPV
 LABELV $2022
-line 4547
-;4545:	}
-;4546:	// if stuck in a solid area
-;4547:	if ( moveresult->type == RESULTTYPE_INSOLIDAREA ) {
+line 4581
+;4579:	}
+;4580:	// if stuck in a solid area
+;4581:	if ( moveresult->type == RESULTTYPE_INSOLIDAREA ) {
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
@@ -24323,9 +24357,9 @@ ADDP4
 INDIRI4
 CNSTI4 8
 NEI4 $2024
-line 4549
-;4548:		// move in a random direction in the hope to get out
-;4549:		BotRandomMove(bs, moveresult);
+line 4583
+;4582:		// move in a random direction in the hope to get out
+;4583:		BotRandomMove(bs, moveresult);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -24335,16 +24369,16 @@ ARGP4
 ADDRGP4 BotRandomMove
 CALLV
 pop
-line 4551
-;4550:		//
-;4551:		return;
+line 4585
+;4584:		//
+;4585:		return;
 ADDRGP4 $2020
 JUMPV
 LABELV $2024
-line 4554
-;4552:	}
-;4553:	// get info for the entity that is blocking the bot
-;4554:	BotEntityInfo(moveresult->blockentity, &entinfo);
+line 4588
+;4586:	}
+;4587:	// get info for the entity that is blocking the bot
+;4588:	BotEntityInfo(moveresult->blockentity, &entinfo);
 ADDRFP4 4
 INDIRP4
 CNSTI4 12
@@ -24356,13 +24390,13 @@ ARGP4
 ADDRGP4 BotEntityInfo
 CALLV
 pop
-line 4560
-;4555:#ifdef OBSTACLEDEBUG
-;4556:	ClientName(bs->client, netname, sizeof(netname));
-;4557:	BotAI_Print(PRT_MESSAGE, "%s: I'm blocked by model %d\n", netname, entinfo.modelindex);
-;4558:#endif OBSTACLEDEBUG
-;4559:	// if blocked by a bsp model and the bot wants to activate it
-;4560:	if (activate && entinfo.modelindex > 0 && entinfo.modelindex <= max_bspmodelindex) {
+line 4594
+;4589:#ifdef OBSTACLEDEBUG
+;4590:	ClientName(bs->client, netname, sizeof(netname));
+;4591:	BotAI_Print(PRT_MESSAGE, "%s: I'm blocked by model %d\n", netname, entinfo.modelindex);
+;4592:#endif OBSTACLEDEBUG
+;4593:	// if blocked by a bsp model and the bot wants to activate it
+;4594:	if (activate && entinfo.modelindex > 0 && entinfo.modelindex <= max_bspmodelindex) {
 ADDRLP4 488
 CNSTI4 0
 ASGNI4
@@ -24381,9 +24415,9 @@ INDIRI4
 ADDRGP4 max_bspmodelindex
 INDIRI4
 GTI4 $2026
-line 4562
-;4561:		// find the bsp entity which should be activated in order to get the blocking entity out of the way
-;4562:		bspent = BotGetActivateGoal(bs, entinfo.number, &activategoal);
+line 4596
+;4595:		// find the bsp entity which should be activated in order to get the blocking entity out of the way
+;4596:		bspent = BotGetActivateGoal(bs, entinfo.number, &activategoal);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -24400,15 +24434,15 @@ ADDRLP4 484
 ADDRLP4 492
 INDIRI4
 ASGNI4
-line 4563
-;4563:		if (bspent) {
+line 4597
+;4597:		if (bspent) {
 ADDRLP4 484
 INDIRI4
 CNSTI4 0
 EQI4 $2031
-line 4565
-;4564:			//
-;4565:			if (bs->activatestack && !bs->activatestack->inuse)
+line 4599
+;4598:			//
+;4599:			if (bs->activatestack && !bs->activatestack->inuse)
 ADDRLP4 496
 ADDRFP4 0
 INDIRP4
@@ -24426,8 +24460,8 @@ INDIRP4
 INDIRI4
 CNSTI4 0
 NEI4 $2033
-line 4566
-;4566:				bs->activatestack = NULL;
+line 4600
+;4600:				bs->activatestack = NULL;
 ADDRFP4 0
 INDIRP4
 CNSTI4 7116
@@ -24435,9 +24469,9 @@ ADDP4
 CNSTP4 0
 ASGNP4
 LABELV $2033
-line 4568
-;4567:			// if not already trying to activate this entity
-;4568:			if (!BotIsGoingToActivateEntity(bs, activategoal.goal.entitynum)) {
+line 4602
+;4601:			// if not already trying to activate this entity
+;4602:			if (!BotIsGoingToActivateEntity(bs, activategoal.goal.entitynum)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -24452,9 +24486,9 @@ ADDRLP4 500
 INDIRI4
 CNSTI4 0
 NEI4 $2035
-line 4570
-;4569:				//
-;4570:				BotGoForActivateGoal(bs, &activategoal);
+line 4604
+;4603:				//
+;4604:				BotGoForActivateGoal(bs, &activategoal);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -24463,14 +24497,14 @@ ARGP4
 ADDRGP4 BotGoForActivateGoal
 CALLI4
 pop
-line 4571
-;4571:			}
+line 4605
+;4605:			}
 LABELV $2035
-line 4575
-;4572:			// if ontop of an obstacle or
-;4573:			// if the bot is not in a reachability area it'll still
-;4574:			// need some dynamic obstacle avoidance, otherwise return
-;4575:			if (!(moveresult->flags & MOVERESULT_ONTOPOFOBSTACLE) &&
+line 4609
+;4606:			// if ontop of an obstacle or
+;4607:			// if the bot is not in a reachability area it'll still
+;4608:			// need some dynamic obstacle avoidance, otherwise return
+;4609:			if (!(moveresult->flags & MOVERESULT_ONTOPOFOBSTACLE) &&
 ADDRFP4 4
 INDIRP4
 CNSTI4 20
@@ -24494,19 +24528,19 @@ ADDRLP4 504
 INDIRI4
 CNSTI4 0
 EQI4 $2032
-line 4577
-;4576:				trap_AAS_AreaReachability(bs->areanum))
-;4577:				return;
+line 4611
+;4610:				trap_AAS_AreaReachability(bs->areanum))
+;4611:				return;
 ADDRGP4 $2020
 JUMPV
-line 4578
-;4578:		}
+line 4612
+;4612:		}
 LABELV $2031
-line 4579
-;4579:		else {
-line 4581
-;4580:			// enable any routing areas that were disabled
-;4581:			BotEnableActivateGoalAreas(&activategoal, qtrue);
+line 4613
+;4613:		else {
+line 4615
+;4614:			// enable any routing areas that were disabled
+;4615:			BotEnableActivateGoalAreas(&activategoal, qtrue);
 ADDRLP4 240
 ARGP4
 CNSTI4 1
@@ -24514,15 +24548,15 @@ ARGI4
 ADDRGP4 BotEnableActivateGoalAreas
 CALLV
 pop
-line 4582
-;4582:		}
+line 4616
+;4616:		}
 LABELV $2032
-line 4583
-;4583:	}
+line 4617
+;4617:	}
 LABELV $2026
-line 4585
-;4584:	// just some basic dynamic obstacle avoidance code
-;4585:	hordir[0] = moveresult->movedir[0];
+line 4619
+;4618:	// just some basic dynamic obstacle avoidance code
+;4619:	hordir[0] = moveresult->movedir[0];
 ADDRLP4 0
 ADDRFP4 4
 INDIRP4
@@ -24530,8 +24564,8 @@ CNSTI4 28
 ADDP4
 INDIRF4
 ASGNF4
-line 4586
-;4586:	hordir[1] = moveresult->movedir[1];
+line 4620
+;4620:	hordir[1] = moveresult->movedir[1];
 ADDRLP4 0+4
 ADDRFP4 4
 INDIRP4
@@ -24539,14 +24573,14 @@ CNSTI4 32
 ADDP4
 INDIRF4
 ASGNF4
-line 4587
-;4587:	hordir[2] = 0;
+line 4621
+;4621:	hordir[2] = 0;
 ADDRLP4 0+8
 CNSTF4 0
 ASGNF4
-line 4589
-;4588:	// if no direction just take a random direction
-;4589:	if (VectorNormalize(hordir) < 0.1) {
+line 4623
+;4622:	// if no direction just take a random direction
+;4623:	if (VectorNormalize(hordir) < 0.1) {
 ADDRLP4 0
 ARGP4
 ADDRLP4 492
@@ -24557,8 +24591,8 @@ ADDRLP4 492
 INDIRF4
 CNSTF4 1036831949
 GEF4 $2043
-line 4590
-;4590:		VectorSet(angles, 0, 360 * random(), 0);
+line 4624
+;4624:		VectorSet(angles, 0, 360 * random(), 0);
 ADDRLP4 216
 CNSTF4 0
 ASGNF4
@@ -24580,8 +24614,8 @@ ASGNF4
 ADDRLP4 216+8
 CNSTF4 0
 ASGNF4
-line 4591
-;4591:		AngleVectors(angles, hordir, NULL, NULL);
+line 4625
+;4625:		AngleVectors(angles, hordir, NULL, NULL);
 ADDRLP4 216
 ARGP4
 ADDRLP4 0
@@ -24598,21 +24632,21 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 4592
-;4592:	}
+line 4626
+;4626:	}
 LABELV $2043
-line 4596
-;4593:	//
-;4594:	//if (moveresult->flags & MOVERESULT_ONTOPOFOBSTACLE) movetype = MOVE_JUMP;
-;4595:	//else
-;4596:	movetype = MOVE_WALK;
+line 4630
+;4627:	//
+;4628:	//if (moveresult->flags & MOVERESULT_ONTOPOFOBSTACLE) movetype = MOVE_JUMP;
+;4629:	//else
+;4630:	movetype = MOVE_WALK;
 ADDRLP4 36
 CNSTI4 1
 ASGNI4
-line 4599
-;4597:	// if there's an obstacle at the bot's feet and head then
-;4598:	// the bot might be able to crouch through
-;4599:	VectorCopy(bs->origin, start);
+line 4633
+;4631:	// if there's an obstacle at the bot's feet and head then
+;4632:	// the bot might be able to crouch through
+;4633:	VectorCopy(bs->origin, start);
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -24620,16 +24654,16 @@ CNSTI4 4908
 ADDP4
 INDIRB
 ASGNB 12
-line 4600
-;4600:	start[2] += 18;
+line 4634
+;4634:	start[2] += 18;
 ADDRLP4 24+8
 ADDRLP4 24+8
 INDIRF4
 CNSTF4 1099956224
 ADDF4
 ASGNF4
-line 4601
-;4601:	VectorMA(start, 5, hordir, end);
+line 4635
+;4635:	VectorMA(start, 5, hordir, end);
 ADDRLP4 496
 CNSTF4 1084227584
 ASGNF4
@@ -24662,8 +24696,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 4602
-;4602:	VectorSet(mins, -16, -16, -24);
+line 4636
+;4636:	VectorSet(mins, -16, -16, -24);
 ADDRLP4 500
 CNSTF4 3246391296
 ASGNF4
@@ -24678,8 +24712,8 @@ ASGNF4
 ADDRLP4 192+8
 CNSTF4 3250585600
 ASGNF4
-line 4603
-;4603:	VectorSet(maxs, 16, 16, 4);
+line 4637
+;4637:	VectorSet(maxs, 16, 16, 4);
 ADDRLP4 504
 CNSTF4 1098907648
 ASGNF4
@@ -24694,12 +24728,12 @@ ASGNF4
 ADDRLP4 204+8
 CNSTF4 1082130432
 ASGNF4
-line 4608
-;4604:	//
-;4605:	//bsptrace = AAS_Trace(start, mins, maxs, end, bs->entitynum, MASK_PLAYERSOLID);
-;4606:	//if (bsptrace.fraction >= 1) movetype = MOVE_CROUCH;
-;4607:	// get the sideward vector
-;4608:	CrossProduct(hordir, up, sideward);
+line 4642
+;4638:	//
+;4639:	//bsptrace = AAS_Trace(start, mins, maxs, end, bs->entitynum, MASK_PLAYERSOLID);
+;4640:	//if (bsptrace.fraction >= 1) movetype = MOVE_CROUCH;
+;4641:	// get the sideward vector
+;4642:	CrossProduct(hordir, up, sideward);
 ADDRLP4 0
 ARGP4
 ADDRLP4 228
@@ -24709,9 +24743,9 @@ ARGP4
 ADDRGP4 CrossProduct
 CALLV
 pop
-line 4610
-;4609:	//
-;4610:	if (bs->flags & BFL_AVOIDRIGHT) VectorNegate(sideward, sideward);
+line 4644
+;4643:	//
+;4644:	if (bs->flags & BFL_AVOIDRIGHT) VectorNegate(sideward, sideward);
 ADDRFP4 0
 INDIRP4
 CNSTI4 5980
@@ -24737,9 +24771,9 @@ INDIRF4
 NEGF4
 ASGNF4
 LABELV $2058
-line 4612
-;4611:	// try to crouch straight forward?
-;4612:	if (movetype != MOVE_CROUCH || !trap_BotMoveInDirection(bs->ms, hordir, 400, movetype)) {
+line 4646
+;4645:	// try to crouch straight forward?
+;4646:	if (movetype != MOVE_CROUCH || !trap_BotMoveInDirection(bs->ms, hordir, 400, movetype)) {
 ADDRLP4 36
 INDIRI4
 CNSTI4 2
@@ -24766,9 +24800,9 @@ INDIRI4
 CNSTI4 0
 NEI4 $2064
 LABELV $2066
-line 4614
-;4613:		// perform the movement
-;4614:		if (!trap_BotMoveInDirection(bs->ms, sideward, 400, movetype)) {
+line 4648
+;4647:		// perform the movement
+;4648:		if (!trap_BotMoveInDirection(bs->ms, sideward, 400, movetype)) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6524
@@ -24790,9 +24824,9 @@ ADDRLP4 516
 INDIRI4
 CNSTI4 0
 NEI4 $2067
-line 4616
-;4615:			// flip the avoid direction flag
-;4616:			bs->flags ^= BFL_AVOIDRIGHT;
+line 4650
+;4649:			// flip the avoid direction flag
+;4650:			bs->flags ^= BFL_AVOIDRIGHT;
 ADDRLP4 520
 ADDRFP4 0
 INDIRP4
@@ -24807,10 +24841,10 @@ INDIRI4
 CNSTI4 16
 BXORI4
 ASGNI4
-line 4619
-;4617:			// flip the direction
-;4618:			// VectorNegate(sideward, sideward);
-;4619:			VectorMA(sideward, -1, hordir, sideward);
+line 4653
+;4651:			// flip the direction
+;4652:			// VectorNegate(sideward, sideward);
+;4653:			VectorMA(sideward, -1, hordir, sideward);
 ADDRLP4 524
 CNSTF4 3212836864
 ASGNF4
@@ -24843,9 +24877,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 4621
-;4620:			// move in the other direction
-;4621:			trap_BotMoveInDirection(bs->ms, sideward, 400, movetype);
+line 4655
+;4654:			// move in the other direction
+;4655:			trap_BotMoveInDirection(bs->ms, sideward, 400, movetype);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6524
@@ -24862,15 +24896,15 @@ ARGI4
 ADDRGP4 trap_BotMoveInDirection
 CALLI4
 pop
-line 4622
-;4622:		}
+line 4656
+;4656:		}
 LABELV $2067
-line 4623
-;4623:	}
+line 4657
+;4657:	}
 LABELV $2064
-line 4625
-;4624:	//
-;4625:	if (bs->notblocked_time < FloatTime() - 0.4) {
+line 4659
+;4658:	//
+;4659:	if (bs->notblocked_time < FloatTime() - 0.4) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6204
@@ -24881,10 +24915,10 @@ INDIRF4
 CNSTF4 1053609165
 SUBF4
 GEF4 $2075
-line 4628
-;4626:		// just reset goals and hope the bot will go into another direction?
-;4627:		// is this still needed??
-;4628:		if (bs->ainode == AINode_Seek_NBG) bs->nbg_time = 0;
+line 4662
+;4660:		// just reset goals and hope the bot will go into another direction?
+;4661:		// is this still needed??
+;4662:		if (bs->ainode == AINode_Seek_NBG) bs->nbg_time = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 4900
@@ -24903,8 +24937,8 @@ ASGNF4
 ADDRGP4 $2078
 JUMPV
 LABELV $2077
-line 4629
-;4629:		else if (bs->ainode == AINode_Seek_LTG) bs->ltg_time = 0;
+line 4663
+;4663:		else if (bs->ainode == AINode_Seek_LTG) bs->ltg_time = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 4900
@@ -24922,49 +24956,49 @@ CNSTF4 0
 ASGNF4
 LABELV $2079
 LABELV $2078
-line 4630
-;4630:	}
+line 4664
+;4664:	}
 LABELV $2075
-line 4631
-;4631:}
+line 4665
+;4665:}
 LABELV $2020
 endproc BotAIBlocked 528 16
 export BotAIPredictObstacles
 proc BotAIPredictObstacles 324 44
-line 4643
-;4632:
-;4633:/*
-;4634:==================
-;4635:BotAIPredictObstacles
-;4636:
-;4637:Predict the route towards the goal and check if the bot
-;4638:will be blocked by certain obstacles. When the bot has obstacles
-;4639:on it's path the bot should figure out if they can be removed
-;4640:by activating certain entities.
-;4641:==================
-;4642:*/
-;4643:int BotAIPredictObstacles(bot_state_t *bs, bot_goal_t *goal) {
-line 4648
-;4644:	int modelnum, entitynum, bspent;
-;4645:	bot_activategoal_t activategoal;
-;4646:	aas_predictroute_t route;
-;4647:
-;4648:	if (!bot_predictobstacles.integer)
+line 4677
+;4666:
+;4667:/*
+;4668:==================
+;4669:BotAIPredictObstacles
+;4670:
+;4671:Predict the route towards the goal and check if the bot
+;4672:will be blocked by certain obstacles. When the bot has obstacles
+;4673:on it's path the bot should figure out if they can be removed
+;4674:by activating certain entities.
+;4675:==================
+;4676:*/
+;4677:int BotAIPredictObstacles(bot_state_t *bs, bot_goal_t *goal) {
+line 4682
+;4678:	int modelnum, entitynum, bspent;
+;4679:	bot_activategoal_t activategoal;
+;4680:	aas_predictroute_t route;
+;4681:
+;4682:	if (!bot_predictobstacles.integer)
 ADDRGP4 bot_predictobstacles+12
 INDIRI4
 CNSTI4 0
 NEI4 $2082
-line 4649
-;4649:		return qfalse;
+line 4683
+;4683:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $2081
 JUMPV
 LABELV $2082
-line 4652
-;4650:
-;4651:	// always predict when the goal change or at regular intervals
-;4652:	if (bs->predictobstacles_goalareanum == goal->areanum &&
+line 4686
+;4684:
+;4685:	// always predict when the goal change or at regular intervals
+;4686:	if (bs->predictobstacles_goalareanum == goal->areanum &&
 ADDRLP4 292
 ADDRFP4 0
 INDIRP4
@@ -24990,18 +25024,18 @@ INDIRF4
 CNSTF4 1086324736
 SUBF4
 LEF4 $2085
-line 4653
-;4653:		bs->predictobstacles_time > FloatTime() - 6) {
-line 4654
-;4654:		return qfalse;
+line 4687
+;4687:		bs->predictobstacles_time > FloatTime() - 6) {
+line 4688
+;4688:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $2081
 JUMPV
 LABELV $2085
-line 4656
-;4655:	}
-;4656:	bs->predictobstacles_goalareanum = goal->areanum;
+line 4690
+;4689:	}
+;4690:	bs->predictobstacles_goalareanum = goal->areanum;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6216
@@ -25012,8 +25046,8 @@ CNSTI4 12
 ADDP4
 INDIRI4
 ASGNI4
-line 4657
-;4657:	bs->predictobstacles_time = FloatTime();
+line 4691
+;4691:	bs->predictobstacles_time = FloatTime();
 ADDRFP4 0
 INDIRP4
 CNSTI4 6212
@@ -25021,10 +25055,10 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 ASGNF4
-line 4660
-;4658:
-;4659:	// predict at most 100 areas or 10 seconds ahead
-;4660:	trap_AAS_PredictRoute(&route, bs->areanum, bs->origin,
+line 4694
+;4692:
+;4693:	// predict at most 100 areas or 10 seconds ahead
+;4694:	trap_AAS_PredictRoute(&route, bs->areanum, bs->origin,
 ADDRLP4 0
 ARGP4
 ADDRLP4 296
@@ -25069,30 +25103,30 @@ ARGI4
 ADDRGP4 trap_AAS_PredictRoute
 CALLI4
 pop
-line 4665
-;4661:							goal->areanum, bs->tfl, 100, 1000,
-;4662:							RSE_USETRAVELTYPE|RSE_ENTERCONTENTS,
-;4663:							AREACONTENTS_MOVER, TFL_BRIDGE, 0);
-;4664:	// if bot has to travel through an area with a mover
-;4665:	if (route.stopevent & RSE_ENTERCONTENTS) {
+line 4699
+;4695:							goal->areanum, bs->tfl, 100, 1000,
+;4696:							RSE_USETRAVELTYPE|RSE_ENTERCONTENTS,
+;4697:							AREACONTENTS_MOVER, TFL_BRIDGE, 0);
+;4698:	// if bot has to travel through an area with a mover
+;4699:	if (route.stopevent & RSE_ENTERCONTENTS) {
 ADDRLP4 0+16
 INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
 EQI4 $2087
-line 4667
-;4666:		// if the bot will run into a mover
-;4667:		if (route.endcontents & AREACONTENTS_MOVER) {
+line 4701
+;4700:		// if the bot will run into a mover
+;4701:		if (route.endcontents & AREACONTENTS_MOVER) {
 ADDRLP4 0+20
 INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
 EQI4 $2088
-line 4669
-;4668:			//NOTE: this only works with bspc 2.1 or higher
-;4669:			modelnum = (route.endcontents & AREACONTENTS_MODELNUM) >> AREACONTENTS_MODELNUMSHIFT;
+line 4703
+;4702:			//NOTE: this only works with bspc 2.1 or higher
+;4703:			modelnum = (route.endcontents & AREACONTENTS_MODELNUM) >> AREACONTENTS_MODELNUMSHIFT;
 ADDRLP4 300
 CNSTI4 24
 ASGNI4
@@ -25108,15 +25142,15 @@ ADDRLP4 300
 INDIRI4
 RSHI4
 ASGNI4
-line 4670
-;4670:			if (modelnum) {
+line 4704
+;4704:			if (modelnum) {
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
 EQI4 $2088
-line 4672
-;4671:				//
-;4672:				entitynum = BotModelMinsMaxs(modelnum, ET_MOVER, 0, NULL, NULL);
+line 4706
+;4705:				//
+;4706:				entitynum = BotModelMinsMaxs(modelnum, ET_MOVER, 0, NULL, NULL);
 ADDRLP4 36
 INDIRI4
 ARGI4
@@ -25141,15 +25175,15 @@ ADDRLP4 40
 ADDRLP4 308
 INDIRI4
 ASGNI4
-line 4673
-;4673:				if (entitynum) {
+line 4707
+;4707:				if (entitynum) {
 ADDRLP4 40
 INDIRI4
 CNSTI4 0
 EQI4 $2088
-line 4675
-;4674:					//NOTE: BotGetActivateGoal already checks if the door is open or not
-;4675:					bspent = BotGetActivateGoal(bs, entitynum, &activategoal);
+line 4709
+;4708:					//NOTE: BotGetActivateGoal already checks if the door is open or not
+;4709:					bspent = BotGetActivateGoal(bs, entitynum, &activategoal);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -25166,15 +25200,15 @@ ADDRLP4 44
 ADDRLP4 312
 INDIRI4
 ASGNI4
-line 4676
-;4676:					if (bspent) {
+line 4710
+;4710:					if (bspent) {
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
 EQI4 $2088
-line 4678
-;4677:						//
-;4678:						if (bs->activatestack && !bs->activatestack->inuse)
+line 4712
+;4711:						//
+;4712:						if (bs->activatestack && !bs->activatestack->inuse)
 ADDRLP4 316
 ADDRFP4 0
 INDIRP4
@@ -25192,8 +25226,8 @@ INDIRP4
 INDIRI4
 CNSTI4 0
 NEI4 $2100
-line 4679
-;4679:							bs->activatestack = NULL;
+line 4713
+;4713:							bs->activatestack = NULL;
 ADDRFP4 0
 INDIRP4
 CNSTI4 7116
@@ -25201,9 +25235,9 @@ ADDP4
 CNSTP4 0
 ASGNP4
 LABELV $2100
-line 4681
-;4680:						// if not already trying to activate this entity
-;4681:						if (!BotIsGoingToActivateEntity(bs, activategoal.goal.entitynum)) {
+line 4715
+;4714:						// if not already trying to activate this entity
+;4715:						if (!BotIsGoingToActivateEntity(bs, activategoal.goal.entitynum)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -25218,11 +25252,11 @@ ADDRLP4 320
 INDIRI4
 CNSTI4 0
 NEI4 $2102
-line 4685
-;4682:							//
-;4683:							//BotAI_Print(PRT_MESSAGE, "blocked by mover model %d, entity %d ?\n", modelnum, entitynum);
-;4684:							//
-;4685:							BotGoForActivateGoal(bs, &activategoal);
+line 4719
+;4716:							//
+;4717:							//BotAI_Print(PRT_MESSAGE, "blocked by mover model %d, entity %d ?\n", modelnum, entitynum);
+;4718:							//
+;4719:							BotGoForActivateGoal(bs, &activategoal);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -25231,19 +25265,19 @@ ARGP4
 ADDRGP4 BotGoForActivateGoal
 CALLI4
 pop
-line 4686
-;4686:							return qtrue;
+line 4720
+;4720:							return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $2081
 JUMPV
 LABELV $2102
-line 4688
-;4687:						}
-;4688:						else {
-line 4690
-;4689:							// enable any routing areas that were disabled
-;4690:							BotEnableActivateGoalAreas(&activategoal, qtrue);
+line 4722
+;4721:						}
+;4722:						else {
+line 4724
+;4723:							// enable any routing areas that were disabled
+;4724:							BotEnableActivateGoalAreas(&activategoal, qtrue);
 ADDRLP4 48
 ARGP4
 CNSTI4 1
@@ -25251,71 +25285,71 @@ ARGI4
 ADDRGP4 BotEnableActivateGoalAreas
 CALLV
 pop
-line 4691
-;4691:						}
-line 4692
-;4692:					}
-line 4693
-;4693:				}
-line 4694
-;4694:			}
-line 4695
-;4695:		}
-line 4696
-;4696:	}
+line 4725
+;4725:						}
+line 4726
+;4726:					}
+line 4727
+;4727:				}
+line 4728
+;4728:			}
+line 4729
+;4729:		}
+line 4730
+;4730:	}
 ADDRGP4 $2088
 JUMPV
 LABELV $2087
-line 4697
-;4697:	else if (route.stopevent & RSE_USETRAVELTYPE) {
+line 4731
+;4731:	else if (route.stopevent & RSE_USETRAVELTYPE) {
 ADDRLP4 0+16
 INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
 EQI4 $2106
-line 4698
-;4698:		if (route.endtravelflags & TFL_BRIDGE) {
+line 4732
+;4732:		if (route.endtravelflags & TFL_BRIDGE) {
 ADDRLP4 0+24
 INDIRI4
 CNSTI4 67108864
 BANDI4
 CNSTI4 0
 EQI4 $2109
-line 4700
-;4699:			//FIXME: check if the bridge is available to travel over
-;4700:		}
+line 4734
+;4733:			//FIXME: check if the bridge is available to travel over
+;4734:		}
 LABELV $2109
-line 4701
-;4701:	}
+line 4735
+;4735:	}
 LABELV $2106
 LABELV $2088
-line 4702
-;4702:	return qfalse;
+line 4736
+;4736:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $2081
 endproc BotAIPredictObstacles 324 44
 export BotCheckConsoleMessages
 proc BotCheckConsoleMessages 1012 48
-line 4710
-;4703:}
-;4704:
-;4705:/*
-;4706:==================
-;4707:BotCheckConsoleMessages
-;4708:==================
-;4709:*/
-;4710:void BotCheckConsoleMessages(bot_state_t *bs) {
-line 4718
-;4711:	char botname[MAX_NETNAME], message[MAX_MESSAGE_SIZE], netname[MAX_NETNAME], *ptr;
-;4712:	float chat_reply;
-;4713:	int context, handle;
-;4714:	bot_consolemessage_t m;
-;4715:	bot_match_t match;
-;4716:
-;4717:	//the name of this bot
-;4718:	ClientName(bs->client, botname, sizeof(botname));
+line 4744
+;4737:}
+;4738:
+;4739:/*
+;4740:==================
+;4741:BotCheckConsoleMessages
+;4742:==================
+;4743:*/
+;4744:void BotCheckConsoleMessages(bot_state_t *bs) {
+line 4752
+;4745:	char botname[MAX_NETNAME], message[MAX_MESSAGE_SIZE], netname[MAX_NETNAME], *ptr;
+;4746:	float chat_reply;
+;4747:	int context, handle;
+;4748:	bot_consolemessage_t m;
+;4749:	bot_match_t match;
+;4750:
+;4751:	//the name of this bot
+;4752:	ClientName(bs->client, botname, sizeof(botname));
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -25332,12 +25366,12 @@ pop
 ADDRGP4 $2114
 JUMPV
 LABELV $2113
-line 4720
-;4719:	//
-;4720:	while((handle = trap_BotNextConsoleMessage(bs->cs, &m)) != 0) {
-line 4722
-;4721:		//if the chat state is flooded with messages the bot will read them quickly
-;4722:		if (trap_BotNumConsoleMessages(bs->cs) < 10) {
+line 4754
+;4753:	//
+;4754:	while((handle = trap_BotNextConsoleMessage(bs->cs, &m)) != 0) {
+line 4756
+;4755:		//if the chat state is flooded with messages the bot will read them quickly
+;4756:		if (trap_BotNumConsoleMessages(bs->cs) < 10) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6532
@@ -25352,9 +25386,9 @@ ADDRLP4 948
 INDIRI4
 CNSTI4 10
 GEI4 $2116
-line 4724
-;4723:			//if it is a chat message the bot needs some time to read it
-;4724:			if (m.type == CMS_CHAT && m.time > FloatTime() - (1 + random())) break;
+line 4758
+;4757:			//if it is a chat message the bot needs some time to read it
+;4758:			if (m.type == CMS_CHAT && m.time > FloatTime() - (1 + random())) break;
 ADDRLP4 0+8
 INDIRI4
 CNSTI4 1
@@ -25381,26 +25415,26 @@ LEF4 $2118
 ADDRGP4 $2115
 JUMPV
 LABELV $2118
-line 4725
-;4725:		}
+line 4759
+;4759:		}
 LABELV $2116
-line 4727
-;4726:		//
-;4727:		ptr = m.message;
+line 4761
+;4760:		//
+;4761:		ptr = m.message;
 ADDRLP4 276
 ADDRLP4 0+12
 ASGNP4
-line 4730
-;4728:		//if it is a chat message then don't unify white spaces and don't
-;4729:		//replace synonyms in the netname
-;4730:		if (m.type == CMS_CHAT) {
+line 4764
+;4762:		//if it is a chat message then don't unify white spaces and don't
+;4763:		//replace synonyms in the netname
+;4764:		if (m.type == CMS_CHAT) {
 ADDRLP4 0+8
 INDIRI4
 CNSTI4 1
 NEI4 $2123
-line 4732
-;4731:			//
-;4732:			if (trap_BotFindMatch(m.message, &match, MTCONTEXT_REPLYCHAT)) {
+line 4766
+;4765:			//
+;4766:			if (trap_BotFindMatch(m.message, &match, MTCONTEXT_REPLYCHAT)) {
 ADDRLP4 0+12
 ARGP4
 ADDRLP4 288
@@ -25415,8 +25449,8 @@ ADDRLP4 952
 INDIRI4
 CNSTI4 0
 EQI4 $2126
-line 4733
-;4733:				ptr = m.message + match.variables[MESSAGE].offset;
+line 4767
+;4767:				ptr = m.message + match.variables[MESSAGE].offset;
 ADDRLP4 276
 ADDRLP4 288+264+16
 INDIRI1
@@ -25424,24 +25458,24 @@ CVII4 1
 ADDRLP4 0+12
 ADDP4
 ASGNP4
-line 4734
-;4734:			}
+line 4768
+;4768:			}
 LABELV $2126
-line 4735
-;4735:		}
+line 4769
+;4769:		}
 LABELV $2123
-line 4737
-;4736:		//unify the white spaces in the message
-;4737:		trap_UnifyWhiteSpaces(ptr);
+line 4771
+;4770:		//unify the white spaces in the message
+;4771:		trap_UnifyWhiteSpaces(ptr);
 ADDRLP4 276
 INDIRP4
 ARGP4
 ADDRGP4 trap_UnifyWhiteSpaces
 CALLV
 pop
-line 4739
-;4738:		//replace synonyms in the right context
-;4739:		context = BotSynonymContext(bs);
+line 4773
+;4772:		//replace synonyms in the right context
+;4773:		context = BotSynonymContext(bs);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -25453,8 +25487,8 @@ ADDRLP4 284
 ADDRLP4 952
 INDIRI4
 ASGNI4
-line 4740
-;4740:		trap_BotReplaceSynonyms(ptr, context);
+line 4774
+;4774:		trap_BotReplaceSynonyms(ptr, context);
 ADDRLP4 276
 INDIRP4
 ARGP4
@@ -25465,9 +25499,9 @@ ARGU4
 ADDRGP4 trap_BotReplaceSynonyms
 CALLV
 pop
-line 4742
-;4741:		//if there's no match
-;4742:		if (!BotMatchMessage(bs, m.message)) {
+line 4776
+;4775:		//if there's no match
+;4776:		if (!BotMatchMessage(bs, m.message)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -25481,9 +25515,9 @@ ADDRLP4 956
 INDIRI4
 CNSTI4 0
 NEI4 $2132
-line 4744
-;4743:			//if it is a chat message
-;4744:			if (m.type == CMS_CHAT && !bot_nochat.integer) {
+line 4778
+;4777:			//if it is a chat message
+;4778:			if (m.type == CMS_CHAT && !bot_nochat.integer) {
 ADDRLP4 0+8
 INDIRI4
 CNSTI4 1
@@ -25492,9 +25526,9 @@ ADDRGP4 bot_nochat+12
 INDIRI4
 CNSTI4 0
 NEI4 $2135
-line 4746
-;4745:				//
-;4746:				if (!trap_BotFindMatch(m.message, &match, MTCONTEXT_REPLYCHAT)) {
+line 4780
+;4779:				//
+;4780:				if (!trap_BotFindMatch(m.message, &match, MTCONTEXT_REPLYCHAT)) {
 ADDRLP4 0+12
 ARGP4
 ADDRLP4 288
@@ -25509,8 +25543,8 @@ ADDRLP4 960
 INDIRI4
 CNSTI4 0
 NEI4 $2139
-line 4747
-;4747:					trap_BotRemoveConsoleMessage(bs->cs, handle);
+line 4781
+;4781:					trap_BotRemoveConsoleMessage(bs->cs, handle);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6532
@@ -25523,23 +25557,23 @@ ARGI4
 ADDRGP4 trap_BotRemoveConsoleMessage
 CALLV
 pop
-line 4748
-;4748:					continue;
+line 4782
+;4782:					continue;
 ADDRGP4 $2114
 JUMPV
 LABELV $2139
-line 4751
-;4749:				}
-;4750:				//don't use eliza chats with team messages
-;4751:				if (match.subtype & ST_TEAM) {
+line 4785
+;4783:				}
+;4784:				//don't use eliza chats with team messages
+;4785:				if (match.subtype & ST_TEAM) {
 ADDRLP4 288+260
 INDIRI4
 CNSTI4 32768
 BANDI4
 CNSTI4 0
 EQI4 $2142
-line 4752
-;4752:					trap_BotRemoveConsoleMessage(bs->cs, handle);
+line 4786
+;4786:					trap_BotRemoveConsoleMessage(bs->cs, handle);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6532
@@ -25552,15 +25586,15 @@ ARGI4
 ADDRGP4 trap_BotRemoveConsoleMessage
 CALLV
 pop
-line 4753
-;4753:					continue;
+line 4787
+;4787:					continue;
 ADDRGP4 $2114
 JUMPV
 LABELV $2142
-line 4756
-;4754:				}
-;4755:				//
-;4756:				trap_BotMatchVariable(&match, NETNAME, netname, sizeof(netname));
+line 4790
+;4788:				}
+;4789:				//
+;4790:				trap_BotMatchVariable(&match, NETNAME, netname, sizeof(netname));
 ADDRLP4 288
 ARGP4
 CNSTI4 0
@@ -25572,8 +25606,8 @@ ARGI4
 ADDRGP4 trap_BotMatchVariable
 CALLV
 pop
-line 4757
-;4757:				trap_BotMatchVariable(&match, MESSAGE, message, sizeof(message));
+line 4791
+;4791:				trap_BotMatchVariable(&match, MESSAGE, message, sizeof(message));
 ADDRLP4 288
 ARGP4
 CNSTI4 2
@@ -25585,9 +25619,9 @@ ARGI4
 ADDRGP4 trap_BotMatchVariable
 CALLV
 pop
-line 4759
-;4758:				//if this is a message from the bot self
-;4759:				if (bs->client == ClientFromName(netname)) {
+line 4793
+;4792:				//if this is a message from the bot self
+;4793:				if (bs->client == ClientFromName(netname)) {
 ADDRLP4 872
 ARGP4
 ADDRLP4 964
@@ -25602,8 +25636,8 @@ INDIRI4
 ADDRLP4 964
 INDIRI4
 NEI4 $2145
-line 4760
-;4760:					trap_BotRemoveConsoleMessage(bs->cs, handle);
+line 4794
+;4794:					trap_BotRemoveConsoleMessage(bs->cs, handle);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6532
@@ -25616,37 +25650,37 @@ ARGI4
 ADDRGP4 trap_BotRemoveConsoleMessage
 CALLV
 pop
-line 4761
-;4761:					continue;
+line 4795
+;4795:					continue;
 ADDRGP4 $2114
 JUMPV
 LABELV $2145
-line 4764
-;4762:				}
-;4763:				//unify the message
-;4764:				trap_UnifyWhiteSpaces(message);
+line 4798
+;4796:				}
+;4797:				//unify the message
+;4798:				trap_UnifyWhiteSpaces(message);
 ADDRLP4 616
 ARGP4
 ADDRGP4 trap_UnifyWhiteSpaces
 CALLV
 pop
-line 4766
-;4765:				//
-;4766:				trap_Cvar_Update(&bot_testrchat);
+line 4800
+;4799:				//
+;4800:				trap_Cvar_Update(&bot_testrchat);
 ADDRGP4 bot_testrchat
 ARGP4
 ADDRGP4 trap_Cvar_Update
 CALLV
 pop
-line 4767
-;4767:				if (bot_testrchat.integer) {
+line 4801
+;4801:				if (bot_testrchat.integer) {
 ADDRGP4 bot_testrchat+12
 INDIRI4
 CNSTI4 0
 EQI4 $2147
-line 4769
-;4768:					//
-;4769:					trap_BotLibVarSet("bot_testrchat", "1");
+line 4803
+;4802:					//
+;4803:					trap_BotLibVarSet("bot_testrchat", "1");
 ADDRGP4 $2150
 ARGP4
 ADDRGP4 $2151
@@ -25654,9 +25688,9 @@ ARGP4
 ADDRGP4 trap_BotLibVarSet
 CALLI4
 pop
-line 4771
-;4770:					//if bot replies with a chat message
-;4771:					if (trap_BotReplyChat(bs->cs, message, context, CONTEXT_REPLY,
+line 4805
+;4804:					//if bot replies with a chat message
+;4805:					if (trap_BotReplyChat(bs->cs, message, context, CONTEXT_REPLY,
 ADDRFP4 0
 INDIRP4
 CNSTI4 6532
@@ -25703,13 +25737,13 @@ ADDRLP4 972
 INDIRI4
 CNSTI4 0
 EQI4 $2152
-line 4775
-;4772:															NULL, NULL,
-;4773:															NULL, NULL,
-;4774:															NULL, NULL,
-;4775:															botname, netname)) {
-line 4776
-;4776:						BotAI_Print(PRT_MESSAGE, "------------------------\n");
+line 4809
+;4806:															NULL, NULL,
+;4807:															NULL, NULL,
+;4808:															NULL, NULL,
+;4809:															botname, netname)) {
+line 4810
+;4810:						BotAI_Print(PRT_MESSAGE, "------------------------\n");
 CNSTI4 1
 ARGI4
 ADDRGP4 $2154
@@ -25717,15 +25751,15 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 4777
-;4777:					}
+line 4811
+;4811:					}
 ADDRGP4 $2148
 JUMPV
 LABELV $2152
-line 4778
-;4778:					else {
-line 4779
-;4779:						BotAI_Print(PRT_MESSAGE, "**** no valid reply ****\n");
+line 4812
+;4812:					else {
+line 4813
+;4813:						BotAI_Print(PRT_MESSAGE, "**** no valid reply ****\n");
 CNSTI4 1
 ARGI4
 ADDRGP4 $2155
@@ -25733,16 +25767,16 @@ ARGP4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 4780
-;4780:					}
-line 4781
-;4781:				}
+line 4814
+;4814:					}
+line 4815
+;4815:				}
 ADDRGP4 $2148
 JUMPV
 LABELV $2147
-line 4783
-;4782:				//if at a valid chat position and not chatting already and not in teamplay
-;4783:				else if (bs->ainode != AINode_Stand && BotValidChatPosition(bs) && !TeamPlayIsOn()) {
+line 4817
+;4816:				//if at a valid chat position and not chatting already and not in teamplay
+;4817:				else if (bs->ainode != AINode_Stand && BotValidChatPosition(bs) && !TeamPlayIsOn()) {
 ADDRLP4 968
 ADDRFP4 0
 INDIRP4
@@ -25775,8 +25809,8 @@ ADDRLP4 976
 INDIRI4
 CNSTI4 0
 NEI4 $2156
-line 4784
-;4784:					chat_reply = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_CHAT_REPLY, 0, 1);
+line 4818
+;4818:					chat_reply = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_CHAT_REPLY, 0, 1);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -25797,8 +25831,8 @@ ADDRLP4 944
 ADDRLP4 980
 INDIRF4
 ASGNF4
-line 4785
-;4785:					if (random() < 1.5 / (NumBots()+1) && random() < chat_reply) {
+line 4819
+;4819:					if (random() < 1.5 / (NumBots()+1) && random() < chat_reply) {
 ADDRLP4 984
 ADDRGP4 rand
 CALLI4
@@ -25836,9 +25870,9 @@ DIVF4
 ADDRLP4 944
 INDIRF4
 GEF4 $2158
-line 4787
-;4786:						//if bot replies with a chat message
-;4787:						if (trap_BotReplyChat(bs->cs, message, context, CONTEXT_REPLY,
+line 4821
+;4820:						//if bot replies with a chat message
+;4821:						if (trap_BotReplyChat(bs->cs, message, context, CONTEXT_REPLY,
 ADDRFP4 0
 INDIRP4
 CNSTI4 6532
@@ -25885,14 +25919,14 @@ ADDRLP4 1000
 INDIRI4
 CNSTI4 0
 EQI4 $2160
-line 4791
-;4788:																NULL, NULL,
-;4789:																NULL, NULL,
-;4790:																NULL, NULL,
-;4791:																botname, netname)) {
-line 4793
-;4792:							//remove the console message
-;4793:							trap_BotRemoveConsoleMessage(bs->cs, handle);
+line 4825
+;4822:																NULL, NULL,
+;4823:																NULL, NULL,
+;4824:																NULL, NULL,
+;4825:																botname, netname)) {
+line 4827
+;4826:							//remove the console message
+;4827:							trap_BotRemoveConsoleMessage(bs->cs, handle);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6532
@@ -25905,8 +25939,8 @@ ARGI4
 ADDRGP4 trap_BotRemoveConsoleMessage
 CALLV
 pop
-line 4794
-;4794:							bs->stand_time = FloatTime() + BotChatTime(bs);
+line 4828
+;4828:							bs->stand_time = FloatTime() + BotChatTime(bs);
 ADDRLP4 1004
 ADDRFP4 0
 INDIRP4
@@ -25928,8 +25962,8 @@ ADDRLP4 1008
 INDIRF4
 ADDF4
 ASGNF4
-line 4795
-;4795:							AIEnter_Stand(bs, "BotCheckConsoleMessages: reply chat");
+line 4829
+;4829:							AIEnter_Stand(bs, "BotCheckConsoleMessages: reply chat");
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -25938,29 +25972,29 @@ ARGP4
 ADDRGP4 AIEnter_Stand
 CALLV
 pop
-line 4797
-;4796:							//EA_Say(bs->client, bs->cs.chatmessage);
-;4797:							break;
+line 4831
+;4830:							//EA_Say(bs->client, bs->cs.chatmessage);
+;4831:							break;
 ADDRGP4 $2115
 JUMPV
 LABELV $2160
-line 4799
-;4798:						}
-;4799:					}
+line 4833
+;4832:						}
+;4833:					}
 LABELV $2158
-line 4800
-;4800:				}
+line 4834
+;4834:				}
 LABELV $2156
 LABELV $2148
-line 4801
-;4801:			}
+line 4835
+;4835:			}
 LABELV $2135
-line 4802
-;4802:		}
+line 4836
+;4836:		}
 LABELV $2132
-line 4804
-;4803:		//remove the console message
-;4804:		trap_BotRemoveConsoleMessage(bs->cs, handle);
+line 4838
+;4837:		//remove the console message
+;4838:		trap_BotRemoveConsoleMessage(bs->cs, handle);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6532
@@ -25973,10 +26007,10 @@ ARGI4
 ADDRGP4 trap_BotRemoveConsoleMessage
 CALLV
 pop
-line 4805
-;4805:	}
+line 4839
+;4839:	}
 LABELV $2114
-line 4720
+line 4754
 ADDRFP4 0
 INDIRP4
 CNSTI4 6532
@@ -25998,23 +26032,23 @@ INDIRI4
 CNSTI4 0
 NEI4 $2113
 LABELV $2115
-line 4806
-;4806:}
+line 4840
+;4840:}
 LABELV $2112
 endproc BotCheckConsoleMessages 1012 48
 export BotCheckForGrenades
 proc BotCheckForGrenades 8 16
-line 4813
-;4807:
-;4808:/*
-;4809:==================
-;4810:BotCheckEvents
-;4811:==================
-;4812:*/
-;4813:void BotCheckForGrenades(bot_state_t *bs, entityState_t *state) {
-line 4815
-;4814:	// if this is not a grenade
-;4815:	if (state->eType != ET_MISSILE || state->weapon != WP_GRENADE_LAUNCHER)
+line 4847
+;4841:
+;4842:/*
+;4843:==================
+;4844:BotCheckEvents
+;4845:==================
+;4846:*/
+;4847:void BotCheckForGrenades(bot_state_t *bs, entityState_t *state) {
+line 4849
+;4848:	// if this is not a grenade
+;4849:	if (state->eType != ET_MISSILE || state->weapon != WP_GRENADE_LAUNCHER)
 ADDRLP4 0
 ADDRFP4 4
 INDIRP4
@@ -26039,14 +26073,14 @@ ADDRLP4 4
 INDIRI4
 EQI4 $2164
 LABELV $2166
-line 4816
-;4816:		return;
+line 4850
+;4850:		return;
 ADDRGP4 $2163
 JUMPV
 LABELV $2164
-line 4818
-;4817:	// try to avoid the grenade
-;4818:	trap_BotAddAvoidSpot(bs->ms, state->pos.trBase, 160, AVOID_ALWAYS);
+line 4852
+;4851:	// try to avoid the grenade
+;4852:	trap_BotAddAvoidSpot(bs->ms, state->pos.trBase, 160, AVOID_ALWAYS);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6524
@@ -26065,75 +26099,75 @@ ARGI4
 ADDRGP4 trap_BotAddAvoidSpot
 CALLV
 pop
-line 4819
-;4819:}
+line 4853
+;4853:}
 LABELV $2163
 endproc BotCheckForGrenades 8 16
 export BotCheckEvents
 proc BotCheckEvents 164 12
-line 4871
-;4820:
-;4821:#ifdef MISSIONPACK
-;4822:/*
-;4823:==================
-;4824:BotCheckForProxMines
-;4825:==================
-;4826:*/
-;4827:void BotCheckForProxMines(bot_state_t *bs, entityState_t *state) {
-;4828:	// if this is not a prox mine
-;4829:	if (state->eType != ET_MISSILE || state->weapon != WP_PROX_LAUNCHER)
-;4830:		return;
-;4831:	// if this prox mine is from someone on our own team
-;4832:	if (state->generic1 == BotTeam(bs))
-;4833:		return;
-;4834:	// if the bot doesn't have a weapon to deactivate the mine
-;4835:	if (!(bs->inventory[INVENTORY_PLASMAGUN] > 0 && bs->inventory[INVENTORY_CELLS] > 0) &&
-;4836:		!(bs->inventory[INVENTORY_ROCKETLAUNCHER] > 0 && bs->inventory[INVENTORY_ROCKETS] > 0) &&
-;4837:		!(bs->inventory[INVENTORY_BFG10K] > 0 && bs->inventory[INVENTORY_BFGAMMO] > 0) ) {
-;4838:		return;
-;4839:	}
-;4840:	// try to avoid the prox mine
-;4841:	trap_BotAddAvoidSpot(bs->ms, state->pos.trBase, 160, AVOID_ALWAYS);
-;4842:	//
-;4843:	if (bs->numproxmines >= MAX_PROXMINES)
-;4844:		return;
-;4845:	bs->proxmines[bs->numproxmines] = state->number;
-;4846:	bs->numproxmines++;
-;4847:}
-;4848:
-;4849:/*
-;4850:==================
-;4851:BotCheckForKamikazeBody
-;4852:==================
-;4853:*/
-;4854:void BotCheckForKamikazeBody(bot_state_t *bs, entityState_t *state) {
-;4855:	// if this entity is not wearing the kamikaze
-;4856:	if (!(state->eFlags & EF_KAMIKAZE))
-;4857:		return;
-;4858:	// if this entity isn't dead
-;4859:	if (!(state->eFlags & EF_DEAD))
-;4860:		return;
-;4861:	//remember this kamikaze body
-;4862:	bs->kamikazebody = state->number;
-;4863:}
-;4864:#endif
-;4865:
-;4866:/*
-;4867:==================
-;4868:BotCheckEvents
-;4869:==================
-;4870:*/
-;4871:void BotCheckEvents(bot_state_t *bs, entityState_t *state) {
-line 4880
-;4872:	int event;
-;4873:	char buf[128];
-;4874:#ifdef MISSIONPACK
-;4875:	aas_entityinfo_t entinfo;
-;4876:#endif
-;4877:
-;4878:	//NOTE: this sucks, we're accessing the gentity_t directly
-;4879:	//but there's no other fast way to do it right now
-;4880:	if (bs->entityeventTime[state->number] == g_entities[state->number].eventTime) {
+line 4905
+;4854:
+;4855:#ifdef MISSIONPACK
+;4856:/*
+;4857:==================
+;4858:BotCheckForProxMines
+;4859:==================
+;4860:*/
+;4861:void BotCheckForProxMines(bot_state_t *bs, entityState_t *state) {
+;4862:	// if this is not a prox mine
+;4863:	if (state->eType != ET_MISSILE || state->weapon != WP_PROX_LAUNCHER)
+;4864:		return;
+;4865:	// if this prox mine is from someone on our own team
+;4866:	if (state->generic1 == BotTeam(bs))
+;4867:		return;
+;4868:	// if the bot doesn't have a weapon to deactivate the mine
+;4869:	if (!(bs->inventory[INVENTORY_PLASMAGUN] > 0 && bs->inventory[INVENTORY_CELLS] > 0) &&
+;4870:		!(bs->inventory[INVENTORY_ROCKETLAUNCHER] > 0 && bs->inventory[INVENTORY_ROCKETS] > 0) &&
+;4871:		!(bs->inventory[INVENTORY_BFG10K] > 0 && bs->inventory[INVENTORY_BFGAMMO] > 0) ) {
+;4872:		return;
+;4873:	}
+;4874:	// try to avoid the prox mine
+;4875:	trap_BotAddAvoidSpot(bs->ms, state->pos.trBase, 160, AVOID_ALWAYS);
+;4876:	//
+;4877:	if (bs->numproxmines >= MAX_PROXMINES)
+;4878:		return;
+;4879:	bs->proxmines[bs->numproxmines] = state->number;
+;4880:	bs->numproxmines++;
+;4881:}
+;4882:
+;4883:/*
+;4884:==================
+;4885:BotCheckForKamikazeBody
+;4886:==================
+;4887:*/
+;4888:void BotCheckForKamikazeBody(bot_state_t *bs, entityState_t *state) {
+;4889:	// if this entity is not wearing the kamikaze
+;4890:	if (!(state->eFlags & EF_KAMIKAZE))
+;4891:		return;
+;4892:	// if this entity isn't dead
+;4893:	if (!(state->eFlags & EF_DEAD))
+;4894:		return;
+;4895:	//remember this kamikaze body
+;4896:	bs->kamikazebody = state->number;
+;4897:}
+;4898:#endif
+;4899:
+;4900:/*
+;4901:==================
+;4902:BotCheckEvents
+;4903:==================
+;4904:*/
+;4905:void BotCheckEvents(bot_state_t *bs, entityState_t *state) {
+line 4914
+;4906:	int event;
+;4907:	char buf[128];
+;4908:#ifdef MISSIONPACK
+;4909:	aas_entityinfo_t entinfo;
+;4910:#endif
+;4911:
+;4912:	//NOTE: this sucks, we're accessing the gentity_t directly
+;4913:	//but there's no other fast way to do it right now
+;4914:	if (bs->entityeventTime[state->number] == g_entities[state->number].eventTime) {
 ADDRLP4 132
 ADDRFP4 4
 INDIRP4
@@ -26157,14 +26191,14 @@ ADDRGP4 g_entities+560
 ADDP4
 INDIRI4
 NEI4 $2168
-line 4881
-;4881:		return;
+line 4915
+;4915:		return;
 ADDRGP4 $2167
 JUMPV
 LABELV $2168
-line 4883
-;4882:	}
-;4883:	bs->entityeventTime[state->number] = g_entities[state->number].eventTime;
+line 4917
+;4916:	}
+;4917:	bs->entityeventTime[state->number] = g_entities[state->number].eventTime;
 ADDRLP4 136
 ADDRFP4 4
 INDIRP4
@@ -26187,9 +26221,9 @@ ADDRGP4 g_entities+560
 ADDP4
 INDIRI4
 ASGNI4
-line 4885
-;4884:	//if it's an event only entity
-;4885:	if (state->eType > ET_EVENTS) {
+line 4919
+;4918:	//if it's an event only entity
+;4919:	if (state->eType > ET_EVENTS) {
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
@@ -26197,8 +26231,8 @@ ADDP4
 INDIRI4
 CNSTI4 14
 LEI4 $2172
-line 4886
-;4886:		event = (state->eType - ET_EVENTS) & ~EV_EVENT_BITS;
+line 4920
+;4920:		event = (state->eType - ET_EVENTS) & ~EV_EVENT_BITS;
 ADDRLP4 0
 ADDRFP4 4
 INDIRP4
@@ -26210,15 +26244,15 @@ SUBI4
 CNSTI4 -769
 BANDI4
 ASGNI4
-line 4887
-;4887:	}
+line 4921
+;4921:	}
 ADDRGP4 $2173
 JUMPV
 LABELV $2172
-line 4888
-;4888:	else {
-line 4889
-;4889:		event = state->event & ~EV_EVENT_BITS;
+line 4922
+;4922:	else {
+line 4923
+;4923:		event = state->event & ~EV_EVENT_BITS;
 ADDRLP4 0
 ADDRFP4 4
 INDIRP4
@@ -26228,12 +26262,12 @@ INDIRI4
 CNSTI4 -769
 BANDI4
 ASGNI4
-line 4890
-;4890:	}
+line 4924
+;4924:	}
 LABELV $2173
-line 4892
-;4891:	//
-;4892:	switch(event) {
+line 4926
+;4925:	//
+;4926:	switch(event) {
 ADDRLP4 140
 ADDRLP4 0
 INDIRI4
@@ -26336,14 +26370,14 @@ address $2174
 address $2175
 code
 LABELV $2176
-line 4895
-;4893:		//client obituary event
-;4894:		case EV_OBITUARY:
-;4895:		{
-line 4898
-;4896:			int target, attacker, mod;
-;4897:
-;4898:			target = state->otherEntityNum;
+line 4929
+;4927:		//client obituary event
+;4928:		case EV_OBITUARY:
+;4929:		{
+line 4932
+;4930:			int target, attacker, mod;
+;4931:
+;4932:			target = state->otherEntityNum;
 ADDRLP4 144
 ADDRFP4 4
 INDIRP4
@@ -26351,8 +26385,8 @@ CNSTI4 140
 ADDP4
 INDIRI4
 ASGNI4
-line 4899
-;4899:			attacker = state->otherEntityNum2;
+line 4933
+;4933:			attacker = state->otherEntityNum2;
 ADDRLP4 148
 ADDRFP4 4
 INDIRP4
@@ -26360,8 +26394,8 @@ CNSTI4 144
 ADDP4
 INDIRI4
 ASGNI4
-line 4900
-;4900:			mod = state->eventParm;
+line 4934
+;4934:			mod = state->eventParm;
 ADDRLP4 152
 ADDRFP4 4
 INDIRP4
@@ -26369,9 +26403,9 @@ CNSTI4 184
 ADDP4
 INDIRI4
 ASGNI4
-line 4902
-;4901:			//
-;4902:			if (target == bs->client) {
+line 4936
+;4935:			//
+;4936:			if (target == bs->client) {
 ADDRLP4 144
 INDIRI4
 ADDRFP4 0
@@ -26380,8 +26414,8 @@ CNSTI4 8
 ADDP4
 INDIRI4
 NEI4 $2177
-line 4903
-;4903:				bs->botdeathtype = mod;
+line 4937
+;4937:				bs->botdeathtype = mod;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6000
@@ -26389,8 +26423,8 @@ ADDP4
 ADDRLP4 152
 INDIRI4
 ASGNI4
-line 4904
-;4904:				bs->lastkilledby = attacker;
+line 4938
+;4938:				bs->lastkilledby = attacker;
 ADDRFP4 0
 INDIRP4
 CNSTI4 5996
@@ -26398,9 +26432,9 @@ ADDP4
 ADDRLP4 148
 INDIRI4
 ASGNI4
-line 4906
-;4905:				//
-;4906:				if (target == attacker ||
+line 4940
+;4939:				//
+;4940:				if (target == attacker ||
 ADDRLP4 156
 ADDRLP4 144
 INDIRI4
@@ -26419,9 +26453,9 @@ INDIRI4
 CNSTI4 1022
 NEI4 $2179
 LABELV $2182
-line 4908
-;4907:					target == ENTITYNUM_NONE ||
-;4908:					target == ENTITYNUM_WORLD) bs->botsuicide = qtrue;
+line 4942
+;4941:					target == ENTITYNUM_NONE ||
+;4942:					target == ENTITYNUM_WORLD) bs->botsuicide = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6008
@@ -26431,8 +26465,8 @@ ASGNI4
 ADDRGP4 $2180
 JUMPV
 LABELV $2179
-line 4909
-;4909:				else bs->botsuicide = qfalse;
+line 4943
+;4943:				else bs->botsuicide = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6008
@@ -26440,9 +26474,9 @@ ADDP4
 CNSTI4 0
 ASGNI4
 LABELV $2180
-line 4911
-;4910:				//
-;4911:				bs->num_deaths++;
+line 4945
+;4944:				//
+;4945:				bs->num_deaths++;
 ADDRLP4 160
 ADDRFP4 0
 INDIRP4
@@ -26457,14 +26491,14 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 4912
-;4912:			}
+line 4946
+;4946:			}
 ADDRGP4 $2175
 JUMPV
 LABELV $2177
-line 4914
-;4913:			//else if this client was killed by the bot
-;4914:			else if (attacker == bs->client) {
+line 4948
+;4947:			//else if this client was killed by the bot
+;4948:			else if (attacker == bs->client) {
 ADDRLP4 148
 INDIRI4
 ADDRFP4 0
@@ -26473,8 +26507,8 @@ CNSTI4 8
 ADDP4
 INDIRI4
 NEI4 $2183
-line 4915
-;4915:				bs->enemydeathtype = mod;
+line 4949
+;4949:				bs->enemydeathtype = mod;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6004
@@ -26482,8 +26516,8 @@ ADDP4
 ADDRLP4 152
 INDIRI4
 ASGNI4
-line 4916
-;4916:				bs->lastkilledplayer = target;
+line 4950
+;4950:				bs->lastkilledplayer = target;
 ADDRFP4 0
 INDIRP4
 CNSTI4 5992
@@ -26491,8 +26525,8 @@ ADDP4
 ADDRLP4 144
 INDIRI4
 ASGNI4
-line 4917
-;4917:				bs->killedenemy_time = FloatTime();
+line 4951
+;4951:				bs->killedenemy_time = FloatTime();
 ADDRFP4 0
 INDIRP4
 CNSTI4 6168
@@ -26500,9 +26534,9 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 ASGNF4
-line 4919
-;4918:				//
-;4919:				bs->num_kills++;
+line 4953
+;4952:				//
+;4953:				bs->num_kills++;
 ADDRLP4 156
 ADDRFP4 0
 INDIRP4
@@ -26517,13 +26551,13 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 4920
-;4920:			}
+line 4954
+;4954:			}
 ADDRGP4 $2175
 JUMPV
 LABELV $2183
-line 4921
-;4921:			else if (attacker == bs->enemy && target == attacker) {
+line 4955
+;4955:			else if (attacker == bs->enemy && target == attacker) {
 ADDRLP4 156
 ADDRLP4 148
 INDIRI4
@@ -26541,40 +26575,40 @@ INDIRI4
 ADDRLP4 156
 INDIRI4
 NEI4 $2175
-line 4922
-;4922:				bs->enemysuicide = qtrue;
+line 4956
+;4956:				bs->enemysuicide = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6012
 ADDP4
 CNSTI4 1
 ASGNI4
-line 4923
-;4923:			}
-line 4937
-;4924:			//
-;4925:#ifdef MISSIONPACK			
-;4926:			if (gametype == GT_1FCTF) {
-;4927:				//
-;4928:				BotEntityInfo(target, &entinfo);
-;4929:				if ( entinfo.powerups & ( 1 << PW_NEUTRALFLAG ) ) {
-;4930:					if (!BotSameTeam(bs, target)) {
-;4931:						bs->neutralflagstatus = 3;	//enemy dropped the flag
-;4932:						bs->flagstatuschanged = qtrue;
-;4933:					}
-;4934:				}
-;4935:			}
-;4936:#endif
-;4937:			break;
+line 4957
+;4957:			}
+line 4971
+;4958:			//
+;4959:#ifdef MISSIONPACK			
+;4960:			if (gametype == GT_1FCTF) {
+;4961:				//
+;4962:				BotEntityInfo(target, &entinfo);
+;4963:				if ( entinfo.powerups & ( 1 << PW_NEUTRALFLAG ) ) {
+;4964:					if (!BotSameTeam(bs, target)) {
+;4965:						bs->neutralflagstatus = 3;	//enemy dropped the flag
+;4966:						bs->flagstatuschanged = qtrue;
+;4967:					}
+;4968:				}
+;4969:			}
+;4970:#endif
+;4971:			break;
 ADDRGP4 $2175
 JUMPV
 LABELV $2187
-line 4940
-;4938:		}
-;4939:		case EV_GLOBAL_SOUND:
-;4940:		{
-line 4941
-;4941:			if (state->eventParm < 0 || state->eventParm > MAX_SOUNDS) {
+line 4974
+;4972:		}
+;4973:		case EV_GLOBAL_SOUND:
+;4974:		{
+line 4975
+;4975:			if (state->eventParm < 0 || state->eventParm > MAX_SOUNDS) {
 ADDRLP4 144
 ADDRFP4 4
 INDIRP4
@@ -26591,8 +26625,8 @@ INDIRI4
 CNSTI4 256
 LEI4 $2188
 LABELV $2190
-line 4942
-;4942:				BotAI_Print(PRT_ERROR, "EV_GLOBAL_SOUND: eventParm (%d) out of range\n", state->eventParm);
+line 4976
+;4976:				BotAI_Print(PRT_ERROR, "EV_GLOBAL_SOUND: eventParm (%d) out of range\n", state->eventParm);
 CNSTI4 3
 ARGI4
 ADDRGP4 $2191
@@ -26606,14 +26640,14 @@ ARGI4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 4943
-;4943:				break;
+line 4977
+;4977:				break;
 ADDRGP4 $2175
 JUMPV
 LABELV $2188
-line 4945
-;4944:			}
-;4945:			trap_GetConfigstring(CS_SOUNDS + state->eventParm, buf, sizeof(buf));
+line 4979
+;4978:			}
+;4979:			trap_GetConfigstring(CS_SOUNDS + state->eventParm, buf, sizeof(buf));
 ADDRFP4 4
 INDIRP4
 CNSTI4 184
@@ -26629,27 +26663,27 @@ ARGI4
 ADDRGP4 trap_GetConfigstring
 CALLV
 pop
-line 4965
-;4946:			/*
-;4947:			if (!strcmp(buf, "sound/teamplay/flagret_red.wav")) {
-;4948:				//red flag is returned
-;4949:				bs->redflagstatus = 0;
-;4950:				bs->flagstatuschanged = qtrue;
-;4951:			}
-;4952:			else if (!strcmp(buf, "sound/teamplay/flagret_blu.wav")) {
-;4953:				//blue flag is returned
-;4954:				bs->blueflagstatus = 0;
-;4955:				bs->flagstatuschanged = qtrue;
-;4956:			}
-;4957:			else*/
-;4958:#ifdef MISSIONPACK
-;4959:			if (!strcmp(buf, "sound/items/kamikazerespawn.wav" )) {
-;4960:				//the kamikaze respawned so dont avoid it
-;4961:				BotDontAvoid(bs, "Kamikaze");
-;4962:			}
-;4963:			else
-;4964:#endif
-;4965:				if (!strcmp(buf, "sound/items/poweruprespawn.wav")) {
+line 4999
+;4980:			/*
+;4981:			if (!strcmp(buf, "sound/teamplay/flagret_red.wav")) {
+;4982:				//red flag is returned
+;4983:				bs->redflagstatus = 0;
+;4984:				bs->flagstatuschanged = qtrue;
+;4985:			}
+;4986:			else if (!strcmp(buf, "sound/teamplay/flagret_blu.wav")) {
+;4987:				//blue flag is returned
+;4988:				bs->blueflagstatus = 0;
+;4989:				bs->flagstatuschanged = qtrue;
+;4990:			}
+;4991:			else*/
+;4992:#ifdef MISSIONPACK
+;4993:			if (!strcmp(buf, "sound/items/kamikazerespawn.wav" )) {
+;4994:				//the kamikaze respawned so dont avoid it
+;4995:				BotDontAvoid(bs, "Kamikaze");
+;4996:			}
+;4997:			else
+;4998:#endif
+;4999:				if (!strcmp(buf, "sound/items/poweruprespawn.wav")) {
 ADDRLP4 4
 ARGP4
 ADDRGP4 $2194
@@ -26662,34 +26696,34 @@ ADDRLP4 148
 INDIRI4
 CNSTI4 0
 NEI4 $2175
-line 4967
-;4966:				//powerup respawned... go get it
-;4967:				BotGoForPowerups(bs);
+line 5001
+;5000:				//powerup respawned... go get it
+;5001:				BotGoForPowerups(bs);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BotGoForPowerups
 CALLV
 pop
-line 4968
-;4968:			}
-line 4969
-;4969:			break;
+line 5002
+;5002:			}
+line 5003
+;5003:			break;
 ADDRGP4 $2175
 JUMPV
 LABELV $2195
-line 4972
-;4970:		}
-;4971:		case EV_GLOBAL_TEAM_SOUND:
-;4972:		{
-line 4973
-;4973:			if (gametype == GT_CTF) {
+line 5006
+;5004:		}
+;5005:		case EV_GLOBAL_TEAM_SOUND:
+;5006:		{
+line 5007
+;5007:			if (gametype == GT_CTF) {
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
 NEI4 $2175
-line 4974
-;4974:				switch(state->eventParm) {
+line 5008
+;5008:				switch(state->eventParm) {
 ADDRLP4 144
 ADDRFP4 4
 INDIRP4
@@ -26724,201 +26758,201 @@ address $2205
 address $2206
 code
 LABELV $2201
-line 4976
-;4975:					case GTS_RED_CAPTURE:
-;4976:						bs->blueflagstatus = 0;
+line 5010
+;5009:					case GTS_RED_CAPTURE:
+;5010:						bs->blueflagstatus = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6956
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4977
-;4977:						bs->redflagstatus = 0;
+line 5011
+;5011:						bs->redflagstatus = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6952
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4978
-;4978:						bs->flagstatuschanged = qtrue;
+line 5012
+;5012:						bs->flagstatuschanged = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6964
 ADDP4
 CNSTI4 1
 ASGNI4
-line 4979
-;4979:						break; //see BotMatch_CTF
+line 5013
+;5013:						break; //see BotMatch_CTF
 ADDRGP4 $2175
 JUMPV
 LABELV $2202
-line 4981
-;4980:					case GTS_BLUE_CAPTURE:
-;4981:						bs->blueflagstatus = 0;
+line 5015
+;5014:					case GTS_BLUE_CAPTURE:
+;5015:						bs->blueflagstatus = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6956
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4982
-;4982:						bs->redflagstatus = 0;
+line 5016
+;5016:						bs->redflagstatus = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6952
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4983
-;4983:						bs->flagstatuschanged = qtrue;
+line 5017
+;5017:						bs->flagstatuschanged = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6964
 ADDP4
 CNSTI4 1
 ASGNI4
-line 4984
-;4984:						break; //see BotMatch_CTF
+line 5018
+;5018:						break; //see BotMatch_CTF
 ADDRGP4 $2175
 JUMPV
 LABELV $2203
-line 4987
-;4985:					case GTS_RED_RETURN:
-;4986:						//blue flag is returned
-;4987:						bs->blueflagstatus = 0;
+line 5021
+;5019:					case GTS_RED_RETURN:
+;5020:						//blue flag is returned
+;5021:						bs->blueflagstatus = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6956
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4988
-;4988:						bs->flagstatuschanged = qtrue;
+line 5022
+;5022:						bs->flagstatuschanged = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6964
 ADDP4
 CNSTI4 1
 ASGNI4
-line 4989
-;4989:						break;
+line 5023
+;5023:						break;
 ADDRGP4 $2175
 JUMPV
 LABELV $2204
-line 4992
-;4990:					case GTS_BLUE_RETURN:
-;4991:						//red flag is returned
-;4992:						bs->redflagstatus = 0;
+line 5026
+;5024:					case GTS_BLUE_RETURN:
+;5025:						//red flag is returned
+;5026:						bs->redflagstatus = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6952
 ADDP4
 CNSTI4 0
 ASGNI4
-line 4993
-;4993:						bs->flagstatuschanged = qtrue;
+line 5027
+;5027:						bs->flagstatuschanged = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6964
 ADDP4
 CNSTI4 1
 ASGNI4
-line 4994
-;4994:						break;
+line 5028
+;5028:						break;
 ADDRGP4 $2175
 JUMPV
 LABELV $2205
-line 4997
-;4995:					case GTS_RED_TAKEN:
-;4996:						//blue flag is taken
-;4997:						bs->blueflagstatus = 1;
+line 5031
+;5029:					case GTS_RED_TAKEN:
+;5030:						//blue flag is taken
+;5031:						bs->blueflagstatus = 1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6956
 ADDP4
 CNSTI4 1
 ASGNI4
-line 4998
-;4998:						bs->flagstatuschanged = qtrue;
+line 5032
+;5032:						bs->flagstatuschanged = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6964
 ADDP4
 CNSTI4 1
 ASGNI4
-line 4999
-;4999:						break; //see BotMatch_CTF
+line 5033
+;5033:						break; //see BotMatch_CTF
 ADDRGP4 $2175
 JUMPV
 LABELV $2206
-line 5002
-;5000:					case GTS_BLUE_TAKEN:
-;5001:						//red flag is taken
-;5002:						bs->redflagstatus = 1;
+line 5036
+;5034:					case GTS_BLUE_TAKEN:
+;5035:						//red flag is taken
+;5036:						bs->redflagstatus = 1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6952
 ADDP4
 CNSTI4 1
 ASGNI4
-line 5003
-;5003:						bs->flagstatuschanged = qtrue;
+line 5037
+;5037:						bs->flagstatuschanged = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6964
 ADDP4
 CNSTI4 1
 ASGNI4
-line 5004
-;5004:						break; //see BotMatch_CTF
-line 5006
-;5005:				}
-;5006:			}
-line 5039
-;5007:#ifdef MISSIONPACK
-;5008:			else if (gametype == GT_1FCTF) {
-;5009:				switch(state->eventParm) {
-;5010:					case GTS_RED_CAPTURE:
-;5011:						bs->neutralflagstatus = 0;
-;5012:						bs->flagstatuschanged = qtrue;
-;5013:						break;
-;5014:					case GTS_BLUE_CAPTURE:
-;5015:						bs->neutralflagstatus = 0;
-;5016:						bs->flagstatuschanged = qtrue;
-;5017:						break;
-;5018:					case GTS_RED_RETURN:
-;5019:						//flag has returned
-;5020:						bs->neutralflagstatus = 0;
-;5021:						bs->flagstatuschanged = qtrue;
-;5022:						break;
-;5023:					case GTS_BLUE_RETURN:
-;5024:						//flag has returned
-;5025:						bs->neutralflagstatus = 0;
-;5026:						bs->flagstatuschanged = qtrue;
-;5027:						break;
-;5028:					case GTS_RED_TAKEN:
-;5029:						bs->neutralflagstatus = BotTeam(bs) == TEAM_RED ? 2 : 1; //FIXME: check Team_TakeFlagSound in g_team.c
-;5030:						bs->flagstatuschanged = qtrue;
-;5031:						break;
-;5032:					case GTS_BLUE_TAKEN:
-;5033:						bs->neutralflagstatus = BotTeam(bs) == TEAM_BLUE ? 2 : 1; //FIXME: check Team_TakeFlagSound in g_team.c
-;5034:						bs->flagstatuschanged = qtrue;
-;5035:						break;
-;5036:				}
-;5037:			}
-;5038:#endif
-;5039:			break;
+line 5038
+;5038:						break; //see BotMatch_CTF
+line 5040
+;5039:				}
+;5040:			}
+line 5073
+;5041:#ifdef MISSIONPACK
+;5042:			else if (gametype == GT_1FCTF) {
+;5043:				switch(state->eventParm) {
+;5044:					case GTS_RED_CAPTURE:
+;5045:						bs->neutralflagstatus = 0;
+;5046:						bs->flagstatuschanged = qtrue;
+;5047:						break;
+;5048:					case GTS_BLUE_CAPTURE:
+;5049:						bs->neutralflagstatus = 0;
+;5050:						bs->flagstatuschanged = qtrue;
+;5051:						break;
+;5052:					case GTS_RED_RETURN:
+;5053:						//flag has returned
+;5054:						bs->neutralflagstatus = 0;
+;5055:						bs->flagstatuschanged = qtrue;
+;5056:						break;
+;5057:					case GTS_BLUE_RETURN:
+;5058:						//flag has returned
+;5059:						bs->neutralflagstatus = 0;
+;5060:						bs->flagstatuschanged = qtrue;
+;5061:						break;
+;5062:					case GTS_RED_TAKEN:
+;5063:						bs->neutralflagstatus = BotTeam(bs) == TEAM_RED ? 2 : 1; //FIXME: check Team_TakeFlagSound in g_team.c
+;5064:						bs->flagstatuschanged = qtrue;
+;5065:						break;
+;5066:					case GTS_BLUE_TAKEN:
+;5067:						bs->neutralflagstatus = BotTeam(bs) == TEAM_BLUE ? 2 : 1; //FIXME: check Team_TakeFlagSound in g_team.c
+;5068:						bs->flagstatuschanged = qtrue;
+;5069:						break;
+;5070:				}
+;5071:			}
+;5072:#endif
+;5073:			break;
 ADDRGP4 $2175
 JUMPV
 LABELV $2208
-line 5042
-;5040:		}
-;5041:		case EV_PLAYER_TELEPORT_IN:
-;5042:		{
-line 5043
-;5043:			VectorCopy(state->origin, lastteleport_origin);
+line 5076
+;5074:		}
+;5075:		case EV_PLAYER_TELEPORT_IN:
+;5076:		{
+line 5077
+;5077:			VectorCopy(state->origin, lastteleport_origin);
 ADDRGP4 lastteleport_origin
 ADDRFP4 4
 INDIRP4
@@ -26926,24 +26960,24 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 5044
-;5044:			lastteleport_time = FloatTime();
+line 5078
+;5078:			lastteleport_time = FloatTime();
 ADDRGP4 lastteleport_time
 ADDRGP4 floattime
 INDIRF4
 ASGNF4
-line 5045
-;5045:			break;
+line 5079
+;5079:			break;
 ADDRGP4 $2175
 JUMPV
 LABELV $2209
-line 5048
-;5046:		}
-;5047:		case EV_GENERAL_SOUND:
-;5048:		{
-line 5050
-;5049:			//if this sound is played on the bot
-;5050:			if (state->number == bs->client) {
+line 5082
+;5080:		}
+;5081:		case EV_GENERAL_SOUND:
+;5082:		{
+line 5084
+;5083:			//if this sound is played on the bot
+;5084:			if (state->number == bs->client) {
 ADDRFP4 4
 INDIRP4
 INDIRI4
@@ -26953,8 +26987,8 @@ CNSTI4 8
 ADDP4
 INDIRI4
 NEI4 $2175
-line 5051
-;5051:				if (state->eventParm < 0 || state->eventParm > MAX_SOUNDS) {
+line 5085
+;5085:				if (state->eventParm < 0 || state->eventParm > MAX_SOUNDS) {
 ADDRLP4 144
 ADDRFP4 4
 INDIRP4
@@ -26971,8 +27005,8 @@ INDIRI4
 CNSTI4 256
 LEI4 $2212
 LABELV $2214
-line 5052
-;5052:					BotAI_Print(PRT_ERROR, "EV_GENERAL_SOUND: eventParm (%d) out of range\n", state->eventParm);
+line 5086
+;5086:					BotAI_Print(PRT_ERROR, "EV_GENERAL_SOUND: eventParm (%d) out of range\n", state->eventParm);
 CNSTI4 3
 ARGI4
 ADDRGP4 $2215
@@ -26986,15 +27020,15 @@ ARGI4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 5053
-;5053:					break;
+line 5087
+;5087:					break;
 ADDRGP4 $2175
 JUMPV
 LABELV $2212
-line 5056
-;5054:				}
-;5055:				//check out the sound
-;5056:				trap_GetConfigstring(CS_SOUNDS + state->eventParm, buf, sizeof(buf));
+line 5090
+;5088:				}
+;5089:				//check out the sound
+;5090:				trap_GetConfigstring(CS_SOUNDS + state->eventParm, buf, sizeof(buf));
 ADDRFP4 4
 INDIRP4
 CNSTI4 184
@@ -27010,9 +27044,9 @@ ARGI4
 ADDRGP4 trap_GetConfigstring
 CALLV
 pop
-line 5058
-;5057:				//if falling into a death pit
-;5058:				if (!strcmp(buf, "*falling1.wav")) {
+line 5092
+;5091:				//if falling into a death pit
+;5092:				if (!strcmp(buf, "*falling1.wav")) {
 ADDRLP4 4
 ARGP4
 ADDRGP4 $2218
@@ -27025,9 +27059,9 @@ ADDRLP4 148
 INDIRI4
 CNSTI4 0
 NEI4 $2175
-line 5060
-;5059:					//if the bot has a personal teleporter
-;5060:					if (bs->inventory[INVENTORY_TELEPORTER] > 0) {
+line 5094
+;5093:					//if the bot has a personal teleporter
+;5094:					if (bs->inventory[INVENTORY_TELEPORTER] > 0) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 5072
@@ -27035,9 +27069,9 @@ ADDP4
 INDIRI4
 CNSTI4 0
 LEI4 $2175
-line 5062
-;5061:						//use the holdable item
-;5062:						trap_EA_Use(bs->client);
+line 5096
+;5095:						//use the holdable item
+;5096:						trap_EA_Use(bs->client);
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -27047,82 +27081,82 @@ ARGI4
 ADDRGP4 trap_EA_Use
 CALLV
 pop
-line 5063
-;5063:					}
-line 5064
-;5064:				}
-line 5065
-;5065:			}
-line 5066
-;5066:			break;
-line 5093
-;5067:		}
-;5068:		case EV_FOOTSTEP:
-;5069:		case EV_FOOTSTEP_METAL:
-;5070:		case EV_FOOTSPLASH:
-;5071:		case EV_FOOTWADE:
-;5072:		case EV_SWIM:
-;5073:		case EV_FALL_SHORT:
-;5074:		case EV_FALL_MEDIUM:
-;5075:		case EV_FALL_FAR:
-;5076:		case EV_STEP_4:
-;5077:		case EV_STEP_8:
-;5078:		case EV_STEP_12:
-;5079:		case EV_STEP_16:
-;5080:		case EV_JUMP_PAD:
-;5081:		case EV_JUMP:
-;5082:		case EV_TAUNT:
-;5083:		case EV_WATER_TOUCH:
-;5084:		case EV_WATER_LEAVE:
-;5085:		case EV_WATER_UNDER:
-;5086:		case EV_WATER_CLEAR:
-;5087:		case EV_ITEM_PICKUP:
-;5088:		case EV_GLOBAL_ITEM_PICKUP:
-;5089:		case EV_NOAMMO:
-;5090:		case EV_CHANGE_WEAPON:
-;5091:		case EV_FIRE_WEAPON:
-;5092:			//FIXME: either add to sound queue or mark player as someone making noise
-;5093:			break;
-line 5109
-;5094:		case EV_USE_ITEM0:
-;5095:		case EV_USE_ITEM1:
-;5096:		case EV_USE_ITEM2:
-;5097:		case EV_USE_ITEM3:
-;5098:		case EV_USE_ITEM4:
-;5099:		case EV_USE_ITEM5:
-;5100:		case EV_USE_ITEM6:
-;5101:		case EV_USE_ITEM7:
-;5102:		case EV_USE_ITEM8:
-;5103:		case EV_USE_ITEM9:
-;5104:		case EV_USE_ITEM10:
-;5105:		case EV_USE_ITEM11:
-;5106:		case EV_USE_ITEM12:
-;5107:		case EV_USE_ITEM13:
-;5108:		case EV_USE_ITEM14:
-;5109:			break;
+line 5097
+;5097:					}
+line 5098
+;5098:				}
+line 5099
+;5099:			}
+line 5100
+;5100:			break;
+line 5127
+;5101:		}
+;5102:		case EV_FOOTSTEP:
+;5103:		case EV_FOOTSTEP_METAL:
+;5104:		case EV_FOOTSPLASH:
+;5105:		case EV_FOOTWADE:
+;5106:		case EV_SWIM:
+;5107:		case EV_FALL_SHORT:
+;5108:		case EV_FALL_MEDIUM:
+;5109:		case EV_FALL_FAR:
+;5110:		case EV_STEP_4:
+;5111:		case EV_STEP_8:
+;5112:		case EV_STEP_12:
+;5113:		case EV_STEP_16:
+;5114:		case EV_JUMP_PAD:
+;5115:		case EV_JUMP:
+;5116:		case EV_TAUNT:
+;5117:		case EV_WATER_TOUCH:
+;5118:		case EV_WATER_LEAVE:
+;5119:		case EV_WATER_UNDER:
+;5120:		case EV_WATER_CLEAR:
+;5121:		case EV_ITEM_PICKUP:
+;5122:		case EV_GLOBAL_ITEM_PICKUP:
+;5123:		case EV_NOAMMO:
+;5124:		case EV_CHANGE_WEAPON:
+;5125:		case EV_FIRE_WEAPON:
+;5126:			//FIXME: either add to sound queue or mark player as someone making noise
+;5127:			break;
+line 5143
+;5128:		case EV_USE_ITEM0:
+;5129:		case EV_USE_ITEM1:
+;5130:		case EV_USE_ITEM2:
+;5131:		case EV_USE_ITEM3:
+;5132:		case EV_USE_ITEM4:
+;5133:		case EV_USE_ITEM5:
+;5134:		case EV_USE_ITEM6:
+;5135:		case EV_USE_ITEM7:
+;5136:		case EV_USE_ITEM8:
+;5137:		case EV_USE_ITEM9:
+;5138:		case EV_USE_ITEM10:
+;5139:		case EV_USE_ITEM11:
+;5140:		case EV_USE_ITEM12:
+;5141:		case EV_USE_ITEM13:
+;5142:		case EV_USE_ITEM14:
+;5143:			break;
 LABELV $2174
 LABELV $2175
-line 5111
-;5110:	}
-;5111:}
+line 5145
+;5144:	}
+;5145:}
 LABELV $2167
 endproc BotCheckEvents 164 12
 export BotCheckSnapshot
 proc BotCheckSnapshot 220 16
-line 5118
-;5112:
-;5113:/*
-;5114:==================
-;5115:BotCheckSnapshot
-;5116:==================
-;5117:*/
-;5118:void BotCheckSnapshot(bot_state_t *bs) {
-line 5123
-;5119:	int ent;
-;5120:	entityState_t state;
-;5121:
-;5122:	//remove all avoid spots
-;5123:	trap_BotAddAvoidSpot(bs->ms, vec3_origin, 0, AVOID_CLEAR);
+line 5152
+;5146:
+;5147:/*
+;5148:==================
+;5149:BotCheckSnapshot
+;5150:==================
+;5151:*/
+;5152:void BotCheckSnapshot(bot_state_t *bs) {
+line 5157
+;5153:	int ent;
+;5154:	entityState_t state;
+;5155:
+;5156:	//remove all avoid spots
+;5157:	trap_BotAddAvoidSpot(bs->ms, vec3_origin, 0, AVOID_CLEAR);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6524
@@ -27138,38 +27172,38 @@ ARGI4
 ADDRGP4 trap_BotAddAvoidSpot
 CALLV
 pop
-line 5125
-;5124:	//reset kamikaze body
-;5125:	bs->kamikazebody = 0;
+line 5159
+;5158:	//reset kamikaze body
+;5159:	bs->kamikazebody = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6256
 ADDP4
 CNSTI4 0
 ASGNI4
-line 5127
-;5126:	//reset number of proxmines
-;5127:	bs->numproxmines = 0;
+line 5161
+;5160:	//reset number of proxmines
+;5161:	bs->numproxmines = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6516
 ADDP4
 CNSTI4 0
 ASGNI4
-line 5129
-;5128:	//
-;5129:	ent = 0;
+line 5163
+;5162:	//
+;5163:	ent = 0;
 ADDRLP4 212
 CNSTI4 0
 ASGNI4
 ADDRGP4 $2227
 JUMPV
 LABELV $2226
-line 5130
-;5130:	while( ( ent = BotAI_GetSnapshotEntity( bs->client, ent, &state ) ) != -1 ) {
-line 5132
-;5131:		//check the entity state for events
-;5132:		BotCheckEvents(bs, &state);
+line 5164
+;5164:	while( ( ent = BotAI_GetSnapshotEntity( bs->client, ent, &state ) ) != -1 ) {
+line 5166
+;5165:		//check the entity state for events
+;5166:		BotCheckEvents(bs, &state);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -27178,9 +27212,9 @@ ARGP4
 ADDRGP4 BotCheckEvents
 CALLV
 pop
-line 5134
-;5133:		//check for grenades the bot should avoid
-;5134:		BotCheckForGrenades(bs, &state);
+line 5168
+;5167:		//check for grenades the bot should avoid
+;5168:		BotCheckForGrenades(bs, &state);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -27189,17 +27223,17 @@ ARGP4
 ADDRGP4 BotCheckForGrenades
 CALLV
 pop
-line 5142
-;5135:		//
-;5136:#ifdef MISSIONPACK
-;5137:		//check for proximity mines which the bot should deactivate
-;5138:		BotCheckForProxMines(bs, &state);
-;5139:		//check for dead bodies with the kamikaze effect which should be gibbed
-;5140:		BotCheckForKamikazeBody(bs, &state);
-;5141:#endif
-;5142:	}
+line 5176
+;5169:		//
+;5170:#ifdef MISSIONPACK
+;5171:		//check for proximity mines which the bot should deactivate
+;5172:		BotCheckForProxMines(bs, &state);
+;5173:		//check for dead bodies with the kamikaze effect which should be gibbed
+;5174:		BotCheckForKamikazeBody(bs, &state);
+;5175:#endif
+;5176:	}
 LABELV $2227
-line 5130
+line 5164
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -27223,9 +27257,9 @@ ADDRLP4 216
 INDIRI4
 CNSTI4 -1
 NEI4 $2226
-line 5144
-;5143:	//check the player state for events
-;5144:	BotAI_GetEntityState(bs->client, &state);
+line 5178
+;5177:	//check the player state for events
+;5178:	BotAI_GetEntityState(bs->client, &state);
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -27237,9 +27271,9 @@ ARGP4
 ADDRGP4 BotAI_GetEntityState
 CALLI4
 pop
-line 5146
-;5145:	//copy the player state events to the entity state
-;5146:	state.event = bs->cur_ps.externalEvent;
+line 5180
+;5179:	//copy the player state events to the entity state
+;5180:	state.event = bs->cur_ps.externalEvent;
 ADDRLP4 0+180
 ADDRFP4 0
 INDIRP4
@@ -27247,8 +27281,8 @@ CNSTI4 144
 ADDP4
 INDIRI4
 ASGNI4
-line 5147
-;5147:	state.eventParm = bs->cur_ps.externalEventParm;
+line 5181
+;5181:	state.eventParm = bs->cur_ps.externalEventParm;
 ADDRLP4 0+184
 ADDRFP4 0
 INDIRP4
@@ -27256,9 +27290,9 @@ CNSTI4 148
 ADDP4
 INDIRI4
 ASGNI4
-line 5149
-;5148:	//
-;5149:	BotCheckEvents(bs, &state);
+line 5183
+;5182:	//
+;5183:	BotCheckEvents(bs, &state);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -27267,22 +27301,22 @@ ARGP4
 ADDRGP4 BotCheckEvents
 CALLV
 pop
-line 5150
-;5150:}
+line 5184
+;5184:}
 LABELV $2225
 endproc BotCheckSnapshot 220 16
 export BotCheckAir
 proc BotCheckAir 4 4
-line 5157
-;5151:
-;5152:/*
-;5153:==================
-;5154:BotCheckAir
-;5155:==================
-;5156:*/
-;5157:void BotCheckAir(bot_state_t *bs) {
-line 5158
-;5158:	if (bs->inventory[INVENTORY_ENVIRONMENTSUIT] <= 0) {
+line 5191
+;5185:
+;5186:/*
+;5187:==================
+;5188:BotCheckAir
+;5189:==================
+;5190:*/
+;5191:void BotCheckAir(bot_state_t *bs) {
+line 5192
+;5192:	if (bs->inventory[INVENTORY_ENVIRONMENTSUIT] <= 0) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 5096
@@ -27290,8 +27324,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 GTI4 $2232
-line 5159
-;5159:		if (trap_AAS_PointContents(bs->eye) & (CONTENTS_WATER|CONTENTS_SLIME|CONTENTS_LAVA)) {
+line 5193
+;5193:		if (trap_AAS_PointContents(bs->eye) & (CONTENTS_WATER|CONTENTS_SLIME|CONTENTS_LAVA)) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 4936
@@ -27307,17 +27341,17 @@ CNSTI4 56
 BANDI4
 CNSTI4 0
 EQI4 $2234
-line 5160
-;5160:			return;
+line 5194
+;5194:			return;
 ADDRGP4 $2231
 JUMPV
 LABELV $2234
-line 5162
-;5161:		}
-;5162:	}
+line 5196
+;5195:		}
+;5196:	}
 LABELV $2232
-line 5163
-;5163:	bs->lastair_time = FloatTime();
+line 5197
+;5197:	bs->lastair_time = FloatTime();
 ADDRFP4 0
 INDIRP4
 CNSTI4 6176
@@ -27325,25 +27359,25 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 ASGNF4
-line 5164
-;5164:}
+line 5198
+;5198:}
 LABELV $2231
 endproc BotCheckAir 4 4
 export BotAlternateRoute
 proc BotAlternateRoute 16 16
-line 5171
-;5165:
-;5166:/*
-;5167:==================
-;5168:BotAlternateRoute
-;5169:==================
-;5170:*/
-;5171:bot_goal_t *BotAlternateRoute(bot_state_t *bs, bot_goal_t *goal) {
-line 5175
-;5172:	int t;
-;5173:
-;5174:	// if the bot has an alternative route goal
-;5175:	if (bs->altroutegoal.areanum) {
+line 5205
+;5199:
+;5200:/*
+;5201:==================
+;5202:BotAlternateRoute
+;5203:==================
+;5204:*/
+;5205:bot_goal_t *BotAlternateRoute(bot_state_t *bs, bot_goal_t *goal) {
+line 5209
+;5206:	int t;
+;5207:
+;5208:	// if the bot has an alternative route goal
+;5209:	if (bs->altroutegoal.areanum) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6692
@@ -27351,9 +27385,9 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $2237
-line 5177
-;5176:		//
-;5177:		if (bs->reachedaltroutegoal_time)
+line 5211
+;5210:		//
+;5211:		if (bs->reachedaltroutegoal_time)
 ADDRFP4 0
 INDIRP4
 CNSTI4 6736
@@ -27361,17 +27395,17 @@ ADDP4
 INDIRF4
 CNSTF4 0
 EQF4 $2239
-line 5178
-;5178:			return goal;
+line 5212
+;5212:			return goal;
 ADDRFP4 4
 INDIRP4
 RETP4
 ADDRGP4 $2236
 JUMPV
 LABELV $2239
-line 5180
-;5179:		// travel time towards alternative route goal
-;5180:		t = trap_AAS_AreaTravelTimeToGoalArea(bs->areanum, bs->origin, bs->altroutegoal.areanum, bs->tfl);
+line 5214
+;5213:		// travel time towards alternative route goal
+;5214:		t = trap_AAS_AreaTravelTimeToGoalArea(bs->areanum, bs->origin, bs->altroutegoal.areanum, bs->tfl);
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -27407,8 +27441,8 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 5181
-;5181:		if (t && t < 20) {
+line 5215
+;5215:		if (t && t < 20) {
 ADDRLP4 12
 ADDRLP4 0
 INDIRI4
@@ -27421,9 +27455,9 @@ ADDRLP4 12
 INDIRI4
 CNSTI4 20
 GEI4 $2241
-line 5183
-;5182:			//BotAI_Print(PRT_MESSAGE, "reached alternate route goal\n");
-;5183:			bs->reachedaltroutegoal_time = FloatTime();
+line 5217
+;5216:			//BotAI_Print(PRT_MESSAGE, "reached alternate route goal\n");
+;5217:			bs->reachedaltroutegoal_time = FloatTime();
 ADDRFP4 0
 INDIRP4
 CNSTI4 6736
@@ -27431,11 +27465,11 @@ ADDP4
 ADDRGP4 floattime
 INDIRF4
 ASGNF4
-line 5184
-;5184:		}
+line 5218
+;5218:		}
 LABELV $2241
-line 5185
-;5185:		memcpy(goal, &bs->altroutegoal, sizeof(bot_goal_t));
+line 5219
+;5219:		memcpy(goal, &bs->altroutegoal, sizeof(bot_goal_t));
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -27449,8 +27483,8 @@ ARGI4
 ADDRGP4 memcpy
 CALLP4
 pop
-line 5186
-;5186:		return &bs->altroutegoal;
+line 5220
+;5220:		return &bs->altroutegoal;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6680
@@ -27459,9 +27493,9 @@ RETP4
 ADDRGP4 $2236
 JUMPV
 LABELV $2237
-line 5188
-;5187:	}
-;5188:	return goal;
+line 5222
+;5221:	}
+;5222:	return goal;
 ADDRFP4 4
 INDIRP4
 RETP4
@@ -27469,72 +27503,72 @@ LABELV $2236
 endproc BotAlternateRoute 16 16
 export BotGetAlternateRouteGoal
 proc BotGetAlternateRouteGoal 24 0
-line 5196
-;5189:}
-;5190:
-;5191:/*
-;5192:==================
-;5193:BotGetAlternateRouteGoal
-;5194:==================
-;5195:*/
-;5196:int BotGetAlternateRouteGoal(bot_state_t *bs, int base) {
-line 5201
-;5197:	aas_altroutegoal_t *altroutegoals;
-;5198:	bot_goal_t *goal;
-;5199:	int numaltroutegoals, rnd;
-;5200:
-;5201:	if (base == TEAM_RED) {
+line 5230
+;5223:}
+;5224:
+;5225:/*
+;5226:==================
+;5227:BotGetAlternateRouteGoal
+;5228:==================
+;5229:*/
+;5230:int BotGetAlternateRouteGoal(bot_state_t *bs, int base) {
+line 5235
+;5231:	aas_altroutegoal_t *altroutegoals;
+;5232:	bot_goal_t *goal;
+;5233:	int numaltroutegoals, rnd;
+;5234:
+;5235:	if (base == TEAM_RED) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 1
 NEI4 $2244
-line 5202
-;5202:		altroutegoals = red_altroutegoals;
+line 5236
+;5236:		altroutegoals = red_altroutegoals;
 ADDRLP4 12
 ADDRGP4 red_altroutegoals
 ASGNP4
-line 5203
-;5203:		numaltroutegoals = red_numaltroutegoals;
+line 5237
+;5237:		numaltroutegoals = red_numaltroutegoals;
 ADDRLP4 4
 ADDRGP4 red_numaltroutegoals
 INDIRI4
 ASGNI4
-line 5204
-;5204:	}
+line 5238
+;5238:	}
 ADDRGP4 $2245
 JUMPV
 LABELV $2244
-line 5205
-;5205:	else {
-line 5206
-;5206:		altroutegoals = blue_altroutegoals;
+line 5239
+;5239:	else {
+line 5240
+;5240:		altroutegoals = blue_altroutegoals;
 ADDRLP4 12
 ADDRGP4 blue_altroutegoals
 ASGNP4
-line 5207
-;5207:		numaltroutegoals = blue_numaltroutegoals;
+line 5241
+;5241:		numaltroutegoals = blue_numaltroutegoals;
 ADDRLP4 4
 ADDRGP4 blue_numaltroutegoals
 INDIRI4
 ASGNI4
-line 5208
-;5208:	}
+line 5242
+;5242:	}
 LABELV $2245
-line 5209
-;5209:	if (!numaltroutegoals)
+line 5243
+;5243:	if (!numaltroutegoals)
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $2246
-line 5210
-;5210:		return qfalse;
+line 5244
+;5244:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $2243
 JUMPV
 LABELV $2246
-line 5211
-;5211:	rnd = (float) random() * numaltroutegoals;
+line 5245
+;5245:	rnd = (float) random() * numaltroutegoals;
 ADDRLP4 16
 ADDRGP4 rand
 CALLI4
@@ -27553,15 +27587,15 @@ CVIF4 4
 MULF4
 CVFI4 4
 ASGNI4
-line 5212
-;5212:	if (rnd >= numaltroutegoals)
+line 5246
+;5246:	if (rnd >= numaltroutegoals)
 ADDRLP4 8
 INDIRI4
 ADDRLP4 4
 INDIRI4
 LTI4 $2248
-line 5213
-;5213:		rnd = numaltroutegoals-1;
+line 5247
+;5247:		rnd = numaltroutegoals-1;
 ADDRLP4 8
 ADDRLP4 4
 INDIRI4
@@ -27569,16 +27603,16 @@ CNSTI4 1
 SUBI4
 ASGNI4
 LABELV $2248
-line 5214
-;5214:	goal = &bs->altroutegoal;
+line 5248
+;5248:	goal = &bs->altroutegoal;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
 CNSTI4 6680
 ADDP4
 ASGNP4
-line 5215
-;5215:	goal->areanum = altroutegoals[rnd].areanum;
+line 5249
+;5249:	goal->areanum = altroutegoals[rnd].areanum;
 ADDRLP4 20
 CNSTI4 12
 ASGNI4
@@ -27599,8 +27633,8 @@ INDIRI4
 ADDP4
 INDIRI4
 ASGNI4
-line 5216
-;5216:	VectorCopy(altroutegoals[rnd].origin, goal->origin);
+line 5250
+;5250:	VectorCopy(altroutegoals[rnd].origin, goal->origin);
 ADDRLP4 0
 INDIRP4
 CNSTI4 24
@@ -27612,8 +27646,8 @@ INDIRP4
 ADDP4
 INDIRB
 ASGNB 12
-line 5217
-;5217:	VectorSet(goal->mins, -8, -8, -8);
+line 5251
+;5251:	VectorSet(goal->mins, -8, -8, -8);
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -27632,8 +27666,8 @@ CNSTI4 24
 ADDP4
 CNSTF4 3238002688
 ASGNF4
-line 5218
-;5218:	VectorSet(goal->maxs, 8, 8, 8);
+line 5252
+;5252:	VectorSet(goal->maxs, 8, 8, 8);
 ADDRLP4 0
 INDIRP4
 CNSTI4 28
@@ -27652,170 +27686,170 @@ CNSTI4 36
 ADDP4
 CNSTF4 1090519040
 ASGNF4
-line 5219
-;5219:	goal->entitynum = 0;
+line 5253
+;5253:	goal->entitynum = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 40
 ADDP4
 CNSTI4 0
 ASGNI4
-line 5220
-;5220:	goal->iteminfo = 0;
+line 5254
+;5254:	goal->iteminfo = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 52
 ADDP4
 CNSTI4 0
 ASGNI4
-line 5221
-;5221:	goal->number = 0;
+line 5255
+;5255:	goal->number = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
 ADDP4
 CNSTI4 0
 ASGNI4
-line 5222
-;5222:	goal->flags = 0;
+line 5256
+;5256:	goal->flags = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 0
 ASGNI4
-line 5224
-;5223:	//
-;5224:	bs->reachedaltroutegoal_time = 0;
+line 5258
+;5257:	//
+;5258:	bs->reachedaltroutegoal_time = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6736
 ADDP4
 CNSTF4 0
 ASGNF4
-line 5225
-;5225:	return qtrue;
+line 5259
+;5259:	return qtrue;
 CNSTI4 1
 RETI4
 LABELV $2243
 endproc BotGetAlternateRouteGoal 24 0
 export BotSetupAlternativeRouteGoals
 proc BotSetupAlternativeRouteGoals 0 0
-line 5233
-;5226:}
-;5227:
-;5228:/*
-;5229:==================
-;5230:BotSetupAlternateRouteGoals
-;5231:==================
-;5232:*/
-;5233:void BotSetupAlternativeRouteGoals(void) {
-line 5235
-;5234:
-;5235:	if (altroutegoals_setup)
+line 5267
+;5260:}
+;5261:
+;5262:/*
+;5263:==================
+;5264:BotSetupAlternateRouteGoals
+;5265:==================
+;5266:*/
+;5267:void BotSetupAlternativeRouteGoals(void) {
+line 5269
+;5268:
+;5269:	if (altroutegoals_setup)
 ADDRGP4 altroutegoals_setup
 INDIRI4
 CNSTI4 0
 EQI4 $2251
-line 5236
-;5236:		return;
+line 5270
+;5270:		return;
 ADDRGP4 $2250
 JUMPV
 LABELV $2251
-line 5305
-;5237:#ifdef MISSIONPACK
-;5238:	if (gametype == GT_CTF) {
-;5239:		if (trap_BotGetLevelItemGoal(-1, "Neutral Flag", &ctf_neutralflag) < 0)
-;5240:			BotAI_Print(PRT_WARNING, "no alt routes without Neutral Flag\n");
-;5241:		if (ctf_neutralflag.areanum) {
-;5242:			//
-;5243:			red_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
-;5244:										ctf_neutralflag.origin, ctf_neutralflag.areanum,
-;5245:										ctf_redflag.origin, ctf_redflag.areanum, TFL_DEFAULT,
-;5246:										red_altroutegoals, MAX_ALTROUTEGOALS,
-;5247:										ALTROUTEGOAL_CLUSTERPORTALS|
-;5248:										ALTROUTEGOAL_VIEWPORTALS);
-;5249:			blue_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
-;5250:										ctf_neutralflag.origin, ctf_neutralflag.areanum,
-;5251:										ctf_blueflag.origin, ctf_blueflag.areanum, TFL_DEFAULT,
-;5252:										blue_altroutegoals, MAX_ALTROUTEGOALS,
-;5253:										ALTROUTEGOAL_CLUSTERPORTALS|
-;5254:										ALTROUTEGOAL_VIEWPORTALS);
-;5255:		}
-;5256:	}
-;5257:	else if (gametype == GT_1FCTF) {
-;5258:		//
-;5259:		red_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
-;5260:									ctf_neutralflag.origin, ctf_neutralflag.areanum,
-;5261:									ctf_redflag.origin, ctf_redflag.areanum, TFL_DEFAULT,
-;5262:									red_altroutegoals, MAX_ALTROUTEGOALS,
-;5263:									ALTROUTEGOAL_CLUSTERPORTALS|
-;5264:									ALTROUTEGOAL_VIEWPORTALS);
-;5265:		blue_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
-;5266:									ctf_neutralflag.origin, ctf_neutralflag.areanum,
-;5267:									ctf_blueflag.origin, ctf_blueflag.areanum, TFL_DEFAULT,
-;5268:									blue_altroutegoals, MAX_ALTROUTEGOALS,
-;5269:									ALTROUTEGOAL_CLUSTERPORTALS|
-;5270:									ALTROUTEGOAL_VIEWPORTALS);
-;5271:	}
-;5272:	else if (gametype == GT_OBELISK) {
-;5273:		if (trap_BotGetLevelItemGoal(-1, "Neutral Obelisk", &neutralobelisk) < 0)
-;5274:			BotAI_Print(PRT_WARNING, "Harvester without neutral obelisk\n");
-;5275:		//
-;5276:		red_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
-;5277:									neutralobelisk.origin, neutralobelisk.areanum,
-;5278:									redobelisk.origin, redobelisk.areanum, TFL_DEFAULT,
-;5279:									red_altroutegoals, MAX_ALTROUTEGOALS,
-;5280:									ALTROUTEGOAL_CLUSTERPORTALS|
-;5281:									ALTROUTEGOAL_VIEWPORTALS);
-;5282:		blue_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
-;5283:									neutralobelisk.origin, neutralobelisk.areanum,
-;5284:									blueobelisk.origin, blueobelisk.areanum, TFL_DEFAULT,
-;5285:									blue_altroutegoals, MAX_ALTROUTEGOALS,
-;5286:									ALTROUTEGOAL_CLUSTERPORTALS|
-;5287:									ALTROUTEGOAL_VIEWPORTALS);
-;5288:	}
-;5289:	else if (gametype == GT_HARVESTER) {
-;5290:		//
-;5291:		red_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
-;5292:									neutralobelisk.origin, neutralobelisk.areanum,
-;5293:									redobelisk.origin, redobelisk.areanum, TFL_DEFAULT,
-;5294:									red_altroutegoals, MAX_ALTROUTEGOALS,
-;5295:									ALTROUTEGOAL_CLUSTERPORTALS|
-;5296:									ALTROUTEGOAL_VIEWPORTALS);
-;5297:		blue_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
-;5298:									neutralobelisk.origin, neutralobelisk.areanum,
-;5299:									blueobelisk.origin, blueobelisk.areanum, TFL_DEFAULT,
-;5300:									blue_altroutegoals, MAX_ALTROUTEGOALS,
-;5301:									ALTROUTEGOAL_CLUSTERPORTALS|
-;5302:									ALTROUTEGOAL_VIEWPORTALS);
-;5303:	}
-;5304:#endif
-;5305:	altroutegoals_setup = qtrue;
+line 5339
+;5271:#ifdef MISSIONPACK
+;5272:	if (gametype == GT_CTF) {
+;5273:		if (trap_BotGetLevelItemGoal(-1, "Neutral Flag", &ctf_neutralflag) < 0)
+;5274:			BotAI_Print(PRT_WARNING, "no alt routes without Neutral Flag\n");
+;5275:		if (ctf_neutralflag.areanum) {
+;5276:			//
+;5277:			red_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
+;5278:										ctf_neutralflag.origin, ctf_neutralflag.areanum,
+;5279:										ctf_redflag.origin, ctf_redflag.areanum, TFL_DEFAULT,
+;5280:										red_altroutegoals, MAX_ALTROUTEGOALS,
+;5281:										ALTROUTEGOAL_CLUSTERPORTALS|
+;5282:										ALTROUTEGOAL_VIEWPORTALS);
+;5283:			blue_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
+;5284:										ctf_neutralflag.origin, ctf_neutralflag.areanum,
+;5285:										ctf_blueflag.origin, ctf_blueflag.areanum, TFL_DEFAULT,
+;5286:										blue_altroutegoals, MAX_ALTROUTEGOALS,
+;5287:										ALTROUTEGOAL_CLUSTERPORTALS|
+;5288:										ALTROUTEGOAL_VIEWPORTALS);
+;5289:		}
+;5290:	}
+;5291:	else if (gametype == GT_1FCTF) {
+;5292:		//
+;5293:		red_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
+;5294:									ctf_neutralflag.origin, ctf_neutralflag.areanum,
+;5295:									ctf_redflag.origin, ctf_redflag.areanum, TFL_DEFAULT,
+;5296:									red_altroutegoals, MAX_ALTROUTEGOALS,
+;5297:									ALTROUTEGOAL_CLUSTERPORTALS|
+;5298:									ALTROUTEGOAL_VIEWPORTALS);
+;5299:		blue_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
+;5300:									ctf_neutralflag.origin, ctf_neutralflag.areanum,
+;5301:									ctf_blueflag.origin, ctf_blueflag.areanum, TFL_DEFAULT,
+;5302:									blue_altroutegoals, MAX_ALTROUTEGOALS,
+;5303:									ALTROUTEGOAL_CLUSTERPORTALS|
+;5304:									ALTROUTEGOAL_VIEWPORTALS);
+;5305:	}
+;5306:	else if (gametype == GT_OBELISK) {
+;5307:		if (trap_BotGetLevelItemGoal(-1, "Neutral Obelisk", &neutralobelisk) < 0)
+;5308:			BotAI_Print(PRT_WARNING, "Harvester without neutral obelisk\n");
+;5309:		//
+;5310:		red_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
+;5311:									neutralobelisk.origin, neutralobelisk.areanum,
+;5312:									redobelisk.origin, redobelisk.areanum, TFL_DEFAULT,
+;5313:									red_altroutegoals, MAX_ALTROUTEGOALS,
+;5314:									ALTROUTEGOAL_CLUSTERPORTALS|
+;5315:									ALTROUTEGOAL_VIEWPORTALS);
+;5316:		blue_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
+;5317:									neutralobelisk.origin, neutralobelisk.areanum,
+;5318:									blueobelisk.origin, blueobelisk.areanum, TFL_DEFAULT,
+;5319:									blue_altroutegoals, MAX_ALTROUTEGOALS,
+;5320:									ALTROUTEGOAL_CLUSTERPORTALS|
+;5321:									ALTROUTEGOAL_VIEWPORTALS);
+;5322:	}
+;5323:	else if (gametype == GT_HARVESTER) {
+;5324:		//
+;5325:		red_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
+;5326:									neutralobelisk.origin, neutralobelisk.areanum,
+;5327:									redobelisk.origin, redobelisk.areanum, TFL_DEFAULT,
+;5328:									red_altroutegoals, MAX_ALTROUTEGOALS,
+;5329:									ALTROUTEGOAL_CLUSTERPORTALS|
+;5330:									ALTROUTEGOAL_VIEWPORTALS);
+;5331:		blue_numaltroutegoals = trap_AAS_AlternativeRouteGoals(
+;5332:									neutralobelisk.origin, neutralobelisk.areanum,
+;5333:									blueobelisk.origin, blueobelisk.areanum, TFL_DEFAULT,
+;5334:									blue_altroutegoals, MAX_ALTROUTEGOALS,
+;5335:									ALTROUTEGOAL_CLUSTERPORTALS|
+;5336:									ALTROUTEGOAL_VIEWPORTALS);
+;5337:	}
+;5338:#endif
+;5339:	altroutegoals_setup = qtrue;
 ADDRGP4 altroutegoals_setup
 CNSTI4 1
 ASGNI4
-line 5306
-;5306:}
+line 5340
+;5340:}
 LABELV $2250
 endproc BotSetupAlternativeRouteGoals 0 0
 export BotDeathmatchAI
 proc BotDeathmatchAI 1492 20
-line 5313
-;5307:
-;5308:/*
-;5309:==================
-;5310:BotDeathmatchAI
-;5311:==================
-;5312:*/
-;5313:void BotDeathmatchAI(bot_state_t *bs, float thinktime) {
-line 5319
-;5314:	char gender[144], name[144], buf[144];
-;5315:	char userinfo[MAX_INFO_STRING];
-;5316:	int i;
-;5317:
-;5318:	//if the bot has just been setup
-;5319:	if (bs->setupcount > 0) {
+line 5347
+;5341:
+;5342:/*
+;5343:==================
+;5344:BotDeathmatchAI
+;5345:==================
+;5346:*/
+;5347:void BotDeathmatchAI(bot_state_t *bs, float thinktime) {
+line 5353
+;5348:	char gender[144], name[144], buf[144];
+;5349:	char userinfo[MAX_INFO_STRING];
+;5350:	int i;
+;5351:
+;5352:	//if the bot has just been setup
+;5353:	if (bs->setupcount > 0) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6016
@@ -27823,8 +27857,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 LEI4 $2254
-line 5320
-;5320:		bs->setupcount--;
+line 5354
+;5354:		bs->setupcount--;
 ADDRLP4 1460
 ADDRFP4 0
 INDIRP4
@@ -27839,8 +27873,8 @@ INDIRI4
 CNSTI4 1
 SUBI4
 ASGNI4
-line 5321
-;5321:		if (bs->setupcount > 0) return;
+line 5355
+;5355:		if (bs->setupcount > 0) return;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6016
@@ -27851,9 +27885,9 @@ LEI4 $2256
 ADDRGP4 $2253
 JUMPV
 LABELV $2256
-line 5323
-;5322:		//get the gender characteristic
-;5323:		trap_Characteristic_String(bs->character, CHARACTERISTIC_GENDER, gender, sizeof(gender));
+line 5357
+;5356:		//get the gender characteristic
+;5357:		trap_Characteristic_String(bs->character, CHARACTERISTIC_GENDER, gender, sizeof(gender));
 ADDRFP4 0
 INDIRP4
 CNSTI4 6520
@@ -27869,9 +27903,9 @@ ARGI4
 ADDRGP4 trap_Characteristic_String
 CALLV
 pop
-line 5325
-;5324:		//set the bot gender
-;5325:		trap_GetUserinfo(bs->client, userinfo, sizeof(userinfo));
+line 5359
+;5358:		//set the bot gender
+;5359:		trap_GetUserinfo(bs->client, userinfo, sizeof(userinfo));
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -27885,8 +27919,8 @@ ARGI4
 ADDRGP4 trap_GetUserinfo
 CALLV
 pop
-line 5326
-;5326:		Info_SetValueForKey(userinfo, "sex", gender);
+line 5360
+;5360:		Info_SetValueForKey(userinfo, "sex", gender);
 ADDRLP4 292
 ARGP4
 ADDRGP4 $2258
@@ -27896,8 +27930,8 @@ ARGP4
 ADDRGP4 Info_SetValueForKey
 CALLV
 pop
-line 5327
-;5327:		trap_SetUserinfo(bs->client, userinfo);
+line 5361
+;5361:		trap_SetUserinfo(bs->client, userinfo);
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -27909,9 +27943,9 @@ ARGP4
 ADDRGP4 trap_SetUserinfo
 CALLV
 pop
-line 5329
-;5328:		//set the team
-;5329:		if ( !bs->map_restart && g_gametype.integer != GT_TOURNAMENT ) {
+line 5363
+;5362:		//set the team
+;5363:		if ( !bs->map_restart && g_gametype.integer != GT_TOURNAMENT ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 6020
@@ -27923,8 +27957,8 @@ ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 1
 EQI4 $2259
-line 5330
-;5330:			Com_sprintf(buf, sizeof(buf), "team %s", bs->settings.team);
+line 5364
+;5364:			Com_sprintf(buf, sizeof(buf), "team %s", bs->settings.team);
 ADDRLP4 1316
 ARGP4
 CNSTI4 144
@@ -27939,8 +27973,8 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 5331
-;5331:			trap_EA_Command(bs->client, buf);
+line 5365
+;5365:			trap_EA_Command(bs->client, buf);
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -27952,12 +27986,12 @@ ARGP4
 ADDRGP4 trap_EA_Command
 CALLV
 pop
-line 5332
-;5332:		}
+line 5366
+;5366:		}
 LABELV $2259
-line 5334
-;5333:		//set the chat gender
-;5334:		if (gender[0] == 'm') trap_BotSetChatGender(bs->cs, CHAT_GENDERMALE);
+line 5368
+;5367:		//set the chat gender
+;5368:		if (gender[0] == 'm') trap_BotSetChatGender(bs->cs, CHAT_GENDERMALE);
 ADDRLP4 148
 INDIRI1
 CVII4 1
@@ -27977,8 +28011,8 @@ pop
 ADDRGP4 $2264
 JUMPV
 LABELV $2263
-line 5335
-;5335:		else if (gender[0] == 'f')  trap_BotSetChatGender(bs->cs, CHAT_GENDERFEMALE);
+line 5369
+;5369:		else if (gender[0] == 'f')  trap_BotSetChatGender(bs->cs, CHAT_GENDERFEMALE);
 ADDRLP4 148
 INDIRI1
 CVII4 1
@@ -27998,8 +28032,8 @@ pop
 ADDRGP4 $2266
 JUMPV
 LABELV $2265
-line 5336
-;5336:		else  trap_BotSetChatGender(bs->cs, CHAT_GENDERLESS);
+line 5370
+;5370:		else  trap_BotSetChatGender(bs->cs, CHAT_GENDERLESS);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6532
@@ -28013,9 +28047,9 @@ CALLV
 pop
 LABELV $2266
 LABELV $2264
-line 5338
-;5337:		//set the chat name
-;5338:		ClientName(bs->client, name, sizeof(name));
+line 5372
+;5371:		//set the chat name
+;5372:		ClientName(bs->client, name, sizeof(name));
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -28029,8 +28063,8 @@ ARGI4
 ADDRGP4 ClientName
 CALLP4
 pop
-line 5339
-;5339:		trap_BotSetChatName(bs->cs, name, bs->client);
+line 5373
+;5373:		trap_BotSetChatName(bs->cs, name, bs->client);
 ADDRLP4 1464
 ADDRFP4 0
 INDIRP4
@@ -28052,9 +28086,9 @@ ARGI4
 ADDRGP4 trap_BotSetChatName
 CALLV
 pop
-line 5341
-;5340:		//
-;5341:		bs->lastframe_health = bs->inventory[INVENTORY_HEALTH];
+line 5375
+;5374:		//
+;5375:		bs->lastframe_health = bs->inventory[INVENTORY_HEALTH];
 ADDRLP4 1468
 ADDRFP4 0
 INDIRP4
@@ -28069,8 +28103,8 @@ CNSTI4 5068
 ADDP4
 INDIRI4
 ASGNI4
-line 5342
-;5342:		bs->lasthitcount = bs->cur_ps.persistant[PERS_HITS];
+line 5376
+;5376:		bs->lasthitcount = bs->cur_ps.persistant[PERS_HITS];
 ADDRLP4 1472
 ADDRFP4 0
 INDIRP4
@@ -28085,27 +28119,27 @@ CNSTI4 268
 ADDP4
 INDIRI4
 ASGNI4
-line 5344
-;5343:		//
-;5344:		bs->setupcount = 0;
+line 5378
+;5377:		//
+;5378:		bs->setupcount = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6016
 ADDP4
 CNSTI4 0
 ASGNI4
-line 5346
-;5345:		//
-;5346:		BotSetupAlternativeRouteGoals();
+line 5380
+;5379:		//
+;5380:		BotSetupAlternativeRouteGoals();
 ADDRGP4 BotSetupAlternativeRouteGoals
 CALLV
 pop
-line 5347
-;5347:	}
+line 5381
+;5381:	}
 LABELV $2254
-line 5349
-;5348:	//no ideal view set
-;5349:	bs->flags &= ~BFL_IDEALVIEWSET;
+line 5383
+;5382:	//no ideal view set
+;5383:	bs->flags &= ~BFL_IDEALVIEWSET;
 ADDRLP4 1460
 ADDRFP4 0
 INDIRP4
@@ -28120,9 +28154,9 @@ INDIRI4
 CNSTI4 -33
 BANDI4
 ASGNI4
-line 5351
-;5350:	//
-;5351:	if (!BotIntermission(bs)) {
+line 5385
+;5384:	//
+;5385:	if (!BotIntermission(bs)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -28134,57 +28168,57 @@ ADDRLP4 1464
 INDIRI4
 CNSTI4 0
 NEI4 $2267
-line 5353
-;5352:		//set the teleport time
-;5353:		BotSetTeleportTime(bs);
+line 5387
+;5386:		//set the teleport time
+;5387:		BotSetTeleportTime(bs);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BotSetTeleportTime
 CALLV
 pop
-line 5355
-;5354:		//update some inventory values
-;5355:		BotUpdateInventory(bs);
+line 5389
+;5388:		//update some inventory values
+;5389:		BotUpdateInventory(bs);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BotUpdateInventory
 CALLV
 pop
-line 5357
-;5356:		//check out the snapshot
-;5357:		BotCheckSnapshot(bs);
+line 5391
+;5390:		//check out the snapshot
+;5391:		BotCheckSnapshot(bs);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BotCheckSnapshot
 CALLV
 pop
-line 5359
-;5358:		//check for air
-;5359:		BotCheckAir(bs);
+line 5393
+;5392:		//check for air
+;5393:		BotCheckAir(bs);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BotCheckAir
 CALLV
 pop
-line 5360
-;5360:	}
+line 5394
+;5394:	}
 LABELV $2267
-line 5362
-;5361:	//check the console messages
-;5362:	BotCheckConsoleMessages(bs);
+line 5396
+;5395:	//check the console messages
+;5396:	BotCheckConsoleMessages(bs);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BotCheckConsoleMessages
 CALLV
 pop
-line 5364
-;5363:	//if not in the intermission and not in observer mode
-;5364:	if (!BotIntermission(bs) && !BotIsObserver(bs)) {
+line 5398
+;5397:	//if not in the intermission and not in observer mode
+;5398:	if (!BotIntermission(bs) && !BotIsObserver(bs)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -28207,21 +28241,21 @@ ADDRLP4 1472
 INDIRI4
 CNSTI4 0
 NEI4 $2269
-line 5366
-;5365:		//do team AI
-;5366:		BotTeamAI(bs);
+line 5400
+;5399:		//do team AI
+;5400:		BotTeamAI(bs);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BotTeamAI
 CALLV
 pop
-line 5367
-;5367:	}
+line 5401
+;5401:	}
 LABELV $2269
-line 5369
-;5368:	//if the bot has no ai node
-;5369:	if (!bs->ainode) {
+line 5403
+;5402:	//if the bot has no ai node
+;5403:	if (!bs->ainode) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 4900
@@ -28230,8 +28264,8 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $2271
-line 5370
-;5370:		AIEnter_Seek_LTG(bs, "BotDeathmatchAI: no ai node");
+line 5404
+;5404:		AIEnter_Seek_LTG(bs, "BotDeathmatchAI: no ai node");
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -28240,12 +28274,12 @@ ARGP4
 ADDRGP4 AIEnter_Seek_LTG
 CALLV
 pop
-line 5371
-;5371:	}
+line 5405
+;5405:	}
 LABELV $2271
-line 5373
-;5372:	//if the bot entered the game less than 8 seconds ago
-;5373:	if (!bs->entergamechat && bs->entergame_time > FloatTime() - 8) {
+line 5407
+;5406:	//if the bot entered the game less than 8 seconds ago
+;5407:	if (!bs->entergamechat && bs->entergame_time > FloatTime() - 8) {
 ADDRLP4 1476
 ADDRFP4 0
 INDIRP4
@@ -28267,8 +28301,8 @@ INDIRF4
 CNSTF4 1090519040
 SUBF4
 LEF4 $2274
-line 5374
-;5374:		if (BotChat_EnterGame(bs)) {
+line 5408
+;5408:		if (BotChat_EnterGame(bs)) {
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -28280,8 +28314,8 @@ ADDRLP4 1480
 INDIRI4
 CNSTI4 0
 EQI4 $2276
-line 5375
-;5375:			bs->stand_time = FloatTime() + BotChatTime(bs);
+line 5409
+;5409:			bs->stand_time = FloatTime() + BotChatTime(bs);
 ADDRLP4 1484
 ADDRFP4 0
 INDIRP4
@@ -28303,8 +28337,8 @@ ADDRLP4 1488
 INDIRF4
 ADDF4
 ASGNF4
-line 5376
-;5376:			AIEnter_Stand(bs, "BotDeathmatchAI: chat enter game");
+line 5410
+;5410:			AIEnter_Stand(bs, "BotDeathmatchAI: chat enter game");
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -28313,35 +28347,35 @@ ARGP4
 ADDRGP4 AIEnter_Stand
 CALLV
 pop
-line 5377
-;5377:		}
+line 5411
+;5411:		}
 LABELV $2276
-line 5378
-;5378:		bs->entergamechat = qtrue;
+line 5412
+;5412:		bs->entergamechat = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 6024
 ADDP4
 CNSTI4 1
 ASGNI4
-line 5379
-;5379:	}
+line 5413
+;5413:	}
 LABELV $2274
-line 5381
-;5380:	//reset the node switches from the previous frame
-;5381:	BotResetNodeSwitches();
+line 5415
+;5414:	//reset the node switches from the previous frame
+;5415:	BotResetNodeSwitches();
 ADDRGP4 BotResetNodeSwitches
 CALLV
 pop
-line 5383
-;5382:	//execute AI nodes
-;5383:	for (i = 0; i < MAX_NODESWITCHES; i++) {
+line 5417
+;5416:	//execute AI nodes
+;5417:	for (i = 0; i < MAX_NODESWITCHES; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 LABELV $2279
-line 5384
-;5384:		if (bs->ainode(bs)) break;
+line 5418
+;5418:		if (bs->ainode(bs)) break;
 ADDRLP4 1480
 ADDRFP4 0
 INDIRP4
@@ -28364,10 +28398,10 @@ EQI4 $2283
 ADDRGP4 $2281
 JUMPV
 LABELV $2283
-line 5385
-;5385:	}
+line 5419
+;5419:	}
 LABELV $2280
-line 5383
+line 5417
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -28379,9 +28413,9 @@ INDIRI4
 CNSTI4 50
 LTI4 $2279
 LABELV $2281
-line 5387
-;5386:	//if the bot removed itself :)
-;5387:	if (!bs->inuse) return;
+line 5421
+;5420:	//if the bot removed itself :)
+;5421:	if (!bs->inuse) return;
 ADDRFP4 0
 INDIRP4
 INDIRI4
@@ -28390,15 +28424,15 @@ NEI4 $2285
 ADDRGP4 $2253
 JUMPV
 LABELV $2285
-line 5389
-;5388:	//if the bot executed too many AI nodes
-;5389:	if (i >= MAX_NODESWITCHES) {
+line 5423
+;5422:	//if the bot executed too many AI nodes
+;5423:	if (i >= MAX_NODESWITCHES) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 50
 LTI4 $2287
-line 5390
-;5390:		trap_BotDumpGoalStack(bs->gs);
+line 5424
+;5424:		trap_BotDumpGoalStack(bs->gs);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6528
@@ -28408,8 +28442,8 @@ ARGI4
 ADDRGP4 trap_BotDumpGoalStack
 CALLV
 pop
-line 5391
-;5391:		trap_BotDumpAvoidGoals(bs->gs);
+line 5425
+;5425:		trap_BotDumpAvoidGoals(bs->gs);
 ADDRFP4 0
 INDIRP4
 CNSTI4 6528
@@ -28419,16 +28453,16 @@ ARGI4
 ADDRGP4 trap_BotDumpAvoidGoals
 CALLV
 pop
-line 5392
-;5392:		BotDumpNodeSwitches(bs);
+line 5426
+;5426:		BotDumpNodeSwitches(bs);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BotDumpNodeSwitches
 CALLV
 pop
-line 5393
-;5393:		ClientName(bs->client, name, sizeof(name));
+line 5427
+;5427:		ClientName(bs->client, name, sizeof(name));
 ADDRFP4 0
 INDIRP4
 CNSTI4 8
@@ -28442,8 +28476,8 @@ ARGI4
 ADDRGP4 ClientName
 CALLP4
 pop
-line 5394
-;5394:		BotAI_Print(PRT_ERROR, "%s at %1.1f switched more than %d AI nodes\n", name, FloatTime(), MAX_NODESWITCHES);
+line 5428
+;5428:		BotAI_Print(PRT_ERROR, "%s at %1.1f switched more than %d AI nodes\n", name, FloatTime(), MAX_NODESWITCHES);
 CNSTI4 3
 ARGI4
 ADDRGP4 $2289
@@ -28458,12 +28492,12 @@ ARGI4
 ADDRGP4 BotAI_Print
 CALLV
 pop
-line 5395
-;5395:	}
+line 5429
+;5429:	}
 LABELV $2287
-line 5397
-;5396:	//
-;5397:	bs->lastframe_health = bs->inventory[INVENTORY_HEALTH];
+line 5431
+;5430:	//
+;5431:	bs->lastframe_health = bs->inventory[INVENTORY_HEALTH];
 ADDRLP4 1480
 ADDRFP4 0
 INDIRP4
@@ -28478,8 +28512,8 @@ CNSTI4 5068
 ADDP4
 INDIRI4
 ASGNI4
-line 5398
-;5398:	bs->lasthitcount = bs->cur_ps.persistant[PERS_HITS];
+line 5432
+;5432:	bs->lasthitcount = bs->cur_ps.persistant[PERS_HITS];
 ADDRLP4 1484
 ADDRFP4 0
 INDIRP4
@@ -28494,26 +28528,26 @@ CNSTI4 268
 ADDP4
 INDIRI4
 ASGNI4
-line 5399
-;5399:}
+line 5433
+;5433:}
 LABELV $2253
 endproc BotDeathmatchAI 1492 20
 export BotSetEntityNumForGoalWithModel
 proc BotSetEntityNumForGoalWithModel 44 4
-line 5406
-;5400:
-;5401:/*
-;5402:==================
-;5403:BotSetEntityNumForGoalWithModel
-;5404:==================
-;5405:*/
-;5406:void BotSetEntityNumForGoalWithModel(bot_goal_t *goal, int eType, char *modelname) {
-line 5411
-;5407:	gentity_t *ent;
-;5408:	int i, modelindex;
-;5409:	vec3_t dir;
-;5410:
-;5411:	modelindex = G_ModelIndex( modelname );
+line 5440
+;5434:
+;5435:/*
+;5436:==================
+;5437:BotSetEntityNumForGoalWithModel
+;5438:==================
+;5439:*/
+;5440:void BotSetEntityNumForGoalWithModel(bot_goal_t *goal, int eType, char *modelname) {
+line 5445
+;5441:	gentity_t *ent;
+;5442:	int i, modelindex;
+;5443:	vec3_t dir;
+;5444:
+;5445:	modelindex = G_ModelIndex( modelname );
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -28525,21 +28559,21 @@ ADDRLP4 20
 ADDRLP4 24
 INDIRI4
 ASGNI4
-line 5412
-;5412:	ent = &g_entities[0];
+line 5446
+;5446:	ent = &g_entities[0];
 ADDRLP4 0
 ADDRGP4 g_entities
 ASGNP4
-line 5413
-;5413:	for (i = 0; i < level.num_entities; i++, ent++) {
+line 5447
+;5447:	for (i = 0; i < level.num_entities; i++, ent++) {
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
 ADDRGP4 $2294
 JUMPV
 LABELV $2291
-line 5414
-;5414:		if ( !ent->inuse ) {
+line 5448
+;5448:		if ( !ent->inuse ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 528
@@ -28547,14 +28581,14 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $2296
-line 5415
-;5415:			continue;
+line 5449
+;5449:			continue;
 ADDRGP4 $2292
 JUMPV
 LABELV $2296
-line 5417
-;5416:		}
-;5417:		if ( eType && ent->s.eType != eType) {
+line 5451
+;5450:		}
+;5451:		if ( eType && ent->s.eType != eType) {
 ADDRLP4 28
 ADDRFP4 4
 INDIRI4
@@ -28571,14 +28605,14 @@ INDIRI4
 ADDRLP4 28
 INDIRI4
 EQI4 $2298
-line 5418
-;5418:			continue;
+line 5452
+;5452:			continue;
 ADDRGP4 $2292
 JUMPV
 LABELV $2298
-line 5420
-;5419:		}
-;5420:		if (ent->s.modelindex != modelindex) {
+line 5454
+;5453:		}
+;5454:		if (ent->s.modelindex != modelindex) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 160
@@ -28587,14 +28621,14 @@ INDIRI4
 ADDRLP4 20
 INDIRI4
 EQI4 $2300
-line 5421
-;5421:			continue;
+line 5455
+;5455:			continue;
 ADDRGP4 $2292
 JUMPV
 LABELV $2300
-line 5423
-;5422:		}
-;5423:		VectorSubtract(goal->origin, ent->s.origin, dir);
+line 5457
+;5456:		}
+;5457:		VectorSubtract(goal->origin, ent->s.origin, dir);
 ADDRLP4 32
 ADDRFP4 0
 INDIRP4
@@ -28636,8 +28670,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 5424
-;5424:		if (VectorLengthSquared(dir) < Square(10)) {
+line 5458
+;5458:		if (VectorLengthSquared(dir) < Square(10)) {
 ADDRLP4 4
 ARGP4
 ADDRLP4 40
@@ -28648,8 +28682,8 @@ ADDRLP4 40
 INDIRF4
 CNSTF4 1120403456
 GEF4 $2304
-line 5425
-;5425:			goal->entitynum = i;
+line 5459
+;5459:			goal->entitynum = i;
 ADDRFP4 0
 INDIRP4
 CNSTI4 40
@@ -28657,16 +28691,16 @@ ADDP4
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 5426
-;5426:			return;
+line 5460
+;5460:			return;
 ADDRGP4 $2290
 JUMPV
 LABELV $2304
-line 5428
-;5427:		}
-;5428:	}
+line 5462
+;5461:		}
+;5462:	}
 LABELV $2292
-line 5413
+line 5447
 ADDRLP4 16
 ADDRLP4 16
 INDIRI4
@@ -28685,39 +28719,39 @@ INDIRI4
 ADDRGP4 level+12
 INDIRI4
 LTI4 $2291
-line 5429
-;5429:}
+line 5463
+;5463:}
 LABELV $2290
 endproc BotSetEntityNumForGoalWithModel 44 4
 export BotSetEntityNumForGoal
 proc BotSetEntityNumForGoal 36 8
-line 5436
-;5430:
-;5431:/*
-;5432:==================
-;5433:BotSetEntityNumForGoal
-;5434:==================
-;5435:*/
-;5436:void BotSetEntityNumForGoal(bot_goal_t *goal, char *classname) {
-line 5441
-;5437:	gentity_t *ent;
-;5438:	int i;
-;5439:	vec3_t dir;
-;5440:
-;5441:	ent = &g_entities[0];
+line 5470
+;5464:
+;5465:/*
+;5466:==================
+;5467:BotSetEntityNumForGoal
+;5468:==================
+;5469:*/
+;5470:void BotSetEntityNumForGoal(bot_goal_t *goal, char *classname) {
+line 5475
+;5471:	gentity_t *ent;
+;5472:	int i;
+;5473:	vec3_t dir;
+;5474:
+;5475:	ent = &g_entities[0];
 ADDRLP4 0
 ADDRGP4 g_entities
 ASGNP4
-line 5442
-;5442:	for (i = 0; i < level.num_entities; i++, ent++) {
+line 5476
+;5476:	for (i = 0; i < level.num_entities; i++, ent++) {
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
 ADDRGP4 $2310
 JUMPV
 LABELV $2307
-line 5443
-;5443:		if ( !ent->inuse ) {
+line 5477
+;5477:		if ( !ent->inuse ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 528
@@ -28725,14 +28759,14 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $2312
-line 5444
-;5444:			continue;
+line 5478
+;5478:			continue;
 ADDRGP4 $2308
 JUMPV
 LABELV $2312
-line 5446
-;5445:		}
-;5446:		if ( !Q_stricmp(ent->classname, classname) ) {
+line 5480
+;5479:		}
+;5480:		if ( !Q_stricmp(ent->classname, classname) ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
@@ -28750,14 +28784,14 @@ ADDRLP4 20
 INDIRI4
 CNSTI4 0
 NEI4 $2314
-line 5447
-;5447:			continue;
+line 5481
+;5481:			continue;
 ADDRGP4 $2308
 JUMPV
 LABELV $2314
-line 5449
-;5448:		}
-;5449:		VectorSubtract(goal->origin, ent->s.origin, dir);
+line 5483
+;5482:		}
+;5483:		VectorSubtract(goal->origin, ent->s.origin, dir);
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -28799,8 +28833,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 5450
-;5450:		if (VectorLengthSquared(dir) < Square(10)) {
+line 5484
+;5484:		if (VectorLengthSquared(dir) < Square(10)) {
 ADDRLP4 4
 ARGP4
 ADDRLP4 32
@@ -28811,8 +28845,8 @@ ADDRLP4 32
 INDIRF4
 CNSTF4 1120403456
 GEF4 $2318
-line 5451
-;5451:			goal->entitynum = i;
+line 5485
+;5485:			goal->entitynum = i;
 ADDRFP4 0
 INDIRP4
 CNSTI4 40
@@ -28820,16 +28854,16 @@ ADDP4
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 5452
-;5452:			return;
+line 5486
+;5486:			return;
 ADDRGP4 $2306
 JUMPV
 LABELV $2318
-line 5454
-;5453:		}
-;5454:	}
+line 5488
+;5487:		}
+;5488:	}
 LABELV $2308
-line 5442
+line 5476
 ADDRLP4 16
 ADDRLP4 16
 INDIRI4
@@ -28848,26 +28882,26 @@ INDIRI4
 ADDRGP4 level+12
 INDIRI4
 LTI4 $2307
-line 5455
-;5455:}
+line 5489
+;5489:}
 LABELV $2306
 endproc BotSetEntityNumForGoal 36 8
 export BotGoalForBSPEntity
 proc BotGoalForBSPEntity 1128 20
-line 5462
-;5456:
-;5457:/*
-;5458:==================
-;5459:BotGoalForBSPEntity
-;5460:==================
-;5461:*/
-;5462:int BotGoalForBSPEntity( char *classname, bot_goal_t *goal ) {
-line 5467
-;5463:	char value[MAX_INFO_STRING];
-;5464:	vec3_t origin, start, end;
-;5465:	int ent, numareas, areas[10];
-;5466:
-;5467:	memset(goal, 0, sizeof(bot_goal_t));
+line 5496
+;5490:
+;5491:/*
+;5492:==================
+;5493:BotGoalForBSPEntity
+;5494:==================
+;5495:*/
+;5496:int BotGoalForBSPEntity( char *classname, bot_goal_t *goal ) {
+line 5501
+;5497:	char value[MAX_INFO_STRING];
+;5498:	vec3_t origin, start, end;
+;5499:	int ent, numareas, areas[10];
+;5500:
+;5501:	memset(goal, 0, sizeof(bot_goal_t));
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -28878,8 +28912,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 5468
-;5468:	for (ent = trap_AAS_NextBSPEntity(0); ent; ent = trap_AAS_NextBSPEntity(ent)) {
+line 5502
+;5502:	for (ent = trap_AAS_NextBSPEntity(0); ent; ent = trap_AAS_NextBSPEntity(ent)) {
 CNSTI4 0
 ARGI4
 ADDRLP4 1108
@@ -28893,8 +28927,8 @@ ASGNI4
 ADDRGP4 $2324
 JUMPV
 LABELV $2321
-line 5469
-;5469:		if (!trap_AAS_ValueForBSPEpairKey(ent, "classname", value, sizeof(value)))
+line 5503
+;5503:		if (!trap_AAS_ValueForBSPEpairKey(ent, "classname", value, sizeof(value)))
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -28912,13 +28946,13 @@ ADDRLP4 1112
 INDIRI4
 CNSTI4 0
 NEI4 $2325
-line 5470
-;5470:			continue;
+line 5504
+;5504:			continue;
 ADDRGP4 $2322
 JUMPV
 LABELV $2325
-line 5471
-;5471:		if (!strcmp(value, classname)) {
+line 5505
+;5505:		if (!strcmp(value, classname)) {
 ADDRLP4 4
 ARGP4
 ADDRFP4 0
@@ -28932,8 +28966,8 @@ ADDRLP4 1116
 INDIRI4
 CNSTI4 0
 NEI4 $2327
-line 5472
-;5472:			if (!trap_AAS_VectorForBSPEpairKey(ent, "origin", origin))
+line 5506
+;5506:			if (!trap_AAS_VectorForBSPEpairKey(ent, "origin", origin))
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -28949,50 +28983,50 @@ ADDRLP4 1120
 INDIRI4
 CNSTI4 0
 NEI4 $2329
-line 5473
-;5473:				return qfalse;
+line 5507
+;5507:				return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $2320
 JUMPV
 LABELV $2329
-line 5474
-;5474:			VectorCopy(origin, goal->origin);
+line 5508
+;5508:			VectorCopy(origin, goal->origin);
 ADDRFP4 4
 INDIRP4
 ADDRLP4 1028
 INDIRB
 ASGNB 12
-line 5475
-;5475:			VectorCopy(origin, start);
+line 5509
+;5509:			VectorCopy(origin, start);
 ADDRLP4 1040
 ADDRLP4 1028
 INDIRB
 ASGNB 12
-line 5476
-;5476:			start[2] -= 32;
+line 5510
+;5510:			start[2] -= 32;
 ADDRLP4 1040+8
 ADDRLP4 1040+8
 INDIRF4
 CNSTF4 1107296256
 SUBF4
 ASGNF4
-line 5477
-;5477:			VectorCopy(origin, end);
+line 5511
+;5511:			VectorCopy(origin, end);
 ADDRLP4 1052
 ADDRLP4 1028
 INDIRB
 ASGNB 12
-line 5478
-;5478:			end[2] += 32;
+line 5512
+;5512:			end[2] += 32;
 ADDRLP4 1052+8
 ADDRLP4 1052+8
 INDIRF4
 CNSTF4 1107296256
 ADDF4
 ASGNF4
-line 5479
-;5479:			numareas = trap_AAS_TraceAreas(start, end, areas, NULL, 10);
+line 5513
+;5513:			numareas = trap_AAS_TraceAreas(start, end, areas, NULL, 10);
 ADDRLP4 1040
 ARGP4
 ADDRLP4 1052
@@ -29011,21 +29045,21 @@ ADDRLP4 1064
 ADDRLP4 1124
 INDIRI4
 ASGNI4
-line 5480
-;5480:			if (!numareas)
+line 5514
+;5514:			if (!numareas)
 ADDRLP4 1064
 INDIRI4
 CNSTI4 0
 NEI4 $2333
-line 5481
-;5481:				return qfalse;
+line 5515
+;5515:				return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $2320
 JUMPV
 LABELV $2333
-line 5482
-;5482:			goal->areanum = areas[0];
+line 5516
+;5516:			goal->areanum = areas[0];
 ADDRFP4 4
 INDIRP4
 CNSTI4 12
@@ -29033,18 +29067,18 @@ ADDP4
 ADDRLP4 1068
 INDIRI4
 ASGNI4
-line 5483
-;5483:			return qtrue;
+line 5517
+;5517:			return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $2320
 JUMPV
 LABELV $2327
-line 5485
-;5484:		}
-;5485:	}
+line 5519
+;5518:		}
+;5519:	}
 LABELV $2322
-line 5468
+line 5502
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -29061,28 +29095,28 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 0
 NEI4 $2321
-line 5486
-;5486:	return qfalse;
+line 5520
+;5520:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $2320
 endproc BotGoalForBSPEntity 1128 20
 export BotSetupDeathmatchAI
 proc BotSetupDeathmatchAI 156 16
-line 5494
-;5487:}
-;5488:
-;5489:/*
-;5490:==================
-;5491:BotSetupDeathmatchAI
-;5492:==================
-;5493:*/
-;5494:void BotSetupDeathmatchAI(void) {
-line 5498
-;5495:	int ent, modelnum;
-;5496:	char model[128];
-;5497:
-;5498:	gametype = trap_Cvar_VariableIntegerValue("g_gametype");
+line 5528
+;5521:}
+;5522:
+;5523:/*
+;5524:==================
+;5525:BotSetupDeathmatchAI
+;5526:==================
+;5527:*/
+;5528:void BotSetupDeathmatchAI(void) {
+line 5532
+;5529:	int ent, modelnum;
+;5530:	char model[128];
+;5531:
+;5532:	gametype = trap_Cvar_VariableIntegerValue("g_gametype");
 ADDRGP4 $2336
 ARGP4
 ADDRLP4 136
@@ -29093,8 +29127,8 @@ ADDRGP4 gametype
 ADDRLP4 136
 INDIRI4
 ASGNI4
-line 5499
-;5499:	maxclients = trap_Cvar_VariableIntegerValue("sv_maxclients");
+line 5533
+;5533:	maxclients = trap_Cvar_VariableIntegerValue("sv_maxclients");
 ADDRGP4 $311
 ARGP4
 ADDRLP4 140
@@ -29105,9 +29139,9 @@ ADDRGP4 maxclients
 ADDRLP4 140
 INDIRI4
 ASGNI4
-line 5501
-;5500:
-;5501:	trap_Cvar_Register(&bot_rocketjump, "bot_rocketjump", "1", 0);
+line 5535
+;5534:
+;5535:	trap_Cvar_Register(&bot_rocketjump, "bot_rocketjump", "1", 0);
 ADDRGP4 bot_rocketjump
 ARGP4
 ADDRGP4 $2337
@@ -29119,8 +29153,8 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 5502
-;5502:	trap_Cvar_Register(&bot_grapple, "bot_grapple", "0", 0);
+line 5536
+;5536:	trap_Cvar_Register(&bot_grapple, "bot_grapple", "0", 0);
 ADDRGP4 bot_grapple
 ARGP4
 ADDRGP4 $2338
@@ -29132,8 +29166,8 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 5503
-;5503:	trap_Cvar_Register(&bot_fastchat, "bot_fastchat", "0", 0);
+line 5537
+;5537:	trap_Cvar_Register(&bot_fastchat, "bot_fastchat", "0", 0);
 ADDRGP4 bot_fastchat
 ARGP4
 ADDRGP4 $2340
@@ -29145,8 +29179,8 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 5504
-;5504:	trap_Cvar_Register(&bot_nochat, "bot_nochat", "0", 0);
+line 5538
+;5538:	trap_Cvar_Register(&bot_nochat, "bot_nochat", "0", 0);
 ADDRGP4 bot_nochat
 ARGP4
 ADDRGP4 $2341
@@ -29158,8 +29192,8 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 5505
-;5505:	trap_Cvar_Register(&bot_testrchat, "bot_testrchat", "0", 0);
+line 5539
+;5539:	trap_Cvar_Register(&bot_testrchat, "bot_testrchat", "0", 0);
 ADDRGP4 bot_testrchat
 ARGP4
 ADDRGP4 $2150
@@ -29171,8 +29205,8 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 5506
-;5506:	trap_Cvar_Register(&bot_challenge, "bot_challenge", "0", 0);
+line 5540
+;5540:	trap_Cvar_Register(&bot_challenge, "bot_challenge", "0", 0);
 ADDRGP4 bot_challenge
 ARGP4
 ADDRGP4 $2342
@@ -29184,8 +29218,8 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 5507
-;5507:	trap_Cvar_Register(&bot_predictobstacles, "bot_predictobstacles", "1", 0);
+line 5541
+;5541:	trap_Cvar_Register(&bot_predictobstacles, "bot_predictobstacles", "1", 0);
 ADDRGP4 bot_predictobstacles
 ARGP4
 ADDRGP4 $2343
@@ -29197,8 +29231,8 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 5508
-;5508:	trap_Cvar_Register(&g_spSkill, "g_spSkill", "2", 0);
+line 5542
+;5542:	trap_Cvar_Register(&g_spSkill, "g_spSkill", "2", 0);
 ADDRGP4 g_spSkill
 ARGP4
 ADDRGP4 $2344
@@ -29210,15 +29244,15 @@ ARGI4
 ADDRGP4 trap_Cvar_Register
 CALLV
 pop
-line 5510
-;5509:	//
-;5510:	if (gametype == GT_CTF) {
+line 5544
+;5543:	//
+;5544:	if (gametype == GT_CTF) {
 ADDRGP4 gametype
 INDIRI4
 CNSTI4 4
 NEI4 $2346
-line 5511
-;5511:		if (trap_BotGetLevelItemGoal(-1, "Red Flag", &ctf_redflag) < 0)
+line 5545
+;5545:		if (trap_BotGetLevelItemGoal(-1, "Red Flag", &ctf_redflag) < 0)
 CNSTI4 -1
 ARGI4
 ADDRGP4 $2350
@@ -29233,8 +29267,8 @@ ADDRLP4 144
 INDIRI4
 CNSTI4 0
 GEI4 $2348
-line 5512
-;5512:			BotAI_Print(PRT_WARNING, "CTF without Red Flag\n");
+line 5546
+;5546:			BotAI_Print(PRT_WARNING, "CTF without Red Flag\n");
 CNSTI4 2
 ARGI4
 ADDRGP4 $2351
@@ -29243,8 +29277,8 @@ ADDRGP4 BotAI_Print
 CALLV
 pop
 LABELV $2348
-line 5513
-;5513:		if (trap_BotGetLevelItemGoal(-1, "Blue Flag", &ctf_blueflag) < 0)
+line 5547
+;5547:		if (trap_BotGetLevelItemGoal(-1, "Blue Flag", &ctf_blueflag) < 0)
 CNSTI4 -1
 ARGI4
 ADDRGP4 $2354
@@ -29259,8 +29293,8 @@ ADDRLP4 148
 INDIRI4
 CNSTI4 0
 GEI4 $2352
-line 5514
-;5514:			BotAI_Print(PRT_WARNING, "CTF without Blue Flag\n");
+line 5548
+;5548:			BotAI_Print(PRT_WARNING, "CTF without Blue Flag\n");
 CNSTI4 2
 ARGI4
 ADDRGP4 $2355
@@ -29269,46 +29303,46 @@ ADDRGP4 BotAI_Print
 CALLV
 pop
 LABELV $2352
-line 5515
-;5515:	}
+line 5549
+;5549:	}
 LABELV $2346
-line 5546
-;5516:#ifdef MISSIONPACK
-;5517:	else if (gametype == GT_1FCTF) {
-;5518:		if (trap_BotGetLevelItemGoal(-1, "Neutral Flag", &ctf_neutralflag) < 0)
-;5519:			BotAI_Print(PRT_WARNING, "One Flag CTF without Neutral Flag\n");
-;5520:		if (trap_BotGetLevelItemGoal(-1, "Red Flag", &ctf_redflag) < 0)
-;5521:			BotAI_Print(PRT_WARNING, "CTF without Red Flag\n");
-;5522:		if (trap_BotGetLevelItemGoal(-1, "Blue Flag", &ctf_blueflag) < 0)
-;5523:			BotAI_Print(PRT_WARNING, "CTF without Blue Flag\n");
-;5524:	}
-;5525:	else if (gametype == GT_OBELISK) {
-;5526:		if (trap_BotGetLevelItemGoal(-1, "Red Obelisk", &redobelisk) < 0)
-;5527:			BotAI_Print(PRT_WARNING, "Obelisk without red obelisk\n");
-;5528:		BotSetEntityNumForGoal(&redobelisk, "team_redobelisk");
-;5529:		if (trap_BotGetLevelItemGoal(-1, "Blue Obelisk", &blueobelisk) < 0)
-;5530:			BotAI_Print(PRT_WARNING, "Obelisk without blue obelisk\n");
-;5531:		BotSetEntityNumForGoal(&blueobelisk, "team_blueobelisk");
-;5532:	}
-;5533:	else if (gametype == GT_HARVESTER) {
-;5534:		if (trap_BotGetLevelItemGoal(-1, "Red Obelisk", &redobelisk) < 0)
-;5535:			BotAI_Print(PRT_WARNING, "Harvester without red obelisk\n");
-;5536:		BotSetEntityNumForGoal(&redobelisk, "team_redobelisk");
-;5537:		if (trap_BotGetLevelItemGoal(-1, "Blue Obelisk", &blueobelisk) < 0)
-;5538:			BotAI_Print(PRT_WARNING, "Harvester without blue obelisk\n");
-;5539:		BotSetEntityNumForGoal(&blueobelisk, "team_blueobelisk");
-;5540:		if (trap_BotGetLevelItemGoal(-1, "Neutral Obelisk", &neutralobelisk) < 0)
-;5541:			BotAI_Print(PRT_WARNING, "Harvester without neutral obelisk\n");
-;5542:		BotSetEntityNumForGoal(&neutralobelisk, "team_neutralobelisk");
-;5543:	}
-;5544:#endif
-;5545:
-;5546:	max_bspmodelindex = 0;
+line 5580
+;5550:#ifdef MISSIONPACK
+;5551:	else if (gametype == GT_1FCTF) {
+;5552:		if (trap_BotGetLevelItemGoal(-1, "Neutral Flag", &ctf_neutralflag) < 0)
+;5553:			BotAI_Print(PRT_WARNING, "One Flag CTF without Neutral Flag\n");
+;5554:		if (trap_BotGetLevelItemGoal(-1, "Red Flag", &ctf_redflag) < 0)
+;5555:			BotAI_Print(PRT_WARNING, "CTF without Red Flag\n");
+;5556:		if (trap_BotGetLevelItemGoal(-1, "Blue Flag", &ctf_blueflag) < 0)
+;5557:			BotAI_Print(PRT_WARNING, "CTF without Blue Flag\n");
+;5558:	}
+;5559:	else if (gametype == GT_OBELISK) {
+;5560:		if (trap_BotGetLevelItemGoal(-1, "Red Obelisk", &redobelisk) < 0)
+;5561:			BotAI_Print(PRT_WARNING, "Obelisk without red obelisk\n");
+;5562:		BotSetEntityNumForGoal(&redobelisk, "team_redobelisk");
+;5563:		if (trap_BotGetLevelItemGoal(-1, "Blue Obelisk", &blueobelisk) < 0)
+;5564:			BotAI_Print(PRT_WARNING, "Obelisk without blue obelisk\n");
+;5565:		BotSetEntityNumForGoal(&blueobelisk, "team_blueobelisk");
+;5566:	}
+;5567:	else if (gametype == GT_HARVESTER) {
+;5568:		if (trap_BotGetLevelItemGoal(-1, "Red Obelisk", &redobelisk) < 0)
+;5569:			BotAI_Print(PRT_WARNING, "Harvester without red obelisk\n");
+;5570:		BotSetEntityNumForGoal(&redobelisk, "team_redobelisk");
+;5571:		if (trap_BotGetLevelItemGoal(-1, "Blue Obelisk", &blueobelisk) < 0)
+;5572:			BotAI_Print(PRT_WARNING, "Harvester without blue obelisk\n");
+;5573:		BotSetEntityNumForGoal(&blueobelisk, "team_blueobelisk");
+;5574:		if (trap_BotGetLevelItemGoal(-1, "Neutral Obelisk", &neutralobelisk) < 0)
+;5575:			BotAI_Print(PRT_WARNING, "Harvester without neutral obelisk\n");
+;5576:		BotSetEntityNumForGoal(&neutralobelisk, "team_neutralobelisk");
+;5577:	}
+;5578:#endif
+;5579:
+;5580:	max_bspmodelindex = 0;
 ADDRGP4 max_bspmodelindex
 CNSTI4 0
 ASGNI4
-line 5547
-;5547:	for (ent = trap_AAS_NextBSPEntity(0); ent; ent = trap_AAS_NextBSPEntity(ent)) {
+line 5581
+;5581:	for (ent = trap_AAS_NextBSPEntity(0); ent; ent = trap_AAS_NextBSPEntity(ent)) {
 CNSTI4 0
 ARGI4
 ADDRLP4 144
@@ -29322,8 +29356,8 @@ ASGNI4
 ADDRGP4 $2359
 JUMPV
 LABELV $2356
-line 5548
-;5548:		if (!trap_AAS_ValueForBSPEpairKey(ent, "model", model, sizeof(model))) continue;
+line 5582
+;5582:		if (!trap_AAS_ValueForBSPEpairKey(ent, "model", model, sizeof(model))) continue;
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -29344,15 +29378,15 @@ NEI4 $2360
 ADDRGP4 $2357
 JUMPV
 LABELV $2360
-line 5549
-;5549:		if (model[0] == '*') {
+line 5583
+;5583:		if (model[0] == '*') {
 ADDRLP4 4
 INDIRI1
 CVII4 1
 CNSTI4 42
 NEI4 $2362
-line 5550
-;5550:			modelnum = atoi(model+1);
+line 5584
+;5584:			modelnum = atoi(model+1);
 ADDRLP4 4+1
 ARGP4
 ADDRLP4 152
@@ -29363,27 +29397,27 @@ ADDRLP4 132
 ADDRLP4 152
 INDIRI4
 ASGNI4
-line 5551
-;5551:			if (modelnum > max_bspmodelindex)
+line 5585
+;5585:			if (modelnum > max_bspmodelindex)
 ADDRLP4 132
 INDIRI4
 ADDRGP4 max_bspmodelindex
 INDIRI4
 LEI4 $2365
-line 5552
-;5552:				max_bspmodelindex = modelnum;
+line 5586
+;5586:				max_bspmodelindex = modelnum;
 ADDRGP4 max_bspmodelindex
 ADDRLP4 132
 INDIRI4
 ASGNI4
 LABELV $2365
-line 5553
-;5553:		}
+line 5587
+;5587:		}
 LABELV $2362
-line 5554
-;5554:	}
+line 5588
+;5588:	}
 LABELV $2357
-line 5547
+line 5581
 ADDRLP4 0
 INDIRI4
 ARGI4
@@ -29400,33 +29434,33 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 0
 NEI4 $2356
-line 5556
-;5555:	//initialize the waypoint heap
-;5556:	BotInitWaypoints();
+line 5590
+;5589:	//initialize the waypoint heap
+;5590:	BotInitWaypoints();
 ADDRGP4 BotInitWaypoints
 CALLV
 pop
-line 5557
-;5557:}
+line 5591
+;5591:}
 LABELV $2335
 endproc BotSetupDeathmatchAI 156 16
 export BotShutdownDeathmatchAI
 proc BotShutdownDeathmatchAI 0 0
-line 5564
-;5558:
-;5559:/*
-;5560:==================
-;5561:BotShutdownDeathmatchAI
-;5562:==================
-;5563:*/
-;5564:void BotShutdownDeathmatchAI(void) {
-line 5565
-;5565:	altroutegoals_setup = qfalse;
+line 5598
+;5592:
+;5593:/*
+;5594:==================
+;5595:BotShutdownDeathmatchAI
+;5596:==================
+;5597:*/
+;5598:void BotShutdownDeathmatchAI(void) {
+line 5599
+;5599:	altroutegoals_setup = qfalse;
 ADDRGP4 altroutegoals_setup
 CNSTI4 0
 ASGNI4
-line 5566
-;5566:}
+line 5600
+;5600:}
 LABELV $2367
 endproc BotShutdownDeathmatchAI 0 0
 bss
@@ -29872,6 +29906,7 @@ import trap_Argc
 import trap_Milliseconds
 import trap_Error
 import trap_Printf
+import trep_debug
 import g_PCTeamkills
 import g_GrappleMode
 import g_Turrets

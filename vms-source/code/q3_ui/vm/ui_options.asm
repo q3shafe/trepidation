@@ -12,8 +12,8 @@ line 47
 ;8:
 ;9:#include "ui_local.h"
 ;10:
-;11:
-;12:#define ART_FRAMEL			"menu/art/frame2_l"
+;11://#define ART_FRAMEL			"menu/art/frame2_l"
+;12:#define ART_FRAMEL			"menu/art/popespace1"
 ;13:#define ART_FRAMER			"menu/art/frame1_r"
 ;14:#define ART_BACK0			"menu/art/back_0"
 ;15:#define ART_BACK1			"menu/art/back_1"
@@ -178,28 +178,10 @@ ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 83
-;83:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $85
-ARGP4
-ADDRGP4 trap_R_RegisterShaderNoMip
-CALLI4
-pop
-line 84
-;84:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $86
-ARGP4
-ADDRGP4 trap_R_RegisterShaderNoMip
-CALLI4
-pop
-line 85
-;85:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $87
-ARGP4
-ADDRGP4 trap_R_RegisterShaderNoMip
-CALLI4
-pop
 line 86
+;83:	//trap_R_RegisterShaderNoMip( ART_FRAMER );
+;84:	//trap_R_RegisterShaderNoMip( ART_BACK0 );
+;85:	//trap_R_RegisterShaderNoMip( ART_BACK1 );
 ;86:}
 LABELV $83
 endproc SystemConfig_Cache 0 4
@@ -251,7 +233,7 @@ line 103
 ADDRLP4 4
 INDIRI4
 CNSTI4 5
-LTI4 $90
+LTI4 $87
 line 104
 ;104:		s_options.menu.fullscreen = qfalse;
 ADDRGP4 s_options+280
@@ -259,9 +241,9 @@ CNSTI4 0
 ASGNI4
 line 105
 ;105:	}
-ADDRGP4 $91
+ADDRGP4 $88
 JUMPV
-LABELV $90
+LABELV $87
 line 106
 ;106:	else {
 line 107
@@ -271,7 +253,7 @@ CNSTI4 1
 ASGNI4
 line 108
 ;108:	}
-LABELV $91
+LABELV $88
 line 110
 ;109:
 ;110:	s_options.banner.generic.type	= MTYPE_BTEXT;
@@ -296,7 +278,7 @@ ASGNI4
 line 114
 ;114:	s_options.banner.string		    = "SYSTEM SETUP";
 ADDRGP4 s_options+288+60
-ADDRGP4 $103
+ADDRGP4 $100
 ASGNP4
 line 115
 ;115:	s_options.banner.color			= color_white;
@@ -335,14 +317,14 @@ ADDRGP4 s_options+360+16
 CNSTI4 1
 ASGNI4
 line 123
-;123:	s_options.framel.width  	   = 800;
+;123:	s_options.framel.width  	   = 1024;
 ADDRGP4 s_options+360+76
-CNSTI4 800
+CNSTI4 1024
 ASGNI4
 line 124
-;124:	s_options.framel.height  	   = 600;
+;124:	s_options.framel.height  	   = 768;
 ADDRGP4 s_options+360+80
-CNSTI4 600
+CNSTI4 768
 ASGNI4
 line 126
 ;125:
@@ -353,7 +335,7 @@ ASGNI4
 line 127
 ;127:	s_options.framer.generic.name  = ART_FRAMER;
 ADDRGP4 s_options+448+4
-ADDRGP4 $85
+ADDRGP4 $121
 ASGNP4
 line 128
 ;128:	s_options.framer.generic.flags = QMF_INACTIVE;
@@ -420,7 +402,7 @@ ASGNI4
 line 141
 ;141:	s_options.graphics.string			= "GRAPHICS";
 ADDRGP4 s_options+536+60
-ADDRGP4 $147
+ADDRGP4 $145
 ASGNP4
 line 142
 ;142:	s_options.graphics.color			= color_red;
@@ -475,7 +457,7 @@ ASGNI4
 line 152
 ;152:	s_options.display.string			= "DISPLAY";
 ADDRGP4 s_options+608+60
-ADDRGP4 $165
+ADDRGP4 $163
 ASGNP4
 line 153
 ;153:	s_options.display.color				= color_red;
@@ -530,7 +512,7 @@ ASGNI4
 line 163
 ;163:	s_options.sound.string				= "SOUND";
 ADDRGP4 s_options+680+60
-ADDRGP4 $183
+ADDRGP4 $181
 ASGNP4
 line 164
 ;164:	s_options.sound.color				= color_red;
@@ -585,7 +567,7 @@ ASGNI4
 line 174
 ;174:	s_options.network.string			= "NETWORK";
 ADDRGP4 s_options+752+60
-ADDRGP4 $201
+ADDRGP4 $199
 ASGNP4
 line 175
 ;175:	s_options.network.color				= color_red;
@@ -606,7 +588,7 @@ ASGNI4
 line 179
 ;179:	s_options.back.generic.name     = ART_BACK0;
 ADDRGP4 s_options+824+4
-ADDRGP4 $86
+ADDRGP4 $207
 ASGNP4
 line 180
 ;180:	s_options.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -646,7 +628,7 @@ ASGNI4
 line 187
 ;187:	s_options.back.focuspic         = ART_BACK1;
 ADDRGP4 s_options+824+60
-ADDRGP4 $87
+ADDRGP4 $224
 ASGNP4
 line 189
 ;188:
@@ -715,7 +697,7 @@ CALLV
 pop
 line 197
 ;197:}
-LABELV $88
+LABELV $85
 endproc Options_MenuInit 3088 12
 export UI_SystemConfigMenu
 proc UI_SystemConfigMenu 0 4
@@ -1233,61 +1215,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $201
-byte 1 78
-byte 1 69
-byte 1 84
-byte 1 87
-byte 1 79
-byte 1 82
-byte 1 75
-byte 1 0
-align 1
-LABELV $183
-byte 1 83
-byte 1 79
-byte 1 85
-byte 1 78
-byte 1 68
-byte 1 0
-align 1
-LABELV $165
-byte 1 68
-byte 1 73
-byte 1 83
-byte 1 80
-byte 1 76
-byte 1 65
-byte 1 89
-byte 1 0
-align 1
-LABELV $147
-byte 1 71
-byte 1 82
-byte 1 65
-byte 1 80
-byte 1 72
-byte 1 73
-byte 1 67
-byte 1 83
-byte 1 0
-align 1
-LABELV $103
-byte 1 83
-byte 1 89
-byte 1 83
-byte 1 84
-byte 1 69
-byte 1 77
-byte 1 32
-byte 1 83
-byte 1 69
-byte 1 84
-byte 1 85
-byte 1 80
-byte 1 0
-align 1
-LABELV $87
+LABELV $224
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1305,7 +1233,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $86
+LABELV $207
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1323,7 +1251,46 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $85
+LABELV $199
+byte 1 78
+byte 1 69
+byte 1 84
+byte 1 87
+byte 1 79
+byte 1 82
+byte 1 75
+byte 1 0
+align 1
+LABELV $181
+byte 1 83
+byte 1 79
+byte 1 85
+byte 1 78
+byte 1 68
+byte 1 0
+align 1
+LABELV $163
+byte 1 68
+byte 1 73
+byte 1 83
+byte 1 80
+byte 1 76
+byte 1 65
+byte 1 89
+byte 1 0
+align 1
+LABELV $145
+byte 1 71
+byte 1 82
+byte 1 65
+byte 1 80
+byte 1 72
+byte 1 73
+byte 1 67
+byte 1 83
+byte 1 0
+align 1
+LABELV $121
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1343,6 +1310,21 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
+LABELV $100
+byte 1 83
+byte 1 89
+byte 1 83
+byte 1 84
+byte 1 69
+byte 1 77
+byte 1 32
+byte 1 83
+byte 1 69
+byte 1 84
+byte 1 85
+byte 1 80
+byte 1 0
+align 1
 LABELV $84
 byte 1 109
 byte 1 101
@@ -1353,12 +1335,14 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 102
-byte 1 114
-byte 1 97
-byte 1 109
+byte 1 112
+byte 1 111
+byte 1 112
 byte 1 101
-byte 1 50
-byte 1 95
-byte 1 108
+byte 1 115
+byte 1 112
+byte 1 97
+byte 1 99
+byte 1 101
+byte 1 49
 byte 1 0

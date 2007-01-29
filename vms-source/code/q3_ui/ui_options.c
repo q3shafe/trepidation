@@ -8,8 +8,8 @@ SYSTEM CONFIGURATION MENU
 
 #include "ui_local.h"
 
-
-#define ART_FRAMEL			"menu/art/frame2_l"
+//#define ART_FRAMEL			"menu/art/frame2_l"
+#define ART_FRAMEL			"menu/art/popespace1"
 #define ART_FRAMER			"menu/art/frame1_r"
 #define ART_BACK0			"menu/art/back_0"
 #define ART_BACK1			"menu/art/back_1"
@@ -80,9 +80,9 @@ SystemConfig_Cache
 */
 void SystemConfig_Cache( void ) {
 	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-	trap_R_RegisterShaderNoMip( ART_FRAMER );
-	trap_R_RegisterShaderNoMip( ART_BACK0 );
-	trap_R_RegisterShaderNoMip( ART_BACK1 );
+	//trap_R_RegisterShaderNoMip( ART_FRAMER );
+	//trap_R_RegisterShaderNoMip( ART_BACK0 );
+	//trap_R_RegisterShaderNoMip( ART_BACK1 );
 }
 
 /*
@@ -120,8 +120,8 @@ void Options_MenuInit( void ) {
 	s_options.framel.generic.flags = QMF_INACTIVE;
 	s_options.framel.generic.x	   = 1;  
 	s_options.framel.generic.y	   = 1;
-	s_options.framel.width  	   = 800;
-	s_options.framel.height  	   = 600;
+	s_options.framel.width  	   = 1024;
+	s_options.framel.height  	   = 768;
 
 	s_options.framer.generic.type  = MTYPE_BITMAP;
 	s_options.framer.generic.name  = ART_FRAMER;

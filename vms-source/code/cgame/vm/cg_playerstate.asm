@@ -220,7 +220,7 @@ INDIRI4
 EQI4 $95
 line 60
 ;60:		trap_S_StartLocalSound( cgs.media.noAmmoSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+154388+796
+ADDRGP4 cgs+154388+804
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -1442,7 +1442,7 @@ line 303
 ;301:		}
 ;302:#else
 ;303:		trap_S_StartLocalSound( cgs.media.hitSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+154388+844
+ADDRGP4 cgs+154388+852
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -1474,7 +1474,7 @@ INDIRI4
 GEI4 $250
 line 306
 ;306:		trap_S_StartLocalSound( cgs.media.hitTeamSound, CHAN_LOCAL_SOUND );
-ADDRGP4 cgs+154388+856
+ADDRGP4 cgs+154388+864
 INDIRI4
 ARGI4
 CNSTI4 6
@@ -1578,10 +1578,10 @@ INDIRI4
 EQI4 $262
 line 325
 ;325:		pushReward(cgs.media.captureAwardSound, cgs.media.medalCapture, ps->persistant[PERS_CAPTURES]);
-ADDRGP4 cgs+154388+944
+ADDRGP4 cgs+154388+952
 INDIRI4
 ARGI4
-ADDRGP4 cgs+154388+588
+ADDRGP4 cgs+154388+596
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1630,7 +1630,7 @@ line 337
 ;336:#else
 ;337:		sfx = cgs.media.impressiveSound;
 ADDRLP4 4
-ADDRGP4 cgs+154388+860
+ADDRGP4 cgs+154388+868
 INDIRI4
 ASGNI4
 line 339
@@ -1639,7 +1639,7 @@ line 339
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRGP4 cgs+154388+568
+ADDRGP4 cgs+154388+576
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1688,7 +1688,7 @@ line 351
 ;350:#else
 ;351:		sfx = cgs.media.excellentSound;
 ADDRLP4 4
-ADDRGP4 cgs+154388+864
+ADDRGP4 cgs+154388+872
 INDIRI4
 ASGNI4
 line 353
@@ -1697,7 +1697,7 @@ line 353
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRGP4 cgs+154388+572
+ADDRGP4 cgs+154388+580
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1746,7 +1746,7 @@ line 365
 ;364:#else
 ;365:		sfx = cgs.media.humiliationSound;
 ADDRLP4 4
-ADDRGP4 cgs+154388+872
+ADDRGP4 cgs+154388+880
 INDIRI4
 ASGNI4
 line 367
@@ -1755,7 +1755,7 @@ line 367
 ADDRLP4 4
 INDIRI4
 ARGI4
-ADDRGP4 cgs+154388+576
+ADDRGP4 cgs+154388+584
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1796,10 +1796,10 @@ INDIRI4
 EQI4 $286
 line 372
 ;372:		pushReward(cgs.media.defendSound, cgs.media.medalDefend, ps->persistant[PERS_DEFEND_COUNT]);
-ADDRGP4 cgs+154388+880
+ADDRGP4 cgs+154388+888
 INDIRI4
 ARGI4
-ADDRGP4 cgs+154388+580
+ADDRGP4 cgs+154388+588
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1840,10 +1840,10 @@ INDIRI4
 EQI4 $292
 line 377
 ;377:		pushReward(cgs.media.assistSound, cgs.media.medalAssist, ps->persistant[PERS_ASSIST_COUNT]);
-ADDRGP4 cgs+154388+876
+ADDRGP4 cgs+154388+884
 INDIRI4
 ARGI4
-ADDRGP4 cgs+154388+584
+ADDRGP4 cgs+154388+592
 INDIRI4
 ARGI4
 ADDRFP4 0
@@ -1914,7 +1914,7 @@ line 384
 ;384:				(ops->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_DENIEDREWARD)) {
 line 385
 ;385:			trap_S_StartLocalSound( cgs.media.deniedSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+154388+868
+ADDRGP4 cgs+154388+876
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -1958,7 +1958,7 @@ line 388
 ;388:				(ops->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_GAUNTLETREWARD)) {
 line 389
 ;389:			trap_S_StartLocalSound( cgs.media.humiliationSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+154388+872
+ADDRGP4 cgs+154388+880
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2002,7 +2002,7 @@ line 392
 ;392:				(ops->persistant[PERS_PLAYEREVENTS] & PLAYEREVENT_HOLYSHIT)) {
 line 393
 ;393:			trap_S_StartLocalSound( cgs.media.holyShitSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+154388+1028
+ADDRGP4 cgs+154388+1036
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2114,7 +2114,7 @@ line 403
 ;403:		{
 line 404
 ;404:			trap_S_StartLocalSound( cgs.media.youHaveFlagSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+154388+1020
+ADDRGP4 cgs+154388+1028
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2179,7 +2179,7 @@ CNSTI4 0
 NEI4 $333
 line 416
 ;416:						CG_AddBufferedSound(cgs.media.takenLeadSound);
-ADDRGP4 cgs+154388+896
+ADDRGP4 cgs+154388+904
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2199,7 +2199,7 @@ CNSTI4 16384
 NEI4 $337
 line 418
 ;418:						CG_AddBufferedSound(cgs.media.tiedLeadSound);
-ADDRGP4 cgs+154388+900
+ADDRGP4 cgs+154388+908
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2221,7 +2221,7 @@ CNSTI4 0
 NEI4 $341
 line 420
 ;420:						CG_AddBufferedSound(cgs.media.lostLeadSound);
-ADDRGP4 cgs+154388+904
+ADDRGP4 cgs+154388+912
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2297,7 +2297,7 @@ BORI4
 ASGNI4
 line 434
 ;434:			trap_S_StartLocalSound( cgs.media.suddenDeathSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+154388+828
+ADDRGP4 cgs+154388+836
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2344,7 +2344,7 @@ BORI4
 ASGNI4
 line 438
 ;438:			trap_S_StartLocalSound( cgs.media.oneMinuteSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+154388+820
+ADDRGP4 cgs+154388+828
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2395,7 +2395,7 @@ BORI4
 ASGNI4
 line 442
 ;442:			trap_S_StartLocalSound( cgs.media.fiveMinuteSound, CHAN_ANNOUNCER );
-ADDRGP4 cgs+154388+824
+ADDRGP4 cgs+154388+832
 INDIRI4
 ARGI4
 CNSTI4 7
@@ -2459,7 +2459,7 @@ BORI4
 ASGNI4
 line 451
 ;451:			CG_AddBufferedSound(cgs.media.oneFragSound);
-ADDRGP4 cgs+154388+840
+ADDRGP4 cgs+154388+848
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2510,7 +2510,7 @@ BORI4
 ASGNI4
 line 455
 ;455:			CG_AddBufferedSound(cgs.media.twoFragSound);
-ADDRGP4 cgs+154388+836
+ADDRGP4 cgs+154388+844
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2560,7 +2560,7 @@ BORI4
 ASGNI4
 line 459
 ;459:			CG_AddBufferedSound(cgs.media.threeFragSound);
-ADDRGP4 cgs+154388+832
+ADDRGP4 cgs+154388+840
 INDIRI4
 ARGI4
 ADDRGP4 CG_AddBufferedSound
@@ -2965,6 +2965,7 @@ import CG_BreakGlass
 import CG_GibPlayer
 import CG_ScorePlum
 import CG_SpawnEffect
+import CG_ShotgunTrail
 import CG_BubbleTrail
 import CG_SmokePuff
 import CG_AddLocalEntities

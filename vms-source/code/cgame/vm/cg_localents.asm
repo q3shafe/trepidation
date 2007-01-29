@@ -517,7 +517,7 @@ ADDRLP4 8
 ADDRGP4 rand
 CALLI4
 ASGNI4
-ADDRGP4 cgs+154388+392
+ADDRGP4 cgs+154388+396
 INDIRI4
 ARGI4
 ADDRLP4 12
@@ -604,7 +604,7 @@ ADDRLP4 8
 ADDRGP4 rand
 CALLI4
 ASGNI4
-ADDRGP4 cgs+154388+400
+ADDRGP4 cgs+154388+404
 INDIRI4
 ARGI4
 ADDRLP4 12
@@ -733,7 +733,7 @@ NEI4 $114
 line 170
 ;170:				s = cgs.media.gibBounce1Sound;
 ADDRLP4 8
-ADDRGP4 cgs+154388+768
+ADDRGP4 cgs+154388+776
 INDIRI4
 ASGNI4
 line 171
@@ -748,7 +748,7 @@ NEI4 $118
 line 172
 ;172:				s = cgs.media.gibBounce2Sound;
 ADDRLP4 8
-ADDRGP4 cgs+154388+772
+ADDRGP4 cgs+154388+780
 INDIRI4
 ASGNI4
 line 173
@@ -759,7 +759,7 @@ LABELV $118
 line 174
 ;174:				s = cgs.media.gibBounce3Sound;
 ADDRLP4 8
-ADDRGP4 cgs+154388+776
+ADDRGP4 cgs+154388+784
 INDIRI4
 ASGNI4
 line 175
@@ -3853,7 +3853,7 @@ INDIRI4
 ADDRLP4 164
 INDIRI4
 LSHI4
-ADDRGP4 cgs+154388+320
+ADDRGP4 cgs+154388+324
 ADDP4
 INDIRI4
 ASGNI4
@@ -4304,6 +4304,7 @@ import CG_BreakGlass
 import CG_GibPlayer
 import CG_ScorePlum
 import CG_SpawnEffect
+import CG_ShotgunTrail
 import CG_BubbleTrail
 import CG_SmokePuff
 import CG_ImpactMark

@@ -1288,7 +1288,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	}
 
 	
-	if ((targ->s.eType ==ET_BUILDABLE) && (targ->health < 750))
+	if ((targ->s.eType ==ET_BUILDABLE) && (targ->health < 1000))
 	{
 		if (!strcmp(targ->classname, "mc"))
 		{	

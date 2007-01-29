@@ -4900,6 +4900,7 @@ import visible
 import findradius
 import trap_Cvar_VariableValue
 import trap_Args
+import trep_debug
 import g_PCTeamkills
 import g_GrappleMode
 import g_Turrets
