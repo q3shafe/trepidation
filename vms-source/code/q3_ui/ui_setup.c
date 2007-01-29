@@ -14,10 +14,11 @@ SETUP MENU
 
 #define SETUP_MENU_VERTICAL_SPACING		34
 
-#define ART_BACK0		"menu/art/menu_back2"
+#define ART_BACK0		"menu/art/back_2"
 #define ART_BACK1		"menu/art/back_1"	
-#define ART_FRAMEL		"menu/art/frame2_l"
-#define ART_FRAMER		"menu/art/frame1_r"
+//#define ART_FRAMEL		"menu/art/frame2_l"
+#define ART_FRAMEL		"menu/art/frame1_r"
+#define ART_FRAMER		"menu/art/xxxxframe1_r"
 
 #define ID_CUSTOMIZEPLAYER		10
 #define ID_CUSTOMIZECONTROLS	11
@@ -133,6 +134,7 @@ UI_SetupMenu_Init
 */
 static void UI_SetupMenu_Init( void ) {
 	int				y;
+	int		style = UI_CENTER | UI_DROPSHADOW;
 
 	UI_SetupMenu_Cache();
 
@@ -151,9 +153,9 @@ static void UI_SetupMenu_Init( void ) {
 	setupMenuInfo.framel.generic.name				= ART_FRAMEL;
 	setupMenuInfo.framel.generic.flags				= QMF_INACTIVE;
 	setupMenuInfo.framel.generic.x					= 0;  
-	setupMenuInfo.framel.generic.y					= 78;
-	setupMenuInfo.framel.width  					= 256;
-	setupMenuInfo.framel.height  					= 329;
+	setupMenuInfo.framel.generic.y					= 0;
+	setupMenuInfo.framel.width  					= 800;
+	setupMenuInfo.framel.height  					= 600;
 
 	setupMenuInfo.framer.generic.type				= MTYPE_BITMAP;
 	setupMenuInfo.framer.generic.name				= ART_FRAMER;
@@ -172,7 +174,7 @@ static void UI_SetupMenu_Init( void ) {
 	setupMenuInfo.setupplayer.generic.callback		= UI_SetupMenu_Event; 
 	setupMenuInfo.setupplayer.string				= "PLAYER";
 	setupMenuInfo.setupplayer.color					= color_red;
-	setupMenuInfo.setupplayer.style					= UI_CENTER;
+	setupMenuInfo.setupplayer.style					= style;
 
 	y += SETUP_MENU_VERTICAL_SPACING;
 	setupMenuInfo.setupcontrols.generic.type		= MTYPE_PTEXT;
@@ -183,7 +185,7 @@ static void UI_SetupMenu_Init( void ) {
 	setupMenuInfo.setupcontrols.generic.callback	= UI_SetupMenu_Event; 
 	setupMenuInfo.setupcontrols.string				= "CONTROLS";
 	setupMenuInfo.setupcontrols.color				= color_red;
-	setupMenuInfo.setupcontrols.style				= UI_CENTER;
+	setupMenuInfo.setupcontrols.style				= style;
 
 	y += SETUP_MENU_VERTICAL_SPACING;
 	setupMenuInfo.setupsystem.generic.type			= MTYPE_PTEXT;
@@ -194,7 +196,7 @@ static void UI_SetupMenu_Init( void ) {
 	setupMenuInfo.setupsystem.generic.callback		= UI_SetupMenu_Event; 
 	setupMenuInfo.setupsystem.string				= "SYSTEM";
 	setupMenuInfo.setupsystem.color					= color_red;
-	setupMenuInfo.setupsystem.style					= UI_CENTER;
+	setupMenuInfo.setupsystem.style					= style;
 
 	y += SETUP_MENU_VERTICAL_SPACING;
 	setupMenuInfo.game.generic.type					= MTYPE_PTEXT;
@@ -205,7 +207,7 @@ static void UI_SetupMenu_Init( void ) {
 	setupMenuInfo.game.generic.callback				= UI_SetupMenu_Event; 
 	setupMenuInfo.game.string						= "GAME OPTIONS";
 	setupMenuInfo.game.color						= color_red;
-	setupMenuInfo.game.style						= UI_CENTER;
+	setupMenuInfo.game.style						= style;
 
 	y += SETUP_MENU_VERTICAL_SPACING;
 	setupMenuInfo.cdkey.generic.type				= MTYPE_PTEXT;
@@ -252,7 +254,7 @@ static void UI_SetupMenu_Init( void ) {
 		setupMenuInfo.defaults.generic.callback			= UI_SetupMenu_Event; 
 		setupMenuInfo.defaults.string					= "DEFAULTS";
 		setupMenuInfo.defaults.color					= color_red;
-		setupMenuInfo.defaults.style					= UI_CENTER;
+		setupMenuInfo.defaults.style					= style;
 	}
 
 	setupMenuInfo.back.generic.type					= MTYPE_BITMAP;
@@ -266,9 +268,10 @@ static void UI_SetupMenu_Init( void ) {
 	setupMenuInfo.back.height						= 64;
 	setupMenuInfo.back.focuspic						= ART_BACK1;
 
-	Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.banner );
+	
 	Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.framel );
 	Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.framer );
+	Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.banner );
 	Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.setupplayer );
 	Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.setupcontrols );
 	Menu_AddItem( &setupMenuInfo.menu, &setupMenuInfo.setupsystem );

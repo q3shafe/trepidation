@@ -108,10 +108,10 @@ void SpecifyServer_MenuInit( void )
 	s_specifyserver.framer.generic.type  = MTYPE_BITMAP;
 	s_specifyserver.framer.generic.name  = SPECIFYSERVER_FRAMER;
 	s_specifyserver.framer.generic.flags = QMF_INACTIVE;
-	s_specifyserver.framer.generic.x	 = 376;
-	s_specifyserver.framer.generic.y	 = 76;
-	s_specifyserver.framer.width  	     = 256;
-	s_specifyserver.framer.height  	     = 334;
+	s_specifyserver.framer.generic.x	 = 0;
+	s_specifyserver.framer.generic.y	 = 0;
+	s_specifyserver.framer.width  	     = 1024;
+	s_specifyserver.framer.height  	     = 768;
 
 	s_specifyserver.domain.generic.type       = MTYPE_FIELD;
 	s_specifyserver.domain.generic.name       = "Address:";
@@ -152,8 +152,9 @@ void SpecifyServer_MenuInit( void )
 	s_specifyserver.back.focuspic         = SPECIFYSERVER_BACK1;
 
 	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.banner );
-	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.framel );
+	//Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.framel );
 	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.framer );
+	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.banner );
 	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.domain );
 	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.port );
 	Menu_AddItem( &s_specifyserver.menu, &s_specifyserver.go );

@@ -80,9 +80,9 @@ SystemConfig_Cache
 */
 void SystemConfig_Cache( void ) {
 	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-	//trap_R_RegisterShaderNoMip( ART_FRAMER );
-	//trap_R_RegisterShaderNoMip( ART_BACK0 );
-	//trap_R_RegisterShaderNoMip( ART_BACK1 );
+	trap_R_RegisterShaderNoMip( ART_FRAMER );
+	trap_R_RegisterShaderNoMip( ART_BACK0 );
+	trap_R_RegisterShaderNoMip( ART_BACK1 );
 }
 
 /*
@@ -186,9 +186,11 @@ void Options_MenuInit( void ) {
 	s_options.back.height  		    = 64;
 	s_options.back.focuspic         = ART_BACK1;
 
-	Menu_AddItem( &s_options.menu, ( void * ) &s_options.banner );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.framel );
+	
+	Menu_AddItem( &s_options.menu, ( void * ) &s_options.banner );
 	//Menu_AddItem( &s_options.menu, ( void * ) &s_options.framer );
+	
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.graphics );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.display );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.sound );
