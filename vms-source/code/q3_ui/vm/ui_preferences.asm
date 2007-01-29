@@ -1151,24 +1151,24 @@ ADDRGP4 s_preferences+448+44
 CNSTU4 16384
 ASGNU4
 line 229
-;229:	s_preferences.framer.generic.x	   = 376;
+;229:	s_preferences.framer.generic.x	   = 0;
 ADDRGP4 s_preferences+448+12
-CNSTI4 376
+CNSTI4 0
 ASGNI4
 line 230
-;230:	s_preferences.framer.generic.y	   = 76;
+;230:	s_preferences.framer.generic.y	   = 0;
 ADDRGP4 s_preferences+448+16
-CNSTI4 76
+CNSTI4 0
 ASGNI4
 line 231
-;231:	s_preferences.framer.width  	   = 256;
+;231:	s_preferences.framer.width  	   = 1024;
 ADDRGP4 s_preferences+448+76
-CNSTI4 256
+CNSTI4 1024
 ASGNI4
 line 232
-;232:	s_preferences.framer.height  	   = 334;
+;232:	s_preferences.framer.height  	   = 768;
 ADDRGP4 s_preferences+448+80
-CNSTI4 334
+CNSTI4 768
 ASGNI4
 line 234
 ;233:
@@ -1771,26 +1771,10 @@ line 349
 ADDRGP4 s_preferences+1304+60
 ADDRGP4 $439
 ASGNP4
-line 351
-;350:
-;351:	Menu_AddItem( &s_preferences.menu, &s_preferences.banner );
-ADDRGP4 s_preferences
-ARGP4
-ADDRGP4 s_preferences+288
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
-line 352
-;352:	Menu_AddItem( &s_preferences.menu, &s_preferences.framel );
-ADDRGP4 s_preferences
-ARGP4
-ADDRGP4 s_preferences+360
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
 line 353
+;350:
+;351:	
+;352:	//Menu_AddItem( &s_preferences.menu, &s_preferences.framel );
 ;353:	Menu_AddItem( &s_preferences.menu, &s_preferences.framer );
 ADDRGP4 s_preferences
 ARGP4
@@ -1799,9 +1783,18 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 355
-;354:
-;355:	Menu_AddItem( &s_preferences.menu, &s_preferences.crosshair );
+line 354
+;354:	Menu_AddItem( &s_preferences.menu, &s_preferences.banner );
+ADDRGP4 s_preferences
+ARGP4
+ADDRGP4 s_preferences+288
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 356
+;355:
+;356:	Menu_AddItem( &s_preferences.menu, &s_preferences.crosshair );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+536
@@ -1809,8 +1802,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 356
-;356:	Menu_AddItem( &s_preferences.menu, &s_preferences.simpleitems );
+line 357
+;357:	Menu_AddItem( &s_preferences.menu, &s_preferences.simpleitems );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+632
@@ -1818,8 +1811,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 357
-;357:	Menu_AddItem( &s_preferences.menu, &s_preferences.wallmarks );
+line 358
+;358:	Menu_AddItem( &s_preferences.menu, &s_preferences.wallmarks );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+760
@@ -1827,8 +1820,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 358
-;358:	Menu_AddItem( &s_preferences.menu, &s_preferences.brass );
+line 359
+;359:	Menu_AddItem( &s_preferences.menu, &s_preferences.brass );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+696
@@ -1836,8 +1829,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 359
-;359:	Menu_AddItem( &s_preferences.menu, &s_preferences.dynamiclights );
+line 360
+;360:	Menu_AddItem( &s_preferences.menu, &s_preferences.dynamiclights );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+824
@@ -1845,8 +1838,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 360
-;360:	Menu_AddItem( &s_preferences.menu, &s_preferences.identifytarget );
+line 361
+;361:	Menu_AddItem( &s_preferences.menu, &s_preferences.identifytarget );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+888
@@ -1854,8 +1847,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 361
-;361:	Menu_AddItem( &s_preferences.menu, &s_preferences.highqualitysky );
+line 362
+;362:	Menu_AddItem( &s_preferences.menu, &s_preferences.highqualitysky );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+952
@@ -1863,8 +1856,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 362
-;362:	Menu_AddItem( &s_preferences.menu, &s_preferences.synceveryframe );
+line 363
+;363:	Menu_AddItem( &s_preferences.menu, &s_preferences.synceveryframe );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+1016
@@ -1872,8 +1865,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 363
-;363:	Menu_AddItem( &s_preferences.menu, &s_preferences.forcemodel );
+line 364
+;364:	Menu_AddItem( &s_preferences.menu, &s_preferences.forcemodel );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+1080
@@ -1881,8 +1874,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 364
-;364:	Menu_AddItem( &s_preferences.menu, &s_preferences.drawteamoverlay );
+line 365
+;365:	Menu_AddItem( &s_preferences.menu, &s_preferences.drawteamoverlay );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+1144
@@ -1890,8 +1883,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 365
-;365:	Menu_AddItem( &s_preferences.menu, &s_preferences.allowdownload );
+line 366
+;366:	Menu_AddItem( &s_preferences.menu, &s_preferences.allowdownload );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+1240
@@ -1899,9 +1892,9 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 367
-;366:
-;367:	Menu_AddItem( &s_preferences.menu, &s_preferences.back );
+line 368
+;367:
+;368:	Menu_AddItem( &s_preferences.menu, &s_preferences.back );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 s_preferences+1304
@@ -1909,66 +1902,66 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 369
-;368:
-;369:	Preferences_SetMenuItems();
+line 370
+;369:
+;370:	Preferences_SetMenuItems();
 ADDRGP4 Preferences_SetMenuItems
 CALLV
 pop
-line 370
-;370:}
+line 371
+;371:}
 LABELV $208
 endproc Preferences_MenuInit 8 12
 export Preferences_Cache
 proc Preferences_Cache 16 8
-line 378
-;371:
+line 379
 ;372:
-;373:/*
-;374:===============
-;375:Preferences_Cache
-;376:===============
-;377:*/
-;378:void Preferences_Cache( void ) {
-line 381
-;379:	int		n;
-;380:
-;381:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
+;373:
+;374:/*
+;375:===============
+;376:Preferences_Cache
+;377:===============
+;378:*/
+;379:void Preferences_Cache( void ) {
+line 382
+;380:	int		n;
+;381:
+;382:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
 ADDRGP4 $226
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 382
-;382:	trap_R_RegisterShaderNoMip( ART_FRAMER );
+line 383
+;383:	trap_R_RegisterShaderNoMip( ART_FRAMER );
 ADDRGP4 $240
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 383
-;383:	trap_R_RegisterShaderNoMip( ART_BACK0 );
+line 384
+;384:	trap_R_RegisterShaderNoMip( ART_BACK0 );
 ADDRGP4 $422
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 384
-;384:	trap_R_RegisterShaderNoMip( ART_BACK1 );
+line 385
+;385:	trap_R_RegisterShaderNoMip( ART_BACK1 );
 ADDRGP4 $439
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 385
-;385:	for( n = 0; n < NUM_CROSSHAIRS; n++ ) {
+line 386
+;386:	for( n = 0; n < NUM_CROSSHAIRS; n++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $456
-line 386
-;386:		s_preferences.crosshairShader[n] = trap_R_RegisterShaderNoMip( va("gfx/2d/crosshair%c", 'a' + n ) );
-ADDRGP4 $461
+LABELV $455
+line 387
+;387:		s_preferences.crosshairShader[n] = trap_R_RegisterShaderNoMip( va("gfx/2d/crosshair%c", 'a' + n ) );
+ADDRGP4 $460
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -1995,10 +1988,10 @@ ADDP4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 387
-;387:	}
-LABELV $457
-line 385
+line 388
+;388:	}
+LABELV $456
+line 386
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -2008,37 +2001,37 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 10
-LTI4 $456
-line 388
-;388:}
-LABELV $455
+LTI4 $455
+line 389
+;389:}
+LABELV $454
 endproc Preferences_Cache 16 8
 export UI_PreferencesMenu
 proc UI_PreferencesMenu 0 4
-line 396
-;389:
-;390:
-;391:/*
-;392:===============
-;393:UI_PreferencesMenu
-;394:===============
-;395:*/
-;396:void UI_PreferencesMenu( void ) {
 line 397
-;397:	Preferences_MenuInit();
+;390:
+;391:
+;392:/*
+;393:===============
+;394:UI_PreferencesMenu
+;395:===============
+;396:*/
+;397:void UI_PreferencesMenu( void ) {
+line 398
+;398:	Preferences_MenuInit();
 ADDRGP4 Preferences_MenuInit
 CALLV
 pop
-line 398
-;398:	UI_PushMenu( &s_preferences.menu );
+line 399
+;399:	UI_PushMenu( &s_preferences.menu );
 ADDRGP4 s_preferences
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 399
-;399:}
-LABELV $462
+line 400
+;400:}
+LABELV $461
 endproc UI_PreferencesMenu 0 4
 bss
 align 4
@@ -2527,7 +2520,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $461
+LABELV $460
 byte 1 103
 byte 1 102
 byte 1 120

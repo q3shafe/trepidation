@@ -302,7 +302,7 @@ line 130
 ;115:
 ;116:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
 ;117:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
-;118:{ "(c)2006 Human Complex", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;118:{ "(c)2007 Human Complex", UI_CENTER|UI_SMALLFONT, &color_maintext },
 ;119://{ "General Public License", UI_CENTER|UI_SMALLFONT, &color_maintext },
 ;120:
 ;121:  {NULL}
@@ -1530,7 +1530,7 @@ byte 1 41
 byte 1 50
 byte 1 48
 byte 1 48
-byte 1 54
+byte 1 55
 byte 1 32
 byte 1 72
 byte 1 117
