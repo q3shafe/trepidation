@@ -115,7 +115,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
-{ "(c)2006 Human Complex", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "(c)2007 Human Complex", UI_CENTER|UI_SMALLFONT, &color_maintext },
 //{ "General Public License", UI_CENTER|UI_SMALLFONT, &color_maintext },
 
   {NULL}

@@ -12,7 +12,7 @@ CONFIRMATION MENU
 #include "ui_local.h"
 
 
-#define ART_CONFIRM_FRAME	"menu/art/cut_frame"
+#define ART_CONFIRM_FRAME	"menu/art/cut_frame" // No artwork yet.. just show the console error
 
 #define ID_CONFIRM_NO		10
 #define ID_CONFIRM_YES		11

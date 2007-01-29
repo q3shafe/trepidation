@@ -1,6 +1,6 @@
 //
 // Trepidation Buildable Objects 
-// (C)2006 Trepidation
+// (C)2006-2007 Trepidation
 // General Public License
 //
 // Most of the build rules are checked before any of the stuff in here is executed. 
@@ -228,7 +228,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 
 /*
 =================
-AnnoundBuildables
+AnnounceBuildables
 
 This will put a message up when a new buildable is available
 =================
@@ -458,13 +458,13 @@ void turret_fireonenemy( gentity_t *ent){
 			{
 				// This is the weakest
 				//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
-				//fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
+				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
 				if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 				
 			} else
 			{
 				// Middle Power
-				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qtrue );
+				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
 				if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 				
 			}
@@ -1164,13 +1164,8 @@ void TD_think(gentity_t *ent)
 	{	
 		
 		target->immobilized = qtrue;
-		//target->s.time2 = 9;
-	} 
-		
-	//turret_fireonenemy(ent);
-	
-	//ent->nextthink=level.time+100;
 
+	} 
 
 }
 

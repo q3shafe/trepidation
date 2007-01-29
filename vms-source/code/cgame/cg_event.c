@@ -129,6 +129,9 @@ static void CG_Obituary( entityState_t *ent ) {
 	case MOD_TRIGGER_HURT:
 		message = "was in the wrong place";
 		break;
+	case MOD_TURRET:
+		message = "was shot down by a turret";
+		break;
 	default:
 		message = NULL;
 		break;

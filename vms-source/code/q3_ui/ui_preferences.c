@@ -226,10 +226,10 @@ static void Preferences_MenuInit( void ) {
 	s_preferences.framer.generic.type  = MTYPE_BITMAP;
 	s_preferences.framer.generic.name  = ART_FRAMER;
 	s_preferences.framer.generic.flags = QMF_INACTIVE;
-	s_preferences.framer.generic.x	   = 376;
-	s_preferences.framer.generic.y	   = 76;
-	s_preferences.framer.width  	   = 256;
-	s_preferences.framer.height  	   = 334;
+	s_preferences.framer.generic.x	   = 0;
+	s_preferences.framer.generic.y	   = 0;
+	s_preferences.framer.width  	   = 1024;
+	s_preferences.framer.height  	   = 768;
 
 	y = 144;
 	s_preferences.crosshair.generic.type		= MTYPE_TEXT;
@@ -348,9 +348,10 @@ static void Preferences_MenuInit( void ) {
 	s_preferences.back.height  		    = 64;
 	s_preferences.back.focuspic         = ART_BACK1;
 
-	Menu_AddItem( &s_preferences.menu, &s_preferences.banner );
-	Menu_AddItem( &s_preferences.menu, &s_preferences.framel );
+	
+	//Menu_AddItem( &s_preferences.menu, &s_preferences.framel );
 	Menu_AddItem( &s_preferences.menu, &s_preferences.framer );
+	Menu_AddItem( &s_preferences.menu, &s_preferences.banner );
 
 	Menu_AddItem( &s_preferences.menu, &s_preferences.crosshair );
 	Menu_AddItem( &s_preferences.menu, &s_preferences.simpleitems );
