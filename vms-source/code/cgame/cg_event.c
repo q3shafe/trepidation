@@ -801,6 +801,8 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 		 if (es->weapon == WP_RAILGUN)
 		 {
 			//CG_DoZoom_f();  // Zoom goes here.  Not quite sure how to do this?
+			//CG_ZoomDown_f();
+			
 		 } 		
 		 else
 		 {

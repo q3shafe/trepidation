@@ -119,7 +119,7 @@ line 25
 ;25:	{
 line 26
 ;26:		if ( level.clients[i].pers.connected == CON_CONNECTED ) 
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4395,7 +4395,7 @@ line 871
 ;870:
 ;871:		client = &level.clients[i];
 ADDRLP4 100
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4

@@ -7129,16 +7129,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1631
-;1631:	Menu_AddItem( &s_controls.menu, &s_controls.zoomview );
-ADDRGP4 s_controls
-ARGP4
-ADDRGP4 s_controls+2536
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
 line 1632
+;1631://	Menu_AddItem( &s_controls.menu, &s_controls.zoomview );
 ;1632:	Menu_AddItem( &s_controls.menu, &s_controls.joyenable );
 ADDRGP4 s_controls
 ARGP4
@@ -7504,7 +7496,7 @@ pop
 line 1684
 ;1683:
 ;1684:	trap_Cvar_VariableStringBuffer( "name", s_controls.name.string, 16 );
-ADDRGP4 $1356
+ADDRGP4 $1355
 ARGP4
 ADDRGP4 s_controls+5104+60
 INDIRP4
@@ -7609,7 +7601,7 @@ CALLI4
 pop
 line 1717
 ;1717:}
-LABELV $1362
+LABELV $1361
 endproc Controls_Cache 0 4
 export UI_ControlsMenu
 proc UI_ControlsMenu 0 4
@@ -7636,7 +7628,7 @@ CALLV
 pop
 line 1728
 ;1728:}
-LABELV $1363
+LABELV $1362
 endproc UI_ControlsMenu 0 4
 bss
 align 4
@@ -8125,7 +8117,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $1356
+LABELV $1355
 byte 1 110
 byte 1 97
 byte 1 109

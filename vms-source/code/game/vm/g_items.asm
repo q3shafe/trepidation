@@ -184,7 +184,7 @@ line 56
 ;55:
 ;56:		client = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4

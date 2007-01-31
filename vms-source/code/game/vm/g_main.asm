@@ -1502,7 +1502,7 @@ line 410
 line 411
 ;411:				cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1602,7 +1602,7 @@ line 432
 line 433
 ;433:				cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -2310,7 +2310,7 @@ line 606
 line 608
 ;607:	
 ;608:		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -3130,7 +3130,7 @@ ADDRGP4 g_clients
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 221184
+CNSTI4 221696
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -3158,7 +3158,7 @@ INDIRI4
 MULI4
 ADDRGP4 g_entities+524
 ADDP4
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -3206,7 +3206,7 @@ ARGI4
 ADDRGP4 level
 INDIRP4
 ARGP4
-CNSTI4 3456
+CNSTI4 3464
 ARGI4
 ADDRGP4 trap_LocateGameData
 CALLV
@@ -3657,7 +3657,7 @@ LABELV $394
 line 923
 ;923:		client = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -3808,7 +3808,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3456
+CNSTI4 3464
 DIVI4
 MULI4
 ADDRGP4 g_entities
@@ -3859,7 +3859,7 @@ ASGNI4
 line 967
 ;966:
 ;967:	if ( level.clients[ clientNum ].pers.connected != CON_CONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -3931,7 +3931,7 @@ ASGNI4
 line 989
 ;988:
 ;989:	if ( level.clients[ clientNum ].pers.connected != CON_CONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -3989,7 +3989,7 @@ INDIRI4
 ASGNI4
 line 1006
 ;1006:	if ( level.clients[ clientNum ].pers.connected == CON_CONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4004,7 +4004,7 @@ NEI4 $432
 line 1007
 ;1007:		level.clients[ clientNum ].sess.wins++;
 ADDRLP4 4
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4042,7 +4042,7 @@ INDIRI4
 ASGNI4
 line 1012
 ;1012:	if ( level.clients[ clientNum ].pers.connected == CON_CONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4057,7 +4057,7 @@ NEI4 $436
 line 1013
 ;1013:		level.clients[ clientNum ].sess.losses++;
 ADDRLP4 4
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4107,7 +4107,7 @@ line 1028
 ;1027:
 ;1028:	ca = &level.clients[*(int *)a];
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRFP4 0
 INDIRP4
 INDIRI4
@@ -4119,7 +4119,7 @@ ASGNP4
 line 1029
 ;1029:	cb = &level.clients[*(int *)b];
 ADDRLP4 4
-CNSTI4 3456
+CNSTI4 3464
 ADDRFP4 4
 INDIRP4
 INDIRI4
@@ -4494,7 +4494,7 @@ JUMPV
 LABELV $475
 line 1103
 ;1103:		if ( level.clients[i].pers.connected != CON_DISCONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4533,7 +4533,7 @@ ASGNI4
 line 1107
 ;1106:
 ;1107:			if ( level.clients[i].sess.sessionTeam != TEAM_SPECTATOR ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4562,7 +4562,7 @@ line 1111
 ;1109:			
 ;1110:				// decide if this should be auto-followed
 ;1111:				if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4615,7 +4615,7 @@ ADDI4
 ASGNI4
 line 1115
 ;1115:						if ( level.clients[i].sess.sessionTeam == TEAM_RED )
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4645,7 +4645,7 @@ JUMPV
 LABELV $496
 line 1117
 ;1117:						else if ( level.clients[i].sess.sessionTeam == TEAM_BLUE )
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4767,7 +4767,7 @@ LABELV $517
 line 1137
 ;1137:			cl = &level.clients[ level.sortedClients[i] ];
 ADDRLP4 4
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4872,7 +4872,7 @@ LABELV $535
 line 1150
 ;1150:			cl = &level.clients[ level.sortedClients[i] ];
 ADDRLP4 4
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4915,7 +4915,7 @@ ASGNI4
 line 1155
 ;1154:				// assume we aren't tied until the next client is checked
 ;1155:				level.clients[ level.sortedClients[i] ].ps.persistant[PERS_RANK] = rank;
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4940,7 +4940,7 @@ LABELV $541
 line 1158
 ;1157:				// we are tied with the previous client
 ;1158:				level.clients[ level.sortedClients[i-1] ].ps.persistant[PERS_RANK] = rank | RANK_TIED_FLAG;
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4961,7 +4961,7 @@ BORI4
 ASGNI4
 line 1159
 ;1159:				level.clients[ level.sortedClients[i] ].ps.persistant[PERS_RANK] = rank | RANK_TIED_FLAG;
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -5001,7 +5001,7 @@ CNSTI4 1
 NEI4 $548
 line 1163
 ;1163:				level.clients[ level.sortedClients[i] ].ps.persistant[PERS_RANK] = rank | RANK_TIED_FLAG;
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -5148,7 +5148,7 @@ line 1177
 ;1177:			trap_SetConfigstring( CS_SCORES1, va("%i", level.clients[ level.sortedClients[0] ].ps.persistant[PERS_SCORE] ) );
 ADDRGP4 $556
 ARGP4
-CNSTI4 3456
+CNSTI4 3464
 ADDRGP4 level+96
 INDIRI4
 MULI4
@@ -5198,7 +5198,7 @@ line 1180
 ;1180:			trap_SetConfigstring( CS_SCORES1, va("%i", level.clients[ level.sortedClients[0] ].ps.persistant[PERS_SCORE] ) );
 ADDRGP4 $556
 ARGP4
-CNSTI4 3456
+CNSTI4 3464
 ADDRGP4 level+96
 INDIRI4
 MULI4
@@ -5225,7 +5225,7 @@ line 1181
 ;1181:			trap_SetConfigstring( CS_SCORES2, va("%i", level.clients[ level.sortedClients[1] ].ps.persistant[PERS_SCORE] ) );
 ADDRGP4 $556
 ARGP4
-CNSTI4 3456
+CNSTI4 3464
 ADDRGP4 level+96+4
 INDIRI4
 MULI4
@@ -5316,7 +5316,7 @@ JUMPV
 LABELV $575
 line 1215
 ;1215:		if ( level.clients[ i ].pers.connected == CON_CONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -6043,7 +6043,7 @@ LABELV $656
 line 1389
 ;1389:		cl = level.clients + i;
 ADDRLP4 4
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -6110,7 +6110,7 @@ JUMPV
 LABELV $663
 line 1402
 ;1402:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -6124,7 +6124,7 @@ CNSTI4 2
 NEI4 $668
 line 1403
 ;1403:			level.clients[i].pers.connected = CON_CONNECTING;
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -6385,7 +6385,7 @@ line 1469
 line 1470
 ;1470:		cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -6516,7 +6516,7 @@ line 1494
 ;1493:
 ;1494:		cl = &level.clients[level.sortedClients[i]];
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -6732,7 +6732,7 @@ LABELV $726
 line 1560
 ;1560:		cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -6860,7 +6860,7 @@ LABELV $741
 line 1581
 ;1581:		cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7074,7 +7074,7 @@ line 1636
 ;1635:
 ;1636:	a = level.clients[level.sortedClients[0]].ps.persistant[PERS_SCORE];
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRGP4 level+96
 INDIRI4
 MULI4
@@ -7088,7 +7088,7 @@ ASGNI4
 line 1637
 ;1637:	b = level.clients[level.sortedClients[1]].ps.persistant[PERS_SCORE];
 ADDRLP4 4
-CNSTI4 3456
+CNSTI4 3464
 ADDRGP4 level+96+4
 INDIRI4
 MULI4
@@ -7984,7 +7984,7 @@ line 1850
 line 1851
 ;1851:								cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -8387,7 +8387,7 @@ line 1900
 line 1901
 ;1901:						cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -9078,7 +9078,7 @@ LABELV $1015
 line 2031
 ;2031:			cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -10047,7 +10047,7 @@ JUMPV
 LABELV $1172
 line 2250
 ;2250:		if (level.clients[i].sess.sessionTeam != team)
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10110,7 +10110,7 @@ line 2264
 ;2262:	int i;
 ;2263:
 ;2264:	if ( level.clients[client].pers.connected == CON_DISCONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRFP4 4
 INDIRI4
 MULI4
@@ -10126,7 +10126,7 @@ line 2265
 ;2265:		PrintTeam(team, va("print \"%s is not connected\n\"", level.clients[client].pers.netname) );
 ADDRGP4 $1182
 ARGP4
-CNSTI4 3456
+CNSTI4 3464
 ADDRFP4 4
 INDIRI4
 MULI4
@@ -10157,7 +10157,7 @@ LABELV $1180
 line 2268
 ;2267:	}
 ;2268:	if (level.clients[client].sess.sessionTeam != team) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRFP4 4
 INDIRI4
 MULI4
@@ -10174,7 +10174,7 @@ line 2269
 ;2269:		PrintTeam(team, va("print \"%s is not on the team anymore\n\"", level.clients[client].pers.netname) );
 ADDRGP4 $1185
 ARGP4
-CNSTI4 3456
+CNSTI4 3464
 ADDRFP4 4
 INDIRI4
 MULI4
@@ -10213,7 +10213,7 @@ JUMPV
 LABELV $1186
 line 2273
 ;2273:		if (level.clients[i].sess.sessionTeam != team)
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10233,7 +10233,7 @@ JUMPV
 LABELV $1191
 line 2275
 ;2275:		if (level.clients[i].sess.teamLeader) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10247,7 +10247,7 @@ CNSTI4 0
 EQI4 $1193
 line 2276
 ;2276:			level.clients[i].sess.teamLeader = qfalse;
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10287,7 +10287,7 @@ INDIRI4
 LTI4 $1186
 line 2280
 ;2280:	level.clients[client].sess.teamLeader = qtrue;
-CNSTI4 3456
+CNSTI4 3464
 ADDRFP4 4
 INDIRI4
 MULI4
@@ -10310,7 +10310,7 @@ line 2282
 ;2282:	PrintTeam(team, va("print \"%s is the new team leader\n\"", level.clients[client].pers.netname) );
 ADDRGP4 $1195
 ARGP4
-CNSTI4 3456
+CNSTI4 3464
 ADDRFP4 4
 INDIRI4
 MULI4
@@ -10359,7 +10359,7 @@ JUMPV
 LABELV $1197
 line 2294
 ;2294:		if (level.clients[i].sess.sessionTeam != team)
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10379,7 +10379,7 @@ JUMPV
 LABELV $1202
 line 2296
 ;2296:		if (level.clients[i].sess.teamLeader)
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10430,7 +10430,7 @@ JUMPV
 LABELV $1209
 line 2301
 ;2301:			if (level.clients[i].sess.sessionTeam != team)
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10463,7 +10463,7 @@ CNSTI4 0
 NEI4 $1216
 line 2304
 ;2304:				level.clients[i].sess.teamLeader = qtrue;
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10507,7 +10507,7 @@ JUMPV
 LABELV $1220
 line 2309
 ;2309:			if (level.clients[i].sess.sessionTeam != team)
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10527,7 +10527,7 @@ JUMPV
 LABELV $1225
 line 2311
 ;2311:			level.clients[i].sess.teamLeader = qtrue;
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -12232,7 +12232,7 @@ skip 272
 export g_clients
 align 4
 LABELV g_clients
-skip 221184
+skip 221696
 import BroadCastSound
 import G_SendCommandToClient
 import visible
@@ -16714,8 +16714,8 @@ byte 1 74
 byte 1 97
 byte 1 110
 byte 1 32
-byte 1 50
-byte 1 57
+byte 1 51
+byte 1 49
 byte 1 32
 byte 1 50
 byte 1 48

@@ -95,6 +95,14 @@ static void CG_ScoresUp_f( void ) {
 }
 
 
+static void CG_ZoomOn_f( void ) {
+	trap_SendClientCommand( "+zoom" );
+}
+
+static void CG_ZoomOff_f( void ) {
+	trap_SendClientCommand( "-zoom" );
+}
+
 #ifdef MISSIONPACK
 extern menuDef_t *menuScoreboard;
 void Menu_Reset();			// FIXME: add to right include file
@@ -443,8 +451,8 @@ static consoleCommand_t	commands[] = {
 	{ "viewpos", CG_Viewpos_f },
 	{ "+scores", CG_ScoresDown_f },
 	{ "-scores", CG_ScoresUp_f },
-	{ "+zoom", CG_ZoomDown_f },
-	{ "-zoom", CG_ZoomUp_f },
+//	{ "+zoom", CG_ZoomDown_f },  // Cut these out since zoom is only on alt fire guass
+//	{ "-zoom", CG_ZoomUp_f },
 	{ "sizeup", CG_SizeUp_f },
 	{ "sizedown", CG_SizeDown_f },
 	{ "weapnext", CG_NextWeapon_f },
@@ -487,7 +495,8 @@ static consoleCommand_t	commands[] = {
 	{ "loaddeferred", CG_LoadDeferredPlayers },	
 	// Shafe - Trep - Radar
 	{ "+scanner", CG_ScannerOn_f },   
-    { "-scanner", CG_ScannerOff_f }
+    { "-scanner", CG_ScannerOff_f },
+
 	// Shafe - End Radar
 };
 

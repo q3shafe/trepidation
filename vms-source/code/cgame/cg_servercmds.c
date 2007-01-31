@@ -993,6 +993,23 @@ static void CG_ServerCommand( void ) {
 		return;
 	}
 
+	
+	// Gauss Rifle Zoom
+	if ( !strcmp( cmd, "+gzoom" ) ) {
+		CG_ZoomDown_f();
+		return;
+	}
+	if ( !strcmp( cmd, "-gzoom" ) ) {
+		CG_ZoomUp_f();
+		return;
+	}
+
+	if ( !strcmp( cmd, "+greset" ) ) {
+		CG_ResetZoom();
+		return;
+	}
+		
+
 	if ( !strcmp( cmd, "cs" ) ) {
 		CG_ConfigStringModified();
 		return;
