@@ -1628,7 +1628,7 @@ static void Controls_MenuInit( void )
 	Menu_AddItem( &s_controls.menu, &s_controls.mouselook );
 	Menu_AddItem( &s_controls.menu, &s_controls.freelook );
 	Menu_AddItem( &s_controls.menu, &s_controls.centerview );
-	Menu_AddItem( &s_controls.menu, &s_controls.zoomview );
+//	Menu_AddItem( &s_controls.menu, &s_controls.zoomview );
 	Menu_AddItem( &s_controls.menu, &s_controls.joyenable );
 	Menu_AddItem( &s_controls.menu, &s_controls.joythreshold );
 

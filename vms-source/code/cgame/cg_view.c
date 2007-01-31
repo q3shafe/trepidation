@@ -427,6 +427,8 @@ static void CG_OffsetFirstPersonView( void ) {
 
 void CG_ZoomDown_f( void ) 
 { 
+
+	//CG_Printf ("Zoom Function!\n");
 	if ( cg.snap->ps.stats[STAT_HEALTH] <= 0 )
 	{// Don't do anything when you are dead -Vincent
 		return;

@@ -189,6 +189,7 @@ struct gentity_s {
 	vec3_t		turloc;			// Used for turrets
 	vec3_t		centerpoint;	// USed for Turrets
 	qboolean	immobilized;
+
 };
 
 
@@ -392,7 +393,8 @@ struct gclient_s {
 	// like health / armor countdowns and regeneration
 	int			timeResidual;
 	qboolean	noHead;				// Shafe - Trep - Headshot  Player has no head! Oh My!
-
+	int			ZoomTime;
+	qboolean	Zoomed;
 
 #ifdef MISSIONPACK
 	gentity_t	*persistantPowerup;

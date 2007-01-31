@@ -2393,7 +2393,7 @@ LABELV $189
 line 510
 ;509:		}
 ;510:		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2413,7 +2413,7 @@ LABELV $191
 line 513
 ;512:		}
 ;513:		if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2486,7 +2486,7 @@ JUMPV
 LABELV $196
 line 532
 ;532:		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2506,7 +2506,7 @@ LABELV $201
 line 535
 ;534:		}
 ;535:		if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2521,7 +2521,7 @@ INDIRI4
 NEI4 $203
 line 536
 ;536:			if ( level.clients[i].sess.teamLeader )
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4559,7 +4559,7 @@ ADDRLP4 1032
 INDIRP4
 CNSTI4 524
 ADDP4
-CNSTI4 3456
+CNSTI4 3464
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -4586,7 +4586,7 @@ INDIRP4
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 3456
+CNSTI4 3464
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -4938,7 +4938,7 @@ line 1047
 ;1046:
 ;1047:	client = level.clients + clientNum;
 ADDRLP4 0
-CNSTI4 3456
+CNSTI4 3464
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -5650,7 +5650,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 3444
+CNSTI4 3452
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -5762,7 +5762,7 @@ INDIRP4
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 3456
+CNSTI4 3464
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -6018,7 +6018,7 @@ ADDRFP4 0
 INDIRP4
 CNSTI4 524
 ADDP4
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 100
 INDIRI4
 MULI4
@@ -6458,7 +6458,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3456
+CNSTI4 3464
 DIVI4
 ARGI4
 ADDRFP4 0
@@ -7375,7 +7375,7 @@ LABELV $510
 line 1493
 ;1492:	
 ;1493:		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7395,7 +7395,7 @@ LABELV $515
 line 1496
 ;1495:		}
 ;1496:		if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7411,7 +7411,7 @@ NEI4 $517
 line 1498
 ;1497:			
 ;1498:			if (level.clients[i].ps.persistant[PERS_SCORE] == 0) 
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7498,7 +7498,7 @@ line 1516
 line 1517
 ;1517:		t = level.clients[c].ps.persistant[PERS_SCORE];
 ADDRLP4 12
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7525,7 +7525,7 @@ CALLV
 pop
 line 1519
 ;1519:		level.clients[c].ps.persistant[PERS_SCORE] = t;
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7553,7 +7553,7 @@ line 1524
 line 1525
 ;1525:		t = level.clients[c].ps.persistant[PERS_SCORE];	
 ADDRLP4 12
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7580,7 +7580,7 @@ CALLV
 pop
 line 1527
 ;1527:		level.clients[c].ps.persistant[PERS_SCORE] = t;
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7644,7 +7644,7 @@ line 1551
 ;1550:	
 ;1551:		if (( level.clients[i].pers.connected == CON_DISCONNECTED ) && ( level.clients[i].ps.pm_type == PM_DEAD )) {
 ADDRLP4 12
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7674,7 +7674,7 @@ LABELV $533
 line 1554
 ;1553:		}
 ;1554:		if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7690,7 +7690,7 @@ NEI4 $535
 line 1556
 ;1555:			
 ;1556:			if (level.clients[i].ps.persistant[PERS_SCORE] == 0) 
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7899,7 +7899,7 @@ LABELV $548
 line 1620
 ;1620:		if ( level.clients[i].sess.sessionTeam == TEAM_SPECTATOR
 ADDRLP4 12
-CNSTI4 3456
+CNSTI4 3464
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -8113,7 +8113,7 @@ line 1650
 line 1651
 ;1651:		level.clients[ level.sortedClients[0] ].sess.wins++;
 ADDRLP4 24
-CNSTI4 3456
+CNSTI4 3464
 ADDRGP4 level+96
 INDIRI4
 MULI4
