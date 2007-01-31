@@ -7,8 +7,6 @@
 #include "bg_public.h"
 #include "bg_local.h"
 
-extern	vmCvar_t	g_grappleMaxLength; //-Vincent
-extern  vmCvar_t	g_grappleSpeedDrop; //-Vincent
 
 pmove_t		*pm;
 pml_t		pml;
@@ -702,37 +700,21 @@ PM_GrappleMove
 ===================
 */
 static void PM_GrappleMove( void ) {
-	vec3_t	vel, v;
-	float	vlen;
-	float	speed, newspeed, destination;
-	int		maxlengthcvar, speeddropcvar;
-	maxlengthcvar = g_grappleMaxLength.integer; // Get the CVAR -Vincent
-	speeddropcvar = g_grappleSpeedDrop.integer; // Get the CVAR -Vincent
+	vec3_t vel, v;
+	float vlen;
 
 	VectorScale(pml.forward, -16, v);
 	VectorAdd(pm->ps->grapplePoint, v, v);
 	VectorSubtract(v, pm->ps->origin, vel);
 	vlen = VectorLength(vel);
 	VectorNormalize( vel );
-	
-	destination = VectorLength( pm->ps->grapplePoint); // Get the length of the grapple -Vincent
-	if ( destination > maxlengthcvar )
-	{ // "Stop" moving when the grapplepoint is further than the CVAR -Vincent
-	VectorClear( pm->ps->grapplePoint );
-	}
 
 	if (vlen <= 100)
 		VectorScale(vel, 10 * vlen, vel);
 	else
 		VectorScale(vel, 800, vel);
 
-	speed = VectorLength( pm->ps->velocity ); // Get the original speed -Vincent
-	newspeed = speed - speeddropcvar; // Lower the speed with a certain amount -Vincent
-	if ( newspeed < 0)
-		newspeed = 0;
-	newspeed /= speed; // Added this but what does it do again? :S -Vincent
-	VectorScale ( pm->ps->velocity, newspeed, pm->ps->velocity );
-	VectorCopy( vel, pm->ps->velocity );
+	VectorCopy(vel, pm->ps->velocity);
 
 	pml.groundPlane = qfalse;
 }
@@ -1567,7 +1549,7 @@ int		altAmmoUsage[WP_NUM_WEAPONS] =
 	2,				//grenade launcher
 	3,				//rocket launcher/singularity cannon
 	1,				//flame thrower
-	4,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
+	0,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
 	12,				//Gata Gun
 	3,				//bfg/devastator
 	20,				//hmmmm... dunno what this one is
