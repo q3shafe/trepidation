@@ -8021,7 +8021,7 @@ byte 4 1
 byte 4 2
 byte 4 3
 byte 4 1
-byte 4 4
+byte 4 0
 byte 4 12
 byte 4 3
 byte 4 20
@@ -8043,7 +8043,7 @@ line 1565
 ;1549:	2,				//grenade launcher
 ;1550:	3,				//rocket launcher/singularity cannon
 ;1551:	1,				//flame thrower
-;1552:	4,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
+;1552:	0,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
 ;1553:	12,				//Gata Gun
 ;1554:	3,				//bfg/devastator
 ;1555:	20,				//hmmmm... dunno what this one is

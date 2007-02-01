@@ -152,6 +152,8 @@ SelectRandomFurthestSpawnPoint
 Chooses a player start, deathmatch start, etc
 ============
 */
+extern gentity_t *SelectRandomTeamSpawnPoint( int teamstate, team_t team ); // Bad Bad
+
 gentity_t *SelectRandomFurthestSpawnPoint ( vec3_t avoidPoint, vec3_t origin, vec3_t angles ) {
 	gentity_t	*spot;
 	vec3_t		delta;
@@ -194,7 +196,14 @@ gentity_t *SelectRandomFurthestSpawnPoint ( vec3_t avoidPoint, vec3_t origin, ve
 	if (!numSpots) {
 		spot = G_Find( NULL, FOFS(classname), "info_player_deathmatch");
 		if (!spot)
-			G_Error( "Couldn't find a spawn point" );
+		{
+			//G_Error( "Couldn't find a spawn point" );  // This is a workaround for skarekrows maps
+			G_Printf("Unable To Locate Spawnpoint using CTF Spawns as fallback.\n");
+			Com_Printf( "Unable To Locate Spawnpoint using CTF Spawns as fallback.");
+			spot = SelectRandomTeamSpawnPoint ( TEAM_BEGIN, irandom(1,2) );			   // This is bad bad bad
+
+		}
+
 		VectorCopy (spot->s.origin, origin);
 		origin[2] += 9;
 		VectorCopy (spot->s.angles, angles);
