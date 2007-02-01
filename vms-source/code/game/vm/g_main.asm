@@ -357,14 +357,14 @@ skip 4
 address g_instagib
 address $124
 address $63
-byte 4 103
+byte 4 39
 byte 4 0
 byte 4 1
 skip 4
 address g_GameMode
 address $125
 address $66
-byte 4 103
+byte 4 39
 byte 4 0
 byte 4 0
 skip 4
@@ -698,8 +698,8 @@ line 264
 ;208:	{ &g_rankings, "g_rankings", "0", 0, 0, qfalse},
 ;209:// Shafe - Trep - Cvars
 ;210:	// Mods
-;211:	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_ROM, 0, qtrue  },
-;212:	{ &g_GameMode, "g_GameMode", "3", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_ROM, 0, qfalse  },	
+;211:	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
+;212:	{ &g_GameMode, "g_GameMode", "3", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },	
 ;213:	{ &g_BlueMC, "g_BlueMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
 ;214:	{ &g_RedMC, "g_RedMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
 ;215:

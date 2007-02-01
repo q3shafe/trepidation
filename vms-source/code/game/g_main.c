@@ -76,10 +76,6 @@ vmCvar_t	g_enableDust;
 vmCvar_t	g_enableBreath;
 vmCvar_t	g_proxMineTimeout;
 #endif
-
-vmCvar_t	g_grappleMaxLength; //-Vincent
-vmCvar_t	g_grappleSpeedDrop; //-Vincent
-
 //unlagged - server options
 vmCvar_t	g_delagHitscan;
 vmCvar_t	g_unlaggedVersion;
@@ -200,9 +196,6 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &pmove_fixed, "pmove_fixed", "0", CVAR_SYSTEMINFO, 0, qfalse},
 	{ &pmove_msec, "pmove_msec", "8", CVAR_SYSTEMINFO, 0, qfalse},
 
-	{ &g_grappleMaxLength, "g_grappleMaxLength", "1000", CVAR_ARCHIVE | CVAR_SERVERINFO, 0, qfalse }, // FIXME!!! -Vincent
-	{ &g_grappleSpeedDrop, "g_grappleSpeedDrop", "0", CVAR_ARCHIVE | CVAR_SERVERINFO, 0, qfalse }, // Standard drop??? -Vincent
-
 //unlagged - server options
 	{ &g_delagHitscan, "g_delagHitscan", "1", CVAR_ARCHIVE | CVAR_SERVERINFO, 0, qtrue },
 	{ &g_unlaggedVersion, "g_unlaggedVersion", "2.0", CVAR_ROM | CVAR_SERVERINFO, 0, qfalse },
@@ -215,8 +208,8 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_rankings, "g_rankings", "0", 0, 0, qfalse},
 // Shafe - Trep - Cvars
 	// Mods
-	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_ROM, 0, qtrue  },
-	{ &g_GameMode, "g_GameMode", "3", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE | CVAR_ROM, 0, qfalse  },	
+	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_GameMode, "g_GameMode", "3", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },	
 	{ &g_BlueMC, "g_BlueMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
 	{ &g_RedMC, "g_RedMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
 

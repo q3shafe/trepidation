@@ -1030,7 +1030,7 @@ line 512
 ;451:	{ "viewpos", CG_Viewpos_f },
 ;452:	{ "+scores", CG_ScoresDown_f },
 ;453:	{ "-scores", CG_ScoresUp_f },
-;454://	{ "+zoom", CG_ZoomDown_f },
+;454://	{ "+zoom", CG_ZoomDown_f },  // Cut these out since zoom is only on alt fire guass
 ;455://	{ "-zoom", CG_ZoomUp_f },
 ;456:	{ "sizeup", CG_SizeUp_f },
 ;457:	{ "sizedown", CG_SizeDown_f },
