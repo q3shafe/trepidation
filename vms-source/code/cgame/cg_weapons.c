@@ -1626,8 +1626,11 @@ void CG_NextWeapon_f( void ) {
 		return;
 	}
 
+   	CG_ResetZoom();
+
 	cg.weaponSelectTime = cg.time;
 	original = cg.weaponSelect;
+
 
 	for ( i = 0 ; i < 16 ; i++ ) {
 		cg.weaponSelect++;
@@ -1662,6 +1665,8 @@ void CG_PrevWeapon_f( void ) {
 	if ( cg.snap->ps.pm_flags & PMF_FOLLOW ) {
 		return;
 	}
+
+	CG_ResetZoom();
 
 	cg.weaponSelectTime = cg.time;
 	original = cg.weaponSelect;
