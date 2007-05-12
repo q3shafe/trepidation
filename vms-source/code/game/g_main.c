@@ -1824,6 +1824,24 @@ void CheckExitRules( void ) {
 			tmpCnt = CountSurvivors();
 			
 
+			// Bug 0000104
+			// If there are no survivors.. like if the last 2 players disconnect at the same time.
+			if ( tmpCnt == 0 ) 
+			{
+				if ( level.warmupTime != -1 ) 
+				{
+					level.warmupTime = -1;
+					trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
+					level.firstStrike = qfalse;
+					G_LogPrintf( "Warmup:\n" );
+				}
+				return;
+			}
+
+				
+	
+
+
 			// Three People - Start The Music  // Maybe do this on 2 instead
 			if (tmpCnt == 3)
 			{

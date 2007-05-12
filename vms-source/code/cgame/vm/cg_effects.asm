@@ -17,33 +17,26 @@ line 14
 ;12:==================
 ;13:*/
 ;14:void CG_ShotgunTrail( vec3_t start, vec3_t end, float spacing ) {
-line 20
+line 26
 ;15:	vec3_t		move;
 ;16:	vec3_t		vec;
 ;17:	float		len;
 ;18:	int			i;
 ;19:
-;20:	if ( cg_noProjectileTrail.integer ) {
-ADDRGP4 cg_noProjectileTrail+12
-INDIRI4
-CNSTI4 0
-EQI4 $73
-line 21
-;21:		return;
-ADDRGP4 $72
-JUMPV
-LABELV $73
-line 24
-;22:	}
-;23:
-;24:	VectorCopy (start, move);
+;20:	/*
+;21:	if ( cg_noProjectileTrail.integer ) {
+;22:		return;
+;23:	}
+;24:	*/
+;25:
+;26:	VectorCopy (start, move);
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 25
-;25:	VectorSubtract (end, start, vec);
+line 27
+;27:	VectorSubtract (end, start, vec);
 ADDRLP4 32
 ADDRFP4 4
 INDIRP4
@@ -97,8 +90,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 26
-;26:	len = VectorNormalize (vec);
+line 28
+;28:	len = VectorNormalize (vec);
 ADDRLP4 12
 ARGP4
 ADDRLP4 48
@@ -109,10 +102,10 @@ ADDRLP4 28
 ADDRLP4 48
 INDIRF4
 ASGNF4
-line 29
-;27:
-;28:	// advance a random amount first
-;29:	i = rand() % (int)spacing;
+line 31
+;29:
+;30:	// advance a random amount first
+;31:	i = rand() % (int)spacing;
 ADDRLP4 52
 ADDRGP4 rand
 CALLI4
@@ -125,83 +118,83 @@ INDIRF4
 CVFI4 4
 MODI4
 ASGNI4
-line 30
-;30:	VectorMA( move, i, vec, move );
-ADDRLP4 56
-ADDRLP4 24
-INDIRI4
-CVIF4 4
-ASGNF4
-ADDRLP4 0
-ADDRLP4 0
-INDIRF4
-ADDRLP4 12
-INDIRF4
-ADDRLP4 56
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-ADDRLP4 0+4
-ADDRLP4 0+4
-INDIRF4
-ADDRLP4 12+4
-INDIRF4
-ADDRLP4 56
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-ADDRLP4 0+8
-ADDRLP4 0+8
-INDIRF4
-ADDRLP4 12+8
-INDIRF4
-ADDRLP4 24
-INDIRI4
-CVIF4 4
-MULF4
-ADDF4
-ASGNF4
 line 32
-;31:
-;32:	VectorScale (vec, spacing, vec);
-ADDRLP4 60
-ADDRFP4 8
-INDIRF4
+;32:	VectorMA( move, i, vec, move );
+ADDRLP4 56
+ADDRLP4 24
+INDIRI4
+CVIF4 4
 ASGNF4
+ADDRLP4 0
+ADDRLP4 0
+INDIRF4
 ADDRLP4 12
-ADDRLP4 12
 INDIRF4
-ADDRLP4 60
+ADDRLP4 56
 INDIRF4
 MULF4
+ADDF4
 ASGNF4
-ADDRLP4 12+4
+ADDRLP4 0+4
+ADDRLP4 0+4
+INDIRF4
 ADDRLP4 12+4
 INDIRF4
-ADDRLP4 60
+ADDRLP4 56
 INDIRF4
 MULF4
+ADDF4
 ASGNF4
-ADDRLP4 12+8
+ADDRLP4 0+8
+ADDRLP4 0+8
+INDIRF4
 ADDRLP4 12+8
 INDIRF4
-ADDRFP4 8
-INDIRF4
+ADDRLP4 24
+INDIRI4
+CVIF4 4
 MULF4
+ADDF4
 ASGNF4
 line 34
 ;33:
-;34:	for ( ; i < len; i += spacing ) {
-ADDRGP4 $91
+;34:	VectorScale (vec, spacing, vec);
+ADDRLP4 60
+ADDRFP4 8
+INDIRF4
+ASGNF4
+ADDRLP4 12
+ADDRLP4 12
+INDIRF4
+ADDRLP4 60
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 12+4
+ADDRLP4 12+4
+INDIRF4
+ADDRLP4 60
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 12+8
+ADDRLP4 12+8
+INDIRF4
+ADDRFP4 8
+INDIRF4
+MULF4
+ASGNF4
+line 36
+;35:
+;36:	for ( ; i < len; i += spacing ) {
+ADDRGP4 $88
 JUMPV
-LABELV $88
-line 38
-;35:		localEntity_t	*le;
-;36:		refEntity_t		*re;
-;37:
-;38:		le = CG_AllocLocalEntity();
+LABELV $85
+line 40
+;37:		localEntity_t	*le;
+;38:		refEntity_t		*re;
+;39:
+;40:		le = CG_AllocLocalEntity();
 ADDRLP4 72
 ADDRGP4 CG_AllocLocalEntity
 CALLP4
@@ -210,25 +203,25 @@ ADDRLP4 64
 ADDRLP4 72
 INDIRP4
 ASGNP4
-line 39
-;39:		le->leFlags = LEF_PUFF_DONT_SCALE;
+line 41
+;41:		le->leFlags = LEF_PUFF_DONT_SCALE;
 ADDRLP4 64
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 1
 ASGNI4
-line 41
-;40:		//le->leType = LE_MOVE_SCALE_FADE;
-;41:		le->leType =LE_FRAGMENT;
+line 43
+;42:		//le->leType = LE_MOVE_SCALE_FADE;
+;43:		le->leType =LE_FRAGMENT;
 ADDRLP4 64
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 3
 ASGNI4
-line 42
-;42:		le->startTime = cg.time;
+line 44
+;44:		le->startTime = cg.time;
 ADDRLP4 64
 INDIRP4
 CNSTI4 16
@@ -236,8 +229,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 43
-;43:		le->endTime = cg.time + 300 + random() * 250;
+line 45
+;45:		le->endTime = cg.time + 300 + random() * 250;
 ADDRLP4 76
 ADDRGP4 rand
 CALLI4
@@ -263,8 +256,8 @@ MULF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 44
-;44:		le->lifeRate = 1.0 / ( le->endTime - le->startTime );
+line 46
+;46:		le->lifeRate = 1.0 / ( le->endTime - le->startTime );
 ADDRLP4 64
 INDIRP4
 CNSTI4 28
@@ -284,17 +277,17 @@ SUBI4
 CVIF4 4
 DIVF4
 ASGNF4
-line 46
-;45:
-;46:		re = &le->refEntity;
+line 48
+;47:
+;48:		re = &le->refEntity;
 ADDRLP4 68
 ADDRLP4 64
 INDIRP4
 CNSTI4 152
 ADDP4
 ASGNP4
-line 47
-;47:		re->shaderTime = cg.time / 1000.0f;
+line 49
+;49:		re->shaderTime = cg.time / 1000.0f;
 ADDRLP4 68
 INDIRP4
 CNSTI4 128
@@ -305,31 +298,31 @@ CVIF4 4
 CNSTF4 1148846080
 DIVF4
 ASGNF4
-line 49
-;48:
-;49:		re->reType = RT_SPRITE;
+line 51
+;50:
+;51:		re->reType = RT_SPRITE;
 ADDRLP4 68
 INDIRP4
 CNSTI4 2
 ASGNI4
-line 50
-;50:		re->rotation = 0;
+line 52
+;52:		re->rotation = 0;
 ADDRLP4 68
 INDIRP4
 CNSTI4 136
 ADDP4
 CNSTF4 0
 ASGNF4
-line 51
-;51:		re->radius = .5;
+line 53
+;53:		re->radius = .5;
 ADDRLP4 68
 INDIRP4
 CNSTI4 132
 ADDP4
 CNSTF4 1056964608
 ASGNF4
-line 52
-;52:		re->customShader = cgs.media.sgTrailShader;
+line 54
+;54:		re->customShader = cgs.media.sgTrailShader;
 ADDRLP4 68
 INDIRP4
 CNSTI4 112
@@ -337,58 +330,58 @@ ADDP4
 ADDRGP4 cgs+154388+320
 INDIRI4
 ASGNI4
-line 53
-;53:		re->shaderRGBA[0] = 0xff;
+line 55
+;55:		re->shaderRGBA[0] = 0xff;
 ADDRLP4 68
 INDIRP4
 CNSTI4 116
 ADDP4
 CNSTU1 255
 ASGNU1
-line 54
-;54:		re->shaderRGBA[1] = 0xff;
+line 56
+;56:		re->shaderRGBA[1] = 0xff;
 ADDRLP4 68
 INDIRP4
 CNSTI4 117
 ADDP4
 CNSTU1 255
 ASGNU1
-line 55
-;55:		re->shaderRGBA[2] = 0xff;
+line 57
+;57:		re->shaderRGBA[2] = 0xff;
 ADDRLP4 68
 INDIRP4
 CNSTI4 118
 ADDP4
 CNSTU1 255
 ASGNU1
-line 56
-;56:		re->shaderRGBA[3] = 0xff;
+line 58
+;58:		re->shaderRGBA[3] = 0xff;
 ADDRLP4 68
 INDIRP4
 CNSTI4 119
 ADDP4
 CNSTU1 255
 ASGNU1
-line 58
-;57:
-;58:		le->color[3] = 1.0;
+line 60
+;59:
+;60:		le->color[3] = 1.0;
 ADDRLP4 64
 INDIRP4
 CNSTI4 120
 ADDP4
 CNSTF4 1065353216
 ASGNF4
-line 60
-;59:
-;60:		le->pos.trType = TR_LINEAR;
+line 62
+;61:
+;62:		le->pos.trType = TR_LINEAR;
 ADDRLP4 64
 INDIRP4
 CNSTI4 32
 ADDP4
 CNSTI4 2
 ASGNI4
-line 61
-;61:		le->pos.trTime = cg.time;
+line 63
+;63:		le->pos.trTime = cg.time;
 ADDRLP4 64
 INDIRP4
 CNSTI4 36
@@ -396,8 +389,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 62
-;62:		VectorCopy( move, le->pos.trBase );
+line 64
+;64:		VectorCopy( move, le->pos.trBase );
 ADDRLP4 64
 INDIRP4
 CNSTI4 44
@@ -405,12 +398,12 @@ ADDP4
 ADDRLP4 0
 INDIRB
 ASGNB 12
-line 67
-;63:		//le->pos.trDelta[0] = crandom()*5;
-;64:		//le->pos.trDelta[1] = crandom()*5;
-;65:		//le->pos.trDelta[2] = crandom()*5 + 6;
-;66:
-;67:		VectorAdd (move, vec, move);
+line 69
+;65:		//le->pos.trDelta[0] = crandom()*5;
+;66:		//le->pos.trDelta[1] = crandom()*5;
+;67:		//le->pos.trDelta[2] = crandom()*5 + 6;
+;68:
+;69:		VectorAdd (move, vec, move);
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -432,10 +425,10 @@ ADDRLP4 12+8
 INDIRF4
 ADDF4
 ASGNF4
-line 68
-;68:	}
-LABELV $89
-line 34
+line 70
+;70:	}
+LABELV $86
+line 36
 ADDRLP4 24
 ADDRLP4 24
 INDIRI4
@@ -445,57 +438,57 @@ INDIRF4
 ADDF4
 CVFI4 4
 ASGNI4
-LABELV $91
+LABELV $88
 ADDRLP4 24
 INDIRI4
 CVIF4 4
 ADDRLP4 28
 INDIRF4
-LTF4 $88
-line 69
-;69:}
+LTF4 $85
+line 71
+;71:}
 LABELV $72
 endproc CG_ShotgunTrail 84 4
 export CG_BubbleTrail
 proc CG_BubbleTrail 96 4
-line 79
-;70:
-;71:
-;72:/*
-;73:==================
-;74:CG_BubbleTrail
-;75:
-;76:Bullets shot underwater
-;77:==================
-;78:*/
-;79:void CG_BubbleTrail( vec3_t start, vec3_t end, float spacing ) {
-line 85
-;80:	vec3_t		move;
-;81:	vec3_t		vec;
-;82:	float		len;
-;83:	int			i;
-;84:
-;85:	if ( cg_noProjectileTrail.integer ) {
+line 81
+;72:
+;73:
+;74:/*
+;75:==================
+;76:CG_BubbleTrail
+;77:
+;78:Bullets shot underwater
+;79:==================
+;80:*/
+;81:void CG_BubbleTrail( vec3_t start, vec3_t end, float spacing ) {
+line 87
+;82:	vec3_t		move;
+;83:	vec3_t		vec;
+;84:	float		len;
+;85:	int			i;
+;86:
+;87:	if ( cg_noProjectileTrail.integer ) {
 ADDRGP4 cg_noProjectileTrail+12
 INDIRI4
 CNSTI4 0
-EQI4 $105
-line 86
-;86:		return;
-ADDRGP4 $104
+EQI4 $102
+line 88
+;88:		return;
+ADDRGP4 $101
 JUMPV
-LABELV $105
-line 89
-;87:	}
-;88:
-;89:	VectorCopy (start, move);
+LABELV $102
+line 91
+;89:	}
+;90:
+;91:	VectorCopy (start, move);
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 90
-;90:	VectorSubtract (end, start, vec);
+line 92
+;92:	VectorSubtract (end, start, vec);
 ADDRLP4 32
 ADDRFP4 4
 INDIRP4
@@ -549,8 +542,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 91
-;91:	len = VectorNormalize (vec);
+line 93
+;93:	len = VectorNormalize (vec);
 ADDRLP4 12
 ARGP4
 ADDRLP4 48
@@ -561,10 +554,10 @@ ADDRLP4 28
 ADDRLP4 48
 INDIRF4
 ASGNF4
-line 94
-;92:
-;93:	// advance a random amount first
-;94:	i = rand() % (int)spacing;
+line 96
+;94:
+;95:	// advance a random amount first
+;96:	i = rand() % (int)spacing;
 ADDRLP4 52
 ADDRGP4 rand
 CALLI4
@@ -577,83 +570,83 @@ INDIRF4
 CVFI4 4
 MODI4
 ASGNI4
-line 95
-;95:	VectorMA( move, i, vec, move );
-ADDRLP4 56
-ADDRLP4 24
-INDIRI4
-CVIF4 4
-ASGNF4
-ADDRLP4 0
-ADDRLP4 0
-INDIRF4
-ADDRLP4 12
-INDIRF4
-ADDRLP4 56
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-ADDRLP4 0+4
-ADDRLP4 0+4
-INDIRF4
-ADDRLP4 12+4
-INDIRF4
-ADDRLP4 56
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-ADDRLP4 0+8
-ADDRLP4 0+8
-INDIRF4
-ADDRLP4 12+8
-INDIRF4
-ADDRLP4 24
-INDIRI4
-CVIF4 4
-MULF4
-ADDF4
-ASGNF4
 line 97
-;96:
-;97:	VectorScale (vec, spacing, vec);
-ADDRLP4 60
-ADDRFP4 8
-INDIRF4
+;97:	VectorMA( move, i, vec, move );
+ADDRLP4 56
+ADDRLP4 24
+INDIRI4
+CVIF4 4
 ASGNF4
+ADDRLP4 0
+ADDRLP4 0
+INDIRF4
 ADDRLP4 12
-ADDRLP4 12
 INDIRF4
-ADDRLP4 60
+ADDRLP4 56
 INDIRF4
 MULF4
+ADDF4
 ASGNF4
-ADDRLP4 12+4
+ADDRLP4 0+4
+ADDRLP4 0+4
+INDIRF4
 ADDRLP4 12+4
 INDIRF4
-ADDRLP4 60
+ADDRLP4 56
 INDIRF4
 MULF4
+ADDF4
 ASGNF4
-ADDRLP4 12+8
+ADDRLP4 0+8
+ADDRLP4 0+8
+INDIRF4
 ADDRLP4 12+8
 INDIRF4
-ADDRFP4 8
-INDIRF4
+ADDRLP4 24
+INDIRI4
+CVIF4 4
 MULF4
+ADDF4
 ASGNF4
 line 99
 ;98:
-;99:	for ( ; i < len; i += spacing ) {
-ADDRGP4 $123
+;99:	VectorScale (vec, spacing, vec);
+ADDRLP4 60
+ADDRFP4 8
+INDIRF4
+ASGNF4
+ADDRLP4 12
+ADDRLP4 12
+INDIRF4
+ADDRLP4 60
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 12+4
+ADDRLP4 12+4
+INDIRF4
+ADDRLP4 60
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 12+8
+ADDRLP4 12+8
+INDIRF4
+ADDRFP4 8
+INDIRF4
+MULF4
+ASGNF4
+line 101
+;100:
+;101:	for ( ; i < len; i += spacing ) {
+ADDRGP4 $120
 JUMPV
-LABELV $120
-line 103
-;100:		localEntity_t	*le;
-;101:		refEntity_t		*re;
-;102:
-;103:		le = CG_AllocLocalEntity();
+LABELV $117
+line 105
+;102:		localEntity_t	*le;
+;103:		refEntity_t		*re;
+;104:
+;105:		le = CG_AllocLocalEntity();
 ADDRLP4 72
 ADDRGP4 CG_AllocLocalEntity
 CALLP4
@@ -662,24 +655,24 @@ ADDRLP4 64
 ADDRLP4 72
 INDIRP4
 ASGNP4
-line 104
-;104:		le->leFlags = LEF_PUFF_DONT_SCALE;
+line 106
+;106:		le->leFlags = LEF_PUFF_DONT_SCALE;
 ADDRLP4 64
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 1
 ASGNI4
-line 105
-;105:		le->leType = LE_MOVE_SCALE_FADE;
+line 107
+;107:		le->leType = LE_MOVE_SCALE_FADE;
 ADDRLP4 64
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 4
 ASGNI4
-line 106
-;106:		le->startTime = cg.time;
+line 108
+;108:		le->startTime = cg.time;
 ADDRLP4 64
 INDIRP4
 CNSTI4 16
@@ -687,8 +680,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 107
-;107:		le->endTime = cg.time + 1000 + random() * 250;
+line 109
+;109:		le->endTime = cg.time + 1000 + random() * 250;
 ADDRLP4 76
 ADDRGP4 rand
 CALLI4
@@ -714,8 +707,8 @@ MULF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 108
-;108:		le->lifeRate = 1.0 / ( le->endTime - le->startTime );
+line 110
+;110:		le->lifeRate = 1.0 / ( le->endTime - le->startTime );
 ADDRLP4 64
 INDIRP4
 CNSTI4 28
@@ -735,17 +728,17 @@ SUBI4
 CVIF4 4
 DIVF4
 ASGNF4
-line 110
-;109:
-;110:		re = &le->refEntity;
+line 112
+;111:
+;112:		re = &le->refEntity;
 ADDRLP4 68
 ADDRLP4 64
 INDIRP4
 CNSTI4 152
 ADDP4
 ASGNP4
-line 111
-;111:		re->shaderTime = cg.time / 1000.0f;
+line 113
+;113:		re->shaderTime = cg.time / 1000.0f;
 ADDRLP4 68
 INDIRP4
 CNSTI4 128
@@ -756,31 +749,31 @@ CVIF4 4
 CNSTF4 1148846080
 DIVF4
 ASGNF4
-line 113
-;112:
-;113:		re->reType = RT_SPRITE;
+line 115
+;114:
+;115:		re->reType = RT_SPRITE;
 ADDRLP4 68
 INDIRP4
 CNSTI4 2
 ASGNI4
-line 114
-;114:		re->rotation = 0;
+line 116
+;116:		re->rotation = 0;
 ADDRLP4 68
 INDIRP4
 CNSTI4 136
 ADDP4
 CNSTF4 0
 ASGNF4
-line 115
-;115:		re->radius = 3;
+line 117
+;117:		re->radius = 3;
 ADDRLP4 68
 INDIRP4
 CNSTI4 132
 ADDP4
 CNSTF4 1077936128
 ASGNF4
-line 116
-;116:		re->customShader = cgs.media.waterBubbleShader;
+line 118
+;118:		re->customShader = cgs.media.waterBubbleShader;
 ADDRLP4 68
 INDIRP4
 CNSTI4 112
@@ -788,58 +781,58 @@ ADDP4
 ADDRGP4 cgs+154388+312
 INDIRI4
 ASGNI4
-line 117
-;117:		re->shaderRGBA[0] = 0xff;
+line 119
+;119:		re->shaderRGBA[0] = 0xff;
 ADDRLP4 68
 INDIRP4
 CNSTI4 116
 ADDP4
 CNSTU1 255
 ASGNU1
-line 118
-;118:		re->shaderRGBA[1] = 0xff;
+line 120
+;120:		re->shaderRGBA[1] = 0xff;
 ADDRLP4 68
 INDIRP4
 CNSTI4 117
 ADDP4
 CNSTU1 255
 ASGNU1
-line 119
-;119:		re->shaderRGBA[2] = 0xff;
+line 121
+;121:		re->shaderRGBA[2] = 0xff;
 ADDRLP4 68
 INDIRP4
 CNSTI4 118
 ADDP4
 CNSTU1 255
 ASGNU1
-line 120
-;120:		re->shaderRGBA[3] = 0xff;
+line 122
+;122:		re->shaderRGBA[3] = 0xff;
 ADDRLP4 68
 INDIRP4
 CNSTI4 119
 ADDP4
 CNSTU1 255
 ASGNU1
-line 122
-;121:
-;122:		le->color[3] = 1.0;
+line 124
+;123:
+;124:		le->color[3] = 1.0;
 ADDRLP4 64
 INDIRP4
 CNSTI4 120
 ADDP4
 CNSTF4 1065353216
 ASGNF4
-line 124
-;123:
-;124:		le->pos.trType = TR_LINEAR;
+line 126
+;125:
+;126:		le->pos.trType = TR_LINEAR;
 ADDRLP4 64
 INDIRP4
 CNSTI4 32
 ADDP4
 CNSTI4 2
 ASGNI4
-line 125
-;125:		le->pos.trTime = cg.time;
+line 127
+;127:		le->pos.trTime = cg.time;
 ADDRLP4 64
 INDIRP4
 CNSTI4 36
@@ -847,8 +840,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 126
-;126:		VectorCopy( move, le->pos.trBase );
+line 128
+;128:		VectorCopy( move, le->pos.trBase );
 ADDRLP4 64
 INDIRP4
 CNSTI4 44
@@ -856,8 +849,8 @@ ADDP4
 ADDRLP4 0
 INDIRB
 ASGNB 12
-line 127
-;127:		le->pos.trDelta[0] = crandom()*5;
+line 129
+;129:		le->pos.trDelta[0] = crandom()*5;
 ADDRLP4 84
 ADDRGP4 rand
 CALLI4
@@ -880,8 +873,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 128
-;128:		le->pos.trDelta[1] = crandom()*5;
+line 130
+;130:		le->pos.trDelta[1] = crandom()*5;
 ADDRLP4 88
 ADDRGP4 rand
 CALLI4
@@ -904,8 +897,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 129
-;129:		le->pos.trDelta[2] = crandom()*5 + 6;
+line 131
+;131:		le->pos.trDelta[2] = crandom()*5 + 6;
 ADDRLP4 92
 ADDRGP4 rand
 CALLI4
@@ -930,9 +923,9 @@ MULF4
 CNSTF4 1086324736
 ADDF4
 ASGNF4
-line 131
-;130:
-;131:		VectorAdd (move, vec, move);
+line 133
+;132:
+;133:		VectorAdd (move, vec, move);
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -954,10 +947,10 @@ ADDRLP4 12+8
 INDIRF4
 ADDF4
 ASGNF4
-line 132
-;132:	}
-LABELV $121
-line 99
+line 134
+;134:	}
+LABELV $118
+line 101
 ADDRLP4 24
 ADDRLP4 24
 INDIRI4
@@ -967,48 +960,48 @@ INDIRF4
 ADDF4
 CVFI4 4
 ASGNI4
-LABELV $123
+LABELV $120
 ADDRLP4 24
 INDIRI4
 CVIF4 4
 ADDRLP4 28
 INDIRF4
-LTF4 $120
-line 133
-;133:}
-LABELV $104
+LTF4 $117
+line 135
+;135:}
+LABELV $101
 endproc CG_BubbleTrail 96 4
 data
 align 4
-LABELV $137
+LABELV $134
 byte 4 146
 export CG_SmokePuff
 code
 proc CG_SmokePuff 52 4
-line 149
-;134:
-;135:/*
-;136:=====================
-;137:CG_SmokePuff
-;138:
-;139:Adds a smoke puff or blood trail localEntity.
-;140:=====================
-;141:*/
-;142:localEntity_t *CG_SmokePuff( const vec3_t p, const vec3_t vel, 
-;143:				   float radius,
-;144:				   float r, float g, float b, float a,
-;145:				   float duration,
-;146:				   int startTime,
-;147:				   int fadeInTime,
-;148:				   int leFlags,
-;149:				   qhandle_t hShader ) {
-line 155
-;150:	static int	seed = 0x92;
-;151:	localEntity_t	*le;
-;152:	refEntity_t		*re;
-;153://	int fadeInTime = startTime + duration / 2;
-;154:
-;155:	le = CG_AllocLocalEntity();
+line 151
+;136:
+;137:/*
+;138:=====================
+;139:CG_SmokePuff
+;140:
+;141:Adds a smoke puff or blood trail localEntity.
+;142:=====================
+;143:*/
+;144:localEntity_t *CG_SmokePuff( const vec3_t p, const vec3_t vel, 
+;145:				   float radius,
+;146:				   float r, float g, float b, float a,
+;147:				   float duration,
+;148:				   int startTime,
+;149:				   int fadeInTime,
+;150:				   int leFlags,
+;151:				   qhandle_t hShader ) {
+line 157
+;152:	static int	seed = 0x92;
+;153:	localEntity_t	*le;
+;154:	refEntity_t		*re;
+;155://	int fadeInTime = startTime + duration / 2;
+;156:
+;157:	le = CG_AllocLocalEntity();
 ADDRLP4 8
 ADDRGP4 CG_AllocLocalEntity
 CALLP4
@@ -1017,8 +1010,8 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 156
-;156:	le->leFlags = leFlags;
+line 158
+;158:	le->leFlags = leFlags;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
@@ -1026,8 +1019,8 @@ ADDP4
 ADDRFP4 40
 INDIRI4
 ASGNI4
-line 157
-;157:	le->radius = radius;
+line 159
+;159:	le->radius = radius;
 ADDRLP4 0
 INDIRP4
 CNSTI4 124
@@ -1035,18 +1028,18 @@ ADDP4
 ADDRFP4 8
 INDIRF4
 ASGNF4
-line 159
-;158:
-;159:	re = &le->refEntity;
+line 161
+;160:
+;161:	re = &le->refEntity;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 CNSTI4 152
 ADDP4
 ASGNP4
-line 160
-;160:	re->rotation = Q_random( &seed ) * 360;
-ADDRGP4 $137
+line 162
+;162:	re->rotation = Q_random( &seed ) * 360;
+ADDRGP4 $134
 ARGP4
 ADDRLP4 12
 ADDRGP4 Q_random
@@ -1061,8 +1054,8 @@ ADDRLP4 12
 INDIRF4
 MULF4
 ASGNF4
-line 161
-;161:	re->radius = radius;
+line 163
+;163:	re->radius = radius;
 ADDRLP4 4
 INDIRP4
 CNSTI4 132
@@ -1070,8 +1063,8 @@ ADDP4
 ADDRFP4 8
 INDIRF4
 ASGNF4
-line 162
-;162:	re->shaderTime = startTime / 1000.0f;
+line 164
+;164:	re->shaderTime = startTime / 1000.0f;
 ADDRLP4 4
 INDIRP4
 CNSTI4 128
@@ -1082,17 +1075,17 @@ CVIF4 4
 CNSTF4 1148846080
 DIVF4
 ASGNF4
-line 164
-;163:
-;164:	le->leType = LE_MOVE_SCALE_FADE;
+line 166
+;165:
+;166:	le->leType = LE_MOVE_SCALE_FADE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 4
 ASGNI4
-line 165
-;165:	le->startTime = startTime;
+line 167
+;167:	le->startTime = startTime;
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -1100,8 +1093,8 @@ ADDP4
 ADDRFP4 32
 INDIRI4
 ASGNI4
-line 166
-;166:	le->fadeInTime = fadeInTime;
+line 168
+;168:	le->fadeInTime = fadeInTime;
 ADDRLP4 0
 INDIRP4
 CNSTI4 24
@@ -1109,8 +1102,8 @@ ADDP4
 ADDRFP4 36
 INDIRI4
 ASGNI4
-line 167
-;167:	le->endTime = startTime + duration;
+line 169
+;169:	le->endTime = startTime + duration;
 ADDRLP4 0
 INDIRP4
 CNSTI4 20
@@ -1123,15 +1116,15 @@ INDIRF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 168
-;168:	if ( fadeInTime > startTime ) {
+line 170
+;170:	if ( fadeInTime > startTime ) {
 ADDRFP4 36
 INDIRI4
 ADDRFP4 32
 INDIRI4
-LEI4 $138
-line 169
-;169:		le->lifeRate = 1.0 / ( le->endTime - le->fadeInTime );
+LEI4 $135
+line 171
+;171:		le->lifeRate = 1.0 / ( le->endTime - le->fadeInTime );
 ADDRLP4 0
 INDIRP4
 CNSTI4 28
@@ -1151,15 +1144,15 @@ SUBI4
 CVIF4 4
 DIVF4
 ASGNF4
-line 170
-;170:	}
-ADDRGP4 $139
-JUMPV
-LABELV $138
-line 171
-;171:	else {
 line 172
-;172:		le->lifeRate = 1.0 / ( le->endTime - le->startTime );
+;172:	}
+ADDRGP4 $136
+JUMPV
+LABELV $135
+line 173
+;173:	else {
+line 174
+;174:		le->lifeRate = 1.0 / ( le->endTime - le->startTime );
 ADDRLP4 0
 INDIRP4
 CNSTI4 28
@@ -1179,11 +1172,11 @@ SUBI4
 CVIF4 4
 DIVF4
 ASGNF4
-line 173
-;173:	}
-LABELV $139
-line 174
-;174:	le->color[0] = r;
+line 175
+;175:	}
+LABELV $136
+line 176
+;176:	le->color[0] = r;
 ADDRLP4 0
 INDIRP4
 CNSTI4 108
@@ -1191,8 +1184,8 @@ ADDP4
 ADDRFP4 12
 INDIRF4
 ASGNF4
-line 175
-;175:	le->color[1] = g; 
+line 177
+;177:	le->color[1] = g; 
 ADDRLP4 0
 INDIRP4
 CNSTI4 112
@@ -1200,8 +1193,8 @@ ADDP4
 ADDRFP4 16
 INDIRF4
 ASGNF4
-line 176
-;176:	le->color[2] = b;
+line 178
+;178:	le->color[2] = b;
 ADDRLP4 0
 INDIRP4
 CNSTI4 116
@@ -1209,8 +1202,8 @@ ADDP4
 ADDRFP4 20
 INDIRF4
 ASGNF4
-line 177
-;177:	le->color[3] = a;
+line 179
+;179:	le->color[3] = a;
 ADDRLP4 0
 INDIRP4
 CNSTI4 120
@@ -1218,18 +1211,18 @@ ADDP4
 ADDRFP4 24
 INDIRF4
 ASGNF4
-line 180
-;178:
-;179:
-;180:	le->pos.trType = TR_LINEAR;
+line 182
+;180:
+;181:
+;182:	le->pos.trType = TR_LINEAR;
 ADDRLP4 0
 INDIRP4
 CNSTI4 32
 ADDP4
 CNSTI4 2
 ASGNI4
-line 181
-;181:	le->pos.trTime = startTime;
+line 183
+;183:	le->pos.trTime = startTime;
 ADDRLP4 0
 INDIRP4
 CNSTI4 36
@@ -1237,8 +1230,8 @@ ADDP4
 ADDRFP4 32
 INDIRI4
 ASGNI4
-line 182
-;182:	VectorCopy( vel, le->pos.trDelta );
+line 184
+;184:	VectorCopy( vel, le->pos.trDelta );
 ADDRLP4 0
 INDIRP4
 CNSTI4 56
@@ -1247,8 +1240,8 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 183
-;183:	VectorCopy( p, le->pos.trBase );
+line 185
+;185:	VectorCopy( p, le->pos.trBase );
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
@@ -1257,9 +1250,9 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 185
-;184:
-;185:	VectorCopy( p, re->origin );
+line 187
+;186:
+;187:	VectorCopy( p, re->origin );
 ADDRLP4 4
 INDIRP4
 CNSTI4 68
@@ -1268,8 +1261,8 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 186
-;186:	re->customShader = hShader;
+line 188
+;188:	re->customShader = hShader;
 ADDRLP4 4
 INDIRP4
 CNSTI4 112
@@ -1277,16 +1270,16 @@ ADDP4
 ADDRFP4 44
 INDIRI4
 ASGNI4
-line 189
-;187:
-;188:	// rage pro can't alpha fade, so use a different shader
-;189:	if ( cgs.glconfig.hardwareType == GLHW_RAGEPRO ) {
+line 191
+;189:
+;190:	// rage pro can't alpha fade, so use a different shader
+;191:	if ( cgs.glconfig.hardwareType == GLHW_RAGEPRO ) {
 ADDRGP4 cgs+20100+11288
 INDIRI4
 CNSTI4 3
-NEI4 $140
-line 190
-;190:		re->customShader = cgs.media.smokePuffRageProShader;
+NEI4 $137
+line 192
+;192:		re->customShader = cgs.media.smokePuffRageProShader;
 ADDRLP4 4
 INDIRP4
 CNSTI4 112
@@ -1294,45 +1287,45 @@ ADDP4
 ADDRGP4 cgs+154388+292
 INDIRI4
 ASGNI4
-line 191
-;191:		re->shaderRGBA[0] = 0xff;
+line 193
+;193:		re->shaderRGBA[0] = 0xff;
 ADDRLP4 4
 INDIRP4
 CNSTI4 116
 ADDP4
 CNSTU1 255
 ASGNU1
-line 192
-;192:		re->shaderRGBA[1] = 0xff;
+line 194
+;194:		re->shaderRGBA[1] = 0xff;
 ADDRLP4 4
 INDIRP4
 CNSTI4 117
 ADDP4
 CNSTU1 255
 ASGNU1
-line 193
-;193:		re->shaderRGBA[2] = 0xff;
+line 195
+;195:		re->shaderRGBA[2] = 0xff;
 ADDRLP4 4
 INDIRP4
 CNSTI4 118
 ADDP4
 CNSTU1 255
 ASGNU1
-line 194
-;194:		re->shaderRGBA[3] = 0xff;
+line 196
+;196:		re->shaderRGBA[3] = 0xff;
 ADDRLP4 4
 INDIRP4
 CNSTI4 119
 ADDP4
 CNSTU1 255
 ASGNU1
-line 195
-;195:	} else {
-ADDRGP4 $141
+line 197
+;197:	} else {
+ADDRGP4 $138
 JUMPV
-LABELV $140
-line 196
-;196:		re->shaderRGBA[0] = le->color[0] * 0xff;
+LABELV $137
+line 198
+;198:		re->shaderRGBA[0] = le->color[0] * 0xff;
 ADDRLP4 20
 CNSTF4 1132396544
 ADDRLP4 0
@@ -1349,11 +1342,59 @@ ADDRLP4 20
 INDIRF4
 ADDRLP4 24
 INDIRF4
-LTF4 $147
+LTF4 $144
 ADDRLP4 16
 ADDRLP4 20
 INDIRF4
 ADDRLP4 24
+INDIRF4
+SUBF4
+CVFI4 4
+CVIU4 4
+CNSTU4 2147483648
+ADDU4
+ASGNU4
+ADDRGP4 $145
+JUMPV
+LABELV $144
+ADDRLP4 16
+ADDRLP4 20
+INDIRF4
+CVFI4 4
+CVIU4 4
+ASGNU4
+LABELV $145
+ADDRLP4 4
+INDIRP4
+CNSTI4 116
+ADDP4
+ADDRLP4 16
+INDIRU4
+CVUU1 4
+ASGNU1
+line 199
+;199:		re->shaderRGBA[1] = le->color[1] * 0xff;
+ADDRLP4 32
+CNSTF4 1132396544
+ADDRLP4 0
+INDIRP4
+CNSTI4 112
+ADDP4
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 36
+CNSTF4 1325400064
+ASGNF4
+ADDRLP4 32
+INDIRF4
+ADDRLP4 36
+INDIRF4
+LTF4 $147
+ADDRLP4 28
+ADDRLP4 32
+INDIRF4
+ADDRLP4 36
 INDIRF4
 SUBF4
 CVFI4 4
@@ -1364,8 +1405,8 @@ ASGNU4
 ADDRGP4 $148
 JUMPV
 LABELV $147
-ADDRLP4 16
-ADDRLP4 20
+ADDRLP4 28
+ADDRLP4 32
 INDIRF4
 CVFI4 4
 CVIU4 4
@@ -1373,35 +1414,35 @@ ASGNU4
 LABELV $148
 ADDRLP4 4
 INDIRP4
-CNSTI4 116
+CNSTI4 117
 ADDP4
-ADDRLP4 16
+ADDRLP4 28
 INDIRU4
 CVUU1 4
 ASGNU1
-line 197
-;197:		re->shaderRGBA[1] = le->color[1] * 0xff;
-ADDRLP4 32
+line 200
+;200:		re->shaderRGBA[2] = le->color[2] * 0xff;
+ADDRLP4 44
 CNSTF4 1132396544
 ADDRLP4 0
 INDIRP4
-CNSTI4 112
+CNSTI4 116
 ADDP4
 INDIRF4
 MULF4
 ASGNF4
-ADDRLP4 36
+ADDRLP4 48
 CNSTF4 1325400064
 ASGNF4
-ADDRLP4 32
+ADDRLP4 44
 INDIRF4
-ADDRLP4 36
+ADDRLP4 48
 INDIRF4
 LTF4 $150
-ADDRLP4 28
-ADDRLP4 32
+ADDRLP4 40
+ADDRLP4 44
 INDIRF4
-ADDRLP4 36
+ADDRLP4 48
 INDIRF4
 SUBF4
 CVFI4 4
@@ -1412,61 +1453,13 @@ ASGNU4
 ADDRGP4 $151
 JUMPV
 LABELV $150
-ADDRLP4 28
-ADDRLP4 32
+ADDRLP4 40
+ADDRLP4 44
 INDIRF4
 CVFI4 4
 CVIU4 4
 ASGNU4
 LABELV $151
-ADDRLP4 4
-INDIRP4
-CNSTI4 117
-ADDP4
-ADDRLP4 28
-INDIRU4
-CVUU1 4
-ASGNU1
-line 198
-;198:		re->shaderRGBA[2] = le->color[2] * 0xff;
-ADDRLP4 44
-CNSTF4 1132396544
-ADDRLP4 0
-INDIRP4
-CNSTI4 116
-ADDP4
-INDIRF4
-MULF4
-ASGNF4
-ADDRLP4 48
-CNSTF4 1325400064
-ASGNF4
-ADDRLP4 44
-INDIRF4
-ADDRLP4 48
-INDIRF4
-LTF4 $153
-ADDRLP4 40
-ADDRLP4 44
-INDIRF4
-ADDRLP4 48
-INDIRF4
-SUBF4
-CVFI4 4
-CVIU4 4
-CNSTU4 2147483648
-ADDU4
-ASGNU4
-ADDRGP4 $154
-JUMPV
-LABELV $153
-ADDRLP4 40
-ADDRLP4 44
-INDIRF4
-CVFI4 4
-CVIU4 4
-ASGNU4
-LABELV $154
 ADDRLP4 4
 INDIRP4
 CNSTI4 118
@@ -1475,26 +1468,26 @@ ADDRLP4 40
 INDIRU4
 CVUU1 4
 ASGNU1
-line 199
-;199:		re->shaderRGBA[3] = 0xff;
+line 201
+;201:		re->shaderRGBA[3] = 0xff;
 ADDRLP4 4
 INDIRP4
 CNSTI4 119
 ADDP4
 CNSTU1 255
 ASGNU1
-line 200
-;200:	}
-LABELV $141
 line 202
-;201:
-;202:	re->reType = RT_SPRITE;
+;202:	}
+LABELV $138
+line 204
+;203:
+;204:	re->reType = RT_SPRITE;
 ADDRLP4 4
 INDIRP4
 CNSTI4 2
 ASGNI4
-line 203
-;203:	re->radius = le->radius;
+line 205
+;205:	re->radius = le->radius;
 ADDRLP4 4
 INDIRP4
 CNSTI4 132
@@ -1505,32 +1498,32 @@ CNSTI4 124
 ADDP4
 INDIRF4
 ASGNF4
-line 205
-;204:
-;205:	return le;
+line 207
+;206:
+;207:	return le;
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $136
+LABELV $133
 endproc CG_SmokePuff 52 4
 export CG_SpawnEffect
 proc CG_SpawnEffect 28 4
-line 215
-;206:}
-;207:
-;208:/*
-;209:==================
-;210:CG_SpawnEffect
-;211:
-;212:Player teleporting in or out
-;213:==================
-;214:*/
-;215:void CG_SpawnEffect( vec3_t org ) {
-line 219
-;216:	localEntity_t	*le;
-;217:	refEntity_t		*re;
-;218:
-;219:	le = CG_AllocLocalEntity();
+line 217
+;208:}
+;209:
+;210:/*
+;211:==================
+;212:CG_SpawnEffect
+;213:
+;214:Player teleporting in or out
+;215:==================
+;216:*/
+;217:void CG_SpawnEffect( vec3_t org ) {
+line 221
+;218:	localEntity_t	*le;
+;219:	refEntity_t		*re;
+;220:
+;221:	le = CG_AllocLocalEntity();
 ADDRLP4 8
 ADDRGP4 CG_AllocLocalEntity
 CALLP4
@@ -1539,24 +1532,24 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 220
-;220:	le->leFlags = 0;
+line 222
+;222:	le->leFlags = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 0
 ASGNI4
-line 221
-;221:	le->leType = LE_FADE_RGB;
+line 223
+;223:	le->leType = LE_FADE_RGB;
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 6
 ASGNI4
-line 222
-;222:	le->startTime = cg.time;
+line 224
+;224:	le->startTime = cg.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -1564,8 +1557,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 223
-;223:	le->endTime = cg.time + 500;
+line 225
+;225:	le->endTime = cg.time + 500;
 ADDRLP4 0
 INDIRP4
 CNSTI4 20
@@ -1575,8 +1568,8 @@ INDIRI4
 CNSTI4 500
 ADDI4
 ASGNI4
-line 224
-;224:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
+line 226
+;226:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
 ADDRLP4 0
 INDIRP4
 CNSTI4 28
@@ -1596,9 +1589,9 @@ SUBI4
 CVIF4 4
 DIVF4
 ASGNF4
-line 226
-;225:
-;226:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
+line 228
+;227:
+;228:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
 ADDRLP4 20
 CNSTF4 1065353216
 ASGNF4
@@ -1630,24 +1623,24 @@ ADDP4
 ADDRLP4 20
 INDIRF4
 ASGNF4
-line 228
-;227:
-;228:	re = &le->refEntity;
+line 230
+;229:
+;230:	re = &le->refEntity;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 CNSTI4 152
 ADDP4
 ASGNP4
-line 230
-;229:
-;230:	re->reType = RT_MODEL;
+line 232
+;231:
+;232:	re->reType = RT_MODEL;
 ADDRLP4 4
 INDIRP4
 CNSTI4 0
 ASGNI4
-line 231
-;231:	re->shaderTime = cg.time / 1000.0f;
+line 233
+;233:	re->shaderTime = cg.time / 1000.0f;
 ADDRLP4 4
 INDIRP4
 CNSTI4 128
@@ -1658,10 +1651,10 @@ CVIF4 4
 CNSTF4 1148846080
 DIVF4
 ASGNF4
-line 234
-;232:
-;233:#ifndef MISSIONPACK
-;234:	re->customShader = cgs.media.teleportEffectShader;
+line 236
+;234:
+;235:#ifndef MISSIONPACK
+;236:	re->customShader = cgs.media.teleportEffectShader;
 ADDRLP4 4
 INDIRP4
 CNSTI4 112
@@ -1669,9 +1662,9 @@ ADDP4
 ADDRGP4 cgs+154388+536
 INDIRI4
 ASGNI4
-line 236
-;235:#endif
-;236:	re->hModel = cgs.media.teleportEffectModel;
+line 238
+;237:#endif
+;238:	re->hModel = cgs.media.teleportEffectModel;
 ADDRLP4 4
 INDIRP4
 CNSTI4 8
@@ -1679,8 +1672,8 @@ ADDP4
 ADDRGP4 cgs+154388+532
 INDIRI4
 ASGNI4
-line 237
-;237:	AxisClear( re->axis );
+line 239
+;239:	AxisClear( re->axis );
 ADDRLP4 4
 INDIRP4
 CNSTI4 28
@@ -1689,9 +1682,9 @@ ARGP4
 ADDRGP4 AxisClear
 CALLV
 pop
-line 239
-;238:
-;239:	VectorCopy( org, re->origin );
+line 241
+;240:
+;241:	VectorCopy( org, re->origin );
 ADDRLP4 4
 INDIRP4
 CNSTI4 68
@@ -1700,11 +1693,11 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 243
-;240:#ifdef MISSIONPACK
-;241:	re->origin[2] += 16;
-;242:#else
-;243:	re->origin[2] -= 24;
+line 245
+;242:#ifdef MISSIONPACK
+;243:	re->origin[2] += 16;
+;244:#else
+;245:	re->origin[2] -= 24;
 ADDRLP4 24
 ADDRLP4 4
 INDIRP4
@@ -1719,231 +1712,231 @@ INDIRF4
 CNSTF4 1103101952
 SUBF4
 ASGNF4
-line 245
-;244:#endif
-;245:}
-LABELV $155
+line 247
+;246:#endif
+;247:}
+LABELV $152
 endproc CG_SpawnEffect 28 4
 bss
 align 4
-LABELV $164
+LABELV $161
 skip 12
 export CG_ScorePlum
 code
 proc CG_ScorePlum 52 8
-line 430
-;246:
-;247:
-;248:#ifdef MISSIONPACK
-;249:/*
-;250:===============
-;251:CG_LightningBoltBeam
+line 432
+;248:
+;249:
+;250:#ifdef MISSIONPACK
+;251:/*
 ;252:===============
-;253:*/
-;254:void CG_LightningBoltBeam( vec3_t start, vec3_t end ) {
-;255:	localEntity_t	*le;
-;256:	refEntity_t		*beam;
-;257:
-;258:	le = CG_AllocLocalEntity();
-;259:	le->leFlags = 0;
-;260:	le->leType = LE_SHOWREFENTITY;
-;261:	le->startTime = cg.time;
-;262:	le->endTime = cg.time + 50;
-;263:
-;264:	beam = &le->refEntity;
+;253:CG_LightningBoltBeam
+;254:===============
+;255:*/
+;256:void CG_LightningBoltBeam( vec3_t start, vec3_t end ) {
+;257:	localEntity_t	*le;
+;258:	refEntity_t		*beam;
+;259:
+;260:	le = CG_AllocLocalEntity();
+;261:	le->leFlags = 0;
+;262:	le->leType = LE_SHOWREFENTITY;
+;263:	le->startTime = cg.time;
+;264:	le->endTime = cg.time + 50;
 ;265:
-;266:	VectorCopy( start, beam->origin );
-;267:	// this is the end point
-;268:	VectorCopy( end, beam->oldorigin );
-;269:
-;270:	beam->reType = RT_LIGHTNING;
-;271:	beam->customShader = cgs.media.lightningShader;
-;272:}
-;273:
-;274:/*
-;275:==================
-;276:CG_KamikazeEffect
+;266:	beam = &le->refEntity;
+;267:
+;268:	VectorCopy( start, beam->origin );
+;269:	// this is the end point
+;270:	VectorCopy( end, beam->oldorigin );
+;271:
+;272:	beam->reType = RT_LIGHTNING;
+;273:	beam->customShader = cgs.media.lightningShader;
+;274:}
+;275:
+;276:/*
 ;277:==================
-;278:*/
-;279:void CG_KamikazeEffect( vec3_t org ) {
-;280:	localEntity_t	*le;
-;281:	refEntity_t		*re;
-;282:
-;283:	le = CG_AllocLocalEntity();
-;284:	le->leFlags = 0;
-;285:	le->leType = LE_KAMIKAZE;
-;286:	le->startTime = cg.time;
-;287:	le->endTime = cg.time + 3000;//2250;
-;288:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
-;289:
-;290:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
+;278:CG_KamikazeEffect
+;279:==================
+;280:*/
+;281:void CG_KamikazeEffect( vec3_t org ) {
+;282:	localEntity_t	*le;
+;283:	refEntity_t		*re;
+;284:
+;285:	le = CG_AllocLocalEntity();
+;286:	le->leFlags = 0;
+;287:	le->leType = LE_KAMIKAZE;
+;288:	le->startTime = cg.time;
+;289:	le->endTime = cg.time + 3000;//2250;
+;290:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
 ;291:
-;292:	VectorClear(le->angles.trBase);
+;292:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
 ;293:
-;294:	re = &le->refEntity;
+;294:	VectorClear(le->angles.trBase);
 ;295:
-;296:	re->reType = RT_MODEL;
-;297:	re->shaderTime = cg.time / 1000.0f;
-;298:
-;299:	re->hModel = cgs.media.kamikazeEffectModel;
+;296:	re = &le->refEntity;
+;297:
+;298:	re->reType = RT_MODEL;
+;299:	re->shaderTime = cg.time / 1000.0f;
 ;300:
-;301:	VectorCopy( org, re->origin );
+;301:	re->hModel = cgs.media.kamikazeEffectModel;
 ;302:
-;303:}
+;303:	VectorCopy( org, re->origin );
 ;304:
-;305:/*
-;306:==================
-;307:CG_ObeliskExplode
+;305:}
+;306:
+;307:/*
 ;308:==================
-;309:*/
-;310:void CG_ObeliskExplode( vec3_t org, int entityNum ) {
-;311:	localEntity_t	*le;
-;312:	vec3_t origin;
-;313:
-;314:	// create an explosion
-;315:	VectorCopy( org, origin );
-;316:	origin[2] += 64;
-;317:	le = CG_MakeExplosion( origin, vec3_origin,
-;318:						   cgs.media.dishFlashModel,
-;319:						   cgs.media.rocketExplosionShader,
-;320:						   600, qtrue );
-;321:	le->light = 300;
-;322:	le->lightColor[0] = 1;
-;323:	le->lightColor[1] = 0.75;
-;324:	le->lightColor[2] = 0.0;
-;325:}
-;326:
-;327:/*
-;328:==================
-;329:CG_ObeliskPain
+;309:CG_ObeliskExplode
+;310:==================
+;311:*/
+;312:void CG_ObeliskExplode( vec3_t org, int entityNum ) {
+;313:	localEntity_t	*le;
+;314:	vec3_t origin;
+;315:
+;316:	// create an explosion
+;317:	VectorCopy( org, origin );
+;318:	origin[2] += 64;
+;319:	le = CG_MakeExplosion( origin, vec3_origin,
+;320:						   cgs.media.dishFlashModel,
+;321:						   cgs.media.rocketExplosionShader,
+;322:						   600, qtrue );
+;323:	le->light = 300;
+;324:	le->lightColor[0] = 1;
+;325:	le->lightColor[1] = 0.75;
+;326:	le->lightColor[2] = 0.0;
+;327:}
+;328:
+;329:/*
 ;330:==================
-;331:*/
-;332:void CG_ObeliskPain( vec3_t org ) {
-;333:	float r;
-;334:	sfxHandle_t sfx;
-;335:
-;336:	// hit sound
-;337:	r = rand() & 3;
-;338:	if ( r < 2 ) {
-;339:		sfx = cgs.media.obeliskHitSound1;
-;340:	} else if ( r == 2 ) {
-;341:		sfx = cgs.media.obeliskHitSound2;
-;342:	} else {
-;343:		sfx = cgs.media.obeliskHitSound3;
-;344:	}
-;345:	trap_S_StartSound ( org, ENTITYNUM_NONE, CHAN_BODY, sfx );
-;346:}
-;347:
-;348:
-;349:/*
-;350:==================
-;351:CG_InvulnerabilityImpact
+;331:CG_ObeliskPain
+;332:==================
+;333:*/
+;334:void CG_ObeliskPain( vec3_t org ) {
+;335:	float r;
+;336:	sfxHandle_t sfx;
+;337:
+;338:	// hit sound
+;339:	r = rand() & 3;
+;340:	if ( r < 2 ) {
+;341:		sfx = cgs.media.obeliskHitSound1;
+;342:	} else if ( r == 2 ) {
+;343:		sfx = cgs.media.obeliskHitSound2;
+;344:	} else {
+;345:		sfx = cgs.media.obeliskHitSound3;
+;346:	}
+;347:	trap_S_StartSound ( org, ENTITYNUM_NONE, CHAN_BODY, sfx );
+;348:}
+;349:
+;350:
+;351:/*
 ;352:==================
-;353:*/
-;354:void CG_InvulnerabilityImpact( vec3_t org, vec3_t angles ) {
-;355:	localEntity_t	*le;
-;356:	refEntity_t		*re;
-;357:	int				r;
-;358:	sfxHandle_t		sfx;
-;359:
-;360:	le = CG_AllocLocalEntity();
-;361:	le->leFlags = 0;
-;362:	le->leType = LE_INVULIMPACT;
-;363:	le->startTime = cg.time;
-;364:	le->endTime = cg.time + 1000;
-;365:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
-;366:
-;367:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
+;353:CG_InvulnerabilityImpact
+;354:==================
+;355:*/
+;356:void CG_InvulnerabilityImpact( vec3_t org, vec3_t angles ) {
+;357:	localEntity_t	*le;
+;358:	refEntity_t		*re;
+;359:	int				r;
+;360:	sfxHandle_t		sfx;
+;361:
+;362:	le = CG_AllocLocalEntity();
+;363:	le->leFlags = 0;
+;364:	le->leType = LE_INVULIMPACT;
+;365:	le->startTime = cg.time;
+;366:	le->endTime = cg.time + 1000;
+;367:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
 ;368:
-;369:	re = &le->refEntity;
+;369:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
 ;370:
-;371:	re->reType = RT_MODEL;
-;372:	re->shaderTime = cg.time / 1000.0f;
-;373:
-;374:	re->hModel = cgs.media.invulnerabilityImpactModel;
+;371:	re = &le->refEntity;
+;372:
+;373:	re->reType = RT_MODEL;
+;374:	re->shaderTime = cg.time / 1000.0f;
 ;375:
-;376:	VectorCopy( org, re->origin );
-;377:	AnglesToAxis( angles, re->axis );
-;378:
-;379:	r = rand() & 3;
-;380:	if ( r < 2 ) {
-;381:		sfx = cgs.media.invulnerabilityImpactSound1;
-;382:	} else if ( r == 2 ) {
-;383:		sfx = cgs.media.invulnerabilityImpactSound2;
-;384:	} else {
-;385:		sfx = cgs.media.invulnerabilityImpactSound3;
-;386:	}
-;387:	trap_S_StartSound (org, ENTITYNUM_NONE, CHAN_BODY, sfx );
-;388:}
-;389:
-;390:/*
-;391:==================
-;392:CG_InvulnerabilityJuiced
+;376:	re->hModel = cgs.media.invulnerabilityImpactModel;
+;377:
+;378:	VectorCopy( org, re->origin );
+;379:	AnglesToAxis( angles, re->axis );
+;380:
+;381:	r = rand() & 3;
+;382:	if ( r < 2 ) {
+;383:		sfx = cgs.media.invulnerabilityImpactSound1;
+;384:	} else if ( r == 2 ) {
+;385:		sfx = cgs.media.invulnerabilityImpactSound2;
+;386:	} else {
+;387:		sfx = cgs.media.invulnerabilityImpactSound3;
+;388:	}
+;389:	trap_S_StartSound (org, ENTITYNUM_NONE, CHAN_BODY, sfx );
+;390:}
+;391:
+;392:/*
 ;393:==================
-;394:*/
-;395:void CG_InvulnerabilityJuiced( vec3_t org ) {
-;396:	localEntity_t	*le;
-;397:	refEntity_t		*re;
-;398:	vec3_t			angles;
-;399:
-;400:	le = CG_AllocLocalEntity();
-;401:	le->leFlags = 0;
-;402:	le->leType = LE_INVULJUICED;
-;403:	le->startTime = cg.time;
-;404:	le->endTime = cg.time + 10000;
-;405:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
-;406:
-;407:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
+;394:CG_InvulnerabilityJuiced
+;395:==================
+;396:*/
+;397:void CG_InvulnerabilityJuiced( vec3_t org ) {
+;398:	localEntity_t	*le;
+;399:	refEntity_t		*re;
+;400:	vec3_t			angles;
+;401:
+;402:	le = CG_AllocLocalEntity();
+;403:	le->leFlags = 0;
+;404:	le->leType = LE_INVULJUICED;
+;405:	le->startTime = cg.time;
+;406:	le->endTime = cg.time + 10000;
+;407:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
 ;408:
-;409:	re = &le->refEntity;
+;409:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
 ;410:
-;411:	re->reType = RT_MODEL;
-;412:	re->shaderTime = cg.time / 1000.0f;
-;413:
-;414:	re->hModel = cgs.media.invulnerabilityJuicedModel;
+;411:	re = &le->refEntity;
+;412:
+;413:	re->reType = RT_MODEL;
+;414:	re->shaderTime = cg.time / 1000.0f;
 ;415:
-;416:	VectorCopy( org, re->origin );
-;417:	VectorClear(angles);
-;418:	AnglesToAxis( angles, re->axis );
-;419:
-;420:	trap_S_StartSound (org, ENTITYNUM_NONE, CHAN_BODY, cgs.media.invulnerabilityJuicedSound );
-;421:}
-;422:
-;423:#endif
+;416:	re->hModel = cgs.media.invulnerabilityJuicedModel;
+;417:
+;418:	VectorCopy( org, re->origin );
+;419:	VectorClear(angles);
+;420:	AnglesToAxis( angles, re->axis );
+;421:
+;422:	trap_S_StartSound (org, ENTITYNUM_NONE, CHAN_BODY, cgs.media.invulnerabilityJuicedSound );
+;423:}
 ;424:
-;425:/*
-;426:==================
-;427:CG_ScorePlum
+;425:#endif
+;426:
+;427:/*
 ;428:==================
-;429:*/
-;430:void CG_ScorePlum( int client, vec3_t org, int score ) {
-line 437
-;431:	localEntity_t	*le;
-;432:	refEntity_t		*re;
-;433:	vec3_t			angles;
-;434:	static vec3_t lastPos;
-;435:
-;436:	// only visualize for the client that scored
-;437:	if (client != cg.predictedPlayerState.clientNum || cg_scorePlum.integer == 0) {
+;429:CG_ScorePlum
+;430:==================
+;431:*/
+;432:void CG_ScorePlum( int client, vec3_t org, int score ) {
+line 439
+;433:	localEntity_t	*le;
+;434:	refEntity_t		*re;
+;435:	vec3_t			angles;
+;436:	static vec3_t lastPos;
+;437:
+;438:	// only visualize for the client that scored
+;439:	if (client != cg.predictedPlayerState.clientNum || cg_scorePlum.integer == 0) {
 ADDRFP4 0
 INDIRI4
 ADDRGP4 cg+109684+140
 INDIRI4
-NEI4 $170
+NEI4 $167
 ADDRGP4 cg_scorePlum+12
 INDIRI4
 CNSTI4 0
-NEI4 $165
-LABELV $170
-line 438
-;438:		return;
-ADDRGP4 $163
+NEI4 $162
+LABELV $167
+line 440
+;440:		return;
+ADDRGP4 $160
 JUMPV
-LABELV $165
-line 441
-;439:	}
-;440:
-;441:	le = CG_AllocLocalEntity();
+LABELV $162
+line 443
+;441:	}
+;442:
+;443:	le = CG_AllocLocalEntity();
 ADDRLP4 20
 ADDRGP4 CG_AllocLocalEntity
 CALLP4
@@ -1952,16 +1945,16 @@ ADDRLP4 0
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 442
-;442:	le->leFlags = 0;
+line 444
+;444:	le->leFlags = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 0
 ASGNI4
-line 443
-;443:	le->leType = LE_SCOREPLUM;
+line 445
+;445:	le->leType = LE_SCOREPLUM;
 ADDRLP4 24
 CNSTI4 8
 ASGNI4
@@ -1973,8 +1966,8 @@ ADDP4
 ADDRLP4 24
 INDIRI4
 ASGNI4
-line 444
-;444:	le->startTime = cg.time;
+line 446
+;446:	le->startTime = cg.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -1982,8 +1975,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 445
-;445:	le->endTime = cg.time + 4000;
+line 447
+;447:	le->endTime = cg.time + 4000;
 ADDRLP4 0
 INDIRP4
 CNSTI4 20
@@ -1993,8 +1986,8 @@ INDIRI4
 CNSTI4 4000
 ADDI4
 ASGNI4
-line 446
-;446:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
+line 448
+;448:	le->lifeRate = 1.0 / ( le->endTime - le->startTime );
 ADDRLP4 0
 INDIRP4
 CNSTI4 28
@@ -2014,10 +2007,10 @@ SUBI4
 CVIF4 4
 DIVF4
 ASGNF4
-line 449
-;447:
-;448:	
-;449:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
+line 451
+;449:
+;450:	
+;451:	le->color[0] = le->color[1] = le->color[2] = le->color[3] = 1.0;
 ADDRLP4 36
 CNSTF4 1065353216
 ASGNF4
@@ -2049,8 +2042,8 @@ ADDP4
 ADDRLP4 36
 INDIRF4
 ASGNF4
-line 450
-;450:	le->radius = score;
+line 452
+;452:	le->radius = score;
 ADDRLP4 0
 INDIRP4
 CNSTI4 124
@@ -2059,9 +2052,9 @@ ADDRFP4 8
 INDIRI4
 CVIF4 4
 ASGNF4
-line 452
-;451:	
-;452:	VectorCopy( org, le->pos.trBase );
+line 454
+;453:	
+;454:	VectorCopy( org, le->pos.trBase );
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
@@ -2070,8 +2063,8 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 453
-;453:	if (org[2] >= lastPos[2] - 20 && org[2] <= lastPos[2] + 20) {
+line 455
+;455:	if (org[2] >= lastPos[2] - 20 && org[2] <= lastPos[2] + 20) {
 ADDRLP4 40
 ADDRFP4 4
 INDIRP4
@@ -2084,22 +2077,22 @@ CNSTF4 1101004800
 ASGNF4
 ADDRLP4 40
 INDIRF4
-ADDRGP4 $164+8
+ADDRGP4 $161+8
 INDIRF4
 ADDRLP4 44
 INDIRF4
 SUBF4
-LTF4 $173
+LTF4 $170
 ADDRLP4 40
 INDIRF4
-ADDRGP4 $164+8
+ADDRGP4 $161+8
 INDIRF4
 ADDRLP4 44
 INDIRF4
 ADDF4
-GTF4 $173
-line 454
-;454:		le->pos.trBase[2] -= 20;
+GTF4 $170
+line 456
+;456:		le->pos.trBase[2] -= 20;
 ADDRLP4 48
 ADDRLP4 0
 INDIRP4
@@ -2114,46 +2107,46 @@ INDIRF4
 CNSTF4 1101004800
 SUBF4
 ASGNF4
-line 455
-;455:	}
-LABELV $173
-line 458
-;456:
-;457:	//CG_Printf( "Plum origin %i %i %i -- %i\n", (int)org[0], (int)org[1], (int)org[2], (int)Distance(org, lastPos));
-;458:	VectorCopy(org, lastPos);
-ADDRGP4 $164
+line 457
+;457:	}
+LABELV $170
+line 460
+;458:
+;459:	//CG_Printf( "Plum origin %i %i %i -- %i\n", (int)org[0], (int)org[1], (int)org[2], (int)Distance(org, lastPos));
+;460:	VectorCopy(org, lastPos);
+ADDRGP4 $161
 ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 461
-;459:
-;460:
-;461:	re = &le->refEntity;
+line 463
+;461:
+;462:
+;463:	re = &le->refEntity;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 CNSTI4 152
 ADDP4
 ASGNP4
-line 463
-;462:
-;463:	re->reType = RT_SPRITE;
+line 465
+;464:
+;465:	re->reType = RT_SPRITE;
 ADDRLP4 4
 INDIRP4
 CNSTI4 2
 ASGNI4
-line 464
-;464:	re->radius = 16;
+line 466
+;466:	re->radius = 16;
 ADDRLP4 4
 INDIRP4
 CNSTI4 132
 ADDP4
 CNSTF4 1098907648
 ASGNF4
-line 466
-;465:
-;466:	VectorClear(angles);
+line 468
+;467:
+;468:	VectorClear(angles);
 ADDRLP4 48
 CNSTF4 0
 ASGNF4
@@ -2169,8 +2162,8 @@ ADDRLP4 8
 ADDRLP4 48
 INDIRF4
 ASGNF4
-line 467
-;467:	AnglesToAxis( angles, re->axis );
+line 469
+;469:	AnglesToAxis( angles, re->axis );
 ADDRLP4 8
 ARGP4
 ADDRLP4 4
@@ -2181,37 +2174,37 @@ ARGP4
 ADDRGP4 AnglesToAxis
 CALLV
 pop
-line 468
-;468:}
-LABELV $163
+line 470
+;470:}
+LABELV $160
 endproc CG_ScorePlum 52 8
 export CG_MakeExplosion
 proc CG_MakeExplosion 60 8
-line 478
-;469:
-;470:
-;471:/*
-;472:====================
-;473:CG_MakeExplosion
+line 480
+;471:
+;472:
+;473:/*
 ;474:====================
-;475:*/
-;476:localEntity_t *CG_MakeExplosion( vec3_t origin, vec3_t dir, 
-;477:								qhandle_t hModel, qhandle_t shader,
-;478:								int msec, qboolean isSprite ) {
-line 484
-;479:	float			ang;
-;480:	localEntity_t	*ex;
-;481:	int				offset;
-;482:	vec3_t			tmpVec, newOrigin;
-;483:
-;484:	if ( msec <= 0 ) {
+;475:CG_MakeExplosion
+;476:====================
+;477:*/
+;478:localEntity_t *CG_MakeExplosion( vec3_t origin, vec3_t dir, 
+;479:								qhandle_t hModel, qhandle_t shader,
+;480:								int msec, qboolean isSprite ) {
+line 486
+;481:	float			ang;
+;482:	localEntity_t	*ex;
+;483:	int				offset;
+;484:	vec3_t			tmpVec, newOrigin;
+;485:
+;486:	if ( msec <= 0 ) {
 ADDRFP4 16
 INDIRI4
 CNSTI4 0
-GTI4 $180
-line 485
-;485:		CG_Error( "CG_MakeExplosion: msec = %i", msec );
-ADDRGP4 $182
+GTI4 $177
+line 487
+;487:		CG_Error( "CG_MakeExplosion: msec = %i", msec );
+ADDRGP4 $179
 ARGP4
 ADDRFP4 16
 INDIRI4
@@ -2219,13 +2212,13 @@ ARGI4
 ADDRGP4 CG_Error
 CALLV
 pop
-line 486
-;486:	}
-LABELV $180
-line 489
-;487:
-;488:	// skew the time a bit so they aren't all in sync
-;489:	offset = rand() & 63;
+line 488
+;488:	}
+LABELV $177
+line 491
+;489:
+;490:	// skew the time a bit so they aren't all in sync
+;491:	offset = rand() & 63;
 ADDRLP4 36
 ADDRGP4 rand
 CALLI4
@@ -2236,9 +2229,9 @@ INDIRI4
 CNSTI4 63
 BANDI4
 ASGNI4
-line 491
-;490:
-;491:	ex = CG_AllocLocalEntity();
+line 493
+;492:
+;493:	ex = CG_AllocLocalEntity();
 ADDRLP4 40
 ADDRGP4 CG_AllocLocalEntity
 CALLP4
@@ -2247,24 +2240,24 @@ ADDRLP4 0
 ADDRLP4 40
 INDIRP4
 ASGNP4
-line 492
-;492:	if ( isSprite ) {
+line 494
+;494:	if ( isSprite ) {
 ADDRFP4 20
 INDIRI4
 CNSTI4 0
-EQI4 $183
-line 493
-;493:		ex->leType = LE_SPRITE_EXPLOSION;
+EQI4 $180
+line 495
+;495:		ex->leType = LE_SPRITE_EXPLOSION;
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 2
 ASGNI4
-line 496
-;494:
-;495:		// randomly rotate sprite orientation
-;496:		ex->refEntity.rotation = rand() % 360;
+line 498
+;496:
+;497:		// randomly rotate sprite orientation
+;498:		ex->refEntity.rotation = rand() % 360;
 ADDRLP4 44
 ADDRGP4 rand
 CALLI4
@@ -2279,8 +2272,8 @@ CNSTI4 360
 MODI4
 CVIF4 4
 ASGNF4
-line 497
-;497:		VectorScale( dir, 16, tmpVec );
+line 499
+;499:		VectorScale( dir, 16, tmpVec );
 ADDRLP4 48
 CNSTF4 1098907648
 ASGNF4
@@ -2315,8 +2308,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 498
-;498:		VectorAdd( tmpVec, origin, newOrigin );
+line 500
+;500:		VectorAdd( tmpVec, origin, newOrigin );
 ADDRLP4 56
 ADDRFP4 0
 INDIRP4
@@ -2349,37 +2342,37 @@ ADDP4
 INDIRF4
 ADDF4
 ASGNF4
-line 499
-;499:	} else {
-ADDRGP4 $184
+line 501
+;501:	} else {
+ADDRGP4 $181
 JUMPV
-LABELV $183
-line 500
-;500:		ex->leType = LE_EXPLOSION;
+LABELV $180
+line 502
+;502:		ex->leType = LE_EXPLOSION;
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 1
 ASGNI4
-line 501
-;501:		VectorCopy( origin, newOrigin );
+line 503
+;503:		VectorCopy( origin, newOrigin );
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 504
-;502:
-;503:		// set axis with random rotate
-;504:		if ( !dir ) {
+line 506
+;504:
+;505:		// set axis with random rotate
+;506:		if ( !dir ) {
 ADDRFP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $191
-line 505
-;505:			AxisClear( ex->refEntity.axis );
+NEU4 $188
+line 507
+;507:			AxisClear( ex->refEntity.axis );
 ADDRLP4 0
 INDIRP4
 CNSTI4 180
@@ -2388,13 +2381,13 @@ ARGP4
 ADDRGP4 AxisClear
 CALLV
 pop
-line 506
-;506:		} else {
-ADDRGP4 $192
+line 508
+;508:		} else {
+ADDRGP4 $189
 JUMPV
-LABELV $191
-line 507
-;507:			ang = rand() % 360;
+LABELV $188
+line 509
+;509:			ang = rand() % 360;
 ADDRLP4 44
 ADDRGP4 rand
 CALLI4
@@ -2406,8 +2399,8 @@ CNSTI4 360
 MODI4
 CVIF4 4
 ASGNF4
-line 508
-;508:			VectorCopy( dir, ex->refEntity.axis[0] );
+line 510
+;510:			VectorCopy( dir, ex->refEntity.axis[0] );
 ADDRLP4 0
 INDIRP4
 CNSTI4 180
@@ -2416,8 +2409,8 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 509
-;509:			RotateAroundDirection( ex->refEntity.axis, ang );
+line 511
+;511:			RotateAroundDirection( ex->refEntity.axis, ang );
 ADDRLP4 0
 INDIRP4
 CNSTI4 180
@@ -2429,15 +2422,15 @@ ARGF4
 ADDRGP4 RotateAroundDirection
 CALLV
 pop
-line 510
-;510:		}
-LABELV $192
-line 511
-;511:	}
-LABELV $184
+line 512
+;512:		}
+LABELV $189
 line 513
-;512:
-;513:	ex->startTime = cg.time - offset;
+;513:	}
+LABELV $181
+line 515
+;514:
+;515:	ex->startTime = cg.time - offset;
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -2448,8 +2441,8 @@ ADDRLP4 28
 INDIRI4
 SUBI4
 ASGNI4
-line 514
-;514:	ex->endTime = ex->startTime + msec;
+line 516
+;516:	ex->endTime = ex->startTime + msec;
 ADDRLP4 0
 INDIRP4
 CNSTI4 20
@@ -2463,10 +2456,10 @@ ADDRFP4 16
 INDIRI4
 ADDI4
 ASGNI4
-line 517
-;515:
-;516:	// bias the time so all shader effects start correctly
-;517:	ex->refEntity.shaderTime = ex->startTime / 1000.0f;
+line 519
+;517:
+;518:	// bias the time so all shader effects start correctly
+;519:	ex->refEntity.shaderTime = ex->startTime / 1000.0f;
 ADDRLP4 0
 INDIRP4
 CNSTI4 280
@@ -2480,9 +2473,9 @@ CVIF4 4
 CNSTF4 1148846080
 DIVF4
 ASGNF4
-line 519
-;518:
-;519:	ex->refEntity.hModel = hModel;
+line 521
+;520:
+;521:	ex->refEntity.hModel = hModel;
 ADDRLP4 0
 INDIRP4
 CNSTI4 160
@@ -2490,8 +2483,8 @@ ADDP4
 ADDRFP4 8
 INDIRI4
 ASGNI4
-line 520
-;520:	ex->refEntity.customShader = shader;
+line 522
+;522:	ex->refEntity.customShader = shader;
 ADDRLP4 0
 INDIRP4
 CNSTI4 264
@@ -2499,10 +2492,10 @@ ADDP4
 ADDRFP4 12
 INDIRI4
 ASGNI4
-line 523
-;521:
-;522:	// set origin
-;523:	VectorCopy( newOrigin, ex->refEntity.origin );
+line 525
+;523:
+;524:	// set origin
+;525:	VectorCopy( newOrigin, ex->refEntity.origin );
 ADDRLP4 0
 INDIRP4
 CNSTI4 220
@@ -2510,8 +2503,8 @@ ADDP4
 ADDRLP4 4
 INDIRB
 ASGNB 12
-line 524
-;524:	VectorCopy( newOrigin, ex->refEntity.oldorigin );
+line 526
+;526:	VectorCopy( newOrigin, ex->refEntity.oldorigin );
 ADDRLP4 0
 INDIRP4
 CNSTI4 236
@@ -2519,9 +2512,9 @@ ADDP4
 ADDRLP4 4
 INDIRB
 ASGNB 12
-line 526
-;525:
-;526:	ex->color[0] = ex->color[1] = ex->color[2] = 1.0;
+line 528
+;527:
+;528:	ex->color[0] = ex->color[1] = ex->color[2] = 1.0;
 ADDRLP4 56
 CNSTF4 1065353216
 ASGNF4
@@ -2546,45 +2539,45 @@ ADDP4
 ADDRLP4 56
 INDIRF4
 ASGNF4
-line 528
-;527:
-;528:	return ex;
+line 530
+;529:
+;530:	return ex;
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $179
+LABELV $176
 endproc CG_MakeExplosion 60 8
 export CG_Bleed
 proc CG_Bleed 20 0
-line 539
-;529:}
-;530:
-;531:
-;532:/*
-;533:=================
-;534:CG_Bleed
-;535:
-;536:This is the spurt of blood when a character gets hit
-;537:=================
-;538:*/
-;539:void CG_Bleed( vec3_t origin, int entityNum ) {
-line 542
-;540:	localEntity_t	*ex;
-;541:
-;542:	if ( !cg_blood.integer ) {
+line 541
+;531:}
+;532:
+;533:
+;534:/*
+;535:=================
+;536:CG_Bleed
+;537:
+;538:This is the spurt of blood when a character gets hit
+;539:=================
+;540:*/
+;541:void CG_Bleed( vec3_t origin, int entityNum ) {
+line 544
+;542:	localEntity_t	*ex;
+;543:
+;544:	if ( !cg_blood.integer ) {
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $195
-line 543
-;543:		return;
-ADDRGP4 $194
+NEI4 $192
+line 545
+;545:		return;
+ADDRGP4 $191
 JUMPV
-LABELV $195
-line 546
-;544:	}
-;545:
-;546:	ex = CG_AllocLocalEntity();
+LABELV $192
+line 548
+;546:	}
+;547:
+;548:	ex = CG_AllocLocalEntity();
 ADDRLP4 4
 ADDRGP4 CG_AllocLocalEntity
 CALLP4
@@ -2593,17 +2586,17 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 547
-;547:	ex->leType = LE_EXPLOSION;
+line 549
+;549:	ex->leType = LE_EXPLOSION;
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 1
 ASGNI4
-line 549
-;548:
-;549:	ex->startTime = cg.time;
+line 551
+;550:
+;551:	ex->startTime = cg.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -2611,8 +2604,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 550
-;550:	ex->endTime = ex->startTime + 500;
+line 552
+;552:	ex->endTime = ex->startTime + 500;
 ADDRLP4 0
 INDIRP4
 CNSTI4 20
@@ -2625,9 +2618,9 @@ INDIRI4
 CNSTI4 500
 ADDI4
 ASGNI4
-line 552
-;551:	
-;552:	VectorCopy ( origin, ex->refEntity.origin);
+line 554
+;553:	
+;554:	VectorCopy ( origin, ex->refEntity.origin);
 ADDRLP4 0
 INDIRP4
 CNSTI4 220
@@ -2636,16 +2629,16 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 553
-;553:	ex->refEntity.reType = RT_SPRITE;
+line 555
+;555:	ex->refEntity.reType = RT_SPRITE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 152
 ADDP4
 CNSTI4 2
 ASGNI4
-line 554
-;554:	ex->refEntity.rotation = rand() % 360;
+line 556
+;556:	ex->refEntity.rotation = rand() % 360;
 ADDRLP4 12
 ADDRGP4 rand
 CALLI4
@@ -2660,17 +2653,17 @@ CNSTI4 360
 MODI4
 CVIF4 4
 ASGNF4
-line 555
-;555:	ex->refEntity.radius = 24;
+line 557
+;557:	ex->refEntity.radius = 24;
 ADDRLP4 0
 INDIRP4
 CNSTI4 284
 ADDP4
 CNSTF4 1103101952
 ASGNF4
-line 557
-;556:
-;557:	ex->refEntity.customShader = cgs.media.bloodExplosionShader;
+line 559
+;558:
+;559:	ex->refEntity.customShader = cgs.media.bloodExplosionShader;
 ADDRLP4 0
 INDIRP4
 CNSTI4 264
@@ -2678,10 +2671,10 @@ ADDP4
 ADDRGP4 cgs+154388+512
 INDIRI4
 ASGNI4
-line 560
-;558:
-;559:	// don't show player's own blood in view
-;560:	if ( entityNum == cg.snap->ps.clientNum ) {
+line 562
+;560:
+;561:	// don't show player's own blood in view
+;562:	if ( entityNum == cg.snap->ps.clientNum ) {
 ADDRFP4 4
 INDIRI4
 ADDRGP4 cg+36
@@ -2689,9 +2682,9 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-NEI4 $201
-line 561
-;561:		ex->refEntity.renderfx |= RF_THIRD_PERSON;
+NEI4 $198
+line 563
+;563:		ex->refEntity.renderfx |= RF_THIRD_PERSON;
 ADDRLP4 16
 ADDRLP4 0
 INDIRP4
@@ -2706,30 +2699,30 @@ INDIRI4
 CNSTI4 2
 BORI4
 ASGNI4
-line 562
-;562:	}
-LABELV $201
-line 563
-;563:}
-LABELV $194
+line 564
+;564:	}
+LABELV $198
+line 565
+;565:}
+LABELV $191
 endproc CG_Bleed 20 0
 export CG_LaunchGib
 proc CG_LaunchGib 20 8
-line 572
-;564:
-;565:
+line 574
 ;566:
-;567:/*
-;568:==================
-;569:CG_LaunchGib
+;567:
+;568:
+;569:/*
 ;570:==================
-;571:*/
-;572:void CG_LaunchGib( vec3_t origin, vec3_t velocity, qhandle_t hModel ) {
-line 576
-;573:	localEntity_t	*le;
-;574:	refEntity_t		*re;
-;575:
-;576:	le = CG_AllocLocalEntity();
+;571:CG_LaunchGib
+;572:==================
+;573:*/
+;574:void CG_LaunchGib( vec3_t origin, vec3_t velocity, qhandle_t hModel ) {
+line 578
+;575:	localEntity_t	*le;
+;576:	refEntity_t		*re;
+;577:
+;578:	le = CG_AllocLocalEntity();
 ADDRLP4 8
 ADDRGP4 CG_AllocLocalEntity
 CALLP4
@@ -2738,25 +2731,25 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 577
-;577:	re = &le->refEntity;
+line 579
+;579:	re = &le->refEntity;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 CNSTI4 152
 ADDP4
 ASGNP4
-line 579
-;578:
-;579:	le->leType = LE_FRAGMENT;
+line 581
+;580:
+;581:	le->leType = LE_FRAGMENT;
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 3
 ASGNI4
-line 580
-;580:	le->startTime = cg.time;
+line 582
+;582:	le->startTime = cg.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -2764,8 +2757,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 581
-;581:	le->endTime = le->startTime + 5000 + random() * 3000;
+line 583
+;583:	le->endTime = le->startTime + 5000 + random() * 3000;
 ADDRLP4 12
 ADDRGP4 rand
 CALLI4
@@ -2794,9 +2787,9 @@ MULF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 583
-;582:
-;583:	VectorCopy( origin, re->origin );
+line 585
+;584:
+;585:	VectorCopy( origin, re->origin );
 ADDRLP4 4
 INDIRP4
 CNSTI4 68
@@ -2805,8 +2798,8 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 584
-;584:	AxisCopy( axisDefault, re->axis );
+line 586
+;586:	AxisCopy( axisDefault, re->axis );
 ADDRGP4 axisDefault
 ARGP4
 ADDRLP4 4
@@ -2817,8 +2810,8 @@ ARGP4
 ADDRGP4 AxisCopy
 CALLV
 pop
-line 585
-;585:	re->hModel = hModel;
+line 587
+;587:	re->hModel = hModel;
 ADDRLP4 4
 INDIRP4
 CNSTI4 8
@@ -2826,17 +2819,17 @@ ADDP4
 ADDRFP4 8
 INDIRI4
 ASGNI4
-line 587
-;586:
-;587:	le->pos.trType = TR_GRAVITY;
+line 589
+;588:
+;589:	le->pos.trType = TR_GRAVITY;
 ADDRLP4 0
 INDIRP4
 CNSTI4 32
 ADDP4
 CNSTI4 5
 ASGNI4
-line 588
-;588:	VectorCopy( origin, le->pos.trBase );
+line 590
+;590:	VectorCopy( origin, le->pos.trBase );
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
@@ -2845,8 +2838,8 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 589
-;589:	VectorCopy( velocity, le->pos.trDelta );
+line 591
+;591:	VectorCopy( velocity, le->pos.trDelta );
 ADDRLP4 0
 INDIRP4
 CNSTI4 56
@@ -2855,8 +2848,8 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 590
-;590:	le->pos.trTime = cg.time;
+line 592
+;592:	le->pos.trTime = cg.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 36
@@ -2864,74 +2857,74 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 592
-;591:
-;592:	le->bounceFactor = 0.6f;
+line 594
+;593:
+;594:	le->bounceFactor = 0.6f;
 ADDRLP4 0
 INDIRP4
 CNSTI4 104
 ADDP4
 CNSTF4 1058642330
 ASGNF4
-line 594
-;593:
-;594:	le->leBounceSoundType = LEBS_BLOOD;
+line 596
+;595:
+;596:	le->leBounceSoundType = LEBS_BLOOD;
 ADDRLP4 0
 INDIRP4
 CNSTI4 148
 ADDP4
 CNSTI4 1
 ASGNI4
-line 595
-;595:	le->leMarkType = LEMT_BLOOD;
+line 597
+;597:	le->leMarkType = LEMT_BLOOD;
 ADDRLP4 0
 INDIRP4
 CNSTI4 144
 ADDP4
 CNSTI4 2
 ASGNI4
-line 596
-;596:}
-LABELV $204
+line 598
+;598:}
+LABELV $201
 endproc CG_LaunchGib 20 8
 export CG_GibPlayer
 proc CG_GibPlayer 148 12
-line 607
-;597:
-;598:/*
-;599:===================
-;600:CG_GibPlayer
-;601:
-;602:Generated a bunch of gibs launching out from the bodies location
-;603:===================
-;604:*/
-;605:#define	GIB_VELOCITY	250
-;606:#define	GIB_JUMP		250
-;607:void CG_GibPlayer( vec3_t playerOrigin ) {
-line 610
-;608:	vec3_t	origin, velocity;
-;609:
-;610:	if ( !cg_blood.integer ) {
+line 609
+;599:
+;600:/*
+;601:===================
+;602:CG_GibPlayer
+;603:
+;604:Generated a bunch of gibs launching out from the bodies location
+;605:===================
+;606:*/
+;607:#define	GIB_VELOCITY	250
+;608:#define	GIB_JUMP		250
+;609:void CG_GibPlayer( vec3_t playerOrigin ) {
+line 612
+;610:	vec3_t	origin, velocity;
+;611:
+;612:	if ( !cg_blood.integer ) {
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $208
-line 611
-;611:		return;
-ADDRGP4 $207
+NEI4 $205
+line 613
+;613:		return;
+ADDRGP4 $204
 JUMPV
-LABELV $208
-line 614
-;612:	}
-;613:
-;614:	VectorCopy( playerOrigin, origin );
+LABELV $205
+line 616
+;614:	}
+;615:
+;616:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 615
-;615:	velocity[0] = crandom()*GIB_VELOCITY;
+line 617
+;617:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 24
 ADDRGP4 rand
 CALLI4
@@ -2951,8 +2944,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 616
-;616:	velocity[1] = crandom()*GIB_VELOCITY;
+line 618
+;618:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 28
 ADDRGP4 rand
 CALLI4
@@ -2972,8 +2965,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 617
-;617:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 619
+;619:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 32
 ADDRGP4 rand
 CALLI4
@@ -2995,8 +2988,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 618
-;618:	if ( rand() & 1 ) {
+line 620
+;620:	if ( rand() & 1 ) {
 ADDRLP4 36
 ADDRGP4 rand
 CALLI4
@@ -3006,9 +2999,9 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $213
-line 619
-;619:		CG_LaunchGib( origin, velocity, cgs.media.gibSkull );
+EQI4 $210
+line 621
+;621:		CG_LaunchGib( origin, velocity, cgs.media.gibSkull );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3019,13 +3012,13 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 620
-;620:	} else {
-ADDRGP4 $214
+line 622
+;622:	} else {
+ADDRGP4 $211
 JUMPV
-LABELV $213
-line 621
-;621:		CG_LaunchGib( origin, velocity, cgs.media.gibBrain );
+LABELV $210
+line 623
+;623:		CG_LaunchGib( origin, velocity, cgs.media.gibBrain );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3036,33 +3029,33 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 622
-;622:	}
-LABELV $214
-line 625
-;623:
-;624:	// allow gibs to be turned off for speed
-;625:	if ( !cg_gibs.integer ) {
+line 624
+;624:	}
+LABELV $211
+line 627
+;625:
+;626:	// allow gibs to be turned off for speed
+;627:	if ( !cg_gibs.integer ) {
 ADDRGP4 cg_gibs+12
 INDIRI4
 CNSTI4 0
-NEI4 $219
-line 626
-;626:		return;
-ADDRGP4 $207
+NEI4 $216
+line 628
+;628:		return;
+ADDRGP4 $204
 JUMPV
-LABELV $219
-line 629
-;627:	}
-;628:
-;629:	VectorCopy( playerOrigin, origin );
+LABELV $216
+line 631
+;629:	}
+;630:
+;631:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 630
-;630:	velocity[0] = crandom()*GIB_VELOCITY;
+line 632
+;632:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 40
 ADDRGP4 rand
 CALLI4
@@ -3082,8 +3075,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 631
-;631:	velocity[1] = crandom()*GIB_VELOCITY;
+line 633
+;633:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 44
 ADDRGP4 rand
 CALLI4
@@ -3103,8 +3096,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 632
-;632:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 634
+;634:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 48
 ADDRGP4 rand
 CALLI4
@@ -3126,8 +3119,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 633
-;633:	CG_LaunchGib( origin, velocity, cgs.media.gibAbdomen );
+line 635
+;635:	CG_LaunchGib( origin, velocity, cgs.media.gibAbdomen );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3138,16 +3131,16 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 635
-;634:
-;635:	VectorCopy( playerOrigin, origin );
+line 637
+;636:
+;637:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 636
-;636:	velocity[0] = crandom()*GIB_VELOCITY;
+line 638
+;638:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 52
 ADDRGP4 rand
 CALLI4
@@ -3167,8 +3160,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 637
-;637:	velocity[1] = crandom()*GIB_VELOCITY;
+line 639
+;639:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 56
 ADDRGP4 rand
 CALLI4
@@ -3188,8 +3181,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 638
-;638:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 640
+;640:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 60
 ADDRGP4 rand
 CALLI4
@@ -3211,8 +3204,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 639
-;639:	CG_LaunchGib( origin, velocity, cgs.media.gibArm );
+line 641
+;641:	CG_LaunchGib( origin, velocity, cgs.media.gibArm );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3223,16 +3216,16 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 641
-;640:
-;641:	VectorCopy( playerOrigin, origin );
+line 643
+;642:
+;643:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 642
-;642:	velocity[0] = crandom()*GIB_VELOCITY;
+line 644
+;644:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 64
 ADDRGP4 rand
 CALLI4
@@ -3252,8 +3245,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 643
-;643:	velocity[1] = crandom()*GIB_VELOCITY;
+line 645
+;645:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 68
 ADDRGP4 rand
 CALLI4
@@ -3273,8 +3266,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 644
-;644:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 646
+;646:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 72
 ADDRGP4 rand
 CALLI4
@@ -3296,8 +3289,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 645
-;645:	CG_LaunchGib( origin, velocity, cgs.media.gibChest );
+line 647
+;647:	CG_LaunchGib( origin, velocity, cgs.media.gibChest );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3308,16 +3301,16 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 647
-;646:
-;647:	VectorCopy( playerOrigin, origin );
+line 649
+;648:
+;649:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 648
-;648:	velocity[0] = crandom()*GIB_VELOCITY;
+line 650
+;650:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 76
 ADDRGP4 rand
 CALLI4
@@ -3337,8 +3330,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 649
-;649:	velocity[1] = crandom()*GIB_VELOCITY;
+line 651
+;651:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 80
 ADDRGP4 rand
 CALLI4
@@ -3358,8 +3351,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 650
-;650:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 652
+;652:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 84
 ADDRGP4 rand
 CALLI4
@@ -3381,8 +3374,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 651
-;651:	CG_LaunchGib( origin, velocity, cgs.media.gibFist );
+line 653
+;653:	CG_LaunchGib( origin, velocity, cgs.media.gibFist );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3393,16 +3386,16 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 653
-;652:
-;653:	VectorCopy( playerOrigin, origin );
+line 655
+;654:
+;655:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 654
-;654:	velocity[0] = crandom()*GIB_VELOCITY;
+line 656
+;656:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 88
 ADDRGP4 rand
 CALLI4
@@ -3422,8 +3415,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 655
-;655:	velocity[1] = crandom()*GIB_VELOCITY;
+line 657
+;657:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 92
 ADDRGP4 rand
 CALLI4
@@ -3443,8 +3436,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 656
-;656:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 658
+;658:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 96
 ADDRGP4 rand
 CALLI4
@@ -3466,8 +3459,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 657
-;657:	CG_LaunchGib( origin, velocity, cgs.media.gibFoot );
+line 659
+;659:	CG_LaunchGib( origin, velocity, cgs.media.gibFoot );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3478,16 +3471,16 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 659
-;658:
-;659:	VectorCopy( playerOrigin, origin );
+line 661
+;660:
+;661:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 660
-;660:	velocity[0] = crandom()*GIB_VELOCITY;
+line 662
+;662:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 100
 ADDRGP4 rand
 CALLI4
@@ -3507,8 +3500,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 661
-;661:	velocity[1] = crandom()*GIB_VELOCITY;
+line 663
+;663:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 104
 ADDRGP4 rand
 CALLI4
@@ -3528,8 +3521,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 662
-;662:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 664
+;664:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 108
 ADDRGP4 rand
 CALLI4
@@ -3551,8 +3544,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 663
-;663:	CG_LaunchGib( origin, velocity, cgs.media.gibForearm );
+line 665
+;665:	CG_LaunchGib( origin, velocity, cgs.media.gibForearm );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3563,16 +3556,16 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 665
-;664:
-;665:	VectorCopy( playerOrigin, origin );
+line 667
+;666:
+;667:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 666
-;666:	velocity[0] = crandom()*GIB_VELOCITY;
+line 668
+;668:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 112
 ADDRGP4 rand
 CALLI4
@@ -3592,8 +3585,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 667
-;667:	velocity[1] = crandom()*GIB_VELOCITY;
+line 669
+;669:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 116
 ADDRGP4 rand
 CALLI4
@@ -3613,8 +3606,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 668
-;668:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 670
+;670:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 120
 ADDRGP4 rand
 CALLI4
@@ -3636,8 +3629,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 669
-;669:	CG_LaunchGib( origin, velocity, cgs.media.gibIntestine );
+line 671
+;671:	CG_LaunchGib( origin, velocity, cgs.media.gibIntestine );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3648,16 +3641,16 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 671
-;670:
-;671:	VectorCopy( playerOrigin, origin );
+line 673
+;672:
+;673:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 672
-;672:	velocity[0] = crandom()*GIB_VELOCITY;
+line 674
+;674:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 124
 ADDRGP4 rand
 CALLI4
@@ -3676,53 +3669,53 @@ CNSTF4 1056964608
 SUBF4
 MULF4
 MULF4
-ASGNF4
-line 673
-;673:	velocity[1] = crandom()*GIB_VELOCITY;
-ADDRLP4 128
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 0+4
-CNSTF4 1132068864
-CNSTF4 1073741824
-ADDRLP4 128
-INDIRI4
-CNSTI4 32767
-BANDI4
-CVIF4 4
-CNSTF4 1191181824
-DIVF4
-CNSTF4 1056964608
-SUBF4
-MULF4
-MULF4
-ASGNF4
-line 674
-;674:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
-ADDRLP4 132
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 0+8
-CNSTF4 1132068864
-CNSTF4 1073741824
-ADDRLP4 132
-INDIRI4
-CNSTI4 32767
-BANDI4
-CVIF4 4
-CNSTF4 1191181824
-DIVF4
-CNSTF4 1056964608
-SUBF4
-MULF4
-MULF4
-CNSTF4 1132068864
-ADDF4
 ASGNF4
 line 675
-;675:	CG_LaunchGib( origin, velocity, cgs.media.gibLeg );
+;675:	velocity[1] = crandom()*GIB_VELOCITY;
+ADDRLP4 128
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0+4
+CNSTF4 1132068864
+CNSTF4 1073741824
+ADDRLP4 128
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
+ASGNF4
+line 676
+;676:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+ADDRLP4 132
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0+8
+CNSTF4 1132068864
+CNSTF4 1073741824
+ADDRLP4 132
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
+CNSTF4 1132068864
+ADDF4
+ASGNF4
+line 677
+;677:	CG_LaunchGib( origin, velocity, cgs.media.gibLeg );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3733,16 +3726,16 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 677
-;676:
-;677:	VectorCopy( playerOrigin, origin );
+line 679
+;678:
+;679:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 678
-;678:	velocity[0] = crandom()*GIB_VELOCITY;
+line 680
+;680:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 136
 ADDRGP4 rand
 CALLI4
@@ -3762,8 +3755,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 679
-;679:	velocity[1] = crandom()*GIB_VELOCITY;
+line 681
+;681:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 140
 ADDRGP4 rand
 CALLI4
@@ -3783,8 +3776,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 680
-;680:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 682
+;682:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 144
 ADDRGP4 rand
 CALLI4
@@ -3806,8 +3799,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 681
-;681:	CG_LaunchGib( origin, velocity, cgs.media.gibLeg );
+line 683
+;683:	CG_LaunchGib( origin, velocity, cgs.media.gibLeg );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -3818,25 +3811,25 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 682
-;682:}
-LABELV $207
+line 684
+;684:}
+LABELV $204
 endproc CG_GibPlayer 148 12
 export CG_LaunchExplode
 proc CG_LaunchExplode 20 8
-line 689
-;683:
-;684:/*
-;685:==================
-;686:CG_LaunchGib
+line 691
+;685:
+;686:/*
 ;687:==================
-;688:*/
-;689:void CG_LaunchExplode( vec3_t origin, vec3_t velocity, qhandle_t hModel ) {
-line 693
-;690:	localEntity_t	*le;
-;691:	refEntity_t		*re;
-;692:
-;693:	le = CG_AllocLocalEntity();
+;688:CG_LaunchGib
+;689:==================
+;690:*/
+;691:void CG_LaunchExplode( vec3_t origin, vec3_t velocity, qhandle_t hModel ) {
+line 695
+;692:	localEntity_t	*le;
+;693:	refEntity_t		*re;
+;694:
+;695:	le = CG_AllocLocalEntity();
 ADDRLP4 8
 ADDRGP4 CG_AllocLocalEntity
 CALLP4
@@ -3845,25 +3838,25 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 694
-;694:	re = &le->refEntity;
+line 696
+;696:	re = &le->refEntity;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 CNSTI4 152
 ADDP4
 ASGNP4
-line 696
-;695:
-;696:	le->leType = LE_FRAGMENT;
+line 698
+;697:
+;698:	le->leType = LE_FRAGMENT;
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 3
 ASGNI4
-line 697
-;697:	le->startTime = cg.time;
+line 699
+;699:	le->startTime = cg.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -3871,8 +3864,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 698
-;698:	le->endTime = le->startTime + 10000 + random() * 6000;
+line 700
+;700:	le->endTime = le->startTime + 10000 + random() * 6000;
 ADDRLP4 12
 ADDRGP4 rand
 CALLI4
@@ -3901,9 +3894,9 @@ MULF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 700
-;699:
-;700:	VectorCopy( origin, re->origin );
+line 702
+;701:
+;702:	VectorCopy( origin, re->origin );
 ADDRLP4 4
 INDIRP4
 CNSTI4 68
@@ -3912,8 +3905,8 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 701
-;701:	AxisCopy( axisDefault, re->axis );
+line 703
+;703:	AxisCopy( axisDefault, re->axis );
 ADDRGP4 axisDefault
 ARGP4
 ADDRLP4 4
@@ -3924,8 +3917,8 @@ ARGP4
 ADDRGP4 AxisCopy
 CALLV
 pop
-line 702
-;702:	re->hModel = hModel;
+line 704
+;704:	re->hModel = hModel;
 ADDRLP4 4
 INDIRP4
 CNSTI4 8
@@ -3933,17 +3926,17 @@ ADDP4
 ADDRFP4 8
 INDIRI4
 ASGNI4
-line 704
-;703:
-;704:	le->pos.trType = TR_GRAVITY;
+line 706
+;705:
+;706:	le->pos.trType = TR_GRAVITY;
 ADDRLP4 0
 INDIRP4
 CNSTI4 32
 ADDP4
 CNSTI4 5
 ASGNI4
-line 705
-;705:	VectorCopy( origin, le->pos.trBase );
+line 707
+;707:	VectorCopy( origin, le->pos.trBase );
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
@@ -3952,8 +3945,8 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 706
-;706:	VectorCopy( velocity, le->pos.trDelta );
+line 708
+;708:	VectorCopy( velocity, le->pos.trDelta );
 ADDRLP4 0
 INDIRP4
 CNSTI4 56
@@ -3962,8 +3955,8 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 707
-;707:	le->pos.trTime = cg.time;
+line 709
+;709:	le->pos.trTime = cg.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 36
@@ -3971,74 +3964,74 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 709
-;708:
-;709:	le->bounceFactor = 0.1f;
+line 711
+;710:
+;711:	le->bounceFactor = 0.1f;
 ADDRLP4 0
 INDIRP4
 CNSTI4 104
 ADDP4
 CNSTF4 1036831949
 ASGNF4
-line 711
-;710:
-;711:	le->leBounceSoundType = LEBS_BRASS;
+line 713
+;712:
+;713:	le->leBounceSoundType = LEBS_BRASS;
 ADDRLP4 0
 INDIRP4
 CNSTI4 148
 ADDP4
 CNSTI4 2
 ASGNI4
-line 712
-;712:	le->leMarkType = LEMT_NONE;
+line 714
+;714:	le->leMarkType = LEMT_NONE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 144
 ADDP4
 CNSTI4 0
 ASGNI4
-line 713
-;713:}
-LABELV $258
+line 715
+;715:}
+LABELV $255
 endproc CG_LaunchExplode 20 8
 export CG_BigExplode
 proc CG_BigExplode 92 12
-line 724
-;714:
-;715:#define	EXP_VELOCITY	100
-;716:#define	EXP_JUMP		150
-;717:/*
-;718:===================
-;719:CG_GibPlayer
-;720:
-;721:Generated a bunch of gibs launching out from the bodies location
-;722:===================
-;723:*/
-;724:void CG_BigExplode( vec3_t playerOrigin ) {
-line 727
-;725:	vec3_t	origin, velocity;
-;726:
-;727:	if ( !cg_blood.integer ) {
+line 726
+;716:
+;717:#define	EXP_VELOCITY	100
+;718:#define	EXP_JUMP		150
+;719:/*
+;720:===================
+;721:CG_GibPlayer
+;722:
+;723:Generated a bunch of gibs launching out from the bodies location
+;724:===================
+;725:*/
+;726:void CG_BigExplode( vec3_t playerOrigin ) {
+line 729
+;727:	vec3_t	origin, velocity;
+;728:
+;729:	if ( !cg_blood.integer ) {
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $262
-line 728
-;728:		return;
-ADDRGP4 $261
+NEI4 $259
+line 730
+;730:		return;
+ADDRGP4 $258
 JUMPV
-LABELV $262
-line 731
-;729:	}
-;730:
-;731:	VectorCopy( playerOrigin, origin );
+LABELV $259
+line 733
+;731:	}
+;732:
+;733:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 732
-;732:	velocity[0] = crandom()*EXP_VELOCITY;
+line 734
+;734:	velocity[0] = crandom()*EXP_VELOCITY;
 ADDRLP4 24
 ADDRGP4 rand
 CALLI4
@@ -4057,102 +4050,17 @@ CNSTF4 1056964608
 SUBF4
 MULF4
 MULF4
-ASGNF4
-line 733
-;733:	velocity[1] = crandom()*EXP_VELOCITY;
-ADDRLP4 28
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 0+4
-CNSTF4 1120403456
-CNSTF4 1073741824
-ADDRLP4 28
-INDIRI4
-CNSTI4 32767
-BANDI4
-CVIF4 4
-CNSTF4 1191181824
-DIVF4
-CNSTF4 1056964608
-SUBF4
-MULF4
-MULF4
-ASGNF4
-line 734
-;734:	velocity[2] = EXP_JUMP + crandom()*EXP_VELOCITY;
-ADDRLP4 32
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 0+8
-CNSTF4 1120403456
-CNSTF4 1073741824
-ADDRLP4 32
-INDIRI4
-CNSTI4 32767
-BANDI4
-CVIF4 4
-CNSTF4 1191181824
-DIVF4
-CNSTF4 1056964608
-SUBF4
-MULF4
-MULF4
-CNSTF4 1125515264
-ADDF4
 ASGNF4
 line 735
-;735:	CG_LaunchExplode( origin, velocity, cgs.media.smoke2 );
-ADDRLP4 12
-ARGP4
-ADDRLP4 0
-ARGP4
-ADDRGP4 cgs+154388+188
-INDIRI4
-ARGI4
-ADDRGP4 CG_LaunchExplode
-CALLV
-pop
-line 737
-;736:
-;737:	VectorCopy( playerOrigin, origin );
-ADDRLP4 12
-ADDRFP4 0
-INDIRP4
-INDIRB
-ASGNB 12
-line 738
-;738:	velocity[0] = crandom()*EXP_VELOCITY;
-ADDRLP4 36
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 0
-CNSTF4 1120403456
-CNSTF4 1073741824
-ADDRLP4 36
-INDIRI4
-CNSTI4 32767
-BANDI4
-CVIF4 4
-CNSTF4 1191181824
-DIVF4
-CNSTF4 1056964608
-SUBF4
-MULF4
-MULF4
-ASGNF4
-line 739
-;739:	velocity[1] = crandom()*EXP_VELOCITY;
-ADDRLP4 40
+;735:	velocity[1] = crandom()*EXP_VELOCITY;
+ADDRLP4 28
 ADDRGP4 rand
 CALLI4
 ASGNI4
 ADDRLP4 0+4
 CNSTF4 1120403456
 CNSTF4 1073741824
-ADDRLP4 40
+ADDRLP4 28
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -4164,16 +4072,16 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 740
-;740:	velocity[2] = EXP_JUMP + crandom()*EXP_VELOCITY;
-ADDRLP4 44
+line 736
+;736:	velocity[2] = EXP_JUMP + crandom()*EXP_VELOCITY;
+ADDRLP4 32
 ADDRGP4 rand
 CALLI4
 ASGNI4
 ADDRLP4 0+8
 CNSTF4 1120403456
 CNSTF4 1073741824
-ADDRLP4 44
+ADDRLP4 32
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -4186,61 +4094,58 @@ MULF4
 MULF4
 CNSTF4 1125515264
 ADDF4
+ASGNF4
+line 737
+;737:	CG_LaunchExplode( origin, velocity, cgs.media.smoke2 );
+ADDRLP4 12
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 cgs+154388+188
+INDIRI4
+ARGI4
+ADDRGP4 CG_LaunchExplode
+CALLV
+pop
+line 739
+;738:
+;739:	VectorCopy( playerOrigin, origin );
+ADDRLP4 12
+ADDRFP4 0
+INDIRP4
+INDIRB
+ASGNB 12
+line 740
+;740:	velocity[0] = crandom()*EXP_VELOCITY;
+ADDRLP4 36
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0
+CNSTF4 1120403456
+CNSTF4 1073741824
+ADDRLP4 36
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
 ASGNF4
 line 741
-;741:	CG_LaunchExplode( origin, velocity, cgs.media.smoke2 );
-ADDRLP4 12
-ARGP4
-ADDRLP4 0
-ARGP4
-ADDRGP4 cgs+154388+188
-INDIRI4
-ARGI4
-ADDRGP4 CG_LaunchExplode
-CALLV
-pop
-line 743
-;742:
-;743:	VectorCopy( playerOrigin, origin );
-ADDRLP4 12
-ADDRFP4 0
-INDIRP4
-INDIRB
-ASGNB 12
-line 744
-;744:	velocity[0] = crandom()*EXP_VELOCITY*1.5;
-ADDRLP4 48
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 0
-CNSTF4 1069547520
-CNSTF4 1120403456
-CNSTF4 1073741824
-ADDRLP4 48
-INDIRI4
-CNSTI4 32767
-BANDI4
-CVIF4 4
-CNSTF4 1191181824
-DIVF4
-CNSTF4 1056964608
-SUBF4
-MULF4
-MULF4
-MULF4
-ASGNF4
-line 745
-;745:	velocity[1] = crandom()*EXP_VELOCITY*1.5;
-ADDRLP4 52
+;741:	velocity[1] = crandom()*EXP_VELOCITY;
+ADDRLP4 40
 ADDRGP4 rand
 CALLI4
 ASGNI4
 ADDRLP4 0+4
-CNSTF4 1069547520
 CNSTF4 1120403456
 CNSTF4 1073741824
-ADDRLP4 52
+ADDRLP4 40
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -4251,18 +4156,17 @@ CNSTF4 1056964608
 SUBF4
 MULF4
 MULF4
-MULF4
 ASGNF4
-line 746
-;746:	velocity[2] = EXP_JUMP + crandom()*EXP_VELOCITY;
-ADDRLP4 56
+line 742
+;742:	velocity[2] = EXP_JUMP + crandom()*EXP_VELOCITY;
+ADDRLP4 44
 ADDRGP4 rand
 CALLI4
 ASGNI4
 ADDRLP4 0+8
 CNSTF4 1120403456
 CNSTF4 1073741824
-ADDRLP4 56
+ADDRLP4 44
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -4275,71 +4179,61 @@ MULF4
 MULF4
 CNSTF4 1125515264
 ADDF4
+ASGNF4
+line 743
+;743:	CG_LaunchExplode( origin, velocity, cgs.media.smoke2 );
+ADDRLP4 12
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 cgs+154388+188
+INDIRI4
+ARGI4
+ADDRGP4 CG_LaunchExplode
+CALLV
+pop
+line 745
+;744:
+;745:	VectorCopy( playerOrigin, origin );
+ADDRLP4 12
+ADDRFP4 0
+INDIRP4
+INDIRB
+ASGNB 12
+line 746
+;746:	velocity[0] = crandom()*EXP_VELOCITY*1.5;
+ADDRLP4 48
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0
+CNSTF4 1069547520
+CNSTF4 1120403456
+CNSTF4 1073741824
+ADDRLP4 48
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
+MULF4
 ASGNF4
 line 747
-;747:	CG_LaunchExplode( origin, velocity, cgs.media.smoke2 );
-ADDRLP4 12
-ARGP4
-ADDRLP4 0
-ARGP4
-ADDRGP4 cgs+154388+188
-INDIRI4
-ARGI4
-ADDRGP4 CG_LaunchExplode
-CALLV
-pop
-line 749
-;748:
-;749:	VectorCopy( playerOrigin, origin );
-ADDRLP4 12
-ADDRFP4 0
-INDIRP4
-INDIRB
-ASGNB 12
-line 750
-;750:	velocity[0] = crandom()*EXP_VELOCITY*2.0;
-ADDRLP4 60
+;747:	velocity[1] = crandom()*EXP_VELOCITY*1.5;
+ADDRLP4 52
 ADDRGP4 rand
 CALLI4
 ASGNI4
-ADDRLP4 64
-CNSTF4 1073741824
-ASGNF4
-ADDRLP4 0
-ADDRLP4 64
-INDIRF4
-CNSTF4 1120403456
-ADDRLP4 64
-INDIRF4
-ADDRLP4 60
-INDIRI4
-CNSTI4 32767
-BANDI4
-CVIF4 4
-CNSTF4 1191181824
-DIVF4
-CNSTF4 1056964608
-SUBF4
-MULF4
-MULF4
-MULF4
-ASGNF4
-line 751
-;751:	velocity[1] = crandom()*EXP_VELOCITY*2.0;
-ADDRLP4 68
-ADDRGP4 rand
-CALLI4
-ASGNI4
-ADDRLP4 72
-CNSTF4 1073741824
-ASGNF4
 ADDRLP4 0+4
-ADDRLP4 72
-INDIRF4
+CNSTF4 1069547520
 CNSTF4 1120403456
-ADDRLP4 72
-INDIRF4
-ADDRLP4 68
+CNSTF4 1073741824
+ADDRLP4 52
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -4352,16 +4246,16 @@ MULF4
 MULF4
 MULF4
 ASGNF4
-line 752
-;752:	velocity[2] = EXP_JUMP + crandom()*EXP_VELOCITY;
-ADDRLP4 76
+line 748
+;748:	velocity[2] = EXP_JUMP + crandom()*EXP_VELOCITY;
+ADDRLP4 56
 ADDRGP4 rand
 CALLI4
 ASGNI4
 ADDRLP4 0+8
 CNSTF4 1120403456
 CNSTF4 1073741824
-ADDRLP4 76
+ADDRLP4 56
 INDIRI4
 CNSTI4 32767
 BANDI4
@@ -4374,9 +4268,108 @@ MULF4
 MULF4
 CNSTF4 1125515264
 ADDF4
+ASGNF4
+line 749
+;749:	CG_LaunchExplode( origin, velocity, cgs.media.smoke2 );
+ADDRLP4 12
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 cgs+154388+188
+INDIRI4
+ARGI4
+ADDRGP4 CG_LaunchExplode
+CALLV
+pop
+line 751
+;750:
+;751:	VectorCopy( playerOrigin, origin );
+ADDRLP4 12
+ADDRFP4 0
+INDIRP4
+INDIRB
+ASGNB 12
+line 752
+;752:	velocity[0] = crandom()*EXP_VELOCITY*2.0;
+ADDRLP4 60
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 64
+CNSTF4 1073741824
+ASGNF4
+ADDRLP4 0
+ADDRLP4 64
+INDIRF4
+CNSTF4 1120403456
+ADDRLP4 64
+INDIRF4
+ADDRLP4 60
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
+MULF4
 ASGNF4
 line 753
-;753:	CG_LaunchExplode( origin, velocity, cgs.media.smoke2 );
+;753:	velocity[1] = crandom()*EXP_VELOCITY*2.0;
+ADDRLP4 68
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 72
+CNSTF4 1073741824
+ASGNF4
+ADDRLP4 0+4
+ADDRLP4 72
+INDIRF4
+CNSTF4 1120403456
+ADDRLP4 72
+INDIRF4
+ADDRLP4 68
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
+MULF4
+ASGNF4
+line 754
+;754:	velocity[2] = EXP_JUMP + crandom()*EXP_VELOCITY;
+ADDRLP4 76
+ADDRGP4 rand
+CALLI4
+ASGNI4
+ADDRLP4 0+8
+CNSTF4 1120403456
+CNSTF4 1073741824
+ADDRLP4 76
+INDIRI4
+CNSTI4 32767
+BANDI4
+CVIF4 4
+CNSTF4 1191181824
+DIVF4
+CNSTF4 1056964608
+SUBF4
+MULF4
+MULF4
+CNSTF4 1125515264
+ADDF4
+ASGNF4
+line 755
+;755:	CG_LaunchExplode( origin, velocity, cgs.media.smoke2 );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -4387,16 +4380,16 @@ ARGI4
 ADDRGP4 CG_LaunchExplode
 CALLV
 pop
-line 755
-;754:
-;755:	VectorCopy( playerOrigin, origin );
+line 757
+;756:
+;757:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 756
-;756:	velocity[0] = crandom()*EXP_VELOCITY*2.5;
+line 758
+;758:	velocity[0] = crandom()*EXP_VELOCITY*2.5;
 ADDRLP4 80
 ADDRGP4 rand
 CALLI4
@@ -4418,8 +4411,8 @@ MULF4
 MULF4
 MULF4
 ASGNF4
-line 757
-;757:	velocity[1] = crandom()*EXP_VELOCITY*2.5;
+line 759
+;759:	velocity[1] = crandom()*EXP_VELOCITY*2.5;
 ADDRLP4 84
 ADDRGP4 rand
 CALLI4
@@ -4441,8 +4434,8 @@ MULF4
 MULF4
 MULF4
 ASGNF4
-line 758
-;758:	velocity[2] = EXP_JUMP + crandom()*EXP_VELOCITY;
+line 760
+;760:	velocity[2] = EXP_JUMP + crandom()*EXP_VELOCITY;
 ADDRLP4 88
 ADDRGP4 rand
 CALLI4
@@ -4464,8 +4457,8 @@ MULF4
 CNSTF4 1125515264
 ADDF4
 ASGNF4
-line 759
-;759:	CG_LaunchExplode( origin, velocity, cgs.media.smoke2 );
+line 761
+;761:	CG_LaunchExplode( origin, velocity, cgs.media.smoke2 );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -4476,48 +4469,48 @@ ARGI4
 ADDRGP4 CG_LaunchExplode
 CALLV
 pop
-line 760
-;760:}
-LABELV $261
+line 762
+;762:}
+LABELV $258
 endproc CG_BigExplode 92 12
 export CG_GibPlayerHeadshot
 proc CG_GibPlayerHeadshot 76 12
-line 763
-;761:
-;762:// Shafe - Trep - Headshot Effects
-;763:void CG_GibPlayerHeadshot( vec3_t playerOrigin ) {
-line 766
-;764:	vec3_t	origin, velocity;
-;765:
-;766:	if ( !cg_blood.integer ) {
+line 765
+;763:
+;764:// Shafe - Trep - Headshot Effects
+;765:void CG_GibPlayerHeadshot( vec3_t playerOrigin ) {
+line 768
+;766:	vec3_t	origin, velocity;
+;767:
+;768:	if ( !cg_blood.integer ) {
 ADDRGP4 cg_blood+12
 INDIRI4
 CNSTI4 0
-NEI4 $286
-line 767
-;767:		return;
-ADDRGP4 $285
+NEI4 $283
+line 769
+;769:		return;
+ADDRGP4 $282
 JUMPV
-LABELV $286
-line 770
-;768:	}
-;769:
-;770:	VectorCopy( playerOrigin, origin );
+LABELV $283
+line 772
+;770:	}
+;771:
+;772:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 771
-;771:	origin[2]+=25;
+line 773
+;773:	origin[2]+=25;
 ADDRLP4 12+8
 ADDRLP4 12+8
 INDIRF4
 CNSTF4 1103626240
 ADDF4
 ASGNF4
-line 772
-;772:	velocity[0] = crandom()*GIB_VELOCITY;
+line 774
+;774:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 24
 ADDRGP4 rand
 CALLI4
@@ -4537,8 +4530,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 773
-;773:	velocity[1] = crandom()*GIB_VELOCITY;
+line 775
+;775:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 28
 ADDRGP4 rand
 CALLI4
@@ -4558,8 +4551,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 774
-;774:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 776
+;776:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 32
 ADDRGP4 rand
 CALLI4
@@ -4581,8 +4574,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 775
-;775:	if ( rand() & 1 ) {
+line 777
+;777:	if ( rand() & 1 ) {
 ADDRLP4 36
 ADDRGP4 rand
 CALLI4
@@ -4592,9 +4585,9 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $292
-line 776
-;776:		CG_LaunchGib( origin, velocity, cgs.media.gibSkull );
+EQI4 $289
+line 778
+;778:		CG_LaunchGib( origin, velocity, cgs.media.gibSkull );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -4605,13 +4598,13 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 777
-;777:	} else {
-ADDRGP4 $293
+line 779
+;779:	} else {
+ADDRGP4 $290
 JUMPV
-LABELV $292
-line 778
-;778:		CG_LaunchGib( origin, velocity, cgs.media.gibBrain );
+LABELV $289
+line 780
+;780:		CG_LaunchGib( origin, velocity, cgs.media.gibBrain );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -4622,20 +4615,20 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 779
-;779:	}
-LABELV $293
-line 782
-;780:
-;781:	//delete from here
-;782:	VectorCopy( playerOrigin, origin );
+line 781
+;781:	}
+LABELV $290
+line 784
+;782:
+;783:	//delete from here
+;784:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 783
-;783:	velocity[0] = crandom()*GIB_VELOCITY;
+line 785
+;785:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 40
 ADDRGP4 rand
 CALLI4
@@ -4655,8 +4648,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 784
-;784:	velocity[1] = crandom()*GIB_VELOCITY;
+line 786
+;786:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 44
 ADDRGP4 rand
 CALLI4
@@ -4676,8 +4669,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 785
-;785:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 787
+;787:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 48
 ADDRGP4 rand
 CALLI4
@@ -4699,8 +4692,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 786
-;786:	CG_LaunchGib( origin, velocity, cgs.media.gibFist );
+line 788
+;788:	CG_LaunchGib( origin, velocity, cgs.media.gibFist );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -4711,17 +4704,17 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 789
-;787:	//to here to remove the gibFist, same apply for the others
-;788:
-;789:	VectorCopy( playerOrigin, origin );
+line 791
+;789:	//to here to remove the gibFist, same apply for the others
+;790:
+;791:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 790
-;790:	velocity[0] = crandom()*GIB_VELOCITY;
+line 792
+;792:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 52
 ADDRGP4 rand
 CALLI4
@@ -4741,8 +4734,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 791
-;791:	velocity[1] = crandom()*GIB_VELOCITY;
+line 793
+;793:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 56
 ADDRGP4 rand
 CALLI4
@@ -4762,8 +4755,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 792
-;792:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 794
+;794:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 60
 ADDRGP4 rand
 CALLI4
@@ -4785,8 +4778,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 793
-;793:	CG_LaunchGib( origin, velocity, cgs.media.gibFoot );
+line 795
+;795:	CG_LaunchGib( origin, velocity, cgs.media.gibFoot );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -4797,16 +4790,16 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 795
-;794:
-;795:	VectorCopy( playerOrigin, origin );
+line 797
+;796:
+;797:	VectorCopy( playerOrigin, origin );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 796
-;796:	velocity[0] = crandom()*GIB_VELOCITY;
+line 798
+;798:	velocity[0] = crandom()*GIB_VELOCITY;
 ADDRLP4 64
 ADDRGP4 rand
 CALLI4
@@ -4826,8 +4819,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 797
-;797:	velocity[1] = crandom()*GIB_VELOCITY;
+line 799
+;799:	velocity[1] = crandom()*GIB_VELOCITY;
 ADDRLP4 68
 ADDRGP4 rand
 CALLI4
@@ -4847,8 +4840,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 798
-;798:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
+line 800
+;800:	velocity[2] = GIB_JUMP + crandom()*GIB_VELOCITY;
 ADDRLP4 72
 ADDRGP4 rand
 CALLI4
@@ -4870,8 +4863,8 @@ MULF4
 CNSTF4 1132068864
 ADDF4
 ASGNF4
-line 799
-;799:	CG_LaunchGib( origin, velocity, cgs.media.gibForearm );
+line 801
+;801:	CG_LaunchGib( origin, velocity, cgs.media.gibForearm );
 ADDRLP4 12
 ARGP4
 ADDRLP4 0
@@ -4882,30 +4875,30 @@ ARGI4
 ADDRGP4 CG_LaunchGib
 CALLV
 pop
-line 804
-;800:
-;801:	
-;802:	
-;803:
-;804:}
-LABELV $285
+line 806
+;802:
+;803:	
+;804:	
+;805:
+;806:}
+LABELV $282
 endproc CG_GibPlayerHeadshot 76 12
 export CG_LaunchGlass
 proc CG_LaunchGlass 20 8
-line 812
-;805:
-;806:
-;807:/*
-;808: ==================
-;809: CG_LaunchGlass
+line 814
+;807:
+;808:
+;809:/*
 ;810: ==================
-;811: */
-;812: void CG_LaunchGlass( vec3_t origin, vec3_t velocity, qhandle_t hModel ) {
-line 816
-;813: 	localEntity_t	*le;
-;814: 	refEntity_t		*re;
-;815: 
-;816: 	le = CG_AllocLocalEntity();
+;811: CG_LaunchGlass
+;812: ==================
+;813: */
+;814: void CG_LaunchGlass( vec3_t origin, vec3_t velocity, qhandle_t hModel ) {
+line 818
+;815: 	localEntity_t	*le;
+;816: 	refEntity_t		*re;
+;817: 
+;818: 	le = CG_AllocLocalEntity();
 ADDRLP4 8
 ADDRGP4 CG_AllocLocalEntity
 CALLP4
@@ -4914,25 +4907,25 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 817
-;817: 	re = &le->refEntity;
+line 819
+;819: 	re = &le->refEntity;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 CNSTI4 152
 ADDP4
 ASGNP4
-line 819
-;818: 
-;819: 	le->leType = LE_FRAGMENT;
+line 821
+;820: 
+;821: 	le->leType = LE_FRAGMENT;
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 3
 ASGNI4
-line 820
-;820: 	le->startTime = cg.time;
+line 822
+;822: 	le->startTime = cg.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
@@ -4940,8 +4933,8 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 821
-;821: 	le->endTime = le->startTime + 30000 + random() * 3000;
+line 823
+;823: 	le->endTime = le->startTime + 30000 + random() * 3000;
 ADDRLP4 12
 ADDRGP4 rand
 CALLI4
@@ -4970,9 +4963,9 @@ MULF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 823
-;822: 
-;823: 	VectorCopy( origin, re->origin );
+line 825
+;824: 
+;825: 	VectorCopy( origin, re->origin );
 ADDRLP4 4
 INDIRP4
 CNSTI4 68
@@ -4981,8 +4974,8 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 824
-;824: 	AxisCopy( axisDefault, re->axis );
+line 826
+;826: 	AxisCopy( axisDefault, re->axis );
 ADDRGP4 axisDefault
 ARGP4
 ADDRLP4 4
@@ -4993,8 +4986,8 @@ ARGP4
 ADDRGP4 AxisCopy
 CALLV
 pop
-line 825
-;825: 	re->hModel = hModel;
+line 827
+;827: 	re->hModel = hModel;
 ADDRLP4 4
 INDIRP4
 CNSTI4 8
@@ -5002,17 +4995,17 @@ ADDP4
 ADDRFP4 8
 INDIRI4
 ASGNI4
-line 827
-;826: 
-;827: 	le->pos.trType = TR_GRAVITY;
+line 829
+;828: 
+;829: 	le->pos.trType = TR_GRAVITY;
 ADDRLP4 0
 INDIRP4
 CNSTI4 32
 ADDP4
 CNSTI4 5
 ASGNI4
-line 828
-;828: 	VectorCopy( origin, le->pos.trBase );
+line 830
+;830: 	VectorCopy( origin, le->pos.trBase );
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
@@ -5021,8 +5014,8 @@ ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 829
-;829: 	VectorCopy( velocity, le->pos.trDelta );
+line 831
+;831: 	VectorCopy( velocity, le->pos.trDelta );
 ADDRLP4 0
 INDIRP4
 CNSTI4 56
@@ -5031,8 +5024,8 @@ ADDRFP4 4
 INDIRP4
 INDIRB
 ASGNB 12
-line 830
-;830: 	le->pos.trTime = cg.time;
+line 832
+;832: 	le->pos.trTime = cg.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 36
@@ -5040,99 +5033,99 @@ ADDP4
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 832
-;831: 
-;832: 	le->bounceFactor = 0.3f;
+line 834
+;833: 
+;834: 	le->bounceFactor = 0.3f;
 ADDRLP4 0
 INDIRP4
 CNSTI4 104
 ADDP4
 CNSTF4 1050253722
 ASGNF4
-line 834
-;833: 
-;834: 	le->leFlags = LEF_TUMBLE;
+line 836
+;835: 
+;836: 	le->leFlags = LEF_TUMBLE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 2
 ASGNI4
-line 835
-;835: 	le->leBounceSoundType = LEBS_BRASS;
+line 837
+;837: 	le->leBounceSoundType = LEBS_BRASS;
 ADDRLP4 0
 INDIRP4
 CNSTI4 148
 ADDP4
 CNSTI4 2
 ASGNI4
-line 836
-;836: 	le->leMarkType = LEMT_NONE;
+line 838
+;838: 	le->leMarkType = LEMT_NONE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 144
 ADDP4
 CNSTI4 0
 ASGNI4
-line 837
-;837: }
-LABELV $310
+line 839
+;839: }
+LABELV $307
 endproc CG_LaunchGlass 20 8
 lit
 align 4
-LABELV $314
+LABELV $311
 byte 4 1
 byte 4 2
 byte 4 3
 export CG_BreakGlass
 code
 proc CG_BreakGlass 68 12
-line 848
-;838: 
-;839: /*
-;840: ===================
-;841: CG_BreakGlass
-;842: 
-;843: Generated a bunch of glass shards launching out from the glass location
-;844: ===================
-;845: */
-;846: #define	GLASS_VELOCITY	175
-;847: #define	GLASS_JUMP		125
-;848: void CG_BreakGlass( vec3_t playerOrigin ) {
-line 852
-;849: 	vec3_t	origin, velocity;
-;850:     int     value;
-;851: 	// How many shards to generate
-;852: 	int     count = 50;
+line 850
+;840: 
+;841: /*
+;842: ===================
+;843: CG_BreakGlass
+;844: 
+;845: Generated a bunch of glass shards launching out from the glass location
+;846: ===================
+;847: */
+;848: #define	GLASS_VELOCITY	175
+;849: #define	GLASS_JUMP		125
+;850: void CG_BreakGlass( vec3_t playerOrigin ) {
+line 854
+;851: 	vec3_t	origin, velocity;
+;852:     int     value;
+;853: 	// How many shards to generate
+;854: 	int     count = 50;
 ADDRLP4 40
 CNSTI4 50
 ASGNI4
-line 854
-;853: 	// The array of possible numbers
-;854: 	int     states[] = {1,2,3};
+line 856
+;855: 	// The array of possible numbers
+;856: 	int     states[] = {1,2,3};
 ADDRLP4 28
-ADDRGP4 $314
+ADDRGP4 $311
 INDIRB
 ASGNB 12
-line 856
-;855: 	// Get the size of the array
-;856:     int     numstates = sizeof(states)/sizeof(states[0]);
+line 858
+;857: 	// Get the size of the array
+;858:     int     numstates = sizeof(states)/sizeof(states[0]);
 ADDRLP4 44
 CNSTI4 3
 ASGNI4
-ADDRGP4 $316
+ADDRGP4 $313
 JUMPV
-LABELV $315
-line 860
-;857: 
-;858: 	// Countdown "count" so this will subtract 1 from the "count"
-;859: 	// X many times. X being the "count" value
-;860: 	while ( count-- ) {
-line 864
-;861: 	// Generate the random number every count so every shard is a
-;862: 	// of the three. If this is placed above it only gets a random
-;863: 	// number every time a piece of glass is broken.
-;864: 	value = states[rand()%numstates];
+LABELV $312
+line 862
+;859: 
+;860: 	// Countdown "count" so this will subtract 1 from the "count"
+;861: 	// X many times. X being the "count" value
+;862: 	while ( count-- ) {
+line 866
+;863: 	// Generate the random number every count so every shard is a
+;864: 	// of the three. If this is placed above it only gets a random
+;865: 	// number every time a piece of glass is broken.
+;866: 	value = states[rand()%numstates];
 ADDRLP4 48
 ADDRGP4 rand
 CALLI4
@@ -5149,15 +5142,15 @@ ADDRLP4 28
 ADDP4
 INDIRI4
 ASGNI4
-line 865
-;865: 	VectorCopy( playerOrigin, origin );
+line 867
+;867: 	VectorCopy( playerOrigin, origin );
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
 INDIRB
 ASGNB 12
-line 866
-;866: 	velocity[0] = crandom()*GLASS_VELOCITY;
+line 868
+;868: 	velocity[0] = crandom()*GLASS_VELOCITY;
 ADDRLP4 52
 ADDRGP4 rand
 CALLI4
@@ -5177,8 +5170,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 867
-;867: 	velocity[1] = crandom()*GLASS_VELOCITY;
+line 869
+;869: 	velocity[1] = crandom()*GLASS_VELOCITY;
 ADDRLP4 56
 ADDRGP4 rand
 CALLI4
@@ -5198,8 +5191,8 @@ SUBF4
 MULF4
 MULF4
 ASGNF4
-line 868
-;868: 	velocity[2] = GLASS_JUMP + crandom()*GLASS_VELOCITY;
+line 870
+;870: 	velocity[2] = GLASS_JUMP + crandom()*GLASS_VELOCITY;
 ADDRLP4 60
 ADDRGP4 rand
 CALLI4
@@ -5221,27 +5214,27 @@ MULF4
 CNSTF4 1123680256
 ADDF4
 ASGNF4
-line 869
-;869: 	switch (value) {
+line 871
+;871: 	switch (value) {
 ADDRLP4 12
 INDIRI4
 CNSTI4 1
-EQI4 $322
+EQI4 $319
 ADDRLP4 12
 INDIRI4
 CNSTI4 2
-EQI4 $325
+EQI4 $322
 ADDRLP4 12
 INDIRI4
 CNSTI4 3
-EQI4 $328
-ADDRGP4 $320
+EQI4 $325
+ADDRGP4 $317
 JUMPV
-LABELV $322
-line 872
-;870: 	case 1:
-;871: 	// If our random number was 1, generate the 1st shard piece
-;872:     CG_LaunchGlass( origin, velocity, cgs.media.glass01 );
+LABELV $319
+line 874
+;872: 	case 1:
+;873: 	// If our random number was 1, generate the 1st shard piece
+;874:     CG_LaunchGlass( origin, velocity, cgs.media.glass01 );
 ADDRLP4 16
 ARGP4
 ADDRLP4 0
@@ -5252,14 +5245,14 @@ ARGI4
 ADDRGP4 CG_LaunchGlass
 CALLV
 pop
-line 873
-;873:     break;
-ADDRGP4 $321
-JUMPV
-LABELV $325
 line 875
-;874: 	case 2:
-;875: 	CG_LaunchGlass( origin, velocity, cgs.media.glass02 );
+;875:     break;
+ADDRGP4 $318
+JUMPV
+LABELV $322
+line 877
+;876: 	case 2:
+;877: 	CG_LaunchGlass( origin, velocity, cgs.media.glass02 );
 ADDRLP4 16
 ARGP4
 ADDRLP4 0
@@ -5270,14 +5263,14 @@ ARGI4
 ADDRGP4 CG_LaunchGlass
 CALLV
 pop
-line 876
-;876:     break;
-ADDRGP4 $321
-JUMPV
-LABELV $328
 line 878
-;877: 	case 3:
-;878: 	CG_LaunchGlass( origin, velocity, cgs.media.glass03 );
+;878:     break;
+ADDRGP4 $318
+JUMPV
+LABELV $325
+line 880
+;879: 	case 3:
+;880: 	CG_LaunchGlass( origin, velocity, cgs.media.glass03 );
 ADDRLP4 16
 ARGP4
 ADDRLP4 0
@@ -5288,15 +5281,15 @@ ARGI4
 ADDRGP4 CG_LaunchGlass
 CALLV
 pop
-line 879
-;879: 	break;
-LABELV $320
-LABELV $321
 line 881
-;880: 	}
-;881: 	}
-LABELV $316
-line 860
+;881: 	break;
+LABELV $317
+LABELV $318
+line 883
+;882: 	}
+;883: 	}
+LABELV $313
+line 862
 ADDRLP4 48
 ADDRLP4 40
 INDIRI4
@@ -5310,10 +5303,10 @@ ASGNI4
 ADDRLP4 48
 INDIRI4
 CNSTI4 0
-NEI4 $315
-line 882
-;882: }
-LABELV $313
+NEI4 $312
+line 884
+;884: }
+LABELV $310
 endproc CG_BreakGlass 68 12
 import CG_DrawScanner
 import CG_ScannerOff_f
@@ -5844,7 +5837,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $182
+LABELV $179
 byte 1 67
 byte 1 71
 byte 1 95
