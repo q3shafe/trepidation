@@ -1031,10 +1031,15 @@ void ClientThink_real( gentity_t *ent ) {
 		client->ps.pm_type = PM_NORMAL;
 	}
 
-	client->ps.gravity = g_gravity.value;
+	if( !( ent->r.svFlags & SVF_CUSTOM_GRAVITY ) )
+	{ //-Vincent
+		client->ps.gravity = g_gravity.integer;
+	}
 
-	// set speed
-	client->ps.speed = g_speed.value;
+	if( !( ent->r.svFlags & SVF_CUSTOM_SPEED ) )
+	{ //-Vincent
+		client->ps.gravity = g_speed.integer;
+	}
 
 #ifdef MISSIONPACK
 	if( bg_itemlist[client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_SCOUT ) {
