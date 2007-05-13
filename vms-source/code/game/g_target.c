@@ -445,3 +445,184 @@ void SP_target_location( gentity_t *self ){
 	G_SetOrigin( self, self->s.origin );
 }
 
+/*QUAKED target_gravity_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
+
+ GLOBAL - Apply to the entire world, and not just the activator
+ 
+ "gravity" -	 Normal = 800, valid range: >= 0
+ "surfaceFlag" - Important setting. With this you can define on what surface the gravity_change will work.
+ As soon as the player hits another surface, the gravity_change will be stopped. 
+ Don't change the surface too close below, since this check will go down!
+ The gravity_change also stops at player-respawn. Possible values:
+ CONTENTS_NODROP		0 -> Recommended and default value, since lower-gravity will make things float anyway.
+ CONTENTS_SOLID			1
+ CONTENTS_LAVA			2
+ CONTENTS_SLIME			3
+ CONTENTS_WATER			4
+ CONTENTS_FOG			5
+ CONTENTS_DETAIL		6 -> Can easily be set in Radiant, so also quite easy.
+ CONTENTS_STRUCTURAL	7 -> " " (also recommended as grav-surface, so something else can be set as detail (to reset))
+ CONTENTS_TRANSLUCENT	8
+ */
+void GravityResetCheck( gentity_t *self, gentity_t *activator )
+{ //-Vincent
+int contents;
+vec3_t origin;
+	
+	if( !activator || !activator->client )
+	{ // The activator might be dead
+		activator->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
+		return; 
+	}
+
+	VectorCopy( activator->s.origin, origin );
+	origin[2] -= 100; // Trace further down
+	contents = trap_PointContents( origin, activator->s.clientNum );
+	if( contents != self->surfaceFlag )
+		activator->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
+}
+
+void target_gravity_change( gentity_t *self )
+{ //-Vincent
+if(		 self->surfaceFlag == 1 )
+		 self->surfaceFlag = CONTENTS_SOLID;
+else if( self->surfaceFlag == 2 )
+		 self->surfaceFlag = CONTENTS_LAVA;
+else if( self->surfaceFlag == 3 )
+		 self->surfaceFlag = CONTENTS_SLIME;
+else if( self->surfaceFlag == 4 )
+		 self->surfaceFlag = CONTENTS_WATER;
+else if( self->surfaceFlag == 5 )
+		 self->surfaceFlag = CONTENTS_FOG;
+else if( self->surfaceFlag == 6 )
+		 self->surfaceFlag = CONTENTS_DETAIL;
+else if( self->surfaceFlag == 7 )
+		 self->surfaceFlag = CONTENTS_STRUCTURAL;
+else if( self->surfaceFlag == 8 )
+		 self->surfaceFlag = CONTENTS_TRANSLUCENT;
+else // surfaceFlag == 0, default
+		 self->surfaceFlag = CONTENTS_NODROP;
+
+	if( self->spawnflags & 1 )
+	{ // Global setting
+		trap_Cvar_Set( "g_gravity", va( "%f", self->gravity ) );
+	}
+	else if( self->activator->client )
+	{
+		int	gravity = floor( self->gravity );
+		self->activator->client->ps.gravity = gravity;
+		self->activator->r.svFlags |= SVF_CUSTOM_GRAVITY;
+	}
+	
+	GravityResetCheck( self, self->activator );
+	if( self->activator->r.svFlags != SVF_CUSTOM_GRAVITY )
+	{ // Reset it and stop doing this gravity_change
+		self->think		= 0;
+		self->nextthink = 0;
+	}
+}
+
+void target_gravity_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
+{
+self->activator = activator;
+self->think		= target_gravity_change;
+self->nextthink = level.time + FRAMETIME;  // Let everything get spawned
+}
+
+void SP_target_gravity_change( gentity_t *self )
+{ //-Vincent
+G_SetOrigin( self, self->s.origin );
+self->use = target_gravity_change_use;
+}
+
+
+/*QUAKED target_speed_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
+
+ GLOBAL - Apply to the entire world, and not just the activator
+ 
+ "speed" - Normal = 320, valid range: > 0
+ "surfaceFlag" - Important setting. With this you can define on what surface the speed_change will work.
+ As soon as the player hits another surface, the speed_change will be stopped. 
+ Don't change the surface too close below, since this check will go down!
+ The speed_change also stops at player-respawn. Possible values:
+ CONTENTS_STRUCTURAL	0 -> Recommended and default value, so something else can be set as detail (to reset)
+ CONTENTS_DETAIL		1
+ CONTENTS_LAVA			2
+ CONTENTS_SLIME			3
+ CONTENTS_WATER			4
+ CONTENTS_FOG			5
+ CONTENTS_NODROP		6
+ CONTENTS_SOLID			7
+ CONTENTS_TRANSLUCENT	8
+ */
+void SpeedResetCheck( gentity_t *self, gentity_t *activator )
+{ //-Vincent
+int contents;
+vec3_t origin;
+	
+	if( !activator || !activator->client )
+	{ // The activator might be dead
+		activator->r.svFlags &= ~SVF_CUSTOM_SPEED;
+		return; 
+	}
+
+	VectorCopy( activator->s.origin, origin );
+	origin[2] -= 100; // Trace further down
+	contents = trap_PointContents( origin, activator->s.clientNum );
+	if( contents != self->surfaceFlag )
+		activator->r.svFlags &= ~SVF_CUSTOM_SPEED;
+}
+
+void target_speed_change( gentity_t *self )
+{ //-Vincent
+if(		 self->surfaceFlag == 1 )
+		 self->surfaceFlag = CONTENTS_DETAIL;
+else if( self->surfaceFlag == 2 )
+		 self->surfaceFlag = CONTENTS_LAVA;
+else if( self->surfaceFlag == 3 )
+		 self->surfaceFlag = CONTENTS_SLIME;
+else if( self->surfaceFlag == 4 )
+		 self->surfaceFlag = CONTENTS_WATER;
+else if( self->surfaceFlag == 5 )
+		 self->surfaceFlag = CONTENTS_FOG;
+else if( self->surfaceFlag == 6 )
+		 self->surfaceFlag = CONTENTS_NODROP;
+else if( self->surfaceFlag == 7 )
+		 self->surfaceFlag = CONTENTS_SOLID;
+else if( self->surfaceFlag == 8 )
+		 self->surfaceFlag = CONTENTS_TRANSLUCENT;
+else // surfaceFlag == 0, default
+		 self->surfaceFlag = CONTENTS_STRUCTURAL;
+
+	if( self->spawnflags & 1 )
+	{ // Global setting
+		trap_Cvar_Set( "g_speed", va( "%f", self->speed ) );
+	}
+	else if( self->activator->client )
+	{
+		int	speed = floor( self->speed );
+		self->activator->client->ps.speed = speed;
+		self->activator->r.svFlags |= SVF_CUSTOM_SPEED;
+	}
+
+	SpeedResetCheck( self, self->activator );
+	if( self->activator->r.svFlags != SVF_CUSTOM_SPEED )
+	{ // Reset it and stop doing this speed_change
+		self->think		= 0;
+		self->nextthink = 0;
+	}
+}
+
+void target_speed_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
+{
+self->activator = activator;
+self->think		= target_speed_change;
+self->nextthink = level.time + FRAMETIME;  // Let everything get spawned
+}
+
+void SP_target_speed_change( gentity_t *self )
+{ //-Vincent
+G_SetOrigin( self, self->s.origin );
+self->use = target_speed_change_use;
+}
+

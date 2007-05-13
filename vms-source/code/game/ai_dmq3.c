@@ -3022,13 +3022,13 @@ BotFindEnemy
 ==================
 */
 int BotFindEnemy(bot_state_t *bs, int curenemy) {
-	int i, healthdecrease, j;
+	int i, healthdecrease;
 	float f, alertness, easyfragger, vis;
 	float squaredist, cursquaredist;
 	aas_entityinfo_t entinfo, curenemyinfo;
 	vec3_t dir, angles;
 	// Trep
-		gentity_t	*e, *e2;
+		gentity_t	*e;
 		int		c, c2;
 
 //	int ent;

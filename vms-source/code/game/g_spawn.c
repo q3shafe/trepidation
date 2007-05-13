@@ -82,6 +82,7 @@ field_t fields[] = {
 	{"model2", FOFS(model2), F_LSTRING},
 	{"spawnflags", FOFS(spawnflags), F_INT},
 	{"speed", FOFS(speed), F_FLOAT},
+	{"gravity", FOFS(gravity), F_FLOAT}, //-Vincent
 	{"target", FOFS(target), F_LSTRING},
 	{"targetname", FOFS(targetname), F_LSTRING},
 	{"message", FOFS(message), F_LSTRING},
@@ -146,6 +147,8 @@ void SP_target_kill (gentity_t *ent);
 void SP_target_position (gentity_t *ent);
 void SP_target_location (gentity_t *ent);
 void SP_target_push (gentity_t *ent);
+void SP_target_gravity_change( gentity_t *self ); //-Vincent
+void SP_target_speed_change( gentity_t *self ); //-Vincent
 
 void SP_light (gentity_t *self);
 void SP_info_null (gentity_t *self);
@@ -225,6 +228,8 @@ spawn_t	spawns[] = {
 	{"target_position", SP_target_position},
 	{"target_location", SP_target_location},
 	{"target_push", SP_target_push},
+	{"target_gravity_change", SP_target_gravity_change},
+	{"target_speed_change", SP_target_speed_change},
 
 	{"light", SP_light},
 	{"path_corner", SP_path_corner},

@@ -572,10 +572,10 @@ createturretgun
 void createturretgun(gentity_t *ent)
 {
 	gentity_t *turret; 	// The object to hold the turrets details.
-	gentity_t *tmpent; // Used to for checking if it's ok to build
+//	gentity_t *tmpent; // Used to for checking if it's ok to build
 
-	int			num;
-	int			touch[MAX_GENTITIES];
+//	int			num;
+//	int			touch[MAX_GENTITIES];
 
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
@@ -841,9 +841,9 @@ The MC as it is in the
 */
 void MC_prethink(gentity_t *ent)
 {
-	int			num;
-	int			touch[MAX_GENTITIES];
-	gentity_t	*tmpent;
+//	int			num;
+//	int			touch[MAX_GENTITIES];
+//	gentity_t	*tmpent;
 
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
@@ -997,9 +997,9 @@ built' state
 // Generators Are Never Shielded
 void gen_prethink(gentity_t *ent)
 {
-	int			num;
-	int			touch[MAX_GENTITIES];
-	gentity_t	*tmpent;
+//	int			num;
+//	int			touch[MAX_GENTITIES];
+//	gentity_t	*tmpent;
 
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
@@ -1181,9 +1181,9 @@ built' state
 
 void td_prethink(gentity_t *ent)
 {
-	int			num;
-	int			touch[MAX_GENTITIES];
-gentity_t	*tmpent;
+//	int			num;
+//	int			touch[MAX_GENTITIES];
+//	gentity_t	*tmpent;
 
 	// code to check there is noone within the base before making it solid
 	// Now corrected by setting the mins and the maxs to their right value :D -Vincent

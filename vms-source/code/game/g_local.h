@@ -115,7 +115,9 @@ struct gentity_s {
 	char		*targetShaderNewName;
 	gentity_t	*target_ent;
 
-	float		speed;
+	float		speed;			//-Vincent
+	float		gravity;		//-Vincent
+	int			surfaceFlag;	//-Vincent
 	vec3_t		movedir;
 
 	int			nextthink;
