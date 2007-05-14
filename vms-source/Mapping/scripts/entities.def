@@ -1431,7 +1431,15 @@ By Vincentk, for instructions read the info at the spawnflags.
  CONTENTS_FOG			5
  CONTENTS_DETAIL		6 -> Can easily be set in Radiant, so also quite easy.
  CONTENTS_STRUCTURAL	7 -> " " (also recommended as grav-surface, so something else can be set as detail (to reset))
- CONTENTS_TRANSLUCENT	8*/
+ CONTENTS_TRANSLUCENT	8
+ SURF_METALSTEPS		9
+ SURF_NOSTEPS			10
+ SURF_NOMARKS			11
+ SURF_NOIMPACT			12
+ SURF_SKY				13
+ SURF_NODAMAGE			14
+ -------- NOTES --------
+ You have to make the ceiling of your anti-grav room a CONTENTS_SOLID, CONTENTS_PLAYERCLIP, a SURF_SKY, or a SURF_NOIMPACT.*/
 
  //=============================================================================
 
@@ -1453,7 +1461,15 @@ By Vincentk, for instructions read the info at the spawnflags.
  CONTENTS_FOG			5
  CONTENTS_NODROP		6
  CONTENTS_SOLID			7
- CONTENTS_TRANSLUCENT	8*/
+ CONTENTS_TRANSLUCENT	8
+ SURF_METALSTEPS		9
+ SURF_NOSTEPS			10
+ SURF_NOMARKS			11
+ SURF_NOIMPACT			12
+ SURF_SKY				13
+ SURF_NODAMAGE			14
+ -------- NOTES --------
+ You have to make the ceiling of your anti-grav room a CONTENTS_SOLID, CONTENTS_PLAYERCLIP, a SURF_SKY, or a SURF_NOIMPACT.*/
 
 //=============================================================================
 
