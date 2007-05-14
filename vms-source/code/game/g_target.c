@@ -463,11 +463,19 @@ void SP_target_location( gentity_t *self ){
  CONTENTS_DETAIL		6 -> Can easily be set in Radiant, so also quite easy.
  CONTENTS_STRUCTURAL	7 -> " " (also recommended as grav-surface, so something else can be set as detail (to reset))
  CONTENTS_TRANSLUCENT	8
+ SURF_METALSTEPS		9
+ SURF_NOSTEPS			10
+ SURF_NOMARKS			11
+ SURF_NOIMPACT			12
+ SURF_SKY				13
+ SURF_NODAMAGE			14
+
+ Note: You have to make the ceiling of your anti-grav room a CONTENTS_SOLID, CONTENTS_PLAYERCLIP, a SURF_SKY, or a SURF_NOIMPACT.
  */
 void GravityResetCheck( gentity_t *self, gentity_t *activator )
 { //-Vincent
-int contents;
-vec3_t origin;
+vec3_t  end;
+trace_t tr;
 	
 	if( !activator || !activator->client )
 	{ // The activator might be dead
@@ -475,10 +483,16 @@ vec3_t origin;
 		return; 
 	}
 
-	VectorCopy( activator->s.origin, origin );
-	origin[2] -= 100; // Trace further down
-	contents = trap_PointContents( origin, activator->s.clientNum );
-	if( contents != self->surfaceFlag )
+	// Trace up (in a straight line), until we hit a solid, playerclip, sky or noimpact content
+	VectorCopy( activator->s.origin, end );
+	end[2] += 1000;
+	trap_Trace( &tr, activator->s.origin, NULL, NULL, end, activator->s.number, 
+			    CONTENTS_SOLID | CONTENTS_PLAYERCLIP | SURF_NOIMPACT | SURF_SKY );
+	// Trace back down (in a straight line), trying to hit the required content
+	VectorCopy( tr.endpos, end );
+	trap_Trace( &tr, end,  NULL, NULL, activator->s.origin, activator->s.number, self->surfaceFlag );
+
+	if( tr.fraction <= 0 ) // The surface has not been found
 		activator->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
 }
 
@@ -500,6 +514,18 @@ else if( self->surfaceFlag == 7 )
 		 self->surfaceFlag = CONTENTS_STRUCTURAL;
 else if( self->surfaceFlag == 8 )
 		 self->surfaceFlag = CONTENTS_TRANSLUCENT;
+else if( self->surfaceFlag == 9 )
+		 self->surfaceFlag = SURF_METALSTEPS;
+else if( self->surfaceFlag == 10 )
+		 self->surfaceFlag = SURF_NOSTEPS;
+else if( self->surfaceFlag == 11 )
+		 self->surfaceFlag = SURF_NOMARKS;
+else if( self->surfaceFlag == 12 )
+		 self->surfaceFlag = SURF_NOIMPACT;
+else if( self->surfaceFlag == 13 )
+		 self->surfaceFlag = SURF_SKY;
+else if( self->surfaceFlag == 14 )
+		 self->surfaceFlag = SURF_NODAMAGE;
 else // surfaceFlag == 0, default
 		 self->surfaceFlag = CONTENTS_NODROP;
 
@@ -515,16 +541,16 @@ else // surfaceFlag == 0, default
 	}
 	
 	GravityResetCheck( self, self->activator );
-	if( self->activator->r.svFlags != SVF_CUSTOM_GRAVITY )
-	{ // Reset it and stop doing this gravity_change
+	if( !( self->activator->r.svFlags & SVF_CUSTOM_GRAVITY ) )
+	{ // Stop doing this gravity_change (reset happens in ClientThink_Real )
 		self->think		= 0;
 		self->nextthink = 0;
 	}
 }
 
 void target_gravity_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
-{
-self->activator = activator;
+{ //-Vincent
+self->activator = activator; // Pass it on
 self->think		= target_gravity_change;
 self->nextthink = level.time + FRAMETIME;  // Let everything get spawned
 }
@@ -554,11 +580,19 @@ self->use = target_gravity_change_use;
  CONTENTS_NODROP		6
  CONTENTS_SOLID			7
  CONTENTS_TRANSLUCENT	8
+ SURF_METALSTEPS		9
+ SURF_NOSTEPS			10
+ SURF_NOMARKS			11
+ SURF_NOIMPACT			12
+ SURF_SKY				13
+ SURF_NODAMAGE			14
+
+ Note: You have to make the ceiling of your anti-grav room a CONTENTS_SOLID, CONTENTS_PLAYERCLIP, a SURF_SKY, or a SURF_NOIMPACT.
  */
 void SpeedResetCheck( gentity_t *self, gentity_t *activator )
 { //-Vincent
-int contents;
-vec3_t origin;
+vec3_t  end;
+trace_t tr;
 	
 	if( !activator || !activator->client )
 	{ // The activator might be dead
@@ -566,10 +600,16 @@ vec3_t origin;
 		return; 
 	}
 
-	VectorCopy( activator->s.origin, origin );
-	origin[2] -= 100; // Trace further down
-	contents = trap_PointContents( origin, activator->s.clientNum );
-	if( contents != self->surfaceFlag )
+	// Trace up (in a straight line), until we hit a solid, playerclip, sky or noimpact content
+	VectorCopy( activator->s.origin, end );
+	end[2] += 1000;
+	trap_Trace( &tr, activator->s.origin, NULL, NULL, end, activator->s.number, 
+			    CONTENTS_SOLID | CONTENTS_PLAYERCLIP | SURF_NOIMPACT | SURF_SKY );
+	// Trace back down (in a straight line), trying to hit the required content
+	VectorCopy( tr.endpos, end );
+	trap_Trace( &tr, end,  NULL, NULL, activator->s.origin, activator->s.number, self->surfaceFlag );
+
+	if( tr.fraction <= 0 ) // The surface has not been found
 		activator->r.svFlags &= ~SVF_CUSTOM_SPEED;
 }
 
@@ -591,6 +631,18 @@ else if( self->surfaceFlag == 7 )
 		 self->surfaceFlag = CONTENTS_SOLID;
 else if( self->surfaceFlag == 8 )
 		 self->surfaceFlag = CONTENTS_TRANSLUCENT;
+else if( self->surfaceFlag == 9 )
+		 self->surfaceFlag = SURF_METALSTEPS;
+else if( self->surfaceFlag == 10 )
+		 self->surfaceFlag = SURF_NOSTEPS;
+else if( self->surfaceFlag == 11 )
+		 self->surfaceFlag = SURF_NOMARKS;
+else if( self->surfaceFlag == 12 )
+		 self->surfaceFlag = SURF_NOIMPACT;
+else if( self->surfaceFlag == 13 )
+		 self->surfaceFlag = SURF_SKY;
+else if( self->surfaceFlag == 14 )
+		 self->surfaceFlag = SURF_NODAMAGE;
 else // surfaceFlag == 0, default
 		 self->surfaceFlag = CONTENTS_STRUCTURAL;
 
@@ -606,16 +658,16 @@ else // surfaceFlag == 0, default
 	}
 
 	SpeedResetCheck( self, self->activator );
-	if( self->activator->r.svFlags != SVF_CUSTOM_SPEED )
-	{ // Reset it and stop doing this speed_change
+	if( !( self->activator->r.svFlags & SVF_CUSTOM_SPEED ) )
+	{ // Stop doing this speed_change (reset happens in ClientThink_Real )
 		self->think		= 0;
 		self->nextthink = 0;
 	}
 }
 
 void target_speed_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
-{
-self->activator = activator;
+{ //-Vincent
+self->activator = activator; // Pass it on
 self->think		= target_speed_change;
 self->nextthink = level.time + FRAMETIME;  // Let everything get spawned
 }
