@@ -112,9 +112,9 @@ ifndef USE_CURL_DLOPEN
   endif
 endif
 
-ifndef USE_CODEC_VORBIS
-USE_CODEC_VORBIS=0
-endif
+#ifndef USE_CODEC_VORBIS
+#USE_CODEC_VORBIS=0
+#endif
 
 #ifndef USE_CODEC_MP3
 #USE_CODEC_MP3=0
@@ -211,13 +211,13 @@ ifeq ($(PLATFORM),linux)
     endif
   endif
 
-  ifeq ($(USE_CODEC_VORBIS),1)
+#  ifeq ($(USE_CODEC_VORBIS),1)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
-  endif
+#  endif
 
-  ifeq ($(USE_CODEC_MP3),1)
+#  ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
-  endif
+#  endif
 
   ifeq ($(USE_SDL),1)
     BASE_CFLAGS += -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 $(shell sdl-config --cflags)
@@ -284,13 +284,13 @@ ifeq ($(PLATFORM),linux)
     endif
   endif
 
-  ifeq ($(USE_CODEC_VORBIS),1)
+#  ifeq ($(USE_CODEC_VORBIS),1)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
-  endif
+#  endif
 
-  ifeq ($(USE_CODEC_MP3),1)
+#  ifeq ($(USE_CODEC_MP3),1)
     CLIENT_LDFLAGS += -lmad
-  endif
+#  endif
 
   ifeq ($(ARCH),i386)
     # linux32 make ...
@@ -464,9 +464,9 @@ ifeq ($(PLATFORM),mingw32)
     endif
   endif
 
-  ifeq ($(USE_CODEC_VORBIS),1)
+#  ifeq ($(USE_CODEC_VORBIS),1)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
-  endif
+#  endif
 
 # ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
@@ -499,9 +499,9 @@ ifeq ($(PLATFORM),mingw32)
     endif
   endif
 
-  ifeq ($(USE_CODEC_VORBIS),1)
+#  ifeq ($(USE_CODEC_VORBIS),1)
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
-  endif
+#  endif
 
 #  ifeq ($(USE_CODEC_MP3),1)
     CLIENT_LDFLAGS += -lmad
