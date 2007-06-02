@@ -1538,7 +1538,7 @@ line 336
 ;335:
 ;336:	check = g_entities+1;
 ADDRLP4 0
-ADDRGP4 g_entities+916
+ADDRGP4 g_entities+924
 ASGNP4
 line 337
 ;337:	for (e = 1; e < level.num_entities ; e++, check++) {
@@ -1836,7 +1836,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 916
+CNSTI4 924
 ADDP4
 ASGNP4
 LABELV $196
@@ -2138,7 +2138,7 @@ pop
 line 451
 ;450:
 ;451:	if (g_entities[cl - level.clients].immobilized == qtrue)
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 1024
 INDIRP4
 CVPU4 4
@@ -2150,7 +2150,7 @@ CVUI4 4
 CNSTI4 3464
 DIVI4
 MULI4
-ADDRGP4 g_entities+912
+ADDRGP4 g_entities+920
 ADDP4
 INDIRI4
 CNSTI4 1
@@ -2159,7 +2159,7 @@ line 452
 ;452:	{
 line 453
 ;453:		g_entities[cl - level.clients].immobilized = qfalse;
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 1024
 INDIRP4
 CVPU4 4
@@ -2171,7 +2171,7 @@ CVUI4 4
 CNSTI4 3464
 DIVI4
 MULI4
-ADDRGP4 g_entities+912
+ADDRGP4 g_entities+920
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -2185,7 +2185,7 @@ line 456
 ;456:	{
 line 457
 ;457:		g_entities[cl - level.clients].immobilized = qtrue;
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 1024
 INDIRP4
 CVPU4 4
@@ -2197,7 +2197,7 @@ CVUI4 4
 CNSTI4 3464
 DIVI4
 MULI4
-ADDRGP4 g_entities+912
+ADDRGP4 g_entities+920
 ADDP4
 CNSTI4 1
 ASGNI4
@@ -2276,7 +2276,7 @@ CALLV
 pop
 line 482
 ;482:	SetTeam( &g_entities[cl - level.clients], str );
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 1024
 INDIRP4
 CVPU4 4

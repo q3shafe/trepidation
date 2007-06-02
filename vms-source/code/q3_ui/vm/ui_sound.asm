@@ -5,7 +5,7 @@ address $69
 address $70
 byte 4 0
 code
-proc UI_SoundOptionsMenu_Event 8 8
+proc UI_SoundOptionsMenu_Event 12 8
 file "../ui_sound.c"
 line 62
 ;1:// Copyright (C) 1999-2000 Id Software, Inc.
@@ -33,7 +33,7 @@ line 62
 ;23:#define ID_EFFECTSVOLUME	14
 ;24:#define ID_MUSICVOLUME		15
 ;25:#define ID_QUALITY			16
-;26://#define ID_A3D				17
+;26:#define ID_A3D				17  // We're using the A3D Code for OpenAL
 ;27:#define ID_BACK				18
 ;28:
 ;29:
@@ -56,7 +56,7 @@ line 62
 ;46:	menuslider_s		sfxvolume;
 ;47:	menuslider_s		musicvolume;
 ;48:	menulist_s			quality;
-;49://	menuradiobutton_s	a3d;
+;49:	menuradiobutton_s	a3d;
 ;50:
 ;51:	menubitmap_s		back;
 ;52:} soundOptionsInfo_t;
@@ -104,13 +104,13 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $99-40
+ADDRGP4 $109-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $99
+LABELV $109
 address $78
 address $79
 address $76
@@ -118,8 +118,8 @@ address $81
 address $82
 address $86
 address $90
-address $75
 address $98
+address $108
 code
 LABELV $78
 line 69
@@ -287,18 +287,62 @@ line 105
 ADDRGP4 $76
 JUMPV
 LABELV $98
-line 118
-;106:/*
+line 108
+;106:
 ;107:	case ID_A3D:
 ;108:		if( soundOptionsInfo.a3d.curvalue ) {
-;109:			trap_Cmd_ExecuteText( EXEC_NOW, "s_enable_a3d\n" );
+ADDRGP4 soundOptionsInfo+1072+60
+INDIRI4
+CNSTI4 0
+EQI4 $99
+line 109
+;109:			trap_Cmd_ExecuteText( EXEC_NOW, "s_useOpenAL 1\n" );
+CNSTI4 0
+ARGI4
+ADDRGP4 $103
+ARGP4
+ADDRGP4 trap_Cmd_ExecuteText
+CALLV
+pop
+line 110
 ;110:		}
+ADDRGP4 $100
+JUMPV
+LABELV $99
+line 111
 ;111:		else {
-;112:			trap_Cmd_ExecuteText( EXEC_NOW, "s_disable_a3d\n" );
+line 112
+;112:			trap_Cmd_ExecuteText( EXEC_NOW, "s_useOpenAL 0\n" );
+CNSTI4 0
+ARGI4
+ADDRGP4 $104
+ARGP4
+ADDRGP4 trap_Cmd_ExecuteText
+CALLV
+pop
+line 113
 ;113:		}
-;114:		soundOptionsInfo.a3d.curvalue = (int)trap_Cvar_VariableValue( "s_usingA3D" );
+LABELV $100
+line 114
+;114:		soundOptionsInfo.a3d.curvalue = (int)trap_Cvar_VariableValue( "s_useOpenAL" );
+ADDRGP4 $107
+ARGP4
+ADDRLP4 8
+ADDRGP4 trap_Cvar_VariableValue
+CALLF4
+ASGNF4
+ADDRGP4 soundOptionsInfo+1072+60
+ADDRLP4 8
+INDIRF4
+CVFI4 4
+ASGNI4
+line 115
 ;115:		break;
-;116:*/
+ADDRGP4 $76
+JUMPV
+LABELV $108
+line 118
+;116:
 ;117:	case ID_BACK:
 ;118:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
@@ -312,8 +356,8 @@ line 121
 ;120:	}
 ;121:}
 LABELV $72
-endproc UI_SoundOptionsMenu_Event 8 8
-proc UI_SoundOptionsMenu_Init 20 12
+endproc UI_SoundOptionsMenu_Event 12 8
+proc UI_SoundOptionsMenu_Init 24 12
 line 129
 ;122:
 ;123:
@@ -331,7 +375,7 @@ ADDRGP4 soundOptionsInfo
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 1160
+CNSTI4 1224
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -376,7 +420,7 @@ ASGNI4
 line 142
 ;142:	soundOptionsInfo.banner.string				= "SYSTEM SETUP";
 ADDRGP4 soundOptionsInfo+288+60
-ADDRGP4 $113
+ADDRGP4 $123
 ASGNP4
 line 143
 ;143:	soundOptionsInfo.banner.color				= color_white;
@@ -397,7 +441,7 @@ ASGNI4
 line 147
 ;147:	soundOptionsInfo.framel.generic.name		= ART_FRAMEL;
 ADDRGP4 soundOptionsInfo+360+4
-ADDRGP4 $121
+ADDRGP4 $131
 ASGNP4
 line 148
 ;148:	soundOptionsInfo.framel.generic.flags		= QMF_INACTIVE;
@@ -433,7 +477,7 @@ ASGNI4
 line 155
 ;155:	soundOptionsInfo.framer.generic.name		= ART_FRAMER;
 ADDRGP4 soundOptionsInfo+448+4
-ADDRGP4 $135
+ADDRGP4 $145
 ASGNP4
 line 156
 ;156:	soundOptionsInfo.framer.generic.flags		= QMF_INACTIVE;
@@ -494,7 +538,7 @@ ASGNI4
 line 168
 ;168:	soundOptionsInfo.graphics.string			= "GRAPHICS";
 ADDRGP4 soundOptionsInfo+536+60
-ADDRGP4 $159
+ADDRGP4 $169
 ASGNP4
 line 169
 ;169:	soundOptionsInfo.graphics.style				= UI_RIGHT;
@@ -540,7 +584,7 @@ ASGNI4
 line 178
 ;178:	soundOptionsInfo.display.string				= "DISPLAY";
 ADDRGP4 soundOptionsInfo+608+60
-ADDRGP4 $177
+ADDRGP4 $187
 ASGNP4
 line 179
 ;179:	soundOptionsInfo.display.style				= UI_RIGHT;
@@ -586,7 +630,7 @@ ASGNI4
 line 188
 ;188:	soundOptionsInfo.sound.string				= "SOUND";
 ADDRGP4 soundOptionsInfo+680+60
-ADDRGP4 $195
+ADDRGP4 $205
 ASGNP4
 line 189
 ;189:	soundOptionsInfo.sound.style				= UI_RIGHT;
@@ -632,7 +676,7 @@ ASGNI4
 line 198
 ;198:	soundOptionsInfo.network.string				= "NETWORK";
 ADDRGP4 soundOptionsInfo+752+60
-ADDRGP4 $213
+ADDRGP4 $223
 ASGNP4
 line 199
 ;199:	soundOptionsInfo.network.style				= UI_RIGHT;
@@ -658,7 +702,7 @@ ASGNI4
 line 204
 ;204:	soundOptionsInfo.sfxvolume.generic.name		= "Effects Volume:";
 ADDRGP4 soundOptionsInfo+824+4
-ADDRGP4 $221
+ADDRGP4 $231
 ASGNP4
 line 205
 ;205:	soundOptionsInfo.sfxvolume.generic.flags	= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -713,7 +757,7 @@ ASGNI4
 line 215
 ;215:	soundOptionsInfo.musicvolume.generic.name		= "Music Volume:";
 ADDRGP4 soundOptionsInfo+900+4
-ADDRGP4 $239
+ADDRGP4 $249
 ASGNP4
 line 216
 ;216:	soundOptionsInfo.musicvolume.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -768,7 +812,7 @@ ASGNI4
 line 226
 ;226:	soundOptionsInfo.quality.generic.name		= "Sound Quality:";
 ADDRGP4 soundOptionsInfo+976+4
-ADDRGP4 $257
+ADDRGP4 $267
 ASGNP4
 line 227
 ;227:	soundOptionsInfo.quality.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -801,65 +845,101 @@ line 232
 ADDRGP4 soundOptionsInfo+976+76
 ADDRGP4 quality_items
 ASGNP4
-line 243
-;233:/*
+line 234
+;233:
 ;234:	y += BIGCHAR_HEIGHT+2;
+ADDRLP4 0
+ADDRLP4 0
+INDIRI4
+CNSTI4 18
+ADDI4
+ASGNI4
+line 235
 ;235:	soundOptionsInfo.a3d.generic.type			= MTYPE_RADIOBUTTON;
-;236:	soundOptionsInfo.a3d.generic.name			= "A3D:";
-;237:	soundOptionsInfo.a3d.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
-;238:	soundOptionsInfo.a3d.generic.callback		= UI_SoundOptionsMenu_Event;
-;239:	soundOptionsInfo.a3d.generic.id				= ID_A3D;
-;240:	soundOptionsInfo.a3d.generic.x				= 400;
-;241:	soundOptionsInfo.a3d.generic.y				= y;
-;242:*/
-;243:	soundOptionsInfo.back.generic.type			= MTYPE_BITMAP;
 ADDRGP4 soundOptionsInfo+1072
+CNSTI4 5
+ASGNI4
+line 236
+;236:	soundOptionsInfo.a3d.generic.name			= "OPENAL:";
+ADDRGP4 soundOptionsInfo+1072+4
+ADDRGP4 $283
+ASGNP4
+line 237
+;237:	soundOptionsInfo.a3d.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+ADDRGP4 soundOptionsInfo+1072+44
+CNSTU4 258
+ASGNU4
+line 238
+;238:	soundOptionsInfo.a3d.generic.callback		= UI_SoundOptionsMenu_Event;
+ADDRGP4 soundOptionsInfo+1072+48
+ADDRGP4 UI_SoundOptionsMenu_Event
+ASGNP4
+line 239
+;239:	soundOptionsInfo.a3d.generic.id				= ID_A3D;
+ADDRGP4 soundOptionsInfo+1072+8
+CNSTI4 17
+ASGNI4
+line 240
+;240:	soundOptionsInfo.a3d.generic.x				= 400;
+ADDRGP4 soundOptionsInfo+1072+12
+CNSTI4 400
+ASGNI4
+line 241
+;241:	soundOptionsInfo.a3d.generic.y				= y;
+ADDRGP4 soundOptionsInfo+1072+16
+ADDRLP4 0
+INDIRI4
+ASGNI4
+line 243
+;242:
+;243:	soundOptionsInfo.back.generic.type			= MTYPE_BITMAP;
+ADDRGP4 soundOptionsInfo+1136
 CNSTI4 6
 ASGNI4
 line 244
 ;244:	soundOptionsInfo.back.generic.name			= ART_BACK0;
-ADDRGP4 soundOptionsInfo+1072+4
-ADDRGP4 $273
+ADDRGP4 soundOptionsInfo+1136+4
+ADDRGP4 $297
 ASGNP4
 line 245
 ;245:	soundOptionsInfo.back.generic.flags			= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
-ADDRGP4 soundOptionsInfo+1072+44
+ADDRGP4 soundOptionsInfo+1136+44
 CNSTU4 260
 ASGNU4
 line 246
 ;246:	soundOptionsInfo.back.generic.callback		= UI_SoundOptionsMenu_Event;
-ADDRGP4 soundOptionsInfo+1072+48
+ADDRGP4 soundOptionsInfo+1136+48
 ADDRGP4 UI_SoundOptionsMenu_Event
 ASGNP4
 line 247
 ;247:	soundOptionsInfo.back.generic.id			= ID_BACK;
-ADDRGP4 soundOptionsInfo+1072+8
+ADDRGP4 soundOptionsInfo+1136+8
 CNSTI4 18
 ASGNI4
 line 248
 ;248:	soundOptionsInfo.back.generic.x				= 0;
-ADDRGP4 soundOptionsInfo+1072+12
+ADDRGP4 soundOptionsInfo+1136+12
 CNSTI4 0
 ASGNI4
 line 249
 ;249:	soundOptionsInfo.back.generic.y				= 480-64;
-ADDRGP4 soundOptionsInfo+1072+16
+ADDRGP4 soundOptionsInfo+1136+16
 CNSTI4 416
 ASGNI4
 line 250
 ;250:	soundOptionsInfo.back.width					= 128;
-ADDRGP4 soundOptionsInfo+1072+76
+ADDRGP4 soundOptionsInfo+1136+76
 CNSTI4 128
 ASGNI4
 line 251
 ;251:	soundOptionsInfo.back.height				= 64;
-ADDRGP4 soundOptionsInfo+1072+80
+ADDRGP4 soundOptionsInfo+1136+80
 CNSTI4 64
 ASGNI4
 line 252
 ;252:	soundOptionsInfo.back.focuspic				= ART_BACK1;
-ADDRGP4 soundOptionsInfo+1072+60
-ADDRGP4 $290
+ADDRGP4 soundOptionsInfo+1136+60
+ADDRGP4 $314
 ASGNP4
 line 254
 ;253:
@@ -952,12 +1032,20 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 265
-;264://	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.a3d );
-;265:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.back );
+line 264
+;264:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.a3d );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 soundOptionsInfo+1072
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 265
+;265:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.back );
+ADDRGP4 soundOptionsInfo
+ARGP4
+ADDRGP4 soundOptionsInfo+1136
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
@@ -1002,26 +1090,38 @@ ASGNF4
 ADDRLP4 16
 INDIRF4
 CNSTF4 0
-NEF4 $309
+NEF4 $334
 ADDRLP4 12
 CNSTI4 1
 ASGNI4
-ADDRGP4 $310
+ADDRGP4 $335
 JUMPV
-LABELV $309
+LABELV $334
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-LABELV $310
+LABELV $335
 ADDRGP4 soundOptionsInfo+976+64
 ADDRLP4 12
 INDIRI4
 ASGNI4
+line 270
+;270:	soundOptionsInfo.a3d.curvalue = (int)trap_Cvar_VariableValue( "s_useOpenAL" );
+ADDRGP4 $107
+ARGP4
+ADDRLP4 20
+ADDRGP4 trap_Cvar_VariableValue
+CALLF4
+ASGNF4
+ADDRGP4 soundOptionsInfo+1072+60
+ADDRLP4 20
+INDIRF4
+CVFI4 4
+ASGNI4
 line 271
-;270://	soundOptionsInfo.a3d.curvalue = (int)trap_Cvar_VariableValue( "s_usingA3D" );
 ;271:}
-LABELV $101
-endproc UI_SoundOptionsMenu_Init 20 12
+LABELV $111
+endproc UI_SoundOptionsMenu_Init 24 12
 export UI_SoundOptionsMenu_Cache
 proc UI_SoundOptionsMenu_Cache 0 4
 line 279
@@ -1035,35 +1135,35 @@ line 279
 ;279:void UI_SoundOptionsMenu_Cache( void ) {
 line 280
 ;280:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $121
+ADDRGP4 $131
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 281
 ;281:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $135
+ADDRGP4 $145
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 282
 ;282:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $273
+ADDRGP4 $297
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 283
 ;283:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $290
+ADDRGP4 $314
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
 line 284
 ;284:}
-LABELV $311
+LABELV $338
 endproc UI_SoundOptionsMenu_Cache 0 4
 export UI_SoundOptionsMenu
 proc UI_SoundOptionsMenu 0 8
@@ -1099,12 +1199,12 @@ CALLV
 pop
 line 296
 ;296:}
-LABELV $312
+LABELV $339
 endproc UI_SoundOptionsMenu 0 8
 bss
 align 4
 LABELV soundOptionsInfo
-skip 1160
+skip 1224
 import UI_RankStatusMenu
 import RankStatus_Cache
 import UI_SignupMenu
@@ -1588,7 +1688,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $290
+LABELV $314
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1606,7 +1706,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $273
+LABELV $297
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1624,7 +1724,17 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $257
+LABELV $283
+byte 1 79
+byte 1 80
+byte 1 69
+byte 1 78
+byte 1 65
+byte 1 76
+byte 1 58
+byte 1 0
+align 1
+LABELV $267
 byte 1 83
 byte 1 111
 byte 1 117
@@ -1641,7 +1751,7 @@ byte 1 121
 byte 1 58
 byte 1 0
 align 1
-LABELV $239
+LABELV $249
 byte 1 77
 byte 1 117
 byte 1 115
@@ -1657,7 +1767,7 @@ byte 1 101
 byte 1 58
 byte 1 0
 align 1
-LABELV $221
+LABELV $231
 byte 1 69
 byte 1 102
 byte 1 102
@@ -1675,7 +1785,7 @@ byte 1 101
 byte 1 58
 byte 1 0
 align 1
-LABELV $213
+LABELV $223
 byte 1 78
 byte 1 69
 byte 1 84
@@ -1685,7 +1795,7 @@ byte 1 82
 byte 1 75
 byte 1 0
 align 1
-LABELV $195
+LABELV $205
 byte 1 83
 byte 1 79
 byte 1 85
@@ -1693,7 +1803,7 @@ byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $177
+LABELV $187
 byte 1 68
 byte 1 73
 byte 1 83
@@ -1703,7 +1813,7 @@ byte 1 65
 byte 1 89
 byte 1 0
 align 1
-LABELV $159
+LABELV $169
 byte 1 71
 byte 1 82
 byte 1 65
@@ -1714,7 +1824,7 @@ byte 1 67
 byte 1 83
 byte 1 0
 align 1
-LABELV $135
+LABELV $145
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1734,7 +1844,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $121
+LABELV $131
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1754,7 +1864,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $113
+LABELV $123
 byte 1 83
 byte 1 89
 byte 1 83
@@ -1767,6 +1877,54 @@ byte 1 69
 byte 1 84
 byte 1 85
 byte 1 80
+byte 1 0
+align 1
+LABELV $107
+byte 1 115
+byte 1 95
+byte 1 117
+byte 1 115
+byte 1 101
+byte 1 79
+byte 1 112
+byte 1 101
+byte 1 110
+byte 1 65
+byte 1 76
+byte 1 0
+align 1
+LABELV $104
+byte 1 115
+byte 1 95
+byte 1 117
+byte 1 115
+byte 1 101
+byte 1 79
+byte 1 112
+byte 1 101
+byte 1 110
+byte 1 65
+byte 1 76
+byte 1 32
+byte 1 48
+byte 1 10
+byte 1 0
+align 1
+LABELV $103
+byte 1 115
+byte 1 95
+byte 1 117
+byte 1 115
+byte 1 101
+byte 1 79
+byte 1 112
+byte 1 101
+byte 1 110
+byte 1 65
+byte 1 76
+byte 1 32
+byte 1 49
+byte 1 10
 byte 1 0
 align 1
 LABELV $97

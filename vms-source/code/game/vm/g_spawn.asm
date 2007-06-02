@@ -294,63 +294,67 @@ byte 4 680
 byte 4 1
 skip 4
 address $81
+byte 4 684
+byte 4 1
+skip 4
+address $82
 byte 4 656
 byte 4 2
 skip 4
-address $82
+address $83
 byte 4 660
 byte 4 2
 skip 4
-address $83
+address $84
 byte 4 644
 byte 4 2
 skip 4
-address $84
+address $85
 byte 4 664
 byte 4 2
 skip 4
-address $85
-byte 4 812
-byte 4 1
-skip 4
 address $86
-byte 4 816
+byte 4 820
 byte 4 1
 skip 4
 address $87
-byte 4 776
-byte 4 0
+byte 4 824
+byte 4 1
 skip 4
 address $88
-byte 4 748
+byte 4 784
 byte 4 0
 skip 4
 address $89
-byte 4 0
-byte 4 9
-skip 4
-address $90
 byte 4 756
 byte 4 0
 skip 4
+address $90
+byte 4 0
+byte 4 9
+skip 4
 address $91
-byte 4 116
-byte 4 4
+byte 4 764
+byte 4 0
 skip 4
 address $92
 byte 4 116
-byte 4 5
+byte 4 4
 skip 4
 address $93
+byte 4 116
+byte 4 5
+skip 4
+address $94
 byte 4 668
 byte 4 2
 skip 4
-address $94
+address $95
 byte 4 672
 byte 4 2
 skip 4
-address $95
-byte 4 880
+address $96
+byte 4 888
 byte 4 1
 skip 4
 byte 4 0
@@ -358,110 +362,114 @@ skip 12
 export spawns
 align 4
 LABELV spawns
-address $97
-address SP_info_player_start
 address $98
-address SP_info_player_deathmatch
+address SP_info_player_start
 address $99
-address SP_info_player_intermission
+address SP_info_player_deathmatch
 address $100
-address SP_info_null
+address SP_info_player_intermission
 address $101
-address SP_info_notnull
-address $102
-address SP_info_camp
-address $103
-address SP_func_plat
-address $104
-address SP_func_button
-address $105
-address SP_func_door
-address $106
-address SP_func_static
-address $107
-address SP_func_rotating
-address $108
-address SP_func_bobbing
-address $109
-address SP_func_pendulum
-address $110
-address SP_func_train
-address $111
 address SP_info_null
+address $102
+address SP_info_notnull
+address $103
+address SP_info_camp
+address $104
+address SP_func_plat
+address $105
+address SP_func_button
+address $106
+address SP_func_door
+address $107
+address SP_func_static
+address $108
+address SP_func_rotating
+address $109
+address SP_func_bobbing
+address $110
+address SP_func_pendulum
+address $111
+address SP_func_train
 address $112
-address SP_func_timer
+address SP_info_null
 address $113
-address SP_func_breakable
+address SP_func_timer
 address $114
-address SP_trigger_always
+address SP_func_breakable
 address $115
-address SP_trigger_multiple
+address SP_trigger_always
 address $116
-address SP_trigger_push
+address SP_trigger_multiple
 address $117
-address SP_trigger_teleport
+address SP_trigger_push
 address $118
-address SP_trigger_hurt
+address SP_trigger_teleport
 address $119
-address SP_target_give
+address SP_trigger_hurt
 address $120
-address SP_target_remove_powerups
+address SP_target_give
 address $121
-address SP_target_delay
+address SP_target_remove_powerups
 address $122
-address SP_target_speaker
+address SP_target_delay
 address $123
-address SP_target_print
+address SP_target_speaker
 address $124
-address SP_target_laser
+address SP_target_print
 address $125
-address SP_target_score
+address SP_target_laser
 address $126
-address SP_target_teleporter
+address SP_target_score
 address $127
-address SP_target_relay
+address SP_target_teleporter
 address $128
-address SP_target_kill
+address SP_target_relay
 address $129
-address SP_target_position
+address SP_target_kill
 address $130
-address SP_target_location
+address SP_target_position
 address $131
-address SP_target_push
-address $89
-address SP_light
+address SP_target_location
 address $132
-address SP_path_corner
+address SP_target_push
 address $133
-address SP_misc_teleporter_dest
+address SP_target_gravity_change
 address $134
-address SP_misc_model
+address SP_target_speed_change
+address $90
+address SP_light
 address $135
-address SP_misc_portal_surface
+address SP_path_corner
 address $136
-address SP_misc_portal_camera
+address SP_misc_teleporter_dest
 address $137
-address SP_shooter_rocket
+address SP_misc_model
 address $138
-address SP_shooter_grenade
+address SP_misc_portal_surface
 address $139
-address SP_shooter_plasma
+address SP_misc_portal_camera
 address $140
-address SP_team_CTF_redplayer
+address SP_shooter_rocket
 address $141
-address SP_team_CTF_blueplayer
+address SP_shooter_grenade
 address $142
-address SP_team_CTF_redspawn
+address SP_shooter_plasma
 address $143
-address SP_team_CTF_bluespawn
+address SP_team_CTF_redplayer
 address $144
+address SP_team_CTF_blueplayer
+address $145
+address SP_team_CTF_redspawn
+address $146
+address SP_team_CTF_bluespawn
+address $147
 address SP_func_door_rotating
 byte 4 0
 byte 4 0
 export G_CallSpawn
 code
 proc G_CallSpawn 12 8
-line 266
+line 271
 ;50:}
 ;51:
 ;52:
@@ -497,193 +505,198 @@ line 266
 ;82:	{"model2", FOFS(model2), F_LSTRING},
 ;83:	{"spawnflags", FOFS(spawnflags), F_INT},
 ;84:	{"speed", FOFS(speed), F_FLOAT},
-;85:	{"target", FOFS(target), F_LSTRING},
-;86:	{"targetname", FOFS(targetname), F_LSTRING},
-;87:	{"message", FOFS(message), F_LSTRING},
-;88:	{"team", FOFS(team), F_LSTRING},
-;89:	{"wait", FOFS(wait), F_FLOAT},
-;90:	{"random", FOFS(random), F_FLOAT},
-;91:	{"count", FOFS(count), F_INT},
-;92:	{"health", FOFS(health), F_INT},
-;93:	{"light", 0, F_IGNORE},
-;94:	{"dmg", FOFS(damage), F_INT},
-;95:	{"angles", FOFS(s.angles), F_VECTOR},
-;96:	{"angle", FOFS(s.angles), F_ANGLEHACK},
-;97:	{"targetShaderName", FOFS(targetShaderName), F_LSTRING},
-;98:	{"targetShaderNewName", FOFS(targetShaderNewName), F_LSTRING},
-;99:	{"distance", FOFS(distance), F_FLOAT},	
-;100:
-;101:	{NULL}
-;102:};
-;103:
+;85:	{"gravity", FOFS(gravity), F_FLOAT}, //-Vincent
+;86:	{"target", FOFS(target), F_LSTRING},
+;87:	{"targetname", FOFS(targetname), F_LSTRING},
+;88:	{"message", FOFS(message), F_LSTRING},
+;89:	{"team", FOFS(team), F_LSTRING},
+;90:	{"wait", FOFS(wait), F_FLOAT},
+;91:	{"random", FOFS(random), F_FLOAT},
+;92:	{"count", FOFS(count), F_INT},
+;93:	{"health", FOFS(health), F_INT},
+;94:	{"light", 0, F_IGNORE},
+;95:	{"dmg", FOFS(damage), F_INT},
+;96:	{"angles", FOFS(s.angles), F_VECTOR},
+;97:	{"angle", FOFS(s.angles), F_ANGLEHACK},
+;98:	{"targetShaderName", FOFS(targetShaderName), F_LSTRING},
+;99:	{"targetShaderNewName", FOFS(targetShaderNewName), F_LSTRING},
+;100:	{"distance", FOFS(distance), F_FLOAT},	
+;101:
+;102:	{NULL}
+;103:};
 ;104:
-;105:typedef struct {
-;106:	char	*name;
-;107:	void	(*spawn)(gentity_t *ent);
-;108:} spawn_t;
-;109:
-;110:void SP_info_player_start (gentity_t *ent);
-;111:void SP_info_player_deathmatch (gentity_t *ent);
-;112:void SP_info_player_intermission (gentity_t *ent);
-;113:void SP_info_firstplace(gentity_t *ent);
-;114:void SP_info_secondplace(gentity_t *ent);
-;115:void SP_info_thirdplace(gentity_t *ent);
-;116:void SP_info_podium(gentity_t *ent);
-;117:
-;118:void SP_func_plat (gentity_t *ent);
-;119:void SP_func_static (gentity_t *ent);
-;120:void SP_func_rotating (gentity_t *ent);
-;121:void SP_func_bobbing (gentity_t *ent);
-;122:void SP_func_pendulum( gentity_t *ent );
-;123:void SP_func_button (gentity_t *ent);
-;124:void SP_func_door (gentity_t *ent);
-;125:void SP_func_train (gentity_t *ent);
-;126:void SP_func_timer (gentity_t *self);
-;127:void SP_func_breakable (gentity_t *ent);
-;128:
-;129:void SP_trigger_always (gentity_t *ent);
-;130:void SP_trigger_multiple (gentity_t *ent);
-;131:void SP_trigger_push (gentity_t *ent);
-;132:void SP_trigger_teleport (gentity_t *ent);
-;133:void SP_trigger_hurt (gentity_t *ent);
-;134:
-;135:void SP_target_remove_powerups( gentity_t *ent );
-;136:void SP_target_give (gentity_t *ent);
-;137:void SP_target_delay (gentity_t *ent);
-;138:void SP_target_speaker (gentity_t *ent);
-;139:void SP_target_print (gentity_t *ent);
-;140:void SP_target_laser (gentity_t *self);
-;141:void SP_target_character (gentity_t *ent);
-;142:void SP_target_score( gentity_t *ent );
-;143:void SP_target_teleporter( gentity_t *ent );
-;144:void SP_target_relay (gentity_t *ent);
-;145:void SP_target_kill (gentity_t *ent);
-;146:void SP_target_position (gentity_t *ent);
-;147:void SP_target_location (gentity_t *ent);
-;148:void SP_target_push (gentity_t *ent);
-;149:
-;150:void SP_light (gentity_t *self);
-;151:void SP_info_null (gentity_t *self);
-;152:void SP_info_notnull (gentity_t *self);
-;153:void SP_info_camp (gentity_t *self);
-;154:void SP_path_corner (gentity_t *self);
-;155:
-;156:void SP_misc_teleporter_dest (gentity_t *self);
-;157:void SP_misc_model(gentity_t *ent);
-;158:void SP_misc_portal_camera(gentity_t *ent);
-;159:void SP_misc_portal_surface(gentity_t *ent);
-;160:
-;161:void SP_shooter_rocket( gentity_t *ent );
-;162:void SP_shooter_plasma( gentity_t *ent );
-;163:void SP_shooter_grenade( gentity_t *ent );
-;164:
-;165:void SP_team_CTF_redplayer( gentity_t *ent );
-;166:void SP_team_CTF_blueplayer( gentity_t *ent );
+;105:
+;106:typedef struct {
+;107:	char	*name;
+;108:	void	(*spawn)(gentity_t *ent);
+;109:} spawn_t;
+;110:
+;111:void SP_info_player_start (gentity_t *ent);
+;112:void SP_info_player_deathmatch (gentity_t *ent);
+;113:void SP_info_player_intermission (gentity_t *ent);
+;114:void SP_info_firstplace(gentity_t *ent);
+;115:void SP_info_secondplace(gentity_t *ent);
+;116:void SP_info_thirdplace(gentity_t *ent);
+;117:void SP_info_podium(gentity_t *ent);
+;118:
+;119:void SP_func_plat (gentity_t *ent);
+;120:void SP_func_static (gentity_t *ent);
+;121:void SP_func_rotating (gentity_t *ent);
+;122:void SP_func_bobbing (gentity_t *ent);
+;123:void SP_func_pendulum( gentity_t *ent );
+;124:void SP_func_button (gentity_t *ent);
+;125:void SP_func_door (gentity_t *ent);
+;126:void SP_func_train (gentity_t *ent);
+;127:void SP_func_timer (gentity_t *self);
+;128:void SP_func_breakable (gentity_t *ent);
+;129:
+;130:void SP_trigger_always (gentity_t *ent);
+;131:void SP_trigger_multiple (gentity_t *ent);
+;132:void SP_trigger_push (gentity_t *ent);
+;133:void SP_trigger_teleport (gentity_t *ent);
+;134:void SP_trigger_hurt (gentity_t *ent);
+;135:
+;136:void SP_target_remove_powerups( gentity_t *ent );
+;137:void SP_target_give (gentity_t *ent);
+;138:void SP_target_delay (gentity_t *ent);
+;139:void SP_target_speaker (gentity_t *ent);
+;140:void SP_target_print (gentity_t *ent);
+;141:void SP_target_laser (gentity_t *self);
+;142:void SP_target_character (gentity_t *ent);
+;143:void SP_target_score( gentity_t *ent );
+;144:void SP_target_teleporter( gentity_t *ent );
+;145:void SP_target_relay (gentity_t *ent);
+;146:void SP_target_kill (gentity_t *ent);
+;147:void SP_target_position (gentity_t *ent);
+;148:void SP_target_location (gentity_t *ent);
+;149:void SP_target_push (gentity_t *ent);
+;150:void SP_target_gravity_change( gentity_t *self ); //-Vincent
+;151:void SP_target_speed_change( gentity_t *self ); //-Vincent
+;152:
+;153:void SP_light (gentity_t *self);
+;154:void SP_info_null (gentity_t *self);
+;155:void SP_info_notnull (gentity_t *self);
+;156:void SP_info_camp (gentity_t *self);
+;157:void SP_path_corner (gentity_t *self);
+;158:
+;159:void SP_misc_teleporter_dest (gentity_t *self);
+;160:void SP_misc_model(gentity_t *ent);
+;161:void SP_misc_portal_camera(gentity_t *ent);
+;162:void SP_misc_portal_surface(gentity_t *ent);
+;163:
+;164:void SP_shooter_rocket( gentity_t *ent );
+;165:void SP_shooter_plasma( gentity_t *ent );
+;166:void SP_shooter_grenade( gentity_t *ent );
 ;167:
-;168:void SP_team_CTF_redspawn( gentity_t *ent );
-;169:void SP_team_CTF_bluespawn( gentity_t *ent );
+;168:void SP_team_CTF_redplayer( gentity_t *ent );
+;169:void SP_team_CTF_blueplayer( gentity_t *ent );
 ;170:
-;171:void SP_func_door_rotating( gentity_t *ent );	
-;172:
-;173:#ifdef MISSIONPACK
-;174:void SP_team_blueobelisk( gentity_t *ent );
-;175:void SP_team_redobelisk( gentity_t *ent );
-;176:void SP_team_neutralobelisk( gentity_t *ent );
-;177:#endif
-;178:void SP_item_botroam( gentity_t *ent );
-;179:
-;180:spawn_t	spawns[] = {
-;181:	// info entities don't do anything at all, but provide positional
-;182:	// information for things controlled by other processes
-;183:	{"info_player_start", SP_info_player_start},
-;184:	{"info_player_deathmatch", SP_info_player_deathmatch},
-;185:	{"info_player_intermission", SP_info_player_intermission},
-;186:	{"info_null", SP_info_null},
-;187:	{"info_notnull", SP_info_notnull},		// use target_position instead
-;188:	{"info_camp", SP_info_camp},
-;189:
-;190:	{"func_plat", SP_func_plat},
-;191:	{"func_button", SP_func_button},
-;192:	{"func_door", SP_func_door},
-;193:	{"func_static", SP_func_static},
-;194:	{"func_rotating", SP_func_rotating},
-;195:	{"func_bobbing", SP_func_bobbing},
-;196:	{"func_pendulum", SP_func_pendulum},
-;197:	{"func_train", SP_func_train},
-;198:	{"func_group", SP_info_null},
-;199:	{"func_timer", SP_func_timer},			// rename trigger_timer?
-;200:	{"func_breakable", SP_func_breakable},		// Shafe - Trep - Breakables
-;201:
-;202:	// Triggers are brush objects that cause an effect when contacted
-;203:	// by a living player, usually involving firing targets.
-;204:	// While almost everything could be done with
-;205:	// a single trigger class and different targets, triggered effects
-;206:	// could not be client side predicted (push and teleport).
-;207:	{"trigger_always", SP_trigger_always},
-;208:	{"trigger_multiple", SP_trigger_multiple},
-;209:	{"trigger_push", SP_trigger_push},
-;210:	{"trigger_teleport", SP_trigger_teleport},
-;211:	{"trigger_hurt", SP_trigger_hurt},
-;212:
-;213:	// targets perform no action by themselves, but must be triggered
-;214:	// by another entity
-;215:	{"target_give", SP_target_give},
-;216:	{"target_remove_powerups", SP_target_remove_powerups},
-;217:	{"target_delay", SP_target_delay},
-;218:	{"target_speaker", SP_target_speaker},
-;219:	{"target_print", SP_target_print},
-;220:	{"target_laser", SP_target_laser},
-;221:	{"target_score", SP_target_score},
-;222:	{"target_teleporter", SP_target_teleporter},
-;223:	{"target_relay", SP_target_relay},
-;224:	{"target_kill", SP_target_kill},
-;225:	{"target_position", SP_target_position},
-;226:	{"target_location", SP_target_location},
-;227:	{"target_push", SP_target_push},
-;228:
-;229:	{"light", SP_light},
-;230:	{"path_corner", SP_path_corner},
-;231:
-;232:	{"misc_teleporter_dest", SP_misc_teleporter_dest},
-;233:	{"misc_model", SP_misc_model},
-;234:	{"misc_portal_surface", SP_misc_portal_surface},
-;235:	{"misc_portal_camera", SP_misc_portal_camera},
+;171:void SP_team_CTF_redspawn( gentity_t *ent );
+;172:void SP_team_CTF_bluespawn( gentity_t *ent );
+;173:
+;174:void SP_func_door_rotating( gentity_t *ent );	
+;175:
+;176:#ifdef MISSIONPACK
+;177:void SP_team_blueobelisk( gentity_t *ent );
+;178:void SP_team_redobelisk( gentity_t *ent );
+;179:void SP_team_neutralobelisk( gentity_t *ent );
+;180:#endif
+;181:void SP_item_botroam( gentity_t *ent );
+;182:
+;183:spawn_t	spawns[] = {
+;184:	// info entities don't do anything at all, but provide positional
+;185:	// information for things controlled by other processes
+;186:	{"info_player_start", SP_info_player_start},
+;187:	{"info_player_deathmatch", SP_info_player_deathmatch},
+;188:	{"info_player_intermission", SP_info_player_intermission},
+;189:	{"info_null", SP_info_null},
+;190:	{"info_notnull", SP_info_notnull},		// use target_position instead
+;191:	{"info_camp", SP_info_camp},
+;192:
+;193:	{"func_plat", SP_func_plat},
+;194:	{"func_button", SP_func_button},
+;195:	{"func_door", SP_func_door},
+;196:	{"func_static", SP_func_static},
+;197:	{"func_rotating", SP_func_rotating},
+;198:	{"func_bobbing", SP_func_bobbing},
+;199:	{"func_pendulum", SP_func_pendulum},
+;200:	{"func_train", SP_func_train},
+;201:	{"func_group", SP_info_null},
+;202:	{"func_timer", SP_func_timer},			// rename trigger_timer?
+;203:	{"func_breakable", SP_func_breakable},		// Shafe - Trep - Breakables
+;204:
+;205:	// Triggers are brush objects that cause an effect when contacted
+;206:	// by a living player, usually involving firing targets.
+;207:	// While almost everything could be done with
+;208:	// a single trigger class and different targets, triggered effects
+;209:	// could not be client side predicted (push and teleport).
+;210:	{"trigger_always", SP_trigger_always},
+;211:	{"trigger_multiple", SP_trigger_multiple},
+;212:	{"trigger_push", SP_trigger_push},
+;213:	{"trigger_teleport", SP_trigger_teleport},
+;214:	{"trigger_hurt", SP_trigger_hurt},
+;215:
+;216:	// targets perform no action by themselves, but must be triggered
+;217:	// by another entity
+;218:	{"target_give", SP_target_give},
+;219:	{"target_remove_powerups", SP_target_remove_powerups},
+;220:	{"target_delay", SP_target_delay},
+;221:	{"target_speaker", SP_target_speaker},
+;222:	{"target_print", SP_target_print},
+;223:	{"target_laser", SP_target_laser},
+;224:	{"target_score", SP_target_score},
+;225:	{"target_teleporter", SP_target_teleporter},
+;226:	{"target_relay", SP_target_relay},
+;227:	{"target_kill", SP_target_kill},
+;228:	{"target_position", SP_target_position},
+;229:	{"target_location", SP_target_location},
+;230:	{"target_push", SP_target_push},
+;231:	{"target_gravity_change", SP_target_gravity_change},
+;232:	{"target_speed_change", SP_target_speed_change},
+;233:
+;234:	{"light", SP_light},
+;235:	{"path_corner", SP_path_corner},
 ;236:
-;237:	{"shooter_rocket", SP_shooter_rocket},
-;238:	{"shooter_grenade", SP_shooter_grenade},
-;239:	{"shooter_plasma", SP_shooter_plasma},
-;240:
-;241:	{"team_CTF_redplayer", SP_team_CTF_redplayer},
-;242:	{"team_CTF_blueplayer", SP_team_CTF_blueplayer},
-;243:
-;244:	{"team_CTF_redspawn", SP_team_CTF_redspawn},
-;245:	{"team_CTF_bluespawn", SP_team_CTF_bluespawn},
-;246:	{"func_door_rotating", SP_func_door_rotating}, // Actually Calls it when found in map
-;247:
-;248:#ifdef MISSIONPACK
-;249:	{"team_redobelisk", SP_team_redobelisk},
-;250:	{"team_blueobelisk", SP_team_blueobelisk},
-;251:	{"team_neutralobelisk", SP_team_neutralobelisk},
-;252:#endif
-;253://	{"item_botroam", SP_item_botroam},
-;254:
-;255:	{0, 0}
-;256:};
-;257:
-;258:/*
-;259:===============
-;260:G_CallSpawn
-;261:
-;262:Finds the spawn function for the entity and calls it,
-;263:returning qfalse if not found
+;237:	{"misc_teleporter_dest", SP_misc_teleporter_dest},
+;238:	{"misc_model", SP_misc_model},
+;239:	{"misc_portal_surface", SP_misc_portal_surface},
+;240:	{"misc_portal_camera", SP_misc_portal_camera},
+;241:
+;242:	{"shooter_rocket", SP_shooter_rocket},
+;243:	{"shooter_grenade", SP_shooter_grenade},
+;244:	{"shooter_plasma", SP_shooter_plasma},
+;245:
+;246:	{"team_CTF_redplayer", SP_team_CTF_redplayer},
+;247:	{"team_CTF_blueplayer", SP_team_CTF_blueplayer},
+;248:
+;249:	{"team_CTF_redspawn", SP_team_CTF_redspawn},
+;250:	{"team_CTF_bluespawn", SP_team_CTF_bluespawn},
+;251:	{"func_door_rotating", SP_func_door_rotating}, // Actually Calls it when found in map
+;252:
+;253:#ifdef MISSIONPACK
+;254:	{"team_redobelisk", SP_team_redobelisk},
+;255:	{"team_blueobelisk", SP_team_blueobelisk},
+;256:	{"team_neutralobelisk", SP_team_neutralobelisk},
+;257:#endif
+;258://	{"item_botroam", SP_item_botroam},
+;259:
+;260:	{0, 0}
+;261:};
+;262:
+;263:/*
 ;264:===============
-;265:*/
-;266:qboolean G_CallSpawn( gentity_t *ent ) {
-line 270
-;267:	spawn_t	*s;
-;268:	gitem_t	*item;
-;269:
-;270:	if ( !ent->classname ) {
+;265:G_CallSpawn
+;266:
+;267:Finds the spawn function for the entity and calls it,
+;268:returning qfalse if not found
+;269:===============
+;270:*/
+;271:qboolean G_CallSpawn( gentity_t *ent ) {
+line 275
+;272:	spawn_t	*s;
+;273:	gitem_t	*item;
+;274:
+;275:	if ( !ent->classname ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 532
@@ -691,34 +704,34 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $146
-line 271
-;271:		G_Printf ("G_CallSpawn: NULL classname\n");
-ADDRGP4 $148
+NEU4 $149
+line 276
+;276:		G_Printf ("G_CallSpawn: NULL classname\n");
+ADDRGP4 $151
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 272
-;272:		return qfalse;
+line 277
+;277:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $145
+ADDRGP4 $148
 JUMPV
-LABELV $146
-line 276
-;273:	}
-;274:
-;275:	// check item spawn functions
-;276:	for ( item=bg_itemlist+1 ; item->classname ; item++ ) {
+LABELV $149
+line 281
+;278:	}
+;279:
+;280:	// check item spawn functions
+;281:	for ( item=bg_itemlist+1 ; item->classname ; item++ ) {
 ADDRLP4 4
 ADDRGP4 bg_itemlist+52
 ASGNP4
-ADDRGP4 $152
+ADDRGP4 $155
 JUMPV
-LABELV $149
-line 277
-;277:		if ( !strcmp(item->classname, ent->classname) ) {
+LABELV $152
+line 282
+;282:		if ( !strcmp(item->classname, ent->classname) ) {
 ADDRLP4 4
 INDIRP4
 INDIRP4
@@ -736,9 +749,9 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $154
-line 278
-;278:			G_SpawnItem( ent, item );
+NEI4 $157
+line 283
+;283:			G_SpawnItem( ent, item );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -748,43 +761,43 @@ ARGP4
 ADDRGP4 G_SpawnItem
 CALLV
 pop
-line 279
-;279:			return qtrue;
+line 284
+;284:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $145
+ADDRGP4 $148
 JUMPV
-LABELV $154
+LABELV $157
+line 286
+;285:		}
+;286:	}
+LABELV $153
 line 281
-;280:		}
-;281:	}
-LABELV $150
-line 276
 ADDRLP4 4
 ADDRLP4 4
 INDIRP4
 CNSTI4 52
 ADDP4
 ASGNP4
-LABELV $152
+LABELV $155
 ADDRLP4 4
 INDIRP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $149
-line 284
-;282:
-;283:	// check normal spawn functions
-;284:	for ( s=spawns ; s->name ; s++ ) {
+NEU4 $152
+line 289
+;287:
+;288:	// check normal spawn functions
+;289:	for ( s=spawns ; s->name ; s++ ) {
 ADDRLP4 0
 ADDRGP4 spawns
 ASGNP4
-ADDRGP4 $159
+ADDRGP4 $162
 JUMPV
-LABELV $156
-line 285
-;285:		if ( !strcmp(s->name, ent->classname) ) {
+LABELV $159
+line 290
+;290:		if ( !strcmp(s->name, ent->classname) ) {
 ADDRLP4 0
 INDIRP4
 INDIRP4
@@ -802,10 +815,10 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $160
-line 287
-;286:			// found it
-;287:			s->spawn(ent);
+NEI4 $163
+line 292
+;291:			// found it
+;292:			s->spawn(ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -816,34 +829,34 @@ ADDP4
 INDIRP4
 CALLV
 pop
-line 288
-;288:			return qtrue;
+line 293
+;293:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $145
+ADDRGP4 $148
 JUMPV
+LABELV $163
+line 295
+;294:		}
+;295:	}
 LABELV $160
-line 290
-;289:		}
-;290:	}
-LABELV $157
-line 284
+line 289
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 ASGNP4
-LABELV $159
+LABELV $162
 ADDRLP4 0
 INDIRP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $156
-line 291
-;291:	G_Printf ("%s doesn't have a spawn function\n", ent->classname);
-ADDRGP4 $162
+NEU4 $159
+line 296
+;296:	G_Printf ("%s doesn't have a spawn function\n", ent->classname);
+ADDRGP4 $165
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -854,31 +867,31 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 292
-;292:	return qfalse;
+line 297
+;297:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $145
+LABELV $148
 endproc G_CallSpawn 12 8
 export G_NewString
 proc G_NewString 32 4
-line 303
-;293:}
-;294:
-;295:/*
-;296:=============
-;297:G_NewString
-;298:
-;299:Builds a copy of the string, translating \n to real linefeeds
-;300:so message texts can be multi-line
+line 308
+;298:}
+;299:
+;300:/*
 ;301:=============
-;302:*/
-;303:char *G_NewString( const char *string ) {
-line 307
-;304:	char	*newb, *new_p;
-;305:	int		i,l;
-;306:	
-;307:	l = strlen(string) + 1;
+;302:G_NewString
+;303:
+;304:Builds a copy of the string, translating \n to real linefeeds
+;305:so message texts can be multi-line
+;306:=============
+;307:*/
+;308:char *G_NewString( const char *string ) {
+line 312
+;309:	char	*newb, *new_p;
+;310:	int		i,l;
+;311:	
+;312:	l = strlen(string) + 1;
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -892,9 +905,9 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 309
-;308:
-;309:	newb = G_Alloc( l );
+line 314
+;313:
+;314:	newb = G_Alloc( l );
 ADDRLP4 4
 INDIRI4
 ARGI4
@@ -906,25 +919,25 @@ ADDRLP4 12
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 311
-;310:
-;311:	new_p = newb;
+line 316
+;315:
+;316:	new_p = newb;
 ADDRLP4 8
 ADDRLP4 12
 INDIRP4
 ASGNP4
-line 314
-;312:
-;313:	// turn \n into a real linefeed
-;314:	for ( i=0 ; i< l ; i++ ) {
+line 319
+;317:
+;318:	// turn \n into a real linefeed
+;319:	for ( i=0 ; i< l ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $167
+ADDRGP4 $170
 JUMPV
-LABELV $164
-line 315
-;315:		if (string[i] == '\\' && i < l-1) {
+LABELV $167
+line 320
+;320:		if (string[i] == '\\' && i < l-1) {
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -933,24 +946,24 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 92
-NEI4 $168
+NEI4 $171
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 SUBI4
-GEI4 $168
-line 316
-;316:			i++;
+GEI4 $171
+line 321
+;321:			i++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 317
-;317:			if (string[i] == 'n') {
+line 322
+;322:			if (string[i] == 'n') {
 ADDRLP4 0
 INDIRI4
 ADDRFP4 0
@@ -959,9 +972,9 @@ ADDP4
 INDIRI1
 CVII4 1
 CNSTI4 110
-NEI4 $170
-line 318
-;318:				*new_p++ = '\n';
+NEI4 $173
+line 323
+;323:				*new_p++ = '\n';
 ADDRLP4 28
 ADDRLP4 8
 INDIRP4
@@ -976,13 +989,13 @@ ADDRLP4 28
 INDIRP4
 CNSTI1 10
 ASGNI1
-line 319
-;319:			} else {
-ADDRGP4 $169
+line 324
+;324:			} else {
+ADDRGP4 $172
 JUMPV
-LABELV $170
-line 320
-;320:				*new_p++ = '\\';
+LABELV $173
+line 325
+;325:				*new_p++ = '\\';
 ADDRLP4 28
 ADDRLP4 8
 INDIRP4
@@ -997,15 +1010,15 @@ ADDRLP4 28
 INDIRP4
 CNSTI1 92
 ASGNI1
-line 321
-;321:			}
-line 322
-;322:		} else {
-ADDRGP4 $169
+line 326
+;326:			}
+line 327
+;327:		} else {
+ADDRGP4 $172
 JUMPV
-LABELV $168
-line 323
-;323:			*new_p++ = string[i];
+LABELV $171
+line 328
+;328:			*new_p++ = string[i];
 ADDRLP4 28
 ADDRLP4 8
 INDIRP4
@@ -1025,65 +1038,65 @@ INDIRP4
 ADDP4
 INDIRI1
 ASGNI1
-line 324
-;324:		}
-LABELV $169
-line 325
-;325:	}
-LABELV $165
-line 314
+line 329
+;329:		}
+LABELV $172
+line 330
+;330:	}
+LABELV $168
+line 319
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $167
+LABELV $170
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-LTI4 $164
-line 327
-;326:	
-;327:	return newb;
+LTI4 $167
+line 332
+;331:	
+;332:	return newb;
 ADDRLP4 12
 INDIRP4
 RETP4
-LABELV $163
+LABELV $166
 endproc G_NewString 32 4
 export G_ParseField
 proc G_ParseField 60 20
-line 341
-;328:}
-;329:
-;330:
-;331:
-;332:
-;333:/*
-;334:===============
-;335:G_ParseField
+line 346
+;333:}
+;334:
+;335:
 ;336:
-;337:Takes a key/value pair and sets the binary values
-;338:in a gentity
+;337:
+;338:/*
 ;339:===============
-;340:*/
-;341:void G_ParseField( const char *key, const char *value, gentity_t *ent ) {
-line 347
-;342:	field_t	*f;
-;343:	byte	*b;
-;344:	float	v;
-;345:	vec3_t	vec;
-;346:
-;347:	for ( f=fields ; f->name ; f++ ) {
+;340:G_ParseField
+;341:
+;342:Takes a key/value pair and sets the binary values
+;343:in a gentity
+;344:===============
+;345:*/
+;346:void G_ParseField( const char *key, const char *value, gentity_t *ent ) {
+line 352
+;347:	field_t	*f;
+;348:	byte	*b;
+;349:	float	v;
+;350:	vec3_t	vec;
+;351:
+;352:	for ( f=fields ; f->name ; f++ ) {
 ADDRLP4 0
 ADDRGP4 fields
 ASGNP4
-ADDRGP4 $176
+ADDRGP4 $179
 JUMPV
-LABELV $173
-line 348
-;348:		if ( !Q_stricmp(f->name, key) ) {
+LABELV $176
+line 353
+;353:		if ( !Q_stricmp(f->name, key) ) {
 ADDRLP4 0
 INDIRP4
 INDIRP4
@@ -1098,17 +1111,17 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-NEI4 $177
-line 350
-;349:			// found it
-;350:			b = (byte *)ent;
+NEI4 $180
+line 355
+;354:			// found it
+;355:			b = (byte *)ent;
 ADDRLP4 4
 ADDRFP4 8
 INDIRP4
 ASGNP4
-line 352
-;351:
-;352:			switch( f->type ) {
+line 357
+;356:
+;357:			switch( f->type ) {
 ADDRLP4 28
 ADDRLP4 0
 INDIRP4
@@ -1119,37 +1132,37 @@ ASGNI4
 ADDRLP4 28
 INDIRI4
 CNSTI4 0
-LTI4 $172
+LTI4 $175
 ADDRLP4 28
 INDIRI4
 CNSTI4 9
-GTI4 $172
+GTI4 $175
 ADDRLP4 28
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $192
+ADDRGP4 $195
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $192
-address $188
-address $189
-address $182
-address $172
-address $183
-address $190
-address $172
-address $172
-address $172
-address $172
+LABELV $195
+address $191
+address $192
+address $185
+address $175
+address $186
+address $193
+address $175
+address $175
+address $175
+address $175
 code
-LABELV $182
-line 354
-;353:			case F_LSTRING:
-;354:				*(char **)(b+f->ofs) = G_NewString (value);
+LABELV $185
+line 359
+;358:			case F_LSTRING:
+;359:				*(char **)(b+f->ofs) = G_NewString (value);
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -1168,14 +1181,14 @@ ADDP4
 ADDRLP4 36
 INDIRP4
 ASGNP4
-line 355
-;355:				break;
-ADDRGP4 $172
+line 360
+;360:				break;
+ADDRGP4 $175
 JUMPV
-LABELV $183
-line 357
-;356:			case F_VECTOR:
-;357:				sscanf (value, "%f %f %f", &vec[0], &vec[1], &vec[2]);
+LABELV $186
+line 362
+;361:			case F_VECTOR:
+;362:				sscanf (value, "%f %f %f", &vec[0], &vec[1], &vec[2]);
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -1190,8 +1203,8 @@ ARGP4
 ADDRGP4 sscanf
 CALLI4
 pop
-line 358
-;358:				((float *)(b+f->ofs))[0] = vec[0];
+line 363
+;363:				((float *)(b+f->ofs))[0] = vec[0];
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
@@ -1203,8 +1216,8 @@ ADDP4
 ADDRLP4 8
 INDIRF4
 ASGNF4
-line 359
-;359:				((float *)(b+f->ofs))[1] = vec[1];
+line 364
+;364:				((float *)(b+f->ofs))[1] = vec[1];
 ADDRLP4 40
 CNSTI4 4
 ASGNI4
@@ -1223,8 +1236,8 @@ ADDP4
 ADDRLP4 8+4
 INDIRF4
 ASGNF4
-line 360
-;360:				((float *)(b+f->ofs))[2] = vec[2];
+line 365
+;365:				((float *)(b+f->ofs))[2] = vec[2];
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
@@ -1238,14 +1251,14 @@ ADDP4
 ADDRLP4 8+8
 INDIRF4
 ASGNF4
-line 361
-;361:				break;
-ADDRGP4 $172
+line 366
+;366:				break;
+ADDRGP4 $175
 JUMPV
-LABELV $188
-line 363
-;362:			case F_INT:
-;363:				*(int *)(b+f->ofs) = atoi(value);
+LABELV $191
+line 368
+;367:			case F_INT:
+;368:				*(int *)(b+f->ofs) = atoi(value);
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -1264,14 +1277,14 @@ ADDP4
 ADDRLP4 44
 INDIRI4
 ASGNI4
-line 364
-;364:				break;
-ADDRGP4 $172
+line 369
+;369:				break;
+ADDRGP4 $175
 JUMPV
-LABELV $189
-line 366
-;365:			case F_FLOAT:
-;366:				*(float *)(b+f->ofs) = atof(value);
+LABELV $192
+line 371
+;370:			case F_FLOAT:
+;371:				*(float *)(b+f->ofs) = atof(value);
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -1290,14 +1303,14 @@ ADDP4
 ADDRLP4 48
 INDIRF4
 ASGNF4
-line 367
-;367:				break;
-ADDRGP4 $172
+line 372
+;372:				break;
+ADDRGP4 $175
 JUMPV
-LABELV $190
-line 369
-;368:			case F_ANGLEHACK:
-;369:				v = atof(value);
+LABELV $193
+line 374
+;373:			case F_ANGLEHACK:
+;374:				v = atof(value);
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -1309,8 +1322,8 @@ ADDRLP4 20
 ADDRLP4 52
 INDIRF4
 ASGNF4
-line 370
-;370:				((float *)(b+f->ofs))[0] = 0;
+line 375
+;375:				((float *)(b+f->ofs))[0] = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
@@ -1321,8 +1334,8 @@ INDIRP4
 ADDP4
 CNSTF4 0
 ASGNF4
-line 371
-;371:				((float *)(b+f->ofs))[1] = v;
+line 376
+;376:				((float *)(b+f->ofs))[1] = v;
 ADDRLP4 56
 CNSTI4 4
 ASGNI4
@@ -1341,8 +1354,8 @@ ADDP4
 ADDRLP4 20
 INDIRF4
 ASGNF4
-line 372
-;372:				((float *)(b+f->ofs))[2] = 0;
+line 377
+;377:				((float *)(b+f->ofs))[2] = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
@@ -1355,77 +1368,77 @@ CNSTI4 8
 ADDP4
 CNSTF4 0
 ASGNF4
-line 373
-;373:				break;
-line 376
-;374:			default:
-;375:			case F_IGNORE:
-;376:				break;
 line 378
-;377:			}
-;378:			return;
-ADDRGP4 $172
+;378:				break;
+line 381
+;379:			default:
+;380:			case F_IGNORE:
+;381:				break;
+line 383
+;382:			}
+;383:			return;
+ADDRGP4 $175
 JUMPV
+LABELV $180
+line 385
+;384:		}
+;385:	}
 LABELV $177
-line 380
-;379:		}
-;380:	}
-LABELV $174
-line 347
+line 352
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
 CNSTI4 16
 ADDP4
 ASGNP4
-LABELV $176
+LABELV $179
 ADDRLP4 0
 INDIRP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $173
-line 381
-;381:}
-LABELV $172
+NEU4 $176
+line 386
+;386:}
+LABELV $175
 endproc G_ParseField 60 20
 data
 align 4
-LABELV $194
-address $195
-address $196
-address $197
-address $84
+LABELV $197
 address $198
 address $199
 address $200
+address $85
 address $201
 address $202
+address $203
+address $204
+address $205
 export G_SpawnGEntityFromSpawnVars
 code
 proc G_SpawnGEntityFromSpawnVars 40 12
-line 394
-;382:
-;383:
-;384:
-;385:
-;386:/*
-;387:===================
-;388:G_SpawnGEntityFromSpawnVars
+line 399
+;387:
+;388:
 ;389:
-;390:Spawn an entity and fill in all of the level fields from
-;391:level.spawnVars[], then call the class specfic spawn function
+;390:
+;391:/*
 ;392:===================
-;393:*/
-;394:void G_SpawnGEntityFromSpawnVars( void ) {
-line 401
-;395:	int			i;
-;396:	gentity_t	*ent;
-;397:	char		*s, *value, *gametypeName;
-;398:	static char *gametypeNames[] = {"ffa", "tournament", "single", "team", "ctf", "oneflag", "obelisk", "harvester", "teamtournament"};
-;399:
-;400:	// get the next free entity
-;401:	ent = G_Spawn();
+;393:G_SpawnGEntityFromSpawnVars
+;394:
+;395:Spawn an entity and fill in all of the level fields from
+;396:level.spawnVars[], then call the class specfic spawn function
+;397:===================
+;398:*/
+;399:void G_SpawnGEntityFromSpawnVars( void ) {
+line 406
+;400:	int			i;
+;401:	gentity_t	*ent;
+;402:	char		*s, *value, *gametypeName;
+;403:	static char *gametypeNames[] = {"ffa", "tournament", "single", "team", "ctf", "oneflag", "obelisk", "harvester", "teamtournament"};
+;404:
+;405:	// get the next free entity
+;406:	ent = G_Spawn();
 ADDRLP4 20
 ADDRGP4 G_Spawn
 CALLP4
@@ -1434,17 +1447,17 @@ ADDRLP4 4
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 403
-;402:
-;403:	for ( i = 0 ; i < level.numSpawnVars ; i++ ) {
+line 408
+;407:
+;408:	for ( i = 0 ; i < level.numSpawnVars ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $206
+ADDRGP4 $209
 JUMPV
-LABELV $203
-line 404
-;404:		G_ParseField( level.spawnVars[i][0], level.spawnVars[i][1], ent );
+LABELV $206
+line 409
+;409:		G_ParseField( level.spawnVars[i][0], level.spawnVars[i][1], ent );
 ADDRLP4 24
 ADDRLP4 0
 INDIRI4
@@ -1469,182 +1482,182 @@ ARGP4
 ADDRGP4 G_ParseField
 CALLV
 pop
-line 405
-;405:	}
-LABELV $204
-line 403
+line 410
+;410:	}
+LABELV $207
+line 408
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $206
+LABELV $209
 ADDRLP4 0
 INDIRI4
 ADDRGP4 level+4520
 INDIRI4
-LTI4 $203
-line 408
-;406:
-;407:	// check for "notsingle" flag
-;408:	if ( g_gametype.integer == GT_SINGLE_PLAYER ) {
+LTI4 $206
+line 413
+;411:
+;412:	// check for "notsingle" flag
+;413:	if ( g_gametype.integer == GT_SINGLE_PLAYER ) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 2
-NEI4 $211
-line 409
-;409:		G_SpawnInt( "notsingle", "0", &i );
-ADDRGP4 $214
-ARGP4
-ADDRGP4 $215
-ARGP4
-ADDRLP4 0
-ARGP4
-ADDRGP4 G_SpawnInt
-CALLI4
-pop
-line 410
-;410:		if ( i ) {
-ADDRLP4 0
-INDIRI4
-CNSTI4 0
-EQI4 $216
-line 411
-;411:			G_FreeEntity( ent );
-ADDRLP4 4
-INDIRP4
-ARGP4
-ADDRGP4 G_FreeEntity
-CALLV
-pop
-line 412
-;412:			return;
-ADDRGP4 $193
-JUMPV
-LABELV $216
+NEI4 $214
 line 414
-;413:		}
-;414:	}
-LABELV $211
-line 416
-;415:	// check for "notteam" flag (GT_FFA, GT_TOURNAMENT, GT_SINGLE_PLAYER)
-;416:	if ( g_gametype.integer >= GT_TEAM ) {
-ADDRGP4 g_gametype+12
-INDIRI4
-CNSTI4 3
-LTI4 $218
-line 417
-;417:		G_SpawnInt( "notteam", "0", &i );
-ADDRGP4 $221
+;414:		G_SpawnInt( "notsingle", "0", &i );
+ADDRGP4 $217
 ARGP4
-ADDRGP4 $215
+ADDRGP4 $218
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnInt
 CALLI4
 pop
-line 418
-;418:		if ( i ) {
+line 415
+;415:		if ( i ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 EQI4 $219
-line 419
-;419:			G_FreeEntity( ent );
+line 416
+;416:			G_FreeEntity( ent );
 ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 420
-;420:			return;
-ADDRGP4 $193
+line 417
+;417:			return;
+ADDRGP4 $196
 JUMPV
+LABELV $219
+line 419
+;418:		}
+;419:	}
+LABELV $214
+line 421
+;420:	// check for "notteam" flag (GT_FFA, GT_TOURNAMENT, GT_SINGLE_PLAYER)
+;421:	if ( g_gametype.integer >= GT_TEAM ) {
+ADDRGP4 g_gametype+12
+INDIRI4
+CNSTI4 3
+LTI4 $221
 line 422
-;421:		}
-;422:	} else {
-LABELV $218
-line 423
-;423:		G_SpawnInt( "notfree", "0", &i );
+;422:		G_SpawnInt( "notteam", "0", &i );
 ADDRGP4 $224
 ARGP4
-ADDRGP4 $215
+ADDRGP4 $218
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnInt
 CALLI4
 pop
-line 424
-;424:		if ( i ) {
+line 423
+;423:		if ( i ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-EQI4 $225
-line 425
-;425:			G_FreeEntity( ent );
+EQI4 $222
+line 424
+;424:			G_FreeEntity( ent );
 ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 426
-;426:			return;
-ADDRGP4 $193
+line 425
+;425:			return;
+ADDRGP4 $196
 JUMPV
-LABELV $225
+line 427
+;426:		}
+;427:	} else {
+LABELV $221
 line 428
-;427:		}
-;428:	}
-LABELV $219
-line 437
-;429:
-;430:#ifdef MISSIONPACK
-;431:	G_SpawnInt( "notta", "0", &i );
-;432:	if ( i ) {
-;433:		G_FreeEntity( ent );
-;434:		return;
-;435:	}
-;436:#else
-;437:	G_SpawnInt( "notq3a", "0", &i );
+;428:		G_SpawnInt( "notfree", "0", &i );
 ADDRGP4 $227
 ARGP4
-ADDRGP4 $215
+ADDRGP4 $218
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnInt
 CALLI4
 pop
-line 438
-;438:	if ( i ) {
+line 429
+;429:		if ( i ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
 EQI4 $228
-line 439
-;439:		G_FreeEntity( ent );
+line 430
+;430:			G_FreeEntity( ent );
 ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 440
-;440:		return;
-ADDRGP4 $193
+line 431
+;431:			return;
+ADDRGP4 $196
 JUMPV
 LABELV $228
+line 433
+;432:		}
+;433:	}
+LABELV $222
+line 442
+;434:
+;435:#ifdef MISSIONPACK
+;436:	G_SpawnInt( "notta", "0", &i );
+;437:	if ( i ) {
+;438:		G_FreeEntity( ent );
+;439:		return;
+;440:	}
+;441:#else
+;442:	G_SpawnInt( "notq3a", "0", &i );
+ADDRGP4 $230
+ARGP4
+ADDRGP4 $218
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 G_SpawnInt
+CALLI4
+pop
+line 443
+;443:	if ( i ) {
+ADDRLP4 0
+INDIRI4
+CNSTI4 0
+EQI4 $231
 line 444
-;441:	}
-;442:#endif
-;443:
-;444:	if( G_SpawnString( "gametype", NULL, &value ) ) {
-ADDRGP4 $232
+;444:		G_FreeEntity( ent );
+ADDRLP4 4
+INDIRP4
+ARGP4
+ADDRGP4 G_FreeEntity
+CALLV
+pop
+line 445
+;445:		return;
+ADDRGP4 $196
+JUMPV
+LABELV $231
+line 449
+;446:	}
+;447:#endif
+;448:
+;449:	if( G_SpawnString( "gametype", NULL, &value ) ) {
+ADDRGP4 $235
 ARGP4
 CNSTP4 0
 ARGP4
@@ -1657,31 +1670,31 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 0
-EQI4 $230
-line 445
-;445:		if( g_gametype.integer >= GT_FFA && g_gametype.integer < GT_MAX_GAME_TYPE ) {
+EQI4 $233
+line 450
+;450:		if( g_gametype.integer >= GT_FFA && g_gametype.integer < GT_MAX_GAME_TYPE ) {
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 0
-LTI4 $233
+LTI4 $236
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 10
-GEI4 $233
-line 446
-;446:			gametypeName = gametypeNames[g_gametype.integer];
+GEI4 $236
+line 451
+;451:			gametypeName = gametypeNames[g_gametype.integer];
 ADDRLP4 16
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $194
+ADDRGP4 $197
 ADDP4
 INDIRP4
 ASGNP4
-line 448
-;447:
-;448:			s = strstr( value, gametypeName );
+line 453
+;452:
+;453:			s = strstr( value, gametypeName );
 ADDRLP4 8
 INDIRP4
 ARGP4
@@ -1696,37 +1709,37 @@ ADDRLP4 12
 ADDRLP4 28
 INDIRP4
 ASGNP4
-line 449
-;449:			if( !s ) {
+line 454
+;454:			if( !s ) {
 ADDRLP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $238
-line 450
-;450:				G_FreeEntity( ent );
+NEU4 $241
+line 455
+;455:				G_FreeEntity( ent );
 ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 451
-;451:				return;
-ADDRGP4 $193
+line 456
+;456:				return;
+ADDRGP4 $196
 JUMPV
-LABELV $238
-line 453
-;452:			}
-;453:		}
+LABELV $241
+line 458
+;457:			}
+;458:		}
+LABELV $236
+line 459
+;459:	}
 LABELV $233
-line 454
-;454:	}
-LABELV $230
-line 457
-;455:
-;456:	// move editor origin to pos
-;457:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
+line 462
+;460:
+;461:	// move editor origin to pos
+;462:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
 ADDRLP4 4
 INDIRP4
 CNSTI4 24
@@ -1737,8 +1750,8 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 458
-;458:	VectorCopy( ent->s.origin, ent->r.currentOrigin );
+line 463
+;463:	VectorCopy( ent->s.origin, ent->r.currentOrigin );
 ADDRLP4 4
 INDIRP4
 CNSTI4 496
@@ -1749,10 +1762,10 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 461
-;459:
-;460:	// if we didn't get a classname, don't bother spawning anything
-;461:	if ( !G_CallSpawn( ent ) ) {
+line 466
+;464:
+;465:	// if we didn't get a classname, don't bother spawning anything
+;466:	if ( !G_CallSpawn( ent ) ) {
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -1763,39 +1776,39 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-NEI4 $240
-line 462
-;462:		G_FreeEntity( ent );
+NEI4 $243
+line 467
+;467:		G_FreeEntity( ent );
 ADDRLP4 4
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 463
-;463:	}
-LABELV $240
-line 464
-;464:}
-LABELV $193
+line 468
+;468:	}
+LABELV $243
+line 469
+;469:}
+LABELV $196
 endproc G_SpawnGEntityFromSpawnVars 40 12
 export G_AddSpawnVarToken
 proc G_AddSpawnVarToken 16 12
-line 473
-;465:
-;466:
-;467:
-;468:/*
-;469:====================
-;470:G_AddSpawnVarToken
-;471:====================
-;472:*/
-;473:char *G_AddSpawnVarToken( const char *string ) {
-line 477
-;474:	int		l;
-;475:	char	*dest;
-;476:
-;477:	l = strlen( string );
+line 478
+;470:
+;471:
+;472:
+;473:/*
+;474:====================
+;475:G_AddSpawnVarToken
+;476:====================
+;477:*/
+;478:char *G_AddSpawnVarToken( const char *string ) {
+line 482
+;479:	int		l;
+;480:	char	*dest;
+;481:
+;482:	l = strlen( string );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -1807,8 +1820,8 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 478
-;478:	if ( level.numSpawnVarChars + l + 1 > MAX_SPAWN_VARS_CHARS ) {
+line 483
+;483:	if ( level.numSpawnVarChars + l + 1 > MAX_SPAWN_VARS_CHARS ) {
 ADDRGP4 level+5036
 INDIRI4
 ADDRLP4 0
@@ -1817,28 +1830,28 @@ ADDI4
 CNSTI4 1
 ADDI4
 CNSTI4 4096
-LEI4 $243
-line 479
-;479:		G_Error( "G_AddSpawnVarToken: MAX_SPAWN_CHARS" );
-ADDRGP4 $246
+LEI4 $246
+line 484
+;484:		G_Error( "G_AddSpawnVarToken: MAX_SPAWN_CHARS" );
+ADDRGP4 $249
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 480
-;480:	}
-LABELV $243
-line 482
-;481:
-;482:	dest = level.spawnVarChars + level.numSpawnVarChars;
+line 485
+;485:	}
+LABELV $246
+line 487
+;486:
+;487:	dest = level.spawnVarChars + level.numSpawnVarChars;
 ADDRLP4 4
 ADDRGP4 level+5036
 INDIRI4
 ADDRGP4 level+5040
 ADDP4
 ASGNP4
-line 483
-;483:	memcpy( dest, string, l+1 );
+line 488
+;488:	memcpy( dest, string, l+1 );
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -1853,9 +1866,9 @@ ARGI4
 ADDRGP4 memcpy
 CALLP4
 pop
-line 485
-;484:
-;485:	level.numSpawnVarChars += l + 1;
+line 490
+;489:
+;490:	level.numSpawnVarChars += l + 1;
 ADDRLP4 12
 ADDRGP4 level+5036
 ASGNP4
@@ -1870,47 +1883,47 @@ CNSTI4 1
 ADDI4
 ADDI4
 ASGNI4
-line 487
-;486:
-;487:	return dest;
+line 492
+;491:
+;492:	return dest;
 ADDRLP4 4
 INDIRP4
 RETP4
-LABELV $242
+LABELV $245
 endproc G_AddSpawnVarToken 16 12
 export G_ParseSpawnVars
 proc G_ParseSpawnVars 2072 8
-line 500
-;488:}
-;489:
-;490:/*
-;491:====================
-;492:G_ParseSpawnVars
-;493:
-;494:Parses a brace bounded set of key / value pairs out of the
-;495:level's entity strings into level.spawnVars[]
-;496:
-;497:This does not actually spawn an entity.
-;498:====================
-;499:*/
-;500:qboolean G_ParseSpawnVars( void ) {
-line 504
-;501:	char		keyname[MAX_TOKEN_CHARS];
-;502:	char		com_token[MAX_TOKEN_CHARS];
-;503:
-;504:	level.numSpawnVars = 0;
+line 505
+;493:}
+;494:
+;495:/*
+;496:====================
+;497:G_ParseSpawnVars
+;498:
+;499:Parses a brace bounded set of key / value pairs out of the
+;500:level's entity strings into level.spawnVars[]
+;501:
+;502:This does not actually spawn an entity.
+;503:====================
+;504:*/
+;505:qboolean G_ParseSpawnVars( void ) {
+line 509
+;506:	char		keyname[MAX_TOKEN_CHARS];
+;507:	char		com_token[MAX_TOKEN_CHARS];
+;508:
+;509:	level.numSpawnVars = 0;
 ADDRGP4 level+4520
 CNSTI4 0
 ASGNI4
-line 505
-;505:	level.numSpawnVarChars = 0;
+line 510
+;510:	level.numSpawnVarChars = 0;
 ADDRGP4 level+5036
 CNSTI4 0
 ASGNI4
-line 508
-;506:
-;507:	// parse the opening brace
-;508:	if ( !trap_GetEntityToken( com_token, sizeof( com_token ) ) ) {
+line 513
+;511:
+;512:	// parse the opening brace
+;513:	if ( !trap_GetEntityToken( com_token, sizeof( com_token ) ) ) {
 ADDRLP4 0
 ARGP4
 CNSTI4 1024
@@ -1922,44 +1935,44 @@ ASGNI4
 ADDRLP4 2048
 INDIRI4
 CNSTI4 0
-NEI4 $253
-line 510
-;509:		// end of spawn string
-;510:		return qfalse;
+NEI4 $256
+line 515
+;514:		// end of spawn string
+;515:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $250
+ADDRGP4 $253
 JUMPV
-LABELV $253
-line 512
-;511:	}
-;512:	if ( com_token[0] != '{' ) {
+LABELV $256
+line 517
+;516:	}
+;517:	if ( com_token[0] != '{' ) {
 ADDRLP4 0
 INDIRI1
 CVII4 1
 CNSTI4 123
-EQI4 $259
-line 513
-;513:		G_Error( "G_ParseSpawnVars: found %s when expecting {",com_token );
-ADDRGP4 $257
+EQI4 $262
+line 518
+;518:		G_Error( "G_ParseSpawnVars: found %s when expecting {",com_token );
+ADDRGP4 $260
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 514
-;514:	}
-ADDRGP4 $259
-JUMPV
-LABELV $258
-line 517
-;515:
-;516:	// go through all the key / value pairs
-;517:	while ( 1 ) {	
 line 519
-;518:		// parse key
-;519:		if ( !trap_GetEntityToken( keyname, sizeof( keyname ) ) ) {
+;519:	}
+ADDRGP4 $262
+JUMPV
+LABELV $261
+line 522
+;520:
+;521:	// go through all the key / value pairs
+;522:	while ( 1 ) {	
+line 524
+;523:		// parse key
+;524:		if ( !trap_GetEntityToken( keyname, sizeof( keyname ) ) ) {
 ADDRLP4 1024
 ARGP4
 CNSTI4 1024
@@ -1971,35 +1984,35 @@ ASGNI4
 ADDRLP4 2052
 INDIRI4
 CNSTI4 0
-NEI4 $261
-line 520
-;520:			G_Error( "G_ParseSpawnVars: EOF without closing brace" );
-ADDRGP4 $263
+NEI4 $264
+line 525
+;525:			G_Error( "G_ParseSpawnVars: EOF without closing brace" );
+ADDRGP4 $266
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 521
-;521:		}
-LABELV $261
-line 523
-;522:
-;523:		if ( keyname[0] == '}' ) {
-ADDRLP4 1024
-INDIRI1
-CVII4 1
-CNSTI4 125
-NEI4 $264
-line 524
-;524:			break;
-ADDRGP4 $260
-JUMPV
+line 526
+;526:		}
 LABELV $264
 line 528
-;525:		}
-;526:		
-;527:		// parse value	
-;528:		if ( !trap_GetEntityToken( com_token, sizeof( com_token ) ) ) {
+;527:
+;528:		if ( keyname[0] == '}' ) {
+ADDRLP4 1024
+INDIRI1
+CVII4 1
+CNSTI4 125
+NEI4 $267
+line 529
+;529:			break;
+ADDRGP4 $263
+JUMPV
+LABELV $267
+line 533
+;530:		}
+;531:		
+;532:		// parse value	
+;533:		if ( !trap_GetEntityToken( com_token, sizeof( com_token ) ) ) {
 ADDRLP4 0
 ARGP4
 CNSTI4 1024
@@ -2011,53 +2024,53 @@ ASGNI4
 ADDRLP4 2056
 INDIRI4
 CNSTI4 0
-NEI4 $266
-line 529
-;529:			G_Error( "G_ParseSpawnVars: EOF without closing brace" );
-ADDRGP4 $263
+NEI4 $269
+line 534
+;534:			G_Error( "G_ParseSpawnVars: EOF without closing brace" );
+ADDRGP4 $266
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 530
-;530:		}
-LABELV $266
-line 532
-;531:
-;532:		if ( com_token[0] == '}' ) {
+line 535
+;535:		}
+LABELV $269
+line 537
+;536:
+;537:		if ( com_token[0] == '}' ) {
 ADDRLP4 0
 INDIRI1
 CVII4 1
 CNSTI4 125
-NEI4 $268
-line 533
-;533:			G_Error( "G_ParseSpawnVars: closing brace without data" );
-ADDRGP4 $270
+NEI4 $271
+line 538
+;538:			G_Error( "G_ParseSpawnVars: closing brace without data" );
+ADDRGP4 $273
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 534
-;534:		}
-LABELV $268
-line 535
-;535:		if ( level.numSpawnVars == MAX_SPAWN_VARS ) {
+line 539
+;539:		}
+LABELV $271
+line 540
+;540:		if ( level.numSpawnVars == MAX_SPAWN_VARS ) {
 ADDRGP4 level+4520
 INDIRI4
 CNSTI4 64
-NEI4 $271
-line 536
-;536:			G_Error( "G_ParseSpawnVars: MAX_SPAWN_VARS" );
-ADDRGP4 $274
+NEI4 $274
+line 541
+;541:			G_Error( "G_ParseSpawnVars: MAX_SPAWN_VARS" );
+ADDRGP4 $277
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 537
-;537:		}
-LABELV $271
-line 538
-;538:		level.spawnVars[ level.numSpawnVars ][0] = G_AddSpawnVarToken( keyname );
+line 542
+;542:		}
+LABELV $274
+line 543
+;543:		level.spawnVars[ level.numSpawnVars ][0] = G_AddSpawnVarToken( keyname );
 ADDRLP4 1024
 ARGP4
 ADDRLP4 2060
@@ -2073,8 +2086,8 @@ ADDP4
 ADDRLP4 2060
 INDIRP4
 ASGNP4
-line 539
-;539:		level.spawnVars[ level.numSpawnVars ][1] = G_AddSpawnVarToken( com_token );
+line 544
+;544:		level.spawnVars[ level.numSpawnVars ][1] = G_AddSpawnVarToken( com_token );
 ADDRLP4 0
 ARGP4
 ADDRLP4 2064
@@ -2090,8 +2103,8 @@ ADDP4
 ADDRLP4 2064
 INDIRP4
 ASGNP4
-line 540
-;540:		level.numSpawnVars++;
+line 545
+;545:		level.numSpawnVars++;
 ADDRLP4 2068
 ADDRGP4 level+4520
 ASGNP4
@@ -2103,54 +2116,54 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 541
-;541:	}
-LABELV $259
-line 517
-ADDRGP4 $258
+line 546
+;546:	}
+LABELV $262
+line 522
+ADDRGP4 $261
 JUMPV
-LABELV $260
-line 543
-;542:
-;543:	return qtrue;
+LABELV $263
+line 548
+;547:
+;548:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $250
+LABELV $253
 endproc G_ParseSpawnVars 2072 8
 export SP_worldspawn
 proc SP_worldspawn 16 12
-line 555
-;544:}
-;545:
-;546:
-;547:
-;548:/*QUAKED worldspawn (0 0 0) ?
-;549:
-;550:Every map should have exactly one worldspawn.
-;551:"music"		music wav file
-;552:"gravity"	800 is default gravity
-;553:"message"	Text to print during connection process
-;554:*/
-;555:void SP_worldspawn( void ) {
-line 558
-;556:	char	*s;
-;557:
-;558:	G_SpawnString( "classname", "", &s );
+line 560
+;549:}
+;550:
+;551:
+;552:
+;553:/*QUAKED worldspawn (0 0 0) ?
+;554:
+;555:Every map should have exactly one worldspawn.
+;556:"music"		music wav file
+;557:"gravity"	800 is default gravity
+;558:"message"	Text to print during connection process
+;559:*/
+;560:void SP_worldspawn( void ) {
+line 563
+;561:	char	*s;
+;562:
+;563:	G_SpawnString( "classname", "", &s );
 ADDRGP4 $75
 ARGP4
-ADDRGP4 $282
+ADDRGP4 $285
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 559
-;559:	if ( Q_stricmp( s, "worldspawn" ) ) {
+line 564
+;564:	if ( Q_stricmp( s, "worldspawn" ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
-ADDRGP4 $285
+ADDRGP4 $288
 ARGP4
 ADDRLP4 4
 ADDRGP4 Q_stricmp
@@ -2159,32 +2172,32 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-EQI4 $283
-line 560
-;560:		G_Error( "SP_worldspawn: The first entity isn't 'worldspawn'" );
-ADDRGP4 $286
+EQI4 $286
+line 565
+;565:		G_Error( "SP_worldspawn: The first entity isn't 'worldspawn'" );
+ADDRGP4 $289
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 561
-;561:	}
-LABELV $283
-line 564
-;562:
-;563:	// make some data visible to connecting client
-;564:	trap_SetConfigstring( CS_GAME_VERSION, GAME_VERSION );
+line 566
+;566:	}
+LABELV $286
+line 569
+;567:
+;568:	// make some data visible to connecting client
+;569:	trap_SetConfigstring( CS_GAME_VERSION, GAME_VERSION );
 CNSTI4 20
 ARGI4
-ADDRGP4 $287
+ADDRGP4 $290
 ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 566
-;565:
-;566:	trap_SetConfigstring( CS_LEVEL_START_TIME, va("%i", level.startTime ) );
-ADDRGP4 $288
+line 571
+;570:
+;571:	trap_SetConfigstring( CS_LEVEL_START_TIME, va("%i", level.startTime ) );
+ADDRGP4 $291
 ARGP4
 ADDRGP4 level+40
 INDIRI4
@@ -2201,20 +2214,20 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 568
-;567:
-;568:	G_SpawnString( "music", "", &s );
-ADDRGP4 $290
+line 573
+;572:
+;573:	G_SpawnString( "music", "", &s );
+ADDRGP4 $293
 ARGP4
-ADDRGP4 $282
+ADDRGP4 $285
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 569
-;569:	trap_SetConfigstring( CS_MUSIC, s );
+line 574
+;574:	trap_SetConfigstring( CS_MUSIC, s );
 CNSTI4 2
 ARGI4
 ADDRLP4 0
@@ -2223,20 +2236,20 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 571
-;570:
-;571:	G_SpawnString( "message", "", &s );
-ADDRGP4 $83
+line 576
+;575:
+;576:	G_SpawnString( "message", "", &s );
+ADDRGP4 $84
 ARGP4
-ADDRGP4 $282
+ADDRGP4 $285
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 572
-;572:	trap_SetConfigstring( CS_MESSAGE, s );				// map specific message
+line 577
+;577:	trap_SetConfigstring( CS_MESSAGE, s );				// map specific message
 CNSTI4 3
 ARGI4
 ADDRLP4 0
@@ -2245,9 +2258,9 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 574
-;573:
-;574:	trap_SetConfigstring( CS_MOTD, g_motd.string );		// message of the day
+line 579
+;578:
+;579:	trap_SetConfigstring( CS_MOTD, g_motd.string );		// message of the day
 CNSTI4 4
 ARGI4
 ADDRGP4 g_motd+16
@@ -2255,42 +2268,20 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 576
-;575:
-;576:	G_SpawnString( "gravity", "800", &s );
-ADDRGP4 $292
+line 581
+;580:
+;581:	G_SpawnString( "gravity", "800", &s );
+ADDRGP4 $81
 ARGP4
-ADDRGP4 $293
-ARGP4
-ADDRLP4 0
-ARGP4
-ADDRGP4 G_SpawnString
-CALLI4
-pop
-line 577
-;577:	trap_Cvar_Set( "g_gravity", s );
-ADDRGP4 $294
-ARGP4
-ADDRLP4 0
-INDIRP4
-ARGP4
-ADDRGP4 trap_Cvar_Set
-CALLV
-pop
-line 579
-;578:
-;579:	G_SpawnString( "enableDust", "0", &s );
 ADDRGP4 $295
 ARGP4
-ADDRGP4 $215
-ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 580
-;580:	trap_Cvar_Set( "g_enableDust", s );
+line 582
+;582:	trap_Cvar_Set( "g_gravity", s );
 ADDRGP4 $296
 ARGP4
 ADDRLP4 0
@@ -2299,20 +2290,20 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 582
-;581:
-;582:	G_SpawnString( "enableBreath", "0", &s );
+line 584
+;583:
+;584:	G_SpawnString( "enableDust", "0", &s );
 ADDRGP4 $297
 ARGP4
-ADDRGP4 $215
+ADDRGP4 $218
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 583
-;583:	trap_Cvar_Set( "g_enableBreath", s );
+line 585
+;585:	trap_Cvar_Set( "g_enableDust", s );
 ADDRGP4 $298
 ARGP4
 ADDRLP4 0
@@ -2321,77 +2312,99 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 585
-;584:
-;585:	g_entities[ENTITYNUM_WORLD].s.number = ENTITYNUM_WORLD;
-ADDRGP4 g_entities+936152
-CNSTI4 1022
-ASGNI4
-line 586
-;586:	g_entities[ENTITYNUM_WORLD].classname = "worldspawn";
-ADDRGP4 g_entities+936152+532
-ADDRGP4 $285
-ASGNP4
-line 589
-;587:
-;588:	// see if we want a warmup time
-;589:	trap_SetConfigstring( CS_WARMUP, "" );
-CNSTI4 5
-ARGI4
-ADDRGP4 $282
+line 587
+;586:
+;587:	G_SpawnString( "enableBreath", "0", &s );
+ADDRGP4 $299
 ARGP4
-ADDRGP4 trap_SetConfigstring
-CALLV
+ADDRGP4 $218
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 G_SpawnString
+CALLI4
 pop
-line 590
-;590:	if ( g_restarted.integer ) {
-ADDRGP4 g_restarted+12
-INDIRI4
-CNSTI4 0
-EQI4 $302
-line 591
-;591:		trap_Cvar_Set( "g_restarted", "0" );
-ADDRGP4 $305
+line 588
+;588:	trap_Cvar_Set( "g_enableBreath", s );
+ADDRGP4 $300
 ARGP4
-ADDRGP4 $215
+ADDRLP4 0
+INDIRP4
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 592
-;592:		level.warmupTime = 0;
-ADDRGP4 level+16
-CNSTI4 0
+line 590
+;589:
+;590:	g_entities[ENTITYNUM_WORLD].s.number = ENTITYNUM_WORLD;
+ADDRGP4 g_entities+944328
+CNSTI4 1022
 ASGNI4
-line 593
-;593:		level.firstStrike = qfalse;
-ADDRGP4 level+9236
-CNSTI4 0
-ASGNI4
-line 596
-;594:		//level.lastClient = -1;
-;595:
-;596:	} else if ( g_doWarmup.integer ) { // Turn it on
-ADDRGP4 $303
-JUMPV
-LABELV $302
-ADDRGP4 g_doWarmup+12
+line 591
+;591:	g_entities[ENTITYNUM_WORLD].classname = "worldspawn";
+ADDRGP4 g_entities+944328+532
+ADDRGP4 $288
+ASGNP4
+line 594
+;592:
+;593:	// see if we want a warmup time
+;594:	trap_SetConfigstring( CS_WARMUP, "" );
+CNSTI4 5
+ARGI4
+ADDRGP4 $285
+ARGP4
+ADDRGP4 trap_SetConfigstring
+CALLV
+pop
+line 595
+;595:	if ( g_restarted.integer ) {
+ADDRGP4 g_restarted+12
 INDIRI4
 CNSTI4 0
-EQI4 $308
+EQI4 $304
+line 596
+;596:		trap_Cvar_Set( "g_restarted", "0" );
+ADDRGP4 $307
+ARGP4
+ADDRGP4 $218
+ARGP4
+ADDRGP4 trap_Cvar_Set
+CALLV
+pop
 line 597
-;597:		level.warmupTime = -1;
+;597:		level.warmupTime = 0;
 ADDRGP4 level+16
-CNSTI4 -1
+CNSTI4 0
 ASGNI4
 line 598
 ;598:		level.firstStrike = qfalse;
 ADDRGP4 level+9236
 CNSTI4 0
 ASGNI4
-line 599
-;599:		trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
-ADDRGP4 $288
+line 601
+;599:		//level.lastClient = -1;
+;600:
+;601:	} else if ( g_doWarmup.integer ) { // Turn it on
+ADDRGP4 $305
+JUMPV
+LABELV $304
+ADDRGP4 g_doWarmup+12
+INDIRI4
+CNSTI4 0
+EQI4 $310
+line 602
+;602:		level.warmupTime = -1;
+ADDRGP4 level+16
+CNSTI4 -1
+ASGNI4
+line 603
+;603:		level.firstStrike = qfalse;
+ADDRGP4 level+9236
+CNSTI4 0
+ASGNI4
+line 604
+;604:		trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
+ADDRGP4 $291
 ARGP4
 ADDRGP4 level+16
 INDIRI4
@@ -2408,54 +2421,54 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 601
-;600:
-;601:		G_LogPrintf( "Warmup:\n" );
-ADDRGP4 $314
+line 606
+;605:
+;606:		G_LogPrintf( "Warmup:\n" );
+ADDRGP4 $316
 ARGP4
 ADDRGP4 G_LogPrintf
 CALLV
 pop
-line 602
-;602:	}
-LABELV $308
-LABELV $303
-line 605
-;603:	//level.firstStrike = qfalse;
-;604:
-;605:}
-LABELV $281
+line 607
+;607:	}
+LABELV $310
+LABELV $305
+line 610
+;608:	//level.firstStrike = qfalse;
+;609:
+;610:}
+LABELV $284
 endproc SP_worldspawn 16 12
 export G_SpawnEntitiesFromString
 proc G_SpawnEntitiesFromString 8 4
-line 615
-;606:
-;607:
-;608:/*
-;609:==============
-;610:G_SpawnEntitiesFromString
+line 620
 ;611:
-;612:Parses textual entity definitions out of an entstring and spawns gentities.
-;613:==============
-;614:*/
-;615:void G_SpawnEntitiesFromString( void ) {
-line 617
-;616:	// allow calls to G_Spawn*()
-;617:	level.spawning = qtrue;
+;612:
+;613:/*
+;614:==============
+;615:G_SpawnEntitiesFromString
+;616:
+;617:Parses textual entity definitions out of an entstring and spawns gentities.
+;618:==============
+;619:*/
+;620:void G_SpawnEntitiesFromString( void ) {
+line 622
+;621:	// allow calls to G_Spawn*()
+;622:	level.spawning = qtrue;
 ADDRGP4 level+4516
 CNSTI4 1
 ASGNI4
-line 618
-;618:	level.numSpawnVars = 0;
+line 623
+;623:	level.numSpawnVars = 0;
 ADDRGP4 level+4520
 CNSTI4 0
 ASGNI4
-line 623
-;619:
-;620:	// the worldspawn is not an actual entity, but it still
-;621:	// has a "spawn" function to perform any global setup
-;622:	// needed by a level (setting configstrings or cvars, etc)
-;623:	if ( !G_ParseSpawnVars() ) {
+line 628
+;624:
+;625:	// the worldspawn is not an actual entity, but it still
+;626:	// has a "spawn" function to perform any global setup
+;627:	// needed by a level (setting configstrings or cvars, etc)
+;628:	if ( !G_ParseSpawnVars() ) {
 ADDRLP4 0
 ADDRGP4 G_ParseSpawnVars
 CALLI4
@@ -2463,38 +2476,38 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $318
-line 624
-;624:		G_Error( "SpawnEntities: no entities" );
-ADDRGP4 $320
+NEI4 $320
+line 629
+;629:		G_Error( "SpawnEntities: no entities" );
+ADDRGP4 $322
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 625
-;625:	}
-LABELV $318
-line 626
-;626:	SP_worldspawn();
+line 630
+;630:	}
+LABELV $320
+line 631
+;631:	SP_worldspawn();
 ADDRGP4 SP_worldspawn
 CALLV
 pop
-ADDRGP4 $322
+ADDRGP4 $324
 JUMPV
-LABELV $321
-line 629
-;627:
-;628:	// parse ents
-;629:	while( G_ParseSpawnVars() ) {
-line 630
-;630:		G_SpawnGEntityFromSpawnVars();
+LABELV $323
+line 634
+;632:
+;633:	// parse ents
+;634:	while( G_ParseSpawnVars() ) {
+line 635
+;635:		G_SpawnGEntityFromSpawnVars();
 ADDRGP4 G_SpawnGEntityFromSpawnVars
 CALLV
 pop
-line 631
-;631:	}	
-LABELV $322
-line 629
+line 636
+;636:	}	
+LABELV $324
+line 634
 ADDRLP4 4
 ADDRGP4 G_ParseSpawnVars
 CALLI4
@@ -2502,16 +2515,16 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $321
-line 633
-;632:
-;633:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
+NEI4 $323
+line 638
+;637:
+;638:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
 ADDRGP4 level+4516
 CNSTI4 0
 ASGNI4
-line 634
-;634:}
-LABELV $315
+line 639
+;639:}
+LABELV $317
 endproc G_SpawnEntitiesFromString 8 4
 import SP_item_botroam
 import SP_func_door_rotating
@@ -2531,6 +2544,8 @@ import SP_info_camp
 import SP_info_notnull
 import SP_info_null
 import SP_light
+import SP_target_speed_change
+import SP_target_gravity_change
 import SP_target_push
 import SP_target_location
 import SP_target_position
@@ -3176,7 +3191,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $320
+LABELV $322
 byte 1 83
 byte 1 112
 byte 1 97
@@ -3205,7 +3220,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $314
+LABELV $316
 byte 1 87
 byte 1 97
 byte 1 114
@@ -3216,7 +3231,7 @@ byte 1 58
 byte 1 10
 byte 1 0
 align 1
-LABELV $305
+LABELV $307
 byte 1 103
 byte 1 95
 byte 1 114
@@ -3230,6 +3245,38 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
+LABELV $300
+byte 1 103
+byte 1 95
+byte 1 101
+byte 1 110
+byte 1 97
+byte 1 98
+byte 1 108
+byte 1 101
+byte 1 66
+byte 1 114
+byte 1 101
+byte 1 97
+byte 1 116
+byte 1 104
+byte 1 0
+align 1
+LABELV $299
+byte 1 101
+byte 1 110
+byte 1 97
+byte 1 98
+byte 1 108
+byte 1 101
+byte 1 66
+byte 1 114
+byte 1 101
+byte 1 97
+byte 1 116
+byte 1 104
+byte 1 0
+align 1
 LABELV $298
 byte 1 103
 byte 1 95
@@ -3239,12 +3286,10 @@ byte 1 97
 byte 1 98
 byte 1 108
 byte 1 101
-byte 1 66
-byte 1 114
-byte 1 101
-byte 1 97
+byte 1 68
+byte 1 117
+byte 1 115
 byte 1 116
-byte 1 104
 byte 1 0
 align 1
 LABELV $297
@@ -3254,45 +3299,15 @@ byte 1 97
 byte 1 98
 byte 1 108
 byte 1 101
-byte 1 66
-byte 1 114
-byte 1 101
-byte 1 97
+byte 1 68
+byte 1 117
+byte 1 115
 byte 1 116
-byte 1 104
 byte 1 0
 align 1
 LABELV $296
 byte 1 103
 byte 1 95
-byte 1 101
-byte 1 110
-byte 1 97
-byte 1 98
-byte 1 108
-byte 1 101
-byte 1 68
-byte 1 117
-byte 1 115
-byte 1 116
-byte 1 0
-align 1
-LABELV $295
-byte 1 101
-byte 1 110
-byte 1 97
-byte 1 98
-byte 1 108
-byte 1 101
-byte 1 68
-byte 1 117
-byte 1 115
-byte 1 116
-byte 1 0
-align 1
-LABELV $294
-byte 1 103
-byte 1 95
 byte 1 103
 byte 1 114
 byte 1 97
@@ -3302,23 +3317,13 @@ byte 1 116
 byte 1 121
 byte 1 0
 align 1
-LABELV $293
+LABELV $295
 byte 1 56
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $292
-byte 1 103
-byte 1 114
-byte 1 97
-byte 1 118
-byte 1 105
-byte 1 116
-byte 1 121
-byte 1 0
-align 1
-LABELV $290
+LABELV $293
 byte 1 109
 byte 1 117
 byte 1 115
@@ -3326,12 +3331,12 @@ byte 1 105
 byte 1 99
 byte 1 0
 align 1
-LABELV $288
+LABELV $291
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $287
+LABELV $290
 byte 1 98
 byte 1 97
 byte 1 115
@@ -3342,7 +3347,7 @@ byte 1 45
 byte 1 49
 byte 1 0
 align 1
-LABELV $286
+LABELV $289
 byte 1 83
 byte 1 80
 byte 1 95
@@ -3395,7 +3400,7 @@ byte 1 110
 byte 1 39
 byte 1 0
 align 1
-LABELV $285
+LABELV $288
 byte 1 119
 byte 1 111
 byte 1 114
@@ -3408,10 +3413,10 @@ byte 1 119
 byte 1 110
 byte 1 0
 align 1
-LABELV $282
+LABELV $285
 byte 1 0
 align 1
-LABELV $274
+LABELV $277
 byte 1 71
 byte 1 95
 byte 1 80
@@ -3446,7 +3451,7 @@ byte 1 82
 byte 1 83
 byte 1 0
 align 1
-LABELV $270
+LABELV $273
 byte 1 71
 byte 1 95
 byte 1 80
@@ -3493,7 +3498,7 @@ byte 1 116
 byte 1 97
 byte 1 0
 align 1
-LABELV $263
+LABELV $266
 byte 1 71
 byte 1 95
 byte 1 80
@@ -3539,7 +3544,7 @@ byte 1 99
 byte 1 101
 byte 1 0
 align 1
-LABELV $257
+LABELV $260
 byte 1 71
 byte 1 95
 byte 1 80
@@ -3585,7 +3590,7 @@ byte 1 32
 byte 1 123
 byte 1 0
 align 1
-LABELV $246
+LABELV $249
 byte 1 71
 byte 1 95
 byte 1 65
@@ -3623,7 +3628,7 @@ byte 1 82
 byte 1 83
 byte 1 0
 align 1
-LABELV $232
+LABELV $235
 byte 1 103
 byte 1 97
 byte 1 109
@@ -3634,7 +3639,7 @@ byte 1 112
 byte 1 101
 byte 1 0
 align 1
-LABELV $227
+LABELV $230
 byte 1 110
 byte 1 111
 byte 1 116
@@ -3643,7 +3648,7 @@ byte 1 51
 byte 1 97
 byte 1 0
 align 1
-LABELV $224
+LABELV $227
 byte 1 110
 byte 1 111
 byte 1 116
@@ -3653,7 +3658,7 @@ byte 1 101
 byte 1 101
 byte 1 0
 align 1
-LABELV $221
+LABELV $224
 byte 1 110
 byte 1 111
 byte 1 116
@@ -3663,11 +3668,11 @@ byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $215
+LABELV $218
 byte 1 48
 byte 1 0
 align 1
-LABELV $214
+LABELV $217
 byte 1 110
 byte 1 111
 byte 1 116
@@ -3679,7 +3684,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $202
+LABELV $205
 byte 1 116
 byte 1 101
 byte 1 97
@@ -3696,7 +3701,7 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $201
+LABELV $204
 byte 1 104
 byte 1 97
 byte 1 114
@@ -3708,7 +3713,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $200
+LABELV $203
 byte 1 111
 byte 1 98
 byte 1 101
@@ -3718,7 +3723,7 @@ byte 1 115
 byte 1 107
 byte 1 0
 align 1
-LABELV $199
+LABELV $202
 byte 1 111
 byte 1 110
 byte 1 101
@@ -3728,13 +3733,13 @@ byte 1 97
 byte 1 103
 byte 1 0
 align 1
-LABELV $198
+LABELV $201
 byte 1 99
 byte 1 116
 byte 1 102
 byte 1 0
 align 1
-LABELV $197
+LABELV $200
 byte 1 115
 byte 1 105
 byte 1 110
@@ -3743,7 +3748,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $196
+LABELV $199
 byte 1 116
 byte 1 111
 byte 1 117
@@ -3756,13 +3761,13 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $195
+LABELV $198
 byte 1 102
 byte 1 102
 byte 1 97
 byte 1 0
 align 1
-LABELV $162
+LABELV $165
 byte 1 37
 byte 1 115
 byte 1 32
@@ -3798,7 +3803,7 @@ byte 1 110
 byte 1 10
 byte 1 0
 align 1
-LABELV $148
+LABELV $151
 byte 1 71
 byte 1 95
 byte 1 67
@@ -3829,7 +3834,7 @@ byte 1 101
 byte 1 10
 byte 1 0
 align 1
-LABELV $144
+LABELV $147
 byte 1 102
 byte 1 117
 byte 1 110
@@ -3850,6 +3855,69 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
+LABELV $146
+byte 1 116
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 95
+byte 1 67
+byte 1 84
+byte 1 70
+byte 1 95
+byte 1 98
+byte 1 108
+byte 1 117
+byte 1 101
+byte 1 115
+byte 1 112
+byte 1 97
+byte 1 119
+byte 1 110
+byte 1 0
+align 1
+LABELV $145
+byte 1 116
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 95
+byte 1 67
+byte 1 84
+byte 1 70
+byte 1 95
+byte 1 114
+byte 1 101
+byte 1 100
+byte 1 115
+byte 1 112
+byte 1 97
+byte 1 119
+byte 1 110
+byte 1 0
+align 1
+LABELV $144
+byte 1 116
+byte 1 101
+byte 1 97
+byte 1 109
+byte 1 95
+byte 1 67
+byte 1 84
+byte 1 70
+byte 1 95
+byte 1 98
+byte 1 108
+byte 1 117
+byte 1 101
+byte 1 112
+byte 1 108
+byte 1 97
+byte 1 121
+byte 1 101
+byte 1 114
+byte 1 0
+align 1
 LABELV $143
 byte 1 116
 byte 1 101
@@ -3860,81 +3928,18 @@ byte 1 67
 byte 1 84
 byte 1 70
 byte 1 95
-byte 1 98
-byte 1 108
-byte 1 117
+byte 1 114
 byte 1 101
-byte 1 115
+byte 1 100
 byte 1 112
+byte 1 108
 byte 1 97
-byte 1 119
-byte 1 110
+byte 1 121
+byte 1 101
+byte 1 114
 byte 1 0
 align 1
 LABELV $142
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
-byte 1 95
-byte 1 67
-byte 1 84
-byte 1 70
-byte 1 95
-byte 1 114
-byte 1 101
-byte 1 100
-byte 1 115
-byte 1 112
-byte 1 97
-byte 1 119
-byte 1 110
-byte 1 0
-align 1
-LABELV $141
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
-byte 1 95
-byte 1 67
-byte 1 84
-byte 1 70
-byte 1 95
-byte 1 98
-byte 1 108
-byte 1 117
-byte 1 101
-byte 1 112
-byte 1 108
-byte 1 97
-byte 1 121
-byte 1 101
-byte 1 114
-byte 1 0
-align 1
-LABELV $140
-byte 1 116
-byte 1 101
-byte 1 97
-byte 1 109
-byte 1 95
-byte 1 67
-byte 1 84
-byte 1 70
-byte 1 95
-byte 1 114
-byte 1 101
-byte 1 100
-byte 1 112
-byte 1 108
-byte 1 97
-byte 1 121
-byte 1 101
-byte 1 114
-byte 1 0
-align 1
-LABELV $139
 byte 1 115
 byte 1 104
 byte 1 111
@@ -3951,7 +3956,7 @@ byte 1 109
 byte 1 97
 byte 1 0
 align 1
-LABELV $138
+LABELV $141
 byte 1 115
 byte 1 104
 byte 1 111
@@ -3969,7 +3974,7 @@ byte 1 100
 byte 1 101
 byte 1 0
 align 1
-LABELV $137
+LABELV $140
 byte 1 115
 byte 1 104
 byte 1 111
@@ -3986,7 +3991,7 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $136
+LABELV $139
 byte 1 109
 byte 1 105
 byte 1 115
@@ -4007,7 +4012,7 @@ byte 1 114
 byte 1 97
 byte 1 0
 align 1
-LABELV $135
+LABELV $138
 byte 1 109
 byte 1 105
 byte 1 115
@@ -4029,7 +4034,7 @@ byte 1 99
 byte 1 101
 byte 1 0
 align 1
-LABELV $134
+LABELV $137
 byte 1 109
 byte 1 105
 byte 1 115
@@ -4042,7 +4047,7 @@ byte 1 101
 byte 1 108
 byte 1 0
 align 1
-LABELV $133
+LABELV $136
 byte 1 109
 byte 1 105
 byte 1 115
@@ -4065,7 +4070,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $132
+LABELV $135
 byte 1 112
 byte 1 97
 byte 1 116
@@ -4079,7 +4084,53 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $131
+LABELV $134
+byte 1 116
+byte 1 97
+byte 1 114
+byte 1 103
+byte 1 101
+byte 1 116
+byte 1 95
+byte 1 115
+byte 1 112
+byte 1 101
+byte 1 101
+byte 1 100
+byte 1 95
+byte 1 99
+byte 1 104
+byte 1 97
+byte 1 110
+byte 1 103
+byte 1 101
+byte 1 0
+align 1
+LABELV $133
+byte 1 116
+byte 1 97
+byte 1 114
+byte 1 103
+byte 1 101
+byte 1 116
+byte 1 95
+byte 1 103
+byte 1 114
+byte 1 97
+byte 1 118
+byte 1 105
+byte 1 116
+byte 1 121
+byte 1 95
+byte 1 99
+byte 1 104
+byte 1 97
+byte 1 110
+byte 1 103
+byte 1 101
+byte 1 0
+align 1
+LABELV $132
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4093,7 +4144,7 @@ byte 1 115
 byte 1 104
 byte 1 0
 align 1
-LABELV $130
+LABELV $131
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4105,6 +4156,24 @@ byte 1 108
 byte 1 111
 byte 1 99
 byte 1 97
+byte 1 116
+byte 1 105
+byte 1 111
+byte 1 110
+byte 1 0
+align 1
+LABELV $130
+byte 1 116
+byte 1 97
+byte 1 114
+byte 1 103
+byte 1 101
+byte 1 116
+byte 1 95
+byte 1 112
+byte 1 111
+byte 1 115
+byte 1 105
 byte 1 116
 byte 1 105
 byte 1 111
@@ -4119,31 +4188,13 @@ byte 1 103
 byte 1 101
 byte 1 116
 byte 1 95
-byte 1 112
-byte 1 111
-byte 1 115
-byte 1 105
-byte 1 116
-byte 1 105
-byte 1 111
-byte 1 110
-byte 1 0
-align 1
-LABELV $128
-byte 1 116
-byte 1 97
-byte 1 114
-byte 1 103
-byte 1 101
-byte 1 116
-byte 1 95
 byte 1 107
 byte 1 105
 byte 1 108
 byte 1 108
 byte 1 0
 align 1
-LABELV $127
+LABELV $128
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4158,7 +4209,7 @@ byte 1 97
 byte 1 121
 byte 1 0
 align 1
-LABELV $126
+LABELV $127
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4178,7 +4229,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $125
+LABELV $126
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4193,7 +4244,7 @@ byte 1 114
 byte 1 101
 byte 1 0
 align 1
-LABELV $124
+LABELV $125
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4208,7 +4259,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $123
+LABELV $124
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4223,7 +4274,7 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $122
+LABELV $123
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4240,7 +4291,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $121
+LABELV $122
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4255,7 +4306,7 @@ byte 1 97
 byte 1 121
 byte 1 0
 align 1
-LABELV $120
+LABELV $121
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4280,7 +4331,7 @@ byte 1 112
 byte 1 115
 byte 1 0
 align 1
-LABELV $119
+LABELV $120
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4294,7 +4345,7 @@ byte 1 118
 byte 1 101
 byte 1 0
 align 1
-LABELV $118
+LABELV $119
 byte 1 116
 byte 1 114
 byte 1 105
@@ -4305,6 +4356,25 @@ byte 1 114
 byte 1 95
 byte 1 104
 byte 1 117
+byte 1 114
+byte 1 116
+byte 1 0
+align 1
+LABELV $118
+byte 1 116
+byte 1 114
+byte 1 105
+byte 1 103
+byte 1 103
+byte 1 101
+byte 1 114
+byte 1 95
+byte 1 116
+byte 1 101
+byte 1 108
+byte 1 101
+byte 1 112
+byte 1 111
 byte 1 114
 byte 1 116
 byte 1 0
@@ -4318,32 +4388,13 @@ byte 1 103
 byte 1 101
 byte 1 114
 byte 1 95
-byte 1 116
-byte 1 101
-byte 1 108
-byte 1 101
-byte 1 112
-byte 1 111
-byte 1 114
-byte 1 116
-byte 1 0
-align 1
-LABELV $116
-byte 1 116
-byte 1 114
-byte 1 105
-byte 1 103
-byte 1 103
-byte 1 101
-byte 1 114
-byte 1 95
 byte 1 112
 byte 1 117
 byte 1 115
 byte 1 104
 byte 1 0
 align 1
-LABELV $115
+LABELV $116
 byte 1 116
 byte 1 114
 byte 1 105
@@ -4362,7 +4413,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $114
+LABELV $115
 byte 1 116
 byte 1 114
 byte 1 105
@@ -4379,7 +4430,7 @@ byte 1 121
 byte 1 115
 byte 1 0
 align 1
-LABELV $113
+LABELV $114
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4396,7 +4447,7 @@ byte 1 108
 byte 1 101
 byte 1 0
 align 1
-LABELV $112
+LABELV $113
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4409,7 +4460,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $111
+LABELV $112
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4422,7 +4473,7 @@ byte 1 117
 byte 1 112
 byte 1 0
 align 1
-LABELV $110
+LABELV $111
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4435,7 +4486,7 @@ byte 1 105
 byte 1 110
 byte 1 0
 align 1
-LABELV $109
+LABELV $110
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4451,7 +4502,7 @@ byte 1 117
 byte 1 109
 byte 1 0
 align 1
-LABELV $108
+LABELV $109
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4466,7 +4517,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $107
+LABELV $108
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4482,7 +4533,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $106
+LABELV $107
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4496,7 +4547,7 @@ byte 1 105
 byte 1 99
 byte 1 0
 align 1
-LABELV $105
+LABELV $106
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4508,7 +4559,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $104
+LABELV $105
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4522,7 +4573,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $103
+LABELV $104
 byte 1 102
 byte 1 117
 byte 1 110
@@ -4534,7 +4585,7 @@ byte 1 97
 byte 1 116
 byte 1 0
 align 1
-LABELV $102
+LABELV $103
 byte 1 105
 byte 1 110
 byte 1 102
@@ -4546,7 +4597,7 @@ byte 1 109
 byte 1 112
 byte 1 0
 align 1
-LABELV $101
+LABELV $102
 byte 1 105
 byte 1 110
 byte 1 102
@@ -4555,6 +4606,18 @@ byte 1 95
 byte 1 110
 byte 1 111
 byte 1 116
+byte 1 110
+byte 1 117
+byte 1 108
+byte 1 108
+byte 1 0
+align 1
+LABELV $101
+byte 1 105
+byte 1 110
+byte 1 102
+byte 1 111
+byte 1 95
 byte 1 110
 byte 1 117
 byte 1 108
@@ -4567,10 +4630,25 @@ byte 1 110
 byte 1 102
 byte 1 111
 byte 1 95
+byte 1 112
+byte 1 108
+byte 1 97
+byte 1 121
+byte 1 101
+byte 1 114
+byte 1 95
+byte 1 105
 byte 1 110
-byte 1 117
-byte 1 108
-byte 1 108
+byte 1 116
+byte 1 101
+byte 1 114
+byte 1 109
+byte 1 105
+byte 1 115
+byte 1 115
+byte 1 105
+byte 1 111
+byte 1 110
 byte 1 0
 align 1
 LABELV $99
@@ -4586,18 +4664,16 @@ byte 1 121
 byte 1 101
 byte 1 114
 byte 1 95
-byte 1 105
-byte 1 110
-byte 1 116
+byte 1 100
 byte 1 101
-byte 1 114
+byte 1 97
+byte 1 116
+byte 1 104
 byte 1 109
-byte 1 105
-byte 1 115
-byte 1 115
-byte 1 105
-byte 1 111
-byte 1 110
+byte 1 97
+byte 1 116
+byte 1 99
+byte 1 104
 byte 1 0
 align 1
 LABELV $98
@@ -4613,46 +4689,43 @@ byte 1 121
 byte 1 101
 byte 1 114
 byte 1 95
-byte 1 100
-byte 1 101
-byte 1 97
-byte 1 116
-byte 1 104
-byte 1 109
-byte 1 97
-byte 1 116
-byte 1 99
-byte 1 104
-byte 1 0
-align 1
-LABELV $97
-byte 1 105
-byte 1 110
-byte 1 102
-byte 1 111
-byte 1 95
-byte 1 112
-byte 1 108
-byte 1 97
-byte 1 121
-byte 1 101
-byte 1 114
-byte 1 95
 byte 1 115
 byte 1 116
 byte 1 97
 byte 1 114
 byte 1 116
+byte 1 0
+align 1
+LABELV $96
+byte 1 100
+byte 1 105
+byte 1 115
+byte 1 116
+byte 1 97
+byte 1 110
+byte 1 99
+byte 1 101
 byte 1 0
 align 1
 LABELV $95
-byte 1 100
-byte 1 105
-byte 1 115
 byte 1 116
 byte 1 97
-byte 1 110
-byte 1 99
+byte 1 114
+byte 1 103
+byte 1 101
+byte 1 116
+byte 1 83
+byte 1 104
+byte 1 97
+byte 1 100
+byte 1 101
+byte 1 114
+byte 1 78
+byte 1 101
+byte 1 119
+byte 1 78
+byte 1 97
+byte 1 109
 byte 1 101
 byte 1 0
 align 1
@@ -4670,30 +4743,16 @@ byte 1 100
 byte 1 101
 byte 1 114
 byte 1 78
-byte 1 101
-byte 1 119
-byte 1 78
 byte 1 97
 byte 1 109
 byte 1 101
 byte 1 0
 align 1
 LABELV $93
-byte 1 116
 byte 1 97
-byte 1 114
+byte 1 110
 byte 1 103
-byte 1 101
-byte 1 116
-byte 1 83
-byte 1 104
-byte 1 97
-byte 1 100
-byte 1 101
-byte 1 114
-byte 1 78
-byte 1 97
-byte 1 109
+byte 1 108
 byte 1 101
 byte 1 0
 align 1
@@ -4703,24 +4762,16 @@ byte 1 110
 byte 1 103
 byte 1 108
 byte 1 101
-byte 1 0
-align 1
-LABELV $91
-byte 1 97
-byte 1 110
-byte 1 103
-byte 1 108
-byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $90
+LABELV $91
 byte 1 100
 byte 1 109
 byte 1 103
 byte 1 0
 align 1
-LABELV $89
+LABELV $90
 byte 1 108
 byte 1 105
 byte 1 103
@@ -4728,7 +4779,7 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $88
+LABELV $89
 byte 1 104
 byte 1 101
 byte 1 97
@@ -4737,7 +4788,7 @@ byte 1 116
 byte 1 104
 byte 1 0
 align 1
-LABELV $87
+LABELV $88
 byte 1 99
 byte 1 111
 byte 1 117
@@ -4745,7 +4796,7 @@ byte 1 110
 byte 1 116
 byte 1 0
 align 1
-LABELV $86
+LABELV $87
 byte 1 114
 byte 1 97
 byte 1 110
@@ -4754,27 +4805,40 @@ byte 1 111
 byte 1 109
 byte 1 0
 align 1
-LABELV $85
+LABELV $86
 byte 1 119
 byte 1 97
 byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $84
+LABELV $85
 byte 1 116
 byte 1 101
 byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $83
+LABELV $84
 byte 1 109
 byte 1 101
 byte 1 115
 byte 1 115
 byte 1 97
 byte 1 103
+byte 1 101
+byte 1 0
+align 1
+LABELV $83
+byte 1 116
+byte 1 97
+byte 1 114
+byte 1 103
+byte 1 101
+byte 1 116
+byte 1 110
+byte 1 97
+byte 1 109
 byte 1 101
 byte 1 0
 align 1
@@ -4785,19 +4849,16 @@ byte 1 114
 byte 1 103
 byte 1 101
 byte 1 116
-byte 1 110
-byte 1 97
-byte 1 109
-byte 1 101
 byte 1 0
 align 1
 LABELV $81
-byte 1 116
-byte 1 97
-byte 1 114
 byte 1 103
-byte 1 101
+byte 1 114
+byte 1 97
+byte 1 118
+byte 1 105
 byte 1 116
+byte 1 121
 byte 1 0
 align 1
 LABELV $80
