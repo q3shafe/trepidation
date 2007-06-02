@@ -75,7 +75,7 @@ line 25
 ;25:		if ( !t->item ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 876
+CNSTI4 884
 ADDP4
 INDIRP4
 CVPU4 4
@@ -106,7 +106,7 @@ line 31
 ;31:		t->nextthink = 0;
 ADDRLP4 0
 INDIRP4
-CNSTI4 696
+CNSTI4 704
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -159,7 +159,7 @@ line 37
 ;37:	ent->use = Use_Target_Give;
 ADDRFP4 0
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 ADDRGP4 Use_Target_Give
 ASGNP4
@@ -295,7 +295,7 @@ line 64
 ;64:	ent->use = Use_target_remove_powerups;
 ADDRFP4 0
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 ADDRGP4 Use_target_remove_powerups
 ASGNP4
@@ -326,7 +326,7 @@ INDIRP4
 ARGP4
 ADDRLP4 0
 INDIRP4
-CNSTI4 788
+CNSTI4 796
 ADDP4
 INDIRP4
 ARGP4
@@ -354,7 +354,7 @@ INDIRP4
 ASGNP4
 ADDRLP4 4
 INDIRP4
-CNSTI4 696
+CNSTI4 704
 ADDP4
 ADDRGP4 level+32
 INDIRI4
@@ -362,12 +362,12 @@ CVIF4 4
 CNSTF4 1148846080
 ADDRLP4 4
 INDIRP4
-CNSTI4 812
+CNSTI4 820
 ADDP4
 INDIRF4
 ADDRLP4 4
 INDIRP4
-CNSTI4 816
+CNSTI4 824
 ADDP4
 INDIRF4
 CNSTF4 1073741824
@@ -391,7 +391,7 @@ line 80
 ;80:	ent->think = Think_Target_Delay;
 ADDRFP4 0
 INDIRP4
-CNSTI4 708
+CNSTI4 716
 ADDP4
 ADDRGP4 Think_Target_Delay
 ASGNP4
@@ -399,7 +399,7 @@ line 81
 ;81:	ent->activator = activator;
 ADDRFP4 0
 INDIRP4
-CNSTI4 788
+CNSTI4 796
 ADDP4
 ADDRFP4 8
 INDIRP4
@@ -422,7 +422,7 @@ ADDRGP4 $83
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 812
+CNSTI4 820
 ADDP4
 ARGP4
 ADDRLP4 0
@@ -441,7 +441,7 @@ ADDRGP4 $85
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 812
+CNSTI4 820
 ADDP4
 ARGP4
 ADDRGP4 G_SpawnFloat
@@ -455,7 +455,7 @@ line 90
 ;90:	if ( !ent->wait ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 812
+CNSTI4 820
 ADDP4
 INDIRF4
 CNSTF4 0
@@ -464,7 +464,7 @@ line 91
 ;91:		ent->wait = 1;
 ADDRFP4 0
 INDIRP4
-CNSTI4 812
+CNSTI4 820
 ADDP4
 CNSTF4 1065353216
 ASGNF4
@@ -475,7 +475,7 @@ line 93
 ;93:	ent->use = Use_Target_Delay;
 ADDRFP4 0
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 ADDRGP4 Use_Target_Delay
 ASGNP4
@@ -512,7 +512,7 @@ ADDP4
 ARGP4
 ADDRLP4 0
 INDIRP4
-CNSTI4 776
+CNSTI4 784
 ADDP4
 INDIRI4
 ARGI4
@@ -532,7 +532,7 @@ line 109
 ;109:	if ( !ent->count ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 776
+CNSTI4 784
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -541,7 +541,7 @@ line 110
 ;110:		ent->count = 1;
 ADDRFP4 0
 INDIRP4
-CNSTI4 776
+CNSTI4 784
 ADDP4
 CNSTI4 1
 ASGNI4
@@ -552,7 +552,7 @@ line 112
 ;112:	ent->use = Use_Target_Score;
 ADDRFP4 0
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 ADDRGP4 Use_Target_Score
 ASGNP4
@@ -612,7 +612,7 @@ ADDRGP4 g_entities
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 916
+CNSTI4 924
 DIVI4
 ARGI4
 ADDRLP4 0
@@ -752,7 +752,7 @@ line 142
 ;142:	ent->use = Use_Target_Print;
 ADDRFP4 0
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 ADDRGP4 Use_Target_Print
 ASGNP4
@@ -825,7 +825,7 @@ CNSTI4 156
 ADDP4
 ADDRLP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRI4
 ASGNI4
@@ -854,7 +854,7 @@ CNSTI4 47
 ARGI4
 ADDRFP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRI4
 ARGI4
@@ -888,7 +888,7 @@ CNSTI4 48
 ARGI4
 ADDRLP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRI4
 ARGI4
@@ -913,7 +913,7 @@ CNSTI4 47
 ARGI4
 ADDRLP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRI4
 ARGI4
@@ -947,7 +947,7 @@ ADDRGP4 $83
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 812
+CNSTI4 820
 ADDP4
 ARGP4
 ADDRGP4 G_SpawnFloat
@@ -961,7 +961,7 @@ ADDRGP4 $83
 ARGP4
 ADDRFP4 0
 INDIRP4
-CNSTI4 816
+CNSTI4 824
 ADDP4
 ARGP4
 ADDRGP4 G_SpawnFloat
@@ -1097,7 +1097,7 @@ CALLI4
 ASGNI4
 ADDRFP4 0
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 ADDRLP4 76
 INDIRI4
@@ -1124,7 +1124,7 @@ CNSTI4 184
 ADDP4
 ADDRLP4 80
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRI4
 ASGNI4
@@ -1141,7 +1141,7 @@ ADDP4
 CNSTF4 1092616192
 ADDRLP4 84
 INDIRP4
-CNSTI4 812
+CNSTI4 820
 ADDP4
 INDIRF4
 MULF4
@@ -1160,7 +1160,7 @@ ADDP4
 CNSTF4 1092616192
 ADDRLP4 88
 INDIRP4
-CNSTI4 816
+CNSTI4 824
 ADDP4
 INDIRF4
 MULF4
@@ -1192,7 +1192,7 @@ CNSTI4 156
 ADDP4
 ADDRLP4 92
 INDIRP4
-CNSTI4 808
+CNSTI4 816
 ADDP4
 INDIRI4
 ASGNI4
@@ -1204,7 +1204,7 @@ line 214
 ;214:	ent->use = Use_Target_Speaker;
 ADDRFP4 0
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 ADDRGP4 Use_Target_Speaker
 ASGNP4
@@ -1292,7 +1292,7 @@ line 240
 ;240:	if ( self->enemy ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 784
+CNSTI4 792
 ADDP4
 INDIRP4
 CVPU4 4
@@ -1303,7 +1303,7 @@ line 241
 ADDRLP4 80
 ADDRFP4 0
 INDIRP4
-CNSTI4 784
+CNSTI4 792
 ADDP4
 ASGNP4
 ADDRLP4 84
@@ -1354,7 +1354,7 @@ ASGNF4
 ADDRLP4 96
 ADDRFP4 0
 INDIRP4
-CNSTI4 784
+CNSTI4 792
 ADDP4
 INDIRP4
 ASGNP4
@@ -1381,7 +1381,7 @@ ASGNF4
 ADDRLP4 104
 ADDRFP4 0
 INDIRP4
-CNSTI4 784
+CNSTI4 792
 ADDP4
 ASGNP4
 ADDRLP4 0
@@ -1418,7 +1418,7 @@ INDIRF4
 CNSTF4 1056964608
 ADDRFP4 0
 INDIRP4
-CNSTI4 784
+CNSTI4 792
 ADDP4
 INDIRP4
 CNSTI4 464
@@ -1435,7 +1435,7 @@ INDIRP4
 ASGNP4
 ADDRLP4 108
 INDIRP4
-CNSTI4 684
+CNSTI4 692
 ADDP4
 ADDRLP4 0
 INDIRF4
@@ -1452,7 +1452,7 @@ INDIRP4
 ASGNP4
 ADDRLP4 112
 INDIRP4
-CNSTI4 688
+CNSTI4 696
 ADDP4
 ADDRLP4 0+4
 INDIRF4
@@ -1469,7 +1469,7 @@ INDIRP4
 ASGNP4
 ADDRLP4 116
 INDIRP4
-CNSTI4 692
+CNSTI4 700
 ADDP4
 ADDRLP4 0+8
 INDIRF4
@@ -1484,7 +1484,7 @@ line 244
 ;244:		VectorNormalize (self->movedir);
 ADDRFP4 0
 INDIRP4
-CNSTI4 684
+CNSTI4 692
 ADDP4
 ARGP4
 ADDRGP4 VectorNormalize
@@ -1514,7 +1514,7 @@ ADDRLP4 84
 INDIRF4
 ADDRLP4 80
 INDIRP4
-CNSTI4 684
+CNSTI4 692
 ADDP4
 INDIRF4
 MULF4
@@ -1530,7 +1530,7 @@ ADDRLP4 84
 INDIRF4
 ADDRLP4 80
 INDIRP4
-CNSTI4 688
+CNSTI4 696
 ADDP4
 INDIRF4
 MULF4
@@ -1549,7 +1549,7 @@ INDIRF4
 CNSTF4 1157627904
 ADDRLP4 88
 INDIRP4
-CNSTI4 692
+CNSTI4 700
 ADDP4
 INDIRF4
 MULF4
@@ -1599,7 +1599,7 @@ EQI4 $142
 line 254
 ;253:		// hurt it if we can
 ;254:		G_Damage ( &g_entities[tr.entityNum], self, self->activator, self->movedir, 
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 24+52
 INDIRI4
 MULI4
@@ -1615,20 +1615,20 @@ INDIRP4
 ARGP4
 ADDRLP4 100
 INDIRP4
-CNSTI4 788
+CNSTI4 796
 ADDP4
 INDIRP4
 ARGP4
 ADDRLP4 100
 INDIRP4
-CNSTI4 684
+CNSTI4 692
 ADDP4
 ARGP4
 ADDRLP4 24+12
 ARGP4
 ADDRLP4 100
 INDIRP4
-CNSTI4 756
+CNSTI4 764
 ADDP4
 INDIRI4
 ARGI4
@@ -1666,7 +1666,7 @@ line 261
 ;261:	self->nextthink = level.time + FRAMETIME;
 ADDRFP4 0
 INDIRP4
-CNSTI4 696
+CNSTI4 704
 ADDP4
 ADDRGP4 level+32
 INDIRI4
@@ -1687,7 +1687,7 @@ line 266
 ;266:	if (!self->activator)
 ADDRFP4 0
 INDIRP4
-CNSTI4 788
+CNSTI4 796
 ADDP4
 INDIRP4
 CVPU4 4
@@ -1701,7 +1701,7 @@ INDIRP4
 ASGNP4
 ADDRLP4 0
 INDIRP4
-CNSTI4 788
+CNSTI4 796
 ADDP4
 ADDRLP4 0
 INDIRP4
@@ -1737,7 +1737,7 @@ line 274
 ;274:	self->nextthink = 0;
 ADDRFP4 0
 INDIRP4
-CNSTI4 696
+CNSTI4 704
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -1755,7 +1755,7 @@ line 279
 ;279:	self->activator = activator;
 ADDRFP4 0
 INDIRP4
-CNSTI4 788
+CNSTI4 796
 ADDP4
 ADDRFP4 8
 INDIRP4
@@ -1764,7 +1764,7 @@ line 280
 ;280:	if ( self->nextthink > 0 )
 ADDRFP4 0
 INDIRP4
-CNSTI4 696
+CNSTI4 704
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -1890,7 +1890,7 @@ line 297
 ;297:		self->enemy = ent;
 ADDRFP4 0
 INDIRP4
-CNSTI4 784
+CNSTI4 792
 ADDP4
 ADDRLP4 0
 INDIRP4
@@ -1913,7 +1913,7 @@ ADDP4
 ARGP4
 ADDRLP4 4
 INDIRP4
-CNSTI4 684
+CNSTI4 692
 ADDP4
 ARGP4
 ADDRGP4 G_SetMovedir
@@ -1927,7 +1927,7 @@ line 302
 ;302:	self->use = target_laser_use;
 ADDRFP4 0
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 ADDRGP4 target_laser_use
 ASGNP4
@@ -1935,7 +1935,7 @@ line 303
 ;303:	self->think = target_laser_think;
 ADDRFP4 0
 INDIRP4
-CNSTI4 708
+CNSTI4 716
 ADDP4
 ADDRGP4 target_laser_think
 ASGNP4
@@ -1944,7 +1944,7 @@ line 305
 ;305:	if ( !self->damage ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 756
+CNSTI4 764
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -1953,7 +1953,7 @@ line 306
 ;306:		self->damage = 1;
 ADDRFP4 0
 INDIRP4
-CNSTI4 756
+CNSTI4 764
 ADDP4
 CNSTI4 1
 ASGNI4
@@ -2008,7 +2008,7 @@ line 318
 ;318:	self->think = target_laser_start;
 ADDRFP4 0
 INDIRP4
-CNSTI4 708
+CNSTI4 716
 ADDP4
 ADDRGP4 target_laser_start
 ASGNP4
@@ -2016,7 +2016,7 @@ line 319
 ;319:	self->nextthink = level.time + FRAMETIME;
 ADDRFP4 0
 INDIRP4
-CNSTI4 696
+CNSTI4 704
 ADDP4
 ADDRGP4 level+32
 INDIRI4
@@ -2160,7 +2160,7 @@ line 346
 ;346:	self->use = target_teleporter_use;
 ADDRFP4 0
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 ADDRGP4 target_teleporter_use
 ASGNP4
@@ -2313,7 +2313,7 @@ INDIRU4
 EQU4 $178
 ADDRLP4 24
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 INDIRP4
 CVPU4 4
@@ -2337,7 +2337,7 @@ INDIRP4
 ARGP4
 ADDRLP4 32
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 INDIRP4
 CALLV
@@ -2374,7 +2374,7 @@ line 379
 ;379:	self->use = target_relay_use;
 ADDRFP4 0
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 ADDRGP4 target_relay_use
 ASGNP4
@@ -2438,7 +2438,7 @@ line 393
 ;393:	self->use = target_kill_use;
 ADDRFP4 0
 INDIRP4
-CNSTI4 724
+CNSTI4 732
 ADDP4
 ADDRGP4 target_kill_use
 ASGNP4
@@ -2566,7 +2566,7 @@ line 422
 ;422:			ent->health = n; // use for location marking
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 ADDRLP4 4
 INDIRI4
@@ -2626,7 +2626,7 @@ ASGNI4
 ADDRFP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 916
+CNSTI4 924
 ADDP4
 ASGNP4
 LABELV $201
@@ -2659,7 +2659,7 @@ line 442
 ;442:	self->think = target_location_linkup;
 ADDRFP4 0
 INDIRP4
-CNSTI4 708
+CNSTI4 716
 ADDP4
 ADDRGP4 target_location_linkup
 ASGNP4
@@ -2667,7 +2667,7 @@ line 443
 ;443:	self->nextthink = level.time + 200;  // Let them all spawn first
 ADDRFP4 0
 INDIRP4
-CNSTI4 696
+CNSTI4 704
 ADDP4
 ADDRGP4 level+32
 INDIRI4
@@ -2696,6 +2696,1531 @@ line 446
 ;446:}
 LABELV $208
 endproc SP_target_location 4 8
+export GravityResetCheck
+proc GravityResetCheck 96 28
+line 476
+;447:
+;448:/*QUAKED target_gravity_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
+;449:
+;450: GLOBAL - Apply to the entire world, and not just the activator
+;451: 
+;452: "gravity" -	 Normal = 800, valid range: >= 0
+;453: "surfaceFlag" - Important setting. With this you can define on what surface the gravity_change will work.
+;454: As soon as the player hits another surface, the gravity_change will be stopped. 
+;455: Don't change the surface too close below, since this check will go down!
+;456: The gravity_change also stops at player-respawn. Possible values:
+;457: CONTENTS_NODROP		0 -> Recommended and default value, since lower-gravity will make things float anyway.
+;458: CONTENTS_SOLID			1
+;459: CONTENTS_LAVA			2
+;460: CONTENTS_SLIME			3
+;461: CONTENTS_WATER			4
+;462: CONTENTS_FOG			5
+;463: CONTENTS_DETAIL		6 -> Can easily be set in Radiant, so also quite easy.
+;464: CONTENTS_STRUCTURAL	7 -> " " (also recommended as grav-surface, so something else can be set as detail (to reset))
+;465: CONTENTS_TRANSLUCENT	8
+;466: SURF_METALSTEPS		9
+;467: SURF_NOSTEPS			10
+;468: SURF_NOMARKS			11
+;469: SURF_NOIMPACT			12
+;470: SURF_SKY				13
+;471: SURF_NODAMAGE			14
+;472:
+;473: Note: You have to make the ceiling of your anti-grav room a CONTENTS_SOLID, CONTENTS_PLAYERCLIP, a SURF_SKY, or a SURF_NOIMPACT.
+;474: */
+;475:void GravityResetCheck( gentity_t *self, gentity_t *activator )
+;476:{ //-Vincent
+line 480
+;477:vec3_t  end;
+;478:trace_t tr;
+;479:	
+;480:	if( !activator || !activator->client )
+ADDRLP4 68
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 72
+CNSTU4 0
+ASGNU4
+ADDRLP4 68
+INDIRP4
+CVPU4 4
+ADDRLP4 72
+INDIRU4
+EQU4 $213
+ADDRLP4 68
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CVPU4 4
+ADDRLP4 72
+INDIRU4
+NEU4 $211
+LABELV $213
+line 481
+;481:	{ // The activator might be dead
+line 482
+;482:		activator->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
+ADDRLP4 76
+ADDRFP4 4
+INDIRP4
+CNSTI4 432
+ADDP4
+ASGNP4
+ADDRLP4 76
+INDIRP4
+ADDRLP4 76
+INDIRP4
+INDIRI4
+CNSTI4 -4097
+BANDI4
+ASGNI4
+line 483
+;483:		return; 
+ADDRGP4 $210
+JUMPV
+LABELV $211
+line 487
+;484:	}
+;485:
+;486:	// Trace up (in a straight line), until we hit a solid, playerclip, sky or noimpact content
+;487:	VectorCopy( activator->s.origin, end );
+ADDRLP4 0
+ADDRFP4 4
+INDIRP4
+CNSTI4 92
+ADDP4
+INDIRB
+ASGNB 12
+line 488
+;488:	end[2] += 1000;
+ADDRLP4 0+8
+ADDRLP4 0+8
+INDIRF4
+CNSTF4 1148846080
+ADDF4
+ASGNF4
+line 489
+;489:	trap_Trace( &tr, activator->s.origin, NULL, NULL, end, activator->s.number, 
+ADDRLP4 12
+ARGP4
+ADDRLP4 76
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 76
+INDIRP4
+CNSTI4 92
+ADDP4
+ARGP4
+ADDRLP4 80
+CNSTP4 0
+ASGNP4
+ADDRLP4 80
+INDIRP4
+ARGP4
+ADDRLP4 80
+INDIRP4
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRLP4 76
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 65557
+ARGI4
+ADDRGP4 trap_Trace
+CALLV
+pop
+line 492
+;490:			    CONTENTS_SOLID | CONTENTS_PLAYERCLIP | SURF_NOIMPACT | SURF_SKY );
+;491:	// Trace back down (in a straight line), trying to hit the required content
+;492:	VectorCopy( tr.endpos, end );
+ADDRLP4 0
+ADDRLP4 12+12
+INDIRB
+ASGNB 12
+line 493
+;493:	trap_Trace( &tr, end,  NULL, NULL, activator->s.origin, activator->s.number, self->surfaceFlag );
+ADDRLP4 12
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRLP4 84
+CNSTP4 0
+ASGNP4
+ADDRLP4 84
+INDIRP4
+ARGP4
+ADDRLP4 84
+INDIRP4
+ARGP4
+ADDRLP4 88
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 88
+INDIRP4
+CNSTI4 92
+ADDP4
+ARGP4
+ADDRLP4 88
+INDIRP4
+INDIRI4
+ARGI4
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+ARGI4
+ADDRGP4 trap_Trace
+CALLV
+pop
+line 495
+;494:
+;495:	if( tr.fraction <= 0 ) // The surface has not been found
+ADDRLP4 12+8
+INDIRF4
+CNSTF4 0
+GTF4 $216
+line 496
+;496:		activator->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
+ADDRLP4 92
+ADDRFP4 4
+INDIRP4
+CNSTI4 432
+ADDP4
+ASGNP4
+ADDRLP4 92
+INDIRP4
+ADDRLP4 92
+INDIRP4
+INDIRI4
+CNSTI4 -4097
+BANDI4
+ASGNI4
+LABELV $216
+line 497
+;497:}
+LABELV $210
+endproc GravityResetCheck 96 28
+export target_gravity_change
+proc target_gravity_change 12 8
+line 500
+;498:
+;499:void target_gravity_change( gentity_t *self )
+;500:{ //-Vincent
+line 501
+;501:if(		 self->surfaceFlag == 1 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 1
+NEI4 $220
+line 502
+;502:		 self->surfaceFlag = CONTENTS_SOLID;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 1
+ASGNI4
+ADDRGP4 $221
+JUMPV
+LABELV $220
+line 503
+;503:else if( self->surfaceFlag == 2 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 2
+NEI4 $222
+line 504
+;504:		 self->surfaceFlag = CONTENTS_LAVA;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 8
+ASGNI4
+ADDRGP4 $223
+JUMPV
+LABELV $222
+line 505
+;505:else if( self->surfaceFlag == 3 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 3
+NEI4 $224
+line 506
+;506:		 self->surfaceFlag = CONTENTS_SLIME;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 16
+ASGNI4
+ADDRGP4 $225
+JUMPV
+LABELV $224
+line 507
+;507:else if( self->surfaceFlag == 4 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 4
+NEI4 $226
+line 508
+;508:		 self->surfaceFlag = CONTENTS_WATER;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 32
+ASGNI4
+ADDRGP4 $227
+JUMPV
+LABELV $226
+line 509
+;509:else if( self->surfaceFlag == 5 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 5
+NEI4 $228
+line 510
+;510:		 self->surfaceFlag = CONTENTS_FOG;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 64
+ASGNI4
+ADDRGP4 $229
+JUMPV
+LABELV $228
+line 511
+;511:else if( self->surfaceFlag == 6 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 6
+NEI4 $230
+line 512
+;512:		 self->surfaceFlag = CONTENTS_DETAIL;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 134217728
+ASGNI4
+ADDRGP4 $231
+JUMPV
+LABELV $230
+line 513
+;513:else if( self->surfaceFlag == 7 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 7
+NEI4 $232
+line 514
+;514:		 self->surfaceFlag = CONTENTS_STRUCTURAL;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 268435456
+ASGNI4
+ADDRGP4 $233
+JUMPV
+LABELV $232
+line 515
+;515:else if( self->surfaceFlag == 8 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 8
+NEI4 $234
+line 516
+;516:		 self->surfaceFlag = CONTENTS_TRANSLUCENT;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 536870912
+ASGNI4
+ADDRGP4 $235
+JUMPV
+LABELV $234
+line 517
+;517:else if( self->surfaceFlag == 9 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 9
+NEI4 $236
+line 518
+;518:		 self->surfaceFlag = SURF_METALSTEPS;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 4096
+ASGNI4
+ADDRGP4 $237
+JUMPV
+LABELV $236
+line 519
+;519:else if( self->surfaceFlag == 10 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 10
+NEI4 $238
+line 520
+;520:		 self->surfaceFlag = SURF_NOSTEPS;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 8192
+ASGNI4
+ADDRGP4 $239
+JUMPV
+LABELV $238
+line 521
+;521:else if( self->surfaceFlag == 11 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 11
+NEI4 $240
+line 522
+;522:		 self->surfaceFlag = SURF_NOMARKS;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 32
+ASGNI4
+ADDRGP4 $241
+JUMPV
+LABELV $240
+line 523
+;523:else if( self->surfaceFlag == 12 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 12
+NEI4 $242
+line 524
+;524:		 self->surfaceFlag = SURF_NOIMPACT;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 16
+ASGNI4
+ADDRGP4 $243
+JUMPV
+LABELV $242
+line 525
+;525:else if( self->surfaceFlag == 13 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 13
+NEI4 $244
+line 526
+;526:		 self->surfaceFlag = SURF_SKY;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 4
+ASGNI4
+ADDRGP4 $245
+JUMPV
+LABELV $244
+line 527
+;527:else if( self->surfaceFlag == 14 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 14
+NEI4 $246
+line 528
+;528:		 self->surfaceFlag = SURF_NODAMAGE;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 1
+ASGNI4
+ADDRGP4 $247
+JUMPV
+LABELV $246
+line 530
+;529:else // surfaceFlag == 0, default
+;530:		 self->surfaceFlag = CONTENTS_NODROP;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTU4 2147483648
+CVUI4 4
+ASGNI4
+LABELV $247
+LABELV $245
+LABELV $243
+LABELV $241
+LABELV $239
+LABELV $237
+LABELV $235
+LABELV $233
+LABELV $231
+LABELV $229
+LABELV $227
+LABELV $225
+LABELV $223
+LABELV $221
+line 532
+;531:
+;532:	if( self->spawnflags & 1 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 536
+ADDP4
+INDIRI4
+CNSTI4 1
+BANDI4
+CNSTI4 0
+EQI4 $248
+line 533
+;533:	{ // Global setting
+line 534
+;534:		trap_Cvar_Set( "g_gravity", va( "%f", self->gravity ) );
+ADDRGP4 $251
+ARGP4
+ADDRFP4 0
+INDIRP4
+CNSTI4 684
+ADDP4
+INDIRF4
+ARGF4
+ADDRLP4 0
+ADDRGP4 va
+CALLP4
+ASGNP4
+ADDRGP4 $250
+ARGP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRGP4 trap_Cvar_Set
+CALLV
+pop
+line 535
+;535:	}
+ADDRGP4 $249
+JUMPV
+LABELV $248
+line 536
+;536:	else if( self->activator->client )
+ADDRFP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $252
+line 537
+;537:	{
+line 538
+;538:		int	gravity = floor( self->gravity );
+ADDRFP4 0
+INDIRP4
+CNSTI4 684
+ADDP4
+INDIRF4
+ARGF4
+ADDRLP4 4
+ADDRGP4 floor
+CALLF4
+ASGNF4
+ADDRLP4 0
+ADDRLP4 4
+INDIRF4
+CVFI4 4
+ASGNI4
+line 539
+;539:		self->activator->client->ps.gravity = gravity;
+ADDRFP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 48
+ADDP4
+ADDRLP4 0
+INDIRI4
+ASGNI4
+line 540
+;540:		self->activator->r.svFlags |= SVF_CUSTOM_GRAVITY;
+ADDRLP4 8
+ADDRFP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 432
+ADDP4
+ASGNP4
+ADDRLP4 8
+INDIRP4
+ADDRLP4 8
+INDIRP4
+INDIRI4
+CNSTI4 4096
+BORI4
+ASGNI4
+line 541
+;541:	}
+LABELV $252
+LABELV $249
+line 543
+;542:	
+;543:	GravityResetCheck( self, self->activator );
+ADDRLP4 0
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+INDIRP4
+ARGP4
+ADDRGP4 GravityResetCheck
+CALLV
+pop
+line 544
+;544:	if( !( self->activator->r.svFlags & SVF_CUSTOM_GRAVITY ) )
+ADDRFP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 432
+ADDP4
+INDIRI4
+CNSTI4 4096
+BANDI4
+CNSTI4 0
+NEI4 $254
+line 545
+;545:	{ // Stop doing this gravity_change (reset happens in ClientThink_Real )
+line 546
+;546:		self->think		= 0;
+ADDRFP4 0
+INDIRP4
+CNSTI4 716
+ADDP4
+CNSTP4 0
+ASGNP4
+line 547
+;547:		self->nextthink = 0;
+ADDRFP4 0
+INDIRP4
+CNSTI4 704
+ADDP4
+CNSTI4 0
+ASGNI4
+line 548
+;548:	}
+LABELV $254
+line 549
+;549:}
+LABELV $219
+endproc target_gravity_change 12 8
+export target_gravity_change_use
+proc target_gravity_change_use 0 0
+line 552
+;550:
+;551:void target_gravity_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
+;552:{ //-Vincent
+line 553
+;553:self->activator = activator; // Pass it on
+ADDRFP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+ADDRFP4 8
+INDIRP4
+ASGNP4
+line 554
+;554:self->think		= target_gravity_change;
+ADDRFP4 0
+INDIRP4
+CNSTI4 716
+ADDP4
+ADDRGP4 target_gravity_change
+ASGNP4
+line 555
+;555:self->nextthink = level.time + FRAMETIME;  // Let everything get spawned
+ADDRFP4 0
+INDIRP4
+CNSTI4 704
+ADDP4
+ADDRGP4 level+32
+INDIRI4
+CNSTI4 100
+ADDI4
+ASGNI4
+line 556
+;556:}
+LABELV $256
+endproc target_gravity_change_use 0 0
+export SP_target_gravity_change
+proc SP_target_gravity_change 4 8
+line 559
+;557:
+;558:void SP_target_gravity_change( gentity_t *self )
+;559:{ //-Vincent
+line 560
+;560:G_SetOrigin( self, self->s.origin );
+ADDRLP4 0
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 0
+INDIRP4
+CNSTI4 92
+ADDP4
+ARGP4
+ADDRGP4 G_SetOrigin
+CALLV
+pop
+line 561
+;561:self->use = target_gravity_change_use;
+ADDRFP4 0
+INDIRP4
+CNSTI4 732
+ADDP4
+ADDRGP4 target_gravity_change_use
+ASGNP4
+line 562
+;562:}
+LABELV $258
+endproc SP_target_gravity_change 4 8
+export SpeedResetCheck
+proc SpeedResetCheck 96 28
+line 593
+;563:
+;564:
+;565:/*QUAKED target_speed_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
+;566:
+;567: GLOBAL - Apply to the entire world, and not just the activator
+;568: 
+;569: "speed" - Normal = 320, valid range: > 0
+;570: "surfaceFlag" - Important setting. With this you can define on what surface the speed_change will work.
+;571: As soon as the player hits another surface, the speed_change will be stopped. 
+;572: Don't change the surface too close below, since this check will go down!
+;573: The speed_change also stops at player-respawn. Possible values:
+;574: CONTENTS_STRUCTURAL	0 -> Recommended and default value, so something else can be set as detail (to reset)
+;575: CONTENTS_DETAIL		1
+;576: CONTENTS_LAVA			2
+;577: CONTENTS_SLIME			3
+;578: CONTENTS_WATER			4
+;579: CONTENTS_FOG			5
+;580: CONTENTS_NODROP		6
+;581: CONTENTS_SOLID			7
+;582: CONTENTS_TRANSLUCENT	8
+;583: SURF_METALSTEPS		9
+;584: SURF_NOSTEPS			10
+;585: SURF_NOMARKS			11
+;586: SURF_NOIMPACT			12
+;587: SURF_SKY				13
+;588: SURF_NODAMAGE			14
+;589:
+;590: Note: You have to make the ceiling of your anti-grav room a CONTENTS_SOLID, CONTENTS_PLAYERCLIP, a SURF_SKY, or a SURF_NOIMPACT.
+;591: */
+;592:void SpeedResetCheck( gentity_t *self, gentity_t *activator )
+;593:{ //-Vincent
+line 597
+;594:vec3_t  end;
+;595:trace_t tr;
+;596:	
+;597:	if( !activator || !activator->client )
+ADDRLP4 68
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 72
+CNSTU4 0
+ASGNU4
+ADDRLP4 68
+INDIRP4
+CVPU4 4
+ADDRLP4 72
+INDIRU4
+EQU4 $262
+ADDRLP4 68
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CVPU4 4
+ADDRLP4 72
+INDIRU4
+NEU4 $260
+LABELV $262
+line 598
+;598:	{ // The activator might be dead
+line 599
+;599:		activator->r.svFlags &= ~SVF_CUSTOM_SPEED;
+ADDRLP4 76
+ADDRFP4 4
+INDIRP4
+CNSTI4 432
+ADDP4
+ASGNP4
+ADDRLP4 76
+INDIRP4
+ADDRLP4 76
+INDIRP4
+INDIRI4
+CNSTI4 -8193
+BANDI4
+ASGNI4
+line 600
+;600:		return; 
+ADDRGP4 $259
+JUMPV
+LABELV $260
+line 604
+;601:	}
+;602:
+;603:	// Trace up (in a straight line), until we hit a solid, playerclip, sky or noimpact content
+;604:	VectorCopy( activator->s.origin, end );
+ADDRLP4 0
+ADDRFP4 4
+INDIRP4
+CNSTI4 92
+ADDP4
+INDIRB
+ASGNB 12
+line 605
+;605:	end[2] += 1000;
+ADDRLP4 0+8
+ADDRLP4 0+8
+INDIRF4
+CNSTF4 1148846080
+ADDF4
+ASGNF4
+line 606
+;606:	trap_Trace( &tr, activator->s.origin, NULL, NULL, end, activator->s.number, 
+ADDRLP4 12
+ARGP4
+ADDRLP4 76
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 76
+INDIRP4
+CNSTI4 92
+ADDP4
+ARGP4
+ADDRLP4 80
+CNSTP4 0
+ASGNP4
+ADDRLP4 80
+INDIRP4
+ARGP4
+ADDRLP4 80
+INDIRP4
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRLP4 76
+INDIRP4
+INDIRI4
+ARGI4
+CNSTI4 65557
+ARGI4
+ADDRGP4 trap_Trace
+CALLV
+pop
+line 609
+;607:			    CONTENTS_SOLID | CONTENTS_PLAYERCLIP | SURF_NOIMPACT | SURF_SKY );
+;608:	// Trace back down (in a straight line), trying to hit the required content
+;609:	VectorCopy( tr.endpos, end );
+ADDRLP4 0
+ADDRLP4 12+12
+INDIRB
+ASGNB 12
+line 610
+;610:	trap_Trace( &tr, end,  NULL, NULL, activator->s.origin, activator->s.number, self->surfaceFlag );
+ADDRLP4 12
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRLP4 84
+CNSTP4 0
+ASGNP4
+ADDRLP4 84
+INDIRP4
+ARGP4
+ADDRLP4 84
+INDIRP4
+ARGP4
+ADDRLP4 88
+ADDRFP4 4
+INDIRP4
+ASGNP4
+ADDRLP4 88
+INDIRP4
+CNSTI4 92
+ADDP4
+ARGP4
+ADDRLP4 88
+INDIRP4
+INDIRI4
+ARGI4
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+ARGI4
+ADDRGP4 trap_Trace
+CALLV
+pop
+line 612
+;611:
+;612:	if( tr.fraction <= 0 ) // The surface has not been found
+ADDRLP4 12+8
+INDIRF4
+CNSTF4 0
+GTF4 $265
+line 613
+;613:		activator->r.svFlags &= ~SVF_CUSTOM_SPEED;
+ADDRLP4 92
+ADDRFP4 4
+INDIRP4
+CNSTI4 432
+ADDP4
+ASGNP4
+ADDRLP4 92
+INDIRP4
+ADDRLP4 92
+INDIRP4
+INDIRI4
+CNSTI4 -8193
+BANDI4
+ASGNI4
+LABELV $265
+line 614
+;614:}
+LABELV $259
+endproc SpeedResetCheck 96 28
+export target_speed_change
+proc target_speed_change 12 8
+line 617
+;615:
+;616:void target_speed_change( gentity_t *self )
+;617:{ //-Vincent
+line 618
+;618:if(		 self->surfaceFlag == 1 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 1
+NEI4 $269
+line 619
+;619:		 self->surfaceFlag = CONTENTS_DETAIL;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 134217728
+ASGNI4
+ADDRGP4 $270
+JUMPV
+LABELV $269
+line 620
+;620:else if( self->surfaceFlag == 2 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 2
+NEI4 $271
+line 621
+;621:		 self->surfaceFlag = CONTENTS_LAVA;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 8
+ASGNI4
+ADDRGP4 $272
+JUMPV
+LABELV $271
+line 622
+;622:else if( self->surfaceFlag == 3 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 3
+NEI4 $273
+line 623
+;623:		 self->surfaceFlag = CONTENTS_SLIME;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 16
+ASGNI4
+ADDRGP4 $274
+JUMPV
+LABELV $273
+line 624
+;624:else if( self->surfaceFlag == 4 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 4
+NEI4 $275
+line 625
+;625:		 self->surfaceFlag = CONTENTS_WATER;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 32
+ASGNI4
+ADDRGP4 $276
+JUMPV
+LABELV $275
+line 626
+;626:else if( self->surfaceFlag == 5 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 5
+NEI4 $277
+line 627
+;627:		 self->surfaceFlag = CONTENTS_FOG;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 64
+ASGNI4
+ADDRGP4 $278
+JUMPV
+LABELV $277
+line 628
+;628:else if( self->surfaceFlag == 6 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 6
+NEI4 $279
+line 629
+;629:		 self->surfaceFlag = CONTENTS_NODROP;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTU4 2147483648
+CVUI4 4
+ASGNI4
+ADDRGP4 $280
+JUMPV
+LABELV $279
+line 630
+;630:else if( self->surfaceFlag == 7 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 7
+NEI4 $281
+line 631
+;631:		 self->surfaceFlag = CONTENTS_SOLID;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 1
+ASGNI4
+ADDRGP4 $282
+JUMPV
+LABELV $281
+line 632
+;632:else if( self->surfaceFlag == 8 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 8
+NEI4 $283
+line 633
+;633:		 self->surfaceFlag = CONTENTS_TRANSLUCENT;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 536870912
+ASGNI4
+ADDRGP4 $284
+JUMPV
+LABELV $283
+line 634
+;634:else if( self->surfaceFlag == 9 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 9
+NEI4 $285
+line 635
+;635:		 self->surfaceFlag = SURF_METALSTEPS;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 4096
+ASGNI4
+ADDRGP4 $286
+JUMPV
+LABELV $285
+line 636
+;636:else if( self->surfaceFlag == 10 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 10
+NEI4 $287
+line 637
+;637:		 self->surfaceFlag = SURF_NOSTEPS;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 8192
+ASGNI4
+ADDRGP4 $288
+JUMPV
+LABELV $287
+line 638
+;638:else if( self->surfaceFlag == 11 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 11
+NEI4 $289
+line 639
+;639:		 self->surfaceFlag = SURF_NOMARKS;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 32
+ASGNI4
+ADDRGP4 $290
+JUMPV
+LABELV $289
+line 640
+;640:else if( self->surfaceFlag == 12 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 12
+NEI4 $291
+line 641
+;641:		 self->surfaceFlag = SURF_NOIMPACT;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 16
+ASGNI4
+ADDRGP4 $292
+JUMPV
+LABELV $291
+line 642
+;642:else if( self->surfaceFlag == 13 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 13
+NEI4 $293
+line 643
+;643:		 self->surfaceFlag = SURF_SKY;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 4
+ASGNI4
+ADDRGP4 $294
+JUMPV
+LABELV $293
+line 644
+;644:else if( self->surfaceFlag == 14 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+INDIRI4
+CNSTI4 14
+NEI4 $295
+line 645
+;645:		 self->surfaceFlag = SURF_NODAMAGE;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 1
+ASGNI4
+ADDRGP4 $296
+JUMPV
+LABELV $295
+line 647
+;646:else // surfaceFlag == 0, default
+;647:		 self->surfaceFlag = CONTENTS_STRUCTURAL;
+ADDRFP4 0
+INDIRP4
+CNSTI4 688
+ADDP4
+CNSTI4 268435456
+ASGNI4
+LABELV $296
+LABELV $294
+LABELV $292
+LABELV $290
+LABELV $288
+LABELV $286
+LABELV $284
+LABELV $282
+LABELV $280
+LABELV $278
+LABELV $276
+LABELV $274
+LABELV $272
+LABELV $270
+line 649
+;648:
+;649:	if( self->spawnflags & 1 )
+ADDRFP4 0
+INDIRP4
+CNSTI4 536
+ADDP4
+INDIRI4
+CNSTI4 1
+BANDI4
+CNSTI4 0
+EQI4 $297
+line 650
+;650:	{ // Global setting
+line 651
+;651:		trap_Cvar_Set( "g_speed", va( "%f", self->speed ) );
+ADDRGP4 $251
+ARGP4
+ADDRFP4 0
+INDIRP4
+CNSTI4 680
+ADDP4
+INDIRF4
+ARGF4
+ADDRLP4 0
+ADDRGP4 va
+CALLP4
+ASGNP4
+ADDRGP4 $299
+ARGP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRGP4 trap_Cvar_Set
+CALLV
+pop
+line 652
+;652:	}
+ADDRGP4 $298
+JUMPV
+LABELV $297
+line 653
+;653:	else if( self->activator->client )
+ADDRFP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $300
+line 654
+;654:	{
+line 655
+;655:		int	speed = floor( self->speed );
+ADDRFP4 0
+INDIRP4
+CNSTI4 680
+ADDP4
+INDIRF4
+ARGF4
+ADDRLP4 4
+ADDRGP4 floor
+CALLF4
+ASGNF4
+ADDRLP4 0
+ADDRLP4 4
+INDIRF4
+CVFI4 4
+ASGNI4
+line 656
+;656:		self->activator->client->ps.speed = speed;
+ADDRFP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 52
+ADDP4
+ADDRLP4 0
+INDIRI4
+ASGNI4
+line 657
+;657:		self->activator->r.svFlags |= SVF_CUSTOM_SPEED;
+ADDRLP4 8
+ADDRFP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 432
+ADDP4
+ASGNP4
+ADDRLP4 8
+INDIRP4
+ADDRLP4 8
+INDIRP4
+INDIRI4
+CNSTI4 8192
+BORI4
+ASGNI4
+line 658
+;658:	}
+LABELV $300
+LABELV $298
+line 660
+;659:
+;660:	SpeedResetCheck( self, self->activator );
+ADDRLP4 0
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+INDIRP4
+ARGP4
+ADDRGP4 SpeedResetCheck
+CALLV
+pop
+line 661
+;661:	if( !( self->activator->r.svFlags & SVF_CUSTOM_SPEED ) )
+ADDRFP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 432
+ADDP4
+INDIRI4
+CNSTI4 8192
+BANDI4
+CNSTI4 0
+NEI4 $302
+line 662
+;662:	{ // Stop doing this speed_change (reset happens in ClientThink_Real )
+line 663
+;663:		self->think		= 0;
+ADDRFP4 0
+INDIRP4
+CNSTI4 716
+ADDP4
+CNSTP4 0
+ASGNP4
+line 664
+;664:		self->nextthink = 0;
+ADDRFP4 0
+INDIRP4
+CNSTI4 704
+ADDP4
+CNSTI4 0
+ASGNI4
+line 665
+;665:	}
+LABELV $302
+line 666
+;666:}
+LABELV $268
+endproc target_speed_change 12 8
+export target_speed_change_use
+proc target_speed_change_use 0 0
+line 669
+;667:
+;668:void target_speed_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
+;669:{ //-Vincent
+line 670
+;670:self->activator = activator; // Pass it on
+ADDRFP4 0
+INDIRP4
+CNSTI4 796
+ADDP4
+ADDRFP4 8
+INDIRP4
+ASGNP4
+line 671
+;671:self->think		= target_speed_change;
+ADDRFP4 0
+INDIRP4
+CNSTI4 716
+ADDP4
+ADDRGP4 target_speed_change
+ASGNP4
+line 672
+;672:self->nextthink = level.time + FRAMETIME;  // Let everything get spawned
+ADDRFP4 0
+INDIRP4
+CNSTI4 704
+ADDP4
+ADDRGP4 level+32
+INDIRI4
+CNSTI4 100
+ADDI4
+ASGNI4
+line 673
+;673:}
+LABELV $304
+endproc target_speed_change_use 0 0
+export SP_target_speed_change
+proc SP_target_speed_change 4 8
+line 676
+;674:
+;675:void SP_target_speed_change( gentity_t *self )
+;676:{ //-Vincent
+line 677
+;677:G_SetOrigin( self, self->s.origin );
+ADDRLP4 0
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 0
+INDIRP4
+CNSTI4 92
+ADDP4
+ARGP4
+ADDRGP4 G_SetOrigin
+CALLV
+pop
+line 678
+;678:self->use = target_speed_change_use;
+ADDRFP4 0
+INDIRP4
+CNSTI4 732
+ADDP4
+ADDRGP4 target_speed_change_use
+ASGNP4
+line 679
+;679:}
+LABELV $306
+endproc SP_target_speed_change 4 8
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible
@@ -3310,6 +4835,33 @@ import rand
 import srand
 import qsort
 lit
+align 1
+LABELV $299
+byte 1 103
+byte 1 95
+byte 1 115
+byte 1 112
+byte 1 101
+byte 1 101
+byte 1 100
+byte 1 0
+align 1
+LABELV $251
+byte 1 37
+byte 1 102
+byte 1 0
+align 1
+LABELV $250
+byte 1 103
+byte 1 95
+byte 1 103
+byte 1 114
+byte 1 97
+byte 1 118
+byte 1 105
+byte 1 116
+byte 1 121
+byte 1 0
 align 1
 LABELV $205
 byte 1 116

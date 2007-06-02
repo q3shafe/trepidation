@@ -192,7 +192,7 @@ ADDRGP4 level+32
 INDIRI4
 ADDRLP4 24
 INDIRP4
-CNSTI4 736
+CNSTI4 744
 ADDP4
 INDIRI4
 LEI4 $65
@@ -209,7 +209,7 @@ line 54
 ;54:		player->pain_debounce_time = level.time + 700;
 ADDRFP4 0
 INDIRP4
-CNSTI4 736
+CNSTI4 744
 ADDP4
 ADDRGP4 level+32
 INDIRI4
@@ -229,7 +229,7 @@ CNSTI4 58
 ARGI4
 ADDRLP4 28
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 INDIRI4
 ARGI4
@@ -354,7 +354,7 @@ line 88
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 804
+CNSTI4 812
 ADDP4
 INDIRI4
 ASGNI4
@@ -459,7 +459,7 @@ line 105
 ;105:			if ( ent->health > 0 ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -470,7 +470,7 @@ line 107
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
-CNSTI4 756
+CNSTI4 764
 ADDP4
 ASGNP4
 ADDRLP4 16
@@ -485,7 +485,7 @@ line 108
 ;108:				if (ent->damage > 15)
 ADDRFP4 0
 INDIRP4
-CNSTI4 756
+CNSTI4 764
 ADDP4
 INDIRI4
 CNSTI4 15
@@ -494,7 +494,7 @@ line 109
 ;109:					ent->damage = 15;
 ADDRFP4 0
 INDIRP4
-CNSTI4 756
+CNSTI4 764
 ADDP4
 CNSTI4 15
 ASGNI4
@@ -509,12 +509,12 @@ INDIRP4
 ASGNP4
 ADDRLP4 20
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 INDIRI4
 ADDRLP4 20
 INDIRP4
-CNSTI4 756
+CNSTI4 764
 ADDP4
 INDIRI4
 GTI4 $89
@@ -605,7 +605,7 @@ line 121
 ;121:				ent->pain_debounce_time = level.time + 200;
 ADDRFP4 0
 INDIRP4
-CNSTI4 736
+CNSTI4 744
 ADDP4
 ADDRGP4 level+32
 INDIRI4
@@ -642,7 +642,7 @@ INDIRP4
 ARGP4
 ADDRLP4 28
 INDIRP4
-CNSTI4 756
+CNSTI4 764
 ADDP4
 INDIRI4
 ARGI4
@@ -681,7 +681,7 @@ line 129
 ;129:		ent->damage = 2;
 ADDRFP4 0
 INDIRP4
-CNSTI4 756
+CNSTI4 764
 ADDP4
 CNSTI4 2
 ASGNI4
@@ -704,7 +704,7 @@ INDIRI4
 EQI4 $98
 ADDRFP4 0
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 INDIRI4
 CNSTI4 24
@@ -722,14 +722,14 @@ INDIRP4
 ASGNP4
 ADDRLP4 16
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 INDIRI4
 CNSTI4 0
 LEI4 $100
 ADDRLP4 16
 INDIRP4
-CNSTI4 736
+CNSTI4 744
 ADDP4
 INDIRI4
 ADDRGP4 level+32
@@ -765,7 +765,7 @@ line 143
 ;143:				if (ent->watertype & CONTENTS_LAVA) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 INDIRI4
 CNSTI4 8
@@ -816,7 +816,7 @@ line 148
 ;148:				if (ent->watertype & CONTENTS_SLIME) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 INDIRI4
 CNSTI4 16
@@ -904,7 +904,7 @@ CNSTI4 0
 ASGNI4
 ADDRLP4 0
 INDIRP4
-CNSTI4 804
+CNSTI4 812
 ADDP4
 INDIRI4
 ADDRLP4 4
@@ -912,7 +912,7 @@ INDIRI4
 EQI4 $110
 ADDRLP4 0
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 INDIRI4
 CNSTI4 24
@@ -1069,7 +1069,7 @@ line 202
 ;201:		}
 ;202:		other = &g_entities[ pm->touchents[i] ];
 ADDRLP4 8
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -1102,7 +1102,7 @@ CNSTI4 0
 EQI4 $126
 ADDRLP4 68
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 INDIRP4
 CVPU4 4
@@ -1124,7 +1124,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 72
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 INDIRP4
 CALLV
@@ -1137,7 +1137,7 @@ line 208
 ;208:		if ( !other->touch ) {
 ADDRLP4 8
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 INDIRP4
 CVPU4 4
@@ -1162,7 +1162,7 @@ ADDRLP4 12
 ARGP4
 ADDRLP4 8
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 INDIRP4
 CALLV
@@ -1494,7 +1494,7 @@ LABELV $148
 line 252
 ;252:		hit = &g_entities[touch[i]];
 ADDRLP4 0
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -1510,7 +1510,7 @@ line 254
 ;253:
 ;254:		if ( !hit->touch && !ent->touch ) {
 ADDRLP4 4224
-CNSTI4 720
+CNSTI4 728
 ASGNI4
 ADDRLP4 4228
 CNSTU4 0
@@ -1583,7 +1583,7 @@ CNSTI4 9
 EQI4 $158
 ADDRLP4 0
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 INDIRP4
 CVPU4 4
@@ -1688,7 +1688,7 @@ line 285
 ;285:		if ( hit->touch ) {
 ADDRLP4 0
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 INDIRP4
 CVPU4 4
@@ -1706,7 +1706,7 @@ ADDRLP4 8
 ARGP4
 ADDRLP4 0
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 INDIRP4
 CALLV
@@ -1732,7 +1732,7 @@ CNSTI4 0
 EQI4 $169
 ADDRLP4 4232
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 INDIRP4
 CVPU4 4
@@ -1754,7 +1754,7 @@ ADDRLP4 8
 ARGP4
 ADDRLP4 4236
 INDIRP4
-CNSTI4 720
+CNSTI4 728
 ADDP4
 INDIRP4
 CALLV
@@ -2509,7 +2509,7 @@ line 446
 ;446:			if ( ent->health < client->ps.stats[STAT_MAX_HEALTH]) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 INDIRI4
 ADDRLP4 0
@@ -2523,7 +2523,7 @@ line 447
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 ASGNP4
 ADDRLP4 12
@@ -2538,7 +2538,7 @@ line 448
 ;448:				if ( ent->health > client->ps.stats[STAT_MAX_HEALTH] * 1.1 ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 INDIRI4
 CVIF4 4
@@ -2555,7 +2555,7 @@ line 449
 ;449:					ent->health = client->ps.stats[STAT_MAX_HEALTH] * 1.1;
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 CNSTF4 1066192077
 ADDRLP4 0
@@ -2589,7 +2589,7 @@ JUMPV
 LABELV $223
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 INDIRI4
 ADDRLP4 0
@@ -2605,7 +2605,7 @@ line 453
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 ASGNP4
 ADDRLP4 12
@@ -2620,7 +2620,7 @@ line 454
 ;454:				if ( ent->health > client->ps.stats[STAT_MAX_HEALTH] * 2 ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 INDIRI4
 ADDRLP4 0
@@ -2635,7 +2635,7 @@ line 455
 ;455:					ent->health = client->ps.stats[STAT_MAX_HEALTH] * 2;
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 ADDRLP4 0
 INDIRP4
@@ -2673,7 +2673,7 @@ line 462
 ;462:			if ( ent->health > client->ps.stats[STAT_MAX_HEALTH] ) {
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 INDIRI4
 ADDRLP4 0
@@ -2687,7 +2687,7 @@ line 463
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 ASGNP4
 ADDRLP4 12
@@ -2744,14 +2744,14 @@ line 477
 ;475:
 ;476:		// Immobilized
 ;477:		if ( g_entities[client->ps.clientNum].immobilized == qtrue)
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+912
+ADDRGP4 g_entities+920
 ADDP4
 INDIRI4
 CNSTI4 1
@@ -2776,7 +2776,7 @@ CNSTI4 1
 ASGNI4
 line 481
 ;481:			g_entities[client->ps.clientNum].s.time2 = 9;
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -2790,14 +2790,14 @@ ASGNI4
 line 482
 ;482:			g_entities[client->ps.clientNum].health--;
 ADDRLP4 12
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+748
+ADDRGP4 g_entities+756
 ADDP4
 ASGNP4
 ADDRLP4 12
@@ -2813,26 +2813,26 @@ line 486
 ;484:			//g_entities[client->ps.clientNum].s.team == TEAM_RED; // Where using this for a timer now - Typically used for buildables
 ;485:			// Let them go when they are about dead.
 ;486:			if (g_entities[client->ps.clientNum].health < 75) { g_entities[client->ps.clientNum].immobilized = qfalse; }
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+748
+ADDRGP4 g_entities+756
 ADDP4
 INDIRI4
 CNSTI4 75
 GEI4 $237
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+912
+ADDRGP4 g_entities+920
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -2865,7 +2865,7 @@ INDIRI4
 ASGNI4
 line 493
 ;493:			g_entities[client->ps.clientNum].s.time2 = 0;
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -2878,14 +2878,14 @@ CNSTI4 0
 ASGNI4
 line 494
 ;494:			g_entities[client->ps.clientNum].immobilized = qfalse;
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+912
+ADDRGP4 g_entities+920
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -3689,7 +3689,7 @@ line 639
 ;639:			ent->pain_debounce_time = level.time + 200;	// no normal pain sound
 ADDRFP4 0
 INDIRP4
-CNSTI4 736
+CNSTI4 744
 ADDP4
 ADDRGP4 level+32
 INDIRI4
@@ -3864,7 +3864,7 @@ INDIRP4
 ASGNP4
 ADDRLP4 76
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 ADDRLP4 76
 INDIRP4
@@ -5174,45 +5174,74 @@ LABELV $429
 LABELV $427
 line 1034
 ;1033:
-;1034:	client->ps.gravity = g_gravity.value;
+;1034:	if( !( ent->r.svFlags & SVF_CUSTOM_GRAVITY ) )
+ADDRFP4 0
+INDIRP4
+CNSTI4 432
+ADDP4
+INDIRI4
+CNSTI4 4096
+BANDI4
+CNSTI4 0
+NEI4 $430
+line 1035
+;1035:	{ //-Vincent
+line 1036
+;1036:		client->ps.gravity = g_gravity.integer;
 ADDRLP4 0
 INDIRP4
 CNSTI4 48
 ADDP4
-ADDRGP4 g_gravity+8
-INDIRF4
-CVFI4 4
+ADDRGP4 g_gravity+12
+INDIRI4
 ASGNI4
 line 1037
-;1035:
-;1036:	// set speed
-;1037:	client->ps.speed = g_speed.value;
+;1037:	}
+LABELV $430
+line 1039
+;1038:
+;1039:	if( !( ent->r.svFlags & SVF_CUSTOM_SPEED ) )
+ADDRFP4 0
+INDIRP4
+CNSTI4 432
+ADDP4
+INDIRI4
+CNSTI4 8192
+BANDI4
+CNSTI4 0
+NEI4 $433
+line 1040
+;1040:	{ //-Vincent
+line 1041
+;1041:		client->ps.gravity = g_speed.integer;
 ADDRLP4 0
 INDIRP4
-CNSTI4 52
+CNSTI4 48
 ADDP4
-ADDRGP4 g_speed+8
-INDIRF4
-CVFI4 4
+ADDRGP4 g_speed+12
+INDIRI4
 ASGNI4
-line 1045
-;1038:
-;1039:#ifdef MISSIONPACK
-;1040:	if( bg_itemlist[client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_SCOUT ) {
-;1041:		client->ps.speed *= 1.5;
+line 1042
 ;1042:	}
-;1043:	else
-;1044:#endif
-;1045:	if ( client->ps.powerups[PW_HASTE] ) {
+LABELV $433
+line 1050
+;1043:
+;1044:#ifdef MISSIONPACK
+;1045:	if( bg_itemlist[client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_SCOUT ) {
+;1046:		client->ps.speed *= 1.5;
+;1047:	}
+;1048:	else
+;1049:#endif
+;1050:	if ( client->ps.powerups[PW_HASTE] ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 324
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $432
-line 1046
-;1046:		client->ps.speed *= 1.3;
+EQI4 $436
+line 1051
+;1051:		client->ps.speed *= 1.3;
 ADDRLP4 276
 ADDRLP4 0
 INDIRP4
@@ -5229,14 +5258,14 @@ CVIF4 4
 MULF4
 CVFI4 4
 ASGNI4
-line 1047
-;1047:	}
-LABELV $432
-line 1049
-;1048:
-;1049:	if (( g_entities[client->ps.clientNum].immobilized == qtrue) && (g_entities[client->ps.clientNum].s.eType != ET_BUILDABLE)) 
+line 1052
+;1052:	}
+LABELV $436
+line 1054
+;1053:
+;1054:	if (( g_entities[client->ps.clientNum].immobilized == qtrue) && (g_entities[client->ps.clientNum].s.eType != ET_BUILDABLE)) 
 ADDRLP4 276
-CNSTI4 916
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
@@ -5246,39 +5275,39 @@ MULI4
 ASGNI4
 ADDRLP4 276
 INDIRI4
-ADDRGP4 g_entities+912
+ADDRGP4 g_entities+920
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $434
+NEI4 $438
 ADDRLP4 276
 INDIRI4
 ADDRGP4 g_entities+4
 ADDP4
 INDIRI4
 CNSTI4 13
-EQI4 $434
-line 1050
-;1050:	{
-line 1052
-;1051:		// Client only immobilized effects -Vincent
-;1052:		if (g_entities[client->ps.clientNum].health > 8)
-CNSTI4 916
+EQI4 $438
+line 1055
+;1055:	{
+line 1057
+;1056:		// Client only immobilized effects -Vincent
+;1057:		if (g_entities[client->ps.clientNum].health > 8)
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+748
+ADDRGP4 g_entities+756
 ADDP4
 INDIRI4
 CNSTI4 8
-LEI4 $438
-line 1053
-;1053:		{ // Don't do anything when your health is above 8, because you are free then
-line 1054
-;1054:		G_AddEvent( ent, EV_IMMOBILIZED, 0 ); // Visualise
+LEI4 $442
+line 1058
+;1058:		{ // Don't do anything when your health is above 8, because you are free then
+line 1059
+;1059:		G_AddEvent( ent, EV_IMMOBILIZED, 0 ); // Visualise
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5289,16 +5318,16 @@ ARGI4
 ADDRGP4 G_AddEvent
 CALLV
 pop
-line 1055
-;1055:		}
-ADDRGP4 $439
+line 1060
+;1060:		}
+ADDRGP4 $443
 JUMPV
-LABELV $438
-line 1057
-;1056:		else
-;1057:		{ // Failsafe
-line 1058
-;1058:		G_AddEvent( ent, EV_IMMOBILIZED_FREE, 0 );
+LABELV $442
+line 1062
+;1061:		else
+;1062:		{ // Failsafe
+line 1063
+;1063:		G_AddEvent( ent, EV_IMMOBILIZED_FREE, 0 );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5309,53 +5338,53 @@ ARGI4
 ADDRGP4 G_AddEvent
 CALLV
 pop
-line 1059
-;1059:		}
-LABELV $439
-line 1061
-;1060:
-;1061:		client->ps.speed = 50;
+line 1064
+;1064:		}
+LABELV $443
+line 1066
+;1065:
+;1066:		client->ps.speed = 50;
 ADDRLP4 0
 INDIRP4
 CNSTI4 52
 ADDP4
 CNSTI4 50
 ASGNI4
-line 1062
-;1062:		if (g_entities[client->ps.clientNum].health < 8) { g_entities[client->ps.clientNum].immobilized = qfalse; }
-CNSTI4 916
+line 1067
+;1067:		if (g_entities[client->ps.clientNum].health < 8) { g_entities[client->ps.clientNum].immobilized = qfalse; }
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+748
+ADDRGP4 g_entities+756
 ADDP4
 INDIRI4
 CNSTI4 8
-GEI4 $435
-CNSTI4 916
+GEI4 $439
+CNSTI4 924
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 MULI4
-ADDRGP4 g_entities+912
+ADDRGP4 g_entities+920
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1063
-;1063:	}
-ADDRGP4 $435
+line 1068
+;1068:	}
+ADDRGP4 $439
 JUMPV
-LABELV $434
-line 1065
-;1064:	else
-;1065:	{ // Free the effect if it exists (and isn't supposed to exist anymore)
-line 1066
-;1066:	G_AddEvent( ent, EV_IMMOBILIZED_FREE, 0 );
+LABELV $438
+line 1070
+;1069:	else
+;1070:	{ // Free the effect if it exists (and isn't supposed to exist anymore)
+line 1071
+;1071:	G_AddEvent( ent, EV_IMMOBILIZED_FREE, 0 );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5366,22 +5395,22 @@ ARGI4
 ADDRGP4 G_AddEvent
 CALLV
 pop
-line 1067
-;1067:	}
-LABELV $435
-line 1079
-;1068:
-;1069:
-;1070:	// Let go of the hook if we aren't firing
-;1071:	/*  - Shafe - Trep - Commented out for offhand grapple
-;1072:	if ( client->ps.weapon == WP_GRAPPLING_HOOK &&
-;1073:		client->hook && !( ucmd->buttons & BUTTON_ATTACK ) ) {
-;1074:		Weapon_HookFree(client->hook);
-;1075:	}
-;1076:	*/ 
-;1077:
-;1078:	// set up for pmove
-;1079:	oldEventSequence = client->ps.eventSequence;
+line 1072
+;1072:	}
+LABELV $439
+line 1084
+;1073:
+;1074:
+;1075:	// Let go of the hook if we aren't firing
+;1076:	/*  - Shafe - Trep - Commented out for offhand grapple
+;1077:	if ( client->ps.weapon == WP_GRAPPLING_HOOK &&
+;1078:		client->hook && !( ucmd->buttons & BUTTON_ATTACK ) ) {
+;1079:		Weapon_HookFree(client->hook);
+;1080:	}
+;1081:	*/ 
+;1082:
+;1083:	// set up for pmove
+;1084:	oldEventSequence = client->ps.eventSequence;
 ADDRLP4 244
 ADDRLP4 0
 INDIRP4
@@ -5389,9 +5418,9 @@ CNSTI4 108
 ADDP4
 INDIRI4
 ASGNI4
-line 1081
-;1080:
-;1081:	memset (&pm, 0, sizeof(pm));
+line 1086
+;1085:
+;1086:	memset (&pm, 0, sizeof(pm));
 ADDRLP4 4
 ARGP4
 CNSTI4 0
@@ -5401,11 +5430,11 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 1085
-;1082:
-;1083:	// check for the hit-scan gauntlet, don't let the action
-;1084:	// go through as an attack unless it actually hits something
-;1085:	if ( client->ps.weapon == WP_GAUNTLET && !( ucmd->buttons & BUTTON_TALK ) &&
+line 1090
+;1087:
+;1088:	// check for the hit-scan gauntlet, don't let the action
+;1089:	// go through as an attack unless it actually hits something
+;1090:	if ( client->ps.weapon == WP_GAUNTLET && !( ucmd->buttons & BUTTON_TALK ) &&
 ADDRLP4 280
 CNSTI4 1
 ASGNI4
@@ -5416,7 +5445,7 @@ ADDP4
 INDIRI4
 ADDRLP4 280
 INDIRI4
-NEI4 $445
+NEI4 $449
 ADDRLP4 284
 ADDRLP4 236
 INDIRP4
@@ -5433,7 +5462,7 @@ CNSTI4 2
 BANDI4
 ADDRLP4 288
 INDIRI4
-NEI4 $445
+NEI4 $449
 ADDRLP4 284
 INDIRI4
 ADDRLP4 280
@@ -5441,27 +5470,27 @@ INDIRI4
 BANDI4
 ADDRLP4 288
 INDIRI4
-NEI4 $447
+NEI4 $451
 ADDRLP4 284
 INDIRI4
 CNSTI4 32
 BANDI4
 ADDRLP4 288
 INDIRI4
-EQI4 $445
-LABELV $447
+EQI4 $449
+LABELV $451
 ADDRLP4 0
 INDIRP4
 CNSTI4 44
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $445
-line 1086
-;1086:		( (ucmd->buttons & BUTTON_ATTACK) || (ucmd->buttons & 32) ) && client->ps.weaponTime <= 0 ) { // Shafe - Trep - Alt Fire
-line 1088
-;1087:		//( ucmd->buttons & BUTTON_ATTACK ) && client->ps.weaponTime <= 0 ) {
-;1088:		pm.gauntletHit = CheckGauntletAttack( ent );
+GTI4 $449
+line 1091
+;1091:		( (ucmd->buttons & BUTTON_ATTACK) || (ucmd->buttons & 32) ) && client->ps.weaponTime <= 0 ) { // Shafe - Trep - Alt Fire
+line 1093
+;1092:		//( ucmd->buttons & BUTTON_ATTACK ) && client->ps.weaponTime <= 0 ) {
+;1093:		pm.gauntletHit = CheckGauntletAttack( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5473,12 +5502,12 @@ ADDRLP4 4+40
 ADDRLP4 292
 INDIRI4
 ASGNI4
-line 1089
-;1089:	}
-LABELV $445
-line 1091
-;1090:
-;1091:	if ( ent->flags & FL_FORCE_GESTURE ) {
+line 1094
+;1094:	}
+LABELV $449
+line 1096
+;1095:
+;1096:	if ( ent->flags & FL_FORCE_GESTURE ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 544
@@ -5487,9 +5516,9 @@ INDIRI4
 CNSTI4 32768
 BANDI4
 CNSTI4 0
-EQI4 $449
-line 1092
-;1092:		ent->flags &= ~FL_FORCE_GESTURE;
+EQI4 $453
+line 1097
+;1097:		ent->flags &= ~FL_FORCE_GESTURE;
 ADDRLP4 292
 ADDRFP4 0
 INDIRP4
@@ -5504,8 +5533,8 @@ INDIRI4
 CNSTI4 -32769
 BANDI4
 ASGNI4
-line 1093
-;1093:		ent->client->pers.cmd.buttons |= BUTTON_GESTURE;
+line 1098
+;1098:		ent->client->pers.cmd.buttons |= BUTTON_GESTURE;
 ADDRLP4 296
 ADDRFP4 0
 INDIRP4
@@ -5523,23 +5552,23 @@ INDIRI4
 CNSTI4 8
 BORI4
 ASGNI4
-line 1094
-;1094:	}
-LABELV $449
-line 1096
-;1095:
-;1096:	if (client->ps.weapon == WP_RAILGUN )
+line 1099
+;1099:	}
+LABELV $453
+line 1101
+;1100:
+;1101:	if (client->ps.weapon == WP_RAILGUN )
 ADDRLP4 0
 INDIRP4
 CNSTI4 144
 ADDP4
 INDIRI4
 CNSTI4 7
-NEI4 $451
-line 1097
-;1097:	{
-line 1098
-;1098:		if (ucmd->buttons & 32)
+NEI4 $455
+line 1102
+;1102:	{
+line 1103
+;1103:		if (ucmd->buttons & 32)
 ADDRLP4 236
 INDIRP4
 CNSTI4 16
@@ -5548,24 +5577,24 @@ INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-EQI4 $453
-line 1099
-;1099:		{
-line 1101
-;1100:
-;1101:			if (!client->Zoomed)
+EQI4 $457
+line 1104
+;1104:		{
+line 1106
+;1105:
+;1106:			if (!client->Zoomed)
 ADDRLP4 0
 INDIRP4
 CNSTI4 2720
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $455
-line 1102
-;1102:			{
-line 1104
-;1103:
-;1104:				if ((level.time - client->ZoomTime) > 200) 
+NEI4 $459
+line 1107
+;1107:			{
+line 1109
+;1108:
+;1109:				if ((level.time - client->ZoomTime) > 200) 
 ADDRGP4 level+32
 INDIRI4
 ADDRLP4 0
@@ -5575,44 +5604,44 @@ ADDP4
 INDIRI4
 SUBI4
 CNSTI4 200
-LEI4 $454
-line 1105
-;1105:				{
-line 1106
-;1106:					client->ps.weaponstate = WEAPON_FIRING;
+LEI4 $458
+line 1110
+;1110:				{
+line 1111
+;1111:					client->ps.weaponstate = WEAPON_FIRING;
 ADDRLP4 0
 INDIRP4
 CNSTI4 148
 ADDP4
 CNSTI4 3
 ASGNI4
-line 1107
-;1107:					trap_SendServerCommand(client->ps.clientNum, "+gzoom");
+line 1112
+;1112:					trap_SendServerCommand(client->ps.clientNum, "+gzoom");
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $460
+ADDRGP4 $464
 ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 1110
-;1108:					//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +gzoom\n", client->ps.weaponstate );
-;1109:					//	client->ZoomTime = level.time;
-;1110:				}
-line 1111
-;1111:			}
-ADDRGP4 $454
+line 1115
+;1113:					//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +gzoom\n", client->ps.weaponstate );
+;1114:					//	client->ZoomTime = level.time;
+;1115:				}
+line 1116
+;1116:			}
+ADDRGP4 $458
 JUMPV
-LABELV $455
-line 1113
-;1112:			else
-;1113:			{
-line 1114
-;1114:				client->ZoomTime = level.time;
+LABELV $459
+line 1118
+;1117:			else
+;1118:			{
+line 1119
+;1119:				client->ZoomTime = level.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 2716
@@ -5620,82 +5649,82 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1115
-;1115:				trap_SendServerCommand(client->ps.clientNum, "+greset");
+line 1120
+;1120:				trap_SendServerCommand(client->ps.clientNum, "+greset");
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $462
+ADDRGP4 $466
 ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 1117
-;1116:				//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +greset\n", client->ps.weaponstate );
-;1117:				client->Zoomed = qfalse;
+line 1122
+;1121:				//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +greset\n", client->ps.weaponstate );
+;1122:				client->Zoomed = qfalse;
 ADDRLP4 0
 INDIRP4
 CNSTI4 2720
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1118
-;1118:			}
-line 1120
-;1119:	
-;1120:		} else
-ADDRGP4 $454
-JUMPV
-LABELV $453
-line 1121
-;1121:		{
 line 1123
-;1122:
-;1123:			if (client->ps.weaponstate == WEAPON_FIRING)
+;1123:			}
+line 1125
+;1124:	
+;1125:		} else
+ADDRGP4 $458
+JUMPV
+LABELV $457
+line 1126
+;1126:		{
+line 1128
+;1127:
+;1128:			if (client->ps.weaponstate == WEAPON_FIRING)
 ADDRLP4 0
 INDIRP4
 CNSTI4 148
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $463
-line 1124
-;1124:			{
-line 1125
-;1125:				trap_SendServerCommand(client->ps.clientNum, "-gzoom");
+NEI4 $467
+line 1129
+;1129:			{
+line 1130
+;1130:				trap_SendServerCommand(client->ps.clientNum, "-gzoom");
 ADDRLP4 0
 INDIRP4
 CNSTI4 140
 ADDP4
 INDIRI4
 ARGI4
-ADDRGP4 $465
+ADDRGP4 $469
 ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 1127
-;1126:				//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: -gzoom\n", client->ps.weaponstate );
-;1127:				client->ps.weaponstate = WEAPON_CHARGING;
+line 1132
+;1131:				//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: -gzoom\n", client->ps.weaponstate );
+;1132:				client->ps.weaponstate = WEAPON_CHARGING;
 ADDRLP4 0
 INDIRP4
 CNSTI4 148
 ADDP4
 CNSTI4 4
 ASGNI4
-line 1128
-;1128:				client->Zoomed = qtrue;
+line 1133
+;1133:				client->Zoomed = qtrue;
 ADDRLP4 0
 INDIRP4
 CNSTI4 2720
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1129
-;1129:				client->ZoomTime = level.time;
+line 1134
+;1134:				client->ZoomTime = level.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 2716
@@ -5703,79 +5732,79 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1131
-;1130:
-;1131:			}
-LABELV $463
-line 1132
-;1132:		}
-LABELV $454
-line 1134
-;1133:
-;1134:	}
-LABELV $451
-line 1163
+line 1136
 ;1135:
-;1136:#ifdef MISSIONPACK
-;1137:	// check for invulnerability expansion before doing the Pmove
-;1138:	if (client->ps.powerups[PW_INVULNERABILITY] ) {
-;1139:		if ( !(client->ps.pm_flags & PMF_INVULEXPAND) ) {
-;1140:			vec3_t mins = { -42, -42, -42 };
-;1141:			vec3_t maxs = { 42, 42, 42 };
-;1142:			vec3_t oldmins, oldmaxs;
-;1143:
-;1144:			VectorCopy (ent->r.mins, oldmins);
-;1145:			VectorCopy (ent->r.maxs, oldmaxs);
-;1146:			// expand
-;1147:			VectorCopy (mins, ent->r.mins);
-;1148:			VectorCopy (maxs, ent->r.maxs);
-;1149:			trap_LinkEntity(ent);
-;1150:			// check if this would get anyone stuck in this player
-;1151:			if ( !StuckInOtherClient(ent) ) {
-;1152:				// set flag so the expanded size will be set in PM_CheckDuck
-;1153:				client->ps.pm_flags |= PMF_INVULEXPAND;
-;1154:			}
-;1155:			// set back
-;1156:			VectorCopy (oldmins, ent->r.mins);
-;1157:			VectorCopy (oldmaxs, ent->r.maxs);
-;1158:			trap_LinkEntity(ent);
-;1159:		}
-;1160:	}
-;1161:#endif
-;1162:
-;1163:	pm.ps = &client->ps;
+;1136:			}
+LABELV $467
+line 1137
+;1137:		}
+LABELV $458
+line 1139
+;1138:
+;1139:	}
+LABELV $455
+line 1168
+;1140:
+;1141:#ifdef MISSIONPACK
+;1142:	// check for invulnerability expansion before doing the Pmove
+;1143:	if (client->ps.powerups[PW_INVULNERABILITY] ) {
+;1144:		if ( !(client->ps.pm_flags & PMF_INVULEXPAND) ) {
+;1145:			vec3_t mins = { -42, -42, -42 };
+;1146:			vec3_t maxs = { 42, 42, 42 };
+;1147:			vec3_t oldmins, oldmaxs;
+;1148:
+;1149:			VectorCopy (ent->r.mins, oldmins);
+;1150:			VectorCopy (ent->r.maxs, oldmaxs);
+;1151:			// expand
+;1152:			VectorCopy (mins, ent->r.mins);
+;1153:			VectorCopy (maxs, ent->r.maxs);
+;1154:			trap_LinkEntity(ent);
+;1155:			// check if this would get anyone stuck in this player
+;1156:			if ( !StuckInOtherClient(ent) ) {
+;1157:				// set flag so the expanded size will be set in PM_CheckDuck
+;1158:				client->ps.pm_flags |= PMF_INVULEXPAND;
+;1159:			}
+;1160:			// set back
+;1161:			VectorCopy (oldmins, ent->r.mins);
+;1162:			VectorCopy (oldmaxs, ent->r.maxs);
+;1163:			trap_LinkEntity(ent);
+;1164:		}
+;1165:	}
+;1166:#endif
+;1167:
+;1168:	pm.ps = &client->ps;
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 1164
-;1164:	pm.cmd = *ucmd;
+line 1169
+;1169:	pm.cmd = *ucmd;
 ADDRLP4 4+4
 ADDRLP4 236
 INDIRP4
 INDIRB
 ASGNB 24
-line 1165
-;1165:	if ( pm.ps->pm_type == PM_DEAD ) {
+line 1170
+;1170:	if ( pm.ps->pm_type == PM_DEAD ) {
 ADDRLP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $468
-line 1166
-;1166:		pm.tracemask = MASK_PLAYERSOLID & ~CONTENTS_BODY;
+NEI4 $472
+line 1171
+;1171:		pm.tracemask = MASK_PLAYERSOLID & ~CONTENTS_BODY;
 ADDRLP4 4+28
 CNSTI4 65537
 ASGNI4
-line 1167
-;1167:	}
-ADDRGP4 $469
+line 1172
+;1172:	}
+ADDRGP4 $473
 JUMPV
-LABELV $468
-line 1168
-;1168:	else if ( ent->r.svFlags & SVF_BOT ) {
+LABELV $472
+line 1173
+;1173:	else if ( ent->r.svFlags & SVF_BOT ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 432
@@ -5784,69 +5813,69 @@ INDIRI4
 CNSTI4 8
 BANDI4
 CNSTI4 0
-EQI4 $471
-line 1169
-;1169:		pm.tracemask = MASK_PLAYERSOLID | CONTENTS_BOTCLIP;
+EQI4 $475
+line 1174
+;1174:		pm.tracemask = MASK_PLAYERSOLID | CONTENTS_BOTCLIP;
 ADDRLP4 4+28
 CNSTI4 37814273
 ASGNI4
-line 1170
-;1170:	}
-ADDRGP4 $472
+line 1175
+;1175:	}
+ADDRGP4 $476
 JUMPV
-LABELV $471
-line 1171
-;1171:	else {
-line 1172
-;1172:		pm.tracemask = MASK_PLAYERSOLID;
+LABELV $475
+line 1176
+;1176:	else {
+line 1177
+;1177:		pm.tracemask = MASK_PLAYERSOLID;
 ADDRLP4 4+28
 CNSTI4 33619969
 ASGNI4
-line 1173
-;1173:	}
-LABELV $472
-LABELV $469
-line 1174
-;1174:	pm.trace = trap_Trace;
+line 1178
+;1178:	}
+LABELV $476
+LABELV $473
+line 1179
+;1179:	pm.trace = trap_Trace;
 ADDRLP4 4+224
 ADDRGP4 trap_Trace
 ASGNP4
-line 1175
-;1175:	pm.pointcontents = trap_PointContents;
+line 1180
+;1180:	pm.pointcontents = trap_PointContents;
 ADDRLP4 4+228
 ADDRGP4 trap_PointContents
 ASGNP4
-line 1176
-;1176:	pm.debugLevel = g_debugMove.integer;
+line 1181
+;1181:	pm.debugLevel = g_debugMove.integer;
 ADDRLP4 4+32
 ADDRGP4 g_debugMove+12
 INDIRI4
 ASGNI4
-line 1177
-;1177:	pm.noFootsteps = ( g_dmflags.integer & DF_NO_FOOTSTEPS ) > 0;
+line 1182
+;1182:	pm.noFootsteps = ( g_dmflags.integer & DF_NO_FOOTSTEPS ) > 0;
 ADDRGP4 g_dmflags+12
 INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-LEI4 $482
+LEI4 $486
 ADDRLP4 292
 CNSTI4 1
 ASGNI4
-ADDRGP4 $483
+ADDRGP4 $487
 JUMPV
-LABELV $482
+LABELV $486
 ADDRLP4 292
 CNSTI4 0
 ASGNI4
-LABELV $483
+LABELV $487
 ADDRLP4 4+36
 ADDRLP4 292
 INDIRI4
 ASGNI4
-line 1179
-;1178:
-;1179:	pm.pmove_fixed = pmove_fixed.integer | client->pers.pmoveFixed;
+line 1184
+;1183:
+;1184:	pm.pmove_fixed = pmove_fixed.integer | client->pers.pmoveFixed;
 ADDRLP4 4+216
 ADDRGP4 pmove_fixed+12
 INDIRI4
@@ -5857,15 +5886,15 @@ ADDP4
 INDIRI4
 BORI4
 ASGNI4
-line 1180
-;1180:	pm.pmove_msec = pmove_msec.integer;
+line 1185
+;1185:	pm.pmove_msec = pmove_msec.integer;
 ADDRLP4 4+220
 ADDRGP4 pmove_msec+12
 INDIRI4
 ASGNI4
-line 1182
-;1181:
-;1182:	VectorCopy( client->ps.origin, client->oldOrigin );
+line 1187
+;1186:
+;1187:	VectorCopy( client->ps.origin, client->oldOrigin );
 ADDRLP4 0
 INDIRP4
 CNSTI4 2600
@@ -5876,34 +5905,34 @@ CNSTI4 20
 ADDP4
 INDIRB
 ASGNB 12
-line 1199
-;1183:
-;1184:#ifdef MISSIONPACK
-;1185:		if (level.intermissionQueued != 0 && g_singlePlayer.integer) {
-;1186:			if ( level.time - level.intermissionQueued >= 1000  ) {
-;1187:				pm.cmd.buttons = 0;
-;1188:				pm.cmd.forwardmove = 0;
-;1189:				pm.cmd.rightmove = 0;
-;1190:				pm.cmd.upmove = 0;
-;1191:				if ( level.time - level.intermissionQueued >= 2000 && level.time - level.intermissionQueued <= 2500 ) {
-;1192:					trap_SendConsoleCommand( EXEC_APPEND, "centerview\n");
-;1193:				}
-;1194:				ent->client->ps.pm_type = PM_SPINTERMISSION;
-;1195:			}
-;1196:		}
-;1197:		Pmove (&pm);
-;1198:#else
-;1199:		Pmove (&pm);
+line 1204
+;1188:
+;1189:#ifdef MISSIONPACK
+;1190:		if (level.intermissionQueued != 0 && g_singlePlayer.integer) {
+;1191:			if ( level.time - level.intermissionQueued >= 1000  ) {
+;1192:				pm.cmd.buttons = 0;
+;1193:				pm.cmd.forwardmove = 0;
+;1194:				pm.cmd.rightmove = 0;
+;1195:				pm.cmd.upmove = 0;
+;1196:				if ( level.time - level.intermissionQueued >= 2000 && level.time - level.intermissionQueued <= 2500 ) {
+;1197:					trap_SendConsoleCommand( EXEC_APPEND, "centerview\n");
+;1198:				}
+;1199:				ent->client->ps.pm_type = PM_SPINTERMISSION;
+;1200:			}
+;1201:		}
+;1202:		Pmove (&pm);
+;1203:#else
+;1204:		Pmove (&pm);
 ADDRLP4 4
 ARGP4
 ADDRGP4 Pmove
 CALLV
 pop
-line 1203
-;1200:#endif
-;1201:
-;1202:	// save results of pmove
-;1203:	if ( ent->client->ps.eventSequence != oldEventSequence ) {
+line 1208
+;1205:#endif
+;1206:
+;1207:	// save results of pmove
+;1208:	if ( ent->client->ps.eventSequence != oldEventSequence ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -5914,9 +5943,9 @@ ADDP4
 INDIRI4
 ADDRLP4 244
 INDIRI4
-EQI4 $488
-line 1204
-;1204:		ent->eventTime = level.time;
+EQI4 $492
+line 1209
+;1209:		ent->eventTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 560
@@ -5924,23 +5953,23 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1205
-;1205:	}
-LABELV $488
-line 1218
-;1206:
-;1207://unlagged - smooth clients #2
-;1208:	// clients no longer do extrapolation if cg_smoothClients is 1, because
-;1209:	// skip correction is all handled server-side now
-;1210:	// since that's the case, it makes no sense to store the extra info
-;1211:	// in the client's snapshot entity, so let's save a little bandwidth
-;1212:/*
-;1213:	if (g_smoothClients.integer) {
-;1214:		BG_PlayerStateToEntityStateExtraPolate( &ent->client->ps, &ent->s, ent->client->ps.commandTime, qtrue );
-;1215:	}
-;1216:	else {
-;1217:*/
-;1218:		BG_PlayerStateToEntityState( &ent->client->ps, &ent->s, qtrue );
+line 1210
+;1210:	}
+LABELV $492
+line 1223
+;1211:
+;1212://unlagged - smooth clients #2
+;1213:	// clients no longer do extrapolation if cg_smoothClients is 1, because
+;1214:	// skip correction is all handled server-side now
+;1215:	// since that's the case, it makes no sense to store the extra info
+;1216:	// in the client's snapshot entity, so let's save a little bandwidth
+;1217:/*
+;1218:	if (g_smoothClients.integer) {
+;1219:		BG_PlayerStateToEntityStateExtraPolate( &ent->client->ps, &ent->s, ent->client->ps.commandTime, qtrue );
+;1220:	}
+;1221:	else {
+;1222:*/
+;1223:		BG_PlayerStateToEntityState( &ent->client->ps, &ent->s, qtrue );
 ADDRLP4 300
 ADDRFP4 0
 INDIRP4
@@ -5959,11 +5988,11 @@ ARGI4
 ADDRGP4 BG_PlayerStateToEntityState
 CALLV
 pop
-line 1222
-;1219://	}
-;1220://unlagged - smooth clients #2
-;1221:
-;1222:	SendPendingPredictableEvents( &ent->client->ps );
+line 1227
+;1224://	}
+;1225://unlagged - smooth clients #2
+;1226:
+;1227:	SendPendingPredictableEvents( &ent->client->ps );
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -5973,22 +6002,22 @@ ARGP4
 ADDRGP4 SendPendingPredictableEvents
 CALLV
 pop
-line 1231
-;1223:
-;1224:	/* - Shafe - Trep - Commented out for Offhand Grapple
-;1225:	if ( !( ent->client->ps.eFlags & EF_FIRING ) ) {
-;1226:		client->fireHeld = qfalse;		// for grapple
-;1227:	}
-;1228:	*/
-;1229:
-;1230:	// Shafe - Trep  - Offhand Grappling Hook
-;1231:	if (g_gametype.integer != GT_CTF) { // Not in CTF Games
+line 1236
+;1228:
+;1229:	/* - Shafe - Trep - Commented out for Offhand Grapple
+;1230:	if ( !( ent->client->ps.eFlags & EF_FIRING ) ) {
+;1231:		client->fireHeld = qfalse;		// for grapple
+;1232:	}
+;1233:	*/
+;1234:
+;1235:	// Shafe - Trep  - Offhand Grappling Hook
+;1236:	if (g_gametype.integer != GT_CTF) { // Not in CTF Games
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 4
-EQI4 $491
-line 1232
-;1232:		if ( (pm.cmd.buttons & 64)  && ent->client->ps.pm_type != PM_DEAD && !ent->client->hookhasbeenfired)
+EQI4 $495
+line 1237
+;1237:		if ( (pm.cmd.buttons & 64)  && ent->client->ps.pm_type != PM_DEAD && !ent->client->hookhasbeenfired)
 ADDRLP4 304
 CNSTI4 0
 ASGNI4
@@ -5998,7 +6027,7 @@ CNSTI4 64
 BANDI4
 ADDRLP4 304
 INDIRI4
-EQI4 $494
+EQI4 $498
 ADDRLP4 308
 ADDRFP4 0
 INDIRP4
@@ -6012,7 +6041,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $494
+EQI4 $498
 ADDRLP4 308
 INDIRP4
 CNSTI4 2696
@@ -6020,19 +6049,19 @@ ADDP4
 INDIRI4
 ADDRLP4 304
 INDIRI4
-NEI4 $494
-line 1233
-;1233:		{
-line 1234
-;1234:			Weapon_GrapplingHook_Fire( ent );
+NEI4 $498
+line 1238
+;1238:		{
+line 1239
+;1239:			Weapon_GrapplingHook_Fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_GrapplingHook_Fire
 CALLV
 pop
-line 1235
-;1235:			ent->client->hookhasbeenfired = qtrue;
+line 1240
+;1240:			ent->client->hookhasbeenfired = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6042,11 +6071,11 @@ CNSTI4 2696
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1236
-;1236:		}
-LABELV $494
-line 1237
-;1237:		if ( !(pm.cmd.buttons & 64)  &&	ent->client->ps.pm_type != PM_DEAD && ent->client->hookhasbeenfired && ent->client->fireHeld)
+line 1241
+;1241:		}
+LABELV $498
+line 1242
+;1242:		if ( !(pm.cmd.buttons & 64)  &&	ent->client->ps.pm_type != PM_DEAD && ent->client->hookhasbeenfired && ent->client->fireHeld)
 ADDRLP4 312
 CNSTI4 0
 ASGNI4
@@ -6056,7 +6085,7 @@ CNSTI4 64
 BANDI4
 ADDRLP4 312
 INDIRI4
-NEI4 $498
+NEI4 $502
 ADDRLP4 316
 ADDRFP4 0
 INDIRP4
@@ -6070,7 +6099,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $498
+EQI4 $502
 ADDRLP4 316
 INDIRP4
 CNSTI4 2696
@@ -6078,7 +6107,7 @@ ADDP4
 INDIRI4
 ADDRLP4 312
 INDIRI4
-EQI4 $498
+EQI4 $502
 ADDRLP4 316
 INDIRP4
 CNSTI4 2688
@@ -6086,37 +6115,37 @@ ADDP4
 INDIRI4
 ADDRLP4 312
 INDIRI4
-EQI4 $498
-line 1238
-;1238:		{
-line 1239
-;1239:			ent->client->fireHeld = qfalse;
-ADDRFP4 0
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 2688
-ADDP4
-CNSTI4 0
-ASGNI4
-line 1240
-;1240:			ent->client->hookhasbeenfired = qfalse;
-ADDRFP4 0
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 2696
-ADDP4
-CNSTI4 0
-ASGNI4
-line 1241
-;1241:		}
-LABELV $498
+EQI4 $502
 line 1243
-;1242:
-;1243:		if ( client->hook && client->fireHeld == qfalse )
+;1243:		{
+line 1244
+;1244:			ent->client->fireHeld = qfalse;
+ADDRFP4 0
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 2688
+ADDP4
+CNSTI4 0
+ASGNI4
+line 1245
+;1245:			ent->client->hookhasbeenfired = qfalse;
+ADDRFP4 0
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 2696
+ADDP4
+CNSTI4 0
+ASGNI4
+line 1246
+;1246:		}
+LABELV $502
+line 1248
+;1247:
+;1248:		if ( client->hook && client->fireHeld == qfalse )
 ADDRLP4 0
 INDIRP4
 CNSTI4 2692
@@ -6124,18 +6153,18 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $502
+EQU4 $506
 ADDRLP4 0
 INDIRP4
 CNSTI4 2688
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $502
-line 1244
-;1244:		{
-line 1245
-;1245:			Weapon_HookFree(client->hook);
+NEI4 $506
+line 1249
+;1249:		{
+line 1250
+;1250:			Weapon_HookFree(client->hook);
 ADDRLP4 0
 INDIRP4
 CNSTI4 2692
@@ -6145,17 +6174,17 @@ ARGP4
 ADDRGP4 Weapon_HookFree
 CALLV
 pop
-line 1246
-;1246:		}
-LABELV $502
-line 1247
-;1247:	}
-LABELV $491
 line 1251
-;1248:	// End Shafe - Offhand Grapple //////////////////////////////////////////////
-;1249:	
-;1250:	// use the snapped origin for linking so it matches client predicted versions
-;1251:	VectorCopy( ent->s.pos.trBase, ent->r.currentOrigin );
+;1251:		}
+LABELV $506
+line 1252
+;1252:	}
+LABELV $495
+line 1256
+;1253:	// End Shafe - Offhand Grapple //////////////////////////////////////////////
+;1254:	
+;1255:	// use the snapped origin for linking so it matches client predicted versions
+;1256:	VectorCopy( ent->s.pos.trBase, ent->r.currentOrigin );
 ADDRLP4 304
 ADDRFP4 0
 INDIRP4
@@ -6170,9 +6199,9 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 1253
-;1252:
-;1253:	VectorCopy (pm.mins, ent->r.mins);
+line 1258
+;1257:
+;1258:	VectorCopy (pm.mins, ent->r.mins);
 ADDRFP4 0
 INDIRP4
 CNSTI4 444
@@ -6180,8 +6209,8 @@ ADDP4
 ADDRLP4 4+180
 INDIRB
 ASGNB 12
-line 1254
-;1254:	VectorCopy (pm.maxs, ent->r.maxs);
+line 1259
+;1259:	VectorCopy (pm.maxs, ent->r.maxs);
 ADDRFP4 0
 INDIRP4
 CNSTI4 456
@@ -6189,32 +6218,32 @@ ADDP4
 ADDRLP4 4+192
 INDIRB
 ASGNB 12
-line 1256
-;1255:
-;1256:	ent->waterlevel = pm.waterlevel;
+line 1261
+;1260:
+;1261:	ent->waterlevel = pm.waterlevel;
 ADDRFP4 0
 INDIRP4
-CNSTI4 804
+CNSTI4 812
 ADDP4
 ADDRLP4 4+208
 INDIRI4
 ASGNI4
-line 1257
-;1257:	ent->watertype = pm.watertype;
+line 1262
+;1262:	ent->watertype = pm.watertype;
 ADDRFP4 0
 INDIRP4
-CNSTI4 800
+CNSTI4 808
 ADDP4
 ADDRLP4 4+204
 INDIRI4
 ASGNI4
-line 1263
-;1258:
-;1259:	// TryUse Here
-;1260:	
-;1261:
-;1262:	// execute client events
-;1263:	ClientEvents( ent, oldEventSequence );
+line 1268
+;1263:
+;1264:	// TryUse Here
+;1265:	
+;1266:
+;1267:	// execute client events
+;1268:	ClientEvents( ent, oldEventSequence );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6224,18 +6253,18 @@ ARGI4
 ADDRGP4 ClientEvents
 CALLV
 pop
-line 1266
-;1264:
-;1265:	// link entity now, after any personal teleporters have been used
-;1266:	trap_LinkEntity (ent);
+line 1271
+;1269:
+;1270:	// link entity now, after any personal teleporters have been used
+;1271:	trap_LinkEntity (ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 1267
-;1267:	if ( !ent->client->noclip ) {
+line 1272
+;1272:	if ( !ent->client->noclip ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6245,22 +6274,22 @@ CNSTI4 2584
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $508
-line 1268
-;1268:		G_TouchTriggers( ent );
+NEI4 $512
+line 1273
+;1273:		G_TouchTriggers( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_TouchTriggers
 CALLV
 pop
-line 1269
-;1269:	}
-LABELV $508
-line 1272
-;1270:
-;1271:	// NOTE: now copy the exact origin over otherwise clients can be snapped into solid
-;1272:	VectorCopy( ent->client->ps.origin, ent->r.currentOrigin );
+line 1274
+;1274:	}
+LABELV $512
+line 1277
+;1275:
+;1276:	// NOTE: now copy the exact origin over otherwise clients can be snapped into solid
+;1277:	VectorCopy( ent->client->ps.origin, ent->r.currentOrigin );
 ADDRLP4 308
 ADDRFP4 0
 INDIRP4
@@ -6278,10 +6307,10 @@ CNSTI4 20
 ADDP4
 INDIRB
 ASGNB 12
-line 1275
-;1273:
-;1274:	//test for solid areas in the AAS file
-;1275:	BotTestAAS(ent->r.currentOrigin);
+line 1280
+;1278:
+;1279:	//test for solid areas in the AAS file
+;1280:	BotTestAAS(ent->r.currentOrigin);
 ADDRFP4 0
 INDIRP4
 CNSTI4 496
@@ -6290,10 +6319,10 @@ ARGP4
 ADDRGP4 BotTestAAS
 CALLV
 pop
-line 1278
-;1276:
-;1277:	// touch other objects
-;1278:	ClientImpacts( ent, &pm );
+line 1283
+;1281:
+;1282:	// touch other objects
+;1283:	ClientImpacts( ent, &pm );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6302,10 +6331,10 @@ ARGP4
 ADDRGP4 ClientImpacts
 CALLV
 pop
-line 1281
-;1279:
-;1280:	// save results of triggers and client events
-;1281:	if (ent->client->ps.eventSequence != oldEventSequence) {
+line 1286
+;1284:
+;1285:	// save results of triggers and client events
+;1286:	if (ent->client->ps.eventSequence != oldEventSequence) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6316,9 +6345,9 @@ ADDP4
 INDIRI4
 ADDRLP4 244
 INDIRI4
-EQI4 $510
-line 1282
-;1282:		ent->eventTime = level.time;
+EQI4 $514
+line 1287
+;1287:		ent->eventTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 560
@@ -6326,13 +6355,13 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1283
-;1283:	}
-LABELV $510
-line 1286
-;1284:
-;1285:	// swap and latch button actions
-;1286:	client->oldbuttons = client->buttons;
+line 1288
+;1288:	}
+LABELV $514
+line 1291
+;1289:
+;1290:	// swap and latch button actions
+;1291:	client->oldbuttons = client->buttons;
 ADDRLP4 0
 INDIRP4
 CNSTI4 2592
@@ -6343,8 +6372,8 @@ CNSTI4 2588
 ADDP4
 INDIRI4
 ASGNI4
-line 1287
-;1287:	client->buttons = ucmd->buttons;
+line 1292
+;1292:	client->buttons = ucmd->buttons;
 ADDRLP4 0
 INDIRP4
 CNSTI4 2588
@@ -6355,8 +6384,8 @@ CNSTI4 16
 ADDP4
 INDIRI4
 ASGNI4
-line 1288
-;1288:	client->latched_buttons |= client->buttons & ~client->oldbuttons;
+line 1293
+;1293:	client->latched_buttons |= client->buttons & ~client->oldbuttons;
 ADDRLP4 320
 ADDRLP4 0
 INDIRP4
@@ -6382,20 +6411,20 @@ BCOMI4
 BANDI4
 BORI4
 ASGNI4
-line 1291
-;1289:
-;1290:	// check for respawning
-;1291:	if ( client->ps.stats[STAT_HEALTH] <= 0 ) {
+line 1296
+;1294:
+;1295:	// check for respawning
+;1296:	if ( client->ps.stats[STAT_HEALTH] <= 0 ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $513
-line 1293
-;1292:		// wait for the attack button to be pressed
-;1293:		if ( level.time > client->respawnTime ) {
+GTI4 $517
+line 1298
+;1297:		// wait for the attack button to be pressed
+;1298:		if ( level.time > client->respawnTime ) {
 ADDRGP4 level+32
 INDIRI4
 ADDRLP4 0
@@ -6404,13 +6433,13 @@ CNSTI4 2664
 ADDP4
 INDIRI4
 LEI4 $354
-line 1295
-;1294:			// forcerespawn is to prevent users from waiting out powerups
-;1295:			if ( g_forcerespawn.integer > 0 && 
+line 1300
+;1299:			// forcerespawn is to prevent users from waiting out powerups
+;1300:			if ( g_forcerespawn.integer > 0 && 
 ADDRGP4 g_forcerespawn+12
 INDIRI4
 CNSTI4 0
-LEI4 $518
+LEI4 $522
 ADDRGP4 level+32
 INDIRI4
 ADDRLP4 0
@@ -6423,27 +6452,27 @@ CNSTI4 1000
 ADDRGP4 g_forcerespawn+12
 INDIRI4
 MULI4
-LEI4 $518
-line 1296
-;1296:				( level.time - client->respawnTime ) > g_forcerespawn.integer * 1000 ) {
-line 1297
-;1297:				respawn( ent );
+LEI4 $522
+line 1301
+;1301:				( level.time - client->respawnTime ) > g_forcerespawn.integer * 1000 ) {
+line 1302
+;1302:				respawn( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 respawn
 CALLV
 pop
-line 1298
-;1298:				return;
+line 1303
+;1303:				return;
 ADDRGP4 $354
 JUMPV
-LABELV $518
-line 1302
-;1299:			}
-;1300:		
-;1301:			// pressing attack or use is the normal respawn method
-;1302:			if ( ucmd->buttons & ( BUTTON_ATTACK | BUTTON_USE_HOLDABLE ) ) {
+LABELV $522
+line 1307
+;1304:			}
+;1305:		
+;1306:			// pressing attack or use is the normal respawn method
+;1307:			if ( ucmd->buttons & ( BUTTON_ATTACK | BUTTON_USE_HOLDABLE ) ) {
 ADDRLP4 236
 INDIRP4
 CNSTI4 16
@@ -6453,28 +6482,28 @@ CNSTI4 5
 BANDI4
 CNSTI4 0
 EQI4 $354
-line 1303
-;1303:				respawn( ent );
+line 1308
+;1308:				respawn( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 respawn
 CALLV
 pop
-line 1304
-;1304:			}
-line 1305
-;1305:		}
-line 1306
-;1306:		return;
+line 1309
+;1309:			}
+line 1310
+;1310:		}
+line 1311
+;1311:		return;
 ADDRGP4 $354
 JUMPV
-LABELV $513
-line 1310
-;1307:	}
-;1308:
-;1309:	// perform once-a-second actions
-;1310:	ClientTimerActions( ent, msec );
+LABELV $517
+line 1315
+;1312:	}
+;1313:
+;1314:	// perform once-a-second actions
+;1315:	ClientTimerActions( ent, msec );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6484,36 +6513,36 @@ ARGI4
 ADDRGP4 ClientTimerActions
 CALLV
 pop
-line 1311
-;1311:}
+line 1316
+;1316:}
 LABELV $354
 endproc ClientThink_real 324 12
 export ClientThink
 proc ClientThink 8 8
-line 1320
-;1312:
-;1313:/*
-;1314:==================
-;1315:ClientThink
-;1316:
-;1317:A new command has arrived from the client
-;1318:==================
-;1319:*/
-;1320:void ClientThink( int clientNum ) {
-line 1323
-;1321:	gentity_t *ent;
-;1322:
-;1323:	ent = g_entities + clientNum;
+line 1325
+;1317:
+;1318:/*
+;1319:==================
+;1320:ClientThink
+;1321:
+;1322:A new command has arrived from the client
+;1323:==================
+;1324:*/
+;1325:void ClientThink( int clientNum ) {
+line 1328
+;1326:	gentity_t *ent;
+;1327:
+;1328:	ent = g_entities + clientNum;
 ADDRLP4 0
-CNSTI4 916
+CNSTI4 924
 ADDRFP4 0
 INDIRI4
 MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 1324
-;1324:	trap_GetUsercmd( clientNum, &ent->client->pers.cmd );
+line 1329
+;1329:	trap_GetUsercmd( clientNum, &ent->client->pers.cmd );
 ADDRFP4 0
 INDIRI4
 ARGI4
@@ -6528,18 +6557,18 @@ ARGP4
 ADDRGP4 trap_GetUsercmd
 CALLV
 pop
-line 1335
-;1325:
-;1326://unlagged - smooth clients #1
-;1327:	// this is handled differently now
-;1328:/*
-;1329:	// mark the time we got info, so we can display the
-;1330:	// phone jack if they don't get any for a while
-;1331:	ent->client->lastCmdTime = level.time;
-;1332:*/
-;1333://unlagged - smooth clients #1
-;1334:
-;1335:	if ( !(ent->r.svFlags & SVF_BOT) && !g_synchronousClients.integer ) {
+line 1340
+;1330:
+;1331://unlagged - smooth clients #1
+;1332:	// this is handled differently now
+;1333:/*
+;1334:	// mark the time we got info, so we can display the
+;1335:	// phone jack if they don't get any for a while
+;1336:	ent->client->lastCmdTime = level.time;
+;1337:*/
+;1338://unlagged - smooth clients #1
+;1339:
+;1340:	if ( !(ent->r.svFlags & SVF_BOT) && !g_synchronousClients.integer ) {
 ADDRLP4 4
 CNSTI4 0
 ASGNI4
@@ -6552,35 +6581,35 @@ CNSTI4 8
 BANDI4
 ADDRLP4 4
 INDIRI4
-NEI4 $526
+NEI4 $530
 ADDRGP4 g_synchronousClients+12
 INDIRI4
 ADDRLP4 4
 INDIRI4
-NEI4 $526
-line 1336
-;1336:		ClientThink_real( ent );
+NEI4 $530
+line 1341
+;1341:		ClientThink_real( ent );
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 ClientThink_real
 CALLV
 pop
-line 1337
-;1337:	}
-LABELV $526
-line 1338
-;1338:}
-LABELV $525
+line 1342
+;1342:	}
+LABELV $530
+line 1343
+;1343:}
+LABELV $529
 endproc ClientThink 8 8
 export G_RunClient
 proc G_RunClient 4 4
-line 1341
-;1339:
-;1340:
-;1341:void G_RunClient( gentity_t *ent ) {
-line 1342
-;1342:	if ( !(ent->r.svFlags & SVF_BOT) && !g_synchronousClients.integer ) {
+line 1346
+;1344:
+;1345:
+;1346:void G_RunClient( gentity_t *ent ) {
+line 1347
+;1347:	if ( !(ent->r.svFlags & SVF_BOT) && !g_synchronousClients.integer ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
@@ -6593,20 +6622,20 @@ CNSTI4 8
 BANDI4
 ADDRLP4 0
 INDIRI4
-NEI4 $530
+NEI4 $534
 ADDRGP4 g_synchronousClients+12
 INDIRI4
 ADDRLP4 0
 INDIRI4
-NEI4 $530
-line 1343
-;1343:		return;
-ADDRGP4 $529
+NEI4 $534
+line 1348
+;1348:		return;
+ADDRGP4 $533
 JUMPV
-LABELV $530
-line 1345
-;1344:	}
-;1345:	ent->client->pers.cmd.serverTime = level.time;
+LABELV $534
+line 1350
+;1349:	}
+;1350:	ent->client->pers.cmd.serverTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6617,35 +6646,35 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1346
-;1346:	ClientThink_real( ent );
+line 1351
+;1351:	ClientThink_real( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 ClientThink_real
 CALLV
 pop
-line 1347
-;1347:}
-LABELV $529
+line 1352
+;1352:}
+LABELV $533
 endproc G_RunClient 4 4
 export SpectatorClientEndFrame
 proc SpectatorClientEndFrame 24 4
-line 1356
-;1348:
-;1349:
-;1350:/*
-;1351:==================
-;1352:SpectatorClientEndFrame
+line 1361
 ;1353:
-;1354:==================
-;1355:*/
-;1356:void SpectatorClientEndFrame( gentity_t *ent ) {
-line 1360
-;1357:	gclient_t	*cl;
+;1354:
+;1355:/*
+;1356:==================
+;1357:SpectatorClientEndFrame
 ;1358:
-;1359:	// if we are doing a chase cam or a remote view, grab the latest info
-;1360:	if ( ent->client->sess.spectatorState == SPECTATOR_FOLLOW ) {
+;1359:==================
+;1360:*/
+;1361:void SpectatorClientEndFrame( gentity_t *ent ) {
+line 1365
+;1362:	gclient_t	*cl;
+;1363:
+;1364:	// if we are doing a chase cam or a remote view, grab the latest info
+;1365:	if ( ent->client->sess.spectatorState == SPECTATOR_FOLLOW ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6655,11 +6684,11 @@ CNSTI4 2560
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $535
-line 1363
-;1361:		int		clientNum, flags;
-;1362:
-;1363:		clientNum = ent->client->sess.spectatorClient;
+NEI4 $539
+line 1368
+;1366:		int		clientNum, flags;
+;1367:
+;1368:		clientNum = ent->client->sess.spectatorClient;
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -6670,47 +6699,47 @@ CNSTI4 2564
 ADDP4
 INDIRI4
 ASGNI4
-line 1366
-;1364:
-;1365:		// team follow1 and team follow2 go to whatever clients are playing
-;1366:		if ( clientNum == -1 ) {
+line 1371
+;1369:
+;1370:		// team follow1 and team follow2 go to whatever clients are playing
+;1371:		if ( clientNum == -1 ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 -1
-NEI4 $537
-line 1367
-;1367:			clientNum = level.follow1;
+NEI4 $541
+line 1372
+;1372:			clientNum = level.follow1;
 ADDRLP4 4
 ADDRGP4 level+352
 INDIRI4
 ASGNI4
-line 1368
-;1368:		} else if ( clientNum == -2 ) {
-ADDRGP4 $538
+line 1373
+;1373:		} else if ( clientNum == -2 ) {
+ADDRGP4 $542
 JUMPV
-LABELV $537
+LABELV $541
 ADDRLP4 4
 INDIRI4
 CNSTI4 -2
-NEI4 $540
-line 1369
-;1369:			clientNum = level.follow2;
+NEI4 $544
+line 1374
+;1374:			clientNum = level.follow2;
 ADDRLP4 4
 ADDRGP4 level+356
 INDIRI4
 ASGNI4
-line 1370
-;1370:		}
-LABELV $540
-LABELV $538
-line 1371
-;1371:		if ( clientNum >= 0 ) {
+line 1375
+;1375:		}
+LABELV $544
+LABELV $542
+line 1376
+;1376:		if ( clientNum >= 0 ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-LTI4 $543
-line 1372
-;1372:			cl = &level.clients[ clientNum ];
+LTI4 $547
+line 1377
+;1377:			cl = &level.clients[ clientNum ];
 ADDRLP4 0
 CNSTI4 3464
 ADDRLP4 4
@@ -6720,8 +6749,8 @@ ADDRGP4 level
 INDIRP4
 ADDP4
 ASGNP4
-line 1373
-;1373:			if ( cl->pers.connected == CON_CONNECTED && cl->sess.sessionTeam != TEAM_SPECTATOR ) {
+line 1378
+;1378:			if ( cl->pers.connected == CON_CONNECTED && cl->sess.sessionTeam != TEAM_SPECTATOR ) {
 ADDRLP4 12
 ADDRLP4 0
 INDIRP4
@@ -6732,16 +6761,16 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $545
+NEI4 $549
 ADDRLP4 12
 INDIRP4
 CNSTI4 2552
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $545
-line 1374
-;1374:				flags = (cl->ps.eFlags & ~(EF_VOTED | EF_TEAMVOTED)) | (ent->client->ps.eFlags & (EF_VOTED | EF_TEAMVOTED));
+EQI4 $549
+line 1379
+;1379:				flags = (cl->ps.eFlags & ~(EF_VOTED | EF_TEAMVOTED)) | (ent->client->ps.eFlags & (EF_VOTED | EF_TEAMVOTED));
 ADDRLP4 16
 CNSTI4 104
 ASGNI4
@@ -6767,8 +6796,8 @@ CNSTI4 540672
 BANDI4
 BORI4
 ASGNI4
-line 1375
-;1375:				ent->client->ps = cl->ps;
+line 1380
+;1380:				ent->client->ps = cl->ps;
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6778,8 +6807,8 @@ ADDRLP4 0
 INDIRP4
 INDIRB
 ASGNB 468
-line 1376
-;1376:				ent->client->ps.pm_flags |= PMF_FOLLOW;
+line 1381
+;1381:				ent->client->ps.pm_flags |= PMF_FOLLOW;
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -6797,8 +6826,8 @@ INDIRI4
 CNSTI4 4096
 BORI4
 ASGNI4
-line 1377
-;1377:				ent->client->ps.eFlags = flags;
+line 1382
+;1382:				ent->client->ps.eFlags = flags;
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6809,16 +6838,16 @@ ADDP4
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 1378
-;1378:				return;
-ADDRGP4 $534
+line 1383
+;1383:				return;
+ADDRGP4 $538
 JUMPV
-LABELV $545
-line 1379
-;1379:			} else {
-line 1381
-;1380:				// drop them to free spectators unless they are dedicated camera followers
-;1381:				if ( ent->client->sess.spectatorClient >= 0 ) {
+LABELV $549
+line 1384
+;1384:			} else {
+line 1386
+;1385:				// drop them to free spectators unless they are dedicated camera followers
+;1386:				if ( ent->client->sess.spectatorClient >= 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6828,9 +6857,9 @@ CNSTI4 2564
 ADDP4
 INDIRI4
 CNSTI4 0
-LTI4 $547
-line 1382
-;1382:					ent->client->sess.spectatorState = SPECTATOR_FREE;
+LTI4 $551
+line 1387
+;1387:					ent->client->sess.spectatorState = SPECTATOR_FREE;
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6840,8 +6869,8 @@ CNSTI4 2560
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1383
-;1383:					ClientBegin( ent->client - level.clients );
+line 1388
+;1388:					ClientBegin( ent->client - level.clients );
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6859,20 +6888,20 @@ ARGI4
 ADDRGP4 ClientBegin
 CALLV
 pop
-line 1384
-;1384:				}
-LABELV $547
-line 1385
-;1385:			}
-line 1386
-;1386:		}
-LABELV $543
-line 1387
-;1387:	}
-LABELV $535
 line 1389
-;1388:
-;1389:	if ( ent->client->sess.spectatorState == SPECTATOR_SCOREBOARD ) {
+;1389:				}
+LABELV $551
+line 1390
+;1390:			}
+line 1391
+;1391:		}
+LABELV $547
+line 1392
+;1392:	}
+LABELV $539
+line 1394
+;1393:
+;1394:	if ( ent->client->sess.spectatorState == SPECTATOR_SCOREBOARD ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6882,9 +6911,9 @@ CNSTI4 2560
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $549
-line 1390
-;1390:		ent->client->ps.pm_flags |= PMF_SCOREBOARD;
+NEI4 $553
+line 1395
+;1395:		ent->client->ps.pm_flags |= PMF_SCOREBOARD;
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -6902,13 +6931,13 @@ INDIRI4
 CNSTI4 8192
 BORI4
 ASGNI4
-line 1391
-;1391:	} else {
-ADDRGP4 $550
+line 1396
+;1396:	} else {
+ADDRGP4 $554
 JUMPV
-LABELV $549
-line 1392
-;1392:		ent->client->ps.pm_flags &= ~PMF_SCOREBOARD;
+LABELV $553
+line 1397
+;1397:		ent->client->ps.pm_flags &= ~PMF_SCOREBOARD;
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -6926,36 +6955,36 @@ INDIRI4
 CNSTI4 -8193
 BANDI4
 ASGNI4
-line 1393
-;1393:	}
-LABELV $550
-line 1394
-;1394:}
-LABELV $534
+line 1398
+;1398:	}
+LABELV $554
+line 1399
+;1399:}
+LABELV $538
 endproc SpectatorClientEndFrame 24 4
 export ClientEndFrame
 proc ClientEndFrame 52 12
-line 1405
-;1395:
-;1396:/*
-;1397:==============
-;1398:ClientEndFrame
-;1399:
-;1400:Called at the end of each server frame for each connected client
-;1401:A fast client will have multiple ClientThink for each ClientEdFrame,
-;1402:while a slow client may have multiple ClientEndFrame between ClientThink.
-;1403:==============
-;1404:*/
-;1405:void ClientEndFrame( gentity_t *ent ) {
-line 1413
-;1406:	int			i;
-;1407:	clientPersistant_t	*pers;
-;1408:
-;1409://unlagged - smooth clients #1
-;1410:	int frames;
-;1411://unlagged - smooth clients #1
-;1412:
-;1413:	if ( ent->client->sess.sessionTeam == TEAM_SPECTATOR ) {
+line 1410
+;1400:
+;1401:/*
+;1402:==============
+;1403:ClientEndFrame
+;1404:
+;1405:Called at the end of each server frame for each connected client
+;1406:A fast client will have multiple ClientThink for each ClientEdFrame,
+;1407:while a slow client may have multiple ClientEndFrame between ClientThink.
+;1408:==============
+;1409:*/
+;1410:void ClientEndFrame( gentity_t *ent ) {
+line 1418
+;1411:	int			i;
+;1412:	clientPersistant_t	*pers;
+;1413:
+;1414://unlagged - smooth clients #1
+;1415:	int frames;
+;1416://unlagged - smooth clients #1
+;1417:
+;1418:	if ( ent->client->sess.sessionTeam == TEAM_SPECTATOR ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6965,24 +6994,24 @@ CNSTI4 2552
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $552
-line 1414
-;1414:		SpectatorClientEndFrame( ent );
+NEI4 $556
+line 1419
+;1419:		SpectatorClientEndFrame( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 SpectatorClientEndFrame
 CALLV
 pop
-line 1415
-;1415:		return;
-ADDRGP4 $551
+line 1420
+;1420:		return;
+ADDRGP4 $555
 JUMPV
-LABELV $552
-line 1418
-;1416:	}
-;1417:
-;1418:	pers = &ent->client->pers;
+LABELV $556
+line 1423
+;1421:	}
+;1422:
+;1423:	pers = &ent->client->pers;
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -6992,16 +7021,16 @@ INDIRP4
 CNSTI4 468
 ADDP4
 ASGNP4
-line 1421
-;1419:
-;1420:	// turn off any expired powerups
-;1421:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
+line 1426
+;1424:
+;1425:	// turn off any expired powerups
+;1426:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $554
-line 1422
-;1422:		if ( ent->client->ps.powerups[ i ] < level.time ) {
+LABELV $558
+line 1427
+;1427:		if ( ent->client->ps.powerups[ i ] < level.time ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -7017,9 +7046,9 @@ ADDP4
 INDIRI4
 ADDRGP4 level+32
 INDIRI4
-GEI4 $558
-line 1423
-;1423:			ent->client->ps.powerups[ i ] = 0;
+GEI4 $562
+line 1428
+;1428:			ent->client->ps.powerups[ i ] = 0;
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -7034,13 +7063,13 @@ ADDP4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1424
-;1424:		}
-LABELV $558
-line 1425
-;1425:	}
-LABELV $555
-line 1421
+line 1429
+;1429:		}
+LABELV $562
+line 1430
+;1430:	}
+LABELV $559
+line 1426
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -7050,86 +7079,86 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $554
-line 1458
-;1426:
-;1427:#ifdef MISSIONPACK
-;1428:	// set powerup for player animation
-;1429:	if( bg_itemlist[ent->client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_GUARD ) {
-;1430:		ent->client->ps.powerups[PW_GUARD] = level.time;
-;1431:	}
-;1432:	if( bg_itemlist[ent->client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_SCOUT ) {
-;1433:		ent->client->ps.powerups[PW_SCOUT] = level.time;
-;1434:	}
-;1435:	if( bg_itemlist[ent->client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_DOUBLER ) {
-;1436:		ent->client->ps.powerups[PW_DOUBLER] = level.time;
-;1437:	}
-;1438:	if( bg_itemlist[ent->client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_AMMOREGEN ) {
-;1439:		ent->client->ps.powerups[PW_AMMOREGEN] = level.time;
-;1440:	}
-;1441:	if ( ent->client->invulnerabilityTime > level.time ) {
-;1442:		ent->client->ps.powerups[PW_INVULNERABILITY] = level.time;
-;1443:	}
-;1444:#endif
-;1445:
-;1446:	// save network bandwidth
-;1447:#if 0
-;1448:	if ( !g_synchronousClients->integer && ent->client->ps.pm_type == PM_NORMAL ) {
-;1449:		// FIXME: this must change eventually for non-sync demo recording
-;1450:		VectorClear( ent->client->ps.viewangles );
-;1451:	}
-;1452:#endif
-;1453:
-;1454:	//
-;1455:	// If the end of unit layout is displayed, don't give
-;1456:	// the player any normal movement attributes
-;1457:	//
-;1458:	if ( level.intermissiontime ) {
+LTI4 $558
+line 1463
+;1431:
+;1432:#ifdef MISSIONPACK
+;1433:	// set powerup for player animation
+;1434:	if( bg_itemlist[ent->client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_GUARD ) {
+;1435:		ent->client->ps.powerups[PW_GUARD] = level.time;
+;1436:	}
+;1437:	if( bg_itemlist[ent->client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_SCOUT ) {
+;1438:		ent->client->ps.powerups[PW_SCOUT] = level.time;
+;1439:	}
+;1440:	if( bg_itemlist[ent->client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_DOUBLER ) {
+;1441:		ent->client->ps.powerups[PW_DOUBLER] = level.time;
+;1442:	}
+;1443:	if( bg_itemlist[ent->client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_AMMOREGEN ) {
+;1444:		ent->client->ps.powerups[PW_AMMOREGEN] = level.time;
+;1445:	}
+;1446:	if ( ent->client->invulnerabilityTime > level.time ) {
+;1447:		ent->client->ps.powerups[PW_INVULNERABILITY] = level.time;
+;1448:	}
+;1449:#endif
+;1450:
+;1451:	// save network bandwidth
+;1452:#if 0
+;1453:	if ( !g_synchronousClients->integer && ent->client->ps.pm_type == PM_NORMAL ) {
+;1454:		// FIXME: this must change eventually for non-sync demo recording
+;1455:		VectorClear( ent->client->ps.viewangles );
+;1456:	}
+;1457:#endif
+;1458:
+;1459:	//
+;1460:	// If the end of unit layout is displayed, don't give
+;1461:	// the player any normal movement attributes
+;1462:	//
+;1463:	if ( level.intermissiontime ) {
 ADDRGP4 level+9140
 INDIRI4
 CNSTI4 0
-EQI4 $561
-line 1459
-;1459:		return;
-ADDRGP4 $551
+EQI4 $565
+line 1464
+;1464:		return;
+ADDRGP4 $555
 JUMPV
-LABELV $561
-line 1463
-;1460:	}
-;1461:
-;1462:	// burn from lava, etc
-;1463:	P_WorldEffects (ent);
+LABELV $565
+line 1468
+;1465:	}
+;1466:
+;1467:	// burn from lava, etc
+;1468:	P_WorldEffects (ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 P_WorldEffects
 CALLV
 pop
-line 1466
-;1464:
-;1465:	// apply all the damage taken this frame
-;1466:	P_DamageFeedback (ent);
+line 1471
+;1469:
+;1470:	// apply all the damage taken this frame
+;1471:	P_DamageFeedback (ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 P_DamageFeedback
 CALLV
 pop
-line 1480
-;1467:
-;1468://unlagged - smooth clients #1
-;1469:	// this is handled differently now
-;1470:/*
-;1471:	// add the EF_CONNECTION flag if we haven't gotten commands recently
-;1472:	if ( level.time - ent->client->lastCmdTime > 1000 ) {
-;1473:		ent->client->ps.eFlags |= EF_CONNECTION;
-;1474:	} else {
-;1475:		ent->client->ps.eFlags &= ~EF_CONNECTION;
-;1476:	}
-;1477:*/
-;1478://unlagged - smooth clients #1
-;1479:
-;1480:	ent->client->ps.stats[STAT_HEALTH] = ent->health;	// FIXME: get rid of ent->health...
+line 1485
+;1472:
+;1473://unlagged - smooth clients #1
+;1474:	// this is handled differently now
+;1475:/*
+;1476:	// add the EF_CONNECTION flag if we haven't gotten commands recently
+;1477:	if ( level.time - ent->client->lastCmdTime > 1000 ) {
+;1478:		ent->client->ps.eFlags |= EF_CONNECTION;
+;1479:	} else {
+;1480:		ent->client->ps.eFlags &= ~EF_CONNECTION;
+;1481:	}
+;1482:*/
+;1483://unlagged - smooth clients #1
+;1484:
+;1485:	ent->client->ps.stats[STAT_HEALTH] = ent->health;	// FIXME: get rid of ent->health...
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -7143,34 +7172,34 @@ CNSTI4 184
 ADDP4
 ADDRLP4 12
 INDIRP4
-CNSTI4 748
+CNSTI4 756
 ADDP4
 INDIRI4
 ASGNI4
-line 1482
-;1481:
-;1482:	G_SetClientSound (ent);
+line 1487
+;1486:
+;1487:	G_SetClientSound (ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_SetClientSound
 CALLV
 pop
-line 1496
-;1483:
-;1484:	// set the latest information
-;1485://unlagged - smooth clients #2
-;1486:	// clients no longer do extrapolation if cg_smoothClients is 1, because
-;1487:	// skip correction is all handled server-side now
-;1488:	// since that's the case, it makes no sense to store the extra info
-;1489:	// in the client's snapshot entity, so let's save a little bandwidth
-;1490:/*
-;1491:	if (g_smoothClients.integer) {
-;1492:		BG_PlayerStateToEntityStateExtraPolate( &ent->client->ps, &ent->s, ent->client->ps.commandTime, qtrue );
-;1493:	}
-;1494:	else {
-;1495:*/
-;1496:		BG_PlayerStateToEntityState( &ent->client->ps, &ent->s, qtrue );
+line 1501
+;1488:
+;1489:	// set the latest information
+;1490://unlagged - smooth clients #2
+;1491:	// clients no longer do extrapolation if cg_smoothClients is 1, because
+;1492:	// skip correction is all handled server-side now
+;1493:	// since that's the case, it makes no sense to store the extra info
+;1494:	// in the client's snapshot entity, so let's save a little bandwidth
+;1495:/*
+;1496:	if (g_smoothClients.integer) {
+;1497:		BG_PlayerStateToEntityStateExtraPolate( &ent->client->ps, &ent->s, ent->client->ps.commandTime, qtrue );
+;1498:	}
+;1499:	else {
+;1500:*/
+;1501:		BG_PlayerStateToEntityState( &ent->client->ps, &ent->s, qtrue );
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -7189,11 +7218,11 @@ ARGI4
 ADDRGP4 BG_PlayerStateToEntityState
 CALLV
 pop
-line 1500
-;1497://	}
-;1498://unlagged - smooth clients #2
-;1499:
-;1500:	SendPendingPredictableEvents( &ent->client->ps );
+line 1505
+;1502://	}
+;1503://unlagged - smooth clients #2
+;1504:
+;1505:	SendPendingPredictableEvents( &ent->client->ps );
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -7203,11 +7232,11 @@ ARGP4
 ADDRGP4 SendPendingPredictableEvents
 CALLV
 pop
-line 1504
-;1501:
-;1502://unlagged - smooth clients #1
-;1503:	// mark as not missing updates initially
-;1504:	ent->client->ps.eFlags &= ~EF_CONNECTION;
+line 1509
+;1506:
+;1507://unlagged - smooth clients #1
+;1508:	// mark as not missing updates initially
+;1509:	ent->client->ps.eFlags &= ~EF_CONNECTION;
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -7225,10 +7254,10 @@ INDIRI4
 CNSTI4 -8193
 BANDI4
 ASGNI4
-line 1507
-;1505:
-;1506:	// see how many frames the client has missed
-;1507:	frames = level.framenum - ent->client->lastUpdateFrame - 1;
+line 1512
+;1510:
+;1511:	// see how many frames the client has missed
+;1512:	frames = level.framenum - ent->client->lastUpdateFrame - 1;
 ADDRLP4 4
 ADDRGP4 level+28
 INDIRI4
@@ -7244,23 +7273,23 @@ SUBI4
 CNSTI4 1
 SUBI4
 ASGNI4
-line 1510
-;1508:
-;1509:	// don't extrapolate more than two frames
-;1510:	if ( frames > 2 ) {
+line 1515
+;1513:
+;1514:	// don't extrapolate more than two frames
+;1515:	if ( frames > 2 ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
-LEI4 $565
-line 1511
-;1511:		frames = 2;
+LEI4 $569
+line 1516
+;1516:		frames = 2;
 ADDRLP4 4
 CNSTI4 2
 ASGNI4
-line 1514
-;1512:
-;1513:		// if they missed more than two in a row, show the phone jack
-;1514:		ent->client->ps.eFlags |= EF_CONNECTION;
+line 1519
+;1517:
+;1518:		// if they missed more than two in a row, show the phone jack
+;1519:		ent->client->ps.eFlags |= EF_CONNECTION;
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -7278,8 +7307,8 @@ INDIRI4
 CNSTI4 8192
 BORI4
 ASGNI4
-line 1515
-;1515:		ent->s.eFlags |= EF_CONNECTION;
+line 1520
+;1520:		ent->s.eFlags |= EF_CONNECTION;
 ADDRLP4 28
 ADDRFP4 0
 INDIRP4
@@ -7294,13 +7323,13 @@ INDIRI4
 CNSTI4 8192
 BORI4
 ASGNI4
-line 1516
-;1516:	}
-LABELV $565
-line 1519
-;1517:
-;1518:	// did the client miss any frames?
-;1519:	if ( frames > 0 && g_smoothClients.integer ) {
+line 1521
+;1521:	}
+LABELV $569
+line 1524
+;1522:
+;1523:	// did the client miss any frames?
+;1524:	if ( frames > 0 && g_smoothClients.integer ) {
 ADDRLP4 24
 CNSTI4 0
 ASGNI4
@@ -7308,15 +7337,15 @@ ADDRLP4 4
 INDIRI4
 ADDRLP4 24
 INDIRI4
-LEI4 $567
+LEI4 $571
 ADDRGP4 g_smoothClients+12
 INDIRI4
 ADDRLP4 24
 INDIRI4
-EQI4 $567
-line 1521
-;1520:		// yep, missed one or more, so extrapolate the player's movement
-;1521:		G_PredictPlayerMove( ent, (float)frames / sv_fps.integer );
+EQI4 $571
+line 1526
+;1525:		// yep, missed one or more, so extrapolate the player's movement
+;1526:		G_PredictPlayerMove( ent, (float)frames / sv_fps.integer );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -7331,9 +7360,9 @@ ARGF4
 ADDRGP4 G_PredictPlayerMove
 CALLV
 pop
-line 1523
-;1522:		// save network bandwidth
-;1523:		SnapVector( ent->s.pos.trBase );
+line 1528
+;1527:		// save network bandwidth
+;1528:		SnapVector( ent->s.pos.trBase );
 ADDRLP4 28
 ADDRFP4 0
 INDIRP4
@@ -7391,29 +7420,29 @@ INDIRP4
 ADDRLP4 48
 INDIRF4
 ASGNF4
-line 1524
-;1524:	}
-LABELV $567
 line 1529
-;1525://unlagged - smooth clients #1
-;1526:
-;1527://unlagged - backward reconciliation #1
-;1528:	// store the client's position for backward reconciliation later
-;1529:	G_StoreHistory( ent );
+;1529:	}
+LABELV $571
+line 1534
+;1530://unlagged - smooth clients #1
+;1531:
+;1532://unlagged - backward reconciliation #1
+;1533:	// store the client's position for backward reconciliation later
+;1534:	G_StoreHistory( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_StoreHistory
 CALLV
 pop
-line 1535
-;1530://unlagged - backward reconciliation #1
-;1531:
-;1532:	// set the bit for the reachability area the client is currently in
-;1533://	i = trap_AAS_PointReachabilityAreaIndex( ent->client->ps.origin );
-;1534://	ent->client->areabits[i >> 3] |= 1 << (i & 7);
-;1535:}
-LABELV $551
+line 1540
+;1535://unlagged - backward reconciliation #1
+;1536:
+;1537:	// set the bit for the reachability area the client is currently in
+;1538://	i = trap_AAS_PointReachabilityAreaIndex( ent->client->ps.origin );
+;1539://	ent->client->areabits[i >> 3] |= 1 << (i & 7);
+;1540:}
+LABELV $555
 endproc ClientEndFrame 52 12
 import BotTestSolid
 import Weapon_GrapplingHook_Fire
@@ -8028,7 +8057,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $465
+LABELV $469
 byte 1 45
 byte 1 103
 byte 1 122
@@ -8037,7 +8066,7 @@ byte 1 111
 byte 1 109
 byte 1 0
 align 1
-LABELV $462
+LABELV $466
 byte 1 43
 byte 1 103
 byte 1 114
@@ -8047,7 +8076,7 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $460
+LABELV $464
 byte 1 43
 byte 1 103
 byte 1 122

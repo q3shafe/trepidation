@@ -241,7 +241,7 @@ void G_ExplodeDevastatorFire2( gentity_t *ent ) {
 		VectorSet(dev1, 25, 25, (30+ irandom(10,35)));
 		VectorSet(dev2, -25, 25, (30+ irandom(10,35)));
 		fire_devparticle (ent, origin, dev1, qtrue);
-		fire_devparticle (ent, origin, dev2, qtrue);
+		fire_devparticle (ent->parent, origin, dev2, qtrue);
 
 
 		trap_LinkEntity( ent );
@@ -287,10 +287,10 @@ void G_ExplodeDevastatorFire( gentity_t *ent ) {
 		VectorSet(dev3, (25 + irandom(1,35)), (-25+ irandom(10,35)), 30);
 		VectorSet(dev4, (-25 - + irandom(1,35)), (-25+ irandom(10,35)), 30);
 		
-		fire_devparticle (ent, origin, dev1, qfalse);
-		fire_devparticle (ent, origin, dev2, qfalse);
-		fire_devparticle (ent, origin, dev3, qfalse);
-		fire_devparticle (ent, origin, dev4, qfalse);
+		fire_devparticle (ent->parent, origin, dev1, qfalse);
+		fire_devparticle (ent->parent, origin, dev2, qfalse);
+		fire_devparticle (ent->parent, origin, dev3, qfalse);
+		fire_devparticle (ent->parent, origin, dev4, qfalse);
 
 		trap_LinkEntity( ent );
 	
