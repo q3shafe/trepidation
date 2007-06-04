@@ -27,10 +27,6 @@
 #define SVF_CAPSULE				0x00000400	// use capsule for collision detection instead of bbox
 #define SVF_NOTSINGLECLIENT		0x00000800	// send entity to everyone but one client
 											// (entityShared_t->singleClient)
-#define	SVF_CUSTOM_GRAVITY		0x00001000  // -Vincent
-#define SVF_CUSTOM_SPEED		0x00002000	// -Vincent
-
-
 
 //===============================================================
 

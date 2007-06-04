@@ -1186,10 +1186,6 @@ void ClientSpawn(gentity_t *ent) {
 	// always clear the kamikaze flag
 	/* ent->s.eFlags &= ~EF_KAMIKAZE; */
 
-	// Reset the gravity to normal -Vincent
-	ent->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
-	ent->r.svFlags &= ~SVF_CUSTOM_SPEED;
-
 	// toggle the teleport bit so the client knows to not lerp
 	// and never clear the voted flag
 	flags = ent->client->ps.eFlags & (EF_TELEPORT_BIT | EF_VOTED | EF_TEAMVOTED);
