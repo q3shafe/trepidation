@@ -1415,6 +1415,31 @@ notsingle : when set to 1, entity will not spawn in Single Player mode (bot play
 
 /*QUAKED target_gravity_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
 By Vincentk, for instructions read the info at the spawnflags.
+-------- KEYS --------
+GLOBAL - Apply to the entire world, not just the activator
+-------- SPAWNFLAGS --------
+gravity -	 Normal = 800, valid range: >= 0
+"surfaceFlag - Important setting. With this you can define on what surface the speed_change will work.
+As soon as the player hits another surface, the gravity_change will stop.
+Possible values:
+CONTENTS_NODROP			0 -> Recommended and default value, since lower-gravity will make things float anyway.
+CONTENTS_SOLID			1
+CONTENTS_LAVA			2
+CONTENTS_SLIME			3
+CONTENTS_WATER			4
+CONTENTS_FOG			5
+CONTENTS_DETAIL			6 -> Can easily be set in Radiant, so also quite easy.
+CONTENTS_STRUCTURAL		7 -> " " (also recommended as grav-surface, so something else can be set as detail (to reset))
+CONTENTS_TRANSLUCENT	8
+SURF_METALSTEPS			9
+SURF_NOSTEPS			10
+SURF_NOMARKS			11
+SURF_NOIMPACT			12
+SURF_SKY				13
+SURF_NODAMAGE			14
+-------- NOTES --------
+You have to make the ceiling of your gravity-room a CONTENTS_SOLID (standard brush), a SURF_SKY, or a SURF_NOIMPACT.*/
+//=============================================================================
  -------- KEYS --------
  GLOBAL - Apply to the entire world, not just the activator
  -------- SPAWNFLAGS --------
@@ -1444,6 +1469,30 @@ By Vincentk, for instructions read the info at the spawnflags.
 
 /*QUAKED target_speed_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
 By Vincentk, for instructions read the info at the spawnflags.
+-------- KEYS --------
+GLOBAL - Apply to the entire world, not just the activator
+-------- SPAWNFLAGS --------
+speed - Normal = 320, valid range: > 0
+surfaceFlag - Important setting. With this you can define on what surface the speed_change will work.
+As soon as the player hits another surface, the speed_change will stop.
+Possible values:
+CONTENTS_STRUCTURAL		0 -> Recommended and default value, so something else can be set as detail (to reset)
+CONTENTS_DETAIL			1
+CONTENTS_LAVA			2
+CONTENTS_SLIME			3
+CONTENTS_WATER			4
+CONTENTS_FOG			5
+CONTENTS_NODROP			6
+CONTENTS_SOLID			7
+CONTENTS_TRANSLUCENT	8
+SURF_METALSTEPS			9
+SURF_NOSTEPS			10
+SURF_NOMARKS			11
+SURF_NOIMPACT			12
+SURF_SKY				13
+SURF_NODAMAGE			14
+-------- NOTES --------
+You have to make the ceiling of your speed-room a CONTENTS_SOLID (standard brush), a SURF_SKY, or a SURF_NOIMPACT.*/
  -------- KEYS --------
  GLOBAL - Apply to the entire world, not just the activator
  -------- SPAWNFLAGS --------
