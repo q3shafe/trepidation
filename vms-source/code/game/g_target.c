@@ -450,10 +450,9 @@ void SP_target_location( gentity_t *self ){
  GLOBAL - Apply to the entire world, and not just the activator
  
  "gravity" -	 Normal = 800, valid range: >= 0
- "surfaceFlag" - Important setting. With this you can define on what surface the gravity_change will work.
- As soon as the player hits another surface, the gravity_change will be stopped. 
- Don't change the surface too close below, since this check will go down!
- The gravity_change also stops at player-respawn. Possible values:
+ "surfaceFlag" - Important setting. With this you can define on what surface the speed_change will work.
+ As soon as the player hits another surface, the gravity_change will stop.
+ Possible values:
  CONTENTS_NODROP		0 -> Recommended and default value, since lower-gravity will make things float anyway.
  CONTENTS_SOLID			1
  CONTENTS_LAVA			2
@@ -470,94 +469,92 @@ void SP_target_location( gentity_t *self ){
  SURF_SKY				13
  SURF_NODAMAGE			14
 
- Note: You have to make the ceiling of your anti-grav room a CONTENTS_SOLID, CONTENTS_PLAYERCLIP, a SURF_SKY, or a SURF_NOIMPACT.
+ Note: You have to make the ceiling of your gravity-room a CONTENTS_SOLID (standard brush), a SURF_SKY, or a SURF_NOIMPACT
  */
-void GravityResetCheck( gentity_t *self, gentity_t *activator )
+void GravityResetCheck( gentity_t *self )
 { //-Vincent
-vec3_t  end;
-trace_t tr;
+vec3_t  begin, end;
+trace_t tr1, tr2;
 	
-	if( !activator || !activator->client )
-	{ // The activator might be dead
-		activator->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
-		return; 
+	if( !self->activator->client || !self->s.origin )
+	{ // The activator might be dead / The entity might be gone
+		self->activator->client->ps.gravity = g_gravity.integer;
+		self->think		= 0;
+		return;
 	}
 
 	// Trace up (in a straight line), until we hit a solid, playerclip, sky or noimpact content
-	VectorCopy( activator->s.origin, end );
-	end[2] += 1000;
-	trap_Trace( &tr, activator->s.origin, NULL, NULL, end, activator->s.number, 
-			    CONTENTS_SOLID | CONTENTS_PLAYERCLIP | SURF_NOIMPACT | SURF_SKY );
+	VectorCopy( self->activator->s.origin, begin );
+	begin[2] += 1000;
+	trap_Trace( &tr1, self->activator->s.origin, NULL, NULL, end, -1, CONTENTS_SOLID | SURF_NOIMPACT | SURF_SKY );
 	// Trace back down (in a straight line), trying to hit the required content
-	VectorCopy( tr.endpos, end );
-	trap_Trace( &tr, end,  NULL, NULL, activator->s.origin, activator->s.number, self->surfaceFlag );
+	VectorCopy( self->activator->s.origin, end );
+	end[2] -= 1000;
+	trap_Trace( &tr2, tr1.endpos,  NULL, NULL, self->activator->s.origin, -1, self->surfaceFlag );
 
-	if( tr.fraction <= 0 ) // The surface has not been found
-		activator->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
-}
-
-void target_gravity_change( gentity_t *self )
-{ //-Vincent
-if(		 self->surfaceFlag == 1 )
-		 self->surfaceFlag = CONTENTS_SOLID;
-else if( self->surfaceFlag == 2 )
-		 self->surfaceFlag = CONTENTS_LAVA;
-else if( self->surfaceFlag == 3 )
-		 self->surfaceFlag = CONTENTS_SLIME;
-else if( self->surfaceFlag == 4 )
-		 self->surfaceFlag = CONTENTS_WATER;
-else if( self->surfaceFlag == 5 )
-		 self->surfaceFlag = CONTENTS_FOG;
-else if( self->surfaceFlag == 6 )
-		 self->surfaceFlag = CONTENTS_DETAIL;
-else if( self->surfaceFlag == 7 )
-		 self->surfaceFlag = CONTENTS_STRUCTURAL;
-else if( self->surfaceFlag == 8 )
-		 self->surfaceFlag = CONTENTS_TRANSLUCENT;
-else if( self->surfaceFlag == 9 )
-		 self->surfaceFlag = SURF_METALSTEPS;
-else if( self->surfaceFlag == 10 )
-		 self->surfaceFlag = SURF_NOSTEPS;
-else if( self->surfaceFlag == 11 )
-		 self->surfaceFlag = SURF_NOMARKS;
-else if( self->surfaceFlag == 12 )
-		 self->surfaceFlag = SURF_NOIMPACT;
-else if( self->surfaceFlag == 13 )
-		 self->surfaceFlag = SURF_SKY;
-else if( self->surfaceFlag == 14 )
-		 self->surfaceFlag = SURF_NODAMAGE;
-else // surfaceFlag == 0, default
-		 self->surfaceFlag = CONTENTS_NODROP;
-
-	if( self->spawnflags & 1 )
-	{ // Global setting
-		trap_Cvar_Set( "g_gravity", va( "%f", self->gravity ) );
-	}
-	else if( self->activator->client )
-	{
-		int	gravity = floor( self->gravity );
-		self->activator->client->ps.gravity = gravity;
-		self->activator->r.svFlags |= SVF_CUSTOM_GRAVITY;
-	}
-	
-	GravityResetCheck( self, self->activator );
-	if( !( self->activator->r.svFlags & SVF_CUSTOM_GRAVITY ) )
-	{ // Stop doing this gravity_change (reset happens in ClientThink_Real )
+	if( tr2.fraction <= 0 ) // The surface has not been found
+	{ // Stop doing the check and reset the gravity
+		self->activator->client->ps.gravity = g_gravity.integer;
 		self->think		= 0;
-		self->nextthink = 0;
+	}
+	else
+	{
+		self->nextthink = level.time + 100;
 	}
 }
 
 void target_gravity_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
 { //-Vincent
-self->activator = activator; // Pass it on
-self->think		= target_gravity_change;
-self->nextthink = level.time + FRAMETIME;  // Let everything get spawned
+	if( self->spawnflags & 1 )
+	{ // Global setting
+		trap_Cvar_Set( "g_gravity", va( "%f", self->gravity ) );
+	}
+	else if( self->activator->client )
+	{ // Confirm
+		self->activator = activator; // Pass it on
+		self->activator->client->ps.gravity = self->gravity;
+	}
+
+	if(		 self->surfaceFlag == 1 )
+			 self->surfaceFlag = CONTENTS_SOLID;
+	else if( self->surfaceFlag == 2 )
+			 self->surfaceFlag = CONTENTS_LAVA;
+	else if( self->surfaceFlag == 3 )
+			 self->surfaceFlag = CONTENTS_SLIME;
+	else if( self->surfaceFlag == 4 )
+			 self->surfaceFlag = CONTENTS_WATER;
+	else if( self->surfaceFlag == 5 )
+			 self->surfaceFlag = CONTENTS_FOG;
+	else if( self->surfaceFlag == 6 )
+			 self->surfaceFlag = CONTENTS_DETAIL;
+	else if( self->surfaceFlag == 7 )
+			 self->surfaceFlag = CONTENTS_STRUCTURAL;
+	else if( self->surfaceFlag == 8 )
+			 self->surfaceFlag = CONTENTS_TRANSLUCENT;
+	else if( self->surfaceFlag == 9 )
+		 	 self->surfaceFlag = SURF_METALSTEPS;
+	else if( self->surfaceFlag == 10 )
+			 self->surfaceFlag = SURF_NOSTEPS;
+	else if( self->surfaceFlag == 11 )
+			 self->surfaceFlag = SURF_NOMARKS;
+	else if( self->surfaceFlag == 12 )
+			 self->surfaceFlag = SURF_NOIMPACT;
+	else if( self->surfaceFlag == 13 )
+			 self->surfaceFlag = SURF_SKY;
+	else if( self->surfaceFlag == 14 )
+			 self->surfaceFlag = SURF_NODAMAGE;
+	else // surfaceFlag == 0, default
+			 self->surfaceFlag = CONTENTS_NODROP;
+
+	self->think = GravityResetCheck;
+	self->nextthink = level.time + FRAMETIME;
 }
 
 void SP_target_gravity_change( gentity_t *self )
 { //-Vincent
 G_SetOrigin( self, self->s.origin );
+
+trap_LinkEntity( self );
 self->use = target_gravity_change_use;
 }
 
@@ -568,9 +565,8 @@ self->use = target_gravity_change_use;
  
  "speed" - Normal = 320, valid range: > 0
  "surfaceFlag" - Important setting. With this you can define on what surface the speed_change will work.
- As soon as the player hits another surface, the speed_change will be stopped. 
- Don't change the surface too close below, since this check will go down!
- The speed_change also stops at player-respawn. Possible values:
+ As soon as the player hits another surface, the speed_change will stop.
+ Possible values:
  CONTENTS_STRUCTURAL	0 -> Recommended and default value, so something else can be set as detail (to reset)
  CONTENTS_DETAIL		1
  CONTENTS_LAVA			2
@@ -587,94 +583,93 @@ self->use = target_gravity_change_use;
  SURF_SKY				13
  SURF_NODAMAGE			14
 
- Note: You have to make the ceiling of your anti-grav room a CONTENTS_SOLID, CONTENTS_PLAYERCLIP, a SURF_SKY, or a SURF_NOIMPACT.
+ Note: You have to make the ceiling of your speed-room a CONTENTS_SOLID (standard brush), a SURF_SKY, or a SURF_NOIMPACT
  */
-void SpeedResetCheck( gentity_t *self, gentity_t *activator )
+void SpeedResetCheck( gentity_t *self )
 { //-Vincent
-vec3_t  end;
-trace_t tr;
+vec3_t  begin, end;
+trace_t tr1, tr2;
 	
-	if( !activator || !activator->client )
-	{ // The activator might be dead
-		activator->r.svFlags &= ~SVF_CUSTOM_SPEED;
+	if( !self->activator->client || !self->s.origin )
+	{ // The activator might be dead / The entity might be gone
+		self->activator->client->ps.speed = g_speed.integer;
+		self->think		=  0;
 		return; 
 	}
 
 	// Trace up (in a straight line), until we hit a solid, playerclip, sky or noimpact content
-	VectorCopy( activator->s.origin, end );
-	end[2] += 1000;
-	trap_Trace( &tr, activator->s.origin, NULL, NULL, end, activator->s.number, 
-			    CONTENTS_SOLID | CONTENTS_PLAYERCLIP | SURF_NOIMPACT | SURF_SKY );
+	VectorCopy( self->activator->s.origin, begin );
+	begin[2] += 1000;
+	trap_Trace( &tr1, self->activator->s.origin, NULL, NULL, end, -1, CONTENTS_SOLID | SURF_NOIMPACT | SURF_SKY );
 	// Trace back down (in a straight line), trying to hit the required content
-	VectorCopy( tr.endpos, end );
-	trap_Trace( &tr, end,  NULL, NULL, activator->s.origin, activator->s.number, self->surfaceFlag );
+	VectorCopy( self->activator->s.origin, end );
+	end[2] -= 1000;
+	trap_Trace( &tr2, tr1.endpos,  NULL, NULL, self->activator->s.origin, -1, self->surfaceFlag );
 
-	if( tr.fraction <= 0 ) // The surface has not been found
-		activator->r.svFlags &= ~SVF_CUSTOM_SPEED;
-}
-
-void target_speed_change( gentity_t *self )
-{ //-Vincent
-if(		 self->surfaceFlag == 1 )
-		 self->surfaceFlag = CONTENTS_DETAIL;
-else if( self->surfaceFlag == 2 )
-		 self->surfaceFlag = CONTENTS_LAVA;
-else if( self->surfaceFlag == 3 )
-		 self->surfaceFlag = CONTENTS_SLIME;
-else if( self->surfaceFlag == 4 )
-		 self->surfaceFlag = CONTENTS_WATER;
-else if( self->surfaceFlag == 5 )
-		 self->surfaceFlag = CONTENTS_FOG;
-else if( self->surfaceFlag == 6 )
-		 self->surfaceFlag = CONTENTS_NODROP;
-else if( self->surfaceFlag == 7 )
-		 self->surfaceFlag = CONTENTS_SOLID;
-else if( self->surfaceFlag == 8 )
-		 self->surfaceFlag = CONTENTS_TRANSLUCENT;
-else if( self->surfaceFlag == 9 )
-		 self->surfaceFlag = SURF_METALSTEPS;
-else if( self->surfaceFlag == 10 )
-		 self->surfaceFlag = SURF_NOSTEPS;
-else if( self->surfaceFlag == 11 )
-		 self->surfaceFlag = SURF_NOMARKS;
-else if( self->surfaceFlag == 12 )
-		 self->surfaceFlag = SURF_NOIMPACT;
-else if( self->surfaceFlag == 13 )
-		 self->surfaceFlag = SURF_SKY;
-else if( self->surfaceFlag == 14 )
-		 self->surfaceFlag = SURF_NODAMAGE;
-else // surfaceFlag == 0, default
-		 self->surfaceFlag = CONTENTS_STRUCTURAL;
-
-	if( self->spawnflags & 1 )
-	{ // Global setting
-		trap_Cvar_Set( "g_speed", va( "%f", self->speed ) );
+	if( tr2.fraction <= 0 ) // The surface has not been found
+	{ // Stop doing the check and reset the speed
+		self->activator->client->ps.speed = g_speed.integer;
+		self->think		=  0;
+		return;
 	}
-	else if( self->activator->client )
+	else
 	{
-		int	speed = floor( self->speed );
-		self->activator->client->ps.speed = speed;
-		self->activator->r.svFlags |= SVF_CUSTOM_SPEED;
-	}
-
-	SpeedResetCheck( self, self->activator );
-	if( !( self->activator->r.svFlags & SVF_CUSTOM_SPEED ) )
-	{ // Stop doing this speed_change (reset happens in ClientThink_Real )
-		self->think		= 0;
-		self->nextthink = 0;
+		self->nextthink = level.time + FRAMETIME;
 	}
 }
 
 void target_speed_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
 { //-Vincent
-self->activator = activator; // Pass it on
-self->think		= target_speed_change;
-self->nextthink = level.time + FRAMETIME;  // Let everything get spawned
+	if( self->spawnflags & 1 )
+	{ // Global setting
+		trap_Cvar_Set( "g_speed", va( "%f", self->speed ) );
+	}
+	else if( self->activator->client )
+	{ // Confirm
+		self->activator = activator; // Pass it on
+		self->activator->client->ps.speed = self->speed;
+	}
+			
+	if(		 self->surfaceFlag == 1 )
+			 self->surfaceFlag = CONTENTS_DETAIL;
+	else if( self->surfaceFlag == 2 )
+			 self->surfaceFlag = CONTENTS_LAVA;
+	else if( self->surfaceFlag == 3 )
+			 self->surfaceFlag = CONTENTS_SLIME;
+	else if( self->surfaceFlag == 4 )
+			 self->surfaceFlag = CONTENTS_WATER;
+	else if( self->surfaceFlag == 5 )
+			 self->surfaceFlag = CONTENTS_FOG;
+	else if( self->surfaceFlag == 6 )
+			 self->surfaceFlag = CONTENTS_NODROP;
+	else if( self->surfaceFlag == 7 )
+			 self->surfaceFlag = CONTENTS_SOLID;
+	else if( self->surfaceFlag == 8 )
+			 self->surfaceFlag = CONTENTS_TRANSLUCENT;
+	else if( self->surfaceFlag == 9 )
+			 self->surfaceFlag = SURF_METALSTEPS;
+	else if( self->surfaceFlag == 10 )
+			 self->surfaceFlag = SURF_NOSTEPS;
+	else if( self->surfaceFlag == 11 )
+			 self->surfaceFlag = SURF_NOMARKS;
+	else if( self->surfaceFlag == 12 )
+			 self->surfaceFlag = SURF_NOIMPACT;
+	else if( self->surfaceFlag == 13 )
+			 self->surfaceFlag = SURF_SKY;
+	else if( self->surfaceFlag == 14 )
+			 self->surfaceFlag = SURF_NODAMAGE;
+	else // surfaceFlag == 0, default
+			 self->surfaceFlag = CONTENTS_STRUCTURAL;
+
+	self->think = SpeedResetCheck;
+	self->nextthink = level.time + FRAMETIME;
 }
 
 void SP_target_speed_change( gentity_t *self )
 { //-Vincent
 G_SetOrigin( self, self->s.origin );
+
+trap_LinkEntity( self );
 self->use = target_speed_change_use;
 }
 

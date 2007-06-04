@@ -1415,14 +1415,13 @@ notsingle : when set to 1, entity will not spawn in Single Player mode (bot play
 
 /*QUAKED target_gravity_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
 By Vincentk, for instructions read the info at the spawnflags.
--------- KEYS --------
- GLOBAL - Apply to the entire world, and not just the activator
+ -------- KEYS --------
+ GLOBAL - Apply to the entire world, not just the activator
  -------- SPAWNFLAGS --------
- gravity :	 Normal = 800, valid range: >= 0
- surfaceFlag : Important setting. With this you can define on what surface the gravity_change will work.
- As soon as the player hits another surface, the gravity_change will be stopped. 
- Don't change the surface too close below, since this check will go down!
- The gravity_change also stops at player-respawn. Possible values:
+ gravity -	 Normal = 800, valid range: >= 0
+ "surfaceFlag - Important setting. With this you can define on what surface the speed_change will work.
+ s soon as the player hits another surface, the gravity_change will stop.
+ Possible values:
  CONTENTS_NODROP		0 -> Recommended and default value, since lower-gravity will make things float anyway.
  CONTENTS_SOLID			1
  CONTENTS_LAVA			2
@@ -1439,20 +1438,19 @@ By Vincentk, for instructions read the info at the spawnflags.
  SURF_SKY				13
  SURF_NODAMAGE			14
  -------- NOTES --------
- You have to make the ceiling of your anti-grav room a CONTENTS_SOLID, CONTENTS_PLAYERCLIP, a SURF_SKY, or a SURF_NOIMPACT.*/
+ You have to make the ceiling of your gravity-room a CONTENTS_SOLID (standard brush), a SURF_SKY, or a SURF_NOIMPACT.*/
 
  //=============================================================================
 
 /*QUAKED target_speed_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
 By Vincentk, for instructions read the info at the spawnflags.
--------- KEYS --------
- GLOBAL - Apply to the entire world, and not just the activator
-  -------- SPAWNFLAGS --------
- speed : Normal = 320, valid range: > 0
- surfaceFlag : Important setting. With this you can define on what surface the speed_change will work.
- As soon as the player hits another surface, the speed_change will be stopped. 
- Don't change the surface too close below, since this check will go down!
- The speed_change also stops at player-respawn. Possible values:
+ -------- KEYS --------
+ GLOBAL - Apply to the entire world, not just the activator
+ -------- SPAWNFLAGS --------
+ speed - Normal = 320, valid range: > 0
+ surfaceFlag - Important setting. With this you can define on what surface the speed_change will work.
+ As soon as the player hits another surface, the speed_change will stop.
+ Possible values:
  CONTENTS_STRUCTURAL	0 -> Recommended and default value, so something else can be set as detail (to reset)
  CONTENTS_DETAIL		1
  CONTENTS_LAVA			2
@@ -1469,7 +1467,7 @@ By Vincentk, for instructions read the info at the spawnflags.
  SURF_SKY				13
  SURF_NODAMAGE			14
  -------- NOTES --------
- You have to make the ceiling of your anti-grav room a CONTENTS_SOLID, CONTENTS_PLAYERCLIP, a SURF_SKY, or a SURF_NOIMPACT.*/
+ You have to make the ceiling of your speed-room a CONTENTS_SOLID (standard brush), a SURF_SKY, or a SURF_NOIMPACT.*/
 
 //=============================================================================
 
