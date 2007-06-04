@@ -905,6 +905,8 @@ import UI_DemosMenu
 import Controls_Cache
 import UI_ControlsMenu
 import UI_DrawConnectScreen
+import UI_OfflineMenu
+import UI_OfflineMenu_Cache
 import UI_SetupMenu
 import UI_SetupMenu_Cache
 import UI_Message

@@ -19,6 +19,8 @@ lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_u
 @if errorlevel 1 goto quit
 lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_ui ../ui_setup.c
 @if errorlevel 1 goto quit
+lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_ui ../ui_offline.c
+@if errorlevel 1 goto quit
 lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_ui ../../game/bg_misc.c
 @if errorlevel 1 goto quit
 lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_ui ../../game/bg_lib.c
