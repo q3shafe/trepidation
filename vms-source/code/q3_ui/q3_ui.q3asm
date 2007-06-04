@@ -13,6 +13,7 @@ ui_menu
 ui_ingame
 ui_confirm
 ui_setup
+ui_offline
 ui_options
 ui_display
 ui_sound

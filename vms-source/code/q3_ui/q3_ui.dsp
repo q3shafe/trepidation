@@ -560,6 +560,10 @@ SOURCE=.\ui_network.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\ui_offline.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\ui_options.c
 
 !IF  "$(CFG)" == "q3_ui - Win32 Release"

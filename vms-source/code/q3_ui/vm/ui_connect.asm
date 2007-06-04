@@ -1768,6 +1768,8 @@ import Controls_Cache
 import UI_ControlsMenu
 import TeamMain_Cache
 import UI_TeamMainMenu
+import UI_OfflineMenu
+import UI_OfflineMenu_Cache
 import UI_SetupMenu
 import UI_SetupMenu_Cache
 import UI_Message

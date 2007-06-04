@@ -333,6 +333,13 @@ extern void UI_SetupMenu_Cache( void );
 extern void UI_SetupMenu(void);
 
 //
+// ui_offline.c
+//
+extern void UI_OfflineMenu_Cache( void );
+extern void UI_OfflineMenu(void);
+
+
+//
 // ui_team.c
 //
 extern void UI_TeamMainMenu( void );
