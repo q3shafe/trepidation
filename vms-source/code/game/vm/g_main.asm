@@ -11700,10 +11700,14 @@ line 2559
 ADDRGP4 CheckTournament
 CALLV
 pop
-line 2565
+line 2562
 ;2560:
 ;2561:	// Shafe - Trep - Radar Functions
-;2562:	// CheckPlayerPostions();  // Commented out looking for a bug
+;2562:	CheckPlayerPostions();  // Commented out looking for a bug
+ADDRGP4 CheckPlayerPostions
+CALLV
+pop
+line 2565
 ;2563:	
 ;2564:	// see if it is time to end the level
 ;2565:	CheckExitRules();
@@ -12046,13 +12050,25 @@ line 2648
 LABELV $1358
 line 2651
 ;2649:
-;2650:        //build the command string to send
-;2651:        Com_sprintf(cmd, sizeof(cmd), "playerpos %i ", valid_count);
+;2650:        
+;2651:	if (valid_count != 0) 
+ADDRLP4 1096
+INDIRI4
+CNSTI4 0
+EQI4 $1375
+line 2652
+;2652:	{ 
+line 2657
+;2653:		
+;2654:		
+;2655:		//build the command string to send
+;2656:		
+;2657:        Com_sprintf(cmd, sizeof(cmd), "playerpos %i ", valid_count);
 ADDRLP4 8
 ARGP4
 CNSTI4 1088
 ARGI4
-ADDRGP4 $1375
+ADDRGP4 $1377
 ARGP4
 ADDRLP4 1096
 INDIRI4
@@ -12060,17 +12076,17 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 2652
-;2652:        for(i=0; i<MAX_CLIENTS; i++)
+line 2658
+;2658:        for(i=0; i<MAX_CLIENTS; i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $1376
-line 2653
-;2653:        {
-line 2655
-;2654:            //if weve got a valid entry then add the position to the command string
-;2655:            if(g_playerOrigins[i].valid == kENTRY_VALID)
+LABELV $1378
+line 2659
+;2659:        {
+line 2661
+;2660:            //if weve got a valid entry then add the position to the command string
+;2661:            if(g_playerOrigins[i].valid == kENTRY_VALID)
 ADDRLP4 0
 INDIRI4
 CNSTI4 4
@@ -12079,12 +12095,12 @@ ADDRGP4 g_playerOrigins
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $1380
-line 2656
-;2656:            {
-line 2657
-;2657:                strcat(cmd, va(" %f,", g_playerOrigins[i].pos[0]));
-ADDRGP4 $1382
+NEI4 $1382
+line 2662
+;2662:            {
+line 2663
+;2663:                strcat(cmd, va(" %f,", g_playerOrigins[i].pos[0]));
+ADDRGP4 $1384
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -12106,9 +12122,9 @@ ARGP4
 ADDRGP4 strcat
 CALLP4
 pop
-line 2658
-;2658:                strcat(cmd, va("%f,", g_playerOrigins[i].pos[1]));
-ADDRGP4 $1384
+line 2664
+;2664:                strcat(cmd, va("%f,", g_playerOrigins[i].pos[1]));
+ADDRGP4 $1386
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -12130,9 +12146,9 @@ ARGP4
 ADDRGP4 strcat
 CALLP4
 pop
-line 2659
-;2659:                strcat(cmd, va("%f", g_playerOrigins[i].pos[2]));
-ADDRGP4 $1387
+line 2665
+;2665:                strcat(cmd, va("%f", g_playerOrigins[i].pos[2]));
+ADDRGP4 $1389
 ARGP4
 ADDRLP4 0
 INDIRI4
@@ -12154,13 +12170,13 @@ ARGP4
 ADDRGP4 strcat
 CALLP4
 pop
-line 2660
-;2660:            }
-LABELV $1380
-line 2661
-;2661:        }
-LABELV $1377
-line 2652
+line 2666
+;2666:            }
+LABELV $1382
+line 2667
+;2667:        }
+LABELV $1379
+line 2658
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -12170,25 +12186,25 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $1376
-line 2669
-;2662:    
-;2663:        //finally broadcast the command
-;2664:		// 
-;2665:		// Hey XcyTng!  Why doesnt this work???? 
-;2666:		// Enable it and the game freezes when loading a map... 
-;2667:		// Driving me insane VVVVVVV
-;2668:	
-;2669:		for (i = 0; i < MAX_CLIENTS; i++) 
+LTI4 $1378
+line 2675
+;2668:    
+;2669:        //finally broadcast the command
+;2670:		// 
+;2671:		// Hey XcyTng!  Why doesnt this work???? 
+;2672:		// Enable it and the game freezes when loading a map... 
+;2673:		// Driving me insane VVVVVVV
+;2674:	
+;2675:		for (i = 0; i < MAX_CLIENTS; i++) 
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $1390
-line 2670
-;2670:        {
-line 2672
-;2671:			//get a pointer to the entity
-;2672:			ent = g_entities + i;
+LABELV $1392
+line 2676
+;2676:        {
+line 2678
+;2677:			//get a pointer to the entity
+;2678:			ent = g_entities + i;
 ADDRLP4 4
 CNSTI4 924
 ADDRLP4 0
@@ -12197,25 +12213,25 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ASGNP4
-line 2674
-;2673:
-;2674:			if ( !ent )
+line 2680
+;2679:
+;2680:			if ( !ent )
 ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $1394
-line 2675
-;2675:			{// Maybe this will fix it? -Vincent
-line 2676
-;2676:			continue;
-ADDRGP4 $1391
+NEU4 $1396
+line 2681
+;2681:			{// Maybe this will fix it? -Vincent
+line 2682
+;2682:			continue;
+ADDRGP4 $1393
 JUMPV
-LABELV $1394
-line 2679
-;2677:			}
-;2678:
-;2679:			if ( ent->client->pers.connected == CON_CONNECTED && ent->client->pers.Eliminated == qfalse && ent->client->sess.sessionTeam != TEAM_SPECTATOR)
+LABELV $1396
+line 2685
+;2683:			}
+;2684:
+;2685:			if ( ent->client->pers.connected == CON_CONNECTED && ent->client->pers.Eliminated == qfalse && ent->client->sess.sessionTeam != TEAM_SPECTATOR)
 ADDRLP4 1100
 ADDRLP4 4
 INDIRP4
@@ -12229,33 +12245,44 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $1396
+NEI4 $1398
 ADDRLP4 1100
 INDIRP4
 CNSTI4 2484
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $1396
+NEI4 $1398
 ADDRLP4 1100
 INDIRP4
 CNSTI4 2552
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $1396
-line 2680
-;2680:			{
-line 2683
-;2681:			// Still Issues with this .. :( -- Shafe
-;2682:			//G_SendCommandToClient(ent, cmd);
-;2683:			}
-LABELV $1396
-line 2685
-;2684:				
-;2685:		}  
-LABELV $1391
-line 2669
+EQI4 $1398
+line 2686
+;2686:			{
+line 2688
+;2687:			// Still Issues with this .. :( -- Shafe
+;2688:			G_SendCommandToClient(ent, cmd);
+ADDRLP4 4
+INDIRP4
+ARGP4
+ADDRLP4 8
+ARGP4
+ADDRGP4 G_SendCommandToClient
+CALLV
+pop
+line 2691
+;2689:			//PrintMsg( NULL, "%s" S_COLOR_WHITE " -- CMD\n", cmd );
+;2690:		
+;2691:			}
+LABELV $1398
+line 2693
+;2692:				
+;2693:		}  
+LABELV $1393
+line 2675
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -12265,9 +12292,13 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 64
-LTI4 $1390
-line 2686
-;2686:}
+LTI4 $1392
+line 2695
+;2694:		
+;2695:	}
+LABELV $1375
+line 2696
+;2696:}
 LABELV $1353
 endproc CheckPlayerPostions 1112 16
 bss
@@ -13091,25 +13122,25 @@ import srand
 import qsort
 lit
 align 1
-LABELV $1387
+LABELV $1389
 byte 1 37
 byte 1 102
 byte 1 0
 align 1
-LABELV $1384
+LABELV $1386
 byte 1 37
 byte 1 102
 byte 1 44
 byte 1 0
 align 1
-LABELV $1382
+LABELV $1384
 byte 1 32
 byte 1 37
 byte 1 102
 byte 1 44
 byte 1 0
 align 1
-LABELV $1375
+LABELV $1377
 byte 1 112
 byte 1 108
 byte 1 97
@@ -16782,7 +16813,7 @@ byte 1 117
 byte 1 110
 byte 1 32
 byte 1 48
-byte 1 50
+byte 1 52
 byte 1 32
 byte 1 50
 byte 1 48
