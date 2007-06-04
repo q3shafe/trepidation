@@ -78,11 +78,14 @@ static const char *gametype_items[] = {
 	"Team Deathmatch",
 	"Tournament",
 	"Capture the Flag",
+	"Trepidation",
+	"Arsenal",
+	"Survival",
 	0
 };
 
-static int gametype_remap[] = {GT_FFA, GT_TEAM, GT_TOURNAMENT, GT_CTF};
-static int gametype_remap2[] = {0, 2, 0, 1, 3};
+static int gametype_remap[] = {GT_FFA, GT_TEAM, GT_TOURNAMENT, GT_CTF, 4, 5, 6};
+static int gametype_remap2[] = {0, 2, 0, 1, 3, 3, 0, 0};
 
 // use ui_servers2.c definition
 extern const char* punkbuster_items[];
@@ -240,6 +243,12 @@ static void StartServer_GametypeEvent( void* ptr, int event ) {
 	if( gametype_remap[s_startserver.gametype.curvalue] == GT_FFA ) {
 		matchbits |= ( 1 << GT_SINGLE_PLAYER );
 	}
+
+	if(s_startserver.gametype.curvalue > GT_CTF)
+	{
+		matchbits |= ( 1 << GT_SINGLE_PLAYER);
+	}
+
 	for( i = 0; i < count; i++ ) {
 		info = UI_GetArenaInfoByNumber( i );
 
@@ -287,7 +296,36 @@ static void StartServer_MenuEvent( void* ptr, int event ) {
 		break;
 
 	case ID_STARTSERVERNEXT:
-		trap_Cvar_SetValue( "g_gameType", gametype_remap[s_startserver.gametype.curvalue] );
+		
+		if (s_startserver.gametype.curvalue > 3)
+		{
+			if (s_startserver.gametype.curvalue == 4) 
+			{
+				trap_Cvar_SetValue( "g_gameType", 3 );
+				trap_Cvar_SetValue( "g_gameMode", 3 );
+				s_startserver.gametype.curvalue = 3;
+			}
+
+			if (s_startserver.gametype.curvalue == 5) 
+			{
+				trap_Cvar_SetValue( "g_gameType", 0 );
+				trap_Cvar_SetValue( "g_gameMode", 1 );
+				s_startserver.gametype.curvalue = 0;
+			}
+
+			if (s_startserver.gametype.curvalue == 6) 
+			{
+				trap_Cvar_SetValue( "g_gameType", 0 );
+				trap_Cvar_SetValue( "g_gameMode", 2 );
+				s_startserver.gametype.curvalue = 0;
+			}
+
+		} 
+		else
+		{
+			trap_Cvar_SetValue( "g_gameType", gametype_remap[s_startserver.gametype.curvalue] );
+		}
+		
 		UI_ServerOptionsMenu( s_startserver.multiplayer );
 		break;
 
@@ -629,6 +667,7 @@ typedef struct {
 
 	qboolean			multiplayer;
 	int					gametype;
+	int					gamemode;
 	char				mapnamebuffer[32];
 	char				playerNameBuffers[PLAYER_SLOTS][16];
 
@@ -662,11 +701,11 @@ static const char *playerTeam_list[] = {
 };
 
 static const char *botSkill_list[] = {
-	"I Can Win",
-	"Bring It On",
-	"Hurt Me Plenty",
-	"Hardcore",
-	"Nightmare!",
+	"Skill 1",
+	"Skill 2",
+	"Skill 3",
+	"Skill 4",
+	"Skill 5",
 	0
 };
 
@@ -733,6 +772,7 @@ static void ServerOptions_Start( void ) {
 		maxclients++;
 	}
 
+	
 	switch( s_serveroptions.gametype ) {
 	case GT_FFA:
 	default:
@@ -758,6 +798,14 @@ static void ServerOptions_Start( void ) {
 		break;
 	}
 
+	if(s_serveroptions.gamemode == 3)
+	{
+		trap_Cvar_SetValue( "ui_ctf_fraglimit", fraglimit );
+		trap_Cvar_SetValue( "ui_ctf_timelimit", timelimit );
+		trap_Cvar_SetValue( "ui_ctf_friendlt", friendlyfire );
+
+	}
+	
 	trap_Cvar_SetValue( "sv_maxclients", Com_Clamp( 0, 12, maxclients ) );
 	trap_Cvar_SetValue( "dedicated", Com_Clamp( 0, 2, dedicated ) );
 	trap_Cvar_SetValue ("timelimit", Com_Clamp( 0, timelimit, timelimit ) );
@@ -795,7 +843,7 @@ static void ServerOptions_Start( void ) {
 	}
 
 	// set player's team
-	if( dedicated == 0 && s_serveroptions.gametype >= GT_TEAM ) {
+	if( dedicated == 0 && s_serveroptions.gametype >= GT_TEAM  ) {
 		trap_Cmd_ExecuteText( EXEC_APPEND, va( "wait 5; team %s\n", playerTeam_list[s_serveroptions.playerTeam[0].curvalue] ) );
 	}
 }
@@ -1018,10 +1066,10 @@ static void ServerOptions_InitBotNames( void ) {
 	char		bots[MAX_INFO_STRING];
 
 	if( s_serveroptions.gametype >= GT_TEAM ) {
-		Q_strncpyz( s_serveroptions.playerNameBuffers[1], "grunt", 16 );
+		Q_strncpyz( s_serveroptions.playerNameBuffers[1], "sarge", 16 );
 		Q_strncpyz( s_serveroptions.playerNameBuffers[2], "major", 16 );
 		if( s_serveroptions.gametype == GT_TEAM ) {
-			Q_strncpyz( s_serveroptions.playerNameBuffers[3], "visor", 16 );
+			Q_strncpyz( s_serveroptions.playerNameBuffers[3], "tremulous", 16 );
 		}
 		else {
 			s_serveroptions.playerType[3].curvalue = 2;
@@ -1030,10 +1078,10 @@ static void ServerOptions_InitBotNames( void ) {
 		s_serveroptions.playerType[5].curvalue = 2;
 
 		Q_strncpyz( s_serveroptions.playerNameBuffers[6], "sarge", 16 );
-		Q_strncpyz( s_serveroptions.playerNameBuffers[7], "grunt", 16 );
+		Q_strncpyz( s_serveroptions.playerNameBuffers[7], "tremulous", 16 );
 		Q_strncpyz( s_serveroptions.playerNameBuffers[8], "major", 16 );
 		if( s_serveroptions.gametype == GT_TEAM ) {
-			Q_strncpyz( s_serveroptions.playerNameBuffers[9], "visor", 16 );
+			Q_strncpyz( s_serveroptions.playerNameBuffers[9], "yikes", 16 );
 		}
 		else {
 			s_serveroptions.playerType[9].curvalue = 2;
@@ -1129,6 +1177,15 @@ static void ServerOptions_SetMenuItems( void ) {
 		Com_sprintf( s_serveroptions.timelimit.field.buffer, 4, "%i", (int)Com_Clamp( 0, 999, trap_Cvar_VariableValue( "ui_ctf_timelimit" ) ) );
 		s_serveroptions.friendlyfire.curvalue = (int)Com_Clamp( 0, 1, trap_Cvar_VariableValue( "ui_ctf_friendly" ) );
 		break;
+	}
+
+	if(s_serveroptions.gamemode == 3)
+	{
+		Com_sprintf( s_serveroptions.flaglimit.field.buffer, 4, "%i", (int)Com_Clamp( 0, 100, trap_Cvar_VariableValue( "ui_ctf_capturelimit" ) ) );
+	}
+	if(s_serveroptions.gametype == 4)
+	{
+		Com_sprintf( s_serveroptions.flaglimit.field.buffer, 4, "%i", (int)Com_Clamp( 0, 100, trap_Cvar_VariableValue( "ui_ctf_capturelimit" ) ) );
 	}
 
 	Q_strncpyz( s_serveroptions.hostname.field.buffer, UI_Cvar_VariableString( "sv_hostname" ), sizeof( s_serveroptions.hostname.field.buffer ) );
@@ -1246,7 +1303,7 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 	s_serveroptions.picframe.focuspic			= GAMESERVER_SELECT;
 
 	y = 272;
-	if( s_serveroptions.gametype != GT_CTF ) {
+	if( s_serveroptions.gametype != GT_CTF && s_serveroptions.gamemode != 3 && s_serveroptions.gametype != 4) {
 		s_serveroptions.fraglimit.generic.type       = MTYPE_FIELD;
 		s_serveroptions.fraglimit.generic.name       = "Frag Limit:";
 		s_serveroptions.fraglimit.generic.flags      = QMF_NUMBERSONLY|QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1426,7 +1483,7 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 		}
 	}
 
-	if( s_serveroptions.gametype != GT_CTF ) {
+	if( s_serveroptions.gametype != GT_CTF && s_serveroptions.gamemode != 3 && s_serveroptions.gametype != 4) {
 		Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.fraglimit );
 	}
 	else {
