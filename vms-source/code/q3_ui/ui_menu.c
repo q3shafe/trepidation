@@ -83,7 +83,8 @@ void Main_MenuEvent (void* ptr, int event) {
 	switch( ((menucommon_s*)ptr)->id ) {
 	case ID_SINGLEPLAYER:
 		//UI_SPLevelMenu();
-		UI_OfflineMenu();
+		//UI_OfflineMenu();
+		UI_StartServerMenu( qfalse );
 		break;
 
 	case ID_MULTIPLAYER:

@@ -154,82 +154,85 @@ address $85
 address $90
 code
 LABELV $80
-line 86
+line 87
 ;84:	case ID_SINGLEPLAYER:
 ;85:		//UI_SPLevelMenu();
-;86:		UI_OfflineMenu();
-ADDRGP4 UI_OfflineMenu
+;86:		//UI_OfflineMenu();
+;87:		UI_StartServerMenu( qfalse );
+CNSTI4 0
+ARGI4
+ADDRGP4 UI_StartServerMenu
 CALLV
 pop
-line 87
-;87:		break;
+line 88
+;88:		break;
 ADDRGP4 $78
 JUMPV
 LABELV $81
-line 90
-;88:
-;89:	case ID_MULTIPLAYER:
-;90:		UI_ArenaServersMenu();
+line 91
+;89:
+;90:	case ID_MULTIPLAYER:
+;91:		UI_ArenaServersMenu();
 ADDRGP4 UI_ArenaServersMenu
 CALLV
 pop
-line 91
-;91:		break;
+line 92
+;92:		break;
 ADDRGP4 $78
 JUMPV
 LABELV $82
-line 94
-;92:
-;93:	case ID_SETUP:
-;94:		UI_SetupMenu();
+line 95
+;93:
+;94:	case ID_SETUP:
+;95:		UI_SetupMenu();
 ADDRGP4 UI_SetupMenu
 CALLV
 pop
-line 95
-;95:		break;
+line 96
+;96:		break;
 ADDRGP4 $78
 JUMPV
 LABELV $83
-line 98
-;96:
-;97:	case ID_DEMOS:
-;98:		UI_DemosMenu();
+line 99
+;97:
+;98:	case ID_DEMOS:
+;99:		UI_DemosMenu();
 ADDRGP4 UI_DemosMenu
 CALLV
 pop
-line 99
-;99:		break;
+line 100
+;100:		break;
 ADDRGP4 $78
 JUMPV
 LABELV $84
-line 102
-;100:
-;101:	case ID_CINEMATICS:
-;102:		UI_CinematicsMenu();
+line 103
+;101:
+;102:	case ID_CINEMATICS:
+;103:		UI_CinematicsMenu();
 ADDRGP4 UI_CinematicsMenu
 CALLV
 pop
-line 103
-;103:		break;
+line 104
+;104:		break;
 ADDRGP4 $78
 JUMPV
 LABELV $85
-line 106
-;104:
-;105:	case ID_MODS:
-;106:		UI_ModsMenu();
+line 107
+;105:
+;106:	case ID_MODS:
+;107:		UI_ModsMenu();
 ADDRGP4 UI_ModsMenu
 CALLV
 pop
-line 107
-;107:		break;
+line 108
+;108:		break;
 ADDRGP4 $78
 JUMPV
 LABELV $86
-line 110
-;108:
-;109:	case ID_TEAMARENA:
-;110:		trap_Cvar_Set( "fs_game", "missionpack");
+line 111
+;109:
+;110:	case ID_TEAMARENA:
+;111:		trap_Cvar_Set( "fs_game", "missionpack");
 ADDRGP4 $87
 ARGP4
 ADDRGP4 $88
@@ -237,8 +240,8 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 111
-;111:		trap_Cmd_ExecuteText( EXEC_APPEND, "vid_restart;" );
+line 112
+;112:		trap_Cmd_ExecuteText( EXEC_APPEND, "vid_restart;" );
 CNSTI4 2
 ARGI4
 ADDRGP4 $89
@@ -246,15 +249,15 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 112
-;112:		break;
+line 113
+;113:		break;
 ADDRGP4 $78
 JUMPV
 LABELV $90
-line 115
-;113:
-;114:	case ID_EXIT:
-;115:		UI_ConfirmMenu( "EXIT GAME?", (voidfunc_f)NULL, MainMenu_ExitAction );
+line 116
+;114:
+;115:	case ID_EXIT:
+;116:		UI_ConfirmMenu( "EXIT GAME?", (voidfunc_f)NULL, MainMenu_ExitAction );
 ADDRGP4 $91
 ARGP4
 CNSTP4 0
@@ -264,28 +267,28 @@ ARGP4
 ADDRGP4 UI_ConfirmMenu
 CALLV
 pop
-line 116
-;116:		break;
+line 117
+;117:		break;
 LABELV $77
 LABELV $78
-line 118
-;117:	}
-;118:}
+line 119
+;118:	}
+;119:}
 LABELV $74
 endproc Main_MenuEvent 8 12
 export MainMenu_Cache
 proc MainMenu_Cache 4 4
-line 126
-;119:
-;120:
-;121:/*
-;122:===============
-;123:MainMenu_Cache
-;124:===============
-;125:*/
-;126:void MainMenu_Cache( void ) {
 line 127
-;127:	s_main.bannerModel = trap_R_RegisterModel( MAIN_BANNER_MODEL );
+;120:
+;121:
+;122:/*
+;123:===============
+;124:MainMenu_Cache
+;125:===============
+;126:*/
+;127:void MainMenu_Cache( void ) {
+line 128
+;128:	s_main.bannerModel = trap_R_RegisterModel( MAIN_BANNER_MODEL );
 ADDRGP4 $96
 ARGP4
 ADDRLP4 0
@@ -296,18 +299,18 @@ ADDRGP4 s_main+1040
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 128
-;128:}
+line 129
+;129:}
 LABELV $94
 endproc MainMenu_Cache 4 4
 export ErrorMessage_Key
 proc ErrorMessage_Key 0 8
-line 131
-;129:
-;130:sfxHandle_t ErrorMessage_Key(int key)
-;131:{
 line 132
-;132:	trap_Cvar_Set( "com_errorMessage", "" );
+;130:
+;131:sfxHandle_t ErrorMessage_Key(int key)
+;132:{
+line 133
+;133:	trap_Cvar_Set( "com_errorMessage", "" );
 ADDRGP4 $98
 ARGP4
 ADDRGP4 $99
@@ -315,13 +318,13 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 133
-;133:	UI_MainMenu();
+line 134
+;134:	UI_MainMenu();
 ADDRGP4 UI_MainMenu
 CALLV
 pop
-line 134
-;134:	return (menu_null_sound);
+line 135
+;135:	return (menu_null_sound);
 ADDRGP4 menu_null_sound
 INDIRI4
 RETI4
@@ -336,34 +339,34 @@ byte 4 0
 byte 4 1065353216
 code
 proc Main_MenuDraw 576 28
-line 144
-;135:}
-;136:
-;137:/*
-;138:===============
-;139:Main_MenuDraw
-;140:TTimo: this function is common to the main menu and errorMessage menu
-;141:===============
-;142:*/
-;143:
-;144:static void Main_MenuDraw( void ) {
-line 151
-;145:	refdef_t		refdef;
-;146:	refEntity_t		ent;
-;147:	vec3_t			origin;
-;148:	vec3_t			angles;
-;149:	float			adjust;
-;150:	float			x, y, w, h;
-;151:	vec4_t			color = {0.5, 0, 0, 1};
+line 145
+;136:}
+;137:
+;138:/*
+;139:===============
+;140:Main_MenuDraw
+;141:TTimo: this function is common to the main menu and errorMessage menu
+;142:===============
+;143:*/
+;144:
+;145:static void Main_MenuDraw( void ) {
+line 152
+;146:	refdef_t		refdef;
+;147:	refEntity_t		ent;
+;148:	vec3_t			origin;
+;149:	vec3_t			angles;
+;150:	float			adjust;
+;151:	float			x, y, w, h;
+;152:	vec4_t			color = {0.5, 0, 0, 1};
 ADDRLP4 552
 ADDRGP4 $101
 INDIRB
 ASGNB 16
-line 155
-;152:
-;153:	// setup the refdef
-;154:
-;155:	memset( &refdef, 0, sizeof( refdef ) );
+line 156
+;153:
+;154:	// setup the refdef
+;155:
+;156:	memset( &refdef, 0, sizeof( refdef ) );
 ADDRLP4 0
 ARGP4
 CNSTI4 0
@@ -373,43 +376,43 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 157
-;156:
-;157:	refdef.rdflags = RDF_NOWORLDMODEL;
+line 158
+;157:
+;158:	refdef.rdflags = RDF_NOWORLDMODEL;
 ADDRLP4 0+76
 CNSTI4 1
 ASGNI4
-line 159
-;158:
-;159:	AxisClear( refdef.viewaxis );
+line 160
+;159:
+;160:	AxisClear( refdef.viewaxis );
 ADDRLP4 0+36
 ARGP4
 ADDRGP4 AxisClear
 CALLV
 pop
-line 161
-;160:
-;161:	x = 0;
+line 162
+;161:
+;162:	x = 0;
 ADDRLP4 536
 CNSTF4 0
 ASGNF4
-line 162
-;162:	y = 0;
+line 163
+;163:	y = 0;
 ADDRLP4 540
 CNSTF4 0
 ASGNF4
-line 163
-;163:	w = 640;
+line 164
+;164:	w = 640;
 ADDRLP4 544
 CNSTF4 1142947840
 ASGNF4
-line 164
-;164:	h = 120;
+line 165
+;165:	h = 120;
 ADDRLP4 548
 CNSTF4 1123024896
 ASGNF4
-line 165
-;165:	UI_AdjustFrom640( &x, &y, &w, &h );
+line 166
+;166:	UI_AdjustFrom640( &x, &y, &w, &h );
 ADDRLP4 536
 ARGP4
 ADDRLP4 540
@@ -421,90 +424,90 @@ ARGP4
 ADDRGP4 UI_AdjustFrom640
 CALLV
 pop
-line 166
-;166:	refdef.x = x;
+line 167
+;167:	refdef.x = x;
 ADDRLP4 0
 ADDRLP4 536
 INDIRF4
 CVFI4 4
 ASGNI4
-line 167
-;167:	refdef.y = y;
+line 168
+;168:	refdef.y = y;
 ADDRLP4 0+4
 ADDRLP4 540
 INDIRF4
 CVFI4 4
 ASGNI4
-line 168
-;168:	refdef.width = w;
+line 169
+;169:	refdef.width = w;
 ADDRLP4 0+8
 ADDRLP4 544
 INDIRF4
 CVFI4 4
 ASGNI4
-line 169
-;169:	refdef.height = h;
+line 170
+;170:	refdef.height = h;
 ADDRLP4 0+12
 ADDRLP4 548
 INDIRF4
 CVFI4 4
 ASGNI4
-line 171
-;170:
-;171:	adjust = 0; // JDC: Kenneth asked me to stop this 1.0 * sin( (float)uis.realtime / 1000 );
+line 172
+;171:
+;172:	adjust = 0; // JDC: Kenneth asked me to stop this 1.0 * sin( (float)uis.realtime / 1000 );
 ADDRLP4 520
 CNSTF4 0
 ASGNF4
-line 172
-;172:	refdef.fov_x = 60 + adjust;
+line 173
+;173:	refdef.fov_x = 60 + adjust;
 ADDRLP4 0+16
 ADDRLP4 520
 INDIRF4
 CNSTF4 1114636288
 ADDF4
 ASGNF4
-line 173
-;173:	refdef.fov_y = 19.6875 + adjust;
+line 174
+;174:	refdef.fov_y = 19.6875 + adjust;
 ADDRLP4 0+20
 ADDRLP4 520
 INDIRF4
 CNSTF4 1100840960
 ADDF4
 ASGNF4
-line 175
-;174:
-;175:	refdef.time = uis.realtime;
+line 176
+;175:
+;176:	refdef.time = uis.realtime;
 ADDRLP4 0+72
 ADDRGP4 uis+4
 INDIRI4
 ASGNI4
-line 177
-;176:
-;177:	origin[0] = 300;
+line 178
+;177:
+;178:	origin[0] = 300;
 ADDRLP4 508
 CNSTF4 1133903872
 ASGNF4
-line 178
-;178:	origin[1] = 0;
+line 179
+;179:	origin[1] = 0;
 ADDRLP4 508+4
 CNSTF4 0
 ASGNF4
-line 179
-;179:	origin[2] = -32;
+line 180
+;180:	origin[2] = -32;
 ADDRLP4 508+8
 CNSTF4 3254779904
 ASGNF4
-line 181
-;180:
-;181:	trap_R_ClearScene();
+line 182
+;181:
+;182:	trap_R_ClearScene();
 ADDRGP4 trap_R_ClearScene
 CALLV
 pop
-line 185
-;182:
-;183:	// add the model
-;184:
-;185:	memset( &ent, 0, sizeof(ent) );
+line 186
+;183:
+;184:	// add the model
+;185:
+;186:	memset( &ent, 0, sizeof(ent) );
 ADDRLP4 368
 ARGP4
 CNSTI4 0
@@ -514,9 +517,9 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 187
-;186:
-;187:	adjust = 5.0 * sin( (float)uis.realtime / 5000 );
+line 188
+;187:
+;188:	adjust = 5.0 * sin( (float)uis.realtime / 5000 );
 ADDRGP4 uis+4
 INDIRI4
 CVIF4 4
@@ -533,8 +536,8 @@ ADDRLP4 568
 INDIRF4
 MULF4
 ASGNF4
-line 188
-;188:	VectorSet( angles, 0, 180 + adjust, 0 );
+line 189
+;189:	VectorSet( angles, 0, 180 + adjust, 0 );
 ADDRLP4 524
 CNSTF4 0
 ASGNF4
@@ -547,8 +550,8 @@ ASGNF4
 ADDRLP4 524+8
 CNSTF4 0
 ASGNF4
-line 189
-;189:	AnglesToAxis( angles, ent.axis );
+line 190
+;190:	AnglesToAxis( angles, ent.axis );
 ADDRLP4 524
 ARGP4
 ADDRLP4 368+28
@@ -556,54 +559,54 @@ ARGP4
 ADDRGP4 AnglesToAxis
 CALLV
 pop
-line 190
-;190:	ent.hModel = s_main.bannerModel;
+line 191
+;191:	ent.hModel = s_main.bannerModel;
 ADDRLP4 368+8
 ADDRGP4 s_main+1040
 INDIRI4
 ASGNI4
-line 191
-;191:	VectorCopy( origin, ent.origin );
-ADDRLP4 368+68
-ADDRLP4 508
-INDIRB
-ASGNB 12
 line 192
-;192:	VectorCopy( origin, ent.lightingOrigin );
-ADDRLP4 368+12
+;192:	VectorCopy( origin, ent.origin );
+ADDRLP4 368+68
 ADDRLP4 508
 INDIRB
 ASGNB 12
 line 193
-;193:	ent.renderfx = RF_LIGHTING_ORIGIN | RF_NOSHADOW;
+;193:	VectorCopy( origin, ent.lightingOrigin );
+ADDRLP4 368+12
+ADDRLP4 508
+INDIRB
+ASGNB 12
+line 194
+;194:	ent.renderfx = RF_LIGHTING_ORIGIN | RF_NOSHADOW;
 ADDRLP4 368+4
 CNSTI4 192
 ASGNI4
-line 194
-;194:	VectorCopy( ent.origin, ent.oldorigin );
+line 195
+;195:	VectorCopy( ent.origin, ent.oldorigin );
 ADDRLP4 368+84
 ADDRLP4 368+68
 INDIRB
 ASGNB 12
-line 196
-;195:
-;196:	trap_R_AddRefEntityToScene( &ent );
+line 197
+;196:
+;197:	trap_R_AddRefEntityToScene( &ent );
 ADDRLP4 368
 ARGP4
 ADDRGP4 trap_R_AddRefEntityToScene
 CALLV
 pop
-line 198
-;197:
-;198:	trap_R_RenderScene( &refdef );
+line 199
+;198:
+;199:	trap_R_RenderScene( &refdef );
 ADDRLP4 0
 ARGP4
 ADDRGP4 trap_R_RenderScene
 CALLV
 pop
-line 200
-;199:	
-;200:	if (strlen(s_errorMessage.errorMessage))
+line 201
+;200:	
+;201:	if (strlen(s_errorMessage.errorMessage))
 ADDRGP4 s_errorMessage+288
 ARGP4
 ADDRLP4 572
@@ -614,10 +617,10 @@ ADDRLP4 572
 INDIRI4
 CNSTI4 0
 EQI4 $124
-line 201
-;201:	{
 line 202
-;202:		UI_DrawProportionalString_AutoWrapped( 320, 192, 600, 20, s_errorMessage.errorMessage, UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, menu_text_color );
+;202:	{
+line 203
+;203:		UI_DrawProportionalString_AutoWrapped( 320, 192, 600, 20, s_errorMessage.errorMessage, UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, menu_text_color );
 CNSTI4 320
 ARGI4
 CNSTI4 192
@@ -635,34 +638,34 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString_AutoWrapped
 CALLV
 pop
-line 203
-;203:	}
+line 204
+;204:	}
 ADDRGP4 $125
 JUMPV
 LABELV $124
-line 205
-;204:	else
-;205:	{
-line 207
-;206:		// standard menu drawing
-;207:		Menu_Draw( &s_main.menu );		
+line 206
+;205:	else
+;206:	{
+line 208
+;207:		// standard menu drawing
+;208:		Menu_Draw( &s_main.menu );		
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 Menu_Draw
 CALLV
 pop
-line 208
-;208:	}
+line 209
+;209:	}
 LABELV $125
-line 210
-;209:
-;210:	if (uis.demoversion) {
+line 211
+;210:
+;211:	if (uis.demoversion) {
 ADDRGP4 uis+11440
 INDIRI4
 CNSTI4 0
 EQI4 $128
-line 211
-;211:		UI_DrawProportionalString( 320, 372, "DEMO      FOR MATURE AUDIENCES      DEMO", UI_CENTER|UI_SMALLFONT, color );
+line 212
+;212:		UI_DrawProportionalString( 320, 372, "DEMO      FOR MATURE AUDIENCES      DEMO", UI_CENTER|UI_SMALLFONT, color );
 CNSTI4 320
 ARGI4
 CNSTI4 372
@@ -676,8 +679,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 212
-;212:		UI_DrawString( 320, 400, "Tredpidation (c)2007, Human Complex", UI_CENTER|UI_SMALLFONT, color );
+line 213
+;213:		UI_DrawString( 320, 400, "Tredpidation (c)2007, Human Complex", UI_CENTER|UI_SMALLFONT, color );
 CNSTI4 320
 ARGI4
 CNSTI4 400
@@ -691,13 +694,13 @@ ARGP4
 ADDRGP4 UI_DrawString
 CALLV
 pop
-line 213
-;213:	} else {
+line 214
+;214:	} else {
 ADDRGP4 $129
 JUMPV
 LABELV $128
-line 214
-;214:		UI_DrawString( 320, 450, "Tredpidation (c)2007, Human Complex", UI_CENTER|UI_SMALLFONT, color );
+line 215
+;215:		UI_DrawString( 320, 450, "Tredpidation (c)2007, Human Complex", UI_CENTER|UI_SMALLFONT, color );
 CNSTI4 320
 ARGI4
 CNSTI4 450
@@ -711,32 +714,32 @@ ARGP4
 ADDRGP4 UI_DrawString
 CALLV
 pop
-line 215
-;215:	}
-LABELV $129
 line 216
-;216:}
+;216:	}
+LABELV $129
+line 217
+;217:}
 LABELV $100
 endproc Main_MenuDraw 576 28
 proc UI_TeamArenaExists 2084 16
-line 224
-;217:
+line 225
 ;218:
-;219:/*
-;220:===============
-;221:UI_TeamArenaExists
-;222:===============
-;223:*/
-;224:static qboolean UI_TeamArenaExists( void ) {
-line 232
-;225:	int		numdirs;
-;226:	char	dirlist[2048];
-;227:	char	*dirptr;
-;228:  char  *descptr;
-;229:	int		i;
-;230:	int		dirlen;
-;231:
-;232:	numdirs = trap_FS_GetFileList( "$modlist", "", dirlist, sizeof(dirlist) );
+;219:
+;220:/*
+;221:===============
+;222:UI_TeamArenaExists
+;223:===============
+;224:*/
+;225:static qboolean UI_TeamArenaExists( void ) {
+line 233
+;226:	int		numdirs;
+;227:	char	dirlist[2048];
+;228:	char	*dirptr;
+;229:  char  *descptr;
+;230:	int		i;
+;231:	int		dirlen;
+;232:
+;233:	numdirs = trap_FS_GetFileList( "$modlist", "", dirlist, sizeof(dirlist) );
 ADDRGP4 $134
 ARGP4
 ADDRGP4 $99
@@ -753,21 +756,21 @@ ADDRLP4 16
 ADDRLP4 2068
 INDIRI4
 ASGNI4
-line 233
-;233:	dirptr  = dirlist;
+line 234
+;234:	dirptr  = dirlist;
 ADDRLP4 0
 ADDRLP4 20
 ASGNP4
-line 234
-;234:	for( i = 0; i < numdirs; i++ ) {
+line 235
+;235:	for( i = 0; i < numdirs; i++ ) {
 ADDRLP4 8
 CNSTI4 0
 ASGNI4
 ADDRGP4 $138
 JUMPV
 LABELV $135
-line 235
-;235:		dirlen = strlen( dirptr ) + 1;
+line 236
+;236:		dirlen = strlen( dirptr ) + 1;
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -781,8 +784,8 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 236
-;236:    descptr = dirptr + dirlen;
+line 237
+;237:    descptr = dirptr + dirlen;
 ADDRLP4 12
 ADDRLP4 4
 INDIRI4
@@ -790,8 +793,8 @@ ADDRLP4 0
 INDIRP4
 ADDP4
 ASGNP4
-line 237
-;237:		if (Q_stricmp(dirptr, "missionpack") == 0) {
+line 238
+;238:		if (Q_stricmp(dirptr, "missionpack") == 0) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -805,16 +808,16 @@ ADDRLP4 2076
 INDIRI4
 CNSTI4 0
 NEI4 $139
-line 238
-;238:			return qtrue;
+line 239
+;239:			return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $133
 JUMPV
 LABELV $139
-line 240
-;239:		}
-;240:    dirptr += dirlen + strlen(descptr) + 1;
+line 241
+;240:		}
+;241:    dirptr += dirlen + strlen(descptr) + 1;
 ADDRLP4 12
 INDIRP4
 ARGP4
@@ -834,10 +837,10 @@ ADDRLP4 0
 INDIRP4
 ADDP4
 ASGNP4
-line 241
-;241:	}
+line 242
+;242:	}
 LABELV $136
-line 234
+line 235
 ADDRLP4 8
 ADDRLP4 8
 INDIRI4
@@ -850,42 +853,42 @@ INDIRI4
 ADDRLP4 16
 INDIRI4
 LTI4 $135
-line 242
-;242:	return qfalse;
+line 243
+;243:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $133
 endproc UI_TeamArenaExists 2084 16
 export UI_MainMenu
 proc UI_MainMenu 40 12
-line 255
-;243:}
-;244:
+line 256
+;244:}
 ;245:
-;246:/*
-;247:===============
-;248:UI_MainMenu
-;249:
-;250:The main menu only comes up when not in a game,
-;251:so make sure that the attract loop server is down
-;252:and that local cinematics are killed
-;253:===============
-;254:*/
-;255:void UI_MainMenu( void ) {
-line 257
-;256:	int		y;
-;257:	qboolean teamArena = qfalse;
+;246:
+;247:/*
+;248:===============
+;249:UI_MainMenu
+;250:
+;251:The main menu only comes up when not in a game,
+;252:so make sure that the attract loop server is down
+;253:and that local cinematics are killed
+;254:===============
+;255:*/
+;256:void UI_MainMenu( void ) {
+line 258
+;257:	int		y;
+;258:	qboolean teamArena = qfalse;
 ADDRLP4 8
 CNSTI4 0
 ASGNI4
-line 258
-;258:	int		style = UI_CENTER | UI_DROPSHADOW;
+line 259
+;259:	int		style = UI_CENTER | UI_DROPSHADOW;
 ADDRLP4 4
 CNSTI4 2049
 ASGNI4
-line 260
-;259:
-;260:	trap_Cvar_Set( "sv_killserver", "1" );
+line 261
+;260:
+;261:	trap_Cvar_Set( "sv_killserver", "1" );
 ADDRGP4 $142
 ARGP4
 ADDRGP4 $143
@@ -893,9 +896,9 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 262
-;261:
-;262:	if( !uis.demoversion && !ui_cdkeychecked.integer ) {
+line 263
+;262:
+;263:	if( !uis.demoversion && !ui_cdkeychecked.integer ) {
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
@@ -909,10 +912,10 @@ INDIRI4
 ADDRLP4 12
 INDIRI4
 NEI4 $144
-line 265
-;263:		char	key[17];
-;264:
-;265:		trap_GetCDKey( key, sizeof(key) );
+line 266
+;264:		char	key[17];
+;265:
+;266:		trap_GetCDKey( key, sizeof(key) );
 ADDRLP4 16
 ARGP4
 CNSTI4 17
@@ -920,8 +923,8 @@ ARGI4
 ADDRGP4 trap_GetCDKey
 CALLV
 pop
-line 266
-;266:		if( trap_VerifyCDKey( key, NULL ) == qfalse ) {
+line 267
+;267:		if( trap_VerifyCDKey( key, NULL ) == qfalse ) {
 ADDRLP4 16
 ARGP4
 CNSTP4 0
@@ -934,17 +937,17 @@ ADDRLP4 36
 INDIRI4
 CNSTI4 0
 NEI4 $148
-line 269
-;267:			//UI_CDKeyMenu();
-;268:			//return;
-;269:		}
-LABELV $148
 line 270
-;270:	}
+;268:			//UI_CDKeyMenu();
+;269:			//return;
+;270:		}
+LABELV $148
+line 271
+;271:	}
 LABELV $144
-line 272
-;271:	
-;272:	memset( &s_main, 0 ,sizeof(mainmenu_t) );
+line 273
+;272:	
+;273:	memset( &s_main, 0 ,sizeof(mainmenu_t) );
 ADDRGP4 s_main
 ARGP4
 CNSTI4 0
@@ -954,8 +957,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 273
-;273:	memset( &s_errorMessage, 0 ,sizeof(errorMessage_t) );
+line 274
+;274:	memset( &s_errorMessage, 0 ,sizeof(errorMessage_t) );
 ADDRGP4 s_errorMessage
 ARGP4
 CNSTI4 0
@@ -965,16 +968,16 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 276
-;274:
-;275:	// com_errorMessage would need that too
-;276:	MainMenu_Cache();
+line 277
+;275:
+;276:	// com_errorMessage would need that too
+;277:	MainMenu_Cache();
 ADDRGP4 MainMenu_Cache
 CALLV
 pop
-line 278
-;277:	
-;278:	trap_Cvar_VariableStringBuffer( "com_errorMessage", s_errorMessage.errorMessage, sizeof(s_errorMessage.errorMessage) );
+line 279
+;278:	
+;279:	trap_Cvar_VariableStringBuffer( "com_errorMessage", s_errorMessage.errorMessage, sizeof(s_errorMessage.errorMessage) );
 ADDRGP4 $98
 ARGP4
 ADDRGP4 s_errorMessage+288
@@ -984,8 +987,8 @@ ARGI4
 ADDRGP4 trap_Cvar_VariableStringBuffer
 CALLV
 pop
-line 279
-;279:	if (strlen(s_errorMessage.errorMessage))
+line 280
+;280:	if (strlen(s_errorMessage.errorMessage))
 ADDRGP4 s_errorMessage+288
 ARGP4
 ADDRLP4 16
@@ -996,448 +999,448 @@ ADDRLP4 16
 INDIRI4
 CNSTI4 0
 EQI4 $152
-line 280
-;280:	{	
 line 281
-;281:		s_errorMessage.menu.draw = Main_MenuDraw;
+;281:	{	
+line 282
+;282:		s_errorMessage.menu.draw = Main_MenuDraw;
 ADDRGP4 s_errorMessage+268
 ADDRGP4 Main_MenuDraw
 ASGNP4
-line 282
-;282:		s_errorMessage.menu.key = ErrorMessage_Key;
+line 283
+;283:		s_errorMessage.menu.key = ErrorMessage_Key;
 ADDRGP4 s_errorMessage+272
 ADDRGP4 ErrorMessage_Key
 ASGNP4
-line 283
-;283:		s_errorMessage.menu.fullscreen = qtrue;
+line 284
+;284:		s_errorMessage.menu.fullscreen = qtrue;
 ADDRGP4 s_errorMessage+280
 CNSTI4 1
 ASGNI4
-line 284
-;284:		s_errorMessage.menu.wrapAround = qtrue;
+line 285
+;285:		s_errorMessage.menu.wrapAround = qtrue;
 ADDRGP4 s_errorMessage+276
 CNSTI4 1
 ASGNI4
-line 285
-;285:		s_errorMessage.menu.showlogo = qfalse;	// Shafe - Trep - Temporarily qfalse
+line 286
+;286:		s_errorMessage.menu.showlogo = qfalse;	// Shafe - Trep - Temporarily qfalse
 ADDRGP4 s_errorMessage+284
 CNSTI4 0
 ASGNI4
-line 287
-;286:
-;287:		trap_Key_SetCatcher( KEYCATCH_UI );
+line 288
+;287:
+;288:		trap_Key_SetCatcher( KEYCATCH_UI );
 CNSTI4 2
 ARGI4
 ADDRGP4 trap_Key_SetCatcher
 CALLV
 pop
-line 288
-;288:		uis.menusp = 0;
+line 289
+;289:		uis.menusp = 0;
 ADDRGP4 uis+16
 CNSTI4 0
 ASGNI4
-line 289
-;289:		UI_PushMenu ( &s_errorMessage.menu );
+line 290
+;290:		UI_PushMenu ( &s_errorMessage.menu );
 ADDRGP4 s_errorMessage
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 291
-;290:		
-;291:		return;
+line 292
+;291:		
+;292:		return;
 ADDRGP4 $141
 JUMPV
 LABELV $152
-line 295
-;292:	}
-;293:
+line 296
+;293:	}
 ;294:
-;295:	trap_R_RegisterShaderNoMip( ART_FRAMER );
+;295:
+;296:	trap_R_RegisterShaderNoMip( ART_FRAMER );
 ADDRGP4 $161
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 296
-;296:	trap_R_RegisterShaderNoMip( ART_TREPLOGO );
+line 297
+;297:	trap_R_RegisterShaderNoMip( ART_TREPLOGO );
 ADDRGP4 $162
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 298
-;297:
-;298:	s_main.menu.draw = Main_MenuDraw;
+line 299
+;298:
+;299:	s_main.menu.draw = Main_MenuDraw;
 ADDRGP4 s_main+268
 ADDRGP4 Main_MenuDraw
 ASGNP4
-line 299
-;299:	s_main.menu.fullscreen = qtrue;
+line 300
+;300:	s_main.menu.fullscreen = qtrue;
 ADDRGP4 s_main+280
 CNSTI4 1
 ASGNI4
-line 300
-;300:	s_main.menu.wrapAround = qtrue;
+line 301
+;301:	s_main.menu.wrapAround = qtrue;
 ADDRGP4 s_main+276
 CNSTI4 1
 ASGNI4
-line 301
-;301:	s_main.menu.showlogo = qfalse; // Shafe - Trep - Temporarily qfalse
+line 302
+;302:	s_main.menu.showlogo = qfalse; // Shafe - Trep - Temporarily qfalse
 ADDRGP4 s_main+284
 CNSTI4 0
 ASGNI4
-line 303
-;302:
-;303:	s_main.framer.generic.type		= MTYPE_BITMAP;
+line 304
+;303:
+;304:	s_main.framer.generic.type		= MTYPE_BITMAP;
 ADDRGP4 s_main+864
 CNSTI4 6
 ASGNI4
-line 304
-;304:	s_main.framer.generic.name		= ART_FRAMER;
+line 305
+;305:	s_main.framer.generic.name		= ART_FRAMER;
 ADDRGP4 s_main+864+4
 ADDRGP4 $161
 ASGNP4
-line 305
-;305:	s_main.framer.generic.flags		= QMF_INACTIVE;
+line 306
+;306:	s_main.framer.generic.flags		= QMF_INACTIVE;
 ADDRGP4 s_main+864+44
 CNSTU4 16384
 ASGNU4
-line 306
-;306:	s_main.framer.generic.x			= 0;  
+line 307
+;307:	s_main.framer.generic.x			= 0;  
 ADDRGP4 s_main+864+12
 CNSTI4 0
 ASGNI4
-line 307
-;307:	s_main.framer.generic.y			= 0;
+line 308
+;308:	s_main.framer.generic.y			= 0;
 ADDRGP4 s_main+864+16
 CNSTI4 0
 ASGNI4
-line 308
-;308:	s_main.framer.width				= 800;
+line 309
+;309:	s_main.framer.width				= 800;
 ADDRGP4 s_main+864+76
 CNSTI4 800
 ASGNI4
-line 309
-;309:	s_main.framer.height			= 600;
+line 310
+;310:	s_main.framer.height			= 600;
 ADDRGP4 s_main+864+80
 CNSTI4 600
 ASGNI4
-line 312
-;310:
+line 313
 ;311:
-;312:	s_main.treplogo.generic.type		= MTYPE_BITMAP;
+;312:
+;313:	s_main.treplogo.generic.type		= MTYPE_BITMAP;
 ADDRGP4 s_main+952
 CNSTI4 6
 ASGNI4
-line 313
-;313:	s_main.treplogo.generic.name		= ART_TREPLOGO;
+line 314
+;314:	s_main.treplogo.generic.name		= ART_TREPLOGO;
 ADDRGP4 s_main+952+4
 ADDRGP4 $162
 ASGNP4
-line 314
-;314:	s_main.treplogo.generic.flags		= QMF_INACTIVE;
+line 315
+;315:	s_main.treplogo.generic.flags		= QMF_INACTIVE;
 ADDRGP4 s_main+952+44
 CNSTU4 16384
 ASGNU4
-line 315
-;315:	s_main.treplogo.generic.x			= 0;  
+line 316
+;316:	s_main.treplogo.generic.x			= 0;  
 ADDRGP4 s_main+952+12
 CNSTI4 0
 ASGNI4
-line 316
-;316:	s_main.treplogo.generic.y			= 1;
+line 317
+;317:	s_main.treplogo.generic.y			= 1;
 ADDRGP4 s_main+952+16
 CNSTI4 1
 ASGNI4
-line 317
-;317:	s_main.treplogo.width				= 225;
+line 318
+;318:	s_main.treplogo.width				= 225;
 ADDRGP4 s_main+952+76
 CNSTI4 225
 ASGNI4
-line 318
-;318:	s_main.treplogo.height			= 100;
+line 319
+;319:	s_main.treplogo.height			= 100;
 ADDRGP4 s_main+952+80
 CNSTI4 100
 ASGNI4
-line 321
-;319:
+line 322
 ;320:
-;321:	y = 134;
+;321:
+;322:	y = 134;
 ADDRLP4 0
 CNSTI4 134
 ASGNI4
-line 322
-;322:	s_main.multiplayer.generic.type			= MTYPE_PTEXT;
+line 323
+;323:	s_main.multiplayer.generic.type			= MTYPE_PTEXT;
 ADDRGP4 s_main+360
 CNSTI4 9
 ASGNI4
-line 323
-;323:	s_main.multiplayer.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 324
+;324:	s_main.multiplayer.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_main+360+44
 CNSTU4 264
 ASGNU4
-line 324
-;324:	s_main.multiplayer.generic.x			= 320;
+line 325
+;325:	s_main.multiplayer.generic.x			= 320;
 ADDRGP4 s_main+360+12
 CNSTI4 320
 ASGNI4
-line 325
-;325:	s_main.multiplayer.generic.y			= y;
+line 326
+;326:	s_main.multiplayer.generic.y			= y;
 ADDRGP4 s_main+360+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 326
-;326:	s_main.multiplayer.generic.id			= ID_MULTIPLAYER;
+line 327
+;327:	s_main.multiplayer.generic.id			= ID_MULTIPLAYER;
 ADDRGP4 s_main+360+8
 CNSTI4 11
 ASGNI4
-line 327
-;327:	s_main.multiplayer.generic.callback		= Main_MenuEvent; 
+line 328
+;328:	s_main.multiplayer.generic.callback		= Main_MenuEvent; 
 ADDRGP4 s_main+360+48
 ADDRGP4 Main_MenuEvent
 ASGNP4
-line 328
-;328:	s_main.multiplayer.string				= "PLAY TREPIDATION ONLINE"; // Shafe - Trep - Minor Text Change
+line 329
+;329:	s_main.multiplayer.string				= "PLAY TREPIDATION ONLINE"; // Shafe - Trep - Minor Text Change
 ADDRGP4 s_main+360+60
 ADDRGP4 $206
 ASGNP4
-line 329
-;329:	s_main.multiplayer.color				= color_red;
+line 330
+;330:	s_main.multiplayer.color				= color_red;
 ADDRGP4 s_main+360+68
 ADDRGP4 color_red
 ASGNP4
-line 330
-;330:	s_main.multiplayer.style				= style;
+line 331
+;331:	s_main.multiplayer.style				= style;
 ADDRGP4 s_main+360+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 333
-;331:
+line 334
 ;332:
-;333:	y += MAIN_MENU_VERTICAL_SPACING;
+;333:
+;334:	y += MAIN_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 334
-;334:	s_main.singleplayer.generic.type		= MTYPE_PTEXT;
+line 335
+;335:	s_main.singleplayer.generic.type		= MTYPE_PTEXT;
 ADDRGP4 s_main+288
 CNSTI4 9
 ASGNI4
-line 335
-;335:	s_main.singleplayer.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 336
+;336:	s_main.singleplayer.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_main+288+44
 CNSTU4 264
 ASGNU4
-line 336
-;336:	s_main.singleplayer.generic.x			= 320;
+line 337
+;337:	s_main.singleplayer.generic.x			= 320;
 ADDRGP4 s_main+288+12
 CNSTI4 320
 ASGNI4
-line 337
-;337:	s_main.singleplayer.generic.y			= y;
+line 338
+;338:	s_main.singleplayer.generic.y			= y;
 ADDRGP4 s_main+288+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 338
-;338:	s_main.singleplayer.generic.id			= ID_SINGLEPLAYER;
+line 339
+;339:	s_main.singleplayer.generic.id			= ID_SINGLEPLAYER;
 ADDRGP4 s_main+288+8
 CNSTI4 10
 ASGNI4
-line 339
-;339:	s_main.singleplayer.generic.callback	= Main_MenuEvent; 
+line 340
+;340:	s_main.singleplayer.generic.callback	= Main_MenuEvent; 
 ADDRGP4 s_main+288+48
 ADDRGP4 Main_MenuEvent
 ASGNP4
-line 340
-;340:	s_main.singleplayer.string				= "PLAY OFFLINE ";
+line 341
+;341:	s_main.singleplayer.string				= "PLAY OFFLINE ";
 ADDRGP4 s_main+288+60
 ADDRGP4 $224
 ASGNP4
-line 341
-;341:	s_main.singleplayer.color				= color_red;
+line 342
+;342:	s_main.singleplayer.color				= color_red;
 ADDRGP4 s_main+288+68
 ADDRGP4 color_red
 ASGNP4
-line 342
-;342:	s_main.singleplayer.style				= style;
+line 343
+;343:	s_main.singleplayer.style				= style;
 ADDRGP4 s_main+288+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 345
-;343:	
+line 346
 ;344:	
-;345:	y += MAIN_MENU_VERTICAL_SPACING;
+;345:	
+;346:	y += MAIN_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 346
-;346:	s_main.setup.generic.type				= MTYPE_PTEXT;
+line 347
+;347:	s_main.setup.generic.type				= MTYPE_PTEXT;
 ADDRGP4 s_main+432
 CNSTI4 9
 ASGNI4
-line 347
-;347:	s_main.setup.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 348
+;348:	s_main.setup.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_main+432+44
 CNSTU4 264
 ASGNU4
-line 348
-;348:	s_main.setup.generic.x					= 320;
+line 349
+;349:	s_main.setup.generic.x					= 320;
 ADDRGP4 s_main+432+12
 CNSTI4 320
 ASGNI4
-line 349
-;349:	s_main.setup.generic.y					= y;
+line 350
+;350:	s_main.setup.generic.y					= y;
 ADDRGP4 s_main+432+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 350
-;350:	s_main.setup.generic.id					= ID_SETUP;
+line 351
+;351:	s_main.setup.generic.id					= ID_SETUP;
 ADDRGP4 s_main+432+8
 CNSTI4 12
 ASGNI4
-line 351
-;351:	s_main.setup.generic.callback			= Main_MenuEvent; 
+line 352
+;352:	s_main.setup.generic.callback			= Main_MenuEvent; 
 ADDRGP4 s_main+432+48
 ADDRGP4 Main_MenuEvent
 ASGNP4
-line 352
-;352:	s_main.setup.string						= "SETUP";
+line 353
+;353:	s_main.setup.string						= "SETUP";
 ADDRGP4 s_main+432+60
 ADDRGP4 $242
 ASGNP4
-line 353
-;353:	s_main.setup.color						= color_red;
+line 354
+;354:	s_main.setup.color						= color_red;
 ADDRGP4 s_main+432+68
 ADDRGP4 color_red
 ASGNP4
-line 354
-;354:	s_main.setup.style						= style;
+line 355
+;355:	s_main.setup.style						= style;
 ADDRGP4 s_main+432+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 357
-;355:
-;356:	
-;357:	y += MAIN_MENU_VERTICAL_SPACING;
+line 358
+;356:
+;357:	
+;358:	y += MAIN_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 358
-;358:	s_main.demos.generic.type				= MTYPE_PTEXT;
+line 359
+;359:	s_main.demos.generic.type				= MTYPE_PTEXT;
 ADDRGP4 s_main+504
 CNSTI4 9
 ASGNI4
-line 359
-;359:	s_main.demos.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 360
+;360:	s_main.demos.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_main+504+44
 CNSTU4 264
 ASGNU4
-line 360
-;360:	s_main.demos.generic.x					= 320;
+line 361
+;361:	s_main.demos.generic.x					= 320;
 ADDRGP4 s_main+504+12
 CNSTI4 320
 ASGNI4
-line 361
-;361:	s_main.demos.generic.y					= y;
+line 362
+;362:	s_main.demos.generic.y					= y;
 ADDRGP4 s_main+504+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 362
-;362:	s_main.demos.generic.id					= ID_DEMOS;
+line 363
+;363:	s_main.demos.generic.id					= ID_DEMOS;
 ADDRGP4 s_main+504+8
 CNSTI4 13
 ASGNI4
-line 363
-;363:	s_main.demos.generic.callback			= Main_MenuEvent; 
+line 364
+;364:	s_main.demos.generic.callback			= Main_MenuEvent; 
 ADDRGP4 s_main+504+48
 ADDRGP4 Main_MenuEvent
 ASGNP4
-line 364
-;364:	s_main.demos.string						= "DEMOS";
+line 365
+;365:	s_main.demos.string						= "DEMOS";
 ADDRGP4 s_main+504+60
 ADDRGP4 $260
 ASGNP4
-line 365
-;365:	s_main.demos.color						= color_red;
+line 366
+;366:	s_main.demos.color						= color_red;
 ADDRGP4 s_main+504+68
 ADDRGP4 color_red
 ASGNP4
-line 366
-;366:	s_main.demos.style						= style;
+line 367
+;367:	s_main.demos.style						= style;
 ADDRGP4 s_main+504+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 369
-;367:
-;368:	//y += MAIN_MENU_VERTICAL_SPACING;
-;369:	s_main.cinematics.generic.type			= MTYPE_PTEXT;
+line 370
+;368:
+;369:	//y += MAIN_MENU_VERTICAL_SPACING;
+;370:	s_main.cinematics.generic.type			= MTYPE_PTEXT;
 ADDRGP4 s_main+576
 CNSTI4 9
 ASGNI4
-line 370
-;370:	s_main.cinematics.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 371
+;371:	s_main.cinematics.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_main+576+44
 CNSTU4 264
 ASGNU4
-line 371
-;371:	s_main.cinematics.generic.x				= 320;
+line 372
+;372:	s_main.cinematics.generic.x				= 320;
 ADDRGP4 s_main+576+12
 CNSTI4 320
 ASGNI4
-line 372
-;372:	s_main.cinematics.generic.y				= y;
+line 373
+;373:	s_main.cinematics.generic.y				= y;
 ADDRGP4 s_main+576+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 373
-;373:	s_main.cinematics.generic.id			= ID_CINEMATICS;
+line 374
+;374:	s_main.cinematics.generic.id			= ID_CINEMATICS;
 ADDRGP4 s_main+576+8
 CNSTI4 14
 ASGNI4
-line 374
-;374:	s_main.cinematics.generic.callback		= Main_MenuEvent; 
+line 375
+;375:	s_main.cinematics.generic.callback		= Main_MenuEvent; 
 ADDRGP4 s_main+576+48
 ADDRGP4 Main_MenuEvent
 ASGNP4
-line 375
-;375:	s_main.cinematics.string				= "CINEMATICS";
+line 376
+;376:	s_main.cinematics.string				= "CINEMATICS";
 ADDRGP4 s_main+576+60
 ADDRGP4 $278
 ASGNP4
-line 376
-;376:	s_main.cinematics.color					= color_red;
+line 377
+;377:	s_main.cinematics.color					= color_red;
 ADDRGP4 s_main+576+68
 ADDRGP4 color_red
 ASGNP4
-line 377
-;377:	s_main.cinematics.style					= style;
+line 378
+;378:	s_main.cinematics.style					= style;
 ADDRGP4 s_main+576+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 380
-;378:	
-;379:
-;380:	if (UI_TeamArenaExists()) {
+line 381
+;379:	
+;380:
+;381:	if (UI_TeamArenaExists()) {
 ADDRLP4 20
 ADDRGP4 UI_TeamArenaExists
 CALLI4
@@ -1446,177 +1449,177 @@ ADDRLP4 20
 INDIRI4
 CNSTI4 0
 EQI4 $283
-line 381
-;381:		teamArena = qtrue;
+line 382
+;382:		teamArena = qtrue;
 ADDRLP4 8
 CNSTI4 1
 ASGNI4
-line 382
-;382:		y += MAIN_MENU_VERTICAL_SPACING;
+line 383
+;383:		y += MAIN_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 383
-;383:		s_main.teamArena.generic.type			= MTYPE_PTEXT;
+line 384
+;384:		s_main.teamArena.generic.type			= MTYPE_PTEXT;
 ADDRGP4 s_main+648
 CNSTI4 9
 ASGNI4
-line 384
-;384:		s_main.teamArena.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 385
+;385:		s_main.teamArena.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_main+648+44
 CNSTU4 264
 ASGNU4
-line 385
-;385:		s_main.teamArena.generic.x				= 320;
+line 386
+;386:		s_main.teamArena.generic.x				= 320;
 ADDRGP4 s_main+648+12
 CNSTI4 320
 ASGNI4
-line 386
-;386:		s_main.teamArena.generic.y				= y;
+line 387
+;387:		s_main.teamArena.generic.y				= y;
 ADDRGP4 s_main+648+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 387
-;387:		s_main.teamArena.generic.id				= ID_TEAMARENA;
+line 388
+;388:		s_main.teamArena.generic.id				= ID_TEAMARENA;
 ADDRGP4 s_main+648+8
 CNSTI4 15
 ASGNI4
-line 388
-;388:		s_main.teamArena.generic.callback		= Main_MenuEvent; 
+line 389
+;389:		s_main.teamArena.generic.callback		= Main_MenuEvent; 
 ADDRGP4 s_main+648+48
 ADDRGP4 Main_MenuEvent
 ASGNP4
-line 389
-;389:		s_main.teamArena.string					= "TEAM ARENA";
+line 390
+;390:		s_main.teamArena.string					= "TEAM ARENA";
 ADDRGP4 s_main+648+60
 ADDRGP4 $298
 ASGNP4
-line 390
-;390:		s_main.teamArena.color					= color_red;
+line 391
+;391:		s_main.teamArena.color					= color_red;
 ADDRGP4 s_main+648+68
 ADDRGP4 color_red
 ASGNP4
-line 391
-;391:		s_main.teamArena.style					= style;
+line 392
+;392:		s_main.teamArena.style					= style;
 ADDRGP4 s_main+648+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 392
-;392:	}
+line 393
+;393:	}
 LABELV $283
-line 395
-;393:
-;394:	//y += MAIN_MENU_VERTICAL_SPACING;
-;395:	s_main.mods.generic.type			= MTYPE_PTEXT;
+line 396
+;394:
+;395:	//y += MAIN_MENU_VERTICAL_SPACING;
+;396:	s_main.mods.generic.type			= MTYPE_PTEXT;
 ADDRGP4 s_main+720
 CNSTI4 9
 ASGNI4
-line 396
-;396:	s_main.mods.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 397
+;397:	s_main.mods.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_main+720+44
 CNSTU4 264
 ASGNU4
-line 397
-;397:	s_main.mods.generic.x				= 320;
+line 398
+;398:	s_main.mods.generic.x				= 320;
 ADDRGP4 s_main+720+12
 CNSTI4 320
 ASGNI4
-line 398
-;398:	s_main.mods.generic.y				= y;
+line 399
+;399:	s_main.mods.generic.y				= y;
 ADDRGP4 s_main+720+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 399
-;399:	s_main.mods.generic.id				= ID_MODS;
+line 400
+;400:	s_main.mods.generic.id				= ID_MODS;
 ADDRGP4 s_main+720+8
 CNSTI4 16
 ASGNI4
-line 400
-;400:	s_main.mods.generic.callback		= Main_MenuEvent; 
+line 401
+;401:	s_main.mods.generic.callback		= Main_MenuEvent; 
 ADDRGP4 s_main+720+48
 ADDRGP4 Main_MenuEvent
 ASGNP4
-line 401
-;401:	s_main.mods.string					= "MODS";
+line 402
+;402:	s_main.mods.string					= "MODS";
 ADDRGP4 s_main+720+60
 ADDRGP4 $316
 ASGNP4
-line 402
-;402:	s_main.mods.color					= color_red;
+line 403
+;403:	s_main.mods.color					= color_red;
 ADDRGP4 s_main+720+68
 ADDRGP4 color_red
 ASGNP4
-line 403
-;403:	s_main.mods.style					= style;
+line 404
+;404:	s_main.mods.style					= style;
 ADDRGP4 s_main+720+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 405
-;404:
-;405:	y += MAIN_MENU_VERTICAL_SPACING;
+line 406
+;405:
+;406:	y += MAIN_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 406
-;406:	s_main.exit.generic.type				= MTYPE_PTEXT;
+line 407
+;407:	s_main.exit.generic.type				= MTYPE_PTEXT;
 ADDRGP4 s_main+792
 CNSTI4 9
 ASGNI4
-line 407
-;407:	s_main.exit.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 408
+;408:	s_main.exit.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_main+792+44
 CNSTU4 264
 ASGNU4
-line 408
-;408:	s_main.exit.generic.x					= 320;
+line 409
+;409:	s_main.exit.generic.x					= 320;
 ADDRGP4 s_main+792+12
 CNSTI4 320
 ASGNI4
-line 409
-;409:	s_main.exit.generic.y					= y;
+line 410
+;410:	s_main.exit.generic.y					= y;
 ADDRGP4 s_main+792+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 410
-;410:	s_main.exit.generic.id					= ID_EXIT;
+line 411
+;411:	s_main.exit.generic.id					= ID_EXIT;
 ADDRGP4 s_main+792+8
 CNSTI4 17
 ASGNI4
-line 411
-;411:	s_main.exit.generic.callback			= Main_MenuEvent; 
+line 412
+;412:	s_main.exit.generic.callback			= Main_MenuEvent; 
 ADDRGP4 s_main+792+48
 ADDRGP4 Main_MenuEvent
 ASGNP4
-line 412
-;412:	s_main.exit.string						= "EXIT";
+line 413
+;413:	s_main.exit.string						= "EXIT";
 ADDRGP4 s_main+792+60
 ADDRGP4 $334
 ASGNP4
-line 413
-;413:	s_main.exit.color						= color_red;
+line 414
+;414:	s_main.exit.color						= color_red;
 ADDRGP4 s_main+792+68
 ADDRGP4 color_red
 ASGNP4
-line 414
-;414:	s_main.exit.style						= style;
+line 415
+;415:	s_main.exit.style						= style;
 ADDRGP4 s_main+792+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 416
-;415:
-;416:	Menu_AddItem( &s_main.menu, ( void * ) &s_main.framer );
+line 417
+;416:
+;417:	Menu_AddItem( &s_main.menu, ( void * ) &s_main.framer );
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 s_main+864
@@ -1624,8 +1627,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 417
-;417:	Menu_AddItem( &s_main.menu, ( void * ) &s_main.treplogo );
+line 418
+;418:	Menu_AddItem( &s_main.menu, ( void * ) &s_main.treplogo );
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 s_main+952
@@ -1633,9 +1636,9 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 419
-;418:	
-;419:	Menu_AddItem( &s_main.menu,	&s_main.multiplayer );
+line 420
+;419:	
+;420:	Menu_AddItem( &s_main.menu,	&s_main.multiplayer );
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 s_main+360
@@ -1643,8 +1646,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 420
-;420:	Menu_AddItem( &s_main.menu,	&s_main.singleplayer );
+line 421
+;421:	Menu_AddItem( &s_main.menu,	&s_main.singleplayer );
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 s_main+288
@@ -1652,8 +1655,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 421
-;421:	Menu_AddItem( &s_main.menu,	&s_main.setup );
+line 422
+;422:	Menu_AddItem( &s_main.menu,	&s_main.setup );
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 s_main+432
@@ -1661,8 +1664,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 422
-;422:	Menu_AddItem( &s_main.menu,	&s_main.demos );
+line 423
+;423:	Menu_AddItem( &s_main.menu,	&s_main.demos );
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 s_main+504
@@ -1670,15 +1673,15 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 424
-;423:	//Menu_AddItem( &s_main.menu,	&s_main.cinematics );
-;424:	if (teamArena) {
+line 425
+;424:	//Menu_AddItem( &s_main.menu,	&s_main.cinematics );
+;425:	if (teamArena) {
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
 EQI4 $345
-line 425
-;425:		Menu_AddItem( &s_main.menu,	&s_main.teamArena );
+line 426
+;426:		Menu_AddItem( &s_main.menu,	&s_main.teamArena );
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 s_main+648
@@ -1686,12 +1689,12 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 426
-;426:	}
+line 427
+;427:	}
 LABELV $345
-line 428
-;427:	//Menu_AddItem( &s_main.menu,	&s_main.mods );
-;428:	Menu_AddItem( &s_main.menu,	&s_main.exit ); 
+line 429
+;428:	//Menu_AddItem( &s_main.menu,	&s_main.mods );
+;429:	Menu_AddItem( &s_main.menu,	&s_main.exit ); 
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 s_main+792
@@ -1699,22 +1702,22 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 431
-;429:	
-;430:
-;431:	trap_Key_SetCatcher( KEYCATCH_UI );
+line 432
+;430:	
+;431:
+;432:	trap_Key_SetCatcher( KEYCATCH_UI );
 CNSTI4 2
 ARGI4
 ADDRGP4 trap_Key_SetCatcher
 CALLV
 pop
-line 432
-;432:	uis.menusp = 0;
+line 433
+;433:	uis.menusp = 0;
 ADDRGP4 uis+16
 CNSTI4 0
 ASGNI4
-line 433
-;433:	trap_Cmd_ExecuteText( EXEC_APPEND, "music sound/music/credits\n" );
+line 434
+;434:	trap_Cmd_ExecuteText( EXEC_APPEND, "music sound/music/credits\n" );
 CNSTI4 2
 ARGI4
 ADDRGP4 $350
@@ -1722,16 +1725,16 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 434
-;434:	UI_PushMenu ( &s_main.menu );
+line 435
+;435:	UI_PushMenu ( &s_main.menu );
 ADDRGP4 s_main
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 436
-;435:		
-;436:}
+line 437
+;436:		
+;437:}
 LABELV $141
 endproc UI_MainMenu 40 12
 bss
