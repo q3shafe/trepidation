@@ -23,6 +23,7 @@ void CG_DrawScanner( void )
         if(cg.scanner == 0)
             return;
 
+
         w = 100; //width of scanner on screen
         h = w; //height of scanner on screen
         x = 5; //(SCREEN_WIDTH - w) - 48; //offset from left of screen

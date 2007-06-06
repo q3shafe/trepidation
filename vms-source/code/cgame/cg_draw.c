@@ -2655,7 +2655,11 @@ static void CG_Draw2D( void ) {
 			//CG_DrawPersistantPowerup();
 #endif
 			CG_DrawReward();
-			CG_DrawScanner();  // Shafe - Trep - Radar
+
+			if (cgs.g_GameMode != 1 || cgs.g_GameMode != 2) // Don't Use Scanner in Arsenal And Survival - Shafe
+			{
+				CG_DrawScanner();  // Shafe - Trep - Radar
+			}
 		}
     
 		if ( cgs.gametype >= GT_TEAM ) {

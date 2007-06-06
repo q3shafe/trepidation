@@ -415,7 +415,8 @@ static void StartServer_MenuInit( void ) {
 	s_startserver.banner.generic.type  = MTYPE_BTEXT;
 	s_startserver.banner.generic.x	   = 320;
 	s_startserver.banner.generic.y	   = 16;
-	s_startserver.banner.string        = "GAME SERVER";
+	s_startserver.banner.string        = "TREPIDATION";
+
 	s_startserver.banner.color         = color_white;
 	s_startserver.banner.style         = UI_CENTER;
 
@@ -747,6 +748,7 @@ static void ServerOptions_Start( void ) {
 	int		dedicated;
 	int		friendlyfire;
 	int		flaglimit;
+//	int		gamemode;
 	int		pure;
 	int		skill;
 	int		n;
@@ -756,10 +758,13 @@ static void ServerOptions_Start( void ) {
 	timelimit	 = atoi( s_serveroptions.timelimit.field.buffer );
 	fraglimit	 = atoi( s_serveroptions.fraglimit.field.buffer );
 	flaglimit	 = atoi( s_serveroptions.flaglimit.field.buffer );
+	//gamemode	 = atoi( s_serveroptions.gamemode.field.buffer );
+		
 	dedicated	 = s_serveroptions.dedicated.curvalue;
 	friendlyfire = s_serveroptions.friendlyfire.curvalue;
 	pure		 = s_serveroptions.pure.curvalue;
 	skill		 = s_serveroptions.botSkill.curvalue + 1;
+	//gamemode	 = s_serveroptions.gamemode.curvalue;
 
 	//set maxclients
 	for( n = 0, maxclients = 0; n < PLAYER_SLOTS; n++ ) {
@@ -1273,6 +1278,8 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 	s_serveroptions.gametype = (int)Com_Clamp( 0, 5, trap_Cvar_VariableValue( "g_gameType" ) );
 	s_serveroptions.punkbuster.curvalue = Com_Clamp( 0, 1, trap_Cvar_VariableValue( "sv_punkbuster" ) );
 
+	s_serveroptions.gamemode = (int)Com_Clamp( 0, 5, trap_Cvar_VariableValue( "g_gameMode" ) );
+
 	ServerOptions_Cache();
 
 	s_serveroptions.menu.wrapAround = qtrue;
@@ -1281,7 +1288,12 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 	s_serveroptions.banner.generic.type			= MTYPE_BTEXT;
 	s_serveroptions.banner.generic.x			= 320;
 	s_serveroptions.banner.generic.y			= 16;
-	s_serveroptions.banner.string  				= "GAME SERVER";
+	if( s_serveroptions.multiplayer ) {
+		s_serveroptions.banner.string        = "GAME SERVER";
+	} else {
+		s_serveroptions.banner.string        = "PLAY OFFLINE";
+	}
+	//s_serveroptions.banner.string  				= "GAME SERVER";
 	s_serveroptions.banner.color  				= color_white;
 	s_serveroptions.banner.style  				= UI_CENTER;
 
@@ -1304,6 +1316,7 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 
 	y = 272;
 	if( s_serveroptions.gametype != GT_CTF && s_serveroptions.gamemode != 3 && s_serveroptions.gametype != 4) {
+	//if( s_serveroptions.gametype != GT_CTF && s_serveroptions.gametype != 4) {
 		s_serveroptions.fraglimit.generic.type       = MTYPE_FIELD;
 		s_serveroptions.fraglimit.generic.name       = "Frag Limit:";
 		s_serveroptions.fraglimit.generic.flags      = QMF_NUMBERSONLY|QMF_PULSEIFFOCUS|QMF_SMALLFONT;
@@ -1351,6 +1364,7 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 	s_serveroptions.pure.generic.name			= "Pure Server:";
 
 	if( s_serveroptions.multiplayer ) {
+
 		y += BIGCHAR_HEIGHT+2;
 		s_serveroptions.dedicated.generic.type		= MTYPE_SPINCONTROL;
 		s_serveroptions.dedicated.generic.id		= ID_DEDICATED;
@@ -1483,7 +1497,7 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 		}
 	}
 
-	if( s_serveroptions.gametype != GT_CTF && s_serveroptions.gamemode != 3 && s_serveroptions.gametype != 4) {
+	if( s_serveroptions.gametype != GT_CTF && s_serveroptions.gamemode != 3) {
 		Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.fraglimit );
 	}
 	else {
@@ -1493,7 +1507,11 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 	if( s_serveroptions.gametype >= GT_TEAM ) {
 		Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.friendlyfire );
 	}
-	Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.pure );
+	
+	if( s_serveroptions.multiplayer ) {
+		Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.pure );
+	}
+	
 	if( s_serveroptions.multiplayer ) {
 		Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.dedicated );
 	}
