@@ -534,7 +534,7 @@ INDIRI4
 ASGNI4
 line 170
 ;169:
-;170:	skillMenuInfo.nightmareSound = trap_S_RegisterSound( "sound/misc/nightmare.wav", qfalse );
+;170:	skillMenuInfo.nightmareSound = trap_S_RegisterSound( "sound/misc/nightmare.ogg", qfalse );
 ADDRGP4 $136
 ARGP4
 CNSTI4 0
@@ -548,7 +548,7 @@ ADDRLP4 20
 INDIRI4
 ASGNI4
 line 171
-;171:	skillMenuInfo.silenceSound = trap_S_RegisterSound( "sound/misc/silence.wav", qfalse );
+;171:	skillMenuInfo.silenceSound = trap_S_RegisterSound( "sound/misc/silence.ogg", qfalse );
 ADDRGP4 $138
 ARGP4
 CNSTI4 0
@@ -1825,9 +1825,9 @@ byte 1 110
 byte 1 99
 byte 1 101
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $136
@@ -1852,9 +1852,9 @@ byte 1 97
 byte 1 114
 byte 1 101
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $134

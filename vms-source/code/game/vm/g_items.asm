@@ -1772,7 +1772,7 @@ line 430
 ;430:		}
 LABELV $151
 line 431
-;431:		te->s.eventParm = G_SoundIndex( "sound/items/poweruprespawn.wav" );
+;431:		te->s.eventParm = G_SoundIndex( "sound/items/poweruprespawn.ogg" );
 ADDRGP4 $152
 ARGP4
 ADDRLP4 12
@@ -1887,7 +1887,7 @@ line 445
 ;445:		}
 LABELV $156
 line 446
-;446:		te->s.eventParm = G_SoundIndex( "sound/items/kamikazerespawn.wav" );
+;446:		te->s.eventParm = G_SoundIndex( "sound/items/kamikazerespawn.ogg" );
 ADDRGP4 $157
 ARGP4
 ADDRLP4 16
@@ -4578,7 +4578,7 @@ INDIRI4
 CNSTI4 5
 NEI4 $296
 line 1003
-;1003:		G_SoundIndex( "sound/items/poweruprespawn.wav" );
+;1003:		G_SoundIndex( "sound/items/poweruprespawn.ogg" );
 ADDRGP4 $152
 ARGP4
 ADDRGP4 G_SoundIndex
@@ -6248,9 +6248,9 @@ byte 1 97
 byte 1 119
 byte 1 110
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $152
@@ -6281,9 +6281,9 @@ byte 1 97
 byte 1 119
 byte 1 110
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $139

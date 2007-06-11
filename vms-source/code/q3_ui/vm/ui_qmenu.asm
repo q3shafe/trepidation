@@ -10220,7 +10220,7 @@ INDIRI4
 ASGNI4
 line 1713
 ;1712:
-;1713:	menu_in_sound	= trap_S_RegisterSound( "sound/misc/menu1.wav", qfalse );
+;1713:	menu_in_sound	= trap_S_RegisterSound( "sound/misc/menu1.ogg", qfalse );
 ADDRGP4 $591
 ARGP4
 CNSTI4 0
@@ -10234,7 +10234,7 @@ ADDRLP4 36
 INDIRI4
 ASGNI4
 line 1714
-;1714:	menu_move_sound	= trap_S_RegisterSound( "sound/misc/menu2.wav", qfalse );
+;1714:	menu_move_sound	= trap_S_RegisterSound( "sound/misc/menu2.ogg", qfalse );
 ADDRGP4 $592
 ARGP4
 CNSTI4 0
@@ -10248,7 +10248,7 @@ ADDRLP4 40
 INDIRI4
 ASGNI4
 line 1715
-;1715:	menu_out_sound	= trap_S_RegisterSound( "sound/misc/menu3.wav", qfalse );
+;1715:	menu_out_sound	= trap_S_RegisterSound( "sound/misc/menu3.ogg", qfalse );
 ADDRGP4 $593
 ARGP4
 CNSTI4 0
@@ -10262,7 +10262,7 @@ ADDRLP4 44
 INDIRI4
 ASGNI4
 line 1716
-;1716:	menu_buzz_sound	= trap_S_RegisterSound( "sound/misc/menu4.wav", qfalse );
+;1716:	menu_buzz_sound	= trap_S_RegisterSound( "sound/misc/menu4.ogg", qfalse );
 ADDRGP4 $594
 ARGP4
 CNSTI4 0
@@ -10938,9 +10938,9 @@ byte 1 110
 byte 1 117
 byte 1 52
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $593
@@ -10961,9 +10961,9 @@ byte 1 110
 byte 1 117
 byte 1 51
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $592
@@ -10984,9 +10984,9 @@ byte 1 110
 byte 1 117
 byte 1 50
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $591
@@ -11007,9 +11007,9 @@ byte 1 110
 byte 1 117
 byte 1 49
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $590

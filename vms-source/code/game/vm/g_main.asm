@@ -5800,7 +5800,7 @@ line 1324
 ;1321:	char *s;
 ;1322:	
 ;1323:	//trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 1.0\n" );
-;1324:	G_SpawnString( "music", "sound/music/intermission.wav", &s );
+;1324:	G_SpawnString( "music", "sound/music/intermission.ogg", &s );
 ADDRGP4 $627
 ARGP4
 ADDRGP4 $628
@@ -7372,7 +7372,7 @@ ADDI4
 ASGNI4
 line 1711
 ;1710:			//CalculateRanks(); // This is causing crashes
-;1711:			BroadCastSound("sound/teamplay/voc_red_scores.wav");
+;1711:			BroadCastSound("sound/teamplay/voc_red_scores.ogg");
 ADDRGP4 $822
 ARGP4
 ADDRGP4 BroadCastSound
@@ -7461,7 +7461,7 @@ ADDI4
 ASGNI4
 line 1728
 ;1727:			//CalculateRanks();  // This is causing crashes
-;1728:			BroadCastSound("sound/teamplay/voc_blue_scores.wav");
+;1728:			BroadCastSound("sound/teamplay/voc_blue_scores.ogg");
 ADDRGP4 $835
 ARGP4
 ADDRGP4 BroadCastSound
@@ -7956,7 +7956,7 @@ line 1847
 ;1847:			{
 line 1849
 ;1848:				//trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 5.0\n" );
-;1849:				G_SpawnString( "music", "sound/music/battle.wav", &s );
+;1849:				G_SpawnString( "music", "sound/music/battle.ogg", &s );
 ADDRGP4 $627
 ARGP4
 ADDRGP4 $923
@@ -8546,7 +8546,7 @@ line 1935
 LABELV $964
 line 1937
 ;1936:		
-;1937:						BroadCastSound("sound/misc/laff01.wav");
+;1937:						BroadCastSound("sound/misc/laff01.ogg");
 ADDRGP4 $967
 ARGP4
 ADDRGP4 BroadCastSound
@@ -14187,9 +14187,9 @@ byte 1 102
 byte 1 48
 byte 1 49
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $935
@@ -14232,9 +14232,9 @@ byte 1 116
 byte 1 108
 byte 1 101
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $920
@@ -14515,9 +14515,9 @@ byte 1 114
 byte 1 101
 byte 1 115
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $832
@@ -14606,9 +14606,9 @@ byte 1 114
 byte 1 101
 byte 1 115
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $819
@@ -14804,9 +14804,9 @@ byte 1 105
 byte 1 111
 byte 1 110
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $627
@@ -16812,8 +16812,8 @@ byte 1 74
 byte 1 117
 byte 1 110
 byte 1 32
+byte 1 49
 byte 1 48
-byte 1 52
 byte 1 32
 byte 1 50
 byte 1 48

@@ -1321,7 +1321,7 @@ void BeginIntermission( void ) {
 	char *s;
 	
 	//trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 1.0\n" );
-	G_SpawnString( "music", "sound/music/intermission.wav", &s );
+	G_SpawnString( "music", "sound/music/intermission.ogg", &s );
 	trap_SetConfigstring( CS_MUSIC, s );
 	
 	SpawnModelsOnVictoryPads();
@@ -1708,7 +1708,7 @@ void CheckExitRules( void ) {
 			trap_SendServerCommand( -1, va( "print \"Red team scores\n\"") );
 			level.teamScores[ TEAM_RED ]++; 
 			//CalculateRanks(); // This is causing crashes
-			BroadCastSound("sound/teamplay/voc_red_scores.wav");
+			BroadCastSound("sound/teamplay/voc_red_scores.ogg");
 			
 
 
@@ -1725,7 +1725,7 @@ void CheckExitRules( void ) {
 			trap_SendServerCommand( -1, va( "print \"Blue team scores\n\"") );
 			level.teamScores[ TEAM_BLUE ]++;
 			//CalculateRanks();  // This is causing crashes
-			BroadCastSound("sound/teamplay/voc_blue_scores.wav");
+			BroadCastSound("sound/teamplay/voc_blue_scores.ogg");
 
 
 			//return;
@@ -1846,7 +1846,7 @@ void CheckExitRules( void ) {
 			if (tmpCnt == 3)
 			{
 				//trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 5.0\n" );
-				G_SpawnString( "music", "sound/music/battle.wav", &s );
+				G_SpawnString( "music", "sound/music/battle.ogg", &s );
 				trap_SetConfigstring( CS_MUSIC, s );
 
 			}
@@ -1934,7 +1934,7 @@ void CheckExitRules( void ) {
 						survivor = level.lastClient;
 					}
 		
-						BroadCastSound("sound/misc/laff01.wav");
+						BroadCastSound("sound/misc/laff01.ogg");
 						trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", survivor->pers.netname) );
 
 
