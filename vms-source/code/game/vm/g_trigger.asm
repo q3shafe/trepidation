@@ -1020,7 +1020,7 @@ ASGNI4
 line 186
 ;184:
 ;185:	// make sure the client precaches this sound
-;186:	G_SoundIndex("sound/world/jumppad.wav");
+;186:	G_SoundIndex("sound/world/jumppad.ogg");
 ADDRGP4 $106
 ARGP4
 ADDRGP4 G_SoundIndex
@@ -1325,7 +1325,7 @@ BANDI4
 CNSTI4 0
 EQI4 $122
 line 230
-;230:		self->noise_index = G_SoundIndex("sound/world/jumppad.wav");
+;230:		self->noise_index = G_SoundIndex("sound/world/jumppad.ogg");
 ADDRGP4 $106
 ARGP4
 ADDRLP4 28
@@ -1345,7 +1345,7 @@ ADDRGP4 $123
 JUMPV
 LABELV $122
 line 232
-;232:		self->noise_index = G_SoundIndex("sound/misc/windfly.wav");
+;232:		self->noise_index = G_SoundIndex("sound/misc/windfly.ogg");
 ADDRGP4 $124
 ARGP4
 ADDRLP4 28
@@ -1657,7 +1657,7 @@ LABELV $140
 line 297
 ;295:
 ;296:	// make sure the client precaches this sound
-;297:	G_SoundIndex("sound/world/jumppad.wav");
+;297:	G_SoundIndex("sound/world/jumppad.ogg");
 ADDRGP4 $106
 ARGP4
 ADDRGP4 G_SoundIndex
@@ -1953,7 +1953,7 @@ CALLV
 pop
 line 366
 ;365:
-;366:	self->noise_index = G_SoundIndex( "sound/world/electro.wav" );
+;366:	self->noise_index = G_SoundIndex( "sound/world/electro.ogg" );
 ADDRGP4 $159
 ARGP4
 ADDRLP4 0
@@ -3041,9 +3041,9 @@ byte 1 116
 byte 1 114
 byte 1 111
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $137
@@ -3106,9 +3106,9 @@ byte 1 102
 byte 1 108
 byte 1 121
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $106
@@ -3132,9 +3132,9 @@ byte 1 112
 byte 1 97
 byte 1 100
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $83

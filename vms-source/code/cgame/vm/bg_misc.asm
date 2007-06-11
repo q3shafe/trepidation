@@ -587,7 +587,7 @@ line 962
 ;63:*/
 ;64:	{
 ;65:		"item_armor_shard", 
-;66:		"sound/misc/ar1_pkup.wav",
+;66:		"sound/misc/ar1_pkup.ogg",
 ;67:		{ "models/powerups/armor/shard.md3", 
 ;68:		"models/powerups/armor/shard_sphere.md3",
 ;69:		0, 0} ,
@@ -604,7 +604,7 @@ line 962
 ;80:*/
 ;81:	{
 ;82:		"item_armor_combat", 
-;83:		"sound/misc/ar2_pkup.wav",
+;83:		"sound/misc/ar2_pkup.ogg",
 ;84:        { "models/powerups/armor/armor_yel.md3",
 ;85:		0, 0, 0},
 ;86:/* icon */		"icons/iconr_yellow",
@@ -620,7 +620,7 @@ line 962
 ;96:*/
 ;97:	{
 ;98:		"item_armor_body", 
-;99:		"sound/misc/ar2_pkup.wav",
+;99:		"sound/misc/ar2_pkup.ogg",
 ;100:        { "models/powerups/armor/armor_red.md3",
 ;101:		0, 0, 0},
 ;102:/* icon */		"icons/iconr_red",
@@ -639,7 +639,7 @@ line 962
 ;115:*/
 ;116:	{
 ;117:		"item_health_small",
-;118:		"sound/items/s_health.wav",
+;118:		"sound/items/s_health.ogg",
 ;119:        { "models/powerups/health/small_cross.md3", 
 ;120:		"models/powerups/health/small_sphere.md3", 
 ;121:		0, 0 },
@@ -656,7 +656,7 @@ line 962
 ;132:*/
 ;133:	{
 ;134:		"item_health",
-;135:		"sound/items/n_health.wav",
+;135:		"sound/items/n_health.ogg",
 ;136:        { "models/powerups/health/medium_cross.md3", 
 ;137:		"models/powerups/health/medium_sphere.md3", 
 ;138:		0, 0 },
@@ -673,7 +673,7 @@ line 962
 ;149:*/
 ;150:	{
 ;151:		"item_health_large",
-;152:		"sound/items/l_health.wav",
+;152:		"sound/items/l_health.ogg",
 ;153:        { "models/powerups/health/large_cross.md3", 
 ;154:		"models/powerups/health/large_sphere.md3", 
 ;155:		0, 0 },
@@ -690,7 +690,7 @@ line 962
 ;166:*/
 ;167:	{
 ;168:		"item_health_mega",
-;169:		"sound/items/m_health.wav",
+;169:		"sound/items/m_health.ogg",
 ;170:        { "models/powerups/health/mega_cross.md3", 
 ;171:		"models/powerups/health/mega_sphere.md3", 
 ;172:		0, 0 },
@@ -712,7 +712,7 @@ line 962
 ;188:*/
 ;189:	{
 ;190:		"weapon_gauntlet", 
-;191:		"sound/misc/w_pkup.wav",
+;191:		"sound/misc/w_pkup.ogg",
 ;192:        { "models/weapons2/gauntlet/gauntlet.md3",
 ;193:		0, 0, 0},
 ;194:/* icon */		"icons/iconw_gauntlet",
@@ -728,7 +728,7 @@ line 962
 ;204:*/
 ;205:	{
 ;206:		"weapon_shotgun", 
-;207:		"sound/misc/w_pkup.wav",
+;207:		"sound/misc/w_pkup.ogg",
 ;208:        { "models/weapons2/shotgun/shotgun.md3", 
 ;209:		0, 0, 0},
 ;210:/* icon */		"icons/iconw_shotgun",
@@ -744,7 +744,7 @@ line 962
 ;220:*/
 ;221:	{
 ;222:		"weapon_machinegun", 
-;223:		"sound/misc/w_pkup.wav",
+;223:		"sound/misc/w_pkup.ogg",
 ;224:        { "models/weapons2/machinegun/machinegun.md3", 
 ;225:		0, 0, 0},
 ;226:/* icon */		"icons/iconw_machinegun",
@@ -760,7 +760,7 @@ line 962
 ;236:*/
 ;237:	{
 ;238:		"weapon_grenadelauncher",
-;239:		"sound/misc/w_pkup.wav",
+;239:		"sound/misc/w_pkup.ogg",
 ;240:        { "models/weapons2/grenadel/grenadel.md3", 
 ;241:		0, 0, 0},
 ;242:/* icon */		"icons/iconw_grenade",
@@ -776,7 +776,7 @@ line 962
 ;252:*/
 ;253:	{
 ;254:		"weapon_rocketlauncher",
-;255:		"sound/misc/w_pkup.wav",
+;255:		"sound/misc/w_pkup.ogg",
 ;256:        { "models/weapons2/rocketl/rocketl.md3", 
 ;257:		0, 0, 0},
 ;258:/* icon */		"icons/iconw_rocket",
@@ -792,7 +792,7 @@ line 962
 ;268:*/
 ;269:	{
 ;270:		"weapon_lightning", 
-;271:		"sound/misc/w_pkup.wav",
+;271:		"sound/misc/w_pkup.ogg",
 ;272:        { "models/weapons2/flamethrower/flamethrower.md3", 
 ;273:		0, 0, 0},  // models/weapons2/lightning/lightning.md3  - Shafe - Trep - Flame Thrower
 ;274:/* icon */		"icons/iconw_flame",  // icons/iconw_lightning
@@ -808,7 +808,7 @@ line 962
 ;284:*/
 ;285:	{
 ;286:		"weapon_railgun", 
-;287:		"sound/misc/w_pkup.wav",
+;287:		"sound/misc/w_pkup.ogg",
 ;288:        { "models/weapons2/railgun/railgun.md3", 
 ;289:		0, 0, 0},
 ;290:/* icon */		"icons/iconw_railgun",
@@ -825,7 +825,7 @@ line 962
 ;301:*/
 ;302:	{
 ;303:		"weapon_plasmagun", 
-;304:		"sound/misc/w_pkup.wav",
+;304:		"sound/misc/w_pkup.ogg",
 ;305:        { "models/weapons2/plasma/plasma.md3", 
 ;306:		0, 0, 0},
 ;307:/* icon */		"icons/iconw_plasma",
@@ -842,7 +842,7 @@ line 962
 ;318:*/
 ;319:	{
 ;320:		"weapon_bfg",
-;321:		"sound/misc/w_pkup.wav",
+;321:		"sound/misc/w_pkup.ogg",
 ;322:        { "models/weapons2/bfg/bfg.md3", 
 ;323:		0, 0, 0},
 ;324:/* icon */		"icons/iconw_bfg",
@@ -858,7 +858,7 @@ line 962
 ;334:*/
 ;335:	{
 ;336:		"weapon_grapplinghook",
-;337:		"sound/misc/w_pkup.wav",
+;337:		"sound/misc/w_pkup.ogg",
 ;338:        { "models/weapons2/grapple/grapple.md3", 
 ;339:		0, 0, 0},
 ;340:/* icon */		"icons/iconw_grapple",
@@ -878,7 +878,7 @@ line 962
 ;354:*/
 ;355:	{
 ;356:		"ammo_shells",
-;357:		"sound/misc/am_pkup.wav",
+;357:		"sound/misc/am_pkup.ogg",
 ;358:        { "models/powerups/ammo/shotgunam.md3", 
 ;359:		0, 0, 0},
 ;360:/* icon */		"icons/icona_shotgun",
@@ -894,7 +894,7 @@ line 962
 ;370:*/
 ;371:	{
 ;372:		"ammo_bullets",
-;373:		"sound/misc/am_pkup.wav",
+;373:		"sound/misc/am_pkup.ogg",
 ;374:        { "models/powerups/ammo/machinegunam.md3", 
 ;375:		0, 0, 0},
 ;376:/* icon */		"icons/icona_machinegun",
@@ -910,7 +910,7 @@ line 962
 ;386:*/
 ;387:	{
 ;388:		"ammo_grenades",
-;389:		"sound/misc/am_pkup.wav",
+;389:		"sound/misc/am_pkup.ogg",
 ;390:        { "models/powerups/ammo/grenadeam.md3", 
 ;391:		0, 0, 0},
 ;392:/* icon */		"icons/icona_grenade",
@@ -926,7 +926,7 @@ line 962
 ;402:*/
 ;403:	{
 ;404:		"ammo_cells",
-;405:		"sound/misc/am_pkup.wav",
+;405:		"sound/misc/am_pkup.ogg",
 ;406:        { "models/powerups/ammo/plasmaam.md3", 
 ;407:		0, 0, 0},
 ;408:/* icon */		"icons/icona_plasma",
@@ -942,7 +942,7 @@ line 962
 ;418:*/
 ;419:	{
 ;420:		"ammo_lightning",
-;421:		"sound/misc/am_pkup.wav",
+;421:		"sound/misc/am_pkup.ogg",
 ;422:        { "models/powerups/ammo/lightningam.md3", 
 ;423:		0, 0, 0},
 ;424:/* icon */		"icons/icona_lightning",
@@ -958,7 +958,7 @@ line 962
 ;434:*/
 ;435:	{
 ;436:		"ammo_rockets",
-;437:		"sound/misc/am_pkup.wav",
+;437:		"sound/misc/am_pkup.ogg",
 ;438:        { "models/powerups/ammo/rocketam.md3", 
 ;439:		0, 0, 0},
 ;440:/* icon */		"icons/icona_rocket",
@@ -974,7 +974,7 @@ line 962
 ;450:*/
 ;451:	{
 ;452:		"ammo_slugs",
-;453:		"sound/misc/am_pkup.wav",
+;453:		"sound/misc/am_pkup.ogg",
 ;454:        { "models/powerups/ammo/railgunam.md3", 
 ;455:		0, 0, 0},
 ;456:/* icon */		"icons/icona_railgun",
@@ -990,7 +990,7 @@ line 962
 ;466:*/
 ;467:	{
 ;468:		"ammo_bfg",
-;469:		"sound/misc/am_pkup.wav",
+;469:		"sound/misc/am_pkup.ogg",
 ;470:        { "models/powerups/ammo/bfgam.md3", 
 ;471:		0, 0, 0},
 ;472:/* icon */		"icons/icona_bfg",
@@ -1009,7 +1009,7 @@ line 962
 ;485:*/
 ;486:	{
 ;487:		"holdable_teleporter", 
-;488:		"sound/items/holdable.wav",
+;488:		"sound/items/holdable.ogg",
 ;489:        { "models/powerups/holdable/teleporter.md3", 
 ;490:		0, 0, 0},
 ;491:/* icon */		"icons/teleporter",
@@ -1024,7 +1024,7 @@ line 962
 ;500:*/
 ;501:	{
 ;502:		"holdable_medkit", 
-;503:		"sound/items/holdable.wav",
+;503:		"sound/items/holdable.ogg",
 ;504:        { 
 ;505:		"models/powerups/holdable/medkit.md3", 
 ;506:		"models/powerups/holdable/medkit_sphere.md3",
@@ -1035,7 +1035,7 @@ line 962
 ;511:		IT_HOLDABLE,
 ;512:		HI_MEDKIT,
 ;513:/* precache */ "",
-;514:/* sounds */ "sound/items/use_medkit.wav"
+;514:/* sounds */ "sound/items/use_medkit.ogg"
 ;515:	},
 ;516:
 ;517:	//
@@ -1045,7 +1045,7 @@ line 962
 ;521:*/
 ;522:	{
 ;523:		"item_quad", 
-;524:		"sound/items/quaddamage.wav",
+;524:		"sound/items/quaddamage.ogg",
 ;525:        { "models/powerups/instant/quad.md3", 
 ;526:        "models/powerups/instant/quad_ring.md3",
 ;527:		0, 0 },
@@ -1055,14 +1055,14 @@ line 962
 ;531:		IT_POWERUP,
 ;532:		PW_QUAD,
 ;533:/* precache */ "",
-;534:/* sounds */ "sound/items/damage2.wav sound/items/damage3.wav"
+;534:/* sounds */ "sound/items/damage2.ogg sound/items/damage3.ogg"
 ;535:	},
 ;536:
 ;537:/*QUAKED item_enviro (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 ;538:*/
 ;539:	{
 ;540:		"item_enviro",
-;541:		"sound/items/protect.wav",
+;541:		"sound/items/protect.ogg",
 ;542:        { "models/powerups/instant/enviro.md3", 
 ;543:		"models/powerups/instant/enviro_ring.md3", 
 ;544:		0, 0 },
@@ -1072,14 +1072,14 @@ line 962
 ;548:		IT_POWERUP,
 ;549:		PW_BATTLESUIT,
 ;550:/* precache */ "",
-;551:/* sounds */ "sound/items/airout.wav sound/items/protect3.wav"
+;551:/* sounds */ "sound/items/airout.ogg sound/items/protect3.ogg"
 ;552:	},
 ;553:
 ;554:/*QUAKED item_haste (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 ;555:*/
 ;556:	{
 ;557:		"item_haste",
-;558:		"sound/items/haste.wav",
+;558:		"sound/items/haste.ogg",
 ;559:        { "models/powerups/instant/haste.md3", 
 ;560:		"models/powerups/instant/haste_ring.md3", 
 ;561:		0, 0 },
@@ -1096,7 +1096,7 @@ line 962
 ;572:*/
 ;573:	{
 ;574:		"item_invis",
-;575:		"sound/items/invisibility.wav",
+;575:		"sound/items/invisibility.ogg",
 ;576:        { "models/powerups/instant/invis.md3", 
 ;577:		"models/powerups/instant/invis_ring.md3", 
 ;578:		0, 0 },
@@ -1113,7 +1113,7 @@ line 962
 ;589:*/
 ;590:	{
 ;591:		"item_regen",
-;592:		"sound/items/regeneration.wav",
+;592:		"sound/items/regeneration.ogg",
 ;593:        { "models/powerups/instant/regen.md3", 
 ;594:		"models/powerups/instant/regen_ring.md3", 
 ;595:		0, 0 },
@@ -1123,14 +1123,14 @@ line 962
 ;599:		IT_POWERUP,
 ;600:		PW_REGEN,
 ;601:/* precache */ "",
-;602:/* sounds */ "sound/items/regen.wav"
+;602:/* sounds */ "sound/items/regen.ogg"
 ;603:	},
 ;604:
 ;605:/*QUAKED item_flight (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 ;606:*/
 ;607:	{
 ;608:		"item_flight",
-;609:		"sound/items/flight.wav",
+;609:		"sound/items/flight.ogg",
 ;610:        { "models/powerups/instant/flight.md3", 
 ;611:		"models/powerups/instant/flight_ring.md3", 
 ;612:		0, 0 },
@@ -1140,7 +1140,7 @@ line 962
 ;616:		IT_POWERUP,
 ;617:		PW_FLIGHT,
 ;618:/* precache */ "",
-;619:/* sounds */ "sound/items/flight.wav"
+;619:/* sounds */ "sound/items/flight.ogg"
 ;620:	},
 ;621:
 ;622:/*QUAKED team_CTF_redflag (1 0 0) (-16 -16 -16) (16 16 16)
@@ -1182,7 +1182,7 @@ line 962
 ;658:*/
 ;659:	{
 ;660:		"holdable_kamikaze", 
-;661:		"sound/items/holdable.wav",
+;661:		"sound/items/holdable.ogg",
 ;662:        { "models/powerups/kamikazi.md3", 
 ;663:		0, 0, 0},
 ;664:/* icon */		"icons/kamikaze",
@@ -1191,14 +1191,14 @@ line 962
 ;667:		IT_HOLDABLE,
 ;668:		HI_KAMIKAZE,
 ;669:/* precache */ "",
-;670:/* sounds */ "sound/items/kamikazerespawn.wav"
+;670:/* sounds */ "sound/items/kamikazerespawn.ogg"
 ;671:	},
 ;672:
 ;673:/*QUAKED holdable_portal (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 ;674:*/
 ;675:	{
 ;676:		"holdable_portal", 
-;677:		"sound/items/holdable.wav",
+;677:		"sound/items/holdable.ogg",
 ;678:        { "models/powerups/holdable/porter.md3",
 ;679:		0, 0, 0},
 ;680:/* icon */		"icons/portal",
@@ -1214,7 +1214,7 @@ line 962
 ;690:*/
 ;691:	{
 ;692:		"holdable_invulnerability", 
-;693:		"sound/items/holdable.wav",
+;693:		"sound/items/holdable.ogg",
 ;694:        { "models/powerups/holdable/invulnerability.md3", 
 ;695:		0, 0, 0},
 ;696:/* icon */		"icons/invulnerability",
@@ -1230,7 +1230,7 @@ line 962
 ;706:*/
 ;707:	{
 ;708:		"ammo_nails",
-;709:		"sound/misc/am_pkup.wav",
+;709:		"sound/misc/am_pkup.ogg",
 ;710:        { "models/powerups/ammo/nailgunam.md3", 
 ;711:		0, 0, 0},
 ;712:/* icon */		"icons/icona_nailgun",
@@ -1246,7 +1246,7 @@ line 962
 ;722:*/
 ;723:	{
 ;724:		"ammo_mines",
-;725:		"sound/misc/am_pkup.wav",
+;725:		"sound/misc/am_pkup.ogg",
 ;726:        { "models/powerups/ammo/proxmineam.md3", 
 ;727:		0, 0, 0},
 ;728:/* icon */		"icons/icona_proxlauncher",
@@ -1262,7 +1262,7 @@ line 962
 ;738:*/
 ;739:	{
 ;740:		"ammo_belt",
-;741:		"sound/misc/am_pkup.wav",
+;741:		"sound/misc/am_pkup.ogg",
 ;742:        { "models/powerups/ammo/chaingunam.md3", 
 ;743:		0, 0, 0},
 ;744:/* icon */		"icons/icona_chaingun",
@@ -1281,7 +1281,7 @@ line 962
 ;757:*/
 ;758:	{
 ;759:		"item_scout",
-;760:		"sound/items/scout.wav",
+;760:		"sound/items/scout.ogg",
 ;761:        { "models/powerups/scout.md3", 
 ;762:		0, 0, 0 },
 ;763:/* icon */		"icons/scout",
@@ -1297,7 +1297,7 @@ line 962
 ;773:*/
 ;774:	{
 ;775:		"item_guard",
-;776:		"sound/items/guard.wav",
+;776:		"sound/items/guard.ogg",
 ;777:        { "models/powerups/guard.md3", 
 ;778:		0, 0, 0 },
 ;779:/* icon */		"icons/guard",
@@ -1313,7 +1313,7 @@ line 962
 ;789:*/
 ;790:	{
 ;791:		"item_doubler",
-;792:		"sound/items/doubler.wav",
+;792:		"sound/items/doubler.ogg",
 ;793:        { "models/powerups/doubler.md3", 
 ;794:		0, 0, 0 },
 ;795:/* icon */		"icons/doubler",
@@ -1329,7 +1329,7 @@ line 962
 ;805:*/
 ;806:	{
 ;807:		"item_ammoregen",
-;808:		"sound/items/ammoregen.wav",
+;808:		"sound/items/ammoregen.ogg",
 ;809:        { "models/powerups/ammo.md3",
 ;810:		0, 0, 0 },
 ;811:/* icon */		"icons/ammo_regen",
@@ -1360,7 +1360,7 @@ line 962
 ;836:
 ;837:	{
 ;838:		"item_redcube",
-;839:		"sound/misc/am_pkup.wav",
+;839:		"sound/misc/am_pkup.ogg",
 ;840:        { "models/powerups/orb/r_orb.md3",
 ;841:		0, 0, 0 },
 ;842:/* icon */		"icons/iconh_rorb",
@@ -1374,7 +1374,7 @@ line 962
 ;850:
 ;851:	{
 ;852:		"item_bluecube",
-;853:		"sound/misc/am_pkup.wav",
+;853:		"sound/misc/am_pkup.ogg",
 ;854:        { "models/powerups/orb/b_orb.md3",
 ;855:		0, 0, 0 },
 ;856:/* icon */		"icons/iconh_borb",
@@ -1389,7 +1389,7 @@ line 962
 ;865:*/
 ;866:	{
 ;867:		"weapon_nailgun", 
-;868:		"sound/misc/w_pkup.wav",
+;868:		"sound/misc/w_pkup.ogg",
 ;869:        { "models/weapons/nailgun/nailgun.md3", 
 ;870:		0, 0, 0},
 ;871:/* icon */		"icons/iconw_nailgun",
@@ -1405,7 +1405,7 @@ line 962
 ;881:*/
 ;882:	{
 ;883:		"weapon_prox_launcher", 
-;884:		"sound/misc/w_pkup.wav",
+;884:		"sound/misc/w_pkup.ogg",
 ;885:        { "models/weapons/proxmine/proxmine.md3", 
 ;886:		0, 0, 0},
 ;887:/* icon */		"icons/iconw_proxlauncher",
@@ -1426,7 +1426,7 @@ line 962
 ;902:*/
 ;903:	{
 ;904:		"weapon_chaingun", 
-;905:		"sound/misc/w_pkup.wav",
+;905:		"sound/misc/w_pkup.ogg",
 ;906:        { "models/weapons/vulcan/vulcan.md3", 
 ;907:		0, 0, 0},
 ;908:/* icon */		"icons/iconw_chaingun",
@@ -1443,7 +1443,7 @@ line 962
 ;919:*/
 ;920:{
 ;921:	"weapon_turret",
-;922:	"sound/misc/w_pkup.wav",
+;922:	"sound/misc/w_pkup.ogg",
 ;923:	{ "models/turrets/gun2.md3",
 ;924:	0, 0, 0},
 ;925:/* icon */	"icons/iconw_turret",
@@ -1459,7 +1459,7 @@ line 962
 ;935:*/
 ;936:{
 ;937:	"ammo_turret",
-;938:	"sound/misc/am_pkup.wav",
+;938:	"sound/misc/am_pkup.ogg",
 ;939:	{ "models/powerups/ammo/bfgam.md3", 
 ;940:	0, 0, 0},
 ;941:/* icon */"	icons/icona_bfg",
@@ -7461,9 +7461,9 @@ byte 1 103
 byte 1 104
 byte 1 116
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $199
@@ -7499,9 +7499,9 @@ byte 1 103
 byte 1 101
 byte 1 110
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $197
@@ -7636,9 +7636,9 @@ byte 1 105
 byte 1 111
 byte 1 110
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $192
@@ -7786,9 +7786,9 @@ byte 1 105
 byte 1 116
 byte 1 121
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $186
@@ -7922,9 +7922,9 @@ byte 1 115
 byte 1 116
 byte 1 101
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $180
@@ -7960,9 +7960,9 @@ byte 1 111
 byte 1 117
 byte 1 116
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 32
 byte 1 115
 byte 1 111
@@ -7985,9 +7985,9 @@ byte 1 99
 byte 1 116
 byte 1 51
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $178
@@ -8123,9 +8123,9 @@ byte 1 101
 byte 1 99
 byte 1 116
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $173
@@ -8163,9 +8163,9 @@ byte 1 103
 byte 1 101
 byte 1 50
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 32
 byte 1 115
 byte 1 111
@@ -8187,9 +8187,9 @@ byte 1 103
 byte 1 101
 byte 1 51
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $171
@@ -8318,9 +8318,9 @@ byte 1 97
 byte 1 103
 byte 1 101
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $166
@@ -8359,9 +8359,9 @@ byte 1 107
 byte 1 105
 byte 1 116
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $164
@@ -8585,9 +8585,9 @@ byte 1 98
 byte 1 108
 byte 1 101
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $156
@@ -9299,9 +9299,9 @@ byte 1 107
 byte 1 117
 byte 1 112
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $124
@@ -10340,9 +10340,9 @@ byte 1 107
 byte 1 117
 byte 1 112
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $82
@@ -10494,9 +10494,9 @@ byte 1 108
 byte 1 116
 byte 1 104
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $76
@@ -10653,9 +10653,9 @@ byte 1 108
 byte 1 116
 byte 1 104
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $70
@@ -10818,9 +10818,9 @@ byte 1 108
 byte 1 116
 byte 1 104
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $64
@@ -10973,9 +10973,9 @@ byte 1 108
 byte 1 116
 byte 1 104
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $58
@@ -11174,9 +11174,9 @@ byte 1 107
 byte 1 117
 byte 1 112
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $49
@@ -11329,9 +11329,9 @@ byte 1 107
 byte 1 117
 byte 1 112
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $43

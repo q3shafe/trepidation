@@ -3792,7 +3792,7 @@ ADDRGP4 level+9236
 CNSTI4 1
 ASGNI4
 line 767
-;767:			BroadCastSound("sound/misc/laff02.wav");
+;767:			BroadCastSound("sound/misc/laff02.ogg");
 ADDRGP4 $311
 ARGP4
 ADDRGP4 BroadCastSound
@@ -4272,7 +4272,7 @@ NEI4 $362
 line 833
 ;833:					{
 line 834
-;834:						BroadCastSound("sound/misc/5.wav");
+;834:						BroadCastSound("sound/misc/5.ogg");
 ADDRGP4 $364
 ARGP4
 ADDRGP4 BroadCastSound
@@ -4291,7 +4291,7 @@ NEI4 $365
 line 838
 ;838:					{
 line 839
-;839:						BroadCastSound("sound/misc/4.wav");
+;839:						BroadCastSound("sound/misc/4.ogg");
 ADDRGP4 $367
 ARGP4
 ADDRGP4 BroadCastSound
@@ -4310,7 +4310,7 @@ NEI4 $368
 line 843
 ;843:					{
 line 844
-;844:						BroadCastSound("sound/misc/3.wav");
+;844:						BroadCastSound("sound/misc/3.ogg");
 ADDRGP4 $370
 ARGP4
 ADDRGP4 BroadCastSound
@@ -4330,7 +4330,7 @@ line 848
 ;848:					{
 line 850
 ;849:						
-;850:						BroadCastSound("sound/misc/2.wav");
+;850:						BroadCastSound("sound/misc/2.ogg");
 ADDRGP4 $373
 ARGP4
 ADDRGP4 BroadCastSound
@@ -4349,7 +4349,7 @@ NEI4 $374
 line 854
 ;854:					{
 line 855
-;855:						BroadCastSound("sound/misc/laff01.wav");
+;855:						BroadCastSound("sound/misc/laff01.ogg");
 ADDRGP4 $376
 ARGP4
 ADDRGP4 BroadCastSound
@@ -4628,7 +4628,7 @@ NEI4 $389
 line 911
 ;911:	{
 line 912
-;912:			BroadCastSound("sound/misc/headshot.wav");
+;912:			BroadCastSound("sound/misc/headshot.ogg");
 ADDRGP4 $391
 ARGP4
 ADDRGP4 BroadCastSound
@@ -9164,9 +9164,9 @@ byte 1 104
 byte 1 111
 byte 1 116
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $376
@@ -9188,9 +9188,9 @@ byte 1 102
 byte 1 48
 byte 1 49
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $373
@@ -9207,9 +9207,9 @@ byte 1 99
 byte 1 47
 byte 1 50
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $370
@@ -9226,9 +9226,9 @@ byte 1 99
 byte 1 47
 byte 1 51
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $367
@@ -9245,9 +9245,9 @@ byte 1 99
 byte 1 47
 byte 1 52
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $364
@@ -9264,9 +9264,9 @@ byte 1 99
 byte 1 47
 byte 1 53
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $356
@@ -9468,9 +9468,9 @@ byte 1 102
 byte 1 48
 byte 1 50
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $274

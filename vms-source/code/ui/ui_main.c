@@ -221,7 +221,7 @@ void AssetCache() {
 		uiInfo.uiDC.Assets.crosshairShader[n] = trap_R_RegisterShaderNoMip( va("gfx/2d/crosshair%c", 'a' + n ) );
 	}
 
-	uiInfo.newHighScoreSound = trap_S_RegisterSound("sound/feedback/voc_newhighscore.wav", qfalse);
+	uiInfo.newHighScoreSound = trap_S_RegisterSound("sound/feedback/voc_newhighscore.ogg", qfalse);
 }
 
 void _UI_DrawSides(float x, float y, float w, float h, float size) {

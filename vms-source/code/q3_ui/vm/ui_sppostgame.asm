@@ -99,12 +99,12 @@ line 85
 ;67:	"menu/medals/medal_victory"
 ;68:};
 ;69:char	*ui_medalSounds[] = {
-;70:	"sound/feedback/accuracy.wav",
-;71:	"sound/feedback/impressive_a.wav",
-;72:	"sound/feedback/excellent_a.wav",
-;73:	"sound/feedback/gauntlet.wav",
-;74:	"sound/feedback/frags.wav",
-;75:	"sound/feedback/perfect.wav"
+;70:	"sound/feedback/accuracy.ogg",
+;71:	"sound/feedback/impressive_a.ogg",
+;72:	"sound/feedback/excellent_a.ogg",
+;73:	"sound/feedback/gauntlet.ogg",
+;74:	"sound/feedback/frags.ogg",
+;75:	"sound/feedback/perfect.ogg"
 ;76:};
 ;77:
 ;78:
@@ -1758,7 +1758,7 @@ INDIRI4
 CNSTI4 0
 EQI4 $270
 line 400
-;400:		trap_S_RegisterSound( "music/loss.wav", qfalse );
+;400:		trap_S_RegisterSound( "music/loss.ogg", qfalse );
 ADDRGP4 $272
 ARGP4
 CNSTI4 0
@@ -1767,7 +1767,7 @@ ADDRGP4 trap_S_RegisterSound
 CALLI4
 pop
 line 401
-;401:		trap_S_RegisterSound( "music/win.wav", qfalse );
+;401:		trap_S_RegisterSound( "music/win.ogg", qfalse );
 ADDRGP4 $273
 ARGP4
 CNSTI4 0
@@ -1776,7 +1776,7 @@ ADDRGP4 trap_S_RegisterSound
 CALLI4
 pop
 line 402
-;402:		trap_S_RegisterSound( "sound/player/announce/youwin.wav", qfalse );
+;402:		trap_S_RegisterSound( "sound/player/announce/youwin.ogg", qfalse );
 ADDRGP4 $274
 ARGP4
 CNSTI4 0
@@ -3187,7 +3187,7 @@ line 613
 ;613:	else {
 line 614
 ;614:		postgameMenuInfo.winnerSound = trap_S_RegisterSound( "sound/player/announce/youwin.wav", qfalse );
-ADDRGP4 $274
+ADDRGP4 $454
 ARGP4
 CNSTI4 0
 ARGI4
@@ -3203,7 +3203,7 @@ line 615
 ;615:		trap_Cmd_ExecuteText( EXEC_APPEND, "music music/win\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $454
+ADDRGP4 $455
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
@@ -3230,7 +3230,7 @@ INDIRI4
 ASGNI4
 line 621
 ;621:	if ( UI_GetSpecialArenaInfo( "final" ) ) {
-ADDRGP4 $459
+ADDRGP4 $460
 ARGP4
 ADDRLP4 1236
 ADDRGP4 UI_GetSpecialArenaInfo
@@ -3240,7 +3240,7 @@ ADDRLP4 1236
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $457
+EQU4 $458
 line 622
 ;622:		postgameMenuInfo.lastTier++;
 ADDRLP4 1240
@@ -3256,7 +3256,7 @@ ADDI4
 ASGNI4
 line 623
 ;623:	}
-LABELV $457
+LABELV $458
 line 624
 ;624:}
 LABELV $349
@@ -3750,7 +3750,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $459
+LABELV $460
 byte 1 102
 byte 1 105
 byte 1 110
@@ -3758,7 +3758,7 @@ byte 1 97
 byte 1 108
 byte 1 0
 align 1
-LABELV $454
+LABELV $455
 byte 1 109
 byte 1 117
 byte 1 115
@@ -3775,6 +3775,41 @@ byte 1 119
 byte 1 105
 byte 1 110
 byte 1 10
+byte 1 0
+align 1
+LABELV $454
+byte 1 115
+byte 1 111
+byte 1 117
+byte 1 110
+byte 1 100
+byte 1 47
+byte 1 112
+byte 1 108
+byte 1 97
+byte 1 121
+byte 1 101
+byte 1 114
+byte 1 47
+byte 1 97
+byte 1 110
+byte 1 110
+byte 1 111
+byte 1 117
+byte 1 110
+byte 1 99
+byte 1 101
+byte 1 47
+byte 1 121
+byte 1 111
+byte 1 117
+byte 1 119
+byte 1 105
+byte 1 110
+byte 1 46
+byte 1 119
+byte 1 97
+byte 1 118
 byte 1 0
 align 1
 LABELV $452
@@ -3879,9 +3914,9 @@ byte 1 119
 byte 1 105
 byte 1 110
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $273
@@ -3895,9 +3930,9 @@ byte 1 119
 byte 1 105
 byte 1 110
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $272
@@ -3912,9 +3947,9 @@ byte 1 111
 byte 1 115
 byte 1 115
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $265
@@ -4354,9 +4389,9 @@ byte 1 101
 byte 1 99
 byte 1 116
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $86
@@ -4381,9 +4416,9 @@ byte 1 97
 byte 1 103
 byte 1 115
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $85
@@ -4411,9 +4446,9 @@ byte 1 108
 byte 1 101
 byte 1 116
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $84
@@ -4444,9 +4479,9 @@ byte 1 116
 byte 1 95
 byte 1 97
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $83
@@ -4478,9 +4513,9 @@ byte 1 101
 byte 1 95
 byte 1 97
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $82
@@ -4508,9 +4543,9 @@ byte 1 97
 byte 1 99
 byte 1 121
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $81

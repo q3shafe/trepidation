@@ -63,7 +63,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"item_armor_shard", 
-		"sound/misc/ar1_pkup.wav",
+		"sound/misc/ar1_pkup.ogg",
 		{ "models/powerups/armor/shard.md3", 
 		"models/powerups/armor/shard_sphere.md3",
 		0, 0} ,
@@ -80,7 +80,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"item_armor_combat", 
-		"sound/misc/ar2_pkup.wav",
+		"sound/misc/ar2_pkup.ogg",
         { "models/powerups/armor/armor_yel.md3",
 		0, 0, 0},
 /* icon */		"icons/iconr_yellow",
@@ -96,7 +96,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"item_armor_body", 
-		"sound/misc/ar2_pkup.wav",
+		"sound/misc/ar2_pkup.ogg",
         { "models/powerups/armor/armor_red.md3",
 		0, 0, 0},
 /* icon */		"icons/iconr_red",
@@ -115,7 +115,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"item_health_small",
-		"sound/items/s_health.wav",
+		"sound/items/s_health.ogg",
         { "models/powerups/health/small_cross.md3", 
 		"models/powerups/health/small_sphere.md3", 
 		0, 0 },
@@ -132,7 +132,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"item_health",
-		"sound/items/n_health.wav",
+		"sound/items/n_health.ogg",
         { "models/powerups/health/medium_cross.md3", 
 		"models/powerups/health/medium_sphere.md3", 
 		0, 0 },
@@ -149,7 +149,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"item_health_large",
-		"sound/items/l_health.wav",
+		"sound/items/l_health.ogg",
         { "models/powerups/health/large_cross.md3", 
 		"models/powerups/health/large_sphere.md3", 
 		0, 0 },
@@ -166,7 +166,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"item_health_mega",
-		"sound/items/m_health.wav",
+		"sound/items/m_health.ogg",
         { "models/powerups/health/mega_cross.md3", 
 		"models/powerups/health/mega_sphere.md3", 
 		0, 0 },
@@ -188,7 +188,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"weapon_gauntlet", 
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons2/gauntlet/gauntlet.md3",
 		0, 0, 0},
 /* icon */		"icons/iconw_gauntlet",
@@ -204,7 +204,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"weapon_shotgun", 
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons2/shotgun/shotgun.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_shotgun",
@@ -220,7 +220,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"weapon_machinegun", 
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons2/machinegun/machinegun.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_machinegun",
@@ -236,7 +236,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"weapon_grenadelauncher",
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons2/grenadel/grenadel.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_grenade",
@@ -252,7 +252,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"weapon_rocketlauncher",
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons2/rocketl/rocketl.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_rocket",
@@ -268,7 +268,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"weapon_lightning", 
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons2/flamethrower/flamethrower.md3", 
 		0, 0, 0},  // models/weapons2/lightning/lightning.md3  - Shafe - Trep - Flame Thrower
 /* icon */		"icons/iconw_flame",  // icons/iconw_lightning
@@ -284,7 +284,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"weapon_railgun", 
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons2/railgun/railgun.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_railgun",
@@ -301,7 +301,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"weapon_plasmagun", 
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons2/plasma/plasma.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_plasma",
@@ -318,7 +318,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"weapon_bfg",
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons2/bfg/bfg.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_bfg",
@@ -334,7 +334,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"weapon_grapplinghook",
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons2/grapple/grapple.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_grapple",
@@ -354,7 +354,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"ammo_shells",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/shotgunam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_shotgun",
@@ -370,7 +370,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"ammo_bullets",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/machinegunam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_machinegun",
@@ -386,7 +386,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"ammo_grenades",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/grenadeam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_grenade",
@@ -402,7 +402,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"ammo_cells",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/plasmaam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_plasma",
@@ -418,7 +418,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"ammo_lightning",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/lightningam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_lightning",
@@ -434,7 +434,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"ammo_rockets",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/rocketam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_rocket",
@@ -450,7 +450,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"ammo_slugs",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/railgunam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_railgun",
@@ -466,7 +466,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"ammo_bfg",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/bfgam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_bfg",
@@ -485,7 +485,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"holdable_teleporter", 
-		"sound/items/holdable.wav",
+		"sound/items/holdable.ogg",
         { "models/powerups/holdable/teleporter.md3", 
 		0, 0, 0},
 /* icon */		"icons/teleporter",
@@ -500,7 +500,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"holdable_medkit", 
-		"sound/items/holdable.wav",
+		"sound/items/holdable.ogg",
         { 
 		"models/powerups/holdable/medkit.md3", 
 		"models/powerups/holdable/medkit_sphere.md3",
@@ -511,7 +511,7 @@ gitem_t	bg_itemlist[] =
 		IT_HOLDABLE,
 		HI_MEDKIT,
 /* precache */ "",
-/* sounds */ "sound/items/use_medkit.wav"
+/* sounds */ "sound/items/use_medkit.ogg"
 	},
 
 	//
@@ -521,7 +521,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"item_quad", 
-		"sound/items/quaddamage.wav",
+		"sound/items/quaddamage.ogg",
         { "models/powerups/instant/quad.md3", 
         "models/powerups/instant/quad_ring.md3",
 		0, 0 },
@@ -531,14 +531,14 @@ gitem_t	bg_itemlist[] =
 		IT_POWERUP,
 		PW_QUAD,
 /* precache */ "",
-/* sounds */ "sound/items/damage2.wav sound/items/damage3.wav"
+/* sounds */ "sound/items/damage2.ogg sound/items/damage3.ogg"
 	},
 
 /*QUAKED item_enviro (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
 		"item_enviro",
-		"sound/items/protect.wav",
+		"sound/items/protect.ogg",
         { "models/powerups/instant/enviro.md3", 
 		"models/powerups/instant/enviro_ring.md3", 
 		0, 0 },
@@ -548,14 +548,14 @@ gitem_t	bg_itemlist[] =
 		IT_POWERUP,
 		PW_BATTLESUIT,
 /* precache */ "",
-/* sounds */ "sound/items/airout.wav sound/items/protect3.wav"
+/* sounds */ "sound/items/airout.ogg sound/items/protect3.ogg"
 	},
 
 /*QUAKED item_haste (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
 		"item_haste",
-		"sound/items/haste.wav",
+		"sound/items/haste.ogg",
         { "models/powerups/instant/haste.md3", 
 		"models/powerups/instant/haste_ring.md3", 
 		0, 0 },
@@ -572,7 +572,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"item_invis",
-		"sound/items/invisibility.wav",
+		"sound/items/invisibility.ogg",
         { "models/powerups/instant/invis.md3", 
 		"models/powerups/instant/invis_ring.md3", 
 		0, 0 },
@@ -589,7 +589,7 @@ gitem_t	bg_itemlist[] =
 */
 	{
 		"item_regen",
-		"sound/items/regeneration.wav",
+		"sound/items/regeneration.ogg",
         { "models/powerups/instant/regen.md3", 
 		"models/powerups/instant/regen_ring.md3", 
 		0, 0 },
@@ -599,14 +599,14 @@ gitem_t	bg_itemlist[] =
 		IT_POWERUP,
 		PW_REGEN,
 /* precache */ "",
-/* sounds */ "sound/items/regen.wav"
+/* sounds */ "sound/items/regen.ogg"
 	},
 
 /*QUAKED item_flight (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
 		"item_flight",
-		"sound/items/flight.wav",
+		"sound/items/flight.ogg",
         { "models/powerups/instant/flight.md3", 
 		"models/powerups/instant/flight_ring.md3", 
 		0, 0 },
@@ -616,7 +616,7 @@ gitem_t	bg_itemlist[] =
 		IT_POWERUP,
 		PW_FLIGHT,
 /* precache */ "",
-/* sounds */ "sound/items/flight.wav"
+/* sounds */ "sound/items/flight.ogg"
 	},
 
 /*QUAKED team_CTF_redflag (1 0 0) (-16 -16 -16) (16 16 16)
@@ -658,7 +658,7 @@ Only in CTF games
 */
 	{
 		"holdable_kamikaze", 
-		"sound/items/holdable.wav",
+		"sound/items/holdable.ogg",
         { "models/powerups/kamikazi.md3", 
 		0, 0, 0},
 /* icon */		"icons/kamikaze",
@@ -667,14 +667,14 @@ Only in CTF games
 		IT_HOLDABLE,
 		HI_KAMIKAZE,
 /* precache */ "",
-/* sounds */ "sound/items/kamikazerespawn.wav"
+/* sounds */ "sound/items/kamikazerespawn.ogg"
 	},
 
 /*QUAKED holdable_portal (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
 		"holdable_portal", 
-		"sound/items/holdable.wav",
+		"sound/items/holdable.ogg",
         { "models/powerups/holdable/porter.md3",
 		0, 0, 0},
 /* icon */		"icons/portal",
@@ -690,7 +690,7 @@ Only in CTF games
 */
 	{
 		"holdable_invulnerability", 
-		"sound/items/holdable.wav",
+		"sound/items/holdable.ogg",
         { "models/powerups/holdable/invulnerability.md3", 
 		0, 0, 0},
 /* icon */		"icons/invulnerability",
@@ -706,7 +706,7 @@ Only in CTF games
 */
 	{
 		"ammo_nails",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/nailgunam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_nailgun",
@@ -722,7 +722,7 @@ Only in CTF games
 */
 	{
 		"ammo_mines",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/proxmineam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_proxlauncher",
@@ -738,7 +738,7 @@ Only in CTF games
 */
 	{
 		"ammo_belt",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/chaingunam.md3", 
 		0, 0, 0},
 /* icon */		"icons/icona_chaingun",
@@ -757,7 +757,7 @@ Only in CTF games
 */
 	{
 		"item_scout",
-		"sound/items/scout.wav",
+		"sound/items/scout.ogg",
         { "models/powerups/scout.md3", 
 		0, 0, 0 },
 /* icon */		"icons/scout",
@@ -773,7 +773,7 @@ Only in CTF games
 */
 	{
 		"item_guard",
-		"sound/items/guard.wav",
+		"sound/items/guard.ogg",
         { "models/powerups/guard.md3", 
 		0, 0, 0 },
 /* icon */		"icons/guard",
@@ -789,7 +789,7 @@ Only in CTF games
 */
 	{
 		"item_doubler",
-		"sound/items/doubler.wav",
+		"sound/items/doubler.ogg",
         { "models/powerups/doubler.md3", 
 		0, 0, 0 },
 /* icon */		"icons/doubler",
@@ -805,7 +805,7 @@ Only in CTF games
 */
 	{
 		"item_ammoregen",
-		"sound/items/ammoregen.wav",
+		"sound/items/ammoregen.ogg",
         { "models/powerups/ammo.md3",
 		0, 0, 0 },
 /* icon */		"icons/ammo_regen",
@@ -836,7 +836,7 @@ Only in One Flag CTF games
 
 	{
 		"item_redcube",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/orb/r_orb.md3",
 		0, 0, 0 },
 /* icon */		"icons/iconh_rorb",
@@ -850,7 +850,7 @@ Only in One Flag CTF games
 
 	{
 		"item_bluecube",
-		"sound/misc/am_pkup.wav",
+		"sound/misc/am_pkup.ogg",
         { "models/powerups/orb/b_orb.md3",
 		0, 0, 0 },
 /* icon */		"icons/iconh_borb",
@@ -865,7 +865,7 @@ Only in One Flag CTF games
 */
 	{
 		"weapon_nailgun", 
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons/nailgun/nailgun.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_nailgun",
@@ -881,7 +881,7 @@ Only in One Flag CTF games
 */
 	{
 		"weapon_prox_launcher", 
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons/proxmine/proxmine.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_proxlauncher",
@@ -902,7 +902,7 @@ Only in One Flag CTF games
 */
 	{
 		"weapon_chaingun", 
-		"sound/misc/w_pkup.wav",
+		"sound/misc/w_pkup.ogg",
         { "models/weapons/vulcan/vulcan.md3", 
 		0, 0, 0},
 /* icon */		"icons/iconw_chaingun",
@@ -919,7 +919,7 @@ Only in One Flag CTF games
 */
 {
 	"weapon_turret",
-	"sound/misc/w_pkup.wav",
+	"sound/misc/w_pkup.ogg",
 	{ "models/turrets/gun2.md3",
 	0, 0, 0},
 /* icon */	"icons/iconw_turret",
@@ -935,7 +935,7 @@ Only in One Flag CTF games
 */
 {
 	"ammo_turret",
-	"sound/misc/am_pkup.wav",
+	"sound/misc/am_pkup.ogg",
 	{ "models/powerups/ammo/bfgam.md3", 
 	0, 0, 0},
 /* icon */"	icons/icona_bfg",

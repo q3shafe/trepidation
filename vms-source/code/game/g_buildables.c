@@ -241,7 +241,7 @@ int cts;
 
 	if (cts == 2) 
 	{
-		BroadCastSound("sound/world/tim_pump.wav");
+		BroadCastSound("sound/world/tim_pump.ogg");
 		trap_SendServerCommand( -1, va("cp \"^7Immobilizer Now Available\n\"") );
 		trap_SendServerCommand( -1, va( "print \"^9Immobilizer Now Available\n\"") );
 	}
@@ -249,14 +249,14 @@ int cts;
 
 	if (cts == 3) 
 	{
-		BroadCastSound("sound/world/tim_pump.wav");
+		BroadCastSound("sound/world/tim_pump.ogg");
 		trap_SendServerCommand( -1, va("cp \"^7Shielded Turrets Now Available\n\"") );
 		trap_SendServerCommand( -1, va( "print \"^9Shielded Turrets Now Available\n\"") );
 	}
 
 	if (cts == 6) 
 	{
-		BroadCastSound("sound/world/tim_pump.wav");
+		BroadCastSound("sound/world/tim_pump.ogg");
 		trap_SendServerCommand( -1, va("cp \"^7Cloaking Turrets Now Available\n\"") );
 		trap_SendServerCommand( -1, va( "print \"Cloaking Turrets Now Available\n\"") );
 	}
@@ -658,7 +658,7 @@ void createturretgun(gentity_t *ent)
 	VectorCopy(ent->s.apos.trBase,turret->s.apos.trBase);
 	VectorCopy(turret->s.apos.trBase,turret->centerpoint);
 	trap_LinkEntity (turret);
-	BroadCastSound("sound/items/electro.wav");
+	BroadCastSound("sound/items/electro.ogg");
 }
 
 /*
@@ -1031,7 +1031,7 @@ void gen_prethink(gentity_t *ent)
 		level.redGen++;
 	}
 
-		BroadCastSound("sound/items/protect.wav");
+		BroadCastSound("sound/items/protect.ogg");
 		ent->s.time2=0;
 		ent->think = GEN_think;
 		ent->nextthink=level.time+100;
@@ -1215,7 +1215,7 @@ void td_prethink(gentity_t *ent)
 		level.redTD++;
 	}
 
-		BroadCastSound("sound/items/protect.wav");
+		BroadCastSound("sound/items/protect.ogg");
 		ent->s.time2=0;
 		ent->think = TD_think;
 		ent->nextthink=level.time+100;
