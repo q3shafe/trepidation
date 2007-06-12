@@ -1188,14 +1188,14 @@ void ClientSpawn(gentity_t *ent) {
 
 	// toggle the teleport bit so the client knows to not lerp
 	// and never clear the voted flag
-	flags = ent->client->ps.eFlags & (EF_TELEPORT_BIT | EF_VOTED | EF_TEAMVOTED);
+	flags = client->ps.eFlags & (EF_TELEPORT_BIT | EF_VOTED | EF_TEAMVOTED);
 	flags ^= EF_TELEPORT_BIT;
 
 //unlagged - backward reconciliation #3
 	// we don't want players being backward-reconciled to the place they died
 	G_ResetHistory( ent );
 	// and this is as good a time as any to clear the saved state
-	ent->client->saved.leveltime = 0;
+	client->saved.leveltime = 0;
 //unlagged - backward reconciliation #3
 
 	// clear everything but the persistant data
@@ -1321,10 +1321,10 @@ void ClientSpawn(gentity_t *ent) {
 	// the respawned flag will be cleared after the attack and jump keys come up
 	client->ps.pm_flags |= PMF_RESPAWNED;
 
-	trap_GetUsercmd( client - level.clients, &ent->client->pers.cmd );
+	trap_GetUsercmd( client - level.clients, &client->pers.cmd );
 	SetClientViewAngle( ent, spawn_angles );
 
-	if ( ent->client->sess.sessionTeam == TEAM_SPECTATOR ) {
+	if ( client->sess.sessionTeam == TEAM_SPECTATOR ) {
 
 	} else {
 		G_KillBox( ent );
@@ -1464,24 +1464,29 @@ void ClientSpawn(gentity_t *ent) {
 	// run a client frame to drop exactly to the floor,
 	// initialize animations and other things
 	client->ps.commandTime = level.time - 100;
-	ent->client->pers.cmd.serverTime = level.time;
+	client->pers.cmd.serverTime = level.time;
 	ClientThink( ent-g_entities );
 
 	// positively link the client, even if the command times are weird
-	if ( ent->client->sess.sessionTeam != TEAM_SPECTATOR ) {
+	if ( client->sess.sessionTeam != TEAM_SPECTATOR ) {
 		BG_PlayerStateToEntityState( &client->ps, &ent->s, qtrue );
-		VectorCopy( ent->client->ps.origin, ent->r.currentOrigin );
+		VectorCopy( client->ps.origin, ent->r.currentOrigin );
 		trap_LinkEntity( ent );
 	}
+
+	// It seems that the values ARE already cleaned at respawn, but just to be sure -Vincent
+	ent->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
+	ent->r.svFlags &= ~SVF_CUSTOM_SPEED;
+	// Above: Actual reset is done at immobilizer thinking (prevents double checking, was fixed there)... -Vincent
 
 	// run the presend to set anything else
 	ClientEndFrame( ent );
 
 	// Shafe - Trep - Headshots -- Best give em their head back when they respawn
-	ent->client->noHead=qfalse;
+	client->noHead=qfalse;
 
 	// This is probably going to screw everything up.
-	ent->client->pers.Eliminated = qfalse;
+	client->pers.Eliminated = qfalse;
 	
 	// clear entity state values
 	BG_PlayerStateToEntityState( &client->ps, &ent->s, qtrue );

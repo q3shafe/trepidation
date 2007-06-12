@@ -474,22 +474,23 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 
 
 		// Immobilized
-		if ( g_entities[client->ps.clientNum].immobilized == qtrue)
+		if( g_entities[client->ps.clientNum].immobilized == qtrue )
 		{
 			client->ps.speed = 100;
 			client->ps.gravity = 1;
 			g_entities[client->ps.clientNum].s.time2 = 9;
 			g_entities[client->ps.clientNum].health--;
-			//G_Damage (g_entities[client->ps.clientNum], NULL, NULL, NULL, NULL, 1, 0, MOD_IMMOBILIZED);
-			//g_entities[client->ps.clientNum].s.team == TEAM_RED; // Where using this for a timer now - Typically used for buildables
 			// Let them go when they are about dead.
-			if (g_entities[client->ps.clientNum].health < 75) { g_entities[client->ps.clientNum].immobilized = qfalse; }
-		}	else
+			if( g_entities[client->ps.clientNum].health < 75 )
+				g_entities[client->ps.clientNum].immobilized = qfalse;
+		}
+		else
 		{
 			// Free them
-			//g_entities[client->ps.clientNum].s.team = TEAM_BLUE;
-			client->ps.speed = g_speed.integer;
-			client->ps.gravity = g_gravity.integer;
+			if( !( ent->r.svFlags & SVF_CUSTOM_SPEED ) ) // Not doing this check caused trouble -Vincent
+				   client->ps.speed = g_speed.integer;
+			if( !( ent->r.svFlags & SVF_CUSTOM_GRAVITY ) ) // Not doing this check caused trouble -Vincent
+				   client->ps.gravity = g_gravity.integer;
 			g_entities[client->ps.clientNum].s.time2 = 0;
 			g_entities[client->ps.clientNum].immobilized = qfalse;
 		}
@@ -1069,6 +1070,13 @@ void ClientThink_real( gentity_t *ent ) {
 		Weapon_HookFree(client->hook);
 	}
 	*/ 
+
+	// Do a speedchange and gravitychange resetcheck -Vincent
+	if( client->speedTime < level.time )
+		ent->r.svFlags &= ~SVF_CUSTOM_SPEED;
+	if( client->gravityTime < level.time )
+		ent->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
+	// Above: Actual reset is done at immobilizer thinking (prevents double checking, was fixed there)... -Vincent
 
 	// set up for pmove
 	oldEventSequence = client->ps.eventSequence;
