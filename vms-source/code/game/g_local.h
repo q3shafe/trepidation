@@ -398,6 +398,9 @@ struct gclient_s {
 	int			ZoomTime;
 	qboolean	Zoomed;
 
+	int			speedTime;			// For speed change -Vincent
+	int			gravityTime;		// For gravity change -Vincent
+
 #ifdef MISSIONPACK
 	gentity_t	*persistantPowerup;
 	int			portalID;
