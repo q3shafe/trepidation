@@ -793,7 +793,7 @@ JUMPV
 LABELV $118
 line 160
 ;160:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -807,7 +807,7 @@ CNSTI4 2
 NEI4 $123
 line 161
 ;161:			if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2207,7 +2207,7 @@ ARGI4
 ADDRGP4 level
 INDIRP4
 ARGP4
-CNSTI4 3464
+CNSTI4 3472
 ARGI4
 ADDRGP4 trap_LocateGameData
 CALLV

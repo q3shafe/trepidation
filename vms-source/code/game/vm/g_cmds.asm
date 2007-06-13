@@ -1389,7 +1389,7 @@ line 328
 ;327:
 ;328:		cl = &level.clients[level.sortedClients[i]];
 ADDRLP4 0
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -2819,7 +2819,7 @@ line 563
 ;562:
 ;563:		cl = &level.clients[idnum];
 ADDRLP4 0
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -2967,7 +2967,7 @@ ASGNI4
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
-CNSTI4 3464
+CNSTI4 3472
 ADDP4
 ASGNP4
 LABELV $311
@@ -4137,7 +4137,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3464
+CNSTI4 3472
 DIVI4
 ASGNI4
 line 809
@@ -4642,7 +4642,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3464
+CNSTI4 3472
 DIVI4
 ASGNI4
 line 900
@@ -6066,7 +6066,7 @@ line 1138
 ;1136:
 ;1137:	// can't follow self
 ;1138:	if ( &level.clients[ i ] == ent->client ) {
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -6091,7 +6091,7 @@ line 1143
 ;1141:
 ;1142:	// can't follow another spectator
 ;1143:	if ( level.clients[ i ].sess.sessionTeam == TEAM_SPECTATOR ) {
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -6381,7 +6381,7 @@ line 1197
 ;1195:
 ;1196:		// can only follow connected clients
 ;1197:		if ( level.clients[ clientnum ].pers.connected != CON_CONNECTED ) {
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -6403,7 +6403,7 @@ line 1202
 ;1200:
 ;1201:		// can't follow another spectator
 ;1202:		if ( level.clients[ clientnum ].sess.sessionTeam == TEAM_SPECTATOR ) {
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -9911,7 +9911,7 @@ LABELV $895
 line 1735
 ;1735:		level.clients[i].ps.eFlags &= ~EF_VOTED;
 ADDRLP4 2116
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10876,7 +10876,7 @@ JUMPV
 LABELV $977
 line 1862
 ;1862:					if ( level.clients[i].pers.connected == CON_DISCONNECTED )
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10895,7 +10895,7 @@ JUMPV
 LABELV $982
 line 1864
 ;1864:					if (level.clients[i].sess.sessionTeam != team)
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -10917,7 +10917,7 @@ line 1866
 ;1866:					Q_strncpyz(netname, level.clients[i].pers.netname, sizeof(netname));
 ADDRLP4 2076
 ARGP4
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -11112,7 +11112,7 @@ JUMPV
 LABELV $995
 line 1888
 ;1888:		if ( level.clients[i].pers.connected == CON_DISCONNECTED )
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -11131,7 +11131,7 @@ JUMPV
 LABELV $1000
 line 1890
 ;1890:		if (level.clients[i].sess.sessionTeam == team)
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -11230,7 +11230,7 @@ JUMPV
 LABELV $1009
 line 1900
 ;1900:		if (level.clients[i].sess.sessionTeam == team)
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -11246,7 +11246,7 @@ NEI4 $1014
 line 1901
 ;1901:			level.clients[i].ps.eFlags &= ~EF_TEAMVOTED;
 ADDRLP4 2076
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -11513,7 +11513,7 @@ LABELV $1024
 line 1939
 ;1938:	
 ;1939:			if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -11535,7 +11535,7 @@ line 1943
 ;1942:				
 ;1943:			clientNum = level.clients[i].ps.clientNum;
 ADDRLP4 12
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -11550,7 +11550,7 @@ line 1945
 ;1944:			
 ;1945:			ping = level.clients[i].ps.ping;
 ADDRLP4 2068
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -11564,7 +11564,7 @@ ASGNI4
 line 1946
 ;1946:			score = level.clients[i].ps.persistant[PERS_SCORE];
 ADDRLP4 2072
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -11583,7 +11583,7 @@ ARGP4
 ADDRLP4 12
 INDIRI4
 ARGI4
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -11616,7 +11616,7 @@ pop
 line 1950
 ;1949:			
 ;1950:			SanitizeString( level.clients[i].pers.netname, n2 );
-CNSTI4 3464
+CNSTI4 3472
 ADDRLP4 8
 INDIRI4
 MULI4
