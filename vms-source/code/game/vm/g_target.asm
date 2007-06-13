@@ -932,7 +932,7 @@ line 176
 LABELV $103
 endproc Use_Target_Speaker 4 12
 export SP_target_speaker
-proc SP_target_speaker 100 16
+proc SP_target_speaker 96 16
 line 178
 ;177:
 ;178:void SP_target_speaker( gentity_t *ent ) {
@@ -1036,10 +1036,9 @@ ASGNI4
 line 193
 ;193:	}
 LABELV $119
-line 196
+line 195
 ;194:
-;195:	// Ogg Support
-;196:	if (!strstr( s, ".ogg" )) {
+;195:	if (!strstr( s, ".wav" )) {
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -1054,8 +1053,8 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $121
-line 197
-;197:	Com_sprintf (buffer, sizeof(buffer), "%s.ogg", s );
+line 196
+;196:		Com_sprintf (buffer, sizeof(buffer), "%s.wav", s );
 ADDRLP4 4
 ARGP4
 CNSTI4 64
@@ -1068,82 +1067,31 @@ ARGP4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 198
-;198:	} else {
+line 197
+;197:	} else {
 ADDRGP4 $122
 JUMPV
 LABELV $121
+line 198
+;198:		Q_strncpyz( buffer, s, sizeof(buffer) );
+ADDRLP4 4
+ARGP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+CNSTI4 64
+ARGI4
+ADDRGP4 Q_strncpyz
+CALLV
+pop
 line 199
-;199:		Q_strncpyz( buffer, s, sizeof(buffer) );
-ADDRLP4 4
-ARGP4
-ADDRLP4 0
-INDIRP4
-ARGP4
-CNSTI4 64
-ARGI4
-ADDRGP4 Q_strncpyz
-CALLV
-pop
-line 200
-;200:	}
+;199:	}
 LABELV $122
-line 202
-;201:
-;202:	if (!strstr( s, ".wav" )) {
-ADDRLP4 0
-INDIRP4
-ARGP4
-ADDRGP4 $127
+line 200
+;200:	ent->noise_index = G_SoundIndex(buffer);
+ADDRLP4 4
 ARGP4
 ADDRLP4 76
-ADDRGP4 strstr
-CALLP4
-ASGNP4
-ADDRLP4 76
-INDIRP4
-CVPU4 4
-CNSTU4 0
-NEU4 $125
-line 203
-;203:		Com_sprintf (buffer, sizeof(buffer), "%s.wav", s );
-ADDRLP4 4
-ARGP4
-CNSTI4 64
-ARGI4
-ADDRGP4 $128
-ARGP4
-ADDRLP4 0
-INDIRP4
-ARGP4
-ADDRGP4 Com_sprintf
-CALLV
-pop
-line 204
-;204:	} else {
-ADDRGP4 $126
-JUMPV
-LABELV $125
-line 205
-;205:		Q_strncpyz( buffer, s, sizeof(buffer) );
-ADDRLP4 4
-ARGP4
-ADDRLP4 0
-INDIRP4
-ARGP4
-CNSTI4 64
-ARGI4
-ADDRGP4 Q_strncpyz
-CALLV
-pop
-line 206
-;206:	}
-LABELV $126
-line 207
-;207:	ent->noise_index = G_SoundIndex(buffer);
-ADDRLP4 4
-ARGP4
-ADDRLP4 80
 ADDRGP4 G_SoundIndex
 CALLI4
 ASGNI4
@@ -1151,47 +1099,47 @@ ADDRFP4 0
 INDIRP4
 CNSTI4 816
 ADDP4
-ADDRLP4 80
+ADDRLP4 76
 INDIRI4
 ASGNI4
-line 210
-;208:
-;209:	// a repeating speaker can be done completely client side
-;210:	ent->s.eType = ET_SPEAKER;
+line 203
+;201:
+;202:	// a repeating speaker can be done completely client side
+;203:	ent->s.eType = ET_SPEAKER;
 ADDRFP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 7
 ASGNI4
-line 211
-;211:	ent->s.eventParm = ent->noise_index;
-ADDRLP4 84
+line 204
+;204:	ent->s.eventParm = ent->noise_index;
+ADDRLP4 80
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 84
+ADDRLP4 80
 INDIRP4
 CNSTI4 184
 ADDP4
-ADDRLP4 84
+ADDRLP4 80
 INDIRP4
 CNSTI4 816
 ADDP4
 INDIRI4
 ASGNI4
-line 212
-;212:	ent->s.frame = ent->wait * 10;
-ADDRLP4 88
+line 205
+;205:	ent->s.frame = ent->wait * 10;
+ADDRLP4 84
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 88
+ADDRLP4 84
 INDIRP4
 CNSTI4 172
 ADDP4
 CNSTF4 1092616192
-ADDRLP4 88
+ADDRLP4 84
 INDIRP4
 CNSTI4 820
 ADDP4
@@ -1199,18 +1147,18 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 213
-;213:	ent->s.clientNum = ent->random * 10;
-ADDRLP4 92
+line 206
+;206:	ent->s.clientNum = ent->random * 10;
+ADDRLP4 88
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 92
+ADDRLP4 88
 INDIRP4
 CNSTI4 168
 ADDP4
 CNSTF4 1092616192
-ADDRLP4 92
+ADDRLP4 88
 INDIRP4
 CNSTI4 824
 ADDP4
@@ -1218,11 +1166,11 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 217
-;214:
-;215:
-;216:	// check for prestarted looping sound
-;217:	if ( ent->spawnflags & 1 ) {
+line 210
+;207:
+;208:
+;209:	// check for prestarted looping sound
+;210:	if ( ent->spawnflags & 1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -1231,38 +1179,38 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $129
-line 218
-;218:		ent->s.loopSound = ent->noise_index;
-ADDRLP4 96
+EQI4 $125
+line 211
+;211:		ent->s.loopSound = ent->noise_index;
+ADDRLP4 92
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 96
+ADDRLP4 92
 INDIRP4
 CNSTI4 156
 ADDP4
-ADDRLP4 96
+ADDRLP4 92
 INDIRP4
 CNSTI4 816
 ADDP4
 INDIRI4
 ASGNI4
-line 219
-;219:	}
-LABELV $129
-line 221
-;220:
-;221:	ent->use = Use_Target_Speaker;
+line 212
+;212:	}
+LABELV $125
+line 214
+;213:
+;214:	ent->use = Use_Target_Speaker;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 Use_Target_Speaker
 ASGNP4
-line 223
-;222:
-;223:	if (ent->spawnflags & 4) {
+line 216
+;215:
+;216:	if (ent->spawnflags & 4) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -1271,77 +1219,77 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-EQI4 $131
-line 224
-;224:		ent->r.svFlags |= SVF_BROADCAST;
-ADDRLP4 96
+EQI4 $127
+line 217
+;217:		ent->r.svFlags |= SVF_BROADCAST;
+ADDRLP4 92
 ADDRFP4 0
 INDIRP4
 CNSTI4 432
 ADDP4
 ASGNP4
-ADDRLP4 96
+ADDRLP4 92
 INDIRP4
-ADDRLP4 96
+ADDRLP4 92
 INDIRP4
 INDIRI4
 CNSTI4 32
 BORI4
 ASGNI4
-line 225
-;225:	}
-LABELV $131
-line 227
-;226:
-;227:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
-ADDRLP4 96
+line 218
+;218:	}
+LABELV $127
+line 220
+;219:
+;220:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
+ADDRLP4 92
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 96
+ADDRLP4 92
 INDIRP4
 CNSTI4 24
 ADDP4
-ADDRLP4 96
+ADDRLP4 92
 INDIRP4
 CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 231
-;228:
-;229:	// must link the entity so we get areas and clusters so
-;230:	// the server can determine who to send updates to
-;231:	trap_LinkEntity( ent );
+line 224
+;221:
+;222:	// must link the entity so we get areas and clusters so
+;223:	// the server can determine who to send updates to
+;224:	trap_LinkEntity( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 232
-;232:}
+line 225
+;225:}
 LABELV $112
-endproc SP_target_speaker 100 16
+endproc SP_target_speaker 96 16
 export target_laser_think
 proc target_laser_think 120 32
-line 241
-;233:
-;234:
-;235:
-;236://==========================================================
-;237:
-;238:/*QUAKED target_laser (0 .5 .8) (-8 -8 -8) (8 8 8) START_ON
-;239:When triggered, fires a laser.  You can either set a target or a direction.
-;240:*/
-;241:void target_laser_think (gentity_t *self) {
-line 247
-;242:	vec3_t	end;
-;243:	trace_t	tr;
-;244:	vec3_t	point;
-;245:
-;246:	// if pointed at another entity, set movedir to point at it
-;247:	if ( self->enemy ) {
+line 234
+;226:
+;227:
+;228:
+;229://==========================================================
+;230:
+;231:/*QUAKED target_laser (0 .5 .8) (-8 -8 -8) (8 8 8) START_ON
+;232:When triggered, fires a laser.  You can either set a target or a direction.
+;233:*/
+;234:void target_laser_think (gentity_t *self) {
+line 240
+;235:	vec3_t	end;
+;236:	trace_t	tr;
+;237:	vec3_t	point;
+;238:
+;239:	// if pointed at another entity, set movedir to point at it
+;240:	if ( self->enemy ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 792
@@ -1349,9 +1297,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $134
-line 248
-;248:		VectorMA (self->enemy->s.origin, 0.5, self->enemy->r.mins, point);
+EQU4 $130
+line 241
+;241:		VectorMA (self->enemy->s.origin, 0.5, self->enemy->r.mins, point);
 ADDRLP4 80
 ADDRFP4 0
 INDIRP4
@@ -1425,8 +1373,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 249
-;249:		VectorMA (point, 0.5, self->enemy->r.maxs, point);
+line 242
+;242:		VectorMA (point, 0.5, self->enemy->r.maxs, point);
 ADDRLP4 100
 CNSTF4 1056964608
 ASGNF4
@@ -1479,8 +1427,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 250
-;250:		VectorSubtract (point, self->s.origin, self->movedir);
+line 243
+;243:		VectorSubtract (point, self->s.origin, self->movedir);
 ADDRLP4 108
 ADDRFP4 0
 INDIRP4
@@ -1532,8 +1480,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 251
-;251:		VectorNormalize (self->movedir);
+line 244
+;244:		VectorNormalize (self->movedir);
 ADDRFP4 0
 INDIRP4
 CNSTI4 692
@@ -1542,13 +1490,13 @@ ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 252
-;252:	}
-LABELV $134
-line 255
-;253:
-;254:	// fire forward and see what we hit
-;255:	VectorMA (self->s.origin, 2048, self->movedir, end);
+line 245
+;245:	}
+LABELV $130
+line 248
+;246:
+;247:	// fire forward and see what we hit
+;248:	VectorMA (self->s.origin, 2048, self->movedir, end);
 ADDRLP4 80
 ADDRFP4 0
 INDIRP4
@@ -1607,9 +1555,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 257
-;256:
-;257:	trap_Trace( &tr, self->s.origin, NULL, NULL, end, self->s.number, CONTENTS_SOLID|CONTENTS_BODY|CONTENTS_CORPSE);
+line 250
+;249:
+;250:	trap_Trace( &tr, self->s.origin, NULL, NULL, end, self->s.number, CONTENTS_SOLID|CONTENTS_BODY|CONTENTS_CORPSE);
 ADDRLP4 24
 ARGP4
 ADDRLP4 92
@@ -1641,16 +1589,16 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 259
-;258:
-;259:	if ( tr.entityNum ) {
+line 252
+;251:
+;252:	if ( tr.entityNum ) {
 ADDRLP4 24+52
 INDIRI4
 CNSTI4 0
-EQI4 $146
-line 261
-;260:		// hurt it if we can
-;261:		G_Damage ( &g_entities[tr.entityNum], self, self->activator, self->movedir, 
+EQI4 $142
+line 254
+;253:		// hurt it if we can
+;254:		G_Damage ( &g_entities[tr.entityNum], self, self->activator, self->movedir, 
 CNSTI4 924
 ADDRLP4 24+52
 INDIRI4
@@ -1691,13 +1639,13 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 263
-;262:			tr.endpos, self->damage, DAMAGE_NO_KNOCKBACK, MOD_TARGET_LASER);
-;263:	}
-LABELV $146
-line 265
-;264:
-;265:	VectorCopy (tr.endpos, self->s.origin2);
+line 256
+;255:			tr.endpos, self->damage, DAMAGE_NO_KNOCKBACK, MOD_TARGET_LASER);
+;256:	}
+LABELV $142
+line 258
+;257:
+;258:	VectorCopy (tr.endpos, self->s.origin2);
 ADDRFP4 0
 INDIRP4
 CNSTI4 104
@@ -1705,17 +1653,17 @@ ADDP4
 ADDRLP4 24+12
 INDIRB
 ASGNB 12
-line 267
-;266:
-;267:	trap_LinkEntity( self );
+line 260
+;259:
+;260:	trap_LinkEntity( self );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 268
-;268:	self->nextthink = level.time + FRAMETIME;
+line 261
+;261:	self->nextthink = level.time + FRAMETIME;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -1725,18 +1673,18 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 269
-;269:}
-LABELV $133
+line 262
+;262:}
+LABELV $129
 endproc target_laser_think 120 32
 export target_laser_on
 proc target_laser_on 4 4
-line 272
-;270:
-;271:void target_laser_on (gentity_t *self)
-;272:{
-line 273
-;273:	if (!self->activator)
+line 265
+;263:
+;264:void target_laser_on (gentity_t *self)
+;265:{
+line 266
+;266:	if (!self->activator)
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -1744,9 +1692,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $154
-line 274
-;274:		self->activator = self;
+NEU4 $150
+line 267
+;267:		self->activator = self;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -1758,53 +1706,53 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-LABELV $154
-line 275
-;275:	target_laser_think (self);
+LABELV $150
+line 268
+;268:	target_laser_think (self);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 target_laser_think
 CALLV
 pop
-line 276
-;276:}
-LABELV $153
+line 269
+;269:}
+LABELV $149
 endproc target_laser_on 4 4
 export target_laser_off
 proc target_laser_off 0 4
-line 279
-;277:
-;278:void target_laser_off (gentity_t *self)
-;279:{
-line 280
-;280:	trap_UnlinkEntity( self );
+line 272
+;270:
+;271:void target_laser_off (gentity_t *self)
+;272:{
+line 273
+;273:	trap_UnlinkEntity( self );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_UnlinkEntity
 CALLV
 pop
-line 281
-;281:	self->nextthink = 0;
+line 274
+;274:	self->nextthink = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
 ADDP4
 CNSTI4 0
 ASGNI4
-line 282
-;282:}
-LABELV $156
+line 275
+;275:}
+LABELV $152
 endproc target_laser_off 0 4
 export target_laser_use
 proc target_laser_use 0 4
-line 285
-;283:
-;284:void target_laser_use (gentity_t *self, gentity_t *other, gentity_t *activator)
-;285:{
-line 286
-;286:	self->activator = activator;
+line 278
+;276:
+;277:void target_laser_use (gentity_t *self, gentity_t *other, gentity_t *activator)
+;278:{
+line 279
+;279:	self->activator = activator;
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -1812,59 +1760,59 @@ ADDP4
 ADDRFP4 8
 INDIRP4
 ASGNP4
-line 287
-;287:	if ( self->nextthink > 0 )
+line 280
+;280:	if ( self->nextthink > 0 )
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
 ADDP4
 INDIRI4
 CNSTI4 0
-LEI4 $158
-line 288
-;288:		target_laser_off (self);
+LEI4 $154
+line 281
+;281:		target_laser_off (self);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 target_laser_off
 CALLV
 pop
-ADDRGP4 $159
+ADDRGP4 $155
 JUMPV
-LABELV $158
-line 290
-;289:	else
-;290:		target_laser_on (self);
+LABELV $154
+line 283
+;282:	else
+;283:		target_laser_on (self);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 target_laser_on
 CALLV
 pop
-LABELV $159
-line 291
-;291:}
-LABELV $157
+LABELV $155
+line 284
+;284:}
+LABELV $153
 endproc target_laser_use 0 4
 export target_laser_start
 proc target_laser_start 16 16
-line 294
-;292:
-;293:void target_laser_start (gentity_t *self)
-;294:{
-line 297
-;295:	gentity_t *ent;
-;296:
-;297:	self->s.eType = ET_BEAM;
+line 287
+;285:
+;286:void target_laser_start (gentity_t *self)
+;287:{
+line 290
+;288:	gentity_t *ent;
+;289:
+;290:	self->s.eType = ET_BEAM;
 ADDRFP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 5
 ASGNI4
-line 299
-;298:
-;299:	if (self->target) {
+line 292
+;291:
+;292:	if (self->target) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 656
@@ -1872,9 +1820,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $161
-line 300
-;300:		ent = G_Find (NULL, FOFS(targetname), self->target);
+EQU4 $157
+line 293
+;293:		ent = G_Find (NULL, FOFS(targetname), self->target);
 CNSTP4 0
 ARGP4
 CNSTI4 660
@@ -1893,15 +1841,15 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 301
-;301:		if (!ent) {
+line 294
+;294:		if (!ent) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $163
-line 302
-;302:			G_Printf ("%s at %s: %s is a bad target\n", self->classname, vtos(self->s.origin), self->target);
+NEU4 $159
+line 295
+;295:			G_Printf ("%s at %s: %s is a bad target\n", self->classname, vtos(self->s.origin), self->target);
 ADDRFP4 0
 INDIRP4
 CNSTI4 92
@@ -1911,7 +1859,7 @@ ADDRLP4 8
 ADDRGP4 vtos
 CALLP4
 ASGNP4
-ADDRGP4 $165
+ADDRGP4 $161
 ARGP4
 ADDRLP4 12
 ADDRFP4 0
@@ -1935,11 +1883,11 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 303
-;303:		}
-LABELV $163
-line 304
-;304:		self->enemy = ent;
+line 296
+;296:		}
+LABELV $159
+line 297
+;297:		self->enemy = ent;
 ADDRFP4 0
 INDIRP4
 CNSTI4 792
@@ -1947,13 +1895,13 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 305
-;305:	} else {
-ADDRGP4 $162
+line 298
+;298:	} else {
+ADDRGP4 $158
 JUMPV
-LABELV $161
-line 306
-;306:		G_SetMovedir (self->s.angles, self->movedir);
+LABELV $157
+line 299
+;299:		G_SetMovedir (self->s.angles, self->movedir);
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -1971,50 +1919,50 @@ ARGP4
 ADDRGP4 G_SetMovedir
 CALLV
 pop
-line 307
-;307:	}
-LABELV $162
-line 309
-;308:
-;309:	self->use = target_laser_use;
+line 300
+;300:	}
+LABELV $158
+line 302
+;301:
+;302:	self->use = target_laser_use;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 target_laser_use
 ASGNP4
-line 310
-;310:	self->think = target_laser_think;
+line 303
+;303:	self->think = target_laser_think;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 target_laser_think
 ASGNP4
-line 312
-;311:
-;312:	if ( !self->damage ) {
+line 305
+;304:
+;305:	if ( !self->damage ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $166
-line 313
-;313:		self->damage = 1;
+NEI4 $162
+line 306
+;306:		self->damage = 1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
 CNSTI4 1
 ASGNI4
-line 314
-;314:	}
-LABELV $166
-line 316
-;315:
-;316:	if (self->spawnflags & 1)
+line 307
+;307:	}
+LABELV $162
+line 309
+;308:
+;309:	if (self->spawnflags & 1)
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -2023,49 +1971,49 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $168
-line 317
-;317:		target_laser_on (self);
+EQI4 $164
+line 310
+;310:		target_laser_on (self);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 target_laser_on
 CALLV
 pop
-ADDRGP4 $169
+ADDRGP4 $165
 JUMPV
-LABELV $168
-line 319
-;318:	else
-;319:		target_laser_off (self);
+LABELV $164
+line 312
+;311:	else
+;312:		target_laser_off (self);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 target_laser_off
 CALLV
 pop
-LABELV $169
-line 320
-;320:}
-LABELV $160
+LABELV $165
+line 313
+;313:}
+LABELV $156
 endproc target_laser_start 16 16
 export SP_target_laser
 proc SP_target_laser 0 0
-line 323
-;321:
-;322:void SP_target_laser (gentity_t *self)
-;323:{
-line 325
-;324:	// let everything else get spawned before we start firing
-;325:	self->think = target_laser_start;
+line 316
+;314:
+;315:void SP_target_laser (gentity_t *self)
+;316:{
+line 318
+;317:	// let everything else get spawned before we start firing
+;318:	self->think = target_laser_start;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 target_laser_start
 ASGNP4
-line 326
-;326:	self->nextthink = level.time + FRAMETIME;
+line 319
+;319:	self->nextthink = level.time + FRAMETIME;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -2075,22 +2023,22 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 327
-;327:}
-LABELV $170
+line 320
+;320:}
+LABELV $166
 endproc SP_target_laser 0 0
 export target_teleporter_use
 proc target_teleporter_use 12 12
-line 332
-;328:
-;329:
-;330://==========================================================
-;331:
-;332:void target_teleporter_use( gentity_t *self, gentity_t *other, gentity_t *activator ) {
-line 335
-;333:	gentity_t	*dest;
-;334:
-;335:	if (!activator->client)
+line 325
+;321:
+;322:
+;323://==========================================================
+;324:
+;325:void target_teleporter_use( gentity_t *self, gentity_t *other, gentity_t *activator ) {
+line 328
+;326:	gentity_t	*dest;
+;327:
+;328:	if (!activator->client)
 ADDRFP4 8
 INDIRP4
 CNSTI4 524
@@ -2098,14 +2046,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $173
-line 336
-;336:		return;
-ADDRGP4 $172
+NEU4 $169
+line 329
+;329:		return;
+ADDRGP4 $168
 JUMPV
-LABELV $173
-line 337
-;337:	dest = 	G_PickTarget( self->target );
+LABELV $169
+line 330
+;330:	dest = 	G_PickTarget( self->target );
 ADDRFP4 0
 INDIRP4
 CNSTI4 656
@@ -2120,29 +2068,29 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 338
-;338:	if (!dest) {
+line 331
+;331:	if (!dest) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $175
-line 339
-;339:		G_Printf ("Couldn't find teleporter destination\n");
-ADDRGP4 $177
+NEU4 $171
+line 332
+;332:		G_Printf ("Couldn't find teleporter destination\n");
+ADDRGP4 $173
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 340
-;340:		return;
-ADDRGP4 $172
+line 333
+;333:		return;
+ADDRGP4 $168
 JUMPV
-LABELV $175
-line 343
-;341:	}
-;342:
-;343:	TeleportPlayer( activator, dest->s.origin, dest->s.angles );
+LABELV $171
+line 336
+;334:	}
+;335:
+;336:	TeleportPlayer( activator, dest->s.origin, dest->s.angles );
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -2159,20 +2107,20 @@ ARGP4
 ADDRGP4 TeleportPlayer
 CALLV
 pop
-line 344
-;344:}
-LABELV $172
+line 337
+;337:}
+LABELV $168
 endproc target_teleporter_use 12 12
 export SP_target_teleporter
 proc SP_target_teleporter 4 12
-line 349
-;345:
-;346:/*QUAKED target_teleporter (1 0 0) (-8 -8 -8) (8 8 8)
-;347:The activator will be teleported away.
-;348:*/
-;349:void SP_target_teleporter( gentity_t *self ) {
-line 350
-;350:	if (!self->targetname)
+line 342
+;338:
+;339:/*QUAKED target_teleporter (1 0 0) (-8 -8 -8) (8 8 8)
+;340:The activator will be teleported away.
+;341:*/
+;342:void SP_target_teleporter( gentity_t *self ) {
+line 343
+;343:	if (!self->targetname)
 ADDRFP4 0
 INDIRP4
 CNSTI4 660
@@ -2180,9 +2128,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $179
-line 351
-;351:		G_Printf("untargeted %s at %s\n", self->classname, vtos(self->s.origin));
+NEU4 $175
+line 344
+;344:		G_Printf("untargeted %s at %s\n", self->classname, vtos(self->s.origin));
 ADDRFP4 0
 INDIRP4
 CNSTI4 92
@@ -2192,7 +2140,7 @@ ADDRLP4 0
 ADDRGP4 vtos
 CALLP4
 ASGNP4
-ADDRGP4 $181
+ADDRGP4 $177
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -2206,35 +2154,35 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-LABELV $179
-line 353
-;352:
-;353:	self->use = target_teleporter_use;
+LABELV $175
+line 346
+;345:
+;346:	self->use = target_teleporter_use;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 target_teleporter_use
 ASGNP4
-line 354
-;354:}
-LABELV $178
+line 347
+;347:}
+LABELV $174
 endproc SP_target_teleporter 4 12
 export target_relay_use
 proc target_relay_use 36 12
-line 364
-;355:
-;356://==========================================================
-;357:
-;358:
-;359:/*QUAKED target_relay (.5 .5 .5) (-8 -8 -8) (8 8 8) RED_ONLY BLUE_ONLY RANDOM
-;360:This doesn't perform any actions except fire its targets.
-;361:The activator can be forced to be from a certain team.
-;362:if RANDOM is checked, only one of the targets will be fired, not all of them
-;363:*/
-;364:void target_relay_use (gentity_t *self, gentity_t *other, gentity_t *activator) {
-line 365
-;365:	if ( ( self->spawnflags & 1 ) && activator->client 
+line 357
+;348:
+;349://==========================================================
+;350:
+;351:
+;352:/*QUAKED target_relay (.5 .5 .5) (-8 -8 -8) (8 8 8) RED_ONLY BLUE_ONLY RANDOM
+;353:This doesn't perform any actions except fire its targets.
+;354:The activator can be forced to be from a certain team.
+;355:if RANDOM is checked, only one of the targets will be fired, not all of them
+;356:*/
+;357:void target_relay_use (gentity_t *self, gentity_t *other, gentity_t *activator) {
+line 358
+;358:	if ( ( self->spawnflags & 1 ) && activator->client 
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
@@ -2247,7 +2195,7 @@ ADDRLP4 0
 INDIRI4
 BANDI4
 CNSTI4 0
-EQI4 $183
+EQI4 $179
 ADDRLP4 4
 ADDRFP4 8
 INDIRP4
@@ -2259,7 +2207,7 @@ ADDRLP4 4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $183
+EQU4 $179
 ADDRLP4 4
 INDIRP4
 CNSTI4 2552
@@ -2267,17 +2215,17 @@ ADDP4
 INDIRI4
 ADDRLP4 0
 INDIRI4
-EQI4 $183
-line 366
-;366:		&& activator->client->sess.sessionTeam != TEAM_RED ) {
-line 367
-;367:		return;
-ADDRGP4 $182
+EQI4 $179
+line 359
+;359:		&& activator->client->sess.sessionTeam != TEAM_RED ) {
+line 360
+;360:		return;
+ADDRGP4 $178
 JUMPV
-LABELV $183
-line 369
-;368:	}
-;369:	if ( ( self->spawnflags & 2 ) && activator->client 
+LABELV $179
+line 362
+;361:	}
+;362:	if ( ( self->spawnflags & 2 ) && activator->client 
 ADDRLP4 8
 CNSTI4 2
 ASGNI4
@@ -2290,7 +2238,7 @@ ADDRLP4 8
 INDIRI4
 BANDI4
 CNSTI4 0
-EQI4 $185
+EQI4 $181
 ADDRLP4 12
 ADDRFP4 8
 INDIRP4
@@ -2302,7 +2250,7 @@ ADDRLP4 12
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $185
+EQU4 $181
 ADDRLP4 12
 INDIRP4
 CNSTI4 2552
@@ -2310,17 +2258,17 @@ ADDP4
 INDIRI4
 ADDRLP4 8
 INDIRI4
-EQI4 $185
-line 370
-;370:		&& activator->client->sess.sessionTeam != TEAM_BLUE ) {
-line 371
-;371:		return;
-ADDRGP4 $182
+EQI4 $181
+line 363
+;363:		&& activator->client->sess.sessionTeam != TEAM_BLUE ) {
+line 364
+;364:		return;
+ADDRGP4 $178
 JUMPV
-LABELV $185
-line 373
-;372:	}
-;373:	if ( self->spawnflags & 4 ) {
+LABELV $181
+line 366
+;365:	}
+;366:	if ( self->spawnflags & 4 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -2329,11 +2277,11 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-EQI4 $187
-line 376
-;374:		gentity_t	*ent;
-;375:
-;376:		ent = G_PickTarget( self->target );
+EQI4 $183
+line 369
+;367:		gentity_t	*ent;
+;368:
+;369:		ent = G_PickTarget( self->target );
 ADDRFP4 0
 INDIRP4
 CNSTI4 656
@@ -2348,8 +2296,8 @@ ADDRLP4 16
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 377
-;377:		if ( ent && ent->use ) {
+line 370
+;370:		if ( ent && ent->use ) {
 ADDRLP4 24
 ADDRLP4 16
 INDIRP4
@@ -2362,7 +2310,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 28
 INDIRU4
-EQU4 $182
+EQU4 $178
 ADDRLP4 24
 INDIRP4
 CNSTI4 732
@@ -2371,9 +2319,9 @@ INDIRP4
 CVPU4 4
 ADDRLP4 28
 INDIRU4
-EQU4 $182
-line 378
-;378:			ent->use( ent, self, activator );
+EQU4 $178
+line 371
+;371:			ent->use( ent, self, activator );
 ADDRLP4 32
 ADDRLP4 16
 INDIRP4
@@ -2394,16 +2342,16 @@ ADDP4
 INDIRP4
 CALLV
 pop
-line 379
-;379:		}
-line 380
-;380:		return;
-ADDRGP4 $182
+line 372
+;372:		}
+line 373
+;373:		return;
+ADDRGP4 $178
 JUMPV
-LABELV $187
-line 382
-;381:	}
-;382:	G_UseTargets (self, activator);
+LABELV $183
+line 375
+;374:	}
+;375:	G_UseTargets (self, activator);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -2413,40 +2361,40 @@ ARGP4
 ADDRGP4 G_UseTargets
 CALLV
 pop
-line 383
-;383:}
-LABELV $182
+line 376
+;376:}
+LABELV $178
 endproc target_relay_use 36 12
 export SP_target_relay
 proc SP_target_relay 0 0
-line 385
-;384:
-;385:void SP_target_relay (gentity_t *self) {
-line 386
-;386:	self->use = target_relay_use;
+line 378
+;377:
+;378:void SP_target_relay (gentity_t *self) {
+line 379
+;379:	self->use = target_relay_use;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 target_relay_use
 ASGNP4
-line 387
-;387:}
-LABELV $191
+line 380
+;380:}
+LABELV $187
 endproc SP_target_relay 0 0
 export target_kill_use
 proc target_kill_use 8 32
-line 395
-;388:
-;389:
-;390://==========================================================
-;391:
-;392:/*QUAKED target_kill (.5 .5 .5) (-8 -8 -8) (8 8 8)
-;393:Kills the activator.
-;394:*/
-;395:void target_kill_use( gentity_t *self, gentity_t *other, gentity_t *activator ) {
-line 396
-;396:	G_Damage ( activator, NULL, NULL, NULL, NULL, 100000, DAMAGE_NO_PROTECTION, MOD_TELEFRAG);
+line 388
+;381:
+;382:
+;383://==========================================================
+;384:
+;385:/*QUAKED target_kill (.5 .5 .5) (-8 -8 -8) (8 8 8)
+;386:Kills the activator.
+;387:*/
+;388:void target_kill_use( gentity_t *self, gentity_t *other, gentity_t *activator ) {
+line 389
+;389:	G_Damage ( activator, NULL, NULL, NULL, NULL, 100000, DAMAGE_NO_PROTECTION, MOD_TELEFRAG);
 ADDRFP4 8
 INDIRP4
 ARGP4
@@ -2477,37 +2425,37 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 397
-;397:}
-LABELV $192
+line 390
+;390:}
+LABELV $188
 endproc target_kill_use 8 32
 export SP_target_kill
 proc SP_target_kill 0 0
-line 399
-;398:
-;399:void SP_target_kill( gentity_t *self ) {
-line 400
-;400:	self->use = target_kill_use;
+line 392
+;391:
+;392:void SP_target_kill( gentity_t *self ) {
+line 393
+;393:	self->use = target_kill_use;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 target_kill_use
 ASGNP4
-line 401
-;401:}
-LABELV $193
+line 394
+;394:}
+LABELV $189
 endproc SP_target_kill 0 0
 export SP_target_position
 proc SP_target_position 4 8
-line 406
-;402:
-;403:/*QUAKED target_position (0 0.5 0) (-4 -4 -4) (4 4 4)
-;404:Used as a positional target for in-game calculation, like jumppad targets.
-;405:*/
-;406:void SP_target_position( gentity_t *self ){
-line 407
-;407:	G_SetOrigin( self, self->s.origin );
+line 399
+;395:
+;396:/*QUAKED target_position (0 0.5 0) (-4 -4 -4) (4 4 4)
+;397:Used as a positional target for in-game calculation, like jumppad targets.
+;398:*/
+;399:void SP_target_position( gentity_t *self ){
+line 400
+;400:	G_SetOrigin( self, self->s.origin );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -2523,54 +2471,54 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 408
-;408:}
-LABELV $194
+line 401
+;401:}
+LABELV $190
 endproc SP_target_position 4 8
 proc target_location_linkup 16 8
-line 411
-;409:
-;410:static void target_location_linkup(gentity_t *ent)
-;411:{
-line 415
-;412:	int i;
-;413:	int n;
-;414:
-;415:	if (level.locationLinked) 
+line 404
+;402:
+;403:static void target_location_linkup(gentity_t *ent)
+;404:{
+line 408
+;405:	int i;
+;406:	int n;
+;407:
+;408:	if (level.locationLinked) 
 ADDRGP4 level+9180
 INDIRI4
 CNSTI4 0
-EQI4 $196
-line 416
-;416:		return;
-ADDRGP4 $195
+EQI4 $192
+line 409
+;409:		return;
+ADDRGP4 $191
 JUMPV
-LABELV $196
-line 418
-;417:
-;418:	level.locationLinked = qtrue;
+LABELV $192
+line 411
+;410:
+;411:	level.locationLinked = qtrue;
 ADDRGP4 level+9180
 CNSTI4 1
 ASGNI4
-line 420
-;419:
-;420:	level.locationHead = NULL;
+line 413
+;412:
+;413:	level.locationHead = NULL;
 ADDRGP4 level+9184
 CNSTP4 0
 ASGNP4
-line 422
-;421:
-;422:	trap_SetConfigstring( CS_LOCATIONS, "unknown" );
+line 415
+;414:
+;415:	trap_SetConfigstring( CS_LOCATIONS, "unknown" );
 CNSTI4 608
 ARGI4
-ADDRGP4 $201
+ADDRGP4 $197
 ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 424
-;423:
-;424:	for (i = 0, ent = g_entities, n = 1;
+line 417
+;416:
+;417:	for (i = 0, ent = g_entities, n = 1;
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
@@ -2580,14 +2528,14 @@ ASGNP4
 ADDRLP4 4
 CNSTI4 1
 ASGNI4
-ADDRGP4 $205
+ADDRGP4 $201
 JUMPV
-LABELV $202
-line 426
-;425:			i < level.num_entities;
-;426:			i++, ent++) {
-line 427
-;427:		if (ent->classname && !Q_stricmp(ent->classname, "target_location")) {
+LABELV $198
+line 419
+;418:			i < level.num_entities;
+;419:			i++, ent++) {
+line 420
+;420:		if (ent->classname && !Q_stricmp(ent->classname, "target_location")) {
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -2599,11 +2547,11 @@ ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $207
+EQU4 $203
 ADDRLP4 8
 INDIRP4
 ARGP4
-ADDRGP4 $209
+ADDRGP4 $205
 ARGP4
 ADDRLP4 12
 ADDRGP4 Q_stricmp
@@ -2612,10 +2560,10 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $207
-line 429
-;428:			// lets overload some variables!
-;429:			ent->health = n; // use for location marking
+NEI4 $203
+line 422
+;421:			// lets overload some variables!
+;422:			ent->health = n; // use for location marking
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
@@ -2623,8 +2571,8 @@ ADDP4
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 430
-;430:			trap_SetConfigstring( CS_LOCATIONS + n, ent->message );
+line 423
+;423:			trap_SetConfigstring( CS_LOCATIONS + n, ent->message );
 ADDRLP4 4
 INDIRI4
 CNSTI4 608
@@ -2639,16 +2587,16 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 431
-;431:			n++;
+line 424
+;424:			n++;
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 432
-;432:			ent->nextTrain = level.locationHead;
+line 425
+;425:			ent->nextTrain = level.locationHead;
 ADDRFP4 0
 INDIRP4
 CNSTI4 612
@@ -2656,19 +2604,19 @@ ADDP4
 ADDRGP4 level+9184
 INDIRP4
 ASGNP4
-line 433
-;433:			level.locationHead = ent;
+line 426
+;426:			level.locationHead = ent;
 ADDRGP4 level+9184
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 434
-;434:		}
-LABELV $207
-line 435
-;435:	}
+line 427
+;427:		}
 LABELV $203
-line 426
+line 428
+;428:	}
+LABELV $199
+line 419
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -2681,42 +2629,42 @@ INDIRP4
 CNSTI4 924
 ADDP4
 ASGNP4
-LABELV $205
-line 425
+LABELV $201
+line 418
 ADDRLP4 0
 INDIRI4
 ADDRGP4 level+12
 INDIRI4
-LTI4 $202
-line 438
-;436:
-;437:	// All linked together now
-;438:}
-LABELV $195
+LTI4 $198
+line 431
+;429:
+;430:	// All linked together now
+;431:}
+LABELV $191
 endproc target_location_linkup 16 8
 export SP_target_location
 proc SP_target_location 4 8
-line 448
-;439:
-;440:/*QUAKED target_location (0 0.5 0) (-8 -8 -8) (8 8 8)
-;441:Set "message" to the name of this location.
-;442:Set "count" to 0-7 for color.
-;443:0:white 1:red 2:green 3:yellow 4:blue 5:cyan 6:magenta 7:white
-;444:
-;445:Closest target_location in sight used for the location, if none
-;446:in site, closest in distance
-;447:*/
-;448:void SP_target_location( gentity_t *self ){
-line 449
-;449:	self->think = target_location_linkup;
+line 441
+;432:
+;433:/*QUAKED target_location (0 0.5 0) (-8 -8 -8) (8 8 8)
+;434:Set "message" to the name of this location.
+;435:Set "count" to 0-7 for color.
+;436:0:white 1:red 2:green 3:yellow 4:blue 5:cyan 6:magenta 7:white
+;437:
+;438:Closest target_location in sight used for the location, if none
+;439:in site, closest in distance
+;440:*/
+;441:void SP_target_location( gentity_t *self ){
+line 442
+;442:	self->think = target_location_linkup;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 target_location_linkup
 ASGNP4
-line 450
-;450:	self->nextthink = level.time + 200;  // Let them all spawn first
+line 443
+;443:	self->nextthink = level.time + 200;  // Let them all spawn first
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -2726,9 +2674,9 @@ INDIRI4
 CNSTI4 200
 ADDI4
 ASGNI4
-line 452
-;451:
-;452:	G_SetOrigin( self, self->s.origin );
+line 445
+;444:
+;445:	G_SetOrigin( self, self->s.origin );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -2744,283 +2692,24 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 453
-;453:}
-LABELV $212
+line 446
+;446:}
+LABELV $208
 endproc SP_target_location 4 8
-export GravityResetCheck
-proc GravityResetCheck 156 28
-line 482
-;454:
-;455:/*QUAKED target_gravity_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
-;456:
-;457: GLOBAL - Apply to the entire world, and not just the activator
-;458: 
-;459: "gravity" -	 Normal = 800, valid range: >= 0
-;460: "surfaceFlag" - Important setting. With this you can define on what surface the speed_change will work.
-;461: As soon as the player hits another surface, the gravity_change will stop.
-;462: Possible values:
-;463: CONTENTS_NODROP		0 -> Recommended and default value, since lower-gravity will make things float anyway.
-;464: CONTENTS_SOLID			1
-;465: CONTENTS_LAVA			2
-;466: CONTENTS_SLIME			3
-;467: CONTENTS_WATER			4
-;468: CONTENTS_FOG			5
-;469: CONTENTS_DETAIL		6 -> Can easily be set in Radiant, so also quite easy.
-;470: CONTENTS_STRUCTURAL	7 -> " " (also recommended as grav-surface, so something else can be set as detail (to reset))
-;471: CONTENTS_TRANSLUCENT	8
-;472: SURF_METALSTEPS		9
-;473: SURF_NOSTEPS			10
-;474: SURF_NOMARKS			11
-;475: SURF_NOIMPACT			12
-;476: SURF_SKY				13
-;477: SURF_NODAMAGE			14
-;478:
-;479: Note: You have to make the ceiling of your gravity-room a CONTENTS_SOLID (standard brush), a SURF_SKY, or a SURF_NOIMPACT
-;480: */
-;481:void GravityResetCheck( gentity_t *self )
-;482:{ //-Vincent
-line 486
-;483:vec3_t  begin, end;
-;484:trace_t tr1, tr2;
-;485:	
-;486:	if( !self->activator->client || !self->s.origin )
-ADDRLP4 136
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 140
-CNSTU4 0
-ASGNU4
-ADDRLP4 136
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CVPU4 4
-ADDRLP4 140
-INDIRU4
-EQU4 $217
-ADDRLP4 136
-INDIRP4
-CNSTI4 92
-ADDP4
-CVPU4 4
-ADDRLP4 140
-INDIRU4
-NEU4 $215
-LABELV $217
-line 487
-;487:	{ // The activator might be dead / The entity might be gone
-line 488
-;488:		self->activator->client->ps.gravity = g_gravity.integer;
-ADDRFP4 0
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 48
-ADDP4
-ADDRGP4 g_gravity+12
-INDIRI4
-ASGNI4
-line 489
-;489:		self->think		= 0;
-ADDRFP4 0
-INDIRP4
-CNSTI4 716
-ADDP4
-CNSTP4 0
-ASGNP4
-line 490
-;490:		return;
-ADDRGP4 $214
-JUMPV
-LABELV $215
-line 494
-;491:	}
-;492:
-;493:	// Trace up (in a straight line), until we hit a solid, playerclip, sky or noimpact content
-;494:	VectorCopy( self->activator->s.origin, begin );
-ADDRLP4 12
-ADDRFP4 0
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 92
-ADDP4
-INDIRB
-ASGNB 12
-line 495
-;495:	begin[2] += 1000;
-ADDRLP4 12+8
-ADDRLP4 12+8
-INDIRF4
-CNSTF4 1148846080
-ADDF4
-ASGNF4
-line 496
-;496:	trap_Trace( &tr1, self->activator->s.origin, NULL, NULL, end, -1, CONTENTS_SOLID | SURF_NOIMPACT | SURF_SKY );
-ADDRLP4 24
-ARGP4
-ADDRFP4 0
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 92
-ADDP4
-ARGP4
-ADDRLP4 144
-CNSTP4 0
-ASGNP4
-ADDRLP4 144
-INDIRP4
-ARGP4
-ADDRLP4 144
-INDIRP4
-ARGP4
-ADDRLP4 0
-ARGP4
-CNSTI4 -1
-ARGI4
-CNSTI4 21
-ARGI4
-ADDRGP4 trap_Trace
-CALLV
-pop
-line 498
-;497:	// Trace back down (in a straight line), trying to hit the required content
-;498:	VectorCopy( self->activator->s.origin, end );
-ADDRLP4 0
-ADDRFP4 0
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 92
-ADDP4
-INDIRB
-ASGNB 12
-line 499
-;499:	end[2] -= 1000;
-ADDRLP4 0+8
-ADDRLP4 0+8
-INDIRF4
-CNSTF4 1148846080
-SUBF4
-ASGNF4
-line 500
-;500:	trap_Trace( &tr2, tr1.endpos,  NULL, NULL, self->activator->s.origin, -1, self->surfaceFlag );
-ADDRLP4 80
-ARGP4
-ADDRLP4 24+12
-ARGP4
-ADDRLP4 148
-CNSTP4 0
-ASGNP4
-ADDRLP4 148
-INDIRP4
-ARGP4
-ADDRLP4 148
-INDIRP4
-ARGP4
-ADDRLP4 152
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 152
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 92
-ADDP4
-ARGP4
-CNSTI4 -1
-ARGI4
-ADDRLP4 152
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-ARGI4
-ADDRGP4 trap_Trace
-CALLV
-pop
-line 502
-;501:
-;502:	if( tr2.fraction <= 0 ) // The surface has not been found
-ADDRLP4 80+8
-INDIRF4
-CNSTF4 0
-GTF4 $222
-line 503
-;503:	{ // Stop doing the check and reset the gravity
-line 504
-;504:		self->activator->client->ps.gravity = g_gravity.integer;
-ADDRFP4 0
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 48
-ADDP4
-ADDRGP4 g_gravity+12
-INDIRI4
-ASGNI4
-line 505
-;505:		self->think		= 0;
-ADDRFP4 0
-INDIRP4
-CNSTI4 716
-ADDP4
-CNSTP4 0
-ASGNP4
-line 506
-;506:	}
-ADDRGP4 $223
-JUMPV
-LABELV $222
-line 508
-;507:	else
-;508:	{
-line 509
-;509:		self->nextthink = level.time + 100;
-ADDRFP4 0
-INDIRP4
-CNSTI4 704
-ADDP4
-ADDRGP4 level+32
-INDIRI4
-CNSTI4 100
-ADDI4
-ASGNI4
-line 510
-;510:	}
-LABELV $223
-line 511
-;511:}
-LABELV $214
-endproc GravityResetCheck 156 28
 export target_gravity_change_use
 proc target_gravity_change_use 4 8
-line 514
-;512:
-;513:void target_gravity_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
-;514:{ //-Vincent
-line 515
-;515:	if( self->spawnflags & 1 )
+line 455
+;447:
+;448:/*QUAKED target_gravity_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
+;449:
+;450: GLOBAL - Apply to the entire world, and not just the activator
+;451: 
+;452: "gravity" -	 Normal = 800, valid range: >= 0
+;453: */
+;454:void target_gravity_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
+;455:{ //-Vincent
+line 456
+;456:	if( self->spawnflags & 1 )
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -3029,12 +2718,12 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $228
-line 516
-;516:	{ // Global setting
-line 517
-;517:		trap_Cvar_Set( "g_gravity", va( "%f", self->gravity ) );
-ADDRGP4 $231
+EQI4 $211
+line 457
+;457:	{ // Global setting
+line 458
+;458:		trap_Cvar_Set( "g_gravity", va( "%f", self->gravity ) );
+ADDRGP4 $214
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3046,7 +2735,7 @@ ADDRLP4 0
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $230
+ADDRGP4 $213
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -3054,13 +2743,13 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 518
-;518:	}
-ADDRGP4 $229
+line 459
+;459:	}
+ADDRGP4 $212
 JUMPV
-LABELV $228
-line 519
-;519:	else if( self->activator->client )
+LABELV $211
+line 460
+;460:	else if( self->activator->client )
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -3071,11 +2760,11 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $232
-line 520
-;520:	{ // Confirm
-line 521
-;521:		self->activator = activator; // Pass it on
+EQU4 $215
+line 461
+;461:	{ // Confirm
+line 462
+;462:		self->activator = activator; // Pass it on
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -3083,8 +2772,8 @@ ADDP4
 ADDRFP4 8
 INDIRP4
 ASGNP4
-line 522
-;522:		self->activator->client->ps.gravity = self->gravity;
+line 463
+;463:		self->activator->client->ps.gravity = self->gravity;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3106,347 +2795,107 @@ ADDP4
 INDIRF4
 CVFI4 4
 ASGNI4
-line 523
-;523:	}
-LABELV $232
-LABELV $229
-line 525
-;524:
-;525:	if(		 self->surfaceFlag == 1 )
+line 464
+;464:	}
+LABELV $215
+LABELV $212
+line 466
+;465:
+;466:	if( !( self->activator->r.svFlags & SVF_CUSTOM_GRAVITY ) ) 
 ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 432
 ADDP4
 INDIRI4
-CNSTI4 1
-NEI4 $234
-line 526
-;526:			 self->surfaceFlag = CONTENTS_SOLID;
+CNSTI4 4096
+BANDI4
+CNSTI4 0
+NEI4 $217
+line 467
+;467:	{
+line 468
+;468:		if( !self->activator->r.svFlags )
 ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 796
 ADDP4
-CNSTI4 1
-ASGNI4
-ADDRGP4 $235
-JUMPV
-LABELV $234
-line 527
-;527:	else if( self->surfaceFlag == 2 )
-ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 432
 ADDP4
 INDIRI4
-CNSTI4 2
-NEI4 $236
-line 528
-;528:			 self->surfaceFlag = CONTENTS_LAVA;
+CNSTI4 0
+NEI4 $219
+line 469
+;469:			self->activator->r.svFlags = SVF_CUSTOM_GRAVITY;
 ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 796
 ADDP4
-CNSTI4 8
-ASGNI4
-ADDRGP4 $237
-JUMPV
-LABELV $236
-line 529
-;529:	else if( self->surfaceFlag == 3 )
-ADDRFP4 0
 INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 3
-NEI4 $238
-line 530
-;530:			 self->surfaceFlag = CONTENTS_SLIME;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 16
-ASGNI4
-ADDRGP4 $239
-JUMPV
-LABELV $238
-line 531
-;531:	else if( self->surfaceFlag == 4 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 4
-NEI4 $240
-line 532
-;532:			 self->surfaceFlag = CONTENTS_WATER;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 32
-ASGNI4
-ADDRGP4 $241
-JUMPV
-LABELV $240
-line 533
-;533:	else if( self->surfaceFlag == 5 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 5
-NEI4 $242
-line 534
-;534:			 self->surfaceFlag = CONTENTS_FOG;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 64
-ASGNI4
-ADDRGP4 $243
-JUMPV
-LABELV $242
-line 535
-;535:	else if( self->surfaceFlag == 6 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 6
-NEI4 $244
-line 536
-;536:			 self->surfaceFlag = CONTENTS_DETAIL;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 134217728
-ASGNI4
-ADDRGP4 $245
-JUMPV
-LABELV $244
-line 537
-;537:	else if( self->surfaceFlag == 7 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 7
-NEI4 $246
-line 538
-;538:			 self->surfaceFlag = CONTENTS_STRUCTURAL;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 268435456
-ASGNI4
-ADDRGP4 $247
-JUMPV
-LABELV $246
-line 539
-;539:	else if( self->surfaceFlag == 8 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 8
-NEI4 $248
-line 540
-;540:			 self->surfaceFlag = CONTENTS_TRANSLUCENT;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 536870912
-ASGNI4
-ADDRGP4 $249
-JUMPV
-LABELV $248
-line 541
-;541:	else if( self->surfaceFlag == 9 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 9
-NEI4 $250
-line 542
-;542:		 	 self->surfaceFlag = SURF_METALSTEPS;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
+CNSTI4 432
 ADDP4
 CNSTI4 4096
 ASGNI4
-ADDRGP4 $251
+ADDRGP4 $220
 JUMPV
-LABELV $250
-line 543
-;543:	else if( self->surfaceFlag == 10 )
+LABELV $219
+line 471
+;470:		else
+;471:			self->activator->r.svFlags |= SVF_CUSTOM_GRAVITY;
+ADDRLP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 796
 ADDP4
-INDIRI4
-CNSTI4 10
-NEI4 $252
-line 544
-;544:			 self->surfaceFlag = SURF_NOSTEPS;
-ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 432
 ADDP4
-CNSTI4 8192
-ASGNI4
-ADDRGP4 $253
-JUMPV
-LABELV $252
-line 545
-;545:	else if( self->surfaceFlag == 11 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 11
-NEI4 $254
-line 546
-;546:			 self->surfaceFlag = SURF_NOMARKS;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 32
-ASGNI4
-ADDRGP4 $255
-JUMPV
-LABELV $254
-line 547
-;547:	else if( self->surfaceFlag == 12 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 12
-NEI4 $256
-line 548
-;548:			 self->surfaceFlag = SURF_NOIMPACT;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 16
-ASGNI4
-ADDRGP4 $257
-JUMPV
-LABELV $256
-line 549
-;549:	else if( self->surfaceFlag == 13 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 13
-NEI4 $258
-line 550
-;550:			 self->surfaceFlag = SURF_SKY;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 4
-ASGNI4
-ADDRGP4 $259
-JUMPV
-LABELV $258
-line 551
-;551:	else if( self->surfaceFlag == 14 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 14
-NEI4 $260
-line 552
-;552:			 self->surfaceFlag = SURF_NODAMAGE;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 1
-ASGNI4
-ADDRGP4 $261
-JUMPV
-LABELV $260
-line 554
-;553:	else // surfaceFlag == 0, default
-;554:			 self->surfaceFlag = CONTENTS_NODROP;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTU4 2147483648
-CVUI4 4
-ASGNI4
-LABELV $261
-LABELV $259
-LABELV $257
-LABELV $255
-LABELV $253
-LABELV $251
-LABELV $249
-LABELV $247
-LABELV $245
-LABELV $243
-LABELV $241
-LABELV $239
-LABELV $237
-LABELV $235
-line 556
-;555:
-;556:	self->think = GravityResetCheck;
-ADDRFP4 0
-INDIRP4
-CNSTI4 716
-ADDP4
-ADDRGP4 GravityResetCheck
 ASGNP4
-line 557
-;557:	self->nextthink = level.time + FRAMETIME;
+ADDRLP4 0
+INDIRP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+CNSTI4 4096
+BORI4
+ASGNI4
+LABELV $220
+line 472
+;472:	}
+LABELV $217
+line 474
+;473:
+;474:	self->activator->client->gravityTime = level.time + 500; // If not activated every loop, it will reset in the next 1/2 second
 ADDRFP4 0
 INDIRP4
-CNSTI4 704
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 2728
 ADDP4
 ADDRGP4 level+32
 INDIRI4
-CNSTI4 100
+CNSTI4 500
 ADDI4
 ASGNI4
-line 558
-;558:}
-LABELV $227
+line 475
+;475:}
+LABELV $210
 endproc target_gravity_change_use 4 8
 export SP_target_gravity_change
 proc SP_target_gravity_change 4 8
-line 561
-;559:
-;560:void SP_target_gravity_change( gentity_t *self )
-;561:{ //-Vincent
-line 562
-;562:G_SetOrigin( self, self->s.origin );
+line 478
+;476:
+;477:void SP_target_gravity_change( gentity_t *self )
+;478:{ //-Vincent
+line 479
+;479:G_SetOrigin( self, self->s.origin );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3462,301 +2911,42 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 564
-;563:
-;564:trap_LinkEntity( self );
+line 481
+;480:
+;481:trap_LinkEntity( self );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 565
-;565:self->use = target_gravity_change_use;
+line 482
+;482:self->use = target_gravity_change_use;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 target_gravity_change_use
 ASGNP4
-line 566
-;566:}
-LABELV $263
+line 483
+;483:}
+LABELV $222
 endproc SP_target_gravity_change 4 8
-export SpeedResetCheck
-proc SpeedResetCheck 156 28
-line 596
-;567:
-;568:
-;569:/*QUAKED target_speed_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
-;570:
-;571: GLOBAL - Apply to the entire world, and not just the activator
-;572: 
-;573: "speed" - Normal = 320, valid range: > 0
-;574: "surfaceFlag" - Important setting. With this you can define on what surface the speed_change will work.
-;575: As soon as the player hits another surface, the speed_change will stop.
-;576: Possible values:
-;577: CONTENTS_STRUCTURAL	0 -> Recommended and default value, so something else can be set as detail (to reset)
-;578: CONTENTS_DETAIL		1
-;579: CONTENTS_LAVA			2
-;580: CONTENTS_SLIME			3
-;581: CONTENTS_WATER			4
-;582: CONTENTS_FOG			5
-;583: CONTENTS_NODROP		6
-;584: CONTENTS_SOLID			7
-;585: CONTENTS_TRANSLUCENT	8
-;586: SURF_METALSTEPS		9
-;587: SURF_NOSTEPS			10
-;588: SURF_NOMARKS			11
-;589: SURF_NOIMPACT			12
-;590: SURF_SKY				13
-;591: SURF_NODAMAGE			14
-;592:
-;593: Note: You have to make the ceiling of your speed-room a CONTENTS_SOLID (standard brush), a SURF_SKY, or a SURF_NOIMPACT
-;594: */
-;595:void SpeedResetCheck( gentity_t *self )
-;596:{ //-Vincent
-line 600
-;597:vec3_t  begin, end;
-;598:trace_t tr1, tr2;
-;599:	
-;600:	if( !self->activator->client || !self->s.origin )
-ADDRLP4 136
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 140
-CNSTU4 0
-ASGNU4
-ADDRLP4 136
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CVPU4 4
-ADDRLP4 140
-INDIRU4
-EQU4 $267
-ADDRLP4 136
-INDIRP4
-CNSTI4 92
-ADDP4
-CVPU4 4
-ADDRLP4 140
-INDIRU4
-NEU4 $265
-LABELV $267
-line 601
-;601:	{ // The activator might be dead / The entity might be gone
-line 602
-;602:		self->activator->client->ps.speed = g_speed.integer;
-ADDRFP4 0
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 52
-ADDP4
-ADDRGP4 g_speed+12
-INDIRI4
-ASGNI4
-line 603
-;603:		self->think		=  0;
-ADDRFP4 0
-INDIRP4
-CNSTI4 716
-ADDP4
-CNSTP4 0
-ASGNP4
-line 604
-;604:		return; 
-ADDRGP4 $264
-JUMPV
-LABELV $265
-line 608
-;605:	}
-;606:
-;607:	// Trace up (in a straight line), until we hit a solid, playerclip, sky or noimpact content
-;608:	VectorCopy( self->activator->s.origin, begin );
-ADDRLP4 12
-ADDRFP4 0
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 92
-ADDP4
-INDIRB
-ASGNB 12
-line 609
-;609:	begin[2] += 1000;
-ADDRLP4 12+8
-ADDRLP4 12+8
-INDIRF4
-CNSTF4 1148846080
-ADDF4
-ASGNF4
-line 610
-;610:	trap_Trace( &tr1, self->activator->s.origin, NULL, NULL, end, -1, CONTENTS_SOLID | SURF_NOIMPACT | SURF_SKY );
-ADDRLP4 24
-ARGP4
-ADDRFP4 0
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 92
-ADDP4
-ARGP4
-ADDRLP4 144
-CNSTP4 0
-ASGNP4
-ADDRLP4 144
-INDIRP4
-ARGP4
-ADDRLP4 144
-INDIRP4
-ARGP4
-ADDRLP4 0
-ARGP4
-CNSTI4 -1
-ARGI4
-CNSTI4 21
-ARGI4
-ADDRGP4 trap_Trace
-CALLV
-pop
-line 612
-;611:	// Trace back down (in a straight line), trying to hit the required content
-;612:	VectorCopy( self->activator->s.origin, end );
-ADDRLP4 0
-ADDRFP4 0
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 92
-ADDP4
-INDIRB
-ASGNB 12
-line 613
-;613:	end[2] -= 1000;
-ADDRLP4 0+8
-ADDRLP4 0+8
-INDIRF4
-CNSTF4 1148846080
-SUBF4
-ASGNF4
-line 614
-;614:	trap_Trace( &tr2, tr1.endpos,  NULL, NULL, self->activator->s.origin, -1, self->surfaceFlag );
-ADDRLP4 80
-ARGP4
-ADDRLP4 24+12
-ARGP4
-ADDRLP4 148
-CNSTP4 0
-ASGNP4
-ADDRLP4 148
-INDIRP4
-ARGP4
-ADDRLP4 148
-INDIRP4
-ARGP4
-ADDRLP4 152
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 152
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 92
-ADDP4
-ARGP4
-CNSTI4 -1
-ARGI4
-ADDRLP4 152
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-ARGI4
-ADDRGP4 trap_Trace
-CALLV
-pop
-line 616
-;615:
-;616:	if( tr2.fraction <= 0 ) // The surface has not been found
-ADDRLP4 80+8
-INDIRF4
-CNSTF4 0
-GTF4 $272
-line 617
-;617:	{ // Stop doing the check and reset the speed
-line 618
-;618:		self->activator->client->ps.speed = g_speed.integer;
-ADDRFP4 0
-INDIRP4
-CNSTI4 796
-ADDP4
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 52
-ADDP4
-ADDRGP4 g_speed+12
-INDIRI4
-ASGNI4
-line 619
-;619:		self->think		=  0;
-ADDRFP4 0
-INDIRP4
-CNSTI4 716
-ADDP4
-CNSTP4 0
-ASGNP4
-line 620
-;620:		return;
-ADDRGP4 $264
-JUMPV
-LABELV $272
-line 623
-;621:	}
-;622:	else
-;623:	{
-line 624
-;624:		self->nextthink = level.time + FRAMETIME;
-ADDRFP4 0
-INDIRP4
-CNSTI4 704
-ADDP4
-ADDRGP4 level+32
-INDIRI4
-CNSTI4 100
-ADDI4
-ASGNI4
-line 625
-;625:	}
-line 626
-;626:}
-LABELV $264
-endproc SpeedResetCheck 156 28
 export target_speed_change_use
 proc target_speed_change_use 4 8
-line 629
-;627:
-;628:void target_speed_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
-;629:{ //-Vincent
-line 630
-;630:	if( self->spawnflags & 1 )
+line 493
+;484:
+;485:
+;486:/*QUAKED target_speed_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL
+;487:
+;488: GLOBAL - Apply to the entire world, and not just the activator
+;489: 
+;490: "speed" - Normal = 320, valid range: > 0
+;491: */
+;492:void target_speed_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
+;493:{ //-Vincent
+line 494
+;494:	if( self->spawnflags & 1 )
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -3765,12 +2955,12 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $278
-line 631
-;631:	{ // Global setting
-line 632
-;632:		trap_Cvar_Set( "g_speed", va( "%f", self->speed ) );
-ADDRGP4 $231
+EQI4 $224
+line 495
+;495:	{ // Global setting
+line 496
+;496:		trap_Cvar_Set( "g_speed", va( "%f", self->speed ) );
+ADDRGP4 $214
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3782,7 +2972,7 @@ ADDRLP4 0
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $280
+ADDRGP4 $226
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -3790,13 +2980,13 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 633
-;633:	}
-ADDRGP4 $279
+line 497
+;497:	}
+ADDRGP4 $225
 JUMPV
-LABELV $278
-line 634
-;634:	else if( self->activator->client )
+LABELV $224
+line 498
+;498:	else if( self->activator->client )
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -3807,11 +2997,11 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $281
-line 635
-;635:	{ // Confirm
-line 636
-;636:		self->activator = activator; // Pass it on
+EQU4 $227
+line 499
+;499:	{ // Confirm
+line 500
+;500:		self->activator = activator; // Pass it on
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -3819,8 +3009,8 @@ ADDP4
 ADDRFP4 8
 INDIRP4
 ASGNP4
-line 637
-;637:		self->activator->client->ps.speed = self->speed;
+line 501
+;501:		self->activator->client->ps.speed = self->speed;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3842,347 +3032,107 @@ ADDP4
 INDIRF4
 CVFI4 4
 ASGNI4
-line 638
-;638:	}
-LABELV $281
-LABELV $279
-line 640
-;639:			
-;640:	if(		 self->surfaceFlag == 1 )
+line 502
+;502:	}
+LABELV $227
+LABELV $225
+line 504
+;503:			
+;504:	if( !( self->activator->r.svFlags & SVF_CUSTOM_SPEED ) ) 
 ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 432
 ADDP4
 INDIRI4
-CNSTI4 1
-NEI4 $283
-line 641
-;641:			 self->surfaceFlag = CONTENTS_DETAIL;
+CNSTI4 8192
+BANDI4
+CNSTI4 0
+NEI4 $229
+line 505
+;505:	{
+line 506
+;506:		if( !self->activator->r.svFlags )
 ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 796
 ADDP4
-CNSTI4 134217728
-ASGNI4
-ADDRGP4 $284
-JUMPV
-LABELV $283
-line 642
-;642:	else if( self->surfaceFlag == 2 )
-ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 432
 ADDP4
 INDIRI4
-CNSTI4 2
-NEI4 $285
-line 643
-;643:			 self->surfaceFlag = CONTENTS_LAVA;
+CNSTI4 0
+NEI4 $231
+line 507
+;507:			self->activator->r.svFlags = SVF_CUSTOM_SPEED;
 ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 796
 ADDP4
-CNSTI4 8
-ASGNI4
-ADDRGP4 $286
-JUMPV
-LABELV $285
-line 644
-;644:	else if( self->surfaceFlag == 3 )
-ADDRFP4 0
 INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 3
-NEI4 $287
-line 645
-;645:			 self->surfaceFlag = CONTENTS_SLIME;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 16
-ASGNI4
-ADDRGP4 $288
-JUMPV
-LABELV $287
-line 646
-;646:	else if( self->surfaceFlag == 4 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 4
-NEI4 $289
-line 647
-;647:			 self->surfaceFlag = CONTENTS_WATER;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 32
-ASGNI4
-ADDRGP4 $290
-JUMPV
-LABELV $289
-line 648
-;648:	else if( self->surfaceFlag == 5 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 5
-NEI4 $291
-line 649
-;649:			 self->surfaceFlag = CONTENTS_FOG;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 64
-ASGNI4
-ADDRGP4 $292
-JUMPV
-LABELV $291
-line 650
-;650:	else if( self->surfaceFlag == 6 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 6
-NEI4 $293
-line 651
-;651:			 self->surfaceFlag = CONTENTS_NODROP;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTU4 2147483648
-CVUI4 4
-ASGNI4
-ADDRGP4 $294
-JUMPV
-LABELV $293
-line 652
-;652:	else if( self->surfaceFlag == 7 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 7
-NEI4 $295
-line 653
-;653:			 self->surfaceFlag = CONTENTS_SOLID;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 1
-ASGNI4
-ADDRGP4 $296
-JUMPV
-LABELV $295
-line 654
-;654:	else if( self->surfaceFlag == 8 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 8
-NEI4 $297
-line 655
-;655:			 self->surfaceFlag = CONTENTS_TRANSLUCENT;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 536870912
-ASGNI4
-ADDRGP4 $298
-JUMPV
-LABELV $297
-line 656
-;656:	else if( self->surfaceFlag == 9 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 9
-NEI4 $299
-line 657
-;657:			 self->surfaceFlag = SURF_METALSTEPS;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 4096
-ASGNI4
-ADDRGP4 $300
-JUMPV
-LABELV $299
-line 658
-;658:	else if( self->surfaceFlag == 10 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 10
-NEI4 $301
-line 659
-;659:			 self->surfaceFlag = SURF_NOSTEPS;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
+CNSTI4 432
 ADDP4
 CNSTI4 8192
 ASGNI4
-ADDRGP4 $302
+ADDRGP4 $232
 JUMPV
-LABELV $301
-line 660
-;660:	else if( self->surfaceFlag == 11 )
+LABELV $231
+line 509
+;508:		else	
+;509:			self->activator->r.svFlags |= SVF_CUSTOM_SPEED;
+ADDRLP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 796
 ADDP4
-INDIRI4
-CNSTI4 11
-NEI4 $303
-line 661
-;661:			 self->surfaceFlag = SURF_NOMARKS;
-ADDRFP4 0
 INDIRP4
-CNSTI4 688
+CNSTI4 432
 ADDP4
-CNSTI4 32
-ASGNI4
-ADDRGP4 $304
-JUMPV
-LABELV $303
-line 662
-;662:	else if( self->surfaceFlag == 12 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 12
-NEI4 $305
-line 663
-;663:			 self->surfaceFlag = SURF_NOIMPACT;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 16
-ASGNI4
-ADDRGP4 $306
-JUMPV
-LABELV $305
-line 664
-;664:	else if( self->surfaceFlag == 13 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 13
-NEI4 $307
-line 665
-;665:			 self->surfaceFlag = SURF_SKY;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 4
-ASGNI4
-ADDRGP4 $308
-JUMPV
-LABELV $307
-line 666
-;666:	else if( self->surfaceFlag == 14 )
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-INDIRI4
-CNSTI4 14
-NEI4 $309
-line 667
-;667:			 self->surfaceFlag = SURF_NODAMAGE;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 1
-ASGNI4
-ADDRGP4 $310
-JUMPV
-LABELV $309
-line 669
-;668:	else // surfaceFlag == 0, default
-;669:			 self->surfaceFlag = CONTENTS_STRUCTURAL;
-ADDRFP4 0
-INDIRP4
-CNSTI4 688
-ADDP4
-CNSTI4 268435456
-ASGNI4
-LABELV $310
-LABELV $308
-LABELV $306
-LABELV $304
-LABELV $302
-LABELV $300
-LABELV $298
-LABELV $296
-LABELV $294
-LABELV $292
-LABELV $290
-LABELV $288
-LABELV $286
-LABELV $284
-line 671
-;670:
-;671:	self->think = SpeedResetCheck;
-ADDRFP4 0
-INDIRP4
-CNSTI4 716
-ADDP4
-ADDRGP4 SpeedResetCheck
 ASGNP4
-line 672
-;672:	self->nextthink = level.time + FRAMETIME;
+ADDRLP4 0
+INDIRP4
+ADDRLP4 0
+INDIRP4
+INDIRI4
+CNSTI4 8192
+BORI4
+ASGNI4
+LABELV $232
+line 510
+;510:	}
+LABELV $229
+line 512
+;511:
+;512:	self->activator->client->speedTime = level.time + 500; // If not activated every loop, it will reset in the next 1/2 second
 ADDRFP4 0
 INDIRP4
-CNSTI4 704
+CNSTI4 796
+ADDP4
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 2724
 ADDP4
 ADDRGP4 level+32
 INDIRI4
-CNSTI4 100
+CNSTI4 500
 ADDI4
 ASGNI4
-line 673
-;673:}
-LABELV $277
+line 513
+;513:}
+LABELV $223
 endproc target_speed_change_use 4 8
 export SP_target_speed_change
 proc SP_target_speed_change 4 8
-line 676
-;674:
-;675:void SP_target_speed_change( gentity_t *self )
-;676:{ //-Vincent
-line 677
-;677:G_SetOrigin( self, self->s.origin );
+line 516
+;514:
+;515:void SP_target_speed_change( gentity_t *self )
+;516:{ //-Vincent
+line 517
+;517:G_SetOrigin( self, self->s.origin );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -4198,26 +3148,26 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 679
-;678:
-;679:trap_LinkEntity( self );
+line 519
+;518:
+;519:trap_LinkEntity( self );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 680
-;680:self->use = target_speed_change_use;
+line 520
+;520:self->use = target_speed_change_use;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 target_speed_change_use
 ASGNP4
-line 681
-;681:}
-LABELV $312
+line 521
+;521:}
+LABELV $234
 endproc SP_target_speed_change 4 8
 import CheckPlayerPostions
 import G_SendCommandToClient
@@ -4834,7 +3784,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $280
+LABELV $226
 byte 1 103
 byte 1 95
 byte 1 115
@@ -4844,12 +3794,12 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $231
+LABELV $214
 byte 1 37
 byte 1 102
 byte 1 0
 align 1
-LABELV $230
+LABELV $213
 byte 1 103
 byte 1 95
 byte 1 103
@@ -4861,7 +3811,7 @@ byte 1 116
 byte 1 121
 byte 1 0
 align 1
-LABELV $209
+LABELV $205
 byte 1 116
 byte 1 97
 byte 1 114
@@ -4879,7 +3829,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $201
+LABELV $197
 byte 1 117
 byte 1 110
 byte 1 107
@@ -4889,7 +3839,7 @@ byte 1 119
 byte 1 110
 byte 1 0
 align 1
-LABELV $181
+LABELV $177
 byte 1 117
 byte 1 110
 byte 1 116
@@ -4912,7 +3862,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $177
+LABELV $173
 byte 1 67
 byte 1 111
 byte 1 117
@@ -4952,7 +3902,7 @@ byte 1 110
 byte 1 10
 byte 1 0
 align 1
-LABELV $165
+LABELV $161
 byte 1 37
 byte 1 115
 byte 1 32
@@ -4984,36 +3934,20 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $128
-byte 1 37
-byte 1 115
-byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
-byte 1 0
-align 1
-LABELV $127
-byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
-byte 1 0
-align 1
 LABELV $124
 byte 1 37
 byte 1 115
 byte 1 46
-byte 1 111
-byte 1 103
-byte 1 103
+byte 1 119
+byte 1 97
+byte 1 118
 byte 1 0
 align 1
 LABELV $123
 byte 1 46
-byte 1 111
-byte 1 103
-byte 1 103
+byte 1 119
+byte 1 97
+byte 1 118
 byte 1 0
 align 1
 LABELV $118
