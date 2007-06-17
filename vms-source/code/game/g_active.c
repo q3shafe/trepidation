@@ -477,7 +477,7 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 		if( g_entities[client->ps.clientNum].immobilized == qtrue )
 		{
 			client->ps.speed = 100;
-			client->ps.gravity = 1;
+			client->ps.gravity = 1000;
 			g_entities[client->ps.clientNum].s.time2 = 9;
 			g_entities[client->ps.clientNum].health--;
 			// Let them go when they are about dead.

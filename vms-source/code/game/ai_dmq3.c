@@ -2787,11 +2787,18 @@ bot_moveresult_t BotAttackMove(bot_state_t *bs, int tfl) {
 			bs->attackjump_time = FloatTime() + 1;
 		}
 	}
-	if (bs->cur_ps.weapon == WP_GAUNTLET) {
+	if( bs->cur_ps.weapon == WP_GAUNTLET ) 
+	{
 		attack_dist = 0;
 		attack_range = 0;
 	}
-	else {
+	else if( bs->cur_ps.weapon == WP_LIGHTNING )
+	{ // They need to fire the flamethrower much closer to the enemy -Vincent
+		attack_dist = 30; // Preferred value
+		attack_range = 45; // Maximum value
+	}
+	else
+	{
 		attack_dist = IDEAL_ATTACKDIST;
 		attack_range = 40;
 	}

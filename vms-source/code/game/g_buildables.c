@@ -6,12 +6,8 @@
 // Most of the build rules are checked before any of the stuff in here is executed. 
 
 #include "g_local.h"
-extern void BroadCastSound(char *path); // De-warning -Vincent
-
-//static	float	s_quadFactor;
-//static	vec3_t	forward, right, up;
-//static	vec3_t	muzzle;
-
+extern void BroadCastSound( char *path ); // De-warning -Vincent
+extern void SpawnThinkAid( gentity_t *base ); //In g_weapon -Vincent
 
 /* 
 ====================================
@@ -241,7 +237,7 @@ int cts;
 
 	if (cts == 2) 
 	{
-		BroadCastSound("sound/world/tim_pump.ogg");
+		BroadCastSound("sound/world/tim_pump.wav");
 		trap_SendServerCommand( -1, va("cp \"^7Immobilizer Now Available\n\"") );
 		trap_SendServerCommand( -1, va( "print \"^9Immobilizer Now Available\n\"") );
 	}
@@ -249,14 +245,14 @@ int cts;
 
 	if (cts == 3) 
 	{
-		BroadCastSound("sound/world/tim_pump.ogg");
+		BroadCastSound("sound/world/tim_pump.wav");
 		trap_SendServerCommand( -1, va("cp \"^7Shielded Turrets Now Available\n\"") );
 		trap_SendServerCommand( -1, va( "print \"^9Shielded Turrets Now Available\n\"") );
 	}
 
 	if (cts == 6) 
 	{
-		BroadCastSound("sound/world/tim_pump.ogg");
+		BroadCastSound("sound/world/tim_pump.wav");
 		trap_SendServerCommand( -1, va("cp \"^7Cloaking Turrets Now Available\n\"") );
 		trap_SendServerCommand( -1, va( "print \"Cloaking Turrets Now Available\n\"") );
 	}
@@ -274,7 +270,7 @@ checktarget
 */
 qboolean checktarget(gentity_t *firer,gentity_t *target){
 
-	vec3_t		distance;//,forward;
+	vec3_t		distance;
 	trace_t		trace;
 	int			angle;
 
@@ -549,9 +545,6 @@ turret_think
 void turret_think( gentity_t *ent){
 
 	ent->nextthink=level.time+10;
-	//ent->nextthink=level.time+300; // 300 for debug
-
-	
 
 	if (!checktarget(ent,ent->enemy))
 		turret_findenemy(ent);
@@ -572,36 +565,10 @@ createturretgun
 void createturretgun(gentity_t *ent)
 {
 	gentity_t *turret; 	// The object to hold the turrets details.
-//	gentity_t *tmpent; // Used to for checking if it's ok to build
-
-//	int			num;
-//	int			touch[MAX_GENTITIES];
-
-	// code to check there is noone within the base before making it solid
-	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
-	// Now we're just gonna kill the player if they dont get out of the way - Shafe
-
-	/*
-	vec3_t		mins, maxs;
-
-	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
-	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
-
-	// Add a check to make sure the entity is a player
-	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
-
-	if (num>1)
-	{
-		ent->nextthink=level.time+1000;
-		return;
-
-	}
-	*/
-	
 
 	ent->nextthink=level.time+100; // sets up the thinking for the cloaking or regeneration/
 	ent->think=Base_think; // handles cloaking or regeneration
-	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
+	ent->clipmask = CONTENTS_SOLID;
 	ent->r.contents = CONTENTS_SOLID;
 	turret=G_Spawn();
 	turret->parent=ent;
@@ -647,8 +614,6 @@ void createturretgun(gentity_t *ent)
 	
 	
 	
-	turret->classname="turretgun";	
-	
 	turret->s.team =  ent->s.team;	
 
 	
@@ -658,7 +623,7 @@ void createturretgun(gentity_t *ent)
 	VectorCopy(ent->s.apos.trBase,turret->s.apos.trBase);
 	VectorCopy(turret->s.apos.trBase,turret->centerpoint);
 	trap_LinkEntity (turret);
-	BroadCastSound("sound/items/electro.ogg");
+	BroadCastSound("sound/items/electro.wav");
 }
 
 /*
@@ -686,7 +651,6 @@ if (self->chain)
 	}
 }
 
-
 /*
 ===========================
 BuildTurret
@@ -696,11 +660,11 @@ void BuildTurret( gentity_t *ent , int type )
 {
 	// We need to check the turret type and select the appropriate model
 	gentity_t	*base;	
+	
 
 	base=G_Spawn();
 	base->parent=ent;	
 	if (trep_debug.integer) { G_Printf("%s Turret Built - Owner: %s\n", base->parent->client->pers.netname ); }
-	base->r.contents = CONTENTS_FOG;
 	
 	if (type == 0)
 	{
@@ -718,7 +682,12 @@ void BuildTurret( gentity_t *ent , int type )
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 
-	base->think=createturretgun;
+	// Calculate the start position, a bit in front of the player -Vincent
+	base->s.pos.trType = TR_GRAVITY;
+	SpawnThinkAid( base );
+	base->nextthink = level.time + FRAMETIME; 
+	base->think		= SpawnThink; // Intialise the spawning movement
+	// End of new spawning -Vincent
 	
 	if (type==0)
 	{
@@ -729,7 +698,7 @@ void BuildTurret( gentity_t *ent , int type )
 		base->health=300; // change this to make the turrets tougher or weaker.
 	}
 	
-	base->s.eType=ET_BUILDABLE;
+	base->s.eType=ET_GENERAL;
 	
 	if (ent->client->sess.sessionTeam == TEAM_BLUE)
 	{
@@ -748,7 +717,9 @@ void BuildTurret( gentity_t *ent , int type )
 	base->takedamage=qtrue; // so they can be destroyed
 	base->die=turret_explode; // so they actually explode when destroyed
 	base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
-	base->nextthink=level.time+5000;
+
+	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
+	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
 	
 	// Correction to default numbers -Vincent
 	VectorSet( base->r.mins, -16, -16, -16 );
@@ -756,7 +727,6 @@ void BuildTurret( gentity_t *ent , int type )
 
 	trap_LinkEntity (base);
 	//Drop_Item(ent,base,45);
-
 }
 
 
@@ -784,7 +754,7 @@ void MC_think(gentity_t *ent)
 
 	shieldMultiplier = 1;
 
-	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
+	ent->clipmask = CONTENTS_SOLID;
 	ent->r.contents = CONTENTS_SOLID;
 
 	// Determine The Sheilding By Counting Shield Generators
@@ -841,35 +811,6 @@ The MC as it is in the
 */
 void MC_prethink(gentity_t *ent)
 {
-//	int			num;
-//	int			touch[MAX_GENTITIES];
-//	gentity_t	*tmpent;
-
-	// code to check there is noone within the base before making it solid
-	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
-
-
-	// Still Broken :(
-	/*
-	vec3_t		mins, maxs;
-
-
-	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
-	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
-
-	// Add a check to make sure the entity is a player
-	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
-
-	if (num>1)
-	{
-	
-		ent->nextthink=level.time+1000;
-		return;
-	}
-	*/
-
-
-
 	if (ent->s.team == TEAM_BLUE)
 	{
 		level.blueScoreLatched = 0;
@@ -900,8 +841,8 @@ BuildMC
 */
 void BuildMC( gentity_t *ent )
 {
-
 	gentity_t	*base;
+	
 
 	if (ent->client->sess.sessionTeam == TEAM_BLUE)
 	{
@@ -923,15 +864,23 @@ void BuildMC( gentity_t *ent )
 	G_SetOrigin(base,ent->r.currentOrigin);
 	
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
-	base->think=MC_prethink;
+	
+	// Calculate the start position, a bit in front of the player -Vincent
+	base->s.pos.trType = TR_GRAVITY;
+	SpawnThinkAid( base );
+	base->nextthink = level.time + FRAMETIME; 
+	base->think		= SpawnThink; // Intialise the spawning movement
+	// End of new spawning -Vincent
 
-	base->s.eType=ET_BUILDABLE;
+	base->s.eType=ET_GENERAL;
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	base->takedamage=qfalse; // so they can be destroyed
 	//base->die=turret_explode; // so they actually explode when destroyed
-	base->nextthink=level.time+3000;  // MC Need not take long to build
 	base->classname = "mc";
-	base->s.team =  ent->client->sess.sessionTeam;	
+	base->s.team =  ent->client->sess.sessionTeam;
+	
+	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
+	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
 
 	// Correction to default numbers -Vincent
 	VectorSet( base->r.mins, -16, -16, -16 );
@@ -955,7 +904,7 @@ void BuildMC( gentity_t *ent )
 void GEN_think(gentity_t *ent)
 {
 
- 	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
+ 	ent->clipmask = CONTENTS_SOLID;
 	ent->r.contents = CONTENTS_SOLID;
 
 	// If the mc is gone blow up the generator... Meaning
@@ -997,30 +946,6 @@ built' state
 // Generators Are Never Shielded
 void gen_prethink(gentity_t *ent)
 {
-//	int			num;
-//	int			touch[MAX_GENTITIES];
-//	gentity_t	*tmpent;
-
-	// code to check there is noone within the base before making it solid
-	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
-
-	/*
-	vec3_t		mins, maxs;
-
-	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
-	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
-
-	// Add a check to make sure the entity is a player
-	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
-
-	if (num>1)
-	{
-		ent->nextthink=level.time+1000;
-		return;
-
-	}
-	*/
-	
 	// Dont count them until they have been built
 	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
 	{
@@ -1031,7 +956,7 @@ void gen_prethink(gentity_t *ent)
 		level.redGen++;
 	}
 
-		BroadCastSound("sound/items/protect.ogg");
+		BroadCastSound("sound/items/protect.wav");
 		ent->s.time2=0;
 		ent->think = GEN_think;
 		ent->nextthink=level.time+100;
@@ -1048,11 +973,7 @@ void BuildGenerator( gentity_t *ent )
 {
 
 	gentity_t	*base;
-	//vec3_t		velocity;
-	//trace_t		tr;
-	//vec3_t		dest;
-	//vec3_t		origin;
-
+	
 
 	base=G_Spawn();
 	base->parent=ent;
@@ -1061,9 +982,16 @@ void BuildGenerator( gentity_t *ent )
 	base->s.modelindex2 = G_ModelIndex("models/turrets/generator.md3");
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
-	base->think=gen_prethink;
+	
+	// Calculate the start position, a bit in front of the player -Vincent
+	base->s.pos.trType = TR_GRAVITY;
+	SpawnThinkAid( base );
+	base->nextthink = level.time + FRAMETIME; 
+	base->think		= SpawnThink; // Intialise the spawning movement
+	// End of new spawning -Vincent
+
 	base->health=400; // change this to make tougher or weaker.
-	base->s.eType=ET_BUILDABLE;
+	base->s.eType=ET_GENERAL;
 	
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	base->takedamage=qtrue; // so they can be destroyed
@@ -1072,25 +1000,13 @@ void BuildGenerator( gentity_t *ent )
 	base->classname = "generator";
 	base->s.team =  ent->client->sess.sessionTeam;	
 		
-	base->nextthink=level.time+9000;   // 9 Seconds before a sheildgen is operational.
-	
+	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
+	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent	
 	
 	// Correction to default numbers -Vincent
 	VectorSet( base->r.mins, -16, -16, -16 );
 	VectorSet( base->r.maxs, 16, 16, 16);
 	
-		
-	// Drop To Ground
-	// This makes it fall.. but it doesnt stop! eeek lol
-	/*
-	G_SetOrigin( base, ent->s.pos.trBase );
-	base->s.pos.trType = TR_GRAVITY;
-	base->s.pos.trTime = level.time;
-	VectorCopy( velocity, base->s.pos.trDelta );
-	base->s.eFlags |= EF_BOUNCE_HALF;
-	base->flags = FL_DROPPED_ITEM;
-	*/
-
 	trap_LinkEntity (base);
 }
 
@@ -1116,7 +1032,7 @@ void TD_think(gentity_t *ent)
 
 	target = g_entities;
 
- 	ent->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
+ 	ent->clipmask = CONTENTS_SOLID;
 	ent->r.contents = CONTENTS_SOLID;
 
 	// If the mc is gone blow up the time displacer... Meaning
@@ -1146,8 +1062,6 @@ void TD_think(gentity_t *ent)
 	ent->nextthink=level.time+10;
 	ent->think = TD_think;
 
-
-
 	if (!checktarget(ent,ent->enemy))
 	{
 		turret_findenemy(ent);
@@ -1162,9 +1076,7 @@ void TD_think(gentity_t *ent)
 
 	if (ent->count<level.time)
 	{	
-		
 		target->immobilized = qtrue;
-
 	} 
 
 }
@@ -1181,30 +1093,6 @@ built' state
 
 void td_prethink(gentity_t *ent)
 {
-//	int			num;
-//	int			touch[MAX_GENTITIES];
-//	gentity_t	*tmpent;
-
-	// code to check there is noone within the base before making it solid
-	// Now corrected by setting the mins and the maxs to their right value :D -Vincent
-
-	/*	
-	vec3_t		mins, maxs;
-
-	VectorAdd( ent->r.currentOrigin, ent->r.mins, mins );
-	VectorAdd( ent->r.currentOrigin, ent->r.maxs, maxs );
-
-	// Add a check to make sure the entity is a player
-	num = trap_EntitiesInBox( mins, maxs, touch, MAX_GENTITIES );
-
-	if (num>1)
-	{
-			ent->nextthink=level.time+1000;
-			return;		
-	}
-	*/
-
-
 	// Dont count them until they have been built
 	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
 	{
@@ -1215,13 +1103,10 @@ void td_prethink(gentity_t *ent)
 		level.redTD++;
 	}
 
-		BroadCastSound("sound/items/protect.ogg");
+		BroadCastSound("sound/items/protect.wav");
 		ent->s.time2=0;
 		ent->think = TD_think;
 		ent->nextthink=level.time+100;
-
-
-
 }
 
 
@@ -1234,6 +1119,7 @@ BuildDisplacer
 void BuildDisplacer( gentity_t *ent )
 {
 	gentity_t	*base;
+	
 
 	base=G_Spawn();
 	base->parent=ent;
@@ -1242,9 +1128,16 @@ void BuildDisplacer( gentity_t *ent )
 	base->s.modelindex2 = G_ModelIndex("models/turrets/immobilizer.md3");
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
-	base->think=td_prethink;
+	
+	// Calculate the start position, a bit in front of the player -Vincent
+	base->s.pos.trType = TR_GRAVITY;
+	SpawnThinkAid( base );
+	base->nextthink = level.time + FRAMETIME; 
+	base->think		= SpawnThink; // Intialise the spawning movement
+	// End of new spawning -Vincent
+
 	base->health=150; // change this to make tougher or weaker.
-	base->s.eType=ET_BUILDABLE;
+	base->s.eType=ET_GENERAL;
 	
 	base->s.time2=9; 
 	base->takedamage=qtrue; // so they can be destroyed
@@ -1253,7 +1146,8 @@ void BuildDisplacer( gentity_t *ent )
 	base->classname = "timedisplacer";
 	base->s.team =  ent->client->sess.sessionTeam;	
 		
-	base->nextthink=level.time+5000;   // 5 Seconds before a time displacer is operational.
+	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
+	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
 		
 	// Correction to default numbers -Vincent
 	VectorSet( base->r.mins, -16, -16, -16 );
@@ -1263,4 +1157,57 @@ void BuildDisplacer( gentity_t *ent )
 
 }
 
+
+/*
+===========================
+SpawnThink
+
+To make buildables spawn in front of you.
+Also checks if it comes in a solid
+===========================
+*/
+// FIXME: No longer an actual thinker
+void SpawnThink( gentity_t *ent )
+{ //-Vincent
+vec3_t		origin;
+trace_t		tr;
+
+if( !ent || !ent->parent || !ent->parent->client )
+	return; // Verify
+
+VectorCopy( ent->r.currentOrigin, origin )
+origin[2] -= 1000; // Move it straight down
+
+// Trace for solids from the previous position to the new position on the ground, 
+// but without getting stuck in the owner!
+trap_Trace( &tr, ent->r.currentOrigin, ent->r.mins, ent->r.maxs, origin, 
+			ent->parent ? ent->parent->s.number : ent->s.number, MASK_SHOT );
+
+G_SetOrigin( ent, tr.endpos );
+VectorCopy( ent->r.currentOrigin, ent->s.origin ); // Set it's new origin
+trap_LinkEntity( ent );
+
+// Go to the actual thinking
+ent->s.eType = ET_BUILDABLE; // Initialize
+if( ent->classname == "turret" )
+{
+	ent->nextthink = level.time + 5000;
+	ent->think	   = createturretgun;
+}
+else if( ent->classname == "mc" )
+{
+	ent->nextthink = level.time + 3000;
+	ent->think = MC_prethink;
+}
+else if( ent->classname == "generator" )
+{
+	ent->nextthink = level.time + 9000;
+	ent->think = gen_prethink;
+}
+else if( ent->classname == "timedisplacer" )
+{
+	ent->nextthink = level.time + 5000;
+	ent->think = td_prethink;
+}
+}
 

@@ -4,7 +4,6 @@
 // perform the server side effects of a weapon firing
 
 #include "g_local.h"
-
 static	float	s_quadFactor;
 static	vec3_t	forward, right, up;
 static	vec3_t	muzzle;
@@ -1478,3 +1477,31 @@ void G_StartKamikaze( gentity_t *ent ) {
 	te->s.eventParm = GTS_KAMIKAZE;
 }
 #endif
+
+void SpawnThinkAid( gentity_t *base )
+{ // Done here for those night forward, right, and up values -Vincent	
+vec3_t start, dir, angles;
+
+if( !base || !base->parent || !base->parent->client )
+	return; // Verify
+
+VectorCopy( base->parent->client->ps.viewangles, angles );
+angles[0] = 0; // Stay straight
+angles[2] = 0; // Stay straight
+
+AngleVectors( angles, forward, right, up );
+CalcMuzzlePoint( base, forward, right, up, start ); // Actual start point, away from the owner
+VectorNormalize( forward );
+VectorMA( start, 32, forward, start ); // Go in front of the player
+G_SetOrigin( base, start ); // Start a bit in front of the player
+base->s.pos.trTime = level.time;
+	
+VectorCopy( forward, dir ); // To tweak it below this...
+VectorNormalize( dir );
+VectorScale( dir, 300, base->s.pos.trDelta );
+base->s.pos.trTime = level.time;
+vectoangles( dir, base->s.angles);
+VectorCopy( base->s.angles, base->s.apos.trBase );
+VectorSet( base->s.apos.trDelta, 300, 0, 0 ); // Speed
+base->s.apos.trTime = level.time;
+}
