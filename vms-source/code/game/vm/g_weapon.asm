@@ -6547,7 +6547,15 @@ MULF4
 ADDF4
 ASGNF4
 line 1496
-;1496:G_SetOrigin( base, start ); // Start a bit in front of the player
+;1496:start[2] += 15; // This might fix a bug...
+ADDRLP4 0+8
+ADDRLP4 0+8
+INDIRF4
+CNSTF4 1097859072
+ADDF4
+ASGNF4
+line 1497
+;1497:G_SetOrigin( base, start ); // Start a bit in front of the player
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6556,8 +6564,8 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 1497
-;1497:base->s.pos.trTime = level.time;
+line 1498
+;1498:base->s.pos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 16
@@ -6565,22 +6573,22 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1499
-;1498:	
-;1499:VectorCopy( forward, dir ); // To tweak it below this...
+line 1500
+;1499:	
+;1500:VectorCopy( forward, dir ); // To tweak it below this...
 ADDRLP4 12
 ADDRGP4 forward
 INDIRB
 ASGNB 12
-line 1500
-;1500:VectorNormalize( dir );
+line 1501
+;1501:VectorNormalize( dir );
 ADDRLP4 12
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 1501
-;1501:VectorScale( dir, 300, base->s.pos.trDelta );
+line 1502
+;1502:VectorScale( dir, 300, base->s.pos.trDelta );
 ADDRFP4 0
 INDIRP4
 CNSTI4 36
@@ -6608,8 +6616,8 @@ ADDRLP4 12+8
 INDIRF4
 MULF4
 ASGNF4
-line 1502
-;1502:base->s.pos.trTime = level.time;
+line 1503
+;1503:base->s.pos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 16
@@ -6617,8 +6625,8 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1503
-;1503:vectoangles( dir, base->s.angles);
+line 1504
+;1504:vectoangles( dir, base->s.angles);
 ADDRLP4 12
 ARGP4
 ADDRFP4 0
@@ -6629,8 +6637,8 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 1504
-;1504:VectorCopy( base->s.angles, base->s.apos.trBase );
+line 1505
+;1505:VectorCopy( base->s.angles, base->s.apos.trBase );
 ADDRLP4 52
 ADDRFP4 0
 INDIRP4
@@ -6645,8 +6653,8 @@ CNSTI4 116
 ADDP4
 INDIRB
 ASGNB 12
-line 1505
-;1505:VectorSet( base->s.apos.trDelta, 300, 0, 0 ); // Speed
+line 1506
+;1506:VectorSet( base->s.apos.trDelta, 300, 0, 0 ); // Speed
 ADDRFP4 0
 INDIRP4
 CNSTI4 72
@@ -6665,8 +6673,8 @@ CNSTI4 80
 ADDP4
 CNSTF4 0
 ASGNF4
-line 1506
-;1506:base->s.apos.trTime = level.time;
+line 1507
+;1507:base->s.apos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 52
@@ -6674,8 +6682,8 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1507
-;1507:}
+line 1508
+;1508:}
 LABELV $362
 endproc SpawnThinkAid 56 20
 bss
