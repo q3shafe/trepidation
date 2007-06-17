@@ -2363,6 +2363,7 @@ line 443
 ;443:}
 LABELV $171
 endproc SP_func_timer 12 12
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

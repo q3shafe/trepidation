@@ -5361,6 +5361,7 @@ export itemRegistered
 align 4
 LABELV itemRegistered
 skip 1024
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

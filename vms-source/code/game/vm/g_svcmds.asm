@@ -2747,6 +2747,7 @@ skip 4
 align 4
 LABELV ipFilters
 skip 8192
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

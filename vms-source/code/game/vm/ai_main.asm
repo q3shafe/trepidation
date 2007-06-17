@@ -10882,6 +10882,7 @@ import EA_Command
 import EA_SayTeam
 import EA_Say
 import GetBotLibAPI
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

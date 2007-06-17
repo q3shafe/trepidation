@@ -5575,6 +5575,7 @@ skip 4096
 align 4
 LABELV g_numBots
 skip 4
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible
