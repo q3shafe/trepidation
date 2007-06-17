@@ -2767,12 +2767,12 @@ ADDP4
 CNSTI4 100
 ASGNI4
 line 480
-;480:			client->ps.gravity = 1;
+;480:			client->ps.gravity = 1000;
 ADDRLP4 0
 INDIRP4
 CNSTI4 48
 ADDP4
-CNSTI4 1
+CNSTI4 1000
 ASGNI4
 line 481
 ;481:			g_entities[client->ps.clientNum].s.time2 = 9;
@@ -7475,6 +7475,7 @@ LABELV $559
 endproc ClientEndFrame 52 12
 import BotTestSolid
 import Weapon_GrapplingHook_Fire
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

@@ -3169,6 +3169,7 @@ line 521
 ;521:}
 LABELV $234
 endproc SP_target_speed_change 4 8
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

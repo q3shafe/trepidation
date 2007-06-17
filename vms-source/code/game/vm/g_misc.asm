@@ -2254,6 +2254,7 @@ line 412
 ;412: }
 LABELV $128
 endproc G_BreakGlass 76 8
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

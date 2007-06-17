@@ -12254,6 +12254,7 @@ export pushed
 align 4
 LABELV pushed
 skip 32768
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

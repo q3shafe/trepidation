@@ -3483,6 +3483,7 @@ export remappedShaders
 align 4
 LABELV remappedShaders
 skip 16896
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import trap_SnapVector

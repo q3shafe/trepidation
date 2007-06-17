@@ -8300,6 +8300,7 @@ line 1684
 LABELV $546
 endproc ClientDisconnect 28 20
 import SelectRandomTeamSpawnPoint
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

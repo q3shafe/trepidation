@@ -2582,6 +2582,7 @@ import SP_info_firstplace
 import SP_info_player_intermission
 import SP_info_player_deathmatch
 import SP_info_player_start
+import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

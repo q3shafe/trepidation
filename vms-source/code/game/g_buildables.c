@@ -1175,8 +1175,8 @@ trace_t		tr;
 if( !ent || !ent->parent || !ent->parent->client )
 	return; // Verify
 
-VectorCopy( ent->r.currentOrigin, origin )
-origin[2] -= 1000; // Move it straight down
+VectorCopy( ent->r.currentOrigin, origin );
+ origin[2] -= 1000; // Move it straight down
 
 // Trace for solids from the previous position to the new position on the ground, 
 // but without getting stuck in the owner!
