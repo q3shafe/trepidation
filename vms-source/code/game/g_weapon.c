@@ -1493,6 +1493,7 @@ AngleVectors( angles, forward, right, up );
 CalcMuzzlePoint( base, forward, right, up, start ); // Actual start point, away from the owner
 VectorNormalize( forward );
 VectorMA( start, 32, forward, start ); // Go in front of the player
+start[2] += 15; // This might fix a bug...
 G_SetOrigin( base, start ); // Start a bit in front of the player
 base->s.pos.trTime = level.time;
 	

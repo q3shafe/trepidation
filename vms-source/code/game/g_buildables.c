@@ -214,6 +214,8 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 	
 	
 	self->s.weapon=WP_ROCKET_LAUNCHER; // to tell it what kind of explosion to use
+	self->takedamage = qfalse; // Stop multiple explosions -Vincent
+	self->targetname = ""; // And again... -Vincent
 	G_AddEvent( self, EV_MISSILE_MISS, DirToByte( dir ) ); // to tell it to spawn an explosion here
 	self->freeAfterEvent = qtrue; // so the base goes away after the explosion
 	self->think = G_FreeEntity;
@@ -1169,14 +1171,15 @@ Also checks if it comes in a solid
 // FIXME: No longer an actual thinker
 void SpawnThink( gentity_t *ent )
 { //-Vincent
-vec3_t		origin;
+vec3_t		origin, slope, nvf, ovf, ovr, new_angles = {0, 0, 0 };
+float		pitch, mod, dot;
 trace_t		tr;
 
 if( !ent || !ent->parent || !ent->parent->client )
 	return; // Verify
 
 VectorCopy( ent->r.currentOrigin, origin );
- origin[2] -= 1000; // Move it straight down
+origin[2] -= 1000; // Trace it straight down
 
 // Trace for solids from the previous position to the new position on the ground, 
 // but without getting stuck in the owner!
@@ -1185,7 +1188,30 @@ trap_Trace( &tr, ent->r.currentOrigin, ent->r.mins, ent->r.maxs, origin,
 
 G_SetOrigin( ent, tr.endpos );
 VectorCopy( ent->r.currentOrigin, ent->s.origin ); // Set it's new origin
-trap_LinkEntity( ent );
+
+if( tr.fraction < 1.0 && ( &tr.plane ) )
+{ // Match to a slope when necessary
+VectorCopy( tr.plane.normal, slope ); // Get the slopes' angles
+AngleVectors( ent->s.angles, ovf, ovr, NULL ); // Already calculated in g_weapon
+vectoangles( slope, new_angles );
+pitch = new_angles[PITCH] + 90;
+new_angles[ROLL] = new_angles[PITCH] = 0;
+AngleVectors( new_angles, nvf, NULL, NULL );
+
+mod = DotProduct( nvf, ovr );
+if( mod < 0 )
+	mod = -1;
+else
+	mod = 1;
+
+dot = DotProduct( nvf, ovf );
+// Modify its actual angles
+ent->s.angles[PITCH] = dot * pitch;
+ent->s.angles[ROLL] = ( ( 1-Q_fabs( dot ) ) * pitch * mod );
+VectorCopy( ent->s.angles, ent->s.apos.trBase );
+}
+
+trap_LinkEntity( ent ); // Add it...
 
 // Go to the actual thinking
 ent->s.eType = ET_BUILDABLE; // Initialize
