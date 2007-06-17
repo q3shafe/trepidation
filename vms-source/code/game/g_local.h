@@ -1196,6 +1196,8 @@ qboolean visible( gentity_t *ent1, gentity_t *ent2 );	// Shafe - Trep Visible Fu
 void G_SendCommandToClient(gentity_t *to, char *cmd);		// Shafe - Trep - Radar
 void CheckPlayerPostions(void);							// Shafe - Trep - Radar
 
+void SpawnThink( gentity_t *ent ); // Used to place buildables in front of you in g_buildables, at the bottom so it needs this -Vincent
+
 
 
 
