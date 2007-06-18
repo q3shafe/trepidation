@@ -7,7 +7,7 @@
 
 #include "g_local.h"
 extern void BroadCastSound( char *path ); // De-warning -Vincent
-extern void SpawnThinkAid( gentity_t *base ); //In g_weapon -Vincent
+extern void BuildableSpawn( gentity_t *base ); //In g_weapon -Vincent
 
 /* 
 ====================================
@@ -680,16 +680,9 @@ void BuildTurret( gentity_t *ent , int type )
 		base->model = "models/turrets/base2.md3";
 		base->s.modelindex2 = G_ModelIndex("models/turrets/base2.md3");
 	}
-	
+
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
-
-	// Calculate the start position, a bit in front of the player -Vincent
-	base->s.pos.trType = TR_GRAVITY;
-	SpawnThinkAid( base );
-	base->nextthink = level.time + FRAMETIME; 
-	base->think		= SpawnThink; // Intialise the spawning movement
-	// End of new spawning -Vincent
 	
 	if (type==0)
 	{
@@ -722,13 +715,17 @@ void BuildTurret( gentity_t *ent , int type )
 
 	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
 	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
+	base->s.pos.trType = TR_GRAVITY;
 	
 	// Correction to default numbers -Vincent
 	VectorSet( base->r.mins, -16, -16, -16 );
 	VectorSet( base->r.maxs, 16, 16, 16);
 
-	trap_LinkEntity (base);
-	//Drop_Item(ent,base,45);
+	trap_LinkEntity( base );
+
+	BuildableSpawn( base ); // New spawning -Vincent
+	base->nextthink = level.time + 5000;
+	base->think	   = createturretgun;
 }
 
 
@@ -863,17 +860,10 @@ void BuildMC( gentity_t *ent )
 	base->s.modelindex = G_ModelIndex("models/turrets/mc.md3");
 	base->model = "models/turrets/mc.md3";
 	base->s.modelindex2 = G_ModelIndex("models/turrets/mc.md3");
+
 	G_SetOrigin(base,ent->r.currentOrigin);
-	
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	
-	// Calculate the start position, a bit in front of the player -Vincent
-	base->s.pos.trType = TR_GRAVITY;
-	SpawnThinkAid( base );
-	base->nextthink = level.time + FRAMETIME; 
-	base->think		= SpawnThink; // Intialise the spawning movement
-	// End of new spawning -Vincent
-
 	base->s.eType=ET_GENERAL;
 	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 	base->takedamage=qfalse; // so they can be destroyed
@@ -883,13 +873,17 @@ void BuildMC( gentity_t *ent )
 	
 	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
 	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
-
+	base->s.pos.trType = TR_GRAVITY;
+	
 	// Correction to default numbers -Vincent
 	VectorSet( base->r.mins, -16, -16, -16 );
 	VectorSet( base->r.maxs, 16, 16, 16);
 
-	trap_LinkEntity (base);
-	//Drop_Item(ent,base,45);
+	trap_LinkEntity( base );
+
+	BuildableSpawn( base ); // New spawning -Vincent
+	base->nextthink = level.time + 3000;
+	base->think = MC_prethink;
 }
 
 
@@ -982,15 +976,9 @@ void BuildGenerator( gentity_t *ent )
 	base->s.modelindex = G_ModelIndex("models/turrets/generator.md3");
 	base->model = "models/turrets/generator.md3";
 	base->s.modelindex2 = G_ModelIndex("models/turrets/generator.md3");
+
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
-	
-	// Calculate the start position, a bit in front of the player -Vincent
-	base->s.pos.trType = TR_GRAVITY;
-	SpawnThinkAid( base );
-	base->nextthink = level.time + FRAMETIME; 
-	base->think		= SpawnThink; // Intialise the spawning movement
-	// End of new spawning -Vincent
 
 	base->health=400; // change this to make tougher or weaker.
 	base->s.eType=ET_GENERAL;
@@ -1003,13 +991,18 @@ void BuildGenerator( gentity_t *ent )
 	base->s.team =  ent->client->sess.sessionTeam;	
 		
 	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
-	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent	
+	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
+	base->s.pos.trType = TR_GRAVITY;
 	
 	// Correction to default numbers -Vincent
 	VectorSet( base->r.mins, -16, -16, -16 );
 	VectorSet( base->r.maxs, 16, 16, 16);
-	
-	trap_LinkEntity (base);
+
+	trap_LinkEntity( base );
+
+	BuildableSpawn( base ); // New spawning -Vincent
+	base->nextthink = level.time + 9000;
+	base->think = gen_prethink;
 }
 
 
@@ -1128,15 +1121,9 @@ void BuildDisplacer( gentity_t *ent )
 	base->s.modelindex = G_ModelIndex("models/turrets/immobilizer.md3");
 	base->model = "models/turrets/immobilizer.md3";
 	base->s.modelindex2 = G_ModelIndex("models/turrets/immobilizer.md3");
+
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
-	
-	// Calculate the start position, a bit in front of the player -Vincent
-	base->s.pos.trType = TR_GRAVITY;
-	SpawnThinkAid( base );
-	base->nextthink = level.time + FRAMETIME; 
-	base->think		= SpawnThink; // Intialise the spawning movement
-	// End of new spawning -Vincent
 
 	base->health=150; // change this to make tougher or weaker.
 	base->s.eType=ET_GENERAL;
@@ -1151,89 +1138,19 @@ void BuildDisplacer( gentity_t *ent )
 	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
 	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
 		
+	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
+	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
+	base->s.pos.trType = TR_GRAVITY;
+	
 	// Correction to default numbers -Vincent
 	VectorSet( base->r.mins, -16, -16, -16 );
 	VectorSet( base->r.maxs, 16, 16, 16);
 
-	trap_LinkEntity (base);
+	trap_LinkEntity( base );
 
+	BuildableSpawn( base ); // New spawning -Vincent
+	base->nextthink = level.time + 5000;
+	base->think = td_prethink;
 }
 
-
-/*
-===========================
-SpawnThink
-
-To make buildables spawn in front of you.
-Also checks if it comes in a solid
-===========================
-*/
-// FIXME: No longer an actual thinker
-void SpawnThink( gentity_t *ent )
-{ //-Vincent
-vec3_t		origin, slope, nvf, ovf, ovr, new_angles = {0, 0, 0 };
-float		pitch, mod, dot;
-trace_t		tr;
-
-if( !ent || !ent->parent || !ent->parent->client )
-	return; // Verify
-
-VectorCopy( ent->r.currentOrigin, origin );
-origin[2] -= 1000; // Trace it straight down
-
-// Trace for solids from the previous position to the new position on the ground, 
-// but without getting stuck in the owner!
-trap_Trace( &tr, ent->r.currentOrigin, ent->r.mins, ent->r.maxs, origin, 
-			ent->parent ? ent->parent->s.number : ent->s.number, MASK_SHOT );
-
-G_SetOrigin( ent, tr.endpos );
-VectorCopy( ent->r.currentOrigin, ent->s.origin ); // Set it's new origin
-
-if( tr.fraction < 1.0 && ( &tr.plane ) )
-{ // Match to a slope when necessary
-VectorCopy( tr.plane.normal, slope ); // Get the slopes' angles
-AngleVectors( ent->s.angles, ovf, ovr, NULL ); // Already calculated in g_weapon
-vectoangles( slope, new_angles );
-pitch = new_angles[PITCH] + 90;
-new_angles[ROLL] = new_angles[PITCH] = 0;
-AngleVectors( new_angles, nvf, NULL, NULL );
-
-mod = DotProduct( nvf, ovr );
-if( mod < 0 )
-	mod = -1;
-else
-	mod = 1;
-
-dot = DotProduct( nvf, ovf );
-// Modify its actual angles
-ent->s.angles[PITCH] = dot * pitch;
-ent->s.angles[ROLL] = ( ( 1-Q_fabs( dot ) ) * pitch * mod );
-VectorCopy( ent->s.angles, ent->s.apos.trBase );
-}
-
-trap_LinkEntity( ent ); // Add it...
-
-// Go to the actual thinking
-ent->s.eType = ET_BUILDABLE; // Initialize
-if( ent->classname == "turret" )
-{
-	ent->nextthink = level.time + 5000;
-	ent->think	   = createturretgun;
-}
-else if( ent->classname == "mc" )
-{
-	ent->nextthink = level.time + 3000;
-	ent->think = MC_prethink;
-}
-else if( ent->classname == "generator" )
-{
-	ent->nextthink = level.time + 9000;
-	ent->think = gen_prethink;
-}
-else if( ent->classname == "timedisplacer" )
-{
-	ent->nextthink = level.time + 5000;
-	ent->think = td_prethink;
-}
-}
 
