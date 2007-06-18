@@ -1478,13 +1478,18 @@ void G_StartKamikaze( gentity_t *ent ) {
 }
 #endif
 
-void SpawnThinkAid( gentity_t *base )
+
+void BuildableSpawn( gentity_t *base )
 { // Done here for those night forward, right, and up values -Vincent	
-vec3_t start, dir, angles;
+vec3_t		start, dir, angles; // Part 1 stuff
+vec3_t		origin, slope, nvf, ovf, ovr, new_angles = {0, 0, 0 }; // Part 2
+float		pitch, mod, dot; // Part 2
+trace_t		tr; // Part 2
 
 if( !base || !base->parent || !base->parent->client )
-	return; // Verify
+	return; // Verify for both parts
 
+// Part 1: Initial spawning in front of the player -Vincent
 VectorCopy( base->parent->client->ps.viewangles, angles );
 angles[0] = 0; // Stay straight
 angles[2] = 0; // Stay straight
@@ -1493,7 +1498,6 @@ AngleVectors( angles, forward, right, up );
 CalcMuzzlePoint( base, forward, right, up, start ); // Actual start point, away from the owner
 VectorNormalize( forward );
 VectorMA( start, 32, forward, start ); // Go in front of the player
-start[2] += 15; // This might fix a bug...
 G_SetOrigin( base, start ); // Start a bit in front of the player
 base->s.pos.trTime = level.time;
 	
@@ -1505,4 +1509,44 @@ vectoangles( dir, base->s.angles);
 VectorCopy( base->s.angles, base->s.apos.trBase );
 VectorSet( base->s.apos.trDelta, 300, 0, 0 ); // Speed
 base->s.apos.trTime = level.time;
+
+
+// Part 2: Put it on the ground and match it to slopes -Vincent
+VectorCopy( base->r.currentOrigin, origin );
+origin[2] -= 1000; // Trace it straight down
+// Trace for solids from the previous position to the new position on the ground, 
+// but without getting stuck in the owner!
+trap_Trace( &tr, base->r.currentOrigin, base->r.mins, base->r.maxs, origin, 
+			base->parent ? base->parent->s.number : base->s.number, MASK_SHOT );
+
+G_SetOrigin( base, tr.endpos );
+VectorCopy( base->r.currentOrigin, base->s.origin ); // Set it's new origin
+
+if( tr.fraction < 1.0 && ( &tr.plane ) )
+{ // Match to a slope when necessary
+VectorCopy( tr.plane.normal, slope ); // Get the slopes' angles
+AngleVectors( base->s.angles, ovf, ovr, NULL ); // Already calculated in part 1
+vectoangles( slope, new_angles );
+pitch = new_angles[PITCH] + 90;
+new_angles[ROLL] = new_angles[PITCH] = 0;
+AngleVectors( new_angles, nvf, NULL, NULL );
+
+mod = DotProduct( nvf, ovr );
+if( mod < 0 )
+	mod = -1;
+else
+	mod = 1;
+
+dot = DotProduct( nvf, ovf );
+// Modify its actual angles
+base->s.angles[PITCH] = dot * pitch;
+base->s.angles[ROLL] = ( ( 1-Q_fabs( dot ) ) * pitch * mod );
+VectorCopy( base->s.angles, base->s.apos.trBase );
 }
+
+trap_LinkEntity( base ); // Add it...
+
+base->s.eType = ET_BUILDABLE; // Initialize
+// The actual buildables' thinking happens in g_buildables again, after this func
+}
+

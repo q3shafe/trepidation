@@ -1192,11 +1192,9 @@ void	trap_SnapVector( float *v );
 
 gentity_t *findradius (gentity_t *from, vec3_t org, float rad);		// Shafe - Trep - FindRadius Function
 qboolean visible( gentity_t *ent1, gentity_t *ent2 );	// Shafe - Trep Visible Function
-//void G_SendCommandToClient(gentity *to, char *cmd);		// Shafe - Trep - Radar
-void G_SendCommandToClient(gentity_t *to, char *cmd);		// Shafe - Trep - Radar
+//void G_SendCommandToClient(gentity *to, char *cmd);	// Shafe - Trep - Radar
+void G_SendCommandToClient(gentity_t *to, char *cmd);	// Shafe - Trep - Radar
 void CheckPlayerPostions(void);							// Shafe - Trep - Radar
-
-void SpawnThink( gentity_t *ent ); // Used to place buildables in front of you in g_buildables, at the bottom so it needs this -Vincent
 
 
 
