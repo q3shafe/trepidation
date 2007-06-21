@@ -8422,7 +8422,6 @@ RETI4
 LABELV $578
 endproc G_RadiusDamage 4196 32
 import CountSurvivors
-import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

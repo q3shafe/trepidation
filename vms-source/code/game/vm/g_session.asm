@@ -706,7 +706,6 @@ line 182
 ;182:}
 LABELV $95
 endproc G_WriteSessionData 8 8
-import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

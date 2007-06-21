@@ -19,6 +19,7 @@ extern void BuildableSpawn( gentity_t *base ); //In g_weapon -Vincent
 #define RANGE 500	// Turret Range
 #define IMRANGE 300 // Immobilizer range
 
+// These control the radius
 #define HARC 90
 #define DARC 10
 #define UARC 45
@@ -27,6 +28,7 @@ extern void BuildableSpawn( gentity_t *base ); //In g_weapon -Vincent
 #define IDARC 10
 #define IUARC 45
 
+// Are we using these?
 #define TURRET_MG_SPREAD	100
 #define	TURRET_MG_DAMAGE	15
 #define	TURRET_MG_DAMAGE2	40
@@ -62,16 +64,20 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 				level.blueTD--; 			
 				G_LogPrintf("Kill: %i %i %i: Blue IMMOBILIZER was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 				//G_Printf("Blue IMMOBILIZER was destroyed by %s\n", attacker->client->pers.netname);
-				trap_SendServerCommand( -1, va("print \"^7Blue IMMOBILIZER was destroyed by %s \n\"", attacker->client->pers.netname ) );
-
-				if (attacker->client->sess.sessionTeam == TEAM_RED) 
-				{ 	
-					AddScore(attacker, self->r.currentOrigin, 1); 
-				} else
+				
+				if (attacker != &g_entities[ENTITYNUM_WORLD])
 				{
-					AddScore(attacker, self->r.currentOrigin, -1); 
+					trap_SendServerCommand( -1, va("print \"^7Blue IMMOBILIZER was destroyed by %s \n\"", attacker->client->pers.netname ) );
+
+					if (attacker->client->sess.sessionTeam == TEAM_RED) 
+					{ 	
+						AddScore(attacker, self->r.currentOrigin, 1); 
+					} else
+					{
+						AddScore(attacker, self->r.currentOrigin, -1); 
+					}
+					self->nextthink = 30000;
 				}
-				self->nextthink = 30000;
 			}
 			
 			if ( !Q_stricmp( self->classname, "generator") )
@@ -79,31 +85,38 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 				level.blueGen--; 			
 				G_LogPrintf("Kill: %i %i %i: Blue Generator was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 				//G_Printf("Blue GENERATOR was destroyed by %s\n", attacker->client->pers.netname);
-				trap_SendServerCommand( -1, va("print \"^7Blue GENERATOR was destroyed by %s \n\"", attacker->client->pers.netname ) );
-				if (attacker->client->sess.sessionTeam == TEAM_RED) 
-				{ 	
-					AddScore(attacker, self->r.currentOrigin, 2); 
-				} else
+				
+				if (attacker != &g_entities[ENTITYNUM_WORLD])
 				{
-					AddScore(attacker, self->r.currentOrigin, -2); 
-				}
-				self->nextthink = 30000;
-			}	
+					trap_SendServerCommand( -1, va("print \"^7Blue GENERATOR was destroyed by %s \n\"", attacker->client->pers.netname ) );
+					if (attacker->client->sess.sessionTeam == TEAM_RED) 
+					{ 	
+						AddScore(attacker, self->r.currentOrigin, 2); 
+					} else
+					{
+						AddScore(attacker, self->r.currentOrigin, -2); 
+					}
+					self->nextthink = 30000;
+				}	
+			}
 			if ( !Q_stricmp( self->classname, "turret") ) 
 			{
 				level.blueTurrets--; 
 				G_LogPrintf("Kill: %i %i %i: Blue Turret was shot down by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 				///G_Printf("Blue TURRET was shot down by %s\n", attacker->client->pers.netname);
-				trap_SendServerCommand( -1, va("print \"^7Blue TURRET was destroyed by %s \n\"", attacker->client->pers.netname ) );
-				if (attacker->client->sess.sessionTeam == TEAM_RED) 
-				{ 	
-					AddScore(attacker, self->r.currentOrigin, 1); 
-				} else
+				if (attacker != &g_entities[ENTITYNUM_WORLD])
 				{
-					AddScore(attacker, self->r.currentOrigin, -1); 
-				}
-				self->nextthink = 30000;
-			}		
+					trap_SendServerCommand( -1, va("print \"^7Blue TURRET was destroyed by %s \n\"", attacker->client->pers.netname ) );
+					if (attacker->client->sess.sessionTeam == TEAM_RED) 
+					{ 	
+						AddScore(attacker, self->r.currentOrigin, 1); 
+					} else
+					{
+						AddScore(attacker, self->r.currentOrigin, -1); 
+					}
+					self->nextthink = 30000;
+				}		
+			}
 			if ( !Q_stricmp( self->classname, "mc") )
 			{ 
 				if (level.blueNeedMC == 0)
@@ -115,13 +128,16 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 					level.blueCredits = 0;
 					G_LogPrintf("Kill: %i %i %i: Blue Power Core was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 					//G_Printf("Blue POWER CORE was shot down by %s\n", attacker->client->pers.netname);
-					trap_SendServerCommand( -1, va("print \"^7Blue POWERCORE was destroyed by %s \n\"", attacker->client->pers.netname ) );
-					if (attacker->client->sess.sessionTeam == TEAM_RED) 
-					{ 	
-						AddScore(attacker, self->r.currentOrigin, 10); 
-					} else
+					if (attacker != &g_entities[ENTITYNUM_WORLD])
 					{
-						AddScore(attacker, self->r.currentOrigin, -10); 
+						trap_SendServerCommand( -1, va("print \"^7Blue POWERCORE was destroyed by %s \n\"", attacker->client->pers.netname ) );
+						if (attacker->client->sess.sessionTeam == TEAM_RED) 
+						{ 	
+							AddScore(attacker, self->r.currentOrigin, 10); 
+						} else
+						{
+							AddScore(attacker, self->r.currentOrigin, -10); 
+						}
 					}
 				}
 			}		
@@ -133,15 +149,18 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 				level.redTD--;
 				G_LogPrintf("Kill: %i %i %i: Red IMMOBILIZER was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 				//G_Printf("Red IMOBILIZER was destroyed by %s\n", attacker->client->pers.netname);
-				trap_SendServerCommand( -1, va("print \"^7Red IMMOBILIZER was destroyed by %s \n\"", attacker->client->pers.netname ) );
-				if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
-				{ 	
-					AddScore(attacker, self->r.currentOrigin, 1); 
-				} else
+				if (attacker != &g_entities[ENTITYNUM_WORLD])
 				{
-					AddScore(attacker, self->r.currentOrigin, -1); 
+					trap_SendServerCommand( -1, va("print \"^7Red IMMOBILIZER was destroyed by %s \n\"", attacker->client->pers.netname ) );
+					if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
+					{ 	
+						AddScore(attacker, self->r.currentOrigin, 1); 
+					} else
+					{
+						AddScore(attacker, self->r.currentOrigin, -1); 
+					}
+					self->nextthink = 30000;
 				}
-				self->nextthink = 30000;
 						
 			}
 			
@@ -149,16 +168,20 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 			{ 
 				level.redGen--;
 				G_LogPrintf("Kill: %i %i %i: Red Generator was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
-				trap_SendServerCommand( -1, va("print \"^7Red GENERATOR was destroyed by %s \n\"", attacker->client->pers.netname ) );
-				//G_Printf("Red GENERATOR was destroyed by %s\n", attacker->client->pers.netname);
-				if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
-				{ 	
-					AddScore(attacker, self->r.currentOrigin, 2); 
-				} else
+				
+				if (attacker != &g_entities[ENTITYNUM_WORLD])
 				{
-					AddScore(attacker, self->r.currentOrigin, -2); 
+					trap_SendServerCommand( -1, va("print \"^7Red GENERATOR was destroyed by %s \n\"", attacker->client->pers.netname ) );
+					//G_Printf("Red GENERATOR was destroyed by %s\n", attacker->client->pers.netname);
+					if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
+					{ 	
+						AddScore(attacker, self->r.currentOrigin, 2); 
+					} else
+					{
+						AddScore(attacker, self->r.currentOrigin, -2); 
+					}
+					self->nextthink = 30000;
 				}
-				self->nextthink = 30000;
 						
 			}
 			if ( !Q_stricmp( self->classname, "turret") )
@@ -166,15 +189,18 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 				level.redTurrets--;
 				G_LogPrintf("Kill: %i %i %i: Red Turret was shot down by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 				//G_Printf("Red TURRET was shot down by %s\n", attacker->client->pers.netname);
-				trap_SendServerCommand( -1, va("print \"^7Red TURRET was destroyed by %s \n\"", attacker->client->pers.netname ) );
-				if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
-				{ 	
-					AddScore(attacker, self->r.currentOrigin, 1); 
-				} else
+				if (attacker != &g_entities[ENTITYNUM_WORLD])
 				{
-					AddScore(attacker, self->r.currentOrigin, -1); 
+					trap_SendServerCommand( -1, va("print \"^7Red TURRET was destroyed by %s \n\"", attacker->client->pers.netname ) );
+					if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
+					{ 	
+						AddScore(attacker, self->r.currentOrigin, 1); 
+					} else
+					{
+						AddScore(attacker, self->r.currentOrigin, -1); 
+					}
+					self->nextthink = 30000;
 				}
-				self->nextthink = 30000;
 			}
 		
 			if ( !Q_stricmp( self->classname, "mc") )
@@ -188,13 +214,16 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 					level.redCredits = 0;
 					G_LogPrintf("Kill: %i %i %i: Red POWERCORE was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 					//G_Printf("Red POWER CORE was shot down by %s\n", attacker->client->pers.netname);
-					trap_SendServerCommand( -1, va("print \"^7Red POWER CORE was destroyed by %s \n\"", attacker->client->pers.netname ) );
-					if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
-					{ 	
-						AddScore(attacker, self->r.currentOrigin, 10); 
-					} else
+					if (attacker != &g_entities[ENTITYNUM_WORLD])
 					{
-						AddScore(attacker, self->r.currentOrigin, -10); 
+						trap_SendServerCommand( -1, va("print \"^7Red POWER CORE was destroyed by %s \n\"", attacker->client->pers.netname ) );
+						if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
+						{ 	
+							AddScore(attacker, self->r.currentOrigin, 10); 
+						} else
+						{
+							AddScore(attacker, self->r.currentOrigin, -10); 
+						}
 					}
 				}
 			
@@ -489,6 +518,8 @@ Base_Think
 */
 void Base_think(gentity_t *ent){
 
+	gentity_t *attacker;
+	attacker = &g_entities[ENTITYNUM_WORLD];
 	// If the mc is gone blow up the turret... Meaning
 	// you need an mc before you can build turrets.
 	// 
@@ -500,7 +531,7 @@ void Base_think(gentity_t *ent){
 		{	
 			ent->health = 1; 
 			ent->s.time2 = 0;
-			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 			if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
 			
 	
@@ -512,7 +543,7 @@ void Base_think(gentity_t *ent){
 		{ 
 			ent->health = 1; 
 			ent->s.time2 = 0;
-			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 			if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
 	
 		}
@@ -772,7 +803,7 @@ void MC_think(gentity_t *ent)
 
 	shieldMultiplier++;
 
-	// If there's at least one shield generator and the MC's health is above 350 it'll be shielded
+	// If there's at least one shield generator and the MC's health is above 35 it'll be shielded
 	if (shieldMultiplier > 1) { ent->s.time2 = 1; } else { ent->s.time2 = 0; }
 
 	 
@@ -899,9 +930,12 @@ void BuildMC( gentity_t *ent )
 
 void GEN_think(gentity_t *ent)
 {
+	gentity_t *attacker;
+	attacker = &g_entities[ENTITYNUM_WORLD];
 
- 	ent->clipmask = CONTENTS_SOLID;
+	ent->clipmask = CONTENTS_SOLID;
 	ent->r.contents = CONTENTS_SOLID;
+
 
 	// If the mc is gone blow up the generator... Meaning
 	// you need an mc before you can build generators.
@@ -913,7 +947,7 @@ void GEN_think(gentity_t *ent)
 		{	
 			ent->health = 1; 
 			ent->s.time2 = 0;
-			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 		}
 	}
 	if (ent->s.team == TEAM_RED)
@@ -922,7 +956,7 @@ void GEN_think(gentity_t *ent)
 		{ 
 			ent->health = 1; 
 			ent->s.time2 = 0;
-			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 		}
 	}
 
@@ -952,7 +986,7 @@ void gen_prethink(gentity_t *ent)
 		level.redGen++;
 	}
 
-		BroadCastSound("sound/items/protect.wav");
+		BroadCastSound("sound/items/protect.ogg");
 		ent->s.time2=0;
 		ent->think = GEN_think;
 		ent->nextthink=level.time+100;
@@ -1024,8 +1058,10 @@ void TD_think(gentity_t *ent)
 {
 
 	gentity_t *target;
+	gentity_t *attacker;
 
 	target = g_entities;
+	attacker = &g_entities[ENTITYNUM_WORLD];
 
  	ent->clipmask = CONTENTS_SOLID;
 	ent->r.contents = CONTENTS_SOLID;
@@ -1040,7 +1076,7 @@ void TD_think(gentity_t *ent)
 		{	
 			ent->health = 1; 
 			ent->s.time2 = 0;
-			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 		}
 	}
 	if (ent->s.team == TEAM_RED)
@@ -1049,7 +1085,7 @@ void TD_think(gentity_t *ent)
 		{ 
 			ent->health = 1; 
 			ent->s.time2 = 0;
-			G_Damage (ent, NULL, NULL, NULL, NULL, 20, 0, MOD_LAVA);
+			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 		}
 	}
 
@@ -1098,7 +1134,7 @@ void td_prethink(gentity_t *ent)
 		level.redTD++;
 	}
 
-		BroadCastSound("sound/items/protect.wav");
+		BroadCastSound("sound/items/protect.ogg");
 		ent->s.time2=0;
 		ent->think = TD_think;
 		ent->nextthink=level.time+100;

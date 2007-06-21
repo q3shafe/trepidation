@@ -12332,7 +12332,6 @@ align 4
 LABELV g_clients
 skip 222208
 import BroadCastSound
-import SpawnThink
 import G_SendCommandToClient
 import visible
 import findradius
@@ -16813,8 +16812,8 @@ byte 1 74
 byte 1 117
 byte 1 110
 byte 1 32
-byte 1 49
-byte 1 55
+byte 1 50
+byte 1 48
 byte 1 32
 byte 1 50
 byte 1 48

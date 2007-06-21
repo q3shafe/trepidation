@@ -7475,7 +7475,6 @@ LABELV $559
 endproc ClientEndFrame 52 12
 import BotTestSolid
 import Weapon_GrapplingHook_Fire
-import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible
