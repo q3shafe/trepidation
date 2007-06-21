@@ -13640,7 +13640,6 @@ line 2216
 LABELV $1202
 endproc G_SendCommandToClient 0 8
 import Team_ReturnFlagSound
-import SpawnThink
 import CheckPlayerPostions
 import visible
 import findradius

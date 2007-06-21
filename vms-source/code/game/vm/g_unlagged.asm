@@ -3745,7 +3745,6 @@ line 604
 ;604:}
 LABELV $272
 endproc G_PredictPlayerMove 0 8
-import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

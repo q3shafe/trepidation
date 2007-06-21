@@ -8644,7 +8644,6 @@ INDIRP4
 RETP4
 LABELV $308
 endproc fire_grapple 36 4
-import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

@@ -2733,7 +2733,6 @@ export podium1
 align 4
 LABELV podium1
 skip 4
-import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

@@ -6146,9 +6146,16 @@ line 1227
 ;1227:}
 LABELV $340
 endproc FireWeapon2 12 20
-export SpawnThinkAid
-proc SpawnThinkAid 56 20
-line 1482
+lit
+align 4
+LABELV $363
+byte 4 0
+byte 4 0
+byte 4 0
+export BuildableSpawn
+code
+proc BuildableSpawn 224 28
+line 1483
 ;1228:
 ;1229:
 ;1230:#ifdef MISSIONPACK
@@ -6402,57 +6409,67 @@ line 1482
 ;1478:}
 ;1479:#endif
 ;1480:
-;1481:void SpawnThinkAid( gentity_t *base )
-;1482:{ // Done here for those night forward, right, and up values -Vincent	
+;1481:
+;1482:void BuildableSpawn( gentity_t *base )
+;1483:{ // Done here for those night forward, right, and up values -Vincent	
 line 1485
-;1483:vec3_t start, dir, angles;
-;1484:
-;1485:if( !base || !base->parent || !base->parent->client )
-ADDRLP4 36
+;1484:vec3_t		start, dir, angles; // Part 1 stuff
+;1485:vec3_t		origin, slope, nvf, ovf, ovr, new_angles = {0, 0, 0 }; // Part 2
+ADDRLP4 104
+ADDRGP4 $363
+INDIRB
+ASGNB 12
+line 1489
+;1486:float		pitch, mod, dot; // Part 2
+;1487:trace_t		tr; // Part 2
+;1488:
+;1489:if( !base || !base->parent || !base->parent->client )
+ADDRLP4 176
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 40
+ADDRLP4 180
 CNSTU4 0
 ASGNU4
-ADDRLP4 36
+ADDRLP4 176
 INDIRP4
 CVPU4 4
-ADDRLP4 40
+ADDRLP4 180
 INDIRU4
-EQU4 $366
-ADDRLP4 44
-ADDRLP4 36
+EQU4 $367
+ADDRLP4 184
+ADDRLP4 176
 INDIRP4
 CNSTI4 608
 ADDP4
 INDIRP4
 ASGNP4
-ADDRLP4 44
+ADDRLP4 184
 INDIRP4
 CVPU4 4
-ADDRLP4 40
+ADDRLP4 180
 INDIRU4
-EQU4 $366
-ADDRLP4 44
+EQU4 $367
+ADDRLP4 184
 INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
 CVPU4 4
-ADDRLP4 40
+ADDRLP4 180
 INDIRU4
-NEU4 $363
-LABELV $366
-line 1486
-;1486:	return; // Verify
+NEU4 $364
+LABELV $367
+line 1490
+;1490:	return; // Verify for both parts
 ADDRGP4 $362
 JUMPV
-LABELV $363
-line 1488
-;1487:
-;1488:VectorCopy( base->parent->client->ps.viewangles, angles );
-ADDRLP4 24
+LABELV $364
+line 1493
+;1491:
+;1492:// Part 1: Initial spawning in front of the player -Vincent
+;1493:VectorCopy( base->parent->client->ps.viewangles, angles );
+ADDRLP4 80
 ADDRFP4 0
 INDIRP4
 CNSTI4 608
@@ -6465,20 +6482,20 @@ CNSTI4 152
 ADDP4
 INDIRB
 ASGNB 12
-line 1489
-;1489:angles[0] = 0; // Stay straight
-ADDRLP4 24
+line 1494
+;1494:angles[0] = 0; // Stay straight
+ADDRLP4 80
 CNSTF4 0
 ASGNF4
-line 1490
-;1490:angles[2] = 0; // Stay straight
-ADDRLP4 24+8
+line 1495
+;1495:angles[2] = 0; // Stay straight
+ADDRLP4 80+8
 CNSTF4 0
 ASGNF4
-line 1492
-;1491:
-;1492:AngleVectors( angles, forward, right, up );
-ADDRLP4 24
+line 1497
+;1496:
+;1497:AngleVectors( angles, forward, right, up );
+ADDRLP4 80
 ARGP4
 ADDRGP4 forward
 ARGP4
@@ -6489,8 +6506,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 1493
-;1493:CalcMuzzlePoint( base, forward, right, up, start ); // Actual start point, away from the owner
+line 1498
+;1498:CalcMuzzlePoint( base, forward, right, up, start ); // Actual start point, away from the owner
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6505,22 +6522,22 @@ ARGP4
 ADDRGP4 CalcMuzzlePoint
 CALLV
 pop
-line 1494
-;1494:VectorNormalize( forward );
+line 1499
+;1499:VectorNormalize( forward );
 ADDRGP4 forward
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 1495
-;1495:VectorMA( start, 32, forward, start ); // Go in front of the player
-ADDRLP4 48
+line 1500
+;1500:VectorMA( start, 32, forward, start ); // Go in front of the player
+ADDRLP4 188
 CNSTF4 1107296256
 ASGNF4
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
-ADDRLP4 48
+ADDRLP4 188
 INDIRF4
 ADDRGP4 forward
 INDIRF4
@@ -6530,7 +6547,7 @@ ASGNF4
 ADDRLP4 0+4
 ADDRLP4 0+4
 INDIRF4
-ADDRLP4 48
+ADDRLP4 188
 INDIRF4
 ADDRGP4 forward+4
 INDIRF4
@@ -6546,16 +6563,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1496
-;1496:start[2] += 15; // This might fix a bug...
-ADDRLP4 0+8
-ADDRLP4 0+8
-INDIRF4
-CNSTF4 1097859072
-ADDF4
-ASGNF4
-line 1497
-;1497:G_SetOrigin( base, start ); // Start a bit in front of the player
+line 1501
+;1501:G_SetOrigin( base, start ); // Start a bit in front of the player
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6564,8 +6573,8 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 1498
-;1498:base->s.pos.trTime = level.time;
+line 1502
+;1502:base->s.pos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 16
@@ -6573,22 +6582,22 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1500
-;1499:	
-;1500:VectorCopy( forward, dir ); // To tweak it below this...
+line 1504
+;1503:	
+;1504:VectorCopy( forward, dir ); // To tweak it below this...
 ADDRLP4 12
 ADDRGP4 forward
 INDIRB
 ASGNB 12
-line 1501
-;1501:VectorNormalize( dir );
+line 1505
+;1505:VectorNormalize( dir );
 ADDRLP4 12
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 1502
-;1502:VectorScale( dir, 300, base->s.pos.trDelta );
+line 1506
+;1506:VectorScale( dir, 300, base->s.pos.trDelta );
 ADDRFP4 0
 INDIRP4
 CNSTI4 36
@@ -6616,8 +6625,8 @@ ADDRLP4 12+8
 INDIRF4
 MULF4
 ASGNF4
-line 1503
-;1503:base->s.pos.trTime = level.time;
+line 1507
+;1507:base->s.pos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 16
@@ -6625,8 +6634,8 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1504
-;1504:vectoangles( dir, base->s.angles);
+line 1508
+;1508:vectoangles( dir, base->s.angles);
 ADDRLP4 12
 ARGP4
 ADDRFP4 0
@@ -6637,24 +6646,24 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 1505
-;1505:VectorCopy( base->s.angles, base->s.apos.trBase );
-ADDRLP4 52
+line 1509
+;1509:VectorCopy( base->s.angles, base->s.apos.trBase );
+ADDRLP4 192
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 52
+ADDRLP4 192
 INDIRP4
 CNSTI4 60
 ADDP4
-ADDRLP4 52
+ADDRLP4 192
 INDIRP4
 CNSTI4 116
 ADDP4
 INDIRB
 ASGNB 12
-line 1506
-;1506:VectorSet( base->s.apos.trDelta, 300, 0, 0 ); // Speed
+line 1510
+;1510:VectorSet( base->s.apos.trDelta, 300, 0, 0 ); // Speed
 ADDRFP4 0
 INDIRP4
 CNSTI4 72
@@ -6673,8 +6682,8 @@ CNSTI4 80
 ADDP4
 CNSTF4 0
 ASGNF4
-line 1507
-;1507:base->s.apos.trTime = level.time;
+line 1511
+;1511:base->s.apos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 52
@@ -6682,10 +6691,341 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1508
-;1508:}
+line 1515
+;1512:
+;1513:
+;1514:// Part 2: Put it on the ground and match it to slopes -Vincent
+;1515:VectorCopy( base->r.currentOrigin, origin );
+ADDRLP4 116
+ADDRFP4 0
+INDIRP4
+CNSTI4 496
+ADDP4
+INDIRB
+ASGNB 12
+line 1516
+;1516:origin[2] -= 1000; // Trace it straight down
+ADDRLP4 116+8
+ADDRLP4 116+8
+INDIRF4
+CNSTF4 1148846080
+SUBF4
+ASGNF4
+line 1519
+;1517:// Trace for solids from the previous position to the new position on the ground, 
+;1518:// but without getting stuck in the owner!
+;1519:trap_Trace( &tr, base->r.currentOrigin, base->r.mins, base->r.maxs, origin, 
+ADDRLP4 24
+ARGP4
+ADDRLP4 200
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 200
+INDIRP4
+CNSTI4 496
+ADDP4
+ARGP4
+ADDRLP4 200
+INDIRP4
+CNSTI4 444
+ADDP4
+ARGP4
+ADDRLP4 200
+INDIRP4
+CNSTI4 456
+ADDP4
+ARGP4
+ADDRLP4 116
+ARGP4
+ADDRLP4 200
+INDIRP4
+CNSTI4 608
+ADDP4
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $382
+ADDRLP4 196
+ADDRFP4 0
+INDIRP4
+CNSTI4 608
+ADDP4
+INDIRP4
+INDIRI4
+ASGNI4
+ADDRGP4 $383
+JUMPV
+LABELV $382
+ADDRLP4 196
+ADDRFP4 0
+INDIRP4
+INDIRI4
+ASGNI4
+LABELV $383
+ADDRLP4 196
+INDIRI4
+ARGI4
+CNSTI4 100664321
+ARGI4
+ADDRGP4 trap_Trace
+CALLV
+pop
+line 1522
+;1520:			base->parent ? base->parent->s.number : base->s.number, MASK_SHOT );
+;1521:
+;1522:G_SetOrigin( base, tr.endpos );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRLP4 24+12
+ARGP4
+ADDRGP4 G_SetOrigin
+CALLV
+pop
+line 1523
+;1523:VectorCopy( base->r.currentOrigin, base->s.origin ); // Set it's new origin
+ADDRLP4 204
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 204
+INDIRP4
+CNSTI4 92
+ADDP4
+ADDRLP4 204
+INDIRP4
+CNSTI4 496
+ADDP4
+INDIRB
+ASGNB 12
+line 1525
+;1524:
+;1525:if( tr.fraction < 1.0 && ( &tr.plane ) )
+ADDRLP4 24+8
+INDIRF4
+CNSTF4 1065353216
+GEF4 $385
+ADDRLP4 24+24
+CVPU4 4
+CNSTU4 0
+EQU4 $385
+line 1526
+;1526:{ // Match to a slope when necessary
+line 1527
+;1527:VectorCopy( tr.plane.normal, slope ); // Get the slopes' angles
+ADDRLP4 164
+ADDRLP4 24+24
+INDIRB
+ASGNB 12
+line 1528
+;1528:AngleVectors( base->s.angles, ovf, ovr, NULL ); // Already calculated in part 1
+ADDRFP4 0
+INDIRP4
+CNSTI4 116
+ADDP4
+ARGP4
+ADDRLP4 128
+ARGP4
+ADDRLP4 140
+ARGP4
+CNSTP4 0
+ARGP4
+ADDRGP4 AngleVectors
+CALLV
+pop
+line 1529
+;1529:vectoangles( slope, new_angles );
+ADDRLP4 164
+ARGP4
+ADDRLP4 104
+ARGP4
+ADDRGP4 vectoangles
+CALLV
+pop
+line 1530
+;1530:pitch = new_angles[PITCH] + 90;
+ADDRLP4 156
+ADDRLP4 104
+INDIRF4
+CNSTF4 1119092736
+ADDF4
+ASGNF4
+line 1531
+;1531:new_angles[ROLL] = new_angles[PITCH] = 0;
+ADDRLP4 208
+CNSTF4 0
+ASGNF4
+ADDRLP4 104
+ADDRLP4 208
+INDIRF4
+ASGNF4
+ADDRLP4 104+8
+ADDRLP4 208
+INDIRF4
+ASGNF4
+line 1532
+;1532:AngleVectors( new_angles, nvf, NULL, NULL );
+ADDRLP4 104
+ARGP4
+ADDRLP4 92
+ARGP4
+ADDRLP4 212
+CNSTP4 0
+ASGNP4
+ADDRLP4 212
+INDIRP4
+ARGP4
+ADDRLP4 212
+INDIRP4
+ARGP4
+ADDRGP4 AngleVectors
+CALLV
+pop
+line 1534
+;1533:
+;1534:mod = DotProduct( nvf, ovr );
+ADDRLP4 152
+ADDRLP4 92
+INDIRF4
+ADDRLP4 140
+INDIRF4
+MULF4
+ADDRLP4 92+4
+INDIRF4
+ADDRLP4 140+4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 92+8
+INDIRF4
+ADDRLP4 140+8
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 1535
+;1535:if( mod < 0 )
+ADDRLP4 152
+INDIRF4
+CNSTF4 0
+GEF4 $395
+line 1536
+;1536:	mod = -1;
+ADDRLP4 152
+CNSTF4 3212836864
+ASGNF4
+ADDRGP4 $396
+JUMPV
+LABELV $395
+line 1538
+;1537:else
+;1538:	mod = 1;
+ADDRLP4 152
+CNSTF4 1065353216
+ASGNF4
+LABELV $396
+line 1540
+;1539:
+;1540:dot = DotProduct( nvf, ovf );
+ADDRLP4 160
+ADDRLP4 92
+INDIRF4
+ADDRLP4 128
+INDIRF4
+MULF4
+ADDRLP4 92+4
+INDIRF4
+ADDRLP4 128+4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 92+8
+INDIRF4
+ADDRLP4 128+8
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 1542
+;1541:// Modify its actual angles
+;1542:base->s.angles[PITCH] = dot * pitch;
+ADDRFP4 0
+INDIRP4
+CNSTI4 116
+ADDP4
+ADDRLP4 160
+INDIRF4
+ADDRLP4 156
+INDIRF4
+MULF4
+ASGNF4
+line 1543
+;1543:base->s.angles[ROLL] = ( ( 1-Q_fabs( dot ) ) * pitch * mod );
+ADDRLP4 160
+INDIRF4
+ARGF4
+ADDRLP4 216
+ADDRGP4 Q_fabs
+CALLF4
+ASGNF4
+ADDRFP4 0
+INDIRP4
+CNSTI4 124
+ADDP4
+CNSTF4 1065353216
+ADDRLP4 216
+INDIRF4
+SUBF4
+ADDRLP4 156
+INDIRF4
+MULF4
+ADDRLP4 152
+INDIRF4
+MULF4
+ASGNF4
+line 1544
+;1544:VectorCopy( base->s.angles, base->s.apos.trBase );
+ADDRLP4 220
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 220
+INDIRP4
+CNSTI4 60
+ADDP4
+ADDRLP4 220
+INDIRP4
+CNSTI4 116
+ADDP4
+INDIRB
+ASGNB 12
+line 1545
+;1545:}
+LABELV $385
+line 1547
+;1546:
+;1547:trap_LinkEntity( base ); // Add it...
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 trap_LinkEntity
+CALLV
+pop
+line 1549
+;1548:
+;1549:base->s.eType = ET_BUILDABLE; // Initialize
+ADDRFP4 0
+INDIRP4
+CNSTI4 4
+ADDP4
+CNSTI4 13
+ASGNI4
+line 1551
+;1550:// The actual buildables' thinking happens in g_buildables again, after this func
+;1551:}
 LABELV $362
-endproc SpawnThinkAid 56 20
+endproc BuildableSpawn 224 28
 bss
 align 4
 LABELV muzzle
@@ -6702,7 +7042,6 @@ skip 12
 align 4
 LABELV s_quadFactor
 skip 4
-import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

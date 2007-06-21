@@ -4894,7 +4894,6 @@ INDIRI4
 RETI4
 LABELV $247
 endproc trap_PC_SourceFileAndLine 4 16
-import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible

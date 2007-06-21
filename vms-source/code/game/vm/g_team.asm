@@ -7143,7 +7143,6 @@ export teamgame
 align 4
 LABELV teamgame
 skip 36
-import SpawnThink
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible
