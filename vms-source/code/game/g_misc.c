@@ -326,7 +326,12 @@ void SP_shooter_grenade( gentity_t *ent ) {
 /*QUAKED func_breakable (1 0 0) (-16 -16 -16) (16 16 16)
  Explodes glass
 */
-void SP_func_breakable( gentity_t *ent ) {
+void UseBreakable( gentity_t *ent, gentity_t *other, gentity_t *activator )
+{// Use any targets it has been given, as requested by Laz -Vincent
+G_UseTargets( ent, activator );
+}
+void SP_func_breakable( gentity_t *ent ) 
+{
   int health;
   
   // Make it appear as the brush
@@ -346,9 +351,10 @@ void SP_func_breakable( gentity_t *ent ) {
   ent->s.eType = ET_BREAKABLE;
   
   // If the mapper gave it a model, use it
-  if ( ent->model2 ) {
+  if ( ent->model2 )
       ent->s.modelindex2 = G_ModelIndex( ent->model2 );
-  }
+
+  ent->use = UseBreakable; // See above -Vincent
   
   // Link all ^this^ info into the ent
   trap_LinkEntity (ent);
