@@ -908,7 +908,7 @@ void AddTournamentPlayer( void ) {
 	gclient_t	*client;
 	gclient_t	*nextInLine;
 
-	if ( level.numPlayingClients >= 2 ) {
+	if ( level.numNonSpectatorClients >= 2 ) {
 		return;
 	}
 
@@ -958,7 +958,7 @@ Make the loser a spectator at the back of the line
 void RemoveTournamentLoser( void ) {
 	int			clientNum;
 
-	if ( level.numPlayingClients != 2 ) {
+	if ( level.numNonSpectatorClients != 2 ) {
 		return;
 	}
 
@@ -980,7 +980,7 @@ RemoveTournamentWinner
 void RemoveTournamentWinner( void ) {
 	int			clientNum;
 
-	if ( level.numPlayingClients != 2 ) {
+	if ( level.numNonSpectatorClients != 2 ) {
 		return;
 	}
 
@@ -1003,13 +1003,13 @@ void AdjustTournamentScores( void ) {
 	int			clientNum;
 
 	clientNum = level.sortedClients[0];
-	if ( level.clients[ clientNum ].pers.connected == CON_CONNECTED ) {
+	if ( level.clients[ clientNum ].sess.sessionTeam != TEAM_SPECTATOR ) {
 		level.clients[ clientNum ].sess.wins++;
 		ClientUserinfoChanged( clientNum );
 	}
 
 	clientNum = level.sortedClients[1];
-	if ( level.clients[ clientNum ].pers.connected == CON_CONNECTED ) {
+	if ( level.clients[ clientNum ].sess.sessionTeam != TEAM_SPECTATOR ) {
 		level.clients[ clientNum ].sess.losses++;
 		ClientUserinfoChanged( clientNum );
 	}
@@ -1133,7 +1133,8 @@ void CalculateRanks( void ) {
 	// set the rank value for all clients that are connected and not spectators
 	if ( g_gametype.integer >= GT_TEAM ) {
 		// in team games, rank is just the order of the teams, 0=red, 1=blue, 2=tied
-		for ( i = 0;  i < level.numConnectedClients; i++ ) {
+		for ( i = 0;  i < level.numNonSpectatorClients; i++ ) 
+		{ // Only spectators get a score -Vincent
 			cl = &level.clients[ level.sortedClients[i] ];
 			if ( level.teamScores[TEAM_RED] == level.teamScores[TEAM_BLUE] ) {
 				cl->ps.persistant[PERS_RANK] = 2;
@@ -1146,7 +1147,8 @@ void CalculateRanks( void ) {
 	} else {	
 		rank = -1;
 		score = 0;
-		for ( i = 0;  i < level.numPlayingClients; i++ ) {
+		for ( i = 0;  i < level.numNonSpectatorClients; i++ ) 
+		{ // Only spectators get a score -Vincent
 			cl = &level.clients[ level.sortedClients[i] ];
 			newScore = cl->ps.persistant[PERS_SCORE];
 			if ( i == 0 || newScore != score ) {
@@ -1159,7 +1161,7 @@ void CalculateRanks( void ) {
 				level.clients[ level.sortedClients[i] ].ps.persistant[PERS_RANK] = rank | RANK_TIED_FLAG;
 			}
 			score = newScore;
-			if ( g_gametype.integer == GT_SINGLE_PLAYER && level.numPlayingClients == 1 ) {
+			if ( g_gametype.integer == GT_SINGLE_PLAYER && level.numNonSpectatorClients == 1 ) {
 				level.clients[ level.sortedClients[i] ].ps.persistant[PERS_RANK] = rank | RANK_TIED_FLAG;
 			}
 		}
@@ -1170,13 +1172,18 @@ void CalculateRanks( void ) {
 		trap_SetConfigstring( CS_SCORES1, va("%i", level.teamScores[TEAM_RED] ) );
 		trap_SetConfigstring( CS_SCORES2, va("%i", level.teamScores[TEAM_BLUE] ) );
 	} else {
-		if ( level.numConnectedClients == 0 ) {
+		if ( level.numNonSpectatorClients == 0 ) // Don't count spectators -Vincent
+		{
 			trap_SetConfigstring( CS_SCORES1, va("%i", SCORE_NOT_PRESENT) );
 			trap_SetConfigstring( CS_SCORES2, va("%i", SCORE_NOT_PRESENT) );
-		} else if ( level.numConnectedClients == 1 ) {
+		} 
+		else if ( level.numNonSpectatorClients == 1 ) // Don't count spectators -Vincent
+		{
 			trap_SetConfigstring( CS_SCORES1, va("%i", level.clients[ level.sortedClients[0] ].ps.persistant[PERS_SCORE] ) );
 			trap_SetConfigstring( CS_SCORES2, va("%i", SCORE_NOT_PRESENT) );
-		} else {
+		} 
+		else 
+		{
 			trap_SetConfigstring( CS_SCORES1, va("%i", level.clients[ level.sortedClients[0] ].ps.persistant[PERS_SCORE] ) );
 			trap_SetConfigstring( CS_SCORES2, va("%i", level.clients[ level.sortedClients[1] ].ps.persistant[PERS_SCORE] ) );
 		}
@@ -1625,7 +1632,7 @@ ScoreIsTied
 qboolean ScoreIsTied( void ) {
 	int		a, b;
 
-	if ( level.numPlayingClients < 2 ) {
+	if ( level.numNonSpectatorClients < 2 ) {
 		return qfalse;
 	}
 	
@@ -1734,7 +1741,7 @@ void CheckExitRules( void ) {
 
 		// 
 		// Addme: Dont allow while waiting for players -- Also put in the notifications
-		if ( level.numPlayingClients < 2 ) {
+		if ( level.numNonSpectatorClients < 2 ) {
 			return;
 		}
 		if ((level.time-level.redScoreTime) > 55000) 
@@ -2023,7 +2030,7 @@ void CheckExitRules( void ) {
 
 	if (g_GameMode.integer < 1)
 	{
-		if ( level.numPlayingClients < 2 ) {
+		if ( level.numNonSpectatorClients < 2 ) {
 			return;
 		}
 	}
@@ -2045,16 +2052,18 @@ void CheckExitRules( void ) {
 			return;
 		}
 	
-		for ( i=0 ; i< g_maxclients.integer ; i++ ) {
+		for( i=0 ; i< g_maxclients.integer ; i++ ) 
+		{
 			cl = level.clients + i;
-			if ( cl->pers.connected != CON_CONNECTED ) {
+			if( cl->pers.connected != CON_CONNECTED )
 				continue;
-			}
-			if ( cl->sess.sessionTeam != TEAM_FREE ) {
+			if( cl->sess.sessionTeam != TEAM_FREE )
 				continue;
-			}
+			if( cl->sess.sessionTeam != TEAM_SPECTATOR )
+				continue; // Don't count spectators -Vincent
 
-			if ( cl->ps.persistant[PERS_SCORE] >= g_fraglimit.integer ) {
+			if( cl->ps.persistant[PERS_SCORE] >= g_fraglimit.integer ) 
+			{
 				LogExit( "Fraglimit hit." );
 				trap_SendServerCommand( -1, va("print \"%s" S_COLOR_WHITE " hit the fraglimit.\n\"",
 					cl->pers.netname ) );
@@ -2112,19 +2121,19 @@ Once a frame, check for changes in tournement player state
 void CheckTournament( void ) {
 	// check because we run 3 game frames before calling Connect and/or ClientBegin
 	// for clients on a map_restart
-	if ( level.numPlayingClients == 0 ) {
+	if ( level.numNonSpectatorClients == 0 ) {
 		return;
 	}
 
 	if ( g_gametype.integer == GT_TOURNAMENT ) {
 
 		// pull in a spectator if needed
-		if ( level.numPlayingClients < 2 ) {
+		if ( level.numNonSpectatorClients < 2 ) {
 			AddTournamentPlayer();
 		}
 
 		// if we don't have two players, go back to "waiting for players"
-		if ( level.numPlayingClients != 2 ) {
+		if ( level.numNonSpectatorClients != 2 ) {
 			if ( level.warmupTime != -1 ) {
 				level.warmupTime = -1;
 				trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
@@ -2147,7 +2156,7 @@ void CheckTournament( void ) {
 
 		// if all players have arrived, start the countdown
 		if ( level.warmupTime < 0 ) {
-			if ( level.numPlayingClients == 2 ) {
+			if ( level.numNonSpectatorClients == 2 ) {
 				// fudge by -1 to account for extra delays
 				level.warmupTime = level.time + ( g_warmup.integer - 1 ) * 1000;
 				trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
@@ -2176,7 +2185,7 @@ void CheckTournament( void ) {
 			if (counts[TEAM_RED] < 1 || counts[TEAM_BLUE] < 1) {
 				notEnough = qtrue;
 			}
-		} else if ( level.numPlayingClients < 2 ) {
+		} else if ( level.numNonSpectatorClients < 2 ) {
 			notEnough = qtrue;
 		}
 
