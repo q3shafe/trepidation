@@ -1484,7 +1484,7 @@ void BuildableSpawn( gentity_t *base )
 vec3_t		start, dir, angles; // Part 1 stuff
 vec3_t		origin, slope, nvf, ovf, ovr, new_angles = {0, 0, 0 }; // Part 2
 float		pitch, mod, dot; // Part 2
-trace_t		tr; // Part 2
+trace_t		tr1, tr2; // Part 2
 
 if( !base || !base->parent || !base->parent->client )
 	return; // Verify for both parts
@@ -1513,18 +1513,19 @@ base->s.apos.trTime = level.time;
 
 // Part 2: Put it on the ground and match it to slopes -Vincent
 VectorCopy( base->r.currentOrigin, origin );
-origin[2] -= 1000; // Trace it straight down
+origin[2] -= 2500; // Trace it straight down
 // Trace for solids from the previous position to the new position on the ground, 
 // but without getting stuck in the owner!
-trap_Trace( &tr, base->r.currentOrigin, base->r.mins, base->r.maxs, origin, 
+trap_Trace( &tr1, base->r.currentOrigin, base->r.mins, base->r.maxs, origin, 
 			base->parent ? base->parent->s.number : base->s.number, MASK_SHOT );
 
-G_SetOrigin( base, tr.endpos );
+VectorCopy( base->r.currentOrigin, origin ); // Keep the old value for lava checking
+G_SetOrigin( base, tr1.endpos );
 VectorCopy( base->r.currentOrigin, base->s.origin ); // Set it's new origin
 
-if( tr.fraction < 1.0 && ( &tr.plane ) )
+if( tr1.fraction < 1.0 && ( &tr1.plane ) )
 { // Match to a slope when necessary
-VectorCopy( tr.plane.normal, slope ); // Get the slopes' angles
+VectorCopy( tr1.plane.normal, slope ); // Get the slopes' angles
 AngleVectors( base->s.angles, ovf, ovr, NULL ); // Already calculated in part 1
 vectoangles( slope, new_angles );
 pitch = new_angles[PITCH] + 90;
@@ -1546,7 +1547,19 @@ VectorCopy( base->s.angles, base->s.apos.trBase );
 
 trap_LinkEntity( base ); // Add it...
 
-base->s.eType = ET_BUILDABLE; // Initialize
+// Trace back to its original point to see if the buildable hit any non-solid content on its way
+// When it does, the buildable should be cleared!
+trap_Trace( &tr2, origin, base->r.mins, base->r.maxs, base->r.currentOrigin, 
+		   	base->parent ? base->parent->s.number : base->s.number, CONTENTS_LAVA | CONTENTS_SLIME | CONTENTS_WATER );
+
+if( tr2.fraction < 1.0 ) // It did go through a bad content
+{
+base->s.eType = ET_GENERAL; // To go for a die in g_buildables
+}
+else
+{
+base->s.eType = ET_BUILDABLE; // Initialize it
+}
 // The actual buildables' thinking happens in g_buildables again, after this func
 }
 
