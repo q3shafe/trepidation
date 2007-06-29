@@ -41,7 +41,8 @@ We use this to blow up lots of
 stuff.. So it's at top
 ===========================
 */
-void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod){
+void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod)
+{
 
 	vec3_t dir; // needed by the event being adde
 
@@ -755,8 +756,15 @@ void BuildTurret( gentity_t *ent , int type )
 	trap_LinkEntity( base );
 
 	BuildableSpawn( base ); // New spawning -Vincent
+	if( base->s.eType == ET_GENERAL )
+	{ // Clear it!
+	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
+	}
+	else
+	{ // Initalize it!
 	base->nextthink = level.time + 5000;
-	base->think	   = createturretgun;
+	base->think	    = createturretgun;
+	}
 }
 
 
@@ -913,8 +921,15 @@ void BuildMC( gentity_t *ent )
 	trap_LinkEntity( base );
 
 	BuildableSpawn( base ); // New spawning -Vincent
+	if( base->s.eType == ET_GENERAL )
+	{ // Clear it!
+	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
+	}
+	else
+	{ // Initalize it!
 	base->nextthink = level.time + 3000;
 	base->think = MC_prethink;
+	}
 }
 
 
@@ -1035,8 +1050,15 @@ void BuildGenerator( gentity_t *ent )
 	trap_LinkEntity( base );
 
 	BuildableSpawn( base ); // New spawning -Vincent
+	if( base->s.eType == ET_GENERAL )
+	{ // Clear it!
+	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
+	}
+	else
+	{ // Initalize it!
 	base->nextthink = level.time + 9000;
 	base->think = gen_prethink;
+	}
 }
 
 
@@ -1185,8 +1207,15 @@ void BuildDisplacer( gentity_t *ent )
 	trap_LinkEntity( base );
 
 	BuildableSpawn( base ); // New spawning -Vincent
+	if( base->s.eType == ET_GENERAL )
+	{ // Clear it!
+	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
+	}
+	else
+	{ // Initalize it!
 	base->nextthink = level.time + 5000;
 	base->think = td_prethink;
+	}
 }
 
 

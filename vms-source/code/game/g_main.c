@@ -924,7 +924,7 @@ void AddTournamentPlayer( void ) {
 		if ( client->pers.connected != CON_CONNECTED ) {
 			continue;
 		}
-		if ( client->sess.sessionTeam != TEAM_SPECTATOR ) {
+		if ( client->sess.sessionTeam == TEAM_SPECTATOR ) {
 			continue;
 		}
 		// never select the dedicated follow or scoreboard clients
@@ -2568,8 +2568,8 @@ end = trap_Milliseconds();
 	CheckTournament();
 
 	// Shafe - Trep - Radar Functions
-	CheckPlayerPostions();  // Commented out looking for a bug
-	
+	CheckPlayerPostions();
+
 	// see if it is time to end the level
 	CheckExitRules();
 
