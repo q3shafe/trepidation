@@ -694,6 +694,8 @@ Use_BinaryMover
 void Use_BinaryMover( gentity_t *ent, gentity_t *other, gentity_t *activator ) {
 	int		total;
 	int		partial;
+	int		i; //-Vincent
+	gclient_t	*client; //-Vincent
 
 	// only the master should be used
 	if ( ent->flags & FL_TEAMSLAVE ) {
@@ -720,7 +722,7 @@ void Use_BinaryMover( gentity_t *ent, gentity_t *other, gentity_t *activator ) {
 		if ( ent->teammaster == ent || !ent->teammaster ) {
 			trap_AdjustAreaPortalState( ent, qtrue );
 		}
-		return;
+		goto finish;
 	}
 
 	if ( ent->moverState == ROTATOR_POS1 ) {
@@ -740,13 +742,13 @@ void Use_BinaryMover( gentity_t *ent, gentity_t *other, gentity_t *activator ) {
 		if ( ent->teammaster == ent || !ent->teammaster ) {
 			trap_AdjustAreaPortalState( ent, qtrue );
 		}
-		return;
+		goto finish;
 	}
 
 	// if all the way up, just delay before coming down
 	if ( ent->moverState == ROTATOR_POS2 ) {
 		ent->nextthink = level.time + ent->wait;
-		return;
+		goto finish;
 	}
 
 	// only partway down before reversing
@@ -762,7 +764,7 @@ void Use_BinaryMover( gentity_t *ent, gentity_t *other, gentity_t *activator ) {
 		if ( ent->sound1to2 ) {
 			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound1to2 );
 		}
-		return;
+		goto finish;
 	}
 
 	// only partway up before reversing
@@ -778,13 +780,13 @@ void Use_BinaryMover( gentity_t *ent, gentity_t *other, gentity_t *activator ) {
 		if ( ent->sound2to1 ) {
 			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound2to1 );
 		}
-		return;
+		goto finish;
 	}
 
 	// if all the way up, just delay before coming down
 	if ( ent->moverState == MOVER_POS2 ) {
 		ent->nextthink = level.time + ent->wait;
-		return;
+		goto finish;
 	}
 
 	// only partway down before reversing
@@ -800,7 +802,7 @@ void Use_BinaryMover( gentity_t *ent, gentity_t *other, gentity_t *activator ) {
 		if ( ent->sound1to2 ) {
 			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound1to2 );
 		}
-		return;
+		goto finish;
 	}
 
 	// only partway up before reversing
@@ -816,7 +818,27 @@ void Use_BinaryMover( gentity_t *ent, gentity_t *other, gentity_t *activator ) {
 		if ( ent->sound2to1 ) {
 			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound2to1 );
 		}
-		return;
+		goto finish;
+	}
+
+finish:
+	// Check if any client's grapplepoint is close to the mover's origin
+	for( i = 0; i < level.maxclients; i++ ) 
+	{ //-Vincent
+	vec3_t		delta;
+	float		len;
+	client	=	&level.clients[i];
+
+		if( !client || !client->hook || !client->ps.grapplePoint ) // Don't bother then...
+			continue;
+
+		// Compare the client's grapplepoint with the mover's origin
+		VectorSubtract( ent->s.pos.trBase, client->ps.grapplePoint, delta );
+		len = VectorNormalize( delta );
+		if ( len > 16 ) // Not nearby, so don't free it
+			continue;
+
+		Weapon_HookFree( client->hook ); // Free it!
 	}
 }
 
