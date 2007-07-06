@@ -297,6 +297,16 @@ static void StartServer_MenuEvent( void* ptr, int event ) {
 
 	case ID_STARTSERVERNEXT:
 		
+		trap_Cvar_SetValue( "bot_minplayers", 0 );
+
+		if (s_startserver.gametype.curvalue == 1)
+		{
+				trap_Cvar_SetValue( "g_gameType", 0 );
+				trap_Cvar_SetValue( "g_gameMode", 0 );
+				s_startserver.gametype.curvalue = 3;
+		}
+		
+
 		if (s_startserver.gametype.curvalue > 3)
 		{
 			if (s_startserver.gametype.curvalue == 4) 
@@ -1071,8 +1081,8 @@ static void ServerOptions_InitBotNames( void ) {
 	char		bots[MAX_INFO_STRING];
 
 	if( s_serveroptions.gametype >= GT_TEAM ) {
-		Q_strncpyz( s_serveroptions.playerNameBuffers[1], "sarge", 16 );
-		Q_strncpyz( s_serveroptions.playerNameBuffers[2], "major", 16 );
+		Q_strncpyz( s_serveroptions.playerNameBuffers[1], "tremulous", 16 );
+		Q_strncpyz( s_serveroptions.playerNameBuffers[2], "tikes", 16 );
 		if( s_serveroptions.gametype == GT_TEAM ) {
 			Q_strncpyz( s_serveroptions.playerNameBuffers[3], "tremulous", 16 );
 		}

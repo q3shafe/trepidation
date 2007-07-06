@@ -1780,21 +1780,42 @@ line 322
 ;322:}
 LABELV $121
 endproc SP_shooter_grenade 0 8
-export SP_func_breakable
-proc SP_func_breakable 16 12
-line 329
+export UseBreakable
+proc UseBreakable 0 8
+line 330
 ;323:
 ;324:
 ;325:
 ;326:/*QUAKED func_breakable (1 0 0) (-16 -16 -16) (16 16 16)
 ;327: Explodes glass
 ;328:*/
-;329:void SP_func_breakable( gentity_t *ent ) {
-line 333
-;330:  int health;
-;331:  
-;332:  // Make it appear as the brush
-;333:  trap_SetBrushModel( ent, ent->model );
+;329:void UseBreakable( gentity_t *ent, gentity_t *other, gentity_t *activator )
+;330:{// Use any targets it has been given, as requested by Laz -Vincent
+line 331
+;331:G_UseTargets( ent, activator );
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRFP4 8
+INDIRP4
+ARGP4
+ADDRGP4 G_UseTargets
+CALLV
+pop
+line 332
+;332:}
+LABELV $122
+endproc UseBreakable 0 8
+export SP_func_breakable
+proc SP_func_breakable 16 12
+line 334
+;333:void SP_func_breakable( gentity_t *ent ) 
+;334:{
+line 338
+;335:  int health;
+;336:  
+;337:  // Make it appear as the brush
+;338:  trap_SetBrushModel( ent, ent->model );
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -1811,11 +1832,11 @@ ARGP4
 ADDRGP4 trap_SetBrushModel
 CALLV
 pop
-line 336
-;334:
-;335:  // Lets give it 5 health if the mapper did not set its health
-;336:  G_SpawnInt( "health", "0", &health );
-ADDRGP4 $123
+line 341
+;339:
+;340:  // Lets give it 5 health if the mapper did not set its health
+;341:  G_SpawnInt( "health", "0", &health );
+ADDRGP4 $124
 ARGP4
 ADDRGP4 $88
 ARGP4
@@ -1824,21 +1845,21 @@ ARGP4
 ADDRGP4 G_SpawnInt
 CALLI4
 pop
-line 337
-;337:  if( health <= 0 )
+line 342
+;342:  if( health <= 0 )
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-GTI4 $124
-line 338
-;338:   health = 5;
+GTI4 $125
+line 343
+;343:   health = 5;
 ADDRLP4 0
 CNSTI4 5
 ASGNI4
-LABELV $124
-line 340
-;339: 
-;340:  ent->health = health;
+LABELV $125
+line 345
+;344: 
+;345:  ent->health = health;
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
@@ -1846,30 +1867,30 @@ ADDP4
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 343
-;341:  
-;342:  // Let it take damage
-;343:  ent->takedamage = qtrue;
+line 348
+;346:  
+;347:  // Let it take damage
+;348:  ent->takedamage = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 1
 ASGNI4
-line 346
-;344:  
-;345:  // Let it know it is a breakable object
-;346:  ent->s.eType = ET_BREAKABLE;
+line 351
+;349:  
+;350:  // Let it know it is a breakable object
+;351:  ent->s.eType = ET_BREAKABLE;
 ADDRFP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 15
 ASGNI4
-line 349
-;347:  
-;348:  // If the mapper gave it a model, use it
-;349:  if ( ent->model2 ) {
+line 354
+;352:  
+;353:  // If the mapper gave it a model, use it
+;354:  if ( ent->model2 )
 ADDRFP4 0
 INDIRP4
 CNSTI4 552
@@ -1877,9 +1898,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $126
-line 350
-;350:      ent->s.modelindex2 = G_ModelIndex( ent->model2 );
+EQU4 $127
+line 355
+;355:      ent->s.modelindex2 = G_ModelIndex( ent->model2 );
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -1901,45 +1922,52 @@ ADDP4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 351
-;351:  }
-LABELV $126
-line 354
-;352:  
-;353:  // Link all ^this^ info into the ent
-;354:  trap_LinkEntity (ent);
+LABELV $127
+line 357
+;356:
+;357:  ent->use = UseBreakable; // See above -Vincent
+ADDRFP4 0
+INDIRP4
+CNSTI4 732
+ADDP4
+ADDRGP4 UseBreakable
+ASGNP4
+line 360
+;358:  
+;359:  // Link all ^this^ info into the ent
+;360:  trap_LinkEntity (ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 355
-;355: }
-LABELV $122
+line 361
+;361: }
+LABELV $123
 endproc SP_func_breakable 16 12
 export G_BreakGlass
 proc G_BreakGlass 76 8
-line 362
-;356:
-;357:/*
-;358: =================
-;359: G_BreakGlass
-;360: =================
-;361: */
-;362: void G_BreakGlass(gentity_t *ent, vec3_t point, int mod) {
-line 363
-;363:     gentity_t   *tent = NULL;
+line 368
+;362:
+;363:/*
+;364: =================
+;365: G_BreakGlass
+;366: =================
+;367: */
+;368: void G_BreakGlass(gentity_t *ent, vec3_t point, int mod) {
+line 369
+;369:     gentity_t   *tent = NULL;
 ADDRLP4 24
 CNSTP4 0
 ASGNP4
-line 369
-;364: 	vec3_t      size;
-;365:     vec3_t      center;
-;366: 	qboolean    splashdmg;
-;367: 	
-;368: 	// Get the center of the glass
-;369:     VectorSubtract(ent->r.maxs, ent->r.mins, size);
+line 375
+;370: 	vec3_t      size;
+;371:     vec3_t      center;
+;372: 	qboolean    splashdmg;
+;373: 	
+;374: 	// Get the center of the glass
+;375:     VectorSubtract(ent->r.maxs, ent->r.mins, size);
 ADDRLP4 32
 ADDRFP4 0
 INDIRP4
@@ -1987,8 +2015,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 370
-;370:     VectorScale(size, 0.5, size);
+line 376
+;376:     VectorScale(size, 0.5, size);
 ADDRLP4 40
 CNSTF4 1056964608
 ASGNF4
@@ -2012,8 +2040,8 @@ ADDRLP4 0+8
 INDIRF4
 MULF4
 ASGNF4
-line 371
-;371:     VectorAdd(ent->r.mins, size, center);
+line 377
+;377:     VectorAdd(ent->r.mins, size, center);
 ADDRLP4 44
 ADDRFP4 0
 INDIRP4
@@ -2048,29 +2076,29 @@ ADDRLP4 0+8
 INDIRF4
 ADDF4
 ASGNF4
-line 374
-;372: 
-;373: 	// If the glass has no more life, BREAK IT
-;374: 	if( ent->health <= 0 ) {
+line 380
+;378: 
+;379: 	// If the glass has no more life, BREAK IT
+;380: 	if( ent->health <= 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $139
-line 375
-;375: 	G_FreeEntity( ent );
+GTI4 $140
+line 381
+;381: 	G_FreeEntity( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 378
-;376:     // Tell the program based on the gun if it has no splash dmg, no reason to ad ones with
-;377: 	// splash dmg as qtrue as is that is the default
-;378: 	switch( mod ) {
+line 384
+;382:     // Tell the program based on the gun if it has no splash dmg, no reason to ad ones with
+;383: 	// splash dmg as qtrue as is that is the default
+;384: 	switch( mod ) {
 ADDRLP4 48
 ADDRFP4 8
 INDIRI4
@@ -2082,21 +2110,21 @@ ADDRLP4 48
 INDIRI4
 ADDRLP4 52
 INDIRI4
-EQI4 $144
+EQI4 $145
 ADDRLP4 48
 INDIRI4
 CNSTI4 2
-EQI4 $143
+EQI4 $144
 ADDRLP4 48
 INDIRI4
 CNSTI4 3
-EQI4 $145
+EQI4 $146
 ADDRLP4 48
 INDIRI4
 ADDRLP4 52
 INDIRI4
-LTI4 $141
-LABELV $148
+LTI4 $142
+LABELV $149
 ADDRLP4 56
 ADDRFP4 8
 INDIRI4
@@ -2104,85 +2132,85 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 10
-EQI4 $146
+EQI4 $147
 ADDRLP4 56
 INDIRI4
 CNSTI4 11
-EQI4 $147
-ADDRGP4 $141
-JUMPV
-LABELV $143
-line 380
-;379: 		case MOD_GAUNTLET:
-;380: 		splashdmg = qfalse;
-ADDRLP4 28
-CNSTI4 0
-ASGNI4
-line 381
-;381: 		break;
+EQI4 $148
 ADDRGP4 $142
 JUMPV
 LABELV $144
-line 383
-;382: 		case MOD_SHOTGUN:
-;383: 		splashdmg = qfalse;
-ADDRLP4 28
-CNSTI4 0
-ASGNI4
-line 384
-;384: 		break;
-ADDRGP4 $142
-JUMPV
-LABELV $145
 line 386
-;385: 		case MOD_MACHINEGUN:
+;385: 		case MOD_GAUNTLET:
 ;386: 		splashdmg = qfalse;
 ADDRLP4 28
 CNSTI4 0
 ASGNI4
 line 387
 ;387: 		break;
-ADDRGP4 $142
+ADDRGP4 $143
 JUMPV
-LABELV $146
+LABELV $145
 line 389
-;388: 		case MOD_RAILGUN:
+;388: 		case MOD_SHOTGUN:
 ;389: 		splashdmg = qfalse;
 ADDRLP4 28
 CNSTI4 0
 ASGNI4
 line 390
 ;390: 		break;
-ADDRGP4 $142
+ADDRGP4 $143
 JUMPV
-LABELV $147
+LABELV $146
 line 392
-;391: 		case MOD_LIGHTNING:
+;391: 		case MOD_MACHINEGUN:
 ;392: 		splashdmg = qfalse;
 ADDRLP4 28
 CNSTI4 0
 ASGNI4
 line 393
 ;393: 		break;
-ADDRGP4 $142
+ADDRGP4 $143
 JUMPV
-LABELV $141
+LABELV $147
 line 395
-;394: 		default:
-;395: 		splashdmg = qtrue;
+;394: 		case MOD_RAILGUN:
+;395: 		splashdmg = qfalse;
 ADDRLP4 28
-CNSTI4 1
+CNSTI4 0
 ASGNI4
 line 396
 ;396: 		break;
+ADDRGP4 $143
+JUMPV
+LABELV $148
+line 398
+;397: 		case MOD_LIGHTNING:
+;398: 		splashdmg = qfalse;
+ADDRLP4 28
+CNSTI4 0
+ASGNI4
+line 399
+;399: 		break;
+ADDRGP4 $143
+JUMPV
 LABELV $142
+line 401
+;400: 		default:
+;401: 		splashdmg = qtrue;
+ADDRLP4 28
+CNSTI4 1
+ASGNI4
 line 402
-;397: 	}
-;398: 	// Call the function to show the glass shards in cgame
-;399: 	// center can be changed to point which will spawn the
-;400: 	// where the killing bullet hit but wont work with Splash Damage weapons
-;401: 	// so I just use the center of the glass
-;402: 	switch( splashdmg ){
+;402: 		break;
+LABELV $143
+line 408
+;403: 	}
+;404: 	// Call the function to show the glass shards in cgame
+;405: 	// center can be changed to point which will spawn the
+;406: 	// where the killing bullet hit but wont work with Splash Damage weapons
+;407: 	// so I just use the center of the glass
+;408: 	switch( splashdmg ){
 ADDRLP4 60
 ADDRLP4 28
 INDIRI4
@@ -2190,17 +2218,17 @@ ASGNI4
 ADDRLP4 60
 INDIRI4
 CNSTI4 0
-EQI4 $153
+EQI4 $154
 ADDRLP4 60
 INDIRI4
 CNSTI4 1
-EQI4 $152
-ADDRGP4 $149
+EQI4 $153
+ADDRGP4 $150
 JUMPV
-LABELV $152
-line 404
-;403: 	case qtrue:
-;404:     tent = G_TempEntity( center, EV_BREAK_GLASS );
+LABELV $153
+line 410
+;409: 	case qtrue:
+;410:     tent = G_TempEntity( center, EV_BREAK_GLASS );
 ADDRLP4 12
 ARGP4
 CNSTI4 72
@@ -2213,14 +2241,14 @@ ADDRLP4 24
 ADDRLP4 68
 INDIRP4
 ASGNP4
-line 405
-;405: 	break;
-ADDRGP4 $150
+line 411
+;411: 	break;
+ADDRGP4 $151
 JUMPV
-LABELV $153
-line 407
-;406: 	case qfalse:
-;407:     tent = G_TempEntity( point, EV_BREAK_GLASS );
+LABELV $154
+line 413
+;412: 	case qfalse:
+;413:     tent = G_TempEntity( point, EV_BREAK_GLASS );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -2234,25 +2262,25 @@ ADDRLP4 24
 ADDRLP4 72
 INDIRP4
 ASGNP4
-line 408
-;408: 	break;
-LABELV $149
+line 414
+;414: 	break;
 LABELV $150
-line 410
-;409: 	}
-;410: 	tent->s.eventParm = 0;
+LABELV $151
+line 416
+;415: 	}
+;416: 	tent->s.eventParm = 0;
 ADDRLP4 24
 INDIRP4
 CNSTI4 184
 ADDP4
 CNSTI4 0
 ASGNI4
-line 411
-;411: 	}
-LABELV $139
-line 412
-;412: }
-LABELV $128
+line 417
+;417: 	}
+LABELV $140
+line 418
+;418: }
+LABELV $129
 endproc G_BreakGlass 76 8
 import CheckPlayerPostions
 import G_SendCommandToClient
@@ -2867,7 +2895,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $123
+LABELV $124
 byte 1 104
 byte 1 101
 byte 1 97

@@ -764,7 +764,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 		if (self != attacker)
 		{
 			level.firstStrike = qtrue;
-			BroadCastSound("sound/misc/laff02.wav");
+			BroadCastSound("sound/misc/laff02.ogg");
 			trap_SendServerCommand( -1, va("print \"%s Made First Strike!\n\"",attacker->client->pers.netname));
 		}
 	}
@@ -831,28 +831,28 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 			
 					if (tmpCnt == 5) 
 					{
-						BroadCastSound("sound/misc/5.wav");
+						BroadCastSound("sound/misc/5.ogg");
 					}
 					
 					if (tmpCnt == 4) 
 					{
-						BroadCastSound("sound/misc/4.wav");
+						BroadCastSound("sound/misc/4.ogg");
 					}
 
 					if (tmpCnt == 3) 
 					{
-						BroadCastSound("sound/misc/3.wav");
+						BroadCastSound("sound/misc/3.ogg");
 					}
 
 					if (tmpCnt == 2) 
 					{
 						
-						BroadCastSound("sound/misc/2.wav");
+						BroadCastSound("sound/misc/2.ogg");
 					}
 
 					if (tmpCnt == 1) 
 					{
-						BroadCastSound("sound/misc/laff01.wav");
+						BroadCastSound("sound/misc/laff01.ogg");
 
 					}
 				
@@ -907,7 +907,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 	if (meansOfDeath == MOD_HEADSHOT)
 	{
-			BroadCastSound("sound/misc/headshot.wav");
+			BroadCastSound("sound/misc/headshot.ogg");
 	}
 
 
