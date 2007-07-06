@@ -209,7 +209,7 @@ static cvarTable_t		gameCvarTable[] = {
 // Shafe - Trep - Cvars
 	// Mods
 	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
-	{ &g_GameMode, "g_GameMode", "3", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },	
+	{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },	
 	{ &g_BlueMC, "g_BlueMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
 	{ &g_RedMC, "g_RedMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
 
@@ -459,6 +459,13 @@ void G_InitModRules( void )
 	{
 		trap_SendConsoleCommand( EXEC_APPEND, "g_gametype 3\n" );
 		g_gametype.integer = 3;
+	}
+
+	if ((g_GameMode.integer == 3) && (g_gametype.integer == 0 ))
+	{
+		if (trep_debug.integer) { G_Printf("Resetting gamemode to 0 %s\n", g_gametype.integer ); }
+		trap_SendConsoleCommand( EXEC_APPEND, "g_GameMode 0\n" );
+		g_GameMode.integer = 0;
 	}
 
 
@@ -737,6 +744,11 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	//level.lastClient = -1;
 	
 	
+	if ((g_gametype.integer == 0) && (g_GameMode.integer == 3))
+	{
+		g_GameMode.integer = 0;
+	}
+
 
 	level.snd_fry = G_SoundIndex("sound/player/fry.wav");	// FIXME standing in lava / slime
 

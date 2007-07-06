@@ -4956,7 +4956,7 @@ line 686
 LABELV $313
 endproc Reached_BinaryMover 12 12
 export Use_BinaryMover
-proc Use_BinaryMover 20 12
+proc Use_BinaryMover 52 12
 line 694
 ;687:
 ;688:
@@ -4966,12 +4966,14 @@ line 694
 ;692:================
 ;693:*/
 ;694:void Use_BinaryMover( gentity_t *ent, gentity_t *other, gentity_t *activator ) {
-line 699
+line 701
 ;695:	int		total;
 ;696:	int		partial;
-;697:
-;698:	// only the master should be used
-;699:	if ( ent->flags & FL_TEAMSLAVE ) {
+;697:	int		i; //-Vincent
+;698:	gclient_t	*client; //-Vincent
+;699:
+;700:	// only the master should be used
+;701:	if ( ent->flags & FL_TEAMSLAVE ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 544
@@ -4981,8 +4983,8 @@ CNSTI4 1024
 BANDI4
 CNSTI4 0
 EQI4 $348
-line 700
-;700:		Use_BinaryMover( ent->teammaster, other, activator );
+line 702
+;702:		Use_BinaryMover( ent->teammaster, other, activator );
 ADDRFP4 0
 INDIRP4
 CNSTI4 804
@@ -4998,15 +5000,15 @@ ARGP4
 ADDRGP4 Use_BinaryMover
 CALLV
 pop
-line 701
-;701:		return;
+line 703
+;703:		return;
 ADDRGP4 $347
 JUMPV
 LABELV $348
-line 704
-;702:	}
-;703:
-;704:	ent->activator = activator;
+line 706
+;704:	}
+;705:
+;706:	ent->activator = activator;
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -5014,9 +5016,9 @@ ADDP4
 ADDRFP4 8
 INDIRP4
 ASGNP4
-line 706
-;705:
-;706:	if ( ent->moverState == MOVER_POS1 ) {
+line 708
+;707:
+;708:	if ( ent->moverState == MOVER_POS1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
@@ -5024,10 +5026,10 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $350
-line 709
-;707:		// start moving 50 msec later, becase if this was player
-;708:		// triggered, level.time hasn't been advanced yet
-;709:		MatchTeam( ent, MOVER_1TO2, level.time + 50 );
+line 711
+;709:		// start moving 50 msec later, becase if this was player
+;710:		// triggered, level.time hasn't been advanced yet
+;711:		MatchTeam( ent, MOVER_1TO2, level.time + 50 );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5041,10 +5043,10 @@ ARGI4
 ADDRGP4 MatchTeam
 CALLV
 pop
-line 712
-;710:
-;711:		// starting sound
-;712:		if ( ent->sound1to2 ) {
+line 714
+;712:
+;713:		// starting sound
+;714:		if ( ent->sound1to2 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 592
@@ -5052,18 +5054,18 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $353
-line 713
-;713:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound1to2 );
-ADDRLP4 8
+line 715
+;715:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound1to2 );
+ADDRLP4 16
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 ARGP4
 CNSTI4 47
 ARGI4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 592
 ADDP4
@@ -5072,56 +5074,56 @@ ARGI4
 ADDRGP4 G_AddEvent
 CALLV
 pop
-line 714
-;714:		}
+line 716
+;716:		}
 LABELV $353
-line 717
-;715:
-;716:		// looping sound
-;717:		ent->s.loopSound = ent->soundLoop;
-ADDRLP4 8
+line 719
+;717:
+;718:		// looping sound
+;719:		ent->s.loopSound = ent->soundLoop;
+ADDRLP4 16
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 156
 ADDP4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 604
 ADDP4
 INDIRI4
 ASGNI4
-line 720
-;718:
-;719:		// open areaportal
-;720:		if ( ent->teammaster == ent || !ent->teammaster ) {
-ADDRLP4 12
+line 722
+;720:
+;721:		// open areaportal
+;722:		if ( ent->teammaster == ent || !ent->teammaster ) {
+ADDRLP4 20
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 16
-ADDRLP4 12
+ADDRLP4 24
+ADDRLP4 20
 INDIRP4
 CNSTI4 804
 ADDP4
 INDIRP4
 CVPU4 4
 ASGNU4
-ADDRLP4 16
+ADDRLP4 24
 INDIRU4
-ADDRLP4 12
+ADDRLP4 20
 INDIRP4
 CVPU4 4
 EQU4 $357
-ADDRLP4 16
+ADDRLP4 24
 INDIRU4
 CNSTU4 0
-NEU4 $347
+NEU4 $358
 LABELV $357
-line 721
-;721:			trap_AdjustAreaPortalState( ent, qtrue );
+line 723
+;723:			trap_AdjustAreaPortalState( ent, qtrue );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5130,28 +5132,28 @@ ARGI4
 ADDRGP4 trap_AdjustAreaPortalState
 CALLV
 pop
-line 722
-;722:		}
-line 723
-;723:		return;
-ADDRGP4 $347
+line 724
+;724:		}
+line 725
+;725:		goto finish;
+ADDRGP4 $358
 JUMPV
 LABELV $350
-line 726
-;724:	}
-;725:
-;726:	if ( ent->moverState == ROTATOR_POS1 ) {
+line 728
+;726:	}
+;727:
+;728:	if ( ent->moverState == ROTATOR_POS1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 INDIRI4
 CNSTI4 4
-NEI4 $358
-line 729
-;727:		// start moving 50 msec later, becase if this was player
-;728:		// triggered, level.time hasn't been advanced yet
-;729:		MatchTeam( ent, ROTATOR_1TO2, level.time + 50 );
+NEI4 $359
+line 731
+;729:		// start moving 50 msec later, becase if this was player
+;730:		// triggered, level.time hasn't been advanced yet
+;731:		MatchTeam( ent, ROTATOR_1TO2, level.time + 50 );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5165,29 +5167,29 @@ ARGI4
 ADDRGP4 MatchTeam
 CALLV
 pop
-line 732
-;730:
-;731:		// starting sound
-;732:		if ( ent->sound1to2 ) {
+line 734
+;732:
+;733:		// starting sound
+;734:		if ( ent->sound1to2 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 592
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $361
-line 733
-;733:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound1to2 );
-ADDRLP4 8
+EQI4 $362
+line 735
+;735:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound1to2 );
+ADDRLP4 16
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 ARGP4
 CNSTI4 47
 ARGI4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 592
 ADDP4
@@ -5196,56 +5198,56 @@ ARGI4
 ADDRGP4 G_AddEvent
 CALLV
 pop
-line 734
-;734:		}
-LABELV $361
-line 737
-;735:
-;736:		// looping sound
-;737:		ent->s.loopSound = ent->soundLoop;
-ADDRLP4 8
+line 736
+;736:		}
+LABELV $362
+line 739
+;737:
+;738:		// looping sound
+;739:		ent->s.loopSound = ent->soundLoop;
+ADDRLP4 16
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 156
 ADDP4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 604
 ADDP4
 INDIRI4
 ASGNI4
-line 740
-;738:
-;739:		// open areaportal
-;740:		if ( ent->teammaster == ent || !ent->teammaster ) {
-ADDRLP4 12
+line 742
+;740:
+;741:		// open areaportal
+;742:		if ( ent->teammaster == ent || !ent->teammaster ) {
+ADDRLP4 20
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 16
-ADDRLP4 12
+ADDRLP4 24
+ADDRLP4 20
 INDIRP4
 CNSTI4 804
 ADDP4
 INDIRP4
 CVPU4 4
 ASGNU4
-ADDRLP4 16
+ADDRLP4 24
 INDIRU4
-ADDRLP4 12
+ADDRLP4 20
 INDIRP4
 CVPU4 4
-EQU4 $365
-ADDRLP4 16
+EQU4 $366
+ADDRLP4 24
 INDIRU4
 CNSTU4 0
-NEU4 $347
-LABELV $365
-line 741
-;741:			trap_AdjustAreaPortalState( ent, qtrue );
+NEU4 $358
+LABELV $366
+line 743
+;743:			trap_AdjustAreaPortalState( ent, qtrue );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5254,39 +5256,39 @@ ARGI4
 ADDRGP4 trap_AdjustAreaPortalState
 CALLV
 pop
-line 742
-;742:		}
-line 743
-;743:		return;
-ADDRGP4 $347
+line 744
+;744:		}
+line 745
+;745:		goto finish;
+ADDRGP4 $358
 JUMPV
-LABELV $358
-line 747
-;744:	}
-;745:
-;746:	// if all the way up, just delay before coming down
-;747:	if ( ent->moverState == ROTATOR_POS2 ) {
+LABELV $359
+line 749
+;746:	}
+;747:
+;748:	// if all the way up, just delay before coming down
+;749:	if ( ent->moverState == ROTATOR_POS2 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 INDIRI4
 CNSTI4 5
-NEI4 $366
-line 748
-;748:		ent->nextthink = level.time + ent->wait;
-ADDRLP4 8
+NEI4 $367
+line 750
+;750:		ent->nextthink = level.time + ent->wait;
+ADDRLP4 16
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 704
 ADDP4
 ADDRGP4 level+32
 INDIRI4
 CVIF4 4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 820
 ADDP4
@@ -5294,35 +5296,35 @@ INDIRF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 749
-;749:		return;
-ADDRGP4 $347
+line 751
+;751:		goto finish;
+ADDRGP4 $358
 JUMPV
-LABELV $366
-line 753
-;750:	}
-;751:
-;752:	// only partway down before reversing
-;753:	if ( ent->moverState == ROTATOR_2TO1 ) {
+LABELV $367
+line 755
+;752:	}
+;753:
+;754:	// only partway down before reversing
+;755:	if ( ent->moverState == ROTATOR_2TO1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 INDIRI4
 CNSTI4 7
-NEI4 $369
-line 754
-;754:		total = ent->s.apos.trDuration;
-ADDRLP4 0
+NEI4 $370
+line 756
+;756:		total = ent->s.apos.trDuration;
+ADDRLP4 8
 ADDRFP4 0
 INDIRP4
 CNSTI4 56
 ADDP4
 INDIRI4
 ASGNI4
-line 755
-;755:		partial = level.time - ent->s.time;
-ADDRLP4 4
+line 757
+;757:		partial = level.time - ent->s.time;
+ADDRLP4 12
 ADDRGP4 level+32
 INDIRI4
 ADDRFP4 0
@@ -5332,25 +5334,25 @@ ADDP4
 INDIRI4
 SUBI4
 ASGNI4
-line 756
-;756:		if ( partial > total ) {
-ADDRLP4 4
+line 758
+;758:		if ( partial > total ) {
+ADDRLP4 12
 INDIRI4
-ADDRLP4 0
+ADDRLP4 8
 INDIRI4
-LEI4 $372
-line 757
-;757:			partial = total;
-ADDRLP4 4
-ADDRLP4 0
+LEI4 $373
+line 759
+;759:			partial = total;
+ADDRLP4 12
+ADDRLP4 8
 INDIRI4
 ASGNI4
-line 758
-;758:		}
-LABELV $372
 line 760
-;759:
-;760:		MatchTeam( ent, ROTATOR_1TO2, level.time - ( total - partial ) );
+;760:		}
+LABELV $373
+line 762
+;761:
+;762:		MatchTeam( ent, ROTATOR_1TO2, level.time - ( total - partial ) );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5358,77 +5360,77 @@ CNSTI4 6
 ARGI4
 ADDRGP4 level+32
 INDIRI4
-ADDRLP4 0
+ADDRLP4 8
 INDIRI4
-ADDRLP4 4
+ADDRLP4 12
 INDIRI4
 SUBI4
 SUBI4
 ARGI4
 ADDRGP4 MatchTeam
-CALLV
-pop
-line 762
-;761:
-;762:		if ( ent->sound1to2 ) {
-ADDRFP4 0
-INDIRP4
-CNSTI4 592
-ADDP4
-INDIRI4
-CNSTI4 0
-EQI4 $347
-line 763
-;763:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound1to2 );
-ADDRLP4 8
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 8
-INDIRP4
-ARGP4
-CNSTI4 47
-ARGI4
-ADDRLP4 8
-INDIRP4
-CNSTI4 592
-ADDP4
-INDIRI4
-ARGI4
-ADDRGP4 G_AddEvent
 CALLV
 pop
 line 764
-;764:		}
+;763:
+;764:		if ( ent->sound1to2 ) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 592
+ADDP4
+INDIRI4
+CNSTI4 0
+EQI4 $358
 line 765
-;765:		return;
-ADDRGP4 $347
+;765:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound1to2 );
+ADDRLP4 16
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 16
+INDIRP4
+ARGP4
+CNSTI4 47
+ARGI4
+ADDRLP4 16
+INDIRP4
+CNSTI4 592
+ADDP4
+INDIRI4
+ARGI4
+ADDRGP4 G_AddEvent
+CALLV
+pop
+line 766
+;766:		}
+line 767
+;767:		goto finish;
+ADDRGP4 $358
 JUMPV
-LABELV $369
-line 769
-;766:	}
-;767:
-;768:	// only partway up before reversing
-;769:	if ( ent->moverState == ROTATOR_1TO2 ) {
+LABELV $370
+line 771
+;768:	}
+;769:
+;770:	// only partway up before reversing
+;771:	if ( ent->moverState == ROTATOR_1TO2 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 INDIRI4
 CNSTI4 6
-NEI4 $377
-line 770
-;770:		total = ent->s.apos.trDuration;
-ADDRLP4 0
+NEI4 $378
+line 772
+;772:		total = ent->s.apos.trDuration;
+ADDRLP4 8
 ADDRFP4 0
 INDIRP4
 CNSTI4 56
 ADDP4
 INDIRI4
 ASGNI4
-line 771
-;771:		partial = level.time - ent->s.time;
-ADDRLP4 4
+line 773
+;773:		partial = level.time - ent->s.time;
+ADDRLP4 12
 ADDRGP4 level+32
 INDIRI4
 ADDRFP4 0
@@ -5438,25 +5440,25 @@ ADDP4
 INDIRI4
 SUBI4
 ASGNI4
-line 772
-;772:		if ( partial > total ) {
-ADDRLP4 4
+line 774
+;774:		if ( partial > total ) {
+ADDRLP4 12
 INDIRI4
-ADDRLP4 0
+ADDRLP4 8
 INDIRI4
-LEI4 $380
-line 773
-;773:			partial = total;
-ADDRLP4 4
-ADDRLP4 0
+LEI4 $381
+line 775
+;775:			partial = total;
+ADDRLP4 12
+ADDRLP4 8
 INDIRI4
 ASGNI4
-line 774
-;774:		}
-LABELV $380
 line 776
-;775:
-;776:		MatchTeam( ent, ROTATOR_2TO1, level.time - ( total - partial ) );
+;776:		}
+LABELV $381
+line 778
+;777:
+;778:		MatchTeam( ent, ROTATOR_2TO1, level.time - ( total - partial ) );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5464,9 +5466,9 @@ CNSTI4 7
 ARGI4
 ADDRGP4 level+32
 INDIRI4
-ADDRLP4 0
+ADDRLP4 8
 INDIRI4
-ADDRLP4 4
+ADDRLP4 12
 INDIRI4
 SUBI4
 SUBI4
@@ -5474,28 +5476,28 @@ ARGI4
 ADDRGP4 MatchTeam
 CALLV
 pop
-line 778
-;777:
-;778:		if ( ent->sound2to1 ) {
+line 780
+;779:
+;780:		if ( ent->sound2to1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 596
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $347
-line 779
-;779:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound2to1 );
-ADDRLP4 8
+EQI4 $358
+line 781
+;781:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound2to1 );
+ADDRLP4 16
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 ARGP4
 CNSTI4 47
 ARGI4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 596
 ADDP4
@@ -5504,39 +5506,39 @@ ARGI4
 ADDRGP4 G_AddEvent
 CALLV
 pop
-line 780
-;780:		}
-line 781
-;781:		return;
-ADDRGP4 $347
+line 782
+;782:		}
+line 783
+;783:		goto finish;
+ADDRGP4 $358
 JUMPV
-LABELV $377
-line 785
-;782:	}
-;783:
-;784:	// if all the way up, just delay before coming down
-;785:	if ( ent->moverState == MOVER_POS2 ) {
+LABELV $378
+line 787
+;784:	}
+;785:
+;786:	// if all the way up, just delay before coming down
+;787:	if ( ent->moverState == MOVER_POS2 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $385
-line 786
-;786:		ent->nextthink = level.time + ent->wait;
-ADDRLP4 8
+NEI4 $386
+line 788
+;788:		ent->nextthink = level.time + ent->wait;
+ADDRLP4 16
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 704
 ADDP4
 ADDRGP4 level+32
 INDIRI4
 CVIF4 4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 820
 ADDP4
@@ -5544,35 +5546,35 @@ INDIRF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 787
-;787:		return;
-ADDRGP4 $347
+line 789
+;789:		goto finish;
+ADDRGP4 $358
 JUMPV
-LABELV $385
-line 791
-;788:	}
-;789:
-;790:	// only partway down before reversing
-;791:	if ( ent->moverState == MOVER_2TO1 ) {
+LABELV $386
+line 793
+;790:	}
+;791:
+;792:	// only partway down before reversing
+;793:	if ( ent->moverState == MOVER_2TO1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $388
-line 792
-;792:		total = ent->s.pos.trDuration;
-ADDRLP4 0
+NEI4 $389
+line 794
+;794:		total = ent->s.pos.trDuration;
+ADDRLP4 8
 ADDRFP4 0
 INDIRP4
 CNSTI4 20
 ADDP4
 INDIRI4
 ASGNI4
-line 793
-;793:		partial = level.time - ent->s.pos.trTime;
-ADDRLP4 4
+line 795
+;795:		partial = level.time - ent->s.pos.trTime;
+ADDRLP4 12
 ADDRGP4 level+32
 INDIRI4
 ADDRFP4 0
@@ -5582,25 +5584,25 @@ ADDP4
 INDIRI4
 SUBI4
 ASGNI4
-line 794
-;794:		if ( partial > total ) {
-ADDRLP4 4
+line 796
+;796:		if ( partial > total ) {
+ADDRLP4 12
 INDIRI4
-ADDRLP4 0
+ADDRLP4 8
 INDIRI4
-LEI4 $391
-line 795
-;795:			partial = total;
-ADDRLP4 4
-ADDRLP4 0
+LEI4 $392
+line 797
+;797:			partial = total;
+ADDRLP4 12
+ADDRLP4 8
 INDIRI4
 ASGNI4
-line 796
-;796:		}
-LABELV $391
 line 798
-;797:
-;798:		MatchTeam( ent, MOVER_1TO2, level.time - ( total - partial ) );
+;798:		}
+LABELV $392
+line 800
+;799:
+;800:		MatchTeam( ent, MOVER_1TO2, level.time - ( total - partial ) );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5608,77 +5610,77 @@ CNSTI4 2
 ARGI4
 ADDRGP4 level+32
 INDIRI4
-ADDRLP4 0
+ADDRLP4 8
 INDIRI4
-ADDRLP4 4
+ADDRLP4 12
 INDIRI4
 SUBI4
 SUBI4
 ARGI4
 ADDRGP4 MatchTeam
-CALLV
-pop
-line 800
-;799:
-;800:		if ( ent->sound1to2 ) {
-ADDRFP4 0
-INDIRP4
-CNSTI4 592
-ADDP4
-INDIRI4
-CNSTI4 0
-EQI4 $347
-line 801
-;801:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound1to2 );
-ADDRLP4 8
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 8
-INDIRP4
-ARGP4
-CNSTI4 47
-ARGI4
-ADDRLP4 8
-INDIRP4
-CNSTI4 592
-ADDP4
-INDIRI4
-ARGI4
-ADDRGP4 G_AddEvent
 CALLV
 pop
 line 802
-;802:		}
+;801:
+;802:		if ( ent->sound1to2 ) {
+ADDRFP4 0
+INDIRP4
+CNSTI4 592
+ADDP4
+INDIRI4
+CNSTI4 0
+EQI4 $358
 line 803
-;803:		return;
-ADDRGP4 $347
+;803:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound1to2 );
+ADDRLP4 16
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 16
+INDIRP4
+ARGP4
+CNSTI4 47
+ARGI4
+ADDRLP4 16
+INDIRP4
+CNSTI4 592
+ADDP4
+INDIRI4
+ARGI4
+ADDRGP4 G_AddEvent
+CALLV
+pop
+line 804
+;804:		}
+line 805
+;805:		goto finish;
+ADDRGP4 $358
 JUMPV
-LABELV $388
-line 807
-;804:	}
-;805:
-;806:	// only partway up before reversing
-;807:	if ( ent->moverState == MOVER_1TO2 ) {
+LABELV $389
+line 809
+;806:	}
+;807:
+;808:	// only partway up before reversing
+;809:	if ( ent->moverState == MOVER_1TO2 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $396
-line 808
-;808:		total = ent->s.pos.trDuration;
-ADDRLP4 0
+NEI4 $397
+line 810
+;810:		total = ent->s.pos.trDuration;
+ADDRLP4 8
 ADDRFP4 0
 INDIRP4
 CNSTI4 20
 ADDP4
 INDIRI4
 ASGNI4
-line 809
-;809:		partial = level.time - ent->s.pos.trTime;
-ADDRLP4 4
+line 811
+;811:		partial = level.time - ent->s.pos.trTime;
+ADDRLP4 12
 ADDRGP4 level+32
 INDIRI4
 ADDRFP4 0
@@ -5688,25 +5690,25 @@ ADDP4
 INDIRI4
 SUBI4
 ASGNI4
-line 810
-;810:		if ( partial > total ) {
-ADDRLP4 4
+line 812
+;812:		if ( partial > total ) {
+ADDRLP4 12
 INDIRI4
-ADDRLP4 0
+ADDRLP4 8
 INDIRI4
-LEI4 $399
-line 811
-;811:			partial = total;
-ADDRLP4 4
-ADDRLP4 0
+LEI4 $400
+line 813
+;813:			partial = total;
+ADDRLP4 12
+ADDRLP4 8
 INDIRI4
 ASGNI4
-line 812
-;812:		}
-LABELV $399
 line 814
-;813:
-;814:		MatchTeam( ent, MOVER_2TO1, level.time - ( total - partial ) );
+;814:		}
+LABELV $400
+line 816
+;815:
+;816:		MatchTeam( ent, MOVER_2TO1, level.time - ( total - partial ) );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5714,9 +5716,9 @@ CNSTI4 3
 ARGI4
 ADDRGP4 level+32
 INDIRI4
-ADDRLP4 0
+ADDRLP4 8
 INDIRI4
-ADDRLP4 4
+ADDRLP4 12
 INDIRI4
 SUBI4
 SUBI4
@@ -5724,28 +5726,28 @@ ARGI4
 ADDRGP4 MatchTeam
 CALLV
 pop
-line 816
-;815:
-;816:		if ( ent->sound2to1 ) {
+line 818
+;817:
+;818:		if ( ent->sound2to1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 596
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $347
-line 817
-;817:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound2to1 );
-ADDRLP4 8
+EQI4 $358
+line 819
+;819:			G_AddEvent( ent, EV_GENERAL_SOUND, ent->sound2to1 );
+ADDRLP4 16
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 ARGP4
 CNSTI4 47
 ARGI4
-ADDRLP4 8
+ADDRLP4 16
 INDIRP4
 CNSTI4 596
 ADDP4
@@ -5754,42 +5756,202 @@ ARGI4
 ADDRGP4 G_AddEvent
 CALLV
 pop
-line 818
-;818:		}
-line 819
-;819:		return;
-LABELV $396
+line 820
+;820:		}
 line 821
-;820:	}
-;821:}
+;821:		goto finish;
+LABELV $397
+LABELV $358
+line 826
+;822:	}
+;823:
+;824:finish:
+;825:	// Check if any client's grapplepoint is close to the mover's origin
+;826:	for( i = 0; i < level.maxclients; i++ ) 
+ADDRLP4 4
+CNSTI4 0
+ASGNI4
+ADDRGP4 $408
+JUMPV
+LABELV $405
+line 827
+;827:	{ //-Vincent
+line 830
+;828:	vec3_t		delta;
+;829:	float		len;
+;830:	client	=	&level.clients[i];
+ADDRLP4 0
+CNSTI4 3472
+ADDRLP4 4
+INDIRI4
+MULI4
+ADDRGP4 level
+INDIRP4
+ADDP4
+ASGNP4
+line 832
+;831:
+;832:		if( !client || !client->hook || !client->ps.grapplePoint ) // Don't bother then...
+ADDRLP4 36
+CNSTU4 0
+ASGNU4
+ADDRLP4 0
+INDIRP4
+CVPU4 4
+ADDRLP4 36
+INDIRU4
+EQU4 $413
+ADDRLP4 0
+INDIRP4
+CNSTI4 2692
+ADDP4
+INDIRP4
+CVPU4 4
+ADDRLP4 36
+INDIRU4
+EQU4 $413
+ADDRLP4 0
+INDIRP4
+CNSTI4 92
+ADDP4
+CVPU4 4
+ADDRLP4 36
+INDIRU4
+NEU4 $410
+LABELV $413
+line 833
+;833:			continue;
+ADDRGP4 $406
+JUMPV
+LABELV $410
+line 836
+;834:
+;835:		// Compare the client's grapplepoint with the mover's origin
+;836:		VectorSubtract( ent->s.pos.trBase, client->ps.grapplePoint, delta );
+ADDRLP4 40
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 16
+ADDRLP4 40
+INDIRP4
+CNSTI4 24
+ADDP4
+INDIRF4
+ADDRLP4 0
+INDIRP4
+CNSTI4 92
+ADDP4
+INDIRF4
+SUBF4
+ASGNF4
+ADDRLP4 16+4
+ADDRLP4 40
+INDIRP4
+CNSTI4 28
+ADDP4
+INDIRF4
+ADDRLP4 0
+INDIRP4
+CNSTI4 96
+ADDP4
+INDIRF4
+SUBF4
+ASGNF4
+ADDRLP4 16+8
+ADDRFP4 0
+INDIRP4
+CNSTI4 32
+ADDP4
+INDIRF4
+ADDRLP4 0
+INDIRP4
+CNSTI4 100
+ADDP4
+INDIRF4
+SUBF4
+ASGNF4
+line 837
+;837:		len = VectorNormalize( delta );
+ADDRLP4 16
+ARGP4
+ADDRLP4 48
+ADDRGP4 VectorNormalize
+CALLF4
+ASGNF4
+ADDRLP4 28
+ADDRLP4 48
+INDIRF4
+ASGNF4
+line 838
+;838:		if ( len > 16 ) // Not nearby, so don't free it
+ADDRLP4 28
+INDIRF4
+CNSTF4 1098907648
+LEF4 $416
+line 839
+;839:			continue;
+ADDRGP4 $406
+JUMPV
+LABELV $416
+line 841
+;840:
+;841:		Weapon_HookFree( client->hook ); // Free it!
+ADDRLP4 0
+INDIRP4
+CNSTI4 2692
+ADDP4
+INDIRP4
+ARGP4
+ADDRGP4 Weapon_HookFree
+CALLV
+pop
+line 842
+;842:	}
+LABELV $406
+line 826
+ADDRLP4 4
+ADDRLP4 4
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+LABELV $408
+ADDRLP4 4
+INDIRI4
+ADDRGP4 level+24
+INDIRI4
+LTI4 $405
+line 843
+;843:}
 LABELV $347
-endproc Use_BinaryMover 20 12
+endproc Use_BinaryMover 52 12
 export InitMover
 proc InitMover 100 12
-line 833
-;822:
-;823:
-;824:
-;825:/*
-;826:================
-;827:InitMover
-;828:
-;829:"pos1", "pos2", and "speed" should be set before calling,
-;830:so the movement delta can be calculated
-;831:================
-;832:*/
-;833:void InitMover( gentity_t *ent ) {
-line 843
-;834:	vec3_t		move;
-;835:	float		distance;
-;836:	float		light;
-;837:	vec3_t		color;
-;838:	qboolean	lightSet, colorSet;
-;839:	char		*sound;
-;840:
-;841:	// if the "model2" key is set, use a seperate model
-;842:	// for drawing, but clip against the brushes
-;843:	if ( ent->model2 ) {
+line 855
+;844:
+;845:
+;846:
+;847:/*
+;848:================
+;849:InitMover
+;850:
+;851:"pos1", "pos2", and "speed" should be set before calling,
+;852:so the movement delta can be calculated
+;853:================
+;854:*/
+;855:void InitMover( gentity_t *ent ) {
+line 865
+;856:	vec3_t		move;
+;857:	float		distance;
+;858:	float		light;
+;859:	vec3_t		color;
+;860:	qboolean	lightSet, colorSet;
+;861:	char		*sound;
+;862:
+;863:	// if the "model2" key is set, use a seperate model
+;864:	// for drawing, but clip against the brushes
+;865:	if ( ent->model2 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 552
@@ -5797,9 +5959,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $405
-line 844
-;844:		ent->s.modelindex2 = G_ModelIndex( ent->model2 );
+EQU4 $419
+line 866
+;866:		ent->s.modelindex2 = G_ModelIndex( ent->model2 );
 ADDRLP4 44
 ADDRFP4 0
 INDIRP4
@@ -5821,16 +5983,16 @@ ADDP4
 ADDRLP4 48
 INDIRI4
 ASGNI4
-line 845
-;845:	}
-LABELV $405
-line 848
-;846:
-;847:	// if the "loopsound" key is set, use a constant looping sound when moving
-;848:	if ( G_SpawnString( "noise", "100", &sound ) ) {
-ADDRGP4 $409
+line 867
+;867:	}
+LABELV $419
+line 870
+;868:
+;869:	// if the "loopsound" key is set, use a constant looping sound when moving
+;870:	if ( G_SpawnString( "noise", "100", &sound ) ) {
+ADDRGP4 $423
 ARGP4
-ADDRGP4 $410
+ADDRGP4 $424
 ARGP4
 ADDRLP4 40
 ARGP4
@@ -5841,9 +6003,9 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
-EQI4 $407
-line 849
-;849:		ent->s.loopSound = G_SoundIndex( sound );
+EQI4 $421
+line 871
+;871:		ent->s.loopSound = G_SoundIndex( sound );
 ADDRLP4 40
 INDIRP4
 ARGP4
@@ -5858,16 +6020,16 @@ ADDP4
 ADDRLP4 48
 INDIRI4
 ASGNI4
-line 850
-;850:	}
-LABELV $407
-line 853
-;851:
-;852:	// if the "color" or "light" keys are set, setup constantLight
-;853:	lightSet = G_SpawnFloat( "light", "100", &light );
-ADDRGP4 $411
+line 872
+;872:	}
+LABELV $421
+line 875
+;873:
+;874:	// if the "color" or "light" keys are set, setup constantLight
+;875:	lightSet = G_SpawnFloat( "light", "100", &light );
+ADDRGP4 $425
 ARGP4
-ADDRGP4 $410
+ADDRGP4 $424
 ARGP4
 ADDRLP4 36
 ARGP4
@@ -5879,11 +6041,11 @@ ADDRLP4 28
 ADDRLP4 48
 INDIRI4
 ASGNI4
-line 854
-;854:	colorSet = G_SpawnVector( "color", "1 1 1", color );
-ADDRGP4 $412
+line 876
+;876:	colorSet = G_SpawnVector( "color", "1 1 1", color );
+ADDRGP4 $426
 ARGP4
-ADDRGP4 $413
+ADDRGP4 $427
 ARGP4
 ADDRLP4 12
 ARGP4
@@ -5895,8 +6057,8 @@ ADDRLP4 32
 ADDRLP4 52
 INDIRI4
 ASGNI4
-line 855
-;855:	if ( lightSet || colorSet ) {
+line 877
+;877:	if ( lightSet || colorSet ) {
 ADDRLP4 56
 CNSTI4 0
 ASGNI4
@@ -5904,17 +6066,17 @@ ADDRLP4 28
 INDIRI4
 ADDRLP4 56
 INDIRI4
-NEI4 $416
+NEI4 $430
 ADDRLP4 32
 INDIRI4
 ADDRLP4 56
 INDIRI4
-EQI4 $414
-LABELV $416
-line 858
-;856:		int		r, g, b, i;
-;857:
-;858:		r = color[0] * 255;
+EQI4 $428
+LABELV $430
+line 880
+;878:		int		r, g, b, i;
+;879:
+;880:		r = color[0] * 255;
 ADDRLP4 60
 CNSTF4 1132396544
 ADDRLP4 12
@@ -5922,22 +6084,22 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 859
-;859:		if ( r > 255 ) {
+line 881
+;881:		if ( r > 255 ) {
 ADDRLP4 60
 INDIRI4
 CNSTI4 255
-LEI4 $417
-line 860
-;860:			r = 255;
+LEI4 $431
+line 882
+;882:			r = 255;
 ADDRLP4 60
 CNSTI4 255
 ASGNI4
-line 861
-;861:		}
-LABELV $417
-line 862
-;862:		g = color[1] * 255;
+line 883
+;883:		}
+LABELV $431
+line 884
+;884:		g = color[1] * 255;
 ADDRLP4 64
 CNSTF4 1132396544
 ADDRLP4 12+4
@@ -5945,22 +6107,22 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 863
-;863:		if ( g > 255 ) {
+line 885
+;885:		if ( g > 255 ) {
 ADDRLP4 64
 INDIRI4
 CNSTI4 255
-LEI4 $420
-line 864
-;864:			g = 255;
+LEI4 $434
+line 886
+;886:			g = 255;
 ADDRLP4 64
 CNSTI4 255
 ASGNI4
-line 865
-;865:		}
-LABELV $420
-line 866
-;866:		b = color[2] * 255;
+line 887
+;887:		}
+LABELV $434
+line 888
+;888:		b = color[2] * 255;
 ADDRLP4 68
 CNSTF4 1132396544
 ADDRLP4 12+8
@@ -5968,22 +6130,22 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 867
-;867:		if ( b > 255 ) {
+line 889
+;889:		if ( b > 255 ) {
 ADDRLP4 68
 INDIRI4
 CNSTI4 255
-LEI4 $423
-line 868
-;868:			b = 255;
+LEI4 $437
+line 890
+;890:			b = 255;
 ADDRLP4 68
 CNSTI4 255
 ASGNI4
-line 869
-;869:		}
-LABELV $423
-line 870
-;870:		i = light / 4;
+line 891
+;891:		}
+LABELV $437
+line 892
+;892:		i = light / 4;
 ADDRLP4 72
 ADDRLP4 36
 INDIRF4
@@ -5991,22 +6153,22 @@ CNSTF4 1082130432
 DIVF4
 CVFI4 4
 ASGNI4
-line 871
-;871:		if ( i > 255 ) {
+line 893
+;893:		if ( i > 255 ) {
 ADDRLP4 72
 INDIRI4
 CNSTI4 255
-LEI4 $425
-line 872
-;872:			i = 255;
+LEI4 $439
+line 894
+;894:			i = 255;
 ADDRLP4 72
 CNSTI4 255
 ASGNI4
-line 873
-;873:		}
-LABELV $425
-line 874
-;874:		ent->s.constantLight = r | ( g << 8 ) | ( b << 16 ) | ( i << 24 );
+line 895
+;895:		}
+LABELV $439
+line 896
+;896:		ent->s.constantLight = r | ( g << 8 ) | ( b << 16 ) | ( i << 24 );
 ADDRFP4 0
 INDIRP4
 CNSTI4 152
@@ -6029,46 +6191,46 @@ CNSTI4 24
 LSHI4
 BORI4
 ASGNI4
-line 875
-;875:	}
-LABELV $414
-line 878
-;876:
-;877:
-;878:	ent->use = Use_BinaryMover;
+line 897
+;897:	}
+LABELV $428
+line 900
+;898:
+;899:
+;900:	ent->use = Use_BinaryMover;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 Use_BinaryMover
 ASGNP4
-line 879
-;879:	ent->reached = Reached_BinaryMover;
+line 901
+;901:	ent->reached = Reached_BinaryMover;
 ADDRFP4 0
 INDIRP4
 CNSTI4 720
 ADDP4
 ADDRGP4 Reached_BinaryMover
 ASGNP4
-line 881
-;880:
-;881:	ent->moverState = MOVER_POS1;
+line 903
+;902:
+;903:	ent->moverState = MOVER_POS1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 CNSTI4 0
 ASGNI4
-line 882
-;882:	ent->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+line 904
+;904:	ent->r.svFlags = SVF_USE_CURRENT_ORIGIN;
 ADDRFP4 0
 INDIRP4
 CNSTI4 432
 ADDP4
 CNSTI4 128
 ASGNI4
-line 883
-;883:	ent->s.eType = ET_MOVER;
+line 905
+;905:	ent->s.eType = ET_MOVER;
 ADDRLP4 60
 CNSTI4 4
 ASGNI4
@@ -6080,8 +6242,8 @@ ADDP4
 ADDRLP4 60
 INDIRI4
 ASGNI4
-line 884
-;884:	VectorCopy (ent->pos1, ent->r.currentOrigin);
+line 906
+;906:	VectorCopy (ent->pos1, ent->r.currentOrigin);
 ADDRLP4 64
 ADDRFP4 0
 INDIRP4
@@ -6096,25 +6258,25 @@ CNSTI4 620
 ADDP4
 INDIRB
 ASGNB 12
-line 885
-;885:	trap_LinkEntity (ent);
+line 907
+;907:	trap_LinkEntity (ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 887
-;886:
-;887:	ent->s.pos.trType = TR_STATIONARY;
+line 909
+;908:
+;909:	ent->s.pos.trType = TR_STATIONARY;
 ADDRFP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 0
 ASGNI4
-line 888
-;888:	VectorCopy( ent->pos1, ent->s.pos.trBase );
+line 910
+;910:	VectorCopy( ent->pos1, ent->s.pos.trBase );
 ADDRLP4 68
 ADDRFP4 0
 INDIRP4
@@ -6129,10 +6291,10 @@ CNSTI4 620
 ADDP4
 INDIRB
 ASGNB 12
-line 891
-;889:
-;890:	// calculate time to reach second position from speed
-;891:	VectorSubtract( ent->pos2, ent->pos1, move );
+line 913
+;911:
+;912:	// calculate time to reach second position from speed
+;913:	VectorSubtract( ent->pos2, ent->pos1, move );
 ADDRLP4 72
 ADDRFP4 0
 INDIRP4
@@ -6180,8 +6342,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 892
-;892:	distance = VectorLength( move );
+line 914
+;914:	distance = VectorLength( move );
 ADDRLP4 0
 ARGP4
 ADDRLP4 80
@@ -6192,28 +6354,28 @@ ADDRLP4 24
 ADDRLP4 80
 INDIRF4
 ASGNF4
-line 893
-;893:	if ( ! ent->speed ) {
+line 915
+;915:	if ( ! ent->speed ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $429
-line 894
-;894:		ent->speed = 100;
+NEF4 $443
+line 916
+;916:		ent->speed = 100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 CNSTF4 1120403456
 ASGNF4
-line 895
-;895:	}
-LABELV $429
-line 896
-;896:	VectorScale( move, ent->speed, ent->s.pos.trDelta );
+line 917
+;917:	}
+LABELV $443
+line 918
+;918:	VectorScale( move, ent->speed, ent->s.pos.trDelta );
 ADDRLP4 84
 ADDRFP4 0
 INDIRP4
@@ -6265,8 +6427,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 897
-;897:	ent->s.pos.trDuration = distance * 1000 / ent->speed;
+line 919
+;919:	ent->s.pos.trDuration = distance * 1000 / ent->speed;
 ADDRLP4 96
 ADDRFP4 0
 INDIRP4
@@ -6287,54 +6449,54 @@ INDIRF4
 DIVF4
 CVFI4 4
 ASGNI4
-line 898
-;898:	if ( ent->s.pos.trDuration <= 0 ) {
+line 920
+;920:	if ( ent->s.pos.trDuration <= 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 20
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $433
-line 899
-;899:		ent->s.pos.trDuration = 1;
+GTI4 $447
+line 921
+;921:		ent->s.pos.trDuration = 1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 20
 ADDP4
 CNSTI4 1
 ASGNI4
-line 900
-;900:	}
-LABELV $433
-line 901
-;901:}
-LABELV $404
+line 922
+;922:	}
+LABELV $447
+line 923
+;923:}
+LABELV $418
 endproc InitMover 100 12
 export InitRotator
 proc InitRotator 100 12
-line 911
-;902:
-;903:/*
-;904:================
-;905:InitRotator
-;906:
-;907:"pos1", "pos2", and "speed" should be set before calling,
-;908:so the movement delta can be calculated
-;909:================
-;910:*/
-;911:void InitRotator( gentity_t *ent ) {
-line 921
-;912:	vec3_t		move;
-;913:	float		angle;
-;914:	float		light;
-;915:	vec3_t		color;
-;916:	qboolean	lightSet, colorSet;
-;917:	char		*sound;
-;918:
-;919:	// if the "model2" key is set, use a seperate model
-;920:	// for drawing, but clip against the brushes
-;921:	if ( ent->model2 ) {
+line 933
+;924:
+;925:/*
+;926:================
+;927:InitRotator
+;928:
+;929:"pos1", "pos2", and "speed" should be set before calling,
+;930:so the movement delta can be calculated
+;931:================
+;932:*/
+;933:void InitRotator( gentity_t *ent ) {
+line 943
+;934:	vec3_t		move;
+;935:	float		angle;
+;936:	float		light;
+;937:	vec3_t		color;
+;938:	qboolean	lightSet, colorSet;
+;939:	char		*sound;
+;940:
+;941:	// if the "model2" key is set, use a seperate model
+;942:	// for drawing, but clip against the brushes
+;943:	if ( ent->model2 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 552
@@ -6342,9 +6504,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $436
-line 922
-;922:		ent->s.modelindex2 = G_ModelIndex( ent->model2 );
+EQU4 $450
+line 944
+;944:		ent->s.modelindex2 = G_ModelIndex( ent->model2 );
 ADDRLP4 44
 ADDRFP4 0
 INDIRP4
@@ -6366,16 +6528,16 @@ ADDP4
 ADDRLP4 48
 INDIRI4
 ASGNI4
-line 923
-;923:	}
-LABELV $436
-line 926
-;924:
-;925:	// if the "loopsound" key is set, use a constant looping sound when moving
-;926:	if ( G_SpawnString( "noise", "100", &sound ) ) {
-ADDRGP4 $409
+line 945
+;945:	}
+LABELV $450
+line 948
+;946:
+;947:	// if the "loopsound" key is set, use a constant looping sound when moving
+;948:	if ( G_SpawnString( "noise", "100", &sound ) ) {
+ADDRGP4 $423
 ARGP4
-ADDRGP4 $410
+ADDRGP4 $424
 ARGP4
 ADDRLP4 40
 ARGP4
@@ -6386,9 +6548,9 @@ ASGNI4
 ADDRLP4 44
 INDIRI4
 CNSTI4 0
-EQI4 $438
-line 927
-;927:		ent->s.loopSound = G_SoundIndex( sound );
+EQI4 $452
+line 949
+;949:		ent->s.loopSound = G_SoundIndex( sound );
 ADDRLP4 40
 INDIRP4
 ARGP4
@@ -6403,16 +6565,16 @@ ADDP4
 ADDRLP4 48
 INDIRI4
 ASGNI4
-line 928
-;928:	}
-LABELV $438
-line 931
-;929:
-;930:	// if the "color" or "light" keys are set, setup constantLight
-;931:	lightSet = G_SpawnFloat( "light", "100", &light );
-ADDRGP4 $411
+line 950
+;950:	}
+LABELV $452
+line 953
+;951:
+;952:	// if the "color" or "light" keys are set, setup constantLight
+;953:	lightSet = G_SpawnFloat( "light", "100", &light );
+ADDRGP4 $425
 ARGP4
-ADDRGP4 $410
+ADDRGP4 $424
 ARGP4
 ADDRLP4 36
 ARGP4
@@ -6424,11 +6586,11 @@ ADDRLP4 28
 ADDRLP4 48
 INDIRI4
 ASGNI4
-line 932
-;932:	colorSet = G_SpawnVector( "color", "1 1 1", color );
-ADDRGP4 $412
+line 954
+;954:	colorSet = G_SpawnVector( "color", "1 1 1", color );
+ADDRGP4 $426
 ARGP4
-ADDRGP4 $413
+ADDRGP4 $427
 ARGP4
 ADDRLP4 12
 ARGP4
@@ -6440,8 +6602,8 @@ ADDRLP4 32
 ADDRLP4 52
 INDIRI4
 ASGNI4
-line 933
-;933:	if ( lightSet || colorSet ) {
+line 955
+;955:	if ( lightSet || colorSet ) {
 ADDRLP4 56
 CNSTI4 0
 ASGNI4
@@ -6449,17 +6611,17 @@ ADDRLP4 28
 INDIRI4
 ADDRLP4 56
 INDIRI4
-NEI4 $442
+NEI4 $456
 ADDRLP4 32
 INDIRI4
 ADDRLP4 56
 INDIRI4
-EQI4 $440
-LABELV $442
-line 936
-;934:		int		r, g, b, i;
-;935:
-;936:		r = color[0] * 255;
+EQI4 $454
+LABELV $456
+line 958
+;956:		int		r, g, b, i;
+;957:
+;958:		r = color[0] * 255;
 ADDRLP4 60
 CNSTF4 1132396544
 ADDRLP4 12
@@ -6467,22 +6629,22 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 937
-;937:		if ( r > 255 ) {
+line 959
+;959:		if ( r > 255 ) {
 ADDRLP4 60
 INDIRI4
 CNSTI4 255
-LEI4 $443
-line 938
-;938:			r = 255;
+LEI4 $457
+line 960
+;960:			r = 255;
 ADDRLP4 60
 CNSTI4 255
 ASGNI4
-line 939
-;939:		}
-LABELV $443
-line 940
-;940:		g = color[1] * 255;
+line 961
+;961:		}
+LABELV $457
+line 962
+;962:		g = color[1] * 255;
 ADDRLP4 64
 CNSTF4 1132396544
 ADDRLP4 12+4
@@ -6490,22 +6652,22 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 941
-;941:		if ( g > 255 ) {
+line 963
+;963:		if ( g > 255 ) {
 ADDRLP4 64
 INDIRI4
 CNSTI4 255
-LEI4 $446
-line 942
-;942:			g = 255;
+LEI4 $460
+line 964
+;964:			g = 255;
 ADDRLP4 64
 CNSTI4 255
 ASGNI4
-line 943
-;943:		}
-LABELV $446
-line 944
-;944:		b = color[2] * 255;
+line 965
+;965:		}
+LABELV $460
+line 966
+;966:		b = color[2] * 255;
 ADDRLP4 68
 CNSTF4 1132396544
 ADDRLP4 12+8
@@ -6513,22 +6675,22 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 945
-;945:		if ( b > 255 ) {
+line 967
+;967:		if ( b > 255 ) {
 ADDRLP4 68
 INDIRI4
 CNSTI4 255
-LEI4 $449
-line 946
-;946:			b = 255;
+LEI4 $463
+line 968
+;968:			b = 255;
 ADDRLP4 68
 CNSTI4 255
 ASGNI4
-line 947
-;947:		}
-LABELV $449
-line 948
-;948:		i = light / 4;
+line 969
+;969:		}
+LABELV $463
+line 970
+;970:		i = light / 4;
 ADDRLP4 72
 ADDRLP4 36
 INDIRF4
@@ -6536,22 +6698,22 @@ CNSTF4 1082130432
 DIVF4
 CVFI4 4
 ASGNI4
-line 949
-;949:		if ( i > 255 ) {
+line 971
+;971:		if ( i > 255 ) {
 ADDRLP4 72
 INDIRI4
 CNSTI4 255
-LEI4 $451
-line 950
-;950:			i = 255;
+LEI4 $465
+line 972
+;972:			i = 255;
 ADDRLP4 72
 CNSTI4 255
 ASGNI4
-line 951
-;951:		}
-LABELV $451
-line 952
-;952:		ent->s.constantLight = r | ( g << 8 ) | ( b << 16 ) | ( i << 24 );
+line 973
+;973:		}
+LABELV $465
+line 974
+;974:		ent->s.constantLight = r | ( g << 8 ) | ( b << 16 ) | ( i << 24 );
 ADDRFP4 0
 INDIRP4
 CNSTI4 152
@@ -6574,46 +6736,46 @@ CNSTI4 24
 LSHI4
 BORI4
 ASGNI4
-line 953
-;953:	}
-LABELV $440
-line 956
-;954:
-;955:
-;956:	ent->use = Use_BinaryMover;
+line 975
+;975:	}
+LABELV $454
+line 978
+;976:
+;977:
+;978:	ent->use = Use_BinaryMover;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 Use_BinaryMover
 ASGNP4
-line 957
-;957:	ent->reached = Reached_BinaryMover;
+line 979
+;979:	ent->reached = Reached_BinaryMover;
 ADDRFP4 0
 INDIRP4
 CNSTI4 720
 ADDP4
 ADDRGP4 Reached_BinaryMover
 ASGNP4
-line 959
-;958:
-;959:	ent->moverState = ROTATOR_POS1;
+line 981
+;980:
+;981:	ent->moverState = ROTATOR_POS1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 CNSTI4 4
 ASGNI4
-line 960
-;960:	ent->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+line 982
+;982:	ent->r.svFlags = SVF_USE_CURRENT_ORIGIN;
 ADDRFP4 0
 INDIRP4
 CNSTI4 432
 ADDP4
 CNSTI4 128
 ASGNI4
-line 961
-;961:	ent->s.eType = ET_MOVER;
+line 983
+;983:	ent->s.eType = ET_MOVER;
 ADDRLP4 60
 CNSTI4 4
 ASGNI4
@@ -6625,8 +6787,8 @@ ADDP4
 ADDRLP4 60
 INDIRI4
 ASGNI4
-line 962
-;962:	VectorCopy( ent->pos1, ent->r.currentAngles );
+line 984
+;984:	VectorCopy( ent->pos1, ent->r.currentAngles );
 ADDRLP4 64
 ADDRFP4 0
 INDIRP4
@@ -6641,25 +6803,25 @@ CNSTI4 620
 ADDP4
 INDIRB
 ASGNB 12
-line 963
-;963:	trap_LinkEntity (ent);
+line 985
+;985:	trap_LinkEntity (ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 965
-;964:
-;965:	ent->s.apos.trType = TR_STATIONARY;
+line 987
+;986:
+;987:	ent->s.apos.trType = TR_STATIONARY;
 ADDRFP4 0
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 0
 ASGNI4
-line 966
-;966:	VectorCopy( ent->pos1, ent->s.apos.trBase );
+line 988
+;988:	VectorCopy( ent->pos1, ent->s.apos.trBase );
 ADDRLP4 68
 ADDRFP4 0
 INDIRP4
@@ -6674,10 +6836,10 @@ CNSTI4 620
 ADDP4
 INDIRB
 ASGNB 12
-line 969
-;967:
-;968:	// calculate time to reach second position from speed
-;969:	VectorSubtract( ent->pos2, ent->pos1, move );
+line 991
+;989:
+;990:	// calculate time to reach second position from speed
+;991:	VectorSubtract( ent->pos2, ent->pos1, move );
 ADDRLP4 72
 ADDRFP4 0
 INDIRP4
@@ -6725,8 +6887,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 970
-;970:	angle = VectorLength( move );
+line 992
+;992:	angle = VectorLength( move );
 ADDRLP4 0
 ARGP4
 ADDRLP4 80
@@ -6737,28 +6899,28 @@ ADDRLP4 24
 ADDRLP4 80
 INDIRF4
 ASGNF4
-line 971
-;971:	if ( ! ent->speed ) {
+line 993
+;993:	if ( ! ent->speed ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $455
-line 972
-;972:		ent->speed = 120;
+NEF4 $469
+line 994
+;994:		ent->speed = 120;
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 CNSTF4 1123024896
 ASGNF4
-line 973
-;973:	}
-LABELV $455
-line 974
-;974:	VectorScale( move, ent->speed, ent->s.apos.trDelta );
+line 995
+;995:	}
+LABELV $469
+line 996
+;996:	VectorScale( move, ent->speed, ent->s.apos.trDelta );
 ADDRLP4 84
 ADDRFP4 0
 INDIRP4
@@ -6810,8 +6972,8 @@ ADDP4
 INDIRF4
 MULF4
 ASGNF4
-line 975
-;975:	ent->s.apos.trDuration = angle * 1000 / ent->speed;
+line 997
+;997:	ent->s.apos.trDuration = angle * 1000 / ent->speed;
 ADDRLP4 96
 ADDRFP4 0
 INDIRP4
@@ -6832,55 +6994,55 @@ INDIRF4
 DIVF4
 CVFI4 4
 ASGNI4
-line 976
-;976:	if ( ent->s.apos.trDuration <= 0 ) {
+line 998
+;998:	if ( ent->s.apos.trDuration <= 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 56
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $459
-line 977
-;977:		ent->s.apos.trDuration = 1;
+GTI4 $473
+line 999
+;999:		ent->s.apos.trDuration = 1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 56
 ADDP4
 CNSTI4 1
 ASGNI4
-line 978
-;978:	}
-LABELV $459
-line 979
-;979:}
-LABELV $435
+line 1000
+;1000:	}
+LABELV $473
+line 1001
+;1001:}
+LABELV $449
 endproc InitRotator 100 12
 export Blocked_Door
 proc Blocked_Door 8 32
-line 998
-;980:
-;981:
-;982:/*
-;983:===============================================================================
-;984:
-;985:DOOR
-;986:
-;987:A use can be triggered either by a touch function, by being shot, or by being
-;988:targeted by another entity.
-;989:
-;990:===============================================================================
-;991:*/
-;992:
-;993:/*
-;994:================
-;995:Blocked_Door
-;996:================
-;997:*/
-;998:void Blocked_Door( gentity_t *ent, gentity_t *other ) {
-line 1000
-;999:	// remove anything other than a client
-;1000:	if ( !other->client ) {
+line 1020
+;1002:
+;1003:
+;1004:/*
+;1005:===============================================================================
+;1006:
+;1007:DOOR
+;1008:
+;1009:A use can be triggered either by a touch function, by being shot, or by being
+;1010:targeted by another entity.
+;1011:
+;1012:===============================================================================
+;1013:*/
+;1014:
+;1015:/*
+;1016:================
+;1017:Blocked_Door
+;1018:================
+;1019:*/
+;1020:void Blocked_Door( gentity_t *ent, gentity_t *other ) {
+line 1022
+;1021:	// remove anything other than a client
+;1022:	if ( !other->client ) {
 ADDRFP4 4
 INDIRP4
 CNSTI4 524
@@ -6888,10 +7050,10 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $462
-line 1002
-;1001:		// except CTF flags!!!!
-;1002:		if( other->s.eType == ET_ITEM && other->item->giType == IT_TEAM ) {
+NEU4 $476
+line 1024
+;1023:		// except CTF flags!!!!
+;1024:		if( other->s.eType == ET_ITEM && other->item->giType == IT_TEAM ) {
 ADDRLP4 0
 ADDRFP4 4
 INDIRP4
@@ -6902,7 +7064,7 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $464
+NEI4 $478
 ADDRLP4 0
 INDIRP4
 CNSTI4 884
@@ -6912,23 +7074,23 @@ CNSTI4 36
 ADDP4
 INDIRI4
 CNSTI4 8
-NEI4 $464
-line 1003
-;1003:			Team_DroppedFlagThink( other );
+NEI4 $478
+line 1025
+;1025:			Team_DroppedFlagThink( other );
 ADDRFP4 4
 INDIRP4
 ARGP4
 ADDRGP4 Team_DroppedFlagThink
 CALLV
 pop
-line 1004
-;1004:			return;
-ADDRGP4 $461
+line 1026
+;1026:			return;
+ADDRGP4 $475
 JUMPV
-LABELV $464
-line 1006
-;1005:		}
-;1006:		G_TempEntity( other->s.origin, EV_ITEM_POP );
+LABELV $478
+line 1028
+;1027:		}
+;1028:		G_TempEntity( other->s.origin, EV_ITEM_POP );
 ADDRFP4 4
 INDIRP4
 CNSTI4 92
@@ -6939,32 +7101,32 @@ ARGI4
 ADDRGP4 G_TempEntity
 CALLP4
 pop
-line 1007
-;1007:		G_FreeEntity( other );
+line 1029
+;1029:		G_FreeEntity( other );
 ADDRFP4 4
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 1008
-;1008:		return;
-ADDRGP4 $461
+line 1030
+;1030:		return;
+ADDRGP4 $475
 JUMPV
-LABELV $462
-line 1011
-;1009:	}
-;1010:
-;1011:	if ( ent->damage ) {
+LABELV $476
+line 1033
+;1031:	}
+;1032:
+;1033:	if ( ent->damage ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $466
-line 1012
-;1012:		G_Damage( other, ent, ent, NULL, NULL, ent->damage, 0, MOD_CRUSH );
+EQI4 $480
+line 1034
+;1034:		G_Damage( other, ent, ent, NULL, NULL, ent->damage, 0, MOD_CRUSH );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -7000,11 +7162,11 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 1013
-;1013:	}
-LABELV $466
-line 1014
-;1014:	if ( ent->spawnflags & 4 ) {
+line 1035
+;1035:	}
+LABELV $480
+line 1036
+;1036:	if ( ent->spawnflags & 4 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -7013,17 +7175,17 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-EQI4 $468
-line 1015
-;1015:		return;		// crushers don't reverse
-ADDRGP4 $461
+EQI4 $482
+line 1037
+;1037:		return;		// crushers don't reverse
+ADDRGP4 $475
 JUMPV
-LABELV $468
-line 1019
-;1016:	}
-;1017:
-;1018:	// reverse direction
-;1019:	Use_BinaryMover( ent, ent, other );
+LABELV $482
+line 1041
+;1038:	}
+;1039:
+;1040:	// reverse direction
+;1041:	Use_BinaryMover( ent, ent, other );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -7040,24 +7202,24 @@ ARGP4
 ADDRGP4 Use_BinaryMover
 CALLV
 pop
-line 1020
-;1020:}
-LABELV $461
+line 1042
+;1042:}
+LABELV $475
 endproc Blocked_Door 8 32
 proc Touch_DoorTriggerSpectator 72 12
-line 1027
-;1021:
-;1022:/*
-;1023:================
-;1024:Touch_DoorTriggerSpectator
-;1025:================
-;1026:*/
-;1027:static void Touch_DoorTriggerSpectator( gentity_t *ent, gentity_t *other, trace_t *trace ) {
-line 1031
-;1028:	int i, axis;
-;1029:	vec3_t origin, dir, angles;
-;1030:
-;1031:	axis = ent->count;
+line 1049
+;1043:
+;1044:/*
+;1045:================
+;1046:Touch_DoorTriggerSpectator
+;1047:================
+;1048:*/
+;1049:static void Touch_DoorTriggerSpectator( gentity_t *ent, gentity_t *other, trace_t *trace ) {
+line 1053
+;1050:	int i, axis;
+;1051:	vec3_t origin, dir, angles;
+;1052:
+;1053:	axis = ent->count;
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -7065,8 +7227,8 @@ CNSTI4 784
 ADDP4
 INDIRI4
 ASGNI4
-line 1032
-;1032:	VectorClear(dir);
+line 1054
+;1054:	VectorClear(dir);
 ADDRLP4 44
 CNSTF4 0
 ASGNF4
@@ -7082,8 +7244,8 @@ ADDRLP4 20
 ADDRLP4 44
 INDIRF4
 ASGNF4
-line 1033
-;1033:	if (fabs(other->s.origin[axis] - ent->r.absmax[axis]) <
+line 1055
+;1055:	if (fabs(other->s.origin[axis] - ent->r.absmax[axis]) <
 ADDRLP4 48
 ADDRLP4 4
 INDIRI4
@@ -7144,11 +7306,11 @@ ADDRLP4 52
 INDIRF4
 ADDRLP4 60
 INDIRF4
-GEF4 $473
-line 1034
-;1034:		fabs(other->s.origin[axis] - ent->r.absmin[axis])) {
-line 1035
-;1035:		origin[axis] = ent->r.absmin[axis] - 10;
+GEF4 $487
+line 1056
+;1056:		fabs(other->s.origin[axis] - ent->r.absmin[axis])) {
+line 1057
+;1057:		origin[axis] = ent->r.absmin[axis] - 10;
 ADDRLP4 64
 ADDRLP4 4
 INDIRI4
@@ -7170,8 +7332,8 @@ INDIRF4
 CNSTF4 1092616192
 SUBF4
 ASGNF4
-line 1036
-;1036:		dir[axis] = -1;
+line 1058
+;1058:		dir[axis] = -1;
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -7180,15 +7342,15 @@ ADDRLP4 20
 ADDP4
 CNSTF4 3212836864
 ASGNF4
-line 1037
-;1037:	}
-ADDRGP4 $474
+line 1059
+;1059:	}
+ADDRGP4 $488
 JUMPV
-LABELV $473
-line 1038
-;1038:	else {
-line 1039
-;1039:		origin[axis] = ent->r.absmax[axis] + 10;
+LABELV $487
+line 1060
+;1060:	else {
+line 1061
+;1061:		origin[axis] = ent->r.absmax[axis] + 10;
 ADDRLP4 64
 ADDRLP4 4
 INDIRI4
@@ -7210,8 +7372,8 @@ INDIRF4
 CNSTF4 1092616192
 ADDF4
 ASGNF4
-line 1040
-;1040:		dir[axis] = 1;
+line 1062
+;1062:		dir[axis] = 1;
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
@@ -7220,27 +7382,27 @@ ADDRLP4 20
 ADDP4
 CNSTF4 1065353216
 ASGNF4
-line 1041
-;1041:	}
-LABELV $474
-line 1042
-;1042:	for (i = 0; i < 3; i++) {
+line 1063
+;1063:	}
+LABELV $488
+line 1064
+;1064:	for (i = 0; i < 3; i++) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $475
-line 1043
-;1043:		if (i == axis) continue;
+LABELV $489
+line 1065
+;1065:		if (i == axis) continue;
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-NEI4 $479
-ADDRGP4 $476
+NEI4 $493
+ADDRGP4 $490
 JUMPV
-LABELV $479
-line 1044
-;1044:		origin[i] = (ent->r.absmin[i] + ent->r.absmax[i]) * 0.5;
+LABELV $493
+line 1066
+;1066:		origin[i] = (ent->r.absmin[i] + ent->r.absmax[i]) * 0.5;
 ADDRLP4 64
 ADDRLP4 0
 INDIRI4
@@ -7275,10 +7437,10 @@ INDIRF4
 ADDF4
 MULF4
 ASGNF4
-line 1045
-;1045:	}
-LABELV $476
-line 1042
+line 1067
+;1067:	}
+LABELV $490
+line 1064
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -7288,9 +7450,9 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 3
-LTI4 $475
-line 1046
-;1046:	vectoangles(dir, angles);
+LTI4 $489
+line 1068
+;1068:	vectoangles(dir, angles);
 ADDRLP4 20
 ARGP4
 ADDRLP4 32
@@ -7298,8 +7460,8 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 1047
-;1047:	TeleportPlayer(other, origin, angles );
+line 1069
+;1069:	TeleportPlayer(other, origin, angles );
 ADDRFP4 4
 INDIRP4
 ARGP4
@@ -7310,22 +7472,22 @@ ARGP4
 ADDRGP4 TeleportPlayer
 CALLV
 pop
-line 1048
-;1048:}
-LABELV $470
+line 1070
+;1070:}
+LABELV $484
 endproc Touch_DoorTriggerSpectator 72 12
 export Touch_DoorTrigger
 proc Touch_DoorTrigger 12 12
-line 1055
-;1049:
-;1050:/*
-;1051:================
-;1052:Touch_DoorTrigger
-;1053:================
-;1054:*/
-;1055:void Touch_DoorTrigger( gentity_t *ent, gentity_t *other, trace_t *trace ) {
-line 1056
-;1056:	if ( other->client && other->client->sess.sessionTeam == TEAM_SPECTATOR ) {
+line 1077
+;1071:
+;1072:/*
+;1073:================
+;1074:Touch_DoorTrigger
+;1075:================
+;1076:*/
+;1077:void Touch_DoorTrigger( gentity_t *ent, gentity_t *other, trace_t *trace ) {
+line 1078
+;1078:	if ( other->client && other->client->sess.sessionTeam == TEAM_SPECTATOR ) {
 ADDRLP4 0
 ADDRFP4 4
 INDIRP4
@@ -7337,17 +7499,17 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $482
+EQU4 $496
 ADDRLP4 0
 INDIRP4
 CNSTI4 2552
 ADDP4
 INDIRI4
 CNSTI4 3
-NEI4 $482
-line 1058
-;1057:		// if the door is not open and not opening
-;1058:		if ( ent->parent->moverState != MOVER_1TO2 &&
+NEI4 $496
+line 1080
+;1079:		// if the door is not open and not opening
+;1080:		if ( ent->parent->moverState != MOVER_1TO2 &&
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -7361,25 +7523,25 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
-EQI4 $483
+EQI4 $497
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
-EQI4 $483
+EQI4 $497
 ADDRLP4 4
 INDIRI4
 CNSTI4 6
-EQI4 $483
+EQI4 $497
 ADDRLP4 4
 INDIRI4
 CNSTI4 5
-EQI4 $483
-line 1061
-;1059:			ent->parent->moverState != MOVER_POS2 &&
-;1060:			ent->parent->moverState != ROTATOR_1TO2 &&
-;1061:			ent->parent->moverState != ROTATOR_POS2 ) {
-line 1062
-;1062:			Touch_DoorTriggerSpectator( ent, other, trace );
+EQI4 $497
+line 1083
+;1081:			ent->parent->moverState != MOVER_POS2 &&
+;1082:			ent->parent->moverState != ROTATOR_1TO2 &&
+;1083:			ent->parent->moverState != ROTATOR_POS2 ) {
+line 1084
+;1084:			Touch_DoorTriggerSpectator( ent, other, trace );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -7392,15 +7554,15 @@ ARGP4
 ADDRGP4 Touch_DoorTriggerSpectator
 CALLV
 pop
-line 1063
-;1063:		}
-line 1064
-;1064:	}
-ADDRGP4 $483
+line 1085
+;1085:		}
+line 1086
+;1086:	}
+ADDRGP4 $497
 JUMPV
-LABELV $482
-line 1065
-;1065:	else if ( ent->parent->moverState != MOVER_1TO2 &&
+LABELV $496
+line 1087
+;1087:	else if ( ent->parent->moverState != MOVER_1TO2 &&
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -7414,15 +7576,15 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
-EQI4 $486
+EQI4 $500
 ADDRLP4 4
 INDIRI4
 CNSTI4 6
-EQI4 $486
-line 1066
-;1066:		ent->parent->moverState != ROTATOR_1TO2) {
-line 1067
-;1067:		Use_BinaryMover( ent->parent, ent, other );
+EQI4 $500
+line 1088
+;1088:		ent->parent->moverState != ROTATOR_1TO2) {
+line 1089
+;1089:		Use_BinaryMover( ent->parent, ent, other );
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -7442,54 +7604,54 @@ ARGP4
 ADDRGP4 Use_BinaryMover
 CALLV
 pop
-line 1068
-;1068:	}
-LABELV $486
-LABELV $483
-line 1069
-;1069:}
-LABELV $481
+line 1090
+;1090:	}
+LABELV $500
+LABELV $497
+line 1091
+;1091:}
+LABELV $495
 endproc Touch_DoorTrigger 12 12
 export Think_SpawnNewDoorTrigger
 proc Think_SpawnNewDoorTrigger 52 12
-line 1080
-;1070:
-;1071:
-;1072:/*
-;1073:======================
-;1074:Think_SpawnNewDoorTrigger
-;1075:
-;1076:All of the parts of a door have been spawned, so create
-;1077:a trigger that encloses all of them
-;1078:======================
-;1079:*/
-;1080:void Think_SpawnNewDoorTrigger( gentity_t *ent ) {
-line 1086
-;1081:	gentity_t		*other;
-;1082:	vec3_t		mins, maxs;
-;1083:	int			i, best;
-;1084:
-;1085:	// set all of the slaves as shootable
-;1086:	for ( other = ent ; other ; other = other->teamchain ) {
+line 1102
+;1092:
+;1093:
+;1094:/*
+;1095:======================
+;1096:Think_SpawnNewDoorTrigger
+;1097:
+;1098:All of the parts of a door have been spawned, so create
+;1099:a trigger that encloses all of them
+;1100:======================
+;1101:*/
+;1102:void Think_SpawnNewDoorTrigger( gentity_t *ent ) {
+line 1108
+;1103:	gentity_t		*other;
+;1104:	vec3_t		mins, maxs;
+;1105:	int			i, best;
+;1106:
+;1107:	// set all of the slaves as shootable
+;1108:	for ( other = ent ; other ; other = other->teamchain ) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRGP4 $492
+ADDRGP4 $506
 JUMPV
-LABELV $489
-line 1087
-;1087:		other->takedamage = qtrue;
+LABELV $503
+line 1109
+;1109:		other->takedamage = qtrue;
 ADDRLP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1088
-;1088:	}
-LABELV $490
-line 1086
+line 1110
+;1110:	}
+LABELV $504
+line 1108
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
@@ -7497,16 +7659,16 @@ CNSTI4 800
 ADDP4
 INDIRP4
 ASGNP4
-LABELV $492
+LABELV $506
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $489
-line 1091
-;1089:
-;1090:	// find the bounds of everything on the team
-;1091:	VectorCopy (ent->r.absmin, mins);
+NEU4 $503
+line 1113
+;1111:
+;1112:	// find the bounds of everything on the team
+;1113:	VectorCopy (ent->r.absmin, mins);
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -7514,8 +7676,8 @@ CNSTI4 472
 ADDP4
 INDIRB
 ASGNB 12
-line 1092
-;1092:	VectorCopy (ent->r.absmax, maxs);
+line 1114
+;1114:	VectorCopy (ent->r.absmax, maxs);
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -7523,9 +7685,9 @@ CNSTI4 484
 ADDP4
 INDIRB
 ASGNB 12
-line 1094
-;1093:
-;1094:	for (other = ent->teamchain ; other ; other=other->teamchain) {
+line 1116
+;1115:
+;1116:	for (other = ent->teamchain ; other ; other=other->teamchain) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -7533,11 +7695,11 @@ CNSTI4 800
 ADDP4
 INDIRP4
 ASGNP4
-ADDRGP4 $496
+ADDRGP4 $510
 JUMPV
-LABELV $493
-line 1095
-;1095:		AddPointToBounds (other->r.absmin, mins, maxs);
+LABELV $507
+line 1117
+;1117:		AddPointToBounds (other->r.absmin, mins, maxs);
 ADDRLP4 0
 INDIRP4
 CNSTI4 472
@@ -7550,8 +7712,8 @@ ARGP4
 ADDRGP4 AddPointToBounds
 CALLV
 pop
-line 1096
-;1096:		AddPointToBounds (other->r.absmax, mins, maxs);
+line 1118
+;1118:		AddPointToBounds (other->r.absmax, mins, maxs);
 ADDRLP4 0
 INDIRP4
 CNSTI4 484
@@ -7564,10 +7726,10 @@ ARGP4
 ADDRGP4 AddPointToBounds
 CALLV
 pop
-line 1097
-;1097:	}
-LABELV $494
-line 1094
+line 1119
+;1119:	}
+LABELV $508
+line 1116
 ADDRLP4 0
 ADDRLP4 0
 INDIRP4
@@ -7575,27 +7737,27 @@ CNSTI4 800
 ADDP4
 INDIRP4
 ASGNP4
-LABELV $496
+LABELV $510
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $493
-line 1100
-;1098:
-;1099:	// find the thinnest axis, which will be the one we expand
-;1100:	best = 0;
+NEU4 $507
+line 1122
+;1120:
+;1121:	// find the thinnest axis, which will be the one we expand
+;1122:	best = 0;
 ADDRLP4 32
 CNSTI4 0
 ASGNI4
-line 1101
-;1101:	for ( i = 1 ; i < 3 ; i++ ) {
+line 1123
+;1123:	for ( i = 1 ; i < 3 ; i++ ) {
 ADDRLP4 4
 CNSTI4 1
 ASGNI4
-LABELV $497
-line 1102
-;1102:		if ( maxs[i] - mins[i] < maxs[best] - mins[best] ) {
+LABELV $511
+line 1124
+;1124:		if ( maxs[i] - mins[i] < maxs[best] - mins[best] ) {
 ADDRLP4 36
 CNSTI4 2
 ASGNI4
@@ -7635,20 +7797,20 @@ ADDRLP4 8
 ADDP4
 INDIRF4
 SUBF4
-GEF4 $501
-line 1103
-;1103:			best = i;
+GEF4 $515
+line 1125
+;1125:			best = i;
 ADDRLP4 32
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 1104
-;1104:		}
-LABELV $501
-line 1105
-;1105:	}
-LABELV $498
-line 1101
+line 1126
+;1126:		}
+LABELV $515
+line 1127
+;1127:	}
+LABELV $512
+line 1123
 ADDRLP4 4
 ADDRLP4 4
 INDIRI4
@@ -7658,9 +7820,9 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 3
-LTI4 $497
-line 1106
-;1106:	maxs[best] += 120;
+LTI4 $511
+line 1128
+;1128:	maxs[best] += 120;
 ADDRLP4 36
 ADDRLP4 32
 INDIRI4
@@ -7677,8 +7839,8 @@ INDIRF4
 CNSTF4 1123024896
 ADDF4
 ASGNF4
-line 1107
-;1107:	mins[best] -= 120;
+line 1129
+;1129:	mins[best] -= 120;
 ADDRLP4 40
 ADDRLP4 32
 INDIRI4
@@ -7695,10 +7857,10 @@ INDIRF4
 CNSTF4 1123024896
 SUBF4
 ASGNF4
-line 1110
-;1108:
-;1109:	// create a trigger with this size
-;1110:	other = G_Spawn ();
+line 1132
+;1130:
+;1131:	// create a trigger with this size
+;1132:	other = G_Spawn ();
 ADDRLP4 44
 ADDRGP4 G_Spawn
 CALLP4
@@ -7707,16 +7869,16 @@ ADDRLP4 0
 ADDRLP4 44
 INDIRP4
 ASGNP4
-line 1111
-;1111:	other->classname = "door_trigger";
+line 1133
+;1133:	other->classname = "door_trigger";
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $503
+ADDRGP4 $517
 ASGNP4
-line 1112
-;1112:	VectorCopy (mins, other->r.mins);
+line 1134
+;1134:	VectorCopy (mins, other->r.mins);
 ADDRLP4 0
 INDIRP4
 CNSTI4 444
@@ -7724,8 +7886,8 @@ ADDP4
 ADDRLP4 8
 INDIRB
 ASGNB 12
-line 1113
-;1113:	VectorCopy (maxs, other->r.maxs);
+line 1135
+;1135:	VectorCopy (maxs, other->r.maxs);
 ADDRLP4 0
 INDIRP4
 CNSTI4 456
@@ -7733,8 +7895,8 @@ ADDP4
 ADDRLP4 20
 INDIRB
 ASGNB 12
-line 1114
-;1114:	other->parent = ent;
+line 1136
+;1136:	other->parent = ent;
 ADDRLP4 0
 INDIRP4
 CNSTI4 608
@@ -7742,25 +7904,25 @@ ADDP4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 1115
-;1115:	other->r.contents = CONTENTS_TRIGGER;
+line 1137
+;1137:	other->r.contents = CONTENTS_TRIGGER;
 ADDRLP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1073741824
 ASGNI4
-line 1116
-;1116:	other->touch = Touch_DoorTrigger;
+line 1138
+;1138:	other->touch = Touch_DoorTrigger;
 ADDRLP4 0
 INDIRP4
 CNSTI4 728
 ADDP4
 ADDRGP4 Touch_DoorTrigger
 ASGNP4
-line 1118
-;1117:	// remember the thinnest axis
-;1118:	other->count = best;
+line 1140
+;1139:	// remember the thinnest axis
+;1140:	other->count = best;
 ADDRLP4 0
 INDIRP4
 CNSTI4 784
@@ -7768,17 +7930,17 @@ ADDP4
 ADDRLP4 32
 INDIRI4
 ASGNI4
-line 1119
-;1119:	trap_LinkEntity (other);
+line 1141
+;1141:	trap_LinkEntity (other);
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 1121
-;1120:
-;1121:	MatchTeam( ent, ent->moverState, level.time );
+line 1143
+;1142:
+;1143:	MatchTeam( ent, ent->moverState, level.time );
 ADDRLP4 48
 ADDRFP4 0
 INDIRP4
@@ -7798,17 +7960,17 @@ ARGI4
 ADDRGP4 MatchTeam
 CALLV
 pop
-line 1122
-;1122:}
-LABELV $488
+line 1144
+;1144:}
+LABELV $502
 endproc Think_SpawnNewDoorTrigger 52 12
 export Think_MatchTeam
 proc Think_MatchTeam 4 12
-line 1124
-;1123:
-;1124:void Think_MatchTeam( gentity_t *ent ) {
-line 1125
-;1125:	MatchTeam( ent, ent->moverState, level.time );
+line 1146
+;1145:
+;1146:void Think_MatchTeam( gentity_t *ent ) {
+line 1147
+;1147:	MatchTeam( ent, ent->moverState, level.time );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -7828,40 +7990,40 @@ ARGI4
 ADDRGP4 MatchTeam
 CALLV
 pop
-line 1126
-;1126:}
-LABELV $505
+line 1148
+;1148:}
+LABELV $519
 endproc Think_MatchTeam 4 12
 export SP_func_door
 proc SP_func_door 112 12
-line 1145
-;1127:
-;1128:
-;1129:/*QUAKED func_door (0 .5 .8) ? START_OPEN x CRUSHER
-;1130:TOGGLE		wait in both the start and end states for a trigger event.
-;1131:START_OPEN	the door to moves to its destination when spawned, and operate in reverse.  It is used to temporarily or permanently close off an area when triggered (not useful for touch or takedamage doors).
-;1132:NOMONSTER	monsters will not trigger this door
-;1133:
-;1134:"model2"	.md3 model to also draw
-;1135:"angle"		determines the opening direction
-;1136:"targetname" if set, no touch field will be spawned and a remote button or trigger field activates the door.
-;1137:"speed"		movement speed (100 default)
-;1138:"wait"		wait before returning (3 default, -1 = never return)
-;1139:"lip"		lip remaining at end of move (8 default)
-;1140:"dmg"		damage to inflict when blocked (2 default)
-;1141:"color"		constantLight color
-;1142:"light"		constantLight radius
-;1143:"health"	if set, the door must be shot open
-;1144:*/
-;1145:void SP_func_door (gentity_t *ent) {
-line 1151
-;1146:	vec3_t	abs_movedir;
-;1147:	float	distance;
-;1148:	vec3_t	size;
-;1149:	float	lip;
+line 1167
+;1149:
 ;1150:
-;1151:	ent->sound1to2 = ent->sound2to1 = G_SoundIndex("sound/movers/doors/dr1_strt.wav");
-ADDRGP4 $508
+;1151:/*QUAKED func_door (0 .5 .8) ? START_OPEN x CRUSHER
+;1152:TOGGLE		wait in both the start and end states for a trigger event.
+;1153:START_OPEN	the door to moves to its destination when spawned, and operate in reverse.  It is used to temporarily or permanently close off an area when triggered (not useful for touch or takedamage doors).
+;1154:NOMONSTER	monsters will not trigger this door
+;1155:
+;1156:"model2"	.md3 model to also draw
+;1157:"angle"		determines the opening direction
+;1158:"targetname" if set, no touch field will be spawned and a remote button or trigger field activates the door.
+;1159:"speed"		movement speed (100 default)
+;1160:"wait"		wait before returning (3 default, -1 = never return)
+;1161:"lip"		lip remaining at end of move (8 default)
+;1162:"dmg"		damage to inflict when blocked (2 default)
+;1163:"color"		constantLight color
+;1164:"light"		constantLight radius
+;1165:"health"	if set, the door must be shot open
+;1166:*/
+;1167:void SP_func_door (gentity_t *ent) {
+line 1173
+;1168:	vec3_t	abs_movedir;
+;1169:	float	distance;
+;1170:	vec3_t	size;
+;1171:	float	lip;
+;1172:
+;1173:	ent->sound1to2 = ent->sound2to1 = G_SoundIndex("sound/movers/doors/dr1_strt.wav");
+ADDRGP4 $522
 ARGP4
 ADDRLP4 32
 ADDRGP4 G_SoundIndex
@@ -7885,9 +8047,9 @@ ADDP4
 ADDRLP4 32
 INDIRI4
 ASGNI4
-line 1152
-;1152:	ent->soundPos1 = ent->soundPos2 = G_SoundIndex("sound/movers/doors/dr1_end.wav");
-ADDRGP4 $509
+line 1174
+;1174:	ent->soundPos1 = ent->soundPos2 = G_SoundIndex("sound/movers/doors/dr1_end.wav");
+ADDRGP4 $523
 ARGP4
 ADDRLP4 40
 ADDRGP4 G_SoundIndex
@@ -7911,57 +8073,57 @@ ADDP4
 ADDRLP4 40
 INDIRI4
 ASGNI4
-line 1154
-;1153:
-;1154:	ent->blocked = Blocked_Door;
+line 1176
+;1175:
+;1176:	ent->blocked = Blocked_Door;
 ADDRFP4 0
 INDIRP4
 CNSTI4 724
 ADDP4
 ADDRGP4 Blocked_Door
 ASGNP4
-line 1157
-;1155:
-;1156:	// default speed of 400
-;1157:	if (!ent->speed)
+line 1179
+;1177:
+;1178:	// default speed of 400
+;1179:	if (!ent->speed)
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $510
-line 1158
-;1158:		ent->speed = 400;
+NEF4 $524
+line 1180
+;1180:		ent->speed = 400;
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 CNSTF4 1137180672
 ASGNF4
-LABELV $510
-line 1161
-;1159:
-;1160:	// default wait of 2 seconds
-;1161:	if (!ent->wait)
+LABELV $524
+line 1183
+;1181:
+;1182:	// default wait of 2 seconds
+;1183:	if (!ent->wait)
 ADDRFP4 0
 INDIRP4
 CNSTI4 820
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $512
-line 1162
-;1162:		ent->wait = 2;
+NEF4 $526
+line 1184
+;1184:		ent->wait = 2;
 ADDRFP4 0
 INDIRP4
 CNSTI4 820
 ADDP4
 CNSTF4 1073741824
 ASGNF4
-LABELV $512
-line 1163
-;1163:	ent->wait *= 1000;
+LABELV $526
+line 1185
+;1185:	ent->wait *= 1000;
 ADDRLP4 48
 ADDRFP4 0
 INDIRP4
@@ -7976,26 +8138,26 @@ INDIRP4
 INDIRF4
 MULF4
 ASGNF4
-line 1166
-;1164:
-;1165:	// default lip of 8 units
-;1166:	G_SpawnFloat( "lip", "8", &lip );
-ADDRGP4 $514
+line 1188
+;1186:
+;1187:	// default lip of 8 units
+;1188:	G_SpawnFloat( "lip", "8", &lip );
+ADDRGP4 $528
 ARGP4
-ADDRGP4 $515
+ADDRGP4 $529
 ARGP4
 ADDRLP4 28
 ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1169
-;1167:
-;1168:	// default damage of 2 points
-;1169:	G_SpawnInt( "dmg", "2", &ent->damage );
-ADDRGP4 $516
+line 1191
+;1189:
+;1190:	// default damage of 2 points
+;1191:	G_SpawnInt( "dmg", "2", &ent->damage );
+ADDRGP4 $530
 ARGP4
-ADDRGP4 $517
+ADDRGP4 $531
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -8005,10 +8167,10 @@ ARGP4
 ADDRGP4 G_SpawnInt
 CALLI4
 pop
-line 1172
-;1170:
-;1171:	// first position at start
-;1172:	VectorCopy( ent->s.origin, ent->pos1 );
+line 1194
+;1192:
+;1193:	// first position at start
+;1194:	VectorCopy( ent->s.origin, ent->pos1 );
 ADDRLP4 52
 ADDRFP4 0
 INDIRP4
@@ -8023,10 +8185,10 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1175
-;1173:
-;1174:	// calculate second position
-;1175:	trap_SetBrushModel( ent, ent->model );
+line 1197
+;1195:
+;1196:	// calculate second position
+;1197:	trap_SetBrushModel( ent, ent->model );
 ADDRLP4 56
 ADDRFP4 0
 INDIRP4
@@ -8043,8 +8205,8 @@ ARGP4
 ADDRGP4 trap_SetBrushModel
 CALLV
 pop
-line 1176
-;1176:	G_SetMovedir (ent->s.angles, ent->movedir);
+line 1198
+;1198:	G_SetMovedir (ent->s.angles, ent->movedir);
 ADDRLP4 60
 ADDRFP4 0
 INDIRP4
@@ -8062,8 +8224,8 @@ ARGP4
 ADDRGP4 G_SetMovedir
 CALLV
 pop
-line 1177
-;1177:	abs_movedir[0] = fabs(ent->movedir[0]);
+line 1199
+;1199:	abs_movedir[0] = fabs(ent->movedir[0]);
 ADDRFP4 0
 INDIRP4
 CNSTI4 692
@@ -8078,8 +8240,8 @@ ADDRLP4 0
 ADDRLP4 64
 INDIRF4
 ASGNF4
-line 1178
-;1178:	abs_movedir[1] = fabs(ent->movedir[1]);
+line 1200
+;1200:	abs_movedir[1] = fabs(ent->movedir[1]);
 ADDRFP4 0
 INDIRP4
 CNSTI4 696
@@ -8094,8 +8256,8 @@ ADDRLP4 0+4
 ADDRLP4 68
 INDIRF4
 ASGNF4
-line 1179
-;1179:	abs_movedir[2] = fabs(ent->movedir[2]);
+line 1201
+;1201:	abs_movedir[2] = fabs(ent->movedir[2]);
 ADDRFP4 0
 INDIRP4
 CNSTI4 700
@@ -8110,8 +8272,8 @@ ADDRLP4 0+8
 ADDRLP4 72
 INDIRF4
 ASGNF4
-line 1180
-;1180:	VectorSubtract( ent->r.maxs, ent->r.mins, size );
+line 1202
+;1202:	VectorSubtract( ent->r.maxs, ent->r.mins, size );
 ADDRLP4 76
 ADDRFP4 0
 INDIRP4
@@ -8159,8 +8321,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 1181
-;1181:	distance = DotProduct( abs_movedir, size ) - lip;
+line 1203
+;1203:	distance = DotProduct( abs_movedir, size ) - lip;
 ADDRLP4 24
 ADDRLP4 0
 INDIRF4
@@ -8183,8 +8345,8 @@ ADDRLP4 28
 INDIRF4
 SUBF4
 ASGNF4
-line 1182
-;1182:	VectorMA( ent->pos1, distance, ent->movedir, ent->pos2 );
+line 1204
+;1204:	VectorMA( ent->pos1, distance, ent->movedir, ent->pos2 );
 ADDRLP4 84
 ADDRFP4 0
 INDIRP4
@@ -8254,10 +8416,10 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1185
-;1183:
-;1184:	// if "start_open", reverse position 1 and 2
-;1185:	if ( ent->spawnflags & 1 ) {
+line 1207
+;1205:
+;1206:	// if "start_open", reverse position 1 and 2
+;1207:	if ( ent->spawnflags & 1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -8266,11 +8428,11 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $526
-line 1188
-;1186:		vec3_t	temp;
-;1187:
-;1188:		VectorCopy( ent->pos2, temp );
+EQI4 $540
+line 1210
+;1208:		vec3_t	temp;
+;1209:
+;1210:		VectorCopy( ent->pos2, temp );
 ADDRLP4 96
 ADDRFP4 0
 INDIRP4
@@ -8278,8 +8440,8 @@ CNSTI4 632
 ADDP4
 INDIRB
 ASGNB 12
-line 1189
-;1189:		VectorCopy( ent->s.origin, ent->pos2 );
+line 1211
+;1211:		VectorCopy( ent->s.origin, ent->pos2 );
 ADDRLP4 108
 ADDRFP4 0
 INDIRP4
@@ -8294,8 +8456,8 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1190
-;1190:		VectorCopy( temp, ent->pos1 );
+line 1212
+;1212:		VectorCopy( temp, ent->pos1 );
 ADDRFP4 0
 INDIRP4
 CNSTI4 620
@@ -8303,21 +8465,21 @@ ADDP4
 ADDRLP4 96
 INDIRB
 ASGNB 12
-line 1191
-;1191:	}
-LABELV $526
-line 1193
-;1192:
-;1193:	InitMover( ent );
+line 1213
+;1213:	}
+LABELV $540
+line 1215
+;1214:
+;1215:	InitMover( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 InitMover
 CALLV
 pop
-line 1195
-;1194:
-;1195:	ent->nextthink = level.time + FRAMETIME;
+line 1217
+;1216:
+;1217:	ent->nextthink = level.time + FRAMETIME;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -8327,9 +8489,9 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 1197
-;1196:
-;1197:	if ( ! (ent->flags & FL_TEAMSLAVE ) ) {
+line 1219
+;1218:
+;1219:	if ( ! (ent->flags & FL_TEAMSLAVE ) ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 544
@@ -8338,39 +8500,39 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-NEI4 $529
-line 1200
-;1198:		int health;
-;1199:
-;1200:		G_SpawnInt( "health", "0", &health );
-ADDRGP4 $531
+NEI4 $543
+line 1222
+;1220:		int health;
+;1221:
+;1222:		G_SpawnInt( "health", "0", &health );
+ADDRGP4 $545
 ARGP4
-ADDRGP4 $532
+ADDRGP4 $546
 ARGP4
 ADDRLP4 96
 ARGP4
 ADDRGP4 G_SpawnInt
 CALLI4
 pop
-line 1201
-;1201:		if ( health ) {
+line 1223
+;1223:		if ( health ) {
 ADDRLP4 96
 INDIRI4
 CNSTI4 0
-EQI4 $533
-line 1202
-;1202:			ent->takedamage = qtrue;
+EQI4 $547
+line 1224
+;1224:			ent->takedamage = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1203
-;1203:		}
-LABELV $533
-line 1204
-;1204:		if ( ent->targetname || health ) {
+line 1225
+;1225:		}
+LABELV $547
+line 1226
+;1226:		if ( ent->targetname || health ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 660
@@ -8378,74 +8540,74 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $537
+NEU4 $551
 ADDRLP4 96
 INDIRI4
 CNSTI4 0
-EQI4 $535
-LABELV $537
-line 1206
-;1205:			// non touch/shoot doors
-;1206:			ent->think = Think_MatchTeam;
+EQI4 $549
+LABELV $551
+line 1228
+;1227:			// non touch/shoot doors
+;1228:			ent->think = Think_MatchTeam;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 Think_MatchTeam
 ASGNP4
-line 1207
-;1207:		} else {
-ADDRGP4 $536
+line 1229
+;1229:		} else {
+ADDRGP4 $550
 JUMPV
-LABELV $535
-line 1208
-;1208:			ent->think = Think_SpawnNewDoorTrigger;
+LABELV $549
+line 1230
+;1230:			ent->think = Think_SpawnNewDoorTrigger;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 Think_SpawnNewDoorTrigger
 ASGNP4
-line 1209
-;1209:		}
-LABELV $536
-line 1210
-;1210:	}
-LABELV $529
-line 1213
-;1211:
-;1212:
-;1213:}
-LABELV $507
+line 1231
+;1231:		}
+LABELV $550
+line 1232
+;1232:	}
+LABELV $543
+line 1235
+;1233:
+;1234:
+;1235:}
+LABELV $521
 endproc SP_func_door 112 12
 export SP_func_door_rotating
 proc SP_func_door_rotating 96 12
-line 1235
-;1214:
-;1215:
-;1216:/*QUAKED func_door_rotating (0 .5 .8) START_OPEN CRUSHER REVERSE TOGGLE X_AXIS Y_AXIS
-;1217:This is the rotating door... just as the name suggests it's a door that rotates
-;1218:START_OPEN	the door to moves to its destination when spawned, and operate in reverse.
-;1219:REVERSE		if you want the door to open in the other direction, use this switch.
-;1220:TOGGLE		wait in both the start and end states for a trigger event.
-;1221:X_AXIS		open on the X-axis instead of the Z-axis
-;1222:Y_AXIS		open on the Y-axis instead of the Z-axis
-;1223:  
-;1224:You need to have an origin brush as part of this entity.  The center of that brush will be
-;1225:the point around which it is rotated. It will rotate around the Z axis by default.  You can
-;1226:check either the X_AXIS or Y_AXIS box to change that.
-;1227:
-;1228:"model2"	.md3 model to also draw
-;1229:"distance"	how many degrees the door will open
-;1230:"speed"	 	how fast the door will open (degrees/second)
-;1231:"color"		constantLight color
-;1232:"light"		constantLight radius
-;1233:*/
-;1234:
-;1235:void SP_func_door_rotating ( gentity_t *ent ) {
-line 1236
-;1236:	ent->sound1to2 = ent->sound2to1 = G_SoundIndex("sound/movers/doors/dr1_strt.wav");
-ADDRGP4 $508
+line 1257
+;1236:
+;1237:
+;1238:/*QUAKED func_door_rotating (0 .5 .8) START_OPEN CRUSHER REVERSE TOGGLE X_AXIS Y_AXIS
+;1239:This is the rotating door... just as the name suggests it's a door that rotates
+;1240:START_OPEN	the door to moves to its destination when spawned, and operate in reverse.
+;1241:REVERSE		if you want the door to open in the other direction, use this switch.
+;1242:TOGGLE		wait in both the start and end states for a trigger event.
+;1243:X_AXIS		open on the X-axis instead of the Z-axis
+;1244:Y_AXIS		open on the Y-axis instead of the Z-axis
+;1245:  
+;1246:You need to have an origin brush as part of this entity.  The center of that brush will be
+;1247:the point around which it is rotated. It will rotate around the Z axis by default.  You can
+;1248:check either the X_AXIS or Y_AXIS box to change that.
+;1249:
+;1250:"model2"	.md3 model to also draw
+;1251:"distance"	how many degrees the door will open
+;1252:"speed"	 	how fast the door will open (degrees/second)
+;1253:"color"		constantLight color
+;1254:"light"		constantLight radius
+;1255:*/
+;1256:
+;1257:void SP_func_door_rotating ( gentity_t *ent ) {
+line 1258
+;1258:	ent->sound1to2 = ent->sound2to1 = G_SoundIndex("sound/movers/doors/dr1_strt.wav");
+ADDRGP4 $522
 ARGP4
 ADDRLP4 0
 ADDRGP4 G_SoundIndex
@@ -8469,9 +8631,9 @@ ADDP4
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 1237
-;1237:	ent->soundPos1 = ent->soundPos2 = G_SoundIndex("sound/movers/doors/dr1_end.wav");
-ADDRGP4 $509
+line 1259
+;1259:	ent->soundPos1 = ent->soundPos2 = G_SoundIndex("sound/movers/doors/dr1_end.wav");
+ADDRGP4 $523
 ARGP4
 ADDRLP4 8
 ADDRGP4 G_SoundIndex
@@ -8495,48 +8657,48 @@ ADDP4
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 1239
-;1238:
-;1239:	ent->blocked = Blocked_Door;
+line 1261
+;1260:
+;1261:	ent->blocked = Blocked_Door;
 ADDRFP4 0
 INDIRP4
 CNSTI4 724
 ADDP4
 ADDRGP4 Blocked_Door
 ASGNP4
-line 1242
-;1240:
-;1241:	// default speed of 120
-;1242:	if (!ent->speed)
+line 1264
+;1262:
+;1263:	// default speed of 120
+;1264:	if (!ent->speed)
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $539
-line 1243
-;1243:		ent->speed = 120;
+NEF4 $553
+line 1265
+;1265:		ent->speed = 120;
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 CNSTF4 1123024896
 ASGNF4
-LABELV $539
-line 1246
-;1244:
-;1245:	// if speed is negative, positize it and add reverse flag
-;1246:	if ( ent->speed < 0 ) {
+LABELV $553
+line 1268
+;1266:
+;1267:	// if speed is negative, positize it and add reverse flag
+;1268:	if ( ent->speed < 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 INDIRF4
 CNSTF4 0
-GEF4 $541
-line 1247
-;1247:		ent->speed *= -1;
+GEF4 $555
+line 1269
+;1269:		ent->speed *= -1;
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -8551,8 +8713,8 @@ INDIRP4
 INDIRF4
 MULF4
 ASGNF4
-line 1248
-;1248:		ent->spawnflags |= 8;
+line 1270
+;1270:		ent->spawnflags |= 8;
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -8567,31 +8729,31 @@ INDIRI4
 CNSTI4 8
 BORI4
 ASGNI4
-line 1249
-;1249:	}
-LABELV $541
-line 1252
-;1250:
-;1251:	// default of 2 seconds
-;1252:	if (!ent->wait)
+line 1271
+;1271:	}
+LABELV $555
+line 1274
+;1272:
+;1273:	// default of 2 seconds
+;1274:	if (!ent->wait)
 ADDRFP4 0
 INDIRP4
 CNSTI4 820
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $543
-line 1253
-;1253:		ent->wait = 2;
+NEF4 $557
+line 1275
+;1275:		ent->wait = 2;
 ADDRFP4 0
 INDIRP4
 CNSTI4 820
 ADDP4
 CNSTF4 1073741824
 ASGNF4
-LABELV $543
-line 1254
-;1254:	ent->wait *= 1000;
+LABELV $557
+line 1276
+;1276:	ent->wait *= 1000;
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -8606,10 +8768,10 @@ INDIRP4
 INDIRF4
 MULF4
 ASGNF4
-line 1257
-;1255:	
-;1256:	// set the axis of rotation
-;1257:	VectorClear( ent->movedir );
+line 1279
+;1277:	
+;1278:	// set the axis of rotation
+;1279:	VectorClear( ent->movedir );
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -8638,8 +8800,8 @@ ADDP4
 ADDRLP4 24
 INDIRF4
 ASGNF4
-line 1258
-;1258:	VectorClear( ent->s.angles );
+line 1280
+;1280:	VectorClear( ent->s.angles );
 ADDRLP4 28
 ADDRFP4 0
 INDIRP4
@@ -8668,9 +8830,9 @@ ADDP4
 ADDRLP4 32
 INDIRF4
 ASGNF4
-line 1260
-;1259:	
-;1260:	if ( ent->spawnflags & 32 ) {
+line 1282
+;1281:	
+;1282:	if ( ent->spawnflags & 32 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -8679,20 +8841,20 @@ INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-EQI4 $545
-line 1261
-;1261:		ent->movedir[2] = 1.0;
+EQI4 $559
+line 1283
+;1283:		ent->movedir[2] = 1.0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 700
 ADDP4
 CNSTF4 1065353216
 ASGNF4
-line 1262
-;1262:	} else if ( ent->spawnflags & 64 ) {
-ADDRGP4 $546
+line 1284
+;1284:	} else if ( ent->spawnflags & 64 ) {
+ADDRGP4 $560
 JUMPV
-LABELV $545
+LABELV $559
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -8701,36 +8863,36 @@ INDIRI4
 CNSTI4 64
 BANDI4
 CNSTI4 0
-EQI4 $547
-line 1263
-;1263:		ent->movedir[0] = 1.0;
+EQI4 $561
+line 1285
+;1285:		ent->movedir[0] = 1.0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 692
 ADDP4
 CNSTF4 1065353216
 ASGNF4
-line 1264
-;1264:	} else {
-ADDRGP4 $548
+line 1286
+;1286:	} else {
+ADDRGP4 $562
 JUMPV
-LABELV $547
-line 1265
-;1265:		ent->movedir[1] = 1.0;
+LABELV $561
+line 1287
+;1287:		ent->movedir[1] = 1.0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 696
 ADDP4
 CNSTF4 1065353216
 ASGNF4
-line 1266
-;1266:	}
-LABELV $548
-LABELV $546
-line 1269
-;1267:
-;1268:	// reverse direction if necessary
-;1269:	if ( ent->spawnflags & 8 )
+line 1288
+;1288:	}
+LABELV $562
+LABELV $560
+line 1291
+;1289:
+;1290:	// reverse direction if necessary
+;1291:	if ( ent->spawnflags & 8 )
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -8739,9 +8901,9 @@ INDIRI4
 CNSTI4 8
 BANDI4
 CNSTI4 0
-EQI4 $549
-line 1270
-;1270:		VectorNegate ( ent->movedir, ent->movedir );
+EQI4 $563
+line 1292
+;1292:		VectorNegate ( ent->movedir, ent->movedir );
 ADDRLP4 36
 ADDRFP4 0
 INDIRP4
@@ -8781,21 +8943,21 @@ INDIRP4
 INDIRF4
 NEGF4
 ASGNF4
-LABELV $549
-line 1274
-;1271:
-;1272:	// default distance of 90 degrees. This is something the mapper should not
-;1273:	// leave out, so we'll tell him if he does.
-;1274:	if ( !ent->distance ) {
+LABELV $563
+line 1296
+;1293:
+;1294:	// default distance of 90 degrees. This is something the mapper should not
+;1295:	// leave out, so we'll tell him if he does.
+;1296:	if ( !ent->distance ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 888
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $551
-line 1275
-;1275:		G_Printf("%s at %s with no distance set.\n",
+NEF4 $565
+line 1297
+;1297:		G_Printf("%s at %s with no distance set.\n",
 ADDRFP4 0
 INDIRP4
 CNSTI4 92
@@ -8805,7 +8967,7 @@ ADDRLP4 48
 ADDRGP4 vtos
 CALLP4
 ASGNP4
-ADDRGP4 $553
+ADDRGP4 $567
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -8819,21 +8981,21 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 1277
-;1276:		ent->classname, vtos(ent->s.origin));
-;1277:		ent->distance = 90.0;
+line 1299
+;1298:		ent->classname, vtos(ent->s.origin));
+;1299:		ent->distance = 90.0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 888
 ADDP4
 CNSTF4 1119092736
 ASGNF4
-line 1278
-;1278:	}
-LABELV $551
-line 1280
-;1279:	
-;1280:	VectorCopy( ent->s.angles, ent->pos1 );
+line 1300
+;1300:	}
+LABELV $565
+line 1302
+;1301:	
+;1302:	VectorCopy( ent->s.angles, ent->pos1 );
 ADDRLP4 48
 ADDRFP4 0
 INDIRP4
@@ -8848,8 +9010,8 @@ CNSTI4 116
 ADDP4
 INDIRB
 ASGNB 12
-line 1281
-;1281:	trap_SetBrushModel( ent, ent->model );
+line 1303
+;1303:	trap_SetBrushModel( ent, ent->model );
 ADDRLP4 52
 ADDRFP4 0
 INDIRP4
@@ -8866,8 +9028,8 @@ ARGP4
 ADDRGP4 trap_SetBrushModel
 CALLV
 pop
-line 1282
-;1282:	VectorMA ( ent->pos1, ent->distance, ent->movedir, ent->pos2 );
+line 1304
+;1304:	VectorMA ( ent->pos1, ent->distance, ent->movedir, ent->pos2 );
 ADDRLP4 56
 ADDRFP4 0
 INDIRP4
@@ -8946,10 +9108,10 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1285
-;1283:
-;1284:	// if "start_open", reverse position 1 and 2
-;1285:	if ( ent->spawnflags & 1 ) {
+line 1307
+;1305:
+;1306:	// if "start_open", reverse position 1 and 2
+;1307:	if ( ent->spawnflags & 1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -8958,11 +9120,11 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $554
-line 1288
-;1286:		vec3_t	temp;
-;1287:
-;1288:		VectorCopy( ent->pos2, temp );
+EQI4 $568
+line 1310
+;1308:		vec3_t	temp;
+;1309:
+;1310:		VectorCopy( ent->pos2, temp );
 ADDRLP4 68
 ADDRFP4 0
 INDIRP4
@@ -8970,8 +9132,8 @@ CNSTI4 632
 ADDP4
 INDIRB
 ASGNB 12
-line 1289
-;1289:		VectorCopy( ent->s.angles, ent->pos2 );
+line 1311
+;1311:		VectorCopy( ent->s.angles, ent->pos2 );
 ADDRLP4 80
 ADDRFP4 0
 INDIRP4
@@ -8986,8 +9148,8 @@ CNSTI4 116
 ADDP4
 INDIRB
 ASGNB 12
-line 1290
-;1290:		VectorCopy( temp, ent->pos1 );
+line 1312
+;1312:		VectorCopy( temp, ent->pos1 );
 ADDRFP4 0
 INDIRP4
 CNSTI4 620
@@ -8995,8 +9157,8 @@ ADDP4
 ADDRLP4 68
 INDIRB
 ASGNB 12
-line 1291
-;1291:		VectorNegate ( ent->movedir, ent->movedir );
+line 1313
+;1313:		VectorNegate ( ent->movedir, ent->movedir );
 ADDRLP4 84
 ADDRFP4 0
 INDIRP4
@@ -9036,13 +9198,13 @@ INDIRP4
 INDIRF4
 NEGF4
 ASGNF4
-line 1292
-;1292:	}
-LABELV $554
-line 1295
-;1293:	
-;1294:	// set origin
-;1295:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
+line 1314
+;1314:	}
+LABELV $568
+line 1317
+;1315:	
+;1316:	// set origin
+;1317:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
 ADDRLP4 68
 ADDRFP4 0
 INDIRP4
@@ -9057,8 +9219,8 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1296
-;1296:	VectorCopy( ent->s.pos.trBase, ent->r.currentOrigin );
+line 1318
+;1318:	VectorCopy( ent->s.pos.trBase, ent->r.currentOrigin );
 ADDRLP4 72
 ADDRFP4 0
 INDIRP4
@@ -9073,18 +9235,18 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 1298
-;1297:
-;1298:	InitRotator( ent );
+line 1320
+;1319:
+;1320:	InitRotator( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 InitRotator
 CALLV
 pop
-line 1300
-;1299:
-;1300:	ent->nextthink = level.time + FRAMETIME;
+line 1322
+;1321:
+;1322:	ent->nextthink = level.time + FRAMETIME;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -9094,9 +9256,9 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 1302
-;1301:
-;1302:	if ( ! (ent->flags & FL_TEAMSLAVE ) ) {
+line 1324
+;1323:
+;1324:	if ( ! (ent->flags & FL_TEAMSLAVE ) ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 544
@@ -9105,39 +9267,39 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-NEI4 $557
-line 1305
-;1303:		int health;
-;1304:
-;1305:		G_SpawnInt( "health", "0", &health );
-ADDRGP4 $531
+NEI4 $571
+line 1327
+;1325:		int health;
+;1326:
+;1327:		G_SpawnInt( "health", "0", &health );
+ADDRGP4 $545
 ARGP4
-ADDRGP4 $532
+ADDRGP4 $546
 ARGP4
 ADDRLP4 76
 ARGP4
 ADDRGP4 G_SpawnInt
 CALLI4
 pop
-line 1306
-;1306:		if ( health ) {
+line 1328
+;1328:		if ( health ) {
 ADDRLP4 76
 INDIRI4
 CNSTI4 0
-EQI4 $559
-line 1307
-;1307:			ent->takedamage = qtrue;
+EQI4 $573
+line 1329
+;1329:			ent->takedamage = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1308
-;1308:		}
-LABELV $559
-line 1309
-;1309:		if ( ent->targetname || health ) {
+line 1330
+;1330:		}
+LABELV $573
+line 1331
+;1331:		if ( ent->targetname || health ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 660
@@ -9145,66 +9307,66 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $563
+NEU4 $577
 ADDRLP4 76
 INDIRI4
 CNSTI4 0
-EQI4 $561
-LABELV $563
-line 1311
-;1310:			// non touch/shoot doors
-;1311:			ent->think = Think_MatchTeam;
+EQI4 $575
+LABELV $577
+line 1333
+;1332:			// non touch/shoot doors
+;1333:			ent->think = Think_MatchTeam;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 Think_MatchTeam
 ASGNP4
-line 1312
-;1312:		} else {
-ADDRGP4 $562
+line 1334
+;1334:		} else {
+ADDRGP4 $576
 JUMPV
-LABELV $561
-line 1313
-;1313:			ent->think = Think_SpawnNewDoorTrigger;
+LABELV $575
+line 1335
+;1335:			ent->think = Think_SpawnNewDoorTrigger;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 Think_SpawnNewDoorTrigger
 ASGNP4
-line 1314
-;1314:		}
-LABELV $562
-line 1315
-;1315:	}
-LABELV $557
-line 1316
-;1316:}
-LABELV $538
+line 1336
+;1336:		}
+LABELV $576
+line 1337
+;1337:	}
+LABELV $571
+line 1338
+;1338:}
+LABELV $552
 endproc SP_func_door_rotating 96 12
 export Touch_Plat
 proc Touch_Plat 4 0
-line 1333
-;1317:
-;1318:/*
-;1319:===============================================================================
-;1320:
-;1321:PLAT
-;1322:
-;1323:===============================================================================
-;1324:*/
-;1325:
-;1326:/*
-;1327:==============
-;1328:Touch_Plat
-;1329:
-;1330:Don't allow decent if a living player is on it
-;1331:===============
-;1332:*/
-;1333:void Touch_Plat( gentity_t *ent, gentity_t *other, trace_t *trace ) {
-line 1334
-;1334:	if ( !other->client || other->client->ps.stats[STAT_HEALTH] <= 0 ) {
+line 1355
+;1339:
+;1340:/*
+;1341:===============================================================================
+;1342:
+;1343:PLAT
+;1344:
+;1345:===============================================================================
+;1346:*/
+;1347:
+;1348:/*
+;1349:==============
+;1350:Touch_Plat
+;1351:
+;1352:Don't allow decent if a living player is on it
+;1353:===============
+;1354:*/
+;1355:void Touch_Plat( gentity_t *ent, gentity_t *other, trace_t *trace ) {
+line 1356
+;1356:	if ( !other->client || other->client->ps.stats[STAT_HEALTH] <= 0 ) {
 ADDRLP4 0
 ADDRFP4 4
 INDIRP4
@@ -9216,34 +9378,34 @@ ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $567
+EQU4 $581
 ADDRLP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $565
-LABELV $567
-line 1335
-;1335:		return;
-ADDRGP4 $564
+GTI4 $579
+LABELV $581
+line 1357
+;1357:		return;
+ADDRGP4 $578
 JUMPV
-LABELV $565
-line 1339
-;1336:	}
-;1337:
-;1338:	// delay return-to-pos1 by one second
-;1339:	if ( ent->moverState == MOVER_POS2 ) {
+LABELV $579
+line 1361
+;1358:	}
+;1359:
+;1360:	// delay return-to-pos1 by one second
+;1361:	if ( ent->moverState == MOVER_POS2 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $568
-line 1340
-;1340:		ent->nextthink = level.time + 1000;
+NEI4 $582
+line 1362
+;1362:		ent->nextthink = level.time + 1000;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -9253,27 +9415,27 @@ INDIRI4
 CNSTI4 1000
 ADDI4
 ASGNI4
-line 1341
-;1341:	}
-LABELV $568
-line 1342
-;1342:}
-LABELV $564
+line 1363
+;1363:	}
+LABELV $582
+line 1364
+;1364:}
+LABELV $578
 endproc Touch_Plat 4 0
 export Touch_PlatCenterTrigger
 proc Touch_PlatCenterTrigger 4 12
-line 1351
-;1343:
-;1344:/*
-;1345:==============
-;1346:Touch_PlatCenterTrigger
-;1347:
-;1348:If the plat is at the bottom position, start it going up
-;1349:===============
-;1350:*/
-;1351:void Touch_PlatCenterTrigger(gentity_t *ent, gentity_t *other, trace_t *trace ) {
-line 1352
-;1352:	if ( !other->client ) {
+line 1373
+;1365:
+;1366:/*
+;1367:==============
+;1368:Touch_PlatCenterTrigger
+;1369:
+;1370:If the plat is at the bottom position, start it going up
+;1371:===============
+;1372:*/
+;1373:void Touch_PlatCenterTrigger(gentity_t *ent, gentity_t *other, trace_t *trace ) {
+line 1374
+;1374:	if ( !other->client ) {
 ADDRFP4 4
 INDIRP4
 CNSTI4 524
@@ -9281,16 +9443,16 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $572
-line 1353
-;1353:		return;
-ADDRGP4 $571
+NEU4 $586
+line 1375
+;1375:		return;
+ADDRGP4 $585
 JUMPV
-LABELV $572
-line 1356
-;1354:	}
-;1355:
-;1356:	if ( ent->parent->moverState == MOVER_POS1 ) {
+LABELV $586
+line 1378
+;1376:	}
+;1377:
+;1378:	if ( ent->parent->moverState == MOVER_POS1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 608
@@ -9300,9 +9462,9 @@ CNSTI4 584
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $574
-line 1357
-;1357:		Use_BinaryMover( ent->parent, ent, other );
+NEI4 $588
+line 1379
+;1379:		Use_BinaryMover( ent->parent, ent, other );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -9322,35 +9484,35 @@ ARGP4
 ADDRGP4 Use_BinaryMover
 CALLV
 pop
-line 1358
-;1358:	}
-LABELV $574
-line 1359
-;1359:}
-LABELV $571
+line 1380
+;1380:	}
+LABELV $588
+line 1381
+;1381:}
+LABELV $585
 endproc Touch_PlatCenterTrigger 4 12
 export SpawnPlatTrigger
 proc SpawnPlatTrigger 60 4
-line 1371
-;1360:
-;1361:
-;1362:/*
-;1363:================
-;1364:SpawnPlatTrigger
-;1365:
-;1366:Spawn a trigger in the middle of the plat's low position
-;1367:Elevator cars require that the trigger extend through the entire low position,
-;1368:not just sit on top of it.
-;1369:================
-;1370:*/
-;1371:void SpawnPlatTrigger( gentity_t *ent ) {
-line 1377
-;1372:	gentity_t	*trigger;
-;1373:	vec3_t	tmin, tmax;
-;1374:
-;1375:	// the middle trigger will be a thin trigger just
-;1376:	// above the starting position
-;1377:	trigger = G_Spawn();
+line 1393
+;1382:
+;1383:
+;1384:/*
+;1385:================
+;1386:SpawnPlatTrigger
+;1387:
+;1388:Spawn a trigger in the middle of the plat's low position
+;1389:Elevator cars require that the trigger extend through the entire low position,
+;1390:not just sit on top of it.
+;1391:================
+;1392:*/
+;1393:void SpawnPlatTrigger( gentity_t *ent ) {
+line 1399
+;1394:	gentity_t	*trigger;
+;1395:	vec3_t	tmin, tmax;
+;1396:
+;1397:	// the middle trigger will be a thin trigger just
+;1398:	// above the starting position
+;1399:	trigger = G_Spawn();
 ADDRLP4 28
 ADDRGP4 G_Spawn
 CALLP4
@@ -9359,32 +9521,32 @@ ADDRLP4 0
 ADDRLP4 28
 INDIRP4
 ASGNP4
-line 1378
-;1378:	trigger->classname = "plat_trigger";
+line 1400
+;1400:	trigger->classname = "plat_trigger";
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $577
+ADDRGP4 $591
 ASGNP4
-line 1379
-;1379:	trigger->touch = Touch_PlatCenterTrigger;
+line 1401
+;1401:	trigger->touch = Touch_PlatCenterTrigger;
 ADDRLP4 0
 INDIRP4
 CNSTI4 728
 ADDP4
 ADDRGP4 Touch_PlatCenterTrigger
 ASGNP4
-line 1380
-;1380:	trigger->r.contents = CONTENTS_TRIGGER;
+line 1402
+;1402:	trigger->r.contents = CONTENTS_TRIGGER;
 ADDRLP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1073741824
 ASGNI4
-line 1381
-;1381:	trigger->parent = ent;
+line 1403
+;1403:	trigger->parent = ent;
 ADDRLP4 0
 INDIRP4
 CNSTI4 608
@@ -9392,9 +9554,9 @@ ADDP4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 1383
-;1382:	
-;1383:	tmin[0] = ent->pos1[0] + ent->r.mins[0] + 33;
+line 1405
+;1404:	
+;1405:	tmin[0] = ent->pos1[0] + ent->r.mins[0] + 33;
 ADDRLP4 32
 ADDRFP4 0
 INDIRP4
@@ -9414,8 +9576,8 @@ ADDF4
 CNSTF4 1107558400
 ADDF4
 ASGNF4
-line 1384
-;1384:	tmin[1] = ent->pos1[1] + ent->r.mins[1] + 33;
+line 1406
+;1406:	tmin[1] = ent->pos1[1] + ent->r.mins[1] + 33;
 ADDRLP4 36
 ADDRFP4 0
 INDIRP4
@@ -9435,8 +9597,8 @@ ADDF4
 CNSTF4 1107558400
 ADDF4
 ASGNF4
-line 1385
-;1385:	tmin[2] = ent->pos1[2] + ent->r.mins[2];
+line 1407
+;1407:	tmin[2] = ent->pos1[2] + ent->r.mins[2];
 ADDRLP4 40
 ADDRFP4 0
 INDIRP4
@@ -9454,9 +9616,9 @@ ADDP4
 INDIRF4
 ADDF4
 ASGNF4
-line 1387
-;1386:
-;1387:	tmax[0] = ent->pos1[0] + ent->r.maxs[0] - 33;
+line 1409
+;1408:
+;1409:	tmax[0] = ent->pos1[0] + ent->r.maxs[0] - 33;
 ADDRLP4 44
 ADDRFP4 0
 INDIRP4
@@ -9476,8 +9638,8 @@ ADDF4
 CNSTF4 1107558400
 SUBF4
 ASGNF4
-line 1388
-;1388:	tmax[1] = ent->pos1[1] + ent->r.maxs[1] - 33;
+line 1410
+;1410:	tmax[1] = ent->pos1[1] + ent->r.maxs[1] - 33;
 ADDRLP4 48
 ADDRFP4 0
 INDIRP4
@@ -9497,8 +9659,8 @@ ADDF4
 CNSTF4 1107558400
 SUBF4
 ASGNF4
-line 1389
-;1389:	tmax[2] = ent->pos1[2] + ent->r.maxs[2] + 8;
+line 1411
+;1411:	tmax[2] = ent->pos1[2] + ent->r.maxs[2] + 8;
 ADDRLP4 52
 ADDRFP4 0
 INDIRP4
@@ -9518,16 +9680,16 @@ ADDF4
 CNSTF4 1090519040
 ADDF4
 ASGNF4
-line 1391
-;1390:
-;1391:	if ( tmax[0] <= tmin[0] ) {
+line 1413
+;1412:
+;1413:	if ( tmax[0] <= tmin[0] ) {
 ADDRLP4 16
 INDIRF4
 ADDRLP4 4
 INDIRF4
-GTF4 $582
-line 1392
-;1392:		tmin[0] = ent->pos1[0] + (ent->r.mins[0] + ent->r.maxs[0]) *0.5;
+GTF4 $596
+line 1414
+;1414:		tmin[0] = ent->pos1[0] + (ent->r.mins[0] + ent->r.maxs[0]) *0.5;
 ADDRLP4 56
 ADDRFP4 0
 INDIRP4
@@ -9553,26 +9715,26 @@ ADDF4
 MULF4
 ADDF4
 ASGNF4
-line 1393
-;1393:		tmax[0] = tmin[0] + 1;
+line 1415
+;1415:		tmax[0] = tmin[0] + 1;
 ADDRLP4 16
 ADDRLP4 4
 INDIRF4
 CNSTF4 1065353216
 ADDF4
 ASGNF4
-line 1394
-;1394:	}
-LABELV $582
-line 1395
-;1395:	if ( tmax[1] <= tmin[1] ) {
+line 1416
+;1416:	}
+LABELV $596
+line 1417
+;1417:	if ( tmax[1] <= tmin[1] ) {
 ADDRLP4 16+4
 INDIRF4
 ADDRLP4 4+4
 INDIRF4
-GTF4 $584
-line 1396
-;1396:		tmin[1] = ent->pos1[1] + (ent->r.mins[1] + ent->r.maxs[1]) *0.5;
+GTF4 $598
+line 1418
+;1418:		tmin[1] = ent->pos1[1] + (ent->r.mins[1] + ent->r.maxs[1]) *0.5;
 ADDRLP4 56
 ADDRFP4 0
 INDIRP4
@@ -9598,20 +9760,20 @@ ADDF4
 MULF4
 ADDF4
 ASGNF4
-line 1397
-;1397:		tmax[1] = tmin[1] + 1;
+line 1419
+;1419:		tmax[1] = tmin[1] + 1;
 ADDRLP4 16+4
 ADDRLP4 4+4
 INDIRF4
 CNSTF4 1065353216
 ADDF4
 ASGNF4
-line 1398
-;1398:	}
-LABELV $584
-line 1400
-;1399:	
-;1400:	VectorCopy (tmin, trigger->r.mins);
+line 1420
+;1420:	}
+LABELV $598
+line 1422
+;1421:	
+;1422:	VectorCopy (tmin, trigger->r.mins);
 ADDRLP4 0
 INDIRP4
 CNSTI4 444
@@ -9619,8 +9781,8 @@ ADDP4
 ADDRLP4 4
 INDIRB
 ASGNB 12
-line 1401
-;1401:	VectorCopy (tmax, trigger->r.maxs);
+line 1423
+;1423:	VectorCopy (tmax, trigger->r.maxs);
 ADDRLP4 0
 INDIRP4
 CNSTI4 456
@@ -9628,41 +9790,41 @@ ADDP4
 ADDRLP4 16
 INDIRB
 ASGNB 12
-line 1403
-;1402:
-;1403:	trap_LinkEntity (trigger);
+line 1425
+;1424:
+;1425:	trap_LinkEntity (trigger);
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 1404
-;1404:}
-LABELV $576
+line 1426
+;1426:}
+LABELV $590
 endproc SpawnPlatTrigger 60 4
 export SP_func_plat
 proc SP_func_plat 56 12
-line 1418
-;1405:
-;1406:
-;1407:/*QUAKED func_plat (0 .5 .8) ?
-;1408:Plats are always drawn in the extended position so they will light correctly.
-;1409:
-;1410:"lip"		default 8, protrusion above rest position
-;1411:"height"	total height of movement, defaults to model height
-;1412:"speed"		overrides default 200.
-;1413:"dmg"		overrides default 2
-;1414:"model2"	.md3 model to also draw
-;1415:"color"		constantLight color
-;1416:"light"		constantLight radius
-;1417:*/
-;1418:void SP_func_plat (gentity_t *ent) {
-line 1421
-;1419:	float		lip, height;
-;1420:
-;1421:	ent->sound1to2 = ent->sound2to1 = G_SoundIndex("sound/movers/plats/pt1_strt.wav");
-ADDRGP4 $592
+line 1440
+;1427:
+;1428:
+;1429:/*QUAKED func_plat (0 .5 .8) ?
+;1430:Plats are always drawn in the extended position so they will light correctly.
+;1431:
+;1432:"lip"		default 8, protrusion above rest position
+;1433:"height"	total height of movement, defaults to model height
+;1434:"speed"		overrides default 200.
+;1435:"dmg"		overrides default 2
+;1436:"model2"	.md3 model to also draw
+;1437:"color"		constantLight color
+;1438:"light"		constantLight radius
+;1439:*/
+;1440:void SP_func_plat (gentity_t *ent) {
+line 1443
+;1441:	float		lip, height;
+;1442:
+;1443:	ent->sound1to2 = ent->sound2to1 = G_SoundIndex("sound/movers/plats/pt1_strt.wav");
+ADDRGP4 $606
 ARGP4
 ADDRLP4 8
 ADDRGP4 G_SoundIndex
@@ -9686,9 +9848,9 @@ ADDP4
 ADDRLP4 8
 INDIRI4
 ASGNI4
-line 1422
-;1422:	ent->soundPos1 = ent->soundPos2 = G_SoundIndex("sound/movers/plats/pt1_end.wav");
-ADDRGP4 $593
+line 1444
+;1444:	ent->soundPos1 = ent->soundPos2 = G_SoundIndex("sound/movers/plats/pt1_end.wav");
+ADDRGP4 $607
 ARGP4
 ADDRLP4 16
 ADDRGP4 G_SoundIndex
@@ -9712,9 +9874,9 @@ ADDP4
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 1424
-;1423:
-;1424:	VectorClear (ent->s.angles);
+line 1446
+;1445:
+;1446:	VectorClear (ent->s.angles);
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -9743,12 +9905,12 @@ ADDP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1426
-;1425:
-;1426:	G_SpawnFloat( "speed", "200", &ent->speed );
-ADDRGP4 $594
+line 1448
+;1447:
+;1448:	G_SpawnFloat( "speed", "200", &ent->speed );
+ADDRGP4 $608
 ARGP4
-ADDRGP4 $595
+ADDRGP4 $609
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -9758,11 +9920,11 @@ ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1427
-;1427:	G_SpawnInt( "dmg", "2", &ent->damage );
-ADDRGP4 $516
+line 1449
+;1449:	G_SpawnInt( "dmg", "2", &ent->damage );
+ADDRGP4 $530
 ARGP4
-ADDRGP4 $517
+ADDRGP4 $531
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -9772,11 +9934,11 @@ ARGP4
 ADDRGP4 G_SpawnInt
 CALLI4
 pop
-line 1428
-;1428:	G_SpawnFloat( "wait", "1", &ent->wait );
-ADDRGP4 $596
+line 1450
+;1450:	G_SpawnFloat( "wait", "1", &ent->wait );
+ADDRGP4 $610
 ARGP4
-ADDRGP4 $597
+ADDRGP4 $611
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -9786,30 +9948,30 @@ ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1429
-;1429:	G_SpawnFloat( "lip", "8", &lip );
-ADDRGP4 $514
+line 1451
+;1451:	G_SpawnFloat( "lip", "8", &lip );
+ADDRGP4 $528
 ARGP4
-ADDRGP4 $515
+ADDRGP4 $529
 ARGP4
 ADDRLP4 4
 ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1431
-;1430:
-;1431:	ent->wait = 1000;
+line 1453
+;1452:
+;1453:	ent->wait = 1000;
 ADDRFP4 0
 INDIRP4
 CNSTI4 820
 ADDP4
 CNSTF4 1148846080
 ASGNF4
-line 1434
-;1432:
-;1433:	// create second position
-;1434:	trap_SetBrushModel( ent, ent->model );
+line 1456
+;1454:
+;1455:	// create second position
+;1456:	trap_SetBrushModel( ent, ent->model );
 ADDRLP4 32
 ADDRFP4 0
 INDIRP4
@@ -9826,12 +9988,12 @@ ARGP4
 ADDRGP4 trap_SetBrushModel
 CALLV
 pop
-line 1436
-;1435:
-;1436:	if ( !G_SpawnFloat( "height", "0", &height ) ) {
-ADDRGP4 $600
+line 1458
+;1457:
+;1458:	if ( !G_SpawnFloat( "height", "0", &height ) ) {
+ADDRGP4 $614
 ARGP4
-ADDRGP4 $532
+ADDRGP4 $546
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -9842,9 +10004,9 @@ ASGNI4
 ADDRLP4 36
 INDIRI4
 CNSTI4 0
-NEI4 $598
-line 1437
-;1437:		height = (ent->r.maxs[2] - ent->r.mins[2]) - lip;
+NEI4 $612
+line 1459
+;1459:		height = (ent->r.maxs[2] - ent->r.mins[2]) - lip;
 ADDRLP4 40
 ADDRFP4 0
 INDIRP4
@@ -9865,13 +10027,13 @@ ADDRLP4 4
 INDIRF4
 SUBF4
 ASGNF4
-line 1438
-;1438:	}
-LABELV $598
-line 1441
-;1439:
-;1440:	// pos1 is the rest (bottom) position, pos2 is the top
-;1441:	VectorCopy( ent->s.origin, ent->pos2 );
+line 1460
+;1460:	}
+LABELV $612
+line 1463
+;1461:
+;1462:	// pos1 is the rest (bottom) position, pos2 is the top
+;1463:	VectorCopy( ent->s.origin, ent->pos2 );
 ADDRLP4 40
 ADDRFP4 0
 INDIRP4
@@ -9886,8 +10048,8 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1442
-;1442:	VectorCopy( ent->pos2, ent->pos1 );
+line 1464
+;1464:	VectorCopy( ent->pos2, ent->pos1 );
 ADDRLP4 44
 ADDRFP4 0
 INDIRP4
@@ -9902,8 +10064,8 @@ CNSTI4 632
 ADDP4
 INDIRB
 ASGNB 12
-line 1443
-;1443:	ent->pos1[2] -= height;
+line 1465
+;1465:	ent->pos1[2] -= height;
 ADDRLP4 48
 ADDRFP4 0
 INDIRP4
@@ -9919,38 +10081,38 @@ ADDRLP4 0
 INDIRF4
 SUBF4
 ASGNF4
-line 1445
-;1444:
-;1445:	InitMover( ent );
+line 1467
+;1466:
+;1467:	InitMover( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 InitMover
 CALLV
 pop
-line 1449
-;1446:
-;1447:	// touch function keeps the plat from returning while
-;1448:	// a live player is standing on it
-;1449:	ent->touch = Touch_Plat;
+line 1471
+;1468:
+;1469:	// touch function keeps the plat from returning while
+;1470:	// a live player is standing on it
+;1471:	ent->touch = Touch_Plat;
 ADDRFP4 0
 INDIRP4
 CNSTI4 728
 ADDP4
 ADDRGP4 Touch_Plat
 ASGNP4
-line 1451
-;1450:
-;1451:	ent->blocked = Blocked_Door;
+line 1473
+;1472:
+;1473:	ent->blocked = Blocked_Door;
 ADDRFP4 0
 INDIRP4
 CNSTI4 724
 ADDP4
 ADDRGP4 Blocked_Door
 ASGNP4
-line 1453
-;1452:
-;1453:	ent->parent = ent;	// so it can be treated as a door
+line 1475
+;1474:
+;1475:	ent->parent = ent;	// so it can be treated as a door
 ADDRLP4 52
 ADDRFP4 0
 INDIRP4
@@ -9962,10 +10124,10 @@ ADDP4
 ADDRLP4 52
 INDIRP4
 ASGNP4
-line 1456
-;1454:
-;1455:	// spawn the trigger if one hasn't been custom made
-;1456:	if ( !ent->targetname ) {
+line 1478
+;1476:
+;1477:	// spawn the trigger if one hasn't been custom made
+;1478:	if ( !ent->targetname ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 660
@@ -9973,44 +10135,44 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $601
-line 1457
-;1457:		SpawnPlatTrigger(ent);
+NEU4 $615
+line 1479
+;1479:		SpawnPlatTrigger(ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 SpawnPlatTrigger
 CALLV
 pop
-line 1458
-;1458:	}
-LABELV $601
-line 1459
-;1459:}
-LABELV $591
+line 1480
+;1480:	}
+LABELV $615
+line 1481
+;1481:}
+LABELV $605
 endproc SP_func_plat 56 12
 export Touch_Button
 proc Touch_Button 4 12
-line 1476
-;1460:
-;1461:
-;1462:/*
-;1463:===============================================================================
-;1464:
-;1465:BUTTON
-;1466:
-;1467:===============================================================================
-;1468:*/
-;1469:
-;1470:/*
-;1471:==============
-;1472:Touch_Button
-;1473:
-;1474:===============
-;1475:*/
-;1476:void Touch_Button(gentity_t *ent, gentity_t *other, trace_t *trace ) {
-line 1477
-;1477:	if ( !other->client ) {
+line 1498
+;1482:
+;1483:
+;1484:/*
+;1485:===============================================================================
+;1486:
+;1487:BUTTON
+;1488:
+;1489:===============================================================================
+;1490:*/
+;1491:
+;1492:/*
+;1493:==============
+;1494:Touch_Button
+;1495:
+;1496:===============
+;1497:*/
+;1498:void Touch_Button(gentity_t *ent, gentity_t *other, trace_t *trace ) {
+line 1499
+;1499:	if ( !other->client ) {
 ADDRFP4 4
 INDIRP4
 CNSTI4 524
@@ -10018,25 +10180,25 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $604
-line 1478
-;1478:		return;
-ADDRGP4 $603
+NEU4 $618
+line 1500
+;1500:		return;
+ADDRGP4 $617
 JUMPV
-LABELV $604
-line 1481
-;1479:	}
-;1480:
-;1481:	if ( ent->moverState == MOVER_POS1 ) {
+LABELV $618
+line 1503
+;1501:	}
+;1502:
+;1503:	if ( ent->moverState == MOVER_POS1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 584
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $606
-line 1482
-;1482:		Use_BinaryMover( ent, other, other );
+NEI4 $620
+line 1504
+;1504:		Use_BinaryMover( ent, other, other );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -10053,40 +10215,40 @@ ARGP4
 ADDRGP4 Use_BinaryMover
 CALLV
 pop
-line 1483
-;1483:	}
-LABELV $606
-line 1484
-;1484:}
-LABELV $603
+line 1505
+;1505:	}
+LABELV $620
+line 1506
+;1506:}
+LABELV $617
 endproc Touch_Button 4 12
 export SP_func_button
 proc SP_func_button 84 12
-line 1500
-;1485:
-;1486:
-;1487:/*QUAKED func_button (0 .5 .8) ?
-;1488:When a button is touched, it moves some distance in the direction of it's angle, triggers all of it's targets, waits some time, then returns to it's original position where it can be triggered again.
-;1489:
-;1490:"model2"	.md3 model to also draw
-;1491:"angle"		determines the opening direction
-;1492:"target"	all entities with a matching targetname will be used
-;1493:"speed"		override the default 40 speed
-;1494:"wait"		override the default 1 second wait (-1 = never return)
-;1495:"lip"		override the default 4 pixel lip remaining at end of move
-;1496:"health"	if set, the button must be killed instead of touched
-;1497:"color"		constantLight color
-;1498:"light"		constantLight radius
-;1499:*/
-;1500:void SP_func_button( gentity_t *ent ) {
-line 1506
-;1501:	vec3_t		abs_movedir;
-;1502:	float		distance;
-;1503:	vec3_t		size;
-;1504:	float		lip;
-;1505:
-;1506:	ent->sound1to2 = G_SoundIndex("sound/movers/switches/butn2.wav");
-ADDRGP4 $609
+line 1522
+;1507:
+;1508:
+;1509:/*QUAKED func_button (0 .5 .8) ?
+;1510:When a button is touched, it moves some distance in the direction of it's angle, triggers all of it's targets, waits some time, then returns to it's original position where it can be triggered again.
+;1511:
+;1512:"model2"	.md3 model to also draw
+;1513:"angle"		determines the opening direction
+;1514:"target"	all entities with a matching targetname will be used
+;1515:"speed"		override the default 40 speed
+;1516:"wait"		override the default 1 second wait (-1 = never return)
+;1517:"lip"		override the default 4 pixel lip remaining at end of move
+;1518:"health"	if set, the button must be killed instead of touched
+;1519:"color"		constantLight color
+;1520:"light"		constantLight radius
+;1521:*/
+;1522:void SP_func_button( gentity_t *ent ) {
+line 1528
+;1523:	vec3_t		abs_movedir;
+;1524:	float		distance;
+;1525:	vec3_t		size;
+;1526:	float		lip;
+;1527:
+;1528:	ent->sound1to2 = G_SoundIndex("sound/movers/switches/butn2.wav");
+ADDRGP4 $623
 ARGP4
 ADDRLP4 32
 ADDRGP4 G_SoundIndex
@@ -10099,50 +10261,50 @@ ADDP4
 ADDRLP4 32
 INDIRI4
 ASGNI4
-line 1508
-;1507:	
-;1508:	if ( !ent->speed ) {
+line 1530
+;1529:	
+;1530:	if ( !ent->speed ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $610
-line 1509
-;1509:		ent->speed = 40;
+NEF4 $624
+line 1531
+;1531:		ent->speed = 40;
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 CNSTF4 1109393408
 ASGNF4
-line 1510
-;1510:	}
-LABELV $610
-line 1512
-;1511:
-;1512:	if ( !ent->wait ) {
+line 1532
+;1532:	}
+LABELV $624
+line 1534
+;1533:
+;1534:	if ( !ent->wait ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 820
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $612
-line 1513
-;1513:		ent->wait = 1;
+NEF4 $626
+line 1535
+;1535:		ent->wait = 1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 820
 ADDP4
 CNSTF4 1065353216
 ASGNF4
-line 1514
-;1514:	}
-LABELV $612
-line 1515
-;1515:	ent->wait *= 1000;
+line 1536
+;1536:	}
+LABELV $626
+line 1537
+;1537:	ent->wait *= 1000;
 ADDRLP4 36
 ADDRFP4 0
 INDIRP4
@@ -10157,10 +10319,10 @@ INDIRP4
 INDIRF4
 MULF4
 ASGNF4
-line 1518
-;1516:
-;1517:	// first position
-;1518:	VectorCopy( ent->s.origin, ent->pos1 );
+line 1540
+;1538:
+;1539:	// first position
+;1540:	VectorCopy( ent->s.origin, ent->pos1 );
 ADDRLP4 40
 ADDRFP4 0
 INDIRP4
@@ -10175,10 +10337,10 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1521
-;1519:
-;1520:	// calculate second position
-;1521:	trap_SetBrushModel( ent, ent->model );
+line 1543
+;1541:
+;1542:	// calculate second position
+;1543:	trap_SetBrushModel( ent, ent->model );
 ADDRLP4 44
 ADDRFP4 0
 INDIRP4
@@ -10195,21 +10357,21 @@ ARGP4
 ADDRGP4 trap_SetBrushModel
 CALLV
 pop
-line 1523
-;1522:
-;1523:	G_SpawnFloat( "lip", "4", &lip );
-ADDRGP4 $514
+line 1545
+;1544:
+;1545:	G_SpawnFloat( "lip", "4", &lip );
+ADDRGP4 $528
 ARGP4
-ADDRGP4 $614
+ADDRGP4 $628
 ARGP4
 ADDRLP4 28
 ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1525
-;1524:
-;1525:	G_SetMovedir( ent->s.angles, ent->movedir );
+line 1547
+;1546:
+;1547:	G_SetMovedir( ent->s.angles, ent->movedir );
 ADDRLP4 48
 ADDRFP4 0
 INDIRP4
@@ -10227,8 +10389,8 @@ ARGP4
 ADDRGP4 G_SetMovedir
 CALLV
 pop
-line 1526
-;1526:	abs_movedir[0] = fabs(ent->movedir[0]);
+line 1548
+;1548:	abs_movedir[0] = fabs(ent->movedir[0]);
 ADDRFP4 0
 INDIRP4
 CNSTI4 692
@@ -10243,8 +10405,8 @@ ADDRLP4 0
 ADDRLP4 52
 INDIRF4
 ASGNF4
-line 1527
-;1527:	abs_movedir[1] = fabs(ent->movedir[1]);
+line 1549
+;1549:	abs_movedir[1] = fabs(ent->movedir[1]);
 ADDRFP4 0
 INDIRP4
 CNSTI4 696
@@ -10259,8 +10421,8 @@ ADDRLP4 0+4
 ADDRLP4 56
 INDIRF4
 ASGNF4
-line 1528
-;1528:	abs_movedir[2] = fabs(ent->movedir[2]);
+line 1550
+;1550:	abs_movedir[2] = fabs(ent->movedir[2]);
 ADDRFP4 0
 INDIRP4
 CNSTI4 700
@@ -10275,8 +10437,8 @@ ADDRLP4 0+8
 ADDRLP4 60
 INDIRF4
 ASGNF4
-line 1529
-;1529:	VectorSubtract( ent->r.maxs, ent->r.mins, size );
+line 1551
+;1551:	VectorSubtract( ent->r.maxs, ent->r.mins, size );
 ADDRLP4 64
 ADDRFP4 0
 INDIRP4
@@ -10324,8 +10486,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 1530
-;1530:	distance = abs_movedir[0] * size[0] + abs_movedir[1] * size[1] + abs_movedir[2] * size[2] - lip;
+line 1552
+;1552:	distance = abs_movedir[0] * size[0] + abs_movedir[1] * size[1] + abs_movedir[2] * size[2] - lip;
 ADDRLP4 24
 ADDRLP4 0
 INDIRF4
@@ -10348,8 +10510,8 @@ ADDRLP4 28
 INDIRF4
 SUBF4
 ASGNF4
-line 1531
-;1531:	VectorMA (ent->pos1, distance, ent->movedir, ent->pos2);
+line 1553
+;1553:	VectorMA (ent->pos1, distance, ent->movedir, ent->pos2);
 ADDRLP4 72
 ADDRFP4 0
 INDIRP4
@@ -10419,84 +10581,84 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1533
-;1532:
-;1533:	if (ent->health) {
+line 1555
+;1554:
+;1555:	if (ent->health) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $623
-line 1535
-;1534:		// shootable button
-;1535:		ent->takedamage = qtrue;
+EQI4 $637
+line 1557
+;1556:		// shootable button
+;1557:		ent->takedamage = qtrue;
 ADDRFP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1536
-;1536:	} else {
-ADDRGP4 $624
+line 1558
+;1558:	} else {
+ADDRGP4 $638
 JUMPV
-LABELV $623
-line 1538
-;1537:		// touchable button
-;1538:		ent->touch = Touch_Button;
+LABELV $637
+line 1560
+;1559:		// touchable button
+;1560:		ent->touch = Touch_Button;
 ADDRFP4 0
 INDIRP4
 CNSTI4 728
 ADDP4
 ADDRGP4 Touch_Button
 ASGNP4
-line 1539
-;1539:	}
-LABELV $624
-line 1541
-;1540:
-;1541:	InitMover( ent );
+line 1561
+;1561:	}
+LABELV $638
+line 1563
+;1562:
+;1563:	InitMover( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 InitMover
 CALLV
 pop
-line 1542
-;1542:}
-LABELV $608
+line 1564
+;1564:}
+LABELV $622
 endproc SP_func_button 84 12
 export Think_BeginMoving
 proc Think_BeginMoving 0 0
-line 1566
-;1543:
-;1544:
-;1545:
-;1546:/*
-;1547:===============================================================================
-;1548:
-;1549:TRAIN
-;1550:
-;1551:===============================================================================
-;1552:*/
-;1553:
-;1554:
-;1555:#define TRAIN_START_ON		1
-;1556:#define TRAIN_TOGGLE		2
-;1557:#define TRAIN_BLOCK_STOPS	4
-;1558:
-;1559:/*
-;1560:===============
-;1561:Think_BeginMoving
-;1562:
-;1563:The wait time at a corner has completed, so start moving again
-;1564:===============
-;1565:*/
-;1566:void Think_BeginMoving( gentity_t *ent ) {
-line 1567
-;1567:	ent->s.pos.trTime = level.time;
+line 1588
+;1565:
+;1566:
+;1567:
+;1568:/*
+;1569:===============================================================================
+;1570:
+;1571:TRAIN
+;1572:
+;1573:===============================================================================
+;1574:*/
+;1575:
+;1576:
+;1577:#define TRAIN_START_ON		1
+;1578:#define TRAIN_TOGGLE		2
+;1579:#define TRAIN_BLOCK_STOPS	4
+;1580:
+;1581:/*
+;1582:===============
+;1583:Think_BeginMoving
+;1584:
+;1585:The wait time at a corner has completed, so start moving again
+;1586:===============
+;1587:*/
+;1588:void Think_BeginMoving( gentity_t *ent ) {
+line 1589
+;1589:	ent->s.pos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 16
@@ -10504,36 +10666,36 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1568
-;1568:	ent->s.pos.trType = TR_LINEAR_STOP;
+line 1590
+;1590:	ent->s.pos.trType = TR_LINEAR_STOP;
 ADDRFP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 3
 ASGNI4
-line 1569
-;1569:}
-LABELV $625
+line 1591
+;1591:}
+LABELV $639
 endproc Think_BeginMoving 0 0
 export Reached_Train
 proc Reached_Train 48 12
-line 1576
-;1570:
-;1571:/*
-;1572:===============
-;1573:Reached_Train
-;1574:===============
-;1575:*/
-;1576:void Reached_Train( gentity_t *ent ) {
-line 1583
-;1577:	gentity_t		*next;
-;1578:	float			speed;
-;1579:	vec3_t			move;
-;1580:	float			length;
-;1581:
-;1582:	// copy the apropriate values
-;1583:	next = ent->nextTrain;
+line 1598
+;1592:
+;1593:/*
+;1594:===============
+;1595:Reached_Train
+;1596:===============
+;1597:*/
+;1598:void Reached_Train( gentity_t *ent ) {
+line 1605
+;1599:	gentity_t		*next;
+;1600:	float			speed;
+;1601:	vec3_t			move;
+;1602:	float			length;
+;1603:
+;1604:	// copy the apropriate values
+;1605:	next = ent->nextTrain;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -10541,8 +10703,8 @@ CNSTI4 612
 ADDP4
 INDIRP4
 ASGNP4
-line 1584
-;1584:	if ( !next || !next->nextTrain ) {
+line 1606
+;1606:	if ( !next || !next->nextTrain ) {
 ADDRLP4 28
 CNSTU4 0
 ASGNU4
@@ -10551,7 +10713,7 @@ INDIRP4
 CVPU4 4
 ADDRLP4 28
 INDIRU4
-EQU4 $630
+EQU4 $644
 ADDRLP4 0
 INDIRP4
 CNSTI4 612
@@ -10560,18 +10722,18 @@ INDIRP4
 CVPU4 4
 ADDRLP4 28
 INDIRU4
-NEU4 $628
-LABELV $630
-line 1585
-;1585:		return;		// just stop
-ADDRGP4 $627
+NEU4 $642
+LABELV $644
+line 1607
+;1607:		return;		// just stop
+ADDRGP4 $641
 JUMPV
-LABELV $628
-line 1589
-;1586:	}
-;1587:
-;1588:	// fire all other targets
-;1589:	G_UseTargets( next, NULL );
+LABELV $642
+line 1611
+;1608:	}
+;1609:
+;1610:	// fire all other targets
+;1611:	G_UseTargets( next, NULL );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -10580,10 +10742,10 @@ ARGP4
 ADDRGP4 G_UseTargets
 CALLV
 pop
-line 1592
-;1590:
-;1591:	// set the new trajectory
-;1592:	ent->nextTrain = next->nextTrain;
+line 1614
+;1612:
+;1613:	// set the new trajectory
+;1614:	ent->nextTrain = next->nextTrain;
 ADDRLP4 32
 CNSTI4 612
 ASGNI4
@@ -10599,8 +10761,8 @@ INDIRI4
 ADDP4
 INDIRP4
 ASGNP4
-line 1593
-;1593:	VectorCopy( next->s.origin, ent->pos1 );
+line 1615
+;1615:	VectorCopy( next->s.origin, ent->pos1 );
 ADDRFP4 0
 INDIRP4
 CNSTI4 620
@@ -10611,8 +10773,8 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1594
-;1594:	VectorCopy( next->nextTrain->s.origin, ent->pos2 );
+line 1616
+;1616:	VectorCopy( next->nextTrain->s.origin, ent->pos2 );
 ADDRFP4 0
 INDIRP4
 CNSTI4 632
@@ -10626,19 +10788,19 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1597
-;1595:
-;1596:	// if the path_corner has a speed, use that
-;1597:	if ( next->speed ) {
+line 1619
+;1617:
+;1618:	// if the path_corner has a speed, use that
+;1619:	if ( next->speed ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 INDIRF4
 CNSTF4 0
-EQF4 $631
-line 1598
-;1598:		speed = next->speed;
+EQF4 $645
+line 1620
+;1620:		speed = next->speed;
 ADDRLP4 16
 ADDRLP4 0
 INDIRP4
@@ -10646,14 +10808,14 @@ CNSTI4 680
 ADDP4
 INDIRF4
 ASGNF4
-line 1599
-;1599:	} else {
-ADDRGP4 $632
+line 1621
+;1621:	} else {
+ADDRGP4 $646
 JUMPV
-LABELV $631
-line 1601
-;1600:		// otherwise use the train's speed
-;1601:		speed = ent->speed;
+LABELV $645
+line 1623
+;1622:		// otherwise use the train's speed
+;1623:		speed = ent->speed;
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -10661,27 +10823,27 @@ CNSTI4 680
 ADDP4
 INDIRF4
 ASGNF4
-line 1602
-;1602:	}
-LABELV $632
-line 1603
-;1603:	if ( speed < 1 ) {
+line 1624
+;1624:	}
+LABELV $646
+line 1625
+;1625:	if ( speed < 1 ) {
 ADDRLP4 16
 INDIRF4
 CNSTF4 1065353216
-GEF4 $633
-line 1604
-;1604:		speed = 1;
+GEF4 $647
+line 1626
+;1626:		speed = 1;
 ADDRLP4 16
 CNSTF4 1065353216
 ASGNF4
-line 1605
-;1605:	}
-LABELV $633
-line 1608
-;1606:
-;1607:	// calculate duration
-;1608:	VectorSubtract( ent->pos2, ent->pos1, move );
+line 1627
+;1627:	}
+LABELV $647
+line 1630
+;1628:
+;1629:	// calculate duration
+;1630:	VectorSubtract( ent->pos2, ent->pos1, move );
 ADDRLP4 36
 ADDRFP4 0
 INDIRP4
@@ -10729,8 +10891,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 1609
-;1609:	length = VectorLength( move );
+line 1631
+;1631:	length = VectorLength( move );
 ADDRLP4 4
 ARGP4
 ADDRLP4 44
@@ -10741,9 +10903,9 @@ ADDRLP4 20
 ADDRLP4 44
 INDIRF4
 ASGNF4
-line 1611
-;1610:
-;1611:	ent->s.pos.trDuration = length * 1000 / speed;
+line 1633
+;1632:
+;1633:	ent->s.pos.trDuration = length * 1000 / speed;
 ADDRFP4 0
 INDIRP4
 CNSTI4 20
@@ -10757,10 +10919,10 @@ INDIRF4
 DIVF4
 CVFI4 4
 ASGNI4
-line 1614
-;1612:
-;1613:	// looping sound
-;1614:	ent->s.loopSound = next->soundLoop;
+line 1636
+;1634:
+;1635:	// looping sound
+;1636:	ent->s.loopSound = next->soundLoop;
 ADDRFP4 0
 INDIRP4
 CNSTI4 156
@@ -10771,10 +10933,10 @@ CNSTI4 604
 ADDP4
 INDIRI4
 ASGNI4
-line 1617
-;1615:
-;1616:	// start it going
-;1617:	SetMoverState( ent, MOVER_1TO2, level.time );
+line 1639
+;1637:
+;1638:	// start it going
+;1639:	SetMoverState( ent, MOVER_1TO2, level.time );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -10786,19 +10948,19 @@ ARGI4
 ADDRGP4 SetMoverState
 CALLV
 pop
-line 1620
-;1618:
-;1619:	// if there is a "wait" value on the target, don't start moving yet
-;1620:	if ( next->wait ) {
+line 1642
+;1640:
+;1641:	// if there is a "wait" value on the target, don't start moving yet
+;1642:	if ( next->wait ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 820
 ADDP4
 INDIRF4
 CNSTF4 0
-EQF4 $638
-line 1621
-;1621:		ent->nextthink = level.time + next->wait * 1000;
+EQF4 $652
+line 1643
+;1643:		ent->nextthink = level.time + next->wait * 1000;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -10816,46 +10978,46 @@ MULF4
 ADDF4
 CVFI4 4
 ASGNI4
-line 1622
-;1622:		ent->think = Think_BeginMoving;
+line 1644
+;1644:		ent->think = Think_BeginMoving;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 Think_BeginMoving
 ASGNP4
-line 1623
-;1623:		ent->s.pos.trType = TR_STATIONARY;
+line 1645
+;1645:		ent->s.pos.trType = TR_STATIONARY;
 ADDRFP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1624
-;1624:	}
-LABELV $638
-line 1625
-;1625:}
-LABELV $627
+line 1646
+;1646:	}
+LABELV $652
+line 1647
+;1647:}
+LABELV $641
 endproc Reached_Train 48 12
 export Think_SetupTrainTargets
 proc Think_SetupTrainTargets 28 12
-line 1635
-;1626:
-;1627:
-;1628:/*
-;1629:===============
-;1630:Think_SetupTrainTargets
-;1631:
-;1632:Link all the corners together
-;1633:===============
-;1634:*/
-;1635:void Think_SetupTrainTargets( gentity_t *ent ) {
-line 1638
-;1636:	gentity_t		*path, *next, *start;
-;1637:
-;1638:	ent->nextTrain = G_Find( NULL, FOFS(targetname), ent->target );
+line 1657
+;1648:
+;1649:
+;1650:/*
+;1651:===============
+;1652:Think_SetupTrainTargets
+;1653:
+;1654:Link all the corners together
+;1655:===============
+;1656:*/
+;1657:void Think_SetupTrainTargets( gentity_t *ent ) {
+line 1660
+;1658:	gentity_t		*path, *next, *start;
+;1659:
+;1660:	ent->nextTrain = G_Find( NULL, FOFS(targetname), ent->target );
 CNSTP4 0
 ARGP4
 CNSTI4 660
@@ -10881,8 +11043,8 @@ ADDP4
 ADDRLP4 16
 INDIRP4
 ASGNP4
-line 1639
-;1639:	if ( !ent->nextTrain ) {
+line 1661
+;1661:	if ( !ent->nextTrain ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 612
@@ -10890,9 +11052,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $642
-line 1640
-;1640:		G_Printf( "func_train at %s with an unfound target\n",
+NEU4 $656
+line 1662
+;1662:		G_Printf( "func_train at %s with an unfound target\n",
 ADDRFP4 0
 INDIRP4
 CNSTI4 472
@@ -10902,7 +11064,7 @@ ADDRLP4 20
 ADDRGP4 vtos
 CALLP4
 ASGNP4
-ADDRGP4 $644
+ADDRGP4 $658
 ARGP4
 ADDRLP4 20
 INDIRP4
@@ -10910,21 +11072,21 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 1642
-;1641:			vtos(ent->r.absmin) );
-;1642:		return;
-ADDRGP4 $641
+line 1664
+;1663:			vtos(ent->r.absmin) );
+;1664:		return;
+ADDRGP4 $655
 JUMPV
-LABELV $642
-line 1645
-;1643:	}
-;1644:
-;1645:	start = NULL;
+LABELV $656
+line 1667
+;1665:	}
+;1666:
+;1667:	start = NULL;
 ADDRLP4 8
 CNSTP4 0
 ASGNP4
-line 1646
-;1646:	for ( path = ent->nextTrain ; path != start ; path = next ) {
+line 1668
+;1668:	for ( path = ent->nextTrain ; path != start ; path = next ) {
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -10932,28 +11094,28 @@ CNSTI4 612
 ADDP4
 INDIRP4
 ASGNP4
-ADDRGP4 $648
+ADDRGP4 $662
 JUMPV
-LABELV $645
-line 1647
-;1647:		if ( !start ) {
+LABELV $659
+line 1669
+;1669:		if ( !start ) {
 ADDRLP4 8
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $649
-line 1648
-;1648:			start = path;
+NEU4 $663
+line 1670
+;1670:			start = path;
 ADDRLP4 8
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 1649
-;1649:		}
-LABELV $649
-line 1651
-;1650:
-;1651:		if ( !path->target ) {
+line 1671
+;1671:		}
+LABELV $663
+line 1673
+;1672:
+;1673:		if ( !path->target ) {
 ADDRLP4 4
 INDIRP4
 CNSTI4 656
@@ -10961,9 +11123,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $651
-line 1652
-;1652:			G_Printf( "Train corner at %s without a target\n",
+NEU4 $665
+line 1674
+;1674:			G_Printf( "Train corner at %s without a target\n",
 ADDRLP4 4
 INDIRP4
 CNSTI4 92
@@ -10973,7 +11135,7 @@ ADDRLP4 20
 ADDRGP4 vtos
 CALLP4
 ASGNP4
-ADDRGP4 $653
+ADDRGP4 $667
 ARGP4
 ADDRLP4 20
 INDIRP4
@@ -10981,27 +11143,27 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 1654
-;1653:				vtos(path->s.origin) );
-;1654:			return;
-ADDRGP4 $641
+line 1676
+;1675:				vtos(path->s.origin) );
+;1676:			return;
+ADDRGP4 $655
 JUMPV
-LABELV $651
-line 1660
-;1655:		}
-;1656:
-;1657:		// find a path_corner among the targets
-;1658:		// there may also be other targets that get fired when the corner
-;1659:		// is reached
-;1660:		next = NULL;
+LABELV $665
+line 1682
+;1677:		}
+;1678:
+;1679:		// find a path_corner among the targets
+;1680:		// there may also be other targets that get fired when the corner
+;1681:		// is reached
+;1682:		next = NULL;
 ADDRLP4 0
 CNSTP4 0
 ASGNP4
-LABELV $654
-line 1661
-;1661:		do {
-line 1662
-;1662:			next = G_Find( next, FOFS(targetname), path->target );
+LABELV $668
+line 1683
+;1683:		do {
+line 1684
+;1684:			next = G_Find( next, FOFS(targetname), path->target );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -11021,15 +11183,15 @@ ADDRLP4 0
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 1663
-;1663:			if ( !next ) {
+line 1685
+;1685:			if ( !next ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $657
-line 1664
-;1664:				G_Printf( "Train corner at %s without a target path_corner\n",
+NEU4 $671
+line 1686
+;1686:				G_Printf( "Train corner at %s without a target path_corner\n",
 ADDRLP4 4
 INDIRP4
 CNSTI4 92
@@ -11039,7 +11201,7 @@ ADDRLP4 24
 ADDRGP4 vtos
 CALLP4
 ASGNP4
-ADDRGP4 $659
+ADDRGP4 $673
 ARGP4
 ADDRLP4 24
 INDIRP4
@@ -11047,23 +11209,23 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 1666
-;1665:					vtos(path->s.origin) );
-;1666:				return;
-ADDRGP4 $641
+line 1688
+;1687:					vtos(path->s.origin) );
+;1688:				return;
+ADDRGP4 $655
 JUMPV
-LABELV $657
-line 1668
-;1667:			}
-;1668:		} while ( strcmp( next->classname, "path_corner" ) );
-LABELV $655
+LABELV $671
+line 1690
+;1689:			}
+;1690:		} while ( strcmp( next->classname, "path_corner" ) );
+LABELV $669
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
 INDIRP4
 ARGP4
-ADDRGP4 $660
+ADDRGP4 $674
 ARGP4
 ADDRLP4 20
 ADDRGP4 strcmp
@@ -11072,10 +11234,10 @@ ASGNI4
 ADDRLP4 20
 INDIRI4
 CNSTI4 0
-NEI4 $654
-line 1670
-;1669:
-;1670:		path->nextTrain = next;
+NEI4 $668
+line 1692
+;1691:
+;1692:		path->nextTrain = next;
 ADDRLP4 4
 INDIRP4
 CNSTI4 612
@@ -11083,51 +11245,51 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 1671
-;1671:	}
-LABELV $646
-line 1646
+line 1693
+;1693:	}
+LABELV $660
+line 1668
 ADDRLP4 4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-LABELV $648
+LABELV $662
 ADDRLP4 4
 INDIRP4
 CVPU4 4
 ADDRLP4 8
 INDIRP4
 CVPU4 4
-NEU4 $645
-line 1674
-;1672:
-;1673:	// start the train moving from the first corner
-;1674:	Reached_Train( ent );
+NEU4 $659
+line 1696
+;1694:
+;1695:	// start the train moving from the first corner
+;1696:	Reached_Train( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Reached_Train
 CALLV
 pop
-line 1675
-;1675:}
-LABELV $641
+line 1697
+;1697:}
+LABELV $655
 endproc Think_SetupTrainTargets 28 12
 export SP_path_corner
 proc SP_path_corner 4 8
-line 1685
-;1676:
-;1677:
-;1678:
-;1679:/*QUAKED path_corner (.5 .3 0) (-8 -8 -8) (8 8 8)
-;1680:Train path corners.
-;1681:Target: next path corner and other targets to fire
-;1682:"speed" speed to move to the next corner
-;1683:"wait" seconds to wait before behining move to next corner
-;1684:*/
-;1685:void SP_path_corner( gentity_t *self ) {
-line 1686
-;1686:	if ( !self->targetname ) {
+line 1707
+;1698:
+;1699:
+;1700:
+;1701:/*QUAKED path_corner (.5 .3 0) (-8 -8 -8) (8 8 8)
+;1702:Train path corners.
+;1703:Target: next path corner and other targets to fire
+;1704:"speed" speed to move to the next corner
+;1705:"wait" seconds to wait before behining move to next corner
+;1706:*/
+;1707:void SP_path_corner( gentity_t *self ) {
+line 1708
+;1708:	if ( !self->targetname ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 660
@@ -11135,9 +11297,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $662
-line 1687
-;1687:		G_Printf ("path_corner with no targetname at %s\n", vtos(self->s.origin));
+NEU4 $676
+line 1709
+;1709:		G_Printf ("path_corner with no targetname at %s\n", vtos(self->s.origin));
 ADDRFP4 0
 INDIRP4
 CNSTI4 92
@@ -11147,7 +11309,7 @@ ADDRLP4 0
 ADDRGP4 vtos
 CALLP4
 ASGNP4
-ADDRGP4 $664
+ADDRGP4 $678
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -11155,44 +11317,44 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 1688
-;1688:		G_FreeEntity( self );
+line 1710
+;1710:		G_FreeEntity( self );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 1689
-;1689:		return;
-LABELV $662
-line 1692
-;1690:	}
-;1691:	// path corners don't need to be linked in
-;1692:}
-LABELV $661
+line 1711
+;1711:		return;
+LABELV $676
+line 1714
+;1712:	}
+;1713:	// path corners don't need to be linked in
+;1714:}
+LABELV $675
 endproc SP_path_corner 4 8
 export SP_func_train
 proc SP_func_train 12 8
-line 1708
-;1693:
-;1694:
-;1695:
-;1696:/*QUAKED func_train (0 .5 .8) ? START_ON TOGGLE BLOCK_STOPS
-;1697:A train is a mover that moves between path_corner target points.
-;1698:Trains MUST HAVE AN ORIGIN BRUSH.
-;1699:The train spawns at the first target it is pointing at.
-;1700:"model2"	.md3 model to also draw
-;1701:"speed"		default 100
-;1702:"dmg"		default	2
-;1703:"noise"		looping sound to play when the train is in motion
-;1704:"target"	next path corner
-;1705:"color"		constantLight color
-;1706:"light"		constantLight radius
-;1707:*/
-;1708:void SP_func_train (gentity_t *self) {
-line 1709
-;1709:	VectorClear (self->s.angles);
+line 1730
+;1715:
+;1716:
+;1717:
+;1718:/*QUAKED func_train (0 .5 .8) ? START_ON TOGGLE BLOCK_STOPS
+;1719:A train is a mover that moves between path_corner target points.
+;1720:Trains MUST HAVE AN ORIGIN BRUSH.
+;1721:The train spawns at the first target it is pointing at.
+;1722:"model2"	.md3 model to also draw
+;1723:"speed"		default 100
+;1724:"dmg"		default	2
+;1725:"noise"		looping sound to play when the train is in motion
+;1726:"target"	next path corner
+;1727:"color"		constantLight color
+;1728:"light"		constantLight radius
+;1729:*/
+;1730:void SP_func_train (gentity_t *self) {
+line 1731
+;1731:	VectorClear (self->s.angles);
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -11221,9 +11383,9 @@ ADDP4
 ADDRLP4 4
 INDIRF4
 ASGNF4
-line 1711
-;1710:
-;1711:	if (self->spawnflags & TRAIN_BLOCK_STOPS) {
+line 1733
+;1732:
+;1733:	if (self->spawnflags & TRAIN_BLOCK_STOPS) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -11232,67 +11394,67 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-EQI4 $666
-line 1712
-;1712:		self->damage = 0;
+EQI4 $680
+line 1734
+;1734:		self->damage = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1713
-;1713:	} else {
-ADDRGP4 $667
+line 1735
+;1735:	} else {
+ADDRGP4 $681
 JUMPV
-LABELV $666
-line 1714
-;1714:		if (!self->damage) {
+LABELV $680
+line 1736
+;1736:		if (!self->damage) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $668
-line 1715
-;1715:			self->damage = 2;
+NEI4 $682
+line 1737
+;1737:			self->damage = 2;
 ADDRFP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
 CNSTI4 2
 ASGNI4
-line 1716
-;1716:		}
-LABELV $668
-line 1717
-;1717:	}
-LABELV $667
-line 1719
-;1718:
-;1719:	if ( !self->speed ) {
+line 1738
+;1738:		}
+LABELV $682
+line 1739
+;1739:	}
+LABELV $681
+line 1741
+;1740:
+;1741:	if ( !self->speed ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $670
-line 1720
-;1720:		self->speed = 100;
+NEF4 $684
+line 1742
+;1742:		self->speed = 100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 CNSTF4 1120403456
 ASGNF4
-line 1721
-;1721:	}
-LABELV $670
-line 1723
-;1722:
-;1723:	if ( !self->target ) {
+line 1743
+;1743:	}
+LABELV $684
+line 1745
+;1744:
+;1745:	if ( !self->target ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 656
@@ -11300,9 +11462,9 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $672
-line 1724
-;1724:		G_Printf ("func_train without a target at %s\n", vtos(self->r.absmin));
+NEU4 $686
+line 1746
+;1746:		G_Printf ("func_train without a target at %s\n", vtos(self->r.absmin));
 ADDRFP4 0
 INDIRP4
 CNSTI4 472
@@ -11312,7 +11474,7 @@ ADDRLP4 8
 ADDRGP4 vtos
 CALLP4
 ASGNP4
-ADDRGP4 $674
+ADDRGP4 $688
 ARGP4
 ADDRLP4 8
 INDIRP4
@@ -11320,23 +11482,23 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 1725
-;1725:		G_FreeEntity( self );
+line 1747
+;1747:		G_FreeEntity( self );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 G_FreeEntity
 CALLV
 pop
-line 1726
-;1726:		return;
-ADDRGP4 $665
+line 1748
+;1748:		return;
+ADDRGP4 $679
 JUMPV
-LABELV $672
-line 1729
-;1727:	}
-;1728:
-;1729:	trap_SetBrushModel( self, self->model );
+LABELV $686
+line 1751
+;1749:	}
+;1750:
+;1751:	trap_SetBrushModel( self, self->model );
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -11353,28 +11515,28 @@ ARGP4
 ADDRGP4 trap_SetBrushModel
 CALLV
 pop
-line 1730
-;1730:	InitMover( self );
+line 1752
+;1752:	InitMover( self );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 InitMover
 CALLV
 pop
-line 1732
-;1731:
-;1732:	self->reached = Reached_Train;
+line 1754
+;1753:
+;1754:	self->reached = Reached_Train;
 ADDRFP4 0
 INDIRP4
 CNSTI4 720
 ADDP4
 ADDRGP4 Reached_Train
 ASGNP4
-line 1736
-;1733:
-;1734:	// start trains on the second frame, to make sure their targets have had
-;1735:	// a chance to spawn
-;1736:	self->nextthink = level.time + FRAMETIME;
+line 1758
+;1755:
+;1756:	// start trains on the second frame, to make sure their targets have had
+;1757:	// a chance to spawn
+;1758:	self->nextthink = level.time + FRAMETIME;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -11384,40 +11546,40 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 1737
-;1737:	self->think = Think_SetupTrainTargets;
+line 1759
+;1759:	self->think = Think_SetupTrainTargets;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 Think_SetupTrainTargets
 ASGNP4
-line 1738
-;1738:}
-LABELV $665
+line 1760
+;1760:}
+LABELV $679
 endproc SP_func_train 12 8
 export SP_func_static
 proc SP_func_static 12 8
-line 1755
-;1739:
-;1740:/*
-;1741:===============================================================================
-;1742:
-;1743:STATIC
-;1744:
-;1745:===============================================================================
-;1746:*/
-;1747:
-;1748:
-;1749:/*QUAKED func_static (0 .5 .8) ?
-;1750:A bmodel that just sits there, doing nothing.  Can be used for conditional walls and models.
-;1751:"model2"	.md3 model to also draw
-;1752:"color"		constantLight color
-;1753:"light"		constantLight radius
-;1754:*/
-;1755:void SP_func_static( gentity_t *ent ) {
-line 1756
-;1756:	trap_SetBrushModel( ent, ent->model );
+line 1777
+;1761:
+;1762:/*
+;1763:===============================================================================
+;1764:
+;1765:STATIC
+;1766:
+;1767:===============================================================================
+;1768:*/
+;1769:
+;1770:
+;1771:/*QUAKED func_static (0 .5 .8) ?
+;1772:A bmodel that just sits there, doing nothing.  Can be used for conditional walls and models.
+;1773:"model2"	.md3 model to also draw
+;1774:"color"		constantLight color
+;1775:"light"		constantLight radius
+;1776:*/
+;1777:void SP_func_static( gentity_t *ent ) {
+line 1778
+;1778:	trap_SetBrushModel( ent, ent->model );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -11434,16 +11596,16 @@ ARGP4
 ADDRGP4 trap_SetBrushModel
 CALLV
 pop
-line 1757
-;1757:	InitMover( ent );
+line 1779
+;1779:	InitMover( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 InitMover
 CALLV
 pop
-line 1758
-;1758:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
+line 1780
+;1780:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -11458,8 +11620,8 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1759
-;1759:	VectorCopy( ent->s.origin, ent->r.currentOrigin );
+line 1781
+;1781:	VectorCopy( ent->s.origin, ent->r.currentOrigin );
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -11474,68 +11636,68 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1760
-;1760:}
-LABELV $676
+line 1782
+;1782:}
+LABELV $690
 endproc SP_func_static 12 8
 export SP_func_rotating
 proc SP_func_rotating 16 8
-line 1783
-;1761:
-;1762:
-;1763:/*
-;1764:===============================================================================
-;1765:
-;1766:ROTATING
-;1767:
-;1768:===============================================================================
-;1769:*/
-;1770:
-;1771:
-;1772:/*QUAKED func_rotating (0 .5 .8) ? START_ON - X_AXIS Y_AXIS
-;1773:You need to have an origin brush as part of this entity.  The center of that brush will be
-;1774:the point around which it is rotated. It will rotate around the Z axis by default.  You can
-;1775:check either the X_AXIS or Y_AXIS box to change that.
-;1776:
-;1777:"model2"	.md3 model to also draw
-;1778:"speed"		determines how fast it moves; default value is 100.
-;1779:"dmg"		damage to inflict when blocked (2 default)
-;1780:"color"		constantLight color
-;1781:"light"		constantLight radius
-;1782:*/
-;1783:void SP_func_rotating (gentity_t *ent) {
-line 1784
-;1784:	if ( !ent->speed ) {
+line 1805
+;1783:
+;1784:
+;1785:/*
+;1786:===============================================================================
+;1787:
+;1788:ROTATING
+;1789:
+;1790:===============================================================================
+;1791:*/
+;1792:
+;1793:
+;1794:/*QUAKED func_rotating (0 .5 .8) ? START_ON - X_AXIS Y_AXIS
+;1795:You need to have an origin brush as part of this entity.  The center of that brush will be
+;1796:the point around which it is rotated. It will rotate around the Z axis by default.  You can
+;1797:check either the X_AXIS or Y_AXIS box to change that.
+;1798:
+;1799:"model2"	.md3 model to also draw
+;1800:"speed"		determines how fast it moves; default value is 100.
+;1801:"dmg"		damage to inflict when blocked (2 default)
+;1802:"color"		constantLight color
+;1803:"light"		constantLight radius
+;1804:*/
+;1805:void SP_func_rotating (gentity_t *ent) {
+line 1806
+;1806:	if ( !ent->speed ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $678
-line 1785
-;1785:		ent->speed = 100;
+NEF4 $692
+line 1807
+;1807:		ent->speed = 100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 680
 ADDP4
 CNSTF4 1120403456
 ASGNF4
-line 1786
-;1786:	}
-LABELV $678
-line 1789
-;1787:
-;1788:	// set the axis of rotation
-;1789:	ent->s.apos.trType = TR_LINEAR;
+line 1808
+;1808:	}
+LABELV $692
+line 1811
+;1809:
+;1810:	// set the axis of rotation
+;1811:	ent->s.apos.trType = TR_LINEAR;
 ADDRFP4 0
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 2
 ASGNI4
-line 1790
-;1790:	if ( ent->spawnflags & 4 ) {
+line 1812
+;1812:	if ( ent->spawnflags & 4 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -11544,9 +11706,9 @@ INDIRI4
 CNSTI4 4
 BANDI4
 CNSTI4 0
-EQI4 $680
-line 1791
-;1791:		ent->s.apos.trDelta[2] = ent->speed;
+EQI4 $694
+line 1813
+;1813:		ent->s.apos.trDelta[2] = ent->speed;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -11561,11 +11723,11 @@ CNSTI4 680
 ADDP4
 INDIRF4
 ASGNF4
-line 1792
-;1792:	} else if ( ent->spawnflags & 8 ) {
-ADDRGP4 $681
+line 1814
+;1814:	} else if ( ent->spawnflags & 8 ) {
+ADDRGP4 $695
 JUMPV
-LABELV $680
+LABELV $694
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -11574,9 +11736,9 @@ INDIRI4
 CNSTI4 8
 BANDI4
 CNSTI4 0
-EQI4 $682
-line 1793
-;1793:		ent->s.apos.trDelta[0] = ent->speed;
+EQI4 $696
+line 1815
+;1815:		ent->s.apos.trDelta[0] = ent->speed;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -11591,13 +11753,13 @@ CNSTI4 680
 ADDP4
 INDIRF4
 ASGNF4
-line 1794
-;1794:	} else {
-ADDRGP4 $683
+line 1816
+;1816:	} else {
+ADDRGP4 $697
 JUMPV
-LABELV $682
-line 1795
-;1795:		ent->s.apos.trDelta[1] = ent->speed;
+LABELV $696
+line 1817
+;1817:		ent->s.apos.trDelta[1] = ent->speed;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -11612,34 +11774,34 @@ CNSTI4 680
 ADDP4
 INDIRF4
 ASGNF4
-line 1796
-;1796:	}
-LABELV $683
-LABELV $681
-line 1798
-;1797:
-;1798:	if (!ent->damage) {
+line 1818
+;1818:	}
+LABELV $697
+LABELV $695
+line 1820
+;1819:
+;1820:	if (!ent->damage) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $684
-line 1799
-;1799:		ent->damage = 2;
+NEI4 $698
+line 1821
+;1821:		ent->damage = 2;
 ADDRFP4 0
 INDIRP4
 CNSTI4 764
 ADDP4
 CNSTI4 2
 ASGNI4
-line 1800
-;1800:	}
-LABELV $684
-line 1802
-;1801:
-;1802:	trap_SetBrushModel( ent, ent->model );
+line 1822
+;1822:	}
+LABELV $698
+line 1824
+;1823:
+;1824:	trap_SetBrushModel( ent, ent->model );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -11656,17 +11818,17 @@ ARGP4
 ADDRGP4 trap_SetBrushModel
 CALLV
 pop
-line 1803
-;1803:	InitMover( ent );
+line 1825
+;1825:	InitMover( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 InitMover
 CALLV
 pop
-line 1805
-;1804:
-;1805:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
+line 1827
+;1826:
+;1827:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -11681,8 +11843,8 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1806
-;1806:	VectorCopy( ent->s.pos.trBase, ent->r.currentOrigin );
+line 1828
+;1828:	VectorCopy( ent->s.pos.trBase, ent->r.currentOrigin );
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -11697,8 +11859,8 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 1807
-;1807:	VectorCopy( ent->s.apos.trBase, ent->r.currentAngles );
+line 1829
+;1829:	VectorCopy( ent->s.apos.trBase, ent->r.currentAngles );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -11713,52 +11875,52 @@ CNSTI4 60
 ADDP4
 INDIRB
 ASGNB 12
-line 1809
-;1808:
-;1809:	trap_LinkEntity( ent );
+line 1831
+;1830:
+;1831:	trap_LinkEntity( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 1810
-;1810:}
-LABELV $677
+line 1832
+;1832:}
+LABELV $691
 endproc SP_func_rotating 16 8
 export SP_func_bobbing
 proc SP_func_bobbing 28 12
-line 1832
-;1811:
-;1812:
-;1813:/*
-;1814:===============================================================================
-;1815:
-;1816:BOBBING
-;1817:
-;1818:===============================================================================
-;1819:*/
-;1820:
-;1821:
-;1822:/*QUAKED func_bobbing (0 .5 .8) ? X_AXIS Y_AXIS
-;1823:Normally bobs on the Z axis
-;1824:"model2"	.md3 model to also draw
-;1825:"height"	amplitude of bob (32 default)
-;1826:"speed"		seconds to complete a bob cycle (4 default)
-;1827:"phase"		the 0.0 to 1.0 offset in the cycle to start at
-;1828:"dmg"		damage to inflict when blocked (2 default)
-;1829:"color"		constantLight color
-;1830:"light"		constantLight radius
-;1831:*/
-;1832:void SP_func_bobbing (gentity_t *ent) {
-line 1836
-;1833:	float		height;
-;1834:	float		phase;
-;1835:
-;1836:	G_SpawnFloat( "speed", "4", &ent->speed );
-ADDRGP4 $594
+line 1854
+;1833:
+;1834:
+;1835:/*
+;1836:===============================================================================
+;1837:
+;1838:BOBBING
+;1839:
+;1840:===============================================================================
+;1841:*/
+;1842:
+;1843:
+;1844:/*QUAKED func_bobbing (0 .5 .8) ? X_AXIS Y_AXIS
+;1845:Normally bobs on the Z axis
+;1846:"model2"	.md3 model to also draw
+;1847:"height"	amplitude of bob (32 default)
+;1848:"speed"		seconds to complete a bob cycle (4 default)
+;1849:"phase"		the 0.0 to 1.0 offset in the cycle to start at
+;1850:"dmg"		damage to inflict when blocked (2 default)
+;1851:"color"		constantLight color
+;1852:"light"		constantLight radius
+;1853:*/
+;1854:void SP_func_bobbing (gentity_t *ent) {
+line 1858
+;1855:	float		height;
+;1856:	float		phase;
+;1857:
+;1858:	G_SpawnFloat( "speed", "4", &ent->speed );
+ADDRGP4 $608
 ARGP4
-ADDRGP4 $614
+ADDRGP4 $628
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -11768,22 +11930,22 @@ ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1837
-;1837:	G_SpawnFloat( "height", "32", &height );
-ADDRGP4 $600
+line 1859
+;1859:	G_SpawnFloat( "height", "32", &height );
+ADDRGP4 $614
 ARGP4
-ADDRGP4 $687
+ADDRGP4 $701
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1838
-;1838:	G_SpawnInt( "dmg", "2", &ent->damage );
-ADDRGP4 $516
+line 1860
+;1860:	G_SpawnInt( "dmg", "2", &ent->damage );
+ADDRGP4 $530
 ARGP4
-ADDRGP4 $517
+ADDRGP4 $531
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -11793,20 +11955,20 @@ ARGP4
 ADDRGP4 G_SpawnInt
 CALLI4
 pop
-line 1839
-;1839:	G_SpawnFloat( "phase", "0", &phase );
-ADDRGP4 $688
+line 1861
+;1861:	G_SpawnFloat( "phase", "0", &phase );
+ADDRGP4 $702
 ARGP4
-ADDRGP4 $532
+ADDRGP4 $546
 ARGP4
 ADDRLP4 4
 ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1841
-;1840:
-;1841:	trap_SetBrushModel( ent, ent->model );
+line 1863
+;1862:
+;1863:	trap_SetBrushModel( ent, ent->model );
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -11823,17 +11985,17 @@ ARGP4
 ADDRGP4 trap_SetBrushModel
 CALLV
 pop
-line 1842
-;1842:	InitMover( ent );
+line 1864
+;1864:	InitMover( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 InitMover
 CALLV
 pop
-line 1844
-;1843:
-;1844:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
+line 1866
+;1865:
+;1866:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -11848,8 +12010,8 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1845
-;1845:	VectorCopy( ent->s.origin, ent->r.currentOrigin );
+line 1867
+;1867:	VectorCopy( ent->s.origin, ent->r.currentOrigin );
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -11864,9 +12026,9 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1847
-;1846:
-;1847:	ent->s.pos.trDuration = ent->speed * 1000;
+line 1869
+;1868:
+;1869:	ent->s.pos.trDuration = ent->speed * 1000;
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -11884,8 +12046,8 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 1848
-;1848:	ent->s.pos.trTime = ent->s.pos.trDuration * phase;
+line 1870
+;1870:	ent->s.pos.trTime = ent->s.pos.trDuration * phase;
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -11905,18 +12067,18 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 1849
-;1849:	ent->s.pos.trType = TR_SINE;
+line 1871
+;1871:	ent->s.pos.trType = TR_SINE;
 ADDRFP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 4
 ASGNI4
-line 1852
-;1850:
-;1851:	// set the axis of bobbing
-;1852:	if ( ent->spawnflags & 1 ) {
+line 1874
+;1872:
+;1873:	// set the axis of bobbing
+;1874:	if ( ent->spawnflags & 1 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -11925,9 +12087,9 @@ INDIRI4
 CNSTI4 1
 BANDI4
 CNSTI4 0
-EQI4 $689
-line 1853
-;1853:		ent->s.pos.trDelta[0] = height;
+EQI4 $703
+line 1875
+;1875:		ent->s.pos.trDelta[0] = height;
 ADDRFP4 0
 INDIRP4
 CNSTI4 36
@@ -11935,11 +12097,11 @@ ADDP4
 ADDRLP4 0
 INDIRF4
 ASGNF4
-line 1854
-;1854:	} else if ( ent->spawnflags & 2 ) {
-ADDRGP4 $690
+line 1876
+;1876:	} else if ( ent->spawnflags & 2 ) {
+ADDRGP4 $704
 JUMPV
-LABELV $689
+LABELV $703
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -11948,9 +12110,9 @@ INDIRI4
 CNSTI4 2
 BANDI4
 CNSTI4 0
-EQI4 $691
-line 1855
-;1855:		ent->s.pos.trDelta[1] = height;
+EQI4 $705
+line 1877
+;1877:		ent->s.pos.trDelta[1] = height;
 ADDRFP4 0
 INDIRP4
 CNSTI4 40
@@ -11958,13 +12120,13 @@ ADDP4
 ADDRLP4 0
 INDIRF4
 ASGNF4
-line 1856
-;1856:	} else {
-ADDRGP4 $692
+line 1878
+;1878:	} else {
+ADDRGP4 $706
 JUMPV
-LABELV $691
-line 1857
-;1857:		ent->s.pos.trDelta[2] = height;
+LABELV $705
+line 1879
+;1879:		ent->s.pos.trDelta[2] = height;
 ADDRFP4 0
 INDIRP4
 CNSTI4 44
@@ -11972,60 +12134,60 @@ ADDP4
 ADDRLP4 0
 INDIRF4
 ASGNF4
-line 1858
-;1858:	}
-LABELV $692
-LABELV $690
-line 1859
-;1859:}
-LABELV $686
+line 1880
+;1880:	}
+LABELV $706
+LABELV $704
+line 1881
+;1881:}
+LABELV $700
 endproc SP_func_bobbing 28 12
 export SP_func_pendulum
 proc SP_func_pendulum 44 12
-line 1881
-;1860:
-;1861:/*
-;1862:===============================================================================
-;1863:
-;1864:PENDULUM
-;1865:
-;1866:===============================================================================
-;1867:*/
-;1868:
-;1869:
-;1870:/*QUAKED func_pendulum (0 .5 .8) ?
-;1871:You need to have an origin brush as part of this entity.
-;1872:Pendulums always swing north / south on unrotated models.  Add an angles field to the model to allow rotation in other directions.
-;1873:Pendulum frequency is a physical constant based on the length of the beam and gravity.
-;1874:"model2"	.md3 model to also draw
-;1875:"speed"		the number of degrees each way the pendulum swings, (30 default)
-;1876:"phase"		the 0.0 to 1.0 offset in the cycle to start at
-;1877:"dmg"		damage to inflict when blocked (2 default)
-;1878:"color"		constantLight color
-;1879:"light"		constantLight radius
-;1880:*/
-;1881:void SP_func_pendulum(gentity_t *ent) {
-line 1887
-;1882:	float		freq;
-;1883:	float		length;
-;1884:	float		phase;
-;1885:	float		speed;
-;1886:
-;1887:	G_SpawnFloat( "speed", "30", &speed );
-ADDRGP4 $594
+line 1903
+;1882:
+;1883:/*
+;1884:===============================================================================
+;1885:
+;1886:PENDULUM
+;1887:
+;1888:===============================================================================
+;1889:*/
+;1890:
+;1891:
+;1892:/*QUAKED func_pendulum (0 .5 .8) ?
+;1893:You need to have an origin brush as part of this entity.
+;1894:Pendulums always swing north / south on unrotated models.  Add an angles field to the model to allow rotation in other directions.
+;1895:Pendulum frequency is a physical constant based on the length of the beam and gravity.
+;1896:"model2"	.md3 model to also draw
+;1897:"speed"		the number of degrees each way the pendulum swings, (30 default)
+;1898:"phase"		the 0.0 to 1.0 offset in the cycle to start at
+;1899:"dmg"		damage to inflict when blocked (2 default)
+;1900:"color"		constantLight color
+;1901:"light"		constantLight radius
+;1902:*/
+;1903:void SP_func_pendulum(gentity_t *ent) {
+line 1909
+;1904:	float		freq;
+;1905:	float		length;
+;1906:	float		phase;
+;1907:	float		speed;
+;1908:
+;1909:	G_SpawnFloat( "speed", "30", &speed );
+ADDRGP4 $608
 ARGP4
-ADDRGP4 $694
+ADDRGP4 $708
 ARGP4
 ADDRLP4 12
 ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1888
-;1888:	G_SpawnInt( "dmg", "2", &ent->damage );
-ADDRGP4 $516
+line 1910
+;1910:	G_SpawnInt( "dmg", "2", &ent->damage );
+ADDRGP4 $530
 ARGP4
-ADDRGP4 $517
+ADDRGP4 $531
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -12035,20 +12197,20 @@ ARGP4
 ADDRGP4 G_SpawnInt
 CALLI4
 pop
-line 1889
-;1889:	G_SpawnFloat( "phase", "0", &phase );
-ADDRGP4 $688
+line 1911
+;1911:	G_SpawnFloat( "phase", "0", &phase );
+ADDRGP4 $702
 ARGP4
-ADDRGP4 $532
+ADDRGP4 $546
 ARGP4
 ADDRLP4 8
 ARGP4
 ADDRGP4 G_SpawnFloat
 CALLI4
 pop
-line 1891
-;1890:
-;1891:	trap_SetBrushModel( ent, ent->model );
+line 1913
+;1912:
+;1913:	trap_SetBrushModel( ent, ent->model );
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -12065,10 +12227,10 @@ ARGP4
 ADDRGP4 trap_SetBrushModel
 CALLV
 pop
-line 1894
-;1892:
-;1893:	// find pendulum length
-;1894:	length = fabs( ent->r.mins[2] );
+line 1916
+;1914:
+;1915:	// find pendulum length
+;1916:	length = fabs( ent->r.mins[2] );
 ADDRFP4 0
 INDIRP4
 CNSTI4 452
@@ -12083,23 +12245,23 @@ ADDRLP4 0
 ADDRLP4 20
 INDIRF4
 ASGNF4
-line 1895
-;1895:	if ( length < 8 ) {
+line 1917
+;1917:	if ( length < 8 ) {
 ADDRLP4 0
 INDIRF4
 CNSTF4 1090519040
-GEF4 $695
-line 1896
-;1896:		length = 8;
+GEF4 $709
+line 1918
+;1918:		length = 8;
 ADDRLP4 0
 CNSTF4 1090519040
 ASGNF4
-line 1897
-;1897:	}
-LABELV $695
-line 1899
-;1898:
-;1899:	freq = 1 / ( M_PI * 2 ) * sqrt( g_gravity.value / ( 3 * length ) );
+line 1919
+;1919:	}
+LABELV $709
+line 1921
+;1920:
+;1921:	freq = 1 / ( M_PI * 2 ) * sqrt( g_gravity.value / ( 3 * length ) );
 ADDRGP4 g_gravity+8
 INDIRF4
 CNSTF4 1077936128
@@ -12118,9 +12280,9 @@ ADDRLP4 24
 INDIRF4
 MULF4
 ASGNF4
-line 1901
-;1900:
-;1901:	ent->s.pos.trDuration = ( 1000 / freq );
+line 1923
+;1922:
+;1923:	ent->s.pos.trDuration = ( 1000 / freq );
 ADDRFP4 0
 INDIRP4
 CNSTI4 20
@@ -12131,18 +12293,18 @@ INDIRF4
 DIVF4
 CVFI4 4
 ASGNI4
-line 1903
-;1902:
-;1903:	InitMover( ent );
+line 1925
+;1924:
+;1925:	InitMover( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 InitMover
 CALLV
 pop
-line 1905
-;1904:
-;1905:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
+line 1927
+;1926:
+;1927:	VectorCopy( ent->s.origin, ent->s.pos.trBase );
 ADDRLP4 28
 ADDRFP4 0
 INDIRP4
@@ -12157,8 +12319,8 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1906
-;1906:	VectorCopy( ent->s.origin, ent->r.currentOrigin );
+line 1928
+;1928:	VectorCopy( ent->s.origin, ent->r.currentOrigin );
 ADDRLP4 32
 ADDRFP4 0
 INDIRP4
@@ -12173,9 +12335,9 @@ CNSTI4 92
 ADDP4
 INDIRB
 ASGNB 12
-line 1908
-;1907:
-;1908:	VectorCopy( ent->s.angles, ent->s.apos.trBase );
+line 1930
+;1929:
+;1930:	VectorCopy( ent->s.angles, ent->s.apos.trBase );
 ADDRLP4 36
 ADDRFP4 0
 INDIRP4
@@ -12190,9 +12352,9 @@ CNSTI4 116
 ADDP4
 INDIRB
 ASGNB 12
-line 1910
-;1909:
-;1910:	ent->s.apos.trDuration = 1000 / freq;
+line 1932
+;1931:
+;1932:	ent->s.apos.trDuration = 1000 / freq;
 ADDRFP4 0
 INDIRP4
 CNSTI4 56
@@ -12203,8 +12365,8 @@ INDIRF4
 DIVF4
 CVFI4 4
 ASGNI4
-line 1911
-;1911:	ent->s.apos.trTime = ent->s.apos.trDuration * phase;
+line 1933
+;1933:	ent->s.apos.trTime = ent->s.apos.trDuration * phase;
 ADDRLP4 40
 ADDRFP4 0
 INDIRP4
@@ -12224,16 +12386,16 @@ INDIRF4
 MULF4
 CVFI4 4
 ASGNI4
-line 1912
-;1912:	ent->s.apos.trType = TR_SINE;
+line 1934
+;1934:	ent->s.apos.trType = TR_SINE;
 ADDRFP4 0
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 4
 ASGNI4
-line 1913
-;1913:	ent->s.apos.trDelta[2] = speed;
+line 1935
+;1935:	ent->s.apos.trDelta[2] = speed;
 ADDRFP4 0
 INDIRP4
 CNSTI4 80
@@ -12241,9 +12403,9 @@ ADDP4
 ADDRLP4 12
 INDIRF4
 ASGNF4
-line 1914
-;1914:}
-LABELV $693
+line 1936
+;1936:}
+LABELV $707
 endproc SP_func_pendulum 44 12
 bss
 export pushed_p
@@ -12867,12 +13029,12 @@ import srand
 import qsort
 lit
 align 1
-LABELV $694
+LABELV $708
 byte 1 51
 byte 1 48
 byte 1 0
 align 1
-LABELV $688
+LABELV $702
 byte 1 112
 byte 1 104
 byte 1 97
@@ -12880,12 +13042,12 @@ byte 1 115
 byte 1 101
 byte 1 0
 align 1
-LABELV $687
+LABELV $701
 byte 1 51
 byte 1 50
 byte 1 0
 align 1
-LABELV $674
+LABELV $688
 byte 1 102
 byte 1 117
 byte 1 110
@@ -12922,7 +13084,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $664
+LABELV $678
 byte 1 112
 byte 1 97
 byte 1 116
@@ -12962,7 +13124,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $660
+LABELV $674
 byte 1 112
 byte 1 97
 byte 1 116
@@ -12976,7 +13138,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $659
+LABELV $673
 byte 1 84
 byte 1 114
 byte 1 97
@@ -13027,7 +13189,7 @@ byte 1 114
 byte 1 10
 byte 1 0
 align 1
-LABELV $653
+LABELV $667
 byte 1 84
 byte 1 114
 byte 1 97
@@ -13066,7 +13228,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $644
+LABELV $658
 byte 1 102
 byte 1 117
 byte 1 110
@@ -13109,11 +13271,11 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $614
+LABELV $628
 byte 1 52
 byte 1 0
 align 1
-LABELV $609
+LABELV $623
 byte 1 115
 byte 1 111
 byte 1 117
@@ -13147,7 +13309,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $600
+LABELV $614
 byte 1 104
 byte 1 101
 byte 1 105
@@ -13156,24 +13318,24 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $597
+LABELV $611
 byte 1 49
 byte 1 0
 align 1
-LABELV $596
+LABELV $610
 byte 1 119
 byte 1 97
 byte 1 105
 byte 1 116
 byte 1 0
 align 1
-LABELV $595
+LABELV $609
 byte 1 50
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $594
+LABELV $608
 byte 1 115
 byte 1 112
 byte 1 101
@@ -13181,7 +13343,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $593
+LABELV $607
 byte 1 115
 byte 1 111
 byte 1 117
@@ -13214,7 +13376,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $592
+LABELV $606
 byte 1 115
 byte 1 111
 byte 1 117
@@ -13248,7 +13410,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $577
+LABELV $591
 byte 1 112
 byte 1 108
 byte 1 97
@@ -13263,7 +13425,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $553
+LABELV $567
 byte 1 37
 byte 1 115
 byte 1 32
@@ -13297,11 +13459,11 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $532
+LABELV $546
 byte 1 48
 byte 1 0
 align 1
-LABELV $531
+LABELV $545
 byte 1 104
 byte 1 101
 byte 1 97
@@ -13310,27 +13472,27 @@ byte 1 116
 byte 1 104
 byte 1 0
 align 1
-LABELV $517
+LABELV $531
 byte 1 50
 byte 1 0
 align 1
-LABELV $516
+LABELV $530
 byte 1 100
 byte 1 109
 byte 1 103
 byte 1 0
 align 1
-LABELV $515
+LABELV $529
 byte 1 56
 byte 1 0
 align 1
-LABELV $514
+LABELV $528
 byte 1 108
 byte 1 105
 byte 1 112
 byte 1 0
 align 1
-LABELV $509
+LABELV $523
 byte 1 115
 byte 1 111
 byte 1 117
@@ -13363,7 +13525,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $508
+LABELV $522
 byte 1 115
 byte 1 111
 byte 1 117
@@ -13397,7 +13559,7 @@ byte 1 97
 byte 1 118
 byte 1 0
 align 1
-LABELV $503
+LABELV $517
 byte 1 100
 byte 1 111
 byte 1 111
@@ -13412,7 +13574,7 @@ byte 1 101
 byte 1 114
 byte 1 0
 align 1
-LABELV $413
+LABELV $427
 byte 1 49
 byte 1 32
 byte 1 49
@@ -13420,7 +13582,7 @@ byte 1 32
 byte 1 49
 byte 1 0
 align 1
-LABELV $412
+LABELV $426
 byte 1 99
 byte 1 111
 byte 1 108
@@ -13428,7 +13590,7 @@ byte 1 111
 byte 1 114
 byte 1 0
 align 1
-LABELV $411
+LABELV $425
 byte 1 108
 byte 1 105
 byte 1 103
@@ -13436,13 +13598,13 @@ byte 1 104
 byte 1 116
 byte 1 0
 align 1
-LABELV $410
+LABELV $424
 byte 1 49
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $409
+LABELV $423
 byte 1 110
 byte 1 111
 byte 1 105
