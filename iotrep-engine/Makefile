@@ -396,15 +396,15 @@ ifeq ($(PLATFORM),darwin)
     endif
   endif
 
-  ifeq ($(USE_CODEC_VORBIS),1)
+  #ifeq ($(USE_CODEC_VORBIS),1)
     BASE_CFLAGS += -DUSE_CODEC_VORBIS=1
     CLIENT_LDFLAGS += -lvorbisfile -lvorbis -logg
-  endif
+  #endif
 
-  ifeq ($(USE_CODEC_MP3),1)
+  #ifeq ($(USE_CODEC_MP3),1)
     BASE_CFLAGS += -DUSE_CODEC_MP3=1
     CLIENT_LDFLAGS += -lmad
-  endif
+  #endif
 
   ifeq ($(USE_SDL),1)
     BASE_CFLAGS += -DUSE_SDL_VIDEO=1 -DUSE_SDL_SOUND=1 -D_THREAD_SAFE=1 \
