@@ -1865,6 +1865,7 @@ void CheckExitRules( void ) {
 			if (tmpCnt == 3)
 			{
 				//trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 5.0\n" );
+				
 				G_SpawnString( "music", "sound/music/battle.ogg", &s );
 				trap_SetConfigstring( CS_MUSIC, s );
 
@@ -2069,10 +2070,15 @@ void CheckExitRules( void ) {
 			cl = level.clients + i;
 			if( cl->pers.connected != CON_CONNECTED )
 				continue;
+			/*
+			// See Mantis: 0000107: Specatators can be in the top 3 of an arsenal game.
+
 			if( cl->sess.sessionTeam != TEAM_FREE )
 				continue;
 			if( cl->sess.sessionTeam != TEAM_SPECTATOR )
 				continue; // Don't count spectators -Vincent
+
+			*/
 
 			if( cl->ps.persistant[PERS_SCORE] >= g_fraglimit.integer ) 
 			{

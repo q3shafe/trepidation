@@ -2131,7 +2131,7 @@ RETI4
 LABELV $253
 endproc G_ParseSpawnVars 2072 8
 export SP_worldspawn
-proc SP_worldspawn 16 12
+proc SP_worldspawn 20 12
 line 560
 ;549:}
 ;550:
@@ -2145,10 +2145,11 @@ line 560
 ;558:"message"	Text to print during connection process
 ;559:*/
 ;560:void SP_worldspawn( void ) {
-line 563
+line 564
 ;561:	char	*s;
-;562:
-;563:	G_SpawnString( "classname", "", &s );
+;562:	int		i;
+;563:
+;564:	G_SpawnString( "classname", "", &s );
 ADDRGP4 $75
 ARGP4
 ADDRGP4 $285
@@ -2158,35 +2159,35 @@ ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 564
-;564:	if ( Q_stricmp( s, "worldspawn" ) ) {
+line 565
+;565:	if ( Q_stricmp( s, "worldspawn" ) ) {
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 $288
 ARGP4
-ADDRLP4 4
+ADDRLP4 8
 ADDRGP4 Q_stricmp
 CALLI4
 ASGNI4
-ADDRLP4 4
+ADDRLP4 8
 INDIRI4
 CNSTI4 0
 EQI4 $286
-line 565
-;565:		G_Error( "SP_worldspawn: The first entity isn't 'worldspawn'" );
+line 566
+;566:		G_Error( "SP_worldspawn: The first entity isn't 'worldspawn'" );
 ADDRGP4 $289
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 566
-;566:	}
+line 567
+;567:	}
 LABELV $286
-line 569
-;567:
-;568:	// make some data visible to connecting client
-;569:	trap_SetConfigstring( CS_GAME_VERSION, GAME_VERSION );
+line 570
+;568:
+;569:	// make some data visible to connecting client
+;570:	trap_SetConfigstring( CS_GAME_VERSION, GAME_VERSION );
 CNSTI4 20
 ARGI4
 ADDRGP4 $290
@@ -2194,30 +2195,129 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 571
-;570:
-;571:	trap_SetConfigstring( CS_LEVEL_START_TIME, va("%i", level.startTime ) );
+line 572
+;571:
+;572:	trap_SetConfigstring( CS_LEVEL_START_TIME, va("%i", level.startTime ) );
 ADDRGP4 $291
 ARGP4
 ADDRGP4 level+40
 INDIRI4
 ARGI4
-ADDRLP4 8
+ADDRLP4 12
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 21
 ARGI4
-ADDRLP4 8
+ADDRLP4 12
 INDIRP4
 ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 573
-;572:
-;573:	G_SpawnString( "music", "", &s );
-ADDRGP4 $293
+line 575
+;573:
+;574:	
+;575:	if ((g_GameMode.integer == 0) || (g_GameMode.integer == 3))
+ADDRGP4 g_GameMode+12
+INDIRI4
+CNSTI4 0
+EQI4 $297
+ADDRGP4 g_GameMode+12
+INDIRI4
+CNSTI4 3
+NEI4 $293
+LABELV $297
+line 576
+;576:	{
+line 577
+;577:		i = irandom(1,4);
+CNSTI4 1
+ARGI4
+CNSTI4 4
+ARGI4
+ADDRLP4 16
+ADDRGP4 irandom
+CALLI4
+ASGNI4
+ADDRLP4 4
+ADDRLP4 16
+INDIRI4
+ASGNI4
+line 578
+;578:		if (i == 1) { G_SpawnString( "music", "sound/music/mapmusic01.ogg", &s ); }
+ADDRLP4 4
+INDIRI4
+CNSTI4 1
+NEI4 $298
+ADDRGP4 $300
+ARGP4
+ADDRGP4 $301
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 G_SpawnString
+CALLI4
+pop
+LABELV $298
+line 579
+;579:		if (i == 2) { G_SpawnString( "music", "sound/music/mapmusic02.ogg", &s ); }
+ADDRLP4 4
+INDIRI4
+CNSTI4 2
+NEI4 $302
+ADDRGP4 $300
+ARGP4
+ADDRGP4 $304
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 G_SpawnString
+CALLI4
+pop
+LABELV $302
+line 580
+;580:		if (i == 3) { G_SpawnString( "music", "sound/music/mapmusic03.ogg", &s ); }
+ADDRLP4 4
+INDIRI4
+CNSTI4 3
+NEI4 $305
+ADDRGP4 $300
+ARGP4
+ADDRGP4 $307
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 G_SpawnString
+CALLI4
+pop
+LABELV $305
+line 581
+;581:		if (i == 4) { G_SpawnString( "music", "sound/music/mapmusic04.ogg", &s ); }
+ADDRLP4 4
+INDIRI4
+CNSTI4 4
+NEI4 $294
+ADDRGP4 $300
+ARGP4
+ADDRGP4 $310
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 G_SpawnString
+CALLI4
+pop
+line 582
+;582:	} 
+ADDRGP4 $294
+JUMPV
+LABELV $293
+line 584
+;583:	else 
+;584:	{
+line 585
+;585:		G_SpawnString( "music", "", &s );
+ADDRGP4 $300
 ARGP4
 ADDRGP4 $285
 ARGP4
@@ -2226,8 +2326,12 @@ ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 574
-;574:	trap_SetConfigstring( CS_MUSIC, s );
+line 586
+;586:	}
+LABELV $294
+line 588
+;587:
+;588:	trap_SetConfigstring( CS_MUSIC, s );
 CNSTI4 2
 ARGI4
 ADDRLP4 0
@@ -2236,9 +2340,9 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 576
-;575:
-;576:	G_SpawnString( "message", "", &s );
+line 590
+;589:
+;590:	G_SpawnString( "message", "", &s );
 ADDRGP4 $84
 ARGP4
 ADDRGP4 $285
@@ -2248,8 +2352,8 @@ ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 577
-;577:	trap_SetConfigstring( CS_MESSAGE, s );				// map specific message
+line 591
+;591:	trap_SetConfigstring( CS_MESSAGE, s );				// map specific message
 CNSTI4 3
 ARGI4
 ADDRLP4 0
@@ -2258,9 +2362,9 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 579
-;578:
-;579:	trap_SetConfigstring( CS_MOTD, g_motd.string );		// message of the day
+line 593
+;592:
+;593:	trap_SetConfigstring( CS_MOTD, g_motd.string );		// message of the day
 CNSTI4 4
 ARGI4
 ADDRGP4 g_motd+16
@@ -2268,21 +2372,21 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 581
-;580:
-;581:	G_SpawnString( "gravity", "800", &s );
+line 595
+;594:
+;595:	G_SpawnString( "gravity", "800", &s );
 ADDRGP4 $81
 ARGP4
-ADDRGP4 $295
+ADDRGP4 $312
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 582
-;582:	trap_Cvar_Set( "g_gravity", s );
-ADDRGP4 $296
+line 596
+;596:	trap_Cvar_Set( "g_gravity", s );
+ADDRGP4 $313
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -2290,10 +2394,10 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 584
-;583:
-;584:	G_SpawnString( "enableDust", "0", &s );
-ADDRGP4 $297
+line 598
+;597:
+;598:	G_SpawnString( "enableDust", "0", &s );
+ADDRGP4 $314
 ARGP4
 ADDRGP4 $218
 ARGP4
@@ -2302,9 +2406,9 @@ ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 585
-;585:	trap_Cvar_Set( "g_enableDust", s );
-ADDRGP4 $298
+line 599
+;599:	trap_Cvar_Set( "g_enableDust", s );
+ADDRGP4 $315
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -2312,10 +2416,10 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 587
-;586:
-;587:	G_SpawnString( "enableBreath", "0", &s );
-ADDRGP4 $299
+line 601
+;600:
+;601:	G_SpawnString( "enableBreath", "0", &s );
+ADDRGP4 $316
 ARGP4
 ADDRGP4 $218
 ARGP4
@@ -2324,9 +2428,9 @@ ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-line 588
-;588:	trap_Cvar_Set( "g_enableBreath", s );
-ADDRGP4 $300
+line 602
+;602:	trap_Cvar_Set( "g_enableBreath", s );
+ADDRGP4 $317
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -2334,21 +2438,21 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 590
-;589:
-;590:	g_entities[ENTITYNUM_WORLD].s.number = ENTITYNUM_WORLD;
+line 604
+;603:
+;604:	g_entities[ENTITYNUM_WORLD].s.number = ENTITYNUM_WORLD;
 ADDRGP4 g_entities+944328
 CNSTI4 1022
 ASGNI4
-line 591
-;591:	g_entities[ENTITYNUM_WORLD].classname = "worldspawn";
+line 605
+;605:	g_entities[ENTITYNUM_WORLD].classname = "worldspawn";
 ADDRGP4 g_entities+944328+532
 ADDRGP4 $288
 ASGNP4
-line 594
-;592:
-;593:	// see if we want a warmup time
-;594:	trap_SetConfigstring( CS_WARMUP, "" );
+line 608
+;606:
+;607:	// see if we want a warmup time
+;608:	trap_SetConfigstring( CS_WARMUP, "" );
 CNSTI4 5
 ARGI4
 ADDRGP4 $285
@@ -2356,119 +2460,119 @@ ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 595
-;595:	if ( g_restarted.integer ) {
+line 609
+;609:	if ( g_restarted.integer ) {
 ADDRGP4 g_restarted+12
 INDIRI4
 CNSTI4 0
-EQI4 $304
-line 596
-;596:		trap_Cvar_Set( "g_restarted", "0" );
-ADDRGP4 $307
+EQI4 $321
+line 610
+;610:		trap_Cvar_Set( "g_restarted", "0" );
+ADDRGP4 $324
 ARGP4
 ADDRGP4 $218
 ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 597
-;597:		level.warmupTime = 0;
+line 611
+;611:		level.warmupTime = 0;
 ADDRGP4 level+16
 CNSTI4 0
 ASGNI4
-line 598
-;598:		level.firstStrike = qfalse;
+line 612
+;612:		level.firstStrike = qfalse;
 ADDRGP4 level+9236
 CNSTI4 0
 ASGNI4
-line 601
-;599:		//level.lastClient = -1;
-;600:
-;601:	} else if ( g_doWarmup.integer ) { // Turn it on
-ADDRGP4 $305
+line 615
+;613:		//level.lastClient = -1;
+;614:
+;615:	} else if ( g_doWarmup.integer ) { // Turn it on
+ADDRGP4 $322
 JUMPV
-LABELV $304
+LABELV $321
 ADDRGP4 g_doWarmup+12
 INDIRI4
 CNSTI4 0
-EQI4 $310
-line 602
-;602:		level.warmupTime = -1;
+EQI4 $327
+line 616
+;616:		level.warmupTime = -1;
 ADDRGP4 level+16
 CNSTI4 -1
 ASGNI4
-line 603
-;603:		level.firstStrike = qfalse;
+line 617
+;617:		level.firstStrike = qfalse;
 ADDRGP4 level+9236
 CNSTI4 0
 ASGNI4
-line 604
-;604:		trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
+line 618
+;618:		trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
 ADDRGP4 $291
 ARGP4
 ADDRGP4 level+16
 INDIRI4
 ARGI4
-ADDRLP4 12
+ADDRLP4 16
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 5
 ARGI4
-ADDRLP4 12
+ADDRLP4 16
 INDIRP4
 ARGP4
 ADDRGP4 trap_SetConfigstring
 CALLV
 pop
-line 606
-;605:
-;606:		G_LogPrintf( "Warmup:\n" );
-ADDRGP4 $316
+line 620
+;619:
+;620:		G_LogPrintf( "Warmup:\n" );
+ADDRGP4 $333
 ARGP4
 ADDRGP4 G_LogPrintf
 CALLV
 pop
-line 607
-;607:	}
-LABELV $310
-LABELV $305
-line 610
-;608:	//level.firstStrike = qfalse;
-;609:
-;610:}
+line 621
+;621:	}
+LABELV $327
+LABELV $322
+line 624
+;622:	//level.firstStrike = qfalse;
+;623:
+;624:}
 LABELV $284
-endproc SP_worldspawn 16 12
+endproc SP_worldspawn 20 12
 export G_SpawnEntitiesFromString
 proc G_SpawnEntitiesFromString 8 4
-line 620
-;611:
-;612:
-;613:/*
-;614:==============
-;615:G_SpawnEntitiesFromString
-;616:
-;617:Parses textual entity definitions out of an entstring and spawns gentities.
-;618:==============
-;619:*/
-;620:void G_SpawnEntitiesFromString( void ) {
-line 622
-;621:	// allow calls to G_Spawn*()
-;622:	level.spawning = qtrue;
+line 634
+;625:
+;626:
+;627:/*
+;628:==============
+;629:G_SpawnEntitiesFromString
+;630:
+;631:Parses textual entity definitions out of an entstring and spawns gentities.
+;632:==============
+;633:*/
+;634:void G_SpawnEntitiesFromString( void ) {
+line 636
+;635:	// allow calls to G_Spawn*()
+;636:	level.spawning = qtrue;
 ADDRGP4 level+4516
 CNSTI4 1
 ASGNI4
-line 623
-;623:	level.numSpawnVars = 0;
+line 637
+;637:	level.numSpawnVars = 0;
 ADDRGP4 level+4520
 CNSTI4 0
 ASGNI4
-line 628
-;624:
-;625:	// the worldspawn is not an actual entity, but it still
-;626:	// has a "spawn" function to perform any global setup
-;627:	// needed by a level (setting configstrings or cvars, etc)
-;628:	if ( !G_ParseSpawnVars() ) {
+line 642
+;638:
+;639:	// the worldspawn is not an actual entity, but it still
+;640:	// has a "spawn" function to perform any global setup
+;641:	// needed by a level (setting configstrings or cvars, etc)
+;642:	if ( !G_ParseSpawnVars() ) {
 ADDRLP4 0
 ADDRGP4 G_ParseSpawnVars
 CALLI4
@@ -2476,38 +2580,38 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $320
-line 629
-;629:		G_Error( "SpawnEntities: no entities" );
-ADDRGP4 $322
+NEI4 $337
+line 643
+;643:		G_Error( "SpawnEntities: no entities" );
+ADDRGP4 $339
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
-line 630
-;630:	}
-LABELV $320
-line 631
-;631:	SP_worldspawn();
+line 644
+;644:	}
+LABELV $337
+line 645
+;645:	SP_worldspawn();
 ADDRGP4 SP_worldspawn
 CALLV
 pop
-ADDRGP4 $324
+ADDRGP4 $341
 JUMPV
-LABELV $323
-line 634
-;632:
-;633:	// parse ents
-;634:	while( G_ParseSpawnVars() ) {
-line 635
-;635:		G_SpawnGEntityFromSpawnVars();
+LABELV $340
+line 648
+;646:
+;647:	// parse ents
+;648:	while( G_ParseSpawnVars() ) {
+line 649
+;649:		G_SpawnGEntityFromSpawnVars();
 ADDRGP4 G_SpawnGEntityFromSpawnVars
 CALLV
 pop
-line 636
-;636:	}	
-LABELV $324
-line 634
+line 650
+;650:	}	
+LABELV $341
+line 648
 ADDRLP4 4
 ADDRGP4 G_ParseSpawnVars
 CALLI4
@@ -2515,16 +2619,16 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $323
-line 638
-;637:
-;638:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
+NEI4 $340
+line 652
+;651:
+;652:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
 ADDRGP4 level+4516
 CNSTI4 0
 ASGNI4
-line 639
-;639:}
-LABELV $317
+line 653
+;653:}
+LABELV $334
 endproc G_SpawnEntitiesFromString 8 4
 import SP_item_botroam
 import SP_func_door_rotating
@@ -3191,7 +3295,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $322
+LABELV $339
 byte 1 83
 byte 1 112
 byte 1 97
@@ -3220,7 +3324,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $316
+LABELV $333
 byte 1 87
 byte 1 97
 byte 1 114
@@ -3231,7 +3335,7 @@ byte 1 58
 byte 1 10
 byte 1 0
 align 1
-LABELV $307
+LABELV $324
 byte 1 103
 byte 1 95
 byte 1 114
@@ -3245,7 +3349,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $300
+LABELV $317
 byte 1 103
 byte 1 95
 byte 1 101
@@ -3262,7 +3366,7 @@ byte 1 116
 byte 1 104
 byte 1 0
 align 1
-LABELV $299
+LABELV $316
 byte 1 101
 byte 1 110
 byte 1 97
@@ -3277,7 +3381,7 @@ byte 1 116
 byte 1 104
 byte 1 0
 align 1
-LABELV $298
+LABELV $315
 byte 1 103
 byte 1 95
 byte 1 101
@@ -3292,7 +3396,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $297
+LABELV $314
 byte 1 101
 byte 1 110
 byte 1 97
@@ -3305,7 +3409,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $296
+LABELV $313
 byte 1 103
 byte 1 95
 byte 1 103
@@ -3317,13 +3421,129 @@ byte 1 116
 byte 1 121
 byte 1 0
 align 1
-LABELV $295
+LABELV $312
 byte 1 56
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $293
+LABELV $310
+byte 1 115
+byte 1 111
+byte 1 117
+byte 1 110
+byte 1 100
+byte 1 47
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 47
+byte 1 109
+byte 1 97
+byte 1 112
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 48
+byte 1 52
+byte 1 46
+byte 1 111
+byte 1 103
+byte 1 103
+byte 1 0
+align 1
+LABELV $307
+byte 1 115
+byte 1 111
+byte 1 117
+byte 1 110
+byte 1 100
+byte 1 47
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 47
+byte 1 109
+byte 1 97
+byte 1 112
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 48
+byte 1 51
+byte 1 46
+byte 1 111
+byte 1 103
+byte 1 103
+byte 1 0
+align 1
+LABELV $304
+byte 1 115
+byte 1 111
+byte 1 117
+byte 1 110
+byte 1 100
+byte 1 47
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 47
+byte 1 109
+byte 1 97
+byte 1 112
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 48
+byte 1 50
+byte 1 46
+byte 1 111
+byte 1 103
+byte 1 103
+byte 1 0
+align 1
+LABELV $301
+byte 1 115
+byte 1 111
+byte 1 117
+byte 1 110
+byte 1 100
+byte 1 47
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 47
+byte 1 109
+byte 1 97
+byte 1 112
+byte 1 109
+byte 1 117
+byte 1 115
+byte 1 105
+byte 1 99
+byte 1 48
+byte 1 49
+byte 1 46
+byte 1 111
+byte 1 103
+byte 1 103
+byte 1 0
+align 1
+LABELV $300
 byte 1 109
 byte 1 117
 byte 1 115

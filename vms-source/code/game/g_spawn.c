@@ -559,6 +559,7 @@ Every map should have exactly one worldspawn.
 */
 void SP_worldspawn( void ) {
 	char	*s;
+	int		i;
 
 	G_SpawnString( "classname", "", &s );
 	if ( Q_stricmp( s, "worldspawn" ) ) {
@@ -570,7 +571,20 @@ void SP_worldspawn( void ) {
 
 	trap_SetConfigstring( CS_LEVEL_START_TIME, va("%i", level.startTime ) );
 
-	G_SpawnString( "music", "", &s );
+	
+	if ((g_GameMode.integer == 0) || (g_GameMode.integer == 3))
+	{
+		i = irandom(1,4);
+		if (i == 1) { G_SpawnString( "music", "sound/music/mapmusic01.ogg", &s ); }
+		if (i == 2) { G_SpawnString( "music", "sound/music/mapmusic02.ogg", &s ); }
+		if (i == 3) { G_SpawnString( "music", "sound/music/mapmusic03.ogg", &s ); }
+		if (i == 4) { G_SpawnString( "music", "sound/music/mapmusic04.ogg", &s ); }
+	} 
+	else 
+	{
+		G_SpawnString( "music", "", &s );
+	}
+
 	trap_SetConfigstring( CS_MUSIC, s );
 
 	G_SpawnString( "message", "", &s );
