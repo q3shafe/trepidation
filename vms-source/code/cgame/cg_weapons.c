@@ -804,7 +804,6 @@ void CG_RegisterWeapon( int weaponNum ) {
 
 
 	case WP_SHOTGUN:
-
 		weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/shotgun/sshotf1b.wav", qfalse );
 		weaponInfo->ejectBrassFunc = CG_ShotgunEjectBrass;		
 		MAKERGB( weaponInfo->flashDlightColor, 1, 1, 0 );
@@ -2063,7 +2062,18 @@ void CG_MissileHitWall( centity_t *cent, int weapon, int clientNum, vec3_t origi
 		shader = cgs.media.bulletExplosionShader;
 		mark = cgs.media.bulletMarkShader;
 		sfx = 0;
-		radius = 4;
+		if (cent->currentState.eFlags & EF_ALT_FIRING)
+		{
+			radius = 4;
+		} 
+		else
+		{
+		mod = cgs.media.bulletFlashModel;
+		shader = cgs.media.bulletExplosionShader;
+		mark = cgs.media.bulletMarkShader;
+		radius = 10;
+
+		}
 		break;
 
 #ifdef MISSIONPACK
@@ -2232,6 +2242,7 @@ static void CG_ShotgunPellet( vec3_t start, vec3_t end, int skipNum ) {
 	if ( sourceContentType == destContentType ) {
 		if ( sourceContentType & CONTENTS_WATER ) {
 	*/
+	
 			CG_ShotgunTrail( start, tr.endpos, 32 );
 	/*
 		}
@@ -2516,7 +2527,15 @@ void CG_Bullet( vec3_t end, int sourceEntityNum, vec3_t normal, qboolean flesh, 
     void CG_ScannerOn_f( void )
     {
         // This is now a toggle	
+			
+		if (cg.scanner == 1)
+		{
+			cg.scanner = 0;
+		}
+		else
+		{
 			cg.scanner = 1;
+		}
 		
 
 		
@@ -2530,7 +2549,7 @@ void CG_Bullet( vec3_t end, int sourceEntityNum, vec3_t normal, qboolean flesh, 
     void CG_ScannerOff_f( void )
     {
 
-			cg.scanner = 0;
+		//	cg.scanner = 1;
 		
     } 
     // Haggis

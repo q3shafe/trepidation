@@ -297,7 +297,11 @@ static void StartServer_MenuEvent( void* ptr, int event ) {
 
 	case ID_STARTSERVERNEXT:
 		
+		// Fixes offline play problems - Shafe
 		trap_Cvar_SetValue( "bot_minplayers", 0 );
+		trap_Cvar_SetValue( "g_GameMode", 0 );
+
+
 
 		if (s_startserver.gametype.curvalue == 1)
 		{
@@ -327,6 +331,21 @@ static void StartServer_MenuEvent( void* ptr, int event ) {
 			{
 				trap_Cvar_SetValue( "g_gameType", 0 );
 				trap_Cvar_SetValue( "g_gameMode", 2 );
+				
+				// Resets Weapons On Arsenal 
+				// This should actually end up on the menus
+				// so the player can select which weapons to play with
+				// We'll just turn them all on for this build. - Shafe
+				trap_Cvar_SetValue( "g_StartGauntlet", 1 );
+				trap_Cvar_SetValue( "g_StartMG", 1 );
+				trap_Cvar_SetValue( "g_StartSG", 1 );
+				trap_Cvar_SetValue( "g_StartGrenade", 1 );
+				trap_Cvar_SetValue( "g_StartSingCan", 1 );
+				trap_Cvar_SetValue( "g_StartFlame", 1 );
+				trap_Cvar_SetValue( "g_StartGauss", 1 );
+				trap_Cvar_SetValue( "g_StartPlasma", 1 );
+				trap_Cvar_SetValue( "g_StartBFG", 1 );
+
 				s_startserver.gametype.curvalue = 0;
 			}
 

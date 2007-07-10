@@ -19,6 +19,9 @@
 #define DEFAULT_SHOTGUN_SPREAD	700
 #define DEFAULT_SHOTGUN_COUNT	11
 
+#define ALT_SHOTGUN_SPREAD	6000
+#define ALT_SHOTGUN_COUNT	29
+
 #define	ITEM_RADIUS			15		// item sizes are needed for client side pickup detection
 
 #define	LIGHTNING_RANGE		768
