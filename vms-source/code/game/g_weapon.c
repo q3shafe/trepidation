@@ -322,7 +322,7 @@ SHOTGUN
 // client predicts same spreads
 #define	DEFAULT_SHOTGUN_DAMAGE	10
 
-qboolean ShotgunPellet( vec3_t start, vec3_t end, gentity_t *ent ) {
+qboolean ShotgunPellet( vec3_t start, vec3_t end, gentity_t *ent, qboolean alt ) {
 	trace_t		tr;
 	int			damage, i, passent;
 	gentity_t	*traceEnt;
@@ -344,7 +344,11 @@ qboolean ShotgunPellet( vec3_t start, vec3_t end, gentity_t *ent ) {
 		}
 
 		if ( traceEnt->takedamage) {
-			damage = DEFAULT_SHOTGUN_DAMAGE * s_quadFactor;
+		
+				damage = DEFAULT_SHOTGUN_DAMAGE * s_quadFactor;
+		
+		
+			
 #ifdef MISSIONPACK
 			if ( traceEnt->client && traceEnt->client->invulnerabilityTime > level.time ) {
 				if (G_InvulnerabilityEffect( traceEnt, forward, tr.endpos, impactpoint, bouncedir )) {
@@ -379,7 +383,7 @@ qboolean ShotgunPellet( vec3_t start, vec3_t end, gentity_t *ent ) {
 }
 
 // this should match CG_ShotgunPattern
-void ShotgunPattern( vec3_t origin, vec3_t origin2, int seed, gentity_t *ent ) {
+void ShotgunPattern( vec3_t origin, vec3_t origin2, int seed, gentity_t *ent, qboolean alt ) {
 	int			i;
 	float		r, u;
 	vec3_t		end;
@@ -405,18 +409,20 @@ void ShotgunPattern( vec3_t origin, vec3_t origin2, int seed, gentity_t *ent ) {
 	G_DoTimeShiftFor( ent );
 //unlagged - backward reconciliation #2
 
+	
+
 	// generate the "random" spread pattern
-	for ( i = 0 ; i < DEFAULT_SHOTGUN_COUNT ; i++ ) {
-		r = Q_crandom( &seed ) * DEFAULT_SHOTGUN_SPREAD * 16;
-		u = Q_crandom( &seed ) * DEFAULT_SHOTGUN_SPREAD * 16;
-		VectorMA( origin, 8192 * 16, forward, end);
-		VectorMA (end, r, right, end);
-		VectorMA (end, u, up, end);
-		if( ShotgunPellet( origin, end, ent ) && !hitClient ) {
-			hitClient = qtrue;
-			ent->client->accuracy_hits++;
+		for ( i = 0 ; i < DEFAULT_SHOTGUN_COUNT ; i++ ) {
+			r = Q_crandom( &seed ) * DEFAULT_SHOTGUN_SPREAD * 16;
+			u = Q_crandom( &seed ) * DEFAULT_SHOTGUN_SPREAD * 16;
+			VectorMA( origin, 8192 * 16, forward, end);
+			VectorMA (end, r, right, end);
+			VectorMA (end, u, up, end);
+			if( ShotgunPellet( origin, end, ent, alt ) && !hitClient ) {
+				hitClient = qtrue;
+				ent->client->accuracy_hits++;
+			}
 		}
-	}
 
 //unlagged - backward reconciliation #2
 	// put them back
@@ -425,7 +431,7 @@ void ShotgunPattern( vec3_t origin, vec3_t origin2, int seed, gentity_t *ent ) {
 }
 
 
-void weapon_supershotgun_fire (gentity_t *ent) {
+void weapon_supershotgun_fire (gentity_t *ent, qboolean alt) {
 	gentity_t		*tent;
 
 	// send shotgun blast
@@ -439,7 +445,7 @@ void weapon_supershotgun_fire (gentity_t *ent) {
 //unlagged - attack prediction #2
 	tent->s.otherEntityNum = ent->s.number;
 
-	ShotgunPattern( tent->s.pos.trBase, tent->s.origin2, tent->s.eventParm, ent );
+	ShotgunPattern( tent->s.pos.trBase, tent->s.origin2, tent->s.eventParm, ent, alt );
 }
 
 
@@ -1099,7 +1105,7 @@ void FireWeapon( gentity_t *ent ) {
 		Weapon_fire_flame(ent , qfalse );  // Shafe - Trep - Flame Thrower
 		break;
 	case WP_SHOTGUN:
-		weapon_supershotgun_fire( ent );
+		weapon_supershotgun_fire( ent, qfalse );
 		break;
 	case WP_MACHINEGUN:
 		Weapon_fire_mg( ent, qfalse);
@@ -1185,7 +1191,7 @@ void FireWeapon2( gentity_t *ent ) {
 	break; 
  case WP_SHOTGUN: 
 	//Weapon_RocketLauncher_Fire( ent );
-	weapon_supershotgun_fire( ent );
+	weapon_supershotgun_fire( ent, qtrue );
 	break; 
  case WP_MACHINEGUN: 
   //Weapon_RocketLauncher_Fire( ent );
