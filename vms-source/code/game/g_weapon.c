@@ -452,7 +452,53 @@ void weapon_supershotgun_fire (gentity_t *ent, qboolean alt) {
 /*
 ======================================================================
 
-GRENADE LAUNCHER
+BOMB
+
+======================================================================
+*/
+
+// Shafe - Bomb
+void weapon_bomblauncher_fire (gentity_t	*ent) {
+	gentity_t	*m;
+	gentity_t	*grenades = NULL;
+	 
+
+
+if (ent->client->bombfired == qfalse) {
+		// extra vertical velocity
+		forward[2] += 0.2f;
+		VectorNormalize( forward );
+ 
+		m = fire_bomb (ent, muzzle, forward);
+		m->damage *= s_quadFactor;
+		m->splashDamage *= s_quadFactor;
+		ent->client->bombfired = qtrue;
+		return;
+	}
+
+ while ((grenades = G_Find (grenades, FOFS(classname), "bomb")) != NULL)
+ {
+	if(grenades->r.ownerNum == ent->s.clientNum)  //make sure its ours
+	{
+		if (ent->client->bombfired == qtrue)
+		{
+			G_ExplodeBomb(grenades);
+			ent->client->bombfired = qfalse;
+			
+		}
+
+	}
+ }
+
+ 	
+
+} 
+
+
+/*
+======================================================================
+
+PDG
 
 ======================================================================
 */
@@ -481,6 +527,15 @@ void weapon_pdlauncher_fire (gentity_t	*ent) {
  m->splashDamage *= s_quadFactor;
  ent->client->pdgfired = qtrue;
 } 
+
+
+/*
+======================================================================
+
+GRENADE LAUNCHER
+
+======================================================================
+*/
 
 void weapon_grenadelauncher_fire (gentity_t *ent) {
 	gentity_t	*m;
@@ -1190,8 +1245,8 @@ void FireWeapon2( gentity_t *ent ) {
 	Weapon_fire_flame( ent, qtrue);  // Shafe - Trep - Flame Thrower
 	break; 
  case WP_SHOTGUN: 
-	//Weapon_RocketLauncher_Fire( ent );
-	weapon_supershotgun_fire( ent, qtrue );
+	 weapon_bomblauncher_fire( ent);
+	 //weapon_supershotgun_fire( ent, qtrue );
 	break; 
  case WP_MACHINEGUN: 
   //Weapon_RocketLauncher_Fire( ent );

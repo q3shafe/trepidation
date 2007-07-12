@@ -2136,7 +2136,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2712
+CNSTI4 2716
 ADDP4
 INDIRI4
 CNSTI4 0
@@ -2420,7 +2420,7 @@ LABELV $188
 line 519
 ;518:		}
 ;519:		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2440,7 +2440,7 @@ LABELV $190
 line 522
 ;521:		}
 ;522:		if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2513,7 +2513,7 @@ JUMPV
 LABELV $195
 line 541
 ;541:		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2533,7 +2533,7 @@ LABELV $200
 line 544
 ;543:		}
 ;544:		if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2548,7 +2548,7 @@ INDIRI4
 NEI4 $202
 line 545
 ;545:			if ( level.clients[i].sess.teamLeader )
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -4586,7 +4586,7 @@ ADDRLP4 1032
 INDIRP4
 CNSTI4 524
 ADDP4
-CNSTI4 3472
+CNSTI4 3476
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -4613,7 +4613,7 @@ INDIRP4
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 3472
+CNSTI4 3476
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -4965,7 +4965,7 @@ line 1056
 ;1055:
 ;1056:	client = level.clients + clientNum;
 ADDRLP4 0
-CNSTI4 3472
+CNSTI4 3476
 ADDRFP4 0
 INDIRI4
 MULI4
@@ -5671,7 +5671,7 @@ line 1198
 ;1198:	client->saved.leveltime = 0;
 ADDRLP4 0
 INDIRP4
-CNSTI4 3460
+CNSTI4 3464
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -5783,7 +5783,7 @@ INDIRP4
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 3472
+CNSTI4 3476
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -6039,7 +6039,7 @@ ADDRFP4 0
 INDIRP4
 CNSTI4 524
 ADDP4
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 100
 INDIRI4
 MULI4
@@ -6479,7 +6479,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3472
+CNSTI4 3476
 DIVI4
 ARGI4
 ADDRLP4 0
@@ -7340,7 +7340,7 @@ line 1486
 ;1486:	client->noHead=qfalse;
 ADDRLP4 0
 INDIRP4
-CNSTI4 2712
+CNSTI4 2716
 ADDP4
 CNSTI4 0
 ASGNI4
@@ -7406,7 +7406,7 @@ LABELV $509
 line 1507
 ;1506:	
 ;1507:		if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7426,7 +7426,7 @@ LABELV $514
 line 1510
 ;1509:		}
 ;1510:		if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7442,7 +7442,7 @@ NEI4 $516
 line 1512
 ;1511:			
 ;1512:			if (level.clients[i].ps.persistant[PERS_SCORE] == 0) 
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7529,7 +7529,7 @@ line 1530
 line 1531
 ;1531:		t = level.clients[c].ps.persistant[PERS_SCORE];
 ADDRLP4 12
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7556,7 +7556,7 @@ CALLV
 pop
 line 1533
 ;1533:		level.clients[c].ps.persistant[PERS_SCORE] = t;
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7584,7 +7584,7 @@ line 1538
 line 1539
 ;1539:		t = level.clients[c].ps.persistant[PERS_SCORE];	
 ADDRLP4 12
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7611,7 +7611,7 @@ CALLV
 pop
 line 1541
 ;1541:		level.clients[c].ps.persistant[PERS_SCORE] = t;
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -7675,7 +7675,7 @@ line 1565
 ;1564:	
 ;1565:		if (( level.clients[i].pers.connected == CON_DISCONNECTED ) && ( level.clients[i].ps.pm_type == PM_DEAD )) {
 ADDRLP4 12
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7705,7 +7705,7 @@ LABELV $532
 line 1568
 ;1567:		}
 ;1568:		if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7721,7 +7721,7 @@ NEI4 $534
 line 1570
 ;1569:			
 ;1570:			if (level.clients[i].ps.persistant[PERS_SCORE] == 0) 
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -7930,7 +7930,7 @@ LABELV $547
 line 1634
 ;1634:		if ( level.clients[i].sess.sessionTeam == TEAM_SPECTATOR
 ADDRLP4 12
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -8144,7 +8144,7 @@ line 1664
 line 1665
 ;1665:		level.clients[ level.sortedClients[0] ].sess.wins++;
 ADDRLP4 24
-CNSTI4 3472
+CNSTI4 3476
 ADDRGP4 level+96
 INDIRI4
 MULI4
@@ -8648,6 +8648,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_bomb
 import fire_pdgrenade
 import fire_grenade
 import fire_plasma
@@ -8660,6 +8661,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeBomb
 import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap

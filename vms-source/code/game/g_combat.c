@@ -583,6 +583,20 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 		self->client->pdgfired = qfalse;
 		}
 	}
+
+	// Shafe - Trep Clear Out Bombs
+	while ((grenades = G_Find (grenades, FOFS(classname), "bomb")) != NULL)
+	{
+		if ( self->client->bombfired == qtrue )
+		{ // When a grenade has been fired, let it explode -Vincent
+			if(grenades->r.ownerNum == self->s.clientNum)
+			{ // Confirm owner
+			grenades->nextthink = level.time;
+			grenades->think = G_ExplodeBomb;
+			}
+		self->client->bombfired = qfalse;
+		}
+	}
 	
 	if ( attacker ) {
 		killer = attacker->s.number;

@@ -108,7 +108,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3472
+CNSTI4 3476
 DIVI4
 ARGI4
 ADDRLP4 16
@@ -167,7 +167,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3472
+CNSTI4 3476
 DIVI4
 ARGI4
 ADDRLP4 1040
@@ -658,7 +658,7 @@ JUMPV
 LABELV $98
 line 178
 ;178:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -672,7 +672,7 @@ CNSTI4 2
 NEI4 $103
 line 179
 ;179:			G_WriteClientSessionData( &level.clients[i] );
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -1078,6 +1078,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_bomb
 import fire_pdgrenade
 import fire_grenade
 import fire_plasma
@@ -1090,6 +1091,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeBomb
 import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap

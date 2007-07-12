@@ -9356,9 +9356,9 @@ JUMPV
 LABELV $642
 line 1842
 ;1841:	case WP_SHOTGUN: 
-;1842:		addTime = 1000; 
+;1842:		addTime = 500; 
 ADDRLP4 0
-CNSTI4 1000
+CNSTI4 500
 ASGNI4
 line 1843
 ;1843:		break; 

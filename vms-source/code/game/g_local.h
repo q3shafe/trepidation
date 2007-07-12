@@ -388,6 +388,7 @@ struct gclient_s {
 	qboolean	hookhasbeenfired;	// Shafe - Trep - Offhand Grapple
 
 	qboolean	pdgfired;			// -Vincent
+	qboolean	bombfired;			// - For Alt Shotgun - Shafe
 
 	int			switchTeamTime;		// time the player switched teams
 
@@ -631,6 +632,7 @@ void G_SetOrigin( gentity_t *ent, vec3_t origin );
 void AddRemap(const char *oldShader, const char *newShader, float timeOffset);
 const char *BuildShaderStateConfig();
 void G_ExplodeMissile( gentity_t *ent ); // Shafe - Trep - PDG
+void G_ExplodeBomb( gentity_t *ent ); // Shafe - Trep - PDG
 
 //
 // g_combat.c
@@ -664,6 +666,7 @@ gentity_t *fire_blaster (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_grenade (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t aimdir);
+gentity_t *fire_bomb (gentity_t *self, vec3_t start, vec3_t aimdir);
 
 gentity_t *fire_altgrenade (gentity_t *self, vec3_t start, vec3_t aimdir); // Shafe Alternate Grenade Fire
 gentity_t *fire_alt_rocket (gentity_t *self, vec3_t start, vec3_t dir); // Shafe Alternate Rocket Fire

@@ -143,7 +143,7 @@ pop
 line 52
 ;51:
 ;52:	if ( level.clients[playerClientNum].sess.sessionTeam == TEAM_SPECTATOR ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 1076
 INDIRI4
 MULI4
@@ -300,7 +300,7 @@ line 104
 ADDRLP4 1092
 CNSTI4 0
 ASGNI4
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 1076
 INDIRI4
 MULI4
@@ -446,7 +446,7 @@ ADDRLP4 4
 INDIRI4
 ARGI4
 ADDRLP4 1096
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -2427,7 +2427,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3472
+CNSTI4 3476
 ADDRGP4 level+96
 INDIRI4
 MULI4
@@ -2499,7 +2499,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3472
+CNSTI4 3476
 ADDRGP4 level+96+4
 INDIRI4
 MULI4
@@ -2558,7 +2558,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3472
+CNSTI4 3476
 ADDRGP4 level+96+8
 INDIRI4
 MULI4
@@ -2624,7 +2624,7 @@ MULI4
 ADDRGP4 g_entities
 ADDP4
 ARGP4
-CNSTI4 3472
+CNSTI4 3476
 ADDRGP4 level+96+8
 INDIRI4
 MULI4
@@ -3106,6 +3106,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_bomb
 import fire_pdgrenade
 import fire_grenade
 import fire_plasma
@@ -3118,6 +3119,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeBomb
 import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap

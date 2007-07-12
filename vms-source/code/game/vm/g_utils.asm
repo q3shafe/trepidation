@@ -793,7 +793,7 @@ JUMPV
 LABELV $118
 line 160
 ;160:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -807,7 +807,7 @@ CNSTI4 2
 NEI4 $123
 line 161
 ;161:			if ( level.clients[i].sess.sessionTeam == team ) {
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -2207,7 +2207,7 @@ ARGI4
 ADDRGP4 level
 INDIRP4
 ARGP4
-CNSTI4 3472
+CNSTI4 3476
 ARGI4
 ADDRGP4 trap_LocateGameData
 CALLV
@@ -3857,6 +3857,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_bomb
 import fire_pdgrenade
 import fire_grenade
 import fire_plasma
@@ -3869,6 +3870,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeBomb
 import G_ExplodeMissile
 import G_TouchSolids
 import G_TouchTriggers
