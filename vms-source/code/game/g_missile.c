@@ -39,6 +39,28 @@ void pdg_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 }
 
+void bomb_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod){
+
+	vec3_t dir; // needed by the event being added
+
+	dir[0] = dir[1] = 0;
+	dir[2] = 1;
+	if (self->chain)
+		G_FreeEntity(self->chain); // get rid of the gun. // the gun just vanishes
+		self->s.weapon=WP_ROCKET_LAUNCHER; // to tell it what kind of explosion to use
+		G_AddEvent( self, EV_MISSILE_MISS, DirToByte( dir ) ); // to tell it to spawn an explosion here	
+		self->freeAfterEvent = qtrue; // so it goes away after the explosion
+
+	if (self->parent->istelepoint != 0)
+	{
+		trap_SendServerCommand( self->r.ownerNum, va("cp \"^9%s Destroyed your bomb!\n\"", attacker->client->pers.netname) );
+	}
+	self->client->bombfired = qfalse;
+	
+
+
+}
+
 /*
 ================
 G_Missile_Die
@@ -825,6 +847,74 @@ gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
 
 	return bolt;
 }	
+
+//=============================================================================
+
+
+
+// Shafe - Trep 
+void G_ExplodeBomb( gentity_t *ent ) {
+ 
+		
+	if ( ent->client->bombfired == qtrue )
+	{ // -Vincent
+	ent->client->bombfired = qfalse;
+	}
+
+	G_ExplodeMissile( ent );
+}
+/*
+=================
+ fire_bomb
+ Shafe - Trep 
+=================
+*/
+gentity_t *fire_bomb (gentity_t *self, vec3_t start, vec3_t dir) {
+	gentity_t	*bolt;
+	//vec3_t		mins = { -8, -8, -8 }, maxs = { 8, 8, 8 };
+
+	VectorNormalize (dir);
+ 
+	bolt = G_Spawn();
+	bolt->classname = "bomb";
+	bolt->nextthink = level.time + 30000;
+	bolt->think = G_ExplodeBomb;
+	bolt->s.eType = ET_MISSILE;
+	//tr.surfaceFlags & SURF_NOIMPACT
+	
+	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+	bolt->s.weapon = WP_GRENADE_LAUNCHER;
+	bolt->s.eFlags = EF_BOUNCE_HALF;  // Get rid of this for no bounce
+	bolt->r.ownerNum = self->s.number;
+
+	//unlagged - projectile nudge
+	// we'll need this for nudging projectiles later
+	bolt->s.otherEntityNum = self->s.number;
+	//unlagged - projectile nudge
+	bolt->s.eFlags |= EF_ALT_FIRING;
+	bolt->parent = self;
+	bolt->damage = 150;
+	bolt->splashDamage = 200;
+	bolt->splashRadius = 200;
+	bolt->methodOfDeath = MOD_GRENADE;
+	bolt->splashMethodOfDeath = MOD_GRENADE_SPLASH;
+	bolt->clipmask = MASK_SHOT;
+ 
+	// Health? Think it'll work?
+	bolt->takedamage=qtrue;
+	bolt->health = 45;
+	bolt->die = bomb_explode;
+
+	bolt->s.pos.trType = TR_GRAVITY;
+	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;
+	VectorCopy( start, bolt->s.pos.trBase );
+	VectorScale( dir, 700, bolt->s.pos.trDelta );
+	SnapVector( bolt->s.pos.trDelta );// save net bandwidth
+ 
+	VectorCopy (start, bolt->r.currentOrigin);
+ 
+ return bolt;
+}
 
 //=============================================================================
 

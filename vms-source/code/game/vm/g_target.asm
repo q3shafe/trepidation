@@ -2877,7 +2877,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2728
+CNSTI4 2732
 ADDP4
 ADDRGP4 level+32
 INDIRI4
@@ -3114,7 +3114,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2724
+CNSTI4 2728
 ADDP4
 ADDRGP4 level+32
 INDIRI4
@@ -3545,6 +3545,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_bomb
 import fire_pdgrenade
 import fire_grenade
 import fire_plasma
@@ -3557,6 +3558,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeBomb
 import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap

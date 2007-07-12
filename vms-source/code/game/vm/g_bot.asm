@@ -1101,7 +1101,7 @@ LABELV $136
 line 228
 ;228:			cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1305,7 +1305,7 @@ LABELV $158
 line 251
 ;251:			cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1583,7 +1583,7 @@ LABELV $188
 line 293
 ;293:		cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1746,7 +1746,7 @@ LABELV $203
 line 322
 ;322:		cl = level.clients + i;
 ADDRLP4 0
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -1876,7 +1876,7 @@ LABELV $217
 line 348
 ;348:		cl = level.clients + i;
 ADDRLP4 4
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -5942,6 +5942,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_bomb
 import fire_pdgrenade
 import fire_grenade
 import fire_plasma
@@ -5954,6 +5955,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeBomb
 import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap

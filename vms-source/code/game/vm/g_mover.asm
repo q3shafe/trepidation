@@ -5781,7 +5781,7 @@ line 830
 ;829:	float		len;
 ;830:	client	=	&level.clients[i];
 ADDRLP4 0
-CNSTI4 3472
+CNSTI4 3476
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -12790,6 +12790,7 @@ import fire_rocket
 import fire_flame
 import fire_alt_rocket
 import fire_altgrenade
+import fire_bomb
 import fire_pdgrenade
 import fire_grenade
 import fire_plasma
@@ -12802,6 +12803,7 @@ import G_InvulnerabilityEffect
 import G_RadiusDamage
 import G_Damage
 import CanDamage
+import G_ExplodeBomb
 import G_ExplodeMissile
 import BuildShaderStateConfig
 import AddRemap

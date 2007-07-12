@@ -1839,7 +1839,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 60;  // Shafe - Trep - Flame Thrower was 50  // Streaming Flames
 		break; 
 	case WP_SHOTGUN: 
-		addTime = 1000; 
+		addTime = 500; 
 		break; 
 	case WP_MACHINEGUN: 
 		addTime = 100; 
