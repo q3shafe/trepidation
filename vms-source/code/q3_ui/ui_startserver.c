@@ -244,10 +244,13 @@ static void StartServer_GametypeEvent( void* ptr, int event ) {
 		matchbits |= ( 1 << GT_SINGLE_PLAYER );
 	}
 
-	if(s_startserver.gametype.curvalue > GT_CTF)
+	
+	// Shafe - Read Arsenal, Survival, And Trepidation Gametypes as FFA
+	if(s_startserver.gametype.curvalue > (GT_CTF-1))
 	{
-		matchbits |= ( 1 << GT_SINGLE_PLAYER);
+		matchbits |= ( 1 << GT_FFA);
 	}
+	/////////////////////////////////////////////////////////////
 
 	for( i = 0; i < count; i++ ) {
 		info = UI_GetArenaInfoByNumber( i );
