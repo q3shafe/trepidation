@@ -146,9 +146,9 @@ static char* gamenames[] = {
 	"SP ",	// single player
 	"Team DM",	// team deathmatch
 	"CTF",	// capture the flag
-	"One Flag CTF",		// one flag ctf
-	"OverLoad",				// Overload
-	"Harvester",			// Harvester
+	"Arsenal",		// one flag ctf
+	"Survival",				// Overload
+	"Trepidation",			// Harvester
 	"Rocket Arena 3",	// Rocket Arena 3
 	"Q3F",						// Q3F
 	"Urban Terror",		// Urban Terror
@@ -534,7 +534,7 @@ static void ArenaServers_UpdateMenu( void ) {
 		case GAMES_ALL:
 			break;
 
-		case GAMES_FFA:
+		case GAMES_FFA:	
 			if( servernodeptr->gametype != GT_FFA ) {
 				continue;
 			}
@@ -559,17 +559,17 @@ static void ArenaServers_UpdateMenu( void ) {
 			break;
 		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
 			 //strcmp(servernodeptr->gamename,"eternal") != 0
-			if( servernodeptr->g_GameMode != 1 ) {
-					continue;
-			}
-			break;
-		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
-			if( servernodeptr->g_GameMode != 2) {
+			if(( servernodeptr->gametype != GT_FFA ) && (servernodeptr->g_GameMode != 1))  {
 				continue;
 			}
 			break;
-		case GAMES_TREPIDATION: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
-			if( servernodeptr->g_GameMode != 3) {
+		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
+			if(( servernodeptr->gametype != GT_FFA ) && (servernodeptr->g_GameMode != 2))  {
+				continue;
+			}
+			break;
+		case GAMES_TREPIDATION: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet			
+			if(( servernodeptr->gametype != GT_TEAM ) && (servernodeptr->g_GameMode != 3))  {
 				continue;
 			}
 			break;
@@ -693,6 +693,7 @@ static void ArenaServers_Insert( char* adrstr, char* info, int pingtime )
 	servernode_t*	servernodeptr;
 	char*			s;
 	int				i;
+	int				x;
 
 
 	if ((pingtime >= ArenaServers_MaxPing()) && (g_servertype != AS_FAVORITES))
@@ -760,8 +761,19 @@ static void ArenaServers_Insert( char* adrstr, char* info, int pingtime )
 		Q_strncpyz( servernodeptr->gamename, s, sizeof(servernodeptr->gamename) );
 	}
 	else {
+		
+		//x = atoi( Info_ValueForKey( info, "g_GameMode") );  // Shafe
+		//x = servernodeptr->g_GameMode;
 		servernodeptr->gametype = i;
+	
+		// Shafe New Gametypes
+		//if (x == 1)	{ i = 5; } 
+		//if (x == 2)	{ i = 6; }
+		//if (x == 3)	{ i = 7; }
+		// ////////////////
+
 		Q_strncpyz( servernodeptr->gamename, gamenames[i], sizeof(servernodeptr->gamename) );
+		
 	}
 }
 
