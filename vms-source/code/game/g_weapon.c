@@ -1540,6 +1540,58 @@ void G_StartKamikaze( gentity_t *ent ) {
 #endif
 
 
+/*
+====================================================
+MORE BUILDABLE STUFF
+Done here for those night forward, right, and up values 
+=================
+*/
+#define PLACEDIST			64
+
+/*
+=================
+CanBuildHere
+
+This checks to see that we can build this thing
+=================
+*/
+qboolean CanBuildHere(gentity_t *playerent)
+{
+	trace_t		tr;
+	vec3_t		fwd, pos, dest, mins = {-16,-16, 0}, maxs = {16,16,16};
+
+	
+
+	// can we place this in front of us?
+	AngleVectors (playerent->client->ps.viewangles, fwd, NULL, NULL);
+	fwd[2] = 0;
+	VectorMA(playerent->client->ps.origin, PLACEDIST, fwd, dest);
+	trap_Trace (&tr, playerent->client->ps.origin, mins, maxs, dest, playerent->s.number, MASK_SHOT );
+	if (tr.fraction > 0.9)
+	{//room in front
+		VectorCopy(tr.endpos, pos);
+		// drop to floor
+		VectorSet( dest, pos[0], pos[1], pos[2] - 4096 );
+		trap_Trace( &tr, pos, mins, maxs, dest, playerent->s.number, MASK_SOLID );
+		if ( !tr.startsolid && !tr.allsolid )
+		{	
+			return qtrue;
+		}
+	}
+	// no room
+	return qfalse;
+}
+
+
+
+
+/*
+=================
+BuildableSpawn
+
+This checks puts it in front, drops it to the ground and angles it correctly
+=================
+*/
 void BuildableSpawn( gentity_t *base )
 { // Done here for those night forward, right, and up values -Vincent	
 vec3_t		start, dir, angles; // Part 1 stuff
@@ -1559,6 +1611,8 @@ AngleVectors( angles, forward, right, up );
 CalcMuzzlePoint( base, forward, right, up, start ); // Actual start point, away from the owner
 VectorNormalize( forward );
 VectorMA( start, 32, forward, start ); // Go in front of the player
+
+
 G_SetOrigin( base, start ); // Start a bit in front of the player
 base->s.pos.trTime = level.time;
 	
@@ -1568,11 +1622,12 @@ VectorScale( dir, 300, base->s.pos.trDelta );
 base->s.pos.trTime = level.time;
 vectoangles( dir, base->s.angles);
 VectorCopy( base->s.angles, base->s.apos.trBase );
-VectorSet( base->s.apos.trDelta, 300, 0, 0 ); // Speed
+VectorSet( base->s.apos.trDelta, 50, 0, 0 ); // Speed
 base->s.apos.trTime = level.time;
 
 
 // Part 2: Put it on the ground and match it to slopes -Vincent
+
 VectorCopy( base->r.currentOrigin, origin );
 origin[2] -= 2500; // Trace it straight down
 // Trace for solids from the previous position to the new position on the ground, 
@@ -1580,9 +1635,11 @@ origin[2] -= 2500; // Trace it straight down
 trap_Trace( &tr1, base->r.currentOrigin, base->r.mins, base->r.maxs, origin, 
 			base->parent ? base->parent->s.number : base->s.number, MASK_SHOT );
 
+
 VectorCopy( base->r.currentOrigin, origin ); // Keep the old value for lava checking
 G_SetOrigin( base, tr1.endpos );
 VectorCopy( base->r.currentOrigin, base->s.origin ); // Set it's new origin
+
 
 if( tr1.fraction < 1.0 && ( &tr1.plane ) )
 { // Match to a slope when necessary
@@ -1611,7 +1668,7 @@ trap_LinkEntity( base ); // Add it...
 // Trace back to its original point to see if the buildable hit any non-solid content on its way
 // When it does, the buildable should be cleared!
 trap_Trace( &tr2, origin, base->r.mins, base->r.maxs, base->r.currentOrigin, 
-		   	base->parent ? base->parent->s.number : base->s.number, CONTENTS_LAVA | CONTENTS_SLIME | CONTENTS_WATER );
+		   	base->parent ? base->parent->s.number : base->s.number, CONTENTS_LAVA | CONTENTS_SLIME | CONTENTS_SOLID );
 
 if( tr2.fraction < 1.0 ) // It did go through a bad content
 {

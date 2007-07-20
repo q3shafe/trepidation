@@ -3103,9 +3103,10 @@ LABELV $232
 line 510
 ;510:	}
 LABELV $229
-line 512
+line 513
 ;511:
-;512:	self->activator->client->speedTime = level.time + 500; // If not activated every loop, it will reset in the next 1/2 second
+;512:
+;513:	self->activator->client->speedTime = level.time + 500; // If not activated every loop, it will reset in the next 1/2 second
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -3121,18 +3122,18 @@ INDIRI4
 CNSTI4 500
 ADDI4
 ASGNI4
-line 513
-;513:}
+line 514
+;514:}
 LABELV $223
 endproc target_speed_change_use 4 8
 export SP_target_speed_change
 proc SP_target_speed_change 4 8
-line 516
-;514:
-;515:void SP_target_speed_change( gentity_t *self )
-;516:{ //-Vincent
 line 517
-;517:G_SetOrigin( self, self->s.origin );
+;515:
+;516:void SP_target_speed_change( gentity_t *self )
+;517:{ //-Vincent
+line 518
+;518:G_SetOrigin( self, self->s.origin );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3148,25 +3149,25 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 519
-;518:
-;519:trap_LinkEntity( self );
+line 520
+;519:
+;520:trap_LinkEntity( self );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 520
-;520:self->use = target_speed_change_use;
+line 521
+;521:self->use = target_speed_change_use;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 target_speed_change_use
 ASGNP4
-line 521
-;521:}
+line 522
+;522:}
 LABELV $234
 endproc SP_target_speed_change 4 8
 import CheckPlayerPostions
