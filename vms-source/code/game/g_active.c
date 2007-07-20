@@ -488,7 +488,18 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 		{
 			// Free them
 			if( !( ent->r.svFlags & SVF_CUSTOM_SPEED ) ) // Not doing this check caused trouble -Vincent
-				   client->ps.speed = g_speed.integer;
+			{
+				
+					// Reset correctly if they have haste
+					if ( client->ps.powerups[PW_HASTE] ) {
+							client->ps.speed = g_speed.integer * 1.3;
+					} else
+					{
+						client->ps.speed = g_speed.integer;
+					}
+				
+			}
+			
 			if( !( ent->r.svFlags & SVF_CUSTOM_GRAVITY ) ) // Not doing this check caused trouble -Vincent
 				   client->ps.gravity = g_gravity.integer;
 			g_entities[client->ps.clientNum].s.time2 = 0;
@@ -1038,9 +1049,8 @@ void ClientThink_real( gentity_t *ent ) {
 	}
 	else
 #endif
-	if ( client->ps.powerups[PW_HASTE] ) {
-		client->ps.speed *= 1.3;
-	}
+
+
 
 	if (( g_entities[client->ps.clientNum].immobilized == qtrue) && (g_entities[client->ps.clientNum].s.eType != ET_BUILDABLE)) 
 	{
@@ -1077,6 +1087,13 @@ void ClientThink_real( gentity_t *ent ) {
 	if( client->gravityTime < level.time )
 		ent->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
 	// Above: Actual reset is done at immobilizer thinking (prevents double checking, was fixed there)... -Vincent
+
+	// Do this check after all the immobilizer stuff. - Shafe
+	if ( client->ps.powerups[PW_HASTE] ) {
+		//client->ps.speed *= 1.3;
+		client->ps.speed = g_speed.integer * 1.3;
+//		PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Speed \n", client->ps.speed); // Shafe - Debug
+	}
 
 	// set up for pmove
 	oldEventSequence = client->ps.eventSequence;

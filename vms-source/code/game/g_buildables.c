@@ -8,6 +8,7 @@
 #include "g_local.h"
 extern void BroadCastSound( char *path ); // De-warning -Vincent
 extern void BuildableSpawn( gentity_t *base ); //In g_weapon -Vincent
+extern qboolean CanBuildHere(gentity_t *playerent); //In g_weapon -Shafe
 
 /* 
 ====================================
@@ -293,6 +294,7 @@ int cts;
 
 
 }
+
 
 
 /*
@@ -694,7 +696,12 @@ void BuildTurret( gentity_t *ent , int type )
 {
 	// We need to check the turret type and select the appropriate model
 	gentity_t	*base;	
-	
+
+	if (CanBuildHere(ent) == qfalse) 
+	{ 
+		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
+		return; 
+	}
 
 	base=G_Spawn();
 	base->parent=ent;	
@@ -881,6 +888,11 @@ void BuildMC( gentity_t *ent )
 {
 	gentity_t	*base;
 	
+	if (CanBuildHere(ent) == qfalse) 
+	{ 
+		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
+		return; 
+	}
 
 	if (ent->client->sess.sessionTeam == TEAM_BLUE)
 	{
@@ -1019,6 +1031,11 @@ void BuildGenerator( gentity_t *ent )
 
 	gentity_t	*base;
 	
+	if (CanBuildHere(ent) == qfalse) 
+	{ 
+		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
+		return; 
+	}
 
 	base=G_Spawn();
 	base->parent=ent;
@@ -1173,6 +1190,11 @@ void BuildDisplacer( gentity_t *ent )
 {
 	gentity_t	*base;
 	
+	if (CanBuildHere(ent) == qfalse) 
+	{ 
+		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
+		return; 
+	}
 
 	base=G_Spawn();
 	base->parent=ent;

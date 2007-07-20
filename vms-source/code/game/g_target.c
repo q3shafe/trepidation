@@ -509,6 +509,7 @@ void target_speed_change_use( gentity_t *self, gentity_t *other, gentity_t *acti
 			self->activator->r.svFlags |= SVF_CUSTOM_SPEED;
 	}
 
+
 	self->activator->client->speedTime = level.time + 500; // If not activated every loop, it will reset in the next 1/2 second
 }
 

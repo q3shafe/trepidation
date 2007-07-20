@@ -7507,12 +7507,10 @@ ASGNI4
 LABELV $1172
 line 1723
 ;1722:	
-;1723:	g_arenaservers.master.curvalue = value+1;
+;1723:	g_arenaservers.master.curvalue = value;
 ADDRGP4 g_arenaservers+360+64
 ADDRLP4 8
 INDIRI4
-CNSTI4 1
-ADDI4
 ASGNI4
 line 1725
 ;1724:
