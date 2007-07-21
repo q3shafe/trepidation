@@ -869,7 +869,7 @@ void G_ExplodeBomb( gentity_t *ent ) {
  Shafe - Trep 
 =================
 */
-gentity_t *fire_bomb (gentity_t *self, vec3_t start, vec3_t dir) {
+gentity_t *fire_bomb (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 	gentity_t	*bolt;
 	//vec3_t		mins = { -8, -8, -8 }, maxs = { 8, 8, 8 };
 
@@ -908,7 +908,7 @@ gentity_t *fire_bomb (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->s.pos.trType = TR_GRAVITY;
 	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;
 	VectorCopy( start, bolt->s.pos.trBase );
-	VectorScale( dir, 700, bolt->s.pos.trDelta );
+	VectorScale( dir, 900, bolt->s.pos.trDelta );
 	SnapVector( bolt->s.pos.trDelta );// save net bandwidth
  
 	VectorCopy (start, bolt->r.currentOrigin);

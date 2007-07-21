@@ -1052,8 +1052,15 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 			//Com_Printf("Ignoring shotgun event\n");
 		}
 		else {
-			// do the shotgun pattern, because it wasn't predicted
-			CG_ShotgunFire( es );
+			// do the shotgun pattern, because it wasn't predicted	
+			if (cent->currentState.eFlags & EF_ALT_FIRING)
+			{
+				// Do Nothing?
+			} else {
+				if (!cg.snap->ps.eFlags & EF_ALT_FIRING) {	CG_ShotgunFire( es ); }
+			}
+			
+
 			//Com_Printf("Non-predicted shotgun pattern\n");
 		}
 //unlagged - attack prediction #2
