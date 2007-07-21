@@ -29,7 +29,7 @@ line 26
 ;23:	}
 ;24:	*/
 ;25:
-;26:	VectorCopy (start, move);
+;26:		VectorCopy (start, move);
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4

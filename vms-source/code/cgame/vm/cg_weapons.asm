@@ -11944,7 +11944,7 @@ line 2315
 LABELV $1107
 endproc CG_ShotgunPattern 84 12
 export CG_ShotgunFire
-proc CG_ShotgunFire 56 48
+proc CG_ShotgunFire 60 48
 line 2322
 ;2316:
 ;2317:/*
@@ -11957,18 +11957,47 @@ line 2326
 ;2323:	vec3_t	v;
 ;2324:	int		contents;
 ;2325:
-;2326:	VectorSubtract( es->origin2, es->pos.trBase, v );
+;2326:	if (!cg.snap->ps.eFlags & EF_ALT_FIRING)
+ADDRGP4 cg+36
+INDIRP4
+CNSTI4 148
+ADDP4
+INDIRI4
+CNSTI4 0
+NEI4 $1133
 ADDRLP4 16
+CNSTI4 1
+ASGNI4
+ADDRGP4 $1134
+JUMPV
+LABELV $1133
+ADDRLP4 16
+CNSTI4 0
+ASGNI4
+LABELV $1134
+ADDRLP4 16
+INDIRI4
+CNSTI4 512
+BANDI4
+CNSTI4 0
+EQI4 $1129
+line 2327
+;2327:	{
+line 2330
+;2328:	
+;2329:
+;2330:		VectorSubtract( es->origin2, es->pos.trBase, v );
+ADDRLP4 20
 ADDRFP4 0
 INDIRP4
 ASGNP4
 ADDRLP4 0
-ADDRLP4 16
+ADDRLP4 20
 INDIRP4
 CNSTI4 104
 ADDP4
 INDIRF4
-ADDRLP4 16
+ADDRLP4 20
 INDIRP4
 CNSTI4 24
 ADDP4
@@ -11976,75 +12005,75 @@ INDIRF4
 SUBF4
 ASGNF4
 ADDRLP4 0+4
-ADDRLP4 16
+ADDRLP4 20
 INDIRP4
 CNSTI4 108
 ADDP4
 INDIRF4
-ADDRLP4 16
+ADDRLP4 20
 INDIRP4
 CNSTI4 28
 ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-ADDRLP4 20
+ADDRLP4 24
 ADDRFP4 0
 INDIRP4
 ASGNP4
 ADDRLP4 0+8
-ADDRLP4 20
+ADDRLP4 24
 INDIRP4
 CNSTI4 112
 ADDP4
 INDIRF4
-ADDRLP4 20
+ADDRLP4 24
 INDIRP4
 CNSTI4 32
 ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 2327
-;2327:	VectorNormalize( v );
+line 2331
+;2331:		VectorNormalize( v );
 ADDRLP4 0
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 2328
-;2328:	VectorScale( v, 32, v );
-ADDRLP4 24
-CNSTF4 1107296256
-ASGNF4
-ADDRLP4 0
-ADDRLP4 24
-INDIRF4
-ADDRLP4 0
-INDIRF4
-MULF4
-ASGNF4
-ADDRLP4 0+4
-ADDRLP4 24
-INDIRF4
-ADDRLP4 0+4
-INDIRF4
-MULF4
-ASGNF4
-ADDRLP4 0+8
-CNSTF4 1107296256
-ADDRLP4 0+8
-INDIRF4
-MULF4
-ASGNF4
-line 2329
-;2329:	VectorAdd( es->pos.trBase, v, v );
+line 2332
+;2332:		VectorScale( v, 32, v );
 ADDRLP4 28
+CNSTF4 1107296256
+ASGNF4
+ADDRLP4 0
+ADDRLP4 28
+INDIRF4
+ADDRLP4 0
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 0+4
+ADDRLP4 28
+INDIRF4
+ADDRLP4 0+4
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 0+8
+CNSTF4 1107296256
+ADDRLP4 0+8
+INDIRF4
+MULF4
+ASGNF4
+line 2333
+;2333:		VectorAdd( es->pos.trBase, v, v );
+ADDRLP4 32
 ADDRFP4 0
 INDIRP4
 ASGNP4
 ADDRLP4 0
-ADDRLP4 28
+ADDRLP4 32
 INDIRP4
 CNSTI4 24
 ADDP4
@@ -12054,7 +12083,7 @@ INDIRF4
 ADDF4
 ASGNF4
 ADDRLP4 0+4
-ADDRLP4 28
+ADDRLP4 32
 INDIRP4
 CNSTI4 28
 ADDP4
@@ -12073,17 +12102,17 @@ ADDRLP4 0+8
 INDIRF4
 ADDF4
 ASGNF4
-line 2330
-;2330:	if ( cgs.glconfig.hardwareType != GLHW_RAGEPRO ) {
+line 2334
+;2334:		if ( cgs.glconfig.hardwareType != GLHW_RAGEPRO ) {
 ADDRGP4 cgs+20100+11288
 INDIRI4
 CNSTI4 3
-EQI4 $1139
-line 2334
-;2331:		// ragepro can't alpha fade, so don't even bother with smoke
-;2332:		vec3_t			up;
-;2333:
-;2334:		contents = trap_CM_PointContents( es->pos.trBase, 0 );
+EQI4 $1145
+line 2338
+;2335:			// ragepro can't alpha fade, so don't even bother with smoke
+;2336:			vec3_t			up;
+;2337:	
+;2338:			contents = trap_CM_PointContents( es->pos.trBase, 0 );
 ADDRFP4 0
 INDIRP4
 CNSTI4 24
@@ -12091,56 +12120,56 @@ ADDP4
 ARGP4
 CNSTI4 0
 ARGI4
-ADDRLP4 44
+ADDRLP4 48
 ADDRGP4 trap_CM_PointContents
 CALLI4
 ASGNI4
 ADDRLP4 12
-ADDRLP4 44
+ADDRLP4 48
 INDIRI4
 ASGNI4
-line 2335
-;2335:		if ( !( contents & CONTENTS_WATER ) ) {
+line 2339
+;2339:			if ( !( contents & CONTENTS_WATER ) ) {
 ADDRLP4 12
 INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-NEI4 $1143
-line 2336
-;2336:			VectorSet( up, 0, 0, 8 );
-ADDRLP4 48
+NEI4 $1149
+line 2340
+;2340:				VectorSet( up, 0, 0, 8 );
+ADDRLP4 52
 CNSTF4 0
 ASGNF4
-ADDRLP4 32
-ADDRLP4 48
+ADDRLP4 36
+ADDRLP4 52
 INDIRF4
 ASGNF4
-ADDRLP4 32+4
-ADDRLP4 48
+ADDRLP4 36+4
+ADDRLP4 52
 INDIRF4
 ASGNF4
-ADDRLP4 32+8
+ADDRLP4 36+8
 CNSTF4 1090519040
 ASGNF4
-line 2337
-;2337:			CG_SmokePuff( v, up, 32, 1, 1, 1, 0.33f, 900, cg.time, 0, LEF_PUFF_DONT_SCALE, cgs.media.shotgunSmokePuffShader );
+line 2341
+;2341:				CG_SmokePuff( v, up, 32, 1, 1, 1, 0.33f, 900, cg.time, 0, LEF_PUFF_DONT_SCALE, cgs.media.shotgunSmokePuffShader );
 ADDRLP4 0
 ARGP4
-ADDRLP4 32
+ADDRLP4 36
 ARGP4
 CNSTF4 1107296256
 ARGF4
-ADDRLP4 52
+ADDRLP4 56
 CNSTF4 1065353216
 ASGNF4
-ADDRLP4 52
+ADDRLP4 56
 INDIRF4
 ARGF4
-ADDRLP4 52
+ADDRLP4 56
 INDIRF4
 ARGF4
-ADDRLP4 52
+ADDRLP4 56
 INDIRF4
 ARGF4
 CNSTF4 1051260355
@@ -12160,35 +12189,35 @@ ARGI4
 ADDRGP4 CG_SmokePuff
 CALLP4
 pop
-line 2338
-;2338:		}
-LABELV $1143
-line 2339
-;2339:	}
-LABELV $1139
-line 2340
-;2340:	CG_ShotgunPattern( es->pos.trBase, es->origin2, es->eventParm, es->otherEntityNum );
-ADDRLP4 32
+line 2342
+;2342:			}
+LABELV $1149
+line 2343
+;2343:		}
+LABELV $1145
+line 2344
+;2344:		CG_ShotgunPattern( es->pos.trBase, es->origin2, es->eventParm, es->otherEntityNum );
+ADDRLP4 36
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 32
+ADDRLP4 36
 INDIRP4
 CNSTI4 24
 ADDP4
 ARGP4
-ADDRLP4 32
+ADDRLP4 36
 INDIRP4
 CNSTI4 104
 ADDP4
 ARGP4
-ADDRLP4 32
+ADDRLP4 36
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 ARGI4
-ADDRLP4 32
+ADDRLP4 36
 INDIRP4
 CNSTI4 140
 ADDP4
@@ -12197,39 +12226,42 @@ ARGI4
 ADDRGP4 CG_ShotgunPattern
 CALLV
 pop
-line 2341
-;2341:}
+line 2345
+;2345:	}
+LABELV $1129
+line 2346
+;2346:}
 LABELV $1128
-endproc CG_ShotgunFire 56 48
+endproc CG_ShotgunFire 60 48
 export CG_Tracer
 proc CG_Tracer 224 16
-line 2357
-;2342:
-;2343:/*
-;2344:============================================================================
-;2345:
-;2346:BULLETS
+line 2362
 ;2347:
-;2348:============================================================================
-;2349:*/
+;2348:/*
+;2349:============================================================================
 ;2350:
-;2351:
-;2352:/*
-;2353:===============
-;2354:CG_Tracer
-;2355:===============
-;2356:*/
-;2357:void CG_Tracer( vec3_t source, vec3_t dest ) {
-line 2366
-;2358:	vec3_t		forward, right;
-;2359:	polyVert_t	verts[4];
-;2360:	vec3_t		line;
-;2361:	float		len, begin, end;
-;2362:	vec3_t		start, finish;
-;2363:	vec3_t		midpoint;
-;2364:
-;2365:	// tracer
-;2366:	VectorSubtract( dest, source, forward );
+;2351:BULLETS
+;2352:
+;2353:============================================================================
+;2354:*/
+;2355:
+;2356:
+;2357:/*
+;2358:===============
+;2359:CG_Tracer
+;2360:===============
+;2361:*/
+;2362:void CG_Tracer( vec3_t source, vec3_t dest ) {
+line 2371
+;2363:	vec3_t		forward, right;
+;2364:	polyVert_t	verts[4];
+;2365:	vec3_t		line;
+;2366:	float		len, begin, end;
+;2367:	vec3_t		start, finish;
+;2368:	vec3_t		midpoint;
+;2369:
+;2370:	// tracer
+;2371:	VectorSubtract( dest, source, forward );
 ADDRLP4 180
 ADDRFP4 4
 INDIRP4
@@ -12283,8 +12315,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 2367
-;2367:	len = VectorNormalize( forward );
+line 2372
+;2372:	len = VectorNormalize( forward );
 ADDRLP4 108
 ARGP4
 ADDRLP4 196
@@ -12295,22 +12327,22 @@ ADDRLP4 164
 ADDRLP4 196
 INDIRF4
 ASGNF4
-line 2370
-;2368:
-;2369:	// start at least a little ways from the muzzle
-;2370:	if ( len < 100 ) {
+line 2375
+;2373:
+;2374:	// start at least a little ways from the muzzle
+;2375:	if ( len < 100 ) {
 ADDRLP4 164
 INDIRF4
 CNSTF4 1120403456
-GEF4 $1153
-line 2371
-;2371:		return;
-ADDRGP4 $1150
+GEF4 $1159
+line 2376
+;2376:		return;
+ADDRGP4 $1156
 JUMPV
-LABELV $1153
-line 2373
-;2372:	}
-;2373:	begin = 50 + random() * (len - 60);
+LABELV $1159
+line 2378
+;2377:	}
+;2378:	begin = 50 + random() * (len - 60);
 ADDRLP4 200
 ADDRGP4 rand
 CALLI4
@@ -12331,8 +12363,8 @@ MULF4
 CNSTF4 1112014848
 ADDF4
 ASGNF4
-line 2374
-;2374:	end = begin + cg_tracerLength.value;
+line 2379
+;2379:	end = begin + cg_tracerLength.value;
 ADDRLP4 156
 ADDRLP4 160
 INDIRF4
@@ -12340,24 +12372,24 @@ ADDRGP4 cg_tracerLength+8
 INDIRF4
 ADDF4
 ASGNF4
-line 2375
-;2375:	if ( end > len ) {
+line 2380
+;2380:	if ( end > len ) {
 ADDRLP4 156
 INDIRF4
 ADDRLP4 164
 INDIRF4
-LEF4 $1156
-line 2376
-;2376:		end = len;
+LEF4 $1162
+line 2381
+;2381:		end = len;
 ADDRLP4 156
 ADDRLP4 164
 INDIRF4
 ASGNF4
-line 2377
-;2377:	}
-LABELV $1156
-line 2378
-;2378:	VectorMA( source, begin, forward, start );
+line 2382
+;2382:	}
+LABELV $1162
+line 2383
+;2383:	VectorMA( source, begin, forward, start );
 ADDRLP4 204
 ADDRFP4 0
 INDIRP4
@@ -12399,8 +12431,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 2379
-;2379:	VectorMA( source, end, forward, finish );
+line 2384
+;2384:	VectorMA( source, end, forward, finish );
 ADDRLP4 212
 ADDRFP4 0
 INDIRP4
@@ -12442,121 +12474,121 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 2381
-;2380:
-;2381:	line[0] = DotProduct( forward, cg.refdef.viewaxis[1] );
-ADDRLP4 144
-ADDRLP4 108
-INDIRF4
-ADDRGP4 cg+111104+36+12
-INDIRF4
-MULF4
-ADDRLP4 108+4
-INDIRF4
-ADDRGP4 cg+111104+36+12+4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 108+8
-INDIRF4
-ADDRGP4 cg+111104+36+12+8
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 2382
-;2382:	line[1] = DotProduct( forward, cg.refdef.viewaxis[2] );
-ADDRLP4 144+4
-ADDRLP4 108
-INDIRF4
-ADDRGP4 cg+111104+36+24
-INDIRF4
-MULF4
-ADDRLP4 108+4
-INDIRF4
-ADDRGP4 cg+111104+36+24+4
-INDIRF4
-MULF4
-ADDF4
-ADDRLP4 108+8
-INDIRF4
-ADDRGP4 cg+111104+36+24+8
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-line 2384
-;2383:
-;2384:	VectorScale( cg.refdef.viewaxis[1], line[1], right );
-ADDRLP4 96
-ADDRGP4 cg+111104+36+12
-INDIRF4
-ADDRLP4 144+4
-INDIRF4
-MULF4
-ASGNF4
-ADDRLP4 96+4
-ADDRGP4 cg+111104+36+12+4
-INDIRF4
-ADDRLP4 144+4
-INDIRF4
-MULF4
-ASGNF4
-ADDRLP4 96+8
-ADDRGP4 cg+111104+36+12+8
-INDIRF4
-ADDRLP4 144+4
-INDIRF4
-MULF4
-ASGNF4
-line 2385
-;2385:	VectorMA( right, -line[0], cg.refdef.viewaxis[2], right );
-ADDRLP4 220
-ADDRLP4 144
-INDIRF4
-NEGF4
-ASGNF4
-ADDRLP4 96
-ADDRLP4 96
-INDIRF4
-ADDRGP4 cg+111104+36+24
-INDIRF4
-ADDRLP4 220
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-ADDRLP4 96+4
-ADDRLP4 96+4
-INDIRF4
-ADDRGP4 cg+111104+36+24+4
-INDIRF4
-ADDRLP4 220
-INDIRF4
-MULF4
-ADDF4
-ASGNF4
-ADDRLP4 96+8
-ADDRLP4 96+8
-INDIRF4
-ADDRGP4 cg+111104+36+24+8
-INDIRF4
-ADDRLP4 144
-INDIRF4
-NEGF4
-MULF4
-ADDF4
-ASGNF4
 line 2386
-;2386:	VectorNormalize( right );
+;2385:
+;2386:	line[0] = DotProduct( forward, cg.refdef.viewaxis[1] );
+ADDRLP4 144
+ADDRLP4 108
+INDIRF4
+ADDRGP4 cg+111104+36+12
+INDIRF4
+MULF4
+ADDRLP4 108+4
+INDIRF4
+ADDRGP4 cg+111104+36+12+4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 108+8
+INDIRF4
+ADDRGP4 cg+111104+36+12+8
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 2387
+;2387:	line[1] = DotProduct( forward, cg.refdef.viewaxis[2] );
+ADDRLP4 144+4
+ADDRLP4 108
+INDIRF4
+ADDRGP4 cg+111104+36+24
+INDIRF4
+MULF4
+ADDRLP4 108+4
+INDIRF4
+ADDRGP4 cg+111104+36+24+4
+INDIRF4
+MULF4
+ADDF4
+ADDRLP4 108+8
+INDIRF4
+ADDRGP4 cg+111104+36+24+8
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+line 2389
+;2388:
+;2389:	VectorScale( cg.refdef.viewaxis[1], line[1], right );
+ADDRLP4 96
+ADDRGP4 cg+111104+36+12
+INDIRF4
+ADDRLP4 144+4
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 96+4
+ADDRGP4 cg+111104+36+12+4
+INDIRF4
+ADDRLP4 144+4
+INDIRF4
+MULF4
+ASGNF4
+ADDRLP4 96+8
+ADDRGP4 cg+111104+36+12+8
+INDIRF4
+ADDRLP4 144+4
+INDIRF4
+MULF4
+ASGNF4
+line 2390
+;2390:	VectorMA( right, -line[0], cg.refdef.viewaxis[2], right );
+ADDRLP4 220
+ADDRLP4 144
+INDIRF4
+NEGF4
+ASGNF4
+ADDRLP4 96
+ADDRLP4 96
+INDIRF4
+ADDRGP4 cg+111104+36+24
+INDIRF4
+ADDRLP4 220
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+ADDRLP4 96+4
+ADDRLP4 96+4
+INDIRF4
+ADDRGP4 cg+111104+36+24+4
+INDIRF4
+ADDRLP4 220
+INDIRF4
+MULF4
+ADDF4
+ASGNF4
+ADDRLP4 96+8
+ADDRLP4 96+8
+INDIRF4
+ADDRGP4 cg+111104+36+24+8
+INDIRF4
+ADDRLP4 144
+INDIRF4
+NEGF4
+MULF4
+ADDF4
+ASGNF4
+line 2391
+;2391:	VectorNormalize( right );
 ADDRLP4 96
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 2388
-;2387:
-;2388:	VectorMA( finish, cg_tracerWidth.value, right, verts[0].xyz );
+line 2393
+;2392:
+;2393:	VectorMA( finish, cg_tracerWidth.value, right, verts[0].xyz );
 ADDRLP4 0
 ADDRLP4 132
 INDIRF4
@@ -12587,39 +12619,39 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 2389
-;2389:	verts[0].st[0] = 0;
+line 2394
+;2394:	verts[0].st[0] = 0;
 ADDRLP4 0+12
 CNSTF4 0
 ASGNF4
-line 2390
-;2390:	verts[0].st[1] = 1;
+line 2395
+;2395:	verts[0].st[1] = 1;
 ADDRLP4 0+12+4
 CNSTF4 1065353216
 ASGNF4
-line 2391
-;2391:	verts[0].modulate[0] = 255;
+line 2396
+;2396:	verts[0].modulate[0] = 255;
 ADDRLP4 0+20
 CNSTU1 255
 ASGNU1
-line 2392
-;2392:	verts[0].modulate[1] = 255;
+line 2397
+;2397:	verts[0].modulate[1] = 255;
 ADDRLP4 0+20+1
 CNSTU1 255
 ASGNU1
-line 2393
-;2393:	verts[0].modulate[2] = 255;
+line 2398
+;2398:	verts[0].modulate[2] = 255;
 ADDRLP4 0+20+2
 CNSTU1 255
 ASGNU1
-line 2394
-;2394:	verts[0].modulate[3] = 255;
+line 2399
+;2399:	verts[0].modulate[3] = 255;
 ADDRLP4 0+20+3
 CNSTU1 255
 ASGNU1
-line 2396
-;2395:
-;2396:	VectorMA( finish, -cg_tracerWidth.value, right, verts[1].xyz );
+line 2401
+;2400:
+;2401:	VectorMA( finish, -cg_tracerWidth.value, right, verts[1].xyz );
 ADDRLP4 0+24
 ADDRLP4 132
 INDIRF4
@@ -12653,39 +12685,39 @@ NEGF4
 MULF4
 ADDF4
 ASGNF4
-line 2397
-;2397:	verts[1].st[0] = 1;
+line 2402
+;2402:	verts[1].st[0] = 1;
 ADDRLP4 0+24+12
 CNSTF4 1065353216
 ASGNF4
-line 2398
-;2398:	verts[1].st[1] = 0;
+line 2403
+;2403:	verts[1].st[1] = 0;
 ADDRLP4 0+24+12+4
 CNSTF4 0
 ASGNF4
-line 2399
-;2399:	verts[1].modulate[0] = 255;
+line 2404
+;2404:	verts[1].modulate[0] = 255;
 ADDRLP4 0+24+20
 CNSTU1 255
 ASGNU1
-line 2400
-;2400:	verts[1].modulate[1] = 255;
+line 2405
+;2405:	verts[1].modulate[1] = 255;
 ADDRLP4 0+24+20+1
 CNSTU1 255
 ASGNU1
-line 2401
-;2401:	verts[1].modulate[2] = 255;
+line 2406
+;2406:	verts[1].modulate[2] = 255;
 ADDRLP4 0+24+20+2
 CNSTU1 255
 ASGNU1
-line 2402
-;2402:	verts[1].modulate[3] = 255;
+line 2407
+;2407:	verts[1].modulate[3] = 255;
 ADDRLP4 0+24+20+3
 CNSTU1 255
 ASGNU1
-line 2404
-;2403:
-;2404:	VectorMA( start, -cg_tracerWidth.value, right, verts[2].xyz );
+line 2409
+;2408:
+;2409:	VectorMA( start, -cg_tracerWidth.value, right, verts[2].xyz );
 ADDRLP4 0+48
 ADDRLP4 120
 INDIRF4
@@ -12719,39 +12751,39 @@ NEGF4
 MULF4
 ADDF4
 ASGNF4
-line 2405
-;2405:	verts[2].st[0] = 1;
+line 2410
+;2410:	verts[2].st[0] = 1;
 ADDRLP4 0+48+12
 CNSTF4 1065353216
 ASGNF4
-line 2406
-;2406:	verts[2].st[1] = 1;
+line 2411
+;2411:	verts[2].st[1] = 1;
 ADDRLP4 0+48+12+4
 CNSTF4 1065353216
 ASGNF4
-line 2407
-;2407:	verts[2].modulate[0] = 255;
+line 2412
+;2412:	verts[2].modulate[0] = 255;
 ADDRLP4 0+48+20
 CNSTU1 255
 ASGNU1
-line 2408
-;2408:	verts[2].modulate[1] = 255;
+line 2413
+;2413:	verts[2].modulate[1] = 255;
 ADDRLP4 0+48+20+1
 CNSTU1 255
 ASGNU1
-line 2409
-;2409:	verts[2].modulate[2] = 255;
+line 2414
+;2414:	verts[2].modulate[2] = 255;
 ADDRLP4 0+48+20+2
 CNSTU1 255
 ASGNU1
-line 2410
-;2410:	verts[2].modulate[3] = 255;
+line 2415
+;2415:	verts[2].modulate[3] = 255;
 ADDRLP4 0+48+20+3
 CNSTU1 255
 ASGNU1
-line 2412
-;2411:
-;2412:	VectorMA( start, cg_tracerWidth.value, right, verts[3].xyz );
+line 2417
+;2416:
+;2417:	VectorMA( start, cg_tracerWidth.value, right, verts[3].xyz );
 ADDRLP4 0+72
 ADDRLP4 120
 INDIRF4
@@ -12782,39 +12814,39 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 2413
-;2413:	verts[3].st[0] = 0;
+line 2418
+;2418:	verts[3].st[0] = 0;
 ADDRLP4 0+72+12
 CNSTF4 0
 ASGNF4
-line 2414
-;2414:	verts[3].st[1] = 0;
+line 2419
+;2419:	verts[3].st[1] = 0;
 ADDRLP4 0+72+12+4
 CNSTF4 0
 ASGNF4
-line 2415
-;2415:	verts[3].modulate[0] = 255;
+line 2420
+;2420:	verts[3].modulate[0] = 255;
 ADDRLP4 0+72+20
 CNSTU1 255
 ASGNU1
-line 2416
-;2416:	verts[3].modulate[1] = 255;
+line 2421
+;2421:	verts[3].modulate[1] = 255;
 ADDRLP4 0+72+20+1
 CNSTU1 255
 ASGNU1
-line 2417
-;2417:	verts[3].modulate[2] = 255;
+line 2422
+;2422:	verts[3].modulate[2] = 255;
 ADDRLP4 0+72+20+2
 CNSTU1 255
 ASGNU1
-line 2418
-;2418:	verts[3].modulate[3] = 255;
+line 2423
+;2423:	verts[3].modulate[3] = 255;
 ADDRLP4 0+72+20+3
 CNSTU1 255
 ASGNU1
-line 2420
-;2419:
-;2420:	trap_R_AddPolyToScene( cgs.media.tracerShader, 4, verts );
+line 2425
+;2424:
+;2425:	trap_R_AddPolyToScene( cgs.media.tracerShader, 4, verts );
 ADDRGP4 cgs+154388+232
 INDIRI4
 ARGI4
@@ -12825,9 +12857,9 @@ ARGP4
 ADDRGP4 trap_R_AddPolyToScene
 CALLV
 pop
-line 2422
-;2421:
-;2422:	midpoint[0] = ( start[0] + finish[0] ) * 0.5;
+line 2427
+;2426:
+;2427:	midpoint[0] = ( start[0] + finish[0] ) * 0.5;
 ADDRLP4 168
 CNSTF4 1056964608
 ADDRLP4 120
@@ -12837,8 +12869,8 @@ INDIRF4
 ADDF4
 MULF4
 ASGNF4
-line 2423
-;2423:	midpoint[1] = ( start[1] + finish[1] ) * 0.5;
+line 2428
+;2428:	midpoint[1] = ( start[1] + finish[1] ) * 0.5;
 ADDRLP4 168+4
 CNSTF4 1056964608
 ADDRLP4 120+4
@@ -12848,8 +12880,8 @@ INDIRF4
 ADDF4
 MULF4
 ASGNF4
-line 2424
-;2424:	midpoint[2] = ( start[2] + finish[2] ) * 0.5;
+line 2429
+;2429:	midpoint[2] = ( start[2] + finish[2] ) * 0.5;
 ADDRLP4 168+8
 CNSTF4 1056964608
 ADDRLP4 120+8
@@ -12859,10 +12891,10 @@ INDIRF4
 ADDF4
 MULF4
 ASGNF4
-line 2427
-;2425:
-;2426:	// add the tracer sound
-;2427:	trap_S_StartSound( midpoint, ENTITYNUM_WORLD, CHAN_AUTO, cgs.media.tracerSound );
+line 2432
+;2430:
+;2431:	// add the tracer sound
+;2432:	trap_S_StartSound( midpoint, ENTITYNUM_WORLD, CHAN_AUTO, cgs.media.tracerSound );
 ADDRLP4 168
 ARGP4
 CNSTI4 1022
@@ -12875,27 +12907,27 @@ ARGI4
 ADDRGP4 trap_S_StartSound
 CALLV
 pop
-line 2429
-;2428:
-;2429:}
-LABELV $1150
+line 2434
+;2433:
+;2434:}
+LABELV $1156
 endproc CG_Tracer 224 16
 proc CG_CalcMuzzlePoint 40 16
-line 2437
-;2430:
-;2431:
-;2432:/*
-;2433:======================
-;2434:CG_CalcMuzzlePoint
-;2435:======================
-;2436:*/
-;2437:static qboolean	CG_CalcMuzzlePoint( int entityNum, vec3_t muzzle ) {
 line 2442
-;2438:	vec3_t		forward;
-;2439:	centity_t	*cent;
-;2440:	int			anim;
-;2441:
-;2442:	if ( entityNum == cg.snap->ps.clientNum ) {
+;2435:
+;2436:
+;2437:/*
+;2438:======================
+;2439:CG_CalcMuzzlePoint
+;2440:======================
+;2441:*/
+;2442:static qboolean	CG_CalcMuzzlePoint( int entityNum, vec3_t muzzle ) {
+line 2447
+;2443:	vec3_t		forward;
+;2444:	centity_t	*cent;
+;2445:	int			anim;
+;2446:
+;2447:	if ( entityNum == cg.snap->ps.clientNum ) {
 ADDRFP4 0
 INDIRI4
 ADDRGP4 cg+36
@@ -12903,9 +12935,9 @@ INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
-NEI4 $1338
-line 2443
-;2443:		VectorCopy( cg.snap->ps.origin, muzzle );
+NEI4 $1344
+line 2448
+;2448:		VectorCopy( cg.snap->ps.origin, muzzle );
 ADDRFP4 4
 INDIRP4
 ADDRGP4 cg+36
@@ -12914,8 +12946,8 @@ CNSTI4 64
 ADDP4
 INDIRB
 ASGNB 12
-line 2444
-;2444:		muzzle[2] += cg.snap->ps.viewheight;
+line 2449
+;2449:		muzzle[2] += cg.snap->ps.viewheight;
 ADDRLP4 20
 ADDRFP4 4
 INDIRP4
@@ -12935,8 +12967,8 @@ INDIRI4
 CVIF4 4
 ADDF4
 ASGNF4
-line 2445
-;2445:		AngleVectors( cg.snap->ps.viewangles, forward, NULL, NULL );
+line 2450
+;2450:		AngleVectors( cg.snap->ps.viewangles, forward, NULL, NULL );
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 196
@@ -12956,8 +12988,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 2446
-;2446:		VectorMA( muzzle, 14, forward, muzzle );
+line 2451
+;2451:		VectorMA( muzzle, 14, forward, muzzle );
 ADDRLP4 28
 ADDRFP4 4
 INDIRP4
@@ -13007,17 +13039,17 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 2447
-;2447:		return qtrue;
+line 2452
+;2452:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $1337
+ADDRGP4 $1343
 JUMPV
-LABELV $1338
-line 2450
-;2448:	}
-;2449:
-;2450:	cent = &cg_entities[entityNum];
+LABELV $1344
+line 2455
+;2453:	}
+;2454:
+;2455:	cent = &cg_entities[entityNum];
 ADDRLP4 12
 CNSTI4 740
 ADDRFP4 0
@@ -13026,26 +13058,26 @@ MULI4
 ADDRGP4 cg_entities
 ADDP4
 ASGNP4
-line 2451
-;2451:	if ( !cent->currentValid ) {
+line 2456
+;2456:	if ( !cent->currentValid ) {
 ADDRLP4 12
 INDIRP4
 CNSTI4 428
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $1346
-line 2452
-;2452:		return qfalse;
+NEI4 $1352
+line 2457
+;2457:		return qfalse;
 CNSTI4 0
 RETI4
-ADDRGP4 $1337
+ADDRGP4 $1343
 JUMPV
-LABELV $1346
-line 2455
-;2453:	}
-;2454:
-;2455:	VectorCopy( cent->currentState.pos.trBase, muzzle );
+LABELV $1352
+line 2460
+;2458:	}
+;2459:
+;2460:	VectorCopy( cent->currentState.pos.trBase, muzzle );
 ADDRFP4 4
 INDIRP4
 ADDRLP4 12
@@ -13054,9 +13086,9 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 2457
-;2456:
-;2457:	AngleVectors( cent->currentState.apos.trBase, forward, NULL, NULL );
+line 2462
+;2461:
+;2462:	AngleVectors( cent->currentState.apos.trBase, forward, NULL, NULL );
 ADDRLP4 12
 INDIRP4
 CNSTI4 60
@@ -13076,8 +13108,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 2458
-;2458:	anim = cent->currentState.legsAnim & ~ANIM_TOGGLEBIT;
+line 2463
+;2463:	anim = cent->currentState.legsAnim & ~ANIM_TOGGLEBIT;
 ADDRLP4 16
 ADDRLP4 12
 INDIRP4
@@ -13087,19 +13119,19 @@ INDIRI4
 CNSTI4 -129
 BANDI4
 ASGNI4
-line 2459
-;2459:	if ( anim == LEGS_WALKCR || anim == LEGS_IDLECR ) {
+line 2464
+;2464:	if ( anim == LEGS_WALKCR || anim == LEGS_IDLECR ) {
 ADDRLP4 16
 INDIRI4
 CNSTI4 13
-EQI4 $1350
+EQI4 $1356
 ADDRLP4 16
 INDIRI4
 CNSTI4 23
-NEI4 $1348
-LABELV $1350
-line 2460
-;2460:		muzzle[2] += CROUCH_VIEWHEIGHT;
+NEI4 $1354
+LABELV $1356
+line 2465
+;2465:		muzzle[2] += CROUCH_VIEWHEIGHT;
 ADDRLP4 28
 ADDRFP4 4
 INDIRP4
@@ -13114,13 +13146,13 @@ INDIRF4
 CNSTF4 1094713344
 ADDF4
 ASGNF4
-line 2461
-;2461:	} else {
-ADDRGP4 $1349
+line 2466
+;2466:	} else {
+ADDRGP4 $1355
 JUMPV
-LABELV $1348
-line 2462
-;2462:		muzzle[2] += DEFAULT_VIEWHEIGHT;
+LABELV $1354
+line 2467
+;2467:		muzzle[2] += DEFAULT_VIEWHEIGHT;
 ADDRLP4 28
 ADDRFP4 4
 INDIRP4
@@ -13135,12 +13167,12 @@ INDIRF4
 CNSTF4 1104150528
 ADDF4
 ASGNF4
-line 2463
-;2463:	}
-LABELV $1349
-line 2465
-;2464:
-;2465:	VectorMA( muzzle, 14, forward, muzzle );
+line 2468
+;2468:	}
+LABELV $1355
+line 2470
+;2469:
+;2470:	VectorMA( muzzle, 14, forward, muzzle );
 ADDRLP4 28
 ADDRFP4 4
 INDIRP4
@@ -13190,45 +13222,45 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 2467
-;2466:
-;2467:	return qtrue;
+line 2472
+;2471:
+;2472:	return qtrue;
 CNSTI4 1
 RETI4
-LABELV $1337
+LABELV $1343
 endproc CG_CalcMuzzlePoint 40 16
 export CG_Bullet
 proc CG_Bullet 96 28
-line 2478
-;2468:
-;2469:}
-;2470:
-;2471:/*
-;2472:======================
-;2473:CG_Bullet
-;2474:
-;2475:Renders bullet effects.
-;2476:======================
-;2477:*/
-;2478:void CG_Bullet( vec3_t end, int sourceEntityNum, vec3_t normal, qboolean flesh, int fleshEntityNum ) {
-line 2485
-;2479:	trace_t trace;
-;2480:	int sourceContentType, destContentType;
-;2481:	vec3_t		start;
-;2482:
-;2483:	// if the shooter is currently valid, calc a source point and possibly
-;2484:	// do trail effects
-;2485:	if ( sourceEntityNum >= 0 && cg_tracerChance.value > 0 ) {
+line 2483
+;2473:
+;2474:}
+;2475:
+;2476:/*
+;2477:======================
+;2478:CG_Bullet
+;2479:
+;2480:Renders bullet effects.
+;2481:======================
+;2482:*/
+;2483:void CG_Bullet( vec3_t end, int sourceEntityNum, vec3_t normal, qboolean flesh, int fleshEntityNum ) {
+line 2490
+;2484:	trace_t trace;
+;2485:	int sourceContentType, destContentType;
+;2486:	vec3_t		start;
+;2487:
+;2488:	// if the shooter is currently valid, calc a source point and possibly
+;2489:	// do trail effects
+;2490:	if ( sourceEntityNum >= 0 && cg_tracerChance.value > 0 ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
-LTI4 $1354
+LTI4 $1360
 ADDRGP4 cg_tracerChance+8
 INDIRF4
 CNSTF4 0
-LEF4 $1354
-line 2486
-;2486:		if ( CG_CalcMuzzlePoint( sourceEntityNum, start ) ) {
+LEF4 $1360
+line 2491
+;2491:		if ( CG_CalcMuzzlePoint( sourceEntityNum, start ) ) {
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -13241,111 +13273,61 @@ ASGNI4
 ADDRLP4 76
 INDIRI4
 CNSTI4 0
-EQI4 $1357
-line 2487
-;2487:			sourceContentType = trap_CM_PointContents( start, 0 );
-ADDRLP4 0
-ARGP4
-CNSTI4 0
-ARGI4
-ADDRLP4 80
-ADDRGP4 trap_CM_PointContents
-CALLI4
-ASGNI4
-ADDRLP4 12
-ADDRLP4 80
-INDIRI4
-ASGNI4
-line 2488
-;2488:			destContentType = trap_CM_PointContents( end, 0 );
-ADDRFP4 0
-INDIRP4
-ARGP4
-CNSTI4 0
-ARGI4
-ADDRLP4 84
-ADDRGP4 trap_CM_PointContents
-CALLI4
-ASGNI4
-ADDRLP4 16
-ADDRLP4 84
-INDIRI4
-ASGNI4
-line 2491
-;2489:
-;2490:			// do a complete bubble trail if necessary
-;2491:			if ( ( sourceContentType == destContentType ) && ( sourceContentType & CONTENTS_WATER ) ) {
-ADDRLP4 88
-ADDRLP4 12
-INDIRI4
-ASGNI4
-ADDRLP4 88
-INDIRI4
-ADDRLP4 16
-INDIRI4
-NEI4 $1359
-ADDRLP4 88
-INDIRI4
-CNSTI4 32
-BANDI4
-CNSTI4 0
-EQI4 $1359
+EQI4 $1363
 line 2492
-;2492:				CG_BubbleTrail( start, end, 32 );
+;2492:			sourceContentType = trap_CM_PointContents( start, 0 );
 ADDRLP4 0
 ARGP4
+CNSTI4 0
+ARGI4
+ADDRLP4 80
+ADDRGP4 trap_CM_PointContents
+CALLI4
+ASGNI4
+ADDRLP4 12
+ADDRLP4 80
+INDIRI4
+ASGNI4
+line 2493
+;2493:			destContentType = trap_CM_PointContents( end, 0 );
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTF4 1107296256
-ARGF4
-ADDRGP4 CG_BubbleTrail
-CALLV
-pop
-line 2493
-;2493:			}
-ADDRGP4 $1360
-JUMPV
-LABELV $1359
-line 2495
-;2494:			// bubble trail from water into air
-;2495:			else if ( ( sourceContentType & CONTENTS_WATER ) ) {
+CNSTI4 0
+ARGI4
+ADDRLP4 84
+ADDRGP4 trap_CM_PointContents
+CALLI4
+ASGNI4
+ADDRLP4 16
+ADDRLP4 84
+INDIRI4
+ASGNI4
+line 2496
+;2494:
+;2495:			// do a complete bubble trail if necessary
+;2496:			if ( ( sourceContentType == destContentType ) && ( sourceContentType & CONTENTS_WATER ) ) {
+ADDRLP4 88
 ADDRLP4 12
+INDIRI4
+ASGNI4
+ADDRLP4 88
+INDIRI4
+ADDRLP4 16
+INDIRI4
+NEI4 $1365
+ADDRLP4 88
 INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-EQI4 $1361
-line 2496
-;2496:				trap_CM_BoxTrace( &trace, end, start, NULL, NULL, 0, CONTENTS_WATER );
-ADDRLP4 20
+EQI4 $1365
+line 2497
+;2497:				CG_BubbleTrail( start, end, 32 );
+ADDRLP4 0
 ARGP4
 ADDRFP4 0
 INDIRP4
-ARGP4
-ADDRLP4 0
-ARGP4
-ADDRLP4 92
-CNSTP4 0
-ASGNP4
-ADDRLP4 92
-INDIRP4
-ARGP4
-ADDRLP4 92
-INDIRP4
-ARGP4
-CNSTI4 0
-ARGI4
-CNSTI4 32
-ARGI4
-ADDRGP4 trap_CM_BoxTrace
-CALLV
-pop
-line 2497
-;2497:				CG_BubbleTrail( start, trace.endpos, 32 );
-ADDRLP4 0
-ARGP4
-ADDRLP4 20+12
 ARGP4
 CNSTF4 1107296256
 ARGF4
@@ -13354,26 +13336,26 @@ CALLV
 pop
 line 2498
 ;2498:			}
-ADDRGP4 $1362
+ADDRGP4 $1366
 JUMPV
-LABELV $1361
+LABELV $1365
 line 2500
-;2499:			// bubble trail from air into water
-;2500:			else if ( ( destContentType & CONTENTS_WATER ) ) {
-ADDRLP4 16
+;2499:			// bubble trail from water into air
+;2500:			else if ( ( sourceContentType & CONTENTS_WATER ) ) {
+ADDRLP4 12
 INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-EQI4 $1364
+EQI4 $1367
 line 2501
-;2501:				trap_CM_BoxTrace( &trace, start, end, NULL, NULL, 0, CONTENTS_WATER );
+;2501:				trap_CM_BoxTrace( &trace, end, start, NULL, NULL, 0, CONTENTS_WATER );
 ADDRLP4 20
-ARGP4
-ADDRLP4 0
 ARGP4
 ADDRFP4 0
 INDIRP4
+ARGP4
+ADDRLP4 0
 ARGP4
 ADDRLP4 92
 CNSTP4 0
@@ -13392,7 +13374,57 @@ ADDRGP4 trap_CM_BoxTrace
 CALLV
 pop
 line 2502
-;2502:				CG_BubbleTrail( trace.endpos, end, 32 );
+;2502:				CG_BubbleTrail( start, trace.endpos, 32 );
+ADDRLP4 0
+ARGP4
+ADDRLP4 20+12
+ARGP4
+CNSTF4 1107296256
+ARGF4
+ADDRGP4 CG_BubbleTrail
+CALLV
+pop
+line 2503
+;2503:			}
+ADDRGP4 $1368
+JUMPV
+LABELV $1367
+line 2505
+;2504:			// bubble trail from air into water
+;2505:			else if ( ( destContentType & CONTENTS_WATER ) ) {
+ADDRLP4 16
+INDIRI4
+CNSTI4 32
+BANDI4
+CNSTI4 0
+EQI4 $1370
+line 2506
+;2506:				trap_CM_BoxTrace( &trace, start, end, NULL, NULL, 0, CONTENTS_WATER );
+ADDRLP4 20
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRLP4 92
+CNSTP4 0
+ASGNP4
+ADDRLP4 92
+INDIRP4
+ARGP4
+ADDRLP4 92
+INDIRP4
+ARGP4
+CNSTI4 0
+ARGI4
+CNSTI4 32
+ARGI4
+ADDRGP4 trap_CM_BoxTrace
+CALLV
+pop
+line 2507
+;2507:				CG_BubbleTrail( trace.endpos, end, 32 );
 ADDRLP4 20+12
 ARGP4
 ADDRFP4 0
@@ -13403,15 +13435,15 @@ ARGF4
 ADDRGP4 CG_BubbleTrail
 CALLV
 pop
-line 2503
-;2503:			}
-LABELV $1364
-LABELV $1362
-LABELV $1360
-line 2506
-;2504:
-;2505:			// draw a tracer
-;2506:			if ( random() < cg_tracerChance.value ) {
+line 2508
+;2508:			}
+LABELV $1370
+LABELV $1368
+LABELV $1366
+line 2511
+;2509:
+;2510:			// draw a tracer
+;2511:			if ( random() < cg_tracerChance.value ) {
 ADDRLP4 92
 ADDRGP4 rand
 CALLI4
@@ -13425,9 +13457,9 @@ CNSTF4 1191181824
 DIVF4
 ADDRGP4 cg_tracerChance+8
 INDIRF4
-GEF4 $1367
-line 2507
-;2507:				CG_Tracer( start, end );
+GEF4 $1373
+line 2512
+;2512:				CG_Tracer( start, end );
 ADDRLP4 0
 ARGP4
 ADDRFP4 0
@@ -13436,25 +13468,25 @@ ARGP4
 ADDRGP4 CG_Tracer
 CALLV
 pop
-line 2508
-;2508:			}
-LABELV $1367
-line 2509
-;2509:		}
-LABELV $1357
-line 2510
-;2510:	}
-LABELV $1354
 line 2513
-;2511:
-;2512:	// impact splash and mark
-;2513:	if ( flesh ) {
+;2513:			}
+LABELV $1373
+line 2514
+;2514:		}
+LABELV $1363
+line 2515
+;2515:	}
+LABELV $1360
+line 2518
+;2516:
+;2517:	// impact splash and mark
+;2518:	if ( flesh ) {
 ADDRFP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $1370
-line 2514
-;2514:		CG_Bleed( end, fleshEntityNum );
+EQI4 $1376
+line 2519
+;2519:		CG_Bleed( end, fleshEntityNum );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -13464,13 +13496,13 @@ ARGI4
 ADDRGP4 CG_Bleed
 CALLV
 pop
-line 2515
-;2515:	} else {
-ADDRGP4 $1371
+line 2520
+;2520:	} else {
+ADDRGP4 $1377
 JUMPV
-LABELV $1370
-line 2516
-;2516:		CG_MissileHitWall( NULL, WP_MACHINEGUN, 0, end, normal, IMPACTSOUND_DEFAULT );
+LABELV $1376
+line 2521
+;2521:		CG_MissileHitWall( NULL, WP_MACHINEGUN, 0, end, normal, IMPACTSOUND_DEFAULT );
 CNSTP4 0
 ARGP4
 CNSTI4 2
@@ -13493,81 +13525,81 @@ ARGI4
 ADDRGP4 CG_MissileHitWall
 CALLV
 pop
-line 2517
-;2517:	}
-LABELV $1371
-line 2519
-;2518:
-;2519:}
-LABELV $1353
+line 2522
+;2522:	}
+LABELV $1377
+line 2524
+;2523:
+;2524:}
+LABELV $1359
 endproc CG_Bullet 96 28
 export CG_ScannerOn_f
 proc CG_ScannerOn_f 0 0
-line 2528
-;2520:
-;2521:// Shafe - Trep Radar Functions Below
-;2522:    /*
-;2523:    =====================
-;2524:    CG_ScannerOn_f - turns on the scanner
-;2525:    =====================
-;2526:    */
-;2527:    void CG_ScannerOn_f( void )
-;2528:    {
-line 2531
-;2529:        // This is now a toggle	
-;2530:			
-;2531:		if (cg.scanner == 1)
+line 2533
+;2525:
+;2526:// Shafe - Trep Radar Functions Below
+;2527:    /*
+;2528:    =====================
+;2529:    CG_ScannerOn_f - turns on the scanner
+;2530:    =====================
+;2531:    */
+;2532:    void CG_ScannerOn_f( void )
+;2533:    {
+line 2536
+;2534:        // This is now a toggle	
+;2535:			
+;2536:		if (cg.scanner == 1)
 ADDRGP4 cg+157964
 INDIRI4
 CNSTI4 1
-NEI4 $1373
-line 2532
-;2532:		{
-line 2533
-;2533:			cg.scanner = 0;
+NEI4 $1379
+line 2537
+;2537:		{
+line 2538
+;2538:			cg.scanner = 0;
 ADDRGP4 cg+157964
 CNSTI4 0
 ASGNI4
-line 2534
-;2534:		}
-ADDRGP4 $1374
+line 2539
+;2539:		}
+ADDRGP4 $1380
 JUMPV
-LABELV $1373
-line 2536
-;2535:		else
-;2536:		{
-line 2537
-;2537:			cg.scanner = 1;
+LABELV $1379
+line 2541
+;2540:		else
+;2541:		{
+line 2542
+;2542:			cg.scanner = 1;
 ADDRGP4 cg+157964
 CNSTI4 1
 ASGNI4
-line 2538
-;2538:		}
-LABELV $1374
-line 2542
-;2539:		
-;2540:
-;2541:		
-;2542:    }
-LABELV $1372
+line 2543
+;2543:		}
+LABELV $1380
+line 2547
+;2544:		
+;2545:
+;2546:		
+;2547:    }
+LABELV $1378
 endproc CG_ScannerOn_f 0 0
 export CG_ScannerOff_f
 proc CG_ScannerOff_f 0 0
-line 2550
-;2543:
-;2544:    /*
-;2545:    =====================
-;2546:    CG_ScannerOff_f - turns off the scanner
-;2547:    =====================
-;2548:    */
-;2549:    void CG_ScannerOff_f( void )
-;2550:    {
-line 2554
-;2551:
-;2552:		//	cg.scanner = 1;
-;2553:		
-;2554:    } 
-LABELV $1378
+line 2555
+;2548:
+;2549:    /*
+;2550:    =====================
+;2551:    CG_ScannerOff_f - turns off the scanner
+;2552:    =====================
+;2553:    */
+;2554:    void CG_ScannerOff_f( void )
+;2555:    {
+line 2559
+;2556:
+;2557:		//	cg.scanner = 1;
+;2558:		
+;2559:    } 
+LABELV $1384
 endproc CG_ScannerOff_f 0 0
 import CG_DrawScanner
 import CG_NewParticleArea

@@ -666,7 +666,7 @@ gentity_t *fire_blaster (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_grenade (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t aimdir);
-gentity_t *fire_bomb (gentity_t *self, vec3_t start, vec3_t aimdir);
+gentity_t *fire_bomb (gentity_t *self, vec3_t start, vec3_t aimdir, qboolean alt);
 
 gentity_t *fire_altgrenade (gentity_t *self, vec3_t start, vec3_t aimdir); // Shafe Alternate Grenade Fire
 gentity_t *fire_alt_rocket (gentity_t *self, vec3_t start, vec3_t dir); // Shafe Alternate Rocket Fire

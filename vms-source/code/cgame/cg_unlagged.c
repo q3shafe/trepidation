@@ -152,6 +152,8 @@ void CG_PredictWeaponEffects( centity_t *cent ) {
 
 			// do the shotgun pellets
 			CG_ShotgunPattern( muzzlePoint, endPoint, cg.oldTime % 256, cg.predictedPlayerState.clientNum );
+			
+			
 			//Com_Printf( "Predicted shotgun pattern\n" );
 		}
 	}

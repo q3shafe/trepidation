@@ -19,6 +19,12 @@ void CG_DrawScanner( void )
         playerpos_t *player;
         centity_t *scanner;
 
+		// Dont draw anything in these game types
+		if ((cgs.g_GameMode == 1) || (cgs.g_GameMode == 2)) 
+		{
+			return;
+		}
+
         //dont draw anything if the scanner is off
         if(cg.scanner == 0)
             return;

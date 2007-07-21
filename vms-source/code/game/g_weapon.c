@@ -434,6 +434,7 @@ void ShotgunPattern( vec3_t origin, vec3_t origin2, int seed, gentity_t *ent, qb
 void weapon_supershotgun_fire (gentity_t *ent, qboolean alt) {
 	gentity_t		*tent;
 
+	if (alt == qtrue) { return; }
 	// send shotgun blast
 	tent = G_TempEntity( muzzle, EV_SHOTGUN );
 	VectorScale( forward, 4096, tent->s.origin2 );
@@ -458,7 +459,7 @@ BOMB
 */
 
 // Shafe - Bomb
-void weapon_bomblauncher_fire (gentity_t	*ent) {
+void weapon_bomblauncher_fire (gentity_t	*ent, qboolean alt) {
 	gentity_t	*m;
 	gentity_t	*grenades = NULL;
 	 
@@ -469,7 +470,7 @@ if (ent->client->bombfired == qfalse) {
 		forward[2] += 0.2f;
 		VectorNormalize( forward );
  
-		m = fire_bomb (ent, muzzle, forward);
+		m = fire_bomb (ent, muzzle, forward, qtrue);
 		m->damage *= s_quadFactor;
 		m->splashDamage *= s_quadFactor;
 		ent->client->bombfired = qtrue;
@@ -1245,7 +1246,7 @@ void FireWeapon2( gentity_t *ent ) {
 	Weapon_fire_flame( ent, qtrue);  // Shafe - Trep - Flame Thrower
 	break; 
  case WP_SHOTGUN: 
-	 weapon_bomblauncher_fire( ent);
+	 weapon_bomblauncher_fire( ent, qtrue);
 	 //weapon_supershotgun_fire( ent, qtrue );
 	break; 
  case WP_MACHINEGUN: 

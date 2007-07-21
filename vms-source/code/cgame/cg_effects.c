@@ -23,7 +23,7 @@ void CG_ShotgunTrail( vec3_t start, vec3_t end, float spacing ) {
 	}
 	*/
 
-	VectorCopy (start, move);
+		VectorCopy (start, move);
 	VectorSubtract (end, start, vec);
 	len = VectorNormalize (vec);
 

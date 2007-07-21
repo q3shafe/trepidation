@@ -4588,7 +4588,7 @@ line 872
 ;869: Shafe - Trep 
 ;870:=================
 ;871:*/
-;872:gentity_t *fire_bomb (gentity_t *self, vec3_t start, vec3_t dir) {
+;872:gentity_t *fire_bomb (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 line 876
 ;873:	gentity_t	*bolt;
 ;874:	//vec3_t		mins = { -8, -8, -8 }, maxs = { 8, 8, 8 };
@@ -4826,12 +4826,12 @@ INDIRP4
 INDIRB
 ASGNB 12
 line 911
-;911:	VectorScale( dir, 700, bolt->s.pos.trDelta );
+;911:	VectorScale( dir, 900, bolt->s.pos.trDelta );
 ADDRLP4 0
 INDIRP4
 CNSTI4 36
 ADDP4
-CNSTF4 1143930880
+CNSTF4 1147207680
 ADDRFP4 8
 INDIRP4
 INDIRF4
@@ -4841,7 +4841,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 40
 ADDP4
-CNSTF4 1143930880
+CNSTF4 1147207680
 ADDRFP4 8
 INDIRP4
 CNSTI4 4
@@ -4853,7 +4853,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 44
 ADDP4
-CNSTF4 1143930880
+CNSTF4 1147207680
 ADDRFP4 8
 INDIRP4
 CNSTI4 8
