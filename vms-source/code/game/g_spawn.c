@@ -574,11 +574,14 @@ void SP_worldspawn( void ) {
 	
 	if ((g_GameMode.integer == 0) || (g_GameMode.integer == 3))
 	{
-		i = irandom(1,4);
+		i = irandom(1,7);
 		if (i == 1) { G_SpawnString( "music", "sound/music/mapmusic01.ogg", &s ); }
 		if (i == 2) { G_SpawnString( "music", "sound/music/mapmusic02.ogg", &s ); }
 		if (i == 3) { G_SpawnString( "music", "sound/music/mapmusic03.ogg", &s ); }
 		if (i == 4) { G_SpawnString( "music", "sound/music/mapmusic04.ogg", &s ); }
+		if (i == 5) { G_SpawnString( "music", "sound/music/mapmusic05.ogg", &s ); }
+		if (i == 6) { G_SpawnString( "music", "sound/music/mapmusic06.ogg", &s ); }
+		if (i == 7) { G_SpawnString( "music", "sound/music/mapmusic07.ogg", &s ); }
 	} 
 	else 
 	{

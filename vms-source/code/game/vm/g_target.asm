@@ -2945,8 +2945,10 @@ line 493
 ;491: */
 ;492:void target_speed_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
 ;493:{ //-Vincent
-line 494
-;494:	if( self->spawnflags & 1 )
+line 496
+;494:	
+;495:
+;496:	if( self->spawnflags & 1 )
 ADDRFP4 0
 INDIRP4
 CNSTI4 536
@@ -2956,10 +2958,10 @@ CNSTI4 1
 BANDI4
 CNSTI4 0
 EQI4 $224
-line 495
-;495:	{ // Global setting
-line 496
-;496:		trap_Cvar_Set( "g_speed", va( "%f", self->speed ) );
+line 497
+;497:	{ // Global setting
+line 498
+;498:		trap_Cvar_Set( "g_speed", va( "%f", self->speed ) );
 ADDRGP4 $214
 ARGP4
 ADDRFP4 0
@@ -2980,13 +2982,13 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
-line 497
-;497:	}
+line 499
+;499:	}
 ADDRGP4 $225
 JUMPV
 LABELV $224
-line 498
-;498:	else if( self->activator->client )
+line 500
+;500:	else if( self->activator->client )
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -2998,10 +3000,10 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $227
-line 499
-;499:	{ // Confirm
-line 500
-;500:		self->activator = activator; // Pass it on
+line 501
+;501:	{ // Confirm
+line 502
+;502:		self->activator = activator; // Pass it on
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -3009,8 +3011,8 @@ ADDP4
 ADDRFP4 8
 INDIRP4
 ASGNP4
-line 501
-;501:		self->activator->client->ps.speed = self->speed;
+line 503
+;503:		self->activator->client->ps.speed = self->speed;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3032,13 +3034,13 @@ ADDP4
 INDIRF4
 CVFI4 4
 ASGNI4
-line 502
-;502:	}
+line 504
+;504:	}
 LABELV $227
 LABELV $225
-line 504
-;503:			
-;504:	if( !( self->activator->r.svFlags & SVF_CUSTOM_SPEED ) ) 
+line 506
+;505:			
+;506:	if( !( self->activator->r.svFlags & SVF_CUSTOM_SPEED ) ) 
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -3051,10 +3053,10 @@ CNSTI4 8192
 BANDI4
 CNSTI4 0
 NEI4 $229
-line 505
-;505:	{
-line 506
-;506:		if( !self->activator->r.svFlags )
+line 507
+;507:	{
+line 508
+;508:		if( !self->activator->r.svFlags )
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -3065,8 +3067,8 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $231
-line 507
-;507:			self->activator->r.svFlags = SVF_CUSTOM_SPEED;
+line 509
+;509:			self->activator->r.svFlags = SVF_CUSTOM_SPEED;
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -3079,9 +3081,9 @@ ASGNI4
 ADDRGP4 $232
 JUMPV
 LABELV $231
-line 509
-;508:		else	
-;509:			self->activator->r.svFlags |= SVF_CUSTOM_SPEED;
+line 511
+;510:		else	
+;511:			self->activator->r.svFlags |= SVF_CUSTOM_SPEED;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3100,13 +3102,13 @@ CNSTI4 8192
 BORI4
 ASGNI4
 LABELV $232
-line 510
-;510:	}
+line 512
+;512:	}
 LABELV $229
-line 513
-;511:
-;512:
-;513:	self->activator->client->speedTime = level.time + 500; // If not activated every loop, it will reset in the next 1/2 second
+line 515
+;513:
+;514:
+;515:	self->activator->client->speedTime = level.time + 500; // If not activated every loop, it will reset in the next 1/2 second
 ADDRFP4 0
 INDIRP4
 CNSTI4 796
@@ -3122,18 +3124,18 @@ INDIRI4
 CNSTI4 500
 ADDI4
 ASGNI4
-line 514
-;514:}
+line 516
+;516:}
 LABELV $223
 endproc target_speed_change_use 4 8
 export SP_target_speed_change
 proc SP_target_speed_change 4 8
-line 517
-;515:
-;516:void SP_target_speed_change( gentity_t *self )
-;517:{ //-Vincent
-line 518
-;518:G_SetOrigin( self, self->s.origin );
+line 519
+;517:
+;518:void SP_target_speed_change( gentity_t *self )
+;519:{ //-Vincent
+line 520
+;520:G_SetOrigin( self, self->s.origin );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3149,25 +3151,25 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 520
-;519:
-;520:trap_LinkEntity( self );
+line 522
+;521:
+;522:trap_LinkEntity( self );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 521
-;521:self->use = target_speed_change_use;
+line 523
+;523:self->use = target_speed_change_use;
 ADDRFP4 0
 INDIRP4
 CNSTI4 732
 ADDP4
 ADDRGP4 target_speed_change_use
 ASGNP4
-line 522
-;522:}
+line 524
+;524:}
 LABELV $234
 endproc SP_target_speed_change 4 8
 import CheckPlayerPostions
