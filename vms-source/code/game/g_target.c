@@ -491,6 +491,8 @@ self->use = target_gravity_change_use;
  */
 void target_speed_change_use( gentity_t *self, gentity_t *other, gentity_t *activator )
 { //-Vincent
+	
+
 	if( self->spawnflags & 1 )
 	{ // Global setting
 		trap_Cvar_Set( "g_speed", va( "%f", self->speed ) );

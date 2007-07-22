@@ -1082,11 +1082,12 @@ void ClientThink_real( gentity_t *ent ) {
 	*/ 
 
 	// Do a speedchange and gravitychange resetcheck -Vincent
-	if( client->speedTime < level.time )
-		ent->r.svFlags &= ~SVF_CUSTOM_SPEED;
-	if( client->gravityTime < level.time )
-		ent->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
-	// Above: Actual reset is done at immobilizer thinking (prevents double checking, was fixed there)... -Vincent
+		if( client->speedTime < level.time )
+			ent->r.svFlags &= ~SVF_CUSTOM_SPEED;
+		if( client->gravityTime < level.time )
+			ent->r.svFlags &= ~SVF_CUSTOM_GRAVITY;
+		// Above: Actual reset is done at immobilizer thinking (prevents double checking, was fixed there)... -Vincent
+
 
 	// Do this check after all the immobilizer stuff. - Shafe
 	if ( client->ps.powerups[PW_HASTE] ) {

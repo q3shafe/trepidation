@@ -56,7 +56,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Art:", UI_CENTER|UI_SMALLFONT, &color_headertext },
-{ "Scott Hanke, Petee, Gigon", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Scott Hanke, Petee, Gigon, Xovan", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Gigabyte123, Laz, Dr. Preston", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "[FC]Pope John Paul III", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
@@ -65,9 +65,15 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "Dave Cunningham", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
-{ "Sound Design & Music:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "Sound Design & Title Music:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Chris Begg", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
+
+{ "Soundtrack:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "DiViNiTY, Chris Begg", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+
+
 
 { "Programming:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Brian Shaffer", UI_CENTER|UI_SMALLFONT, &color_maintext },
@@ -78,6 +84,8 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "Models:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Petee, DrAkOn, Gigon", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Gigabyte123", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "LD Ash & Violation Entertainment", UI_CENTER|UI_SMALLFONT, &color_maintext },
+
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Mapping:", UI_CENTER|UI_SMALLFONT, &color_headertext },
@@ -85,14 +93,20 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "Gigabyte123, Laz, Dr. Preston", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
+{ "Mac Build:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "Zorb", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+
+/*
 { "Test Team:", UI_CENTER|UI_BIGFONT|UI_PULSE, &color_headertext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 { "Blue, Prodie, Unknown, Tuvok", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Dredge, Camper, Frago", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
-
+*/
 
 { "Special Thanks To:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "Todd", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "SourceForge.net", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Open Arena", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Code 3 Arena", UI_CENTER|UI_SMALLFONT, &color_maintext },
@@ -115,7 +129,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
-{ "(c)2007 Human Complex", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "(c)2007-2008 Human Complex", UI_CENTER|UI_SMALLFONT, &color_maintext },
 //{ "General Public License", UI_CENTER|UI_SMALLFONT, &color_maintext },
 
   {NULL}
