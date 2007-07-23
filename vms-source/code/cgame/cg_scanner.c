@@ -33,7 +33,7 @@ void CG_DrawScanner( void )
         w = 100; //width of scanner on screen
         h = w; //height of scanner on screen
         x = 5; //(SCREEN_WIDTH - w) - 48; //offset from left of screen
-        y = (SCREEN_HEIGHT - h) - 80; //offset from top of scren
+        y = 35; //(SCREEN_HEIGHT - h) - 400; //offset from top of scren
 
 
         //draw the scanner

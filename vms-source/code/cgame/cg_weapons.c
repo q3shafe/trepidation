@@ -1786,6 +1786,7 @@ void CG_FireWeapon( centity_t *cent ) {
 	}
 	*/
 
+
 	// play quad sound if needed
 	if ( cent->currentState.powerups & ( 1 << PW_QUAD ) ) {
 		trap_S_StartSound (NULL, cent->currentState.number, CHAN_ITEM, cgs.media.quadSound );
@@ -1851,6 +1852,8 @@ void CG_FireWeapon2( centity_t *cent ) {
 		} 
 	} 
 	*/
+
+
 
  // play quad sound if needed 
  if ( cent->currentState.powerups & ( 1 << PW_QUAD ) ) { 
@@ -2058,16 +2061,19 @@ void CG_MissileHitWall( centity_t *cent, int weapon, int clientNum, vec3_t origi
 		
 		break;
 	case WP_SHOTGUN:
+
+		if (cent->currentState.eFlags & EF_ALT_FIRING)
+		{
+			// Doesnt do anything now.
+			break;
+		} 
+		else
+		{
 		mod = cgs.media.bulletFlashModel;
 		shader = cgs.media.bulletExplosionShader;
 		mark = cgs.media.bulletMarkShader;
 		sfx = 0;
-		if (cent->currentState.eFlags & EF_ALT_FIRING)
-		{
-			radius = 4;
-		} 
-		else
-		{
+
 		mod = cgs.media.bulletFlashModel;
 		shader = cgs.media.bulletExplosionShader;
 		mark = cgs.media.bulletMarkShader;
@@ -2342,6 +2348,7 @@ void CG_ShotgunFire( entityState_t *es ) {
 			}
 		}
 		CG_ShotgunPattern( es->pos.trBase, es->origin2, es->eventParm, es->otherEntityNum );
+		
 	}
 }
 
