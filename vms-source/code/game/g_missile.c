@@ -55,7 +55,9 @@ void bomb_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, in
 	{
 		trap_SendServerCommand( self->r.ownerNum, va("cp \"^9%s Destroyed your bomb!\n\"", attacker->client->pers.netname) );
 	}
-	self->client->bombfired = qfalse;
+	self->parent->client->bombfired = qfalse;
+	
+
 	
 
 
@@ -859,6 +861,7 @@ void G_ExplodeBomb( gentity_t *ent ) {
 	if ( ent->client->bombfired == qtrue )
 	{ // -Vincent
 	ent->client->bombfired = qfalse;
+	ent->parent->client->bombfired = qfalse;
 	}
 
 	G_ExplodeMissile( ent );

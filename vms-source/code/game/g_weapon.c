@@ -1174,7 +1174,8 @@ void FireWeapon( gentity_t *ent ) {
 		*/
 		break;
 	case WP_GRENADE_LAUNCHER:
-		weapon_grenadelauncher_fire( ent );
+		//weapon_grenadelauncher_fire( ent );
+		weapon_bomblauncher_fire( ent, qtrue); 
 		break;
 	case WP_ROCKET_LAUNCHER:
 		Weapon_RocketLauncher_Fire( ent );
@@ -1246,7 +1247,7 @@ void FireWeapon2( gentity_t *ent ) {
 	Weapon_fire_flame( ent, qtrue);  // Shafe - Trep - Flame Thrower
 	break; 
  case WP_SHOTGUN: 
-	 weapon_bomblauncher_fire( ent, qtrue);
+	 //weapon_bomblauncher_fire( ent, qtrue); // Not Ready Yet
 	 //weapon_supershotgun_fire( ent, qtrue );
 	break; 
  case WP_MACHINEGUN: 

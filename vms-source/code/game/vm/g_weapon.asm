@@ -5963,65 +5963,68 @@ line 1175
 ADDRGP4 $339
 JUMPV
 LABELV $345
-line 1177
+line 1178
 ;1176:	case WP_GRENADE_LAUNCHER:
-;1177:		weapon_grenadelauncher_fire( ent );
+;1177:		//weapon_grenadelauncher_fire( ent );
+;1178:		weapon_bomblauncher_fire( ent, qtrue); 
 ADDRFP4 0
 INDIRP4
 ARGP4
-ADDRGP4 weapon_grenadelauncher_fire
+CNSTI4 1
+ARGI4
+ADDRGP4 weapon_bomblauncher_fire
 CALLV
 pop
-line 1178
-;1178:		break;
+line 1179
+;1179:		break;
 ADDRGP4 $339
 JUMPV
 LABELV $346
-line 1180
-;1179:	case WP_ROCKET_LAUNCHER:
-;1180:		Weapon_RocketLauncher_Fire( ent );
+line 1181
+;1180:	case WP_ROCKET_LAUNCHER:
+;1181:		Weapon_RocketLauncher_Fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_RocketLauncher_Fire
 CALLV
 pop
-line 1181
-;1181:		break;
+line 1182
+;1182:		break;
 ADDRGP4 $339
 JUMPV
 LABELV $347
-line 1183
-;1182:	case WP_PLASMAGUN:
-;1183:		Weapon_Plasmagun_Fire( ent );
+line 1184
+;1183:	case WP_PLASMAGUN:
+;1184:		Weapon_Plasmagun_Fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_Plasmagun_Fire
 CALLV
 pop
-line 1184
-;1184:		break;
+line 1185
+;1185:		break;
 ADDRGP4 $339
 JUMPV
 LABELV $348
-line 1186
-;1185:	case WP_RAILGUN:
-;1186:		weapon_railgun_fire( ent );
+line 1187
+;1186:	case WP_RAILGUN:
+;1187:		weapon_railgun_fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_railgun_fire
 CALLV
 pop
-line 1187
-;1187:		break;
+line 1188
+;1188:		break;
 ADDRGP4 $339
 JUMPV
 LABELV $349
-line 1189
-;1188:	case WP_BFG:
-;1189:		BFG_Fire( ent, qfalse );
+line 1190
+;1189:	case WP_BFG:
+;1190:		BFG_Fire( ent, qfalse );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6030,28 +6033,28 @@ ARGI4
 ADDRGP4 BFG_Fire
 CALLV
 pop
-line 1190
-;1190:		break;
+line 1191
+;1191:		break;
 ADDRGP4 $339
 JUMPV
 LABELV $350
-line 1192
-;1191:	case WP_GRAPPLING_HOOK:
-;1192:		Weapon_GrapplingHook_Fire( ent );
+line 1193
+;1192:	case WP_GRAPPLING_HOOK:
+;1193:		Weapon_GrapplingHook_Fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_GrapplingHook_Fire
 CALLV
 pop
-line 1193
-;1193:		break;
+line 1194
+;1194:		break;
 ADDRGP4 $339
 JUMPV
 LABELV $351
-line 1195
-;1194:	case WP_TURRET:
-;1195:		Weapon_fire_turret( ent, qfalse );
+line 1196
+;1195:	case WP_TURRET:
+;1196:		Weapon_fire_turret( ent, qfalse );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6060,44 +6063,44 @@ ARGI4
 ADDRGP4 Weapon_fire_turret
 CALLV
 pop
-line 1196
-;1196:		break;	
-line 1210
-;1197:#ifdef MISSIONPACK
-;1198:	case WP_NAILGUN:
-;1199:		Weapon_Nailgun_Fire( ent );
-;1200:		break;
-;1201:	case WP_PROX_LAUNCHER:
-;1202:		weapon_proxlauncher_fire( ent );
-;1203:		break;
-;1204:	case WP_CHAINGUN:
-;1205:		Bullet_Fire( ent, CHAINGUN_SPREAD, MACHINEGUN_DAMAGE );
-;1206:		break;
-;1207:#endif
-;1208:	default:
-;1209:// FIXME		G_Error( "Bad ent->s.weapon" );
-;1210:		break;
+line 1197
+;1197:		break;	
+line 1211
+;1198:#ifdef MISSIONPACK
+;1199:	case WP_NAILGUN:
+;1200:		Weapon_Nailgun_Fire( ent );
+;1201:		break;
+;1202:	case WP_PROX_LAUNCHER:
+;1203:		weapon_proxlauncher_fire( ent );
+;1204:		break;
+;1205:	case WP_CHAINGUN:
+;1206:		Bullet_Fire( ent, CHAINGUN_SPREAD, MACHINEGUN_DAMAGE );
+;1207:		break;
+;1208:#endif
+;1209:	default:
+;1210:// FIXME		G_Error( "Bad ent->s.weapon" );
+;1211:		break;
 LABELV $339
-line 1212
-;1211:	}
-;1212:}
+line 1213
+;1212:	}
+;1213:}
 LABELV $332
 endproc FireWeapon 16 24
 export FireWeapon2
 proc FireWeapon2 12 20
-line 1222
-;1213:
-;1214:
-;1215:/* 
-;1216:=============== 
-;1217:FireWeapon2 
-;1218:Shafe - Trep - Alt Fire FireWeapon2
-;1219:Right now this just shoots rockets...
-;1220:=============== 
-;1221:*/ 
-;1222:void FireWeapon2( gentity_t *ent ) { 
 line 1223
-;1223: if (ent->client->ps.powerups[PW_QUAD] ) { 
+;1214:
+;1215:
+;1216:/* 
+;1217:=============== 
+;1218:FireWeapon2 
+;1219:Shafe - Trep - Alt Fire FireWeapon2
+;1220:Right now this just shoots rockets...
+;1221:=============== 
+;1222:*/ 
+;1223:void FireWeapon2( gentity_t *ent ) { 
+line 1224
+;1224: if (ent->client->ps.powerups[PW_QUAD] ) { 
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6108,29 +6111,29 @@ ADDP4
 INDIRI4
 CNSTI4 0
 EQI4 $355
-line 1224
-;1224:  s_quadFactor = g_quadfactor.value; 
+line 1225
+;1225:  s_quadFactor = g_quadfactor.value; 
 ADDRGP4 s_quadFactor
 ADDRGP4 g_quadfactor+8
 INDIRF4
 ASGNF4
-line 1225
-;1225: } else { 
+line 1226
+;1226: } else { 
 ADDRGP4 $356
 JUMPV
 LABELV $355
-line 1226
-;1226:  s_quadFactor = 1; 
+line 1227
+;1227:  s_quadFactor = 1; 
 ADDRGP4 s_quadFactor
 CNSTF4 1065353216
 ASGNF4
-line 1227
-;1227: } 
+line 1228
+;1228: } 
 LABELV $356
-line 1230
-;1228:
-;1229: // track shots taken for accuracy tracking.  Grapple is not a weapon and gauntet is just not tracked 
-;1230: if( ent->s.weapon != WP_GRAPPLING_HOOK && ent->s.weapon != WP_GAUNTLET ) { 
+line 1231
+;1229:
+;1230: // track shots taken for accuracy tracking.  Grapple is not a weapon and gauntet is just not tracked 
+;1231: if( ent->s.weapon != WP_GRAPPLING_HOOK && ent->s.weapon != WP_GAUNTLET ) { 
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -6146,15 +6149,15 @@ ADDRLP4 0
 INDIRI4
 CNSTI4 1
 EQI4 $358
-line 1233
-;1231:   //ent->client->ps.persistant[PERS_ACCURACY_SHOTS]++;  // This doesnt exist?
-;1232:	// ent->client->accuracy_shots++;
-;1233: } 
+line 1234
+;1232:   //ent->client->ps.persistant[PERS_ACCURACY_SHOTS]++;  // This doesnt exist?
+;1233:	// ent->client->accuracy_shots++;
+;1234: } 
 LABELV $358
-line 1236
-;1234:
-;1235: // set aiming directions 
-;1236: AngleVectors (ent->client->ps.viewangles, forward, right, up); 
+line 1237
+;1235:
+;1236: // set aiming directions 
+;1237: AngleVectors (ent->client->ps.viewangles, forward, right, up); 
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6172,9 +6175,9 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 1238
-;1237:
-;1238: CalcMuzzlePoint ( ent, forward, right, up, muzzle ); 
+line 1239
+;1238:
+;1239: CalcMuzzlePoint ( ent, forward, right, up, muzzle ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6189,10 +6192,10 @@ ARGP4
 ADDRGP4 CalcMuzzlePoint
 CALLV
 pop
-line 1241
-;1239:
-;1240: // fire the specific weapon 
-;1241: switch( ent->s.weapon ) { 
+line 1242
+;1240:
+;1241: // fire the specific weapon 
+;1242: switch( ent->s.weapon ) { 
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -6221,7 +6224,7 @@ align 4
 LABELV $374
 address $363
 address $366
-address $365
+address $361
 address $367
 address $368
 address $364
@@ -6232,23 +6235,23 @@ address $372
 address $373
 code
 LABELV $363
-line 1243
-;1242: case WP_GAUNTLET: 
-;1243:	Weapon_Gauntlet( ent ); 
+line 1244
+;1243: case WP_GAUNTLET: 
+;1244:	Weapon_Gauntlet( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_Gauntlet
 CALLV
 pop
-line 1244
-;1244:	break; 
+line 1245
+;1245:	break; 
 ADDRGP4 $361
 JUMPV
 LABELV $364
-line 1246
-;1245: case WP_LIGHTNING: 
-;1246:	Weapon_fire_flame( ent, qtrue);  // Shafe - Trep - Flame Thrower
+line 1247
+;1246: case WP_LIGHTNING: 
+;1247:	Weapon_fire_flame( ent, qtrue);  // Shafe - Trep - Flame Thrower
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6257,33 +6260,21 @@ ARGI4
 ADDRGP4 Weapon_fire_flame
 CALLV
 pop
-line 1247
-;1247:	break; 
+line 1248
+;1248:	break; 
 ADDRGP4 $361
 JUMPV
-LABELV $365
-line 1249
-;1248: case WP_SHOTGUN: 
-;1249:	 weapon_bomblauncher_fire( ent, qtrue);
-ADDRFP4 0
-INDIRP4
-ARGP4
-CNSTI4 1
-ARGI4
-ADDRGP4 weapon_bomblauncher_fire
-CALLV
-pop
-line 1251
-;1250:	 //weapon_supershotgun_fire( ent, qtrue );
-;1251:	break; 
-ADDRGP4 $361
-JUMPV
+line 1252
+;1249: case WP_SHOTGUN: 
+;1250:	 //weapon_bomblauncher_fire( ent, qtrue); // Not Ready Yet
+;1251:	 //weapon_supershotgun_fire( ent, qtrue );
+;1252:	break; 
 LABELV $366
-line 1255
-;1252: case WP_MACHINEGUN: 
-;1253:  //Weapon_RocketLauncher_Fire( ent );
-;1254: 	//Weapon_fire_turret( ent );
-;1255:	 Weapon_fire_mg( ent, qtrue);
+line 1256
+;1253: case WP_MACHINEGUN: 
+;1254:  //Weapon_RocketLauncher_Fire( ent );
+;1255: 	//Weapon_fire_turret( ent );
+;1256:	 Weapon_fire_mg( ent, qtrue);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6292,67 +6283,67 @@ ARGI4
 ADDRGP4 Weapon_fire_mg
 CALLV
 pop
-line 1263
-;1256:	/* 
-;1257:	if ( g_gametype.integer != GT_TEAM ) { 
-;1258:		Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 
-;1259:	} else { 
-;1260:		Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE ); 
-;1261:	} 
-;1262:	*/
-;1263:  break; 
+line 1264
+;1257:	/* 
+;1258:	if ( g_gametype.integer != GT_TEAM ) { 
+;1259:		Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 
+;1260:	} else { 
+;1261:		Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_TEAM_DAMAGE ); 
+;1262:	} 
+;1263:	*/
+;1264:  break; 
 ADDRGP4 $361
 JUMPV
 LABELV $367
-line 1265
-;1264: case WP_GRENADE_LAUNCHER: 
-;1265:	weapon_altgrenadelauncher_fire( ent ); 
+line 1266
+;1265: case WP_GRENADE_LAUNCHER: 
+;1266:	weapon_altgrenadelauncher_fire( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_altgrenadelauncher_fire
 CALLV
 pop
-line 1266
-;1266:	break; 
+line 1267
+;1267:	break; 
 ADDRGP4 $361
 JUMPV
 LABELV $368
-line 1268
-;1267: case WP_ROCKET_LAUNCHER: 
-;1268:	Weapon_RocketLauncher_AltFire( ent );
+line 1269
+;1268: case WP_ROCKET_LAUNCHER: 
+;1269:	Weapon_RocketLauncher_AltFire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_RocketLauncher_AltFire
 CALLV
 pop
-line 1269
-;1269:	break; 
+line 1270
+;1270:	break; 
 ADDRGP4 $361
 JUMPV
 LABELV $369
-line 1271
-;1270: case WP_PLASMAGUN: 
-;1271:	weapon_pdlauncher_fire( ent); 
+line 1272
+;1271: case WP_PLASMAGUN: 
+;1272:	weapon_pdlauncher_fire( ent); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 weapon_pdlauncher_fire
 CALLV
 pop
-line 1272
-;1272:	break; 
+line 1273
+;1273:	break; 
 ADDRGP4 $361
 JUMPV
-line 1275
-;1273: case WP_RAILGUN: 
-;1274:	// This is just zoom
-;1275:	break; 
+line 1276
+;1274: case WP_RAILGUN: 
+;1275:	// This is just zoom
+;1276:	break; 
 LABELV $371
-line 1277
-;1276: case WP_BFG: 
-;1277:	BFG_Fire( ent, qtrue); 
+line 1278
+;1277: case WP_BFG: 
+;1278:	BFG_Fire( ent, qtrue); 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6361,28 +6352,28 @@ ARGI4
 ADDRGP4 BFG_Fire
 CALLV
 pop
-line 1278
-;1278:	break; 
+line 1279
+;1279:	break; 
 ADDRGP4 $361
 JUMPV
 LABELV $372
-line 1280
-;1279: case WP_GRAPPLING_HOOK: 
-;1280:	Weapon_GrapplingHook_Fire( ent ); 
+line 1281
+;1280: case WP_GRAPPLING_HOOK: 
+;1281:	Weapon_GrapplingHook_Fire( ent ); 
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 Weapon_GrapplingHook_Fire
 CALLV
 pop
-line 1281
-;1281:	break;
+line 1282
+;1282:	break;
 ADDRGP4 $361
 JUMPV
 LABELV $373
-line 1283
-;1282: case WP_TURRET:
-;1283:	Weapon_fire_turret( ent, qtrue );
+line 1284
+;1283: case WP_TURRET:
+;1284:	Weapon_fire_turret( ent, qtrue );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6391,16 +6382,16 @@ ARGI4
 ADDRGP4 Weapon_fire_turret
 CALLV
 pop
-line 1284
-;1284:	break;	
-line 1287
-;1285: default: 
-;1286:// FIXME  G_Error( "Bad ent->s.weapon" ); 
-;1287:  break; 
+line 1285
+;1285:	break;	
+line 1288
+;1286: default: 
+;1287:// FIXME  G_Error( "Bad ent->s.weapon" ); 
+;1288:  break; 
 LABELV $361
-line 1289
-;1288: } 
-;1289:}
+line 1290
+;1289: } 
+;1290:}
 LABELV $354
 endproc FireWeapon2 12 20
 lit
@@ -6417,281 +6408,281 @@ byte 4 1098907648
 export CanBuildHere
 code
 proc CanBuildHere 136 28
-line 1560
-;1290:
+line 1561
 ;1291:
-;1292:#ifdef MISSIONPACK
-;1293:
-;1294:/*
-;1295:===============
-;1296:KamikazeRadiusDamage
-;1297:===============
-;1298:*/
-;1299:static void KamikazeRadiusDamage( vec3_t origin, gentity_t *attacker, float damage, float radius ) {
-;1300:	float		dist;
-;1301:	gentity_t	*ent;
-;1302:	int			entityList[MAX_GENTITIES];
-;1303:	int			numListedEntities;
-;1304:	vec3_t		mins, maxs;
-;1305:	vec3_t		v;
-;1306:	vec3_t		dir;
-;1307:	int			i, e;
-;1308:
-;1309:	if ( radius < 1 ) {
-;1310:		radius = 1;
-;1311:	}
-;1312:
-;1313:	for ( i = 0 ; i < 3 ; i++ ) {
-;1314:		mins[i] = origin[i] - radius;
-;1315:		maxs[i] = origin[i] + radius;
-;1316:	}
-;1317:
-;1318:	numListedEntities = trap_EntitiesInBox( mins, maxs, entityList, MAX_GENTITIES );
-;1319:
-;1320:	for ( e = 0 ; e < numListedEntities ; e++ ) {
-;1321:		ent = &g_entities[entityList[ e ]];
-;1322:
-;1323:		if (!ent->takedamage) {
-;1324:			continue;
-;1325:		}
-;1326:
-;1327:		// dont hit things we have already hit
-;1328:		if( ent->kamikazeTime > level.time ) {
-;1329:			continue;
-;1330:		}
-;1331:
-;1332:		// find the distance from the edge of the bounding box
-;1333:		for ( i = 0 ; i < 3 ; i++ ) {
-;1334:			if ( origin[i] < ent->r.absmin[i] ) {
-;1335:				v[i] = ent->r.absmin[i] - origin[i];
-;1336:			} else if ( origin[i] > ent->r.absmax[i] ) {
-;1337:				v[i] = origin[i] - ent->r.absmax[i];
-;1338:			} else {
-;1339:				v[i] = 0;
-;1340:			}
-;1341:		}
-;1342:
-;1343:		dist = VectorLength( v );
-;1344:		if ( dist >= radius ) {
-;1345:			continue;
-;1346:		}
-;1347:
-;1348://		if( CanDamage (ent, origin) ) {
-;1349:			VectorSubtract (ent->r.currentOrigin, origin, dir);
-;1350:			// push the center of mass higher than the origin so players
-;1351:			// get knocked into the air more
-;1352:			dir[2] += 24;
-;1353:			G_Damage( ent, NULL, attacker, dir, origin, damage, DAMAGE_RADIUS|DAMAGE_NO_TEAM_PROTECTION, MOD_KAMIKAZE );
-;1354:			ent->kamikazeTime = level.time + 3000;
-;1355://		}
-;1356:	}
-;1357:}
-;1358:
-;1359:/*
-;1360:===============
-;1361:KamikazeShockWave
-;1362:===============
-;1363:*/
-;1364:static void KamikazeShockWave( vec3_t origin, gentity_t *attacker, float damage, float push, float radius ) {
-;1365:	float		dist;
-;1366:	gentity_t	*ent;
-;1367:	int			entityList[MAX_GENTITIES];
-;1368:	int			numListedEntities;
-;1369:	vec3_t		mins, maxs;
-;1370:	vec3_t		v;
-;1371:	vec3_t		dir;
-;1372:	int			i, e;
-;1373:
-;1374:	if ( radius < 1 )
-;1375:		radius = 1;
-;1376:
-;1377:	for ( i = 0 ; i < 3 ; i++ ) {
-;1378:		mins[i] = origin[i] - radius;
-;1379:		maxs[i] = origin[i] + radius;
-;1380:	}
-;1381:
-;1382:	numListedEntities = trap_EntitiesInBox( mins, maxs, entityList, MAX_GENTITIES );
-;1383:
-;1384:	for ( e = 0 ; e < numListedEntities ; e++ ) {
-;1385:		ent = &g_entities[entityList[ e ]];
-;1386:
-;1387:		// dont hit things we have already hit
-;1388:		if( ent->kamikazeShockTime > level.time ) {
-;1389:			continue;
-;1390:		}
-;1391:
-;1392:		// find the distance from the edge of the bounding box
-;1393:		for ( i = 0 ; i < 3 ; i++ ) {
-;1394:			if ( origin[i] < ent->r.absmin[i] ) {
-;1395:				v[i] = ent->r.absmin[i] - origin[i];
-;1396:			} else if ( origin[i] > ent->r.absmax[i] ) {
-;1397:				v[i] = origin[i] - ent->r.absmax[i];
-;1398:			} else {
-;1399:				v[i] = 0;
-;1400:			}
-;1401:		}
-;1402:
-;1403:		dist = VectorLength( v );
-;1404:		if ( dist >= radius ) {
-;1405:			continue;
-;1406:		}
-;1407:
-;1408://		if( CanDamage (ent, origin) ) {
-;1409:			VectorSubtract (ent->r.currentOrigin, origin, dir);
-;1410:			dir[2] += 24;
-;1411:			G_Damage( ent, NULL, attacker, dir, origin, damage, DAMAGE_RADIUS|DAMAGE_NO_TEAM_PROTECTION, MOD_KAMIKAZE );
-;1412:			//
-;1413:			dir[2] = 0;
-;1414:			VectorNormalize(dir);
-;1415:			if ( ent->client ) {
-;1416:				ent->client->ps.velocity[0] = dir[0] * push;
-;1417:				ent->client->ps.velocity[1] = dir[1] * push;
-;1418:				ent->client->ps.velocity[2] = 100;
-;1419:			}
-;1420:			ent->kamikazeShockTime = level.time + 3000;
-;1421://		}
-;1422:	}
-;1423:}
-;1424:
-;1425:/*
-;1426:===============
-;1427:KamikazeDamage
-;1428:===============
-;1429:*/
-;1430:static void KamikazeDamage( gentity_t *self ) {
-;1431:	int i;
-;1432:	float t;
-;1433:	gentity_t *ent;
-;1434:	vec3_t newangles;
-;1435:
-;1436:	self->count += 100;
-;1437:
-;1438:	if (self->count >= KAMI_SHOCKWAVE_STARTTIME) {
-;1439:		// shockwave push back
-;1440:		t = self->count - KAMI_SHOCKWAVE_STARTTIME;
-;1441:		KamikazeShockWave(self->s.pos.trBase, self->activator, 25, 400,	(int) (float) t * KAMI_SHOCKWAVE_MAXRADIUS / (KAMI_SHOCKWAVE_ENDTIME - KAMI_SHOCKWAVE_STARTTIME) );
-;1442:	}
-;1443:	//
-;1444:	if (self->count >= KAMI_EXPLODE_STARTTIME) {
-;1445:		// do our damage
-;1446:		t = self->count - KAMI_EXPLODE_STARTTIME;
-;1447:		KamikazeRadiusDamage( self->s.pos.trBase, self->activator, 400,	(int) (float) t * KAMI_BOOMSPHERE_MAXRADIUS / (KAMI_IMPLODE_STARTTIME - KAMI_EXPLODE_STARTTIME) );
-;1448:	}
-;1449:
-;1450:	// either cycle or kill self
-;1451:	if( self->count >= KAMI_SHOCKWAVE_ENDTIME ) {
-;1452:		G_FreeEntity( self );
-;1453:		return;
-;1454:	}
-;1455:	self->nextthink = level.time + 100;
-;1456:
-;1457:	// add earth quake effect
-;1458:	newangles[0] = crandom() * 2;
-;1459:	newangles[1] = crandom() * 2;
-;1460:	newangles[2] = 0;
-;1461:	for (i = 0; i < MAX_CLIENTS; i++)
-;1462:	{
-;1463:		ent = &g_entities[i];
-;1464:		if (!ent->inuse)
-;1465:			continue;
-;1466:		if (!ent->client)
-;1467:			continue;
-;1468:
-;1469:		if (ent->client->ps.groundEntityNum != ENTITYNUM_NONE) {
-;1470:			ent->client->ps.velocity[0] += crandom() * 120;
-;1471:			ent->client->ps.velocity[1] += crandom() * 120;
-;1472:			ent->client->ps.velocity[2] = 30 + random() * 25;
-;1473:		}
-;1474:
-;1475:		ent->client->ps.delta_angles[0] += ANGLE2SHORT(newangles[0] - self->movedir[0]);
-;1476:		ent->client->ps.delta_angles[1] += ANGLE2SHORT(newangles[1] - self->movedir[1]);
-;1477:		ent->client->ps.delta_angles[2] += ANGLE2SHORT(newangles[2] - self->movedir[2]);
-;1478:	}
-;1479:	VectorCopy(newangles, self->movedir);
-;1480:}
-;1481:
-;1482:/*
-;1483:===============
-;1484:G_StartKamikaze
-;1485:===============
-;1486:*/
-;1487:void G_StartKamikaze( gentity_t *ent ) {
-;1488:	gentity_t	*explosion;
-;1489:	gentity_t	*te;
-;1490:	vec3_t		snapped;
-;1491:
-;1492:	// start up the explosion logic
-;1493:	explosion = G_Spawn();
-;1494:
-;1495:	explosion->s.eType = ET_EVENTS + EV_KAMIKAZE;
-;1496:	explosion->eventTime = level.time;
-;1497:
-;1498:	if ( ent->client ) {
-;1499:		VectorCopy( ent->s.pos.trBase, snapped );
-;1500:	}
-;1501:	else {
-;1502:		VectorCopy( ent->activator->s.pos.trBase, snapped );
-;1503:	}
-;1504:	SnapVector( snapped );		// save network bandwidth
-;1505:	G_SetOrigin( explosion, snapped );
-;1506:
-;1507:	explosion->classname = "kamikaze";
-;1508:	explosion->s.pos.trType = TR_STATIONARY;
-;1509:
-;1510:	explosion->kamikazeTime = level.time;
-;1511:
-;1512:	explosion->think = KamikazeDamage;
-;1513:	explosion->nextthink = level.time + 100;
-;1514:	explosion->count = 0;
-;1515:	VectorClear(explosion->movedir);
-;1516:
-;1517:	trap_LinkEntity( explosion );
-;1518:
-;1519:	if (ent->client) {
-;1520:		//
-;1521:		explosion->activator = ent;
-;1522:		//
-;1523:		ent->s.eFlags &= ~EF_KAMIKAZE;
-;1524:		// nuke the guy that used it
-;1525:		G_Damage( ent, ent, ent, NULL, NULL, 100000, DAMAGE_NO_PROTECTION, MOD_KAMIKAZE );
-;1526:	}
-;1527:	else {
-;1528:		if ( !strcmp(ent->activator->classname, "bodyque") ) {
-;1529:			explosion->activator = &g_entities[ent->activator->r.ownerNum];
-;1530:		}
-;1531:		else {
-;1532:			explosion->activator = ent->activator;
-;1533:		}
-;1534:	}
-;1535:
-;1536:	// play global sound at all clients
-;1537:	te = G_TempEntity(snapped, EV_GLOBAL_TEAM_SOUND );
-;1538:	te->r.svFlags |= SVF_BROADCAST;
-;1539:	te->s.eventParm = GTS_KAMIKAZE;
-;1540:}
-;1541:#endif
-;1542:
+;1292:
+;1293:#ifdef MISSIONPACK
+;1294:
+;1295:/*
+;1296:===============
+;1297:KamikazeRadiusDamage
+;1298:===============
+;1299:*/
+;1300:static void KamikazeRadiusDamage( vec3_t origin, gentity_t *attacker, float damage, float radius ) {
+;1301:	float		dist;
+;1302:	gentity_t	*ent;
+;1303:	int			entityList[MAX_GENTITIES];
+;1304:	int			numListedEntities;
+;1305:	vec3_t		mins, maxs;
+;1306:	vec3_t		v;
+;1307:	vec3_t		dir;
+;1308:	int			i, e;
+;1309:
+;1310:	if ( radius < 1 ) {
+;1311:		radius = 1;
+;1312:	}
+;1313:
+;1314:	for ( i = 0 ; i < 3 ; i++ ) {
+;1315:		mins[i] = origin[i] - radius;
+;1316:		maxs[i] = origin[i] + radius;
+;1317:	}
+;1318:
+;1319:	numListedEntities = trap_EntitiesInBox( mins, maxs, entityList, MAX_GENTITIES );
+;1320:
+;1321:	for ( e = 0 ; e < numListedEntities ; e++ ) {
+;1322:		ent = &g_entities[entityList[ e ]];
+;1323:
+;1324:		if (!ent->takedamage) {
+;1325:			continue;
+;1326:		}
+;1327:
+;1328:		// dont hit things we have already hit
+;1329:		if( ent->kamikazeTime > level.time ) {
+;1330:			continue;
+;1331:		}
+;1332:
+;1333:		// find the distance from the edge of the bounding box
+;1334:		for ( i = 0 ; i < 3 ; i++ ) {
+;1335:			if ( origin[i] < ent->r.absmin[i] ) {
+;1336:				v[i] = ent->r.absmin[i] - origin[i];
+;1337:			} else if ( origin[i] > ent->r.absmax[i] ) {
+;1338:				v[i] = origin[i] - ent->r.absmax[i];
+;1339:			} else {
+;1340:				v[i] = 0;
+;1341:			}
+;1342:		}
+;1343:
+;1344:		dist = VectorLength( v );
+;1345:		if ( dist >= radius ) {
+;1346:			continue;
+;1347:		}
+;1348:
+;1349://		if( CanDamage (ent, origin) ) {
+;1350:			VectorSubtract (ent->r.currentOrigin, origin, dir);
+;1351:			// push the center of mass higher than the origin so players
+;1352:			// get knocked into the air more
+;1353:			dir[2] += 24;
+;1354:			G_Damage( ent, NULL, attacker, dir, origin, damage, DAMAGE_RADIUS|DAMAGE_NO_TEAM_PROTECTION, MOD_KAMIKAZE );
+;1355:			ent->kamikazeTime = level.time + 3000;
+;1356://		}
+;1357:	}
+;1358:}
+;1359:
+;1360:/*
+;1361:===============
+;1362:KamikazeShockWave
+;1363:===============
+;1364:*/
+;1365:static void KamikazeShockWave( vec3_t origin, gentity_t *attacker, float damage, float push, float radius ) {
+;1366:	float		dist;
+;1367:	gentity_t	*ent;
+;1368:	int			entityList[MAX_GENTITIES];
+;1369:	int			numListedEntities;
+;1370:	vec3_t		mins, maxs;
+;1371:	vec3_t		v;
+;1372:	vec3_t		dir;
+;1373:	int			i, e;
+;1374:
+;1375:	if ( radius < 1 )
+;1376:		radius = 1;
+;1377:
+;1378:	for ( i = 0 ; i < 3 ; i++ ) {
+;1379:		mins[i] = origin[i] - radius;
+;1380:		maxs[i] = origin[i] + radius;
+;1381:	}
+;1382:
+;1383:	numListedEntities = trap_EntitiesInBox( mins, maxs, entityList, MAX_GENTITIES );
+;1384:
+;1385:	for ( e = 0 ; e < numListedEntities ; e++ ) {
+;1386:		ent = &g_entities[entityList[ e ]];
+;1387:
+;1388:		// dont hit things we have already hit
+;1389:		if( ent->kamikazeShockTime > level.time ) {
+;1390:			continue;
+;1391:		}
+;1392:
+;1393:		// find the distance from the edge of the bounding box
+;1394:		for ( i = 0 ; i < 3 ; i++ ) {
+;1395:			if ( origin[i] < ent->r.absmin[i] ) {
+;1396:				v[i] = ent->r.absmin[i] - origin[i];
+;1397:			} else if ( origin[i] > ent->r.absmax[i] ) {
+;1398:				v[i] = origin[i] - ent->r.absmax[i];
+;1399:			} else {
+;1400:				v[i] = 0;
+;1401:			}
+;1402:		}
+;1403:
+;1404:		dist = VectorLength( v );
+;1405:		if ( dist >= radius ) {
+;1406:			continue;
+;1407:		}
+;1408:
+;1409://		if( CanDamage (ent, origin) ) {
+;1410:			VectorSubtract (ent->r.currentOrigin, origin, dir);
+;1411:			dir[2] += 24;
+;1412:			G_Damage( ent, NULL, attacker, dir, origin, damage, DAMAGE_RADIUS|DAMAGE_NO_TEAM_PROTECTION, MOD_KAMIKAZE );
+;1413:			//
+;1414:			dir[2] = 0;
+;1415:			VectorNormalize(dir);
+;1416:			if ( ent->client ) {
+;1417:				ent->client->ps.velocity[0] = dir[0] * push;
+;1418:				ent->client->ps.velocity[1] = dir[1] * push;
+;1419:				ent->client->ps.velocity[2] = 100;
+;1420:			}
+;1421:			ent->kamikazeShockTime = level.time + 3000;
+;1422://		}
+;1423:	}
+;1424:}
+;1425:
+;1426:/*
+;1427:===============
+;1428:KamikazeDamage
+;1429:===============
+;1430:*/
+;1431:static void KamikazeDamage( gentity_t *self ) {
+;1432:	int i;
+;1433:	float t;
+;1434:	gentity_t *ent;
+;1435:	vec3_t newangles;
+;1436:
+;1437:	self->count += 100;
+;1438:
+;1439:	if (self->count >= KAMI_SHOCKWAVE_STARTTIME) {
+;1440:		// shockwave push back
+;1441:		t = self->count - KAMI_SHOCKWAVE_STARTTIME;
+;1442:		KamikazeShockWave(self->s.pos.trBase, self->activator, 25, 400,	(int) (float) t * KAMI_SHOCKWAVE_MAXRADIUS / (KAMI_SHOCKWAVE_ENDTIME - KAMI_SHOCKWAVE_STARTTIME) );
+;1443:	}
+;1444:	//
+;1445:	if (self->count >= KAMI_EXPLODE_STARTTIME) {
+;1446:		// do our damage
+;1447:		t = self->count - KAMI_EXPLODE_STARTTIME;
+;1448:		KamikazeRadiusDamage( self->s.pos.trBase, self->activator, 400,	(int) (float) t * KAMI_BOOMSPHERE_MAXRADIUS / (KAMI_IMPLODE_STARTTIME - KAMI_EXPLODE_STARTTIME) );
+;1449:	}
+;1450:
+;1451:	// either cycle or kill self
+;1452:	if( self->count >= KAMI_SHOCKWAVE_ENDTIME ) {
+;1453:		G_FreeEntity( self );
+;1454:		return;
+;1455:	}
+;1456:	self->nextthink = level.time + 100;
+;1457:
+;1458:	// add earth quake effect
+;1459:	newangles[0] = crandom() * 2;
+;1460:	newangles[1] = crandom() * 2;
+;1461:	newangles[2] = 0;
+;1462:	for (i = 0; i < MAX_CLIENTS; i++)
+;1463:	{
+;1464:		ent = &g_entities[i];
+;1465:		if (!ent->inuse)
+;1466:			continue;
+;1467:		if (!ent->client)
+;1468:			continue;
+;1469:
+;1470:		if (ent->client->ps.groundEntityNum != ENTITYNUM_NONE) {
+;1471:			ent->client->ps.velocity[0] += crandom() * 120;
+;1472:			ent->client->ps.velocity[1] += crandom() * 120;
+;1473:			ent->client->ps.velocity[2] = 30 + random() * 25;
+;1474:		}
+;1475:
+;1476:		ent->client->ps.delta_angles[0] += ANGLE2SHORT(newangles[0] - self->movedir[0]);
+;1477:		ent->client->ps.delta_angles[1] += ANGLE2SHORT(newangles[1] - self->movedir[1]);
+;1478:		ent->client->ps.delta_angles[2] += ANGLE2SHORT(newangles[2] - self->movedir[2]);
+;1479:	}
+;1480:	VectorCopy(newangles, self->movedir);
+;1481:}
+;1482:
+;1483:/*
+;1484:===============
+;1485:G_StartKamikaze
+;1486:===============
+;1487:*/
+;1488:void G_StartKamikaze( gentity_t *ent ) {
+;1489:	gentity_t	*explosion;
+;1490:	gentity_t	*te;
+;1491:	vec3_t		snapped;
+;1492:
+;1493:	// start up the explosion logic
+;1494:	explosion = G_Spawn();
+;1495:
+;1496:	explosion->s.eType = ET_EVENTS + EV_KAMIKAZE;
+;1497:	explosion->eventTime = level.time;
+;1498:
+;1499:	if ( ent->client ) {
+;1500:		VectorCopy( ent->s.pos.trBase, snapped );
+;1501:	}
+;1502:	else {
+;1503:		VectorCopy( ent->activator->s.pos.trBase, snapped );
+;1504:	}
+;1505:	SnapVector( snapped );		// save network bandwidth
+;1506:	G_SetOrigin( explosion, snapped );
+;1507:
+;1508:	explosion->classname = "kamikaze";
+;1509:	explosion->s.pos.trType = TR_STATIONARY;
+;1510:
+;1511:	explosion->kamikazeTime = level.time;
+;1512:
+;1513:	explosion->think = KamikazeDamage;
+;1514:	explosion->nextthink = level.time + 100;
+;1515:	explosion->count = 0;
+;1516:	VectorClear(explosion->movedir);
+;1517:
+;1518:	trap_LinkEntity( explosion );
+;1519:
+;1520:	if (ent->client) {
+;1521:		//
+;1522:		explosion->activator = ent;
+;1523:		//
+;1524:		ent->s.eFlags &= ~EF_KAMIKAZE;
+;1525:		// nuke the guy that used it
+;1526:		G_Damage( ent, ent, ent, NULL, NULL, 100000, DAMAGE_NO_PROTECTION, MOD_KAMIKAZE );
+;1527:	}
+;1528:	else {
+;1529:		if ( !strcmp(ent->activator->classname, "bodyque") ) {
+;1530:			explosion->activator = &g_entities[ent->activator->r.ownerNum];
+;1531:		}
+;1532:		else {
+;1533:			explosion->activator = ent->activator;
+;1534:		}
+;1535:	}
+;1536:
+;1537:	// play global sound at all clients
+;1538:	te = G_TempEntity(snapped, EV_GLOBAL_TEAM_SOUND );
+;1539:	te->r.svFlags |= SVF_BROADCAST;
+;1540:	te->s.eventParm = GTS_KAMIKAZE;
+;1541:}
+;1542:#endif
 ;1543:
-;1544:/*
-;1545:====================================================
-;1546:MORE BUILDABLE STUFF
-;1547:Done here for those night forward, right, and up values 
-;1548:=================
-;1549:*/
-;1550:#define PLACEDIST			64
-;1551:
-;1552:/*
-;1553:=================
-;1554:CanBuildHere
-;1555:
-;1556:This checks to see that we can build this thing
-;1557:=================
-;1558:*/
-;1559:qboolean CanBuildHere(gentity_t *playerent)
-;1560:{
-line 1562
-;1561:	trace_t		tr;
-;1562:	vec3_t		fwd, pos, dest, mins = {-16,-16, 0}, maxs = {16,16,16};
+;1544:
+;1545:/*
+;1546:====================================================
+;1547:MORE BUILDABLE STUFF
+;1548:Done here for those night forward, right, and up values 
+;1549:=================
+;1550:*/
+;1551:#define PLACEDIST			64
+;1552:
+;1553:/*
+;1554:=================
+;1555:CanBuildHere
+;1556:
+;1557:This checks to see that we can build this thing
+;1558:=================
+;1559:*/
+;1560:qboolean CanBuildHere(gentity_t *playerent)
+;1561:{
+line 1563
+;1562:	trace_t		tr;
+;1563:	vec3_t		fwd, pos, dest, mins = {-16,-16, 0}, maxs = {16,16,16};
 ADDRLP4 92
 ADDRGP4 $377
 INDIRB
@@ -6700,12 +6691,12 @@ ADDRLP4 104
 ADDRGP4 $378
 INDIRB
 ASGNB 12
-line 1567
-;1563:
-;1564:	
-;1565:
-;1566:	// can we place this in front of us?
-;1567:	AngleVectors (playerent->client->ps.viewangles, fwd, NULL, NULL);
+line 1568
+;1564:
+;1565:	
+;1566:
+;1567:	// can we place this in front of us?
+;1568:	AngleVectors (playerent->client->ps.viewangles, fwd, NULL, NULL);
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
@@ -6728,13 +6719,13 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 1568
-;1568:	fwd[2] = 0;
+line 1569
+;1569:	fwd[2] = 0;
 ADDRLP4 12+8
 CNSTF4 0
 ASGNF4
-line 1569
-;1569:	VectorMA(playerent->client->ps.origin, PLACEDIST, fwd, dest);
+line 1570
+;1570:	VectorMA(playerent->client->ps.origin, PLACEDIST, fwd, dest);
 ADDRLP4 120
 ADDRFP4 0
 INDIRP4
@@ -6787,8 +6778,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1570
-;1570:	trap_Trace (&tr, playerent->client->ps.origin, mins, maxs, dest, playerent->s.number, MASK_SHOT );
+line 1571
+;1571:	trap_Trace (&tr, playerent->client->ps.origin, mins, maxs, dest, playerent->s.number, MASK_SHOT );
 ADDRLP4 24
 ARGP4
 ADDRLP4 128
@@ -6818,23 +6809,23 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 1571
-;1571:	if (tr.fraction > 0.9)
+line 1572
+;1572:	if (tr.fraction > 0.9)
 ADDRLP4 24+8
 INDIRF4
 CNSTF4 1063675494
 LEF4 $384
-line 1572
-;1572:	{//room in front
 line 1573
-;1573:		VectorCopy(tr.endpos, pos);
+;1573:	{//room in front
+line 1574
+;1574:		VectorCopy(tr.endpos, pos);
 ADDRLP4 80
 ADDRLP4 24+12
 INDIRB
 ASGNB 12
-line 1575
-;1574:		// drop to floor
-;1575:		VectorSet( dest, pos[0], pos[1], pos[2] - 4096 );
+line 1576
+;1575:		// drop to floor
+;1576:		VectorSet( dest, pos[0], pos[1], pos[2] - 4096 );
 ADDRLP4 0
 ADDRLP4 80
 INDIRF4
@@ -6849,8 +6840,8 @@ INDIRF4
 CNSTF4 1166016512
 SUBF4
 ASGNF4
-line 1576
-;1576:		trap_Trace( &tr, pos, mins, maxs, dest, playerent->s.number, MASK_SOLID );
+line 1577
+;1577:		trap_Trace( &tr, pos, mins, maxs, dest, playerent->s.number, MASK_SOLID );
 ADDRLP4 24
 ARGP4
 ADDRLP4 80
@@ -6870,8 +6861,8 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 1577
-;1577:		if ( !tr.startsolid && !tr.allsolid )
+line 1578
+;1578:		if ( !tr.startsolid && !tr.allsolid )
 ADDRLP4 132
 CNSTI4 0
 ASGNI4
@@ -6885,22 +6876,22 @@ INDIRI4
 ADDRLP4 132
 INDIRI4
 NEI4 $392
-line 1578
-;1578:		{	
 line 1579
-;1579:			return qtrue;
+;1579:		{	
+line 1580
+;1580:			return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $376
 JUMPV
 LABELV $392
-line 1581
-;1580:		}
-;1581:	}
+line 1582
+;1581:		}
+;1582:	}
 LABELV $384
-line 1583
-;1582:	// no room
-;1583:	return qfalse;
+line 1584
+;1583:	// no room
+;1584:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $376
@@ -6914,33 +6905,33 @@ byte 4 0
 export BuildableSpawn
 code
 proc BuildableSpawn 280 28
-line 1597
-;1584:}
-;1585:
+line 1598
+;1585:}
 ;1586:
 ;1587:
 ;1588:
-;1589:/*
-;1590:=================
-;1591:BuildableSpawn
-;1592:
-;1593:This checks puts it in front, drops it to the ground and angles it correctly
-;1594:=================
-;1595:*/
-;1596:void BuildableSpawn( gentity_t *base )
-;1597:{ // Done here for those night forward, right, and up values -Vincent	
-line 1599
-;1598:vec3_t		start, dir, angles; // Part 1 stuff
-;1599:vec3_t		origin, slope, nvf, ovf, ovr, new_angles = {0, 0, 0 }; // Part 2
+;1589:
+;1590:/*
+;1591:=================
+;1592:BuildableSpawn
+;1593:
+;1594:This checks puts it in front, drops it to the ground and angles it correctly
+;1595:=================
+;1596:*/
+;1597:void BuildableSpawn( gentity_t *base )
+;1598:{ // Done here for those night forward, right, and up values -Vincent	
+line 1600
+;1599:vec3_t		start, dir, angles; // Part 1 stuff
+;1600:vec3_t		origin, slope, nvf, ovf, ovr, new_angles = {0, 0, 0 }; // Part 2
 ADDRLP4 116
 ADDRGP4 $396
 INDIRB
 ASGNB 12
-line 1603
-;1600:float		pitch, mod, dot; // Part 2
-;1601:trace_t		tr1, tr2; // Part 2
-;1602:
-;1603:if( !base || !base->parent || !base->parent->client )
+line 1604
+;1601:float		pitch, mod, dot; // Part 2
+;1602:trace_t		tr1, tr2; // Part 2
+;1603:
+;1604:if( !base || !base->parent || !base->parent->client )
 ADDRLP4 232
 ADDRFP4 0
 INDIRP4
@@ -6977,15 +6968,15 @@ ADDRLP4 236
 INDIRU4
 NEU4 $397
 LABELV $400
-line 1604
-;1604:	return; // Verify for both parts
+line 1605
+;1605:	return; // Verify for both parts
 ADDRGP4 $395
 JUMPV
 LABELV $397
-line 1607
-;1605:
-;1606:// Part 1: Initial spawning in front of the player -Vincent
-;1607:VectorCopy( base->parent->client->ps.viewangles, angles );
+line 1608
+;1606:
+;1607:// Part 1: Initial spawning in front of the player -Vincent
+;1608:VectorCopy( base->parent->client->ps.viewangles, angles );
 ADDRLP4 92
 ADDRFP4 0
 INDIRP4
@@ -6999,19 +6990,19 @@ CNSTI4 152
 ADDP4
 INDIRB
 ASGNB 12
-line 1608
-;1608:angles[0] = 0; // Stay straight
+line 1609
+;1609:angles[0] = 0; // Stay straight
 ADDRLP4 92
 CNSTF4 0
 ASGNF4
-line 1609
-;1609:angles[2] = 0; // Stay straight
+line 1610
+;1610:angles[2] = 0; // Stay straight
 ADDRLP4 92+8
 CNSTF4 0
 ASGNF4
-line 1611
-;1610:
-;1611:AngleVectors( angles, forward, right, up );
+line 1612
+;1611:
+;1612:AngleVectors( angles, forward, right, up );
 ADDRLP4 92
 ARGP4
 ADDRGP4 forward
@@ -7023,8 +7014,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 1612
-;1612:CalcMuzzlePoint( base, forward, right, up, start ); // Actual start point, away from the owner
+line 1613
+;1613:CalcMuzzlePoint( base, forward, right, up, start ); // Actual start point, away from the owner
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -7039,15 +7030,15 @@ ARGP4
 ADDRGP4 CalcMuzzlePoint
 CALLV
 pop
-line 1613
-;1613:VectorNormalize( forward );
+line 1614
+;1614:VectorNormalize( forward );
 ADDRGP4 forward
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 1614
-;1614:VectorMA( start, 32, forward, start ); // Go in front of the player
+line 1615
+;1615:VectorMA( start, 32, forward, start ); // Go in front of the player
 ADDRLP4 244
 CNSTF4 1107296256
 ASGNF4
@@ -7080,10 +7071,10 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1617
-;1615:
+line 1618
 ;1616:
-;1617:G_SetOrigin( base, start ); // Start a bit in front of the player
+;1617:
+;1618:G_SetOrigin( base, start ); // Start a bit in front of the player
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -7092,8 +7083,8 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 1618
-;1618:base->s.pos.trTime = level.time;
+line 1619
+;1619:base->s.pos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 16
@@ -7101,22 +7092,22 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1620
-;1619:	
-;1620:VectorCopy( forward, dir ); // To tweak it below this...
+line 1621
+;1620:	
+;1621:VectorCopy( forward, dir ); // To tweak it below this...
 ADDRLP4 12
 ADDRGP4 forward
 INDIRB
 ASGNB 12
-line 1621
-;1621:VectorNormalize( dir );
+line 1622
+;1622:VectorNormalize( dir );
 ADDRLP4 12
 ARGP4
 ADDRGP4 VectorNormalize
 CALLF4
 pop
-line 1622
-;1622:VectorScale( dir, 300, base->s.pos.trDelta );
+line 1623
+;1623:VectorScale( dir, 300, base->s.pos.trDelta );
 ADDRFP4 0
 INDIRP4
 CNSTI4 36
@@ -7144,8 +7135,8 @@ ADDRLP4 12+8
 INDIRF4
 MULF4
 ASGNF4
-line 1623
-;1623:base->s.pos.trTime = level.time;
+line 1624
+;1624:base->s.pos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 16
@@ -7153,8 +7144,8 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1624
-;1624:vectoangles( dir, base->s.angles);
+line 1625
+;1625:vectoangles( dir, base->s.angles);
 ADDRLP4 12
 ARGP4
 ADDRFP4 0
@@ -7165,8 +7156,8 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 1625
-;1625:VectorCopy( base->s.angles, base->s.apos.trBase );
+line 1626
+;1626:VectorCopy( base->s.angles, base->s.apos.trBase );
 ADDRLP4 248
 ADDRFP4 0
 INDIRP4
@@ -7181,8 +7172,8 @@ CNSTI4 116
 ADDP4
 INDIRB
 ASGNB 12
-line 1626
-;1626:VectorSet( base->s.apos.trDelta, 50, 0, 0 ); // Speed
+line 1627
+;1627:VectorSet( base->s.apos.trDelta, 50, 0, 0 ); // Speed
 ADDRFP4 0
 INDIRP4
 CNSTI4 72
@@ -7201,8 +7192,8 @@ CNSTI4 80
 ADDP4
 CNSTF4 0
 ASGNF4
-line 1627
-;1627:base->s.apos.trTime = level.time;
+line 1628
+;1628:base->s.apos.trTime = level.time;
 ADDRFP4 0
 INDIRP4
 CNSTI4 52
@@ -7210,12 +7201,12 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 1632
-;1628:
+line 1633
 ;1629:
-;1630:// Part 2: Put it on the ground and match it to slopes -Vincent
-;1631:
-;1632:VectorCopy( base->r.currentOrigin, origin );
+;1630:
+;1631:// Part 2: Put it on the ground and match it to slopes -Vincent
+;1632:
+;1633:VectorCopy( base->r.currentOrigin, origin );
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -7223,18 +7214,18 @@ CNSTI4 496
 ADDP4
 INDIRB
 ASGNB 12
-line 1633
-;1633:origin[2] -= 2500; // Trace it straight down
+line 1634
+;1634:origin[2] -= 2500; // Trace it straight down
 ADDRLP4 24+8
 ADDRLP4 24+8
 INDIRF4
 CNSTF4 1159479296
 SUBF4
 ASGNF4
-line 1636
-;1634:// Trace for solids from the previous position to the new position on the ground, 
-;1635:// but without getting stuck in the owner!
-;1636:trap_Trace( &tr1, base->r.currentOrigin, base->r.mins, base->r.maxs, origin, 
+line 1637
+;1635:// Trace for solids from the previous position to the new position on the ground, 
+;1636:// but without getting stuck in the owner!
+;1637:trap_Trace( &tr1, base->r.currentOrigin, base->r.mins, base->r.maxs, origin, 
 ADDRLP4 36
 ARGP4
 ADDRLP4 256
@@ -7291,11 +7282,11 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 1640
-;1637:			base->parent ? base->parent->s.number : base->s.number, MASK_SHOT );
-;1638:
+line 1641
+;1638:			base->parent ? base->parent->s.number : base->s.number, MASK_SHOT );
 ;1639:
-;1640:VectorCopy( base->r.currentOrigin, origin ); // Keep the old value for lava checking
+;1640:
+;1641:VectorCopy( base->r.currentOrigin, origin ); // Keep the old value for lava checking
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -7303,8 +7294,8 @@ CNSTI4 496
 ADDP4
 INDIRB
 ASGNB 12
-line 1641
-;1641:G_SetOrigin( base, tr1.endpos );
+line 1642
+;1642:G_SetOrigin( base, tr1.endpos );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -7313,8 +7304,8 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 1642
-;1642:VectorCopy( base->r.currentOrigin, base->s.origin ); // Set it's new origin
+line 1643
+;1643:VectorCopy( base->r.currentOrigin, base->s.origin ); // Set it's new origin
 ADDRLP4 260
 ADDRFP4 0
 INDIRP4
@@ -7329,10 +7320,10 @@ CNSTI4 496
 ADDP4
 INDIRB
 ASGNB 12
-line 1645
-;1643:
+line 1646
 ;1644:
-;1645:if( tr1.fraction < 1.0 && ( &tr1.plane ) )
+;1645:
+;1646:if( tr1.fraction < 1.0 && ( &tr1.plane ) )
 ADDRLP4 36+8
 INDIRF4
 CNSTF4 1065353216
@@ -7341,16 +7332,16 @@ ADDRLP4 36+24
 CVPU4 4
 CNSTU4 0
 EQU4 $418
-line 1646
-;1646:{ // Match to a slope when necessary
 line 1647
-;1647:VectorCopy( tr1.plane.normal, slope ); // Get the slopes' angles
+;1647:{ // Match to a slope when necessary
+line 1648
+;1648:VectorCopy( tr1.plane.normal, slope ); // Get the slopes' angles
 ADDRLP4 220
 ADDRLP4 36+24
 INDIRB
 ASGNB 12
-line 1648
-;1648:AngleVectors( base->s.angles, ovf, ovr, NULL ); // Already calculated in part 1
+line 1649
+;1649:AngleVectors( base->s.angles, ovf, ovr, NULL ); // Already calculated in part 1
 ADDRFP4 0
 INDIRP4
 CNSTI4 116
@@ -7365,8 +7356,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 1649
-;1649:vectoangles( slope, new_angles );
+line 1650
+;1650:vectoangles( slope, new_angles );
 ADDRLP4 220
 ARGP4
 ADDRLP4 116
@@ -7374,16 +7365,16 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 1650
-;1650:pitch = new_angles[PITCH] + 90;
+line 1651
+;1651:pitch = new_angles[PITCH] + 90;
 ADDRLP4 212
 ADDRLP4 116
 INDIRF4
 CNSTF4 1119092736
 ADDF4
 ASGNF4
-line 1651
-;1651:new_angles[ROLL] = new_angles[PITCH] = 0;
+line 1652
+;1652:new_angles[ROLL] = new_angles[PITCH] = 0;
 ADDRLP4 264
 CNSTF4 0
 ASGNF4
@@ -7395,8 +7386,8 @@ ADDRLP4 116+8
 ADDRLP4 264
 INDIRF4
 ASGNF4
-line 1652
-;1652:AngleVectors( new_angles, nvf, NULL, NULL );
+line 1653
+;1653:AngleVectors( new_angles, nvf, NULL, NULL );
 ADDRLP4 116
 ARGP4
 ADDRLP4 104
@@ -7413,9 +7404,9 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 1654
-;1653:
-;1654:mod = DotProduct( nvf, ovr );
+line 1655
+;1654:
+;1655:mod = DotProduct( nvf, ovr );
 ADDRLP4 152
 ADDRLP4 104
 INDIRF4
@@ -7435,30 +7426,30 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1655
-;1655:if( mod < 0 )
+line 1656
+;1656:if( mod < 0 )
 ADDRLP4 152
 INDIRF4
 CNSTF4 0
 GEF4 $428
-line 1656
-;1656:	mod = -1;
+line 1657
+;1657:	mod = -1;
 ADDRLP4 152
 CNSTF4 3212836864
 ASGNF4
 ADDRGP4 $429
 JUMPV
 LABELV $428
-line 1658
-;1657:else
-;1658:	mod = 1;
+line 1659
+;1658:else
+;1659:	mod = 1;
 ADDRLP4 152
 CNSTF4 1065353216
 ASGNF4
 LABELV $429
-line 1660
-;1659:
-;1660:dot = DotProduct( nvf, ovf );
+line 1661
+;1660:
+;1661:dot = DotProduct( nvf, ovf );
 ADDRLP4 216
 ADDRLP4 104
 INDIRF4
@@ -7478,9 +7469,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1662
-;1661:// Modify its actual angles
-;1662:base->s.angles[PITCH] = dot * pitch;
+line 1663
+;1662:// Modify its actual angles
+;1663:base->s.angles[PITCH] = dot * pitch;
 ADDRFP4 0
 INDIRP4
 CNSTI4 116
@@ -7491,8 +7482,8 @@ ADDRLP4 212
 INDIRF4
 MULF4
 ASGNF4
-line 1663
-;1663:base->s.angles[ROLL] = ( ( 1-Q_fabs( dot ) ) * pitch * mod );
+line 1664
+;1664:base->s.angles[ROLL] = ( ( 1-Q_fabs( dot ) ) * pitch * mod );
 ADDRLP4 216
 INDIRF4
 ARGF4
@@ -7515,8 +7506,8 @@ ADDRLP4 152
 INDIRF4
 MULF4
 ASGNF4
-line 1664
-;1664:VectorCopy( base->s.angles, base->s.apos.trBase );
+line 1665
+;1665:VectorCopy( base->s.angles, base->s.apos.trBase );
 ADDRLP4 276
 ADDRFP4 0
 INDIRP4
@@ -7531,23 +7522,23 @@ CNSTI4 116
 ADDP4
 INDIRB
 ASGNB 12
-line 1665
-;1665:}
+line 1666
+;1666:}
 LABELV $418
-line 1667
-;1666:
-;1667:trap_LinkEntity( base ); // Add it...
+line 1668
+;1667:
+;1668:trap_LinkEntity( base ); // Add it...
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 1671
-;1668:
-;1669:// Trace back to its original point to see if the buildable hit any non-solid content on its way
-;1670:// When it does, the buildable should be cleared!
-;1671:trap_Trace( &tr2, origin, base->r.mins, base->r.maxs, base->r.currentOrigin, 
+line 1672
+;1669:
+;1670:// Trace back to its original point to see if the buildable hit any non-solid content on its way
+;1671:// When it does, the buildable should be cleared!
+;1672:trap_Trace( &tr2, origin, base->r.mins, base->r.maxs, base->r.currentOrigin, 
 ADDRLP4 156
 ARGP4
 ADDRLP4 24
@@ -7604,46 +7595,46 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 1674
-;1672:		   	base->parent ? base->parent->s.number : base->s.number, CONTENTS_LAVA | CONTENTS_SLIME | CONTENTS_SOLID );
-;1673:
-;1674:if( tr2.fraction < 1.0 ) // It did go through a bad content
+line 1675
+;1673:		   	base->parent ? base->parent->s.number : base->s.number, CONTENTS_LAVA | CONTENTS_SLIME | CONTENTS_SOLID );
+;1674:
+;1675:if( tr2.fraction < 1.0 ) // It did go through a bad content
 ADDRLP4 156+8
 INDIRF4
 CNSTF4 1065353216
 GEF4 $437
-line 1675
-;1675:{
 line 1676
-;1676:base->s.eType = ET_GENERAL; // To go for a die in g_buildables
+;1676:{
+line 1677
+;1677:base->s.eType = ET_GENERAL; // To go for a die in g_buildables
 ADDRFP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1677
-;1677:}
+line 1678
+;1678:}
 ADDRGP4 $438
 JUMPV
 LABELV $437
-line 1679
-;1678:else
-;1679:{
 line 1680
-;1680:base->s.eType = ET_BUILDABLE; // Initialize it
+;1679:else
+;1680:{
+line 1681
+;1681:base->s.eType = ET_BUILDABLE; // Initialize it
 ADDRFP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 13
 ASGNI4
-line 1681
-;1681:}
+line 1682
+;1682:}
 LABELV $438
-line 1683
-;1682:// The actual buildables' thinking happens in g_buildables again, after this func
-;1683:}
+line 1684
+;1683:// The actual buildables' thinking happens in g_buildables again, after this func
+;1684:}
 LABELV $395
 endproc BuildableSpawn 280 28
 bss
