@@ -2120,10 +2120,13 @@ void BotBattleUseItems(bot_state_t *bs) {
 			}
 		}
 	}
-	if (bs->inventory[INVENTORY_HEALTH] < 60) {
-		if (bs->inventory[INVENTORY_MEDKIT] > 0) {
+	if (bs->inventory[INVENTORY_MEDKIT] > 0)
+	{ //-Vincent
+		if (bs->inventory[INVENTORY_HEALTH] < 30)
+		{
 			trap_EA_Use(bs->client);
 		}
+		return;
 	}
 #ifdef MISSIONPACK
 	BotUseKamikaze(bs);

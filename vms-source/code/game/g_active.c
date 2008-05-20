@@ -718,9 +718,20 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 
 			break;
 
-		case EV_USE_ITEM2:		// medkit
+		case EV_USE_ITEM2:		// holdable medkit now -Vincent
 //			PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: USE Medkit\n", ent->item->giTag ); // Shafe - Debug
-			ent->health = ent->client->ps.stats[STAT_MAX_HEALTH] + 25;
+			// New set of rules.  You get either 100 health, or an extra 25, whichever is higher.
+			// Give 1/4 health.
+			ent->health += ent->client->ps.stats[STAT_MAX_HEALTH]*0.25;
+
+			if (ent->health < ent->client->ps.stats[STAT_MAX_HEALTH])
+			{	// If that doesn't bring us up to 100, make it go up to 100.
+				ent->health = ent->client->ps.stats[STAT_MAX_HEALTH];
+			}
+			else if (ent->health > ent->client->ps.stats[STAT_MAX_HEALTH]*2)
+			{	// Otherwise, 25 is all you get.  Just make sure we don't go above 200.
+				ent->health = ent->client->ps.stats[STAT_MAX_HEALTH]*2;
+			}
 			break;
 
 		

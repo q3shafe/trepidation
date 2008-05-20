@@ -406,12 +406,7 @@ static void CG_UseItem( centity_t *cent ) {
 		break;
 
 	case HI_MEDKIT:
-		clientNum = cent->currentState.clientNum;
-		if ( clientNum >= 0 && clientNum < MAX_CLIENTS ) {
-			ci = &cgs.clientinfo[ clientNum ];
-			ci->medkitUsageTime = cg.time;
-		}
-		trap_S_StartSound (NULL, es->number, CHAN_BODY, cgs.media.medkitSound );
+		trap_S_StartSound (NULL, es->number, CHAN_BODY, cgs.media.medkitSound ); //-Vincent
 		break;
 
 #ifdef MISSIONPACK
