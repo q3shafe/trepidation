@@ -747,20 +747,20 @@ void G_RunMissile( gentity_t *ent ) {
 	// trace a line from the previous position to the current position
 	trap_Trace( &tr, ent->r.currentOrigin, ent->r.mins, ent->r.maxs, origin, passent, ent->clipmask );
 
-	if ( tr.startsolid || tr.allsolid ) {
-		// make sure the tr.entityNum is set to the entity we're stuck in
-		trap_Trace( &tr, ent->r.currentOrigin, ent->r.mins, ent->r.maxs, ent->r.currentOrigin, passent, ent->clipmask );
+	// Testing a fix for the "weird" missiles in water -Vincent
+	VectorCopy( tr.endpos, ent->r.currentOrigin );
+
+	if ( tr.startsolid ) {
 		tr.fraction = 0;
-	}
-	else {
-		VectorCopy( tr.endpos, ent->r.currentOrigin );
 	}
 
 	trap_LinkEntity( ent );
 
-	if ( tr.fraction != 1 ) {
+	if ( tr.fraction != 1 && !tr.allsolid) ) // 2nd parameter: -Vincent
+	{
 		// never explode or bounce on sky
-		if ( tr.surfaceFlags & SURF_NOIMPACT ) {
+		if ( tr.surfaceFlags & SURF_NOIMPACT ) 
+		{
 			// If grapple, reset owner
 			/* Shafe - Trep - Comment this out for offhand grapple
 			if (ent->parent && ent->parent->client && ent->parent->client->hook == ent) {

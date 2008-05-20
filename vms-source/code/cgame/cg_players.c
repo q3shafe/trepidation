@@ -2743,33 +2743,6 @@ void CG_Player( centity_t *cent ) {
 		VectorSet( powerup.axis[2], 0, 0, c );
 		trap_R_AddRefEntityToScene( &powerup );
 	}
-
-	t = cg.time - ci->medkitUsageTime;
-	if ( ci->medkitUsageTime && t < 500 ) {
-		memcpy(&powerup, &torso, sizeof(torso));
-		powerup.hModel = cgs.media.medkitUsageModel;
-		powerup.customSkin = 0;
-		// always draw
-		powerup.renderfx &= ~RF_THIRD_PERSON;
-		VectorClear(angles);
-		AnglesToAxis(angles, powerup.axis);
-		VectorCopy(cent->lerpOrigin, powerup.origin);
-		powerup.origin[2] += -24 + (float) t * 80 / 500;
-		if ( t > 400 ) {
-			c = (float) (t - 1000) * 0xff / 100;
-			powerup.shaderRGBA[0] = 0xff - c;
-			powerup.shaderRGBA[1] = 0xff - c;
-			powerup.shaderRGBA[2] = 0xff - c;
-			powerup.shaderRGBA[3] = 0xff - c;
-		}
-		else {
-			powerup.shaderRGBA[0] = 0xff;
-			powerup.shaderRGBA[1] = 0xff;
-			powerup.shaderRGBA[2] = 0xff;
-			powerup.shaderRGBA[3] = 0xff;
-		}
-		trap_R_AddRefEntityToScene( &powerup );
-	}
 #endif // MISSIONPACK
 
 	//

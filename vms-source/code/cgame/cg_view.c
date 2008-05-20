@@ -901,10 +901,6 @@ void CG_DrawActiveFrame( int serverTime, stereoFrame_t stereoView, qboolean demo
 	// decide on third person view
 	cg.renderingThirdPerson = cg_thirdPerson.integer || (cg.snap->ps.stats[STAT_HEALTH] <= 0);
 
-	if ( cg.snap->ps.stats[STAT_HEALTH] <= 0 )
-	{ // Reset the zoom at death when necessary -Vincent
-	CG_ResetZoom();
-	}
 	// build cg.refdef
 	inwater = CG_CalcViewValues();
 
@@ -968,6 +964,9 @@ void CG_DrawActiveFrame( int serverTime, stereoFrame_t stereoView, qboolean demo
 
 	// actually issue the rendering calls
 	CG_DrawActive( stereoView );
+
+	if( cg.snap->ps.stats[STAT_HEALTH] <= 0 || cg.snap->ps.weapon != 7 )
+		CG_ResetZoom(); // Dead or no sniper? No zoom! -Vincent
 
 	if ( cg_stats.integer ) {
 		CG_Printf( "cg.clientFrame:%i\n", cg.clientFrame );
