@@ -3814,7 +3814,7 @@ line 717
 LABELV $201
 endproc G_MissileImpact 56 32
 export G_RunMissile
-proc G_RunMissile 88 28
+proc G_RunMissile 84 28
 line 724
 ;718:
 ;719:/*
@@ -3838,7 +3838,7 @@ ARGP4
 ADDRGP4 level+32
 INDIRI4
 ARGI4
-ADDRLP4 60
+ADDRLP4 56
 ARGP4
 ADDRGP4 BG_EvaluateTrajectory
 CALLV
@@ -3858,7 +3858,7 @@ CNSTU4 0
 EQU4 $239
 line 735
 ;735:		passent = ent->target_ent->s.number;
-ADDRLP4 56
+ADDRLP4 68
 ADDRFP4 0
 INDIRP4
 CNSTI4 676
@@ -3882,7 +3882,7 @@ line 743
 line 745
 ;744:		// ignore interactions with the missile owner
 ;745:		passent = ent->r.ownerNum;
-ADDRLP4 56
+ADDRLP4 68
 ADDRFP4 0
 INDIRP4
 CNSTI4 520
@@ -3916,9 +3916,9 @@ INDIRP4
 CNSTI4 456
 ADDP4
 ARGP4
-ADDRLP4 60
-ARGP4
 ADDRLP4 56
+ARGP4
+ADDRLP4 68
 INDIRI4
 ARGI4
 ADDRLP4 72
@@ -3930,80 +3930,10 @@ ARGI4
 ADDRGP4 trap_Trace
 CALLV
 pop
-line 750
+line 751
 ;749:
-;750:	if ( tr.startsolid || tr.allsolid ) {
-ADDRLP4 76
-CNSTI4 0
-ASGNI4
-ADDRLP4 0+4
-INDIRI4
-ADDRLP4 76
-INDIRI4
-NEI4 $244
-ADDRLP4 0
-INDIRI4
-ADDRLP4 76
-INDIRI4
-EQI4 $241
-LABELV $244
-line 752
-;751:		// make sure the tr.entityNum is set to the entity we're stuck in
-;752:		trap_Trace( &tr, ent->r.currentOrigin, ent->r.mins, ent->r.maxs, ent->r.currentOrigin, passent, ent->clipmask );
-ADDRLP4 0
-ARGP4
-ADDRLP4 80
-ADDRFP4 0
-INDIRP4
-ASGNP4
-ADDRLP4 84
-ADDRLP4 80
-INDIRP4
-CNSTI4 496
-ADDP4
-ASGNP4
-ADDRLP4 84
-INDIRP4
-ARGP4
-ADDRLP4 80
-INDIRP4
-CNSTI4 444
-ADDP4
-ARGP4
-ADDRLP4 80
-INDIRP4
-CNSTI4 456
-ADDP4
-ARGP4
-ADDRLP4 84
-INDIRP4
-ARGP4
-ADDRLP4 56
-INDIRI4
-ARGI4
-ADDRLP4 80
-INDIRP4
-CNSTI4 580
-ADDP4
-INDIRI4
-ARGI4
-ADDRGP4 trap_Trace
-CALLV
-pop
-line 753
-;753:		tr.fraction = 0;
-ADDRLP4 0+8
-CNSTF4 0
-ASGNF4
-line 754
-;754:	}
-ADDRGP4 $242
-JUMPV
-LABELV $241
-line 755
-;755:	else {
-line 756
-;756:		VectorCopy( tr.endpos, ent->r.currentOrigin );
+;750:	// Testing a fix for the "weird" missiles in water -Vincent
+;751:	VectorCopy( tr.endpos, ent->r.currentOrigin );
 ADDRFP4 0
 INDIRP4
 CNSTI4 496
@@ -4011,34 +3941,54 @@ ADDP4
 ADDRLP4 0+12
 INDIRB
 ASGNB 12
-line 757
-;757:	}
+line 753
+;752:
+;753:	if ( tr.startsolid ) {
+ADDRLP4 0+4
+INDIRI4
+CNSTI4 0
+EQI4 $242
+line 754
+;754:		tr.fraction = 0;
+ADDRLP4 0+8
+CNSTF4 0
+ASGNF4
+line 755
+;755:	}
 LABELV $242
-line 759
-;758:
-;759:	trap_LinkEntity( ent );
+line 757
+;756:
+;757:	trap_LinkEntity( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 761
-;760:
-;761:	if ( tr.fraction != 1 ) {
+line 759
+;758:
+;759:	if ( tr.fraction != 1 && !tr.allsolid)  // 2nd parameter: -Vincent
 ADDRLP4 0+8
 INDIRF4
 CNSTF4 1065353216
-EQF4 $247
-line 763
-;762:		// never explode or bounce on sky
-;763:		if ( tr.surfaceFlags & SURF_NOIMPACT ) {
+EQF4 $246
+ADDRLP4 0
+INDIRI4
+CNSTI4 0
+NEI4 $246
+line 760
+;760:	{
+line 762
+;761:		// never explode or bounce on sky
+;762:		if ( tr.surfaceFlags & SURF_NOIMPACT ) 
 ADDRLP4 0+44
 INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $250
+EQI4 $249
+line 763
+;763:		{
 line 771
 ;764:			// If grapple, reset owner
 ;765:			/* Shafe - Trep - Comment this out for offhand grapple
@@ -4051,28 +4001,28 @@ line 771
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 4
-EQI4 $253
+EQI4 $252
 line 772
 ;772:			{
 line 773
 ;773:				if (ent->parent && ent->parent->client->hook == ent)
-ADDRLP4 80
+ADDRLP4 76
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 84
 ADDRLP4 80
+ADDRLP4 76
 INDIRP4
 CNSTI4 608
 ADDP4
 INDIRP4
 ASGNP4
-ADDRLP4 84
+ADDRLP4 80
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $256
-ADDRLP4 84
+EQU4 $255
+ADDRLP4 80
 INDIRP4
 CNSTI4 524
 ADDP4
@@ -4081,10 +4031,10 @@ CNSTI4 2692
 ADDP4
 INDIRP4
 CVPU4 4
-ADDRLP4 80
+ADDRLP4 76
 INDIRP4
 CVPU4 4
-NEU4 $256
+NEU4 $255
 line 774
 ;774:				{
 line 775
@@ -4131,10 +4081,10 @@ CNSTI4 0
 ASGNI4
 line 778
 ;778:				}
-LABELV $256
+LABELV $255
 line 779
 ;779:			}
-LABELV $253
+LABELV $252
 line 782
 ;780:			// End Shafe
 ;781:
@@ -4149,7 +4099,7 @@ line 783
 ;783:			return;
 ADDRGP4 $237
 JUMPV
-LABELV $250
+LABELV $249
 line 785
 ;784:		}
 ;785:		G_MissileImpact( ent, &tr );
@@ -4169,16 +4119,16 @@ CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 3
-EQI4 $258
+EQI4 $257
 line 787
 ;787:			return;		// exploded
 ADDRGP4 $237
 JUMPV
-LABELV $258
+LABELV $257
 line 789
 ;788:		}
 ;789:	}
-LABELV $247
+LABELV $246
 line 801
 ;790:#ifdef MISSIONPACK
 ;791:	// if the prox mine wasn't yet outside the player body
@@ -4201,7 +4151,7 @@ pop
 line 802
 ;802:}
 LABELV $237
-endproc G_RunMissile 88 28
+endproc G_RunMissile 84 28
 export fire_plasma
 proc fire_plasma 32 4
 line 813
@@ -4528,7 +4478,7 @@ line 850
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $260
+LABELV $259
 endproc fire_plasma 32 4
 export G_ExplodeBomb
 proc G_ExplodeBomb 0 4
@@ -4554,7 +4504,7 @@ CNSTI4 2704
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $264
+NEI4 $263
 line 862
 ;862:	{ // -Vincent
 line 863
@@ -4584,7 +4534,7 @@ CNSTI4 0
 ASGNI4
 line 865
 ;865:	}
-LABELV $264
+LABELV $263
 line 867
 ;866:
 ;867:	G_ExplodeMissile( ent );
@@ -4596,7 +4546,7 @@ CALLV
 pop
 line 868
 ;868:}
-LABELV $263
+LABELV $262
 endproc G_ExplodeBomb 0 4
 export fire_bomb
 proc fire_bomb 36 4
@@ -4636,7 +4586,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $267
+ADDRGP4 $266
 ASGNP4
 line 883
 ;883:	bolt->nextthink = level.time + 30000;
@@ -4956,7 +4906,7 @@ line 919
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $266
+LABELV $265
 endproc fire_bomb 36 4
 export G_ExplodePDGrenade
 proc G_ExplodePDGrenade 8 8
@@ -4981,12 +4931,12 @@ CNSTI4 840
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $271
+EQI4 $270
 line 930
 ;930:	{
 line 931
 ;931:		trap_SendServerCommand( ent->r.ownerNum, va("cp \"^9PDG Lock Expired!\n\"") );
-ADDRGP4 $273
+ADDRGP4 $272
 ARGP4
 ADDRLP4 0
 ADDRGP4 va
@@ -5006,7 +4956,7 @@ CALLV
 pop
 line 932
 ;932:	}
-LABELV $271
+LABELV $270
 line 933
 ;933:	ent->parent->istelepoint = 0; // client cannot teleport
 ADDRFP4 0
@@ -5064,7 +5014,7 @@ CNSTI4 2700
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $274
+NEI4 $273
 line 938
 ;938:	{ // -Vincent
 line 939
@@ -5080,7 +5030,7 @@ CNSTI4 0
 ASGNI4
 line 940
 ;940:	}
-LABELV $274
+LABELV $273
 line 942
 ;941:
 ;942:	G_ExplodeMissile( ent );
@@ -5092,7 +5042,7 @@ CALLV
 pop
 line 943
 ;943:}
-LABELV $270
+LABELV $269
 endproc G_ExplodePDGrenade 8 8
 export fire_pdgrenade
 proc fire_pdgrenade 36 4
@@ -5452,7 +5402,7 @@ line 994
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $276
+LABELV $275
 endproc fire_pdgrenade 36 4
 export fire_grenade
 proc fire_grenade 32 4
@@ -5492,7 +5442,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $280
+ADDRGP4 $279
 ASGNP4
 line 1009
 ;1009:	bolt->nextthink = level.time + 2500;
@@ -5775,7 +5725,7 @@ line 1037
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $279
+LABELV $278
 endproc fire_grenade 32 4
 export fire_flame
 proc fire_flame 32 4
@@ -5819,7 +5769,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $284
+ADDRGP4 $283
 ASGNP4
 line 1056
 ;1056:	bolt->nextthink = level.time + 1500;
@@ -5903,7 +5853,7 @@ line 1069
 ADDRFP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $286
+NEI4 $285
 line 1070
 ;1070:	{
 line 1071
@@ -5940,9 +5890,9 @@ CNSTI4 55
 ASGNI4
 line 1075
 ;1075:	} else
-ADDRGP4 $287
+ADDRGP4 $286
 JUMPV
-LABELV $286
+LABELV $285
 line 1076
 ;1076:	{
 line 1077
@@ -5995,7 +5945,7 @@ BORI4
 ASGNI4
 line 1082
 ;1082:	}
-LABELV $287
+LABELV $286
 line 1084
 ;1083:
 ;1084:	bolt->splashMethodOfDeath = MOD_ALTFLAMER;
@@ -6155,7 +6105,7 @@ line 1095
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $283
+LABELV $282
 endproc fire_flame 32 4
 export fire_altgrenade
 proc fire_altgrenade 36 4
@@ -6201,7 +6151,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $280
+ADDRGP4 $279
 ASGNP4
 line 1116
 ;1116:	bolt->nextthink = level.time + 2500;
@@ -6493,7 +6443,7 @@ line 1145
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $289
+LABELV $288
 endproc fire_altgrenade 36 4
 export fire_devparticle
 proc fire_devparticle 36 4
@@ -6537,7 +6487,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $293
+ADDRGP4 $292
 ASGNP4
 line 1165
 ;1164:
@@ -6545,7 +6495,7 @@ line 1165
 ADDRFP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $294
+NEI4 $293
 line 1166
 ;1166:	{
 line 1167
@@ -6569,9 +6519,9 @@ ADDI4
 ASGNI4
 line 1169
 ;1169:	} else {
-ADDRGP4 $295
+ADDRGP4 $294
 JUMPV
-LABELV $294
+LABELV $293
 line 1170
 ;1170:	bolt->think = G_ExplodeMissile;
 ADDRLP4 0
@@ -6593,7 +6543,7 @@ ADDI4
 ASGNI4
 line 1172
 ;1172:	}
-LABELV $295
+LABELV $294
 line 1175
 ;1173:	
 ;1174:
@@ -6868,7 +6818,7 @@ line 1203
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $292
+LABELV $291
 endproc fire_devparticle 36 4
 export fire_bfg
 proc fire_bfg 32 4
@@ -6911,7 +6861,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $293
+ADDRGP4 $292
 ASGNP4
 line 1221
 ;1221:	bolt->s.time2 = 0;
@@ -7047,7 +6997,7 @@ line 1241
 ADDRFP4 12
 INDIRI4
 CNSTI4 1
-NEI4 $302
+NEI4 $301
 line 1242
 ;1242:	{
 line 1244
@@ -7149,9 +7099,9 @@ line 1253
 ;1251:		
 ;1252:	
 ;1253:	} 
-ADDRGP4 $303
+ADDRGP4 $302
 JUMPV
-LABELV $302
+LABELV $301
 line 1255
 ;1254:	else
 ;1255:	{
@@ -7238,7 +7188,7 @@ ASGNF4
 line 1265
 ;1264:
 ;1265:	}
-LABELV $303
+LABELV $302
 line 1268
 ;1266:
 ;1267:	
@@ -7316,7 +7266,7 @@ line 1271
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $299
+LABELV $298
 endproc fire_bfg 32 4
 export fire_rocket
 proc fire_rocket 32 4
@@ -7361,7 +7311,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $305
+ADDRGP4 $304
 ASGNP4
 line 1291
 ;1291:	bolt->nextthink = level.time + 15000;
@@ -7635,7 +7585,7 @@ line 1317
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $304
+LABELV $303
 endproc fire_rocket 32 4
 export fire_alt_rocket
 proc fire_alt_rocket 48 4
@@ -7676,7 +7626,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $305
+ADDRGP4 $304
 ASGNP4
 line 1333
 ;1333:	bolt->think = G_HomingMissile;
@@ -8036,7 +7986,7 @@ line 1368
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $308
+LABELV $307
 endproc fire_alt_rocket 48 4
 export fire_mg
 proc fire_mg 32 4
@@ -8078,7 +8028,7 @@ ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $313
+ADDRGP4 $312
 ASGNP4
 line 1385
 ;1385:	bolt->nextthink = level.time + 10000;
@@ -8161,7 +8111,7 @@ line 1397
 ADDRFP4 12
 INDIRI4
 CNSTI4 1
-NEI4 $315
+NEI4 $314
 line 1398
 ;1398:	{
 line 1399
@@ -8208,9 +8158,9 @@ ASGNI4
 line 1405
 ;1404:
 ;1405:	} 
-ADDRGP4 $316
+ADDRGP4 $315
 JUMPV
-LABELV $315
+LABELV $314
 line 1407
 ;1406:	else
 ;1407:	{
@@ -8240,7 +8190,7 @@ CNSTI4 5
 ASGNI4
 line 1411
 ;1411:	}
-LABELV $316
+LABELV $315
 line 1412
 ;1412:	bolt->methodOfDeath = MOD_MACHINEGUN;
 ADDRLP4 0
@@ -8415,7 +8365,7 @@ line 1425
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $312
+LABELV $311
 endproc fire_mg 32 4
 export fire_turret
 proc fire_turret 32 4
@@ -8540,7 +8490,7 @@ line 1454
 ADDRFP4 12
 INDIRI4
 CNSTI4 1
-NEI4 $320
+NEI4 $319
 line 1455
 ;1455:	{
 line 1456
@@ -8586,9 +8536,9 @@ ASGNI4
 line 1461
 ;1460:
 ;1461:	} 
-ADDRGP4 $321
+ADDRGP4 $320
 JUMPV
-LABELV $320
+LABELV $319
 line 1463
 ;1462:	else
 ;1463:	{
@@ -8618,7 +8568,7 @@ CNSTI4 5
 ASGNI4
 line 1467
 ;1467:	}
-LABELV $321
+LABELV $320
 line 1468
 ;1468:	bolt->methodOfDeath = MOD_TURRET;
 ADDRLP4 0
@@ -8793,7 +8743,7 @@ line 1481
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $318
+LABELV $317
 endproc fire_turret 32 4
 export fire_grapple
 proc fire_grapple 36 4
@@ -8930,7 +8880,7 @@ line 1510
 ADDRGP4 g_GrappleMode+12
 INDIRI4
 CNSTI4 1
-NEI4 $325
+NEI4 $324
 line 1511
 ;1511:	{
 line 1512
@@ -8959,14 +8909,14 @@ CNSTI4 10
 ASGNI4
 line 1515
 ;1515:	}
-LABELV $325
+LABELV $324
 line 1517
 ;1516:
 ;1517:	if (g_GrappleMode.integer == 2) // 0 - Normal, 1 - Instagib, 2 - Holds People
 ADDRGP4 g_GrappleMode+12
 INDIRI4
 CNSTI4 2
-NEI4 $328
+NEI4 $327
 line 1518
 ;1518:	{
 line 1519
@@ -8995,7 +8945,7 @@ CNSTI4 1
 ASGNI4
 line 1522
 ;1522:	}
-LABELV $328
+LABELV $327
 line 1526
 ;1523:
 ;1524://unlagged - grapple
@@ -9022,7 +8972,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $331
+EQU4 $330
 line 1532
 ;1532:		hooktime = self->client->pers.cmd.serverTime + 50;
 ADDRLP4 4
@@ -9039,9 +8989,9 @@ ADDI4
 ASGNI4
 line 1533
 ;1533:	}
-ADDRGP4 $332
+ADDRGP4 $331
 JUMPV
-LABELV $331
+LABELV $330
 line 1534
 ;1534:	else {
 line 1535
@@ -9054,7 +9004,7 @@ SUBI4
 ASGNI4
 line 1536
 ;1536:	}
-LABELV $332
+LABELV $331
 line 1538
 ;1537:
 ;1538:	hook->s.pos.trTime = hooktime;
@@ -9222,7 +9172,7 @@ line 1553
 ADDRLP4 0
 INDIRP4
 RETP4
-LABELV $323
+LABELV $322
 endproc fire_grapple 36 4
 import CheckPlayerPostions
 import G_SendCommandToClient
@@ -9826,7 +9776,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $313
+LABELV $312
 byte 1 109
 byte 1 97
 byte 1 99
@@ -9839,7 +9789,7 @@ byte 1 117
 byte 1 110
 byte 1 0
 align 1
-LABELV $305
+LABELV $304
 byte 1 114
 byte 1 111
 byte 1 99
@@ -9848,13 +9798,13 @@ byte 1 101
 byte 1 116
 byte 1 0
 align 1
-LABELV $293
+LABELV $292
 byte 1 98
 byte 1 102
 byte 1 103
 byte 1 0
 align 1
-LABELV $284
+LABELV $283
 byte 1 102
 byte 1 108
 byte 1 97
@@ -9862,7 +9812,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $280
+LABELV $279
 byte 1 103
 byte 1 114
 byte 1 101
@@ -9872,7 +9822,7 @@ byte 1 100
 byte 1 101
 byte 1 0
 align 1
-LABELV $273
+LABELV $272
 byte 1 99
 byte 1 112
 byte 1 32
@@ -9900,7 +9850,7 @@ byte 1 10
 byte 1 34
 byte 1 0
 align 1
-LABELV $267
+LABELV $266
 byte 1 98
 byte 1 111
 byte 1 109

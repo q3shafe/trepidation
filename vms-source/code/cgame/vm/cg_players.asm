@@ -14573,7 +14573,7 @@ ARGP4
 ADDRGP4 CG_AddRefEntityWithPowerups
 CALLV
 pop
-line 2779
+line 2752
 ;2570:
 ;2571:#ifdef MISSIONPACK
 ;2572:	if ( cent->currentState.eFlags & EF_KAMIKAZE ) {
@@ -14750,40 +14750,13 @@ line 2779
 ;2743:		VectorSet( powerup.axis[2], 0, 0, c );
 ;2744:		trap_R_AddRefEntityToScene( &powerup );
 ;2745:	}
-;2746:
-;2747:	t = cg.time - ci->medkitUsageTime;
-;2748:	if ( ci->medkitUsageTime && t < 500 ) {
-;2749:		memcpy(&powerup, &torso, sizeof(torso));
-;2750:		powerup.hModel = cgs.media.medkitUsageModel;
-;2751:		powerup.customSkin = 0;
-;2752:		// always draw
-;2753:		powerup.renderfx &= ~RF_THIRD_PERSON;
-;2754:		VectorClear(angles);
-;2755:		AnglesToAxis(angles, powerup.axis);
-;2756:		VectorCopy(cent->lerpOrigin, powerup.origin);
-;2757:		powerup.origin[2] += -24 + (float) t * 80 / 500;
-;2758:		if ( t > 400 ) {
-;2759:			c = (float) (t - 1000) * 0xff / 100;
-;2760:			powerup.shaderRGBA[0] = 0xff - c;
-;2761:			powerup.shaderRGBA[1] = 0xff - c;
-;2762:			powerup.shaderRGBA[2] = 0xff - c;
-;2763:			powerup.shaderRGBA[3] = 0xff - c;
-;2764:		}
-;2765:		else {
-;2766:			powerup.shaderRGBA[0] = 0xff;
-;2767:			powerup.shaderRGBA[1] = 0xff;
-;2768:			powerup.shaderRGBA[2] = 0xff;
-;2769:			powerup.shaderRGBA[3] = 0xff;
-;2770:		}
-;2771:		trap_R_AddRefEntityToScene( &powerup );
-;2772:	}
-;2773:#endif // MISSIONPACK
-;2774:
-;2775:	//
-;2776:	// add the head
-;2777:	//
-;2778:	// Shafe - Trep - This is all new code for headshots
-;2779:	if(!cent->pe.noHead)
+;2746:#endif // MISSIONPACK
+;2747:
+;2748:	//
+;2749:	// add the head
+;2750:	//
+;2751:	// Shafe - Trep - This is all new code for headshots
+;2752:	if(!cent->pe.noHead)
 ADDRFP4 0
 INDIRP4
 CNSTI4 644
@@ -14791,10 +14764,10 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $1264
-line 2780
-;2780:	{
-line 2781
-;2781:		head.hModel = ci->headModel;
+line 2753
+;2753:	{
+line 2754
+;2754:		head.hModel = ci->headModel;
 ADDRLP4 284+8
 ADDRLP4 280
 INDIRP4
@@ -14802,22 +14775,22 @@ CNSTI4 544
 ADDP4
 INDIRI4
 ASGNI4
-line 2782
-;2782:		if (!head.hModel) 
+line 2755
+;2755:		if (!head.hModel) 
 ADDRLP4 284+8
 INDIRI4
 CNSTI4 0
 NEI4 $1267
-line 2783
-;2783:		{
-line 2784
-;2784:			return;
+line 2756
+;2756:		{
+line 2757
+;2757:			return;
 ADDRGP4 $1215
 JUMPV
 LABELV $1267
-line 2786
-;2785:		}
-;2786:		head.customSkin = ci->headSkin;
+line 2759
+;2758:		}
+;2759:		head.customSkin = ci->headSkin;
 ADDRLP4 284+108
 ADDRLP4 280
 INDIRP4
@@ -14825,9 +14798,9 @@ CNSTI4 548
 ADDP4
 INDIRI4
 ASGNI4
-line 2788
-;2787:
-;2788:		VectorCopy( cent->lerpOrigin, head.lightingOrigin );
+line 2761
+;2760:
+;2761:		VectorCopy( cent->lerpOrigin, head.lightingOrigin );
 ADDRLP4 284+12
 ADDRFP4 0
 INDIRP4
@@ -14835,9 +14808,9 @@ CNSTI4 716
 ADDP4
 INDIRB
 ASGNB 12
-line 2790
-;2789:
-;2790:		CG_PositionRotatedEntityOnTag( &head, &torso, ci->torsoModel, "tag_head");
+line 2763
+;2762:
+;2763:		CG_PositionRotatedEntityOnTag( &head, &torso, ci->torsoModel, "tag_head");
 ADDRLP4 284
 ARGP4
 ADDRLP4 140
@@ -14853,22 +14826,22 @@ ARGP4
 ADDRGP4 CG_PositionRotatedEntityOnTag
 CALLV
 pop
-line 2792
-;2791:
-;2792:		head.shadowPlane = shadowPlane;
+line 2765
+;2764:
+;2765:		head.shadowPlane = shadowPlane;
 ADDRLP4 284+24
 ADDRLP4 432
 INDIRF4
 ASGNF4
-line 2793
-;2793:		head.renderfx = renderfx;
+line 2766
+;2766:		head.renderfx = renderfx;
 ADDRLP4 284+4
 ADDRLP4 424
 INDIRI4
 ASGNI4
-line 2795
-;2794:
-;2795:		CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team, cent );
+line 2768
+;2767:
+;2768:		CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team, cent );
 ADDRLP4 284
 ARGP4
 ADDRLP4 456
@@ -14890,39 +14863,39 @@ ARGP4
 ADDRGP4 CG_AddRefEntityWithPowerups
 CALLV
 pop
-line 2796
-;2796:	}
+line 2769
+;2769:	}
 LABELV $1264
-line 2825
-;2797:
-;2798:	/*  Shafe - Trep - This is the original code -- Fuck.. Lets hope we dont end up compiling with MISSIONPACK!
-;2799:	head.hModel = ci->headModel;
-;2800:	if (!head.hModel) {
-;2801:		return;
-;2802:	}
-;2803:	head.customSkin = ci->headSkin;
-;2804:
-;2805:	VectorCopy( cent->lerpOrigin, head.lightingOrigin );
-;2806:
-;2807:	CG_PositionRotatedEntityOnTag( &head, &torso, ci->torsoModel, "tag_head");
-;2808:
-;2809:	head.shadowPlane = shadowPlane;
-;2810:	head.renderfx = renderfx;
-;2811:
-;2812:	CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team, cent );
-;2813:	*/
-;2814:
-;2815:
-;2816:#ifdef MISSIONPACK
-;2817:	CG_BreathPuffs(cent, &head);
-;2818:
-;2819:	CG_DustTrail(cent);
-;2820:#endif
-;2821:
-;2822:	//
-;2823:	// add the gun / barrel / flash
-;2824:	//
-;2825:	CG_AddPlayerWeapon( &torso, NULL, cent, ci->team );
+line 2798
+;2770:
+;2771:	/*  Shafe - Trep - This is the original code -- Fuck.. Lets hope we dont end up compiling with MISSIONPACK!
+;2772:	head.hModel = ci->headModel;
+;2773:	if (!head.hModel) {
+;2774:		return;
+;2775:	}
+;2776:	head.customSkin = ci->headSkin;
+;2777:
+;2778:	VectorCopy( cent->lerpOrigin, head.lightingOrigin );
+;2779:
+;2780:	CG_PositionRotatedEntityOnTag( &head, &torso, ci->torsoModel, "tag_head");
+;2781:
+;2782:	head.shadowPlane = shadowPlane;
+;2783:	head.renderfx = renderfx;
+;2784:
+;2785:	CG_AddRefEntityWithPowerups( &head, &cent->currentState, ci->team, cent );
+;2786:	*/
+;2787:
+;2788:
+;2789:#ifdef MISSIONPACK
+;2790:	CG_BreathPuffs(cent, &head);
+;2791:
+;2792:	CG_DustTrail(cent);
+;2793:#endif
+;2794:
+;2795:	//
+;2796:	// add the gun / barrel / flash
+;2797:	//
+;2798:	CG_AddPlayerWeapon( &torso, NULL, cent, ci->team );
 ADDRLP4 140
 ARGP4
 CNSTP4 0
@@ -14939,10 +14912,10 @@ ARGI4
 ADDRGP4 CG_AddPlayerWeapon
 CALLV
 pop
-line 2828
-;2826:
-;2827:	// add powerups floating behind the player
-;2828:	CG_PlayerPowerups( cent, &torso );
+line 2801
+;2799:
+;2800:	// add powerups floating behind the player
+;2801:	CG_PlayerPowerups( cent, &torso );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -14951,56 +14924,56 @@ ARGP4
 ADDRGP4 CG_PlayerPowerups
 CALLV
 pop
-line 2832
-;2829:
-;2830://unlagged - client options
-;2831:	// add the bounding box (if cg_drawBBox is 1)
-;2832:	CG_AddBoundingBox( cent );
+line 2805
+;2802:
+;2803://unlagged - client options
+;2804:	// add the bounding box (if cg_drawBBox is 1)
+;2805:	CG_AddBoundingBox( cent );
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 CG_AddBoundingBox
 CALLV
 pop
-line 2834
-;2833://unlagged - client options
-;2834:}
+line 2807
+;2806://unlagged - client options
+;2807:}
 LABELV $1215
 endproc CG_Player 460 28
 export CG_ResetPlayerEntity
 proc CG_ResetPlayerEntity 40 12
-line 2846
-;2835:
-;2836:
-;2837://=====================================================================
-;2838:
-;2839:/*
-;2840:===============
-;2841:CG_ResetPlayerEntity
-;2842:
-;2843:A player just came into view or teleported, so reset all animation info
-;2844:===============
-;2845:*/
-;2846:void CG_ResetPlayerEntity( centity_t *cent ) {
-line 2847
-;2847:	cent->errorTime = -99999;		// guarantee no error decay added
+line 2819
+;2808:
+;2809:
+;2810://=====================================================================
+;2811:
+;2812:/*
+;2813:===============
+;2814:CG_ResetPlayerEntity
+;2815:
+;2816:A player just came into view or teleported, so reset all animation info
+;2817:===============
+;2818:*/
+;2819:void CG_ResetPlayerEntity( centity_t *cent ) {
+line 2820
+;2820:	cent->errorTime = -99999;		// guarantee no error decay added
 ADDRFP4 0
 INDIRP4
 CNSTI4 648
 ADDP4
 CNSTI4 -99999
 ASGNI4
-line 2848
-;2848:	cent->extrapolated = qfalse;	
+line 2821
+;2821:	cent->extrapolated = qfalse;	
 ADDRFP4 0
 INDIRP4
 CNSTI4 676
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2850
-;2849:
-;2850:	CG_ClearLerpFrame( &cgs.clientinfo[ cent->currentState.clientNum ], &cent->pe.legs, cent->currentState.legsAnim );
+line 2823
+;2822:
+;2823:	CG_ClearLerpFrame( &cgs.clientinfo[ cent->currentState.clientNum ], &cent->pe.legs, cent->currentState.legsAnim );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -15029,8 +15002,8 @@ ARGI4
 ADDRGP4 CG_ClearLerpFrame
 CALLV
 pop
-line 2851
-;2851:	CG_ClearLerpFrame( &cgs.clientinfo[ cent->currentState.clientNum ], &cent->pe.torso, cent->currentState.torsoAnim );
+line 2824
+;2824:	CG_ClearLerpFrame( &cgs.clientinfo[ cent->currentState.clientNum ], &cent->pe.torso, cent->currentState.torsoAnim );
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -15059,9 +15032,9 @@ ARGI4
 ADDRGP4 CG_ClearLerpFrame
 CALLV
 pop
-line 2853
-;2852:
-;2853:	BG_EvaluateTrajectory( &cent->currentState.pos, cg.time, cent->lerpOrigin );
+line 2826
+;2825:
+;2826:	BG_EvaluateTrajectory( &cent->currentState.pos, cg.time, cent->lerpOrigin );
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -15082,8 +15055,8 @@ ARGP4
 ADDRGP4 BG_EvaluateTrajectory
 CALLV
 pop
-line 2854
-;2854:	BG_EvaluateTrajectory( &cent->currentState.apos, cg.time, cent->lerpAngles );
+line 2827
+;2827:	BG_EvaluateTrajectory( &cent->currentState.apos, cg.time, cent->lerpAngles );
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -15104,9 +15077,9 @@ ARGP4
 ADDRGP4 BG_EvaluateTrajectory
 CALLV
 pop
-line 2856
-;2855:
-;2856:	VectorCopy( cent->lerpOrigin, cent->rawOrigin );
+line 2829
+;2828:
+;2829:	VectorCopy( cent->lerpOrigin, cent->rawOrigin );
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -15121,8 +15094,8 @@ CNSTI4 716
 ADDP4
 INDIRB
 ASGNB 12
-line 2857
-;2857:	VectorCopy( cent->lerpAngles, cent->rawAngles );
+line 2830
+;2830:	VectorCopy( cent->lerpAngles, cent->rawAngles );
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -15137,9 +15110,9 @@ CNSTI4 728
 ADDP4
 INDIRB
 ASGNB 12
-line 2859
-;2858:
-;2859:	memset( &cent->pe.legs, 0, sizeof( cent->pe.legs ) );
+line 2832
+;2831:
+;2832:	memset( &cent->pe.legs, 0, sizeof( cent->pe.legs ) );
 ADDRFP4 0
 INDIRP4
 CNSTI4 460
@@ -15152,8 +15125,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 2860
-;2860:	cent->pe.legs.yawAngle = cent->rawAngles[YAW];
+line 2833
+;2833:	cent->pe.legs.yawAngle = cent->rawAngles[YAW];
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -15168,33 +15141,33 @@ CNSTI4 696
 ADDP4
 INDIRF4
 ASGNF4
-line 2861
-;2861:	cent->pe.legs.yawing = qfalse;
+line 2834
+;2834:	cent->pe.legs.yawing = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 484
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2862
-;2862:	cent->pe.legs.pitchAngle = 0;
+line 2835
+;2835:	cent->pe.legs.pitchAngle = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 488
 ADDP4
 CNSTF4 0
 ASGNF4
-line 2863
-;2863:	cent->pe.legs.pitching = qfalse;
+line 2836
+;2836:	cent->pe.legs.pitching = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 492
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2865
-;2864:
-;2865:	memset( &cent->pe.torso, 0, sizeof( cent->pe.legs ) );
+line 2838
+;2837:
+;2838:	memset( &cent->pe.torso, 0, sizeof( cent->pe.legs ) );
 ADDRFP4 0
 INDIRP4
 CNSTI4 508
@@ -15207,8 +15180,8 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 2866
-;2866:	cent->pe.torso.yawAngle = cent->rawAngles[YAW];
+line 2839
+;2839:	cent->pe.torso.yawAngle = cent->rawAngles[YAW];
 ADDRLP4 28
 ADDRFP4 0
 INDIRP4
@@ -15223,16 +15196,16 @@ CNSTI4 696
 ADDP4
 INDIRF4
 ASGNF4
-line 2867
-;2867:	cent->pe.torso.yawing = qfalse;
+line 2840
+;2840:	cent->pe.torso.yawing = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2868
-;2868:	cent->pe.torso.pitchAngle = cent->rawAngles[PITCH];
+line 2841
+;2841:	cent->pe.torso.pitchAngle = cent->rawAngles[PITCH];
 ADDRLP4 32
 ADDRFP4 0
 INDIRP4
@@ -15247,32 +15220,32 @@ CNSTI4 692
 ADDP4
 INDIRF4
 ASGNF4
-line 2869
-;2869:	cent->pe.torso.pitching = qfalse;
+line 2842
+;2842:	cent->pe.torso.pitching = qfalse;
 ADDRFP4 0
 INDIRP4
 CNSTI4 540
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2871
-;2870:
-;2871:	cent->pe.noHead = qfalse; // Shafe - Trep - Part of the headshot code
+line 2844
+;2843:
+;2844:	cent->pe.noHead = qfalse; // Shafe - Trep - Part of the headshot code
 ADDRFP4 0
 INDIRP4
 CNSTI4 644
 ADDP4
 CNSTI4 0
 ASGNI4
-line 2873
-;2872:
-;2873:	if ( cg_debugPosition.integer ) {
+line 2846
+;2845:
+;2846:	if ( cg_debugPosition.integer ) {
 ADDRGP4 cg_debugPosition+12
 INDIRI4
 CNSTI4 0
 EQI4 $1280
-line 2874
-;2874:		CG_Printf("%i ResetPlayerEntity yaw=%i\n", cent->currentState.number, cent->pe.torso.yawAngle );
+line 2847
+;2847:		CG_Printf("%i ResetPlayerEntity yaw=%i\n", cent->currentState.number, cent->pe.torso.yawAngle );
 ADDRGP4 $1283
 ARGP4
 ADDRLP4 36
@@ -15292,11 +15265,11 @@ ARGF4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 2875
-;2875:	}
+line 2848
+;2848:	}
 LABELV $1280
-line 2876
-;2876:}
+line 2849
+;2849:}
 LABELV $1275
 endproc CG_ResetPlayerEntity 40 12
 import CG_DrawScanner
