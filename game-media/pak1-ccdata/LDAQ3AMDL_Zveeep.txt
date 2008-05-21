@@ -1,0 +1,32 @@
+=====================================================
+LDAQ3AMDL_Zveeep
+by Lee David Ash
+e-mail: psyclone72@hotmail.com
+website: www.planetquake.com/violationE/
+=====================================================
+
+Model:          Zveeep
+Polygons:	1231
+Skins:		6
+Credit:         id software, D.L.ASH, Pappy-R.
+Date:           05/05/01 (adding drowning sounds)
+		Last updated: 03/02/02
+		(fixed shader from all identity,
+		also regrouped entire model)
+
+Designer's note:-
+		After the public death of my first
+		Q3A player model, the Cacodemon, I
+		quickly rushed to fill the void by
+		starting work on this model. It only
+		took a few days to complete, and
+		with that aspect in mind, I couldn't
+		be happier with it, except for the
+		fact that I kind of went a bit
+		overboard with the polygon count. 
+		Not much else to say really, except
+		that now I have using MD3s pretty 
+		much figured out, I feel confident I 
+		can keep spitting out Q3A player 
+		models at a decent rate. Onto the 
+		next one, Clobber the clown.

@@ -1,0 +1,44 @@
+=====================================================
+wep-LDA_BFG10k
+by Lee David Ash
+e-mail: psyclone72@hotmail.com
+website: www.planetquake.com/violationE/
+=====================================================
+
+Polygons:	643
+Vertices:	463
+LOD:		No
+Credit:         id software, D.L.ASH, James O'Connell
+		Mark Lewis, Jube, Fubar, Carl Kidwell
+		Daniel Schneider, Maus, Nick Kuiper,
+		Adrian Kurtin, David Shannon, Seph64.
+		Surely many, many other peoples.
+Date:           11/06/02
+
+Designer's note:-
+		I'm actually pretty pleased with how
+		this one turned out. I didn't have
+		high hopes for this at all. The
+		downside is that it's quite chunky
+		at 650 triangles and no LOD. I'm
+		happy with how it behaves and how it
+		looks, though. I know I always say
+		this but I really did rush this, like
+		I've rushed all of my Quake 3 stuff.
+		So little love was put into this.
+		The skinning of my last two weapons
+		are particularly horrible, and as
+		you can see with this BFG, very
+		little of the skin detail actually
+		is seen due to the environment
+		effects through the alpha-channel,
+		which I usually use to disguise the
+		horrible skinning jobs I do. Also,
+		with such skinning techniques, it's
+		cause for the entire model to use
+		more memory, so nothing I've ever
+		done has been suited for performance.
+		Anyway, nothing else to say except
+		that I'm very happy this fat bastard
+		is finished with. People will be
+		saying that about me one day. Heheh.

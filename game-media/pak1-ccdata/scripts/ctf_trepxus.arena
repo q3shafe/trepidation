@@ -1,0 +1,10 @@
+{
+map "ctf_trepxus"
+longname "ctf trepxus"
+longname_deutsch "ctf trepxus"
+longname_francais "ctf trepxus"
+type "single ffa team ctf tourney"
+bots "sarge sarge sarge sarge sarge"
+fraglimit 20
+recommended "6"
+}
