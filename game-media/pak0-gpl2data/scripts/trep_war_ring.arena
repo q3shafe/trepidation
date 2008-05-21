@@ -1,7 +1,0 @@
-{
-map		"trep_war_ring"
-bots		"sarge"
-longname	"trep_war_ring"
-type		"ffa team tourney"
-Fraglimit	20
-}
