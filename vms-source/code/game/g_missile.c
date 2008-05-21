@@ -756,7 +756,7 @@ void G_RunMissile( gentity_t *ent ) {
 
 	trap_LinkEntity( ent );
 
-	if ( tr.fraction != 1 && !tr.allsolid) ) // 2nd parameter: -Vincent
+	if ( tr.fraction != 1 && !tr.allsolid)  // 2nd parameter: -Vincent
 	{
 		// never explode or bounce on sky
 		if ( tr.surfaceFlags & SURF_NOIMPACT ) 

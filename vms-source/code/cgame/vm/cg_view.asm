@@ -4212,29 +4212,10 @@ ADDRGP4 cg+109676
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 904
-;903:
-;904:	if ( cg.snap->ps.stats[STAT_HEALTH] <= 0 )
-ADDRGP4 cg+36
-INDIRP4
-CNSTI4 228
-ADDP4
-INDIRI4
-CNSTI4 0
-GTI4 $840
 line 905
-;905:	{ // Reset the zoom at death when necessary -Vincent
-line 906
-;906:	CG_ResetZoom();
-ADDRGP4 CG_ResetZoom
-CALLV
-pop
-line 907
-;907:	}
-LABELV $840
-line 909
-;908:	// build cg.refdef
-;909:	inwater = CG_CalcViewValues();
+;903:
+;904:	// build cg.refdef
+;905:	inwater = CG_CalcViewValues();
 ADDRLP4 20
 ADDRGP4 CG_CalcViewValues
 CALLI4
@@ -4243,98 +4224,98 @@ ADDRLP4 0
 ADDRLP4 20
 INDIRI4
 ASGNI4
-line 912
-;910:
-;911:	// first person blend blobs, done after AnglesToAxis
-;912:	if ( !cg.renderingThirdPerson ) {
+line 908
+;906:
+;907:	// first person blend blobs, done after AnglesToAxis
+;908:	if ( !cg.renderingThirdPerson ) {
 ADDRGP4 cg+109676
 INDIRI4
 CNSTI4 0
-NEI4 $843
-line 913
-;913:		CG_DamageBlendBlob();
+NEI4 $840
+line 909
+;909:		CG_DamageBlendBlob();
 ADDRGP4 CG_DamageBlendBlob
 CALLV
 pop
-line 914
-;914:	}
-LABELV $843
-line 917
-;915:
-;916:	// build the render lists
-;917:	if ( !cg.hyperspace ) {
+line 910
+;910:	}
+LABELV $840
+line 913
+;911:
+;912:	// build the render lists
+;913:	if ( !cg.hyperspace ) {
 ADDRGP4 cg+109680
 INDIRI4
 CNSTI4 0
-NEI4 $846
-line 918
-;918:		CG_AddPacketEntities();			// adter calcViewValues, so predicted player state is correct
+NEI4 $843
+line 914
+;914:		CG_AddPacketEntities();			// adter calcViewValues, so predicted player state is correct
 ADDRGP4 CG_AddPacketEntities
 CALLV
 pop
-line 919
-;919:		CG_AddMarks();
+line 915
+;915:		CG_AddMarks();
 ADDRGP4 CG_AddMarks
 CALLV
 pop
-line 920
-;920:		CG_AddParticles ();
+line 916
+;916:		CG_AddParticles ();
 ADDRGP4 CG_AddParticles
 CALLV
 pop
-line 921
-;921:		CG_AddLocalEntities();
+line 917
+;917:		CG_AddLocalEntities();
 ADDRGP4 CG_AddLocalEntities
 CALLV
 pop
-line 922
-;922:	}
-LABELV $846
-line 923
-;923:	CG_AddViewWeapon( &cg.predictedPlayerState );
+line 918
+;918:	}
+LABELV $843
+line 919
+;919:	CG_AddViewWeapon( &cg.predictedPlayerState );
 ADDRGP4 cg+109684
 ARGP4
 ADDRGP4 CG_AddViewWeapon
 CALLV
 pop
-line 926
-;924:
-;925:	// add buffered sounds
-;926:	CG_PlayBufferedSounds();
+line 922
+;920:
+;921:	// add buffered sounds
+;922:	CG_PlayBufferedSounds();
 ADDRGP4 CG_PlayBufferedSounds
 CALLV
 pop
-line 929
-;927:
-;928:	// play buffered voice chats
-;929:	CG_PlayBufferedVoiceChats();
+line 925
+;923:
+;924:	// play buffered voice chats
+;925:	CG_PlayBufferedVoiceChats();
 ADDRGP4 CG_PlayBufferedVoiceChats
 CALLV
 pop
-line 932
-;930:
-;931:	// finish up the rest of the refdef
-;932:	if ( cg.testModelEntity.hModel ) {
+line 928
+;926:
+;927:	// finish up the rest of the refdef
+;928:	if ( cg.testModelEntity.hModel ) {
 ADDRGP4 cg+126852+8
 INDIRI4
 CNSTI4 0
-EQI4 $850
-line 933
-;933:		CG_AddTestModel();
+EQI4 $847
+line 929
+;929:		CG_AddTestModel();
 ADDRGP4 CG_AddTestModel
 CALLV
 pop
-line 934
-;934:	}
-LABELV $850
-line 935
-;935:	cg.refdef.time = cg.time;
+line 930
+;930:	}
+LABELV $847
+line 931
+;931:	cg.refdef.time = cg.time;
 ADDRGP4 cg+111104+72
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 936
-;936:	memcpy( cg.refdef.areamask, cg.snap->areamask, sizeof( cg.refdef.areamask ) );
+line 932
+;932:	memcpy( cg.refdef.areamask, cg.snap->areamask, sizeof( cg.refdef.areamask ) );
 ADDRGP4 cg+111104+80
 ARGP4
 ADDRGP4 cg+36
@@ -4347,17 +4328,17 @@ ARGI4
 ADDRGP4 memcpy
 CALLP4
 pop
-line 939
-;937:
-;938:	// warning sounds when powerup is wearing off
-;939:	CG_PowerupTimerSounds();
+line 935
+;933:
+;934:	// warning sounds when powerup is wearing off
+;935:	CG_PowerupTimerSounds();
 ADDRGP4 CG_PowerupTimerSounds
 CALLV
 pop
-line 942
-;940:
-;941:	// update audio positions
-;942:	trap_S_Respatialize( cg.snap->ps.clientNum, cg.refdef.vieworg, cg.refdef.viewaxis, inwater );
+line 938
+;936:
+;937:	// update audio positions
+;938:	trap_S_Respatialize( cg.snap->ps.clientNum, cg.refdef.vieworg, cg.refdef.viewaxis, inwater );
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 184
@@ -4374,16 +4355,16 @@ ARGI4
 ADDRGP4 trap_S_Respatialize
 CALLV
 pop
-line 945
-;943:
-;944:	// make sure the lagometerSample and frame timing isn't done twice when in stereo
-;945:	if ( stereoView != STEREO_RIGHT ) {
+line 941
+;939:
+;940:	// make sure the lagometerSample and frame timing isn't done twice when in stereo
+;941:	if ( stereoView != STEREO_RIGHT ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 2
-EQI4 $867
-line 946
-;946:		cg.frametime = cg.time - cg.oldTime;
+EQI4 $864
+line 942
+;942:		cg.frametime = cg.time - cg.oldTime;
 ADDRGP4 cg+109648
 ADDRGP4 cg+109652
 INDIRI4
@@ -4391,50 +4372,50 @@ ADDRGP4 cg+109656
 INDIRI4
 SUBI4
 ASGNI4
-line 947
-;947:		if ( cg.frametime < 0 ) {
+line 943
+;943:		if ( cg.frametime < 0 ) {
 ADDRGP4 cg+109648
 INDIRI4
 CNSTI4 0
-GEI4 $872
-line 948
-;948:			cg.frametime = 0;
+GEI4 $869
+line 944
+;944:			cg.frametime = 0;
 ADDRGP4 cg+109648
 CNSTI4 0
 ASGNI4
-line 949
-;949:		}
-LABELV $872
-line 950
-;950:		cg.oldTime = cg.time;
+line 945
+;945:		}
+LABELV $869
+line 946
+;946:		cg.oldTime = cg.time;
 ADDRGP4 cg+109656
 ADDRGP4 cg+109652
 INDIRI4
 ASGNI4
-line 951
-;951:		CG_AddLagometerFrameInfo();
+line 947
+;947:		CG_AddLagometerFrameInfo();
 ADDRGP4 CG_AddLagometerFrameInfo
 CALLV
 pop
-line 952
-;952:	}
-LABELV $867
-line 953
-;953:	if (cg_timescale.value != cg_timescaleFadeEnd.value) {
+line 948
+;948:	}
+LABELV $864
+line 949
+;949:	if (cg_timescale.value != cg_timescaleFadeEnd.value) {
 ADDRGP4 cg_timescale+8
 INDIRF4
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
-EQF4 $878
-line 954
-;954:		if (cg_timescale.value < cg_timescaleFadeEnd.value) {
+EQF4 $875
+line 950
+;950:		if (cg_timescale.value < cg_timescaleFadeEnd.value) {
 ADDRGP4 cg_timescale+8
 INDIRF4
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
-GEF4 $882
-line 955
-;955:			cg_timescale.value += cg_timescaleFadeSpeed.value * ((float)cg.frametime) / 1000;
+GEF4 $879
+line 951
+;951:			cg_timescale.value += cg_timescaleFadeSpeed.value * ((float)cg.frametime) / 1000;
 ADDRLP4 24
 ADDRGP4 cg_timescale+8
 ASGNP4
@@ -4453,28 +4434,28 @@ CNSTF4 1148846080
 DIVF4
 ADDF4
 ASGNF4
-line 956
-;956:			if (cg_timescale.value > cg_timescaleFadeEnd.value)
+line 952
+;952:			if (cg_timescale.value > cg_timescaleFadeEnd.value)
 ADDRGP4 cg_timescale+8
 INDIRF4
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
-LEF4 $883
-line 957
-;957:				cg_timescale.value = cg_timescaleFadeEnd.value;
+LEF4 $880
+line 953
+;953:				cg_timescale.value = cg_timescaleFadeEnd.value;
 ADDRGP4 cg_timescale+8
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
 ASGNF4
-line 958
-;958:		}
-ADDRGP4 $883
+line 954
+;954:		}
+ADDRGP4 $880
 JUMPV
-LABELV $882
-line 959
-;959:		else {
-line 960
-;960:			cg_timescale.value -= cg_timescaleFadeSpeed.value * ((float)cg.frametime) / 1000;
+LABELV $879
+line 955
+;955:		else {
+line 956
+;956:			cg_timescale.value -= cg_timescaleFadeSpeed.value * ((float)cg.frametime) / 1000;
 ADDRLP4 24
 ADDRGP4 cg_timescale+8
 ASGNP4
@@ -4493,32 +4474,32 @@ CNSTF4 1148846080
 DIVF4
 SUBF4
 ASGNF4
-line 961
-;961:			if (cg_timescale.value < cg_timescaleFadeEnd.value)
+line 957
+;957:			if (cg_timescale.value < cg_timescaleFadeEnd.value)
 ADDRGP4 cg_timescale+8
 INDIRF4
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
-GEF4 $898
-line 962
-;962:				cg_timescale.value = cg_timescaleFadeEnd.value;
+GEF4 $895
+line 958
+;958:				cg_timescale.value = cg_timescaleFadeEnd.value;
 ADDRGP4 cg_timescale+8
 ADDRGP4 cg_timescaleFadeEnd+8
 INDIRF4
 ASGNF4
-LABELV $898
-line 963
-;963:		}
-LABELV $883
-line 964
-;964:		if (cg_timescaleFadeSpeed.value) {
+LABELV $895
+line 959
+;959:		}
+LABELV $880
+line 960
+;960:		if (cg_timescaleFadeSpeed.value) {
 ADDRGP4 cg_timescaleFadeSpeed+8
 INDIRF4
 CNSTF4 0
-EQF4 $904
-line 965
-;965:			trap_Cvar_Set("timescale", va("%f", cg_timescale.value));
-ADDRGP4 $908
+EQF4 $901
+line 961
+;961:			trap_Cvar_Set("timescale", va("%f", cg_timescale.value));
+ADDRGP4 $905
 ARGP4
 ADDRGP4 cg_timescale+8
 INDIRF4
@@ -4527,7 +4508,7 @@ ADDRLP4 24
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $907
+ADDRGP4 $904
 ARGP4
 ADDRLP4 24
 INDIRP4
@@ -4535,32 +4516,56 @@ ARGP4
 ADDRGP4 trap_Cvar_Set
 CALLV
 pop
+line 962
+;962:		}
+LABELV $901
+line 963
+;963:	}
+LABELV $875
 line 966
-;966:		}
-LABELV $904
-line 967
-;967:	}
-LABELV $878
-line 970
-;968:
-;969:	// actually issue the rendering calls
-;970:	CG_DrawActive( stereoView );
+;964:
+;965:	// actually issue the rendering calls
+;966:	CG_DrawActive( stereoView );
 ADDRFP4 4
 INDIRI4
 ARGI4
 ADDRGP4 CG_DrawActive
 CALLV
 pop
-line 972
-;971:
-;972:	if ( cg_stats.integer ) {
+line 968
+;967:
+;968:	if( cg.snap->ps.stats[STAT_HEALTH] <= 0 || cg.snap->ps.weapon != 7 )
+ADDRGP4 cg+36
+INDIRP4
+CNSTI4 228
+ADDP4
+INDIRI4
+CNSTI4 0
+LEI4 $911
+ADDRGP4 cg+36
+INDIRP4
+CNSTI4 188
+ADDP4
+INDIRI4
+CNSTI4 7
+EQI4 $907
+LABELV $911
+line 969
+;969:		CG_ResetZoom(); // Dead or no sniper? No zoom! -Vincent
+ADDRGP4 CG_ResetZoom
+CALLV
+pop
+LABELV $907
+line 971
+;970:
+;971:	if ( cg_stats.integer ) {
 ADDRGP4 cg_stats+12
 INDIRI4
 CNSTI4 0
-EQI4 $910
-line 973
-;973:		CG_Printf( "cg.clientFrame:%i\n", cg.clientFrame );
-ADDRGP4 $913
+EQI4 $912
+line 972
+;972:		CG_Printf( "cg.clientFrame:%i\n", cg.clientFrame );
+ADDRGP4 $915
 ARGP4
 ADDRGP4 cg
 INDIRI4
@@ -4568,13 +4573,13 @@ ARGI4
 ADDRGP4 CG_Printf
 CALLV
 pop
-line 974
-;974:	}
-LABELV $910
-line 977
+line 973
+;973:	}
+LABELV $912
+line 976
+;974:
 ;975:
-;976:
-;977:}
+;976:}
 LABELV $817
 endproc CG_DrawActiveFrame 28 16
 import CG_DrawScanner
@@ -5106,7 +5111,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $913
+LABELV $915
 byte 1 99
 byte 1 103
 byte 1 46
@@ -5127,12 +5132,12 @@ byte 1 105
 byte 1 10
 byte 1 0
 align 1
-LABELV $908
+LABELV $905
 byte 1 37
 byte 1 102
 byte 1 0
 align 1
-LABELV $907
+LABELV $904
 byte 1 116
 byte 1 105
 byte 1 109
