@@ -1,0 +1,17 @@
+=====================================================
+wep-LDA_GrenadeLauncher
+by Lee David Ash
+e-mail: psyclone72@hotmail.com
+website: www.planetquake.com/violationE/
+=====================================================
+
+Polygons:	347
+LOD:		No
+Credit:         id software, D.L.ASH.
+Date:           02/07/01
+
+Designer's note:-
+		Many good and bad aspects of this one
+		with most of the bad aspects being
+		the mesh and skin. I think it doesn't
+		look too bad in the game, actually.
