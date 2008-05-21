@@ -1,0 +1,138 @@
+// Player Class Config
+{
+	// General
+	name		"Ogre"
+	gravity		25
+	speed		-10
+	canbuild	1 
+	
+
+	// Class Is Allowed ON These Teams
+	blue		1
+	red		1
+	free		1
+
+	// Class is Allowed Immediately 
+	available	1	
+
+	// Misc
+	grapple		1
+
+	// Spawns With
+	health		150
+	armor		200
+
+	// What Weapons Player Spawns With
+	sp_weapon1		1
+	sp_weapon2		0
+	sp_weapon3		0
+	sp_weapon4		0
+	sp_weapon5		1
+	sp_weapon6		0
+	sp_weapon7		0
+	sp_weapon8		0
+	sp_weapon9		1
+
+	// What Holdables Player Spawns With
+	sp_teleporter		0
+	sp_medkit		0
+
+	// What Powerups Player Spawns With
+	sp_quad			0 // or # of seconds 
+	sp_flight		0 // or # of seconds 
+	sp_regeneration		0 // or # of seconds 
+	sp_invisibility		0 // or # of seconds 
+
+
+	// Stuff That Can Be Picked Up
+	weapon1		1
+	weapon2		0
+	weapon3		0
+	weapon4		0
+	weapon5		1
+	weapon6		0
+	weapon7		0
+	weapon8		0
+	weapon9		1
+	quad		0
+	medkit		1
+	flight		0
+	teleporter	1
+	regeneration	1
+	invisibility	0
+
+	// What Happens When They Die
+	death		0
+
+	
+}
+
+
+// Player Class Config
+{
+	// General
+	name		"Fair"
+	gravity		-25
+	speed		20
+	canbuild	1 
+	
+
+	// Class Is Allowed ON These Teams
+	blue		1
+	red		1
+	free		1
+
+	// Class is Allowed Immediately 
+	available	1	
+
+	// Misc
+	grapple		1
+
+	// Spawns With
+	health		75
+	armor		150
+
+	// What Weapons Player Spawns With
+	sp_weapon1		0
+	sp_weapon2		1
+	sp_weapon3		0
+	sp_weapon4		0
+	sp_weapon5		1
+	sp_weapon6		0
+	sp_weapon7		0
+	sp_weapon8		1
+	sp_weapon9		0
+
+	// What Holdables Player Spawns With
+	sp_teleporter		1
+	sp_medkit		0
+
+	// What Powerups Player Spawns With
+	sp_quad			0 // or # of seconds 
+	sp_flight		0 // or # of seconds 
+	sp_regeneration		1 // or # of seconds 
+	sp_invisibility		0 // or # of seconds 
+
+
+	// Stuff That Can Be Picked Up
+	weapon1		1
+	weapon2		0
+	weapon3		0
+	weapon4		0
+	weapon5		1
+	weapon6		0
+	weapon7		0
+	weapon8		0
+	weapon9		1
+	quad		0
+	medkit		1
+	flight		0
+	teleporter	1
+	regeneration	1
+	invisibility	0
+
+	// What Happens When They Die
+	death		0
+
+	
+}

@@ -1,0 +1,58 @@
+=====================================================
+LDAQ3AMDL_Bugger
+by Lee David Ash
+e-mail:  psyclone72@hotmail.com
+website: www.planetquake.com/violationE/
+=====================================================
+
+Tools:		MilkShape3D 1.5.6, Paint Shop Pro 4.1
+		Q3 Shader Editor 0.9, GoldWave 4.01
+
+Name:		Bugger
+Polygons:	815
+Vertices:	512
+LOD:		No. Sorry.
+Skins:		16
+Credit/Thanks2: id software, D.L.ASH, Mark Alan Lewis
+		Pappy-R, Tim 'TPE' Evison, Nick
+		Kuiper, Forau.
+Date:           25/06/01
+
+Known Bugs/design flaws:-
+		Screwed up mesh on the eyes. 
+		Wings go through walls and floor.
+		Limbs intersect.
+		Jerking in the idle animations.
+
+Designer's note:-
+		The head is a mess. I grouped it all
+		together before fine tuning the mesh
+		so I got myself into trouble there
+		and just left it that way, so the
+		texture is stretch over the eye and
+		that looks very ugly. As for the rest
+		of it, I'm very much happy with it's 
+		overall appearance and it's	
+		proformance. I went a bit overboard
+		with the skin count, ending up with
+		16 colourations from about 3 original
+		images. The wings, although they look
+		quite splendid, are a bit of a 
+		problem with small enclosed areas or
+		with the model right up against a 
+		wall, but then a lot of other models
+		do encounter the very same problem,
+		many far worse. There's also plenty
+		or opportunites for the limbs to 
+		intersect, like crouching and firing
+		at the same time. Crouching also 
+		sees the wings enter the ground.
+		There was also a problem with the
+		idle animation jerking. I have no
+		idea why this is but I'm not going
+		to spend time thinking about fixing
+		that kind of problem. Besides that,
+		I think the animations have a lot
+		of character and I'm happy enough
+		with the entire model, despite it's
+		many imperfections.
