@@ -1,0 +1,91 @@
+// playerclass.txt
+// Player Class Config
+
+{
+	// General
+	name		"Human"
+	gravity		0 
+	speed		0 
+	
+
+	// Class Is Allowed ON These Teams 1=Yes 0=NO
+	blue		1
+	red		1
+	free		1
+
+	// Class is Allowed Immediately 
+	available	1	// 1 - Yes Available Right Away
+				// 0 - You have to advance to unlock it
+
+	// Misc 
+	grapple		0
+
+	// Spawns With
+	health		100
+	armor		100
+
+	// What Weapons Player Spawns With
+	sp_weapon1		1
+	sp_weapon2		1
+	sp_weapon3		0
+	sp_weapon4		0
+	sp_weapon5		0
+	sp_weapon6		0
+	sp_weapon7		0
+	sp_weapon8		0
+	sp_weapon9		0
+
+	// What Holdables Player Spawns With
+	sp_teleporter		0/1
+	sp_medkit		0/1
+
+	// What Powerups Player Spawns With // or # of seconds 
+	sp_quad			0 
+	sp_flight		0 
+	sp_regeneration		0 
+	sp_invisibility		0 
+
+
+	// Stuff That Can Be Picked Up
+	weapon1		1
+	weapon2		1
+	weapon3		1
+	weapon4		1
+	weapon5		1
+	weapon6		1
+	weapon7		1
+	weapon8		1
+	weapon9		1
+	quad		1
+	medkit		1
+	flight		1
+	teleporter	1
+	regeneration	1
+	invisibility	1
+
+	// What Happens When They Die 0 - Respawn 1 - Eliminated
+	death		0		
+
+	// Next Class Available
+	NextClassName	""
+
+	// Objective To Unlock Next Class 
+	// 10 Individual Kills And The Next Class Unlocks
+	nc_kills	10 	
+
+	// 10 Kills For Entire Team, Class Unlocks for Entire Team 
+	nc_teamkills	10	
+
+	// Available after the 2nd Capture
+	nc_captures	2	
+
+	// Builable Objects
+	// Objects that can be build by class - Game rules still override
+	
+	turret1		1
+	turret2		1
+	turret3		1
+	generator	1
+	mastercon	1
+	
+}

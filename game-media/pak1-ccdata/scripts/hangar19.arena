@@ -1,0 +1,10 @@
+{
+map "hangar19"
+longname "Hangar 19"
+longname_deutsch "Hangar 19"
+longname_francais "Hangar 19"
+type "single ffa team tourney"
+bots "sarge sarge sarge sarge sarge"
+fraglimit 20
+recommended "12"
+}

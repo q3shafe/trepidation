@@ -1,0 +1,35 @@
+=====================================================
+wep-LDA_PlasmaGun
+by Lee David Ash
+e-mail: psyclone72@hotmail.com
+website: www.planetquake.com/violationE/
+=====================================================
+
+Polygons:	507
+Vertices:	369
+LOD:		Yes
+Credit:         id software, D.L.ASH, Fubar, Carl
+		Kidwell, Daniel Schneider, James
+		O'Connell Nick Kuiper, Adrian Kurtin,
+		Mark Lewis, David Shannon.
+Date:           02/04/02
+Update:		05/04/02 - Sound fix.
+
+Designer's note:-
+		This is very unusual for me. I spent
+		but a few hours on this, and for one
+		with average knowledge of 3D model
+		construction to have a look at this,
+		one would see that it is just simple
+		shapes carelessly 'whacked' together,
+		yet this weapon doesn't look too bad
+		at all. It really does seem like the
+		less effort I put into something, the
+		better the end result. Well, not
+		exactly but my previous effort, the
+		Railgun, took me a lot longer yet
+		produced less of an end result, in my
+		opinion. If it's not complete crap,
+		though, I should be happy enough. I'm
+		pleased with this model considering
+		the time and effort I contributed.
