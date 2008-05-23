@@ -1589,6 +1589,8 @@ void CG_DrawWeaponSelect( void ) {
 		}
 	}
 
+	// Reset The Zoom 
+	CG_ResetZoom();
 	trap_R_SetColor( NULL );
 }
 
