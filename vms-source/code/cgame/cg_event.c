@@ -439,6 +439,7 @@ static void CG_ItemPickup( int itemNum ) {
 		if ( cg_autoswitch.integer && bg_itemlist[itemNum].giTag != WP_MACHINEGUN ) {
 			cg.weaponSelectTime = cg.time;
 			cg.weaponSelect = bg_itemlist[itemNum].giTag;
+
 		}
 	}
 
