@@ -37,3 +37,21 @@ funname		"Zveeep"
 model		zveeep/default
 aifile		bots/major_c.c
 }
+
+{
+name		Beret
+model		beret
+aifile		bots/beret_c.c
+}
+
+{
+name		Major
+model		major
+aifile		bots/major_c.c
+}
+
+{
+name		Skelebot
+model		skelebot
+aifile		bots/skelebot_c.c
+}
