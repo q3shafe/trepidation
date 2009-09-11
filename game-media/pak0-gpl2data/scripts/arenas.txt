@@ -24,12 +24,36 @@ recommended "12"
 map "outpost"
 fraglimit	10
 bots		"sarge"
-longname "Outpos"
+longname "Outpost"
 longname_deutsch ""
 longname_francais ""
 type "single ffa team"
 recommended "12"
 }
+
+{
+map "ctf_trepxus"
+fraglimit	10
+bots		"sarge"
+longname "CTF Trepx US"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney"
+recommended "9"
+}
+
+
+{
+map "trep_war_ring"
+fraglimit	10
+bots		"sarge"
+longname "War Ring"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team tourney"
+recommended "9"
+}
+
 
 {
 map "nightmare"
@@ -113,6 +137,19 @@ recommended "8"
 }
 
 {
+map "ctf_junction"
+longname "CTF Junction"
+fraglimit	10
+bots		"sarge"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney"
+recommended "8"
+}
+
+
+
+{
 map "ctf_conflictzone"
 longname "CTF Conflict Zone"
 fraglimit	10
@@ -133,6 +170,18 @@ longname_francais ""
 type "single ffa team ctf tourney"
 recommended "12"
 }
+
+{
+map "ctf_pyramide2"
+fraglimit	10
+bots		"sarge"
+longname "CTF Pyramide II"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney"
+recommended "12"
+}
+
 
 {
 map "dread"
