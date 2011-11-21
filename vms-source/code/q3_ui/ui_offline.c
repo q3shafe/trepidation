@@ -1,4 +1,4 @@
-// Copyright (C) 2007 Human Complex
+// Copyright (C) 2011 Team Trepidation
 //
 /*
 =======================================================================

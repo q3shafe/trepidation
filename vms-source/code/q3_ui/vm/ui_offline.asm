@@ -2,7 +2,7 @@ code
 proc Offline_ResetDefaults_Action 0 8
 file "../ui_offline.c"
 line 60
-;1:// Copyright (C) 2007 Human Complex
+;1:// Copyright (C) 2011 Team Trepidation
 ;2://
 ;3:/*
 ;4:=======================================================================

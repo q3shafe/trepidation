@@ -680,7 +680,7 @@ ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
 line 213
-;213:		UI_DrawString( 320, 400, "Tredpidation (c)2007, Human Complex", UI_CENTER|UI_SMALLFONT, color );
+;213:		UI_DrawString( 320, 400, "Tredpidation (c)2011, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
 CNSTI4 320
 ARGI4
 CNSTI4 400
@@ -700,7 +700,7 @@ ADDRGP4 $129
 JUMPV
 LABELV $128
 line 215
-;215:		UI_DrawString( 320, 450, "Tredpidation (c)2007, Human Complex", UI_CENTER|UI_SMALLFONT, color );
+;215:		UI_DrawString( 320, 450, "Tredpidation (c)2011, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
 CNSTI4 320
 ARGI4
 CNSTI4 450
@@ -2446,23 +2446,26 @@ byte 1 99
 byte 1 41
 byte 1 50
 byte 1 48
-byte 1 48
-byte 1 55
+byte 1 49
+byte 1 49
 byte 1 44
 byte 1 32
-byte 1 72
-byte 1 117
-byte 1 109
-byte 1 97
-byte 1 110
-byte 1 32
-byte 1 67
-byte 1 111
-byte 1 109
-byte 1 112
-byte 1 108
+byte 1 84
 byte 1 101
-byte 1 120
+byte 1 97
+byte 1 109
+byte 1 32
+byte 1 84
+byte 1 114
+byte 1 101
+byte 1 112
+byte 1 105
+byte 1 100
+byte 1 97
+byte 1 116
+byte 1 105
+byte 1 111
+byte 1 110
 byte 1 0
 align 1
 LABELV $131

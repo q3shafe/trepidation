@@ -1,6 +1,6 @@
 //
 // Trepidation Buildable Objects 
-// (C)2006-2007 Trepidation
+// (C)2006-2011 Trepidation
 // General Public License
 //
 // Most of the build rules are checked before any of the stuff in here is executed. 
