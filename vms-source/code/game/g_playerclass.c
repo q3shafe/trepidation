@@ -1,6 +1,6 @@
 //
 // Trepidation Player Classes
-// (C)2007 Trepidation
+// (C)2011 Trepidation
 // General Public License
 //
 // g_buildables.c

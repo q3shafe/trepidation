@@ -325,7 +325,7 @@ line 144
 ;129:
 ;130:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
 ;131:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
-;132:{ "(c)2007-2008 Human Complex", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;132:{ "(c)2007-2011 Team Trepidation", UI_CENTER|UI_SMALLFONT, &color_maintext },
 ;133://{ "General Public License", UI_CENTER|UI_SMALLFONT, &color_maintext },
 ;134:
 ;135:  {NULL}
@@ -1559,22 +1559,25 @@ byte 1 55
 byte 1 45
 byte 1 50
 byte 1 48
-byte 1 48
-byte 1 56
+byte 1 49
+byte 1 49
 byte 1 32
-byte 1 72
-byte 1 117
-byte 1 109
-byte 1 97
-byte 1 110
-byte 1 32
-byte 1 67
-byte 1 111
-byte 1 109
-byte 1 112
-byte 1 108
+byte 1 84
 byte 1 101
-byte 1 120
+byte 1 97
+byte 1 109
+byte 1 32
+byte 1 84
+byte 1 114
+byte 1 101
+byte 1 112
+byte 1 105
+byte 1 100
+byte 1 97
+byte 1 116
+byte 1 105
+byte 1 111
+byte 1 110
 byte 1 0
 align 1
 LABELV $106
