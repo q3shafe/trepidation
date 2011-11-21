@@ -245,7 +245,7 @@ line 144
 ;49:cr_line credits[] = { // edit this as necessary for your credits
 ;50:	
 ;51:{ "Trepidation", UI_CENTER|UI_BIGFONT|UI_PULSE, &color_headertext },
-;52:{ "www.PlanetTrepidation.com", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;52:{ "trepidation.u7net.com", UI_CENTER|UI_SMALLFONT, &color_headertext },
 ;53:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
 ;54:
 ;55:{ "Development Team:", UI_CENTER|UI_BIGFONT|UI_PULSE, &color_headertext },
@@ -318,7 +318,7 @@ line 144
 ;122:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
 ;123:
 ;124:{ "Visit Us On The Web @", UI_CENTER|UI_SMALLFONT, &color_headertext },
-;125:{ "www.PlanetTrepidation.com", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;125:{ "trepidation.u7net.com", UI_CENTER|UI_SMALLFONT, &color_maintext },
 ;126:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
 ;127:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
 ;128:
@@ -2213,17 +2213,7 @@ LABELV $73
 byte 1 0
 align 1
 LABELV $72
-byte 1 119
-byte 1 119
-byte 1 119
-byte 1 46
-byte 1 80
-byte 1 108
-byte 1 97
-byte 1 110
-byte 1 101
 byte 1 116
-byte 1 84
 byte 1 114
 byte 1 101
 byte 1 112
@@ -2234,6 +2224,12 @@ byte 1 116
 byte 1 105
 byte 1 111
 byte 1 110
+byte 1 46
+byte 1 117
+byte 1 55
+byte 1 110
+byte 1 101
+byte 1 116
 byte 1 46
 byte 1 99
 byte 1 111

@@ -49,7 +49,7 @@ typedef struct
 cr_line credits[] = { // edit this as necessary for your credits
 	
 { "Trepidation", UI_CENTER|UI_BIGFONT|UI_PULSE, &color_headertext },
-{ "www.PlanetTrepidation.com", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "trepidation.u7net.com", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Development Team:", UI_CENTER|UI_BIGFONT|UI_PULSE, &color_headertext },
@@ -122,7 +122,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Visit Us On The Web @", UI_CENTER|UI_SMALLFONT, &color_headertext },
-{ "www.PlanetTrepidation.com", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "trepidation.u7net.com", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
