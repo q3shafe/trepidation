@@ -62,16 +62,6 @@ byte 1 115
 byte 1 105
 byte 1 116
 byte 1 32
-byte 1 119
-byte 1 119
-byte 1 119
-byte 1 46
-byte 1 112
-byte 1 108
-byte 1 97
-byte 1 110
-byte 1 101
-byte 1 116
 byte 1 116
 byte 1 114
 byte 1 101
@@ -84,7 +74,12 @@ byte 1 105
 byte 1 111
 byte 1 110
 byte 1 46
-byte 1 99
+byte 1 117
+byte 1 55
+byte 1 110
+byte 1 101
+byte 1 116
+byte 1 46
 byte 1 111
 byte 1 109
 byte 1 32
@@ -305,7 +300,7 @@ line 297
 ;164:	NULL
 ;165:};
 ;166:
-;167:static char quake3worldMessage[] = "Visit www.planettrepidation.com - News, Community, Events, Files";
+;167:static char quake3worldMessage[] = "Visit trepidation.u7net.om - News, Community, Events, Files";
 ;168:
 ;169:
 ;170:const char* punkbuster_items[] = {
