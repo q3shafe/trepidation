@@ -1,0 +1,106 @@
+===================
+Trepidation License
+===================
+
+SOURCE CODE: 
+============
+The code is licensed under the GNU GENERAL PUBLIC LICENSE v2. This license is
+contained in full in the file named GPL. Please be aware of the exceptions to
+this license as listed below.
+
+The following files contain sections of code that are not licensed under the
+GPL, but are nevertheless GPL compatible. The license text for these licenses
+is contained within the files as listed.
+
+    src/qcommon/unzip.c                                         zlib license
+    src/game/bg_lib.c                                            BSD license
+    src/client/snd_adpcm.c            Stichting Mathematisch Centrum license
+    src/jpeg-6/*                                                JPEG license
+
+
+GAME MEDIA
+===========
+Trepidation game media is split up under 2 licenses, the  GPL v2 and the CREATIVE 
+COMMONS LICENSE:
+
+The game media in pak0-gplv2data is licensed under the GNU GENERAL PUBLIC LICENSE v2. 
+This license is contained in full in the file named GPL. 
+
+Game media in pak0-ccdata.pk3 is licensed under the CREATIVE COMMONS 
+ATTRIBUTION-SHAREALIKE 2.5 LICENSE. Please read 
+http://creativecommons.org/licenses/by-sa/2.5/ to learn more about this 
+license. The full license text is contained in the file named CC. 
+
+
+CREDITS
+=======
+
+Scott Hanke (SkareKrow) - GFX/Level Design
+	Area52
+	Citadel
+	ctf_aversion
+	ctf_battlefield
+	ctf_conflictzone
+	ctf_opposingforts
+	ctf_pyramide
+	dystopia
+	nightmare	
+
+Gigon - GFX / Level Design / 3D Artist
+	ctf_junction
+	trep_war_ring
+	hangar19
+	Small Armor Model
+
+LaZ - Level Design
+	lilbuteroom
+	tes
+
+Petee - 3D Artist / Textures / GFX / Level Design
+	LFO Rifle Model
+	Flame Thrower
+	Singularity Cannon Model
+	
+DrAkOn - 3D Art 
+	L2 & L3 Turret Models
+	Grenade Model
+
+VincentK - Programming 
+
+Shafe - Programming 
+
+Gigabyte123 - Level Design / Models 
+
+Dr Preston  - GFX / Mapping 
+
+Chris Begg - Music / Sound Design & Engineering 
+
+Dave Cunningham (Sir Ender) - Sound Design / Voice / Sound Engineering 
+
+
+Special Thanks to LD Ash" (psyclone72@hotmail.com> - www.violationentertainment.com ) for donating the following:
+	Shotgun model
+	Gauntlet (temporary)
+	Temporary Devastator Model
+	Grenade Launcher
+	Player Models
+
+Dark Legion // Tremulous
+	Tremulous Player Models
+	Console Font
+	
+Open Arena 
+	For a lot of stuff to get us started!
+
+
+Trepidation Test Team:
+Blue, Frago, menziep, Prodie, unknownWHORE!!!!, [ADF]Dredge, [EVIL]*L^a^Z, [EVIL]^Camper, [FC]Tuvok
+
+Other Contributors
+[FC]Pope John Paul III - UI Graphics
+The Open Arena Project - for actually taking on such a big project like theirs
+The Tremulous Project - For a lot of inspiration and pulling together a great game.
+Code3Arena - For a lot of help and some good pointers.
+Thilo Shultz - For working on the iostvoyhm project offering Mp3 support and other assorted goodies. 
+Neil Toronto - For Unlagged 2.0 for which much of the new network code is based.
+
