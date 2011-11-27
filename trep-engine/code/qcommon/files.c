@@ -3376,8 +3376,8 @@ void FS_InitFilesystem( void ) {
 	// if we can't find default.cfg, assume that the paths are
 	// busted and error out now, rather than getting an unreadable
 	// graphics screen when the font fails to load
-	if ( FS_ReadFile( "trepidation.cfg", NULL ) <= 0 ) {
-		Com_Error( ERR_FATAL, "Couldn't load trepidation.cfg" );
+	if ( FS_ReadFile( "default.cfg", NULL ) <= 0 ) {
+		Com_Error( ERR_FATAL, "Couldn't load default.cfg" );
 	}
 
 	Q_strncpyz(lastValidBase, fs_basepath->string, sizeof(lastValidBase));
@@ -3411,7 +3411,7 @@ void FS_Restart( int checksumFeed ) {
 	// if we can't find default.cfg, assume that the paths are
 	// busted and error out now, rather than getting an unreadable
 	// graphics screen when the font fails to load
-	if ( FS_ReadFile( "trepidation.cfg", NULL ) <= 0 ) {
+	if ( FS_ReadFile( "defaukt.cfg", NULL ) <= 0 ) {
 		// this might happen when connecting to a pure server not using BASEGAME/pak0.pk3
 		// (for instance a TA demo server)
 		if (lastValidBase[0]) {
@@ -3424,7 +3424,7 @@ void FS_Restart( int checksumFeed ) {
 			Com_Error( ERR_DROP, "Invalid game folder\n" );
 			return;
 		}
-		Com_Error( ERR_FATAL, "Couldn't load trepidation.cfg" );
+		Com_Error( ERR_FATAL, "Couldn't load default.cfg" );
 	}
 
 	if ( Q_stricmp(fs_gamedirvar->string, lastValidGame) ) {
