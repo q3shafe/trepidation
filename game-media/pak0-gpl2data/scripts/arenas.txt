@@ -54,19 +54,6 @@ type "single ffa team tourney"
 recommended "9"
 }
 
-
-{
-map "nightmare"
-fraglimit	10
-bots		"sarge"
-longname "Nightmare"
-longname_deutsch ""
-longname_francais ""
-type "single ffa team"
-recommended "9"
-}
-
-
 {
 map "citadel"
 fraglimit	10
@@ -77,18 +64,6 @@ longname_francais ""
 type "single ffa team"
 recommended "12"
 }
-
-{
-map "tes"
-fraglimit	10
-bots		"sarge"
-longname "Tes"
-longname_deutsch ""
-longname_francais ""
-type "single ffa team ctf tourney"
-recommended "12"
-}
-
 
 {
 map "ctf_opposingforts"
@@ -204,5 +179,6 @@ longname_francais ""
 type "single ffa team ctf tourney"
 recommended "12"
 }
+
 
 
