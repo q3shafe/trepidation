@@ -8,7 +8,7 @@ Readme Updated 07-27-06
 
 
 THE COMPLETE GUIDE TO TREPIDATION CAN BE FOUND AT
-http://trepidation.tnlsoft.com/tr/manual.php
+http://trepidation.u7net.com/manual/
 
 =====================
 GETTING STARTED NOTES
@@ -243,7 +243,7 @@ be loaded under FAVORITES in the server browser.
 If all else fails, you can connect manually.
 
 Currently Running Servers are here:
-http://master.planettrepidation.com
+http://master.tnlsoft.com
 
 
 =====
