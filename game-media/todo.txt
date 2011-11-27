@@ -1,6 +1,6 @@
-
-- Try to fix ctf_pyramide2
 - Levelshots
 - Fix Scanner
 - Revert Behaviour of Grenade Launcher
 - Update Server Protocol?
+- Master servers 1-3 not working
+
