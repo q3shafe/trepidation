@@ -1,7 +1,0 @@
-{
-map		"ctf_junction"
-bots		"sarge"
-longname	"CTF_junction"
-type		"single ffa team ctf"
-Fraglimit	20
-}
