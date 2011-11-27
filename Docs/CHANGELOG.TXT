@@ -1,0 +1,751 @@
+IMPORTANT NOTES BEFORE INSTALLING THIS:
+
+OpenAL is updated.  Be sure to install it during the windows installer.  The new version should fix a lot of problems some folks where having.
+
+Also.. If your installing over an older copy.. which ISNT recommended!  You should clear out your base folder of **ALL** pk3's.  If the old ones remain, you'll have all sorts of problems.
+
+Also, dont copy over your config file, set it up from scratch, things have changed and you WILL have problems.
+
+Another Good Idea is to turn your downloads on.  The test servers are setup to download very 
+quickly via http from trepidation.u7net.com if there is a file you need.  So yeah, turn your
+downloads on :)
+
+
+==================================================
+Trepidation Changelog - Most Recent Changes First
+==================================================
+======================
+02-01-07 BUILD
+======================
+
+
+======================
+07-22-07 Build
+======================
+
+- New Alt Shotgun Fire
+
+- Updated/Fixed ctf_aversion modified by Laz, By Skarekrow.
+
+- Updated Quad Model By Laz
+
+- New map by gigon ctf_trepxus
+
+======================
+BUILD 02-01-07 SVN 220
+======================
+
+- If a map doesnt have deathmatch spawnpoints, it'll revert to ctf spawnpoints, picking a random team spawn to use.
+
+- Bots will now try to go after buildables... thus making them able to play trep gametype.. They dont build defensive structures, but at least you arent screwed if your stuck on a team with a bot.
+
+- Turrets no longer count as a point for the builder.
+
+- Added some effects to the shotgun fire.. This is still a work in progress
+
+- Removed Zoom From Controls Setup Screen.  This is now alt fire on guass rifle.
+
+- You can only zoom with the Alt Fire on the Guass Rifle.
+
+- Added in a zoom overlay graphic to add more effect with the zoom.
+
+- When you zoom there is a sound to go with it.
+
+- Powerups are now dropped in Trep Gametype if player gets killed while holding them.
+
+- Trep Gametype (g_gamemode 3) can ONLY be played with g_gametype 3 (TDM)
+
+- THe number of shield generators not only determines the max health of the power core, but also how quickly it regenerates.  2 generators will generate twice as fast.
+
+- The power core cannot be shot down while it is in the 'being built' state. 
+
+- Immobilizer isnt available until later in the game.
+
+- Visual And Audiable Notification when new buildables become available.
+
+- Tried to create bot files.. created really dumb bots... Used OA's GPL botfiles instead... 
+
+- Separated Out pk3's by license.. pak0-gplv2data for GPL and pak0-ccdata for creative commons... this licensing sucks we need to standardize.
+
+- OpenAL binaries in Windows Installers updated to the newest version this will fix a lot of sound issues.
+
+- SkareKrow: updated several maps with fixes.
+
+- Shafe: Brought Down The Amount of damage a Power Core can take before sheild generators no longer work.  Was 350 health, now it's 100. 
+
+- Shafe: Immobilizer now has a shorter range.  
+
+- Vincent - New Shader for Immobilizer.
+
+- Petee: New M42 Guass Rifle Model
+
+- Shafe: Engine homepath on linux is now /.trepidation instead of /.q3a
+
+- Shafe: Fixed issue where turrets and buildables had no owner while playing online, thus making them useless.
+
+- Shafe: Fixed issue where destroying a buildable was not getting reported while playing online.
+
+- 0000022: [Programming] BOT AI: Bots will not shoot breakable objects (Shafe) - Fixed
+
+- 0000048: [Programming] Turrets Explode For No Reason (Shafe) - Fixed
+
+- 0000070: [Programming] Screenshots, Videos & Configs storage location option should be cvar (Shafe) - Done cl_multiuser added to engine.
+
+- 0000055: [Stuff To Do] When immobilized the weapon should have the 'build' shader like your body. (Vincentk) - Has it's own shader now.
+
+- 0000069: [Stuff To Do] Update engine to current IOQ3 SVN 1011 (Shafe) - Done
+
+- 0000051: [General Game Media] Bots can't handle e.g. CTF_AVERSION (SkareKrow) - Fixed
+
+- 0000068: [Stuff To Do] In game HTTP map downloads (Shafe) - Updated engine to ioq3 svn1011
+
+- 0000052: [Programming] Zoom doesn't reset at playerdie (Vincentk) - Fixed
+
+- 0000056: [Programming] Range on immobilizer  reduced (Shafe)
+
+- 0000046: [Programming] Console prints garbage (arsenal & survival gametypes) (Shafe)
+
+- 0000042: [Programming] Bots run around with melee weapon (Shafe) - fixed
+
+- 0000047: [Programming] Code contains a lot of warnings (Vincentk) - fixed
+
+- 0000006: [Programming] Alt Fire Should Release You From Follow mode in spec. (Vincentk) - fixed
+
+- 0000015: [Programming] PDG's will allow transport after killed (Vincentk) - fixed
+
+- 0000019: [Programming] Bot AI Bots cannot climb ladders. (Vincentk) - fixed?
+
+- 0000049: [Programming] Buildables can be build when you are dead (Vincentk) - no longer
+
+- 0000044: [Programming] Shooting the base machine gun at the wall hurts yourself (Vincentk) - Reduced Spash Damage
+
+- 0000005: [Programming] Buildable Objects Bounding Boxes Are All Off (Shafe) - Fixed
+
+- 0000041: [Programming] When bots taunt at you, your name is not shown right (Vincentk) - Fixed
+
+
+======================
+BUILD 10-29-06 SVN 165
+======================
+- Added console command 'listplayers'.
+
+- Added in end of game stats.
+
+- Added in Spree messages, (i.e. killing sprees, dying sprees).
+
+- Rewrote server configs.
+
+- Redid windows installer, so that non-gpl supplemental/non-required files are downloaded separately.
+
+- Fixed bug where game would 'freak out' if it was waiting for players for too long on trep gametype.
+
+- Added Generic Placeholder model for Immobilizer
+
+- Added punish <client> to rcon to test immobilizer.
+
+- Added Immobilizer Buildable.  Any enemy coming into it's field becomes immobile and loses health.  Only one per team.
+
+- Added g_PCTeamkill - 1 = Can Destroy Your Own Power Core // 2 = You cannot destroy your own Power core
+
+- Added on screen messages to tell team when power core is under attack.
+
+- Devastator explosion sound is more under control for primary fire.
+
+- Turret fire looks a bit more realistic and actually has varying levels of damage
+
+- Added in Ambiant sound for intermission from chris.
+
+- Added Showdown music to Arsenal & Survival - Music plays when it is down to only a few people (Chris).
+
+- Started work on immobilizer.
+
+- More Fine Tuning of Devastator
+
+- More Fine tuning of LFO Rifle...
+
+- CGAME now realizes alt fire, thus now sounds and gfx can be separated.  Yay.
+
+- You used to get multiple points for blowing up an object.  This is fixed.
+
+- Grapple cannot be used to destroy buildable objects.
+
+- Trep Gametype: Msgs now sent to console when you destroy a buildable.  
+
+- You get points when you destroy a buildable.  Generators worth 2, Turrets worth 1, Power Cores worth 10.
+
+- Machine Gun//Asssault Rifle Renamed To LFO Rifle
+
+- Updated favorites.cfg in pak0-trepidation.pk3
+
+- Added in GUID stuff to engine and game code
+
+- Made Alt-Devastator Cluster Explosions have a bit more random trejectory.
+
+- Redid the Assualt Rifle/machine gun scrapped all the old code and started fresh.  It's still a machine gun sort of weapon but more futuristic.
+
+- Reworked some of the Alt-Ammo Usage and Max Ammo on some weapons
+
+- Turrets Now Have their Own Style Of Weapon.  To do this, I had to make it weapon 10.. so yeah.. you can actually add a turret to be picked up with weapon_turret when making maps.. it's only the top part tho.
+
+- Redid everything about the Devastator
+
+- Grapple can be used to frag someone,  Grapple is optionally instagib.
+
+- Adjusted Devastator Ammo pickups, ammo usage
+
+- Swaped out some of the placeholder models.
+
+- Added Beta Map trep_war_ring beta 2 by Gigon
+
+- Gauntlet and Machine gun are now dropped in Survival And Arsenal Gametypes. 
+
+- BFG Projectile is no longer a model... It's a sprite..  Srpite by Skarkrow
+
+- Sound errors are now reported by the client instead of the enigne.
+
+- Removed dm_opposingforts untill correct version is located.
+
+- Gigon, Updated Version of Hangar19 
+
+- Fixed Numerous problems with Trep Gametype.. Too Many to list.
+
+===============
+09-16-06 Patch
+==============
+- Shafe - Turrets no longer fire during intermission :)
+
+- Shafe - Your Team's MC's health is displayed in the bottom right corner, where fraglimit or capurelimit is displayed next to the team scores/flag status.
+
+- Shafe - Easier To Shoot Down MC's
+
+- Shafe - Added some extra checks to be sure an MC is automatically placed if the team doesnt get around to building one.
+
+- Shafe - Fixed Issue where Non Player Entities with health would display in the crosshairs.. this would cause all sorts of wierd text to show up on the screen
+
+- Shafe - Fixed Issue Where TRep Gametype would end after one Score occasionally.  I think.
+
+- Shafe - Updated Arenas.txt, Bots.txt and default.cfg
+
+- Gigon - Added Hangar19 Map
+
+- Shafe - More work on making ef playermodels work..  Much better support now :)
+
+- Shafe - Engine: MP3 Support Working!
+
+- Shafe - Turret Build Rules now Applicable in CTF Games with Turrets Enabled.
+
+- Shafe - Added in Bot Support for all models to ship with Trepidation.
+
+- Shafe - Added two new Player Models from Tremulous
+
+- Shafe - Added in g_Turrets to server cvars so you can enable/disable turrets in ctf games.
+
+- Shafe - Added in timer to tell players their team needs an mc
+
+- Shafe - Added in an extra check so dead bots cant be used as the random player when MC is automatically placed.
+
+- Shafe - Added in more sounds for Trepidation Game Type
+
+==========================
+09-07-06 svn version 144
+==========================
+- Shafe - Added in build rules for turrets.  The game must progress for trep gametype and ctf before better turrets can be built.
+
+- SkareKrow -  Nightmare, dm_opposingforts, and an update for ctf_opposingforts so it wont let you play DM or TDM. Also has some new shaders and textures... now that I sort of understand textures. :-P
+
+- Shafe - Added in a bit of Chris' unfinished music to the main menu.. I love it.. Hope that's ok chris :)
+
+- Shafe - Re-did credits Screen, they now scroll with a new background graphic, and music.
+
+- Shafe - Fixed bug where garbage was being sent to the console at the end of each round.
+
+- Drakon - New Turret Model.. Not yet textured though.  But lookin good.   - Didnt have time to get this to place on the ground.. Will get to that later.
+
+- Laz - New Map TES.
+
+- Shafe - Added in /RCON balanceteams to balance teams :)  You can also vote on this. /callvote balanceteams
+
+- Shafe - Turrets Fire Machine Gun Fire, Except for Cloaked Turrets.  Scratch this MG wasnt damaging anyone for some reason.
+
+- Shafe - You can now tell what team Buildables objects are on.
+
+- Shafe - Engine: Expanded Struct entityState_s to include team.
+
+- Shafe - Master Server Website Now Reports Correctly With This Build.. (except for servers on my lan).
+
+- Gigon - Small Armor Model -  Work in Porogress.
+
+- Petee - New Machine Gun Model - Work in Progress.
+
+- Gigabyte & Petee - Glass Models Added In
+
+- Shafe - Maps with true Rotating Doors are now support.. no more sliding doors only. 
+
+- Shafe - Slow weapon respawns on team games is stupid.
+
+- Shafe - Fixed Gauntlet
+
+- Shafe - Broke Gauntlet
+
+- Shafe - Added in mp3 codec support.  Lots of new code for this, but thus far it isnt working.
+
+- Shafe - Started Incorporating HUD.. Doesnt really work out with our current font.  We need to get the fonts worked out before we can implement the hud. 
+
+- Shafe - Added in breakable Objects functions.. This is from a tutorial on code3arena, so I dont know if it works.. but here is the notes from the tutorial as well as some of my own.
+Mappers need to first, make it a func_door(anything will do) then press "n" and change the func_door to func_breakable, or optionally edit the "entities.def" file and add in func_breakable, so you can just select it from the normal drop down list in Q3Radiant. They also need to set the life of the glass by pressing "n" while selecting the entity and in the key box type in "health" and in the value box type in whatever NUMBER of life it should have. If you dont it defaults to 5 life. 
+Your mapper needs to add the ifx.shader into their base/scripts directory 
+You will want he/she to edit the shaderlist.txt in their base/scripts directory and add at the VERY bottom ifx
+Your mapper needs to have done that so upon compile it does the lightmap and everything correctly.
+
+So this is all from a code3arena tutorial... I imagine the shader only has to do with rendering the glass model correctly.  If you dont assign a glass model (or whatever object it is that is breakable).  the following will be used:
+models/breakables/glass01.md3
+models/breakables/glass02.md3
+models/breakables/glass03.md3
+
+
+- Shafe - Added In Game Build Menu.. Very Crude.. 
+
+- Shafe - Added 'Build' Bind to Controls->Misc in ui
+
+- Shafe - Separated and Did Some Cleanup to Buildable Objects.  Moved into g_buildables.c
+
+- Shafe - You can now shoot and destroy a pdg grenade.
+
+- Chris - New Ambiant Sounds, New Flame Thrower Sound, and new fx sound for fire.
+
+- SkareKrow - Replacement For Opposing Forts Maps with some fixes.
+
+- SkareKrow - Added Replacement For Loading Bar
+
+- Shafe - Added g_playerclass.c for playerclass framework.  WIP
+
+- Shafe - Corrected issue with MAX RATE not sticking in network settings.  Max rate now defaults to LAN/CABLE
+
+- Shafe - Corrected Issue: if cheats are on, you can execute them as spectator and if you are following someone it looks like they get it, ie: give quad damage gives them quad for like a second for some reason or at least it looks like it from your pov.
+
+
+- Shafe - Added in /powerups/build shader, corresponding gfx and code for effects of an object being built.
+
+- Shafe - Did some more work to get more EF Models to load.. .still a bit buggy.
+
+- Shafe - Got Rid of Some of the leftover debugging that was getting printed to console.
+
+- Shafe - When transporting using a PDG and carrying the flag the flag is now returned to the base instead of just dropped.
+
+- Shafe - Bots will actually try to use the jetpack. -- Pretty untested.
+
+
+- Shafe - Crosshairhealth Really Shows health now.
+
+- Shafe - Added in very basic code for Base thingy for gamemode 4.
+
+- Shafe - Added in Very Basic shield Generator for Turrets and Base Thingy for gamemode 4.
+
+- Shafe - 3 Type of turrets accessible.
+
+- Shafe - Gata gun is a bit weaker.
+
+- Shafe - You can now nextweapon or prevweapon to gauntlet (weapon 1).
+
+- Shafe - If you try to use a console command during intermission, you are given an 'invalid during intermission' error instead of just printing it as chat text.
+
+- Shafe - Security Fix: In short the problem is in how the engine handles the commands longer than 1022 chars, in fact they are automatically truncated at that size and the rest of the chars is handled as network data confusing the engine. 
+If an attacker joins a server and sends a too big message any client in the server will automatically disconnect showing the "CL_ParseServerMessage: Illegible server message" error
+
+==========================
+07-27-06 svn version 126
+==========================
+- Shafe - Added in survival.cfg for a sample Survival server config.
+
+- Shafe - Fixed a stupid thing in the engine.  'kick all' command.  Players like to come onto the server name themselves 'all' then try to get a callvote going to get themselves kicked and everyone ends up getting kicked when it passes.
+
+- Shafe - In Arsenal and survival if you happen to blow yourself up while making the winning kill you will still win assuming you died last.  The game will not get stuck looking for a winner.
+
+- Shafe - First Strike Code Now Works.. This was important in arsenal and survival.
+
+- Shafe - in Arsenal & survival you are spectator when you connect, thus not having a round go on for 15 minutes, down to 2, then someone connects now it's unfairly 3.. the new people will need to wait to next round to play.
+
+- Shafe - Did a bit of work to the connect screen.  Progress bar is still a bit screwy.
+
+- Shafe - Added Callvote and Choose Class to the ingame menu but they dont do anything yet.
+
+- Shafe - Add Bot, Remove Bot, and Restart Map never appear in the ingame menu when connected to a server. 
+
+- Shafe - Added in Survival game mode (which right now is pretty bland and basic) the code was mostly there, being used for Arsenal.  Survival is g_GameMode 2.  We should come up with a better name.  survival in Trep is more similar to Gladiator in EF than Elimination or other Survival Game Types.
+
+- Shafe - g_Arsenal is no longer... This is now g_GameMode
+ 	0 - Normal
+	1 - Arsenal
+	2 - Survival
+	3 - ??
+
+- Shafe - Created new gun, In place of the plasma gun.. fires razor sharp discs that bounce... this was skarekrow's idea.. it's very fun.. maybe a bit excessive though.  Need a model for the discs /models/weaphits/disc.md3 :)
+
+- Shafe - Touched up the code for primary and alt fire on the devastator. 
+
+- Shafe - Did some work to the flame thrower, trying to make it lag less and sound a bit better.  Needs more work.. some new sounds maybe.
+
+- Shafe - Fixed bug where sometimes it would say the you died with the lighning gun instead of the flame thrower
+
+- Petee - Singularity Cannon Trails Are Now Green :)
+
+- SkareKrow - Revisied Blood.. mmmm.. blood.
+
+- SkareKrow - All New Graphics for Medals (excellent, air kill, headshot, etc).
+
+- Shafe - In Arsenal You Get To Keep Your Score Even If You Are Eliminated.
+
+- Shafe - You no longer inherit the score of the person you are spectating.
+
+- Shafe - Arsenal No longer ends the round after 25 seconds if no one is playing... it just reverts back to waiting for players.
+
+- SkareKrow - Added in Many Missing Menu Buttons 
+
+- SkareKrow - Many Maps Fixed up.
+
+- SkareKrow - Crosshairs Created.
+
+- Shafe - Alt Singularity Cannon has been cleaned up a lot, this is like a whole new weapon now.
+
+- Shafe - You no longer have to wait 5 seconds before switching 'teams' in ffa games.
+
+- Shafe - Cleaned up the podium Code. All 3 podium people spawn now.. Still Need A Model
+
+- Shafe - Many More fixes to Arsenal
+
+- Shafe - Engine - Updated Master Servers to point to master.planettrepidation.com
+
+- Added in Support for MDR Player Models.   You can now use Quake 3 or ELite Force Player Models.  This gives us a great base of custom models to use :)  this was also hell to get working.  No really I mean hell
+
+==========
+BUILD 7-04
+==========
+- SkareKrow - pak0-trep - Updated All Maps with some fixes.
+
+- SkareKrow - pak0-trep - Added New Map Dystopia
+
+- Shafe - Misc - Tidied up the server configs and renamed em all - see readme.txt
+
+- Shafe - game - Podium for conclusion of FFA Games kinda like EF.. But none for CTF.  A Bit buggy still
+
+- Shafe - game - Machine Gun renamed to Assault Rifle.. preparing for this new weapon.
+
+- Shafe - game - Machine gun alt-fires shotgun.. errr. ok.. it doesnt.. wierd
+
+- Shafe - game - tightened up the machine gun spread.. New machine gun code in future build
+
+- Shafe ui -Added Arsenal Gametype to Server Browser
+
+- Shafe - game - Added in Arsenal gametype.  g_Arsenal 1 to enable.  You actually need to configure the game beforehand otherwise it wont play correctly.  See Readme.txt.  This was added in at the last second so I'm sure it's buggy as hell.
+
+- Sir Ender - Team Music and some additional sounds for shafe Added
+
+- Picking up a dropped weapon can no longer put you over the maximum ammo allowed for that weapon.
+
+- Shafe - cgame - Fudged up the scoreboard a bit.. it's ok though.. the font and icons are now a lot smaller and looks a hair better.. still has a long way to go.
+
+- Shafe - cgame - Scoreboard now displays your accuracy, for weapons that use such a thing.
+
+- Sir Ender - More Missing Announcer Sounds Filled In.
+
+- Shafe - ui - made some changes in the code to reference buttons we had graphics for in the newly unlocked menus.  There are still some missing in the Play Offline section.
+
+- Shafe - Engine - Enabled MD4/MDR Model Support.. this is the format Elite Force Uses.
+
+- Shafe - ui - Prettied up the menus a bit, I have to apologize in adavance for some of the contrast issues.. They'll be worked out.. 
+
+- Shafe - Added Master server Selection to the Server Browser - Alternate 4 is for me.. since I host the master server on my lan I can only access it with a lan ip :( all of them are pointing to the same machine with different urls at the moment.
+
+- Shafe - Engine: Added Support in Engine for Multiple Master Servers. 
+
+- Shafe - Renamed the pk3 to something a bit more sensible apak* are things we plan to replace pak* are things we plan to keep.. and z* are whatever you added. 
+
+- Shafe - Linux Game Client Created.
+
+- Shafe - Linux Binary for Dual Processors Created.
+
+- Shafe - Linux Dedicated Server Build Created
+
+- Shafe - Engine - All New IOQ3 Engine... Much better.. better sounding... better looking! Yay
+
+- Shafe - Changed the Directory Structures Around A Bit - Dequaked
+
+- Shafe - Fixed the washed out levelshots.
+
+- SkareKrow - zpak0-trep - Updated Evil Texures so they tile better
+
+- Shafe - Fixed bug that prevented you from jumping while not on flat ground.  Surfaced in 6-19 build.
+
+- Shafe - Re-organized and updated arenas.txt for offline play.
+
+- Shafe - Re-Added Single Player/offline play in the main menu.
+
+- Shafe - Added In Demos Menu in Main Menu - Even included a demo :)
+
+- Shafe - PDG lock expired message would show even after you used the pdg.. fixed.
+
+- Shafe - Game - Unlagged PDG's
+
+- Shafe - Game - Grapple is disabled on CTF
+
+- Shafe - Game - when transporting with a PDG you cannot take the flag with you.  The flag is just dropped.. I wanted it to return to base.. but proly something really simple was preventing that from happening so they are just dropped.
+
+- Shafe - Removed various unreferenced locals from a variety of places for a cleaner compile
+
+BUGS:
+- The whole code for joining a game in arsenal is utter shit.  You pretty much have to join during warmup.  This is supposed to be after first strike.
+- When Alt Firing and you run out of ammo weapon doesnt automatically switch.
+- In Arsenal A new person connecting should not get thrown into a round already in progress they should be forced to spec until the next round.
+- Server browser is a bit buggy when filtering gametype arsenal.
+
+NOTES:
+- When My ISP changed The test servers stopped reporting to the master without the port specified.. not sure what this is but if the primary master doesnt work for you switch to the second.
+- First Strike code is kinda in there.. some sort of sound to specify first strike would be cool.
+- Survival/Gladiator gametype is partially done.. but not yet implemented.
+- The sound is amazingly better... unfortunately this has made the ALT Flame thrower sound like utter shit.. we need to fix this.
+
+
+==========
+BUILD 6-19
+==========
+sVN v## - Subversion Repository Revision
+SF Task ## - Sourceforge Task List #
+
+- Shafe - zpak-weapons - Since this pk3 represents weapons that arent ours and we cant use... I went ahead and found another railgun model and threw it in there cuz I hated the other one.. Can't use this one either... Copyright crap.. 
+
+- Petee - Added some shaders textures/liquids/pool2, textures/liquids/lavafloor, textures/liquids/kc_fogcloud3  Only one is water, the other too are (obviously) lava and fog. So far I've got them all at least scrolling correctly and bobbing up and down, but I can't get the transparancy to work for the water yet. I'll keep working on it. 
+
+- Petee - Glass Now Exists!  
+
+- Shafe - cgame/game updated ammo pickups and alt ammo usage Grenade Ammo Pickups now 7 alt usage now 2, Singularity Cannon ammo pickups 6, Plasma Gun Alt Ammo Usage 3.
+
+- Shafe - cgame - updated credits screen
+
+- Shafe - zpak0-trepidation - Updated arenas.txt
+
+- Shafe - game - Created Particle Displacement Grenades (PDG's) This is currently the ALT FIRE on the plasma gun.  This still needs some work as sometimes it is possible to transport into a wall.  This was a whole day of work.. hope y'all like it.
+
+- Shafe - game - Revised primary fire on flame thrower. The flame balls really hurt now with a pretty intense splash radius...  Hopefully making primary fire a bit more useful
+
+- Shafe - game/cgame - Reload time on the Gauss Rifle is slightly faster... Actually matched it with EF's Compression rifle. 
+
+- SkareKrow zpak0-trepidation - New Map CTF_AVERSION.
+
+- SkareKrow zpak0-trepidation - New Map Citadel
+
+- Shafe - cgame/zpak0-trep.. - Created separate smoke shaders so that ONLY the singularity cannon has the wierd ring trail.
+
+- Shafe - cgame/game - Mega Health is now called medkit - Mega health might have worked in 1997 but it's hella cheesy now.
+
+- Shafe - cgame/game - You can no longer grab a weapon to replenish your ammo unless you are totally out of ammo for that weapon or you pickup a dropped weapon. Yes this took almost a 9 hours to perfect
+
+- Shafe - cgame/game - Can now jump off of ladders... This code is wacky and needs to be revised so to not allow you to just jump up the ladder.
+
+- Shafe - cgame/game - Can now wall jump on steeply sloped walls.. but not vertical walls.. This code is wacky and needs to be revised
+
+- Shafe - Game - Seeking Singularity Cannon Bursts no longer shoot into the ground when there is no target around..  Really cleaned this up a bit.
+
+- SkareKrow zpak0-trepidation - New Map Area52
+
+- SkareKrow zpak0-trepidation - New gfx for scoreboard
+
+- SkareKrow zpak0-Trepidation - New Icons for Powerups
+
+- Petee - zpak0-trepidation - New Model For The Flamethrower
+
+- Shafe - game - Added offhand Grapple Hook binded to +button6 also under options->controls->misc
+
+- Shafe - cgame - Fixed the missing textures thingy with the flame thrower
+
+- Shafe - q3_ui - The server browser now displays level shots correctly if the name is long.
+
+- Shafe - q3_ui - The in game map browser will now display up to 254 maps as opposed to 64.
+
+- Shafe - q3_ui - Fixed issue where you couldn't create a server if the map name was too long.
+
+- Shafe - q3_ui - Got rid of Punkbuster References in Create Server
+
+- Sir Ender - Zpak0-Trepidation - Tons of sounds replaced/added.  Including hoards of missing sounds... 
+
+- Shafe - game/cgame - Made climbing up ladders a bit faster.
+
+- Shafe - game/cgame - Fixed up the Alt Fire Ammo Mgmt Code A Bit
+
+- SkareKrow - Zpak0-Trepidation - New Menu Gfx, Several Sprites Replaced and That Annoying Happy Face Replaced.
+
+-------------
+BUILD 5-30-06
+-------------
+- Added in PTD (portable tracking device) heh. .A radar..  (Check CONTROLS->MISC).. But the  code that actually makes it work is twisted at the moment.. need more time on that one.. You can press and hold the key that you have binded to see the radar on the hud...   Also worth noting that it needs to be more visible... Might need some artwork for that.
+
+- Shafe - game/zpak1-trepidation - Added in headshot sounds
+
+- Shafe - game - Added MAX AMMO code for all weapons and set them at something I thought was ok for now... Q3 had no code for this.. simply all weapons had a max of 200.
+
+- Shafe - UI - moved Alt Fire Around On The Menus.. Makes More sense... Renamed it to Secondary Fire
+
+- Shafe - game/cgame - Changed the names of the railgun and rocket launcher.  M42 GAUSS RIFLE (railgun) and Singularity Cannon.. I Researched this shit so see the readme.. it's actually kinda interesting.. Still up for debate tho.
+
+- Shafe - zpak-Weapons - Switched up The Rocket Launcher Model and Weapon fire.  
+
+- Petee - Added some shaders textures/liquids/pool2, textures/liquids/lavafloor, textures/liquids/kc_fogcloud3  Only one is water, the other too are (obviously) lava and fog. So far I've got them all at least scrolling correctly and bobbing up and down, but I can't get the transparancy to work for the water yet. I'll keep working on it. 
+
+- SkareKrow - zpak1-trepidation.pk3 -  Also replaced the chat icon that appears over you're head.
+
+- SkareKrow - zpak1-trepidation.pk3 - put the files from the individual pk3 files for the maps into the trepidation pk3 file.  So it's a good idea to uninstall then reinstall this build to get rid of the old map pk3 files.
+
+- SkareKrow - zpak1-trepidation.pk3 - put together an arena.txt file in the scripts for all the maps
+
+- SkareKrow - zpak1-trepidation.pk3 - fixed up the oa_bases3 map and renamed it to Dread.
+
+- Shafe - Game - Added in MultiJump Capabilities - g_MultiJump #  // Doesnt Work Yet See Comments on SF Task #127425
+
+- Shafe - Updated server.cfg.
+
+- Shafe - game - alt fire now has code to support different ammo usage than primary fire.  This still needs some work... Get down to 1 ammo and hit alt fire and you'll see what I mean
+
+- Shafe - game - No more missing rocket models... Rockets are always registered.
+
+- Shafe - master - Fixed up some of the master server code.  Now Compiles on windows.  - SVN v52
+
+-------------
+BUILD 5-21-06
+-------------
+- Shafe - Updated server.cfg and added new maps into rotation
+
+- Shafe - q3_ui - Minor Changes to server browser screen.
+
+- Shafe - zpak0-openmedia - Got rid of banner5.md3 it was bothering me.
+
+- Shafe - q3_ui - Got rid of the rest of the annoying CD Key screen stuff
+
+- Added some non-working filters to the server browser (for future use)
+
+- Shafe - CTF_CONFLICTZONE added to installer
+
+- Shafe - game/cgame - Rail Gun Equivilant now utilizes headshots.  If reg, headshot is instakill.  In either case the headshot is noted on the console and the player model head is actually blown off.  Too Graphic.. maybe.. but it's cool.
+
+- Shafe - game - Alt Rocket is a little bit more seekery.. whatever that means and maybe less flickery.
+
+- Shafe - game - Unlagged The Flame THrower
+
+- Shafe - zpak0-trep - Updated CTF_OPPOSINGFORTS Map 
+
+- Shafe - Engine - Updated engine to reflect correct master server
+
+- Shafe - Master - Compiled Linux Build Of Master Server... It's up and running @ 70.84.61.148:27950
+
+
+05-14-06 DEVELOPMENT BUILD
+--------------------------
+- Shafe - Took out the whole alt fire fires rockets on weapons we havent done anything with yet.... Just for testing and playability reasons.
+
+- Shafe - Engine - replaced gay looking icon with another gay looking icon.
+
+- Shafe - installer - Added a readme.txt file with lots of info to put somewhere, like docs or something.
+
+- Shafe - baseq3 - Updated server.cfg for dedicated server.  If you want to play locally as if you are on a server type /exec server.cfg into the console.
+
+- Shafe - zpak0-trepidation - Added 2 open arena maps that we can use oa_bases3 and oa_rpgdm2
+
+- Shafe - zpak0-openmedia - Open Arena Alpha 4 Media Updated With New Version
+
+- Shafe - installer - Added in map ctf_battlefield.
+
+- Shafe - installer - Added in ctf_opposingforts.pk3 - First map - You need to be in gametype 4 before loading this map as there are only ctf spawnpoints at the moment
+
+- Shafe - zpak0 - Copied All of Quake 3's /scripts folder.. dunno if they opened sourced that stuff.. if not we can weed through it and make it our own.
+
+- Shafe - zpak0 - Changed the rail gun sound.. to a temporary sound I made.. The other one was driving me crazy.
+
+- Shafe - engine - changed syscall in botlib to fix up some problems with bots on instagib. It's a total cheap hack.. but it works.
+
+- Shafe - game - Rocket model always registered in Instagib
+
+- Shafe - q3_ui - Added ALT Fire to the controls menu in the UI
+
+- Shafe - game/cgame/zpak0-trepidation - Created Weapon - Flame Thrower this replaces the lightning gun.
+
+- Shafe - game - In Instagib you no longer spawn with the gauntlet.
+
+- Shafe - Moved License Files, Readme and Changelog into Docs Folder.
+
+- Shafe - Added in Ladder support.  game, cgame and in zpak-trepidation.pk3... 
+
+		map designers [or for the versitile, do it yourself] make a box around your ladders. This box should be given a texture of "common/ladderclip". 
+		PS: This does NOT add support to allow bots to use ladders.. that's elsewhere and forthcoming.
+
+- Shafe - zpak0-trepidation.pk3 - Copied the Q3 /scripts/common.shader file into the trep pak.. This file will have to be totally redone though.
+
+- Shafe - zpak0-trepidation.pk3 - Added in my personal config file shafe.cfg :)
+
+- Shafe - game - Alt Fire Rocket now shoots seeking rockets... This still needs tweaked a bit.  And The Unlagged Client Side Prediction is off making them kinda flicker.
+
+- Shafe - game - The railgun is no longer dropped when you are killed in instagib.
+
+- Shafe - zpak0-trepidation.pk3 - Added in A Bot... Default Sarge Bot... /addbot sarge
+
+-------- Older Dev Release Below ------------------------------------
+
+
+======
+MEDIA:
+======
+- Shafe - zpak0-trepidation.pk3 - Added in console backgrounds.
+
+- Shafe - Misc - Organized Working PK3s into something that makes more sense:
+	zpak0-openmedia.pk3 	- sandbox media from open arena  
+	zpak0-vmsXXXX.pk3	- Game QVM Files
+	zpak1-trepidation.pk3	- Original Media Thus Far (will eventually be pak0?)
+	zpak0-9weapons.pk3	- Weapon Models 
+	zpak1-xhairs.pk3	- Cross Hairs - we need to make our own btw.
+
+
+===========
+Q3_UI CODE
+==========
+- Shafe - q3_ui - Removed More Punkbuster Garbage
+
+- Shafe - q3_ui	- Updated menus.. Removed redundant stuff.. dequaked text strings a bit.
+
+- Shafe - q3_ui - Fixed Menu Init Error That I broke in the first place.. Bleh..
+
+- Shafe - q3_ui - Added in Ingame Dynamic Menuing System - Nothing yet but binded to 'ui_dynamicmenu'
+
+=============================
+TREPIDATION.EXE - GAME ENGINE
+=============================
+- Shafe - Engine - q3config.cfg is now trepconfig.cfg... just rename your q3config :)
+
+- Shafe - Engine - A few minor changes to the engine to dequake it.. 
+
+- Shafe - Engine - Fixed trepidation.exe so you can actually run a server under windows.
+
+=========
+GAME CODE
+=========
+- Shafe - game - Added In Unlagged Code Base
+
+- Shafe - game - Added In EF Style Physics Emulation
+
+- Shafe - game - Added in g_instagib for instagib mode.  There's still some stuff to do to this like get rid of weapon dropping and some of the pickups as they are pointless... 
+
+
+==========
+CGAME CODE
+==========
+- Shafe - cgame - Updated Zoom.. To Make it actually useful.... Basically Like Zoom Works In EF.
+
+- Shafe - cgame - UI_HASUNIQUECDKEY returns false where it needs to.
+
+===========
+OVERAL CODE
+===========
+- Shafe - cgame/game - Alt Fire Code Added In... Alt Fire Binded to +button5   Right now some of the weapons just fire rockets, others just fire normal... But the code is in there..
+
+- Shafe - cgame/game - Made some Adjustments to Alt-Fire for Unlagged Prediction
+
+- Shafe - cgame/game -Created Grenade Alt Fire.. Sticky Grenades Like EF...  They still look ugly tho
+
+
+
