@@ -67,24 +67,24 @@ line 52
 ;22:	"*taunt3.wav",
 ;23:	"*taunt4.wav",
 ;24:	"*taunt5.wav"	
-;25:	"*death1.mp3",
-;26:	"*death2.mp3",
-;27:	"*death3.mp3",
-;28:	"*jump1.mp3",
-;29:	"*pain25_1.mp3",
-;30:	"*pain50_1.mp3",
-;31:	"*pain75_1.mp3",
-;32:	"*pain100_1.mp3",
-;33:	"*falling1.mp3",
-;34:	"*gasp.mp3",
-;35:	"*drown.mp3",
-;36:	"*fall1.mp3",
-;37:	"*taunt.mp3",
-;38:	"*taunt1.mp3",
-;39:	"*taunt2.mp3",
-;40:	"*taunt3.mp3",
-;41:	"*taunt4.mp3",
-;42:	"*taunt5.mp3"
+;25:	"*death1.ogg",
+;26:	"*death2.ogg",
+;27:	"*death3.ogg",
+;28:	"*jump1.ogg",
+;29:	"*pain25_1.ogg",
+;30:	"*pain50_1.ogg",
+;31:	"*pain75_1.ogg",
+;32:	"*pain100_1.ogg",
+;33:	"*falling1.ogg",
+;34:	"*gasp.ogg",
+;35:	"*drown.ogg",
+;36:	"*fall1.ogg",
+;37:	"*taunt.ogg",
+;38:	"*taunt1.ogg",
+;39:	"*taunt2.ogg",
+;40:	"*taunt3.ogg",
+;41:	"*taunt4.ogg",
+;42:	"*taunt5.ogg"
 ;43:};
 ;44:
 ;45:
@@ -18165,9 +18165,9 @@ byte 1 110
 byte 1 116
 byte 1 53
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $105
@@ -18179,9 +18179,9 @@ byte 1 110
 byte 1 116
 byte 1 52
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $104
@@ -18193,9 +18193,9 @@ byte 1 110
 byte 1 116
 byte 1 51
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $103
@@ -18207,9 +18207,9 @@ byte 1 110
 byte 1 116
 byte 1 50
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $102
@@ -18221,9 +18221,9 @@ byte 1 110
 byte 1 116
 byte 1 49
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $101
@@ -18234,9 +18234,9 @@ byte 1 117
 byte 1 110
 byte 1 116
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $100
@@ -18247,9 +18247,9 @@ byte 1 108
 byte 1 108
 byte 1 49
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $99
@@ -18260,9 +18260,9 @@ byte 1 111
 byte 1 119
 byte 1 110
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $98
@@ -18272,9 +18272,9 @@ byte 1 97
 byte 1 115
 byte 1 112
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $97
@@ -18288,9 +18288,9 @@ byte 1 110
 byte 1 103
 byte 1 49
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $96
@@ -18305,9 +18305,9 @@ byte 1 48
 byte 1 95
 byte 1 49
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $95
@@ -18321,9 +18321,9 @@ byte 1 53
 byte 1 95
 byte 1 49
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $94
@@ -18337,9 +18337,9 @@ byte 1 48
 byte 1 95
 byte 1 49
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $93
@@ -18353,9 +18353,9 @@ byte 1 53
 byte 1 95
 byte 1 49
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $92
@@ -18366,9 +18366,9 @@ byte 1 109
 byte 1 112
 byte 1 49
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $91
@@ -18380,9 +18380,9 @@ byte 1 116
 byte 1 104
 byte 1 51
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $90
@@ -18394,9 +18394,9 @@ byte 1 116
 byte 1 104
 byte 1 50
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $89
@@ -18419,9 +18419,9 @@ byte 1 116
 byte 1 104
 byte 1 49
 byte 1 46
-byte 1 109
-byte 1 112
-byte 1 51
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $88
