@@ -1,0 +1,40 @@
+Trepdiation Linux Readme.txt
+
+===================================
+Trepidation 02-01-07 Linux
+http://www.planettrepidation.com
+===================================
+OVERVIEW:
+This archive contains binaries for Trepidation dedicated server, the game client and all game media
+
+The client is built with no mp3 support You'll need  libmad-dev to compile it.  
+You shouldnt run into problems aside from in custom player models.
+
+=====================
+BUILDING FROM SOURCE
+=====================
+If you need to build from source the source code can be checked out from our subversion repository here:
+
+svn co https://svn.sourceforge.net/svnroot/trepidation trepidation 
+
+You can view the repository on the web here:
+http://svn.sourceforge.net/trepidation/
+
+INSTALLING
+When unpacking the zip/tar you should have a directory called trepidation.
+Within that directory you should have the binaries as well as a folder called 'base' containing the game media.
+
+The binaries are as follows:
+trepded.i386     - Dedicated Server Binary
+trepidation.i386 - 32 bit Game Client (run this one)
+trepidation-smp.i386 - 32 Bit Game Client optimized for dual processors.
+
+RUNNING A SERVER
+If your familiar with running a quake 3 server it should be pretty easy. 
+Eventually I'll write up more on this.  
+
+The CHANGELOG and other Readable stuff can be found in the directory 
+called Docs
+
+http://www.planettrepidation.com
+
