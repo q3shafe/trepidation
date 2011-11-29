@@ -242,8 +242,8 @@ PROTOCOL
 ==============================================================
 */
 
-#define	PROTOCOL_VERSION	68
-// 1.31 - 67
+#define	PROTOCOL_VERSION	72
+// 1.31 - 67  -- Shafe - Previous 68
 
 // maintain a list of compatible protocols for demo playing
 // NOTE: that stuff only works with two digits protocols
@@ -583,9 +583,9 @@ issues.
 #define	MAX_FILE_HANDLES	64
 
 #ifdef DEDICATED
-#	define Q3CONFIG_CFG "q3config_server.cfg"
+#	define Q3CONFIG_CFG "trepconfig_server.cfg"
 #else
-#	define Q3CONFIG_CFG "q3config.cfg"
+#	define Q3CONFIG_CFG "trepconfig.cfg"
 #endif
 
 qboolean FS_Initialized( void );
