@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
   #define PRODUCT_VERSION "1.35"
 #endif
 
-#define Q3_VERSION PRODUCT_NAME " " PRODUCT_VERSION
+#define Q3_VERSION PRODUCT_NAME "Trepidation" PRODUCT_VERSION
 
 #define MAX_TEAMNAME		32
 #define MAX_MASTER_SERVERS      5	// number of supported master servers
