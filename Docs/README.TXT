@@ -51,9 +51,8 @@ ui_dynamic menu
 ========
 WEAPONS
 ========
-As Trepidation is a work in progress.  Only a handful of weapons have been completed 
-and even fewer original weapon models are in place.  The new weapons are listed below, 
-the remaining weapons are quake 3 defaults and may have no secondary fire capabilities. 
+As Trepidation is a work in progress.  Only a handful of weapon models are in place.  
+Most of the newly created weapons have both primary and alt fire functions explained below.
 
 
 Weapon Name / Number
@@ -102,7 +101,7 @@ as a railgun accelerates projectiles down two parallel conducting rails. Coilgun
 are essentially identical to mass drivers, though on a smaller scale. 
 ( http://en.wikipedia.org/wiki/Gauss_gun )
 Primary fire is a very focused shot.
-Alternate Fire Fires A Singularity Burst.
+Alternate fire activates the zoom/scope.
 	Initial Ammo: 10
 	Max Ammo: 50
 	Ammo Pickups: 10
@@ -236,14 +235,17 @@ killed (even once!) as you will be eliminated for the remainder of the round.
 CONNECTING TO A SERVER
 ======================
 There is a working master server so you should be able to find the test
- servers.  There have been some issues where the server browser wasnt working
-for some people, If this is the case for you the test servers should already 
-be loaded under FAVORITES in the server browser.
-
-If all else fails, you can connect manually.
+ servers.  
 
 Currently Running Servers are here:
 http://master.tnlsoft.com
+
+If for some reason you manually need to set the master server cvars,
+here is a list of active master servers:
+
+master.tnlsoft.com
+master.beer-garden.org
+master.u7net.com
 
 
 =====
@@ -497,13 +499,12 @@ Also See Server CVARS:
 ===========
 BOT SUPPORT
 ===========
-There is one bot now supported.  Here's how to enable it in the console:
+Bots are supported, there are a few included, most quake3 bots should work as well.
 
 /bot_enable 1
 /map XXXXXXXXXXXXX (whatever map you want to load)
-/addbot sarge
+/addbot botname
 
-Since this is a stolen bot from quake 3, we'll need to create our own.
 
 
 ================
@@ -574,12 +575,6 @@ so your choice).
 We'll eventually have to recompile GtkRadiant itself with some new tools 
 for the vehichles and whatever weapons we come up with... 
 
-The biggest challenge the mappers are having at the moment is all of the 
-textures have to be original or fall under the GPL or equivilant license..\
-
-The current development build has a lot of textures in the zpakX-openmedia.pk3 
-which are all gpl.  And of course anything in any Trep original map.
-
 ================
 MAPPING: LADDERS
 ================
@@ -634,9 +629,9 @@ the Quake 3 MD3 based format will work as well.
 
 
 ===========================================================
-2006 Trepidation Project
-http://trepidation.sourceforge.net
+2011 Trepidation Project
+http://trepidation.u7net.com
 
-Credits:
+
 
 
