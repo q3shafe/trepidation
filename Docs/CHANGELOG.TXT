@@ -15,9 +15,19 @@ downloads on :)
 Trepidation Changelog - Most Recent Changes First
 ==================================================
 ======================
-02-01-07 BUILD
+12-15-2011 BUILD
 ======================
 This is mostly a maintenance release, primarily to bring the engine up to date with a newer version of the IOQ3 Engine, as well as clean up a lot of problems that came up in the last dev build in 2007.  
+
+- 0000135: [Programming] Some Ogg Sounds are cut off. - Fixed (Shafe)
+
+- 0000146: [Sound/Music] Missing sound in OA_RPG3DM2  - Fixed 
+
+- 0000139: [Programming] Gun Scope Still Active After Weapon Switch (Shafe)  - Fixed 
+
+- 0000138: [Programming] Rifle Zoom Glitch (Shafe)  - Fixed 
+
+- 0000092: [Programming] Bullet holes appear on the surface of the water. (Vincentk)  - Fixed 
 
 - Due to the wary licensing issues mp3 support has been removed.  This should only effect some Elite Force compatability, conversions should be fairly simple.
 
