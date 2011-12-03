@@ -19,6 +19,8 @@ Trepidation Changelog - Most Recent Changes First
 ======================
 This is mostly a maintenance release, primarily to bring the engine up to date with a newer version of the IOQ3 Engine, as well as clean up a lot of problems that came up in the last dev build in 2007.  
 
+- For windows, there is a separate EXE for the dedicated server now.
+
 - 0000135: [Programming] Some Ogg Sounds are cut off. - Fixed (Shafe)
 
 - 0000146: [Sound/Music] Missing sound in OA_RPG3DM2  - Fixed 
@@ -31,7 +33,7 @@ This is mostly a maintenance release, primarily to bring the engine up to date w
 
 - Due to the wary licensing issues mp3 support has been removed.  This should only effect some Elite Force compatability, conversions should be fairly simple.
 
-- Updated default configurations to enabled VOIP support by default.
+- Updated default configurations to enabled VOIP support by default as well as a few other needed changes.
 
 - Inter-Quake Model support
 
