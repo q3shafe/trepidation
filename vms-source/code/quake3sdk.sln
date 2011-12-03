@@ -1,21 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgame", "cgame\cgame.vcproj", "{BD75042B-438D-4F1F-B241-63D275C30ED2}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgame", "cgame\cgame.vcxproj", "{BD75042B-438D-4F1F-B241-63D275C30ED2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game\game.vcproj", "{58D6EFB3-F4FF-43BF-ACBC-166DE2D925B2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game\game.vcxproj", "{58D6EFB3-F4FF-43BF-ACBC-166DE2D925B2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "q3_ui", "q3_ui\q3_ui.vcproj", "{F665E989-599B-4A11-AAE2-E6BA889B0F7F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{BD75042B-438D-4F1F-B241-63D275C30ED2} = {BD75042B-438D-4F1F-B241-63D275C30ED2}
-		{58D6EFB3-F4FF-43BF-ACBC-166DE2D925B2} = {58D6EFB3-F4FF-43BF-ACBC-166DE2D925B2}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "q3_ui", "q3_ui\q3_ui.vcxproj", "{F665E989-599B-4A11-AAE2-E6BA889B0F7F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ui", "ui\ui.vcproj", "{0B79E7A4-3C1B-4D9C-8A7B-09BA014FA03A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{BD75042B-438D-4F1F-B241-63D275C30ED2} = {BD75042B-438D-4F1F-B241-63D275C30ED2}
-		{58D6EFB3-F4FF-43BF-ACBC-166DE2D925B2} = {58D6EFB3-F4FF-43BF-ACBC-166DE2D925B2}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ui", "ui\ui.vcxproj", "{0B79E7A4-3C1B-4D9C-8A7B-09BA014FA03A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
