@@ -1,504 +1,719 @@
-<style type="text/css">
-<!--
-.style1 {font-weight: bold}
--->
-</style>
-<H2>Manual </H2>
-<P><STRONG>About The </STRONG><STRONG>Trepidation:</STRONG> <BR><EM><STRONG>Definition: </STRONG></EM>(from Lat. trepidus, "anxious") A state of alarm or dread; apprehension. See Synonyms at fear. An involuntary trembling or quivering. The word is used technically in astronomy for an imagined oscillation of the equinoxes. <BR><BR><EM><STRONG>THIS IS A WORK IN PROGRESS AND IS INCOMPLETE. IMAGES AND MORE DOCUMENTATION WILL BE AVAILABLE AS IT IS WRITTEN. IF YOU WANT TO VOLUNTEER TO WRITE SOME DOCUMENTATION FEEL FREE & VISIT OUR <A href="http://www.planettrepidation.com/forum/" &PHPSESSID="9025eea1731d949c6b8828e59033f8bc">FORUMS</A> </STRONG></EM><br>
-  <br>
-    <strong>You may want to <a href="http://www.planettrepidation.com/modules/cjaycontent/index.php?id=21">SKIP TO THE QUICKSTART GUIDE  </a></strong><a href="http://www.planettrepidation.com/modules/cjaycontent/index.php?id=21">!</a><br>
-  <BR>
-    <BR></P>
-<DIV>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=top name=top></A>Table Of Contents</H2></TD>
-<TD width="59%"></TD></TR></TBODY></TABLE></DIV>
-<DIV>
-<UL>
-<LI><A href="#backstory">A Story Of Trepidation</A> </LI>
-<LI><A href="#started">Getting Started</A></LI>
-<LI><A href="#weapons">Weapons</A></LI>
-<LI><A href="#inventory">Other Inventory</A></LI>
-<LI>Powerups</LI>
-<LI>Holdables</LI>
-<LI><A href="#gametypes">Gametypes</A> </LI>
-<LI><A href="#trepded">Running A Dedicated Server </A></LI>
-<LI><A href="#scvars">Server CVARs</A></LI>
-<LI><A href="#enginecvars">Engine CVARs</A> </LI>
-<LI><A href="#binds">Binds & Commands</A></LI>
-<LI><A href="#mapping">Mapping For Trepidation </A>
-<UL>
-<LI><A href="#mapladders">Ladders</A></LI>
-<LI>Breakables</LI>
-<LI><A href="#mapliquid">Liquid, Lava and Fog</A></LI>
-<LI><A href="#mapweapons">Weapons</A></LI>
-<LI><A href="#models">Models</A></LI></UL></LI></UL></DIV>
-<UL>
-<LI>Coding For Trepidation</LI></UL>
-<P><BR></P>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=backstory name=backstory></A>A Story Of Trepidation </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P>Trepidation: It's hard to be human.</P>
-<P>In a not so far future, evolution will take it's course and being human is going to be very hard...</P>
-<P>Life always find it's way. Mutation occurs, nature tries, nature fails. But sometimes, somehow, the lottery is won and two poor mutated freaks are able to breed...</P>
-<P>Around 2550 (?) the old human race is facing two new races: The Fair (homo sapien superior) and the Ogre (homo sapien truculentus).</P>
-<P>Fair are the winner of intelligence. Tall, light weight, pale skin, pointy eyes pointy ears and a very big brain. Not as tough as human, they are quicker and make formidable opponent in combat. 4% of the Fair have telepathic abilities. They have<BR>mastered technology, their culture is now the most advance both military and socially.</P>
-<P>The Ogre are tough, they are champion of adaptation. They are unstoppable living machine, resistant to any toxic compound, even radiation. Physic: they are a big pile of ugly muscles, and despite their 'animal' side, they have manage to build a<BR>great society able to challenge both Human and Fair. 8% of the Ogre are horned. That give them a special status in their tribe.</P>
-<P>Now the 3 races have to share the earth. Hostile the each other, incapable of coexistence, they are in a constant war, fighting for the remaining resources of the planet.</P>
-<P>Life in that time is a non-stop trepidation...</P>
-<P>Races:</P>
-<P>Human (homo sapien sapien)<BR>Fair (homo sapien superior)<BR>Ogre (homo sapien truculentus)<BR>Construct (cyborg, droid...)</P>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=started name=started></A>Getting Started </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P>The default settings are pretty low end.</P>
-<P>The first thing you will want to do, aside from setup your controls is setup your video settings. Most modern computers (and even my computer) can run a lot higher than the defaults.</P>
-<P>Also check your Net connection settings, the default is dialup, which will be crap on the test server.<BR><BR>There is a working master server so you should be able to find the testservers. There have been some issues where the server browser wasnt workingfor some people, If this is the case for you<STRONG> the test servers should already be loaded under FAVORITES</STRONG> in the server browser. If all else fails, you can connect manually.</P>
-<P>Check the Trepidation Forums (pinned topics) for any updates to the official test server list. <A href="http://www.planettrepidation.com/forum/" target=forum>http://www.planettrepidationtrepidation.com/forum/</A></P>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=weapons name=weapons></A>Weapons </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P>As Trepidation is a work in progress. Only a handful of weapons have been completed and even fewer original weapon models are in place. The new weapons are listed below, the remaining weapons are quake 3 defaults and may have no secondary fire capabilities. </P>
-<P><STRONG>LFO Rifle</STRONG> (Weapon 2)<BR>The Low Frequency Oscillation Rifle is a standard issue weapon for humans. The weapon is powered by rechargable cells that automatically regenerate. The weapon fires low frequency oscillating pulses at a high rate of fire.<BR><STRONG>Primary fire</STRONG> fires low frequency oscillating pulses at a high rate of fire.<BR><STRONG>Alternate Fire</STRONG> fires larger and more powerful low frequency oscillating pulses at a high rate of fire.<BR></P>
-<UL>
-<LI>Initial Ammo: 50<BR>Max Ammo: 150<BR>Ammo Pickups: 20 <BR>Seconary Attack Ammo Usage: 2 </LI></UL>
-<P><BR><BR><STRONG>GRENADE LAUNCHER</STRONG> (Weapon 4)<BR>Functions much like the Quake 3 grenade launcher. <BR>
-<STRONG>Primary fire</STRONG> fires a grenade, The grenade is a 2 step process. Press primary fire once and the grenade is launched, Press primary fire a second time and the grenade explodes. <BR>
-<STRONG>Alternate Fire</STRONG> explodes on impact.<BR>The alt-fire grenade can be used for rocket jumping style manuevers</P>
-<UL>
-<LI>Initial Ammo: 10<BR>Max Ammo: 50<BR>Ammo Pickups: 7 <BR>Seconary Attack Ammo Usage: 2 <BR></LI></UL>
-<P><STRONG>SINGULARITY CANNON</STRONG> (Weapon 5)<BR>The singularity cannon produces an unstable quantum singularity on the fly which is launched causing significant damage as well as a fair amount splash damage. This weapon is powered by Singularity Reactor Rods. <BR><STRONG>Alternate fire</STRONG> adds a quantum memory to the projectile which can be used to track and lock onto potential targets. </P>
-<UL>
-<LI>Initial Ammo: 10<BR>Max Ammo: 30<BR>Ammo Pickups: 6 <BR>Seconary Attack Ammo Usage: 3</LI></UL>
-<P><STRONG><BR>FLAME THROWER </STRONG>(Weapon 6)<BR>The flame thrower is a brand new weapon that replaces the lighning gun.<BR><STRONG>Primary fire</STRONG>: of the flame thrower shoots balls of fire.<BR><STRONG>Alternate Fire</STRONG>: fires more like a conventional flame thrower. That is a single stream of fire. Beware, alt fire uses a lot of ammo and you can easily burn yourself with the flames.</P>
-<UL>
-<LI>Initial Ammo: 300<BR>Max Ammo: 400<BR>Ammo Pickups: 25<BR>Seconary Attack Ammo Usage: 1 (goes quick tho)</LI></UL>
-<P><STRONG>M42 GAUSS RIFLE</STRONG> (Weapon 7)<BR>A coilgun (also known as Gauss gun or Gauss rifle) is a type of cannon that uses a series of electromagnets to accelerate a magnetic shell to very high velocities. Coilguns are often mistakenly called railguns by many sources, and while they are similar in general concept (that is, a magnetic gun), they differ in operation, as a railgun accelerates projectiles down two parallel conducting rails. Coilguns are essentially, identical to mass drivers, though on a smaller scale. ( http://en.wikipedia.org/wiki/Gauss_gun )<BR><STRONG>Primary fire</STRONG> is a very focused shot.<BR>
-  <STRONG>Alternate Fire </STRONG>is a powerful zooming scope.  .</P>
-<UL>
-<LI>Initial Ammo: 10<BR>Max Ammo: 50<BR>Ammo Pickups: 10<BR>
-Seconary Attack Ammo Usage: NA </LI>
-</UL>
-<P><STRONG>GATA GUN (X)</STRONG><BR>Primary Fire: Fires a bunch of Frisbees... I'll figure out the details on explaining this one later.. they are really razor sharp discs... that bounce around the environment... Aside from figuring out the explanation I'd like to find a better name for this one.</P>
-<P>Alternate fire fires a particle displacement grenade (PDG). This weapon fires a projectile. From the time you fire the projectile you have 30 seconds to obtain a lock and use it. A lock is only obtained once the projectile lands and comes to a complete stop. Once a lock is obtained you can then press the PDG key and you transport to the location of the projectile location. The projectile expires when you fire another or after 30 seconds. The 30 seconds begins from the time you fire the projectile. The keybinding is in OPTIONS->CONTROLS->MISC. Be careful though.. If you transport into a wall you may be stuck.</P>
-<UL>
-<LI>Initial Ammo: <BR>Max Ammo: 200<BR>Ammo Pickups: <BR>Seconary Attack Ammo Usage: 12<BR></LI></UL>
-<P><STRONG>DEVASTATOR (Weapon 9)</STRONG><BR>The devestator is the most powerful weapon available in Trepidation. The devastator fires high energy plasma projectiles. The power behind this weapon causes the projectiles to be very heavy and delivers a huge explosion.</P>
-<P>The Devastator primary attack fires a very powerful, SLOW moving burst, the projectile is affected a bit by gravity. Direct hits are deadly and splash damage is fairly large.<BR><BR>The Devastator Secondary attack is similar to primary fire except the projectile is a lot larger and it will explode twice after a few seconds into a total of 6 projectiles which will cause significant damage to the entire area. It's good to be far away from the area when this happens. The reload time for alt fire is about 3 1/2 seconds. With the Devastator's secondary fire, it's best to aim high and get out of dodge. The Devastator is not practical in enclosed spaces, as anyone within the range of its large explosion will take damage regardless of their amounts of armor and health... <BR><BR><BR>Each time... </P>
-<UL>
-<LI>Initial Ammo: 6<BR>Max Ammo: 20<BR>Ammo Pickups: 5 <BR>Seconary Attack Ammo Usage: 3 </LI></UL>
-<P><BR></P>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=inventory name=inventory></A>Other Inventory </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P>NAME/ [DEFAULT KEY BINDING]</P>
-<P><STRONG>ENERGY GRAPPLE</STRONG> [MOUSE3]<BR>
-The energy grapple is similar to the offhand grapple found in many quake 3 mods. The bind can be found in OPTIONS->CONTOLS->MISC. </P>
-<P><STRONG>PARTICLE DISPLACEMENT GRENADES (PDG's)</STRONG> [']<BR>Introducing Particle Displacement Grenades PDG's are currently setup as ALT FIRE on the plasma gun. This weapon fires a projectile. From the time you fire the projectile you have 30 seconds to obtain a lock and use it. A lock is only obtained once the projectile lands and comes to a complete stop. Once a lock is obtained you can then press the PDG key and you transport to the location of the projectile location. The projectile expires when you fire another or after 30 seconds. The 30 seconds begins from the time you fire the projectile. The keybinding is in OPTIONS->CONTROLS->MISC</P>
-<P>Be careful though.. If you transport into a wall you may be stuck.<BR></P>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=gametypes name=gametypes></A>Game types </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P><STRONG><FONT size=4>DEATHMATCH/FREE FOR ALL</FONT></STRONG> (g_gametype 0) <BR>As the title implies this is every person for themselves. The goal of a deathmatch game is to kill (or "frag") as many other players as possible until a certain condition or limit is reached, commonly being a fraglimit or timelimit. Once one of these conditions is met, the match is over, and the winner is whoever has accumulated the most frags. It is based around the idea of player spawns, and weapon/item/pickup spawns in one play session<BR><BR><STRONG><FONT size=4>TEAM DEATHMATCH</FONT></STRONG><BR>Same as above but in team fashion.<BR><BR><STRONG><FONT size=4>TOURNEY</FONT></STRONG><BR>A tournament game is implicitly a one on one match, and further players are automatically entered as spectators (note, when the game starts, all clients, including the spectators respawn). You can follow the players by using &#8220;team follow1&#8221;, &#8220;team follow2&#8221;, and you can be a scoreboard by using &#8220;team scoreboard&#8221;. <BR><BR><STRONG><FONT size=4>CAPTURE THE FLAG</FONT></STRONG><BR>Capture The Flag (CTF) is a traditional game where two teams each have a flag and the objective is to capture the other team's flag, located at the team's "base", and bring it back to their own base.<BR><BR><STRONG><FONT size=4>INSTAGIB.</FONT><BR></STRONG>Instagib can be played in most gametypes. In instagib all players carry only a M42Gauss Rifle, which has infinite ammunition and fires instantly lethal shots with infinite velocity, at a low rate of fire. Since everyone always has the same weapon and there are no health, ammo or other pickups to collect, gameplay tends to have a heavy emphasis on reflexes, hand-eye coordination and positioning, as opposed to resource management and control. Because every single shot can instantly explode an enemy from any range, gameplay also tends to be very fast paced.</P>
-<P><STRONG><FONT size=4>ARSENAL</FONT> </STRONG>(g_gamemode 2) <BR>In Arsenal, You start out with an Arsenal of weapons pre-determined by the server admin. unlimited ammo and If you die your weapon is dropped (free for anyone to salvage) and you dont get it back.<BR><BR>The Object, is not to let your arsenal empty out. If you run out of weapons you are out of the game until the next round.<BR><BR>To win, stay alive, and be the last person standing. Things heat up when it gets down to 2 people. When there are only 2 people left Showdown starts, the last stage of the game becomes increasingly difficult as you'll find that powerups, armor and health become more and more scarce.. </P>
-<P>If you pickup a weapon that isnt in your arsenal, you can use it until you die, but it doesnt get placed into your arsenal.</P>
-<P>Game Tips: pickup every weapon you see, if it's a weapon you dont have be sure to use it, because if you get killed with it you wont lose a weapon out of your arsenal, as it will give you a longer run.<BR><BR><STRONG><FONT size=4>SURVIVAL</FONT> </STRONG>(g_gamemode 2) <BR>Last Man Standing is typically played in with g_gametype set to 0/Deathmatch, however LMS can be played in Team Deathmatch as well. In LMS each player is randomly given a single weapon with unlimited ammo from the pool of weapons <BR>available (specified by the server admin). The object of Last Man Standing is exactly as the name implies. Be the last person standing. Do not get killed (even once!) as you will be eliminated for the remainder of the round. <BR><BR>
-  NOTE: Please bear with all the place-holder models and the state of this guide. This is a work in progress. <br />
-  <br />
-  <strong><font size="4">TREPIDATION </font></strong>(g_gamemode 3)<br />
-A Team based game where the object is to destroy the other team's Power Core to make a point for your team. Various defensive structures can be built to protect your base and achieve your goal. While this game employs strategy it is extremely fast paced and teamwork is a must. </P>
-<p>Classes: Not yet defined, but will be based on the races in the storyline.</p>
+					<h2 class="posts_title">Manual</h2>
+						
+					<div class="entry">
+
+						<p><strong>About </strong><strong>Trepidation:</strong></p>
+<p><em>Definition</em>: (from Lat. trepidus, &#8220;anxious&#8221;) A state of alarm or dread; apprehension. See Synonyms at fear. An involuntary trembling or quivering. The word is used technically in astronomy for an imagined oscillation of the equinoxes.</p>
+<p>THIS IS A WORK IN PROGRESS AND IS INCOMPLETE. IMAGES AND MORE DOCUMENTATION WILL BE AVAILABLE AS IT IS WRITTEN. IF YOU WANT TO VOLUNTEER TO WRITE SOME DOCUMENTATION FEEL FREE &amp; VISIT OUR <a href="http://www.planettrepidation.com/forum/">FORUMS</a></p>
+<p>You may want to <a href="http://www.planettrepidation.com/modules/cjaycontent/index.php?id=21">SKIP TO THE QUICKSTART GUIDE </a><a href="http://www.planettrepidation.com/modules/cjaycontent/index.php?id=21">!</a></p>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="100%">
+<h2>Table Of Contents</h2>
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="#backstory">A Story Of Trepidation</a></li>
+<li><a href="#started">Getting Started</a></li>
+<li><a href="#weapons">Weapons</a></li>
+<li><a href="#inventory">Other Inventory</a></li>
+<li>Powerups</li>
+<li>Holdables</li>
+<li><a href="#gametypes">Gametypes</a></li>
+<li><a href="#trepded">Running A Dedicated Server </a></li>
+<li><a href="#scvars">Server CVARs</a></li>
+<li><a href="#enginecvars">Engine CVARs</a></li>
+<li><a href="#binds">Binds &amp; Commands</a></li>
+<li><a href="#voip">Voice Support (VOIP)</a>
+<li><a href="#mapping">Mapping For Trepidation </a>
+<ul>
+<li><a href="#mapladders">Ladders</a></li>
+<li>Breakables</li>
+<li><a href="#mapliquid">Liquid, Lava and Fog</a></li>
+<li><a href="#mapweapons">Weapons</a></li>
+<li><a href="#models">Models</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Coding For Trepidation</li>
+</ul>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="60%">
+<h2><a id="started" name="started"></a>Getting Started</h2>
+</td>
+<td width="40%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The default settings are pretty low end. The first thing you will want to do, aside from setup your controls is setup your video settings. Most modern computers (and even my computer) can run a lot higher than the defaults.</p>
+<p>Also check your Net connection settings.</p>
+<p>There is a working master server so you should be able to find the test servers.</p>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="60%">
+<h2>Weapons</h2>
+</td>
+<td width="40%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>As Trepidation is a work in progress. Only a handful of weapons have been completed and even fewer original weapon models are in place. The new weapons are listed below, the remaining weapons are quake 3 defaults and may have no secondary fire capabilities.</p>
+<p><strong>LFO Rifle</strong> (Weapon 2)<br />
+The Low Frequency Oscillation Rifle is a standard issue weapon for humans. The weapon is powered by rechargable cells that automatically regenerate. The weapon fires low frequency oscillating pulses at a high rate of fire.</p>
+<p><strong>Primary fire</strong> fires low frequency oscillating pulses at a high rate of fire.<br />
+<strong>Alternate Fire</strong> fires larger and more powerful low frequency oscillating pulses at a high rate of fire.</p>
+<ul>
+<li>Initial Ammo: 50</li>
+<li>Max Ammo: 150</li>
+<li>Ammo Pickups: 20</li>
+<li>Seconary Attack Ammo Usage: 2</li>
+</ul>
+<p><strong>GRENADE LAUNCHER</strong> (Weapon 4)<br />
+Functions much like the Quake 3 grenade launcher.</p>
+<p><strong>Primary fire</strong> bounces for a few seconds before exploding.<br />
+<strong>Alternate Fire</strong> explodes on impact.</p>
+<p>The alt-fire grenade can be used for rocket jumping style manuevers</p>
+<ul>
+<li>Initial Ammo: 10</li>
+<li>Max Ammo: 50</li>
+<li>Ammo Pickups: 7</li>
+<li>Seconary Attack Ammo Usage: 2</li>
+</ul>
+<p><strong>SINGULARITY CANNON</strong> (Weapon 5)<br />
+The singularity cannon produces an unstable quantum singularity on the fly which is launched causing significant damage as well as a fair amount splash damage. This weapon is powered by Singularity Reactor Rods.</p>
+<p><strong>Alternate fire</strong> adds a quantum memory to the projectile which can be used to track and lock onto potential targets.</p>
+<ul>
+<li>Initial Ammo: 10</li>
+<li>Max Ammo: 30</li>
+<li>Ammo Pickups: 6</li>
+<li>Seconary Attack Ammo Usage: 3</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>FLAME THROWER(Weapon 6)<br />
+</strong>The flame thrower is a brand new weapon that replaces the lighning gun.</p>
+<p><strong>Primary fire</strong>: of the flame thrower shoots balls of fire.<br />
+<strong>Alternate Fire</strong>: fires more like a conventional flame thrower. That is a single stream of fire. Beware, alt fire uses a lot of ammo and you can easily burn yourself with the flames.</p>
+<ul>
+<li>Initial Ammo: 300</li>
+<li>Max Ammo: 400</li>
+<li>Ammo Pickups: 25</li>
+<li>Seconary Attack Ammo Usage: 1 (goes quick tho)</li>
+</ul>
+<p><strong><br />
+M42 GAUSS RIFLE</strong> (Weapon 7)<br />
+A coilgun (also known as Gauss gun or Gauss rifle) is a type of cannon that uses a series of electromagnets to accelerate a magnetic shell to very high velocities. Coilguns are often mistakenly called railguns by many sources, and while they are similar in general concept (that is, a magnetic gun), they differ in operation, as a railgun accelerates projectiles down two parallel conducting rails. Coilguns are essentially, identical to mass drivers, though on a smaller scale. ( http://en.wikipedia.org/wiki/Gauss_gun )</p>
+<p><strong>Primary fire</strong> is a very focused shot.<br />
+<strong>Alternate Fire </strong>is a powerful zooming scope. .</p>
+<ul>
+<li>Initial Ammo: 10</li>
+<li>Max Ammo: 50</li>
+<li>Ammo Pickups: 10</li>
+<li>Seconary Attack Ammo Usage: NA</li>
+</ul>
+<p><strong><br />
+GATA GUN (X)<br />
+Primary Fire</strong>: Fires a bunch of Frisbees&#8230; I&#8217;ll figure out the details on explaining this one later.. they are really razor sharp discs&#8230; that bounce around the environment&#8230; Aside from figuring out the explanation I&#8217;d like to find a better name for this one.</p>
+<p><strong>Alternate fire</strong>: fires a particle displacement grenade (PDG). This weapon fires a projectile. From the time you fire the projectile you have 30 seconds to obtain a lock and use it. A lock is only obtained once the projectile lands and comes to a complete stop. Once a lock is obtained you can then press the PDG key and you transport to the location of the projectile location. The projectile expires when you fire another or after 30 seconds. The 30 seconds begins from the time you fire the projectile. The keybinding is in OPTIONS-&gt;CONTROLS-&gt;MISC. Be careful though.. If you transport into a wall you may be stuck.</p>
+<ul>
+<li>Initial Ammo:</li>
+<li>Max Ammo: 200</li>
+<li>Ammo Pickups:</li>
+<li>Seconary Attack Ammo Usage: 12</li>
+</ul>
+<p><strong><br />
+DEVASTATOR (Weapon 9)<br />
+</strong>The devestator is the most powerful weapon available in Trepidation. The devastator fires high energy plasma projectiles. The power behind this weapon causes the projectiles to be very heavy and delivers a huge explosion.</p>
+<p><strong>Primary Fire:</strong> fires a very powerful, SLOW moving burst, the projectile is affected a bit by gravity. Direct hits are deadly and splash damage is fairly large.</p>
+<p><strong>Alternate Fire:</strong> is similar to primary fire except the projectile is a lot larger and it will explode twice after a few seconds into a total of 6 projectiles which will cause significant damage to the entire area. It&#8217;s good to be far away from the area when this happens. The reload time for alt fire is about 3 1/2 seconds. With the Devastator&#8217;s secondary fire, it&#8217;s best to aim high and get out of dodge. The Devastator is not practical in enclosed spaces, as anyone within the range of its large explosion will take damage regardless of their amounts of armor and health&#8230;</p>
+<p>Each time&#8230;</p>
+<ul>
+<li>Initial Ammo: 6</li>
+<li>Max Ammo: 20</li>
+<li>Ammo Pickups: 5</li>
+<li>Seconary Attack Ammo Usage: 3</li>
+</ul>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="60%">
+<h2><a id="inventory" name="inventory"></a>Other Inventory</h2>
+</td>
+<td width="40%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>NAME/ [DEFAULT KEY BINDING]</p>
+<p><strong>PORTABLE TRACKING DEVICE (PTD)</strong> [L]<br />
+Not Yet Implemented Bind is found in CONTROLS-&gt;MISC</p>
+<p><strong>ENERGY GRAPPLE</strong> [MOUSE3]<br />
+The energy grapple is similar to the offhand grapple found in many quake 3 mods. The bind can be found in OPTIONS-&gt;CONTOLS-&gt;MISC.</p>
+<p><strong>PARTICLE DISPLACEMENT GRENADES (PDG&#8217;s)</strong> [']<br />
+Introducing Particle Displacement Grenades PDG&#8217;s are currently setup as ALT FIRE on the plasma gun. This weapon fires a projectile. From the time you fire the projectile you have 30 seconds to obtain a lock and use it. A lock is only obtained once the projectile lands and comes to a complete stop. Once a lock is obtained you can then press the PDG key and you transport to the location of the projectile location. The projectile expires when you fire another or after 30 seconds. The 30 seconds begins from the time you fire the projectile. The keybinding is in OPTIONS-&gt;CONTROLS-&gt;MISC</p>
+<p>Be careful though.. If you transport into a wall you may be stuck.</p>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="60%">
+<h2><a id="gametypes" name="gametypes"></a>Game types</h2>
+</td>
+<td width="40%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong><span style="font-size: medium;">DEATHMATCH/FREE FOR ALL</span></strong> (g_gametype 0)<br />
+As the title implies this is every person for themselves. The goal of a deathmatch game is to kill (or &#8220;frag&#8221;) as many other players as possible until a certain condition or limit is reached, commonly being a fraglimit or timelimit. Once one of these conditions is met, the match is over, and the winner is whoever has accumulated the most frags. It is based around the idea of player spawns, and weapon/item/pickup spawns in one play session</p>
+<p><strong><span style="font-size: medium;"><br />
+TEAM DEATHMATCH<br />
+</span></strong>Same as above but in team fashion.</p>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: medium;">TOURNEY<br />
+</span></strong>A tournament game is implicitly a one on one match, and further players are automatically entered as spectators (note, when the game starts, all clients, including the spectators respawn). You can follow the players by using “team follow1”, “team follow2”, and you can be a scoreboard by using “team scoreboard”.</p>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: medium;">CAPTURE THE FLAG<br />
+</span></strong>Capture The Flag (CTF) is a traditional game where two teams each have a flag and the objective is to capture the other team&#8217;s flag, located at the team&#8217;s &#8220;base&#8221;, and bring it back to their own base.</p>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: medium;">INSTAGIB.<br />
+</span></strong>Instagib can be played in most gametypes. In instagib all players carry only a M42Gauss Rifle, which has infinite ammunition and fires instantly lethal shots with infinite velocity, at a low rate of fire. Since everyone always has the same weapon and there are no health, ammo or other pickups to collect, gameplay tends to have a heavy emphasis on reflexes, hand-eye coordination and positioning, as opposed to resource management and control. Because every single shot can instantly explode an enemy from any range, gameplay also tends to be very fast paced.</p>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: medium;">ARSENAL</span> </strong>(g_gamemode 2)<br />
+In Arsenal, You start out with an Arsenal of weapons pre-determined by the server admin. unlimited ammo and If you die your weapon is dropped (free for anyone to salvage) and you dont get it back.</p>
+<p>The Object, is not to let your arsenal empty out. If you run out of weapons you are out of the game until the next round.</p>
+<p>To win, stay alive, and be the last person standing. Things heat up when it gets down to 2 people. When there are only 2 people left Showdown starts, the last stage of the game becomes increasingly difficult as you&#8217;ll find that powerups, armor and health become more and more scarce..</p>
+<p>If you pickup a weapon that isnt in your arsenal, you can use it until you die, but it doesnt get placed into your arsenal.</p>
+<p>Game Tips: pickup every weapon you see, if it&#8217;s a weapon you dont have be sure to use it, because if you get killed with it you wont lose a weapon out of your arsenal, as it will give you a longer run.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: medium;">SURVIVAL</span> </strong>(g_gamemode 2)<br />
+Last Man Standing is typically played in with g_gametype set to 0/Deathmatch, however LMS can be played in Team Deathmatch as well. In LMS each player is randomly given a single weapon with unlimited ammo from the pool of weapons</p>
+<p>available (specified by the server admin). The object of Last Man Standing is exactly as the name implies. Be the last person standing. Do not get killed (even once!) as you will be eliminated for the remainder of the round.</p>
+<p>NOTE: Please bear with all the place-holder models and the state of this guide. This is a work in progress.</p>
+<p><strong><span style="font-size: medium;"><br />
+TREPIDATION </span></strong>(g_gamemode 3)<br />
+A Team based game where the object is to destroy the other team&#8217;s Power Core to make a point for your team. Various defensive structures can be built to protect your base and achieve your goal. While this game employs strategy it is extremely fast paced and teamwork is a must.</p>
 <p>Both teams are givin 35 seconds to build a power core at the start of each round or after each score. If the team fails to build one, one will be built automatically in a random spot on the map (most likely in a spot difficult to defend).</p>
-<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
-  <p align="left"><strong><em>Power Core:<br />
-    </em></strong>The power core must be destroyed by weapons fire or other such explosives. Destroying the power core will require multiple hits. When a sheild generator is present the power core becomes shielded and will regenerate. 2 shield generators will offer more protection and cause the power core to regenerate to a faster and to a higher level of health. A sheilded power core can be taken out without taking out the shield generators however it will take a significant amount of firepower, also so long as the shield generator(s) are operational, the power core's shield and health will regenerate. Once it has sustained enough fire to take out the shield the shield will not re-activate and regeneration stops, regardless if a shield generator is present.<br />
-  </p>
-  <div align="center">
-    <table width="20%" border="0" align="center">
-      <tr>
-        <td width="53%"><div align="center"><img src="http://www.planettrepidation.com/images/man/pc.jpg" alt="Power Core" width="195" height="290" longdesc="Power Code" /></div></td>
-        <td width="47%"><div align="center"><img src="http://www.planettrepidation.com/images/man/s_pc.jpg" alt="Shielded Power Core" width="218" height="291" /></div></td>
-      </tr>
-      <tr>
-        <td><div align="center"><em>Unshielded Power Core </em></div></td>
-        <td><div align="center"><em>Shielded Powercore </em></div></td>
-      </tr>
-    </table>
-  </div>
-  <p align="left"><br />
-  </p>
-  <p><strong><em>Shield Generators</em></strong><br />
-    Each team can have up to 2 shield generators (1 at the start of the game). The shield generator is used to power shielding on the power core. So long at least one shield generator is active the health of the power core will regenerate. 2 Shield generators offer double the protection and the MC's health will generate twice as high as it would without any shield generators. </p>
-  <table width="15%" border="0">
-    <tr>
-      <td width="43%"><div align="center"><img src="http://www.planettrepidation.com/images/man/gen.jpg" alt="Generator" width="151" height="254" /></div></td>
-    </tr>
-    <tr>
-      <td><div align="center"><em>Shield Generator <br />
-        Placeholder Model</em> </div></td>
-    </tr>
-  </table>
-  <p><br />
-      <br />
-      <strong><em>Immobilizers<br />
-      </em></strong>Immobilizers are defensive devices that emit an immobilization field that causes foes to lose the ability to move.  While it is possible to break free from an immobilizer field it can prove difficult.  Immobilizers are best used in conjunction with turrets, as the immobiler will render the enemy immobile, the turret will finish the job.   Immobilizers can be destroyed quite easily and work best when well concealed, unfortunately immobilizers are line of site devices, which means a clear path needs to be established between the enemy and the immobilizer.<br />
-  </p>
-  <table width="15%" border="0">
-    <tr>
-      <td width="40%"><div align="center"><img src="http://www.planettrepidation.com/images/man/immobilizer.jpg" alt="Immobilizer" width="147" height="272" /></div></td>
-    </tr>
-    <tr>
-      <td><div align="center"><em>Immobilizer <br />
-        Placeholder Model </em></div></td>
-    </tr>
-  </table>
-  <p><strong><em>Turrets<br />
-  </em></strong>A limited number of turrets can be created to help protect your MC and sheild generators. Turrets will seek and fire upon any enemy within the turret's range. There are 3 types of turrets available throughout the game, better turrets become available as the game progresses. The 3 different types are:</p>
-  <blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
-    <p><em><strong>Basic Turret:</strong><br />
-    </em>Basic turrets will fire machine gun fire at a target. Basic turrets are the primary turret available at the start of the game. Basic can be shot down fairly easily and cause very little damage.</p>
-    <p><em><strong>Shielded Turret:<br />
-    </strong></em>Shielded turrets are tougher than the basic turret, the turret's health regenerates and the turret itself is protected by a sheild. Eventually with enough damage the shield will drop and the turret's health will cease to regenerate. Damage caused by this turret is significantly greater than the basic turret.</p>
-    <p><em><strong>Cloaked Turrets:</strong><br />
-      </em>Cloaked turrets are the most powerful turret in the game. These turrets remain invisible and only appear when a target is in range. <br />
-    </p>
-    <table width="65%" border="0">
-      <tr>
-        <td width="26%"><div align="center"><img src="http://www.planettrepidation.com/images/man/turret1.jpg" alt="Turret1" width="155" height="239" /></div></td>
-        <td width="34%"><div align="center"><img src="http://www.planettrepidation.com/images/man/turret2.jpg" alt="Turret 2" width="195" height="237" /></div></td>
-        <td width="40%"><div align="center"><img src="http://www.planettrepidation.com/images/man/turret3.jpg" alt="Turret 3" width="176" height="238" /></div></td>
-      </tr>
-      <tr>
-        <td><div align="center"><em>Basic Turret <br />
-          Placeholder Model </em></div></td>
-        <td><div align="center"><em>Shielded Regenerating Turret </em></div></td>
-        <td><div align="center"><em>Cloaked Turret </em></div></td>
-      </tr>
-    </table>
-  </blockquote>
+<blockquote style="margin-right: 0px;" dir="ltr">
+<p align="left"><strong><em>Power Core:</em></strong></p>
+<p>The power core must be destroyed by weapons fire or other such explosives. Destroying the power core will require multiple hits. When a sheild generator is present the power core becomes shielded and will regenerate. 2 shield generators will offer more protection and cause the power core to regenerate to a faster and to a higher level of health. A sheilded power core can be taken out without taking out the shield generators however it will take a significant amount of firepower, also so long as the shield generator(s) are operational, the power core&#8217;s shield and health will regenerate. Once it has sustained enough fire to take out the shield the shield will not re-activate and regeneration stops, regardless if a shield generator is present.</p>
+<div class="wp-caption alignnone" style="width: 304px"><img class=" " title="Powercore" src="http://trepidation.u7net.com/man/pc.jpg" alt="" width="294" height="438" /><p class="wp-caption-text">Power Core (Placeholder model)</p></div>
+<div class="wp-caption alignnone" style="width: 322px"><img title="Shielded Power Core" src="http://trepidation.u7net.com/man/s_pc.jpg" alt="" width="312" height="419" /><p class="wp-caption-text">Shielded Power Code (Placeholder Model)</p></div>
+<p>&nbsp;</p>
+<p><strong><em>Shield Generators</em></strong></p>
+<p>Each team can have up to 2 shield generators (1 at the start of the game). The shield generator is used to power shielding on the power core. So long at least one shield generator is active the health of the power core will regenerate. 2 Shield generators offer double the protection and the MC&#8217;s health will generate twice as high as it would without any shield generators.</p>
+<div class="wp-caption alignnone" style="width: 224px"><img class="   " title="Power Generator" src="http://trepidation.u7net.com/man/gen.jpg" alt="" width="214" height="362" /><p class="wp-caption-text">Shield Generator (placeholder model)</p></div>
+<p>&nbsp;</p>
+<p><strong><em>Immobilizers</em></strong></p>
+<p>Immobilizers are defensive devices that emit an immobilization field that causes foes to lose the ability to move. While it is possible to break free from an immobilizer field it can prove difficult. Immobilizers are best used in conjunction with turrets, as the immobiler will render the enemy immobile, the turret will finish the job. Immobilizers can be destroyed quite easily and work best when well concealed, unfortunately immobilizers are line of site devices, which means a clear path needs to be established between the enemy and the immobilizer</p>
+<div class="wp-caption alignnone" style="width: 225px"><img title="Immobilizer" src="http://trepidation.u7net.com/man/immobilizer.jpg" alt="" width="215" height="398" /><p class="wp-caption-text">Immobilizer (Placeholder Model)</p></div>
+<p><strong><em>Turrets</em></strong></p>
+<p>A limited number of turrets can be created to help protect your MC and sheild generators. Turrets will seek and fire upon any enemy within the turret&#8217;s range. There are 3 types of turrets available throughout the game, better turrets become available as the game progresses. The 3 different types are:</p>
+<blockquote style="margin-right: 0px;" dir="ltr"><p><strong>BASIC TURRET</strong></p>
+<div class="wp-caption alignnone" style="width: 239px"><img title="Bsaic Turret" src="http://trepidation.u7net.com/man/turret1.jpg" alt="" width="229" height="353" /><p class="wp-caption-text">Basic Turret (Placeholder Model)</p></div>
+<p>Basic turrets will fire machine gun fire at a target. Basic turrets are the primary turret available at the start of the game. Basic can be shot down fairly easily and cause very little damage.</p>
+<p>&nbsp;</p>
+<p><strong>SHIELDED TURRET</strong></p>
+<div class="wp-caption alignnone" style="width: 239px"><img title="Shielded Turret" src="http://trepidation.u7net.com/man/turret2.jpg" alt="" width="229" height="353" /><p class="wp-caption-text">Shielded Turret</p></div>
+<p>Shielded turrets are tougher than the basic turret, the turret&#8217;s health regenerates and the turret itself is protected by a sheild. Eventually with enough damage the shield will drop and the turret&#8217;s health will cease to regenerate. Damage caused by this turret is significantly greater than the basic turret.</p>
+<p><strong>CLOAKED TURRET</strong></p>
+<div class="wp-caption alignnone" style="width: 249px"><img class=" " title="Cloaked Turret" src="http://trepidation.u7net.com/man/turret3.jpg" alt="" width="239" height="326" /><p class="wp-caption-text">Cloaked Turret</p></div>
+<p>Cloaked turrets are the most powerful turret in the game. These turrets remain invisible and only appear when a target is in range.</p></blockquote>
 </blockquote>
 <p>Building turrets next to your power core is not recommended as a turret can be destroyed easier than the power core and any splash damage from a turret exploding will cause damage to the power core.</p>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=trepded name=trepded></A>Dedicated Server </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P>A few server configuration files are included. You can start the dedicated server by clicking on the DED-SERVER.BAT file created on the desktop on windows or the dedserver.sh file on linux.</P>
-<P>You can modify one of the server configuration files located in the 'base' folder to meet your needs.</P>
-<P>The following server configurations are also included:</P>
-<P><STRONG>ffa.cfg</STRONG> - FFA Gameplay 10 minutes 40 fraglimit.<BR><STRONG>ctf.cfg</STRONG> - All Weapons CTF, Timelimit 15 minutes, capturelimit 10<BR><STRONG>ctfinstagib.cfg</STRONG> - Instagib CTF, Timelimit 15 Minutes, capturelimit 10.<BR><STRONG>server.cfg</STRONG> - Rotates through all the mods.<BR><STRONG>arsenal.cfg</STRONG> - Runs the Arsenal gametype. <BR><STRONG>survival.cfg</STRONG> - Rotates Instagib and All Weapons Last Man Standing Maps<BR><STRONG>trepidation.cfg</STRONG> - Trepidation (g_gamemode 3) Gametype config.</P>
-<P>If you can run a home server please help out!</P>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=scvars name=scvars></A>Server CVARS </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P>Trepidation utilizes most standard quake 3 cvars, of which you can find a pretty extensive list here: <BR><A href="http://www.planettrepidation.com/q3cvars.html" target=q3cvars>http://www.planettrepidation.com/q3cvars.html</A><BR><BR>In addition Trepidation has a whole set of it's own CVARs listed below: </P>
-<P><STRONG>g_instagib</STRONG> 0-off/1-on : Instagib one shot kill game mode.<BR><BR><STRONG>g_turrets</STRONG> 0-off/1-on : Disables/Enables the ability to build turrets on CTF games. </P>
-<P><STRONG>g_gamemode </STRONG></P>
-<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
-<P>0 - None<BR>1 - Arsenal (must use g_gametype 0)<BR>2 - Survival <BR>3 - Trepidation (must use g_gametype 3) <BR></P></BLOCKQUOTE>
-<P dir=ltr><STRONG>g_GrappleMode</STRONG> - Changes how the grapple acts.</P>
-<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
-<P dir=ltr>0 - Grapple acts normal, latching onto a wall will propell you towards and object.<BR>1 - Aside from acting normal the grapple can be used as an instagib weapon.</P></BLOCKQUOTE>
-<P dir=ltr><STRONG>g_PCTeamkill</STRONG> - 1 = Can Destroy Your Own Power Core // 2 = You cannot destroy your own Power core<BR><BR><BR><STRONG>g_mulitjump</STRONG> - xxx Not Yet Implented<BR></P>
-<P>The following CVARs designate what weapons are available on each map if you turn the Flame Thrower off, the Flame Thrower will no longer spawn on maps which contain it. In the Arsenal game mode these are used to specify the weapons each player is given in their arsenal. In the Last Man Standing game mode these are used to determine which weapons can be randomly handed out at the beginning of each round</P>
-<P>g_StartGauntlet 0-off/1 on<BR>g_StartMG 0-off/1 on<BR>g_StartSG 0-off/1 on<BR>g_StartGauss 0-off/1 on<BR>g_StartFlame 0-off/1 on<BR>g_StartPlasma 0-off/1 on<BR>
-g_StartSingCan 0-off/1 on<BR>
-g_StartBFG 0-off/1 on<BR><BR></P>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=enginecvars name=enginecvars></A>Engine CVARs </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P>The following is a list of new engine cvars and commands provided by the IOQ3 engine.</P>
-<TABLE width="100%" border=0>
-<TBODY>
-<TR>
-<TD><STRONG>RECORDING</STRONG></TD>
-<TD></TD></TR>
-<TR>
-<TD width="26%">cl_autoRecordDemo</TD>
-<TD width="74%">record a new demo on each map change</TD></TR>
-<TR>
-<TD>cl_aviFrameRate</TD>
-<TD>the framerate to use when capturing video</TD></TR>
-<TR>
-<TD>cl_aviMotionJpeg</TD>
-<TD>use the mjpeg codec when capturing video</TD></TR>
-<TR>
-<TD></TD>
-<TD></TD></TR>
-<TR>
-<TD><STRONG>SOUND & VIDEO </STRONG></TD>
-<TD></TD></TR>
-<TR>
-<TD>s_useOpenAL</TD>
-<TD>use the OpenAL sound backend if available</TD></TR>
-<TR>
-<TD>s_alPrecache</TD>
-<TD>cache OpenAL sounds before use</TD></TR>
-<TR>
-<TD>s_alGain</TD>
-<TD>cache OpenAL sounds before use</TD></TR>
-<TR>
-<TD>s_alSources</TD>
-<TD>the total number of sources (memory) toallocate</TD></TR>
-<TR>
-<TD>s_alDopplerFactor</TD>
-<TD>the value passed to alDopplerFactor</TD></TR>
-<TR>
-<TD>s_alDopplerSpeed</TD>
-<TD>the value passed to alDopplerVelocity</TD></TR>
-<TR>
-<TD>s_alMinDistance</TD>
-<TD>the value of AL_REFERENCE_DISTANCE for each source</TD></TR>
-<TR>
-<TD>s_alRolloff</TD>
-<TD>the value of AL_ROLLOFF_FACTOR for each source</TD></TR>
-<TR>
-<TD>s_alMaxSpeakerDistance</TD>
-<TD>ET_SPEAKERS beyond this distance are culled</TD></TR>
-<TR>
-<TD>s_alDriver</TD>
-<TD>which OpenAL library to use</TD></TR>
-<TR>
-<TD></TD>
-<TD></TD></TR>
-<TR>
-<TD>s_sdlBits</TD>
-<TD>SDL bit resolution</TD></TR>
-<TR>
-<TD>s_sdlSpeed </TD>
-<TD>SDL sample rate</TD></TR>
-<TR>
-<TD>s_sdlChannels</TD>
-<TD>SDL number of channels</TD></TR>
-<TR>
-<TD>s_sdlDevSamps </TD>
-<TD>SDL DMA buffer size override</TD></TR>
-<TR>
-<TD>s_sdlMixSamps</TD>
-<TD>SDL mix buffer size override</TD></TR>
-<TR>
-<TD></TD>
-<TD></TD></TR>
-<TR>
-  <TD><strong>OTHER CVARS</strong> </TD>
-  <TD>�</TD>
-</TR>
-<TR>
-  <TD>cl_multiuser</TD>
-  <TD>Set to 1 if you want screenshots, downloads & config files stored in the APP DATA folder on windows. </TD>
-</TR>
-<TR>
-<TD>ttycon_ansicolor</TD>
-<TD>enable use of ANSI escape codes in the tty</TD></TR>
-<TR>
-<TD>r_GLlibCoolDownMsec </TD>
-<TD>wait for some milliseconds to close GL library</TD></TR>
-<TR>
-<TD>com_altivec </TD>
-<TD>enable use of altivec on PowerPC systems</TD></TR>
-<TR>
-<TD>s_backend </TD>
-<TD>ead only, indicates the current sound backend</TD></TR>
-<TR>
-<TD>in_shiftedKeys</TD>
-<TD>non-SDL Linux only; enables binding to shifted keys</TD></TR>
-<TR>
-<TD>in_joystickNo</TD>
-<TD>SDL only; select which joystick to use</TD></TR>
-
-<TR>
-
-<TD>cl_multiuser</TD>
-<TD>When set to 1, On Windows, all user specific files such as autogenerated configuration, demos, videos, screenshots, and autodownloaded pk3s are now saved in a directory specific to the user who is running Trepidation.  On NT-based such as Windows XP, this is usually a directory named:
-C:\Documents and Settings\%USERNAME%\Application Data\Quake3\
-Windows 95, Windows 98, and Windows ME will use a directory like: 
-"C:\Windows\Application Data\Quake3"</TD></TR>
-<TR>
-<TD>sv_dlURL</TD>
-<TD>sv_dlURL is the base of the URL that contains your custom .pk3 files the client will append both fs_game and the filename to the end of this value.  For example, if you have sv_dlURL set to  "http://ioquake3.org", fs_game is "baseq3", and the client is missing "test.pk3", it will attempt to download from the URL "http://ioquake3.org/baseq3/test.pk3"</TD>
-</TR>
-
-
-
-<TR>
-
-<TD>cl_consoleHistory</TD>
-<TD>ead only, stores the console history</TD></TR>
-<TR>
-<TD>cl_platformSensitivity</TD>
-<TD>read only, indicates the mouse input scaling</TD></TR>
-<TR>
-<TD>r_ext_texture_filter_anisotropi</TD>
-<TD>anisotropic texture filtering</TD></TR>
-<TR>
-<TD></TD>
-<TD></TD></TR>
-<TR>
-<TD><STRONG>New commands</STRONG></TD>
-<TD></TD></TR>
-<TR>
-<TD>video [filename] </TD>
-<TD>start video capture (use with demo command)</TD></TR>
-<TR>
-<TD>stopvideo</TD>
-<TD>stop video capture</TD></TR></TBODY></TABLE>
-<P><BR><BR></P>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=binds name=binds></A>Binds & Commands </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P>Below is what has been added into trepidation that normally isnt present in Q3 (or EF).</P>
-<P><STRONG>+button5</STRONG><BR>Alternate weapon fire. (this is now in the options menu)<BR>example: /bind ALT +button5</P>
-<P><STRONG>+button6</STRONG><BR>Energy Grapple. (this is now in the options menu)<BR>example: /bind ALT +button6</P>
-<P><STRONG>+scanner</STRONG> (not yet implemented) <BR>
-  Turns on (while held) the PTD (portable tracking device).<BR>example: /bind l +scanner</P>
-<P><STRONG>pdg</STRONG><BR>activates transport for particle displacement grenades<BR>example: /bind x pdg<BR><BR><STRONG>balanceteams</STRONG><BR>The balance team commands will re-arrange teams when teams are off so that they are even. This is done by picking a random player (or 2) from the team with more players and moving them to the team with fewer players. Players that are moved get to keep their score. This command can also be voted on. </P>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=mapping name=mapping></A>Mapping For Trepidation </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P>While there is a planned EF Compatability layer so that EF Maps will run on it as well as Quake 3 maps it has yet to be implemented. For the best luck as far as mapping for Trepidation is to use GtkRadiant or Q3Radiant, Since the game will eventually run any EF map and any Q3 map.. EF Radiant, GtkRadiant or Q3Radiant will suffice... At the moment only q3 maps will spawn weapons/ammo/etc.. (so Q3Radiant might be better in the beginning, but then again... it's only the weapons and pickups that wont spawn right.. so your choice). <BR><BR>SkareKrow has put together a kit to aid in mapping for Trepidation with Q3 Radiant. You can get that here: <A href="http://trepidation.tnlsoft.com/tr/files/trepradiant.rar">trepradiant.rar</A>. There are several threads in our forums as far as using this file. <A href="http://www.planettrepidation.com/forum/index.php?act=Search&CODE=show&searchid=704e6192e6d8d377d62133dcd2bed0f1&search_in=posts&result_type=topics&highlite=trepradiant">Check Them Out</A>. </P>
-<P>We'll eventually have to recompile GtkRadiant itself with some new tools for the vehichles and whatever weapons we come up with... </P>
-<P>The biggest challenge the mappers are having at the moment is all of the textures have to be original or fall under the GPL or equivilant license..</P>
-<P>The current development build has a lot of textures in the zpakX-openmedia.pk3 which are all gpl. And of course anything in any Trep original map.<BR><BR><STRONG><A id=mapladders name=mapladders></A>MAPPING: LADDERS</STRONG><BR>Trepidation offers Ladder support that the original Quake3 code lacked. Map designers should make a box around your ladders. This box should be given a texture of "common/ladderclip". Make the box a lot smaller than you would in EF.<BR><BR><STRONG><A id=mapliquid name=mapliquid></A>MAPPING: LIQUID, LAVA, AND FOG.</STRONG> <BR><SPAN class=style1>textures/liquids/pool2<BR>textures/liquids/lavafloor<BR>textures/liquids/kc_fogcloud3</SPAN></P>
-<P>Only one is water, the other too are (obviously) lava and fog. So far I've got them all at least scrolling correctly and bobbing up and down, but I can't get the transparancy to work for the water yet. I'll keep working on it. I'll try to upload a pk3 with the new shader later tonight if I've got time.<BR><BR><STRONG><A id=mapweapons name=mapweapons></A>MAPPING: WEAPONS</STRONG><BR>At this time, the new weapons do not have corresponding entities in Trepidation, they use the standard quake 3 weapon names. Here are the replacements:</P>
-<P>Flame Thrower - Lightning Gun<BR>Singularity Cannon - Rocket Launcher<BR>Gauss Rifle - Rail Gun<BR><BR><STRONG>MAPPING: BREAKABLE ITEMS</STRONG><BR>Mappers need to first, make it a <STRONG><EM>func_door</EM></STRONG>(anything will do) then press "<STRONG>n</STRONG>" and change the <STRONG><EM>func_door</EM></STRONG> to <STRONG><EM>func_breakable</EM></STRONG>, or optionally edit the "entities.def" file and add in func_breakable, so you can just select it from the normal drop down list in Q3Radiant. They also need to set the life of the glass by pressing "n" while selecting the entity and in the key box type in "<STRONG><EM>health</EM></STRONG>" and in the value box type in whatever NUMBER of life it should have. If you dont it defaults to 5 life. <BR><BR>Your mapper needs to add the ifx.shader into their base/scripts directory <BR>You will want he/she to edit the shaderlist.txt in their base/scripts directory and add at the VERY bottom ifx<BR>Your mapper needs to have done that so upon compile it does the lightmap and everything correctly.<BR>
-  <br />
-  <strong>MAPPING:  REVOLVING DOORS</strong><br />
-QUAKED statement for the mappers to use.</P>
-<p>/*QUAKED func_door_rotating (0 .5 . START_OPEN CRUSHER REVERSE TOGGLE X_AXIS Y_AXIS<br />
-  This is the rotating door... just as the name suggests it's a door that rotates<br />
-  START_OPEN   the door to moves to its destination when spawned, and operate in reverse.<br />
-  REVERSE      if you want the door to open in the other direction, use this switch.<br />
-  TOGGLE      wait in both the start and end states for a trigger event.<br />
-  X_AXIS      open on the X-axis instead of the Z-axis<br />
-  Y_AXIS      open on the Y-axis instead of the Z-axis<br />
-  <br />
-  You need to have an origin brush as part of this entity.  The center of that brush will be
-  the point around which it is rotated. It will rotate around the Z axis by default.  You can
-  check either the X_AXIS or Y_AXIS box to change that.</p>
-<p>&quot;model2&quot;   .md3 model to also draw<br />
-  &quot;distance&quot;   how many degrees the door will open<br />
-  &quot;speed&quot;       how fast the door will open (degrees/second)<br />
-  &quot;color&quot;      constantLight color<br />
-  &quot;light&quot;      constantLight radius<br />
-  */</p>
-<p>  Your mapper *should* know how to deal with this, but the programmer should also have a little insight on this as well. This is an entity definition for Q3Radiant. When added into the file, entities.def (via a text editor) , this will appear as an option available to the mapper when adding objects into the map, such as spawnpoints, weapons, and in this case, doors. The first line is very important as that tells the function in our actual code what spawnflags will be used for this particular object. The order of objects in the first line must not be altered in anyway, as that will cause instructional problems between the map's options and the code's functions.<br />
-  <br />
-  The remaining lines in the statement gives the mapper extra information on what to add to the object to actually make it work. Should the mapper forget some required values, such as the speed, we have placed a condition in our code so that a default value is used if this happens.</p>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="60%">
+<h2><a id="trepded" name="trepded"></a>Dedicated Server</h2>
+</td>
+<td width="40%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>A few server configuration files are included. You can start the dedicated server by clicking on the DED-SERVER.BAT file created on the desktop on windows or the dedserver.sh file on linux.</p>
+<p>You can modify one of the server configuration files located in the &#8216;base&#8217; folder to meet your needs.</p>
+<p>The following server configurations are also included:</p>
+<p><strong>ffa.cfg</strong> &#8211; FFA Gameplay 10 minutes 40 fraglimit.</p>
+<p><strong>ctf.cfg</strong> &#8211; All Weapons CTF, Timelimit 15 minutes, capturelimit 10</p>
+<p><strong>ctfinstagib.cfg</strong> &#8211; Instagib CTF, Timelimit 15 Minutes, capturelimit 10.</p>
+<p><strong>server.cfg</strong> &#8211; Rotates through all the mods.</p>
+<p><strong>arsenal.cfg</strong> &#8211; Runs the Arsenal gametype.</p>
+<p><strong>survival.cfg</strong> &#8211; Rotates Instagib and All Weapons Last Man Standing Maps</p>
+<p><strong>trepidation.cfg</strong> &#8211; Trepidation (g_gamemode 3) Gametype config.</p>
+<p>If you can run a home server please help out!</p>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="60%">
+<h2><a id="scvars" name="scvars"></a>Server CVARS</h2>
+</td>
+<td width="40%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Trepidation utilizes most standard quake 3 cvars, of which you can find a pretty extensive list here:</p>
+<p><a href="http://www.planettrepidation.com/q3cvars.html" target="q3cvars">http://www.planettrepidation.com/q3cvars.html</a></p>
+<p>In addition Trepidation has a whole set of it&#8217;s own CVARs listed below:</p>
+<p><strong>g_instagib</strong> 0-off/1-on : Instagib one shot kill game mode.</p>
+<p><strong>g_turrets</strong> 0-off/1-on : Disables/Enables the ability to build turrets on CTF games.</p>
+<p><strong>g_gamemode </strong></p>
+<blockquote style="margin-right: 0px;" dir="ltr"><p>0 &#8211; None</p>
+<p>1 &#8211; Arsenal (must use g_gametype 0)</p>
+<p>2 &#8211; Survival</p>
+<p>3 &#8211; Trepidation (must use g_gametype 3)</p></blockquote>
+<p dir="ltr"><strong>g_GrappleMode</strong> &#8211; Changes how the grapple acts.</p>
+<blockquote style="margin-right: 0px;" dir="ltr">
+<p dir="ltr">0 &#8211; Grapple acts normal, latching onto a wall will propell you towards and object.</p>
+<p>1 &#8211; Aside from acting normal the grapple can be used as an instagib weapon.</p></blockquote>
+<p dir="ltr"><strong>g_PCTeamkill</strong> &#8211; 1 = Can Destroy Your Own Power Core // 2 = You cannot destroy your own Power core</p>
+<p><strong>g_mulitjump</strong> &#8211; xxx Not Yet Implented</p>
+<p>The following CVARs designate what weapons are available on each map if you turn the Flame Thrower off, the Flame Thrower will no longer spawn on maps which contain it. In the Arsenal game mode these are used to specify the weapons each player is given in their arsenal. In the Last Man Standing game mode these are used to determine which weapons can be randomly handed out at the beginning of each round</p>
+<p>g_StartGauntlet 0-off/1 on</p>
+<p>g_StartMG 0-off/1 on</p>
+<p>g_StartSG 0-off/1 on</p>
+<p>g_StartGauss 0-off/1 on</p>
+<p>g_StartFlame 0-off/1 on</p>
+<p>g_StartPlasma 0-off/1 on</p>
+<p>g_StartSing 0-off/1 on</p>
+<p>g_StartBFG 0-off/1 on</p>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="60%">
+<h2><a id="enginecvars" name="enginecvars"></a>Engine CVARs</h2>
+</td>
+<td width="40%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The following is a list of new engine cvars and commands provided by the IOQ3 engine.</p>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td><strong>RECORDING</strong></td>
+<td></td>
+</tr>
+<tr>
+<td width="26%">cl_autoRecordDemo</td>
+<td width="74%">record a new demo on each map change</td>
+</tr>
+<tr>
+<td>cl_aviFrameRate</td>
+<td>the framerate to use when capturing video</td>
+</tr>
+<tr>
+<td>cl_aviMotionJpeg</td>
+<td>use the mjpeg codec when capturing video</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SOUND &amp; VIDEO </strong></td>
+<td></td>
+</tr>
+<tr>
+<td>s_useOpenAL</td>
+<td>use the OpenAL sound backend if available</td>
+</tr>
+<tr>
+<td>s_alPrecache</td>
+<td>cache OpenAL sounds before use</td>
+</tr>
+<tr>
+<td>s_alGain</td>
+<td>cache OpenAL sounds before use</td>
+</tr>
+<tr>
+<td>s_alSources</td>
+<td>the total number of sources (memory) toallocate</td>
+</tr>
+<tr>
+<td>s_alDopplerFactor</td>
+<td>the value passed to alDopplerFactor</td>
+</tr>
+<tr>
+<td>s_alDopplerSpeed</td>
+<td>the value passed to alDopplerVelocity</td>
+</tr>
+<tr>
+<td>s_alMinDistance</td>
+<td>the value of AL_REFERENCE_DISTANCE for each source</td>
+</tr>
+<tr>
+<td>s_alRolloff</td>
+<td>the value of AL_ROLLOFF_FACTOR for each source</td>
+</tr>
+<tr>
+<td>s_alMaxSpeakerDistance</td>
+<td>ET_SPEAKERS beyond this distance are culled</td>
+</tr>
+<tr>
+<td>s_alDriver</td>
+<td>which OpenAL library to use</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>s_sdlBits</td>
+<td>SDL bit resolution</td>
+</tr>
+<tr>
+<td>s_sdlSpeed</td>
+<td>SDL sample rate</td>
+</tr>
+<tr>
+<td>s_sdlChannels</td>
+<td>SDL number of channels</td>
+</tr>
+<tr>
+<td>s_sdlDevSamps</td>
+<td>SDL DMA buffer size override</td>
+</tr>
+<tr>
+<td>s_sdlMixSamps</td>
+<td>SDL mix buffer size override</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>OTHER CVARS</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>cl_multiuser</td>
+<td>Set to 1 if you want screenshots, downloads &amp; config files stored in the APP DATA folder on windows.</td>
+</tr>
+<tr>
+<td>ttycon_ansicolor</td>
+<td>enable use of ANSI escape codes in the tty</td>
+</tr>
+<tr>
+<td>r_GLlibCoolDownMsec</td>
+<td>wait for some milliseconds to close GL library</td>
+</tr>
+<tr>
+<td>com_altivec</td>
+<td>enable use of altivec on PowerPC systems</td>
+</tr>
+<tr>
+<td>s_backend</td>
+<td>ead only, indicates the current sound backend</td>
+</tr>
+<tr>
+<td>in_shiftedKeys</td>
+<td>non-SDL Linux only; enables binding to shifted keys</td>
+</tr>
+<tr>
+<td>in_joystickNo</td>
+<td>SDL only; select which joystick to use</td>
+</tr>
+<tr>
+<td>cl_multiuser</td>
+<td>When set to 1, On Windows, all user specific files such as autogenerated configuration, demos, videos, screenshots, and autodownloaded pk3s are now saved in a directory specific to the user who is running Trepidation. On NT-based such as Windows XP, this is usually a directory named:<br />
+C:\Documents and Settings\%USERNAME%\Application Data\Quake3\<br />
+Windows 95, Windows 98, and Windows ME will use a directory like:<br />
+&#8220;C:\Windows\Application Data\Quake3&#8243;</td>
+</tr>
+<tr>
+<td>sv_dlURL</td>
+<td>sv_dlURL is the base of the URL that contains your custom .pk3 files the client will append both fs_game and the filename to the end of this value. For example, if you have sv_dlURL set to &#8220;http://ioquake3.org&#8221;, fs_game is &#8220;baseq3&#8243;, and the client is missing &#8220;test.pk3&#8243;, it will attempt to download from the URL &#8220;http://ioquake3.org/baseq3/test.pk3&#8243;</td>
+</tr>
+<tr>
+<td>cl_consoleHistory</td>
+<td>ead only, stores the console history</td>
+</tr>
+<tr>
+<td>cl_platformSensitivity</td>
+<td>read only, indicates the mouse input scaling</td>
+</tr>
+<tr>
+<td>r_ext_texture_filter_anisotropi</td>
+<td>anisotropic texture filtering</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>New commands</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>video [filename]</td>
+<td>start video capture (use with demo command)</td>
+</tr>
+<tr>
+<td>stopvideo</td>
+<td>stop video capture</td>
+</tr>
+</tbody>
+</table>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="41%">
+<h2><a id="binds" name="binds"></a>Binds &amp; Commands</h2>
+</td>
+<td width="59%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Below is what has been added into trepidation that normally isnt present in Q3 (or EF).</p>
+<p><strong>+button5</strong></p>
+<p>Alternate weapon fire. (this is now in the options menu)</p>
+<p>example: /bind ALT +button5</p>
+<p><strong>+button6</strong></p>
+<p>Energy Grapple. (this is now in the options menu)</p>
+<p>example: /bind ALT +button6</p>
+<p><strong>+scanner</strong> (not yet implemented)</p>
+<p>Turns on (while held) the PTD (portable tracking device).</p>
+<p>example: /bind l +scanner</p>
+<p><strong>pdg</strong></p>
+<p>activates transport for particle displacement grenades</p>
+<p>example: /bind x pdg</p>
+<p><strong>balanceteams</strong></p>
+<p>The balance team commands will re-arrange teams when teams are off so that they are even. This is done by picking a random player (or 2) from the team with more players and moving them to the team with fewer players. Players that are moved get to keep their score. This command can also be voted on.</p>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="60%">
+<h2><a id="voip" name="voip"></a>VOICE SUPPORT (VOIP)</h2>
+</td>
+<td width="40%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>There are two ways to use VoIP in ioquake3. You can either use Mumble as an<br />
+ external program, for which ioq3 now supplies some basic hooks, or you can<br />
+ use the new built-in VoIP support.</p>
+<p>Mumble is here: http://mumble.sourceforge.net/  &#8230; ioquake3 can supply it<br />
+ with your in-game position, but everything else is whatever features Mumble<br />
+ offers outside of the game. To use it, start Mumble before you start ioq3,<br />
+ and run the game with +set cl_useMumble 1. This should work on at least<br />
+ Linux, Mac OS X, and Windows, and probably other platforms Mumble supports<br />
+ in the future.</p>
+<p>The built-in stuff offers tighter in-game integration, works on any platform<br />
+ that ioquake3 supports, and doesn&#8217;t require anything more than a recent build<br />
+ of the game. The rest of this document is concerned with the built-in VoIP<br />
+ support.</p>
+<p>Quick start for servers:<br />
+    &#8211; run a recent build of ioquake3.<br />
+    &#8211; Make sure your network settings are set to broadband.</p>
+<p>Quick start for clients:<br />
+    &#8211; run a recent build of ioquake3.<br />
+    &#8211; Make sure your network settings are set to broadband.<br />
+    &#8211; +set snd_useOpenAL 1<br />
+    &#8211; \bind q &#8220;+voiprecord&#8221;<br />
+    &#8211; Hook up a microphone, connect to a VoIP-supporting server.<br />
+    &#8211; hold down &#8216;q&#8217; key and talk.</p>
+<p>Cvars you can set:</p>
+<p>sv_voip: set to &#8220;1&#8243; (the default) to enable server-side VoIP support. Set to<br />
+         &#8220;0&#8243; to disable. Without this, all VoIP packets are refused by the<br />
+         server, which means no one gets to use in-game VoIP.</p>
+<p>cl_voip: set to &#8220;1&#8243; (the default) to enable client-side VoIP support. Set to &#8220;0&#8243;<br />
+      to disable. Without this, you will neither be able to transmit voice nor<br />
+      hear other people.</p>
+<p>s_alCapture: set to &#8220;1&#8243; (the default) to have the audio layer open an OpenAL<br />
+             capture device. Without this set on sound startup, you&#8217;ll never<br />
+             get bits from the microphone. This means you won&#8217;t transmit, but<br />
+             you can still hear other people.</p>
+<p>cl_voipSendTarget: a string: &#8220;all&#8221; to broadcast to everyone, &#8220;none&#8221; to send<br />
+                   to no one, &#8220;attacker&#8221; to send to the last person that hit<br />
+                   you, &#8220;crosshair&#8221; to send to the people currently in your<br />
+                   crosshair, or a comma-separated list of client numbers, like<br />
+                   &#8220;0,7,2,23&#8243; &#8230; an empty string is treated like &#8220;all&#8221;. This<br />
+                   is reset to &#8220;all&#8221; when connecting to a new server.<br />
+                   Presumably mods will manage this cvar, not people, but<br />
+                   keybind could be useful for the general cases. To send to<br />
+                   just your team, or the opposing team, or a buddy list, you<br />
+                   have to set a list of numbers.</p>
+<p>cl_voipUseVAD: set to &#8220;1&#8243; to automatically send audio when the game thinks you<br />
+               are talking, &#8220;0&#8243; (the default) to require the user to manually<br />
+               start transmitting, presumably with a keybind.</p>
+<p>cl_voipVADThreshold: only used if cl_voipUseVAD is &#8220;1&#8243; &#8230; a value between<br />
+                     0.0 and 1.0 that signifies the volume of recorded audio<br />
+                     that the game considers to be speech. You can use this<br />
+                     to trim out breathing or perhaps the sound of your<br />
+                     fingers tapping the keyboard and only transmit audio<br />
+                     louder than that. You will have to experiment to find the<br />
+                     value that works best for your hardware and play style.<br />
+                     The default is &#8220;0.25&#8243;, with &#8220;0.0&#8243; being silence and &#8220;1.0&#8243;<br />
+                     being pretty-darn-loud.</p>
+<p>cl_voipSend: when set to &#8220;1&#8243;, the game will capture audio from the microphone<br />
+             and transmit it, when &#8220;0&#8243;, the game will not. The game can<br />
+             optimize for the &#8220;0&#8243; case (perhaps turning off audio recording).<br />
+             Lots of things set this on and off, including cl_voipUseVAD, so<br />
+             you probably should not touch this directly without knowing what<br />
+             you&#8217;re doing, but perhaps mods can make use of it.</p>
+<p>cl_voipGainDuringCapture: This is the volume (&#8220;gain&#8221;) of audio coming out of<br />
+                          your speakers while you are recording sound for<br />
+                          transmission. This is a value between 0.0 and 1.0,<br />
+                          zero being silence and one being no reduction in<br />
+                          volume. This prevents audio feedback and echo and<br />
+                          such, but if you&#8217;re listening in headphones that<br />
+                          your mic won&#8217;t pick up, you don&#8217;t need to turn down<br />
+                          the gain. Default is 0.2 (20% of normal volume). You<br />
+                          ABSOLUTELY want to make your speakers quiet when you<br />
+                          record, if the microphone might pick it up!</p>
+<p>cl_voipShowMeter: Set to &#8220;1&#8243; (the default) to show a volume meter as you are<br />
+                  recording from the microphone, so you can see how well the<br />
+                  game can &#8220;hear&#8221; you. Set to &#8220;0&#8243; to disable the display of<br />
+                  the meter.</p>
+<p>cl_voipCaptureMult: Multiply recorded audio by this value after denoising.<br />
+                    Defaults to 2.0 to _double_ the volume of your voice.<br />
+                    This is to make you more audible if denoising eats away<br />
+                    too much data. Set this to 1.0 to get no change, less to<br />
+                    be quieter.</p>
+<p>Console commands:</p>
+<p>voip ignore <clientnum><br />
+    Turn off incoming voice from player number <clientnum>. This will refuse to<br />
+     play any incoming audio from that player, and instruct the server to stop<br />
+     sending it, to save bandwidth. Use unignore to reenable. This is reset to<br />
+     unignored when (re)connecting to a server.</p>
+<p>voip gain unignore <clientnum><br />
+    Turn on incoming voice from player number <clientnum>. This will start<br />
+     playing audio from this player again if you&#8217;ve previously done a &#8220;voip<br />
+     ignore&#8221;, and instruct the server to start sending her voice packets to<br />
+     you again.</p>
+<p>voip gain muteall<br />
+    Turn off all incoming voice. This will refuse to play any incoming audio,<br />
+     and instruct the server to stop sending it, to save bandwidth. Use<br />
+     unmuteall to reenable. This is reset to unmuted when (re)connecting to<br />
+     a server.</p>
+<p>voip gain unmuteall<br />
+    Turn on incoming voice. This will start playing audio again if you&#8217;ve<br />
+     previously done a &#8220;voip muteall&#8221;, and instruct the server to start<br />
+     sending voice packets to you again.</p>
+<p>voip gain <clientnum> <gain><br />
+    Sets the volume (&#8220;gain&#8221;) for player number <clientnum> to <gain> &#8230;<br />
+     A gain of 0.0 is silence, and 2.0 doubles the volume. Use this if someone<br />
+     is too quiet or too loud.</p>
+<p>Actions:</p>
+<p>+voiprecord: The action you should bind to a key to record. This basically<br />
+             toggles cl_voipSend on and off. You don&#8217;t need this if you&#8217;re<br />
+             using cl_voipUseVAD, since that&#8217;ll just record all the time and<br />
+             decide what parts of the recording are worth sending.</p>
+<p>More detailed/technical info:</p>
+<p>By default, all of this is enabled. You can build with or without VoIP<br />
+ support explicitly with USE_VOIP=[1|0] on the make command line.</p>
+<p>You currently must use OpenAL to speak, as we have ALC_EXT_capture support<br />
+ in place to pull data from the microphone. If you are using the SDL backend,<br />
+ you can still hear people, but not speak.</p>
+<p>There is no in-game UI to speak of: we encourage mods to add some. Largely<br />
+ they will just need to set cvars and run console commands for choosing<br />
+ voice targets and ignoring people, etc.</p>
+<p>This requires patched builds to be useful, but remains network compatible with<br />
+ legacy quake3 clients and servers. Clients and servers both report in their<br />
+ info strings whether they support VoIP, and won&#8217;t send VoIP data to those not<br />
+ reporting support. If a stray VoIP packet makes it to a legacy build, it will<br />
+ be ignored without incident.</p>
+<p>VoIP packets are saved in demo files! You will be able to playback what you<br />
+ heard and what you said on VoIP-compatible clients. Legacy clients can also<br />
+ play demo files with VoIP packets in them, but just won&#8217;t play the voice<br />
+ track. For VoIP-supported builds, it&#8217;s nice to have a record of the<br />
+ trash-talk.</p>
+<p>Data is processed using the Speex narrowband codec, and is cross-platform.<br />
+ Bigendian and littleendian systems can speak to each other, as can 32 and<br />
+ 64-bit platforms.</p>
+<p>Bandwidth: VoIP data is broken up into 20 millisecond frames (this is a Speex<br />
+ requirement), and we try to push up to 12 Speex frames in one UDP packet<br />
+ (about a quarter of a second of audio)&#8230;we&#8217;re using the narrowband codec:<br />
+ 8000Hz sample rate. In practice, a client should send about 2 kilobytes per<br />
+ second more when speaking, spread over about four bursts per second, plus a<br />
+ few bytes of state information. For comparison, this is less than the server<br />
+ sends when downloading files to the client without an http redirect. The<br />
+ server needs to rebroadcast the packet to all clients that should receive it<br />
+ (which may be less than the total connected players), so servers should<br />
+ assume they&#8217;ll need to push (number of players speaking at once times number<br />
+ of people that should hear it) * 2 kilobytes per second. It shouldn&#8217;t be a<br />
+ problem for any client or server on a broadband connection, although it may<br />
+ be painful for dialup users (but then again, everything is. They can just<br />
+ disable the cvar). The game will refuse to enable VoIP support if your have<br />
+ your network settings lower than &#8220;Cable/xDSL/LAN&#8221;, just in case.</p>
+<p>The initial VoIP work was done by Ryan C. Gordon <icculus@icculus.org>, and<br />
+ he can be contacted with technical questions, if the ioq3 mailing list or<br />
+ forums aren&#8217;t helpful.</p>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="60%">
+<h2><a id="mapping" name="mapping"></a>Mapping For Trepidation</h2>
+</td>
+<td width="40%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>While there is a planned EF Compatability layer so that EF Maps will run on it as well as Quake 3 maps it has yet to be implemented. For the best luck as far as mapping for Trepidation is to use GtkRadiant or Q3Radiant, Since the game will eventually run any EF map and any Q3 map.. EF Radiant, GtkRadiant or Q3Radiant will suffice&#8230; At the moment only q3 maps will spawn weapons/ammo/etc.. (so Q3Radiant might be better in the beginning, but then again&#8230; it&#8217;s only the weapons and pickups that wont spawn right.. so your choice).</p>
+<p>SkareKrow has put together a kit to aid in mapping for Trepidation with Q3 Radiant. You can get that here: <a href="http://trepidation.tnlsoft.com/tr/files/trepradiant.rar">trepradiant.rar</a>. There are several threads in our forums as far as using this file. <a href="http://www.planettrepidation.com/forum/index.php?act=Search&amp;CODE=show&amp;searchid=704e6192e6d8d377d62133dcd2bed0f1&amp;search_in=posts&amp;result_type=topics&amp;highlite=trepradiant">Check Them Out</a>.</p>
+<p>We&#8217;ll eventually have to recompile GtkRadiant itself with some new tools for the vehichles and whatever weapons we come up with&#8230;</p>
+<p>The biggest challenge the mappers are having at the moment is all of the textures have to be original or fall under the GPL or equivilant license..</p>
+<p>The current development build has a lot of textures in the zpakX-openmedia.pk3 which are all gpl. And of course anything in any Trep original map.</p>
+<p><strong><a id="mapladders" name="mapladders"></a>MAPPING: LADDERS</strong></p>
+<p>Trepidation offers Ladder support that the original Quake3 code lacked. Map designers should make a box around your ladders. This box should be given a texture of &#8220;common/ladderclip&#8221;. Make the box a lot smaller than you would in EF.</p>
+<p><strong><a id="mapliquid" name="mapliquid"></a>MAPPING: LIQUID, LAVA, AND FOG.</strong></p>
+<p><span class="style1">textures/liquids/pool2</span></p>
+<p>textures/liquids/lavafloor</p>
+<p>textures/liquids/kc_fogcloud3</p>
+<p>Only one is water, the other too are (obviously) lava and fog. So far I&#8217;ve got them all at least scrolling correctly and bobbing up and down, but I can&#8217;t get the transparancy to work for the water yet. I&#8217;ll keep working on it. I&#8217;ll try to upload a pk3 with the new shader later tonight if I&#8217;ve got time.</p>
+<p><strong><a id="mapweapons" name="mapweapons"></a>MAPPING: WEAPONS</strong></p>
+<p>At this time, the new weapons do not have corresponding entities in Trepidation, they use the standard quake 3 weapon names. Here are the replacements:</p>
+<p>Flame Thrower &#8211; Lightning Gun</p>
+<p>Singularity Cannon &#8211; Rocket Launcher</p>
+<p>Gauss Rifle &#8211; Rail Gun</p>
+<p><strong>MAPPING: BREAKABLE ITEMS</strong></p>
+<p>Mappers need to first, make it a <strong><em>func_door</em></strong>(anything will do) then press &#8220;<strong>n</strong>&#8221; and change the <strong><em>func_door</em></strong> to <strong><em>func_breakable</em></strong>, or optionally edit the &#8220;entities.def&#8221; file and add in func_breakable, so you can just select it from the normal drop down list in Q3Radiant. They also need to set the life of the glass by pressing &#8220;n&#8221; while selecting the entity and in the key box type in &#8220;<strong><em>health</em></strong>&#8221; and in the value box type in whatever NUMBER of life it should have. If you dont it defaults to 5 life.</p>
+<p>Your mapper needs to add the ifx.shader into their base/scripts directory</p>
+<p>You will want he/she to edit the shaderlist.txt in their base/scripts directory and add at the VERY bottom ifx</p>
+<p>Your mapper needs to have done that so upon compile it does the lightmap and everything correctly.</p>
+<table width="100%" border="0">
+<tbody>
+<tr>
+<td width="60%">
+<h2><a id="models" name="models"></a>Models For Trepidation</h2>
+</td>
+<td width="40%">
+<div align="right"><a href="#top">Back To Top </a></div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>MODELS GENERAL:</strong></p>
+<p>Trepidation supports Quake 3&#8242;s MD3 format as well as the later MD4/MDR format featured in games like Elite Force.  As of November 2011 Trepidation also support the <a href="http://lee.fov120.com/iqm/" target="_blank">Inter-Quake Model format</a> (IQM)</p>
+<p><em>More on this soon</em></p>
+<p><strong>PLAYER MODELS</strong></p>
+<p>Trepidation will recognized player skins created for Quake 3 as well as Star Trek Voyager Elite Force. The Elite Force MDR file format and directory structure is the preferred format as it offers additional options for custom sounds, however the Quake 3 MD3 based format will work as well.</p>
+<p><em>More on the exact formats soon.</em></p>
 <p>&nbsp;</p>
-<p>  <strong>MAPPING: MAPPING AN AREA OF THE MAP 
-  WITH DIFFERENT SPEED OR GRAVITY</strong><br />
-//=============================================================================</p>
-<p>/*QUAKED target_gravity_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL<br />
-  By Vincentk, for instructions read the info at the spawnflags.<br />
-  -------- KEYS --------<br />
-  GLOBAL - Apply to the entire world, and not just the activator<br />
-  -------- SPAWNFLAGS --------<br />
-  gravity :    Normal = 800, valid range: &gt;= 0<br />
-  surfaceFlag : Important setting. With this you can define on what surface the gravity_change will work.<br />
-  As soon as the player hits another surface, the gravity_change will be stopped. <br />
-  Don't change the surface too close below, since this check will go down!<br />
-  The gravity_change also stops at player-respawn. Possible values:<br />
-  CONTENTS_NODROP      0 -&gt; Recommended and default value, since lower-gravity will make things float anyway.<br />
-  CONTENTS_SOLID         1<br />
-  CONTENTS_LAVA         2<br />
-  CONTENTS_SLIME         3<br />
-  CONTENTS_WATER         4<br />
-  CONTENTS_FOG         5<br />
-  CONTENTS_DETAIL      6 -&gt; Can easily be set in Radiant, so also quite easy.<br />
-  CONTENTS_STRUCTURAL   7 -&gt; &quot; &quot; (also recommended as grav-surface, so something else can be set as detail (to reset))<br />
-  CONTENTS_TRANSLUCENT   8*/</p>
-<p> //=============================================================================</p>
-<p>/*QUAKED target_speed_change (1 0 0) (-4 -4 -4) (4 4 4) GLOBAL<br />
-  By Vincentk, for instructions read the info at the spawnflags.<br />
-  -------- KEYS --------<br />
-  GLOBAL - Apply to the entire world, and not just the activator<br />
-  -------- SPAWNFLAGS --------<br />
-  speed : Normal = 320, valid range: &gt; 0<br />
-  surfaceFlag : Important setting. With this you can define on what surface the speed_change will work.<br />
-  As soon as the player hits another surface, the speed_change will be stopped. <br />
-  Don't change the surface too close below, since this check will go down!<br />
-  The speed_change also stops at player-respawn. Possible values:<br />
-  CONTENTS_STRUCTURAL   0 -&gt; Recommended and default value, so something else can be set as detail (to reset)<br />
-  CONTENTS_DETAIL      1<br />
-  CONTENTS_LAVA         2<br />
-  CONTENTS_SLIME         3<br />
-  CONTENTS_WATER         4<br />
-  CONTENTS_FOG         5<br />
-  CONTENTS_NODROP      6<br />
-  CONTENTS_SOLID         7<br />
-  CONTENTS_TRANSLUCENT   8*/</p>
-<p>//=============================================================================<br /></p>
-<p>  <strong>TEXTURE NAMING PROTOCOL</strong><br />
-I use a prefix to split the textures into category and easy reference.</p>
-<p>Here the list of prefix:</p>
-<p>al_     = alpha chanel<br />
-  b_      = building<br />
-  d_      = decalc<br />
-  deco_ = decoration<br />
-  ex_     = exterior<br />
-  s_      = structure<br />
-  sy_     = system only texture<br />
-  m_     = mecanic<br />
-  f_       = furniture<br />
-  sh_     = shader only texture<br />
-  t_       = terrain<br />
-  fx_      = special f/x </p>
-<p>Here some examples of texture names:<br />
-  a  grass texture will be name: t_darkgrass01.jpg<br />
-A glowing light fixture will be name: f_mainlight01.jpg, f_mainlight01_glow.jpg<br />
-A see-though crate texture will be name: al_crate01.jpg</p>
-<P><br />
-</P>
-<TABLE class=box width="100%" border=0>
-<TBODY>
-<TR>
-<TD width="41%">
-<H2><A id=models name=models></A>Models For Trepidation </H2></TD>
-<TD width="59%">
-<DIV align=right><A href="#top">Back To Top </A></DIV></TD></TR></TBODY></TABLE>
-<P><STRONG>MODELS GENERAL:</STRONG><BR>Trepidation supports Quake 3's MD3 format as well as the later MD4/MDR format featured in games like Elite Force. <BR><EM>More on this soon</EM> </P>
-<P><STRONG>PLAYER MODELS</STRONG> <BR>Trepidation will reconized player skins created for Quake 3 as well as Star Trek Voyager Elite Force. The Elite Force MDR file format and directory structure is the preferred format as it offers additional options for custom sounds, however the Quake 3 MD3 based format will work as well. <BR><EM>More on the exact formats soon.</EM> </P>
-<P align=left><A href="http://sourceforge.net/donate/index.php?group_id=166307"><BR><BR><BR><BR><BR><BR><BR><BR><BR></A></P>
-<P align=center><A href="http://sourceforge.net/donate/index.php?group_id=166307"><BR><IMG height=32 alt="Support This Project" src="http://images.sourceforge.net/images/project-support.jpg" width=88 border=0></A><BR></P>
+						
+					</div><!--end entry-->
