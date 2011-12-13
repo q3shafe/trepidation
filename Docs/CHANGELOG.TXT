@@ -19,6 +19,8 @@ Trepidation Changelog - Most Recent Changes First
 ======================
 This is mostly a maintenance release, primarily to bring the engine up to date with a newer version of the IOQ3 Engine, as well as clean up a lot of problems that came up in the last dev build in 2007.  
 
+- Updated master server protocol, updated master server site.
+
 - For windows, there is a separate EXE for the dedicated server now.
 
 - 0000135: [Programming] Some Ogg Sounds are cut off. - Fixed (Shafe)
