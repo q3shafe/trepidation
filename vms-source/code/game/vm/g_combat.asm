@@ -7467,12 +7467,16 @@ ADDP4
 INDIRI4
 ASGNI4
 line 1448
-;1448:			trap_SendConsoleCommand( EXEC_APPEND, "resetzoom\n" ); // Zoom Resets When Damage Is Taken
-CNSTI4 2
+;1448:			trap_SendServerCommand(client->ps.clientNum, "+greset");
+ADDRLP4 0
+INDIRP4
+CNSTI4 140
+ADDP4
+INDIRI4
 ARGI4
 ADDRGP4 $551
 ARGP4
-ADDRGP4 trap_SendConsoleCommand
+ADDRGP4 trap_SendServerCommand
 CALLV
 pop
 line 1449
@@ -9142,16 +9146,13 @@ import qsort
 lit
 align 1
 LABELV $551
+byte 1 43
+byte 1 103
 byte 1 114
 byte 1 101
 byte 1 115
 byte 1 101
 byte 1 116
-byte 1 122
-byte 1 111
-byte 1 111
-byte 1 109
-byte 1 10
 byte 1 0
 align 1
 LABELV $526
