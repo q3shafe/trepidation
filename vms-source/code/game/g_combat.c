@@ -1445,6 +1445,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		targ->health = targ->health - take;
 		if ( targ->client ) {
 			targ->client->ps.stats[STAT_HEALTH] = targ->health;
+			trap_SendConsoleCommand( EXEC_APPEND, "resetzoom\n" ); // Zoom Resets When Damage Is Taken
 		}
 			
 		if ( targ->health <= 0 ) {

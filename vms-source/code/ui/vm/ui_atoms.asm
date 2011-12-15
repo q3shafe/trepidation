@@ -3608,6 +3608,8 @@ import UI_ControlsMenu
 import UI_DrawConnectScreen
 import TeamMain_Cache
 import UI_TeamMainMenu
+import UI_OfflineMenu
+import UI_OfflineMenu_Cache
 import UI_SetupMenu
 import UI_SetupMenu_Cache
 import UI_ConfirmMenu
@@ -3900,6 +3902,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand
