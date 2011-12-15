@@ -785,7 +785,7 @@ void weapon_railgun_fire (gentity_t *ent) {
 		ent->client->accuracy_hits++;
 	}
 
-	trap_SendConsoleCommand( EXEC_APPEND, "resetzoom\n" ); // Reset Zoom After Taking A Shot
+	trap_SendServerCommand(ent->client->ps.clientNum, "+greset");
 
 }
 

@@ -3907,12 +3907,19 @@ line 786
 LABELV $246
 line 788
 ;787:
-;788:	trap_SendConsoleCommand( EXEC_APPEND, "resetzoom\n" ); // Reset Zoom After Taking A Shot
-CNSTI4 2
+;788:	trap_SendServerCommand(ent->client->ps.clientNum, "+greset");
+ADDRFP4 0
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 140
+ADDP4
+INDIRI4
 ARGI4
 ADDRGP4 $250
 ARGP4
-ADDRGP4 trap_SendConsoleCommand
+ADDRGP4 trap_SendServerCommand
 CALLV
 pop
 line 790
@@ -8274,16 +8281,13 @@ import qsort
 lit
 align 1
 LABELV $250
+byte 1 43
+byte 1 103
 byte 1 114
 byte 1 101
 byte 1 115
 byte 1 101
 byte 1 116
-byte 1 122
-byte 1 111
-byte 1 111
-byte 1 109
-byte 1 10
 byte 1 0
 align 1
 LABELV $191
