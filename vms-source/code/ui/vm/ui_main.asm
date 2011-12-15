@@ -761,7 +761,7 @@ CNSTI4 10
 LTI4 $222
 line 224
 ;223:
-;224:	uiInfo.newHighScoreSound = trap_S_RegisterSound("sound/feedback/voc_newhighscore.wav", qfalse);
+;224:	uiInfo.newHighScoreSound = trap_S_RegisterSound("sound/feedback/voc_newhighscore.ogg", qfalse);
 ADDRGP4 $230
 ARGP4
 CNSTI4 0
@@ -17585,7 +17585,7 @@ line 2480
 ;2480:			if (ui_netSource.integer == AS_MPLAYER)
 ADDRGP4 ui_netSource+12
 INDIRI4
-CNSTI4 1
+CNSTI4 2
 NEI4 $1936
 line 2481
 ;2481:				ui_netSource.integer--;
@@ -17622,7 +17622,7 @@ line 2484
 ;2484:			if (ui_netSource.integer == AS_MPLAYER)
 ADDRGP4 ui_netSource+12
 INDIRI4
-CNSTI4 1
+CNSTI4 2
 NEI4 $1943
 line 2485
 ;2485:				ui_netSource.integer++;
@@ -17687,7 +17687,7 @@ line 2495
 ;2495:		if (ui_netSource.integer != AS_GLOBAL) {
 ADDRGP4 ui_netSource+12
 INDIRI4
-CNSTI4 2
+CNSTI4 0
 EQI4 $1955
 line 2496
 ;2496:			UI_StartServerRefresh(qtrue);
@@ -23880,7 +23880,7 @@ line 3307
 ;3307:			if (ui_netSource.integer == AS_LOCAL) {
 ADDRGP4 ui_netSource+12
 INDIRI4
-CNSTI4 0
+CNSTI4 1
 NEI4 $2530
 line 3308
 ;3308:				UI_StartServerRefresh(qtrue);
@@ -27204,7 +27204,7 @@ align 4
 LABELV $2972
 skip 4
 code
-proc UI_BuildServerDisplayList 1100 16
+proc UI_BuildServerDisplayList 1096 16
 line 3711
 ;3705:
 ;3706:/*
@@ -27400,18 +27400,13 @@ ADDRLP4 1036
 INDIRI4
 CNSTI4 -1
 EQI4 $3013
-ADDRLP4 1068
-CNSTI4 0
-ASGNI4
 ADDRGP4 ui_netSource+12
 INDIRI4
-ADDRLP4 1068
-INDIRI4
+CNSTI4 1
 NEI4 $3010
 ADDRLP4 1036
 INDIRI4
-ADDRLP4 1068
-INDIRI4
+CNSTI4 0
 NEI4 $3010
 LABELV $3013
 line 3752
@@ -27462,11 +27457,11 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRLP4 1072
+ADDRLP4 1068
 ADDRGP4 trap_LAN_ServerIsVisible
 CALLI4
 ASGNI4
-ADDRLP4 1072
+ADDRLP4 1068
 INDIRI4
 CNSTI4 0
 NEI4 $3025
@@ -27490,12 +27485,12 @@ ARGI4
 ADDRLP4 0
 INDIRI4
 ARGI4
-ADDRLP4 1076
+ADDRLP4 1072
 ADDRGP4 trap_LAN_GetServerPing
 CALLI4
 ASGNI4
 ADDRLP4 4
-ADDRLP4 1076
+ADDRLP4 1072
 INDIRI4
 ASGNI4
 line 3767
@@ -27532,29 +27527,29 @@ ADDRLP4 8
 ARGP4
 ADDRGP4 $3034
 ARGP4
-ADDRLP4 1080
+ADDRLP4 1076
 ADDRGP4 Info_ValueForKey
 CALLP4
 ASGNP4
-ADDRLP4 1080
+ADDRLP4 1076
 INDIRP4
 ARGP4
-ADDRLP4 1084
+ADDRLP4 1080
 ADDRGP4 atoi
 CALLI4
 ASGNI4
 ADDRLP4 1032
-ADDRLP4 1084
+ADDRLP4 1080
 INDIRI4
 ASGNI4
 line 3772
 ;3772:			uiInfo.serverStatus.numPlayersOnServers += clients;
-ADDRLP4 1088
+ADDRLP4 1084
 ADDRGP4 uiInfo+99264+10416
 ASGNP4
-ADDRLP4 1088
+ADDRLP4 1084
 INDIRP4
-ADDRLP4 1088
+ADDRLP4 1084
 INDIRP4
 INDIRI4
 ADDRLP4 1032
@@ -27609,19 +27604,19 @@ ADDRLP4 8
 ARGP4
 ADDRGP4 $1362
 ARGP4
-ADDRLP4 1092
+ADDRLP4 1088
 ADDRGP4 Info_ValueForKey
 CALLP4
 ASGNP4
-ADDRLP4 1092
+ADDRLP4 1088
 INDIRP4
 ARGP4
-ADDRLP4 1096
+ADDRLP4 1092
 ADDRGP4 atoi
 CALLI4
 ASGNI4
 ADDRLP4 1044
-ADDRLP4 1096
+ADDRLP4 1092
 INDIRI4
 ASGNI4
 line 3783
@@ -27671,19 +27666,19 @@ ADDRLP4 8
 ARGP4
 ADDRGP4 $3054
 ARGP4
-ADDRLP4 1092
+ADDRLP4 1088
 ADDRGP4 Info_ValueForKey
 CALLP4
 ASGNP4
-ADDRLP4 1092
+ADDRLP4 1088
 INDIRP4
 ARGP4
-ADDRLP4 1096
+ADDRLP4 1092
 ADDRGP4 atoi
 CALLI4
 ASGNI4
 ADDRLP4 1048
-ADDRLP4 1096
+ADDRLP4 1092
 INDIRI4
 ASGNI4
 line 3791
@@ -27733,11 +27728,11 @@ ADDRLP4 8
 ARGP4
 ADDRGP4 $3066
 ARGP4
-ADDRLP4 1092
+ADDRLP4 1088
 ADDRGP4 Info_ValueForKey
 CALLP4
 ASGNP4
-ADDRLP4 1092
+ADDRLP4 1088
 INDIRP4
 ARGP4
 ADDRGP4 ui_serverFilterType+12
@@ -27748,11 +27743,11 @@ ADDRGP4 serverFilters+4
 ADDP4
 INDIRP4
 ARGP4
-ADDRLP4 1096
+ADDRLP4 1092
 ADDRGP4 Q_stricmp
 CALLI4
 ASGNI4
-ADDRLP4 1096
+ADDRLP4 1092
 INDIRI4
 CNSTI4 0
 EQI4 $3064
@@ -27827,12 +27822,12 @@ CALLV
 pop
 line 3812
 ;3812:				numinvisible++;
-ADDRLP4 1092
+ADDRLP4 1088
 ADDRGP4 $2972
 ASGNP4
-ADDRLP4 1092
+ADDRLP4 1088
 INDIRP4
-ADDRLP4 1092
+ADDRLP4 1088
 INDIRP4
 INDIRI4
 CNSTI4 1
@@ -27883,7 +27878,7 @@ LABELV $3079
 line 3824
 ;3824:}
 LABELV $2971
-endproc UI_BuildServerDisplayList 1100 16
+endproc UI_BuildServerDisplayList 1096 16
 data
 export serverStatusCvars
 align 4
@@ -31402,7 +31397,7 @@ line 4295
 ;4295:						if ( ui_netSource.integer == AS_LOCAL ) {
 ADDRGP4 ui_netSource+12
 INDIRI4
-CNSTI4 0
+CNSTI4 1
 NEI4 $3519
 line 4296
 ;4296:							Com_sprintf( hostname, sizeof(hostname), "%s [%s]",
@@ -40814,7 +40809,7 @@ line 5895
 ;5895:		if (ui_netSource.integer == AS_LOCAL) {
 ADDRGP4 ui_netSource+12
 INDIRI4
-CNSTI4 0
+CNSTI4 1
 NEI4 $4588
 line 5896
 ;5896:			if (!trap_LAN_GetServerCount(ui_netSource.integer)) {
@@ -41092,7 +41087,7 @@ line 5954
 ;5954:	if( ui_netSource.integer == AS_LOCAL ) {
 ADDRGP4 ui_netSource+12
 INDIRI4
-CNSTI4 0
+CNSTI4 1
 NEI4 $4633
 line 5955
 ;5955:		trap_Cmd_ExecuteText( EXEC_NOW, "localservers\n" );
@@ -41130,11 +41125,11 @@ line 5961
 ;5961:	if( ui_netSource.integer == AS_GLOBAL || ui_netSource.integer == AS_MPLAYER ) {
 ADDRGP4 ui_netSource+12
 INDIRI4
-CNSTI4 2
+CNSTI4 0
 EQI4 $4647
 ADDRGP4 ui_netSource+12
 INDIRI4
-CNSTI4 1
+CNSTI4 2
 NEI4 $4643
 LABELV $4647
 line 5964
@@ -41143,7 +41138,7 @@ line 5964
 ;5964:		if( ui_netSource.integer == AS_GLOBAL ) {
 ADDRGP4 ui_netSource+12
 INDIRI4
-CNSTI4 2
+CNSTI4 0
 NEI4 $4648
 line 5965
 ;5965:			i = 0;
@@ -41585,6 +41580,8 @@ import Controls_Cache
 import UI_ControlsMenu
 import TeamMain_Cache
 import UI_TeamMainMenu
+import UI_OfflineMenu
+import UI_OfflineMenu_Cache
 import UI_SetupMenu
 import UI_SetupMenu_Cache
 import UI_ConfirmMenu
@@ -42137,6 +42134,8 @@ import AxisCopy
 import AxisClear
 import AnglesToAxis
 import vectoangles
+import irandom
+import flrandom
 import Q_crandom
 import Q_random
 import Q_rand
@@ -49867,9 +49866,9 @@ byte 1 111
 byte 1 114
 byte 1 101
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $228
