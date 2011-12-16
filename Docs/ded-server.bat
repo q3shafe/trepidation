@@ -1,1 +1,1 @@
-trepidation +set dedicated 2 +exec trepidation.cfg +set net_port 23060
+trepidation-dedicated +set dedicated 2 +exec trep-server.cfg +set net_port 23060
