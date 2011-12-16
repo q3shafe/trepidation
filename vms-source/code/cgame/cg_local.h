@@ -32,8 +32,8 @@
 #define	ITEM_SCALEUP_TIME	1000
 
 // Shafe - Trepidation - Improved Zoom Function
-#define	ZOOM_TIME			500			// Used to be 150
-#define	ZOOM_TIME_OUT		200			// Added This
+#define	ZOOM_TIME			400			// Used to be 150
+#define	ZOOM_TIME_OUT		050			// Added This
 
 #define	ITEM_BLOB_TIME		200
 #define	MUZZLE_FLASH_TIME	20
