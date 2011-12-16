@@ -819,7 +819,7 @@ line 355
 ;210:	{ &cg_ignore, "cg_ignore", "0", 0 },	// used for debugging
 ;211:	{ &cg_autoswitch, "cg_autoswitch", "1", CVAR_ARCHIVE },
 ;212:	{ &cg_drawGun, "cg_drawGun", "1", CVAR_ARCHIVE },
-;213:	{ &cg_zoomFov, "cg_zoomfov", "22.5", CVAR_ARCHIVE },
+;213:	{ &cg_zoomFov, "cg_zoomfov", "15.5", CVAR_ARCHIVE },
 ;214:	{ &cg_fov, "cg_fov", "90", CVAR_ARCHIVE },
 ;215:	{ &cg_viewsize, "cg_viewsize", "100", CVAR_ARCHIVE },
 ;216:	{ &cg_stereoSeparation, "cg_stereoSeparation", "0.4", CVAR_ARCHIVE  },
@@ -15413,8 +15413,8 @@ byte 1 118
 byte 1 0
 align 1
 LABELV $93
-byte 1 50
-byte 1 50
+byte 1 49
+byte 1 53
 byte 1 46
 byte 1 53
 byte 1 0

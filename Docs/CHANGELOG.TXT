@@ -19,6 +19,12 @@ Trepidation Changelog - Most Recent Changes First
 ======================
 This is mostly a maintenance release, primarily to bring the engine up to date with a newer version of the IOQ3 Engine, as well as clean up a lot of problems that came up in the last dev build in 2007.  
 
+- LFO Rifle fire is now a soothing green instead of that non-descript white looking color.
+
+- Gauss rifle unzooms when damage is taken and after you fire it.
+
+- Fixed Missing player sounds.
+
 - Replaced the Bot Skill Icons with something more sightly.
 
 - Fixed CTF_AVERSION bot support by reverting it to working copy.
