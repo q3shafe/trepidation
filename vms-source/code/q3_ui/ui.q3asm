@@ -33,6 +33,7 @@ ui_spskill
 ui_startserver
 ui_team
 ui_video
+ui_voip
 ui_addbots
 ui_removebots
 ui_teamorders

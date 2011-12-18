@@ -18,7 +18,9 @@ SYSTEM CONFIGURATION MENU
 #define ID_DISPLAY			11
 #define ID_SOUND			12
 #define ID_NETWORK			13
-#define ID_BACK				14
+#define ID_VOIP				14
+#define ID_BACK				15
+
 
 #define VERTICAL_SPACING	34
 
@@ -33,6 +35,7 @@ typedef struct {
 	menutext_s		display;
 	menutext_s		sound;
 	menutext_s		network;
+	menutext_s		voip;
 	menubitmap_s	back;
 } optionsmenu_t;
 
@@ -64,6 +67,10 @@ static void Options_Event( void* ptr, int event ) {
 
 	case ID_NETWORK:
 		UI_NetworkOptionsMenu();
+		break;
+
+	case ID_VOIP:
+		//UI_VoipOptionsMenu();
 		break;
 
 	case ID_BACK:
@@ -175,6 +182,17 @@ void Options_MenuInit( void ) {
 	s_options.network.color				= color_red;
 	s_options.network.style				= UI_CENTER;
 
+	y += VERTICAL_SPACING;
+	s_options.voip.generic.type		= MTYPE_PTEXT;
+	s_options.voip.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	s_options.voip.generic.callback	= Options_Event;
+	s_options.voip.generic.id		= ID_VOIP;
+	s_options.voip.generic.x			= 320;
+	s_options.voip.generic.y			= y;
+	s_options.voip.string			= "VOICE";
+	s_options.voip.color				= color_red;
+	s_options.voip.style				= UI_CENTER;
+
 	s_options.back.generic.type	    = MTYPE_BITMAP;
 	s_options.back.generic.name     = ART_BACK0;
 	s_options.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -195,6 +213,7 @@ void Options_MenuInit( void ) {
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.display );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.sound );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.network );
+	Menu_AddItem( &s_options.menu, ( void * ) &s_options.voip );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.back );
 }
 

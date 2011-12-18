@@ -32,6 +32,7 @@ ui_splevel
 ui_spskill
 ui_startserver
 ui_team
+ui_voip
 ui_video
 ui_addbots
 ui_removebots

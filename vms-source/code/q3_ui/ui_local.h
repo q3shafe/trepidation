@@ -729,6 +729,13 @@ void UI_NetworkOptionsMenu_Cache( void );
 void UI_NetworkOptionsMenu( void );
 
 //
+// ui_voip.c
+//
+void UI_VoipOptionsMenu_Cache( void );
+void UI_VoipOptionsMenu( void );
+
+
+//
 // ui_gameinfo.c
 //
 typedef enum {

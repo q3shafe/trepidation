@@ -22,6 +22,7 @@ NETWORK OPTIONS MENU
 #define ID_NETWORK			13
 #define ID_RATE				14
 #define ID_BACK				15
+#define ID_VOIP				165
 
 
 static const char *rate_items[] = {
@@ -44,6 +45,7 @@ typedef struct {
 	menutext_s		display;
 	menutext_s		sound;
 	menutext_s		network;
+	menutext_s		voip;
 
 	menulist_s		rate;
 
@@ -80,6 +82,11 @@ static void UI_NetworkOptionsMenu_Event( void* ptr, int event ) {
 		break;
 
 	case ID_NETWORK:
+		break;
+
+	case ID_VOIP:
+		UI_PopMenu();
+		UI_VoipOptionsMenu();
 		break;
 
 	case ID_RATE:   // Shafe - Trep - Rearranged This To Default To The Popular
@@ -186,6 +193,16 @@ static void UI_NetworkOptionsMenu_Init( void ) {
 	networkOptionsInfo.network.style				= UI_RIGHT;
 	networkOptionsInfo.network.color				= color_red;
 
+	networkOptionsInfo.voip.generic.type			= MTYPE_PTEXT;
+	networkOptionsInfo.voip.generic.flags		= QMF_RIGHT_JUSTIFY;
+	networkOptionsInfo.voip.generic.id			= ID_VOIP;
+	networkOptionsInfo.voip.generic.callback		= UI_NetworkOptionsMenu_Event;
+	networkOptionsInfo.voip.generic.x			= 216;
+	networkOptionsInfo.voip.generic.y			= 240 + PROP_HEIGHT + PROP_HEIGHT;
+	networkOptionsInfo.voip.string				= "VOICE";
+	networkOptionsInfo.voip.style				= UI_RIGHT;
+	networkOptionsInfo.voip.color				= color_red;
+
 	y = 240 - 1 * (BIGCHAR_HEIGHT+2);
 	networkOptionsInfo.rate.generic.type		= MTYPE_SPINCONTROL;
 	networkOptionsInfo.rate.generic.name		= "Data Rate:";
@@ -214,6 +231,7 @@ static void UI_NetworkOptionsMenu_Init( void ) {
 	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.display );
 	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.sound );
 	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.network );
+	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.voip );
 	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.rate );
 	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.back );
 

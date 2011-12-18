@@ -1,7 +1,7 @@
 code
 proc Options_Event 8 0
 file "../ui_options.c"
-line 47
+line 50
 ;1:/*
 ;2:=======================================================================
 ;3:
@@ -22,48 +22,51 @@ line 47
 ;18:#define ID_DISPLAY			11
 ;19:#define ID_SOUND			12
 ;20:#define ID_NETWORK			13
-;21:#define ID_BACK				14
-;22:
-;23:#define VERTICAL_SPACING	34
+;21:#define ID_VOIP				14
+;22:#define ID_BACK				15
+;23:
 ;24:
-;25:typedef struct {
-;26:	menuframework_s	menu;
-;27:
-;28:	menutext_s		banner;
-;29:	menubitmap_s	framel;
-;30:	menubitmap_s	framer;
-;31:
-;32:	menutext_s		graphics;
-;33:	menutext_s		display;
-;34:	menutext_s		sound;
-;35:	menutext_s		network;
-;36:	menubitmap_s	back;
-;37:} optionsmenu_t;
-;38:
-;39:static optionsmenu_t	s_options;
-;40:
+;25:#define VERTICAL_SPACING	34
+;26:
+;27:typedef struct {
+;28:	menuframework_s	menu;
+;29:
+;30:	menutext_s		banner;
+;31:	menubitmap_s	framel;
+;32:	menubitmap_s	framer;
+;33:
+;34:	menutext_s		graphics;
+;35:	menutext_s		display;
+;36:	menutext_s		sound;
+;37:	menutext_s		network;
+;38:	menutext_s		voip;
+;39:	menubitmap_s	back;
+;40:} optionsmenu_t;
 ;41:
-;42:/*
-;43:=================
-;44:Options_Event
-;45:=================
-;46:*/
-;47:static void Options_Event( void* ptr, int event ) {
-line 48
-;48:	if( event != QM_ACTIVATED ) {
+;42:static optionsmenu_t	s_options;
+;43:
+;44:
+;45:/*
+;46:=================
+;47:Options_Event
+;48:=================
+;49:*/
+;50:static void Options_Event( void* ptr, int event ) {
+line 51
+;51:	if( event != QM_ACTIVATED ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
 EQI4 $71
-line 49
-;49:		return;
+line 52
+;52:		return;
 ADDRGP4 $70
 JUMPV
 LABELV $71
-line 52
-;50:	}
-;51:
-;52:	switch( ((menucommon_s*)ptr)->id ) {
+line 55
+;53:	}
+;54:
+;55:	switch( ((menucommon_s*)ptr)->id ) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -77,580 +80,641 @@ CNSTI4 10
 LTI4 $73
 ADDRLP4 0
 INDIRI4
-CNSTI4 14
+CNSTI4 15
 GTI4 $73
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $81-40
+ADDRGP4 $82-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $81
+LABELV $82
 address $76
 address $77
 address $78
 address $79
-address $80
+address $74
+address $81
 code
 LABELV $76
-line 54
-;53:	case ID_GRAPHICS:
-;54:		UI_GraphicsOptionsMenu();
+line 57
+;56:	case ID_GRAPHICS:
+;57:		UI_GraphicsOptionsMenu();
 ADDRGP4 UI_GraphicsOptionsMenu
 CALLV
 pop
-line 55
-;55:		break;
+line 58
+;58:		break;
 ADDRGP4 $74
 JUMPV
 LABELV $77
-line 58
-;56:
-;57:	case ID_DISPLAY:
-;58:		UI_DisplayOptionsMenu();
+line 61
+;59:
+;60:	case ID_DISPLAY:
+;61:		UI_DisplayOptionsMenu();
 ADDRGP4 UI_DisplayOptionsMenu
 CALLV
 pop
-line 59
-;59:		break;
+line 62
+;62:		break;
 ADDRGP4 $74
 JUMPV
 LABELV $78
-line 62
-;60:
-;61:	case ID_SOUND:
-;62:		UI_SoundOptionsMenu();
+line 65
+;63:
+;64:	case ID_SOUND:
+;65:		UI_SoundOptionsMenu();
 ADDRGP4 UI_SoundOptionsMenu
 CALLV
 pop
-line 63
-;63:		break;
+line 66
+;66:		break;
 ADDRGP4 $74
 JUMPV
 LABELV $79
-line 66
-;64:
-;65:	case ID_NETWORK:
-;66:		UI_NetworkOptionsMenu();
+line 69
+;67:
+;68:	case ID_NETWORK:
+;69:		UI_NetworkOptionsMenu();
 ADDRGP4 UI_NetworkOptionsMenu
 CALLV
 pop
-line 67
-;67:		break;
+line 70
+;70:		break;
 ADDRGP4 $74
 JUMPV
-LABELV $80
-line 70
-;68:
-;69:	case ID_BACK:
-;70:		UI_PopMenu();
+line 74
+;71:
+;72:	case ID_VOIP:
+;73:		//UI_VoipOptionsMenu();
+;74:		break;
+LABELV $81
+line 77
+;75:
+;76:	case ID_BACK:
+;77:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
 CALLV
 pop
-line 71
-;71:		break;
+line 78
+;78:		break;
 LABELV $73
 LABELV $74
-line 73
-;72:	}
-;73:}
+line 80
+;79:	}
+;80:}
 LABELV $70
 endproc Options_Event 8 0
 export SystemConfig_Cache
 proc SystemConfig_Cache 0 4
-line 81
-;74:
-;75:
-;76:/*
-;77:===============
-;78:SystemConfig_Cache
-;79:===============
-;80:*/
-;81:void SystemConfig_Cache( void ) {
-line 82
-;82:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $84
-ARGP4
-ADDRGP4 trap_R_RegisterShaderNoMip
-CALLI4
-pop
-line 83
-;83:	trap_R_RegisterShaderNoMip( ART_FRAMER );
+line 88
+;81:
+;82:
+;83:/*
+;84:===============
+;85:SystemConfig_Cache
+;86:===============
+;87:*/
+;88:void SystemConfig_Cache( void ) {
+line 89
+;89:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
 ADDRGP4 $85
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 84
-;84:	trap_R_RegisterShaderNoMip( ART_BACK0 );
+line 90
+;90:	trap_R_RegisterShaderNoMip( ART_FRAMER );
 ADDRGP4 $86
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 85
-;85:	trap_R_RegisterShaderNoMip( ART_BACK1 );
+line 91
+;91:	trap_R_RegisterShaderNoMip( ART_BACK0 );
 ADDRGP4 $87
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 86
-;86:}
-LABELV $83
+line 92
+;92:	trap_R_RegisterShaderNoMip( ART_BACK1 );
+ADDRGP4 $88
+ARGP4
+ADDRGP4 trap_R_RegisterShaderNoMip
+CALLI4
+pop
+line 93
+;93:}
+LABELV $84
 endproc SystemConfig_Cache 0 4
 export Options_MenuInit
 proc Options_MenuInit 3088 12
-line 93
-;87:
-;88:/*
-;89:===============
-;90:Options_MenuInit
-;91:===============
-;92:*/
-;93:void Options_MenuInit( void ) {
-line 97
-;94:	int				y;
-;95:	uiClientState_t	cstate;
-;96:
-;97:	memset( &s_options, 0, sizeof(optionsmenu_t) );
+line 100
+;94:
+;95:/*
+;96:===============
+;97:Options_MenuInit
+;98:===============
+;99:*/
+;100:void Options_MenuInit( void ) {
+line 104
+;101:	int				y;
+;102:	uiClientState_t	cstate;
+;103:
+;104:	memset( &s_options, 0, sizeof(optionsmenu_t) );
 ADDRGP4 s_options
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 912
+CNSTI4 984
 ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 99
-;98:
-;99:	SystemConfig_Cache();
+line 106
+;105:
+;106:	SystemConfig_Cache();
 ADDRGP4 SystemConfig_Cache
 CALLV
 pop
-line 100
-;100:	s_options.menu.wrapAround = qtrue;
+line 107
+;107:	s_options.menu.wrapAround = qtrue;
 ADDRGP4 s_options+276
 CNSTI4 1
 ASGNI4
-line 102
-;101:
-;102:	trap_GetClientState( &cstate );
+line 109
+;108:
+;109:	trap_GetClientState( &cstate );
 ADDRLP4 4
 ARGP4
 ADDRGP4 trap_GetClientState
 CALLV
 pop
-line 103
-;103:	if ( cstate.connState >= CA_CONNECTED ) {
+line 110
+;110:	if ( cstate.connState >= CA_CONNECTED ) {
 ADDRLP4 4
 INDIRI4
 CNSTI4 5
-LTI4 $90
-line 104
-;104:		s_options.menu.fullscreen = qfalse;
+LTI4 $91
+line 111
+;111:		s_options.menu.fullscreen = qfalse;
 ADDRGP4 s_options+280
 CNSTI4 0
 ASGNI4
-line 105
-;105:	}
-ADDRGP4 $91
+line 112
+;112:	}
+ADDRGP4 $92
 JUMPV
-LABELV $90
-line 106
-;106:	else {
-line 107
-;107:		s_options.menu.fullscreen = qtrue;
+LABELV $91
+line 113
+;113:	else {
+line 114
+;114:		s_options.menu.fullscreen = qtrue;
 ADDRGP4 s_options+280
 CNSTI4 1
 ASGNI4
-line 108
-;108:	}
-LABELV $91
-line 110
-;109:
-;110:	s_options.banner.generic.type	= MTYPE_BTEXT;
+line 115
+;115:	}
+LABELV $92
+line 117
+;116:
+;117:	s_options.banner.generic.type	= MTYPE_BTEXT;
 ADDRGP4 s_options+288
 CNSTI4 10
 ASGNI4
-line 111
-;111:	s_options.banner.generic.flags	= QMF_CENTER_JUSTIFY;
+line 118
+;118:	s_options.banner.generic.flags	= QMF_CENTER_JUSTIFY;
 ADDRGP4 s_options+288+44
 CNSTU4 8
 ASGNU4
-line 112
-;112:	s_options.banner.generic.x		= 320;
+line 119
+;119:	s_options.banner.generic.x		= 320;
 ADDRGP4 s_options+288+12
 CNSTI4 320
 ASGNI4
-line 113
-;113:	s_options.banner.generic.y		= 16;
+line 120
+;120:	s_options.banner.generic.y		= 16;
 ADDRGP4 s_options+288+16
 CNSTI4 16
 ASGNI4
-line 114
-;114:	s_options.banner.string		    = "SYSTEM SETUP";
+line 121
+;121:	s_options.banner.string		    = "SYSTEM SETUP";
 ADDRGP4 s_options+288+60
-ADDRGP4 $103
+ADDRGP4 $104
 ASGNP4
-line 115
-;115:	s_options.banner.color			= color_white;
+line 122
+;122:	s_options.banner.color			= color_white;
 ADDRGP4 s_options+288+68
 ADDRGP4 color_white
 ASGNP4
-line 116
-;116:	s_options.banner.style			= UI_CENTER;
+line 123
+;123:	s_options.banner.style			= UI_CENTER;
 ADDRGP4 s_options+288+64
 CNSTI4 1
 ASGNI4
-line 118
-;117:
-;118:	s_options.framel.generic.type  = MTYPE_BITMAP;
+line 125
+;124:
+;125:	s_options.framel.generic.type  = MTYPE_BITMAP;
 ADDRGP4 s_options+360
 CNSTI4 6
 ASGNI4
-line 119
-;119:	s_options.framel.generic.name  = ART_FRAMEL;
+line 126
+;126:	s_options.framel.generic.name  = ART_FRAMEL;
 ADDRGP4 s_options+360+4
-ADDRGP4 $84
+ADDRGP4 $85
 ASGNP4
-line 120
-;120:	s_options.framel.generic.flags = QMF_INACTIVE;
+line 127
+;127:	s_options.framel.generic.flags = QMF_INACTIVE;
 ADDRGP4 s_options+360+44
 CNSTU4 16384
 ASGNU4
-line 121
-;121:	s_options.framel.generic.x	   = 1;  
+line 128
+;128:	s_options.framel.generic.x	   = 1;  
 ADDRGP4 s_options+360+12
 CNSTI4 1
 ASGNI4
-line 122
-;122:	s_options.framel.generic.y	   = 1;
+line 129
+;129:	s_options.framel.generic.y	   = 1;
 ADDRGP4 s_options+360+16
 CNSTI4 1
 ASGNI4
-line 123
-;123:	s_options.framel.width  	   = 1024;
+line 130
+;130:	s_options.framel.width  	   = 1024;
 ADDRGP4 s_options+360+76
 CNSTI4 1024
 ASGNI4
-line 124
-;124:	s_options.framel.height  	   = 768;
+line 131
+;131:	s_options.framel.height  	   = 768;
 ADDRGP4 s_options+360+80
 CNSTI4 768
 ASGNI4
-line 126
-;125:
-;126:	s_options.framer.generic.type  = MTYPE_BITMAP;
+line 133
+;132:
+;133:	s_options.framer.generic.type  = MTYPE_BITMAP;
 ADDRGP4 s_options+448
 CNSTI4 6
 ASGNI4
-line 127
-;127:	s_options.framer.generic.name  = ART_FRAMER;
+line 134
+;134:	s_options.framer.generic.name  = ART_FRAMER;
 ADDRGP4 s_options+448+4
-ADDRGP4 $85
+ADDRGP4 $86
 ASGNP4
-line 128
-;128:	s_options.framer.generic.flags = QMF_INACTIVE;
+line 135
+;135:	s_options.framer.generic.flags = QMF_INACTIVE;
 ADDRGP4 s_options+448+44
 CNSTU4 16384
 ASGNU4
-line 129
-;129:	s_options.framer.generic.x	   = 376;
+line 136
+;136:	s_options.framer.generic.x	   = 376;
 ADDRGP4 s_options+448+12
 CNSTI4 376
 ASGNI4
-line 130
-;130:	s_options.framer.generic.y	   = 76;
+line 137
+;137:	s_options.framer.generic.y	   = 76;
 ADDRGP4 s_options+448+16
 CNSTI4 76
 ASGNI4
-line 131
-;131:	s_options.framer.width  	   = 256;
+line 138
+;138:	s_options.framer.width  	   = 256;
 ADDRGP4 s_options+448+76
 CNSTI4 256
 ASGNI4
-line 132
-;132:	s_options.framer.height  	   = 334;
+line 139
+;139:	s_options.framer.height  	   = 334;
 ADDRGP4 s_options+448+80
 CNSTI4 334
 ASGNI4
-line 134
-;133:
-;134:	y = 168;
+line 141
+;140:
+;141:	y = 168;
 ADDRLP4 0
 CNSTI4 168
 ASGNI4
-line 135
-;135:	s_options.graphics.generic.type		= MTYPE_PTEXT;
+line 142
+;142:	s_options.graphics.generic.type		= MTYPE_PTEXT;
 ADDRGP4 s_options+536
 CNSTI4 9
 ASGNI4
-line 136
-;136:	s_options.graphics.generic.flags	= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 143
+;143:	s_options.graphics.generic.flags	= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_options+536+44
 CNSTU4 264
 ASGNU4
-line 137
-;137:	s_options.graphics.generic.callback	= Options_Event;
+line 144
+;144:	s_options.graphics.generic.callback	= Options_Event;
 ADDRGP4 s_options+536+48
 ADDRGP4 Options_Event
 ASGNP4
-line 138
-;138:	s_options.graphics.generic.id		= ID_GRAPHICS;
+line 145
+;145:	s_options.graphics.generic.id		= ID_GRAPHICS;
 ADDRGP4 s_options+536+8
 CNSTI4 10
 ASGNI4
-line 139
-;139:	s_options.graphics.generic.x		= 320;
+line 146
+;146:	s_options.graphics.generic.x		= 320;
 ADDRGP4 s_options+536+12
 CNSTI4 320
 ASGNI4
-line 140
-;140:	s_options.graphics.generic.y		= y;
+line 147
+;147:	s_options.graphics.generic.y		= y;
 ADDRGP4 s_options+536+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 141
-;141:	s_options.graphics.string			= "GRAPHICS";
+line 148
+;148:	s_options.graphics.string			= "GRAPHICS";
 ADDRGP4 s_options+536+60
-ADDRGP4 $147
+ADDRGP4 $148
 ASGNP4
-line 142
-;142:	s_options.graphics.color			= color_red;
+line 149
+;149:	s_options.graphics.color			= color_red;
 ADDRGP4 s_options+536+68
 ADDRGP4 color_red
 ASGNP4
-line 143
-;143:	s_options.graphics.style			= UI_CENTER;
+line 150
+;150:	s_options.graphics.style			= UI_CENTER;
 ADDRGP4 s_options+536+64
 CNSTI4 1
 ASGNI4
-line 145
-;144:
-;145:	y += VERTICAL_SPACING;
+line 152
+;151:
+;152:	y += VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 146
-;146:	s_options.display.generic.type		= MTYPE_PTEXT;
+line 153
+;153:	s_options.display.generic.type		= MTYPE_PTEXT;
 ADDRGP4 s_options+608
 CNSTI4 9
 ASGNI4
-line 147
-;147:	s_options.display.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 154
+;154:	s_options.display.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_options+608+44
 CNSTU4 264
 ASGNU4
-line 148
-;148:	s_options.display.generic.callback	= Options_Event;
+line 155
+;155:	s_options.display.generic.callback	= Options_Event;
 ADDRGP4 s_options+608+48
 ADDRGP4 Options_Event
 ASGNP4
-line 149
-;149:	s_options.display.generic.id		= ID_DISPLAY;
+line 156
+;156:	s_options.display.generic.id		= ID_DISPLAY;
 ADDRGP4 s_options+608+8
 CNSTI4 11
 ASGNI4
-line 150
-;150:	s_options.display.generic.x			= 320;
+line 157
+;157:	s_options.display.generic.x			= 320;
 ADDRGP4 s_options+608+12
 CNSTI4 320
 ASGNI4
-line 151
-;151:	s_options.display.generic.y			= y;
+line 158
+;158:	s_options.display.generic.y			= y;
 ADDRGP4 s_options+608+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 152
-;152:	s_options.display.string			= "DISPLAY";
+line 159
+;159:	s_options.display.string			= "DISPLAY";
 ADDRGP4 s_options+608+60
-ADDRGP4 $165
+ADDRGP4 $166
 ASGNP4
-line 153
-;153:	s_options.display.color				= color_red;
+line 160
+;160:	s_options.display.color				= color_red;
 ADDRGP4 s_options+608+68
 ADDRGP4 color_red
 ASGNP4
-line 154
-;154:	s_options.display.style				= UI_CENTER;
+line 161
+;161:	s_options.display.style				= UI_CENTER;
 ADDRGP4 s_options+608+64
 CNSTI4 1
 ASGNI4
-line 156
-;155:
-;156:	y += VERTICAL_SPACING;
+line 163
+;162:
+;163:	y += VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 157
-;157:	s_options.sound.generic.type		= MTYPE_PTEXT;
+line 164
+;164:	s_options.sound.generic.type		= MTYPE_PTEXT;
 ADDRGP4 s_options+680
 CNSTI4 9
 ASGNI4
-line 158
-;158:	s_options.sound.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 165
+;165:	s_options.sound.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_options+680+44
 CNSTU4 264
 ASGNU4
-line 159
-;159:	s_options.sound.generic.callback	= Options_Event;
+line 166
+;166:	s_options.sound.generic.callback	= Options_Event;
 ADDRGP4 s_options+680+48
 ADDRGP4 Options_Event
 ASGNP4
-line 160
-;160:	s_options.sound.generic.id			= ID_SOUND;
+line 167
+;167:	s_options.sound.generic.id			= ID_SOUND;
 ADDRGP4 s_options+680+8
 CNSTI4 12
 ASGNI4
-line 161
-;161:	s_options.sound.generic.x			= 320;
+line 168
+;168:	s_options.sound.generic.x			= 320;
 ADDRGP4 s_options+680+12
 CNSTI4 320
 ASGNI4
-line 162
-;162:	s_options.sound.generic.y			= y;
+line 169
+;169:	s_options.sound.generic.y			= y;
 ADDRGP4 s_options+680+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 163
-;163:	s_options.sound.string				= "SOUND";
+line 170
+;170:	s_options.sound.string				= "SOUND";
 ADDRGP4 s_options+680+60
-ADDRGP4 $183
+ADDRGP4 $184
 ASGNP4
-line 164
-;164:	s_options.sound.color				= color_red;
+line 171
+;171:	s_options.sound.color				= color_red;
 ADDRGP4 s_options+680+68
 ADDRGP4 color_red
 ASGNP4
-line 165
-;165:	s_options.sound.style				= UI_CENTER;
+line 172
+;172:	s_options.sound.style				= UI_CENTER;
 ADDRGP4 s_options+680+64
 CNSTI4 1
 ASGNI4
-line 167
-;166:
-;167:	y += VERTICAL_SPACING;
+line 174
+;173:
+;174:	y += VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 168
-;168:	s_options.network.generic.type		= MTYPE_PTEXT;
+line 175
+;175:	s_options.network.generic.type		= MTYPE_PTEXT;
 ADDRGP4 s_options+752
 CNSTI4 9
 ASGNI4
-line 169
-;169:	s_options.network.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 176
+;176:	s_options.network.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_options+752+44
 CNSTU4 264
 ASGNU4
-line 170
-;170:	s_options.network.generic.callback	= Options_Event;
+line 177
+;177:	s_options.network.generic.callback	= Options_Event;
 ADDRGP4 s_options+752+48
 ADDRGP4 Options_Event
 ASGNP4
-line 171
-;171:	s_options.network.generic.id		= ID_NETWORK;
+line 178
+;178:	s_options.network.generic.id		= ID_NETWORK;
 ADDRGP4 s_options+752+8
 CNSTI4 13
 ASGNI4
-line 172
-;172:	s_options.network.generic.x			= 320;
+line 179
+;179:	s_options.network.generic.x			= 320;
 ADDRGP4 s_options+752+12
 CNSTI4 320
 ASGNI4
-line 173
-;173:	s_options.network.generic.y			= y;
+line 180
+;180:	s_options.network.generic.y			= y;
 ADDRGP4 s_options+752+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 174
-;174:	s_options.network.string			= "NETWORK";
+line 181
+;181:	s_options.network.string			= "NETWORK";
 ADDRGP4 s_options+752+60
-ADDRGP4 $201
+ADDRGP4 $202
 ASGNP4
-line 175
-;175:	s_options.network.color				= color_red;
+line 182
+;182:	s_options.network.color				= color_red;
 ADDRGP4 s_options+752+68
 ADDRGP4 color_red
 ASGNP4
-line 176
-;176:	s_options.network.style				= UI_CENTER;
+line 183
+;183:	s_options.network.style				= UI_CENTER;
 ADDRGP4 s_options+752+64
 CNSTI4 1
 ASGNI4
-line 178
-;177:
-;178:	s_options.back.generic.type	    = MTYPE_BITMAP;
-ADDRGP4 s_options+824
-CNSTI4 6
+line 185
+;184:
+;185:	y += VERTICAL_SPACING;
+ADDRLP4 0
+ADDRLP4 0
+INDIRI4
+CNSTI4 34
+ADDI4
 ASGNI4
-line 179
-;179:	s_options.back.generic.name     = ART_BACK0;
-ADDRGP4 s_options+824+4
-ADDRGP4 $86
-ASGNP4
-line 180
-;180:	s_options.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 186
+;186:	s_options.voip.generic.type		= MTYPE_PTEXT;
+ADDRGP4 s_options+824
+CNSTI4 9
+ASGNI4
+line 187
+;187:	s_options.voip.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_options+824+44
-CNSTU4 260
+CNSTU4 264
 ASGNU4
-line 181
-;181:	s_options.back.generic.callback = Options_Event;
+line 188
+;188:	s_options.voip.generic.callback	= Options_Event;
 ADDRGP4 s_options+824+48
 ADDRGP4 Options_Event
 ASGNP4
-line 182
-;182:	s_options.back.generic.id	    = ID_BACK;
+line 189
+;189:	s_options.voip.generic.id		= ID_VOIP;
 ADDRGP4 s_options+824+8
 CNSTI4 14
 ASGNI4
-line 183
-;183:	s_options.back.generic.x		= 0;
+line 190
+;190:	s_options.voip.generic.x			= 320;
 ADDRGP4 s_options+824+12
-CNSTI4 0
+CNSTI4 320
 ASGNI4
-line 184
-;184:	s_options.back.generic.y		= 480-64;
+line 191
+;191:	s_options.voip.generic.y			= y;
 ADDRGP4 s_options+824+16
-CNSTI4 416
+ADDRLP4 0
+INDIRI4
 ASGNI4
-line 185
-;185:	s_options.back.width  		    = 128;
-ADDRGP4 s_options+824+76
-CNSTI4 128
-ASGNI4
-line 186
-;186:	s_options.back.height  		    = 64;
-ADDRGP4 s_options+824+80
-CNSTI4 64
-ASGNI4
-line 187
-;187:	s_options.back.focuspic         = ART_BACK1;
+line 192
+;192:	s_options.voip.string			= "VOICE";
 ADDRGP4 s_options+824+60
+ADDRGP4 $220
+ASGNP4
+line 193
+;193:	s_options.voip.color				= color_red;
+ADDRGP4 s_options+824+68
+ADDRGP4 color_red
+ASGNP4
+line 194
+;194:	s_options.voip.style				= UI_CENTER;
+ADDRGP4 s_options+824+64
+CNSTI4 1
+ASGNI4
+line 196
+;195:
+;196:	s_options.back.generic.type	    = MTYPE_BITMAP;
+ADDRGP4 s_options+896
+CNSTI4 6
+ASGNI4
+line 197
+;197:	s_options.back.generic.name     = ART_BACK0;
+ADDRGP4 s_options+896+4
 ADDRGP4 $87
 ASGNP4
-line 189
-;188:
-;189:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.framel );
+line 198
+;198:	s_options.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+ADDRGP4 s_options+896+44
+CNSTU4 260
+ASGNU4
+line 199
+;199:	s_options.back.generic.callback = Options_Event;
+ADDRGP4 s_options+896+48
+ADDRGP4 Options_Event
+ASGNP4
+line 200
+;200:	s_options.back.generic.id	    = ID_BACK;
+ADDRGP4 s_options+896+8
+CNSTI4 15
+ASGNI4
+line 201
+;201:	s_options.back.generic.x		= 0;
+ADDRGP4 s_options+896+12
+CNSTI4 0
+ASGNI4
+line 202
+;202:	s_options.back.generic.y		= 480-64;
+ADDRGP4 s_options+896+16
+CNSTI4 416
+ASGNI4
+line 203
+;203:	s_options.back.width  		    = 128;
+ADDRGP4 s_options+896+76
+CNSTI4 128
+ASGNI4
+line 204
+;204:	s_options.back.height  		    = 64;
+ADDRGP4 s_options+896+80
+CNSTI4 64
+ASGNI4
+line 205
+;205:	s_options.back.focuspic         = ART_BACK1;
+ADDRGP4 s_options+896+60
+ADDRGP4 $88
+ASGNP4
+line 207
+;206:
+;207:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.framel );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+360
@@ -658,9 +722,9 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 191
-;190:	
-;191:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.banner );
+line 209
+;208:	
+;209:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.banner );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+288
@@ -668,10 +732,10 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 194
-;192:	//Menu_AddItem( &s_options.menu, ( void * ) &s_options.framer );
-;193:	
-;194:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.graphics );
+line 212
+;210:	//Menu_AddItem( &s_options.menu, ( void * ) &s_options.framer );
+;211:	
+;212:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.graphics );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+536
@@ -679,8 +743,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 195
-;195:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.display );
+line 213
+;213:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.display );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+608
@@ -688,8 +752,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 196
-;196:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.sound );
+line 214
+;214:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.sound );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+680
@@ -697,8 +761,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 197
-;197:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.network );
+line 215
+;215:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.network );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+752
@@ -706,8 +770,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 198
-;198:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.back );
+line 216
+;216:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.voip );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 s_options+824
@@ -715,41 +779,50 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 199
-;199:}
-LABELV $88
+line 217
+;217:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.back );
+ADDRGP4 s_options
+ARGP4
+ADDRGP4 s_options+896
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 218
+;218:}
+LABELV $89
 endproc Options_MenuInit 3088 12
 export UI_SystemConfigMenu
 proc UI_SystemConfigMenu 0 4
-line 207
-;200:
-;201:
-;202:/*
-;203:===============
-;204:UI_SystemConfigMenu
-;205:===============
-;206:*/
-;207:void UI_SystemConfigMenu( void ) {
-line 208
-;208:	Options_MenuInit();
+line 226
+;219:
+;220:
+;221:/*
+;222:===============
+;223:UI_SystemConfigMenu
+;224:===============
+;225:*/
+;226:void UI_SystemConfigMenu( void ) {
+line 227
+;227:	Options_MenuInit();
 ADDRGP4 Options_MenuInit
 CALLV
 pop
-line 209
-;209:	UI_PushMenu ( &s_options.menu );
+line 228
+;228:	UI_PushMenu ( &s_options.menu );
 ADDRGP4 s_options
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 210
-;210:}
-LABELV $232
+line 229
+;229:}
+LABELV $252
 endproc UI_SystemConfigMenu 0 4
 bss
 align 4
 LABELV s_options
-skip 912
+skip 984
 import UI_RankStatusMenu
 import RankStatus_Cache
 import UI_SignupMenu
@@ -782,6 +855,8 @@ import UI_GetNumArenas
 import UI_GetSpecialArenaInfo
 import UI_GetArenaInfoByMap
 import UI_GetArenaInfoByNumber
+import UI_VoipOptionsMenu
+import UI_VoipOptionsMenu_Cache
 import UI_NetworkOptionsMenu
 import UI_NetworkOptionsMenu_Cache
 import UI_SoundOptionsMenu
@@ -1237,7 +1312,15 @@ import srand
 import qsort
 lit
 align 1
-LABELV $201
+LABELV $220
+byte 1 86
+byte 1 79
+byte 1 73
+byte 1 67
+byte 1 69
+byte 1 0
+align 1
+LABELV $202
 byte 1 78
 byte 1 69
 byte 1 84
@@ -1247,7 +1330,7 @@ byte 1 82
 byte 1 75
 byte 1 0
 align 1
-LABELV $183
+LABELV $184
 byte 1 83
 byte 1 79
 byte 1 85
@@ -1255,7 +1338,7 @@ byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $165
+LABELV $166
 byte 1 68
 byte 1 73
 byte 1 83
@@ -1265,7 +1348,7 @@ byte 1 65
 byte 1 89
 byte 1 0
 align 1
-LABELV $147
+LABELV $148
 byte 1 71
 byte 1 82
 byte 1 65
@@ -1276,7 +1359,7 @@ byte 1 67
 byte 1 83
 byte 1 0
 align 1
-LABELV $103
+LABELV $104
 byte 1 83
 byte 1 89
 byte 1 83
@@ -1291,7 +1374,7 @@ byte 1 85
 byte 1 80
 byte 1 0
 align 1
-LABELV $87
+LABELV $88
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1309,7 +1392,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $86
+LABELV $87
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1327,7 +1410,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $85
+LABELV $86
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1347,7 +1430,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $84
+LABELV $85
 byte 1 109
 byte 1 101
 byte 1 110

@@ -95,6 +95,8 @@ lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_u
 @if errorlevel 1 goto quit
 lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_ui ../ui_mods.c
 @if errorlevel 1 goto quit
+lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_ui ../ui_voip.c
+@if errorlevel 1 goto quit
 
 
 q3asm -f ../q3_ui
