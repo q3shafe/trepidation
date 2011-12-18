@@ -7,7 +7,7 @@ byte 4 0
 code
 proc UI_SoundOptionsMenu_Event 12 8
 file "../ui_sound.c"
-line 62
+line 63
 ;1:// Copyright (C) 1999-2000 Id Software, Inc.
 ;2://
 ;3:/*
@@ -35,7 +35,7 @@ line 62
 ;25:#define ID_QUALITY			16
 ;26:#define ID_A3D				17  // We're using the A3D Code for OpenAL
 ;27:#define ID_BACK				18
-;28:
+;28:#define ID_VOIP				19
 ;29:
 ;30:static const char *quality_items[] = {
 ;31:	"Low", "High", 0
@@ -52,39 +52,40 @@ line 62
 ;42:	menutext_s			display;
 ;43:	menutext_s			sound;
 ;44:	menutext_s			network;
-;45:
-;46:	menuslider_s		sfxvolume;
-;47:	menuslider_s		musicvolume;
-;48:	menulist_s			quality;
-;49:	menuradiobutton_s	a3d;
-;50:
-;51:	menubitmap_s		back;
-;52:} soundOptionsInfo_t;
-;53:
-;54:static soundOptionsInfo_t	soundOptionsInfo;
-;55:
+;45:	menutext_s			voip;
+;46:
+;47:	menuslider_s		sfxvolume;
+;48:	menuslider_s		musicvolume;
+;49:	menulist_s			quality;
+;50:	menuradiobutton_s	a3d;
+;51:
+;52:	menubitmap_s		back;
+;53:} soundOptionsInfo_t;
+;54:
+;55:static soundOptionsInfo_t	soundOptionsInfo;
 ;56:
-;57:/*
-;58:=================
-;59:UI_SoundOptionsMenu_Event
-;60:=================
-;61:*/
-;62:static void UI_SoundOptionsMenu_Event( void* ptr, int event ) {
-line 63
-;63:	if( event != QM_ACTIVATED ) {
+;57:
+;58:/*
+;59:=================
+;60:UI_SoundOptionsMenu_Event
+;61:=================
+;62:*/
+;63:static void UI_SoundOptionsMenu_Event( void* ptr, int event ) {
+line 64
+;64:	if( event != QM_ACTIVATED ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
 EQI4 $73
-line 64
-;64:		return;
+line 65
+;65:		return;
 ADDRGP4 $72
 JUMPV
 LABELV $73
-line 67
-;65:	}
-;66:
-;67:	switch( ((menucommon_s*)ptr)->id ) {
+line 68
+;66:	}
+;67:
+;68:	switch( ((menucommon_s*)ptr)->id ) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -98,110 +99,109 @@ CNSTI4 10
 LTI4 $75
 ADDRLP4 0
 INDIRI4
-CNSTI4 18
+CNSTI4 19
 GTI4 $75
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $109-40
+ADDRGP4 $110-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $109
+LABELV $110
 address $78
 address $79
 address $76
 address $81
+address $83
+address $87
+address $91
+address $99
+address $109
 address $82
-address $86
-address $90
-address $98
-address $108
 code
 LABELV $78
-line 69
-;68:	case ID_GRAPHICS:
-;69:		UI_PopMenu();
-ADDRGP4 UI_PopMenu
-CALLV
-pop
 line 70
-;70:		UI_GraphicsOptionsMenu();
-ADDRGP4 UI_GraphicsOptionsMenu
+;69:	case ID_GRAPHICS:
+;70:		UI_PopMenu();
+ADDRGP4 UI_PopMenu
 CALLV
 pop
 line 71
-;71:		break;
+;71:		UI_GraphicsOptionsMenu();
+ADDRGP4 UI_GraphicsOptionsMenu
+CALLV
+pop
+line 72
+;72:		break;
 ADDRGP4 $76
 JUMPV
 LABELV $79
-line 74
-;72:
-;73:	case ID_DISPLAY:
-;74:		UI_PopMenu();
-ADDRGP4 UI_PopMenu
-CALLV
-pop
 line 75
-;75:		UI_DisplayOptionsMenu();
-ADDRGP4 UI_DisplayOptionsMenu
+;73:
+;74:	case ID_DISPLAY:
+;75:		UI_PopMenu();
+ADDRGP4 UI_PopMenu
 CALLV
 pop
 line 76
-;76:		break;
+;76:		UI_DisplayOptionsMenu();
+ADDRGP4 UI_DisplayOptionsMenu
+CALLV
+pop
+line 77
+;77:		break;
 ADDRGP4 $76
 JUMPV
-line 79
-;77:
-;78:	case ID_SOUND:
-;79:		break;
+line 80
+;78:
+;79:	case ID_SOUND:
+;80:		break;
 LABELV $81
-line 82
-;80:
-;81:	case ID_NETWORK:
-;82:		UI_PopMenu();
+line 83
+;81:
+;82:	case ID_NETWORK:
+;83:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
 CALLV
 pop
-line 83
-;83:		UI_NetworkOptionsMenu();
+line 84
+;84:		UI_NetworkOptionsMenu();
 ADDRGP4 UI_NetworkOptionsMenu
 CALLV
 pop
-line 84
-;84:		break;
+line 85
+;85:		break;
 ADDRGP4 $76
 JUMPV
 LABELV $82
-line 87
-;85:
-;86:	case ID_EFFECTSVOLUME:
-;87:		trap_Cvar_SetValue( "s_volume", soundOptionsInfo.sfxvolume.curvalue / 10 );
-ADDRGP4 $83
-ARGP4
-ADDRGP4 soundOptionsInfo+824+68
-INDIRF4
-CNSTF4 1092616192
-DIVF4
-ARGF4
-ADDRGP4 trap_Cvar_SetValue
-CALLV
-pop
 line 88
-;88:		break;
+;86:
+;87:	case ID_VOIP:
+;88:		UI_PopMenu();
+ADDRGP4 UI_PopMenu
+CALLV
+pop
+line 89
+;89:		UI_VoipOptionsMenu();
+ADDRGP4 UI_VoipOptionsMenu
+CALLV
+pop
+line 90
+;90:		break;
 ADDRGP4 $76
 JUMPV
-LABELV $86
-line 91
-;89:
-;90:	case ID_MUSICVOLUME:
-;91:		trap_Cvar_SetValue( "s_musicvolume", soundOptionsInfo.musicvolume.curvalue / 10 );
-ADDRGP4 $87
+LABELV $83
+line 93
+;91:
+;92:	case ID_EFFECTSVOLUME:
+;93:		trap_Cvar_SetValue( "s_volume", soundOptionsInfo.sfxvolume.curvalue / 10 );
+ADDRGP4 $84
 ARGP4
-ADDRGP4 soundOptionsInfo+900+68
+ADDRGP4 soundOptionsInfo+896+68
 INDIRF4
 CNSTF4 1092616192
 DIVF4
@@ -209,110 +209,113 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 92
-;92:		break;
+line 94
+;94:		break;
 ADDRGP4 $76
 JUMPV
-LABELV $90
-line 95
-;93:
-;94:	case ID_QUALITY:
-;95:		if( soundOptionsInfo.quality.curvalue ) {
-ADDRGP4 soundOptionsInfo+976+64
+LABELV $87
+line 97
+;95:
+;96:	case ID_MUSICVOLUME:
+;97:		trap_Cvar_SetValue( "s_musicvolume", soundOptionsInfo.musicvolume.curvalue / 10 );
+ADDRGP4 $88
+ARGP4
+ADDRGP4 soundOptionsInfo+972+68
+INDIRF4
+CNSTF4 1092616192
+DIVF4
+ARGF4
+ADDRGP4 trap_Cvar_SetValue
+CALLV
+pop
+line 98
+;98:		break;
+ADDRGP4 $76
+JUMPV
+LABELV $91
+line 101
+;99:
+;100:	case ID_QUALITY:
+;101:		if( soundOptionsInfo.quality.curvalue ) {
+ADDRGP4 soundOptionsInfo+1048+64
 INDIRI4
 CNSTI4 0
-EQI4 $91
-line 96
-;96:			trap_Cvar_SetValue( "s_khz", 22 );
-ADDRGP4 $95
+EQI4 $92
+line 102
+;102:			trap_Cvar_SetValue( "s_khz", 22 );
+ADDRGP4 $96
 ARGP4
 CNSTF4 1102053376
 ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 97
-;97:			trap_Cvar_SetValue( "s_compression", 0 );
-ADDRGP4 $96
+line 103
+;103:			trap_Cvar_SetValue( "s_compression", 0 );
+ADDRGP4 $97
 ARGP4
 CNSTF4 0
 ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 98
-;98:		}
-ADDRGP4 $92
+line 104
+;104:		}
+ADDRGP4 $93
 JUMPV
-LABELV $91
-line 99
-;99:		else {
-line 100
-;100:			trap_Cvar_SetValue( "s_khz", 11 );
-ADDRGP4 $95
+LABELV $92
+line 105
+;105:		else {
+line 106
+;106:			trap_Cvar_SetValue( "s_khz", 11 );
+ADDRGP4 $96
 ARGP4
 CNSTF4 1093664768
 ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 101
-;101:			trap_Cvar_SetValue( "s_compression", 1 );
-ADDRGP4 $96
+line 107
+;107:			trap_Cvar_SetValue( "s_compression", 1 );
+ADDRGP4 $97
 ARGP4
 CNSTF4 1065353216
 ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 102
-;102:		}
-LABELV $92
-line 103
-;103:		UI_ForceMenuOff();
+line 108
+;108:		}
+LABELV $93
+line 109
+;109:		UI_ForceMenuOff();
 ADDRGP4 UI_ForceMenuOff
 CALLV
 pop
-line 104
-;104:		trap_Cmd_ExecuteText( EXEC_APPEND, "snd_restart\n" );
+line 110
+;110:		trap_Cmd_ExecuteText( EXEC_APPEND, "snd_restart\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $97
+ADDRGP4 $98
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 105
-;105:		break;
+line 111
+;111:		break;
 ADDRGP4 $76
 JUMPV
-LABELV $98
-line 108
-;106:
-;107:	case ID_A3D:
-;108:		if( soundOptionsInfo.a3d.curvalue ) {
-ADDRGP4 soundOptionsInfo+1072+60
+LABELV $99
+line 114
+;112:
+;113:	case ID_A3D:
+;114:		if( soundOptionsInfo.a3d.curvalue ) {
+ADDRGP4 soundOptionsInfo+1144+60
 INDIRI4
 CNSTI4 0
-EQI4 $99
-line 109
-;109:			trap_Cmd_ExecuteText( EXEC_NOW, "s_useOpenAL 1\n" );
-CNSTI4 0
-ARGI4
-ADDRGP4 $103
-ARGP4
-ADDRGP4 trap_Cmd_ExecuteText
-CALLV
-pop
-line 110
-;110:		}
-ADDRGP4 $100
-JUMPV
-LABELV $99
-line 111
-;111:		else {
-line 112
-;112:			trap_Cmd_ExecuteText( EXEC_NOW, "s_useOpenAL 0\n" );
+EQI4 $100
+line 115
+;115:			trap_Cmd_ExecuteText( EXEC_NOW, "s_useOpenAL 1\n" );
 CNSTI4 0
 ARGI4
 ADDRGP4 $104
@@ -320,630 +323,692 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 113
-;113:		}
+line 116
+;116:		}
+ADDRGP4 $101
+JUMPV
 LABELV $100
-line 114
-;114:		soundOptionsInfo.a3d.curvalue = (int)trap_Cvar_VariableValue( "s_useOpenAL" );
-ADDRGP4 $107
+line 117
+;117:		else {
+line 118
+;118:			trap_Cmd_ExecuteText( EXEC_NOW, "s_useOpenAL 0\n" );
+CNSTI4 0
+ARGI4
+ADDRGP4 $105
+ARGP4
+ADDRGP4 trap_Cmd_ExecuteText
+CALLV
+pop
+line 119
+;119:		}
+LABELV $101
+line 120
+;120:		soundOptionsInfo.a3d.curvalue = (int)trap_Cvar_VariableValue( "s_useOpenAL" );
+ADDRGP4 $108
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_Cvar_VariableValue
 CALLF4
 ASGNF4
-ADDRGP4 soundOptionsInfo+1072+60
+ADDRGP4 soundOptionsInfo+1144+60
 ADDRLP4 8
 INDIRF4
 CVFI4 4
 ASGNI4
-line 115
-;115:		break;
+line 121
+;121:		break;
 ADDRGP4 $76
 JUMPV
-LABELV $108
-line 118
-;116:
-;117:	case ID_BACK:
-;118:		UI_PopMenu();
+LABELV $109
+line 124
+;122:
+;123:	case ID_BACK:
+;124:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
 CALLV
 pop
-line 119
-;119:		break;
+line 125
+;125:		break;
 LABELV $75
 LABELV $76
-line 121
-;120:	}
-;121:}
+line 127
+;126:	}
+;127:}
 LABELV $72
 endproc UI_SoundOptionsMenu_Event 12 8
 proc UI_SoundOptionsMenu_Init 24 12
-line 129
-;122:
-;123:
-;124:/*
-;125:===============
-;126:UI_SoundOptionsMenu_Init
-;127:===============
-;128:*/
-;129:static void UI_SoundOptionsMenu_Init( void ) {
-line 132
-;130:	int				y;
-;131:
-;132:	memset( &soundOptionsInfo, 0, sizeof(soundOptionsInfo) );
+line 135
+;128:
+;129:
+;130:/*
+;131:===============
+;132:UI_SoundOptionsMenu_Init
+;133:===============
+;134:*/
+;135:static void UI_SoundOptionsMenu_Init( void ) {
+line 138
+;136:	int				y;
+;137:
+;138:	memset( &soundOptionsInfo, 0, sizeof(soundOptionsInfo) );
 ADDRGP4 soundOptionsInfo
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 1224
+CNSTI4 1296
 ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 134
-;133:
-;134:	UI_SoundOptionsMenu_Cache();
+line 140
+;139:
+;140:	UI_SoundOptionsMenu_Cache();
 ADDRGP4 UI_SoundOptionsMenu_Cache
 CALLV
 pop
-line 135
-;135:	soundOptionsInfo.menu.wrapAround = qtrue;
+line 141
+;141:	soundOptionsInfo.menu.wrapAround = qtrue;
 ADDRGP4 soundOptionsInfo+276
 CNSTI4 1
 ASGNI4
-line 136
-;136:	soundOptionsInfo.menu.fullscreen = qtrue;
+line 142
+;142:	soundOptionsInfo.menu.fullscreen = qtrue;
 ADDRGP4 soundOptionsInfo+280
 CNSTI4 1
 ASGNI4
-line 138
-;137:
-;138:	soundOptionsInfo.banner.generic.type		= MTYPE_BTEXT;
+line 144
+;143:
+;144:	soundOptionsInfo.banner.generic.type		= MTYPE_BTEXT;
 ADDRGP4 soundOptionsInfo+288
 CNSTI4 10
 ASGNI4
-line 139
-;139:	soundOptionsInfo.banner.generic.flags		= QMF_CENTER_JUSTIFY;
+line 145
+;145:	soundOptionsInfo.banner.generic.flags		= QMF_CENTER_JUSTIFY;
 ADDRGP4 soundOptionsInfo+288+44
 CNSTU4 8
 ASGNU4
-line 140
-;140:	soundOptionsInfo.banner.generic.x			= 320;
+line 146
+;146:	soundOptionsInfo.banner.generic.x			= 320;
 ADDRGP4 soundOptionsInfo+288+12
 CNSTI4 320
 ASGNI4
-line 141
-;141:	soundOptionsInfo.banner.generic.y			= 16;
+line 147
+;147:	soundOptionsInfo.banner.generic.y			= 16;
 ADDRGP4 soundOptionsInfo+288+16
 CNSTI4 16
 ASGNI4
-line 142
-;142:	soundOptionsInfo.banner.string				= "SYSTEM SETUP";
+line 148
+;148:	soundOptionsInfo.banner.string				= "SYSTEM SETUP";
 ADDRGP4 soundOptionsInfo+288+60
-ADDRGP4 $123
+ADDRGP4 $124
 ASGNP4
-line 143
-;143:	soundOptionsInfo.banner.color				= color_white;
+line 149
+;149:	soundOptionsInfo.banner.color				= color_white;
 ADDRGP4 soundOptionsInfo+288+68
 ADDRGP4 color_white
 ASGNP4
-line 144
-;144:	soundOptionsInfo.banner.style				= UI_CENTER;
+line 150
+;150:	soundOptionsInfo.banner.style				= UI_CENTER;
 ADDRGP4 soundOptionsInfo+288+64
 CNSTI4 1
 ASGNI4
-line 146
-;145:
-;146:	soundOptionsInfo.framel.generic.type		= MTYPE_BITMAP;
+line 152
+;151:
+;152:	soundOptionsInfo.framel.generic.type		= MTYPE_BITMAP;
 ADDRGP4 soundOptionsInfo+360
 CNSTI4 6
 ASGNI4
-line 147
-;147:	soundOptionsInfo.framel.generic.name		= ART_FRAMEL;
+line 153
+;153:	soundOptionsInfo.framel.generic.name		= ART_FRAMEL;
 ADDRGP4 soundOptionsInfo+360+4
-ADDRGP4 $131
+ADDRGP4 $132
 ASGNP4
-line 148
-;148:	soundOptionsInfo.framel.generic.flags		= QMF_INACTIVE;
+line 154
+;154:	soundOptionsInfo.framel.generic.flags		= QMF_INACTIVE;
 ADDRGP4 soundOptionsInfo+360+44
 CNSTU4 16384
 ASGNU4
-line 149
-;149:	soundOptionsInfo.framel.generic.x			= 0;  
+line 155
+;155:	soundOptionsInfo.framel.generic.x			= 0;  
 ADDRGP4 soundOptionsInfo+360+12
 CNSTI4 0
 ASGNI4
-line 150
-;150:	soundOptionsInfo.framel.generic.y			= 78;
+line 156
+;156:	soundOptionsInfo.framel.generic.y			= 78;
 ADDRGP4 soundOptionsInfo+360+16
 CNSTI4 78
 ASGNI4
-line 151
-;151:	soundOptionsInfo.framel.width				= 256;
+line 157
+;157:	soundOptionsInfo.framel.width				= 256;
 ADDRGP4 soundOptionsInfo+360+76
 CNSTI4 256
 ASGNI4
-line 152
-;152:	soundOptionsInfo.framel.height				= 329;
+line 158
+;158:	soundOptionsInfo.framel.height				= 329;
 ADDRGP4 soundOptionsInfo+360+80
 CNSTI4 329
 ASGNI4
-line 154
-;153:
-;154:	soundOptionsInfo.framer.generic.type		= MTYPE_BITMAP;
+line 160
+;159:
+;160:	soundOptionsInfo.framer.generic.type		= MTYPE_BITMAP;
 ADDRGP4 soundOptionsInfo+448
 CNSTI4 6
 ASGNI4
-line 155
-;155:	soundOptionsInfo.framer.generic.name		= ART_FRAMER;
+line 161
+;161:	soundOptionsInfo.framer.generic.name		= ART_FRAMER;
 ADDRGP4 soundOptionsInfo+448+4
-ADDRGP4 $145
+ADDRGP4 $146
 ASGNP4
-line 156
-;156:	soundOptionsInfo.framer.generic.flags		= QMF_INACTIVE;
+line 162
+;162:	soundOptionsInfo.framer.generic.flags		= QMF_INACTIVE;
 ADDRGP4 soundOptionsInfo+448+44
 CNSTU4 16384
 ASGNU4
-line 157
-;157:	soundOptionsInfo.framer.generic.x			= 376;
+line 163
+;163:	soundOptionsInfo.framer.generic.x			= 376;
 ADDRGP4 soundOptionsInfo+448+12
 CNSTI4 376
 ASGNI4
-line 158
-;158:	soundOptionsInfo.framer.generic.y			= 76;
+line 164
+;164:	soundOptionsInfo.framer.generic.y			= 76;
 ADDRGP4 soundOptionsInfo+448+16
 CNSTI4 76
 ASGNI4
-line 159
-;159:	soundOptionsInfo.framer.width				= 256;
+line 165
+;165:	soundOptionsInfo.framer.width				= 256;
 ADDRGP4 soundOptionsInfo+448+76
 CNSTI4 256
 ASGNI4
-line 160
-;160:	soundOptionsInfo.framer.height				= 334;
+line 166
+;166:	soundOptionsInfo.framer.height				= 334;
 ADDRGP4 soundOptionsInfo+448+80
 CNSTI4 334
 ASGNI4
-line 162
-;161:
-;162:	soundOptionsInfo.graphics.generic.type		= MTYPE_PTEXT;
+line 168
+;167:
+;168:	soundOptionsInfo.graphics.generic.type		= MTYPE_PTEXT;
 ADDRGP4 soundOptionsInfo+536
 CNSTI4 9
 ASGNI4
-line 163
-;163:	soundOptionsInfo.graphics.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 169
+;169:	soundOptionsInfo.graphics.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 soundOptionsInfo+536+44
 CNSTU4 272
 ASGNU4
-line 164
-;164:	soundOptionsInfo.graphics.generic.id		= ID_GRAPHICS;
+line 170
+;170:	soundOptionsInfo.graphics.generic.id		= ID_GRAPHICS;
 ADDRGP4 soundOptionsInfo+536+8
 CNSTI4 10
 ASGNI4
-line 165
-;165:	soundOptionsInfo.graphics.generic.callback	= UI_SoundOptionsMenu_Event;
+line 171
+;171:	soundOptionsInfo.graphics.generic.callback	= UI_SoundOptionsMenu_Event;
 ADDRGP4 soundOptionsInfo+536+48
 ADDRGP4 UI_SoundOptionsMenu_Event
 ASGNP4
-line 166
-;166:	soundOptionsInfo.graphics.generic.x			= 216;
+line 172
+;172:	soundOptionsInfo.graphics.generic.x			= 216;
 ADDRGP4 soundOptionsInfo+536+12
 CNSTI4 216
 ASGNI4
-line 167
-;167:	soundOptionsInfo.graphics.generic.y			= 240 - 2 * PROP_HEIGHT;
+line 173
+;173:	soundOptionsInfo.graphics.generic.y			= 240 - 2 * PROP_HEIGHT;
 ADDRGP4 soundOptionsInfo+536+16
 CNSTI4 186
 ASGNI4
-line 168
-;168:	soundOptionsInfo.graphics.string			= "GRAPHICS";
+line 174
+;174:	soundOptionsInfo.graphics.string			= "GRAPHICS";
 ADDRGP4 soundOptionsInfo+536+60
-ADDRGP4 $169
+ADDRGP4 $170
 ASGNP4
-line 169
-;169:	soundOptionsInfo.graphics.style				= UI_RIGHT;
+line 175
+;175:	soundOptionsInfo.graphics.style				= UI_RIGHT;
 ADDRGP4 soundOptionsInfo+536+64
 CNSTI4 2
 ASGNI4
-line 170
-;170:	soundOptionsInfo.graphics.color				= color_red;
+line 176
+;176:	soundOptionsInfo.graphics.color				= color_red;
 ADDRGP4 soundOptionsInfo+536+68
 ADDRGP4 color_red
 ASGNP4
-line 172
-;171:
-;172:	soundOptionsInfo.display.generic.type		= MTYPE_PTEXT;
+line 178
+;177:
+;178:	soundOptionsInfo.display.generic.type		= MTYPE_PTEXT;
 ADDRGP4 soundOptionsInfo+608
 CNSTI4 9
 ASGNI4
-line 173
-;173:	soundOptionsInfo.display.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 179
+;179:	soundOptionsInfo.display.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 soundOptionsInfo+608+44
 CNSTU4 272
 ASGNU4
-line 174
-;174:	soundOptionsInfo.display.generic.id			= ID_DISPLAY;
+line 180
+;180:	soundOptionsInfo.display.generic.id			= ID_DISPLAY;
 ADDRGP4 soundOptionsInfo+608+8
 CNSTI4 11
 ASGNI4
-line 175
-;175:	soundOptionsInfo.display.generic.callback	= UI_SoundOptionsMenu_Event;
+line 181
+;181:	soundOptionsInfo.display.generic.callback	= UI_SoundOptionsMenu_Event;
 ADDRGP4 soundOptionsInfo+608+48
 ADDRGP4 UI_SoundOptionsMenu_Event
 ASGNP4
-line 176
-;176:	soundOptionsInfo.display.generic.x			= 216;
+line 182
+;182:	soundOptionsInfo.display.generic.x			= 216;
 ADDRGP4 soundOptionsInfo+608+12
 CNSTI4 216
 ASGNI4
-line 177
-;177:	soundOptionsInfo.display.generic.y			= 240 - PROP_HEIGHT;
+line 183
+;183:	soundOptionsInfo.display.generic.y			= 240 - PROP_HEIGHT;
 ADDRGP4 soundOptionsInfo+608+16
 CNSTI4 213
 ASGNI4
-line 178
-;178:	soundOptionsInfo.display.string				= "DISPLAY";
+line 184
+;184:	soundOptionsInfo.display.string				= "DISPLAY";
 ADDRGP4 soundOptionsInfo+608+60
-ADDRGP4 $187
+ADDRGP4 $188
 ASGNP4
-line 179
-;179:	soundOptionsInfo.display.style				= UI_RIGHT;
+line 185
+;185:	soundOptionsInfo.display.style				= UI_RIGHT;
 ADDRGP4 soundOptionsInfo+608+64
 CNSTI4 2
 ASGNI4
-line 180
-;180:	soundOptionsInfo.display.color				= color_red;
+line 186
+;186:	soundOptionsInfo.display.color				= color_red;
 ADDRGP4 soundOptionsInfo+608+68
 ADDRGP4 color_red
 ASGNP4
-line 182
-;181:
-;182:	soundOptionsInfo.sound.generic.type			= MTYPE_PTEXT;
+line 188
+;187:
+;188:	soundOptionsInfo.sound.generic.type			= MTYPE_PTEXT;
 ADDRGP4 soundOptionsInfo+680
 CNSTI4 9
 ASGNI4
-line 183
-;183:	soundOptionsInfo.sound.generic.flags		= QMF_RIGHT_JUSTIFY;
+line 189
+;189:	soundOptionsInfo.sound.generic.flags		= QMF_RIGHT_JUSTIFY;
 ADDRGP4 soundOptionsInfo+680+44
 CNSTU4 16
 ASGNU4
-line 184
-;184:	soundOptionsInfo.sound.generic.id			= ID_SOUND;
+line 190
+;190:	soundOptionsInfo.sound.generic.id			= ID_SOUND;
 ADDRGP4 soundOptionsInfo+680+8
 CNSTI4 12
 ASGNI4
-line 185
-;185:	soundOptionsInfo.sound.generic.callback		= UI_SoundOptionsMenu_Event;
+line 191
+;191:	soundOptionsInfo.sound.generic.callback		= UI_SoundOptionsMenu_Event;
 ADDRGP4 soundOptionsInfo+680+48
 ADDRGP4 UI_SoundOptionsMenu_Event
 ASGNP4
-line 186
-;186:	soundOptionsInfo.sound.generic.x			= 216;
+line 192
+;192:	soundOptionsInfo.sound.generic.x			= 216;
 ADDRGP4 soundOptionsInfo+680+12
 CNSTI4 216
 ASGNI4
-line 187
-;187:	soundOptionsInfo.sound.generic.y			= 240;
+line 193
+;193:	soundOptionsInfo.sound.generic.y			= 240;
 ADDRGP4 soundOptionsInfo+680+16
 CNSTI4 240
 ASGNI4
-line 188
-;188:	soundOptionsInfo.sound.string				= "SOUND";
+line 194
+;194:	soundOptionsInfo.sound.string				= "SOUND";
 ADDRGP4 soundOptionsInfo+680+60
-ADDRGP4 $205
+ADDRGP4 $206
 ASGNP4
-line 189
-;189:	soundOptionsInfo.sound.style				= UI_RIGHT;
+line 195
+;195:	soundOptionsInfo.sound.style				= UI_RIGHT;
 ADDRGP4 soundOptionsInfo+680+64
 CNSTI4 2
 ASGNI4
-line 190
-;190:	soundOptionsInfo.sound.color				= color_red;
+line 196
+;196:	soundOptionsInfo.sound.color				= color_red;
 ADDRGP4 soundOptionsInfo+680+68
 ADDRGP4 color_red
 ASGNP4
-line 192
-;191:
-;192:	soundOptionsInfo.network.generic.type		= MTYPE_PTEXT;
+line 198
+;197:
+;198:	soundOptionsInfo.network.generic.type		= MTYPE_PTEXT;
 ADDRGP4 soundOptionsInfo+752
 CNSTI4 9
 ASGNI4
-line 193
-;193:	soundOptionsInfo.network.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 199
+;199:	soundOptionsInfo.network.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 soundOptionsInfo+752+44
 CNSTU4 272
 ASGNU4
-line 194
-;194:	soundOptionsInfo.network.generic.id			= ID_NETWORK;
+line 200
+;200:	soundOptionsInfo.network.generic.id			= ID_NETWORK;
 ADDRGP4 soundOptionsInfo+752+8
 CNSTI4 13
 ASGNI4
-line 195
-;195:	soundOptionsInfo.network.generic.callback	= UI_SoundOptionsMenu_Event;
+line 201
+;201:	soundOptionsInfo.network.generic.callback	= UI_SoundOptionsMenu_Event;
 ADDRGP4 soundOptionsInfo+752+48
 ADDRGP4 UI_SoundOptionsMenu_Event
 ASGNP4
-line 196
-;196:	soundOptionsInfo.network.generic.x			= 216;
+line 202
+;202:	soundOptionsInfo.network.generic.x			= 216;
 ADDRGP4 soundOptionsInfo+752+12
 CNSTI4 216
 ASGNI4
-line 197
-;197:	soundOptionsInfo.network.generic.y			= 240 + PROP_HEIGHT;
+line 203
+;203:	soundOptionsInfo.network.generic.y			= 240 + PROP_HEIGHT;
 ADDRGP4 soundOptionsInfo+752+16
 CNSTI4 267
 ASGNI4
-line 198
-;198:	soundOptionsInfo.network.string				= "NETWORK";
+line 204
+;204:	soundOptionsInfo.network.string				= "NETWORK";
 ADDRGP4 soundOptionsInfo+752+60
-ADDRGP4 $223
+ADDRGP4 $224
 ASGNP4
-line 199
-;199:	soundOptionsInfo.network.style				= UI_RIGHT;
+line 205
+;205:	soundOptionsInfo.network.style				= UI_RIGHT;
 ADDRGP4 soundOptionsInfo+752+64
 CNSTI4 2
 ASGNI4
-line 200
-;200:	soundOptionsInfo.network.color				= color_red;
+line 206
+;206:	soundOptionsInfo.network.color				= color_red;
 ADDRGP4 soundOptionsInfo+752+68
 ADDRGP4 color_red
 ASGNP4
-line 202
-;201:
-;202:	y = 240 - 1.5 * (BIGCHAR_HEIGHT + 2);
-ADDRLP4 0
-CNSTI4 213
-ASGNI4
-line 203
-;203:	soundOptionsInfo.sfxvolume.generic.type		= MTYPE_SLIDER;
+line 208
+;207:
+;208:	soundOptionsInfo.voip.generic.type		= MTYPE_PTEXT;
 ADDRGP4 soundOptionsInfo+824
-CNSTI4 1
+CNSTI4 9
 ASGNI4
-line 204
-;204:	soundOptionsInfo.sfxvolume.generic.name		= "Effects Volume:";
-ADDRGP4 soundOptionsInfo+824+4
-ADDRGP4 $231
-ASGNP4
-line 205
-;205:	soundOptionsInfo.sfxvolume.generic.flags	= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+line 209
+;209:	soundOptionsInfo.voip.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 soundOptionsInfo+824+44
-CNSTU4 258
+CNSTU4 272
 ASGNU4
-line 206
-;206:	soundOptionsInfo.sfxvolume.generic.callback	= UI_SoundOptionsMenu_Event;
+line 210
+;210:	soundOptionsInfo.voip.generic.id			= ID_VOIP;
+ADDRGP4 soundOptionsInfo+824+8
+CNSTI4 19
+ASGNI4
+line 211
+;211:	soundOptionsInfo.voip.generic.callback	= UI_SoundOptionsMenu_Event;
 ADDRGP4 soundOptionsInfo+824+48
 ADDRGP4 UI_SoundOptionsMenu_Event
 ASGNP4
-line 207
-;207:	soundOptionsInfo.sfxvolume.generic.id		= ID_EFFECTSVOLUME;
-ADDRGP4 soundOptionsInfo+824+8
-CNSTI4 14
-ASGNI4
-line 208
-;208:	soundOptionsInfo.sfxvolume.generic.x		= 400;
+line 212
+;212:	soundOptionsInfo.voip.generic.x			= 216;
 ADDRGP4 soundOptionsInfo+824+12
-CNSTI4 400
+CNSTI4 216
 ASGNI4
-line 209
-;209:	soundOptionsInfo.sfxvolume.generic.y		= y;
-ADDRGP4 soundOptionsInfo+824+16
-ADDRLP4 0
-INDIRI4
-ASGNI4
-line 210
-;210:	soundOptionsInfo.sfxvolume.minvalue			= 0;
-ADDRGP4 soundOptionsInfo+824+60
-CNSTF4 0
-ASGNF4
-line 211
-;211:	soundOptionsInfo.sfxvolume.maxvalue			= 10;
-ADDRGP4 soundOptionsInfo+824+64
-CNSTF4 1092616192
-ASGNF4
 line 213
-;212:
-;213:	y += BIGCHAR_HEIGHT+2;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CNSTI4 18
-ADDI4
+;213:	soundOptionsInfo.voip.generic.y			= 240 + PROP_HEIGHT+ PROP_HEIGHT;
+ADDRGP4 soundOptionsInfo+824+16
+CNSTI4 294
 ASGNI4
 line 214
-;214:	soundOptionsInfo.musicvolume.generic.type		= MTYPE_SLIDER;
-ADDRGP4 soundOptionsInfo+900
-CNSTI4 1
-ASGNI4
-line 215
-;215:	soundOptionsInfo.musicvolume.generic.name		= "Music Volume:";
-ADDRGP4 soundOptionsInfo+900+4
-ADDRGP4 $249
+;214:	soundOptionsInfo.voip.string				= "VOICE";
+ADDRGP4 soundOptionsInfo+824+60
+ADDRGP4 $242
 ASGNP4
+line 215
+;215:	soundOptionsInfo.voip.style				= UI_RIGHT;
+ADDRGP4 soundOptionsInfo+824+64
+CNSTI4 2
+ASGNI4
 line 216
-;216:	soundOptionsInfo.musicvolume.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
-ADDRGP4 soundOptionsInfo+900+44
-CNSTU4 258
-ASGNU4
-line 217
-;217:	soundOptionsInfo.musicvolume.generic.callback	= UI_SoundOptionsMenu_Event;
-ADDRGP4 soundOptionsInfo+900+48
-ADDRGP4 UI_SoundOptionsMenu_Event
+;216:	soundOptionsInfo.voip.color				= color_red;
+ADDRGP4 soundOptionsInfo+824+68
+ADDRGP4 color_red
 ASGNP4
 line 218
-;218:	soundOptionsInfo.musicvolume.generic.id			= ID_MUSICVOLUME;
-ADDRGP4 soundOptionsInfo+900+8
-CNSTI4 15
+;217:
+;218:	y = 240 - 1.5 * (BIGCHAR_HEIGHT + 2);
+ADDRLP4 0
+CNSTI4 213
 ASGNI4
 line 219
-;219:	soundOptionsInfo.musicvolume.generic.x			= 400;
-ADDRGP4 soundOptionsInfo+900+12
-CNSTI4 400
+;219:	soundOptionsInfo.sfxvolume.generic.type		= MTYPE_SLIDER;
+ADDRGP4 soundOptionsInfo+896
+CNSTI4 1
 ASGNI4
 line 220
-;220:	soundOptionsInfo.musicvolume.generic.y			= y;
-ADDRGP4 soundOptionsInfo+900+16
-ADDRLP4 0
-INDIRI4
-ASGNI4
+;220:	soundOptionsInfo.sfxvolume.generic.name		= "Effects Volume:";
+ADDRGP4 soundOptionsInfo+896+4
+ADDRGP4 $250
+ASGNP4
 line 221
-;221:	soundOptionsInfo.musicvolume.minvalue			= 0;
-ADDRGP4 soundOptionsInfo+900+60
-CNSTF4 0
-ASGNF4
+;221:	soundOptionsInfo.sfxvolume.generic.flags	= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+ADDRGP4 soundOptionsInfo+896+44
+CNSTU4 258
+ASGNU4
 line 222
-;222:	soundOptionsInfo.musicvolume.maxvalue			= 10;
-ADDRGP4 soundOptionsInfo+900+64
-CNSTF4 1092616192
-ASGNF4
+;222:	soundOptionsInfo.sfxvolume.generic.callback	= UI_SoundOptionsMenu_Event;
+ADDRGP4 soundOptionsInfo+896+48
+ADDRGP4 UI_SoundOptionsMenu_Event
+ASGNP4
+line 223
+;223:	soundOptionsInfo.sfxvolume.generic.id		= ID_EFFECTSVOLUME;
+ADDRGP4 soundOptionsInfo+896+8
+CNSTI4 14
+ASGNI4
 line 224
-;223:
-;224:	y += BIGCHAR_HEIGHT+2;
-ADDRLP4 0
-ADDRLP4 0
-INDIRI4
-CNSTI4 18
-ADDI4
+;224:	soundOptionsInfo.sfxvolume.generic.x		= 400;
+ADDRGP4 soundOptionsInfo+896+12
+CNSTI4 400
 ASGNI4
 line 225
-;225:	soundOptionsInfo.quality.generic.type		= MTYPE_SPINCONTROL;
-ADDRGP4 soundOptionsInfo+976
-CNSTI4 3
-ASGNI4
-line 226
-;226:	soundOptionsInfo.quality.generic.name		= "Sound Quality:";
-ADDRGP4 soundOptionsInfo+976+4
-ADDRGP4 $267
-ASGNP4
-line 227
-;227:	soundOptionsInfo.quality.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
-ADDRGP4 soundOptionsInfo+976+44
-CNSTU4 258
-ASGNU4
-line 228
-;228:	soundOptionsInfo.quality.generic.callback	= UI_SoundOptionsMenu_Event;
-ADDRGP4 soundOptionsInfo+976+48
-ADDRGP4 UI_SoundOptionsMenu_Event
-ASGNP4
-line 229
-;229:	soundOptionsInfo.quality.generic.id			= ID_QUALITY;
-ADDRGP4 soundOptionsInfo+976+8
-CNSTI4 16
-ASGNI4
-line 230
-;230:	soundOptionsInfo.quality.generic.x			= 400;
-ADDRGP4 soundOptionsInfo+976+12
-CNSTI4 400
-ASGNI4
-line 231
-;231:	soundOptionsInfo.quality.generic.y			= y;
-ADDRGP4 soundOptionsInfo+976+16
+;225:	soundOptionsInfo.sfxvolume.generic.y		= y;
+ADDRGP4 soundOptionsInfo+896+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 232
-;232:	soundOptionsInfo.quality.itemnames			= quality_items;
-ADDRGP4 soundOptionsInfo+976+76
-ADDRGP4 quality_items
-ASGNP4
-line 234
-;233:
-;234:	y += BIGCHAR_HEIGHT+2;
+line 226
+;226:	soundOptionsInfo.sfxvolume.minvalue			= 0;
+ADDRGP4 soundOptionsInfo+896+60
+CNSTF4 0
+ASGNF4
+line 227
+;227:	soundOptionsInfo.sfxvolume.maxvalue			= 10;
+ADDRGP4 soundOptionsInfo+896+64
+CNSTF4 1092616192
+ASGNF4
+line 229
+;228:
+;229:	y += BIGCHAR_HEIGHT+2;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 18
 ADDI4
 ASGNI4
-line 235
-;235:	soundOptionsInfo.a3d.generic.type			= MTYPE_RADIOBUTTON;
-ADDRGP4 soundOptionsInfo+1072
-CNSTI4 5
+line 230
+;230:	soundOptionsInfo.musicvolume.generic.type		= MTYPE_SLIDER;
+ADDRGP4 soundOptionsInfo+972
+CNSTI4 1
 ASGNI4
-line 236
-;236:	soundOptionsInfo.a3d.generic.name			= "OPENAL:";
-ADDRGP4 soundOptionsInfo+1072+4
-ADDRGP4 $283
+line 231
+;231:	soundOptionsInfo.musicvolume.generic.name		= "Music Volume:";
+ADDRGP4 soundOptionsInfo+972+4
+ADDRGP4 $268
 ASGNP4
-line 237
-;237:	soundOptionsInfo.a3d.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
-ADDRGP4 soundOptionsInfo+1072+44
+line 232
+;232:	soundOptionsInfo.musicvolume.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+ADDRGP4 soundOptionsInfo+972+44
 CNSTU4 258
 ASGNU4
-line 238
-;238:	soundOptionsInfo.a3d.generic.callback		= UI_SoundOptionsMenu_Event;
-ADDRGP4 soundOptionsInfo+1072+48
+line 233
+;233:	soundOptionsInfo.musicvolume.generic.callback	= UI_SoundOptionsMenu_Event;
+ADDRGP4 soundOptionsInfo+972+48
 ADDRGP4 UI_SoundOptionsMenu_Event
 ASGNP4
-line 239
-;239:	soundOptionsInfo.a3d.generic.id				= ID_A3D;
-ADDRGP4 soundOptionsInfo+1072+8
-CNSTI4 17
+line 234
+;234:	soundOptionsInfo.musicvolume.generic.id			= ID_MUSICVOLUME;
+ADDRGP4 soundOptionsInfo+972+8
+CNSTI4 15
 ASGNI4
-line 240
-;240:	soundOptionsInfo.a3d.generic.x				= 400;
-ADDRGP4 soundOptionsInfo+1072+12
+line 235
+;235:	soundOptionsInfo.musicvolume.generic.x			= 400;
+ADDRGP4 soundOptionsInfo+972+12
 CNSTI4 400
 ASGNI4
-line 241
-;241:	soundOptionsInfo.a3d.generic.y				= y;
-ADDRGP4 soundOptionsInfo+1072+16
+line 236
+;236:	soundOptionsInfo.musicvolume.generic.y			= y;
+ADDRGP4 soundOptionsInfo+972+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 243
-;242:
-;243:	soundOptionsInfo.back.generic.type			= MTYPE_BITMAP;
-ADDRGP4 soundOptionsInfo+1136
-CNSTI4 6
+line 237
+;237:	soundOptionsInfo.musicvolume.minvalue			= 0;
+ADDRGP4 soundOptionsInfo+972+60
+CNSTF4 0
+ASGNF4
+line 238
+;238:	soundOptionsInfo.musicvolume.maxvalue			= 10;
+ADDRGP4 soundOptionsInfo+972+64
+CNSTF4 1092616192
+ASGNF4
+line 240
+;239:
+;240:	y += BIGCHAR_HEIGHT+2;
+ADDRLP4 0
+ADDRLP4 0
+INDIRI4
+CNSTI4 18
+ADDI4
 ASGNI4
-line 244
-;244:	soundOptionsInfo.back.generic.name			= ART_BACK0;
-ADDRGP4 soundOptionsInfo+1136+4
-ADDRGP4 $297
+line 241
+;241:	soundOptionsInfo.quality.generic.type		= MTYPE_SPINCONTROL;
+ADDRGP4 soundOptionsInfo+1048
+CNSTI4 3
+ASGNI4
+line 242
+;242:	soundOptionsInfo.quality.generic.name		= "Sound Quality:";
+ADDRGP4 soundOptionsInfo+1048+4
+ADDRGP4 $286
 ASGNP4
-line 245
-;245:	soundOptionsInfo.back.generic.flags			= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
-ADDRGP4 soundOptionsInfo+1136+44
-CNSTU4 260
+line 243
+;243:	soundOptionsInfo.quality.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+ADDRGP4 soundOptionsInfo+1048+44
+CNSTU4 258
 ASGNU4
-line 246
-;246:	soundOptionsInfo.back.generic.callback		= UI_SoundOptionsMenu_Event;
-ADDRGP4 soundOptionsInfo+1136+48
+line 244
+;244:	soundOptionsInfo.quality.generic.callback	= UI_SoundOptionsMenu_Event;
+ADDRGP4 soundOptionsInfo+1048+48
 ADDRGP4 UI_SoundOptionsMenu_Event
 ASGNP4
+line 245
+;245:	soundOptionsInfo.quality.generic.id			= ID_QUALITY;
+ADDRGP4 soundOptionsInfo+1048+8
+CNSTI4 16
+ASGNI4
+line 246
+;246:	soundOptionsInfo.quality.generic.x			= 400;
+ADDRGP4 soundOptionsInfo+1048+12
+CNSTI4 400
+ASGNI4
 line 247
-;247:	soundOptionsInfo.back.generic.id			= ID_BACK;
-ADDRGP4 soundOptionsInfo+1136+8
-CNSTI4 18
+;247:	soundOptionsInfo.quality.generic.y			= y;
+ADDRGP4 soundOptionsInfo+1048+16
+ADDRLP4 0
+INDIRI4
 ASGNI4
 line 248
-;248:	soundOptionsInfo.back.generic.x				= 0;
-ADDRGP4 soundOptionsInfo+1136+12
-CNSTI4 0
-ASGNI4
-line 249
-;249:	soundOptionsInfo.back.generic.y				= 480-64;
-ADDRGP4 soundOptionsInfo+1136+16
-CNSTI4 416
-ASGNI4
+;248:	soundOptionsInfo.quality.itemnames			= quality_items;
+ADDRGP4 soundOptionsInfo+1048+76
+ADDRGP4 quality_items
+ASGNP4
 line 250
-;250:	soundOptionsInfo.back.width					= 128;
-ADDRGP4 soundOptionsInfo+1136+76
-CNSTI4 128
+;249:
+;250:	y += BIGCHAR_HEIGHT+2;
+ADDRLP4 0
+ADDRLP4 0
+INDIRI4
+CNSTI4 18
+ADDI4
 ASGNI4
 line 251
-;251:	soundOptionsInfo.back.height				= 64;
-ADDRGP4 soundOptionsInfo+1136+80
-CNSTI4 64
+;251:	soundOptionsInfo.a3d.generic.type			= MTYPE_RADIOBUTTON;
+ADDRGP4 soundOptionsInfo+1144
+CNSTI4 5
 ASGNI4
 line 252
-;252:	soundOptionsInfo.back.focuspic				= ART_BACK1;
-ADDRGP4 soundOptionsInfo+1136+60
-ADDRGP4 $314
+;252:	soundOptionsInfo.a3d.generic.name			= "OPENAL:";
+ADDRGP4 soundOptionsInfo+1144+4
+ADDRGP4 $302
 ASGNP4
+line 253
+;253:	soundOptionsInfo.a3d.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+ADDRGP4 soundOptionsInfo+1144+44
+CNSTU4 258
+ASGNU4
 line 254
-;253:
-;254:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.banner );
+;254:	soundOptionsInfo.a3d.generic.callback		= UI_SoundOptionsMenu_Event;
+ADDRGP4 soundOptionsInfo+1144+48
+ADDRGP4 UI_SoundOptionsMenu_Event
+ASGNP4
+line 255
+;255:	soundOptionsInfo.a3d.generic.id				= ID_A3D;
+ADDRGP4 soundOptionsInfo+1144+8
+CNSTI4 17
+ASGNI4
+line 256
+;256:	soundOptionsInfo.a3d.generic.x				= 400;
+ADDRGP4 soundOptionsInfo+1144+12
+CNSTI4 400
+ASGNI4
+line 257
+;257:	soundOptionsInfo.a3d.generic.y				= y;
+ADDRGP4 soundOptionsInfo+1144+16
+ADDRLP4 0
+INDIRI4
+ASGNI4
+line 259
+;258:
+;259:	soundOptionsInfo.back.generic.type			= MTYPE_BITMAP;
+ADDRGP4 soundOptionsInfo+1208
+CNSTI4 6
+ASGNI4
+line 260
+;260:	soundOptionsInfo.back.generic.name			= ART_BACK0;
+ADDRGP4 soundOptionsInfo+1208+4
+ADDRGP4 $316
+ASGNP4
+line 261
+;261:	soundOptionsInfo.back.generic.flags			= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+ADDRGP4 soundOptionsInfo+1208+44
+CNSTU4 260
+ASGNU4
+line 262
+;262:	soundOptionsInfo.back.generic.callback		= UI_SoundOptionsMenu_Event;
+ADDRGP4 soundOptionsInfo+1208+48
+ADDRGP4 UI_SoundOptionsMenu_Event
+ASGNP4
+line 263
+;263:	soundOptionsInfo.back.generic.id			= ID_BACK;
+ADDRGP4 soundOptionsInfo+1208+8
+CNSTI4 18
+ASGNI4
+line 264
+;264:	soundOptionsInfo.back.generic.x				= 0;
+ADDRGP4 soundOptionsInfo+1208+12
+CNSTI4 0
+ASGNI4
+line 265
+;265:	soundOptionsInfo.back.generic.y				= 480-64;
+ADDRGP4 soundOptionsInfo+1208+16
+CNSTI4 416
+ASGNI4
+line 266
+;266:	soundOptionsInfo.back.width					= 128;
+ADDRGP4 soundOptionsInfo+1208+76
+CNSTI4 128
+ASGNI4
+line 267
+;267:	soundOptionsInfo.back.height				= 64;
+ADDRGP4 soundOptionsInfo+1208+80
+CNSTI4 64
+ASGNI4
+line 268
+;268:	soundOptionsInfo.back.focuspic				= ART_BACK1;
+ADDRGP4 soundOptionsInfo+1208+60
+ADDRGP4 $333
+ASGNP4
+line 270
+;269:
+;270:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.banner );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 soundOptionsInfo+288
@@ -951,8 +1016,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 255
-;255:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.framel );
+line 271
+;271:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.framel );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 soundOptionsInfo+360
@@ -960,8 +1025,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 256
-;256:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.framer );
+line 272
+;272:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.framer );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 soundOptionsInfo+448
@@ -969,8 +1034,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 257
-;257:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.graphics );
+line 273
+;273:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.graphics );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 soundOptionsInfo+536
@@ -978,8 +1043,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 258
-;258:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.display );
+line 274
+;274:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.display );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 soundOptionsInfo+608
@@ -987,8 +1052,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 259
-;259:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.sound );
+line 275
+;275:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.sound );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 soundOptionsInfo+680
@@ -996,8 +1061,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 260
-;260:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.network );
+line 276
+;276:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.network );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 soundOptionsInfo+752
@@ -1005,8 +1070,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 261
-;261:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.sfxvolume );
+line 277
+;277:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.voip );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 soundOptionsInfo+824
@@ -1014,74 +1079,83 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 262
-;262:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.musicvolume );
+line 278
+;278:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.sfxvolume );
 ADDRGP4 soundOptionsInfo
 ARGP4
-ADDRGP4 soundOptionsInfo+900
+ADDRGP4 soundOptionsInfo+896
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 263
-;263:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.quality );
+line 279
+;279:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.musicvolume );
 ADDRGP4 soundOptionsInfo
 ARGP4
-ADDRGP4 soundOptionsInfo+976
+ADDRGP4 soundOptionsInfo+972
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 264
-;264:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.a3d );
+line 280
+;280:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.quality );
 ADDRGP4 soundOptionsInfo
 ARGP4
-ADDRGP4 soundOptionsInfo+1072
+ADDRGP4 soundOptionsInfo+1048
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 265
-;265:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.back );
+line 281
+;281:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.a3d );
 ADDRGP4 soundOptionsInfo
 ARGP4
-ADDRGP4 soundOptionsInfo+1136
+ADDRGP4 soundOptionsInfo+1144
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 267
-;266:
-;267:	soundOptionsInfo.sfxvolume.curvalue = trap_Cvar_VariableValue( "s_volume" ) * 10;
-ADDRGP4 $83
+line 282
+;282:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.back );
+ADDRGP4 soundOptionsInfo
+ARGP4
+ADDRGP4 soundOptionsInfo+1208
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 284
+;283:
+;284:	soundOptionsInfo.sfxvolume.curvalue = trap_Cvar_VariableValue( "s_volume" ) * 10;
+ADDRGP4 $84
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_Cvar_VariableValue
 CALLF4
 ASGNF4
-ADDRGP4 soundOptionsInfo+824+68
+ADDRGP4 soundOptionsInfo+896+68
 CNSTF4 1092616192
 ADDRLP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 268
-;268:	soundOptionsInfo.musicvolume.curvalue = trap_Cvar_VariableValue( "s_musicvolume" ) * 10;
-ADDRGP4 $87
+line 285
+;285:	soundOptionsInfo.musicvolume.curvalue = trap_Cvar_VariableValue( "s_musicvolume" ) * 10;
+ADDRGP4 $88
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_Cvar_VariableValue
 CALLF4
 ASGNF4
-ADDRGP4 soundOptionsInfo+900+68
+ADDRGP4 soundOptionsInfo+972+68
 CNSTF4 1092616192
 ADDRLP4 8
 INDIRF4
 MULF4
 ASGNF4
-line 269
-;269:	soundOptionsInfo.quality.curvalue = !trap_Cvar_VariableValue( "s_compression" );
-ADDRGP4 $96
+line 286
+;286:	soundOptionsInfo.quality.curvalue = !trap_Cvar_VariableValue( "s_compression" );
+ADDRGP4 $97
 ARGP4
 ADDRLP4 16
 ADDRGP4 trap_Cvar_VariableValue
@@ -1090,106 +1164,106 @@ ASGNF4
 ADDRLP4 16
 INDIRF4
 CNSTF4 0
-NEF4 $334
+NEF4 $354
 ADDRLP4 12
 CNSTI4 1
 ASGNI4
-ADDRGP4 $335
+ADDRGP4 $355
 JUMPV
-LABELV $334
+LABELV $354
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-LABELV $335
-ADDRGP4 soundOptionsInfo+976+64
+LABELV $355
+ADDRGP4 soundOptionsInfo+1048+64
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 270
-;270:	soundOptionsInfo.a3d.curvalue = (int)trap_Cvar_VariableValue( "s_useOpenAL" );
-ADDRGP4 $107
+line 287
+;287:	soundOptionsInfo.a3d.curvalue = (int)trap_Cvar_VariableValue( "s_useOpenAL" );
+ADDRGP4 $108
 ARGP4
 ADDRLP4 20
 ADDRGP4 trap_Cvar_VariableValue
 CALLF4
 ASGNF4
-ADDRGP4 soundOptionsInfo+1072+60
+ADDRGP4 soundOptionsInfo+1144+60
 ADDRLP4 20
 INDIRF4
 CVFI4 4
 ASGNI4
-line 271
-;271:}
-LABELV $111
+line 288
+;288:}
+LABELV $112
 endproc UI_SoundOptionsMenu_Init 24 12
 export UI_SoundOptionsMenu_Cache
 proc UI_SoundOptionsMenu_Cache 0 4
-line 279
-;272:
-;273:
-;274:/*
-;275:===============
-;276:UI_SoundOptionsMenu_Cache
-;277:===============
-;278:*/
-;279:void UI_SoundOptionsMenu_Cache( void ) {
-line 280
-;280:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $131
+line 296
+;289:
+;290:
+;291:/*
+;292:===============
+;293:UI_SoundOptionsMenu_Cache
+;294:===============
+;295:*/
+;296:void UI_SoundOptionsMenu_Cache( void ) {
+line 297
+;297:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
+ADDRGP4 $132
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 281
-;281:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $145
+line 298
+;298:	trap_R_RegisterShaderNoMip( ART_FRAMER );
+ADDRGP4 $146
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 282
-;282:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $297
+line 299
+;299:	trap_R_RegisterShaderNoMip( ART_BACK0 );
+ADDRGP4 $316
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 283
-;283:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $314
+line 300
+;300:	trap_R_RegisterShaderNoMip( ART_BACK1 );
+ADDRGP4 $333
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 284
-;284:}
-LABELV $338
+line 301
+;301:}
+LABELV $358
 endproc UI_SoundOptionsMenu_Cache 0 4
 export UI_SoundOptionsMenu
 proc UI_SoundOptionsMenu 0 8
-line 292
-;285:
-;286:
-;287:/*
-;288:===============
-;289:UI_SoundOptionsMenu
-;290:===============
-;291:*/
-;292:void UI_SoundOptionsMenu( void ) {
-line 293
-;293:	UI_SoundOptionsMenu_Init();
+line 309
+;302:
+;303:
+;304:/*
+;305:===============
+;306:UI_SoundOptionsMenu
+;307:===============
+;308:*/
+;309:void UI_SoundOptionsMenu( void ) {
+line 310
+;310:	UI_SoundOptionsMenu_Init();
 ADDRGP4 UI_SoundOptionsMenu_Init
 CALLV
 pop
-line 294
-;294:	UI_PushMenu( &soundOptionsInfo.menu );
+line 311
+;311:	UI_PushMenu( &soundOptionsInfo.menu );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 295
-;295:	Menu_SetCursorToItem( &soundOptionsInfo.menu, &soundOptionsInfo.sound );
+line 312
+;312:	Menu_SetCursorToItem( &soundOptionsInfo.menu, &soundOptionsInfo.sound );
 ADDRGP4 soundOptionsInfo
 ARGP4
 ADDRGP4 soundOptionsInfo+680
@@ -1197,14 +1271,14 @@ ARGP4
 ADDRGP4 Menu_SetCursorToItem
 CALLV
 pop
-line 296
-;296:}
-LABELV $339
+line 313
+;313:}
+LABELV $359
 endproc UI_SoundOptionsMenu 0 8
 bss
 align 4
 LABELV soundOptionsInfo
-skip 1224
+skip 1296
 import UI_RankStatusMenu
 import RankStatus_Cache
 import UI_SignupMenu
@@ -1237,6 +1311,8 @@ import UI_GetNumArenas
 import UI_GetSpecialArenaInfo
 import UI_GetArenaInfoByMap
 import UI_GetArenaInfoByNumber
+import UI_VoipOptionsMenu
+import UI_VoipOptionsMenu_Cache
 import UI_NetworkOptionsMenu
 import UI_NetworkOptionsMenu_Cache
 import UI_DisplayOptionsMenu
@@ -1690,7 +1766,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $314
+LABELV $333
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1708,7 +1784,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $297
+LABELV $316
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1726,7 +1802,7 @@ byte 1 95
 byte 1 48
 byte 1 0
 align 1
-LABELV $283
+LABELV $302
 byte 1 79
 byte 1 80
 byte 1 69
@@ -1736,7 +1812,7 @@ byte 1 76
 byte 1 58
 byte 1 0
 align 1
-LABELV $267
+LABELV $286
 byte 1 83
 byte 1 111
 byte 1 117
@@ -1753,7 +1829,7 @@ byte 1 121
 byte 1 58
 byte 1 0
 align 1
-LABELV $249
+LABELV $268
 byte 1 77
 byte 1 117
 byte 1 115
@@ -1769,7 +1845,7 @@ byte 1 101
 byte 1 58
 byte 1 0
 align 1
-LABELV $231
+LABELV $250
 byte 1 69
 byte 1 102
 byte 1 102
@@ -1787,7 +1863,15 @@ byte 1 101
 byte 1 58
 byte 1 0
 align 1
-LABELV $223
+LABELV $242
+byte 1 86
+byte 1 79
+byte 1 73
+byte 1 67
+byte 1 69
+byte 1 0
+align 1
+LABELV $224
 byte 1 78
 byte 1 69
 byte 1 84
@@ -1797,7 +1881,7 @@ byte 1 82
 byte 1 75
 byte 1 0
 align 1
-LABELV $205
+LABELV $206
 byte 1 83
 byte 1 79
 byte 1 85
@@ -1805,7 +1889,7 @@ byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $187
+LABELV $188
 byte 1 68
 byte 1 73
 byte 1 83
@@ -1815,7 +1899,7 @@ byte 1 65
 byte 1 89
 byte 1 0
 align 1
-LABELV $169
+LABELV $170
 byte 1 71
 byte 1 82
 byte 1 65
@@ -1826,7 +1910,7 @@ byte 1 67
 byte 1 83
 byte 1 0
 align 1
-LABELV $145
+LABELV $146
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1846,7 +1930,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $131
+LABELV $132
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1866,7 +1950,7 @@ byte 1 95
 byte 1 108
 byte 1 0
 align 1
-LABELV $123
+LABELV $124
 byte 1 83
 byte 1 89
 byte 1 83
@@ -1881,7 +1965,7 @@ byte 1 85
 byte 1 80
 byte 1 0
 align 1
-LABELV $107
+LABELV $108
 byte 1 115
 byte 1 95
 byte 1 117
@@ -1895,7 +1979,7 @@ byte 1 65
 byte 1 76
 byte 1 0
 align 1
-LABELV $104
+LABELV $105
 byte 1 115
 byte 1 95
 byte 1 117
@@ -1912,7 +1996,7 @@ byte 1 48
 byte 1 10
 byte 1 0
 align 1
-LABELV $103
+LABELV $104
 byte 1 115
 byte 1 95
 byte 1 117
@@ -1929,7 +2013,7 @@ byte 1 49
 byte 1 10
 byte 1 0
 align 1
-LABELV $97
+LABELV $98
 byte 1 115
 byte 1 110
 byte 1 100
@@ -1944,7 +2028,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $96
+LABELV $97
 byte 1 115
 byte 1 95
 byte 1 99
@@ -1960,7 +2044,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $95
+LABELV $96
 byte 1 115
 byte 1 95
 byte 1 107
@@ -1968,7 +2052,7 @@ byte 1 104
 byte 1 122
 byte 1 0
 align 1
-LABELV $87
+LABELV $88
 byte 1 115
 byte 1 95
 byte 1 109
@@ -1984,7 +2068,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $83
+LABELV $84
 byte 1 115
 byte 1 95
 byte 1 118

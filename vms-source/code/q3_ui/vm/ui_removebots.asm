@@ -1314,6 +1314,8 @@ import UI_GetNumArenas
 import UI_GetSpecialArenaInfo
 import UI_GetArenaInfoByMap
 import UI_GetArenaInfoByNumber
+import UI_VoipOptionsMenu
+import UI_VoipOptionsMenu_Cache
 import UI_NetworkOptionsMenu
 import UI_NetworkOptionsMenu_Cache
 import UI_SoundOptionsMenu

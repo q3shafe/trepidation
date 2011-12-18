@@ -4005,6 +4005,8 @@ import Rankings_Cache
 import Rankings_DrawPassword
 import Rankings_DrawName
 import Rankings_DrawText
+import UI_VoipOptionsMenu
+import UI_VoipOptionsMenu_Cache
 import UI_NetworkOptionsMenu
 import UI_NetworkOptionsMenu_Cache
 import UI_SoundOptionsMenu

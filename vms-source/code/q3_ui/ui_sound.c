@@ -25,7 +25,7 @@ SOUND OPTIONS MENU
 #define ID_QUALITY			16
 #define ID_A3D				17  // We're using the A3D Code for OpenAL
 #define ID_BACK				18
-
+#define ID_VOIP				19
 
 static const char *quality_items[] = {
 	"Low", "High", 0
@@ -42,6 +42,7 @@ typedef struct {
 	menutext_s			display;
 	menutext_s			sound;
 	menutext_s			network;
+	menutext_s			voip;
 
 	menuslider_s		sfxvolume;
 	menuslider_s		musicvolume;
@@ -81,6 +82,11 @@ static void UI_SoundOptionsMenu_Event( void* ptr, int event ) {
 	case ID_NETWORK:
 		UI_PopMenu();
 		UI_NetworkOptionsMenu();
+		break;
+
+	case ID_VOIP:
+		UI_PopMenu();
+		UI_VoipOptionsMenu();
 		break;
 
 	case ID_EFFECTSVOLUME:
@@ -199,6 +205,16 @@ static void UI_SoundOptionsMenu_Init( void ) {
 	soundOptionsInfo.network.style				= UI_RIGHT;
 	soundOptionsInfo.network.color				= color_red;
 
+	soundOptionsInfo.voip.generic.type		= MTYPE_PTEXT;
+	soundOptionsInfo.voip.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
+	soundOptionsInfo.voip.generic.id			= ID_VOIP;
+	soundOptionsInfo.voip.generic.callback	= UI_SoundOptionsMenu_Event;
+	soundOptionsInfo.voip.generic.x			= 216;
+	soundOptionsInfo.voip.generic.y			= 240 + PROP_HEIGHT+ PROP_HEIGHT;
+	soundOptionsInfo.voip.string				= "VOICE";
+	soundOptionsInfo.voip.style				= UI_RIGHT;
+	soundOptionsInfo.voip.color				= color_red;
+
 	y = 240 - 1.5 * (BIGCHAR_HEIGHT + 2);
 	soundOptionsInfo.sfxvolume.generic.type		= MTYPE_SLIDER;
 	soundOptionsInfo.sfxvolume.generic.name		= "Effects Volume:";
@@ -258,6 +274,7 @@ static void UI_SoundOptionsMenu_Init( void ) {
 	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.display );
 	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.sound );
 	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.network );
+	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.voip );
 	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.sfxvolume );
 	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.musicvolume );
 	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.quality );

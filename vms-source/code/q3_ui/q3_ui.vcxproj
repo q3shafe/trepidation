@@ -630,6 +630,7 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="ui_voip.c" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuildStep Include="ui.def">

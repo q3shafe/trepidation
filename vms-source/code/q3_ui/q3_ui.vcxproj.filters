@@ -150,6 +150,9 @@
     <ClCompile Include="ui_video.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ui_voip.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuildStep Include="ui.def">
