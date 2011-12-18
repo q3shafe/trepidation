@@ -3140,7 +3140,7 @@ void CL_Init( void ) {
 
 	cl_showMouseRate = Cvar_Get ("cl_showmouserate", "0", 0);
 
-	cl_allowDownload = Cvar_Get ("cl_allowDownload", "0", CVAR_ARCHIVE);
+	cl_allowDownload = Cvar_Get ("cl_allowDownload", "1", CVAR_ARCHIVE);
 #ifdef USE_CURL
 	cl_cURLLib = Cvar_Get("cl_cURLLib", DEFAULT_CURL_LIB, CVAR_ARCHIVE);
 #endif
@@ -3182,15 +3182,15 @@ void CL_Init( void ) {
 	cl_consoleKeys = Cvar_Get( "cl_consoleKeys", "~ ` 0x7e 0x60", CVAR_ARCHIVE);
 
 	// userinfo
-	Cvar_Get ("name", "UnnamedPlayer", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("name", "Terran", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("rate", "25000", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("snaps", "20", CVAR_USERINFO | CVAR_ARCHIVE );
-	Cvar_Get ("model", "sarge", CVAR_USERINFO | CVAR_ARCHIVE );
-	Cvar_Get ("headmodel", "sarge", CVAR_USERINFO | CVAR_ARCHIVE );
-	Cvar_Get ("team_model", "james", CVAR_USERINFO | CVAR_ARCHIVE );
-	Cvar_Get ("team_headmodel", "*james", CVAR_USERINFO | CVAR_ARCHIVE );
-	Cvar_Get ("g_redTeam", "Stroggs", CVAR_SERVERINFO | CVAR_ARCHIVE);
-	Cvar_Get ("g_blueTeam", "Pagans", CVAR_SERVERINFO | CVAR_ARCHIVE);
+	Cvar_Get ("model", "major", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("headmodel", "major", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("team_model", "major", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("team_headmodel", "*major", CVAR_USERINFO | CVAR_ARCHIVE );
+	Cvar_Get ("g_redTeam", "Red", CVAR_SERVERINFO | CVAR_ARCHIVE);
+	Cvar_Get ("g_blueTeam", "Blue", CVAR_SERVERINFO | CVAR_ARCHIVE);
 	Cvar_Get ("color1",  "4", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("color2", "5", CVAR_USERINFO | CVAR_ARCHIVE );
 	Cvar_Get ("handicap", "100", CVAR_USERINFO | CVAR_ARCHIVE );
@@ -3228,7 +3228,7 @@ void CL_Init( void ) {
 		Com_Printf(S_COLOR_YELLOW "Your network rate is too slow for VoIP.\n");
 		Com_Printf("Set 'Data Rate' to 'LAN/Cable/xDSL' in 'Setup/System/Network' and restart.\n");
 		Com_Printf("Until then, VoIP is disabled.\n");
-		Cvar_Set("cl_voip", "0");
+		Cvar_Set("cl_voip", "1");
 	}
 #endif
 
