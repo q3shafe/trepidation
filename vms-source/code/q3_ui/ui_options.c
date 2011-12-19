@@ -213,7 +213,7 @@ void Options_MenuInit( void ) {
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.display );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.sound );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.network );
-	Menu_AddItem( &s_options.menu, ( void * ) &s_options.voip );
+	//Menu_AddItem( &s_options.menu, ( void * ) &s_options.voip );
 	Menu_AddItem( &s_options.menu, ( void * ) &s_options.back );
 }
 

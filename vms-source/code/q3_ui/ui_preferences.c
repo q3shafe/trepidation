@@ -30,7 +30,8 @@ GAME OPTIONS MENU
 #define ID_FORCEMODEL			135
 #define ID_DRAWTEAMOVERLAY		136
 #define ID_ALLOWDOWNLOAD			137
-#define ID_BACK					138
+#define ID_ALLOWVOIP			138
+#define ID_BACK					139
 
 #define	NUM_CROSSHAIRS			10
 
@@ -53,6 +54,7 @@ typedef struct {
 	menuradiobutton_s	forcemodel;
 	menulist_s			drawteamoverlay;
 	menuradiobutton_s	allowdownload;
+	menuradiobutton_s	allowvoip;
 	menubitmap_s		back;
 
 	qhandle_t			crosshairShader[NUM_CROSSHAIRS];
@@ -81,6 +83,7 @@ static void Preferences_SetMenuItems( void ) {
 	s_preferences.forcemodel.curvalue		= trap_Cvar_VariableValue( "cg_forcemodel" ) != 0;
 	s_preferences.drawteamoverlay.curvalue	= Com_Clamp( 0, 3, trap_Cvar_VariableValue( "cg_drawTeamOverlay" ) );
 	s_preferences.allowdownload.curvalue	= trap_Cvar_VariableValue( "cl_allowDownload" ) != 0;
+	s_preferences.allowvoip.curvalue	= trap_Cvar_VariableValue( "cl_voip" ) != 0;
 }
 
 
@@ -140,6 +143,11 @@ static void Preferences_Event( void* ptr, int notification ) {
 	case ID_ALLOWDOWNLOAD:
 		trap_Cvar_SetValue( "cl_allowDownload", s_preferences.allowdownload.curvalue );
 		trap_Cvar_SetValue( "sv_allowDownload", s_preferences.allowdownload.curvalue );
+		break;
+
+	case ID_ALLOWVOIP:
+		trap_Cvar_SetValue( "cl_voip", s_preferences.allowvoip.curvalue );
+		trap_Cvar_SetValue( "sv_voip", s_preferences.allowvoip.curvalue );
 		break;
 
 	case ID_BACK:
@@ -337,6 +345,15 @@ static void Preferences_MenuInit( void ) {
 	s_preferences.allowdownload.generic.y	       = y;
 
 	y += BIGCHAR_HEIGHT+2;
+	s_preferences.allowvoip.generic.type     = MTYPE_RADIOBUTTON;
+	s_preferences.allowvoip.generic.name	   = "Enable Voice/Voip:";
+	s_preferences.allowvoip.generic.flags	   = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+	s_preferences.allowvoip.generic.callback = Preferences_Event;
+	s_preferences.allowvoip.generic.id       = ID_ALLOWVOIP;
+	s_preferences.allowvoip.generic.x	       = PREFERENCES_X_POS;
+	s_preferences.allowvoip.generic.y	       = y;
+
+	y += BIGCHAR_HEIGHT+2;
 	s_preferences.back.generic.type	    = MTYPE_BITMAP;
 	s_preferences.back.generic.name     = ART_BACK0;
 	s_preferences.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -364,6 +381,7 @@ static void Preferences_MenuInit( void ) {
 	Menu_AddItem( &s_preferences.menu, &s_preferences.forcemodel );
 	Menu_AddItem( &s_preferences.menu, &s_preferences.drawteamoverlay );
 	Menu_AddItem( &s_preferences.menu, &s_preferences.allowdownload );
+	Menu_AddItem( &s_preferences.menu, &s_preferences.allowvoip );
 
 	Menu_AddItem( &s_preferences.menu, &s_preferences.back );
 

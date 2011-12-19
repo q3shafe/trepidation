@@ -5980,19 +5980,17 @@ line 1177
 ADDRGP4 $340
 JUMPV
 LABELV $346
-line 1180
+line 1179
 ;1178:	case WP_GRENADE_LAUNCHER:
-;1179:		//weapon_grenadelauncher_fire( ent );
-;1180:		weapon_bomblauncher_fire( ent, qtrue); 
+;1179:		weapon_grenadelauncher_fire( ent );
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTI4 1
-ARGI4
-ADDRGP4 weapon_bomblauncher_fire
+ADDRGP4 weapon_grenadelauncher_fire
 CALLV
 pop
 line 1181
+;1180:		//weapon_bomblauncher_fire( ent, qtrue);  // This is the 2 step grenades, may be worth revisiting - Shafe
 ;1181:		break;
 ADDRGP4 $340
 JUMPV

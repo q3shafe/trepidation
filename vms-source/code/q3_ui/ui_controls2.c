@@ -97,16 +97,17 @@ typedef struct
 #define ID_GRAPPLE		36	// Shafe - Trep - Grapple Offhand
 #define ID_PDG			37	// Shafe - Trep - PDG
 #define ID_BUILD_MENU	38	
+#define ID_VOIPKEY		39	
 
 // all others
-#define ID_FREELOOK		39
-#define ID_INVERTMOUSE	40
-#define ID_ALWAYSRUN	41
-#define ID_AUTOSWITCH	42
-#define ID_MOUSESPEED	43
-#define ID_JOYENABLE	44
-#define ID_JOYTHRESHOLD	45
-#define ID_SMOOTHMOUSE	46
+#define ID_FREELOOK		40
+#define ID_INVERTMOUSE	41
+#define ID_ALWAYSRUN	42
+#define ID_AUTOSWITCH	43
+#define ID_MOUSESPEED	44
+#define ID_JOYENABLE	45
+#define ID_JOYTHRESHOLD	46
+#define ID_SMOOTHMOUSE	47
 
 
 
@@ -198,6 +199,7 @@ typedef struct
 	menuaction_s		grapple;  // Shafe - Grapple
 	menuaction_s		pdg;  // Shafe - Grapple
 	menuaction_s		build_menu;  // Shafe 
+	menuaction_s		voipkey;  // Shafe 
 	menuradiobutton_s	joyenable;
 	menuslider_s		joythreshold;
 	menuaction_s		altattack;  // Shafe - Alt Fire
@@ -262,6 +264,7 @@ static bind_t g_bindings[] =
 	{"+button6", 		"energy grapple",	ID_GRAPPLE,		ANIM_ATTACK,	K_MOUSE3,			-1,		-1, -1},
 	{"pdg", 		"displacement grenade",	ID_PDG	,		ANIM_ATTACK,	'Q',			-1,		-1, -1},
 	{"build_menu", 		"build menu",	ID_BUILD_MENU	,		ANIM_ATTACK,	'E',			-1,		-1, -1},
+	{"+voiprecord", 		"Voice: Push To Talk",	ID_VOIPKEY	,		ANIM_CHAT,	'V',			-1,		-1, -1},
 
 	{(char*)NULL,		(char*)NULL,		0,				0,				-1,				-1,		-1,	-1},
 };
@@ -342,6 +345,7 @@ static menucommon_s *g_misc_controls[] = {
 	(menucommon_s *)&s_controls.grapple,  // Shafe
 	(menucommon_s *)&s_controls.pdg,  // Shafe
 	(menucommon_s *)&s_controls.build_menu,  // Shafe
+	(menucommon_s *)&s_controls.voipkey,  // Shafe
 	NULL,
 };
 
@@ -1582,6 +1586,13 @@ static void Controls_MenuInit( void )
 	s_controls.build_menu.generic.callback  = Controls_ActionEvent;
 	s_controls.build_menu.generic.ownerdraw = Controls_DrawKeyBinding;
 	s_controls.build_menu.generic.id        = ID_BUILD_MENU;
+
+	// Shafe - Voip Key
+	s_controls.build_menu.generic.type	    = MTYPE_ACTION;
+	s_controls.build_menu.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
+	s_controls.build_menu.generic.callback  = Controls_ActionEvent;
+	s_controls.build_menu.generic.ownerdraw = Controls_DrawKeyBinding;
+	s_controls.build_menu.generic.id        = ID_VOIPKEY;
 
 	s_controls.joyenable.generic.type      = MTYPE_RADIOBUTTON;
 	s_controls.joyenable.generic.flags	   = QMF_SMALLFONT;
