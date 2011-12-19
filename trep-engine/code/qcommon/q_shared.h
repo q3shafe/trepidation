@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
   #define GAMENAME_FOR_MASTER		"iofoo3"		// must NOT contain whitespaces
   #define HEARTBEAT_FOR_MASTER		GAMENAME_FOR_MASTER
 #else
-  #define PRODUCT_NAME			"Trepidation 11-27-2011 Dev Build"
+  #define PRODUCT_NAME			"Trepidation 12-20-2011 Dev Build"
   #define BASEGAME			"base"
   #define CLIENT_WINDOW_TITLE     	"Trepidation Console"
   #define CLIENT_WINDOW_MIN_TITLE 	"Trepidation Console"
