@@ -7,23 +7,6 @@
 //===========================================================================
 
 {
-name		DarkLegion
-model		trem3
-funname	DarkLegion
-aifile	bots/major_c.c
-arenaLord	0
-}
-
-{
-name		AverageBot
-model		trem1
-funname	Tremulous
-aifile	bots/major_c.c
-arenaLord	1
-}
-
-
-{
 name		"Bugger_Yikes"
 funname		"Yikes"
 model		bugger/yikes
