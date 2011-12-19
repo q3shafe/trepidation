@@ -1070,16 +1070,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 277
-;277:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.voip );
-ADDRGP4 soundOptionsInfo
-ARGP4
-ADDRGP4 soundOptionsInfo+824
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
 line 278
+;277:	//Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.voip );
 ;278:	Menu_AddItem( &soundOptionsInfo.menu, ( void * ) &soundOptionsInfo.sfxvolume );
 ADDRGP4 soundOptionsInfo
 ARGP4
@@ -1164,17 +1156,17 @@ ASGNF4
 ADDRLP4 16
 INDIRF4
 CNSTF4 0
-NEF4 $354
+NEF4 $353
 ADDRLP4 12
 CNSTI4 1
 ASGNI4
-ADDRGP4 $355
+ADDRGP4 $354
 JUMPV
-LABELV $354
+LABELV $353
 ADDRLP4 12
 CNSTI4 0
 ASGNI4
-LABELV $355
+LABELV $354
 ADDRGP4 soundOptionsInfo+1048+64
 ADDRLP4 12
 INDIRI4
@@ -1237,7 +1229,7 @@ CALLI4
 pop
 line 301
 ;301:}
-LABELV $358
+LABELV $357
 endproc UI_SoundOptionsMenu_Cache 0 4
 export UI_SoundOptionsMenu
 proc UI_SoundOptionsMenu 0 8
@@ -1273,7 +1265,7 @@ CALLV
 pop
 line 313
 ;313:}
-LABELV $359
+LABELV $358
 endproc UI_SoundOptionsMenu 0 8
 bss
 align 4

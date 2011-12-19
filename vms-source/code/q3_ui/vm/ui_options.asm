@@ -770,16 +770,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 216
-;216:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.voip );
-ADDRGP4 s_options
-ARGP4
-ADDRGP4 s_options+824
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
 line 217
+;216:	//Menu_AddItem( &s_options.menu, ( void * ) &s_options.voip );
 ;217:	Menu_AddItem( &s_options.menu, ( void * ) &s_options.back );
 ADDRGP4 s_options
 ARGP4
@@ -817,7 +809,7 @@ CALLV
 pop
 line 229
 ;229:}
-LABELV $252
+LABELV $251
 endproc UI_SystemConfigMenu 0 4
 bss
 align 4

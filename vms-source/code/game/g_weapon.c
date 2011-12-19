@@ -1176,8 +1176,8 @@ void FireWeapon( gentity_t *ent ) {
 		*/
 		break;
 	case WP_GRENADE_LAUNCHER:
-		//weapon_grenadelauncher_fire( ent );
-		weapon_bomblauncher_fire( ent, qtrue); 
+		weapon_grenadelauncher_fire( ent );
+		//weapon_bomblauncher_fire( ent, qtrue);  // This is the 2 step grenades, may be worth revisiting - Shafe
 		break;
 	case WP_ROCKET_LAUNCHER:
 		Weapon_RocketLauncher_Fire( ent );

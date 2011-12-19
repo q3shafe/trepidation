@@ -861,16 +861,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 234
-;234:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.voip );
-ADDRGP4 networkOptionsInfo
-ARGP4
-ADDRGP4 networkOptionsInfo+824
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
 line 235
+;234:	//Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.voip );
 ;235:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.rate );
 ADDRGP4 networkOptionsInfo
 ARGP4
@@ -907,7 +899,7 @@ line 239
 ADDRLP4 0
 INDIRI4
 CNSTI4 2500
-GTI4 $294
+GTI4 $293
 line 240
 ;240:		networkOptionsInfo.rate.curvalue = 0;
 ADDRGP4 networkOptionsInfo+896+64
@@ -915,15 +907,15 @@ CNSTI4 0
 ASGNI4
 line 241
 ;241:	}
-ADDRGP4 $295
+ADDRGP4 $294
 JUMPV
-LABELV $294
+LABELV $293
 line 242
 ;242:	else if( rate <= 3000 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 3000
-GTI4 $298
+GTI4 $297
 line 243
 ;243:		networkOptionsInfo.rate.curvalue = 1;
 ADDRGP4 networkOptionsInfo+896+64
@@ -931,15 +923,15 @@ CNSTI4 1
 ASGNI4
 line 244
 ;244:	}
-ADDRGP4 $299
+ADDRGP4 $298
 JUMPV
-LABELV $298
+LABELV $297
 line 245
 ;245:	else if( rate <= 4000 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 4000
-GTI4 $302
+GTI4 $301
 line 246
 ;246:		networkOptionsInfo.rate.curvalue = 2;
 ADDRGP4 networkOptionsInfo+896+64
@@ -947,15 +939,15 @@ CNSTI4 2
 ASGNI4
 line 247
 ;247:	}
-ADDRGP4 $303
+ADDRGP4 $302
 JUMPV
-LABELV $302
+LABELV $301
 line 248
 ;248:	else if( rate <= 5000 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 5000
-GTI4 $306
+GTI4 $305
 line 249
 ;249:		networkOptionsInfo.rate.curvalue = 3;
 ADDRGP4 networkOptionsInfo+896+64
@@ -963,9 +955,9 @@ CNSTI4 3
 ASGNI4
 line 250
 ;250:	}
-ADDRGP4 $307
+ADDRGP4 $306
 JUMPV
-LABELV $306
+LABELV $305
 line 251
 ;251:	else {
 line 252
@@ -975,10 +967,10 @@ CNSTI4 4
 ASGNI4
 line 253
 ;253:	}
-LABELV $307
-LABELV $303
-LABELV $299
-LABELV $295
+LABELV $306
+LABELV $302
+LABELV $298
+LABELV $294
 line 254
 ;254:}
 LABELV $112
@@ -1024,7 +1016,7 @@ CALLI4
 pop
 line 267
 ;267:}
-LABELV $312
+LABELV $311
 endproc UI_NetworkOptionsMenu_Cache 0 4
 export UI_NetworkOptionsMenu
 proc UI_NetworkOptionsMenu 0 8
@@ -1060,7 +1052,7 @@ CALLV
 pop
 line 279
 ;279:}
-LABELV $313
+LABELV $312
 endproc UI_NetworkOptionsMenu 0 8
 bss
 align 4

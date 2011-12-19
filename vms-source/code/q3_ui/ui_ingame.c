@@ -954,16 +954,14 @@ static void DynamicMenu_BuildMenu( void )
 		if ((cts < 6) && (type == 2)) { iserror = 3; }  
 
 		*/
-
-	
 	
 	DynamicMenu_AddItem("Turret", 0, NULL, DM_BuildItem);
-
 	DynamicMenu_AddItem("Sheilded Turret", 0 , NULL, DM_BuildItem);
 	DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
-	DynamicMenu_AddItem("Immobilizer", 0, NULL, DM_BuildItem);
+
 //	if( cgs.g_GameMode == 3) 
 //	{
+		DynamicMenu_AddItem("Immobilizer", 0, NULL, DM_BuildItem);
 		DynamicMenu_AddItem("Generator", 0, NULL, DM_BuildItem);
 		DynamicMenu_AddItem("Power Core", 0, NULL, DM_BuildItem);
 //	}
