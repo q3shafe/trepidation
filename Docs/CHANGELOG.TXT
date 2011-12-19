@@ -19,6 +19,11 @@ Trepidation Changelog - Most Recent Changes First
 ======================
 This is mostly a maintenance release, primarily to bring the engine up to date with a newer version of the IOQ3 Engine, as well as clean up a lot of problems that came up in the last dev build in 2007.  
 
+
+- Reverted grenade launcher behaviour back to normal.
+
+- Added in VOIP options to menus.
+
 - Gauss rifle zoom is more responsive.
 
 - LFO Rifle fire is now a soothing green instead of that non-descript white looking color.
