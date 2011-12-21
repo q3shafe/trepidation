@@ -14,8 +14,11 @@ downloads on :)
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+
+- Cleaned up the server listing screen for online play.
+
 ======================
-12-15-2011 BUILD
+12-20-2011 BUILD
 ======================
 This is mostly a maintenance release, primarily to bring the engine up to date with a newer version of the IOQ3 Engine, as well as clean up a lot of problems that came up in the last dev build in 2007.  
 
