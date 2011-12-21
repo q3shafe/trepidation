@@ -203,8 +203,7 @@ typedef struct servernode_s {
 	// I'm thinking that Instagib should replace the yes/no in pb field of browser
 	*/
 	int		g_instagib; 
-	int		g_GameMode; 
-	
+	int		g_gamemode;
 	qboolean bPB;
 
 } servernode_t; 
@@ -284,7 +283,7 @@ static int				g_sortkey;
 static int				g_emptyservers;
 static int				g_fullservers;
 static int				g_masteruse; // Shafe - Trep - Multimaster
-static int				g_GameMode;
+static int				g_gamemode;
 static int				g_instagib;
 
 
@@ -529,7 +528,7 @@ static void ArenaServers_UpdateMenu( void ) {
 		if( !g_fullservers && ( servernodeptr->numclients == servernodeptr->maxclients ) ) {
 			continue;
 		}
-
+		
 		switch( g_gametype ) {
 		case GAMES_ALL:
 			break;
@@ -559,17 +558,18 @@ static void ArenaServers_UpdateMenu( void ) {
 			break;
 		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
 			 //strcmp(servernodeptr->gamename,"eternal") != 0
-			if(( servernodeptr->gametype != GT_FFA ) && (servernodeptr->g_GameMode != 1))  {
+			if(( servernodeptr->gametype != GT_FFA ) && (servernodeptr->g_gamemode == 1))  {
 				continue;
+				
 			}
 			break;
 		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
-			if(( servernodeptr->gametype != GT_FFA ) && (servernodeptr->g_GameMode != 2))  {
+			if(( servernodeptr->gametype != GT_FFA ) && (servernodeptr->g_gamemode == 2))  {
 				continue;
 			}
 			break;
 		case GAMES_TREPIDATION: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet			
-			if(( servernodeptr->gametype != GT_TEAM ) && (servernodeptr->g_GameMode != 3))  {
+			if(( servernodeptr->gametype != GT_TEAM ) && (servernodeptr->g_gamemode == 3))  {
 				continue;
 			}
 			break;
@@ -599,7 +599,7 @@ static void ArenaServers_UpdateMenu( void ) {
 		}
 
 
-		if ( servernodeptr->g_GameMode == 1) 
+		if ( servernodeptr->g_gamemode == 1) 
 		{
 			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
 			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,
@@ -727,7 +727,7 @@ static void ArenaServers_Insert( char* adrstr, char* info, int pingtime )
 	servernodeptr->minPing    = atoi( Info_ValueForKey( info, "minPing") );
 	servernodeptr->maxPing    = atoi( Info_ValueForKey( info, "maxPing") );
 	servernodeptr->bPB = atoi( Info_ValueForKey( info, "g_instagib") );
-	servernodeptr->g_GameMode = atoi( Info_ValueForKey( info, "g_GameMode") );
+	servernodeptr->g_gamemode = atoi( Info_ValueForKey( info, "g_gamemode") );
 	servernodeptr->g_instagib = atoi( Info_ValueForKey( info, "g_instagib") );
 
 	/*
@@ -1448,7 +1448,7 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.menu.draw       = ArenaServers_MenuDraw;
 	g_arenaservers.menu.key        = ArenaServers_MenuKey;
 
-	g_arenaservers.banner.generic.type  = MTYPE_BTEXT;
+	g_arenaservers.banner.generic.type  = MTYPE_TEXT;
 	g_arenaservers.banner.generic.flags = QMF_CENTER_JUSTIFY;
 	g_arenaservers.banner.generic.x	    = 320;
 	g_arenaservers.banner.generic.y	    = 16;
@@ -1458,13 +1458,13 @@ static void ArenaServers_MenuInit( void ) {
 
 
 
-	y = 80;
+	y = 50;
 	g_arenaservers.master.generic.type			= MTYPE_SPINCONTROL;
 	g_arenaservers.master.generic.name			= "Servers:";
 	g_arenaservers.master.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT|QMF_LEFT_JUSTIFY;
 	g_arenaservers.master.generic.callback		= ArenaServers_Event;
 	g_arenaservers.master.generic.id			= ID_MASTER;
-	g_arenaservers.master.generic.x				= 275;  // 320 -- Bleh Shafe
+	g_arenaservers.master.generic.x				= 150;  // 320 -- Bleh Shafe
 	g_arenaservers.master.generic.y				= y;
 	g_arenaservers.master.itemnames				= master_items;
 
@@ -1475,7 +1475,7 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.mserver.generic.flags			= QMF_PULSEIFFOCUS|QMF_SMALLFONT|QMF_LEFT_JUSTIFY;
 	g_arenaservers.mserver.generic.callback		= ArenaServers_Event;
 	g_arenaservers.mserver.generic.id			= ID_MSERVER;
-	g_arenaservers.mserver.generic.x				= 275;  // 320 -- Bleh Shafe
+	g_arenaservers.mserver.generic.x				= 150;  // 320 -- Bleh Shafe
 	g_arenaservers.mserver.generic.y				= y;
 	g_arenaservers.mserver.itemnames				= master_servers;
 
@@ -1485,7 +1485,7 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.gametype.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
 	g_arenaservers.gametype.generic.callback	= ArenaServers_Event;
 	g_arenaservers.gametype.generic.id			= ID_GAMETYPE;
-	g_arenaservers.gametype.generic.x			= 275;
+	g_arenaservers.gametype.generic.x			= 150;
 	g_arenaservers.gametype.generic.y			= y;
 	g_arenaservers.gametype.itemnames			= servertype_items;
 
@@ -1495,7 +1495,7 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.sortkey.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
 	g_arenaservers.sortkey.generic.callback		= ArenaServers_Event;
 	g_arenaservers.sortkey.generic.id			= ID_SORTKEY;
-	g_arenaservers.sortkey.generic.x			= 275;
+	g_arenaservers.sortkey.generic.x			= 150;
 	g_arenaservers.sortkey.generic.y			= y;
 	g_arenaservers.sortkey.itemnames			= sortkey_items;
 
@@ -1505,7 +1505,7 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.showfull.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
 	g_arenaservers.showfull.generic.callback	= ArenaServers_Event;
 	g_arenaservers.showfull.generic.id			= ID_SHOW_FULL;
-	g_arenaservers.showfull.generic.x			= 275;
+	g_arenaservers.showfull.generic.x			= 150;
 	g_arenaservers.showfull.generic.y			= y;
 
 	y += SMALLCHAR_HEIGHT;
@@ -1514,10 +1514,10 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.showempty.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
 	g_arenaservers.showempty.generic.callback	= ArenaServers_Event;
 	g_arenaservers.showempty.generic.id			= ID_SHOW_EMPTY;
-	g_arenaservers.showempty.generic.x			= 275;
+	g_arenaservers.showempty.generic.x			= 150;
 	g_arenaservers.showempty.generic.y			= y;
 
-	y += 3 * SMALLCHAR_HEIGHT;
+	y += 4 * SMALLCHAR_HEIGHT;
 	g_arenaservers.list.generic.type			= MTYPE_SCROLLLIST;
 	g_arenaservers.list.generic.flags			= QMF_HIGHLIGHT_IF_FOCUS;
 	g_arenaservers.list.generic.id				= ID_LIST;
@@ -1533,10 +1533,10 @@ static void ArenaServers_MenuInit( void ) {
 
 	g_arenaservers.mappic.generic.type			= MTYPE_BITMAP;
 	g_arenaservers.mappic.generic.flags			= QMF_LEFT_JUSTIFY|QMF_INACTIVE;
-	g_arenaservers.mappic.generic.x				= 10; //72;
-	g_arenaservers.mappic.generic.y				= 80;
-	g_arenaservers.mappic.width					= 128;
-	g_arenaservers.mappic.height				= 96;
+	g_arenaservers.mappic.generic.x				= 325; //72;
+	g_arenaservers.mappic.generic.y				= 50;
+	g_arenaservers.mappic.width					= 170;
+	g_arenaservers.mappic.height				= 128;
 	g_arenaservers.mappic.errorpic				= ART_UNKNOWNMAP;
 
 	g_arenaservers.arrows.generic.type			= MTYPE_BITMAP;
