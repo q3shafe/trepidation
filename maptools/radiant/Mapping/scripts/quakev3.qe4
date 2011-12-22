@@ -1,0 +1,66 @@
+// project template
+// the __* strings will be expanded following these rules:
+// __ENGINEPATH: path to the engine .. C:\Trepidation\ C:\Program Files\Trepidation\ /usr/local/games/trepidation/
+// __TOOLSPATH: path to the tools directory C:\Program Files\Trepidation\Mapping
+//   (NOTE: on win32 tools directory is usually where the editor is .. but it's not true on linux)
+// __USERHOMEPATH: on linux, the directory with write permissions for saving maps etc.
+//   on win32, == __ENGINEPATH
+{
+"version" "4"
+
+"basepath" "__ENGINEPATHMapping"
+"rshcmd" ""
+"remotebasepath" "__ENGINEPATHbase"
+"entitypath" "__TOOLSPATH/scripts"
+"texturepath" "__ENGINEPATHMapping/textures"
+"autosave" "__USERHOMEPATHMapping/maps/autosave.map"
+"mapspath" "__USERHOMEPATHMapping/maps"
+
+"bsp_-light" "! __TOOLSPATHq3map # -onlyents $ && ! __TOOLSPATHq3map # -light $"
+"bsp_-light -extra" "! __TOOLSPATHq3map # -onlyents $ && ! __TOOLSPATHq3map # -light -extra $"
+"bsp_BSP" "! __TOOLSPATHq3map # $"
+"bsp_BSP -onlytextures" "! __TOOLSPATHq3map # -onlytextures $"
+"bsp_BSP -onlyents" "! __TOOLSPATHq3map # -onlyents $"
+"bsp_BSP, -vis -fast" "! __TOOLSPATHq3map # $ && ! __TOOLSPATHq3map # -vis -fast $"
+"bsp_BSP, -vis -fast, -light -extra" "! __TOOLSPATHq3map # $ && ! __TOOLSPATHq3map # -vis -fast $ && ! __TOOLSPATHq3map # -light -extra $"
+"bsp_BSP, -vis" "! __TOOLSPATHq3map # $ && ! __TOOLSPATHq3map # -vis $"
+"bsp_BSP, -vis -fast, -light" "! __TOOLSPATHq3map # $ && ! __TOOLSPATHq3map # -vis -fast $ && ! __TOOLSPATHq3map # -light $"
+"bsp_BSP, -vis, -light" "! __TOOLSPATHq3map # $ && ! __TOOLSPATHq3map # -vis $ && ! __TOOLSPATHq3map # -light $"
+"bsp_BSP, -vis, -light -extra" "! __TOOLSPATHq3map # $ && ! __TOOLSPATHq3map # -vis $ && ! __TOOLSPATHq3map # -light -extra $"
+
+"bsp_-vlight only" "! __TOOLSPATHq3map # -onlyents $ && ! __TOOLSPATHq3map # -vlight $"
+"bsp_BSP, -vis -fast, -vlight" "! __TOOLSPATHq3map # $ && ! __TOOLSPATHq3map # -vis -saveprt -fast $ && ! __TOOLSPATHq3map # -vlight $"
+"bsp_BSP, -vis, -vlight" "! __TOOLSPATHq3map # $ && ! __TOOLSPATHq3map # -vis -saveprt $ && ! __TOOLSPATHq3map # -vlight $"
+
+// additions to default project file for q3map2
+// q3map2 is installed globally
+
+"bsp_Q3Map2: (single) BSP -meta" "! __APPPATHq3map2 -v # -meta $"
+
+"bsp_Q3Map2: (single) -vis" "! __APPPATHq3map2 # -vis $"
+
+"bsp_Q3Map2: (single test) -vis -fast" "! __APPPATHq3map2 # -vis -fast $"
+
+"bsp_Q3Map2: (single test) -light -faster" "! __APPPATHq3map2 -v # -light -faster $"
+
+"bsp_Q3Map2: (single test) -light -fast" "! __APPPATHq3map2 -v # -light -fast $"
+
+"bsp_Q3Map2: (single) -light -fast -super 2" "! __APPPATHq3map2 -v # -light -fast -super 2 $"
+
+"bsp_Q3Map2: (single) -light -fast -super 2 -filter" "! __APPPATHq3map2 -v # -light -fast -super 2 -filter $"
+
+"bsp_Q3Map2: (single) -light -fast -super 2 -filter -bounce 8" "! __APPPATHq3map2 -v # -light -fast -super 2 -filter -bounce 8 $"
+
+"bsp_Q3Map2: (test) BSP -meta, -vis, -light -fast -filter" "! __APPPATHq3map2 -v # -meta $ && ! __APPPATHq3map2 # -vis -saveprt $ && ! __APPPATHq3map2 -v # -light -fast -filter $"
+
+"bsp_Q3Map2: (test) BSP -meta, -vis -fast, -light -fast -super 2 -filter" "! __APPPATHq3map2 -v # -meta $ && ! __APPPATHq3map2 # -vis -saveprt -fast $ && ! __APPPATHq3map2 -v # -light -fast -super 2 -filter $"
+
+"bsp_Q3Map2: (final) BSP -meta, -vis, -light -fast -filter -super 2" "! __APPPATHq3map2 -v # -meta $ && ! __APPPATHq3map2 # -vis -saveprt $ && ! __APPPATHq3map2 -v # -light -fast -filter -super 2 $"
+
+"bsp_Q3Map2: (final) BSP -meta, -vis, -light -fast -filter -super 2" "! __APPPATHq3map2 -v # -meta $ && ! __APPPATHq3map2 # -vis -saveprt $ && ! __APPPATHq3map2 -v # -light -fast -filter -super 2 $"
+
+"bsp_Q3Map2: (final) BSP -meta, -vis, -light -fast -filter -super 2 -bounce 8" "! __APPPATHq3map2 -v # -meta $ && ! __APPPATHq3map2 # -vis -saveprt $ && ! __APPPATHq3map2 -v # -light -fast -super 2 -filter -bounce 8 $"
+
+"bsp_Q3Map2: (simulate old style -light -extra) BSP -meta, -vis, -light -super 2" "! __APPPATHq3map2 -v # -meta $ && ! __APPPATHq3map2 # -vis -saveprt $ && ! __APPPATHq3map2 -v # -light -super 2 $"
+
+}

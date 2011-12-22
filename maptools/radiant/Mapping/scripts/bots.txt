@@ -1,0 +1,11 @@
+{
+name		Sarge
+model		sarge
+aifile	bots/sarge_c.c
+arenaLord	1
+}
+
+
+
+
+

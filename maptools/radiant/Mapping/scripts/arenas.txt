@@ -1,0 +1,90 @@
+
+{
+map "ctf_battlefield"
+longname "CTF Battlefield"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney"
+recommended ""
+}
+
+{
+map "ctf_conflictzone"
+longname "CTF Conflict Zone"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney"
+recommended ""
+}
+
+{
+map "ctf_opposingforts"
+longname "CTF Opposing Forts"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney"
+recommended ""
+}
+
+{
+map "ctf_pyramide"
+longname "CTF Pyramide"
+longname_deutsch ""
+longname_francais ""
+type "team ctf tourney"
+recommended ""
+}
+
+{
+map "dread"
+longname "Dread"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney"
+recommended ""
+}
+
+{
+map "oa_rpg3dm2"
+longname "RPG3DM2"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team"
+recommended ""
+}
+
+{
+map "area52"
+longname "Area 52"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team"
+recommended ""
+}
+
+{
+map "citadel"
+longname "Citadel"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team"
+recommended ""
+}
+
+{
+map "ctf_aversion"
+longname "CTF Aversion"
+longname_deutsch "CTF Aversion"
+longname_francais ""
+type "single ffa team ctf tourney"
+recommended ""
+}
+
+{
+map "dystopia"
+longname ""
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney"
+recommended ""
+}
