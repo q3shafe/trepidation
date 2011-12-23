@@ -149,10 +149,10 @@ static void UI_DriverInfo_Menu( void )
 	s_driverinfo.framer.generic.type  = MTYPE_BITMAP;
 	s_driverinfo.framer.generic.name  = DRIVERINFO_FRAMER;
 	s_driverinfo.framer.generic.flags = QMF_INACTIVE;
-	s_driverinfo.framer.generic.x	  = 376;
-	s_driverinfo.framer.generic.y	  = 76;
-	s_driverinfo.framer.width  	      = 256;
-	s_driverinfo.framer.height  	  = 334;
+	s_driverinfo.framer.generic.x	  = 0;
+	s_driverinfo.framer.generic.y	  = 0;
+	s_driverinfo.framer.width  	      = 800;
+	s_driverinfo.framer.height  	  = 600;
 
 	s_driverinfo.back.generic.type	   = MTYPE_BITMAP;
 	s_driverinfo.back.generic.name     = DRIVERINFO_BACK0;
@@ -196,7 +196,7 @@ static void UI_DriverInfo_Menu( void )
 	}
 
 	Menu_AddItem( &s_driverinfo.menu, &s_driverinfo.banner );
-	Menu_AddItem( &s_driverinfo.menu, &s_driverinfo.framel );
+	//Menu_AddItem( &s_driverinfo.menu, &s_driverinfo.framel );
 	Menu_AddItem( &s_driverinfo.menu, &s_driverinfo.framer );
 	Menu_AddItem( &s_driverinfo.menu, &s_driverinfo.back );
 

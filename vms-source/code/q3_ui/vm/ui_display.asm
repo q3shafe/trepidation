@@ -15,7 +15,7 @@ line 54
 ;11:#include "ui_local.h"
 ;12:
 ;13:
-;14:#define ART_FRAMEL			"menu/art/frame2_l"
+;14:#define ART_FRAMEL			"menu/art/popepurplespace"
 ;15:#define ART_FRAMER			"menu/art/frame1_r"
 ;16:#define ART_BACK0			"menu/art/back_0"
 ;17:#define ART_BACK1			"menu/art/back_1"
@@ -311,19 +311,19 @@ ADDRGP4 displayOptionsInfo+360+12
 CNSTI4 0
 ASGNI4
 line 119
-;119:	displayOptionsInfo.framel.generic.y			= 78;
+;119:	displayOptionsInfo.framel.generic.y			= 0;
 ADDRGP4 displayOptionsInfo+360+16
-CNSTI4 78
+CNSTI4 0
 ASGNI4
 line 120
-;120:	displayOptionsInfo.framel.width				= 256;
+;120:	displayOptionsInfo.framel.width				= 800;
 ADDRGP4 displayOptionsInfo+360+76
-CNSTI4 256
+CNSTI4 800
 ASGNI4
 line 121
-;121:	displayOptionsInfo.framel.height			= 329;
+;121:	displayOptionsInfo.framel.height			= 600;
 ADDRGP4 displayOptionsInfo+360+80
-CNSTI4 329
+CNSTI4 600
 ASGNI4
 line 123
 ;122:
@@ -744,16 +744,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 209
-;209:	Menu_AddItem( &displayOptionsInfo.menu, ( void * ) &displayOptionsInfo.framer );
-ADDRGP4 displayOptionsInfo
-ARGP4
-ADDRGP4 displayOptionsInfo+448
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
 line 210
+;209:	//Menu_AddItem( &displayOptionsInfo.menu, ( void * ) &displayOptionsInfo.framer );
 ;210:	Menu_AddItem( &displayOptionsInfo.menu, ( void * ) &displayOptionsInfo.graphics );
 ADDRGP4 displayOptionsInfo
 ARGP4
@@ -890,7 +882,7 @@ CALLI4
 pop
 line 233
 ;233:}
-LABELV $285
+LABELV $284
 endproc UI_DisplayOptionsMenu_Cache 0 4
 export UI_DisplayOptionsMenu
 proc UI_DisplayOptionsMenu 0 8
@@ -926,7 +918,7 @@ CALLV
 pop
 line 245
 ;245:}
-LABELV $286
+LABELV $285
 endproc UI_DisplayOptionsMenu 0 8
 bss
 align 4
@@ -1553,14 +1545,21 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 102
-byte 1 114
-byte 1 97
-byte 1 109
+byte 1 112
+byte 1 111
+byte 1 112
 byte 1 101
-byte 1 50
-byte 1 95
+byte 1 112
+byte 1 117
+byte 1 114
+byte 1 112
 byte 1 108
+byte 1 101
+byte 1 115
+byte 1 112
+byte 1 97
+byte 1 99
+byte 1 101
 byte 1 0
 align 1
 LABELV $103

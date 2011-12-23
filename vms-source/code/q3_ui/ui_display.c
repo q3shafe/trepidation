@@ -11,7 +11,7 @@ DISPLAY OPTIONS MENU
 #include "ui_local.h"
 
 
-#define ART_FRAMEL			"menu/art/frame2_l"
+#define ART_FRAMEL			"menu/art/popepurplespace"
 #define ART_FRAMER			"menu/art/frame1_r"
 #define ART_BACK0			"menu/art/back_0"
 #define ART_BACK1			"menu/art/back_1"
@@ -116,9 +116,9 @@ static void UI_DisplayOptionsMenu_Init( void ) {
 	displayOptionsInfo.framel.generic.name		= ART_FRAMEL;
 	displayOptionsInfo.framel.generic.flags		= QMF_INACTIVE;
 	displayOptionsInfo.framel.generic.x			= 0;  
-	displayOptionsInfo.framel.generic.y			= 78;
-	displayOptionsInfo.framel.width				= 256;
-	displayOptionsInfo.framel.height			= 329;
+	displayOptionsInfo.framel.generic.y			= 0;
+	displayOptionsInfo.framel.width				= 800;
+	displayOptionsInfo.framel.height			= 600;
 
 	displayOptionsInfo.framer.generic.type		= MTYPE_BITMAP;
 	displayOptionsInfo.framer.generic.name		= ART_FRAMER;
@@ -206,7 +206,7 @@ static void UI_DisplayOptionsMenu_Init( void ) {
 
 	Menu_AddItem( &displayOptionsInfo.menu, ( void * ) &displayOptionsInfo.banner );
 	Menu_AddItem( &displayOptionsInfo.menu, ( void * ) &displayOptionsInfo.framel );
-	Menu_AddItem( &displayOptionsInfo.menu, ( void * ) &displayOptionsInfo.framer );
+	//Menu_AddItem( &displayOptionsInfo.menu, ( void * ) &displayOptionsInfo.framer );
 	Menu_AddItem( &displayOptionsInfo.menu, ( void * ) &displayOptionsInfo.graphics );
 	Menu_AddItem( &displayOptionsInfo.menu, ( void * ) &displayOptionsInfo.display );
 	Menu_AddItem( &displayOptionsInfo.menu, ( void * ) &displayOptionsInfo.sound );

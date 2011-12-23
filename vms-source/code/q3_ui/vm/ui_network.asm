@@ -10,7 +10,7 @@ byte 4 0
 code
 proc UI_NetworkOptionsMenu_Event 8 8
 file "../ui_network.c"
-line 63
+line 65
 ;1:// Copyright (C) 1999-2000 Id Software, Inc.
 ;2://
 ;3:/*
@@ -24,71 +24,73 @@ line 63
 ;11:#include "ui_local.h"
 ;12:
 ;13:
-;14:#define ART_FRAMEL			"menu/art/frame2_l"
-;15:#define ART_FRAMER			"menu/art/frame1_r"
-;16:#define ART_BACK0			"menu/art/back_0"
-;17:#define ART_BACK1			"menu/art/back_1"
-;18:
-;19:#define ID_GRAPHICS			10
-;20:#define ID_DISPLAY			11
-;21:#define ID_SOUND			12
-;22:#define ID_NETWORK			13
-;23:#define ID_RATE				14
-;24:#define ID_BACK				15
-;25:#define ID_VOIP				165
-;26:
-;27:
-;28:static const char *rate_items[] = {
-;29:	"<= 28.8K",
-;30:	"33.6K",
-;31:	"56K",
-;32:	"ISDN",
-;33:	"LAN/Cable/xDSL",
-;34:	0
-;35:};
-;36:
-;37:typedef struct {
-;38:	menuframework_s	menu;
-;39:
-;40:	menutext_s		banner;
-;41:	menubitmap_s	framel;
-;42:	menubitmap_s	framer;
-;43:
-;44:	menutext_s		graphics;
-;45:	menutext_s		display;
-;46:	menutext_s		sound;
-;47:	menutext_s		network;
-;48:	menutext_s		voip;
-;49:
-;50:	menulist_s		rate;
+;14://#define ART_FRAMEL			"menu/art/frame2_l"
+;15:#define ART_FRAMEL			"menu/art/popepurplespace"
+;16:#define ART_FRAMER			"menu/art/frame1_r"
+;17:
+;18:#define ART_BACK0			"menu/art/back_0"
+;19:#define ART_BACK1			"menu/art/back_1"
+;20:
+;21:#define ID_GRAPHICS			10
+;22:#define ID_DISPLAY			11
+;23:#define ID_SOUND			12
+;24:#define ID_NETWORK			13
+;25:#define ID_RATE				14
+;26:#define ID_BACK				15
+;27:#define ID_VOIP				165
+;28:
+;29:
+;30:static const char *rate_items[] = {
+;31:	"<= 28.8K",
+;32:	"33.6K",
+;33:	"56K",
+;34:	"ISDN",
+;35:	"LAN/Cable/xDSL",
+;36:	0
+;37:};
+;38:
+;39:typedef struct {
+;40:	menuframework_s	menu;
+;41:
+;42:	menutext_s		banner;
+;43:	menubitmap_s	framel;
+;44:	menubitmap_s	framer;
+;45:
+;46:	menutext_s		graphics;
+;47:	menutext_s		display;
+;48:	menutext_s		sound;
+;49:	menutext_s		network;
+;50:	menutext_s		voip;
 ;51:
-;52:	menubitmap_s	back;
-;53:} networkOptionsInfo_t;
-;54:
-;55:static networkOptionsInfo_t	networkOptionsInfo;
+;52:	menulist_s		rate;
+;53:
+;54:	menubitmap_s	back;
+;55:} networkOptionsInfo_t;
 ;56:
-;57:
-;58:/*
-;59:=================
-;60:UI_NetworkOptionsMenu_Event
+;57:static networkOptionsInfo_t	networkOptionsInfo;
+;58:
+;59:
+;60:/*
 ;61:=================
-;62:*/
-;63:static void UI_NetworkOptionsMenu_Event( void* ptr, int event ) {
-line 64
-;64:	if( event != QM_ACTIVATED ) {
+;62:UI_NetworkOptionsMenu_Event
+;63:=================
+;64:*/
+;65:static void UI_NetworkOptionsMenu_Event( void* ptr, int event ) {
+line 66
+;66:	if( event != QM_ACTIVATED ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
 EQI4 $76
-line 65
-;65:		return;
+line 67
+;67:		return;
 ADDRGP4 $75
 JUMPV
 LABELV $76
-line 68
-;66:	}
-;67:
-;68:	switch( ((menucommon_s*)ptr)->id ) {
+line 70
+;68:	}
+;69:
+;70:	switch( ((menucommon_s*)ptr)->id ) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -130,87 +132,87 @@ EQI4 $85
 ADDRGP4 $78
 JUMPV
 LABELV $81
-line 70
-;69:	case ID_GRAPHICS:
-;70:		UI_PopMenu();
+line 72
+;71:	case ID_GRAPHICS:
+;72:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
 CALLV
 pop
-line 71
-;71:		UI_GraphicsOptionsMenu();
+line 73
+;73:		UI_GraphicsOptionsMenu();
 ADDRGP4 UI_GraphicsOptionsMenu
 CALLV
 pop
-line 72
-;72:		break;
+line 74
+;74:		break;
 ADDRGP4 $79
 JUMPV
 LABELV $82
-line 75
-;73:
-;74:	case ID_DISPLAY:
-;75:		UI_PopMenu();
+line 77
+;75:
+;76:	case ID_DISPLAY:
+;77:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
 CALLV
 pop
-line 76
-;76:		UI_DisplayOptionsMenu();
+line 78
+;78:		UI_DisplayOptionsMenu();
 ADDRGP4 UI_DisplayOptionsMenu
 CALLV
 pop
-line 77
-;77:		break;
+line 79
+;79:		break;
 ADDRGP4 $79
 JUMPV
 LABELV $83
-line 80
-;78:
-;79:	case ID_SOUND:
-;80:		UI_PopMenu();
+line 82
+;80:
+;81:	case ID_SOUND:
+;82:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
 CALLV
 pop
-line 81
-;81:		UI_SoundOptionsMenu();
+line 83
+;83:		UI_SoundOptionsMenu();
 ADDRGP4 UI_SoundOptionsMenu
 CALLV
 pop
-line 82
-;82:		break;
+line 84
+;84:		break;
 ADDRGP4 $79
 JUMPV
-line 85
-;83:
-;84:	case ID_NETWORK:
-;85:		break;
+line 87
+;85:
+;86:	case ID_NETWORK:
+;87:		break;
 LABELV $85
-line 88
-;86:
-;87:	case ID_VOIP:
-;88:		UI_PopMenu();
+line 90
+;88:
+;89:	case ID_VOIP:
+;90:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
 CALLV
 pop
-line 89
-;89:		UI_VoipOptionsMenu();
+line 91
+;91:		UI_VoipOptionsMenu();
 ADDRGP4 UI_VoipOptionsMenu
 CALLV
 pop
-line 90
-;90:		break;
+line 92
+;92:		break;
 ADDRGP4 $79
 JUMPV
 LABELV $86
-line 93
-;91:
-;92:	case ID_RATE:   // Shafe - Trep - Rearranged This To Default To The Popular
-;93:		if( networkOptionsInfo.rate.curvalue == 0 ) {
+line 95
+;93:
+;94:	case ID_RATE:   // Shafe - Trep - Rearranged This To Default To The Popular
+;95:		if( networkOptionsInfo.rate.curvalue == 0 ) {
 ADDRGP4 networkOptionsInfo+896+64
 INDIRI4
 CNSTI4 0
 NEI4 $87
-line 94
-;94:			trap_Cvar_SetValue( "rate", 2500 );
+line 96
+;96:			trap_Cvar_SetValue( "rate", 2500 );
 ADDRGP4 $91
 ARGP4
 CNSTF4 1159479296
@@ -218,19 +220,19 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 95
-;95:		}
+line 97
+;97:		}
 ADDRGP4 $79
 JUMPV
 LABELV $87
-line 96
-;96:		else if( networkOptionsInfo.rate.curvalue == 1 ) {
+line 98
+;98:		else if( networkOptionsInfo.rate.curvalue == 1 ) {
 ADDRGP4 networkOptionsInfo+896+64
 INDIRI4
 CNSTI4 1
 NEI4 $92
-line 97
-;97:			trap_Cvar_SetValue( "rate", 3000 );
+line 99
+;99:			trap_Cvar_SetValue( "rate", 3000 );
 ADDRGP4 $91
 ARGP4
 CNSTF4 1161527296
@@ -238,19 +240,19 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 98
-;98:		}
+line 100
+;100:		}
 ADDRGP4 $79
 JUMPV
 LABELV $92
-line 99
-;99:		else if( networkOptionsInfo.rate.curvalue == 2 ) {
+line 101
+;101:		else if( networkOptionsInfo.rate.curvalue == 2 ) {
 ADDRGP4 networkOptionsInfo+896+64
 INDIRI4
 CNSTI4 2
 NEI4 $96
-line 100
-;100:			trap_Cvar_SetValue( "rate", 4000 );
+line 102
+;102:			trap_Cvar_SetValue( "rate", 4000 );
 ADDRGP4 $91
 ARGP4
 CNSTF4 1165623296
@@ -258,19 +260,19 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 101
-;101:		}
+line 103
+;103:		}
 ADDRGP4 $79
 JUMPV
 LABELV $96
-line 102
-;102:		else if( networkOptionsInfo.rate.curvalue == 3 ) {
+line 104
+;104:		else if( networkOptionsInfo.rate.curvalue == 3 ) {
 ADDRGP4 networkOptionsInfo+896+64
 INDIRI4
 CNSTI4 3
 NEI4 $100
-line 103
-;103:			trap_Cvar_SetValue( "rate", 5000 );
+line 105
+;105:			trap_Cvar_SetValue( "rate", 5000 );
 ADDRGP4 $91
 ARGP4
 CNSTF4 1167867904
@@ -278,19 +280,19 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 104
-;104:		}
+line 106
+;106:		}
 ADDRGP4 $79
 JUMPV
 LABELV $100
-line 105
-;105:		else if( networkOptionsInfo.rate.curvalue == 4 ) {
+line 107
+;107:		else if( networkOptionsInfo.rate.curvalue == 4 ) {
 ADDRGP4 networkOptionsInfo+896+64
 INDIRI4
 CNSTI4 4
 NEI4 $79
-line 106
-;106:			trap_Cvar_SetValue( "rate", 25000 );
+line 108
+;108:			trap_Cvar_SetValue( "rate", 25000 );
 ADDRGP4 $91
 ARGP4
 CNSTF4 1187205120
@@ -298,44 +300,44 @@ ARGF4
 ADDRGP4 trap_Cvar_SetValue
 CALLV
 pop
-line 107
-;107:		}
-line 108
-;108:		break;
+line 109
+;109:		}
+line 110
+;110:		break;
 ADDRGP4 $79
 JUMPV
 LABELV $108
-line 111
-;109:
-;110:	case ID_BACK:
-;111:		UI_PopMenu();
+line 113
+;111:
+;112:	case ID_BACK:
+;113:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
 CALLV
 pop
-line 112
-;112:		break;
+line 114
+;114:		break;
 LABELV $78
 LABELV $79
-line 114
-;113:	}
-;114:}
+line 116
+;115:	}
+;116:}
 LABELV $75
 endproc UI_NetworkOptionsMenu_Event 8 8
 proc UI_NetworkOptionsMenu_Init 12 12
-line 122
-;115:
-;116:
-;117:/*
-;118:===============
-;119:UI_NetworkOptionsMenu_Init
+line 124
+;117:
+;118:
+;119:/*
 ;120:===============
-;121:*/
-;122:static void UI_NetworkOptionsMenu_Init( void ) {
-line 126
-;123:	int		y;
-;124:	int		rate;
-;125:
-;126:	memset( &networkOptionsInfo, 0, sizeof(networkOptionsInfo) );
+;121:UI_NetworkOptionsMenu_Init
+;122:===============
+;123:*/
+;124:static void UI_NetworkOptionsMenu_Init( void ) {
+line 128
+;125:	int		y;
+;126:	int		rate;
+;127:
+;128:	memset( &networkOptionsInfo, 0, sizeof(networkOptionsInfo) );
 ADDRGP4 networkOptionsInfo
 ARGP4
 CNSTI4 0
@@ -345,488 +347,480 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 128
-;127:
-;128:	UI_NetworkOptionsMenu_Cache();
+line 130
+;129:
+;130:	UI_NetworkOptionsMenu_Cache();
 ADDRGP4 UI_NetworkOptionsMenu_Cache
 CALLV
 pop
-line 129
-;129:	networkOptionsInfo.menu.wrapAround = qtrue;
+line 131
+;131:	networkOptionsInfo.menu.wrapAround = qtrue;
 ADDRGP4 networkOptionsInfo+276
 CNSTI4 1
 ASGNI4
-line 130
-;130:	networkOptionsInfo.menu.fullscreen = qtrue;
+line 132
+;132:	networkOptionsInfo.menu.fullscreen = qtrue;
 ADDRGP4 networkOptionsInfo+280
 CNSTI4 1
 ASGNI4
-line 132
-;131:
-;132:	networkOptionsInfo.banner.generic.type		= MTYPE_BTEXT;
+line 134
+;133:
+;134:	networkOptionsInfo.banner.generic.type		= MTYPE_BTEXT;
 ADDRGP4 networkOptionsInfo+288
 CNSTI4 10
 ASGNI4
-line 133
-;133:	networkOptionsInfo.banner.generic.flags		= QMF_CENTER_JUSTIFY;
+line 135
+;135:	networkOptionsInfo.banner.generic.flags		= QMF_CENTER_JUSTIFY;
 ADDRGP4 networkOptionsInfo+288+44
 CNSTU4 8
 ASGNU4
-line 134
-;134:	networkOptionsInfo.banner.generic.x			= 320;
+line 136
+;136:	networkOptionsInfo.banner.generic.x			= 320;
 ADDRGP4 networkOptionsInfo+288+12
 CNSTI4 320
 ASGNI4
-line 135
-;135:	networkOptionsInfo.banner.generic.y			= 16;
+line 137
+;137:	networkOptionsInfo.banner.generic.y			= 16;
 ADDRGP4 networkOptionsInfo+288+16
 CNSTI4 16
 ASGNI4
-line 136
-;136:	networkOptionsInfo.banner.string			= "SYSTEM SETUP";
+line 138
+;138:	networkOptionsInfo.banner.string			= "SYSTEM SETUP";
 ADDRGP4 networkOptionsInfo+288+60
 ADDRGP4 $124
 ASGNP4
-line 137
-;137:	networkOptionsInfo.banner.color				= color_white;
+line 139
+;139:	networkOptionsInfo.banner.color				= color_white;
 ADDRGP4 networkOptionsInfo+288+68
 ADDRGP4 color_white
 ASGNP4
-line 138
-;138:	networkOptionsInfo.banner.style				= UI_CENTER;
+line 140
+;140:	networkOptionsInfo.banner.style				= UI_CENTER;
 ADDRGP4 networkOptionsInfo+288+64
 CNSTI4 1
 ASGNI4
-line 140
-;139:
-;140:	networkOptionsInfo.framel.generic.type		= MTYPE_BITMAP;
+line 142
+;141:
+;142:	networkOptionsInfo.framel.generic.type		= MTYPE_BITMAP;
 ADDRGP4 networkOptionsInfo+360
 CNSTI4 6
 ASGNI4
-line 141
-;141:	networkOptionsInfo.framel.generic.name		= ART_FRAMEL;
+line 143
+;143:	networkOptionsInfo.framel.generic.name		= ART_FRAMEL;
 ADDRGP4 networkOptionsInfo+360+4
 ADDRGP4 $132
 ASGNP4
-line 142
-;142:	networkOptionsInfo.framel.generic.flags		= QMF_INACTIVE;
+line 144
+;144:	networkOptionsInfo.framel.generic.flags		= QMF_INACTIVE;
 ADDRGP4 networkOptionsInfo+360+44
 CNSTU4 16384
 ASGNU4
-line 143
-;143:	networkOptionsInfo.framel.generic.x			= 0;  
+line 145
+;145:	networkOptionsInfo.framel.generic.x			= 0;  
 ADDRGP4 networkOptionsInfo+360+12
 CNSTI4 0
 ASGNI4
-line 144
-;144:	networkOptionsInfo.framel.generic.y			= 78;
-ADDRGP4 networkOptionsInfo+360+16
-CNSTI4 78
-ASGNI4
-line 145
-;145:	networkOptionsInfo.framel.width				= 256;
-ADDRGP4 networkOptionsInfo+360+76
-CNSTI4 256
-ASGNI4
 line 146
-;146:	networkOptionsInfo.framel.height			= 329;
-ADDRGP4 networkOptionsInfo+360+80
-CNSTI4 329
+;146:	networkOptionsInfo.framel.generic.y			= 8;
+ADDRGP4 networkOptionsInfo+360+16
+CNSTI4 8
+ASGNI4
+line 147
+;147:	networkOptionsInfo.framel.width				= 800;
+ADDRGP4 networkOptionsInfo+360+76
+CNSTI4 800
 ASGNI4
 line 148
-;147:
-;148:	networkOptionsInfo.framer.generic.type		= MTYPE_BITMAP;
+;148:	networkOptionsInfo.framel.height			= 600;
+ADDRGP4 networkOptionsInfo+360+80
+CNSTI4 600
+ASGNI4
+line 150
+;149:
+;150:	networkOptionsInfo.framer.generic.type		= MTYPE_BITMAP;
 ADDRGP4 networkOptionsInfo+448
 CNSTI4 6
 ASGNI4
-line 149
-;149:	networkOptionsInfo.framer.generic.name		= ART_FRAMER;
+line 151
+;151:	networkOptionsInfo.framer.generic.name		= ART_FRAMER;
 ADDRGP4 networkOptionsInfo+448+4
 ADDRGP4 $146
 ASGNP4
-line 150
-;150:	networkOptionsInfo.framer.generic.flags		= QMF_INACTIVE;
+line 152
+;152:	networkOptionsInfo.framer.generic.flags		= QMF_INACTIVE;
 ADDRGP4 networkOptionsInfo+448+44
 CNSTU4 16384
 ASGNU4
-line 151
-;151:	networkOptionsInfo.framer.generic.x			= 376;
+line 153
+;153:	networkOptionsInfo.framer.generic.x			= 376;
 ADDRGP4 networkOptionsInfo+448+12
 CNSTI4 376
 ASGNI4
-line 152
-;152:	networkOptionsInfo.framer.generic.y			= 76;
+line 154
+;154:	networkOptionsInfo.framer.generic.y			= 76;
 ADDRGP4 networkOptionsInfo+448+16
 CNSTI4 76
 ASGNI4
-line 153
-;153:	networkOptionsInfo.framer.width				= 256;
+line 155
+;155:	networkOptionsInfo.framer.width				= 256;
 ADDRGP4 networkOptionsInfo+448+76
 CNSTI4 256
 ASGNI4
-line 154
-;154:	networkOptionsInfo.framer.height			= 334;
+line 156
+;156:	networkOptionsInfo.framer.height			= 334;
 ADDRGP4 networkOptionsInfo+448+80
 CNSTI4 334
 ASGNI4
-line 156
-;155:
-;156:	networkOptionsInfo.graphics.generic.type		= MTYPE_PTEXT;
+line 158
+;157:
+;158:	networkOptionsInfo.graphics.generic.type		= MTYPE_PTEXT;
 ADDRGP4 networkOptionsInfo+536
 CNSTI4 9
 ASGNI4
-line 157
-;157:	networkOptionsInfo.graphics.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 159
+;159:	networkOptionsInfo.graphics.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 networkOptionsInfo+536+44
 CNSTU4 272
 ASGNU4
-line 158
-;158:	networkOptionsInfo.graphics.generic.id			= ID_GRAPHICS;
+line 160
+;160:	networkOptionsInfo.graphics.generic.id			= ID_GRAPHICS;
 ADDRGP4 networkOptionsInfo+536+8
 CNSTI4 10
 ASGNI4
-line 159
-;159:	networkOptionsInfo.graphics.generic.callback	= UI_NetworkOptionsMenu_Event;
+line 161
+;161:	networkOptionsInfo.graphics.generic.callback	= UI_NetworkOptionsMenu_Event;
 ADDRGP4 networkOptionsInfo+536+48
 ADDRGP4 UI_NetworkOptionsMenu_Event
 ASGNP4
-line 160
-;160:	networkOptionsInfo.graphics.generic.x			= 216;
+line 162
+;162:	networkOptionsInfo.graphics.generic.x			= 216;
 ADDRGP4 networkOptionsInfo+536+12
 CNSTI4 216
 ASGNI4
-line 161
-;161:	networkOptionsInfo.graphics.generic.y			= 240 - 2 * PROP_HEIGHT;
+line 163
+;163:	networkOptionsInfo.graphics.generic.y			= 240 - 2 * PROP_HEIGHT;
 ADDRGP4 networkOptionsInfo+536+16
 CNSTI4 186
 ASGNI4
-line 162
-;162:	networkOptionsInfo.graphics.string				= "GRAPHICS";
+line 164
+;164:	networkOptionsInfo.graphics.string				= "GRAPHICS";
 ADDRGP4 networkOptionsInfo+536+60
 ADDRGP4 $170
 ASGNP4
-line 163
-;163:	networkOptionsInfo.graphics.style				= UI_RIGHT;
+line 165
+;165:	networkOptionsInfo.graphics.style				= UI_RIGHT;
 ADDRGP4 networkOptionsInfo+536+64
 CNSTI4 2
 ASGNI4
-line 164
-;164:	networkOptionsInfo.graphics.color				= color_red;
+line 166
+;166:	networkOptionsInfo.graphics.color				= color_red;
 ADDRGP4 networkOptionsInfo+536+68
 ADDRGP4 color_red
 ASGNP4
-line 166
-;165:
-;166:	networkOptionsInfo.display.generic.type			= MTYPE_PTEXT;
+line 168
+;167:
+;168:	networkOptionsInfo.display.generic.type			= MTYPE_PTEXT;
 ADDRGP4 networkOptionsInfo+608
 CNSTI4 9
 ASGNI4
-line 167
-;167:	networkOptionsInfo.display.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 169
+;169:	networkOptionsInfo.display.generic.flags		= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 networkOptionsInfo+608+44
 CNSTU4 272
 ASGNU4
-line 168
-;168:	networkOptionsInfo.display.generic.id			= ID_DISPLAY;
+line 170
+;170:	networkOptionsInfo.display.generic.id			= ID_DISPLAY;
 ADDRGP4 networkOptionsInfo+608+8
 CNSTI4 11
 ASGNI4
-line 169
-;169:	networkOptionsInfo.display.generic.callback		= UI_NetworkOptionsMenu_Event;
+line 171
+;171:	networkOptionsInfo.display.generic.callback		= UI_NetworkOptionsMenu_Event;
 ADDRGP4 networkOptionsInfo+608+48
 ADDRGP4 UI_NetworkOptionsMenu_Event
 ASGNP4
-line 170
-;170:	networkOptionsInfo.display.generic.x			= 216;
+line 172
+;172:	networkOptionsInfo.display.generic.x			= 216;
 ADDRGP4 networkOptionsInfo+608+12
 CNSTI4 216
 ASGNI4
-line 171
-;171:	networkOptionsInfo.display.generic.y			= 240 - PROP_HEIGHT;
+line 173
+;173:	networkOptionsInfo.display.generic.y			= 240 - PROP_HEIGHT;
 ADDRGP4 networkOptionsInfo+608+16
 CNSTI4 213
 ASGNI4
-line 172
-;172:	networkOptionsInfo.display.string				= "DISPLAY";
+line 174
+;174:	networkOptionsInfo.display.string				= "DISPLAY";
 ADDRGP4 networkOptionsInfo+608+60
 ADDRGP4 $188
 ASGNP4
-line 173
-;173:	networkOptionsInfo.display.style				= UI_RIGHT;
+line 175
+;175:	networkOptionsInfo.display.style				= UI_RIGHT;
 ADDRGP4 networkOptionsInfo+608+64
 CNSTI4 2
 ASGNI4
-line 174
-;174:	networkOptionsInfo.display.color				= color_red;
+line 176
+;176:	networkOptionsInfo.display.color				= color_red;
 ADDRGP4 networkOptionsInfo+608+68
 ADDRGP4 color_red
 ASGNP4
-line 176
-;175:
-;176:	networkOptionsInfo.sound.generic.type			= MTYPE_PTEXT;
+line 178
+;177:
+;178:	networkOptionsInfo.sound.generic.type			= MTYPE_PTEXT;
 ADDRGP4 networkOptionsInfo+680
 CNSTI4 9
 ASGNI4
-line 177
-;177:	networkOptionsInfo.sound.generic.flags			= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 179
+;179:	networkOptionsInfo.sound.generic.flags			= QMF_RIGHT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 networkOptionsInfo+680+44
 CNSTU4 272
 ASGNU4
-line 178
-;178:	networkOptionsInfo.sound.generic.id				= ID_SOUND;
+line 180
+;180:	networkOptionsInfo.sound.generic.id				= ID_SOUND;
 ADDRGP4 networkOptionsInfo+680+8
 CNSTI4 12
 ASGNI4
-line 179
-;179:	networkOptionsInfo.sound.generic.callback		= UI_NetworkOptionsMenu_Event;
+line 181
+;181:	networkOptionsInfo.sound.generic.callback		= UI_NetworkOptionsMenu_Event;
 ADDRGP4 networkOptionsInfo+680+48
 ADDRGP4 UI_NetworkOptionsMenu_Event
 ASGNP4
-line 180
-;180:	networkOptionsInfo.sound.generic.x				= 216;
+line 182
+;182:	networkOptionsInfo.sound.generic.x				= 216;
 ADDRGP4 networkOptionsInfo+680+12
 CNSTI4 216
 ASGNI4
-line 181
-;181:	networkOptionsInfo.sound.generic.y				= 240;
+line 183
+;183:	networkOptionsInfo.sound.generic.y				= 240;
 ADDRGP4 networkOptionsInfo+680+16
 CNSTI4 240
 ASGNI4
-line 182
-;182:	networkOptionsInfo.sound.string					= "SOUND";
+line 184
+;184:	networkOptionsInfo.sound.string					= "SOUND";
 ADDRGP4 networkOptionsInfo+680+60
 ADDRGP4 $206
 ASGNP4
-line 183
-;183:	networkOptionsInfo.sound.style					= UI_RIGHT;
+line 185
+;185:	networkOptionsInfo.sound.style					= UI_RIGHT;
 ADDRGP4 networkOptionsInfo+680+64
 CNSTI4 2
 ASGNI4
-line 184
-;184:	networkOptionsInfo.sound.color					= color_red;
+line 186
+;186:	networkOptionsInfo.sound.color					= color_red;
 ADDRGP4 networkOptionsInfo+680+68
 ADDRGP4 color_red
 ASGNP4
-line 186
-;185:
-;186:	networkOptionsInfo.network.generic.type			= MTYPE_PTEXT;
+line 188
+;187:
+;188:	networkOptionsInfo.network.generic.type			= MTYPE_PTEXT;
 ADDRGP4 networkOptionsInfo+752
 CNSTI4 9
 ASGNI4
-line 187
-;187:	networkOptionsInfo.network.generic.flags		= QMF_RIGHT_JUSTIFY;
+line 189
+;189:	networkOptionsInfo.network.generic.flags		= QMF_RIGHT_JUSTIFY;
 ADDRGP4 networkOptionsInfo+752+44
 CNSTU4 16
 ASGNU4
-line 188
-;188:	networkOptionsInfo.network.generic.id			= ID_NETWORK;
+line 190
+;190:	networkOptionsInfo.network.generic.id			= ID_NETWORK;
 ADDRGP4 networkOptionsInfo+752+8
 CNSTI4 13
 ASGNI4
-line 189
-;189:	networkOptionsInfo.network.generic.callback		= UI_NetworkOptionsMenu_Event;
+line 191
+;191:	networkOptionsInfo.network.generic.callback		= UI_NetworkOptionsMenu_Event;
 ADDRGP4 networkOptionsInfo+752+48
 ADDRGP4 UI_NetworkOptionsMenu_Event
 ASGNP4
-line 190
-;190:	networkOptionsInfo.network.generic.x			= 216;
+line 192
+;192:	networkOptionsInfo.network.generic.x			= 216;
 ADDRGP4 networkOptionsInfo+752+12
 CNSTI4 216
 ASGNI4
-line 191
-;191:	networkOptionsInfo.network.generic.y			= 240 + PROP_HEIGHT;
+line 193
+;193:	networkOptionsInfo.network.generic.y			= 240 + PROP_HEIGHT;
 ADDRGP4 networkOptionsInfo+752+16
 CNSTI4 267
 ASGNI4
-line 192
-;192:	networkOptionsInfo.network.string				= "NETWORK";
+line 194
+;194:	networkOptionsInfo.network.string				= "NETWORK";
 ADDRGP4 networkOptionsInfo+752+60
 ADDRGP4 $224
 ASGNP4
-line 193
-;193:	networkOptionsInfo.network.style				= UI_RIGHT;
+line 195
+;195:	networkOptionsInfo.network.style				= UI_RIGHT;
 ADDRGP4 networkOptionsInfo+752+64
 CNSTI4 2
 ASGNI4
-line 194
-;194:	networkOptionsInfo.network.color				= color_red;
+line 196
+;196:	networkOptionsInfo.network.color				= color_red;
 ADDRGP4 networkOptionsInfo+752+68
 ADDRGP4 color_red
 ASGNP4
-line 196
-;195:
-;196:	networkOptionsInfo.voip.generic.type			= MTYPE_PTEXT;
+line 198
+;197:
+;198:	networkOptionsInfo.voip.generic.type			= MTYPE_PTEXT;
 ADDRGP4 networkOptionsInfo+824
 CNSTI4 9
 ASGNI4
-line 197
-;197:	networkOptionsInfo.voip.generic.flags		= QMF_RIGHT_JUSTIFY;
+line 199
+;199:	networkOptionsInfo.voip.generic.flags		= QMF_RIGHT_JUSTIFY;
 ADDRGP4 networkOptionsInfo+824+44
 CNSTU4 16
 ASGNU4
-line 198
-;198:	networkOptionsInfo.voip.generic.id			= ID_VOIP;
+line 200
+;200:	networkOptionsInfo.voip.generic.id			= ID_VOIP;
 ADDRGP4 networkOptionsInfo+824+8
 CNSTI4 165
 ASGNI4
-line 199
-;199:	networkOptionsInfo.voip.generic.callback		= UI_NetworkOptionsMenu_Event;
+line 201
+;201:	networkOptionsInfo.voip.generic.callback		= UI_NetworkOptionsMenu_Event;
 ADDRGP4 networkOptionsInfo+824+48
 ADDRGP4 UI_NetworkOptionsMenu_Event
 ASGNP4
-line 200
-;200:	networkOptionsInfo.voip.generic.x			= 216;
+line 202
+;202:	networkOptionsInfo.voip.generic.x			= 216;
 ADDRGP4 networkOptionsInfo+824+12
 CNSTI4 216
 ASGNI4
-line 201
-;201:	networkOptionsInfo.voip.generic.y			= 240 + PROP_HEIGHT + PROP_HEIGHT;
+line 203
+;203:	networkOptionsInfo.voip.generic.y			= 240 + PROP_HEIGHT + PROP_HEIGHT;
 ADDRGP4 networkOptionsInfo+824+16
 CNSTI4 294
 ASGNI4
-line 202
-;202:	networkOptionsInfo.voip.string				= "VOICE";
+line 204
+;204:	networkOptionsInfo.voip.string				= "VOICE";
 ADDRGP4 networkOptionsInfo+824+60
 ADDRGP4 $242
 ASGNP4
-line 203
-;203:	networkOptionsInfo.voip.style				= UI_RIGHT;
+line 205
+;205:	networkOptionsInfo.voip.style				= UI_RIGHT;
 ADDRGP4 networkOptionsInfo+824+64
 CNSTI4 2
 ASGNI4
-line 204
-;204:	networkOptionsInfo.voip.color				= color_red;
+line 206
+;206:	networkOptionsInfo.voip.color				= color_red;
 ADDRGP4 networkOptionsInfo+824+68
 ADDRGP4 color_red
 ASGNP4
-line 206
-;205:
-;206:	y = 240 - 1 * (BIGCHAR_HEIGHT+2);
+line 208
+;207:
+;208:	y = 240 - 1 * (BIGCHAR_HEIGHT+2);
 ADDRLP4 4
 CNSTI4 222
 ASGNI4
-line 207
-;207:	networkOptionsInfo.rate.generic.type		= MTYPE_SPINCONTROL;
+line 209
+;209:	networkOptionsInfo.rate.generic.type		= MTYPE_SPINCONTROL;
 ADDRGP4 networkOptionsInfo+896
 CNSTI4 3
 ASGNI4
-line 208
-;208:	networkOptionsInfo.rate.generic.name		= "Data Rate:";
+line 210
+;210:	networkOptionsInfo.rate.generic.name		= "Data Rate:";
 ADDRGP4 networkOptionsInfo+896+4
 ADDRGP4 $250
 ASGNP4
-line 209
-;209:	networkOptionsInfo.rate.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+line 211
+;211:	networkOptionsInfo.rate.generic.flags		= QMF_PULSEIFFOCUS|QMF_SMALLFONT;
 ADDRGP4 networkOptionsInfo+896+44
 CNSTU4 258
 ASGNU4
-line 210
-;210:	networkOptionsInfo.rate.generic.callback	= UI_NetworkOptionsMenu_Event;
+line 212
+;212:	networkOptionsInfo.rate.generic.callback	= UI_NetworkOptionsMenu_Event;
 ADDRGP4 networkOptionsInfo+896+48
 ADDRGP4 UI_NetworkOptionsMenu_Event
 ASGNP4
-line 211
-;211:	networkOptionsInfo.rate.generic.id			= ID_RATE;
+line 213
+;213:	networkOptionsInfo.rate.generic.id			= ID_RATE;
 ADDRGP4 networkOptionsInfo+896+8
 CNSTI4 14
 ASGNI4
-line 212
-;212:	networkOptionsInfo.rate.generic.x			= 400;
+line 214
+;214:	networkOptionsInfo.rate.generic.x			= 400;
 ADDRGP4 networkOptionsInfo+896+12
 CNSTI4 400
 ASGNI4
-line 213
-;213:	networkOptionsInfo.rate.generic.y			= y;
+line 215
+;215:	networkOptionsInfo.rate.generic.y			= y;
 ADDRGP4 networkOptionsInfo+896+16
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 214
-;214:	networkOptionsInfo.rate.itemnames			= rate_items;
+line 216
+;216:	networkOptionsInfo.rate.itemnames			= rate_items;
 ADDRGP4 networkOptionsInfo+896+76
 ADDRGP4 rate_items
 ASGNP4
-line 216
-;215:
-;216:	networkOptionsInfo.back.generic.type		= MTYPE_BITMAP;
+line 218
+;217:
+;218:	networkOptionsInfo.back.generic.type		= MTYPE_BITMAP;
 ADDRGP4 networkOptionsInfo+992
 CNSTI4 6
 ASGNI4
-line 217
-;217:	networkOptionsInfo.back.generic.name		= ART_BACK0;
+line 219
+;219:	networkOptionsInfo.back.generic.name		= ART_BACK0;
 ADDRGP4 networkOptionsInfo+992+4
 ADDRGP4 $266
 ASGNP4
-line 218
-;218:	networkOptionsInfo.back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 220
+;220:	networkOptionsInfo.back.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 networkOptionsInfo+992+44
 CNSTU4 260
 ASGNU4
-line 219
-;219:	networkOptionsInfo.back.generic.callback	= UI_NetworkOptionsMenu_Event;
+line 221
+;221:	networkOptionsInfo.back.generic.callback	= UI_NetworkOptionsMenu_Event;
 ADDRGP4 networkOptionsInfo+992+48
 ADDRGP4 UI_NetworkOptionsMenu_Event
 ASGNP4
-line 220
-;220:	networkOptionsInfo.back.generic.id			= ID_BACK;
+line 222
+;222:	networkOptionsInfo.back.generic.id			= ID_BACK;
 ADDRGP4 networkOptionsInfo+992+8
 CNSTI4 15
 ASGNI4
-line 221
-;221:	networkOptionsInfo.back.generic.x			= 0;
+line 223
+;223:	networkOptionsInfo.back.generic.x			= 0;
 ADDRGP4 networkOptionsInfo+992+12
 CNSTI4 0
 ASGNI4
-line 222
-;222:	networkOptionsInfo.back.generic.y			= 480-64;
+line 224
+;224:	networkOptionsInfo.back.generic.y			= 480-64;
 ADDRGP4 networkOptionsInfo+992+16
 CNSTI4 416
 ASGNI4
-line 223
-;223:	networkOptionsInfo.back.width				= 128;
+line 225
+;225:	networkOptionsInfo.back.width				= 128;
 ADDRGP4 networkOptionsInfo+992+76
 CNSTI4 128
 ASGNI4
-line 224
-;224:	networkOptionsInfo.back.height				= 64;
+line 226
+;226:	networkOptionsInfo.back.height				= 64;
 ADDRGP4 networkOptionsInfo+992+80
 CNSTI4 64
 ASGNI4
-line 225
-;225:	networkOptionsInfo.back.focuspic			= ART_BACK1;
+line 227
+;227:	networkOptionsInfo.back.focuspic			= ART_BACK1;
 ADDRGP4 networkOptionsInfo+992+60
 ADDRGP4 $283
 ASGNP4
-line 227
-;226:
-;227:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.banner );
+line 229
+;228:
+;229:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.banner );
 ADDRGP4 networkOptionsInfo
 ARGP4
 ADDRGP4 networkOptionsInfo+288
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
-line 228
-;228:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.framel );
-ADDRGP4 networkOptionsInfo
-ARGP4
-ADDRGP4 networkOptionsInfo+360
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
-line 229
-;229:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.framer );
-ADDRGP4 networkOptionsInfo
-ARGP4
-ADDRGP4 networkOptionsInfo+448
 ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
 line 230
-;230:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.graphics );
+;230:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.framel );
+ADDRGP4 networkOptionsInfo
+ARGP4
+ADDRGP4 networkOptionsInfo+360
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 232
+;231:	//Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.framer );
+;232:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.graphics );
 ADDRGP4 networkOptionsInfo
 ARGP4
 ADDRGP4 networkOptionsInfo+536
@@ -834,8 +828,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 231
-;231:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.display );
+line 233
+;233:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.display );
 ADDRGP4 networkOptionsInfo
 ARGP4
 ADDRGP4 networkOptionsInfo+608
@@ -843,8 +837,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 232
-;232:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.sound );
+line 234
+;234:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.sound );
 ADDRGP4 networkOptionsInfo
 ARGP4
 ADDRGP4 networkOptionsInfo+680
@@ -852,8 +846,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 233
-;233:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.network );
+line 235
+;235:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.network );
 ADDRGP4 networkOptionsInfo
 ARGP4
 ADDRGP4 networkOptionsInfo+752
@@ -861,9 +855,9 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 235
-;234:	//Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.voip );
-;235:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.rate );
+line 237
+;236:	//Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.voip );
+;237:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.rate );
 ADDRGP4 networkOptionsInfo
 ARGP4
 ADDRGP4 networkOptionsInfo+896
@@ -871,8 +865,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 236
-;236:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.back );
+line 238
+;238:	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.back );
 ADDRGP4 networkOptionsInfo
 ARGP4
 ADDRGP4 networkOptionsInfo+992
@@ -880,9 +874,9 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 238
-;237:
-;238:	rate = trap_Cvar_VariableValue( "rate" );
+line 240
+;239:
+;240:	rate = trap_Cvar_VariableValue( "rate" );
 ADDRGP4 $91
 ARGP4
 ADDRLP4 8
@@ -894,155 +888,155 @@ ADDRLP4 8
 INDIRF4
 CVFI4 4
 ASGNI4
-line 239
-;239:	if( rate <= 2500 ) {
+line 241
+;241:	if( rate <= 2500 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2500
-GTI4 $293
-line 240
-;240:		networkOptionsInfo.rate.curvalue = 0;
+GTI4 $292
+line 242
+;242:		networkOptionsInfo.rate.curvalue = 0;
 ADDRGP4 networkOptionsInfo+896+64
 CNSTI4 0
 ASGNI4
-line 241
-;241:	}
-ADDRGP4 $294
+line 243
+;243:	}
+ADDRGP4 $293
 JUMPV
-LABELV $293
-line 242
-;242:	else if( rate <= 3000 ) {
+LABELV $292
+line 244
+;244:	else if( rate <= 3000 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 3000
-GTI4 $297
-line 243
-;243:		networkOptionsInfo.rate.curvalue = 1;
+GTI4 $296
+line 245
+;245:		networkOptionsInfo.rate.curvalue = 1;
 ADDRGP4 networkOptionsInfo+896+64
 CNSTI4 1
 ASGNI4
-line 244
-;244:	}
-ADDRGP4 $298
+line 246
+;246:	}
+ADDRGP4 $297
 JUMPV
-LABELV $297
-line 245
-;245:	else if( rate <= 4000 ) {
+LABELV $296
+line 247
+;247:	else if( rate <= 4000 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 4000
-GTI4 $301
-line 246
-;246:		networkOptionsInfo.rate.curvalue = 2;
+GTI4 $300
+line 248
+;248:		networkOptionsInfo.rate.curvalue = 2;
 ADDRGP4 networkOptionsInfo+896+64
 CNSTI4 2
 ASGNI4
-line 247
-;247:	}
-ADDRGP4 $302
+line 249
+;249:	}
+ADDRGP4 $301
 JUMPV
-LABELV $301
-line 248
-;248:	else if( rate <= 5000 ) {
+LABELV $300
+line 250
+;250:	else if( rate <= 5000 ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 5000
-GTI4 $305
-line 249
-;249:		networkOptionsInfo.rate.curvalue = 3;
+GTI4 $304
+line 251
+;251:		networkOptionsInfo.rate.curvalue = 3;
 ADDRGP4 networkOptionsInfo+896+64
 CNSTI4 3
 ASGNI4
-line 250
-;250:	}
-ADDRGP4 $306
-JUMPV
-LABELV $305
-line 251
-;251:	else {
 line 252
-;252:		networkOptionsInfo.rate.curvalue = 4;
+;252:	}
+ADDRGP4 $305
+JUMPV
+LABELV $304
+line 253
+;253:	else {
+line 254
+;254:		networkOptionsInfo.rate.curvalue = 4;
 ADDRGP4 networkOptionsInfo+896+64
 CNSTI4 4
 ASGNI4
-line 253
-;253:	}
-LABELV $306
-LABELV $302
-LABELV $298
-LABELV $294
-line 254
-;254:}
+line 255
+;255:	}
+LABELV $305
+LABELV $301
+LABELV $297
+LABELV $293
+line 256
+;256:}
 LABELV $112
 endproc UI_NetworkOptionsMenu_Init 12 12
 export UI_NetworkOptionsMenu_Cache
 proc UI_NetworkOptionsMenu_Cache 0 4
-line 262
-;255:
-;256:
-;257:/*
-;258:===============
-;259:UI_NetworkOptionsMenu_Cache
+line 264
+;257:
+;258:
+;259:/*
 ;260:===============
-;261:*/
-;262:void UI_NetworkOptionsMenu_Cache( void ) {
-line 263
-;263:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
+;261:UI_NetworkOptionsMenu_Cache
+;262:===============
+;263:*/
+;264:void UI_NetworkOptionsMenu_Cache( void ) {
+line 265
+;265:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
 ADDRGP4 $132
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 264
-;264:	trap_R_RegisterShaderNoMip( ART_FRAMER );
+line 266
+;266:	trap_R_RegisterShaderNoMip( ART_FRAMER );
 ADDRGP4 $146
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 265
-;265:	trap_R_RegisterShaderNoMip( ART_BACK0 );
+line 267
+;267:	trap_R_RegisterShaderNoMip( ART_BACK0 );
 ADDRGP4 $266
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 266
-;266:	trap_R_RegisterShaderNoMip( ART_BACK1 );
+line 268
+;268:	trap_R_RegisterShaderNoMip( ART_BACK1 );
 ADDRGP4 $283
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 267
-;267:}
-LABELV $311
+line 269
+;269:}
+LABELV $310
 endproc UI_NetworkOptionsMenu_Cache 0 4
 export UI_NetworkOptionsMenu
 proc UI_NetworkOptionsMenu 0 8
-line 275
-;268:
-;269:
-;270:/*
-;271:===============
-;272:UI_NetworkOptionsMenu
+line 277
+;270:
+;271:
+;272:/*
 ;273:===============
-;274:*/
-;275:void UI_NetworkOptionsMenu( void ) {
-line 276
-;276:	UI_NetworkOptionsMenu_Init();
+;274:UI_NetworkOptionsMenu
+;275:===============
+;276:*/
+;277:void UI_NetworkOptionsMenu( void ) {
+line 278
+;278:	UI_NetworkOptionsMenu_Init();
 ADDRGP4 UI_NetworkOptionsMenu_Init
 CALLV
 pop
-line 277
-;277:	UI_PushMenu( &networkOptionsInfo.menu );
+line 279
+;279:	UI_PushMenu( &networkOptionsInfo.menu );
 ADDRGP4 networkOptionsInfo
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 278
-;278:	Menu_SetCursorToItem( &networkOptionsInfo.menu, &networkOptionsInfo.network );
+line 280
+;280:	Menu_SetCursorToItem( &networkOptionsInfo.menu, &networkOptionsInfo.network );
 ADDRGP4 networkOptionsInfo
 ARGP4
 ADDRGP4 networkOptionsInfo+752
@@ -1050,9 +1044,9 @@ ARGP4
 ADDRGP4 Menu_SetCursorToItem
 CALLV
 pop
-line 279
-;279:}
-LABELV $312
+line 281
+;281:}
+LABELV $311
 endproc UI_NetworkOptionsMenu 0 8
 bss
 align 4
@@ -1671,14 +1665,21 @@ byte 1 97
 byte 1 114
 byte 1 116
 byte 1 47
-byte 1 102
-byte 1 114
-byte 1 97
-byte 1 109
+byte 1 112
+byte 1 111
+byte 1 112
 byte 1 101
-byte 1 50
-byte 1 95
+byte 1 112
+byte 1 117
+byte 1 114
+byte 1 112
 byte 1 108
+byte 1 101
+byte 1 115
+byte 1 112
+byte 1 97
+byte 1 99
+byte 1 101
 byte 1 0
 align 1
 LABELV $124
