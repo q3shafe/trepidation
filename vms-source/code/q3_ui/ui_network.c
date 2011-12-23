@@ -11,8 +11,10 @@ NETWORK OPTIONS MENU
 #include "ui_local.h"
 
 
-#define ART_FRAMEL			"menu/art/frame2_l"
+//#define ART_FRAMEL			"menu/art/frame2_l"
+#define ART_FRAMEL			"menu/art/popepurplespace"
 #define ART_FRAMER			"menu/art/frame1_r"
+
 #define ART_BACK0			"menu/art/back_0"
 #define ART_BACK1			"menu/art/back_1"
 
@@ -141,9 +143,9 @@ static void UI_NetworkOptionsMenu_Init( void ) {
 	networkOptionsInfo.framel.generic.name		= ART_FRAMEL;
 	networkOptionsInfo.framel.generic.flags		= QMF_INACTIVE;
 	networkOptionsInfo.framel.generic.x			= 0;  
-	networkOptionsInfo.framel.generic.y			= 78;
-	networkOptionsInfo.framel.width				= 256;
-	networkOptionsInfo.framel.height			= 329;
+	networkOptionsInfo.framel.generic.y			= 8;
+	networkOptionsInfo.framel.width				= 800;
+	networkOptionsInfo.framel.height			= 600;
 
 	networkOptionsInfo.framer.generic.type		= MTYPE_BITMAP;
 	networkOptionsInfo.framer.generic.name		= ART_FRAMER;
@@ -226,7 +228,7 @@ static void UI_NetworkOptionsMenu_Init( void ) {
 
 	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.banner );
 	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.framel );
-	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.framer );
+	//Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.framer );
 	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.graphics );
 	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.display );
 	Menu_AddItem( &networkOptionsInfo.menu, ( void * ) &networkOptionsInfo.sound );

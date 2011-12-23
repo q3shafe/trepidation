@@ -47,7 +47,10 @@ static void CG_DrawLoadingIcons( void ) {
 			y += 40;
 		}
 		x = 29 + (i * 29); //% 13 * 48;
-		//CG_DrawPic( x, y, 16, 16, loadingItemIcons[n] );
+		CG_DrawPic( x, y, 16, 16, loadingItemIcons[n] );
+		//CG_DrawPic( x, y, 16, 16, progress2 );
+
+		/*
 		if (i > 18)
 		{
 			x = 29 + ((i -19)* 29);
@@ -57,6 +60,8 @@ static void CG_DrawLoadingIcons( void ) {
 		{
 			CG_DrawPic( x, y, 32, 32, progress );
 		}
+		*/
+		
 	}
 }
 
@@ -165,6 +170,9 @@ void CG_DrawInformation( void ) {
 	qhandle_t	detail;
 	char		buf[1024];
 //	int			xr;
+	int			i;
+
+	
 
 	info = CG_ConfigString( CS_SERVERINFO );
 	sysInfo = CG_ConfigString( CS_SYSTEMINFO );
@@ -172,11 +180,19 @@ void CG_DrawInformation( void ) {
 	s = Info_ValueForKey( info, "mapname" );
 	
 	levelshot = trap_R_RegisterShaderNoMip( va( "levelshots/%s.tga", s ) );
-	background = trap_R_RegisterShaderNoMip( "menu/art/popepurplespace.tga" );
-	//background = trap_R_RegisterShaderNoMip( "menu/art/popespace1.tga" );
+	
+	// Trep - Pick a random loading background
+	
+	/* This is wrong! 
+	i = irandom(1,2);
+	if (i == 1) { background = trap_R_RegisterShaderNoMip( "menu/art/popepurplespace.tga" ); }
+	if (i == 2) { background = trap_R_RegisterShaderNoMip( "menu/art/popespace1.tga" );  }
+	*/
 	
 	
+	background = trap_R_RegisterShaderNoMip( "menu/art/popespace1.tga" );
 	
+	// Not used at the moment.	
 	nullbar = trap_R_RegisterShaderNoMip( "menu/art/nullbar.tga" );
 
 	if ( !levelshot ) {
@@ -195,7 +211,7 @@ void CG_DrawInformation( void ) {
 	trap_R_DrawStretchPic( 0, 0, cgs.glconfig.vidWidth, cgs.glconfig.vidHeight, 0, 0, 2.5, 2, detail );
 
 	// Blank Status Bar - Will be filled by probar as items are loaded
-	CG_DrawPic( 29, 430-40, 32*17, 32, nullbar );
+	// CG_DrawPic( 29, 430-40, 32*17, 32, nullbar );
 	
 	// draw the icons of things as they are loaded
 	CG_DrawLoadingIcons();
@@ -296,7 +312,7 @@ void CG_DrawInformation( void ) {
 		{
 			s = "Trepidation";
 		} else {
-			s = "Team Deathmatch";
+			s = "Team Free For All";
 		}
 		
 		break;
