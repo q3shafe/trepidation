@@ -164,7 +164,7 @@ static char* netnames[] = {
 	NULL
 };
 
-static char quake3worldMessage[] = "Visit trepidation.u7net.om - News, Community, Events, Files";
+static char quake3worldMessage[] = "Visit trepidation.n5net.om - News, Community, Events, Files";
 
 
 const char* punkbuster_items[] = {

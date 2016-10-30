@@ -210,9 +210,9 @@ static void Main_MenuDraw( void ) {
 
 	if (uis.demoversion) {
 		UI_DrawProportionalString( 320, 372, "DEMO      FOR MATURE AUDIENCES      DEMO", UI_CENTER|UI_SMALLFONT, color );
-		UI_DrawString( 320, 400, "Tredpidation (c)2011, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
+		UI_DrawString( 320, 400, "Tredpidation (c)2016, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
 	} else {
-		UI_DrawString( 320, 450, "Tredpidation (c)2011, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
+		UI_DrawString( 320, 450, "Tredpidation (c)2016, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
 	}
 }
 
