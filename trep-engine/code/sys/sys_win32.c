@@ -779,8 +779,9 @@ qboolean Sys_PIDIsRunning( int pid )
 	DWORD numBytes, numProcesses;
 	int i;
 
-	if( !EnumProcesses( processes, sizeof( processes ), &numBytes ) )
-		return qfalse; // Assume it's not running
+	// This was throwing an error on compile, why? -- Shafe trep
+	//if( !EnumProcesses( processes, sizeof( processes ), &numBytes ) )
+	//	return qfalse; // Assume it's not running
 
 	numProcesses = numBytes / sizeof( DWORD );
 

@@ -7,13 +7,19 @@ Also.. If your installing over an older copy.. which ISNT recommended!  You shou
 Also, dont copy over your config file, set it up from scratch, things have changed and you WILL have problems.
 
 Another Good Idea is to turn your downloads on.  The test servers are setup to download very 
-quickly via http from trepidation.u7net.com if there is a file you need.  So yeah, turn your
+quickly via http from trepidation.n5net.com if there is a file you need.  So yeah, turn your
 downloads on :)
 
 
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+
+- Updated Master Servers.
+
+- Changed the hit feedback sound.
+
+- Loading Level Screen cleaned up a bit.
 
 - Cleaned up the server listing screen for online play.
 

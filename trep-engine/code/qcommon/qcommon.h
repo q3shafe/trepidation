@@ -252,11 +252,11 @@ extern int demo_protocols[];
 #define	UPDATE_SERVER_NAME	""
 // override on command line, config files etc.
 #ifndef MASTER_SERVER_NAME
-#define MASTER_SERVER_NAME	"master.tnlsoft.com" // Shafe - Trep 
-#define ALT_MASTER0	"master.beer-garden.org" // Shafe - Trep
-#define ALT_MASTER1	"trepidation.u7net.com" // Shafe - Trep
-#define ALT_MASTER2	"trepdiation.u7networks.com" // Shafe - Trep
-#define ALT_MASTER3	"trepidation.eugenehost.com" // Shafe - Trep -
+#define MASTER_SERVER_NAME	"master.n5net.com" // Shafe - Trep 
+#define ALT_MASTER0	"master.evil-clan.com" // Shafe - Trep
+#define ALT_MASTER1	"trepidation.n5net.com" // Shafe - Trep
+#define ALT_MASTER2	"master2.n5net.com" // Shafe - Trep
+#define ALT_MASTER3	"master3.n5net.com" // Shafe - Trep -
 #endif
 
 #ifndef STANDALONE
@@ -585,7 +585,7 @@ issues.
 #ifdef DEDICATED
 #	define Q3CONFIG_CFG "trepconfig_server.cfg"
 #else
-#	define Q3CONFIG_CFG "trepconfig.cfg"
+#	define Q3CONFIG_CFG "trepc0nfig.cfg"
 #endif
 
 qboolean FS_Initialized( void );
