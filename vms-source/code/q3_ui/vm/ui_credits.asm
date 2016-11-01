@@ -325,7 +325,7 @@ line 144
 ;129:
 ;130:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
 ;131:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
-;132:{ "(c)2007-2011 Team Trepidation", UI_CENTER|UI_SMALLFONT, &color_maintext },
+;132:{ "(c)2007-2016 Team Trepidation", UI_CENTER|UI_SMALLFONT, &color_maintext },
 ;133://{ "General Public License", UI_CENTER|UI_SMALLFONT, &color_maintext },
 ;134:
 ;135:  {NULL}
@@ -1562,7 +1562,7 @@ byte 1 45
 byte 1 50
 byte 1 48
 byte 1 49
-byte 1 49
+byte 1 54
 byte 1 32
 byte 1 84
 byte 1 101

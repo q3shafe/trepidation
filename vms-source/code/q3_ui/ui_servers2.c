@@ -100,6 +100,7 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define GAMES_ARSENAL		5	// Shafe - Trep - New Gametype
 #define GAMES_LASTMAN		6	// Shafe - Trep - New Gametype
 #define GAMES_TREPIDATION	7	// Shafe - Trep - New Gametype
+#define GAMES_FREEZETAG		8	// Shafe - Trep - New Gametype
 
 //Shafe - Trep - Mulimasters
 static const char *master_servers[] = {
@@ -128,6 +129,7 @@ static const char *servertype_items[] = {
 	"Arsenal",			// Shafe - Trep - New Gametype
 	"Survival",	// Shafe - Trep - New Gametype
 	"Trepidation",	// Shafe - Trep - New Gametype
+	"Freeze Tag",	// Shafe - Trep - New Gametype
 	0
 };
 
@@ -149,6 +151,7 @@ static char* gamenames[] = {
 	"Arsenal",		// one flag ctf
 	"Survival",				// Overload
 	"Trepidation",			// Harvester
+	"Freeze Tag",			// Harvester
 	"Rocket Arena 3",	// Rocket Arena 3
 	"Q3F",						// Q3F
 	"Urban Terror",		// Urban Terror
@@ -573,6 +576,13 @@ static void ArenaServers_UpdateMenu( void ) {
 				continue;
 			}
 			break;
+		
+		case GAMES_FREEZETAG: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet			
+			if(( servernodeptr->gametype != GT_TEAM ) && (servernodeptr->g_gamemode == 3))  {
+				continue;
+			}
+			break;
+
 		}
 
 		if( servernodeptr->pingtime < servernodeptr->minPing ) {

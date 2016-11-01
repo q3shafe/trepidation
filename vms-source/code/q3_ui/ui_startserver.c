@@ -81,6 +81,7 @@ static const char *gametype_items[] = {
 	"Trepidation",
 	"Arsenal",
 	"Survival",
+	"Freeze Tag",
 	0
 };
 

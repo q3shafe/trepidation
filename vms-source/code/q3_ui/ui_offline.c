@@ -26,9 +26,10 @@ OFFLINE PLAY MENU
 #define ID_CTF					13
 #define ID_ARSENAL				14
 #define ID_SURVIVAL				15
-#define ID_SAVE					16
-#define ID_DEFAULTS				17
-#define ID_BACK					18
+#define ID_FREEZETAG			16
+#define ID_SAVE					17
+#define ID_DEFAULTS				18
+#define ID_BACK					19
 
 
 typedef struct {
@@ -43,7 +44,8 @@ typedef struct {
 	menutext_s		ctf;
 	menutext_s		arsenal;
 	menutext_s		survival;
-//	menutext_s		load;
+	menutext_s		freezetag;
+	//	menutext_s		load;
 //	menutext_s		save;
 	menutext_s		defaults;
 	menubitmap_s	back;
@@ -110,6 +112,10 @@ static void UI_OfflineMenu_Event( void *ptr, int event ) {
 		break;
 
 	case ID_SURVIVAL:
+		UI_CDKeyMenu();
+		break;
+
+	case ID_FREEZETAG:
 		UI_CDKeyMenu();
 		break;
 
@@ -237,6 +243,17 @@ static void UI_OfflineMenu_Init( void ) {
 	offlineMenuInfo.survival.color						= color_red;
 	offlineMenuInfo.survival.style						= UI_CENTER;
 
+	y += OFFLINE_MENU_VERTICAL_SPACING;
+	offlineMenuInfo.survival.generic.type				= MTYPE_PTEXT;
+	offlineMenuInfo.survival.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	offlineMenuInfo.survival.generic.x					= 320;
+	offlineMenuInfo.survival.generic.y					= y;
+	offlineMenuInfo.survival.generic.id					= ID_FREEZETAG;
+	offlineMenuInfo.survival.generic.callback			= UI_OfflineMenu_Event; 
+	offlineMenuInfo.survival.string						= "SURVIVAL";
+	offlineMenuInfo.survival.color						= color_red;
+	offlineMenuInfo.survival.style						= UI_CENTER;
+
 	if( !trap_Cvar_VariableValue( "cl_paused" ) ) {
 #if 0
 		y += OFFLINE_MENU_VERTICAL_SPACING;
@@ -295,6 +312,7 @@ static void UI_OfflineMenu_Init( void ) {
 	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.ctf );
 	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.arsenal );
 	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.survival );
+	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.freezetag);
 //	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.cdkey );
 //	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.load );
 //	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.save );

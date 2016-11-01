@@ -1,7 +1,7 @@
 code
 proc Offline_ResetDefaults_Action 0 8
 file "../ui_offline.c"
-line 60
+line 62
 ;1:// Copyright (C) 2011 Team Trepidation
 ;2://
 ;3:/*
@@ -30,52 +30,54 @@ line 60
 ;26:#define ID_CTF					13
 ;27:#define ID_ARSENAL				14
 ;28:#define ID_SURVIVAL				15
-;29:#define ID_SAVE					16
-;30:#define ID_DEFAULTS				17
-;31:#define ID_BACK					18
-;32:
+;29:#define ID_FREEZETAG			16
+;30:#define ID_SAVE					17
+;31:#define ID_DEFAULTS				18
+;32:#define ID_BACK					19
 ;33:
-;34:typedef struct {
-;35:	menuframework_s	menu;
-;36:
-;37:	menutext_s		banner;
-;38:	menubitmap_s	framel;
-;39:	menubitmap_s	framer;
-;40:	menutext_s		tutorials;
-;41:	menutext_s		trepidation;
-;42:	menutext_s		ffa;
-;43:	menutext_s		ctf;
-;44:	menutext_s		arsenal;
-;45:	menutext_s		survival;
-;46://	menutext_s		load;
-;47://	menutext_s		save;
-;48:	menutext_s		defaults;
-;49:	menubitmap_s	back;
-;50:} offlineMenuInfo_t;
-;51:
-;52:static offlineMenuInfo_t	offlineMenuInfo;
+;34:
+;35:typedef struct {
+;36:	menuframework_s	menu;
+;37:
+;38:	menutext_s		banner;
+;39:	menubitmap_s	framel;
+;40:	menubitmap_s	framer;
+;41:	menutext_s		tutorials;
+;42:	menutext_s		trepidation;
+;43:	menutext_s		ffa;
+;44:	menutext_s		ctf;
+;45:	menutext_s		arsenal;
+;46:	menutext_s		survival;
+;47:	menutext_s		freezetag;
+;48:	//	menutext_s		load;
+;49://	menutext_s		save;
+;50:	menutext_s		defaults;
+;51:	menubitmap_s	back;
+;52:} offlineMenuInfo_t;
 ;53:
-;54:
-;55:/*
-;56:=================
-;57:Offline_ResetDefaults_Action
+;54:static offlineMenuInfo_t	offlineMenuInfo;
+;55:
+;56:
+;57:/*
 ;58:=================
-;59:*/
-;60:static void Offline_ResetDefaults_Action( qboolean result ) {
-line 61
-;61:	if( !result ) {
+;59:Offline_ResetDefaults_Action
+;60:=================
+;61:*/
+;62:static void Offline_ResetDefaults_Action( qboolean result ) {
+line 63
+;63:	if( !result ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 0
 NEI4 $71
-line 62
-;62:		return;
+line 64
+;64:		return;
 ADDRGP4 $70
 JUMPV
 LABELV $71
-line 64
-;63:	}
-;64:	trap_Cmd_ExecuteText( EXEC_APPEND, "exec default.cfg\n");
+line 66
+;65:	}
+;66:	trap_Cmd_ExecuteText( EXEC_APPEND, "exec default.cfg\n");
 CNSTI4 2
 ARGI4
 ADDRGP4 $73
@@ -83,8 +85,8 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 65
-;65:	trap_Cmd_ExecuteText( EXEC_APPEND, "cvar_restart\n");
+line 67
+;67:	trap_Cmd_ExecuteText( EXEC_APPEND, "cvar_restart\n");
 CNSTI4 2
 ARGI4
 ADDRGP4 $74
@@ -92,8 +94,8 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 66
-;66:	trap_Cmd_ExecuteText( EXEC_APPEND, "vid_restart\n" );
+line 68
+;68:	trap_Cmd_ExecuteText( EXEC_APPEND, "vid_restart\n" );
 CNSTI4 2
 ARGI4
 ADDRGP4 $75
@@ -101,22 +103,22 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 67
-;67:}
+line 69
+;69:}
 LABELV $70
 endproc Offline_ResetDefaults_Action 0 8
 proc Offline_ResetDefaults_Draw 0 20
-line 75
-;68:
-;69:
-;70:/*
-;71:=================
-;72:Offline_ResetDefaults_Draw
+line 77
+;70:
+;71:
+;72:/*
 ;73:=================
-;74:*/
-;75:static void Offline_ResetDefaults_Draw( void ) {
-line 76
-;76:	UI_DrawProportionalString( SCREEN_WIDTH/2, 356 + PROP_HEIGHT * 0, "WARNING: This will reset *ALL*", UI_CENTER|UI_SMALLFONT, color_yellow );
+;74:Offline_ResetDefaults_Draw
+;75:=================
+;76:*/
+;77:static void Offline_ResetDefaults_Draw( void ) {
+line 78
+;78:	UI_DrawProportionalString( SCREEN_WIDTH/2, 356 + PROP_HEIGHT * 0, "WARNING: This will reset *ALL*", UI_CENTER|UI_SMALLFONT, color_yellow );
 CNSTI4 320
 ARGI4
 CNSTI4 356
@@ -130,8 +132,8 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 77
-;77:	UI_DrawProportionalString( SCREEN_WIDTH/2, 356 + PROP_HEIGHT * 1, "options to their default values.", UI_CENTER|UI_SMALLFONT, color_yellow );
+line 79
+;79:	UI_DrawProportionalString( SCREEN_WIDTH/2, 356 + PROP_HEIGHT * 1, "options to their default values.", UI_CENTER|UI_SMALLFONT, color_yellow );
 CNSTI4 320
 ARGI4
 CNSTI4 383
@@ -145,35 +147,35 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 78
-;78:}
+line 80
+;80:}
 LABELV $76
 endproc Offline_ResetDefaults_Draw 0 20
 proc UI_OfflineMenu_Event 8 12
-line 86
-;79:
-;80:
-;81:/*
-;82:===============
-;83:UI_OfflineMenu_Event
+line 88
+;81:
+;82:
+;83:/*
 ;84:===============
-;85:*/
-;86:static void UI_OfflineMenu_Event( void *ptr, int event ) {
-line 87
-;87:	if( event != QM_ACTIVATED ) {
+;85:UI_OfflineMenu_Event
+;86:===============
+;87:*/
+;88:static void UI_OfflineMenu_Event( void *ptr, int event ) {
+line 89
+;89:	if( event != QM_ACTIVATED ) {
 ADDRFP4 4
 INDIRI4
 CNSTI4 3
 EQI4 $80
-line 88
-;88:		return;
+line 90
+;90:		return;
 ADDRGP4 $79
 JUMPV
 LABELV $80
-line 91
-;89:	}
-;90:
-;91:	switch( ((menucommon_s*)ptr)->id ) {
+line 93
+;91:	}
+;92:
+;93:	switch( ((menucommon_s*)ptr)->id ) {
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -187,115 +189,128 @@ CNSTI4 10
 LTI4 $82
 ADDRLP4 0
 INDIRI4
-CNSTI4 18
+CNSTI4 19
 GTI4 $82
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $94-40
+ADDRGP4 $95-40
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $94
+LABELV $95
 address $85
 address $86
 address $87
 address $88
 address $89
 address $90
-address $82
 address $91
-address $93
+address $82
+address $92
+address $94
 code
 LABELV $85
-line 93
-;92:	case ID_TUTORIALS:
-;93:		UI_PlayerSettingsMenu();
+line 95
+;94:	case ID_TUTORIALS:
+;95:		UI_PlayerSettingsMenu();
 ADDRGP4 UI_PlayerSettingsMenu
 CALLV
 pop
-line 94
-;94:		break;
+line 96
+;96:		break;
 ADDRGP4 $83
 JUMPV
 LABELV $86
-line 97
-;95:
-;96:	case ID_TREPIDATION:
-;97:		UI_ControlsMenu();
+line 99
+;97:
+;98:	case ID_TREPIDATION:
+;99:		UI_ControlsMenu();
 ADDRGP4 UI_ControlsMenu
 CALLV
 pop
-line 98
-;98:		break;
+line 100
+;100:		break;
 ADDRGP4 $83
 JUMPV
 LABELV $87
-line 101
-;99:
-;100:	case ID_FFA:
-;101:		UI_GraphicsOptionsMenu();
+line 103
+;101:
+;102:	case ID_FFA:
+;103:		UI_GraphicsOptionsMenu();
 ADDRGP4 UI_GraphicsOptionsMenu
 CALLV
 pop
-line 102
-;102:		break;
+line 104
+;104:		break;
 ADDRGP4 $83
 JUMPV
 LABELV $88
-line 105
-;103:
-;104:	case ID_CTF:
-;105:		UI_PreferencesMenu();
+line 107
+;105:
+;106:	case ID_CTF:
+;107:		UI_PreferencesMenu();
 ADDRGP4 UI_PreferencesMenu
 CALLV
 pop
-line 106
-;106:		break;
+line 108
+;108:		break;
 ADDRGP4 $83
 JUMPV
 LABELV $89
-line 109
-;107:
-;108:	case ID_ARSENAL:
-;109:		UI_CDKeyMenu();
+line 111
+;109:
+;110:	case ID_ARSENAL:
+;111:		UI_CDKeyMenu();
 ADDRGP4 UI_CDKeyMenu
 CALLV
 pop
-line 110
-;110:		break;
+line 112
+;112:		break;
 ADDRGP4 $83
 JUMPV
 LABELV $90
-line 113
-;111:
-;112:	case ID_SURVIVAL:
-;113:		UI_CDKeyMenu();
+line 115
+;113:
+;114:	case ID_SURVIVAL:
+;115:		UI_CDKeyMenu();
 ADDRGP4 UI_CDKeyMenu
 CALLV
 pop
-line 114
-;114:		break;
+line 116
+;116:		break;
 ADDRGP4 $83
 JUMPV
 LABELV $91
-line 126
-;115:
-;116:
-;117://	case ID_LOAD:
-;118://		UI_LoadConfigMenu();
-;119://		break;
-;120:
-;121://	case ID_SAVE:
-;122://		UI_SaveConfigMenu();
-;123://		break;
-;124:
-;125:	case ID_DEFAULTS:
-;126:		UI_ConfirmMenu( "SET TO DEFAULTS?", Offline_ResetDefaults_Draw, Offline_ResetDefaults_Action );
-ADDRGP4 $92
+line 119
+;117:
+;118:	case ID_FREEZETAG:
+;119:		UI_CDKeyMenu();
+ADDRGP4 UI_CDKeyMenu
+CALLV
+pop
+line 120
+;120:		break;
+ADDRGP4 $83
+JUMPV
+LABELV $92
+line 132
+;121:
+;122:
+;123://	case ID_LOAD:
+;124://		UI_LoadConfigMenu();
+;125://		break;
+;126:
+;127://	case ID_SAVE:
+;128://		UI_SaveConfigMenu();
+;129://		break;
+;130:
+;131:	case ID_DEFAULTS:
+;132:		UI_ConfirmMenu( "SET TO DEFAULTS?", Offline_ResetDefaults_Draw, Offline_ResetDefaults_Action );
+ADDRGP4 $93
 ARGP4
 ADDRGP4 Offline_ResetDefaults_Draw
 ARGP4
@@ -304,509 +319,564 @@ ARGP4
 ADDRGP4 UI_ConfirmMenu
 CALLV
 pop
-line 127
-;127:		break;
+line 133
+;133:		break;
 ADDRGP4 $83
 JUMPV
-LABELV $93
-line 130
-;128:
-;129:	case ID_BACK:
-;130:		UI_PopMenu();
+LABELV $94
+line 136
+;134:
+;135:	case ID_BACK:
+;136:		UI_PopMenu();
 ADDRGP4 UI_PopMenu
 CALLV
 pop
-line 131
-;131:		break;
+line 137
+;137:		break;
 LABELV $82
 LABELV $83
-line 133
-;132:	}
-;133:}
+line 139
+;138:	}
+;139:}
 LABELV $79
 endproc UI_OfflineMenu_Event 8 12
 proc UI_OfflineMenu_Init 16 12
-line 141
-;134:
-;135:
-;136:/*
-;137:===============
-;138:UI_OfflineMenu_Init
-;139:===============
-;140:*/
-;141:static void UI_OfflineMenu_Init( void ) {
-line 143
-;142:	int				y;
-;143:	int		style = UI_CENTER | UI_DROPSHADOW;
+line 147
+;140:
+;141:
+;142:/*
+;143:===============
+;144:UI_OfflineMenu_Init
+;145:===============
+;146:*/
+;147:static void UI_OfflineMenu_Init( void ) {
+line 149
+;148:	int				y;
+;149:	int		style = UI_CENTER | UI_DROPSHADOW;
 ADDRLP4 4
 CNSTI4 2049
 ASGNI4
-line 145
-;144:
-;145:	UI_OfflineMenu_Cache();
+line 151
+;150:
+;151:	UI_OfflineMenu_Cache();
 ADDRGP4 UI_OfflineMenu_Cache
 CALLV
 pop
-line 147
-;146:
-;147:	memset( &offlineMenuInfo, 0, sizeof(offlineMenuInfo) );
+line 153
+;152:
+;153:	memset( &offlineMenuInfo, 0, sizeof(offlineMenuInfo) );
 ADDRGP4 offlineMenuInfo
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 1128
+CNSTI4 1200
 ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 148
-;148:	offlineMenuInfo.menu.wrapAround = qtrue;
+line 154
+;154:	offlineMenuInfo.menu.wrapAround = qtrue;
 ADDRGP4 offlineMenuInfo+276
 CNSTI4 1
 ASGNI4
-line 149
-;149:	offlineMenuInfo.menu.fullscreen = qtrue;
+line 155
+;155:	offlineMenuInfo.menu.fullscreen = qtrue;
 ADDRGP4 offlineMenuInfo+280
 CNSTI4 1
 ASGNI4
-line 151
-;150:
-;151:	offlineMenuInfo.banner.generic.type				= MTYPE_BTEXT;
+line 157
+;156:
+;157:	offlineMenuInfo.banner.generic.type				= MTYPE_BTEXT;
 ADDRGP4 offlineMenuInfo+288
 CNSTI4 10
 ASGNI4
-line 152
-;152:	offlineMenuInfo.banner.generic.x					= 320;
+line 158
+;158:	offlineMenuInfo.banner.generic.x					= 320;
 ADDRGP4 offlineMenuInfo+288+12
 CNSTI4 320
 ASGNI4
-line 153
-;153:	offlineMenuInfo.banner.generic.y					= 16;
+line 159
+;159:	offlineMenuInfo.banner.generic.y					= 16;
 ADDRGP4 offlineMenuInfo+288+16
 CNSTI4 16
 ASGNI4
-line 154
-;154:	offlineMenuInfo.banner.string						= "PLAY OFFLINE";
+line 160
+;160:	offlineMenuInfo.banner.string						= "PLAY OFFLINE";
 ADDRGP4 offlineMenuInfo+288+60
-ADDRGP4 $106
+ADDRGP4 $107
 ASGNP4
-line 155
-;155:	offlineMenuInfo.banner.color						= color_white;
+line 161
+;161:	offlineMenuInfo.banner.color						= color_white;
 ADDRGP4 offlineMenuInfo+288+68
 ADDRGP4 color_white
 ASGNP4
-line 156
-;156:	offlineMenuInfo.banner.style						= UI_CENTER;
+line 162
+;162:	offlineMenuInfo.banner.style						= UI_CENTER;
 ADDRGP4 offlineMenuInfo+288+64
 CNSTI4 1
 ASGNI4
-line 158
-;157:
-;158:	offlineMenuInfo.framel.generic.type				= MTYPE_BITMAP;
+line 164
+;163:
+;164:	offlineMenuInfo.framel.generic.type				= MTYPE_BITMAP;
 ADDRGP4 offlineMenuInfo+360
 CNSTI4 6
 ASGNI4
-line 159
-;159:	offlineMenuInfo.framel.generic.name				= ART_FRAMEL;
+line 165
+;165:	offlineMenuInfo.framel.generic.name				= ART_FRAMEL;
 ADDRGP4 offlineMenuInfo+360+4
-ADDRGP4 $114
+ADDRGP4 $115
 ASGNP4
-line 160
-;160:	offlineMenuInfo.framel.generic.flags				= QMF_INACTIVE;
+line 166
+;166:	offlineMenuInfo.framel.generic.flags				= QMF_INACTIVE;
 ADDRGP4 offlineMenuInfo+360+44
 CNSTU4 16384
 ASGNU4
-line 161
-;161:	offlineMenuInfo.framel.generic.x					= 0;  
+line 167
+;167:	offlineMenuInfo.framel.generic.x					= 0;  
 ADDRGP4 offlineMenuInfo+360+12
 CNSTI4 0
 ASGNI4
-line 162
-;162:	offlineMenuInfo.framel.generic.y					= 0;
+line 168
+;168:	offlineMenuInfo.framel.generic.y					= 0;
 ADDRGP4 offlineMenuInfo+360+16
 CNSTI4 0
 ASGNI4
-line 163
-;163:	offlineMenuInfo.framel.width  					= 800;
+line 169
+;169:	offlineMenuInfo.framel.width  					= 800;
 ADDRGP4 offlineMenuInfo+360+76
 CNSTI4 800
 ASGNI4
-line 164
-;164:	offlineMenuInfo.framel.height  					= 600;
+line 170
+;170:	offlineMenuInfo.framel.height  					= 600;
 ADDRGP4 offlineMenuInfo+360+80
 CNSTI4 600
 ASGNI4
-line 166
-;165:
-;166:	offlineMenuInfo.framer.generic.type				= MTYPE_BITMAP;
+line 172
+;171:
+;172:	offlineMenuInfo.framer.generic.type				= MTYPE_BITMAP;
 ADDRGP4 offlineMenuInfo+448
 CNSTI4 6
 ASGNI4
-line 167
-;167:	offlineMenuInfo.framer.generic.name				= ART_FRAMER;
+line 173
+;173:	offlineMenuInfo.framer.generic.name				= ART_FRAMER;
 ADDRGP4 offlineMenuInfo+448+4
-ADDRGP4 $128
+ADDRGP4 $129
 ASGNP4
-line 168
-;168:	offlineMenuInfo.framer.generic.flags				= QMF_INACTIVE;
+line 174
+;174:	offlineMenuInfo.framer.generic.flags				= QMF_INACTIVE;
 ADDRGP4 offlineMenuInfo+448+44
 CNSTU4 16384
 ASGNU4
-line 169
-;169:	offlineMenuInfo.framer.generic.x					= 376;
+line 175
+;175:	offlineMenuInfo.framer.generic.x					= 376;
 ADDRGP4 offlineMenuInfo+448+12
 CNSTI4 376
 ASGNI4
-line 170
-;170:	offlineMenuInfo.framer.generic.y					= 76;
+line 176
+;176:	offlineMenuInfo.framer.generic.y					= 76;
 ADDRGP4 offlineMenuInfo+448+16
 CNSTI4 76
 ASGNI4
-line 171
-;171:	offlineMenuInfo.framer.width  					= 256;
+line 177
+;177:	offlineMenuInfo.framer.width  					= 256;
 ADDRGP4 offlineMenuInfo+448+76
 CNSTI4 256
 ASGNI4
-line 172
-;172:	offlineMenuInfo.framer.height  					= 334;
+line 178
+;178:	offlineMenuInfo.framer.height  					= 334;
 ADDRGP4 offlineMenuInfo+448+80
 CNSTI4 334
 ASGNI4
-line 174
-;173:
-;174:	y = 134;
+line 180
+;179:
+;180:	y = 134;
 ADDRLP4 0
 CNSTI4 134
 ASGNI4
-line 175
-;175:	offlineMenuInfo.tutorials.generic.type			= MTYPE_PTEXT;
+line 181
+;181:	offlineMenuInfo.tutorials.generic.type			= MTYPE_PTEXT;
 ADDRGP4 offlineMenuInfo+536
 CNSTI4 9
 ASGNI4
-line 176
-;176:	offlineMenuInfo.tutorials.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 182
+;182:	offlineMenuInfo.tutorials.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 offlineMenuInfo+536+44
 CNSTU4 264
 ASGNU4
-line 177
-;177:	offlineMenuInfo.tutorials.generic.x				= 320;
+line 183
+;183:	offlineMenuInfo.tutorials.generic.x				= 320;
 ADDRGP4 offlineMenuInfo+536+12
 CNSTI4 320
 ASGNI4
-line 178
-;178:	offlineMenuInfo.tutorials.generic.y				= y;
+line 184
+;184:	offlineMenuInfo.tutorials.generic.y				= y;
 ADDRGP4 offlineMenuInfo+536+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 179
-;179:	offlineMenuInfo.tutorials.generic.id			= ID_TUTORIALS;
+line 185
+;185:	offlineMenuInfo.tutorials.generic.id			= ID_TUTORIALS;
 ADDRGP4 offlineMenuInfo+536+8
 CNSTI4 10
 ASGNI4
-line 180
-;180:	offlineMenuInfo.tutorials.generic.callback		= UI_OfflineMenu_Event; 
+line 186
+;186:	offlineMenuInfo.tutorials.generic.callback		= UI_OfflineMenu_Event; 
 ADDRGP4 offlineMenuInfo+536+48
 ADDRGP4 UI_OfflineMenu_Event
 ASGNP4
-line 181
-;181:	offlineMenuInfo.tutorials.string				= "TUTORIALS";
+line 187
+;187:	offlineMenuInfo.tutorials.string				= "TUTORIALS";
 ADDRGP4 offlineMenuInfo+536+60
-ADDRGP4 $152
+ADDRGP4 $153
 ASGNP4
-line 182
-;182:	offlineMenuInfo.tutorials.color					= color_red;
+line 188
+;188:	offlineMenuInfo.tutorials.color					= color_red;
 ADDRGP4 offlineMenuInfo+536+68
 ADDRGP4 color_red
 ASGNP4
-line 183
-;183:	offlineMenuInfo.tutorials.style					= style;
+line 189
+;189:	offlineMenuInfo.tutorials.style					= style;
 ADDRGP4 offlineMenuInfo+536+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 185
-;184:
-;185:	y += OFFLINE_MENU_VERTICAL_SPACING;
+line 191
+;190:
+;191:	y += OFFLINE_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 186
-;186:	offlineMenuInfo.trepidation.generic.type		= MTYPE_PTEXT;
+line 192
+;192:	offlineMenuInfo.trepidation.generic.type		= MTYPE_PTEXT;
 ADDRGP4 offlineMenuInfo+608
 CNSTI4 9
 ASGNI4
-line 187
-;187:	offlineMenuInfo.trepidation.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 193
+;193:	offlineMenuInfo.trepidation.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 offlineMenuInfo+608+44
 CNSTU4 264
 ASGNU4
-line 188
-;188:	offlineMenuInfo.trepidation.generic.x			= 320;
+line 194
+;194:	offlineMenuInfo.trepidation.generic.x			= 320;
 ADDRGP4 offlineMenuInfo+608+12
 CNSTI4 320
 ASGNI4
-line 189
-;189:	offlineMenuInfo.trepidation.generic.y			= y;
+line 195
+;195:	offlineMenuInfo.trepidation.generic.y			= y;
 ADDRGP4 offlineMenuInfo+608+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 190
-;190:	offlineMenuInfo.trepidation.generic.id			= ID_TREPIDATION;
+line 196
+;196:	offlineMenuInfo.trepidation.generic.id			= ID_TREPIDATION;
 ADDRGP4 offlineMenuInfo+608+8
 CNSTI4 11
 ASGNI4
-line 191
-;191:	offlineMenuInfo.trepidation.generic.callback	= UI_OfflineMenu_Event; 
+line 197
+;197:	offlineMenuInfo.trepidation.generic.callback	= UI_OfflineMenu_Event; 
 ADDRGP4 offlineMenuInfo+608+48
 ADDRGP4 UI_OfflineMenu_Event
 ASGNP4
-line 192
-;192:	offlineMenuInfo.trepidation.string				= "TREPIDATION";
+line 198
+;198:	offlineMenuInfo.trepidation.string				= "TREPIDATION";
 ADDRGP4 offlineMenuInfo+608+60
-ADDRGP4 $170
+ADDRGP4 $171
 ASGNP4
-line 193
-;193:	offlineMenuInfo.trepidation.color				= color_red;
+line 199
+;199:	offlineMenuInfo.trepidation.color				= color_red;
 ADDRGP4 offlineMenuInfo+608+68
 ADDRGP4 color_red
 ASGNP4
-line 194
-;194:	offlineMenuInfo.trepidation.style				= style;
+line 200
+;200:	offlineMenuInfo.trepidation.style				= style;
 ADDRGP4 offlineMenuInfo+608+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 196
-;195:
-;196:	y += OFFLINE_MENU_VERTICAL_SPACING;
+line 202
+;201:
+;202:	y += OFFLINE_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 197
-;197:	offlineMenuInfo.ffa.generic.type			= MTYPE_PTEXT;
+line 203
+;203:	offlineMenuInfo.ffa.generic.type			= MTYPE_PTEXT;
 ADDRGP4 offlineMenuInfo+680
 CNSTI4 9
 ASGNI4
-line 198
-;198:	offlineMenuInfo.ffa.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 204
+;204:	offlineMenuInfo.ffa.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 offlineMenuInfo+680+44
 CNSTU4 264
 ASGNU4
-line 199
-;199:	offlineMenuInfo.ffa.generic.x				= 320;
+line 205
+;205:	offlineMenuInfo.ffa.generic.x				= 320;
 ADDRGP4 offlineMenuInfo+680+12
 CNSTI4 320
 ASGNI4
-line 200
-;200:	offlineMenuInfo.ffa.generic.y				= y;
+line 206
+;206:	offlineMenuInfo.ffa.generic.y				= y;
 ADDRGP4 offlineMenuInfo+680+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 201
-;201:	offlineMenuInfo.ffa.generic.id			= ID_FFA;
+line 207
+;207:	offlineMenuInfo.ffa.generic.id			= ID_FFA;
 ADDRGP4 offlineMenuInfo+680+8
 CNSTI4 12
 ASGNI4
-line 202
-;202:	offlineMenuInfo.ffa.generic.callback		= UI_OfflineMenu_Event; 
+line 208
+;208:	offlineMenuInfo.ffa.generic.callback		= UI_OfflineMenu_Event; 
 ADDRGP4 offlineMenuInfo+680+48
 ADDRGP4 UI_OfflineMenu_Event
 ASGNP4
-line 203
-;203:	offlineMenuInfo.ffa.string				= "FREE FOR ALL";
+line 209
+;209:	offlineMenuInfo.ffa.string				= "FREE FOR ALL";
 ADDRGP4 offlineMenuInfo+680+60
-ADDRGP4 $188
+ADDRGP4 $189
 ASGNP4
-line 204
-;204:	offlineMenuInfo.ffa.color					= color_red;
+line 210
+;210:	offlineMenuInfo.ffa.color					= color_red;
 ADDRGP4 offlineMenuInfo+680+68
 ADDRGP4 color_red
 ASGNP4
-line 205
-;205:	offlineMenuInfo.ffa.style					= style;
+line 211
+;211:	offlineMenuInfo.ffa.style					= style;
 ADDRGP4 offlineMenuInfo+680+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 207
-;206:
-;207:	y += OFFLINE_MENU_VERTICAL_SPACING;
+line 213
+;212:
+;213:	y += OFFLINE_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 208
-;208:	offlineMenuInfo.ctf.generic.type					= MTYPE_PTEXT;
+line 214
+;214:	offlineMenuInfo.ctf.generic.type					= MTYPE_PTEXT;
 ADDRGP4 offlineMenuInfo+752
 CNSTI4 9
 ASGNI4
-line 209
-;209:	offlineMenuInfo.ctf.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 215
+;215:	offlineMenuInfo.ctf.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 offlineMenuInfo+752+44
 CNSTU4 264
 ASGNU4
-line 210
-;210:	offlineMenuInfo.ctf.generic.x					= 320;
+line 216
+;216:	offlineMenuInfo.ctf.generic.x					= 320;
 ADDRGP4 offlineMenuInfo+752+12
 CNSTI4 320
 ASGNI4
-line 211
-;211:	offlineMenuInfo.ctf.generic.y					= y;
+line 217
+;217:	offlineMenuInfo.ctf.generic.y					= y;
 ADDRGP4 offlineMenuInfo+752+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 212
-;212:	offlineMenuInfo.ctf.generic.id					= ID_CTF;
+line 218
+;218:	offlineMenuInfo.ctf.generic.id					= ID_CTF;
 ADDRGP4 offlineMenuInfo+752+8
 CNSTI4 13
 ASGNI4
-line 213
-;213:	offlineMenuInfo.ctf.generic.callback				= UI_OfflineMenu_Event; 
+line 219
+;219:	offlineMenuInfo.ctf.generic.callback				= UI_OfflineMenu_Event; 
 ADDRGP4 offlineMenuInfo+752+48
 ADDRGP4 UI_OfflineMenu_Event
 ASGNP4
-line 214
-;214:	offlineMenuInfo.ctf.string						= "CAPTURE THE FLAG";
+line 220
+;220:	offlineMenuInfo.ctf.string						= "CAPTURE THE FLAG";
 ADDRGP4 offlineMenuInfo+752+60
-ADDRGP4 $206
+ADDRGP4 $207
 ASGNP4
-line 215
-;215:	offlineMenuInfo.ctf.color						= color_red;
+line 221
+;221:	offlineMenuInfo.ctf.color						= color_red;
 ADDRGP4 offlineMenuInfo+752+68
 ADDRGP4 color_red
 ASGNP4
-line 216
-;216:	offlineMenuInfo.ctf.style						= style;
+line 222
+;222:	offlineMenuInfo.ctf.style						= style;
 ADDRGP4 offlineMenuInfo+752+64
 ADDRLP4 4
 INDIRI4
 ASGNI4
-line 218
-;217:
-;218:	y += OFFLINE_MENU_VERTICAL_SPACING;
+line 224
+;223:
+;224:	y += OFFLINE_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 219
-;219:	offlineMenuInfo.arsenal.generic.type				= MTYPE_PTEXT;
+line 225
+;225:	offlineMenuInfo.arsenal.generic.type				= MTYPE_PTEXT;
 ADDRGP4 offlineMenuInfo+824
 CNSTI4 9
 ASGNI4
-line 220
-;220:	offlineMenuInfo.arsenal.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 226
+;226:	offlineMenuInfo.arsenal.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 offlineMenuInfo+824+44
 CNSTU4 264
 ASGNU4
-line 221
-;221:	offlineMenuInfo.arsenal.generic.x					= 320;
+line 227
+;227:	offlineMenuInfo.arsenal.generic.x					= 320;
 ADDRGP4 offlineMenuInfo+824+12
 CNSTI4 320
 ASGNI4
-line 222
-;222:	offlineMenuInfo.arsenal.generic.y					= y;
+line 228
+;228:	offlineMenuInfo.arsenal.generic.y					= y;
 ADDRGP4 offlineMenuInfo+824+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 223
-;223:	offlineMenuInfo.arsenal.generic.id					= ID_ARSENAL;
+line 229
+;229:	offlineMenuInfo.arsenal.generic.id					= ID_ARSENAL;
 ADDRGP4 offlineMenuInfo+824+8
 CNSTI4 14
 ASGNI4
-line 224
-;224:	offlineMenuInfo.arsenal.generic.callback			= UI_OfflineMenu_Event; 
+line 230
+;230:	offlineMenuInfo.arsenal.generic.callback			= UI_OfflineMenu_Event; 
 ADDRGP4 offlineMenuInfo+824+48
 ADDRGP4 UI_OfflineMenu_Event
 ASGNP4
-line 225
-;225:	offlineMenuInfo.arsenal.string						= "ARSENAL";
+line 231
+;231:	offlineMenuInfo.arsenal.string						= "ARSENAL";
 ADDRGP4 offlineMenuInfo+824+60
-ADDRGP4 $224
+ADDRGP4 $225
 ASGNP4
-line 226
-;226:	offlineMenuInfo.arsenal.color						= color_red;
+line 232
+;232:	offlineMenuInfo.arsenal.color						= color_red;
 ADDRGP4 offlineMenuInfo+824+68
 ADDRGP4 color_red
 ASGNP4
-line 227
-;227:	offlineMenuInfo.arsenal.style						= UI_CENTER;
+line 233
+;233:	offlineMenuInfo.arsenal.style						= UI_CENTER;
 ADDRGP4 offlineMenuInfo+824+64
 CNSTI4 1
 ASGNI4
-line 229
-;228:
-;229:	y += OFFLINE_MENU_VERTICAL_SPACING;
+line 235
+;234:
+;235:	y += OFFLINE_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 230
-;230:	offlineMenuInfo.survival.generic.type				= MTYPE_PTEXT;
+line 236
+;236:	offlineMenuInfo.survival.generic.type				= MTYPE_PTEXT;
 ADDRGP4 offlineMenuInfo+896
 CNSTI4 9
 ASGNI4
-line 231
-;231:	offlineMenuInfo.survival.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 237
+;237:	offlineMenuInfo.survival.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 offlineMenuInfo+896+44
 CNSTU4 264
 ASGNU4
-line 232
-;232:	offlineMenuInfo.survival.generic.x					= 320;
+line 238
+;238:	offlineMenuInfo.survival.generic.x					= 320;
 ADDRGP4 offlineMenuInfo+896+12
 CNSTI4 320
 ASGNI4
-line 233
-;233:	offlineMenuInfo.survival.generic.y					= y;
+line 239
+;239:	offlineMenuInfo.survival.generic.y					= y;
 ADDRGP4 offlineMenuInfo+896+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 234
-;234:	offlineMenuInfo.survival.generic.id					= ID_SURVIVAL;
+line 240
+;240:	offlineMenuInfo.survival.generic.id					= ID_SURVIVAL;
 ADDRGP4 offlineMenuInfo+896+8
 CNSTI4 15
 ASGNI4
-line 235
-;235:	offlineMenuInfo.survival.generic.callback			= UI_OfflineMenu_Event; 
+line 241
+;241:	offlineMenuInfo.survival.generic.callback			= UI_OfflineMenu_Event; 
 ADDRGP4 offlineMenuInfo+896+48
 ADDRGP4 UI_OfflineMenu_Event
 ASGNP4
-line 236
-;236:	offlineMenuInfo.survival.string						= "SURVIVAL";
+line 242
+;242:	offlineMenuInfo.survival.string						= "SURVIVAL";
 ADDRGP4 offlineMenuInfo+896+60
-ADDRGP4 $242
+ADDRGP4 $243
 ASGNP4
-line 237
-;237:	offlineMenuInfo.survival.color						= color_red;
+line 243
+;243:	offlineMenuInfo.survival.color						= color_red;
 ADDRGP4 offlineMenuInfo+896+68
 ADDRGP4 color_red
 ASGNP4
-line 238
-;238:	offlineMenuInfo.survival.style						= UI_CENTER;
+line 244
+;244:	offlineMenuInfo.survival.style						= UI_CENTER;
 ADDRGP4 offlineMenuInfo+896+64
 CNSTI4 1
 ASGNI4
-line 240
-;239:
-;240:	if( !trap_Cvar_VariableValue( "cl_paused" ) ) {
-ADDRGP4 $249
+line 246
+;245:
+;246:	y += OFFLINE_MENU_VERTICAL_SPACING;
+ADDRLP4 0
+ADDRLP4 0
+INDIRI4
+CNSTI4 34
+ADDI4
+ASGNI4
+line 247
+;247:	offlineMenuInfo.survival.generic.type				= MTYPE_PTEXT;
+ADDRGP4 offlineMenuInfo+896
+CNSTI4 9
+ASGNI4
+line 248
+;248:	offlineMenuInfo.survival.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+ADDRGP4 offlineMenuInfo+896+44
+CNSTU4 264
+ASGNU4
+line 249
+;249:	offlineMenuInfo.survival.generic.x					= 320;
+ADDRGP4 offlineMenuInfo+896+12
+CNSTI4 320
+ASGNI4
+line 250
+;250:	offlineMenuInfo.survival.generic.y					= y;
+ADDRGP4 offlineMenuInfo+896+16
+ADDRLP4 0
+INDIRI4
+ASGNI4
+line 251
+;251:	offlineMenuInfo.survival.generic.id					= ID_FREEZETAG;
+ADDRGP4 offlineMenuInfo+896+8
+CNSTI4 16
+ASGNI4
+line 252
+;252:	offlineMenuInfo.survival.generic.callback			= UI_OfflineMenu_Event; 
+ADDRGP4 offlineMenuInfo+896+48
+ADDRGP4 UI_OfflineMenu_Event
+ASGNP4
+line 253
+;253:	offlineMenuInfo.survival.string						= "SURVIVAL";
+ADDRGP4 offlineMenuInfo+896+60
+ADDRGP4 $243
+ASGNP4
+line 254
+;254:	offlineMenuInfo.survival.color						= color_red;
+ADDRGP4 offlineMenuInfo+896+68
+ADDRGP4 color_red
+ASGNP4
+line 255
+;255:	offlineMenuInfo.survival.style						= UI_CENTER;
+ADDRGP4 offlineMenuInfo+896+64
+CNSTI4 1
+ASGNI4
+line 257
+;256:
+;257:	if( !trap_Cvar_VariableValue( "cl_paused" ) ) {
+ADDRGP4 $267
 ARGP4
 ADDRLP4 8
 ADDRGP4 trap_Cvar_VariableValue
@@ -815,144 +885,144 @@ ASGNF4
 ADDRLP4 8
 INDIRF4
 CNSTF4 0
-NEF4 $247
-line 265
-;241:#if 0
-;242:		y += OFFLINE_MENU_VERTICAL_SPACING;
-;243:		offlineMenuInfo.load.generic.type					= MTYPE_PTEXT;
-;244:		offlineMenuInfo.load.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
-;245:		offlineMenuInfo.load.generic.x					= 320;
-;246:		offlineMenuInfo.load.generic.y					= y;
-;247:		offlineMenuInfo.load.generic.id					= ID_LOAD;
-;248:		offlineMenuInfo.load.generic.callback				= UI_OfflineMenu_Event; 
-;249:		offlineMenuInfo.load.string						= "LOAD";
-;250:		offlineMenuInfo.load.color						= color_red;
-;251:		offlineMenuInfo.load.style						= UI_CENTER;
-;252:
-;253:		y += OFFLINE_MENU_VERTICAL_SPACING;
-;254:		offlineMenuInfo.save.generic.type					= MTYPE_PTEXT;
-;255:		offlineMenuInfo.save.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
-;256:		offlineMenuInfo.save.generic.x					= 320;
-;257:		offlineMenuInfo.save.generic.y					= y;
-;258:		offlineMenuInfo.save.generic.id					= ID_SAVE;
-;259:		offlineMenuInfo.save.generic.callback				= UI_OfflineMenu_Event; 
-;260:		offlineMenuInfo.save.string						= "SAVE";
-;261:		offlineMenuInfo.save.color						= color_red;
-;262:		offlineMenuInfo.save.style						= UI_CENTER;
-;263:#endif
-;264:
-;265:		y += OFFLINE_MENU_VERTICAL_SPACING;
+NEF4 $265
+line 282
+;258:#if 0
+;259:		y += OFFLINE_MENU_VERTICAL_SPACING;
+;260:		offlineMenuInfo.load.generic.type					= MTYPE_PTEXT;
+;261:		offlineMenuInfo.load.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+;262:		offlineMenuInfo.load.generic.x					= 320;
+;263:		offlineMenuInfo.load.generic.y					= y;
+;264:		offlineMenuInfo.load.generic.id					= ID_LOAD;
+;265:		offlineMenuInfo.load.generic.callback				= UI_OfflineMenu_Event; 
+;266:		offlineMenuInfo.load.string						= "LOAD";
+;267:		offlineMenuInfo.load.color						= color_red;
+;268:		offlineMenuInfo.load.style						= UI_CENTER;
+;269:
+;270:		y += OFFLINE_MENU_VERTICAL_SPACING;
+;271:		offlineMenuInfo.save.generic.type					= MTYPE_PTEXT;
+;272:		offlineMenuInfo.save.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+;273:		offlineMenuInfo.save.generic.x					= 320;
+;274:		offlineMenuInfo.save.generic.y					= y;
+;275:		offlineMenuInfo.save.generic.id					= ID_SAVE;
+;276:		offlineMenuInfo.save.generic.callback				= UI_OfflineMenu_Event; 
+;277:		offlineMenuInfo.save.string						= "SAVE";
+;278:		offlineMenuInfo.save.color						= color_red;
+;279:		offlineMenuInfo.save.style						= UI_CENTER;
+;280:#endif
+;281:
+;282:		y += OFFLINE_MENU_VERTICAL_SPACING;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 34
 ADDI4
 ASGNI4
-line 266
-;266:		offlineMenuInfo.defaults.generic.type				= MTYPE_PTEXT;
-ADDRGP4 offlineMenuInfo+968
+line 283
+;283:		offlineMenuInfo.defaults.generic.type				= MTYPE_PTEXT;
+ADDRGP4 offlineMenuInfo+1040
 CNSTI4 9
 ASGNI4
-line 267
-;267:		offlineMenuInfo.defaults.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
-ADDRGP4 offlineMenuInfo+968+44
+line 284
+;284:		offlineMenuInfo.defaults.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+ADDRGP4 offlineMenuInfo+1040+44
 CNSTU4 264
 ASGNU4
-line 268
-;268:		offlineMenuInfo.defaults.generic.x				= 320;
-ADDRGP4 offlineMenuInfo+968+12
+line 285
+;285:		offlineMenuInfo.defaults.generic.x				= 320;
+ADDRGP4 offlineMenuInfo+1040+12
 CNSTI4 320
 ASGNI4
-line 269
-;269:		offlineMenuInfo.defaults.generic.y				= y;
-ADDRGP4 offlineMenuInfo+968+16
+line 286
+;286:		offlineMenuInfo.defaults.generic.y				= y;
+ADDRGP4 offlineMenuInfo+1040+16
 ADDRLP4 0
 INDIRI4
 ASGNI4
-line 270
-;270:		offlineMenuInfo.defaults.generic.id				= ID_DEFAULTS;
-ADDRGP4 offlineMenuInfo+968+8
-CNSTI4 17
-ASGNI4
-line 271
-;271:		offlineMenuInfo.defaults.generic.callback			= UI_OfflineMenu_Event; 
-ADDRGP4 offlineMenuInfo+968+48
-ADDRGP4 UI_OfflineMenu_Event
-ASGNP4
-line 272
-;272:		offlineMenuInfo.defaults.string					= "DEFAULTS";
-ADDRGP4 offlineMenuInfo+968+60
-ADDRGP4 $263
-ASGNP4
-line 273
-;273:		offlineMenuInfo.defaults.color					= color_red;
-ADDRGP4 offlineMenuInfo+968+68
-ADDRGP4 color_red
-ASGNP4
-line 274
-;274:		offlineMenuInfo.defaults.style					= style;
-ADDRGP4 offlineMenuInfo+968+64
-ADDRLP4 4
-INDIRI4
-ASGNI4
-line 275
-;275:	}
-LABELV $247
-line 277
-;276:
-;277:	offlineMenuInfo.back.generic.type					= MTYPE_BITMAP;
-ADDRGP4 offlineMenuInfo+1040
-CNSTI4 6
-ASGNI4
-line 278
-;278:	offlineMenuInfo.back.generic.name					= ART_BACK0;
-ADDRGP4 offlineMenuInfo+1040+4
-ADDRGP4 $271
-ASGNP4
-line 279
-;279:	offlineMenuInfo.back.generic.flags				= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
-ADDRGP4 offlineMenuInfo+1040+44
-CNSTU4 260
-ASGNU4
-line 280
-;280:	offlineMenuInfo.back.generic.id					= ID_BACK;
+line 287
+;287:		offlineMenuInfo.defaults.generic.id				= ID_DEFAULTS;
 ADDRGP4 offlineMenuInfo+1040+8
 CNSTI4 18
 ASGNI4
-line 281
-;281:	offlineMenuInfo.back.generic.callback				= UI_OfflineMenu_Event;
+line 288
+;288:		offlineMenuInfo.defaults.generic.callback			= UI_OfflineMenu_Event; 
 ADDRGP4 offlineMenuInfo+1040+48
 ADDRGP4 UI_OfflineMenu_Event
 ASGNP4
-line 282
-;282:	offlineMenuInfo.back.generic.x					= 0;
-ADDRGP4 offlineMenuInfo+1040+12
+line 289
+;289:		offlineMenuInfo.defaults.string					= "DEFAULTS";
+ADDRGP4 offlineMenuInfo+1040+60
+ADDRGP4 $281
+ASGNP4
+line 290
+;290:		offlineMenuInfo.defaults.color					= color_red;
+ADDRGP4 offlineMenuInfo+1040+68
+ADDRGP4 color_red
+ASGNP4
+line 291
+;291:		offlineMenuInfo.defaults.style					= style;
+ADDRGP4 offlineMenuInfo+1040+64
+ADDRLP4 4
+INDIRI4
+ASGNI4
+line 292
+;292:	}
+LABELV $265
+line 294
+;293:
+;294:	offlineMenuInfo.back.generic.type					= MTYPE_BITMAP;
+ADDRGP4 offlineMenuInfo+1112
+CNSTI4 6
+ASGNI4
+line 295
+;295:	offlineMenuInfo.back.generic.name					= ART_BACK0;
+ADDRGP4 offlineMenuInfo+1112+4
+ADDRGP4 $289
+ASGNP4
+line 296
+;296:	offlineMenuInfo.back.generic.flags				= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+ADDRGP4 offlineMenuInfo+1112+44
+CNSTU4 260
+ASGNU4
+line 297
+;297:	offlineMenuInfo.back.generic.id					= ID_BACK;
+ADDRGP4 offlineMenuInfo+1112+8
+CNSTI4 19
+ASGNI4
+line 298
+;298:	offlineMenuInfo.back.generic.callback				= UI_OfflineMenu_Event;
+ADDRGP4 offlineMenuInfo+1112+48
+ADDRGP4 UI_OfflineMenu_Event
+ASGNP4
+line 299
+;299:	offlineMenuInfo.back.generic.x					= 0;
+ADDRGP4 offlineMenuInfo+1112+12
 CNSTI4 0
 ASGNI4
-line 283
-;283:	offlineMenuInfo.back.generic.y					= 480-64;
-ADDRGP4 offlineMenuInfo+1040+16
+line 300
+;300:	offlineMenuInfo.back.generic.y					= 480-64;
+ADDRGP4 offlineMenuInfo+1112+16
 CNSTI4 416
 ASGNI4
-line 284
-;284:	offlineMenuInfo.back.width						= 128;
-ADDRGP4 offlineMenuInfo+1040+76
+line 301
+;301:	offlineMenuInfo.back.width						= 128;
+ADDRGP4 offlineMenuInfo+1112+76
 CNSTI4 128
 ASGNI4
-line 285
-;285:	offlineMenuInfo.back.height						= 64;
-ADDRGP4 offlineMenuInfo+1040+80
+line 302
+;302:	offlineMenuInfo.back.height						= 64;
+ADDRGP4 offlineMenuInfo+1112+80
 CNSTI4 64
 ASGNI4
-line 286
-;286:	offlineMenuInfo.back.focuspic						= ART_BACK1;
-ADDRGP4 offlineMenuInfo+1040+60
-ADDRGP4 $288
+line 303
+;303:	offlineMenuInfo.back.focuspic						= ART_BACK1;
+ADDRGP4 offlineMenuInfo+1112+60
+ADDRGP4 $306
 ASGNP4
-line 289
-;287:
-;288:	
-;289:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.framel );
+line 306
+;304:
+;305:	
+;306:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.framel );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 offlineMenuInfo+360
@@ -960,8 +1030,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 290
-;290:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.framer );
+line 307
+;307:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.framer );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 offlineMenuInfo+448
@@ -969,8 +1039,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 291
-;291:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.banner );
+line 308
+;308:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.banner );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 offlineMenuInfo+288
@@ -978,8 +1048,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 292
-;292:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.tutorials );
+line 309
+;309:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.tutorials );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 offlineMenuInfo+536
@@ -987,8 +1057,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 293
-;293:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.trepidation );
+line 310
+;310:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.trepidation );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 offlineMenuInfo+608
@@ -996,8 +1066,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 294
-;294:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.ffa );
+line 311
+;311:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.ffa );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 offlineMenuInfo+680
@@ -1005,8 +1075,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 295
-;295:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.ctf );
+line 312
+;312:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.ctf );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 offlineMenuInfo+752
@@ -1014,8 +1084,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 296
-;296:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.arsenal );
+line 313
+;313:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.arsenal );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 offlineMenuInfo+824
@@ -1023,8 +1093,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 297
-;297:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.survival );
+line 314
+;314:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.survival );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 offlineMenuInfo+896
@@ -1032,12 +1102,21 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 301
-;298://	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.cdkey );
-;299://	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.load );
-;300://	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.save );
-;301:	if( !trap_Cvar_VariableValue( "cl_paused" ) ) {
-ADDRGP4 $249
+line 315
+;315:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.freezetag);
+ADDRGP4 offlineMenuInfo
+ARGP4
+ADDRGP4 offlineMenuInfo+968
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 319
+;316://	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.cdkey );
+;317://	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.load );
+;318://	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.save );
+;319:	if( !trap_Cvar_VariableValue( "cl_paused" ) ) {
+ADDRGP4 $267
 ARGP4
 ADDRLP4 12
 ADDRGP4 trap_Cvar_VariableValue
@@ -1046,21 +1125,9 @@ ASGNF4
 ADDRLP4 12
 INDIRF4
 CNSTF4 0
-NEF4 $298
-line 302
-;302:		Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.defaults );
-ADDRGP4 offlineMenuInfo
-ARGP4
-ADDRGP4 offlineMenuInfo+968
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
-line 303
-;303:	}
-LABELV $298
-line 304
-;304:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.back );
+NEF4 $317
+line 320
+;320:		Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.defaults );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 offlineMenuInfo+1040
@@ -1068,84 +1135,96 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 305
-;305:}
-LABELV $96
+line 321
+;321:	}
+LABELV $317
+line 322
+;322:	Menu_AddItem( &offlineMenuInfo.menu, &offlineMenuInfo.back );
+ADDRGP4 offlineMenuInfo
+ARGP4
+ADDRGP4 offlineMenuInfo+1112
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 323
+;323:}
+LABELV $97
 endproc UI_OfflineMenu_Init 16 12
 export UI_OfflineMenu_Cache
 proc UI_OfflineMenu_Cache 0 4
-line 313
-;306:
-;307:
-;308:/*
-;309:=================
-;310:UI_OfflineMenu_Cache
-;311:=================
-;312:*/
-;313:void UI_OfflineMenu_Cache( void ) {
-line 314
-;314:	trap_R_RegisterShaderNoMip( ART_BACK0 );
-ADDRGP4 $271
+line 331
+;324:
+;325:
+;326:/*
+;327:=================
+;328:UI_OfflineMenu_Cache
+;329:=================
+;330:*/
+;331:void UI_OfflineMenu_Cache( void ) {
+line 332
+;332:	trap_R_RegisterShaderNoMip( ART_BACK0 );
+ADDRGP4 $289
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 315
-;315:	trap_R_RegisterShaderNoMip( ART_BACK1 );
-ADDRGP4 $288
+line 333
+;333:	trap_R_RegisterShaderNoMip( ART_BACK1 );
+ADDRGP4 $306
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 316
-;316:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
-ADDRGP4 $114
+line 334
+;334:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
+ADDRGP4 $115
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 317
-;317:	trap_R_RegisterShaderNoMip( ART_FRAMER );
-ADDRGP4 $128
+line 335
+;335:	trap_R_RegisterShaderNoMip( ART_FRAMER );
+ADDRGP4 $129
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 318
-;318:}
-LABELV $302
+line 336
+;336:}
+LABELV $321
 endproc UI_OfflineMenu_Cache 0 4
 export UI_OfflineMenu
 proc UI_OfflineMenu 0 4
-line 326
-;319:
-;320:
-;321:/*
-;322:===============
-;323:UI_OfflineMenu
-;324:===============
-;325:*/
-;326:void UI_OfflineMenu( void ) {
-line 327
-;327:	UI_OfflineMenu_Init();
+line 344
+;337:
+;338:
+;339:/*
+;340:===============
+;341:UI_OfflineMenu
+;342:===============
+;343:*/
+;344:void UI_OfflineMenu( void ) {
+line 345
+;345:	UI_OfflineMenu_Init();
 ADDRGP4 UI_OfflineMenu_Init
 CALLV
 pop
-line 328
-;328:	UI_PushMenu( &offlineMenuInfo.menu );
+line 346
+;346:	UI_PushMenu( &offlineMenuInfo.menu );
 ADDRGP4 offlineMenuInfo
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 329
-;329:}
-LABELV $303
+line 347
+;347:}
+LABELV $322
 endproc UI_OfflineMenu 0 4
 bss
 align 4
 LABELV offlineMenuInfo
-skip 1128
+skip 1200
 import UI_RankStatusMenu
 import RankStatus_Cache
 import UI_SignupMenu
@@ -1633,7 +1712,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $288
+LABELV $306
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1651,7 +1730,7 @@ byte 1 95
 byte 1 49
 byte 1 0
 align 1
-LABELV $271
+LABELV $289
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1669,7 +1748,7 @@ byte 1 95
 byte 1 50
 byte 1 0
 align 1
-LABELV $263
+LABELV $281
 byte 1 68
 byte 1 69
 byte 1 70
@@ -1680,7 +1759,7 @@ byte 1 84
 byte 1 83
 byte 1 0
 align 1
-LABELV $249
+LABELV $267
 byte 1 99
 byte 1 108
 byte 1 95
@@ -1692,7 +1771,7 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
-LABELV $242
+LABELV $243
 byte 1 83
 byte 1 85
 byte 1 82
@@ -1703,7 +1782,7 @@ byte 1 65
 byte 1 76
 byte 1 0
 align 1
-LABELV $224
+LABELV $225
 byte 1 65
 byte 1 82
 byte 1 83
@@ -1713,7 +1792,7 @@ byte 1 65
 byte 1 76
 byte 1 0
 align 1
-LABELV $206
+LABELV $207
 byte 1 67
 byte 1 65
 byte 1 80
@@ -1732,7 +1811,7 @@ byte 1 65
 byte 1 71
 byte 1 0
 align 1
-LABELV $188
+LABELV $189
 byte 1 70
 byte 1 82
 byte 1 69
@@ -1747,7 +1826,7 @@ byte 1 76
 byte 1 76
 byte 1 0
 align 1
-LABELV $170
+LABELV $171
 byte 1 84
 byte 1 82
 byte 1 69
@@ -1761,7 +1840,7 @@ byte 1 79
 byte 1 78
 byte 1 0
 align 1
-LABELV $152
+LABELV $153
 byte 1 84
 byte 1 85
 byte 1 84
@@ -1773,7 +1852,7 @@ byte 1 76
 byte 1 83
 byte 1 0
 align 1
-LABELV $128
+LABELV $129
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1797,7 +1876,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $114
+LABELV $115
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1817,7 +1896,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $106
+LABELV $107
 byte 1 80
 byte 1 76
 byte 1 65
@@ -1832,7 +1911,7 @@ byte 1 78
 byte 1 69
 byte 1 0
 align 1
-LABELV $92
+LABELV $93
 byte 1 83
 byte 1 69
 byte 1 84
