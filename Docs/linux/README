@@ -2,7 +2,7 @@ Trepdiation Linux Readme.txt
 
 ===================================
 Trepidation 12-20-2011 Linux
-http://trepidation.u7net.com
+http://trepidation.n5net.com
 ===================================
 OVERVIEW:
 This archive contains binaries for Trepidation dedicated server, the game client and all game media
@@ -10,12 +10,12 @@ This archive contains binaries for Trepidation dedicated server, the game client
 =====================
 BUILDING FROM SOURCE
 =====================
-If you need to build from source the source code can be checked out from our subversion repository here:
+If you need to build from source the source code can be checked out from GitHub:
 
-svn co https://svn.sourceforge.net/svnroot/trepidation trepidation 
+git clone https://github.com/q3shafe/trepidation.git
 
 You can view the repository on the web here:
-http://trepidation.svn.sourceforge.net/viewvc/trepidation/
+https://github.com/q3shafe/trepidation
 
 INSTALLING
 When unpacking the zip/tar you should have a directory called trepidation.
@@ -32,5 +32,5 @@ Eventually I'll write up more on this.
 The CHANGELOG and other Readable stuff can be found in the directory 
 called Docs
 
-http://www.planettrepidation.com
+http://trepidation.n5net.com
 
