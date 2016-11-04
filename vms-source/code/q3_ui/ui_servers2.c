@@ -101,6 +101,7 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define GAMES_LASTMAN		6	// Shafe - Trep - New Gametype
 #define GAMES_TREPIDATION	7	// Shafe - Trep - New Gametype
 #define GAMES_FREEZETAG		8	// Shafe - Trep - New Gametype
+#define GAMES_ONE4ALL		8	// Shafe - Trep - New Gametype
 
 //Shafe - Trep - Mulimasters
 static const char *master_servers[] = {
@@ -130,6 +131,7 @@ static const char *servertype_items[] = {
 	"Survival",	// Shafe - Trep - New Gametype
 	"Trepidation",	// Shafe - Trep - New Gametype
 	"Freeze Tag",	// Shafe - Trep - New Gametype
+	"One4All",	// Shafe - Trep - New Gametype
 	0
 };
 
@@ -152,6 +154,7 @@ static char* gamenames[] = {
 	"Survival",				// Overload
 	"Trepidation",			// Harvester
 	"Freeze Tag",			// Harvester
+	"One4All",
 	"Rocket Arena 3",	// Rocket Arena 3
 	"Q3F",						// Q3F
 	"Urban Terror",		// Urban Terror
