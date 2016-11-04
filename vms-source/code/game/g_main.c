@@ -106,8 +106,17 @@ vmCvar_t	g_StartBFG;
 
 // Other Options
 vmCvar_t	g_Turrets;
+vmCvar_t	g_MaxTurrets;
 vmCvar_t	g_GrappleMode;
 vmCvar_t	g_PCTeamkills;
+
+// This shit doesn't work
+vmCvar_t	g_GuassJump;
+vmCvar_t	g_GuassKnockBack;
+vmCvar_t	g_GuassSelfDamage;
+vmCvar_t	g_GuassRate;
+
+vmCvar_t	g_ReverseCTF;
 
 vmCvar_t	trep_debug;
 
@@ -216,6 +225,7 @@ static cvarTable_t		gameCvarTable[] = {
 
 	// New Stuff
 	{ &g_Turrets, "g_Turrets", "1", CVAR_ARCHIVE, 0, qtrue },	
+	{ &g_MaxTurrets, "g_MaxTurrets", "3", CVAR_ARCHIVE, 0, qtrue },	
 
 	// Arsenal Stuff
 	{ &g_StartGauntlet, "g_StartGauntlet", "1", CVAR_ARCHIVE, 0, qtrue  },
@@ -231,6 +241,12 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_GrappleMode, "g_GrappleMode", "1", CVAR_ARCHIVE, 0, qtrue  },
 	{ &g_PCTeamkills, "g_PCTeamkills", "1", CVAR_ARCHIVE, 0, qtrue  },
 
+	{ &g_GuassJump, "g_GuassJump", "0", 0, 0, qtrue },
+	{ &g_GuassKnockBack, "g_GuassKnockBack", "0", 0, 0, qtrue },
+	{ &g_GuassSelfDamage, "g_GuassSelfDamage", "1", 0, 0, qtrue },
+	{ &g_GuassRate, "g_GuassRate", "10", 0, 0, qtrue },
+
+	{ &g_ReverseCTF, "g_ReverseCTF", "0", 0, 0, qtrue },
 
 	{ &g_MultiJumps, "g_MultiJumps", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
 	

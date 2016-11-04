@@ -232,7 +232,9 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 			// respawning rules
 			// drop the quantity if the already have over the minimum
 			if ( other->client->ps.ammo[ ent->item->giTag ] < quantity ) {
+				
 				quantity = quantity - other->client->ps.ammo[ ent->item->giTag ];
+				
 			} else {
 				quantity = 1;		// only add a single shot  
 				
@@ -257,8 +259,8 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 		//Add_Ammo( other, ent->item->giTag, quantity ); // Oops :) Shafe
 	}
 	
-	// If it's arsenal and lms then make sure they are still at infinite
-	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
+	// If it's arsenal and lms then make sure they are still at infinite - and One4All
+	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2) || (g_GameMode.integer == 4))
 	{
 		other->client->ps.ammo[ ent->item->giTag ] = 9999;
 	}
@@ -961,8 +963,8 @@ void G_SpawnItem (gentity_t *ent, gitem_t *item) {
 	}
 	/////////////////////////////////////////////////////////
 
-	//Shafe - Trep Instagib
-	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
+	//Shafe - Trep Instagib, One4All
+	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2) || (g_GameMode.integer == 4)  )
 	{
 	// Arsenal - prevent weapons and ammo from spawning
 	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)

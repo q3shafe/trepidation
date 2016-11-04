@@ -11,9 +11,37 @@ quickly via http from trepidation.n5net.com if there is a file you need.  So yea
 downloads on :)
 
 
+
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- added new gamemode g_GameMode 4 is the new one4all gametype.
+
+- added g_MaxTurrets so that server admins can set the maximum allowed turrets on ctf games (default is now 3 - was 5)
+
+- Fixes to various config files
+
+- Fixed arenas.txt so that maps show up correctly on offline menus.
+
+- Added in g_ReverseCTF cvar if enabled in capture the flag games, you spawn in the enemy base, which makes for interesting gameplay
+
+- Battlesuite power up now fully protects you
+
+- Turrets can no longer go on a killing spree
+
+- new cvars for Guass rifle jumping in instagib mode (Not working yet)
+	g_GuassJump <b>
+	If set to 1 allows you to rocket jump with the Guass Rifle in instagib mode
+
+	g_GuassKnockBack <#>
+	if g_GuassJump is set to 1, this will effect how high you can jump.
+
+	g_GuassSelfDamage <b>
+	if g_GuassJump is set to 1, setting this to 0 will dis-allow self damage from the rifle jump.
+
+======================
+11-01-2016 BUILD
+======================
 
 - Updated Master Servers.
 

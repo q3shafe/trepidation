@@ -545,6 +545,8 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 	{
 		attacker->InstaChatFrags++;
 	} 
+
+	
 	
 //unlagged - backward reconciliation #2
 	// make sure the body shows up in the client's current position
@@ -663,10 +665,13 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				// Streak Of 7 Gives them a spree msg :)
 				if (attacker->InstaStreak == 7)
 				{
+					if(attacker->s.weapon != WP_TURRET) // Turrets dont get killing sprees -- shafe
+					{
 						trap_SendServerCommand( -1, va( "print \"" S_COLOR_YELLOW "%s ^7IS ON A KILLING SPREE!\n\"", attacker->client->pers.netname ) );
 						trap_SendServerCommand( -1, va("cp \"^7%s IS ON A KILLING SPREE!!\n\"", attacker->client->pers.netname ) );
 						//attacker->client->ps.persistant[PERS_SCORE]+=1;
-						attacker->InstaMostKillSpree++;
+						attacker->InstaMostKillSpree++;					
+					}
 						attacker->InstaStreak = 0;
 
 				
@@ -1161,8 +1166,15 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		return;
 	}
 
+	// Instagib Trep Shafe
+	if(g_instagib.integer == 1) 
+	{
+		if (targ != attacker)
+			{
+				dflags |= DAMAGE_NO_KNOCKBACK;
+			}
+	}
 
-	
 
 #ifdef MISSIONPACK
 	if ( targ->client && mod != MOD_JUICED) {
@@ -1331,6 +1343,23 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		}
 	}
 
+		// Shafe - Gauss Jumping
+		if (g_instagib.integer == 1) 
+		{
+		
+			// Is it self inflicted?  
+			if ( attacker->client == targ->client )
+			{
+				if (g_GuassSelfDamage.value == 0) 
+				{
+					// It was self inflicted, but we aren't going to inflict damage
+					return;
+				}
+			}
+
+		}
+
+
 	// battlesuit protects from all radius damage (but takes knockback)
 	// and protects 50% against all damage
 	if ( client && client->ps.powerups[PW_BATTLESUIT] ) {
@@ -1338,8 +1367,11 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		if ( ( dflags & DAMAGE_RADIUS ) || ( mod == MOD_FALLING ) ) {
 			return;
 		}
-		damage *= 0.5;
+		return;		// shafe - Battlesuite now protects from everything.
+		//damage *= 0.5;
 	}
+
+
 
 	// add to the attacker's hit counter (if the target isn't a general entity like a prox mine)
 	if ( attacker->client && targ != attacker && targ->health > 0
@@ -1586,7 +1618,25 @@ qboolean G_RadiusDamage ( vec3_t origin, gentity_t *attacker, float damage, floa
 			// push the center of mass higher than the origin so players
 			// get knocked into the air more
 			dir[2] += 24;
-			G_Damage (ent, NULL, attacker, dir, origin, (int)points, DAMAGE_RADIUS, mod);
+
+			// Guass Rifle Jumping 
+			if (g_instagib.integer == 1)
+			{
+				// Is it a rocket jump?
+				if (ent == attacker)
+				{
+					G_Damage (ent, NULL, attacker, dir, origin, (int)points, DAMAGE_RADIUS, mod);
+				} 
+				else
+				{			
+					G_Damage (ent, NULL, attacker, 0, origin, (int)points, DAMAGE_RADIUS, mod);
+				}
+			} 
+			else 
+			{
+
+				G_Damage (ent, NULL, attacker, dir, origin, (int)points, DAMAGE_RADIUS, mod);
+			}
 		}
 	}
 

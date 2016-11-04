@@ -258,7 +258,7 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type )
 		{
 			if(ent->client->sess.sessionTeam == TEAM_BLUE) 
 			{
-				if (level.blueTurrets > 5) // Maybe Max # of Turrets Should be A Cvar so admins can change
+				if (level.blueTurrets > g_MaxTurrets.integer-1) // Maybe Max # of Turrets Should be A Cvar so admins can change
 				{
 					iserror = 2;
 				} else {
@@ -269,7 +269,7 @@ void Cmd_SpawnTurret_f( gentity_t *ent , int type )
 			}
 			if(ent->client->sess.sessionTeam == TEAM_RED) 
 			{
-				if (level.redTurrets > 5) // Maybe Max # of Turrets Should be A Cvar so admins can change
+				if (level.redTurrets > g_MaxTurrets.integer-1) // Maybe Max # of Turrets Should be A Cvar so admins can change
 				{
 					iserror = 2;
 				} else {

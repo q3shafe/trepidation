@@ -657,6 +657,8 @@ void weapon_railgun_fire (gentity_t *ent) {
 	gentity_t	*tent;
 	gentity_t	*traceEnt;
 	int			damage;
+	int			splashDmg = 16;
+	int			splashRadius = 64;
 	int			i;
 	int			hits;
 	int			unlinked;
@@ -669,8 +671,25 @@ void weapon_railgun_fire (gentity_t *ent) {
 		damage = 100 * s_quadFactor;
 	} else {
 		damage = 1000 * s_quadFactor;
+
 	}
 	/////////////////////////////////////
+
+	// Rifle Jumping - Shafe
+		// Instagib Jumping
+		if (g_GuassJump.integer == 1) 
+		{
+			
+			splashRadius = g_GuassKnockBack.integer * 50; 
+			splashDmg = splashRadius; 
+
+		} else {
+			splashDmg = 0; 
+			splashRadius = 0; 
+		}
+
+		
+		
 
 	VectorMA (muzzle, 8192, forward, end);
 
@@ -718,6 +737,14 @@ void weapon_railgun_fire (gentity_t *ent) {
 				G_Damage (traceEnt, ent, ent, forward, trace.endpos, damage, 0, MOD_RAILGUN);
 			}
 #else
+
+			if( G_RadiusDamage( trace.endpos, ent, splashDmg, splashRadius, NULL, MOD_RAILGUN ) ) // Shafe - Trying to get the rifle jumping to work.
+			{
+				// Does a burst radius hit really count as a "hit"?  Not for Guass rifles...
+				//g_entities[ent->s.number].client->ps.persistant[PERS_ACCURACY_HITS]++;
+			}
+
+			
 				if( LogAccuracyHit( traceEnt, ent ) ) {
 					hits++;
 				}

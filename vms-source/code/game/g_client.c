@@ -1024,7 +1024,7 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 
 //unlagged - backward reconciliation #5
 	// announce it
-	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 11-01-2016\n\"" );
+	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 11-04-2016\n\"" );
 	if ( g_delagHitscan.integer ) {
 //		trap_SendServerCommand( clientNum, "print \"This server is Unlagged: full lag compensation is ON!\n\"" );
 	}
@@ -1150,10 +1150,40 @@ void ClientSpawn(gentity_t *ent) {
 						spawn_origin, spawn_angles);
 	} else if (g_gametype.integer >= GT_CTF ) {
 		// all base oriented team games use the CTF spawn points
-		spawnPoint = SelectCTFSpawnPoint ( 
-						client->sess.sessionTeam, 
-						client->pers.teamState.state, 
-						spawn_origin, spawn_angles);
+	
+		// Do Reverse CTF Here: g_ReverseCTF
+		if (g_ReverseCTF.value == 1) {
+
+			if (client->sess.sessionTeam == TEAM_RED) 
+			{ 
+				spawnPoint = SelectCTFSpawnPoint ( 
+				TEAM_BLUE, 
+				client->pers.teamState.state, 
+				spawn_origin, spawn_angles);
+			} 
+
+			if (client->sess.sessionTeam == TEAM_BLUE) 
+			{ 
+				spawnPoint = SelectCTFSpawnPoint ( 				
+				TEAM_RED, 
+				client->pers.teamState.state, 
+				spawn_origin, spawn_angles);
+			} 
+
+
+		}
+		
+		
+		if (g_ReverseCTF.value == 0) 
+		{
+		
+		
+			spawnPoint = SelectCTFSpawnPoint ( 
+							client->sess.sessionTeam, 
+							client->pers.teamState.state, 
+							spawn_origin, spawn_angles);
+
+		}
 	} else {
 		do {
 			// the first spawn should be at a good looking spot
@@ -1161,10 +1191,12 @@ void ClientSpawn(gentity_t *ent) {
 				client->pers.initialSpawn = qtrue;
 				spawnPoint = SelectInitialSpawnPoint( spawn_origin, spawn_angles );
 			} else {
-				// don't spawn near existing origin if possible
-				spawnPoint = SelectSpawnPoint ( 
+				// don't spawn near existing origin if possible	
+				
+					spawnPoint = SelectSpawnPoint ( 
 					client->ps.origin, 
 					spawn_origin, spawn_angles);
+				
 			}
 
 			// Tim needs to prevent bots from spawning at the initial point
@@ -1344,7 +1376,7 @@ void ClientSpawn(gentity_t *ent) {
 		}
 
 		// Hand out weapons for LMS
-		if ((g_GameMode.integer == 2) && (g_instagib.integer == 0))
+		if ((g_GameMode.integer == 2) || (g_GameMode.integer == 4) && (g_instagib.integer == 0))
 		{
 			wpn = irandom(1,9); // Lets clean this up so you can specify which weapons are allowed
 			
@@ -1546,6 +1578,9 @@ int		t;
 	
 }
 
+
+
+ //ent->r.svFlags & SVF_BOT 
 /*
  When someone doesnt build an MC it builds one somewhere for em
  This is a called it picks a player and puts it in their spot..

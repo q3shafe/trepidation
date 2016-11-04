@@ -648,6 +648,9 @@ int BotGetLongTermGoal(bot_state_t *bs, int tfl, int retreat, bot_goal_t *goal) 
 			//if the bot wants to crouch
 			if (bs->attackcrouch_time > FloatTime()) {
 				trap_EA_Crouch(bs->client);
+
+			
+			
 			}
 			//don't crouch when swimming
 			if (trap_AAS_Swimming(bs->origin)) bs->attackcrouch_time = FloatTime() - 1;

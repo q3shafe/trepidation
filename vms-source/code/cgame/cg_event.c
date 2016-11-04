@@ -112,13 +112,13 @@ static void CG_Obituary( entityState_t *ent ) {
 		message = "was squished";
 		break;
 	case MOD_WATER:
-		message = "sank like a rock";
+		message = "drowned";
 		break;
 	case MOD_SLIME:
 		message = "melted";
 		break;
 	case MOD_LAVA:
-		message = "does a back flip into the lava";
+		message = "burned up";
 		break;
 	case MOD_IMMOBILIZED:
 		message = "was immobilized";

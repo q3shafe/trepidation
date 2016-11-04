@@ -1874,6 +1874,7 @@ if (pm->cmd.buttons & 1) {
 	{
 			if ( pm->ps->ammo[ pm->ps->weapon ] != -1 ) 
 			{
+				
 				pm->ps->ammo[pm->ps->weapon] -= altAmmoUsage[pm->ps->weapon];
 				// Let's not let them go -1 (infinite).. That is bad.. Just set the ammo to 0
 				// 

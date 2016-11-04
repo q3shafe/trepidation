@@ -980,8 +980,16 @@ extern	vmCvar_t	g_StartBFG;
 
 // Other Options
 extern	vmCvar_t	g_Turrets;
+extern	vmCvar_t	g_MaxTurrets;
 extern	vmCvar_t	g_GrappleMode;
 extern	vmCvar_t	g_PCTeamkills;
+
+extern	vmCvar_t	g_GuassJump;
+extern	vmCvar_t	g_GuassKnockBack;
+extern	vmCvar_t	g_GuassSelfDamage;
+extern	vmCvar_t	g_GuassRate;
+
+extern	vmCvar_t	g_ReverseCTF;
 
 extern	vmCvar_t	trep_debug;
 

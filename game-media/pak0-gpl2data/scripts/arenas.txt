@@ -5,7 +5,7 @@ fraglimit	10
 bots		"Mech"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team ctf tourney"
+type "single ffa team tourney"
 recommended "12"
 }
 
@@ -72,7 +72,7 @@ bots		"sarge"
 longname "CTF Opposing Forts"
 longname_deutsch ""
 longname_francais ""
-type "ctf"
+type "single ffa team tourney ctf"
 recommended "12"
 }
 
@@ -96,7 +96,7 @@ bots		"sarge"
 longname "RPG3DM2"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team"
+type "single ffa team tourney"
 recommended "8"
 }
 
