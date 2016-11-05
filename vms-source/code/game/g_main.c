@@ -104,6 +104,8 @@ vmCvar_t	g_StartFlame;
 vmCvar_t	g_StartGauss;
 vmCvar_t	g_StartPlasma;
 vmCvar_t	g_StartBFG;
+vmCvar_t	g_StartRandom;
+
 
 // Other Options
 vmCvar_t	g_Turrets;
@@ -245,6 +247,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_StartGauss, "g_StartGauss", "1", CVAR_ARCHIVE, 0, qtrue  },
 	{ &g_StartPlasma, "g_StartPlasma", "0", CVAR_ARCHIVE, 0, qtrue  },
 	{ &g_StartBFG, "g_StartBFG", "0", CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_StartRandom, "g_StartRandom", "0", CVAR_ARCHIVE, 0, qtrue  },
 
 	{ &g_GrappleMode, "g_GrappleMode", "1", CVAR_ARCHIVE, 0, qtrue  },
 	{ &g_PCTeamkills, "g_PCTeamkills", "1", CVAR_ARCHIVE, 0, qtrue  },
@@ -479,9 +482,36 @@ Shafe - Trep Set The Rules for Various Mods
 extern int altAmmoUsage[];
 void G_InitModRules( void )
 {
+
+	// Arsenal Random Weapons
+		if ((g_StartRandom.integer == 1) && (g_GameMode.integer == 1))
+		{
+			
+			trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartGauntlet 0\n"); 
+			// In random mode we should always keep the lfo rifle -- shafe (prevents that chance that no weapons are auto selected
+			trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartMG 1\n"); 
+			trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartSG 0\n"); 
+			trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartGrenade 0\n"); 
+			trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartSingCan 0\n"); 
+			trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartFlame 0\n"); 
+			trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartGauss 0\n");  
+			trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartPlasma 0\n");
+			trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartBFG 0\n");
+			
+			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartGauntlet 1\n"); }
+			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartMG 1\n"); }
+			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartSG 1\n"); }
+			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartGrenade 1\n"); }
+			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartSingCan 1\n"); }
+			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartFlame 1\n"); }
+			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartGauss 1\n");  }
+			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartPlasma 1\n");}
+			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartBFG 1\n");}
+
+		} 
 	
+
 	// We only allow team_ffa in trepidation gametype
-	
 	if (g_GameMode.integer == 3)
 	{
 		trap_SendConsoleCommand( EXEC_APPEND, "g_gametype 3\n" );
@@ -770,7 +800,7 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	level.firstStrike = qfalse; // Shafe - Trep
 	//level.lastClient = -1;
 	
-	
+		
 
 	if ((g_gametype.integer == 0) && (g_GameMode.integer == 3))
 	{
@@ -1435,6 +1465,24 @@ void ExitLevel (void) {
 		trap_SendConsoleCommand( EXEC_APPEND, "vstr nextmap\n" );
 	}
 	
+
+
+	/* THIS DOESNT WORK -- FIXME - tre
+	// Arsenal Random Weapons
+		if ((g_StartRandom.integer == 1) && (g_GameMode.integer == 1))
+		{
+			if (iramdom(0,1) > 0) { g_StartGauntlet.integer = 1; }
+			if (irandom(0,1) > 0) { g_StartMG.integer = 1;}
+			if (irandom(0,1) > 0) { g_StartSG.integer = 1; }
+			if (irandom(0,1) > 0) { g_StartGrenade.integer = 1; }
+			if (irandom(0,1) > 0) { g_StartSingCan.integer = 1; }
+			if (irandom(0,1) > 0) { g_StartFlame.integer = 1  }
+			if (irandom(0,1) > 0) { g_StartGauss.integer = 1;  }
+			if (irandom(0,1) > 0) { g_StartPlasma.integer = 1;}
+			if (irandom(0,1) > 0) { g_StartBFG.integer = 1;}
+
+		} */
+
 	
 	level.changemap = NULL;
 	level.intermissiontime = 0;

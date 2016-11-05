@@ -583,9 +583,14 @@ static char *GetRandomMap() {
 		{
 			G_Printf( "Here is a random map %s\n", token);
 		
-			//g_lastmap.string = token;
-			trap_SendConsoleCommand( EXEC_APPEND, va("map %s\n", token ) );
-			return token;
+			// This is broken
+			if(g_lastmap.string != token) 
+			{
+				//g_lastmap.string = token;
+				trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap %s\n", token) );
+				trap_SendConsoleCommand( EXEC_APPEND, va("map %s\n", token ) );
+				return token;
+			} else { 				y++; }
 
 		}
 		count++;				

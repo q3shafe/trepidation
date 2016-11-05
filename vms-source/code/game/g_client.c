@@ -1080,15 +1080,17 @@ void ClientBegin( int clientNum ) {
 	if (g_GameMode.integer == 1) 
 	{
 			// Set Starting Weapons
-		if (g_StartGauntlet.integer > 0) { client->pers.h_gauntlet = qtrue; }
-		if (g_StartMG.integer > 0) { client->pers.h_mg = qtrue; }
-		if (g_StartSG.integer > 0) { client->pers.h_sg = qtrue; }
-		if (g_StartGrenade.integer > 0) { client->pers.h_grenade = qtrue; }
-		if (g_StartSingCan.integer > 0) { client->pers.h_singcan = qtrue; }
-		if (g_StartFlame.integer > 0) { client->pers.h_flame = qtrue; }
-		if (g_StartGauss.integer > 0) { client->pers.h_gauss = qtrue; }
-		if (g_StartPlasma.integer > 0) { client->pers.h_plasma = qtrue;}
-		if (g_StartBFG.integer > 0) { client->pers.h_bfg = qtrue;}
+		
+			if (g_StartGauntlet.integer > 0) { client->pers.h_gauntlet = qtrue; }
+			if (g_StartMG.integer > 0) { client->pers.h_mg = qtrue; }
+			if (g_StartSG.integer > 0) { client->pers.h_sg = qtrue; }
+			if (g_StartGrenade.integer > 0) { client->pers.h_grenade = qtrue; }
+			if (g_StartSingCan.integer > 0) { client->pers.h_singcan = qtrue; }
+			if (g_StartFlame.integer > 0) { client->pers.h_flame = qtrue; }
+			if (g_StartGauss.integer > 0) { client->pers.h_gauss = qtrue; }
+			if (g_StartPlasma.integer > 0) { client->pers.h_plasma = qtrue;}
+			if (g_StartBFG.integer > 0) { client->pers.h_bfg = qtrue;}
+		
 	}
 	client->pers.Eliminated = qfalse;  // They are not eliminated
 	// End Arsenal

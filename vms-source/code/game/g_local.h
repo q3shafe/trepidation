@@ -977,6 +977,7 @@ extern	vmCvar_t	g_StartFlame;
 extern	vmCvar_t	g_StartGauss;
 extern	vmCvar_t	g_StartPlasma;
 extern	vmCvar_t	g_StartBFG;
+extern	vmCvar_t	g_StartRandom;
 
 // Other Options
 extern	vmCvar_t	g_Turrets;
