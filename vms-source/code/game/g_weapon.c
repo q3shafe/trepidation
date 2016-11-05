@@ -10,6 +10,9 @@ static	vec3_t	muzzle;
 
 #define NUM_NAILSHOTS 15
 
+
+
+
 /*
 ================
 G_BounceProjectile

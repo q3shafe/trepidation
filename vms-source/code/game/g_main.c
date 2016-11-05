@@ -4,6 +4,7 @@
 #include "g_local.h"
 
 extern void BroadCastSound(char *path);
+extern char *GetRandomMap();
 
 level_locals_t	level;
 
@@ -117,6 +118,13 @@ vmCvar_t	g_GuassSelfDamage;
 vmCvar_t	g_GuassRate;
 
 vmCvar_t	g_ReverseCTF;
+
+
+vmCvar_t    g_mapfile; 
+vmCvar_t    g_randommap;
+vmCvar_t    g_lastmap;
+
+
 
 vmCvar_t	trep_debug;
 
@@ -250,10 +258,13 @@ static cvarTable_t		gameCvarTable[] = {
 
 	{ &g_MultiJumps, "g_MultiJumps", "0", CVAR_SERVERINFO | CVAR_ARCHIVE, 0, qtrue },
 	
+	{ &g_randommap, "g_randommap", "0", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
+	{ &g_lastmap, "g_lastmap", "0", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
+	{ &g_mapfile, "g_mapfile", "map_rotation.cfg", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
+	
+
 	// Debugging
 	{ &trep_debug, "trep_debug", "0", CVAR_ARCHIVE, 0, qtrue }
-
-	
 	
 };
 
@@ -760,6 +771,7 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	//level.lastClient = -1;
 	
 	
+
 	if ((g_gametype.integer == 0) && (g_GameMode.integer == 3))
 	{
 		g_GameMode.integer = 0;
@@ -1412,8 +1424,18 @@ void ExitLevel (void) {
 		return;	
 	}
 
+	
+	if(g_randommap.integer == 1) 
+	{
+		char newmap;
+		//char appendstring;
+		newmap = *GetRandomMap();				
 
-	trap_SendConsoleCommand( EXEC_APPEND, "vstr nextmap\n" );
+	} else {
+		trap_SendConsoleCommand( EXEC_APPEND, "vstr nextmap\n" );
+	}
+	
+	
 	level.changemap = NULL;
 	level.intermissiontime = 0;
 

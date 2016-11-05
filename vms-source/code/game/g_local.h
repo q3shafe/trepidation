@@ -991,6 +991,10 @@ extern	vmCvar_t	g_GuassRate;
 
 extern	vmCvar_t	g_ReverseCTF;
 
+extern vmCvar_t         g_mapfile; 
+extern vmCvar_t         g_randommap;
+extern vmCvar_t         g_lastmap;
+
 extern	vmCvar_t	trep_debug;
 
 //extern	vmCvar_t	g_CTFGrapple; // Decided not to make this an option

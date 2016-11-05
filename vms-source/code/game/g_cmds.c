@@ -394,28 +394,84 @@ void Cmd_TeleGren_f (gentity_t *ent)
 	return;
 	}
 
-	if ( ent->istelepoint == 1 ) 
-	{
-		// Shafe The old way was just to drop it now we return flags to base if you try to teleport with one
-		if (ent->client->ps.powerups[PW_REDFLAG]) 
+
+	
+		if ( ent->istelepoint == 1 ) 
 		{
-			Team_ReturnFlag( TEAM_RED );
-			ent->client->ps.powerups[PW_REDFLAG] = 0;
-		}
-		if (ent->client->ps.powerups[PW_BLUEFLAG]) 
+			// Shafe The old way was just to drop it now we return flags to base if you try to teleport with one
+			if (ent->client->ps.powerups[PW_REDFLAG]) 
+			{
+				Team_ReturnFlag( TEAM_RED );
+				ent->client->ps.powerups[PW_REDFLAG] = 0;
+			}
+			if (ent->client->ps.powerups[PW_BLUEFLAG]) 
+			{
+				Team_ReturnFlag( TEAM_BLUE );
+				ent->client->ps.powerups[PW_BLUEFLAG] = 0;
+			}
+
+			VectorCopy( ent->teleloc, ent->client->ps.origin );
+			ent->istelepoint = 0;
+			VectorClear( ent->teleloc );
+
+			// Do a check here
+			if(!CanPDGHere(ent)) 
+			{
+				// They went into a wall - kill them
+				//player_die (ent, ent, ent, 100000, MOD_CRUSH);
+				G_Damage ( ent, NULL, NULL, NULL, NULL, 100000, DAMAGE_NO_PROTECTION, MOD_TELEFRAG);
+
+			}
+		} 
+		else 
 		{
-			Team_ReturnFlag( TEAM_BLUE );
-			ent->client->ps.powerups[PW_BLUEFLAG] = 0;
+			G_Printf( S_COLOR_GREEN "PDG Lock Not Established\n" );
 		}
 
-		VectorCopy( ent->teleloc, ent->client->ps.origin );
-		ent->istelepoint = 0;
-		VectorClear( ent->teleloc );
-	} 
-	else 
-	{
-        G_Printf( S_COLOR_GREEN "PDG Lock Not Established\n" );
+	
+}
+
+/*
+=================
+CanPDGHere
+
+This checks if we can teleport here
+=================
+*/
+qboolean CanPDGHere(gentity_t *playerent)
+{
+	trace_t		tr;
+	trace_t		trd;
+	vec3_t		fwd, pos, dest, mins = {-16,-16, 0}, maxs = {16,16,16};
+	vec3_t		down, dpos, ddest, dmins = {-35,-35, -35}, dmaxs = {35,35,35};
+	//vec3_t		end, mins = {-15, -15, 0}, maxs = {15, 15, 2};
+	qboolean	f;
+	qboolean	d;			
+	
+
+	// can we place this in front of us?
+	//AngleVectors (playerent->., fwd, NULL, NULL);
+	AngleVectors (playerent->client->ps.viewangles, fwd, NULL, NULL);
+	fwd[2] = 0;
+	down[0] = 0;
+	VectorMA(playerent->client->ps.origin, 64, fwd, dest);
+	trap_Trace (&tr, playerent->client->ps.origin, mins, maxs, dest, playerent->s.number, MASK_SHOT );
+	
+	VectorMA(playerent->client->ps.origin, 74, down, ddest);
+	trap_Trace (&trd, playerent->client->ps.origin, dmins, dmaxs, ddest, playerent->s.number, MASK_SHOT );
+	
+
+	if (tr.fraction > 0.9)
+	{//room in front
+		return qtrue;
 	}
+	
+	if (trd.fraction > 0.9)
+	{//room in below
+		return qtrue;
+	}
+	// no room
+	return qfalse;
 }
 
 /*
@@ -444,6 +500,7 @@ void Cmd_Score_f( gentity_t *ent )
 {
 	DeathmatchScoreboardMessage( ent );
 }
+
 
 void Cmd_Test_f (gentity_t *ent) 
 {

@@ -482,6 +482,124 @@ void	Svcmd_ForceTeam_f( void ) {
 	SetTeam( &g_entities[cl - level.clients], str );
 }
 
+
+
+int count_file_lines() {
+	fileHandle_t	f;
+	int				len;
+	//maplist_t		maplist;	
+	char			mapname[200];
+	int				count=0;
+	char			buffer[32000];
+	char			*p, *token;
+	int				x;
+	int				y;
+
+	/*
+	if (strlen(g_mappool.string) == 0)
+		return;
+	*/
+
+	len = trap_FS_FOpenFile(g_mapfile.string, &f, FS_READ);
+	if ( !f ) {
+		return 0;
+	}
+
+	if (len > sizeof(buffer)) {
+		trap_FS_FCloseFile(f);
+		return 0;
+	}
+
+	if (len == 0) {
+		trap_FS_FCloseFile(f);
+		return 0;
+	}
+
+	memset(buffer, 0, sizeof(buffer));
+	trap_FS_Read(buffer, sizeof(buffer), f);
+	trap_FS_FCloseFile(f);
+
+	count = 0;
+	p = buffer;
+	while ( 1 ) {
+		token = COM_Parse(&p);
+		if (! as_checkToken(token) )
+			break; // end of list	
+			count++;				
+	}	
+
+	return count;
+}
+
+qboolean as_checkToken( char *token ) {
+	if ( !token || token[0] == 0 )
+		return qfalse;
+	return qtrue;
+}
+
+static char *GetRandomMap() {
+	fileHandle_t	f;
+	int				len;
+	//maplist_t		maplist;	
+	char			mapname[200];
+	int				count=0;
+	char			buffer[32000];
+	char			*p, *token;
+	int				x;
+	int				y;
+
+	/*
+	if (strlen(g_mappool.string) == 0)
+		return;
+	*/
+
+	len = trap_FS_FOpenFile(g_mapfile.string, &f, FS_READ);
+	if ( !f ) {
+		return token;
+	}
+
+	if (len > sizeof(buffer)) {
+		trap_FS_FCloseFile(f);
+		return token;
+	}
+
+	if (len == 0) {
+		trap_FS_FCloseFile(f);
+		return token;
+	}
+
+	memset(buffer, 0, sizeof(buffer));
+	trap_FS_Read(buffer, sizeof(buffer), f);
+	trap_FS_FCloseFile(f);
+	x = count_file_lines();
+	p = buffer;
+	y = irandom(0,(x-1));
+	
+	while ( 1 ) {
+		token = COM_Parse(&p);
+		if (! as_checkToken(token) )
+			break; // end of list	
+		if (count==y) 
+		{
+			G_Printf( "Here is a random map %s\n", token);
+		
+			//g_lastmap.string = token;
+			trap_SendConsoleCommand( EXEC_APPEND, va("map %s\n", token ) );
+			return token;
+
+		}
+		count++;				
+	}	
+	
+	
+	
+	//G_Printf( "Here is a random map %i - %s\n", y, mapname[y]);
+	return "nothing";
+
+
+}
+
+
 char	*ConcatArgs( int start );
 
 /*
@@ -544,6 +662,12 @@ qboolean	ConsoleCommand( void ) {
 		Svcmd_Punish_f();
 		return qtrue;
 	}
+
+	if (Q_stricmp (cmd, "randmap") == 0) {
+		G_Printf( "Final: Here is a random map %s\n", GetRandomMap());
+		
+		return qtrue;
+	}
 	
 	if (Q_stricmp (cmd, "balanceteams") == 0) {
 		//FixME Later - Do it twice in case it's way off
@@ -551,6 +675,9 @@ qboolean	ConsoleCommand( void ) {
 		Svcmd_BalanceTeams();
 		return qtrue;
 	}
+
+
+
 
 	if (g_dedicated.integer) {
 		if (Q_stricmp (cmd, "say") == 0) {
