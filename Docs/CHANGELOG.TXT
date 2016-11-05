@@ -15,6 +15,8 @@ downloads on :)
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- added g_randommap for randomized map rotations which uses a map file specified with g_mapfile.
+
 - added new gamemode g_GameMode 4 is the new one4all gametype.
 
 - added g_MaxTurrets so that server admins can set the maximum allowed turrets on ctf games (default is now 3 - was 5)

@@ -5,7 +5,7 @@ fraglimit	10
 bots		"Mech"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team tourney"
+type "single ffa team tourney arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
@@ -16,7 +16,7 @@ fraglimit	10
 bots		"sarge"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team"
+type "single ffa team arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
@@ -27,7 +27,7 @@ bots		"sarge"
 longname "Outpost"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team"
+type "single ffa team arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
@@ -38,7 +38,7 @@ bots		"sarge"
 longname "CTF Trepx US"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team ctf tourney"
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "9"
 }
 
@@ -50,7 +50,7 @@ bots		"sarge"
 longname "War Ring"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team tourney"
+type "single ffa team tourney arsenal survival trepidation freezetag one4all"
 recommended "9"
 }
 
@@ -61,7 +61,7 @@ bots		"sarge"
 longname "Citadel"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team"
+type "single ffa team arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
@@ -72,7 +72,7 @@ bots		"sarge"
 longname "CTF Opposing Forts"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team tourney ctf"
+type "single ffa team tourney ctf arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
@@ -84,7 +84,7 @@ bots		"sarge"
 longname "Dystopia"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team ctf tourney"
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
@@ -96,7 +96,7 @@ bots		"sarge"
 longname "RPG3DM2"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team tourney"
+type "single ffa team tourney arsenal survival trepidation freezetag one4all"
 recommended "8"
 }
 
@@ -107,7 +107,7 @@ fraglimit	10
 bots		"sarge"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team ctf tourney"
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "8"
 }
 
@@ -118,7 +118,7 @@ fraglimit	10
 bots		"sarge"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team ctf tourney"
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "8"
 }
 
@@ -131,7 +131,7 @@ fraglimit	10
 bots		"sarge"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team ctf tourney"
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
@@ -142,7 +142,7 @@ bots		"sarge"
 longname "CTF Pyramide"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team ctf tourney"
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
@@ -153,7 +153,7 @@ bots		"sarge"
 longname "CTF Pyramide II"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team ctf tourney"
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
@@ -165,7 +165,7 @@ bots		"sarge"
 longname "Dread"
 longname_deutsch ""
 longname_francais ""
-type "single ffa team ctf tourney"
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
@@ -176,7 +176,7 @@ fraglimit	10
 bots		"sarge"
 longname_deutsch "CTF Aversion"
 longname_francais ""
-type "single ffa team ctf tourney"
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "12"
 }
 
