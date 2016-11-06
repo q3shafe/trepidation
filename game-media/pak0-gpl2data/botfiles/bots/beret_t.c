@@ -60,6 +60,8 @@ chat "Beret"
 	{
 		3, " sucks!";
 		2, ", I let you win.";
+		"Good Game";
+		"Good Game";
 		
 		// 0 = bot name
 		// 1 = random opponent

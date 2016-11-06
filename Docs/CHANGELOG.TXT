@@ -15,6 +15,11 @@ downloads on :)
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Fixed bots, there are more bots available for matches.
+
+- fixed bot chatting on single player.
+
+- Implemented Multijumping controlled by the g_MuliJumps cvar (Not working)
 
 - Added new single player menu.
 

@@ -665,7 +665,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				// Streak Of 7 Gives them a spree msg :)
 				if (attacker->InstaStreak == 7)
 				{
-					if(attacker->s.weapon != WP_TURRET) // Turrets dont get killing sprees -- shafe
+					if((attacker->s.weapon != WP_TURRET) && (meansOfDeath != MOD_UNKNOQN) && (meansOfDeath != MOD_WATER)&& (meansOfDeath != MOD_LAVA) && (meansOfDeath != MOD_SLIME) && (meansOfDeath != MOD_CRUSH) && (meansOfDeath != MOD_FALLING)) // Turrets dont get killing sprees -- shafe
 					{
 						trap_SendServerCommand( -1, va( "print \"" S_COLOR_YELLOW "%s ^7IS ON A KILLING SPREE!\n\"", attacker->client->pers.netname ) );
 						trap_SendServerCommand( -1, va("cp \"^7%s IS ON A KILLING SPREE!!\n\"", attacker->client->pers.netname ) );

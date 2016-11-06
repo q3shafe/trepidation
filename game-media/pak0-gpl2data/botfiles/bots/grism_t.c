@@ -46,17 +46,18 @@ chat "grism"
 
 	type "level_end"
 	{
-		"nice place ", 4, ", much less dangerous than d3dm2.";
+		"nice place ", 4, ", much less dangerous than ctf_pyramide2.";
 	}
 
 	type "level_end_victory"
 	{
 		"Yep.";
+		"Good Game!";
 	}
 
 	type "level_end_lose"
 	{
-		"Aww... crap!";
+		"Aww... crap!, gg";
 	}
 
 	type "hit_talking"

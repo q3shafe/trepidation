@@ -1996,21 +1996,20 @@ ADDRGP4 bg_numItems
 INDIRI4
 LTI4 $273
 LABELV $275
-line 1079
-;1079:		Com_Error( ERR_DROP, "BG_CanItemBeGrabbed: index out of range" );
-CNSTI4 1
-ARGI4
-ADDRGP4 $276
-ARGP4
-ADDRGP4 Com_Error
-CALLV
-pop
-line 1080
-;1080:	}
+line 1081
+;1079:		
+;1080:		// Github bug 21 - Let's return false instead of shutting down the game
+;1081:		return qfalse;
+CNSTI4 0
+RETI4
+ADDRGP4 $272
+JUMPV
 LABELV $273
-line 1082
-;1081:
-;1082:	item = &bg_itemlist[ent->modelindex];
+line 1085
+;1082:		//Com_Error( ERR_DROP, "BG_CanItemBeGrabbed: index out of range" );
+;1083:	}
+;1084:
+;1085:	item = &bg_itemlist[ent->modelindex];
 ADDRLP4 0
 CNSTI4 52
 ADDRFP4 4
@@ -2022,11 +2021,11 @@ MULI4
 ADDRGP4 bg_itemlist
 ADDP4
 ASGNP4
-line 1086
-;1083:	
-;1084:
-;1085:	
-;1086:	switch( item->giType ) {
+line 1089
+;1086:	
+;1087:
+;1088:	
+;1089:	switch( item->giType ) {
 ADDRLP4 8
 ADDRLP4 0
 INDIRP4
@@ -2037,44 +2036,44 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-LTI4 $278
+LTI4 $277
 ADDRLP4 8
 INDIRI4
 CNSTI4 8
-GTI4 $278
+GTI4 $277
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $322
+ADDRGP4 $321
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $322
-address $320
-address $280
-address $285
-address $288
-address $291
+LABELV $321
+address $319
+address $279
+address $284
+address $287
+address $290
+address $298
+address $316
+address $277
 address $299
-address $317
-address $278
-address $300
 code
-LABELV $280
-line 1096
-;1087:	case IT_WEAPON:
-;1088:		// Shafe - Trep - Modified A Lot
-;1089:		// The Problem here is you cant pick up dropped weapons - 
-;1090:		// But I Took care of that with a cheap hack in g_items.c Touch_Item
-;1091:		//
-;1092:		//
-;1093:		//if ( ent->eFlags & EF_DEAD ) // drop weapons are always pick-up-able and will give ammo
-;1094:		//{	return qtrue;}					
-;1095:		
-;1096:		if ( ps->stats[STAT_WEAPONS] & ( 1 << item->giTag ))  // They have the weapon now see if we need to refuse it because they are out of ammo.
+LABELV $279
+line 1099
+;1090:	case IT_WEAPON:
+;1091:		// Shafe - Trep - Modified A Lot
+;1092:		// The Problem here is you cant pick up dropped weapons - 
+;1093:		// But I Took care of that with a cheap hack in g_items.c Touch_Item
+;1094:		//
+;1095:		//
+;1096:		//if ( ent->eFlags & EF_DEAD ) // drop weapons are always pick-up-able and will give ammo
+;1097:		//{	return qtrue;}					
+;1098:		
+;1099:		if ( ps->stats[STAT_WEAPONS] & ( 1 << item->giTag ))  // They have the weapon now see if we need to refuse it because they are out of ammo.
 ADDRFP4 8
 INDIRP4
 CNSTI4 192
@@ -2089,12 +2088,12 @@ INDIRI4
 LSHI4
 BANDI4
 CNSTI4 0
-EQI4 $281
-line 1097
-;1097:		{
-line 1099
-;1098:			
-;1099:			if ( ps->ammo[ item->giTag ] > 0 )  // They are not out of ammo.. dont let them pick it up
+EQI4 $280
+line 1100
+;1100:		{
+line 1102
+;1101:			
+;1102:			if ( ps->ammo[ item->giTag ] > 0 )  // They are not out of ammo.. dont let them pick it up
 ADDRLP4 0
 INDIRP4
 CNSTI4 40
@@ -2109,36 +2108,36 @@ ADDP4
 ADDP4
 INDIRI4
 CNSTI4 0
-LEI4 $283
-line 1100
-;1100:			{ 
-line 1101
-;1101:				return qfalse;		
+LEI4 $282
+line 1103
+;1103:			{ 
+line 1104
+;1104:				return qfalse;		
 CNSTI4 0
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $283
-line 1103
-;1102:			}
-;1103:		}
-LABELV $281
+LABELV $282
 line 1106
-;1104:		
-;1105:		// Otherwise just give it to them.
-;1106:		return qtrue;	
+;1105:			}
+;1106:		}
+LABELV $280
+line 1109
+;1107:		
+;1108:		// Otherwise just give it to them.
+;1109:		return qtrue;	
 CNSTI4 1
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $285
-line 1112
-;1107:
-;1108:	case IT_AMMO:
-;1109:
-;1110:		//if ( ps->ammo[ item->giTag ] >= 200 ) {
-;1111:	
-;1112:			if ( ps->ammo[ item->giTag ] >= Max_Ammo[ item->giTag ]) { // Shafe - Trep
+LABELV $284
+line 1115
+;1110:
+;1111:	case IT_AMMO:
+;1112:
+;1113:		//if ( ps->ammo[ item->giTag ] >= 200 ) {
+;1114:	
+;1115:			if ( ps->ammo[ item->giTag ] >= Max_Ammo[ item->giTag ]) { // Shafe - Trep
 ADDRLP4 16
 ADDRLP4 0
 INDIRP4
@@ -2161,43 +2160,43 @@ INDIRI4
 ADDRGP4 Max_Ammo
 ADDP4
 INDIRI4
-LTI4 $286
-line 1113
-;1113:				return qfalse;		// can't hold any more
+LTI4 $285
+line 1116
+;1116:				return qfalse;		// can't hold any more
 CNSTI4 0
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $286
-line 1115
-;1114:			} 
-;1115:		return qtrue;
+LABELV $285
+line 1118
+;1117:			} 
+;1118:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $288
-line 1135
-;1116:
-;1117:	case IT_ARMOR:
-;1118:#ifdef MISSIONPACK
-;1119:		if( bg_itemlist[ps->stats[STAT_PERSISTANT_POWERUP]].giTag == PW_SCOUT ) {
-;1120:			return qfalse;
-;1121:		}
-;1122:
-;1123:		// we also clamp armor to the maxhealth for handicapping
-;1124:		if( bg_itemlist[ps->stats[STAT_PERSISTANT_POWERUP]].giTag == PW_GUARD ) {
-;1125:			upperBound = ps->stats[STAT_MAX_HEALTH];
-;1126:		}
-;1127:		else {
-;1128:			upperBound = ps->stats[STAT_MAX_HEALTH] * 2;
+LABELV $287
+line 1138
+;1119:
+;1120:	case IT_ARMOR:
+;1121:#ifdef MISSIONPACK
+;1122:		if( bg_itemlist[ps->stats[STAT_PERSISTANT_POWERUP]].giTag == PW_SCOUT ) {
+;1123:			return qfalse;
+;1124:		}
+;1125:
+;1126:		// we also clamp armor to the maxhealth for handicapping
+;1127:		if( bg_itemlist[ps->stats[STAT_PERSISTANT_POWERUP]].giTag == PW_GUARD ) {
+;1128:			upperBound = ps->stats[STAT_MAX_HEALTH];
 ;1129:		}
-;1130:
-;1131:		if ( ps->stats[STAT_ARMOR] >= upperBound ) {
-;1132:			return qfalse;
-;1133:		}
-;1134:#else
-;1135:		if ( ps->stats[STAT_ARMOR] >= ps->stats[STAT_MAX_HEALTH] * 2 ) {
+;1130:		else {
+;1131:			upperBound = ps->stats[STAT_MAX_HEALTH] * 2;
+;1132:		}
+;1133:
+;1134:		if ( ps->stats[STAT_ARMOR] >= upperBound ) {
+;1135:			return qfalse;
+;1136:		}
+;1137:#else
+;1138:		if ( ps->stats[STAT_ARMOR] >= ps->stats[STAT_MAX_HEALTH] * 2 ) {
 ADDRLP4 20
 ADDRFP4 8
 INDIRP4
@@ -2214,35 +2213,35 @@ ADDP4
 INDIRI4
 CNSTI4 1
 LSHI4
-LTI4 $289
-line 1136
-;1136:			return qfalse;
+LTI4 $288
+line 1139
+;1139:			return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $289
-line 1139
-;1137:		}
-;1138:#endif
-;1139:		return qtrue;
+LABELV $288
+line 1142
+;1140:		}
+;1141:#endif
+;1142:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $291
-line 1150
-;1140:
-;1141:	case IT_HEALTH:
-;1142:		// small and mega healths will go over the max, otherwise
-;1143:		// don't pick up if already at max
-;1144:#ifdef MISSIONPACK
-;1145:		if( bg_itemlist[ps->stats[STAT_PERSISTANT_POWERUP]].giTag == PW_GUARD ) {
-;1146:			upperBound = ps->stats[STAT_MAX_HEALTH];
-;1147:		}
-;1148:		else
-;1149:#endif
-;1150:		if ( item->quantity == 5 || item->quantity == 100 ) {
+LABELV $290
+line 1153
+;1143:
+;1144:	case IT_HEALTH:
+;1145:		// small and mega healths will go over the max, otherwise
+;1146:		// don't pick up if already at max
+;1147:#ifdef MISSIONPACK
+;1148:		if( bg_itemlist[ps->stats[STAT_PERSISTANT_POWERUP]].giTag == PW_GUARD ) {
+;1149:			upperBound = ps->stats[STAT_MAX_HEALTH];
+;1150:		}
+;1151:		else
+;1152:#endif
+;1153:		if ( item->quantity == 5 || item->quantity == 100 ) {
 ADDRLP4 24
 ADDRLP4 0
 INDIRP4
@@ -2253,14 +2252,14 @@ ASGNI4
 ADDRLP4 24
 INDIRI4
 CNSTI4 5
-EQI4 $294
+EQI4 $293
 ADDRLP4 24
 INDIRI4
 CNSTI4 100
-NEI4 $292
-LABELV $294
-line 1151
-;1151:			if ( ps->stats[STAT_HEALTH] >= ps->stats[STAT_MAX_HEALTH] * 2 ) {
+NEI4 $291
+LABELV $293
+line 1154
+;1154:			if ( ps->stats[STAT_HEALTH] >= ps->stats[STAT_MAX_HEALTH] * 2 ) {
 ADDRLP4 28
 ADDRFP4 8
 INDIRP4
@@ -2277,26 +2276,26 @@ ADDP4
 INDIRI4
 CNSTI4 1
 LSHI4
-LTI4 $295
-line 1152
-;1152:				return qfalse;
+LTI4 $294
+line 1155
+;1155:				return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $295
-line 1154
-;1153:			}
-;1154:			return qtrue;
+LABELV $294
+line 1157
+;1156:			}
+;1157:			return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $292
-line 1157
-;1155:		}
-;1156:
-;1157:		if ( ps->stats[STAT_HEALTH] >= ps->stats[STAT_MAX_HEALTH] ) {
+LABELV $291
+line 1160
+;1158:		}
+;1159:
+;1160:		if ( ps->stats[STAT_HEALTH] >= ps->stats[STAT_MAX_HEALTH] ) {
 ADDRLP4 28
 ADDRFP4 8
 INDIRP4
@@ -2311,88 +2310,88 @@ INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
-LTI4 $297
-line 1158
-;1158:			return qfalse;
+LTI4 $296
+line 1161
+;1161:			return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $297
-line 1160
-;1159:		}
-;1160:		return qtrue;
+LABELV $296
+line 1163
+;1162:		}
+;1163:		return qtrue;
+CNSTI4 1
+RETI4
+ADDRGP4 $272
+JUMPV
+LABELV $298
+line 1166
+;1164:
+;1165:	case IT_POWERUP:
+;1166:		return qtrue;	// powerups are always picked up
 CNSTI4 1
 RETI4
 ADDRGP4 $272
 JUMPV
 LABELV $299
-line 1163
-;1161:
-;1162:	case IT_POWERUP:
-;1163:		return qtrue;	// powerups are always picked up
-CNSTI4 1
-RETI4
-ADDRGP4 $272
-JUMPV
-LABELV $300
-line 1201
-;1164:
-;1165:#ifdef MISSIONPACK
-;1166:	case IT_PERSISTANT_POWERUP:
-;1167:		// can only hold one item at a time
-;1168:		if ( ps->stats[STAT_PERSISTANT_POWERUP] ) {
-;1169:			return qfalse;
-;1170:		}
-;1171:
-;1172:		// check team only
-;1173:		if( ( ent->generic1 & 2 ) && ( ps->persistant[PERS_TEAM] != TEAM_RED ) ) {
-;1174:			return qfalse;
-;1175:		}
-;1176:		if( ( ent->generic1 & 4 ) && ( ps->persistant[PERS_TEAM] != TEAM_BLUE ) ) {
+line 1204
+;1167:
+;1168:#ifdef MISSIONPACK
+;1169:	case IT_PERSISTANT_POWERUP:
+;1170:		// can only hold one item at a time
+;1171:		if ( ps->stats[STAT_PERSISTANT_POWERUP] ) {
+;1172:			return qfalse;
+;1173:		}
+;1174:
+;1175:		// check team only
+;1176:		if( ( ent->generic1 & 2 ) && ( ps->persistant[PERS_TEAM] != TEAM_RED ) ) {
 ;1177:			return qfalse;
 ;1178:		}
-;1179:
-;1180:		return qtrue;
-;1181:#endif
+;1179:		if( ( ent->generic1 & 4 ) && ( ps->persistant[PERS_TEAM] != TEAM_BLUE ) ) {
+;1180:			return qfalse;
+;1181:		}
 ;1182:
-;1183:	case IT_TEAM: // team items, such as flags
-;1184:#ifdef MISSIONPACK		
-;1185:		if( gametype == GT_1FCTF ) {
-;1186:			// neutral flag can always be picked up
-;1187:			if( item->giTag == PW_NEUTRALFLAG ) {
-;1188:				return qtrue;
-;1189:			}
-;1190:			if (ps->persistant[PERS_TEAM] == TEAM_RED) {
-;1191:				if (item->giTag == PW_BLUEFLAG  && ps->powerups[PW_NEUTRALFLAG] ) {
-;1192:					return qtrue;
-;1193:				}
-;1194:			} else if (ps->persistant[PERS_TEAM] == TEAM_BLUE) {
-;1195:				if (item->giTag == PW_REDFLAG  && ps->powerups[PW_NEUTRALFLAG] ) {
-;1196:					return qtrue;
-;1197:				}
-;1198:			}
-;1199:		}
-;1200:#endif
-;1201:		if( gametype == GT_CTF ) {
+;1183:		return qtrue;
+;1184:#endif
+;1185:
+;1186:	case IT_TEAM: // team items, such as flags
+;1187:#ifdef MISSIONPACK		
+;1188:		if( gametype == GT_1FCTF ) {
+;1189:			// neutral flag can always be picked up
+;1190:			if( item->giTag == PW_NEUTRALFLAG ) {
+;1191:				return qtrue;
+;1192:			}
+;1193:			if (ps->persistant[PERS_TEAM] == TEAM_RED) {
+;1194:				if (item->giTag == PW_BLUEFLAG  && ps->powerups[PW_NEUTRALFLAG] ) {
+;1195:					return qtrue;
+;1196:				}
+;1197:			} else if (ps->persistant[PERS_TEAM] == TEAM_BLUE) {
+;1198:				if (item->giTag == PW_REDFLAG  && ps->powerups[PW_NEUTRALFLAG] ) {
+;1199:					return qtrue;
+;1200:				}
+;1201:			}
+;1202:		}
+;1203:#endif
+;1204:		if( gametype == GT_CTF ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 4
-NEI4 $301
-line 1205
-;1202:			// ent->modelindex2 is non-zero on items if they are dropped
-;1203:			// we need to know this because we can pick up our dropped flag (and return it)
-;1204:			// but we can't pick up our flag at base
-;1205:			if (ps->persistant[PERS_TEAM] == TEAM_RED) {
+NEI4 $300
+line 1208
+;1205:			// ent->modelindex2 is non-zero on items if they are dropped
+;1206:			// we need to know this because we can pick up our dropped flag (and return it)
+;1207:			// but we can't pick up our flag at base
+;1208:			if (ps->persistant[PERS_TEAM] == TEAM_RED) {
 ADDRFP4 8
 INDIRP4
 CNSTI4 260
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $303
-line 1206
-;1206:				if (item->giTag == PW_BLUEFLAG ||
+NEI4 $302
+line 1209
+;1209:				if (item->giTag == PW_BLUEFLAG ||
 ADDRLP4 32
 ADDRLP4 0
 INDIRP4
@@ -2403,54 +2402,54 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 8
-EQI4 $308
+EQI4 $307
 ADDRLP4 32
 INDIRI4
 CNSTI4 7
-NEI4 $309
+NEI4 $308
 ADDRFP4 4
 INDIRP4
 CNSTI4 164
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $308
-LABELV $309
+NEI4 $307
+LABELV $308
 ADDRLP4 0
 INDIRP4
 CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 7
-NEI4 $304
+NEI4 $303
 ADDRFP4 8
 INDIRP4
 CNSTI4 344
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $304
-LABELV $308
-line 1209
-;1207:					(item->giTag == PW_REDFLAG && ent->modelindex2) ||
-;1208:					(item->giTag == PW_REDFLAG && ps->powerups[PW_BLUEFLAG]) )
-;1209:					return qtrue;
+EQI4 $303
+LABELV $307
+line 1212
+;1210:					(item->giTag == PW_REDFLAG && ent->modelindex2) ||
+;1211:					(item->giTag == PW_REDFLAG && ps->powerups[PW_BLUEFLAG]) )
+;1212:					return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $272
 JUMPV
-line 1210
-;1210:			} else if (ps->persistant[PERS_TEAM] == TEAM_BLUE) {
-LABELV $303
+line 1213
+;1213:			} else if (ps->persistant[PERS_TEAM] == TEAM_BLUE) {
+LABELV $302
 ADDRFP4 8
 INDIRP4
 CNSTI4 260
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $310
-line 1211
-;1211:				if (item->giTag == PW_REDFLAG ||
+NEI4 $309
+line 1214
+;1214:				if (item->giTag == PW_REDFLAG ||
 ADDRLP4 32
 ADDRLP4 0
 INDIRP4
@@ -2461,137 +2460,137 @@ ASGNI4
 ADDRLP4 32
 INDIRI4
 CNSTI4 7
-EQI4 $315
+EQI4 $314
 ADDRLP4 32
 INDIRI4
 CNSTI4 8
-NEI4 $316
+NEI4 $315
 ADDRFP4 4
 INDIRP4
 CNSTI4 164
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $315
-LABELV $316
+NEI4 $314
+LABELV $315
 ADDRLP4 0
 INDIRP4
 CNSTI4 40
 ADDP4
 INDIRI4
 CNSTI4 8
-NEI4 $312
+NEI4 $311
 ADDRFP4 8
 INDIRP4
 CNSTI4 340
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $312
-LABELV $315
-line 1214
-;1212:					(item->giTag == PW_BLUEFLAG && ent->modelindex2) ||
-;1213:					(item->giTag == PW_BLUEFLAG && ps->powerups[PW_REDFLAG]) )
-;1214:					return qtrue;
+EQI4 $311
+LABELV $314
+line 1217
+;1215:					(item->giTag == PW_BLUEFLAG && ent->modelindex2) ||
+;1216:					(item->giTag == PW_BLUEFLAG && ps->powerups[PW_REDFLAG]) )
+;1217:					return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $312
-line 1215
-;1215:			}
-LABELV $310
-LABELV $304
-line 1216
-;1216:		}
-LABELV $301
-line 1223
-;1217:
-;1218:#ifdef MISSIONPACK
-;1219:		if( gametype == GT_HARVESTER ) {
-;1220:			return qtrue;
-;1221:		}
-;1222:#endif
-;1223:		return qfalse;
+LABELV $311
+line 1218
+;1218:			}
+LABELV $309
+LABELV $303
+line 1219
+;1219:		}
+LABELV $300
+line 1226
+;1220:
+;1221:#ifdef MISSIONPACK
+;1222:		if( gametype == GT_HARVESTER ) {
+;1223:			return qtrue;
+;1224:		}
+;1225:#endif
+;1226:		return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $317
-line 1227
-;1224:
-;1225:	case IT_HOLDABLE:
-;1226:		// can only hold one item at a time
-;1227:		if ( ps->stats[STAT_HOLDABLE_ITEM] ) {
+LABELV $316
+line 1230
+;1227:
+;1228:	case IT_HOLDABLE:
+;1229:		// can only hold one item at a time
+;1230:		if ( ps->stats[STAT_HOLDABLE_ITEM] ) {
 ADDRFP4 8
 INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $318
-line 1228
-;1228:			return qfalse;
+EQI4 $317
+line 1231
+;1231:			return qfalse;
 CNSTI4 0
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $318
-line 1230
-;1229:		}
-;1230:		return qtrue;
+LABELV $317
+line 1233
+;1232:		}
+;1233:		return qtrue;
 CNSTI4 1
 RETI4
 ADDRGP4 $272
 JUMPV
-LABELV $320
-line 1233
-;1231:
-;1232:        case IT_BAD:
-;1233:            Com_Error( ERR_DROP, "BG_CanItemBeGrabbed: IT_BAD" );
+LABELV $319
+line 1236
+;1234:
+;1235:        case IT_BAD:
+;1236:            Com_Error( ERR_DROP, "BG_CanItemBeGrabbed: IT_BAD" );
 CNSTI4 1
 ARGI4
-ADDRGP4 $321
+ADDRGP4 $320
 ARGP4
 ADDRGP4 Com_Error
 CALLV
 pop
-line 1240
-;1234:        default:
-;1235:#ifndef Q3_VM
-;1236:#ifndef NDEBUG // bk0001204
-;1237:          Com_Printf("BG_CanItemBeGrabbed: unknown enum %d\n", item->giType );
-;1238:#endif
-;1239:#endif
-;1240:         break;
-LABELV $278
 line 1243
-;1241:	}
-;1242:
-;1243:	return qfalse;
+;1237:        default:
+;1238:#ifndef Q3_VM
+;1239:#ifndef NDEBUG // bk0001204
+;1240:          Com_Printf("BG_CanItemBeGrabbed: unknown enum %d\n", item->giType );
+;1241:#endif
+;1242:#endif
+;1243:         break;
+LABELV $277
+line 1246
+;1244:	}
+;1245:
+;1246:	return qfalse;
 CNSTI4 0
 RETI4
 LABELV $272
 endproc BG_CanItemBeGrabbed 36 8
 export BG_EvaluateTrajectory
 proc BG_EvaluateTrajectory 104 12
-line 1254
-;1244:}
-;1245:
-;1246://======================================================================
-;1247:
-;1248:/*
-;1249:================
-;1250:BG_EvaluateTrajectory
-;1251:
+line 1257
+;1247:}
+;1248:
+;1249://======================================================================
+;1250:
+;1251:/*
 ;1252:================
-;1253:*/
-;1254:void BG_EvaluateTrajectory( const trajectory_t *tr, int atTime, vec3_t result ) {
-line 1258
-;1255:	float		deltaTime;
-;1256:	float		phase;
-;1257:	
-;1258:	switch( tr->trType ) {
+;1253:BG_EvaluateTrajectory
+;1254:
+;1255:================
+;1256:*/
+;1257:void BG_EvaluateTrajectory( const trajectory_t *tr, int atTime, vec3_t result ) {
+line 1261
+;1258:	float		deltaTime;
+;1259:	float		phase;
+;1260:	
+;1261:	switch( tr->trType ) {
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -2600,35 +2599,35 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-LTI4 $324
+LTI4 $323
 ADDRLP4 8
 INDIRI4
 CNSTI4 6
-GTI4 $324
+GTI4 $323
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $338
+ADDRGP4 $337
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $338
+LABELV $337
+address $326
+address $326
 address $327
-address $327
-address $328
-address $330
 address $329
+address $328
+address $334
 address $335
-address $336
 code
-LABELV $327
-line 1261
-;1259:	case TR_STATIONARY:
-;1260:	case TR_INTERPOLATE:
-;1261:		VectorCopy( tr->trBase, result );
+LABELV $326
+line 1264
+;1262:	case TR_STATIONARY:
+;1263:	case TR_INTERPOLATE:
+;1264:		VectorCopy( tr->trBase, result );
 ADDRFP4 8
 INDIRP4
 ADDRFP4 0
@@ -2637,14 +2636,14 @@ CNSTI4 12
 ADDP4
 INDIRB
 ASGNB 12
-line 1262
-;1262:		break;
-ADDRGP4 $325
+line 1265
+;1265:		break;
+ADDRGP4 $324
 JUMPV
-LABELV $328
-line 1264
-;1263:	case TR_LINEAR:
-;1264:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
+LABELV $327
+line 1267
+;1266:	case TR_LINEAR:
+;1267:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
 ADDRLP4 0
 CNSTF4 981668463
 ADDRFP4 4
@@ -2658,8 +2657,8 @@ SUBI4
 CVIF4 4
 MULF4
 ASGNF4
-line 1265
-;1265:		VectorMA( tr->trBase, deltaTime, tr->trDelta, result );
+line 1268
+;1268:		VectorMA( tr->trBase, deltaTime, tr->trDelta, result );
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -2727,14 +2726,14 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1266
-;1266:		break;
-ADDRGP4 $325
+line 1269
+;1269:		break;
+ADDRGP4 $324
 JUMPV
-LABELV $329
-line 1268
-;1267:	case TR_SINE:
-;1268:		deltaTime = ( atTime - tr->trTime ) / (float) tr->trDuration;
+LABELV $328
+line 1271
+;1270:	case TR_SINE:
+;1271:		deltaTime = ( atTime - tr->trTime ) / (float) tr->trDuration;
 ADDRLP4 28
 ADDRFP4 0
 INDIRP4
@@ -2757,8 +2756,8 @@ INDIRI4
 CVIF4 4
 DIVF4
 ASGNF4
-line 1269
-;1269:		phase = sin( deltaTime * M_PI * 2 );
+line 1272
+;1272:		phase = sin( deltaTime * M_PI * 2 );
 CNSTF4 1073741824
 CNSTF4 1078530011
 ADDRLP4 0
@@ -2774,8 +2773,8 @@ ADDRLP4 4
 ADDRLP4 32
 INDIRF4
 ASGNF4
-line 1270
-;1270:		VectorMA( tr->trBase, phase, tr->trDelta, result );
+line 1273
+;1273:		VectorMA( tr->trBase, phase, tr->trDelta, result );
 ADDRLP4 36
 ADDRFP4 0
 INDIRP4
@@ -2843,14 +2842,14 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1271
-;1271:		break;
-ADDRGP4 $325
+line 1274
+;1274:		break;
+ADDRGP4 $324
 JUMPV
-LABELV $330
-line 1273
-;1272:	case TR_LINEAR_STOP:
-;1273:		if ( atTime > tr->trTime + tr->trDuration ) {
+LABELV $329
+line 1276
+;1275:	case TR_LINEAR_STOP:
+;1276:		if ( atTime > tr->trTime + tr->trDuration ) {
 ADDRLP4 48
 ADDRFP4 0
 INDIRP4
@@ -2868,9 +2867,9 @@ CNSTI4 8
 ADDP4
 INDIRI4
 ADDI4
-LEI4 $331
-line 1274
-;1274:			atTime = tr->trTime + tr->trDuration;
+LEI4 $330
+line 1277
+;1277:			atTime = tr->trTime + tr->trDuration;
 ADDRLP4 52
 ADDRFP4 0
 INDIRP4
@@ -2888,11 +2887,11 @@ ADDP4
 INDIRI4
 ADDI4
 ASGNI4
-line 1275
-;1275:		}
-LABELV $331
-line 1276
-;1276:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
+line 1278
+;1278:		}
+LABELV $330
+line 1279
+;1279:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
 ADDRLP4 0
 CNSTF4 981668463
 ADDRFP4 4
@@ -2906,22 +2905,22 @@ SUBI4
 CVIF4 4
 MULF4
 ASGNF4
-line 1277
-;1277:		if ( deltaTime < 0 ) {
+line 1280
+;1280:		if ( deltaTime < 0 ) {
 ADDRLP4 0
 INDIRF4
 CNSTF4 0
-GEF4 $333
-line 1278
-;1278:			deltaTime = 0;
+GEF4 $332
+line 1281
+;1281:			deltaTime = 0;
 ADDRLP4 0
 CNSTF4 0
 ASGNF4
-line 1279
-;1279:		}
-LABELV $333
-line 1280
-;1280:		VectorMA( tr->trBase, deltaTime, tr->trDelta, result );
+line 1282
+;1282:		}
+LABELV $332
+line 1283
+;1283:		VectorMA( tr->trBase, deltaTime, tr->trDelta, result );
 ADDRLP4 52
 ADDRFP4 0
 INDIRP4
@@ -2988,30 +2987,30 @@ ADDRLP4 0
 INDIRF4
 MULF4
 ADDF4
-ASGNF4
-line 1281
-;1281:		break;
-ADDRGP4 $325
-JUMPV
-LABELV $335
-line 1283
-;1282:	case TR_GRAVITY:
-;1283:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
-ADDRLP4 0
-CNSTF4 981668463
-ADDRFP4 4
-INDIRI4
-ADDRFP4 0
-INDIRP4
-CNSTI4 4
-ADDP4
-INDIRI4
-SUBI4
-CVIF4 4
-MULF4
 ASGNF4
 line 1284
-;1284:		VectorMA( tr->trBase, deltaTime, tr->trDelta, result );
+;1284:		break;
+ADDRGP4 $324
+JUMPV
+LABELV $334
+line 1286
+;1285:	case TR_GRAVITY:
+;1286:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
+ADDRLP4 0
+CNSTF4 981668463
+ADDRFP4 4
+INDIRI4
+ADDRFP4 0
+INDIRP4
+CNSTI4 4
+ADDP4
+INDIRI4
+SUBI4
+CVIF4 4
+MULF4
+ASGNF4
+line 1287
+;1287:		VectorMA( tr->trBase, deltaTime, tr->trDelta, result );
 ADDRLP4 64
 ADDRFP4 0
 INDIRP4
@@ -3079,8 +3078,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1285
-;1285:		result[2] -= 0.5 * DEFAULT_GRAVITY * deltaTime * deltaTime;		// FIXME: local gravity...
+line 1288
+;1288:		result[2] -= 0.5 * DEFAULT_GRAVITY * deltaTime * deltaTime;		// FIXME: local gravity...
 ADDRLP4 76
 ADDRFP4 8
 INDIRP4
@@ -3105,14 +3104,14 @@ INDIRF4
 MULF4
 SUBF4
 ASGNF4
-line 1286
-;1286:		break;
-ADDRGP4 $325
+line 1289
+;1289:		break;
+ADDRGP4 $324
 JUMPV
-LABELV $336
-line 1288
-;1287:	case TR_ORBITAL:
-;1288:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
+LABELV $335
+line 1291
+;1290:	case TR_ORBITAL:
+;1291:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
 ADDRLP4 0
 CNSTF4 981668463
 ADDRFP4 4
@@ -3126,8 +3125,8 @@ SUBI4
 CVIF4 4
 MULF4
 ASGNF4
-line 1289
-;1289:		VectorMA( tr->trBase, deltaTime, tr->trDelta, result );
+line 1292
+;1292:		VectorMA( tr->trBase, deltaTime, tr->trDelta, result );
 ADDRLP4 84
 ADDRFP4 0
 INDIRP4
@@ -3195,8 +3194,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 1290
-;1290:		result[2] -= 0.5 * DEVASTATOR_GRAVITY * deltaTime * deltaTime;		// FIXME: local gravity...
+line 1293
+;1293:		result[2] -= 0.5 * DEVASTATOR_GRAVITY * deltaTime * deltaTime;		// FIXME: local gravity...
 ADDRLP4 96
 ADDRFP4 8
 INDIRP4
@@ -3221,17 +3220,17 @@ INDIRF4
 MULF4
 SUBF4
 ASGNF4
-line 1291
-;1291:		break;
-ADDRGP4 $325
+line 1294
+;1294:		break;
+ADDRGP4 $324
 JUMPV
-LABELV $324
-line 1293
-;1292:	default:
-;1293:		Com_Error( ERR_DROP, "BG_EvaluateTrajectory: unknown trType: %i", tr->trTime ); // Shafe Temp Fix
+LABELV $323
+line 1296
+;1295:	default:
+;1296:		Com_Error( ERR_DROP, "BG_EvaluateTrajectory: unknown trType: %i", tr->trTime ); // Shafe Temp Fix
 CNSTI4 1
 ARGI4
-ADDRGP4 $337
+ADDRGP4 $336
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3242,31 +3241,31 @@ ARGI4
 ADDRGP4 Com_Error
 CALLV
 pop
-line 1294
-;1294:		break;
-LABELV $325
-line 1296
-;1295:	}
-;1296:}
-LABELV $323
+line 1297
+;1297:		break;
+LABELV $324
+line 1299
+;1298:	}
+;1299:}
+LABELV $322
 endproc BG_EvaluateTrajectory 104 12
 export BG_EvaluateTrajectoryDelta
 proc BG_EvaluateTrajectoryDelta 44 12
-line 1305
-;1297:
-;1298:/*
-;1299:================
-;1300:BG_EvaluateTrajectoryDelta
-;1301:
-;1302:For determining velocity at a given time
-;1303:================
-;1304:*/
-;1305:void BG_EvaluateTrajectoryDelta( const trajectory_t *tr, int atTime, vec3_t result ) {
-line 1309
-;1306:	float	deltaTime;
-;1307:	float	phase;
-;1308:
-;1309:	switch( tr->trType ) {
+line 1308
+;1300:
+;1301:/*
+;1302:================
+;1303:BG_EvaluateTrajectoryDelta
+;1304:
+;1305:For determining velocity at a given time
+;1306:================
+;1307:*/
+;1308:void BG_EvaluateTrajectoryDelta( const trajectory_t *tr, int atTime, vec3_t result ) {
+line 1312
+;1309:	float	deltaTime;
+;1310:	float	phase;
+;1311:
+;1312:	switch( tr->trType ) {
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -3275,35 +3274,35 @@ ASGNI4
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-LTI4 $340
+LTI4 $339
 ADDRLP4 8
 INDIRI4
 CNSTI4 6
-GTI4 $340
+GTI4 $339
 ADDRLP4 8
 INDIRI4
 CNSTI4 2
 LSHI4
-ADDRGP4 $352
+ADDRGP4 $351
 ADDP4
 INDIRP4
 JUMPV
 lit
 align 4
-LABELV $352
+LABELV $351
+address $342
+address $342
 address $343
-address $343
-address $344
-address $346
 address $345
+address $344
+address $348
 address $349
-address $350
 code
-LABELV $343
-line 1312
-;1310:	case TR_STATIONARY:
-;1311:	case TR_INTERPOLATE:
-;1312:		VectorClear( result );
+LABELV $342
+line 1315
+;1313:	case TR_STATIONARY:
+;1314:	case TR_INTERPOLATE:
+;1315:		VectorClear( result );
 ADDRLP4 16
 ADDRFP4 8
 INDIRP4
@@ -3330,14 +3329,14 @@ INDIRP4
 ADDRLP4 20
 INDIRF4
 ASGNF4
-line 1313
-;1313:		break;
-ADDRGP4 $341
+line 1316
+;1316:		break;
+ADDRGP4 $340
 JUMPV
-LABELV $344
-line 1315
-;1314:	case TR_LINEAR:
-;1315:		VectorCopy( tr->trDelta, result );
+LABELV $343
+line 1318
+;1317:	case TR_LINEAR:
+;1318:		VectorCopy( tr->trDelta, result );
 ADDRFP4 8
 INDIRP4
 ADDRFP4 0
@@ -3346,14 +3345,14 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 1316
-;1316:		break;
-ADDRGP4 $341
+line 1319
+;1319:		break;
+ADDRGP4 $340
 JUMPV
-LABELV $345
-line 1318
-;1317:	case TR_SINE:
-;1318:		deltaTime = ( atTime - tr->trTime ) / (float) tr->trDuration;
+LABELV $344
+line 1321
+;1320:	case TR_SINE:
+;1321:		deltaTime = ( atTime - tr->trTime ) / (float) tr->trDuration;
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -3376,8 +3375,8 @@ INDIRI4
 CVIF4 4
 DIVF4
 ASGNF4
-line 1319
-;1319:		phase = cos( deltaTime * M_PI * 2 );	// derivative of sin = cos
+line 1322
+;1322:		phase = cos( deltaTime * M_PI * 2 );	// derivative of sin = cos
 CNSTF4 1073741824
 CNSTF4 1078530011
 ADDRLP4 0
@@ -3393,16 +3392,16 @@ ADDRLP4 4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1320
-;1320:		phase *= 0.5;
+line 1323
+;1323:		phase *= 0.5;
 ADDRLP4 4
 CNSTF4 1056964608
 ADDRLP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 1321
-;1321:		VectorScale( tr->trDelta, phase, result );
+line 1324
+;1324:		VectorScale( tr->trDelta, phase, result );
 ADDRFP4 8
 INDIRP4
 ADDRFP4 0
@@ -3440,14 +3439,14 @@ ADDRLP4 4
 INDIRF4
 MULF4
 ASGNF4
-line 1322
-;1322:		break;
-ADDRGP4 $341
+line 1325
+;1325:		break;
+ADDRGP4 $340
 JUMPV
-LABELV $346
-line 1324
-;1323:	case TR_LINEAR_STOP:
-;1324:		if ( atTime > tr->trTime + tr->trDuration ) {
+LABELV $345
+line 1327
+;1326:	case TR_LINEAR_STOP:
+;1327:		if ( atTime > tr->trTime + tr->trDuration ) {
 ADDRLP4 32
 ADDRFP4 0
 INDIRP4
@@ -3465,9 +3464,9 @@ CNSTI4 8
 ADDP4
 INDIRI4
 ADDI4
-LEI4 $347
-line 1325
-;1325:			VectorClear( result );
+LEI4 $346
+line 1328
+;1328:			VectorClear( result );
 ADDRLP4 36
 ADDRFP4 8
 INDIRP4
@@ -3494,14 +3493,14 @@ INDIRP4
 ADDRLP4 40
 INDIRF4
 ASGNF4
-line 1326
-;1326:			return;
-ADDRGP4 $339
+line 1329
+;1329:			return;
+ADDRGP4 $338
 JUMPV
-LABELV $347
-line 1328
-;1327:		}
-;1328:		VectorCopy( tr->trDelta, result );
+LABELV $346
+line 1331
+;1330:		}
+;1331:		VectorCopy( tr->trDelta, result );
 ADDRFP4 8
 INDIRP4
 ADDRFP4 0
@@ -3510,14 +3509,14 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 1329
-;1329:		break;
-ADDRGP4 $341
+line 1332
+;1332:		break;
+ADDRGP4 $340
 JUMPV
-LABELV $349
-line 1331
-;1330:	case TR_GRAVITY:
-;1331:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
+LABELV $348
+line 1334
+;1333:	case TR_GRAVITY:
+;1334:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
 ADDRLP4 0
 CNSTF4 981668463
 ADDRFP4 4
@@ -3531,8 +3530,8 @@ SUBI4
 CVIF4 4
 MULF4
 ASGNF4
-line 1332
-;1332:		VectorCopy( tr->trDelta, result );
+line 1335
+;1335:		VectorCopy( tr->trDelta, result );
 ADDRFP4 8
 INDIRP4
 ADDRFP4 0
@@ -3541,8 +3540,8 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 1333
-;1333:		result[2] -= DEFAULT_GRAVITY * deltaTime;		// FIXME: local gravity...
+line 1336
+;1336:		result[2] -= DEFAULT_GRAVITY * deltaTime;		// FIXME: local gravity...
 ADDRLP4 36
 ADDRFP4 8
 INDIRP4
@@ -3560,14 +3559,14 @@ INDIRF4
 MULF4
 SUBF4
 ASGNF4
-line 1334
-;1334:		break;
-ADDRGP4 $341
+line 1337
+;1337:		break;
+ADDRGP4 $340
 JUMPV
-LABELV $350
-line 1336
-;1335:	case TR_ORBITAL:
-;1336:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
+LABELV $349
+line 1339
+;1338:	case TR_ORBITAL:
+;1339:		deltaTime = ( atTime - tr->trTime ) * 0.001;	// milliseconds to seconds
 ADDRLP4 0
 CNSTF4 981668463
 ADDRFP4 4
@@ -3581,8 +3580,8 @@ SUBI4
 CVIF4 4
 MULF4
 ASGNF4
-line 1337
-;1337:		VectorCopy( tr->trDelta, result );
+line 1340
+;1340:		VectorCopy( tr->trDelta, result );
 ADDRFP4 8
 INDIRP4
 ADDRFP4 0
@@ -3591,8 +3590,8 @@ CNSTI4 24
 ADDP4
 INDIRB
 ASGNB 12
-line 1338
-;1338:		result[2] -= DEVASTATOR_GRAVITY * deltaTime;		// FIXME: local gravity...
+line 1341
+;1341:		result[2] -= DEVASTATOR_GRAVITY * deltaTime;		// FIXME: local gravity...
 ADDRLP4 40
 ADDRFP4 8
 INDIRP4
@@ -3610,17 +3609,17 @@ INDIRF4
 MULF4
 SUBF4
 ASGNF4
-line 1339
-;1339:		break;
-ADDRGP4 $341
+line 1342
+;1342:		break;
+ADDRGP4 $340
 JUMPV
-LABELV $340
-line 1341
-;1340:	default:
-;1341:		Com_Error( ERR_DROP, "BG_EvaluateTrajectoryDelta: unknown trType: %i", tr->trTime );
+LABELV $339
+line 1344
+;1343:	default:
+;1344:		Com_Error( ERR_DROP, "BG_EvaluateTrajectoryDelta: unknown trType: %i", tr->trTime );
 CNSTI4 1
 ARGI4
-ADDRGP4 $351
+ADDRGP4 $350
 ARGP4
 ADDRFP4 0
 INDIRP4
@@ -3631,19 +3630,20 @@ ARGI4
 ADDRGP4 Com_Error
 CALLV
 pop
-line 1342
-;1342:		break;
-LABELV $341
 line 1345
-;1343:		
-;1344:	}
-;1345:}
-LABELV $339
+;1345:		break;
+LABELV $340
+line 1348
+;1346:		
+;1347:	}
+;1348:}
+LABELV $338
 endproc BG_EvaluateTrajectoryDelta 44 12
 data
 export eventnames
 align 4
 LABELV eventnames
+address $352
 address $353
 address $354
 address $355
@@ -3717,147 +3717,146 @@ address $422
 address $423
 address $424
 address $425
-address $426
 export BG_AddPredictableEventToPlayerstate
 code
 proc BG_AddPredictableEventToPlayerstate 12 0
-line 1465
-;1346:
-;1347:char *eventnames[] = {
-;1348:	"EV_NONE",
+line 1468
 ;1349:
-;1350:	"EV_FOOTSTEP",
-;1351:	"EV_FOOTSTEP_METAL",
-;1352:	"EV_FOOTSPLASH",
-;1353:	"EV_FOOTWADE",
-;1354:	"EV_SWIM",
-;1355:
-;1356:	"EV_STEP_4",
-;1357:	"EV_STEP_8",
-;1358:	"EV_STEP_12",
-;1359:	"EV_STEP_16",
-;1360:
-;1361:	"EV_FALL_SHORT",
-;1362:	"EV_FALL_MEDIUM",
-;1363:	"EV_FALL_FAR",
-;1364:
-;1365:	"EV_JUMP_PAD",			// boing sound at origin", jump sound on player
-;1366:
-;1367:	"EV_JUMP",
-;1368:	"EV_WATER_TOUCH",	// foot touches
-;1369:	"EV_WATER_LEAVE",	// foot leaves
-;1370:	"EV_WATER_UNDER",	// head touches
-;1371:	"EV_WATER_CLEAR",	// head leaves
-;1372:
-;1373:	"EV_ITEM_PICKUP",			// normal item pickups are predictable
-;1374:	"EV_GLOBAL_ITEM_PICKUP",	// powerup / team sounds are broadcast to everyone
+;1350:char *eventnames[] = {
+;1351:	"EV_NONE",
+;1352:
+;1353:	"EV_FOOTSTEP",
+;1354:	"EV_FOOTSTEP_METAL",
+;1355:	"EV_FOOTSPLASH",
+;1356:	"EV_FOOTWADE",
+;1357:	"EV_SWIM",
+;1358:
+;1359:	"EV_STEP_4",
+;1360:	"EV_STEP_8",
+;1361:	"EV_STEP_12",
+;1362:	"EV_STEP_16",
+;1363:
+;1364:	"EV_FALL_SHORT",
+;1365:	"EV_FALL_MEDIUM",
+;1366:	"EV_FALL_FAR",
+;1367:
+;1368:	"EV_JUMP_PAD",			// boing sound at origin", jump sound on player
+;1369:
+;1370:	"EV_JUMP",
+;1371:	"EV_WATER_TOUCH",	// foot touches
+;1372:	"EV_WATER_LEAVE",	// foot leaves
+;1373:	"EV_WATER_UNDER",	// head touches
+;1374:	"EV_WATER_CLEAR",	// head leaves
 ;1375:
-;1376:	"EV_NOAMMO",
-;1377:	"EV_CHANGE_WEAPON",
-;1378:	"EV_FIRE_WEAPON",
-;1379:
-;1380:	"EV_USE_ITEM0",
-;1381:	"EV_USE_ITEM1",
-;1382:	"EV_USE_ITEM2",
-;1383:	"EV_USE_ITEM3",
-;1384:	"EV_USE_ITEM4",
-;1385:	"EV_USE_ITEM5",
-;1386:	"EV_USE_ITEM6",
-;1387:	"EV_USE_ITEM7",
-;1388:	"EV_USE_ITEM8",
-;1389:	"EV_USE_ITEM9",
-;1390:	"EV_USE_ITEM10",
-;1391:	"EV_USE_ITEM11",
-;1392:	"EV_USE_ITEM12",
-;1393:	"EV_USE_ITEM13",
-;1394:	"EV_USE_ITEM14",
-;1395:	"EV_USE_ITEM15",
-;1396:
-;1397:	"EV_ITEM_RESPAWN",
-;1398:	"EV_ITEM_POP",
-;1399:	"EV_PLAYER_TELEPORT_IN",
-;1400:	"EV_PLAYER_TELEPORT_OUT",
-;1401:
-;1402:	"EV_GRENADE_BOUNCE",		// eventParm will be the soundindex
-;1403:	"EV_PL_BOUNCE",		// eventParm will be the soundindex
+;1376:	"EV_ITEM_PICKUP",			// normal item pickups are predictable
+;1377:	"EV_GLOBAL_ITEM_PICKUP",	// powerup / team sounds are broadcast to everyone
+;1378:
+;1379:	"EV_NOAMMO",
+;1380:	"EV_CHANGE_WEAPON",
+;1381:	"EV_FIRE_WEAPON",
+;1382:
+;1383:	"EV_USE_ITEM0",
+;1384:	"EV_USE_ITEM1",
+;1385:	"EV_USE_ITEM2",
+;1386:	"EV_USE_ITEM3",
+;1387:	"EV_USE_ITEM4",
+;1388:	"EV_USE_ITEM5",
+;1389:	"EV_USE_ITEM6",
+;1390:	"EV_USE_ITEM7",
+;1391:	"EV_USE_ITEM8",
+;1392:	"EV_USE_ITEM9",
+;1393:	"EV_USE_ITEM10",
+;1394:	"EV_USE_ITEM11",
+;1395:	"EV_USE_ITEM12",
+;1396:	"EV_USE_ITEM13",
+;1397:	"EV_USE_ITEM14",
+;1398:	"EV_USE_ITEM15",
+;1399:
+;1400:	"EV_ITEM_RESPAWN",
+;1401:	"EV_ITEM_POP",
+;1402:	"EV_PLAYER_TELEPORT_IN",
+;1403:	"EV_PLAYER_TELEPORT_OUT",
 ;1404:
-;1405:	"EV_GENERAL_SOUND",
-;1406:	"EV_GLOBAL_SOUND",		// no attenuation
-;1407:	"EV_GLOBAL_TEAM_SOUND",
-;1408:
-;1409:	"EV_BULLET_HIT_FLESH",
-;1410:	"EV_BULLET_HIT_WALL",
+;1405:	"EV_GRENADE_BOUNCE",		// eventParm will be the soundindex
+;1406:	"EV_PL_BOUNCE",		// eventParm will be the soundindex
+;1407:
+;1408:	"EV_GENERAL_SOUND",
+;1409:	"EV_GLOBAL_SOUND",		// no attenuation
+;1410:	"EV_GLOBAL_TEAM_SOUND",
 ;1411:
-;1412:	"EV_MISSILE_HIT",
-;1413:	"EV_MISSILE_MISS",
-;1414:	"EV_MISSILE_MISS_METAL",
-;1415:	"EV_RAILTRAIL",
-;1416:	"EV_SHOTGUN",
-;1417:	"EV_BULLET",				// otherEntity is the shooter
-;1418:
-;1419:	"EV_PAIN",
-;1420:	"EV_DEATH1",
-;1421:	"EV_DEATH2",
-;1422:	"EV_DEATH3",
-;1423:	"EV_OBITUARY",
-;1424:
-;1425:	"EV_POWERUP_QUAD",
-;1426:	"EV_POWERUP_BATTLESUIT",
-;1427:	"EV_POWERUP_REGEN",
-;1428:
-;1429:	"EV_IMMOBILIZED", //-Vincent
-;1430:	"EV_IMMOBILIZED_FREE", //-Vincent
+;1412:	"EV_BULLET_HIT_FLESH",
+;1413:	"EV_BULLET_HIT_WALL",
+;1414:
+;1415:	"EV_MISSILE_HIT",
+;1416:	"EV_MISSILE_MISS",
+;1417:	"EV_MISSILE_MISS_METAL",
+;1418:	"EV_RAILTRAIL",
+;1419:	"EV_SHOTGUN",
+;1420:	"EV_BULLET",				// otherEntity is the shooter
+;1421:
+;1422:	"EV_PAIN",
+;1423:	"EV_DEATH1",
+;1424:	"EV_DEATH2",
+;1425:	"EV_DEATH3",
+;1426:	"EV_OBITUARY",
+;1427:
+;1428:	"EV_POWERUP_QUAD",
+;1429:	"EV_POWERUP_BATTLESUIT",
+;1430:	"EV_POWERUP_REGEN",
 ;1431:
-;1432:	"EV_ZOOMIN", 
-;1433:	"EV_ZOOMOUT", 
+;1432:	"EV_IMMOBILIZED", //-Vincent
+;1433:	"EV_IMMOBILIZED_FREE", //-Vincent
 ;1434:
-;1435:	"EV_GIB_PLAYER",			// gib a previously living player
-;1436:	"EV_SCOREPLUM",			// score plum
+;1435:	"EV_ZOOMIN", 
+;1436:	"EV_ZOOMOUT", 
 ;1437:
-;1438:#ifdef MISSIONPACK
-;1439:	"EV_PROXIMITY_MINE_STICK",
-;1440:	"EV_PROXIMITY_MINE_TRIGGER",
-;1441:	"EV_KAMIKAZE",			// kamikaze explodes
-;1442:	"EV_OBELISKEXPLODE",		// obelisk explodes
-;1443:	"EV_INVUL_IMPACT",		// invulnerability sphere impact
-;1444:	"EV_JUICED",				// invulnerability juiced effect
-;1445:	"EV_LIGHTNINGBOLT",		// lightning bolt bounced of invulnerability sphere
-;1446:#endif
-;1447:
-;1448:	"EV_DEBUG_LINE",
-;1449:	"EV_STOPLOOPINGSOUND",
-;1450:	"EV_TAUNT",
-;1451:
-;1452:
-;1453:};
+;1438:	"EV_GIB_PLAYER",			// gib a previously living player
+;1439:	"EV_SCOREPLUM",			// score plum
+;1440:
+;1441:#ifdef MISSIONPACK
+;1442:	"EV_PROXIMITY_MINE_STICK",
+;1443:	"EV_PROXIMITY_MINE_TRIGGER",
+;1444:	"EV_KAMIKAZE",			// kamikaze explodes
+;1445:	"EV_OBELISKEXPLODE",		// obelisk explodes
+;1446:	"EV_INVUL_IMPACT",		// invulnerability sphere impact
+;1447:	"EV_JUICED",				// invulnerability juiced effect
+;1448:	"EV_LIGHTNINGBOLT",		// lightning bolt bounced of invulnerability sphere
+;1449:#endif
+;1450:
+;1451:	"EV_DEBUG_LINE",
+;1452:	"EV_STOPLOOPINGSOUND",
+;1453:	"EV_TAUNT",
 ;1454:
-;1455:/*
-;1456:===============
-;1457:BG_AddPredictableEventToPlayerstate
-;1458:
-;1459:Handles the sequence numbers
-;1460:===============
-;1461:*/
-;1462:
-;1463:void	trap_Cvar_VariableStringBuffer( const char *var_name, char *buffer, int bufsize );
-;1464:
-;1465:void BG_AddPredictableEventToPlayerstate( int newEvent, int eventParm, playerState_t *ps ) {
-line 1480
-;1466:
-;1467:#ifdef _DEBUG
-;1468:	{
-;1469:		char buf[256];
-;1470:		trap_Cvar_VariableStringBuffer("showevents", buf, sizeof(buf));
-;1471:		if ( atof(buf) != 0 ) {
-;1472:#ifdef QAGAME
-;1473:			Com_Printf(" game event svt %5d -> %5d: num = %20s parm %d\n", ps->pmove_framecount/*ps->commandTime*/, ps->eventSequence, eventnames[newEvent], eventParm);
-;1474:#else
-;1475:			Com_Printf("Cgame event svt %5d -> %5d: num = %20s parm %d\n", ps->pmove_framecount/*ps->commandTime*/, ps->eventSequence, eventnames[newEvent], eventParm);
-;1476:#endif
-;1477:		}
-;1478:	}
+;1455:
+;1456:};
+;1457:
+;1458:/*
+;1459:===============
+;1460:BG_AddPredictableEventToPlayerstate
+;1461:
+;1462:Handles the sequence numbers
+;1463:===============
+;1464:*/
+;1465:
+;1466:void	trap_Cvar_VariableStringBuffer( const char *var_name, char *buffer, int bufsize );
+;1467:
+;1468:void BG_AddPredictableEventToPlayerstate( int newEvent, int eventParm, playerState_t *ps ) {
+line 1483
+;1469:
+;1470:#ifdef _DEBUG
+;1471:	{
+;1472:		char buf[256];
+;1473:		trap_Cvar_VariableStringBuffer("showevents", buf, sizeof(buf));
+;1474:		if ( atof(buf) != 0 ) {
+;1475:#ifdef QAGAME
+;1476:			Com_Printf(" game event svt %5d -> %5d: num = %20s parm %d\n", ps->pmove_framecount/*ps->commandTime*/, ps->eventSequence, eventnames[newEvent], eventParm);
+;1477:#else
+;1478:			Com_Printf("Cgame event svt %5d -> %5d: num = %20s parm %d\n", ps->pmove_framecount/*ps->commandTime*/, ps->eventSequence, eventnames[newEvent], eventParm);
 ;1479:#endif
-;1480:	ps->events[ps->eventSequence & (MAX_PS_EVENTS-1)] = newEvent;
+;1480:		}
+;1481:	}
+;1482:#endif
+;1483:	ps->events[ps->eventSequence & (MAX_PS_EVENTS-1)] = newEvent;
 ADDRLP4 0
 ADDRFP4 8
 INDIRP4
@@ -3879,8 +3878,8 @@ ADDP4
 ADDRFP4 0
 INDIRI4
 ASGNI4
-line 1481
-;1481:	ps->eventParms[ps->eventSequence & (MAX_PS_EVENTS-1)] = eventParm;
+line 1484
+;1484:	ps->eventParms[ps->eventSequence & (MAX_PS_EVENTS-1)] = eventParm;
 ADDRLP4 4
 ADDRFP4 8
 INDIRP4
@@ -3902,8 +3901,8 @@ ADDP4
 ADDRFP4 4
 INDIRI4
 ASGNI4
-line 1482
-;1482:	ps->eventSequence++;
+line 1485
+;1485:	ps->eventSequence++;
 ADDRLP4 8
 ADDRFP4 8
 INDIRP4
@@ -3918,62 +3917,62 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1483
-;1483:}
-LABELV $427
+line 1486
+;1486:}
+LABELV $426
 endproc BG_AddPredictableEventToPlayerstate 12 0
 export BG_TouchJumpPad
 proc BG_TouchJumpPad 28 12
-line 1490
-;1484:
-;1485:/*
-;1486:========================
-;1487:BG_TouchJumpPad
-;1488:========================
-;1489:*/
-;1490:void BG_TouchJumpPad( playerState_t *ps, entityState_t *jumppad ) {
-line 1496
-;1491:	vec3_t	angles;
-;1492:	float p;
-;1493:	int effectNum;
-;1494:
-;1495:	// spectators don't use jump pads
-;1496:	if ( ps->pm_type != PM_NORMAL ) {
+line 1493
+;1487:
+;1488:/*
+;1489:========================
+;1490:BG_TouchJumpPad
+;1491:========================
+;1492:*/
+;1493:void BG_TouchJumpPad( playerState_t *ps, entityState_t *jumppad ) {
+line 1499
+;1494:	vec3_t	angles;
+;1495:	float p;
+;1496:	int effectNum;
+;1497:
+;1498:	// spectators don't use jump pads
+;1499:	if ( ps->pm_type != PM_NORMAL ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $429
-line 1497
-;1497:		return;
-ADDRGP4 $428
+EQI4 $428
+line 1500
+;1500:		return;
+ADDRGP4 $427
 JUMPV
-LABELV $429
-line 1501
-;1498:	}
-;1499:
-;1500:	// flying characters don't hit bounce pads
-;1501:	if ( ps->powerups[PW_FLIGHT] ) {
+LABELV $428
+line 1504
+;1501:	}
+;1502:
+;1503:	// flying characters don't hit bounce pads
+;1504:	if ( ps->powerups[PW_FLIGHT] ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 336
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $431
-line 1502
-;1502:		return;
-ADDRGP4 $428
+EQI4 $430
+line 1505
+;1505:		return;
+ADDRGP4 $427
 JUMPV
-LABELV $431
-line 1507
-;1503:	}
-;1504:
-;1505:	// if we didn't hit this same jumppad the previous frame
-;1506:	// then don't play the event sound again if we are in a fat trigger
-;1507:	if ( ps->jumppad_ent != jumppad->number ) {
+LABELV $430
+line 1510
+;1506:	}
+;1507:
+;1508:	// if we didn't hit this same jumppad the previous frame
+;1509:	// then don't play the event sound again if we are in a fat trigger
+;1510:	if ( ps->jumppad_ent != jumppad->number ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 448
@@ -3982,10 +3981,10 @@ INDIRI4
 ADDRFP4 4
 INDIRP4
 INDIRI4
-EQI4 $433
-line 1509
-;1508:
-;1509:		vectoangles( jumppad->origin2, angles);
+EQI4 $432
+line 1512
+;1511:
+;1512:		vectoangles( jumppad->origin2, angles);
 ADDRFP4 4
 INDIRP4
 CNSTI4 104
@@ -3996,8 +3995,8 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 1510
-;1510:		p = fabs( AngleNormalize180( angles[PITCH] ) );
+line 1513
+;1513:		p = fabs( AngleNormalize180( angles[PITCH] ) );
 ADDRLP4 0
 INDIRF4
 ARGF4
@@ -4016,32 +4015,32 @@ ADDRLP4 12
 ADDRLP4 24
 INDIRF4
 ASGNF4
-line 1511
-;1511:		if( p < 45 ) {
+line 1514
+;1514:		if( p < 45 ) {
 ADDRLP4 12
 INDIRF4
 CNSTF4 1110704128
-GEF4 $435
-line 1512
-;1512:			effectNum = 0;
+GEF4 $434
+line 1515
+;1515:			effectNum = 0;
 ADDRLP4 16
 CNSTI4 0
 ASGNI4
-line 1513
-;1513:		} else {
-ADDRGP4 $436
+line 1516
+;1516:		} else {
+ADDRGP4 $435
 JUMPV
-LABELV $435
-line 1514
-;1514:			effectNum = 1;
+LABELV $434
+line 1517
+;1517:			effectNum = 1;
 ADDRLP4 16
 CNSTI4 1
 ASGNI4
-line 1515
-;1515:		}
-LABELV $436
-line 1516
-;1516:		BG_AddPredictableEventToPlayerstate( EV_JUMP_PAD, effectNum, ps );
+line 1518
+;1518:		}
+LABELV $435
+line 1519
+;1519:		BG_AddPredictableEventToPlayerstate( EV_JUMP_PAD, effectNum, ps );
 CNSTI4 13
 ARGI4
 ADDRLP4 16
@@ -4053,12 +4052,12 @@ ARGP4
 ADDRGP4 BG_AddPredictableEventToPlayerstate
 CALLV
 pop
-line 1517
-;1517:	}
-LABELV $433
-line 1519
-;1518:	// remember hitting this jumppad this frame
-;1519:	ps->jumppad_ent = jumppad->number;
+line 1520
+;1520:	}
+LABELV $432
+line 1522
+;1521:	// remember hitting this jumppad this frame
+;1522:	ps->jumppad_ent = jumppad->number;
 ADDRFP4 0
 INDIRP4
 CNSTI4 448
@@ -4067,8 +4066,8 @@ ADDRFP4 4
 INDIRP4
 INDIRI4
 ASGNI4
-line 1520
-;1520:	ps->jumppad_frame = ps->pmove_framecount;
+line 1523
+;1523:	ps->jumppad_frame = ps->pmove_framecount;
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -4083,9 +4082,9 @@ CNSTI4 456
 ADDP4
 INDIRI4
 ASGNI4
-line 1522
-;1521:	// give the player the velocity from the jumppad
-;1522:	VectorCopy( jumppad->origin2, ps->velocity );
+line 1525
+;1524:	// give the player the velocity from the jumppad
+;1525:	VectorCopy( jumppad->origin2, ps->velocity );
 ADDRFP4 0
 INDIRP4
 CNSTI4 32
@@ -4096,27 +4095,27 @@ CNSTI4 104
 ADDP4
 INDIRB
 ASGNB 12
-line 1523
-;1523:}
-LABELV $428
+line 1526
+;1526:}
+LABELV $427
 endproc BG_TouchJumpPad 28 12
 export BG_PlayerStateToEntityState
 proc BG_PlayerStateToEntityState 32 4
-line 1533
-;1524:
-;1525:/*
-;1526:========================
-;1527:BG_PlayerStateToEntityState
-;1528:
-;1529:This is done after each set of usercmd_t on the server,
-;1530:and after local prediction on the client
-;1531:========================
-;1532:*/
-;1533:void BG_PlayerStateToEntityState( playerState_t *ps, entityState_t *s, qboolean snap ) {
 line 1536
-;1534:	int		i;
-;1535:
-;1536:	if ( ps->pm_type == PM_INTERMISSION || ps->pm_type == PM_SPECTATOR ) {
+;1527:
+;1528:/*
+;1529:========================
+;1530:BG_PlayerStateToEntityState
+;1531:
+;1532:This is done after each set of usercmd_t on the server,
+;1533:and after local prediction on the client
+;1534:========================
+;1535:*/
+;1536:void BG_PlayerStateToEntityState( playerState_t *ps, entityState_t *s, qboolean snap ) {
+line 1539
+;1537:	int		i;
+;1538:
+;1539:	if ( ps->pm_type == PM_INTERMISSION || ps->pm_type == PM_SPECTATOR ) {
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -4127,60 +4126,60 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 5
-EQI4 $440
+EQI4 $439
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
-NEI4 $438
-LABELV $440
-line 1537
-;1537:		s->eType = ET_INVISIBLE;
+NEI4 $437
+LABELV $439
+line 1540
+;1540:		s->eType = ET_INVISIBLE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 10
 ASGNI4
-line 1538
-;1538:	} else if ( ps->stats[STAT_HEALTH] <= GIB_HEALTH ) {
-ADDRGP4 $439
+line 1541
+;1541:	} else if ( ps->stats[STAT_HEALTH] <= GIB_HEALTH ) {
+ADDRGP4 $438
 JUMPV
-LABELV $438
+LABELV $437
 ADDRFP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 -40
-GTI4 $441
-line 1539
-;1539:		s->eType = ET_INVISIBLE;
+GTI4 $440
+line 1542
+;1542:		s->eType = ET_INVISIBLE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 10
 ASGNI4
-line 1540
-;1540:	} else {
-ADDRGP4 $442
+line 1543
+;1543:	} else {
+ADDRGP4 $441
 JUMPV
-LABELV $441
-line 1541
-;1541:		s->eType = ET_PLAYER;
+LABELV $440
+line 1544
+;1544:		s->eType = ET_PLAYER;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1542
-;1542:	}
-LABELV $442
-LABELV $439
-line 1544
-;1543:
-;1544:	s->number = ps->clientNum;
+line 1545
+;1545:	}
+LABELV $441
+LABELV $438
+line 1547
+;1546:
+;1547:	s->number = ps->clientNum;
 ADDRFP4 4
 INDIRP4
 ADDRFP4 0
@@ -4189,17 +4188,17 @@ CNSTI4 140
 ADDP4
 INDIRI4
 ASGNI4
-line 1546
-;1545:
-;1546:	s->pos.trType = TR_INTERPOLATE;
+line 1549
+;1548:
+;1549:	s->pos.trType = TR_INTERPOLATE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1547
-;1547:	VectorCopy( ps->origin, s->pos.trBase );
+line 1550
+;1550:	VectorCopy( ps->origin, s->pos.trBase );
 ADDRFP4 4
 INDIRP4
 CNSTI4 24
@@ -4210,14 +4209,14 @@ CNSTI4 20
 ADDP4
 INDIRB
 ASGNB 12
-line 1548
-;1548:	if ( snap ) {
+line 1551
+;1551:	if ( snap ) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $443
-line 1549
-;1549:		SnapVector( s->pos.trBase );
+EQI4 $442
+line 1552
+;1552:		SnapVector( s->pos.trBase );
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4275,12 +4274,12 @@ INDIRP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1550
-;1550:	}
-LABELV $443
-line 1552
-;1551:	// set the trDelta for flag direction
-;1552:	VectorCopy( ps->velocity, s->pos.trDelta );
+line 1553
+;1553:	}
+LABELV $442
+line 1555
+;1554:	// set the trDelta for flag direction
+;1555:	VectorCopy( ps->velocity, s->pos.trDelta );
 ADDRFP4 4
 INDIRP4
 CNSTI4 36
@@ -4291,17 +4290,17 @@ CNSTI4 32
 ADDP4
 INDIRB
 ASGNB 12
-line 1554
-;1553:
-;1554:	s->apos.trType = TR_INTERPOLATE;
+line 1557
+;1556:
+;1557:	s->apos.trType = TR_INTERPOLATE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1555
-;1555:	VectorCopy( ps->viewangles, s->apos.trBase );
+line 1558
+;1558:	VectorCopy( ps->viewangles, s->apos.trBase );
 ADDRFP4 4
 INDIRP4
 CNSTI4 60
@@ -4312,14 +4311,14 @@ CNSTI4 152
 ADDP4
 INDIRB
 ASGNB 12
-line 1556
-;1556:	if ( snap ) {
+line 1559
+;1559:	if ( snap ) {
 ADDRFP4 8
 INDIRI4
 CNSTI4 0
-EQI4 $445
-line 1557
-;1557:		SnapVector( s->apos.trBase );
+EQI4 $444
+line 1560
+;1560:		SnapVector( s->apos.trBase );
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4377,12 +4376,12 @@ INDIRP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1558
-;1558:	}
-LABELV $445
-line 1560
-;1559:
-;1560:	s->angles2[YAW] = ps->movementDir;
+line 1561
+;1561:	}
+LABELV $444
+line 1563
+;1562:
+;1563:	s->angles2[YAW] = ps->movementDir;
 ADDRFP4 4
 INDIRP4
 CNSTI4 132
@@ -4394,8 +4393,8 @@ ADDP4
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1561
-;1561:	s->legsAnim = ps->legsAnim;
+line 1564
+;1564:	s->legsAnim = ps->legsAnim;
 ADDRFP4 4
 INDIRP4
 CNSTI4 196
@@ -4406,8 +4405,8 @@ CNSTI4 76
 ADDP4
 INDIRI4
 ASGNI4
-line 1562
-;1562:	s->torsoAnim = ps->torsoAnim;
+line 1565
+;1565:	s->torsoAnim = ps->torsoAnim;
 ADDRFP4 4
 INDIRP4
 CNSTI4 200
@@ -4418,8 +4417,8 @@ CNSTI4 84
 ADDP4
 INDIRI4
 ASGNI4
-line 1563
-;1563:	s->clientNum = ps->clientNum;		// ET_PLAYER looks here instead of at number
+line 1566
+;1566:	s->clientNum = ps->clientNum;		// ET_PLAYER looks here instead of at number
 ADDRFP4 4
 INDIRP4
 CNSTI4 168
@@ -4430,9 +4429,9 @@ CNSTI4 140
 ADDP4
 INDIRI4
 ASGNI4
-line 1565
-;1564:										// so corpses can also reference the proper config
-;1565:	s->eFlags = ps->eFlags;
+line 1568
+;1567:										// so corpses can also reference the proper config
+;1568:	s->eFlags = ps->eFlags;
 ADDRFP4 4
 INDIRP4
 CNSTI4 8
@@ -4443,17 +4442,17 @@ CNSTI4 104
 ADDP4
 INDIRI4
 ASGNI4
-line 1566
-;1566:	if ( ps->stats[STAT_HEALTH] <= 0 ) {
+line 1569
+;1569:	if ( ps->stats[STAT_HEALTH] <= 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $447
-line 1567
-;1567:		s->eFlags |= EF_DEAD;
+GTI4 $446
+line 1570
+;1570:		s->eFlags |= EF_DEAD;
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4468,13 +4467,13 @@ INDIRI4
 CNSTI4 1
 BORI4
 ASGNI4
-line 1568
-;1568:	} else {
-ADDRGP4 $448
+line 1571
+;1571:	} else {
+ADDRGP4 $447
 JUMPV
-LABELV $447
-line 1569
-;1569:		s->eFlags &= ~EF_DEAD;
+LABELV $446
+line 1572
+;1572:		s->eFlags &= ~EF_DEAD;
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4489,21 +4488,21 @@ INDIRI4
 CNSTI4 -2
 BANDI4
 ASGNI4
-line 1570
-;1570:	}
-LABELV $448
-line 1572
-;1571:
-;1572:	if ( ps->externalEvent ) {
+line 1573
+;1573:	}
+LABELV $447
+line 1575
+;1574:
+;1575:	if ( ps->externalEvent ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 128
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $449
-line 1573
-;1573:		s->event = ps->externalEvent;
+EQI4 $448
+line 1576
+;1576:		s->event = ps->externalEvent;
 ADDRFP4 4
 INDIRP4
 CNSTI4 180
@@ -4514,8 +4513,8 @@ CNSTI4 128
 ADDP4
 INDIRI4
 ASGNI4
-line 1574
-;1574:		s->eventParm = ps->externalEventParm;
+line 1577
+;1577:		s->eventParm = ps->externalEventParm;
 ADDRFP4 4
 INDIRP4
 CNSTI4 184
@@ -4526,11 +4525,11 @@ CNSTI4 132
 ADDP4
 INDIRI4
 ASGNI4
-line 1575
-;1575:	} else if ( ps->entityEventSequence < ps->eventSequence ) {
-ADDRGP4 $450
+line 1578
+;1578:	} else if ( ps->entityEventSequence < ps->eventSequence ) {
+ADDRGP4 $449
 JUMPV
-LABELV $449
+LABELV $448
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -4545,11 +4544,11 @@ INDIRP4
 CNSTI4 108
 ADDP4
 INDIRI4
-GEI4 $451
-line 1578
-;1576:		int		seq;
-;1577:
-;1578:		if ( ps->entityEventSequence < ps->eventSequence - MAX_PS_EVENTS) {
+GEI4 $450
+line 1581
+;1579:		int		seq;
+;1580:
+;1581:		if ( ps->entityEventSequence < ps->eventSequence - MAX_PS_EVENTS) {
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -4566,9 +4565,9 @@ ADDP4
 INDIRI4
 CNSTI4 2
 SUBI4
-GEI4 $453
-line 1579
-;1579:			ps->entityEventSequence = ps->eventSequence - MAX_PS_EVENTS;
+GEI4 $452
+line 1582
+;1582:			ps->entityEventSequence = ps->eventSequence - MAX_PS_EVENTS;
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -4585,11 +4584,11 @@ INDIRI4
 CNSTI4 2
 SUBI4
 ASGNI4
-line 1580
-;1580:		}
-LABELV $453
-line 1581
-;1581:		seq = ps->entityEventSequence & (MAX_PS_EVENTS-1);
+line 1583
+;1583:		}
+LABELV $452
+line 1584
+;1584:		seq = ps->entityEventSequence & (MAX_PS_EVENTS-1);
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -4599,8 +4598,8 @@ INDIRI4
 CNSTI4 1
 BANDI4
 ASGNI4
-line 1582
-;1582:		s->event = ps->events[ seq ] | ( ( ps->entityEventSequence & 3 ) << 8 );
+line 1585
+;1585:		s->event = ps->events[ seq ] | ( ( ps->entityEventSequence & 3 ) << 8 );
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -4630,8 +4629,8 @@ CNSTI4 8
 LSHI4
 BORI4
 ASGNI4
-line 1583
-;1583:		s->eventParm = ps->eventParms[ seq ];
+line 1586
+;1586:		s->eventParm = ps->eventParms[ seq ];
 ADDRFP4 4
 INDIRP4
 CNSTI4 184
@@ -4647,8 +4646,8 @@ ADDP4
 ADDP4
 INDIRI4
 ASGNI4
-line 1584
-;1584:		ps->entityEventSequence++;
+line 1587
+;1587:		ps->entityEventSequence++;
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -4663,13 +4662,13 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1585
-;1585:	}
-LABELV $451
+line 1588
+;1588:	}
 LABELV $450
-line 1587
-;1586:
-;1587:	s->weapon = ps->weapon;
+LABELV $449
+line 1590
+;1589:
+;1590:	s->weapon = ps->weapon;
 ADDRFP4 4
 INDIRP4
 CNSTI4 192
@@ -4680,8 +4679,8 @@ CNSTI4 144
 ADDP4
 INDIRI4
 ASGNI4
-line 1588
-;1588:	s->groundEntityNum = ps->groundEntityNum;
+line 1591
+;1591:	s->groundEntityNum = ps->groundEntityNum;
 ADDRFP4 4
 INDIRP4
 CNSTI4 148
@@ -4692,23 +4691,23 @@ CNSTI4 68
 ADDP4
 INDIRI4
 ASGNI4
-line 1590
-;1589:
-;1590:	s->powerups = 0;
+line 1593
+;1592:
+;1593:	s->powerups = 0;
 ADDRFP4 4
 INDIRP4
 CNSTI4 188
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1591
-;1591:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
+line 1594
+;1594:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $455
-line 1592
-;1592:		if ( ps->powerups[ i ] ) {
+LABELV $454
+line 1595
+;1595:		if ( ps->powerups[ i ] ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -4720,9 +4719,9 @@ ADDP4
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $459
-line 1593
-;1593:			s->powerups |= 1 << i;
+EQI4 $458
+line 1596
+;1596:			s->powerups |= 1 << i;
 ADDRLP4 12
 ADDRFP4 4
 INDIRP4
@@ -4740,13 +4739,13 @@ INDIRI4
 LSHI4
 BORI4
 ASGNI4
+line 1597
+;1597:		}
+LABELV $458
+line 1598
+;1598:	}
+LABELV $455
 line 1594
-;1594:		}
-LABELV $459
-line 1595
-;1595:	}
-LABELV $456
-line 1591
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -4756,10 +4755,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $455
-line 1597
-;1596:
-;1597:	s->loopSound = ps->loopSound;
+LTI4 $454
+line 1600
+;1599:
+;1600:	s->loopSound = ps->loopSound;
 ADDRFP4 4
 INDIRP4
 CNSTI4 156
@@ -4770,8 +4769,8 @@ CNSTI4 444
 ADDP4
 INDIRI4
 ASGNI4
-line 1598
-;1598:	s->generic1 = ps->generic1;
+line 1601
+;1601:	s->generic1 = ps->generic1;
 ADDRFP4 4
 INDIRP4
 CNSTI4 204
@@ -4782,27 +4781,27 @@ CNSTI4 440
 ADDP4
 INDIRI4
 ASGNI4
-line 1599
-;1599:}
-LABELV $437
+line 1602
+;1602:}
+LABELV $436
 endproc BG_PlayerStateToEntityState 32 4
 export BG_PlayerStateToEntityStateExtraPolate
 proc BG_PlayerStateToEntityStateExtraPolate 32 4
-line 1609
-;1600:
-;1601:/*
-;1602:========================
-;1603:BG_PlayerStateToEntityStateExtraPolate
-;1604:
-;1605:This is done after each set of usercmd_t on the server,
-;1606:and after local prediction on the client
-;1607:========================
-;1608:*/
-;1609:void BG_PlayerStateToEntityStateExtraPolate( playerState_t *ps, entityState_t *s, int time, qboolean snap ) {
 line 1612
-;1610:	int		i;
-;1611:
-;1612:	if ( ps->pm_type == PM_INTERMISSION || ps->pm_type == PM_SPECTATOR ) {
+;1603:
+;1604:/*
+;1605:========================
+;1606:BG_PlayerStateToEntityStateExtraPolate
+;1607:
+;1608:This is done after each set of usercmd_t on the server,
+;1609:and after local prediction on the client
+;1610:========================
+;1611:*/
+;1612:void BG_PlayerStateToEntityStateExtraPolate( playerState_t *ps, entityState_t *s, int time, qboolean snap ) {
+line 1615
+;1613:	int		i;
+;1614:
+;1615:	if ( ps->pm_type == PM_INTERMISSION || ps->pm_type == PM_SPECTATOR ) {
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -4813,60 +4812,60 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 5
-EQI4 $464
+EQI4 $463
 ADDRLP4 4
 INDIRI4
 CNSTI4 2
-NEI4 $462
-LABELV $464
-line 1613
-;1613:		s->eType = ET_INVISIBLE;
+NEI4 $461
+LABELV $463
+line 1616
+;1616:		s->eType = ET_INVISIBLE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 10
 ASGNI4
-line 1614
-;1614:	} else if ( ps->stats[STAT_HEALTH] <= GIB_HEALTH ) {
-ADDRGP4 $463
+line 1617
+;1617:	} else if ( ps->stats[STAT_HEALTH] <= GIB_HEALTH ) {
+ADDRGP4 $462
 JUMPV
-LABELV $462
+LABELV $461
 ADDRFP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 -40
-GTI4 $465
-line 1615
-;1615:		s->eType = ET_INVISIBLE;
+GTI4 $464
+line 1618
+;1618:		s->eType = ET_INVISIBLE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 10
 ASGNI4
-line 1616
-;1616:	} else {
-ADDRGP4 $466
+line 1619
+;1619:	} else {
+ADDRGP4 $465
 JUMPV
-LABELV $465
-line 1617
-;1617:		s->eType = ET_PLAYER;
+LABELV $464
+line 1620
+;1620:		s->eType = ET_PLAYER;
 ADDRFP4 4
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1618
-;1618:	}
-LABELV $466
-LABELV $463
-line 1620
-;1619:
-;1620:	s->number = ps->clientNum;
+line 1621
+;1621:	}
+LABELV $465
+LABELV $462
+line 1623
+;1622:
+;1623:	s->number = ps->clientNum;
 ADDRFP4 4
 INDIRP4
 ADDRFP4 0
@@ -4875,17 +4874,17 @@ CNSTI4 140
 ADDP4
 INDIRI4
 ASGNI4
-line 1622
-;1621:
-;1622:	s->pos.trType = TR_LINEAR_STOP;
+line 1625
+;1624:
+;1625:	s->pos.trType = TR_LINEAR_STOP;
 ADDRFP4 4
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 3
 ASGNI4
-line 1623
-;1623:	VectorCopy( ps->origin, s->pos.trBase );
+line 1626
+;1626:	VectorCopy( ps->origin, s->pos.trBase );
 ADDRFP4 4
 INDIRP4
 CNSTI4 24
@@ -4896,14 +4895,14 @@ CNSTI4 20
 ADDP4
 INDIRB
 ASGNB 12
-line 1624
-;1624:	if ( snap ) {
+line 1627
+;1627:	if ( snap ) {
 ADDRFP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $467
-line 1625
-;1625:		SnapVector( s->pos.trBase );
+EQI4 $466
+line 1628
+;1628:		SnapVector( s->pos.trBase );
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -4961,12 +4960,12 @@ INDIRP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1626
-;1626:	}
-LABELV $467
-line 1628
-;1627:	// set the trDelta for flag direction and linear prediction
-;1628:	VectorCopy( ps->velocity, s->pos.trDelta );
+line 1629
+;1629:	}
+LABELV $466
+line 1631
+;1630:	// set the trDelta for flag direction and linear prediction
+;1631:	VectorCopy( ps->velocity, s->pos.trDelta );
 ADDRFP4 4
 INDIRP4
 CNSTI4 36
@@ -4977,9 +4976,9 @@ CNSTI4 32
 ADDP4
 INDIRB
 ASGNB 12
-line 1630
-;1629:	// set the time for linear prediction
-;1630:	s->pos.trTime = time;
+line 1633
+;1632:	// set the time for linear prediction
+;1633:	s->pos.trTime = time;
 ADDRFP4 4
 INDIRP4
 CNSTI4 16
@@ -4987,26 +4986,26 @@ ADDP4
 ADDRFP4 8
 INDIRI4
 ASGNI4
-line 1632
-;1631:	// set maximum extra polation time
-;1632:	s->pos.trDuration = 50; // 1000 / sv_fps (default = 20)
+line 1635
+;1634:	// set maximum extra polation time
+;1635:	s->pos.trDuration = 50; // 1000 / sv_fps (default = 20)
 ADDRFP4 4
 INDIRP4
 CNSTI4 20
 ADDP4
 CNSTI4 50
 ASGNI4
-line 1634
-;1633:
-;1634:	s->apos.trType = TR_INTERPOLATE;
+line 1637
+;1636:
+;1637:	s->apos.trType = TR_INTERPOLATE;
 ADDRFP4 4
 INDIRP4
 CNSTI4 48
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1635
-;1635:	VectorCopy( ps->viewangles, s->apos.trBase );
+line 1638
+;1638:	VectorCopy( ps->viewangles, s->apos.trBase );
 ADDRFP4 4
 INDIRP4
 CNSTI4 60
@@ -5017,14 +5016,14 @@ CNSTI4 152
 ADDP4
 INDIRB
 ASGNB 12
-line 1636
-;1636:	if ( snap ) {
+line 1639
+;1639:	if ( snap ) {
 ADDRFP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $469
-line 1637
-;1637:		SnapVector( s->apos.trBase );
+EQI4 $468
+line 1640
+;1640:		SnapVector( s->apos.trBase );
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -5082,12 +5081,12 @@ INDIRP4
 ADDRLP4 28
 INDIRF4
 ASGNF4
-line 1638
-;1638:	}
-LABELV $469
-line 1640
-;1639:
-;1640:	s->angles2[YAW] = ps->movementDir;
+line 1641
+;1641:	}
+LABELV $468
+line 1643
+;1642:
+;1643:	s->angles2[YAW] = ps->movementDir;
 ADDRFP4 4
 INDIRP4
 CNSTI4 132
@@ -5099,8 +5098,8 @@ ADDP4
 INDIRI4
 CVIF4 4
 ASGNF4
-line 1641
-;1641:	s->legsAnim = ps->legsAnim;
+line 1644
+;1644:	s->legsAnim = ps->legsAnim;
 ADDRFP4 4
 INDIRP4
 CNSTI4 196
@@ -5111,8 +5110,8 @@ CNSTI4 76
 ADDP4
 INDIRI4
 ASGNI4
-line 1642
-;1642:	s->torsoAnim = ps->torsoAnim;
+line 1645
+;1645:	s->torsoAnim = ps->torsoAnim;
 ADDRFP4 4
 INDIRP4
 CNSTI4 200
@@ -5123,8 +5122,8 @@ CNSTI4 84
 ADDP4
 INDIRI4
 ASGNI4
-line 1643
-;1643:	s->clientNum = ps->clientNum;		// ET_PLAYER looks here instead of at number
+line 1646
+;1646:	s->clientNum = ps->clientNum;		// ET_PLAYER looks here instead of at number
 ADDRFP4 4
 INDIRP4
 CNSTI4 168
@@ -5135,9 +5134,9 @@ CNSTI4 140
 ADDP4
 INDIRI4
 ASGNI4
-line 1645
-;1644:										// so corpses can also reference the proper config
-;1645:	s->eFlags = ps->eFlags;
+line 1648
+;1647:										// so corpses can also reference the proper config
+;1648:	s->eFlags = ps->eFlags;
 ADDRFP4 4
 INDIRP4
 CNSTI4 8
@@ -5148,17 +5147,17 @@ CNSTI4 104
 ADDP4
 INDIRI4
 ASGNI4
-line 1646
-;1646:	if ( ps->stats[STAT_HEALTH] <= 0 ) {
+line 1649
+;1649:	if ( ps->stats[STAT_HEALTH] <= 0 ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 184
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $471
-line 1647
-;1647:		s->eFlags |= EF_DEAD;
+GTI4 $470
+line 1650
+;1650:		s->eFlags |= EF_DEAD;
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -5173,13 +5172,13 @@ INDIRI4
 CNSTI4 1
 BORI4
 ASGNI4
-line 1648
-;1648:	} else {
-ADDRGP4 $472
+line 1651
+;1651:	} else {
+ADDRGP4 $471
 JUMPV
-LABELV $471
-line 1649
-;1649:		s->eFlags &= ~EF_DEAD;
+LABELV $470
+line 1652
+;1652:		s->eFlags &= ~EF_DEAD;
 ADDRLP4 8
 ADDRFP4 4
 INDIRP4
@@ -5194,21 +5193,21 @@ INDIRI4
 CNSTI4 -2
 BANDI4
 ASGNI4
-line 1650
-;1650:	}
-LABELV $472
-line 1652
-;1651:
-;1652:	if ( ps->externalEvent ) {
+line 1653
+;1653:	}
+LABELV $471
+line 1655
+;1654:
+;1655:	if ( ps->externalEvent ) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 128
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $473
-line 1653
-;1653:		s->event = ps->externalEvent;
+EQI4 $472
+line 1656
+;1656:		s->event = ps->externalEvent;
 ADDRFP4 4
 INDIRP4
 CNSTI4 180
@@ -5219,8 +5218,8 @@ CNSTI4 128
 ADDP4
 INDIRI4
 ASGNI4
-line 1654
-;1654:		s->eventParm = ps->externalEventParm;
+line 1657
+;1657:		s->eventParm = ps->externalEventParm;
 ADDRFP4 4
 INDIRP4
 CNSTI4 184
@@ -5231,11 +5230,11 @@ CNSTI4 132
 ADDP4
 INDIRI4
 ASGNI4
-line 1655
-;1655:	} else if ( ps->entityEventSequence < ps->eventSequence ) {
-ADDRGP4 $474
+line 1658
+;1658:	} else if ( ps->entityEventSequence < ps->eventSequence ) {
+ADDRGP4 $473
 JUMPV
-LABELV $473
+LABELV $472
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -5250,11 +5249,11 @@ INDIRP4
 CNSTI4 108
 ADDP4
 INDIRI4
-GEI4 $475
-line 1658
-;1656:		int		seq;
-;1657:
-;1658:		if ( ps->entityEventSequence < ps->eventSequence - MAX_PS_EVENTS) {
+GEI4 $474
+line 1661
+;1659:		int		seq;
+;1660:
+;1661:		if ( ps->entityEventSequence < ps->eventSequence - MAX_PS_EVENTS) {
 ADDRLP4 16
 ADDRFP4 0
 INDIRP4
@@ -5271,9 +5270,9 @@ ADDP4
 INDIRI4
 CNSTI4 2
 SUBI4
-GEI4 $477
-line 1659
-;1659:			ps->entityEventSequence = ps->eventSequence - MAX_PS_EVENTS;
+GEI4 $476
+line 1662
+;1662:			ps->entityEventSequence = ps->eventSequence - MAX_PS_EVENTS;
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -5290,11 +5289,11 @@ INDIRI4
 CNSTI4 2
 SUBI4
 ASGNI4
-line 1660
-;1660:		}
-LABELV $477
-line 1661
-;1661:		seq = ps->entityEventSequence & (MAX_PS_EVENTS-1);
+line 1663
+;1663:		}
+LABELV $476
+line 1664
+;1664:		seq = ps->entityEventSequence & (MAX_PS_EVENTS-1);
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -5304,8 +5303,8 @@ INDIRI4
 CNSTI4 1
 BANDI4
 ASGNI4
-line 1662
-;1662:		s->event = ps->events[ seq ] | ( ( ps->entityEventSequence & 3 ) << 8 );
+line 1665
+;1665:		s->event = ps->events[ seq ] | ( ( ps->entityEventSequence & 3 ) << 8 );
 ADDRLP4 20
 ADDRFP4 0
 INDIRP4
@@ -5335,8 +5334,8 @@ CNSTI4 8
 LSHI4
 BORI4
 ASGNI4
-line 1663
-;1663:		s->eventParm = ps->eventParms[ seq ];
+line 1666
+;1666:		s->eventParm = ps->eventParms[ seq ];
 ADDRFP4 4
 INDIRP4
 CNSTI4 184
@@ -5352,8 +5351,8 @@ ADDP4
 ADDP4
 INDIRI4
 ASGNI4
-line 1664
-;1664:		ps->entityEventSequence++;
+line 1667
+;1667:		ps->entityEventSequence++;
 ADDRLP4 24
 ADDRFP4 0
 INDIRP4
@@ -5368,13 +5367,13 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1665
-;1665:	}
-LABELV $475
+line 1668
+;1668:	}
 LABELV $474
-line 1667
-;1666:
-;1667:	s->weapon = ps->weapon;
+LABELV $473
+line 1670
+;1669:
+;1670:	s->weapon = ps->weapon;
 ADDRFP4 4
 INDIRP4
 CNSTI4 192
@@ -5385,8 +5384,8 @@ CNSTI4 144
 ADDP4
 INDIRI4
 ASGNI4
-line 1668
-;1668:	s->groundEntityNum = ps->groundEntityNum;
+line 1671
+;1671:	s->groundEntityNum = ps->groundEntityNum;
 ADDRFP4 4
 INDIRP4
 CNSTI4 148
@@ -5397,23 +5396,23 @@ CNSTI4 68
 ADDP4
 INDIRI4
 ASGNI4
-line 1670
-;1669:
-;1670:	s->powerups = 0;
+line 1673
+;1672:
+;1673:	s->powerups = 0;
 ADDRFP4 4
 INDIRP4
 CNSTI4 188
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1671
-;1671:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
+line 1674
+;1674:	for ( i = 0 ; i < MAX_POWERUPS ; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $479
-line 1672
-;1672:		if ( ps->powerups[ i ] ) {
+LABELV $478
+line 1675
+;1675:		if ( ps->powerups[ i ] ) {
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -5425,9 +5424,9 @@ ADDP4
 ADDP4
 INDIRI4
 CNSTI4 0
-EQI4 $483
-line 1673
-;1673:			s->powerups |= 1 << i;
+EQI4 $482
+line 1676
+;1676:			s->powerups |= 1 << i;
 ADDRLP4 12
 ADDRFP4 4
 INDIRP4
@@ -5445,13 +5444,13 @@ INDIRI4
 LSHI4
 BORI4
 ASGNI4
+line 1677
+;1677:		}
+LABELV $482
+line 1678
+;1678:	}
+LABELV $479
 line 1674
-;1674:		}
-LABELV $483
-line 1675
-;1675:	}
-LABELV $480
-line 1671
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -5461,10 +5460,10 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 16
-LTI4 $479
-line 1677
-;1676:
-;1677:	s->loopSound = ps->loopSound;
+LTI4 $478
+line 1680
+;1679:
+;1680:	s->loopSound = ps->loopSound;
 ADDRFP4 4
 INDIRP4
 CNSTI4 156
@@ -5475,8 +5474,8 @@ CNSTI4 444
 ADDP4
 INDIRI4
 ASGNI4
-line 1678
-;1678:	s->generic1 = ps->generic1;
+line 1681
+;1681:	s->generic1 = ps->generic1;
 ADDRFP4 4
 INDIRP4
 CNSTI4 204
@@ -5487,9 +5486,9 @@ CNSTI4 440
 ADDP4
 INDIRI4
 ASGNI4
-line 1679
-;1679:}
-LABELV $461
+line 1682
+;1682:}
+LABELV $460
 endproc BG_PlayerStateToEntityStateExtraPolate 32 4
 import trap_Cvar_VariableStringBuffer
 import Pmove
@@ -5651,7 +5650,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $426
+LABELV $425
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5662,7 +5661,7 @@ byte 1 78
 byte 1 84
 byte 1 0
 align 1
-LABELV $425
+LABELV $424
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5684,7 +5683,7 @@ byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $424
+LABELV $423
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5700,7 +5699,7 @@ byte 1 78
 byte 1 69
 byte 1 0
 align 1
-LABELV $423
+LABELV $422
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5715,7 +5714,7 @@ byte 1 85
 byte 1 77
 byte 1 0
 align 1
-LABELV $422
+LABELV $421
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5731,7 +5730,7 @@ byte 1 69
 byte 1 82
 byte 1 0
 align 1
-LABELV $421
+LABELV $420
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5744,7 +5743,7 @@ byte 1 85
 byte 1 84
 byte 1 0
 align 1
-LABELV $420
+LABELV $419
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5756,7 +5755,7 @@ byte 1 73
 byte 1 78
 byte 1 0
 align 1
-LABELV $419
+LABELV $418
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5778,7 +5777,7 @@ byte 1 69
 byte 1 69
 byte 1 0
 align 1
-LABELV $418
+LABELV $417
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5795,7 +5794,7 @@ byte 1 69
 byte 1 68
 byte 1 0
 align 1
-LABELV $417
+LABELV $416
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5814,7 +5813,7 @@ byte 1 69
 byte 1 78
 byte 1 0
 align 1
-LABELV $416
+LABELV $415
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5838,7 +5837,7 @@ byte 1 73
 byte 1 84
 byte 1 0
 align 1
-LABELV $415
+LABELV $414
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5856,7 +5855,7 @@ byte 1 65
 byte 1 68
 byte 1 0
 align 1
-LABELV $414
+LABELV $413
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5870,7 +5869,7 @@ byte 1 82
 byte 1 89
 byte 1 0
 align 1
-LABELV $413
+LABELV $412
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5882,7 +5881,7 @@ byte 1 72
 byte 1 51
 byte 1 0
 align 1
-LABELV $412
+LABELV $411
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5894,7 +5893,7 @@ byte 1 72
 byte 1 50
 byte 1 0
 align 1
-LABELV $411
+LABELV $410
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5906,7 +5905,7 @@ byte 1 72
 byte 1 49
 byte 1 0
 align 1
-LABELV $410
+LABELV $409
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5916,7 +5915,7 @@ byte 1 73
 byte 1 78
 byte 1 0
 align 1
-LABELV $409
+LABELV $408
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5928,7 +5927,7 @@ byte 1 69
 byte 1 84
 byte 1 0
 align 1
-LABELV $408
+LABELV $407
 byte 1 69
 byte 1 86
 byte 1 95
@@ -5941,42 +5940,18 @@ byte 1 85
 byte 1 78
 byte 1 0
 align 1
-LABELV $407
-byte 1 69
-byte 1 86
-byte 1 95
-byte 1 82
-byte 1 65
-byte 1 73
-byte 1 76
-byte 1 84
-byte 1 82
-byte 1 65
-byte 1 73
-byte 1 76
-byte 1 0
-align 1
 LABELV $406
 byte 1 69
 byte 1 86
 byte 1 95
-byte 1 77
-byte 1 73
-byte 1 83
-byte 1 83
+byte 1 82
+byte 1 65
 byte 1 73
 byte 1 76
-byte 1 69
-byte 1 95
-byte 1 77
-byte 1 73
-byte 1 83
-byte 1 83
-byte 1 95
-byte 1 77
-byte 1 69
 byte 1 84
+byte 1 82
 byte 1 65
+byte 1 73
 byte 1 76
 byte 1 0
 align 1
@@ -5996,9 +5971,33 @@ byte 1 77
 byte 1 73
 byte 1 83
 byte 1 83
+byte 1 95
+byte 1 77
+byte 1 69
+byte 1 84
+byte 1 65
+byte 1 76
 byte 1 0
 align 1
 LABELV $404
+byte 1 69
+byte 1 86
+byte 1 95
+byte 1 77
+byte 1 73
+byte 1 83
+byte 1 83
+byte 1 73
+byte 1 76
+byte 1 69
+byte 1 95
+byte 1 77
+byte 1 73
+byte 1 83
+byte 1 83
+byte 1 0
+align 1
+LABELV $403
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6015,7 +6014,7 @@ byte 1 73
 byte 1 84
 byte 1 0
 align 1
-LABELV $403
+LABELV $402
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6036,7 +6035,7 @@ byte 1 76
 byte 1 76
 byte 1 0
 align 1
-LABELV $402
+LABELV $401
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6058,7 +6057,7 @@ byte 1 83
 byte 1 72
 byte 1 0
 align 1
-LABELV $401
+LABELV $400
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6081,7 +6080,7 @@ byte 1 78
 byte 1 68
 byte 1 0
 align 1
-LABELV $400
+LABELV $399
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6089,25 +6088,6 @@ byte 1 71
 byte 1 76
 byte 1 79
 byte 1 66
-byte 1 65
-byte 1 76
-byte 1 95
-byte 1 83
-byte 1 79
-byte 1 85
-byte 1 78
-byte 1 68
-byte 1 0
-align 1
-LABELV $399
-byte 1 69
-byte 1 86
-byte 1 95
-byte 1 71
-byte 1 69
-byte 1 78
-byte 1 69
-byte 1 82
 byte 1 65
 byte 1 76
 byte 1 95
@@ -6122,6 +6102,25 @@ LABELV $398
 byte 1 69
 byte 1 86
 byte 1 95
+byte 1 71
+byte 1 69
+byte 1 78
+byte 1 69
+byte 1 82
+byte 1 65
+byte 1 76
+byte 1 95
+byte 1 83
+byte 1 79
+byte 1 85
+byte 1 78
+byte 1 68
+byte 1 0
+align 1
+LABELV $397
+byte 1 69
+byte 1 86
+byte 1 95
 byte 1 80
 byte 1 76
 byte 1 95
@@ -6133,7 +6132,7 @@ byte 1 67
 byte 1 69
 byte 1 0
 align 1
-LABELV $397
+LABELV $396
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6151,31 +6150,6 @@ byte 1 85
 byte 1 78
 byte 1 67
 byte 1 69
-byte 1 0
-align 1
-LABELV $396
-byte 1 69
-byte 1 86
-byte 1 95
-byte 1 80
-byte 1 76
-byte 1 65
-byte 1 89
-byte 1 69
-byte 1 82
-byte 1 95
-byte 1 84
-byte 1 69
-byte 1 76
-byte 1 69
-byte 1 80
-byte 1 79
-byte 1 82
-byte 1 84
-byte 1 95
-byte 1 79
-byte 1 85
-byte 1 84
 byte 1 0
 align 1
 LABELV $395
@@ -6198,11 +6172,36 @@ byte 1 79
 byte 1 82
 byte 1 84
 byte 1 95
+byte 1 79
+byte 1 85
+byte 1 84
+byte 1 0
+align 1
+LABELV $394
+byte 1 69
+byte 1 86
+byte 1 95
+byte 1 80
+byte 1 76
+byte 1 65
+byte 1 89
+byte 1 69
+byte 1 82
+byte 1 95
+byte 1 84
+byte 1 69
+byte 1 76
+byte 1 69
+byte 1 80
+byte 1 79
+byte 1 82
+byte 1 84
+byte 1 95
 byte 1 73
 byte 1 78
 byte 1 0
 align 1
-LABELV $394
+LABELV $393
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6216,7 +6215,7 @@ byte 1 79
 byte 1 80
 byte 1 0
 align 1
-LABELV $393
+LABELV $392
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6234,22 +6233,6 @@ byte 1 87
 byte 1 78
 byte 1 0
 align 1
-LABELV $392
-byte 1 69
-byte 1 86
-byte 1 95
-byte 1 85
-byte 1 83
-byte 1 69
-byte 1 95
-byte 1 73
-byte 1 84
-byte 1 69
-byte 1 77
-byte 1 49
-byte 1 53
-byte 1 0
-align 1
 LABELV $391
 byte 1 69
 byte 1 86
@@ -6263,7 +6246,7 @@ byte 1 84
 byte 1 69
 byte 1 77
 byte 1 49
-byte 1 52
+byte 1 53
 byte 1 0
 align 1
 LABELV $390
@@ -6279,7 +6262,7 @@ byte 1 84
 byte 1 69
 byte 1 77
 byte 1 49
-byte 1 51
+byte 1 52
 byte 1 0
 align 1
 LABELV $389
@@ -6295,7 +6278,7 @@ byte 1 84
 byte 1 69
 byte 1 77
 byte 1 49
-byte 1 50
+byte 1 51
 byte 1 0
 align 1
 LABELV $388
@@ -6311,7 +6294,7 @@ byte 1 84
 byte 1 69
 byte 1 77
 byte 1 49
-byte 1 49
+byte 1 50
 byte 1 0
 align 1
 LABELV $387
@@ -6327,7 +6310,7 @@ byte 1 84
 byte 1 69
 byte 1 77
 byte 1 49
-byte 1 48
+byte 1 49
 byte 1 0
 align 1
 LABELV $386
@@ -6342,7 +6325,8 @@ byte 1 73
 byte 1 84
 byte 1 69
 byte 1 77
-byte 1 57
+byte 1 49
+byte 1 48
 byte 1 0
 align 1
 LABELV $385
@@ -6357,7 +6341,7 @@ byte 1 73
 byte 1 84
 byte 1 69
 byte 1 77
-byte 1 56
+byte 1 57
 byte 1 0
 align 1
 LABELV $384
@@ -6372,7 +6356,7 @@ byte 1 73
 byte 1 84
 byte 1 69
 byte 1 77
-byte 1 55
+byte 1 56
 byte 1 0
 align 1
 LABELV $383
@@ -6387,7 +6371,7 @@ byte 1 73
 byte 1 84
 byte 1 69
 byte 1 77
-byte 1 54
+byte 1 55
 byte 1 0
 align 1
 LABELV $382
@@ -6402,7 +6386,7 @@ byte 1 73
 byte 1 84
 byte 1 69
 byte 1 77
-byte 1 53
+byte 1 54
 byte 1 0
 align 1
 LABELV $381
@@ -6417,7 +6401,7 @@ byte 1 73
 byte 1 84
 byte 1 69
 byte 1 77
-byte 1 52
+byte 1 53
 byte 1 0
 align 1
 LABELV $380
@@ -6432,7 +6416,7 @@ byte 1 73
 byte 1 84
 byte 1 69
 byte 1 77
-byte 1 51
+byte 1 52
 byte 1 0
 align 1
 LABELV $379
@@ -6447,7 +6431,7 @@ byte 1 73
 byte 1 84
 byte 1 69
 byte 1 77
-byte 1 50
+byte 1 51
 byte 1 0
 align 1
 LABELV $378
@@ -6462,7 +6446,7 @@ byte 1 73
 byte 1 84
 byte 1 69
 byte 1 77
-byte 1 49
+byte 1 50
 byte 1 0
 align 1
 LABELV $377
@@ -6477,10 +6461,25 @@ byte 1 73
 byte 1 84
 byte 1 69
 byte 1 77
-byte 1 48
+byte 1 49
 byte 1 0
 align 1
 LABELV $376
+byte 1 69
+byte 1 86
+byte 1 95
+byte 1 85
+byte 1 83
+byte 1 69
+byte 1 95
+byte 1 73
+byte 1 84
+byte 1 69
+byte 1 77
+byte 1 48
+byte 1 0
+align 1
+LABELV $375
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6497,7 +6496,7 @@ byte 1 79
 byte 1 78
 byte 1 0
 align 1
-LABELV $375
+LABELV $374
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6516,7 +6515,7 @@ byte 1 79
 byte 1 78
 byte 1 0
 align 1
-LABELV $374
+LABELV $373
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6528,7 +6527,7 @@ byte 1 77
 byte 1 79
 byte 1 0
 align 1
-LABELV $373
+LABELV $372
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6538,23 +6537,6 @@ byte 1 79
 byte 1 66
 byte 1 65
 byte 1 76
-byte 1 95
-byte 1 73
-byte 1 84
-byte 1 69
-byte 1 77
-byte 1 95
-byte 1 80
-byte 1 73
-byte 1 67
-byte 1 75
-byte 1 85
-byte 1 80
-byte 1 0
-align 1
-LABELV $372
-byte 1 69
-byte 1 86
 byte 1 95
 byte 1 73
 byte 1 84
@@ -6573,6 +6555,23 @@ LABELV $371
 byte 1 69
 byte 1 86
 byte 1 95
+byte 1 73
+byte 1 84
+byte 1 69
+byte 1 77
+byte 1 95
+byte 1 80
+byte 1 73
+byte 1 67
+byte 1 75
+byte 1 85
+byte 1 80
+byte 1 0
+align 1
+LABELV $370
+byte 1 69
+byte 1 86
+byte 1 95
 byte 1 87
 byte 1 65
 byte 1 84
@@ -6586,7 +6585,7 @@ byte 1 65
 byte 1 82
 byte 1 0
 align 1
-LABELV $370
+LABELV $369
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6603,7 +6602,7 @@ byte 1 69
 byte 1 82
 byte 1 0
 align 1
-LABELV $369
+LABELV $368
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6620,7 +6619,7 @@ byte 1 86
 byte 1 69
 byte 1 0
 align 1
-LABELV $368
+LABELV $367
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6637,7 +6636,7 @@ byte 1 67
 byte 1 72
 byte 1 0
 align 1
-LABELV $367
+LABELV $366
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6647,7 +6646,7 @@ byte 1 77
 byte 1 80
 byte 1 0
 align 1
-LABELV $366
+LABELV $365
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6661,7 +6660,7 @@ byte 1 65
 byte 1 68
 byte 1 0
 align 1
-LABELV $365
+LABELV $364
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6675,7 +6674,7 @@ byte 1 65
 byte 1 82
 byte 1 0
 align 1
-LABELV $364
+LABELV $363
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6692,7 +6691,7 @@ byte 1 85
 byte 1 77
 byte 1 0
 align 1
-LABELV $363
+LABELV $362
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6706,19 +6705,6 @@ byte 1 72
 byte 1 79
 byte 1 82
 byte 1 84
-byte 1 0
-align 1
-LABELV $362
-byte 1 69
-byte 1 86
-byte 1 95
-byte 1 83
-byte 1 84
-byte 1 69
-byte 1 80
-byte 1 95
-byte 1 49
-byte 1 54
 byte 1 0
 align 1
 LABELV $361
@@ -6731,7 +6717,7 @@ byte 1 69
 byte 1 80
 byte 1 95
 byte 1 49
-byte 1 50
+byte 1 54
 byte 1 0
 align 1
 LABELV $360
@@ -6743,7 +6729,8 @@ byte 1 84
 byte 1 69
 byte 1 80
 byte 1 95
-byte 1 56
+byte 1 49
+byte 1 50
 byte 1 0
 align 1
 LABELV $359
@@ -6755,10 +6742,22 @@ byte 1 84
 byte 1 69
 byte 1 80
 byte 1 95
-byte 1 52
+byte 1 56
 byte 1 0
 align 1
 LABELV $358
+byte 1 69
+byte 1 86
+byte 1 95
+byte 1 83
+byte 1 84
+byte 1 69
+byte 1 80
+byte 1 95
+byte 1 52
+byte 1 0
+align 1
+LABELV $357
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6768,7 +6767,7 @@ byte 1 73
 byte 1 77
 byte 1 0
 align 1
-LABELV $357
+LABELV $356
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6782,7 +6781,7 @@ byte 1 68
 byte 1 69
 byte 1 0
 align 1
-LABELV $356
+LABELV $355
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6796,26 +6795,6 @@ byte 1 76
 byte 1 65
 byte 1 83
 byte 1 72
-byte 1 0
-align 1
-LABELV $355
-byte 1 69
-byte 1 86
-byte 1 95
-byte 1 70
-byte 1 79
-byte 1 79
-byte 1 84
-byte 1 83
-byte 1 84
-byte 1 69
-byte 1 80
-byte 1 95
-byte 1 77
-byte 1 69
-byte 1 84
-byte 1 65
-byte 1 76
 byte 1 0
 align 1
 LABELV $354
@@ -6830,9 +6809,29 @@ byte 1 83
 byte 1 84
 byte 1 69
 byte 1 80
+byte 1 95
+byte 1 77
+byte 1 69
+byte 1 84
+byte 1 65
+byte 1 76
 byte 1 0
 align 1
 LABELV $353
+byte 1 69
+byte 1 86
+byte 1 95
+byte 1 70
+byte 1 79
+byte 1 79
+byte 1 84
+byte 1 83
+byte 1 84
+byte 1 69
+byte 1 80
+byte 1 0
+align 1
+LABELV $352
 byte 1 69
 byte 1 86
 byte 1 95
@@ -6842,7 +6841,7 @@ byte 1 78
 byte 1 69
 byte 1 0
 align 1
-LABELV $351
+LABELV $350
 byte 1 66
 byte 1 71
 byte 1 95
@@ -6891,7 +6890,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $337
+LABELV $336
 byte 1 66
 byte 1 71
 byte 1 95
@@ -6935,7 +6934,7 @@ byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $321
+LABELV $320
 byte 1 66
 byte 1 71
 byte 1 95
@@ -6963,48 +6962,6 @@ byte 1 95
 byte 1 66
 byte 1 65
 byte 1 68
-byte 1 0
-align 1
-LABELV $276
-byte 1 66
-byte 1 71
-byte 1 95
-byte 1 67
-byte 1 97
-byte 1 110
-byte 1 73
-byte 1 116
-byte 1 101
-byte 1 109
-byte 1 66
-byte 1 101
-byte 1 71
-byte 1 114
-byte 1 97
-byte 1 98
-byte 1 98
-byte 1 101
-byte 1 100
-byte 1 58
-byte 1 32
-byte 1 105
-byte 1 110
-byte 1 100
-byte 1 101
-byte 1 120
-byte 1 32
-byte 1 111
-byte 1 117
-byte 1 116
-byte 1 32
-byte 1 111
-byte 1 102
-byte 1 32
-byte 1 114
-byte 1 97
-byte 1 110
-byte 1 103
-byte 1 101
 byte 1 0
 align 1
 LABELV $251

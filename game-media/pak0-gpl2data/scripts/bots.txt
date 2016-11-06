@@ -7,34 +7,87 @@
 //===========================================================================
 
 {
-name		"Bugger_Yikes"
-funname		"Yikes"
+name		"Vic20"
+funname		"Vic20"
 model		bugger/yikes
 aifile	bots/major_c.c
 }
-
-
 {
-name		"Zveeep"
-funname		"Zveeep"
+name		Penny
+funname		"Penny"
+model		zveeep/murder
+aifile		bots/skelebot_c.c
+}
+{
+name		Q
+funname		"Q"
+model		zveeep/hijinx
+aifile		bots/skelebot_c.c
+}
+{
+name		Orion
+funname		"Orion"
+model		zveeep/shimmer
+aifile		bots/skelebot_c.c
+}
+{
+name		"Mork"
+funname		"Mork"
 model		zveeep/default
 aifile		bots/major_c.c
 }
 
 {
 name		Beret
-model		beret
+funname		"Beret"
+model		beret/default
 aifile		bots/beret_c.c
 }
-
+{
+name		AngryNerdBot
+funname		"AngryNerdBot"
+model		bugger/recept
+aifile		bots/grism_c.c
+}
+{
+name		Linax
+funname		"Linax"
+model		bugger/ravinc
+aifile		bots/skelebot_c.c
+}
+{
+name		Stanley
+funname		"Stanley"
+model		bugger/jahseer
+aifile		bots/sarge_c.c
+}
+{
+name		Weemer
+funname		"Weemer"
+model		bugger/espaersc
+aifile		bots/skelebot_c.c
+}
+{
+name		Paul
+funname		"Paul"
+model		bugger/anczyd
+aifile		bots/skelebot_c.c
+}
+{
+name		Hal
+funname		"Hal"
+model		skelebot/default
+aifile		bots/skelebot_c.c
+}
+{
+name		Sarge
+funname		"Sarge"
+model		sarge/default
+aifile		bots/default_c.c
+}
 {
 name		Major
 model		major
+model		major/default
 aifile		bots/major_c.c
-}
-
-{
-name		Skelebot
-model		skelebot
-aifile		bots/skelebot_c.c
 }

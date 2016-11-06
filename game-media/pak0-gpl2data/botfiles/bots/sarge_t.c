@@ -28,6 +28,7 @@ chat "sarge"
 	type "game_enter"
 	{
 		"Here we go again.";
+		"Hi There!.";
 		"Why don't you people just lay down and die, it'll save me the trouble.";
 	}
 
@@ -47,6 +48,7 @@ chat "sarge"
 	type "level_end"
 	{
 		"nice place ", 4, ", much less dangerous than d3dm2.";
+		"Good Game!";
 	}
 
 	type "level_end_victory"
@@ -56,7 +58,7 @@ chat "sarge"
 
 	type "level_end_lose"
 	{
-		"Aww... crap!";
+		"Aww... crap!, gg";
 	}
 
 	type "hit_talking"
@@ -185,11 +187,14 @@ chat "sarge"
 	{
 		"Nice one, ", 0, ".";
 		"Wow, ~you never saw that one coming, ", 0, ".";
+		"That wasn't even a full can of whoop ass!";
+		"Whos your Daddy?!";
 	}
 
 	type "random_insult"
 	{
 		 0, ", ~you suck!";
+		 "Noobs!";
 		 0, " needs to stop calling my mom.";
 	}
 
@@ -197,6 +202,8 @@ chat "sarge"
 	{
 		0, " gave my ~mom ", disease, ".";
 		"Is it true that ", peeps, " is a bot?";
+		"heh?";
+		"Highest ping wins!";
 		
 	}
 }

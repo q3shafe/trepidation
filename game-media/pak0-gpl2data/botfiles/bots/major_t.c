@@ -30,6 +30,7 @@ chat "Major"
 	type "game_enter" //initiated when the bot enters the game
 	{
 		"Hello.";
+		"Hey All";
 		"Are you prepared for pain?";
 		HELLO1;
 		// 0 = bot name
@@ -60,6 +61,7 @@ chat "Major"
 		2, ", I let you win.";
 		4, " has changed a lot, it is much faster now.";
 		"Is it over yet?";
+		"Good Game!";
 		// 0 = bot name
 		// 1 = random opponent
 		// 2 = opponent in first place
@@ -264,6 +266,7 @@ chat "Major"
 		TAUNT1;
 		curse;
 		"You should give up your ", substance, " addiction by next ", month, ".";
+		"klsdhkshlshjkbxm!.";
 		"I saw those pictures of ", 0, " and a ", animal, " posted on the web last night... Like, ewww!";
 		immaturity01;
 		"Your ", family_member, " needs to stop calling me.";
