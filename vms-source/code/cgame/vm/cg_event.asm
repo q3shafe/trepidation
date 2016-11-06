@@ -547,7 +547,7 @@ JUMPV
 LABELV $128
 line 115
 ;114:	case MOD_WATER:
-;115:		message = "sank like a rock";
+;115:		message = "drowned";
 ADDRLP4 40
 ADDRGP4 $129
 ASGNP4
@@ -569,7 +569,7 @@ JUMPV
 LABELV $132
 line 121
 ;120:	case MOD_LAVA:
-;121:		message = "does a back flip into the lava";
+;121:		message = "burned up";
 ADDRLP4 40
 ADDRGP4 $133
 ASGNP4
@@ -10123,36 +10123,15 @@ byte 1 100
 byte 1 0
 align 1
 LABELV $133
-byte 1 100
-byte 1 111
-byte 1 101
-byte 1 115
-byte 1 32
-byte 1 97
-byte 1 32
 byte 1 98
-byte 1 97
-byte 1 99
-byte 1 107
-byte 1 32
-byte 1 102
-byte 1 108
-byte 1 105
-byte 1 112
-byte 1 32
-byte 1 105
+byte 1 117
+byte 1 114
 byte 1 110
-byte 1 116
-byte 1 111
-byte 1 32
-byte 1 116
-byte 1 104
 byte 1 101
+byte 1 100
 byte 1 32
-byte 1 108
-byte 1 97
-byte 1 118
-byte 1 97
+byte 1 117
+byte 1 112
 byte 1 0
 align 1
 LABELV $131
@@ -10165,22 +10144,13 @@ byte 1 100
 byte 1 0
 align 1
 LABELV $129
-byte 1 115
-byte 1 97
-byte 1 110
-byte 1 107
-byte 1 32
-byte 1 108
-byte 1 105
-byte 1 107
-byte 1 101
-byte 1 32
-byte 1 97
-byte 1 32
+byte 1 100
 byte 1 114
 byte 1 111
-byte 1 99
-byte 1 107
+byte 1 119
+byte 1 110
+byte 1 101
+byte 1 100
 byte 1 0
 align 1
 LABELV $127

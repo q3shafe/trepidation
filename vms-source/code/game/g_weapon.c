@@ -1280,7 +1280,7 @@ void FireWeapon2( gentity_t *ent ) {
 	break; 
  case WP_SHOTGUN: 
 	 //weapon_bomblauncher_fire( ent, qtrue); // Not Ready Yet
-	 //weapon_supershotgun_fire( ent, qtrue );
+	 weapon_supershotgun_fire( ent, qtrue );
 	break; 
  case WP_MACHINEGUN: 
   //Weapon_RocketLauncher_Fire( ent );

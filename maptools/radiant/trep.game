@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
 <game
   name="Trepidation"
-  enginepath ="C:\Program Files\Trepidation/"
-  gametools="C:\Program Files\Trepidation\Mapping/"
+  enginepath ="C:\treptest/"
+  gametools="c:\treptest\Mapping/"
   gamename="trepidation"
   basegame="Mapping"
-  engine="trepidation.exe"
+  engine="trepidation.i386.exe"
 />

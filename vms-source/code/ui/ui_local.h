@@ -373,6 +373,14 @@ extern void UI_ConfirmMenu( const char *question, void (*draw)( void ), void (*a
 extern void UI_SetupMenu_Cache( void );
 extern void UI_SetupMenu(void);
 
+
+//
+// ui_singleplayer.c	--- Trepidation shafe
+//
+extern void UI_SinglePlayerMenu_Cache( void );
+extern void UI_SinglePlayerMenu(void);
+
+
 //
 // ui_offline.c
 //

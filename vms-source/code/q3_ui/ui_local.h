@@ -332,6 +332,7 @@ extern void UI_Message( const char **lines );
 extern void UI_SetupMenu_Cache( void );
 extern void UI_SetupMenu(void);
 
+
 //
 // ui_offline.c
 //
@@ -443,8 +444,16 @@ extern void GraphicsOptions_Cache( void );
 extern void DriverInfo_Cache( void );
 
 //
+// ui_singleplayer.c	--- Trepidation shafe
+//
+//extern void UI_SinglePlayerMenu(void);
+//extern void UI_SinglePlayerMenu_Cache( void );
+
+//
 // ui_players.c
 //
+
+
 
 //FIXME ripped from cg_local.h
 typedef struct {

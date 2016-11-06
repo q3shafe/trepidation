@@ -15,6 +15,15 @@ downloads on :)
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+
+- Added new single player menu.
+
+- LFO Rifle can penetrate battlesuite at half damage. (This may change in the future)
+
+- decreased accuracy of alt singularity cannon.
+
+- added g_StartRandom so that the server will pick the set of weapons on arsenal randomly.
+
 - added g_randommap for randomized map rotations which uses a map file specified with g_mapfile.
 
 - added new gamemode g_GameMode 4 is the new one4all gametype.

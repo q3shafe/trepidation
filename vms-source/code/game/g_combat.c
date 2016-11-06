@@ -1367,6 +1367,13 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		if ( ( dflags & DAMAGE_RADIUS ) || ( mod == MOD_FALLING ) ) {
 			return;
 		}
+
+		// Machine gun can get through battlesuite - trep (maybe some other weapon?)
+		if (mod == MOD_MACHINEGUN)
+		{
+			damage *= 0.5;
+		}
+
 		return;		// shafe - Battlesuite now protects from everything.
 		//damage *= 0.5;
 	}

@@ -315,7 +315,7 @@ address $90
 byte 4 1
 address cg_drawAmmoWarning
 address $109
-address $90
+address $88
 byte 4 1
 address cg_drawAttacker
 address $110
@@ -832,7 +832,7 @@ line 355
 ;223:	{ &cg_drawSnapshot, "cg_drawSnapshot", "0", CVAR_ARCHIVE  },
 ;224:	{ &cg_draw3dIcons, "cg_draw3dIcons", "1", CVAR_ARCHIVE  },
 ;225:	{ &cg_drawIcons, "cg_drawIcons", "1", CVAR_ARCHIVE  },
-;226:	{ &cg_drawAmmoWarning, "cg_drawAmmoWarning", "1", CVAR_ARCHIVE  },
+;226:	{ &cg_drawAmmoWarning, "cg_drawAmmoWarning", "0", CVAR_ARCHIVE  },
 ;227:	{ &cg_drawAttacker, "cg_drawAttacker", "1", CVAR_ARCHIVE  },
 ;228:	{ &cg_drawCrosshair, "cg_drawCrosshair", "4", CVAR_ARCHIVE },
 ;229:	{ &cg_drawCrosshairNames, "cg_drawCrosshairNames", "1", CVAR_ARCHIVE },

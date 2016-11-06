@@ -12,6 +12,7 @@ MAIN MENU
 #include "ui_local.h"
 
 
+
 #define ID_SINGLEPLAYER			10
 #define ID_MULTIPLAYER			11
 #define ID_SETUP				12
@@ -22,6 +23,14 @@ MAIN MENU
 #define ID_EXIT					17
 #define ART_FRAMER				"menu/art/frame1_r"
 #define ART_TREPLOGO			"menu/art/treplogo"
+
+#define SINGLEPLAYER_MENU_VERTICAL_SPACING		34
+
+#define ART_BACK0		"menu/art/back_2"
+#define ART_BACK1		"menu/art/back_1"	
+//#define ART_FRAMEL		"menu/art/frame2_l"
+#define ART_FRAMEL		"menu/art/frame1_r"
+
 
 
 #define MAIN_BANNER_MODEL				"models/mapobjects/banner/banner5.md3"
@@ -84,7 +93,9 @@ void Main_MenuEvent (void* ptr, int event) {
 	case ID_SINGLEPLAYER:
 		//UI_SPLevelMenu();
 		//UI_OfflineMenu();
-		UI_StartServerMenu( qfalse );
+
+		UI_SinglePlayerMenu();
+		//UI_StartServerMenu( qfalse );
 		break;
 
 	case ID_MULTIPLAYER:
@@ -338,7 +349,7 @@ void UI_MainMenu( void ) {
 	s_main.singleplayer.generic.y			= y;
 	s_main.singleplayer.generic.id			= ID_SINGLEPLAYER;
 	s_main.singleplayer.generic.callback	= Main_MenuEvent; 
-	s_main.singleplayer.string				= "PLAY OFFLINE ";
+	s_main.singleplayer.string				= "SINGLE PLAYER";
 	s_main.singleplayer.color				= color_red;
 	s_main.singleplayer.style				= style;
 	
@@ -435,3 +446,370 @@ void UI_MainMenu( void ) {
 	UI_PushMenu ( &s_main.menu );
 		
 }
+
+
+
+//
+//
+//
+
+
+#define ID_CREATEMATCH			20
+#define ID_ALPHA				21
+#define ID_FREEFORALL			22
+#define ID_CTF					23
+#define ID_ARSENAL				24
+#define ID_SURVIVAL				25
+#define ID_TREPIDATION			26
+#define ID_FREEZETAG			27
+#define ID_ONE4ALL				28
+#define ID_BACK					29
+
+
+typedef struct {
+	menuframework_s	menu;
+
+	menutext_s		banner;
+	menubitmap_s	framel;
+	menubitmap_s	framer;
+	menutext_s		creatematch;
+	menutext_s		alpha;
+	menutext_s		freeforall;
+	menutext_s		ctf;
+	menutext_s		arsenal;
+	menutext_s		survival;
+	menutext_s		trepidation;
+	menutext_s		freezetag;
+	menubitmap_s	back;
+} singleplayerMenuInfo_t;
+
+static singleplayerMenuInfo_t	singleplayerMenuInfo;
+
+
+
+/*
+=================
+RUN FFA CFG SP
+=================
+*/
+static void Setup_RunFFA( qboolean result ) {
+	
+	trap_Cmd_ExecuteText( EXEC_APPEND, "exec singleplayer/ffa.cfg\n");
+}
+/*
+=================
+RUN CTF CFG SP
+=================
+*/
+static void Setup_RunCTF( qboolean result ) {
+	
+	trap_Cmd_ExecuteText( EXEC_APPEND, "exec singleplayer/ctf.cfg\n");
+}
+
+/*
+=================
+RUN ARSENAL CFG SP
+=================
+*/
+static void Setup_RunArsenal( qboolean result ) {
+	
+	trap_Cmd_ExecuteText( EXEC_APPEND, "exec singleplayer/arsenal.cfg\n");
+}
+
+/*
+=================
+RUN SURVIVAL CFG SP
+=================
+*/
+static void Setup_RunSurvival( qboolean result ) {
+	
+	trap_Cmd_ExecuteText( EXEC_APPEND, "exec singleplayer/survival.cfg\n");
+}
+
+/*
+=================
+RUN TREPIDATION CFG SP
+=================
+*/
+static void Setup_RunTrepidation( qboolean result ) {
+
+	trap_Cmd_ExecuteText( EXEC_APPEND, "exec singleplayer/trepidation.cfg\n");
+}
+
+
+
+/*
+=================
+RUN FREEZE CFG SP
+=================
+*/
+static void Setup_RunFreeze( qboolean result ) {
+	
+	trap_Cmd_ExecuteText( EXEC_APPEND, "exec singleplayer/freezetag.cfg\n");
+}
+
+
+
+
+
+/*
+===============
+UI_SinglePlayerMenu_Event
+===============
+*/
+static void UI_SinglePlayerMenu_Event( void *ptr, int event ) {
+	if( event != QM_ACTIVATED ) {
+		return;
+	}
+
+	switch( ((menucommon_s*)ptr)->id ) {
+	case ID_CREATEMATCH:
+		UI_StartServerMenu( qfalse );
+		break;
+
+	case ID_ALPHA:
+		UI_DrawProportionalString( SCREEN_WIDTH/2, 356 + PROP_HEIGHT * 0, "CAMPAIGN NOT AVAILABLE (COMING SOON)", UI_CENTER|UI_SMALLFONT, color_yellow );
+		break;
+
+	case ID_FREEFORALL:
+		Setup_RunFFA(0);
+		break;
+
+	case ID_CTF:
+		Setup_RunCTF(0);
+		break;
+
+	case ID_ARSENAL:
+		Setup_RunArsenal(0);
+		break;
+
+	case ID_SURVIVAL:
+		Setup_RunSurvival(0);
+		break;
+
+	case ID_TREPIDATION:
+		Setup_RunTrepidation(0);
+		break;
+
+	case ID_FREEZETAG:
+		Setup_RunFreeze(0);
+		break;
+
+	case ID_BACK:
+		UI_PopMenu();
+		break;
+	}
+}
+
+
+/*
+===============
+UI_SinglePlayerMenu_Init
+===============
+*/
+static void UI_SinglePlayerMenu_Init( void ) {
+	int				y;
+	int		style = UI_CENTER | UI_DROPSHADOW;
+	
+	
+	UI_SinglePlayerMenu_Cache();
+
+	memset( &singleplayerMenuInfo, 0, sizeof(singleplayerMenuInfo) );
+	singleplayerMenuInfo.menu.wrapAround = qtrue;
+	singleplayerMenuInfo.menu.fullscreen = qtrue;
+
+	singleplayerMenuInfo.banner.generic.type				= MTYPE_BTEXT;
+	singleplayerMenuInfo.banner.generic.x					= 320;
+	singleplayerMenuInfo.banner.generic.y					= 16;
+	singleplayerMenuInfo.banner.string						= "SINGLE PLAYER";
+	singleplayerMenuInfo.banner.color						= color_white;
+	singleplayerMenuInfo.banner.style						= UI_CENTER;
+
+
+	singleplayerMenuInfo.framel.generic.type				= MTYPE_BITMAP;
+	singleplayerMenuInfo.framel.generic.name				= ART_FRAMEL;
+	singleplayerMenuInfo.framel.generic.flags				= QMF_INACTIVE;
+	singleplayerMenuInfo.framel.generic.x					= 0;  
+	singleplayerMenuInfo.framel.generic.y					= 0;
+	singleplayerMenuInfo.framel.width  					= 800;
+	singleplayerMenuInfo.framel.height  					= 600;
+
+	singleplayerMenuInfo.framer.generic.type				= MTYPE_BITMAP;
+	singleplayerMenuInfo.framer.generic.name				= ART_FRAMER;
+	singleplayerMenuInfo.framer.generic.flags				= QMF_INACTIVE;
+	singleplayerMenuInfo.framer.generic.x					= 0;
+	singleplayerMenuInfo.framer.generic.y					= 0;
+	singleplayerMenuInfo.framer.width  					= 800;
+	singleplayerMenuInfo.framer.height  					= 600;
+
+	y = 134;
+	singleplayerMenuInfo.creatematch.generic.type			= MTYPE_PTEXT;
+	singleplayerMenuInfo.creatematch.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.creatematch.generic.x				= 320;
+	singleplayerMenuInfo.creatematch.generic.y				= y;
+	singleplayerMenuInfo.creatematch.generic.id				= ID_CREATEMATCH;
+	singleplayerMenuInfo.creatematch.generic.callback		= UI_SinglePlayerMenu_Event; 
+	singleplayerMenuInfo.creatematch.string				= "CREATE MATCH";
+	singleplayerMenuInfo.creatematch.color					= color_red;
+	singleplayerMenuInfo.creatematch.style					= style;
+
+	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+	singleplayerMenuInfo.alpha.generic.type				= MTYPE_PTEXT;
+	singleplayerMenuInfo.alpha.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.alpha.generic.x					= 320;
+	singleplayerMenuInfo.alpha.generic.y					= y;
+	singleplayerMenuInfo.alpha.generic.id					= ID_ALPHA;
+	singleplayerMenuInfo.alpha.generic.callback			= UI_SinglePlayerMenu_Event; 
+	singleplayerMenuInfo.alpha.string						= "ALPHA CAMPAIGN";
+	singleplayerMenuInfo.alpha.color						= color_dim;
+	singleplayerMenuInfo.alpha.style						= UI_CENTER;
+
+	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+	singleplayerMenuInfo.freeforall.generic.type		= MTYPE_PTEXT;
+	singleplayerMenuInfo.freeforall.generic.flags		= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.freeforall.generic.x			= 320;
+	singleplayerMenuInfo.freeforall.generic.y			= y;
+	singleplayerMenuInfo.freeforall.generic.id			= ID_FREEFORALL;
+	singleplayerMenuInfo.freeforall.generic.callback		= UI_SinglePlayerMenu_Event; 
+	singleplayerMenuInfo.freeforall.string				= "FREE FOR ALL";
+	singleplayerMenuInfo.freeforall.color				= color_red;
+	singleplayerMenuInfo.freeforall.style				= style;
+
+	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+	singleplayerMenuInfo.ctf.generic.type			= MTYPE_PTEXT;
+	singleplayerMenuInfo.ctf.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.ctf.generic.x				= 320;
+	singleplayerMenuInfo.ctf.generic.y				= y;
+	singleplayerMenuInfo.ctf.generic.id				= ID_CTF;
+	singleplayerMenuInfo.ctf.generic.callback		= UI_SinglePlayerMenu_Event; 
+	singleplayerMenuInfo.ctf.string				= "CAPTURE THE FLAG";
+	singleplayerMenuInfo.ctf.color					= color_red;
+	singleplayerMenuInfo.ctf.style					= style;
+
+	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+	singleplayerMenuInfo.arsenal.generic.type					= MTYPE_PTEXT;
+	singleplayerMenuInfo.arsenal.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.arsenal.generic.x					= 320;
+	singleplayerMenuInfo.arsenal.generic.y					= y;
+	singleplayerMenuInfo.arsenal.generic.id					= ID_ARSENAL;
+	singleplayerMenuInfo.arsenal.generic.callback				= UI_SinglePlayerMenu_Event; 
+	singleplayerMenuInfo.arsenal.string						= "ARSENAL";
+	singleplayerMenuInfo.arsenal.color						= color_red;
+	singleplayerMenuInfo.arsenal.style						= style;
+
+	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+	singleplayerMenuInfo.survival.generic.type				= MTYPE_PTEXT;
+	singleplayerMenuInfo.survival.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.survival.generic.x					= 320;
+	singleplayerMenuInfo.survival.generic.y					= y;
+	singleplayerMenuInfo.survival.generic.id					= ID_SURVIVAL;
+	singleplayerMenuInfo.survival.generic.callback			= UI_SinglePlayerMenu_Event; 
+	singleplayerMenuInfo.survival.string						= "SURVIVAL";
+	singleplayerMenuInfo.survival.color						= color_red;
+	singleplayerMenuInfo.survival.style						= style;
+
+	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+	singleplayerMenuInfo.trepidation.generic.type				= MTYPE_PTEXT;
+	singleplayerMenuInfo.trepidation.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.trepidation.generic.x					= 320;
+	singleplayerMenuInfo.trepidation.generic.y					= y;
+	singleplayerMenuInfo.trepidation.generic.id					= ID_TREPIDATION;
+	singleplayerMenuInfo.trepidation.generic.callback			= UI_SinglePlayerMenu_Event; 
+	singleplayerMenuInfo.trepidation.string						= "TREPIDATION";
+	singleplayerMenuInfo.trepidation.color						= color_red;
+	singleplayerMenuInfo.trepidation.style						= style;
+
+	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+	singleplayerMenuInfo.freezetag.generic.type				= MTYPE_PTEXT;
+	singleplayerMenuInfo.freezetag.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.freezetag.generic.x					= 320;
+	singleplayerMenuInfo.freezetag.generic.y					= y;
+	singleplayerMenuInfo.freezetag.generic.id					= ID_FREEZETAG;
+	singleplayerMenuInfo.freezetag.generic.callback			= UI_SinglePlayerMenu_Event; 
+	singleplayerMenuInfo.freezetag.string						= "FREEZE TAG";
+	singleplayerMenuInfo.freezetag.color						= color_red;
+	singleplayerMenuInfo.freezetag.style						= style;
+
+
+	
+
+	if( !trap_Cvar_VariableValue( "cl_paused" ) ) {
+#if 0
+		y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+		singleplayerMenuInfo.load.generic.type					= MTYPE_PTEXT;
+		singleplayerMenuInfo.load.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+		singleplayerMenuInfo.load.generic.x					= 320;
+		singleplayerMenuInfo.load.generic.y					= y;
+		singleplayerMenuInfo.load.generic.id					= ID_LOAD;
+		singleplayerMenuInfo.load.generic.callback				= UI_SinglePlayerMenu_Event; 
+		singleplayerMenuInfo.load.string						= "LOAD";
+		singleplayerMenuInfo.load.color						= color_red;
+		singleplayerMenuInfo.load.style						= UI_CENTER;
+
+		y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+		singleplayerMenuInfo.save.generic.type					= MTYPE_PTEXT;
+		singleplayerMenuInfo.save.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+		singleplayerMenuInfo.save.generic.x					= 320;
+		singleplayerMenuInfo.save.generic.y					= y;
+		singleplayerMenuInfo.save.generic.id					= ID_SAVE;
+		singleplayerMenuInfo.save.generic.callback				= UI_SinglePlayerMenu_Event; 
+		singleplayerMenuInfo.save.string						= "SAVE";
+		singleplayerMenuInfo.save.color						= color_red;
+		singleplayerMenuInfo.save.style						= UI_CENTER;
+#endif
+
+	}
+
+	singleplayerMenuInfo.back.generic.type					= MTYPE_BITMAP;
+	singleplayerMenuInfo.back.generic.name					= ART_BACK0;
+	singleplayerMenuInfo.back.generic.flags				= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.back.generic.id					= ID_BACK;
+	singleplayerMenuInfo.back.generic.callback				= UI_SinglePlayerMenu_Event;
+	singleplayerMenuInfo.back.generic.x					= 0;
+	singleplayerMenuInfo.back.generic.y					= 480-64;
+	singleplayerMenuInfo.back.width						= 128;
+	singleplayerMenuInfo.back.height						= 64;
+	singleplayerMenuInfo.back.focuspic						= ART_BACK1;
+
+	
+	//Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.framel );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.framer );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.banner );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.creatematch );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.alpha );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.freeforall );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.ctf );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.arsenal );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.survival );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.trepidation );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.freezetag );
+	
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.back );
+}
+
+
+/*
+=================
+UI_SinglePlayerMenu_Cache
+=================
+*/
+void UI_SinglePlayerMenu_Cache( void ) {
+	trap_R_RegisterShaderNoMip( ART_BACK0 );
+	trap_R_RegisterShaderNoMip( ART_BACK1 );
+	trap_R_RegisterShaderNoMip( ART_FRAMEL );
+	trap_R_RegisterShaderNoMip( ART_FRAMER );
+}
+
+
+/*
+===============
+UI_SinglePlayerMenu
+===============
+*/
+void UI_SinglePlayerMenu( void ) {
+	UI_SinglePlayerMenu_Init();
+	UI_PushMenu( &singleplayerMenuInfo.menu );
+}
+
+
+
