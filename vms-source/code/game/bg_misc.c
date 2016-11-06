@@ -1076,7 +1076,10 @@ qboolean BG_CanItemBeGrabbed( int gametype, const entityState_t *ent, const play
 #endif
 
 	if ( ent->modelindex < 1 || ent->modelindex >= bg_numItems ) {
-		Com_Error( ERR_DROP, "BG_CanItemBeGrabbed: index out of range" );
+		
+		// Github bug 21 - Let's return false instead of shutting down the game
+		return qfalse;
+		//Com_Error( ERR_DROP, "BG_CanItemBeGrabbed: index out of range" );
 	}
 
 	item = &bg_itemlist[ent->modelindex];

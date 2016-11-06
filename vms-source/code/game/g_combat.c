@@ -131,7 +131,7 @@ void TossClientItems( gentity_t *self ) {
 		if ( weapon > WP_GAUNTLET && weapon != WP_GRAPPLING_HOOK && self->client->ps.ammo[ weapon ] ) 
 		{
 			// find the item type for this weapon
-			item = BG_FindItemForWeapon( weapon );
+			if(weapon) { item = BG_FindItemForWeapon( weapon ); } // github bug 21
 	
 			// spawn the item
 			Drop_Item( self, item, 0 );
@@ -141,7 +141,7 @@ void TossClientItems( gentity_t *self ) {
 			if (g_GameMode.integer == 2 || g_GameMode.integer == 1)
 			{
 				// find the item type for this weapon
-				item = BG_FindItemForWeapon( weapon );
+				if(weapon) { item = BG_FindItemForWeapon( weapon ); }  // github bug 21
 	
 				// spawn the item
 				Drop_Item( self, item, 0 );
