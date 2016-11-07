@@ -2374,9 +2374,9 @@ ADDRGP4 singleplayerMenuInfo+608+60
 ADDRGP4 $453
 ASGNP4
 line 664
-;664:	singleplayerMenuInfo.alpha.color						= color_white;
+;664:	singleplayerMenuInfo.alpha.color						= color_dim;
 ADDRGP4 singleplayerMenuInfo+608+68
-ADDRGP4 color_white
+ADDRGP4 color_dim
 ASGNP4
 line 665
 ;665:	singleplayerMenuInfo.alpha.style						= UI_CENTER;

@@ -170,7 +170,7 @@ address color_blue
 address $106
 byte 4 17
 address color_headertext
-address $72
+address $107
 byte 4 17
 address color_maintext
 address $73
@@ -185,7 +185,7 @@ address color_blue
 address $73
 byte 4 17
 address color_blue
-address $107
+address $108
 byte 4 17
 address color_maintext
 byte 4 0
@@ -245,7 +245,7 @@ line 144
 ;49:cr_line credits[] = { // edit this as necessary for your credits
 ;50:	
 ;51:{ "Trepidation", UI_CENTER|UI_BIGFONT|UI_PULSE, &color_headertext },
-;52:{ "trepidation.u7net.com", UI_CENTER|UI_SMALLFONT, &color_headertext },
+;52:{ "trepidation.n5net.com", UI_CENTER|UI_SMALLFONT, &color_headertext },
 ;53:{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
 ;54:
 ;55:{ "Development Team:", UI_CENTER|UI_BIGFONT|UI_PULSE, &color_headertext },
@@ -345,14 +345,14 @@ INDIRI4
 CNSTI4 1024
 BANDI4
 CNSTI4 0
-EQI4 $109
+EQI4 $110
 line 146
 ;146:		return 0;
 CNSTI4 0
 RETI4
-ADDRGP4 $108
+ADDRGP4 $109
 JUMPV
-LABELV $109
+LABELV $110
 line 152
 ;147:	}
 ;148:
@@ -360,7 +360,7 @@ line 152
 ;150:	// we also reset the music volume to the user's original
 ;151:	// choice here,  by setting s_musicvolume to the stored var
 ;152:	trap_Cmd_ExecuteText( EXEC_APPEND, 
-ADDRGP4 $111
+ADDRGP4 $112
 ARGP4
 ADDRGP4 mvolume
 INDIRF4
@@ -382,11 +382,11 @@ line 154
 ;154:	return 0;
 CNSTI4 0
 RETI4
-LABELV $108
+LABELV $109
 endproc UI_CreditMenu_Key 4 8
 lit
 align 4
-LABELV $113
+LABELV $114
 byte 4 0
 byte 4 0
 byte 4 0
@@ -419,7 +419,7 @@ ASGNI4
 line 167
 ;167:  vec4_t fadecolour = { 0.00, 0.00, 0.00, 0.00 };
 ADDRLP4 20
-ADDRGP4 $113
+ADDRGP4 $114
 INDIRB
 ASGNB 16
 line 172
@@ -431,7 +431,7 @@ line 172
 ADDRLP4 8
 INDIRI4
 CNSTI4 0
-NEI4 $114
+NEI4 $115
 line 173
 ;173:  {
 line 175
@@ -440,9 +440,9 @@ line 175
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $119
+ADDRGP4 $120
 JUMPV
-LABELV $116
+LABELV $117
 line 176
 ;176:    {
 line 178
@@ -458,7 +458,7 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $120
+EQI4 $121
 line 179
 ;179:      {
 line 181
@@ -476,9 +476,9 @@ line 184
 ;182:        
 ;183:      // it is a big character
 ;184:      }else if(credits[n].style & UI_BIGFONT) 
-ADDRGP4 $121
+ADDRGP4 $122
 JUMPV
-LABELV $120
+LABELV $121
 CNSTI4 12
 ADDRLP4 0
 INDIRI4
@@ -489,7 +489,7 @@ INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-EQI4 $123
+EQI4 $124
 line 185
 ;185:      {
 line 187
@@ -505,9 +505,9 @@ line 190
 ;188:        
 ;189:      // it is a huge character
 ;190:      }else if(credits[n].style & UI_GIANTFONT) 
-ADDRGP4 $124
+ADDRGP4 $125
 JUMPV
-LABELV $123
+LABELV $124
 CNSTI4 12
 ADDRLP4 0
 INDIRI4
@@ -518,7 +518,7 @@ INDIRI4
 CNSTI4 64
 BANDI4
 CNSTI4 0
-EQI4 $126
+EQI4 $127
 line 191
 ;191:      {
 line 193
@@ -534,12 +534,12 @@ CVFI4 4
 ASGNI4
 line 194
 ;194:      }
-LABELV $126
-LABELV $124
-LABELV $121
+LABELV $127
+LABELV $125
+LABELV $122
 line 195
 ;195:    }
-LABELV $117
+LABELV $118
 line 175
 ADDRLP4 0
 ADDRLP4 0
@@ -547,15 +547,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $119
+LABELV $120
 ADDRLP4 0
 INDIRI4
 CVIU4 4
 CNSTU4 671
-LEU4 $116
+LEU4 $117
 line 196
 ;196:  }
-LABELV $114
+LABELV $115
 line 201
 ;197:
 ;198:  // first, fill the background with the specified colour/shader
@@ -613,9 +613,9 @@ line 213
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $133
+ADDRGP4 $134
 JUMPV
-LABELV $130
+LABELV $131
 line 214
 ;214:  {
 line 216
@@ -630,7 +630,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $134
+NEU4 $135
 line 217
 ;217:    {
 line 218
@@ -638,12 +638,12 @@ line 218
 ADDRLP4 4
 INDIRI4
 CNSTI4 -16
-GEI4 $132
+GEI4 $133
 line 219
 ;219:      {
 line 220
 ;220:        trap_Cmd_ExecuteText( EXEC_APPEND, 
-ADDRGP4 $111
+ADDRGP4 $112
 ARGP4
 ADDRGP4 mvolume
 INDIRF4
@@ -663,12 +663,12 @@ pop
 line 222
 ;221:                         va("s_musicvolume %f; quit\n", mvolume));
 ;222:        break; // end of credits
-ADDRGP4 $132
+ADDRGP4 $133
 JUMPV
 line 224
 ;223:      }
 ;224:      break;
-LABELV $134
+LABELV $135
 line 227
 ;225:    }
 ;226:		
@@ -688,12 +688,12 @@ ASGNI4
 ADDRLP4 40
 INDIRI4
 CNSTI4 1
-NEI4 $138
+NEI4 $139
 line 228
 ;228:      continue;
-ADDRGP4 $131
+ADDRGP4 $132
 JUMPV
-LABELV $138
+LABELV $139
 line 230
 ;229:
 ;230:    if( y > -(PROP_HEIGHT * (1 / PROP_SMALL_SIZE_SCALE))) 
@@ -701,7 +701,7 @@ ADDRLP4 4
 INDIRI4
 CVIF4 4
 CNSTF4 3255828480
-LEF4 $140
+LEF4 $141
 line 232
 ;231:      // the line is within the visible range of the screen
 ;232:      UI_DrawProportionalString(x, y, credits[n].string, 
@@ -738,7 +738,7 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-LABELV $140
+LABELV $141
 line 236
 ;233:                                credits[n].style, *credits[n].colour );
 ;234:		
@@ -754,7 +754,7 @@ INDIRI4
 CNSTI4 16
 BANDI4
 CNSTI4 0
-EQI4 $144
+EQI4 $145
 line 237
 ;237:    {
 line 238
@@ -769,9 +769,9 @@ CVFI4 4
 ASGNI4
 line 239
 ;239:    }else if(credits[n].style & UI_BIGFONT)
-ADDRGP4 $145
+ADDRGP4 $146
 JUMPV
-LABELV $144
+LABELV $145
 CNSTI4 12
 ADDRLP4 0
 INDIRI4
@@ -782,7 +782,7 @@ INDIRI4
 CNSTI4 32
 BANDI4
 CNSTI4 0
-EQI4 $147
+EQI4 $148
 line 240
 ;240:    {
 line 241
@@ -795,9 +795,9 @@ ADDI4
 ASGNI4
 line 242
 ;242:    }else if(credits[n].style & UI_GIANTFONT)
-ADDRGP4 $148
+ADDRGP4 $149
 JUMPV
-LABELV $147
+LABELV $148
 CNSTI4 12
 ADDRLP4 0
 INDIRI4
@@ -808,7 +808,7 @@ INDIRI4
 CNSTI4 64
 BANDI4
 CNSTI4 0
-EQI4 $150
+EQI4 $151
 line 243
 ;243:    {
 line 244
@@ -823,9 +823,9 @@ CVFI4 4
 ASGNI4
 line 245
 ;245:    }
-LABELV $150
-LABELV $148
-LABELV $145
+LABELV $151
+LABELV $149
+LABELV $146
 line 248
 ;246:
 ;247:    // if y is off the screen, break out of loop
@@ -833,15 +833,15 @@ line 248
 ADDRLP4 4
 INDIRI4
 CNSTI4 480
-LEI4 $153
+LEI4 $154
 line 249
 ;249:    break;
-ADDRGP4 $132
+ADDRGP4 $133
 JUMPV
-LABELV $153
+LABELV $154
 line 250
 ;250:  }
-LABELV $131
+LABELV $132
 line 213
 ADDRLP4 0
 ADDRLP4 0
@@ -849,16 +849,16 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $133
+LABELV $134
 ADDRLP4 0
 INDIRI4
 CVIU4 4
 CNSTU4 671
-LEU4 $130
-LABELV $132
+LEU4 $131
+LABELV $133
 line 251
 ;251:}
-LABELV $112
+LABELV $113
 endproc ScrollingCredits_Draw 48 20
 export UI_CreditMenu
 proc UI_CreditMenu 8 12
@@ -913,7 +913,7 @@ INDIRI4
 ASGNI4
 line 267
 ;267:	mvolume = trap_Cvar_VariableValue( "s_musicvolume" );
-ADDRGP4 $160
+ADDRGP4 $161
 ARGP4
 ADDRLP4 0
 ADDRGP4 trap_Cvar_VariableValue
@@ -929,7 +929,7 @@ line 270
 ;270:	trap_Cmd_ExecuteText( EXEC_APPEND, "music sound/music/credits\n" );
 CNSTI4 2
 ARGI4
-ADDRGP4 $161
+ADDRGP4 $162
 ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
@@ -939,7 +939,7 @@ line 274
 ;272:	// load the background shader
 ;273:#ifdef BACKGROUND_SHADER
 ;274:	BackgroundShader = 
-ADDRGP4 $162
+ADDRGP4 $163
 ARGP4
 ADDRLP4 4
 ADDRGP4 trap_R_RegisterShaderNoMip
@@ -953,7 +953,7 @@ line 277
 ;275:	  trap_R_RegisterShaderNoMip(BACKGROUND_SHADER);
 ;276:#endif
 ;277:}
-LABELV $155
+LABELV $156
 endproc UI_CreditMenu 8 12
 bss
 export BackgroundShader
@@ -1459,7 +1459,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $162
+LABELV $163
 byte 1 109
 byte 1 101
 byte 1 110
@@ -1479,7 +1479,7 @@ byte 1 95
 byte 1 114
 byte 1 0
 align 1
-LABELV $161
+LABELV $162
 byte 1 109
 byte 1 117
 byte 1 115
@@ -1508,7 +1508,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $160
+LABELV $161
 byte 1 115
 byte 1 95
 byte 1 109
@@ -1524,7 +1524,7 @@ byte 1 109
 byte 1 101
 byte 1 0
 align 1
-LABELV $111
+LABELV $112
 byte 1 115
 byte 1 95
 byte 1 109
@@ -1550,7 +1550,7 @@ byte 1 116
 byte 1 10
 byte 1 0
 align 1
-LABELV $107
+LABELV $108
 byte 1 40
 byte 1 99
 byte 1 41
@@ -1580,6 +1580,30 @@ byte 1 116
 byte 1 105
 byte 1 111
 byte 1 110
+byte 1 0
+align 1
+LABELV $107
+byte 1 116
+byte 1 114
+byte 1 101
+byte 1 112
+byte 1 105
+byte 1 100
+byte 1 97
+byte 1 116
+byte 1 105
+byte 1 111
+byte 1 110
+byte 1 46
+byte 1 117
+byte 1 55
+byte 1 110
+byte 1 101
+byte 1 116
+byte 1 46
+byte 1 99
+byte 1 111
+byte 1 109
 byte 1 0
 align 1
 LABELV $106
@@ -2227,8 +2251,8 @@ byte 1 105
 byte 1 111
 byte 1 110
 byte 1 46
-byte 1 117
-byte 1 55
+byte 1 110
+byte 1 53
 byte 1 110
 byte 1 101
 byte 1 116
