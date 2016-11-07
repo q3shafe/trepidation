@@ -1095,6 +1095,8 @@ void ClientBegin( int clientNum ) {
 	client->pers.Eliminated = qfalse;  // They are not eliminated
 	// End Arsenal
 
+	client->pers.Frozen = qfalse;  // freeze
+
 	// locate ent at a spawn point
 	ClientSpawn( ent );
 
@@ -1521,6 +1523,7 @@ void ClientSpawn(gentity_t *ent) {
 
 	// This is probably going to screw everything up.
 	client->pers.Eliminated = qfalse;
+	client->pers.Frozen = qfalse;
 	
 	// clear entity state values
 	BG_PlayerStateToEntityState( &client->ps, &ent->s, qtrue );

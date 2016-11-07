@@ -514,6 +514,8 @@ player_die
 ==================
 */
 extern int CountSurvivors();
+extern int CountRedSurvivors();
+extern int CountBlueSurvivors();
 
 void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int meansOfDeath ) {
 	gentity_t	*ent;
@@ -533,6 +535,11 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 
 	if ( self->client->ps.pm_type == PM_DEAD ) {
+		return;
+	}
+
+	// freeze
+	if ( self->client->pers.Frozen) {
 		return;
 	}
 
@@ -665,7 +672,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				// Streak Of 7 Gives them a spree msg :)
 				if (attacker->InstaStreak == 7)
 				{
-					if((attacker->s.weapon != WP_TURRET) && (meansOfDeath != MOD_UNKNOQN) && (meansOfDeath != MOD_WATER)&& (meansOfDeath != MOD_LAVA) && (meansOfDeath != MOD_SLIME) && (meansOfDeath != MOD_CRUSH) && (meansOfDeath != MOD_FALLING)) // Turrets dont get killing sprees -- shafe
+					if((attacker->s.weapon != WP_TURRET) && (meansOfDeath != MOD_UNKNOWN) && (meansOfDeath != MOD_TURRET) && (meansOfDeath != MOD_WATER)&& (meansOfDeath != MOD_LAVA) && (meansOfDeath != MOD_SLIME) && (meansOfDeath != MOD_CRUSH) && (meansOfDeath != MOD_FALLING)) // Turrets dont get killing sprees -- shafe
 					{
 						trap_SendServerCommand( -1, va( "print \"" S_COLOR_YELLOW "%s ^7IS ON A KILLING SPREE!\n\"", attacker->client->pers.netname ) );
 						trap_SendServerCommand( -1, va("cp \"^7%s IS ON A KILLING SPREE!!\n\"", attacker->client->pers.netname ) );

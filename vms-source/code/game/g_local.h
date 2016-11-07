@@ -302,6 +302,7 @@ typedef struct {
 	qboolean	h_plasma;
 	qboolean	h_bfg;
 	qboolean	Eliminated;		// For Arsenal and LMS
+	qboolean	Frozen;		// For Arsenal and LMS
 	int			TrueScore;		// For Arsenal and LMS
 	// Admin System Stuff
 	char                guid[ 33 ];
@@ -995,6 +996,8 @@ extern	vmCvar_t	g_ReverseCTF;
 extern vmCvar_t         g_mapfile; 
 extern vmCvar_t         g_randommap;
 extern vmCvar_t         g_lastmap;
+extern vmCvar_t         g_lastmap2;
+
 
 extern	vmCvar_t	trep_debug;
 

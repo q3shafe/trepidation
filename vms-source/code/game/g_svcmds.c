@@ -581,27 +581,27 @@ static char *GetRandomMap() {
 			break; // end of list	
 		if (count==y) 
 		{
-			G_Printf( "Here is a random map %s\n", token);
-		
-			// This is broken
-			if(g_lastmap.string != token) 
+			trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap2 %s\n", token) );
+
+			if(g_lastmap.string != g_lastmap2.string) 
 			{
 				//g_lastmap.string = token;
+				G_Printf( "Here is a random map %s\n", token);
 				trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap %s\n", token) );
 				trap_SendConsoleCommand( EXEC_APPEND, va("map %s\n", token ) );
 				return token;
-			} else { 				y++; }
+			} else { 				
+				//if((y+1) > x) {  y=1; } 
+				y++;
+			}
+
 
 		}
 		count++;				
 	}	
 	
-	
-	
 	//G_Printf( "Here is a random map %i - %s\n", y, mapname[y]);
 	return "nothing";
-
-
 }
 
 
