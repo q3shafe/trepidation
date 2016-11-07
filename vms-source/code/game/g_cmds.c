@@ -25,8 +25,8 @@ void Cmd_SpawnMC_f( gentity_t *ent )
 	return;
 	}
 
-	// You can only Build MC's in GameMode 3
-	if (g_GameMode.integer == 3) 
+	// You can only Build MC's in GameMode 3 or single player
+	if ((g_GameMode.integer == 3) || (g_GameMode.integer == 999) )
 	{
 		// Make Sure We Dont Already Have One
 		if(ent->client->sess.sessionTeam == TEAM_RED)

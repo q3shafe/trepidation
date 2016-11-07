@@ -15,6 +15,10 @@ downloads on :)
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Did some fine tuning to devastator for weapon balance.
+
+- Did some fine tuning to flame thrower for weapon balance.
+
 - Fixed bots, there are more bots available for matches.
 
 - fixed bot chatting on single player.

@@ -1907,6 +1907,76 @@ void CheckExitRules( void ) {
 
 	}
 
+
+
+	// Single Player Game, only blue gets a power core
+	if ( g_GameMode.integer == 999)
+	{
+		
+
+		
+		if ((level.time-level.redScoreTime) < 5000) { return; }
+		if ((level.time-level.blueScoreTime) < 5000) { return; }
+		
+
+		// If both teams have an mc it's time to rumble
+		// Do we have a score?
+		if ((level.redScoreLatched == 1) && ((level.time-level.redScoreTime) > 5000))
+		{
+			level.redScoreLatched = 0;
+			level.redScoreTime = level.time;
+
+			trap_SendServerCommand( -1, va("cp \"^7Red Team Scores\n\"") );
+			trap_SendServerCommand( -1, va( "print \"Red team scores\n\"") );
+			level.teamScores[ TEAM_RED ]++; 
+			//CalculateRanks(); // This is causing crashes
+			BroadCastSound("sound/teamplay/voc_red_scores.ogg");
+			
+
+
+			//return;
+		}
+
+
+		if ((level.time-level.redScoreTime) > 15000) 
+		{
+		
+				if ((level.blueMC == 0) && (level.blueNeedMC == 1))
+				{
+					trap_SendServerCommand( -1, "print \"DEBUG: Automatically Placing Blue Power Core.\n\"" );
+					level.blueNeedMC = 0;
+					PlaceMC(TEAM_BLUE);
+					return;
+				}
+		}
+
+		// This should never happen but it does...
+		// It's a fluke... Force build of the MC and no one scores.
+		if ((level.redMC <= 0) && (level.redNeedMC == 0)) { level.redNeedMC= 1; }
+		if ((level.blueMC <= 0) && (level.blueNeedMC == 0)) { level.blueNeedMC= 1; }
+
+
+
+	}
+
+	if ( g_GameMode.integer == 999 && g_capturelimit.integer ) {
+
+		if ( level.teamScores[TEAM_RED] >= g_capturelimit.integer ) {
+			trap_SendServerCommand( -1, "print \"Red hit the point limit.\n\"" );
+			LogExit( "Capturelimit hit." );
+			G_ShowTopStats();
+			return;
+		}
+
+		if ( level.teamScores[TEAM_BLUE] >= g_capturelimit.integer ) {
+			trap_SendServerCommand( -1, "print \"Blue hit the point limit.\n\"" );
+			LogExit( "Capturelimit hit." );
+			G_ShowTopStats();
+			return;
+		}
+	}
+
+
 	if ( g_GameMode.integer == 3 && g_capturelimit.integer ) {
 
 		if ( level.teamScores[TEAM_RED] >= g_capturelimit.integer ) {

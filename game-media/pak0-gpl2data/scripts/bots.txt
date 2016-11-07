@@ -74,12 +74,6 @@ model		skelebot/default
 aifile		bots/skelebot_c.c
 }
 {
-name		Sarge
-funname		"Sarge"
-model		sarge
-aifile		bots/sarge_c.c
-}
-{
 name		Major
 model		major
 model		major/default

@@ -1,0 +1,29 @@
+
+
+ideal levels
+
+	nightmare
+	ctf_junction
+	outpost
+	area52
+	ctf_pyramide
+	hangar19
+
+	artgallery?  
+
+
+	gigon's stuff
+	=============
+	concrete_station
+	station144
+	western_maze (low grav)
+
+	gpl maps?
+	=========
+
+	large cc licensed map
+
+
+
+
+speed 225!

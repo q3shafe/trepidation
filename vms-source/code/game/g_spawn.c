@@ -572,7 +572,7 @@ void SP_worldspawn( void ) {
 	trap_SetConfigstring( CS_LEVEL_START_TIME, va("%i", level.startTime ) );
 
 	
-	if ((g_GameMode.integer == 0) || (g_GameMode.integer == 3))
+	if ((g_GameMode.integer == 0) || (g_GameMode.integer == 3) || (g_GameMode.integer == 999))
 	{
 		i = irandom(1,7);
 		if (i == 1) { G_SpawnString( "music", "sound/music/mapmusic01.ogg", &s ); }

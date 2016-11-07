@@ -867,7 +867,7 @@ void ClearRegisteredItems( void ) {
 	} // End Shafe
 
 	// Shafe - Trep - Arsenal and LMS Gets All Weapons Pre-Registered
-	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
+	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2)  || (g_GameMode.integer == 999))
 	{
 		if (g_instagib.integer == 0)
 		{
@@ -970,8 +970,24 @@ void G_SpawnItem (gentity_t *ent, gitem_t *item) {
 	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
 		return;
 	}
+	
 	/////////////////////////////////////////////////////////
- 
+
+	/////////////////////////////////////////////////////////
+
+	//Shafe - Trep Instagib, One4All
+	if ((g_GameMode.integer == 999))
+	{
+	// Arsenal - prevent weapons and ammo from spawning
+	if ( item->giType == IT_WEAPON)
+		return;
+	}
+	
+	/////////////////////////////////////////////////////////
+
+
+	
+
 	G_SpawnFloat( "random", "0", &ent->random );
 	G_SpawnFloat( "wait", "0", &ent->wait );
 

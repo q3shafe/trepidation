@@ -470,6 +470,7 @@ turret_fireonenemy
 
 void turret_fireonenemy( gentity_t *ent){
 
+	
 	if (!level.intermissiontime) 
 	{
 	
@@ -503,6 +504,8 @@ void turret_fireonenemy( gentity_t *ent){
 		}
 		
 		G_AddEvent( ent, EV_FIRE_WEAPON, 0 );
+
+	
 		ent->count=level.time+100;
 
 		// decloaks a cloaked turret when firing.
@@ -802,6 +805,12 @@ void MC_think(gentity_t *ent)
 	ent->clipmask = CONTENTS_SOLID;
 	ent->r.contents = CONTENTS_SOLID;
 
+	// single player option  gamemode = -1
+	if (g_GameMode.integer == 999)
+	{
+		turret_think( ent );  // MC Will shoot at you too.
+	}
+
 	// Determine The Sheilding By Counting Shield Generators
 	if (ent->s.team == TEAM_BLUE)
 	{
@@ -894,15 +903,22 @@ void BuildMC( gentity_t *ent )
 		return; 
 	}
 
-	if (ent->client->sess.sessionTeam == TEAM_BLUE)
+	// single player only blue team can have a power core
+	if((ent->client->sess.sessionTeam == TEAM_RED) && (g_GameMode.integer == 999))
 	{
-		level.blueMC++;
-		level.blueNeedMC = 0;
+		return;
 	}
+
+
 	if (ent->client->sess.sessionTeam == TEAM_RED)
 	{
 		level.redMC++;
 		level.redNeedMC = 0;
+	}
+	if (ent->client->sess.sessionTeam == TEAM_BLUE)
+	{
+		level.blueMC++;
+		level.blueNeedMC = 0;
 	}
 
 	base=G_Spawn();

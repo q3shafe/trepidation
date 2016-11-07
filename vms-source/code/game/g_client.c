@@ -560,20 +560,24 @@ PickTeam
 team_t PickTeam( int ignoreClientNum ) {
 	int		counts[TEAM_NUM_TEAMS];
 
-	counts[TEAM_BLUE] = TeamCount( ignoreClientNum, TEAM_BLUE );
-	counts[TEAM_RED] = TeamCount( ignoreClientNum, TEAM_RED );
+//	if(g_GameMode.integer != 999)
+//	{
+		counts[TEAM_BLUE] = TeamCount( ignoreClientNum, TEAM_BLUE );
+		counts[TEAM_RED] = TeamCount( ignoreClientNum, TEAM_RED );
 
-	if ( counts[TEAM_BLUE] > counts[TEAM_RED] ) {
-		return TEAM_RED;
-	}
-	if ( counts[TEAM_RED] > counts[TEAM_BLUE] ) {
+		if ( counts[TEAM_BLUE] > counts[TEAM_RED] ) {
+			return TEAM_RED;
+		}
+		if ( counts[TEAM_RED] > counts[TEAM_BLUE] ) {
+			return TEAM_BLUE;
+		}
+		// equal team count, so join the team with the lowest score
+		if ( level.teamScores[TEAM_BLUE] > level.teamScores[TEAM_RED] ) {
+			return TEAM_RED;
+		}
 		return TEAM_BLUE;
-	}
-	// equal team count, so join the team with the lowest score
-	if ( level.teamScores[TEAM_BLUE] > level.teamScores[TEAM_RED] ) {
-		return TEAM_RED;
-	}
-	return TEAM_BLUE;
+//	}
+	
 }
 
 /*
@@ -818,7 +822,7 @@ void ClientUserinfoChanged( int clientNum ) {
 		} else if ( !Q_stricmp( s, "blue" ) || !Q_stricmp( s, "b" ) ) {
 			team = TEAM_BLUE;
 		} else {
-			// pick the team with the least number of players
+			// pick the team with the least number of players	
 			team = PickTeam( clientNum );
 		}
 	}
@@ -1077,7 +1081,7 @@ void ClientBegin( int clientNum ) {
 	client->ps.eFlags = flags;
 
 	// Set What Weapons Are Allow for Arsenal
-	if (g_GameMode.integer == 1) 
+	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 999) )
 	{
 			// Set Starting Weapons
 		
@@ -1214,7 +1218,7 @@ void ClientSpawn(gentity_t *ent) {
 			}
 
 			break;
-
+			
 		} while ( 1 );
 	}
 	client->pers.teamState.state = TEAM_ACTIVE;
@@ -1403,7 +1407,7 @@ void ClientSpawn(gentity_t *ent) {
 		}
 		
 		// Hand out weapons for arsenal
-		if (g_GameMode.integer == 1)
+		if ((g_GameMode.integer == 1) || (g_GameMode.integer == 999))
 		{
 			if (client->pers.h_gauntlet) 
 			{

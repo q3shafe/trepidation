@@ -1053,7 +1053,7 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) 
 
 	bolt = G_Spawn();
 	bolt->classname = "flame";
-	bolt->nextthink = level.time + 1500;
+	bolt->nextthink = level.time + 1000;
 	bolt->think = G_ExplodeMissile;
 	bolt->s.eType = ET_MISSILE;
 	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
@@ -1075,7 +1075,7 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) 
 	} else
 	{
 		bolt->methodOfDeath = MOD_ALTFLAMER;
-		bolt->damage = 30;
+		bolt->damage = 40;
 		bolt->splashDamage = 25;
 		bolt->splashRadius = 45;
 		bolt->s.eFlags |= EF_ALT_FIRING;
@@ -1219,7 +1219,14 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 	bolt = G_Spawn();
 	bolt->classname = "bfg";
 	bolt->s.time2 = 0;
-	bolt->nextthink = level.time + 3000;
+
+	if (alt == qtrue)
+	{
+		bolt->nextthink = level.time + 3000;
+	} else {
+		bolt->nextthink = level.time + 2000;
+	}
+
 	
 	bolt->s.eType = ET_MISSILE;
 	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
@@ -1255,7 +1262,7 @@ gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) {
 	{
 		// Regular Fire
 
-		bolt->damage = 100;
+		bolt->damage = 90;
 		bolt->splashDamage = 200;
 		bolt->splashRadius = 220;
 		bolt->think = G_HomingMissile;
