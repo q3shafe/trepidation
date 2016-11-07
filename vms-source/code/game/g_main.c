@@ -427,11 +427,11 @@ void G_RemapTeamShaders() {
 /*
 ===================
 Trepidation - Shafe
-CountRedSurvivors
+CountTeamSurvivors
 Used For Arsenal and Last Man Standing
 ===================
 */
-int CountRedSurvivors ( void )
+int CountTeamSurvivors ( int team )
 {
 		int			tmpCnt;
 		int			i;
@@ -444,7 +444,7 @@ int CountRedSurvivors ( void )
 				
 				cl = &level.clients[i];
 
-				if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR && cl->sess.sessionTeam == TEAM_RED)
+				if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR && cl->sess.sessionTeam == team)
 				{
 					tmpCnt++;
 				
@@ -453,37 +453,6 @@ int CountRedSurvivors ( void )
 
 return tmpCnt;
 }
-
-/*
-===================
-Trepidation - Shafe
-CountBlueSurvivors
-Used For Arsenal and Last Man Standing
-===================
-*/
-int CountBlueSurvivors ( void )
-{
-		int			tmpCnt;
-		int			i;
-		gclient_t	*cl;
-
-			
-			tmpCnt = 0;
-			for ( i = 0; i < level.maxclients; i++ )
-			{
-				
-				cl = &level.clients[i];
-
-				if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qfalse && cl->sess.sessionTeam != TEAM_SPECTATOR && cl->sess.sessionTeam == TEAM_BLUE)
-				{
-					tmpCnt++;
-				
-				}
-			}
-
-return tmpCnt;
-}
-
 
 /*
 ===================
@@ -577,15 +546,15 @@ void G_InitModRules( void )
 	// We only allow team_ffa in trepidation gametype
 	if (g_GameMode.integer == 3)
 	{
-	//	trap_SendConsoleCommand( EXEC_APPEND, "g_gametype 3\n" );
-	//	g_gametype.integer = 3;
+		trap_SendConsoleCommand( EXEC_APPEND, "g_gametype 3\n" );
+		g_gametype.integer = 3;
 	}
 
 	if ((g_GameMode.integer == 3) && (g_gametype.integer == 0 ))
 	{
-		//if (trep_debug.integer) { G_Printf("Resetting gamemode to 0 %s\n", g_gametype.integer ); }
-		//trap_SendConsoleCommand( EXEC_APPEND, "g_GameMode 0\n" );
-		//g_GameMode.integer = 0;
+		if (trep_debug.integer) { G_Printf("Resetting gamemode to 0 %s\n", g_gametype.integer ); }
+		trap_SendConsoleCommand( EXEC_APPEND, "g_GameMode 0\n" );
+		g_GameMode.integer = 0;
 	}
 
 
@@ -867,7 +836,7 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 
 	if ((g_gametype.integer == 0) && (g_GameMode.integer == 3))
 	{
-	//	g_GameMode.integer = 0;
+		g_GameMode.integer = 0;
 	}
 
 
@@ -1859,6 +1828,8 @@ void CheckExitRules( void ) {
 	// This works.. but scoring doesnt.. automatically places the thing as soon as you destroy it.
 	if (g_GameMode.integer == 3)
 	{
+
+
 		if ((level.time-level.redScoreTime) < 5000) { return; }
 		if ((level.time-level.blueScoreTime) < 5000) { return; }
 		
@@ -1981,22 +1952,14 @@ void CheckExitRules( void ) {
 		{
 			gclient_t		*survivor = NULL;		
 			int				tmpCnt;
-			int				redCnt;
-			int				blueCnt;
 			
 			
 			// Dont end it just because there is only one person on the server
 			if (level.warmupTime) { return; }
 			
+
 			tmpCnt = 0;
-			if(g_gametype.integer == 3) // Team games tdm team ffa
-			{
-				redCnt = CountRedSurvivors();
-				blueCnt = CountBlueSurvivors();
-				tmpCnt = CountSurvivors();
-			} else {
-				tmpCnt = CountSurvivors();
-			}
+			tmpCnt = CountSurvivors();
 			
 
 			// Bug 0000104
@@ -2171,8 +2134,6 @@ void CheckExitRules( void ) {
 							survivor->ps.persistant[PERS_SCORE]+=6; 
 							trap_SendServerCommand( -1, "print \"^9Arsenal Contents: LFO Rifle: ^3+6\n\"");	
 						}
-
-
 				}
 				
 				survivor->pers.TrueScore = survivor->ps.persistant[PERS_SCORE];

@@ -50,12 +50,6 @@ model		bugger/recept
 aifile		bots/grism_c.c
 }
 {
-name		Linax
-funname		"Linax"
-model		bugger/ravinc
-aifile		bots/skelebot_c.c
-}
-{
 name		Stanley
 funname		"Stanley"
 model		bugger/jahseer
@@ -82,8 +76,8 @@ aifile		bots/skelebot_c.c
 {
 name		Sarge
 funname		"Sarge"
-model		sarge/default
-aifile		bots/default_c.c
+model		sarge
+aifile		bots/sarge_c.c
 }
 {
 name		Major

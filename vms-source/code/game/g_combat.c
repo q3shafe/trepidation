@@ -842,6 +842,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				// Send them to Spec
 				self->client->pers.TrueScore = self->client->ps.persistant[PERS_SCORE];
 				self->client->pers.Eliminated = qtrue;
+				self->client->sess.sessionTeam = TEAM_SPECTATOR;
 				SetTeam(self, "s");
 				// Set The Last Attacker In Case The Winner Blows Themself up on the winning shot
 				level.lastClient = attacker->client;
