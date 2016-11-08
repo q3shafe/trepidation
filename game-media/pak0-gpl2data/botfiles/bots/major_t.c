@@ -59,7 +59,7 @@ chat "Major"
 	{
 		"HA! ", 3, " is at the bottom, as usual.";
 		2, ", I let you win.";
-		4, " has changed a lot, it is much faster now.";
+		"Good Game!";
 		"Is it over yet?";
 		"Good Game!";
 		// 0 = bot name
@@ -117,6 +117,7 @@ chat "Major"
 		"Dammit!  Why won't you die?!?";
 		"Well that sucked...";
 		"Note to self... turn off safety next ~time";
+		"If you run . . . you'll only die tired!";
 		// 0 = opponent
 	} //end type
 	type "enemy_suicide" //enemy of the bot commits suicide

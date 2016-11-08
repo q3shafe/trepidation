@@ -2,9 +2,9 @@ code
 proc swapfunc 24 0
 file "../../game/bg_lib.c"
 line 83
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
-;3:// Copyright (C) 1999-2000 Id Software, Inc.
+;3:// 2016 Trepidation Licensed under the GPL2
 ;4://
 ;5:// bg_lib,c -- standard C library replacement routines used by code
 ;6:// compiled for the virtual machine

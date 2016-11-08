@@ -72,7 +72,7 @@ code
 proc PM_AddEvent 0 12
 file "../../game/bg_pmove.c"
 line 45
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// bg_pmove.c -- both games player movement code
 ;4:// takes a playerstate and a usercmd as input and returns a modifed playerstate

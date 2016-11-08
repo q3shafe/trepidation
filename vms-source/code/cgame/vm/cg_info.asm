@@ -3,7 +3,7 @@ code
 proc cgrandom 8 0
 file "../cg_info.c"
 line 17
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_info.c -- display information while data is being loading
 ;4:

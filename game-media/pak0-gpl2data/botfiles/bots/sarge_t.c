@@ -28,7 +28,8 @@ chat "sarge"
 	type "game_enter"
 	{
 		"Here we go again.";
-		"Hi There!.";
+		"Hi There!";
+		"Hey all!";
 		"Why don't you people just lay down and die, it'll save me the trouble.";
 	}
 
@@ -47,13 +48,13 @@ chat "sarge"
 
 	type "level_end"
 	{
-		"nice place ", 4, ", much less dangerous than d3dm2.";
+		"gg";
 		"Good Game!";
 	}
 
 	type "level_end_victory"
 	{
-		"Yep.";
+		"Yep, Good Game.";
 	}
 
 	type "level_end_lose"

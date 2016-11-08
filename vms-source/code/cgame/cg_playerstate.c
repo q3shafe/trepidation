@@ -1,4 +1,4 @@
-// Copyright (C) 1999-2000 Id Software, Inc.
+// 2016 Trepidation Licensed under the GPL2
 //
 // cg_playerstate.c -- this file acts on changes in a new playerState_t
 // With normal play, this will be done after local prediction, but when

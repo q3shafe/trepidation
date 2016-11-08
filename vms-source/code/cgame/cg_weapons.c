@@ -1,4 +1,4 @@
-// Copyright (C) 1999-2000 Id Software, Inc.
+// 2016 Trepidation Licensed under the GPL2
 //
 // cg_weapons.c -- events and effects dealing with weapons
 #include "cg_local.h"

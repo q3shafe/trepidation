@@ -1,4 +1,4 @@
-// Copyright (C) 1999-2000 Id Software, Inc.
+// 2016 Trepidation Licensed under the GPL2
 //
 // cg_event.c -- handle entity events at snapshot or playerstate transitions
 

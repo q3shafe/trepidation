@@ -10,11 +10,27 @@ Another Good Idea is to turn your downloads on.  The test servers are setup to d
 quickly via http from trepidation.n5net.com if there is a file you need.  So yeah, turn your
 downloads on :)
 
+Here are some useful links to copy to the wiki
+http://web.archive.org/web/20080329051556/http://www.beer-garden.org/bg2/modules/smartsection/item.php?itemid=37
+
+http://web.archive.org/web/20080329051410/http://www.beer-garden.org/bg2/modules/smartsection/item.php?itemid=43
 
 
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Implemented g_autochangemap
+
+- Implemented g_regenhealth/g_regenammo
+
+- Fixed hangar19 screenshot
+
+- fixed issue when no map was found on random rotation.
+
+- Fixed missing taunt sounds on bots.
+
+- Updated bot chat strings.
+
 - I think I fixed the random map repeating bug
 
 - Did some fine tuning to devastator for weapon balance.

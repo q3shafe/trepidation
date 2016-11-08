@@ -73,7 +73,8 @@ chat "Beret"
 	{
 		LEVEL_END_VICTORY0;
 		LEVEL_END_VICTORY1;
-		
+		"^3And that wasn't even a full can of whoop-ass!";
+		"Good Game!";
 		// 0 = bot name
 		// 1 = random opponent
 		// 3 = opponent in last place
@@ -84,6 +85,7 @@ chat "Beret"
 		2, " must be an Arena Lord.";
 		1, " kept getting in my way.";
 		4, " has never been good to me.";
+		"Good Game!";
 		// 0 = bot name
 		// 1 = random opponent
 		// 2 = opponent in first place

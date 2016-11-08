@@ -7,7 +7,7 @@ code
 proc CG_PlaceString 12 20
 file "../cg_event.c"
 line 23
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_event.c -- handle entity events at snapshot or playerstate transitions
 ;4:

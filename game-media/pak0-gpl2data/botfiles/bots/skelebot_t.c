@@ -27,7 +27,9 @@ chat "skelebot"
 
 	type "game_enter"
 	{
-		"Here we go again.";
+		"Hi There!";
+		"Hey all!";
+		"Hey All, Here we go again.";
 		"Why don't you people just lay down and die, it'll save me the trouble.";
 	}
 
@@ -46,17 +48,19 @@ chat "skelebot"
 
 	type "level_end"
 	{
-		"nice place ", 4, ", much less dangerous than d3dm2.";
+		"Good Game!";
+		"gg";
 	}
 
 	type "level_end_victory"
 	{
-		"Yep.";
+		"Oh Yeah! Good Game.";
 	}
 
 	type "level_end_lose"
 	{
 		"Aww... crap!";
+		"Good Game!";		
 	}
 
 	type "hit_talking"

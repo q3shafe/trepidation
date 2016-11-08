@@ -3,7 +3,7 @@ code
 proc CG_AdjustFrom640 16 0
 file "../cg_drawtools.c"
 line 13
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_drawtools.c -- helper functions called by cg_draw, cg_scoreboard, cg_info, etc
 ;4:#include "cg_local.h"

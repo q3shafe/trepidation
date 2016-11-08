@@ -2,7 +2,7 @@ code
 proc CG_TURRET 156 12
 file "../cg_ents.c"
 line 11
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_ents.c -- present snapshot entities, happens every single frame
 ;4:

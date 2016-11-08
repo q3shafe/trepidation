@@ -3,7 +3,7 @@ code
 proc CG_ShotgunTrail 84 4
 file "../cg_effects.c"
 line 14
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_effects.c -- these functions generate localentities, usually as a result
 ;4:// of event processing

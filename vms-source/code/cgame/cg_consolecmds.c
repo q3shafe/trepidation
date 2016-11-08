@@ -1,4 +1,4 @@
-// Copyright (C) 1999-2000 Id Software, Inc.
+// 2016 Trepidation Licensed under the GPL2
 //
 // cg_consolecmds.c -- text commands typed in at the local console, or
 // executed by a key binding

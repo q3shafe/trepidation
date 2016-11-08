@@ -7,7 +7,7 @@ code
 proc CG_DrawField 64 20
 file "../cg_draw.c"
 line 192
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_draw.c -- draw all of the graphical elements during
 ;4:// active (after loading) gameplay

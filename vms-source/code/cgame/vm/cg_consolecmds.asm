@@ -3,7 +3,7 @@ code
 proc CG_TargetCommand_f 20 12
 file "../cg_consolecmds.c"
 line 14
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_consolecmds.c -- text commands typed in at the local console, or
 ;4:// executed by a key binding

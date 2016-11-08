@@ -31,6 +31,7 @@ chat "AngryNerdBot"
 	{
 		"Hello.";
 		"Hey All";
+		"Hi";
 		HELLO1;
 		// 0 = bot name
 		// 1 = random opponent
@@ -68,7 +69,7 @@ chat "AngryNerdBot"
 	{
 		"Good Game!";
 		LEVEL_END_VICTORY1;
-		"I really like ", 4, " since they fixed it, it is so easy to win!";
+		"GG! I really like ", 4, " since they fixed it, it is so easy to win!";
 		// 0 = bot name
 		// 1 = random opponent
 		// 3 = opponent in last place
@@ -78,7 +79,7 @@ chat "AngryNerdBot"
 	{
 		2, " cheated.";
 		"One of these days.";
-		"Good Game?";
+		"gg?";
 		"Good Game?";
 		// 0 = bot name
 		// 1 = random opponent
@@ -109,6 +110,7 @@ chat "AngryNerdBot"
 		"Sit still!";
 		"Die die die die!";
 		"So much for that...";
+		"^6Sit Still Your Ruining My Aim! LOL";
 		// 0 = opponent
 	} //end type
 	type "enemy_suicide" //enemy of the bot commits suicide

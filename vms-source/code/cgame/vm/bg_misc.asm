@@ -522,7 +522,7 @@ code
 proc BG_FindItemForPowerup 8 0
 file "../../game/bg_misc.c"
 line 962
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// bg_misc.c -- both games misc functions, all completely stateless
 ;4:
