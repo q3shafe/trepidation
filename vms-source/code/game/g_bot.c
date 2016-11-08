@@ -399,6 +399,14 @@ void G_CheckMinimumPlayers( void ) {
 	{
 		return; 
 	}
+
+	// Freeze
+	if ((g_GameMode.integer == 5) && (level.firstStrike == qtrue)) 
+	{
+		return; 
+	}
+
+
 	///////////////////////
 
 	if (g_gametype.integer >= GT_TEAM) {

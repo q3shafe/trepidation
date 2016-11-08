@@ -82,7 +82,7 @@ void AddScore( gentity_t *ent, vec3_t origin, int score ) {
 		ent->client->ps.persistant[PERS_SCORE] += score;
 		ent->client->pers.TrueScore = ent->client->ps.persistant[PERS_SCORE];
 
-	if (g_GameMode.integer != 3)
+	if ((g_GameMode.integer != 3) && (g_GameMode.integer != 999))
 	{
 		if ( g_gametype.integer == GT_TEAM )
 			level.teamScores[ ent->client->ps.persistant[PERS_TEAM] ] += score;
@@ -514,8 +514,9 @@ player_die
 ==================
 */
 extern int CountSurvivors();
-extern int CountRedSurvivors();
-extern int CountBlueSurvivors();
+extern int CountTeamSurvivors();
+//extern int CountRedSurvivors();
+//extern int CountBlueSurvivors();
 
 void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int meansOfDeath ) {
 	gentity_t	*ent;
@@ -821,7 +822,8 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 			}
 			
-			
+
+
 			if ((g_GameMode.integer == 2) || (IsOutOfWeapons(self)))
 			{
 				
@@ -888,6 +890,18 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 		}
 		// End Arsenal Stuff
+
+		// Freeze Frozen
+		if (g_GameMode.integer == 5	)
+		{
+			self->client->pers.TrueScore = self->client->ps.persistant[PERS_SCORE];
+			self->client->pers.Eliminated = qtrue;
+			self->client->pers.Frozen = qtrue;
+			self->client->sess.sessionTeam = TEAM_SPECTATOR;
+			SetTeam(self, "s");
+			// Set The Last Attacker In Case The Winner Blows Themself up on the winning shot
+			level.lastClient = attacker->client;
+		}
 
 	Cmd_Score_f( self );		// show scores
 	// send updated scores to any clients that are following this one,

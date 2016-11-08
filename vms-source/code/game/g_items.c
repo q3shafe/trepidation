@@ -979,7 +979,7 @@ void G_SpawnItem (gentity_t *ent, gitem_t *item) {
 	if ((g_GameMode.integer == 999))
 	{
 	// Arsenal - prevent weapons and ammo from spawning
-	if ( item->giType == IT_WEAPON)
+	if ( item->giType == IT_WEAPON  || item->giType == IT_AMMO)
 		return;
 	}
 	

@@ -1913,8 +1913,7 @@ void CheckExitRules( void ) {
 	if ( g_GameMode.integer == 999)
 	{
 		
-
-		
+	
 		if ((level.time-level.redScoreTime) < 5000) { return; }
 		if ((level.time-level.blueScoreTime) < 5000) { return; }
 		
@@ -1959,6 +1958,26 @@ void CheckExitRules( void ) {
 
 	}
 
+	// Freeze frozen
+	if ( g_GameMode.integer == 5 && g_capturelimit.integer ) {
+
+		if ( level.teamScores[TEAM_RED] >= g_capturelimit.integer ) {
+			trap_SendServerCommand( -1, "print \"Red hit the point limit.\n\"" );
+			LogExit( "Capturelimit hit." );
+			G_ShowTopStats();
+			return;
+		}
+		
+		if ( level.teamScores[TEAM_BLUE] >= g_capturelimit.integer ) {
+			trap_SendServerCommand( -1, "print \"Blue hit the point limit.\n\"" );
+			LogExit( "Capturelimit hit." );
+			G_ShowTopStats();
+			return;
+		}
+		
+	}
+
+
 	if ( g_GameMode.integer == 999 && g_capturelimit.integer ) {
 
 		if ( level.teamScores[TEAM_RED] >= g_capturelimit.integer ) {
@@ -1967,13 +1986,14 @@ void CheckExitRules( void ) {
 			G_ShowTopStats();
 			return;
 		}
-
+		/*
 		if ( level.teamScores[TEAM_BLUE] >= g_capturelimit.integer ) {
 			trap_SendServerCommand( -1, "print \"Blue hit the point limit.\n\"" );
 			LogExit( "Capturelimit hit." );
 			G_ShowTopStats();
 			return;
 		}
+		*/
 	}
 
 
@@ -2011,6 +2031,66 @@ void CheckExitRules( void ) {
 	if ( ScoreIsTied() ) {
 		// always wait for sudden death
 		return;
+	}
+
+
+	// Freeze frozen
+	if (g_GameMode.integer == 5)
+	{
+		if (((level.time-level.startTime) > 10000) && (level.firstStrike == qtrue))
+		{
+			gclient_t		*survivor = NULL;		
+			int				redCnt;			
+			int				blueCnt;			
+			int		p;
+			// Are there any people on either team not frozen?
+			redCnt = 0;
+			redCnt = CountTeamSurvivors(TEAM_RED);
+			blueCnt = CountTeamSurvivors(TEAM_BLUE);
+
+			if(redCnt == 0) { // Red Team Wins Round
+
+				trap_SendServerCommand( -1, va("cp \"^7Red Team Scores\n\"") );
+				trap_SendServerCommand( -1, va( "print \"Red team scores\n\"") );
+				level.teamScores[ TEAM_RED ]++; 
+
+				for ( i = 0; i < level.maxclients; i++ )
+					{
+						cl = &level.clients[i];
+						//survivor = &level.clients[i];
+						cl->pers.Frozen = qfalse;
+						cl->pers.Eliminated = qfalse;
+					}
+				return;
+			}
+			
+			if(blueCnt == 0) { // Blue Team Wins Round
+				trap_SendServerCommand( -1, va("cp \"^7Blue Team Scores\n\"") );
+				trap_SendServerCommand( -1, va( "print \"Blue team scores\n\"") );
+				level.teamScores[ TEAM_BLUE ]++;		
+
+				for ( i = 0; i < level.maxclients; i++ )
+					{
+						cl = &level.clients[i];
+						//survivor = &level.clients[i];
+						cl->pers.Frozen = qfalse;
+						cl->pers.Eliminated = qfalse;
+					}
+				return;
+
+			}
+
+			if ( g_timelimit.integer && !level.warmupTime ) {
+				if ( level.time - level.startTime >= g_timelimit.integer*60000 ) {
+					trap_SendServerCommand( -1, "print \"Timelimit hit.\n\"");
+					LogExit( "Timelimit hit." );
+					G_ShowTopStats();
+					return;
+				}
+			}
+
+
+		}
 	}
 
 
@@ -2238,7 +2318,7 @@ void CheckExitRules( void ) {
 	}
 
 	
-	if ( g_GameMode.integer != 999 ) 
+	if (( g_GameMode.integer != 999 ) || ( g_GameMode.integer != 5 ))
 	{
 		if ( g_gametype.integer < GT_CTF && g_fraglimit.integer ) {
 			if ( level.teamScores[TEAM_RED] >= g_fraglimit.integer ) {
