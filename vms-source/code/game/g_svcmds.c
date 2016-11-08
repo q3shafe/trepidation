@@ -548,6 +548,9 @@ static char *GetRandomMap() {
 	int				x;
 	int				y;
 
+
+	trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap2 %i\n", g_lastmap.integer) );		
+
 	/*
 	if (strlen(g_mappool.string) == 0)
 		return;
@@ -575,20 +578,22 @@ static char *GetRandomMap() {
 	p = buffer;
 	y = irandom(0,(x-1));
 	
+	
+
 	while ( 1 ) {
 		token = COM_Parse(&p);
 		if (! as_checkToken(token) )
 			break; // end of list	
 		if (count==y) 
 		{
-			trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap2 %s\n", token) );
+			
 
-			if(g_lastmap.string != g_lastmap2.string) 
+			if(g_lastmap.integer != y) 
 			{
 				//g_lastmap.string = token;
 				G_Printf( "Here is a random map %s\n", token);
-				trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap %s\n", token) );
 				trap_SendConsoleCommand( EXEC_APPEND, va("map %s\n", token ) );
+				trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap %i\n", y) );
 				return token;
 			} else { 				
 				//if((y+1) > x) {  y=1; } 
@@ -667,6 +672,14 @@ qboolean	ConsoleCommand( void ) {
 		Svcmd_Punish_f();
 		return qtrue;
 	}
+	
+	/*
+	if (Q_stricmp (cmd, "where") == 0) {
+		
+		return qtrue;
+	}
+	*/ 
+	
 
 	if (Q_stricmp (cmd, "randmap") == 0) {
 		G_Printf( "Final: Here is a random map %s\n", GetRandomMap());
@@ -674,6 +687,8 @@ qboolean	ConsoleCommand( void ) {
 		return qtrue;
 	}
 	
+
+
 	if (Q_stricmp (cmd, "balanceteams") == 0) {
 		//FixME Later - Do it twice in case it's way off
 		Svcmd_BalanceTeams();

@@ -15,6 +15,8 @@ downloads on :)
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- I think I fixed the random map repeating bug
+
 - Did some fine tuning to devastator for weapon balance.
 
 - Did some fine tuning to flame thrower for weapon balance.
@@ -855,7 +857,7 @@ CGAME CODE
 - Shafe - cgame - UI_HASUNIQUECDKEY returns false where it needs to.
 
 ===========
-OVERAL CODE
+OVERALL CODE
 ===========
 - Shafe - cgame/game - Alt Fire Code Added In... Alt Fire Binded to +button5   Right now some of the weapons just fire rockets, others just fire normal... But the code is in there..
 

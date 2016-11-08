@@ -2238,48 +2238,49 @@ void CheckExitRules( void ) {
 	}
 
 	
-	
-	if ( g_gametype.integer < GT_CTF && g_fraglimit.integer ) {
-		if ( level.teamScores[TEAM_RED] >= g_fraglimit.integer ) {
-			trap_SendServerCommand( -1, "print \"Red hit the fraglimit.\n\"" );
-			LogExit( "Fraglimit hit." );
-			G_ShowTopStats();
-			return;
-		}
-
-		if ( level.teamScores[TEAM_BLUE] >= g_fraglimit.integer ) {
-			trap_SendServerCommand( -1, "print \"Blue hit the fraglimit.\n\"" );
-			LogExit( "Fraglimit hit." );
-			G_ShowTopStats();
-			return;
-		}
-	
-		for( i=0 ; i< g_maxclients.integer ; i++ ) 
-		{
-			cl = level.clients + i;
-			if( cl->pers.connected != CON_CONNECTED )
-				continue;
-			/*
-			// See Mantis: 0000107: Specatators can be in the top 3 of an arsenal game.
-
-			if( cl->sess.sessionTeam != TEAM_FREE )
-				continue;
-			if( cl->sess.sessionTeam != TEAM_SPECTATOR )
-				continue; // Don't count spectators -Vincent
-
-			*/
-
-			if( cl->ps.persistant[PERS_SCORE] >= g_fraglimit.integer ) 
-			{
+	if ( g_GameMode.integer != 999 ) 
+	{
+		if ( g_gametype.integer < GT_CTF && g_fraglimit.integer ) {
+			if ( level.teamScores[TEAM_RED] >= g_fraglimit.integer ) {
+				trap_SendServerCommand( -1, "print \"Red hit the fraglimit.\n\"" );
 				LogExit( "Fraglimit hit." );
-				trap_SendServerCommand( -1, va("print \"%s" S_COLOR_WHITE " hit the fraglimit.\n\"",
-					cl->pers.netname ) );
 				G_ShowTopStats();
 				return;
 			}
-		}
-	}
+
+			if ( level.teamScores[TEAM_BLUE] >= g_fraglimit.integer ) {
+				trap_SendServerCommand( -1, "print \"Blue hit the fraglimit.\n\"" );
+				LogExit( "Fraglimit hit." );
+				G_ShowTopStats();
+				return;
+			}
 	
+			for( i=0 ; i< g_maxclients.integer ; i++ ) 
+			{
+				cl = level.clients + i;
+				if( cl->pers.connected != CON_CONNECTED )
+					continue;
+				/*
+				// See Mantis: 0000107: Specatators can be in the top 3 of an arsenal game.
+
+				if( cl->sess.sessionTeam != TEAM_FREE )
+					continue;
+				if( cl->sess.sessionTeam != TEAM_SPECTATOR )
+					continue; // Don't count spectators -Vincent
+
+				*/
+
+				if( cl->ps.persistant[PERS_SCORE] >= g_fraglimit.integer ) 
+				{
+					LogExit( "Fraglimit hit." );
+					trap_SendServerCommand( -1, va("print \"%s" S_COLOR_WHITE " hit the fraglimit.\n\"",
+						cl->pers.netname ) );
+					G_ShowTopStats();
+					return;
+				}
+			}
+		}
+	} // End single player exclusion.
 	
 	if ( g_gametype.integer >= GT_CTF && g_capturelimit.integer ) {
 

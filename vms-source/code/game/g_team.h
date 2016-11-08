@@ -41,8 +41,8 @@
 #define CTF_RETURN_FLAG_ASSIST_TIMEOUT		10000
 
 // Shafe - Trep - 6-19 Let's make these server cvars
-#define CTF_GRAPPLE_SPEED					750 // speed of grapple in flight
-#define CTF_GRAPPLE_PULL_SPEED				750	// speed player is pulled at
+#define CTF_GRAPPLE_SPEED					5 // speed of grapple in flight
+#define CTF_GRAPPLE_PULL_SPEED				5	// speed player is pulled at
 
 #define OVERLOAD_ATTACK_BASE_SOUND_TIME		20000
 
