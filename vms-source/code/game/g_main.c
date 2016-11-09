@@ -1,4 +1,4 @@
-// Copyright (C) 1999-2000 Id Software, Inc.
+// 2016 Trepidation Licensed under the GPL2
 //
 
 #include "g_local.h"
@@ -126,7 +126,9 @@ vmCvar_t    g_mapfile;
 vmCvar_t    g_randommap;
 vmCvar_t    g_lastmap;
 vmCvar_t    g_lastmap2;
-
+vmCvar_t	g_AutoChangeMap;
+vmCvar_t	g_RegenHealth;
+vmCvar_t	g_RegenAmmo;
 
 
 
@@ -267,7 +269,9 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_lastmap, "g_lastmap", "0", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_lastmap2, "g_lastmap2", "0", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_mapfile, "g_mapfile", "map_rotation.cfg", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
-	
+	{ &g_AutoChangeMap, "g_AutoChangeMap", "0", 0, 0, qfalse },
+	{ &g_RegenHealth, "g_RegenHealth", "0", 0, 0, qtrue },
+	{ &g_RegenAmmo, "g_RegenAmmo", "0", 0, 0, qtrue },
 
 	// Debugging
 	{ &trep_debug, "trep_debug", "0", CVAR_ARCHIVE, 0, qtrue }
@@ -453,6 +457,42 @@ int CountTeamSurvivors ( int team )
 
 return tmpCnt;
 }
+
+// Trepidation - Is there anyone aside from BOTs here?
+/*
+	===================
+	Are There Live Players?
+	True/False
+	===================
+*/
+
+qboolean AreThereLivePlayers () 
+{
+int i;
+int count;
+count = 0;
+	for ( i = 0 ; i < level.maxclients ; i++ ) 
+	{
+		if ( level.clients[i].pers.connected == CON_CONNECTED ) 
+		{
+			if (!(g_entities[i].r.svFlags & SVF_BOT)) 
+			{
+				count++;
+			}
+		}
+	}
+	
+	if (count > 0)
+	{
+		return qtrue;
+	}
+	else
+	{
+		return qfalse;
+	}
+
+}
+
 
 /*
 ===================
@@ -1687,6 +1727,24 @@ void CheckIntermissionExit( void ) {
 
 	if ( g_gametype.integer == GT_SINGLE_PLAYER ) {
 		return;
+	}
+
+
+	// Trepidation - If There Are No Live Players Then 
+	// Skip The Scoreboard and go on to the next map.
+	//
+	// This keeps the server from sitting on an a scoreboard for
+	// an unpopular map for too long.
+	//
+	// This is goofy.. Lets do something aside from this
+
+	if (g_AutoChangeMap.value == 1)
+	{
+		if(!AreThereLivePlayers)
+		{
+			ExitLevel();
+			return;
+		}
 	}
 
 	// see which players are ready

@@ -1,4 +1,4 @@
-// Copyright (C) 1999-2000 Id Software, Inc.
+// 2016 Trepidation Licensed under the GPL2
 //
 
 #include "g_local.h"
@@ -506,6 +506,50 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 			g_entities[client->ps.clientNum].immobilized = qfalse;
 		}
 		
+
+		//Trepidation - Regenative Health
+		if (g_RegenHealth.value == 1) 
+		{
+			if ( ent->health < client->ps.stats[STAT_MAX_HEALTH] ) 
+					{
+						ent->health++;
+					}
+		}
+		/////////////////////////////////////////////////
+
+		// Trepidation  - Regenerating Ammo
+		if (g_RegenAmmo.value == 1) {
+			if (client->ps.ammo[WP_SHOTGUN] < Max_Ammo[WP_SHOTGUN]) 
+			{
+				client->ps.ammo[WP_SHOTGUN]++;
+			}
+			if (client->ps.ammo[WP_GRENADE_LAUNCHER] < Max_Ammo[WP_GRENADE_LAUNCHER]) 
+			{
+				client->ps.ammo[WP_GRENADE_LAUNCHER]++;
+			}
+			if (client->ps.ammo[WP_ROCKET_LAUNCHER] < Max_Ammo[WP_ROCKET_LAUNCHER]) 
+			{
+				client->ps.ammo[WP_ROCKET_LAUNCHER]++;
+			}
+			if (client->ps.ammo[WP_LIGHTNING] < Max_Ammo[WP_LIGHTNING]) 
+			{
+				client->ps.ammo[WP_LIGHTNING]++;
+			}
+			if (client->ps.ammo[WP_RAILGUN] < Max_Ammo[WP_RAILGUN]) 
+			{
+				client->ps.ammo[WP_RAILGUN]++;
+			}
+			if (client->ps.ammo[WP_PLASMAGUN] < Max_Ammo[WP_PLASMAGUN]) 
+			{
+				client->ps.ammo[WP_PLASMAGUN]++;
+			}
+			if (client->ps.ammo[WP_BFG] < Max_Ammo[WP_BFG]) 
+			{
+				client->ps.ammo[WP_BFG]++;
+			}
+
+		}
+
 
 
 		// count down armor when over max
@@ -1163,6 +1207,9 @@ void ClientThink_real( gentity_t *ent ) {
 			}
 		}
 
+	// perform once-a-second actions
+	ClientTimerActions( ent, msec );
+
 	}
 
 #ifdef MISSIONPACK
@@ -1341,6 +1388,9 @@ void ClientThink_real( gentity_t *ent ) {
 	// perform once-a-second actions
 	ClientTimerActions( ent, msec );
 }
+
+
+
 
 /*
 ==================

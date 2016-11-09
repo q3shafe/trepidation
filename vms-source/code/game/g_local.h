@@ -1,4 +1,4 @@
-// Copyright (C) 1999-2000 Id Software, Inc.
+// 2016 Trepidation Licensed under the GPL2
 //
 // g_local.h -- local definitions for game module
 
@@ -997,6 +997,9 @@ extern vmCvar_t         g_mapfile;
 extern vmCvar_t         g_randommap;
 extern vmCvar_t         g_lastmap;
 extern vmCvar_t         g_lastmap2;
+extern vmCvar_t			g_AutoChangeMap;
+extern	vmCvar_t		g_RegenHealth;
+extern	vmCvar_t		g_RegenAmmo;
 
 
 extern	vmCvar_t	trep_debug;

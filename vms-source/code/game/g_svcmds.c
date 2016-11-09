@@ -1,4 +1,4 @@
-// Copyright (C) 1999-2000 Id Software, Inc.
+// 2016 Trepidation Licensed under the GPL2
 //
 
 // this file holds commands that can be executed by the server console, but not remote clients
@@ -606,7 +606,9 @@ static char *GetRandomMap() {
 	}	
 	
 	//G_Printf( "Here is a random map %i - %s\n", y, mapname[y]);
-	return "nothing";
+	// we came up with nothing.. lets do this again
+	GetRandomMap();
+
 }
 
 

@@ -1,6 +1,6 @@
-// Copyright (C) 1999-2000 Id Software, Inc.
+// 2016 Trepidation Licensed under the GPL2
 //
-// Copyright (C) 1999-2000 Id Software, Inc.
+// 2016 Trepidation Licensed under the GPL2
 //
 // bg_lib,c -- standard C library replacement routines used by code
 // compiled for the virtual machine

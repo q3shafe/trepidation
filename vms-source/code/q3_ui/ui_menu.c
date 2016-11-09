@@ -727,7 +727,7 @@ static void UI_SinglePlayerMenu_Init( void ) {
 	singleplayerMenuInfo.freezetag.generic.id					= ID_FREEZETAG;
 	singleplayerMenuInfo.freezetag.generic.callback			= UI_SinglePlayerMenu_Event; 
 	singleplayerMenuInfo.freezetag.string						= "FREEZE TAG";
-	singleplayerMenuInfo.freezetag.color						= color_red;
+	singleplayerMenuInfo.freezetag.color						= color_dim;
 	singleplayerMenuInfo.freezetag.style						= style;
 
 
