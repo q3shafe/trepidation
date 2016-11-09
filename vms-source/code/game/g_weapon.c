@@ -616,20 +616,42 @@ PLASMA GUN
 ======================================================================
 */
 
-void Weapon_Plasmagun_Fire (gentity_t *ent) {
+void Weapon_Plasmagun_Fire (gentity_t *ent, qboolean alt) {
 	gentity_t	*m;
 	int		i;
 	
 	// Shafe - Add Some Randomness so that 
 	// it doesnt fire straight every time
-	i = irandom(0,10);
-	if (i > 5)
+
+	if(!alt)
 	{
-		forward[2] += 0.2f;
-		VectorNormalize( forward );
+		i = irandom(0,3);
+		if (i == 1)
+		{
+			forward[2] += 0.2f;
+			VectorNormalize( forward );
+		}
+		if (i == 2)
+		{
+			forward[1] += 0.2f;
+			VectorNormalize( forward );
+		}
+
+		if (i == 3)
+		{
+			forward[0] += 0.2f;
+			VectorNormalize( forward );
+		}
+
+		
 	}
 
-	m = fire_plasma (ent, muzzle, forward);
+	if(!alt)
+	{
+		m = fire_plasma (ent, muzzle, forward);
+	} else {
+		m = fire_plasma2 (ent, muzzle, forward);
+	}
 	m->damage *= s_quadFactor;
 	m->splashDamage *= s_quadFactor;
 
@@ -820,6 +842,8 @@ void weapon_railgun_fire (gentity_t *ent) {
 }
 
 
+
+
 /*
 ======================================================================
 
@@ -865,6 +889,7 @@ void Weapon_HookThink (gentity_t *ent)
 
 	VectorCopy( ent->r.currentOrigin, ent->parent->client->ps.grapplePoint);
 }
+
 
 /*
 =======================================================================
@@ -929,6 +954,76 @@ void Weapon_fire_turret (gentity_t *ent, qboolean alt ) {
 		m->splashDamage *= s_quadFactor;
 	}
 
+}
+
+/*
+======================================================================
+
+ALT GATA
+
+======================================================================
+*/
+
+void Weapon_AltGataFire( gentity_t *ent ) {
+	trace_t		tr;
+	vec3_t		end;
+#ifdef MISSIONPACK
+	vec3_t impactpoint, bouncedir;
+#endif
+	gentity_t	*traceEnt, *tent;
+	int			damage, i, passent;
+
+//unlagged - server options
+	// this is configurable now
+//	damage = 8 * s_quadFactor;
+	damage = g_lightningDamage.integer * s_quadFactor;
+//unlagged - server options
+
+	passent = ent->s.number;
+	for (i = 0; i < 10; i++) {
+		VectorMA( muzzle, LIGHTNING_RANGE, forward, end );
+
+//unlagged - backward reconciliation #2
+	// backward-reconcile the other clients
+	G_DoTimeShiftFor( ent );
+//unlagged - backward reconciliation #2
+
+		trap_Trace (&tr, muzzle, NULL, NULL, end, passent, MASK_SHOT);
+
+//unlagged - backward reconciliation #2
+	// put them back
+	G_UndoTimeShiftFor( ent );
+//unlagged - backward reconciliation #2
+
+
+		if ( tr.entityNum == ENTITYNUM_NONE ) {
+			return;
+		}
+
+		traceEnt = &g_entities[ tr.entityNum ];
+
+		if ( traceEnt->takedamage) {
+
+				G_Damage( traceEnt, ent, ent, forward, tr.endpos,
+					damage, 0, MOD_PLASMA);
+
+		}
+
+		if ( traceEnt->takedamage && traceEnt->client ) {
+			tent = G_TempEntity( tr.endpos, EV_MISSILE_HIT );
+			tent->s.otherEntityNum = traceEnt->s.number;
+			tent->s.eventParm = DirToByte( tr.plane.normal );
+			tent->s.weapon = ent->s.weapon;
+			if( LogAccuracyHit( traceEnt, ent ) ) {
+				ent->client->accuracy_hits++;
+			}
+		} else if ( !( tr.surfaceFlags & SURF_NOIMPACT ) ) {
+			tent = G_TempEntity( tr.endpos, EV_MISSILE_MISS );
+			tent->s.eventParm = DirToByte( tr.plane.normal );
+		}
+
+		break;
+	}
 }
 
 /*
@@ -1031,6 +1126,8 @@ void Weapon_LightningFire( gentity_t *ent ) {
 		break;
 	}
 }
+
+
 
 #ifdef MISSIONPACK
 /*
@@ -1213,7 +1310,7 @@ void FireWeapon( gentity_t *ent ) {
 		Weapon_RocketLauncher_Fire( ent );
 		break;
 	case WP_PLASMAGUN:
-		Weapon_Plasmagun_Fire( ent );
+		Weapon_Plasmagun_Fire( ent, qfalse );
 		break;
 	case WP_RAILGUN:
 		weapon_railgun_fire( ent );
@@ -1280,7 +1377,8 @@ void FireWeapon2( gentity_t *ent ) {
 	break; 
  case WP_SHOTGUN: 
 	 //weapon_bomblauncher_fire( ent, qtrue); // Not Ready Yet
-	 weapon_supershotgun_fire( ent, qtrue );
+	 //weapon_supershotgun_fire( ent, qtrue );
+	 weapon_pdlauncher_fire( ent); 
 	break; 
  case WP_MACHINEGUN: 
   //Weapon_RocketLauncher_Fire( ent );
@@ -1301,7 +1399,7 @@ void FireWeapon2( gentity_t *ent ) {
 	Weapon_RocketLauncher_AltFire( ent );
 	break; 
  case WP_PLASMAGUN: 
-	weapon_pdlauncher_fire( ent); 
+	Weapon_Plasmagun_Fire( ent, qtrue );
 	break; 
  case WP_RAILGUN: 
 	// This is just zoom

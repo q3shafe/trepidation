@@ -665,6 +665,7 @@ void G_RunMissile( gentity_t *ent );
 
 gentity_t *fire_blaster (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t aimdir);
+gentity_t *fire_plasma2 (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_grenade (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_pdgrenade (gentity_t *self, vec3_t start, vec3_t aimdir);
 gentity_t *fire_bomb (gentity_t *self, vec3_t start, vec3_t aimdir, qboolean alt);
@@ -675,6 +676,7 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t aimdir, qboolean al
 gentity_t *fire_rocket (gentity_t *self, vec3_t start, vec3_t dir);
 gentity_t *fire_bfg (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt);
 gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir);
+gentity_t *fire_alt_gata (gentity_t *self, vec3_t start, vec3_t dir);
 gentity_t *fire_turret (gentity_t *self, vec3_t start, vec3_t aimdir, qboolean alt);
 gentity_t *fire_mg (gentity_t *self, vec3_t start, vec3_t aimdir, qboolean alt);
 #ifdef MISSIONPACK

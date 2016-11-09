@@ -3,7 +3,7 @@ code
 proc CG_InitLocalEntities 12 12
 file "../cg_localents.c"
 line 21
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:
 ;4:// cg_localents.c -- every frame, generate renderer commands for locally

@@ -578,7 +578,8 @@ void G_InitModRules( void )
 			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartFlame 1\n"); }
 			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartGauss 1\n");  }
 			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartPlasma 1\n");}
-			if (irandom(0,1) > 0) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartBFG 1\n");}
+			// The Devestator Shows up less
+			if (irandom(0,2) > 1) { trap_SendConsoleCommand( EXEC_APPEND, "seta g_StartBFG 1\n");}
 
 		} 
 	
@@ -1738,12 +1739,16 @@ void CheckIntermissionExit( void ) {
 	//
 	// This is goofy.. Lets do something aside from this
 
-	if (g_AutoChangeMap.value == 1)
+	if (g_AutoChangeMap.integer == 1)
 	{
+
 		if(!AreThereLivePlayers)
 		{
+			trap_SendServerCommand( -1, "print \"DEBUG: THERE ARE NO LIVE PLAYERS.\n\"" );
 			ExitLevel();
 			return;
+		} else {
+			trap_SendServerCommand( -1, "print \"DEBUG: THERE **ARE** LIVE PLAYERS.\n\"" );
 		}
 	}
 

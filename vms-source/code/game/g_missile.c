@@ -850,6 +850,50 @@ gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
 	return bolt;
 }	
 
+/*
+=================
+fire_plasma2 alt
+
+=================
+*/
+gentity_t *fire_plasma2 (gentity_t *self, vec3_t start, vec3_t dir) {
+	gentity_t	*bolt;
+
+	VectorNormalize (dir);
+
+	bolt = G_Spawn();
+	bolt->classname = "plasma";
+	bolt->nextthink = level.time + 1200; //10000;
+	bolt->think = G_ExplodeMissile;
+	bolt->s.eType = ET_MISSILE;
+	bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+	bolt->s.weapon = WP_PLASMAGUN;
+	bolt->r.ownerNum = self->s.number;
+//unlagged - projectile nudge
+	// we'll need this for nudging projectiles later
+	bolt->s.otherEntityNum = self->s.number;
+//unlagged - projectile nudge
+	bolt->parent = self;
+	bolt->damage = 20;
+	bolt->splashDamage = 15;
+	bolt->splashRadius = 20;
+	bolt->methodOfDeath = MOD_PLASMA;
+	bolt->splashMethodOfDeath = MOD_PLASMA_SPLASH;
+	bolt->clipmask = MASK_SHOT;
+	bolt->target_ent = NULL;
+
+	bolt->s.pos.trType = TR_LINEAR;
+	bolt->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+	VectorCopy( start, bolt->s.pos.trBase );
+	VectorScale( dir, 2000, bolt->s.pos.trDelta );
+	SnapVector( bolt->s.pos.trDelta );			// save net bandwidth
+
+	VectorCopy (start, bolt->r.currentOrigin);
+
+	return bolt;
+}	
+
+
 //=============================================================================
 
 
@@ -1527,6 +1571,72 @@ gentity_t *fire_grapple (gentity_t *self, vec3_t start, vec3_t dir) {
 		hook->splashDamage = 1;
 		hook->splashRadius = 1;
 	}
+
+//unlagged - grapple
+	// we might want this later
+	hook->s.otherEntityNum = self->s.number;
+
+	// setting the projectile base time back makes the hook's first
+	// step larger
+
+	if ( self->client ) {
+		hooktime = self->client->pers.cmd.serverTime + 50;
+	}
+	else {
+		hooktime = level.time - MISSILE_PRESTEP_TIME;
+	}
+
+	hook->s.pos.trTime = hooktime;
+//unlagged - grapple
+
+	hook->s.pos.trType = TR_LINEAR;
+//unlagged - grapple
+	//hook->s.pos.trTime = level.time - MISSILE_PRESTEP_TIME;		// move a bit on the very first frame
+//unlagged - grapple
+	hook->s.otherEntityNum = self->s.number; // use to match beam in client
+	VectorCopy( start, hook->s.pos.trBase );
+	VectorScale( dir, 800, hook->s.pos.trDelta );
+	SnapVector( hook->s.pos.trDelta );			// save net bandwidth
+	VectorCopy (start, hook->r.currentOrigin);
+
+	self->client->hook = hook;
+
+	return hook;
+}
+
+/*
+=================
+fire_alt_gata
+=================
+*/
+gentity_t *fire_alt_gata (gentity_t *self, vec3_t start, vec3_t dir) {
+	gentity_t	*hook;
+//unlagged - grapple
+	int hooktime;
+//unlagged - grapple
+
+	VectorNormalize (dir);
+
+	hook = G_Spawn();
+	hook->classname = "hook";
+	hook->nextthink = level.time + 10000;
+	//hook->think = Weapon_HookFree;
+	hook->s.eType = ET_MISSILE;
+	hook->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+	hook->s.weapon = WP_PLASMAGUN;
+	hook->r.ownerNum = self->s.number;
+	hook->methodOfDeath = MOD_PLASMA;
+	hook->clipmask = MASK_SHOT;
+	hook->parent = self;
+	hook->target_ent = NULL;
+	
+	
+		hook->damage = 10;
+		hook->splashDamage = 50;
+		hook->splashRadius = 10;
+	
+
+	
 
 //unlagged - grapple
 	// we might want this later

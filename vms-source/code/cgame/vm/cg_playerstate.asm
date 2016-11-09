@@ -3,7 +3,7 @@ code
 proc CG_CheckAmmo 20 8
 file "../cg_playerstate.c"
 line 17
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_playerstate.c -- this file acts on changes in a new playerState_t
 ;4:// With normal play, this will be done after local prediction, but when

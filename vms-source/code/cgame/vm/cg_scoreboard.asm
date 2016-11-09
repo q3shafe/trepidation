@@ -2,7 +2,7 @@ code
 proc CG_DrawClientScore 1080 36
 file "../cg_scoreboard.c"
 line 61
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_scoreboard -- draw the scoreboard on top of the game screen
 ;4:#include "cg_local.h"

@@ -26,7 +26,7 @@ code
 proc CG_CustomSound 16 8
 file "../cg_players.c"
 line 34
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_players.c -- handle the media and animation for player entities
 ;4:#include "cg_local.h"

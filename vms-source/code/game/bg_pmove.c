@@ -1544,13 +1544,13 @@ int		altAmmoUsage[WP_NUM_WEAPONS] =
 {
 	0,				//WP_NONE,
 	1,				//GAUNTLET,				
-	2,				//machine gun
-	1,				//shotgun
+	1,				//machine gun
+	6,				//shotgun
 	2,				//grenade launcher
 	3,				//rocket launcher/singularity cannon
 	1,				//flame thrower
 	0,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
-	12,				//Gata Gun
+	2,				//Gata Gun
 	3,				//bfg/devastator
 	20,				//hmmmm... dunno what this one is
 
@@ -1835,7 +1835,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 60;  // Shafe - Trep - Flame Thrower was 50  // Streaming Flames
 		break; 
 	case WP_SHOTGUN: 
-		addTime = 200; 
+		addTime = 1500; 
 		break; 
 	case WP_MACHINEGUN: 
 		addTime = 100; 
@@ -1847,7 +1847,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 800; 
 		break; 
 	case WP_PLASMAGUN: 
-		addTime = 1500; 
+		addTime = 90; 
 		break; 
 	case WP_RAILGUN: 
 		addTime = 1200; 

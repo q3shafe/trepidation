@@ -3,7 +3,7 @@ code
 proc CG_BuildSolidList 28 0
 file "../cg_predict.c"
 line 26
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_predict.c -- this file generates cg.predictedPlayerState by either
 ;4:// interpolating between snapshots from the server or locally predicting

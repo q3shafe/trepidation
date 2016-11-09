@@ -8016,13 +8016,13 @@ align 4
 LABELV altAmmoUsage
 byte 4 0
 byte 4 1
-byte 4 2
 byte 4 1
+byte 4 6
 byte 4 2
 byte 4 3
 byte 4 1
 byte 4 0
-byte 4 12
+byte 4 2
 byte 4 3
 byte 4 20
 skip 4
@@ -8038,13 +8038,13 @@ line 1565
 ;1544:{
 ;1545:	0,				//WP_NONE,
 ;1546:	1,				//GAUNTLET,				
-;1547:	2,				//machine gun
-;1548:	1,				//shotgun
+;1547:	1,				//machine gun
+;1548:	6,				//shotgun
 ;1549:	2,				//grenade launcher
 ;1550:	3,				//rocket launcher/singularity cannon
 ;1551:	1,				//flame thrower
 ;1552:	0,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
-;1553:	12,				//Gata Gun
+;1553:	2,				//Gata Gun
 ;1554:	3,				//bfg/devastator
 ;1555:	20,				//hmmmm... dunno what this one is
 ;1556:
@@ -9311,9 +9311,9 @@ JUMPV
 LABELV $639
 line 1838
 ;1837:	case WP_SHOTGUN: 
-;1838:		addTime = 200; 
+;1838:		addTime = 1500; 
 ADDRLP4 0
-CNSTI4 200
+CNSTI4 1500
 ASGNI4
 line 1839
 ;1839:		break; 
@@ -9355,9 +9355,9 @@ JUMPV
 LABELV $643
 line 1850
 ;1849:	case WP_PLASMAGUN: 
-;1850:		addTime = 1500; 
+;1850:		addTime = 90; 
 ADDRLP4 0
-CNSTI4 1500
+CNSTI4 90
 ASGNI4
 line 1851
 ;1851:		break; 

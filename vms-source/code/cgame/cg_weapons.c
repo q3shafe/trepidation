@@ -1845,15 +1845,18 @@ void CG_FireWeapon2( centity_t *cent ) {
  // append the flash to the weapon model 
  cent->muzzleFlashTime = cg.time; 
 
+
  // Shafe - We Replaced The Lightning Gun with the flame thrower so this is useless
  // lightning gun only does this this on initial press 
-	/*
-	if ( ent->weapon == WP_LIGHTNING ) { 
+
+ // Bringing this back for alt fire on plasma
+	
+	if ( ent->weapon == WP_PLASMAGUN ) { 
 		if ( cent->pe.lightningFiring ) { 
 			return; 
 		} 
 	} 
-	*/
+	
 
 
 

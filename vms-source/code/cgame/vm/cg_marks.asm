@@ -3,7 +3,7 @@ code
 proc CG_InitMarkPolys 12 12
 file "../cg_marks.c"
 line 28
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_marks.c -- wall marks
 ;4:

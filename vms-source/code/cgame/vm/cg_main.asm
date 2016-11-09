@@ -8,7 +8,7 @@ code
 proc vmMain 16 12
 file "../cg_main.c"
 line 26
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_main.c -- initialization and primary entry point for cgame
 ;4:#include "cg_local.h"

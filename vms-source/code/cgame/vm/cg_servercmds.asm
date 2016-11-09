@@ -26,7 +26,7 @@ code
 proc CG_ParseScores 212 12
 file "../cg_servercmds.c"
 line 51
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_servercmds.c -- reliably sequenced text commands sent by the server
 ;4:// these are processed at snapshot transition time, so there will definately
