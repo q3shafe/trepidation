@@ -19,6 +19,10 @@ http://web.archive.org/web/20080329051410/http://www.beer-garden.org/bg2/modules
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- New map by gigon station144
+
+- Star Trek Voyager Elite Force Maps now work and spawn items!  Some may be missing textures from the original game though.
+
 - Fixed autochangemap bug.
 
 - In arsenal when random weapon selection is active the devastator shows up less.
