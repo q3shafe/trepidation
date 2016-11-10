@@ -32,8 +32,7 @@ float	pm_flightfriction = 3.0f;
 float	pm_spectatorfriction = 5.0f;
 
 int		c_pmove = 0;
-
-
+int		trep_multijumps = 0;
 
 
 /*
@@ -382,6 +381,7 @@ static qboolean PM_CheckJump( void ) {
 	PM_AddEvent( EV_JUMP );
 
 //	pm->ps->MultiJumps++; // Shafe - Trep - Multijumping / wall jumping
+	trep_multijumps++;
 
 	if ( pm->cmd.forwardmove >= 0 ) {
 		PM_ForceLegsAnim( LEGS_JUMP );
@@ -1166,27 +1166,27 @@ static void PM_GroundTrace( void ) {
 		pml.groundPlane = qfalse;
 		pml.walking = qfalse;
 		
-
-		/*
-		if (g_MultiJumps.integer != 0)
-		{ 
-			
+				
+		
 			// Ignore and reset multijumps and wall jump if they have the jetpack
 			if (pm->ps->powerups[PW_FLIGHT]) 
 			{
-				pm->ps->MultiJumps = 0;
+				trep_multijumps = 0;
+				
 			} 
 			else
 			{
-
 				// Go ahead and do the multijump
-				if (pm->ps->MultiJumps < g_MultiJumps.integer)
+				if(trep_multijumps < 3)
 				{
-					PM_CheckJump ();
+					//PM_CheckJump ();		
+				} else {
+					trep_multijumps = 0;
 				}
 			}
-		} 
-		*/
+		
+	
+		
 
 		return;
 	}
@@ -1212,7 +1212,6 @@ static void PM_GroundTrace( void ) {
 	}
 	
 
-	
 	
 
 
@@ -1249,6 +1248,7 @@ static void PM_GroundTrace( void ) {
 
 	if ( pm->ps->groundEntityNum == ENTITYNUM_NONE ) {
 		// just hit the ground
+		//pm->ps->MultiJumps = 0; // Shafe - Trep - Multijumping / Wall Jumping
 		if ( pm->debugLevel ) {
 			Com_Printf("%i:Land\n", c_pmove);
 		}

@@ -970,7 +970,7 @@ extern	vmCvar_t	g_BlueMC;
 extern	vmCvar_t	g_RedMC;
 
 // Arsenal
-extern	vmCvar_t	g_MultiJumps;
+//extern	vmCvar_t	g_MultiJumps;
 extern	vmCvar_t	g_StartGauntlet;
 extern	vmCvar_t	g_StartMG;
 extern	vmCvar_t	g_StartSG;

@@ -1727,7 +1727,7 @@ void CheckIntermissionExit( void ) {
 	int			readyMask;
 
 	if ( g_gametype.integer == GT_SINGLE_PLAYER ) {
-		return;
+	//	return;
 	}
 
 
@@ -1741,15 +1741,11 @@ void CheckIntermissionExit( void ) {
 
 	if (g_AutoChangeMap.integer == 1)
 	{
-
-		if(!AreThereLivePlayers)
-		{
-			trap_SendServerCommand( -1, "print \"DEBUG: THERE ARE NO LIVE PLAYERS.\n\"" );
-			ExitLevel();
-			return;
-		} else {
-			trap_SendServerCommand( -1, "print \"DEBUG: THERE **ARE** LIVE PLAYERS.\n\"" );
-		}
+		//level.readyToExit = qtrue;
+	//	if ( level.time > level.exitTime + 40000 ) {
+	//	ExitLevel();
+	//	return;
+	//	}
 	}
 
 	// see which players are ready
@@ -1762,7 +1758,13 @@ void CheckIntermissionExit( void ) {
 			continue;
 		}
 		if ( g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT ) {
-			continue;
+			if (g_AutoChangeMap.integer == 1)	
+			{	ready++;
+				if ( i < 16 ) {
+					readyMask |= 1 << i;
+				}
+			}
+			//continue;
 		}
 
 		if ( cl->readyToExit ) {

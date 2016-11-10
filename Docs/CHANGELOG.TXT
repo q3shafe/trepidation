@@ -19,6 +19,20 @@ http://web.archive.org/web/20080329051410/http://www.beer-garden.org/bg2/modules
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Fixed autochangemap bug.
+
+- In arsenal when random weapon selection is active the devastator shows up less.
+
+- Alt Shotgun is now pdg
+
+- Gata Gun Alt Now Fires straight and doesn't bounce.
+
+- Added some better random spread for gata gun primary.
+
+- Fixed several missing sounds.  still more to make
+
+- Converted several wavs to ogg.
+
 - Implemented g_autochangemap
 
 - Implemented g_regenhealth/g_regenammo

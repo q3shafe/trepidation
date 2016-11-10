@@ -686,6 +686,7 @@ qboolean	BG_CanItemBeGrabbed( int gametype, const entityState_t *ent, const play
 extern int Max_Ammo[]; // Shafe - Trep Max Ammo Mgt We need this global.
 
 
+
 //
 // entityState_t->eType
 //
