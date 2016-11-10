@@ -128,6 +128,23 @@ gitem_t	bg_itemlist[] =
 /* sounds */ ""
 	},
 
+/*QUAKED item_health_small (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"item_hypo_small",
+		"sound/items/s_health.ogg",
+        { "models/powerups/health/small_cross.md3", 
+		"models/powerups/health/small_sphere.md3", 
+		0, 0 },
+/* icon */		"icons/iconh_green",
+/* pickup */	"5 Health",
+		5,
+		IT_HEALTH,
+		0,
+/* precache */ "",
+/* sounds */ ""
+	},
+
 /*QUAKED item_health (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
@@ -144,6 +161,24 @@ gitem_t	bg_itemlist[] =
 /* precache */ "",
 /* sounds */ ""
 	},
+
+/*QUAKED item_health_large (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"item_hypo",
+		"sound/items/l_health.ogg",
+        { "models/powerups/health/large_cross.md3", 
+		"models/powerups/health/large_sphere.md3", 
+		0, 0 },
+/* icon */		"icons/iconh_red",
+/* pickup */	"50 Health",
+		50,
+		IT_HEALTH,
+		0,
+/* precache */ "",
+/* sounds */ ""
+	},
+
 
 /*QUAKED item_health_large (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
@@ -216,10 +251,42 @@ gitem_t	bg_itemlist[] =
 /* sounds */ ""
 	},
 
+/*QUAKED weapon_shotgun (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"weapon_scavenger", 
+		"sound/misc/w_pkup.ogg",
+        { "models/weapons2/shotgun/shotgun.md3", 
+		0, 0, 0},
+/* icon */		"icons/iconw_shotgun",
+/* pickup */	"Shotgun",
+		10,
+		IT_WEAPON,
+		WP_SHOTGUN,
+/* precache */ "",
+/* sounds */ ""
+	},
+
 /*QUAKED weapon_machinegun (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
 		"weapon_machinegun", 
+		"sound/misc/w_pkup.ogg",
+        { "models/weapons2/machinegun/machinegun.md3", 
+		0, 0, 0},
+/* icon */		"icons/iconw_machinegun",
+/* pickup */	"LFO Rifle",
+		100,
+		IT_WEAPON,
+		WP_MACHINEGUN,
+/* precache */ "",
+/* sounds */ ""
+	},
+
+/*QUAKED weapon_machinegun (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"weapon_stasisweapon", 
 		"sound/misc/w_pkup.ogg",
         { "models/weapons2/machinegun/machinegun.md3", 
 		0, 0, 0},
@@ -264,6 +331,24 @@ gitem_t	bg_itemlist[] =
 /* sounds */ ""
 	},
 
+/*QUAKED weapon_quantumburst (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"weapon_quantumburst",
+		"sound/misc/w_pkup.ogg",
+        { "models/weapons2/rocketl/rocketl.md3", 
+		0, 0, 0},
+/* icon */		"icons/iconw_rocket",
+/* pickup */	"Singularity Cannon",
+		10,
+		IT_WEAPON,
+		WP_ROCKET_LAUNCHER,
+/* precache */ "",
+/* sounds */ ""
+	},
+
+
+
 /*QUAKED weapon_lightning (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
@@ -280,10 +365,41 @@ gitem_t	bg_itemlist[] =
 /* sounds */ ""
 	},
 
+/*QUAKED weapon_lightning (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"weapon_imod", 
+		"sound/misc/w_pkup.ogg",
+        { "models/weapons2/flamethrower/flamethrower.md3", 
+		0, 0, 0},  // models/weapons2/lightning/lightning.md3  - Shafe - Trep - Flame Thrower
+/* icon */		"icons/iconw_flame",  // icons/iconw_lightning
+/* pickup */	"Flame Thrower", // Lightning Gun
+		300,
+		IT_WEAPON,
+		WP_LIGHTNING,
+/* precache */ "",
+/* sounds */ ""
+	},
+
 /*QUAKED weapon_railgun (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
 		"weapon_railgun", 
+		"sound/misc/w_pkup.ogg",
+        { "models/weapons2/railgun/railgun.md3", 
+		0, 0, 0},
+/* icon */		"icons/iconw_railgun",
+/* pickup */	"M42 Gauss Rifle",
+		10,
+		IT_WEAPON,
+		WP_RAILGUN,
+/* precache */ "",
+/* sounds */ ""
+	},
+/*QUAKED weapon_railgun (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"weapon_compressionrifle", 
 		"sound/misc/w_pkup.ogg",
         { "models/weapons2/railgun/railgun.md3", 
 		0, 0, 0},
@@ -313,6 +429,21 @@ gitem_t	bg_itemlist[] =
 /* sounds */ ""
 	},
 
+/*QUAKED weapon_plasmagun (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"weapon_tetriondisruptor", 
+		"sound/misc/w_pkup.ogg",
+        { "models/weapons2/plasma/plasma.md3", 
+		0, 0, 0},
+/* icon */		"icons/iconw_plasma",
+/* pickup */	"Gata Gun",
+		50,
+		IT_WEAPON,
+		WP_PLASMAGUN,
+/* precache */ "",
+/* sounds */ ""
+	},
 
 /*QUAKED weapon_bfg (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
@@ -330,6 +461,21 @@ gitem_t	bg_itemlist[] =
 /* sounds */ ""
 	},
 
+/*QUAKED weapon_bfg (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"weapon_dreadnought",
+		"sound/misc/w_pkup.ogg",
+        { "models/weapons2/bfg/bfg.md3", 
+		0, 0, 0},
+/* icon */		"icons/iconw_bfg",
+/* pickup */	"Devastator",
+		10,
+		IT_WEAPON,
+		WP_BFG,
+/* precache */ "",
+/* sounds */ ""
+	},
 /*QUAKED weapon_grapplinghook (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
@@ -366,10 +512,42 @@ gitem_t	bg_itemlist[] =
 /* sounds */ ""
 	},
 
+/*QUAKED ammo_shells (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"ammo_scavenger",
+		"sound/misc/am_pkup.ogg",
+        { "models/powerups/ammo/shotgunam.md3", 
+		0, 0, 0},
+/* icon */		"icons/icona_shotgun",
+/* pickup */	"Shells",
+		10,
+		IT_AMMO,
+		WP_SHOTGUN,
+/* precache */ "",
+/* sounds */ ""
+	},
+
 /*QUAKED ammo_bullets (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
 		"ammo_bullets",
+		"sound/misc/am_pkup.ogg",
+        { "models/powerups/ammo/machinegunam.md3", 
+		0, 0, 0},
+/* icon */		"icons/icona_machinegun",
+/* pickup */	"LFO Cell",
+		20,
+		IT_AMMO,
+		WP_MACHINEGUN,
+/* precache */ "",
+/* sounds */ ""
+	},
+
+/*QUAKED ammo_bullets (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"ammo_stasis",
 		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/machinegunam.md3", 
 		0, 0, 0},
@@ -414,6 +592,22 @@ gitem_t	bg_itemlist[] =
 /* sounds */ ""
 	},
 
+/*QUAKED ammo_cells (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"ammo_tetriondisruptor",
+		"sound/misc/am_pkup.ogg",
+        { "models/powerups/ammo/plasmaam.md3", 
+		0, 0, 0},
+/* icon */		"icons/icona_plasma",
+/* pickup */	"Gata Discs",
+		30,
+		IT_AMMO,
+		WP_PLASMAGUN,
+/* precache */ "",
+/* sounds */ ""
+	},
+
 /*QUAKED ammo_lightning (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
@@ -430,10 +624,41 @@ gitem_t	bg_itemlist[] =
 /* sounds */ ""
 	},
 
+/*QUAKED ammo_lightning (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"ammo_imod",
+		"sound/misc/am_pkup.ogg",
+        { "models/powerups/ammo/lightningam.md3", 
+		0, 0, 0},
+/* icon */		"icons/icona_lightning",
+/* pickup */	"Flame Ammo",  // Lightning  - Shafe - Trep - Flame Thrower
+		25,
+		IT_AMMO,
+		WP_LIGHTNING,
+/* precache */ "",
+/* sounds */ ""
+	},
 /*QUAKED ammo_rockets (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
 		"ammo_rockets",
+		"sound/misc/am_pkup.ogg",
+        { "models/powerups/ammo/rocketam.md3", 
+		0, 0, 0},
+/* icon */		"icons/icona_rocket",
+/* pickup */	"Singularity Reactor Rod",
+		6,
+		IT_AMMO,
+		WP_ROCKET_LAUNCHER,
+/* precache */ "",
+/* sounds */ ""
+	},
+
+/*QUAKED ammo_rockets (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"ammo_quantumburst",
 		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/rocketam.md3", 
 		0, 0, 0},
@@ -462,10 +687,42 @@ gitem_t	bg_itemlist[] =
 /* sounds */ ""
 	},
 
+/*QUAKED ammo_slugs (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"ammo_compressionrifle",
+		"sound/misc/am_pkup.ogg",
+        { "models/powerups/ammo/railgunam.md3", 
+		0, 0, 0},
+/* icon */		"icons/icona_railgun",
+/* pickup */	"Gauss Cells",
+		10,
+		IT_AMMO,
+		WP_RAILGUN,
+/* precache */ "",
+/* sounds */ ""
+	},
+
 /*QUAKED ammo_bfg (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
 */
 	{
 		"ammo_bfg",
+		"sound/misc/am_pkup.ogg",
+        { "models/powerups/ammo/bfgam.md3", 
+		0, 0, 0},
+/* icon */		"icons/icona_bfg",
+/* pickup */	"Devastator",
+		7,
+		IT_AMMO,
+		WP_BFG,
+/* precache */ "",
+/* sounds */ ""
+	},
+
+/*QUAKED ammo_bfg (.3 .3 1) (-16 -16 -16) (16 16 16) suspended
+*/
+	{
+		"ammo_dreadnought",
 		"sound/misc/am_pkup.ogg",
         { "models/powerups/ammo/bfgam.md3", 
 		0, 0, 0},
