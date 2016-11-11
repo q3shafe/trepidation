@@ -2,7 +2,7 @@ code
 proc UI_RemoveBotsMenu_SetBotNames 1032 12
 file "../ui_removebots.c"
 line 67
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================

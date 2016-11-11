@@ -1,0 +1,9 @@
+﻿Build started 11/6/2016 12:39:18 AM.
+     1>Project "C:\web\trepdev\trepidation\vms-source\code\game\game.vcxproj" on node 2 (clean target(s)).
+     1>_PrepareForClean:
+         Deleting file ".\Release\game.lastbuildstate".
+     1>Done Building Project "C:\web\trepdev\trepidation\vms-source\code\game\game.vcxproj" (clean target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.46

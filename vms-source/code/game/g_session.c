@@ -90,7 +90,7 @@ void G_InitSessionData( gclient_t *client, char *userinfo ) {
 
 
 	// initial team determination
-	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
+	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2) || (g_GameMode.integer == 5))
 	{
 		sess->sessionTeam = TEAM_SPECTATOR;	
 	}

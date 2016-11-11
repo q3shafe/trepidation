@@ -3,7 +3,7 @@ code
 proc G_WriteClientSessionData 20 32
 file "../g_session.c"
 line 23
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:#include "g_local.h"
 ;4:
@@ -37,12 +37,6 @@ ADDRLP4 8
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 8
-INDIRP4
-CNSTI4 2552
-ADDP4
-INDIRI4
-ARGI4
 ADDRLP4 8
 INDIRP4
 CNSTI4 2556
@@ -79,6 +73,12 @@ CNSTI4 2576
 ADDP4
 INDIRI4
 ARGI4
+ADDRLP4 8
+INDIRP4
+CNSTI4 2580
+ADDP4
+INDIRI4
+ARGI4
 ADDRLP4 12
 ADDRGP4 va
 CALLP4
@@ -108,7 +108,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3476
+CNSTI4 3480
 DIVI4
 ARGI4
 ADDRLP4 16
@@ -167,7 +167,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3476
+CNSTI4 3480
 DIVI4
 ARGI4
 ADDRLP4 1040
@@ -205,15 +205,10 @@ INDIRP4
 ASGNP4
 ADDRLP4 1044
 INDIRP4
-CNSTI4 2556
+CNSTI4 2560
 ADDP4
 ARGP4
 ADDRLP4 1032
-ARGP4
-ADDRLP4 1044
-INDIRP4
-CNSTI4 2564
-ADDP4
 ARGP4
 ADDRLP4 1044
 INDIRP4
@@ -223,6 +218,11 @@ ARGP4
 ADDRLP4 1044
 INDIRP4
 CNSTI4 2572
+ADDP4
+ARGP4
+ADDRLP4 1044
+INDIRP4
+CNSTI4 2576
 ADDP4
 ARGP4
 ADDRLP4 1028
@@ -244,7 +244,7 @@ line 72
 ;72:	client->sess.sessionTeam = (team_t)sessionTeam;
 ADDRFP4 0
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 ADDRLP4 1036
 INDIRI4
@@ -253,7 +253,7 @@ line 73
 ;73:	client->sess.spectatorState = (spectatorState_t)spectatorState;
 ADDRFP4 0
 INDIRP4
-CNSTI4 2560
+CNSTI4 2564
 ADDP4
 ADDRLP4 1032
 INDIRI4
@@ -262,7 +262,7 @@ line 74
 ;74:	client->sess.teamLeader = (qboolean)teamLeader;
 ADDRFP4 0
 INDIRP4
-CNSTI4 2576
+CNSTI4 2580
 ADDP4
 ADDRLP4 1028
 INDIRI4
@@ -292,23 +292,27 @@ line 89
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 ASGNP4
 line 93
 ;90:
 ;91:
 ;92:	// initial team determination
-;93:	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
+;93:	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2) || (g_GameMode.integer == 5))
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 1
-EQI4 $64
+EQI4 $66
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 2
+EQI4 $66
+ADDRGP4 g_GameMode+12
+INDIRI4
+CNSTI4 5
 NEI4 $60
-LABELV $64
+LABELV $66
 line 94
 ;94:	{
 line 95
@@ -331,13 +335,13 @@ line 100
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 3
-LTI4 $65
+LTI4 $67
 line 101
 ;101:			if ( g_teamAutoJoin.integer ) {
 ADDRGP4 g_teamAutoJoin+12
 INDIRI4
 CNSTI4 0
-EQI4 $68
+EQI4 $70
 line 102
 ;102:				sess->sessionTeam = PickTeam( -1 );
 CNSTI4 -1
@@ -363,9 +367,9 @@ CALLV
 pop
 line 104
 ;104:			} else {
-ADDRGP4 $66
+ADDRGP4 $68
 JUMPV
-LABELV $68
+LABELV $70
 line 106
 ;105:				// always spawn as spectator in team games
 ;106:				sess->sessionTeam = TEAM_SPECTATOR;	
@@ -377,15 +381,15 @@ line 107
 ;107:			}
 line 108
 ;108:		} else {
-ADDRGP4 $66
+ADDRGP4 $68
 JUMPV
-LABELV $65
+LABELV $67
 line 109
 ;109:			value = Info_ValueForKey( userinfo, "team" );
 ADDRFP4 4
 INDIRP4
 ARGP4
-ADDRGP4 $71
+ADDRGP4 $73
 ARGP4
 ADDRLP4 8
 ADDRGP4 Info_ValueForKey
@@ -402,7 +406,7 @@ INDIRP4
 INDIRI1
 CVII4 1
 CNSTI4 115
-NEI4 $72
+NEI4 $74
 line 112
 ;111:				// a willing spectator, not a waiting-in-line
 ;112:				sess->sessionTeam = TEAM_SPECTATOR;
@@ -412,9 +416,9 @@ CNSTI4 3
 ASGNI4
 line 113
 ;113:			} else {
-ADDRGP4 $73
+ADDRGP4 $75
 JUMPV
-LABELV $72
+LABELV $74
 line 114
 ;114:				switch ( g_gametype.integer ) {
 ADDRLP4 12
@@ -424,19 +428,19 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-EQI4 $77
+EQI4 $79
 ADDRLP4 12
 INDIRI4
 CNSTI4 1
-EQI4 $83
+EQI4 $85
 ADDRLP4 12
 INDIRI4
 CNSTI4 2
-EQI4 $77
-ADDRGP4 $74
+EQI4 $79
+ADDRGP4 $76
 JUMPV
-LABELV $74
-LABELV $77
+LABELV $76
+LABELV $79
 line 118
 ;115:				default:
 ;116:				case GT_FFA:
@@ -445,12 +449,12 @@ line 118
 ADDRGP4 g_maxGameClients+12
 INDIRI4
 CNSTI4 0
-LEI4 $78
+LEI4 $80
 ADDRGP4 level+88
 INDIRI4
 ADDRGP4 g_maxGameClients+12
 INDIRI4
-LTI4 $78
+LTI4 $80
 line 119
 ;119:						level.numNonSpectatorClients >= g_maxGameClients.integer ) {
 line 120
@@ -461,9 +465,9 @@ CNSTI4 3
 ASGNI4
 line 121
 ;121:					} else {
-ADDRGP4 $75
+ADDRGP4 $77
 JUMPV
-LABELV $78
+LABELV $80
 line 122
 ;122:						sess->sessionTeam = TEAM_FREE;
 ADDRLP4 0
@@ -474,9 +478,9 @@ line 123
 ;123:					}
 line 124
 ;124:					break;
-ADDRGP4 $75
+ADDRGP4 $77
 JUMPV
-LABELV $83
+LABELV $85
 line 127
 ;125:				case GT_TOURNAMENT:
 ;126:					// if the game is full, go into a waiting mode
@@ -484,7 +488,7 @@ line 127
 ADDRGP4 level+88
 INDIRI4
 CNSTI4 2
-LTI4 $84
+LTI4 $86
 line 128
 ;128:						sess->sessionTeam = TEAM_SPECTATOR;
 ADDRLP4 0
@@ -493,9 +497,9 @@ CNSTI4 3
 ASGNI4
 line 129
 ;129:					} else {
-ADDRGP4 $75
+ADDRGP4 $77
 JUMPV
-LABELV $84
+LABELV $86
 line 130
 ;130:						sess->sessionTeam = TEAM_FREE;
 ADDRLP4 0
@@ -506,14 +510,14 @@ line 131
 ;131:					}
 line 132
 ;132:					break;
-LABELV $75
+LABELV $77
 line 134
 ;133:				}
 ;134:			}
-LABELV $73
+LABELV $75
 line 135
 ;135:		}
-LABELV $66
+LABELV $68
 line 136
 ;136:	}
 LABELV $61
@@ -565,7 +569,7 @@ line 155
 ;153:	int			gt;
 ;154:
 ;155:	trap_Cvar_VariableStringBuffer( "session", s, sizeof(s) );
-ADDRGP4 $89
+ADDRGP4 $91
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -595,7 +599,7 @@ ADDRGP4 g_gametype+12
 INDIRI4
 ADDRLP4 1024
 INDIRI4
-EQI4 $90
+EQI4 $92
 line 161
 ;161:		level.newSession = qtrue;
 ADDRGP4 level+76
@@ -603,17 +607,17 @@ CNSTI4 1
 ASGNI4
 line 162
 ;162:		G_Printf( "Gametype changed, clearing session data.\n" );
-ADDRGP4 $94
+ADDRGP4 $96
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
 line 163
 ;163:	}
-LABELV $90
+LABELV $92
 line 164
 ;164:}
-LABELV $88
+LABELV $90
 endproc G_InitWorldSession 1032 12
 export G_WriteSessionData
 proc G_WriteSessionData 8 8
@@ -630,7 +634,7 @@ line 175
 ;173:	int		i;
 ;174:
 ;175:	trap_Cvar_Set( "session", va("%i", g_gametype.integer) );
-ADDRGP4 $96
+ADDRGP4 $98
 ARGP4
 ADDRGP4 g_gametype+12
 INDIRI4
@@ -639,7 +643,7 @@ ADDRLP4 4
 ADDRGP4 va
 CALLP4
 ASGNP4
-ADDRGP4 $89
+ADDRGP4 $91
 ARGP4
 ADDRLP4 4
 INDIRP4
@@ -653,12 +657,12 @@ line 177
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-ADDRGP4 $101
+ADDRGP4 $103
 JUMPV
-LABELV $98
+LABELV $100
 line 178
 ;178:		if ( level.clients[i].pers.connected == CON_CONNECTED ) {
-CNSTI4 3476
+CNSTI4 3480
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -669,10 +673,10 @@ CNSTI4 468
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $103
+NEI4 $105
 line 179
 ;179:			G_WriteClientSessionData( &level.clients[i] );
-CNSTI4 3476
+CNSTI4 3480
 ADDRLP4 0
 INDIRI4
 MULI4
@@ -685,10 +689,10 @@ CALLV
 pop
 line 180
 ;180:		}
-LABELV $103
+LABELV $105
 line 181
 ;181:	}
-LABELV $99
+LABELV $101
 line 177
 ADDRLP4 0
 ADDRLP4 0
@@ -696,15 +700,15 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-LABELV $101
+LABELV $103
 ADDRLP4 0
 INDIRI4
 ADDRGP4 level+24
 INDIRI4
-LTI4 $98
+LTI4 $100
 line 182
 ;182:}
-LABELV $95
+LABELV $97
 endproc G_WriteSessionData 8 8
 import CheckPlayerPostions
 import G_SendCommandToClient
@@ -889,9 +893,23 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_RegenAmmo
+import g_RegenHealth
+import g_AutoChangeMap
+import g_lastmap2
+import g_lastmap
+import g_randommap
+import g_mapfile
+import g_ReverseCTF
+import g_GuassRate
+import g_GuassSelfDamage
+import g_GuassKnockBack
+import g_GuassJump
 import g_PCTeamkills
 import g_GrappleMode
+import g_MaxTurrets
 import g_Turrets
+import g_StartRandom
 import g_StartBFG
 import g_StartPlasma
 import g_StartGauss
@@ -901,7 +919,6 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
-import g_MultiJumps
 import g_RedMC
 import g_BlueMC
 import g_GameMode
@@ -1072,6 +1089,7 @@ import Touch_DoorTrigger
 import G_RunMover
 import fire_mg
 import fire_turret
+import fire_alt_gata
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -1081,6 +1099,7 @@ import fire_altgrenade
 import fire_bomb
 import fire_pdgrenade
 import fire_grenade
+import fire_plasma2
 import fire_plasma
 import fire_blaster
 import G_RunMissile
@@ -1319,12 +1338,12 @@ import srand
 import qsort
 lit
 align 1
-LABELV $96
+LABELV $98
 byte 1 37
 byte 1 105
 byte 1 0
 align 1
-LABELV $94
+LABELV $96
 byte 1 71
 byte 1 97
 byte 1 109
@@ -1368,7 +1387,7 @@ byte 1 46
 byte 1 10
 byte 1 0
 align 1
-LABELV $89
+LABELV $91
 byte 1 115
 byte 1 101
 byte 1 115
@@ -1378,7 +1397,7 @@ byte 1 111
 byte 1 110
 byte 1 0
 align 1
-LABELV $71
+LABELV $73
 byte 1 116
 byte 1 101
 byte 1 97

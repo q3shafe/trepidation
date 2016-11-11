@@ -15,7 +15,7 @@ code
 proc UI_CinematicsMenu_BackEvent 0 0
 file "../ui_cinematics.c"
 line 64
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:#include "ui_local.h"
 ;4:

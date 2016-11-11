@@ -8,7 +8,7 @@ code
 proc UI_SoundOptionsMenu_Event 12 8
 file "../ui_sound.c"
 line 63
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================

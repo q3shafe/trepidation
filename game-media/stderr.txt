@@ -1,0 +1,8 @@
+Trepidation 12-20-2011 Dev BuildTrepidation1.36_SVN350 win_mingw-x86 Dec 19 2011
+----- FS_Startup -----
+Current search path:
+C:\Users\Shafe\AppData\Roaming\trepidation/base
+C:\web\trepdev\trepidation\game-media/base
+
+----------------------
+0 files in pk3 files

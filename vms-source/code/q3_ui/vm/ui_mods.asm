@@ -2,7 +2,7 @@ code
 proc UI_Mods_MenuEvent 8 8
 file "../ui_mods.c"
 line 51
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:#include "ui_local.h"
 ;4:

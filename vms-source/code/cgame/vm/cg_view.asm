@@ -3,7 +3,7 @@ code
 proc CG_TestModel_f 36 12
 file "../cg_view.c"
 line 51
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_view.c -- setup all the parameters (position, angle, etc)
 ;4:// for a 3D rendering

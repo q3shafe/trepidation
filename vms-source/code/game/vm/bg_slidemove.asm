@@ -3,7 +3,7 @@ code
 proc PM_SlideMove 308 28
 file "../bg_slidemove.c"
 line 25
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// bg_slidemove.c -- part of bg_pmove functionality
 ;4:

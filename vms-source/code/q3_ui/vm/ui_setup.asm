@@ -2,7 +2,7 @@ code
 proc Setup_ResetDefaults_Action 0 8
 file "../ui_setup.c"
 line 59
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================

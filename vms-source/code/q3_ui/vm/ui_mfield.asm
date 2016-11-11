@@ -3,7 +3,7 @@ code
 proc MField_Draw 1056 20
 file "../ui_mfield.c"
 line 13
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:#include "ui_local.h"
 ;4:

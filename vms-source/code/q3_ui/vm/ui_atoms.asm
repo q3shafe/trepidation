@@ -3,7 +3,7 @@ code
 proc Com_Error 1032 12
 file "../ui_atoms.c"
 line 18
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/**********************************************************************
 ;4:	UI_ATOMS.C

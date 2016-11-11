@@ -3,7 +3,7 @@ code
 proc SP_info_camp 4 8
 file "../g_misc.c"
 line 16
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// g_misc.c
 ;4:
@@ -143,7 +143,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -429,7 +429,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -496,7 +496,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -1563,7 +1563,7 @@ line 278
 LABELV $112
 endproc InitShooter_Finish 8 4
 export InitShooter
-proc InitShooter 16 8
+proc InitShooter 12 8
 line 280
 ;279:
 ;280:void InitShooter( gentity_t *ent, int weapon ) {
@@ -1585,8 +1585,12 @@ ADDRFP4 4
 INDIRI4
 ASGNI4
 line 284
-;283:
-;284:	RegisterItem( BG_FindItemForWeapon( weapon ) );
+;283:	
+;284:	if(weapon) { RegisterItem( BG_FindItemForWeapon( weapon ) ); } // github bug 21
+ADDRFP4 4
+INDIRI4
+CNSTI4 0
+EQI4 $114
 ADDRFP4 4
 INDIRI4
 ARGI4
@@ -1600,19 +1604,20 @@ ARGP4
 ADDRGP4 RegisterItem
 CALLV
 pop
+LABELV $114
 line 286
 ;285:
 ;286:	G_SetMovedir( ent->s.angles, ent->movedir );
-ADDRLP4 4
+ADDRLP4 0
 ADDRFP4 0
 INDIRP4
 ASGNP4
-ADDRLP4 4
+ADDRLP4 0
 INDIRP4
 CNSTI4 116
 ADDP4
 ARGP4
-ADDRLP4 4
+ADDRLP4 0
 INDIRP4
 CNSTI4 692
 ADDP4
@@ -1629,7 +1634,7 @@ CNSTI4 824
 ADDP4
 INDIRF4
 CNSTF4 0
-NEF4 $114
+NEF4 $116
 line 289
 ;289:		ent->random = 1.0;
 ADDRFP4 0
@@ -1640,30 +1645,30 @@ CNSTF4 1065353216
 ASGNF4
 line 290
 ;290:	}
-LABELV $114
+LABELV $116
 line 291
 ;291:	ent->random = sin( M_PI * ent->random / 180 );
-ADDRLP4 8
+ADDRLP4 4
 ADDRFP4 0
 INDIRP4
 CNSTI4 824
 ADDP4
 ASGNP4
 CNSTF4 1078530011
-ADDRLP4 8
+ADDRLP4 4
 INDIRP4
 INDIRF4
 MULF4
 CNSTF4 1127481344
 DIVF4
 ARGF4
-ADDRLP4 12
+ADDRLP4 8
 ADDRGP4 sin
 CALLF4
 ASGNF4
-ADDRLP4 8
+ADDRLP4 4
 INDIRP4
-ADDRLP4 12
+ADDRLP4 8
 INDIRF4
 ASGNF4
 line 293
@@ -1676,7 +1681,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $116
+EQU4 $118
 line 294
 ;294:		ent->think = InitShooter_Finish;
 ADDRFP4 0
@@ -1698,7 +1703,7 @@ ADDI4
 ASGNI4
 line 296
 ;296:	}
-LABELV $116
+LABELV $118
 line 297
 ;297:	trap_LinkEntity( ent );
 ADDRFP4 0
@@ -1710,7 +1715,7 @@ pop
 line 298
 ;298:}
 LABELV $113
-endproc InitShooter 16 8
+endproc InitShooter 12 8
 export SP_shooter_rocket
 proc SP_shooter_rocket 0 8
 line 304
@@ -1732,7 +1737,7 @@ CALLV
 pop
 line 306
 ;306:}
-LABELV $119
+LABELV $121
 endproc SP_shooter_rocket 0 8
 export SP_shooter_plasma
 proc SP_shooter_plasma 0 8
@@ -1755,7 +1760,7 @@ CALLV
 pop
 line 314
 ;314:}
-LABELV $120
+LABELV $122
 endproc SP_shooter_plasma 0 8
 export SP_shooter_grenade
 proc SP_shooter_grenade 0 8
@@ -1778,7 +1783,7 @@ CALLV
 pop
 line 322
 ;322:}
-LABELV $121
+LABELV $123
 endproc SP_shooter_grenade 0 8
 export UseBreakable
 proc UseBreakable 0 8
@@ -1804,7 +1809,7 @@ CALLV
 pop
 line 332
 ;332:}
-LABELV $122
+LABELV $124
 endproc UseBreakable 0 8
 export SP_func_breakable
 proc SP_func_breakable 16 12
@@ -1836,7 +1841,7 @@ line 341
 ;339:
 ;340:  // Lets give it 5 health if the mapper did not set its health
 ;341:  G_SpawnInt( "health", "0", &health );
-ADDRGP4 $124
+ADDRGP4 $126
 ARGP4
 ADDRGP4 $88
 ARGP4
@@ -1850,13 +1855,13 @@ line 342
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-GTI4 $125
+GTI4 $127
 line 343
 ;343:   health = 5;
 ADDRLP4 0
 CNSTI4 5
 ASGNI4
-LABELV $125
+LABELV $127
 line 345
 ;344: 
 ;345:  ent->health = health;
@@ -1898,7 +1903,7 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $127
+EQU4 $129
 line 355
 ;355:      ent->s.modelindex2 = G_ModelIndex( ent->model2 );
 ADDRLP4 8
@@ -1922,7 +1927,7 @@ ADDP4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-LABELV $127
+LABELV $129
 line 357
 ;356:
 ;357:  ent->use = UseBreakable; // See above -Vincent
@@ -1944,7 +1949,7 @@ CALLV
 pop
 line 361
 ;361: }
-LABELV $123
+LABELV $125
 endproc SP_func_breakable 16 12
 export G_BreakGlass
 proc G_BreakGlass 76 8
@@ -2086,7 +2091,7 @@ CNSTI4 756
 ADDP4
 INDIRI4
 CNSTI4 0
-GTI4 $140
+GTI4 $142
 line 381
 ;381: 	G_FreeEntity( ent );
 ADDRFP4 0
@@ -2110,21 +2115,21 @@ ADDRLP4 48
 INDIRI4
 ADDRLP4 52
 INDIRI4
-EQI4 $145
+EQI4 $147
 ADDRLP4 48
 INDIRI4
 CNSTI4 2
-EQI4 $144
+EQI4 $146
 ADDRLP4 48
 INDIRI4
 CNSTI4 3
-EQI4 $146
+EQI4 $148
 ADDRLP4 48
 INDIRI4
 ADDRLP4 52
 INDIRI4
-LTI4 $142
-LABELV $149
+LTI4 $144
+LABELV $151
 ADDRLP4 56
 ADDRFP4 8
 INDIRI4
@@ -2132,14 +2137,14 @@ ASGNI4
 ADDRLP4 56
 INDIRI4
 CNSTI4 10
-EQI4 $147
+EQI4 $149
 ADDRLP4 56
 INDIRI4
 CNSTI4 11
-EQI4 $148
-ADDRGP4 $142
+EQI4 $150
+ADDRGP4 $144
 JUMPV
-LABELV $144
+LABELV $146
 line 386
 ;385: 		case MOD_GAUNTLET:
 ;386: 		splashdmg = qfalse;
@@ -2148,9 +2153,9 @@ CNSTI4 0
 ASGNI4
 line 387
 ;387: 		break;
-ADDRGP4 $143
+ADDRGP4 $145
 JUMPV
-LABELV $145
+LABELV $147
 line 389
 ;388: 		case MOD_SHOTGUN:
 ;389: 		splashdmg = qfalse;
@@ -2159,9 +2164,9 @@ CNSTI4 0
 ASGNI4
 line 390
 ;390: 		break;
-ADDRGP4 $143
+ADDRGP4 $145
 JUMPV
-LABELV $146
+LABELV $148
 line 392
 ;391: 		case MOD_MACHINEGUN:
 ;392: 		splashdmg = qfalse;
@@ -2170,9 +2175,9 @@ CNSTI4 0
 ASGNI4
 line 393
 ;393: 		break;
-ADDRGP4 $143
+ADDRGP4 $145
 JUMPV
-LABELV $147
+LABELV $149
 line 395
 ;394: 		case MOD_RAILGUN:
 ;395: 		splashdmg = qfalse;
@@ -2181,9 +2186,9 @@ CNSTI4 0
 ASGNI4
 line 396
 ;396: 		break;
-ADDRGP4 $143
+ADDRGP4 $145
 JUMPV
-LABELV $148
+LABELV $150
 line 398
 ;397: 		case MOD_LIGHTNING:
 ;398: 		splashdmg = qfalse;
@@ -2192,9 +2197,9 @@ CNSTI4 0
 ASGNI4
 line 399
 ;399: 		break;
-ADDRGP4 $143
+ADDRGP4 $145
 JUMPV
-LABELV $142
+LABELV $144
 line 401
 ;400: 		default:
 ;401: 		splashdmg = qtrue;
@@ -2203,7 +2208,7 @@ CNSTI4 1
 ASGNI4
 line 402
 ;402: 		break;
-LABELV $143
+LABELV $145
 line 408
 ;403: 	}
 ;404: 	// Call the function to show the glass shards in cgame
@@ -2218,14 +2223,14 @@ ASGNI4
 ADDRLP4 60
 INDIRI4
 CNSTI4 0
-EQI4 $154
+EQI4 $156
 ADDRLP4 60
 INDIRI4
 CNSTI4 1
-EQI4 $153
-ADDRGP4 $150
+EQI4 $155
+ADDRGP4 $152
 JUMPV
-LABELV $153
+LABELV $155
 line 410
 ;409: 	case qtrue:
 ;410:     tent = G_TempEntity( center, EV_BREAK_GLASS );
@@ -2243,9 +2248,9 @@ INDIRP4
 ASGNP4
 line 411
 ;411: 	break;
-ADDRGP4 $151
+ADDRGP4 $153
 JUMPV
-LABELV $154
+LABELV $156
 line 413
 ;412: 	case qfalse:
 ;413:     tent = G_TempEntity( point, EV_BREAK_GLASS );
@@ -2264,8 +2269,8 @@ INDIRP4
 ASGNP4
 line 414
 ;414: 	break;
-LABELV $150
-LABELV $151
+LABELV $152
+LABELV $153
 line 416
 ;415: 	}
 ;416: 	tent->s.eventParm = 0;
@@ -2277,10 +2282,10 @@ CNSTI4 0
 ASGNI4
 line 417
 ;417: 	}
-LABELV $140
+LABELV $142
 line 418
 ;418: }
-LABELV $129
+LABELV $131
 endproc G_BreakGlass 76 8
 import CheckPlayerPostions
 import G_SendCommandToClient
@@ -2465,9 +2470,23 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_RegenAmmo
+import g_RegenHealth
+import g_AutoChangeMap
+import g_lastmap2
+import g_lastmap
+import g_randommap
+import g_mapfile
+import g_ReverseCTF
+import g_GuassRate
+import g_GuassSelfDamage
+import g_GuassKnockBack
+import g_GuassJump
 import g_PCTeamkills
 import g_GrappleMode
+import g_MaxTurrets
 import g_Turrets
+import g_StartRandom
 import g_StartBFG
 import g_StartPlasma
 import g_StartGauss
@@ -2477,7 +2496,6 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
-import g_MultiJumps
 import g_RedMC
 import g_BlueMC
 import g_GameMode
@@ -2650,6 +2668,7 @@ import Touch_DoorTrigger
 import G_RunMover
 import fire_mg
 import fire_turret
+import fire_alt_gata
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -2659,6 +2678,7 @@ import fire_altgrenade
 import fire_bomb
 import fire_pdgrenade
 import fire_grenade
+import fire_plasma2
 import fire_plasma
 import fire_blaster
 import G_RunMissile
@@ -2897,7 +2917,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $124
+LABELV $126
 byte 1 104
 byte 1 101
 byte 1 97

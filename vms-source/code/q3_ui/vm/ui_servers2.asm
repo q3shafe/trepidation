@@ -138,7 +138,7 @@ code
 proc ArenaServers_MaxPing 8 4
 file "../ui_servers2.c"
 line 302
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================

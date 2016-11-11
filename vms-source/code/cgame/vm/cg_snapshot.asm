@@ -2,7 +2,7 @@ code
 proc CG_ResetEntity 8 4
 file "../cg_snapshot.c"
 line 15
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// cg_snapshot.c -- things that happen on snapshot transition,
 ;4:// not necessarily every single rendered frame

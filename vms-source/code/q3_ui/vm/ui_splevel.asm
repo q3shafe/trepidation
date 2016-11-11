@@ -2,7 +2,7 @@ code
 proc PlayerIcon 80 20
 file "../ui_splevel.c"
 line 108
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=============================================================================

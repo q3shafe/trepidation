@@ -41,7 +41,7 @@ code
 proc UI_TeamOrdersMenu_BackEvent 0 0
 file "../ui_teamorders.c"
 line 91
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================

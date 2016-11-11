@@ -82,7 +82,7 @@ void AddScore( gentity_t *ent, vec3_t origin, int score ) {
 		ent->client->ps.persistant[PERS_SCORE] += score;
 		ent->client->pers.TrueScore = ent->client->ps.persistant[PERS_SCORE];
 
-	if ((g_GameMode.integer != 3) && (g_GameMode.integer != 999))
+	if ((g_GameMode.integer != 3) && (g_GameMode.integer != 999) && (g_GameMode.integer != 5))
 	{
 		if ( g_gametype.integer == GT_TEAM )
 			level.teamScores[ ent->client->ps.persistant[PERS_TEAM] ] += score;

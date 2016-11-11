@@ -922,6 +922,11 @@ void BroadcastTeamChange( gclient_t *client, int oldTeam )
 			{
 				trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE " Has Been Eliminated!.\n\"", client->pers.netname));
 			}
+
+			if (g_GameMode.integer == 5) 
+			{
+				trap_SendServerCommand( -1, va("cp \"%s" S_COLOR_WHITE " Is Frozen!.\n\"", client->pers.netname));
+			}
 		} 
 
 		else 
@@ -1128,23 +1133,32 @@ void Cmd_Team_f( gentity_t *ent ) {
 
 	if (!level.warmupTime)
 	{
-		if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2))
+		if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2) || (g_GameMode.integer == 2))
 		{
 		
-			if (ent->client->sess.sessionTeam == TEAM_SPECTATOR)
+			if (ent->client->pers.Frozen == qtrue)
 			{
-				
-				if (ent->client->pers.Eliminated == qtrue) 
-				{
-					trap_SendServerCommand( ent-g_entities, "cp \"You Are Eliminated Until Next Round.\"" );
-					return;
-				}
-				if (level.firstStrike == qtrue)
-				{
-					trap_SendServerCommand( ent-g_entities, "cp \"You Must Wait Until Next Round To Join.\"" );
-					return;
-				}
+				trap_SendServerCommand( ent-g_entities, "cp \"You Cannot Rejoin Until You Are Thawed..\"" );
+				return;
 
+			} else 
+			{
+
+				if (ent->client->sess.sessionTeam == TEAM_SPECTATOR)
+				{
+				
+					if (ent->client->pers.Eliminated == qtrue) 
+					{
+						trap_SendServerCommand( ent-g_entities, "cp \"You Are Eliminated Until Next Round.\"" );
+						return;
+					}
+					if (level.firstStrike == qtrue)
+					{
+						trap_SendServerCommand( ent-g_entities, "cp \"You Must Wait Until Next Round To Join.\"" );
+						return;
+					}
+
+				}
 			}
 		}
 

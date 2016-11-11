@@ -1,0 +1,298 @@
+﻿Build started 10/31/2016 9:10:21 PM.
+     1>Project "C:\web\trepdev\trepidation\vms-source\code\game\game.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching ".\Debug\game.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D BUILDING_REF_GL /D DEBUG /D GLOBALRANK /D _VC80_UPGRADE=0x0600 /D _WINDLL /Gm /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Debug/" /Fd".\Debug/vc100.pdb" /FR".\Debug\\" /Gd /TC /analyze- /errorReport:prompt ai_chat.c ai_cmd.c ai_dmnet.c ai_dmq3.c ai_main.c ai_team.c ai_vcmd.c bg_misc.c bg_pmove.c bg_slidemove.c g_active.c g_arenas.c g_bot.c g_buildables.c g_client.c g_cmds.c g_combat.c g_items.c g_main.c g_mem.c g_misc.c g_missile.c g_mover.c g_playerclass.c g_session.c g_spawn.c g_svcmds.c g_syscalls.c g_target.c g_team.c g_trigger.c g_unlagged.c g_utils.c g_weapon.c q_math.c q_shared.c
+         q_shared.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\q_shared.c(248): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\q_shared.c(260): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\q_shared.c(703): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\q_shared.c(856): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\q_shared.c(892): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\q_shared.c(1052): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\q_shared.c(1107): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\q_shared.c(1182): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\q_shared.c(1183): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\q_shared.c(1230): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         q_math.c
+         g_weapon.c
+         g_utils.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_utils.c(24): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_utils.c(30): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_utils.c(31): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         g_unlagged.c
+         g_trigger.c
+         g_team.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_team.c(90): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_team.c(1189): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         g_target.c
+         g_syscalls.c
+         g_svcmds.c
+         g_spawn.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_spawn.c(48): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_spawn.c(362): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+         g_session.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_session.c(69): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+         g_playerclass.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_playerclass.c(66): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_playerclass.c(73): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         g_mover.c
+         g_missile.c
+         g_misc.c
+         g_mem.c
+         g_main.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_main.c(307): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_main.c(318): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_main.c(883): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_main.c(894): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_main.c(1450): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_main.c(2690): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_main.c(2691): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_main.c(2692): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         g_items.c
+         g_combat.c
+         Generating Code...
+         Compiling...
+         g_cmds.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_cmds.c(366): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_cmds.c(1825): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         g_client.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_client.c(714): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_client.c(886): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_client.c(887): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_client.c(889): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_client.c(890): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         g_buildables.c
+         g_bot.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(86): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(93): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(157): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(158): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(272): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(303): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(767): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(769): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(771): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(773): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(775): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(777): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(779): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(781): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(907): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_bot.c(908): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         g_arenas.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\g_arenas.c(121): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         g_active.c
+         bg_slidemove.c
+         bg_pmove.c
+         bg_misc.c
+         ai_vcmd.c
+         ai_team.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_team.c(171): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_team.c(1942): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+         ai_main.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_main.c(80): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_main.c(265): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_main.c(268): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_main.c(269): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_main.c(415): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_main.c(418): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_main.c(1127): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_main.c(1558): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_main.c(1573): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_main.c(1601): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         ai_dmq3.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_dmq3.c(1450): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_dmq3.c(1469): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_dmq3.c(1544): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_dmq3.c(1593): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_dmq3.c(3911): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+         ai_dmnet.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_dmnet.c(680): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_dmnet.c(682): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_dmnet.c(683): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         ai_cmd.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_cmd.c(1098): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_cmd.c(1127): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_cmd.c(1169): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_cmd.c(1290): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+         ai_chat.c
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_chat.c(248): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_chat.c(571): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_chat.c(740): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_chat.c(901): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\vms-source\code\game\ai_chat.c(1173): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         Generating Code...
+       ManifestResourceCompile:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo".\Debug\game.dll.embed.manifest.res" .\Debug\game_manifest.rc 
+     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(990,5): warning MSB8012: TargetPath(C:\web\trepdev\trepidation\vms-source\code\game\.\Debug\game.dll) does not match the Linker's OutputFile property value (C:\web\trepdev\trepidation\vms-source\code\Debug\qagamex86.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(992,5): warning MSB8012: TargetName(game) does not match the Linker's OutputFile property value (qagamex86). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../Debug/qagamex86.dll" /INCREMENTAL /NOLOGO winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:".\game.def" /MANIFEST /ManifestFile:".\Debug\game.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:".\Debug/qagamex86.pdb" /MAP:".\Debug/qagamex86.map" /SUBSYSTEM:WINDOWS /TLBID:1 /BASE:"0x20000000" /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug/qagamex86.lib" /MACHINE:X86 /DLL .\Debug\game.dll.embed.manifest.res
+         .\Debug/ai_chat.obj
+         .\Debug/ai_cmd.obj
+         .\Debug/ai_dmnet.obj
+         .\Debug/ai_dmq3.obj
+         .\Debug/ai_main.obj
+         .\Debug/ai_team.obj
+         .\Debug/ai_vcmd.obj
+         .\Debug/bg_misc.obj
+         .\Debug/bg_pmove.obj
+         .\Debug/bg_slidemove.obj
+         .\Debug/g_active.obj
+         .\Debug/g_arenas.obj
+         .\Debug/g_bot.obj
+         .\Debug/g_buildables.obj
+         .\Debug/g_client.obj
+         .\Debug/g_cmds.obj
+         .\Debug/g_combat.obj
+         .\Debug/g_items.obj
+         .\Debug/g_main.obj
+         .\Debug/g_mem.obj
+         .\Debug/g_misc.obj
+         .\Debug/g_missile.obj
+         .\Debug/g_mover.obj
+         .\Debug/g_playerclass.obj
+         .\Debug/g_session.obj
+         .\Debug/g_spawn.obj
+         .\Debug/g_svcmds.obj
+         .\Debug/g_syscalls.obj
+         .\Debug/g_target.obj
+         .\Debug/g_team.obj
+         .\Debug/g_trigger.obj
+         .\Debug/g_unlagged.obj
+         .\Debug/g_utils.obj
+         .\Debug/g_weapon.obj
+         .\Debug/q_math.obj
+         .\Debug/q_shared.obj
+            Creating library .\Debug/qagamex86.lib and object .\Debug/qagamex86.exp
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:".\Debug\game.dll.embed.manifest" /manifest .\Debug\game.dll.intermediate.manifest
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo".\Debug\game.dll.embed.manifest.res" .\Debug\game_manifest.rc 
+       LinkEmbedManifest:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../Debug/qagamex86.dll" /INCREMENTAL /NOLOGO winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:".\game.def" /MANIFEST /ManifestFile:".\Debug\game.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:".\Debug/qagamex86.pdb" /MAP:".\Debug/qagamex86.map" /SUBSYSTEM:WINDOWS /TLBID:1 /BASE:"0x20000000" /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug/qagamex86.lib" /MACHINE:X86 /DLL .\Debug\game.dll.embed.manifest.res
+         .\Debug/ai_chat.obj
+         .\Debug/ai_cmd.obj
+         .\Debug/ai_dmnet.obj
+         .\Debug/ai_dmq3.obj
+         .\Debug/ai_main.obj
+         .\Debug/ai_team.obj
+         .\Debug/ai_vcmd.obj
+         .\Debug/bg_misc.obj
+         .\Debug/bg_pmove.obj
+         .\Debug/bg_slidemove.obj
+         .\Debug/g_active.obj
+         .\Debug/g_arenas.obj
+         .\Debug/g_bot.obj
+         .\Debug/g_buildables.obj
+         .\Debug/g_client.obj
+         .\Debug/g_cmds.obj
+         .\Debug/g_combat.obj
+         .\Debug/g_items.obj
+         .\Debug/g_main.obj
+         .\Debug/g_mem.obj
+         .\Debug/g_misc.obj
+         .\Debug/g_missile.obj
+         .\Debug/g_mover.obj
+         .\Debug/g_playerclass.obj
+         .\Debug/g_session.obj
+         .\Debug/g_spawn.obj
+         .\Debug/g_svcmds.obj
+         .\Debug/g_syscalls.obj
+         .\Debug/g_target.obj
+         .\Debug/g_team.obj
+         .\Debug/g_trigger.obj
+         .\Debug/g_unlagged.obj
+         .\Debug/g_utils.obj
+         .\Debug/g_weapon.obj
+         .\Debug/q_math.obj
+         .\Debug/q_shared.obj
+            Creating library .\Debug/qagamex86.lib and object .\Debug/qagamex86.exp
+     1>LINK : fatal error LNK1104: cannot open file '.\Debug/qagamex86.map'
+     1>Done Building Project "C:\web\trepdev\trepidation\vms-source\code\game\game.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:04.69

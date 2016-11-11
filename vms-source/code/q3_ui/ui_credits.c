@@ -122,7 +122,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Visit Us On The Web @", UI_CENTER|UI_SMALLFONT, &color_headertext },
-{ "trepidation.u7net.com", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "trepidation.n5net.com", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 

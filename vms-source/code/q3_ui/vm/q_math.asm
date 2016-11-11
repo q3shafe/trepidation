@@ -627,7 +627,7 @@ code
 proc Q_rand 4 0
 file "../../game/q_math.c"
 line 124
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// q_math.c -- stateless support routines that are included in each code module
 ;4:#include "q_shared.h"

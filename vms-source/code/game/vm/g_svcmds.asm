@@ -2,7 +2,7 @@ code
 proc StringToFilter 160 8
 file "../g_svcmds.c"
 line 59
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:
 ;4:// this file holds commands that can be executed by the server console, but not remote clients
@@ -1926,7 +1926,7 @@ line 404
 ;403:
 ;404:		cl = &level.clients[idnum];
 ADDRLP4 0
-CNSTI4 3476
+CNSTI4 3480
 ADDRLP4 8
 INDIRI4
 MULI4
@@ -1983,7 +1983,7 @@ LABELV $245
 line 414
 ;414:		cl = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3476
+CNSTI4 3480
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -2147,7 +2147,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3476
+CNSTI4 3480
 DIVI4
 MULI4
 ADDRGP4 g_entities+920
@@ -2168,7 +2168,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3476
+CNSTI4 3480
 DIVI4
 MULI4
 ADDRGP4 g_entities+920
@@ -2194,7 +2194,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3476
+CNSTI4 3480
 DIVI4
 MULI4
 ADDRGP4 g_entities+920
@@ -2285,7 +2285,7 @@ INDIRP4
 CVPU4 4
 SUBU4
 CVUI4 4
-CNSTI4 3476
+CNSTI4 3480
 DIVI4
 MULI4
 ADDRGP4 g_entities
@@ -2300,23 +2300,617 @@ line 483
 ;483:}
 LABELV $263
 endproc Svcmd_ForceTeam_f 1032 12
-export ConsoleCommand
-proc ConsoleCommand 1080 12
-line 493
+export count_file_lines
+proc count_file_lines 32240 12
+line 487
 ;484:
-;485:char	*ConcatArgs( int start );
+;485:
 ;486:
-;487:/*
-;488:=================
-;489:ConsoleCommand
-;490:
-;491:=================
-;492:*/
-;493:qboolean	ConsoleCommand( void ) {
-line 496
-;494:	char	cmd[MAX_TOKEN_CHARS];
-;495:
-;496:	trap_Argv( 0, cmd, sizeof( cmd ) );
+;487:int count_file_lines() {
+line 492
+;488:	fileHandle_t	f;
+;489:	int				len;
+;490:	//maplist_t		maplist;	
+;491:	char			mapname[200];
+;492:	int				count=0;
+ADDRLP4 4
+CNSTI4 0
+ASGNI4
+line 503
+;493:	char			buffer[32000];
+;494:	char			*p, *token;
+;495:	int				x;
+;496:	int				y;
+;497:
+;498:	/*
+;499:	if (strlen(g_mappool.string) == 0)
+;500:		return;
+;501:	*/
+;502:
+;503:	len = trap_FS_FOpenFile(g_mapfile.string, &f, FS_READ);
+ADDRGP4 g_mapfile+16
+ARGP4
+ADDRLP4 32012
+ARGP4
+CNSTI4 0
+ARGI4
+ADDRLP4 32228
+ADDRGP4 trap_FS_FOpenFile
+CALLI4
+ASGNI4
+ADDRLP4 32016
+ADDRLP4 32228
+INDIRI4
+ASGNI4
+line 504
+;504:	if ( !f ) {
+ADDRLP4 32012
+INDIRI4
+CNSTI4 0
+NEI4 $268
+line 505
+;505:		return 0;
+CNSTI4 0
+RETI4
+ADDRGP4 $266
+JUMPV
+LABELV $268
+line 508
+;506:	}
+;507:
+;508:	if (len > sizeof(buffer)) {
+ADDRLP4 32016
+INDIRI4
+CVIU4 4
+CNSTU4 32000
+LEU4 $270
+line 509
+;509:		trap_FS_FCloseFile(f);
+ADDRLP4 32012
+INDIRI4
+ARGI4
+ADDRGP4 trap_FS_FCloseFile
+CALLV
+pop
+line 510
+;510:		return 0;
+CNSTI4 0
+RETI4
+ADDRGP4 $266
+JUMPV
+LABELV $270
+line 513
+;511:	}
+;512:
+;513:	if (len == 0) {
+ADDRLP4 32016
+INDIRI4
+CNSTI4 0
+NEI4 $272
+line 514
+;514:		trap_FS_FCloseFile(f);
+ADDRLP4 32012
+INDIRI4
+ARGI4
+ADDRGP4 trap_FS_FCloseFile
+CALLV
+pop
+line 515
+;515:		return 0;
+CNSTI4 0
+RETI4
+ADDRGP4 $266
+JUMPV
+LABELV $272
+line 518
+;516:	}
+;517:
+;518:	memset(buffer, 0, sizeof(buffer));
+ADDRLP4 12
+ARGP4
+CNSTI4 0
+ARGI4
+CNSTI4 32000
+ARGI4
+ADDRGP4 memset
+CALLP4
+pop
+line 519
+;519:	trap_FS_Read(buffer, sizeof(buffer), f);
+ADDRLP4 12
+ARGP4
+CNSTI4 32000
+ARGI4
+ADDRLP4 32012
+INDIRI4
+ARGI4
+ADDRGP4 trap_FS_Read
+CALLV
+pop
+line 520
+;520:	trap_FS_FCloseFile(f);
+ADDRLP4 32012
+INDIRI4
+ARGI4
+ADDRGP4 trap_FS_FCloseFile
+CALLV
+pop
+line 522
+;521:
+;522:	count = 0;
+ADDRLP4 4
+CNSTI4 0
+ASGNI4
+line 523
+;523:	p = buffer;
+ADDRLP4 8
+ADDRLP4 12
+ASGNP4
+ADDRGP4 $275
+JUMPV
+LABELV $274
+line 524
+;524:	while ( 1 ) {
+line 525
+;525:		token = COM_Parse(&p);
+ADDRLP4 8
+ARGP4
+ADDRLP4 32232
+ADDRGP4 COM_Parse
+CALLP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 32232
+INDIRP4
+ASGNP4
+line 526
+;526:		if (! as_checkToken(token) )
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 32236
+ADDRGP4 as_checkToken
+CALLI4
+ASGNI4
+ADDRLP4 32236
+INDIRI4
+CNSTI4 0
+NEI4 $277
+line 527
+;527:			break; // end of list	
+ADDRGP4 $276
+JUMPV
+LABELV $277
+line 528
+;528:			count++;				
+ADDRLP4 4
+ADDRLP4 4
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+line 529
+;529:	}	
+LABELV $275
+line 524
+ADDRGP4 $274
+JUMPV
+LABELV $276
+line 531
+;530:
+;531:	return count;
+ADDRLP4 4
+INDIRI4
+RETI4
+LABELV $266
+endproc count_file_lines 32240 12
+export as_checkToken
+proc as_checkToken 4 0
+line 534
+;532:}
+;533:
+;534:qboolean as_checkToken( char *token ) {
+line 535
+;535:	if ( !token || token[0] == 0 )
+ADDRLP4 0
+ADDRFP4 0
+INDIRP4
+ASGNP4
+ADDRLP4 0
+INDIRP4
+CVPU4 4
+CNSTU4 0
+EQU4 $282
+ADDRLP4 0
+INDIRP4
+INDIRI1
+CVII4 1
+CNSTI4 0
+NEI4 $280
+LABELV $282
+line 536
+;536:		return qfalse;
+CNSTI4 0
+RETI4
+ADDRGP4 $279
+JUMPV
+LABELV $280
+line 537
+;537:	return qtrue;
+CNSTI4 1
+RETI4
+LABELV $279
+endproc as_checkToken 4 0
+proc GetRandomMap 32260 12
+line 540
+;538:}
+;539:
+;540:static char *GetRandomMap() {
+line 545
+;541:	fileHandle_t	f;
+;542:	int				len;
+;543:	//maplist_t		maplist;	
+;544:	char			mapname[200];
+;545:	int				count=0;
+ADDRLP4 4
+CNSTI4 0
+ASGNI4
+line 552
+;546:	char			buffer[32000];
+;547:	char			*p, *token;
+;548:	int				x;
+;549:	int				y;
+;550:
+;551:
+;552:	trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap2 %i\n", g_lastmap.integer) );		
+ADDRGP4 $284
+ARGP4
+ADDRGP4 g_lastmap+12
+INDIRI4
+ARGI4
+ADDRLP4 32228
+ADDRGP4 va
+CALLP4
+ASGNP4
+CNSTI4 2
+ARGI4
+ADDRLP4 32228
+INDIRP4
+ARGP4
+ADDRGP4 trap_SendConsoleCommand
+CALLV
+pop
+line 559
+;553:
+;554:	/*
+;555:	if (strlen(g_mappool.string) == 0)
+;556:		return;
+;557:	*/
+;558:
+;559:	len = trap_FS_FOpenFile(g_mapfile.string, &f, FS_READ);
+ADDRGP4 g_mapfile+16
+ARGP4
+ADDRLP4 32016
+ARGP4
+CNSTI4 0
+ARGI4
+ADDRLP4 32232
+ADDRGP4 trap_FS_FOpenFile
+CALLI4
+ASGNI4
+ADDRLP4 32020
+ADDRLP4 32232
+INDIRI4
+ASGNI4
+line 560
+;560:	if ( !f ) {
+ADDRLP4 32016
+INDIRI4
+CNSTI4 0
+NEI4 $287
+line 561
+;561:		return token;
+ADDRLP4 0
+INDIRP4
+RETP4
+ADDRGP4 $283
+JUMPV
+LABELV $287
+line 564
+;562:	}
+;563:
+;564:	if (len > sizeof(buffer)) {
+ADDRLP4 32020
+INDIRI4
+CVIU4 4
+CNSTU4 32000
+LEU4 $289
+line 565
+;565:		trap_FS_FCloseFile(f);
+ADDRLP4 32016
+INDIRI4
+ARGI4
+ADDRGP4 trap_FS_FCloseFile
+CALLV
+pop
+line 566
+;566:		return token;
+ADDRLP4 0
+INDIRP4
+RETP4
+ADDRGP4 $283
+JUMPV
+LABELV $289
+line 569
+;567:	}
+;568:
+;569:	if (len == 0) {
+ADDRLP4 32020
+INDIRI4
+CNSTI4 0
+NEI4 $291
+line 570
+;570:		trap_FS_FCloseFile(f);
+ADDRLP4 32016
+INDIRI4
+ARGI4
+ADDRGP4 trap_FS_FCloseFile
+CALLV
+pop
+line 571
+;571:		return token;
+ADDRLP4 0
+INDIRP4
+RETP4
+ADDRGP4 $283
+JUMPV
+LABELV $291
+line 574
+;572:	}
+;573:
+;574:	memset(buffer, 0, sizeof(buffer));
+ADDRLP4 16
+ARGP4
+CNSTI4 0
+ARGI4
+CNSTI4 32000
+ARGI4
+ADDRGP4 memset
+CALLP4
+pop
+line 575
+;575:	trap_FS_Read(buffer, sizeof(buffer), f);
+ADDRLP4 16
+ARGP4
+CNSTI4 32000
+ARGI4
+ADDRLP4 32016
+INDIRI4
+ARGI4
+ADDRGP4 trap_FS_Read
+CALLV
+pop
+line 576
+;576:	trap_FS_FCloseFile(f);
+ADDRLP4 32016
+INDIRI4
+ARGI4
+ADDRGP4 trap_FS_FCloseFile
+CALLV
+pop
+line 577
+;577:	x = count_file_lines();
+ADDRLP4 32236
+ADDRGP4 count_file_lines
+CALLI4
+ASGNI4
+ADDRLP4 32024
+ADDRLP4 32236
+INDIRI4
+ASGNI4
+line 578
+;578:	p = buffer;
+ADDRLP4 12
+ADDRLP4 16
+ASGNP4
+line 579
+;579:	y = irandom(0,(x-1));
+CNSTI4 0
+ARGI4
+ADDRLP4 32024
+INDIRI4
+CNSTI4 1
+SUBI4
+ARGI4
+ADDRLP4 32240
+ADDRGP4 irandom
+CALLI4
+ASGNI4
+ADDRLP4 8
+ADDRLP4 32240
+INDIRI4
+ASGNI4
+ADDRGP4 $294
+JUMPV
+LABELV $293
+line 583
+;580:	
+;581:	
+;582:
+;583:	while ( 1 ) {
+line 584
+;584:		token = COM_Parse(&p);
+ADDRLP4 12
+ARGP4
+ADDRLP4 32244
+ADDRGP4 COM_Parse
+CALLP4
+ASGNP4
+ADDRLP4 0
+ADDRLP4 32244
+INDIRP4
+ASGNP4
+line 585
+;585:		if (! as_checkToken(token) )
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 32248
+ADDRGP4 as_checkToken
+CALLI4
+ASGNI4
+ADDRLP4 32248
+INDIRI4
+CNSTI4 0
+NEI4 $296
+line 586
+;586:			break; // end of list	
+ADDRGP4 $295
+JUMPV
+LABELV $296
+line 587
+;587:		if (count==y) 
+ADDRLP4 4
+INDIRI4
+ADDRLP4 8
+INDIRI4
+NEI4 $298
+line 588
+;588:		{
+line 591
+;589:			
+;590:
+;591:			if(g_lastmap.integer != y) 
+ADDRGP4 g_lastmap+12
+INDIRI4
+ADDRLP4 8
+INDIRI4
+EQI4 $300
+line 592
+;592:			{
+line 594
+;593:				//g_lastmap.string = token;
+;594:				G_Printf( "Here is a random map %s\n", token);
+ADDRGP4 $303
+ARGP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRGP4 G_Printf
+CALLV
+pop
+line 595
+;595:				trap_SendConsoleCommand( EXEC_APPEND, va("map %s\n", token ) );
+ADDRGP4 $304
+ARGP4
+ADDRLP4 0
+INDIRP4
+ARGP4
+ADDRLP4 32252
+ADDRGP4 va
+CALLP4
+ASGNP4
+CNSTI4 2
+ARGI4
+ADDRLP4 32252
+INDIRP4
+ARGP4
+ADDRGP4 trap_SendConsoleCommand
+CALLV
+pop
+line 596
+;596:				trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap %i\n", y) );
+ADDRGP4 $305
+ARGP4
+ADDRLP4 8
+INDIRI4
+ARGI4
+ADDRLP4 32256
+ADDRGP4 va
+CALLP4
+ASGNP4
+CNSTI4 2
+ARGI4
+ADDRLP4 32256
+INDIRP4
+ARGP4
+ADDRGP4 trap_SendConsoleCommand
+CALLV
+pop
+line 597
+;597:				return token;
+ADDRLP4 0
+INDIRP4
+RETP4
+ADDRGP4 $283
+JUMPV
+LABELV $300
+line 598
+;598:			} else { 				
+line 600
+;599:				//if((y+1) > x) {  y=1; } 
+;600:				y++;
+ADDRLP4 8
+ADDRLP4 8
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+line 601
+;601:			}
+line 604
+;602:
+;603:
+;604:		}
+LABELV $298
+line 605
+;605:		count++;				
+ADDRLP4 4
+ADDRLP4 4
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+line 606
+;606:	}	
+LABELV $294
+line 583
+ADDRGP4 $293
+JUMPV
+LABELV $295
+line 610
+;607:	
+;608:	//G_Printf( "Here is a random map %i - %s\n", y, mapname[y]);
+;609:	// we came up with nothing.. lets do this again
+;610:	GetRandomMap();
+ADDRGP4 GetRandomMap
+CALLP4
+pop
+line 612
+;611:
+;612:}
+CNSTP4 0
+RETP4
+LABELV $283
+endproc GetRandomMap 32260 12
+export ConsoleCommand
+proc ConsoleCommand 1084 12
+line 623
+;613:
+;614:
+;615:char	*ConcatArgs( int start );
+;616:
+;617:/*
+;618:=================
+;619:ConsoleCommand
+;620:
+;621:=================
+;622:*/
+;623:qboolean	ConsoleCommand( void ) {
+line 626
+;624:	char	cmd[MAX_TOKEN_CHARS];
+;625:
+;626:	trap_Argv( 0, cmd, sizeof( cmd ) );
 CNSTI4 0
 ARGI4
 ADDRLP4 0
@@ -2326,12 +2920,12 @@ ARGI4
 ADDRGP4 trap_Argv
 CALLV
 pop
-line 498
-;497:
-;498:	if ( Q_stricmp (cmd, "entitylist") == 0 ) {
+line 628
+;627:
+;628:	if ( Q_stricmp (cmd, "entitylist") == 0 ) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $269
+ADDRGP4 $309
 ARGP4
 ADDRLP4 1024
 ADDRGP4 Q_stricmp
@@ -2340,26 +2934,26 @@ ASGNI4
 ADDRLP4 1024
 INDIRI4
 CNSTI4 0
-NEI4 $267
-line 499
-;499:		Svcmd_EntityList_f();
+NEI4 $307
+line 629
+;629:		Svcmd_EntityList_f();
 ADDRGP4 Svcmd_EntityList_f
 CALLV
 pop
-line 500
-;500:		return qtrue;
+line 630
+;630:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $267
-line 503
-;501:	}
-;502:
-;503:	if ( Q_stricmp (cmd, "forceteam") == 0 ) {
+LABELV $307
+line 633
+;631:	}
+;632:
+;633:	if ( Q_stricmp (cmd, "forceteam") == 0 ) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $272
+ADDRGP4 $312
 ARGP4
 ADDRLP4 1028
 ADDRGP4 Q_stricmp
@@ -2368,26 +2962,26 @@ ASGNI4
 ADDRLP4 1028
 INDIRI4
 CNSTI4 0
-NEI4 $270
-line 504
-;504:		Svcmd_ForceTeam_f();
+NEI4 $310
+line 634
+;634:		Svcmd_ForceTeam_f();
 ADDRGP4 Svcmd_ForceTeam_f
 CALLV
 pop
-line 505
-;505:		return qtrue;
+line 635
+;635:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $270
-line 508
-;506:	}
-;507:
-;508:	if (Q_stricmp (cmd, "game_memory") == 0) {
+LABELV $310
+line 638
+;636:	}
+;637:
+;638:	if (Q_stricmp (cmd, "game_memory") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $275
+ADDRGP4 $315
 ARGP4
 ADDRLP4 1032
 ADDRGP4 Q_stricmp
@@ -2396,26 +2990,26 @@ ASGNI4
 ADDRLP4 1032
 INDIRI4
 CNSTI4 0
-NEI4 $273
-line 509
-;509:		Svcmd_GameMem_f();
+NEI4 $313
+line 639
+;639:		Svcmd_GameMem_f();
 ADDRGP4 Svcmd_GameMem_f
 CALLV
 pop
-line 510
-;510:		return qtrue;
+line 640
+;640:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $273
-line 513
-;511:	}
-;512:
-;513:	if (Q_stricmp (cmd, "addbot") == 0) {
+LABELV $313
+line 643
+;641:	}
+;642:
+;643:	if (Q_stricmp (cmd, "addbot") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $278
+ADDRGP4 $318
 ARGP4
 ADDRLP4 1036
 ADDRGP4 Q_stricmp
@@ -2424,26 +3018,26 @@ ASGNI4
 ADDRLP4 1036
 INDIRI4
 CNSTI4 0
-NEI4 $276
-line 514
-;514:		Svcmd_AddBot_f();
+NEI4 $316
+line 644
+;644:		Svcmd_AddBot_f();
 ADDRGP4 Svcmd_AddBot_f
 CALLV
 pop
-line 515
-;515:		return qtrue;
+line 645
+;645:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $276
-line 518
-;516:	}
-;517:
-;518:	if (Q_stricmp (cmd, "botlist") == 0) {
+LABELV $316
+line 648
+;646:	}
+;647:
+;648:	if (Q_stricmp (cmd, "botlist") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $281
+ADDRGP4 $321
 ARGP4
 ADDRLP4 1040
 ADDRGP4 Q_stricmp
@@ -2452,26 +3046,26 @@ ASGNI4
 ADDRLP4 1040
 INDIRI4
 CNSTI4 0
-NEI4 $279
-line 519
-;519:		Svcmd_BotList_f();
+NEI4 $319
+line 649
+;649:		Svcmd_BotList_f();
 ADDRGP4 Svcmd_BotList_f
 CALLV
 pop
-line 520
-;520:		return qtrue;
+line 650
+;650:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $279
-line 523
-;521:	}
-;522:
-;523:	if (Q_stricmp (cmd, "abort_podium") == 0) {
+LABELV $319
+line 653
+;651:	}
+;652:
+;653:	if (Q_stricmp (cmd, "abort_podium") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $284
+ADDRGP4 $324
 ARGP4
 ADDRLP4 1044
 ADDRGP4 Q_stricmp
@@ -2480,26 +3074,26 @@ ASGNI4
 ADDRLP4 1044
 INDIRI4
 CNSTI4 0
-NEI4 $282
-line 524
-;524:		Svcmd_AbortPodium_f();
+NEI4 $322
+line 654
+;654:		Svcmd_AbortPodium_f();
 ADDRGP4 Svcmd_AbortPodium_f
 CALLV
 pop
-line 525
-;525:		return qtrue;
+line 655
+;655:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $282
-line 528
-;526:	}
-;527:
-;528:	if (Q_stricmp (cmd, "addip") == 0) {
+LABELV $322
+line 658
+;656:	}
+;657:
+;658:	if (Q_stricmp (cmd, "addip") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $287
+ADDRGP4 $327
 ARGP4
 ADDRLP4 1048
 ADDRGP4 Q_stricmp
@@ -2508,26 +3102,26 @@ ASGNI4
 ADDRLP4 1048
 INDIRI4
 CNSTI4 0
-NEI4 $285
-line 529
-;529:		Svcmd_AddIP_f();
+NEI4 $325
+line 659
+;659:		Svcmd_AddIP_f();
 ADDRGP4 Svcmd_AddIP_f
 CALLV
 pop
-line 530
-;530:		return qtrue;
+line 660
+;660:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $285
-line 533
-;531:	}
-;532:
-;533:	if (Q_stricmp (cmd, "removeip") == 0) {
+LABELV $325
+line 663
+;661:	}
+;662:
+;663:	if (Q_stricmp (cmd, "removeip") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $290
+ADDRGP4 $330
 ARGP4
 ADDRLP4 1052
 ADDRGP4 Q_stricmp
@@ -2536,26 +3130,26 @@ ASGNI4
 ADDRLP4 1052
 INDIRI4
 CNSTI4 0
-NEI4 $288
-line 534
-;534:		Svcmd_RemoveIP_f();
+NEI4 $328
+line 664
+;664:		Svcmd_RemoveIP_f();
 ADDRGP4 Svcmd_RemoveIP_f
 CALLV
 pop
-line 535
-;535:		return qtrue;
+line 665
+;665:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $288
-line 538
-;536:	}
-;537:
-;538:	if (Q_stricmp (cmd, "listip") == 0) {
+LABELV $328
+line 668
+;666:	}
+;667:
+;668:	if (Q_stricmp (cmd, "listip") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $293
+ADDRGP4 $333
 ARGP4
 ADDRLP4 1056
 ADDRGP4 Q_stricmp
@@ -2564,30 +3158,30 @@ ASGNI4
 ADDRLP4 1056
 INDIRI4
 CNSTI4 0
-NEI4 $291
-line 539
-;539:		trap_SendConsoleCommand( EXEC_NOW, "g_banIPs\n" );
+NEI4 $331
+line 669
+;669:		trap_SendConsoleCommand( EXEC_NOW, "g_banIPs\n" );
 CNSTI4 0
 ARGI4
-ADDRGP4 $294
+ADDRGP4 $334
 ARGP4
 ADDRGP4 trap_SendConsoleCommand
 CALLV
 pop
-line 540
-;540:		return qtrue;
+line 670
+;670:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $291
-line 543
-;541:	}
-;542:
-;543:	if (Q_stricmp (cmd, "punish") == 0) {
+LABELV $331
+line 673
+;671:	}
+;672:
+;673:	if (Q_stricmp (cmd, "punish") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $297
+ADDRGP4 $337
 ARGP4
 ADDRLP4 1060
 ADDRGP4 Q_stricmp
@@ -2596,26 +3190,34 @@ ASGNI4
 ADDRLP4 1060
 INDIRI4
 CNSTI4 0
-NEI4 $295
-line 544
-;544:		Svcmd_Punish_f();
+NEI4 $335
+line 674
+;674:		Svcmd_Punish_f();
 ADDRGP4 Svcmd_Punish_f
 CALLV
 pop
-line 545
-;545:		return qtrue;
+line 675
+;675:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $295
-line 548
-;546:	}
-;547:	
-;548:	if (Q_stricmp (cmd, "balanceteams") == 0) {
+LABELV $335
+line 686
+;676:	}
+;677:	
+;678:	/*
+;679:	if (Q_stricmp (cmd, "where") == 0) {
+;680:		
+;681:		return qtrue;
+;682:	}
+;683:	*/ 
+;684:	
+;685:
+;686:	if (Q_stricmp (cmd, "randmap") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $300
+ADDRGP4 $340
 ARGP4
 ADDRLP4 1064
 ADDRGP4 Q_stricmp
@@ -2624,121 +3226,164 @@ ASGNI4
 ADDRLP4 1064
 INDIRI4
 CNSTI4 0
-NEI4 $298
-line 550
-;549:		//FixME Later - Do it twice in case it's way off
-;550:		Svcmd_BalanceTeams();
-ADDRGP4 Svcmd_BalanceTeams
+NEI4 $338
+line 687
+;687:		G_Printf( "Final: Here is a random map %s\n", GetRandomMap());
+ADDRLP4 1068
+ADDRGP4 GetRandomMap
+CALLP4
+ASGNP4
+ADDRGP4 $341
+ARGP4
+ADDRLP4 1068
+INDIRP4
+ARGP4
+ADDRGP4 G_Printf
 CALLV
 pop
-line 551
-;551:		Svcmd_BalanceTeams();
-ADDRGP4 Svcmd_BalanceTeams
-CALLV
-pop
-line 552
-;552:		return qtrue;
+line 689
+;688:		
+;689:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $298
-line 555
-;553:	}
-;554:
-;555:	if (g_dedicated.integer) {
+LABELV $338
+line 694
+;690:	}
+;691:	
+;692:
+;693:
+;694:	if (Q_stricmp (cmd, "balanceteams") == 0) {
+ADDRLP4 0
+ARGP4
+ADDRGP4 $344
+ARGP4
+ADDRLP4 1068
+ADDRGP4 Q_stricmp
+CALLI4
+ASGNI4
+ADDRLP4 1068
+INDIRI4
+CNSTI4 0
+NEI4 $342
+line 696
+;695:		//FixME Later - Do it twice in case it's way off
+;696:		Svcmd_BalanceTeams();
+ADDRGP4 Svcmd_BalanceTeams
+CALLV
+pop
+line 697
+;697:		Svcmd_BalanceTeams();
+ADDRGP4 Svcmd_BalanceTeams
+CALLV
+pop
+line 698
+;698:		return qtrue;
+CNSTI4 1
+RETI4
+ADDRGP4 $306
+JUMPV
+LABELV $342
+line 704
+;699:	}
+;700:
+;701:
+;702:
+;703:
+;704:	if (g_dedicated.integer) {
 ADDRGP4 g_dedicated+12
 INDIRI4
 CNSTI4 0
-EQI4 $301
-line 556
-;556:		if (Q_stricmp (cmd, "say") == 0) {
+EQI4 $345
+line 705
+;705:		if (Q_stricmp (cmd, "say") == 0) {
 ADDRLP4 0
 ARGP4
-ADDRGP4 $306
+ADDRGP4 $350
 ARGP4
-ADDRLP4 1068
+ADDRLP4 1072
 ADDRGP4 Q_stricmp
 CALLI4
 ASGNI4
-ADDRLP4 1068
+ADDRLP4 1072
 INDIRI4
 CNSTI4 0
-NEI4 $304
-line 557
-;557:			trap_SendServerCommand( -1, va("print \"server: %s\"", ConcatArgs(1) ) );
+NEI4 $348
+line 706
+;706:			trap_SendServerCommand( -1, va("print \"server: %s\"", ConcatArgs(1) ) );
 CNSTI4 1
 ARGI4
-ADDRLP4 1072
+ADDRLP4 1076
 ADDRGP4 ConcatArgs
 CALLP4
 ASGNP4
-ADDRGP4 $307
-ARGP4
-ADDRLP4 1072
-INDIRP4
+ADDRGP4 $351
 ARGP4
 ADDRLP4 1076
+INDIRP4
+ARGP4
+ADDRLP4 1080
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 -1
 ARGI4
-ADDRLP4 1076
+ADDRLP4 1080
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 558
-;558:			return qtrue;
+line 707
+;707:			return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $304
-line 561
-;559:		}
-;560:		// everything else will also be printed as a say command
-;561:		trap_SendServerCommand( -1, va("print \"server: %s\"", ConcatArgs(0) ) );
+LABELV $348
+line 710
+;708:		}
+;709:		// everything else will also be printed as a say command
+;710:		trap_SendServerCommand( -1, va("print \"server: %s\"", ConcatArgs(0) ) );
 CNSTI4 0
 ARGI4
-ADDRLP4 1072
+ADDRLP4 1076
 ADDRGP4 ConcatArgs
 CALLP4
 ASGNP4
-ADDRGP4 $307
-ARGP4
-ADDRLP4 1072
-INDIRP4
+ADDRGP4 $351
 ARGP4
 ADDRLP4 1076
+INDIRP4
+ARGP4
+ADDRLP4 1080
 ADDRGP4 va
 CALLP4
 ASGNP4
 CNSTI4 -1
 ARGI4
-ADDRLP4 1076
+ADDRLP4 1080
 INDIRP4
 ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 562
-;562:		return qtrue;
+line 711
+;711:		return qtrue;
 CNSTI4 1
 RETI4
-ADDRGP4 $266
+ADDRGP4 $306
 JUMPV
-LABELV $301
-line 565
-;563:	}
-;564:
-;565:	return qfalse;
+LABELV $345
+line 714
+;712:	}
+;713:
+;714:	return qfalse;
 CNSTI4 0
 RETI4
-LABELV $266
-endproc ConsoleCommand 1080 12
+LABELV $306
+endproc ConsoleCommand 1084 12
 import ConcatArgs
 bss
 align 4
@@ -2930,9 +3575,23 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_RegenAmmo
+import g_RegenHealth
+import g_AutoChangeMap
+import g_lastmap2
+import g_lastmap
+import g_randommap
+import g_mapfile
+import g_ReverseCTF
+import g_GuassRate
+import g_GuassSelfDamage
+import g_GuassKnockBack
+import g_GuassJump
 import g_PCTeamkills
 import g_GrappleMode
+import g_MaxTurrets
 import g_Turrets
+import g_StartRandom
 import g_StartBFG
 import g_StartPlasma
 import g_StartGauss
@@ -2942,7 +3601,6 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
-import g_MultiJumps
 import g_RedMC
 import g_BlueMC
 import g_GameMode
@@ -3114,6 +3772,7 @@ import Touch_DoorTrigger
 import G_RunMover
 import fire_mg
 import fire_turret
+import fire_alt_gata
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -3123,6 +3782,7 @@ import fire_altgrenade
 import fire_bomb
 import fire_pdgrenade
 import fire_grenade
+import fire_plasma2
 import fire_plasma
 import fire_blaster
 import G_RunMissile
@@ -3361,7 +4021,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $307
+LABELV $351
 byte 1 112
 byte 1 114
 byte 1 105
@@ -3382,13 +4042,13 @@ byte 1 115
 byte 1 34
 byte 1 0
 align 1
-LABELV $306
+LABELV $350
 byte 1 115
 byte 1 97
 byte 1 121
 byte 1 0
 align 1
-LABELV $300
+LABELV $344
 byte 1 98
 byte 1 97
 byte 1 108
@@ -3403,7 +4063,51 @@ byte 1 109
 byte 1 115
 byte 1 0
 align 1
-LABELV $297
+LABELV $341
+byte 1 70
+byte 1 105
+byte 1 110
+byte 1 97
+byte 1 108
+byte 1 58
+byte 1 32
+byte 1 72
+byte 1 101
+byte 1 114
+byte 1 101
+byte 1 32
+byte 1 105
+byte 1 115
+byte 1 32
+byte 1 97
+byte 1 32
+byte 1 114
+byte 1 97
+byte 1 110
+byte 1 100
+byte 1 111
+byte 1 109
+byte 1 32
+byte 1 109
+byte 1 97
+byte 1 112
+byte 1 32
+byte 1 37
+byte 1 115
+byte 1 10
+byte 1 0
+align 1
+LABELV $340
+byte 1 114
+byte 1 97
+byte 1 110
+byte 1 100
+byte 1 109
+byte 1 97
+byte 1 112
+byte 1 0
+align 1
+LABELV $337
 byte 1 112
 byte 1 117
 byte 1 110
@@ -3412,7 +4116,7 @@ byte 1 115
 byte 1 104
 byte 1 0
 align 1
-LABELV $294
+LABELV $334
 byte 1 103
 byte 1 95
 byte 1 98
@@ -3424,7 +4128,7 @@ byte 1 115
 byte 1 10
 byte 1 0
 align 1
-LABELV $293
+LABELV $333
 byte 1 108
 byte 1 105
 byte 1 115
@@ -3433,7 +4137,7 @@ byte 1 105
 byte 1 112
 byte 1 0
 align 1
-LABELV $290
+LABELV $330
 byte 1 114
 byte 1 101
 byte 1 109
@@ -3444,7 +4148,7 @@ byte 1 105
 byte 1 112
 byte 1 0
 align 1
-LABELV $287
+LABELV $327
 byte 1 97
 byte 1 100
 byte 1 100
@@ -3452,7 +4156,7 @@ byte 1 105
 byte 1 112
 byte 1 0
 align 1
-LABELV $284
+LABELV $324
 byte 1 97
 byte 1 98
 byte 1 111
@@ -3467,7 +4171,7 @@ byte 1 117
 byte 1 109
 byte 1 0
 align 1
-LABELV $281
+LABELV $321
 byte 1 98
 byte 1 111
 byte 1 116
@@ -3477,7 +4181,7 @@ byte 1 115
 byte 1 116
 byte 1 0
 align 1
-LABELV $278
+LABELV $318
 byte 1 97
 byte 1 100
 byte 1 100
@@ -3486,7 +4190,7 @@ byte 1 111
 byte 1 116
 byte 1 0
 align 1
-LABELV $275
+LABELV $315
 byte 1 103
 byte 1 97
 byte 1 109
@@ -3500,7 +4204,7 @@ byte 1 114
 byte 1 121
 byte 1 0
 align 1
-LABELV $272
+LABELV $312
 byte 1 102
 byte 1 111
 byte 1 114
@@ -3512,7 +4216,7 @@ byte 1 97
 byte 1 109
 byte 1 0
 align 1
-LABELV $269
+LABELV $309
 byte 1 101
 byte 1 110
 byte 1 116
@@ -3523,6 +4227,86 @@ byte 1 108
 byte 1 105
 byte 1 115
 byte 1 116
+byte 1 0
+align 1
+LABELV $305
+byte 1 115
+byte 1 101
+byte 1 116
+byte 1 97
+byte 1 32
+byte 1 103
+byte 1 95
+byte 1 108
+byte 1 97
+byte 1 115
+byte 1 116
+byte 1 109
+byte 1 97
+byte 1 112
+byte 1 32
+byte 1 37
+byte 1 105
+byte 1 10
+byte 1 0
+align 1
+LABELV $304
+byte 1 109
+byte 1 97
+byte 1 112
+byte 1 32
+byte 1 37
+byte 1 115
+byte 1 10
+byte 1 0
+align 1
+LABELV $303
+byte 1 72
+byte 1 101
+byte 1 114
+byte 1 101
+byte 1 32
+byte 1 105
+byte 1 115
+byte 1 32
+byte 1 97
+byte 1 32
+byte 1 114
+byte 1 97
+byte 1 110
+byte 1 100
+byte 1 111
+byte 1 109
+byte 1 32
+byte 1 109
+byte 1 97
+byte 1 112
+byte 1 32
+byte 1 37
+byte 1 115
+byte 1 10
+byte 1 0
+align 1
+LABELV $284
+byte 1 115
+byte 1 101
+byte 1 116
+byte 1 97
+byte 1 32
+byte 1 103
+byte 1 95
+byte 1 108
+byte 1 97
+byte 1 115
+byte 1 116
+byte 1 109
+byte 1 97
+byte 1 112
+byte 1 50
+byte 1 32
+byte 1 37
+byte 1 105
+byte 1 10
 byte 1 0
 align 1
 LABELV $254

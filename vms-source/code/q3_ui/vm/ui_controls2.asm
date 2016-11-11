@@ -434,7 +434,7 @@ code
 proc Controls_InitCvars 28 8
 file "../ui_controls2.c"
 line 365
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================

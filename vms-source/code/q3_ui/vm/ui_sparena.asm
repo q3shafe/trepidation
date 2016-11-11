@@ -3,7 +3,7 @@ code
 proc UI_SPArena_Start 44 8
 file "../ui_sparena.c"
 line 5
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:#include "ui_local.h"
 ;4:

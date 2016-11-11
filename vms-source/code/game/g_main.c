@@ -2112,6 +2112,8 @@ void CheckExitRules( void ) {
 			redCnt = 0;
 			redCnt = CountTeamSurvivors(TEAM_RED);
 			blueCnt = CountTeamSurvivors(TEAM_BLUE);
+			trap_SendServerCommand( -1, va("print \"^7Blue Live Players %i \n\"", blueCnt ) );
+			trap_SendServerCommand( -1, va("print \"^7Red Live Players %i \n\"", redCnt ) );
 
 			if(redCnt == 0) { // Red Team Wins Round
 
@@ -2200,6 +2202,7 @@ void CheckExitRules( void ) {
 			{
 				//trap_SendConsoleCommand( EXEC_APPEND, "s_musicvolume 5.0\n" );
 				
+				// There is a bug in the engine, let's work around that bug somewhere
 				G_SpawnString( "music", "sound/music/battle.ogg", &s );
 				trap_SetConfigstring( CS_MUSIC, s );
 
@@ -2208,6 +2211,11 @@ void CheckExitRules( void ) {
 				// Two People - Showdown
 				if (tmpCnt == 2)
 				{
+
+					// This is our funky workaround - this is tempory -- shafe
+					G_SpawnString( "music", "sound/music/battle.ogg", &s );
+					trap_SetConfigstring( CS_MUSIC, s );
+
 					if (!level.StopItemRespawn) 
 					{
 						

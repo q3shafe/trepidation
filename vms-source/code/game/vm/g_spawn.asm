@@ -3,7 +3,7 @@ code
 proc G_SpawnString 8 8
 file "../g_spawn.c"
 line 6
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:
 ;4:#include "g_local.h"
@@ -2218,16 +2218,24 @@ pop
 line 575
 ;573:
 ;574:	
-;575:	if ((g_GameMode.integer == 0) || (g_GameMode.integer == 3))
+;575:	if ((g_GameMode.integer == 0) || (g_GameMode.integer == 3) || (g_GameMode.integer == 999)|| (g_GameMode.integer == 5))
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 0
-EQI4 $297
+EQI4 $301
 ADDRGP4 g_GameMode+12
 INDIRI4
 CNSTI4 3
+EQI4 $301
+ADDRGP4 g_GameMode+12
+INDIRI4
+CNSTI4 999
+EQI4 $301
+ADDRGP4 g_GameMode+12
+INDIRI4
+CNSTI4 5
 NEI4 $293
-LABELV $297
+LABELV $301
 line 576
 ;576:	{
 line 577
@@ -2249,26 +2257,10 @@ line 578
 ADDRLP4 4
 INDIRI4
 CNSTI4 1
-NEI4 $298
-ADDRGP4 $300
-ARGP4
-ADDRGP4 $301
-ARGP4
-ADDRLP4 0
-ARGP4
-ADDRGP4 G_SpawnString
-CALLI4
-pop
-LABELV $298
-line 579
-;579:		if (i == 2) { G_SpawnString( "music", "sound/music/mapmusic02.ogg", &s ); }
-ADDRLP4 4
-INDIRI4
-CNSTI4 2
 NEI4 $302
-ADDRGP4 $300
-ARGP4
 ADDRGP4 $304
+ARGP4
+ADDRGP4 $305
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -2276,79 +2268,95 @@ ADDRGP4 G_SpawnString
 CALLI4
 pop
 LABELV $302
+line 579
+;579:		if (i == 2) { G_SpawnString( "music", "sound/music/mapmusic02.ogg", &s ); }
+ADDRLP4 4
+INDIRI4
+CNSTI4 2
+NEI4 $306
+ADDRGP4 $304
+ARGP4
+ADDRGP4 $308
+ARGP4
+ADDRLP4 0
+ARGP4
+ADDRGP4 G_SpawnString
+CALLI4
+pop
+LABELV $306
 line 580
 ;580:		if (i == 3) { G_SpawnString( "music", "sound/music/mapmusic03.ogg", &s ); }
 ADDRLP4 4
 INDIRI4
 CNSTI4 3
-NEI4 $305
-ADDRGP4 $300
+NEI4 $309
+ADDRGP4 $304
 ARGP4
-ADDRGP4 $307
+ADDRGP4 $311
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-LABELV $305
+LABELV $309
 line 581
 ;581:		if (i == 4) { G_SpawnString( "music", "sound/music/mapmusic04.ogg", &s ); }
 ADDRLP4 4
 INDIRI4
 CNSTI4 4
-NEI4 $308
-ADDRGP4 $300
+NEI4 $312
+ADDRGP4 $304
 ARGP4
-ADDRGP4 $310
+ADDRGP4 $314
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-LABELV $308
+LABELV $312
 line 582
 ;582:		if (i == 5) { G_SpawnString( "music", "sound/music/mapmusic05.ogg", &s ); }
 ADDRLP4 4
 INDIRI4
 CNSTI4 5
-NEI4 $311
-ADDRGP4 $300
+NEI4 $315
+ADDRGP4 $304
 ARGP4
-ADDRGP4 $313
+ADDRGP4 $317
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-LABELV $311
+LABELV $315
 line 583
 ;583:		if (i == 6) { G_SpawnString( "music", "sound/music/mapmusic06.ogg", &s ); }
 ADDRLP4 4
 INDIRI4
 CNSTI4 6
-NEI4 $314
-ADDRGP4 $300
+NEI4 $318
+ADDRGP4 $304
 ARGP4
-ADDRGP4 $316
+ADDRGP4 $320
 ARGP4
 ADDRLP4 0
 ARGP4
 ADDRGP4 G_SpawnString
 CALLI4
 pop
-LABELV $314
+LABELV $318
 line 584
 ;584:		if (i == 7) { G_SpawnString( "music", "sound/music/mapmusic07.ogg", &s ); }
 ADDRLP4 4
 INDIRI4
 CNSTI4 7
 NEI4 $294
-ADDRGP4 $300
+ADDRGP4 $304
 ARGP4
-ADDRGP4 $319
+ADDRGP4 $323
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -2365,7 +2373,7 @@ line 587
 ;587:	{
 line 588
 ;588:		G_SpawnString( "music", "", &s );
-ADDRGP4 $300
+ADDRGP4 $304
 ARGP4
 ADDRGP4 $285
 ARGP4
@@ -2425,7 +2433,7 @@ line 598
 ;598:	G_SpawnString( "gravity", "800", &s );
 ADDRGP4 $81
 ARGP4
-ADDRGP4 $321
+ADDRGP4 $325
 ARGP4
 ADDRLP4 0
 ARGP4
@@ -2434,7 +2442,7 @@ CALLI4
 pop
 line 599
 ;599:	trap_Cvar_Set( "g_gravity", s );
-ADDRGP4 $322
+ADDRGP4 $326
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -2445,7 +2453,7 @@ pop
 line 601
 ;600:
 ;601:	G_SpawnString( "enableDust", "0", &s );
-ADDRGP4 $323
+ADDRGP4 $327
 ARGP4
 ADDRGP4 $218
 ARGP4
@@ -2456,7 +2464,7 @@ CALLI4
 pop
 line 602
 ;602:	trap_Cvar_Set( "g_enableDust", s );
-ADDRGP4 $324
+ADDRGP4 $328
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -2467,7 +2475,7 @@ pop
 line 604
 ;603:
 ;604:	G_SpawnString( "enableBreath", "0", &s );
-ADDRGP4 $325
+ADDRGP4 $329
 ARGP4
 ADDRGP4 $218
 ARGP4
@@ -2478,7 +2486,7 @@ CALLI4
 pop
 line 605
 ;605:	trap_Cvar_Set( "g_enableBreath", s );
-ADDRGP4 $326
+ADDRGP4 $330
 ARGP4
 ADDRLP4 0
 INDIRP4
@@ -2513,10 +2521,10 @@ line 612
 ADDRGP4 g_restarted+12
 INDIRI4
 CNSTI4 0
-EQI4 $330
+EQI4 $334
 line 613
 ;613:		trap_Cvar_Set( "g_restarted", "0" );
-ADDRGP4 $333
+ADDRGP4 $337
 ARGP4
 ADDRGP4 $218
 ARGP4
@@ -2537,13 +2545,13 @@ line 618
 ;616:		//level.lastClient = -1;
 ;617:
 ;618:	} else if ( g_doWarmup.integer ) { // Turn it on
-ADDRGP4 $331
+ADDRGP4 $335
 JUMPV
-LABELV $330
+LABELV $334
 ADDRGP4 g_doWarmup+12
 INDIRI4
 CNSTI4 0
-EQI4 $336
+EQI4 $340
 line 619
 ;619:		level.warmupTime = -1;
 ADDRGP4 level+16
@@ -2576,15 +2584,15 @@ pop
 line 623
 ;622:
 ;623:		G_LogPrintf( "Warmup:\n" );
-ADDRGP4 $342
+ADDRGP4 $346
 ARGP4
 ADDRGP4 G_LogPrintf
 CALLV
 pop
 line 624
 ;624:	}
-LABELV $336
-LABELV $331
+LABELV $340
+LABELV $335
 line 627
 ;625:	//level.firstStrike = qfalse;
 ;626:
@@ -2628,25 +2636,25 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 CNSTI4 0
-NEI4 $346
+NEI4 $350
 line 646
 ;646:		G_Error( "SpawnEntities: no entities" );
-ADDRGP4 $348
+ADDRGP4 $352
 ARGP4
 ADDRGP4 G_Error
 CALLV
 pop
 line 647
 ;647:	}
-LABELV $346
+LABELV $350
 line 648
 ;648:	SP_worldspawn();
 ADDRGP4 SP_worldspawn
 CALLV
 pop
-ADDRGP4 $350
+ADDRGP4 $354
 JUMPV
-LABELV $349
+LABELV $353
 line 651
 ;649:
 ;650:	// parse ents
@@ -2658,7 +2666,7 @@ CALLV
 pop
 line 653
 ;653:	}	
-LABELV $350
+LABELV $354
 line 651
 ADDRLP4 4
 ADDRGP4 G_ParseSpawnVars
@@ -2667,7 +2675,7 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $349
+NEI4 $353
 line 655
 ;654:
 ;655:	level.spawning = qfalse;			// any future calls to G_Spawn*() will be errors
@@ -2676,7 +2684,7 @@ CNSTI4 0
 ASGNI4
 line 656
 ;656:}
-LABELV $343
+LABELV $347
 endproc G_SpawnEntitiesFromString 8 4
 import SP_item_botroam
 import SP_func_door_rotating
@@ -2917,9 +2925,23 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_RegenAmmo
+import g_RegenHealth
+import g_AutoChangeMap
+import g_lastmap2
+import g_lastmap
+import g_randommap
+import g_mapfile
+import g_ReverseCTF
+import g_GuassRate
+import g_GuassSelfDamage
+import g_GuassKnockBack
+import g_GuassJump
 import g_PCTeamkills
 import g_GrappleMode
+import g_MaxTurrets
 import g_Turrets
+import g_StartRandom
 import g_StartBFG
 import g_StartPlasma
 import g_StartGauss
@@ -2929,7 +2951,6 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
-import g_MultiJumps
 import g_RedMC
 import g_BlueMC
 import g_GameMode
@@ -3104,6 +3125,7 @@ import Touch_DoorTrigger
 import G_RunMover
 import fire_mg
 import fire_turret
+import fire_alt_gata
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -3113,6 +3135,7 @@ import fire_altgrenade
 import fire_bomb
 import fire_pdgrenade
 import fire_grenade
+import fire_plasma2
 import fire_plasma
 import fire_blaster
 import G_RunMissile
@@ -3345,7 +3368,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $348
+LABELV $352
 byte 1 83
 byte 1 112
 byte 1 97
@@ -3374,7 +3397,7 @@ byte 1 101
 byte 1 115
 byte 1 0
 align 1
-LABELV $342
+LABELV $346
 byte 1 87
 byte 1 97
 byte 1 114
@@ -3385,7 +3408,7 @@ byte 1 58
 byte 1 10
 byte 1 0
 align 1
-LABELV $333
+LABELV $337
 byte 1 103
 byte 1 95
 byte 1 114
@@ -3399,67 +3422,67 @@ byte 1 101
 byte 1 100
 byte 1 0
 align 1
+LABELV $330
+byte 1 103
+byte 1 95
+byte 1 101
+byte 1 110
+byte 1 97
+byte 1 98
+byte 1 108
+byte 1 101
+byte 1 66
+byte 1 114
+byte 1 101
+byte 1 97
+byte 1 116
+byte 1 104
+byte 1 0
+align 1
+LABELV $329
+byte 1 101
+byte 1 110
+byte 1 97
+byte 1 98
+byte 1 108
+byte 1 101
+byte 1 66
+byte 1 114
+byte 1 101
+byte 1 97
+byte 1 116
+byte 1 104
+byte 1 0
+align 1
+LABELV $328
+byte 1 103
+byte 1 95
+byte 1 101
+byte 1 110
+byte 1 97
+byte 1 98
+byte 1 108
+byte 1 101
+byte 1 68
+byte 1 117
+byte 1 115
+byte 1 116
+byte 1 0
+align 1
+LABELV $327
+byte 1 101
+byte 1 110
+byte 1 97
+byte 1 98
+byte 1 108
+byte 1 101
+byte 1 68
+byte 1 117
+byte 1 115
+byte 1 116
+byte 1 0
+align 1
 LABELV $326
-byte 1 103
-byte 1 95
-byte 1 101
-byte 1 110
-byte 1 97
-byte 1 98
-byte 1 108
-byte 1 101
-byte 1 66
-byte 1 114
-byte 1 101
-byte 1 97
-byte 1 116
-byte 1 104
-byte 1 0
-align 1
-LABELV $325
-byte 1 101
-byte 1 110
-byte 1 97
-byte 1 98
-byte 1 108
-byte 1 101
-byte 1 66
-byte 1 114
-byte 1 101
-byte 1 97
-byte 1 116
-byte 1 104
-byte 1 0
-align 1
-LABELV $324
-byte 1 103
-byte 1 95
-byte 1 101
-byte 1 110
-byte 1 97
-byte 1 98
-byte 1 108
-byte 1 101
-byte 1 68
-byte 1 117
-byte 1 115
-byte 1 116
-byte 1 0
-align 1
-LABELV $323
-byte 1 101
-byte 1 110
-byte 1 97
-byte 1 98
-byte 1 108
-byte 1 101
-byte 1 68
-byte 1 117
-byte 1 115
-byte 1 116
-byte 1 0
-align 1
-LABELV $322
 byte 1 103
 byte 1 95
 byte 1 103
@@ -3471,13 +3494,13 @@ byte 1 116
 byte 1 121
 byte 1 0
 align 1
-LABELV $321
+LABELV $325
 byte 1 56
 byte 1 48
 byte 1 48
 byte 1 0
 align 1
-LABELV $319
+LABELV $323
 byte 1 115
 byte 1 111
 byte 1 117
@@ -3506,7 +3529,7 @@ byte 1 103
 byte 1 103
 byte 1 0
 align 1
-LABELV $316
+LABELV $320
 byte 1 115
 byte 1 111
 byte 1 117
@@ -3535,7 +3558,7 @@ byte 1 103
 byte 1 103
 byte 1 0
 align 1
-LABELV $313
+LABELV $317
 byte 1 115
 byte 1 111
 byte 1 117
@@ -3564,7 +3587,7 @@ byte 1 103
 byte 1 103
 byte 1 0
 align 1
-LABELV $310
+LABELV $314
 byte 1 115
 byte 1 111
 byte 1 117
@@ -3593,7 +3616,7 @@ byte 1 103
 byte 1 103
 byte 1 0
 align 1
-LABELV $307
+LABELV $311
 byte 1 115
 byte 1 111
 byte 1 117
@@ -3622,7 +3645,7 @@ byte 1 103
 byte 1 103
 byte 1 0
 align 1
-LABELV $304
+LABELV $308
 byte 1 115
 byte 1 111
 byte 1 117
@@ -3651,7 +3674,7 @@ byte 1 103
 byte 1 103
 byte 1 0
 align 1
-LABELV $301
+LABELV $305
 byte 1 115
 byte 1 111
 byte 1 117
@@ -3680,7 +3703,7 @@ byte 1 103
 byte 1 103
 byte 1 0
 align 1
-LABELV $300
+LABELV $304
 byte 1 109
 byte 1 117
 byte 1 115

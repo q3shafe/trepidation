@@ -3,7 +3,7 @@ code
 proc Com_Clamp 0 0
 file "../q_shared.c"
 line 6
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// q_shared.c -- stateless support routines that are included in each code dll
 ;4:#include "q_shared.h"

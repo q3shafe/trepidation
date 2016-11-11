@@ -7,7 +7,7 @@ code
 proc BotNumActivePlayers 1056 12
 file "../ai_chat.c"
 line 48
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:
 ;4:/*****************************************************************************
@@ -4884,7 +4884,7 @@ MULI4
 ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
-CNSTI4 2656
+CNSTI4 2660
 ADDP4
 INDIRI4
 ASGNI4
@@ -5046,7 +5046,7 @@ MULI4
 ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
-CNSTI4 2656
+CNSTI4 2660
 ADDP4
 INDIRI4
 ARGI4
@@ -5069,7 +5069,7 @@ MULI4
 ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
-CNSTI4 2656
+CNSTI4 2660
 ADDP4
 INDIRI4
 ARGI4
@@ -5151,7 +5151,7 @@ MULI4
 ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
-CNSTI4 2656
+CNSTI4 2660
 ADDP4
 INDIRI4
 ASGNI4
@@ -5418,7 +5418,7 @@ MULI4
 ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
-CNSTI4 2660
+CNSTI4 2664
 ADDP4
 INDIRI4
 ARGI4
@@ -5708,7 +5708,7 @@ MULI4
 ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
-CNSTI4 2660
+CNSTI4 2664
 ADDP4
 INDIRI4
 ARGI4
@@ -8526,7 +8526,7 @@ MULI4
 ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
-CNSTI4 2656
+CNSTI4 2660
 ADDP4
 INDIRI4
 ARGI4
@@ -8549,7 +8549,7 @@ MULI4
 ADDRGP4 g_entities+524
 ADDP4
 INDIRP4
-CNSTI4 2656
+CNSTI4 2660
 ADDP4
 INDIRI4
 ARGI4
@@ -9516,9 +9516,23 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_RegenAmmo
+import g_RegenHealth
+import g_AutoChangeMap
+import g_lastmap2
+import g_lastmap
+import g_randommap
+import g_mapfile
+import g_ReverseCTF
+import g_GuassRate
+import g_GuassSelfDamage
+import g_GuassKnockBack
+import g_GuassJump
 import g_PCTeamkills
 import g_GrappleMode
+import g_MaxTurrets
 import g_Turrets
+import g_StartRandom
 import g_StartBFG
 import g_StartPlasma
 import g_StartGauss
@@ -9528,7 +9542,6 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
-import g_MultiJumps
 import g_RedMC
 import g_BlueMC
 import g_GameMode
@@ -9703,6 +9716,7 @@ import Touch_DoorTrigger
 import G_RunMover
 import fire_mg
 import fire_turret
+import fire_alt_gata
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -9712,6 +9726,7 @@ import fire_altgrenade
 import fire_bomb
 import fire_pdgrenade
 import fire_grenade
+import fire_plasma2
 import fire_plasma
 import fire_blaster
 import G_RunMissile

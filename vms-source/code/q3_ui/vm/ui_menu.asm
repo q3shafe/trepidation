@@ -2,7 +2,7 @@ code
 proc MainMenu_ExitAction 0 0
 file "../ui_menu.c"
 line 72
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================
@@ -2709,9 +2709,9 @@ ADDRGP4 singleplayerMenuInfo+1040+60
 ADDRGP4 $561
 ASGNP4
 line 730
-;730:	singleplayerMenuInfo.freezetag.color						= color_red;
+;730:	singleplayerMenuInfo.freezetag.color						= color_dim;
 ADDRGP4 singleplayerMenuInfo+1040+68
-ADDRGP4 color_red
+ADDRGP4 color_dim
 ASGNP4
 line 731
 ;731:	singleplayerMenuInfo.freezetag.style						= style;

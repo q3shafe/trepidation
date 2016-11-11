@@ -2,7 +2,7 @@ code
 proc UI_AddBotsMenu_FightEvent 16 20
 file "../ui_addbots.c"
 line 67
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================

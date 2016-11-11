@@ -522,6 +522,7 @@ Called on client disconnect to make sure the delayed spawn
 doesn't happen on a freed index
 ===============
 */
+// Recursion Bug Here???  where the fuck is this bug
 void G_RemoveQueuedBotBegin( int clientNum ) {
 	int		n;
 

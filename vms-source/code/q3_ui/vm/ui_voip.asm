@@ -8,7 +8,7 @@ code
 proc UI_VoipOptionsMenu_Event 12 8
 file "../ui_voip.c"
 line 64
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================

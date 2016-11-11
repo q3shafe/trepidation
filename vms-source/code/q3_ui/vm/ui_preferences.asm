@@ -10,7 +10,7 @@ code
 proc Preferences_SetMenuItems 92 12
 file "../ui_preferences.c"
 line 74
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================

@@ -2,7 +2,7 @@ code
 proc UI_PlayerInfo_SetWeapon 84 8
 file "../ui_players.c"
 line 33
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:// ui_players.c
 ;4:

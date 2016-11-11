@@ -215,7 +215,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 1
@@ -384,7 +384,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 1
@@ -551,7 +551,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 1
@@ -751,7 +751,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 1
@@ -927,7 +927,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 2
@@ -1097,7 +1097,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 2
@@ -1265,7 +1265,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 2
@@ -1466,7 +1466,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 2
@@ -1960,7 +1960,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 ADDRFP4 0
@@ -1999,7 +1999,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 NEI4 $212
@@ -2899,19 +2899,20 @@ line 471
 ;469:*/
 ;470:
 ;471:void turret_fireonenemy( gentity_t *ent){
-line 473
+line 474
 ;472:
-;473:	if (!level.intermissiontime) 
+;473:	
+;474:	if (!level.intermissiontime) 
 ADDRGP4 level+9140
 INDIRI4
 CNSTI4 0
 NEI4 $273
-line 474
-;474:	{
-line 477
-;475:	
-;476:		// 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
-;477:		if (ent->s.time2 > 1)
+line 475
+;475:	{
+line 478
+;476:	
+;477:		// 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+;478:		if (ent->s.time2 > 1)
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
@@ -2919,11 +2920,11 @@ ADDP4
 INDIRI4
 CNSTI4 1
 LEI4 $276
-line 478
-;478:		{
-line 480
-;479:			//This is the best turret
-;480:			fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qtrue );
+line 479
+;479:		{
+line 481
+;480:			//This is the best turret
+;481:			fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qtrue );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -2949,8 +2950,8 @@ ARGI4
 ADDRGP4 fire_turret
 CALLP4
 pop
-line 481
-;481:			if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
+line 482
+;482:			if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 ADDRGP4 trep_debug+12
 INDIRI4
 CNSTI4 0
@@ -2971,18 +2972,18 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 484
-;482:			
+line 485
 ;483:			
-;484:		} else
+;484:			
+;485:		} else
 ADDRGP4 $277
 JUMPV
 LABELV $276
-line 485
-;485:		{
-line 487
-;486:			
-;487:			if (ent->s.time2 == 0)
+line 486
+;486:		{
+line 488
+;487:			
+;488:			if (ent->s.time2 == 0)
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
@@ -2990,12 +2991,12 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $282
-line 488
-;488:			{
-line 491
-;489:				// This is the weakest
-;490:				//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
-;491:				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
+line 489
+;489:			{
+line 492
+;490:				// This is the weakest
+;491:				//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
+;492:				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3021,8 +3022,8 @@ ARGI4
 ADDRGP4 fire_turret
 CALLP4
 pop
-line 492
-;492:				if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
+line 493
+;493:				if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 ADDRGP4 trep_debug+12
 INDIRI4
 CNSTI4 0
@@ -3043,17 +3044,17 @@ ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 494
-;493:				
-;494:			} else
+line 495
+;494:				
+;495:			} else
 ADDRGP4 $283
 JUMPV
 LABELV $282
-line 495
-;495:			{
-line 497
-;496:				// Middle Power
-;497:				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
+line 496
+;496:			{
+line 498
+;497:				// Middle Power
+;498:				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3079,8 +3080,8 @@ ARGI4
 ADDRGP4 fire_turret
 CALLP4
 pop
-line 498
-;498:				if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
+line 499
+;499:				if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 ADDRGP4 trep_debug+12
 INDIRI4
 CNSTI4 0
@@ -3102,18 +3103,18 @@ ADDRGP4 G_Printf
 CALLV
 pop
 LABELV $287
-line 500
-;499:				
-;500:			}
+line 501
+;500:				
+;501:			}
 LABELV $283
-line 503
-;501:			
+line 504
 ;502:			
-;503:		}
+;503:			
+;504:		}
 LABELV $277
-line 505
-;504:		
-;505:		G_AddEvent( ent, EV_FIRE_WEAPON, 0 );
+line 506
+;505:		
+;506:		G_AddEvent( ent, EV_FIRE_WEAPON, 0 );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3124,8 +3125,10 @@ ARGI4
 ADDRGP4 G_AddEvent
 CALLV
 pop
-line 506
-;506:		ent->count=level.time+100;
+line 509
+;507:
+;508:	
+;509:		ent->count=level.time+100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 784
@@ -3135,10 +3138,10 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 509
-;507:
-;508:		// decloaks a cloaked turret when firing.
-;509:		if (ent->s.time2==2)
+line 512
+;510:
+;511:		// decloaks a cloaked turret when firing.
+;512:		if (ent->s.time2==2)
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
@@ -3146,18 +3149,18 @@ ADDP4
 INDIRI4
 CNSTI4 2
 NEI4 $291
-line 510
-;510:		{
-line 511
-;511:			ent->s.time2=3;
+line 513
+;513:		{
+line 514
+;514:			ent->s.time2=3;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 3
 ASGNI4
-line 512
-;512:			ent->chain->s.time2=3;
+line 515
+;515:			ent->chain->s.time2=3;
 ADDRFP4 0
 INDIRP4
 CNSTI4 788
@@ -3167,40 +3170,40 @@ CNSTI4 88
 ADDP4
 CNSTI4 3
 ASGNI4
-line 513
-;513:		}
+line 516
+;516:		}
 LABELV $291
-line 514
-;514:	}
+line 517
+;517:	}
 LABELV $273
-line 515
-;515:}
+line 518
+;518:}
 LABELV $272
 endproc turret_fireonenemy 4 16
 export Base_think
 proc Base_think 20 32
-line 522
-;516:
-;517:/*
-;518:===========================
-;519:Base_Think
-;520:===========================
-;521:*/
-;522:void Base_think(gentity_t *ent){
 line 525
-;523:
-;524:	gentity_t *attacker;
-;525:	attacker = &g_entities[ENTITYNUM_WORLD];
+;519:
+;520:/*
+;521:===========================
+;522:Base_Think
+;523:===========================
+;524:*/
+;525:void Base_think(gentity_t *ent){
+line 528
+;526:
+;527:	gentity_t *attacker;
+;528:	attacker = &g_entities[ENTITYNUM_WORLD];
 ADDRLP4 0
 ADDRGP4 g_entities+944328
 ASGNP4
-line 531
-;526:	// If the mc is gone blow up the turret... Meaning
-;527:	// you need an mc before you can build turrets.
-;528:	// 
-;529:	// This also destroys all turrets when a point is made.
-;530:	
-;531:	if (ent->s.team == TEAM_BLUE)
+line 534
+;529:	// If the mc is gone blow up the turret... Meaning
+;530:	// you need an mc before you can build turrets.
+;531:	// 
+;532:	// This also destroys all turrets when a point is made.
+;533:	
+;534:	if (ent->s.team == TEAM_BLUE)
 ADDRFP4 0
 INDIRP4
 CNSTI4 208
@@ -3208,34 +3211,34 @@ ADDP4
 INDIRI4
 CNSTI4 2
 NEI4 $295
-line 532
-;532:	{
-line 533
-;533:		if (level.blueMC == 0) 
+line 535
+;535:	{
+line 536
+;536:		if (level.blueMC == 0) 
 ADDRGP4 level+9284
 INDIRI4
 CNSTI4 0
 NEI4 $297
-line 534
-;534:		{	
-line 535
-;535:			ent->health = 1; 
+line 537
+;537:		{	
+line 538
+;538:			ent->health = 1; 
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 1
 ASGNI4
-line 536
-;536:			ent->s.time2 = 0;
+line 539
+;539:			ent->s.time2 = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 537
-;537:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
+line 540
+;540:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3262,8 +3265,8 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 538
-;538:			if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
+line 541
+;541:			if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
 ADDRGP4 trep_debug+12
 INDIRI4
 CNSTI4 0
@@ -3282,16 +3285,16 @@ ADDRGP4 G_Printf
 CALLV
 pop
 LABELV $300
-line 541
-;539:			
-;540:	
-;541:		}
+line 544
+;542:			
+;543:	
+;544:		}
 LABELV $297
-line 542
-;542:	}
+line 545
+;545:	}
 LABELV $295
-line 543
-;543:	if (ent->s.team == TEAM_RED)
+line 546
+;546:	if (ent->s.team == TEAM_RED)
 ADDRFP4 0
 INDIRP4
 CNSTI4 208
@@ -3299,34 +3302,34 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $304
-line 544
-;544:	{
-line 545
-;545:		if (level.redMC == 0) 
+line 547
+;547:	{
+line 548
+;548:		if (level.redMC == 0) 
 ADDRGP4 level+9280
 INDIRI4
 CNSTI4 0
 NEI4 $306
-line 546
-;546:		{ 
-line 547
-;547:			ent->health = 1; 
+line 549
+;549:		{ 
+line 550
+;550:			ent->health = 1; 
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 1
 ASGNI4
-line 548
-;548:			ent->s.time2 = 0;
+line 551
+;551:			ent->s.time2 = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 549
-;549:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
+line 552
+;552:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3353,8 +3356,8 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 550
-;550:			if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
+line 553
+;553:			if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
 ADDRGP4 trep_debug+12
 INDIRI4
 CNSTI4 0
@@ -3373,24 +3376,24 @@ ADDRGP4 G_Printf
 CALLV
 pop
 LABELV $309
-line 552
-;551:	
-;552:		}
-LABELV $306
-line 553
-;553:	}
-LABELV $304
 line 555
 ;554:	
-;555:	ent->think = Base_think;
+;555:		}
+LABELV $306
+line 556
+;556:	}
+LABELV $304
+line 558
+;557:	
+;558:	ent->think = Base_think;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 Base_think
 ASGNP4
-line 556
-;556:	ent->nextthink=level.time+100;
+line 559
+;559:	ent->nextthink=level.time+100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -3400,10 +3403,10 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 559
-;557:
-;558:// for shielded turrets. regenerates health to 400 at 10 health a second
-;559:if ((ent->s.time2==1)&(ent->health<400)){
+line 562
+;560:
+;561:// for shielded turrets. regenerates health to 400 at 10 health a second
+;562:if ((ent->s.time2==1)&(ent->health<400)){
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
@@ -3445,8 +3448,8 @@ INDIRI4
 BANDI4
 CNSTI4 0
 EQI4 $313
-line 560
-;560:	ent->health+=1;
+line 563
+;563:	ent->health+=1;
 ADDRLP4 12
 ADDRFP4 0
 INDIRP4
@@ -3461,8 +3464,8 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 561
-;561:	ent->nextthink=level.time+100;
+line 564
+;564:	ent->nextthink=level.time+100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -3472,13 +3475,13 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 562
-;562:}
-LABELV $313
 line 565
-;563:
-;564:// recloaks a turret without a valid target. checks once a second
-;565:if ((ent->s.time2==3)&(!ent->chain->enemy))
+;565:}
+LABELV $313
+line 568
+;566:
+;567:// recloaks a turret without a valid target. checks once a second
+;568:if ((ent->s.time2==3)&(!ent->chain->enemy))
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
@@ -3524,18 +3527,18 @@ INDIRI4
 BANDI4
 CNSTI4 0
 EQI4 $322
-line 566
-;566:	{
-line 567
-;567:	ent->s.time2=2;
+line 569
+;569:	{
+line 570
+;570:	ent->s.time2=2;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 2
 ASGNI4
-line 568
-;568:	ent->chain->s.time2=2;
+line 571
+;571:	ent->chain->s.time2=2;
 ADDRFP4 0
 INDIRP4
 CNSTI4 788
@@ -3545,8 +3548,8 @@ CNSTI4 88
 ADDP4
 CNSTI4 2
 ASGNI4
-line 569
-;569:	ent->nextthink=level.time+100;
+line 572
+;572:	ent->nextthink=level.time+100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -3556,29 +3559,29 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 570
-;570:	}
-LABELV $322
 line 573
-;571:
-;572:
-;573:}
+;573:	}
+LABELV $322
+line 576
+;574:
+;575:
+;576:}
 LABELV $293
 endproc Base_think 20 32
 export turret_think
 proc turret_think 8 8
-line 581
-;574:
-;575:/*
-;576:============
-;577:turret_think
-;578:============
-;579:*/
-;580:
-;581:void turret_think( gentity_t *ent){
-line 583
-;582:
-;583:	ent->nextthink=level.time+10;
+line 584
+;577:
+;578:/*
+;579:============
+;580:turret_think
+;581:============
+;582:*/
+;583:
+;584:void turret_think( gentity_t *ent){
+line 586
+;585:
+;586:	ent->nextthink=level.time+10;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -3588,9 +3591,9 @@ INDIRI4
 CNSTI4 10
 ADDI4
 ASGNI4
-line 585
-;584:
-;585:	if (!checktarget(ent,ent->enemy))
+line 588
+;587:
+;588:	if (!checktarget(ent,ent->enemy))
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -3612,8 +3615,8 @@ ADDRLP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $333
-line 586
-;586:		turret_findenemy(ent);
+line 589
+;589:		turret_findenemy(ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3621,8 +3624,8 @@ ADDRGP4 turret_findenemy
 CALLV
 pop
 LABELV $333
-line 587
-;587:	if(!ent->enemy)
+line 590
+;590:	if(!ent->enemy)
 ADDRFP4 0
 INDIRP4
 CNSTI4 792
@@ -3631,21 +3634,21 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $335
-line 588
-;588:		return;
+line 591
+;591:		return;
 ADDRGP4 $331
 JUMPV
 LABELV $335
-line 589
-;589:	turret_trackenemy(ent);
+line 592
+;592:	turret_trackenemy(ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 turret_trackenemy
 CALLV
 pop
-line 590
-;590:	if (ent->count<level.time)
+line 593
+;593:	if (ent->count<level.time)
 ADDRFP4 0
 INDIRP4
 CNSTI4 784
@@ -3654,8 +3657,8 @@ INDIRI4
 ADDRGP4 level+32
 INDIRI4
 GEI4 $337
-line 591
-;591:		turret_fireonenemy(ent);
+line 594
+;594:		turret_fireonenemy(ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -3663,27 +3666,27 @@ ADDRGP4 turret_fireonenemy
 CALLV
 pop
 LABELV $337
-line 592
-;592:}
+line 595
+;595:}
 LABELV $331
 endproc turret_think 8 8
 export createturretgun
 proc createturretgun 28 8
-line 602
-;593:
-;594:
-;595:/*
-;596:===========================
-;597:createturretgun
-;598:===========================
-;599:*/
-;600:// let's add weapon and turret type to this call
-;601:void createturretgun(gentity_t *ent)
-;602:{
 line 605
-;603:	gentity_t *turret; 	// The object to hold the turrets details.
-;604:
-;605:	ent->nextthink=level.time+100; // sets up the thinking for the cloaking or regeneration/
+;596:
+;597:
+;598:/*
+;599:===========================
+;600:createturretgun
+;601:===========================
+;602:*/
+;603:// let's add weapon and turret type to this call
+;604:void createturretgun(gentity_t *ent)
+;605:{
+line 608
+;606:	gentity_t *turret; 	// The object to hold the turrets details.
+;607:
+;608:	ent->nextthink=level.time+100; // sets up the thinking for the cloaking or regeneration/
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -3693,32 +3696,32 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 606
-;606:	ent->think=Base_think; // handles cloaking or regeneration
+line 609
+;609:	ent->think=Base_think; // handles cloaking or regeneration
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 Base_think
 ASGNP4
-line 607
-;607:	ent->clipmask = CONTENTS_SOLID;
+line 610
+;610:	ent->clipmask = CONTENTS_SOLID;
 ADDRFP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 1
 ASGNI4
-line 608
-;608:	ent->r.contents = CONTENTS_SOLID;
+line 611
+;611:	ent->r.contents = CONTENTS_SOLID;
 ADDRFP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1
 ASGNI4
-line 609
-;609:	turret=G_Spawn();
+line 612
+;612:	turret=G_Spawn();
 ADDRLP4 4
 ADDRGP4 G_Spawn
 CALLP4
@@ -3727,8 +3730,8 @@ ADDRLP4 0
 ADDRLP4 4
 INDIRP4
 ASGNP4
-line 610
-;610:	turret->parent=ent;
+line 613
+;613:	turret->parent=ent;
 ADDRLP4 0
 INDIRP4
 CNSTI4 608
@@ -3736,8 +3739,8 @@ ADDP4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 611
-;611:	if (trep_debug.integer) { G_Printf("%s Turret Gun Built - Owner: %s\n", turret->parent->client->pers.netname ); }
+line 614
+;614:	if (trep_debug.integer) { G_Printf("%s Turret Gun Built - Owner: %s\n", turret->parent->client->pers.netname ); }
 ADDRGP4 trep_debug+12
 INDIRI4
 CNSTI4 0
@@ -3759,8 +3762,8 @@ ADDRGP4 G_Printf
 CALLV
 pop
 LABELV $342
-line 612
-;612:	turret->chain=ent;
+line 615
+;615:	turret->chain=ent;
 ADDRLP4 0
 INDIRP4
 CNSTI4 788
@@ -3768,8 +3771,8 @@ ADDP4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 613
-;613:	ent->chain=turret;
+line 616
+;616:	ent->chain=turret;
 ADDRFP4 0
 INDIRP4
 CNSTI4 788
@@ -3777,17 +3780,17 @@ ADDP4
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 614
-;614:	turret->s.eType=ET_BUILDABLE;
+line 617
+;617:	turret->s.eType=ET_BUILDABLE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 13
 ASGNI4
-line 616
-;615:	
-;616:	turret->s.time2=ent->s.time2;
+line 619
+;618:	
+;619:	turret->s.time2=ent->s.time2;
 ADDRLP4 8
 CNSTI4 88
 ASGNI4
@@ -3803,16 +3806,16 @@ INDIRI4
 ADDP4
 INDIRI4
 ASGNI4
-line 617
-;617:	turret->eventTime=200;
+line 620
+;620:	turret->eventTime=200;
 ADDRLP4 0
 INDIRP4
 CNSTI4 560
 ADDP4
 CNSTI4 200
 ASGNI4
-line 618
-;618:	turret->s.number = turret - g_entities;
+line 621
+;621:	turret->s.number = turret - g_entities;
 ADDRLP4 0
 INDIRP4
 ADDRLP4 0
@@ -3825,14 +3828,14 @@ CVUI4 4
 CNSTI4 924
 DIVI4
 ASGNI4
-line 625
-;619:	
-;620:	
-;621:	//turret->s.weapon=WP_MACHINEGUN;
-;622:	// 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
-;623:	// Regular Turret
-;624:	
-;625:	if (ent->s.time2 == 0)
+line 628
+;622:	
+;623:	
+;624:	//turret->s.weapon=WP_MACHINEGUN;
+;625:	// 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+;626:	// Regular Turret
+;627:	
+;628:	if (ent->s.time2 == 0)
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
@@ -3840,18 +3843,18 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $346
-line 626
-;626:	{
-line 627
-;627:		turret->s.weapon=WP_TURRET;
+line 629
+;629:	{
+line 630
+;630:		turret->s.weapon=WP_TURRET;
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
 ADDP4
 CNSTI4 11
 ASGNI4
-line 628
-;628:		turret->s.modelindex = G_ModelIndex("models/turrets/gun1.md3");
+line 631
+;631:		turret->s.modelindex = G_ModelIndex("models/turrets/gun1.md3");
 ADDRGP4 $348
 ARGP4
 ADDRLP4 16
@@ -3865,16 +3868,16 @@ ADDP4
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 629
-;629:		turret->model = "models/turrets/gun1.md3";
+line 632
+;632:		turret->model = "models/turrets/gun1.md3";
 ADDRLP4 0
 INDIRP4
 CNSTI4 548
 ADDP4
 ADDRGP4 $348
 ASGNP4
-line 630
-;630:		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun1.md3");
+line 633
+;633:		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun1.md3");
 ADDRGP4 $348
 ARGP4
 ADDRLP4 20
@@ -3888,16 +3891,16 @@ ADDP4
 ADDRLP4 20
 INDIRI4
 ASGNI4
-line 631
-;631:	} 
+line 634
+;634:	} 
 ADDRGP4 $347
 JUMPV
 LABELV $346
-line 633
-;632:	else 
-;633:	{
-line 634
-;634:		turret->s.modelindex = G_ModelIndex("models/turrets/gun2.md3");
+line 636
+;635:	else 
+;636:	{
+line 637
+;637:		turret->s.modelindex = G_ModelIndex("models/turrets/gun2.md3");
 ADDRGP4 $349
 ARGP4
 ADDRLP4 16
@@ -3911,16 +3914,16 @@ ADDP4
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 635
-;635:		turret->model = "models/turrets/gun1.md3";
+line 638
+;638:		turret->model = "models/turrets/gun1.md3";
 ADDRLP4 0
 INDIRP4
 CNSTI4 548
 ADDP4
 ADDRGP4 $348
 ASGNP4
-line 636
-;636:		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun2.md3");
+line 639
+;639:		turret->s.modelindex2 = G_ModelIndex("models/turrets/gun2.md3");
 ADDRGP4 $349
 ARGP4
 ADDRLP4 20
@@ -3934,14 +3937,14 @@ ADDP4
 ADDRLP4 20
 INDIRI4
 ASGNI4
-line 637
-;637:	}
+line 640
+;640:	}
 LABELV $347
-line 641
-;638:	
-;639:	// These two are for later in case we want to define them differently
-;640:	// Sheilded Turret
-;641:	if (ent->s.time2 == 1)
+line 644
+;641:	
+;642:	// These two are for later in case we want to define them differently
+;643:	// Sheilded Turret
+;644:	if (ent->s.time2 == 1)
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
@@ -3949,22 +3952,22 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $350
-line 642
-;642:	{
-line 643
-;643:		turret->s.weapon=WP_TURRET;
+line 645
+;645:	{
+line 646
+;646:		turret->s.weapon=WP_TURRET;
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
 ADDP4
 CNSTI4 11
 ASGNI4
-line 644
-;644:	}
+line 647
+;647:	}
 LABELV $350
-line 646
-;645:	// Cloaked Turret
-;646:	if (ent->s.time2 > 1)
+line 649
+;648:	// Cloaked Turret
+;649:	if (ent->s.time2 > 1)
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
@@ -3972,24 +3975,24 @@ ADDP4
 INDIRI4
 CNSTI4 1
 LEI4 $352
-line 647
-;647:	{
-line 648
-;648:		turret->s.weapon=WP_TURRET;
+line 650
+;650:	{
+line 651
+;651:		turret->s.weapon=WP_TURRET;
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
 ADDP4
 CNSTI4 11
 ASGNI4
-line 649
-;649:	}
+line 652
+;652:	}
 LABELV $352
-line 653
-;650:	
-;651:	
-;652:	
-;653:	turret->s.team =  ent->s.team;	
+line 656
+;653:	
+;654:	
+;655:	
+;656:	turret->s.team =  ent->s.team;	
 ADDRLP4 16
 CNSTI4 208
 ASGNI4
@@ -4005,18 +4008,18 @@ INDIRI4
 ADDP4
 INDIRI4
 ASGNI4
-line 656
-;654:
-;655:	
-;656:	turret->think=turret_think;
+line 659
+;657:
+;658:	
+;659:	turret->think=turret_think;
 ADDRLP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 turret_think
 ASGNP4
-line 657
-;657:	turret->nextthink=level.time+100;
+line 660
+;660:	turret->nextthink=level.time+100;
 ADDRLP4 0
 INDIRP4
 CNSTI4 704
@@ -4026,8 +4029,8 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 658
-;658:	G_SetOrigin( turret, ent->r.currentOrigin );
+line 661
+;661:	G_SetOrigin( turret, ent->r.currentOrigin );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -4039,8 +4042,8 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 659
-;659:	VectorCopy(ent->s.apos.trBase,turret->s.apos.trBase);
+line 662
+;662:	VectorCopy(ent->s.apos.trBase,turret->s.apos.trBase);
 ADDRLP4 20
 CNSTI4 60
 ASGNI4
@@ -4056,8 +4059,8 @@ INDIRI4
 ADDP4
 INDIRB
 ASGNB 12
-line 660
-;660:	VectorCopy(turret->s.apos.trBase,turret->centerpoint);
+line 663
+;663:	VectorCopy(turret->s.apos.trBase,turret->centerpoint);
 ADDRLP4 0
 INDIRP4
 CNSTI4 908
@@ -4068,39 +4071,39 @@ CNSTI4 60
 ADDP4
 INDIRB
 ASGNB 12
-line 661
-;661:	trap_LinkEntity (turret);
+line 664
+;664:	trap_LinkEntity (turret);
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 662
-;662:	BroadCastSound("sound/items/electro.ogg");
+line 665
+;665:	BroadCastSound("sound/items/electro.ogg");
 ADDRGP4 $355
 ARGP4
 ADDRGP4 BroadCastSound
 CALLV
 pop
-line 663
-;663:}
+line 666
+;666:}
 LABELV $340
 endproc createturretgun 28 8
 export turret_retaliate
 proc turret_retaliate 0 0
-line 671
-;664:
-;665:/*
-;666:===========================
-;667:turret_retaliate
-;668:===========================
-;669:*/
-;670:void turret_retaliate(gentity_t *self, gentity_t *attacker, int damage)
-;671:{
-line 673
-;672:// set the guns enemy to the person that shot it. (does not override targeting rules)
-;673:if (self->chain)
+line 674
+;667:
+;668:/*
+;669:===========================
+;670:turret_retaliate
+;671:===========================
+;672:*/
+;673:void turret_retaliate(gentity_t *self, gentity_t *attacker, int damage)
+;674:{
+line 676
+;675:// set the guns enemy to the person that shot it. (does not override targeting rules)
+;676:if (self->chain)
 ADDRFP4 0
 INDIRP4
 CNSTI4 788
@@ -4109,8 +4112,8 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $357
-line 674
-;674:	self->chain->enemy=attacker;
+line 677
+;677:	self->chain->enemy=attacker;
 ADDRFP4 0
 INDIRP4
 CNSTI4 788
@@ -4122,10 +4125,10 @@ ADDRFP4 4
 INDIRP4
 ASGNP4
 LABELV $357
-line 677
-;675:
-;676:// this is here to cause the turret to unshield when its taken a certain amount of damage. (enough to reduce health to below 100)
-;677:	if (self->s.time2==1)
+line 680
+;678:
+;679:// this is here to cause the turret to unshield when its taken a certain amount of damage. (enough to reduce health to below 100)
+;680:	if (self->s.time2==1)
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
@@ -4133,10 +4136,10 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $359
-line 678
-;678:	{
-line 679
-;679:		if (self->health<100)
+line 681
+;681:	{
+line 682
+;682:		if (self->health<100)
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
@@ -4144,18 +4147,18 @@ ADDP4
 INDIRI4
 CNSTI4 100
 GEI4 $361
-line 680
-;680:		{
-line 681
-;681:			self->s.time2=0;
+line 683
+;683:		{
+line 684
+;684:			self->s.time2=0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 682
-;682:			if (self->chain)
+line 685
+;685:			if (self->chain)
 ADDRFP4 0
 INDIRP4
 CNSTI4 788
@@ -4164,10 +4167,10 @@ INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $363
-line 683
-;683:			{
-line 684
-;684:				self->chain->s.time2=0;
+line 686
+;686:			{
+line 687
+;687:				self->chain->s.time2=0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 788
@@ -4177,35 +4180,35 @@ CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 685
-;685:			}
-LABELV $363
-line 686
-;686:		}
-LABELV $361
-line 687
-;687:	}
-LABELV $359
 line 688
-;688:}
+;688:			}
+LABELV $363
+line 689
+;689:		}
+LABELV $361
+line 690
+;690:	}
+LABELV $359
+line 691
+;691:}
 LABELV $356
 endproc turret_retaliate 0 0
 export BuildTurret
 proc BuildTurret 20 20
-line 696
-;689:
-;690:/*
-;691:===========================
-;692:BuildTurret
-;693:===========================
-;694:*/
-;695:void BuildTurret( gentity_t *ent , int type )
-;696:{
-line 700
-;697:	// We need to check the turret type and select the appropriate model
-;698:	gentity_t	*base;	
-;699:
-;700:	if (CanBuildHere(ent) == qfalse) 
+line 699
+;692:
+;693:/*
+;694:===========================
+;695:BuildTurret
+;696:===========================
+;697:*/
+;698:void BuildTurret( gentity_t *ent , int type )
+;699:{
+line 703
+;700:	// We need to check the turret type and select the appropriate model
+;701:	gentity_t	*base;	
+;702:
+;703:	if (CanBuildHere(ent) == qfalse) 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -4217,10 +4220,10 @@ ADDRLP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $366
-line 701
-;701:	{ 
-line 702
-;702:		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
+line 704
+;704:	{ 
+line 705
+;705:		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
 ADDRFP4 0
 INDIRP4
 CVPU4 4
@@ -4236,15 +4239,15 @@ ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 703
-;703:		return; 
+line 706
+;706:		return; 
 ADDRGP4 $365
 JUMPV
 LABELV $366
-line 706
-;704:	}
-;705:
-;706:	base=G_Spawn();
+line 709
+;707:	}
+;708:
+;709:	base=G_Spawn();
 ADDRLP4 8
 ADDRGP4 G_Spawn
 CALLP4
@@ -4253,8 +4256,8 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 707
-;707:	base->parent=ent;	
+line 710
+;710:	base->parent=ent;	
 ADDRLP4 0
 INDIRP4
 CNSTI4 608
@@ -4262,8 +4265,8 @@ ADDP4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 708
-;708:	if (trep_debug.integer) { G_Printf("%s Turret Built - Owner: %s\n", base->parent->client->pers.netname ); }
+line 711
+;711:	if (trep_debug.integer) { G_Printf("%s Turret Built - Owner: %s\n", base->parent->client->pers.netname ); }
 ADDRGP4 trep_debug+12
 INDIRI4
 CNSTI4 0
@@ -4285,17 +4288,17 @@ ADDRGP4 G_Printf
 CALLV
 pop
 LABELV $369
-line 710
-;709:	
-;710:	if (type == 0)
+line 713
+;712:	
+;713:	if (type == 0)
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $373
-line 711
-;711:	{
-line 712
-;712:		base->s.modelindex = G_ModelIndex("models/turrets/base.md3");
+line 714
+;714:	{
+line 715
+;715:		base->s.modelindex = G_ModelIndex("models/turrets/base.md3");
 ADDRGP4 $375
 ARGP4
 ADDRLP4 12
@@ -4309,16 +4312,16 @@ ADDP4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 713
-;713:		base->model = "models/turrets/base.md3";
+line 716
+;716:		base->model = "models/turrets/base.md3";
 ADDRLP4 0
 INDIRP4
 CNSTI4 548
 ADDP4
 ADDRGP4 $375
 ASGNP4
-line 714
-;714:		base->s.modelindex2 = G_ModelIndex("models/turrets/base.md3");
+line 717
+;717:		base->s.modelindex2 = G_ModelIndex("models/turrets/base.md3");
 ADDRGP4 $375
 ARGP4
 ADDRLP4 16
@@ -4332,16 +4335,16 @@ ADDP4
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 715
-;715:	}
+line 718
+;718:	}
 ADDRGP4 $374
 JUMPV
 LABELV $373
-line 717
-;716:	else
-;717:	{
-line 718
-;718:		base->s.modelindex = G_ModelIndex("models/turrets/base2.md3");
+line 720
+;719:	else
+;720:	{
+line 721
+;721:		base->s.modelindex = G_ModelIndex("models/turrets/base2.md3");
 ADDRGP4 $376
 ARGP4
 ADDRLP4 12
@@ -4355,16 +4358,16 @@ ADDP4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 719
-;719:		base->model = "models/turrets/base2.md3";
+line 722
+;722:		base->model = "models/turrets/base2.md3";
 ADDRLP4 0
 INDIRP4
 CNSTI4 548
 ADDP4
 ADDRGP4 $376
 ASGNP4
-line 720
-;720:		base->s.modelindex2 = G_ModelIndex("models/turrets/base2.md3");
+line 723
+;723:		base->s.modelindex2 = G_ModelIndex("models/turrets/base2.md3");
 ADDRGP4 $376
 ARGP4
 ADDRLP4 16
@@ -4378,12 +4381,12 @@ ADDP4
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 721
-;721:	}
+line 724
+;724:	}
 LABELV $374
-line 723
-;722:
-;723:	G_SetOrigin(base,ent->r.currentOrigin);
+line 726
+;725:
+;726:	G_SetOrigin(base,ent->r.currentOrigin);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -4395,8 +4398,8 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 724
-;724:	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
+line 727
+;727:	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 ADDRLP4 0
 INDIRP4
 CNSTI4 60
@@ -4424,68 +4427,68 @@ CNSTI4 68
 ADDP4
 CNSTF4 0
 ASGNF4
-line 726
-;725:	
-;726:	if (type==0)
+line 729
+;728:	
+;729:	if (type==0)
 ADDRFP4 4
 INDIRI4
 CNSTI4 0
 NEI4 $377
-line 727
-;727:	{
-line 728
-;728:		base->health=200; // change this to make the turrets tougher or weaker.
+line 730
+;730:	{
+line 731
+;731:		base->health=200; // change this to make the turrets tougher or weaker.
 ADDRLP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 200
 ASGNI4
-line 729
-;729:	} 
+line 732
+;732:	} 
 ADDRGP4 $378
 JUMPV
 LABELV $377
-line 731
-;730:	else
-;731:	{
-line 732
-;732:		base->health=300; // change this to make the turrets tougher or weaker.
+line 734
+;733:	else
+;734:	{
+line 735
+;735:		base->health=300; // change this to make the turrets tougher or weaker.
 ADDRLP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 300
 ASGNI4
-line 733
-;733:	}
+line 736
+;736:	}
 LABELV $378
-line 735
-;734:	
-;735:	base->s.eType=ET_GENERAL;
+line 738
+;737:	
+;738:	base->s.eType=ET_GENERAL;
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 737
-;736:	
-;737:	if (ent->client->sess.sessionTeam == TEAM_BLUE)
+line 740
+;739:	
+;740:	if (ent->client->sess.sessionTeam == TEAM_BLUE)
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 2
 NEI4 $379
-line 738
-;738:	{
-line 739
-;739:		level.blueTurrets++;
+line 741
+;741:	{
+line 742
+;742:		level.blueTurrets++;
 ADDRLP4 16
 ADDRGP4 level+9268
 ASGNP4
@@ -4497,25 +4500,25 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 740
-;740:	}
+line 743
+;743:	}
 LABELV $379
-line 741
-;741:	if (ent->client->sess.sessionTeam == TEAM_RED)
+line 744
+;744:	if (ent->client->sess.sessionTeam == TEAM_RED)
 ADDRFP4 0
 INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $382
-line 742
-;742:	{
-line 743
-;743:		level.redTurrets++;
+line 745
+;745:	{
+line 746
+;746:		level.redTurrets++;
 ADDRLP4 16
 ADDRGP4 level+9264
 ASGNP4
@@ -4527,12 +4530,12 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 744
-;744:	}	
+line 747
+;747:	}	
 LABELV $382
-line 746
-;745:
-;746:	base->s.time2=type; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+line 749
+;748:
+;749:	base->s.time2=type; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 ADDRLP4 0
 INDIRP4
 CNSTI4 88
@@ -4540,17 +4543,17 @@ ADDP4
 ADDRFP4 4
 INDIRI4
 ASGNI4
-line 748
-;747:	
-;748:	base->classname = "turret";
+line 751
+;750:	
+;751:	base->classname = "turret";
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
 ADDRGP4 $86
 ASGNP4
-line 749
-;749:	base->s.team =  ent->client->sess.sessionTeam;	
+line 752
+;752:	base->s.team =  ent->client->sess.sessionTeam;	
 ADDRLP4 0
 INDIRP4
 CNSTI4 208
@@ -4560,64 +4563,64 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 ASGNI4
-line 751
-;750:
-;751:	base->takedamage=qtrue; // so they can be destroyed
+line 754
+;753:
+;754:	base->takedamage=qtrue; // so they can be destroyed
 ADDRLP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 1
 ASGNI4
-line 752
-;752:	base->die=turret_explode; // so they actually explode when destroyed
+line 755
+;755:	base->die=turret_explode; // so they actually explode when destroyed
 ADDRLP4 0
 INDIRP4
 CNSTI4 740
 ADDP4
 ADDRGP4 turret_explode
 ASGNP4
-line 753
-;753:	base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
+line 756
+;756:	base->pain=turret_retaliate; // if they are damaged they switch target to the person attacking (if its a valid target)
 ADDRLP4 0
 INDIRP4
 CNSTI4 736
 ADDP4
 ADDRGP4 turret_retaliate
 ASGNP4
-line 755
-;754:
-;755:	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
+line 758
+;757:
+;758:	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
 ADDRLP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 1
 ASGNI4
-line 756
-;756:	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
+line 759
+;759:	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
 ADDRLP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1
 ASGNI4
-line 757
-;757:	base->s.pos.trType = TR_GRAVITY;
+line 760
+;760:	base->s.pos.trType = TR_GRAVITY;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 5
 ASGNI4
-line 760
-;758:	
-;759:	// Correction to default numbers -Vincent
-;760:	VectorSet( base->r.mins, -16, -16, -16 );
+line 763
+;761:	
+;762:	// Correction to default numbers -Vincent
+;763:	VectorSet( base->r.mins, -16, -16, -16 );
 ADDRLP4 0
 INDIRP4
 CNSTI4 444
@@ -4636,8 +4639,8 @@ CNSTI4 452
 ADDP4
 CNSTF4 3246391296
 ASGNF4
-line 761
-;761:	VectorSet( base->r.maxs, 16, 16, 16);
+line 764
+;764:	VectorSet( base->r.maxs, 16, 16, 16);
 ADDRLP4 0
 INDIRP4
 CNSTI4 456
@@ -4656,26 +4659,26 @@ CNSTI4 464
 ADDP4
 CNSTF4 1098907648
 ASGNF4
-line 763
-;762:
-;763:	trap_LinkEntity( base );
+line 766
+;765:
+;766:	trap_LinkEntity( base );
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 765
-;764:
-;765:	BuildableSpawn( base ); // New spawning -Vincent
+line 768
+;767:
+;768:	BuildableSpawn( base ); // New spawning -Vincent
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BuildableSpawn
 CALLV
 pop
-line 766
-;766:	if( base->s.eType == ET_GENERAL )
+line 769
+;769:	if( base->s.eType == ET_GENERAL )
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
@@ -4683,10 +4686,10 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $385
-line 767
-;767:	{ // Clear it!
-line 768
-;768:	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
+line 770
+;770:	{ // Clear it!
+line 771
+;771:	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -4701,16 +4704,16 @@ ARGI4
 ADDRGP4 turret_explode
 CALLV
 pop
-line 769
-;769:	}
+line 772
+;772:	}
 ADDRGP4 $386
 JUMPV
 LABELV $385
-line 771
-;770:	else
-;771:	{ // Initalize it!
-line 772
-;772:	base->nextthink = level.time + 5000;
+line 774
+;773:	else
+;774:	{ // Initalize it!
+line 775
+;775:	base->nextthink = level.time + 5000;
 ADDRLP4 0
 INDIRP4
 CNSTI4 704
@@ -4720,91 +4723,112 @@ INDIRI4
 CNSTI4 5000
 ADDI4
 ASGNI4
-line 773
-;773:	base->think	    = createturretgun;
+line 776
+;776:	base->think	    = createturretgun;
 ADDRLP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 createturretgun
 ASGNP4
-line 774
-;774:	}
+line 777
+;777:	}
 LABELV $386
-line 775
-;775:}
+line 778
+;778:}
 LABELV $365
 endproc BuildTurret 20 20
 export MC_think
-proc MC_think 12 0
-line 797
-;776:
-;777:
-;778:/* 
-;779:====================================
-;780:
-;781:   MASTER CONTROLLER // POWER CORE
-;782:
-;783:==================================== 
-;784:*/
-;785:
-;786:
-;787:/*
-;788:===========================
-;789:MC_think
-;790:
-;791: Power Core//Master Controller Think.
-;792: This controls the shielding 
-;793: as well.
-;794:===========================
-;795:*/
-;796:void MC_think(gentity_t *ent)
-;797:{
+proc MC_think 12 4
 line 800
-;798:	int shieldMultiplier;
-;799:
-;800:	shieldMultiplier = 1;
+;779:
+;780:
+;781:/* 
+;782:====================================
+;783:
+;784:   MASTER CONTROLLER // POWER CORE
+;785:
+;786:==================================== 
+;787:*/
+;788:
+;789:
+;790:/*
+;791:===========================
+;792:MC_think
+;793:
+;794: Power Core//Master Controller Think.
+;795: This controls the shielding 
+;796: as well.
+;797:===========================
+;798:*/
+;799:void MC_think(gentity_t *ent)
+;800:{
+line 803
+;801:	int shieldMultiplier;
+;802:
+;803:	shieldMultiplier = 1;
 ADDRLP4 0
 CNSTI4 1
 ASGNI4
-line 802
-;801:
-;802:	ent->clipmask = CONTENTS_SOLID;
+line 805
+;804:
+;805:	ent->clipmask = CONTENTS_SOLID;
 ADDRFP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 1
 ASGNI4
-line 803
-;803:	ent->r.contents = CONTENTS_SOLID;
+line 806
+;806:	ent->r.contents = CONTENTS_SOLID;
 ADDRFP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1
 ASGNI4
-line 806
-;804:
-;805:	// Determine The Sheilding By Counting Shield Generators
-;806:	if (ent->s.team == TEAM_BLUE)
+line 809
+;807:
+;808:	// single player option  gamemode = -1
+;809:	if (g_GameMode.integer == 999)
+ADDRGP4 g_GameMode+12
+INDIRI4
+CNSTI4 999
+NEI4 $391
+line 810
+;810:	{
+line 811
+;811:		turret_think( ent );  // MC Will shoot at you too.
+ADDRFP4 0
+INDIRP4
+ARGP4
+ADDRGP4 turret_think
+CALLV
+pop
+line 812
+;812:	}
+LABELV $391
+line 815
+;813:
+;814:	// Determine The Sheilding By Counting Shield Generators
+;815:	if (ent->s.team == TEAM_BLUE)
 ADDRFP4 0
 INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $391
-line 807
-;807:	{
-line 808
-;808:		shieldMultiplier = level.blueGen;
+NEI4 $394
+line 816
+;816:	{
+line 817
+;817:		shieldMultiplier = level.blueGen;
 ADDRLP4 0
 ADDRGP4 level+9260
 INDIRI4
 ASGNI4
-line 809
-;809:		level.blueCredits = ent->health;
+line 818
+;818:		level.blueCredits = ent->health;
 ADDRGP4 level+9276
 ADDRFP4 0
 INDIRP4
@@ -4812,29 +4836,29 @@ CNSTI4 756
 ADDP4
 INDIRI4
 ASGNI4
-line 811
-;810:
-;811:	}
-LABELV $391
-line 812
-;812:	if (ent->s.team == TEAM_RED)
+line 820
+;819:
+;820:	}
+LABELV $394
+line 821
+;821:	if (ent->s.team == TEAM_RED)
 ADDRFP4 0
 INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $395
-line 813
-;813:	{
-line 814
-;814:		shieldMultiplier = level.redGen;
+NEI4 $398
+line 822
+;822:	{
+line 823
+;823:		shieldMultiplier = level.redGen;
 ADDRLP4 0
 ADDRGP4 level+9256
 INDIRI4
 ASGNI4
-line 815
-;815:		level.redCredits = ent->health;
+line 824
+;824:		level.redCredits = ent->health;
 ADDRGP4 level+9272
 ADDRFP4 0
 INDIRP4
@@ -4842,87 +4866,87 @@ CNSTI4 756
 ADDP4
 INDIRI4
 ASGNI4
-line 817
-;816:		
-;817:	}
-LABELV $395
-line 819
-;818:
-;819:	shieldMultiplier++;
+line 826
+;825:		
+;826:	}
+LABELV $398
+line 828
+;827:
+;828:	shieldMultiplier++;
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 822
-;820:
-;821:	// If there's at least one shield generator and the MC's health is above 35 it'll be shielded
-;822:	if (shieldMultiplier > 1) { ent->s.time2 = 1; } else { ent->s.time2 = 0; }
+line 831
+;829:
+;830:	// If there's at least one shield generator and the MC's health is above 35 it'll be shielded
+;831:	if (shieldMultiplier > 1) { ent->s.time2 = 1; } else { ent->s.time2 = 0; }
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
-LEI4 $399
+LEI4 $402
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 1
 ASGNI4
-ADDRGP4 $400
+ADDRGP4 $403
 JUMPV
-LABELV $399
+LABELV $402
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-LABELV $400
-line 828
-;823:
-;824:	 
-;825:	
-;826:	// It's shielded but health is too low.. 
-;827:	// This turns shielding off and regeneration stops.
-;828:	if (ent->s.time2==1)
+LABELV $403
+line 837
+;832:
+;833:	 
+;834:	
+;835:	// It's shielded but health is too low.. 
+;836:	// This turns shielding off and regeneration stops.
+;837:	if (ent->s.time2==1)
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $401
-line 829
-;829:	{
-line 830
-;830:		if (ent->health<35) // Was 350
+NEI4 $404
+line 838
+;838:	{
+line 839
+;839:		if (ent->health<35) // Was 350
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 INDIRI4
 CNSTI4 35
-GEI4 $403
-line 831
-;831:		{
-line 832
-;832:			ent->s.time2=0;
+GEI4 $406
+line 840
+;840:		{
+line 841
+;841:			ent->s.time2=0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 833
-;833:		}
-LABELV $403
-line 834
-;834:	}
-LABELV $401
-line 836
-;835:	
-;836:	if ((ent->s.time2==1) && (shieldMultiplier > 1)) 
+line 842
+;842:		}
+LABELV $406
+line 843
+;843:	}
+LABELV $404
+line 845
+;844:	
+;845:	if ((ent->s.time2==1) && (shieldMultiplier > 1)) 
 ADDRLP4 4
 CNSTI4 1
 ASGNI4
@@ -4933,16 +4957,16 @@ ADDP4
 INDIRI4
 ADDRLP4 4
 INDIRI4
-NEI4 $405
+NEI4 $408
 ADDRLP4 0
 INDIRI4
 ADDRLP4 4
 INDIRI4
-LEI4 $405
-line 837
-;837:	{
-line 838
-;838:		if (ent->health < (800 * shieldMultiplier) ) 
+LEI4 $408
+line 846
+;846:	{
+line 847
+;847:		if (ent->health < (800 * shieldMultiplier) ) 
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
@@ -4952,11 +4976,11 @@ CNSTI4 800
 ADDRLP4 0
 INDIRI4
 MULI4
-GEI4 $407
-line 839
-;839:		{
-line 840
-;840:			ent->health+=shieldMultiplier;
+GEI4 $410
+line 848
+;848:		{
+line 849
+;849:			ent->health+=shieldMultiplier;
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -4972,8 +4996,8 @@ ADDRLP4 0
 INDIRI4
 ADDI4
 ASGNI4
-line 841
-;841:			ent->nextthink=level.time+100;
+line 850
+;850:			ent->nextthink=level.time+100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -4983,15 +5007,15 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 842
-;842:		}
-LABELV $407
-line 843
-;843:	}
-LABELV $405
-line 845
-;844:
-;845:	ent->nextthink=level.time+100;
+line 851
+;851:		}
+LABELV $410
+line 852
+;852:	}
+LABELV $408
+line 854
+;853:
+;854:	ent->nextthink=level.time+100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -5001,102 +5025,102 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 846
-;846:}
+line 855
+;855:}
 LABELV $390
-endproc MC_think 12 0
+endproc MC_think 12 4
 export MC_prethink
 proc MC_prethink 0 0
-line 858
-;847:
-;848:
-;849:/*
-;850:===========================
-;851:MC_prethink
-;852:
-;853:The MC as it is in the 
-;854:'being built' state
-;855:===========================
-;856:*/
-;857:void MC_prethink(gentity_t *ent)
-;858:{
-line 859
-;859:	if (ent->s.team == TEAM_BLUE)
+line 867
+;856:
+;857:
+;858:/*
+;859:===========================
+;860:MC_prethink
+;861:
+;862:The MC as it is in the 
+;863:'being built' state
+;864:===========================
+;865:*/
+;866:void MC_prethink(gentity_t *ent)
+;867:{
+line 868
+;868:	if (ent->s.team == TEAM_BLUE)
 ADDRFP4 0
 INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $412
-line 860
-;860:	{
-line 861
-;861:		level.blueScoreLatched = 0;
+NEI4 $415
+line 869
+;869:	{
+line 870
+;870:		level.blueScoreLatched = 0;
 ADDRGP4 level+9292
 CNSTI4 0
 ASGNI4
-line 862
-;862:	} 
-ADDRGP4 $413
+line 871
+;871:	} 
+ADDRGP4 $416
 JUMPV
-LABELV $412
-line 864
-;863:	else 
-;864:	{
-line 865
-;865:		level.redScoreLatched = 0;
+LABELV $415
+line 873
+;872:	else 
+;873:	{
+line 874
+;874:		level.redScoreLatched = 0;
 ADDRGP4 level+9288
 CNSTI4 0
 ASGNI4
-line 866
-;866:	}
-LABELV $413
-line 868
-;867:
-;868:	ent->takedamage=qtrue; // so they can be destroyed
+line 875
+;875:	}
+LABELV $416
+line 877
+;876:
+;877:	ent->takedamage=qtrue; // so they can be destroyed
 ADDRFP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 1
 ASGNI4
-line 870
-;869:	// - We'll start it high, so that it cant be destroyed easily right away.
-;870:	ent->health=2400; // change this to make the turrets tougher or weaker.
+line 879
+;878:	// - We'll start it high, so that it cant be destroyed easily right away.
+;879:	ent->health=2400; // change this to make the turrets tougher or weaker.
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 2400
 ASGNI4
-line 871
-;871:	ent->die=turret_explode; // so they actually explode when destroyed
+line 880
+;880:	ent->die=turret_explode; // so they actually explode when destroyed
 ADDRFP4 0
 INDIRP4
 CNSTI4 740
 ADDP4
 ADDRGP4 turret_explode
 ASGNP4
-line 873
-;872:	
-;873:	ent->s.time2=1;
+line 882
+;881:	
+;882:	ent->s.time2=1;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 1
 ASGNI4
-line 874
-;874:	ent->think = MC_think;
+line 883
+;883:	ent->think = MC_think;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 MC_think
 ASGNP4
-line 875
-;875:	ent->nextthink=level.time+100;
+line 884
+;884:	ent->nextthink=level.time+100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -5106,33 +5130,33 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 878
-;876:
-;877:	// Announce any new buildables available
-;878:	AnnounceBuildables();
+line 887
+;885:
+;886:	// Announce any new buildables available
+;887:	AnnounceBuildables();
 ADDRGP4 AnnounceBuildables
 CALLV
 pop
-line 879
-;879:}
-LABELV $411
+line 888
+;888:}
+LABELV $414
 endproc MC_prethink 0 0
 export BuildMC
 proc BuildMC 24 20
-line 888
-;880:
-;881:
-;882:/*
-;883:===========================
-;884:BuildMC
-;885:===========================
-;886:*/
-;887:void BuildMC( gentity_t *ent )
-;888:{
-line 891
-;889:	gentity_t	*base;
-;890:	
-;891:	if (CanBuildHere(ent) == qfalse) 
+line 897
+;889:
+;890:
+;891:/*
+;892:===========================
+;893:BuildMC
+;894:===========================
+;895:*/
+;896:void BuildMC( gentity_t *ent )
+;897:{
+line 900
+;898:	gentity_t	*base;
+;899:	
+;900:	if (CanBuildHere(ent) == qfalse) 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5143,11 +5167,11 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $418
-line 892
-;892:	{ 
-line 893
-;893:		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
+NEI4 $421
+line 901
+;901:	{ 
+line 902
+;902:		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
 ADDRFP4 0
 INDIRP4
 CVPU4 4
@@ -5163,64 +5187,56 @@ ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 894
-;894:		return; 
-ADDRGP4 $417
-JUMPV
-LABELV $418
-line 897
-;895:	}
-;896:
-;897:	if (ent->client->sess.sessionTeam == TEAM_BLUE)
-ADDRFP4 0
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 2552
-ADDP4
-INDIRI4
-CNSTI4 2
-NEI4 $420
-line 898
-;898:	{
-line 899
-;899:		level.blueMC++;
-ADDRLP4 8
-ADDRGP4 level+9284
-ASGNP4
-ADDRLP4 8
-INDIRP4
-ADDRLP4 8
-INDIRP4
-INDIRI4
-CNSTI4 1
-ADDI4
-ASGNI4
-line 900
-;900:		level.blueNeedMC = 0;
-ADDRGP4 level+9296
-CNSTI4 0
-ASGNI4
-line 901
-;901:	}
-LABELV $420
-line 902
-;902:	if (ent->client->sess.sessionTeam == TEAM_RED)
-ADDRFP4 0
-INDIRP4
-CNSTI4 524
-ADDP4
-INDIRP4
-CNSTI4 2552
-ADDP4
-INDIRI4
-CNSTI4 1
-NEI4 $424
 line 903
-;903:	{
-line 904
-;904:		level.redMC++;
+;903:		return; 
+ADDRGP4 $420
+JUMPV
+LABELV $421
+line 907
+;904:	}
+;905:
+;906:	// single player only blue team can have a power core
+;907:	if((ent->client->sess.sessionTeam == TEAM_RED) && (g_GameMode.integer == 999))
+ADDRFP4 0
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 2556
+ADDP4
+INDIRI4
+CNSTI4 1
+NEI4 $423
+ADDRGP4 g_GameMode+12
+INDIRI4
+CNSTI4 999
+NEI4 $423
+line 908
+;908:	{
+line 909
+;909:		return;
+ADDRGP4 $420
+JUMPV
+LABELV $423
+line 913
+;910:	}
+;911:
+;912:
+;913:	if (ent->client->sess.sessionTeam == TEAM_RED)
+ADDRFP4 0
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 2556
+ADDP4
+INDIRI4
+CNSTI4 1
+NEI4 $426
+line 914
+;914:	{
+line 915
+;915:		level.redMC++;
 ADDRLP4 8
 ADDRGP4 level+9280
 ASGNP4
@@ -5232,17 +5248,52 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 905
-;905:		level.redNeedMC = 0;
+line 916
+;916:		level.redNeedMC = 0;
 ADDRGP4 level+9300
 CNSTI4 0
 ASGNI4
-line 906
-;906:	}
-LABELV $424
-line 908
-;907:
-;908:	base=G_Spawn();
+line 917
+;917:	}
+LABELV $426
+line 918
+;918:	if (ent->client->sess.sessionTeam == TEAM_BLUE)
+ADDRFP4 0
+INDIRP4
+CNSTI4 524
+ADDP4
+INDIRP4
+CNSTI4 2556
+ADDP4
+INDIRI4
+CNSTI4 2
+NEI4 $430
+line 919
+;919:	{
+line 920
+;920:		level.blueMC++;
+ADDRLP4 8
+ADDRGP4 level+9284
+ASGNP4
+ADDRLP4 8
+INDIRP4
+ADDRLP4 8
+INDIRP4
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+line 921
+;921:		level.blueNeedMC = 0;
+ADDRGP4 level+9296
+CNSTI4 0
+ASGNI4
+line 922
+;922:	}
+LABELV $430
+line 924
+;923:
+;924:	base=G_Spawn();
 ADDRLP4 8
 ADDRGP4 G_Spawn
 CALLP4
@@ -5251,8 +5302,8 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 909
-;909:	base->parent=ent;
+line 925
+;925:	base->parent=ent;
 ADDRLP4 0
 INDIRP4
 CNSTI4 608
@@ -5260,10 +5311,10 @@ ADDP4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 911
-;910:	
-;911:	base->s.modelindex = G_ModelIndex("models/turrets/mc.md3");
-ADDRGP4 $428
+line 927
+;926:	
+;927:	base->s.modelindex = G_ModelIndex("models/turrets/mc.md3");
+ADDRGP4 $434
 ARGP4
 ADDRLP4 12
 ADDRGP4 G_ModelIndex
@@ -5276,17 +5327,17 @@ ADDP4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 912
-;912:	base->model = "models/turrets/mc.md3";
+line 928
+;928:	base->model = "models/turrets/mc.md3";
 ADDRLP4 0
 INDIRP4
 CNSTI4 548
 ADDP4
-ADDRGP4 $428
+ADDRGP4 $434
 ASGNP4
-line 913
-;913:	base->s.modelindex2 = G_ModelIndex("models/turrets/mc.md3");
-ADDRGP4 $428
+line 929
+;929:	base->s.modelindex2 = G_ModelIndex("models/turrets/mc.md3");
+ADDRGP4 $434
 ARGP4
 ADDRLP4 16
 ADDRGP4 G_ModelIndex
@@ -5299,9 +5350,9 @@ ADDP4
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 915
-;914:
-;915:	G_SetOrigin(base,ent->r.currentOrigin);
+line 931
+;930:
+;931:	G_SetOrigin(base,ent->r.currentOrigin);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5313,8 +5364,8 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 916
-;916:	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
+line 932
+;932:	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 ADDRLP4 0
 INDIRP4
 CNSTI4 60
@@ -5342,42 +5393,42 @@ CNSTI4 68
 ADDP4
 CNSTF4 0
 ASGNF4
-line 918
-;917:	
-;918:	base->s.eType=ET_GENERAL;
+line 934
+;933:	
+;934:	base->s.eType=ET_GENERAL;
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 919
-;919:	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+line 935
+;935:	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 ADDRLP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 9
 ASGNI4
-line 920
-;920:	base->takedamage=qfalse; // so they can be destroyed
+line 936
+;936:	base->takedamage=qfalse; // so they can be destroyed
 ADDRLP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 0
 ASGNI4
-line 922
-;921:	//base->die=turret_explode; // so they actually explode when destroyed
-;922:	base->classname = "mc";
+line 938
+;937:	//base->die=turret_explode; // so they actually explode when destroyed
+;938:	base->classname = "mc";
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
 ADDRGP4 $97
 ASGNP4
-line 923
-;923:	base->s.team =  ent->client->sess.sessionTeam;
+line 939
+;939:	base->s.team =  ent->client->sess.sessionTeam;
 ADDRLP4 0
 INDIRP4
 CNSTI4 208
@@ -5387,39 +5438,39 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 ASGNI4
-line 925
-;924:	
-;925:	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
+line 941
+;940:	
+;941:	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
 ADDRLP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 1
 ASGNI4
-line 926
-;926:	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
+line 942
+;942:	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
 ADDRLP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1
 ASGNI4
-line 927
-;927:	base->s.pos.trType = TR_GRAVITY;
+line 943
+;943:	base->s.pos.trType = TR_GRAVITY;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 5
 ASGNI4
-line 930
-;928:	
-;929:	// Correction to default numbers -Vincent
-;930:	VectorSet( base->r.mins, -16, -16, -16 );
+line 946
+;944:	
+;945:	// Correction to default numbers -Vincent
+;946:	VectorSet( base->r.mins, -16, -16, -16 );
 ADDRLP4 0
 INDIRP4
 CNSTI4 444
@@ -5438,8 +5489,8 @@ CNSTI4 452
 ADDP4
 CNSTF4 3246391296
 ASGNF4
-line 931
-;931:	VectorSet( base->r.maxs, 16, 16, 16);
+line 947
+;947:	VectorSet( base->r.maxs, 16, 16, 16);
 ADDRLP4 0
 INDIRP4
 CNSTI4 456
@@ -5458,37 +5509,37 @@ CNSTI4 464
 ADDP4
 CNSTF4 1098907648
 ASGNF4
-line 933
-;932:
-;933:	trap_LinkEntity( base );
+line 949
+;948:
+;949:	trap_LinkEntity( base );
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 935
-;934:
-;935:	BuildableSpawn( base ); // New spawning -Vincent
+line 951
+;950:
+;951:	BuildableSpawn( base ); // New spawning -Vincent
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BuildableSpawn
 CALLV
 pop
-line 936
-;936:	if( base->s.eType == ET_GENERAL )
+line 952
+;952:	if( base->s.eType == ET_GENERAL )
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $429
-line 937
-;937:	{ // Clear it!
-line 938
-;938:	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
+NEI4 $435
+line 953
+;953:	{ // Clear it!
+line 954
+;954:	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -5503,16 +5554,16 @@ ARGI4
 ADDRGP4 turret_explode
 CALLV
 pop
-line 939
-;939:	}
-ADDRGP4 $430
+line 955
+;955:	}
+ADDRGP4 $436
 JUMPV
-LABELV $429
-line 941
-;940:	else
-;941:	{ // Initalize it!
-line 942
-;942:	base->nextthink = level.time + 3000;
+LABELV $435
+line 957
+;956:	else
+;957:	{ // Initalize it!
+line 958
+;958:	base->nextthink = level.time + 3000;
 ADDRLP4 0
 INDIRP4
 CNSTI4 704
@@ -5522,109 +5573,109 @@ INDIRI4
 CNSTI4 3000
 ADDI4
 ASGNI4
-line 943
-;943:	base->think = MC_prethink;
+line 959
+;959:	base->think = MC_prethink;
 ADDRLP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 MC_prethink
 ASGNP4
-line 944
-;944:	}
-LABELV $430
-line 945
-;945:}
-LABELV $417
+line 960
+;960:	}
+LABELV $436
+line 961
+;961:}
+LABELV $420
 endproc BuildMC 24 20
 export GEN_think
 proc GEN_think 8 32
-line 959
-;946:
-;947:
-;948:
-;949:
-;950:/* 
-;951:====================================
-;952:
-;953:   SHIELD GENERATORS
-;954:
-;955:==================================== 
-;956:*/
-;957:
-;958:void GEN_think(gentity_t *ent)
-;959:{
-line 961
-;960:	gentity_t *attacker;
-;961:	attacker = &g_entities[ENTITYNUM_WORLD];
+line 975
+;962:
+;963:
+;964:
+;965:
+;966:/* 
+;967:====================================
+;968:
+;969:   SHIELD GENERATORS
+;970:
+;971:==================================== 
+;972:*/
+;973:
+;974:void GEN_think(gentity_t *ent)
+;975:{
+line 977
+;976:	gentity_t *attacker;
+;977:	attacker = &g_entities[ENTITYNUM_WORLD];
 ADDRLP4 0
 ADDRGP4 g_entities+944328
 ASGNP4
-line 963
-;962:
-;963:	ent->clipmask = CONTENTS_SOLID;
+line 979
+;978:
+;979:	ent->clipmask = CONTENTS_SOLID;
 ADDRFP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 1
 ASGNI4
-line 964
-;964:	ent->r.contents = CONTENTS_SOLID;
+line 980
+;980:	ent->r.contents = CONTENTS_SOLID;
 ADDRFP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1
 ASGNI4
-line 970
-;965:
-;966:
-;967:	// If the mc is gone blow up the generator... Meaning
-;968:	// you need an mc before you can build generators.
-;969:	// Otherwise you just sit there looking good.
-;970:	if (ent->s.team == TEAM_BLUE)
+line 986
+;981:
+;982:
+;983:	// If the mc is gone blow up the generator... Meaning
+;984:	// you need an mc before you can build generators.
+;985:	// Otherwise you just sit there looking good.
+;986:	if (ent->s.team == TEAM_BLUE)
 ADDRFP4 0
 INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $436
-line 971
-;971:	{
-line 973
-;972:		// If there is no MC or too many sheild generators blow it up.
-;973:		if (level.blueMC == 0 || level.blueGen > 2)  
+NEI4 $442
+line 987
+;987:	{
+line 989
+;988:		// If there is no MC or too many sheild generators blow it up.
+;989:		if (level.blueMC == 0 || level.blueGen > 2)  
 ADDRGP4 level+9284
 INDIRI4
 CNSTI4 0
-EQI4 $442
+EQI4 $448
 ADDRGP4 level+9260
 INDIRI4
 CNSTI4 2
-LEI4 $438
-LABELV $442
-line 974
-;974:		{	
-line 975
-;975:			ent->health = 1; 
+LEI4 $444
+LABELV $448
+line 990
+;990:		{	
+line 991
+;991:			ent->health = 1; 
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 1
 ASGNI4
-line 976
-;976:			ent->s.time2 = 0;
+line 992
+;992:			ent->s.time2 = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 977
-;977:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
+line 993
+;993:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5651,54 +5702,54 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 978
-;978:		}
-LABELV $438
-line 979
-;979:	}
-LABELV $436
-line 980
-;980:	if (ent->s.team == TEAM_RED)
+line 994
+;994:		}
+LABELV $444
+line 995
+;995:	}
+LABELV $442
+line 996
+;996:	if (ent->s.team == TEAM_RED)
 ADDRFP4 0
 INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $443
-line 981
-;981:	{
-line 982
-;982:		if (level.redMC == 0 || level.redGen > 2) 
+NEI4 $449
+line 997
+;997:	{
+line 998
+;998:		if (level.redMC == 0 || level.redGen > 2) 
 ADDRGP4 level+9280
 INDIRI4
 CNSTI4 0
-EQI4 $449
+EQI4 $455
 ADDRGP4 level+9256
 INDIRI4
 CNSTI4 2
-LEI4 $445
-LABELV $449
-line 983
-;983:		{ 
-line 984
-;984:			ent->health = 1; 
+LEI4 $451
+LABELV $455
+line 999
+;999:		{ 
+line 1000
+;1000:			ent->health = 1; 
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 1
 ASGNI4
-line 985
-;985:			ent->s.time2 = 0;
+line 1001
+;1001:			ent->s.time2 = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 986
-;986:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
+line 1002
+;1002:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5725,23 +5776,23 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 987
-;987:		}
-LABELV $445
-line 988
-;988:	}
-LABELV $443
-line 990
-;989:
-;990:	ent->think = GEN_think;
+line 1003
+;1003:		}
+LABELV $451
+line 1004
+;1004:	}
+LABELV $449
+line 1006
+;1005:
+;1006:	ent->think = GEN_think;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 GEN_think
 ASGNP4
-line 991
-;991:	ent->nextthink=level.time+100;
+line 1007
+;1007:	ent->nextthink=level.time+100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -5751,29 +5802,29 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 993
-;992:
-;993:}
-LABELV $434
+line 1009
+;1008:
+;1009:}
+LABELV $440
 endproc GEN_think 8 32
 export gen_prethink
 proc gen_prethink 4 4
-line 1005
-;994:
-;995:/*
-;996:===========================
-;997:gen_prethink
-;998:
-;999:The generator in 'being
-;1000:built' state
-;1001:===========================
-;1002:*/
-;1003:// Generators Are Never Shielded
-;1004:void gen_prethink(gentity_t *ent)
-;1005:{
-line 1007
-;1006:	// Dont count them until they have been built
-;1007:	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
+line 1021
+;1010:
+;1011:/*
+;1012:===========================
+;1013:gen_prethink
+;1014:
+;1015:The generator in 'being
+;1016:built' state
+;1017:===========================
+;1018:*/
+;1019:// Generators Are Never Shielded
+;1020:void gen_prethink(gentity_t *ent)
+;1021:{
+line 1023
+;1022:	// Dont count them until they have been built
+;1023:	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
 ADDRFP4 0
 INDIRP4
 CNSTI4 608
@@ -5782,15 +5833,15 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $452
-line 1008
-;1008:	{
-line 1009
-;1009:		level.blueGen++;
+NEI4 $458
+line 1024
+;1024:	{
+line 1025
+;1025:		level.blueGen++;
 ADDRLP4 0
 ADDRGP4 level+9260
 ASGNP4
@@ -5802,11 +5853,11 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1010
-;1010:	}
-LABELV $452
-line 1011
-;1011:	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
+line 1026
+;1026:	}
+LABELV $458
+line 1027
+;1027:	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
 ADDRFP4 0
 INDIRP4
 CNSTI4 608
@@ -5815,15 +5866,15 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $455
-line 1012
-;1012:	{
-line 1013
-;1013:		level.redGen++;
+NEI4 $461
+line 1028
+;1028:	{
+line 1029
+;1029:		level.redGen++;
 ADDRLP4 0
 ADDRGP4 level+9256
 ASGNP4
@@ -5835,35 +5886,35 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1014
-;1014:	}
-LABELV $455
-line 1016
-;1015:
-;1016:		BroadCastSound("sound/items/protect.ogg");
-ADDRGP4 $458
+line 1030
+;1030:	}
+LABELV $461
+line 1032
+;1031:
+;1032:		BroadCastSound("sound/items/protect.ogg");
+ADDRGP4 $464
 ARGP4
 ADDRGP4 BroadCastSound
 CALLV
 pop
-line 1017
-;1017:		ent->s.time2=0;
+line 1033
+;1033:		ent->s.time2=0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1018
-;1018:		ent->think = GEN_think;
+line 1034
+;1034:		ent->think = GEN_think;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 GEN_think
 ASGNP4
-line 1019
-;1019:		ent->nextthink=level.time+100;
+line 1035
+;1035:		ent->nextthink=level.time+100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -5873,28 +5924,28 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 1020
-;1020:}
-LABELV $451
+line 1036
+;1036:}
+LABELV $457
 endproc gen_prethink 4 4
 export BuildGenerator
 proc BuildGenerator 24 20
-line 1030
-;1021:
-;1022:
-;1023:/*
-;1024:===========================
-;1025:BuildGenerator
-;1026:===========================
-;1027:*/
-;1028:
-;1029:void BuildGenerator( gentity_t *ent )
-;1030:{
-line 1034
-;1031:
-;1032:	gentity_t	*base;
-;1033:	
-;1034:	if (CanBuildHere(ent) == qfalse) 
+line 1046
+;1037:
+;1038:
+;1039:/*
+;1040:===========================
+;1041:BuildGenerator
+;1042:===========================
+;1043:*/
+;1044:
+;1045:void BuildGenerator( gentity_t *ent )
+;1046:{
+line 1050
+;1047:
+;1048:	gentity_t	*base;
+;1049:	
+;1050:	if (CanBuildHere(ent) == qfalse) 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -5905,11 +5956,11 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $461
-line 1035
-;1035:	{ 
-line 1036
-;1036:		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
+NEI4 $467
+line 1051
+;1051:	{ 
+line 1052
+;1052:		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
 ADDRFP4 0
 INDIRP4
 CVPU4 4
@@ -5925,15 +5976,15 @@ ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 1037
-;1037:		return; 
-ADDRGP4 $460
+line 1053
+;1053:		return; 
+ADDRGP4 $466
 JUMPV
-LABELV $461
-line 1040
-;1038:	}
-;1039:
-;1040:	base=G_Spawn();
+LABELV $467
+line 1056
+;1054:	}
+;1055:
+;1056:	base=G_Spawn();
 ADDRLP4 8
 ADDRGP4 G_Spawn
 CALLP4
@@ -5942,8 +5993,8 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 1041
-;1041:	base->parent=ent;
+line 1057
+;1057:	base->parent=ent;
 ADDRLP4 0
 INDIRP4
 CNSTI4 608
@@ -5951,9 +6002,9 @@ ADDP4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 1042
-;1042:	base->s.modelindex = G_ModelIndex("models/turrets/generator.md3");
-ADDRGP4 $463
+line 1058
+;1058:	base->s.modelindex = G_ModelIndex("models/turrets/generator.md3");
+ADDRGP4 $469
 ARGP4
 ADDRLP4 12
 ADDRGP4 G_ModelIndex
@@ -5966,17 +6017,17 @@ ADDP4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 1043
-;1043:	base->model = "models/turrets/generator.md3";
+line 1059
+;1059:	base->model = "models/turrets/generator.md3";
 ADDRLP4 0
 INDIRP4
 CNSTI4 548
 ADDP4
-ADDRGP4 $463
+ADDRGP4 $469
 ASGNP4
-line 1044
-;1044:	base->s.modelindex2 = G_ModelIndex("models/turrets/generator.md3");
-ADDRGP4 $463
+line 1060
+;1060:	base->s.modelindex2 = G_ModelIndex("models/turrets/generator.md3");
+ADDRGP4 $469
 ARGP4
 ADDRLP4 16
 ADDRGP4 G_ModelIndex
@@ -5989,9 +6040,9 @@ ADDP4
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 1046
-;1045:
-;1046:	G_SetOrigin(base,ent->r.currentOrigin);
+line 1062
+;1061:
+;1062:	G_SetOrigin(base,ent->r.currentOrigin);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6003,8 +6054,8 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 1047
-;1047:	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
+line 1063
+;1063:	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 ADDRLP4 0
 INDIRP4
 CNSTI4 60
@@ -6032,59 +6083,59 @@ CNSTI4 68
 ADDP4
 CNSTF4 0
 ASGNF4
-line 1049
-;1048:
-;1049:	base->health=400; // change this to make tougher or weaker.
+line 1065
+;1064:
+;1065:	base->health=400; // change this to make tougher or weaker.
 ADDRLP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 400
 ASGNI4
-line 1050
-;1050:	base->s.eType=ET_GENERAL;
+line 1066
+;1066:	base->s.eType=ET_GENERAL;
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1052
-;1051:	
-;1052:	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
+line 1068
+;1067:	
+;1068:	base->s.time2=9; // 0 is a normal turret, 1 is a shielded turret, 2 is a cloaked turret, 3 is a cloaked turret thats firing (to let it know to recloak).
 ADDRLP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 9
 ASGNI4
-line 1053
-;1053:	base->takedamage=qtrue; // so they can be destroyed
+line 1069
+;1069:	base->takedamage=qtrue; // so they can be destroyed
 ADDRLP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1054
-;1054:	base->die=turret_explode; // so they actually explode when destroyed
+line 1070
+;1070:	base->die=turret_explode; // so they actually explode when destroyed
 ADDRLP4 0
 INDIRP4
 CNSTI4 740
 ADDP4
 ADDRGP4 turret_explode
 ASGNP4
-line 1056
-;1055:
-;1056:	base->classname = "generator";
+line 1072
+;1071:
+;1072:	base->classname = "generator";
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
 ADDRGP4 $75
 ASGNP4
-line 1057
-;1057:	base->s.team =  ent->client->sess.sessionTeam;	
+line 1073
+;1073:	base->s.team =  ent->client->sess.sessionTeam;	
 ADDRLP4 0
 INDIRP4
 CNSTI4 208
@@ -6094,39 +6145,39 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 ASGNI4
-line 1059
-;1058:		
-;1059:	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
+line 1075
+;1074:		
+;1075:	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
 ADDRLP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1060
-;1060:	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
+line 1076
+;1076:	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
 ADDRLP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1061
-;1061:	base->s.pos.trType = TR_GRAVITY;
+line 1077
+;1077:	base->s.pos.trType = TR_GRAVITY;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 5
 ASGNI4
-line 1064
-;1062:	
-;1063:	// Correction to default numbers -Vincent
-;1064:	VectorSet( base->r.mins, -16, -16, -16 );
+line 1080
+;1078:	
+;1079:	// Correction to default numbers -Vincent
+;1080:	VectorSet( base->r.mins, -16, -16, -16 );
 ADDRLP4 0
 INDIRP4
 CNSTI4 444
@@ -6145,8 +6196,8 @@ CNSTI4 452
 ADDP4
 CNSTF4 3246391296
 ASGNF4
-line 1065
-;1065:	VectorSet( base->r.maxs, 16, 16, 16);
+line 1081
+;1081:	VectorSet( base->r.maxs, 16, 16, 16);
 ADDRLP4 0
 INDIRP4
 CNSTI4 456
@@ -6165,37 +6216,37 @@ CNSTI4 464
 ADDP4
 CNSTF4 1098907648
 ASGNF4
-line 1067
-;1066:
-;1067:	trap_LinkEntity( base );
+line 1083
+;1082:
+;1083:	trap_LinkEntity( base );
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 1069
-;1068:
-;1069:	BuildableSpawn( base ); // New spawning -Vincent
+line 1085
+;1084:
+;1085:	BuildableSpawn( base ); // New spawning -Vincent
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BuildableSpawn
 CALLV
 pop
-line 1070
-;1070:	if( base->s.eType == ET_GENERAL )
+line 1086
+;1086:	if( base->s.eType == ET_GENERAL )
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $464
-line 1071
-;1071:	{ // Clear it!
-line 1072
-;1072:	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
+NEI4 $470
+line 1087
+;1087:	{ // Clear it!
+line 1088
+;1088:	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6210,16 +6261,16 @@ ARGI4
 ADDRGP4 turret_explode
 CALLV
 pop
-line 1073
-;1073:	}
-ADDRGP4 $465
+line 1089
+;1089:	}
+ADDRGP4 $471
 JUMPV
-LABELV $464
-line 1075
-;1074:	else
-;1075:	{ // Initalize it!
-line 1076
-;1076:	base->nextthink = level.time + 9000;
+LABELV $470
+line 1091
+;1090:	else
+;1091:	{ // Initalize it!
+line 1092
+;1092:	base->nextthink = level.time + 9000;
 ADDRLP4 0
 INDIRP4
 CNSTI4 704
@@ -6229,120 +6280,120 @@ INDIRI4
 CNSTI4 9000
 ADDI4
 ASGNI4
-line 1077
-;1077:	base->think = gen_prethink;
+line 1093
+;1093:	base->think = gen_prethink;
 ADDRLP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 gen_prethink
 ASGNP4
-line 1078
-;1078:	}
-LABELV $465
-line 1079
-;1079:}
-LABELV $460
+line 1094
+;1094:	}
+LABELV $471
+line 1095
+;1095:}
+LABELV $466
 endproc BuildGenerator 24 20
 export TD_think
 proc TD_think 16 32
-line 1097
-;1080:
-;1081:
-;1082:
-;1083:
-;1084:/* 
-;1085:====================================
-;1086:
-;1087:   TIME DISPLACERS Now Called 
-;1088:   IMMOBILIZERS
-;1089:
-;1090:  // Need Some Models
-;1091:  
-;1092:
-;1093:==================================== 
-;1094:*/
-;1095:
-;1096:void TD_think(gentity_t *ent)
-;1097:{
-line 1102
+line 1113
+;1096:
+;1097:
 ;1098:
-;1099:	gentity_t *target;
-;1100:	gentity_t *attacker;
-;1101:
-;1102:	target = g_entities;
+;1099:
+;1100:/* 
+;1101:====================================
+;1102:
+;1103:   TIME DISPLACERS Now Called 
+;1104:   IMMOBILIZERS
+;1105:
+;1106:  // Need Some Models
+;1107:  
+;1108:
+;1109:==================================== 
+;1110:*/
+;1111:
+;1112:void TD_think(gentity_t *ent)
+;1113:{
+line 1118
+;1114:
+;1115:	gentity_t *target;
+;1116:	gentity_t *attacker;
+;1117:
+;1118:	target = g_entities;
 ADDRLP4 0
 ADDRGP4 g_entities
 ASGNP4
-line 1103
-;1103:	attacker = &g_entities[ENTITYNUM_WORLD];
+line 1119
+;1119:	attacker = &g_entities[ENTITYNUM_WORLD];
 ADDRLP4 4
 ADDRGP4 g_entities+944328
 ASGNP4
-line 1105
-;1104:
-;1105: 	ent->clipmask = CONTENTS_SOLID;
+line 1121
+;1120:
+;1121: 	ent->clipmask = CONTENTS_SOLID;
 ADDRFP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1106
-;1106:	ent->r.contents = CONTENTS_SOLID;
+line 1122
+;1122:	ent->r.contents = CONTENTS_SOLID;
 ADDRFP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1111
-;1107:
-;1108:	// If the mc is gone blow up the time displacer... Meaning
-;1109:	// you need an mc before you can build anything.
-;1110:	// Otherwise you just sit there looking good.
-;1111:	if (ent->s.team == TEAM_BLUE)
+line 1127
+;1123:
+;1124:	// If the mc is gone blow up the time displacer... Meaning
+;1125:	// you need an mc before you can build anything.
+;1126:	// Otherwise you just sit there looking good.
+;1127:	if (ent->s.team == TEAM_BLUE)
 ADDRFP4 0
 INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $471
-line 1112
-;1112:	{
-line 1114
-;1113:		// If there is no MC or too many sheild generators blow it up.
-;1114:		if (level.blueMC == 0 || level.blueTD> 2)  
+NEI4 $477
+line 1128
+;1128:	{
+line 1130
+;1129:		// If there is no MC or too many sheild generators blow it up.
+;1130:		if (level.blueMC == 0 || level.blueTD> 2)  
 ADDRGP4 level+9284
 INDIRI4
 CNSTI4 0
-EQI4 $477
+EQI4 $483
 ADDRGP4 level+9304
 INDIRI4
 CNSTI4 2
-LEI4 $473
-LABELV $477
-line 1115
-;1115:		{	
-line 1116
-;1116:			ent->health = 1; 
+LEI4 $479
+LABELV $483
+line 1131
+;1131:		{	
+line 1132
+;1132:			ent->health = 1; 
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1117
-;1117:			ent->s.time2 = 0;
+line 1133
+;1133:			ent->s.time2 = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1118
-;1118:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
+line 1134
+;1134:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6369,54 +6420,54 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 1119
-;1119:		}
-LABELV $473
-line 1120
-;1120:	}
-LABELV $471
-line 1121
-;1121:	if (ent->s.team == TEAM_RED)
+line 1135
+;1135:		}
+LABELV $479
+line 1136
+;1136:	}
+LABELV $477
+line 1137
+;1137:	if (ent->s.team == TEAM_RED)
 ADDRFP4 0
 INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $478
-line 1122
-;1122:	{
-line 1123
-;1123:		if (level.redMC == 0 || level.redTD > 2) 
+NEI4 $484
+line 1138
+;1138:	{
+line 1139
+;1139:		if (level.redMC == 0 || level.redTD > 2) 
 ADDRGP4 level+9280
 INDIRI4
 CNSTI4 0
-EQI4 $484
+EQI4 $490
 ADDRGP4 level+9308
 INDIRI4
 CNSTI4 2
-LEI4 $480
-LABELV $484
-line 1124
-;1124:		{ 
-line 1125
-;1125:			ent->health = 1; 
+LEI4 $486
+LABELV $490
+line 1140
+;1140:		{ 
+line 1141
+;1141:			ent->health = 1; 
 ADDRFP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1126
-;1126:			ent->s.time2 = 0;
+line 1142
+;1142:			ent->s.time2 = 0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1127
-;1127:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
+line 1143
+;1143:			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6443,16 +6494,16 @@ ARGI4
 ADDRGP4 G_Damage
 CALLV
 pop
-line 1128
-;1128:		}
-LABELV $480
-line 1129
-;1129:	}
-LABELV $478
-line 1132
-;1130:
-;1131:	
-;1132:	ent->nextthink=level.time+10;
+line 1144
+;1144:		}
+LABELV $486
+line 1145
+;1145:	}
+LABELV $484
+line 1148
+;1146:
+;1147:	
+;1148:	ent->nextthink=level.time+10;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -6462,17 +6513,17 @@ INDIRI4
 CNSTI4 10
 ADDI4
 ASGNI4
-line 1133
-;1133:	ent->think = TD_think;
+line 1149
+;1149:	ent->think = TD_think;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 TD_think
 ASGNP4
-line 1135
-;1134:
-;1135:	if (!checktarget(ent,ent->enemy))
+line 1151
+;1150:
+;1151:	if (!checktarget(ent,ent->enemy))
 ADDRLP4 8
 ADDRFP4 0
 INDIRP4
@@ -6493,23 +6544,23 @@ ASGNI4
 ADDRLP4 12
 INDIRI4
 CNSTI4 0
-NEI4 $486
-line 1136
-;1136:	{
-line 1137
-;1137:		turret_findenemy(ent);
+NEI4 $492
+line 1152
+;1152:	{
+line 1153
+;1153:		turret_findenemy(ent);
 ADDRFP4 0
 INDIRP4
 ARGP4
 ADDRGP4 turret_findenemy
 CALLV
 pop
-line 1138
-;1138:	}
-LABELV $486
-line 1140
-;1139:
-;1140:	if(!ent->enemy) { 	return; }
+line 1154
+;1154:	}
+LABELV $492
+line 1156
+;1155:
+;1156:	if(!ent->enemy) { 	return; }
 ADDRFP4 0
 INDIRP4
 CNSTI4 792
@@ -6517,13 +6568,13 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $488
-ADDRGP4 $469
+NEU4 $494
+ADDRGP4 $475
 JUMPV
-LABELV $488
-line 1142
-;1141:	
-;1142:	target = ent->enemy;
+LABELV $494
+line 1158
+;1157:	
+;1158:	target = ent->enemy;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -6531,23 +6582,23 @@ CNSTI4 792
 ADDP4
 INDIRP4
 ASGNP4
-line 1145
-;1143:
-;1144:
-;1145:	if (target->s.eType == ET_BUILDABLE) { return; } // Can't immobilize other buildables - Mantis #0000048 Shafe
+line 1161
+;1159:
+;1160:
+;1161:	if (target->s.eType == ET_BUILDABLE) { return; } // Can't immobilize other buildables - Mantis #0000048 Shafe
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 13
-NEI4 $490
-ADDRGP4 $469
+NEI4 $496
+ADDRGP4 $475
 JUMPV
-LABELV $490
-line 1147
-;1146:
-;1147:	if (ent->count<level.time)
+LABELV $496
+line 1163
+;1162:
+;1163:	if (ent->count<level.time)
 ADDRFP4 0
 INDIRP4
 CNSTI4 784
@@ -6555,44 +6606,44 @@ ADDP4
 INDIRI4
 ADDRGP4 level+32
 INDIRI4
-GEI4 $492
-line 1148
-;1148:	{	
-line 1149
-;1149:		target->immobilized = qtrue;
+GEI4 $498
+line 1164
+;1164:	{	
+line 1165
+;1165:		target->immobilized = qtrue;
 ADDRLP4 0
 INDIRP4
 CNSTI4 920
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1150
-;1150:	} 
-LABELV $492
-line 1152
-;1151:
-;1152:}
-LABELV $469
+line 1166
+;1166:	} 
+LABELV $498
+line 1168
+;1167:
+;1168:}
+LABELV $475
 endproc TD_think 16 32
 export td_prethink
 proc td_prethink 4 4
-line 1165
-;1153:
-;1154:/*
-;1155:===========================
-;1156:TD_prethink
-;1157:
-;1158:The Time Displacer in 'being
-;1159:built' state
-;1160:
-;1161:===========================
-;1162:*/
-;1163:
-;1164:void td_prethink(gentity_t *ent)
-;1165:{
-line 1167
-;1166:	// Dont count them until they have been built
-;1167:	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
+line 1181
+;1169:
+;1170:/*
+;1171:===========================
+;1172:TD_prethink
+;1173:
+;1174:The Time Displacer in 'being
+;1175:built' state
+;1176:
+;1177:===========================
+;1178:*/
+;1179:
+;1180:void td_prethink(gentity_t *ent)
+;1181:{
+line 1183
+;1182:	// Dont count them until they have been built
+;1183:	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
 ADDRFP4 0
 INDIRP4
 CNSTI4 608
@@ -6601,15 +6652,15 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 2
-NEI4 $496
-line 1168
-;1168:	{
-line 1169
-;1169:		level.blueTD++;
+NEI4 $502
+line 1184
+;1184:	{
+line 1185
+;1185:		level.blueTD++;
 ADDRLP4 0
 ADDRGP4 level+9304
 ASGNP4
@@ -6621,11 +6672,11 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1170
-;1170:	}
-LABELV $496
-line 1171
-;1171:	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
+line 1186
+;1186:	}
+LABELV $502
+line 1187
+;1187:	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
 ADDRFP4 0
 INDIRP4
 CNSTI4 608
@@ -6634,15 +6685,15 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 CNSTI4 1
-NEI4 $499
-line 1172
-;1172:	{
-line 1173
-;1173:		level.redTD++;
+NEI4 $505
+line 1188
+;1188:	{
+line 1189
+;1189:		level.redTD++;
 ADDRLP4 0
 ADDRGP4 level+9308
 ASGNP4
@@ -6654,35 +6705,35 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 1174
-;1174:	}
-LABELV $499
-line 1176
-;1175:
-;1176:		BroadCastSound("sound/items/protect.ogg");
-ADDRGP4 $458
+line 1190
+;1190:	}
+LABELV $505
+line 1192
+;1191:
+;1192:		BroadCastSound("sound/items/protect.ogg");
+ADDRGP4 $464
 ARGP4
 ADDRGP4 BroadCastSound
 CALLV
 pop
-line 1177
-;1177:		ent->s.time2=0;
+line 1193
+;1193:		ent->s.time2=0;
 ADDRFP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1178
-;1178:		ent->think = TD_think;
+line 1194
+;1194:		ent->think = TD_think;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 TD_think
 ASGNP4
-line 1179
-;1179:		ent->nextthink=level.time+100;
+line 1195
+;1195:		ent->nextthink=level.time+100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -6692,27 +6743,27 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 1180
-;1180:}
-LABELV $495
+line 1196
+;1196:}
+LABELV $501
 endproc td_prethink 4 4
 export BuildDisplacer
 proc BuildDisplacer 24 20
-line 1190
-;1181:
-;1182:
-;1183:/*
-;1184:===========================
-;1185:BuildDisplacer
-;1186:===========================
-;1187:*/
-;1188:
-;1189:void BuildDisplacer( gentity_t *ent )
-;1190:{
-line 1193
-;1191:	gentity_t	*base;
-;1192:	
-;1193:	if (CanBuildHere(ent) == qfalse) 
+line 1206
+;1197:
+;1198:
+;1199:/*
+;1200:===========================
+;1201:BuildDisplacer
+;1202:===========================
+;1203:*/
+;1204:
+;1205:void BuildDisplacer( gentity_t *ent )
+;1206:{
+line 1209
+;1207:	gentity_t	*base;
+;1208:	
+;1209:	if (CanBuildHere(ent) == qfalse) 
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -6723,11 +6774,11 @@ ASGNI4
 ADDRLP4 4
 INDIRI4
 CNSTI4 0
-NEI4 $504
-line 1194
-;1194:	{ 
-line 1195
-;1195:		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
+NEI4 $510
+line 1210
+;1210:	{ 
+line 1211
+;1211:		trap_SendServerCommand( ent-g_entities, "cp \"Not Enough Room to Build Here.\"" );
 ADDRFP4 0
 INDIRP4
 CVPU4 4
@@ -6743,15 +6794,15 @@ ARGP4
 ADDRGP4 trap_SendServerCommand
 CALLV
 pop
-line 1196
-;1196:		return; 
-ADDRGP4 $503
+line 1212
+;1212:		return; 
+ADDRGP4 $509
 JUMPV
-LABELV $504
-line 1199
-;1197:	}
-;1198:
-;1199:	base=G_Spawn();
+LABELV $510
+line 1215
+;1213:	}
+;1214:
+;1215:	base=G_Spawn();
 ADDRLP4 8
 ADDRGP4 G_Spawn
 CALLP4
@@ -6760,8 +6811,8 @@ ADDRLP4 0
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 1200
-;1200:	base->parent=ent;
+line 1216
+;1216:	base->parent=ent;
 ADDRLP4 0
 INDIRP4
 CNSTI4 608
@@ -6769,9 +6820,9 @@ ADDP4
 ADDRFP4 0
 INDIRP4
 ASGNP4
-line 1201
-;1201:	base->s.modelindex = G_ModelIndex("models/turrets/immobilizer.md3");
-ADDRGP4 $506
+line 1217
+;1217:	base->s.modelindex = G_ModelIndex("models/turrets/immobilizer.md3");
+ADDRGP4 $512
 ARGP4
 ADDRLP4 12
 ADDRGP4 G_ModelIndex
@@ -6784,17 +6835,17 @@ ADDP4
 ADDRLP4 12
 INDIRI4
 ASGNI4
-line 1202
-;1202:	base->model = "models/turrets/immobilizer.md3";
+line 1218
+;1218:	base->model = "models/turrets/immobilizer.md3";
 ADDRLP4 0
 INDIRP4
 CNSTI4 548
 ADDP4
-ADDRGP4 $506
+ADDRGP4 $512
 ASGNP4
-line 1203
-;1203:	base->s.modelindex2 = G_ModelIndex("models/turrets/immobilizer.md3");
-ADDRGP4 $506
+line 1219
+;1219:	base->s.modelindex2 = G_ModelIndex("models/turrets/immobilizer.md3");
+ADDRGP4 $512
 ARGP4
 ADDRLP4 16
 ADDRGP4 G_ModelIndex
@@ -6807,9 +6858,9 @@ ADDP4
 ADDRLP4 16
 INDIRI4
 ASGNI4
-line 1205
-;1204:
-;1205:	G_SetOrigin(base,ent->r.currentOrigin);
+line 1221
+;1220:
+;1221:	G_SetOrigin(base,ent->r.currentOrigin);
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -6821,8 +6872,8 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 1206
-;1206:	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
+line 1222
+;1222:	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 ADDRLP4 0
 INDIRP4
 CNSTI4 60
@@ -6850,59 +6901,59 @@ CNSTI4 68
 ADDP4
 CNSTF4 0
 ASGNF4
-line 1208
-;1207:
-;1208:	base->health=150; // change this to make tougher or weaker.
+line 1224
+;1223:
+;1224:	base->health=150; // change this to make tougher or weaker.
 ADDRLP4 0
 INDIRP4
 CNSTI4 756
 ADDP4
 CNSTI4 150
 ASGNI4
-line 1209
-;1209:	base->s.eType=ET_GENERAL;
+line 1225
+;1225:	base->s.eType=ET_GENERAL;
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 1211
-;1210:	
-;1211:	base->s.time2=9; 
+line 1227
+;1226:	
+;1227:	base->s.time2=9; 
 ADDRLP4 0
 INDIRP4
 CNSTI4 88
 ADDP4
 CNSTI4 9
 ASGNI4
-line 1212
-;1212:	base->takedamage=qtrue; // so they can be destroyed
+line 1228
+;1228:	base->takedamage=qtrue; // so they can be destroyed
 ADDRLP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1213
-;1213:	base->die=turret_explode; // so they actually explode when destroyed
+line 1229
+;1229:	base->die=turret_explode; // so they actually explode when destroyed
 ADDRLP4 0
 INDIRP4
 CNSTI4 740
 ADDP4
 ADDRGP4 turret_explode
 ASGNP4
-line 1215
-;1214:
-;1215:	base->classname = "timedisplacer";
+line 1231
+;1230:
+;1231:	base->classname = "timedisplacer";
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
 ADDRGP4 $64
 ASGNP4
-line 1216
-;1216:	base->s.team =  ent->client->sess.sessionTeam;	
+line 1232
+;1232:	base->s.team =  ent->client->sess.sessionTeam;	
 ADDRLP4 0
 INDIRP4
 CNSTI4 208
@@ -6912,56 +6963,56 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2552
+CNSTI4 2556
 ADDP4
 INDIRI4
 ASGNI4
-line 1218
-;1217:		
-;1218:	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
+line 1234
+;1233:		
+;1234:	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
 ADDRLP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1219
-;1219:	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
+line 1235
+;1235:	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
 ADDRLP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1221
-;1220:		
-;1221:	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
+line 1237
+;1236:		
+;1237:	base->clipmask = CONTENTS_SOLID; // Start solid too -Vincent
 ADDRLP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1222
-;1222:	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
+line 1238
+;1238:	base->r.contents = CONTENTS_SOLID; // Start solid too -Vincent
 ADDRLP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1
 ASGNI4
-line 1223
-;1223:	base->s.pos.trType = TR_GRAVITY;
+line 1239
+;1239:	base->s.pos.trType = TR_GRAVITY;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 5
 ASGNI4
-line 1226
-;1224:	
-;1225:	// Correction to default numbers -Vincent
-;1226:	VectorSet( base->r.mins, -16, -16, -16 );
+line 1242
+;1240:	
+;1241:	// Correction to default numbers -Vincent
+;1242:	VectorSet( base->r.mins, -16, -16, -16 );
 ADDRLP4 0
 INDIRP4
 CNSTI4 444
@@ -6980,8 +7031,8 @@ CNSTI4 452
 ADDP4
 CNSTF4 3246391296
 ASGNF4
-line 1227
-;1227:	VectorSet( base->r.maxs, 16, 16, 16);
+line 1243
+;1243:	VectorSet( base->r.maxs, 16, 16, 16);
 ADDRLP4 0
 INDIRP4
 CNSTI4 456
@@ -7000,37 +7051,37 @@ CNSTI4 464
 ADDP4
 CNSTF4 1098907648
 ASGNF4
-line 1229
-;1228:
-;1229:	trap_LinkEntity( base );
+line 1245
+;1244:
+;1245:	trap_LinkEntity( base );
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 1231
-;1230:
-;1231:	BuildableSpawn( base ); // New spawning -Vincent
+line 1247
+;1246:
+;1247:	BuildableSpawn( base ); // New spawning -Vincent
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 BuildableSpawn
 CALLV
 pop
-line 1232
-;1232:	if( base->s.eType == ET_GENERAL )
+line 1248
+;1248:	if( base->s.eType == ET_GENERAL )
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 0
-NEI4 $507
-line 1233
-;1233:	{ // Clear it!
-line 1234
-;1234:	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
+NEI4 $513
+line 1249
+;1249:	{ // Clear it!
+line 1250
+;1250:	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -7045,16 +7096,16 @@ ARGI4
 ADDRGP4 turret_explode
 CALLV
 pop
-line 1235
-;1235:	}
-ADDRGP4 $508
+line 1251
+;1251:	}
+ADDRGP4 $514
 JUMPV
-LABELV $507
-line 1237
-;1236:	else
-;1237:	{ // Initalize it!
-line 1238
-;1238:	base->nextthink = level.time + 5000;
+LABELV $513
+line 1253
+;1252:	else
+;1253:	{ // Initalize it!
+line 1254
+;1254:	base->nextthink = level.time + 5000;
 ADDRLP4 0
 INDIRP4
 CNSTI4 704
@@ -7064,20 +7115,20 @@ INDIRI4
 CNSTI4 5000
 ADDI4
 ASGNI4
-line 1239
-;1239:	base->think = td_prethink;
+line 1255
+;1255:	base->think = td_prethink;
 ADDRLP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 td_prethink
 ASGNP4
-line 1240
-;1240:	}
-LABELV $508
-line 1241
-;1241:}
-LABELV $503
+line 1256
+;1256:	}
+LABELV $514
+line 1257
+;1257:}
+LABELV $509
 endproc BuildDisplacer 24 20
 import CanBuildHere
 import BuildableSpawn
@@ -7265,9 +7316,23 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_RegenAmmo
+import g_RegenHealth
+import g_AutoChangeMap
+import g_lastmap2
+import g_lastmap
+import g_randommap
+import g_mapfile
+import g_ReverseCTF
+import g_GuassRate
+import g_GuassSelfDamage
+import g_GuassKnockBack
+import g_GuassJump
 import g_PCTeamkills
 import g_GrappleMode
+import g_MaxTurrets
 import g_Turrets
+import g_StartRandom
 import g_StartBFG
 import g_StartPlasma
 import g_StartGauss
@@ -7277,7 +7342,6 @@ import g_StartGrenade
 import g_StartSG
 import g_StartMG
 import g_StartGauntlet
-import g_MultiJumps
 import g_RedMC
 import g_BlueMC
 import g_GameMode
@@ -7448,6 +7512,7 @@ import Touch_DoorTrigger
 import G_RunMover
 import fire_mg
 import fire_turret
+import fire_alt_gata
 import fire_grapple
 import fire_bfg
 import fire_rocket
@@ -7457,6 +7522,7 @@ import fire_altgrenade
 import fire_bomb
 import fire_pdgrenade
 import fire_grenade
+import fire_plasma2
 import fire_plasma
 import fire_blaster
 import G_RunMissile
@@ -7695,7 +7761,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $506
+LABELV $512
 byte 1 109
 byte 1 111
 byte 1 100
@@ -7728,7 +7794,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $463
+LABELV $469
 byte 1 109
 byte 1 111
 byte 1 100
@@ -7759,7 +7825,7 @@ byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $458
+LABELV $464
 byte 1 115
 byte 1 111
 byte 1 117
@@ -7785,7 +7851,7 @@ byte 1 103
 byte 1 103
 byte 1 0
 align 1
-LABELV $428
+LABELV $434
 byte 1 109
 byte 1 111
 byte 1 100

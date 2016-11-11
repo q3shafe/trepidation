@@ -1,0 +1,19 @@
+﻿Build started 10/31/2016 9:11:26 PM.
+     1>Project "C:\web\trepdev\trepidation\vms-source\code\ui\ui.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching ".\Debug\ui.unsuccessfulbuild".
+       ManifestResourceCompile:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo".\Debug\ui.dll.embed.manifest.res" .\Debug\ui_manifest.rc 
+     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(990,5): warning MSB8012: TargetPath(C:\web\trepdev\trepidation\vms-source\code\ui\.\Debug\ui.dll) does not match the Linker's OutputFile property value (C:\web\trepdev\trepidation\vms-source\code\Debug\uix86_new.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(992,5): warning MSB8012: TargetName(ui) does not match the Linker's OutputFile property value (uix86_new). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../Debug/uix86_new.dll" /INCREMENTAL /NOLOGO odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:".\Debug\ui.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"../Debug/ui.pdb" /MAP:".\Debug/uix86_new.map" /TLBID:1 /BASE:"0x40000000" /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug/uix86_new.lib" /MACHINE:X86 /DLL .\Debug\ui.dll.embed.manifest.res
+         "C:\web\trepdev\trepidation\vms-source\code\cgame\Debug\cgamex86.lib"
+         "C:\web\trepdev\trepidation\vms-source\code\game\Debug\qagamex86.lib"
+     1>LINK : error LNK2001: unresolved external symbol __DllMainCRTStartup@12
+     1>../Debug/uix86_new.dll : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "C:\web\trepdev\trepidation\vms-source\code\ui\ui.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.36

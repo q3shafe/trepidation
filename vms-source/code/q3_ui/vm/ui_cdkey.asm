@@ -2,7 +2,7 @@ code
 proc UI_CDKeyMenu_Event 8 4
 file "../ui_cdkey.c"
 line 46
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================

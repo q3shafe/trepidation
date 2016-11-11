@@ -16,6 +16,41 @@ http://web.archive.org/web/20080329051556/http://www.beer-garden.org/bg2/modules
 http://web.archive.org/web/20080329051410/http://www.beer-garden.org/bg2/modules/smartsection/item.php?itemid=43
 
 
+Game Highlights:
+
+- 17 multiplayer levels (maps).  Many quake 3 maps have also been tested and work with the game.
+- An original soundtrack featuring 10 original tracks.
+- 7 Game Modes.
+- Maps made for Trepidation, Quake 3 and Star Trek Voyager Elite force should load up, offering a plethora of community party maps available to the game.
+- In game Voice Over IP Support (VOIP)
+- All New Weapons
+- Instagib Modifier Available On Most Game Modes.
+- Build defensive Gun Turrets in capture the flag.
+- Server admins can have random map rotations.
+
+NEW AND NOTABLE:
+
+- Now Compatable with maps for Star Trek Elite Force and Quake 3.
+
+- New Map By Gigon
+
+- New Gametypes modes, One4All, Reverse CTF.
+
+- Updated weapons.
+
+- Working Bots
+
+- Build Gun Turrets to defend your flag.
+
+- Random Map Rotations
+
+- Lots of bugfixes
+
+- Lots of Missing Sounds or misnamed sounds fixed or created.
+
+
+
+
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================

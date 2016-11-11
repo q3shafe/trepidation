@@ -11,7 +11,7 @@ code
 proc UI_NetworkOptionsMenu_Event 8 8
 file "../ui_network.c"
 line 65
-;1:// Copyright (C) 1999-2000 Id Software, Inc.
+;1:// 2016 Trepidation Licensed under the GPL2
 ;2://
 ;3:/*
 ;4:=======================================================================
