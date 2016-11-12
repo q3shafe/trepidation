@@ -54,6 +54,8 @@ NEW AND NOTABLE:
 Trepidation Changelog - Most Recent Changes First
 ==================================================
 
+
+
 - Devastator and Gauntlet will get handed out less in Survival and One4All
 
 ======================
