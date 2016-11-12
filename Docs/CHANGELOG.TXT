@@ -10,18 +10,23 @@ Another Good Idea is to turn your downloads on.  The test servers are setup to d
 quickly via http from trepidation.n5net.com if there is a file you need.  So yeah, turn your
 downloads on :)
 
+Here are some useful links to copy to the wiki
+http://web.archive.org/web/20080329051556/http://www.beer-garden.org/bg2/modules/smartsection/item.php?itemid=37
+
+http://web.archive.org/web/20080329051410/http://www.beer-garden.org/bg2/modules/smartsection/item.php?itemid=43
+
 
 Game Highlights:
-
-- 17 multiplayer levels (maps).  Many quake 3 maps have also been tested and work with the game.
+- 17 multiplayer levels (maps).  
+- Quake 3 and Star Trek Voyager Elite Force Map Compatability.
 - An original soundtrack featuring 10 original tracks.
 - 7 Game Modes.
-- Maps made for Trepidation, Quake 3 and Star Trek Voyager Elite force should load up, offering a plethora of community party maps available to the game.
 - In game Voice Over IP Support (VOIP)
 - All New Weapons
 - Instagib Modifier Available On Most Game Modes.
 - Build defensive Gun Turrets in capture the flag.
-- Server admins can have random map rotations.
+- Random Map Rotations
+- New features for Mappers.
 
 NEW AND NOTABLE:
 
@@ -45,10 +50,16 @@ NEW AND NOTABLE:
 
 
 
-
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+
+- Devastator and Gauntlet will get handed out less in Survival and One4All
+
+======================
+11-12-2016 BUILD
+======================
+
 - New map by gigon station144
 
 - Star Trek Voyager Elite Force Maps now work and spawn items!  Some may be missing textures from the original game though.

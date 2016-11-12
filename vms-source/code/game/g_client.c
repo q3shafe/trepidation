@@ -1277,10 +1277,12 @@ void ClientSpawn(gentity_t *ent) {
 	if ( client->pers.maxHealth < 1 || client->pers.maxHealth > 100 ) {
 		client->pers.maxHealth = 100;
 	}
+
 	// clear entity values
 	client->ps.stats[STAT_MAX_HEALTH] = client->pers.maxHealth;
 	client->ps.eFlags = flags;
 
+	
 	ent->s.groundEntityNum = ENTITYNUM_NONE;
 	ent->client = &level.clients[index];
 	ent->takedamage = qtrue;
@@ -1353,7 +1355,19 @@ void ClientSpawn(gentity_t *ent) {
 
 
 	// health will count down towards max_health
-	ent->health = client->ps.stats[STAT_HEALTH] = client->ps.stats[STAT_MAX_HEALTH] + 25;
+	if(g_GameMode.integer == 999) // Single player starts out with more health
+	{
+		if ( !( ent->r.svFlags & SVF_BOT ) ) { // is not a bot
+			ent->health = 500;
+			client->pers.maxHealth = 500;
+			client->ps.stats[STAT_HEALTH] = 500;
+			client->ps.stats[STAT_MAX_HEALTH] = 500;
+		} else {
+			ent->health = client->ps.stats[STAT_HEALTH] = client->ps.stats[STAT_MAX_HEALTH] + 25; // is a bot
+		}
+	} else {
+		ent->health = client->ps.stats[STAT_HEALTH] = client->ps.stats[STAT_MAX_HEALTH] + 25;
+	}
 
 	G_SetOrigin( ent, spawn_origin );
 	VectorCopy( spawn_origin, client->ps.origin );
@@ -1388,26 +1402,24 @@ void ClientSpawn(gentity_t *ent) {
 		{
 			wpn = irandom(1,9); // Lets clean this up so you can specify which weapons are allowed
 			
-			/* This is such a bad way to do this
-			if (g_StartGauntlet.integer == 0) && (wpn == 1) { wpn++; }
-			if (g_StartMG.integer == 0) && (wpn == 2) { wpn++; }
-			if (g_StartSG.integer == 0) && (wpn == 3) { wpn++; }
-			if (g_StartGrenade.integer == 0) && (wpn == 4) { wpn++; }
-			if (g_StartSingCan.integer == 0) && (wpn == 5) { wpn++; }
-			if (g_StartSingFlame.integer == 0) && (wpn == 6) { wpn++; }
-			if (g_StartGauss.integer == 0) && (wpn == 7) { wpn++; }
-			if (g_StartPlasma.integer == 0) && (wpn == 8) { wpn++; }
-			// If the bfg is disabled... Revert to the machine gun..
-			// This is just flat out bad code.
-			if (g_StartBFG.integer == 0) && (wpn == 9) { wpn = 2; } 
-			*/
+			if(wpn == 1) { // Gauntlet Was chosen, lets give them a 1 in 5 chance of being the poor fool who actually gets it.
+				int r;
+				r = irandom(1,5);  // 1 in 5 chance you'll actually get it
+				if(r != 1) { wpn = r; }
+			}
 
+			if(wpn == 9) { // Devastator Was chosen, lets give them a 1 in 5 chance of being the lucky bastard who actually gets it.
+				int r;
+				r = irandom(4,9);  // 1 in 5 chance you'll actually get it
+				if(r != 9) { wpn = r; }
+			}
+						
 			client->ps.stats[STAT_WEAPONS] = ( 1 << wpn );
 			client->ps.ammo[wpn] = 9999;
 		}
 		
 		// Hand out weapons for arsenal
-		if ((g_GameMode.integer == 1) || (g_GameMode.integer == 999))
+		if (g_GameMode.integer == 1)
 		{
 			if (client->pers.h_gauntlet) 
 			{
@@ -1466,6 +1478,66 @@ void ClientSpawn(gentity_t *ent) {
 			//client->ps.ammo[wn] = INFINITE;
 		}
 
+
+				// Hand out weapons for single player
+		if (g_GameMode.integer == 999)
+		{
+			if (client->pers.h_gauntlet) 
+			{
+				client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GAUNTLET );
+				client->ps.ammo[WP_GAUNTLET] = 9999;
+			}
+			
+			if (client->pers.h_mg) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_MACHINEGUN );
+			client->ps.ammo[WP_MACHINEGUN] = 75;
+			}
+			
+			if (client->pers.h_sg) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_SHOTGUN );
+			client->ps.ammo[WP_SHOTGUN] = 25;
+			}
+			
+			if (client->pers.h_grenade ) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GRENADE_LAUNCHER );
+			client->ps.ammo[WP_GRENADE_LAUNCHER] = 25;
+			}
+
+			if (client->pers.h_singcan) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_ROCKET_LAUNCHER );
+			client->ps.ammo[WP_ROCKET_LAUNCHER] = 15;
+			}
+			
+			if (client->pers.h_flame) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_LIGHTNING );
+			client->ps.ammo[WP_LIGHTNING] = 75;
+			}
+			
+			if (client->pers.h_gauss) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_RAILGUN );
+			client->ps.ammo[WP_RAILGUN] = 10;
+			}
+	
+			if (client->pers.h_plasma) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_PLASMAGUN );
+			client->ps.ammo[WP_PLASMAGUN] = 75;
+			}
+			
+			if (client->pers.h_bfg) 
+			{
+			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_BFG );
+			client->ps.ammo[WP_BFG] = 15;
+			}
+			//client->ps.stats[STAT_WEAPONS] = ( 1 << wn );
+			//client->ps.ammo[wn] = INFINITE;
+		}
 
 	}
 
