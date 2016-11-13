@@ -304,6 +304,7 @@ typedef struct {
 	qboolean	Eliminated;		// For Arsenal and LMS
 	qboolean	Frozen;		// For Arsenal and LMS
 	int			TrueScore;		// For Arsenal and LMS
+	int			TrueTeam; // For Freeze
 	// Admin System Stuff
 	char                guid[ 33 ];
 	char                ip[ 16 ];

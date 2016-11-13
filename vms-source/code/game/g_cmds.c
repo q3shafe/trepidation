@@ -501,7 +501,7 @@ void Cmd_Score_f( gentity_t *ent )
 	DeathmatchScoreboardMessage( ent );
 }
 
-
+extern int CountTeamSurvivors();
 void Cmd_Test_f (gentity_t *ent) 
 {
 		trap_SendServerCommand( ent-g_entities, va("print \" level.bluegenerators %i\n\"", level.blueGen ));		
@@ -512,6 +512,8 @@ void Cmd_Test_f (gentity_t *ent)
 		trap_SendServerCommand( ent-g_entities, va("print \" level.blumc %i\n\"", level.blueMC ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redscorelatched %i\n\"", level.redScoreLatched ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.bluescorelatched %i\n\"", level.blueScoreLatched ));		
+		trap_SendServerCommand( ent-g_entities, va("print \" Red Team Survivors %i\n\"", CountTeamSurvivors(TEAM_RED) ));		
+		trap_SendServerCommand( ent-g_entities, va("print \" Blue Team Survivors %i\n\"", CountTeamSurvivors(TEAM_RED) ));		
 		//trap_SendServerCommand( ent-g_entities, va("print \" level.scoreTime %i\n\"", (level.time-level.scoreTime) ));		
 }
 

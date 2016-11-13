@@ -897,6 +897,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 			self->client->pers.TrueScore = self->client->ps.persistant[PERS_SCORE];
 			self->client->pers.Eliminated = qtrue;
 			self->client->pers.Frozen = qtrue;
+			self->client->pers.TrueTeam = self->client->sess.sessionTeam;
 			self->client->sess.sessionTeam = TEAM_SPECTATOR;
 			SetTeam(self, "s");
 			// Set The Last Attacker In Case The Winner Blows Themself up on the winning shot
