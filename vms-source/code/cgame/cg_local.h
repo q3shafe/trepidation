@@ -1131,6 +1131,7 @@ typedef struct {
 	int g_GameMode;
 	int g_RedMC;
 	int g_BlueMC;
+	int g_CurrentRound;
 	
 } cgs_t;
 
@@ -1269,6 +1270,7 @@ extern	vmCvar_t		cg_plOut;
 extern	vmCvar_t		cg_GameMode;
 extern	vmCvar_t		cg_BlueMC;
 extern	vmCvar_t		cg_RedMC;
+extern	vmCvar_t		cg_CurrentRound;
 
 // Shafe - Trep - Radar
 extern playerpos_t		cg_playerOrigins[MAX_CLIENTS];

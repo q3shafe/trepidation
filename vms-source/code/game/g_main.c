@@ -129,7 +129,8 @@ vmCvar_t    g_lastmap2;
 vmCvar_t	g_AutoChangeMap;
 vmCvar_t	g_RegenHealth;
 vmCvar_t	g_RegenAmmo;
-
+vmCvar_t    g_NumRounds; 
+vmCvar_t    g_CurrentRound; 
 
 
 vmCvar_t	trep_debug;
@@ -272,7 +273,9 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_AutoChangeMap, "g_AutoChangeMap", "0", 0, 0, qfalse },
 	{ &g_RegenHealth, "g_RegenHealth", "0", 0, 0, qtrue },
 	{ &g_RegenAmmo, "g_RegenAmmo", "0", 0, 0, qtrue },
-
+	{ &g_NumRounds, "g_NumRounds", "0", 0, 0, qtrue },
+	{ &g_CurrentRound, "g_CurrentRound", "0", 0, 0, qtrue },
+	
 	// Debugging
 	{ &trep_debug, "trep_debug", "0", CVAR_ARCHIVE, 0, qtrue }
 	
@@ -1509,6 +1512,8 @@ or moved to a new level based on the "nextmap" cvar
 void ExitLevel (void) {
 	int		i;
 	gclient_t *cl;
+	qboolean	donextlevel;
+
 
 	//bot interbreeding
 	BotInterbreedEndMatch();
@@ -1526,36 +1531,59 @@ void ExitLevel (void) {
 		}
 		return;	
 	}
+	donextlevel = qtrue;
 
-	
-	if(g_randommap.integer == 1) 
+
+	// Have we already done enough rounds for survival?  No, Play the map again
+	if((g_GameMode.integer == 2) && (g_NumRounds.integer > 0))
 	{
-		char newmap;
-		//char appendstring;
-		newmap = *GetRandomMap();				
 
-	} else {
-		trap_SendConsoleCommand( EXEC_APPEND, "vstr nextmap\n" );
-	}
-	
-
-
-	/* THIS DOESNT WORK -- FIXME - tre
-	// Arsenal Random Weapons
-		if ((g_StartRandom.integer == 1) && (g_GameMode.integer == 1))
+		if(g_CurrentRound.integer < (g_NumRounds.integer-1))
 		{
-			if (iramdom(0,1) > 0) { g_StartGauntlet.integer = 1; }
-			if (irandom(0,1) > 0) { g_StartMG.integer = 1;}
-			if (irandom(0,1) > 0) { g_StartSG.integer = 1; }
-			if (irandom(0,1) > 0) { g_StartGrenade.integer = 1; }
-			if (irandom(0,1) > 0) { g_StartSingCan.integer = 1; }
-			if (irandom(0,1) > 0) { g_StartFlame.integer = 1  }
-			if (irandom(0,1) > 0) { g_StartGauss.integer = 1;  }
-			if (irandom(0,1) > 0) { g_StartPlasma.integer = 1;}
-			if (irandom(0,1) > 0) { g_StartBFG.integer = 1;}
+			int cr;
+			cr = g_CurrentRound.integer;
+			cr++; 
+			trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", cr ) );
+			trap_SendConsoleCommand( EXEC_APPEND, "map_restart\n" );
+			donextlevel = qfalse;
+			// Save Scoring somehow here
 
-		} */
+		}
 
+	} 
+
+
+
+	// We are done doing the rounds, time to move on.
+	if((g_GameMode.integer == 2) && (g_NumRounds.integer > 0))
+	{
+		if(g_CurrentRound.integer >= (g_NumRounds.integer-1))
+		{
+			int cr;
+			cr = 0;
+			trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", cr ) );
+			donextlevel = qtrue;
+			// Do final Scores and move on to next map
+		}
+	}
+
+	// Moving on to normal crap for map rotations or random rotations
+
+	if(donextlevel)
+	{
+				
+		if(g_randommap.integer == 1) 
+		{
+			char newmap;
+			//char appendstring;
+			newmap = *GetRandomMap();				
+
+		} else {
+			trap_SendConsoleCommand( EXEC_APPEND, "vstr nextmap\n" );
+
+		}
+	}
+		
 	
 	level.changemap = NULL;
 	level.intermissiontime = 0;

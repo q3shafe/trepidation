@@ -2507,7 +2507,15 @@ static void CG_DrawWarmup( void ) {
 	
 	if(cgs.g_GameMode == 1)
 	{
-		s = va( "You Have %i Seconds To Join This Round", sec + 1 );
+		if (cgs.g_CurrentRound > 0)
+		{
+			int rn;
+			rn = cgs.g_CurrentRound+1;
+			s = va( "ROUND $i : You Have %i Seconds To Join This Round", rn, sec + 1 );
+		} else {
+			s = va( "You Have %i Seconds To Join This Round", sec + 1 );
+		}
+
 	} else
 	{
 		s = va( "Starts in: %i", sec + 1 );

@@ -1003,6 +1003,8 @@ extern vmCvar_t         g_lastmap2;
 extern vmCvar_t			g_AutoChangeMap;
 extern	vmCvar_t		g_RegenHealth;
 extern	vmCvar_t		g_RegenAmmo;
+extern	vmCvar_t		g_NumRounds; 
+extern	vmCvar_t		g_CurrentRound; 
 
 
 extern	vmCvar_t	trep_debug;
