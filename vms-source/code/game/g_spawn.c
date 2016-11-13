@@ -616,6 +616,8 @@ void SP_worldspawn( void ) {
 		//level.lastClient = -1;
 
 	} else if ( g_doWarmup.integer ) { // Turn it on
+	
+		
 		level.warmupTime = -1;
 		level.firstStrike = qfalse;
 		trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );

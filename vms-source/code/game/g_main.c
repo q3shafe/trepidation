@@ -1543,10 +1543,21 @@ void ExitLevel (void) {
 			int cr;
 			cr = g_CurrentRound.integer;
 			cr++; 
+
 			trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", cr ) );
 			trap_SendConsoleCommand( EXEC_APPEND, "map_restart\n" );
 			donextlevel = qfalse;
-			// Save Scoring somehow here
+			// Save All Players scores in truescore
+			for (i=0 ; i< g_maxclients.integer ; i++) {
+
+				cl = level.clients + i;
+				if ( cl->pers.connected != CON_CONNECTED ) 
+				{
+					continue;
+				}
+				level.clients[i].pers.TrueScore += cl->ps.persistant[PERS_SCORE];
+				// We need to note if they survived this match or not.
+			}
 
 		}
 
@@ -2341,6 +2352,7 @@ void CheckExitRules( void ) {
 		
 						BroadCastSound("sound/misc/laff01.ogg");
 						trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", survivor->pers.netname) );
+						survivor->pers.Wins++;
 
 
 				if (g_GameMode.integer == 1)
@@ -2616,10 +2628,19 @@ void CheckTournament( void ) {
 
 		// if all players have arrived, start the countdown
 		if ( level.warmupTime < 0 ) {
-			// fudge by -1 to account for extra delays
-			level.warmupTime = level.time + ( g_warmup.integer - 1 ) * 1000;
-			trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
-			return;
+			
+			if(g_CurrentRound.integer > 0) {
+				// Shorter warmup for all rounds after the first one
+				level.warmupTime = level.time + 9 * 1000; // 10 seconds with the fudge :)
+				trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
+				return;
+
+			} else {
+				// fudge by -1 to account for extra delays
+				level.warmupTime = level.time + ( g_warmup.integer - 1 ) * 1000;
+				trap_SetConfigstring( CS_WARMUP, va("%i", level.warmupTime) );
+				return;
+			}
 		}
 
 		// if the warmup time has counted down, restart
