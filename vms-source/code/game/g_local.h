@@ -306,6 +306,7 @@ typedef struct {
 	int			TrueScore;		// For Arsenal and LMS
 	int			TrueTeam; // For Freeze
 	int			Wins; // For LMS
+	int			MatchScore;
 	// Admin System Stuff
 	char                guid[ 33 ];
 	char                ip[ 16 ];

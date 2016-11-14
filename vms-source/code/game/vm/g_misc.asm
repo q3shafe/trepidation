@@ -143,7 +143,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2556
+CNSTI4 2568
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -429,7 +429,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2556
+CNSTI4 2568
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -496,7 +496,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2556
+CNSTI4 2568
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -2470,6 +2470,8 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_CurrentRound
+import g_NumRounds
 import g_RegenAmmo
 import g_RegenHealth
 import g_AutoChangeMap

@@ -5781,7 +5781,7 @@ line 830
 ;829:	float		len;
 ;830:	client	=	&level.clients[i];
 ADDRLP4 0
-CNSTI4 3480
+CNSTI4 3492
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -5803,7 +5803,7 @@ INDIRU4
 EQU4 $413
 ADDRLP4 0
 INDIRP4
-CNSTI4 2696
+CNSTI4 2708
 ADDP4
 INDIRP4
 CVPU4 4
@@ -5899,7 +5899,7 @@ line 841
 ;841:		Weapon_HookFree( client->hook ); // Free it!
 ADDRLP4 0
 INDIRP4
-CNSTI4 2696
+CNSTI4 2708
 ADDP4
 INDIRP4
 ARGP4
@@ -7502,7 +7502,7 @@ CNSTU4 0
 EQU4 $496
 ADDRLP4 0
 INDIRP4
-CNSTI4 2556
+CNSTI4 2568
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -12599,6 +12599,8 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_CurrentRound
+import g_NumRounds
 import g_RegenAmmo
 import g_RegenHealth
 import g_AutoChangeMap

@@ -184,7 +184,7 @@ line 56
 ;55:
 ;56:		client = &level.clients[i];
 ADDRLP4 0
-CNSTI4 3480
+CNSTI4 3492
 ADDRLP4 4
 INDIRI4
 MULI4
@@ -250,7 +250,7 @@ INDIRI4
 CNSTI4 3
 LTI4 $73
 ADDRLP4 100
-CNSTI4 2556
+CNSTI4 2568
 ASGNI4
 ADDRFP4 4
 INDIRP4
@@ -5589,6 +5589,8 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_CurrentRound
+import g_NumRounds
 import g_RegenAmmo
 import g_RegenHealth
 import g_AutoChangeMap

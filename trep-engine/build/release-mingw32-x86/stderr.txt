@@ -1,8 +1,0 @@
-ioq3 1.36_SVN1834 win_mingw-x86 Sep  9 2011
------ FS_Startup -----
-Current search path:
-C:\Users\Shafe\AppData\Roaming\Quake3/baseq3
-C:\build\msys\1.0\ioq3\build\release-mingw32-x86/baseq3
-
-----------------------
-0 files in pk3 files

@@ -6803,6 +6803,7 @@ export cg_playerOrigins
 align 4
 LABELV cg_playerOrigins
 skip 1024
+import cg_CurrentRound
 import cg_RedMC
 import cg_BlueMC
 import cg_GameMode

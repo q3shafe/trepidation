@@ -53,8 +53,11 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- 
 
+- Added the ability to specify g_NumRounds for survival so that each map can have multiple rounds (Scoring needs some work).
 
+- Added Linux 64 bit binaries.
 
 - Devastator and Gauntlet will get handed out less in Survival and One4All
 

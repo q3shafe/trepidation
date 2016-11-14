@@ -4901,6 +4901,8 @@ import findradius
 import trap_Cvar_VariableValue
 import trap_Args
 import trep_debug
+import g_CurrentRound
+import g_NumRounds
 import g_RegenAmmo
 import g_RegenHealth
 import g_AutoChangeMap

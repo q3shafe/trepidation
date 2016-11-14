@@ -2790,6 +2790,7 @@ import CG_Printf
 import CG_Argv
 import CG_ConfigString
 import cg_playerOrigins
+import cg_CurrentRound
 import cg_RedMC
 import cg_BlueMC
 import cg_GameMode

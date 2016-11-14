@@ -2001,6 +2001,7 @@ import CG_Cvar_ClampInt
 import CG_AddBoundingBox
 import CG_PredictWeaponEffects
 import cg_playerOrigins
+import cg_CurrentRound
 import cg_RedMC
 import cg_BlueMC
 import cg_GameMode

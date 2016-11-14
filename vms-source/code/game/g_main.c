@@ -1533,49 +1533,78 @@ void ExitLevel (void) {
 	}
 	donextlevel = qtrue;
 
+	// Dont do any of this if we have already shown the final scoreboard
 
-	// Have we already done enough rounds for survival?  No, Play the map again
-	if((g_GameMode.integer == 2) && (g_NumRounds.integer > 0))
+	if (level.redScoreLatched != qtrue)
 	{
 
-		if(g_CurrentRound.integer < (g_NumRounds.integer-1))
+		// Have we already done enough rounds for survival?  No, Play the map again
+		if((g_GameMode.integer == 2) && (g_NumRounds.integer > 0))
 		{
-			int cr;
-			cr = g_CurrentRound.integer;
-			cr++; 
 
-			trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", cr ) );
-			trap_SendConsoleCommand( EXEC_APPEND, "map_restart\n" );
-			donextlevel = qfalse;
-			// Save All Players scores in truescore
-			for (i=0 ; i< g_maxclients.integer ; i++) {
+			if(g_CurrentRound.integer < (g_NumRounds.integer-1))
+			{
+				int cr;
+				cr = g_CurrentRound.integer;
+				cr++; 
 
-				cl = level.clients + i;
-				if ( cl->pers.connected != CON_CONNECTED ) 
-				{
-					continue;
+				trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", cr ) );
+				trap_SendConsoleCommand( EXEC_APPEND, "map_restart\n" );
+				donextlevel = qfalse;
+				// Save All Players scores in truescore
+				for (i=0 ; i< g_maxclients.integer ; i++) {
+
+					cl = level.clients + i;
+					if ( cl->pers.connected != CON_CONNECTED ) 
+					{
+						continue;
+					}
+					level.clients[i].pers.MatchScore = level.clients[i].pers.MatchScore + cl->ps.persistant[PERS_SCORE];
+					// We need to note if they survived this match or not. -- we do this in checkexit
 				}
-				level.clients[i].pers.TrueScore += cl->ps.persistant[PERS_SCORE];
-				// We need to note if they survived this match or not.
+
 			}
 
-		}
-
-	} 
+		} 
 
 
 
-	// We are done doing the rounds, time to move on.
-	if((g_GameMode.integer == 2) && (g_NumRounds.integer > 0))
-	{
-		if(g_CurrentRound.integer >= (g_NumRounds.integer-1))
+		// We are done doing the rounds, time to move on.
+		if((g_GameMode.integer == 2) && (g_NumRounds.integer > 0))
 		{
-			int cr;
-			cr = 0;
-			trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", cr ) );
-			donextlevel = qtrue;
-			// Do final Scores and move on to next map
+			if(g_CurrentRound.integer >= (g_NumRounds.integer-1))
+			{
+				int cr;
+				cr = 0;
+				trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", cr ) );
+				donextlevel = qtrue;
+
+				// Add players final scores
+				for (i=0 ; i< g_maxclients.integer ; i++) 
+				{
+
+					cl = level.clients + i;
+					if ( cl->pers.connected != CON_CONNECTED ) 
+					{
+						continue;
+					}
+					cl->ps.persistant[PERS_SCORE] == level.clients[i].pers.MatchScore;
+					trap_SendServerCommand( -1, va("print \"^7 Debug %s True %i Real %i :::::::::::::\n\"", cl->pers.netname, level.clients[i].pers.MatchScore , cl->ps.persistant[PERS_SCORE] ) );
+					
+				}
+
+				// Now do the final intermission with some sort of bang	
+				BroadCastSound("sound/weapons/bfg/devhit.wav"); // Play some sort of cool sound.
+				level.redScoreLatched = qtrue;
+				level.intermissiontime = 0;
+				level.readyToExit = qfalse;
+				LogExit( "Fraglimit hit." );
+				//BeginIntermission();
+				return;
+			}
 		}
+	} else {
+		level.redScoreLatched = qfalse;
 	}
 
 	// Moving on to normal crap for map rotations or random rotations
@@ -1608,6 +1637,7 @@ void ExitLevel (void) {
 			continue;
 		}
 		cl->ps.persistant[PERS_SCORE] = 0;
+		level.clients[i].pers.MatchScore = 0; // Clear it out so it doesn't carry to the next map.
 	}
 
 	// we need to do this here before chaning to CON_CONNECTING
@@ -1910,7 +1940,11 @@ void CheckExitRules( void ) {
 		return;
 	}
 	
-	
+	if (g_NumRounds.integer > 0)
+	{
+		//trap_SendServerCommand( -1, va("cp \"Round %i of %i.\n\"", g_CurrentRound.integer, g_NumRounds.integer));
+	}
+
 
 	if ( level.intermissionQueued ) {
 #ifdef MISSIONPACK
@@ -2353,6 +2387,15 @@ void CheckExitRules( void ) {
 						BroadCastSound("sound/misc/laff01.ogg");
 						trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", survivor->pers.netname) );
 						survivor->pers.Wins++;
+
+						if (g_GameMode.integer == 2)
+						{
+							trap_SendServerCommand( -1, va("print \"^7 ::::::::::::: %s WINS ROUND %i OF %i :::::::::::::\n\"", survivor->pers.netname, (g_CurrentRound.integer+1), g_NumRounds.integer ) );
+							//trap_SendServerCommand( -1, "print \"::: ^9WINNER BONUSES :::\n\"");	
+							survivor->ps.persistant[PERS_SCORE]+=35;
+							//survivor->pers.TrueScore+=survivor->ps.persistant[PERS_SCORE]; // we do this in exitlevel
+							trap_SendServerCommand( -1, "print \"^9Survivor Bonus: ^3+35\n\"");	
+						}
 
 
 				if (g_GameMode.integer == 1)

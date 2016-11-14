@@ -6813,7 +6813,7 @@ ADDRGP4 cgs
 ARGP4
 CNSTI4 0
 ARGI4
-CNSTI4 155548
+CNSTI4 155552
 ARGI4
 ADDRGP4 memset
 CALLP4
@@ -7551,6 +7551,7 @@ import CG_Cvar_ClampInt
 import CG_AddBoundingBox
 import CG_PredictWeaponEffects
 import cg_playerOrigins
+import cg_CurrentRound
 export cg_RedMC
 align 4
 LABELV cg_RedMC
@@ -7983,7 +7984,7 @@ skip 157976
 export cgs
 align 4
 LABELV cgs
-skip 155548
+skip 155552
 import BG_PlayerTouchesItem
 import BG_PlayerStateToEntityStateExtraPolate
 import BG_PlayerStateToEntityState
