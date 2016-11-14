@@ -1028,7 +1028,7 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 
 //unlagged - backward reconciliation #5
 	// announce it
-	trap_SendServerCommand( clientNum, "print \"Trepidation Development Build 11-12-2016\n\"" );
+	trap_SendServerCommand( clientNum, "print \"Trepidation Development SNAPSHOT\n\"" );
 	if ( g_delagHitscan.integer ) {
 //		trap_SendServerCommand( clientNum, "print \"This server is Unlagged: full lag compensation is ON!\n\"" );
 	}

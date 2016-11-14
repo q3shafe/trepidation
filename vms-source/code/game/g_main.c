@@ -1552,6 +1552,7 @@ void ExitLevel (void) {
 				trap_SendConsoleCommand( EXEC_APPEND, "map_restart\n" );
 				donextlevel = qfalse;
 				// Save All Players scores in truescore
+	
 				for (i=0 ; i< g_maxclients.integer ; i++) {
 
 					cl = level.clients + i;
@@ -1559,10 +1560,11 @@ void ExitLevel (void) {
 					{
 						continue;
 					}
-					level.clients[i].pers.MatchScore = level.clients[i].pers.MatchScore + cl->ps.persistant[PERS_SCORE];
+					level.clients[i].pers.MatchScore = level.clients[i].pers.MatchScore + level.clients[i].pers.TrueScore;
+					//level.clients[i].pers.MatchScore = level.clients[i].pers.MatchScore + cl->ps.persistant[PERS_SCORE];
 					// We need to note if they survived this match or not. -- we do this in checkexit
 				}
-
+				return;
 			}
 
 		} 
@@ -1588,8 +1590,10 @@ void ExitLevel (void) {
 					{
 						continue;
 					}
-					cl->ps.persistant[PERS_SCORE] == level.clients[i].pers.MatchScore;
-					trap_SendServerCommand( -1, va("print \"^7 Debug %s True %i Real %i :::::::::::::\n\"", cl->pers.netname, level.clients[i].pers.MatchScore , cl->ps.persistant[PERS_SCORE] ) );
+					
+					cl->ps.persistant[PERS_SCORE] = cl->ps.persistant[PERS_SCORE] + level.clients[i].pers.MatchScore;
+					level.clients[i].pers.TrueScore = level.clients[i].pers.TrueScore  + level.clients[i].pers.MatchScore;
+					trap_SendServerCommand( -1, va("print \"^7 Debug %s Match %i true %i \n\"", cl->pers.netname, level.clients[i].pers.MatchScore , level.clients[i].pers.TrueScore ) );
 					
 				}
 
@@ -1637,6 +1641,8 @@ void ExitLevel (void) {
 			continue;
 		}
 		cl->ps.persistant[PERS_SCORE] = 0;
+		cl->pers.TrueScore = 0;
+		cl->pers.MatchScore = 0;
 		level.clients[i].pers.MatchScore = 0; // Clear it out so it doesn't carry to the next map.
 	}
 
@@ -2395,6 +2401,24 @@ void CheckExitRules( void ) {
 							survivor->ps.persistant[PERS_SCORE]+=35;
 							//survivor->pers.TrueScore+=survivor->ps.persistant[PERS_SCORE]; // we do this in exitlevel
 							trap_SendServerCommand( -1, "print \"^9Survivor Bonus: ^3+35\n\"");	
+
+
+							for ( i = 0; i < level.maxclients; i++ )
+							{
+								cl = &level.clients[i];
+								//survivor = &level.clients[i];
+								if ( cl->pers.connected == CON_CONNECTED)
+								{	
+									survivor = cl;	
+									cl->pers.MatchScore = cl->pers.MatchScore + cl->ps.persistant[PERS_SCORE];
+									cl->pers.TrueScore =  cl->pers.MatchScore;
+									trap_SendServerCommand( -1, va("print \"^7 %s match %i real %i \n\"", cl->pers.netname, cl->pers.MatchScore , cl->ps.persistant[PERS_SCORE] ) );
+								
+								}
+
+							}
+
+							
 						}
 
 
