@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation - Team Trepidation
 //
 // bg_slidemove.c -- part of bg_pmove functionality
 

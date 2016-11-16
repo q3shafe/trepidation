@@ -53,7 +53,17 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
-- 
+- Non Players can no longer go on killing sprees (i.e. world, turrets, etc.)
+
+- Fixed issue where current round number wasn't getting reset on map change if invoked manually.
+
+- Think I nailed the out of ammo issue with guantlet
+
+- Fixed issue where if you zoomed on warmup you get stuck zoomed forever.
+
+- Zoom is a little quicker.
+
+- fix issue with powerups not getting pre-registered on arsenal and survival causing the broken model thing when powerups are dropped
 
 - Added the ability to specify g_NumRounds for survival so that each map can have multiple rounds (Scoring needs some work).
 

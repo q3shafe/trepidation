@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 #include "ui_local.h"
 

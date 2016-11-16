@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation - Team Trepidation
 //
 // bg_pmove.c -- both games player movement code
 // takes a playerstate and a usercmd as input and returns a modifed playerstate

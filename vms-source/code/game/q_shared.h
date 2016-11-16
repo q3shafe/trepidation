@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation - Team Trepidation - Team Trepidation - Team Trepidation
 //
 #ifndef __Q_SHARED_H
 #define __Q_SHARED_H

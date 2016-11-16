@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 
 #include "g_local.h"
@@ -605,6 +605,7 @@ void G_InitModRules( void )
 	// Dont Use up Ammo in Arsenal
 	if (( g_GameMode.integer == 1 ) || (g_GameMode.integer == 2)) 
 	{
+		altAmmoUsage[WP_GAUNTLET] = 0;
 		altAmmoUsage[WP_MACHINEGUN] = 0;
 		altAmmoUsage[WP_SHOTGUN] = 0;
 		altAmmoUsage[WP_GRENADE_LAUNCHER] = 0;
@@ -1548,11 +1549,6 @@ void ExitLevel (void) {
 				cr = g_CurrentRound.integer;
 				cr++; 
 
-				trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", cr ) );
-				trap_SendConsoleCommand( EXEC_APPEND, "map_restart\n" );
-				donextlevel = qfalse;
-				// Save All Players scores in truescore
-	
 				for (i=0 ; i< g_maxclients.integer ; i++) {
 
 					cl = level.clients + i;
@@ -1560,10 +1556,20 @@ void ExitLevel (void) {
 					{
 						continue;
 					}
-					level.clients[i].pers.MatchScore = level.clients[i].pers.MatchScore + level.clients[i].pers.TrueScore;
+					level.clients[i].sess.MatchScore = level.clients[i].sess.MatchScore + level.clients[i].pers.TrueScore;
+
+
 					//level.clients[i].pers.MatchScore = level.clients[i].pers.MatchScore + cl->ps.persistant[PERS_SCORE];
 					// We need to note if they survived this match or not. -- we do this in checkexit
 				}
+
+
+				trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", cr ) );
+				trap_SendConsoleCommand( EXEC_APPEND, "map_restart\n" );
+				donextlevel = qfalse;
+
+	
+				
 				return;
 			}
 
@@ -1591,10 +1597,10 @@ void ExitLevel (void) {
 						continue;
 					}
 					
-					cl->ps.persistant[PERS_SCORE] = cl->ps.persistant[PERS_SCORE] + level.clients[i].pers.MatchScore;
-					level.clients[i].pers.TrueScore = level.clients[i].pers.TrueScore  + level.clients[i].pers.MatchScore;
-					trap_SendServerCommand( -1, va("print \"^7 Debug %s Match %i true %i \n\"", cl->pers.netname, level.clients[i].pers.MatchScore , level.clients[i].pers.TrueScore ) );
-					
+					//cl->ps.persistant[PERS_SCORE] = cl->ps.persistant[PERS_SCORE] + level.clients[i].sess.MatchScore;
+					//level.clients[i].pers.TrueScore = level.clients[i].pers.TrueScore  + level.clients[i].sess.MatchScore;
+					trap_SendServerCommand( -1, va("print \"^7 Debug %s Match %i true %i \n\"", cl->pers.netname, level.clients[i].sess.MatchScore , level.clients[i].pers.TrueScore ) );
+					level.clients[i].sess.MatchScore = level.clients[i].sess.MatchScore + level.clients[i].pers.TrueScore;
 				}
 
 				// Now do the final intermission with some sort of bang	
@@ -1632,6 +1638,10 @@ void ExitLevel (void) {
 	level.changemap = NULL;
 	level.intermissiontime = 0;
 
+	// Github bug #55- Shafe - reset rounds
+	g_CurrentRound.integer = 0;
+	trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", 0 ) );
+	
 	// reset all the scores so we don't enter the intermission again
 	level.teamScores[TEAM_RED] = 0;
 	level.teamScores[TEAM_BLUE] = 0;
@@ -1642,8 +1652,9 @@ void ExitLevel (void) {
 		}
 		cl->ps.persistant[PERS_SCORE] = 0;
 		cl->pers.TrueScore = 0;
-		cl->pers.MatchScore = 0;
-		level.clients[i].pers.MatchScore = 0; // Clear it out so it doesn't carry to the next map.
+		//cl->sess.MatchScore = 0;
+		//level.clients[i].pers.MatchScore = 0; // Clear it out so it doesn't carry to the next map.
+
 	}
 
 	// we need to do this here before chaning to CON_CONNECTING
@@ -2392,7 +2403,6 @@ void CheckExitRules( void ) {
 		
 						BroadCastSound("sound/misc/laff01.ogg");
 						trap_SendServerCommand( -1, va("cp \"%.15s" S_COLOR_WHITE " Is The Survivor!\n\"", survivor->pers.netname) );
-						survivor->pers.Wins++;
 
 						if (g_GameMode.integer == 2)
 						{
@@ -2401,24 +2411,7 @@ void CheckExitRules( void ) {
 							survivor->ps.persistant[PERS_SCORE]+=35;
 							//survivor->pers.TrueScore+=survivor->ps.persistant[PERS_SCORE]; // we do this in exitlevel
 							trap_SendServerCommand( -1, "print \"^9Survivor Bonus: ^3+35\n\"");	
-
-
-							for ( i = 0; i < level.maxclients; i++ )
-							{
-								cl = &level.clients[i];
-								//survivor = &level.clients[i];
-								if ( cl->pers.connected == CON_CONNECTED)
-								{	
-									survivor = cl;	
-									cl->pers.MatchScore = cl->pers.MatchScore + cl->ps.persistant[PERS_SCORE];
-									cl->pers.TrueScore =  cl->pers.MatchScore;
-									trap_SendServerCommand( -1, va("print \"^7 %s match %i real %i \n\"", cl->pers.netname, cl->pers.MatchScore , cl->ps.persistant[PERS_SCORE] ) );
-								
-								}
-
-							}
-
-							
+					
 						}
 
 
@@ -2482,6 +2475,22 @@ void CheckExitRules( void ) {
 				}
 				
 				survivor->pers.TrueScore = survivor->ps.persistant[PERS_SCORE];
+
+					for ( i = 0; i < level.maxclients; i++ )
+					{
+						//cl = &level.clients[i];
+						cl = level.clients + i;
+						//survivor = &level.clients[i];
+						if ( cl->pers.connected == CON_CONNECTED)
+						{						
+							//cl->sess.MatchScore = cl->sess.MatchScore + cl->ps.persistant[PERS_SCORE];				
+							//cl->pers.TrueScore = cl->ps.persistant[PERS_SCORE];
+							//trap_SendServerCommand( -1, va("print \"^7 %s Sesss.match %i persistant %i \n\"", cl->pers.netname, cl->sess.MatchScore , cl->pers.TrueScore ) );
+								
+						}
+
+					}
+
 				LogExit( "Fraglimit hit." );
 
 				return;

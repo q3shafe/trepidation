@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 // cg_snapshot.c -- things that happen on snapshot transition,
 // not necessarily every single rendered frame

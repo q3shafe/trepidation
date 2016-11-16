@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 #ifndef __TR_TYPES_H
 #define __TR_TYPES_H

@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 #include "g_local.h"
 
@@ -875,6 +875,13 @@ void ClearRegisteredItems( void ) {
 			RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
 			RegisterItem( BG_FindItemForWeapon( WP_PLASMAGUN ) );
 			RegisterItem( BG_FindItemForWeapon( WP_BFG ) );
+
+			// Github issue 43 - fix shafe
+			RegisterItem( BG_FindItemForPowerup( PW_QUAD ) );
+			RegisterItem( BG_FindItemForPowerup( PW_FLIGHT ) );
+			RegisterItem( BG_FindItemForPowerup( PW_BATTLESUIT ) );
+			RegisterItem( BG_FindItemForPowerup( PW_REGEN ) );
+
 		}
 	}
 

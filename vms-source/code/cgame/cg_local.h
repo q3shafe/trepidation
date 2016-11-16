@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 #include "../game/q_shared.h"
 #include "tr_types.h"
@@ -32,7 +32,7 @@
 #define	ITEM_SCALEUP_TIME	1000
 
 // Shafe - Trepidation - Improved Zoom Function
-#define	ZOOM_TIME			400			// Used to be 150
+#define	ZOOM_TIME			250			// Used to be 150 used to be 350!
 #define	ZOOM_TIME_OUT		050			// Added This
 
 #define	ITEM_BLOB_TIME		200

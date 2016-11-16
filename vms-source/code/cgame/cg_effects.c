@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 // cg_effects.c -- these functions generate localentities, usually as a result
 // of event processing

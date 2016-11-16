@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 #include "g_local.h"
 
@@ -31,7 +31,8 @@ void G_WriteClientSessionData( gclient_t *client ) {
 		client->sess.spectatorClient,
 		client->sess.wins,
 		client->sess.losses,
-		client->sess.teamLeader
+		client->sess.teamLeader,
+		client->sess.MatchScore
 		);
 
 	var = va( "session%i", client - level.clients );
@@ -54,24 +55,27 @@ void G_ReadSessionData( gclient_t *client ) {
 	int teamLeader;
 	int spectatorState;
 	int sessionTeam;
+	int MatchScore;
 
 	var = va( "session%i", client - level.clients );
 	trap_Cvar_VariableStringBuffer( var, s, sizeof(s) );
 
-	sscanf( s, "%i %i %i %i %i %i %i",
+	sscanf( s, "%i %i %i %i %i %i %i %i",
 		&sessionTeam,                 // bk010221 - format
 		&client->sess.spectatorTime,
 		&spectatorState,              // bk010221 - format
 		&client->sess.spectatorClient,
 		&client->sess.wins,
 		&client->sess.losses,
-		&teamLeader                   // bk010221 - format
+		&teamLeader,                   // bk010221 - format
+		&MatchScore
 		);
 
 	// bk001205 - format issues
 	client->sess.sessionTeam = (team_t)sessionTeam;
 	client->sess.spectatorState = (spectatorState_t)spectatorState;
 	client->sess.teamLeader = (qboolean)teamLeader;
+	
 }
 
 
@@ -137,7 +141,7 @@ void G_InitSessionData( gclient_t *client, char *userinfo ) {
 	
 	sess->spectatorState = SPECTATOR_FREE;
 	sess->spectatorTime = level.time;
-
+	sess->MatchScore = 0;
 	G_WriteClientSessionData( client );
 }
 

@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation - Team Trepidation - Team Trepidation
 //
 // This file must be identical in the quake and utils directories
 

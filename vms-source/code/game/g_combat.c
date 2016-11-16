@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 // g_combat.c
 
@@ -675,10 +675,14 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				{
 					if((attacker->s.weapon != WP_TURRET) && (meansOfDeath != MOD_UNKNOWN) && (meansOfDeath != MOD_TURRET) && (meansOfDeath != MOD_WATER)&& (meansOfDeath != MOD_LAVA) && (meansOfDeath != MOD_SLIME) && (meansOfDeath != MOD_CRUSH) && (meansOfDeath != MOD_FALLING)) // Turrets dont get killing sprees -- shafe
 					{
-						trap_SendServerCommand( -1, va( "print \"" S_COLOR_YELLOW "%s ^7IS ON A KILLING SPREE!\n\"", attacker->client->pers.netname ) );
-						trap_SendServerCommand( -1, va("cp \"^7%s IS ON A KILLING SPREE!!\n\"", attacker->client->pers.netname ) );
-						//attacker->client->ps.persistant[PERS_SCORE]+=1;
-						attacker->InstaMostKillSpree++;					
+					
+						if(attacker->client->pers.connected == CON_CONNECTED) // Github bug #11
+						{
+							trap_SendServerCommand( -1, va( "print \"" S_COLOR_YELLOW "%s ^7IS ON A KILLING SPREE!\n\"", attacker->client->pers.netname ) );
+							trap_SendServerCommand( -1, va("cp \"^7%s IS ON A KILLING SPREE!!\n\"", attacker->client->pers.netname ) );
+							//attacker->client->ps.persistant[PERS_SCORE]+=1;
+							attacker->InstaMostKillSpree++;					
+						}
 					}
 						attacker->InstaStreak = 0;
 

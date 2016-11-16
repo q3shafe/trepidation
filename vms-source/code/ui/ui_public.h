@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 #ifndef __UI_PUBLIC_H__
 #define __UI_PUBLIC_H__

@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 // cg_scoreboard -- draw the scoreboard on top of the game screen
 #include "cg_local.h"

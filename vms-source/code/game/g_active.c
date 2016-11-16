@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 
 #include "g_local.h"
@@ -1167,6 +1167,15 @@ void ClientThink_real( gentity_t *ent ) {
 	if ( ent->flags & FL_FORCE_GESTURE ) {
 		ent->flags &= ~FL_FORCE_GESTURE;
 		ent->client->pers.cmd.buttons |= BUTTON_GESTURE;
+	}
+
+	// Github bug 54 -shafe - fixes stuck in zoom thingy
+	if ((client->ps.weapon != WP_RAILGUN) && (client->Zoomed == qtrue))
+	{
+				client->ZoomTime = level.time;
+				trap_SendServerCommand(client->ps.clientNum, "+greset");
+				//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +greset\n", client->ps.weaponstate );
+				client->Zoomed = qfalse;
 	}
 
 	if (client->ps.weapon == WP_RAILGUN )

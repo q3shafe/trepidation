@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 #include "g_local.h"
 
@@ -1312,7 +1312,7 @@ void ClientSpawn(gentity_t *ent) {
 		} 
 			
 			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GAUNTLET );
-			client->ps.ammo[WP_GAUNTLET] = -1;
+			client->ps.ammo[WP_GAUNTLET] = 99999;
 			client->ps.ammo[WP_GRAPPLING_HOOK] = -1;
 
 	} 
@@ -1424,7 +1424,7 @@ void ClientSpawn(gentity_t *ent) {
 			if (client->pers.h_gauntlet) 
 			{
 				client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GAUNTLET );
-				client->ps.ammo[WP_GAUNTLET] = 9999;
+				client->ps.ammo[WP_GAUNTLET] = 99999;
 			}
 			
 			if (client->pers.h_mg) 
@@ -1485,7 +1485,7 @@ void ClientSpawn(gentity_t *ent) {
 			if (client->pers.h_gauntlet) 
 			{
 				client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GAUNTLET );
-				client->ps.ammo[WP_GAUNTLET] = 9999;
+				client->ps.ammo[WP_GAUNTLET] = 99999;
 			}
 			
 			if (client->pers.h_mg) 
