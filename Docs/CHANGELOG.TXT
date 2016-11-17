@@ -53,6 +53,10 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Added bot support for the fixed version of ctf_aversion.
+
+- Fixed issues on dystopia map where you would get stuck in the wall
+
 - Changed many missing sound filename from wav to ogg in client game code.
 
 - Updated chat sound
