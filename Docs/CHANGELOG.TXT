@@ -53,6 +53,10 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Changed many missing sound filename from wav to ogg in client game code.
+
+- Updated chat sound
+
 - Non Players can no longer go on killing sprees (i.e. world, turrets, etc.)
 
 - Fixed issue where current round number wasn't getting reset on map change if invoked manually.
