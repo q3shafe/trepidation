@@ -684,6 +684,8 @@ qboolean	ConsoleCommand( void ) {
 	
 
 	if (Q_stricmp (cmd, "randmap") == 0) {
+		g_CurrentRound.integer = 0;
+		trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", 0 ) );
 		G_Printf( "Final: Here is a random map %s\n", GetRandomMap());
 		
 		return qtrue;

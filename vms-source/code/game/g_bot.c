@@ -326,8 +326,11 @@ int G_CountHumanPlayers( int team ) {
 		if ( g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT ) {
 			continue;
 		}
-		if ( team >= 0 && cl->sess.sessionTeam != team ) {
-			continue;
+		if((g_GameMode.integer != 1) || (g_GameMode.integer != 2)) // Dont count spectator bots in lms and arsenal
+		{
+			if ( team >= 0 && cl->sess.sessionTeam != team ) {
+				continue;
+			}
 		}
 		num++;
 	}
@@ -352,8 +355,12 @@ int G_CountBotPlayers( int team ) {
 		if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
 			continue;
 		}
-		if ( team >= 0 && cl->sess.sessionTeam != team ) {
-			continue;
+
+		if((g_GameMode.integer != 1) || (g_GameMode.integer != 2)) // Dont count spectator bots in lms and arsenal
+		{
+			if ( team >= 0 && cl->sess.sessionTeam != team ) {
+				continue;
+			}
 		}
 		num++;
 	}

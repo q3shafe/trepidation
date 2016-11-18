@@ -53,9 +53,11 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
-- Added bot support for the fixed version of ctf_aversion.
+- Fixed issue where bots where being added/removed during arsenal and survival, likely causing the crashes we've seen with the recursive error.
 
-- Fixed issues on dystopia map where you would get stuck in the wall
+- Fixed issue where round number wasn't resetting when using /randmap
+
+- Added bot support for the fixed version of ctf_aversion.
 
 - Changed many missing sound filename from wav to ogg in client game code.
 
