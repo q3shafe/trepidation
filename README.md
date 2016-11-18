@@ -24,3 +24,8 @@ Trepidation will introduce new aspects to the physics of the Q3 engine, The new 
 The game will have ports for *nix, *BSD, Win32 and possibly an OSX port. Much improved QVM tools and a well documented SDK for mod authors. 
 
 Visit our website: http://trepidation.n5net.com
+
+== TO BUILD LOCALLY ==
+To build locally on linux using the binaries already in the repository, grab the build.sh script and it will pull a current snapshot from github and build you a working copy of the game.
+
+Visit our wiki for more information on compiling the engine or gamecode.
