@@ -6,12 +6,9 @@ set INCLUDE=
 
 mkdir vm
 cd vm
-set cc=lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\ui %1
+set cc=q3lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\ui %1
 
 %cc%  ../g_main.c
-@if errorlevel 1 goto quit
-
-%cc%  ../g_syscalls.c
 @if errorlevel 1 goto quit
 
 %cc%  ../bg_misc.c
@@ -89,7 +86,7 @@ set cc=lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\
 
 
 
-q3asm -f ../game
+q3asm -vq3 -f ../game
 :quit
 
 pause
@@ -101,7 +98,7 @@ set INCLUDE=
 
 mkdir vm
 cd vm
-set cc=lcc -DQ3_VM -DCGAME -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\ui %1
+set cc=q3lcc -DQ3_VM -DCGAME -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\ui %1
 
 %cc% ../../game/bg_misc.c
 @if errorlevel 1 goto quit2
@@ -159,7 +156,7 @@ set cc=lcc -DQ3_VM -DCGAME -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\ga
 
 
 
-q3asm -f ../cgame
+q3asm -vq3 -f ../cgame
 :quit2
 
 pause
@@ -170,7 +167,7 @@ set INCLUDE=
 mkdir vm
 cd vm
 
-set cc=lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_ui %1
+set cc=q3lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_ui %1
 
 lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_ui ../ui_main.c
 @if errorlevel 1 goto quit3
@@ -264,7 +261,7 @@ lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_u
 @if errorlevel 1 goto quit3
 
 
-q3asm -f ../q3_ui
+q3asm -vq3 -f ../q3_ui
 :quit3
 cd ..
 
