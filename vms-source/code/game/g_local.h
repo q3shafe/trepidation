@@ -49,7 +49,8 @@ typedef enum {
 	ROTATOR_2TO1
 } moverState_t;
 
-#define SP_PODIUM_MODEL		"models/mapobjects/podium/podium4.md3"
+//#define SP_PODIUM_MODEL		"models/mapobjects/podium/podium4.md3"
+#define SP_PODIUM_MODEL		"models/powerups/instant/quad_ring.md3" // temporary until we have a podium model.
 
 //============================================================================
 

@@ -1249,10 +1249,10 @@ void CalculateRanks( void ) {
 	for ( i = 0 ; i < level.maxclients ; i++ ) {
 		if ( level.clients[i].pers.connected != CON_DISCONNECTED ) {
 			level.sortedClients[level.numConnectedClients] = i;
-			level.numConnectedClients++;
+			level.numConnectedClients++;			
 
-			if ( level.clients[i].sess.sessionTeam != TEAM_SPECTATOR ) {
-				level.numNonSpectatorClients++;
+			if ( level.clients[i].sess.sessionTeam != TEAM_SPECTATOR ) {			
+					level.numNonSpectatorClients++;			
 			
 				// decide if this should be auto-followed
 				if ( level.clients[i].pers.connected == CON_CONNECTED ) {
@@ -1298,6 +1298,7 @@ void CalculateRanks( void ) {
 		{ // Only spectators get a score -Vincent
 			cl = &level.clients[ level.sortedClients[i] ];
 			newScore = cl->ps.persistant[PERS_SCORE];
+
 			if ( i == 0 || newScore != score ) {
 				rank = i;
 				// assume we aren't tied until the next client is checked
@@ -1319,21 +1320,28 @@ void CalculateRanks( void ) {
 		trap_SetConfigstring( CS_SCORES1, va("%i", level.teamScores[TEAM_RED] ) );
 		trap_SetConfigstring( CS_SCORES2, va("%i", level.teamScores[TEAM_BLUE] ) );
 	} else {
+
+		
 		if ( level.numNonSpectatorClients == 0 ) // Don't count spectators -Vincent
 		{
 			trap_SetConfigstring( CS_SCORES1, va("%i", SCORE_NOT_PRESENT) );
 			trap_SetConfigstring( CS_SCORES2, va("%i", SCORE_NOT_PRESENT) );
 		} 
-		else if ( level.numNonSpectatorClients == 1 ) // Don't count spectators -Vincent
+		else if 
+		
+			( level.numNonSpectatorClients == 1 ) // Don't count spectators -Vincent
 		{
 			trap_SetConfigstring( CS_SCORES1, va("%i", level.clients[ level.sortedClients[0] ].ps.persistant[PERS_SCORE] ) );
 			trap_SetConfigstring( CS_SCORES2, va("%i", SCORE_NOT_PRESENT) );
 		} 
 		else 
 		{
+		
 			trap_SetConfigstring( CS_SCORES1, va("%i", level.clients[ level.sortedClients[0] ].ps.persistant[PERS_SCORE] ) );
 			trap_SetConfigstring( CS_SCORES2, va("%i", level.clients[ level.sortedClients[1] ].ps.persistant[PERS_SCORE] ) );
+	
 		}
+		
 	}
 
 	// see if it is time to end the level
@@ -1606,6 +1614,7 @@ void ExitLevel (void) {
 
 				// Now do the final intermission with some sort of bang	
 				BroadCastSound("sound/weapons/bfg/devhit.wav"); // Play some sort of cool sound.
+				
 				level.redScoreLatched = qtrue;		
 				level.intermissiontime = 0;
 				level.readyToExit = qfalse;
@@ -1905,6 +1914,7 @@ void CheckIntermissionExit( void ) {
 
 	ExitLevel();
 }
+
 
 /*
 =============
@@ -2271,7 +2281,7 @@ void CheckExitRules( void ) {
 	// We dont do a showdown or find a winner for at least 10 seconds into the game.
 	if (( g_GameMode.integer == 1) || (g_GameMode.integer == 2))
 	{
-		if (((level.time-level.startTime) > 10000) && (level.firstStrike == qtrue))
+		if (((level.time-level.startTime) > 5000) && (level.firstStrike == qtrue))
 		{
 			gclient_t		*survivor = NULL;		
 			int				tmpCnt;
@@ -2485,10 +2495,9 @@ void CheckExitRules( void ) {
 						cl = level.clients + i;
 						//survivor = &level.clients[i];
 						if ( cl->pers.connected == CON_CONNECTED)
-						{						
+						{												
 							//cl->sess.MatchScore = cl->sess.MatchScore + cl->ps.persistant[PERS_SCORE];				
-							//cl->pers.TrueScore = cl->ps.persistant[PERS_SCORE];
-							
+							//cl->pers.TrueScore = cl->ps.persistant[PERS_SCORE];							
 							level.clients[i].sess.wins += level.clients[i].pers.TrueScore;				
 							trap_SendServerCommand( -1, va("print \"^7 %s Sesss.match %i persistant %i \n\"", cl->pers.netname, cl->sess.wins, cl->pers.TrueScore ) );
 						}
