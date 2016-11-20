@@ -62,7 +62,7 @@ set cc=lcc -DQ3_VM -DCGAME -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\ga
 
 
 
-q3asm -f ../cgame
+q3asm -vq3-f ../cgame
 :quit
 cd ..
 pause

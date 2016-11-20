@@ -101,7 +101,7 @@ lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\..\q3_u
 @if errorlevel 1 goto quit
 
 
-q3asm -f ../q3_ui
+q3asm -vq3 -f ../q3_ui
 :quit
 cd ..
 pause

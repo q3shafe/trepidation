@@ -9,8 +9,8 @@ set cc=lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\
 %cc%  ../g_main.c
 @if errorlevel 1 goto quit
 
-%cc%  ../g_syscalls.c
-@if errorlevel 1 goto quit
+#%cc%  ../g_syscalls.c
+#@if errorlevel 1 goto quit
 
 %cc%  ../bg_misc.c
 @if errorlevel 1 goto quit
@@ -87,7 +87,7 @@ set cc=lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I..\
 
 
 
-q3asm -f ../game
+q3asm -vq3 -f ../game
 :quit
 cd ..
 pause

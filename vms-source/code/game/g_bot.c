@@ -326,12 +326,10 @@ int G_CountHumanPlayers( int team ) {
 		if ( g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT ) {
 			continue;
 		}
-		if((g_GameMode.integer != 1) || (g_GameMode.integer != 2)) // Dont count spectator bots in lms and arsenal
-		{
-			if ( team >= 0 && cl->sess.sessionTeam != team ) {
-				continue;
-			}
+		if ( team >= 0 && cl->sess.sessionTeam != team ) {
+			continue;
 		}
+
 		num++;
 	}
 	return num;
@@ -355,13 +353,11 @@ int G_CountBotPlayers( int team ) {
 		if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
 			continue;
 		}
-
-		if((g_GameMode.integer != 1) || (g_GameMode.integer != 2)) // Dont count spectator bots in lms and arsenal
-		{
-			if ( team >= 0 && cl->sess.sessionTeam != team ) {
-				continue;
-			}
+		
+		if ( team >= 0 && cl->sess.sessionTeam != team ) {
+			continue;
 		}
+
 		num++;
 	}
 	for( n = 0; n < BOT_SPAWN_QUEUE_DEPTH; n++ ) {
@@ -457,11 +453,17 @@ void G_CheckMinimumPlayers( void ) {
 		}
 	}
 	else if (g_gametype.integer == GT_FFA) {
+
+
 		if (minplayers >= g_maxclients.integer) {
 			minplayers = g_maxclients.integer-1;
 		}
+		
 		humanplayers = G_CountHumanPlayers( TEAM_FREE );
 		botplayers = G_CountBotPlayers( TEAM_FREE );
+		// count spectator bots on arsenal and survival - shafe trep
+		botplayers = botplayers + G_CountBotPlayers( TEAM_SPECTATOR );
+
 		//
 		if (humanplayers + botplayers < minplayers) {
 			G_AddRandomBot( TEAM_FREE );
@@ -469,6 +471,7 @@ void G_CheckMinimumPlayers( void ) {
 			G_RemoveRandomBot( TEAM_FREE );
 		}
 	}
+
 }
 
 /*
