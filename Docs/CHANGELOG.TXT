@@ -48,12 +48,13 @@ NEW AND NOTABLE:
 
 - Lots of Missing Sounds or misnamed sounds fixed or created.
 
-
+http://quakewiki.net/archives/code3arena/tutorials/tutorial17.shtml
+http://quakewiki.net/archives/code3arena/tutorials/tutorial36.shtml
 G_PickTarget: target t65 not found
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
-
+- Reordered Weapons.  Makes way more sense, now in the order of power 1 through 9.
 
 - Fixed issue where bots where being added/removed during arsenal and survival, likely causing the crashes we've seen with the recursive error.
 

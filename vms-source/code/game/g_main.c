@@ -1316,6 +1316,7 @@ void CalculateRanks( void ) {
 	}
 
 	// set the CS_SCORES1/2 configstrings, which will be visible to everyone
+	
 	if ( g_gametype.integer >= GT_TEAM ) {
 		trap_SetConfigstring( CS_SCORES1, va("%i", level.teamScores[TEAM_RED] ) );
 		trap_SetConfigstring( CS_SCORES2, va("%i", level.teamScores[TEAM_BLUE] ) );
@@ -1343,6 +1344,7 @@ void CalculateRanks( void ) {
 		}
 		
 	}
+
 
 	// see if it is time to end the level
 	CheckExitRules();
@@ -1605,11 +1607,16 @@ void ExitLevel (void) {
 					} 
 					
 					level.clients[i].pers.TrueScore = level.clients[i].sess.wins; 
-					level.clients[i].sess.wins +=level.clients[i].pers.TrueScore;				
-					trap_SendServerCommand( -1, va("print \"^7 Debug %s Match %i true %i \n\"", cl->pers.netname, level.clients[i].sess.wins , level.clients[i].pers.TrueScore ) );
+					level.clients[i].sess.wins +=level.clients[i].pers.TrueScore;									
+					level.clients[i].sess.sessionTeam = TEAM_FREE;
+					//SetTeam(&g_entities[i], "r");
+					
+					
+					//trap_SendServerCommand( -1, va("print \"^7 Debug %s Match %i true %i \n\"", cl->pers.netname, level.clients[i].sess.wins , level.clients[i].pers.TrueScore ) );
 					
 				
 				}
+				
 				SendScoreboardMessageToAllClients();
 
 				// Now do the final intermission with some sort of bang	
