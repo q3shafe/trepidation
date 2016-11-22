@@ -1544,13 +1544,13 @@ int		altAmmoUsage[WP_NUM_WEAPONS] =
 {
 	0,				//WP_NONE,
 	1,				//GAUNTLET,				
-	1,				//machine gun
+	1,				//lfo rifle
+	0,				//rail gun 
 	6,				//shotgun
-	2,				//grenade launcher
-	3,				//rocket launcher/singularity cannon
-	1,				//flame thrower
-	0,				//rail gun - it's just the sing cannon..lets make it more than alt sing to piss people off.
+	2,				//grenade launcher	
+	1,				//flame thrower	
 	2,				//Gata Gun
+	3,				//rocket launcher/singularity cannon
 	3,				//bfg/devastator
 	20,				//hmmmm... dunno what this one is
 
@@ -1749,13 +1749,16 @@ static void PM_Weapon( void ) {
 	// There is some sort of issue with this I think.
 	if ( pm->cmd.buttons & 32)
 	{
-		if ( (pm->ps->ammo[ pm->ps->weapon ]-altAmmoUsage[pm->ps->weapon]) <= 0) 
+		
+		if (pm->ps->weapon != WP_RAILGUN) // alt-fire on this is zoom no check
 		{
-			PM_AddEvent( EV_NOAMMO );
-			pm->ps->weaponTime += 500;
-			return;
+			if ( (pm->ps->ammo[ pm->ps->weapon ]-altAmmoUsage[pm->ps->weapon]) <= 0) 
+			{
+				PM_AddEvent( EV_NOAMMO );
+				pm->ps->weaponTime += 500;
+				return;
+			}
 		}
-
 	}
 
 	
@@ -1850,7 +1853,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 90; 
 		break; 
 	case WP_RAILGUN: 
-		addTime = 1200; 
+		addTime = 0; 
 		break; 
 	case WP_BFG: 
 		//  addTime = 100; 

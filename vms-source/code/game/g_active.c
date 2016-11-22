@@ -1182,37 +1182,52 @@ void ClientThink_real( gentity_t *ent ) {
 	}
 	*/ 
 
+	if ((client->Zoomed) && (client->ps.weapon != WP_RAILGUN))
+	{
+		trap_SendServerCommand(client->ps.clientNum, "-gzoom");
+		//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: -gzoom\n", client->ps.weaponstate );
+		client->ps.weaponstate = WEAPON_CHARGING;
+		client->Zoomed = qfalse;
+		client->ZoomTime = level.time;
+
+	}
+
 	if (client->ps.weapon == WP_RAILGUN )
 	{
 		if (ucmd->buttons & 32)
 		{
 
 			if (!client->Zoomed)
-			{
+			{					
+					if ((level.time - client->ZoomTime) > 500) // give it a second so that when we release zoom we automatically don't zoom back in.
+					{
+						client->ps.weaponstate = WEAPON_FIRING;
+						trap_SendServerCommand(client->ps.clientNum, "+gzoom");
+						//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +gzoom\n", client->ps.weaponstate );
+						client->ZoomTime = level.time;
+						client->Zoomed = qtrue;
+					}
 
-				if ((level.time - client->ZoomTime) > 200) // was 200
-				{
-					client->ps.weaponstate = WEAPON_FIRING;
-					trap_SendServerCommand(client->ps.clientNum, "+gzoom");
-					//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +gzoom\n", client->ps.weaponstate );
-					client->ZoomTime = level.time;
-					client->Zoomed = qtrue;
-				}
 			}
 			else
 			{
 				
-				client->ZoomTime = level.time;
-				trap_SendServerCommand(client->ps.clientNum, "+greset");
-				//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +greset\n", client->ps.weaponstate );
-				client->Zoomed = qfalse;
+				if ((client->ps.weaponstate == WEAPON_FIRING) && ((level.time - client->ZoomTime) > 600)) 
+				{
+					trap_SendServerCommand(client->ps.clientNum, "-gzoom");
+					//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: -gzoom\n", client->ps.weaponstate );
+					client->ps.weaponstate = WEAPON_CHARGING;
+					client->Zoomed = qfalse;
+					client->ZoomTime = level.time;
+
+				}				
 				
 			}
 	
 		} else
 		{
 
-			
+			/*
 			if (client->ps.weaponstate == WEAPON_FIRING)
 			{
 				trap_SendServerCommand(client->ps.clientNum, "-gzoom");
@@ -1222,7 +1237,7 @@ void ClientThink_real( gentity_t *ent ) {
 				client->ZoomTime = level.time;
 
 			}
-			
+			*/
 			
 		}
 

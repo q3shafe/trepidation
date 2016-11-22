@@ -909,6 +909,10 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 			level.lastClient = attacker->client;
 		}
 
+		// reset zoom at death
+		trap_SendServerCommand(self->client->ps.clientNum, "-gzoom");
+		self->client->Zoomed = qfalse;
+
 	Cmd_Score_f( self );		// show scores
 	// send updated scores to any clients that are following this one,
 	// or they would get stale scoreboards
@@ -926,6 +930,8 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 			Cmd_Score_f( g_entities + i );
 		}
 	}
+
+	
 
 	self->takedamage = qtrue;	// can still be gibbed
 
@@ -1221,6 +1227,13 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		attacker = &g_entities[ENTITYNUM_WORLD];
 	}
 
+
+	if(targ->client->ps.weapon == WP_RAILGUN)
+	{
+
+		trap_SendServerCommand(targ->client->ps.clientNum, "-gzoom");
+		targ->client->Zoomed = qfalse;
+	}
 	
 
 	// shootable doors / buttons don't actually have any health
