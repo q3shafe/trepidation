@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define MGW				100
 #define GLW				150
 #define RLW				150
-#define RGW				250
+#define RGW				20
 #define BFW				450
 #define LGW				200
 #define PGW				250
@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define GMGW				150
 #define GGLW				200
 #define GRLW				150
-#define GRGW				200
+#define GRGW				20
 #define GBFW				100
 #define GLGW				250
 #define GPGW				100

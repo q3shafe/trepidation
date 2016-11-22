@@ -435,7 +435,7 @@ void CG_ZoomDown_f( void )
 	}
 
 	// Only The Guass Rifle Can Zoom
-	if (cg.snap->ps.weapon != 7)
+	if (cg.snap->ps.weapon != WP_RAILGUN)
 	{
 		if(cg.zoomed || !cg.zooming)
 		{

@@ -20,7 +20,7 @@
 #define W_MACHINEGUN			70
 #define W_GRENADELAUNCHER		140
 #define W_ROCKETLAUNCHER		370
-#define W_RAILGUN				285
+#define W_RAILGUN				20
 #define W_BFG10K				180
 #define W_LIGHTNING				50
 #define W_PLASMAGUN				150
@@ -30,7 +30,7 @@
 #define GWW_MACHINEGUN			50
 #define GWW_GRENADELAUNCHER		130
 #define GWW_ROCKETLAUNCHER		290
-#define GWW_RAILGUN				225
+#define GWW_RAILGUN				25
 #define GWW_BFG10K				90
 #define GWW_LIGHTNING			40
 #define GWW_PLASMAGUN			100

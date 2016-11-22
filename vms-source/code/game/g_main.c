@@ -2427,6 +2427,7 @@ void CheckExitRules( void ) {
 							trap_SendServerCommand( -1, va("print \"^7 ::::::::::::: %s WINS ROUND %i OF %i :::::::::::::\n\"", survivor->pers.netname, (g_CurrentRound.integer+1), g_NumRounds.integer ) );
 							//trap_SendServerCommand( -1, "print \"::: ^9WINNER BONUSES :::\n\"");	
 							survivor->ps.persistant[PERS_SCORE]+=35;
+							
 							//survivor->pers.TrueScore+=survivor->ps.persistant[PERS_SCORE]; // we do this in exitlevel
 							trap_SendServerCommand( -1, "print \"^9Survivor Bonus: ^3+35\n\"");	
 					
@@ -2505,6 +2506,7 @@ void CheckExitRules( void ) {
 						{												
 							//cl->sess.MatchScore = cl->sess.MatchScore + cl->ps.persistant[PERS_SCORE];				
 							//cl->pers.TrueScore = cl->ps.persistant[PERS_SCORE];							
+							//cl->sess.sessionTeam = TEAM_FREE;						
 							level.clients[i].sess.wins += level.clients[i].pers.TrueScore;				
 							trap_SendServerCommand( -1, va("print \"^7 %s Sesss.match %i persistant %i \n\"", cl->pers.netname, cl->sess.wins, cl->pers.TrueScore ) );
 						}
@@ -2631,6 +2633,8 @@ Once a frame, check for changes in tournement player state
 =============
 */
 void CheckTournament( void ) {
+	int i;	
+	
 	// check because we run 3 game frames before calling Connect and/or ClientBegin
 	// for clients on a map_restart
 	if ( level.numNonSpectatorClients == 0 ) {

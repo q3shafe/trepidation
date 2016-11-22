@@ -1150,6 +1150,7 @@ void ClientSpawn(gentity_t *ent) {
 	index = ent - g_entities;
 	client = ent->client;
 
+
 	// find a spawn point
 	// do it before setting health back up, so farthest
 	// ranging doesn't count this client

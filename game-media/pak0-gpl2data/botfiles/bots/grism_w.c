@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define MGW				110
 #define GLW				320
 #define RLW				450
-#define RGW				100
+#define RGW				20
 #define BFW				400
 #define LGW				220
 #define PGW				200

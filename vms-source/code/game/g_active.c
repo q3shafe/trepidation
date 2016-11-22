@@ -1170,6 +1170,9 @@ void ClientThink_real( gentity_t *ent ) {
 	}
 
 	// Github bug 54 -shafe - fixes stuck in zoom thingy
+	/*
+
+		THIS DIDNT FIX THE PROBLEM
 	if ((client->ps.weapon != WP_RAILGUN) && (client->Zoomed == qtrue))
 	{
 				client->ZoomTime = level.time;
@@ -1177,6 +1180,7 @@ void ClientThink_real( gentity_t *ent ) {
 				//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +greset\n", client->ps.weaponstate );
 				client->Zoomed = qfalse;
 	}
+	*/ 
 
 	if (client->ps.weapon == WP_RAILGUN )
 	{
@@ -1186,34 +1190,40 @@ void ClientThink_real( gentity_t *ent ) {
 			if (!client->Zoomed)
 			{
 
-				if ((level.time - client->ZoomTime) > 200) 
+				if ((level.time - client->ZoomTime) > 200) // was 200
 				{
 					client->ps.weaponstate = WEAPON_FIRING;
 					trap_SendServerCommand(client->ps.clientNum, "+gzoom");
 					//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +gzoom\n", client->ps.weaponstate );
-					//	client->ZoomTime = level.time;
+					client->ZoomTime = level.time;
+					client->Zoomed = qtrue;
 				}
 			}
 			else
 			{
+				
 				client->ZoomTime = level.time;
 				trap_SendServerCommand(client->ps.clientNum, "+greset");
 				//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +greset\n", client->ps.weaponstate );
 				client->Zoomed = qfalse;
+				
 			}
 	
 		} else
 		{
 
+			
 			if (client->ps.weaponstate == WEAPON_FIRING)
 			{
 				trap_SendServerCommand(client->ps.clientNum, "-gzoom");
 				//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: -gzoom\n", client->ps.weaponstate );
 				client->ps.weaponstate = WEAPON_CHARGING;
-				client->Zoomed = qtrue;
+				client->Zoomed = qfalse;
 				client->ZoomTime = level.time;
 
 			}
+			
+			
 		}
 
 	// perform once-a-second actions

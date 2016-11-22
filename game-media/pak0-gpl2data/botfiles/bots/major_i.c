@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //rocket launcher
 #define RLW				350
 //rail gun
-#define RGW				500
+#define RGW				20
 //bfg10k
 #define BFW				200
 //lightninggun
@@ -65,7 +65,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //rocketlauncher
 #define GRLW				110
 //railgun
-#define GRGW				350
+#define GRGW				25
 //bfg10k
 #define GBFW				100
 //lightninggun
