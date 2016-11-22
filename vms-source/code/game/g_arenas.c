@@ -111,16 +111,21 @@ void UpdateTournamentInfo( void ) {
 	}
 
 	msglen = strlen( msg );
-	for( i = 0; i < level.numNonSpectatorClients; i++ ) {
-		n = level.sortedClients[i];
-		Com_sprintf( buf, sizeof(buf), " %i %i %i", n, level.clients[n].ps.persistant[PERS_RANK], level.clients[n].ps.persistant[PERS_SCORE] );
-		buflen = strlen( buf );
-		if( msglen + buflen + 1 >= sizeof(msg) ) {
-			break;
+
+
+		for( i = 0; i < level.numNonSpectatorClients; i++ ) {
+			n = level.sortedClients[i];
+			Com_sprintf( buf, sizeof(buf), " %i %i %i", n, level.clients[n].ps.persistant[PERS_RANK], level.clients[n].ps.persistant[PERS_SCORE] );
+			buflen = strlen( buf );
+			if( msglen + buflen + 1 >= sizeof(msg) ) {
+				break;
+			}
+			strcat( msg, buf );
 		}
-		strcat( msg, buf );
-	}
+
 	trap_SendConsoleCommand( EXEC_APPEND, msg );
+
+
 }
 
 

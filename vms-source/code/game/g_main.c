@@ -1496,6 +1496,19 @@ void BeginIntermission( void ) {
 	// move all clients to the intermission point
 	for (i=0 ; i< level.maxclients ; i++) {
 		client = g_entities + i;
+		if (g_GameMode.integer == 2) // Survival Scoring fix
+		{			
+			if((g_CurrentRound.integer >= g_NumRounds.integer-1) && (level.redScoreLatched == qtrue))
+			{
+				SetTeam( client, "f" );
+				client->client->ps.persistant[PERS_SCORE] = client->client->sess.wins;
+			}	
+			DeathmatchScoreboardMessage(client);
+		}
+	}
+		CalculateRanks();
+	for (i=0 ; i< level.maxclients ; i++) {
+		client = g_entities + i;
 		if (!client->inuse)
 			continue;
 		// respawn if dead
@@ -1618,7 +1631,7 @@ void ExitLevel (void) {
 				}
 				
 				SendScoreboardMessageToAllClients();
-
+				
 				// Now do the final intermission with some sort of bang	
 				BroadCastSound("sound/weapons/bfg/devhit.wav"); // Play some sort of cool sound.
 				
@@ -1733,6 +1746,7 @@ Append information about this game to the log file
 void LogExit( const char *string ) {
 	int				i, numSorted;
 	gclient_t		*cl;
+	gentity_t		*pr;
 #ifdef MISSIONPACK // bk001205
 	qboolean won = qtrue;
 #endif
@@ -1750,14 +1764,23 @@ void LogExit( const char *string ) {
 	{
 		cl = &level.clients[i];
 		//survivor = &level.clients[i];
-		if ( cl->pers.connected == CON_CONNECTED && cl->pers.Eliminated == qtrue && cl->sess.sessionTeam == TEAM_SPECTATOR)
+		if (cl->pers.connected == CON_CONNECTED)
 		{	
 			cl->ps.persistant[PERS_SCORE] = cl->pers.TrueScore;
 		}
 
 	}
 	i=0;
-
+	/* trep remove me
+	for (i=0 ; i< level.maxclients ; i++) {
+		pr = g_entities + i;	
+		if (g_GameMode.integer == 2)
+		{
+			SetTeam( pr, "f" );
+		}
+	}
+	*/
+	
 	// don't send more than 32 scores (FIXME?)
 	numSorted = level.numConnectedClients;
 	if ( numSorted > 32 ) {
@@ -2424,6 +2447,7 @@ void CheckExitRules( void ) {
 
 						if (g_GameMode.integer == 2)
 						{
+						
 							trap_SendServerCommand( -1, va("print \"^7 ::::::::::::: %s WINS ROUND %i OF %i :::::::::::::\n\"", survivor->pers.netname, (g_CurrentRound.integer+1), g_NumRounds.integer ) );
 							//trap_SendServerCommand( -1, "print \"::: ^9WINNER BONUSES :::\n\"");	
 							survivor->ps.persistant[PERS_SCORE]+=35;
@@ -2508,7 +2532,7 @@ void CheckExitRules( void ) {
 							//cl->pers.TrueScore = cl->ps.persistant[PERS_SCORE];							
 							//cl->sess.sessionTeam = TEAM_FREE;						
 							level.clients[i].sess.wins += level.clients[i].pers.TrueScore;				
-							trap_SendServerCommand( -1, va("print \"^7 %s Sesss.match %i persistant %i \n\"", cl->pers.netname, cl->sess.wins, cl->pers.TrueScore ) );
+							//trap_SendServerCommand( -1, va("print \"^7 %s Sesss.match %i persistant %i \n\"", cl->pers.netname, cl->sess.wins, cl->pers.TrueScore ) );
 						}
 
 					}

@@ -874,7 +874,7 @@ gentity_t *fire_plasma2 (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->s.otherEntityNum = self->s.number;
 //unlagged - projectile nudge
 	bolt->parent = self;
-	bolt->damage = 20;
+	bolt->damage = 30;
 	bolt->splashDamage = 15;
 	bolt->splashRadius = 20;
 	bolt->methodOfDeath = MOD_PLASMA;
@@ -1113,7 +1113,7 @@ gentity_t *fire_flame (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt) 
 	if (alt == qfalse ) 
 	{
 		bolt->methodOfDeath = MOD_ALTFLAMER;
-		bolt->damage = 70;
+		bolt->damage = 60;
 		bolt->splashDamage = 55;
 		bolt->splashRadius = 55;
 	} else

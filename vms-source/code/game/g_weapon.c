@@ -323,7 +323,7 @@ SHOTGUN
 
 // DEFAULT_SHOTGUN_SPREAD and DEFAULT_SHOTGUN_COUNT	are in bg_public.h, because
 // client predicts same spreads
-#define	DEFAULT_SHOTGUN_DAMAGE	10
+#define	DEFAULT_SHOTGUN_DAMAGE	20
 
 qboolean ShotgunPellet( vec3_t start, vec3_t end, gentity_t *ent, qboolean alt ) {
 	trace_t		tr;
@@ -956,6 +956,57 @@ void Weapon_fire_turret (gentity_t *ent, qboolean alt ) {
 
 }
 
+
+
+
+//---------------------------------------------------------
+void WP_FireUltraBeam( gentity_t *ent )
+//---------------------------------------------------------
+{
+	trace_t		tr;
+	vec3_t		end;
+	gentity_t	*traceEnt;
+	vec3_t		start;
+	qboolean	bHit = qfalse;
+
+	// Trace once to the right...
+	VectorMA( muzzle, 9, right, start);
+	VectorMA( start, 2048, forward, end );
+
+	// Find out who we've hit
+	trap_Trace( &tr, muzzle, NULL, NULL, end, ent->s.number, MASK_SHOT );
+	traceEnt = &g_entities[ tr.entityNum ];
+
+	if ( traceEnt->takedamage)
+	{
+		G_Damage( traceEnt, ent, ent, forward, tr.endpos, 8*s_quadFactor,0, MOD_LIGHTNING);
+		bHit = qtrue;
+	}
+
+	// Now trace once to the left...
+	VectorMA( muzzle, -9, right, start);
+	VectorMA( start, 2048, forward, end );
+
+	// Find out who we've hit
+	trap_Trace( &tr, muzzle, NULL, NULL, end, ent->s.number, MASK_SHOT );
+	traceEnt = &g_entities[ tr.entityNum ];
+
+	if ( traceEnt->takedamage)
+	{
+		G_Damage( traceEnt, ent, ent, forward, tr.endpos, (8*s_quadFactor), 0, MOD_LIGHTNING);
+		bHit = qtrue;
+	}
+	if (bHit)
+	{
+		// log hit
+		if (ent->client)
+		{
+			//ent->client->ps.persistant[PERS_ACCURACY_HITS]++;
+		}
+	}
+}
+
+
 /*
 ======================================================================
 
@@ -1376,14 +1427,12 @@ void FireWeapon2( gentity_t *ent ) {
 	Weapon_fire_flame( ent, qtrue);  // Shafe - Trep - Flame Thrower
 	break; 
  case WP_SHOTGUN: 
-	 //weapon_bomblauncher_fire( ent, qtrue); // Not Ready Yet
 	 //weapon_supershotgun_fire( ent, qtrue );
 	 weapon_pdlauncher_fire( ent); 
 	break; 
  case WP_MACHINEGUN: 
-  //Weapon_RocketLauncher_Fire( ent );
- 	//Weapon_fire_turret( ent );
-	 Weapon_fire_mg( ent, qtrue);
+	//WP_FireUltraBeam(ent); // testing
+	Weapon_fire_mg( ent, qtrue);
 	/* 
 	if ( g_gametype.integer != GT_TEAM ) { 
 		Bullet_Fire( ent, MACHINEGUN_SPREAD, MACHINEGUN_DAMAGE ); 

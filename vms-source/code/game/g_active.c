@@ -371,8 +371,13 @@ qboolean ClientInactivityTimer( gclient_t *client ) {
 		client->inactivityWarning = qfalse;
 	} else if ( !client->pers.localClient ) {
 		if ( level.time > client->inactivityTime ) {
-			trap_DropClient( client - level.clients, "Dropped due to inactivity" );
-			return qfalse;
+			
+			// Dont kick bots for inactivity, causes recursive error
+			if(!g_entities[client->ps.clientNum].r.svFlags & SVF_BOT)
+			{
+				trap_DropClient( client - level.clients, "Dropped due to inactivity" );
+				return qfalse;
+			}
 		}
 		if ( level.time > client->inactivityTime - 10000 && !client->inactivityWarning ) {
 			client->inactivityWarning = qtrue;
