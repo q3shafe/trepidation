@@ -54,6 +54,10 @@ G_PickTarget: target t65 not found
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Built new DLLS with modern versions of vorbis, and SDL1. 
+
+- Scoreboard/Podium Model is no longer broken
+
 - fixed up zoom functions and bugs
 
 - Less weight on Guass Rifle for all bots.
@@ -66,19 +70,15 @@ Trepidation Changelog - Most Recent Changes First
 
 - Added bot support for the fixed version of ctf_aversion.
 
-- Changed many missing sound filename from wav to ogg in client game code.
+- Changed many missing sound filenames from wav to ogg in client game code.
 
 - Updated chat sound
 
 - Non Players can no longer go on killing sprees (i.e. world, turrets, etc.)
 
-- Fixed issue where current round number wasn't getting reset on map change if invoked manually.
-
 - Think I nailed the out of ammo issue with guantlet
 
-- Fixed issue where if you zoomed on warmup you get stuck zoomed forever.
-
-- Zoom is a little quicker.
+- Fixed issue where if you zoomed on warmup you get stuck zoomed forever. // Nope still a bug
 
 - fix issue with powerups not getting pre-registered on arsenal and survival causing the broken model thing when powerups are dropped
 
