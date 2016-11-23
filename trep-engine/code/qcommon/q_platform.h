@@ -109,6 +109,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define OS_STRING "win_mingw"
 #endif
 
+
 #define ID_INLINE __inline
 #define PATH_SEP '\\'
 

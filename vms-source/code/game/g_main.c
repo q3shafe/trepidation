@@ -1500,7 +1500,7 @@ void BeginIntermission( void ) {
 		{			
 			if((g_CurrentRound.integer >= g_NumRounds.integer-1) && (level.redScoreLatched == qtrue))
 			{
-				SetTeam( client, "f" );
+				//SetTeam( client, "f" );
 				client->client->ps.persistant[PERS_SCORE] = client->client->sess.wins;
 			}	
 			DeathmatchScoreboardMessage(client);
