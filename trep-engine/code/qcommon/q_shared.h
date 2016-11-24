@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
   #define GAMENAME_FOR_MASTER		"Trepidation"		// must NOT contain whitespaces
   #define HEARTBEAT_FOR_MASTER		"Trepidation-1"
 #else
-  #define PRODUCT_NAME			"Trepidation SNAPSHOT"
+  #define PRODUCT_NAME			"Trepidation"
   #define BASEGAME			"base"
   #define CLIENT_WINDOW_TITLE     	"Trepidation Console"
   #define CLIENT_WINDOW_MIN_TITLE 	"Trepidation Console"
@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #endif
 
 #ifdef _MSC_VER
-  #define PRODUCT_VERSION "0.10"
+  #define PRODUCT_VERSION "11.24.2016"
 #endif
 
 #define Q3_VERSION PRODUCT_NAME "Trepidation" PRODUCT_VERSION
