@@ -1,0 +1,33 @@
+Trepdiation Mac OS X Readme
+
+===================================
+Trepidation 07-21-07 Mac OS X
+http://www.planettrepidation.com
+===================================
+
+This image contains the full installation of Trepidation. To install it, just drag Trepidation into your Applications folder.
+
+=====================
+SUPPORTED VERSIONS
+=====================
+
+This application supports Mac OS X version 10.2.8 and up. 
+
+The client is built with no mp3 support You'll need libmad-dev to compile it. You shouldnt run into problems aside from in custom player models.
+
+=====================
+BUILDING FROM SOURCE
+=====================
+
+If you need to build from source the source code can be checked out from our subversion repository here:
+
+svn co https://svn.sourceforge.net/svnroot/trepidation trepidation 
+
+You can view the repository on the web here:
+http://svn.sourceforge.net/trepidation/
+
+The CHANGELOG and other Readable stuff can be found in the directory 
+called Docs
+
+http://www.planettrepidation.com
+
