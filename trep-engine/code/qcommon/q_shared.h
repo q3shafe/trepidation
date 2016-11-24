@@ -27,14 +27,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // A user mod should never modify this file
 
 #ifdef STANDALONE
-  #define PRODUCT_NAME			"iofoo3"
-  #define BASEGAME			"foobar"
-  #define CLIENT_WINDOW_TITLE     	"changeme"
-  #define CLIENT_WINDOW_MIN_TITLE 	"changeme2"
-  #define GAMENAME_FOR_MASTER		"iofoo3"		// must NOT contain whitespaces
-  #define HEARTBEAT_FOR_MASTER		GAMENAME_FOR_MASTER
+  #define PRODUCT_NAME			"Trepidation"
+  #define BASEGAME			"base"
+  #define CLIENT_WINDOW_TITLE     	"Trepidation"
+  #define CLIENT_WINDOW_MIN_TITLE 	"Trepidation"
+  #define GAMENAME_FOR_MASTER		"Trepidation"		// must NOT contain whitespaces
+  #define HEARTBEAT_FOR_MASTER		"Trepidation-1"
 #else
-  #define PRODUCT_NAME			"Trepidation 11-30-2016 Dev Build"
+  #define PRODUCT_NAME			"Trepidation SNAPSHOT"
   #define BASEGAME			"base"
   #define CLIENT_WINDOW_TITLE     	"Trepidation Console"
   #define CLIENT_WINDOW_MIN_TITLE 	"Trepidation Console"
@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #endif
 
 #ifdef _MSC_VER
-  #define PRODUCT_VERSION "1.35"
+  #define PRODUCT_VERSION "0.10"
 #endif
 
 #define Q3_VERSION PRODUCT_NAME "Trepidation" PRODUCT_VERSION

@@ -816,12 +816,12 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 			if (g_GameMode.integer == 1)
 			{
 				if (tmpW == 9) { self->client->pers.h_bfg = qfalse;  }
-				if (tmpW == 8) { self->client->pers.h_plasma = qfalse;}
-				if (tmpW == 7) { self->client->pers.h_gauss = qfalse; }
+				if (tmpW == 8) { self->client->pers.h_singcan = qfalse; }
+				if (tmpW == 7) { self->client->pers.h_plasma = qfalse;}		
 				if (tmpW == 6) { self->client->pers.h_flame = qfalse; }
-				if (tmpW == 5) { self->client->pers.h_singcan = qfalse; }
-				if (tmpW == 4) { self->client->pers.h_grenade = qfalse; }
-				if (tmpW == 3) { self->client->pers.h_sg = qfalse; }
+				if (tmpW == 5) { self->client->pers.h_grenade = qfalse; }
+				if (tmpW == 4) { self->client->pers.h_sg = qfalse; }
+				if (tmpW == 3) { self->client->pers.h_gauss = qfalse; }
 				if (tmpW == 2) { self->client->pers.h_mg = qfalse; }
 				if (tmpW == 1) { self->client->pers.h_gauntlet = qfalse; }
 
