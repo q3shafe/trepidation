@@ -36,6 +36,10 @@ NEW AND NOTABLE:
 
 - New Gametypes modes, One4All, Reverse CTF.
 
+- New Gameplay in Survival Game Mode
+
+- MAC OSX Build.
+
 - Updated weapons.
 
 - Working Bots
@@ -48,12 +52,11 @@ NEW AND NOTABLE:
 
 - Lots of Missing Sounds or misnamed sounds fixed or created.
 
-http://quakewiki.net/archives/code3arena/tutorials/tutorial17.shtml
-http://quakewiki.net/archives/code3arena/tutorials/tutorial36.shtml
-G_PickTarget: target t65 not found
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Updated protocol so the old mac binaries will work since we have no way of making new ones.
+
 - Built new DLLS with modern versions of vorbis, and SDL1. 
 
 - Scoreboard/Podium Model is no longer broken
