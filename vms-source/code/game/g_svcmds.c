@@ -537,6 +537,7 @@ qboolean as_checkToken( char *token ) {
 	return qtrue;
 }
 
+
 static char *GetRandomMap() {
 	fileHandle_t	f;
 	int				len;
@@ -608,6 +609,74 @@ static char *GetRandomMap() {
 	//G_Printf( "Here is a random map %i - %s\n", y, mapname[y]);
 	// we came up with nothing.. lets do this again
 	GetRandomMap();
+
+}
+
+// For map rotations read sequentially from a file
+static char *GetEasyMap() {
+	fileHandle_t	f;
+	int				len;
+	//maplist_t		maplist;	
+	char			mapname[200];
+	int				count=0;
+	char			buffer[32000];
+	char			*p, *token;
+	int				x;
+	int				y;
+
+
+	trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap2 %i\n", g_lastmap.integer) );		
+
+	/*
+	if (strlen(g_mappool.string) == 0)
+		return;
+	*/
+
+	len = trap_FS_FOpenFile(g_mapfile.string, &f, FS_READ);
+	if ( !f ) {
+		return token;
+	}
+
+	if (len > sizeof(buffer)) {
+		trap_FS_FCloseFile(f);
+		return token;
+	}
+
+	if (len == 0) {
+		trap_FS_FCloseFile(f);
+		return token;
+	}
+
+	memset(buffer, 0, sizeof(buffer));
+	trap_FS_Read(buffer, sizeof(buffer), f);
+	trap_FS_FCloseFile(f);
+	x = count_file_lines();
+	p = buffer;	
+	
+	// we hit the end.
+	if(x >= g_lastmap.integer) { 
+		// Start the rotation over and read the first item in the file
+		trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap %i\n", 0) );
+	}
+
+	while ( 1 ) {
+		token = COM_Parse(&p);
+		if (! as_checkToken(token) )
+			break; // end of list	
+		if (count==(g_lastmap.integer+1)) 
+		{
+				//g_lastmap.string = token;
+				G_Printf( "Here is the nextmap map %s\n", token);
+				trap_SendConsoleCommand( EXEC_APPEND, va("map %s\n", token ) );
+				trap_SendConsoleCommand( EXEC_APPEND, va("seta g_lastmap %i\n", count) );
+				return token;
+
+		}
+		count++;				
+	}	
+	
+	// we came up with nothing.. lets do this again
+	GetEasyMap();
 
 }
 
@@ -691,7 +760,13 @@ qboolean	ConsoleCommand( void ) {
 		return qtrue;
 	}
 	
-
+	if (Q_stricmp (cmd, "easymap") == 0) {
+		g_CurrentRound.integer = 0;
+		trap_SendConsoleCommand( EXEC_APPEND, va("g_CurrentRound %i\n", 0 ) );
+		G_Printf( "Final: Here is the next map map %s\n", GetEasyMap());
+		
+		return qtrue;
+	}
 
 	if (Q_stricmp (cmd, "balanceteams") == 0) {
 		//FixME Later - Do it twice in case it's way off

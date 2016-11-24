@@ -1000,6 +1000,7 @@ extern	vmCvar_t	g_GuassRate;
 extern	vmCvar_t	g_ReverseCTF;
 
 extern vmCvar_t         g_mapfile; 
+extern vmCvar_t         g_easymap; 
 extern vmCvar_t         g_randommap;
 extern vmCvar_t         g_lastmap;
 extern vmCvar_t         g_lastmap2;

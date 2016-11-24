@@ -5,6 +5,7 @@
 
 extern void BroadCastSound(char *path);
 extern char *GetRandomMap();
+extern char *GetEasyMap();
 
 level_locals_t	level;
 
@@ -124,6 +125,7 @@ vmCvar_t	g_ReverseCTF;
 
 vmCvar_t    g_mapfile; 
 vmCvar_t    g_randommap;
+vmCvar_t    g_easymap;
 vmCvar_t    g_lastmap;
 vmCvar_t    g_lastmap2;
 vmCvar_t	g_AutoChangeMap;
@@ -270,6 +272,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_lastmap, "g_lastmap", "0", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_lastmap2, "g_lastmap2", "0", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_mapfile, "g_mapfile", "map_rotation.cfg", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
+	{ &g_easymap, "g_easymap", "0", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_AutoChangeMap, "g_AutoChangeMap", "0", 0, 0, qfalse },
 	{ &g_RegenHealth, "g_RegenHealth", "0", 0, 0, qtrue },
 	{ &g_RegenAmmo, "g_RegenAmmo", "0", 0, 0, qtrue },
@@ -1649,15 +1652,20 @@ void ExitLevel (void) {
 	}
 
 	// Moving on to normal crap for map rotations or random rotations
-
+	
 	if(donextlevel)
 	{
 				
 		if(g_randommap.integer == 1) 
 		{
-			char newmap;
+			char newmap;		
 			//char appendstring;
 			newmap = *GetRandomMap();				
+
+		} else if(g_easymap.integer == 1)
+		{
+			char *newmap;
+			newmap = GetEasyMap();
 
 		} else {
 			trap_SendConsoleCommand( EXEC_APPEND, "vstr nextmap\n" );
