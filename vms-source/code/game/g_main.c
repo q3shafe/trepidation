@@ -1498,9 +1498,10 @@ void BeginIntermission( void ) {
 		client = g_entities + i;
 		if (g_GameMode.integer == 2) // Survival Scoring fix
 		{			
-			if((g_CurrentRound.integer >= g_NumRounds.integer-1) && (level.redScoreLatched == qtrue))
+			//if((g_CurrentRound.integer >= g_NumRounds.integer-1) && (level.redScoreLatched == qtrue))
+			if(g_CurrentRound.integer >= g_NumRounds.integer-1) 
 			{
-				//SetTeam( client, "f" );
+				SetTeam( client, "f" );
 				client->client->ps.persistant[PERS_SCORE] = client->client->sess.wins;
 			}	
 			DeathmatchScoreboardMessage(client);
@@ -1631,6 +1632,7 @@ void ExitLevel (void) {
 				}
 				
 				SendScoreboardMessageToAllClients();
+				level.blueScoreLatched = qtrue;
 				
 				// Now do the final intermission with some sort of bang	
 				BroadCastSound("sound/weapons/bfg/devhit.wav"); // Play some sort of cool sound.
@@ -1638,7 +1640,7 @@ void ExitLevel (void) {
 				level.redScoreLatched = qtrue;		
 				level.intermissiontime = 0;
 				level.readyToExit = qfalse;
-				LogExit( "Fraglimit hit." );
+				LogExit( "Fraglimit hit." );		
 				return;
 			}
 		}
@@ -1686,7 +1688,7 @@ void ExitLevel (void) {
 		//level.clients[i].pers.MatchScore = 0; // Clear it out so it doesn't carry to the next map.
 
 	}
-
+	level.blueScoreLatched = 0;
 	// we need to do this here before chaning to CON_CONNECTING
 	G_WriteSessionData();
 

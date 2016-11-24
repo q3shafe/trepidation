@@ -287,6 +287,14 @@ static gentity_t *SpawnPodium( void ) {
 	vec3_t		vec;
 	vec3_t		origin;
 
+	if(g_GameMode.integer == 2)
+	{
+		if(level.blueScoreLatched != qtrue)
+		{
+			return NULL;
+		}
+	}
+
 	podium = G_Spawn();
 	if ( !podium ) {
 		return NULL;
