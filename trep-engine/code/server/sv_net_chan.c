@@ -138,8 +138,12 @@ void SV_Netchan_TransmitNextFragment( client_t *client ) {
 	if (!client->netchan.unsentFragments)
 	{
 		// make sure the netchan queue has been properly initialized (you never know)
-		if ((!client->netchan_end_queue) && (client->state >= CS_CONNECTED)) {
-			Com_Error(ERR_DROP, "netchan queue is not properly initialized in SV_Netchan_TransmitNextFragment\n");
+		if (!client->netchan_end_queue && client->state != CS_ZOMBIE) {  // Shafe - fix netchan error
+		//if ((!client->netchan_end_queue) && (client->state >= CS_CONNECTED)) {
+			//Com_Error(ERR_DROP, "netchan queue is not properly initialized in SV_Netchan_TransmitNextFragment\n");
+			// Let's drop the bad client instead of crashing the whole server - Shafe
+			SV_DropClient( client, "net_chan disconnect" );
+			return;
 		}
 		// the last fragment was transmitted, check wether we have queued messages
 		if (client->netchan_start_queue) {
