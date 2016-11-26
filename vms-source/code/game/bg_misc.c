@@ -10,13 +10,13 @@ int Max_Ammo[WP_NUM_WEAPONS] =
 {
 	0,					// WP_NONE,
 	50,					// Gauntlet
-	150,				// Machine Gun,
+	50,					// Machine Gun,
+	25,					// Rail Gun/Guass Rifle,
 	60,					// Shotgun,			
-	40,					// Grenades,	
-	30,					// Rocket,			
-	400,				// Flame Thrower / Lignting,
-	50,					// Rail Gun/Guass Rifle,
+	20,					// Grenades,	
+	250,				// Flame Thrower / Lignting,
 	120,				// Plasma,	
+	30,					// Rocket,			
 	25,					// BFG,		
 	200					// Dunno,
 
@@ -276,7 +276,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/iconw_machinegun",
 /* pickup */	"LFO Rifle",
-		100,
+		30,
 		IT_WEAPON,
 		WP_MACHINEGUN,
 /* precache */ "",
@@ -292,7 +292,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/iconw_machinegun",
 /* pickup */	"LFO Rifle",
-		100,
+		30,
 		IT_WEAPON,
 		WP_MACHINEGUN,
 /* precache */ "",
@@ -537,7 +537,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/icona_machinegun",
 /* pickup */	"LFO Cell",
-		20,
+		15,
 		IT_AMMO,
 		WP_MACHINEGUN,
 /* precache */ "",
@@ -553,7 +553,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},
 /* icon */		"icons/icona_machinegun",
 /* pickup */	"LFO Cell",
-		20,
+		15,
 		IT_AMMO,
 		WP_MACHINEGUN,
 /* precache */ "",
@@ -1324,6 +1324,8 @@ Returns false if the item should not be picked up.
 This needs to be the same for client side prediction and server use.
 ================
 */
+extern	int		altAmmoUsage[WP_NUM_WEAPONS];
+
 qboolean BG_CanItemBeGrabbed( int gametype, const entityState_t *ent, const playerState_t *ps ) {
 	gitem_t	*item;
 	
@@ -1356,7 +1358,7 @@ qboolean BG_CanItemBeGrabbed( int gametype, const entityState_t *ent, const play
 		if ( ps->stats[STAT_WEAPONS] & ( 1 << item->giTag ))  // They have the weapon now see if we need to refuse it because they are out of ammo.
 		{
 			
-			if ( ps->ammo[ item->giTag ] > 0 )  // They are not out of ammo.. dont let them pick it up
+			if ( ps->ammo[ item->giTag ] > altAmmoUsage[ item->giTag ] )  // They are not out of ammo.. dont let them pick it up
 			{ 
 				return qfalse;		
 			}

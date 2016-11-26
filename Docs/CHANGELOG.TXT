@@ -47,6 +47,14 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Made some adjustments for max ammo values, many where way too high.
+
+- Fixed max ammo on weapons after screwing it up with the weapon re-order
+
+======================
+Dev Build 11-24-2016
+======================
+
 - setup g_easymap for file driven map rotations.
 
 - Fixed netchan error causing server crashes.

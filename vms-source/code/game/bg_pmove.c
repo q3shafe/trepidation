@@ -1746,13 +1746,13 @@ static void PM_Weapon( void ) {
 	}
 
 	// check for out of ammo for alt fire - Shafe - Trep 
-	// There is some sort of issue with this I think.
+	// There is some sort of issue with this I think.  Github bug #69
 	if ( pm->cmd.buttons & 32)
 	{
 		
 		if (pm->ps->weapon != WP_RAILGUN) // alt-fire on this is zoom no check
 		{
-			if ( (pm->ps->ammo[ pm->ps->weapon ]-altAmmoUsage[pm->ps->weapon]) <= 0) 
+			if ( (pm->ps->ammo[ pm->ps->weapon ] < altAmmoUsage[pm->ps->weapon])) 
 			{
 				PM_AddEvent( EV_NOAMMO );
 				pm->ps->weaponTime += 500;
