@@ -47,6 +47,10 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Fixing ctf_aversion again.
+
+- Removed some duplicate media in pk3 files.
+
 - Made some adjustments for max ammo values, many where way too high.
 
 - Fixed max ammo on weapons after screwing it up with the weapon re-order
