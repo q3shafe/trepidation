@@ -729,11 +729,16 @@ void CG_RegisterWeapon( int weaponNum ) {
 
 	case WP_LIGHTNING:
 		// Shafe - Trep - Flame Thrower
-		weaponInfo->missileSound = trap_S_RegisterSound( "sound/weapons/plasma/lasfly.wav", qfalse );
+
+		/* 2016 */
+		//weaponInfo->missileSound = trap_S_RegisterSound( "sound/plasma/lasfly.wav", qfalse );
+		weaponInfo->missileSound = trap_S_RegisterSound( "sound/world/electro.ogg", qfalse );
 		MAKERGB( weaponInfo->flashDlightColor, 0.6f, 0.6f, 1.0f );
 		weaponInfo->flashSound[0] = trap_S_RegisterSound( "sound/weapons/flamethrower/fireimpc.wav", qfalse );
 		cgs.media.flameExplosionShader = trap_R_RegisterShader( "rocketExplosion" );
 		
+
+
 		//MAKERGB( weaponInfo->flashDlightColor, 0.6f, 0.6f, 1.0f );
 		//weaponInfo->readySound = trap_S_RegisterSound( "sound/weapons/melee/fsthum.wav", qfalse );
 		//weaponInfo->firingSound = trap_S_RegisterSound( "sound/weapons/lightning/lg_hum.wav", qfalse );
@@ -1944,11 +1949,14 @@ void CG_MissileHitWall( centity_t *cent, int weapon, int clientNum, vec3_t origi
 #endif
 	case WP_LIGHTNING:
 		// Shafe - Trep - Flame Thrower
-		mod = cgs.media.dishFlashModel;
+		
 		shader = cgs.media.flameExplosionShader;
 		sfx = cgs.media.sfx_plasmaexp;
 		mark = cgs.media.burnMarkShader;
-		radius = 16;
+		isSprite = qtrue;
+		sfx = cgs.media.sfx_lghit2;
+
+		radius = 40; // was 16
 		// no explosion at LG impact, it is added with the beam
 		/*
 		r = rand() & 3;

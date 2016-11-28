@@ -10,6 +10,14 @@ static	vec3_t	muzzle;
 
 #define NUM_NAILSHOTS 15
 
+#define FLAMER_K_SCALE              2.0f
+#define FLAMER_DMG                  HDM(20)
+#define FLAMER_SPLASHDAMAGE         HDM(10)
+#define FLAMER_RADIUS               50       // splash radius
+#define FLAMER_SIZE                 15        // missile bounding box
+#define FLAMER_LIFETIME             700.0f
+#define FLAMER_SPEED                500.0f
+#define FLAMER_LAG                  0.65f    // the amount of player velocity that is added to the fireball
 
 
 
@@ -42,6 +50,25 @@ GAUNTLET
 void Weapon_Gauntlet( gentity_t *ent ) {
 
 }
+
+
+
+// 2015 v2
+void flamethrowerFire( gentity_t *ent )
+{
+	vec3_t origin;
+
+  // Correct muzzle so that the missile does not start in the ceiling 
+  VectorMA( muzzle, -7.0f, up, origin );
+
+  // Correct muzzle so that the missile fires from the player's hand
+  VectorMA( origin, 4.5f, right, origin );
+
+
+fire_flamethrower2( ent, origin, forward );
+  
+}
+
 
 /*
 ===============
@@ -114,6 +141,8 @@ void Weapon_fire_flame (gentity_t *ent, qboolean alt ) {
 	m->damage *= s_quadFactor;
 	m->splashDamage *= s_quadFactor;
 }	
+
+
 
 
 /*
@@ -1180,6 +1209,8 @@ void Weapon_LightningFire( gentity_t *ent ) {
 
 
 
+
+
 #ifdef MISSIONPACK
 /*
 ======================================================================
@@ -1338,7 +1369,8 @@ void FireWeapon( gentity_t *ent ) {
 		break;
 	case WP_LIGHTNING:
 		//Weapon_LightningFire( ent );
-		Weapon_fire_flame(ent , qfalse );  // Shafe - Trep - Flame Thrower
+		//Weapon_fire_flame(ent , qfalse );  // Shafe - Trep - Flame Thrower
+		flamethrowerFire( ent );
 		break;
 	case WP_SHOTGUN:
 		weapon_supershotgun_fire( ent, qfalse );

@@ -1790,7 +1790,7 @@ if (pm->cmd.buttons & 1) {
 		addTime = 400; 
 		break; 
 	case WP_LIGHTNING: 
-		addTime = 400;  // Shafe - Trep - Flame Thrower was 50 -- Primary Fire Shoots Flame Balls
+		addTime = 60;  // Shafe - Trep - Flame Thrower was 50 -- Primary Fire Shoots Flame Balls
 		break; 
 	case WP_SHOTGUN: 
 		addTime = 1000; 

@@ -294,6 +294,24 @@ static void CG_Item( centity_t *cent ) {
 		return;
 	}
 
+	// Lets just make health and armor 'simpleitems' for now - Shafe
+	if ( cg_simpleItems.integer != -1) // this is for devs
+	{
+		if ( item->giType == IT_AMMO && item->giType != IT_TEAM )
+		{	
+			memset( &ent, 0, sizeof( ent ) );
+			ent.reType = RT_SPRITE;
+			VectorCopy( cent->lerpOrigin, ent.origin );
+			ent.radius = 14;
+			ent.customShader = cg_items[es->modelindex].icon;
+			ent.shaderRGBA[0] = 255;
+			ent.shaderRGBA[1] = 255;
+			ent.shaderRGBA[2] = 255;
+			ent.shaderRGBA[3] = 255;
+			trap_R_AddRefEntityToScene(&ent);
+			return;
+		}
+	}
 	// items bob up and down continuously
 	scale = 0.005 + cent->currentState.number * 0.00001;
 	cent->lerpOrigin[2] += 4 + cos( ( cg.time + 1000 ) *  scale ) * 4;

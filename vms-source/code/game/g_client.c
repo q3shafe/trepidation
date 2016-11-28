@@ -1403,13 +1403,13 @@ void ClientSpawn(gentity_t *ent) {
 		{
 			wpn = irandom(1,9); // Lets clean this up so you can specify which weapons are allowed
 			
-			if(wpn == 1) { // Gauntlet Was chosen, lets give them a 1 in 5 chance of being the poor fool who actually gets it.
+			if(wpn == WP_GAUNTLET) { // Gauntlet Was chosen, lets give them a 1 in 5 chance of being the poor fool who actually gets it.
 				int r;
 				r = irandom(1,5);  // 1 in 5 chance you'll actually get it
 				if(r != 1) { wpn = r; }
 			}
 
-			if(wpn == 9) { // Devastator Was chosen, lets give them a 1 in 5 chance of being the lucky bastard who actually gets it.
+			if(wpn == WP_BFG) { // Devastator Was chosen, lets give them a 1 in 5 chance of being the lucky bastard who actually gets it.
 				int r;
 				r = irandom(4,9);  // 1 in 5 chance you'll actually get it
 				if(r != 9) { wpn = r; }

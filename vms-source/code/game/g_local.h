@@ -782,6 +782,9 @@ void FireWeapon2( gentity_t *ent );
 #ifdef MISSIONPACK
 void G_StartKamikaze( gentity_t *ent );
 #endif
+gentity_t *fire_flamer( gentity_t *self, vec3_t start, vec3_t aimdir );
+
+
 
 //
 // p_hud.c

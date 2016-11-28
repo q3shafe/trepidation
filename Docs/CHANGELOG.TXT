@@ -1,3 +1,4 @@
+
 IMPORTANT NOTES BEFORE INSTALLING THIS:
 
 Also.. If your installing over an older copy.. which ISNT recommended!  You should clear out your base folder of **ALL** pk3's.  If the old ones remain, you'll have all sorts of problems.
@@ -39,6 +40,11 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- All ammo pickups are icons, not wonderful, but better than the placeholder models.
+	cg_simpleitems -1 disables this.
+
+- Started rewrite of flame thrower.
+
 - Replaces Gauss Rifle Shotgun and Quad Damage Sounds
 
 - Replaced a lot of sprites and icons, much cleaner now.

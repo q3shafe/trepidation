@@ -8,6 +8,13 @@
 #define HOMING_MISSILE_SPEED	800
 
 
+#define FLAMER_K_SCALE              2.0f
+#define FLAMER_RADIUS               50       // splash radius
+#define FLAMER_SIZE                 15        // missile bounding box
+#define FLAMER_LIFETIME             800.0f
+#define FLAMER_SPEED                600.0f
+#define FLAMER_LAG                  0.65f    // the amount of player velocity that is added to the fireball
+
 
 void G_ExplodeDevastatorFire( gentity_t *ent );
 gentity_t *fire_devparticle (gentity_t *self, vec3_t start, vec3_t dir, qboolean alt);
@@ -342,7 +349,13 @@ void G_ExplodeMissile( gentity_t *ent )
 	dir[2] = 1;
 
 	ent->s.eType = ET_GENERAL;
-	G_AddEvent( ent, EV_MISSILE_MISS, DirToByte( dir ) );
+
+	if( ent->s.weapon != WP_LIGHTNING)
+	{
+    G_AddEvent( ent, EV_MISSILE_MISS, DirToByte( dir ) );
+	}
+
+	//G_AddEvent( ent, EV_MISSILE_MISS, DirToByte( dir ) );
 
 	ent->freeAfterEvent = qtrue;
 
@@ -849,6 +862,64 @@ gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
 
 	return bolt;
 }	
+
+
+/*
+
+
+	2016 Weapons
+
+
+*/
+
+
+
+
+/*
+=================
+fire_flamethrower2
+=================
+*/
+gentity_t *fire_flamethrower2( gentity_t *self, vec3_t start, vec3_t dir )
+{
+  gentity_t *bolt;
+  vec3_t    pvel;
+
+  VectorNormalize (dir);
+
+  bolt = G_Spawn();
+  bolt->classname = "flame";
+  bolt->nextthink = level.time + FLAMER_LIFETIME;
+  bolt->think = G_ExplodeMissile;
+  bolt->s.eType = ET_MISSILE;
+  bolt->r.svFlags = SVF_USE_CURRENT_ORIGIN;
+  bolt->s.weapon = WP_LIGHTNING;
+  bolt->s.generic1 = self->s.generic1; //weaponMode
+  bolt->r.ownerNum = self->s.number;
+  bolt->parent = self;
+  bolt->damage = 20;
+  bolt->splashDamage = 10;
+  bolt->splashRadius = FLAMER_RADIUS;
+  bolt->methodOfDeath = MOD_LIGHTNING;
+  bolt->splashMethodOfDeath = MOD_LIGHTNING;
+  bolt->clipmask = MASK_SHOT;
+  bolt->target_ent = NULL;
+  bolt->r.mins[ 0 ] = bolt->r.mins[ 1 ] = bolt->r.mins[ 2 ] = -FLAMER_SIZE;
+  bolt->r.maxs[ 0 ] = bolt->r.maxs[ 1 ] = bolt->r.maxs[ 2 ] = FLAMER_SIZE;
+
+  bolt->s.pos.trType = TR_LINEAR;
+  bolt->s.pos.trTime = level.time - 50;   // move a bit on the very first frame
+  VectorCopy( start, bolt->s.pos.trBase );
+  VectorScale( self->client->ps.velocity, FLAMER_LAG, pvel );
+  VectorMA( pvel, FLAMER_SPEED, dir, bolt->s.pos.trDelta );
+  SnapVector( bolt->s.pos.trDelta );      // save net bandwidth
+
+  VectorCopy( start, bolt->r.currentOrigin );
+
+  return bolt;
+}
+
+
 
 /*
 =================
