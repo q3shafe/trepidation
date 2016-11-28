@@ -1,7 +1,5 @@
 IMPORTANT NOTES BEFORE INSTALLING THIS:
 
-OpenAL is updated.  Be sure to install it during the windows installer.  The new version should fix a lot of problems some folks where having.
-
 Also.. If your installing over an older copy.. which ISNT recommended!  You should clear out your base folder of **ALL** pk3's.  If the old ones remain, you'll have all sorts of problems.
 
 Also, dont copy over your config file, set it up from scratch, things have changed and you WILL have problems.
@@ -29,12 +27,6 @@ NEW AND NOTABLE:
 
 - New Gametypes modes, One4All, Reverse CTF.
 
-- New Gameplay in Survival Game Mode
-
-- MAC OSX Build.
-
-- Working Bots
-
 - Build Gun Turrets to defend your flag.
 
 - Random Map Rotations
@@ -47,6 +39,8 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Replaced a lot of sprites and icons, much cleaner now.
+
 - Fixing ctf_aversion again.
 
 - Removed some duplicate media in pk3 files.
