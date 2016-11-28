@@ -39,6 +39,8 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Replaces Gauss Rifle Shotgun and Quad Damage Sounds
+
 - Replaced a lot of sprites and icons, much cleaner now.
 
 - Fixing ctf_aversion again.
