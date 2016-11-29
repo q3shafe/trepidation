@@ -1,7 +1,9 @@
 
 IMPORTANT NOTES BEFORE INSTALLING THIS:
 
-Also.. If your installing over an older copy.. which ISNT recommended!  You should clear out your base folder of **ALL** pk3's.  If the old ones remain, you'll have all sorts of problems.
+This update focuses on weapon balace, audio and visual issue fixes.
+
+If your installing over an older copy.. which ISNT recommended!  You should clear out your base folder of **ALL** pk3's.  If the old ones remain, you'll have all sorts of problems.
 
 Also, dont copy over your config file, set it up from scratch, things have changed and you WILL have problems.
 
@@ -26,6 +28,8 @@ NEW AND NOTABLE:
 
 - Now Compatable with maps for Star Trek Elite Force and Quake 3.
 
+- Flame Thrower Primary Fire completely rewritten.
+
 - New Gametypes modes, One4All, Reverse CTF.
 
 - Build Gun Turrets to defend your flag.
@@ -40,12 +44,14 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Adjusted starting and max ammo on new flame thrower code
+
 - All ammo pickups are icons, not wonderful, but better than the placeholder models.
 	cg_simpleitems -1 disables this.
 
 - Started rewrite of flame thrower.
 
-- Replaces Gauss Rifle Shotgun and Quad Damage Sounds
+- Replaced Gauss Rifle Shotgun and Quad Damage Sounds
 
 - Replaced a lot of sprites and icons, much cleaner now.
 

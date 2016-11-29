@@ -14,7 +14,7 @@ int Max_Ammo[WP_NUM_WEAPONS] =
 	25,					// Rail Gun/Guass Rifle,
 	60,					// Shotgun,			
 	20,					// Grenades,	
-	250,				// Flame Thrower / Lignting,
+	175,				// Flame Thrower / Lignting,
 	120,				// Plasma,	
 	30,					// Rocket,			
 	25,					// BFG,		
@@ -358,7 +358,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},  // models/weapons2/lightning/lightning.md3  - Shafe - Trep - Flame Thrower
 /* icon */		"icons/iconw_flame",  // icons/iconw_lightning
 /* pickup */	"Flame Thrower", // Lightning Gun
-		300,
+		175,
 		IT_WEAPON,
 		WP_LIGHTNING,
 /* precache */ "",
@@ -374,7 +374,7 @@ gitem_t	bg_itemlist[] =
 		0, 0, 0},  // models/weapons2/lightning/lightning.md3  - Shafe - Trep - Flame Thrower
 /* icon */		"icons/iconw_flame",  // icons/iconw_lightning
 /* pickup */	"Flame Thrower", // Lightning Gun
-		300,
+		175,
 		IT_WEAPON,
 		WP_LIGHTNING,
 /* precache */ "",
