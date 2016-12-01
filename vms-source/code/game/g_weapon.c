@@ -652,7 +652,7 @@ void Weapon_Plasmagun_Fire (gentity_t *ent, qboolean alt) {
 	// Shafe - Add Some Randomness so that 
 	// it doesnt fire straight every time
 
-	if(!alt)
+	if(alt)
 	{
 		i = irandom(0,3);
 		if (i == 1)
@@ -675,7 +675,7 @@ void Weapon_Plasmagun_Fire (gentity_t *ent, qboolean alt) {
 		
 	}
 
-	if(!alt)
+	if(alt)
 	{
 		m = fire_plasma (ent, muzzle, forward);
 	} else {

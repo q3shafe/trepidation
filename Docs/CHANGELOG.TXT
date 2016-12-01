@@ -44,6 +44,10 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- New flag icons.
+
+- Swapped gata alt and primary fire modes.. Just because
+
 - Adjusted starting and max ammo on new flame thrower code
 
 - All ammo pickups are icons, not wonderful, but better than the placeholder models.

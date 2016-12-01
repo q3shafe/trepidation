@@ -315,6 +315,7 @@ copy Docs\*.txt \treptest\docs
 copy Docs\*.TXT \treptest\docs
 copy Docs\*.bat \treptest
 copy Docs\*.html \treptest\docs
-
+mkdir \treptest\macosx
+cp -R \web\trepdev\trepidation\game-media\macosx\* \treptest\macosx
 
 
