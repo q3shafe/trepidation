@@ -1442,6 +1442,4 @@ typedef struct
 
 
 
-
-
 #endif	// __Q_SHARED_H

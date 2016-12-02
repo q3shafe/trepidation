@@ -286,6 +286,8 @@ static cvarTable_t		gameCvarTable[] = {
 
 
 
+
+
 // bk001129 - made static to avoid aliasing
 static int gameCvarTableSize = sizeof( gameCvarTable ) / sizeof( gameCvarTable[0] );
 

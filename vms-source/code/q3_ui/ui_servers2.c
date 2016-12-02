@@ -15,7 +15,7 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define MAX_GLOBALSERVERS		128
 #define MAX_PINGREQUESTS		32
 #define MAX_ADDRESSLENGTH		64
-#define MAX_HOSTNAMELENGTH		22		
+#define MAX_HOSTNAMELENGTH		42		
 #define MAX_MAPNAMELENGTH		128		// Shafe - Trep - Was 16
 #define MAX_LISTBOXITEMS		128
 #define MAX_LOCALSERVERS		128
@@ -611,20 +611,19 @@ static void ArenaServers_UpdateMenu( void ) {
 			servernodeptr->bPB = qfalse;
 		}
 
-
+		/*
 		if ( servernodeptr->g_gamemode == 1) 
 		{
 			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
 			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,
  			servernodeptr->maxclients, "arsenal",
 			netnames[servernodeptr->nettype], pingColor, servernodeptr->pingtime, servernodeptr->bPB ? "Yes" : "No" );
-		} else
-		{
-			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-20.20s %-12.12s %2d/%2d %-8.8s %3s %s%3d " S_COLOR_YELLOW "%s", 
+		} else */
+		//{
+			Com_sprintf( buff, MAX_LISTBOXWIDTH, "%-31.31s %-12.12s %2d/%2d %-8.8s %s%3d", 
 			servernodeptr->hostname, servernodeptr->mapname, servernodeptr->numclients,
- 			servernodeptr->maxclients, servernodeptr->gamename,
-			netnames[servernodeptr->nettype], pingColor, servernodeptr->pingtime, servernodeptr->bPB ? "Yes" : "No" );
-		}
+ 			servernodeptr->maxclients, servernodeptr->gamename, pingColor, servernodeptr->pingtime );
+//		}
 		
 		j++;
 	}

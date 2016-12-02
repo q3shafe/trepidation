@@ -3,6 +3,9 @@
 // q_shared.c -- stateless support routines that are included in each code dll
 #include "q_shared.h"
 
+
+
+
 float Com_Clamp( float min, float max, float value ) {
 	if ( value < min ) {
 		return min;
@@ -13,6 +16,10 @@ float Com_Clamp( float min, float max, float value ) {
 	return value;
 }
 
+
+
+extern	int		altAmmoUsage[32];
+extern	int		Max_Ammo[32];
 
 /*
 ============

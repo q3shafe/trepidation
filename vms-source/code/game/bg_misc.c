@@ -5,23 +5,6 @@
 #include "q_shared.h"
 #include "bg_public.h"
 
-// Shafe - Trep - Max Ammo Mgt
-int Max_Ammo[WP_NUM_WEAPONS] =
-{
-	0,					// WP_NONE,
-	50,					// Gauntlet
-	50,					// Machine Gun,
-	25,					// Rail Gun/Guass Rifle,
-	60,					// Shotgun,			
-	20,					// Grenades,	
-	175,				// Flame Thrower / Lignting,
-	120,				// Plasma,	
-	30,					// Rocket,			
-	25,					// BFG,		
-	200					// Dunno,
-
-};
-
 /*QUAKED item_***** ( 0 0 0 ) (-16 -16 -16) (16 16 16) suspended
 DO NOT USE THIS CLASS, IT JUST HOLDS GENERAL INFORMATION.
 The suspended flag will allow items to hang in the air, otherwise they are dropped to the next surface.
@@ -37,6 +20,43 @@ An item fires all of its targets when it is picked up.  If the toucher can't car
 "random" random number of plus or minus seconds varied from the respawn time
 "count" override quantity or duration on most items.
 */
+
+// Shafe - Trep - Max Ammo Mgt
+int Max_Ammo[WP_NUM_WEAPONS] =
+{
+	0,					// WP_NONE,
+	50,					// Gauntlet
+	50,					// Machine Gun,
+	25,					// Rail Gun/Guass Rifle,
+	20,					// Shotgun,			
+	20,					// Grenades,	
+	175,				// Flame Thrower / Lignting,
+	120,				// Plasma,	
+	30,					// Rocket,			
+	25,					// BFG,		
+	200					// Dunno,
+
+};
+
+// Shafe - Trep - Alt Ammo Usage 
+// alt ammo usage
+int		altAmmoUsage[WP_NUM_WEAPONS] =
+{
+	0,				//WP_NONE,
+	1,				//GAUNTLET,				
+	1,				//lfo rifle
+	0,				//rail gun 
+	6,				//shotgun
+	2,				//grenade launcher	
+	1,				//flame thrower	
+	2,				//Gata Gun
+	3,				//rocket launcher/singularity cannon
+	3,				//bfg/devastator
+	20,				//hmmmm... dunno what this one is
+
+
+};
+
 
 gitem_t	bg_itemlist[] = 
 {

@@ -1537,25 +1537,10 @@ static void PM_WaterEvents( void ) {		// FIXME?
 }
 
 
+extern int		altAmmoUsage[WP_NUM_WEAPONS];
 // Shafe - Trep - Alt Ammo Usage 
 // alt ammo usage
 
-int		altAmmoUsage[WP_NUM_WEAPONS] =
-{
-	0,				//WP_NONE,
-	1,				//GAUNTLET,				
-	1,				//lfo rifle
-	0,				//rail gun 
-	6,				//shotgun
-	2,				//grenade launcher	
-	1,				//flame thrower	
-	2,				//Gata Gun
-	3,				//rocket launcher/singularity cannon
-	3,				//bfg/devastator
-	20,				//hmmmm... dunno what this one is
-
-
-};
 
 /*
 ===============

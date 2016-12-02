@@ -44,6 +44,11 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Server browser: Adjusted server hostname size so you can see more of the name, got rid of the old pb 
+yes/no and also removed the udp/tcp column.
+
+- Adjusted the max ammo on shotgun to 20, it was 60 which is way to high.
+
 - Added an opening video - just a placeholder for now.
 
 - More adjustment on the bots.
