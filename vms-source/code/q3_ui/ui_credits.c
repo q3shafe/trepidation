@@ -61,6 +61,10 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "[FC]Pope John Paul III", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
+{ "Hi Res Q3 Texture Pack:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "Paul Marhsall (aka Kpax, Paulo)", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+
 { "Voice and Sounds:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Dave Cunningham", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
@@ -76,25 +80,29 @@ cr_line credits[] = { // edit this as necessary for your credits
 
 
 { "Programming:", UI_CENTER|UI_SMALLFONT, &color_headertext },
-{ "Brian Shaffer", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Shafe", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "VincentK", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 
-{ "Models:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "3D Art:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Petee, DrAkOn, Gigon", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Gigabyte123", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "LD Ash & Violation Entertainment", UI_CENTER|UI_SMALLFONT, &color_maintext },
 
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
-{ "Mapping:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "Level Design:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Petee, DrAkOn, Gigon", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Gigabyte123, Laz, Dr. Preston", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Mac Build:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Zorb", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+
+{ "Technical Advisors:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "Skylar, Pabst Blue Ribbon, Old Number 7", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 /*
@@ -107,7 +115,6 @@ cr_line credits[] = { // edit this as necessary for your credits
 
 { "Special Thanks To:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Todd", UI_CENTER|UI_SMALLFONT, &color_maintext },
-{ "SourceForge.net", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Open Arena", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Code 3 Arena", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Tremulous / Dark Legion Development", UI_CENTER|UI_SMALLFONT, &color_maintext },
@@ -116,6 +123,12 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "Mathieu Olivier (dpmaster)", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Neil Toronto", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "ID Software", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+
+{ "Other Creative Commons Content:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "See Docs Folder", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+
 
 
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
@@ -129,7 +142,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
-{ "(c)2007-2016 Team Trepidation", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "(c)2006-2017 Team Trepidation", UI_CENTER|UI_SMALLFONT, &color_maintext },
 //{ "General Public License", UI_CENTER|UI_SMALLFONT, &color_maintext },
 
   {NULL}
