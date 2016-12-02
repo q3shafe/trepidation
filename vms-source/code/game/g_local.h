@@ -995,10 +995,10 @@ extern	vmCvar_t	g_MaxTurrets;
 extern	vmCvar_t	g_GrappleMode;
 extern	vmCvar_t	g_PCTeamkills;
 
-extern	vmCvar_t	g_GuassJump;
-extern	vmCvar_t	g_GuassKnockBack;
-extern	vmCvar_t	g_GuassSelfDamage;
-extern	vmCvar_t	g_GuassRate;
+extern	vmCvar_t	g_GaussJump;
+extern	vmCvar_t	g_GaussKnockBack;
+extern	vmCvar_t	g_GaussSelfDamage;
+extern	vmCvar_t	g_GaussRate;
 
 extern	vmCvar_t	g_ReverseCTF;
 

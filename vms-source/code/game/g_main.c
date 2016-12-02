@@ -115,10 +115,10 @@ vmCvar_t	g_GrappleMode;
 vmCvar_t	g_PCTeamkills;
 
 // This shit doesn't work
-vmCvar_t	g_GuassJump;
-vmCvar_t	g_GuassKnockBack;
-vmCvar_t	g_GuassSelfDamage;
-vmCvar_t	g_GuassRate;
+vmCvar_t	g_GaussJump;
+vmCvar_t	g_GaussKnockBack;
+vmCvar_t	g_GaussSelfDamage;
+vmCvar_t	g_GaussRate;
 
 vmCvar_t	g_ReverseCTF;
 
@@ -152,7 +152,7 @@ static cvarTable_t		gameCvarTable[] = {
 
 	// latched vars
 	{ &g_gametype, "g_gametype", "3", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH, 0, qfalse  },
-
+	{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH, 0, qfalse  },	
 	{ &g_maxclients, "sv_maxclients", "8", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },
 	{ &g_maxGameClients, "g_maxGameClients", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },
 
@@ -235,7 +235,7 @@ static cvarTable_t		gameCvarTable[] = {
 // Shafe - Trep - Cvars
 	// Mods
 	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
-	{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },	
+	//{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },	
 	{ &g_BlueMC, "g_BlueMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
 	{ &g_RedMC, "g_RedMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
 
@@ -259,10 +259,10 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_GrappleMode, "g_GrappleMode", "1", CVAR_ARCHIVE, 0, qtrue  },
 	{ &g_PCTeamkills, "g_PCTeamkills", "1", CVAR_ARCHIVE, 0, qtrue  },
 
-	{ &g_GuassJump, "g_GuassJump", "0", 0, 0, qtrue },
-	{ &g_GuassKnockBack, "g_GuassKnockBack", "0", 0, 0, qtrue },
-	{ &g_GuassSelfDamage, "g_GuassSelfDamage", "1", 0, 0, qtrue },
-	{ &g_GuassRate, "g_GuassRate", "10", 0, 0, qtrue },
+	{ &g_GaussJump, "g_GaussJump", "0", 0, 0, qtrue },
+	{ &g_GaussKnockBack, "g_GaussKnockBack", "0", 0, 0, qtrue },
+	{ &g_GaussSelfDamage, "g_GaussSelfDamage", "1", 0, 0, qtrue },
+	{ &g_GaussRate, "g_GaussRate", "10", 0, 0, qtrue },
 
 	{ &g_ReverseCTF, "g_ReverseCTF", "0", 0, 0, qtrue },
 

@@ -1385,37 +1385,38 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	}
 
 		// Shafe - Gauss Jumping
-		if (g_instagib.integer == 1) 
-		{
+		//if (g_instagib.integer == 1)  /// We can have rifle jumping without instagib can't we?
+		//{
 		
 			// Is it self inflicted?  
 			if ( attacker->client == targ->client )
 			{
-				if (g_GuassSelfDamage.value == 0) 
+				if (g_GaussSelfDamage.value == 0) 
 				{
 					// It was self inflicted, but we aren't going to inflict damage
 					return;
 				}
 			}
 
-		}
+		//}
 
 
 	// battlesuit protects from all radius damage (but takes knockback)
 	// and protects 50% against all damage
 	if ( client && client->ps.powerups[PW_BATTLESUIT] ) {
 		G_AddEvent( targ, EV_POWERUP_BATTLESUIT, 0 );
+		
+		// LFO Rifle can get through battlesuite - trep (maybe some other weapon?)
+		if (mod == MOD_MACHINEGUN)
+		{
+			damage *= 0.75;
+		}
+		
 		if ( ( dflags & DAMAGE_RADIUS ) || ( mod == MOD_FALLING ) ) {
 			return;
 		}
-
-		// Machine gun can get through battlesuite - trep (maybe some other weapon?)
-		if (mod == MOD_MACHINEGUN)
-		{
-			damage *= 0.5;
-		}
-
-		return;		// shafe - Battlesuite now protects from everything.
+		
+		return;		
 		//damage *= 0.5;
 	}
 
@@ -1667,10 +1668,14 @@ qboolean G_RadiusDamage ( vec3_t origin, gentity_t *attacker, float damage, floa
 			// get knocked into the air more
 			dir[2] += 24;
 
-			// Guass Rifle Jumping 
+
+			G_Damage (ent, NULL, attacker, dir, origin, (int)points, DAMAGE_RADIUS, mod);
+			// Guass Rifle Jumping -- This is causing the problems
+			/*
 			if (g_instagib.integer == 1)
 			{
 				// Is it a rocket jump?
+
 				if (ent == attacker)
 				{
 					G_Damage (ent, NULL, attacker, dir, origin, (int)points, DAMAGE_RADIUS, mod);
@@ -1683,8 +1688,9 @@ qboolean G_RadiusDamage ( vec3_t origin, gentity_t *attacker, float damage, floa
 			else 
 			{
 
-				G_Damage (ent, NULL, attacker, dir, origin, (int)points, DAMAGE_RADIUS, mod);
+				
 			}
+			*/
 		}
 	}
 

@@ -16,19 +16,20 @@ aifile	bots/major_c.c
 name		Penny
 funname		"Penny"
 model		zveeep/murder
-aifile		bots/skelebot_c.c
+aifile		bots/penny_c.c
 }
+
 {
 name		Q
 funname		"Q"
 model		zveeep/hijinx
-aifile		bots/skelebot_c.c
+aifile		bots/penny_c.c
 }
 {
 name		Orion
 funname		"Orion"
 model		zveeep/shimmer
-aifile		bots/skelebot_c.c
+aifile		bots/penny_c.c
 }
 {
 name		"Mork"
@@ -59,19 +60,19 @@ aifile		bots/sarge_c.c
 name		Weemer
 funname		"Weemer"
 model		bugger/espaersc
-aifile		bots/skelebot_c.c
+aifile		bots/penny_c.c
 }
 {
 name		Paul
 funname		"Paul"
 model		bugger/anczyd
-aifile		bots/skelebot_c.c
+aifile		bots/penny_c.c
 }
 {
 name		Hal
 funname		"Hal"
-model		skelebot/default
-aifile		bots/skelebot_c.c
+model		bugger/anczyd
+aifile		bots/penny_c.c
 }
 {
 name		Major

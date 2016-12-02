@@ -101,7 +101,7 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define GAMES_LASTMAN		6	// Shafe - Trep - New Gametype
 #define GAMES_TREPIDATION	7	// Shafe - Trep - New Gametype
 #define GAMES_FREEZETAG		8	// Shafe - Trep - New Gametype
-#define GAMES_ONE4ALL		8	// Shafe - Trep - New Gametype
+#define GAMES_ONE4ALL		9	// Shafe - Trep - New Gametype
 
 //Shafe - Trep - Mulimasters
 static const char *master_servers[] = {

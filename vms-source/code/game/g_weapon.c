@@ -731,10 +731,10 @@ void weapon_railgun_fire (gentity_t *ent) {
 
 	// Rifle Jumping - Shafe
 		// Instagib Jumping
-		if (g_GuassJump.integer == 1) 
+		if (g_GaussJump.integer == 1) 
 		{
 			
-			splashRadius = g_GuassKnockBack.integer * 50; 
+			splashRadius = g_GaussKnockBack.integer * 50; 
 			splashDmg = splashRadius; 
 
 		} else {
