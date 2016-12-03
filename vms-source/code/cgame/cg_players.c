@@ -598,6 +598,7 @@ static qboolean	CG_RegisterClientSkin( clientInfo_t *ci, const char *teamName, c
 CG_RegisterClientModelname
 ==========================
 */
+
 static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelName, const char *skinName, const char *headModelName, const char *headSkinName, const char *teamName ) {
 	char	filename[MAX_QPATH*2];
 	const char		*headName;
@@ -629,7 +630,7 @@ static qboolean CG_RegisterClientModelname( clientInfo_t *ci, const char *modelN
 				ci->legsModel = trap_R_RegisterModel( filename );
 				ci->efmodel = qtrue;
 				if ( !ci->legsModel ) {
-					Com_Printf( "CG_RegisterClientModelname: Failed to load model file %s\n", filename );
+					Com_Printf( "CG_RegisterClientModelname: Failed to load model file 6673 %s\n", filename );
 					return qfalse;
 				}
 			}
@@ -722,7 +723,7 @@ if( headName[0] == '*' ) {
 
 	if ( !ci->modelIcon ) {
 		Com_Printf( "CG_RegisterClientModelname: Failed to modelIcon %s\n", filename );
-		//return qfalse;
+		return qfalse;
 	}
 
 	return qtrue;

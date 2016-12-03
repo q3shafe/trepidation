@@ -44,6 +44,12 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Bots no longer get the jetpack on showdown, as they kinda stink at it.
+
+- Reduced new flame thrower damage.
+
+- Fixed issue where missing player models made player invisible.  Now goes to default model.
+
 - Server browser: Adjusted server hostname size so you can see more of the name, got rid of the old pb 
 yes/no and also removed the udp/tcp column.
 
@@ -1010,4 +1016,4 @@ OVERALL CODE
 
 
 random side note about making roq files
-ffmpeg -i a.avi -ab 256k -ar 22050 -r 30 -s 512x512 a.roq
+ffmpeg -i treptest.avi -ab 256k -ar 22050 -r 30 -s 512x512 a.roq

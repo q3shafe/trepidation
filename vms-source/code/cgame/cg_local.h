@@ -67,13 +67,13 @@
 #define TEAM_OVERLAY_MAXNAME_WIDTH	12
 #define TEAM_OVERLAY_MAXLOCATION_WIDTH	16
 
-#define	DEFAULT_MODEL			"sarge"
+#define	DEFAULT_MODEL			"major"
 #ifdef MISSIONPACK
 #define	DEFAULT_TEAM_MODEL		"james"
 #define	DEFAULT_TEAM_HEAD		"*james"
 #else
-#define	DEFAULT_TEAM_MODEL		"sarge"
-#define	DEFAULT_TEAM_HEAD		"sarge"
+#define	DEFAULT_TEAM_MODEL		"major"
+#define	DEFAULT_TEAM_HEAD		"major"
 #endif
 
 #define DEFAULT_REDTEAM_NAME		"Stroggs"

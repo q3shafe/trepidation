@@ -2395,9 +2395,12 @@ void CheckExitRules( void ) {
 									cl->ps.powerups[quad->giTag] += 25 * 1000;
 									G_AddEvent( self, EV_ITEM_PICKUP, (quad-bg_itemlist) );
 
-									cl->ps.powerups[flight->giTag] = level.time - ( level.time % 1000 );
-									cl->ps.powerups[flight->giTag] += 15 * 1000;
-									G_AddEvent( self, EV_ITEM_PICKUP, (flight-bg_itemlist) );
+									// Don't give bots flight, they kinda suck ass with it - shafe
+									if ( !(g_entities[i].r.svFlags & SVF_BOT) ) {
+										cl->ps.powerups[flight->giTag] = level.time - ( level.time % 1000 );
+										cl->ps.powerups[flight->giTag] += 15 * 1000;
+										G_AddEvent( self, EV_ITEM_PICKUP, (flight-bg_itemlist) );
+									}
 									
 									cl->ps.powerups[battles->giTag] = level.time - ( level.time % 1000 );
 									cl->ps.powerups[battles->giTag] += 10 * 1000;

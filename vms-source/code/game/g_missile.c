@@ -897,7 +897,7 @@ gentity_t *fire_flamethrower2( gentity_t *self, vec3_t start, vec3_t dir )
   bolt->s.generic1 = self->s.generic1; //weaponMode
   bolt->r.ownerNum = self->s.number;
   bolt->parent = self;
-  bolt->damage = 20;
+  bolt->damage = 15;
   bolt->splashDamage = 10;
   bolt->splashRadius = FLAMER_RADIUS;
   bolt->methodOfDeath = MOD_LIGHTNING;
