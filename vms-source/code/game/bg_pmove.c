@@ -712,7 +712,7 @@ static void PM_GrappleMove( void ) {
 	if (vlen <= 100)
 		VectorScale(vel, 10 * vlen, vel);
 	else
-		VectorScale(vel, 800, vel);
+		VectorScale(vel, 1800, vel);
 
 	VectorCopy(vel, pm->ps->velocity);
 

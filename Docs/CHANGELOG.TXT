@@ -44,6 +44,10 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Fixed single people ffa match so that the first map is random.
+
+- Grapple is much more responsive.
+
 - Bots no longer get the jetpack on showdown, as they kinda stink at it.
 
 - Reduced new flame thrower damage.
