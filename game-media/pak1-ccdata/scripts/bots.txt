@@ -1,0 +1,82 @@
+//===========================================================================
+//	AverageBot	version 0.0
+//
+//
+//	Made with doktor's BotStudio v. 0.98
+//	http://www.planetquake.com/botstudio  e-mail: doktor@cutey.com
+//===========================================================================
+
+{
+name		"Vic20"
+funname		"Vic20"
+model		bugger/yikes
+aifile	bots/major_c.c
+}
+{
+name		Penny
+funname		"Penny"
+model		zveeep/murder
+aifile		bots/penny_c.c
+}
+
+{
+name		Q
+funname		"Q"
+model		zveeep/hijinx
+aifile		bots/penny_c.c
+}
+{
+name		Orion
+funname		"Orion"
+model		zveeep/shimmer
+aifile		bots/penny_c.c
+}
+{
+name		"Mork"
+funname		"Mork"
+model		zveeep/default
+aifile		bots/major_c.c
+}
+
+{
+name		Beret
+funname		"Beret"
+model		beret/default
+aifile		bots/beret_c.c
+}
+{
+name		AngryNerdBot
+funname		"AngryNerdBot"
+model		bugger/recept
+aifile		bots/grism_c.c
+}
+{
+name		Stanley
+funname		"Stanley"
+model		bugger/jahseer
+aifile		bots/sarge_c.c
+}
+{
+name		Weemer
+funname		"Weemer"
+model		bugger/espaersc
+aifile		bots/penny_c.c
+}
+{
+name		Paul
+funname		"Paul"
+model		bugger/anczyd
+aifile		bots/penny_c.c
+}
+{
+name		Hal
+funname		"Hal"
+model		bugger/anczyd
+aifile		bots/penny_c.c
+}
+{
+name		Major
+model		major
+model		major/default
+aifile		bots/major_c.c
+}

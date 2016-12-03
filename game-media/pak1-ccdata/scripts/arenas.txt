@@ -1,0 +1,184 @@
+{
+map "hangar19"
+longname "Hangar 19"
+fraglimit	10
+bots		"Mech"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team tourney arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+{
+map "area52"
+longname "Area 52"
+fraglimit	10
+bots		"sarge"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+{
+map "outpost"
+fraglimit	10
+bots		"sarge"
+longname "Outpost"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+{
+map "ctf_trepxus"
+fraglimit	10
+bots		"sarge"
+longname "CTF Trepx US"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "9"
+}
+
+
+{
+map "trep_war_ring"
+fraglimit	10
+bots		"sarge"
+longname "War Ring"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team tourney arsenal survival trepidation freezetag one4all"
+recommended "9"
+}
+
+{
+map "citadel"
+fraglimit	10
+bots		"sarge"
+longname "Citadel"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+{
+map "ctf_opposingforts"
+fraglimit	10
+bots		"sarge"
+longname "CTF Opposing Forts"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team tourney ctf arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+
+{
+map "dystopia"
+fraglimit	10
+bots		"sarge"
+longname "Dystopia"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+
+{
+map "oa_rpg3dm2"
+fraglimit	10
+bots		"sarge"
+longname "RPG3DM2"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team tourney arsenal survival trepidation freezetag one4all"
+recommended "8"
+}
+
+{
+map "ctf_battlefield"
+longname "CTF Battlefield"
+fraglimit	10
+bots		"sarge"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "8"
+}
+
+{
+map "ctf_junction"
+longname "CTF Junction"
+fraglimit	10
+bots		"sarge"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "8"
+}
+
+
+
+{
+map "ctf_conflictzone"
+longname "CTF Conflict Zone"
+fraglimit	10
+bots		"sarge"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+{
+map "ctf_pyramide"
+fraglimit	10
+bots		"sarge"
+longname "CTF Pyramide"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+{
+map "ctf_pyramide2"
+fraglimit	10
+bots		"sarge"
+longname "CTF Pyramide II"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+
+{
+map "dread"
+fraglimit	10
+bots		"sarge"
+longname "Dread"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+{
+map "ctf_aversion"
+longname "CTF Aversion"
+fraglimit	10
+bots		"sarge"
+longname_deutsch "CTF Aversion"
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+
+
