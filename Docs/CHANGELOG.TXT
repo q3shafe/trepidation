@@ -44,6 +44,8 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- added g_allowGrapple to enable/disable grapple hook.
+
 - Fixed single people ffa match so that the first map is random.
 
 - Grapple is much more responsive.

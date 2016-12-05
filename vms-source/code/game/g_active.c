@@ -1346,9 +1346,10 @@ void ClientThink_real( gentity_t *ent ) {
 	*/
 
 	// Shafe - Trep  - Offhand Grappling Hook
-	if (g_gametype.integer != GT_CTF) { // Not in CTF Games
+	if ((g_gametype.integer != GT_CTF) && (g_allowGrapple.integer == 1)) { // Not in CTF Games
 		if ( (pm.cmd.buttons & 64)  && ent->client->ps.pm_type != PM_DEAD && !ent->client->hookhasbeenfired)
 		{
+		
 			Weapon_GrapplingHook_Fire( ent );
 			ent->client->hookhasbeenfired = qtrue;
 		}

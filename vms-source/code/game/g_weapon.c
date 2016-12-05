@@ -1402,7 +1402,9 @@ void FireWeapon( gentity_t *ent ) {
 		BFG_Fire( ent, qfalse );
 		break;
 	case WP_GRAPPLING_HOOK:
-		Weapon_GrapplingHook_Fire( ent );
+		if(g_allowGrapple.integer) {
+			Weapon_GrapplingHook_Fire( ent );
+		}
 		break;
 	case WP_TURRET:
 		Weapon_fire_turret( ent, qfalse );
@@ -1489,7 +1491,9 @@ void FireWeapon2( gentity_t *ent ) {
 	BFG_Fire( ent, qtrue); 
 	break; 
  case WP_GRAPPLING_HOOK: 
-	Weapon_GrapplingHook_Fire( ent ); 
+	if(g_allowGrapple.integer) {
+		Weapon_GrapplingHook_Fire( ent ); 
+	}
 	break;
  case WP_TURRET:
 	Weapon_fire_turret( ent, qtrue );
