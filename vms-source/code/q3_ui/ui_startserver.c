@@ -685,7 +685,9 @@ typedef struct {
 	menufield_s			timelimit;
 	menufield_s			fraglimit;
 	menufield_s			flaglimit;
+	menuradiobutton_s	instagib;
 	menuradiobutton_s	friendlyfire;
+	menuradiobutton_s	grapple;
 	menufield_s			hostname;
 	menuradiobutton_s	pure;
 	menulist_s			botSkill;
@@ -781,7 +783,9 @@ static void ServerOptions_Start( void ) {
 	int		dedicated;
 	int		friendlyfire;
 	int		flaglimit;
-//	int		gamemode;
+	int		instagib;
+	int		grapple;
+	//	int		gamemode;
 	int		pure;
 	int		skill;
 	int		n;
@@ -795,6 +799,8 @@ static void ServerOptions_Start( void ) {
 		
 	dedicated	 = s_serveroptions.dedicated.curvalue;
 	friendlyfire = s_serveroptions.friendlyfire.curvalue;
+	instagib = s_serveroptions.instagib.curvalue;
+	grapple = s_serveroptions.grapple.curvalue;
 	pure		 = s_serveroptions.pure.curvalue;
 	skill		 = s_serveroptions.botSkill.curvalue + 1;
 	//gamemode	 = s_serveroptions.gamemode.curvalue;
@@ -845,6 +851,8 @@ static void ServerOptions_Start( void ) {
 	}
 	
 	trap_Cvar_SetValue( "sv_maxclients", Com_Clamp( 0, 12, maxclients ) );
+	trap_Cvar_SetValue( "g_Instagib", Com_Clamp( 0, instagib, instagib) );
+	trap_Cvar_SetValue( "g_allowGrapple", Com_Clamp( 0, grapple, grapple) );
 	trap_Cvar_SetValue( "dedicated", Com_Clamp( 0, 2, dedicated ) );
 	trap_Cvar_SetValue ("timelimit", Com_Clamp( 0, timelimit, timelimit ) );
 	trap_Cvar_SetValue ("fraglimit", Com_Clamp( 0, fraglimit, fraglimit ) );
@@ -1380,6 +1388,20 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 	s_serveroptions.timelimit.field.widthInChars = 3;
 	s_serveroptions.timelimit.field.maxchars     = 3;
 
+	y += BIGCHAR_HEIGHT+2;
+	s_serveroptions.instagib.generic.type     = MTYPE_RADIOBUTTON;
+	s_serveroptions.instagib.generic.flags    = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+	s_serveroptions.instagib.generic.x	      = OPTIONS_X;
+	s_serveroptions.instagib.generic.y	      = y;
+	s_serveroptions.instagib.generic.name	  = "Instagib:";
+
+	y += BIGCHAR_HEIGHT+2;
+	s_serveroptions.grapple.generic.type     = MTYPE_RADIOBUTTON;
+	s_serveroptions.grapple.generic.flags    = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
+	s_serveroptions.grapple.generic.x	      = OPTIONS_X;
+	s_serveroptions.grapple.generic.y	      = y;
+	s_serveroptions.grapple.generic.name	  = "Grapple Hook:";
+
 	if( s_serveroptions.gametype >= GT_TEAM ) {
 		y += BIGCHAR_HEIGHT+2;
 		s_serveroptions.friendlyfire.generic.type     = MTYPE_RADIOBUTTON;
@@ -1540,6 +1562,8 @@ static void ServerOptions_MenuInit( qboolean multiplayer ) {
 	if( s_serveroptions.gametype >= GT_TEAM ) {
 		Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.friendlyfire );
 	}
+	Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.instagib);
+	Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.grapple);
 	
 	if( s_serveroptions.multiplayer ) {
 		Menu_AddItem( &s_serveroptions.menu, &s_serveroptions.pure );
