@@ -7,8 +7,9 @@ cd trep
 mkdir build
 mkdir build/base
 mkdir build/docs
-git checkout https://github.com/q3shafe/trepidation.git
-cd trepidation/game-media
+cd trepidation
+git pull
+cd game-media
 cp *.dll ../../build
 cp trep* ../../build
 cd pak0-gpl2data
