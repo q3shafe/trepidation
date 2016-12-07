@@ -226,12 +226,20 @@ void UI_DrawConnectScreen( qboolean overlay ) {
 		break;
 	case CA_CONNECTED: {
 		char downloadName[MAX_INFO_VALUE];
-
-			trap_Cvar_VariableStringBuffer( "cl_downloadName", downloadName, sizeof(downloadName) );
-			if (*downloadName) {
-				UI_DisplayDownloadInfo( downloadName );
+			/*
+			if((Q_stricmp( downloadName, "pak0-vms.pk3")) || (Q_stricmp( downloadName, "pak0-gpl2data.pk3")) || (Q_stricmp( downloadName, "pak1-ccdata.pk3")))
+			{
+				trap_Error( va("Server Running Different Version of Trepidation") );
 				return;
-			}
+			} else {
+			*/
+				trap_Cvar_VariableStringBuffer( "cl_downloadName", downloadName, sizeof(downloadName) );
+				if (*downloadName) {
+					UI_DisplayDownloadInfo( downloadName );
+					return;
+				}
+			//}
+			
 		}
 		s = "Awaiting gamestate...";
 		break;
