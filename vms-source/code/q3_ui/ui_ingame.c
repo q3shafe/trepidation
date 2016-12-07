@@ -387,7 +387,7 @@ void InGame_MenuInit( void ) {
 	}
 	
 	Menu_AddItem( &s_ingame.menu, &s_ingame.callvote );
-	Menu_AddItem( &s_ingame.menu, &s_ingame.pickclass );
+//	Menu_AddItem( &s_ingame.menu, &s_ingame.pickclass ); // future use - shafe
 	Menu_AddItem( &s_ingame.menu, &s_ingame.teamorders );
 	Menu_AddItem( &s_ingame.menu, &s_ingame.setup );
 	Menu_AddItem( &s_ingame.menu, &s_ingame.server );

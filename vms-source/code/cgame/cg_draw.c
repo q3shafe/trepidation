@@ -533,6 +533,7 @@ static void CG_DrawStatusBar( void ) {
 	VectorClear( angles );
 
 	// draw any 3D icons first, so the changes back to 2D are minimized
+	/* - Shafe - We are using icons for now.
 	if ( cent->currentState.weapon && cg_weapons[ cent->currentState.weapon ].ammoModel ) {
 		origin[0] = 70;
 		origin[1] = 0;
@@ -541,6 +542,8 @@ static void CG_DrawStatusBar( void ) {
 		CG_Draw3DModel( CHAR_WIDTH*3 + TEXT_ICON_SPACE, 432, 32, 32,
 					   cg_weapons[ cent->currentState.weapon ].ammoModel, 0, origin, angles );
 	}
+
+	*/
 
 	CG_DrawStatusBarHead( 185 + CHAR_WIDTH*3 + TEXT_ICON_SPACE );
 
@@ -598,8 +601,13 @@ static void CG_DrawStatusBar( void ) {
 			CG_DrawField (0, 432, 3, value);
 			trap_R_SetColor( NULL );
 
+
+			// Trep, use the icons for the ammo on the hud
+			CG_DrawPic( CHAR_WIDTH*3 + TEXT_ICON_SPACE, 432, 32, 32, cg_weapons[ cg.predictedPlayerState.weapon ].ammoIcon );
+
 			// if we didn't draw a 3D icon, draw a 2D icon for ammo
-			if ( !cg_draw3dIcons.integer && cg_drawIcons.integer ) {
+			/*
+			if ( !cg_draw3dIcons.integer && cg_drawIcons.integer ) { // Shafe - We are using icons for now.
 				qhandle_t	icon;
 
 				icon = cg_weapons[ cg.predictedPlayerState.weapon ].ammoIcon;
@@ -607,6 +615,7 @@ static void CG_DrawStatusBar( void ) {
 					CG_DrawPic( CHAR_WIDTH*3 + TEXT_ICON_SPACE, 432, 32, 32, icon );
 				}
 			}
+			*/
 		}
 	}
 

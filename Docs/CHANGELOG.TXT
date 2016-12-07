@@ -44,6 +44,12 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Removed choose class from ingame menu as it was never implemented.
+
+- Ammo box Models removed from pk3
+
+- Ammo on hud is now an icon to match the pickup, not a model.  
+
 - Sample Server cfgs now default to sv_pure "1"
 
 - Fixed damage on gata gun, was reversed primary/alt fire.
