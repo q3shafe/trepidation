@@ -713,8 +713,11 @@ void S_AL_SrcShutdown( void )
 	{
 		curSource = &srcList[i];
 		
-		if(curSource->isLocked)
-			Com_DPrintf( S_COLOR_YELLOW "WARNING: Source %d is locked\n", i);
+		if(curSource->isLocked)			
+		{
+ 			srcList[i].isLocked = qfalse;
+ 			Com_DPrintf( S_COLOR_YELLOW "WARNING: Source %d was locked\n", i); // trep sound stutter fix
+ 		}
 
 		if(curSource->entity > 0)
 			entityList[curSource->entity].srcAllocated = qfalse;
@@ -2075,6 +2078,23 @@ static cvar_t *s_alCapture;
 #define ALDRIVER_DEFAULT "libopenal.so.1"
 #endif
 
+ /*
+  =================
+ S_AL_ClearSoundBuffer
+ =================
+ */
+ static
+ void S_AL_ClearSoundBuffer( void )
+ {
+ 	//Clear current sources and associated buffers
+ 	S_AL_SrcShutdown( );
+ 
+ 	//Reallocate sources and generate clear buffers
+ 	S_AL_SrcInit( );
+ }
+ 
+ 
+
 /*
 =================
 S_AL_StopAllSounds
@@ -2088,6 +2108,7 @@ void S_AL_StopAllSounds( void )
 	S_AL_StopBackgroundTrack();
 	for (i = 0; i < MAX_RAW_STREAMS; i++)
 		S_AL_StreamDie(i);
+		S_AL_ClearSoundBuffer();
 }
 
 /*
@@ -2201,15 +2222,6 @@ void S_AL_BeginRegistration( void )
 {
 }
 
-/*
-=================
-S_AL_ClearSoundBuffer
-=================
-*/
-static
-void S_AL_ClearSoundBuffer( void )
-{
-}
 
 /*
 =================

@@ -44,6 +44,8 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Attempting to make adjustments to AL support to fix music stutter
+
 - Added Grapple option to offline and server menu.
 
 - Added Instagib option to offline and server menu.
