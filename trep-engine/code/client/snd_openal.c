@@ -1956,10 +1956,11 @@ static
 void S_AL_StartBackgroundTrack( const char *intro, const char *loop )
 {
 	int i;
-	qboolean issame;
+	qboolean issame;	
 
 	// Stop any existing music that might be playing
 	S_AL_StopBackgroundTrack();
+
 
 	if((!intro || !*intro) && (!loop || !*loop))
 		return;
