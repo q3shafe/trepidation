@@ -44,6 +44,12 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Sample Server cfgs now default to sv_pure "1"
+
+- Fixed damage on gata gun, was reversed primary/alt fire.
+
+- Shotgun damage adjusted
+
 - Attempting to make adjustments to AL support to fix music stutter
 
 - Added Grapple option to offline and server menu.

@@ -352,7 +352,7 @@ SHOTGUN
 
 // DEFAULT_SHOTGUN_SPREAD and DEFAULT_SHOTGUN_COUNT	are in bg_public.h, because
 // client predicts same spreads
-#define	DEFAULT_SHOTGUN_DAMAGE	20
+#define	DEFAULT_SHOTGUN_DAMAGE	15
 
 qboolean ShotgunPellet( vec3_t start, vec3_t end, gentity_t *ent, qboolean alt ) {
 	trace_t		tr;
@@ -1056,7 +1056,7 @@ void Weapon_AltGataFire( gentity_t *ent ) {
 //unlagged - server options
 	// this is configurable now
 //	damage = 8 * s_quadFactor;
-	damage = g_lightningDamage.integer * s_quadFactor;
+	damage = g_lightningDamage.integer * s_quadFactor;  // huh?
 //unlagged - server options
 
 	passent = ent->s.number;

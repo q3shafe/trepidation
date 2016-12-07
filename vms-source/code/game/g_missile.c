@@ -820,7 +820,7 @@ void G_RunMissile( gentity_t *ent ) {
 /*
 =================
 fire_plasma
-
+This is actually alt fire now
 =================
 */
 gentity_t *fire_plasma (gentity_t *self, vec3_t start, vec3_t dir) {
@@ -945,7 +945,7 @@ gentity_t *fire_plasma2 (gentity_t *self, vec3_t start, vec3_t dir) {
 	bolt->s.otherEntityNum = self->s.number;
 //unlagged - projectile nudge
 	bolt->parent = self;
-	bolt->damage = 30;
+	bolt->damage = 15;
 	bolt->splashDamage = 15;
 	bolt->splashRadius = 20;
 	bolt->methodOfDeath = MOD_PLASMA;
@@ -1702,7 +1702,7 @@ gentity_t *fire_alt_gata (gentity_t *self, vec3_t start, vec3_t dir) {
 	hook->target_ent = NULL;
 	
 	
-		hook->damage = 10;
+		hook->damage = 20;
 		hook->splashDamage = 50;
 		hook->splashRadius = 10;
 	
