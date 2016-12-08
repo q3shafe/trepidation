@@ -1013,7 +1013,7 @@ extern	vmCvar_t		g_RegenAmmo;
 extern	vmCvar_t		g_NumRounds; 
 extern	vmCvar_t		g_CurrentRound; 
 extern	vmCvar_t		g_allowGrapple; 
-
+extern	vmCvar_t		g_allowDevastator;
 
 extern	vmCvar_t	trep_debug;
 

@@ -134,6 +134,7 @@ vmCvar_t	g_RegenAmmo;
 vmCvar_t    g_NumRounds; 
 vmCvar_t    g_CurrentRound; 
 vmCvar_t	g_allowGrapple;
+vmCvar_t	g_allowDevastator;
 
 vmCvar_t	trep_debug;
 
@@ -279,6 +280,8 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_NumRounds, "g_NumRounds", "0", 0, 0, qtrue },
 	{ &g_CurrentRound, "g_CurrentRound", "0", 0, 0, qtrue },
 	{ &g_allowGrapple, "g_allowGrapple", "1", 0, 0, qtrue },
+	{ &g_allowDevastator, "g_allowDevastator", "1", 0, 0, qtrue },
+	
 	
 	// Debugging
 	{ &trep_debug, "trep_debug", "0", CVAR_ARCHIVE, 0, qtrue }

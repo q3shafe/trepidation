@@ -1882,6 +1882,25 @@ void BG_PlayerStateToEntityState( playerState_t *ps, entityState_t *s, qboolean 
 }
 
 /*
+===============
+BG_FindItemForAmmo
+
+===============
+*/
+gitem_t	*BG_FindItemForAmmo( weapon_t weapon ) {
+	gitem_t	*it;
+	
+	for ( it = bg_itemlist + 1 ; it->classname ; it++) {
+		if ( it->giType == IT_AMMO && it->giTag == weapon ) {
+			return it;
+		}
+	}
+
+	Com_Error( ERR_DROP, "Couldn't find item for ammo %i", weapon);
+	return NULL;
+}
+
+/*
 ========================
 BG_PlayerStateToEntityStateExtraPolate
 

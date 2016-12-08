@@ -44,6 +44,10 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- added g_allowDevastator, when set to 0 Devastator and it's ammo are replaced on maps with singularity cannon.
+
+- Grapple can be used in CTF games now, it is now controlled by the g_allowgrapple cvar.
+
 - Removed choose class from ingame menu as it was never implemented.
 
 - Ammo box Models removed from pk3

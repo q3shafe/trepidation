@@ -1746,15 +1746,6 @@ static void PM_Weapon( void ) {
 		}
 	}
 
-	
-	
-
-
-		
-
-
-
-
 	// Shafe - Trep Instagib  Cant get this to work - But This would be the correct way to go about it
 	//if (g_instagib.integer == 1) {  
 	//	if ( pm->ps->weapon != WP_RAILGUN ); // InstaGib - unlimited ammo

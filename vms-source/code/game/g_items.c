@@ -236,7 +236,7 @@ int Pickup_Weapon (gentity_t *ent, gentity_t *other) {
 				quantity = quantity - other->client->ps.ammo[ ent->item->giTag ];
 				
 			} else {
-				quantity = 1;		// only add a single shot  
+				quantity = quantity*0.5;		// only add a single shot  
 				
 			}
 		}
@@ -949,6 +949,37 @@ int G_ItemDisabled( gitem_t *item ) {
 	return trap_Cvar_VariableIntegerValue( name );
 }
 
+
+gitem_t *G_CheckReplaceItem( gentity_t *ent, gitem_t *item )
+{
+	gitem_t *newitem = item;
+
+	if(!g_allowDevastator.integer)	
+	{	//replace tetryon and scav rifles with I-Mods
+		switch ( item->giTag )
+		{
+		case WP_BFG:
+			switch( item->giType )
+			{
+			case IT_WEAPON:
+				newitem = BG_FindItemForWeapon( WP_ROCKET_LAUNCHER );
+				ent->classname = "weapon_rocketlauncher";
+				break;
+			case IT_AMMO:
+				newitem = BG_FindItemForAmmo( WP_ROCKET_LAUNCHER);
+				ent->classname = "ammo_rockets";
+				break;
+			default:
+				break;
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	return newitem;
+}
+
 /*
 ============
 G_SpawnItem
@@ -961,34 +992,37 @@ be on an entity that hasn't spawned yet.
 */
 void G_SpawnItem (gentity_t *ent, gitem_t *item) {
 	
+
+	item = G_CheckReplaceItem( ent, item ); // New	
+
 	//Shafe - Trep Instagib
 	if (g_instagib.integer == 1) 
 	{
-	// InstaGib - prevent weapons and ammo from spawning
-	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
-		return;
-	}
+		// InstaGib - prevent weapons and ammo from spawning
+		if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
+			return;
+		}
 	/////////////////////////////////////////////////////////
 
 	//Shafe - Trep Instagib, One4All
-	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2) || (g_GameMode.integer == 4)  )
-	{
-	// Arsenal - prevent weapons and ammo from spawning
-	if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
-		return;
-	}
+		if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2) || (g_GameMode.integer == 4)  )
+		{
+		// Arsenal - prevent weapons and ammo from spawning
+		if ( item->giType == IT_WEAPON || item->giType == IT_AMMO)
+			return;
+		}
 	
 	/////////////////////////////////////////////////////////
 
 	/////////////////////////////////////////////////////////
 
-	//Shafe - Trep Instagib, One4All
-	if ((g_GameMode.integer == 999))
-	{
-	// Arsenal - prevent weapons and ammo from spawning
-	if ( item->giType == IT_WEAPON  || item->giType == IT_AMMO)
-		return;
-	}
+		//Shafe - Trep Instagib, One4All
+		if ((g_GameMode.integer == 999))
+		{
+		// Arsenal - prevent weapons and ammo from spawning
+		if ( item->giType == IT_WEAPON  || item->giType == IT_AMMO)
+			return;
+		}
 	
 	/////////////////////////////////////////////////////////
 
