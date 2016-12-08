@@ -44,6 +44,8 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- New linux binaries
+
 - added g_allowDevastator, when set to 0 Devastator and it's ammo are replaced on maps with singularity cannon.
 
 - Grapple can be used in CTF games now, it is now controlled by the g_allowgrapple cvar.
