@@ -99,7 +99,7 @@ bfgExplosion
 	}
 }
 
-plasmaExplosion
+plasmaExplosionX
 {
 	cull disable
 	deformVertexes wave 1 sin 0 1 0 2 

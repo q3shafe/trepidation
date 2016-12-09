@@ -13,6 +13,13 @@ model		bugger/yikes
 aifile	bots/major_c.c
 }
 {
+name		Sarge
+funname		"Sarge"
+model		zveeep/murder
+aifile		bots/penny_c.c
+}
+
+{
 name		Penny
 funname		"Penny"
 model		zveeep/murder
