@@ -55,7 +55,7 @@ aifile		bots/beret_c.c
 name		AngryNerdBot
 funname		"AngryNerdBot"
 model		bugger/recept
-aifile		bots/grism_c.c
+aifile		bots/angrynerdbot_c.c
 }
 {
 name		Stanley
