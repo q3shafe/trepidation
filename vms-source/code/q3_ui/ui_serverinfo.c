@@ -109,6 +109,7 @@ static void ServerInfo_MenuDraw( void )
 	char			key[MAX_INFO_KEY];
 	char			value[MAX_INFO_VALUE];
 	int				y;
+	int				x=0;
 
 	y = SCREEN_HEIGHT/2 - s_serverinfo.numlines*(SMALLCHAR_HEIGHT)/2 - 20;
 	s = s_serverinfo.info;
@@ -124,6 +125,9 @@ static void ServerInfo_MenuDraw( void )
 		UI_DrawString(SCREEN_WIDTH*0.50 + 8,y,value,UI_LEFT|UI_SMALLFONT,text_color_normal);
 
 		y += SMALLCHAR_HEIGHT;
+
+		x++;
+		if (x>20) { break; } // Don't show more than 20.. gets messy and goes off the screen // shafe trep
 	}
 
 	Menu_Draw( &s_serverinfo.menu );
@@ -205,8 +209,8 @@ void UI_ServerInfoMenu( void )
 	s_serverinfo.add.generic.flags    = QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 	s_serverinfo.add.generic.callback = ServerInfo_Event;
 	s_serverinfo.add.generic.id	      = ID_ADD;
-	s_serverinfo.add.generic.x		  = 320;
-	s_serverinfo.add.generic.y		  = 371;
+	s_serverinfo.add.generic.x		  = 380;
+	s_serverinfo.add.generic.y		  = 431;
 	s_serverinfo.add.string  		  = "ADD TO FAVORITES";
 	s_serverinfo.add.style  		  = UI_CENTER|UI_SMALLFONT;
 	s_serverinfo.add.color			  =	color_red;
@@ -241,8 +245,8 @@ void UI_ServerInfoMenu( void )
 		s_serverinfo.numlines = 16;
 
 	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.banner );
-	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.framel );
-	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.framer );
+	//Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.framel );
+	//Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.framer );
 	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.add );
 	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.back );
 

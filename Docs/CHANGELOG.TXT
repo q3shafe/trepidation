@@ -44,6 +44,8 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Fixed server info screen, it was a mess and unreadable.
+
 - New bot chatfile.
 
 - Fixed issue where Singularity ammo wasn't getting registered when g_allowdevastator was 0
