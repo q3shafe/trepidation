@@ -44,6 +44,20 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Build Menu was missing from settings, re-added it back in.
+
+- New Grapple icon, not used except on loading screen and some rare 3rd party maps.
+
+- Removed duplicate shader file
+
+- Invisible sarge bot bug fixed
+
+- Gata Gun impacts updated
+
+========================================
+12-08-2016 Dev Build
+=========================================
+
 - New linux binaries
 
 - added g_allowDevastator, when set to 0 Devastator and it's ammo are replaced on maps with singularity cannon.

@@ -1588,11 +1588,11 @@ static void Controls_MenuInit( void )
 	s_controls.build_menu.generic.id        = ID_BUILD_MENU;
 
 	// Shafe - Voip Key
-	s_controls.build_menu.generic.type	    = MTYPE_ACTION;
-	s_controls.build_menu.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
-	s_controls.build_menu.generic.callback  = Controls_ActionEvent;
-	s_controls.build_menu.generic.ownerdraw = Controls_DrawKeyBinding;
-	s_controls.build_menu.generic.id        = ID_VOIPKEY;
+	s_controls.voipkey.generic.type	    = MTYPE_ACTION;
+	s_controls.voipkey.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
+	s_controls.voipkey.generic.callback  = Controls_ActionEvent;
+	s_controls.voipkey.generic.ownerdraw = Controls_DrawKeyBinding;
+	s_controls.voipkey.generic.id        = ID_VOIPKEY;
 
 	s_controls.joyenable.generic.type      = MTYPE_RADIOBUTTON;
 	s_controls.joyenable.generic.flags	   = QMF_SMALLFONT;
@@ -1681,6 +1681,7 @@ static void Controls_MenuInit( void )
 	Menu_AddItem( &s_controls.menu, &s_controls.grapple );  // Shafe - Trep - Grapple
 	Menu_AddItem( &s_controls.menu, &s_controls.pdg );  // Shafe - Trep - pdg
 	Menu_AddItem( &s_controls.menu, &s_controls.build_menu );  // Shafe - Build Menu
+	Menu_AddItem( &s_controls.menu, &s_controls.voipkey );  // Shafe - Build Menu
 	Menu_AddItem( &s_controls.menu, &s_controls.gesture );
 	
 	Menu_AddItem( &s_controls.menu, &s_controls.chat );

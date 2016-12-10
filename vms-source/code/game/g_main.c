@@ -2729,7 +2729,7 @@ void CheckTournament( void ) {
 			level.firstStrike = qfalse;
 			trap_Cvar_Set( "g_restarted", "1" );
 			trap_SendConsoleCommand( EXEC_APPEND, "map_restart 0\n" );
-			level.restarted = qtrue;
+			level.restarted = qtrue;		
 
 			return;
 		}
