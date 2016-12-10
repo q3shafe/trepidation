@@ -866,6 +866,11 @@ void ClearRegisteredItems( void ) {
 		RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
 	} // End Shafe
 
+	if (g_allowDevastator.integer == 0 ) // pre-register sing cannon ammo if devastators disallowed
+	{
+		RegisterItem( BG_FindItemForWeapon( WP_ROCKET_LAUNCHER ) );
+	}
+
 	// Shafe - Trep - Arsenal and LMS Gets All Weapons Pre-Registered
 	if ((g_GameMode.integer == 1) || (g_GameMode.integer == 2)  || (g_GameMode.integer == 999))
 	{

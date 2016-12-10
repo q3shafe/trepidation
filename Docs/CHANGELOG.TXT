@@ -44,6 +44,10 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- New bot chatfile.
+
+- Fixed issue where Singularity ammo wasn't getting registered when g_allowdevastator was 0
+
 - Build Menu was missing from settings, re-added it back in.
 
 - New Grapple icon, not used except on loading screen and some rare 3rd party maps.
