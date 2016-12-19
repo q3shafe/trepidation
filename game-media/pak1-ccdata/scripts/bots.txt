@@ -16,7 +16,7 @@ aifile	bots/major_c.c
 name		Sarge
 funname		"Sarge"
 model		zveeep/murder
-aifile		bots/penny_c.c
+aifile		bots/sarge_c.c
 }
 
 {

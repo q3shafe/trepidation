@@ -44,6 +44,8 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- More bot updates
+
 - Fixed server info screen, it was a mess and unreadable.
 
 - New bot chatfile.

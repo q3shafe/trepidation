@@ -91,6 +91,7 @@ chat "sarge"
 
 	type "death_cratered"
 	{
+		"Cratered hey does that mean where on the moon!";
 		DEATH_FALLING0;
 		DEATH_FALLING0;
 		DEATH_FALLING0;

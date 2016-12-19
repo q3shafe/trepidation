@@ -79,7 +79,7 @@ chat "AngryNerdBot"
 	{
 		"Try harder next time";
 		"What the hell was that?";
-		"That tickled!";
+		"Off by that much ^4:-p";
 		curse;
 		// 0 = shooter
 		// 1 = weapon used by shooter
@@ -94,7 +94,7 @@ chat "AngryNerdBot"
 	} //end type
 	type "enemy_suicide" //enemy of the bot commits suicide
 	{
-		"The pressure to much for you0";
+		"The pressure to much for you0?";
 		// 0 = enemy
 	} //end type
 	//======================================================
@@ -102,7 +102,7 @@ chat "AngryNerdBot"
 	type "death_telefrag" //initiated when the bot is killed by a telefrag
 	{
 		"Son of a b....";
-		"D'oh!";
+		"Wait wait wait... if we have teleporters then why are there cars?";
 		DEATH_TELEFRAGGED1;
 		// 0 = enemy name
 	} //end type
@@ -121,12 +121,13 @@ chat "AngryNerdBot"
 	} //end type
 	type "death_slime" //initiated when the bot dies in slime
 	{
-		"Eeek...";
+		"Well this is a sticky situation.";
 		DEATH_SLIME1;
 		// 0 = random opponent
 	} //end type
 	type "death_drown" //initiated when the bot drowns
 	{
+		"Water esential to life and able to kill hmmmm...";
 		DEATH_DROWN0;
 		"What is this?  freaking waterworld?";
 		// 0 = random opponent
@@ -134,12 +135,13 @@ chat "AngryNerdBot"
 	type "death_suicide" //initiated when bot blows self up with a weapon or craters
 	{
 		"Fairwell cruel world";
+		"0 bullied me!";
 		DEATH_SUICIDE2;
 		
 		// 0 = random opponent
 	} //end type
 	type "death_gauntlet" //initiated when the bot is killed by a gauntlet attack
-	{
+	{	
 		DEATH_GAUNTLET1;
 		// 0 = enemy name
 		// 1 = weapon used by enemy (NOTE: always set to Gauntlet)
@@ -167,6 +169,7 @@ chat "AngryNerdBot"
 		curse;
 		"Repawn and die, respawn and die.. I see a pattern developing.";
 		"pffft!";
+		"0 is Scrub!";
 		DEATH_INSULT2;
 		DEATH_INSULT0;
 		// 0 = enemy name
@@ -185,16 +188,19 @@ chat "AngryNerdBot"
 	//======================================================
 	type "kill_rail" //initiated when the bot kills someone with rail gun
 	{
+		"0 Thanks for standing still!";
 		// 0 = enemy name
 	} //end type
 	type "kill_gauntlet" //initiated when the bot kills someone with gauntlet
 	{
+		"Hardly broke a sweat...";
 		"LOL!";
 		"Too easy";
 		// 0 = enemy name
 	} //end type
 	type "kill_telefrag" //initiated when the bot telefragged someone
 	{
+		"Maybe0 should have taken the bus! ";
 		"LOL!";
 		// 0 = enemy name
 	} //end type
