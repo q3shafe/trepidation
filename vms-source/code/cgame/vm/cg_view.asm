@@ -3,7 +3,7 @@ code
 proc CG_TestModel_f 36 12
 file "../cg_view.c"
 line 51
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_view.c -- setup all the parameters (position, angle, etc)
 ;4:// for a 3D rendering
@@ -2185,13 +2185,13 @@ line 438
 ;435:	}
 ;436:
 ;437:	// Only The Guass Rifle Can Zoom
-;438:	if (cg.snap->ps.weapon != 7)
+;438:	if (cg.snap->ps.weapon != WP_RAILGUN)
 ADDRGP4 cg+36
 INDIRP4
 CNSTI4 188
 ADDP4
 INDIRI4
-CNSTI4 7
+CNSTI4 3
 EQI4 $480
 line 439
 ;439:	{
@@ -2665,7 +2665,7 @@ ADDRGP4 cg+111488
 INDIRI4
 SUBI4
 CVIF4 4
-CNSTF4 1137180672
+CNSTF4 1132068864
 DIVF4
 ASGNF4
 ADDRGP4 $560
@@ -4951,6 +4951,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

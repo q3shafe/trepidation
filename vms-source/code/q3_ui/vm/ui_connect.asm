@@ -7,7 +7,7 @@ code
 proc UI_ReadableSize 16 16
 file "../ui_connect.c"
 line 20
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:#include "ui_local.h"
 ;4:
@@ -1453,10 +1453,16 @@ JUMPV
 LABELV $146
 line 227
 ;227:	case CA_CONNECTED: {
-line 230
+line 236
 ;228:		char downloadName[MAX_INFO_VALUE];
-;229:
-;230:			trap_Cvar_VariableStringBuffer( "cl_downloadName", downloadName, sizeof(downloadName) );
+;229:			/*
+;230:			if((Q_stricmp( downloadName, "pak0-vms.pk3")) || (Q_stricmp( downloadName, "pak0-gpl2data.pk3")) || (Q_stricmp( downloadName, "pak1-ccdata.pk3")))
+;231:			{
+;232:				trap_Error( va("Server Running Different Version of Trepidation") );
+;233:				return;
+;234:			} else {
+;235:			*/
+;236:				trap_Cvar_VariableStringBuffer( "cl_downloadName", downloadName, sizeof(downloadName) );
 ADDRGP4 $147
 ARGP4
 ADDRLP4 4140
@@ -1466,49 +1472,51 @@ ARGI4
 ADDRGP4 trap_Cvar_VariableStringBuffer
 CALLV
 pop
-line 231
-;231:			if (*downloadName) {
+line 237
+;237:				if (*downloadName) {
 ADDRLP4 4140
 INDIRI1
 CVII4 1
 CNSTI4 0
 EQI4 $148
-line 232
-;232:				UI_DisplayDownloadInfo( downloadName );
+line 238
+;238:					UI_DisplayDownloadInfo( downloadName );
 ADDRLP4 4140
 ARGP4
 ADDRGP4 UI_DisplayDownloadInfo
 CALLV
 pop
-line 233
-;233:				return;
+line 239
+;239:					return;
 ADDRGP4 $120
 JUMPV
 LABELV $148
-line 235
-;234:			}
-;235:		}
-line 236
-;236:		s = "Awaiting gamestate...";
+line 243
+;240:				}
+;241:			//}
+;242:			
+;243:		}
+line 244
+;244:		s = "Awaiting gamestate...";
 ADDRLP4 4108
 ADDRGP4 $150
 ASGNP4
-line 237
-;237:		break;
-line 239
-;238:	case CA_LOADING:
-;239:		return;
-line 241
-;240:	case CA_PRIMED:
-;241:		return;
-line 243
-;242:	default:
-;243:		return;
+line 245
+;245:		break;
+line 247
+;246:	case CA_LOADING:
+;247:		return;
+line 249
+;248:	case CA_PRIMED:
+;249:		return;
+line 251
+;250:	default:
+;251:		return;
 LABELV $138
-line 246
-;244:	}
-;245:
-;246:	UI_DrawProportionalString( 320, 128, s, UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, color_white );
+line 254
+;252:	}
+;253:
+;254:	UI_DrawProportionalString( 320, 128, s, UI_CENTER|UI_SMALLFONT|UI_DROPSHADOW, color_white );
 CNSTI4 320
 ARGI4
 CNSTI4 128
@@ -1523,31 +1531,31 @@ ARGP4
 ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
-line 249
-;247:
-;248:	// password required / connection rejected information goes here
-;249:}
+line 257
+;255:
+;256:	// password required / connection rejected information goes here
+;257:}
 LABELV $120
 endproc UI_DrawConnectScreen 5164 28
 export UI_KeyConnect
 proc UI_KeyConnect 0 8
-line 257
-;250:
-;251:
-;252:/*
-;253:===================
-;254:UI_KeyConnect
-;255:===================
-;256:*/
-;257:void UI_KeyConnect( int key ) {
-line 258
-;258:	if ( key == K_ESCAPE ) {
+line 265
+;258:
+;259:
+;260:/*
+;261:===================
+;262:UI_KeyConnect
+;263:===================
+;264:*/
+;265:void UI_KeyConnect( int key ) {
+line 266
+;266:	if ( key == K_ESCAPE ) {
 ADDRFP4 0
 INDIRI4
 CNSTI4 27
 NEI4 $156
-line 259
-;259:		trap_Cmd_ExecuteText( EXEC_APPEND, "disconnect\n" );
+line 267
+;267:		trap_Cmd_ExecuteText( EXEC_APPEND, "disconnect\n" );
 CNSTI4 2
 ARGI4
 ADDRGP4 $158
@@ -1555,12 +1563,12 @@ ARGP4
 ADDRGP4 trap_Cmd_ExecuteText
 CALLV
 pop
-line 260
-;260:		return;
+line 268
+;268:		return;
 LABELV $156
-line 262
-;261:	}
-;262:}
+line 270
+;269:	}
+;270:}
 LABELV $155
 endproc UI_KeyConnect 0 8
 bss
@@ -1901,6 +1909,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

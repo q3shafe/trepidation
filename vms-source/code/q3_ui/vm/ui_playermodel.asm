@@ -16,7 +16,7 @@ code
 proc PlayerModel_UpdateGrid 28 0
 file "../ui_playermodel.c"
 line 96
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:#include "ui_local.h"
 ;4:
@@ -4415,6 +4415,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

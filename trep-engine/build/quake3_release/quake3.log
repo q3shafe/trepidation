@@ -1,0 +1,1157 @@
+﻿Build started 12/6/2016 10:39:31 PM.
+     1>Project "C:\web\trepdev\trepidation\trep-engine\misc\msvc\quake3.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "..\..\build\quake3_release\quake3.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\..\code\SDL12\include /I..\..\code\libcurl /I..\..\code\AL /I..\..\code\libspeex\include /I..\..\code\zlib /Zi /nologo /W4 /WX- /O2 /Ob2 /Oy- /D _WIN32 /D WIN32 /D NDEBUG /D _WINDOWS /D _CRT_SECURE_NO_DEPRECATE /D BOTLIB /D USE_ICON /D USE_CURL /D USE_CODEC_VORBIS /D USE_CURL_DLOPEN /D USE_OPENAL /D USE_OPENAL_DLOPEN /D BUILD_SERVER /D USE_VOIP /D HAVE_CONFIG_H /GF /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"..\..\build\quake3_release\\" /Fd"..\..\build\quake3_release\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\code\client\cl_avi.c ..\..\code\client\cl_cgame.c ..\..\code\client\cl_cin.c ..\..\code\client\cl_console.c ..\..\code\client\cl_curl.c ..\..\code\client\cl_input.c ..\..\code\client\cl_keys.c ..\..\code\client\cl_main.c ..\..\code\client\cl_net_chan.c ..\..\code\client\cl_parse.c ..\..\code\client\cl_scrn.c ..\..\code\client\cl_ui.c ..\..\code\qcommon\cm_load.c ..\..\code\qcommon\cm_patch.c ..\..\code\qcommon\cm_polylib.c ..\..\code\qcommon\cm_test.c ..\..\code\qcommon\cm_trace.c ..\..\code\qcommon\cmd.c ..\..\code\qcommon\common.c ..\..\code\sys\con_log.c ..\..\code\sys\con_passive.c ..\..\code\qcommon\cvar.c ..\..\code\qcommon\files.c ..\..\code\qcommon\huffman.c ..\..\code\qcommon\md4.c ..\..\code\qcommon\md5.c ..\..\code\qcommon\msg.c ..\..\code\qcommon\net_chan.c ..\..\code\qcommon\net_ip.c ..\..\code\qcommon\puff.c ..\..\code\qcommon\q_math.c ..\..\code\qcommon\q_shared.c ..\..\code\client\qal.c ..\..\code\sdl\sdl_gamma.c ..\..\code\sdl\sdl_glimp.c ..\..\code\sdl\sdl_input.c ..\..\code\sdl\sdl_snd.c ..\..\code\client\snd_adpcm.c ..\..\code\client\snd_codec.c ..\..\code\client\snd_codec_ogg.c ..\..\code\client\snd_codec_wav.c ..\..\code\client\snd_dma.c ..\..\code\client\snd_main.c ..\..\code\client\snd_mem.c ..\..\code\client\snd_mix.c ..\..\code\client\snd_openal.c ..\..\code\client\snd_wavelet.c ..\..\code\server\sv_bot.c ..\..\code\server\sv_ccmds.c ..\..\code\server\sv_client.c ..\..\code\server\sv_game.c ..\..\code\server\sv_init.c ..\..\code\server\sv_main.c ..\..\code\server\sv_net_chan.c ..\..\code\server\sv_snapshot.c ..\..\code\server\sv_world.c ..\..\code\sys\sys_main.c ..\..\code\sys\sys_win32.c ..\..\code\qcommon\unzip.c ..\..\code\qcommon\ioapi.c ..\..\code\qcommon\vm.c ..\..\code\qcommon\vm_interpreted.c ..\..\code\qcommon\vm_x86.c "..\..\code\jpeg-6b\jcapimin.c" "..\..\code\jpeg-6b\jcapistd.c" "..\..\code\jpeg-6b\jccoefct.c" "..\..\code\jpeg-6b\jccolor.c" "..\..\code\jpeg-6b\jcdctmgr.c" "..\..\code\jpeg-6b\jchuff.c" "..\..\code\jpeg-6b\jcinit.c" "..\..\code\jpeg-6b\jcmainct.c" "..\..\code\jpeg-6b\jcmarker.c" "..\..\code\jpeg-6b\jcmaster.c" "..\..\code\jpeg-6b\jcomapi.c" "..\..\code\jpeg-6b\jcparam.c" "..\..\code\jpeg-6b\jcphuff.c" "..\..\code\jpeg-6b\jcprepct.c" "..\..\code\jpeg-6b\jcsample.c" "..\..\code\jpeg-6b\jdapimin.c" "..\..\code\jpeg-6b\jdapistd.c" "..\..\code\jpeg-6b\jdatasrc.c" "..\..\code\jpeg-6b\jdcoefct.c" "..\..\code\jpeg-6b\jdcolor.c" "..\..\code\jpeg-6b\jddctmgr.c" "..\..\code\jpeg-6b\jdhuff.c" "..\..\code\jpeg-6b\jdinput.c" "..\..\code\jpeg-6b\jdmainct.c" "..\..\code\jpeg-6b\jdmarker.c" "..\..\code\jpeg-6b\jdmaster.c" "..\..\code\jpeg-6b\jdpostct.c" "..\..\code\jpeg-6b\jdsample.c" "..\..\code\jpeg-6b\jdtrans.c" "..\..\code\jpeg-6b\jerror.c" "..\..\code\jpeg-6b\jfdctflt.c" "..\..\code\jpeg-6b\jidctflt.c" "..\..\code\jpeg-6b\jmemmgr.c" "..\..\code\jpeg-6b\jmemnobs.c" "..\..\code\jpeg-6b\jutils.c" ..\..\code\botlib\be_aas_bspq3.c ..\..\code\botlib\be_aas_cluster.c ..\..\code\botlib\be_aas_debug.c ..\..\code\botlib\be_aas_entity.c ..\..\code\botlib\be_aas_file.c ..\..\code\botlib\be_aas_main.c ..\..\code\botlib\be_aas_move.c ..\..\code\botlib\be_aas_optimize.c ..\..\code\botlib\be_aas_reach.c ..\..\code\botlib\be_aas_route.c ..\..\code\botlib\be_aas_routealt.c ..\..\code\botlib\be_aas_sample.c ..\..\code\botlib\be_ai_char.c ..\..\code\botlib\be_ai_chat.c ..\..\code\botlib\be_ai_gen.c ..\..\code\botlib\be_ai_goal.c ..\..\code\botlib\be_ai_move.c ..\..\code\botlib\be_ai_weap.c ..\..\code\botlib\be_ai_weight.c ..\..\code\botlib\be_ea.c ..\..\code\botlib\be_interface.c ..\..\code\botlib\l_crc.c ..\..\code\botlib\l_libvar.c ..\..\code\botlib\l_log.c ..\..\code\botlib\l_memory.c ..\..\code\botlib\l_precomp.c ..\..\code\botlib\l_script.c ..\..\code\botlib\l_struct.c ..\..\code\renderer\tr_animation.c ..\..\code\renderer\tr_backend.c ..\..\code\renderer\tr_bsp.c ..\..\code\renderer\tr_cmds.c ..\..\code\renderer\tr_curve.c ..\..\code\renderer\tr_flares.c ..\..\code\renderer\tr_font.c ..\..\code\renderer\tr_image.c ..\..\code\renderer\tr_image_bmp.c ..\..\code\renderer\tr_image_jpg.c ..\..\code\renderer\tr_image_pcx.c ..\..\code\renderer\tr_image_png.c ..\..\code\renderer\tr_image_tga.c ..\..\code\renderer\tr_init.c ..\..\code\renderer\tr_light.c ..\..\code\renderer\tr_main.c ..\..\code\renderer\tr_marks.c ..\..\code\renderer\tr_mesh.c ..\..\code\renderer\tr_model.c ..\..\code\renderer\tr_noise.c ..\..\code\renderer\tr_scene.c ..\..\code\renderer\tr_shade.c ..\..\code\renderer\tr_shade_calc.c ..\..\code\renderer\tr_shader.c ..\..\code\renderer\tr_shadows.c ..\..\code\renderer\tr_sky.c ..\..\code\renderer\tr_surface.c ..\..\code\renderer\tr_world.c ..\..\code\libspeex\bits.c ..\..\code\libspeex\buffer.c ..\..\code\libspeex\cb_search.c ..\..\code\libspeex\exc_10_16_table.c ..\..\code\libspeex\exc_10_32_table.c ..\..\code\libspeex\exc_20_32_table.c ..\..\code\libspeex\exc_5_256_table.c ..\..\code\libspeex\exc_5_64_table.c ..\..\code\libspeex\exc_8_128_table.c ..\..\code\libspeex\fftwrap.c ..\..\code\libspeex\filterbank.c ..\..\code\libspeex\filters.c ..\..\code\libspeex\gain_table.c ..\..\code\libspeex\gain_table_lbr.c ..\..\code\libspeex\hexc_10_32_table.c ..\..\code\libspeex\hexc_table.c ..\..\code\libspeex\high_lsp_tables.c ..\..\code\libspeex\jitter.c ..\..\code\libspeex\kiss_fft.c ..\..\code\libspeex\kiss_fftr.c ..\..\code\libspeex\lpc.c ..\..\code\libspeex\lsp.c ..\..\code\libspeex\lsp_tables_nb.c ..\..\code\libspeex\ltp.c ..\..\code\libspeex\mdf.c ..\..\code\libspeex\modes.c ..\..\code\libspeex\modes_wb.c ..\..\code\libspeex\nb_celp.c ..\..\code\libspeex\preprocess.c ..\..\code\libspeex\quant_lsp.c ..\..\code\libspeex\resample.c ..\..\code\libspeex\sb_celp.c ..\..\code\libspeex\smallft.c ..\..\code\libspeex\speex.c ..\..\code\libspeex\speex_callbacks.c ..\..\code\libspeex\speex_header.c ..\..\code\libspeex\stereo.c ..\..\code\libspeex\vbr.c ..\..\code\libspeex\vq.c ..\..\code\libspeex\window.c ..\..\code\zlib\adler32.c ..\..\code\zlib\crc32.c ..\..\code\zlib\inffast.c ..\..\code\zlib\inflate.c ..\..\code\zlib\inftrees.c ..\..\code\zlib\zutil.c
+         cl_avi.c
+         cl_cgame.c
+         cl_cin.c
+     1>..\..\code\client\cl_cin.c(931): warning C4389: '==' : signed/unsigned mismatch
+     1>..\..\code\client\cl_cin.c(931): warning C4389: '==' : signed/unsigned mismatch
+     1>..\..\code\client\cl_cin.c(1380): warning C4389: '!=' : signed/unsigned mismatch
+         cl_console.c
+         cl_curl.c
+         cl_input.c
+         cl_keys.c
+         cl_main.c
+         cl_net_chan.c
+         cl_parse.c
+         cl_scrn.c
+         cl_ui.c
+         cm_load.c
+         cm_patch.c
+         cm_polylib.c
+         cm_test.c
+         cm_trace.c
+         cmd.c
+         common.c
+         con_log.c
+         Generating Code...
+     1>c:\web\trepdev\trepidation\trep-engine\code\qcommon\common.c(3403): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\qcommon\cmd.c(443): warning C4706: assignment within conditional expression
+         Compiling...
+         con_passive.c
+         cvar.c
+         files.c
+     1>..\..\code\qcommon\files.c(573): warning C4389: '!=' : signed/unsigned mismatch
+     1>..\..\code\qcommon\files.c(585): warning C4389: '!=' : signed/unsigned mismatch
+     1>..\..\code\qcommon\files.c(2908): warning C4189: 'founddemo' : local variable is initialized but not referenced
+     1>..\..\code\qcommon\files.c(2909): warning C4189: 'foundPak' : local variable is initialized but not referenced
+     1>..\..\code\qcommon\files.c(2907): warning C4101: 'path' : unreferenced local variable
+         huffman.c
+         md4.c
+         md5.c
+         msg.c
+         net_chan.c
+         net_ip.c
+         puff.c
+     1>..\..\code\qcommon\puff.c(609): warning C4221: nonstandard extension used : 'count' : cannot be initialized using address of automatic variable 'lencnt'
+                 ..\..\code\qcommon\puff.c(607) : see declaration of 'lencnt'
+     1>..\..\code\qcommon\puff.c(609): warning C4204: nonstandard extension used : non-constant aggregate initializer
+     1>..\..\code\qcommon\puff.c(609): warning C4221: nonstandard extension used : 'symbol' : cannot be initialized using address of automatic variable 'lensym'
+                 ..\..\code\qcommon\puff.c(607) : see declaration of 'lensym'
+     1>..\..\code\qcommon\puff.c(609): warning C4204: nonstandard extension used : non-constant aggregate initializer
+     1>..\..\code\qcommon\puff.c(610): warning C4221: nonstandard extension used : 'count' : cannot be initialized using address of automatic variable 'distcnt'
+                 ..\..\code\qcommon\puff.c(608) : see declaration of 'distcnt'
+     1>..\..\code\qcommon\puff.c(610): warning C4204: nonstandard extension used : non-constant aggregate initializer
+     1>..\..\code\qcommon\puff.c(610): warning C4221: nonstandard extension used : 'symbol' : cannot be initialized using address of automatic variable 'distsym'
+                 ..\..\code\qcommon\puff.c(608) : see declaration of 'distsym'
+     1>..\..\code\qcommon\puff.c(610): warning C4204: nonstandard extension used : non-constant aggregate initializer
+         q_math.c
+         q_shared.c
+         qal.c
+         sdl_gamma.c
+         sdl_glimp.c
+     1>..\..\code\sdl\sdl_glimp.c(616): warning C4055: 'type cast' : from data pointer 'void *' to function pointer 'void (__stdcall *)(GLint,GLint)'
+     1>..\..\code\sdl\sdl_glimp.c(617): warning C4055: 'type cast' : from data pointer 'void *' to function pointer 'void (__stdcall *)(void)'
+         sdl_input.c
+         sdl_snd.c
+         snd_adpcm.c
+         snd_codec.c
+         snd_codec_ogg.c
+         Generating Code...
+     1>c:\web\trepdev\trepidation\trep-engine\code\sdl\sdl_glimp.c(399): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\qcommon\cvar.c(173): warning C4706: assignment within conditional expression
+         Compiling...
+         snd_codec_wav.c
+         snd_dma.c
+         snd_main.c
+         snd_mem.c
+         snd_mix.c
+         snd_openal.c
+         snd_wavelet.c
+         sv_bot.c
+         sv_ccmds.c
+         sv_client.c
+         sv_game.c
+         sv_init.c
+         sv_main.c
+         sv_net_chan.c
+         sv_snapshot.c
+         sv_world.c
+         sys_main.c
+         sys_win32.c
+     1>..\..\code\sys\sys_win32.c(791): warning C4389: '==' : signed/unsigned mismatch
+         unzip.c
+     1>..\..\code\qcommon\unzip.c(171): warning C4131: 'unzlocal_getByte' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(201): warning C4131: 'unzlocal_getShort' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(229): warning C4131: 'unzlocal_getLong' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(265): warning C4131: 'strcmpcasenosensitive_internal' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(308): warning C4131: 'unzStringFileNameCompare' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(334): warning C4131: 'unzlocal_SearchCentralDir' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(400): warning C4131: 'unzOpen2' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(503): warning C4131: 'unzOpen' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(514): warning C4131: 'unzClose' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(535): warning C4131: 'unzGetGlobalInfo' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(557): warning C4131: 'unzlocal_DosDateToTmuDate' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(591): warning C4131: 'unzlocal_GetCurrentFileInfoInternal' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(763): warning C4131: 'unzGetCurrentFileInfo' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(783): warning C4131: 'unzGoToFirstFile' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(805): warning C4131: 'unzGoToNextFile' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(839): warning C4131: 'unzLocateFile' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(918): warning C4131: 'unzGetFilePos' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(936): warning C4131: 'unzGoToFilePos' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(982): warning C4131: 'unzlocal_CheckCurrentFileCoherencyHeader' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1072): warning C4131: 'unzOpenCurrentFile3' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1217): warning C4131: 'unzOpenCurrentFile' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1223): warning C4131: 'unzOpenCurrentFilePassword' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1230): warning C4131: 'unzOpenCurrentFile2' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1249): warning C4131: 'unzReadCurrentFile' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1410): warning C4131: 'unztell' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1430): warning C4131: 'unzeof' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1463): warning C4131: 'unzGetLocalExtrafield' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1514): warning C4131: 'unzCloseCurrentFile' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1557): warning C4131: 'unzGetGlobalComment' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1588): warning C4131: 'unzGetOffset' : uses old-style declarator
+     1>..\..\code\qcommon\unzip.c(1593): warning C4245: 'return' : conversion from 'int' to 'uLong', signed/unsigned mismatch
+     1>..\..\code\qcommon\unzip.c(1604): warning C4131: 'unzSetOffset' : uses old-style declarator
+         ioapi.c
+     1>..\..\code\qcommon\ioapi.c(74): warning C4131: 'fopen_file_func' : uses old-style declarator
+     1>..\..\code\qcommon\ioapi.c(92): warning C4100: 'opaque' : unreferenced formal parameter
+     1>..\..\code\qcommon\ioapi.c(96): warning C4131: 'fread_file_func' : uses old-style declarator
+     1>..\..\code\qcommon\ioapi.c(104): warning C4100: 'opaque' : unreferenced formal parameter
+     1>..\..\code\qcommon\ioapi.c(108): warning C4131: 'fwrite_file_func' : uses old-style declarator
+     1>..\..\code\qcommon\ioapi.c(116): warning C4100: 'opaque' : unreferenced formal parameter
+     1>..\..\code\qcommon\ioapi.c(119): warning C4131: 'ftell_file_func' : uses old-style declarator
+     1>..\..\code\qcommon\ioapi.c(125): warning C4100: 'opaque' : unreferenced formal parameter
+     1>..\..\code\qcommon\ioapi.c(128): warning C4131: 'fseek_file_func' : uses old-style declarator
+     1>..\..\code\qcommon\ioapi.c(151): warning C4100: 'opaque' : unreferenced formal parameter
+     1>..\..\code\qcommon\ioapi.c(154): warning C4131: 'fclose_file_func' : uses old-style declarator
+     1>..\..\code\qcommon\ioapi.c(160): warning C4100: 'opaque' : unreferenced formal parameter
+     1>..\..\code\qcommon\ioapi.c(163): warning C4131: 'ferror_file_func' : uses old-style declarator
+     1>..\..\code\qcommon\ioapi.c(169): warning C4100: 'opaque' : unreferenced formal parameter
+     1>..\..\code\qcommon\ioapi.c(172): warning C4131: 'fill_fopen_filefunc' : uses old-style declarator
+         Generating Code...
+     1>c:\web\trepdev\trepidation\trep-engine\code\sys\sys_win32.c(786): warning C4700: uninitialized local variable 'numBytes' used
+     1>c:\web\trepdev\trepidation\trep-engine\code\server\sv_ccmds.c(552): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\server\sv_ccmds.c(634): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\server\sv_ccmds.c(639): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\client\snd_openal.c(603): warning C4701: potentially uninitialized local variable 'distance' used
+     1>c:\web\trepdev\trepidation\trep-engine\code\client\snd_openal.c(2407): warning C4706: assignment within conditional expression
+         Compiling...
+         vm.c
+         vm_interpreted.c
+         vm_x86.c
+         jcapimin.c
+         jcapistd.c
+         jccoefct.c
+         jccolor.c
+         jcdctmgr.c
+         jchuff.c
+         jcinit.c
+         jcmainct.c
+         jcmarker.c
+         jcmaster.c
+         jcomapi.c
+         jcparam.c
+         jcphuff.c
+         jcprepct.c
+         jcsample.c
+         jdapimin.c
+         jdapistd.c
+         Generating Code...
+     1>c:\web\trepdev\trepidation\trep-engine\code\qcommon\vm.c(569): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\qcommon\vm.c(501): warning C4706: assignment within conditional expression
+         Compiling...
+         jdatasrc.c
+         jdcoefct.c
+         jdcolor.c
+         jddctmgr.c
+         jdhuff.c
+         jdinput.c
+         jdmainct.c
+         jdmarker.c
+         jdmaster.c
+         jdpostct.c
+         jdsample.c
+         jdtrans.c
+         jerror.c
+         jfdctflt.c
+         jidctflt.c
+         jmemmgr.c
+         jmemnobs.c
+         jutils.c
+         be_aas_bspq3.c
+         be_aas_cluster.c
+         Generating Code...
+         Compiling...
+         be_aas_debug.c
+         be_aas_entity.c
+         be_aas_file.c
+         be_aas_main.c
+         be_aas_move.c
+         be_aas_optimize.c
+         be_aas_reach.c
+         be_aas_route.c
+         be_aas_routealt.c
+         be_aas_sample.c
+         be_ai_char.c
+     1>..\..\code\botlib\be_ai_char.c(250): warning C4389: '==' : signed/unsigned mismatch
+         be_ai_chat.c
+         be_ai_gen.c
+         be_ai_goal.c
+         be_ai_move.c
+         be_ai_weap.c
+         be_ai_weight.c
+         be_ea.c
+         be_interface.c
+         l_crc.c
+         Generating Code...
+     1>c:\web\trepdev\trepidation\trep-engine\code\botlib\be_ai_chat.c(374): warning C4706: assignment within conditional expression
+         Compiling...
+         l_libvar.c
+         l_log.c
+         l_memory.c
+         l_precomp.c
+         l_script.c
+         l_struct.c
+         tr_animation.c
+         tr_backend.c
+     1>..\..\code\renderer\tr_backend.c(550): warning C4389: '==' : signed/unsigned mismatch
+         tr_bsp.c
+         tr_cmds.c
+         tr_curve.c
+         tr_flares.c
+         tr_font.c
+         tr_image.c
+         tr_image_bmp.c
+     1>..\..\code\renderer\tr_image_bmp.c(136): warning C4389: '!=' : signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_bmp.c(168): warning C4389: '!=' : signed/unsigned mismatch
+         tr_image_jpg.c
+         tr_image_pcx.c
+     1>..\..\code\renderer\tr_image_pcx.c(48): warning C4200: nonstandard extension used : zero-sized array in struct/union
+         tr_image_png.c
+     1>..\..\code\renderer\tr_image_png.c(535): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(557): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(580): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(617): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(630): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(650): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(684): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(691): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(722): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(734): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(765): warning C4245: 'return' : conversion from 'int' to 'uint32_t', signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_png.c(2370): warning C4245: 'function' : conversion from 'int' to 'unsigned int', signed/unsigned mismatch
+         tr_image_tga.c
+     1>..\..\code\renderer\tr_image_tga.c(234): warning C4389: '==' : signed/unsigned mismatch
+     1>..\..\code\renderer\tr_image_tga.c(274): warning C4389: '==' : signed/unsigned mismatch
+         tr_init.c
+         Generating Code...
+     1>c:\web\trepdev\trepidation\trep-engine\code\renderer\tr_cmds.c(417): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\renderer\tr_cmds.c(450): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\renderer\tr_cmds.c(453): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\renderer\tr_cmds.c(460): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\renderer\tr_cmds.c(465): warning C4706: assignment within conditional expression
+     1>c:\web\trepdev\trepidation\trep-engine\code\renderer\tr_cmds.c(479): warning C4706: assignment within conditional expression
+         Compiling...
+         tr_light.c
+         tr_main.c
+         tr_marks.c
+         tr_mesh.c
+         tr_model.c
+         tr_noise.c
+         tr_scene.c
+         tr_shade.c
+     1>..\..\code\renderer\tr_shade.c(93): warning C4389: '==' : signed/unsigned mismatch
+     1>..\..\code\renderer\tr_shade.c(93): warning C4389: '==' : signed/unsigned mismatch
+     1>..\..\code\renderer\tr_shade.c(121): warning C4389: '==' : signed/unsigned mismatch
+     1>..\..\code\renderer\tr_shade.c(121): warning C4389: '==' : signed/unsigned mismatch
+         tr_shade_calc.c
+     1>..\..\code\renderer\tr_shade_calc.c(518): warning C4389: '==' : signed/unsigned mismatch
+     1>..\..\code\renderer\tr_shade_calc.c(518): warning C4389: '==' : signed/unsigned mismatch
+         tr_shader.c
+         tr_shadows.c
+         tr_sky.c
+         tr_surface.c
+         tr_world.c
+         bits.c
+         buffer.c
+         cb_search.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\cb_search.c(53): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(53): warning C4100: 'resp2' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(195): warning C4244: '=' : conversion from 'double' to 'spx_sig_t', possible loss of data
+     1>..\..\code\libspeex\cb_search.c(216): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\cb_search.c(439): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\cb_search.c(493): warning C4244: '=' : conversion from 'double' to 'spx_sig_t', possible loss of data
+     1>..\..\code\libspeex\cb_search.c(567): warning C4244: '+=' : conversion from 'double' to 'spx_sig_t', possible loss of data
+     1>..\..\code\libspeex\cb_search.c(520): warning C4100: 'seed' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(519): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(517): warning C4100: 'nsf' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(585): warning C4100: 'update_target' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(584): warning C4100: 'complexity' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(582): warning C4100: 'bits' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(581): warning C4100: 'r' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(577): warning C4100: 'par' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(604): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(603): warning C4100: 'bits' : unreferenced formal parameter
+     1>..\..\code\libspeex\cb_search.c(601): warning C4100: 'par' : unreferenced formal parameter
+         exc_10_16_table.c
+         exc_10_32_table.c
+         exc_20_32_table.c
+         Generating Code...
+         Compiling...
+         exc_5_256_table.c
+         exc_5_64_table.c
+         exc_8_128_table.c
+         fftwrap.c
+     1>..\..\code\libspeex\fftwrap.c(107): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\fftwrap.c(113): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         filterbank.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filterbank.c(63): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\filterbank.c(83): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\filterbank.c(54): warning C4100: 'type' : unreferenced formal parameter
+         filters.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(308): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(319): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\filters.c(339): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\filters.c(359): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\filters.c(406): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\filters.c(441): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\filters.c(477): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\filters.c(735): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(736): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(737): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(767): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(768): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(789): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(790): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(792): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(793): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\filters.c(662): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\filters.c(657): warning C4100: 'p' : unreferenced formal parameter
+     1>..\..\code\libspeex\filters.c(656): warning C4100: 'ak' : unreferenced formal parameter
+         gain_table.c
+         gain_table_lbr.c
+         hexc_10_32_table.c
+         hexc_table.c
+         high_lsp_tables.c
+         jitter.c
+     1>..\..\code\libspeex\jitter.c(128): warning C4244: '=' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>..\..\code\libspeex\jitter.c(203): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>..\..\code\libspeex\jitter.c(236): warning C4244: '=' : conversion from 'float' to 'spx_int32_t', possible loss of data
+     1>..\..\code\libspeex\jitter.c(241): warning C4244: '=' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>..\..\code\libspeex\jitter.c(352): warning C4244: 'function' : conversion from 'spx_int32_t' to 'spx_int16_t', possible loss of data
+     1>..\..\code\libspeex\jitter.c(444): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\code\libspeex\jitter.c(693): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\code\libspeex\jitter.c(713): warning C4100: 'start_offset' : unreferenced formal parameter
+     1>..\..\code\libspeex\jitter.c(713): warning C4100: 'packet' : unreferenced formal parameter
+     1>..\..\code\libspeex\jitter.c(803): warning C4055: 'type cast' : from data pointer 'void *' to function pointer 'void (__cdecl *)(void *)'
+         kiss_fft.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\kiss_fft.c(75): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(77): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(78): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(110): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(111): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(112): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(114): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(115): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(116): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(117): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(118): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(122): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(140): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(141): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(142): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(146): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(147): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(148): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(149): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(152): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(156): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(189): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(190): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(192): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(193): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(197): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\kiss_fft.c(198): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\kiss_fft.c(200): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(202): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(243): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(244): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(245): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(246): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(248): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(249): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(250): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(251): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(262): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(263): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(270): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(271): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(313): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(314): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fft.c(363): warning C4100: 's2' : unreferenced formal parameter
+     1>..\..\code\libspeex\kiss_fft.c(494): warning C4127: conditional expression is constant
+         kiss_fftr.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\kiss_fftr.c(75): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(125): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(126): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(127): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(129): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\kiss_fftr.c(130): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\kiss_fftr.c(131): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\kiss_fftr.c(132): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\kiss_fftr.c(159): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(160): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(161): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(162): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(163): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(285): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(286): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(287): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(288): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\kiss_fftr.c(289): warning C4127: conditional expression is constant
+         lpc.c
+     1>..\..\code\libspeex\lpc.c(99): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+         lsp.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\lsp.c(196): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\lsp.c(177): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\lsp.c(335): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\lsp.c(362): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\lsp.c(377): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\lsp.c(522): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\lsp.c(634): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+         lsp_tables_nb.c
+         ltp.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(142): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(479): warning C4244: '*=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(480): warning C4244: '*=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(481): warning C4244: '*=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(492): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(493): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(494): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(367): warning C4100: 'scaledown' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(359): warning C4100: 'bits' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(638): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(538): warning C4100: 'pitch_coef' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(694): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(695): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(696): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(702): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\ltp.c(708): warning C4244: 'initializing' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(710): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\ltp.c(712): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\ltp.c(666): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(660): warning C4100: 'pitch_coef' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(659): warning C4100: 'end' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(786): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\ltp.c(775): warning C4100: 'cumul_gain' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(774): warning C4100: 'plc_tuning' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(773): warning C4100: 'cdbk_offset' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(772): warning C4100: 'complexity' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(771): warning C4100: 'r' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(768): warning C4100: 'bits' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(764): warning C4100: 'end' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(762): warning C4100: 'par' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(757): warning C4100: 'sw' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(829): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\ltp.c(820): warning C4100: 'cdbk_offset' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(819): warning C4100: 'last_pitch_gain' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(818): warning C4100: 'subframe_offset' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(817): warning C4100: 'count_lost' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(816): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(815): warning C4100: 'bits' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(811): warning C4100: 'par' : unreferenced formal parameter
+     1>..\..\code\libspeex\ltp.c(809): warning C4100: 'end' : unreferenced formal parameter
+         mdf.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(192): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(347): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(449): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(458): warning C4244: 'initializing' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(459): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\mdf.c(473): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\mdf.c(475): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\mdf.c(477): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\mdf.c(479): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\mdf.c(640): warning C4100: 'Yout' : unreferenced formal parameter
+     1>..\..\code\libspeex\mdf.c(669): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(961): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\mdf.c(991): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\mdf.c(1036): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(1064): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(1066): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(1082): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(1101): warning C4244: '=' : conversion from 'int' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(1140): warning C4244: '=' : conversion from 'spx_int32_t' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\mdf.c(1111): warning C4100: 'len' : unreferenced formal parameter
+     1>..\..\code\libspeex\mdf.c(1163): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\mdf.c(1165): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\mdf.c(1167): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+         modes.c
+     1>..\..\code\libspeex\modes.c(209): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes.c(230): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes.c(251): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes.c(272): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes.c(293): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes.c(314): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes.c(329): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes.c(329): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes.c(331): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+         Generating Code...
+         Compiling...
+         modes_wb.c
+     1>..\..\code\libspeex\modes_wb.c(188): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes_wb.c(188): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes_wb.c(190): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes_wb.c(234): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes_wb.c(234): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\modes_wb.c(236): warning C4305: 'initializing' : truncation from 'double' to 'spx_word16_t'
+         nb_celp.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(437): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(439): warning C4305: '=' : truncation from 'double' to 'float'
+     1>..\..\code\libspeex\nb_celp.c(441): warning C4305: '=' : truncation from 'double' to 'float'
+     1>..\..\code\libspeex\nb_celp.c(508): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(593): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(604): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(623): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(1016): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1016): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1016): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1016): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1016): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1016): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1016): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1016): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1016): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1047): warning C4305: '=' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1057): warning C4244: 'function' : conversion from 'int' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(1068): warning C4305: 'function' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\nb_celp.c(1242): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(1266): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(1277): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(1364): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(1565): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(1629): warning C4244: '=' : conversion from 'spx_int32_t' to 'float', possible loss of data
+     1>..\..\code\libspeex\nb_celp.c(1860): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+         preprocess.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(280): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(283): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(364): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(369): warning C4244: 'return' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(371): warning C4244: 'return' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(385): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(386): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(390): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(445): warning C4244: 'function' : conversion from 'int' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(507): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(509): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(515): warning C4305: '=' : truncation from 'double' to 'float'
+     1>..\..\code\libspeex\preprocess.c(519): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(520): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(581): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(588): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(589): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(596): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(722): warning C4100: 'echo' : unreferenced formal parameter
+     1>..\..\code\libspeex\preprocess.c(745): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(830): warning C4244: 'function' : conversion from 'spx_word16_t' to 'int', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(869): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(877): warning C4127: conditional expression is constant
+     1>..\..\code\libspeex\preprocess.c(919): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(931): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(972): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(988): warning C4244: '=' : conversion from 'spx_word16_t' to 'spx_int16_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(990): warning C4244: '=' : conversion from 'spx_word16_t' to 'spx_int16_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(1081): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(1084): warning C4244: '=' : conversion from 'double' to 'spx_int32_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(1087): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(1090): warning C4244: '=' : conversion from 'double' to 'spx_int32_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(1093): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(1096): warning C4244: '=' : conversion from 'double' to 'spx_int32_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(1139): warning C4244: '=' : conversion from 'spx_word16_t' to 'spx_int32_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(1147): warning C4244: '=' : conversion from 'spx_word16_t' to 'spx_int32_t', possible loss of data
+     1>..\..\code\libspeex\preprocess.c(1176): warning C4244: '=' : conversion from 'double' to 'spx_int32_t', possible loss of data
+         quant_lsp.c
+     1>..\..\code\libspeex\quant_lsp.c(82): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(90): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(171): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(175): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(206): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(217): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(222): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(226): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(230): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(234): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(238): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(254): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(257): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(276): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(287): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(292): warning C4244: '+=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(296): warning C4244: '+=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(300): warning C4244: '+=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(340): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(343): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(359): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(371): warning C4244: '=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(376): warning C4244: '+=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+     1>..\..\code\libspeex\quant_lsp.c(381): warning C4244: '+=' : conversion from 'double' to 'spx_lsp_t', possible loss of data
+         resample.c
+     1>..\..\code\libspeex\resample.c(284): warning C4244: 'function' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\resample.c(284): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\resample.c(314): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\resample.c(401): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\resample.c(537): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\resample.c(601): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\code\libspeex\resample.c(682): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\code\libspeex\resample.c(690): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\code\libspeex\resample.c(693): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\code\libspeex\resample.c(700): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\code\libspeex\resample.c(987): warning C4244: '=' : conversion from 'double' to 'spx_int16_t', possible loss of data
+         sb_celp.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(129): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(129): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(129): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(129): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(129): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(129): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(129): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(129): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(130): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(130): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(130): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(130): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(130): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(130): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(130): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(130): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(132): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(132): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(132): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(132): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(132): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(132): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(132): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(132): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(133): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(133): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(133): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(133): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(133): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(133): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(133): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(133): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(134): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(134): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(134): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(134): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(134): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(134): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(134): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(134): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(135): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(135): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(135): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(135): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(135): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(135): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(135): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(135): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(411): warning C4305: 'function' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(414): warning C4305: 'function' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(435): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(437): warning C4305: '=' : truncation from 'double' to 'float'
+     1>..\..\code\libspeex\sb_celp.c(439): warning C4305: '=' : truncation from 'double' to 'float'
+     1>..\..\code\libspeex\sb_celp.c(449): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(461): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(484): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(569): warning C4305: 'function' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(570): warning C4305: 'function' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(592): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(656): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(1002): warning C4305: 'function' : truncation from 'double' to 'spx_word16_t'
+     1>..\..\code\libspeex\sb_celp.c(1022): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(1032): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(1048): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(1089): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(1148): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(1181): warning C4244: '=' : conversion from 'spx_int32_t' to 'float', possible loss of data
+     1>..\..\code\libspeex\sb_celp.c(1286): warning C4127: conditional expression is constant
+         smallft.c
+     1>..\..\code\libspeex\smallft.c(101): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\smallft.c(102): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\smallft.c(285): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\smallft.c(286): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\smallft.c(855): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\smallft.c(856): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+         speex.c
+         speex_callbacks.c
+     1>..\..\code\libspeex\speex_callbacks.c(75): warning C4100: 'state' : unreferenced formal parameter
+     1>..\..\code\libspeex\speex_callbacks.c(83): warning C4100: 'state' : unreferenced formal parameter
+     1>..\..\code\libspeex\speex_callbacks.c(91): warning C4100: 'state' : unreferenced formal parameter
+     1>..\..\code\libspeex\speex_callbacks.c(100): warning C4100: 'state' : unreferenced formal parameter
+     1>..\..\code\libspeex\speex_callbacks.c(109): warning C4100: 'state' : unreferenced formal parameter
+     1>..\..\code\libspeex\speex_callbacks.c(121): warning C4244: '=' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>..\..\code\libspeex\speex_callbacks.c(118): warning C4100: 'state' : unreferenced formal parameter
+     1>..\..\code\libspeex\speex_callbacks.c(130): warning C4244: '=' : conversion from 'unsigned int' to 'unsigned char', possible loss of data
+     1>..\..\code\libspeex\speex_callbacks.c(127): warning C4100: 'state' : unreferenced formal parameter
+     1>..\..\code\libspeex\speex_callbacks.c(139): warning C4100: 'data' : unreferenced formal parameter
+     1>..\..\code\libspeex\speex_callbacks.c(139): warning C4100: 'state' : unreferenced formal parameter
+         speex_header.c
+         stereo.c
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(57): warning C4244: 'return' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(91): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(116): warning C4244: 'return' : conversion from 'int' to 'spx_int16_t', possible loss of data
+     1>c:\web\trepdev\trepidation\trep-engine\code\libspeex\math_approx.h(323): warning C4244: '=' : conversion from 'double' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\stereo.c(117): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\stereo.c(127): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\stereo.c(134): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\stereo.c(170): warning C4244: '=' : conversion from 'double' to 'spx_int16_t', possible loss of data
+     1>..\..\code\libspeex\stereo.c(195): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\stereo.c(196): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\stereo.c(197): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>..\..\code\libspeex\stereo.c(212): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\stereo.c(286): warning C4244: '=' : conversion from 'unsigned int' to 'spx_word16_t', possible loss of data
+     1>..\..\code\libspeex\stereo.c(288): warning C4244: '=' : conversion from 'double' to 'spx_word32_t', possible loss of data
+     1>..\..\code\libspeex\stereo.c(274): warning C4100: 'state' : unreferenced formal parameter
+         vbr.c
+     1>..\..\code\libspeex\vbr.c(83): warning C4305: '=' : truncation from 'double' to 'float'
+     1>..\..\code\libspeex\vbr.c(88): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(89): warning C4305: '=' : truncation from 'double' to 'float'
+     1>..\..\code\libspeex\vbr.c(95): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(142): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(149): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(152): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(154): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(170): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(171): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(180): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(181): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(187): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>..\..\code\libspeex\vbr.c(189): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>..\..\code\libspeex\vbr.c(191): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>..\..\code\libspeex\vbr.c(194): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(195): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(204): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(206): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(211): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(218): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(219): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(222): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(240): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(247): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(249): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(252): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>..\..\code\libspeex\vbr.c(124): warning C4100: 'pitch' : unreferenced formal parameter
+     1>..\..\code\libspeex\vbr.c(271): warning C4100: 'vbr' : unreferenced formal parameter
+         vq.c
+     1>..\..\code\libspeex\vq.c(76): warning C4100: 'stack' : unreferenced formal parameter
+     1>..\..\code\libspeex\vq.c(110): warning C4100: 'stack' : unreferenced formal parameter
+         window.c
+     1>..\..\code\libspeex\window.c(72): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\window.c(72): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\window.c(72): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\window.c(72): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\window.c(72): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\window.c(72): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\window.c(72): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\window.c(72): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\window.c(72): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+     1>..\..\code\libspeex\window.c(73): warning C4305: 'initializing' : truncation from 'double' to 'const spx_word16_t'
+         adler32.c
+     1>..\..\code\zlib\adler32.c(58): warning C4131: 'adler32' : uses old-style declarator
+     1>..\..\code\zlib\adler32.c(129): warning C4131: 'adler32_combine' : uses old-style declarator
+         crc32.c
+     1>..\..\code\zlib\crc32.c(220): warning C4131: 'crc32' : uses old-style declarator
+     1>..\..\code\zlib\crc32.c(232): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\crc32.c(263): warning C4131: 'crc32_little' : uses old-style declarator
+     1>..\..\code\zlib\crc32.c(303): warning C4131: 'crc32_big' : uses old-style declarator
+     1>..\..\code\zlib\crc32.c(343): warning C4131: 'gf2_matrix_times' : uses old-style declarator
+     1>..\..\code\zlib\crc32.c(360): warning C4131: 'gf2_matrix_square' : uses old-style declarator
+     1>..\..\code\zlib\crc32.c(371): warning C4131: 'crc32_combine' : uses old-style declarator
+         inffast.c
+     1>..\..\code\zlib\inffast.c(68): warning C4131: 'inflate_fast' : uses old-style declarator
+         inflate.c
+     1>..\..\code\zlib\inflate.c(104): warning C4131: 'inflateReset' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(129): warning C4131: 'inflatePrime' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(145): warning C4131: 'inflateInit2_' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(188): warning C4131: 'inflateInit_' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(206): warning C4131: 'fixedtables' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(324): warning C4131: 'updatewindow' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(555): warning C4131: 'inflate' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(583): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(594): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(594): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(598): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(599): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(620): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(631): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(635): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(635): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(649): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(650): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(653): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(653): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(656): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(657): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(660): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(660): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(665): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(666): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(670): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(670): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(674): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(675): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(711): warning C4244: '=' : conversion from 'unsigned int' to 'Bytef', possible loss of data
+     1>..\..\code\zlib\inflate.c(732): warning C4244: '=' : conversion from 'unsigned int' to 'Bytef', possible loss of data
+     1>..\..\code\zlib\inflate.c(745): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(745): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(751): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(762): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(762): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(764): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(768): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(777): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(781): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(781): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(783): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(805): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(808): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(809): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(809): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(818): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(838): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(838): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(840): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(842): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(844): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(857): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(857): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(859): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(881): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(884): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(884): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(885): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(890): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(890): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(891): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(899): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(902): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(902): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(903): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(906): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(909): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(909): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(910): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(913): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(952): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(954): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(960): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(968): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(970): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(972): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(995): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(995): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(997): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1005): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1013): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1015): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1017): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1028): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1028): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1030): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1079): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1079): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1096): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1103): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1103): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1109): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1134): warning C4127: conditional expression is constant
+     1>..\..\code\zlib\inflate.c(1156): warning C4131: 'inflateEnd' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(1170): warning C4131: 'inflateSetDictionary' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(1212): warning C4131: 'inflateGetHeader' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(1240): warning C4131: 'syncsearch' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(1263): warning C4131: 'inflateSync' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(1314): warning C4131: 'inflateSyncPoint' : uses old-style declarator
+     1>..\..\code\zlib\inflate.c(1324): warning C4131: 'inflateCopy' : uses old-style declarator
+         inftrees.c
+     1>..\..\code\zlib\inftrees.c(33): warning C4131: 'inflate_table' : uses old-style declarator
+         zutil.c
+     1>..\..\code\zlib\zutil.c(134): warning C4131: 'zError' : uses old-style declarator
+     1>..\..\code\zlib\zutil.c(301): warning C4131: 'zcalloc' : uses old-style declarator
+     1>..\..\code\zlib\zutil.c(311): warning C4131: 'zcfree' : uses old-style declarator
+         Generating Code...
+       ResourceCompile:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D NDEBUG /l"0x0409" /nologo /fo"..\..\build\quake3_release\win_resource.res" ..\..\code\sys\win_resource.rc 
+     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(990,5): warning MSB8012: TargetPath(C:\web\trepdev\trepidation\trep-engine\misc\msvc\..\..\build\quake3_release\quake3.exe) does not match the Linker's OutputFile property value (C:\web\trepdev\trepidation\trep-engine\build\quake3_release\ioquake3.exe). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(992,5): warning MSB8012: TargetName(quake3) does not match the Linker's OutputFile property value (ioquake3). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\build\quake3_release\ioquake3.exe" /INCREMENTAL:NO /NOLOGO user32.lib advapi32.lib winmm.lib wsock32.lib ws2_32.lib SDLmain.lib SDL.lib OpenGL32.lib libogg.lib libvorbis.lib libvorbisfile.lib libcurl.lib msvcrt.lib /MANIFEST /ManifestFile:"..\..\build\quake3_release\quake3.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"..\..\build\quake3_release\quake3.pdb" /MAP:"..\..\build\quake3_release\quake3.map" /SUBSYSTEM:WINDOWS /STACK:"8388608" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\build\quake3_release\quake3.lib" /MACHINE:X86 ..\..\build\quake3_release\win_resource.res
+         ..\..\build\quake3_release\cl_avi.obj
+         ..\..\build\quake3_release\cl_cgame.obj
+         ..\..\build\quake3_release\cl_cin.obj
+         ..\..\build\quake3_release\cl_console.obj
+         ..\..\build\quake3_release\cl_curl.obj
+         ..\..\build\quake3_release\cl_input.obj
+         ..\..\build\quake3_release\cl_keys.obj
+         ..\..\build\quake3_release\cl_main.obj
+         ..\..\build\quake3_release\cl_net_chan.obj
+         ..\..\build\quake3_release\cl_parse.obj
+         ..\..\build\quake3_release\cl_scrn.obj
+         ..\..\build\quake3_release\cl_ui.obj
+         ..\..\build\quake3_release\cm_load.obj
+         ..\..\build\quake3_release\cm_patch.obj
+         ..\..\build\quake3_release\cm_polylib.obj
+         ..\..\build\quake3_release\cm_test.obj
+         ..\..\build\quake3_release\cm_trace.obj
+         ..\..\build\quake3_release\cmd.obj
+         ..\..\build\quake3_release\common.obj
+         ..\..\build\quake3_release\con_log.obj
+         ..\..\build\quake3_release\con_passive.obj
+         ..\..\build\quake3_release\cvar.obj
+         ..\..\build\quake3_release\files.obj
+         ..\..\build\quake3_release\huffman.obj
+         ..\..\build\quake3_release\md4.obj
+         ..\..\build\quake3_release\md5.obj
+         ..\..\build\quake3_release\msg.obj
+         ..\..\build\quake3_release\net_chan.obj
+         ..\..\build\quake3_release\net_ip.obj
+         ..\..\build\quake3_release\puff.obj
+         ..\..\build\quake3_release\q_math.obj
+         ..\..\build\quake3_release\q_shared.obj
+         ..\..\build\quake3_release\qal.obj
+         ..\..\build\quake3_release\sdl_gamma.obj
+         ..\..\build\quake3_release\sdl_glimp.obj
+         ..\..\build\quake3_release\sdl_input.obj
+         ..\..\build\quake3_release\sdl_snd.obj
+         ..\..\build\quake3_release\snd_adpcm.obj
+         ..\..\build\quake3_release\snd_codec.obj
+         ..\..\build\quake3_release\snd_codec_ogg.obj
+         ..\..\build\quake3_release\snd_codec_wav.obj
+         ..\..\build\quake3_release\snd_dma.obj
+         ..\..\build\quake3_release\snd_main.obj
+         ..\..\build\quake3_release\snd_mem.obj
+         ..\..\build\quake3_release\snd_mix.obj
+         ..\..\build\quake3_release\snd_openal.obj
+         ..\..\build\quake3_release\snd_wavelet.obj
+         ..\..\build\quake3_release\sv_bot.obj
+         ..\..\build\quake3_release\sv_ccmds.obj
+         ..\..\build\quake3_release\sv_client.obj
+         ..\..\build\quake3_release\sv_game.obj
+         ..\..\build\quake3_release\sv_init.obj
+         ..\..\build\quake3_release\sv_main.obj
+         ..\..\build\quake3_release\sv_net_chan.obj
+         ..\..\build\quake3_release\sv_snapshot.obj
+         ..\..\build\quake3_release\sv_world.obj
+         ..\..\build\quake3_release\sys_main.obj
+         ..\..\build\quake3_release\sys_win32.obj
+         ..\..\build\quake3_release\unzip.obj
+         ..\..\build\quake3_release\ioapi.obj
+         ..\..\build\quake3_release\vm.obj
+         ..\..\build\quake3_release\vm_interpreted.obj
+         ..\..\build\quake3_release\vm_x86.obj
+         ..\..\build\quake3_release\jcapimin.obj
+         ..\..\build\quake3_release\jcapistd.obj
+         ..\..\build\quake3_release\jccoefct.obj
+         ..\..\build\quake3_release\jccolor.obj
+         ..\..\build\quake3_release\jcdctmgr.obj
+         ..\..\build\quake3_release\jchuff.obj
+         ..\..\build\quake3_release\jcinit.obj
+         ..\..\build\quake3_release\jcmainct.obj
+         ..\..\build\quake3_release\jcmarker.obj
+         ..\..\build\quake3_release\jcmaster.obj
+         ..\..\build\quake3_release\jcomapi.obj
+         ..\..\build\quake3_release\jcparam.obj
+         ..\..\build\quake3_release\jcphuff.obj
+         ..\..\build\quake3_release\jcprepct.obj
+         ..\..\build\quake3_release\jcsample.obj
+         ..\..\build\quake3_release\jdapimin.obj
+         ..\..\build\quake3_release\jdapistd.obj
+         ..\..\build\quake3_release\jdatasrc.obj
+         ..\..\build\quake3_release\jdcoefct.obj
+         ..\..\build\quake3_release\jdcolor.obj
+         ..\..\build\quake3_release\jddctmgr.obj
+         ..\..\build\quake3_release\jdhuff.obj
+         ..\..\build\quake3_release\jdinput.obj
+         ..\..\build\quake3_release\jdmainct.obj
+         ..\..\build\quake3_release\jdmarker.obj
+         ..\..\build\quake3_release\jdmaster.obj
+         ..\..\build\quake3_release\jdpostct.obj
+         ..\..\build\quake3_release\jdsample.obj
+         ..\..\build\quake3_release\jdtrans.obj
+         ..\..\build\quake3_release\jerror.obj
+         ..\..\build\quake3_release\jfdctflt.obj
+         ..\..\build\quake3_release\jidctflt.obj
+         ..\..\build\quake3_release\jmemmgr.obj
+         ..\..\build\quake3_release\jmemnobs.obj
+         ..\..\build\quake3_release\jutils.obj
+         ..\..\build\quake3_release\be_aas_bspq3.obj
+         ..\..\build\quake3_release\be_aas_cluster.obj
+         ..\..\build\quake3_release\be_aas_debug.obj
+         ..\..\build\quake3_release\be_aas_entity.obj
+         ..\..\build\quake3_release\be_aas_file.obj
+         ..\..\build\quake3_release\be_aas_main.obj
+         ..\..\build\quake3_release\be_aas_move.obj
+         ..\..\build\quake3_release\be_aas_optimize.obj
+         ..\..\build\quake3_release\be_aas_reach.obj
+         ..\..\build\quake3_release\be_aas_route.obj
+         ..\..\build\quake3_release\be_aas_routealt.obj
+         ..\..\build\quake3_release\be_aas_sample.obj
+         ..\..\build\quake3_release\be_ai_char.obj
+         ..\..\build\quake3_release\be_ai_chat.obj
+         ..\..\build\quake3_release\be_ai_gen.obj
+         ..\..\build\quake3_release\be_ai_goal.obj
+         ..\..\build\quake3_release\be_ai_move.obj
+         ..\..\build\quake3_release\be_ai_weap.obj
+         ..\..\build\quake3_release\be_ai_weight.obj
+         ..\..\build\quake3_release\be_ea.obj
+         ..\..\build\quake3_release\be_interface.obj
+         ..\..\build\quake3_release\l_crc.obj
+         ..\..\build\quake3_release\l_libvar.obj
+         ..\..\build\quake3_release\l_log.obj
+         ..\..\build\quake3_release\l_memory.obj
+         ..\..\build\quake3_release\l_precomp.obj
+         ..\..\build\quake3_release\l_script.obj
+         ..\..\build\quake3_release\l_struct.obj
+         ..\..\build\quake3_release\tr_animation.obj
+         ..\..\build\quake3_release\tr_backend.obj
+         ..\..\build\quake3_release\tr_bsp.obj
+         ..\..\build\quake3_release\tr_cmds.obj
+         ..\..\build\quake3_release\tr_curve.obj
+         ..\..\build\quake3_release\tr_flares.obj
+         ..\..\build\quake3_release\tr_font.obj
+         ..\..\build\quake3_release\tr_image.obj
+         ..\..\build\quake3_release\tr_image_bmp.obj
+         ..\..\build\quake3_release\tr_image_jpg.obj
+         ..\..\build\quake3_release\tr_image_pcx.obj
+         ..\..\build\quake3_release\tr_image_png.obj
+         ..\..\build\quake3_release\tr_image_tga.obj
+         ..\..\build\quake3_release\tr_init.obj
+         ..\..\build\quake3_release\tr_light.obj
+         ..\..\build\quake3_release\tr_main.obj
+         ..\..\build\quake3_release\tr_marks.obj
+         ..\..\build\quake3_release\tr_mesh.obj
+         ..\..\build\quake3_release\tr_model.obj
+         ..\..\build\quake3_release\tr_noise.obj
+         ..\..\build\quake3_release\tr_scene.obj
+         ..\..\build\quake3_release\tr_shade.obj
+         ..\..\build\quake3_release\tr_shade_calc.obj
+         ..\..\build\quake3_release\tr_shader.obj
+         ..\..\build\quake3_release\tr_shadows.obj
+         ..\..\build\quake3_release\tr_sky.obj
+         ..\..\build\quake3_release\tr_surface.obj
+         ..\..\build\quake3_release\tr_world.obj
+         ..\..\build\quake3_release\bits.obj
+         ..\..\build\quake3_release\buffer.obj
+         ..\..\build\quake3_release\cb_search.obj
+         ..\..\build\quake3_release\exc_10_16_table.obj
+         ..\..\build\quake3_release\exc_10_32_table.obj
+         ..\..\build\quake3_release\exc_20_32_table.obj
+         ..\..\build\quake3_release\exc_5_256_table.obj
+         ..\..\build\quake3_release\exc_5_64_table.obj
+         ..\..\build\quake3_release\exc_8_128_table.obj
+         ..\..\build\quake3_release\fftwrap.obj
+         ..\..\build\quake3_release\filterbank.obj
+         ..\..\build\quake3_release\filters.obj
+         ..\..\build\quake3_release\gain_table.obj
+         ..\..\build\quake3_release\gain_table_lbr.obj
+         ..\..\build\quake3_release\hexc_10_32_table.obj
+         ..\..\build\quake3_release\hexc_table.obj
+         ..\..\build\quake3_release\high_lsp_tables.obj
+         ..\..\build\quake3_release\jitter.obj
+         ..\..\build\quake3_release\kiss_fft.obj
+         ..\..\build\quake3_release\kiss_fftr.obj
+         ..\..\build\quake3_release\lpc.obj
+         ..\..\build\quake3_release\lsp.obj
+         ..\..\build\quake3_release\lsp_tables_nb.obj
+         ..\..\build\quake3_release\ltp.obj
+         ..\..\build\quake3_release\mdf.obj
+         ..\..\build\quake3_release\modes.obj
+         ..\..\build\quake3_release\modes_wb.obj
+         ..\..\build\quake3_release\nb_celp.obj
+         ..\..\build\quake3_release\preprocess.obj
+         ..\..\build\quake3_release\quant_lsp.obj
+         ..\..\build\quake3_release\resample.obj
+         ..\..\build\quake3_release\sb_celp.obj
+         ..\..\build\quake3_release\smallft.obj
+         ..\..\build\quake3_release\speex.obj
+         ..\..\build\quake3_release\speex_callbacks.obj
+         ..\..\build\quake3_release\speex_header.obj
+         ..\..\build\quake3_release\stereo.obj
+         ..\..\build\quake3_release\vbr.obj
+         ..\..\build\quake3_release\vq.obj
+         ..\..\build\quake3_release\window.obj
+         ..\..\build\quake3_release\adler32.obj
+         ..\..\build\quake3_release\crc32.obj
+         ..\..\build\quake3_release\inffast.obj
+         ..\..\build\quake3_release\inflate.obj
+         ..\..\build\quake3_release\inftrees.obj
+         ..\..\build\quake3_release\zutil.obj
+     1>LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         quake3.vcxproj -> C:\web\trepdev\trepidation\trep-engine\misc\msvc\..\..\build\quake3_release\quake3.exe
+       Manifest:
+         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"..\..\build\quake3_release\ioquake3.exe;#1" /manifest ..\..\build\quake3_release\quake3.exe.intermediate.manifest "C:\Program Files\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+       FinalizeBuildStatus:
+         Deleting file "..\..\build\quake3_release\quake3.unsuccessfulbuild".
+         Touching "..\..\build\quake3_release\quake3.lastbuildstate".
+     1>Done Building Project "C:\web\trepdev\trepidation\trep-engine\misc\msvc\quake3.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:57.25

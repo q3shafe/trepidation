@@ -3,7 +3,7 @@ code
 proc CG_ShotgunTrail 84 4
 file "../cg_effects.c"
 line 14
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_effects.c -- these functions generate localentities, usually as a result
 ;4:// of event processing
@@ -5677,6 +5677,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

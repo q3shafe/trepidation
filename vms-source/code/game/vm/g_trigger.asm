@@ -3,7 +3,7 @@ code
 proc InitTrigger 12 8
 file "../g_trigger.c"
 line 6
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:#include "g_local.h"
 ;4:
@@ -168,7 +168,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2568
+CNSTI4 2564
 ADDP4
 INDIRI4
 ADDRLP4 0
@@ -202,7 +202,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2568
+CNSTI4 2564
 ADDP4
 INDIRI4
 ADDRLP4 4
@@ -1504,7 +1504,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2568
+CNSTI4 2564
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -2546,6 +2546,8 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_allowDevastator
+import g_allowGrapple
 import g_CurrentRound
 import g_NumRounds
 import g_RegenAmmo
@@ -2554,12 +2556,13 @@ import g_AutoChangeMap
 import g_lastmap2
 import g_lastmap
 import g_randommap
+import g_easymap
 import g_mapfile
 import g_ReverseCTF
-import g_GuassRate
-import g_GuassSelfDamage
-import g_GuassKnockBack
-import g_GuassJump
+import g_GaussRate
+import g_GaussSelfDamage
+import g_GaussKnockBack
+import g_GaussJump
 import g_PCTeamkills
 import g_GrappleMode
 import g_MaxTurrets
@@ -2701,6 +2704,7 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
+import fire_flamer
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -2835,6 +2839,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

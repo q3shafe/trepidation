@@ -3,7 +3,7 @@ code
 proc BotSetUserInfo 1024 12
 file "../ai_dmq3.c"
 line 100
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:
 ;4:/*****************************************************************************
@@ -6464,7 +6464,7 @@ INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
-CNSTI4 8
+CNSTI4 16
 BANDI4
 CNSTI4 0
 EQI4 $434
@@ -6528,7 +6528,7 @@ INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
-CNSTI4 16
+CNSTI4 32
 BANDI4
 CNSTI4 0
 EQI4 $440
@@ -6560,7 +6560,7 @@ INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
-CNSTI4 32
+CNSTI4 256
 BANDI4
 CNSTI4 0
 EQI4 $443
@@ -6624,7 +6624,7 @@ INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
-CNSTI4 128
+CNSTI4 8
 BANDI4
 CNSTI4 0
 EQI4 $449
@@ -6656,7 +6656,7 @@ INDIRP4
 CNSTI4 208
 ADDP4
 INDIRI4
-CNSTI4 256
+CNSTI4 128
 BANDI4
 CNSTI4 0
 EQI4 $452
@@ -6759,7 +6759,7 @@ CNSTI4 5024
 ADDP4
 ADDRLP4 1108
 INDIRP4
-CNSTI4 404
+CNSTI4 408
 ADDP4
 INDIRI4
 ASGNI4
@@ -6791,7 +6791,7 @@ CNSTI4 5032
 ADDP4
 ADDRLP4 1116
 INDIRP4
-CNSTI4 408
+CNSTI4 412
 ADDP4
 INDIRI4
 ASGNI4
@@ -6807,7 +6807,7 @@ CNSTI4 5036
 ADDP4
 ADDRLP4 1120
 INDIRP4
-CNSTI4 424
+CNSTI4 420
 ADDP4
 INDIRI4
 ASGNI4
@@ -6839,7 +6839,7 @@ CNSTI4 5044
 ADDP4
 ADDRLP4 1128
 INDIRP4
-CNSTI4 412
+CNSTI4 424
 ADDP4
 INDIRI4
 ASGNI4
@@ -6855,7 +6855,7 @@ CNSTI4 5048
 ADDP4
 ADDRLP4 1132
 INDIRP4
-CNSTI4 420
+CNSTI4 404
 ADDP4
 INDIRI4
 ASGNI4
@@ -15824,7 +15824,7 @@ line 3541
 ;3541:	else if (wi.number == WP_SHOTGUN) {
 ADDRLP4 160+4
 INDIRI4
-CNSTI4 3
+CNSTI4 4
 NEI4 $1262
 line 3542
 ;3542:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_SHOTGUN, 0, 1);
@@ -15857,7 +15857,7 @@ line 3544
 ;3544:	else if (wi.number == WP_GRENADE_LAUNCHER) {
 ADDRLP4 160+4
 INDIRI4
-CNSTI4 4
+CNSTI4 5
 NEI4 $1265
 line 3545
 ;3545:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_GRENADELAUNCHER, 0, 1);
@@ -15912,7 +15912,7 @@ line 3548
 ;3548:	else if (wi.number == WP_ROCKET_LAUNCHER) {
 ADDRLP4 160+4
 INDIRI4
-CNSTI4 5
+CNSTI4 8
 NEI4 $1268
 line 3549
 ;3549:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_ROCKETLAUNCHER, 0, 1);
@@ -16000,7 +16000,7 @@ line 3555
 ;3555:	else if (wi.number == WP_RAILGUN) {
 ADDRLP4 160+4
 INDIRI4
-CNSTI4 7
+CNSTI4 3
 NEI4 $1274
 line 3556
 ;3556:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_RAILGUN, 0, 1);
@@ -16033,7 +16033,7 @@ line 3558
 ;3558:	else if (wi.number == WP_PLASMAGUN) {
 ADDRLP4 160+4
 INDIRI4
-CNSTI4 8
+CNSTI4 7
 NEI4 $1277
 line 3559
 ;3559:		aim_accuracy = trap_Characteristic_BFloat(bs->character, CHARACTERISTIC_AIM_ACCURACY_PLASMAGUN, 0, 1);
@@ -17476,11 +17476,11 @@ CNSTI4 9
 EQI4 $1492
 ADDRLP4 160+4
 INDIRI4
-CNSTI4 5
+CNSTI4 8
 EQI4 $1492
 ADDRLP4 160+4
 INDIRI4
-CNSTI4 4
+CNSTI4 5
 NEI4 $1486
 LABELV $1492
 line 3712
@@ -17766,7 +17766,7 @@ CNSTI4 2
 EQI4 $1529
 ADDRLP4 160+4
 INDIRI4
-CNSTI4 3
+CNSTI4 4
 EQI4 $1529
 ADDRLP4 160+4
 INDIRI4
@@ -17774,7 +17774,7 @@ CNSTI4 6
 EQI4 $1529
 ADDRLP4 160+4
 INDIRI4
-CNSTI4 7
+CNSTI4 3
 NEI4 $1521
 LABELV $1529
 line 3745
@@ -26775,7 +26775,7 @@ line 4933
 LABELV $2190
 endproc BotCheckConsoleMessages 1012 48
 export BotCheckForGrenades
-proc BotCheckForGrenades 8 16
+proc BotCheckForGrenades 4 16
 line 4940
 ;4934:
 ;4935:/*
@@ -26791,13 +26791,9 @@ ADDRLP4 0
 ADDRFP4 4
 INDIRP4
 ASGNP4
-ADDRLP4 4
-CNSTI4 4
-ASGNI4
 ADDRLP4 0
 INDIRP4
-ADDRLP4 4
-INDIRI4
+CNSTI4 4
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -26807,8 +26803,7 @@ INDIRP4
 CNSTI4 192
 ADDP4
 INDIRI4
-ADDRLP4 4
-INDIRI4
+CNSTI4 5
 EQI4 $2242
 LABELV $2244
 line 4943
@@ -26840,7 +26835,7 @@ pop
 line 4946
 ;4946:}
 LABELV $2241
-endproc BotCheckForGrenades 8 16
+endproc BotCheckForGrenades 4 16
 export BotCheckEvents
 proc BotCheckEvents 164 12
 line 4998
@@ -30645,6 +30640,8 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_allowDevastator
+import g_allowGrapple
 import g_CurrentRound
 import g_NumRounds
 import g_RegenAmmo
@@ -30653,12 +30650,13 @@ import g_AutoChangeMap
 import g_lastmap2
 import g_lastmap
 import g_randommap
+import g_easymap
 import g_mapfile
 import g_ReverseCTF
-import g_GuassRate
-import g_GuassSelfDamage
-import g_GuassKnockBack
-import g_GuassJump
+import g_GaussRate
+import g_GaussSelfDamage
+import g_GaussKnockBack
+import g_GaussJump
 import g_PCTeamkills
 import g_GrappleMode
 import g_MaxTurrets
@@ -30800,6 +30798,7 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
+import fire_flamer
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -30935,6 +30934,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

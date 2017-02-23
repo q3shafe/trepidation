@@ -2,15 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{440e9ca2-d77e-4aab-9e93-00f051fdbd09}</UniqueIdentifier>
+      <UniqueIdentifier>{56fe2ebf-58ee-480f-855d-f037f58c79dd}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{d9b6dd7a-d4b0-42a0-8896-14d26bcc39bc}</UniqueIdentifier>
+      <UniqueIdentifier>{e981ef70-e628-4cb2-a990-1b8f6ccd9651}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
     </Filter>
     <Filter Include="Resource Files">
-      <UniqueIdentifier>{354731f2-fb59-43d3-8b5a-273fb7be1e50}</UniqueIdentifier>
+      <UniqueIdentifier>{3bddc463-4465-4a20-ab34-b86cc6bf1816}</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
     </Filter>
   </ItemGroup>
@@ -211,8 +211,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuildStep Include="game.def">
+    <CustomBuild Include="game.def">
       <Filter>Source Files</Filter>
-    </CustomBuildStep>
+    </CustomBuild>
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@ code
 proc CG_BuildSolidList 28 0
 file "../cg_predict.c"
 line 26
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_predict.c -- this file generates cg.predictedPlayerState by either
 ;4:// interpolating between snapshots from the server or locally predicting
@@ -5404,6 +5404,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

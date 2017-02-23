@@ -1,0 +1,9 @@
+These are just some internal notes.
+
+Random side note about making roq files, this works wonderfully
+ffmpeg -i treptest.avi -ab 256k -ar 22050 -r 30 -s 512x512 a.roq
+
+
+Some useful info here, particularly for implementing multijumps and the grapple speed cvar
+http://quakewiki.net/archives/code3arena/tutorials/tutorial40.shtml
+http://www.quake3world.com/forum/viewtopic.php?f=16&t=48973

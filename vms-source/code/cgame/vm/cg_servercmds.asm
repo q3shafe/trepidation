@@ -26,7 +26,7 @@ code
 proc CG_ParseScores 212 12
 file "../cg_servercmds.c"
 line 51
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_servercmds.c -- reliably sequenced text commands sent by the server
 ;4:// these are processed at snapshot transition time, so there will definately
@@ -6926,6 +6926,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

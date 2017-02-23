@@ -2,7 +2,7 @@ code
 proc UI_PlayerInfo_SetWeapon 84 8
 file "../ui_players.c"
 line 33
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// ui_players.c
 ;4:
@@ -366,12 +366,12 @@ align 4
 LABELV $107
 address $97
 address $98
+address $103
 address $99
 address $100
-address $101
 address $102
-address $103
 address $104
+address $101
 address $105
 address $106
 code
@@ -8039,6 +8039,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

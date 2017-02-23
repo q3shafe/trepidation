@@ -434,7 +434,7 @@ code
 proc Controls_InitCvars 28 8
 file "../ui_controls2.c"
 line 365
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:/*
 ;4:=======================================================================
@@ -1425,7 +1425,7 @@ line 505
 ;504:	case ANIM_WEAPON3:
 ;505:		s_controls.playerWeapon = WP_SHOTGUN;
 ADDRGP4 s_controls+5068
-CNSTI4 3
+CNSTI4 4
 ASGNI4
 line 506
 ;506:		break;
@@ -1437,7 +1437,7 @@ line 509
 ;508:	case ANIM_WEAPON4:
 ;509:		s_controls.playerWeapon = WP_GRENADE_LAUNCHER;
 ADDRGP4 s_controls+5068
-CNSTI4 4
+CNSTI4 5
 ASGNI4
 line 510
 ;510:		break;
@@ -1449,7 +1449,7 @@ line 513
 ;512:	case ANIM_WEAPON5:
 ;513:		s_controls.playerWeapon = WP_ROCKET_LAUNCHER;
 ADDRGP4 s_controls+5068
-CNSTI4 5
+CNSTI4 8
 ASGNI4
 line 514
 ;514:		break;
@@ -1473,7 +1473,7 @@ line 521
 ;520:	case ANIM_WEAPON7:
 ;521:		s_controls.playerWeapon = WP_RAILGUN;
 ADDRGP4 s_controls+5068
-CNSTI4 7
+CNSTI4 3
 ASGNI4
 line 522
 ;522:		break;
@@ -1485,7 +1485,7 @@ line 525
 ;524:	case ANIM_WEAPON8:
 ;525:		s_controls.playerWeapon = WP_PLASMAGUN;
 ADDRGP4 s_controls+5068
-CNSTI4 8
+CNSTI4 7
 ASGNI4
 line 526
 ;526:		break;
@@ -6879,28 +6879,28 @@ ASGNI4
 line 1591
 ;1589:
 ;1590:	// Shafe - Voip Key
-;1591:	s_controls.build_menu.generic.type	    = MTYPE_ACTION;
-ADDRGP4 s_controls+4644
+;1591:	s_controls.voipkey.generic.type	    = MTYPE_ACTION;
+ADDRGP4 s_controls+4704
 CNSTI4 2
 ASGNI4
 line 1592
-;1592:	s_controls.build_menu.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
-ADDRGP4 s_controls+4644+44
+;1592:	s_controls.voipkey.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
+ADDRGP4 s_controls+4704+44
 CNSTU4 12548
 ASGNU4
 line 1593
-;1593:	s_controls.build_menu.generic.callback  = Controls_ActionEvent;
-ADDRGP4 s_controls+4644+48
+;1593:	s_controls.voipkey.generic.callback  = Controls_ActionEvent;
+ADDRGP4 s_controls+4704+48
 ADDRGP4 Controls_ActionEvent
 ASGNP4
 line 1594
-;1594:	s_controls.build_menu.generic.ownerdraw = Controls_DrawKeyBinding;
-ADDRGP4 s_controls+4644+56
+;1594:	s_controls.voipkey.generic.ownerdraw = Controls_DrawKeyBinding;
+ADDRGP4 s_controls+4704+56
 ADDRGP4 Controls_DrawKeyBinding
 ASGNP4
 line 1595
-;1595:	s_controls.build_menu.generic.id        = ID_VOIPKEY;
-ADDRGP4 s_controls+4644+8
+;1595:	s_controls.voipkey.generic.id        = ID_VOIPKEY;
+ADDRGP4 s_controls+4704+8
 CNSTI4 39
 ASGNI4
 line 1597
@@ -7476,7 +7476,16 @@ ADDRGP4 Menu_AddItem
 CALLV
 pop
 line 1684
-;1684:	Menu_AddItem( &s_controls.menu, &s_controls.gesture );
+;1684:	Menu_AddItem( &s_controls.menu, &s_controls.voipkey );  // Shafe - Build Menu
+ADDRGP4 s_controls
+ARGP4
+ADDRGP4 s_controls+4704
+ARGP4
+ADDRGP4 Menu_AddItem
+CALLV
+pop
+line 1685
+;1685:	Menu_AddItem( &s_controls.menu, &s_controls.gesture );
 ADDRGP4 s_controls
 ARGP4
 ADDRGP4 s_controls+2596
@@ -7484,9 +7493,9 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1686
-;1685:	
-;1686:	Menu_AddItem( &s_controls.menu, &s_controls.chat );
+line 1687
+;1686:	
+;1687:	Menu_AddItem( &s_controls.menu, &s_controls.chat );
 ADDRGP4 s_controls
 ARGP4
 ADDRGP4 s_controls+4224
@@ -7494,8 +7503,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1687
-;1687:	Menu_AddItem( &s_controls.menu, &s_controls.chat2 );
+line 1688
+;1688:	Menu_AddItem( &s_controls.menu, &s_controls.chat2 );
 ADDRGP4 s_controls
 ARGP4
 ADDRGP4 s_controls+4284
@@ -7503,8 +7512,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1688
-;1688:	Menu_AddItem( &s_controls.menu, &s_controls.chat3 );
+line 1689
+;1689:	Menu_AddItem( &s_controls.menu, &s_controls.chat3 );
 ADDRGP4 s_controls
 ARGP4
 ADDRGP4 s_controls+4344
@@ -7512,8 +7521,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1689
-;1689:	Menu_AddItem( &s_controls.menu, &s_controls.chat4 );
+line 1690
+;1690:	Menu_AddItem( &s_controls.menu, &s_controls.chat4 );
 ADDRGP4 s_controls
 ARGP4
 ADDRGP4 s_controls+4404
@@ -7521,11 +7530,11 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1693
-;1690:
+line 1694
 ;1691:
 ;1692:
-;1693:	Menu_AddItem( &s_controls.menu, &s_controls.back );
+;1693:
+;1694:	Menu_AddItem( &s_controls.menu, &s_controls.back );
 ADDRGP4 s_controls
 ARGP4
 ADDRGP4 s_controls+5076
@@ -7533,10 +7542,10 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 1695
-;1694:
-;1695:	trap_Cvar_VariableStringBuffer( "name", s_controls.name.string, 16 );
-ADDRGP4 $1367
+line 1696
+;1695:
+;1696:	trap_Cvar_VariableStringBuffer( "name", s_controls.name.string, 16 );
+ADDRGP4 $1368
 ARGP4
 ADDRGP4 s_controls+5164+60
 INDIRP4
@@ -7546,129 +7555,129 @@ ARGI4
 ADDRGP4 trap_Cvar_VariableStringBuffer
 CALLV
 pop
-line 1696
-;1696:	Q_CleanStr( s_controls.name.string );
+line 1697
+;1697:	Q_CleanStr( s_controls.name.string );
 ADDRGP4 s_controls+5164+60
 INDIRP4
 ARGP4
 ADDRGP4 Q_CleanStr
 CALLP4
 pop
-line 1699
-;1697:
-;1698:	// initialize the configurable cvars
-;1699:	Controls_InitCvars();
+line 1700
+;1698:
+;1699:	// initialize the configurable cvars
+;1700:	Controls_InitCvars();
 ADDRGP4 Controls_InitCvars
 CALLV
 pop
-line 1702
-;1700:
-;1701:	// initialize the current config
-;1702:	Controls_GetConfig();
+line 1703
+;1701:
+;1702:	// initialize the current config
+;1703:	Controls_GetConfig();
 ADDRGP4 Controls_GetConfig
 CALLV
 pop
-line 1705
-;1703:
-;1704:	// intialize the model
-;1705:	Controls_InitModel();
+line 1706
+;1704:
+;1705:	// intialize the model
+;1706:	Controls_InitModel();
 ADDRGP4 Controls_InitModel
 CALLV
 pop
-line 1708
-;1706:
-;1707:	// intialize the weapons
-;1708:	Controls_InitWeapons ();
+line 1709
+;1707:
+;1708:	// intialize the weapons
+;1709:	Controls_InitWeapons ();
 ADDRGP4 Controls_InitWeapons
 CALLV
 pop
-line 1711
-;1709:
-;1710:	// initial default section
-;1711:	s_controls.section = C_LOOKING;
+line 1712
+;1710:
+;1711:	// initial default section
+;1712:	s_controls.section = C_LOOKING;
 ADDRGP4 s_controls+4964
 CNSTI4 1
 ASGNI4
-line 1714
-;1712:
-;1713:	// update the ui
-;1714:	Controls_Update();
+line 1715
+;1713:
+;1714:	// update the ui
+;1715:	Controls_Update();
 ADDRGP4 Controls_Update
 CALLV
 pop
-line 1715
-;1715:}
+line 1716
+;1716:}
 LABELV $666
 endproc Controls_MenuInit 0 12
 export Controls_Cache
 proc Controls_Cache 0 4
-line 1723
-;1716:
-;1717:
-;1718:/*
-;1719:=================
-;1720:Controls_Cache
-;1721:=================
-;1722:*/
-;1723:void Controls_Cache( void ) {
 line 1724
-;1724:	trap_R_RegisterShaderNoMip( ART_BACK0 );
+;1717:
+;1718:
+;1719:/*
+;1720:=================
+;1721:Controls_Cache
+;1722:=================
+;1723:*/
+;1724:void Controls_Cache( void ) {
+line 1725
+;1725:	trap_R_RegisterShaderNoMip( ART_BACK0 );
 ADDRGP4 $788
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1725
-;1725:	trap_R_RegisterShaderNoMip( ART_BACK1 );
+line 1726
+;1726:	trap_R_RegisterShaderNoMip( ART_BACK1 );
 ADDRGP4 $805
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1726
-;1726:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
+line 1727
+;1727:	trap_R_RegisterShaderNoMip( ART_FRAMEL );
 ADDRGP4 $688
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1727
-;1727:	trap_R_RegisterShaderNoMip( ART_FRAMER );
+line 1728
+;1728:	trap_R_RegisterShaderNoMip( ART_FRAMER );
 ADDRGP4 $702
 ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 1728
-;1728:}
-LABELV $1373
+line 1729
+;1729:}
+LABELV $1374
 endproc Controls_Cache 0 4
 export UI_ControlsMenu
 proc UI_ControlsMenu 0 4
-line 1736
-;1729:
-;1730:
-;1731:/*
-;1732:=================
-;1733:UI_ControlsMenu
-;1734:=================
-;1735:*/
-;1736:void UI_ControlsMenu( void ) {
 line 1737
-;1737:	Controls_MenuInit();
+;1730:
+;1731:
+;1732:/*
+;1733:=================
+;1734:UI_ControlsMenu
+;1735:=================
+;1736:*/
+;1737:void UI_ControlsMenu( void ) {
+line 1738
+;1738:	Controls_MenuInit();
 ADDRGP4 Controls_MenuInit
 CALLV
 pop
-line 1738
-;1738:	UI_PushMenu( &s_controls.menu );
+line 1739
+;1739:	UI_PushMenu( &s_controls.menu );
 ADDRGP4 s_controls
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 1739
-;1739:}
-LABELV $1374
+line 1740
+;1740:}
+LABELV $1375
 endproc UI_ControlsMenu 0 4
 bss
 align 4
@@ -8000,6 +8009,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove
@@ -8161,7 +8171,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $1367
+LABELV $1368
 byte 1 110
 byte 1 97
 byte 1 109

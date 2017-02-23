@@ -3,7 +3,7 @@ code
 proc CG_AdjustFrom640 16 0
 file "../cg_drawtools.c"
 line 13
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_drawtools.c -- helper functions called by cg_draw, cg_scoreboard, cg_info, etc
 ;4:#include "cg_local.h"
@@ -4779,6 +4779,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

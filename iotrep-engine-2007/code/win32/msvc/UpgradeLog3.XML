@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="quake3">
+</Property><Property Name="Solution File" Value="C:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\msvc\quake3.sln">
+</Property><Property Name="User Options File" Value="C:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\msvc\quake3.suo">
+</Property><Property Name="Date" Value="Thursday, February 23, 2017">
+</Property><Property Name="Time" Value="12:27 PM">
+</Property><Property Name="Log Number" Value="3">
+</Property></Properties><Event ErrorLevel="2" Project="" Source="quake3.sln" Description="Error creating backup file: C:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\msvc\quake3.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="quake3.suo" Description="File successfully backed up as C:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\msvc\quake3.suo.old">
+</Event><Event ErrorLevel="3" Project="botlib" Source="botlib.vcproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="3" Project="cgame" Source="cgame.vcproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="3" Project="game" Source="game.vcproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="3" Project="q3_ui" Source="q3_ui.vcproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="3" Project="quake3" Source="quake3.vcproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="3" Project="renderer" Source="renderer.vcproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="3" Project="ui" Source="ui.vcproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="" Source="quake3.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="quake3.sln" Description="Converted">
+</Event></UpgradeLog>

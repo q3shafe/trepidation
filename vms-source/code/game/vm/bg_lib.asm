@@ -2,9 +2,9 @@ code
 proc swapfunc 24 0
 file "../bg_lib.c"
 line 83
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation - Team Trepidation - Team Trepidation
 ;2://
-;3:// 2016 Trepidation Licensed under the GPL2
+;3:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation - Team Trepidation - Team Trepidation
 ;4://
 ;5:// bg_lib,c -- standard C library replacement routines used by code
 ;6:// compiled for the virtual machine

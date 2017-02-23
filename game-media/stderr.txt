@@ -1,0 +1,42 @@
+Trepidation Dev Build win_msvc-x86 Dec  6 2016
+----- FS_Startup -----
+Current search path:
+C:\Users\Shafe\AppData\Roaming\trepidation\base\zastavka_v10.pk3 (249 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\villa_complex.pk3 (92 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\ut_subway.pk3 (169 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\twq3tourney2.pk3 (42 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\stukton_v2.pk3 (270 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\stchdm1.pk3 (157 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\shad3dm2.pk3 (171 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\seasons1.pk3 (115 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\q3pack.pk3 (95 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\q3hm_for1.pk3 (62 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\q3hm_borg1.pk3 (236 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\q3dade12.pk3 (42 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\q3ctf_kln1.pk3 (30 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\q3ctf_hmnoon.pk3 (102 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\q3ctfvoy.pk3 (89 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\q3cam.pk3 (112 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\pokernight.pk3 (405 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\padshop.pk3 (270 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\padkitchen.pk3 (140 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\padgallery_dl.pk3 (268 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\padcrash.pk3 (77 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\padcenter.pk3 (217 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\ninestein.pk3 (13 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\Miami.pk3 (168 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\mc-oa-mappack.pk3 (463 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\map-aedm7.pk3 (137 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\Heretic.pk3 (48 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\HandsOfGod.pk3 (32 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\gdtemple.pk3 (110 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\fairhaven.pk3 (89 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\ctf_boom2.pk3 (21 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\ctf_boom.pk3 (73 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\ctf_astro.pk3 (52 files)
+C:\Users\Shafe\AppData\Roaming\trepidation\base\ctf_2becks.pk3 (52 files)
+C:\Users\Shafe\AppData\Roaming\trepidation/base
+C:\web\trepdev\trepidation\game-media/base
+
+----------------------
+4668 files in pk3 files

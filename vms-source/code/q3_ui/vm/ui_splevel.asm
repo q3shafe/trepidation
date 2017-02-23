@@ -2,7 +2,7 @@ code
 proc PlayerIcon 80 20
 file "../ui_splevel.c"
 line 108
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:/*
 ;4:=============================================================================
@@ -5406,6 +5406,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

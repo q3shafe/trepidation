@@ -3,7 +3,7 @@ code
 proc CG_CheckAmmo 20 8
 file "../cg_playerstate.c"
 line 17
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_playerstate.c -- this file acts on changes in a new playerState_t
 ;4:// With normal play, this will be done after local prediction, but when
@@ -71,7 +71,7 @@ CNSTI4 3
 LTI4 $80
 ADDRLP4 0
 INDIRI4
-CNSTI4 7
+CNSTI4 8
 GTI4 $80
 ADDRLP4 0
 INDIRI4
@@ -87,6 +87,7 @@ LABELV $85
 address $82
 address $82
 address $82
+address $80
 address $80
 address $82
 code
@@ -3219,6 +3220,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

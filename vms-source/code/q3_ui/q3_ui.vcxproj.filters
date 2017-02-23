@@ -2,15 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{0a0d06e2-5f85-4e60-977e-6e30f13ef30a}</UniqueIdentifier>
+      <UniqueIdentifier>{7b3f8ff1-ce12-425c-81d3-d8666a5752b0}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{4878aae8-01f3-42ba-94e3-5c01a942c6e4}</UniqueIdentifier>
+      <UniqueIdentifier>{7fb8c026-c0b9-46cc-ac84-3bff803ca15e}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl</Extensions>
     </Filter>
     <Filter Include="Resource Files">
-      <UniqueIdentifier>{9ab791f7-c8ff-4bd0-bbb8-7164b3f9036b}</UniqueIdentifier>
+      <UniqueIdentifier>{3e98c6cd-7dc6-4c61-b8d1-51af4dc181f5}</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
     </Filter>
   </ItemGroup>
@@ -150,28 +150,24 @@
     <ClCompile Include="ui_video.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ui_voip.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ui_singleplayer.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuildStep Include="ui.def">
+    <ClInclude Include="keycodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\game\q_shared.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_local.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_public.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="ui.def">
       <Filter>Source Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="keycodes.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="..\game\q_shared.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="ui_local.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
-    <CustomBuildStep Include="ui_public.h">
-      <Filter>Header Files</Filter>
-    </CustomBuildStep>
+    </CustomBuild>
   </ItemGroup>
 </Project>

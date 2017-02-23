@@ -1,0 +1,348 @@
+﻿Build started 2/23/2017 12:28:57 PM.
+     1>Project "C:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\msvc\quake3.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating ".\build\quake3_debug_ta\quake3.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D USE_OPENAL /D _VC80_UPGRADE=0x0710 /Gm- /EHsc /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\build\quake3_debug_ta\\" /Fd".\build\quake3_debug_ta\vc100.pdb" /FR".\build\quake3_debug_ta\\" /Gd /TC /analyze- /errorReport:prompt ..\..\client\cl_avi.c ..\..\client\cl_cgame.c ..\..\client\cl_cin.c ..\..\client\cl_console.c ..\..\client\cl_input.c ..\..\client\cl_keys.c ..\..\client\cl_main.c ..\..\client\cl_net_chan.c ..\..\client\cl_parse.c ..\..\client\cl_scrn.c ..\..\client\cl_ui.c ..\..\qcommon\cm_load.c ..\..\qcommon\cm_patch.c ..\..\qcommon\cm_polylib.c ..\..\qcommon\cm_test.c ..\..\qcommon\cm_trace.c ..\..\qcommon\cmd.c ..\..\qcommon\common.c ..\..\qcommon\cvar.c ..\..\qcommon\files.c ..\..\qcommon\huffman.c ..\..\qcommon\md4.c ..\..\qcommon\md5.c ..\..\qcommon\msg.c ..\..\qcommon\net_chan.c ..\..\qcommon\q_math.c ..\..\qcommon\q_shared.c ..\..\client\qal.c ..\..\client\snd_adpcm.c ..\..\client\snd_codec.c ..\..\client\snd_codec_ogg.c ..\..\client\snd_codec_wav.c ..\..\client\snd_dma.c ..\..\client\snd_main.c ..\..\client\snd_mem.c ..\..\client\snd_mix.c ..\..\client\snd_openal.c ..\..\client\snd_wavelet.c ..\..\server\sv_bot.c ..\..\server\sv_ccmds.c ..\..\server\sv_client.c ..\..\server\sv_game.c ..\..\server\sv_init.c ..\..\server\sv_main.c ..\..\server\sv_net_chan.c ..\..\server\sv_snapshot.c ..\..\server\sv_world.c ..\..\qcommon\unzip.c ..\..\qcommon\vm.c ..\..\qcommon\vm_interpreted.c ..\..\qcommon\vm_x86.c ..\win_input.c ..\win_main.c ..\win_net.c ..\win_shared.c ..\win_snd.c ..\win_syscon.c ..\win_wndproc.c
+         cl_avi.c
+         cl_cgame.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_cgame.c(314): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_cgame.c(323): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_cgame.c(324): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_cgame.c(624): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+         cl_cin.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_cin.c(1435): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         cl_console.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_console.c(218): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         cl_input.c
+         cl_keys.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_keys.c(919): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_keys.c(921): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         cl_main.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(981): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(982): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(985): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(986): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(989): warning C4996: 'putenv': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _putenv. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdlib.h(869) : see declaration of 'putenv'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(991): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdlib.h(433) : see declaration of 'getenv'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(1609): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(2234): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_vsnprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(2873): warning C4996: 'strncat': This function or variable may be unsafe. Consider using strncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(175) : see declaration of 'strncat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(3048): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(3179): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(3185): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(3189): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_main.c(3602): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+         cl_net_chan.c
+         cl_parse.c
+         cl_scrn.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_scrn.c(340): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+         cl_ui.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\cl_ui.c(1042): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+         cm_load.c
+         cm_patch.c
+         cm_polylib.c
+         cm_test.c
+         cm_trace.c
+         cmd.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\cmd.c(371): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\cmd.c(373): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\cmd.c(395): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\cmd.c(397): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         common.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(149): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_vsnprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(183): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\time.inl(112) : see declaration of 'localtime'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(189): warning C4996: 'asctime': This function or variable may be unsafe. Consider using asctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\time.h(153) : see declaration of 'asctime'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(229): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_vsnprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(282): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(702): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\time.inl(112) : see declaration of 'localtime'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(1165): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(2275): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(2307): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(2321): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\common.c(2342): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+         cvar.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\cvar.c(575): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\cvar.c(577): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         files.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(529): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(548): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(596): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(619): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(657): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(700): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(716): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(736): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(880): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(923): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(1037): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(1191): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(1365): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_vsnprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(1784): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(1831): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(2050): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(2218): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(2219): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(2231): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(2236): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(2238): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(2540): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\files.c(2906): warning C4101: 'path' : unreferenced local variable
+         Generating Code...
+         Compiling...
+         huffman.c
+         md4.c
+         md5.c
+         msg.c
+         net_chan.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\net_chan.c(723): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+         q_math.c
+         q_shared.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\q_shared.c(276): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\q_shared.c(288): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\q_shared.c(726): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\q_shared.c(879): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\q_shared.c(915): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\q_shared.c(1095): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\q_shared.c(1150): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\q_shared.c(1225): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\q_shared.c(1226): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\q_shared.c(1273): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         qal.c
+         snd_adpcm.c
+         snd_codec.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_codec.c(151): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_codec.c(174): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+         snd_codec_ogg.c
+         snd_codec_wav.c
+         snd_dma.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_dma.c(135): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_dma.c(136): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_dma.c(137): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_dma.c(138): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_dma.c(139): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_dma.c(140): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_dma.c(268): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         snd_main.c
+         snd_mem.c
+         snd_mix.c
+         snd_openal.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(184): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(920): error C2275: 'srcHandle_t' : illegal use of this type as an expression
+                 c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_local.h(241) : see declaration of 'srcHandle_t'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(920): error C2146: syntax error : missing ';' before identifier 'src'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(920): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(921): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(925): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(928): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(947): error C2275: 'srcHandle_t' : illegal use of this type as an expression
+                 c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_local.h(241) : see declaration of 'srcHandle_t'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(947): error C2146: syntax error : missing ';' before identifier 'src'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(947): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(948): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(957): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(962): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(965): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(969): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(974): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(975): error C2065: 'src' : undeclared identifier
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\client\snd_openal.c(978): error C2065: 'src' : undeclared identifier
+         snd_wavelet.c
+         sv_bot.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_bot.c(142): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+         sv_ccmds.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_ccmds.c(630): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_ccmds.c(638): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+         Generating Code...
+         Compiling...
+         sv_client.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_client.c(124): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_client.c(127): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_client.c(198): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_client.c(210): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+         sv_game.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_game.c(822): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(188) : see declaration of 'strncpy'
+         sv_init.c
+         sv_main.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_main.c(105): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_main.c(106): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_main.c(177): warning C4996: '_vsnprintf': This function or variable may be unsafe. Consider using _vsnprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(363) : see declaration of '_vsnprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_main.c(332): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\server\sv_main.c(360): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         sv_net_chan.c
+         sv_snapshot.c
+         sv_world.c
+         unzip.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\unzip.c(1293): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\unzip.c(1330): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+         vm.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\qcommon\vm.c(889): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+         vm_interpreted.c
+         vm_x86.c
+         win_input.c
+         win_main.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(56): warning C4996: 'open': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _open. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\io.h(312) : see declaration of 'open'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(64): warning C4996: 'close': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _close. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\io.h(302) : see declaration of 'close'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(77): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(78): warning C4996: 'write': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _write. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\io.h(318) : see declaration of 'write'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(119): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'vsprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(430): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(431): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(432): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(437): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(438): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371) : see declaration of 'sprintf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(439): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_main.c(483): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(197) : see declaration of 'strtok'
+         win_net.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_net.c(182): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_net.c(183): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_net.c(184): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_net.c(185): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_net.c(186): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_net.c(187): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_net.c(188): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_net.c(189): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_net.c(190): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_net.c(191): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(325) : see declaration of 'sscanf'
+         win_shared.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_shared.c(277): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_shared.c(281): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         win_snd.c
+         win_syscon.c
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_syscon.c(279): warning C4996: 'strncat': This function or variable may be unsafe. Consider using strncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(175) : see declaration of 'strncat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_syscon.c(280): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(110) : see declaration of 'strcat'
+     1>c:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\win_syscon.c(487): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : see declaration of 'strcpy'
+         win_wndproc.c
+         Generating Code...
+     1>Done Building Project "C:\web\trepdev\trepidation\iotrep-engine-2007\code\win32\msvc\quake3.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:25.05

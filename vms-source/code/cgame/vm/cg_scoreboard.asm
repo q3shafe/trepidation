@@ -2,7 +2,7 @@ code
 proc CG_DrawClientScore 1080 36
 file "../cg_scoreboard.c"
 line 61
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_scoreboard -- draw the scoreboard on top of the game screen
 ;4:#include "cg_local.h"
@@ -3698,6 +3698,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

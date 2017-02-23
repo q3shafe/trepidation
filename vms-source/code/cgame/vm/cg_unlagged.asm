@@ -135,7 +135,7 @@ INDIRP4
 CNSTI4 192
 ADDP4
 INDIRI4
-CNSTI4 7
+CNSTI4 3
 NEI4 $93
 line 44
 ;43:		// do we have it on for the rail gun?
@@ -745,7 +745,7 @@ INDIRP4
 CNSTI4 192
 ADDP4
 INDIRI4
-CNSTI4 3
+CNSTI4 4
 NEI4 $167
 line 126
 ;125:		// do we have it on for the shotgun?
@@ -2913,6 +2913,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

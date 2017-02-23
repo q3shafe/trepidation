@@ -627,7 +627,7 @@ code
 proc Q_rand 4 0
 file "../q_math.c"
 line 124
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation - Team Trepidation - Team Trepidation - Team Trepidation
 ;2://
 ;3:// q_math.c -- stateless support routines that are included in each code module
 ;4:#include "q_shared.h"

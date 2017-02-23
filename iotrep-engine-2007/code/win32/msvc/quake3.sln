@@ -1,22 +1,18 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual C++ Express 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "botlib", "botlib.vcproj", "{A410161F-AE9F-485D-A01F-5294891430A6}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "botlib", "botlib.vcxproj", "{A410161F-AE9F-485D-A01F-5294891430A6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgame", "cgame.vcproj", "{C878E295-CB82-4B40-8ECF-5CE5525466FA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgame", "cgame.vcxproj", "{C878E295-CB82-4B40-8ECF-5CE5525466FA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game.vcproj", "{F9EE10DA-2404-4154-B904-F93C936C040A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game.vcxproj", "{F9EE10DA-2404-4154-B904-F93C936C040A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "q3_ui", "q3_ui.vcproj", "{D454C4C7-7765-4149-ABAD-05FDEB9D94F8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "q3_ui", "q3_ui.vcxproj", "{D454C4C7-7765-4149-ABAD-05FDEB9D94F8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quake3", "quake3.vcproj", "{81CB51C4-B434-4E12-B69B-BAEE102F2852}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A410161F-AE9F-485D-A01F-5294891430A6} = {A410161F-AE9F-485D-A01F-5294891430A6}
-		{AB424155-FBED-4D8D-B007-5B6CF93EA395} = {AB424155-FBED-4D8D-B007-5B6CF93EA395}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quake3", "quake3.vcxproj", "{81CB51C4-B434-4E12-B69B-BAEE102F2852}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "renderer", "renderer.vcproj", "{AB424155-FBED-4D8D-B007-5B6CF93EA395}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "renderer", "renderer.vcxproj", "{AB424155-FBED-4D8D-B007-5B6CF93EA395}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ui", "ui.vcproj", "{A8EAC38E-C7DA-42F8-811D-77FD092B9D19}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ui", "ui.vcxproj", "{A8EAC38E-C7DA-42F8-811D-77FD092B9D19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

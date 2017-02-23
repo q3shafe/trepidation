@@ -3,7 +3,7 @@ code
 proc UpdateTournamentInfo 1104 44
 file "../g_arenas.c"
 line 20
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3://
 ;4:// g_arenas.c
@@ -150,7 +150,7 @@ MULI4
 ADDRGP4 level
 INDIRP4
 ADDP4
-CNSTI4 2568
+CNSTI4 2564
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -415,16 +415,18 @@ ADDRLP4 1072
 ADDRLP4 1088
 INDIRI4
 ASGNI4
-line 114
-;114:	for( i = 0; i < level.numNonSpectatorClients; i++ ) {
+line 116
+;114:
+;115:
+;116:		for( i = 0; i < level.numNonSpectatorClients; i++ ) {
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
 ADDRGP4 $93
 JUMPV
 LABELV $90
-line 115
-;115:		n = level.sortedClients[i];
+line 117
+;117:			n = level.sortedClients[i];
 ADDRLP4 4
 ADDRLP4 0
 INDIRI4
@@ -434,8 +436,8 @@ ADDRGP4 level+96
 ADDP4
 INDIRI4
 ASGNI4
-line 116
-;116:		Com_sprintf( buf, sizeof(buf), " %i %i %i", n, level.clients[n].ps.persistant[PERS_RANK], level.clients[n].ps.persistant[PERS_SCORE] );
+line 118
+;118:			Com_sprintf( buf, sizeof(buf), " %i %i %i", n, level.clients[n].ps.persistant[PERS_RANK], level.clients[n].ps.persistant[PERS_SCORE] );
 ADDRLP4 8
 ARGP4
 CNSTI4 32
@@ -469,8 +471,8 @@ ARGI4
 ADDRGP4 Com_sprintf
 CALLV
 pop
-line 117
-;117:		buflen = strlen( buf );
+line 119
+;119:			buflen = strlen( buf );
 ADDRLP4 8
 ARGP4
 ADDRLP4 1100
@@ -481,8 +483,8 @@ ADDRLP4 1068
 ADDRLP4 1100
 INDIRI4
 ASGNI4
-line 118
-;118:		if( msglen + buflen + 1 >= sizeof(msg) ) {
+line 120
+;120:			if( msglen + buflen + 1 >= sizeof(msg) ) {
 ADDRLP4 1072
 INDIRI4
 ADDRLP4 1068
@@ -493,14 +495,14 @@ ADDI4
 CVIU4 4
 CNSTU4 1024
 LTU4 $97
-line 119
-;119:			break;
+line 121
+;121:				break;
 ADDRGP4 $92
 JUMPV
 LABELV $97
-line 121
-;120:		}
-;121:		strcat( msg, buf );
+line 123
+;122:			}
+;123:			strcat( msg, buf );
 ADDRLP4 44
 ARGP4
 ADDRLP4 8
@@ -508,10 +510,10 @@ ARGP4
 ADDRGP4 strcat
 CALLP4
 pop
-line 122
-;122:	}
+line 124
+;124:		}
 LABELV $91
-line 114
+line 116
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
@@ -525,8 +527,9 @@ ADDRGP4 level+88
 INDIRI4
 LTI4 $90
 LABELV $92
-line 123
-;123:	trap_SendConsoleCommand( EXEC_APPEND, msg );
+line 126
+;125:
+;126:	trap_SendConsoleCommand( EXEC_APPEND, msg );
 CNSTI4 2
 ARGI4
 ADDRLP4 44
@@ -534,21 +537,23 @@ ARGP4
 ADDRGP4 trap_SendConsoleCommand
 CALLV
 pop
-line 124
-;124:}
+line 129
+;127:
+;128:
+;129:}
 LABELV $55
 endproc UpdateTournamentInfo 1104 44
 proc SpawnModelOnVictoryPad 108 16
-line 127
-;125:
-;126:
-;127:static gentity_t *SpawnModelOnVictoryPad( gentity_t *pad, vec3_t offset, gentity_t *ent, int place ) {
 line 132
-;128:	gentity_t	*body;
-;129:	vec3_t		vec;
-;130:	vec3_t		f, r, u;
+;130:
 ;131:
-;132:	body = G_Spawn();
+;132:static gentity_t *SpawnModelOnVictoryPad( gentity_t *pad, vec3_t offset, gentity_t *ent, int place ) {
+line 137
+;133:	gentity_t	*body;
+;134:	vec3_t		vec;
+;135:	vec3_t		f, r, u;
+;136:
+;137:	body = G_Spawn();
 ADDRLP4 52
 ADDRGP4 G_Spawn
 CALLP4
@@ -557,31 +562,31 @@ ADDRLP4 0
 ADDRLP4 52
 INDIRP4
 ASGNP4
-line 133
-;133:	if ( !body ) {
+line 138
+;138:	if ( !body ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $100
-line 134
-;134:		G_Printf( S_COLOR_RED "ERROR: out of gentities\n" );
+line 139
+;139:		G_Printf( S_COLOR_RED "ERROR: out of gentities\n" );
 ADDRGP4 $102
 ARGP4
 ADDRGP4 G_Printf
 CALLV
 pop
-line 135
-;135:		return NULL;
+line 140
+;140:		return NULL;
 CNSTP4 0
 RETP4
 ADDRGP4 $99
 JUMPV
 LABELV $100
-line 138
-;136:	}
-;137:
-;138:	body->classname = ent->client->pers.netname;
+line 143
+;141:	}
+;142:
+;143:	body->classname = ent->client->pers.netname;
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
@@ -594,8 +599,8 @@ INDIRP4
 CNSTI4 512
 ADDP4
 ASGNP4
-line 139
-;139:	body->client = ent->client;
+line 144
+;144:	body->client = ent->client;
 ADDRLP4 56
 CNSTI4 524
 ASGNI4
@@ -611,48 +616,48 @@ INDIRI4
 ADDP4
 INDIRP4
 ASGNP4
-line 140
-;140:	body->s = ent->s;
+line 145
+;145:	body->s = ent->s;
 ADDRLP4 0
 INDIRP4
 ADDRFP4 8
 INDIRP4
 INDIRB
 ASGNB 212
-line 141
-;141:	body->s.eType = ET_PLAYER;		// could be ET_INVISIBLE
+line 146
+;146:	body->s.eType = ET_PLAYER;		// could be ET_INVISIBLE
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 1
 ASGNI4
-line 142
-;142:	body->s.eFlags = 0;				// clear EF_TALK, etc
+line 147
+;147:	body->s.eFlags = 0;				// clear EF_TALK, etc
 ADDRLP4 0
 INDIRP4
 CNSTI4 8
 ADDP4
 CNSTI4 0
 ASGNI4
-line 143
-;143:	body->s.powerups = 0;			// clear powerups
+line 148
+;148:	body->s.powerups = 0;			// clear powerups
 ADDRLP4 0
 INDIRP4
 CNSTI4 188
 ADDP4
 CNSTI4 0
 ASGNI4
-line 144
-;144:	body->s.loopSound = 0;			// clear lava burning
+line 149
+;149:	body->s.loopSound = 0;			// clear lava burning
 ADDRLP4 0
 INDIRP4
 CNSTI4 156
 ADDP4
 CNSTI4 0
 ASGNI4
-line 145
-;145:	body->s.number = body - g_entities;
+line 150
+;150:	body->s.number = body - g_entities;
 ADDRLP4 0
 INDIRP4
 ADDRLP4 0
@@ -665,8 +670,8 @@ CVUI4 4
 CNSTI4 924
 DIVI4
 ASGNI4
-line 146
-;146:	body->timestamp = level.time;
+line 151
+;151:	body->timestamp = level.time;
 ADDRLP4 0
 INDIRP4
 CNSTI4 648
@@ -674,64 +679,64 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 147
-;147:	body->physicsObject = qtrue;
+line 152
+;152:	body->physicsObject = qtrue;
 ADDRLP4 0
 INDIRP4
 CNSTI4 572
 ADDP4
 CNSTI4 1
 ASGNI4
-line 148
-;148:	body->physicsBounce = 0;		// don't bounce
+line 153
+;153:	body->physicsBounce = 0;		// don't bounce
 ADDRLP4 0
 INDIRP4
 CNSTI4 576
 ADDP4
 CNSTF4 0
 ASGNF4
-line 149
-;149:	body->s.event = 0;
+line 154
+;154:	body->s.event = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 180
 ADDP4
 CNSTI4 0
 ASGNI4
-line 150
-;150:	body->s.pos.trType = TR_STATIONARY;
+line 155
+;155:	body->s.pos.trType = TR_STATIONARY;
 ADDRLP4 0
 INDIRP4
 CNSTI4 12
 ADDP4
 CNSTI4 0
 ASGNI4
-line 151
-;151:	body->s.groundEntityNum = ENTITYNUM_WORLD;
+line 156
+;156:	body->s.groundEntityNum = ENTITYNUM_WORLD;
 ADDRLP4 0
 INDIRP4
 CNSTI4 148
 ADDP4
 CNSTI4 1022
 ASGNI4
-line 152
-;152:	body->s.legsAnim = LEGS_IDLE;
+line 157
+;157:	body->s.legsAnim = LEGS_IDLE;
 ADDRLP4 0
 INDIRP4
 CNSTI4 196
 ADDP4
 CNSTI4 22
 ASGNI4
-line 153
-;153:	body->s.torsoAnim = TORSO_STAND;
+line 158
+;158:	body->s.torsoAnim = TORSO_STAND;
 ADDRLP4 0
 INDIRP4
 CNSTI4 200
 ADDP4
 CNSTI4 11
 ASGNI4
-line 154
-;154:	if( body->s.weapon == WP_NONE ) {
+line 159
+;159:	if( body->s.weapon == WP_NONE ) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
@@ -739,19 +744,19 @@ ADDP4
 INDIRI4
 CNSTI4 0
 NEI4 $104
-line 155
-;155:		body->s.weapon = WP_MACHINEGUN;
+line 160
+;160:		body->s.weapon = WP_MACHINEGUN;
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
 ADDP4
 CNSTI4 2
 ASGNI4
-line 156
-;156:	}
+line 161
+;161:	}
 LABELV $104
-line 157
-;157:	if( body->s.weapon == WP_GAUNTLET) {
+line 162
+;162:	if( body->s.weapon == WP_GAUNTLET) {
 ADDRLP4 0
 INDIRP4
 CNSTI4 192
@@ -759,27 +764,27 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $106
-line 158
-;158:		body->s.torsoAnim = TORSO_STAND2;
+line 163
+;163:		body->s.torsoAnim = TORSO_STAND2;
 ADDRLP4 0
 INDIRP4
 CNSTI4 200
 ADDP4
 CNSTI4 12
 ASGNI4
-line 159
-;159:	}
+line 164
+;164:	}
 LABELV $106
-line 160
-;160:	body->s.event = 0;
+line 165
+;165:	body->s.event = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 180
 ADDP4
 CNSTI4 0
 ASGNI4
-line 161
-;161:	body->r.svFlags = ent->r.svFlags;
+line 166
+;166:	body->r.svFlags = ent->r.svFlags;
 ADDRLP4 64
 CNSTI4 432
 ASGNI4
@@ -795,8 +800,8 @@ INDIRI4
 ADDP4
 INDIRI4
 ASGNI4
-line 162
-;162:	VectorCopy (ent->r.mins, body->r.mins);
+line 167
+;167:	VectorCopy (ent->r.mins, body->r.mins);
 ADDRLP4 68
 CNSTI4 444
 ASGNI4
@@ -812,8 +817,8 @@ INDIRI4
 ADDP4
 INDIRB
 ASGNB 12
-line 163
-;163:	VectorCopy (ent->r.maxs, body->r.maxs);
+line 168
+;168:	VectorCopy (ent->r.maxs, body->r.maxs);
 ADDRLP4 72
 CNSTI4 456
 ASGNI4
@@ -829,8 +834,8 @@ INDIRI4
 ADDP4
 INDIRB
 ASGNB 12
-line 164
-;164:	VectorCopy (ent->r.absmin, body->r.absmin);
+line 169
+;169:	VectorCopy (ent->r.absmin, body->r.absmin);
 ADDRLP4 76
 CNSTI4 472
 ASGNI4
@@ -846,8 +851,8 @@ INDIRI4
 ADDP4
 INDIRB
 ASGNB 12
-line 165
-;165:	VectorCopy (ent->r.absmax, body->r.absmax);
+line 170
+;170:	VectorCopy (ent->r.absmax, body->r.absmax);
 ADDRLP4 80
 CNSTI4 484
 ASGNI4
@@ -863,24 +868,24 @@ INDIRI4
 ADDP4
 INDIRB
 ASGNB 12
-line 166
-;166:	body->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
+line 171
+;171:	body->clipmask = CONTENTS_SOLID | CONTENTS_PLAYERCLIP;
 ADDRLP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 65537
 ASGNI4
-line 167
-;167:	body->r.contents = CONTENTS_BODY;
+line 172
+;172:	body->r.contents = CONTENTS_BODY;
 ADDRLP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 33554432
 ASGNI4
-line 168
-;168:	body->r.ownerNum = ent->r.ownerNum;
+line 173
+;173:	body->r.ownerNum = ent->r.ownerNum;
 ADDRLP4 84
 CNSTI4 520
 ASGNI4
@@ -896,17 +901,17 @@ INDIRI4
 ADDP4
 INDIRI4
 ASGNI4
-line 169
-;169:	body->takedamage = qfalse;
+line 174
+;174:	body->takedamage = qfalse;
 ADDRLP4 0
 INDIRP4
 CNSTI4 760
 ADDP4
 CNSTI4 0
 ASGNI4
-line 171
-;170:
-;171:	VectorSubtract( level.intermission_origin, pad->r.currentOrigin, vec );
+line 176
+;175:
+;176:	VectorSubtract( level.intermission_origin, pad->r.currentOrigin, vec );
 ADDRLP4 88
 ADDRFP4 0
 INDIRP4
@@ -941,8 +946,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 172
-;172:	vectoangles( vec, body->s.apos.trBase );
+line 177
+;177:	vectoangles( vec, body->s.apos.trBase );
 ADDRLP4 4
 ARGP4
 ADDRLP4 0
@@ -953,25 +958,25 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 173
-;173:	body->s.apos.trBase[PITCH] = 0;
+line 178
+;178:	body->s.apos.trBase[PITCH] = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 60
 ADDP4
 CNSTF4 0
 ASGNF4
-line 174
-;174:	body->s.apos.trBase[ROLL] = 0;
+line 179
+;179:	body->s.apos.trBase[ROLL] = 0;
 ADDRLP4 0
 INDIRP4
 CNSTI4 68
 ADDP4
 CNSTF4 0
 ASGNF4
-line 176
-;175:
-;176:	AngleVectors( body->s.apos.trBase, f, r, u );
+line 181
+;180:
+;181:	AngleVectors( body->s.apos.trBase, f, r, u );
 ADDRLP4 0
 INDIRP4
 CNSTI4 60
@@ -986,8 +991,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 177
-;177:	VectorMA( pad->r.currentOrigin, offset[0], f, vec );
+line 182
+;182:	VectorMA( pad->r.currentOrigin, offset[0], f, vec );
 ADDRLP4 92
 ADDRFP4 0
 INDIRP4
@@ -1038,8 +1043,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 178
-;178:	VectorMA( vec, offset[1], r, vec );
+line 183
+;183:	VectorMA( vec, offset[1], r, vec );
 ADDRLP4 100
 ADDRFP4 4
 INDIRP4
@@ -1081,8 +1086,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 179
-;179:	VectorMA( vec, offset[2], u, vec );
+line 184
+;184:	VectorMA( vec, offset[2], u, vec );
 ADDRLP4 104
 ADDRFP4 4
 INDIRP4
@@ -1124,9 +1129,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 181
-;180:
-;181:	G_SetOrigin( body, vec );
+line 186
+;185:
+;186:	G_SetOrigin( body, vec );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -1135,18 +1140,18 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 183
-;182:
-;183:	trap_LinkEntity (body);
+line 188
+;187:
+;188:	trap_LinkEntity (body);
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 185
-;184:
-;185:	body->count = place;
+line 190
+;189:
+;190:	body->count = place;
 ADDRLP4 0
 INDIRP4
 CNSTI4 784
@@ -1154,24 +1159,24 @@ ADDP4
 ADDRFP4 12
 INDIRI4
 ASGNI4
-line 187
-;186:
-;187:	return body;
+line 192
+;191:
+;192:	return body;
 ADDRLP4 0
 INDIRP4
 RETP4
 LABELV $99
 endproc SpawnModelOnVictoryPad 108 16
 proc CelebrateStop 12 0
-line 191
-;188:}
-;189:
-;190:
-;191:static void CelebrateStop( gentity_t *player ) {
-line 194
-;192:	int		anim;
-;193:
-;194:	if( player->s.weapon == WP_GAUNTLET) {
+line 196
+;193:}
+;194:
+;195:
+;196:static void CelebrateStop( gentity_t *player ) {
+line 199
+;197:	int		anim;
+;198:
+;199:	if( player->s.weapon == WP_GAUNTLET) {
 ADDRFP4 0
 INDIRP4
 CNSTI4 192
@@ -1179,28 +1184,28 @@ ADDP4
 INDIRI4
 CNSTI4 1
 NEI4 $132
-line 195
-;195:		anim = TORSO_STAND2;
+line 200
+;200:		anim = TORSO_STAND2;
 ADDRLP4 0
 CNSTI4 12
 ASGNI4
-line 196
-;196:	}
+line 201
+;201:	}
 ADDRGP4 $133
 JUMPV
 LABELV $132
-line 197
-;197:	else {
-line 198
-;198:		anim = TORSO_STAND;
+line 202
+;202:	else {
+line 203
+;203:		anim = TORSO_STAND;
 ADDRLP4 0
 CNSTI4 11
 ASGNI4
-line 199
-;199:	}
+line 204
+;204:	}
 LABELV $133
-line 200
-;200:	player->s.torsoAnim = ( ( player->s.torsoAnim & ANIM_TOGGLEBIT ) ^ ANIM_TOGGLEBIT ) | anim;
+line 205
+;205:	player->s.torsoAnim = ( ( player->s.torsoAnim & ANIM_TOGGLEBIT ) ^ ANIM_TOGGLEBIT ) | anim;
 ADDRLP4 4
 ADDRFP4 0
 INDIRP4
@@ -1225,18 +1230,18 @@ ADDRLP4 0
 INDIRI4
 BORI4
 ASGNI4
-line 201
-;201:}
+line 206
+;206:}
 LABELV $131
 endproc CelebrateStop 12 0
 proc CelebrateStart 8 12
-line 205
-;202:
-;203:
-;204:#define	TIMER_GESTURE	(34*66+50)
-;205:static void CelebrateStart( gentity_t *player ) {
-line 206
-;206:	player->s.torsoAnim = ( ( player->s.torsoAnim & ANIM_TOGGLEBIT ) ^ ANIM_TOGGLEBIT ) | TORSO_GESTURE;
+line 210
+;207:
+;208:
+;209:#define	TIMER_GESTURE	(34*66+50)
+;210:static void CelebrateStart( gentity_t *player ) {
+line 211
+;211:	player->s.torsoAnim = ( ( player->s.torsoAnim & ANIM_TOGGLEBIT ) ^ ANIM_TOGGLEBIT ) | TORSO_GESTURE;
 ADDRLP4 0
 ADDRFP4 0
 INDIRP4
@@ -1260,8 +1265,8 @@ BXORI4
 CNSTI4 6
 BORI4
 ASGNI4
-line 207
-;207:	player->nextthink = level.time + TIMER_GESTURE;
+line 212
+;212:	player->nextthink = level.time + TIMER_GESTURE;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -1271,22 +1276,22 @@ INDIRI4
 CNSTI4 2294
 ADDI4
 ASGNI4
-line 208
-;208:	player->think = CelebrateStop;
+line 213
+;213:	player->think = CelebrateStop;
 ADDRFP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 CelebrateStop
 ASGNP4
-line 215
-;209:
-;210:	/*
-;211:	player->client->ps.events[player->client->ps.eventSequence & (MAX_PS_EVENTS-1)] = EV_TAUNT;
-;212:	player->client->ps.eventParms[player->client->ps.eventSequence & (MAX_PS_EVENTS-1)] = 0;
-;213:	player->client->ps.eventSequence++;
-;214:	*/
-;215:	G_AddEvent(player, EV_TAUNT, 0);
+line 220
+;214:
+;215:	/*
+;216:	player->client->ps.events[player->client->ps.eventSequence & (MAX_PS_EVENTS-1)] = EV_TAUNT;
+;217:	player->client->ps.eventParms[player->client->ps.eventSequence & (MAX_PS_EVENTS-1)] = 0;
+;218:	player->client->ps.eventSequence++;
+;219:	*/
+;220:	G_AddEvent(player, EV_TAUNT, 0);
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -1297,8 +1302,8 @@ ARGI4
 ADDRGP4 G_AddEvent
 CALLV
 pop
-line 216
-;216:}
+line 221
+;221:}
 LABELV $134
 endproc CelebrateStart 8 12
 data
@@ -1319,20 +1324,20 @@ byte 4 3262119936
 byte 4 1110704128
 code
 proc PodiumPlacementThink 92 16
-line 223
-;217:
-;218:
-;219:static vec3_t	offsetFirst  = {0, 0, 74};
-;220:static vec3_t	offsetSecond = {-10, 60, 54};
-;221:static vec3_t	offsetThird  = {-19, -60, 45};
-;222:
-;223:static void PodiumPlacementThink( gentity_t *podium ) {
 line 228
-;224:	vec3_t		vec;
-;225:	vec3_t		origin;
-;226:	vec3_t		f, r, u;
+;222:
+;223:
+;224:static vec3_t	offsetFirst  = {0, 0, 74};
+;225:static vec3_t	offsetSecond = {-10, 60, 54};
+;226:static vec3_t	offsetThird  = {-19, -60, 45};
 ;227:
-;228:	podium->nextthink = level.time + 100;
+;228:static void PodiumPlacementThink( gentity_t *podium ) {
+line 233
+;229:	vec3_t		vec;
+;230:	vec3_t		origin;
+;231:	vec3_t		f, r, u;
+;232:
+;233:	podium->nextthink = level.time + 100;
 ADDRFP4 0
 INDIRP4
 CNSTI4 704
@@ -1342,9 +1347,9 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 230
-;229:
-;230:	AngleVectors( level.intermission_angle, vec, NULL, NULL );
+line 235
+;234:
+;235:	AngleVectors( level.intermission_angle, vec, NULL, NULL );
 ADDRGP4 level+9168
 ARGP4
 ADDRLP4 0
@@ -1361,8 +1366,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 231
-;231:	VectorMA( level.intermission_origin, trap_Cvar_VariableIntegerValue( "g_podiumDist" ), vec, origin );
+line 236
+;236:	VectorMA( level.intermission_origin, trap_Cvar_VariableIntegerValue( "g_podiumDist" ), vec, origin );
 ADDRGP4 $140
 ARGP4
 ADDRLP4 64
@@ -1414,8 +1419,8 @@ CVIF4 4
 MULF4
 ADDF4
 ASGNF4
-line 232
-;232:	origin[2] -= trap_Cvar_VariableIntegerValue( "g_podiumDrop" );
+line 237
+;237:	origin[2] -= trap_Cvar_VariableIntegerValue( "g_podiumDrop" );
 ADDRGP4 $150
 ARGP4
 ADDRLP4 76
@@ -1430,8 +1435,8 @@ INDIRI4
 CVIF4 4
 SUBF4
 ASGNF4
-line 233
-;233:	G_SetOrigin( podium, origin );
+line 238
+;238:	G_SetOrigin( podium, origin );
 ADDRFP4 0
 INDIRP4
 ARGP4
@@ -1440,16 +1445,16 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 235
-;234:
-;235:	if( podium1 ) {
+line 240
+;239:
+;240:	if( podium1 ) {
 ADDRGP4 podium1
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $151
-line 236
-;236:		VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
+line 241
+;241:		VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
 ADDRLP4 80
 ADDRFP4 0
 INDIRP4
@@ -1484,8 +1489,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 237
-;237:		vectoangles( vec, podium1->s.apos.trBase );
+line 242
+;242:		vectoangles( vec, podium1->s.apos.trBase );
 ADDRLP4 0
 ARGP4
 ADDRGP4 podium1
@@ -1496,25 +1501,25 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 238
-;238:		podium1->s.apos.trBase[PITCH] = 0;
+line 243
+;243:		podium1->s.apos.trBase[PITCH] = 0;
 ADDRGP4 podium1
 INDIRP4
 CNSTI4 60
 ADDP4
 CNSTF4 0
 ASGNF4
-line 239
-;239:		podium1->s.apos.trBase[ROLL] = 0;
+line 244
+;244:		podium1->s.apos.trBase[ROLL] = 0;
 ADDRGP4 podium1
 INDIRP4
 CNSTI4 68
 ADDP4
 CNSTF4 0
 ASGNF4
-line 241
-;240:
-;241:		AngleVectors( podium1->s.apos.trBase, f, r, u );
+line 246
+;245:
+;246:		AngleVectors( podium1->s.apos.trBase, f, r, u );
 ADDRGP4 podium1
 INDIRP4
 CNSTI4 60
@@ -1529,8 +1534,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 242
-;242:		VectorMA( podium->r.currentOrigin, offsetFirst[0], f, vec );
+line 247
+;247:		VectorMA( podium->r.currentOrigin, offsetFirst[0], f, vec );
 ADDRLP4 84
 ADDRFP4 0
 INDIRP4
@@ -1578,8 +1583,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 243
-;243:		VectorMA( vec, offsetFirst[1], r, vec );
+line 248
+;248:		VectorMA( vec, offsetFirst[1], r, vec );
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -1610,8 +1615,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 244
-;244:		VectorMA( vec, offsetFirst[2], u, vec );
+line 249
+;249:		VectorMA( vec, offsetFirst[2], u, vec );
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -1642,9 +1647,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 246
-;245:
-;246:		G_SetOrigin( podium1, vec );
+line 251
+;250:
+;251:		G_SetOrigin( podium1, vec );
 ADDRGP4 podium1
 INDIRP4
 ARGP4
@@ -1653,19 +1658,19 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 247
-;247:	}
+line 252
+;252:	}
 LABELV $151
-line 249
-;248:
-;249:		if( podium2 ) {
+line 254
+;253:
+;254:		if( podium2 ) {
 ADDRGP4 podium2
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $182
-line 250
-;250:			VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
+line 255
+;255:			VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
 ADDRLP4 80
 ADDRFP4 0
 INDIRP4
@@ -1700,8 +1705,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 251
-;251:			vectoangles( vec, podium2->s.apos.trBase );
+line 256
+;256:			vectoangles( vec, podium2->s.apos.trBase );
 ADDRLP4 0
 ARGP4
 ADDRGP4 podium2
@@ -1712,25 +1717,25 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 252
-;252:			podium2->s.apos.trBase[PITCH] = 0;
+line 257
+;257:			podium2->s.apos.trBase[PITCH] = 0;
 ADDRGP4 podium2
 INDIRP4
 CNSTI4 60
 ADDP4
 CNSTF4 0
 ASGNF4
-line 253
-;253:			podium2->s.apos.trBase[ROLL] = 0;
+line 258
+;258:			podium2->s.apos.trBase[ROLL] = 0;
 ADDRGP4 podium2
 INDIRP4
 CNSTI4 68
 ADDP4
 CNSTF4 0
 ASGNF4
-line 255
-;254:
-;255:			AngleVectors( podium2->s.apos.trBase, f, r, u );
+line 260
+;259:
+;260:			AngleVectors( podium2->s.apos.trBase, f, r, u );
 ADDRGP4 podium2
 INDIRP4
 CNSTI4 60
@@ -1745,8 +1750,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 256
-;256:			VectorMA( podium->r.currentOrigin, offsetSecond[0], f, vec );
+line 261
+;261:			VectorMA( podium->r.currentOrigin, offsetSecond[0], f, vec );
 ADDRLP4 84
 ADDRFP4 0
 INDIRP4
@@ -1794,8 +1799,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 257
-;257:			VectorMA( vec, offsetSecond[1], r, vec );
+line 262
+;262:			VectorMA( vec, offsetSecond[1], r, vec );
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -1826,8 +1831,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 258
-;258:			VectorMA( vec, offsetSecond[2], u, vec );
+line 263
+;263:			VectorMA( vec, offsetSecond[2], u, vec );
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -1858,9 +1863,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 260
-;259:
-;260:			G_SetOrigin( podium2, vec );
+line 265
+;264:
+;265:			G_SetOrigin( podium2, vec );
 ADDRGP4 podium2
 INDIRP4
 ARGP4
@@ -1869,19 +1874,19 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 261
-;261:		}
+line 266
+;266:		}
 LABELV $182
-line 263
-;262:
-;263:		if( podium3 ) {
+line 268
+;267:
+;268:		if( podium3 ) {
 ADDRGP4 podium3
 INDIRP4
 CVPU4 4
 CNSTU4 0
 EQU4 $213
-line 264
-;264:			VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
+line 269
+;269:			VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
 ADDRLP4 80
 ADDRFP4 0
 INDIRP4
@@ -1916,8 +1921,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 265
-;265:			vectoangles( vec, podium3->s.apos.trBase );
+line 270
+;270:			vectoangles( vec, podium3->s.apos.trBase );
 ADDRLP4 0
 ARGP4
 ADDRGP4 podium3
@@ -1928,25 +1933,25 @@ ARGP4
 ADDRGP4 vectoangles
 CALLV
 pop
-line 266
-;266:			podium3->s.apos.trBase[PITCH] = 0;
+line 271
+;271:			podium3->s.apos.trBase[PITCH] = 0;
 ADDRGP4 podium3
 INDIRP4
 CNSTI4 60
 ADDP4
 CNSTF4 0
 ASGNF4
-line 267
-;267:			podium3->s.apos.trBase[ROLL] = 0;
+line 272
+;272:			podium3->s.apos.trBase[ROLL] = 0;
 ADDRGP4 podium3
 INDIRP4
 CNSTI4 68
 ADDP4
 CNSTF4 0
 ASGNF4
-line 269
-;268:
-;269:			AngleVectors( podium3->s.apos.trBase, f, r, u );
+line 274
+;273:
+;274:			AngleVectors( podium3->s.apos.trBase, f, r, u );
 ADDRGP4 podium3
 INDIRP4
 CNSTI4 60
@@ -1961,8 +1966,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 270
-;270:			VectorMA( podium->r.currentOrigin, offsetThird[0], f, vec );
+line 275
+;275:			VectorMA( podium->r.currentOrigin, offsetThird[0], f, vec );
 ADDRLP4 84
 ADDRFP4 0
 INDIRP4
@@ -2010,8 +2015,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 271
-;271:			VectorMA( vec, offsetThird[1], r, vec );
+line 276
+;276:			VectorMA( vec, offsetThird[1], r, vec );
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -2042,8 +2047,8 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 272
-;272:			VectorMA( vec, offsetThird[2], u, vec );
+line 277
+;277:			VectorMA( vec, offsetThird[2], u, vec );
 ADDRLP4 0
 ADDRLP4 0
 INDIRF4
@@ -2074,9 +2079,9 @@ INDIRF4
 MULF4
 ADDF4
 ASGNF4
-line 274
-;273:
-;274:			G_SetOrigin( podium3, vec );
+line 279
+;278:
+;279:			G_SetOrigin( podium3, vec );
 ADDRGP4 podium3
 INDIRP4
 ARGP4
@@ -2085,25 +2090,53 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 275
-;275:		}
+line 280
+;280:		}
 LABELV $213
-line 277
-;276:
-;277:}
+line 282
+;281:
+;282:}
 LABELV $136
 endproc PodiumPlacementThink 92 16
 proc SpawnPodium 68 16
-line 280
-;278:
-;279:
-;280:static gentity_t *SpawnPodium( void ) {
 line 285
-;281:	gentity_t	*podium;
-;282:	vec3_t		vec;
-;283:	vec3_t		origin;
+;283:
 ;284:
-;285:	podium = G_Spawn();
+;285:static gentity_t *SpawnPodium( void ) {
+line 290
+;286:	gentity_t	*podium;
+;287:	vec3_t		vec;
+;288:	vec3_t		origin;
+;289:
+;290:	if(g_GameMode.integer == 2)
+ADDRGP4 g_GameMode+12
+INDIRI4
+CNSTI4 2
+NEI4 $245
+line 291
+;291:	{
+line 292
+;292:		if(level.blueScoreLatched != qtrue)
+ADDRGP4 level+9292
+INDIRI4
+CNSTI4 1
+EQI4 $248
+line 293
+;293:		{
+line 294
+;294:			return NULL;
+CNSTP4 0
+RETP4
+ADDRGP4 $244
+JUMPV
+LABELV $248
+line 296
+;295:		}
+;296:	}
+LABELV $245
+line 298
+;297:
+;298:	podium = G_Spawn();
 ADDRLP4 28
 ADDRGP4 G_Spawn
 CALLP4
@@ -2112,40 +2145,40 @@ ADDRLP4 0
 ADDRLP4 28
 INDIRP4
 ASGNP4
-line 286
-;286:	if ( !podium ) {
+line 299
+;299:	if ( !podium ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $245
-line 287
-;287:		return NULL;
+NEU4 $251
+line 300
+;300:		return NULL;
 CNSTP4 0
 RETP4
 ADDRGP4 $244
 JUMPV
-LABELV $245
-line 290
-;288:	}
-;289:
-;290:	podium->classname = "podium";
+LABELV $251
+line 303
+;301:	}
+;302:
+;303:	podium->classname = "podium";
 ADDRLP4 0
 INDIRP4
 CNSTI4 532
 ADDP4
-ADDRGP4 $247
+ADDRGP4 $253
 ASGNP4
-line 291
-;291:	podium->s.eType = ET_GENERAL;
+line 304
+;304:	podium->s.eType = ET_GENERAL;
 ADDRLP4 0
 INDIRP4
 CNSTI4 4
 ADDP4
 CNSTI4 0
 ASGNI4
-line 292
-;292:	podium->s.number = podium - g_entities;
+line 305
+;305:	podium->s.number = podium - g_entities;
 ADDRLP4 0
 INDIRP4
 ADDRLP4 0
@@ -2158,25 +2191,25 @@ CVUI4 4
 CNSTI4 924
 DIVI4
 ASGNI4
-line 293
-;293:	podium->clipmask = CONTENTS_SOLID;
+line 306
+;306:	podium->clipmask = CONTENTS_SOLID;
 ADDRLP4 0
 INDIRP4
 CNSTI4 580
 ADDP4
 CNSTI4 1
 ASGNI4
-line 294
-;294:	podium->r.contents = CONTENTS_SOLID;
+line 307
+;307:	podium->r.contents = CONTENTS_SOLID;
 ADDRLP4 0
 INDIRP4
 CNSTI4 468
 ADDP4
 CNSTI4 1
 ASGNI4
-line 295
-;295:	podium->s.modelindex = G_ModelIndex( SP_PODIUM_MODEL );
-ADDRGP4 $248
+line 308
+;308:	podium->s.modelindex = G_ModelIndex( SP_PODIUM_MODEL );
+ADDRGP4 $254
 ARGP4
 ADDRLP4 36
 ADDRGP4 G_ModelIndex
@@ -2189,9 +2222,9 @@ ADDP4
 ADDRLP4 36
 INDIRI4
 ASGNI4
-line 297
-;296:
-;297:	AngleVectors( level.intermission_angle, vec, NULL, NULL );
+line 310
+;309:
+;310:	AngleVectors( level.intermission_angle, vec, NULL, NULL );
 ADDRGP4 level+9168
 ARGP4
 ADDRLP4 4
@@ -2208,8 +2241,8 @@ ARGP4
 ADDRGP4 AngleVectors
 CALLV
 pop
-line 298
-;298:	VectorMA( level.intermission_origin, trap_Cvar_VariableIntegerValue( "g_podiumDist" ), vec, origin );
+line 311
+;311:	VectorMA( level.intermission_origin, trap_Cvar_VariableIntegerValue( "g_podiumDist" ), vec, origin );
 ADDRGP4 $140
 ARGP4
 ADDRLP4 44
@@ -2261,8 +2294,8 @@ CVIF4 4
 MULF4
 ADDF4
 ASGNF4
-line 299
-;299:	origin[2] -= trap_Cvar_VariableIntegerValue( "g_podiumDrop" );
+line 312
+;312:	origin[2] -= trap_Cvar_VariableIntegerValue( "g_podiumDrop" );
 ADDRGP4 $150
 ARGP4
 ADDRLP4 56
@@ -2277,8 +2310,8 @@ INDIRI4
 CVIF4 4
 SUBF4
 ASGNF4
-line 300
-;300:	G_SetOrigin( podium, origin );
+line 313
+;313:	G_SetOrigin( podium, origin );
 ADDRLP4 0
 INDIRP4
 ARGP4
@@ -2287,9 +2320,9 @@ ARGP4
 ADDRGP4 G_SetOrigin
 CALLV
 pop
-line 302
-;301:
-;302:	VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
+line 315
+;314:
+;315:	VectorSubtract( level.intermission_origin, podium->r.currentOrigin, vec );
 ADDRLP4 4
 ADDRGP4 level+9156
 INDIRF4
@@ -2320,8 +2353,8 @@ ADDP4
 INDIRF4
 SUBF4
 ASGNF4
-line 303
-;303:	podium->s.apos.trBase[YAW] = vectoyaw( vec );
+line 316
+;316:	podium->s.apos.trBase[YAW] = vectoyaw( vec );
 ADDRLP4 4
 ARGP4
 ADDRLP4 64
@@ -2335,25 +2368,25 @@ ADDP4
 ADDRLP4 64
 INDIRF4
 ASGNF4
-line 304
-;304:	trap_LinkEntity (podium);
+line 317
+;317:	trap_LinkEntity (podium);
 ADDRLP4 0
 INDIRP4
 ARGP4
 ADDRGP4 trap_LinkEntity
 CALLV
 pop
-line 306
-;305:
-;306:	podium->think = PodiumPlacementThink;
+line 319
+;318:
+;319:	podium->think = PodiumPlacementThink;
 ADDRLP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 PodiumPlacementThink
 ASGNP4
-line 307
-;307:	podium->nextthink = level.time + 100;
+line 320
+;320:	podium->nextthink = level.time + 100;
 ADDRLP4 0
 INDIRP4
 CNSTI4 704
@@ -2363,8 +2396,8 @@ INDIRI4
 CNSTI4 100
 ADDI4
 ASGNI4
-line 308
-;308:	return podium;
+line 321
+;321:	return podium;
 ADDRLP4 0
 INDIRP4
 RETP4
@@ -2372,38 +2405,38 @@ LABELV $244
 endproc SpawnPodium 68 16
 export SpawnModelsOnVictoryPads
 proc SpawnModelsOnVictoryPads 24 16
-line 317
-;309:}
-;310:
-;311:
-;312:/*
-;313:==================
-;314:SpawnModelsOnVictoryPads
-;315:==================
-;316:*/
-;317:void SpawnModelsOnVictoryPads( void ) {
-line 321
-;318:	gentity_t	*player;
-;319:	gentity_t	*podium;
-;320:
-;321:	podium1 = NULL;
+line 330
+;322:}
+;323:
+;324:
+;325:/*
+;326:==================
+;327:SpawnModelsOnVictoryPads
+;328:==================
+;329:*/
+;330:void SpawnModelsOnVictoryPads( void ) {
+line 334
+;331:	gentity_t	*player;
+;332:	gentity_t	*podium;
+;333:
+;334:	podium1 = NULL;
 ADDRGP4 podium1
 CNSTP4 0
 ASGNP4
-line 322
-;322:	podium2 = NULL;
+line 335
+;335:	podium2 = NULL;
 ADDRGP4 podium2
 CNSTP4 0
 ASGNP4
-line 323
-;323:	podium3 = NULL;
+line 336
+;336:	podium3 = NULL;
 ADDRGP4 podium3
 CNSTP4 0
 ASGNP4
-line 326
-;324:
-;325:	
-;326:	podium = SpawnPodium();
+line 339
+;337:
+;338:	
+;339:	podium = SpawnPodium();
 ADDRLP4 8
 ADDRGP4 SpawnPodium
 CALLP4
@@ -2412,9 +2445,9 @@ ADDRLP4 4
 ADDRLP4 8
 INDIRP4
 ASGNP4
-line 328
-;327:
-;328:	player = SpawnModelOnVictoryPad( podium, offsetFirst, &g_entities[level.sortedClients[0]],
+line 341
+;340:
+;341:	player = SpawnModelOnVictoryPad( podium, offsetFirst, &g_entities[level.sortedClients[0]],
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2448,16 +2481,16 @@ ADDRLP4 0
 ADDRLP4 12
 INDIRP4
 ASGNP4
-line 330
-;329:				level.clients[ level.sortedClients[0] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
-;330:	if ( player ) {
+line 343
+;342:				level.clients[ level.sortedClients[0] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
+;343:	if ( player ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $271
-line 331
-;331:		player->nextthink = level.time + 2000;
+EQU4 $277
+line 344
+;344:		player->nextthink = level.time + 2000;
 ADDRLP4 0
 INDIRP4
 CNSTI4 704
@@ -2467,26 +2500,26 @@ INDIRI4
 CNSTI4 2000
 ADDI4
 ASGNI4
-line 332
-;332:		player->think = CelebrateStart;
+line 345
+;345:		player->think = CelebrateStart;
 ADDRLP4 0
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 CelebrateStart
 ASGNP4
-line 333
-;333:		podium1 = player;
+line 346
+;346:		podium1 = player;
 ADDRGP4 podium1
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 334
-;334:	}
-LABELV $271
-line 336
-;335:
-;336:	player = SpawnModelOnVictoryPad( podium, offsetSecond, &g_entities[level.sortedClients[1]],
+line 347
+;347:	}
+LABELV $277
+line 349
+;348:
+;349:	player = SpawnModelOnVictoryPad( podium, offsetSecond, &g_entities[level.sortedClients[1]],
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2520,32 +2553,32 @@ ADDRLP4 0
 ADDRLP4 16
 INDIRP4
 ASGNP4
-line 338
-;337:				level.clients[ level.sortedClients[1] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
-;338:	if ( player ) {
+line 351
+;350:				level.clients[ level.sortedClients[1] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
+;351:	if ( player ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $278
-line 339
-;339:		podium2 = player;
+EQU4 $284
+line 352
+;352:		podium2 = player;
 ADDRGP4 podium2
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 340
-;340:	}
-LABELV $278
-line 342
-;341:
-;342:	if ( level.numNonSpectatorClients > 2 )  {
+line 353
+;353:	}
+LABELV $284
+line 355
+;354:
+;355:	if ( level.numNonSpectatorClients > 2 )  {
 ADDRGP4 level+88
 INDIRI4
 CNSTI4 2
-LEI4 $280
-line 343
-;343:		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
+LEI4 $286
+line 356
+;356:		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2579,39 +2612,39 @@ ADDRLP4 0
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 345
-;344:				level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
-;345:		if ( player ) {
+line 358
+;357:				level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
+;358:		if ( player ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $281
-line 346
-;346:			podium3 = player;
+EQU4 $287
+line 359
+;359:			podium3 = player;
 ADDRGP4 podium3
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 347
-;347:		}
-line 348
-;348:	} else if ((g_gametype.integer == GT_FFA) && (level.numConnectedClients > 2)) // Spawn the 3rd person in arsenal... The 3rd person will always be a spec
-ADDRGP4 $281
+line 360
+;360:		}
+line 361
+;361:	} else if ((g_gametype.integer == GT_FFA) && (level.numConnectedClients > 2)) // Spawn the 3rd person in arsenal... The 3rd person will always be a spec
+ADDRGP4 $287
 JUMPV
-LABELV $280
+LABELV $286
 ADDRGP4 g_gametype+12
 INDIRI4
 CNSTI4 0
-NEI4 $289
+NEI4 $295
 ADDRGP4 level+84
 INDIRI4
 CNSTI4 2
-LEI4 $289
-line 349
-;349:	{
-line 350
-;350:		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
+LEI4 $295
+line 362
+;362:	{
+line 363
+;363:		player = SpawnModelOnVictoryPad( podium, offsetThird, &g_entities[level.sortedClients[2]],
 ADDRLP4 4
 INDIRP4
 ARGP4
@@ -2645,59 +2678,59 @@ ADDRLP4 0
 ADDRLP4 20
 INDIRP4
 ASGNP4
-line 352
-;351:		level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
-;352:		if ( player ) {
+line 365
+;364:		level.clients[ level.sortedClients[2] ].ps.persistant[PERS_RANK] &~ RANK_TIED_FLAG );
+;365:		if ( player ) {
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $297
-line 353
-;353:		podium3 = player;
+EQU4 $303
+line 366
+;366:		podium3 = player;
 ADDRGP4 podium3
 ADDRLP4 0
 INDIRP4
 ASGNP4
-line 354
-;354:		}
-LABELV $297
-line 355
-;355:	}
-LABELV $289
-LABELV $281
-line 357
-;356:
-;357:}
-LABELV $268
+line 367
+;367:		}
+LABELV $303
+line 368
+;368:	}
+LABELV $295
+LABELV $287
+line 370
+;369:
+;370:}
+LABELV $274
 endproc SpawnModelsOnVictoryPads 24 16
 export Svcmd_AbortPodium_f
 proc Svcmd_AbortPodium_f 0 0
-line 365
-;358:
-;359:
-;360:/*
-;361:===============
-;362:Svcmd_AbortPodium_f
-;363:===============
-;364:*/
-;365:void Svcmd_AbortPodium_f( void ) {
-line 373
-;366:
-;367:	/* Shafe podium
-;368:	if( g_gametype.integer != GT_SINGLE_PLAYER ) {
-;369:		return;
-;370:	}
-;371:	*/
+line 378
+;371:
 ;372:
-;373:	if( podium1 ) {
+;373:/*
+;374:===============
+;375:Svcmd_AbortPodium_f
+;376:===============
+;377:*/
+;378:void Svcmd_AbortPodium_f( void ) {
+line 386
+;379:
+;380:	/* Shafe podium
+;381:	if( g_gametype.integer != GT_SINGLE_PLAYER ) {
+;382:		return;
+;383:	}
+;384:	*/
+;385:
+;386:	if( podium1 ) {
 ADDRGP4 podium1
 INDIRP4
 CVPU4 4
 CNSTU4 0
-EQU4 $300
-line 374
-;374:		podium1->nextthink = level.time;
+EQU4 $306
+line 387
+;387:		podium1->nextthink = level.time;
 ADDRGP4 podium1
 INDIRP4
 CNSTI4 704
@@ -2705,20 +2738,20 @@ ADDP4
 ADDRGP4 level+32
 INDIRI4
 ASGNI4
-line 375
-;375:		podium1->think = CelebrateStop;
+line 388
+;388:		podium1->think = CelebrateStop;
 ADDRGP4 podium1
 INDIRP4
 CNSTI4 716
 ADDP4
 ADDRGP4 CelebrateStop
 ASGNP4
-line 376
-;376:	}
-LABELV $300
-line 377
-;377:}
-LABELV $299
+line 389
+;389:	}
+LABELV $306
+line 390
+;390:}
+LABELV $305
 endproc Svcmd_AbortPodium_f 0 0
 bss
 export podium3
@@ -2916,6 +2949,8 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_allowDevastator
+import g_allowGrapple
 import g_CurrentRound
 import g_NumRounds
 import g_RegenAmmo
@@ -2924,12 +2959,13 @@ import g_AutoChangeMap
 import g_lastmap2
 import g_lastmap
 import g_randommap
+import g_easymap
 import g_mapfile
 import g_ReverseCTF
-import g_GuassRate
-import g_GuassSelfDamage
-import g_GuassKnockBack
-import g_GuassJump
+import g_GaussRate
+import g_GaussSelfDamage
+import g_GaussKnockBack
+import g_GaussJump
 import g_PCTeamkills
 import g_GrappleMode
 import g_MaxTurrets
@@ -3068,6 +3104,7 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
+import fire_flamer
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -3203,6 +3240,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove
@@ -3364,7 +3402,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $248
+LABELV $254
 byte 1 109
 byte 1 111
 byte 1 100
@@ -3372,38 +3410,39 @@ byte 1 101
 byte 1 108
 byte 1 115
 byte 1 47
-byte 1 109
-byte 1 97
 byte 1 112
 byte 1 111
-byte 1 98
-byte 1 106
+byte 1 119
 byte 1 101
-byte 1 99
-byte 1 116
+byte 1 114
+byte 1 117
+byte 1 112
 byte 1 115
 byte 1 47
-byte 1 112
-byte 1 111
-byte 1 100
 byte 1 105
-byte 1 117
-byte 1 109
+byte 1 110
+byte 1 115
+byte 1 116
+byte 1 97
+byte 1 110
+byte 1 116
 byte 1 47
-byte 1 112
-byte 1 111
-byte 1 100
-byte 1 105
+byte 1 113
 byte 1 117
-byte 1 109
-byte 1 52
+byte 1 97
+byte 1 100
+byte 1 95
+byte 1 114
+byte 1 105
+byte 1 110
+byte 1 103
 byte 1 46
 byte 1 109
 byte 1 100
 byte 1 51
 byte 1 0
 align 1
-LABELV $247
+LABELV $253
 byte 1 112
 byte 1 111
 byte 1 100

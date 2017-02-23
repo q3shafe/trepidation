@@ -3,7 +3,7 @@ code
 proc SP_info_camp 4 8
 file "../g_misc.c"
 line 16
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// g_misc.c
 ;4:
@@ -143,7 +143,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2568
+CNSTI4 2564
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -429,7 +429,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2568
+CNSTI4 2564
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -496,7 +496,7 @@ INDIRP4
 CNSTI4 524
 ADDP4
 INDIRP4
-CNSTI4 2568
+CNSTI4 2564
 ADDP4
 INDIRI4
 CNSTI4 3
@@ -1409,16 +1409,16 @@ INDIRI4
 ASGNI4
 ADDRLP4 56
 INDIRI4
-CNSTI4 4
+CNSTI4 5
 EQI4 $109
 ADDRLP4 56
 INDIRI4
-CNSTI4 5
-EQI4 $110
+CNSTI4 7
+EQI4 $111
 ADDRLP4 56
 INDIRI4
 CNSTI4 8
-EQI4 $111
+EQI4 $110
 ADDRGP4 $106
 JUMPV
 LABELV $109
@@ -1730,7 +1730,7 @@ line 305
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTI4 5
+CNSTI4 8
 ARGI4
 ADDRGP4 InitShooter
 CALLV
@@ -1753,7 +1753,7 @@ line 313
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTI4 8
+CNSTI4 7
 ARGI4
 ADDRGP4 InitShooter
 CALLV
@@ -1776,7 +1776,7 @@ line 321
 ADDRFP4 0
 INDIRP4
 ARGP4
-CNSTI4 4
+CNSTI4 5
 ARGI4
 ADDRGP4 InitShooter
 CALLV
@@ -1952,7 +1952,7 @@ line 361
 LABELV $125
 endproc SP_func_breakable 16 12
 export G_BreakGlass
-proc G_BreakGlass 76 8
+proc G_BreakGlass 68 8
 line 368
 ;362:
 ;363:/*
@@ -2108,42 +2108,35 @@ ADDRLP4 48
 ADDRFP4 8
 INDIRI4
 ASGNI4
-ADDRLP4 52
-CNSTI4 1
-ASGNI4
 ADDRLP4 48
 INDIRI4
-ADDRLP4 52
+CNSTI4 1
+LTI4 $144
+ADDRLP4 48
 INDIRI4
-EQI4 $147
+CNSTI4 9
+GTI4 $144
 ADDRLP4 48
 INDIRI4
 CNSTI4 2
-EQI4 $146
-ADDRLP4 48
-INDIRI4
-CNSTI4 3
-EQI4 $148
-ADDRLP4 48
-INDIRI4
-ADDRLP4 52
-INDIRI4
-LTI4 $144
-LABELV $151
-ADDRLP4 56
-ADDRFP4 8
-INDIRI4
-ASGNI4
-ADDRLP4 56
-INDIRI4
-CNSTI4 10
-EQI4 $149
-ADDRLP4 56
-INDIRI4
-CNSTI4 11
-EQI4 $150
-ADDRGP4 $144
+LSHI4
+ADDRGP4 $151-4
+ADDP4
+INDIRP4
 JUMPV
+lit
+align 4
+LABELV $151
+address $147
+address $146
+address $148
+address $149
+address $144
+address $144
+address $144
+address $144
+address $150
+code
 LABELV $146
 line 386
 ;385: 		case MOD_GAUNTLET:
@@ -2216,21 +2209,21 @@ line 408
 ;406: 	// where the killing bullet hit but wont work with Splash Damage weapons
 ;407: 	// so I just use the center of the glass
 ;408: 	switch( splashdmg ){
-ADDRLP4 60
+ADDRLP4 52
 ADDRLP4 28
 INDIRI4
 ASGNI4
-ADDRLP4 60
+ADDRLP4 52
 INDIRI4
 CNSTI4 0
-EQI4 $156
-ADDRLP4 60
+EQI4 $157
+ADDRLP4 52
 INDIRI4
 CNSTI4 1
-EQI4 $155
-ADDRGP4 $152
+EQI4 $156
+ADDRGP4 $153
 JUMPV
-LABELV $155
+LABELV $156
 line 410
 ;409: 	case qtrue:
 ;410:     tent = G_TempEntity( center, EV_BREAK_GLASS );
@@ -2238,19 +2231,19 @@ ADDRLP4 12
 ARGP4
 CNSTI4 72
 ARGI4
-ADDRLP4 68
+ADDRLP4 60
 ADDRGP4 G_TempEntity
 CALLP4
 ASGNP4
 ADDRLP4 24
-ADDRLP4 68
+ADDRLP4 60
 INDIRP4
 ASGNP4
 line 411
 ;411: 	break;
-ADDRGP4 $153
+ADDRGP4 $154
 JUMPV
-LABELV $156
+LABELV $157
 line 413
 ;412: 	case qfalse:
 ;413:     tent = G_TempEntity( point, EV_BREAK_GLASS );
@@ -2259,18 +2252,18 @@ INDIRP4
 ARGP4
 CNSTI4 72
 ARGI4
-ADDRLP4 72
+ADDRLP4 64
 ADDRGP4 G_TempEntity
 CALLP4
 ASGNP4
 ADDRLP4 24
-ADDRLP4 72
+ADDRLP4 64
 INDIRP4
 ASGNP4
 line 414
 ;414: 	break;
-LABELV $152
 LABELV $153
+LABELV $154
 line 416
 ;415: 	}
 ;416: 	tent->s.eventParm = 0;
@@ -2286,7 +2279,7 @@ LABELV $142
 line 418
 ;418: }
 LABELV $131
-endproc G_BreakGlass 76 8
+endproc G_BreakGlass 68 8
 import CheckPlayerPostions
 import G_SendCommandToClient
 import visible
@@ -2470,6 +2463,8 @@ import trap_Milliseconds
 import trap_Error
 import trap_Printf
 import trep_debug
+import g_allowDevastator
+import g_allowGrapple
 import g_CurrentRound
 import g_NumRounds
 import g_RegenAmmo
@@ -2478,12 +2473,13 @@ import g_AutoChangeMap
 import g_lastmap2
 import g_lastmap
 import g_randommap
+import g_easymap
 import g_mapfile
 import g_ReverseCTF
-import g_GuassRate
-import g_GuassSelfDamage
-import g_GuassKnockBack
-import g_GuassJump
+import g_GaussRate
+import g_GaussSelfDamage
+import g_GaussKnockBack
+import g_GaussJump
 import g_PCTeamkills
 import g_GrappleMode
 import g_MaxTurrets
@@ -2625,6 +2621,7 @@ import FindIntermissionPoint
 import DeathmatchScoreboardMessage
 import G_SetStats
 import MoveClientToIntermission
+import fire_flamer
 import FireWeapon2
 import FireWeapon
 import G_FilterPacket
@@ -2758,6 +2755,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

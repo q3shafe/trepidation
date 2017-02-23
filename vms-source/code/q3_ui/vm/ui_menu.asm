@@ -2,7 +2,7 @@ code
 proc MainMenu_ExitAction 0 0
 file "../ui_menu.c"
 line 72
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:/*
 ;4:=======================================================================
@@ -689,7 +689,7 @@ ADDRGP4 UI_DrawProportionalString
 CALLV
 pop
 line 224
-;224:		UI_DrawString( 320, 400, "Tredpidation (c)2016, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
+;224:		UI_DrawString( 320, 400, "Tredpidation (c)2006-2017, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
 CNSTI4 320
 ARGI4
 CNSTI4 400
@@ -709,7 +709,7 @@ ADDRGP4 $129
 JUMPV
 LABELV $128
 line 226
-;226:		UI_DrawString( 320, 450, "Tredpidation (c)2016, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
+;226:		UI_DrawString( 320, 450, "Tredpidation (c)2006-2017, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
 CNSTI4 320
 ARGI4
 CNSTI4 450
@@ -3326,6 +3326,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove
@@ -4102,8 +4103,13 @@ byte 1 99
 byte 1 41
 byte 1 50
 byte 1 48
-byte 1 49
+byte 1 48
 byte 1 54
+byte 1 45
+byte 1 50
+byte 1 48
+byte 1 49
+byte 1 55
 byte 1 44
 byte 1 32
 byte 1 84

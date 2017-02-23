@@ -3,7 +3,7 @@ code
 proc CG_TargetCommand_f 20 12
 file "../cg_consolecmds.c"
 line 14
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_consolecmds.c -- text commands typed in at the local console, or
 ;4:// executed by a key binding
@@ -1863,6 +1863,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

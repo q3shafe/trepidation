@@ -2,7 +2,7 @@ code
 proc CG_ResetEntity 8 4
 file "../cg_snapshot.c"
 line 15
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_snapshot.c -- things that happen on snapshot transition,
 ;4:// not necessarily every single rendered frame
@@ -2124,6 +2124,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove

@@ -8,7 +8,7 @@ code
 proc vmMain 16 12
 file "../cg_main.c"
 line 26
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_main.c -- initialization and primary entry point for cgame
 ;4:#include "cg_local.h"
@@ -2874,7 +2874,7 @@ INDIRI4
 ASGNI4
 line 719
 ;718:
-;719:	cgs.media.talkSound = trap_S_RegisterSound( "sound/player/talk.wav", qfalse );
+;719:	cgs.media.talkSound = trap_S_RegisterSound( "sound/player/talk.ogg", qfalse );
 ADDRGP4 $465
 ARGP4
 CNSTI4 0
@@ -2888,7 +2888,7 @@ ADDRLP4 440
 INDIRI4
 ASGNI4
 line 720
-;720:	cgs.media.landSound = trap_S_RegisterSound( "sound/player/land1.wav", qfalse);
+;720:	cgs.media.landSound = trap_S_RegisterSound( "sound/player/land1.ogg", qfalse);
 ADDRGP4 $468
 ARGP4
 CNSTI4 0
@@ -7998,6 +7998,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove
@@ -12092,9 +12093,9 @@ byte 1 110
 byte 1 100
 byte 1 49
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $465
@@ -12116,9 +12117,9 @@ byte 1 97
 byte 1 108
 byte 1 107
 byte 1 46
-byte 1 119
-byte 1 97
-byte 1 118
+byte 1 111
+byte 1 103
+byte 1 103
 byte 1 0
 align 1
 LABELV $462
@@ -13686,11 +13687,11 @@ byte 1 108
 byte 1 0
 align 1
 LABELV $222
-byte 1 115
+byte 1 109
 byte 1 97
+byte 1 106
+byte 1 111
 byte 1 114
-byte 1 103
-byte 1 101
 byte 1 0
 align 1
 LABELV $221

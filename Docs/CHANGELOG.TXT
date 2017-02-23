@@ -44,6 +44,11 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+
+================================
+02-23-2017 Dev Build
+================================
+
 - More bot updates
 
 - Fixed server info screen, it was a mess and unreadable.

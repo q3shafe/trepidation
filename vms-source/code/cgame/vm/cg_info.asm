@@ -3,7 +3,7 @@ code
 proc cgrandom 8 0
 file "../cg_info.c"
 line 17
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:// cg_info.c -- display information while data is being loading
 ;4:
@@ -2238,6 +2238,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove
@@ -2917,11 +2918,11 @@ byte 1 110
 byte 1 0
 align 1
 LABELV $108
-byte 1 115
+byte 1 109
 byte 1 97
+byte 1 106
+byte 1 111
 byte 1 114
-byte 1 103
-byte 1 101
 byte 1 0
 align 1
 LABELV $105

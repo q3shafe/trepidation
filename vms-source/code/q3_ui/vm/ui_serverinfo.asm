@@ -11,7 +11,7 @@ code
 proc Favorites_Add 276 12
 file "../ui_serverinfo.c"
 line 45
-;1:// 2016 Trepidation Licensed under the GPL2
+;1:// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 ;2://
 ;3:#include "ui_local.h"
 ;4:
@@ -309,7 +309,7 @@ line 99
 ;99:}
 LABELV $90
 endproc ServerInfo_Event 8 0
-proc ServerInfo_MenuDraw 2056 20
+proc ServerInfo_MenuDraw 2060 20
 line 107
 ;100:
 ;101:/*
@@ -319,13 +319,18 @@ line 107
 ;105:*/
 ;106:static void ServerInfo_MenuDraw( void )
 ;107:{
-line 113
+line 112
 ;108:	const char		*s;
 ;109:	char			key[MAX_INFO_KEY];
 ;110:	char			value[MAX_INFO_VALUE];
 ;111:	int				y;
-;112:
-;113:	y = SCREEN_HEIGHT/2 - s_serverinfo.numlines*(SMALLCHAR_HEIGHT)/2 - 20;
+;112:	int				x=0;
+ADDRLP4 1032
+CNSTI4 0
+ASGNI4
+line 114
+;113:
+;114:	y = SCREEN_HEIGHT/2 - s_serverinfo.numlines*(SMALLCHAR_HEIGHT)/2 - 20;
 ADDRLP4 1024
 CNSTI4 240
 ADDRGP4 s_serverinfo+1720
@@ -338,43 +343,43 @@ SUBI4
 CNSTI4 20
 SUBI4
 ASGNI4
-line 114
-;114:	s = s_serverinfo.info;
+line 115
+;115:	s = s_serverinfo.info;
 ADDRLP4 1028
 ADDRGP4 s_serverinfo+696
 ASGNP4
 ADDRGP4 $104
 JUMPV
 LABELV $103
-line 115
-;115:	while ( s ) {
 line 116
-;116:		Info_NextPair( &s, key, value );
+;116:	while ( s ) {
+line 117
+;117:		Info_NextPair( &s, key, value );
 ADDRLP4 1028
 ARGP4
 ADDRLP4 0
 ARGP4
-ADDRLP4 1032
+ADDRLP4 1036
 ARGP4
 ADDRGP4 Info_NextPair
 CALLV
 pop
-line 117
-;117:		if ( !key[0] ) {
+line 118
+;118:		if ( !key[0] ) {
 ADDRLP4 0
 INDIRI1
 CVII4 1
 CNSTI4 0
 NEI4 $106
-line 118
-;118:			break;
+line 119
+;119:			break;
 ADDRGP4 $105
 JUMPV
 LABELV $106
-line 121
-;119:		}
-;120:
-;121:		Q_strcat( key, MAX_INFO_KEY, ":" ); 
+line 122
+;120:		}
+;121:
+;122:		Q_strcat( key, MAX_INFO_KEY, ":" ); 
 ADDRLP4 0
 ARGP4
 CNSTI4 1024
@@ -384,9 +389,9 @@ ARGP4
 ADDRGP4 Q_strcat
 CALLV
 pop
-line 123
-;122:
-;123:		UI_DrawString(SCREEN_WIDTH*0.50 - 8,y,key,UI_RIGHT|UI_SMALLFONT,color_red);
+line 124
+;123:
+;124:		UI_DrawString(SCREEN_WIDTH*0.50 - 8,y,key,UI_RIGHT|UI_SMALLFONT,color_red);
 CNSTI4 312
 ARGI4
 ADDRLP4 1024
@@ -401,14 +406,14 @@ ARGP4
 ADDRGP4 UI_DrawString
 CALLV
 pop
-line 124
-;124:		UI_DrawString(SCREEN_WIDTH*0.50 + 8,y,value,UI_LEFT|UI_SMALLFONT,text_color_normal);
+line 125
+;125:		UI_DrawString(SCREEN_WIDTH*0.50 + 8,y,value,UI_LEFT|UI_SMALLFONT,text_color_normal);
 CNSTI4 328
 ARGI4
 ADDRLP4 1024
 INDIRI4
 ARGI4
-ADDRLP4 1032
+ADDRLP4 1036
 ARGP4
 CNSTI4 16
 ARGI4
@@ -417,49 +422,67 @@ ARGP4
 ADDRGP4 UI_DrawString
 CALLV
 pop
-line 126
-;125:
-;126:		y += SMALLCHAR_HEIGHT;
+line 127
+;126:
+;127:		y += SMALLCHAR_HEIGHT;
 ADDRLP4 1024
 ADDRLP4 1024
 INDIRI4
 CNSTI4 16
 ADDI4
 ASGNI4
-line 127
-;127:	}
+line 129
+;128:
+;129:		x++;
+ADDRLP4 1032
+ADDRLP4 1032
+INDIRI4
+CNSTI4 1
+ADDI4
+ASGNI4
+line 130
+;130:		if (x>20) { break; } // Don't show more than 20.. gets messy and goes off the screen // shafe trep
+ADDRLP4 1032
+INDIRI4
+CNSTI4 20
+LEI4 $109
+ADDRGP4 $105
+JUMPV
+LABELV $109
+line 131
+;131:	}
 LABELV $104
-line 115
+line 116
 ADDRLP4 1028
 INDIRP4
 CVPU4 4
 CNSTU4 0
 NEU4 $103
 LABELV $105
-line 129
-;128:
-;129:	Menu_Draw( &s_serverinfo.menu );
+line 133
+;132:
+;133:	Menu_Draw( &s_serverinfo.menu );
 ADDRGP4 s_serverinfo
 ARGP4
 ADDRGP4 Menu_Draw
 CALLV
 pop
-line 130
-;130:}
+line 134
+;134:}
 LABELV $100
-endproc ServerInfo_MenuDraw 2056 20
+endproc ServerInfo_MenuDraw 2060 20
 proc ServerInfo_MenuKey 4 8
-line 138
-;131:
-;132:/*
-;133:=================
-;134:ServerInfo_MenuKey
-;135:=================
-;136:*/
-;137:static sfxHandle_t ServerInfo_MenuKey( int key )
-;138:{
-line 139
-;139:	return ( Menu_DefaultKey( &s_serverinfo.menu, key ) );
+line 142
+;135:
+;136:/*
+;137:=================
+;138:ServerInfo_MenuKey
+;139:=================
+;140:*/
+;141:static sfxHandle_t ServerInfo_MenuKey( int key )
+;142:{
+line 143
+;143:	return ( Menu_DefaultKey( &s_serverinfo.menu, key ) );
 ADDRGP4 s_serverinfo
 ARGP4
 ADDRFP4 0
@@ -472,33 +495,33 @@ ASGNI4
 ADDRLP4 0
 INDIRI4
 RETI4
-LABELV $109
+LABELV $111
 endproc ServerInfo_MenuKey 4 8
 export ServerInfo_Cache
 proc ServerInfo_Cache 4 4
-line 148
-;140:}
-;141:
-;142:/*
-;143:=================
-;144:ServerInfo_Cache
-;145:=================
-;146:*/
-;147:void ServerInfo_Cache( void )
-;148:{
 line 152
-;149:	int	i;
-;150:
-;151:	// touch all our pics
-;152:	for (i=0; ;i++)
+;144:}
+;145:
+;146:/*
+;147:=================
+;148:ServerInfo_Cache
+;149:=================
+;150:*/
+;151:void ServerInfo_Cache( void )
+;152:{
+line 156
+;153:	int	i;
+;154:
+;155:	// touch all our pics
+;156:	for (i=0; ;i++)
 ADDRLP4 0
 CNSTI4 0
 ASGNI4
-LABELV $111
-line 153
-;153:	{
-line 154
-;154:		if (!serverinfo_artlist[i])
+LABELV $113
+line 157
+;157:	{
+line 158
+;158:		if (!serverinfo_artlist[i])
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -508,14 +531,14 @@ ADDP4
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $115
-line 155
-;155:			break;
-ADDRGP4 $113
+NEU4 $117
+line 159
+;159:			break;
+ADDRGP4 $115
 JUMPV
-LABELV $115
-line 156
-;156:		trap_R_RegisterShaderNoMip(serverinfo_artlist[i]);
+LABELV $117
+line 160
+;160:		trap_R_RegisterShaderNoMip(serverinfo_artlist[i]);
 ADDRLP4 0
 INDIRI4
 CNSTI4 2
@@ -527,41 +550,41 @@ ARGP4
 ADDRGP4 trap_R_RegisterShaderNoMip
 CALLI4
 pop
-line 157
-;157:	}
-LABELV $112
-line 152
+line 161
+;161:	}
+LABELV $114
+line 156
 ADDRLP4 0
 ADDRLP4 0
 INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-ADDRGP4 $111
+ADDRGP4 $113
 JUMPV
-LABELV $113
-line 158
-;158:}
-LABELV $110
+LABELV $115
+line 162
+;162:}
+LABELV $112
 endproc ServerInfo_Cache 4 4
 export UI_ServerInfoMenu
 proc UI_ServerInfoMenu 2060 12
-line 166
-;159:
-;160:/*
-;161:=================
-;162:UI_ServerInfoMenu
-;163:=================
-;164:*/
-;165:void UI_ServerInfoMenu( void )
-;166:{
-line 172
-;167:	const char		*s;
-;168:	char			key[MAX_INFO_KEY];
-;169:	char			value[MAX_INFO_VALUE];
-;170:
-;171:	// zero set all our globals
-;172:	memset( &s_serverinfo, 0 ,sizeof(serverinfo_t) );
+line 170
+;163:
+;164:/*
+;165:=================
+;166:UI_ServerInfoMenu
+;167:=================
+;168:*/
+;169:void UI_ServerInfoMenu( void )
+;170:{
+line 176
+;171:	const char		*s;
+;172:	char			key[MAX_INFO_KEY];
+;173:	char			value[MAX_INFO_VALUE];
+;174:
+;175:	// zero set all our globals
+;176:	memset( &s_serverinfo, 0 ,sizeof(serverinfo_t) );
 ADDRGP4 s_serverinfo
 ARGP4
 CNSTI4 0
@@ -571,185 +594,185 @@ ARGI4
 ADDRGP4 memset
 CALLP4
 pop
-line 174
-;173:
-;174:	ServerInfo_Cache();
+line 178
+;177:
+;178:	ServerInfo_Cache();
 ADDRGP4 ServerInfo_Cache
 CALLV
 pop
-line 176
-;175:
-;176:	s_serverinfo.menu.draw       = ServerInfo_MenuDraw;
+line 180
+;179:
+;180:	s_serverinfo.menu.draw       = ServerInfo_MenuDraw;
 ADDRGP4 s_serverinfo+268
 ADDRGP4 ServerInfo_MenuDraw
 ASGNP4
-line 177
-;177:	s_serverinfo.menu.key        = ServerInfo_MenuKey;
+line 181
+;181:	s_serverinfo.menu.key        = ServerInfo_MenuKey;
 ADDRGP4 s_serverinfo+272
 ADDRGP4 ServerInfo_MenuKey
 ASGNP4
-line 178
-;178:	s_serverinfo.menu.wrapAround = qtrue;
+line 182
+;182:	s_serverinfo.menu.wrapAround = qtrue;
 ADDRGP4 s_serverinfo+276
 CNSTI4 1
 ASGNI4
-line 179
-;179:	s_serverinfo.menu.fullscreen = qtrue;
+line 183
+;183:	s_serverinfo.menu.fullscreen = qtrue;
 ADDRGP4 s_serverinfo+280
 CNSTI4 1
 ASGNI4
-line 181
-;180:
-;181:	s_serverinfo.banner.generic.type  = MTYPE_BTEXT;
+line 185
+;184:
+;185:	s_serverinfo.banner.generic.type  = MTYPE_BTEXT;
 ADDRGP4 s_serverinfo+288
 CNSTI4 10
 ASGNI4
-line 182
-;182:	s_serverinfo.banner.generic.x	  = 320;
+line 186
+;186:	s_serverinfo.banner.generic.x	  = 320;
 ADDRGP4 s_serverinfo+288+12
 CNSTI4 320
 ASGNI4
-line 183
-;183:	s_serverinfo.banner.generic.y	  = 16;
+line 187
+;187:	s_serverinfo.banner.generic.y	  = 16;
 ADDRGP4 s_serverinfo+288+16
 CNSTI4 16
 ASGNI4
-line 184
-;184:	s_serverinfo.banner.string		  = "SERVER INFO";
+line 188
+;188:	s_serverinfo.banner.string		  = "SERVER INFO";
 ADDRGP4 s_serverinfo+288+60
-ADDRGP4 $129
+ADDRGP4 $131
 ASGNP4
-line 185
-;185:	s_serverinfo.banner.color	      = color_white;
+line 189
+;189:	s_serverinfo.banner.color	      = color_white;
 ADDRGP4 s_serverinfo+288+68
 ADDRGP4 color_white
 ASGNP4
-line 186
-;186:	s_serverinfo.banner.style	      = UI_CENTER;
+line 190
+;190:	s_serverinfo.banner.style	      = UI_CENTER;
 ADDRGP4 s_serverinfo+288+64
 CNSTI4 1
 ASGNI4
-line 188
-;187:
-;188:	s_serverinfo.framel.generic.type  = MTYPE_BITMAP;
+line 192
+;191:
+;192:	s_serverinfo.framel.generic.type  = MTYPE_BITMAP;
 ADDRGP4 s_serverinfo+360
 CNSTI4 6
 ASGNI4
-line 189
-;189:	s_serverinfo.framel.generic.name  = SERVERINFO_FRAMEL;
+line 193
+;193:	s_serverinfo.framel.generic.name  = SERVERINFO_FRAMEL;
 ADDRGP4 s_serverinfo+360+4
 ADDRGP4 $69
 ASGNP4
-line 190
-;190:	s_serverinfo.framel.generic.flags = QMF_INACTIVE;
+line 194
+;194:	s_serverinfo.framel.generic.flags = QMF_INACTIVE;
 ADDRGP4 s_serverinfo+360+44
 CNSTU4 16384
 ASGNU4
-line 191
-;191:	s_serverinfo.framel.generic.x	  = 0;  
+line 195
+;195:	s_serverinfo.framel.generic.x	  = 0;  
 ADDRGP4 s_serverinfo+360+12
 CNSTI4 0
 ASGNI4
-line 192
-;192:	s_serverinfo.framel.generic.y	  = 78;
+line 196
+;196:	s_serverinfo.framel.generic.y	  = 78;
 ADDRGP4 s_serverinfo+360+16
 CNSTI4 78
 ASGNI4
-line 193
-;193:	s_serverinfo.framel.width  	      = 256;
+line 197
+;197:	s_serverinfo.framel.width  	      = 256;
 ADDRGP4 s_serverinfo+360+76
 CNSTI4 256
 ASGNI4
-line 194
-;194:	s_serverinfo.framel.height  	  = 329;
+line 198
+;198:	s_serverinfo.framel.height  	  = 329;
 ADDRGP4 s_serverinfo+360+80
 CNSTI4 329
 ASGNI4
-line 196
-;195:
-;196:	s_serverinfo.framer.generic.type  = MTYPE_BITMAP;
+line 200
+;199:
+;200:	s_serverinfo.framer.generic.type  = MTYPE_BITMAP;
 ADDRGP4 s_serverinfo+448
 CNSTI4 6
 ASGNI4
-line 197
-;197:	s_serverinfo.framer.generic.name  = SERVERINFO_FRAMER;
+line 201
+;201:	s_serverinfo.framer.generic.name  = SERVERINFO_FRAMER;
 ADDRGP4 s_serverinfo+448+4
 ADDRGP4 $70
 ASGNP4
-line 198
-;198:	s_serverinfo.framer.generic.flags = QMF_INACTIVE;
+line 202
+;202:	s_serverinfo.framer.generic.flags = QMF_INACTIVE;
 ADDRGP4 s_serverinfo+448+44
 CNSTU4 16384
 ASGNU4
-line 199
-;199:	s_serverinfo.framer.generic.x	  = 376;
+line 203
+;203:	s_serverinfo.framer.generic.x	  = 376;
 ADDRGP4 s_serverinfo+448+12
 CNSTI4 376
 ASGNI4
-line 200
-;200:	s_serverinfo.framer.generic.y	  = 76;
+line 204
+;204:	s_serverinfo.framer.generic.y	  = 76;
 ADDRGP4 s_serverinfo+448+16
 CNSTI4 76
 ASGNI4
-line 201
-;201:	s_serverinfo.framer.width  	      = 256;
+line 205
+;205:	s_serverinfo.framer.width  	      = 256;
 ADDRGP4 s_serverinfo+448+76
 CNSTI4 256
 ASGNI4
-line 202
-;202:	s_serverinfo.framer.height  	  = 334;
+line 206
+;206:	s_serverinfo.framer.height  	  = 334;
 ADDRGP4 s_serverinfo+448+80
 CNSTI4 334
 ASGNI4
-line 204
-;203:
-;204:	s_serverinfo.add.generic.type	  = MTYPE_PTEXT;
+line 208
+;207:
+;208:	s_serverinfo.add.generic.type	  = MTYPE_PTEXT;
 ADDRGP4 s_serverinfo+624
 CNSTI4 9
 ASGNI4
-line 205
-;205:	s_serverinfo.add.generic.flags    = QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+line 209
+;209:	s_serverinfo.add.generic.flags    = QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_serverinfo+624+44
 CNSTU4 264
 ASGNU4
-line 206
-;206:	s_serverinfo.add.generic.callback = ServerInfo_Event;
+line 210
+;210:	s_serverinfo.add.generic.callback = ServerInfo_Event;
 ADDRGP4 s_serverinfo+624+48
 ADDRGP4 ServerInfo_Event
 ASGNP4
-line 207
-;207:	s_serverinfo.add.generic.id	      = ID_ADD;
+line 211
+;211:	s_serverinfo.add.generic.id	      = ID_ADD;
 ADDRGP4 s_serverinfo+624+8
 CNSTI4 100
 ASGNI4
-line 208
-;208:	s_serverinfo.add.generic.x		  = 320;
+line 212
+;212:	s_serverinfo.add.generic.x		  = 380;
 ADDRGP4 s_serverinfo+624+12
-CNSTI4 320
+CNSTI4 380
 ASGNI4
-line 209
-;209:	s_serverinfo.add.generic.y		  = 371;
+line 213
+;213:	s_serverinfo.add.generic.y		  = 431;
 ADDRGP4 s_serverinfo+624+16
-CNSTI4 371
+CNSTI4 431
 ASGNI4
-line 210
-;210:	s_serverinfo.add.string  		  = "ADD TO FAVORITES";
+line 214
+;214:	s_serverinfo.add.string  		  = "ADD TO FAVORITES";
 ADDRGP4 s_serverinfo+624+60
-ADDRGP4 $173
+ADDRGP4 $175
 ASGNP4
-line 211
-;211:	s_serverinfo.add.style  		  = UI_CENTER|UI_SMALLFONT;
+line 215
+;215:	s_serverinfo.add.style  		  = UI_CENTER|UI_SMALLFONT;
 ADDRGP4 s_serverinfo+624+64
 CNSTI4 17
 ASGNI4
-line 212
-;212:	s_serverinfo.add.color			  =	color_red;
+line 216
+;216:	s_serverinfo.add.color			  =	color_red;
 ADDRGP4 s_serverinfo+624+68
 ADDRGP4 color_red
 ASGNP4
-line 213
-;213:	if( trap_Cvar_VariableValue( "sv_running" ) ) {
-ADDRGP4 $180
+line 217
+;217:	if( trap_Cvar_VariableValue( "sv_running" ) ) {
+ADDRGP4 $182
 ARGP4
 ADDRLP4 2052
 ADDRGP4 trap_Cvar_VariableValue
@@ -758,9 +781,9 @@ ASGNF4
 ADDRLP4 2052
 INDIRF4
 CNSTF4 0
-EQF4 $178
-line 214
-;214:		s_serverinfo.add.generic.flags |= QMF_GRAYED;
+EQF4 $180
+line 218
+;218:		s_serverinfo.add.generic.flags |= QMF_GRAYED;
 ADDRLP4 2056
 ADDRGP4 s_serverinfo+624+44
 ASGNP4
@@ -772,63 +795,63 @@ INDIRU4
 CNSTU4 8192
 BORU4
 ASGNU4
-line 215
-;215:	}
-LABELV $178
-line 217
-;216:
-;217:	s_serverinfo.back.generic.type	   = MTYPE_BITMAP;
+line 219
+;219:	}
+LABELV $180
+line 221
+;220:
+;221:	s_serverinfo.back.generic.type	   = MTYPE_BITMAP;
 ADDRGP4 s_serverinfo+536
 CNSTI4 6
 ASGNI4
-line 218
-;218:	s_serverinfo.back.generic.name     = SERVERINFO_BACK0;
+line 222
+;222:	s_serverinfo.back.generic.name     = SERVERINFO_BACK0;
 ADDRGP4 s_serverinfo+536+4
 ADDRGP4 $71
 ASGNP4
-line 219
-;219:	s_serverinfo.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
+line 223
+;223:	s_serverinfo.back.generic.flags    = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
 ADDRGP4 s_serverinfo+536+44
 CNSTU4 260
 ASGNU4
-line 220
-;220:	s_serverinfo.back.generic.callback = ServerInfo_Event;
+line 224
+;224:	s_serverinfo.back.generic.callback = ServerInfo_Event;
 ADDRGP4 s_serverinfo+536+48
 ADDRGP4 ServerInfo_Event
 ASGNP4
-line 221
-;221:	s_serverinfo.back.generic.id	   = ID_BACK;
+line 225
+;225:	s_serverinfo.back.generic.id	   = ID_BACK;
 ADDRGP4 s_serverinfo+536+8
 CNSTI4 101
 ASGNI4
-line 222
-;222:	s_serverinfo.back.generic.x		   = 0;
+line 226
+;226:	s_serverinfo.back.generic.x		   = 0;
 ADDRGP4 s_serverinfo+536+12
 CNSTI4 0
 ASGNI4
-line 223
-;223:	s_serverinfo.back.generic.y		   = 480-64;
+line 227
+;227:	s_serverinfo.back.generic.y		   = 480-64;
 ADDRGP4 s_serverinfo+536+16
 CNSTI4 416
 ASGNI4
-line 224
-;224:	s_serverinfo.back.width  		   = 128;
+line 228
+;228:	s_serverinfo.back.width  		   = 128;
 ADDRGP4 s_serverinfo+536+76
 CNSTI4 128
 ASGNI4
-line 225
-;225:	s_serverinfo.back.height  		   = 64;
+line 229
+;229:	s_serverinfo.back.height  		   = 64;
 ADDRGP4 s_serverinfo+536+80
 CNSTI4 64
 ASGNI4
-line 226
-;226:	s_serverinfo.back.focuspic         = SERVERINFO_BACK1;
+line 230
+;230:	s_serverinfo.back.focuspic         = SERVERINFO_BACK1;
 ADDRGP4 s_serverinfo+536+60
 ADDRGP4 $72
 ASGNP4
-line 228
-;227:
-;228:	trap_GetConfigString( CS_SERVERINFO, s_serverinfo.info, MAX_INFO_STRING );
+line 232
+;231:
+;232:	trap_GetConfigString( CS_SERVERINFO, s_serverinfo.info, MAX_INFO_STRING );
 CNSTI4 0
 ARGI4
 ADDRGP4 s_serverinfo+696
@@ -838,24 +861,24 @@ ARGI4
 ADDRGP4 trap_GetConfigString
 CALLI4
 pop
-line 230
-;229:
-;230:	s_serverinfo.numlines = 0;
+line 234
+;233:
+;234:	s_serverinfo.numlines = 0;
 ADDRGP4 s_serverinfo+1720
 CNSTI4 0
 ASGNI4
-line 231
-;231:	s = s_serverinfo.info;
+line 235
+;235:	s = s_serverinfo.info;
 ADDRLP4 0
 ADDRGP4 s_serverinfo+696
 ASGNP4
-ADDRGP4 $206
+ADDRGP4 $208
 JUMPV
-LABELV $205
-line 232
-;232:	while ( s ) {
-line 233
-;233:		Info_NextPair( &s, key, value );
+LABELV $207
+line 236
+;236:	while ( s ) {
+line 237
+;237:		Info_NextPair( &s, key, value );
 ADDRLP4 0
 ARGP4
 ADDRLP4 4
@@ -865,21 +888,21 @@ ARGP4
 ADDRGP4 Info_NextPair
 CALLV
 pop
-line 234
-;234:		if ( !key[0] ) {
+line 238
+;238:		if ( !key[0] ) {
 ADDRLP4 4
 INDIRI1
 CVII4 1
 CNSTI4 0
-NEI4 $208
-line 235
-;235:			break;
-ADDRGP4 $207
+NEI4 $210
+line 239
+;239:			break;
+ADDRGP4 $209
 JUMPV
-LABELV $208
-line 237
-;236:		}
-;237:		s_serverinfo.numlines++;
+LABELV $210
+line 241
+;240:		}
+;241:		s_serverinfo.numlines++;
 ADDRLP4 2056
 ADDRGP4 s_serverinfo+1720
 ASGNP4
@@ -891,32 +914,32 @@ INDIRI4
 CNSTI4 1
 ADDI4
 ASGNI4
-line 238
-;238:	}
-LABELV $206
-line 232
+line 242
+;242:	}
+LABELV $208
+line 236
 ADDRLP4 0
 INDIRP4
 CVPU4 4
 CNSTU4 0
-NEU4 $205
-LABELV $207
-line 240
-;239:
-;240:	if (s_serverinfo.numlines > 16)
+NEU4 $207
+LABELV $209
+line 244
+;243:
+;244:	if (s_serverinfo.numlines > 16)
 ADDRGP4 s_serverinfo+1720
 INDIRI4
 CNSTI4 16
-LEI4 $211
-line 241
-;241:		s_serverinfo.numlines = 16;
+LEI4 $213
+line 245
+;245:		s_serverinfo.numlines = 16;
 ADDRGP4 s_serverinfo+1720
 CNSTI4 16
 ASGNI4
-LABELV $211
-line 243
-;242:
-;243:	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.banner );
+LABELV $213
+line 247
+;246:
+;247:	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.banner );
 ADDRGP4 s_serverinfo
 ARGP4
 ADDRGP4 s_serverinfo+288
@@ -924,26 +947,10 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 244
-;244:	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.framel );
-ADDRGP4 s_serverinfo
-ARGP4
-ADDRGP4 s_serverinfo+360
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
-line 245
-;245:	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.framer );
-ADDRGP4 s_serverinfo
-ARGP4
-ADDRGP4 s_serverinfo+448
-ARGP4
-ADDRGP4 Menu_AddItem
-CALLV
-pop
-line 246
-;246:	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.add );
+line 250
+;248:	//Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.framel );
+;249:	//Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.framer );
+;250:	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.add );
 ADDRGP4 s_serverinfo
 ARGP4
 ADDRGP4 s_serverinfo+624
@@ -951,8 +958,8 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 247
-;247:	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.back );
+line 251
+;251:	Menu_AddItem( &s_serverinfo.menu, (void*) &s_serverinfo.back );
 ADDRGP4 s_serverinfo
 ARGP4
 ADDRGP4 s_serverinfo+536
@@ -960,17 +967,17 @@ ARGP4
 ADDRGP4 Menu_AddItem
 CALLV
 pop
-line 249
-;248:
-;249:	UI_PushMenu( &s_serverinfo.menu );
+line 253
+;252:
+;253:	UI_PushMenu( &s_serverinfo.menu );
 ADDRGP4 s_serverinfo
 ARGP4
 ADDRGP4 UI_PushMenu
 CALLV
 pop
-line 250
-;250:}
-LABELV $117
+line 254
+;254:}
+LABELV $119
 endproc UI_ServerInfoMenu 2060 12
 bss
 align 4
@@ -1302,6 +1309,7 @@ import BG_FindItemForHoldable
 import BG_FindItemForPowerup
 import BG_FindItemForWeapon
 import BG_FindItem
+import BG_FindItemForAmmo
 import bg_numItems
 import bg_itemlist
 import Pmove
@@ -1463,7 +1471,7 @@ import srand
 import qsort
 lit
 align 1
-LABELV $180
+LABELV $182
 byte 1 115
 byte 1 118
 byte 1 95
@@ -1476,7 +1484,7 @@ byte 1 110
 byte 1 103
 byte 1 0
 align 1
-LABELV $173
+LABELV $175
 byte 1 65
 byte 1 68
 byte 1 68
@@ -1495,7 +1503,7 @@ byte 1 69
 byte 1 83
 byte 1 0
 align 1
-LABELV $129
+LABELV $131
 byte 1 83
 byte 1 69
 byte 1 82
