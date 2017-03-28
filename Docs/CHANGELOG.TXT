@@ -47,6 +47,8 @@ Trepidation Changelog - Most Recent Changes First
 
 - Fixed issue where weapon would not auto switch when out of ammo firing with alt fire.
 
+- If you are zooming with m42 when warmup ends, you are stuck zoomed - fixed
+
 ================================
 02-23-2017 Dev Build
 ================================

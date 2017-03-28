@@ -1410,6 +1410,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		if (mod == MOD_MACHINEGUN)
 		{
 			damage *= 0.75;
+			return;
 		}
 		
 		if ( ( dflags & DAMAGE_RADIUS ) || ( mod == MOD_FALLING ) ) {
