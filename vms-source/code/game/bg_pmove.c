@@ -1741,7 +1741,8 @@ static void PM_Weapon( void ) {
 			{
 				PM_AddEvent( EV_NOAMMO );
 				pm->ps->weaponTime += 500;
-				return;
+				altfired = qfalse; // This is a hack
+				//return;
 			}
 		}
 	}
@@ -1754,7 +1755,7 @@ static void PM_Weapon( void ) {
 
 // Shafe - Trep.. All Replaced For Alt Fire Usage
 // Normal Attack Button 
-if (pm->cmd.buttons & 1) { 
+if ((pm->cmd.buttons & 1) || (altfired = qfalse)) { 
 
   // Normal Fire Event 
   PM_AddEvent( EV_FIRE_WEAPON ); 
@@ -1799,7 +1800,7 @@ if (pm->cmd.buttons & 1) {
 	} 
 
  // New Alt Fire Button 
- } else if (pm->cmd.buttons & 32) { 
+ } else if ((pm->cmd.buttons & 32) || (altfired = qtrue)) { 
 
   // New Event 
   PM_AddEvent( EV_FIRE_WEAPON2 ); 

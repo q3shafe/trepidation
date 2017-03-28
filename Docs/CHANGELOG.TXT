@@ -45,6 +45,8 @@ NEW AND NOTABLE:
 Trepidation Changelog - Most Recent Changes First
 ==================================================
 
+- Fixed issue where weapon would not auto switch when out of ammo firing with alt fire.
+
 ================================
 02-23-2017 Dev Build
 ================================

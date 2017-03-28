@@ -1609,6 +1609,7 @@ static qboolean CG_WeaponSelectable( int i ) {
 	if ( !cg.snap->ps.ammo[i] ) {
 		return qfalse;
 	}
+
 	if ( ! (cg.snap->ps.stats[ STAT_WEAPONS ] & ( 1 << i ) ) ) {
 		return qfalse;
 	}
