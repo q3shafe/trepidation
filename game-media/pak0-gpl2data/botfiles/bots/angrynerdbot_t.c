@@ -236,7 +236,7 @@ chat "AngryNerdBot"
 	} //end type
 	type "random_misc" //miscellanous chats initiated randomly
 	{
-		"Also check out ^4http://skylar.n5net.com";
+		"Also check out ^4skylar.n5net.com";
 		"Come get me!";
 		GRRLTALK0;
 		MISC4;
