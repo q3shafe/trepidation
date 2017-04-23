@@ -34,6 +34,10 @@ NEW AND NOTABLE:
 Trepidation Changelog - Most Recent Changes First
 ==================================================
 
+- GH#108 Server List favorites Delete button moved so it is no longer in the middle of the screen.
+
+- Minor edits to chatstrings for angrynerd botfile.
+
 - Added sample configurations for random map rotations and "easy" map rotations.
 
 - Removed sarge folder that was creating an invisible player error if selected

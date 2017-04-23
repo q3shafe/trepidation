@@ -1601,8 +1601,8 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.remove.generic.flags		= QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS;
 	g_arenaservers.remove.generic.callback	= ArenaServers_Event;
 	g_arenaservers.remove.generic.id		= ID_REMOVE;
-	g_arenaservers.remove.generic.x			= 450;
-	g_arenaservers.remove.generic.y			= 86;
+	g_arenaservers.remove.generic.x			= 490;
+	g_arenaservers.remove.generic.y			= 8;
 	g_arenaservers.remove.width				= 96;
 	g_arenaservers.remove.height			= 48;
 	g_arenaservers.remove.focuspic			= ART_REMOVE1;
