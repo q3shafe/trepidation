@@ -1,17 +1,6 @@
 
 IMPORTANT NOTES BEFORE INSTALLING THIS:
 
-This update focuses on weapon balace, audio and visual issue fixes.
-
-If your installing over an older copy.. which ISNT recommended!  You should clear out your base folder of **ALL** pk3's.  If the old ones remain, you'll have all sorts of problems.
-
-Also, dont copy over your config file, set it up from scratch, things have changed and you WILL have problems.
-
-Another Good Idea is to turn your downloads on.  The test servers are setup to download very 
-quickly via http from trepidation.n5net.com if there is a file you need.  So yeah, turn your
-downloads on :)
-
-
 Game Highlights:
 - 17 multiplayer levels (maps).  
 - Quake 3 and Star Trek Voyager Elite Force Map Compatability.
@@ -44,6 +33,10 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+
+- Added sample configurations for random map rotations and "easy" map rotations.
+
+- Removed sarge folder that was creating an invisible player error if selected
 
 - Fixed issue where weapon would not auto switch when out of ammo firing with alt fire.
 
