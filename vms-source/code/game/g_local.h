@@ -557,6 +557,8 @@ typedef struct {
 	int			redNeedMC;
 	int			blueTD;
 	int			redTD;
+	int			blueBuilding;
+	int			redBuilding;
 
 } level_locals_t;
 
@@ -765,6 +767,8 @@ void AddScore( gentity_t *ent, vec3_t origin, int score );
 void CalculateRanks( void );
 qboolean SpotWouldTelefrag( gentity_t *spot );
 team_t PlaceMC(int team );
+team_t PlaceGen(int team );
+team_t PlaceTurret(int team );
 
 //
 // g_svcmds.c

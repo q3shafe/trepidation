@@ -883,6 +883,8 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	level.redScoreTime = levelTime;
 	level.blueNeedMC = 1;
 	level.redNeedMC= 1;
+	level.redBuilding = 0;
+	level.blueBuilding = 0;
 	level.firstStrike = qfalse; // Shafe - Trep
 	//level.lastClient = -1;
 	
@@ -2006,6 +2008,7 @@ void CheckExitRules( void ) {
 	gitem_t	*battles = BG_FindItemForPowerup( PW_BATTLESUIT );
 	gitem_t	*regen = BG_FindItemForPowerup( PW_REGEN );
 	char *s;
+	int			rn;
 
 	// if at the intermission, wait for all non-bots to
 	// signal ready, then go to next level
@@ -2190,6 +2193,66 @@ void CheckExitRules( void ) {
 		if ((level.redMC <= 0) && (level.redNeedMC == 0)) { level.redNeedMC= 1; }
 		if ((level.blueMC <= 0) && (level.blueNeedMC == 0)) { level.blueNeedMC= 1; }
 		
+
+	
+		
+		// If we have an MC, lets lay down at a later time power generators
+		rn = irandom(10000,25000); // randomize the timing a bit 10-25 seconds
+		if ((level.time-level.blueScoreTime) > 75000) 
+		{
+		
+			if ((level.redGen < 2) && (level.redNeedMC == 0) && ((level.time-level.redBuilding) >rn))
+				{
+					trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Generator.\n\"" );
+					level.redBuilding = level.time;
+					PlaceGen(TEAM_RED);
+
+					return;
+				} 
+		}
+		rn = irandom(10000,25000); // randomize the timing a bit 10-25 seconds
+		if ((level.time-level.redScoreTime) > 75000) 
+		{
+		
+			if ((level.blueGen < 2) && (level.blueNeedMC == 0) && ((level.time-level.blueBuilding) > rn))
+				{
+					trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a generator.\n\"" );
+					level.blueBuilding = level.time;
+					PlaceGen(TEAM_BLUE);
+					return;
+				} 
+		}
+
+
+
+		// We have mc and a power generator, lets check proximity to mc and have 
+		// the closest bot lay down a turret
+		rn = irandom(10000,35000); // randomize the timing a bit 10-25 seconds
+		if ((level.time-level.blueScoreTime) > 115000) 
+		{
+		
+			if ((level.redTurrets < 5) && (level.redGen == 2) && (level.redNeedMC == 0) && ((level.time-level.redBuilding) > rn))
+				{
+					trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" );
+					level.redBuilding = level.time;
+					PlaceTurret(TEAM_RED);
+
+					return;
+				} 
+		}
+		rn = irandom(10000,35000); // randomize the timing a bit 10-25 seconds
+		if ((level.time-level.redScoreTime) > 115000) 
+		{
+		
+			if ((level.blueTurrets < 5) && (level.blueGen == 2) && (level.blueNeedMC == 0) && ((level.time-level.blueBuilding) > rn))
+				{
+					trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" );
+					level.blueBuilding = level.time;
+					PlaceTurret(TEAM_BLUE);
+					return;
+				} 
+		}
+
 
 
 	}

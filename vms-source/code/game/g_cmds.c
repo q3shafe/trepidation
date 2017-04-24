@@ -508,6 +508,8 @@ void Cmd_Test_f (gentity_t *ent)
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redgenerators %i\n\"", level.redGen ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.blueturrets %i\n\"", level.blueTurrets ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redturrets %i\n\"", level.redTurrets ));		
+		trap_SendServerCommand( ent-g_entities, va("print \" level.blueBuilding %i\n\"", level.blueBuilding));		
+		trap_SendServerCommand( ent-g_entities, va("print \" level.redBuilding %i\n\"", level.redBuilding ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redmc %i\n\"", level.redMC ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.blumc %i\n\"", level.blueMC ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redscorelatched %i\n\"", level.redScoreLatched ));		

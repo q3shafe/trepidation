@@ -60,7 +60,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		if (self->s.team == TEAM_BLUE)
 		{
 			
-			
+
 			if ( !Q_stricmp( self->classname, "timedisplacer") )
 			{ 
 				level.blueTD--; 			
@@ -84,7 +84,8 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 			
 			if ( !Q_stricmp( self->classname, "generator") )
 			{ 
-				level.blueGen--; 			
+				level.blueGen--; 	
+				level.blueBuilding = level.time;
 				G_LogPrintf("Kill: %i %i %i: Blue Generator was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 				//G_Printf("Blue GENERATOR was destroyed by %s\n", attacker->client->pers.netname);
 				
@@ -104,6 +105,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 			if ( !Q_stricmp( self->classname, "turret") ) 
 			{
 				level.blueTurrets--; 
+				level.blueBuilding = level.time;
 				G_LogPrintf("Kill: %i %i %i: Blue Turret was shot down by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 				///G_Printf("Blue TURRET was shot down by %s\n", attacker->client->pers.netname);
 				if (attacker != &g_entities[ENTITYNUM_WORLD])
@@ -126,6 +128,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 					level.blueMC = 0; 
 					level.redScoreLatched = 1;
 					level.blueNeedMC = 1;
+					level.blueBuilding = 0;
 					trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", 0) );
 					level.blueCredits = 0;
 					G_LogPrintf("Kill: %i %i %i: Blue Power Core was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
@@ -146,6 +149,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 		}
 		if (self->s.team == TEAM_RED)
 		{
+
 			if ( !Q_stricmp( self->classname, "timedisplacer") )
 			{ 
 				level.redTD--;
@@ -169,6 +173,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 			if ( !Q_stricmp( self->classname, "generator") )
 			{ 
 				level.redGen--;
+				level.redBuilding = level.time;
 				G_LogPrintf("Kill: %i %i %i: Red Generator was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 				
 				if (attacker != &g_entities[ENTITYNUM_WORLD])
@@ -189,6 +194,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 			if ( !Q_stricmp( self->classname, "turret") )
 			{ 
 				level.redTurrets--;
+				level.redBuilding = level.time;
 				G_LogPrintf("Kill: %i %i %i: Red Turret was shot down by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
 				//G_Printf("Red TURRET was shot down by %s\n", attacker->client->pers.netname);
 				if (attacker != &g_entities[ENTITYNUM_WORLD])
@@ -212,6 +218,7 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 					level.redMC= 0; 
 					level.blueScoreLatched = 1;
 					level.redNeedMC = 1;
+					level.redBuilding = 0;
 					trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", 0) );
 					level.redCredits = 0;
 					G_LogPrintf("Kill: %i %i %i: Red POWERCORE was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
@@ -1023,10 +1030,12 @@ void gen_prethink(gentity_t *ent)
 	if (ent->parent->client->sess.sessionTeam == TEAM_BLUE)
 	{
 		level.blueGen++;
+		
 	}
 	if (ent->parent->client->sess.sessionTeam == TEAM_RED)
 	{
 		level.redGen++;
+		
 	}
 
 		BroadCastSound("sound/items/protect.ogg");
