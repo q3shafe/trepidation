@@ -2225,13 +2225,13 @@ void CheckExitRules( void ) {
 
 
 
-		// We have mc and a power generator, lets check proximity to mc and have 
+		// We have mc and a at least power generator, lets check proximity to mc and have 
 		// the closest bot lay down a turret
 		rn = irandom(10000,35000); // randomize the timing a bit 10-25 seconds
 		if ((level.time-level.blueScoreTime) > 115000) 
 		{
 		
-			if ((level.redTurrets < 5) && (level.redGen == 2) && (level.redNeedMC == 0) && ((level.time-level.redBuilding) > rn))
+			if ((level.redTurrets < 5) && (level.redGen > 0) && (level.redNeedMC == 0) && ((level.time-level.redBuilding) > rn))
 				{
 					trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" );
 					level.redBuilding = level.time;
@@ -2244,7 +2244,7 @@ void CheckExitRules( void ) {
 		if ((level.time-level.redScoreTime) > 115000) 
 		{
 		
-			if ((level.blueTurrets < 5) && (level.blueGen == 2) && (level.blueNeedMC == 0) && ((level.time-level.blueBuilding) > rn))
+			if ((level.blueTurrets < 5) && (level.blueGen > 0) && (level.blueNeedMC == 0) && ((level.time-level.blueBuilding) > rn))
 				{
 					trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" );
 					level.blueBuilding = level.time;
@@ -3306,11 +3306,7 @@ void CheckPlayerPostions(void)
             }
         }
     
-        //finally broadcast the command
-		// 
-		// Hey XcyTng!  Why doesnt this work???? 
-		// Enable it and the game freezes when loading a map... 
-		// Driving me insane VVVVVVV
+       
 	
 		for (i = 0; i < MAX_CLIENTS; i++) 
         {
@@ -3324,9 +3320,9 @@ void CheckPlayerPostions(void)
 
 			if ( ent->client->pers.connected == CON_CONNECTED && ent->client->pers.Eliminated == qfalse && ent->client->sess.sessionTeam != TEAM_SPECTATOR)
 			{
-			// Still Issues with this .. :( -- Shafe
-			G_SendCommandToClient(ent, cmd);
-			//PrintMsg( NULL, "%s" S_COLOR_WHITE " -- CMD\n", cmd );
+				// Still Issues with this .. :( -- Shafe
+				G_SendCommandToClient(ent, cmd); 
+				//PrintMsg( NULL, "%s" S_COLOR_WHITE " -- CMD\n", cmd );
 		
 			}
 				

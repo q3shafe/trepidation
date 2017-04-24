@@ -1663,7 +1663,11 @@ int		t;
 	return c;
 	
 }
+/*
 
+	THIS STUFF IS ACTUALLY BOT AI STUFF KIND OF FOR BUILDABLES, SO THAT BOTS AT LEAST APPEAR TO PLAY TREPIDATION GAMETYPE.
+
+*/
 
 /*
 	When playing trepidation, a bot kinda randomly builds shit. 
@@ -1676,7 +1680,7 @@ int		b = 0;
 int		cts;
 int		iserror;
 int		type;
-int		atype = 3;
+int		f;
 
 	c = 999;	
 	for ( i = 0 ; i < level.maxclients ; i++ ) {
@@ -1690,7 +1694,7 @@ int		atype = 3;
 			// Make sure it's a bot
 			if(g_entities[i].r.svFlags & SVF_BOT)
 			{
-				c = i;
+				if (irandom(1,2) == 1) {  c = i; } // randomize a bit who gets to do it.
 			} 
 
 		}
@@ -1698,7 +1702,9 @@ int		atype = 3;
 
 	if (c == 999) 
 	{ 
+		//  the above failed, do nothing... 
 		return c;
+		
 	}
 
 	// Figure out the best turret available
@@ -1724,7 +1730,7 @@ int		atype = 3;
 }
 
 
- //ent->r.svFlags & SVF_BOT 
+
 /*
 	When playing trepidation, a bot kinda randomly builds shit. 
 */
@@ -1747,7 +1753,7 @@ int		b = 0;
 			// Make sure it's a bot
 			if(g_entities[i].r.svFlags & SVF_BOT)
 			{
-				c = i;
+				c=i;
 			} 
 
 		}
@@ -1755,7 +1761,7 @@ int		b = 0;
 
 	if (c == 999) 
 	{ 
-		return c;
+		return c; // if there are no bots dont do anything, because
 	}
 
 	if (team == TEAM_BLUE) 
@@ -1774,10 +1780,13 @@ int		b = 0;
 	
 }
 
+/*
+
+	END THE BOT AI STUFF THAT SHOULD PROBABLY GO ELSEWHERE.
+
+*/
 
 
-
- //ent->r.svFlags & SVF_BOT 
 /*
  When someone doesnt build an MC it builds one somewhere for em
  This is a called it picks a player and puts it in their spot..
