@@ -33,6 +33,8 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+- Did some housekeeping with default config files, As well as the game media stuff.  Still quite a mess.
+
 - Added a mapfile into gpl pk3 file, officialmaps.cfg.
 
 - GH#108 Server List favorites Delete button moved so it is no longer in the middle of the screen.
