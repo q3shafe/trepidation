@@ -35,6 +35,13 @@ NEW AND NOTABLE:
 ==================================================
 Trepidation Changelog - Most Recent Changes First
 ==================================================
+
+
+
+==============================================
+	***** CURRENT SNAPSHOT *****
+==============================================
+
 - Tweaked some of the defaults for single player trepidation gametype.
 
 - The bot ai can now, somewhat decently, play the Trepidation gametype.
