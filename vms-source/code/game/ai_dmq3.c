@@ -3040,6 +3040,7 @@ int BotFindEnemy(bot_state_t *bs, int curenemy) {
 	// Trep
 		gentity_t	*e;
 		int		c, c2;
+		int		g;
 
 //	int ent;
 //	entityState_t state;
@@ -3162,12 +3163,13 @@ int BotFindEnemy(bot_state_t *bs, int curenemy) {
 		bs->enemysuicide = qfalse;
 		bs->enemydeath_time = 0;
 		bs->enemyvisible_time = FloatTime();
-		return qtrue;
+		g=1;
+		//return qtrue;
 	}
 
 	// Trepidation Gametype - An enemy is also a buildable
-	if (g_GameMode.integer == 3 && curenemy == 0)
-	{
+	//if (g_GameMode.integer == 3 && curenemy == 0)
+	//{
 		c = 0;
 		c2 = 0;
 		for ( i=1, e=g_entities+i ; i < level.num_entities ; i++,e++ )
@@ -3265,9 +3267,9 @@ int BotFindEnemy(bot_state_t *bs, int curenemy) {
 		
 		}
 
-	}
+	//}
 
-
+		if(g==1) { return qtrue; }
 
 	return qfalse;
 }

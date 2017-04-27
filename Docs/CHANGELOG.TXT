@@ -41,10 +41,13 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Lowered the health on the Power Core almost by half.
+
+- Bots now actually play Trepidation significantly better
 
 - Tweaked some of the defaults for single player trepidation gametype.
 
-- The bot ai can now, somewhat decently, play the Trepidation gametype.
+- The bots Now actually build stuff in trepidation gametype
 
 - Did some housekeeping with default config files, As well as the game media stuff.  Still quite a mess.
 

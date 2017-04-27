@@ -851,7 +851,7 @@ void MC_think(gentity_t *ent)
 	
 	if ((ent->s.time2==1) && (shieldMultiplier > 1)) 
 	{
-		if (ent->health < (800 * shieldMultiplier) ) 
+		if (ent->health < (600 * shieldMultiplier) ) 
 		{
 			ent->health+=shieldMultiplier;
 			ent->nextthink=level.time+100;
@@ -883,7 +883,7 @@ void MC_prethink(gentity_t *ent)
 
 	ent->takedamage=qtrue; // so they can be destroyed
 	// - We'll start it high, so that it cant be destroyed easily right away.
-	ent->health=2400; // change this to make the turrets tougher or weaker.
+	ent->health=1500; // change this to make the turrets tougher or weaker.
 	ent->die=turret_explode; // so they actually explode when destroyed
 	
 	ent->s.time2=1;
