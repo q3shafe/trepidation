@@ -25,9 +25,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 //health
-#define FPH				2 
+#define FPH				99 
 //armor
-#define FPA				2
+#define FPA				99
 //without the weapons
 //shotgun
 #define SGW				200
@@ -40,11 +40,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //rail gun
 #define RGW				260
 //bfg10k
-#define BFW				400
+#define BFW				200
 //lightninggun
 #define LGW				50
 //plasmagun
-#define PGW				250
+#define PGW				400
 //prox-launcher
 #define PXW				350
 //nailgun
@@ -65,13 +65,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //rocketlauncher
 #define GRLW				210
 //railgun
-#define GRGW				50
+#define GRGW				300
 //bfg10k
-#define GBFW				400
+#define GBFW				350
 //lightninggun
 #define GLGW			50
 //plasmagun
-#define GPGW			50
+#define GPGW			400
 //prox-launcher
 #define GPXW			200
 //failgun

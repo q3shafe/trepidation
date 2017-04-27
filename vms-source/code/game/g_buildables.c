@@ -837,8 +837,7 @@ void MC_think(gentity_t *ent)
 	// If there's at least one shield generator and the MC's health is above 35 it'll be shielded
 	if (shieldMultiplier > 1) { ent->s.time2 = 1; } else { ent->s.time2 = 0; }
 
-	 
-	
+	 	
 	// It's shielded but health is too low.. 
 	// This turns shielding off and regeneration stops.
 	if (ent->s.time2==1)
@@ -851,7 +850,7 @@ void MC_think(gentity_t *ent)
 	
 	if ((ent->s.time2==1) && (shieldMultiplier > 1)) 
 	{
-		if (ent->health < (600 * shieldMultiplier) ) 
+		if (ent->health < ( 1500) )  // was: 600 * shieldMultiplier  why?  - This should also be a define.  FIXME
 		{
 			ent->health+=shieldMultiplier;
 			ent->nextthink=level.time+100;

@@ -10,43 +10,42 @@
 
 #include "inv.h"
 
-
 //initial health/armor states
-#define FS_HEALTH				99
-#define FS_ARMOR				100
+#define FS_HEALTH			2
+#define FS_ARMOR			2
 
 //initial weapon weights
-#define W_SHOTGUN				500
-#define W_MACHINEGUN			70
-#define W_GRENADELAUNCHER		140
-#define W_ROCKETLAUNCHER		370
-#define W_RAILGUN				20
-#define W_BFG10K				180
-#define W_LIGHTNING				50
-#define W_PLASMAGUN				150
+#define W_SHOTGUN				5
+#define W_MACHINEGUN			50
+#define W_GRENADELAUNCHER		180
+#define W_ROCKETLAUNCHER		50
+#define W_RAILGUN				75
+#define W_BFG10K				20
+#define W_LIGHTNING				200
+#define W_PLASMAGUN				200
 
 //the bot has the weapons, so the weights change a little bit
-#define GWW_SHOTGUN				350
+#define GWW_SHOTGUN				5
 #define GWW_MACHINEGUN			50
-#define GWW_GRENADELAUNCHER		130
-#define GWW_ROCKETLAUNCHER		290
-#define GWW_RAILGUN				25
-#define GWW_BFG10K				90
-#define GWW_LIGHTNING			40
-#define GWW_PLASMAGUN			100
+#define GWW_GRENADELAUNCHER		180
+#define GWW_ROCKETLAUNCHER		50
+#define GWW_RAILGUN				75
+#define GWW_BFG10K				20
+#define GWW_LIGHTNING			200
+#define GWW_PLASMAGUN			200
 
 //initial powerup weights
 #define W_TELEPORTER			40
 #define W_MEDKIT				40
 #define W_QUAD					400
-#define W_ENVIRO				190
+#define W_ENVIRO				40
 #define W_HASTE					40
 #define W_INVISIBILITY			40
 #define W_REGEN					40
-#define W_FLIGHT				0
+#define W_FLIGHT				40
 
 //flag weight
-#define FLAG_WEIGHT				250
+#define FLAG_WEIGHT				50
 
 //
 #include "fw_items.c"

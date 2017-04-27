@@ -398,7 +398,7 @@ levelitem_t *AllocLevelItem(void)
 	li = freelevelitems;
 	if (!li)
 	{
-		botimport.Print(PRT_FATAL, "out of level items\n");
+		//botimport.Print(PRT_FATAL, "out of level items\n");
 		return NULL;
 	} //end if
 	//

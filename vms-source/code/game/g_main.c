@@ -478,6 +478,34 @@ return tmpCnt;
 	===================
 */
 
+qboolean LivePlayersOnTeam (int team) 
+{
+int i;
+int count;
+count = 0;
+	for ( i = 0 ; i < level.maxclients ; i++ ) 
+	{
+		if ( level.clients[i].pers.connected == CON_CONNECTED && level.clients[i].sess.sessionTeam == team) 
+		{
+			if (!(g_entities[i].r.svFlags & SVF_BOT)) 
+			{
+				count++;
+			}
+
+		}
+	}
+	
+	if (count > 0)
+	{
+		return qtrue;
+	}
+	else
+	{
+		return qfalse;
+	}
+
+}
+
 qboolean AreThereLivePlayers () 
 {
 int i;
@@ -2164,6 +2192,37 @@ void CheckExitRules( void ) {
 		if ( level.numNonSpectatorClients < 2 ) {
 			return;
 		}
+
+		// If there are no live players, only bots, don't wait out the whole 55 seconds
+		if(!LivePlayersOnTeam(TEAM_BLUE) && !level.warmupTime) {
+			rn = irandom(5000,25000);
+			if ((level.time-level.redScoreTime) > rn) 
+			{
+				if ((level.blueMC == 0) && (level.blueNeedMC == 1))
+				{
+					trap_SendServerCommand( -1, "print \"DEBUG: Bot Placing BLUE Power Core.\n\"" );
+					level.blueNeedMC = 0;
+					PlaceMC(TEAM_BLUE);
+					return;
+				}
+			}
+		}
+		if(!LivePlayersOnTeam(TEAM_RED) && !level.warmupTime) {
+			rn = irandom(5000,25000);
+			if ((level.time-level.blueScoreTime) > rn) 
+			{
+				if ((level.redMC == 0) && (level.redNeedMC == 1))
+				{
+					trap_SendServerCommand( -1, "print \"DEBUG: Bot Placing RED Power Core.\n\"" );
+					level.redNeedMC = 0;
+					PlaceMC(TEAM_RED);
+					return;
+				}
+			}
+		}
+
+
+		// If no one places the power core, place one for them after 55 seconds.
 		if ((level.time-level.redScoreTime) > 55000) 
 		{
 
@@ -2198,7 +2257,7 @@ void CheckExitRules( void ) {
 		
 		// If we have an MC, lets lay down at a later time power generators
 		rn = irandom(10000,25000); // randomize the timing a bit 10-25 seconds
-		if ((level.time-level.blueScoreTime) > 75000) 
+		if ((level.time-level.blueScoreTime) > 30000) 
 		{
 		
 			if ((level.redGen < 2) && (level.redNeedMC == 0) && ((level.time-level.redBuilding) >rn))
@@ -2211,7 +2270,7 @@ void CheckExitRules( void ) {
 				} 
 		}
 		rn = irandom(10000,25000); // randomize the timing a bit 10-25 seconds
-		if ((level.time-level.redScoreTime) > 75000) 
+		if ((level.time-level.redScoreTime) > 30000) 
 		{
 		
 			if ((level.blueGen < 2) && (level.blueNeedMC == 0) && ((level.time-level.blueBuilding) > rn))

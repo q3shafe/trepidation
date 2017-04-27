@@ -41,7 +41,7 @@
 //grenadelauncher
 #define GGLW				400
 //rocketlauncher
-#define GRLW				200
+#define GRLW				400
 //railgun
 #define GRGW				20
 //bfg10k

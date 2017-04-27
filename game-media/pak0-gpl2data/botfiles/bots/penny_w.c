@@ -6,9 +6,9 @@
 //gauntlet
 #define GTW				20
 //shotgun
-#define SGW				190
+#define SGW				50
 //machinegun
-#define MGW				50
+#define MGW				150
 //grenade launcher
 #define GLW				100
 //rocket launcher

@@ -41,6 +41,14 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Tweaked SP Trepidation config settings yet again.
+
+- Fixed: Characteristic 34 is not initialized with angrynerdbot errors
+
+- New Windows and Linux Binarys (still need to rememebr to recompile 64bit binaries).
+
+- Out Of Level Items error on CTF_TREPXUS no longer spams the console.
+
 - Lowered the health on the Power Core almost by half.
 
 - Bots now actually play Trepidation significantly better

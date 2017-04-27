@@ -1,294 +1,250 @@
-/*
-===========================================================================
-Copyright (C) 2006 Dmn_clown (aka: Bob Isaac (rjisaac@gmail.com))
+//===========================================================================
+//
+// Name:			major_c.c
+// Function:		chat lines for Major
+// Programmer:		Jan Paul & J. Cash
+// Scripter:		Paul Jaquays
+// Last update:		09/20/99
+// Tab Size:		3 (real tabs)
+//===========================================================================
 
-This file is part of Open Arena and is based upon Mr. Elusive's fuzzy logic
-system found in Quake 3 Arena.
-
-Open Arena is free software; you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 2 of the License,
-or (at your option) any later version.
-
-Open Arena is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with Foobar; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-===========================================================================
-*/
-
-chat "Major"
+chat "major"
 {
-	//the teamplay.h file is included for all kinds of teamplay chats
 	#include "teamplay.h"
-	//======================================================
-	//======================================================
-	type "game_enter" //initiated when the bot enters the game
+	//
+	type "game_enter"
 	{
-		"Hello.";
-		"Hey All";
-		"Are you prepared for pain?";
-		HELLO1;
-		// 0 = bot name
-		// 1 = random opponent
-		// 4 = level's title
+		HELLO;
+		HELLO4;
+		"I hope you're ready to lose today ", 1, ".";
+		"You do know that I'm a VERY poor loser.";
+		"Did you miss me, ", 1, "?";
+		"If you quit now, ", 1, ", it will save a lot of bother.";
 	} //end type
-	type "game_exit" //initiated when the bot exits the game
+
+	type "game_exit"
 	{
-		"Look at the ~time";
-		4, " kinda wears on me, I think I'll find a different server, later ~peeps";
-		GOODBYE1;
-		GOODBYE0;
-		// 0 = bot name
-		// 1 = random opponent
-		// 4 = level's title
+		"Just look at the time. I'm late already.";
+		"Next time, don't bring the geeks ... they make the place look all trashy.";
 	} //end type
-	type "level_start" //initiated when a new level starts
+
+	type "level_start"
 	{
-		0, " it is time for some payback!";
-		1, " you are going to have some pain in ", 4, ".";
-		HELLO2;
-		
-		// 0 = bot name
+		LEVEL_START1;
+		"I know this place. You are so seriously dead now, ", fighter, ".";
+		"I'm good to go. Let's do it.";
 	} //end type
-	type "level_end" //initiated when a level ends and the bot is not first and not last in the rankings
+
+	type "level_end"
 	{
-		"HA! ", 3, " is at the bottom, as usual.";
-		2, ", I let you win.";
-		"Good Game!";
-		"Is it over yet?";
-		"Good Game!";
-		// 0 = bot name
-		// 1 = random opponent
-		// 2 = opponent in first place
-		// 3 = opponent in last place
-		// 4 = level's title
+		LEVEL_END2;
+		"So, I went easy on you this time. No biggie.";
+		"It won't go the same way next time. Count on that.";
 	} //end type
-	type "level_end_victory" //initiated when a level ends and the bot is first in the rankings
+
+	type "level_end_victory"
 	{
-		3, " you need to practice more... and forget about winning against me.";
-		LEVEL_END_VICTORY1;
-		"I really like ", 4, " since they fixed it, it is so easy to win!";
-		"Next time, don't bother.";
-		// 0 = bot name
-		// 1 = random opponent
-		// 3 = opponent in last place
-		// 4 = level's title
+		"Uh-huh. A girl could really get used to this.";
+		"Someone had to win. Today, I'm most definitely someone.";
+		"Awwwww. Did mean ol' me pop a hole in someone's pretty little ego?";
+		LEVEL_END_VICTORY0;
+		LEVEL_END_VICTORY2;
 	} //end type
-	type "level_end_lose" //initiated when a level ends and the bot is last in the rankings
+
+	type "level_end_lose"
 	{
-		2, " cheated.";
-		"I had a hang nail, so of course I lost.";
-		"Scheisse!";
-		"So much for my bluster...";
-		"I felt bad for you so I let you win.";
-		// 0 = bot name
-		// 1 = random opponent
-		// 2 = opponent in first place
-		// 4 = level's title
+		"I can't believe I let you do that.";
+		"Do you guys play harder when you think a girl might beat you.";
+		"If this were just a game, I wouldn't be so pissed right now.";
+		LEVEL_END_LOSE1;
 	} //end type
-	//======================================================
-	//======================================================
+
+	//================================================================
+	//================================================================
+
 	type "hit_talking" //bot is hit while chat balloon is visible; lecture attacker on poor sportsmanship
 	{
-		0, ", didn't your mother ever tell you it was rude to interrupt a conversation?";
-		"I am going to shove that ", 1, " down your throat if you do that again!";
-		"Hey asshole!  I was trying to hold a conversation here... do you mind?";
-		DEATH_TALKING;
-		// 0 = shooter
-		// 1 = weapon used by shooter
+		"Have you no honor, ", 0, "?";
+		"Just because you can shoot me while I'm talking doesn't make it right, ", 0, ".";
+		"~Two can play that game, ", 0, ".";
+		//0 = shooter
 	} //end type
-	type "hit_nodeath" //bot is hit by an opponent's weapon attack but didn't die; either praise or insult
+
+	type "hit_nodeath" //bot is hit by an opponent's weapon attack; either praise or insult
 	{
-		1, " is not a good weapon, a ", weapon, " should be more your speed.";
-		"You need to aim better.";
-		"Try harder next time.";
-		curse;
-		// 0 = shooter
-		// 1 = weapon used by shooter
+		"You should have taken me out when you had the chance, ", 0, ".";
+		"You know the rules, ", 0, ". Anything less than a frag doesn't count.";
+		"Only a flesh wound. I'll live.  But YOU won't, ", 0, ".";
+		"Don't blame the gun, ", 0, ". That was YOUR fault.";
+		//0 = shooter
 	} //end type
+
 	type "hit_nokill" //bot hits an opponent but does not kill it
 	{
-		0, " must be cheating.";
-		"Dammit!  Why won't you die?!?";
-		"Well that sucked...";
-		"Note to self... turn off safety next ~time";
-		"If you run . . . you'll only die tired!";
-		// 0 = opponent
+		"Shoot! Something jiggled my arm!";
+		"I hate wasting ammo like that.";
+		"You could have done me the courtesy of dying, ", 0, ".";
+		//0 = opponent
 	} //end type
-	type "enemy_suicide" //enemy of the bot commits suicide
+
+	type "enemy_suicide"
 	{
-		"Stop smoking ", substance, " and maybe you won't kill yourself so often.";
-		"Tired of life, ", 0, "?  Give it up.";
-		"I guess that beats dying of ", disease, "...";
-		// 0 = enemy
+		"Ugh. That's no way for a warrior to die, ", 0, ".";
+		"Oh, I get it now, ", 0, ". You're trying to make it more challenging for yourself.";
+		0, ", my mother always said, 'Stupid is as stupid does.'  Whatever that means.";
+		"Victors don't let anyone kill them... including themselves.";
+		//0 = enemy
 	} //end type
-	//======================================================
-	//======================================================
-	type "death_telefrag" //initiated when the bot is killed by a telefrag
+	//================================================================
+	//================================================================
+
+	type "death_telefrag"
 	{
-		"I hate praetorian impressions.";
-		"My ", counselor, " warned about days like this.";
-		"Son of a bitch...";
-		"Scheisse";
-		"D'oh!";
 		DEATH_TELEFRAGGED1;
-		// 0 = enemy name
+		DEATH_TELEFRAGGED3;
+		"Thanks for ruining my day, ", 0, ".";
 	} //end type
-	type "death_cratered" //initiated when the bot is killed by taking "normal" falling damage
+
+	type "death_lava"
 	{
-		DEATH_FALLING0;
-		"It didn't look that high from up there...";
-		"*sigh*";
-		// 0 = random opponent
+		"What is it with all this lava?";
+		"Figures. I missed the lava dancing class.";
+		DEATH_LAVA1;
 	} //end type
-	type "death_lava" //initiated when the bot dies in lava
+
+	type "death_slime"
 	{
-		"Well... it beats a case of hypothermia.";
-		"At least it is warm here";
-		DEATH_SUICIDE1;
-		// 0 = random opponent
+		"So, which ~one of you slugs left this slime trail?";
+		"Well, ", 0, ". I can see you left your slime trail here.";
+		DEATH_SLIME0;
 	} //end type
-	type "death_slime" //initiated when the bot dies in slime
+
+	type "death_drown"
 	{
-		"Green has never been my color...";
-		DEATH_SLIME1;
-		// 0 = random opponent
-	} //end type
-	type "death_drown" //initiated when the bot drowns
-	{
+		"Hey, at least I didn't get sand in my swimsuit. I hate that.";
+		"Forgot to pack my floaties.";
+		"*[sigh]* I miss my rebreather.";
 		DEATH_DROWN0;
-		"It isn't that difficult to just breath water...";
-		"So why can't I breath water?";
-		// 0 = random opponent
 	} //end type
-	type "death_suicide" //initiated when bot blows self up with a weapon or craters
+
+	type "death_suicide"
 	{
-		DEATH_SUICIDE2;
-		"So much for life and all of its cruel irony.";
-		"It is just easier for ", 0, " this way.";
-		
-		
-		// 0 = random opponent
+		"Well that was friggin' spectacular. Guess I win the prize.";
+		"Oh ha ha. What am I ... comic relief?";
+		DEATH_SUICIDE1;
 	} //end type
-	type "death_gauntlet" //initiated when the bot is killed by a gauntlet attack
+
+	type "death_gauntlet"
 	{
-		"Unsanitary.";
-		"What part of '~Don't touch me there' do you not understand?";
-		DEATH_GAUNTLET1;
-		// 0 = enemy name
-		// 1 = weapon used by enemy (NOTE: always set to Gauntlet)
+		0, ", I suppose your mommy never said it was wrong to hit girls?";
+		"I just love it when you do that ", 0, ". I dare you to try it again.";
+		DEATH_GAUNTLET2;
 	} //end type
-	type "death_rail" //initiated when the bot is killed by a rail gun shot
+
+	type "death_rail"
 	{
-		DEATH_INSULT0;
-		DEATH_FEM_INSULT1;
-		DEATH_INSULT5;
-		// 0 = enemy name
-		// 1 = weapon used by enemy (NOTE: always set to Railgun)
+		"Well, so much for having a quiet day at home.";
+		"Camping AGAIN ", 0, "? Didn't your therapist tell you to stop?";
+		DEATH_RAIL1;
 	} //end type
-	type "death_bfg" //initiated when the bot died by a BFG
+
+	type "death_bfg"
 	{
-		"Can't find a skill weapon?  Or is it just that you suck?";
-		"Over-compensating for something?";
+		"You're developing a really sick relationship with that thing, ", 0, ".";
+		"C'mon ", 0, ". Don't you feel cheap and trashy when you do that?";
 		DEATH_BFG0;
-		DEATH_BFG2;
-		// 0 = enemy name
-		// 1 = weapon used by enemy (NOTE: always set to BFG10K)
 	} //end type
-	type "death_insult" //insult initiated when the bot died
+
+	type "death_insult"
 	{
-		curse;
-		"This is far more painful than it looks.";
-		"One day, ", 0, " you me and a ", weapon, " are going to have a discussion.";
-		"Is that the best you can do?";
-		DEATH_INSULT2;
-		DEATH_INSULT0;
-		// 0 = enemy name
-		// 1 = weapon used by enemy
+		"Let's see, ", 0, "; was that skill or just luck? I'm guessing ... luck.";
+		"Did that make you feel like a big Warrior ", 0, ".";
+		"Mmmmmmm. Was it good for you too, ", 0, "?";
+		"That's right ", 0, ", pick on the girl.";
+		DEATH_INSULT4;
 	} //end type
-	type "death_praise" //praise initiated when the bot died
+
+	type "death_praise"
 	{
-		"Not bad, ", 0, ", have you been practicing?";
-		"I never saw it coming.";
-		D_PRAISE0;
-		D_PRAISE1;
-		// 0 = enemy name
-		// 1 = weapon used by enemy
+		D_PRAISE2;
+		PRAISE3;
+		"That was definitely ... um ... pretty good, ", 0, ". Ok?";
+		"I've seen better ", 0, ", but not many.";
 	} //end type
-	//======================================================
-	//======================================================
-	type "kill_rail" //initiated when the bot kills someone with rail gun
+
+	//================================================================
+	//================================================================
+
+	type "kill_rail" 
 	{
-		0, ", you should stay down...";
-		"*sigh* if only this was challenging.";
-		"I love this gun!";
-		"Way too easy";
-		// 0 = enemy name
+		"Pow!! Right in the kisser.";
+		"Quick. Clean. Efficient.";
+		"Point and squirt. There's something very primal about that.";
+		"Hurry back, ", 0, ". I can use the points.";
+		KILL_RAIL1;
 	} //end type
-	type "kill_gauntlet" //initiated when the bot kills someone with gauntlet
+
+	type "kill_gauntlet"
 	{
-		"LOL!";
-		"Too easy";
-		// 0 = enemy name
+		"That left me breathless.";
+		"Whoooooaaa. That felt great ", 0, ". Mind if I do it again?";
+		"Drat, I broke a nail. Heh. Looks like a fair trade.";
+		KILL_GAUNTLET0;
+		KILL_GAUNTLET1;
+		KILL_GAUNTLET2;
 	} //end type
-	type "kill_telefrag" //initiated when the bot telefragged someone
+
+	type "kill_telefrag"
 	{
-		"LOL!";
-		"Aww man... now I have to take a bath to get the brains out.";
-		"Does anyone have a quick way of getting brains out of your hair?";
-		// 0 = enemy name
+		"A frag's a frag, ", 0, ", but I feel so ... cheap.";
+		"Heh. I think you look better this way ",0, ".";
+		TELEFRAGGED3;
 	} //end type
-	type "kill_insult" //insult initiated when the bot killed someone
+
+	type "kill_insult"
 	{
-		KILL_INSULT4;
-		"Why do you even bother?";
-		"This is why the upper classes are called the 'ruling elite.'";
-		"Why do the lower classes think they can match someone of my caliber?";
-		
-		// 0 = enemy name
+		"Oh. Did I ruin your day, ", 0, "?";
+		"I came here expecting a challenge.";
+		"C'mon, ", 0, ". Try harder. I'm not breaking a sweat here yet.";
+		KILL_INSULT6;
+		KILL_INSULT15;
+		KILL_INSULT33;
 	} //end type
-	type "kill_praise" //praise initiated when the bot killed someone
+
+	type "kill_praise"
 	{
-		"You are getting better, ", 0, ", keep it up and you might actually win something.";
-		"That was a challenge.";
-		// 0 = enemy name
+		PRAISE2;
+		D_PRAISE4;
+		"You made that really hard, ", 0, ". I like a challenge.";
+		"That was so sweet of you, ", 0, ", giving me a clear shot like that.";
+		"Your gore color coordinates so nicely with this arena, ", 0, ".";
 	} //end type
-	//======================================================
-	//======================================================
-	type "random_insult" //insult initiated randomly (just when the bot feels like it)
+
+	//================================================================
+	//================================================================
+
+	type "random_insult"
 	{
-		TAUNT0;
-		TAUNT_FEM0;
-		TAUNT1;
-		curse;
-		"You should give up your ", substance, " addiction by next ", month, ".";
-		"klsdhkshlshjkbxm!.";
-		"I saw those pictures of ", 0, " and a ", animal, " posted on the web last night... Like, ewww!";
-		immaturity01;
-		"Your ", family_member, " needs to stop calling me.";
-		
-		// 0 = name of randomly chosen player
-		// 1 = name of the last player killed by this bot
-		// 4 = level's title
-		// 5 = random weapon from weapon list
+		TAUNT_FEM;
+		TAUNT_FEM7;
+		TAUNT9;
+		DEATH_INSULT5;
+		"You know, ", 1, ", I've decided I like you better when you're dead.";
+		"By the way, ", 1, ", I've decided I like you better when you're dead.";
+		"Oh, was that your ego I deflated back there ", 1, "?, ";
+		"You know, ", 0, ", bathing regularly isn't considered a crime.";
 	} //end type
-	type "random_misc" //miscellanous chats initiated randomly
+
+	type "random_misc"
 	{
-		"No, really... Who let the dogs out?";
-		GRRLTALK0;
-		MISC4;
-		"Has anyone tried out the new ", 5, "?  Is it worth the upgrade?";
-		MISC1;
-		"You would be surprised what you can do with a ", animal, " a ", food, " and ", peeps, ".";
-		// 0 = name of randomly chosen player
-		// 1 = name of the last player killed by this bot
-		// 4 = level's title
-		// 5 = random weapon from weapon list
+		TAUNT_FEM6;
+		MISC3;
+		MISC5;
+		"What am I doing here? I promised myself no more hanging with losers.";
+		"What? Are you trying to come on to me, ", 1, "?";
+		"What was that you said about my mother, ", 0, ".";
+		"Can we speed this up? I'm falling asleep out here.";
 	} //end type
-} //end chat
+	
+} //end chat major
 
