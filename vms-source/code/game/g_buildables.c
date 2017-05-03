@@ -842,7 +842,7 @@ void MC_think(gentity_t *ent)
 	// This turns shielding off and regeneration stops.
 	if (ent->s.time2==1)
 	{
-		if (ent->health<35) // Was 350
+		if (ent->health<350) // Was 350
 		{
 			ent->s.time2=0;
 		}
@@ -850,10 +850,10 @@ void MC_think(gentity_t *ent)
 	
 	if ((ent->s.time2==1) && (shieldMultiplier > 1)) 
 	{
-		if (ent->health < ( 1500) )  // was: 600 * shieldMultiplier  why?  - This should also be a define.  FIXME
+		if (ent->health < ( 750 * (shieldMultiplier-1)) )  // was: 600 * shieldMultiplier  why?  - This should also be a define.  FIXME
 		{
 			ent->health+=shieldMultiplier;
-			ent->nextthink=level.time+100;
+			ent->nextthink=level.time+1000;
 		}
 	}
 

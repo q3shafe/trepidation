@@ -41,6 +41,8 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- com_hunkmegs now defaults to 128mb.
+
 - Tweaked SP Trepidation config settings yet again.
 
 - Fixed: Characteristic 34 is not initialized with angrynerdbot errors
@@ -127,7 +129,7 @@ Trepidation Changelog - Most Recent Changes First
 
 - added g_allowGrapple to enable/disable grapple hook.
 
-- Fixed single people ffa match so that the first map is random.
+- Fixed single player ffa match so that the first map is random.
 
 - Grapple is much more responsive.
 
@@ -174,7 +176,6 @@ yes/no and also removed the udp/tcp column.
 ======================
 Dev Build 11-24-2016
 ======================
-
 - setup g_easymap for file driven map rotations.
 
 - Fixed netchan error causing server crashes.
