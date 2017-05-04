@@ -41,6 +41,10 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Lots of variable tweaks to Trepidation game type, still fine tuning.
+
+- Bots are now less drawn to the LFO Rifle and will actually use the gauntlet.
+
 - com_hunkmegs now defaults to 128mb.
 
 - Tweaked SP Trepidation config settings yet again.
