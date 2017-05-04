@@ -1021,8 +1021,17 @@ int BotAI(int client, float thinktime) {
 	BotDeathmatchAI(bs, thinktime);
 	//set the weapon selection every AI frame
 	if (g_instagib.integer == 0) { // Shafe - Trep - Instagib Fix
-	trap_EA_SelectWeapon(bs->client, bs->weaponnum);
+		trap_EA_SelectWeapon(bs->client, bs->weaponnum);
 	}
+	/*
+	if(bs->inventory[bs->weaponnum] < 1)
+	{
+		trap_BotChooseBestFightWeapon(bs->ws, bs->inventory);
+		trap_EA_SelectWeapon(bs->client, bs->weaponnum);
+	}
+	*/
+
+
 
 	//subtract the delta angles
 	for (j = 0; j < 3; j++) {

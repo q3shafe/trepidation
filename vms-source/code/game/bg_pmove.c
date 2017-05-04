@@ -1726,6 +1726,13 @@ static void PM_Weapon( void ) {
 	// check for out of ammo
 	if ( ! pm->ps->ammo[ pm->ps->weapon ] ) {
 		PM_AddEvent( EV_NOAMMO );
+		
+			// This is going to be bad
+			//pm->ps->weaponstate = WEAPON_DROPPING; // bot bug for not switching weapons may have to do the weapon change here?
+			//PM_BeginWeaponChange( pm->cmd.weapon );
+			//PM_FinishWeaponChange();
+
+
 		pm->ps->weaponTime += 500;
 		return;
 	}

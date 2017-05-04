@@ -429,7 +429,7 @@ void trap_EA_MoveRight(int client) {
 
 void trap_EA_SelectWeapon(int client, int weapon) {
 	if (g_instagib.integer == 1) { weapon = WP_RAILGUN; }  // Shafe - Instagib
-		syscall( BOTLIB_EA_SELECT_WEAPON, client, weapon );
+	syscall( BOTLIB_EA_SELECT_WEAPON, client, weapon );
 
 }
 

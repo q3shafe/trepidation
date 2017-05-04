@@ -1634,18 +1634,14 @@ BotChooseWeapon
 void BotChooseWeapon(bot_state_t *bs) {
 	int newweaponnum;
 
-	
-		if (bs->cur_ps.weaponstate == WEAPON_RAISING ||
+
+
+	if (bs->cur_ps.weaponstate == WEAPON_RAISING ||
 				bs->cur_ps.weaponstate == WEAPON_DROPPING) {
 			trap_EA_SelectWeapon(bs->client, bs->weaponnum);
 		}
 		else {
-			newweaponnum = trap_BotChooseBestFightWeapon(bs->ws, bs->inventory);
-			
-			// Bad hack? Shafe
-			//if ((newweaponnum == 1) && (bs->inventory[INVENTORY_BULLETS] > 50)) { newweaponnum = 2; }
-			if (newweaponnum == 1)  { newweaponnum = 2; }
-			///////////////////////////
+			newweaponnum = trap_BotChooseBestFightWeapon(bs->ws, bs->inventory);			
 
 			if (bs->weaponnum != newweaponnum) bs->weaponchange_time = FloatTime();
 			bs->weaponnum = newweaponnum;
@@ -5216,6 +5212,10 @@ void BotCheckEvents(bot_state_t *bs, entityState_t *state) {
 		case EV_ITEM_PICKUP:
 		case EV_GLOBAL_ITEM_PICKUP:
 		case EV_NOAMMO:
+			// Shafe - we need to force a weapon change here.
+		
+			//trap_BotChooseBestFightWeapon(bs->ws, bs->inventory);
+			break;
 		case EV_CHANGE_WEAPON:
 		case EV_FIRE_WEAPON:
 			//FIXME: either add to sound queue or mark player as someone making noise

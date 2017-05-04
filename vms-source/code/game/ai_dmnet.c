@@ -1962,6 +1962,9 @@ void AIEnter_Battle_SuicidalFight(bot_state_t *bs, char *s) {
 	bs->flags |= BFL_FIGHTSUICIDAL;
 }
 
+
+
+
 /*
 ==================
 AINode_Battle_Fight
@@ -1972,6 +1975,7 @@ int AINode_Battle_Fight(bot_state_t *bs) {
 	vec3_t target;
 	aas_entityinfo_t entinfo;
 	bot_moveresult_t moveresult;
+
 
 	if (BotIsObserver(bs)) {
 		AIEnter_Observer(bs, "battle fight: observer");
@@ -2091,6 +2095,8 @@ int AINode_Battle_Fight(bot_state_t *bs) {
 	}
 	//choose the best weapon to fight with
 	BotChooseWeapon(bs);
+
+
 	//do attack movements
 	moveresult = BotAttackMove(bs, bs->tfl);
 	//if the movement failed
