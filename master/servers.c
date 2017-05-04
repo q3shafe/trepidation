@@ -112,7 +112,7 @@ static qboolean Sv_ResolveAddr (const char* name, struct sockaddr_in* addr)
 	struct hostent* host;
 
 	// Create a work copy
-	namecpy = strdup (name);
+	namecpy = _strdup (name);
 	if (namecpy == NULL)
 	{
 		MsgPrint (MSG_ERROR,
@@ -580,7 +580,7 @@ qboolean Sv_AddAddressMapping (const char* mapping)
 	addrmap_t* addrmap;
 
 	// Get a working copy of the mapping string
-	map_string = strdup (mapping);
+	map_string = _strdup (mapping);
 	if (map_string == NULL)
 	{
 		MsgPrint (MSG_ERROR,
@@ -609,8 +609,8 @@ qboolean Sv_AddAddressMapping (const char* mapping)
 		return false;
 	}
 	memset (addrmap, 0, sizeof (*addrmap));
-	addrmap->from_string = strdup (map_string);
-	addrmap->to_string = strdup (to_ip);
+	addrmap->from_string = _strdup (map_string);
+	addrmap->to_string = _strdup (to_ip);
 	if (addrmap->from_string == NULL || addrmap->to_string == NULL)
 	{
 		MsgPrint (MSG_ERROR,

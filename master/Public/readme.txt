@@ -53,5 +53,5 @@ http://icculus.org/twilight/darkplaces/download.html
 
 
 
-TREPDIATION PROJECT: http://trepidation.sourceforge.net
+TREPDIATION PROJECT: http://trepidation.n5net.com
 

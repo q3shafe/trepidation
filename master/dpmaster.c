@@ -36,7 +36,7 @@
 // ---------- Constants ---------- //
 
 // Version of dpmaster
-#define VERSION "1.6"
+#define VERSION "1.8"
 
 // Default master port
 #define DEFAULT_MASTER_PORT 27950
