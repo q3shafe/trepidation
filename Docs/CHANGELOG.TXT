@@ -1,3 +1,6 @@
+This dev build focuses a lot on the Trepidation Game Type as well as quite a few bugfixes.
+The full changelog is below.
+
 
 IMPORTANT NOTES BEFORE INSTALLING THIS:
 
@@ -41,13 +44,15 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Basic Turret looks way better now, but not great.
+
 - Master server now compiles on newer verision of visual studio.
 
 - Lots of variable tweaks to Trepidation game type, still fine tuning.
 
 - Bots are now less drawn to the LFO Rifle and will actually use the gauntlet.
 
-- com_hunkmegs now defaults to 128mb.
+- com_hunkmegs now defaults to 128mb. 
 
 - Tweaked SP Trepidation config settings yet again.
 

@@ -717,18 +717,11 @@ void BuildTurret( gentity_t *ent , int type )
 	base->parent=ent;	
 	if (trep_debug.integer) { G_Printf("%s Turret Built - Owner: %s\n", base->parent->client->pers.netname ); }
 	
-	if (type == 0)
-	{
-		base->s.modelindex = G_ModelIndex("models/turrets/base.md3");
-		base->model = "models/turrets/base.md3";
-		base->s.modelindex2 = G_ModelIndex("models/turrets/base.md3");
-	}
-	else
-	{
-		base->s.modelindex = G_ModelIndex("models/turrets/base2.md3");
-		base->model = "models/turrets/base2.md3";
-		base->s.modelindex2 = G_ModelIndex("models/turrets/base2.md3");
-	}
+	// This used to have 2 different types, but now only one base 
+	base->s.modelindex = G_ModelIndex("models/turrets/base2.md3");
+	base->model = "models/turrets/base2.md3";
+	base->s.modelindex2 = G_ModelIndex("models/turrets/base2.md3");
+	
 
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
