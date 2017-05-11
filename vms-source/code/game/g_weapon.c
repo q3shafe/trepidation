@@ -1889,7 +1889,8 @@ trap_Trace( &tr2, origin, base->r.mins, base->r.maxs, base->r.currentOrigin,
 
 if( tr2.fraction < 1.0 ) // It did go through a bad content
 {
-base->s.eType = ET_GENERAL; // To go for a die in g_buildables
+	base->s.eType = ET_GENERAL; // To go for a die in g_buildables
+	trap_SendServerCommand( base->parent->client->ps.clientNum , "cp \"Not Enough Room to Build Here.\"" );
 }
 else
 {

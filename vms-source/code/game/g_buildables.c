@@ -125,23 +125,27 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 			{ 
 				if (level.blueNeedMC == 0)
 				{
-					level.blueMC = 0; 
-					level.redScoreLatched = 1;
+					
+					level.blueMC = 0; 					
 					level.blueNeedMC = 1;
 					level.blueBuilding = 0;
-					trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", 0) );
-					level.blueCredits = 0;
-					G_LogPrintf("Kill: %i %i %i: Blue Power Core was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
-					//G_Printf("Blue POWER CORE was shot down by %s\n", attacker->client->pers.netname);
-					if (attacker != &g_entities[ENTITYNUM_WORLD])
-					{
-						trap_SendServerCommand( -1, va("print \"^7Blue POWERCORE was destroyed by %s \n\"", attacker->client->pers.netname ) );
-						if (attacker->client->sess.sessionTeam == TEAM_RED) 
-						{ 	
-							AddScore(attacker, self->r.currentOrigin, 10); 
-						} else
+
+					if(mod != MOD_SUICIDE) {
+						level.redScoreLatched = 1;
+						trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", 0) );
+						level.blueCredits = 0;
+						G_LogPrintf("Kill: %i %i %i: Blue Power Core was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
+						//G_Printf("Blue POWER CORE was shot down by %s\n", attacker->client->pers.netname);
+						if (attacker != &g_entities[ENTITYNUM_WORLD])
 						{
-							AddScore(attacker, self->r.currentOrigin, -10); 
+							trap_SendServerCommand( -1, va("print \"^7Blue POWERCORE was destroyed by %s \n\"", attacker->client->pers.netname ) );
+							if (attacker->client->sess.sessionTeam == TEAM_RED) 
+							{ 	
+								AddScore(attacker, self->r.currentOrigin, 10); 
+							} else
+							{
+								AddScore(attacker, self->r.currentOrigin, -10); 
+							}
 						}
 					}
 				}
@@ -215,23 +219,26 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 			{ 
 				if (level.redNeedMC == 0)
 				{
-					level.redMC= 0; 
-					level.blueScoreLatched = 1;
+					level.redMC= 0; 					
 					level.redNeedMC = 1;
 					level.redBuilding = 0;
-					trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", 0) );
-					level.redCredits = 0;
-					G_LogPrintf("Kill: %i %i %i: Red POWERCORE was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
-					//G_Printf("Red POWER CORE was shot down by %s\n", attacker->client->pers.netname);
-					if (attacker != &g_entities[ENTITYNUM_WORLD])
-					{
-						trap_SendServerCommand( -1, va("print \"^7Red POWER CORE was destroyed by %s \n\"", attacker->client->pers.netname ) );
-						if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
-						{ 	
-							AddScore(attacker, self->r.currentOrigin, 10); 
-						} else
+
+					if(mod != MOD_SUICIDE) {
+						level.blueScoreLatched = 1;
+						trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", 0) );
+						level.redCredits = 0;
+						G_LogPrintf("Kill: %i %i %i: Red POWERCORE was destroyed by %s\n", attacker->client->pers.netname, 0, 0, attacker->client->pers.netname);
+						//G_Printf("Red POWER CORE was shot down by %s\n", attacker->client->pers.netname);
+						if (attacker != &g_entities[ENTITYNUM_WORLD])
 						{
-							AddScore(attacker, self->r.currentOrigin, -10); 
+							trap_SendServerCommand( -1, va("print \"^7Red POWER CORE was destroyed by %s \n\"", attacker->client->pers.netname ) );
+							if (attacker->client->sess.sessionTeam == TEAM_BLUE) 
+							{ 	
+								AddScore(attacker, self->r.currentOrigin, 10); 
+							} else
+							{
+								AddScore(attacker, self->r.currentOrigin, -10); 
+							}
 						}
 					}
 				}
@@ -949,8 +956,10 @@ void BuildMC( gentity_t *ent )
 
 	BuildableSpawn( base ); // New spawning -Vincent
 	if( base->s.eType == ET_GENERAL )
-	{ // Clear it!
-	turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_LAVA );  
+	{ 
+	
+		// Bug , need a check here to make sure the other team doesn't get a point for this  MOD
+		turret_explode( base, &g_entities[ENTITYNUM_WORLD], &g_entities[ENTITYNUM_WORLD], 200, MOD_SUICIDE );  
 	}
 	else
 	{ // Initalize it!

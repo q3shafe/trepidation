@@ -44,6 +44,8 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Fixed issue where if you place a power core in a spot where it cannot be placed, the other team no longer gets a point.
+
 - Basic Turret looks way better now, but not great.
 
 - Master server now compiles on newer verision of visual studio.
