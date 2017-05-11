@@ -2362,10 +2362,36 @@ void CheckExitRules( void ) {
 		// It's a fluke... Force build of the MC and no one scores.
 		if ((level.redMC <= 0) && (level.redNeedMC == 0)) { level.redNeedMC= 1; }
 		if ((level.blueMC <= 0) && (level.blueNeedMC == 0)) { level.blueNeedMC= 1; }
-
-
-
 	}
+
+
+	/*
+
+		For some reason the turrets are simply exploding  after they art built
+
+	// CTF Bots can place turrets
+	if ((g_gametype.integer == GT_CTF) && (g_Turrets.integer == 1))
+	{
+		rn = irandom(10000,65000); // randomize the timing a bit 10-25 seconds
+		if ((level.redTurrets < g_MaxTurrets.integer) && (level.time-level.redBuilding > rn))
+		{
+			trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" );
+			level.redBuilding = level.time;
+			PlaceTurret(TEAM_RED);
+			return;
+		} 
+		
+		rn = irandom(10000,65000); // randomize the timing a bit 10-25 seconds
+		if ((level.blueTurrets < g_MaxTurrets.integer) && (level.time-level.blueBuilding > rn))
+		{
+				trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" );
+				level.blueBuilding = level.time;
+				PlaceTurret(TEAM_BLUE);
+				return;
+		} 
+	}
+	*/
+
 
 	// Freeze frozen
 	if ( g_GameMode.integer == 5 && g_capturelimit.integer ) {

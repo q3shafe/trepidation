@@ -478,6 +478,7 @@ typedef struct {
 	menutext_s		ctf;
 	menutext_s		arsenal;
 	menutext_s		survival;
+	menutext_s		oneforall;
 	menutext_s		trepidation;
 	menutext_s		freezetag;
 	menubitmap_s	back;
@@ -497,6 +498,18 @@ static void Setup_RunFFA( qboolean result ) {
 	trap_Cmd_ExecuteText( EXEC_APPEND, "exec singleplayer/ffa.cfg\n");
 }
 /*
+
+/*
+=================
+RUN O4A CFG SP
+=================
+*/
+static void Setup_RunOFA( qboolean result ) {
+	
+	trap_Cmd_ExecuteText( EXEC_APPEND, "exec singleplayer/one4all.cfg\n");
+}
+/*
+
 =================
 RUN CTF CFG SP
 =================
@@ -589,6 +602,10 @@ static void UI_SinglePlayerMenu_Event( void *ptr, int event ) {
 
 	case ID_TREPIDATION:
 		Setup_RunTrepidation(0);
+		break;
+	
+	case ID_ONE4ALL:
+		Setup_RunOFA(0);
 		break;
 
 	case ID_FREEZETAG:
@@ -708,6 +725,19 @@ static void UI_SinglePlayerMenu_Init( void ) {
 	singleplayerMenuInfo.survival.color						= color_red;
 	singleplayerMenuInfo.survival.style						= style;
 
+
+		y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+	singleplayerMenuInfo.oneforall.generic.type				= MTYPE_PTEXT;
+	singleplayerMenuInfo.oneforall.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.oneforall.generic.x					= 320;
+	singleplayerMenuInfo.oneforall.generic.y					= y;
+	singleplayerMenuInfo.oneforall.generic.id					= ID_ONE4ALL;
+	singleplayerMenuInfo.oneforall.generic.callback			= UI_SinglePlayerMenu_Event; 
+	singleplayerMenuInfo.oneforall.string						= "ONE FOR ALL";
+	singleplayerMenuInfo.oneforall.color						= color_red;
+	singleplayerMenuInfo.oneforall.style						= style;
+
+
 	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
 	singleplayerMenuInfo.trepidation.generic.type				= MTYPE_PTEXT;
 	singleplayerMenuInfo.trepidation.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
@@ -781,6 +811,7 @@ static void UI_SinglePlayerMenu_Init( void ) {
 	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.ctf );
 	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.arsenal );
 	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.survival );
+	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.oneforall );
 	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.trepidation );
 	Menu_AddItem( &singleplayerMenuInfo.menu, &singleplayerMenuInfo.freezetag );
 	

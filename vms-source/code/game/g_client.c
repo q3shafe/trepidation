@@ -1713,6 +1713,12 @@ int		f;
 	if (cts > 3)  { type = 1; }  
 	if (cts > 6)  { type = 2; }  
 
+	// If this is ctf pick a random turret type
+	if(g_gametype.integer == GT_CTF)
+	{
+		type = irandom(0,2);
+	}
+
 	if (team == TEAM_BLUE) 
 	{	
 		// Set it down for the blue team

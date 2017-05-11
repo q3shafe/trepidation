@@ -44,6 +44,10 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- One 4 All is now displayed instead of a 0 on game loading screen.
+
+- One 4 All Game Added to single Player Menu.
+
 - Fixed issue where if you place a power core in a spot where it cannot be placed, the other team no longer gets a point.
 
 - Basic Turret looks way better now, but not great.

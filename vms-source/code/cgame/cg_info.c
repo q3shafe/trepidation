@@ -297,6 +297,10 @@ void CG_DrawInformation( void ) {
 		{
 			s = "Survival";
 		}
+		if (cgs.g_GameMode == 4) 
+		{
+			s = "One 4 All";
+		}
 		break;
 	case GT_SINGLE_PLAYER:
 		s = "Single Player";

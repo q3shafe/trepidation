@@ -1894,7 +1894,7 @@ if( tr2.fraction < 1.0 ) // It did go through a bad content
 }
 else
 {
-base->s.eType = ET_BUILDABLE; // Initialize it
+	base->s.eType = ET_BUILDABLE; // Initialize it
 }
 // The actual buildables' thinking happens in g_buildables again, after this func
 }
