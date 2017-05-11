@@ -18,6 +18,8 @@ Game Highlights:
 
 NEW AND NOTABLE:
 
+- New One 4 All Gametype in Single Player Mode.
+
 - Bots can now, somewhat decently, play the Trepidation gametype.
 
 - Now Compatable with maps for Star Trek Elite Force and Quake 3.

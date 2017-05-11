@@ -25,24 +25,24 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 			    try to keep it balanced*/
 
 #include "inv.h"
-//gauntlet
+// 1 gauntlet
 #define GTW				25
-//shotgun
+//2 shotgun
 #define SGW				160
-//machinegun
-#define MGW				60
-//grenade launcher
+//3 machinegun
+#define MGW				30
+//g4 renade launcher
 #define GLW				110
-//rocket launcher
+//5 rocket launcher
 #define RLW				260
-//railgun
+//6 railgun
 #define RGW				20
-//bfg10k
+//7 bfg10k
 #define BFW				260
-//lightninggun
+//8 lightninggun
 #define LGW				180
-//plasmagun
-#define PGW				150
+//9 plasmagun
+#define PGW				255
 //grapplinghook
 #define GRW				185
 //prox-launcher
