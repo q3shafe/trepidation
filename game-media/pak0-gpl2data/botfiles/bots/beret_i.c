@@ -56,25 +56,25 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 //with the weapons
-//shotgun
+//1 shotgun
 #define GSGW				50
-//machinegun
+//2 machinegun
 #define GMGW				50
-//grenadelauncher
+//3 grenadelauncher
 #define GGLW				400
-//rocketlauncher
+//4 rocketlauncher
 #define GRLW				210
 //railgun
-#define GRGW				300
+#5 define GRGW				300
 //bfg10k
 #define GBFW				350
-//lightninggun
+//6 lightninggun
 #define GLGW			50
-//plasmagun
+//7 plasmagun
 #define GPGW			400
-//prox-launcher
+//8 prox-launcher
 #define GPXW			200
-//failgun
+//9 failgun
 #define GNGW			100
 //chaingun
 #define GCGW			125
