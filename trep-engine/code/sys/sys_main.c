@@ -464,6 +464,14 @@ void *Sys_LoadDll( const char *name, char *fqpath ,
 
 	libHandle = Sys_TryLibraryLoad(homepath, gamedir, fname, fqpath);
 
+	// Don't load any DLLs that end with the pk3 extension
+ 	if (COM_CompareExtension(name, ".pk3"))
+ 	{
+ 		Com_Printf("Rejecting DLL named \"%s\"", name);
+ 		return NULL;
+ 	}
+ 
+
 	if(!libHandle && basepath)
 		libHandle = Sys_TryLibraryLoad(basepath, gamedir, fname, fqpath);
 
