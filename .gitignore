@@ -1,0 +1,10 @@
+*.obj
+*.tlog
+*.log
+*.res
+*.ilk
+*.ipch
+*.d
+*.o
+*.asm
+
