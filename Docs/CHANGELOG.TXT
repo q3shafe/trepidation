@@ -46,6 +46,8 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Sudden Death (score is tied) now works in trepidation gametype.
+
 - Major security fix to engine, remote dll exploit fix.
 
 - One 4 All is now displayed instead of a 0 on game loading screen.

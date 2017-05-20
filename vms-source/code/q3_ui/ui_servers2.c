@@ -109,7 +109,7 @@ static const char *master_servers[] = {
 	"Alternate 1",
 	"Alternate 2",
 	"Alternate 3",
-	"Alternate 4 (Not Used)",
+	"Alternate 4",
 	0
 };
 // End Shafe
@@ -130,8 +130,8 @@ static const char *servertype_items[] = {
 	"Arsenal",			// Shafe - Trep - New Gametype
 	"Survival",	// Shafe - Trep - New Gametype
 	"Trepidation",	// Shafe - Trep - New Gametype
-	"Freeze Tag",	// Shafe - Trep - New Gametype
 	"One4All",	// Shafe - Trep - New Gametype
+	"Freeze Tag",	// Shafe - Trep - New Gametype	
 	0
 };
 
@@ -153,8 +153,8 @@ static char* gamenames[] = {
 	"Arsenal",		// one flag ctf
 	"Survival",				// Overload
 	"Trepidation",			// Harvester
-	"Freeze Tag",			// Harvester
 	"One4All",
+	"Freeze Tag",			// Harvester
 	"Rocket Arena 3",	// Rocket Arena 3
 	"Q3F",						// Q3F
 	"Urban Terror",		// Urban Terror
@@ -285,6 +285,7 @@ static servernode_t		g_mplayerserverlist[MAX_GLOBALSERVERS];
 static int				g_nummplayerservers;
 static int				g_servertype;
 static int				g_gametype;
+static int				g_gamemode;
 static int				g_sortkey;
 static int				g_emptyservers;
 static int				g_fullservers;

@@ -2431,6 +2431,13 @@ void CheckExitRules( void ) {
 		*/
 	}
 
+	// shafe - lets make sudden death a cvar
+		// check for sudden death
+	if ( ScoreIsTied() ) {
+		// always wait for sudden death
+		return;
+	}
+
 
 	if ( g_GameMode.integer == 3 && g_capturelimit.integer ) {
 
@@ -2462,11 +2469,6 @@ void CheckExitRules( void ) {
 
 
 
-	// check for sudden death
-	if ( ScoreIsTied() ) {
-		// always wait for sudden death
-		return;
-	}
 
 
 
