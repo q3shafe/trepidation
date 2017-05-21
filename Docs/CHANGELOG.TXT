@@ -46,6 +46,8 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- New cvar g_suddendeath to enable/disable sudden death.  Default is 1 (enabled).
+
 - Sudden Death (score is tied) now works in trepidation gametype.
 
 - Major security fix to engine, remote dll exploit fix.
