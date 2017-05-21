@@ -2434,12 +2434,12 @@ void CheckExitRules( void ) {
 	}
 
 	// check for sudden death
-	if (g_suddendeath.integer) {
+	//if (g_suddendeath.integer == 1) { // wtf, why doesn't this work.
 		if ( ScoreIsTied() ) {
 			// always wait for sudden death
 			return;
 		}
-	}
+	//}
 
 	if ( g_GameMode.integer == 3 && g_capturelimit.integer ) {
 

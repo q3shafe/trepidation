@@ -46,6 +46,8 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- fixed incorrect filename in windows ded-server.bat file.
+
 - weapons not listed in correct order on game controls screen - fixed
 
 - Added one4all server config/ added g_suddendeath cvar to sample config files.
