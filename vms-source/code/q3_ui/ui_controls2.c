@@ -241,13 +241,13 @@ static bind_t g_bindings[] =
 	{"centerview", 		"center view",		ID_CENTERVIEW,	ANIM_IDLE,		K_END,			-1,		-1, -1},
 	{"+zoom", 			"zoom view",		ID_ZOOMVIEW,	ANIM_IDLE,		-1,				-1,		-1, -1},
 	{"weapon 1",		"gauntlet",			ID_WEAPON1,		ANIM_WEAPON1,	'1',			-1,		-1, -1},
-	{"weapon 2",		"assault rifle",		ID_WEAPON2,		ANIM_WEAPON2,	'2',			-1,		-1, -1},
-	{"weapon 3",		"shotgun",			ID_WEAPON3,		ANIM_WEAPON3,	'3',			-1,		-1, -1},
-	{"weapon 4",		"grenade launcher",	ID_WEAPON4,		ANIM_WEAPON4,	'4',			-1,		-1, -1},
-	{"weapon 5",		"singularity cannon",	ID_WEAPON5,		ANIM_WEAPON5,	'5',			-1,		-1, -1},
+	{"weapon 2",		"LFO Rifle",		ID_WEAPON2,		ANIM_WEAPON2,	'2',			-1,		-1, -1},
+	{"weapon 3",		"m42 gauss rifle",			ID_WEAPON3,		ANIM_WEAPON3,	'3',			-1,		-1, -1},
+	{"weapon 4",		"shotgun",	ID_WEAPON4,		ANIM_WEAPON4,	'4',			-1,		-1, -1},
+	{"weapon 5",		"grenade launcher",	ID_WEAPON5,		ANIM_WEAPON5,	'5',			-1,		-1, -1},
 	{"weapon 6",		"flame thrower",	ID_WEAPON6,		ANIM_WEAPON6,	'6',			-1,		-1, -1},
-	{"weapon 7",		"m42 gauss rifle",			ID_WEAPON7,		ANIM_WEAPON7,	'7',			-1,		-1, -1},
-	{"weapon 8",		"gata gun",		ID_WEAPON8,		ANIM_WEAPON8,	'8',			-1,		-1, -1},
+	{"weapon 7",		"gata gun",			ID_WEAPON7,		ANIM_WEAPON7,	'7',			-1,		-1, -1},
+	{"weapon 8",		"singularity cannon",		ID_WEAPON8,		ANIM_WEAPON8,	'8',			-1,		-1, -1},
 	{"weapon 9",		"devastator",				ID_WEAPON9,		ANIM_WEAPON9,	'9',			-1,		-1, -1},
 	{"+attack", 		"attack",			ID_ATTACK,		ANIM_ATTACK,	K_CTRL,			-1,		-1, -1},
 	// Shafe - Alt Fire Attack
@@ -502,15 +502,15 @@ static void Controls_UpdateModel( int anim ) {
 		break;
 
 	case ANIM_WEAPON3:
-		s_controls.playerWeapon = WP_SHOTGUN;
+		s_controls.playerWeapon = WP_RAILGUN;
 		break;
 
 	case ANIM_WEAPON4:
-		s_controls.playerWeapon = WP_GRENADE_LAUNCHER;
+		s_controls.playerWeapon = WP_SHOTGUN;
 		break;
 
 	case ANIM_WEAPON5:
-		s_controls.playerWeapon = WP_ROCKET_LAUNCHER;
+		s_controls.playerWeapon = WP_GRENADE_LAUNCHER; //WP_ROCKET_LAUNCHER;
 		break;
 
 	case ANIM_WEAPON6:
@@ -518,11 +518,11 @@ static void Controls_UpdateModel( int anim ) {
 		break;
 
 	case ANIM_WEAPON7:
-		s_controls.playerWeapon = WP_RAILGUN;
+		s_controls.playerWeapon = WP_PLASMAGUN;
 		break;
 
 	case ANIM_WEAPON8:
-		s_controls.playerWeapon = WP_PLASMAGUN;
+		s_controls.playerWeapon = WP_ROCKET_LAUNCHER;
 		break;
 
 	case ANIM_WEAPON9:

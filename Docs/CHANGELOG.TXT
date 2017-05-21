@@ -46,7 +46,9 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
-- Added one4all server config.
+- weapons not listed in correct order on game controls screen - fixed
+
+- Added one4all server config/ added g_suddendeath cvar to sample config files.
 
 - New cvar g_suddendeath to enable/disable sudden death.  Default is 1 (enabled).
 
