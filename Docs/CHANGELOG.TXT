@@ -46,6 +46,12 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Disabled grapple in Single player ctf config (can alter it through console)
+
+- Bots will build turrets on ctf games.
+
+- LFO Rifle will get through battlesuite causing half the normal damage.
+
 - fixed incorrect filename in windows ded-server.bat file.
 
 - weapons not listed in correct order on game controls screen - fixed

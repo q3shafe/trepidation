@@ -2202,7 +2202,7 @@ void CheckExitRules( void ) {
 			{
 				if ((level.blueMC == 0) && (level.blueNeedMC == 1))
 				{
-					trap_SendServerCommand( -1, "print \"DEBUG: Bot Placing BLUE Power Core.\n\"" );
+					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Bot Placing BLUE Power Core.\n\"" ); }
 					level.blueNeedMC = 0;
 					PlaceMC(TEAM_BLUE);
 					return;
@@ -2215,7 +2215,7 @@ void CheckExitRules( void ) {
 			{
 				if ((level.redMC == 0) && (level.redNeedMC == 1))
 				{
-					trap_SendServerCommand( -1, "print \"DEBUG: Bot Placing RED Power Core.\n\"" );
+					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Bot Placing RED Power Core.\n\"" ); }
 					level.redNeedMC = 0;
 					PlaceMC(TEAM_RED);
 					return;
@@ -2264,7 +2264,7 @@ void CheckExitRules( void ) {
 		
 			if ((level.redGen < 2) && (level.redNeedMC == 0) && ((level.time-level.redBuilding) >rn))
 				{
-					trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Generator.\n\"" );
+					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Generator.\n\"" ); }
 					level.redBuilding = level.time;
 					PlaceGen(TEAM_RED);
 
@@ -2277,7 +2277,7 @@ void CheckExitRules( void ) {
 		
 			if ((level.blueGen < 2) && (level.blueNeedMC == 0) && ((level.time-level.blueBuilding) > rn))
 				{
-					trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a generator.\n\"" );
+					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a generator.\n\"" ); }
 					level.blueBuilding = level.time;
 					PlaceGen(TEAM_BLUE);
 					return;
@@ -2294,7 +2294,7 @@ void CheckExitRules( void ) {
 		
 			if ((level.redTurrets < 5) && (level.redGen > 0) && (level.redNeedMC == 0) && ((level.time-level.redBuilding) > rn))
 				{
-					trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" );
+					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" ); }
 					level.redBuilding = level.time;
 					PlaceTurret(TEAM_RED);
 
@@ -2307,7 +2307,7 @@ void CheckExitRules( void ) {
 		
 			if ((level.blueTurrets < 5) && (level.blueGen > 0) && (level.blueNeedMC == 0) && ((level.time-level.blueBuilding) > rn))
 				{
-					trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" );
+					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" ); }
 					level.blueBuilding = level.time;
 					PlaceTurret(TEAM_BLUE);
 					return;
@@ -2353,7 +2353,7 @@ void CheckExitRules( void ) {
 		
 				if ((level.blueMC == 0) && (level.blueNeedMC == 1))
 				{
-					trap_SendServerCommand( -1, "print \"DEBUG: Automatically Placing Blue Power Core.\n\"" );
+					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Automatically Placing Blue Power Core.\n\"" ); }
 					level.blueNeedMC = 0;
 					PlaceMC(TEAM_BLUE);
 					return;
@@ -2367,9 +2367,8 @@ void CheckExitRules( void ) {
 	}
 
 
-	/*
 
-		For some reason the turrets are simply exploding  after they art built
+	//	For some reason the turrets are simply exploding  after they art built
 
 	// CTF Bots can place turrets
 	if ((g_gametype.integer == GT_CTF) && (g_Turrets.integer == 1))
@@ -2377,7 +2376,7 @@ void CheckExitRules( void ) {
 		rn = irandom(10000,65000); // randomize the timing a bit 10-25 seconds
 		if ((level.redTurrets < g_MaxTurrets.integer) && (level.time-level.redBuilding > rn))
 		{
-			trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" );
+			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" ); }
 			level.redBuilding = level.time;
 			PlaceTurret(TEAM_RED);
 			return;
@@ -2386,13 +2385,14 @@ void CheckExitRules( void ) {
 		rn = irandom(10000,65000); // randomize the timing a bit 10-25 seconds
 		if ((level.blueTurrets < g_MaxTurrets.integer) && (level.time-level.blueBuilding > rn))
 		{
-				trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" );
+				if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" ); }
+				
 				level.blueBuilding = level.time;
 				PlaceTurret(TEAM_BLUE);
 				return;
 		} 
 	}
-	*/
+	
 
 
 	// Freeze frozen
@@ -2415,6 +2415,7 @@ void CheckExitRules( void ) {
 	}
 
 
+	// Alpha campaign stuff
 	if ( g_GameMode.integer == 999 && g_capturelimit.integer ) {
 
 		if ( level.teamScores[TEAM_RED] >= g_capturelimit.integer ) {
@@ -2467,11 +2468,6 @@ void CheckExitRules( void ) {
 			return;
 		}
 	}
-
-
-
-
-
 
 
 
@@ -2761,16 +2757,7 @@ void CheckExitRules( void ) {
 				cl = level.clients + i;
 				if( cl->pers.connected != CON_CONNECTED )
 					continue;
-				/*
-				// See Mantis: 0000107: Specatators can be in the top 3 of an arsenal game.
-
-				if( cl->sess.sessionTeam != TEAM_FREE )
-					continue;
-				if( cl->sess.sessionTeam != TEAM_SPECTATOR )
-					continue; // Don't count spectators -Vincent
-
-				*/
-
+				
 				if( cl->ps.persistant[PERS_SCORE] >= g_fraglimit.integer ) 
 				{
 					LogExit( "Fraglimit hit." );
@@ -2799,13 +2786,6 @@ void CheckExitRules( void ) {
 			return;
 		}
 	}
-	
-	
-				
-	
-
-
-
 
 }
 

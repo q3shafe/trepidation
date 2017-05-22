@@ -545,30 +545,32 @@ void Base_think(gentity_t *ent){
 	// 
 	// This also destroys all turrets when a point is made.
 	
-	if (ent->s.team == TEAM_BLUE)
+	if(g_GameMode.integer == 3) // dont kill them without a power core on ctf
 	{
-		if (level.blueMC == 0) 
-		{	
-			ent->health = 1; 
-			ent->s.time2 = 0;
-			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
-			if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
+		if (ent->s.team == TEAM_BLUE)
+		{
+			if (level.blueMC == 0) 
+			{	
+				ent->health = 1; 
+				ent->s.time2 = 0;
+				G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
+				if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
 			
 	
+			}
+		}
+		if (ent->s.team == TEAM_RED)
+		{
+			if (level.redMC == 0) 
+			{ 
+				ent->health = 1; 
+				ent->s.time2 = 0;
+				G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
+				if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
+	
+			}
 		}
 	}
-	if (ent->s.team == TEAM_RED)
-	{
-		if (level.redMC == 0) 
-		{ 
-			ent->health = 1; 
-			ent->s.time2 = 0;
-			G_Damage (ent, NULL, attacker, NULL, NULL, 20, 0, MOD_LAVA);
-			if (trep_debug.integer) { G_Printf("Destroyed in Base_think: %s\n", ent->client->pers.netname ); }
-	
-		}
-	}
-	
 	ent->think = Base_think;
 	ent->nextthink=level.time+100;
 
@@ -743,7 +745,7 @@ void BuildTurret( gentity_t *ent , int type )
 	}
 	
 	base->s.eType=ET_GENERAL;
-	
+
 	if (ent->client->sess.sessionTeam == TEAM_BLUE)
 	{
 		level.blueTurrets++;

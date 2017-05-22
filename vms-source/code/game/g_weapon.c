@@ -1777,8 +1777,6 @@ qboolean CanBuildHere(gentity_t *playerent)
 	trace_t		tr;
 	vec3_t		fwd, pos, dest, mins = {-16,-16, 0}, maxs = {16,16,16};
 
-	
-
 	// can we place this in front of us?
 	AngleVectors (playerent->client->ps.viewangles, fwd, NULL, NULL);
 	fwd[2] = 0;
@@ -1886,6 +1884,7 @@ trap_LinkEntity( base ); // Add it...
 // When it does, the buildable should be cleared!
 trap_Trace( &tr2, origin, base->r.mins, base->r.maxs, base->r.currentOrigin, 
 		   	base->parent ? base->parent->s.number : base->s.number, CONTENTS_LAVA | CONTENTS_SLIME | CONTENTS_SOLID );
+
 
 if( tr2.fraction < 1.0 ) // It did go through a bad content
 {

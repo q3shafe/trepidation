@@ -712,32 +712,7 @@ void ClientEvents( gentity_t *ent, int oldEventSequence ) {
 
 		case EV_USE_ITEM1:		// teleporter
 			// drop flags in CTF
-			//Team_DropFlags( ent );
-			/* Shafe - Trep - This is now in g_team.c - Keeping it here only for reference
-			item = NULL;
-			j = 0;
-
-			if ( ent->client->ps.powerups[ PW_REDFLAG ] ) {
-				item = BG_FindItemForPowerup( PW_REDFLAG );
-				j = PW_REDFLAG;
-			} else if ( ent->client->ps.powerups[ PW_BLUEFLAG ] ) {
-				item = BG_FindItemForPowerup( PW_BLUEFLAG );
-				j = PW_BLUEFLAG;
-			} else if ( ent->client->ps.powerups[ PW_NEUTRALFLAG ] ) {
-				item = BG_FindItemForPowerup( PW_NEUTRALFLAG );
-				j = PW_NEUTRALFLAG;
-			}
-
-			if ( item ) {
-				drop = Drop_Item( ent, item, 0 );
-				// decide how many seconds it has left
-				drop->count = ( ent->client->ps.powerups[ j ] - level.time ) / 1000;
-				if ( drop->count < 1 ) {
-					drop->count = 1;
-				}
-
-				ent->client->ps.powerups[ j ] = 0;
-			} */
+			//Team_DropFlags( ent );			
 #ifdef MISSIONPACK
 			if ( g_gametype.integer == GT_HARVESTER ) {
 				if ( ent->client->ps.generic1 > 0 ) {
@@ -1174,18 +1149,6 @@ void ClientThink_real( gentity_t *ent ) {
 		ent->client->pers.cmd.buttons |= BUTTON_GESTURE;
 	}
 
-	// Github bug 54 -shafe - fixes stuck in zoom thingy
-	/*
-
-		THIS DIDNT FIX THE PROBLEM
-	if ((client->ps.weapon != WP_RAILGUN) && (client->Zoomed == qtrue))
-	{
-				client->ZoomTime = level.time;
-				trap_SendServerCommand(client->ps.clientNum, "+greset");
-				//PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: +greset\n", client->ps.weaponstate );
-				client->Zoomed = qfalse;
-	}
-	*/ 
 
 	if ((client->Zoomed) && (client->ps.weapon != WP_RAILGUN))
 	{

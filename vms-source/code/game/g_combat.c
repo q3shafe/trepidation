@@ -1205,7 +1205,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	{
 		if (targ != attacker)
 			{
-				dflags |= DAMAGE_NO_KNOCKBACK;
+				dflags |= DAMAGE_NO_KNOCKBACK; // riflejump bug?
 			}
 	}
 
@@ -1292,6 +1292,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		knockback = 0;
 	}
 
+	
 	// figure momentum add, even if the damage won't be taken
 	if ( knockback && targ->client ) {
 		vec3_t	kvel;
@@ -1409,16 +1410,12 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		// LFO Rifle can get through battlesuite - trep (maybe some other weapon?)
 		if (mod == MOD_MACHINEGUN)
 		{
-			damage *= 0.75;
-			return;
+			damage *= 0.50;			
 		}
 		
 		if ( ( dflags & DAMAGE_RADIUS ) || ( mod == MOD_FALLING ) ) {
 			return;
 		}
-		
-		return;		
-		//damage *= 0.5;
 	}
 
 
