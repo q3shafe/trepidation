@@ -1132,7 +1132,5 @@ OVERALL CODE
 - Shafe - cgame/game -Created Grenade Alt Fire.. Sticky Grenades Like EF...  They still look ugly tho
 
 
-
-
 random side note about making roq files
 ffmpeg -i treptest.avi -ab 256k -ar 22050 -r 30 -s 512x512 a.roq
