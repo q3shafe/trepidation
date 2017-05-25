@@ -1263,6 +1263,11 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 		ci->cgimmobilized = qfalse;
 		}
 		break;
+	case EV_BUILDABLE_HIT:
+		DEBUGNAME("EV_BUILDABLE_HIT");
+		// Hit sound for hitting a buildable
+		trap_S_StartLocalSound( cgs.media.hitSound, CHAN_LOCAL_SOUND );
+		break;
 
 	case EV_GIB_PLAYER:
 		DEBUGNAME("EV_GIB_PLAYER");
