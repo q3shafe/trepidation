@@ -1364,13 +1364,15 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 		}
 	}
 	
-	/*
+	
 	// Send hit sound for buildable hit
+	/*
 	if ((targ->s.eType ==ET_BUILDABLE) && (targ->s.team != attacker->client->sess.sessionTeam))
 	{
-		G_AddEvent( targ, EV_BUILDABLE_HIT, );
+		G_AddEvent( attacker , EV_BUILDABLE_HIT, 0);
 	}
 	*/
+	
 	
 	// Debug
 	if (trep_debug.integer) { G_Printf("Class : %s Taking Damage\n", targ->classname ); }
