@@ -46,6 +46,16 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Set g_allowgrapple cvar in sample server configs.
+
+- Fixed up the regen model
+
+- fixed one4all.cfg for single player mode to have correct map download url.
+
+
+================================
+02-23-2017 Dev Build
+================================
 - Disabled grapple in Single player ctf config (can alter it through console)
 
 - Bots will build turrets on ctf games.
