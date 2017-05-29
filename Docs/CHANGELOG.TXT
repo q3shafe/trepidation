@@ -46,6 +46,12 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- ded-server.bat now references the correct default port number
+
+- Fixed "pure server" placement on server loading screen
+
+- New debug level (trep_debug 2) for developers
+
 - Fixed several broken bot voice sounds causing console errors.
 
 - Default single player and server configs now include g_maxturrets defaults.

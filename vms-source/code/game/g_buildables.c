@@ -493,7 +493,7 @@ void turret_fireonenemy( gentity_t *ent){
 		{
 			//This is the best turret
 			fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qtrue );
-			if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
+			if (trep_debug.integer == 2) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 			
 			
 		} else
@@ -504,13 +504,13 @@ void turret_fireonenemy( gentity_t *ent){
 				// This is the weakest
 				//fire_plasma( ent->activator, ent->r.currentOrigin, ent->turloc );
 				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
-				if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
+				if (trep_debug.integer==2) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 				
 			} else
 			{
 				// Middle Power
 				fire_turret( ent->parent, ent->r.currentOrigin, ent->turloc, qfalse );
-				if (trep_debug.integer) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
+				if (trep_debug.integer==2) { G_Printf("%s Turret Firing: %s\n", ent->parent->client->pers.netname ); }
 				
 			}
 			
