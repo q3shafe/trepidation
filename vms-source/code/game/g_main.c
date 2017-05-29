@@ -244,7 +244,7 @@ static cvarTable_t		gameCvarTable[] = {
 
 	// New Stuff
 	{ &g_Turrets, "g_Turrets", "1", CVAR_ARCHIVE, 0, qtrue },	
-	{ &g_MaxTurrets, "g_MaxTurrets", "3", CVAR_ARCHIVE, 0, qtrue },	
+	{ &g_MaxTurrets, "g_MaxTurrets", "5", CVAR_ARCHIVE, 0, qtrue },	
 
 	// Arsenal Stuff
 	{ &g_StartGauntlet, "g_StartGauntlet", "1", CVAR_ARCHIVE, 0, qtrue  },

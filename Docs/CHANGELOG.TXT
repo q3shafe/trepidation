@@ -46,6 +46,10 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Default single player and server configs now include g_maxturrets defaults.
+
+- Build menu now omits generator and power core for ctf games.
+
 - Set g_allowgrapple cvar in sample server configs.
 
 - Fixed up the regen model
