@@ -46,6 +46,8 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Fixed several broken bot voice sounds causing console errors.
+
 - Default single player and server configs now include g_maxturrets defaults.
 
 - Build menu now omits generator and power core for ctf games.
