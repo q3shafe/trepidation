@@ -960,12 +960,12 @@ static void DynamicMenu_BuildMenu( void )
 	DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
 	DynamicMenu_AddItem("Immobilizer", 0, NULL, DM_BuildItem);
 
-	if( s_dynamic.gamemode == 3) 
-	{
+	//if( s_dynamic.gamemode == 3) 
+	//{
 		
 		DynamicMenu_AddItem("Generator", 0, NULL, DM_BuildItem);
 		DynamicMenu_AddItem("Power Core", 0, NULL, DM_BuildItem);
-	}
+	//}
 
 	//DynamicMenu_AddItem("Close", 0, NULL, DM_Close_Event);
 
