@@ -46,6 +46,8 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Increased immobilizer health
+
 - ded-server.bat now references the correct default port number
 
 - Fixed "pure server" placement on server loading screen

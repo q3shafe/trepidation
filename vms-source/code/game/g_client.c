@@ -1671,7 +1671,56 @@ int		t;
 
 /*
 	When playing trepidation, a bot kinda randomly builds shit. 
+	
 */
+team_t PlaceImmobile(int team ) {
+
+int		i;
+int		c;	
+int		b = 0;	
+
+
+	c = 999;	
+	for ( i = 0 ; i < level.maxclients ; i++ ) {
+	
+		if (( level.clients[i].pers.connected == CON_DISCONNECTED ) && ( level.clients[i].ps.pm_type == PM_DEAD )) {
+			continue;
+		}
+			
+		if ( level.clients[i].sess.sessionTeam == team ) {
+			
+			// Make sure it's a bot
+			if(g_entities[i].r.svFlags & SVF_BOT)
+			{
+				c=i;
+			} 
+
+		}
+	}
+
+	if (c == 999) 
+	{ 
+		return c; // if there are no bots dont do anything, because
+	}
+
+	if (team == TEAM_BLUE) 
+	{	
+		// Set it down for the blue team
+		BuildDisplacer(&g_entities[c]);
+	}
+	
+	if (team == TEAM_RED) 
+	{	
+		// set it down for the red team
+		BuildDisplacer(&g_entities[c]);
+	}
+	
+	return c;
+	
+}
+
+
+
 team_t PlaceTurret(int team ) {
 
 int		i;

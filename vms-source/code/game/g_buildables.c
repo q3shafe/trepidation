@@ -35,6 +35,10 @@ extern qboolean CanBuildHere(gentity_t *playerent); //In g_weapon -Shafe
 #define	TURRET_MG_DAMAGE2	40
 
 
+// Lets define trep rules
+#define PC_HEALTH	1500
+
+
 /*
 ===========================
 turret_explode
@@ -1233,7 +1237,7 @@ void BuildDisplacer( gentity_t *ent )
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 
-	base->health=150; // change this to make tougher or weaker.
+	base->health=250; // change this to make tougher or weaker.
 	base->s.eType=ET_GENERAL;
 	
 	base->s.time2=9; 

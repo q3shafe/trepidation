@@ -2039,6 +2039,7 @@ void CheckExitRules( void ) {
 	gitem_t	*regen = BG_FindItemForPowerup( PW_REGEN );
 	char *s;
 	int			rn;
+	int	cts;
 
 	// if at the intermission, wait for all non-bots to
 	// signal ready, then go to next level
@@ -2284,6 +2285,33 @@ void CheckExitRules( void ) {
 				} 
 		}
 
+		/*
+		// Bots building Immobilizers 
+
+
+			THIS CODE WORKS, HOWEVER DUE TO A KNOWN ISSUE https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=664637 IT CAUSES A SEGFAULT CRASHING THE GAME
+			THIS NEEDS TO BE ADDRESSED IN THE ENGINE BEFORE IMPLEMENTING.
+
+		rn = irandom(1,3); // 1 and 3 chance of building a immobilizer
+		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
+
+		if (((level.time-level.blueScoreTime) > 115000)  && (rn == 3) && (cts < 2) && (level.redTD < 3)&& (level.time-level.redBuilding > 15000)) // check the rules, check the randomization and time
+		{
+			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" ); }
+			level.redBuilding = level.time;
+			PlaceImmobile(TEAM_RED);		
+		}
+		rn = irandom(1,3); // 1 and 3 chance of building a immobilizer
+		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
+
+		if (((level.time-level.redScoreTime) > 115000)  && (rn == 3) && (cts < 2) && (level.blueTD < 3) && (level.time-level.blueBuilding > 15000)) // check the rules, check the randomization and time
+		{
+			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" ); }
+			level.blueBuilding = level.time;
+			PlaceImmobile(TEAM_BLUE);		
+		}
+		//////// end immobilizer
+		*/
 
 
 		// We have mc and a at least power generator, lets check proximity to mc and have 
@@ -2305,6 +2333,8 @@ void CheckExitRules( void ) {
 		if ((level.time-level.redScoreTime) > 115000) 
 		{
 		
+			// are immobilizers available?
+			
 			if ((level.blueTurrets < 5) && (level.blueGen > 0) && (level.blueNeedMC == 0) && ((level.time-level.blueBuilding) > rn))
 				{
 					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" ); }

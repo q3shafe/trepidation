@@ -769,6 +769,7 @@ qboolean SpotWouldTelefrag( gentity_t *spot );
 team_t PlaceMC(int team );
 team_t PlaceGen(int team );
 team_t PlaceTurret(int team );
+team_t PlaceImmobile(int team );
 
 //
 // g_svcmds.c
