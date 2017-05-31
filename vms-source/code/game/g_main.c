@@ -2293,20 +2293,20 @@ void CheckExitRules( void ) {
 			debug script: https://bugs.debian.org/cgi-bin/bugreport.cgi?att=1;bug=607178;filename=openarena-server;msg=10
 			THIS NEEDS TO BE ADDRESSED IN THE ENGINE BEFORE IMPLEMENTING.
 		*/
-		rn = irandom(1,3); // 1 and 3 chance of building a immobilizer
+		rn = irandom(1,2); // 1 and 3 chance of building a immobilizer
 		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
 
-		if (((level.time-level.blueScoreTime) > 115000)  && (rn == 3) && (cts < 2) && (level.redTD < 3)&& (level.time-level.redBuilding > 15000)) // check the rules, check the randomization and time
+		if (((level.time-level.blueScoreTime) > 115000)  && (rn == 1) && (cts > 2) && (level.redTD < 3)&& (level.time-level.redBuilding > 15000)) // check the rules, check the randomization and time
 		{
 			trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" );
 			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" ); }
 			level.redBuilding = level.time;
 			PlaceImmobile(TEAM_RED);		
 		}
-		rn = irandom(1,3); // 1 and 3 chance of building a immobilizer
+		rn = irandom(1,2); // 1 and 3 chance of building a immobilizer
 		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
 
-		if (((level.time-level.redScoreTime) > 115000)  && (rn == 3) && (cts < 2) && (level.blueTD < 3) && (level.time-level.blueBuilding > 15000)) // check the rules, check the randomization and time
+		if (((level.time-level.redScoreTime) > 115000)  && (rn == 1) && (cts > 2) && (level.blueTD < 3) && (level.time-level.blueBuilding > 15000)) // check the rules, check the randomization and time
 		{
 			trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" );
 			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" ); }

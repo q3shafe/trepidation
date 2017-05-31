@@ -512,10 +512,12 @@ void Cmd_Test_f (gentity_t *ent)
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redBuilding %i\n\"", level.redBuilding ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redmc %i\n\"", level.redMC ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.blumc %i\n\"", level.blueMC ));		
+		trap_SendServerCommand( ent-g_entities, va("print \" level.redTD %i\n\"", level.redTD));		
+		trap_SendServerCommand( ent-g_entities, va("print \" level.blueTD %i\n\"", level.blueTD));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.redscorelatched %i\n\"", level.redScoreLatched ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" level.bluescorelatched %i\n\"", level.blueScoreLatched ));		
 		trap_SendServerCommand( ent-g_entities, va("print \" Red Team Survivors %i\n\"", CountTeamSurvivors(TEAM_RED) ));		
-		trap_SendServerCommand( ent-g_entities, va("print \" Blue Team Survivors %i\n\"", CountTeamSurvivors(TEAM_RED) ));		
+		trap_SendServerCommand( ent-g_entities, va("print \" Blue Team Survivors %i\n\"", CountTeamSurvivors(TEAM_BLUE) ));		
 		//trap_SendServerCommand( ent-g_entities, va("print \" level.scoreTime %i\n\"", (level.time-level.scoreTime) ));		
 }
 
