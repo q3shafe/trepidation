@@ -1752,7 +1752,7 @@ int		f;
 	if (c == 999) 
 	{ 
 		//  the above failed, do nothing... 
-		return c;
+		return;
 		
 	}
 
@@ -1780,7 +1780,7 @@ int		f;
 		BuildTurret(&g_entities[c],type);
 	}
 	
-	return c;
+	return;
 	
 }
 

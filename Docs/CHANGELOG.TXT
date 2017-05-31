@@ -46,6 +46,8 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Bots now build immobilizers
+
 - Increased immobilizer health
 
 - ded-server.bat now references the correct default port number

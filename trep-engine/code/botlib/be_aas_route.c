@@ -1857,7 +1857,7 @@ int AAS_PredictRoute(struct aas_predictroute_s *route, int areanum, vec3_t origi
 			if (j >= reachareas->numareas)
 				testareanum = reach->areanum;
 			else
-				testareanum = aasworld.reachabilityareaindex[reachareas->firstarea + j];
+				testareanum = aasworld.reachabilityareaindex[reachareas->firstarea + j]; // Shafe - this line is causing server crashes
 			if (stopevent & RSE_ENTERCONTENTS)
 			{
 				if (aasworld.areasettings[testareanum].contents & stopcontents)
