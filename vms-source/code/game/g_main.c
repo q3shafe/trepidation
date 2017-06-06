@@ -2426,6 +2426,35 @@ void CheckExitRules( void ) {
 				PlaceTurret(TEAM_BLUE);
 				return;
 		} 
+
+
+
+		
+		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
+
+		if (((level.time-level.blueScoreTime) > 115000)  && (cts > 2) && (level.redTD < 3)&& (level.time-level.redBuilding > 15000)) // check the rules, check the randomization and time
+		{
+			trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" );
+			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" ); }
+			level.redBuilding = level.time;
+			PlaceImmobile(TEAM_RED);	
+
+		}
+		rn = irandom(1,2); // 1 and 3 chance of building a immobilizer
+		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
+
+		if (((level.time-level.redScoreTime) > 115000) && (cts > 2) && (level.blueTD < 3) && (level.time-level.blueBuilding > 15000)) // check the rules, check the randomization and time
+		{
+			trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" );
+			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" ); }
+			level.blueBuilding = level.time;
+			PlaceImmobile(TEAM_BLUE);	
+
+		}
+
+
+
+
 	}
 	
 
