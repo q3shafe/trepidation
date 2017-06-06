@@ -2254,7 +2254,8 @@ void CheckExitRules( void ) {
 		// It's a fluke... Force build of the MC and no one scores.
 		if ((level.redMC <= 0) && (level.redNeedMC == 0)) { level.redNeedMC= 1; }
 		if ((level.blueMC <= 0) && (level.blueNeedMC == 0)) { level.blueNeedMC= 1; }
-		
+		if (level.blueTD < 0) { level.blueTD = 0; }
+		if (level.redTD < 0) { level.redTD = 0; }
 
 	
 		
@@ -2269,7 +2270,7 @@ void CheckExitRules( void ) {
 					level.redBuilding = level.time;
 					PlaceGen(TEAM_RED);
 
-					return;
+					
 				} 
 		}
 		rn = irandom(10000,25000); // randomize the timing a bit 10-25 seconds
@@ -2281,7 +2282,7 @@ void CheckExitRules( void ) {
 					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a generator.\n\"" ); }
 					level.blueBuilding = level.time;
 					PlaceGen(TEAM_BLUE);
-					return;
+					
 				} 
 		}
 
@@ -2293,10 +2294,10 @@ void CheckExitRules( void ) {
 			debug script: https://bugs.debian.org/cgi-bin/bugreport.cgi?att=1;bug=607178;filename=openarena-server;msg=10
 			THIS NEEDS TO BE ADDRESSED IN THE ENGINE BEFORE IMPLEMENTING.
 		*/
-		rn = irandom(1,2); // 1 and 3 chance of building a immobilizer
+		rn = irandom(1,1); // 1 and 3 chance of building a immobilizer
 		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
 
-		if (((level.time-level.blueScoreTime) > 115000)  && (rn == 1) && (cts > 2) && (level.redTD < 3)&& (level.time-level.redBuilding > 15000)) // check the rules, check the randomization and time
+		if ((cts > 2) && (level.redTD < 3)&& (level.time-level.redBuilding > 15000)) // check the rules, check the randomization and time
 		{
 			trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" );
 			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" ); }
@@ -2306,7 +2307,7 @@ void CheckExitRules( void ) {
 		rn = irandom(1,2); // 1 and 3 chance of building a immobilizer
 		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
 
-		if (((level.time-level.redScoreTime) > 115000)  && (rn == 1) && (cts > 2) && (level.blueTD < 3) && (level.time-level.blueBuilding > 15000)) // check the rules, check the randomization and time
+		if ((cts > 2) && (level.blueTD < 3) && (level.time-level.blueBuilding > 15000)) // check the rules, check the randomization and time
 		{
 			trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" );
 			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" ); }
@@ -2330,7 +2331,7 @@ void CheckExitRules( void ) {
 					level.redBuilding = level.time;
 					PlaceTurret(TEAM_RED);
 
-					return;
+					
 				} 
 		}
 		rn = irandom(10000,35000); // randomize the timing a bit 10-25 seconds
@@ -2345,7 +2346,7 @@ void CheckExitRules( void ) {
 					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" ); }
 					level.blueBuilding = level.time;
 					PlaceTurret(TEAM_BLUE);
-					return;
+					
 				} 
 		}
 
@@ -2414,7 +2415,7 @@ void CheckExitRules( void ) {
 			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" ); }
 			level.redBuilding = level.time;
 			PlaceTurret(TEAM_RED);
-			return;
+			
 		} 
 		
 		rn = irandom(10000,65000); // randomize the timing a bit 10-25 seconds
@@ -2424,7 +2425,7 @@ void CheckExitRules( void ) {
 				
 				level.blueBuilding = level.time;
 				PlaceTurret(TEAM_BLUE);
-				return;
+				
 		} 
 
 
