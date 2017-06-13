@@ -1,6 +1,6 @@
 //
 // Trepidation Buildable Objects 
-// (C)2006-2011 Trepidation
+// (C)2006-2017 Trepidation
 // General Public License
 //
 // Most of the build rules are checked before any of the stuff in here is executed. 
@@ -49,6 +49,7 @@ stuff.. So it's at top
 void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod)
 {
 
+	gentity_t	*buildables = NULL; 
 	vec3_t dir; // needed by the event being adde
 
 	dir[0] = dir[1] = 0;
@@ -848,7 +849,7 @@ void MC_think(gentity_t *ent)
 	// This turns shielding off and regeneration stops.
 	if (ent->s.time2==1)
 	{
-		if (ent->health<350) // Was 350
+		if (ent->health<150) // Was 350
 		{
 			ent->s.time2=0;
 		}

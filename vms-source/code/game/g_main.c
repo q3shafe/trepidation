@@ -2033,6 +2033,7 @@ void CheckExitRules( void ) {
 	gclient_t	*cl;
 	// Arsenal Trepidation Stuff
 	gentity_t	*self;
+	gentity_t	*buildables;
 	gitem_t	*quad = BG_FindItemForPowerup( PW_QUAD );
 	gitem_t	*flight = BG_FindItemForPowerup( PW_FLIGHT );
 	gitem_t	*battles = BG_FindItemForPowerup( PW_BATTLESUIT );
@@ -2040,6 +2041,7 @@ void CheckExitRules( void ) {
 	char *s;
 	int			rn;
 	int	cts;
+
 
 	// if at the intermission, wait for all non-bots to
 	// signal ready, then go to next level
@@ -2167,6 +2169,11 @@ void CheckExitRules( void ) {
 			level.teamScores[ TEAM_RED ]++; 
 			//CalculateRanks(); // This is causing crashes
 			BroadCastSound("sound/teamplay/voc_red_scores.ogg");
+			// Clear mc from other team --- Hrrrmmm
+			while ((buildables = G_Find (buildables, FOFS(classname), "mc")) != NULL)
+			{
+			
+			}
 			
 
 
@@ -2184,6 +2191,13 @@ void CheckExitRules( void ) {
 			level.teamScores[ TEAM_BLUE ]++;
 			//CalculateRanks();  // This is causing crashes
 			BroadCastSound("sound/teamplay/voc_blue_scores.ogg");
+			// clear the other team power core
+			// Clear mc from other team -- Hrrmmm
+			while ((buildables = G_Find (buildables, FOFS(classname), "mc")) != NULL)
+			{
+				
+			}
+
 
 
 			//return;
@@ -2288,18 +2302,13 @@ void CheckExitRules( void ) {
 
 		/*
 		// Bots building Immobilizers 
-
-
-			THIS CODE WORKS, HOWEVER DUE TO A KNOWN ISSUE https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=664637 IT CAUSES A SEGFAULT CRASHING THE GAME
-			debug script: https://bugs.debian.org/cgi-bin/bugreport.cgi?att=1;bug=607178;filename=openarena-server;msg=10
-			THIS NEEDS TO BE ADDRESSED IN THE ENGINE BEFORE IMPLEMENTING.
 		*/
 		rn = irandom(1,1); // 1 and 3 chance of building a immobilizer
 		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
 
 		if ((cts > 2) && (level.redTD < 3)&& (level.time-level.redBuilding > 15000)) // check the rules, check the randomization and time
 		{
-			trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" );
+			//trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" );
 			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" ); }
 			level.redBuilding = level.time;
 			PlaceImmobile(TEAM_RED);		
@@ -2309,7 +2318,7 @@ void CheckExitRules( void ) {
 
 		if ((cts > 2) && (level.blueTD < 3) && (level.time-level.blueBuilding > 15000)) // check the rules, check the randomization and time
 		{
-			trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" );
+			//trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" );
 			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" ); }
 			level.blueBuilding = level.time;
 			PlaceImmobile(TEAM_BLUE);		
@@ -2326,7 +2335,7 @@ void CheckExitRules( void ) {
 		
 			if ((level.redTurrets < 5) && (level.redGen > 0) && (level.redNeedMC == 0) && ((level.time-level.redBuilding) > rn))
 				{
-					trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" );
+					//trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" );
 					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing A Turret.\n\"" ); }
 					level.redBuilding = level.time;
 					PlaceTurret(TEAM_RED);
@@ -2342,7 +2351,7 @@ void CheckExitRules( void ) {
 			
 			if ((level.blueTurrets < 5) && (level.blueGen > 0) && (level.blueNeedMC == 0) && ((level.time-level.blueBuilding) > rn))
 				{
-					trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" ); 
+					//trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" ); 
 					if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue bot placing a Turret.\n\"" ); }
 					level.blueBuilding = level.time;
 					PlaceTurret(TEAM_BLUE);

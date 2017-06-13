@@ -46,6 +46,9 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Fixed broken bot, removed beret bot, added moulder bot.
+
+- Lowered the powercores regeneration threshhold
 
 - Bots now build immobilizers
 
