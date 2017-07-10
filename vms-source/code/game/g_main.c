@@ -275,7 +275,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_lastmap2, "g_lastmap2", "0", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_mapfile, "g_mapfile", "map_rotation.cfg", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_easymap, "g_easymap", "0", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
-	{ &g_easymap, "g_suddendeath", "1", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
+	{ &g_suddendeath, "g_suddendeath", "1", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_AutoChangeMap, "g_AutoChangeMap", "0", 0, 0, qfalse },
 	{ &g_RegenHealth, "g_RegenHealth", "0", 0, 0, qtrue },
 	{ &g_RegenAmmo, "g_RegenAmmo", "0", 0, 0, qtrue },
@@ -2509,12 +2509,12 @@ void CheckExitRules( void ) {
 	}
 
 	// check for sudden death
-	//if (g_suddendeath.integer == 1) { // wtf, why doesn't this work.
+	if (g_suddendeath.integer == 1) { 
 		if ( ScoreIsTied() ) {
 			// always wait for sudden death
 			return;
 		}
-	//}
+	}
 
 	if ( g_GameMode.integer == 3 && g_capturelimit.integer ) {
 

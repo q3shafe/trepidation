@@ -39,6 +39,33 @@ extern qboolean CanBuildHere(gentity_t *playerent); //In g_weapon -Shafe
 #define PC_HEALTH	1500
 
 
+
+void turret_remove(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int mod)
+{
+
+	gentity_t	*buildables = NULL; 
+	vec3_t dir; // needed by the event being adde
+
+	dir[0] = dir[1] = 0;
+	dir[2] = 1;
+
+
+	if (self->chain) {
+		G_FreeEntity(self->chain); // get rid of the gun. // the gun just vanishes
+	}
+	
+	
+	self->s.weapon=WP_ROCKET_LAUNCHER; // to tell it what kind of explosion to use
+	self->takedamage = qfalse; // Stop multiple explosions -Vincent
+	self->targetname = ""; // And again... -Vincent
+	G_AddEvent( self, EV_MISSILE_MISS, DirToByte( dir ) ); // to tell it to spawn an explosion here
+	self->freeAfterEvent = qtrue; // so the base goes away after the explosion
+	self->think = G_FreeEntity;
+
+}
+
+
+
 /*
 ===========================
 turret_explode
@@ -152,6 +179,14 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 								AddScore(attacker, self->r.currentOrigin, -10); 
 							}
 						}
+							/*
+							while ((buildables = G_Find (buildables, FOFS(classname), "mc")) != NULL)
+							{
+						
+							}
+							*/
+
+
 					}
 				}
 			}		

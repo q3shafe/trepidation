@@ -46,6 +46,8 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- g_suddendeath always works now, it was a bit buggy before.
+
 - Fixed broken bot, removed beret bot, added moulder bot.
 
 - Lowered the powercores regeneration threshhold
@@ -62,7 +64,7 @@ Trepidation Changelog - Most Recent Changes First
 
 - Fixed several broken bot voice sounds causing console errors.
 
-- Default single player and server configs now include g_maxturrets defaults.
+- Default single player and server configs now include g_maxturrets defaults. need g_allowturrets
 
 - Build menu now omits generator and power core for ctf games.
 

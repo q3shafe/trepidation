@@ -1418,15 +1418,18 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	if ( client && client->ps.powerups[PW_BATTLESUIT] ) {
 		G_AddEvent( targ, EV_POWERUP_BATTLESUIT, 0 );
 		
-		// LFO Rifle can get through battlesuite - trep (maybe some other weapon?)
-		if (mod == MOD_MACHINEGUN)
+		// Gauntlet can get through battlesuite - trep (maybe some other weapon?)
+		if (mod == MOD_GAUNTLET)
 		{
 			damage *= 0.50;			
+		} else {
+			return;
 		}
 		
 		if ( ( dflags & DAMAGE_RADIUS ) || ( mod == MOD_FALLING ) ) {
 			return;
 		}
+		
 	}
 
 
