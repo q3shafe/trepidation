@@ -411,11 +411,15 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 	{
 		if (client->sess.sessionTeam == TEAM_RED) 
 		{
+			if(level.redMC < 1) { level.redCredits = 0; }
 			trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", level.redCredits) );	
+			
 		}
 		else
 		{
+			if(level.blueMC < 1) { level.blueCredits = 0; }
 			trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", level.blueCredits) );
+			
 		}
 	}
 

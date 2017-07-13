@@ -136,6 +136,7 @@ vmCvar_t    g_CurrentRound;
 vmCvar_t	g_allowGrapple;
 vmCvar_t	g_allowDevastator;
 vmCvar_t	g_suddendeath;
+vmCvar_t         g_pointrebuild; 
 
 vmCvar_t	trep_debug;
 
@@ -276,6 +277,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_mapfile, "g_mapfile", "map_rotation.cfg", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_easymap, "g_easymap", "0", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_suddendeath, "g_suddendeath", "1", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
+	{ &g_pointrebuild, "g_pointrebuild", "1", CVAR_ARCHIVE | CVAR_ARCHIVE, 0, qfalse},
 	{ &g_AutoChangeMap, "g_AutoChangeMap", "0", 0, 0, qfalse },
 	{ &g_RegenHealth, "g_RegenHealth", "0", 0, 0, qtrue },
 	{ &g_RegenAmmo, "g_RegenAmmo", "0", 0, 0, qtrue },

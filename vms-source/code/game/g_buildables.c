@@ -54,6 +54,20 @@ void turret_remove(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, i
 		G_FreeEntity(self->chain); // get rid of the gun. // the gun just vanishes
 	}
 	
+	if (self->s.team == TEAM_BLUE)
+	{
+		trap_SendServerCommand( -1, "print \"DEBUG: Called destroy buildables for BLUE.\n\"" );
+		level.blueMC = 0; 	
+		level.blueBuilding = level.time;
+		level.blueNeedMC= 1;
+	}
+	if (self->s.team == TEAM_RED)
+	{
+		trap_SendServerCommand( -1, "print \"DEBUG: Called destroy buildables for RED.\n\"" );
+		level.redMC = 0; 	
+		level.redBuilding = level.time;
+		level.redNeedMC= 1;
+	}
 	
 	self->s.weapon=WP_ROCKET_LAUNCHER; // to tell it what kind of explosion to use
 	self->takedamage = qfalse; // Stop multiple explosions -Vincent
@@ -179,12 +193,22 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 								AddScore(attacker, self->r.currentOrigin, -10); 
 							}
 						}
-							/*
+							
+						if(g_pointrebuild.integer == 1) {
 							while ((buildables = G_Find (buildables, FOFS(classname), "mc")) != NULL)
 							{
-						
+									if(self->s.team = TEAM_RED) {
+									buildables->die=turret_remove;
+									trap_SendConsoleCommand( EXEC_INSERT, va("g_RedMC \"%i\"\n", 0) );
+									//buildables->health = 0;	
+									level.blueScoreTime = level.time;
+									buildables->nextthink = 500;
+									turret_remove(buildables,attacker,attacker,5000,MOD_LAVA);
+									
+									}
 							}
-							*/
+						}	
+							
 
 
 					}
@@ -280,6 +304,22 @@ void turret_explode(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, 
 								AddScore(attacker, self->r.currentOrigin, -10); 
 							}
 						}
+							
+						if(g_pointrebuild.integer == 1) {
+							while ((buildables = G_Find (buildables, FOFS(classname), "mc")) != NULL)
+							{
+								if(self->s.team = TEAM_BLUE) {
+								buildables->die=turret_remove;
+								//buildables->health = 0;
+								trap_SendConsoleCommand( EXEC_INSERT, va("g_BlueMC \"%i\"\n", 0) );								
+								turret_remove(buildables,attacker,attacker,5000,MOD_LAVA);
+								level.redScoreTime = level.time;
+								
+								}
+								
+							}
+						}
+							
 					}
 				}
 			
