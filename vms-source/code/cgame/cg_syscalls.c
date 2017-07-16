@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
+// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
 //
 // cg_syscalls.c -- this file is only included when building a dll
 // cg_syscalls.asm is included instead when building a qvm

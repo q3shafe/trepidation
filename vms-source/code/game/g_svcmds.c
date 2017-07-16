@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
+// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
 //
 
 // this file holds commands that can be executed by the server console, but not remote clients

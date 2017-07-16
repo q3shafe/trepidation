@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
+// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
 //
 // cg_servercmds.c -- reliably sequenced text commands sent by the server
 // these are processed at snapshot transition time, so there will definately

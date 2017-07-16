@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
+// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
 //
 /*
 =======================================================================
@@ -142,7 +142,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
-{ "(c)2006-2017 Team Trepidation", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "(c)2006-2017 Team Trepidation / N5 Networks", UI_CENTER|UI_SMALLFONT, &color_maintext },
 //{ "General Public License", UI_CENTER|UI_SMALLFONT, &color_maintext },
 
   {NULL}

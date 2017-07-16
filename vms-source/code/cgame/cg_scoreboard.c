@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
+// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
 //
 // cg_scoreboard -- draw the scoreboard on top of the game screen
 #include "cg_local.h"
@@ -149,6 +149,7 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 	}
 #endif
 	// draw the score line
+	
 	if ( score->ping == -1 ) {
 		Com_sprintf(string, sizeof(string),
 			" connecting    %s", ci->name);
@@ -157,6 +158,7 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 		{
 		Com_sprintf(string, sizeof(string),
 			"(X) %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
+		
 		} else {
 		Com_sprintf(string, sizeof(string),
 			"SPEC %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);

@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
+// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
 //
 /*
 =======================================================================
@@ -221,9 +221,9 @@ static void Main_MenuDraw( void ) {
 
 	if (uis.demoversion) {
 		UI_DrawProportionalString( 320, 372, "DEMO      FOR MATURE AUDIENCES      DEMO", UI_CENTER|UI_SMALLFONT, color );
-		UI_DrawString( 320, 400, "Tredpidation (c)2006-2017, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
+		UI_DrawString( 320, 400, "Tredpidation (c)2006-2017, N5 Networks", UI_CENTER|UI_SMALLFONT, color );
 	} else {
-		UI_DrawString( 320, 450, "Tredpidation (c)2006-2017, Team Trepidation", UI_CENTER|UI_SMALLFONT, color );
+		UI_DrawString( 320, 450, "Tredpidation (c)2006-2017, N5 Networks", UI_CENTER|UI_SMALLFONT, color );
 	}
 }
 
