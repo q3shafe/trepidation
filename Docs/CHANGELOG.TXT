@@ -48,6 +48,10 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 - Updated website references with new website.
 
+- Updating sevrer configs for new master server
+
+- Updating exe with new master server
+
 - add g_pointrebuild which in the trepidation gametype, set to 1, will force both teams to rebuild power cores and all buildables after a point is made. This defaults to 1
 
 - g_suddendeath always works now, it was a bit buggy before.
