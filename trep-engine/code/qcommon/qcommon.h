@@ -253,10 +253,10 @@ extern int demo_protocols[];
 // override on command line, config files etc.
 #ifndef MASTER_SERVER_NAME
 #define MASTER_SERVER_NAME	"master.n5net.com" // Shafe - Trep 
-#define ALT_MASTER0	"master.evil-clan.com" // Shafe - Trep
-#define ALT_MASTER1	"trepidation.n5net.com" // Shafe - Trep
+#define ALT_MASTER0	"master.planettrepidation.tk" // Shafe - Trep
+#define ALT_MASTER1	"master.evil-clan.com" // Shafe - Trep
 #define ALT_MASTER2	"master2.n5net.com" // Shafe - Trep
-#define ALT_MASTER3	"master3.n5net.com" // Shafe - Trep -
+#define ALT_MASTER3	"trepidation.n5net.com" // Shafe - Trep -
 #endif
 
 #ifndef STANDALONE
