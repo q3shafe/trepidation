@@ -18,6 +18,8 @@ Game Highlights:
 
 NEW AND NOTABLE:
 
+- Trepidation gametype with Instagib modifier.
+
 - New One 4 All Gametype in Single Player Mode.
 
 - Bots can now, somewhat decently, play the Trepidation gametype.
@@ -90,7 +92,7 @@ Trepidation Changelog - Most Recent Changes First
 
 
 ================================
-02-23-2017 Dev Build
+05-25-2017 Dev Build
 ================================
 - Disabled grapple in Single player ctf config (can alter it through console)
 
