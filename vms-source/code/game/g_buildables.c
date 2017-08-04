@@ -56,14 +56,14 @@ void turret_remove(gentity_t *self, gentity_t *inflictor, gentity_t *attacker, i
 	
 	if (self->s.team == TEAM_BLUE)
 	{
-		trap_SendServerCommand( -1, "print \"DEBUG: Called destroy buildables for BLUE.\n\"" );
+		//trap_SendServerCommand( -1, "print \"DEBUG: Called destroy buildables for BLUE.\n\"" );
 		level.blueMC = 0; 	
 		level.blueBuilding = level.time;
 		level.blueNeedMC= 1;
 	}
 	if (self->s.team == TEAM_RED)
 	{
-		trap_SendServerCommand( -1, "print \"DEBUG: Called destroy buildables for RED.\n\"" );
+		//trap_SendServerCommand( -1, "print \"DEBUG: Called destroy buildables for RED.\n\"" );
 		level.redMC = 0; 	
 		level.redBuilding = level.time;
 		level.redNeedMC= 1;
@@ -924,7 +924,8 @@ void MC_think(gentity_t *ent)
 	// This turns shielding off and regeneration stops.
 	if (ent->s.time2==1)
 	{
-		if (ent->health<150) // Was 350
+		
+		if ((ent->health<150) && (g_instagib.integer == 0)) // Was 350
 		{
 			ent->s.time2=0;
 		}

@@ -46,6 +46,12 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Time to build a power core has been reduce to 35 seconds from 55.
+
+- generators work regardless of the power cores health with instagib modifier on.
+
+- power core can no longer be destroyed with one shot with instagib modifier on.
+
 - Updated website references with new website.
 
 - Updating sevrer configs for new master server

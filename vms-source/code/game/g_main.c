@@ -2242,7 +2242,7 @@ void CheckExitRules( void ) {
 
 
 		// If no one places the power core, place one for them after 55 seconds.
-		if ((level.time-level.redScoreTime) > 55000) 
+		if ((level.time-level.redScoreTime) > 35000) 
 		{
 
 			 if ((level.blueMC == 0) && (level.blueNeedMC == 1))
@@ -2254,7 +2254,7 @@ void CheckExitRules( void ) {
 				}
 		}
 		
-		if ((level.time-level.blueScoreTime) > 55000) 
+		if ((level.time-level.blueScoreTime) > 35000) 
 		{
 		
 				if ((level.redMC == 0) && (level.redNeedMC == 1))
