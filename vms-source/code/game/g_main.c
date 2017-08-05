@@ -2277,7 +2277,7 @@ void CheckExitRules( void ) {
 		
 		// If we have an MC, lets lay down at a later time power generators
 		rn = irandom(10000,25000); // randomize the timing a bit 10-25 seconds
-		if ((level.time-level.blueScoreTime) > 30000) 
+		if ((level.time-level.blueScoreTime) > 15000) 
 		{
 		
 			if ((level.redGen < 2) && (level.redNeedMC == 0) && ((level.time-level.redBuilding) >rn))
@@ -2290,7 +2290,7 @@ void CheckExitRules( void ) {
 				} 
 		}
 		rn = irandom(10000,25000); // randomize the timing a bit 10-25 seconds
-		if ((level.time-level.redScoreTime) > 30000) 
+		if ((level.time-level.redScoreTime) > 15000) 
 		{
 		
 			if ((level.blueGen < 2) && (level.blueNeedMC == 0) && ((level.time-level.blueBuilding) > rn))
@@ -2308,7 +2308,7 @@ void CheckExitRules( void ) {
 		rn = irandom(1,1); // 1 and 3 chance of building a immobilizer
 		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
 
-		if ((cts > 2) && (level.redTD < 3)&& (level.time-level.redBuilding > 15000)) // check the rules, check the randomization and time
+		if ((cts > 2) && (level.redTD < 3)&& (level.time-level.redBuilding > 30000)) // check the rules, check the randomization and time
 		{
 			//trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" );
 			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Red Bot Placing Immobilizer.\n\"" ); }
@@ -2318,7 +2318,7 @@ void CheckExitRules( void ) {
 		rn = irandom(1,2); // 1 and 3 chance of building a immobilizer
 		cts = level.teamScores[ TEAM_RED ] + level.teamScores[ TEAM_BLUE ];
 
-		if ((cts > 2) && (level.blueTD < 3) && (level.time-level.blueBuilding > 15000)) // check the rules, check the randomization and time
+		if ((cts > 2) && (level.blueTD < 3) && (level.time-level.blueBuilding > 30000)) // check the rules, check the randomization and time
 		{
 			//trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" );
 			if (trep_debug.integer) { trap_SendServerCommand( -1, "print \"DEBUG: Blue Bot Placing Immobilizer.\n\"" ); }
