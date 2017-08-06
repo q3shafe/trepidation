@@ -5,7 +5,7 @@ The full changelog is below.
 IMPORTANT NOTES BEFORE INSTALLING THIS:
 
 Game Highlights:
-- 17 multiplayer levels (maps).  
+- 18 multiplayer levels (maps).  
 - Quake 3 and Star Trek Voyager Elite Force Map Compatability.
 - An original soundtrack featuring 10 original tracks.
 - 7 Game Modes.
@@ -48,6 +48,8 @@ Trepidation Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Added new map from LAZ, "Acid".
+
 - Hit sound now happens when you hit a buildable object.
 
 - Time to build a power core has been reduce to 35 seconds from 55.
