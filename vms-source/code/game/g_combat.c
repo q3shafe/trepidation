@@ -1369,10 +1369,11 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 	/*
 	if ((targ->s.eType ==ET_BUILDABLE) && (targ->s.team != attacker->client->sess.sessionTeam))
 	{
-		G_AddEvent( attacker , EV_BUILDABLE_HIT, 0);
+		//G_AddEvent( attacker , EV_BUILDABLE_HIT, 0);
+		//trap_SendServerCommand(targ->client->ps.clientNum, "-buildhit");
 	}
 	*/
-	
+
 	
 	// Debug
 
@@ -1435,10 +1436,12 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
 
 
 	// add to the attacker's hit counter (if the target isn't a general entity like a prox mine)
+	//&& targ->s.eType != ET_BUILDABLE 
 	if ( attacker->client && targ != attacker && targ->health > 0
 			&& targ->s.eType != ET_MISSILE
 			&& targ->s.eType != ET_GENERAL
-			&& targ->s.eType != ET_BUILDABLE ) {
+			
+			) {
 		if ( OnSameTeam( targ, attacker ) ) {
 			attacker->client->ps.persistant[PERS_HITS]--;
 		} else {

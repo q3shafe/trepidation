@@ -993,7 +993,6 @@ static void CG_ServerCommand( void ) {
 		return;
 	}
 
-	
 	// Gauss Rifle Zoom
 	if ( !strcmp( cmd, "+gzoom" ) ) {
 		CG_ZoomDown_f();

@@ -1112,6 +1112,9 @@ void ClientThink_real( gentity_t *ent ) {
 	}
 
 
+
+
+
 	// Let go of the hook if we aren't firing
 	/*  - Shafe - Trep - Commented out for offhand grapple
 	if ( client->ps.weapon == WP_GRAPPLING_HOOK &&
