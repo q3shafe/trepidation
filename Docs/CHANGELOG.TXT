@@ -1,10 +1,6 @@
-This dev build focuses a lot on the Trepidation Game Type as well as quite a few bugfixes.
-The full changelog is below.
+TREPIDATION CHANGELOG
 
-
-IMPORTANT NOTES BEFORE INSTALLING THIS:
-
-Game Highlights:
+GAME HIGHLIGHTS:
 - 18 multiplayer levels (maps).  
 - Quake 3 and Star Trek Voyager Elite Force Map Compatability.
 - An original soundtrack featuring 10 original tracks.
@@ -16,31 +12,21 @@ Game Highlights:
 - Random Map Rotations
 - New features for Mappers.
 
-NEW AND NOTABLE:
-
+SUMMARY OF THE NEW AND NOTABLE:
 - Trepidation gametype with Instagib modifier.
-
 - New One 4 All Gametype in Single Player Mode.
-
 - Bots can now, somewhat decently, play the Trepidation gametype.
-
 - Now Compatable with maps for Star Trek Elite Force and Quake 3.
-
 - Flame Thrower Primary Fire completely rewritten.
-
 - New Gametypes modes, One4All, Reverse CTF.
-
 - Build Gun Turrets to defend your flag.
-
 - Random Map Rotations
-
 - Server admins, setup simple file based map rotations.
-
 - Lots of bugfixes
 
 
 ==================================================
-Trepidation Changelog - Most Recent Changes First
+Detailed Changelog - Most Recent Changes First
 ==================================================
 
 
