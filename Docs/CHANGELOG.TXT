@@ -34,6 +34,8 @@ Detailed Changelog - Most Recent Changes First
 ==============================================
 	***** CURRENT SNAPSHOT *****
 ==============================================
+- Updated server protocol.
+
 - Added new map from LAZ, "Acid".
 
 - Hit sound now happens when you hit a buildable object.
