@@ -382,4 +382,17 @@ textures/common/ladderclip
         surfaceparm ladder
 }
 
+textures/common/ladder
+{
+        q3map_globaltexture
+	qer_trans 0.40
+        surfaceparm nolightmap
+        surfaceparm nomarks
+        surfaceparm nodraw
+        surfaceparm nonsolid
+        surfaceparm playerclip
+        surfaceparm noimpact
+        surfaceparm ladder
+}
+
 

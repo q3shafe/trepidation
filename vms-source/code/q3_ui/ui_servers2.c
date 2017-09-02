@@ -145,10 +145,10 @@ static const char *sortkey_items[] = {
 };
 
 static char* gamenames[] = {
-	"DM ",	// deathmatch
+	"FFA ",	// deathmatch
 	"1v1",	// tournament
 	"SP ",	// single player
-	"Team DM",	// team deathmatch
+	"Team FFA",	// team deathmatch
 	"CTF",	// capture the flag
 	"Arsenal",		// one flag ctf
 	"Survival",				// Overload

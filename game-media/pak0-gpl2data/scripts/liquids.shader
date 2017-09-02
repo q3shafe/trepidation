@@ -68,3 +68,33 @@ textures/liquids/pool2
 	}
 }
 
+textures/liquids/healpool
+{
+	qer_editorimage textures/liquids/pool2.tga
+	surfaceparm nomarks
+	surfaceparm trans
+	surfaceparm water
+	cull disable
+	deformVertexes wave 128 sin 3 2 0.1 0.5 
+	tessSize 64
+	qer_trans 0.5
+	{
+		map textures/liquids/pool2.tga
+		blendfunc add
+		rgbGen Vertex
+		tcMod scroll 0.2 -0.2
+	}
+	{
+		map textures/liquids/pool2.tga
+		blendfunc add
+		rgbGen Vertex
+		tcMod scroll 0.2 0.2
+	}
+	{
+		map textures/liquids/pool2.tga
+		blendfunc gl_dst_color gl_one
+		rgbGen Vertex
+		tcMod scroll 0.2 0.2
+		tcGen environment 
+	}
+}

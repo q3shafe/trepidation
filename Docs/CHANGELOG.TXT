@@ -29,11 +29,14 @@ SUMMARY OF THE NEW AND NOTABLE:
 Detailed Changelog - Most Recent Changes First
 ==================================================
 
+- Changed various text referring to the old (still working) website url.
 
+- Changed DM to FFA to reflect free for all wording.
 
 ==============================================
-	***** CURRENT SNAPSHOT *****
+	***** VERSION 0.0.20 *****
 ==============================================
+
 - Updated server protocol.
 
 - Added new map from LAZ, "Acid".
