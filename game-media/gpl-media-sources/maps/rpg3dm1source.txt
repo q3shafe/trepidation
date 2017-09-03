@@ -1,0 +1,80 @@
+Map name		: A Genius Trapped in an Idiot's Mind
+File name		: rpg3dm1source.zip
+			  rpg3dm1.map
+			  rpg3dm1source.txt
+Archive size		: 90.9kb
+Date completed		: September 13, 2003
+Author			: Robert P. Gove Jr
+Net Nickname		: R.P.G.
+E-mail address		: rpg_6sp@hotmail.com
+			  All comments are welcome
+Home page		: http://rpg.spawnpoint.org
+Description		: This is the source .map for rpg3dm1.bsp.
+Additional credits	: id Software, Speedy, metlslime, and Xatrix for the
+			  textures.
+Thank yous		: God, Mom, Dogfish, Jackson Tufts, Dan Smith, and all
+			  the testers.
+Testers			: nanoSpawn, monsto, scampie, Dietz, metlslime.
+Previous works		: could.bsp; RPGSP1; RPG100B1; contributed to SM32; a
+			  few Q1 speedmaps; an old poor-quality Q2SP; an old
+			  poor-quality Q3DM; and some really old Duke3D maps.
+Plugs			: http://celephais.net/board/ -- Func_MsgBoard (QMap)
+
+
+* Play Information *
+Game			: Quake III Arena (intended for CPM mod)
+Botmatch		: Yes; .AAS file included.
+Teamplay		: Not intended, but might play well
+Free for all		: Yes
+Tourney			: Yes
+New sounds		: None
+New graphics		: Yes; by Than and Lunaran.
+New music		: No
+
+
+* Construction *
+
+Base			: New level from scratch
+Editor(s) used		: GtkRadiant v1.2.13
+Build time		: A little less than 8 days.  Maybe 30 hours?
+Known bugs		: None
+
+Compile utilities	: Q3map2 and bspc
+Brushes			: 1364
+Entities		: 71
+
+
+
+* WHERE TO GET THIS LEVEL *
+
+http://rpg.spawnpoint.org
+Try a Google.com search for could.zip if my site is down.
+
+
+
+* PLEASE NOTE *
+
+Neither I or id Software are responsible for any damage these files may or
+may not cause.  However, it is highly unlikely that any damage will be
+caused as a direct result from these files.
+
+
+
+* COPYRIGHT NOTICES and PERMISSIONS *
+
+Copyright (C) 2003 Robert P. Gove Jr.
+Textures copyright (C) their respective owners
+
+This level is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This level is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this level; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA

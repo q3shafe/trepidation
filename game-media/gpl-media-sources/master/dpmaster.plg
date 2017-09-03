@@ -1,0 +1,31 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: dpmaster - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP322.tmp" with contents
+[
+/nologo /ML /W3 /WX /GX /O2 /D "NDEBUG" /D "WIN32" /D "_CONSOLE" /Fp"Release/dpmaster.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"G:\games\trepidation\source\master\dpmaster.c"
+"G:\games\trepidation\source\master\messages.c"
+"G:\games\trepidation\source\master\servers.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1.CHU\LOCALS~1\Temp\RSP322.tmp" 
+Creating command line "link.exe wsock32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/dpmaster.pdb" /machine:I386 /out:"Release/dpmaster.exe"  .\Release\dpmaster.obj .\Release\messages.obj .\Release\servers.obj "
+<h3>Output Window</h3>
+Compiling...
+dpmaster.c
+messages.c
+servers.c
+Linking...
+
+
+
+<h3>Results</h3>
+dpmaster.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
