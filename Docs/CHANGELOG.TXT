@@ -28,6 +28,7 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Fixed ctf sample server configurations.
 
 - Changed various text referring to the old (still working) website url.
 

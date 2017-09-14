@@ -76,6 +76,7 @@ static void CG_ParseScores( void ) {
 		cg.scores[i].assistCount = atoi(CG_Argv(i * 14 + 15));
 		cg.scores[i].perfect = atoi(CG_Argv(i * 14 + 16));
 		cg.scores[i].captures = atoi(CG_Argv(i * 14 + 17));
+		cg.scores[i].deaths = atoi(CG_Argv(i * 14 + 18));
 
 
 		if ( cg.scores[i].client < 0 || cg.scores[i].client >= MAX_CLIENTS ) {

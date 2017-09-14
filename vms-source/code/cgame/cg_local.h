@@ -288,6 +288,7 @@ typedef struct {
 	int				captures;
 	qboolean	perfect;
 	int				team;
+	int				deaths;
 
 } score_t;
 

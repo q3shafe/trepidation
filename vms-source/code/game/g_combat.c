@@ -658,6 +658,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 				self->InstaStreak = 0;
 				attacker->InstaStreak++;
 				self->InstaDeaths++;
+				
 				self->InstaDeathStreak++;
 				attacker->InstaDeathStreak=0;
 				

@@ -62,6 +62,7 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 	char	string[1024];
 	vec3_t	headAngles;
 	clientInfo_t	*ci;
+	clientInfo_t	*ci;
 	int iconx, headx;
 
 	if ( score->client < 0 || score->client >= cgs.maxclients ) {
@@ -70,6 +71,7 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 	}
 	
 	ci = &cgs.clientinfo[score->client];
+	//ci = &cgs.clientinfo[score->client];
 
 	iconx = SB_BOTICON_X + (SB_RATING_WIDTH / 2);
 	headx = SB_HEAD_X + (SB_RATING_WIDTH / 2);
@@ -157,17 +159,17 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 		if ((cgs.g_GameMode == 1) || (cgs.g_GameMode == 2)) 
 		{
 		Com_sprintf(string, sizeof(string),
-			"(X) %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
+			"(X) %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->deaths, "%", ci->name);
 		
 		} else {
 		Com_sprintf(string, sizeof(string),
-			"SPEC %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
+			"SPEC %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->deaths, "%", ci->name);
 		}
 		
 	} else {
 		// Shafe - Trep
 		Com_sprintf(string, sizeof(string),
-			"%9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->accuracy, "%", ci->name);
+			"%9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->deaths, "%", ci->name);
 	}
 
 	// highlight your position
@@ -236,6 +238,7 @@ static int CG_TeamScoreboard( int y, team_t team, float fade, int maxClients, in
 	for ( i = 0 ; i < cg.numScores && count < maxClients ; i++ ) {
 		score = &cg.scores[i];
 		ci = &cgs.clientinfo[ score->client ];
+		
 
 		if ( team != ci->team ) {
 			continue;
@@ -343,7 +346,7 @@ qboolean CG_DrawOldScoreboard( void ) {
 	//CG_DrawPic( SB_NAME_X - (SB_RATING_WIDTH / 2), y, 64, 32, cgs.media.scoreboardName );
 	
 	// Shafe SB_SCORELINE_X + (SB_RATING_WIDTH / 2)
-	CG_DrawSmallString( SB_SCORE_X + (SB_RATING_WIDTH / 2), y, "SCORE  PING  TIME ACCURACY NAME", fade ); //1.0F
+	CG_DrawSmallString( SB_SCORE_X + (SB_RATING_WIDTH / 2), y, "SCORE  PING  TIME DEATHS NAME", fade ); //1.0F
 	// End Shafe
 
 	y = SB_TOP;
