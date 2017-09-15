@@ -2771,10 +2771,11 @@ void CheckExitRules( void ) {
 						//survivor = &level.clients[i];
 						if ( cl->pers.connected == CON_CONNECTED)
 						{												
-							//cl->sess.MatchScore = cl->sess.MatchScore + cl->ps.persistant[PERS_SCORE];				
-							//cl->pers.TrueScore = cl->ps.persistant[PERS_SCORE];							
-							//cl->sess.sessionTeam = TEAM_FREE;						
+						
 							level.clients[i].sess.wins += level.clients[i].pers.TrueScore;				
+							
+							//level.clients[i].pers.TrueScore += level.clients[i].ps.persistant[PERS_SCORE];
+
 							//trap_SendServerCommand( -1, va("print \"^7 %s Sesss.match %i persistant %i \n\"", cl->pers.netname, cl->sess.wins, cl->pers.TrueScore ) );
 						}
 

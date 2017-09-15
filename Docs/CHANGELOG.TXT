@@ -28,6 +28,10 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Fixed arsenal and survival grapple settings in single player.
+
+- Turrets and immobilizers are harder to destroy in instagib.
+
 - Fixed ctf sample server configurations.
 
 - Changed various text referring to the old (still working) website url.

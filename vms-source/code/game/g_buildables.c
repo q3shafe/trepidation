@@ -815,15 +815,28 @@ void BuildTurret( gentity_t *ent , int type )
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 	
-	if (type==0)
-	{
-		base->health=200; // change this to make the turrets tougher or weaker.
-	} 
-	else
-	{
-		base->health=300; // change this to make the turrets tougher or weaker.
+	if(g_instagib.integer = 0) {
+		if (type==0)
+		{
+			base->health=200; // change this to make the turrets tougher or weaker.
+		} 
+		else
+		{
+			base->health=300; // change this to make the turrets tougher or weaker.
+		}
+	} else {
+		// Instagib gets higher health on turrets
+		if (type==0)
+		{
+			base->health=400; // change this to make the turrets tougher or weaker.
+		} 
+		else
+		{
+			base->health=600; // change this to make the turrets tougher or weaker.
+		}
 	}
-	
+
+
 	base->s.eType=ET_GENERAL;
 
 	if (ent->client->sess.sessionTeam == TEAM_BLUE)
@@ -1314,7 +1327,13 @@ void BuildDisplacer( gentity_t *ent )
 	G_SetOrigin(base,ent->r.currentOrigin);
 	VectorSet(base->s.apos.trBase,0,ent->s.apos.trBase[1],0);
 
-	base->health=250; // change this to make tougher or weaker.
+	if(g_instagib.integer = 0) {
+		base->health=250; // change this to make tougher or weaker.
+	} else {
+		base->health=450; // change this to make tougher or weaker.
+	}
+
+
 	base->s.eType=ET_GENERAL;
 	
 	base->s.time2=9; 

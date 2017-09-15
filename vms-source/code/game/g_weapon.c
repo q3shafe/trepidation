@@ -725,7 +725,7 @@ void weapon_railgun_fire (gentity_t *ent) {
 		damage = 100 * s_quadFactor;
 	} else {
 		
-		if(g_GameMode.integer == 3)
+		if((g_GameMode.integer == 3) || (g_gametype.integer == 4))
 		{
 			damage = 200 * s_quadFactor;
 		} else {
