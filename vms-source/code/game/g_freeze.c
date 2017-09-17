@@ -120,6 +120,7 @@ void Body_free( gentity_t *self ) {
 	if ( self->freezeState ) {
 		player_free( self->target_ent );
 	}
+	/*
 	if ( self->s.eFlags & EF_KAMIKAZE ) {
 		for ( i = 0; i < MAX_GENTITIES; i++ ) {
 			ent = &g_entities[ i ];
@@ -130,6 +131,7 @@ void Body_free( gentity_t *self ) {
 			break;
 		}
 	}
+	*/
 	self->s.powerups = 0;
 	G_FreeEntity( self );
 }
@@ -478,9 +480,11 @@ static void CopyToBody( gentity_t *ent ) {
 	body->classname = "freezebody";
 	body->s = ent->s;
 	body->s.eFlags = 0;
+	/*
 	if ( ent->s.eFlags & EF_KAMIKAZE ) {
 		body->s.eFlags |= EF_KAMIKAZE;
 	}
+	*/
 	body->s.powerups = 1 << PW_BATTLESUIT;
 	body->s.number = body - g_entities;
 	body->timestamp = level.time;
@@ -721,13 +725,14 @@ void team_wins( int team ) {
 		if ( cl->ps.stats[ STAT_WEAPONS ] & ( 1 << WP_ROCKET_LAUNCHER ) ) {
 			cl->ps.weapon = WP_ROCKET_LAUNCHER;
 		}
-
+		/*
 		if ( g_startArmor.integer > 0 ) {
 			cl->ps.stats[ STAT_ARMOR ] += g_startArmor.integer;
 			if ( cl->ps.stats[ STAT_ARMOR ] > cl->ps.stats[ STAT_MAX_HEALTH ] * 2 ) {
 				cl->ps.stats[ STAT_ARMOR ] = cl->ps.stats[ STAT_MAX_HEALTH ] * 2;
 			}
 		}
+		*/
 	}
 
 	if ( level.numPlayingClients < 2 || g_gametype.integer == GT_CTF ) {

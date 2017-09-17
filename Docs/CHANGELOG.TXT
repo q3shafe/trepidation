@@ -28,6 +28,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Fixed yet another bug where you would remained zoomed after warmup.
+
 - Fixed arsenal and survival grapple settings in single player.
 
 - Turrets and immobilizers are harder to destroy in instagib.

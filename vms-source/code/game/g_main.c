@@ -138,6 +138,8 @@ vmCvar_t	g_allowDevastator;
 vmCvar_t	g_suddendeath;
 vmCvar_t         g_pointrebuild; 
 
+vmCvar_t	g_doReady; //freeze
+
 vmCvar_t	trep_debug;
 
 //vmCvar_t	g_CTFGrapple; // Decided not to make this an option
@@ -285,7 +287,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_CurrentRound, "g_CurrentRound", "0", 0, 0, qtrue },
 	{ &g_allowGrapple, "g_allowGrapple", "1", 0, 0, qtrue },
 	{ &g_allowDevastator, "g_allowDevastator", "1", 0, 0, qtrue },
-	
+	{ &g_doReady, "g_doReady", "0", 0, 0, qfalse },	
 	
 	// Debugging
 	{ &trep_debug, "trep_debug", "0", CVAR_ARCHIVE, 0, qtrue }
@@ -472,6 +474,24 @@ int CountTeamSurvivors ( int team )
 			}
 
 return tmpCnt;
+}
+
+void UnzoomAll()
+{
+	int i;
+int count;
+count = 0;
+	for ( i = 0 ; i < level.maxclients ; i++ ) 
+	{
+		if ( level.clients[i].pers.connected == CON_CONNECTED) 
+		{
+			
+			trap_SendServerCommand(level.clients[i].ps.clientNum, "-gzoom");			
+			level.clients[i].Zoomed = qfalse;
+
+		}
+	}
+
 }
 
 // Trepidation - Is there anyone aside from BOTs here?
@@ -2937,6 +2957,10 @@ void CheckTournament( void ) {
 			level.warmupTime += 10000;
 			level.firstStrike = qfalse;
 			trap_Cvar_Set( "g_restarted", "1" );
+			// Unzoom all clients
+			UnzoomAll();
+
+
 			trap_SendConsoleCommand( EXEC_APPEND, "map_restart 0\n" );
 			level.restarted = qtrue;		
 
@@ -3002,6 +3026,7 @@ void CheckTournament( void ) {
 			level.firstStrike = qfalse;
 			trap_SendConsoleCommand( EXEC_APPEND, "map_restart 0\n" );
 			level.restarted = qtrue;
+			UnzoomAll();
 
 			return;
 		}

@@ -49,6 +49,8 @@ set cc=q3lcc -DQ3_VM -S -Wf-target=bytecode -Wf-g -I..\..\cgame -I..\..\game -I.
 @if errorlevel 1 goto quit
 %cc%  ../g_combat.c
 @if errorlevel 1 goto quit
+rem %cc%  ../g_freeze.c
+rem @if errorlevel 1 goto quit
 %cc%  ../g_items.c
 @if errorlevel 1 goto quit
 %cc%  ../g_mem.c

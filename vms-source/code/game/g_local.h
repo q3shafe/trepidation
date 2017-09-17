@@ -184,6 +184,11 @@ struct gentity_s {
 	int			InstaKillsInRow;
 	int			InstaKillsInRowTemp;
 
+	//freeze
+	qboolean	freezeState;
+	qboolean	readyBegin;
+	//freeze
+
 
 	gitem_t		*item;			// for bonus items
 	float		distance;	
@@ -770,7 +775,7 @@ team_t PlaceMC(int team );
 team_t PlaceGen(int team );
 team_t PlaceTurret(int team );
 team_t PlaceImmobile(int team );
-
+extern	vmCvar_t	g_doReady;
 //
 // g_svcmds.c
 //
