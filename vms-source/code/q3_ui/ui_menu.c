@@ -33,7 +33,7 @@ MAIN MENU
 
 
 
-#define MAIN_BANNER_MODEL				"models/mapobjects/banner/banner5.md3"
+#define MAIN_BANNER_MODEL				"models/weapons2/flamethrower/flamethrower.md3" // models/mapobjects/banner/banner5.md3"
 #define MAIN_MENU_VERTICAL_SPACING		34
 
 

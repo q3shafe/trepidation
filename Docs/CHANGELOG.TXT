@@ -28,6 +28,13 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Fixed missing model on error screen.
+
+- Cannot join a server running a different version of Trepidation (this would royally screw up the game)
+
+- Client will no longer try to download official game pak files from server.
+
+
 - Fixed yet another bug where you would remained zoomed after warmup.
 
 - Fixed arsenal and survival grapple settings in single player.

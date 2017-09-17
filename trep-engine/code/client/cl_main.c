@@ -1920,7 +1920,7 @@ void CL_BeginDownload( const char *localName, const char *remoteName ) {
 	Cvar_Set( "cl_downloadSize", "0" );
 	Cvar_Set( "cl_downloadCount", "0" );
 	Cvar_SetValue( "cl_downloadTime", cls.realtime );
-
+	
 	clc.downloadBlock = 0; // Starting new file
 	clc.downloadCount = 0;
 
