@@ -242,7 +242,7 @@ PROTOCOL
 ==============================================================
 */
 
-#define	PROTOCOL_VERSION	69
+#define	PROTOCOL_VERSION	70
 // 1.31 - 67  -- Shafe - Previous 68
 
 // maintain a list of compatible protocols for demo playing
