@@ -1,4 +1,4 @@
-// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 // cg_event.c -- handle entity events at snapshot or playerstate transitions
 

@@ -1,4 +1,4 @@
-// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
+// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
 //
 // cg_drawtools.c -- helper functions called by cg_draw, cg_scoreboard, cg_info, etc
 #include "cg_local.h"
