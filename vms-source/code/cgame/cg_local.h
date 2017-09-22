@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
+// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
 //
 #include "../game/q_shared.h"
 #include "tr_types.h"
@@ -288,11 +288,8 @@ typedef struct {
 	int				captures;
 	qboolean	perfect;
 	int				team;
-<<<<<<< HEAD
 	int				deaths;
 	
-=======
->>>>>>> 03d290a8c7548aef5c3036d393eb69a2fc899ab0
 
 } score_t;
 

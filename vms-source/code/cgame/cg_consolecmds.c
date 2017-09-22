@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
+// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
 //
 // cg_consolecmds.c -- text commands typed in at the local console, or
 // executed by a key binding
@@ -572,4 +572,5 @@ void CG_InitConsoleCommands( void ) {
 	trap_AddCommand ("stats");
 	trap_AddCommand ("teamtask");
 	trap_AddCommand ("loaddefered");	// spelled wrong, but not changing for demo
+
 }

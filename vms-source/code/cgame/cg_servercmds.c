@@ -1,4 +1,4 @@
-// 2016 Trepidation Licensed under the GPL2 - Team Trepidation
+// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
 //
 // cg_servercmds.c -- reliably sequenced text commands sent by the server
 // these are processed at snapshot transition time, so there will definately
@@ -76,6 +76,7 @@ static void CG_ParseScores( void ) {
 		cg.scores[i].assistCount = atoi(CG_Argv(i * 14 + 15));
 		cg.scores[i].perfect = atoi(CG_Argv(i * 14 + 16));
 		cg.scores[i].captures = atoi(CG_Argv(i * 14 + 17));
+		cg.scores[i].deaths = atoi(CG_Argv(i * 14 + 18));
 
 
 		if ( cg.scores[i].client < 0 || cg.scores[i].client >= MAX_CLIENTS ) {
@@ -993,7 +994,6 @@ static void CG_ServerCommand( void ) {
 		return;
 	}
 
-	
 	// Gauss Rifle Zoom
 	if ( !strcmp( cmd, "+gzoom" ) ) {
 		CG_ZoomDown_f();
