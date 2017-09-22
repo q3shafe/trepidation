@@ -348,7 +348,7 @@ void DeathmatchScoreboardMessage( gentity_t *ent )
 		// Changed cl->ps.persistant[PERS_SCORE] to .truescore
 		//
 		Com_sprintf (entry, sizeof(entry),
-			" %i %i %i %i %i %i %i %i %i %i %i %i %i %i", level.sortedClients[i],
+			" %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i", level.sortedClients[i],
 					
 			cl->pers.TrueScore, ping, (level.time - cl->pers.enterTime)/60000,
 
@@ -358,6 +358,7 @@ void DeathmatchScoreboardMessage( gentity_t *ent )
 			cl->ps.persistant[PERS_GAUNTLET_FRAG_COUNT], 
 			cl->ps.persistant[PERS_DEFEND_COUNT], 
 			cl->ps.persistant[PERS_ASSIST_COUNT], 
+			g_entities[level.sortedClients[i]].InstaDeaths,
 			perfect,
 			cl->ps.persistant[PERS_CAPTURES]);
 		j = strlen(entry);

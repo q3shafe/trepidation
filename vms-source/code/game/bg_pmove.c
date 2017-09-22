@@ -1726,12 +1726,6 @@ static void PM_Weapon( void ) {
 	// check for out of ammo
 	if ( ! pm->ps->ammo[ pm->ps->weapon ] ) {
 		PM_AddEvent( EV_NOAMMO );
-		
-			// This is going to be bad
-			//pm->ps->weaponstate = WEAPON_DROPPING; // bot bug for not switching weapons may have to do the weapon change here?
-			//PM_BeginWeaponChange( pm->cmd.weapon );
-			//PM_FinishWeaponChange();
-
 
 		pm->ps->weaponTime += 500;
 		return;
@@ -1753,11 +1747,6 @@ static void PM_Weapon( void ) {
 			}
 		}
 	}
-
-	// Shafe - Trep Instagib  Cant get this to work - But This would be the correct way to go about it
-	//if (g_instagib.integer == 1) {  
-	//	if ( pm->ps->weapon != WP_RAILGUN ); // InstaGib - unlimited ammo
-	//}
 
 
 // Shafe - Trep.. All Replaced For Alt Fire Usage

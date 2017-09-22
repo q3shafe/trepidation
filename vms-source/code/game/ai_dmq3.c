@@ -5213,7 +5213,7 @@ void BotCheckEvents(bot_state_t *bs, entityState_t *state) {
 		case EV_GLOBAL_ITEM_PICKUP:
 		case EV_NOAMMO:
 			// Shafe - we need to force a weapon change here.
-		
+			 //BotChooseWeapon(bs);
 			//trap_BotChooseBestFightWeapon(bs->ws, bs->inventory);
 			break;
 		case EV_CHANGE_WEAPON:
