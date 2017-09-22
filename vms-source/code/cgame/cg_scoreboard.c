@@ -62,7 +62,7 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 	char	string[1024];
 	vec3_t	headAngles;
 	clientInfo_t	*ci;
-	clientInfo_t	*ci;
+	//clientInfo_t	*ci;
 	int iconx, headx;
 
 	if ( score->client < 0 || score->client >= cgs.maxclients ) {
@@ -159,17 +159,17 @@ static void CG_DrawClientScore( int y, score_t *score, float *color, float fade,
 		if ((cgs.g_GameMode == 1) || (cgs.g_GameMode == 2)) 
 		{
 		Com_sprintf(string, sizeof(string),
-			"(X) %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->deaths, "%", ci->name);
+			"(X) %9i %4ims %4i %4i %s", score->score, score->ping, score->time, score->accuracy, ci->name);
 		
 		} else {
 		Com_sprintf(string, sizeof(string),
-			"SPEC %9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->deaths, "%", ci->name);
+			"SPEC %9i %4ims %4i %4i %s", score->score, score->ping, score->time, score->accuracy, ci->name);
 		}
 		
 	} else {
 		// Shafe - Trep
 		Com_sprintf(string, sizeof(string),
-			"%9i %4ims %4i %4i%4s %s", score->score, score->ping, score->time, score->deaths, "%", ci->name);
+			"%9i %4ims %4i %4i %s", score->score, score->ping, score->time, score->accuracy, ci->name);
 	}
 
 	// highlight your position

@@ -352,7 +352,7 @@ void DeathmatchScoreboardMessage( gentity_t *ent )
 					
 			cl->pers.TrueScore, ping, (level.time - cl->pers.enterTime)/60000,
 
-			scoreFlags, g_entities[level.sortedClients[i]].s.powerups, accuracy, 
+			scoreFlags, g_entities[level.sortedClients[i]].s.powerups, g_entities[level.sortedClients[i]].InstaDeaths, 
 			cl->ps.persistant[PERS_IMPRESSIVE_COUNT],
 			cl->ps.persistant[PERS_EXCELLENT_COUNT],
 			cl->ps.persistant[PERS_GAUNTLET_FRAG_COUNT], 
