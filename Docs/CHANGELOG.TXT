@@ -28,6 +28,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Accuracy on scoreboard now shows # of deaths instead.
+
 - Fixed missing model on error screen.
 
 - Cannot join a server running a different version of Trepidation (this would royally screw up the game)
