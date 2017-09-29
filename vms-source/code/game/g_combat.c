@@ -646,6 +646,8 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 	self->client->ps.persistant[PERS_KILLED]++;
 
+	self->InstaDeaths++;
+
 	if (meansOfDeath != MOD_SUICIDE)
 	{
 		
@@ -657,7 +659,7 @@ void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int
 
 				self->InstaStreak = 0;
 				attacker->InstaStreak++;
-				self->InstaDeaths++;
+				//self->InstaDeaths++;
 				
 				self->InstaDeathStreak++;
 				attacker->InstaDeathStreak=0;

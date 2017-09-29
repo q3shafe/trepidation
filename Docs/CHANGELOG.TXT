@@ -28,6 +28,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Fixed issue where deaths where not getting counted correctly when they are self inflicted.
+
 - Changed a handful of defaults in the engine for better looking graphics:
 	r_ext_texture_filter_anisotropic 4 
 	r_flares 1 
