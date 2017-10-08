@@ -56,9 +56,9 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Art:", UI_CENTER|UI_SMALLFONT, &color_headertext },
-{ "Scott Hanke, Petee, Gigon, Xovan", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Squiciene, Scott Hanke, Petee, Gigon,", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "Gigabyte123, Laz, Dr. Preston", UI_CENTER|UI_SMALLFONT, &color_maintext },
-{ "[FC]Pope John Paul III", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Xovan, [FC]Pope John Paul III", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Hi Res Q3 Texture Pack:", UI_CENTER|UI_SMALLFONT, &color_headertext },
@@ -93,8 +93,8 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Level Design:", UI_CENTER|UI_SMALLFONT, &color_headertext },
-{ "Petee, DrAkOn, Gigon", UI_CENTER|UI_SMALLFONT, &color_maintext },
-{ "Gigabyte123, Laz, Dr. Preston", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Squiciene, Xovan, Petee, DrAkOn,", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Gigon, Gigabyte123, Laz", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Mac Build:", UI_CENTER|UI_SMALLFONT, &color_headertext },
@@ -142,7 +142,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
-{ "(c)2006-2017 Team Trepidation / N5 Networks", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "(c)2006-2018 Team Trepidation / N5 Networks", UI_CENTER|UI_SMALLFONT, &color_maintext },
 //{ "General Public License", UI_CENTER|UI_SMALLFONT, &color_maintext },
 
   {NULL}
