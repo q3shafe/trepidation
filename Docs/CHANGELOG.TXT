@@ -28,6 +28,15 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Updated engine defaults
+  r_stencilbits 8
+  r_texturebits 32
+  r_colorbits 32
+  r_depthbits 32
+
+- Updated trep radiant.
+
+
 - Fixed issue where deaths where not getting counted correctly when they are self inflicted.
 
 - Changed a handful of defaults in the engine for better looking graphics:
