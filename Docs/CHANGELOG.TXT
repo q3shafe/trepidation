@@ -38,7 +38,6 @@ Detailed Changelog - Most Recent Changes First
 
 - Updated trep radiant.
 
-
 - Fixed issue where deaths where not getting counted correctly when they are self inflicted.
 
 - Changed a handful of defaults in the engine for better looking graphics:
