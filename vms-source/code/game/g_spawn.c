@@ -574,7 +574,7 @@ void SP_worldspawn( void ) {
 	
 	if ((g_GameMode.integer == 0) || (g_GameMode.integer == 3) || (g_GameMode.integer == 999)|| (g_GameMode.integer == 5))
 	{
-		i = irandom(1,10);
+		i = irandom(1,16);
 		if (i == 1) { G_SpawnString( "music", "sound/music/mapmusic01.ogg", &s ); }
 		if (i == 2) { G_SpawnString( "music", "sound/music/mapmusic02.ogg", &s ); }
 		if (i == 3) { G_SpawnString( "music", "sound/music/mapmusic03.ogg", &s ); }
@@ -583,8 +583,14 @@ void SP_worldspawn( void ) {
 		if (i == 6) { G_SpawnString( "music", "sound/music/mapmusic06.ogg", &s ); }
 		if (i == 7) { G_SpawnString( "music", "sound/music/mapmusic07.ogg", &s ); }
 		if (i == 8) { G_SpawnString( "music", "sound/music/mapmusic08.ogg", &s ); }
-		if (i == 9) { G_SpawnString( "music", "sound/music/mapmusic08.ogg", &s ); }
-		if (i == 10) { G_SpawnString( "music", "sound/music/mapmusic08.ogg", &s ); }
+		if (i == 9) { G_SpawnString( "music", "sound/music/mapmusic09.ogg", &s ); }
+		if (i == 10) { G_SpawnString( "music", "sound/music/mapmusic10.ogg", &s ); }
+		if (i == 11) { G_SpawnString( "music", "sound/music/mapmusic11.ogg", &s ); }
+		if (i == 12) { G_SpawnString( "music", "sound/music/mapmusic08.ogg", &s ); } // Making the newer tracks play more often.. cheesy yes.
+		if (i == 13) { G_SpawnString( "music", "sound/music/mapmusic09.ogg", &s ); } 
+		if (i == 14) { G_SpawnString( "music", "sound/music/mapmusic11.ogg", &s ); }
+		if (i == 15) { G_SpawnString( "music", "sound/music/mapmusic09.ogg", &s ); }
+		if (i == 16) { G_SpawnString( "music", "sound/music/mapmusic11.ogg", &s ); }
 	} 
 	else 
 	{
