@@ -28,6 +28,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Added 4 new tracks by DiVinity
+
 - Updated engine defaults
   r_stencilbits 8
   r_texturebits 32
