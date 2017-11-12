@@ -28,6 +28,10 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- fixed reference to default.cfg in engine, should be trepidation.cfg
+
+- Added some of the new settings to the default cfg file (trepidation.cfg)
+
 - Added 4 new tracks by DiVinity
 
 - Updated engine defaults

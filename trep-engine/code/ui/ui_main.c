@@ -3217,7 +3217,7 @@ static void UI_RunMenuScript(char **args) {
 			UI_GameType_HandleKey(0, NULL, K_MOUSE1, qfalse);
 			UI_GameType_HandleKey(0, NULL, K_MOUSE2, qfalse);
 		} else if (Q_stricmp(name, "resetDefaults") == 0) {
-			trap_Cmd_ExecuteText( EXEC_APPEND, "exec default.cfg\n");
+			trap_Cmd_ExecuteText( EXEC_APPEND, "exec trepidation.cfg\n");
 			trap_Cmd_ExecuteText( EXEC_APPEND, "cvar_restart\n");
 			Controls_SetDefaults();
 			trap_Cvar_Set("com_introPlayed", "1" );
