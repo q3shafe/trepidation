@@ -28,6 +28,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Water on some ef maps now shows up correctly.
+
 - fixed reference to default.cfg in engine, should be trepidation.cfg
 
 - Added some of the new settings to the default cfg file (trepidation.cfg)
