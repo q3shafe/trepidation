@@ -1028,7 +1028,7 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 
 //unlagged - backward reconciliation #5
 	// announce it
-	trap_SendServerCommand( clientNum, "print \"Trepidation v0.0.20\n\"" );
+	trap_SendServerCommand( clientNum, "print \"Trepidation v0.0.25\n\"" );
 	if ( g_delagHitscan.integer ) {
 //		trap_SendServerCommand( clientNum, "print \"This server is Unlagged: full lag compensation is ON!\n\"" );
 	}
@@ -1185,14 +1185,12 @@ void ClientSpawn(gentity_t *ent) {
 		
 		if (g_ReverseCTF.value == 0) 
 		{
-		
-		
 			spawnPoint = SelectCTFSpawnPoint ( 
-							client->sess.sessionTeam, 
-							client->pers.teamState.state, 
-							spawn_origin, spawn_angles);
-
+			client->sess.sessionTeam, 
+			client->pers.teamState.state, 
+			spawn_origin, spawn_angles);
 		}
+
 	} else {
 		do {
 			// the first spawn should be at a good looking spot
@@ -1201,11 +1199,9 @@ void ClientSpawn(gentity_t *ent) {
 				spawnPoint = SelectInitialSpawnPoint( spawn_origin, spawn_angles );
 			} else {
 				// don't spawn near existing origin if possible	
-				
-					spawnPoint = SelectSpawnPoint ( 
-					client->ps.origin, 
-					spawn_origin, spawn_angles);
-				
+				spawnPoint = SelectSpawnPoint ( 
+				client->ps.origin, 
+				spawn_origin, spawn_angles);
 			}
 
 			// Tim needs to prevent bots from spawning at the initial point
@@ -1223,6 +1219,7 @@ void ClientSpawn(gentity_t *ent) {
 		} while ( 1 );
 	}
 	client->pers.teamState.state = TEAM_ACTIVE;
+
 
 	// always clear the kamikaze flag
 	/* ent->s.eFlags &= ~EF_KAMIKAZE; */
@@ -1273,6 +1270,7 @@ void ClientSpawn(gentity_t *ent) {
 	client->airOutTime = level.time + 12000;
 
 	trap_GetUserinfo( index, userinfo, sizeof(userinfo) );
+	
 	// set max health
 	client->pers.maxHealth = atoi( Info_ValueForKey( userinfo, "handicap" ) );
 	if ( client->pers.maxHealth < 1 || client->pers.maxHealth > 100 ) {
@@ -1304,18 +1302,14 @@ void ClientSpawn(gentity_t *ent) {
 	VectorCopy (playerMaxs, ent->r.maxs);
 
 	client->ps.clientNum = index;
-
 	
-	// Regular
+	// FFA
 	if (g_instagib.integer == 0 && g_GameMode.integer == 0)  // Shafe - Trep Instagib
 	{	
 		client->ps.stats[STAT_WEAPONS] = ( 1 << WP_MACHINEGUN );
 		if ( g_gametype.integer == GT_TEAM ) {
 			client->ps.ammo[WP_MACHINEGUN] = 40;
-		} else {
-			client->ps.ammo[WP_MACHINEGUN] = 40;
-		} 
-			
+		} 			
 			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GAUNTLET );
 			client->ps.ammo[WP_GAUNTLET] = 99999;
 			client->ps.ammo[WP_GRAPPLING_HOOK] = -1;
@@ -1324,15 +1318,13 @@ void ClientSpawn(gentity_t *ent) {
 
 	// Trepidation Gametype
 	// This is all gonna change once we introduce classes
+	// FIXME: Reverts randomly after immobilizer to All weapons
 	if (g_instagib.integer == 0 && g_GameMode.integer == 3)  // Shafe - Trep Instagib
 	{
 		client->ps.stats[STAT_WEAPONS] = ( 1 << WP_MACHINEGUN );
 		if ( g_gametype.integer == GT_TEAM ) {
 			client->ps.ammo[WP_MACHINEGUN] = 40;
-		} else {
-			client->ps.ammo[WP_MACHINEGUN] = 40;
-		} 
-			
+		} 			
 			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GAUNTLET );
 			client->ps.ammo[WP_GAUNTLET] = -1;
 			client->ps.ammo[WP_GRAPPLING_HOOK] = -1;
@@ -1384,6 +1376,7 @@ void ClientSpawn(gentity_t *ent) {
 	SetClientViewAngle( ent, spawn_angles );
 
 	if ( client->sess.sessionTeam == TEAM_SPECTATOR ) {
+		// Client is a spectator don't hand out weapons
 
 	} else {
 		G_KillBox( ent );
@@ -1391,9 +1384,9 @@ void ClientSpawn(gentity_t *ent) {
 
 		if (g_instagib.integer == 0 && g_GameMode.integer == 0)  // Shafe - Trep Instagib
 		{
-		// force the base weapon up
-		client->ps.weapon = WP_MACHINEGUN;
-		client->ps.weaponstate = WEAPON_READY;
+			// force the base weapon up
+			client->ps.weapon = WP_MACHINEGUN;
+			client->ps.weaponstate = WEAPON_READY;
 		} 
 		
 		// Hand out weapons in instagib
@@ -1479,12 +1472,12 @@ void ClientSpawn(gentity_t *ent) {
 			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_BFG );
 			client->ps.ammo[WP_BFG] = 9999;
 			}
-			//client->ps.stats[STAT_WEAPONS] = ( 1 << wn );
-			//client->ps.ammo[wn] = INFINITE;
+	
+
 		}
 
 
-				// Hand out weapons for single player
+		// Hand out weapons for single player
 		if (g_GameMode.integer == 999)
 		{
 			if (client->pers.h_gauntlet) 
@@ -1540,13 +1533,10 @@ void ClientSpawn(gentity_t *ent) {
 			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_BFG );
 			client->ps.ammo[WP_BFG] = 15;
 			}
-			//client->ps.stats[STAT_WEAPONS] = ( 1 << wn );
-			//client->ps.ammo[wn] = INFINITE;
+
 		}
 
 	}
-
-
 
 
 	// don't allow full run speed for a bit

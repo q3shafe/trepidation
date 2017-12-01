@@ -6,6 +6,7 @@
 extern void BroadCastSound(char *path);
 extern char *GetRandomMap();
 extern char *GetEasyMap();
+extern void AnnounceBuildables();
 
 level_locals_t	level;
 
@@ -2191,14 +2192,20 @@ void CheckExitRules( void ) {
 			level.teamScores[ TEAM_RED ]++; 
 			//CalculateRanks(); // This is causing crashes
 			BroadCastSound("sound/teamplay/voc_red_scores.ogg");
+
+			// Clear immobilized
+			for ( i = 0; i < level.maxclients; i++ )
+			{
+				//g_entities[cl - level.clients].immobilized = qfalse;
+				self->immobilized = qfalse;
+			}
+
 			// Clear mc from other team --- Hrrrmmm
 			while ((buildables = G_Find (buildables, FOFS(classname), "mc")) != NULL)
 			{
-			
+				
 			}
-			
-
-
+			AnnounceBuildables();
 			//return;
 		}
 
@@ -2214,14 +2221,19 @@ void CheckExitRules( void ) {
 			//CalculateRanks();  // This is causing crashes
 			BroadCastSound("sound/teamplay/voc_blue_scores.ogg");
 			// clear the other team power core
+			
+			// Clear immobilized
+			for ( i = 0; i < level.maxclients; i++ )
+			{
+				self->immobilized = qfalse;
+			}
+			
 			// Clear mc from other team -- Hrrmmm
 			while ((buildables = G_Find (buildables, FOFS(classname), "mc")) != NULL)
 			{
 				
 			}
-
-
-
+			AnnounceBuildables();
 			//return;
 		}
 		

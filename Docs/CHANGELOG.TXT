@@ -25,9 +25,15 @@ SUMMARY OF THE NEW AND NOTABLE:
 - Lots of bugfixes
 
 
+
+
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Fixed issue where new buildable items are announced more than once.
+
+- Fixed issue where player remains immobilized after team scores and buildable are destroyed.
+
 - Water on some ef maps now shows up correctly.
 
 - fixed reference to default.cfg in engine, should be trepidation.cfg

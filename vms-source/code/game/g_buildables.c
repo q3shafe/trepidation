@@ -986,7 +986,7 @@ void MC_prethink(gentity_t *ent)
 	ent->nextthink=level.time+100;
 
 	// Announce any new buildables available
-	AnnounceBuildables();
+	// AnnounceBuildables();  // Move this to player scores?
 }
 
 
