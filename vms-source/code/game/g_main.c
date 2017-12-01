@@ -2447,8 +2447,6 @@ void CheckExitRules( void ) {
 
 
 
-	//	For some reason the turrets are simply exploding  after they art built
-
 	// CTF Bots can place turrets
 	if ((g_gametype.integer == GT_CTF) && (g_Turrets.integer == 1))
 	{
