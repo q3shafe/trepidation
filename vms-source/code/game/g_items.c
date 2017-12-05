@@ -852,6 +852,7 @@ void ClearRegisteredItems( void ) {
 
 	// Let's Always Register The Rocket Launcher  - Shafe - Trep 
 	RegisterItem( BG_FindItemForWeapon( WP_ROCKET_LAUNCHER ) );
+	
 	// Shafe - Trep Preregister Lighning and the Grapple For the offhand grapple
 	RegisterItem( BG_FindItemForWeapon( WP_LIGHTNING ) );
 	RegisterItem( BG_FindItemForWeapon( WP_GRAPPLING_HOOK ) );
@@ -879,15 +880,14 @@ void ClearRegisteredItems( void ) {
 			RegisterItem( BG_FindItemForWeapon( WP_SHOTGUN ) );
 			RegisterItem( BG_FindItemForWeapon( WP_RAILGUN ) );
 			RegisterItem( BG_FindItemForWeapon( WP_PLASMAGUN ) );
-			RegisterItem( BG_FindItemForWeapon( WP_BFG ) );
+			RegisterItem( BG_FindItemForWeapon( WP_BFG ) );	
+		}
 
 			// Github issue 43 - fix shafe
 			RegisterItem( BG_FindItemForPowerup( PW_QUAD ) );
 			RegisterItem( BG_FindItemForPowerup( PW_FLIGHT ) );
 			RegisterItem( BG_FindItemForPowerup( PW_BATTLESUIT ) );
 			RegisterItem( BG_FindItemForPowerup( PW_REGEN ) );
-
-		}
 	}
 
 #ifdef MISSIONPACK

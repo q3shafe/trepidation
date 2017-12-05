@@ -25,11 +25,11 @@ SUMMARY OF THE NEW AND NOTABLE:
 - Lots of bugfixes
 
 
-
-
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Fixed issue where powerups wouldn't show up in arsenal correctly if instagib was set to 1.
+
 - Fixed issue where new buildable items are announced more than once.
 
 - Fixed issue where player remains immobilized after team scores and buildable are destroyed.
