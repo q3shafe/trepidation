@@ -3421,7 +3421,7 @@ void FS_Restart( int checksumFeed ) {
 			lastValidBase[0] = '\0';
 			lastValidGame[0] = '\0';
 			FS_Restart(checksumFeed);
-			Com_Error( ERR_DROP, "Invalid game folder\n" );
+			Com_Error( ERR_DROP, "Wrong Version Or Invalid game folder\n" );
 			return;
 		}
 		Com_Error( ERR_FATAL, "Couldn't load trepidation.cfg" );

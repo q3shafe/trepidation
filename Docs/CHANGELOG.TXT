@@ -13,7 +13,9 @@ GAME HIGHLIGHTS:
 - New features for Mappers.
 
 SUMMARY OF THE NEW AND NOTABLE:
-- Trepidation gametype with Instagib modifier.
+- You can now drop weapons.
+- New Soundtrack.
+- Siginificant Improvements to Trepidation Gametype + Instagib.
 - New One 4 All Gametype in Single Player Mode.
 - Bots can now, somewhat decently, play the Trepidation gametype.
 - Now Compatable with maps for Star Trek Elite Force and Quake 3.
@@ -27,6 +29,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Made error message clearer about version mismatches.
+
 - You can now drop weapons using /drop or binding a key from the settings menu.
 
 - Fixed issue where instagib would revert off in trepidation gametype.
