@@ -1318,8 +1318,19 @@ void ClientSpawn(gentity_t *ent) {
 
 	// Trepidation Gametype
 	// This is all gonna change once we introduce classes
-	// FIXME: Reverts randomly after immobilizer to All weapons
-	if (g_instagib.integer == 0 && g_GameMode.integer == 3)  // Shafe - Trep Instagib
+	// FIXME: Reverts randomly after turret to All weapons -- Bug #152
+	// Instagib
+	if (g_instagib.value == 1)
+	{
+		// InstaGib - weapons on spawning w/ammo  - Shafe Trep
+		client->ps.stats[STAT_WEAPONS] = ( 1 << WP_RAILGUN );
+		client->ps.ammo[WP_RAILGUN] = 9999;
+		trap_SendServerCommand( -1, "print \"Registered Instagib Weapons\n\"" );
+ 
+	} 
+
+	// This should not be running but it does after a turret is build
+	if ((g_instagib.value == 0) && (g_GameMode.integer == 3))  // Shafe - Trep Instagib
 	{
 		client->ps.stats[STAT_WEAPONS] = ( 1 << WP_MACHINEGUN );
 		if ( g_gametype.integer == GT_TEAM ) {
@@ -1328,16 +1339,10 @@ void ClientSpawn(gentity_t *ent) {
 			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GAUNTLET );
 			client->ps.ammo[WP_GAUNTLET] = -1;
 			client->ps.ammo[WP_GRAPPLING_HOOK] = -1;
+			trap_SendServerCommand( -1, "print \"Registered Non-Instagib Weapons\n\"" );
 	}
 	
-	// Instagib
-	if (g_instagib.integer == 1)
-	{
-		// InstaGib - weapons on spawning w/ammo  - Shafe Trep
-		client->ps.stats[STAT_WEAPONS] = ( 1 << WP_RAILGUN );
-		client->ps.ammo[WP_RAILGUN] = 9999;
- 
-	}
+	
 
 	if (g_GameMode.integer == 1) 
 	{

@@ -125,7 +125,7 @@ void TossClientItems( gentity_t *self ) {
 		}
 
 	// Shafe - Trep - Dont drop weapons In Instagib -- 
-	if (g_instagib.integer == 0)
+	if (g_instagib.value == 0)
 	{
 		
 		if ( weapon > WP_GAUNTLET && weapon != WP_GRAPPLING_HOOK && self->client->ps.ammo[ weapon ] ) 
