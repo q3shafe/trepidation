@@ -566,6 +566,8 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 			client->ps.stats[STAT_ARMOR]--;
 		}
 	}
+
+
 #ifdef MISSIONPACK
 	if( bg_itemlist[client->ps.stats[STAT_PERSISTANT_POWERUP]].giTag == PW_AMMOREGEN ) {
 		int w, max, inc, t, i;
@@ -636,6 +638,8 @@ void ClientTimerActions( gentity_t *ent, int msec ) {
 
 
 }
+
+
 
 /*
 ====================
@@ -836,7 +840,53 @@ static int StuckInOtherClient(gentity_t *ent) {
 	return qfalse;
 }
 #endif
+/*
+=============
+ThrowWeapon
 
+XRAY FMJ
+=============
+*/
+
+void ThrowWeapon( gentity_t *ent )
+{
+	gclient_t	*client;
+	usercmd_t	*ucmd;
+	gitem_t		*xr_item;
+	gentity_t	*xr_drop;
+	byte i;
+	int amount;
+
+	client = ent->client;
+	ucmd = &ent->client->pers.cmd;
+
+	if( client->ps.weapon == WP_GAUNTLET
+		|| client->ps.weapon == WP_MACHINEGUN
+		|| client->ps.weapon == WP_GRAPPLING_HOOK
+		|| ( ucmd->buttons & BUTTON_ATTACK ))
+		return;
+
+
+	xr_item = BG_FindItemForWeapon( client->ps.weapon );
+
+	amount= client->ps.ammo[ client->ps.weapon ]; // XRAY save amount
+	client->ps.ammo[ client->ps.weapon ] = 0;
+
+	client->ps.stats[STAT_WEAPONS] &= ~( 1 << client->ps.weapon );
+	client->ps.weapon = WP_MACHINEGUN;
+	for ( i = WP_NUM_WEAPONS - 1 ; i > 0 ; i-- ) {
+		if ( client->ps.stats[STAT_WEAPONS] & ( 1 << i ) ) {
+			client->ps.weapon = i;
+			break;
+		}
+	}
+
+	xr_drop= dropWeapon( ent, xr_item, 0, FL_DROPPED_ITEM | FL_THROWN_ITEM );
+	if( amount != 0)
+		xr_drop->count= amount;
+	else
+		xr_drop->count= -1; // XRAY FMJ 0 is already taken, -1 means no ammo
+}
 void BotTestSolid(vec3_t origin);
 
 /*

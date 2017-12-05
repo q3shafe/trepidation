@@ -1325,7 +1325,7 @@ void ClientSpawn(gentity_t *ent) {
 		// InstaGib - weapons on spawning w/ammo  - Shafe Trep
 		client->ps.stats[STAT_WEAPONS] = ( 1 << WP_RAILGUN );
 		client->ps.ammo[WP_RAILGUN] = 9999;
-		trap_SendServerCommand( -1, "print \"Registered Instagib Weapons\n\"" );
+		//trap_SendServerCommand( -1, "print \"Registered Instagib Weapons\n\"" );
  
 	} 
 
@@ -1339,7 +1339,7 @@ void ClientSpawn(gentity_t *ent) {
 			client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_GAUNTLET );
 			client->ps.ammo[WP_GAUNTLET] = -1;
 			client->ps.ammo[WP_GRAPPLING_HOOK] = -1;
-			trap_SendServerCommand( -1, "print \"Registered Non-Instagib Weapons\n\"" );
+			//trap_SendServerCommand( -1, "print \"Registered Non-Instagib Weapons\n\"" );
 	}
 	
 	

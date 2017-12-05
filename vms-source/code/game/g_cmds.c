@@ -1103,6 +1103,15 @@ void StopFollowing( gentity_t *ent ) {
 
 /*
 =================
+Cmd_Drop_f XRAY FMJ
+=================
+*/
+void Cmd_Drop_f( gentity_t *ent ) {
+	ThrowWeapon( ent );
+}
+
+/*
+=================
 Cmd_Team_f
 =================
 */
@@ -2269,6 +2278,8 @@ void ClientCommand( int clientNum ) {
 		Cmd_ListPlayers_f( ent ); 
 	else if (Q_stricmp (cmd, "test") == 0)
 		Cmd_Test_f( ent );
+	else if (Q_stricmp (cmd, "drop") == 0)  // XRAY FMJ
+		Cmd_Drop_f( ent );
 	else
 		trap_SendServerCommand( clientNum, va("print \"unknown cmd %s\n\"", cmd ) );
 }

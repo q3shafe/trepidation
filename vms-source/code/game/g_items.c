@@ -604,7 +604,7 @@ LaunchItem
 Spawns an item and tosses it forward
 ================
 */
-gentity_t *LaunchItem( gitem_t *item, vec3_t origin, vec3_t velocity ) {
+gentity_t *LaunchItem( gitem_t *item, vec3_t origin, vec3_t velocity, int xr_flags ) {
 	gentity_t	*dropped;
 
 	dropped = G_Spawn();
@@ -640,12 +640,46 @@ gentity_t *LaunchItem( gitem_t *item, vec3_t origin, vec3_t velocity ) {
 		dropped->nextthink = level.time + 30000;
 	}
 
-	dropped->flags = FL_DROPPED_ITEM;
+	//dropped->flags = FL_DROPPED_ITEM;
+	dropped->flags =  xr_flags; // FL_DROPPED_ITEM; // XRAY FMJ FL_THROWN_ITEM
+	if( xr_flags & FL_THROWN_ITEM) {
+    dropped->clipmask = MASK_SHOT; // XRAY FMJ
+    dropped->s.pos.trTime = level.time - 50;	// move a bit on the very first frame
+    VectorScale( velocity, 500, dropped->s.pos.trDelta ); // 700
+    SnapVector( dropped->s.pos.trDelta );		// save net bandwidth
+    dropped->physicsBounce= 0.65;
+}
 
 	trap_LinkEntity (dropped);
 
 	return dropped;
 }
+
+/*
+================
+dropWeapon XRAY FMJ
+================
+*/
+gentity_t *dropWeapon( gentity_t *ent, gitem_t *item, float angle, int xr_flags ) { // XRAY FMJ
+	vec3_t	velocity;
+	vec3_t	origin;
+
+	VectorCopy( ent->s.pos.trBase, origin );
+
+	// set aiming directions
+	AngleVectors (ent->client->ps.viewangles, velocity, NULL, NULL);
+
+	origin[2] += ent->client->ps.viewheight;
+	VectorMA( origin, 34, velocity, origin ); // 14
+	// snap to integer coordinates for more efficient network bandwidth usage
+	SnapVector( origin);
+
+	// extra vertical velocity
+	velocity[2] += 0.2;
+	VectorNormalize( velocity );
+	return LaunchItem( item, origin, velocity, xr_flags );
+}
+
 
 /*
 ================
@@ -666,7 +700,7 @@ gentity_t *Drop_Item( gentity_t *ent, gitem_t *item, float angle ) {
 	VectorScale( velocity, 150, velocity );
 	velocity[2] += 200 + crandom() * 50;
 //	PrintMsg( NULL, "%i" S_COLOR_WHITE " DEBUG: Drop Item Complete\n", velocity); // Shafe - Debug
-	return LaunchItem( item, ent->s.pos.trBase, velocity );
+	return LaunchItem( item, ent->s.pos.trBase, velocity,FL_DROPPED_ITEM);
 }
 
 

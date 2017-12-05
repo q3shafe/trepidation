@@ -27,6 +27,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- You can now drop weapons using /drop or binding a key from the settings menu.
+
 - Fixed issue where instagib would revert off in trepidation gametype.
 
 - Fixed issue where powerups wouldn't show up in arsenal correctly if instagib was set to 1.

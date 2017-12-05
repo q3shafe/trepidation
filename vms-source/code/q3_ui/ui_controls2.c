@@ -98,16 +98,17 @@ typedef struct
 #define ID_PDG			37	// Shafe - Trep - PDG
 #define ID_BUILD_MENU	38	
 #define ID_VOIPKEY		39	
+#define ID_DROPW		40	
 
 // all others
-#define ID_FREELOOK		40
-#define ID_INVERTMOUSE	41
-#define ID_ALWAYSRUN	42
-#define ID_AUTOSWITCH	43
-#define ID_MOUSESPEED	44
-#define ID_JOYENABLE	45
-#define ID_JOYTHRESHOLD	46
-#define ID_SMOOTHMOUSE	47
+#define ID_FREELOOK		41
+#define ID_INVERTMOUSE	42
+#define ID_ALWAYSRUN	43
+#define ID_AUTOSWITCH	44
+#define ID_MOUSESPEED	45
+#define ID_JOYENABLE	46
+#define ID_JOYTHRESHOLD	47
+#define ID_SMOOTHMOUSE	48
 
 
 
@@ -200,6 +201,7 @@ typedef struct
 	menuaction_s		pdg;  // Shafe - Grapple
 	menuaction_s		build_menu;  // Shafe 
 	menuaction_s		voipkey;  // Shafe 
+	menuaction_s		dropw;  // Shafe 
 	menuradiobutton_s	joyenable;
 	menuslider_s		joythreshold;
 	menuaction_s		altattack;  // Shafe - Alt Fire
@@ -265,6 +267,7 @@ static bind_t g_bindings[] =
 	{"pdg", 		"displacement grenade",	ID_PDG	,		ANIM_ATTACK,	'Q',			-1,		-1, -1},
 	{"build_menu", 		"build menu",	ID_BUILD_MENU	,		ANIM_ATTACK,	'E',			-1,		-1, -1},
 	{"+voiprecord", 		"Voice: Push To Talk",	ID_VOIPKEY	,		ANIM_CHAT,	'V',			-1,		-1, -1},
+	{"drop", 		"Drop Weapon",	ID_DROPW	,		ANIM_CHAT,	'F',			-1,		-1, -1},
 
 	{(char*)NULL,		(char*)NULL,		0,				0,				-1,				-1,		-1,	-1},
 };
@@ -304,7 +307,8 @@ static menucommon_s *g_weapons_controls[] = {
 	(menucommon_s *)&s_controls.altattack, 
 	(menucommon_s *)&s_controls.nextweapon,
 	(menucommon_s *)&s_controls.prevweapon,
-	(menucommon_s *)&s_controls.autoswitch,    
+	(menucommon_s *)&s_controls.autoswitch,
+	(menucommon_s *)&s_controls.dropw,  // Shafe	
 	(menucommon_s *)&s_controls.chainsaw,         
 	(menucommon_s *)&s_controls.machinegun,
 	(menucommon_s *)&s_controls.shotgun,          
@@ -346,6 +350,7 @@ static menucommon_s *g_misc_controls[] = {
 	(menucommon_s *)&s_controls.pdg,  // Shafe
 	(menucommon_s *)&s_controls.build_menu,  // Shafe
 	(menucommon_s *)&s_controls.voipkey,  // Shafe
+	
 	NULL,
 };
 
@@ -1435,6 +1440,14 @@ static void Controls_MenuInit( void )
 	s_controls.nextweapon.generic.ownerdraw = Controls_DrawKeyBinding;
 	s_controls.nextweapon.generic.id        = ID_WEAPNEXT;
 
+	s_controls.dropw.generic.type	    = MTYPE_ACTION;
+	s_controls.dropw.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
+	s_controls.dropw.generic.callback  = Controls_ActionEvent;
+	s_controls.dropw.generic.ownerdraw = Controls_DrawKeyBinding;
+	s_controls.dropw.generic.id        = ID_DROPW;
+
+
+
 	s_controls.lookup.generic.type	    = MTYPE_ACTION;
 	s_controls.lookup.generic.flags     = QMF_LEFT_JUSTIFY|QMF_PULSEIFFOCUS|QMF_GRAYED|QMF_HIDDEN;
 	s_controls.lookup.generic.callback  = Controls_ActionEvent;
@@ -1662,6 +1675,9 @@ static void Controls_MenuInit( void )
 	Menu_AddItem( &s_controls.menu, &s_controls.nextweapon );
 	Menu_AddItem( &s_controls.menu, &s_controls.prevweapon );
 	Menu_AddItem( &s_controls.menu, &s_controls.autoswitch );
+
+	Menu_AddItem( &s_controls.menu, &s_controls.dropw);  // Shafe - Build Menu
+
 	Menu_AddItem( &s_controls.menu, &s_controls.chainsaw );
 	Menu_AddItem( &s_controls.menu, &s_controls.machinegun );
 	Menu_AddItem( &s_controls.menu, &s_controls.shotgun );
