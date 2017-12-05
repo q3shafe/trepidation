@@ -97,9 +97,9 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "Gigon, Gigabyte123, Laz", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
-{ "Mac Build:", UI_CENTER|UI_SMALLFONT, &color_headertext },
-{ "Zorb", UI_CENTER|UI_SMALLFONT, &color_maintext },
-{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+//{ "Mac Build:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+//{ "Zorb", UI_CENTER|UI_SMALLFONT, &color_maintext },
+//{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Technical Advisors:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Skylar, Pabst Blue Ribbon, Old Number 7", UI_CENTER|UI_SMALLFONT, &color_maintext },
