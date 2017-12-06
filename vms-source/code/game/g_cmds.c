@@ -1107,7 +1107,11 @@ Cmd_Drop_f XRAY FMJ
 =================
 */
 void Cmd_Drop_f( gentity_t *ent ) {
-	ThrowWeapon( ent );
+	
+	if(g_instagib.value == 0) // Don't throw weapons in instagib.
+	{
+		ThrowWeapon( ent );
+	}
 }
 
 /*
