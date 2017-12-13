@@ -860,12 +860,14 @@ void ThrowWeapon( gentity_t *ent )
 	client = ent->client;
 	ucmd = &ent->client->pers.cmd;
 
+	// Should we check for flag here and throw it first if they have it? // FIXME : Shafe
+
+
 	if( client->ps.weapon == WP_GAUNTLET
 		|| client->ps.weapon == WP_MACHINEGUN
 		|| client->ps.weapon == WP_GRAPPLING_HOOK
 		|| ( ucmd->buttons & BUTTON_ATTACK ))
 		return;
-
 
 	xr_item = BG_FindItemForWeapon( client->ps.weapon );
 

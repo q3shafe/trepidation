@@ -2172,7 +2172,7 @@ void CheckExitRules( void ) {
 
 		
 	// This works.. but scoring doesnt.. automatically places the thing as soon as you destroy it.
-	if (g_GameMode.integer == 3)
+	if ((g_GameMode.integer == 3) || (g_GameMode.integer == 999))
 	{
 
 
@@ -2286,18 +2286,20 @@ void CheckExitRules( void ) {
 				}
 		}
 		
-		if ((level.time-level.blueScoreTime) > 35000) 
+		if (g_GameMode.integer != 999) // Don't do this in alpha campaign.
 		{
+			if ((level.time-level.blueScoreTime) > 35000) 
+			{
 		
-				if ((level.redMC == 0) && (level.redNeedMC == 1))
-				{
-					trap_SendServerCommand( -1, "print \"Automatically Placing Red Power Core.\n\"" );
-					level.redNeedMC = 0;
-					PlaceMC(TEAM_RED);
-					return;
-				}
-		}
-
+					if ((level.redMC == 0) && (level.redNeedMC == 1))
+					{
+						trap_SendServerCommand( -1, "print \"Automatically Placing Red Power Core.\n\"" );
+						level.redNeedMC = 0;
+						PlaceMC(TEAM_RED);
+						return;
+					}
+			}
+		} // end single player
 		// This should never happen but it does...
 		// It's a fluke... Force build of the MC and no one scores.
 		if ((level.redMC <= 0) && (level.redNeedMC == 0)) { level.redNeedMC= 1; }
