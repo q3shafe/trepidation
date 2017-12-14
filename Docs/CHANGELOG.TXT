@@ -29,6 +29,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Bot issues on ctf_pyramide2 have been resolved.
+
 - Made error message clearer about version mismatches.
 
 - You can now drop weapons using /drop or binding a key from the settings menu.

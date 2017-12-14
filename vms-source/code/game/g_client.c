@@ -1317,8 +1317,6 @@ void ClientSpawn(gentity_t *ent) {
 	} 
 
 	// Trepidation Gametype
-	// This is all gonna change once we introduce classes
-	// FIXME: Reverts randomly after turret to All weapons -- Bug #152
 	// Instagib
 	if (g_instagib.value == 1)
 	{
