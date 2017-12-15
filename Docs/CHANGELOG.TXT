@@ -1,7 +1,7 @@
 TREPIDATION CHANGELOG
 
 GAME HIGHLIGHTS:
-- 18 multiplayer levels (maps).  
+- 19 multiplayer levels (maps).  
 - Quake 3 and Star Trek Voyager Elite Force Map Compatability.
 - An original soundtrack featuring 10 original tracks.
 - 7 Game Modes.
@@ -29,6 +29,10 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- New Map Trep_War_Ring_2
+
+- ctf_pyramide2 has been revised and improved.
+
 - Bot issues on ctf_pyramide2 have been resolved.
 
 - Made error message clearer about version mismatches.
