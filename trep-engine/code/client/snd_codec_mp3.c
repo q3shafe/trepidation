@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 // MP3 support is enabled by this define
-#if USE_CODEC_MP3
+//#if USE_CODEC_MP3
 
 // includes for the Q3 sound system
 #include "client.h"
@@ -713,4 +713,4 @@ void *S_MP3_CodecLoad(const char *filename, snd_info_t *info)
 	return pcmbuffer;
 }
 
-#endif // USE_CODEC_MP3
+//#endif // USE_CODEC_MP3
