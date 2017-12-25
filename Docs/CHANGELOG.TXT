@@ -29,6 +29,10 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- More tweaks to default video settings
+
+- Corrected default video resolution
+
 - New Map Trep_War_Ring_2
 
 - ctf_pyramide2 has been revised and improved.
