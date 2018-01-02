@@ -9,7 +9,7 @@
 // needs to be larger than PACKET_BACKUP
 
 
-#define	MAX_ENTITIES_IN_SNAPSHOT	256
+#define	MAX_ENTITIES_IN_SNAPSHOT	512
 
 // snapshots are a view of the server at a given time
 
