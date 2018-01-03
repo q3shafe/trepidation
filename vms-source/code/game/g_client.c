@@ -1283,8 +1283,8 @@ void ClientSpawn(gentity_t *ent) {
 
 
 	// Game startes zoom should reset, otherwise you get stuck in zoom without the guass rifle -- shafes
-	trap_SendServerCommand(client->ps.clientNum, "-gzoom");
-	client->Zoomed = qfalse;
+	//trap_SendServerCommand(client->ps.clientNum, "-gzoom");
+	//client->Zoomed = qfalse;
 	
 	ent->s.groundEntityNum = ENTITYNUM_NONE;
 	ent->client = &level.clients[index];

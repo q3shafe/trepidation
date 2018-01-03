@@ -135,7 +135,7 @@ typedef struct {
 
 	void	(*Cmd_AddCommand)( const char *name, void(*cmd)(void) );
 	void	(*Cmd_RemoveCommand)( const char *name );
-
+	
 	int		(*Cmd_Argc) (void);
 	char	*(*Cmd_Argv) (int i);
 
