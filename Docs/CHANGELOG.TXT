@@ -29,6 +29,10 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- LFO Rifle always starts with 40 ammo now.
+
+- Fix redundant skill levels in bot files
+
 - More tweaks to default video settings
 
 - Corrected default video resolution
