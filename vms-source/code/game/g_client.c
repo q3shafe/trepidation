@@ -1303,6 +1303,9 @@ void ClientSpawn(gentity_t *ent) {
 
 	client->ps.clientNum = index;
 	
+	// Default star ammo for LFO
+	client->ps.ammo[WP_MACHINEGUN] = 40;
+
 	// FFA
 	if (g_instagib.integer == 0 && g_GameMode.integer == 0)  // Shafe - Trep Instagib
 	{	
