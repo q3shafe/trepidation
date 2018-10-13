@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE project SYSTEM "project.dtd">
+<project>
+  <key name="gamename" value="base"/>
+  <key name="version" value="1"/>
+  <key name="basepath" value="C:/Program Files/Trepidation/base/"/>
+  <key name="rshcmd" value=""/>
+  <key name="remotebasepath" value="C:/Program Files/Trepidation/base/"/>
+  <key name="entitypath" value="C:/Program Files/Trepidation/base/scripts/entities.def"/>
+  <key name="texturepath" value="C:/Program Files/Trepidation/base/textures/"/>
+  <key name="autosave" value="C:/Program Files/Trepidation/base/maps/autosave.map"/>
+  <key name="mapspath" value="C:/Program Files/Trepidation/base/maps/"/>
+  <key name="bsp_Q3Map2: (single) BSP -meta" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -meta $"/>
+  <key name="bsp_Q3Map2: (single) -vis" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -vis $"/>
+  <key name="bsp_Q3Map2: (single test) -vis -fast" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -vis -fast $"/>
+  <key name="bsp_Q3Map2: (single test) -light -faster" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -light -faster $"/>
+  <key name="bsp_Q3Map2: (single test) -light -fast" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -light -fast $"/>
+  <key name="bsp_Q3Map2: (single) -light -fast -super 2" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -light -fast -super 2 $"/>
+  <key name="bsp_Q3Map2: (single) -light -fast -super 2 -filter" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -light -fast -super 2 -filter $"/>
+  <key name="bsp_Q3Map2: (single) -light -fast -super 2 -filter -bounce 8" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -light -fast -super 2 -filter -bounce 8 $"/>
+  <key name="bsp_Q3Map2: (test) BSP -meta, -vis, -light -fast -filter" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -meta $ &amp;&amp; ! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -vis -saveprt $ &amp;&amp; ! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -light -fast -filter $"/>
+  <key name="bsp_Q3Map2: (test) BSP -meta, -vis -fast, -light -fast -super 2 -filter" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -meta $ &amp;&amp; ! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -vis -saveprt -fast $ &amp;&amp; ! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -light -fast -super 2 -filter $"/>
+  <key name="bsp_Q3Map2: (final) BSP -meta, -vis, -light -fast -filter -super 2" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -meta $ &amp;&amp; ! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -vis -saveprt $ &amp;&amp; ! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -light -fast -filter -super 2 $"/>
+  <key name="bsp_Q3Map2: (final) BSP -meta, -vis, -light -fast -filter -super 2 -bounce 8" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -meta $ &amp;&amp; ! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -vis -saveprt $ &amp;&amp; ! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -light -fast -super 2 -filter -bounce 8 $"/>
+  <key name="bsp_Q3Map2: (simulate old style -light -extra) BSP -meta, -vis, -light -super 2" value="! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -meta $ &amp;&amp; ! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -vis -saveprt $ &amp;&amp; ! &quot;C:/Program Files/GtkRadiant-1.4/q3map2&quot; -v # -game trepidation -fs_basepath &quot;C:/Program Files/Trepidation/&quot; -light -super 2 $"/>
+  <key name="brush_primit" value="0"/>
+  <key name="user_project" value="1"/>
+</project>

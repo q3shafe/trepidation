@@ -1,0 +1,10 @@
+{
+map "dystopia_2"
+bots ""
+longname "Dystopia 2"
+longname_deutsch "Dystopia 2"
+longname_francais "Dystopia 2"
+fraglimit 10
+type "single ffa team ctf tourney "
+recommended "8"
+}

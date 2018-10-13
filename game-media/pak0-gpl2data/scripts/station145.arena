@@ -1,0 +1,10 @@
+{
+map "station145"
+bots ""
+longname "Station 145"
+longname_deutsch "Station 145"
+longname_francais "Station 145"
+fraglimit 10
+type "single ffa team tourney "
+recommended "8"
+}

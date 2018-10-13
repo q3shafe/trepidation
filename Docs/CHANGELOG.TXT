@@ -29,6 +29,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- New Maps: ctf_aversion_2, ctf_battlefield_2, dystopia_2, oarpg3dm2_s and station145
+
 - LFO Rifle always starts with 40 ammo now.
 
 - Fix redundant skill levels in bot files
