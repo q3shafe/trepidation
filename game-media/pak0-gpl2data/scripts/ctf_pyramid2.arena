@@ -1,0 +1,10 @@
+{
+map "ctf_pyramid2"
+bots ""
+longname "CTF Pyramid 2"
+longname_deutsch "CTF Pyramid 2"
+longname_francais "CTF Pyramid 2"
+fraglimit 20
+type "single ffa team ctf tourney "
+recommended "6"
+}
