@@ -57,7 +57,7 @@ Detailed Changelog - Most Recent Changes First
 
 - Fixed issue where new buildable items are announced more than once.
 
-- Fixed issue where player remains immobilized after team scores and buildable are destroyed.
+- Fixed issue where player remains immobilized after team scores and buildables are destroyed.
 
 - Water on some ef maps now shows up correctly.
 

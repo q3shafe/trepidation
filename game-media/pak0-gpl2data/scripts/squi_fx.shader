@@ -147,6 +147,30 @@ textures/squiciene/arrow_green
     }
 }
 
+textures/el_trep_war_ring/jumppad1
+{
+    qer_editorimage textures/el_trep_war_ring/jumppad1.tga
+    {
+        map $lightmap
+        rgbGen identity
+    }
+    {
+        map textures/el_trep_war_ring/jumppad1.tga
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+        map textures/el_trep_war_ring/jumppad2.tga
+        blendFunc GL_ONE GL_ONE
+        tcMod rotate 360
+    }
+    {
+        map textures/el_trep_war_ring/jumppad2.tga
+        blendFunc GL_ONE GL_ONE
+        tcMod rotate -360
+    }
+}
+
 textures/el_trep_war_ring/jumppad4
 {
     qer_editorimage textures/el_trep_war_ring/jumppad4.tga
@@ -168,6 +192,30 @@ textures/el_trep_war_ring/jumppad4
         map textures/el_trep_war_ring/jumppad3.tga
         blendFunc GL_ONE GL_ONE
         tcMod rotate -360
+    }
+}
+
+textures/effects/squimap2
+{
+    q3map_surfacelight 700
+    light 1
+    surfaceparm nolightmap
+    surfaceparm trans
+    {
+        //scrollparms 0.25 0.25 0.1 0.2
+        map textures/effects/squimap2.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.15 2 0.4
+        tcMod scale 0.25 0.25
+        tcMod scroll 0.1 0.2
+    }
+    {
+        //scrollparms 0.25 0.25 -0.2 -0.1
+        map textures/effects/squimap2.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.25 2 0.1
+        tcMod scale 0.25 0.25
+        tcMod scroll -0.2 -0.1
     }
 }
 
@@ -534,6 +582,38 @@ textures/effects/squiglow_red
     }
 }
 
+textures/effects/border_b
+{
+    {
+        map $lightmap
+    }
+    {
+        map textures/effects/border_b
+        blendFunc GL_DST_COLOR GL_ZERO
+    }
+    {
+        map textures/effects/border_b2.tga
+        blendFunc GL_ONE GL_ONE
+        rgbGen wave sin 0.75 1 0 0.5
+    }
+}
+
+textures/effects/border_r
+{
+    {
+        map $lightmap
+    }
+    {
+        map textures/effects/border_r.tga
+        blendFunc GL_DST_COLOR GL_ZERO
+    }
+    {
+        map textures/effects/border_r2.tga
+        blendFunc GL_ONE GL_ONE
+        rgbGen wave sin 0.75 1 0 0.5
+    }
+}
+
 textures/el_station144/d_s145
 {
     surfaceparm nomarks
@@ -567,4 +647,124 @@ textures/el_station144/f_pipe02
         blendFunc GL_ONE GL_ONE
         tcMod scroll 0 -0.46
     }
+}
+
+textures/el_trepxus/trep_station_1
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    surfaceparm trans
+    polygonOffset
+    {
+        map textures/el_trepxus/trep_station_1.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
+textures/el_trepxus/trep_station_2
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    surfaceparm trans
+    polygonOffset
+    {
+        map textures/el_trepxus/trep_station_2.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
+textures/el_trepxus/d_xsqui
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    surfaceparm trans
+    polygonOffset
+    {
+        map textures/el_trepxus/d_xsqui.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
+textures/el_trepxus/squi_light1
+{
+	qer_editorimage textures/el_trepxus/squi_light1.tga
+	surfaceparm nomarks
+	q3map_surfacelight 5000
+	{
+		map $lightmap
+		rgbGen identity
+	}
+	{
+		map textures/el_trepxus/squi_light1.tga
+		blendFunc GL_DST_COLOR GL_ZERO
+		rgbGen identity
+	}
+	{
+		map textures/el_trepxus/squi_light1.tga
+		blendfunc GL_ONE GL_ONE
+	}
+}
+
+textures/squiciene/flag_metal_silver
+{
+	qer_editorimage textures/squiciene/flag_metal_silver.tga
+	tessSize 64
+	deformVertexes wave 194 sin 0 3 0 .4
+	deformVertexes normal .5 .1
+	surfaceparm nomarks
+	cull none
+	{
+	    map $lightmap
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+		rgbGen identity 
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/squiciene/flag_shiny_silver.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/squiciene/flag_metal_gold
+{
+	qer_editorimage textures/squiciene/flag_metal_gold.tga
+	tessSize 64
+	deformVertexes wave 194 sin 0 3 0 .4
+	deformVertexes normal .5 .1
+	surfaceparm nomarks
+	cull none
+	{
+	    map $lightmap
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+		rgbGen identity 
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/squiciene/flag_shiny_gold.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
 }
