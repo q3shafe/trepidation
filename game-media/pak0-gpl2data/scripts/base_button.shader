@@ -258,3 +258,199 @@ textures/common/camera_veiw
         tcMod scale 2 2
     }
 }
+
+textures/squiciene/b_sptl
+{
+    qer_editorimage textures/squiciene/blues.tga
+    qer_trans 0.5
+    surfaceparm noimpact
+    surfaceparm nolightmap
+    surfaceparm nonsolid
+    surfaceparm trans
+    cull back
+    {
+        map textures/squiciene/b_sptl.tga
+        alphaFunc GT0
+        blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+        tcMod scroll -0.025 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        tcMod scroll 0.05 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        detail
+        tcMod scroll -0.03 0
+    }
+}
+
+textures/squiciene/g_sptl
+{
+    qer_editorimage textures/squiciene/greens.tga
+    qer_trans 0.5
+    surfaceparm noimpact
+    surfaceparm nolightmap
+    surfaceparm nonsolid
+    surfaceparm trans
+    cull back
+    {
+        map textures/squiciene/g_sptl.tga
+        alphaFunc GT0
+        blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+        tcMod scroll -0.025 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        tcMod scroll 0.05 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        detail
+        tcMod scroll -0.03 0
+    }
+}
+
+textures/squiciene/y_sptl
+{
+    qer_editorimage textures/squiciene/yellows.tga
+    qer_trans 0.5
+    surfaceparm noimpact
+    surfaceparm nolightmap
+    surfaceparm nonsolid
+    surfaceparm trans
+    cull back
+    {
+        map textures/squiciene/y_sptl.tga
+        alphaFunc GT0
+        blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+        tcMod scroll -0.025 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        tcMod scroll 0.05 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        detail
+        tcMod scroll -0.03 0
+    }
+}
+
+textures/squiciene/w_sptl
+{
+    qer_editorimage textures/squiciene/whites.tga
+    qer_trans 0.5
+    surfaceparm noimpact
+    surfaceparm nolightmap
+    surfaceparm nonsolid
+    surfaceparm trans
+    cull back
+    {
+        map textures/squiciene/w_sptl.tga
+        alphaFunc GT0
+        blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+        tcMod scroll -0.025 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        tcMod scroll 0.05 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        detail
+        tcMod scroll -0.03 0
+    }
+}
+
+textures/squiciene/pnk_sptl
+{
+    qer_editorimage textures/squiciene/pinks.tga
+    qer_trans 0.5
+    surfaceparm noimpact
+    surfaceparm nolightmap
+    surfaceparm nonsolid
+    surfaceparm trans
+    cull back
+    {
+        map textures/squiciene/pnk_sptl.tga
+        alphaFunc GT0
+        blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+        tcMod scroll -0.025 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        tcMod scroll 0.05 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        detail
+        tcMod scroll -0.03 0
+    }
+}
+
+textures/squiciene/purp_sptl
+{
+    qer_editorimage textures/squiciene/purples.tga
+    qer_trans 0.5
+    surfaceparm noimpact
+    surfaceparm nolightmap
+    surfaceparm nonsolid
+    surfaceparm trans
+    cull back
+    {
+        map textures/squiciene/purp_sptl.tga
+        alphaFunc GT0
+        blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+        tcMod scroll -0.025 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        tcMod scroll 0.05 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        detail
+        tcMod scroll -0.03 0
+    }
+}
+
+textures/squiciene/r_sptl
+{
+    qer_editorimage textures/squiciene/reds.tga
+    qer_trans 0.5
+    surfaceparm noimpact
+    surfaceparm nolightmap
+    surfaceparm nonsolid
+    surfaceparm trans
+    cull back
+    {
+        map textures/squiciene/r_sptl.tga
+        alphaFunc GT0
+        blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+        tcMod scroll -0.025 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        tcMod scroll 0.05 0
+    }
+    {
+        map textures/squiciene/dust.tga
+        blendFunc GL_ONE GL_ONE
+        detail
+        tcMod scroll -0.03 0
+    }
+}

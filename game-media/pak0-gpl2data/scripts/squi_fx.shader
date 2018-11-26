@@ -768,3 +768,17 @@ textures/squiciene/flag_metal_gold
         tcMod scale 2 2
 	}
 }
+
+textures/squiciene/squi_harringbone
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    surfaceparm trans
+    polygonOffset
+    {
+        map textures/squiciene/squi_harringbone.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
