@@ -2655,7 +2655,7 @@ void BotGoForPowerups(bot_state_t *bs) {
 	BotDontAvoid(bs, "Battle Suit");
 	BotDontAvoid(bs, "Speed");
 	BotDontAvoid(bs, "Invisibility");
-	BotDontAvoid(bs, "Flight"); // Not sure about this one
+	//BotDontAvoid(bs, "Flight"); // Not sure about this one // Shafe Bot's should not get flight as they suck with it.
 	//reset the long term goal time so the bot will go for the powerup
 	//NOTE: the long term goal type doesn't change
 	bs->ltg_time = 0;
