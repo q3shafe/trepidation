@@ -29,6 +29,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Bots can no longer pickup flight
+
 - Map updates to ctf_trepxus_2 and ctf_pyramid2.
 
 - New Maps: ctf_aversion_2, ctf_battlefield_2, dystopia_2, oarpg3dm2_s and station145
