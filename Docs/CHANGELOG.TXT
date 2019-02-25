@@ -29,6 +29,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- New Version of CTF_JUNCTION_2
+
 - Bots can no longer pickup flight
 
 - Map updates to ctf_trepxus_2 and ctf_pyramid2.
