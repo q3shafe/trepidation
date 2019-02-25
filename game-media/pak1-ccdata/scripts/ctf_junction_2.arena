@@ -1,0 +1,10 @@
+{
+map "ctf_junction_2"
+bots ""
+longname "Junction 2"
+longname_deutsch "Junction 2"
+longname_francais "Junction 2"
+fraglimit 10
+type "single ffa team ctf tourney "
+recommended "8"
+}
