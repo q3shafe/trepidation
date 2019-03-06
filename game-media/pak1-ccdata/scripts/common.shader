@@ -372,3 +372,13 @@ sprites/flameball
     }
 }
 
+textures/common/die
+{
+    qer_editorimage textures/common/die.tga
+    qer_trans 0.4
+    surfaceparm nodraw
+    surfaceparm noimpact
+    surfaceparm nomarks
+    surfaceparm nonsolid
+    surfaceparm nolightmap
+}

@@ -73,6 +73,26 @@ textures/el_station144/f_pipe01
     }
 }
 
+textures/el_station144/f_pipe02
+{
+    qer_editorimage textures/el_station144/f_pipe01
+    surfaceparm nomarks
+    {
+        map $lightmap
+        rgbGen identity
+    }
+    {
+        map textures/el_station144/f_pipe02.tga
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+        map textures/el_station144/f_pipe01a.tga
+        blendFunc GL_ONE GL_ONE
+        tcMod scroll 0 -0.46
+    }
+}
+
 ////////////////////////////////////////alpha:
 
 textures/el_station144/al_geojute
@@ -129,6 +149,21 @@ textures/el_station144/d_s144htts
     }
 }
 
+textures/el_station144/d_s145
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    surfaceparm trans
+    nopicmip
+    polygonOffset
+    {
+        map textures/el_station144/d_s145.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
 textures/el_station144/d_arrow01
 {
     surfaceparm nomarks
@@ -144,37 +179,7 @@ textures/el_station144/d_arrow01
     }
 }
 
-textures/el_station144/d_weaponmarker
-{
-    surfaceparm nomarks
-    surfaceparm nolightmap
-    surfaceparm trans
-    nopicmip
-    polygonOffset
-    {
-        map textures/el_station144/d_weaponmarker.tga
-        alphaFunc GT0
-        blendFunc GL_DST_COLOR GL_ZERO
-        rgbGen identity
-    }
-}
-
-textures/el_station144/d_itemmarker
-{
-    surfaceparm nomarks
-    surfaceparm nolightmap
-    surfaceparm trans
-    nopicmip
-    polygonOffset
-    {
-        map textures/el_station144/d_itemmarker.tga
-        alphaFunc GT0
-        blendFunc GL_DST_COLOR GL_ZERO
-        rgbGen identity
-    }
-}
-
-////////////////////////////////////////shine:
+///////////////////////////////////////
 
 textures/el_station144/b_gray01
 {
@@ -309,8 +314,6 @@ textures/el_station144/b_gray02
     }
 }
 
-////////////////////////////////////////system:
-
 textures/el_station144/sy_metalclip
 {
     surfaceparm metalsteps
@@ -325,8 +328,6 @@ textures/el_station144/sy_metalclip
     surfaceparm monsterclip
 }
 
-////////////////////////////////////////skybox:
-
 textures/el_station144/s144_sky01
 {    
 	q3map_lightimage textures/el_station144/sy_lightref01.tga
@@ -339,5 +340,3 @@ textures/el_station144/s144_sky01
         q3map_sun 1 1 1 75 90 90 
 	skyParms env/s144sky01 512 -
 }
-
-////////////////////////////////////////fin.

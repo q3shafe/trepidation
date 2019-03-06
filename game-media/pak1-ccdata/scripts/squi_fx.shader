@@ -526,28 +526,28 @@ textures/nature/frond_s01
 	}
 }
 
-textures/oa_bases/2513724
+textures/sjtfolder/2513724
 {
 	surfaceparm noimpact
 	surfaceparm nolightmap
     surfaceparm nonsolid
 	cull disable
 	{
-		map textures/oa_bases/2513724.tga
+		map textures/sjtfolder/2513724.tga
 		rgbGen Vertex
 		depthWrite
 		alphaFunc GE128
 	}
 }
 
-textures/oa_bases/261321571009
+textures/sjtfolder/261321571009
 {
 	surfaceparm noimpact
 	surfaceparm nolightmap
     surfaceparm nonsolid
 	cull disable
 	{
-		map textures/oa_bases/261321571009.tga
+		map textures/sjtfolder/261321571009.tga
 		rgbGen Vertex
 		depthWrite
 		alphaFunc GE128
@@ -642,7 +642,7 @@ textures/effects/blkb
 	}
 }
 
-textures/oa_bases/p97439_2
+textures/sjtfolder/p97439_2
 {
     surfaceparm nomarks
     surfaceparm nolightmap
@@ -650,7 +650,7 @@ textures/oa_bases/p97439_2
     nopicmip
     polygonOffset
     {
-        map textures/oa_bases/p97439_2.tga
+        map textures/sjtfolder/p97439_2.tga
         blendFunc GL_ONE GL_ONE
     }
 }
@@ -1117,13 +1117,13 @@ textures/sjtfolder/latuice_top_wht
     }
 }
 
-textures/oa_bases/lattice_01
+textures/sjtfolder/lattice_01
 {
     surfaceparm nomarks
     surfaceparm nolightmap
 	cull disable
     {
-        map textures/oa_bases/lattice_01.tga
+        map textures/sjtfolder/lattice_01.tga
         alphaFunc GT0
         blendFunc GL_DST_COLOR GL_ZERO
         rgbGen identity
@@ -1400,88 +1400,114 @@ textures/effects/metal_newbrn
 	}
 }
 
-textures/oa_bases/tassle
+textures/sjtfolder/tassle
 {
 	surfaceparm noimpact
 	surfaceparm nolightmap
     surfaceparm nonsolid
 	cull disable
 	{
-		map textures/oa_bases/tassle.tga
+		map textures/sjtfolder/tassle.tga
 		rgbGen Vertex
 		depthWrite
 		alphaFunc GE128
 	}
 }
 
-textures/oa_bases/tassle_blu
+textures/sjtfolder/tassle_blu
 {
 	surfaceparm noimpact
 	surfaceparm nolightmap
     surfaceparm nonsolid
 	cull disable
 	{
-		map textures/oa_bases/tassle_blu.tga
+		map textures/sjtfolder/tassle_blu.tga
 		rgbGen Vertex
 		depthWrite
 		alphaFunc GE128
 	}
 }
 
-textures/oa_bases/tassle_grn
+textures/sjtfolder/tassle_grn
 {
 	surfaceparm noimpact
 	surfaceparm nolightmap
     surfaceparm nonsolid
 	cull disable
 	{
-		map textures/oa_bases/tassle_grn.tga
+		map textures/sjtfolder/tassle_grn.tga
 		rgbGen Vertex
 		depthWrite
 		alphaFunc GE128
 	}
 }
 
-textures/oa_bases/tassle_orange
+textures/sjtfolder/tassle_orange
 {
 	surfaceparm noimpact
 	surfaceparm nolightmap
     surfaceparm nonsolid
 	cull disable
 	{
-		map textures/oa_bases/tassle_orange.tga
+		map textures/sjtfolder/tassle_orange.tga
 		rgbGen Vertex
 		depthWrite
 		alphaFunc GE128
 	}
 }
 
-textures/oa_bases/tassle_purp
+textures/sjtfolder/tassle_purp
 {
 	surfaceparm noimpact
 	surfaceparm nolightmap
     surfaceparm nonsolid
 	cull disable
 	{
-		map textures/oa_bases/tassle_purp.tga
+		map textures/sjtfolder/tassle_purp.tga
 		rgbGen Vertex
 		depthWrite
 		alphaFunc GE128
 	}
 }
 
-textures/oa_bases/tassle_red
+textures/sjtfolder/tassle_red
 {
 	surfaceparm noimpact
 	surfaceparm nolightmap
     surfaceparm nonsolid
 	cull disable
 	{
-		map textures/oa_bases/tassle_red.tga
+		map textures/sjtfolder/tassle_red.tga
 		rgbGen Vertex
 		depthWrite
 		alphaFunc GE128
 	}
 }
 
+textures/sjtfolder/tassle_blk
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/tassle_blk.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
 
+textures/sjtfolder/tassle_wht
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/tassle_wht.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
