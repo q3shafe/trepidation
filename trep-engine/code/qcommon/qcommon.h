@@ -242,7 +242,7 @@ PROTOCOL
 ==============================================================
 */
 
-#define	PROTOCOL_VERSION	70
+#define	PROTOCOL_VERSION	71
 // 1.31 - 67  -- Shafe - Previous 68
 
 // maintain a list of compatible protocols for demo playing
@@ -585,7 +585,7 @@ issues.
 #ifdef DEDICATED
 #	define Q3CONFIG_CFG "trepconfig_server.cfg"
 #else
-#	define Q3CONFIG_CFG "trepconfig025.cfg"
+#	define Q3CONFIG_CFG "trepconfig026.cfg"
 #endif
 
 qboolean FS_Initialized( void );
