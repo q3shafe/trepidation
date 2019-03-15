@@ -172,34 +172,6 @@ textures/el_trepxus/d_trepxusstation
     }
 }
 
-textures/el_trepxus/trep_station_1
-{
-    surfaceparm nomarks
-    surfaceparm nolightmap
-    surfaceparm trans
-    polygonOffset
-    {
-        map textures/el_trepxus/trep_station_1.tga
-        alphaFunc GT0
-        blendFunc GL_DST_COLOR GL_ZERO
-        rgbGen identity
-    }
-}
-
-textures/el_trepxus/trep_station_2
-{
-    surfaceparm nomarks
-    surfaceparm nolightmap
-    surfaceparm trans
-    polygonOffset
-    {
-        map textures/el_trepxus/trep_station_2.tga
-        alphaFunc GT0
-        blendFunc GL_DST_COLOR GL_ZERO
-        rgbGen identity
-    }
-}
-
 textures/el_trepxus/d_x
 {
     surfaceparm nomarks
@@ -227,28 +199,5 @@ textures/el_trepxus/trepxus_sky
     q3map_sun 1 1 0.978189 75 90 90
     skyParms env/coolsky02 512 -
 }
-
-textures/el_trepxus/squibox
-{
-    qer_editorimage textures/el_treptex01/sq_sky01.tga
-    q3map_surfacelight 225
-    surfaceparm noimpact
-    surfaceparm nomarks
-    surfaceparm nolightmap
-    surfaceparm sky
-    q3map_sun 1 1 0.978189 75 90 90
-    skyParms env/squibox1 512 -
-}
-
-textures/skies/squibox1
-{
-    qer_editorimage textures/skies/squibox1.tga
-    surfaceparm noimpact
-    surfaceparm nomarks
-    surfaceparm nolightmap
-    surfaceparm sky
-    skyParms env/squibox1 512 -
-}
-
 
 //////////FIN.

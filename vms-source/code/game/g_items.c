@@ -450,12 +450,24 @@ Touch_Item
 void Touch_Item (gentity_t *ent, gentity_t *other, trace_t *trace) {
 	int			respawn;
 	qboolean	predict;
+	int		isBot;
 
 	if (!other->client)
 		return;
 	if (other->health < 1)
 		return;		// dead people can't pickup
 
+	// BOTS CANNOT PICK UP FLIGHT 
+	if(other->r.svFlags & SVF_BOT)
+	{
+		if(ent->client->ps.powerups[PW_FLIGHT])
+		{
+			return;
+		}
+		
+	}
+	
+	
 	
 	// the same pickup rules are used for client side and server side
 	

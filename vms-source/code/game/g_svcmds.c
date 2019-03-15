@@ -500,18 +500,22 @@ int count_file_lines() {
 		return;
 	*/
 
+	
 	len = trap_FS_FOpenFile(g_mapfile.string, &f, FS_READ);
 	if ( !f ) {
+		G_Error("Mapfile Empty Or Invalid!"); 
 		return 0;
 	}
 
 	if (len > sizeof(buffer)) {
 		trap_FS_FCloseFile(f);
+		G_Error("Mapfile Empty Or Invalid!"); 
 		return 0;
 	}
 
 	if (len == 0) {
 		trap_FS_FCloseFile(f);
+		G_Error("Mapfile Empty Or Invalid!"); 
 		return 0;
 	}
 

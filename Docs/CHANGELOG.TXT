@@ -29,6 +29,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Added cl_multiuser for windows users, changing this to 0 will use the base directory for map downloads and configs instead of the appdata folder.
+
 - New Version of CTF_JUNCTION_2
 
 - Bots can no longer pickup flight

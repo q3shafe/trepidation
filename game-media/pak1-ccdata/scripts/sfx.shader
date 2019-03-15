@@ -2122,7 +2122,7 @@ textures/sfx/mkc_fog_ctfblue
 	surfaceparm 	nodrop
 	surfaceparm 	nolightmap
 	q3map_globaltexture
-	fogparms ( 0.2 0.2 0.25 ) 150
+	fogparms ( 0.2 0.2 0.25 ) 320
 	
 	{
 		map textures/liquids/kc_fogcloud3.tga

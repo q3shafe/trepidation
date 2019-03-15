@@ -67,6 +67,18 @@ char *Sys_DefaultHomePath( void )
 	
 	if( !*homePath )
 	{
+
+		// Shafe - Only use the new app-data folder on windows if cl_multiuser is 1.
+		cvar_t	*cv;
+		cv = Cvar_Get( "cl_multiuser", "1", CVAR_ARCHIVE|CVAR_ROM );
+
+	 	if (!cv->integer)
+		{
+			return NULL;
+		}
+
+
+
 		if(shfolder == NULL)
 		{
 			Com_Printf("Unable to load SHFolder.dll\n");

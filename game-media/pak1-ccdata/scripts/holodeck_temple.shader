@@ -20,4 +20,3 @@ textures/holodeck_temple/water1f
         tcMod scroll 0.045 0.05
     }
 }
-
