@@ -84,6 +84,10 @@ cr_line credits[] = { // edit this as necessary for your credits
 { "VincentK", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
+{ "Pre-Production/Quality Assurance:", UI_CENTER|UI_SMALLFONT, &color_headertext },
+{ "Skylar Shaffer", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
+
 
 { "3D Art:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Petee, DrAkOn, Gigon", UI_CENTER|UI_SMALLFONT, &color_maintext },
@@ -102,7 +106,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 //{ "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 { "Technical Advisors:", UI_CENTER|UI_SMALLFONT, &color_headertext },
-{ "Skylar, Pabst Blue Ribbon, Old Number 7", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Pabst Blue Ribbon, Old Number 7", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 /*
