@@ -1,5 +1,6 @@
 TREPIDATION CHANGELOG
 
+
 GAME HIGHLIGHTS:
 - 19 multiplayer levels (maps).  
 - Quake 3 and Star Trek Voyager Elite Force Map Compatability.
