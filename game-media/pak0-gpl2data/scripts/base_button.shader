@@ -81,6 +81,22 @@ textures/effects/flaglow_blu_1
     }
 }
 
+textures/effects/flaglow_red_1
+{
+    {
+        map $lightmap
+    }
+    {
+        map textures/effects/flaglow_red_1.tga
+        blendFunc GL_DST_COLOR GL_ZERO
+    }
+    {
+        map textures/effects/flaglow_red_2.tga
+        blendFunc GL_ONE GL_ONE
+        rgbGen wave sin 0.75 1 0 0.5
+    }
+}
+
 textures/effects/squi_static_r
 {
     surfaceparm nolightmap
@@ -454,3 +470,4 @@ textures/squiciene/r_sptl
         tcMod scroll -0.03 0
     }
 }
+

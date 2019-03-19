@@ -267,6 +267,175 @@ textures/effects/quadmapred
     }
 }
 
+textures/effects/portal_green1
+{
+    q3map_surfacelight 700
+    light 1
+    surfaceparm nolightmap
+    surfaceparm trans
+    {
+        //scrollparms 0.25 0.25 0.1 0.2
+        map textures/effects/portal_green1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.15 2 0.4
+        tcMod scale 0.25 0.25
+        tcMod scroll 0.1 0.2
+    }
+    {
+        //scrollparms 0.25 0.25 -0.2 -0.1
+        map textures/effects/portal_green1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.25 2 0.1
+        tcMod scale 0.25 0.25
+        tcMod scroll -0.2 -0.1
+    }
+}
+
+textures/effects/portal_bandw
+{
+    q3map_surfacelight 700
+    light 1
+    surfaceparm nolightmap
+    surfaceparm trans
+    {
+        //scrollparms 0.25 0.25 0.1 0.2
+        map textures/effects/portal_bandw.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.15 2 0.4
+        tcMod scale 0.25 0.25
+        tcMod scroll 0.1 0.2
+    }
+    {
+        //scrollparms 0.25 0.25 -0.2 -0.1
+        map textures/effects/portal_bandw.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.25 2 0.1
+        tcMod scale 0.25 0.25
+        tcMod scroll -0.2 -0.1
+    }
+}
+
+textures/effects/portal_blue1
+{
+    q3map_surfacelight 700
+    light 1
+    surfaceparm nolightmap
+    surfaceparm trans
+    {
+        //scrollparms 0.25 0.25 0.1 0.2
+        map textures/effects/portal_blue1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.15 2 0.4
+        tcMod scale 0.25 0.25
+        tcMod scroll 0.1 0.2
+    }
+    {
+        //scrollparms 0.25 0.25 -0.2 -0.1
+        map textures/effects/portal_blue1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.25 2 0.1
+        tcMod scale 0.25 0.25
+        tcMod scroll -0.2 -0.1
+    }
+}
+
+textures/effects/portal_orange1
+{
+    q3map_surfacelight 700
+    light 1
+    surfaceparm nolightmap
+    surfaceparm trans
+    {
+        //scrollparms 0.25 0.25 0.1 0.2
+        map textures/effects/portal_orange1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.15 2 0.4
+        tcMod scale 0.25 0.25
+        tcMod scroll 0.1 0.2
+    }
+    {
+        //scrollparms 0.25 0.25 -0.2 -0.1
+        map textures/effects/portal_orange1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.25 2 0.1
+        tcMod scale 0.25 0.25
+        tcMod scroll -0.2 -0.1
+    }
+}
+
+textures/effects/portal_red1
+{
+    q3map_surfacelight 700
+    light 1
+    surfaceparm nolightmap
+    surfaceparm trans
+    {
+        //scrollparms 0.25 0.25 0.1 0.2
+        map textures/effects/portal_red1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.15 2 0.4
+        tcMod scale 0.25 0.25
+        tcMod scroll 0.1 0.2
+    }
+    {
+        //scrollparms 0.25 0.25 -0.2 -0.1
+        map textures/effects/portal_red1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.25 2 0.1
+        tcMod scale 0.25 0.25
+        tcMod scroll -0.2 -0.1
+    }
+}
+
+textures/effects/portal_purp1
+{
+    q3map_surfacelight 700
+    light 1
+    surfaceparm nolightmap
+    surfaceparm trans
+    {
+        //scrollparms 0.25 0.25 0.1 0.2
+        map textures/effects/portal_purp1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.15 2 0.4
+        tcMod scale 0.25 0.25
+        tcMod scroll 0.1 0.2
+    }
+    {
+        //scrollparms 0.25 0.25 -0.2 -0.1
+        map textures/effects/portal_purp1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.25 2 0.1
+        tcMod scale 0.25 0.25
+        tcMod scroll -0.2 -0.1
+    }
+}
+
+textures/effects/portal_yellow1
+{
+    q3map_surfacelight 700
+    light 1
+    surfaceparm nolightmap
+    surfaceparm trans
+    {
+        //scrollparms 0.25 0.25 0.1 0.2
+        map textures/effects/portal_yellow1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.15 2 0.4
+        tcMod scale 0.25 0.25
+        tcMod scroll 0.1 0.2
+    }
+    {
+        //scrollparms 0.25 0.25 -0.2 -0.1
+        map textures/effects/portal_yellow1.tga
+        blendFunc GL_SRC_ALPHA GL_ONE
+        rgbGen wave sin 0.5 0.25 2 0.1
+        tcMod scale 0.25 0.25
+        tcMod scroll -0.2 -0.1
+    }
+}
+
+
 textures/liquids/lavafloor2
 {
     q3map_surfacelight 700
@@ -337,6 +506,48 @@ textures/nature/branch2
 	cull disable
 	{
 		map textures/nature/branch2.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
+
+textures/nature/frond_s01
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/nature/frond_s01.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
+
+textures/sjtfolder/2513724
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/2513724.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
+
+textures/sjtfolder/261321571009
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/261321571009.tga
 		rgbGen Vertex
 		depthWrite
 		alphaFunc GE128
@@ -429,6 +640,19 @@ textures/effects/blkb
 		blendfunc add
 		tcMod scroll 0.0 2.0
 	}
+}
+
+textures/sjtfolder/p97439_2
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    surfaceparm trans
+    nopicmip
+    polygonOffset
+    {
+        map textures/sjtfolder/p97439_2.tga
+        blendFunc GL_ONE GL_ONE
+    }
 }
 
 textures/squiciene/newlogo_prototype2
@@ -582,6 +806,38 @@ textures/effects/squiglow_red
     }
 }
 
+textures/effects/flaglow_blu_1
+{
+    {
+        map $lightmap
+    }
+    {
+        map textures/effects/flaglow_blu_1.tga
+        blendFunc GL_DST_COLOR GL_ZERO
+    }
+    {
+        map textures/effects/flaglow_blu_2.tga
+        blendFunc GL_ONE GL_ONE
+        rgbGen wave sin 0.75 1 0 0.5
+    }
+}
+
+textures/effects/flaglow_red_1
+{
+    {
+        map $lightmap
+    }
+    {
+        map textures/effects/flaglow_red_1.tga
+        blendFunc GL_DST_COLOR GL_ZERO
+    }
+    {
+        map textures/effects/flaglow_red_2.tga
+        blendFunc GL_ONE GL_ONE
+        rgbGen wave sin 0.75 1 0 0.5
+    }
+}
+
 textures/effects/border_b
 {
     {
@@ -711,6 +967,26 @@ textures/el_trepxus/squi_light1
 	}
 }
 
+textures/el_junction/squi_light2
+{
+	qer_editorimage textures/el_junction/squi_light2.tga
+	surfaceparm nomarks
+	q3map_surfacelight 4000
+	{
+		map $lightmap
+		rgbGen identity
+	}
+	{
+		map textures/el_junction/squi_light2.tga
+		blendFunc GL_DST_COLOR GL_ZERO
+		rgbGen identity
+	}
+	{
+		map textures/el_junction/squi_light2.tga
+		blendfunc GL_ONE GL_ONE
+	}
+}
+
 textures/squiciene/flag_metal_silver
 {
 	qer_editorimage textures/squiciene/flag_metal_silver.tga
@@ -781,4 +1057,457 @@ textures/squiciene/squi_harringbone
         blendFunc GL_DST_COLOR GL_ZERO
         rgbGen identity
     }
+}
+
+textures/sjtfolder/latuice_top_orng
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    polygonOffset
+    {
+        map textures/sjtfolder/latuice_top_orng.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
+textures/sjtfolder/latuice_top_purp
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    polygonOffset
+    {
+        map textures/sjtfolder/latuice_top_purp.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
+textures/sjtfolder/latuice_top_blk
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    polygonOffset
+    {
+        map textures/sjtfolder/latuice_top_blk.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
+textures/sjtfolder/latuice_top_wht
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    polygonOffset
+    {
+	        map textures/sjtfolder/latuice_top_wht.tga
+        alphaFunc GE128
+        blendFunc GL_ONE GL_ZERO
+        rgbGen identity
+    }
+    {
+        map textures/sjtfolder/latuice_top_wht.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
+textures/sjtfolder/lattice_01
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+	cull disable
+    {
+        map textures/sjtfolder/lattice_01.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
+textures/detail/maint_blu
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    polygonOffset
+    {
+        map textures/detail/maint_blu.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
+textures/detail/maint_red
+{
+    surfaceparm nomarks
+    surfaceparm nolightmap
+    polygonOffset
+    {
+        map textures/detail/maint_red.tga
+        alphaFunc GT0
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+}
+
+//////////////  NEW METALS  ///////////////
+
+textures/effects/metal_newgold
+{
+     surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/effects/shiny_newgold.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/effects/metal_newsilver
+{
+     surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/effects/shiny_newsilver.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/effects/metal_newred
+{
+     surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/effects/shiny_newred.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/effects/metal_newblu
+{
+     surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/effects/shiny_newblu.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/effects/metal_newgrn
+{
+     surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+	}
+    {
+        map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+        map textures/effects/shiny_newgrn.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+    }
+}
+
+textures/effects/metal_newblack
+{
+     surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/effects/shiny_newblack.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/effects/metal_newprpl
+{
+     surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/effects/shiny_newprpl.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/effects/metal_newblugrn
+{
+     surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/effects/shiny_newblugrn.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/effects/metal_newpink
+{
+     surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/effects/shiny_newpink.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/effects/metal_neworange
+{
+     surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/effects/shiny_neworange.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/effects/metal_newbrn
+{
+    surfaceparm nolightmap
+	{
+		map textures/squiciene/basic.tga
+	    blendFunc GL_ONE GL_ZERO 
+	}
+	{
+	    map $lightmap
+        blendFunc GL_DST_COLOR GL_ZERO
+        rgbGen identity
+    }
+    {
+		map textures/effects/shiny_newbrn.tga
+        blendFunc GL_DST_COLOR GL_SRC_COLOR
+        detail
+        rgbGen identity
+        tcGen environment
+        tcMod scale 2 2
+	}
+}
+
+textures/sjtfolder/tassle
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/tassle.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
+
+textures/sjtfolder/tassle_blu
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/tassle_blu.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
+
+textures/sjtfolder/tassle_grn
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/tassle_grn.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
+
+textures/sjtfolder/tassle_orange
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/tassle_orange.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
+
+textures/sjtfolder/tassle_purp
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/tassle_purp.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
+
+textures/sjtfolder/tassle_red
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/tassle_red.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
+
+textures/sjtfolder/tassle_blk
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/tassle_blk.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
+}
+
+textures/sjtfolder/tassle_wht
+{
+	surfaceparm noimpact
+	surfaceparm nolightmap
+    surfaceparm nonsolid
+	cull disable
+	{
+		map textures/sjtfolder/tassle_wht.tga
+		rgbGen Vertex
+		depthWrite
+		alphaFunc GE128
+	}
 }
