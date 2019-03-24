@@ -22,12 +22,23 @@ recommended "12"
 
 
 {
-map "trep_war_ring"
+map "trep_war_ring-og"
 fraglimit	10
 bots		"Weemer"
 longname "War Ring"
 longname_deutsch ""
 longname_francais ""
 type "single ffa team tourney arsenal survival trepidation freezetag one4all"
+recommended "9"
+}
+
+{
+map "ctf_trepxus-og"
+fraglimit	10
+bots		"Weemer"
+longname "CTF Trepx US"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "9"
 }
