@@ -1,9 +1,9 @@
 {
-map "trep_war_ring_2"
+map "trep_war_ring"
 bots "Weemer"
-longname "War Ring 2"
-longname_deutsch "War Ring 2"
-longname_francais "War Ring 2"
+longname "War Ring"
+longname_deutsch "War Ring"
+longname_francais "War Ring"
 fraglimit 25
 type "single ffa team tourney "
 recommended "6"
@@ -53,17 +53,6 @@ type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all
 recommended "9"
 }
 
-
-{
-map "trep_war_ring"
-fraglimit	10
-bots		"Weemer"
-longname "War Ring"
-longname_deutsch ""
-longname_francais ""
-type "single ffa team tourney arsenal survival trepidation freezetag one4all"
-recommended "9"
-}
 
 {
 map "citadel"

@@ -1,3 +1,4 @@
+{
 map "ctf_battlefield-og"
 longname "CTF Battlefield (OG)"
 fraglimit	10
@@ -19,3 +20,14 @@ type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all
 recommended "12"
 }
 
+
+{
+map "trep_war_ring"
+fraglimit	10
+bots		"Weemer"
+longname "War Ring"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team tourney arsenal survival trepidation freezetag one4all"
+recommended "9"
+}
