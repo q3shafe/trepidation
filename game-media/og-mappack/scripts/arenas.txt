@@ -42,3 +42,16 @@ longname_francais ""
 type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
 recommended "9"
 }
+
+
+{
+map "ctf_junction"
+longname "CTF Junction"
+fraglimit	10
+bots		"Weemer"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "8"
+}
+
