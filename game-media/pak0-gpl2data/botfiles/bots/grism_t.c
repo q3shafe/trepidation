@@ -46,7 +46,7 @@ chat "grism"
 
 	type "level_end"
 	{
-		"nice place ", 4, ", much less dangerous than ctf_pyramide2.";
+		"nice place ", 4, ", much less dangerous than ctf_pyramid2.";
 	}
 
 	type "level_end_victory"

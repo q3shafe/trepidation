@@ -158,7 +158,7 @@ recommended "12"
 }
 
 {
-map "ctf_pyramide2"
+map "ctf_pyramid2"
 fraglimit	10
 bots		"Weemer"
 longname "CTF Pyramide II"
