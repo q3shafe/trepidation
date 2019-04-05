@@ -167,7 +167,6 @@ chat "major"
 	type "death_praise"
 	{
 		D_PRAISE2;
-		PRAISE3;
 		"That was definitely ... um ... pretty good, ", 0, ". Ok?";
 		"I've seen better ", 0, ", but not many.";
 	} //end type
@@ -237,7 +236,6 @@ chat "major"
 
 	type "random_misc"
 	{
-		TAUNT_FEM6;
 		MISC3;
 		MISC5;
 		"What am I doing here? I promised myself no more hanging with losers.";
