@@ -2196,8 +2196,10 @@ void CheckExitRules( void ) {
 			// Clear immobilized
 			for ( i = 0; i < level.maxclients; i++ )
 			{
-				//g_entities[cl - level.clients].immobilized = qfalse;
-				self->immobilized = qfalse;
+				cl = &level.clients[i];
+				g_entities[cl - level.clients].immobilized = qfalse;
+				//G_AddEvent( g_entities[cl - level.clients], EV_IMMOBILIZED_FREE,0);
+				//self->immobilized = qfalse;
 			}
 
 			// Clear mc from other team --- Hrrrmmm
@@ -2225,7 +2227,10 @@ void CheckExitRules( void ) {
 			// Clear immobilized
 			for ( i = 0; i < level.maxclients; i++ )
 			{
-				self->immobilized = qfalse;
+				cl = &level.clients[i];
+				g_entities[cl - level.clients].immobilized = qfalse;
+				//G_AddEvent( g_entities[cl - level.clients], EV_IMMOBILIZED_FREE,0);
+				//self->
 			}
 			
 			// Clear mc from other team -- Hrrmmm
