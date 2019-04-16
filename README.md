@@ -5,9 +5,9 @@ Trepidation is an open source first person shooter based on the IOQuake3 engine.
 
 The game includes:
 
-18 multiplayer levels (maps).  
+21 multiplayer levels (maps).  
 Quake 3 and Star Trek Voyager Elite Force Map Compatability.
-An original soundtrack featuring 10 original tracks.
+An original soundtrack featuring 11 original tracks.
 7 Game Modes.
 In game Voice Over IP Support (VOIP)
 All New Weapons

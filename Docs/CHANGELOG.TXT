@@ -2,9 +2,9 @@ TREPIDATION CHANGELOG
 
 
 GAME HIGHLIGHTS:
-- 19 multiplayer levels (maps).  
+- 21 multiplayer levels (maps).  
 - Quake 3 and Star Trek Voyager Elite Force Map Compatability.
-- An original soundtrack featuring 10 original tracks.
+- An original soundtrack featuring 11 original tracks.
 - 7 Game Modes.
 - In game Voice Over IP Support (VOIP)
 - All New Weapons
@@ -20,7 +20,8 @@ SUMMARY OF THE NEW AND NOTABLE:
 - New One 4 All Gametype in Single Player Mode.
 - Bots can now, somewhat decently, play the Trepidation gametype.
 - Now Compatable with maps for Star Trek Elite Force and Quake 3.
-- Flame Thrower Primary Fire completely rewritten.
+- A few brand new maps.
+- Several Maps Revamped
 - New Gametypes modes, One4All, Reverse CTF.
 - Build Gun Turrets to defend your flag.
 - Random Map Rotations
@@ -30,19 +31,19 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- New Version of CTF_JUNCTION_2
+
 - ctf_battlefield has had a major facelift.
 
 - Dystopia has had a major facelift.
 
-- Added cl_multiuser for windows users, changing this to 0 will use the base directory for map downloads and configs instead of the appdata folder.
-
-- New Version of CTF_JUNCTION_2
-
-- Bots can no longer pickup flight
-
 - Map updates to ctf_trepxus_2 and ctf_pyramid2.
 
 - New Maps: ctf_aversion_2, ctf_battlefield_2, dystopia_2, oarpg3dm2_s and station145
+
+- Added cl_multiuser for windows users, changing this to 0 will use the base directory for map downloads and configs instead of the appdata folder.
+
+- Bots can no longer pickup flight
 
 - LFO Rifle always starts with 40 ammo now.
 
