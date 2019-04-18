@@ -98,7 +98,7 @@ cr_line credits[] = { // edit this as necessary for your credits
 
 { "Level Design:", UI_CENTER|UI_SMALLFONT, &color_headertext },
 { "Squiciene, Xovan, Petee, DrAkOn,", UI_CENTER|UI_SMALLFONT, &color_maintext },
-{ "Gigon, Gigabyte123, Laz", UI_CENTER|UI_SMALLFONT, &color_maintext },
+{ "Gigon, Gigabyte123, Laz, Scott Hanke", UI_CENTER|UI_SMALLFONT, &color_maintext },
 { "", UI_CENTER|UI_SMALLFONT, &color_blue },
 
 //{ "Mac Build:", UI_CENTER|UI_SMALLFONT, &color_headertext },
