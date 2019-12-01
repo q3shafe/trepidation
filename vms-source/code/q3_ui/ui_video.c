@@ -311,7 +311,7 @@ static void GraphicsOptions_GetInitialVideo( void )
 {
 	s_ivo.colordepth  = s_graphicsoptions.colordepth.curvalue;
 	s_ivo.driver      = s_graphicsoptions.driver.curvalue;
-	s_ivo.mode        = s_graphicsoptions.mode.curvalue;
+	s_ivo.mode        = s_graphicsoptions.mode.curvalue;	// Shafe - new resolutions
 	s_ivo.fullscreen  = s_graphicsoptions.fs.curvalue;
 	s_ivo.extensions  = s_graphicsoptions.allow_extensions.curvalue;
 	s_ivo.tq          = s_graphicsoptions.tq.curvalue;
@@ -462,7 +462,10 @@ static void GraphicsOptions_ApplyChanges( void *unused, int notification )
 	}
 	trap_Cvar_SetValue( "r_picmip", 3 - s_graphicsoptions.tq.curvalue );
 	trap_Cvar_SetValue( "r_allowExtensions", s_graphicsoptions.allow_extensions.curvalue );
-	trap_Cvar_SetValue( "r_mode", s_graphicsoptions.mode.curvalue );
+	
+	// Apply New Resolutions
+	//trap_Cvar_SetValue( "r_mode", s_graphicsoptions.mode.curvalue );
+
 	trap_Cvar_SetValue( "r_fullscreen", s_graphicsoptions.fs.curvalue );
 	trap_Cvar_Set( "r_glDriver", ( char * ) s_drivers[s_graphicsoptions.driver.curvalue] );
 	switch ( s_graphicsoptions.colordepth.curvalue )
@@ -529,17 +532,20 @@ static void GraphicsOptions_Event( void* ptr, int event ) {
 		// clamp 3dfx video modes
 		if ( s_graphicsoptions.driver.curvalue == 1 )
 		{
+			
+			/* New Resolutions - Shafe
 			if ( s_graphicsoptions.mode.curvalue < 2 )
 				s_graphicsoptions.mode.curvalue = 2;
 			else if ( s_graphicsoptions.mode.curvalue > 6 )
 				s_graphicsoptions.mode.curvalue = 6;
+			*/
 		}
 		break;
 
 	case ID_LIST:
 		ivo = &s_ivo_templates[s_graphicsoptions.list.curvalue];
 
-		s_graphicsoptions.mode.curvalue        = ivo->mode;
+		s_graphicsoptions.mode.curvalue        = ivo->mode;	// Shafe Resolutions
 		s_graphicsoptions.tq.curvalue          = ivo->tq;
 		s_graphicsoptions.lighting.curvalue    = ivo->lighting;
 		s_graphicsoptions.colordepth.curvalue  = ivo->colordepth;
@@ -611,11 +617,14 @@ GraphicsOptions_SetMenuItems
 */
 static void GraphicsOptions_SetMenuItems( void )
 {
+	/*	Shafe - New Resolutions
 	s_graphicsoptions.mode.curvalue = trap_Cvar_VariableValue( "r_mode" );
 	if ( s_graphicsoptions.mode.curvalue < 0 )
 	{
 		s_graphicsoptions.mode.curvalue = 3;
 	}
+	*/
+
 	s_graphicsoptions.fs.curvalue = trap_Cvar_VariableValue("r_fullscreen");
 	s_graphicsoptions.allow_extensions.curvalue = trap_Cvar_VariableValue("r_allowExtensions");
 	s_graphicsoptions.tq.curvalue = 3-trap_Cvar_VariableValue( "r_picmip");
@@ -741,18 +750,18 @@ void GraphicsOptions_MenuInit( void )
 
 	static const char *resolutions[] = 
 	{
-		"320x240",
-		"400x300",
-		"512x384",
-		"640x480",
-		"800x600",
-		"960x720",
-		"1024x768", 
-		"1152x864",
-		"1280x1024",
-		"1600x1200",
-		"2048x1536",
-		"856x480 wide screen",
+		"320x240 4:3",
+		"400x300 4:3",
+		"512x384 4:3",
+		"640x480 4:3",
+		"800/600 4:3",
+		"852x480 16:9",
+		"1280x720 16:9",
+		"1365x768 16:9",
+		"1440x900 16:10",
+		"1680x1050 16:10",
+		"1920x1200 16:10",
+		"1920x1080 16:10",
 		0
 	};
 	static const char *filter_names[] =
@@ -878,7 +887,7 @@ void GraphicsOptions_MenuInit( void )
 	s_graphicsoptions.allow_extensions.itemnames        = enabled_names;
 	y += BIGCHAR_HEIGHT+2;
 
-	// references/modifies "r_mode"
+	// references/modifies "r_mode" -- Not anymore - Shafe
 	s_graphicsoptions.mode.generic.type     = MTYPE_SPINCONTROL;
 	s_graphicsoptions.mode.generic.name     = "Video Mode:";
 	s_graphicsoptions.mode.generic.flags    = QMF_PULSEIFFOCUS|QMF_SMALLFONT;
