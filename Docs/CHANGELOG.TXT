@@ -15,7 +15,7 @@ GAME HIGHLIGHTS:
 
 SUMMARY OF THE NEW AND NOTABLE:
 - You can now drop weapons.
-- New Soundtrack.
+- 4 new music tracks by DiVinity
 - Siginificant Improvements to Trepidation Gametype + Instagib.
 - New One 4 All Gametype in Single Player Mode.
 - Bots can now, somewhat decently, play the Trepidation gametype.
@@ -43,9 +43,9 @@ Detailed Changelog - Most Recent Changes First
 
 - Dystopia has had a major facelift.
 
-- Map updates to ctf_trepxus_2 and ctf_pyramid2.
+- Major updates to ctf_trepxus, ctf_pyramid2, ctf_aversion, ctf_battlefield, dystopia
 
-- New Maps: ctf_aversion_2, ctf_battlefield_2, dystopia_2, oarpg3dm2_s and station145
+- New Maps: oarpg3dm2_s, dread2 and station145
 
 - Added cl_multiuser for windows users, changing this to 0 will use the base directory for map downloads and configs instead of the appdata folder.
 
