@@ -31,6 +31,10 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+- Configuration menu now reflects and functions correctly with modern resolutions.
+
+- New intro video.
+
 - Fixed issue on single player arsenal, that would result if instagib was set to 1.
 
 - New Version of CTF_JUNCTION_2
