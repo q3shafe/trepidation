@@ -88,12 +88,12 @@ static void UI_DisplayDownloadInfo( const char *downloadName ) {
 		s = downloadName;
 	}
 
-	
+	/* 0.0.27 This is causing an error with custom maps.
 	if((Q_stricmp( s, "base/pak0-vms.pk3")) || (Q_stricmp( s, "base/pak0-gpl2data.pk3")) || (Q_stricmp( s, "base/pak1-ccdata.pk3")))
 	{
 		trap_Error( va("Server Running Different Version of Trepidation %s", s) );
 	} 
-
+	*/
 	UI_DrawProportionalString( leftWidth, 128, s, style, color_white );
 
 	UI_ReadableSize( dlSizeBuf,		sizeof dlSizeBuf,		downloadCount );
