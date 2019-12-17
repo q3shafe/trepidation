@@ -31,6 +31,18 @@ SUMMARY OF THE NEW AND NOTABLE:
 ==================================================
 Detailed Changelog - Most Recent Changes First
 ==================================================
+==============================================
+	***** VERSION 0.0.27 *****
+==============================================
+
+- New Binaries reflecting new protocol
+
+- Emergency fix that was preventing 3rd party maps from loading.
+
+==============================================
+	***** VERSION 0.0.26 *****
+==============================================
+
 - Configuration menu now reflects and functions correctly with modern resolutions.
 
 - New intro video.
