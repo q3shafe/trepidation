@@ -33,6 +33,6 @@ To build locally on linux using the binaries already in the repository, grab the
 Visit our wiki for more information on compiling the engine or gamecode.
 
 == DOWNLOAD COMPILED BINARIES ==
-From our homepage we offer daily snapshots, as well as periodic development releases.  The development releases are tested more and what all of the official live servers are running.  You can download either here: https://trepidation.n5net.com/downloads/
+From our homepage we offer daily snapshots, as well as periodic development releases.  The development releases are tested more and what all of the official live servers are running.  You can download either here: https://trepidation.n5net.com/
 
 There are also a variety of 3rd party maps that run with Trepidation that you can download from our main site.
