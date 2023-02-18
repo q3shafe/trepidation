@@ -2,7 +2,7 @@ TREPIDATION CHANGELOG
 
 
 GAME HIGHLIGHTS:
-- 21 multiplayer levels (maps).  
+- 21 (24 after we add those 3 new ones) multiplayer levels (maps).  
 - Quake 3 and Star Trek Voyager Elite Force Map Compatability.
 - An original soundtrack featuring 11 original tracks.
 - 7 Game Modes.
@@ -32,7 +32,26 @@ SUMMARY OF THE NEW AND NOTABLE:
 Detailed Changelog - Most Recent Changes First
 ==================================================
 ==============================================
+	***** CURRENT DEV SNAPSHOT *****  
+==============================================
+This is mostly a maintenance release, not a lot of huge new features. 
+
+- TODO: Add Additional Mappack to distro: Artgallery, lilbuteroom and nightmare.
+
+- Fixed outdated Level Shot for trepxus
+
+- Resolution actually changes the resolution although a few resolutions still do not work.
+
+- Fixed an issue where the linux server would periodically crash with an error: Error: BotLibShutdown: bot library used before being setup recursive error after: FS_HandleForFile: none free.
+
+- Updated dead website links.
+
+
+
+
+==============================================
 	***** VERSION 0.0.27 *****
+         **** LATEST RELEASE ****
 ==============================================
 
 - New Binaries reflecting new protocol
