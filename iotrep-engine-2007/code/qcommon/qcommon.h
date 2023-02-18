@@ -543,7 +543,7 @@ issues.
 // number of id paks that will never be autodownloaded from baseq3
 #define NUM_ID_PAKS		9
 
-#define	MAX_FILE_HANDLES	64
+#define	MAX_FILE_HANDLES	200
 
 qboolean FS_Initialized( void );
 
