@@ -464,7 +464,7 @@ static void GraphicsOptions_ApplyChanges( void *unused, int notification )
 	trap_Cvar_SetValue( "r_allowExtensions", s_graphicsoptions.allow_extensions.curvalue );
 	
 	// Apply New Resolutions
-	//trap_Cvar_SetValue( "r_mode", s_graphicsoptions.mode.curvalue );
+	trap_Cvar_SetValue( "r_mode", s_graphicsoptions.mode.curvalue );
 
 	trap_Cvar_SetValue( "r_fullscreen", s_graphicsoptions.fs.curvalue );
 	trap_Cvar_Set( "r_glDriver", ( char * ) s_drivers[s_graphicsoptions.driver.curvalue] );
@@ -754,14 +754,14 @@ void GraphicsOptions_MenuInit( void )
 		"400x300 4:3",
 		"512x384 4:3",
 		"640x480 4:3",
-		"800/600 4:3",
+		"800x600 4:3",
 		"852x480 16:9",
 		"1280x720 16:9",
 		"1365x768 16:9",
-		"1440x900 16:10",
-		"1680x1050 16:10",
-		"1920x1200 16:10",
-		"1920x1080 16:10",
+		"1440x900 16:9",
+		"1680x1050 16:9",
+		"1920x1200 16:9",
+		"1920x1080 16:9",
 		0
 	};
 	static const char *filter_names[] =
