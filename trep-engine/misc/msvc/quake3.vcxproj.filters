@@ -2,46 +2,46 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{132f2f12-6327-46bb-9710-d34a74687078}</UniqueIdentifier>
+      <UniqueIdentifier>{e614e901-a9aa-408a-8710-f591a1352aef}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{c4482f3b-8699-4fc6-a506-7156fb59731c}</UniqueIdentifier>
+      <UniqueIdentifier>{83a0fc8d-f85f-43be-84e3-3a2dfdcb9796}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
     </Filter>
     <Filter Include="Resource Files">
-      <UniqueIdentifier>{7bb02205-4589-4fb6-a21c-032113c31e5a}</UniqueIdentifier>
+      <UniqueIdentifier>{b4f8795f-9471-4736-bd5b-53b9eadf6b6d}</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
     </Filter>
     <Filter Include="jpeg">
-      <UniqueIdentifier>{0e4bc7e1-3709-45a6-a2ae-317be7521387}</UniqueIdentifier>
+      <UniqueIdentifier>{d9daedfd-11a4-4028-9574-7cc6651d0fac}</UniqueIdentifier>
     </Filter>
     <Filter Include="jpeg\Source Files">
-      <UniqueIdentifier>{afb6018f-81dc-4de0-9fee-1b70cf844d1d}</UniqueIdentifier>
+      <UniqueIdentifier>{992f8910-c147-46f4-976b-426277480707}</UniqueIdentifier>
     </Filter>
     <Filter Include="jpeg\Header Files">
-      <UniqueIdentifier>{08a341ef-7252-4d57-aabc-c52b29704043}</UniqueIdentifier>
+      <UniqueIdentifier>{85a1897e-e4e7-41d3-a623-d2405091dfbc}</UniqueIdentifier>
     </Filter>
     <Filter Include="botlib">
-      <UniqueIdentifier>{0305e267-55aa-4ac9-9dd0-14836cd21888}</UniqueIdentifier>
+      <UniqueIdentifier>{5c7343f9-f9ad-4198-8c26-0fd4ea2e92ea}</UniqueIdentifier>
     </Filter>
     <Filter Include="botlib\Source Files">
-      <UniqueIdentifier>{13721570-49db-4107-a3c0-672d18a06a7a}</UniqueIdentifier>
+      <UniqueIdentifier>{df4fef38-16e5-4760-aa8f-ebcd084d2c4a}</UniqueIdentifier>
     </Filter>
     <Filter Include="botlib\Header Files">
-      <UniqueIdentifier>{6fffdce6-2b4b-40ef-b9b5-54cc06e675f2}</UniqueIdentifier>
+      <UniqueIdentifier>{a6fa8394-f39f-4083-83c7-5658bb1bf14f}</UniqueIdentifier>
     </Filter>
     <Filter Include="renderer">
-      <UniqueIdentifier>{6e7c4b6c-5d3a-44ef-86cd-aa3d17f9a1aa}</UniqueIdentifier>
+      <UniqueIdentifier>{3e520958-398f-43e4-ac24-57f7bb9283b5}</UniqueIdentifier>
     </Filter>
     <Filter Include="renderer\Source Files">
-      <UniqueIdentifier>{021060b4-d52c-46eb-9e75-f5d8bfd65626}</UniqueIdentifier>
+      <UniqueIdentifier>{8673329a-08ab-43fb-af7b-d4a03e935b75}</UniqueIdentifier>
     </Filter>
     <Filter Include="speex">
-      <UniqueIdentifier>{2307a468-96a5-4a5a-82f9-8e08e29eefc5}</UniqueIdentifier>
+      <UniqueIdentifier>{59188391-f360-4b95-8920-681b9dd1ac18}</UniqueIdentifier>
     </Filter>
     <Filter Include="zlib">
-      <UniqueIdentifier>{e9d3da71-dffb-41a7-b2e3-e48415f1ac07}</UniqueIdentifier>
+      <UniqueIdentifier>{4d00e0a1-8dfc-4a88-a709-8c2780b3d433}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -645,12 +645,6 @@
     <ClCompile Include="..\..\code\zlib\zutil.c">
       <Filter>zlib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\code\sys\sys_autoupdater.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\code\client\snd_codec_mp3.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\code\game\bg_public.h">
@@ -853,12 +847,6 @@
     </ClInclude>
     <ClInclude Include="..\..\code\libspeex\config.h">
       <Filter>speex</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\code\client\snd_codec.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\code\client\mad.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

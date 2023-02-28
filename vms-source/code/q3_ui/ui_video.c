@@ -465,7 +465,7 @@ static void GraphicsOptions_ApplyChanges(void* unused, int notification)
 
 	// Apply New Resolutions
 	//trap_Cvar_SetValue( "r_mode", s_graphicsoptions.mode.curvalue );
-	trap_Cvar_SetValue("r_mode", -1);
+	
 	
 	switch (s_graphicsoptions.mode.curvalue)
 	{
@@ -495,7 +495,7 @@ static void GraphicsOptions_ApplyChanges(void* unused, int notification)
 		break;
 	case 6:
 		trap_Cvar_SetValue("r_customwidth", 1280);
-		trap_Cvar_SetValue("r_customheight", 720);
+		trap_Cvar_SetValue("r_customheight", 720);		
 		break;
 	case 7:
 		trap_Cvar_SetValue("r_customwidth", 1365);
@@ -518,8 +518,10 @@ static void GraphicsOptions_ApplyChanges(void* unused, int notification)
 		trap_Cvar_SetValue("r_customheight", 1080);
 		break;
 
+		trap_Cvar_SetValue("r_mode", -1);
+		
 	}
-
+	
 
 	trap_Cvar_SetValue( "r_fullscreen", s_graphicsoptions.fs.curvalue );
 	trap_Cvar_Set( "r_glDriver", ( char * ) s_drivers[s_graphicsoptions.driver.curvalue] );
@@ -568,6 +570,7 @@ static void GraphicsOptions_ApplyChanges(void* unused, int notification)
 	}
 
 	trap_Cmd_ExecuteText( EXEC_APPEND, "vid_restart\n" );
+
 }
 
 /*
@@ -811,7 +814,7 @@ void GraphicsOptions_MenuInit( void )
 		"640x480 4:3",
 		"800x600 4:3",
 		"852x480 16:9",
-		"1280x720 16:9",
+		"1280x720 16:9*",
 		"1365x768 16:9",
 		"1440x900 16:9",
 		"1680x1050 16:9",

@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug TA|Win32">
       <Configuration>Debug TA</Configuration>
@@ -24,18 +24,22 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -55,31 +59,27 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">..\..\build\quake3_release_ta\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">..\..\build\quake3_release_ta\</IntDir>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\build\quake3_debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\build\quake3_debug\</IntDir>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\build\quake3_release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\build\quake3_release\</IntDir>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">..\..\build\quake3_debug_ta\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">..\..\build\quake3_debug_ta\</IntDir>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</LinkIncremental>
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'" />
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'" />
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <_ProjectFileVersion>16.0.31626.159</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">
+    <OutDir>..\..\build\quake3_release_ta\</OutDir>
+    <IntDir>..\..\build\quake3_release_ta\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\build\quake3_debug\</OutDir>
+    <IntDir>..\..\build\quake3_debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\build\quake3_release\</OutDir>
+    <IntDir>..\..\build\quake3_release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">
+    <OutDir>..\..\build\quake3_debug_ta\</OutDir>
+    <IntDir>..\..\build\quake3_debug_ta\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">
     <Midl>
@@ -88,19 +88,17 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
       <TypeLibraryName>$(IntDir)quake3.tlb</TypeLibraryName>
-      <HeaderFileName>
-      </HeaderFileName>
+      <HeaderFileName />
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..\..\code\libcurl; ..\..\code\AL; ..\..\code\libspeex\include; ..\..\code\SDL12\include; ..\..\code\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN32; WIN32; NDEBUG; _WINDOWS; _CRT_SECURE_NO_DEPRECATE; BOTLIB; USE_ICON; USE_CURL; USE_CURL_DLOPEN; USE_CODEC_VORBIS; USE_OPENAL; USE_OPENAL_DLOPEN; BUILD_SERVER; USE_VOIP; HAVE_CONFIG_H; MISSIONPACK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32; WIN32; NDEBUG; _WINDOWS; _CRT_SECURE_NO_DEPRECATE; BOTLIB; USE_ICON; USE_CURL; USE_CURL_DLOPEN; USE_OPENAL; USE_OPENAL_DLOPEN; USE_VOIP; HAVE_CONFIG_H; MISSIONPACK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader />
       <PrecompiledHeaderOutputFile>$(IntDir)quake3.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
@@ -114,7 +112,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>user32.lib;advapi32.lib;winmm.lib;wsock32.lib;ws2_32.lib;SDLmain.lib;SDL.lib;OpenGL32.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;libcurl.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;advapi32.lib;winmm.lib;wsock32.lib;ws2_32.lib;SDLmain.lib;SDL.lib;OpenGL32.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)ioquake3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -137,16 +135,14 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
       <TypeLibraryName>$(IntDir)quake3.tlb</TypeLibraryName>
-      <HeaderFileName>
-      </HeaderFileName>
+      <HeaderFileName />
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\code\libcurl; ..\..\code\AL; ..\..\code\libspeex\include; ..\..\code\SDL12\include; ..\..\code\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN32; WIN32; _DEBUG; _WINDOWS; _CRT_SECURE_NO_DEPRECATE; BOTLIB; USE_ICON; USE_CURL; USE_CODEC_VORBIS; USE_CURL_DLOPEN; USE_OPENAL; USE_OPENAL_DLOPEN; BUILD_SERVER; USE_VOIP; HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32; WIN32; _DEBUG; _WINDOWS; _CRT_SECURE_NO_DEPRECATE; BOTLIB; USE_ICON; USE_CURL; USE_CURL_DLOPEN; USE_OPENAL; USE_OPENAL_DLOPEN; USE_VOIP; HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader />
       <PrecompiledHeaderOutputFile>$(IntDir)quake3.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
@@ -164,10 +160,9 @@
       <ResourceOutputFileName>..\winquake.res</ResourceOutputFileName>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>user32.lib;advapi32.lib;winmm.lib;wsock32.lib;ws2_32.lib;SDLmain.lib;SDL.lib;OpenGL32.lib;;libogg.lib;libvorbis.lib;libvorbisfile.lib;libcurl.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;advapi32.lib;winmm.lib;wsock32.lib;ws2_32.lib;SDLmain.lib;SDL.lib;OpenGL32.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)ioquake3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)quake3.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -188,19 +183,17 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
       <TypeLibraryName>$(IntDir)quake3.tlb</TypeLibraryName>
-      <HeaderFileName>
-      </HeaderFileName>
+      <HeaderFileName />
     </Midl>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..\..\code\SDL12\include; ..\..\code\libcurl; ..\..\code\AL; ..\..\code\libspeex\include; ..\..\code\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN32; WIN32; NDEBUG; _WINDOWS; _CRT_SECURE_NO_DEPRECATE; BOTLIB; USE_ICON; USE_CURL; USE_CODEC_VORBIS; USE_CURL_DLOPEN; USE_OPENAL; USE_OPENAL_DLOPEN; BUILD_SERVER; USE_VOIP; HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32; WIN32; NDEBUG; _WINDOWS; _CRT_SECURE_NO_DEPRECATE; BOTLIB; USE_ICON; USE_CURL; USE_CURL_DLOPEN; USE_OPENAL; USE_OPENAL_DLOPEN; USE_VOIP; HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader />
       <PrecompiledHeaderOutputFile>$(IntDir)quake3.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
@@ -214,8 +207,8 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>libmad.lib;user32.lib;advapi32.lib;winmm.lib;wsock32.lib;ws2_32.lib;SDLmain.lib;SDL.lib;OpenGL32.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;libcurl.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)trepidation.exe</OutputFile>
+      <AdditionalDependencies>user32.lib;advapi32.lib;winmm.lib;wsock32.lib;ws2_32.lib;SDLmain.lib;SDL.lib;OpenGL32.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)ioquake3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)quake3.pdb</ProgramDatabaseFile>
@@ -233,16 +226,14 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TargetEnvironment>Win32</TargetEnvironment>
       <TypeLibraryName>$(IntDir)quake3.tlb</TypeLibraryName>
-      <HeaderFileName>
-      </HeaderFileName>
+      <HeaderFileName />
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\code\libcurl; ..\..\code\AL; ..\..\code\libspeex\include; ..\..\code\SDL12\include; ..\..\code\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN32; WIN32; _DEBUG; _WINDOWS; _CRT_SECURE_NO_DEPRECATE; BOTLIB; USE_ICON; USE_CURL; USE_CODEC_VORBIS; USE_CURL_DLOPEN; USE_OPENAL; USE_OPENAL_DLOPEN; BUILD_SERVER; USE_VOIP; HAVE_CONFIG_H; MISSIONPACK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32; WIN32; _DEBUG; _WINDOWS; _CRT_SECURE_NO_DEPRECATE; BOTLIB; USE_ICON; USE_CURL; USE_CURL_DLOPEN; USE_OPENAL; USE_OPENAL_DLOPEN; USE_VOIP; HAVE_CONFIG_H; MISSIONPACK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader />
       <PrecompiledHeaderOutputFile>$(IntDir)quake3.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
@@ -260,7 +251,7 @@
       <ResourceOutputFileName>..\winquake.res</ResourceOutputFileName>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>user32.lib;advapi32.lib;winmm.lib;wsock32.lib;ws2_32.lib;SDLmain.lib;SDL.lib;OpenGL32.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;libcurl.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;advapi32.lib;winmm.lib;wsock32.lib;ws2_32.lib;SDLmain.lib;SDL.lib;OpenGL32.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)ioquake3.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -277,586 +268,176 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\code\botlib\be_aas_bspq3.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_cluster.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_debug.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_entity.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_file.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_main.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_move.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_optimize.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_reach.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_route.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_routealt.c" />
+    <ClCompile Include="..\..\code\botlib\be_aas_sample.c" />
+    <ClCompile Include="..\..\code\botlib\be_ai_char.c" />
+    <ClCompile Include="..\..\code\botlib\be_ai_chat.c" />
+    <ClCompile Include="..\..\code\botlib\be_ai_gen.c" />
+    <ClCompile Include="..\..\code\botlib\be_ai_goal.c" />
+    <ClCompile Include="..\..\code\botlib\be_ai_move.c" />
+    <ClCompile Include="..\..\code\botlib\be_ai_weap.c" />
+    <ClCompile Include="..\..\code\botlib\be_ai_weight.c" />
+    <ClCompile Include="..\..\code\botlib\be_ea.c" />
+    <ClCompile Include="..\..\code\botlib\be_interface.c" />
+    <ClCompile Include="..\..\code\botlib\l_crc.c" />
+    <ClCompile Include="..\..\code\botlib\l_libvar.c" />
+    <ClCompile Include="..\..\code\botlib\l_log.c" />
+    <ClCompile Include="..\..\code\botlib\l_memory.c" />
+    <ClCompile Include="..\..\code\botlib\l_precomp.c" />
+    <ClCompile Include="..\..\code\botlib\l_script.c" />
+    <ClCompile Include="..\..\code\botlib\l_struct.c" />
     <ClCompile Include="..\..\code\client\cl_avi.c" />
     <ClCompile Include="..\..\code\client\cl_cgame.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_cin.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_console.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_curl.c" />
     <ClCompile Include="..\..\code\client\cl_input.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_keys.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_main.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_net_chan.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_parse.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_scrn.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_ui.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <ClCompile Include="..\..\code\client\snd_codec_mp3.c" />
-    <ClCompile Include="..\..\code\qcommon\cm_load.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\cm_patch.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\cm_polylib.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\cm_test.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\cm_trace.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\cmd.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\common.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\sys\con_log.c" />
-    <ClCompile Include="..\..\code\sys\con_passive.c" />
-    <ClCompile Include="..\..\code\qcommon\cvar.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\files.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\huffman.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\md4.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\md5.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\msg.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\net_chan.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\net_ip.c" />
-    <ClCompile Include="..\..\code\qcommon\puff.c" />
-    <ClCompile Include="..\..\code\qcommon\q_math.c" />
-    <ClCompile Include="..\..\code\qcommon\q_shared.c" />
     <ClCompile Include="..\..\code\client\qal.c" />
-    <ClCompile Include="..\..\code\sdl\sdl_gamma.c" />
-    <ClCompile Include="..\..\code\sdl\sdl_glimp.c" />
-    <ClCompile Include="..\..\code\sdl\sdl_input.c" />
-    <ClCompile Include="..\..\code\sdl\sdl_snd.c" />
     <ClCompile Include="..\..\code\client\snd_adpcm.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\snd_codec.c" />
     <ClCompile Include="..\..\code\client\snd_codec_ogg.c" />
     <ClCompile Include="..\..\code\client\snd_codec_wav.c" />
     <ClCompile Include="..\..\code\client\snd_dma.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\snd_main.c" />
     <ClCompile Include="..\..\code\client\snd_mem.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\snd_mix.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\client\snd_openal.c" />
     <ClCompile Include="..\..\code\client\snd_wavelet.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\server\sv_bot.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\server\sv_ccmds.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\server\sv_client.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\server\sv_game.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\server\sv_init.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\server\sv_main.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\server\sv_net_chan.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\server\sv_snapshot.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\server\sv_world.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\sys\sys_autoupdater.c" />
-    <ClCompile Include="..\..\code\sys\sys_main.c" />
-    <ClCompile Include="..\..\code\sys\sys_win32.c" />
-    <ClCompile Include="..\..\code\qcommon\unzip.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\ioapi.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\vm.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\vm_interpreted.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\..\code\qcommon\vm_x86.c">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\..\code\jpeg-6b\jcapimin.c" />
     <ClCompile Include="..\..\code\jpeg-6b\jcapistd.c" />
@@ -893,62 +474,6 @@
     <ClCompile Include="..\..\code\jpeg-6b\jmemmgr.c" />
     <ClCompile Include="..\..\code\jpeg-6b\jmemnobs.c" />
     <ClCompile Include="..\..\code\jpeg-6b\jutils.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_bspq3.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_cluster.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_debug.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_entity.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_file.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_main.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_move.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_optimize.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_reach.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_route.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_routealt.c" />
-    <ClCompile Include="..\..\code\botlib\be_aas_sample.c" />
-    <ClCompile Include="..\..\code\botlib\be_ai_char.c" />
-    <ClCompile Include="..\..\code\botlib\be_ai_chat.c" />
-    <ClCompile Include="..\..\code\botlib\be_ai_gen.c" />
-    <ClCompile Include="..\..\code\botlib\be_ai_goal.c" />
-    <ClCompile Include="..\..\code\botlib\be_ai_move.c" />
-    <ClCompile Include="..\..\code\botlib\be_ai_weap.c" />
-    <ClCompile Include="..\..\code\botlib\be_ai_weight.c" />
-    <ClCompile Include="..\..\code\botlib\be_ea.c" />
-    <ClCompile Include="..\..\code\botlib\be_interface.c" />
-    <ClCompile Include="..\..\code\botlib\l_crc.c" />
-    <ClCompile Include="..\..\code\botlib\l_libvar.c" />
-    <ClCompile Include="..\..\code\botlib\l_log.c" />
-    <ClCompile Include="..\..\code\botlib\l_memory.c" />
-    <ClCompile Include="..\..\code\botlib\l_precomp.c" />
-    <ClCompile Include="..\..\code\botlib\l_script.c" />
-    <ClCompile Include="..\..\code\botlib\l_struct.c" />
-    <ClCompile Include="..\..\code\renderer\tr_animation.c" />
-    <ClCompile Include="..\..\code\renderer\tr_backend.c" />
-    <ClCompile Include="..\..\code\renderer\tr_bsp.c" />
-    <ClCompile Include="..\..\code\renderer\tr_cmds.c" />
-    <ClCompile Include="..\..\code\renderer\tr_curve.c" />
-    <ClCompile Include="..\..\code\renderer\tr_flares.c" />
-    <ClCompile Include="..\..\code\renderer\tr_font.c" />
-    <ClCompile Include="..\..\code\renderer\tr_image.c" />
-    <ClCompile Include="..\..\code\renderer\tr_image_bmp.c" />
-    <ClCompile Include="..\..\code\renderer\tr_image_jpg.c" />
-    <ClCompile Include="..\..\code\renderer\tr_image_pcx.c" />
-    <ClCompile Include="..\..\code\renderer\tr_image_png.c" />
-    <ClCompile Include="..\..\code\renderer\tr_image_tga.c" />
-    <ClCompile Include="..\..\code\renderer\tr_init.c" />
-    <ClCompile Include="..\..\code\renderer\tr_light.c" />
-    <ClCompile Include="..\..\code\renderer\tr_main.c" />
-    <ClCompile Include="..\..\code\renderer\tr_marks.c" />
-    <ClCompile Include="..\..\code\renderer\tr_mesh.c" />
-    <ClCompile Include="..\..\code\renderer\tr_model.c" />
-    <ClCompile Include="..\..\code\renderer\tr_noise.c" />
-    <ClCompile Include="..\..\code\renderer\tr_scene.c" />
-    <ClCompile Include="..\..\code\renderer\tr_shade.c" />
-    <ClCompile Include="..\..\code\renderer\tr_shade_calc.c" />
-    <ClCompile Include="..\..\code\renderer\tr_shader.c" />
-    <ClCompile Include="..\..\code\renderer\tr_shadows.c" />
-    <ClCompile Include="..\..\code\renderer\tr_sky.c" />
-    <ClCompile Include="..\..\code\renderer\tr_surface.c" />
-    <ClCompile Include="..\..\code\renderer\tr_world.c" />
     <ClCompile Include="..\..\code\libspeex\bits.c" />
     <ClCompile Include="..\..\code\libspeex\buffer.c" />
     <ClCompile Include="..\..\code\libspeex\cb_search.c" />
@@ -989,6 +514,298 @@
     <ClCompile Include="..\..\code\libspeex\vbr.c" />
     <ClCompile Include="..\..\code\libspeex\vq.c" />
     <ClCompile Include="..\..\code\libspeex\window.c" />
+    <ClCompile Include="..\..\code\qcommon\cmd.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\cm_load.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\cm_patch.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\cm_polylib.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\cm_test.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\cm_trace.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\common.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\cvar.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\files.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\huffman.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\ioapi.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\md4.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\md5.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\msg.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\net_chan.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\net_ip.c" />
+    <ClCompile Include="..\..\code\qcommon\puff.c" />
+    <ClCompile Include="..\..\code\qcommon\q_math.c" />
+    <ClCompile Include="..\..\code\qcommon\q_shared.c" />
+    <ClCompile Include="..\..\code\qcommon\unzip.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\vm.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\vm_interpreted.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\qcommon\vm_x86.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\renderer\tr_animation.c" />
+    <ClCompile Include="..\..\code\renderer\tr_backend.c" />
+    <ClCompile Include="..\..\code\renderer\tr_bsp.c" />
+    <ClCompile Include="..\..\code\renderer\tr_cmds.c" />
+    <ClCompile Include="..\..\code\renderer\tr_curve.c" />
+    <ClCompile Include="..\..\code\renderer\tr_flares.c" />
+    <ClCompile Include="..\..\code\renderer\tr_font.c" />
+    <ClCompile Include="..\..\code\renderer\tr_image.c" />
+    <ClCompile Include="..\..\code\renderer\tr_image_bmp.c" />
+    <ClCompile Include="..\..\code\renderer\tr_image_jpg.c" />
+    <ClCompile Include="..\..\code\renderer\tr_image_pcx.c" />
+    <ClCompile Include="..\..\code\renderer\tr_image_png.c" />
+    <ClCompile Include="..\..\code\renderer\tr_image_tga.c" />
+    <ClCompile Include="..\..\code\renderer\tr_init.c" />
+    <ClCompile Include="..\..\code\renderer\tr_light.c" />
+    <ClCompile Include="..\..\code\renderer\tr_main.c" />
+    <ClCompile Include="..\..\code\renderer\tr_marks.c" />
+    <ClCompile Include="..\..\code\renderer\tr_mesh.c" />
+    <ClCompile Include="..\..\code\renderer\tr_model.c" />
+    <ClCompile Include="..\..\code\renderer\tr_noise.c" />
+    <ClCompile Include="..\..\code\renderer\tr_scene.c" />
+    <ClCompile Include="..\..\code\renderer\tr_shade.c" />
+    <ClCompile Include="..\..\code\renderer\tr_shader.c" />
+    <ClCompile Include="..\..\code\renderer\tr_shade_calc.c" />
+    <ClCompile Include="..\..\code\renderer\tr_shadows.c" />
+    <ClCompile Include="..\..\code\renderer\tr_sky.c" />
+    <ClCompile Include="..\..\code\renderer\tr_surface.c" />
+    <ClCompile Include="..\..\code\renderer\tr_world.c" />
+    <ClCompile Include="..\..\code\sdl\sdl_gamma.c" />
+    <ClCompile Include="..\..\code\sdl\sdl_glimp.c" />
+    <ClCompile Include="..\..\code\sdl\sdl_input.c" />
+    <ClCompile Include="..\..\code\sdl\sdl_snd.c" />
+    <ClCompile Include="..\..\code\server\sv_bot.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\server\sv_ccmds.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\server\sv_client.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\server\sv_game.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\server\sv_init.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\server\sv_main.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\server\sv_net_chan.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\server\sv_snapshot.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\server\sv_world.c">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
+      <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+    </ClCompile>
+    <ClCompile Include="..\..\code\sys\con_log.c" />
+    <ClCompile Include="..\..\code\sys\con_passive.c" />
+    <ClCompile Include="..\..\code\sys\sys_main.c" />
+    <ClCompile Include="..\..\code\sys\sys_win32.c" />
     <ClCompile Include="..\..\code\zlib\adler32.c" />
     <ClCompile Include="..\..\code\zlib\crc32.c" />
     <ClCompile Include="..\..\code\zlib\inffast.c" />
@@ -997,49 +814,6 @@
     <ClCompile Include="..\..\code\zlib\zutil.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\code\client\mad.h" />
-    <ClInclude Include="..\..\code\client\snd_codec.h" />
-    <ClInclude Include="..\..\code\game\bg_public.h" />
-    <ClInclude Include="..\..\code\cgame\cg_public.h" />
-    <ClInclude Include="..\..\code\client\cl_curl.h" />
-    <ClInclude Include="..\..\code\client\client.h" />
-    <ClInclude Include="..\..\code\qcommon\cm_local.h" />
-    <ClInclude Include="..\..\code\qcommon\cm_patch.h" />
-    <ClInclude Include="..\..\code\qcommon\cm_polylib.h" />
-    <ClInclude Include="..\..\code\qcommon\cm_public.h" />
-    <ClInclude Include="..\..\code\game\g_public.h" />
-    <ClInclude Include="..\..\code\ui\keycodes.h" />
-    <ClInclude Include="..\..\code\client\keys.h" />
-    <ClInclude Include="..\..\code\qcommon\puff.h" />
-    <ClInclude Include="..\..\code\qcommon\q_shared.h" />
-    <ClInclude Include="..\..\code\client\qal.h" />
-    <ClInclude Include="..\..\code\qcommon\qcommon.h" />
-    <ClInclude Include="..\..\code\qcommon\qfiles.h" />
-    <ClInclude Include="..\..\code\renderer\qgl.h" />
-    <ClInclude Include="..\..\code\win32\resource.h" />
-    <ClInclude Include="..\..\code\server\server.h" />
-    <ClInclude Include="..\..\code\client\snd_local.h" />
-    <ClInclude Include="..\..\code\client\snd_public.h" />
-    <ClInclude Include="..\..\code\qcommon\surfaceflags.h" />
-    <ClInclude Include="..\..\code\renderer\tr_local.h" />
-    <ClInclude Include="..\..\code\renderer\tr_public.h" />
-    <ClInclude Include="..\..\code\cgame\tr_types.h" />
-    <ClInclude Include="..\..\code\ui\ui_public.h" />
-    <ClInclude Include="..\..\code\qcommon\unzip.h" />
-    <ClInclude Include="..\..\code\qcommon\vm_local.h" />
-    <ClInclude Include="..\..\code\win32\win_local.h" />
-    <ClInclude Include="..\..\code\sys\win_resource.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jchuff.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jconfig.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jdct.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jdhuff.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jerror.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jinclude.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jmemsys.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jmorecfg.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jpegint.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jpeglib.h" />
-    <ClInclude Include="..\..\code\jpeg-6b\jversion.h" />
     <ClInclude Include="..\..\code\botlib\aasfile.h" />
     <ClInclude Include="..\..\code\botlib\be_aas_bsp.h" />
     <ClInclude Include="..\..\code\botlib\be_aas_cluster.h" />
@@ -1065,7 +839,48 @@
     <ClInclude Include="..\..\code\botlib\l_script.h" />
     <ClInclude Include="..\..\code\botlib\l_struct.h" />
     <ClInclude Include="..\..\code\botlib\l_utils.h" />
+    <ClInclude Include="..\..\code\cgame\cg_public.h" />
+    <ClInclude Include="..\..\code\cgame\tr_types.h" />
+    <ClInclude Include="..\..\code\client\client.h" />
+    <ClInclude Include="..\..\code\client\cl_curl.h" />
+    <ClInclude Include="..\..\code\client\keys.h" />
+    <ClInclude Include="..\..\code\client\qal.h" />
+    <ClInclude Include="..\..\code\client\snd_local.h" />
+    <ClInclude Include="..\..\code\client\snd_public.h" />
+    <ClInclude Include="..\..\code\game\bg_public.h" />
+    <ClInclude Include="..\..\code\game\g_public.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jchuff.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jconfig.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jdct.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jdhuff.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jerror.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jinclude.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jmemsys.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jmorecfg.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jpegint.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jpeglib.h" />
+    <ClInclude Include="..\..\code\jpeg-6b\jversion.h" />
     <ClInclude Include="..\..\code\libspeex\config.h" />
+    <ClInclude Include="..\..\code\qcommon\cm_local.h" />
+    <ClInclude Include="..\..\code\qcommon\cm_patch.h" />
+    <ClInclude Include="..\..\code\qcommon\cm_polylib.h" />
+    <ClInclude Include="..\..\code\qcommon\cm_public.h" />
+    <ClInclude Include="..\..\code\qcommon\puff.h" />
+    <ClInclude Include="..\..\code\qcommon\qcommon.h" />
+    <ClInclude Include="..\..\code\qcommon\qfiles.h" />
+    <ClInclude Include="..\..\code\qcommon\q_shared.h" />
+    <ClInclude Include="..\..\code\qcommon\surfaceflags.h" />
+    <ClInclude Include="..\..\code\qcommon\unzip.h" />
+    <ClInclude Include="..\..\code\qcommon\vm_local.h" />
+    <ClInclude Include="..\..\code\renderer\qgl.h" />
+    <ClInclude Include="..\..\code\renderer\tr_local.h" />
+    <ClInclude Include="..\..\code\renderer\tr_public.h" />
+    <ClInclude Include="..\..\code\server\server.h" />
+    <ClInclude Include="..\..\code\sys\win_resource.h" />
+    <ClInclude Include="..\..\code\ui\keycodes.h" />
+    <ClInclude Include="..\..\code\ui\ui_public.h" />
+    <ClInclude Include="..\..\code\win32\resource.h" />
+    <ClInclude Include="..\..\code\win32\win_local.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\code\sys\win_resource.rc" />
