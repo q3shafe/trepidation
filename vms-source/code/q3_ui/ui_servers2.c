@@ -170,7 +170,7 @@ static char* netnames[] = {
 	NULL
 };
 
-static char quake3worldMessage[] = "Visit planettrepidation.tk - News, Community, Events, Files";
+static char quake3worldMessage[] = "Visit trepidationfps.com - News, Community, Events, Files";
 
 
 const char* punkbuster_items[] = {
@@ -1492,6 +1492,7 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.mserver.generic.y				= y;
 	g_arenaservers.mserver.itemnames				= master_servers;
 
+	
 	y += SMALLCHAR_HEIGHT;
 	g_arenaservers.gametype.generic.type		= MTYPE_SPINCONTROL;
 	g_arenaservers.gametype.generic.name		= "Game Type:";
@@ -1501,6 +1502,7 @@ static void ArenaServers_MenuInit( void ) {
 	g_arenaservers.gametype.generic.x			= 150;
 	g_arenaservers.gametype.generic.y			= y;
 	g_arenaservers.gametype.itemnames			= servertype_items;
+	
 
 	y += SMALLCHAR_HEIGHT;
 	g_arenaservers.sortkey.generic.type			= MTYPE_SPINCONTROL;
@@ -1698,7 +1700,7 @@ static void ArenaServers_MenuInit( void ) {
 
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.master );
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.mserver ); // Shafe - Multimaster
-	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.gametype );
+	//Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.gametype );
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.sortkey );
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.showfull);
 	Menu_AddItem( &g_arenaservers.menu, (void*) &g_arenaservers.showempty );

@@ -1,4 +1,26 @@
 {
+map "station144"
+longname "Station 144"
+fraglimit	10
+bots		"Weemer"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team tourney arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+{
+map "station145"
+longname "Station 145"
+fraglimit	10
+bots		"Weemer"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team tourney arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+{
 map "trep_war_ring"
 bots "Weemer"
 longname "War Ring"
@@ -112,6 +134,17 @@ recommended "8"
 }
 
 {
+map "oa_rpg3dm2_s"
+fraglimit	10
+bots		"Weemer"
+longname "RPG3DM2 Revamped"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team tourney arsenal survival trepidation freezetag one4all"
+recommended "8"
+}
+
+{
 map "ctf_battlefield"
 longname "CTF Battlefield"
 fraglimit	10
@@ -174,6 +207,17 @@ map "dread"
 fraglimit	10
 bots		"Weemer"
 longname "Dread"
+longname_deutsch ""
+longname_francais ""
+type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
+recommended "12"
+}
+
+{
+map "dread2"
+fraglimit	10
+bots		"Weemer"
+longname "Dread 2"
 longname_deutsch ""
 longname_francais ""
 type "single ffa team ctf tourney arsenal survival trepidation freezetag one4all"
