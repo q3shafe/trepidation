@@ -72,6 +72,9 @@
 
 <p>Trepidation will introduce new aspects to the physics of the Q3 engine, The new physics are geared towards trick jumping with weapons and high speed jumping. Trepidation will also include an improved 'unlagged' network code based on unlagged 2.0 but more finely tuned to the new physics present. The project will utilize a modified version of the GPL dpmaster for the 'master' server code base.</p>
 
+<br>
+<iframe src="https://player.vimeo.com/video/33600185?h=86665bfcd8" width="640" height="427" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<p><a href="https://vimeo.com/33600185">Trepidation Weapons Demo 2011</a> from <a href="https://vimeo.com/user5815364">Brian Shaffer</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 		</div>
 	</main>
