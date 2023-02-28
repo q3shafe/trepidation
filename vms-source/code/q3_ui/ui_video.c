@@ -443,32 +443,87 @@ static void GraphicsOptions_UpdateMenuItems( void )
 GraphicsOptions_ApplyChanges
 =================
 */
-static void GraphicsOptions_ApplyChanges( void *unused, int notification )
+static void GraphicsOptions_ApplyChanges(void* unused, int notification)
 {
 	if (notification != QM_ACTIVATED)
 		return;
 
-	switch ( s_graphicsoptions.texturebits.curvalue  )
+	switch (s_graphicsoptions.texturebits.curvalue)
 	{
 	case 0:
-		trap_Cvar_SetValue( "r_texturebits", 0 );
+		trap_Cvar_SetValue("r_texturebits", 0);
 		break;
 	case 1:
-		trap_Cvar_SetValue( "r_texturebits", 16 );
+		trap_Cvar_SetValue("r_texturebits", 16);
 		break;
 	case 2:
-		trap_Cvar_SetValue( "r_texturebits", 32 );
+		trap_Cvar_SetValue("r_texturebits", 32);
 		break;
 	}
-	trap_Cvar_SetValue( "r_picmip", 3 - s_graphicsoptions.tq.curvalue );
-	trap_Cvar_SetValue( "r_allowExtensions", s_graphicsoptions.allow_extensions.curvalue );
-	
+	trap_Cvar_SetValue("r_picmip", 3 - s_graphicsoptions.tq.curvalue);
+	trap_Cvar_SetValue("r_allowExtensions", s_graphicsoptions.allow_extensions.curvalue);
+
 	// Apply New Resolutions
-	trap_Cvar_SetValue( "r_mode", s_graphicsoptions.mode.curvalue );
+	//trap_Cvar_SetValue( "r_mode", s_graphicsoptions.mode.curvalue );
+	trap_Cvar_SetValue("r_mode", -1);
+	
+	switch (s_graphicsoptions.mode.curvalue)
+	{
+	case 0:
+		trap_Cvar_SetValue("r_customwidth", 320);
+		trap_Cvar_SetValue("r_customheight", 240);
+		break;
+	case 1:
+		trap_Cvar_SetValue("r_customwidth", 300);
+		trap_Cvar_SetValue("r_customheight", 300);
+		break;
+	case 2:
+		trap_Cvar_SetValue("r_customwidth", 512);
+		trap_Cvar_SetValue("r_customheight", 382);
+		break;
+	case 3:
+		trap_Cvar_SetValue("r_customwidth", 640);
+		trap_Cvar_SetValue("r_customheight", 480);
+		break;
+	case 4:
+		trap_Cvar_SetValue("r_customwidth", 800);
+		trap_Cvar_SetValue("r_customheight", 600);
+		break;
+	case 5:
+		trap_Cvar_SetValue("r_customwidth", 852);
+		trap_Cvar_SetValue("r_customheight", 480);
+		break;
+	case 6:
+		trap_Cvar_SetValue("r_customwidth", 1280);
+		trap_Cvar_SetValue("r_customheight", 720);
+		break;
+	case 7:
+		trap_Cvar_SetValue("r_customwidth", 1365);
+		trap_Cvar_SetValue("r_customheight", 768);
+		break;
+	case 8:
+		trap_Cvar_SetValue("r_customwidth", 1440);
+		trap_Cvar_SetValue("r_customheight", 900);
+		break;
+	case 9:
+		trap_Cvar_SetValue("r_customwidth", 1680);
+		trap_Cvar_SetValue("r_customheight", 1050);
+		break;
+	case 10:
+		trap_Cvar_SetValue("r_customwidth", 1920);
+		trap_Cvar_SetValue("r_customheight", 1200);
+		break;
+	case 11:
+		trap_Cvar_SetValue("r_customwidth", 1920);
+		trap_Cvar_SetValue("r_customheight", 1080);
+		break;
+
+	}
+
 
 	trap_Cvar_SetValue( "r_fullscreen", s_graphicsoptions.fs.curvalue );
 	trap_Cvar_Set( "r_glDriver", ( char * ) s_drivers[s_graphicsoptions.driver.curvalue] );
-	switch ( s_graphicsoptions.colordepth.curvalue )
+	switch (s_graphicsoptions.colordepth.curvalue)
 	{
 	case 0:
 		trap_Cvar_SetValue( "r_colorbits", 0 );
