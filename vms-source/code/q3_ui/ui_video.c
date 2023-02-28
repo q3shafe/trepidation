@@ -518,10 +518,11 @@ static void GraphicsOptions_ApplyChanges(void* unused, int notification)
 		trap_Cvar_SetValue("r_customheight", 1080);
 		break;
 
-		trap_Cvar_SetValue("r_mode", -1);
+		
 		
 	}
-	
+
+	trap_Cvar_SetValue("r_mode", -1);
 
 	trap_Cvar_SetValue( "r_fullscreen", s_graphicsoptions.fs.curvalue );
 	trap_Cvar_Set( "r_glDriver", ( char * ) s_drivers[s_graphicsoptions.driver.curvalue] );

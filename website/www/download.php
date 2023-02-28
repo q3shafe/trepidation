@@ -53,25 +53,21 @@
 	<!-- Main Content -->
 	<main>
 		<div class="container mx-auto">
-			<h1>Introducing Trepidation</h1>
-			<p>Trepidation A First Person Shooter Based On The Q3 Engine Trepidation is an open source first person shooter based on the IOQuake3 engine. Trepidation was a project originally conceived on April 9, 2006 with the intent to build a free first person shooter with a sci-fi theme. The idea was initially developed by members of the Star Trek Elite Force gaming community. The project disbanded before the game was complete sometime in 2008, but is currently back in development. We aim to have a game that runs well even on older machines that is fast paced and fun to play.</P>
-
-<p>The game includes:</p>
+			<h1>Trepidation Downloads</h1>
+<p>Latest Release:</p>
 <ul>
-<li>21 multiplayer levels (maps).</li>
-<li>Quake 3 and Star Trek Voyager Elite Force Map Compatability. </li>
-<li>An original soundtrack featuring 11 original tracks.</li>
-<li>7 Game Modes.</li>
-<li>In game Voice Over IP Support (VOIP)</li>
-<li>All New Weapons Instagib Modifier Available On Most Game Modes.</li>
-<li>Build defensive Gun Turrets in capture the flag.</li>
-<li>Random Map Rotations.</li>
-<li>New features for Level Designers.</li>
+	<li><a href="https://trepidation.itch.io/trepidation/purchase">Download from itch.io</a></li>
+	<li><a href="https://gamejolt.com/games/trepidationfps/280355">Download from GameJolt</a></li>
+	<li><a href="https://sourceforge.net/projects/trepidation/files/Version%200.0.27/">Download from Sourceforge</a></li>
+</ul>
 
-<p>New GameTypes Trepidation introduces several new gametypes as well as some 'oldies, but goodies'. Current gametypes include, Free For All, Team Deathmatch, Tourney, Capture The Flag, Survival (A last man standing game), Arsenal; A game where the object is not to run out of weapons and the Trepidation gametype, a team based game with buildable objects where the object is not to let the other team destroy your Master Controller/Reactor (See the Wiki for Details), . Most gametypes have an instagib option.</P>
+<p><a href="/base/">Other Trepidation Downloads</a></p>
 
-<p>Trepidation will introduce new aspects to the physics of the Q3 engine, The new physics are geared towards trick jumping with weapons and high speed jumping. Trepidation will also include an improved 'unlagged' network code based on unlagged 2.0 but more finely tuned to the new physics present. The project will utilize a modified version of the GPL dpmaster for the 'master' server code base.</p>
+<p>Developers:</p>
 
+<ul>
+	<li><a href="/dls/trep-snapshot.zip">Weekly Development Snapshot (for developers)</a></li>
+</ul>
 
 		</div>
 	</main>
