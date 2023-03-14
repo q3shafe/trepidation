@@ -1,6 +1,7 @@
 // 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
 //
 #include "ui_local.h"
+sfxHandle_t connect_in_sound;
 
 /*
 ===============================================================================
@@ -169,7 +170,10 @@ void UI_DrawConnectScreen( qboolean overlay ) {
 	Menu_Cache();
 
 	//dial-up sound?
-	//BroadCastSound("sound/world/tim_pump.ogg");
+	//BroadCastSound("sound/misc/dial-up.ogg");
+	connect_in_sound = trap_S_RegisterSound("sound/misc/dial-up.ogg", qfalse);
+	trap_S_StartLocalSound(connect_in_sound, CHAN_LOCAL_SOUND);
+	
 
 	if ( !overlay ) {
 		// draw the dialog background

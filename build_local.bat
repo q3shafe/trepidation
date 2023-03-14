@@ -1,5 +1,5 @@
 
-cd \web\trepdev\trepidation\vms-source\code\game
+cd \trep\code\vms-source\code\game
 rem make sure we have a safe environement
 set LIBRARY=
 set INCLUDE=
@@ -96,7 +96,7 @@ q3asm -vq3 -f ../game
 
 pause
 cd ..
-cd \web\trepdev\trepidation\vms-source\code\cgame
+cd \trep\code\vms-source\code\cgame
 rem make sure we have a safe environement
 set LIBRARY=
 set INCLUDE=
@@ -270,10 +270,10 @@ q3asm -vq3 -f ../q3_ui
 :quit3
 cd ..
 
-cd \web\trepdev\trepidation\vms-source\code\ui
+cd \trep\code\vms-source\code\ui
 rem ui.bat
-cd \web\trepdev\trepidation\vms-source\code\q3_ui
-rem q3_ui.bat
+cd \trep\code\vms-source\code\q3_ui
+q3_ui.bat
 
 mkdir \treptest
 mkdir \treptest\base
@@ -281,7 +281,7 @@ mkdir \treptest\docs
 del \treptest\*
 del \treptest\base\*
 del \treptest\docs\*
-cd \web\trepdev
+cd \trep\code\
 copy *.pk3 \treptest\base
 
 
