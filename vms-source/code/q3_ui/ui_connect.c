@@ -168,6 +168,9 @@ void UI_DrawConnectScreen( qboolean overlay ) {
 
 	Menu_Cache();
 
+	//dial-up sound?
+	//BroadCastSound("sound/world/tim_pump.ogg");
+
 	if ( !overlay ) {
 		// draw the dialog background
 		UI_SetColor( color_white );
