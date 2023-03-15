@@ -103,6 +103,8 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define GAMES_FREEZETAG		8	// Shafe - Trep - New Gametype
 #define GAMES_ONE4ALL		9	// Shafe - Trep - New Gametype
 
+sfxHandle_t connect_in_sound;
+
 //Shafe - Trep - Mulimasters
 static const char *master_servers[] = {
 	"Primary",
@@ -381,6 +383,10 @@ ArenaServers_Go
 */
 static void ArenaServers_Go( void ) {
 	servernode_t*	servernode;
+	//dial-up sound?
+	//BroadCastSound("sound/misc/dial-up.ogg");
+	connect_in_sound = trap_S_RegisterSound("sound/misc/dial-up.ogg", qfalse);
+	trap_S_StartLocalSound(connect_in_sound, CHAN_LOCAL_SOUND);
 
 	servernode = g_arenaservers.table[g_arenaservers.list.curvalue].servernode;
 	if( servernode ) {
