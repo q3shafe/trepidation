@@ -36,7 +36,7 @@
 // ---------- Constants ---------- //
 
 // Version of dpmaster
-#define VERSION "1.8"
+#define VERSION "2.0"
 
 // Default master port
 #define DEFAULT_MASTER_PORT 27950
@@ -411,7 +411,8 @@ Print the command line syntax and the available options
 static void PrintHelp (void)
 {
 	MsgPrint (MSG_ERROR,
-			  "Syntax: dpmaster [options]\n"
+		"TREPMASTER/DPMASTER 2.0\n"
+		"Syntax: dpmaster [options]\n"
 			  "Available options are:\n"
 #ifndef WIN32
 			  "  -D               : run as a daemon\n"
