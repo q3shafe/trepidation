@@ -38,6 +38,8 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare.
 
+- New weapon switch sound.
+
 - Cleaned up the arena files, all maps should show up and have screenshots.
 
 - Fixed more date references as well as old website references.
