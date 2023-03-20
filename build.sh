@@ -6,6 +6,7 @@ cd trep
 mkdir build
 mkdir build/base
 mkdir build/docs
+mkdir build/alsoft-config
 wget http://trepidation.n5net.com/base/xcsv_bq3hi-res.pk3
 cp *.pk3 build/base
 git clone https://github.com/q3shafe/trepidation.git
@@ -21,6 +22,7 @@ cd ..
 cd pak0-vms
 zip -r ../../../build/base/pak0-vms.pk3 *
 cd ../../../
+cp trepidation/game-media/alsoft-config/* build/alsoft-config
 cp trepidation/Docs/server/* build/base
 cp trepidation/Docs/linux/*.sh build/
 cp trepidation/Docs/linux/R* build/docs/
@@ -30,3 +32,5 @@ cp trepidation/Docs/*.TXT build/docs/
 cp trepidation/Docs/*.bat build/
 cd build
 #zip -r trep-snapshot.zip *
+
+
