@@ -38,7 +38,9 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare.
 
-- Implenting OpenAL-Soft implementation of OpenAL, with configuration programs.
+- New opening video.
+
+- Implented OpenAL-Soft implementation of OpenAL, with configuration programs.
 
 - New weapon switch sound.
 
