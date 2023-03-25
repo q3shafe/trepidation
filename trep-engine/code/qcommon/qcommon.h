@@ -585,7 +585,7 @@ issues.
 #ifdef DEDICATED
 #	define Q3CONFIG_CFG "trepconfig_server.cfg"
 #else
-#	define Q3CONFIG_CFG "trepconfig026.cfg"
+#	define Q3CONFIG_CFG "trepconfig.cfg"
 #endif
 
 qboolean FS_Initialized( void );
