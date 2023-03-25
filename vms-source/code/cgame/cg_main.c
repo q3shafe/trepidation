@@ -622,7 +622,7 @@ static void CG_RegisterSounds( void ) {
 	cgs.media.countFightSound = trap_S_RegisterSound( "sound/feedback/fight.ogg", qtrue );
 	cgs.media.countPrepareSound = trap_S_RegisterSound( "sound/feedback/prepare.ogg", qtrue );
 	cgs.media.zoomStart = trap_S_RegisterSound( "sound/weapons/zoom.ogg", qtrue );
-	cgs.media.zoomEnd = trap_S_RegisterSound( "sound/weapons/zoom.ogg", qtrue );
+	cgs.media.zoomEnd = trap_S_RegisterSound( "sound/weapons/zoom_out.ogg", qtrue );
 	
 
 

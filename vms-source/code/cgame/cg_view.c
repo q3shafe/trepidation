@@ -456,7 +456,7 @@ void CG_ZoomDown_f( void )
 		cg.zoomed = qtrue;
 		cg.zooming = qtrue;
 		cg.zoomTime = cg.time;
-		trap_S_StartSound( cg.refdef.vieworg, ENTITYNUM_WORLD, CHAN_AUTO, cgs.media.zoomStart );
+		trap_S_StartSound(cg.refdef.vieworg, ENTITYNUM_WORLD, CHAN_AUTO, cgs.media.zoomStart);
 	}
 }
 
@@ -467,6 +467,7 @@ void CG_ZoomUp_f( void )
 	{
 		cg.zoomTime=0;
 		cg.zooming=qfalse;
+		trap_S_StartSound(cg.refdef.vieworg, ENTITYNUM_WORLD, CHAN_AUTO, cgs.media.zoomEnd);
 	}
 }
 
