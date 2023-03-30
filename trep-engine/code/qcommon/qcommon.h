@@ -255,7 +255,7 @@ extern int demo_protocols[];
 #define MASTER_SERVER_NAME	"master.n5net.com" // Shafe - Trep 
 #define ALT_MASTER0	"trepidationfps.com" // Shafe - Trep
 #define ALT_MASTER1	"server1.u7radio.org" // Shafe - Trep
-#define ALT_MASTER2	"server2.n5net.com" // Shafe - Trep
+#define ALT_MASTER2	"server2.u7radio.org" // Shafe - Trep
 #define ALT_MASTER3	"trepidation.n5net.com" // Shafe - Trep -
 #endif
 
