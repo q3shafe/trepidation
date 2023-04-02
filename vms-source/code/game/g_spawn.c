@@ -571,32 +571,6 @@ void SP_worldspawn( void ) {
 
 	trap_SetConfigstring( CS_LEVEL_START_TIME, va("%i", level.startTime ) );
 
-	
-	G_SpawnString( "message", "", &s );
-	trap_SetConfigstring( CS_MESSAGE, s );				// map specific message
-
-	trap_SetConfigstring( CS_MOTD, g_motd.string );		// message of the day
-
-	G_SpawnString( "gravity", "800", &s );
-	trap_Cvar_Set( "g_gravity", s );
-
-	G_SpawnString( "enableDust", "0", &s );
-	trap_Cvar_Set( "g_enableDust", s );
-
-	G_SpawnString( "enableBreath", "0", &s );
-	trap_Cvar_Set( "g_enableBreath", s );
-
-	g_entities[ENTITYNUM_WORLD].s.number = ENTITYNUM_WORLD;
-	g_entities[ENTITYNUM_WORLD].classname = "worldspawn";
-
-	// see if we want a warmup time
-	trap_SetConfigstring( CS_WARMUP, "" );
-	if ( g_restarted.integer ) {
-		trap_Cvar_Set( "g_restarted", "0" );
-		level.warmupTime = 0;
-		level.firstStrike = qfalse;
-		//level.lastClient = -1;
-
 			// Moved this due to mp3 crashes, don't play music during warmup.  Bad hack I know - Shafe
 			if ((g_GameMode.integer == 0) || (g_GameMode.integer == 3) || (g_GameMode.integer == 999)|| (g_GameMode.integer == 5))
 			{
@@ -624,6 +598,34 @@ void SP_worldspawn( void ) {
 			}
 
 			trap_SetConfigstring( CS_MUSIC, s );
+
+
+
+	G_SpawnString( "message", "", &s );
+	trap_SetConfigstring( CS_MESSAGE, s );				// map specific message
+
+	trap_SetConfigstring( CS_MOTD, g_motd.string );		// message of the day
+
+	G_SpawnString( "gravity", "800", &s );
+	trap_Cvar_Set( "g_gravity", s );
+
+	G_SpawnString( "enableDust", "0", &s );
+	trap_Cvar_Set( "g_enableDust", s );
+
+	G_SpawnString( "enableBreath", "0", &s );
+	trap_Cvar_Set( "g_enableBreath", s );
+
+	g_entities[ENTITYNUM_WORLD].s.number = ENTITYNUM_WORLD;
+	g_entities[ENTITYNUM_WORLD].classname = "worldspawn";
+
+	// see if we want a warmup time
+	trap_SetConfigstring( CS_WARMUP, "" );
+	if ( g_restarted.integer ) {
+		trap_Cvar_Set( "g_restarted", "0" );
+		level.warmupTime = 0;
+		level.firstStrike = qfalse;
+		//level.lastClient = -1;
+
 
 
 	} else if ( g_doWarmup.integer ) { // Turn it on
