@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title></title>
+	<title>Retro FPS: Trepidation First Person Shooter</title>
 </head>
 <body data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1078.0">
 <h2>RETRO-FPS: Trepidation 0.0.27</h2>
