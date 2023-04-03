@@ -38,6 +38,8 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare.
 
+- Fixed issue where single player menu item Capture The Flag was not working.
+
 - Screenshots (F11) now save as jpgs by default.
 
 - Game starts with 1920x1080 resolution instead of the previous lower resolution.
