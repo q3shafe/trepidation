@@ -598,7 +598,7 @@ void SP_worldspawn( void ) {
 			}
 
 			trap_SetConfigstring( CS_MUSIC, s );
-
+	// If music file isn't found then we need to revert back to something else.    So we need to re-arrange above and do the file check first.
 
 
 	G_SpawnString( "message", "", &s );
