@@ -213,7 +213,7 @@ ifneq ($(BUILD_CLIENT),0)
 endif
 
 # version info
-VERSION=1.36
+VERSION=0.0.30
 
 USE_SVN=
 ifeq ($(wildcard .svn),.svn)
@@ -1041,7 +1041,7 @@ release:
 # an informational message, then start building
 targets: makedirs
 	@echo ""
-	@echo "Building ioquake3 in $(B):"
+	@echo "Building Trepidation in $(B):"
 	@echo "  PLATFORM: $(PLATFORM)"
 	@echo "  ARCH: $(ARCH)"
 	@echo "  VERSION: $(VERSION)"
