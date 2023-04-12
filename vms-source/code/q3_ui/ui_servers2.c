@@ -388,6 +388,8 @@ static void ArenaServers_Go( void ) {
 	//connect_in_sound = trap_S_RegisterSound("sound/misc/dial-up.ogg", qfalse);
 	//trap_S_StartLocalSound(connect_in_sound, CHAN_LOCAL_SOUND);
 
+	
+
 	servernode = g_arenaservers.table[g_arenaservers.list.curvalue].servernode;
 	if( servernode ) {
 		trap_Cmd_ExecuteText( EXEC_APPEND, va( "connect %s\n", servernode->adrstr ) );
