@@ -38,6 +38,10 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare.
 
+- Updated Linux README file to include system requirements and dependencies.
+
+- Updated Protocol.
+
 - Fixed some shader errors, fine tuned liquids.
 
 - May not be popular, but, 32bit support dropped in game client

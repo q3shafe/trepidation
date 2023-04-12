@@ -2,10 +2,25 @@ Trepdiation Linux Readme.txt
 
 ===================================
 Trepidation Linux
-http://trepidation.n5net.com
+http://trepidationfps.com
 ===================================
 OVERVIEW:
-This archive contains binaries for Trepidation dedicated server, the game client and all game media
+This archive contains binaries for Trepidation dedicated server, the game client and all game media.
+
+REQUIREMENTS:
+
+libSDL 1.2
+	Debian/Ubuntu
+		sudo apt install libsdl1.2debian
+
+libGL 1.1		
+	Debian/Ubuntu
+		sudo apt install libgl1-mesa-glx
+	
+OGG/Vorbis
+	Debian/Ubuntu
+		sudo apt install libvorbisfile3
+
 
 =====================
 BUILDING FROM SOURCE
@@ -26,7 +41,10 @@ trepded.i386     - 32 Bit Dedicated Server Binary
 trepidation.i386 - 32 bit Game Client 
 trepidation.x86_64 - 64 bit Game Client 
 trepded.x86_64 - 64 bit Dedicated Server Binary
+
+=================
 RUNNING A SERVER
+================
 If your familiar with running a quake 3 server it should be pretty easy. 
 Eventually I'll write up more on this.  
 
