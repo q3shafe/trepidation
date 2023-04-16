@@ -17,6 +17,10 @@
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Server|Win32">
+      <Configuration>Server</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{81CB51C4-B434-4E12-B69B-BAEE102F2852}</ProjectGuid>
@@ -28,6 +32,11 @@
     <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Server|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v100</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
@@ -49,6 +58,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Server|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
@@ -75,6 +87,14 @@
     <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;D:\trep\VC\lib</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\build\quake3_release\</OutDir>
+    <IntDir>..\..\build\quake3_release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;D:\trep\VC\lib;D:\trep\VC\include</IncludePath>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;D:\trep\VC\lib;D:\trep\VC\include</LibraryPath>
+    <TargetName>trepidation.x86</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">
     <OutDir>..\..\build\quake3_release\</OutDir>
     <IntDir>..\..\build\quake3_release\</IntDir>
     <LinkIncremental>false</LinkIncremental>
@@ -226,6 +246,53 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>$(IntDir)quake3.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\code\SDL12\include; ..\..\code\libcurl;; ..\..\code\misc; ..\..\code\AL; ..\..\code\libspeex\include; ..\..\code\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WIN32; WIN32; NDEBUG; _WINDOWS; _CRT_SECURE_NO_DEPRECATE; BOTLIB; USE_ICON; USE_CURL; USE_CURL_DLOPEN; USE_OPENAL; USE_OPENAL_DLOPEN;USE_CODEC_VORBIS  ;USE_VOIP; BUILD_SERVER;HAVE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>$(IntDir)quake3.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <CompileAs>CompileAsC</CompileAs>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>D:\trep\VC\include;</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>user32.lib;advapi32.lib;winmm.lib;libcurl.lib;libmad.lib;libogg.lib;libopusfile-0.lib;libvorbis.lib;libvorbisfile.lib;wsock32.lib;ws2_32.lib;SDLmain.lib;SDL.lib;OpenGL32.lib;msvcrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)trepidation.x86.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(IntDir)quake3.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>$(IntDir)quake3.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <StackReserveSize>8388608</StackReserveSize>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">
     <Midl>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -312,6 +379,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_cin.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -321,6 +389,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_console.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -330,6 +399,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_curl.c" />
     <ClCompile Include="..\..\code\client\cl_input.c">
@@ -340,6 +410,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_keys.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -349,6 +420,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_main.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -358,6 +430,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_net_chan.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -367,6 +440,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_parse.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -376,6 +450,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_scrn.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -385,6 +460,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\cl_ui.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -394,6 +470,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\qal.c" />
     <ClCompile Include="..\..\code\client\snd_adpcm.c">
@@ -404,6 +481,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\snd_codec.c" />
     <ClCompile Include="..\..\code\client\snd_codec_mp3.c" />
@@ -417,6 +495,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\snd_main.c" />
     <ClCompile Include="..\..\code\client\snd_mem.c">
@@ -427,6 +506,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\snd_mix.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -436,6 +516,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\client\snd_openal.c" />
     <ClCompile Include="..\..\code\client\snd_wavelet.c">
@@ -446,6 +527,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\jpeg-6b\jcapimin.c" />
     <ClCompile Include="..\..\code\jpeg-6b\jcapistd.c" />
@@ -530,6 +612,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\cm_load.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -539,6 +622,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\cm_patch.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -548,6 +632,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\cm_polylib.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -557,6 +642,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\cm_test.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -566,6 +652,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\cm_trace.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -575,6 +662,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\common.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -584,6 +672,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\cvar.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -593,6 +682,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\files.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -602,6 +692,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\huffman.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -611,6 +702,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\ioapi.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -620,6 +712,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\md4.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -629,6 +722,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\md5.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -638,6 +732,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\msg.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -647,6 +742,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\net_chan.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -656,6 +752,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\net_ip.c" />
     <ClCompile Include="..\..\code\qcommon\puff.c" />
@@ -669,6 +766,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\vm.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -678,6 +776,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\vm_interpreted.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -687,6 +786,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\qcommon\vm_x86.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -696,6 +796,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\renderer\tr_animation.c" />
     <ClCompile Include="..\..\code\renderer\tr_backend.c" />
@@ -737,6 +838,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\server\sv_ccmds.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -746,6 +848,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\server\sv_client.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -755,6 +858,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\server\sv_game.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -764,6 +868,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\server\sv_init.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -773,6 +878,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\server\sv_main.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -782,6 +888,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\server\sv_net_chan.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -791,6 +898,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\server\sv_snapshot.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -800,6 +908,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\server\sv_world.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug TA|Win32'">Disabled</Optimization>
@@ -809,6 +918,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">MaxSpeed</Optimization>
       <BrowseInformation Condition="'$(Configuration)|$(Platform)'=='Release TA|Win32'">true</BrowseInformation>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Server|Win32'">MaxSpeed</Optimization>
     </ClCompile>
     <ClCompile Include="..\..\code\sys\con_log.c" />
     <ClCompile Include="..\..\code\sys\con_passive.c" />
