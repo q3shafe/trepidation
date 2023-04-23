@@ -458,12 +458,13 @@ void UI_MainMenu( void ) {
 #define ID_ALPHA				21
 #define ID_FREEFORALL			22
 #define ID_CTF					23
-#define ID_ARSENAL				24
-#define ID_SURVIVAL				25
-#define ID_TREPIDATION			26
-#define ID_FREEZETAG			27
-#define ID_ONE4ALL				28
-#define ID_BACK					29
+#define ID_REVCTF				24
+#define ID_ARSENAL				25
+#define ID_SURVIVAL				26
+#define ID_TREPIDATION			27
+#define ID_FREEZETAG			28
+#define ID_ONE4ALL				29
+#define ID_BACK					30
 
 
 typedef struct {
@@ -514,9 +515,17 @@ static void Setup_RunOFA( qboolean result ) {
 RUN CTF CFG SP
 =================
 */
-static void Setup_RunCTF( qboolean result ) {
-	
-	trap_Cmd_ExecuteText( EXEC_APPEND, "exec singleplayer/ctf.cfg\n");
+static void Setup_RunCTF(qboolean result) {
+
+	trap_Cmd_ExecuteText(EXEC_APPEND, "exec singleplayer/ctf.cfg\n");
+}
+/*
+================ =
+RUN REV CTF CFG SP
+================ =
+*/
+static void Setup_RunREVCTF(qboolean result) {
+	trap_Cmd_ExecuteText(EXEC_APPEND, "exec singleplayer/revctf.cfg\n");
 }
 
 /*
@@ -590,6 +599,10 @@ static void UI_SinglePlayerMenu_Event( void *ptr, int event ) {
 
 	case ID_CTF:
 		Setup_RunCTF(0);
+		break;
+
+	case ID_REVCTF:
+		Setup_RunREVCTF(0);
 		break;
 
 	case ID_ARSENAL:
@@ -693,15 +706,26 @@ static void UI_SinglePlayerMenu_Init( void ) {
 	singleplayerMenuInfo.freeforall.style				= style;
 
 	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
-	singleplayerMenuInfo.ctf.generic.type			= MTYPE_PTEXT;
-	singleplayerMenuInfo.ctf.generic.flags			= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
-	singleplayerMenuInfo.ctf.generic.x				= 320;
-	singleplayerMenuInfo.ctf.generic.y				= y;
-	singleplayerMenuInfo.ctf.generic.id				= ID_CTF;
-	singleplayerMenuInfo.ctf.generic.callback		= UI_SinglePlayerMenu_Event; 
-	singleplayerMenuInfo.ctf.string				= "CAPTURE THE FLAG";
-	singleplayerMenuInfo.ctf.color					= color_red;
-	singleplayerMenuInfo.ctf.style					= style;
+	singleplayerMenuInfo.ctf.generic.type = MTYPE_PTEXT;
+	singleplayerMenuInfo.ctf.generic.flags = QMF_CENTER_JUSTIFY | QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.ctf.generic.x = 320;
+	singleplayerMenuInfo.ctf.generic.y = y;
+	singleplayerMenuInfo.ctf.generic.id = ID_CTF;
+	singleplayerMenuInfo.ctf.generic.callback = UI_SinglePlayerMenu_Event;
+	singleplayerMenuInfo.ctf.string = "CAPTURE THE FLAG";
+	singleplayerMenuInfo.ctf.color = color_red;
+	singleplayerMenuInfo.ctf.style = style;
+
+	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
+	singleplayerMenuInfo.ctf.generic.type = MTYPE_PTEXT;
+	singleplayerMenuInfo.ctf.generic.flags = QMF_CENTER_JUSTIFY | QMF_PULSEIFFOCUS;
+	singleplayerMenuInfo.ctf.generic.x = 320;
+	singleplayerMenuInfo.ctf.generic.y = y;
+	singleplayerMenuInfo.ctf.generic.id = ID_REVCTF;
+	singleplayerMenuInfo.ctf.generic.callback = UI_SinglePlayerMenu_Event;
+	singleplayerMenuInfo.ctf.string = "REVERSE CAPTURE THE FLAG";
+	singleplayerMenuInfo.ctf.color = color_red;
+	singleplayerMenuInfo.ctf.style = style;
 
 	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
 	singleplayerMenuInfo.arsenal.generic.type					= MTYPE_PTEXT;
@@ -749,17 +773,18 @@ static void UI_SinglePlayerMenu_Init( void ) {
 	singleplayerMenuInfo.trepidation.color						= color_red;
 	singleplayerMenuInfo.trepidation.style						= style;
 
+	/*
 	y += SINGLEPLAYER_MENU_VERTICAL_SPACING;
 	singleplayerMenuInfo.freezetag.generic.type				= MTYPE_PTEXT;
 	singleplayerMenuInfo.freezetag.generic.flags				= QMF_CENTER_JUSTIFY|QMF_PULSEIFFOCUS;
 	singleplayerMenuInfo.freezetag.generic.x					= 320;
 	singleplayerMenuInfo.freezetag.generic.y					= y;
 	singleplayerMenuInfo.freezetag.generic.id					= ID_FREEZETAG;
-	singleplayerMenuInfo.freezetag.generic.callback			= UI_SinglePlayerMenu_Event; 
+	singleplayerMenuInfo.freezetag.generic.callback				= UI_SinglePlayerMenu_Event; 
 	singleplayerMenuInfo.freezetag.string						= "FREEZE TAG";
 	singleplayerMenuInfo.freezetag.color						= color_dim;
 	singleplayerMenuInfo.freezetag.style						= style;
-
+	*/
 
 	
 

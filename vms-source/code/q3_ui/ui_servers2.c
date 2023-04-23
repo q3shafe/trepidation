@@ -1375,6 +1375,7 @@ static void ArenaServers_Event( void* ptr, int event ) {
 		break;
 
 	case ID_SPECIFY:
+		//trap_S_StartLocalSound(trap_S_RegisterSound("sound/misc/dial-up.ogg", qfalse), CHAN_AUTO);
 		UI_SpecifyServerMenu();
 		break;
 
@@ -1383,6 +1384,7 @@ static void ArenaServers_Event( void* ptr, int event ) {
 		break;
 
 	case ID_CONNECT:
+		//trap_S_StartLocalSound(trap_S_RegisterSound("sound/misc/dial-up.ogg", qfalse), CHAN_AUTO);
 		ArenaServers_Go();
 		break;
 

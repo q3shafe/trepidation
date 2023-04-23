@@ -944,11 +944,6 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 	trap_GetUserinfo( clientNum, userinfo, sizeof( userinfo ) );
 
 
-	//trap_S_RegisterSound("sound/misc/dial-up.ogg");
-	BroadCastSound("sound/misc/dial-up.ogg");
-	//G_AddEvent(client, EV_GENERAL_SOUND, soundIndex);
-	//trap_S_StartLocalSound("sound/misc/dial-up.ogg", CHAN_AUTO);
-
 
 	// Admin System
 	value = Info_ValueForKey( userinfo, "cl_guid" );

@@ -38,6 +38,10 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare.
 
+- Removed Freeze Tag from menu as there is no progress being made on that at the moment.
+
+- New Singleplayer gametype Reverse CTF. Players will spawn in the enemy base for some interesting gameplay.
+
 - Fixed ded server startup files.
 
 - Updated Linux README file to include system requirements and dependencies.

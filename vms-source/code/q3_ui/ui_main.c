@@ -55,7 +55,7 @@ int vmMain( int command, int arg0, int arg1, int arg2, int arg3, int arg4, int a
 	case UI_CONSOLE_COMMAND:
 		return UI_ConsoleCommand(arg0);
 
-	case UI_DRAW_CONNECT_SCREEN:
+	case UI_DRAW_CONNECT_SCREEN:	
 		UI_DrawConnectScreen( arg0 );
 		return 0;
 	case UI_HASUNIQUECDKEY:				// mod authors need to observe this  // Shafe - Trep - Done

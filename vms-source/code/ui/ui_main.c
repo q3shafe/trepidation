@@ -5469,9 +5469,11 @@ void UI_DrawConnectScreen( qboolean overlay ) {
 	
 	menuDef_t *menu = Menus_FindByName("Connect");
 
+	
 
 	if ( !overlay && menu ) {
 		Menu_Paint(menu, qtrue);
+		
 	}
 
 	if (!overlay) {
@@ -5487,6 +5489,7 @@ void UI_DrawConnectScreen( qboolean overlay ) {
 
 	// see what information we should display
 	trap_GetClientState( &cstate );
+	
 
 	info[0] = '\0';
 	if( trap_GetConfigString( CS_SERVERINFO, info, sizeof(info) ) ) {
