@@ -38,19 +38,22 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare.
 
+<<<<<<< HEAD
 - Removed Freeze Tag from menu as there is no progress being made on that at the moment.
 
 - New Singleplayer gametype Reverse CTF. Players will spawn in the enemy base for some interesting gameplay.
 
 - Fixed ded server startup files.
 
+=======
+>>>>>>> parent of b86a7631 (- Fixed Ded server startup files)
 - Updated Linux README file to include system requirements and dependencies.
 
 - Updated Protocol.
 
 - Fixed some shader errors, fine tuned liquids.
 
-- 32bit support dropped on linux game client and server.
+- May not be popular, but, 32bit support dropped in game client
 
 - Fixed issue where single player menu item Capture The Flag was not working.
 
