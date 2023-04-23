@@ -26,7 +26,7 @@ MAIN MENU
 
 #define SINGLEPLAYER_MENU_VERTICAL_SPACING		34
 
-#define ART_BACK0		"menu/art/back_2"
+#define ART_BACK0		"menu/art/back_0"
 #define ART_BACK1		"menu/art/back_1"	
 //#define ART_FRAMEL		"menu/art/frame2_l"
 #define ART_FRAMEL		"menu/art/frame1_r"
@@ -91,11 +91,7 @@ void Main_MenuEvent (void* ptr, int event) {
 
 	switch( ((menucommon_s*)ptr)->id ) {
 	case ID_SINGLEPLAYER:
-		//UI_SPLevelMenu();
-		//UI_OfflineMenu();
-
 		UI_SinglePlayerMenu();
-		//UI_StartServerMenu( qfalse );
 		break;
 
 	case ID_MULTIPLAYER:
@@ -458,13 +454,12 @@ void UI_MainMenu( void ) {
 #define ID_ALPHA				21
 #define ID_FREEFORALL			22
 #define ID_CTF					23
-#define ID_REVCTF				24
-#define ID_ARSENAL				25
-#define ID_SURVIVAL				26
-#define ID_TREPIDATION			27
-#define ID_FREEZETAG			28
-#define ID_ONE4ALL				29
-#define ID_BACK					30
+#define ID_ARSENAL				24
+#define ID_SURVIVAL				25
+#define ID_TREPIDATION			26
+#define ID_REVCTF			27
+#define ID_ONE4ALL				28
+#define ID_BACK					29
 
 
 typedef struct {
@@ -619,10 +614,6 @@ static void UI_SinglePlayerMenu_Event( void *ptr, int event ) {
 	
 	case ID_ONE4ALL:
 		Setup_RunOFA(0);
-		break;
-
-	case ID_FREEZETAG:
-		Setup_RunFreeze(0);
 		break;
 
 	case ID_BACK:
