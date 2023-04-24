@@ -36,9 +36,10 @@ Detailed Changelog - Most Recent Changes First
 ==============================================
 This is mostly a maintenance release, not a lot of huge new features. 
 
-- TODO: Add Additional Mappack to distro: lilbuteroom and nightmare.
+- TODO: Add Additional Mappack to distro: lilbuteroom and nightmare and sp maps
 
-<<<<<<< HEAD
+- Fixed even more back buttons in the menus
+
 - Removed Freeze Tag from menu as there is no progress being made on that at the moment.
 
 - New Singleplayer gametype Reverse CTF. Players will spawn in the enemy base for some interesting gameplay.
@@ -46,7 +47,7 @@ This is mostly a maintenance release, not a lot of huge new features.
 - Fixed ded server startup files.
 
 =======
->>>>>>> parent of b86a7631 (- Fixed Ded server startup files)
+
 - Updated Linux README file to include system requirements and dependencies.
 
 - Updated Protocol.
