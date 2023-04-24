@@ -14,7 +14,7 @@ SETUP MENU
 
 #define SETUP_MENU_VERTICAL_SPACING		34
 
-#define ART_BACK0		"menu/art/back_2"
+#define ART_BACK0		"menu/art/back_0"
 #define ART_BACK1		"menu/art/back_1"	
 //#define ART_FRAMEL		"menu/art/frame2_l"
 #define ART_FRAMEL		"menu/art/frame1_r"
