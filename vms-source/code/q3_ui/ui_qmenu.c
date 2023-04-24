@@ -1302,7 +1302,8 @@ void Menu_AddItem( menuframework_s *menu, void *item )
 				break;
 
 			default:
-				trap_Error( va("Menu_Init: unknown type %d", itemptr->type) );
+				break;
+				//trap_Error( va("Menu_Init: 001 unknown type %d", itemptr->type) );
 		}
 	}
 
