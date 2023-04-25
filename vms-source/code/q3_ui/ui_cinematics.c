@@ -82,6 +82,7 @@ static void UI_CinematicsMenu_Event( void *ptr, int event ) {
 
 	n = ((menucommon_s*)ptr)->id - ID_CIN_IDLOGO;
 	trap_Cvar_Set( "nextmap", va( "ui_cinematics %i", n ) );
+
 	if( uis.demoversion && ((menucommon_s*)ptr)->id == ID_CIN_END ) {
 		trap_Cmd_ExecuteText( EXEC_APPEND, "disconnect; cinematic demoEnd.RoQ 1\n" );
 	}
@@ -107,7 +108,7 @@ static void UI_CinematicsMenu_Init( void ) {
 	cinematicsMenuInfo.banner.generic.type		= MTYPE_BTEXT;
 	cinematicsMenuInfo.banner.generic.x			= 320;
 	cinematicsMenuInfo.banner.generic.y			= 16;
-	cinematicsMenuInfo.banner.string			= "CINEMATICS";
+	cinematicsMenuInfo.banner.string			= "SP Development Menu";
 	cinematicsMenuInfo.banner.color				= color_white;
 	cinematicsMenuInfo.banner.style				= UI_CENTER;
 

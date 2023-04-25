@@ -381,7 +381,7 @@ void UI_MainMenu(void) {
 	s_main.cinematics.generic.y = y;
 	s_main.cinematics.generic.id = ID_CINEMATICS;
 	s_main.cinematics.generic.callback = Main_MenuEvent;
-	s_main.cinematics.string = "CINEMATICS";
+	s_main.cinematics.string = "SP Dev Menu";
 	s_main.cinematics.color = color_red;
 	s_main.cinematics.style = style;
 
@@ -428,8 +428,8 @@ void UI_MainMenu(void) {
 	Menu_AddItem(&s_main.menu, &s_main.multiplayer);
 	Menu_AddItem(&s_main.menu, &s_main.singleplayer);
 	Menu_AddItem(&s_main.menu, &s_main.setup);
-	Menu_AddItem(&s_main.menu, &s_main.demos);
-	//Menu_AddItem( &s_main.menu,	&s_main.cinematics );
+	//Menu_AddItem(&s_main.menu, &s_main.demos);
+	Menu_AddItem( &s_main.menu,	&s_main.cinematics );
 	if (teamArena) {
 		Menu_AddItem(&s_main.menu, &s_main.teamArena);
 	}
