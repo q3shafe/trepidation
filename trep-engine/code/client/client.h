@@ -161,6 +161,7 @@ demo through a file.
 #define MAX_TIMEDEMO_DURATIONS	4096
 
 typedef struct {
+	connstate_t		state;				// connection status
 
 	int			clientNum;
 	int			lastPacketSentTime;			// for retransmits during connection

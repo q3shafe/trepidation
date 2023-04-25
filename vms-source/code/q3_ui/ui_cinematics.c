@@ -163,9 +163,9 @@ static void UI_CinematicsMenu_Init( void ) {
 	cinematicsMenuInfo.cin_tier1.string				= "Tier 1";
 	cinematicsMenuInfo.cin_tier1.color				= color_red;
 	cinematicsMenuInfo.cin_tier1.style				= UI_CENTER;
-	if( !UI_CanShowTierVideo( 1 ) ) {
+	//if( !UI_CanShowTierVideo( 1 ) ) {
 		cinematicsMenuInfo.cin_tier1.generic.flags |= QMF_GRAYED;
-	}
+	//}
 
 	y += VERTICAL_SPACING;
 	cinematicsMenuInfo.cin_tier2.generic.type		= MTYPE_PTEXT;

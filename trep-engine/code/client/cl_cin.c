@@ -226,7 +226,7 @@ long RllDecodeMonoToMono(unsigned char *from,short *to,unsigned int size,char si
 //				signedOutput = 0 for unsigned output, non-zero for signed output
 //				flag = flags from asset header
 //
-// Returns:		Number of samples placed in output buffer
+// Returns:		Number of samples placed in output   
 //-----------------------------------------------------------------------------
 long RllDecodeMonoToStereo(unsigned char *from,short *to,unsigned int size,char signedOutput,unsigned short flag)
 {
@@ -1396,6 +1396,7 @@ e_status CIN_RunCinematic (int handle)
 		RoQReset();
 	  } else {
 		RoQShutdown();
+		return FMV_EOF;
 	  }
 	}
 
@@ -1595,6 +1596,9 @@ void CL_PlayCinematic_f(void) {
 	qboolean	holdatend;
 	int bits = CIN_system;
 
+	S_StopAllSounds ();
+	Sys_Sleep(5);
+
 	Com_DPrintf("CL_PlayCinematic_f\n");
 	if (cls.state == CA_CINEMATIC) {
 		SCR_StopCinematic();
@@ -1611,7 +1615,7 @@ void CL_PlayCinematic_f(void) {
 		bits |= CIN_loop;
 	}
 
-	S_StopAllSounds ();
+	//S_StopAllSounds ();
 
 	CL_handle = CIN_PlayCinematic( arg, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, bits );
 	if (CL_handle >= 0) {
