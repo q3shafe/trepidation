@@ -36,7 +36,11 @@ Detailed Changelog - Most Recent Changes First
 ==============================================
 This is mostly a maintenance release, not a lot of huge new features. 
 
-- TODO: Add Additional Mappack to distro: lilbuteroom and nightmare and sp maps
+- TODO: Add Additional Mappack to distro: lilbuteroom and nightmare and sp maps, what about og-maps?
+
+- New Gata Gun Model
+
+- New intro video which will go along with single player campaign later
 
 - Fixed even more back buttons in the menus
 
@@ -45,8 +49,6 @@ This is mostly a maintenance release, not a lot of huge new features.
 - New Singleplayer gametype Reverse CTF. Players will spawn in the enemy base for some interesting gameplay.
 
 - Fixed ded server startup files.
-
-=======
 
 - Updated Linux README file to include system requirements and dependencies.
 
