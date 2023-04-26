@@ -1,4 +1,4 @@
-// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks - Team Trepidation
+// 2006-2023 Team Trepidation GPL2 - Team Trepidation
 //
 // bg_slidemove.c -- part of bg_pmove functionality
 

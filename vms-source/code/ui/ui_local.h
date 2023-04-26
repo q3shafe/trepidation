@@ -1,4 +1,4 @@
-// 2017 Trepidation Licensed under the GPL2 - Team Trepidation / N5 Networks
+// 2006-2023 Team Trepidation GPL2
 //
 #ifndef __UI_LOCAL_H__
 #define __UI_LOCAL_H__

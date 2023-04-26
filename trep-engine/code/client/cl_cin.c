@@ -1241,6 +1241,7 @@ static void RoQ_init( void )
 	cinTable[currentHandle].roqFPS	 = cin.file[ 6] + cin.file[ 7]*256;
 	
 	if (!cinTable[currentHandle].roqFPS) cinTable[currentHandle].roqFPS = 30;
+	//if (!cinTable[currentHandle].roqFPS) cinTable[currentHandle].roqFPS = 25;
 
 	cinTable[currentHandle].numQuads = -1;
 
@@ -1597,7 +1598,7 @@ void CL_PlayCinematic_f(void) {
 	int bits = CIN_system;
 
 	S_StopAllSounds ();
-	Sys_Sleep(5);
+	//Sys_Sleep(5);
 
 	Com_DPrintf("CL_PlayCinematic_f\n");
 	if (cls.state == CA_CINEMATIC) {
