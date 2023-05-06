@@ -32,6 +32,13 @@
 						<li class="nav-item">
 							<a class="nav-link" target="_new" href="https://trepidationfps.com/wiki/">Wiki</a>
 						</li>
+
+						 <li class="nav-item">
+                                                        <a class="nav-link" target="_new" href="https://discord.gg/bE2d9p2U9P">Discord</a>
+                                                </li>
+
+
+
 						<li class="nav-item">
 							<a class="nav-link" target="_new" href="http://master.n5net.com/">Master Server</a>
 						</li>
