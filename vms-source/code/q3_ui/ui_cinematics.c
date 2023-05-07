@@ -164,7 +164,7 @@ static void UI_CinematicsMenu_Init( void ) {
 	cinematicsMenuInfo.cin_tier1.color				= color_red;
 	cinematicsMenuInfo.cin_tier1.style				= UI_CENTER;
 	//if( !UI_CanShowTierVideo( 1 ) ) {
-		cinematicsMenuInfo.cin_tier1.generic.flags |= QMF_GRAYED;
+		//cinematicsMenuInfo.cin_tier1.generic.flags |= QMF_GRAYED;
 	//}
 
 	y += VERTICAL_SPACING;
@@ -177,9 +177,9 @@ static void UI_CinematicsMenu_Init( void ) {
 	cinematicsMenuInfo.cin_tier2.string				= "Tier 2";
 	cinematicsMenuInfo.cin_tier2.color				= color_red;
 	cinematicsMenuInfo.cin_tier2.style				= UI_CENTER;
-	if( !UI_CanShowTierVideo( 2 ) ) {
-		cinematicsMenuInfo.cin_tier2.generic.flags |= QMF_GRAYED;
-	}
+	//if( !UI_CanShowTierVideo( 2 ) ) {
+		//cinematicsMenuInfo.cin_tier2.generic.flags |= QMF_GRAYED;
+	//}
 
 	y += VERTICAL_SPACING;
 	cinematicsMenuInfo.cin_tier3.generic.type		= MTYPE_PTEXT;
@@ -191,9 +191,11 @@ static void UI_CinematicsMenu_Init( void ) {
 	cinematicsMenuInfo.cin_tier3.string				= "Tier 3";
 	cinematicsMenuInfo.cin_tier3.color				= color_red;
 	cinematicsMenuInfo.cin_tier3.style				= UI_CENTER;
+	/*
 	if( !UI_CanShowTierVideo( 3 ) ) {
 		cinematicsMenuInfo.cin_tier3.generic.flags |= QMF_GRAYED;
 	}
+	*/
 
 	y += VERTICAL_SPACING;
 	cinematicsMenuInfo.cin_tier4.generic.type		= MTYPE_PTEXT;
