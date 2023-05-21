@@ -380,7 +380,8 @@ static qboolean PM_CheckJump( void ) {
 	pm->ps->velocity[2] = JUMP_VELOCITY;
 	PM_AddEvent( EV_JUMP );
 
-//	pm->ps->MultiJumps++; // Shafe - Trep - Multijumping / wall jumping
+	pm->ps->stats[STAT_MULTIJUMP]++;
+	//	pm->ps->MultiJumps++; // Shafe - Trep - Multijumping / wall jumping
 	trep_multijumps++;
 
 	if ( pm->cmd.forwardmove >= 0 ) {
@@ -1171,16 +1172,18 @@ static void PM_GroundTrace( void ) {
 			// Ignore and reset multijumps and wall jump if they have the jetpack
 			if (pm->ps->powerups[PW_FLIGHT]) 
 			{
+				pm->ps->stats[STAT_MULTIJUMP] = 0;
 				trep_multijumps = 0;
 				
 			} 
 			else
 			{
 				// Go ahead and do the multijump
-				if(trep_multijumps < 3)
+				if(pm->ps->stats[STAT_MULTIJUMP] < 5)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
 				{
-					//PM_CheckJump ();		
+					PM_CheckJump ();		
 				} else {
+					pm->ps->stats[STAT_MULTIJUMP] = 0;
 					trep_multijumps = 0;
 				}
 			}
@@ -1218,7 +1221,7 @@ static void PM_GroundTrace( void ) {
 	// slopes that are too steep will not be considered onground
 	if ( trace.plane.normal[2] < MIN_WALK_NORMAL ) {  
 		
-			
+
 //		if (pm->ps->MultiJumps < 5 ) {
 			PM_CheckJump(); // Allows you to jump up slopes
 //		}
@@ -1248,7 +1251,7 @@ static void PM_GroundTrace( void ) {
 
 	if ( pm->ps->groundEntityNum == ENTITYNUM_NONE ) {
 		// just hit the ground
-		//pm->ps->MultiJumps = 0; // Shafe - Trep - Multijumping / Wall Jumping
+		pm->ps->stats[STAT_MULTIJUMP] = 0; // Shafe - Trep - Multijumping / Wall Jumping
 		if ( pm->debugLevel ) {
 			Com_Printf("%i:Land\n", c_pmove);
 		}
@@ -1269,7 +1272,7 @@ static void PM_GroundTrace( void ) {
 	// pm->ps->velocity[2] = 0;
 
 	PM_AddTouchEnt( trace.entityNum );
-//	pm->ps->MultiJumps = 0; // Shafe - Trep - Multijumping / Wall Jumping
+	pm->ps->stats[STAT_MULTIJUMP] = 0; // Shafe - Trep - Multijumping / Wall Jumping
 }
 
 

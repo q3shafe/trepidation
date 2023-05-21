@@ -38,6 +38,8 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare and sp maps, what about og-maps?
 
+- Multijumps Patially Implemented
+
 - New Gata Gun Model
 
 - New intro video which will go along with single player campaign later

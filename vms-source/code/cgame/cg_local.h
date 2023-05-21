@@ -289,6 +289,7 @@ typedef struct {
 	qboolean	perfect;
 	int				team;
 	int				deaths;
+//	int				MultiJumps;
 	
 
 } score_t;
@@ -370,6 +371,7 @@ typedef struct {
 
 	sfxHandle_t		sounds[MAX_CUSTOM_SOUNDS];
 	int				numTaunts;
+//	int				MultiJumps;
 } clientInfo_t;
 
 
@@ -659,6 +661,7 @@ typedef struct {
 	int			scanner; // Shafe - Trep - Radar
 	int			bgnumber;
 	qboolean	gotbg;
+//	int			MultiJumps; // Shafe Multijumps
 } cg_t;
 
 
