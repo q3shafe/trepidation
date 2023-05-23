@@ -661,7 +661,7 @@ typedef struct {
 	int			scanner; // Shafe - Trep - Radar
 	int			bgnumber;
 	qboolean	gotbg;
-//	int			MultiJumps; // Shafe Multijumps
+
 } cg_t;
 
 

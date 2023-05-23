@@ -40,6 +40,8 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - Multijumps Patially Implemented
 
+- Grapple hook is always enabled on singleplayer ffa.
+
 - New Gata Gun Model
 
 - New intro video which will go along with single player campaign later

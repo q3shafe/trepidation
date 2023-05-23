@@ -8,6 +8,10 @@
 #include "bg_local.h"
 
 
+extern	vmCvar_t	g_enableMultijump;
+extern	vmCvar_t	g_maxMultijump;
+
+
 pmove_t		*pm;
 pml_t		pml;
 
@@ -1146,6 +1150,7 @@ static void PM_GroundTrace( void ) {
 	vec3_t		point;
 	trace_t		trace;
 
+
 	point[0] = pm->ps->origin[0];
 	point[1] = pm->ps->origin[1];
 	point[2] = pm->ps->origin[2] - 0.25;
@@ -1179,7 +1184,7 @@ static void PM_GroundTrace( void ) {
 			else
 			{
 				// Go ahead and do the multijump
-				if(pm->ps->stats[STAT_MULTIJUMP] < 5)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
+				if(pm->ps->stats[STAT_MULTIJUMP] < 4)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
 				{
 					PM_CheckJump ();		
 				} else {

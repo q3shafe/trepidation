@@ -90,6 +90,8 @@ vmCvar_t	sv_fps;
 //Shafe - Trep
 // Mods
 vmCvar_t	g_instagib;
+vmCvar_t	g_enableMultijump;
+vmCvar_t	g_maxMultijump;
 vmCvar_t	g_GameMode;
 vmCvar_t	g_BlueMC;
 vmCvar_t	g_RedMC;
@@ -241,6 +243,10 @@ static cvarTable_t		gameCvarTable[] = {
 // Shafe - Trep - Cvars
 	// Mods
 	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_enableMultijump, "g_enableMultijump", "1", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_maxMultijump, "g_maxMultijump", "4", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
+	
+
 	//{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },	
 	{ &g_BlueMC, "g_BlueMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	
 	{ &g_RedMC, "g_RedMC", "0", CVAR_SERVERINFO | CVAR_USERINFO, 0, qfalse  },	

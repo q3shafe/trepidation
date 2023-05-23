@@ -989,12 +989,13 @@ extern	vmCvar_t	sv_fps;
 
 //Mods
 extern	vmCvar_t	g_instagib;
+extern	vmCvar_t	g_enableMultijump;
+extern	vmCvar_t	g_maxMultijump;
 extern	vmCvar_t	g_GameMode;
 extern	vmCvar_t	g_BlueMC;
 extern	vmCvar_t	g_RedMC;
 
 // Arsenal
-//extern	vmCvar_t	g_MultiJumps;
 extern	vmCvar_t	g_StartGauntlet;
 extern	vmCvar_t	g_StartMG;
 extern	vmCvar_t	g_StartSG;
@@ -1033,6 +1034,8 @@ extern	vmCvar_t		g_allowGrapple;
 extern	vmCvar_t		g_allowDevastator;
 extern vmCvar_t         g_suddendeath; 
 extern vmCvar_t         g_pointrebuild; 
+
+
 
 extern	vmCvar_t	trep_debug;
 
