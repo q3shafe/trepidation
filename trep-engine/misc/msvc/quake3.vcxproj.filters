@@ -851,10 +851,21 @@
     <ClInclude Include="..\..\code\libspeex\config.h">
       <Filter>speex</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\code\sys\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\code\sys\win_resource.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\quake3.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\code\sys\quake3.ico">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
