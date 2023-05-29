@@ -1186,6 +1186,7 @@ static void PM_GroundTrace( void ) {
 				// Go ahead and do the multijump
 				if(pm->ps->stats[STAT_MULTIJUMP] < 4)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
 				{
+					//G_Printf("%s Multijump: %s\n", pm->ps->stats[STAT_MULTIJUMP]);
 					PM_CheckJump ();		
 				} else {
 					pm->ps->stats[STAT_MULTIJUMP] = 0;
@@ -1227,7 +1228,7 @@ static void PM_GroundTrace( void ) {
 	if ( trace.plane.normal[2] < MIN_WALK_NORMAL ) {  
 		
 
-//		if (pm->ps->MultiJumps < 5 ) {
+//		if (pm->ps->stats[STAT_MULTIJUMP] < 4)
 			PM_CheckJump(); // Allows you to jump up slopes
 //		}
 	
