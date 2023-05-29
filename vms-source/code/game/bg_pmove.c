@@ -1184,7 +1184,7 @@ static void PM_GroundTrace( void ) {
 			else
 			{
 				// Go ahead and do the multijump
-				if(pm->ps->stats[STAT_MULTIJUMP] < 4)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
+				if(pm->ps->stats[STAT_MULTIJUMP] < pm->ps->stats[STAT_MULTIJUMPMAX])  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
 				{
 					PM_CheckJump ();		
 				} else {

@@ -994,6 +994,7 @@
     <ClInclude Include="..\..\code\renderer\tr_local.h" />
     <ClInclude Include="..\..\code\renderer\tr_public.h" />
     <ClInclude Include="..\..\code\server\server.h" />
+    <ClInclude Include="..\..\code\sys\resource.h" />
     <ClInclude Include="..\..\code\sys\win_resource.h" />
     <ClInclude Include="..\..\code\ui\keycodes.h" />
     <ClInclude Include="..\..\code\ui\ui_public.h" />
@@ -1002,6 +1003,10 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\code\sys\win_resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\code\sys\quake3.ico" />
+    <None Include="..\quake3.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -38,7 +38,7 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare and sp maps, what about og-maps?
 
-- Multijumps Patially Implemented
+- Multijumps Partially Implemented
 
 - Grapple hook is always enabled on singleplayer ffa.
 
@@ -60,19 +60,15 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - Fixed some shader errors, fine tuned liquids.
 
-- May not be popular, but, 32bit support dropped in game client
-
 - Fixed issue where single player menu item Capture The Flag was not working.
 
-- Screenshots (F11) now save as jpgs by default.
+- Screenshots (F11) now save as jpgs by default.  This can be switched back in your config file.
 
 - Game starts with 1920x1080 resolution instead of the previous lower resolution.
 
 - Minor update to M42 Shooting Sound
 
 - New M42 Zoom Sound
-
-- New opening video.
 
 - Implented OpenAL-Soft implementation of OpenAL, with configuration programs.
 
@@ -1236,7 +1232,7 @@ BUILD 5-21-06
 --------------------------
 - Shafe - Took out the whole alt fire fires rockets on weapons we havent done anything with yet.... Just for testing and playability reasons.
 
-- Shafe - Engine - replaced gay looking icon with another gay looking icon.
+- Shafe - Engine - replaced dumb looking icon with another dumb looking icon.
 
 - Shafe - installer - Added a readme.txt file with lots of info to put somewhere, like docs or something.
 
