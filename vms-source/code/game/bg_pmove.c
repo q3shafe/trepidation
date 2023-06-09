@@ -393,8 +393,7 @@ static qboolean PM_CheckJump( void ) {
 	PM_AddEvent( EV_JUMP );
 
 	pm->ps->stats[STAT_MULTIJUMP]++;
-	//	pm->ps->MultiJumps++; // Shafe - Trep - Multijumping / wall jumping
-	trep_multijumps++;
+	
 
 	if ( pm->cmd.forwardmove >= 0 ) {
 		PM_ForceLegsAnim( LEGS_JUMP );
@@ -1186,19 +1185,17 @@ static void PM_GroundTrace( void ) {
 			if (pm->ps->powerups[PW_FLIGHT]) 
 			{
 				pm->ps->stats[STAT_MULTIJUMP] = 0;
-				trep_multijumps = 0;
+				
 				
 			} 
 			else
 			{
 				// Go ahead and do the multijump
-				if(pm->ps->stats[STAT_MULTIJUMP] < cg_maxMultijump.integer)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
+				if (pm->ps->stats[STAT_MULTIJUMP] < 4)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
 				{
-					//G_Printf("%s Multijump: %s\n", pm->ps->stats[STAT_MULTIJUMP]);
 					PM_CheckJump ();		
 				} else {
-					pm->ps->stats[STAT_MULTIJUMP] = 0;
-					trep_multijumps = 0;
+					pm->ps->stats[STAT_MULTIJUMP] = 0;			
 				}
 			}
 		

@@ -244,7 +244,7 @@ static cvarTable_t		gameCvarTable[] = {
 	// Mods
 	{ &g_instagib, "g_instagib", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
 	{ &g_enableMultijump, "g_enableMultijump", "1", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
-	{ &g_maxMultijump, "g_maxMultijump", "4", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue  },
+	{ &g_maxMultijump, "g_maxMultijump", "4", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_ARCHIVE, 0, qtrue  },
 	
 
 	//{ &g_GameMode, "g_GameMode", "0", CVAR_SERVERINFO | CVAR_USERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },	
