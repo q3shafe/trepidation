@@ -8,8 +8,15 @@
 #include "bg_local.h"
 
 
+//#define	GAME_INCLUDE
+//#include "g_shared.h"
+//#include "g_local.h"			   
+//#include "../cgame/cg_local.h"	// yeah I know this is naughty, but we're shipping soon
+
+
 extern	vmCvar_t	g_enableMultijump;
 extern	vmCvar_t	g_maxMultijump;
+
 
 
 pmove_t		*pm;
