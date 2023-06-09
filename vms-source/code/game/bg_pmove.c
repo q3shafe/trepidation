@@ -6,6 +6,7 @@
 #include "q_shared.h"
 #include "bg_public.h"
 #include "bg_local.h"
+#include "bg_cvars.h"
 
 
 //#define	GAME_INCLUDE
@@ -14,8 +15,8 @@
 //#include "../cgame/cg_local.h"	// yeah I know this is naughty, but we're shipping soon
 
 
-extern	vmCvar_t	g_enableMultijump;
-extern	vmCvar_t	g_maxMultijump;
+extern	vmCvar_t	cg_enableMultijump;
+extern	vmCvar_t	cg_maxMultijump;
 
 
 
@@ -1191,7 +1192,7 @@ static void PM_GroundTrace( void ) {
 			else
 			{
 				// Go ahead and do the multijump
-				if(pm->ps->stats[STAT_MULTIJUMP] < 4)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
+				if(pm->ps->stats[STAT_MULTIJUMP] < cg_maxMultijump.integer)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
 				{
 					//G_Printf("%s Multijump: %s\n", pm->ps->stats[STAT_MULTIJUMP]);
 					PM_CheckJump ();		

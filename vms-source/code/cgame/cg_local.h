@@ -4,6 +4,7 @@
 #include "tr_types.h"
 #include "../game/bg_public.h"
 #include "cg_public.h"
+#include "../game/bg_cvars.h"
 
 
 // The entire cgame module is unloaded and reloaded on each level change,
@@ -1276,6 +1277,13 @@ extern	vmCvar_t		cg_GameMode;
 extern	vmCvar_t		cg_BlueMC;
 extern	vmCvar_t		cg_RedMC;
 extern	vmCvar_t		cg_CurrentRound;
+extern	vmCvar_t		cg_maxMultijump;
+extern	vmCvar_t		cg_enableMultijump;
+
+
+
+
+
 
 // Shafe - Trep - Radar
 extern playerpos_t		cg_playerOrigins[MAX_CLIENTS];

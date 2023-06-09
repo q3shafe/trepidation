@@ -5,6 +5,7 @@
 #include "q_shared.h"
 #include "bg_public.h"
 #include "g_public.h"
+#include "bg_cvars.h"
 //#include "g_admin.h"
 
 //==================================================================

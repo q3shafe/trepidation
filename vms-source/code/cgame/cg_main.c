@@ -195,8 +195,10 @@ vmCvar_t	cg_latentCmds;
 vmCvar_t	cg_plOut;
 //unlagged - client options
 vmCvar_t	cg_GameMode;
-vmCvar_t		cg_BlueMC;
-vmCvar_t		cg_RedMC;
+vmCvar_t	cg_BlueMC;
+vmCvar_t	cg_RedMC;
+vmCvar_t	cg_enableMultijump;
+vmCvar_t	cg_maxMultijump;
 
 
 typedef struct {
@@ -327,6 +329,10 @@ static cvarTable_t cvarTable[] = { // bk001129
 	{ &cg_GameMode, "g_GameMode", "0" , CVAR_ARCHIVE | CVAR_SERVERINFO | CVAR_USERINFO },
 	{ &cg_BlueMC, "g_BlueMC", "0" , CVAR_ARCHIVE | CVAR_SERVERINFO | CVAR_USERINFO },
 	{ &cg_RedMC, "g_RedMC", "0" , CVAR_ARCHIVE | CVAR_SERVERINFO | CVAR_USERINFO },
+
+	{ &cg_enableMultijump, "g_enableMultijump", "0" , CVAR_ARCHIVE | CVAR_SERVERINFO },
+	{ &cg_maxMultijump, "g_maxMultijump", "4" , CVAR_ARCHIVE | CVAR_SERVERINFO  },
+
 //unlagged - client options
 	{ &cg_delag, "cg_delag", "1", CVAR_ARCHIVE | CVAR_USERINFO },
 	{ &cg_debugDelag, "cg_debugDelag", "0", CVAR_USERINFO | CVAR_CHEAT },
