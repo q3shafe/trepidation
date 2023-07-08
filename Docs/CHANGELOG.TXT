@@ -38,6 +38,8 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare and sp maps, what about og-maps?
 
+- If there is a problem with music there is now a default
+
 - Multijumps Partially Implemented
 
 - Grapple hook is always enabled on singleplayer ffa.

@@ -594,11 +594,12 @@ void SP_worldspawn( void ) {
 			} 
 			else 
 			{
-				G_SpawnString( "music", "", &s );
+				G_SpawnString("music", "sound/music/mapmusic08.ogg", &s); // Default Music If there is a problem - We should pick one we like
+				//G_SpawnString( "music", "", &s );
 			}
 
 			trap_SetConfigstring( CS_MUSIC, s );
-	// If music file isn't found then we need to revert back to something else.    So we need to re-arrange above and do the file check first.
+	
 
 
 	G_SpawnString( "message", "", &s );

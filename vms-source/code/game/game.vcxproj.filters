@@ -215,6 +215,9 @@
     <ClInclude Include="g_freeze.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="bg_cvars.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="game.def">
