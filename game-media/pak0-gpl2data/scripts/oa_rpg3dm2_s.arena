@@ -1,0 +1,10 @@
+{
+map "oa_rpg3dm2_s"
+bots ""
+longname "oa_rpg3dm2_s"
+longname_deutsch "oa_rpg3dm2_s"
+longname_francais "oa_rpg3dm2_s"
+fraglimit 20
+type "single ffa team ctf "
+recommended "8"
+}
