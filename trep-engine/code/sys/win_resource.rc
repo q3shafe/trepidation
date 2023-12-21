@@ -79,7 +79,7 @@ BEGIN
             VALUE "FileDescription", "Trepidation"
             VALUE "FileVersion", "0.0.30.0"
             VALUE "InternalName", "win_resource.rc"
-            VALUE "LegalCopyright", "2023 Team Trepidation"
+            VALUE "LegalCopyright", "2024 Team Trepidation"
             VALUE "OriginalFilename", "win_resource.rc"
             VALUE "ProductName", "Trepidation"
             VALUE "ProductVersion", "0.0.30.0"

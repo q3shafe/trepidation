@@ -1,4 +1,4 @@
-// 2006-2023 Team Trepidation GPL2
+// 2006-2024 Team Trepidation GPL2
 //
 // cg_servercmds.c -- reliably sequenced text commands sent by the server
 // these are processed at snapshot transition time, so there will definately

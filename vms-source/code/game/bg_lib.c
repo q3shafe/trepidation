@@ -1,6 +1,6 @@
-// 2006-2023 Team Trepidation GPL2 - Team Trepidation - Team Trepidation
+// 2006-2024 Team Trepidation GPL2 - Team Trepidation - Team Trepidation
 //
-// 2006-2023 Team Trepidation GPL2 - Team Trepidation - Team Trepidation
+// 2006-2024 Team Trepidation GPL2 - Team Trepidation - Team Trepidation
 //
 // bg_lib,c -- standard C library replacement routines used by code
 // compiled for the virtual machine

@@ -1,4 +1,4 @@
-// 2006-2023 Team Trepidation GPL2 - Team Trepidation - Team Trepidation - Team Trepidation
+// 2006-2024 Team Trepidation GPL2 - Team Trepidation - Team Trepidation - Team Trepidation
 //
 // bg_misc.c -- both games misc functions, all completely stateless
 
