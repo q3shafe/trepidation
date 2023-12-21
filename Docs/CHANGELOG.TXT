@@ -38,6 +38,12 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare and sp maps, what about og-maps?
 
+12-16-2023
+
+- Power core and Generators no longer show up on the menu if your not playing trepidation.
+
+05-05-2023
+
 - If there is a problem with music there is now a default
 
 - Multijumps Partially Implemented

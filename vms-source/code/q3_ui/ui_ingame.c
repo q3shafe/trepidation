@@ -947,6 +947,7 @@ static void DynamicMenu_BuildMenu( void )
 	//cts = cgs.scores1 + cgs.scores2;
 	
 	s_dynamic.gamemode = (int)trap_Cvar_VariableValue("g_GameMode");
+	s_dynamic.gametype = (int)trap_Cvar_VariableValue("g_gametype");
 	
 	
 		/* Rules just for reference from g_cmds
@@ -954,18 +955,19 @@ static void DynamicMenu_BuildMenu( void )
 		if ((cts < 6) && (type == 2)) { iserror = 3; }  
 
 		*/
-	
+	// FIXME We shouldn't show items that aren't available yet
 	DynamicMenu_AddItem("Turret", 0, NULL, DM_BuildItem);
 	DynamicMenu_AddItem("Sheilded Turret", 0 , NULL, DM_BuildItem);
 	DynamicMenu_AddItem("Cloaked Turret", 0, NULL, DM_BuildItem);
 	DynamicMenu_AddItem("Immobilizer", 0, NULL, DM_BuildItem);
 
-	//if( s_dynamic.gamemode == 3) 
-	//{
+	// Only Show Power Cores and Generators on Trep Gametype
+	if( s_dynamic.gamemode == 3) 
+	{
 		
 		DynamicMenu_AddItem("Generator", 0, NULL, DM_BuildItem);
 		DynamicMenu_AddItem("Power Core", 0, NULL, DM_BuildItem);
-	//}
+	}
 
 	//DynamicMenu_AddItem("Close", 0, NULL, DM_Close_Event);
 
