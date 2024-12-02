@@ -23,9 +23,9 @@ Trepidation will introduce new aspects to the physics of the Q3 engine, The new 
 
 The game will have ports for *nix, *BSD, Win32 and possibly an OSX port. Much improved QVM tools and a well documented SDK for mod authors. 
 
-Visit our website: https://planettrepidation.tk
+Visit our website: https://trepidationfps.com
 
-For a full manual on how to play, run a server and so forth visit our wiki at: https://planettrepidation.tk/wiki/
+For a full manual on how to play, run a server and so forth visit our wiki at: https://trepidationfps/wiki/
 
 == TO BUILD LOCALLY ==
 To build locally on linux using the binaries already in the repository, grab the build.sh script and it will pull a current snapshot from github and build you a working copy of the game.
@@ -33,6 +33,6 @@ To build locally on linux using the binaries already in the repository, grab the
 Visit our wiki for more information on compiling the engine or gamecode.
 
 == DOWNLOAD COMPILED BINARIES ==
-From our homepage we offer daily snapshots, as well as periodic development releases.  The development releases are tested more and what all of the official live servers are running.  You can download either here: https://planettrepidation.tk/downloads/
+From our homepage we offer daily snapshots, as well as periodic development releases.  The development releases are tested more and what all of the official live servers are running.  You can download either here: https://trepidationfps.com
 
 There are also a variety of 3rd party maps that run with Trepidation that you can download from our main site.
