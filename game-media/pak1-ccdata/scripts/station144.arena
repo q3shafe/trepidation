@@ -1,0 +1,7 @@
+{
+map			"station144"
+longname		"Station 144"
+type			"single tourney ffa team"
+bots			"6_of_21 8_of_18 gamma sela tlar"
+recommended		6
+}

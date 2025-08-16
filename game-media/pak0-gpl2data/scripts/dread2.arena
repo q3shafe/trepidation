@@ -1,0 +1,10 @@
+{
+map "dread2"
+bots ""
+longname "Dread 2"
+longname_deutsch "Dread 2"
+longname_francais "Dread 2"
+fraglimit 20
+type "single ffa team ctf tourney "
+recommended "12"
+}
