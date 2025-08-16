@@ -1,4 +1,4 @@
-// 2006-2023 Team Trepidation GPL2
+// 2006-2024 Team Trepidation GPL2
 //
 #ifndef __UI_LOCAL_H__
 #define __UI_LOCAL_H__

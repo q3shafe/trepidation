@@ -1,4 +1,4 @@
-// 2006-2023 Team Trepidation GPL2 - Team Trepidation
+// 2006-2024 Team Trepidation GPL2 - Team Trepidation
 //
 // bg_pmove.c -- both games player movement code
 // takes a playerstate and a usercmd as input and returns a modifed playerstate

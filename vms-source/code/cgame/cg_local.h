@@ -1,4 +1,4 @@
-// 2006-2023 Team Trepidation GPL2
+// 2006-2024 Team Trepidation GPL2
 //
 #include "../game/q_shared.h"
 #include "tr_types.h"

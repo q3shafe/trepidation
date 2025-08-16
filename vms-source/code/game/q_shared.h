@@ -1,4 +1,4 @@
-// 2006-2023 Team Trepidation GPL2 - Team Trepidation - Team Trepidation - Team Trepidation
+// 2006-2024 Team Trepidation GPL2 - Team Trepidation - Team Trepidation - Team Trepidation
 //
 #ifndef __Q_SHARED_H
 #define __Q_SHARED_H

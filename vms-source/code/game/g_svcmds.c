@@ -1,4 +1,4 @@
-// 2006-2023 Team Trepidation GPL2
+// 2006-2024 Team Trepidation GPL2
 //
 
 // this file holds commands that can be executed by the server console, but not remote clients

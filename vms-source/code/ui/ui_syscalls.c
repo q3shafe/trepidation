@@ -1,4 +1,4 @@
-// 2006-2023 Team Trepidation GPL2 - Team Trepidation
+// 2006-2024 Team Trepidation GPL2 - Team Trepidation
 //
 #include "ui_local.h"
 

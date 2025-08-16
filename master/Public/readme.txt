@@ -55,3 +55,7 @@ http://icculus.org/twilight/darkplaces/download.html
 
 TREPDIATION PROJECT: https://trepidationfps.com
 
+
+On Linux, If you run into issues and get a segmentation fault, try using dpmaster.18 or dpmaster_x86v1.8 instead.
+Likewise on windows try renaming dpmaster.exe.1.6 to dpmaster.exe and using that *OR* attempt running dpmaster.1.8.exe
+

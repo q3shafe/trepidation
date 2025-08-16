@@ -1,4 +1,4 @@
-// 2006-2023 Team Trepidation GPL2
+// 2006-2024 Team Trepidation GPL2
 //
 // g_weapon.c 
 // perform the server side effects of a weapon firing
