@@ -17,6 +17,8 @@
 
 extern	vmCvar_t	cg_enableMultijump;
 extern	vmCvar_t	cg_maxMultijump;
+extern	vmCvar_t	g_maxMultijump;
+extern	vmCvar_t	g_enableMultijump;
 
 
 
@@ -365,47 +367,47 @@ static void PM_SetMovementDir( void ) {
 PM_CheckJump
 =============
 */
-static qboolean PM_CheckJump( void ) {
-	if ( pm->ps->pm_flags & PMF_RESPAWNED ) {
+static qboolean PM_CheckJump(void) {
+	if (pm->ps->pm_flags & PMF_RESPAWNED) {
 		return qfalse;		// don't allow jump until all buttons are up
 	}
-
-	if ( pm->cmd.upmove < 10 ) {
+	if (pm->cmd.upmove < 10) {
 		// not holding jump
 		return qfalse;
 	}
-
 	// must wait for jump to be released
-	if ( pm->ps->pm_flags & PMF_JUMP_HELD ) {
+	if (pm->ps->pm_flags & PMF_JUMP_HELD) {
 		// clear upmove so cmdscale doesn't lower running speed
 		pm->cmd.upmove = 0;
 		return qfalse;
 	}
 
-	
+	// Check if we've exceeded the maximum number of jumps	
+	//if (pm->ps->stats[STAT_MULTIJUMP] >= g_maxMultijump.integer) {
+	/*
+	if (pm->ps->stats[STAT_MULTIJUMP] >= 4) {
+		return qfalse;
+	}
+	*/
 
 	pml.groundPlane = qfalse;		// jumping away
 	pml.walking = qfalse;
 	pm->ps->pm_flags |= PMF_JUMP_HELD;
-
 	pm->ps->groundEntityNum = ENTITYNUM_NONE;
 	pm->ps->velocity[2] = JUMP_VELOCITY;
-	PM_AddEvent( EV_JUMP );
+	PM_AddEvent(EV_JUMP);
+	//pm->ps->stats[STAT_MULTIJUMP]++;
 
-	pm->ps->stats[STAT_MULTIJUMP]++;
-	
-
-	if ( pm->cmd.forwardmove >= 0 ) {
-		PM_ForceLegsAnim( LEGS_JUMP );
+	if (pm->cmd.forwardmove >= 0) {
+		PM_ForceLegsAnim(LEGS_JUMP);
 		pm->ps->pm_flags &= ~PMF_BACKWARDS_JUMP;
-	} else {
-		PM_ForceLegsAnim( LEGS_JUMPB );
+	}
+	else {
+		PM_ForceLegsAnim(LEGS_JUMPB);
 		pm->ps->pm_flags |= PMF_BACKWARDS_JUMP;
 	}
-
 	return qtrue;
 }
-
 /*
 =============
 PM_CheckWaterJump
@@ -1191,12 +1193,15 @@ static void PM_GroundTrace( void ) {
 			else
 			{
 				// Go ahead and do the multijump
+				//if (pm->ps->stats[STAT_MULTIJUMP] < g_maxMultijump.value)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
+				/*
 				if (pm->ps->stats[STAT_MULTIJUMP] < 4)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
 				{
 					PM_CheckJump ();		
 				} else {
 					pm->ps->stats[STAT_MULTIJUMP] = 0;			
 				}
+				*/
 			}
 		
 	

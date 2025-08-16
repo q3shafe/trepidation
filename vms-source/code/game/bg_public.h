@@ -207,6 +207,9 @@ typedef enum {
 
 
 
+extern vmCvar_t g_enableMultijump;
+extern vmCvar_t g_maxMultijump;
+
 // player_state->persistant[] indexes
 // these fields are the only part of player_state that isn't
 // cleared on respawn
