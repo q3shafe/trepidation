@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls j:/trep/code/)",
+      "Read(//j/trep/code/**)",
+      "PowerShell(Get-Command go -ErrorAction SilentlyContinue; where.exe go 2>$null; \\(Get-ChildItem \"C:\\\\Program Files\\\\Go\\\\bin\\\\go.exe\" -ErrorAction SilentlyContinue\\).FullName)"
+    ]
+  }
+}
