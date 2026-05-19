@@ -137,6 +137,9 @@ vmCvar_t	ui_server16;
 
 vmCvar_t	ui_cdkeychecked;
 
+vmCvar_t	ui_enableMultijump;
+vmCvar_t	ui_maxMultijump;
+
 // bk001129 - made static to avoid aliasing.
 static cvarTable_t		cvarTable[] = {
 	{ &ui_ffa_fraglimit, "ui_ffa_fraglimit", "20", CVAR_ARCHIVE },
@@ -195,7 +198,10 @@ static cvarTable_t		cvarTable[] = {
 	{ &ui_server15, "server15", "", CVAR_ARCHIVE },
 	{ &ui_server16, "server16", "", CVAR_ARCHIVE },
 
-	{ &ui_cdkeychecked, "ui_cdkeychecked", "0", CVAR_ROM }
+	{ &ui_cdkeychecked, "ui_cdkeychecked", "0", CVAR_ROM },
+
+	{ &ui_enableMultijump, "g_enableMultijump", "1", CVAR_SERVERINFO | CVAR_ARCHIVE },
+	{ &ui_maxMultijump, "g_maxMultijump", "4", CVAR_SERVERINFO | CVAR_ARCHIVE }
 };
 
 // bk001129 - made static to avoid aliasing

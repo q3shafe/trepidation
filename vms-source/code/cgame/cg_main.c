@@ -330,8 +330,8 @@ static cvarTable_t cvarTable[] = { // bk001129
 	{ &cg_BlueMC, "g_BlueMC", "0" , CVAR_ARCHIVE | CVAR_SERVERINFO | CVAR_USERINFO },
 	{ &cg_RedMC, "g_RedMC", "0" , CVAR_ARCHIVE | CVAR_SERVERINFO | CVAR_USERINFO },
 
-	{ &cg_enableMultijump, "g_enableMultijump", "0" , CVAR_ARCHIVE | CVAR_SERVERINFO },
-	{ &cg_maxMultijump, "g_maxMultijump", "4" , CVAR_ARCHIVE },
+	{ &cg_enableMultijump, "g_enableMultijump", "1" , CVAR_SERVERINFO | CVAR_ARCHIVE },
+	{ &cg_maxMultijump, "g_maxMultijump", "4" , CVAR_SERVERINFO | CVAR_ARCHIVE },
 
 //unlagged - client options
 	{ &cg_delag, "cg_delag", "1", CVAR_ARCHIVE | CVAR_USERINFO },

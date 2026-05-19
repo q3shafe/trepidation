@@ -15,10 +15,15 @@
 //#include "../cgame/cg_local.h"	// yeah I know this is naughty, but we're shipping soon
 
 
+#ifdef CGAME
 extern	vmCvar_t	cg_enableMultijump;
 extern	vmCvar_t	cg_maxMultijump;
-extern	vmCvar_t	g_maxMultijump;
+#define g_enableMultijump cg_enableMultijump
+#define g_maxMultijump cg_maxMultijump
+#else
 extern	vmCvar_t	g_enableMultijump;
+extern	vmCvar_t	g_maxMultijump;
+#endif
 
 
 
@@ -382,13 +387,10 @@ static qboolean PM_CheckJump(void) {
 		return qfalse;
 	}
 
-	// Check if we've exceeded the maximum number of jumps	
-	//if (pm->ps->stats[STAT_MULTIJUMP] >= g_maxMultijump.integer) {
-	/*
-	if (pm->ps->stats[STAT_MULTIJUMP] >= 4) {
+	// Check if we've exceeded the maximum number of jumps
+	if (g_enableMultijump.integer && pm->ps->stats[STAT_MULTIJUMP] >= g_maxMultijump.integer) {
 		return qfalse;
 	}
-	*/
 
 	pml.groundPlane = qfalse;		// jumping away
 	pml.walking = qfalse;
@@ -396,7 +398,7 @@ static qboolean PM_CheckJump(void) {
 	pm->ps->groundEntityNum = ENTITYNUM_NONE;
 	pm->ps->velocity[2] = JUMP_VELOCITY;
 	PM_AddEvent(EV_JUMP);
-	//pm->ps->stats[STAT_MULTIJUMP]++;
+	pm->ps->stats[STAT_MULTIJUMP]++;
 
 	if (pm->cmd.forwardmove >= 0) {
 		PM_ForceLegsAnim(LEGS_JUMP);
@@ -1193,15 +1195,9 @@ static void PM_GroundTrace( void ) {
 			else
 			{
 				// Go ahead and do the multijump
-				//if (pm->ps->stats[STAT_MULTIJUMP] < g_maxMultijump.value)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
-				/*
-				if (pm->ps->stats[STAT_MULTIJUMP] < 4)  // 0.0.30 Shafe Multijump -  this needs to be a cvar, enable/disable as well as number of multijumps
-				{
-					PM_CheckJump ();		
-				} else {
-					pm->ps->stats[STAT_MULTIJUMP] = 0;			
+				if (g_enableMultijump.integer) {
+					PM_CheckJump();
 				}
-				*/
 			}
 		
 	

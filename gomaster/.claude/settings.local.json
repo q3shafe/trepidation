@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(cd \"j:\\\\trep\\\\code\\\\gomaster\"; $env:GOOS = \"linux\"; $env:GOARCH = \"amd64\"; $env:CGO_ENABLED = \"0\"; go build -o gomaster-linux .; $env:GOOS = $null; $env:GOARCH = $null; $env:CGO_ENABLED = $null)",
+      "PowerShell(go version)"
+    ]
+  }
+}
