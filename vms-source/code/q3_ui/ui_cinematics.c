@@ -108,7 +108,7 @@ static void UI_CinematicsMenu_Init( void ) {
 	cinematicsMenuInfo.banner.generic.type		= MTYPE_BTEXT;
 	cinematicsMenuInfo.banner.generic.x			= 320;
 	cinematicsMenuInfo.banner.generic.y			= 16;
-	cinematicsMenuInfo.banner.string			= "SP Development Menu";
+	cinematicsMenuInfo.banner.string			= "CINEMATICS";
 	cinematicsMenuInfo.banner.color				= color_white;
 	cinematicsMenuInfo.banner.style				= UI_CENTER;
 

@@ -381,7 +381,7 @@ void UI_MainMenu(void) {
 	s_main.cinematics.generic.y = y;
 	s_main.cinematics.generic.id = ID_CINEMATICS;
 	s_main.cinematics.generic.callback = Main_MenuEvent;
-	s_main.cinematics.string = "SP Dev Menu";
+	s_main.cinematics.string = "Cinematics";
 	s_main.cinematics.color = color_red;
 	s_main.cinematics.style = style;
 

@@ -1,3 +1,6 @@
+NOTE: THE TREPIDATION MASTER SERVER HAS BEEN REWRITTEN IN GO.  THIS IS OUTDATED AND ONLY HERE FOR REFERENCE.
+
+
 DPMaster for Trepidation
 ========================
 Master server for Trepidation.   
