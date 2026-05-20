@@ -1,6 +1,6 @@
  trepidation.x86
 
- Timestamp is 675f796b (Sun Dec 15 19:50:51 2024)
+ Timestamp is 6a0d2331 (Tue May 19 22:57:53 2026)
 
  Preferred load address is 00400000
 
@@ -36,8 +36,8 @@
 
  0000:00000000       __except_list              00000000     <absolute>
  0000:00000001       ___safe_se_handler_count   00000001     <absolute>
- 0000:00009876       __ldused                   00009876     <absolute>
  0000:00009876       __fltused                  00009876     <absolute>
+ 0000:00009876       __ldused                   00009876     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00000000       _AAS_Trace                 00401000 f   be_aas_bspq3.obj
  0001:00000030       _AAS_PointContents         00401030 f   be_aas_bspq3.obj
@@ -103,8 +103,8 @@
  0001:00003850       _AAS_OnGround              00404850 f   be_aas_move.obj
  0001:00003920       _AAS_Swimming              00404920 f   be_aas_move.obj
  0001:00003970       _AAS_WeaponJumpZVelocity   00404970 f   be_aas_move.obj
- 0001:00003b70       _AAS_RocketJumpZVelocity   00404b70 f   be_aas_move.obj
  0001:00003b70       _AAS_BFGJumpZVelocity      00404b70 f   be_aas_move.obj
+ 0001:00003b70       _AAS_RocketJumpZVelocity   00404b70 f   be_aas_move.obj
  0001:00003b90       _AAS_Accelerate            00404b90 f   be_aas_move.obj
  0001:00003c20       _AAS_ApplyFriction         00404c20 f   be_aas_move.obj
  0001:00003cb0       _AAS_ClipToBBox            00404cb0 f   be_aas_move.obj
@@ -458,18 +458,18 @@
  0001:00025810       _GetClearedHunkMemory      00426810 f   l_memory.obj
  0001:00025860       _FreeMemory                00426860 f   l_memory.obj
  0001:00025880       _AvailableMemory           00426880 f   l_memory.obj
- 0001:00025890       _vbr_destroy               00426890 f   vbr.obj
- 0001:00025890       _SV_RemoveOperatorCommands 00426890 f   sv_ccmds.obj
  0001:00025890       _GLimp_WakeRenderer        00426890 f   sdl_glimp.obj
- 0001:00025890       _EA_EndRegular             00426890 f   be_ea.obj
  0001:00025890       _PrintMemoryLabels         00426890 f   l_memory.obj
- 0001:00025890       _GLimp_FrontEndSleep       00426890 f   sdl_glimp.obj
- 0001:00025890       _CON_Init                  00426890 f   con_passive.obj
- 0001:00025890       _CON_Shutdown              00426890 f   con_passive.obj
  0001:00025890       _GLimp_LogComment          00426890 f   sdl_glimp.obj
- 0001:00025890       _AAS_UnlinkFromBSPLeaves   00426890 f   be_aas_bspq3.obj
- 0001:00025890       _PrintUsedMemorySize       00426890 f   l_memory.obj
+ 0001:00025890       _CON_Init                  00426890 f   con_passive.obj
+ 0001:00025890       _SV_RemoveOperatorCommands 00426890 f   sv_ccmds.obj
+ 0001:00025890       _GLimp_FrontEndSleep       00426890 f   sdl_glimp.obj
+ 0001:00025890       _CON_Shutdown              00426890 f   con_passive.obj
+ 0001:00025890       _EA_EndRegular             00426890 f   be_ea.obj
  0001:00025890       _jpeg_mem_term             00426890 f   jmemnobs.obj
+ 0001:00025890       _PrintUsedMemorySize       00426890 f   l_memory.obj
+ 0001:00025890       _AAS_UnlinkFromBSPLeaves   00426890 f   be_aas_bspq3.obj
+ 0001:00025890       _vbr_destroy               00426890 f   vbr.obj
  0001:000258a0       _SourceError               004268a0 f   l_precomp.obj
  0001:00025910       _SourceWarning             00426910 f   l_precomp.obj
  0001:00025980       _PC_PushIndent             00426980 f   l_precomp.obj
@@ -966,11 +966,11 @@
  0001:00050240       _jpeg_start_decompress     00451240 f   jdapistd.obj
  0001:00050430       _jpeg_mem_src              00451430 f   jdatasrc.obj
  0001:00050780       _CON_Input                 00451780 f   con_passive.obj
- 0001:00050780       _S_OGG_Callback_close      00451780 f   snd_codec_ogg.obj
  0001:00050780       _BotExportTest             00451780 f   be_interface.obj
- 0001:00050780       _GLimp_RendererSleep       00451780 f   sdl_glimp.obj
- 0001:00050780       _AAS_BSPLinkEntity         00451780 f   be_aas_bspq3.obj
  0001:00050780       _jpeg_mem_init             00451780 f   jmemnobs.obj
+ 0001:00050780       _GLimp_RendererSleep       00451780 f   sdl_glimp.obj
+ 0001:00050780       _S_OGG_Callback_close      00451780 f   snd_codec_ogg.obj
+ 0001:00050780       _AAS_BSPLinkEntity         00451780 f   be_aas_bspq3.obj
  0001:00050790       _jinit_d_coef_controller   00451790 f   jdcoefct.obj
  0001:00050ca0       _jinit_color_deconverter   00451ca0 f   jdcolor.obj
  0001:00050fe0       _jinit_inverse_dct         00451fe0 f   jddctmgr.obj
@@ -2067,8 +2067,8 @@
  0001:000c4f55       __SEH_epilog4              004c5f55 f   msvcrt:sehprolg4.obj
  0001:000c4f69       __except_handler4          004c5f69 f   msvcrt:chandler4gs.obj
  0001:000c4f8e       __setdefaultprecision      004c5f8e f   msvcrt:fp8.obj
- 0001:000c4fb6       __matherr                  004c5fb6 f   msvcrt:merr.obj
  0001:000c4fb6       __setargv                  004c5fb6 f   msvcrt:dllargv.obj
+ 0001:000c4fb6       __matherr                  004c5fb6 f   msvcrt:merr.obj
  0001:000c4fbb       ___security_init_cookie    004c5fbb f   msvcrt:gs_support.obj
  0001:000c5056       __crt_debugger_hook        004c6056 f   msvcrt:MSVCR100.dll
  0001:000c505c       ?terminate@@YAXXZ          004c605c f   msvcrt:MSVCR100.dll
@@ -4858,7 +4858,7 @@
  0002:0000fc18       ??_C@_0BM@JMOBJEDO@Error?5during?5initialization?$AA@ 004d6c18     common.obj
  0002:0000fc34       ??_C@_09GPBPOFIE@?$CFs?5?$CFs?5?$CFs?6?$AA@ 004d6c34     common.obj
  0002:0000fc40       ??_C@_0N@HCNPNLDN@win_msvc?9x86?$AA@ 004d6c40     common.obj
- 0002:0000fc50       ??_C@_0M@BIPDAKOM@Dec?521?52023?$AA@ 004d6c50     common.obj
+ 0002:0000fc50       ??_C@_0M@MFBIOPBP@May?519?52026?$AA@ 004d6c50     common.obj
  0002:0000fc5c       ??_C@_0CC@HBLLGKBA@?$CF4i?5traces?5?5?$CI?$CFib?5?$CFip?$CJ?5?$CF4i?5points@ 004d6c5c     common.obj
  0002:0000fc80       ??_C@_0DM@DEOKJHOL@frame?3?$CFi?5all?3?$CF3i?5sv?3?$CF3i?5ev?3?$CF3i?5c@ 004d6c80     common.obj
  0002:0000fcbc       ??_C@_0BD@KBDKCAEM@dedicated?5set?5to?50?$AA@ 004d6cbc     common.obj

@@ -9,7 +9,7 @@
 define('MASTER_HOST',   '158.69.213.231'); // IP of the gomaster server
 define('MASTER_PORT',   27950);        // gomaster UDP port
 define('GAME_NAME',     'QuakeArena-1'); // gamename stored by master (infoResponse has no gamename field)
-define('PROTOCOL',      72);           // protocol number (67 or 68 for Q3-based)
+define('PROTOCOL',      73);           // protocol number (67 or 68 for Q3-based)
 define('QUERY_TIMEOUT', 2);            // seconds to wait per UDP call
 define('AUTO_REFRESH',  30);           // page auto-refresh interval in seconds (0 = off)
 // ------------------------------------------------------------
@@ -134,8 +134,11 @@ function getMasterServers(): array {
 // ---- Individual game server query --------------------------
 
 function getServerStatus(string $ip, int $port): ?array {
-    $oob  = "\xFF\xFF\xFF\xFF";
-    $resp = udpQuery($ip, $port, $oob . 'getstatus');
+    $oob = "\xFF\xFF\xFF\xFF";
+    // If the game server is on the same machine as the master, query via loopback
+    // to avoid firewall blocking public-IP self-connections.
+    $queryIp = ($ip === MASTER_HOST) ? '127.0.0.1' : $ip;
+    $resp = udpQuery($queryIp, $port, $oob . 'getstatus');
     if ($resp === null) return null;
 
     $prefix = "\xFF\xFF\xFF\xFFstatusResponse\n";

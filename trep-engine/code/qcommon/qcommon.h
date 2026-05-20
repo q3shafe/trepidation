@@ -256,7 +256,7 @@ extern int demo_protocols[];
 #define ALT_MASTER0	"trepidationfps.com" // Shafe - Trep
 #define ALT_MASTER1	"trepidation.n5net.com" // Shafe - Trep
 #define ALT_MASTER2	"n5net.com" // Shafe - Trep
-#define ALT_MASTER3	"u7radio.org" // Shafe - Trep -
+#define ALT_MASTER3	"wedovids.com" // Shafe - Trep -
 #endif
 
 #ifndef STANDALONE
