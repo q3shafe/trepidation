@@ -135,10 +135,17 @@ function getMasterServers(): array {
 
 function getServerStatus(string $ip, int $port): ?array {
     $oob = "\xFF\xFF\xFF\xFF";
-    // If the game server is on the same machine as the master, query via loopback
-    // to avoid firewall blocking public-IP self-connections.
-    $queryIp = ($ip === MASTER_HOST) ? '127.0.0.1' : $ip;
-    $resp = udpQuery($queryIp, $port, $oob . 'getstatus');
+    // For servers on the same machine as the master, try loopback first (works when
+    // the game server binds 0.0.0.0), then fall back to the public IP (works when
+    // it binds specifically to the public interface).
+    if ($ip === MASTER_HOST) {
+        $resp = udpQuery('127.0.0.1', $port, "{$oob}getstatus");
+        if ($resp === null) {
+            $resp = udpQuery($ip, $port, "{$oob}getstatus");
+        }
+    } else {
+        $resp = udpQuery($ip, $port, "{$oob}getstatus");
+    }
     if ($resp === null) return null;
 
     $prefix = "\xFF\xFF\xFF\xFFstatusResponse\n";
