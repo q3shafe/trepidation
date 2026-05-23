@@ -1317,6 +1317,14 @@ void S_Base_StartBackgroundTrack( const char *intro, const char *loop ){
 		return;
 	}
 
+	// If the same seamless loop is already playing, don't restart it.
+	if(s_backgroundStream && s_backgroundLoop[0] &&
+	   !strcmp(s_backgroundLoop, loop) &&
+	   (!strcmp(intro, loop)))
+	{
+		return;
+	}
+
 	if( !loop ) {
 		s_backgroundLoop[0] = 0;
 	} else {

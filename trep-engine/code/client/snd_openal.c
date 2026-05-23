@@ -1956,19 +1956,13 @@ static
 void S_AL_StartBackgroundTrack( const char *intro, const char *loop )
 {
 	int i;
-	qboolean issame;	
-
-	// Stop any existing music that might be playing
-	S_AL_StopBackgroundTrack();
-
+	qboolean issame;
 
 	if((!intro || !*intro) && (!loop || !*loop))
+	{
+		S_AL_StopBackgroundTrack();
 		return;
-
-	// Allocate a musicSource
-	S_AL_MusicSourceGet();
-	if(musicSourceHandle == -1)
-		return;
+	}
 
 	if (!loop || !*loop)
 	{
@@ -1979,6 +1973,23 @@ void S_AL_StartBackgroundTrack( const char *intro, const char *loop )
 		issame = qtrue;
 	else
 		issame = qfalse;
+
+	// If the same seamless loop is already playing, don't restart it.
+	// This prevents a brief stutter when CS_MUSIC is received redundantly
+	// at map load (e.g. once from CG_Init and once from a pending cs command).
+	if(musicPlaying && issame && !intro_stream &&
+	   *s_backgroundLoop && !strcmp(s_backgroundLoop, loop))
+	{
+		return;
+	}
+
+	// Stop any existing music that might be playing
+	S_AL_StopBackgroundTrack();
+
+	// Allocate a musicSource
+	S_AL_MusicSourceGet();
+	if(musicSourceHandle == -1)
+		return;
 
 	// Copy the loop over
 	strncpy( s_backgroundLoop, loop, sizeof( s_backgroundLoop ) );

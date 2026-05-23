@@ -38,11 +38,17 @@ This is mostly a maintenance release, not a lot of huge new features.
 
 - TODO: Add Additional Mappack to distro: lilbuteroom and nightmare and sp maps, what about og-maps?
 
-12-16-2023
+- Bots no longer try to fire empty weapons
+
+- sometimes there may be missing build menu items in trepidation gametype
+
+- multijump cvars now work
+
+- Server filters (gametypes) now work
+
+- Background music would sometimes studder, this is now fixed.
 
 - Power core and Generators no longer show up on the menu if your not playing trepidation.
-
-05-05-2023
 
 - If there is a problem with music there is now a default
 
