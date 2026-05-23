@@ -100,8 +100,8 @@ MULTIPLAYER MENU (SERVER BROWSER)
 #define GAMES_ARSENAL		5	// Shafe - Trep - New Gametype
 #define GAMES_LASTMAN		6	// Shafe - Trep - New Gametype
 #define GAMES_TREPIDATION	7	// Shafe - Trep - New Gametype
-#define GAMES_FREEZETAG		8	// Shafe - Trep - New Gametype
-#define GAMES_ONE4ALL		9	// Shafe - Trep - New Gametype
+#define GAMES_ONE4ALL		8	// Shafe - Trep - New Gametype (g_gamemode 4)
+#define GAMES_FREEZETAG		9	// Shafe - Trep - New Gametype (g_gamemode 5)
 
 sfxHandle_t connect_in_sound;
 
@@ -292,7 +292,6 @@ static int				g_sortkey;
 static int				g_emptyservers;
 static int				g_fullservers;
 static int				g_masteruse; // Shafe - Trep - Multimaster
-static int				g_gamemode;
 static int				g_instagib;
 
 
@@ -571,26 +570,28 @@ static void ArenaServers_UpdateMenu( void ) {
 				continue;
 			}
 			break;
-		case GAMES_ARSENAL:  // Shafe - Trep - Game type Freeze - Server Filter - This isnt a filter yet
-			 //strcmp(servernodeptr->gamename,"eternal") != 0
-			if(( servernodeptr->gametype != GT_FFA ) && (servernodeptr->g_gamemode == 1))  {
-				continue;
-				
-			}
-			break;
-		case GAMES_LASTMAN: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet
-			if(( servernodeptr->gametype != GT_FFA ) && (servernodeptr->g_gamemode == 2))  {
+		case GAMES_ARSENAL:
+			if( servernodeptr->gametype != GT_FFA || servernodeptr->g_gamemode != 1 ) {
 				continue;
 			}
 			break;
-		case GAMES_TREPIDATION: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet			
-			if(( servernodeptr->gametype != GT_TEAM ) && (servernodeptr->g_gamemode == 3))  {
+		case GAMES_LASTMAN:
+			if( servernodeptr->gametype != GT_FFA || servernodeptr->g_gamemode != 2 ) {
 				continue;
 			}
 			break;
-		
-		case GAMES_FREEZETAG: // Shafe - Trep - Game type Last Man Standing Server Filter - This isnt a filter yet			
-			if(( servernodeptr->gametype != GT_TEAM ) && (servernodeptr->g_gamemode == 3))  {
+		case GAMES_TREPIDATION:
+			if( servernodeptr->gametype != GT_TEAM || servernodeptr->g_gamemode != 3 ) {
+				continue;
+			}
+			break;
+		case GAMES_ONE4ALL:
+			if( servernodeptr->g_gamemode != 4 ) {
+				continue;
+			}
+			break;
+		case GAMES_FREEZETAG:
+			if( servernodeptr->gametype != GT_TEAM || servernodeptr->g_gamemode != 5 ) {
 				continue;
 			}
 			break;
@@ -1747,7 +1748,7 @@ static void ArenaServers_MenuInit( void ) {
 	
 	g_arenaservers.master.curvalue = value;
 
-	g_gametype = Com_Clamp( 0, 4, ui_browserGameType.integer );
+	g_gametype = Com_Clamp( 0, 9, ui_browserGameType.integer );
 	g_arenaservers.gametype.curvalue = g_gametype;
 
 	// Shafe - Multi Master 

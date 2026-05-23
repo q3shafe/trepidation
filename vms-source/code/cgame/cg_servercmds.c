@@ -149,6 +149,7 @@ void CG_ParseServerinfo( void ) {
 	// Shafe - Trep
 	cgs.g_instagib = atoi( Info_ValueForKey( info, "g_instagib" ) );
 	cgs.g_GameMode = atoi( Info_ValueForKey( info, "g_GameMode" ) );
+	trap_Cvar_Set("g_GameMode", va("%i", cgs.g_GameMode));
 	cgs.g_BlueMC = atoi( Info_ValueForKey( info, "g_BlueMC" ) );
 	cgs.g_RedMC = atoi( Info_ValueForKey( info, "g_RedMC" ) );
 

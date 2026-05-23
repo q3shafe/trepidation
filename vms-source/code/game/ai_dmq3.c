@@ -1633,20 +1633,35 @@ BotChooseWeapon
 */
 void BotChooseWeapon(bot_state_t *bs) {
 	int newweaponnum;
-
-
+	int i;
 
 	if (bs->cur_ps.weaponstate == WEAPON_RAISING ||
 				bs->cur_ps.weaponstate == WEAPON_DROPPING) {
 			trap_EA_SelectWeapon(bs->client, bs->weaponnum);
 		}
 		else {
-			newweaponnum = trap_BotChooseBestFightWeapon(bs->ws, bs->inventory);			
+			newweaponnum = trap_BotChooseBestFightWeapon(bs->ws, bs->inventory);
+
+			// Validate the chosen weapon actually has ammo. The weapon enum order in this
+			// mod differs from vanilla Q3 (e.g. WP_RAILGUN=3 vs vanilla WP_SHOTGUN=3), so
+			// trap_BotChooseBestFightWeapon can return a slot index that maps to a different
+			// weapon here — one that may have no ammo. Fall back to scanning all weapons.
+			if (newweaponnum > WP_GAUNTLET &&
+				(!(bs->cur_ps.stats[STAT_WEAPONS] & (1 << newweaponnum)) ||
+				  bs->cur_ps.ammo[newweaponnum] == 0)) {
+				newweaponnum = WP_GAUNTLET;
+				for (i = WP_NUM_WEAPONS - 1; i > WP_GAUNTLET; i--) {
+					if ((bs->cur_ps.stats[STAT_WEAPONS] & (1 << i)) &&
+						bs->cur_ps.ammo[i] != 0) {
+						newweaponnum = i;
+						break;
+					}
+				}
+			}
 
 			if (bs->weaponnum != newweaponnum) bs->weaponchange_time = FloatTime();
 			bs->weaponnum = newweaponnum;
 
-			//BotAI_Print(PRT_MESSAGE, "bs->weaponnum = %d\n", bs->weaponnum);
 			trap_EA_SelectWeapon(bs->client, bs->weaponnum);
 		}
 
@@ -5211,10 +5226,11 @@ void BotCheckEvents(bot_state_t *bs, entityState_t *state) {
 		case EV_WATER_CLEAR:
 		case EV_ITEM_PICKUP:
 		case EV_GLOBAL_ITEM_PICKUP:
+			break;
 		case EV_NOAMMO:
-			// Shafe - we need to force a weapon change here.
-			 //BotChooseWeapon(bs);
-			//trap_BotChooseBestFightWeapon(bs->ws, bs->inventory);
+			if (state->number == bs->client) {
+				BotChooseWeapon(bs);
+			}
 			break;
 		case EV_CHANGE_WEAPON:
 		case EV_FIRE_WEAPON:
