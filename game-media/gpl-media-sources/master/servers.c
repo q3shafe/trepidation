@@ -53,6 +53,7 @@ static int crt_hash_ind = -1;
 
 // List of address mappings. They are sorted by "from" field (IP, then port)
 static addrmap_t* addrmaps = NULL;
+static size_t nb_addrmaps = 0;
 
 
 // ---------- Private functions ---------- //
@@ -373,9 +374,8 @@ qboolean Sv_Init (void)
 {
 	size_t array_size;
 
-	// Allocate "servers" and clean it
-	array_size = max_nb_servers * sizeof (servers[0]);
-	servers = malloc (array_size);
+	// Allocate "servers" and clean it (calloc checks for overflow and zeroes memory)
+	servers = calloc (max_nb_servers, sizeof (servers[0]));
 	if (!servers)
 	{
 		MsgPrint (MSG_ERROR,
@@ -384,12 +384,10 @@ qboolean Sv_Init (void)
 		return false;
 	}
 	last_alloc = max_nb_servers - 1;
-	memset (servers, 0, array_size);
 	MsgPrint (MSG_NORMAL, "> %u server records allocated\n", max_nb_servers);
 
-	// Allocate "hash_table" and clean it
-	array_size = hash_table_size * sizeof (hash_table[0]);
-	hash_table = malloc (array_size);
+	// Allocate "hash_table" and clean it (calloc checks for overflow and zeroes memory)
+	hash_table = calloc (hash_table_size, sizeof (hash_table[0]));
 	if (!hash_table)
 	{
 		MsgPrint (MSG_ERROR, "> ERROR: can't allocate the hash table (%s)\n",
@@ -397,7 +395,6 @@ qboolean Sv_Init (void)
 		free (servers);
 		return false;
 	}
-	memset (hash_table, 0, array_size);
 	MsgPrint (MSG_NORMAL,
 			  "> Hash table allocated (%u entries)\n", hash_table_size);
 
@@ -621,9 +618,23 @@ qboolean Sv_AddAddressMapping (const char* mapping)
 		return false;
 	}
 
+	// Enforce maximum address mapping limit
+	if (nb_addrmaps >= MAX_NB_ADDRMAPS)
+	{
+		MsgPrint (MSG_ERROR,
+				  "> ERROR: maximum number of address mappings (%u) reached\n",
+				  MAX_NB_ADDRMAPS);
+		free (addrmap->to_string);
+		free (addrmap->from_string);
+		free (addrmap);
+		free (map_string);
+		return false;
+	}
+
 	// Add it on top of "addrmaps"
 	addrmap->next = addrmaps;
 	addrmaps = addrmap;
+	nb_addrmaps++;
 
 	return true;
 }

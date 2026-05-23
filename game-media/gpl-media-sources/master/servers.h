@@ -30,6 +30,9 @@
 // Maximum number of servers in all lists by default
 #define DEFAULT_MAX_NB_SERVERS 1024
 
+// Maximum number of address mappings allowed
+#define MAX_NB_ADDRMAPS 256
+
 // Address hash size in bits (between 0 and MAX_HASH_SIZE)
 #define DEFAULT_HASH_SIZE	6
 #define MAX_HASH_SIZE		8
